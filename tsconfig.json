@@ -119,6 +119,7 @@
         "Game/src/collection/KinkyDungeonCollection.js",
         "Game/src/collection/KDRecycler.ts",
         "Game/src/collection/KDRecyclerList.ts",
+        "Game/src/collection/KDCuddleLounge.ts",
         "Game/src/collection/KDFacilities.ts",
         "Game/src/collection/KDFacilitiesList.ts",
         "Game/src/collection/NPCRestrain.ts",

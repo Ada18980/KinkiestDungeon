@@ -680,6 +680,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/KnifeHit.png":
+{
+	"frame": {"x":2022,"y":1457,"w":21,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":17,"w":21,"h":30},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Bullets/LatexBubbleexpHit.png":
 {
 	"frame": {"x":1069,"y":1752,"w":72,"h":72},
@@ -744,14 +752,6 @@
 	"spriteSourceSize": {"x":2,"y":2,"w":213,"h":213},
 	"sourceSize": {"w":216,"h":216}
 },
-"Game/Bullets/MagicRopeHit.png":
-{
-	"frame": {"x":147,"y":2006,"w":54,"h":39},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":16,"w":54,"h":39},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/MinerBombHit.png":
 {
 	"frame": {"x":967,"y":219,"w":216,"h":207},
@@ -799,6 +799,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":3,"w":203,"h":213},
 	"sourceSize": {"w":216,"h":216}
+},
+"Game/Bullets/PoisonDaggerHit.png":
+{
+	"frame": {"x":2022,"y":1457,"w":21,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":17,"w":21,"h":30},
+	"sourceSize": {"w":72,"h":72}
 },
 "Game/Bullets/PoisonDragonBlast.png":
 {
@@ -1642,7 +1650,7 @@
 },
 "Game/Enemies/LesserSkeleton.png":
 {
-	"frame": {"x":1559,"y":1716,"w":26,"h":58},
+	"frame": {"x":1559,"y":1778,"w":26,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":8,"w":26,"h":58},
@@ -1712,9 +1720,17 @@
 	"spriteSourceSize": {"x":25,"y":1,"w":29,"h":65},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/EnemiesBound/Head/Wolfgirl.png":
+{
+	"frame": {"x":2019,"y":1244,"w":28,"h":33},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":6,"w":28,"h":33},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/EnemiesBound/LesserSkeleton.png":
 {
-	"frame": {"x":1559,"y":1776,"w":22,"h":58},
+	"frame": {"x":1559,"y":1838,"w":22,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":8,"w":22,"h":58},
@@ -1722,7 +1738,7 @@
 },
 "Game/EnemiesBound/Nurse.png":
 {
-	"frame": {"x":2019,"y":1053,"w":26,"h":62},
+	"frame": {"x":2019,"y":1118,"w":26,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":5,"w":26,"h":62},
@@ -1730,7 +1746,7 @@
 },
 "Game/EnemiesBound/Skeleton.png":
 {
-	"frame": {"x":1559,"y":1836,"w":22,"h":58},
+	"frame": {"x":2022,"y":1279,"w":22,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":8,"w":22,"h":58},
@@ -1750,6 +1766,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":20,"y":1,"w":36,"h":67},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/FloorGeneric/Bars.png":
+{
+	"frame": {"x":2018,"y":348,"w":18,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":8,"w":18,"h":64},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/FloorGeneric/CrackVert.png":
@@ -1786,7 +1810,7 @@
 },
 "Game/Items/AncientPowerSourceSpent.png":
 {
-	"frame": {"x":2022,"y":1278,"w":22,"h":57},
+	"frame": {"x":2022,"y":1339,"w":22,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":7,"w":22,"h":57},
@@ -1816,28 +1840,12 @@
 	"spriteSourceSize": {"x":0,"y":18,"w":72,"h":37},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/DildoBat.png":
-{
-	"frame": {"x":2022,"y":1396,"w":21,"h":57},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":26,"y":9,"w":21,"h":57},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Items/ElfCrystal.png":
 {
-	"frame": {"x":2022,"y":1337,"w":22,"h":57},
+	"frame": {"x":2022,"y":1398,"w":22,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":7,"w":22,"h":57},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Items/Group/ItemLegs.png":
-{
-	"frame": {"x":2022,"y":1455,"w":24,"h":33},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":42,"y":38,"w":24,"h":33},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Group/ItemNeck.png":
@@ -1946,7 +1954,7 @@
 },
 "Game/Items/StaffFrostbite.png":
 {
-	"frame": {"x":2019,"y":1179,"w":26,"h":60},
+	"frame": {"x":1559,"y":1716,"w":26,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":3,"w":26,"h":60},
@@ -1962,7 +1970,7 @@
 },
 "Game/Items/StaffIncineration.png":
 {
-	"frame": {"x":2019,"y":1117,"w":28,"h":60},
+	"frame": {"x":2019,"y":1182,"w":28,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":3,"w":28,"h":60},
@@ -1970,7 +1978,7 @@
 },
 "Game/Items/StaffStorm.png":
 {
-	"frame": {"x":2018,"y":348,"w":23,"h":63},
+	"frame": {"x":2019,"y":1053,"w":23,"h":63},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":0,"w":23,"h":63},
@@ -1984,28 +1992,12 @@
 	"spriteSourceSize": {"x":4,"y":16,"w":38,"h":17},
 	"sourceSize": {"w":46,"h":45}
 },
-"Game/Poses/Kneel.png":
-{
-	"frame": {"x":1559,"y":1896,"w":25,"h":21},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":10,"w":25,"h":21},
-	"sourceSize": {"w":46,"h":45}
-},
 "Game/Spells/AllyFireboltHit.png":
 {
 	"frame": {"x":1081,"y":1308,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Spells/ApprenticeLightning.png":
-{
-	"frame": {"x":2019,"y":1241,"w":28,"h":35},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":20,"w":28,"h":35},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Spells/ArrowFireSpell.png":
@@ -2080,6 +2072,22 @@
 	"spriteSourceSize": {"x":18,"y":24,"w":39,"h":23},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/UI/CollectionFilter/Positive.png":
+{
+	"frame": {"x":147,"y":2006,"w":53,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":14,"w":53,"h":41},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/UI/evasion.png":
+{
+	"frame": {"x":1559,"y":1898,"w":25,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":7,"w":25,"h":19},
+	"sourceSize": {"w":36,"h":36}
+},
 "Game/UI/Exit.png":
 {
 	"frame": {"x":219,"y":633,"w":86,"h":86},
@@ -2144,6 +2152,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:969d2c449a7278d7f751a094e940c546:bc8ee5c5dbfc1a10992faa372837d559:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f8342a270b7b9a9bdb8599058a1363ef:1330bcda54ff8e63643b3fa5d46e04fd:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

@@ -23389,7 +23389,7 @@ KDFacilityDesc_AlchemyLab,"Assign servants to produce potions from base ingredie
 KDFacility_Recycler,Recycler
 KDFacilityDesc_Recycler,"Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed."
 KDFacility_CuddleLounge,Cuddle Lounge
-KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve your servants' opinion of you."
+KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve servant and prisoner opinion."
 
 KDRecycleButton,Recycle Restraints
 
@@ -23600,3 +23600,9 @@ KDAutoBindCopy,Copy Restraints
 KDAutoBindPaste,Paste Restraints from NME
 KDAutoBindPasteAll,Paste to All!
 KDAutoBindPasteAllOver,OVERWRITE All!
+
+KDPromoteNotEnough,Need Positive Opinion to Promote
+
+KDCuddleLounge1,Servant Enjoyment: AMNT
+KDCuddleLounge2,Prisoner Enjoyment: AMNT
+KDCuddleLoungeInfo,Submissive prisoners and dominant servants add different amounts of opinion per cycle

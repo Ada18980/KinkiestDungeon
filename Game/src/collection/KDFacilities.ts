@@ -14,6 +14,8 @@ interface FacilitiesData {
 	RecyclerInput_Rune: number,
 	Servants_Recycler: number[],
 	Prisoners_Recycler: number[],
+	Servants_CuddleLounge: number[],
+	Prisoners_CuddleLounge: number[],
 };
 
 let FacilitiesDataBase : FacilitiesData = {
@@ -30,6 +32,8 @@ let FacilitiesDataBase : FacilitiesData = {
 
 	Servants_Recycler: [],
 	Prisoners_Recycler: [],
+	Servants_CuddleLounge: [],
+	Prisoners_CuddleLounge: [],
 };
 
 function InitFacilities() {
@@ -72,6 +76,7 @@ function KDUpdateFacilities(delta: number) {
 	for (let fac of listUpdate) {
 		fac[1].update(delta);
 	}
+	KDSortCollection();
 }
 
 function KinkyDungeonDrawFacilities(xOffset = -125) {
@@ -199,7 +204,7 @@ function KDGetServantEnemy(servant: KDCollectionEntry): enemy {
 }
 
 
-function KDDrawServantPrisonerList(facility: string, x: number, y: number, width: number) : number {
+function KDDrawServantPrisonerList(facility: string, x: number, y: number, width: number, spacing: number = 110) : number {
 	let yy = 0;
 
 	let fac = KDFacilityTypes[facility];
@@ -207,7 +212,6 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 		let ms = fac.maxServants();
 		let mp = fac.maxPrisoners();
 		let w = 72;
-		let spacing = 110;
 		if (ms > 0) {
 			DrawTextFitKD(TextGet("KDServants") + ": ", x + width/2 - (spacing * (ms - 1) + w)/2 - 5, y + yy + 36,
 			500, "#ffffff", KDTextGray0, 24, "right");
@@ -220,6 +224,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KinkyDungeonDrawState = "Collection";
 					KinkyDungeonCheckClothesLoss = true;
 					KDCollectionTab = "";
+					KDCollectionSelected = servant;
 					return true;
 				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(servant),
 				undefined, undefined, !servant, KDButtonColor, undefined, undefined, {
@@ -241,11 +246,20 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KinkyDungeonDrawState = "Collection";
 					KinkyDungeonCheckClothesLoss = true;
 					KDCollectionTab = "";
+					KDCollectionSelected = prisoner;
 					return true;
 				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(prisoner),
 				undefined, undefined, !prisoner, KDButtonColor, undefined, undefined, {
 					centered: true,
 				});
+				if (KDGameData.Collection["" + prisoner]?.escapegrace) {
+					KDDraw(kdcanvas, kdpixisprites, facility + "pris" + i + "escgrc",
+						KinkyDungeonRootDirectory + "UI/escapegrace.png",
+						x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing + w/2, y + yy + w/2, w/2, w/2, undefined, {
+							zIndex: 110,
+						}
+					);
+				}
 			}
 
 			yy += 110;

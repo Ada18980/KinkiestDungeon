@@ -186,7 +186,7 @@
 },
 "Game/Conditions/Aware.png":
 {
-	"frame": {"x":816,"y":1715,"w":10,"h":28},
+	"frame": {"x":816,"y":1751,"w":10,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":31,"y":7,"w":10,"h":28},
@@ -208,17 +208,9 @@
 	"spriteSourceSize": {"x":49,"y":59,"w":23,"h":12},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Conditions/vp.png":
-{
-	"frame": {"x":816,"y":1804,"w":14,"h":26},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":29,"y":8,"w":14,"h":26},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/DamageTypes/acid.png":
 {
-	"frame": {"x":816,"y":1775,"w":11,"h":27},
+	"frame": {"x":816,"y":1811,"w":11,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":43,"w":11,"h":27},
@@ -354,7 +346,7 @@
 },
 "Game/FloorGeneric/HookHigh.png":
 {
-	"frame": {"x":816,"y":1745,"w":8,"h":28},
+	"frame": {"x":816,"y":1781,"w":8,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":31,"y":4,"w":8,"h":28},
@@ -368,28 +360,12 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/FloorGeneric/Perk.png":
-{
-	"frame": {"x":816,"y":1832,"w":16,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":29,"y":8,"w":16,"h":22},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/FloorGeneric/Rubble.png":
 {
 	"frame": {"x":503,"y":2033,"w":14,"h":14},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":41,"y":34,"w":14,"h":14},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/FloorGeneric/Viewscreen.png":
-{
-	"frame": {"x":785,"y":2006,"w":46,"h":39},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":29,"w":46,"h":39},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Floors/Floor_vault/StairsDown.png":
@@ -490,7 +466,7 @@
 },
 "Game/Items/Group/ItemVulvaPiercings.png":
 {
-	"frame": {"x":816,"y":1685,"w":14,"h":28},
+	"frame": {"x":816,"y":1721,"w":14,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":48,"y":43,"w":14,"h":28},
@@ -856,6 +832,14 @@
 	"spriteSourceSize": {"x":25,"y":21,"w":10,"h":8},
 	"sourceSize": {"w":46,"h":45}
 },
+"Game/Poses/Eyes2Surprised.png":
+{
+	"frame": {"x":816,"y":1840,"w":15,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":13,"w":15,"h":15},
+	"sourceSize": {"w":46,"h":45}
+},
 "Game/Poses/EyesClosed.png":
 {
 	"frame": {"x":1208,"y":2042,"w":13,"h":5},
@@ -870,6 +854,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":21,"w":10,"h":8},
+	"sourceSize": {"w":46,"h":45}
+},
+"Game/Poses/EyesSurprised.png":
+{
+	"frame": {"x":816,"y":1840,"w":15,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":13,"w":15,"h":15},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/Poses/MouthDazed.png":
@@ -1088,6 +1080,22 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
 	"sourceSize": {"w":6,"h":6}
 },
+"Game/UI/CollectionFilter/Rank3.png":
+{
+	"frame": {"x":785,"y":2006,"w":46,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":15,"w":46,"h":41},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/UI/escapegrace.png":
+{
+	"frame": {"x":816,"y":1685,"w":10,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":1,"w":10,"h":34},
+	"sourceSize": {"w":36,"h":36}
+},
 "Game/UI/Heart.png":
 {
 	"frame": {"x":519,"y":2033,"w":14,"h":14},
@@ -1154,6 +1162,8 @@
 	"Game/Spells/Quickness": ["Game/Spells/Quickness2.png","Game/Spells/Quickness3.png","Game/Spells/Quickness4.png","Game/Spells/Quickness5.png"],
 	"Game/Spells/SpellChoiceUp": ["Game/Spells/SpellChoiceUp1.png","Game/Spells/SpellChoiceUp2.png","Game/Spells/SpellChoiceUp3.png"],
 	"Game/Spells/SummonUp": ["Game/Spells/SummonUp1.png","Game/Spells/SummonUp2.png"],
+	"Game/UI/CollectionFilter/Rank": ["Game/UI/CollectionFilter/Rank0.png","Game/UI/CollectionFilter/Rank1.png","Game/UI/CollectionFilter/Rank2.png","Game/UI/CollectionFilter/Rank3.png","Game/UI/CollectionFilter/Rank4.png","Game/UI/CollectionFilter/Rank5.png"],
+	"Game/UI/Rank/Rank": ["Game/UI/Rank/Rank0.png","Game/UI/Rank/Rank1.png","Game/UI/Rank/Rank2.png","Game/UI/Rank/Rank3.png","Game/UI/Rank/Rank4.png","Game/UI/Rank/Rank5.png"],
 	"Game/UI/XRay": ["Game/UI/XRay0.png","Game/UI/XRay1.png","Game/UI/XRay2.png"]
 },
 "meta": {
@@ -1164,6 +1174,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:969d2c449a7278d7f751a094e940c546:bc8ee5c5dbfc1a10992faa372837d559:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f8342a270b7b9a9bdb8599058a1363ef:1330bcda54ff8e63643b3fa5d46e04fd:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

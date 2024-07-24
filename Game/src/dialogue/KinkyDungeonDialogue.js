@@ -255,6 +255,26 @@ function KDAddOpinion(enemy, Amount) {
 			0);
 		a -= 10;
 	}
+	return enemy.opinion || 0;
+}
+/**
+ *
+ * @param {KDCollectionEntry} enemy
+ * @param {number} Amount
+ */
+function KDAddOpinionCollection(enemy, Amount) {
+	if (!enemy) return;
+	let a = Math.min(1000, Math.abs(Amount));
+	while (a > 0 && (Amount < 0 || (enemy.Opinion || 0) < Amount * 10)) {
+		enemy.Opinion = Math.max(
+			(enemy.Opinion || 0)
+				+ Math.min(10, a)
+					* Math.min(10, a)
+					/ (Amount > 0 ? (Math.min(10, a) + (enemy.Opinion || 0)) : -1),
+			0);
+		a -= 10;
+	}
+	return enemy.Opinion || 0;
 }
 
 function KDAllySpeaker(Turns, Follow) {
@@ -2248,7 +2268,6 @@ function KDGetModifiedOpinion(enemy) {
 
 	return op;
 }
-
 
 /**
  *

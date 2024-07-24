@@ -2460,6 +2460,27 @@
             <key type="filename">../Game/TargetSpell.png</key>
             <key type="filename">../Game/TargetSub.png</key>
             <key type="filename">../Game/TargetTalk.png</key>
+            <key type="filename">../Game/UI/AutoBindCopy.png</key>
+            <key type="filename">../Game/UI/AutoBindPaste.png</key>
+            <key type="filename">../Game/UI/AutoBindPasteAll.png</key>
+            <key type="filename">../Game/UI/AutoBindPasteAllOver.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Available.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Bound.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/EscapeRisk.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Escaped.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Free.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Imprisoned.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Negative.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Positive.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Rank0.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Rank1.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Rank2.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Rank3.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Rank4.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Rank5.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Safe.png</key>
+            <key type="filename">../Game/UI/CollectionFilter/Unavailable.png</key>
+            <key type="filename">../Game/UI/CollectionTab/AutoBind.png</key>
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/Facility/AlchemyLab.png</key>
             <key type="filename">../Game/UI/Facility/CuddleLounge.png</key>
@@ -2476,6 +2497,12 @@
             <key type="filename">../Game/UI/NavMap/shop.png</key>
             <key type="filename">../Game/UI/PathDisplay.png</key>
             <key type="filename">../Game/UI/PlayerFacing.png</key>
+            <key type="filename">../Game/UI/Rank/Rank0.png</key>
+            <key type="filename">../Game/UI/Rank/Rank1.png</key>
+            <key type="filename">../Game/UI/Rank/Rank2.png</key>
+            <key type="filename">../Game/UI/Rank/Rank3.png</key>
+            <key type="filename">../Game/UI/Rank/Rank4.png</key>
+            <key type="filename">../Game/UI/Rank/Rank5.png</key>
             <key type="filename">../Game/UI/Recycler/Armor.png</key>
             <key type="filename">../Game/UI/Recycler/Latex.png</key>
             <key type="filename">../Game/UI/Recycler/Leather.png</key>
@@ -3430,6 +3457,7 @@
             <key type="filename">../Game/UI/Restrain.png</key>
             <key type="filename">../Game/UI/RestrainBack.png</key>
             <key type="filename">../Game/UI/RestrainFree.png</key>
+            <key type="filename">../Game/UI/Tighten.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -4037,6 +4065,8 @@
             </struct>
             <key type="filename">../Game/UI/Hands.png</key>
             <key type="filename">../Game/UI/accuracy.png</key>
+            <key type="filename">../Game/UI/escaped.png</key>
+            <key type="filename">../Game/UI/escapegrace.png</key>
             <key type="filename">../Game/UI/evasion.png</key>
             <key type="filename">../Game/UI/jail.png</key>
             <key type="filename">../Game/UI/key.png</key>

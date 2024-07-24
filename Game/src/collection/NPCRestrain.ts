@@ -71,7 +71,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							lock: "",
 							npc: npcID,
 							faction: undefined,
-							time: 1,
+							time: KinkyDungeonFindID(npcID) ? 1 : 0,
 						});
 					}
 					return true;
@@ -194,7 +194,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						lock: "",
 						npc: npcID,
 						faction: undefined,
-						time: 1,
+						time: KinkyDungeonFindID(npcID) ? 1 : 0,
 					});
 				} else {
 					KDSendInput("addNPCRestraint", {
@@ -205,7 +205,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						lock: "White",
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette || inv.item.faction,
-						time: 1,
+						time: KinkyDungeonFindID(npcID) ? 1 : 0,
 					});
 				}
 			}, (inv) => {
@@ -507,6 +507,13 @@ function KDInputSetNPCRestraint(data) {
 				}
 
 				// Add the tieup value
+				if (item)
+					KDNPCRestraintTieUp(data.npc, {
+						lock: item.lock,
+						name: item.name,
+						id: item.id,
+						faction: item.faction,
+					}, -1);
 				KDNPCRestraintTieUp(data.npc, rrr, 1);
 			} else return;
 

@@ -192,13 +192,24 @@ function KDCollectionImage(id) {
  * @param {number} amount
  */
 function KDAddOpinionPersistent(id, amount) {
+	let opinion = undefined;
 	if (KDIsNPCPersistent(id)) {
 		KDUpdatePersistentNPC(id);
-		KDAddOpinion(KDGetPersistentNPC(id).entity, amount);
+		opinion = KDAddOpinion(KDGetPersistentNPC(id).entity, amount);
 		KDRefreshPersistentNPC(id);
-	} else {
-		KDAddOpinion(KinkyDungeonFindID(id), amount);
+	} else if (KinkyDungeonFindID(id)) {
+		opinion = KDAddOpinion(KinkyDungeonFindID(id), amount);
 	}
+	if (KDGameData.Collection[id + ""]) {
+		if (opinion != undefined) {
+			KDGameData.Collection[id + ""].Opinion = opinion;
+		} else {
+			KDAddOpinionCollection(KDGameData.Collection[id + ""], amount);
+		}
+
+	}
+
+
 }
 
 
@@ -217,8 +228,10 @@ function KDGetModifiedOpinionID(id) {
 		if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
 
 		return op;
-	} else {
+	} else if (KinkyDungeonFindID(id)) {
 		return KDGetModifiedOpinion(KinkyDungeonFindID(id));
+	} else if (KDGameData.Collection[id + ""]) {
+		return KDGameData.Collection[id + ""].Opinion || 0;
 	}
 
 }
@@ -408,7 +421,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	else II++;
 
 	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/10)));
-	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion);
+	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
 	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 
 	if (KDIsNPCPersistent(value.id)) {
@@ -743,7 +756,7 @@ function KDDrawCollectionInventory(x, y) {
 
 	KDDraw(kdcanvas, kdpixisprites, "collScrollBar",
 		KinkyDungeonRootDirectory + "UI/Checked.png",
-		1755, 125 + 590*(KDCollectionIndex/Math.max(1, KDGameData.CollectionSorted.length - KDCollectionIndex)), 60, 60
+		1775, 125 + 590*(KDCollectionIndex/Math.max(1, KDGameData.CollectionSorted.length - KDCollectionIndex)), 60, 60
 	);
 	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 
@@ -832,6 +845,15 @@ function KDDrawCollectionInventory(x, y) {
 				XX + 48,
 				YY + 48,
 				28, 28, undefined, {
+					zIndex: 110
+				});
+		}
+		if (value.Facility) {
+			KDDraw(kdcanvas, kdpixisprites, value.name + "_fac," + value.id,
+				KinkyDungeonRootDirectory + "UI/Facility/" + value.Facility + ".png",
+				XX,
+				YY + 36,
+				36, 36, undefined, {
 					zIndex: 110
 				});
 		}
@@ -1090,15 +1112,17 @@ let KDCollectionTabDraw = {
 	Default: (value, buttonSpacing, III, x, y) => {
 		if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (b) => {
 			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
-				value.status = "Servant";
-				KDSortCollection();
-				if (KDToggles.Sound)
-					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
+				if (KDCanPromote(value)) {
+					value.status = "Servant";
+					KDSortCollection();
+					if (KDToggles.Sound)
+						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
+				}
 			}
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
-		undefined, undefined, false, KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns ? "#ff5555" : "")) {
-			DrawTextFitKD(TextGet("KDPromoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? "#ff5555" : "")) {
+			DrawTextFitKD(TextGet(KDCanPromote(value) ? "KDPromoteNPC" : "KDPromoteNotEnough"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
 			value.status = value.oldstatus || "";
 			KDSortCollection();
@@ -1159,7 +1183,7 @@ function KDDrawNPCBars(value, x, y, width) {
 			let mod = visualbond - bindAmpMod * futureBound.boundLevel;
 			// Part that will be struggled out of
 			KinkyDungeonBarTo(kdcanvas, x, y + yy - spacing*II,
-				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#222222");
 			// Separator between part that will be struggled and not
 			KinkyDungeonBarTo(kdcanvas, 1 + x, y + yy - spacing*II,
 				width, height, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
@@ -1210,4 +1234,13 @@ function KDDrawNPCBars(value, x, y, width) {
 	}
 
 	return 0;
+}
+
+/**
+ * Whether or not you can promote to servant
+ * @param {KDCollectionEntry} value
+ * @returns {boolean}
+ */
+function KDCanPromote(value) {
+	return value.Opinion > 0;
 }
