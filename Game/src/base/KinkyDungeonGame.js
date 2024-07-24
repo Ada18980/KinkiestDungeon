@@ -832,8 +832,12 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 		// Repopulate
 		altType = KDGetAltType(MiniGameKinkyDungeonLevel);
-		if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
-			KDRepopulatePersistentNPCs();
+		if (!altType?.loadscript || altType.loadscript(false)) {
+			if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
+				KDRepopulatePersistentNPCs();
+		}
+
+
 		return;
 	}
 
@@ -1382,6 +1386,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		return (!KDGetNPCLocation(enemy.id) || KDCompareLocation(KDGetNPCLocation(enemy.id), KDGetCurrentLocation()));
 	});
 	KinkyDungeonAdvanceTime(0);
+
+	if (!altType?.loadscript || altType.loadscript(true)) {
+		if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
+			KDRepopulatePersistentNPCs();
+	}
 
 	KinkyDungeonGenNavMap();
 }

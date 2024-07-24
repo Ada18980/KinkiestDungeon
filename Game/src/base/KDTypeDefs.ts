@@ -3438,6 +3438,8 @@ interface KDCommanderOrder {
 	global_after: (data: KDCommanderOrderData) => void;
 }
 
+type KDCollectionTabDrawDef = (value: KDCollectionEntry, buttonSpacing: number, III: number, x: number, y: number) => number
+
 interface KDCollectionEntry {
 	name: string,
 	color: string,
@@ -3445,7 +3447,8 @@ interface KDCollectionEntry {
 	sprite: string,
 	Facility: string,
 	customSprite: boolean,
-	escaped: boolean,
+	escaped?: boolean,
+	escapegrace?: boolean,
 
 	id: number,
 	Enemy?: enemy, // for unique ones

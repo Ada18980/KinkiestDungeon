@@ -123,6 +123,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 		YY += paddingY;
 	}
 
+	let currentBottomTab = "";
+
 	if (KDNPCBindingSelectedSlot) {
 		let currentItem = restraints[KDNPCBindingSelectedSlot.id];
 		let slot = KDNPCBindingSelectedSlot;
@@ -131,6 +133,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 		let ss: {selected: KDFilteredInventoryItem, tooltipitem: KDFilteredInventoryItem} = null;
 
 		if (KDNPCBindingPalette) {
+			currentBottomTab = "Palette";
 			// KDSetRestraintPalette\
 
 			DrawButtonKDEx("defaultnpcrestpalette", () => {
@@ -238,6 +241,31 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 		);
 		// TODO add properties
 	}
+
+	if (!currentBottomTab) {
+		if (KDGetGlobalEntity(npcID)?.boundLevel < KDGetExpectedBondageAmountTotal(npcID)) {
+			if (DrawButtonKDEx("TightenBinds", (b) => {
+				if (!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect)
+					KDSendInput("tightenNPCRestraint", {
+						npc: npcID,
+					});
+				else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDNeedsTighten"), "#ffffff", 2, true, true);
+				}
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
+				return true;
+			}, true, x + 5, y + 740, 80, 80,
+			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Tighten.png",
+			undefined, undefined, false,
+			(!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect) ?
+				KDButtonColor : "#ff5555")) {
+					DrawTextFitKD(TextGet("KDTightenRestraint"), x + 0, y + 720, 500, "#ffffff",
+					KDTextGray0, 18, "left");
+
+				}
+		}
+	}
 }
 
 let KDNPCBindingPalette = false;
@@ -256,6 +284,9 @@ function KDSetNPCRestraints(id: number, restraints: Record<string, NPCRestraint>
 	if (!KDGameData.NPCRestraints)
 		KDGameData.NPCRestraints = {};
 	KDGameData.NPCRestraints["" + id] = restraints;
+
+	if (KDGameData.Collection[id + ""])
+		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
 function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint): item {
 	if (!KDGameData.NPCRestraints)
@@ -277,6 +308,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint): i
 	else delete restraints[slot];
 
 	KDSetNPCRestraints(id, restraints);
+
 
 	return item;
 }
@@ -387,6 +419,35 @@ function KDGetEncaseGroupSlot(id): NPCBindingSubgroup {
 	return null;
 }
 
+function KDNPCRefreshBondage(id: number) {
+	let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDGetNPCRestraints(id)));
+
+	if (restraints) {
+		for (let inv of Object.entries(restraints)) {
+			KDInputSetNPCRestraint({
+				slot: inv[0],
+				id: -1,
+				restraint: "",
+				restraintid: -1,
+				lock: "",
+				npc: id
+			});
+		}
+		// Readd
+		for (let inv of Object.entries(restraints)) {
+			KDInputSetNPCRestraint({
+				slot: inv[0],
+				id: inv[1].id,
+				faction: inv[1].faction,
+				restraint: inv[1].name,
+				restraintid: -1,
+				lock: inv[1].lock,
+				npc: id
+			});
+		}
+	}
+}
+
 function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number = 1) {
 	let enemy = KDGetGlobalEntity(id);
 	if (enemy) {
@@ -396,12 +457,25 @@ function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number =
 
 		KDUpdatePersistentNPC(id);
 	}
+
+	if (KDGameData.Collection[id + ""])
+		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
 
 function KDInputSetNPCRestraint(data) {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
 	let item = null;
+	if (KDGameData.Collection[data.npc + ""]) {
+		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
+			let Enemy = KinkyDungeonGetEnemyByName(KDGameData.Collection[data.npc + ""].type);
+			let npc = KDGetPersistentNPC(data.npc, {summoned: true, Enemy: Enemy, id: data.npc,
+				x:1, y:1,
+				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp,
+				movePoints: 0, attackPoints: 0}); // Make them persistent
+			npc.collect = true; // They are in collection
+		}
+	}
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
 		if (rests && rests[slot.id]) {
@@ -510,13 +584,31 @@ function KDGetRestraintBondageStats(item: Named) {
 
 /** Gets the expected total bondage amounts */
 function KDGetExpectedBondageAmount(id: number): Record<string, number> {
+	if (!KDGameData.NPCRestraints) return {};
 	let result : Record<string, number> = {};
-	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
+	let already = {};
 	for (let item of restraints) {
-		let stats = KDGetRestraintBondageStats(item)
-
-		result[stats.type] = (result[stats.type] || 0) + stats.amount;
+		if (!already[item.id]) {
+			let stats = KDGetRestraintBondageStats(item)
+			already[item.id] = true;
+			result[stats.type] = (result[stats.type] || 0) + stats.amount;
+		}
+	}
+	return result;
+}
+/** Gets the expected total bondage amounts */
+function KDGetExpectedBondageAmountTotal(id: number): number {
+	if (!KDGameData.NPCRestraints) return 0;
+	let result = 0;
+	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
+	let already = {};
+	for (let item of restraints) {
+		if (!already[item.id]) {
+			let stats = KDGetRestraintBondageStats(item)
+			already[item.id] = true;
+			result +=  stats.amount;
+		}
 	}
 	return result;
 }
@@ -584,36 +676,105 @@ function KDNPCDoStruggle(id: number, slot: string, restraint: NPCRestraint): str
 	return "";
 }
 
+function KDWantsToEscape(value: KDCollectionEntry): boolean {
+	return !value.status // Is prisoner
+		&& (!value.Opinion || value.Opinion < 0) // Doesn't like you
+		&& (!KDGetGlobalEntity(value.id) // has no entity or is unimprisoned
+			|| !KDIsImprisoned(KDGetGlobalEntity(value.id)));
+}
+
 function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 	let eligibleNPCs = Object.values(KDGameData.Collection).filter((value) => {
-		return !value.status // Is prisoner
-			&& (!value.Opinion || value.Opinion < 0) // Doesn't like you
-			&& (!KDGetGlobalEntity(value.id) // has no entity or is unimprisoned
-				|| !KDIsImprisoned(KDGetGlobalEntity(value.id)));
+		return KDWantsToEscape(value);
 	});
 
 	for (let value of eligibleNPCs) {
 		KDRunNPCEscapeTick(value.id, ticks);
 	}
 
+	let maxmsg = 10;
+	let msgcount = 0;
 	for (let value of eligibleNPCs) {
-		if (!KDGetGlobalEntity(value.id) || !(KDGetGlobalEntity(value.id).boundLevel)) {
-			// This NPC escapes!!!!
-			value.escaped = true;
-			if (KDIsNPCPersistent(value.id)) {
-				KDGetPersistentNPC(value.id).collect = false;
+		if (!value.escaped) {
+			if (!KDGetGlobalEntity(value.id) || !(KDGetGlobalEntity(value.id).boundLevel)) {
+				// This NPC escapes!!!!
+				if (value.escapegrace) {
+					value.escaped = true;
+					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscaped").replace(
+						"NPC",
+						value.name
+					), "#ff5555", 1);
+				} else {
+					value.escapegrace = true;
+					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscapeGrace").replace(
+						"NPC",
+						value.name
+					), "#ff5555", 1);
+				}
+
+			} else {
+				value.escapegrace = false;
+				if (msgcount++ < maxmsg) KinkyDungeonSendTextMessage(10, TextGet("KDNPCStruggle").replace(
+					"NPC",
+					value.name
+				), "#ffa1a1", 1);
 			}
+
 		}
+
 	}
+	KDSortCollection();
 }
 
 function KDRunNPCEscapeTick(id: number, ticks: number) {
 	let enemy = KDGetGlobalEntity(id);
 	if (enemy) {
+		let returnToString = false;
+		if (typeof enemy.Enemy == "string") {
+			returnToString = true;
+			enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy);
+		}
 		for (let i = 0; i < ticks; i++) {
-			KDEnemyStruggleTurn(enemy, 1, false);
+			KDEnemyStruggleTurn(enemy, 1, KDNPCStruggleThreshMult(enemy));
 		}
 		KDUpdatePersistentNPC(id);
+		if (returnToString) (enemy as any).Enemy = enemy.Enemy.name;
 	}
 
+}
+
+function KDNPCStruggleThreshMult(enemy: entity) {
+	return 1 + KDEnemyRank(enemy) + (enemy.Enemy.tags.unstoppable ? 2 : (enemy.Enemy.tags.unflinching ? 1 : 0))
+}
+function KDNPCStruggleThreshMultType(enemy: enemy) {
+	return 1 + KDEnemyTypeRank(enemy) + (enemy.tags.unstoppable ? 2 : (enemy.tags.unflinching ? 1 : 0))
+}
+
+function KDTriggerNPCEscape(maxNPC: number = 10) {
+	let eligibleNPCs = Object.values(KDGameData.Collection).filter((value) => {
+		return value.escaped;
+	});
+
+	let count = 0;
+	for (let i = 0; i < maxNPC && eligibleNPCs.length > 0; i++) {
+		let ind = Math.floor(KDRandom() * eligibleNPCs.length);
+		let value = eligibleNPCs[ind];
+		eligibleNPCs.splice(ind, 1);
+
+		// Find an eligible point
+		let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, undefined, undefined, false);
+
+		if (point) {
+			let entity = DialogueCreateEnemy(point.x, point.y, value.type, value.id)
+			if (entity) {
+				KDMakeHostile(entity, 300);
+				KinkyDungeonSendDialogue(entity,
+					TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3))
+						.replace("EnemyName", TextGet("Name" + entity.Enemy.name)), KDGetColor(entity),
+					Math.floor(12 + KDRandom() * 8), 10, false, true);
+				count += 1;
+			}
+		} else break;
+	}
+	return count;
 }

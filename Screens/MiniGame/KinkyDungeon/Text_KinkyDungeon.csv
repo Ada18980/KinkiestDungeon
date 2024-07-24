@@ -9339,7 +9339,7 @@ KinkyDungeonRemindJailPlayHelplessElf1,"You won't get me like this!"
 KinkyDungeonRemindJailPlayHelplessElf2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratElf0,"An outsider!"
 KinkyDungeonRemindJailPlayBratElf1,"Hide!"
-KinkyDungeonRemindJailPlayBratElf2,"Do not pursue me!"
+KinkyDungeonRemindJailPlayBratElf2,"I have done nothing worthy of punishment!"
 KinkyDungeonRemindJailPlaySubElf0,"I have come to study human customs. Teach me about Domination."
 KinkyDungeonRemindJailPlaySubElf1,"The outsiders have such... strange and interesting practices."
 KinkyDungeonRemindJailPlaySubElf2,"You seem to have many skills. Teach me about... rope."
@@ -23556,3 +23556,47 @@ KDLastNPCLocationCaptured,"Captured by FCTN"
 KDLastNPCLocationCapturedNone,"Captured by enemies"
 
 KDCantFree,Use 'Truss'em'Up' to edit restraints on this NPC
+KDNeedsTighten,"The NPC needs tightening, but is unavailable right now"
+KDTightenRestraint,Tighten loose restraints
+
+
+KDNPCEscaped,NPC has escaped!
+KDNPCEscapeGrace,NPC is likely to escape.
+KDNPCStruggle,NPC has managed to loosen her bonds.
+
+KDCollectionFilter,"Any"
+KDCollectionFilterOpinion,"NPC Opinion: "
+KDCollectionFilterEscape,"NPC Escape Status: "
+KDCollectionFilterBinding,"NPC Binding: "
+KDCollectionFilterAvailability,"NPC Availability: "
+KDCollectionFilterFavorites,"Favorited: "
+KDCollectionFilterRank,"Rank: "
+KDCollectionFilterRank0,"Minor"
+KDCollectionFilterRank1,"Normal"
+KDCollectionFilterRank2,"Elite"
+KDCollectionFilterRank3,"Miniboss"
+KDCollectionFilterRank4,"Boss"
+KDCollectionFilterRank5,"Legendary"
+
+
+KDCollectionFilterBound,"Bound"
+KDCollectionFilterFree,"Free"
+KDCollectionFilterSafe,"Secure"
+KDCollectionFilterEscapeRisk,"At Risk"
+KDCollectionFilterEscaped,"Escaped"
+KDCollectionFilterImprisoned,"Imprisoned"
+KDCollectionFilterPositive,"Positive"
+KDCollectionFilterNegative,"Negative"
+KDCollectionFilterFavorite,"Favorite"
+KDCollectionFilterNonFavorite,"Non-Favorite"
+
+KDCollectionFilterAvailable,"Present"
+KDCollectionFilterUnavailable,"Unavailable"
+
+KDCollectionTab_AutoBind,Auto Bind Interface
+KDDrawSelectedTab_AutoBind,AutoBind
+
+KDAutoBindCopy,Copy Restraints
+KDAutoBindPaste,Paste Restraints from NME
+KDAutoBindPasteAll,Paste to All!
+KDAutoBindPasteAllOver,OVERWRITE All!

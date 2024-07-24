@@ -122,6 +122,7 @@
         "Game/src/collection/KDFacilities.ts",
         "Game/src/collection/KDFacilitiesList.ts",
         "Game/src/collection/NPCRestrain.ts",
+        "Game/src/collection/NPCAutobind.ts",
         "Game/src/collection/NPCRestrainList.ts",
         "Scripts/KDMods.ts",
         "Scripts/Main.ts",

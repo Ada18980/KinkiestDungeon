@@ -55,6 +55,23 @@ let KDPrisonTypes = {
 					KDMovePlayer(18, 21, false);
 				}
 			}
+
+			// Escapees
+			for (let entity of KDMapData.Entities) {
+				if (!KDHelpless(entity) && !KDIsHopeless(entity)
+					&& KDGameData.Collection[entity.id + ""]?.escaped) {
+						if (KDistChebyshev(entity.x - 11, entity.y - 21) > 0.5) {
+							entity.gx = 11;
+							entity.gy = 21;
+							entity.gxx = 11;
+							entity.gyy = 21;
+						} else {
+							// Despawn and remove from collection
+							DisposeEntity(entity.id);
+							KDRemoveEntity(entity, false, false, true);
+						}
+				}
+			}
 		},
 		states: {
 			BusinessAsUsual: {name: "BusinessAsUsual",

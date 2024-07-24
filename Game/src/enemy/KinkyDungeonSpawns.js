@@ -269,11 +269,11 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, allian
 
 /**
  *
- * @param {string} name
+ * @param {string | enemy} name
  * @returns {enemy}
  */
 function KinkyDungeonGetEnemyByName(name) {
-	return KinkyDungeonEnemies.find(element => element.name == name);
+	return typeof name == "string" ? KinkyDungeonEnemies.find(element => element.name == name) : name;
 }
 
 /**

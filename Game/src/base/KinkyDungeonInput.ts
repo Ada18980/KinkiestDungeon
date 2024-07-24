@@ -1190,6 +1190,9 @@ function KDProcessInput(type, data): string {
 			break;
 		case "recycle":
 			break;
+		case "tightenNPCRestraint":
+			KDNPCRefreshBondage(data.npc);
+			break;
 		case "freeNPCRestraint": {
 			if (KDGameData.NPCRestraints) {
 

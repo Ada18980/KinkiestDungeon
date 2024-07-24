@@ -257,6 +257,33 @@ function DisposeCharacter(C: Character, resort: boolean = true): void {
 		NPCDesiredPoses.delete(C);
 	}
 }
+function DisposeEntity(id: number, resort: boolean = true): void {
+	let C = KDNPCChar.get(id);
+	if (C && KDCurrentModels.get(C)) {
+		for (let Container of KDCurrentModels.get(C).Containers.values()) {
+			kdcanvas.removeChild(Container.Container);
+			Container.Container.destroy();
+		}
+	}
+	if (C && NPCTags.get(C)) {
+		NPCTags.delete(C);
+	}
+	KDNPCChar.delete(id);
+	delete KDPersistentNPCs[id + ""];
+	delete KDGameData.Collection[id + ""];
+	if (resort) {
+		KDSortCollection();
+	}
+	if (C && KDNPCChar_ID.get(C)) {
+		KDNPCChar_ID.delete(C);
+	}
+	if (C && KDNPCPoses.get(C)) {
+		KDNPCPoses.delete(C);
+	}
+	if (C && NPCDesiredPoses.get(C)) {
+		NPCDesiredPoses.delete(C);
+	}
+}
 
 /**
  * Refreshes the character if not all images are loaded and draw the character canvas on the main game screen

@@ -292,6 +292,13 @@ let alts = {
 		data: {
 			summit: true,
 		},
+		loadscript: (firstTime) => {
+			// Summit loadscript triggers escape for up to 10 NPCs
+
+			KDTriggerNPCEscape(10);
+
+			return true; // Returns whether or not to repopulate this map
+		},
 		skin: "vault",
 		musicParams: "Summit",
 		lightParams: "Summit",

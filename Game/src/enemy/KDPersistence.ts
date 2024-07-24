@@ -65,10 +65,10 @@ function KDIsNPCPersistent(id: number): boolean {
 	return KDPersistentNPCs[id] != undefined;
 }
 
-function KDGetPersistentNPC(id: number): KDPersistentNPC {
+function KDGetPersistentNPC(id: number, entity?: entity): KDPersistentNPC {
 	if (!KDPersistentNPCs[id]) {
 
-		let enemy = KinkyDungeonFindID(id);
+		let enemy = entity || KinkyDungeonFindID(id);
 		if (enemy) {
 			let entry = {
 				Name: enemy.CustomName || KDGetEnemyName(enemy),

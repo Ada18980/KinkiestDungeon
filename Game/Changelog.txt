@@ -30,6 +30,11 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.27
+- Added auto binding feature
+- truss em up now uses bondage UI from collection
+- Enemies can now escape!
+
 5.3.26
 - Can now add NPCs to display stand
 - Can now view party members in collection

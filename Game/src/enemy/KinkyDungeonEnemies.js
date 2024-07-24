@@ -101,10 +101,12 @@ function KinkyDungeonRefreshEnemiesCache() {
 
 /**
  *
- * @param {string} Name
+ * @param {string | enemy} Name
  * @returns {enemy}
  */
 function KinkyDungeonGetEnemyByName(Name) {
+	// @ts-ignore
+	if (typeof Name == "string") return Name;
 	if (KDEnemiesCache.size > 0) {
 		return KDEnemiesCache.get(Name);
 	} else {
@@ -261,7 +263,7 @@ function KDGetBindAmp(enemy, override) {
  * @returns {boolean}
  */
 function KDHelpless(enemy) {
-	return enemy && !enemy.player && (enemy.hp <= 0.52 || enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+	return enemy && !enemy.player && (enemy.hp <= 0.52 || enemy.boundLevel > KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
 /**
@@ -270,7 +272,7 @@ function KDHelpless(enemy) {
  * @returns {boolean}
  */
 function KDIsHopeless(enemy) {
-	return enemy && !enemy.player && (enemy.boundLevel > 10 * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+	return enemy && !enemy.player && (enemy.boundLevel > KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
 function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI_Data) {
@@ -1218,13 +1220,11 @@ function KDMaxEnemyViewDist(enemy) {
  * @param {entity} enemy
  * @returns {number}
  */
-function KDGetEnemyStruggleMod(enemy, allowStruggleAlways) {
+function KDGetEnemyStruggleMod(enemy) {
 	let level = KDBoundEffects(enemy);
 	let mult = 0.1;
 
-	if (!allowStruggleAlways && enemy.boundLevel > enemy.Enemy.maxhp * 10) {
-		mult = 0;
-	}
+
 	if (mult > 0) {
 		if (enemy.disarm > 0) mult *= 0.5;
 		if (enemy.silence > 0) mult *= 0.75;
@@ -1297,7 +1297,7 @@ function KDGetEnemyReleaseDamage(enemy, nokill = true) {
 	return data;
 }
 
-let KDMaxBindingBars = 3;
+let KDMaxBindingBars = 8;
 
 /**
  *
@@ -1454,24 +1454,25 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 						// Draw binding bars
 						let helpless = KDHelpless(enemy);
 						let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpModBase);
+						let maxbars = Math.min(KDMaxBindingBars, KDNPCStruggleThreshMult(enemy));
 						if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 							if (!helpless) {
 								let visualbond = bindAmpMod * enemy.visual_boundlevel;
 								let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
 								let SM = KDGetEnemyStruggleMod(enemy);
-								let futureBound = KDPredictStruggle(enemy, SM, 1);
-								for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+								let futureBound = KDPredictStruggle(enemy, SM, 1, maxbars);
+								for (let i = 0; i < bindingBars && i < maxbars; i++) {
 									if (i > 0) II++;
 									let mod = visualbond - bindAmpMod * futureBound.boundLevel;
 									// Part that will be struggled out of
 									KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
-										KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#52333f");
+										KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#222222");
 									// Separator between part that will be struggled and not
 									KinkyDungeonBarTo(kdenemystatusboard, 1 + canvasOffsetX + (xx - CamX + 0.1)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay + 12 - 15 - spacing*II,
 										KinkyDungeonGridSizeDisplay * 0.8, 7, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
 
 								}
-								II -= Math.max(0, Math.min(bindingBars-1, KDMaxBindingBars-1));
+								II -= Math.max(0, Math.min(bindingBars-1, maxbars-1));
 								// Temp value of bondage level, decremented based on special bound level and priority
 								let bb = 0;
 								let bcolor = "#ffae70";
@@ -1493,7 +1494,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 										bb = b.level;
 									}
 								}
-								for (let i = 0; i < bindingBars && i < KDMaxBindingBars; i++) {
+								for (let i = 0; i < bindingBars && i < maxbars; i++) {
 									if (i > 0) II++;
 									// Determine current bondage type
 									let bars = false;
@@ -2225,7 +2226,6 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 	if (enemy.hp <= 0 && !KDIsImprisoned(enemy)) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {enemy: enemy});
-		KDRemoveEntity(enemy, true, true, false, E);
 		if (KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
 			KDDropStolenItems(enemy);
 			if (!KinkyDungeonCapture(enemy)) noRepHit = true;
@@ -2341,15 +2341,18 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 
 		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
 
-		KDDropItems(enemy);
+		if (!enemy.droppedItems)
+			KDDropItems(enemy);
 
 
+		KDRemoveEntity(enemy, true, true, false, E);
 		return true;
 	} else if (KDHelpless(enemy) && !KDIsImprisoned(enemy)) {
 		KDDropStolenItems(enemy);
 		if (!enemy.droppedItems)
 			KDDropItems(enemy);
 
+		enemy.playerdmg = undefined;
 	}
 	return false;
 }
@@ -3045,7 +3048,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "slow"});
 			}
 			if (!(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (enemy.hp > 0.52)) {
-				KDEnemyStruggleTurn(enemy, delta, false);
+				KDEnemyStruggleTurn(enemy, delta, KDNPCStruggleThreshMult(enemy));
 			}
 			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
@@ -6349,16 +6352,32 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
  * @param {number} delta
  * @returns {any}
  */
-function KDPredictStruggle(enemy, struggleMod, delta) {
+function KDPredictStruggle(enemy, struggleMod, delta, allowStruggleAlwaysThresh) {
 	let data = {
 		enemy: enemy,
 		struggleMod: struggleMod,
 		delta: delta,
 		boundLevel: enemy.boundLevel || 0,
 		specialBoundLevel: enemy.specialBoundLevel ? Object.assign({}, enemy.specialBoundLevel): {},
+		minBoundAmounts: {},
+		minBoundLevel: 0,
 	};
 
-	let minLevel = (enemy.buffs && KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel")) ? KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel") : 0;
+	if (allowStruggleAlwaysThresh && enemy.boundLevel > enemy.Enemy.maxhp * allowStruggleAlwaysThresh) {
+		// In this block we limit the NPC from struggling below any certain amount limited by restraints, but only if the total binding is above the restraint level
+		// Note that if this gets below the expected amount then the NPC can get totally free
+		let expected = KDGetExpectedBondageAmount(enemy.id);
+		for (let bt of Object.entries(expected)) {
+			data.minBoundAmounts[bt[0]] = (data.minBoundAmounts[bt[0]] || 0) + bt[1];
+			data.minBoundLevel += bt[1];
+		}
+	}
+
+
+	let minLevel = Math.max(data.minBoundLevel,
+		(enemy.buffs && KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel"))
+			? KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel")
+			: 0);
 
 	if (Object.keys(data.specialBoundLevel).length < 1) {
 		// Simple math, reduce bound level, dont have to worry.
@@ -6400,8 +6419,17 @@ function KDPredictStruggle(enemy, struggleMod, delta) {
 			let origBL = data.boundLevel;
 			data.boundLevel = Math.max(minLevel, data.boundLevel - difference);
 			data.specialBoundLevel[layer[0]] -= Math.max(0, origBL - data.boundLevel);
+
+			if (data.minBoundAmounts[layer[0]] && data.specialBoundLevel[layer[0]] <= data.minBoundAmounts[layer[0]]) {
+				if (data.specialBoundLevel[layer[0]] < data.minBoundAmounts[layer[0]]) {
+					data.struggleMod -= effect;
+					data.specialBoundLevel[layer[0]] = data.minBoundAmounts[layer[0]];
+				}
+				// No struggle mod change
+			} else {
+				data.struggleMod -= effect;
+			}
 			if (data.specialBoundLevel[layer[0]] <= 0) delete data.specialBoundLevel[layer[0]];
-			data.struggleMod -= effect;
 			if (data.struggleMod <= 0) data.struggleMod = 0;
 			i++;
 		}
@@ -7923,7 +7951,10 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 	if (data.kill || data.capture) {
 		KDDropStolenItems(enemy);
 		enemy.items = [];
-		enemy.noDrop = true;
+		enemy.playerdmg = undefined;
+		enemy.hostile = 0;
+		enemy.ceasefire = 0;
+		//enemy.noDrop = true;
 		if (KDIsNPCPersistent(enemy.id)) {
 			if (KDGetPersistentNPC(enemy.id).collect
 				|| KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners
@@ -7935,7 +7966,6 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 				KDGetPersistentNPC(enemy.id).captureFaction = KDMapData.MapFaction;
 			}
 		}
-		enemy.playerdmg = undefined;
 		if (KDGameData.SpawnedPartyPrisoners && KDGameData.SpawnedPartyPrisoners[enemy.id + ""]) {
 			KDAddToCapturedParty(enemy);
 		} else {
@@ -8365,12 +8395,12 @@ function KDBlockedByPlayer(enemy, dir) {
  *
  * @param {entity} enemy
  * @param {number} delta
- * @param {boolean} [allowStruggleAlways]
+ * @param {number} [allowStruggleAlwaysThresh]
  */
-function KDEnemyStruggleTurn(enemy, delta, allowStruggleAlways) {
+function KDEnemyStruggleTurn(enemy, delta, allowStruggleAlwaysThresh) {
 	if (enemy.boundLevel > 0) {
-		let SM = KDGetEnemyStruggleMod(enemy, allowStruggleAlways);
-		let newBound = KDPredictStruggle(enemy, SM, delta);
+		let SM = KDGetEnemyStruggleMod(enemy);
+		let newBound = KDPredictStruggle(enemy, SM, delta, allowStruggleAlwaysThresh);
 		enemy.boundLevel = newBound.boundLevel;
 		enemy.specialBoundLevel = newBound.specialBoundLevel;
 

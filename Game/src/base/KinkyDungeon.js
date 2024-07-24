@@ -4584,6 +4584,7 @@ function KinkyDungeonLoadGame(String) {
 			KDUnlockPerk();
 
 			KDInitInventory();
+
 			for (let item of saveData.inventory) {
 				if (item.type == Restraint) {
 					let restraint = KinkyDungeonGetRestraintByName(item.name);
@@ -4697,6 +4698,7 @@ function KinkyDungeonLoadGame(String) {
 			}
 			KinkyDungeonFloaters = [];
 			KDFixNeeds();
+			KDSortCollection();
 			KinkyDungeonAdvanceTime(0, true, true);
 			return true;
 		}
