@@ -113,11 +113,11 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Corsets"]},
 		layers: [
 			{id: "Harness", encasedBy: ["Corset",], allowedGroups: ["ItemTorso"],
-				allowedTags: ["Mittens", "Tape"]},
+				allowedTags: ["Harnesses"]},
 			{id: "HarnessExtra", encasedBy: ["Corset", "ArmEncase"], allowedGroups: ["ItemTorso"],
 				allowedTags: ["ArmbinderHarness", "BoxbinderHarness", "Leotards", "Swimsuits"]},
 			{id: "Suits", encasedBy: [], allowedGroups: ["ItemTorso"],
-				allowedTags: ["Catsuits", "Leotards", "Swimsuits"]},
+				allowedTags: ["Suits", "Leotards", "Swimsuits"]},
 		]},
 	{id: "Pelvis", arousalMode: true, encaseGroup:
 		{id: "ChastityBelt", encasedBy: [], allowedGroups: ["ItemPelvis"],

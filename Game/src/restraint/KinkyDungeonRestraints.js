@@ -255,7 +255,7 @@ function KDRestraintBondageMult(item) {
 			type: KDRestraintBondageType(item),
 			override: undefined,
 			overridePriority: 0,
-			mult: 1,
+			mult: 2,
 		};
 
 		KinkyDungeonSendEvent("calcBondageMult", data);

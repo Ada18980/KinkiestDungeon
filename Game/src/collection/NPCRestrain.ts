@@ -423,27 +423,36 @@ function KDNPCRefreshBondage(id: number) {
 	let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDGetNPCRestraints(id)));
 
 	if (restraints) {
+		let already = {};
 		for (let inv of Object.entries(restraints)) {
-			KDInputSetNPCRestraint({
-				slot: inv[0],
-				id: -1,
-				restraint: "",
-				restraintid: -1,
-				lock: "",
-				npc: id
-			});
+			if (!already[inv[1].id]) {
+				already[inv[1].id] = true;
+				KDInputSetNPCRestraint({
+					slot: inv[0],
+					id: -1,
+					restraint: "",
+					restraintid: -1,
+					lock: "",
+					npc: id
+				});
+
+			}
 		}
 		// Readd
+		already = {};
 		for (let inv of Object.entries(restraints)) {
-			KDInputSetNPCRestraint({
-				slot: inv[0],
-				id: inv[1].id,
-				faction: inv[1].faction,
-				restraint: inv[1].name,
-				restraintid: -1,
-				lock: inv[1].lock,
-				npc: id
-			});
+			if (!already[inv[1].id]) {
+				already[inv[1].id] = true;
+				KDInputSetNPCRestraint({
+					slot: inv[0],
+					id: inv[1].id,
+					faction: inv[1].faction,
+					restraint: inv[1].name,
+					restraintid: -1,
+					lock: inv[1].lock,
+					npc: id
+				});
+			}
 		}
 	}
 }

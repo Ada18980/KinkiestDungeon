@@ -44,15 +44,17 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				for (let inv of Object.entries(restraints)) {
 					KDInputSetNPCRestraint({
 						slot: inv[0],
-						id: inv[1].id,
+						id: undefined,
 						faction: inv[1].faction,
 						restraint: inv[1].name,
-						restraintid: -1,
+						restraintid: inv[1].id,
 						lock: inv[1].lock,
 						npc: value.id
 					});
 				}
+				KDValidateEscapeGrace(value);
 			}
+			KinkyDungeonCheckClothesLoss = true;
 		}
 
 		if (KDToggles.Sound)
@@ -115,16 +117,19 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 					for (let inv of Object.entries(restraints)) {
 						KDInputSetNPCRestraint({
 							slot: inv[0],
-							id: inv[1].id,
+							id: undefined,
 							faction: inv[1].faction,
 							restraint: inv[1].name,
-							restraintid: -1,
+							restraintid: inv[1].id,
 							lock: inv[1].lock,
 							npc: v.id
 						});
 					}
+
+					KDValidateEscapeGrace(v);
 				}
 			}
+			KinkyDungeonCheckClothesLoss = true;
 
 		}
 
