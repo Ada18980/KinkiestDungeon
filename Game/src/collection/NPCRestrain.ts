@@ -802,3 +802,13 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 	}
 	return count;
 }
+
+function KDNPCEscape(entity: entity) {
+
+	let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[entity.id + ""].type);
+	let rep = -1*KDGetEnemyTypeRep(type, KDGameData.Collection[entity.id + ""].Faction);
+	KinkyDungeonChangeFactionRep(KDGameData.Collection[entity.id + ""].Faction, rep);
+
+	DisposeEntity(entity.id, true, false);
+	KDRemoveEntity(entity, false, false, true);
+}

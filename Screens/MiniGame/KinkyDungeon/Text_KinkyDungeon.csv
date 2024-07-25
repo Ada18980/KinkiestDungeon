@@ -23306,7 +23306,7 @@ KinkyDungeonSpellDescLeashSpell,"Target an NPC to attach a leash. Enemies and un
 KinkyDungeonSpellTargetLeashSpell,"Target an NPC to leash, or self to unleash all."
 
 KinkyDungeonSpellLeashSkill,Brat Handler
-KinkyDungeonSpellDescLeashSkill,"Target an NPC with an equipped leash restraint (via Truss'em'up) to attach a leash. Target self to release all leashes, or target a leashed NPC to unleash them."
+KinkyDungeonSpellDescriptionLeashSkill,"Target an NPC with an equipped leash restraint (via Truss'em'up) to attach a leash. Target self to release all leashes, or target a leashed NPC to unleash them."
 KinkyDungeonSpellTargetLeashSkill,"Target an NPC to leash, or self to unleash all."
 
 KinkyDungeonInventoryItemLeashItem,Clip-On Leash

@@ -2199,7 +2199,7 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 }
 
 
-function KinkyDungeonDrawFloaters(CamX, CamY) {
+function KinkyDungeonDrawFloaters(CamX, CamY, onlyAbs = false) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
 
 	let KDFloaterYCache = {};
@@ -2216,7 +2216,7 @@ function KinkyDungeonDrawFloaters(CamX, CamY) {
 	let newFloaters = [];
 	i = 0;
 	for (let floater of KinkyDungeonFloaters.reverse()) {
-		if (i <= max) {
+		if (i <= max && (floater.override || !onlyAbs)) {
 			let x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 			let y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 			let overlap = false;

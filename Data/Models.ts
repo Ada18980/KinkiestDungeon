@@ -230,7 +230,7 @@ function GetOverCorset(BaseModel: string): Model {
 }
 
 
-function DisposeCharacter(C: Character, resort: boolean = true): void {
+function DisposeCharacter(C: Character, resort: boolean = true, deleteSpecial: boolean = false): void {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
 			kdcanvas.removeChild(Container.Container);
@@ -243,7 +243,10 @@ function DisposeCharacter(C: Character, resort: boolean = true): void {
 	if (KDNPCChar_ID.get(C)) {
 		let id = KDNPCChar_ID.get(C);
 		KDNPCChar.delete(id);
-		delete KDPersistentNPCs[id + ""];
+		if (deleteSpecial || !KDPersistentNPCs[id + ""] || !KDPersistentNPCs[id + ""].special) {
+			delete KDPersistentNPCs[id + ""];
+			delete KDGameData.NPCRestraints[id + ""];
+		}
 		delete KDGameData.Collection[id + ""];
 		if (resort) {
 			KDSortCollection();
@@ -257,7 +260,7 @@ function DisposeCharacter(C: Character, resort: boolean = true): void {
 		NPCDesiredPoses.delete(C);
 	}
 }
-function DisposeEntity(id: number, resort: boolean = true): void {
+function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false): void {
 	let C = KDNPCChar.get(id);
 	if (C && KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
@@ -269,7 +272,10 @@ function DisposeEntity(id: number, resort: boolean = true): void {
 		NPCTags.delete(C);
 	}
 	KDNPCChar.delete(id);
-	delete KDPersistentNPCs[id + ""];
+	if (deleteSpecial || !KDPersistentNPCs[id + ""] || !KDPersistentNPCs[id + ""].special) {
+		delete KDPersistentNPCs[id + ""];
+		delete KDGameData.NPCRestraints[id + ""];
+	}
 	delete KDGameData.Collection[id + ""];
 	if (resort) {
 		KDSortCollection();

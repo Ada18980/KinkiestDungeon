@@ -516,7 +516,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 					if (!KDLeashReason.PlayerLeash(enemy)) return false;
 					return true;
 				}
-				return true;
+				return false;
 			}
 			return false;
 		},

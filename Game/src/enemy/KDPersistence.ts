@@ -14,6 +14,8 @@ interface KDPersistentNPC {
 	opinion: number,
 	/** If true, the NPC is here to stay */
 	jailed?: boolean,
+	/** NPC is special and should remain persistent */
+	special?: boolean,
 }
 
 interface WorldCoord {

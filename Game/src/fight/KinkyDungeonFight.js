@@ -1256,7 +1256,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 	if (resistDamage == -2) mod = "VeryStrong";
 	if (Damage && !mod && spellResist > 0 && !KinkyDungeonMeleeDamageTypes.includes(predata.type)) mod = "SpellResist";
 
-	if (predata.faction == "Player" || predata.faction == "Rage") {
+	if (predata.faction == "Player") {
 		if (!Enemy.playerdmg) Enemy.playerdmg = 0.01;
 		Enemy.playerdmg += predata.dmgDealt;
 	}

@@ -128,6 +128,8 @@ function KDDrawCollectionTabOptions(x, y) {
 }
 
 function KinkyDungeonDrawCollection(xOffset = -125) {
+
+	KinkyDungeonDrawFloaters(0, 0, true);
 	let x = 1225 + xOffset;
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 
@@ -687,7 +689,7 @@ function KDNPCUnavailable(id, status) {
 		(
 			//KDGameData.NPCRestraints[id + ""]?.Device != undefined
 			KDGetPersistentNPC(id).captured
-			|| !KDGetPersistentNPC(id).collect
+			|| !(KDGetPersistentNPC(id).collect || (status && !KDIsInPartyID(id)))
 		))
 		|| (status && KDIsInCapturedPartyID(id))
 		|| (KDGetGlobalEntity(id) && KDEntityHasFlag(KDGetGlobalEntity(id), "imprisoned"));
@@ -1251,5 +1253,5 @@ function KDDrawNPCBars(value, x, y, width) {
  * @returns {boolean}
  */
 function KDCanPromote(value) {
-	return value.Opinion > 0;
+	return KDGetModifiedOpinionID(value.id) > 0 || value.Opinion > 0;
 }

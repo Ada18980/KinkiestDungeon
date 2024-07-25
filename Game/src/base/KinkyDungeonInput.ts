@@ -1197,6 +1197,9 @@ function KDProcessInput(type, data): string {
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRelease(parseInt(v))) {
+						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
+						let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
+						KinkyDungeonChangeFactionRep(KDGameData.Collection[v + ""].Faction, rep);
 						DisposeEntity(parseInt(v), false);
 						delete KDCollectionReleaseSelection[v];
 					}
@@ -1208,9 +1211,14 @@ function KDProcessInput(type, data): string {
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRansom(parseInt(v))) {
+						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
+						let rep = -2*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
+						KinkyDungeonChangeFactionRep(KDGameData.Collection[v + ""].Faction, rep);
 						KinkyDungeonAddGold(KDRansomValue(parseInt(v)));
 						DisposeEntity(parseInt(v), false);
 						delete KDCollectionReleaseSelection[v];
+						// TODO make it affect friends/enemies of the faction
+						// TODO add everything into one
 					}
 				}
 			}

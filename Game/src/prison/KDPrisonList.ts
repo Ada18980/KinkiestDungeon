@@ -67,8 +67,7 @@ let KDPrisonTypes = {
 							entity.gyy = 21;
 						} else {
 							// Despawn and remove from collection
-							DisposeEntity(entity.id);
-							KDRemoveEntity(entity, false, false, true);
+							KDNPCEscape(entity);
 						}
 				}
 			}

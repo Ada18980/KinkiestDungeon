@@ -289,7 +289,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			]},
 
 
-		{name: "LeashSkill", color: "#e64539", noMiscast: true, spellPointCost: 1,
+		{name: "LeashSkill", color: "#e64539", noMiscast: true, spellPointCost: 1, school: "Any",
 			staminacost: 1,
 			sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"special", special: "LeashSpell",
 			onhit:"", power: 0, delay: 0, range: 1.5, damage: "chain", speed: 2},
