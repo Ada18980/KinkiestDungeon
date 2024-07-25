@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.26"
+KDVersionStr,"5.3.28"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -12030,6 +12030,9 @@ rGenericAllyJoinParty_Leave,"(You decide not to.)"
 dGenericAllyShop,"(Sell items)"
 dGenericAllyShopBuy,"(Buy items)"
 
+dGenericAllyLeash,"(Pick up her leash)"
+dGenericAllyReleaseLeash,"(Release her leash)"
+
 NameDollmakerBoss1,"Dollmaker"
 KillDollmakerBoss1,"The Dollmaker throws a device to the ground, teleporting her instantly!"
 AttackDollmakerBoss1Bind,"The Dollmaker's necklace flashes as you find yourself suddenly restrained! (+RestraintAdded)"
@@ -23302,6 +23305,10 @@ KinkyDungeonSpellLeashSpell,Leash
 KinkyDungeonSpellDescLeashSpell,"Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them."
 KinkyDungeonSpellTargetLeashSpell,"Target an NPC to leash, or self to unleash all."
 
+KinkyDungeonSpellLeashSkill,Brat Handler
+KinkyDungeonSpellDescLeashSkill,"Target an NPC with an equipped leash restraint (via Truss'em'up) to attach a leash. Target self to release all leashes, or target a leashed NPC to unleash them."
+KinkyDungeonSpellTargetLeashSkill,"Target an NPC to leash, or self to unleash all."
+
 KinkyDungeonInventoryItemLeashItem,Clip-On Leash
 KinkyDungeonInventoryItemLeashItemDesc,"A beloved favorite of pets and trainers alike."
 KinkyDungeonInventoryItemLeashItemUse,"You ready the leash..."
@@ -23606,3 +23613,17 @@ KDPromoteNotEnough,Need Positive Opinion to Promote
 KDCuddleLounge1,Servant Enjoyment: AMNT
 KDCuddleLounge2,Prisoner Enjoyment: AMNT
 KDCuddleLoungeInfo,Submissive prisoners and dominant servants add different amounts of opinion per cycle
+
+
+KDCollectionTab_Release,Release Prisoners
+KDDrawSelectedTab_Release,Release
+
+KDReleaseMark,Mark
+KDReleaseUnmark,Unmark
+KDReleaseMarkAll,Mark ALL
+KDReleaseUnMarkAll,Cancel Selection
+KDReleaseRelease,Release Marked Prisoners!
+KDReleaseRansom,Ransom Marked Prisoners for GP!
+KDRansomValue,Ransom Value: GP
+KDCurrentGold,Current Gold: GP
+KDNA,n/a

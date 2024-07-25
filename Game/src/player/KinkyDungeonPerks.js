@@ -796,13 +796,13 @@ let KDPerkStart = {
 
 	Stranger: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
-			if (!KinkyDungeonHiddenFactions.includes(key))
+			if (!KinkyDungeonHiddenFactions.has(key))
 				KDSetFactionRelation("Player", key, -1 + 0.45 * KDRandom() + 0.45 * KDRandom() + 0.45 * KDRandom());
 		}
 	},
 	WrongNeighborhood: () => {
 		for (let key of Object.keys(KinkyDungeonFactionTag)) {
-			if (!KinkyDungeonHiddenFactions.includes(key)) {
+			if (!KinkyDungeonHiddenFactions.has(key)) {
 				KDSetFactionRelation("Player", key, -1);
 				for (let key2 of Object.keys(KinkyDungeonFactionTag)) {
 					KDSetFactionRelation(key, key2, 0.5);

@@ -1146,7 +1146,7 @@ let KDInventoryAction = {
 				if (enemy.id == KDGameData.FoodTarget) {
 					enemy.hp = Math.min(enemy.Enemy.maxhp, enemy.hp + KDConsumable(item)?.wp_instant * 5);
 					let faction2 = KDGetFaction(enemy);
-					if (!KinkyDungeonHiddenFactions.includes(faction2)) {
+					if (!KinkyDungeonHiddenFactions.has(faction2)) {
 						KinkyDungeonChangeFactionRep(faction2, 0.01 * KDConsumable(item)?.wp_instant);
 					}
 

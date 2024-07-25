@@ -232,7 +232,7 @@ function KDPleaseSpeaker(Amount) {
 	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 		KDAddOpinion(enemy, Amount * 100);
 		let faction = KDGetFactionOriginal(enemy);
-		if (!KinkyDungeonHiddenFactions.includes(faction)) {
+		if (!KinkyDungeonHiddenFactions.has(faction)) {
 			KinkyDungeonChangeFactionRep(faction, Amount);
 		}
 	}
@@ -504,6 +504,55 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 		options: {},
 	};
 
+
+	dialog.options.Leash = {playertext: name + "Leash", response: "Default",
+		prerequisiteFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				if (enemy.leash) return false;
+				if (KinkyDungeonInventoryGetConsumable("LeashItem")
+					|| KDGetNPCRestraints(enemy.id) && Object.values(KDGetNPCRestraints(enemy.id))
+						.some((rest) => {return KDRestraint(rest)?.leash;})) {
+					if (!KDLeashReason.PlayerLeash(enemy)) return false;
+					return true;
+				}
+				return true;
+			}
+			return false;
+		},
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				if (KDGetLeashedToCount(enemy) >= 3) {
+					KinkyDungeonSendActionMessage(7, TextGet("KDTooManyLeashes"), "#e64539", 1);
+				} else if (!(enemy.leash?.reason == "PlayerLeash")) {
+					KinkyDungeonSendActionMessage(7, TextGet("KDLeashSpell").replace("ENMY", KDGetEnemyTypeName(enemy)), "#63ab3f", 1);
+					KinkyDungeonAttachTetherToEntity(1.5, KDPlayer(), enemy, "PlayerLeash", "#e64539", 7);
+				}
+			}
+			return false;
+		},
+		leadsToStage: "",
+	};
+
+	dialog.options.ReleaseLeash = {playertext: name + "ReleaseLeash", response: "Default",
+		prerequisiteFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				if (enemy.leash?.reason == "PlayerLeash") return true;
+				return false;
+			}
+			return false;
+		},
+		clickFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KDBreakTether(enemy);
+			}
+			return false;
+		},
+		leadsToStage: "",
+	};
 	dialog.options.Shop = {playertext: name + "Shop", response: "Default",
 		prerequisiteFunction: (gagged, player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
@@ -567,7 +616,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 							let faction = KDGetFactionOriginal(enemy);
 							if (faction == "Player") {
 								enemy.faction = "Enemy"; // They become an enemy
-							} else if (!KinkyDungeonHiddenFactions.includes(faction) && !enemy.Enemy.tags?.scenery) {
+							} else if (!KinkyDungeonHiddenFactions.has(faction) && !enemy.Enemy.tags?.scenery) {
 								KinkyDungeonChangeRep("Ghost", -5);
 								KinkyDungeonChangeFactionRep(faction, -0.06);
 							}
@@ -599,7 +648,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						if (!enemy.Enemy.allied) {
 							KDMakeHostile(enemy);
 							let faction = KDGetFactionOriginal(enemy);
-							if (!KinkyDungeonHiddenFactions.includes(faction)) {
+							if (!KinkyDungeonHiddenFactions.has(faction)) {
 								KinkyDungeonChangeRep("Ghost", -5);
 							}
 						} else {
@@ -1549,7 +1598,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KDMakeHostile(enemy);
 						KinkyDungeonChangeRep("Ghost", -5);
-						if (!KinkyDungeonHiddenFactions.includes(KDGetFactionOriginal(enemy)))
+						if (!KinkyDungeonHiddenFactions.has(KDGetFactionOriginal(enemy)))
 							KinkyDungeonChangeFactionRep(KDGetFactionOriginal(enemy), -0.06);
 					}
 					return false;
@@ -1585,7 +1634,7 @@ function KDShopDialogue(name, items, requireTags, requireSingleTag, chance, item
 				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 				if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 					let faction = KDGetFactionOriginal(enemy);
-					if (!KinkyDungeonHiddenFactions.includes(faction)) {
+					if (!KinkyDungeonHiddenFactions.has(faction)) {
 						KinkyDungeonChangeFactionRep(faction, Math.max(0.0001, KDGameData.CurrentDialogMsgValue["ItemCost"+i] * 0.00005));
 					}
 					if (!enemy.items) enemy.items = [];
@@ -1670,7 +1719,7 @@ function KDShopBuyDialogue(name) {
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KDMakeHostile(enemy);
 						KinkyDungeonChangeRep("Ghost", -5);
-						if (!KinkyDungeonHiddenFactions.includes(KDGetFactionOriginal(enemy)))
+						if (!KinkyDungeonHiddenFactions.has(KDGetFactionOriginal(enemy)))
 							KinkyDungeonChangeFactionRep(KDGetFactionOriginal(enemy), -0.06);
 					}
 					return false;
@@ -1732,7 +1781,7 @@ function KDShopBuyDialogue(name) {
 
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let faction = KDGetFactionOriginal(enemy);
-						if (!KinkyDungeonHiddenFactions.includes(faction)) {
+						if (!KinkyDungeonHiddenFactions.has(faction)) {
 							KinkyDungeonChangeFactionRep(faction, Math.max(0.00005, KDGameData.CurrentDialogMsgValue["IC_"+i + "_"] * 0.000025));
 						}
 						enemy.items.splice(i, 1);
@@ -2112,7 +2161,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KDMakeHostile(enemy);
 						KinkyDungeonChangeRep("Ghost", -5);
-						if (!KinkyDungeonHiddenFactions.includes(KDGetFactionOriginal(enemy)))
+						if (!KinkyDungeonHiddenFactions.has(KDGetFactionOriginal(enemy)))
 							KinkyDungeonChangeFactionRep(KDGetFactionOriginal(enemy), -0.06);
 					}
 					return false;
@@ -2171,7 +2220,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let faction = KDGetFactionOriginal(enemy);
-						if (!KinkyDungeonHiddenFactions.includes(faction)) {
+						if (!KinkyDungeonHiddenFactions.has(faction)) {
 							KinkyDungeonChangeFactionRep(faction, Math.max(0.0001, KDGameData.CurrentDialogMsgValue["ItemCost"+i] * 0.0001));
 						}
 					}

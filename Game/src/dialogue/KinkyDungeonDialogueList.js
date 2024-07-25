@@ -2682,7 +2682,7 @@ let KDDialogue = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-								if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
+								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 									if (KDFactionRelation("Player", faction) < 0.25)
 										KinkyDungeonChangeFactionRep(faction, 0.005);
 									else
@@ -2742,7 +2742,7 @@ let KDDialogue = {
 									e.faction = "Player";
 									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-									if (!KinkyDungeonHiddenFactions.includes(faction) && !(KDMapData.MapFaction == faction)) {
+									if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 										if (KDFactionRelation("Player", faction) < 0.25)
 											KinkyDungeonChangeFactionRep(faction, 0.005);
 										else

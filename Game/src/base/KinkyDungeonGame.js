@@ -587,8 +587,27 @@ function KDSaveRoom(slot, saveconstantX) {
 function KDUnPackEnemies(data) {
 	for (let enemy of data.Entities) {
 		if (!enemy.modified) {
-			enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name);
+			enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name || enemy.Enemy);
 		}
+	}
+}
+/**
+ * Decompress enemies
+ * @param {entity} enemy
+ */
+function KDUnPackEnemy(enemy) {
+	if (!enemy.modified) {
+		enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name || enemy.Enemy);
+	}
+}
+/**
+ * Decompress enemies
+ * @param {entity} enemy
+ */
+function KDPackEnemy(enemy) {
+	if (!enemy.modified) {
+		// @ts-ignore
+		enemy.Enemy = {name: enemy.Enemy};
 	}
 }
 /**

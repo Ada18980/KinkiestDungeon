@@ -20,7 +20,8 @@ let KDFacilityCollectionDataTypeMap = {
 };
 
 let KDCollectionTabButtons = [
-	"AutoBind"
+	"AutoBind",
+	"Release",
 ];
 
 let KDCollectionFilters = {
@@ -137,7 +138,7 @@ function KinkyDungeonDrawCollection(xOffset = -125) {
 			DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
 		} else {
 			if (KDCollectionTabScreen[KDCollectionTab]) {
-				KDCollectionTabScreen[KDCollectionTab](xOffset);
+				KDCollectionTabScreen[KDCollectionTab](x, xOffset);
 			} else {
 				KDDrawCollectionInventory(x + xOffset, 150);
 				KDDrawCollectionFilters(1750, 920);
@@ -416,7 +417,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 	let II = 0;
 	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, "#ffffff", KDTextGray05, 24);
 
-	if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.includes(value.Faction)))
+	if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
 		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 	else II++;
 
@@ -505,7 +506,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			400/1000, true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
 
 		let III = 0;
-		let buttonSpacing = 90;
+		let buttonSpacing = 85;
 		if (!KDCollectionTab && KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (b) => {
 			if (KDToggles.Sound)
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
@@ -714,7 +715,7 @@ let KDCollectionSpacing = 80;
  */
 let KDDrawnCollectionInventory = [];
 
-function KDDrawCollectionInventory(x, y) {
+function KDDrawCollectionInventory(x, y, drawCallback) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
 	let XX = x;
@@ -827,6 +828,8 @@ function KDDrawCollectionInventory(x, y) {
 			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
 		}
 
+		if (drawCallback) drawCallback(value, XX, YY);
+
 		if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
 			let icon = KDGetPersistentNPC(value.id)?.captured
 				? "Inspect"
@@ -905,6 +908,8 @@ function KDDrawCollectionInventory(x, y) {
 			)) {
 				DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
 			}
+
+			if (drawCallback) drawCallback(value, XX, YY);
 
 
 			if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
@@ -1164,6 +1169,9 @@ function KDDrawNPCBars(value, x, y, width) {
 
 	KDEaseBars(enemy, KDDrawDelta || 0);
 
+	let oldEnemy = enemy.Enemy;
+	KDUnPackEnemy(enemy);
+
 	let II = 0;
 	let height = 12;
 	let spacing = height + 2;
@@ -1230,9 +1238,10 @@ function KDDrawNPCBars(value, x, y, width) {
 			}
 
 		}
+		enemy.Enemy = oldEnemy;
 		return bindingBars;
 	}
-
+	enemy.Enemy = oldEnemy;
 	return 0;
 }
 

@@ -180,6 +180,8 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 		if (typeof npc.entity.Enemy == "string") {
 			// This is to prevent crash but also reduce memory footprint
 			npc.entity.Enemy = KinkyDungeonGetEnemyByName(npc.entity.Enemy);
+		}else if (!npc.entity.Enemy.maxhp) {
+			KDUnPackEnemy(npc.entity);
 		}
 		if (!KinkyDungeonFindID(npc.id)) {
 			if (!mapFaction || mapFaction == npc.captureFaction

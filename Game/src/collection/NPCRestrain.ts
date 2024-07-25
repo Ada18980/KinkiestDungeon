@@ -746,15 +746,21 @@ function KDRunNPCEscapeTick(id: number, ticks: number) {
 	let enemy = KDGetGlobalEntity(id);
 	if (enemy) {
 		let returnToString = false;
+		let repack = false;
 		if (typeof enemy.Enemy == "string") {
 			returnToString = true;
 			enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy);
+		} else if (!enemy.Enemy.maxhp) {
+			KDUnPackEnemy(enemy);
+			repack = true;
 		}
-		for (let i = 0; i < ticks; i++) {
-			KDEnemyStruggleTurn(enemy, 1, KDNPCStruggleThreshMult(enemy));
-		}
+		if (enemy.Enemy?.tags)
+			for (let i = 0; i < ticks; i++) {
+				KDEnemyStruggleTurn(enemy, 1, KDNPCStruggleThreshMult(enemy));
+			}
 		KDUpdatePersistentNPC(id);
 		if (returnToString) (enemy as any).Enemy = enemy.Enemy.name;
+		else if (repack) KDPackEnemy(enemy);
 	}
 
 }
@@ -783,6 +789,8 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 		if (point) {
 			let entity = DialogueCreateEnemy(point.x, point.y, value.type, value.id)
 			if (entity) {
+				entity.hp = entity.Enemy.maxhp;
+				entity.boundLevel = 0;
 				KDMakeHostile(entity, 300);
 				KinkyDungeonSendDialogue(entity,
 					TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3))

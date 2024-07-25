@@ -2253,7 +2253,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"PunishPlayer": (e, item, data) => {
-			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.includes(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
+			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.has(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
 				if (KDRandom() < e.chance || (KDGameData.WarningLevel > (e.count || 2) && KDRandom() < e.warningchance)) {
 					if (e.stun && KDGameData.WarningLevel > (e.count || 2)) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);
@@ -2267,7 +2267,7 @@ let KDEventMapInventory = {
 			}
 		},
 		"cursePunish": (e, item, data) => {
-			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.includes(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
+			if (item.type === Restraint && data.targetX && data.targetY && data.enemy && !(data.enemy && data.enemy.Enemy && KDAllied(data.enemy)) && (!KinkyDungeonHiddenFactions.has(KDGetFaction(data.enemy)) || KDGetFaction(data.enemy) == "Enemy")) {
 				if (!e.chance || KDRandom() < e.chance) {
 					if (e.stun) {
 						KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, e.stun);

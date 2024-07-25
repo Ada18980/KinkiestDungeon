@@ -2729,7 +2729,7 @@ function KDHealRepChange(enemy, amount) {
 	else if (KDFactionRelation("Player", KDGetFactionOriginal(enemy)) > 0.45) amountRep *= 0;
 	else if (KDFactionRelation("Player", KDGetFactionOriginal(enemy)) > 0.35) amountRep *= 0.25;
 	else if (KDFactionRelation("Player", KDGetFactionOriginal(enemy)) > 0.25) amountRep *= 0.5;
-	if (amountRep > 0 && !KinkyDungeonHiddenFactions.includes(KDGetFactionOriginal(enemy))) {
+	if (amountRep > 0 && !KinkyDungeonHiddenFactions.has(KDGetFactionOriginal(enemy))) {
 		if (amountRep > 0.01) amountRep = 0.01;
 		KinkyDungeonChangeFactionRep(KDGetFactionOriginal(enemy), amountRep);
 	}

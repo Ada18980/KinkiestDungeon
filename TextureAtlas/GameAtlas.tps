@@ -2353,6 +2353,7 @@
             <key type="filename">../Game/Spells/Leap.png</key>
             <key type="filename">../Game/Spells/Leap2.png</key>
             <key type="filename">../Game/Spells/Leap3.png</key>
+            <key type="filename">../Game/Spells/LeashSkill.png</key>
             <key type="filename">../Game/Spells/LeatherBurst.png</key>
             <key type="filename">../Game/Spells/LeatherWhip.png</key>
             <key type="filename">../Game/Spells/Light.png</key>
@@ -2481,6 +2482,7 @@
             <key type="filename">../Game/UI/CollectionFilter/Safe.png</key>
             <key type="filename">../Game/UI/CollectionFilter/Unavailable.png</key>
             <key type="filename">../Game/UI/CollectionTab/AutoBind.png</key>
+            <key type="filename">../Game/UI/CollectionTab/Release.png</key>
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/Facility/AlchemyLab.png</key>
             <key type="filename">../Game/UI/Facility/CuddleLounge.png</key>
@@ -3447,6 +3449,7 @@
             <key type="filename">../Game/InvItemSortLeft.png</key>
             <key type="filename">../Game/InvItemSortRight.png</key>
             <key type="filename">../Game/InvVisible.png</key>
+            <key type="filename">../Game/UI/Crossout.png</key>
             <key type="filename">../Game/UI/Demote.png</key>
             <key type="filename">../Game/UI/Dress.png</key>
             <key type="filename">../Game/UI/Facility_Prisoners.png</key>
@@ -4010,6 +4013,26 @@
                 <rect>2,2,3,3</rect>
                 <key>scale9Paddings</key>
                 <rect>2,2,3,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/UI/Buttons/Mark.png</key>
+            <key type="filename">../Game/UI/Buttons/MarkAll.png</key>
+            <key type="filename">../Game/UI/Buttons/Ransom.png</key>
+            <key type="filename">../Game/UI/Buttons/Release.png</key>
+            <key type="filename">../Game/UI/Buttons/Unmark.png</key>
+            <key type="filename">../Game/UI/Buttons/UnmarkAll.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,20,40,40</rect>
+                <key>scale9Paddings</key>
+                <rect>20,20,40,40</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

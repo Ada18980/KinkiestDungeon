@@ -1193,6 +1193,29 @@ function KDProcessInput(type, data): string {
 		case "tightenNPCRestraint":
 			KDNPCRefreshBondage(data.npc);
 			break;
+		case "releaseNPC":
+			if (data?.selection) {
+				for (let v of Object.keys(data.selection)) {
+					if (KDCanRelease(parseInt(v))) {
+						DisposeEntity(parseInt(v), false);
+						delete KDCollectionReleaseSelection[v];
+					}
+				}
+			}
+			KDSortCollection();
+			break;
+		case "ransomNPC":
+			if (data?.selection) {
+				for (let v of Object.keys(data.selection)) {
+					if (KDCanRansom(parseInt(v))) {
+						KinkyDungeonAddGold(KDRansomValue(parseInt(v)));
+						DisposeEntity(parseInt(v), false);
+						delete KDCollectionReleaseSelection[v];
+					}
+				}
+			}
+			KDSortCollection();
+			break;
 		case "freeNPCRestraint": {
 			if (KDGameData.NPCRestraints) {
 

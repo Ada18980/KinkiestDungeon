@@ -30,10 +30,18 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.28
+- MODDERS: KinkyDungeonHiddenFactions is now a Map() instead of a list
+- Added 'Release NPCs' feature
+
 5.3.27
 - Added auto binding feature
 - truss em up now uses bondage UI from collection
 - Enemies can now escape!
+- Cuddle lounge is now present for improving opinion
+- truss em up is more effective now
+- Enemy helpless threshold lowered for basic enemies (such as maidforce recruits)
+
 
 5.3.26
 - Can now add NPCs to display stand

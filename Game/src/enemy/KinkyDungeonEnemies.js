@@ -1643,7 +1643,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 						|| MouseIn(canvasOffsetX + (enemy.x - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (enemy.y - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay))
 						|| (KDGameData.CurrentDialog && KDGetSpeaker() == enemy)))) {
 						let faction = KDGetFaction(enemy);
-						if (faction && (!KinkyDungeonHiddenFactions.includes(faction) || KinkyDungeonTooltipFactions.includes(faction))) {
+						if (faction && (!KinkyDungeonHiddenFactions.has(faction) || KinkyDungeonTooltipFactions.includes(faction))) {
 							let tt = TextGet("KinkyDungeonFaction" + faction);
 							let ttlength = 10;
 							if (CJKcheck(tt,2)){
@@ -2272,7 +2272,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 				let faction = KDGetFaction(enemy);
 				let amount = 0;
 
-				if (!KinkyDungeonHiddenFactions.includes(faction)) {
+				if (!KinkyDungeonHiddenFactions.has(faction)) {
 
 					if (enemy.Enemy.tags?.scenery) amount = 0;
 					else {
@@ -2300,7 +2300,7 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 						let dist = KDistChebyshev(e.x - enemy.x, e.y - enemy.y);
 						if (dist < 10) {
 							let faction2 = KDGetFaction(e);
-							if (!KinkyDungeonHiddenFactions.includes(faction2)) {
+							if (!KinkyDungeonHiddenFactions.has(faction2)) {
 								if (KDFactionRelation(faction, faction2) < -0.1 && !boostfactions.includes(faction2)) {
 									boostfactions.push(faction2);
 									let mult = 1.0;
@@ -2328,16 +2328,6 @@ function KinkyDungeonEnemyCheckHP(enemy, E) {
 			}
 		}
 
-		if (enemy.ondeath) {
-			for (let o of enemy.ondeath) {
-				KDOndeath[o.type](enemy, o);
-			}
-		}
-		if (enemy.Enemy.ondeath) {
-			for (let o of enemy.Enemy.ondeath) {
-				KDOndeath[o.type](enemy, o);
-			}
-		}
 
 		KinkyDungeonSendEvent("kill", {enemy: enemy, capture: KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0 && KDHostile(enemy) && !enemy.Enemy.tags.nocapture});
 
@@ -7860,21 +7850,22 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
 		persistent: makepersistent,
 	};
 
+	KDUpdateEnemyCache = true;
+	KDGetEnemyCache();
 
 	if (!dontteleportpersistent && KDIsNPCPersistent(data.enemy.id) && KinkyDungeonFindID(data.enemy.id)) {
 		// Move the enemy instead of creating
 
 		let npc = KinkyDungeonFindID(data.enemy.id);
 
-		if (typeof data.entity.Enemy == "string") {
-			data.entity.Enemy = KinkyDungeonGetEnemyByName(data.entity.Enemy);
-		}
+		KDUnPackEnemy(data.enemy);
 		npc.x = data.x;
 		npc.y = data.y;
 		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 			KDGetPersistentNPC(data.enemy.id).collect = false;
 
 		KDUpdateEnemyCache = true;
+
 		return npc;
 	}
 
@@ -7886,6 +7877,8 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
 			data.enemy = npc.entity;
 			if (typeof npc.entity.Enemy == "string") {
 				npc.entity.Enemy = KinkyDungeonGetEnemyByName(npc.entity.Enemy);
+			} else if (!data.enemy.Enemy.maxhp) {
+				KDUnPackEnemy(data.enemy);
 			}
 			npc.entity.x = data.x;
 			npc.entity.y = data.y;
@@ -7977,6 +7970,20 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 	}
 
 	KDSpliceIndex(forceIndex || KDMapData.Entities.indexOf(data.enemy), 1);
+	KDUpdateEnemyCache = true;
+
+	if (kill) {
+		if (enemy.ondeath) {
+			for (let o of enemy.ondeath) {
+				KDOndeath[o.type](enemy, o);
+			}
+		}
+		if (enemy.Enemy.ondeath) {
+			for (let o of enemy.Enemy.ondeath) {
+				KDOndeath[o.type](enemy, o);
+			}
+		}
+	}
 	return true;
 }
 

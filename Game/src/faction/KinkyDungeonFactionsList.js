@@ -423,7 +423,7 @@ let KDFactionProperties = {
 };
 
 /** Hidden factions do not auto-rep change when you attack them */
-let KinkyDungeonHiddenFactions = [
+let KDHiddenFactions = [
 	"Plant",
 	"Natural",
 	"Barrel",
@@ -466,6 +466,11 @@ let KinkyDungeonHiddenFactions = [
 	"Door",
 	"Adventurer",
 ];
+
+let KinkyDungeonHiddenFactions = new Map();
+for (let f of KDHiddenFactions) {
+	KinkyDungeonHiddenFactions.set(f, true);
+}
 
 
 
@@ -1127,7 +1132,7 @@ function KDSetFactionRelation(a, b, relation) {
  */
 function KDChangeFactionRelation(a, b, amount, AffectRivals) {
 	if (a == "Rage" || b == "Rage") return;
-	if ((a != "Player" && KinkyDungeonHiddenFactions.includes(a)) || (b != "Player" && KinkyDungeonHiddenFactions.includes(b))) return;
+	if ((a != "Player" && KinkyDungeonHiddenFactions.has(a)) || (b != "Player" && KinkyDungeonHiddenFactions.has(b))) return;
 	if (!KinkyDungeonFactionRelations[a]) KinkyDungeonFactionRelations[a] = KinkyDungeonFactionRelationsBase[a] || 0;
 	if (!KinkyDungeonFactionRelations[b]) KinkyDungeonFactionRelations[b] = KinkyDungeonFactionRelationsBase[b] || 0;
 
@@ -1152,7 +1157,7 @@ function KDChangeFactionRelation(a, b, amount, AffectRivals) {
 
 	if (AffectRivals && a == "Player") {
 		for (let faction of Object.keys(KinkyDungeonFactionRelations)) {
-			if (!KinkyDungeonHiddenFactions.includes(faction) && faction != a && faction != b) {
+			if (!KinkyDungeonHiddenFactions.has(faction) && faction != a && faction != b) {
 				let relation = KDFactionRelation(b, faction);
 				KDChangeFactionRelation("Player", faction, amount * relation);
 			}

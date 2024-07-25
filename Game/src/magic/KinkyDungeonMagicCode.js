@@ -279,7 +279,7 @@ let KinkyDungeonSpellSpecials = {
 				} else if (!KDHostile(en) && en.hp <= en.Enemy.maxhp * 0.1) {
 					en.faction = "Player";
 					let ff = KDGetFactionOriginal(en);
-					if (!KinkyDungeonHiddenFactions.includes(ff)) {
+					if (!KinkyDungeonHiddenFactions.has(ff)) {
 						KinkyDungeonChangeFactionRep(ff, 0.005);
 					}
 				}

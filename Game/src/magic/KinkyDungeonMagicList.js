@@ -108,7 +108,7 @@ let KinkyDungeonLearnableSpells = [
 	// Class specific
 	[
 		[
-			"Bondage", "ZeroResistance", "DesperateStruggle",
+			"Bondage", "ZeroResistance", "DesperateStruggle", "LeashSkill",
 			"BattleRhythm", "ManaRegen", "Peasant", "RogueTargets", "DistractionCast",
 			"Offhand", "RogueOffhand", "WizardOffhand", "UnconventionalWarfare", "GuerillaFighting",
 
@@ -287,6 +287,12 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [
 				{type: "DesperateStruggle", trigger: "toggleSpell", power: 0.5, dist: 7, time: 3, cost: 2},
 			]},
+
+
+		{name: "LeashSkill", color: "#e64539", noMiscast: true, spellPointCost: 1,
+			staminacost: 1,
+			sfx: "Miss", manacost: 0, components: ["Arms"], level:1, type:"special", special: "LeashSpell",
+			onhit:"", power: 0, delay: 0, range: 1.5, damage: "chain", speed: 2},
 
 		{name: "SPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},
 		{name: "WPUp1", school: "Any", hide: true, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert"},

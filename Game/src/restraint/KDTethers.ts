@@ -32,8 +32,14 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		}
 	},
 	PlayerLeash: (entity) => {
-		if (!KinkyDungeonInventoryGetConsumable("LeashItem")) return false;
-		if (entity && !(KDGetPersonality(entity) != undefined && KDLeashablePersonalities[KDGetPersonality(entity)] && KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer())))
+		//if (!KinkyDungeonInventoryGetConsumable("LeashItem") && !KDHasSpell("LeashSkill")) return false;
+		if (entity
+			// Condition 1: the target is willing
+			&& !(KDWillingLeash(entity))
+			// Condition 2: the player has the Brat Handler skill and target is wearing a leash item
+			&& !(KDHasSpell("LeashSkill") && KDGetNPCRestraints(entity.id) && Object.values(KDGetNPCRestraints(entity.id))
+				.some((rest) => {return KDRestraint(rest)?.leash;}))
+			)
 			return false;
 		if (KDPlayerIsDisabled() || KinkyDungeonIsHandsBound(true, true, 0.5)) return false;
 		return true;
@@ -388,3 +394,10 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 
 }
 
+
+
+function KDWillingLeash(entity: entity): boolean {
+	return KDGetPersonality(entity) != undefined
+				&& KDLeashablePersonalities[KDGetPersonality(entity)]
+				&& KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer());
+}

@@ -1600,7 +1600,7 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 				}
 				if (KDGetFaction(e) != "Player"
 					&& KDFactionRelation(KDGetFaction(e), KDMapData.MapFaction) > 0.5) {
-					KDRunNPCEscapeTick(e.id, 30);
+					KDRunNPCEscapeTick(e.id, 24 + Math.floor(32 * KDRandom()));
 				}
 			} else {
 				enemies.push(e);
