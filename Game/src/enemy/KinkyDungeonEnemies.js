@@ -7958,6 +7958,9 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 	KDUpdateEnemyCache = true;
 
 	if (kill) {
+		if (enemy.Enemy?.SFX?.death) {
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + enemy.Enemy.SFX.death + ".ogg", enemy);
+		}
 		if (enemy.ondeath) {
 			for (let o of enemy.ondeath) {
 				KDOndeath[o.type](enemy, o);

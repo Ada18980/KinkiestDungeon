@@ -744,6 +744,12 @@ interface enemy extends KDHasTags {
 	/** These enemies always carry these items at the start */
 	startingItems?: string[]
 
+	/** Sound effects */
+	SFX?: {
+		/** Sound effect for dying */
+		death?: string,
+	},
+
 	/** Restraint filters */
 	RestraintFilter?: {
 		/** Increases effective level */

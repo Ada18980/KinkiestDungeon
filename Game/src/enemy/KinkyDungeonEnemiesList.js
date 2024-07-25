@@ -1443,6 +1443,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "Gunpowder", amount: 1, weight: 7}]},
 
 	{name: "SummonedDrone", playLine: "Robot",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["oldrobot", "disarmimmune", "ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soapweakness", "soulresist", "minor", "melee",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "temporary"]),
 		evasion: 0.2, armor: 1.5, followRange: 3.5, AI: "hunt",
@@ -1466,6 +1467,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 14, sneakthreshold: 0.85, maxhp: 5, minLevel:0, weight:-1000, kite: 1.5, movePoints: 1.5, attackPoints: 3, attack: "Spell", attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 1,
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "SummonedCaptureDrone", playLine: "Robot",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["leashing", "disarmimmune", "oldrobot", "ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soapweakness", "soulresist", "minor", "melee",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "temporary"]),
 		evasion: 0.15, armor: 2.0, followRange: 1, AI: "hunt",
@@ -1489,6 +1491,7 @@ let KinkyDungeonEnemies = [
 		ondeath: [{type: "spellOnSelf", spell: "RubberSlime"}],
 		terrainTags: {}, floors:KDMapInit([])},
 	{name: "OldDrone", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		SFX: {death: "SciFiExplode"},
 		color: "#ff3367",
 		tags: KDMapInit(["oldrobot", "disarmimmune", "ignoreharmless", "doortrap", "robot", "flying", "acidweakness", "soapweakness", "soulresist", "minor", "melee",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
@@ -1519,6 +1522,7 @@ let KinkyDungeonEnemies = [
 		minLevel:0, weight:15, terrainTags: {"oldrobot": 10}, shrines: ["Metal"], floors:KDMapInit(["bel"]),
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "OldTapeDrone", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		SFX: {death: "SciFiExplode"},
 		color: "#ff3367",
 		tags: KDMapInit(["oldrobot", "leashing", "doortrap", "robot", "flying", "acidweakness", "soapweakness", "soulresist", "melee",
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushweakness", "autoTape", "jail", "search"]),
@@ -1550,6 +1554,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 7, amountMax: 15, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 
 	{name: "RubberTurret", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		SFX: {death: "SciFiExplodeLarge"},
 		nonDirectional: true,
 		color: "#ff3367",
 		tags: KDMapInit(["oldrobot", "disarmimmune", "turret", "basicturret", "immobile", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soapweakness", "soulresist", "minor", "ranged",
@@ -1584,6 +1589,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "AncientPowerSourceSpent", weight: 9, noSummon: true}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 
 	{name: "RubberSilo", faction: "Enemy", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		SFX: {death: "SciFiExplodeLarge"},
 		color: "#ff3367",
 		nonDirectional: true,
 		tags: KDMapInit(["oldrobot", "disarmimmune", "turret", "immobile", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soapweakness", "soulresist", "minor", "ranged",
@@ -1619,6 +1625,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "LatexSprayer", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true,
+		SFX: {death: "SciFiExplodeLarge"},
 		nonDirectional: true,
 		color: "#2789cd",
 		tags: KDMapInit(["disarmimmune", "turret", "basicturret", "immobile", "ignoreharmless", "mimicBlock", "doortrap", "robot", "acidweakness", "soapweakness", "soulresist", "minor", "ranged",
@@ -1656,6 +1663,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "AncientPowerSource", weight: 9}, {name: "EnchantedGrinder", weight: 1, noSummon: true}]},
 
 	{name: "Drone", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying", "acidweakness", "soapweakness", "soulresist", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
 			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "patrol", difficulty: 0.3,
@@ -1691,6 +1699,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Nothing", weight: 19}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 
 	{name: "DroneGuardian", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", noChaseUnrestrained: true, color: "#ff7755",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying", "acidweakness", "soapweakness", "soulresist", "guardian", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
 			"slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "jail", "search"]),
 		AI: "patrol", difficulty: 0.3,
@@ -1796,6 +1805,7 @@ let KinkyDungeonEnemies = [
 
 
 	{name: "CaptureBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "soapweakness", "melee", "electricsevereweakness", "coldresist", "cyberhogtie", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		events: [
@@ -1825,6 +1835,7 @@ let KinkyDungeonEnemies = [
 		minLevel:3, weight:-6, terrainTags: {"nocablebot": -1000, "secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 20, "tapePref": -4, "tapeOptout": 3}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "KeyCard", weight: 1}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "ForcefieldBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "soapweakness", "melee", "elite", "electricsevereweakness",
 			"bulwark", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
@@ -1857,6 +1868,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 5, "metalRage": 3, "metalPleased": 5, "metalFriendly": 3, "robot": 17}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "TapeBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#00eeee",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["leashing", "jailer", "doortrap", "robot", "acidweakness", "soapweakness", "melee", "electricsevereweakness", "coldresist", "soulresist", "guardCall", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "autoTape", "opendoors", "closedoors", "search"]),
 		AI: "patrol",
 		events: [
@@ -1886,6 +1898,7 @@ let KinkyDungeonEnemies = [
 		minLevel:2, weight:-8, terrainTags: {"notapebot": -1000, "secondhalf":1, "thirdhalf":1, "increasingWeight":0.5, "metalAnger": 6, "metalRage": 4, "metalPleased": 6, "metalFriendly": 4, "robot": 20, "tape": 5, "tapePref": 6, "tapeOptout": -30}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "KeyCard", weight: 1}, {name: "AncientPowerSourceSpent", weight: 1, noSummon: true}]},
 	{name: "BotMissile", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		SFX: {death: "SciFiExplodeLarge"},
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness", "electricsevereweakness",
 			"unflinching", "coldresist", "soulresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness",
 			"bulwark", "hitechCables", "cableGag", "controlHarness", "search", "dollRoomBoss"]),
@@ -1917,6 +1930,7 @@ let KinkyDungeonEnemies = [
 		minLevel:7, weight:-106, terrainTags: {"nolatexbot": -1000,"thirdhalf":1, "increasingWeight":0.5, "open": 100, "metalAnger": 44, "metalRage": 13, "metalPleased": 44, "latex": 5, "metalFriendly": 13, "robot": 7}, shrines: ["Metal"], allFloors: true,
 		dropTable: [{name: "Gunpowder", amountMin: 2, amountMax: 3, weight: 5, noSummon: true}, {name: "KeyCard", weight: 1}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 	{name: "EnforcerBot", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		SFX: {death: "SciFiExplodeLarge"},
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness",
 			"bulwark", "electricsevereweakness", "unstoppable", "coldresist", "soulresist", "iceresist", "slashresist", "cyberhogtie", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
@@ -1950,6 +1964,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 5, noSummon: true}, {name: "KeyCard", weight: 1}, {name: "AncientPowerSource", weight: 1, noSummon: true}]},
 
 	{name: "EnforcerBotGuardian", faction: "AncientRobot", clusterWith: "robot", playLine: "Robot", color: "#2a319c",
+		SFX: {death: "SciFiExplodeLarge"},
 		tags: KDMapInit(["leashing", "disarmresist", "robot", "ranged", "miniboss", "acidweakness", "soapweakness",
 			"bulwark", "electricsevereweakness", "guardian", "unstoppable", "coldresist", "soulresist", "iceresist", "cyberhogtie", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "controlHarness", "search"]),
 		AI: "guard", spellRdy: true, bypass: true,
@@ -2129,6 +2144,7 @@ let KinkyDungeonEnemies = [
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "EscortDrone", weight: 0.25, ignoreInInventory: true}]},
 
 	{name: "WolfDrone", faction: "Nevermere", clusterWith: "nevermere", color: "#00EFAB", playLine: "Robot",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "robot", "nevermere", "wolfdrone", "flying", "acidweakness", "soapweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "wolfPet", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "hitechCables", "cableGag", "search"]),
 		followRange: 2.5, kite: 1.5,
 		maxblock: 0,
@@ -2143,6 +2159,7 @@ let KinkyDungeonEnemies = [
 		terrainTags: {}, allFloors: true, shrines: ["Metal"],
 	},
 	{name: "WolfShieldDrone", faction: "Nevermere", clusterWith: "nevermere", color: "#00EFAB", playLine: "Robot",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "robot", "wolfdrone", "nevermere", "flying", "acidweakness",
 			"bulwark", "soapweakness", "soulresist", "minor", "ranged", "electricsevereweakness", "wolfPet", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "search"]),
 		followRange: 3.9, kite: 2.5, difficulty: 0.2,
@@ -2163,6 +2180,7 @@ let KinkyDungeonEnemies = [
 		],
 	},
 	{name: "WolfTapeDrones", faction: "Nevermere", clusterWith: "nevermere", color: "#00eeee", playLine: "Robot",
+		SFX: {death: "SciFiExplode"},
 		tags: KDMapInit(["ignoreharmless", "disarmimmune", "robot", "wolfdrone", "leashing", "nevermere", "flying", "acidweakness", "soapweakness", "soulresist", "minor", "ranged", "fireweakness", "electricsevereweakness", "wolfPet", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness", "autoTape", "search"]),
 		followRange: 1, difficulty: 0.5,
 		maxblock: 0,
