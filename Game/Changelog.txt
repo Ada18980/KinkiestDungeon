@@ -30,6 +30,9 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.29
+- Added training level indicator in buffs menu
+
 5.3.28
 - MODDERS: KinkyDungeonHiddenFactions is now a Map() instead of a list
 - Added 'Release NPCs' feature

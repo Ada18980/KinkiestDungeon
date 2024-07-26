@@ -178,6 +178,7 @@ let KDBuffSprites = {
 
 let KDStatsSkipLine = {
 	"info": 1,
+	"training": 1,
 	"status": 1,
 	"dmg": 1,
 	"resist": 1,
@@ -191,6 +192,7 @@ let KDStatsSkipLineBefore = {
 let KDStatsOrder = {
 	"info": 10000,
 	"status": 7000,
+	"training": 4000,
 	"resist": 2500,
 	"dmg": 2000,
 	"help": 1500, // Always good, so since they are buffs they should be high priority
@@ -2344,6 +2346,25 @@ function KDProcessBuffIcons(minXX, minYY, side = false) {
 			countcolor: "#ff5555",
 		};
 	}
+
+	if (KDToggleShowAllBuffs) {
+		for (let training of KDTrainingTypes) {
+			statsDraw["training" + training] = {text: TextGet("KDTrainingLevel" + training)
+				.replace("AMNT",
+				"" + Math.floor((KDGameData.Training ? (KDGameData.Training[training]?.training_points || 0) : 0)*100))
+				.replace("LMT",
+					"" + Math.floor((KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1)*100))
+			,
+				category: "training", icon: "training/" + training, color: "#2fc6ce", bgcolor: "#333333", priority: 14,
+				count: Math.floor(KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) : 0) + "",
+				countcolor: "#2fc6ce",
+			};
+		}
+
+	}
+
+
+
 
 	if (KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
 		statsDraw.shadow = {text: TextGet("KinkyDungeonPlayerShadow"), icon: "shadow", category: "status", color: "#a3a7c2", bgcolor: "#5e52ff", priority: 1};
