@@ -129,7 +129,6 @@ function KDDrawCollectionTabOptions(x, y) {
 
 function KinkyDungeonDrawCollection(xOffset = -125) {
 
-	KinkyDungeonDrawFloaters(0, 0, true);
 	let x = 1225 + xOffset;
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 
@@ -978,7 +977,7 @@ function KDValidateEscapeGrace(value) {
 		if (bondageAmount < enemy.maxhp * KDNPCStruggleThreshMultType(enemy)) {
 			value.escapegrace = true;
 		} else value.escapegrace = undefined;
-	}
+	} else value.escapegrace = undefined;
 }
 
 function KDSortCollection() {
@@ -1070,6 +1069,7 @@ let KDCollectionTabDraw = {
 				KinkyDungeonCheckClothesLoss = true;
 				KDUpdatePersistentNPC(en.id, true);
 				//KinkyDungeonDrawState = "Game";
+				KinkyDungeonAdvanceTime(1);
 			}
 
 			if (KDToggles.Sound)

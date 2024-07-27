@@ -650,6 +650,10 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 	 */
 	let o = null;
 
+	// Generate the NPC if applicable
+	if ((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy)))
+		KDQuickGenNPC(enemy);
+
 	if (!enemy.Enemy.bound || (KDBoundEffects(enemy) < 4 && !KDHelpless(enemy))) {
 		let sp = sprite;
 		if (!enemy.ambushtrigger && enemy.Enemy.GFX?.AmbushSprite && KDAmbushAI(enemy)) sp = enemy.Enemy.GFX.AmbushSprite;
@@ -664,14 +668,41 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 			if (!o) o = {zIndex: zIndex};
 			else o.zIndex = zIndex;
 		}
-		let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
-			(tx + (enemy.offX || 0) - CamX + ((enemy.flip && !StaticView) ? 1 : 0))*KinkyDungeonGridSizeDisplay - ((enemy.flip && !StaticView) ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
-			(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
-			w, h, undefined, o);
-		if (!StaticView) {
-			if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
-			else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+		if ((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy))
+			&& KDNPCChar.get(enemy.id)) {
+			let char = KDNPCChar.get(enemy.id);
+			// We refresh
+			if (enemy.refreshSprite
+				|| !kdpixisprites.get("xspr_" + enemy.id + id)) {
+				KinkyDungeonCheckClothesLoss = true;
+				if (!NPCTags.get(char)) {
+					NPCTags.set(char, new Map());
+				}
+				NPCTags.set(char, KinkyDungeonUpdateRestraints(char, enemy.id, 0));
+				enemy.refreshSprite = false;
+			}
+			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[enemy.id + ''] : undefined);
+
+			kdpixisprites.set("xspr_" + enemy.id + id, {});
+			kdSpritesDrawn.set("xspr_" + enemy.id + id, true);
+
+			let size = Math.max(w, h);
+			DrawCharacter(char,
+				(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - (1)*(w - KinkyDungeonGridSizeDisplay)/2 + size * 0.25,
+				(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2 + size/6,
+				size/1200, false, board, undefined, CHIBIMOD, 0, enemy.flip, undefined, "spr_" + enemy.id + id);
+
+		} else {
+			let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
+				(tx + (enemy.offX || 0) - CamX + ((enemy.flip && !StaticView) ? 1 : 0))*KinkyDungeonGridSizeDisplay - ((enemy.flip && !StaticView) ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
+				(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+				w, h, undefined, o);
+			if (!StaticView) {
+				if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+				else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+			}
 		}
+
 
 	} else {
 		let sp = buffSprite || enemy.Enemy.bound;
@@ -690,13 +721,39 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 			if (!o) o = {zIndex: zIndex};
 			else o.zIndex = zIndex;
 		}
-		let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + dir + sp + ".png",
-			(tx + (enemy.offX || 0) - CamX + ((enemy.flip && !StaticView) ? 1 : 0))*KinkyDungeonGridSizeDisplay - ((enemy.flip && !StaticView) ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
-			(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
-			w, h, undefined, o);
-		if (!StaticView) {
-			if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
-			else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+		if (((KDToggles.ShowJailedNPCSprites && KDIsImprisoned(enemy)))
+			&& KDNPCChar.get(enemy.id)) {
+			let char = KDNPCChar.get(enemy.id);
+			// We refresh
+			if (enemy.refreshSprite
+				|| !kdpixisprites.get("xspr_" + enemy.id + id)) {
+				KinkyDungeonCheckClothesLoss = true;
+				if (!NPCTags.get(char)) {
+					NPCTags.set(char, new Map());
+				}
+				NPCTags.set(char, KinkyDungeonUpdateRestraints(char, enemy.id, 0));
+				enemy.refreshSprite = false;
+			}
+			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[enemy.id + ''] : undefined);
+
+			kdpixisprites.set("xspr_" + enemy.id + id, {}); // Hijack pixisprites due to desired functionality
+			kdSpritesDrawn.set("xspr_" + enemy.id + id, true);
+
+			let size = Math.max(w, h);
+			DrawCharacter(char,
+				(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - (1)*(w - KinkyDungeonGridSizeDisplay)/2 + size * 0.25,
+				(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2+ size/6,
+				size/1200, false, board, undefined, CHIBIMOD, 0, enemy.flip, undefined, "spr_" + enemy.id + id);
+
+		} else {
+			let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + dir + sp + ".png",
+				(tx + (enemy.offX || 0) - CamX + ((enemy.flip && !StaticView) ? 1 : 0))*KinkyDungeonGridSizeDisplay - ((enemy.flip && !StaticView) ? -1 : 1)*(w - KinkyDungeonGridSizeDisplay)/2,
+				(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2,
+				w, h, undefined, o);
+			if (!StaticView) {
+				if (enemy.flip && spr?.scale.x > 0) spr.scale.x = -spr.scale.x;
+				else if (!enemy.flip && spr?.scale.x < 0) spr.scale.x = -spr.scale.x;
+			}
 		}
 	}
 	return sprite;
@@ -1580,7 +1637,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 				// Draw thought bubbles
 				let yboost = II * -20;
 				if (canSee) {
-					if (enemy.Enemy.specialdialogue || enemy.specialdialogue) {
+					if ((KDToggles.ForceWarnings || KDMouseInPlayableArea()) && (enemy.Enemy.specialdialogue || enemy.specialdialogue)) {
 						KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + "Conditions/Dialogue.png",
 							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 							KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
@@ -1753,6 +1810,66 @@ function KDGetNameColor(id) {
 }
 
 /**
+ * Resyncs the boundlevel so it matches en.specialBoundLevel
+ * Or else sets it to 0
+ * @param {entity} en
+ */
+function KDResyncBondage(en) {
+	if (en.specialBoundLevel) {
+		en.boundLevel = 0;
+		for (let value of Object.values(en.specialBoundLevel)) {
+			en.boundLevel += value;
+		}
+		if (en.boundLevel == 0) {
+			en.specialBoundLevel = undefined;
+		}
+	} else if (en.boundLevel) {
+		en.boundLevel = 0;
+	}
+}
+
+/**
+ * Sets the bondage of an enemy to be the expected amount
+ * @param {entity} en
+ * @param {number} mode -1 is downgrade only, +1 is upgrade only
+ */
+function KDSetToExpectedBondage(en, mode = 0) {
+	let expected = KDGetExpectedBondageAmount(en.id);
+	let expectedSum = 0;
+	if (expected) for (let value of Object.values(expected)) {
+		expectedSum += value;
+	}
+	if (mode == 0) {
+		if (expectedSum > 0) {
+			en.boundLevel = expectedSum;
+			en.specialBoundLevel = JSON.parse(JSON.stringify(expected));
+		} else {
+			en.boundLevel = 0;
+			en.specialBoundLevel = undefined;
+		}
+	} else if (mode > 0) {
+		if (expectedSum > (en.boundLevel || 0)) {
+			KDResyncBondage(en);
+			for (let entry of Object.entries(expected)) {
+				en.specialBoundLevel[entry[0]] = Math.max(en.specialBoundLevel[entry[0]] || 0, entry[1]);
+			}
+			KDResyncBondage(en);
+		}
+	} else if (mode < 0) {
+		if (expectedSum > 0 && expectedSum < (en.boundLevel || 0)) {
+			KDResyncBondage(en);
+			for (let entry of Object.entries(expected)) {
+				en.specialBoundLevel[entry[0]] = Math.min(en.specialBoundLevel[entry[0]] || 0, entry[1] || 0);
+			}
+			KDResyncBondage(en);
+		} else if (expectedSum == 0) {
+			en.boundLevel = 0;
+			en.specialBoundLevel = undefined;
+		}
+	}
+}
+
+/**
  *
  * @param {entity} en
  */
@@ -1765,6 +1882,8 @@ function KDFreeNPC(en) {
 	if (KDGameData.Collection[en.id + ""] && KDIsNPCPersistent(en.id)) {
 		KDGetPersistentNPC(en.id).collect = true; // Collect them)
 	}
+	if (en.hp < 0.5) en.hp = 0.5;
+	KDSetToExpectedBondage(en, 0);
 	KDUpdatePersistentNPC(en.id);
 }
 /**
@@ -1775,6 +1894,14 @@ function KDFreeNPCID(id) {
 	let en = KDGetGlobalEntity(id);
 	KDFreeNPC(en);
 }
+
+let KDDrewEnemyTooltip = "";
+let KDDrewEnemyTooltipThisFrame = "";
+
+/**
+ * @type {entity}
+ */
+let KDCurrentEnemyTooltip = null;
 
 /**
  *
@@ -1801,6 +1928,27 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		size: 24,
 		center: true,
 	});
+
+	KDCurrentEnemyTooltip = enemy;
+
+	KDQuickGenNPC(enemy);
+
+	if (KDNPCChar.get(enemy.id)) {
+		if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "" + enemy.id) {
+			KDDrewEnemyTooltip = "";
+		}
+		KDDrewEnemyTooltipThisFrame = "" + enemy.id;
+		TooltipList.push({
+			str: "",
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 144,
+			center: true,
+			npcSprite: KDNPCChar.get(enemy.id),
+			id: enemy.id,
+		});
+	}
+
 	TooltipList.push({
 		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + "/" + Math.round(enemy.Enemy.maxhp * 10),
 		fg: "#ffffff",
@@ -2166,6 +2314,73 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		}
 		//}
 	}
+	return KDDrawTooltip(TooltipList, offset);
+}
+
+
+
+/**
+ *
+ * @param {entity} enemy
+ * @param {number} offset
+ * @returns {number}
+ */
+function KDDrawEnemyDialogue(enemy, offset) {
+	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
+	let TooltipList = [];
+	if (KDEnemyName(enemy))
+		TooltipList.push({
+			str: KDEnemyName(enemy),
+			fg: KDEnemyNameColor(enemy),
+			bg: "#000000",
+			size: 28,
+			center: true,
+		});
+	TooltipList.push({
+		str: TextGet("Name" + enemy.Enemy.name),
+		fg: enemy.Enemy.color || "#ff5555",
+		bg: "#000000",
+		size: 24,
+		center: true,
+	});
+
+	KDCurrentEnemyTooltip = enemy;
+
+	KDQuickGenNPC(enemy, true);
+
+	if (KDNPCChar.get(enemy.id)) {
+		if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "d" + enemy.id) {
+			KDDrewEnemyTooltip = "";
+		}
+		KDDrewEnemyTooltipThisFrame = "d" + enemy.id;
+		TooltipList.push({
+			str: "",
+			fg: "#ffffff",
+			bg: "#000000",
+			size: 500,
+			center: true,
+			npcSprite: KDNPCChar.get(enemy.id),
+			id: enemy.id,
+		});
+	}
+
+	TooltipList.push({
+		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + "/" + Math.round(enemy.Enemy.maxhp * 10),
+		fg: "#ffffff",
+		bg: "#000000",
+		size: 20,
+		center: true,
+	});
+	if (enemy.boundLevel) {
+		TooltipList.push({
+			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel/enemy.Enemy.maxhp*100) + "%",
+			fg: "#ffae70",
+			bg: "#000000",
+			size: 20,
+			center: true,
+		});
+	}
+
 	return KDDrawTooltip(TooltipList, offset);
 }
 
@@ -7849,6 +8064,8 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
 		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 			KDGetPersistentNPC(data.enemy.id).collect = false;
 
+		if (data.enem.hp <= 0.5) data.enem.hp = 0.51;
+
 		KDUpdateEnemyCache = true;
 
 		return npc;
@@ -8418,6 +8635,20 @@ function KDEnemyStruggleTurn(enemy, delta, allowStruggleAlwaysThresh) {
 		}
 	}
 
+	if (enemy.specialBoundLevel) {
+		let sum = 0;
+		for (let entry of Object.values(enemy.specialBoundLevel)) {
+			sum += entry;
+		}
+		if (sum > 0) {
+			for (let entry of Object.keys(enemy.specialBoundLevel)) {
+				enemy.specialBoundLevel[entry] *= enemy.boundLevel / sum;
+			}
+		} else {
+			enemy.specialBoundLevel = undefined;
+		}
+	}
+
 	/** Do NPC restraint struggling */
 	let struggleNPCTarget = KDNPCStruggleTick(enemy.id, delta);
 	if (struggleNPCTarget) {
@@ -8478,4 +8709,56 @@ function KDGetEnemyTypeRep(enemy, faction) {
 
 	}
 	return amount;
+}
+/**
+ *
+ * @param {entity} enemy
+ */
+function KDQuickGenNPC(enemy, force) {
+	/** @type {KDCollectionEntry | KDPersistentNPC} */
+	let value = KDGameData.Collection[enemy.id + ""];
+	if (force && !value && !KDIsNPCPersistent(enemy.id)) {
+		value = KDGetVirtualCollectionEntry(enemy.id);
+	}
+	if ((value || KDIsNPCPersistent(enemy.id))) {
+		let id = value.id || KDGetPersistentNPC(enemy.id).id;
+
+		let enemyType = enemy.Enemy;
+		let NPC = null;
+		if (!KDNPCChar.get(id)) {
+			NPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + id));
+			KDNPCChar.set(id, NPC);
+			KDNPCChar_ID.set(NPC, id);
+			value = value || KDGetPersistentNPC(enemy.id);
+			// Use a pointer
+			KDNPCStyle.set(NPC, value);
+			if (!value.bodystyle || !value.facestyle || !value.hairstyle || value.cosplaystyle == undefined) {
+				if (enemyType?.style || enemyType.style) {
+					if (KDModelStyles[enemyType?.style || enemyType.style]) {
+						let style = KDModelStyles[enemyType?.style || enemyType.style];
+						if (!value.bodystyle && style.Bodystyle) {
+							value.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
+						}
+						if (!value.hairstyle && style.Hairstyle) {
+							value.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
+						}
+						if (!value.facestyle && style.Facestyle) {
+							value.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
+						}
+						if (!value.cosplaystyle && style.Cosplay) {
+							value.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
+						}
+
+					}
+				}
+			}
+			if (enemyType?.outfit || enemyType.outfit) {
+				KinkyDungeonSetDress(enemyType?.outfit || enemyType.outfit, enemyType?.outfit || enemyType.outfit, NPC, true);
+			}
+			KinkyDungeonCheckClothesLoss = true;
+		} else {
+			NPC = KDNPCChar.get(id);
+			KDNPCChar_ID.set(NPC, id);
+		}
+	}
 }

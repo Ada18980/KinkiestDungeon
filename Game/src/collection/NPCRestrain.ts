@@ -633,9 +633,9 @@ function KDGetNPCStrugglePoints(id: number): Record<string, number> {
 	let result : Record<string, number> = {};
 	let expected = KDGetExpectedBondageAmount(id);
 	let actual = KDGetGlobalEntity(id)?.specialBoundLevel;
-	if (actual) {
+	if (expected) {
 		for (let entry of Object.entries(expected)) {
-			result[entry[0]] = entry[1] - (actual[entry[0]] || 0);
+			result[entry[0]] = entry[1] - (actual ? actual[entry[0]] || 0 : 0);
 		}
 	}
 
@@ -650,7 +650,7 @@ function KDGetNPCEscapableRestraints(id: number): {slot: string, inv: NPCRestrai
 		let strugglePoints = KDGetNPCStrugglePoints(id);
 		for (let entry of entries) {
 			let stats = KDGetRestraintBondageStats(entry[1]);
-			if (strugglePoints[stats.type] > stats.amount) {
+			if (strugglePoints[stats.type] >= stats.amount) {
 				retval.push({slot: entry[0], inv: entry[1]});
 			}
 		}
@@ -790,7 +790,9 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 			let entity = DialogueCreateEnemy(point.x, point.y, value.type, value.id)
 			if (entity) {
 				entity.hp = entity.Enemy.maxhp;
-				entity.boundLevel = 0;
+
+				KDSetToExpectedBondage(entity, -1);
+
 				KDMakeHostile(entity, 300);
 				KinkyDungeonSendDialogue(entity,
 					TextGet((KDHelpless(entity) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(entity) ? KDGetEnemyPlayLine(entity) : "") + Math.floor(KDRandom() * 3))

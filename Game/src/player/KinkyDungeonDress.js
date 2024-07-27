@@ -432,7 +432,6 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints) 
 
 
 
-		KinkyDungeonCheckClothesLoss = false;
 		let AllowedArmPoses = StandalonePatched ? KDGetAvailablePosesArms(Character) : [];
 		let AllowedLegPoses = StandalonePatched ? KDGetAvailablePosesLegs(Character) : [];
 
@@ -639,7 +638,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints) 
 				Xray.push("XrayBra");
 			}
 		}
-		UpdateModels(Character, Xray);
+		if (KinkyDungeonCheckClothesLoss || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
+			UpdateModels(Character, Xray);
 		let ReUpdate = false;
 
 		let hairstyle = KDNPCStyle.get(Character)?.hairstyle || "Default";
@@ -672,10 +672,13 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints) 
 			}
 		}
 
-		if (ReUpdate) UpdateModels(Character, Xray);
+		if (KinkyDungeonCheckClothesLoss || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
+			if (ReUpdate) UpdateModels(Character, Xray);
 		if (Force) {
 			ForceRefreshModels(Character);
 		}
+
+		KinkyDungeonCheckClothesLoss = false;
 	}
 }
 

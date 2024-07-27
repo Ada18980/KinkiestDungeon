@@ -1079,4 +1079,5 @@ function KDImprisonEnemy(e, noJam, dialogue = "PrisonerJail", restraint) {
 	}
 	e.playerdmg = undefined;
 	if (e.hp <= 0.5) e.hp = 0.51;
+	KDSetToExpectedBondage(e, 1);
 }

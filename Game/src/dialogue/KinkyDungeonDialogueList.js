@@ -2673,7 +2673,6 @@ let KDDialogue = {
 						if (KinkyDungeonCanUseKey() || !KinkyDungeonIsArmsBound()) {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
-								e.boundLevel = 0;
 								KDFreeNPC(e);
 								e.allied = 9999;
 								e.specialdialogue = undefined;
@@ -2732,7 +2731,6 @@ let KDDialogue = {
 								} else {
 									KinkyDungeonSetFlag("LockJamPity", 0);
 									let e = KDDialogueEnemy();
-									e.boundLevel = 0;
 									KDFreeNPC(e);
 									e.allied = 9999;
 									e.specialdialogue = undefined;
@@ -2799,15 +2797,8 @@ let KDDialogue = {
 						if (KinkyDungeonCanUseKey() || !KinkyDungeonIsArmsBound()) {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
-								e.boundLevel = 0;
 								KDFreeNPC(e);
 								e.specialdialogue = undefined;
-								if (KDAllied(e)) {
-									e.faction = "Player";
-									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
-									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-								}
-								KinkyDungeonRedKeys -= 1;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
@@ -2835,6 +2826,30 @@ let KDDialogue = {
 					},
 				}
 			},
+			"Flip": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KDDialogueEnemy()) {
+						let e = KDDialogueEnemy();
+
+						e.flip = !e.flip;
+						KinkyDungeonSetEnemyFlag(e, "blush", 2);
+						KDUpdatePersistentNPC(e.id);
+						KinkyDungeonCheckClothesLoss = true;
+
+						KDGameData.CurrentDialogStage = "";
+						KDGameData.CurrentDialogMsg = "PrisonerJailOwnFlip";
+					}
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Pick": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {
@@ -2843,16 +2858,8 @@ let KDDialogue = {
 							if (KDDialogueEnemy()) {
 								if (KDDialogueEnemy()) {
 									let e = KDDialogueEnemy();
-									e.boundLevel = 0;
 									KDFreeNPC(e);
 									e.specialdialogue = undefined;
-									KDAggroMapFaction();
-
-									if (KDAllied(e)) {
-										e.faction = "Player";
-										KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
-										KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-									}
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
 									if (e.Enemy.tags.gagged) {
 										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";

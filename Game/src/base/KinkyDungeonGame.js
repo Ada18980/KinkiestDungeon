@@ -4550,6 +4550,8 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KDSortCollection();
 				}
 				KDFreeNPC(Enemy);
+				Enemy.hp = 0;
+				KDSetToExpectedBondage(Enemy, 0);
 				KDAddCollection(Enemy);
 				if (KDIsNPCPersistent(Enemy.id)) {
 					KDGetPersistentNPC(Enemy.id).collect = true;

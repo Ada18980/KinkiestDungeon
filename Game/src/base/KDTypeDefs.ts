@@ -1559,6 +1559,8 @@ interface String {
 }
 
 interface entity {
+	refreshSprite?: boolean,
+
 	/** Optional leash data, used for both NPC and player */
 	leash?: KDLeashData,
 	blockedordodged?: number,
@@ -3460,8 +3462,8 @@ interface KDCollectionEntry {
 	Enemy?: enemy, // for unique ones
 	/** Todo remove this and replace with persistent NPC flag */
 	flags?: Record<string, number>,
-	outfit?: string,
 	customOutfit?: string,
+	outfit?: string,
 	hairstyle?: string,
 	bodystyle?: string,
 	facestyle?: string,

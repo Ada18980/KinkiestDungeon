@@ -233,7 +233,7 @@ function GetOverCorset(BaseModel: string): Model {
 function DisposeCharacter(C: Character, resort: boolean = true, deleteSpecial: boolean = false): void {
 	if (KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
-			kdcanvas.removeChild(Container.Container);
+			Container.Container.parent.removeChild(Container.Container);
 			Container.Container.destroy();
 		}
 	}
@@ -264,7 +264,8 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
 	let C = KDNPCChar.get(id);
 	if (C && KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {
-			kdcanvas.removeChild(Container.Container);
+			if (Container.Container.parent)
+				Container.Container.parent.removeChild(Container.Container);
 			Container.Container.destroy();
 		}
 	}
@@ -303,7 +304,9 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
  * @param StartMods - Mods applied
  * @param flip - Mods applied
  */
-function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false, extraPoses: string[] = undefined): void {
+function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false, extraPoses: string[] = undefined, containerID?: string): void {
+	if (!DrawCanvas) DrawCanvas = kdcanvas;
+
 	// Update the RenderCharacterQueue
 	let renderqueue = RenderCharacterQueue.get(C);
 	if (renderqueue && !RenderCharacterLock.get(C)) {
@@ -330,7 +333,8 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		UpdateModels(C);
 	}
 
-	let containerID = `${Math.round(X)},${Math.round(Y)},${Zoom}`;
+	if (!containerID)
+		containerID = `${Math.round(X)},${Math.round(Y)},${Zoom}`;
 	let refreshfilters = false;
 
 	if (StruggleAnimation) // PROTOTYPE struggle animation
@@ -353,7 +357,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 				// y
 				buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.001*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % timt)/timt * 4*Math.PI)*Zoom;
 				if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
-					KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
+					KDDraw(DrawCanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
 					-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
 					undefined, {
 						zIndex: 100,
@@ -375,8 +379,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		MC.Refresh.delete(containerID);
 		//console.log("Refreshed!")
 		// Refresh the container!
-		//kdcanvas.removeChild(MC.Containers.get(containerID).Container);
-		kdcanvas.removeChild(MC.Containers.get(containerID).Mesh);
+		DrawCanvas.removeChild(MC.Containers.get(containerID).Mesh);
 		MC.Containers.get(containerID).Container.destroy();
 		MC.Containers.get(containerID).Mesh.destroy();
 		MC.Containers.get(containerID).RenderTexture.destroy(true);
@@ -416,11 +419,10 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		Container.Mesh.pivot.set(MODELWIDTH*MODEL_SCALE * 1 * Zoom, MODELHEIGHT*MODEL_SCALE * 1 * Zoom);
 		created = true;
 		MC.Containers.set(containerID, Container);
-		//kdcanvas.addChild(Container.Container);
-		kdcanvas.addChild(Container.Mesh);
+		DrawCanvas.addChild(Container.Mesh);
 		Container.Container.sortableChildren = true;
 		//Container.Container.cacheAsBitmap = true;
-		if (zIndex) Container.Container.zIndex = zIndex;
+		if (zIndex) Container.Mesh.zIndex = zIndex;
 		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
 
@@ -498,6 +500,12 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 	// Store it in the map so we don't have to create it again
 	if (!KDCurrentModels.get(C)) {
 		KDCurrentModels.set(C, MC);
+	}
+
+	// Move mesh
+	if (MC.Containers.get(containerID)) {
+		MC.Containers.get(containerID).Mesh.x = X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25;
+		MC.Containers.get(containerID).Mesh.y = Y + Zoom * MODEL_SCALE * MODELHEIGHT * 0.5;
 	}
 }
 /** Future function */

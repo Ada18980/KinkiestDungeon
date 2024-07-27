@@ -207,9 +207,11 @@ let KDToggles = {
 	NoDmgFloaters: false,
 	NoForceGreet: false,
 	StruggleBars: true,
+	ShowJailedNPCSprites: true,
 };
 
 let KDToggleCategories = {
+	ShowJailedNPCSprites: "GFX",
 	StruggleBars: "UI",
 	SpellBook: "UI",
 	FastFloaters: "UI",
@@ -1290,8 +1292,8 @@ function KinkyDungeonRun() {
 			KDGlobalFilterCacheRefresh = true;
 		}
 
-		for (let MC of KDCurrentModels.values()) {
-
+		for (let ent of KDCurrentModels.entries()) {
+			let MC = ent[1];
 
 			// Cull containers that werent drawn this turn
 			for (let Container of MC.Containers.entries()) {
@@ -1302,7 +1304,8 @@ function KinkyDungeonRun() {
 					Container[1].Mesh.destroy();
 					Container[1].Container.destroy();
 					Container[1].RenderTexture.destroy();
-				} else if (refresh)
+				} else if (refresh && (ent[0] == KinkyDungeonPlayer || ent[0] == KDSpeakerNPC))
+					// We only refresh NPCs that are front and center, for optimization reasons
 					MC.Update.delete(Container[0]);
 			}
 
@@ -2844,10 +2847,13 @@ function KDCullSprites() {
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
 			if (cull) {
-				sprite[1].parent.removeChild(sprite[1]);
+				if (sprite[1].parent) {
+					sprite[1].parent.removeChild(sprite[1]);
+				}
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				kdpixisprites.delete(sprite[0]);
-				sprite[1].destroy();
+				if (sprite[1].destroy)
+					sprite[1].destroy();
 			} else sprite[1].visible = false;
 		}
 	}

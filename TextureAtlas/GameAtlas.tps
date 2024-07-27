@@ -2889,6 +2889,7 @@
             <key type="filename">../Game/Buffs/status/freeHands.png</key>
             <key type="filename">../Game/Buffs/status/freeLegs.png</key>
             <key type="filename">../Game/Buffs/status/freeMouth.png</key>
+            <key type="filename">../Game/Buffs/training/Heels.png</key>
             <key type="filename">../Game/Buffs/visibility.png</key>
             <key type="filename">../Game/Buffs/weaponTag/bow.png</key>
             <key type="filename">../Game/Buffs/weaponTag/clumsy.png</key>

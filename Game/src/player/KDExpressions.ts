@@ -428,6 +428,7 @@ let KDExpressions: Record<string, KDExpression> = {
 		stackable: true,
 		priority: 1,
 		criteria: (C, flags) => {
+			if (flags.get("blush")) return true;
 			let entity = KDGetCharacterEntity(C);
 			if (entity && !entity.player) return entity.distraction > 0.0 * entity.Enemy.maxhp && entity.distraction < 0.9 * entity.Enemy.maxhp;
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.1) {

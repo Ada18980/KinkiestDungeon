@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.28"
+KDVersionStr,"5.3.29"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -45,6 +45,8 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+KDToggleShowNPCSprites,Show free characters on map
+KDToggleShowJailedNPCSprites,Show jailed characters on map
 KDToggleStruggleBars,Show Struggle Bars
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)
@@ -12531,8 +12533,10 @@ rPrisonerJailOwnJammed,"(The SPEAKER is locked in high-security manacles.|The sa
 
 dPrisonerJailOwn_Unlock,Use a key to unlock her
 dPrisonerJailOwn_Pick,"Try to pick her restraints"
-dcOwn_Word,Use a command word
+dPrisonerJailOwn_Word,Use a command word
+dPrisonerJailOwn_Flip,Flip her around
 dPrisonerJailOwnJammedRecent_Apologize,Apologize profusely!
+rPrisonerJailOwnFlip,You spin her right round!
 
 
 

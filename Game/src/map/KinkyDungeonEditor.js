@@ -280,6 +280,8 @@ function KDDrawTileEditor() {
 		KinkyDungeonContext.fillStyle = "rgba(0,0,0.0,1.0)";
 		KinkyDungeonContext.fillRect(0, 0, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height);
 		KinkyDungeonContext.fill();
+		KinkyDungeonCamXLast = KinkyDungeonCamX;
+		KinkyDungeonCamYLast = KinkyDungeonCamY;
 		KinkyDungeonCamX = KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2);
 		KinkyDungeonCamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2);
 

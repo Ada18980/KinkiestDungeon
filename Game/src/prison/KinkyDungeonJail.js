@@ -1581,8 +1581,7 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 						}
 
 					if (!KDEnemyHasFlag(e, "imprisoned") && e.boundLevel && !KDHelpless(e)) {
-						e.boundLevel = 0;
-						e.specialBoundLevel = {};
+						KDSetToExpectedBondage(e, -1);
 					}
 				}
 			if (e.hostile < 9000) e.hostile = 0;
@@ -1675,7 +1674,7 @@ function KDKickEnemy(e, minDist = 10) {
 			}
 
 
-			if (e.boundLevel) e.boundLevel = 0;
+			if (e.boundLevel) KDSetToExpectedBondage(e, -1);
 		}
 		if (e.hostile < 9000) e.hostile = 0;
 		KDExpireFlags(e);

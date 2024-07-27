@@ -32,6 +32,7 @@ TODO remove hogtie when released
 
 5.3.29
 - Added training level indicator in buffs menu
+- Added NPC images in dialogue, tooltip, and (toggleable in GFX settings) on the field
 
 5.3.28
 - MODDERS: KinkyDungeonHiddenFactions is now a Map() instead of a list

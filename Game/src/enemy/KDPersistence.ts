@@ -16,6 +16,13 @@ interface KDPersistentNPC {
 	jailed?: boolean,
 	/** NPC is special and should remain persistent */
 	special?: boolean,
+
+	/** Visual */
+	outfit?: string,
+	hairstyle?: string,
+	bodystyle?: string,
+	facestyle?: string,
+	cosplaystyle?: string,
 }
 
 interface WorldCoord {
@@ -36,6 +43,17 @@ function KDUpdatePersistentNPC(id: number, force: boolean = false) {
 		if (enemy) {
 			let entry = KDPersistentNPCs[id];
 			entry.entity = enemy;
+
+			let value = KDGameData.Collection[enemy.id + ""];
+			if (value) {
+				// Mirror mirror in the collection
+				// Who is the cutest of them all...
+				entry.outfit = value.outfit;
+				entry.hairstyle = value.hairstyle;
+				entry.bodystyle = value.bodystyle;
+				entry.facestyle = value.facestyle;
+				entry.cosplaystyle = value.cosplaystyle;
+			}
 
 			KDSetNPCLocation(id, KDGetCurrentLocation());
 		}
@@ -82,6 +100,14 @@ function KDGetPersistentNPC(id: number, entity?: entity): KDPersistentNPC {
 				collect: false,
 				captured: false,
 				opinion: enemy.opinion || 0,
+
+				// Mirror mirror in the collection
+				// Who is the cutest of them all...
+				outfit: KDGameData.Collection[enemy.id + ""]?.outfit,
+				hairstyle: KDGameData.Collection[enemy.id + ""]?.outfit,
+				bodystyle: KDGameData.Collection[enemy.id + ""]?.bodystyle,
+				facestyle: KDGameData.Collection[enemy.id + ""]?.facestyle,
+				cosplaystyle: KDGameData.Collection[enemy.id + ""]?.cosplaystyle,
 			};
 			KDPersistentNPCs[enemy.id] = entry;
 		}
