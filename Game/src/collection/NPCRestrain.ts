@@ -714,13 +714,14 @@ function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 		if (!value.escaped) {
 			if (!KDGetGlobalEntity(value.id) || !(KDGetGlobalEntity(value.id).boundLevel)) {
 				// This NPC escapes!!!!
-				if (value.escapegrace) {
+				if (value.escapegrace && KDCollHasFlag(value.id, "escapegrace")) {
 					value.escaped = true;
 					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscaped").replace(
 						"NPC",
 						value.name
 					), "#ff5555", 1);
 				} else {
+					KDSetCollFlag(value.id, "escapegrace", -1);
 					value.escapegrace = true;
 					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscapeGrace").replace(
 						"NPC",
@@ -787,7 +788,7 @@ function KDTriggerNPCEscape(maxNPC: number = 10) {
 		let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, undefined, undefined, false);
 
 		if (point) {
-			let entity = DialogueCreateEnemy(point.x, point.y, value.type, value.id)
+			let entity = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true)
 			if (entity) {
 				entity.hp = entity.Enemy.maxhp;
 

@@ -133,6 +133,15 @@ let alts = {
 			brightness: 6,
 		},
 
+
+		updatescript: (delta) => {
+			for (let en of KDMapData.Entities) {
+				if (en.hp < en.Enemy.maxhp && KDAllied(en)) {
+					en.hp = Math.min(en.Enemy.maxhp, en.hp + 0.5);
+				}
+			}
+		},
+
 		//constantX: true,
 		width: 9,
 		height: 8,
@@ -299,6 +308,7 @@ let alts = {
 
 			return true; // Returns whether or not to repopulate this map
 		},
+		norestock: true,
 		skin: "vault",
 		musicParams: "Summit",
 		lightParams: "Summit",

@@ -1064,14 +1064,14 @@ let KDCollectionTabDraw = {
 				false, undefined, true);
 			if (rest) {
 				let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
-					(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id);
+					(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id, true);
 				KDImprisonEnemy(en, true, "PrisonerJailOwn", {
 					name: rest.name,
 					lock: "White",
 					id: KinkyDungeonGetItemID(),
 					faction: KDDefaultNPCBindPalette,
 				});
-				en.ceasefire = 9999;
+				//en.ceasefire = 9999;
 				en.playWithPlayer = 0;
 				KinkyDungeonCheckClothesLoss = true;
 				KDUpdatePersistentNPC(en.id, true);

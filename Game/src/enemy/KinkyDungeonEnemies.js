@@ -3140,6 +3140,8 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 
 	KDGameData.DollCount = 0;
 
+	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+
 	// Loop 1
 	for (let enemy of KDMapData.Entities) {
 		let delta = enemyDelta[enemy.id] || maindelta;
@@ -3506,9 +3508,14 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 					//TODO pass items to more dominant nearby enemies
 					if (enemy.items && !KDEnemyHasFlag(enemy, "shop")) {
 						let light = KinkyDungeonVisionGet(enemy.x, enemy.y);
-						if (light == 0 && !enemy.aware && KDRandom() < 0.2) {
+						if (light == 0 && !enemy.aware && KDRandom() < 0.2 && !KDIsImprisoned(enemy)) {
 							//KDClearItems(enemy);
-							KDRestockRestraints(enemy, enemy.Enemy.RestraintFilter?.restockPercent || 0.5);
+							if (!altType?.norestock)
+								KDRestockRestraints(enemy, enemy.Enemy.RestraintFilter?.restockPercent || 0.5);
+							if (enemy.hp < 0.5 * enemy.Enemy.maxhp) {
+								// Todo unify heal
+								enemy.hp = Math.min(enemy.Enemy.maxhp, enemy.hp + 0.1);
+							}
 						}
 					}
 
@@ -8039,10 +8046,11 @@ function KDRemoveFromParty(enemy, capture) {
  * @param {entity} entity
  * @param {boolean} [makepersistent] - If true, the game will update the npc to be persistent
  * @param {boolean} [dontteleportpersistent] - If true, the game will create a new NPC not a persistent one
+ * @param {boolean} [noLoadout]
  * @returns {entity}
  */
 
-function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
+function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) {
 	let data = {
 		enemy: entity,
 		x: entity.x,
@@ -8095,7 +8103,8 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent) {
 	}
 	KinkyDungeonSendEvent("addEntity", data);
 	KDMapData.Entities.push(data.enemy);
-	KDSetLoadout(data.enemy, data.loadout);
+	if (!noLoadout)
+		KDSetLoadout(data.enemy, data.loadout);
 	if (!data.enemy.data && data.enemy.Enemy.data) data.enemy.data = data.enemy.Enemy.data;
 	if (data.data) {
 		if (!data.enemy.data) data.enemy.data = {};

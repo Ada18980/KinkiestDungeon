@@ -5026,6 +5026,11 @@ function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
 
 	KinkyDungeonUpdateAngel(delta);
 
+	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+	if (altType?.updatescript) {
+		altType.updatescript(delta);
+	}
+
 	if (KDPlayer().leash)
 		KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
 
