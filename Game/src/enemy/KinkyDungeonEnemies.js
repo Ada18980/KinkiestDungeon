@@ -1279,8 +1279,9 @@ function KDMaxEnemyViewDist(enemy) {
  */
 function KDGetEnemyStruggleMod(enemy) {
 	let level = KDBoundEffects(enemy);
-	let mult = 0.1;
+	let mult = enemy.hp > 0.51 ? 0.1 : 0;
 
+	if (KDIsImprisoned(enemy)) return 0; // Cant help imprisoned enemies, have to free them
 
 	if (mult > 0) {
 		if (enemy.disarm > 0) mult *= 0.5;
@@ -1296,7 +1297,7 @@ function KDGetEnemyStruggleMod(enemy) {
 		if (enemy.distraction > 0) mult *= 1 / (1 + 2 * enemy.distraction / enemy.Enemy.maxhp);
 	}
 
-	if (!KDEnemyHasFlag(enemy, "imprisoned") && enemy.hp > 0.51 && (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
+	if (enemy.hp > 0.51 && (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
 		return en != enemy && en.Enemy.bound && !KDHelpless(enemy) && KDBoundEffects(en) < 4 && !KDEnemyHasFlag(en, "imprisoned") && !KinkyDungeonIsDisabled(en) && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
 	}) || (KDAllied(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)))) {
 		mult += 0.15;
@@ -1433,7 +1434,7 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 
 		let playerDist = Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y));
 		if (enemy.x >= CamX && enemy.y >= CamY && enemy.x < CamX + KinkyDungeonGridWidthDisplay && enemy.y < CamY + KinkyDungeonGridHeightDisplay
-			&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
+			&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && !KDIsImprisoned(enemy)) {
 			let II = 0;
 			// Draw bars
 			if ((!enemy.Enemy.stealth || KDAllied(enemy) || KDHelpless(enemy) || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
@@ -3756,6 +3757,9 @@ function KDMakeHostile(enemy, timer) {
 	if (!timer) timer = KDMaxAlertTimerAggro;
 	if (!enemy.hostile) enemy.hostile = timer;
 	else enemy.hostile = Math.max(enemy.hostile, timer);
+
+	delete enemy.ceasefire;
+	delete enemy.allied;
 }
 
 /**

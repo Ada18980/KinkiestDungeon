@@ -123,7 +123,7 @@ function KDDrawDialogue(delta) {
 								if (notGrey) {
 									KDOptionOffset = 0;
 									KDDialogueData.CurrentDialogueIndex = 0;
-									KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true});
+									KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true, enemy: KDGetSpeaker()?.id});
 								}
 								return true;
 							}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
