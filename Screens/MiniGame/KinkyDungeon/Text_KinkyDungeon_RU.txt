@@ -10467,7 +10467,7 @@ Target only Helpless enemies. Creates a fixture that increases passive mana reco
 Можно активировать только на беспомощных врагов. Создает приспособление, которое увеличивает пассивное восстановление маны из резерва маны, восстанавливает 50 Заряда и заставляет ближайших врагов получать на 50% больше психического урона и урона от очарования.
 You conjure a fixture to hold your helpless target in place!
 Вы создаете приспособление, удерживающее беспомощную цель на месте!
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 Вы в ужасе наблюдаете, как ваше собственное творение сковывает вас, фиксируя на месте с громким щелчком!
 Choose a helpless target
 Выберите беспомощную цель

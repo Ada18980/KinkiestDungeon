@@ -215,6 +215,20 @@ function KDGetSpeaker() {
 }
 
 /**
+ * Same as KDGetSpeaker
+ * @returns {entity}
+ */
+function KDDialogueEnemy() {
+	let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+		return enemy;
+	}
+	return null;
+}
+
+
+
+/**
  *
  * @returns {string}
  */
@@ -367,6 +381,8 @@ function KDDoDialogue(data) {
 	}
 	if (data.enemy) {
 		KDGameData.CurrentDialogMsgID = data.enemy;
+	} else {
+		KDGameData.CurrentDialogMsgID = 0;
 	}
 	if (data.personality)
 		KDGameData.CurrentDialogMsgPersonality = data.personality;
@@ -480,19 +496,6 @@ function DialogueCreateEnemy(x, y, Name, persistentid) {
 
 	return KDAddEntity(e, persistentid != undefined);
 }
-
-/**
- *
- * @returns {entity}
- */
-function KDDialogueEnemy() {
-	let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-		return enemy;
-	}
-	return null;
-}
-
 
 
 function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight) {

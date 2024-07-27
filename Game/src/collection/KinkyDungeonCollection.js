@@ -241,6 +241,15 @@ function KDGetModifiedOpinionID(id) {
 /**
  *
  * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDCapturable(enemy) {
+	return !(KDNoCaptureTypes.some((tag) => {return enemy.Enemy.tags[tag];}));
+}
+
+/**
+ *
+ * @param {entity} enemy
  * @param {string} [status]
  * @param {string} [status]
  * @param {string} [servantclass]
@@ -250,9 +259,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
-	if (KDNoCaptureTypes.some((tag) => {return enemy.Enemy.tags[tag];})) {
-		return;
-	}
+	if (!KDCapturable(enemy)) return;
 
 	if (!KDGameData.Collection["" + enemy.id]) {
 		// Add her

@@ -8587,8 +8587,8 @@ Target only Helpless enemies. Creates a fixture that increases passive mana reco
 Target only Helpless enemies. Creates a fixture that increases passive mana recovery, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage.
 You conjure a fixture to hold your helpless target in place!
 You conjure a fixture to hold your helpless target in place!
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 Choose a helpless target
 Choose a helpless target
 Lesser Flash

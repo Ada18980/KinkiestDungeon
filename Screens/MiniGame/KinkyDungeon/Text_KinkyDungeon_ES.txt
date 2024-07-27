@@ -8802,7 +8802,7 @@ Target only Helpless enemies. Creates a fixture that increases passive mana reco
 Apunta solo a enemigos indefensos. Crea un accesorio que aumenta la recuperación pasiva de maná, restaura 50 de carga y hace que los enemigos cercanos reciban un 50 % más de daño psíquico/encanto.
 You conjure a fixture to hold your helpless target in place!
 ¡Conjuras un accesorio para mantener a tu objetivo indefenso en su lugar!
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 ¡Miras con horror cómo tu propia creación te rodea, bloqueándote en su lugar con un fuerte clic!
 Choose a helpless target
 Elige un objetivo indefenso

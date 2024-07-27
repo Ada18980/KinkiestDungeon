@@ -8760,7 +8760,7 @@ Target only Helpless enemies. Creates a fixture that increases passive mana rege
 무력한 적만 대상으로 삼으십시오. 패시브 마나 재생을 증가시키고, 50 충전을 회복하고, 근처의 적이 50% 더 많은 매혹/정신 피해를 받도록 하는 고정물을 생성합니다.
 You conjure a fixture to hold your helpless target in place!
 당신은 무기력한 대상을 제자리에 고정시키기 위해 고정물을 불러냅니다!
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 당신은 당신 자신의 창조물이 당신을 둘러싸고, 큰 딸깍 소리와 함께 당신을 제자리에 고정시키는 것을 공포에 질려 지켜보고 있습니다!
 Choose a helpless target
 무력한 대상을 선택하십시오

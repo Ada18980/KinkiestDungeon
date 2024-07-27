@@ -46,7 +46,7 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
 KDToggleShowNPCSprites,Show free characters on map
-KDToggleShowJailedNPCSprites,Show jailed characters on map
+KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
 KDToggleStruggleBars,Show Struggle Bars
 KDToggleAllowSusMods,Allow Suspicious Mods
 KDToggleAutoLoadMods,Auto Load Mods (offline only)
@@ -6333,7 +6333,7 @@ KinkyDungeonSpellTargetPetsuit,Choose a helpless target
 KinkyDungeonSpellDisplayStand,Conjure Display Stand
 KinkyDungeonSpellDescriptionDisplayStand,"Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage."
 KinkyDungeonSpellCastDisplayStand,"You conjure a fixture to hold your helpless target in place!"
-KinkyDungeonSpellCastSelfDisplayStand,"You watch in horror as your own creation surrounds you, locking you in place with a hefty click!"
+KinkyDungeonSpellCastSelfDisplayStand,"You watch in horror as your own creation encircles you, locking you in place with a hefty click!"
 KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
 
 

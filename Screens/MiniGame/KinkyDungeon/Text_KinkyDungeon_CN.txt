@@ -8754,7 +8754,7 @@ Target only Helpless enemies. Creates a fixture that increases passive mana reco
 仅可对无助的敌人施放。创建一个装置，可以增加法力池中的被动法力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
 You conjure a fixture to hold your helpless target in place!
 你召唤出一个装置来束缚无助的目标！
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 你惊恐地看着你自己的创造物束缚着你，用沉重的锁将你固定在了原地！
 Lesser Flash
 小闪光

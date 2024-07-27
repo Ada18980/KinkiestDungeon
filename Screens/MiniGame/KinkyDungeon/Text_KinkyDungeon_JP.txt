@@ -10550,7 +10550,7 @@ Target only Helpless enemies. Creates a fixture that increases passive mana reco
 無力化した敵をディスプレイスタンドに飾り付ける。それが存在する限り、マナプールから得られるマナの回復量が増加し、即座に50のエネルギーを得る。また、ディスプレイスタンドの近くにいる敵は、魅了と物理属性のダメージが50%増加する。
 You conjure a fixture to hold your helpless target in place!
 無力化した敵をディスプレイスタンドに飾った！
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 自身の召喚したディスプレイスタンドに拘束されてしまった！
 Choose a helpless target
 無力なターゲットを選ぶ
@@ -20736,7 +20736,7 @@ Your RestraintName suddenly snap together as the EnemyName activates them!
 EnemyName が RestraintName をアクティブにしたようだ！
 Your harness projects energy tethers between your cuffs EnemyName activates it!
 EnemyName がハーネスをコントロールし、枷のエネルギーリンクをアクティブにした！
-Turn Count: 
+Turn Count:
 ターン数：
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -28858,7 +28858,7 @@ Visit the Summit to allow additional interactions with this facility.
 AMNT/MAXX Prisoners Assigned
 囚人数 AMNT/MAXX
 AMNT/MAXX Servants Assigned
-使用人の数 AMNT/MAXX 
+使用人の数 AMNT/MAXX
 
 Management
 管理
@@ -28984,7 +28984,7 @@ Metal
 金属
 Runes
 ルーン
-Stock: 
-在庫: 
-Inputs: 
-投入数: 
+Stock:
+在庫:
+Inputs:
+投入数:
