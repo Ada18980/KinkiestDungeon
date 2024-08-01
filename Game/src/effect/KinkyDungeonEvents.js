@@ -3645,7 +3645,7 @@ let KDEventMapSpell = {
 							power: 1,
 							endSleep: true, currentCount: -1, maxCount: 1, tags: ["quickness", "move", "attack", "cast"]
 						});
-						KinkyDungeonSendTextMessage(6, TextGet("KDCombatManeuver"), "#ffff33", 2);
+						KinkyDungeonSendActionMessage(6, TextGet("KDCombatManeuver"), "#ffff33", 3);
 					}
 				}
 			}
