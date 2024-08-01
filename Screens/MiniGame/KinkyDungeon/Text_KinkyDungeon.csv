@@ -23642,4 +23642,8 @@ KDNA,n/a
 
 KDTrainingLevelHeels,[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
 
+KinkyDungeonBuffQuickness,Phase Dance active. Your next move is instant.
+KinkyDungeonBuffCombatManeuverQuick,Combat Maneuver active. Your next move is instant.
+
 KDOccupied,"The furniture space is occupied"
+KDCombatManeuver,"Combat Maneuver: Your next move is instant."

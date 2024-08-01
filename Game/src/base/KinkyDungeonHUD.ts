@@ -2427,7 +2427,7 @@ function KDProcessBuffIcons(minXX, minYY, side = false) {
 		}
 	}
 
-	if (KinkyDungeonFlags.has("Quickness")) {
+	if (KinkyDungeonFlags.has("Quickness") || KDEntityBuffedStat(KDPlayer(), "Quickness")) {
 		statsDraw.quickness = {text: TextGet("KinkyDungeonPlayerQuickness"), icon: "quickness", category: "buffs", color: "#e7cf1a", bgcolor: "#333333", priority: 100};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerQuickness"), X1, 900 - i * 35, 200, "#e7cf1a", "#333333"); i++;
 	}

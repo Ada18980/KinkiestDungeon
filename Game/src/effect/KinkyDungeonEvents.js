@@ -3641,10 +3641,11 @@ let KDEventMapSpell = {
 						KinkyDungeonApplyBuffToEntity(KDPlayer(), {
 							id: "CombatManeuverQuick",
 							type: "Quickness",
-							duration: e.time,
+							duration: 2,
 							power: 1,
 							endSleep: true, currentCount: -1, maxCount: 1, tags: ["quickness", "move", "attack", "cast"]
 						});
+						KinkyDungeonSendTextMessage(6, TextGet("KDCombatManeuver"), "#ffff33", 2);
 					}
 				}
 			}
