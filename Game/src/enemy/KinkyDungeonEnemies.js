@@ -3302,6 +3302,11 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				if (enemy.bind <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "bind"});
 			}
+			if (enemy.immobile > 0) {
+				enemy.immobile -= delta;
+				if (enemy.immobile <= 0)
+					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "immobile"});
+			}
 			if (enemy.rage > 0) {
 				enemy.rage -= delta;
 				if (enemy.rage <= 0)
@@ -5951,7 +5956,7 @@ function KinkyDungeonNoEnemy(x, y, Player) {
  * @returns {boolean}
  */
 function KDIsImmobile(enemy, strict) {
-	return enemy?.Enemy && (enemy.Enemy.immobile || (!strict && enemy.Enemy.tags?.immobile) || KDEnemyHasFlag(enemy, "imprisoned"));
+	return enemy?.Enemy && (enemy.Enemy.immobile || enemy.immobile > 0 || (!strict && enemy.Enemy.tags?.immobile) || KDEnemyHasFlag(enemy, "imprisoned"));
 }
 
 // e = potential sub

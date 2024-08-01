@@ -1692,6 +1692,8 @@ interface entity {
 	allied?: number,
 	ceasefire?: number,
 	bind?: number,
+	/** Makes the enemy temporarily immobavle */
+	immobile?: number,
 	blind?: number,
 	disarm?: number,
 	slow?: number,
@@ -2932,6 +2934,7 @@ type KDBondageStatus = {
 	toy: number,
 	plug: number,
 	belt: number,
+	immobile: number,
 }
 
 type KDMapTile = {

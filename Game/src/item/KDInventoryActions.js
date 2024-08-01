@@ -1091,6 +1091,9 @@ let KDInventoryAction = {
 					if (status.bind) {
 						enemy.bind = Math.max(enemy.bind || 0, status.bind);
 					}
+					if (status.immobile) {
+						enemy.immobile = Math.max(enemy.immobile || 0, status.immobile);
+					}
 					if (status.slow) {
 						enemy.slow = Math.max(enemy.slow || 0, status.slow);
 					}

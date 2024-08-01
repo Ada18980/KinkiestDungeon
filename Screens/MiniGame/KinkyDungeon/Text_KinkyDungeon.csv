@@ -12578,6 +12578,13 @@ rFurnitureUse,"(You lock yourself in the furniture!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
 
+dFurniture_Enemy,(Try to lock NME into the furniture)
+rFurnitureEnemy,"(You close the furniture around your unfortunate victim!)"
+KDFurnEnemyDisabled,"Stun or disable her first."
+dFurniture_EnemyHelpless,(Secure NME into the furniture)
+rFurnitureEnemyHelpless,"(You lock her into the furniture so that she stays in place)"
+
+
 rTableFood,"FOODMSG|(It invites you to partake in its culinary delights)"
 rTableFoodEat,"(You eat the food and feel your willpower rising)"
 rTableFoodEatFail,"(Being gagged as you are you cannot enjoy the food)"

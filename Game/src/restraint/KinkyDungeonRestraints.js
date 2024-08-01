@@ -341,6 +341,7 @@ function KDRestraintBondageStatus(item) {
 				toy: 0,
 				plug: 0,
 				belt: 0,
+				immobile: 0,
 			},
 			override: undefined,
 			overridePriority: 0,
@@ -384,6 +385,7 @@ function KDRestraintBondageStatus(item) {
 		toy: 0,
 		plug: 0,
 		belt: 0,
+		immobile: 0,
 	};
 }
 

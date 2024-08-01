@@ -3625,6 +3625,14 @@ let KDSpecialBondage = {
 		healthStruggleBoost: 0.7,
 		enemyBondageMult: 0.5,
 	},
+	"Furniture": {
+		priority: -100,
+		color: "#aaaaaa",
+		struggleRate: 1.2,
+		powerStruggleBoost: 2.0,
+		healthStruggleBoost: 2.0,
+		enemyBondageMult: 1.0,
+	},
 };
 
 let KDMagicDefs = {
