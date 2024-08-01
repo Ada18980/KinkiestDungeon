@@ -6923,7 +6923,8 @@ let KDDefaultRestraintThresh = 3;
  * @param {number} restMult
  */
 function KDRestockRestraints(enemy, restMult) {
-	if ((enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.specialAttack?.includes("Bind")) && !enemy.Enemy.RestraintFilter?.noRestock && !KDEnemyHasFlag(enemy, "restocked")) {
+	if ((enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.specialAttack?.includes("Bind"))
+		&& !enemy.Enemy.RestraintFilter?.noRestock && !KDEnemyHasFlag(enemy, "restocked")) {
 		let rCount = KDDetermineBaseRestCount(enemy, restMult);
 		if ((enemy.items?.length || 0) < rCount) {
 			KDStockRestraints(enemy, restMult, rCount - (enemy.items?.length || 0));
@@ -6946,6 +6947,8 @@ function KDRestockRestraints(enemy, restMult) {
  */
 function KDDetermineBaseRestCount(enemy, restMult) {
 	let rCount = 1;
+	if (enemy.Enemy.RestraintFilter?.unlimitedRestraints && !enemy.Enemy.RestraintFilter?.forceStock)
+		return 0;
 	if (enemy.Enemy.tags.boss) rCount += 6;
 	else if (enemy.Enemy.tags.miniboss) rCount += 3;
 	else if (enemy.Enemy.tags.elite) rCount += 2;
@@ -7017,7 +7020,8 @@ function KDSetLoadout(enemy, loadout) {
 		let temp = enemy.Enemy.startingItems ? Object.assign([], enemy.Enemy.startingItems) : [];
 		enemy.items = Object.assign(temp, KDLoadouts[loadout].items);
 	}
-	if (!enemy.Enemy.RestraintFilter?.unlimitedRestraints && (enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.specialAttack?.includes("Bind"))) {
+	if ((!enemy.Enemy.RestraintFilter?.unlimitedRestraints || enemy.Enemy.RestraintFilter?.requiredItems)
+		&& (enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.RestraintFilter?.requiredItems || enemy.Enemy.specialAttack?.includes("Bind"))) {
 		let restMult = KDLoadouts[loadout]?.restraintMult || 1;
 		KDStockRestraints(enemy, restMult);
 	}
@@ -8076,11 +8080,13 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) 
 		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 			KDGetPersistentNPC(data.enemy.id).collect = false;
 
-		if (data.enem.hp <= 0.5) data.enem.hp = 0.51;
+		if (data.enemy.hp <= 0.5) data.enemy.hp = 0.51;
 
 		KDUpdateEnemyCache = true;
 
 		return npc;
+	} else if (!dontteleportpersistent && KDDeletedIDs[data.enemy.id]) {
+		return null;
 	}
 
 	let createpersistent = false;
@@ -8734,7 +8740,7 @@ function KDQuickGenNPC(enemy, force) {
 		value = KDGetVirtualCollectionEntry(enemy.id);
 	}
 	if ((value || KDIsNPCPersistent(enemy.id))) {
-		let id = value.id || KDGetPersistentNPC(enemy.id).id;
+		let id = value?.id || KDGetPersistentNPC(enemy.id).id;
 
 		let enemyType = enemy.Enemy;
 		if (!enemyType.style) return; // Dont make one for enemies without styles

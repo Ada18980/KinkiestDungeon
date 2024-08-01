@@ -154,11 +154,11 @@ KDCollectionTabScreen.Release = (x, xOffset) => {
 
 function KDCanRelease(id: number) {
 	let v = KDGameData.Collection[id + ""];
-	return v && !v.status; // Prisoners only
+	return v && !v.status && !KDGetGlobalEntity(id); // Prisoners only
 }
 function KDCanRansom(id: number) {
 	let v = KDGameData.Collection[id + ""];
-	return v && !v.status && !KDNPCUnavailable(id, v.status) && v.Faction && !KinkyDungeonHiddenFactions.has(v.Faction); // Prisoners only
+	return v && !v.status && !v.escaped && !KDGetGlobalEntity(id) && !KDNPCUnavailable(id, v.status) && v.Faction && !KinkyDungeonHiddenFactions.has(v.Faction); // Prisoners only
 }
 function KDRansomValue(id: number) {
 	let v = KDGameData.Collection[id + ""];

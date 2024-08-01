@@ -949,8 +949,9 @@ let KDDialogue = {
 			"Use": {
 				playertext: "Default", response: "Default",
 				greyoutFunction: (gagged, player) => {
-					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+					return KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) != KDPlayer();
 				},
+				greyoutTooltip: "KDOccupied",
 				clickFunction: (gagged, player) => {
 
 					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
@@ -988,12 +989,14 @@ let KDDialogue = {
 				greyoutFunction: (gagged, player) => {
 					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 				},
+				greyoutTooltip: "KDOccupied",
 				clickFunction: (gagged, player) => {
 
 					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
 					if (tile?.Furniture) {
 						KinkyDungeonDrawState = "Collection";
 						KDCollectionTab = "Imprison";
+						KDCurrentFacilityTarget = "";
 						KinkyDungeonCheckClothesLoss = true;
 					}
 

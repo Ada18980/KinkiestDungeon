@@ -246,6 +246,7 @@ function DisposeCharacter(C: Character, resort: boolean = true, deleteSpecial: b
 		if (deleteSpecial || !KDPersistentNPCs[id + ""] || !KDPersistentNPCs[id + ""].special) {
 			delete KDPersistentNPCs[id + ""];
 			delete KDGameData.NPCRestraints[id + ""];
+			KDDeletedIDs[id + ""] = 1;
 		}
 		delete KDGameData.Collection[id + ""];
 		if (resort) {
@@ -276,6 +277,7 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
 	if (deleteSpecial || !KDPersistentNPCs[id + ""] || !KDPersistentNPCs[id + ""].special) {
 		delete KDPersistentNPCs[id + ""];
 		delete KDGameData.NPCRestraints[id + ""];
+		KDDeletedIDs[id + ""] = 1;
 	}
 	delete KDGameData.Collection[id + ""];
 	if (resort) {

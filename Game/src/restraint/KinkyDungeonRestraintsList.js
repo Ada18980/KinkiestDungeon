@@ -6616,6 +6616,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	debris: "Belts",
 	Model: "Breastplate",
 	escapeChance: {
@@ -6650,6 +6651,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 0.1,
 		"Cut": 0.1,
@@ -6682,6 +6684,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 0.2,
 		"Cut": 0.2,
@@ -6715,6 +6718,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	debris: "Chains",
 	escapeChance: {
 		"Struggle": -0.1,
@@ -6752,6 +6756,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	debris: "Chains",
 	displayPower: 5,
 	escapeChance: {
@@ -6786,6 +6791,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": -0.5,
 		"Cut": -0.5,
@@ -6819,6 +6825,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 0,
 		"Cut": -0.5,
@@ -6848,6 +6855,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": -0.5,
 		"Cut": -0.5,
@@ -6878,6 +6886,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": -0.5,
 		"Cut": -0.5,
@@ -6908,6 +6917,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -6941,6 +6951,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": 0.1,
@@ -6970,6 +6981,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -7002,6 +7014,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -7026,10 +7039,11 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Group: "ItemArms",
 	Asset: "OrnateCuffs",
 	Model: "DragonArmband",
-	alwaysRender: true,
 	Color: ["#888888", "#9B63C5"],
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
+	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -7054,11 +7068,12 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Group: "ItemBoots",
 	Asset: "Boots1",
 	Model: "PlateBoots",
-	alwaysRender: true,
 	AssetGroup: "Shoes",
 	Color: ["#444444", "#222222"],
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
+	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -7086,12 +7101,13 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "LeatherBoots",
 	Group: "ItemBoots",
 	Asset: "WoollyBootsTall",
-	alwaysRender: true,
 	AssetGroup: "Shoes",
 	Color: ["#808080"],
 	Model: "WarriorBoots",
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
+	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": 0.1,

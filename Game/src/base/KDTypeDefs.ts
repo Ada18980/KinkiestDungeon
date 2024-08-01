@@ -758,6 +758,8 @@ interface enemy extends KDHasTags {
 		bonusRestraints?: number,
 		/** This enemy can apply restraints without needing them in her pockets */
 		unlimitedRestraints?: boolean,
+		/** Forces stock, even if restraints are unlimited */
+		forceStock?: boolean,
 		/** Restraints applied must all be from inventory */
 		invRestraintsOnly?: boolean,
 		/** Restraints applied must all be limited */
@@ -2456,6 +2458,7 @@ interface KinkyDungeonSave {
 	KDEventData: Object;
 	KDCurrentWorldSlot: {x: number, y: number};
 	KDPersistentNPCs: string,
+	KDDeletedIDs: string,
 	KDPersonalAlt: string,
 	flags: [string, number][];
 	uniqueHits: [string, boolean][];

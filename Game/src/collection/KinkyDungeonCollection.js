@@ -3,7 +3,10 @@
 let KDCollectionTab = "";
 
 let KDCurrentFacilityTarget = "";
-let KDCurrentFacilityCollectionType = "";
+/**
+ * @type {string[]}
+ */
+let KDCurrentFacilityCollectionType = [];
 let KDCurrentRestrainingTarget = 0;
 
 let KDCollectionTabStatus = "";
@@ -563,15 +566,30 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		III = KDCollectionTabDraw[tab || "Default"](value, buttonSpacing, III, x, y);
 
 		let assigned = !(!value.Facility);
-		let valid = KDValidateServant(value, KDCurrentFacilityTarget, KDCurrentFacilityCollectionType);
+		let valid = KDCurrentFacilityCollectionType.some((type) => {
+			return KDFacilityCollectionDataTypeMap[type] == value.status;
+		}) && KDCurrentFacilityCollectionType.some((type) => {
+			return KDValidateServant(value, KDCurrentFacilityTarget, type);
+		});
+
+
+		let collType = valid ?  KDCurrentFacilityCollectionType.find((type) => {
+			return KDFacilityCollectionDataTypeMap[type] == value.status;
+		}) : "";
 
 		if (KDGameData.Collection[value.id + ""] && KDCurrentFacilityTarget) {
-			let dd = KDGameData.FacilitiesData[KDCurrentFacilityCollectionType + "_" + KDCurrentFacilityTarget];
+			let dd = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
 			let fac = KDFacilityTypes[KDCurrentFacilityTarget];
-			if (dd && fac && fac["max" + KDCurrentFacilityCollectionType] && (assigned || dd.length < fac["max" + KDCurrentFacilityCollectionType]())) {
+			if (dd && fac
+				&& fac["max" + collType]
+				&& (assigned
+					||  dd.length < fac["max" + collType]()
+				)) {
 
 				KDDraw(kdcanvas, kdpixisprites, "facilityAssignIcon",
-					KinkyDungeonRootDirectory + `UI/Facility_${(assigned || !valid) ?"X" : KDCurrentFacilityCollectionType}.png`,
+					KinkyDungeonRootDirectory + `UI/Facility_${(assigned || !valid) ?"X" :
+						collType
+					}.png`,
 					x + 10 + buttonSpacing*III, y + 730 - 10 - 80, 80, 80, undefined, {
 						zIndex: 160,
 					}
@@ -579,7 +597,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 				if (DrawButtonKDEx("facilityAssign", (b) => {
 					if (!valid) return false;
 					if (!assigned) {
-						let data = KDGameData.FacilitiesData[KDCurrentFacilityCollectionType + "_" + KDCurrentFacilityTarget];
+						let data = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
 						if (data) {
 							data.push(value.id);
 							value.Facility = KDCurrentFacilityTarget;
@@ -595,18 +613,21 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 								 */
 								let data = KDGameData.FacilitiesData[dt + "_" + f[0]];
 								if (data?.includes(value.id)) {
-									value.Facility = undefined;
+									delete value.Facility;
 									data.splice(data.indexOf(value.id), 1);
 									break;
 								}
 							}
 						}
+						// Failsafe
+						delete value.Facility;
 					}
 
 					KDValidateAllFacilities();
 					return true;
 				}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
-				KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`, undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
+				KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
+				undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
 					DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + KDCurrentFacilityTarget),
 						x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 				}
@@ -1028,6 +1049,7 @@ function KDSortCollection() {
  * @returns {string}
  */
 function KDGetEnemyName(enemy) {
+	if (enemy?.Enemy?.nonHumanoid) return TextGet("Name" + enemy.Enemy.name);
 	let faction = KDGetFaction(enemy) || KDGetFactionOriginal(enemy);
 	let nameList = KDFactionProperties[faction]?.nameList ? KDFactionProperties[faction].nameList[Math.floor(Math.random() * KDFactionProperties[faction].nameList.length)] : faction;
 	if (enemy.Enemy?.nameList) nameList = enemy.Enemy?.nameList;
@@ -1065,18 +1087,20 @@ let KDCollectionTabDraw = {
 			if (rest) {
 				let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
 					(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id, true);
-				KDImprisonEnemy(en, true, "PrisonerJailOwn", {
-					name: rest.name,
-					lock: "White",
-					id: KinkyDungeonGetItemID(),
-					faction: KDDefaultNPCBindPalette,
-				});
-				//en.ceasefire = 9999;
-				en.playWithPlayer = 0;
-				KinkyDungeonCheckClothesLoss = true;
-				KDUpdatePersistentNPC(en.id, true);
-				//KinkyDungeonDrawState = "Game";
-				KinkyDungeonAdvanceTime(1);
+				if (en) {
+					KDImprisonEnemy(en, true, "PrisonerJailOwn", {
+						name: rest.name,
+						lock: "White",
+						id: KinkyDungeonGetItemID(),
+						faction: KDDefaultNPCBindPalette,
+					});
+					//en.ceasefire = 9999;
+					en.playWithPlayer = 0;
+					KinkyDungeonCheckClothesLoss = true;
+					KDUpdatePersistentNPC(en.id, true);
+					//KinkyDungeonDrawState = "Game";
+					KinkyDungeonAdvanceTime(1);
+				}
 			}
 
 			if (KDToggles.Sound)
@@ -1128,6 +1152,7 @@ let KDCollectionTabDraw = {
 			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
 				if (KDCanPromote(value)) {
 					value.status = "Servant";
+					delete value.Facility;
 					KDSortCollection();
 					if (KDToggles.Sound)
 						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
@@ -1139,6 +1164,7 @@ let KDCollectionTabDraw = {
 			DrawTextFitKD(TextGet(KDCanPromote(value) ? "KDPromoteNPC" : "KDPromoteNotEnough"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
 			value.status = value.oldstatus || "";
+			delete value.Facility;
 			KDSortCollection();
 			if (KDToggles.Sound)
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");

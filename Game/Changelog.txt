@@ -30,6 +30,17 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.30
+- Added Combat Maneuvers (battle trance upgrade)
+- Fixed issue where promoting and demoting NPCs in facility roles would break their role and make it impossible to change
+- Fixed crash on hovering over non humanoids
+- Fixed non humanoids having names (e.g a barricade named Maddie)
+- Fixed helpless enemies blocking elevator from unlocking
+- Fixed a crash when loading prisoners from memory
+- Fixed fuuka not dropping her restraints on defeat
+- Fixed bug where armor hides restraints underneath even if drawarmor is off
+
+
 5.3.29
 - Added training level indicator in buffs menu
 - Added NPC images in dialogue, tooltip, and (toggleable in GFX settings) on the field

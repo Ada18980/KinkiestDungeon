@@ -610,6 +610,7 @@ function KDDrawInventoryTabs(xOffset, drawBG = true) {
 		KinkyDungeonDrawState = "Collection";
 		KinkyDungeonCheckClothesLoss = true;
 		KDCollectionTab = "";
+		KDCurrentFacilityTarget = "";
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;

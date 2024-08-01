@@ -33,6 +33,10 @@ interface WorldCoord {
 
 let KDPersistentNPCs: {[_ : string]: KDPersistentNPC} = {};
 
+/** A 'graveyard' so to speak to store all NPCs which have been removed so they get deleted when spawned*/
+let KDDeletedIDs: {[_ : string]: number} = {};
+
+
 /**
  * Syncs a persistent NPC with the world entity, if present
  * force param makes it make the NPC persistent if desired

@@ -372,6 +372,7 @@ function KDResetData(Data) {
 	if (!Data) Data = KDGameDataBase;
 	KDGameData = JSON.parse(JSON.stringify( Data));
 	KDPersistentNPCs = {};
+	KDDeletedIDs = {};
 	KDPersonalAlt = {};
 
 	for (let control of Object.keys(KDFocusControlButtons)) {

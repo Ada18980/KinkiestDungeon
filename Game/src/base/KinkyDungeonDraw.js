@@ -1014,8 +1014,9 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
 			} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
-					&& (KDCollectionTab || KDCurrentRestrainingTarget)) {
+					&& (KDCollectionTab || KDCurrentRestrainingTarget || KDCurrentFacilityTarget)) {
 				KDCollectionTab = "";
+				KDCurrentFacilityTarget = "";
 				KDCurrentRestrainingTarget = 0;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
@@ -1874,13 +1875,13 @@ function KinkyDungeonDrawGame() {
 			}
 			KinkyDungeonDrawQuest();
 		} else if (KinkyDungeonDrawState == "Collection") {
-			KDDrawNavBar(3);
+			KDDrawNavBar(1);
 			if (KDGameData.PlayerName) {
 				DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 			}
 			KinkyDungeonDrawCollection();
 		} else if (KinkyDungeonDrawState == "Facilities") {
-			KDDrawNavBar(3);
+			KDDrawNavBar(1);
 			if (KDGameData.PlayerName) {
 				DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 			}
@@ -4493,7 +4494,7 @@ function KDGetFontMult(font) {
 
 let KDCustomDraw = {
 	"Bondage": () => {
-		KDDrawNavBar(3);
+		KDDrawNavBar(1);
 		if (KDGameData.PlayerName) {
 			DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 		}

@@ -244,17 +244,19 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints) 
 			if (!NoRestraints) {
 				if (Character == KinkyDungeonPlayer) {
 					for (let inv of KinkyDungeonAllRestraint()) {
-						if (!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor)) continue; // Skip invalid restraints!!!
+						// Skip invalid restraints!!!
 						let renderTypes = KDRestraint(inv).shrine;
-						if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
-							KDApplyItem(Character, inv, KinkyDungeonPlayerTags);
-							if (KDRestraint(inv).Model) {
+						if (!(!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor))) {
+							if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
+								KDApplyItem(Character, inv, KinkyDungeonPlayerTags);
+								if (KDRestraint(inv).Model) {
 
-								restraintModels[KDRestraint(inv).Model] = true;
-								restraintModels["Fashion" + KDRestraint(inv).Model] = true;
+									restraintModels[KDRestraint(inv).Model] = true;
+									restraintModels["Fashion" + KDRestraint(inv).Model] = true;
+								}
 							}
-						}
-						restraints.push(inv);
+							restraints.push(inv);
+						} else renderTypes = [];
 						if (inv.dynamicLink) {
 							let accessible = KDRestraint(inv)?.accessible || KDRestraint(inv)?.UnderlinkedAlwaysRender;
 							let link = inv.dynamicLink;

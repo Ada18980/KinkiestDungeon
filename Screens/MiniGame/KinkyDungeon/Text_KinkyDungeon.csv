@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.29"
+KDVersionStr,"5.3.30"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -5548,6 +5548,13 @@ KinkyDungeonSpellDescriptionLimitSurge,"Spend 50 WP to fully restore Stamina, al
 
 KinkyDungeonSpellBattleTrance,"Battle Trance"
 KinkyDungeonSpellDescriptionBattleTrance,"While at 40 Battle Rhythm, you attack twice per turn."
+
+KinkyDungeonSpellCombatManeuver,"Combat Maneuver"
+KinkyDungeonSpellDescriptionCombatManeuver,"When Battle Trance is active, you gain a free move if the target is defeated before the second attack hits."
+
+
+
+
 
 KinkyDungeonSpellRogueTraps,Devious Ingenuity
 KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming."
@@ -21191,6 +21198,7 @@ KDWaterBubble,A bubble of magic water starts forming around you!
 KDWaterBubbleEngulf,"The gap in the bubble closes, and you are fully sealed within the bubble!"
 KinkyDungeonBuffWaterBubble,"Magical water reduces your accuracy and slows you significantly!"
 KinkyDungeonBuffBattleTrance,You attack twice!
+KinkyDungeonBuffCombatManeuver,You gain a free move from Combat Maneuvers!
 
 KDDoorAccessDenied0,"Access denied."
 KDDoorAccessDenied1,"Facility is under lockdown."
@@ -23633,3 +23641,5 @@ KDCurrentGold,Current Gold: GP
 KDNA,n/a
 
 KDTrainingLevelHeels,[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
+
+KDOccupied,"The furniture space is occupied"

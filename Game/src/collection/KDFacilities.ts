@@ -47,7 +47,6 @@ function InitFacilities() {
 	}
 }
 
-
 function KDValidateAllFacilities() {
 	for (let facility of Object.keys(KDFacilityTypes)) {
 		let servants = KDGameData.FacilitiesData["Servants_" + facility];
@@ -56,13 +55,19 @@ function KDValidateAllFacilities() {
 			for (let servant of servants) {
 				if (!KDValidateServant(KDGameData.Collection[servant + ""],
 					facility,
-					"Servants")) servants.splice(servants.indexOf(servant));
+					"Servants")) {
+						servants.splice(servants.indexOf(servant));
+						delete KDGameData.Collection[servant + ""].Facility;
+					}
 			}
 		if (prisoners)
 			for (let prisoner of prisoners) {
 				if (!KDValidateServant(KDGameData.Collection[prisoner + ""],
 					facility,
-					"Prisoners")) prisoners.splice(prisoners.indexOf(prisoner));
+					"Prisoners")) {
+						prisoners.splice(prisoners.indexOf(prisoner));
+						delete KDGameData.Collection[prisoner + ""].Facility;
+					}
 			}
 	}
 
@@ -99,6 +104,7 @@ function KDValidateServant(value: KDCollectionEntry, facility: string, type: str
 	if (value.status != type) return false;
 	if (value.escaped) return false;
 	if (KDIsInPartyID(value.id)) return false;
+	if (KDNPCUnavailable(value.id, value.status)) return false;
 
 	return true;
 
@@ -220,7 +226,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 				let servant = servants[i];
 				DrawButtonKDEx(facility + "serv" + i, (b) => {
 					KDCurrentFacilityTarget = facility;
-					KDCurrentFacilityCollectionType = "Servants";
+					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
 					KinkyDungeonDrawState = "Collection";
 					KinkyDungeonCheckClothesLoss = true;
 					KDCollectionTab = "";
@@ -242,7 +248,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 				let prisoner = prisoners[i];
 				DrawButtonKDEx(facility + "pris" + i, (b) => {
 					KDCurrentFacilityTarget = facility;
-					KDCurrentFacilityCollectionType = "Prisoners";
+					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
 					KinkyDungeonDrawState = "Collection";
 					KinkyDungeonCheckClothesLoss = true;
 					KDCollectionTab = "";

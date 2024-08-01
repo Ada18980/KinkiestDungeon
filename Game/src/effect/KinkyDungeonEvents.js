@@ -3630,11 +3630,22 @@ let KDEventMapSpell = {
 	},
 	"afterPlayerAttack": {
 		"BattleTrance": (e, spell, data) => {
-			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance) && KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BattleRhythm") >= 0.395) {
+			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance)
+				&& KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BattleRhythm") >= 0.395) {
 				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {
 					KinkyDungeonAttackTwiceFlag = true;
 					KinkyDungeonLaunchAttack(data.enemy, 1);
 					KinkyDungeonAttackTwiceFlag = false;
+				} else if (data.enemy && (KDHelpless(data.enemy) || data.enemy.hp < 0.6)) {
+					if (KDHasSpell("CombatManeuver")) {
+						KinkyDungeonApplyBuffToEntity(KDPlayer(), {
+							id: "CombatManeuverQuick",
+							type: "Quickness",
+							duration: e.time,
+							power: 1,
+							endSleep: true, currentCount: -1, maxCount: 1, tags: ["quickness", "move", "attack", "cast"]
+						});
+					}
 				}
 			}
 		},

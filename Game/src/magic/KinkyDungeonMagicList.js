@@ -123,7 +123,7 @@ let KinkyDungeonLearnableSpells = [
 			"ChaoticOverflow", "DistractionBurst", "DistractionShield",
 		],
 		[
-			"Gunslinger", "BattleTrance",
+			"Gunslinger", "BattleTrance", "CombatManeuver",
 			"ProblemSolving",
 			"ManaRegenFast","ManaRegenFast2","ManaRegenPlus","ManaRegenPlus2",
 			"Sowing",
@@ -552,6 +552,14 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			events: [
 				{type: "BattleTrance", trigger: "afterPlayerAttack",},
 				{type: "BattleTrance", trigger: "tick",},
+			]},
+
+		{name: "CombatManeuver", tags: ["fight", "will", "stamina"], prerequisite: "BattleTrance",
+			classSpecific: "Fighter",
+			hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1,
+			type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			passive: true,
+			events: [
 			]},
 
 		{name: "Gunslinger", tags: ["fight", "will", "ranged", "offense"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1,
