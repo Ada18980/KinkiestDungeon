@@ -947,6 +947,10 @@ let KDDialogue = {
 			let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 			if (en && !en.player && KDCanBind(en)) {
 				KDGameData.CurrentDialogMsgData.NME = KDEnemyName(en);
+				KDGameData.CurrentDialogMsgData.PRCNT = "" +
+					Math.round(100 * Math.min(1, Math.max(0,
+						KDGetSkillCheck(en, player, en, KDSkillCheckType.Agility, .5))));
+				KDGameData.CurrentDialogMsgValue.PRCNT = KDGetSkillCheck(en, player, en, KDSkillCheckType.Agility, .5);
 			}
 
 			return false;
@@ -1052,7 +1056,7 @@ let KDDialogue = {
 				greyoutFunction: (gagged, player) => {
 					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 					if (en && !en.player && KDCanBind(en)) {
-						return KinkyDungeonIsDisabled(en);
+						return KinkyDungeonIsDisabled(en) || KDGameData.CurrentDialogMsgValue.PRCNT > 0;
 					}
 					return false;
 				},
@@ -1060,13 +1064,16 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 					if (en && !en.player && KDCanBind(en)) {
-						if (KinkyDungeonIsDisabled(en)) {
+						if (KDRandom() < KDGameData.CurrentDialogMsgValue.PRCNT) {
 							if ((!en.specialBoundLevel || !en.specialBoundLevel.Furniture)) {
 								KDTieUpEnemy(en, en.Enemy.maxhp * 0.3 + 10, "Furniture", undefined);
 								if (en.bind) en.bind = 0;
 								en.bind = Math.max(en.bind, 10);
 								en.immobile = Math.max(en.immobile || 0, 10);
 							}
+						} else {
+							KDGameData.CurrentDialogMsg = "FurnitureEnemyFail";
+							return true;
 						}
 
 					}

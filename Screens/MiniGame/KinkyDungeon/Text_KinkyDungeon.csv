@@ -12575,10 +12575,11 @@ rDollDropoffUse,"(The pole rises and immobilizes you!)"
 dDollDropoff_Use,(Stand over it and place your feet in the footrests)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
+rFurnitureEnemyFail,"(The EnemyName slips out of your grip|before you can lock her in place!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
 
-dFurniture_Enemy,(Try to lock NME into the furniture)
+dFurniture_Enemy,(Try to lock NME into the furniture) (PRCNT% Chance)
 rFurnitureEnemy,"(You close the furniture around your unfortunate victim!)"
 KDFurnEnemyDisabled,"Stun or disable her first."
 dFurniture_EnemyHelpless,(Secure NME into the furniture)
@@ -21368,6 +21369,7 @@ KDBulletTransparency,Make Bullets Transparent
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
+KDToggleModCompat,Mod Compatibility Mode
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)

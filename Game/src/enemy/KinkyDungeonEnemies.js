@@ -1792,7 +1792,7 @@ let KDDialogueSlots = {};
  * @returns {string}
  */
 function KDEnemyName(enemy) {
-	return enemy.CustomName || KDGetName(enemy.id);
+	return enemy.CustomName || KDGetName(enemy.id) || TextGet("Name" + enemy.Enemy?.name);
 }
 /**
  *

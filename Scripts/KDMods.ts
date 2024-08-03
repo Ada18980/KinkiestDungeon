@@ -8,6 +8,9 @@ let KDModSpacing = 50;
 let KDGetMods = false;
 let KDOffline = false;
 
+let KDModCompat = {
+	"KinkyDungeonHiddenFactions.push(": "KinkyDungeonHiddenFactionsPush(",
+};
 
 async function KDGetModsLoad(execute) {
 	try {
@@ -187,7 +190,15 @@ async function KDExecuteMods() {
 					console.log("EXECUTING MOD FILE " + file.name);
 					if (typeof event.target.result === "string") {
 						//@ts-ignore
-						eval(event.target.result);
+						let res = event.target.result;
+						if (KDToggles.ModCompat) {
+							for (let compat of Object.entries(KDModCompat)) {
+								res = event.target.result.replace(compat[0],
+									compat[1]
+								);
+							}
+						}
+						eval(res);
 					}
 				};
 				reader.readAsText(file);

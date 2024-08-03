@@ -472,6 +472,10 @@ for (let f of KDHiddenFactions) {
 	KinkyDungeonHiddenFactions.set(f, true);
 }
 
+function KinkyDungeonHiddenFactionsPush(str) {
+	KinkyDungeonHiddenFactions.set(str, true);
+}
+
 
 
 let KDFactionSecurityMod = {

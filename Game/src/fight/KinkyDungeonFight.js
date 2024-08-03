@@ -345,6 +345,21 @@ function KDGetSpellAccuracy() {
 	return (data.accuracy + data.accuracyBonus) * data.accuracyMult;
 }
 
+function KDGetSlowMult(Enemy) {
+	let mult = 1;
+
+	if (Enemy && Enemy.bind > 0) mult *= 3;
+	else if (Enemy && Enemy.slow > 0) mult *= 2;
+
+	if (Enemy && KinkyDungeonIsStunned(Enemy)) mult *= 5;
+	else {
+		if (Enemy && Enemy.distraction > 0) mult *= 1 + 2 * Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
+		if (Enemy) mult *= 1 + 0.25 * KDBoundEffects(Enemy);
+	}
+
+	return mult;
+}
+
 function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 	let flags = {
 		KDEvasionHands: true,
@@ -385,13 +400,8 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 	}
 
 	if (!IsSpell) hitChance *= KinkyDungeonPlayerDamage.chance;
-	if (Enemy && Enemy.bind > 0) hitChance *= 3;
-	else if (Enemy && Enemy.slow > 0) hitChance *= 2;
-	if (Enemy && (Enemy.stun > 0 || Enemy.freeze > 0)) hitChance *= 5;
-	else {
-		if (Enemy && Enemy.distraction > 0) hitChance *= 1 + 2 * Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
-		if (Enemy) hitChance *= 1 + 0.25 * KDBoundEffects(Enemy);
-	}
+	let slowMult = KDGetSlowMult(Enemy);
+	hitChance *= slowMult;
 	if (Enemy && Enemy.vulnerable) hitChance *= KDVulnerableHitMult;
 
 	if (!IsSpell) {

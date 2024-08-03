@@ -2138,19 +2138,23 @@ function KDBalanceDmgMult() {
 	let mult = KinkyDungeonStatsChoice.get("PoorBalance") ? 1.5 : 1;
 	return mult * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BalanceDamageMult"));
 }
-function KDFitnessMult() {
+function KDFitnessMult(player) {
 	let mult = 0.5/KinkyDungeonStatWillMax + 0.5/KinkyDungeonStatStaminaMax;
 	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "FitnessMult"));
 }
-function KDMentalMult() {
+function KDMentalMult(player) {
 	let mult = 0.5/KinkyDungeonStatDistractionMax + 0.5/KinkyDungeonStatManaMax;
 	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "MentalMult"));
 }
-function KDEnduranceMult() {
-	let mult = 0.5/KinkyDungeonStatStaminaMax + 0.5/KinkyDungeonStatDistractionMax;
+function KDEnduranceMult(player) {
+	let mult = 0.5/KinkyDungeonStatWillMax + 0.5/KinkyDungeonStatDistractionMax;
 	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "EnduranceMult"));
 }
-function KDPowerMult() {
+function KDReflexMult(player) {
+	let mult = 0.5/KinkyDungeonStatStaminaMax + 0.5/KinkyDungeonStatDistractionMax;
+	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ReflexMult"));
+}
+function KDPowerMult(player) {
 	let mult = 0.5/KinkyDungeonStatWillMax + 0.5/KinkyDungeonStatManaMax;
 	return mult * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "PowerMult"));
 }
