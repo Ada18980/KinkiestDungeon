@@ -12575,7 +12575,7 @@ rDollDropoffUse,"(The pole rises and immobilizes you!)"
 dDollDropoff_Use,(Stand over it and place your feet in the footrests)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
-rFurnitureEnemyFail,"(The EnemyName slips out of your grip|before you can lock her in place!)"
+rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
 
@@ -23656,3 +23656,7 @@ KinkyDungeonBuffCombatManeuverQuick,Combat Maneuver active. Your next move is in
 
 KDOccupied,"The furniture space is occupied"
 KDCombatManeuver,"Combat Maneuver: Your next move is instant."
+
+
+KDManagement1,Appointing managers increases the efficiency of other facilities.
+KDManagement2,Total Efficiency Boost: AMNT

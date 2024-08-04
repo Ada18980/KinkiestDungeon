@@ -16,6 +16,7 @@ interface FacilitiesData {
 	Prisoners_Recycler: number[],
 	Servants_CuddleLounge: number[],
 	Prisoners_CuddleLounge: number[],
+	Servants_Management: number[],
 };
 
 let FacilitiesDataBase : FacilitiesData = {
@@ -34,6 +35,7 @@ let FacilitiesDataBase : FacilitiesData = {
 	Prisoners_Recycler: [],
 	Servants_CuddleLounge: [],
 	Prisoners_CuddleLounge: [],
+	Servants_Management: [],
 };
 
 function InitFacilities() {
@@ -47,28 +49,22 @@ function InitFacilities() {
 	}
 }
 
+let FacilityValidationTags = ["Servants", "Prisoners", "Guests"];
+
 function KDValidateAllFacilities() {
 	for (let facility of Object.keys(KDFacilityTypes)) {
-		let servants = KDGameData.FacilitiesData["Servants_" + facility];
-		let prisoners = KDGameData.FacilitiesData["Prisoners_" + facility];
-		if (servants)
-			for (let servant of servants) {
-				if (!KDValidateServant(KDGameData.Collection[servant + ""],
-					facility,
-					"Servants")) {
-						servants.splice(servants.indexOf(servant));
-						delete KDGameData.Collection[servant + ""].Facility;
-					}
-			}
-		if (prisoners)
-			for (let prisoner of prisoners) {
-				if (!KDValidateServant(KDGameData.Collection[prisoner + ""],
-					facility,
-					"Prisoners")) {
-						prisoners.splice(prisoners.indexOf(prisoner));
-						delete KDGameData.Collection[prisoner + ""].Facility;
-					}
-			}
+		for (let tag of FacilityValidationTags) {
+			let servants = KDGameData.FacilitiesData[tag + "_" + facility];
+			if (servants)
+				for (let servant of servants) {
+					if (!KDValidateServant(KDGameData.Collection[servant + ""],
+						facility,
+						tag)) {
+							servants.splice(servants.indexOf(servant));
+							delete KDGameData.Collection[servant + ""].Facility;
+						}
+				}
+		}
 	}
 
 }

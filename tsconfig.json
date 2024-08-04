@@ -119,6 +119,7 @@
         "Game/src/map/KDJourney.ts",
         "Game/src/restraint/KinkyDungeonRestraintsList.js",
         "Game/src/collection/KinkyDungeonCollection.js",
+        "Game/src/collection/KDManagement.ts",
         "Game/src/collection/KDRecycler.ts",
         "Game/src/collection/KDRecyclerList.ts",
         "Game/src/collection/KDCuddleLounge.ts",

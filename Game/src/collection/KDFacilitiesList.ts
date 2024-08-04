@@ -13,6 +13,20 @@ interface Facility {
 };
 
 let KDFacilityTypes: Record<string, Facility> = {
+	Management: {
+		priority: -100,
+		update: (delta) => {
+			return false;
+		},
+		draw: (x, y, width) => {
+			return KDDrawManagement(x, y, width);
+		},
+		prereq: () => {return true;},
+		goldCost: () => {return 0;},
+		maxPrisoners: () => {return 0;},
+		maxServants: () => {return 3;},
+		defaultData: {},
+	},
 	CuddleLounge: {
 		priority: -50,
 		update: (delta) => {
@@ -43,25 +57,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 		maxPrisoners: () => {return 8;},
 		maxServants: () => {return 8;},
 		defaultData: {},
-	},/*
-	Management: {
-		priority: -100,
-		update: (delta) => {
-			return false;
-		},
-		draw: (x, y, width) => {
-			let dd = 100;
-			if (y + dd < 940) {
-
-			}
-			return dd;
-		},
-		prereq: () => {return true;},
-		goldCost: () => {return 0;},
-		maxPrisoners: () => {return 0;},
-		maxServants: () => {return 3;},
-		defaultData: {},
-	},*/
+	},
 	Recycler: {
 		priority: 30,
 		update: (delta) => {

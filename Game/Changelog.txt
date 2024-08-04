@@ -32,6 +32,7 @@ TODO remove hogtie when released
 
 5.3.31
 - You can use furniture to gain an advantage over enemies
+- Added mod compatibility setting
 
 5.3.30
 - Added Combat Maneuvers (battle trance upgrade)
