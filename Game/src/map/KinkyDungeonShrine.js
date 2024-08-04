@@ -484,25 +484,26 @@ function KinkyDungeonDrawShrine() {
 				15*mult, 40*mult).split('\n');
 			let i = 0;
 			let descSpacing = 24;
+			const encoder = new TextEncoder();
 			for (let N = 0; N < textSplit.length; N++) {
 				DrawTextFitKD(textSplit[N],
-					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (textSplit[N].length / 40), "#ffffff", undefined, 20, undefined, 70);
+					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (encoder.encode(textSplit[N]).length / 40), "#ffffff", undefined, 20, undefined, 70);
 				i++;
 			}
 			i += 1;
 			for (let N = 0; N < data.extraLinesPre.length; N++) {
 				DrawTextFitKD(data.extraLinesPre[N],
-					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (data.extraLinesPre[N].length / 40), data.extraLineColorPre[N], data.extraLineColorBGPre[N], 20, undefined, 70);
+					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (encoder.encode(data.extraLinesPre[N]).length / 40), data.extraLineColorPre[N], data.extraLineColorBGPre[N], 20, undefined, 70);
 				i++;
 			}
 			for (let N = 0; N < textSplit2.length; N++) {
 				DrawTextFitKD(textSplit2[N],
-					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (textSplit2[N].length / 40), "#ffffff", undefined, 20, undefined, 70);
+					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (encoder.encode(textSplit2[N]).length / 40), "#ffffff", undefined, 20, undefined, 70);
 				i++;
 			}
 			for (let N = 0; N < data.extraLines.length; N++) {
 				DrawTextFitKD(data.extraLines[N],
-					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (data.extraLines[N].length / 40), data.extraLineColor[N], data.extraLineColorBG[N], 20, undefined, 70);
+					KDModalArea_x+650, YY + 200 - shopHeight + i * descSpacing, 380 * (encoder.encode(data.extraLines[N]).length / 40), data.extraLineColor[N], data.extraLineColorBG[N], 20, undefined, 70);
 				i++;
 			}
 			// Next button
