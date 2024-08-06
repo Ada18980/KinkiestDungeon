@@ -3477,6 +3477,17 @@ The enforcer fires off restraints that wrap around your body and apprehend you! 
 执法器发射出束缚包裹在你身上并逮捕了你！（+RestraintAdded）
 The enforcer releases small drones which lock onto your restraints! (DamageTaken)
 执法器释放小型无人机锁定你的束缚具！（DamageTaken）
+Time to get you into your uniform~
+该穿上制服了~
+You won't be needing any of this.
+你不需要这些。
+There we go, all ready for training!
+好了, 一切准备就绪, 可以进行训练了!
+Cyber Storage
+网络容器
+多功能金属箱，配备有聚碳酸酯防爆门和钢筋。
+Used throughout the reign of the Old Civilization to store slaves and prisoners.
+在整个古代文明统治时期，它被用来关押奴隶和囚犯。
 Artillery Unit
 炮兵部队
 The artillery unit releases magic smoke and explodes.
