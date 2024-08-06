@@ -4233,7 +4233,7 @@ The guard passes out and drops her possessions!
 The guard locks your restraints!
 守卫锁住你的拘束具！
 The guard places a NewRestraintName on you
-警卫在你身上放置了一个 NewRestraintName
+警卫在你身上放置了一个新的 RestraintName
 The guard plays with you, groping and rubbing your body!
 守卫玩弄你，摸索揉你的身体！
 Armed Guard
@@ -4245,11 +4245,11 @@ The guard shocks you and slaps on some restraints! (+RestraintAdded)
 The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
 The EnemyName applies a NewRestraintName over your OldRestraintName
-EnemyName 在你的 OldRestraintName 上应用 NewRestraintName
+EnemyName 在你的旧 RestraintName 上束缚新的 RestraintName
 The EnemyName removes your OldRestraintName
 EnemyName 移除了你的 OldRestraintName
 The EnemyName restrains you with a NewRestraintName
-EnemyName 用 NewRestraintName 拘束你
+EnemyName 用新的 RestraintName 拘束你
 Master Conjurer
 咒术宗师
 The conjurer retreats into a portal!
