@@ -1585,6 +1585,12 @@ Return
 返回
 Keybindings
 按键绑定
+Show free characters on map
+在地图上显示自由的角色
+Detailed jailed NPCs (experimental)
+被监禁的 NPC 细节 (实验性)
+Show Struggle Bars
+显示挣扎条
 Allow Suspicious Mods
 允许可疑模组
 Auto Load Mods (offline only)
