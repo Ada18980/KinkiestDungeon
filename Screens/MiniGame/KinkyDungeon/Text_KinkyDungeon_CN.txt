@@ -4580,8 +4580,8 @@ The lock doesn't even have a keyhole to pick!
 这锁甚至连钥匙孔都没有！
 You need a special tool to pick this kind of lock.
 你需要一个特殊的工具来撬开这种锁。
-The lock doesn't have a keyhole to pick.
-这把锁没有钥匙孔可撬。
+The lock is technological and does not use a key.
+这把锁是科技锁，不需要钥匙。
 The lock is brimming with security features and is nigh impossible to pick!
 这把锁充满了安全特征，几乎不可能被撬开！
 The key sticks in the lock and jams, mangling the key!
