@@ -13842,6 +13842,30 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 （SPEAKER 点头）|小心无大错。
 (The SPEAKER smiles)|Can never be too prepared~
 （SPEAKER 微笑）|准备永远不嫌多~
+(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin.
+（SPEAKER 挥手）|嗨。|我只做最好盔甲的。|与我的孪生兄弟不同，我卖的盔甲可不便宜。
+(The SPEAKER drops her hammer and cracks her knuckles)|Put em up!
+（SPEAKER 扔下锤子并敲响指关节）|把它们举起来！
+(The SPEAKER looks at you.)|Do you have a dealer's license?
+（SPEAKER 看着你。）|您有经销商执照吗？
+(The SPEAKER folds her arms)|I don't do charity, girl.
+（SPEAKER 交叉双臂）|我不做慈善，姑娘。
+(The SPEAKER nods)|The most high-impact of sports bras.
+（SPEAKER 点头）|运动胸罩最具冲击力了。
+(The SPEAKER nods)|These aren't for hiking, just so you know.
+（SPEAKER 点头）|这些不是用来徒步旅行的，你知道的。
+(The SPEAKER nods)|I've been thinking about making a lockable version...
+（SPEAKER 点头）|我一直在考虑制作一个可锁定的版本……
+(The SPEAKER nods)|These are sensibly sized, unlike those you see in movies.
+（SPEAKER 点头）|它们的尺寸很合理，不像你在电影里看到的那样。
+(The SPEAKER nods)|Sometimes you just have to be flexible.
+（SPEAKER 点头）|有时候你只需要灵活一点。
+(The SPEAKER nods)|For when you value style over protection...
+（SPEAKER 点头）|当你重视风格而不是保护时......
+(The SPEAKER nods)|You can never be too careful.
+（SPEAKER 点点头）|你越小心越好。
+(The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that.
+（SPEAKER 笑了）|我听说女冒险家喜欢戴这个来保护自己。|或者类似的东西。
 (Select an item to buy from the SPEAKER)
 （选择你要从 SPEAKER 购买的商品）
 (Attack the SPEAKER?)
