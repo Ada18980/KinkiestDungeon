@@ -96,6 +96,8 @@ Distraction Particles
 性奋粒子
 Vibration Particles
 震动粒子
+Gag Particle FX
+堵嘴粒子特效
 Show NPC Status
 显示NPC状态
 Show Spell Range
@@ -302,6 +304,8 @@ Faster Floater Fade
 漂浮物更快消散
 No Damage Floaters
 无伤漂浮物
+Dynamic Armor (must hide armor)
+动态盔甲 (必须隐藏盔甲)
 Helpless!
 无助！
 Evaded!
