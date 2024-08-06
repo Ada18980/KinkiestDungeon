@@ -5253,7 +5253,7 @@ Level RestraintLevel (Rarity)
 Consumable
 消耗品
 Worn
-旧的
+佩戴中
 Equipped
 已装备
 Weapons
