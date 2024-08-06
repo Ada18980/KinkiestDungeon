@@ -15312,6 +15312,12 @@ Doll Plug Gag
 玩偶塞子口塞
 A soft, flexible plug pressed into your mouth and held in place with a metal shield.
 将柔软、灵活的塞子压入你的嘴中，并用金属罩固定到位。
+Doll Muzzle
+玩偶口套
+A metallic shield preventing you from removing any gags underneath.
+金属罩阻止你移除下面的任何塞子。
+It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
+它由精致的古代文明金属制成，可以抵抗几乎所有形式的损坏。
 Cyber Mittens
 赛博手套
 These mittens force your hands into fists, keeping you from using them to do anything useful.
