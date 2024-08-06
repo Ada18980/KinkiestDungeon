@@ -13796,6 +13796,8 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 （SPEAKER 挥手）|你好啊小姐！|什么风把您吹到这来了
 (The SPEAKER folds her arms)|That's not very nice!
 （SPEAKER 交叉双臂）|那样做可不好哦！
+(The SPEAKER looks at you and smiles.)|Don't you already have one?
+（SPEAKER 微笑着看着你）|你不是已经有一个了吗？
 (The SPEAKER folds her arms)|I don't do charity, miss.
 （SPEAKER 交叉双臂）|我不做慈善事业，小姐。
 (The SPEAKER nods)|Could use a higher heel...
