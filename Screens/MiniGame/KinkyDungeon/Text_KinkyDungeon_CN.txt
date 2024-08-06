@@ -674,6 +674,10 @@ Collected
 搜集
 Start with The Warden's special collar and some restraints.
 从典狱长的特殊项圈和一些束缚开始。
+Enforcers
+执法者
+All humanoids that can bind you also apply The Warden's cuffs.
+所有能够束缚你的人形生物也会使用典狱长的手铐。
 The Warden's Property
 典狱长的财产
 All humanoids that can bind you also apply The Warden's special restraints.
