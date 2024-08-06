@@ -1016,7 +1016,10 @@ function KinkyDungeonDrawGame() {
 			} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
 					&& (KDCollectionTab || KDCurrentRestrainingTarget || KDCurrentFacilityTarget)) {
 				KDCollectionTab = "";
-				KDCurrentFacilityTarget = "";
+				if (KDCurrentFacilityTarget) {
+					KDCurrentFacilityTarget = "";
+					KinkyDungeonDrawState = "Facilities";
+				}
 				KDCurrentRestrainingTarget = 0;
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';

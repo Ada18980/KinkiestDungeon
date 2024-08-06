@@ -1562,6 +1562,7 @@ interface String {
 
 interface entity {
 	refreshSprite?: boolean,
+	FacilityAction?: string,
 
 	/** Optional leash data, used for both NPC and player */
 	leash?: KDLeashData,
@@ -3463,6 +3464,8 @@ interface KDCollectionEntry {
 	customSprite: boolean,
 	escaped?: boolean,
 	escapegrace?: boolean,
+
+	spawned?: boolean,
 
 	id: number,
 	Enemy?: enemy, // for unique ones

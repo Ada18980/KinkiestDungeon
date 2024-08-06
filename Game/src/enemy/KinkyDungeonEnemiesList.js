@@ -5785,7 +5785,13 @@ function KDEndEnemyAction(enemy) {
  * @param {entity} enemy
  */
 function KDMaintainEnemyAction(enemy, delta) {
-	if (!KDEnemyAction[enemy.action]?.maintain || !KDEnemyAction[enemy.action].maintain(enemy, delta)) {
+	let forceEnd = false;
+	if (enemy.FacilityAction) {
+		KDTickCollectionWanderEntity(enemy, delta);
+	}
+	if (KDEnemyHasFlag(enemy, "overrideMove") || KDEnemyHasFlag(enemy, "endAction") || enemy.playWithPlayer > 0)
+		forceEnd = true;
+	if (!KDEnemyAction[enemy.action]?.maintain || !KDEnemyAction[enemy.action].maintain(enemy, delta) || forceEnd) {
 		KDEndEnemyAction(enemy);
 	}
 }

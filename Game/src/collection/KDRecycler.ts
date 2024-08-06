@@ -56,7 +56,7 @@ function KDBaseRecycleOutputs(): RecyclerOutputs {
 
 function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	let output = {};
-	let mult = 0.5;
+	let mult = 0.5 * KDGetManagementEfficiency()**2;
 	for (let id of Servants) {
 		let servant = KDGetServantEnemy(KDGameData.Collection["" + id]);
 		if (servant) {

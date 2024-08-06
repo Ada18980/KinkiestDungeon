@@ -36,7 +36,7 @@ function KDCuddleLoungeGain(): {servants: number, prisoners: number} {
 	let data = {
 		servants: 0,
 		prisoners: 0,
-		efficiency: 1,
+		efficiency: KDGetManagementEfficiency(),
 	};
 
 	let facility = "CuddleLounge";

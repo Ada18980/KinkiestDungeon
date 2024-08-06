@@ -628,7 +628,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 				}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
 				KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
 				undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
-					DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + KDCurrentFacilityTarget),
+					DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)),
 						x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 				}
 			}
