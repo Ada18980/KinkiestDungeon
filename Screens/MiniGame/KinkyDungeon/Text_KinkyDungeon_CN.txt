@@ -19469,6 +19469,10 @@ Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to
 以NPC为目标绑上皮带。敌人和不情愿的盟友必须首先被捆绑到50%。以自身为目标释放所有的束缚，或者以一个被束缚的NPC为目标释放它们。
 Target an NPC to leash, or self to unleash all.
 以NPC为目标进行束缚，或以自我为目标进行释放。
+Brat Handler
+顽童处理员
+Target an NPC with an equipped leash restraint (via Truss'em'up) to attach a leash. Target self to release all leashes, or target a leashed NPC to unleash them.
+以装备了牵引绳束缚装置的 NPC 为目标（通过'捆绑'动作）来系上牵引绳。以自己为目标来松开所有牵引绳，或以被牵引的 NPC 为目标来解开它们。
 Clip-On Leash
 夹子皮带
 A beloved favorite of pets and trainers alike.
