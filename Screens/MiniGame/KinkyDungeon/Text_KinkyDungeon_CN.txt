@@ -8974,6 +8974,10 @@ Chain Strike
 锁链攻击
 You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
 你拥有在攻击时召唤锁链的力量。启用后：你的攻击造成 +10 锁链伤害并制造锁链。125% 束缚效率。
+Ropework
+结绳术
+You have the power to weave ropes between your attacks. When enabled: Your attacks deal +10 chain damage and create ropes. 400% bind efficiency.
+你有能力在攻击之间编织绳索。启用后：你的攻击造成 +10 连锁伤害并制造绳索。400% 束缚效率。
 Leather Whip
 皮鞭
 You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
