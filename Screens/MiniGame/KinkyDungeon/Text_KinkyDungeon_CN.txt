@@ -672,7 +672,8 @@ All humanoids that can bind you also apply Fuuka's special restraints.
 所有可束缚你的人形生物可以使用Fuuka特制的拘束具。
 Collected
 搜集
-Start with The Warden's special collar and some restraints.
+Start with The Warden's special belt which punishes you for defiling spell orbs.
+开局时穿戴典狱长的特殊贞操带，它会惩罚你玷污法术球。
 从典狱长的特殊项圈和一些束缚开始。
 Enforcers
 执法者
