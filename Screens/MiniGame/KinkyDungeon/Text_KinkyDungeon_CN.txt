@@ -13776,6 +13776,8 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 （SPEAKER 点点头）|轻声细语，手持重锤。
 (The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin.
 （SPEAKER 挥手）|嗨。|我只做最好的盔甲。|我与我的孪生兄弟不同，我卖的盔甲可不便宜。
+(The SPEAKER looks at you.)|Do you have a dealer's license?
+（SPEAKER 看着你。）|您有经销商执照吗？
 (The SPEAKER folds her arms)|I don't do charity, girl.
 （SPEAKER 交叉双臂）|我不做慈善事业，小姑娘。
 (The SPEAKER nods)|The most high-impact of sports bras.
