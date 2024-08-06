@@ -19203,7 +19203,7 @@ The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 (SPEAKER 看着你)|你的就很好，亲爱的。
 (The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
 (SPEAKER 笑着说)|你没有足够的金币，亲爱的。|等你洗劫一空再回来吧！
-(The SPEAKER nods)|My great grandmother used to wear these."
+(The SPEAKER nods)|My great grandmother used to wear these.
 (SPEAKER 点点头)|我的曾祖母曾经戴过这个。
 (The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead...
 (SPEAKER 点点头)|冒险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
