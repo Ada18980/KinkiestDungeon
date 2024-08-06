@@ -658,6 +658,8 @@ Magic Hands
 魔法之手
 Enemies can add restraints underneath existing restraints.
 敌人可以透过外层拘束具添加内层拘束。
+Start atop a conveyor on your way to be sealed away inside the Facility.
+从传送带顶部开始，被封闭在设施内。
 Cyber Doll
 赛博娃娃
 Start in Cyber restraints.
