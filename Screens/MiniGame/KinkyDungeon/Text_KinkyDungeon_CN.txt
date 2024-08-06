@@ -4450,20 +4450,18 @@ A light restores the will of its allies!
 一道光恢复了盟友的意志！
 You do not have enough resources to cast the spell!
 你没有足够的资源来施放咒语！
-You AttackName TargetEnemy for DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成了少量的 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成大量的 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成毁灭性的 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy, but your DamageType weapon has no effect!
-你 AttackName TargetEnemy，但你的武器没有效果！
-You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-你 AttackName TargetEnemy 造成 DamageDealt 点 DamageType 伤害！减少了它的魔法抗性！
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName 击中 TargetEnemy 造成 DamageDealt 点 DamageType 伤害！
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害!
+AttackName hits TargetEnemy for a decreased DamageDealt DamageType damage!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点少量的 DamageType 伤害!
+AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点大量的 DamageType 伤害！
+AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点毁灭性的 DamageType 伤害！
+AttackName hits TargetEnemy, but your DamageType weapon has no effect!
+AttackName 命中 TargetEnemy, 但你的 DamageType 武器似乎没有任何效果！
+AttackName hits TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害! 减少了它的魔法抗性!
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
 AttackName 击中 TargetEnemy 造成了少量的 DamageDealt 点 DamageType 伤害！
 AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
@@ -15293,7 +15291,7 @@ Doll Plug Gag
 A soft, flexible plug pressed into your mouth and held in place with a metal shield.
 将柔软、灵活的塞子压入你的嘴中，并用金属罩固定到位。
 Cyber Mittens
-赛博口套
+赛博手套
 These mittens force your hands into fists, keeping you from using them to do anything useful.
 这些手套迫使你的手握成拳头，使你无法用它们做任何有用的事情。
 It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band.
@@ -19618,3 +19616,171 @@ Cyber Wrist Tether
 赛博手腕绑带
 A very short energy tether connecting your wrist cuffs together.
 一条非常短的能量绳将你的手腕铐连接在一起。
+Desperate Struggle
+绝望的挣扎
+Spend 20 WP to shake around violently. Has a chance to loosen restraints you are wearing, based on existing struggle progress. Spreading the effect over multiple restraints reduces the chance of loosening.|Requires 25% or more WP to activate.
+消耗 20 意志剧烈晃动。根据现有的挣扎进度，有机会松开绑在你身上的束缚。将效果分散到多个束缚上可降低松动的几率。|需要 25% 或更多意志力才能使用。
+None of your restraints will budge.
+任何束缚都不会松动。
+You thrash around with all your might.
+你用尽全身的力气挣扎。
+You don't have the willpower left to struggle...
+你没有足够的意志力去挣扎……
+Owned: AMNT
+所属: AMNT
+Inputs:
+输入:
+You slip off the conveyor!
+你从传送带上滑下来了！
+The Summit
+顶点
+Back to Collection
+返回收藏
+Edit Restraints
+修改束缚
+Editing Restraints
+正在修改束缚
+Imprison in Furniture
+囚禁在家具中
+Module (Utility)
+模块 (实用程序)
+Leash
+皮带
+Module (Punishment)
+模块 (惩罚)
+~~~ Collar ~~~
+~~~ 项圈 ~~~
+Blindfold / Earplugs
+眼罩 / 耳塞
+Blindfold
+眼罩
+Mask/Hood
+面罩/头套
+Gag
+口塞
+Gag / Stuffing
+口塞 / 填充
+Muzzle
+口套
+Wrists
+腕部
+Heavy Bondage
+重型束缚
+Extra Bondage
+额外束缚
+Encasement
+包裹
+Mittens
+连指手套
+Mittens / Tape
+连指手套 / 胶带
+Gloves / Tape
+手套 / 胶带
+Piercings
+穿孔
+Weights
+砝码
+Vibes
+震动
+Chastity Bra
+贞操文胸
+Catsuit / Leotard
+紧身连体衣 / 紧身衣
+Harness
+束衣
+Corset
+束胸
+Rear Plug
+肛塞
+Front Plug
+阴塞
+Vibrator
+震动棒
+Chastity Belt
+贞操带
+Thigh Cuffs
+大腿镣铐
+Leg Bondage
+腿部束缚
+Legbinder
+绑腿
+Ankles
+脚踝
+Shins
+小腿
+Knees
+膝盖
+Toe Cuffs
+脚趾铐
+Toe Tie
+脚趾绑带
+Heels
+高跟鞋
+Equipped:
+已装备:
+Click to Add
+点击添加
+Free Prisoners
+释放囚犯
+Perk Unlocked:
+解锁技能:
+Latex Solvent
+乳胶溶剂
+You ready the bottle of Latex Solvent.
+你准备好了一瓶乳胶溶剂。
+A potent acid, capable of dissolving slime and latex.
+一种强酸，能够溶解粘液和乳胶。
+Deal 90 acid damage to target. Adds a 10% debuff to the cut and struggle resistance of latex restraints currently worn.
+对目标造成 90 点酸性伤害。当前穿戴的乳胶束缚带的切割和抗挣扎能力增加 10% 的减益效果。
+Weakened by Latex Solvent (10%)
+被乳胶溶剂削弱 (10%)
+You spill the solvent on yourself and loosen your latex bonds!
+你将溶剂洒在自己身上，乳胶束缚松动!
+You splash the ENMY with latex solvent!
+你将乳胶溶剂泼向 ENMY!
+You can't use solvents on targets other than yourself while bound.
+被束缚时，你不能对除自己之外的目标使用溶剂。
+Random
+随机
+Choose Palette
+选择调色板
+Restraint Palette
+限制调色板
+Choose Restraint
+选择限制
+Def. Palette: 
+默认调色板:
+Set All Palette
+设置所有调色板
+Prisoners
+囚犯
+Guests
+客人
+Assign to
+分配给
+Remove from
+移除自
+Imprison
+监禁
+Opinion:
+观点:
+Last Seen on Floor FLR, LOC
+最后出现在楼层 FLR 的 LOC 位置
+Present in current level
+存在于当前层级
+Captured by FCTN
+由 FCTN 捕获
+Captured by enemies
+由敌人捕获
+Use 'Truss'em'Up' to edit restraints on this NPC
+使用 'Truss'em'Up' 修改此 NPC 的束缚
+The NPC needs tightening, but is unavailable right now
+NPC 需要收紧束缚，但目前无法做到
+Tighten loose restraints
+收紧宽松的束缚
+NPC has escaped!
+NPC 已逃脱!
+NPC is likely to escape.
+NPC 很有可能逃脱。
+NPC has managed to loosen her bonds.
+NPC 已成功解开她的束缚。
