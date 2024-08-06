@@ -19269,8 +19269,8 @@ A very short chain connecting your wrist cuffs together.
 一条非常短的链条，将你的手腕铐连接在一起。
 ESCP Difficulty: AMNT
 ESCP 难度：AMNT
-ESCP Power: AMNT%
-ESCP 力量：AMNT%
+ESCP Power: AMNT
+ESCP 力量：AMNT
 ESCP Ability: AMNT
 ESCP 能力: AMNT
 Max ESCP Depth: AMNT%
