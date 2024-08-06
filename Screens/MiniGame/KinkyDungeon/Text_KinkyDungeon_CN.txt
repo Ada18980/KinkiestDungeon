@@ -19271,6 +19271,10 @@ ESCP Difficulty: AMNT
 ESCP 难度：AMNT
 ESCP Power: AMNT%
 ESCP 力量：AMNT%
+ESCP Ability: AMNT
+ESCP 能力: AMNT
+Max ESCP Depth: AMNT%
+最大 ESCP 深度: AMNT%
 Your collar channels the vigor of excitement into magical energy!
 你的项圈将兴奋的活力转化为神奇的能量！
 The collar has already squeezed what it can out of you. Clear your mind first!
