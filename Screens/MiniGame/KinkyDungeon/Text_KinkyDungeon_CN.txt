@@ -662,8 +662,8 @@ Start atop a conveyor on your way to be sealed away inside the Facility.
 从传送带顶部开始，被封闭在设施内。
 Cyber Doll
 赛博娃娃
-Start in Cyber restraints.
-开局时穿戴赛博束缚。
+Start in full Cyber restraints.
+开局时穿戴全套赛博束缚。
 Fuuka's Pet
 Fuuka的宠物
 Start with Fuuka's collar and a few restraints.
