@@ -15522,6 +15522,16 @@ Body
 身体
 Gloves
 手套
+RibbonBelt
+丝带绳衣
+Upper Chest Strap
+上胸绳
+Shoulder Straps
+肩绳
+Lower Chest Straps
+下胸绳
+Arm Straps
+手臂绳
 Arm Ropes
 手臂绳缚
 Cuffs
@@ -15746,13 +15756,13 @@ A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
 It's not very secure.
 这不是很牢固。
-Intricate Ropework
-复杂的绳索
+Chest Straps
+胸绳
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
-Strict Ropework
-严密的绳索
-The finishing touches on a tight and strict piece of ropework.
+Chest Harness
+胸束衣
+The finishing touch on a tight and strict piece of ropework.
 最后的收尾工作是对一根紧密而严厉的绳索进行最后的修饰。
 Rope Hogtie
 驷马
