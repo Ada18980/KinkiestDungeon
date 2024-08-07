@@ -363,7 +363,7 @@ function KinkyDungeonInDanger() {
 		let playerDist = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
 		if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
 			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
-				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy)) || playerDist < 1.5)) {
+				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy)) || (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
 					(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						return true;

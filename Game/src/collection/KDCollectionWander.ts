@@ -16,6 +16,10 @@ interface CollectionWanderType {
 
 function KDTickCollectionWanderCollectionEntry(value: KDCollectionEntry) {
 	if (value?.Facility && KDCollectionWanderTypes[value.Facility]) {
+		if (KDGetGlobalEntity(value.id) && KDGetGlobalEntity(value.id).FacilityAction != value.Facility) {
+			KDChangeEntityFacilityAction(KDGetGlobalEntity(value.id), value.Facility);
+		}
+
 		if (KDGameData.RoomType == KDCollectionWanderTypes[value.Facility].spawnRoom
 			&& KDGameData.RoomType == KDCollectionWanderTypes[value.Facility].spawnRoom
 		) {
@@ -41,6 +45,10 @@ function KDTickCollectionWanderCollectionEntry(value: KDCollectionEntry) {
 			}
 		}
 
+	} else if (!value.Facility && value.spawned) {
+		if (KDGetGlobalEntity(value.id) && KDGetGlobalEntity(value.id).FacilityAction != value.Facility) {
+			KDChangeEntityFacilityAction(KDGetGlobalEntity(value.id), value.Facility);
+		}
 	}
 }
 
@@ -61,45 +69,3 @@ function KDChangeEntityFacilityAction(entity: entity, action: string) {
 			.onChangeFacility(value, entity, entity.FacilityAction, action);
 	}
 }
-
-
-let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
-	Return: {
-		spawnRoom: "Summit",
-		// Dummy spawn condition, should NEVER spawn NPCs because the faciltiy does not exist
-		spawnCondition: (value) => {
-			// if they are already spawned they instantly despawn
-			if (value.spawned) {
-				let entity = KinkyDungeonFindID(value.id);
-				if (entity) KDRemoveEntity(entity, false, false, true);
-			}
-			return null;
-		},
-		// Dummy spawn condition, should NEVER spawn NPCs because the faciltiy does not exist
-		// Instead we just set them to spawned so they are instantly removed
-		spawnConditionRemote: (value) => {
-			value.spawned = true;
-			return null;
-		},
-
-		// Maintenance condition
-		maintain: (value, entity, delta) => {
-			if (entity) {
-				// Go to the dorm and despawn
-				let point = {x: 1, y: 3}; // TODO make generic
-				if (KDistChebyshev(entity.x - point.x, entity.y - point.y) < 0.5)
-					KDRemoveEntity(entity, false, false, true);
-				else {
-					entity.gx = point.x;
-					entity.gy = point.y;
-					KinkyDungeonSetEnemyFlag(entity, "overrideMove", 12);
-					if (entity.IntentAction)
-						KDResetIntent(entity, undefined);
-				}
-			}
-		},
-
-		// Returning NPCs finish returning so they can respawn
-		onChangeFacility: (value, entity, fromFacility, toFacility) => {return "Return";},
-	},
-};
