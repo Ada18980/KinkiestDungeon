@@ -1083,7 +1083,7 @@ DungeonNameGoldVault,Ancient Vault
 DungeonNamevault,Ancient Halls
 DungeonNameSlaveMarket,Slave Market
 DungeonNameElevatorRoom,Elevator Hall
-DungeonNameElevatorEgyptian,Ancient Passageway
+DungeonNameElevatorEgyptian,Dark Passageway
 DungeonNameCaldera,Caldera Beach
 DungeonNameTempleAir,Temple of Air
 DungeonNameTempleFire,Temple of Fire
@@ -22790,8 +22790,8 @@ KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
 KDSideRoom_ElevatorRoom,"Elevator Hall"
-KDSideRoom_ElevatorEgyptian,"Ancient Passageway"
-KDSideRoom_ElevatorEgyptian2,"Ancient Passageway"
+KDSideRoom_ElevatorEgyptian,"Dark Passageway"
+KDSideRoom_ElevatorEgyptian2,"Dark Passageway"
 KDSideRoom_Caldera,"Caldera Passage"
 KDSideRoom_GoldVault,"Ancient Vault"
 KDSideRoom_AuctionHall,"Auction Hall"
