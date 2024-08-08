@@ -73,9 +73,10 @@ let KDSideRooms = {
 		name: "ElevatorRoom",
 		weight: 400,
 		chance: 0.4,
+		tags: ["elevator"],
 		filter: (slot, top) => {
 			if (!top) return 0;
-			return 1;
+			return slot.Checkpoint == 'tmb' ? 0 : 1;
 		},
 		altRoom: "ElevatorRoom",
 		mapMod: "None",
@@ -83,6 +84,42 @@ let KDSideRooms = {
 		faction: "AncientRobot",
 		stairCreation: (tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "bel"}, x, y, 1.5);
+			return true;
+		},
+	},
+	"ElevatorEgyptian": {
+		name: "ElevatorEgyptian",
+		weight: 800,
+		chance: 0.4,
+		filter: (slot, top) => {
+			if (!top) return 0;
+			return slot.Checkpoint == 'tmb' ? 1 : 0.1;
+		},
+		tags: ["elevator", "elevatorstart"],
+		altRoom: "ElevatorEgyptian",
+		mapMod: "None",
+		escapeMethod: "None",
+		faction: "Bast",
+		stairCreation: (tile, x, y) => {
+			KinkyDungeonSkinArea({skin: "tmb"}, x, y, 1.5);
+			return true;
+		},
+	},
+	"ElevatorEgyptian2": {
+		name: "ElevatorEgyptian2",
+		weight: 200,
+		chance: 0.4,
+		filter: (slot, top) => {
+			if (!top) return 0;
+			return slot.Checkpoint == 'tmb' ? 0.4 : 0.01;
+		},
+		tags: ["elevator", "elevatorstart"],
+		altRoom: "ElevatorEgyptian2",
+		mapMod: "None",
+		escapeMethod: "None",
+		faction: "Bast",
+		stairCreation: (tile, x, y) => {
+			KinkyDungeonSkinArea({skin: "tmb"}, x, y, 1.5);
 			return true;
 		},
 	},
@@ -110,9 +147,10 @@ let KDSideRooms = {
  * @param {KDJourneySlot} slot
  * @param {boolean} side
  * @param {string[]} ignore
+ * @param {string} [requireTag]
  * @returns {KDSideRoom}
  */
-function KDGetSideRoom(slot, side, ignore) {
+function KDGetSideRoom(slot, side, ignore, requireTag) {
 	let genWeightTotal = 0;
 	let genWeights = [];
 	let mult = 1.0;
@@ -120,7 +158,8 @@ function KDGetSideRoom(slot, side, ignore) {
 	for (let mod of Object.values(KDSideRooms)) {
 		if (!ignore.includes(mod.name)) {
 			mult = mod.filter(slot, side);
-			if (mult > 0 && (mod.chance*mult >= 1 || KDRandom() < mod.chance*mult)) {
+			if (mult > 0 && (mod.chance*mult >= 1 || KDRandom() < mod.chance*mult)
+				&& (!requireTag || (mod.tags && mod.tags.includes(requireTag)))) {
 				genWeights.push({mod: mod, weight: genWeightTotal});
 				genWeightTotal += mod.weight;
 			}

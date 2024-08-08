@@ -48,6 +48,14 @@ let KDFurniture = {
 			// Nothing yet TODO add special features like dressing the player
 		}
 	},
+	"Sarcophagus": {
+		floor: "Brickwork",
+		sprite: "Sarcophagus",
+		restraintTag: "sarcophagus",
+		tickFunction: (delta) => {
+			// Nothing yet TODO add special features like dressing the player
+		}
+	},
 	"DisplayEgyptian": {
 		floor: "Floor",
 		sprite: "DisplayEgyptian",

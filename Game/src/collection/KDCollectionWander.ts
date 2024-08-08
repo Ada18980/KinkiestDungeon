@@ -45,7 +45,7 @@ function KDTickCollectionWanderCollectionEntry(value: KDCollectionEntry) {
 			}
 		}
 
-	} else if (!value.Facility && value.spawned) {
+	} else if (value.spawned) {
 		if (KDGetGlobalEntity(value.id) && KDGetGlobalEntity(value.id).FacilityAction != value.Facility) {
 			KDChangeEntityFacilityAction(KDGetGlobalEntity(value.id), value.Facility);
 		}

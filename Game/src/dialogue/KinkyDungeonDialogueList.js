@@ -2628,6 +2628,48 @@ let KDDialogue = {
 		}
 	},
 
+	"MummyElevator": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			let e = KDGetSpeaker();
+			if (e) {
+				e.hp = 0;
+				let en = DialogueCreateEnemy(e.x, e.y, "Mummy");
+				en.hostile = 9999;
+				en.faction = "Enemy";
+				en.aware = true;
+
+				// If the roomtype is sarcophagus, spawn the sarcophagus
+				if (KDGameData.RoomType == "ElevatorEgyptian") {
+					en = DialogueCreateEnemy(e.x, e.y + 11, "SarcoKraken");
+					en.faction = "Enemy";
+					en.maxlifetime = 9999;
+					en.lifetime = 9999;
+					if (KinkyDungeonTilesGet((e.x) + ',' + (e.y + 11))) {
+						KinkyDungeonTilesGet((e.x) + ',' + (e.y + 11)).Skin = "SarcophagusGone";
+					}
+				} else if (KDGameData.RoomType == "ElevatorEgyptian2") {
+					// Otherwise ALL statues in the room become cursed ones
+					for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+						for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+							if (KinkyDungeonMapGet(X, Y) == 'X') {
+								KinkyDungeonMapSet(X, Y, '3');
+								DialogueCreateEnemy(X, Y, "MummyCursed");
+							}
+						}
+					}
+				}
+			}
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+
 	"AntiqueShop": KDSaleShop("AntiqueShop", ["Sunglasses", "Snuffer", "SackOfSacks", "Rope"], [], ["blacksmith"], 0.4, 2),
 	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Lockpick", "Knife", "Sword", "Hammer", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
 	"ArmorerShop": KDSaleShop("ArmorerShop", ["Shield", "Breastplate", "Bracers", "Gauntlets", "SteelBoots", "ChainTunic", "ChainBikini", "TrapBelt", "TrapBra"], [], ["blacksmith"], 0.4, 2.0),

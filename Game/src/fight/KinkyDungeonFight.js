@@ -418,8 +418,12 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 		if (Enemy.playWithPlayer && (KDCanDom(Enemy) || !KDHostile(Enemy))) {
 			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
-			if (KDCanDom(Enemy))
-				KDAddOpinion(Enemy, 1);
+			if (KDCanDom(Enemy)) {
+				if (!KDEntityHasFlag(Enemy, "playOpin")) {
+					KDAddOpinionPersistent(Enemy.id, 1);
+					KinkyDungeonSetEnemyFlag(Enemy, "playOpin", -1);
+				}
+			}
 		} else {
 			if (Enemy && !Enemy.Enemy.allied) {
 				if (Enemy.vp) Enemy.vp = Math.min(2, Enemy.vp*2);

@@ -81,8 +81,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		name: "Armor",
 		prereq: () => {return true;},
 		items: [
-			KDAutoGenRestraintBlueprint("MageArmor", "Armor", "", undefined, {Rope: 50, Runes: 5}),
-			KDAutoGenRestraintBlueprint("MagicArmbands", "Armor", "", undefined, {Metal: 30, Runes: 2}),
+			KDAutoGenRestraintBlueprint("MageArmor", "Armor", "", undefined, {Rope: 50, Rune: 5}),
+			KDAutoGenRestraintBlueprint("MagicArmbands", "Armor", "", undefined, {Metal: 30, Rune: 2}),
 			KDAutoGenRestraintBlueprint("SteelSkirt", "Armor", "", undefined, {Metal: 150}),
 			KDAutoGenRestraintBlueprint("SteelSkirt2", "Armor", "", undefined, {Metal: 100}),
 			KDAutoGenRestraintBlueprint("ChainTunic", "Armor", "", undefined, {Metal: 200}),

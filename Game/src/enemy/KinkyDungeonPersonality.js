@@ -132,6 +132,40 @@ function KDGetPersonality(enemy) {
 	return "";
 }
 
+
+/**
+ *
+ * @param {enemy} Enemy
+ * @returns {string}
+ */
+function KDGetPersonalityType(Enemy) {
+	let WeightTotal = 0;
+	let Weights = [];
+
+	for (let p of Object.entries(KDEnemyPersonalities)) {
+		let weight = p[1].weight;
+		Weights.push({p: p[0], weight: WeightTotal});
+		if (p[1].tags)
+			for (let tag of Object.entries(p[1].tags)) {
+				if (Enemy.tags[tag[0]]) weight += tag[1];
+			}
+		WeightTotal += Math.max(weight, 0);
+	}
+
+	let selection = KDRandom() * WeightTotal;
+
+	for (let L = Weights.length - 1; L >= 0; L--) {
+		if (selection > Weights[L].weight) {
+			if (Weights[L].p != undefined) {
+				return Weights[L].p;
+			}
+			return "";
+		}
+	}
+
+	return "";
+}
+
 /**
  *
  * @param {entity} enemy

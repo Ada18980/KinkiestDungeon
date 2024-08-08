@@ -121,6 +121,52 @@ function KDDrawFacilitiesList(xOffset) {
 		FacilitiesIndex = listRender.length - 1;
 	}
 
+	let YYQuik = 50;
+	let XXQuik = 415;
+	let quikSize = 72;
+	let quikSpacing = 80;
+	let quikCols = 1;
+	let quikCurrentCol = 0;
+	if (listRender.length * quikSpacing > 900) {
+		quikSpacing = 40;
+		quikCols = 2;
+		quikSize = 36;
+	}
+	for (let facility of listRender) {
+		DrawButtonKDEx("quikFal" + facility[0],
+			() => {
+				FacilitiesIndex = listRender.findIndex((entry) => {
+					return entry[0] == facility[0];
+				})
+				return true;
+			},
+			true, XXQuik + quikCurrentCol * quikSpacing, YYQuik, quikSize, quikSize, "", "#ffffff",
+			KinkyDungeonRootDirectory + "UI/Facility/" + facility[0] + ".png", undefined, false, false,
+			undefined, undefined, undefined, {
+				centered: true,
+				zIndex: 110,
+			}
+
+
+		)
+
+		if (facility[1].locked && facility[1].locked())
+			KDDraw(kdcanvas, kdpixisprites, "facicon" + facility[0],
+				KinkyDungeonRootDirectory + "Locks/White.png",
+				XXQuik - (quikSize - 56)/2 + quikCurrentCol * quikSpacing, YYQuik - (quikSize - 56)/2, 56, 56
+			);
+		if (facility[1].ping)
+			facility[1].ping(XXQuik, YYQuik, quikCurrentCol, quikSpacing, quikSize);
+
+		if (quikCurrentCol + 1 < quikCols) {
+			quikCurrentCol += 1;
+		} else {
+			quikCurrentCol = 0;
+			YYQuik += quikSpacing;
+		}
+	}
+
+
 	let II = 0;
 	let broken = false;
 	let rendered = 0;

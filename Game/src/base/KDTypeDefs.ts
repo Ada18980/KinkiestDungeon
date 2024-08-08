@@ -2586,6 +2586,7 @@ type KDSideRoom = {
 	name: string,
 	faction?: string,
 	weight: number,
+	tags?: string[],
 	/** Rolled once each time it gets a map mod */
 	chance: number,
 	/**
@@ -3464,6 +3465,7 @@ interface KDCollectionEntry {
 	customSprite: boolean,
 	escaped?: boolean,
 	escapegrace?: boolean,
+	personality: string,
 
 	spawned?: boolean,
 

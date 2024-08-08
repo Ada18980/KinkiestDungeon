@@ -27,11 +27,12 @@ let KDObjectClick = {
 			KinkyDungeonFoodMessage(tile);
 	},
 	"Elevator": (x, y) => {
+		let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 		if (!KDGameData.ElevatorsUnlocked) KDGameData.ElevatorsUnlocked = {};
 		if (!KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel]) {
-			if (!KDMapData.Entities.some((enemy) => {
+			if ((!altType?.elevatorCondition && !KDMapData.Entities.some((enemy) => {
 				return KDEnemyRank(enemy) > 2 && (KDHostile(enemy) || KinkyDungeonAggressive(enemy)) && !KDHelpless(enemy);
-			})) {
+			})) || (altType?.elevatorCondition && altType.elevatorCondition(x, y))) {
 				KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel] = true; // Unlock!
 				let tile = KinkyDungeonTilesGet(x + ',' + y);
 				if (tile) {

@@ -5,6 +5,9 @@ interface Facility {
 	update: (delta: number) => boolean,
 	priority: number,
 	prereq: () => boolean,
+	locked?: () => boolean,
+	/** Can draw a ping or anything really, on the quick bar. Good for notifications */
+	ping?: (XXQuik: number, YYQuik: number, quikCurrentCol: number, quikSpacing: number, quikSize: number) => void,
 	goldCost: () => number,
 	maxPrisoners: () => number,
 	maxServants: () => number,
@@ -26,6 +29,13 @@ let KDFacilityTypes: Record<string, Facility> = {
 		maxPrisoners: () => {return 0;},
 		maxServants: () => {return 3;},
 		defaultData: {},
+		ping: (XXQuik: number, YYQuik: number, quikCurrentCol: number, quikSpacing: number, quikSize: number) => {
+			let facility = "Management";
+			DrawTextFitKD((KDGameData.FacilitiesData["Servants_" + facility]?.length || 0) + "",
+				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, "#ffffff", KDTextGray0,
+				18, "left", 111
+			);
+		},
 	},
 	CuddleLounge: {
 		priority: -50,
@@ -48,6 +58,16 @@ let KDFacilityTypes: Record<string, Facility> = {
 			return false;
 		},
 
+		ping: (XXQuik: number, YYQuik: number, quikCurrentCol: number, quikSpacing: number, quikSize: number) => {
+			let facility = "CuddleLounge";
+			DrawTextFitKD(
+				(KDGameData.FacilitiesData["Servants_" + facility]?.length || 0)
+				+ " + "
+				+ (KDGameData.FacilitiesData["Prisoners_" + facility]?.length || 0),
+				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, "#ffffff", KDTextGray0,
+				18, "left", 111
+			);
+		},
 		draw: (x, y, width) => {
 
 			return KDDrawCuddleLounge(x, y, width);
@@ -70,6 +90,25 @@ let KDFacilityTypes: Record<string, Facility> = {
 			}
 
 			return false;
+		},
+
+		ping: (XXQuik: number, YYQuik: number, quikCurrentCol: number, quikSpacing: number, quikSize: number) => {
+			let rates = KDGetRecyclerRate(KDGameData.FacilitiesData.Servants_Recycler);
+			let notIdle = false;
+			for (let resource of Object.values(rates)) {
+				if (resource > 0) {
+					notIdle = true;
+					break;
+				}
+			}
+			if (!notIdle) {
+				DrawTextFitKD(
+					TextGet("Idle"),
+					XXQuik + quikCurrentCol * quikSpacing, YYQuik + 6, quikSize, "#ffffff", KDTextGray0,
+					12, "left", 111
+				);
+			}
+
 		},
 
 		draw: (x, y, width) => {

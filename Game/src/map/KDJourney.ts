@@ -74,6 +74,12 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			if (sideBot) {
 				slot.SideRooms.push(sideBot.name);
 			}
+		} else if (y == 1) {
+			let sideTop = null;//KDGetSideRoom(slot, true, slot.SideRooms, "elevatorstart");
+			if (!sideTop) sideTop = KDSideRooms.ElevatorEgyptian2;
+			if (sideTop) {
+				slot.SideRooms.push(sideTop.name);
+			}
 		}
 
 

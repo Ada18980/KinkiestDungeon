@@ -30,6 +30,10 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.32
+- Added management facility. management servants will wander around and help you fight off escapees.
+- Added quick facilities buttons
+
 5.3.31
 - You can use furniture to gain an advantage over enemies
 - Added mod compatibility setting

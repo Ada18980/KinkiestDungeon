@@ -771,7 +771,11 @@ function KDAnimEnemy(Entity) {
 	let resetAnim = true;
 
 
-	if (KDToggles.EnemyAnimations && Entity.Enemy && (Entity.Enemy.Animations || Entity.Enemy.bound)) {
+	let noAmbushWait = !(Entity.Enemy && KDAmbushAI(Entity) && !Entity.ambushtrigger);
+
+
+
+	if (noAmbushWait && KDToggles.EnemyAnimations && Entity.Enemy && (Entity.Enemy.Animations || Entity.Enemy.bound)) {
 		Entity.offY = 0;
 		Entity.offX = 0;
 		Entity.scaleX = 1;
@@ -789,7 +793,7 @@ function KDAnimEnemy(Entity) {
 		}
 	}
 
-	if (KDToggles.EnemyAnimations && Entity.Enemy && KDIsFlying(Entity) && !(KDBoundEffects(Entity) > 3 || KDHelpless(Entity))) {
+	if (noAmbushWait && KDToggles.EnemyAnimations && Entity.Enemy && KDIsFlying(Entity) && !(KDBoundEffects(Entity) > 3 || KDHelpless(Entity))) {
 		if (resetAnim) {
 			Entity.offY = 0;
 			Entity.offX = 0;
@@ -809,7 +813,7 @@ function KDAnimEnemy(Entity) {
 			offY = offamount * Math.sign(Entity.fy - Entity.y);
 		}
 	} else {
-		if (KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity) || Entity.bind > 0) && !KinkyDungeonIsStunned(Entity)) {
+		if (noAmbushWait && KDToggles.EnemyAnimations && Entity.Enemy && (KDBoundEffects(Entity) > 3 || KDHelpless(Entity) || Entity.bind > 0) && !KinkyDungeonIsStunned(Entity)) {
 			if (resetAnim) {
 				Entity.offY = 0;
 				Entity.offX = 0;
@@ -821,7 +825,7 @@ function KDAnimEnemy(Entity) {
 			resetAnim = false;
 		}
 	}
-	if (resetAnim)  {
+	if (resetAnim || !noAmbushWait)  {
 		delete Entity.offY;
 		delete Entity.offX;
 		delete Entity.scaleX;
@@ -873,6 +877,29 @@ function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
 	} else if (duration) enemy.flags[flag] = duration;
 
 }
+/**
+ *
+ * @param {number} id
+ * @param {string} flag
+ * @param {number} duration
+ */
+function KDSetIDFlag(id, flag, duration) {
+	let enemy = KDGetGlobalEntity(id);
+	if (!enemy) {
+		KDSetCollFlag(id, flag, duration);
+		return;
+	}
+	if (!enemy.flags) enemy.flags = {};
+	if (enemy.flags[flag]) {
+		if (duration == 0) {
+			delete enemy.flags[flag];// = undefined;
+			return;
+		}
+		if (enemy.flags[flag] == -1) return;
+		if (enemy.flags[flag] < duration) enemy.flags[flag] = duration;
+	} else if (duration) enemy.flags[flag] = duration;
+
+}
 
 /**
  *
@@ -883,6 +910,19 @@ function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
 function KDEnemyHasFlag(enemy, flag) {
 	return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1))
 		|| KDCollHasFlag(enemy.id, flag);
+}
+/**
+ *
+ * @param {number} id
+ * @param {string} flag
+ * @returns {boolean}
+ */
+function KDIDHasFlag(id, flag) {
+	let enemy = KDGetGlobalEntity(id);
+	if (enemy)
+		return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1))
+			|| KDCollHasFlag(enemy.id, flag);
+	else return KDCollHasFlag(enemy.id, flag);
 }
 
 /**
@@ -2043,7 +2083,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		size: 12,
 	});
 	if (!enemy.Enemy.tags?.nobrain && !enemy.Enemy.tags?.scenery) {
-		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinion(enemy)/10)));
+		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinion(enemy)/20)));
 		let str = TextGet("KDTooltipOpinion"+opinion);
 		TooltipList.push({
 			str: str,
@@ -5653,7 +5693,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (happened > 0) {
 							// Decrement play timer on a hit, less if they are on furniture
 							if (enemy.playWithPlayer) {
-								KDAddOpinion(enemy, 10);
+								if (!KDEntityHasFlag(enemy, "playOpin")) {
+									KDAddOpinionPersistent(enemy.id, 10);
+									KinkyDungeonSetEnemyFlag(enemy, "playOpin", -1);
+								}
 								enemy.playWithPlayer = Math.max(0, enemy.playWithPlayer - (!KinkyDungeonPlayerTags.has("Furniture") ? 2 : 1) * Math.max(1, ((enemy.usingSpecial && enemy.Enemy.specialAttackPoints) ? enemy.Enemy.specialAttackPoints : enemy.Enemy.attackPoints))); // Decrement each attack....
 								if (enemy.playWithPlayer == 0 && !KinkyDungeonFlags.get("noResetIntentFull")) KDResetIntent(enemy, AIData);
 							}
@@ -6620,7 +6663,7 @@ function KDPredictStruggle(enemy, struggleMod, delta, allowStruggleAlwaysThresh)
 			totalCost *= 2/(2 + (mBoost * enemy.Enemy.unlockCommandLevel || 0));
 
 			let effect = Math.min(data.struggleMod, totalCost);
-			let difference = layer[1] * (effect / totalCost);
+			let difference = layer[1] * (totalCost ? (effect / totalCost) : 1);
 			let origBL = data.boundLevel;
 			data.boundLevel = Math.max(minLevel, data.boundLevel - difference);
 			data.specialBoundLevel[layer[0]] -= Math.max(0, origBL - data.boundLevel);
@@ -8180,6 +8223,9 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 				|| (enemy.playerdmg > 0 && KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) < 8)) {
 				KDGetPersistentNPC(enemy.id).captured = false;
 				KDGetPersistentNPC(enemy.id).collect = true;
+				if (KDGameData.Collection[enemy.id + ""]) {
+					KDGameData.Collection[enemy.id + ""].escaped = false;
+				}
 			} else {
 				KDGetPersistentNPC(enemy.id).captured = true;
 				KDGetPersistentNPC(enemy.id).captureFaction = KDMapData.MapFaction;

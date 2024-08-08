@@ -57,9 +57,18 @@ function KDUpdatePersistentNPC(id: number, force: boolean = false) {
 				entry.bodystyle = value.bodystyle;
 				entry.facestyle = value.facestyle;
 				entry.cosplaystyle = value.cosplaystyle;
+
+				if (entry.entity.personality != undefined)
+					value.personality = entry.entity.personality;
+				else if (value.personality != undefined)
+					entry.entity.personality = value.personality;
 			}
 
 			KDSetNPCLocation(id, KDGetCurrentLocation());
+
+			if (enemy.opinion == undefined && KDGameData.Collection[id]?.Opinion != undefined) {
+				enemy.opinion = KDGameData.Collection[id].Opinion;
+			}
 		}
 	}
 }

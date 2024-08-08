@@ -698,6 +698,20 @@ function KDWantsToEscape(value: KDCollectionEntry): boolean {
 		&& (!KDGetGlobalEntity(value.id) // has no entity or is unimprisoned
 			|| !KDIsImprisoned(KDGetGlobalEntity(value.id)));
 }
+function KDIsOKWithRestraining(value: KDCollectionEntry): boolean {
+	return (value.Opinion > 0)
+		&& (
+			(
+				KDGameData.Collection[value.id + ""]?.personality != undefined
+				&& KDLoosePersonalities.includes(KDGameData.Collection[value.id + ""]?.personality)
+			)
+			|| (KDIsNPCPersistent(value.id)
+			&& KDGetPersistentNPC(value.id).entity
+			&& KDGetPersistentNPC(value.id).entity.personality
+			&& KDLoosePersonalities.includes(KDGetPersistentNPC(value.id).entity.personality))
+		);
+}
+
 
 function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 	let eligibleNPCs = Object.values(KDGameData.Collection).filter((value) => {

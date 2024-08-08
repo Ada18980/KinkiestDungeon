@@ -744,7 +744,10 @@ let KDPlayerEffects = {
 					if (enemy.Enemy.name == "SarcoKraken" || enemy.Enemy.name == "SarcoMinion") enemy.hp = 0;
 				}
 				// Put the player somewhere
-				let candidates = KDMapData.JailPoints?.filter((point) => {return point.type == "furniture";});
+				let candidates = KDMapData.JailPoints?.filter((point) => {return point.type == "furniture"
+					&& KinkyDungeonTilesGet(point.x + ',' + point.y)?.Furniture == "Sarcophagus";});
+				if (candidates.length == 0)
+					candidates = KDMapData.JailPoints?.filter((point) => {return point.type == "furniture";});
 				if (candidates && candidates.length > 0) {
 					let candidate = candidates[Math.floor(KDRandom() * candidates.length)];
 					KDMovePlayer(candidate.x, candidate.y, false);

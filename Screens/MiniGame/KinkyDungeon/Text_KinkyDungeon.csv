@@ -1083,6 +1083,7 @@ DungeonNameGoldVault,Ancient Vault
 DungeonNamevault,Ancient Halls
 DungeonNameSlaveMarket,Slave Market
 DungeonNameElevatorRoom,Elevator Hall
+DungeonNameElevatorEgyptian,Ancient Passageway
 DungeonNameCaldera,Caldera Beach
 DungeonNameTempleAir,Temple of Air
 DungeonNameTempleFire,Temple of Fire
@@ -22789,6 +22790,8 @@ KDSideRoom_Lair_Witch,"Magical Study"
 KDSideRoom_Lair_Hall,"Maintenance Hall"
 KDSideRoom_GoldChest,"Ancient Chest"
 KDSideRoom_ElevatorRoom,"Elevator Hall"
+KDSideRoom_ElevatorEgyptian,"Ancient Passageway"
+KDSideRoom_ElevatorEgyptian2,"Ancient Passageway"
 KDSideRoom_Caldera,"Caldera Passage"
 KDSideRoom_GoldVault,"Ancient Vault"
 KDSideRoom_AuctionHall,"Auction Hall"
@@ -23544,7 +23547,7 @@ KDBindNPCSlot_BootsEncase,Encasement
 KDCurrentItem,"Equipped: "
 KDCurrentItem2,"Click to Add "
 
-KDFreePrisoner,Free Prisoners
+KDFreePrisoner,Free Prisoner
 
 KDPerkUnlockedToast,"Perk Unlocked: "
 
@@ -23660,3 +23663,8 @@ KDCombatManeuver,"Combat Maneuver: Your next move is instant."
 
 KDManagement1,Appointing managers increases the efficiency of other facilities.
 KDManagement2,Total Efficiency Boost: AMNT%
+Idle,idle
+
+rMummyElevator,"(As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!"
+
+NameMummyElevator,Mysterious Statue

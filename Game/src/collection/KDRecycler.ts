@@ -56,7 +56,7 @@ function KDBaseRecycleOutputs(): RecyclerOutputs {
 
 function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	let output = {};
-	let mult = 0.5 * KDGetManagementEfficiency()**2;
+	let mult = 0.4 * KDGetManagementEfficiency()**2;
 	for (let id of Servants) {
 		let servant = KDGetServantEnemy(KDGameData.Collection["" + id]);
 		if (servant) {
@@ -440,7 +440,7 @@ function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?:
 	let res: Record<string, number> = {};
 	if (variant) {
 		// TODO add an actual event
-		res.Rune += Math.ceil(RecyclerResources.Rune.Yield * mult);
+		res.Rune = (res.Rune || 0) + Math.ceil(RecyclerResources.Rune.Yield * mult);
 	}
 
 	for (let shrine of restraint.shrine) {

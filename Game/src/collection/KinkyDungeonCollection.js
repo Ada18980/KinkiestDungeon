@@ -204,8 +204,7 @@ function KDAddOpinionPersistent(id, amount) {
 		KDRefreshPersistentNPC(id);
 	} else if (KinkyDungeonFindID(id)) {
 		opinion = KDAddOpinion(KinkyDungeonFindID(id), amount);
-	}
-	if (KDGameData.Collection[id + ""]) {
+	} else if (KDGameData.Collection[id + ""]) {
 		if (opinion != undefined) {
 			KDGameData.Collection[id + ""].Opinion = opinion;
 		} else {
@@ -226,9 +225,10 @@ function KDAddOpinionPersistent(id, amount) {
 function KDGetModifiedOpinionID(id) {
 	if (KDIsNPCPersistent(id)) {
 		let enemy = KDGetPersistentNPC(id).entity;
-		let op = enemy.opinion || 0;
+		let op = enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0;
 
-		op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
+		let faction = KDGetFaction(enemy);
+		op += 30 * KDFactionRelation("Player", faction);
 		if (KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
 		if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
 
@@ -236,7 +236,19 @@ function KDGetModifiedOpinionID(id) {
 	} else if (KinkyDungeonFindID(id)) {
 		return KDGetModifiedOpinion(KinkyDungeonFindID(id));
 	} else if (KDGameData.Collection[id + ""]) {
-		return KDGameData.Collection[id + ""].Opinion || 0;
+		let faction = KDIsServant(KDGameData.Collection[id + ""]) ? "Player" : KDGameData.Collection[id + ""].Faction;
+		let op = KDGameData.Collection[id + ""].Opinion || 0;
+		op += 30 * KDFactionRelation("Player", faction);
+		if (!KDGameData.Collection[id + ""].personality) {
+			KDGameData.Collection[id + ""].personality =
+				KDGetPersonalityType(KinkyDungeonGetEnemyByName(KDGameData.Collection[id + ""].type));
+		}
+		if (KinkyDungeonStatsChoice.get("Dominant")
+			&& KDGameData.Collection[id + ""].personality
+			&& KDLoosePersonalities.includes(KDGameData.Collection[id + ""].personality)) op += 12;
+		if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
+
+		return op;
 	}
 
 }
@@ -285,6 +297,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 			Facility: undefined,
 			escaped: undefined,
 			flags: undefined,
+			personality: enemy.personality != undefined ? enemy.personality : KDGetPersonalityType(enemy.Enemy)
 		};
 		enemy.CustomName = entry.name;
 		enemy.CustomNameColor = entry.color;
@@ -432,7 +445,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 	else II++;
 
-	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/10)));
+	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/20)));
 	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
 	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 
@@ -719,7 +732,9 @@ function KDNPCUnavailable(id, status) {
 			|| !(KDGetPersistentNPC(id).collect || (status && !KDIsInPartyID(id)))
 		))
 		|| (status && KDIsInCapturedPartyID(id))
-		|| (KDGetGlobalEntity(id) && KDEntityHasFlag(KDGetGlobalEntity(id), "imprisoned"));
+		|| (KDGetGlobalEntity(id) &&
+			(KDEntityHasFlag(KDGetGlobalEntity(id), "imprisoned")
+			|| (KinkyDungeonFindID(id) && KDHostile(KinkyDungeonFindID(id)))));
 
 }
 
@@ -1152,6 +1167,9 @@ let KDCollectionTabDraw = {
 			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
 				if (KDCanPromote(value)) {
 					value.status = "Servant";
+					if (KDIsNPCPersistent(value.id)) {
+						KDUpdatePersistentNPC(value.id);
+					}
 					delete value.Facility;
 					KDSortCollection();
 					if (KDToggles.Sound)
@@ -1175,7 +1193,10 @@ let KDCollectionTabDraw = {
 		}
 
 
-		if (!value.status && !KDNPCUnavailable(value.id, value.status))
+		if ((!value.status
+			|| Object.values(KDGetNPCRestraints(value.id)).length > 0
+			|| KDIsOKWithRestraining(value))
+			&& !KDNPCUnavailable(value.id, value.status))
 			if (DrawButtonKDEx("CollectionRestrain", (b) => {
 				KDCurrentRestrainingTarget = value.id;
 				if (KDToggles.Sound)

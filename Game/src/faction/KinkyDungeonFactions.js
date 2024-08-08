@@ -47,6 +47,15 @@ function KDHostile(enemy, enemy2) {
 }
 
 /**
+ *
+ * @param {KDCollectionEntry} value
+ * @returns {boolean}
+ */
+function KDIsServant(value) {
+	return value && value.status == "Servant";
+}
+
+/**
  * Gets the faction of the enemy, returning "Player" if its an ally, or "Enemy" if no faction
  * @param {entity} enemy
  * @returns {string}
@@ -54,9 +63,10 @@ function KDHostile(enemy, enemy2) {
 function KDGetFaction(enemy) {
 	if (!enemy) return undefined;
 	if (enemy.player) return "Player";
-	let E = enemy.Enemy;
 	if (enemy.rage > 0) return "Rage";
 	if (enemy.faction) return enemy.faction;
+	if (KDGameData.Collection && KDIsServant(KDGameData.Collection[enemy.id + ""])) return "Player";
+	let E = enemy.Enemy;
 	if ((E && E.allied) || ((enemy.allied || (E && E.faction && KDFactionAllied("Player", E.faction) && !KDEnemyHasFlag(enemy, "NoFollow"))) && !enemy.faction && !KDEnemyHasFlag(enemy, "Shop"))) return "Player";
 	if (E && E.faction) return E.faction;
 	return "Enemy";
@@ -68,9 +78,10 @@ function KDGetFaction(enemy) {
  * @returns {string}
  */
 function KDGetFactionOriginal(enemy) {
-	let E = enemy.Enemy;
 	if (enemy.player) return "Player";
 	if (enemy.faction) return enemy.faction;
+	if (KDGameData.Collection && KDIsServant(KDGameData.Collection[enemy.id + ""])) return "Player";
+	let E = enemy.Enemy;
 	if (E && E.faction) return E.faction;
 	return "Enemy";
 }

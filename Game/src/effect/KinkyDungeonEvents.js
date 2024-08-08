@@ -9432,6 +9432,25 @@ let KDEventMapGeneric = {
 		"updateNPCEscape": (e, data) => {
 			KDCollectionNPCEscapeTicks();
 		},
+		/**
+		 * Resets the flags for playing with an NPC
+		 */
+		"updateNPCOpinionFlags": (e, data) => {
+			let setIDs = {};
+
+			for (let value of Object.values(KDGameData.Collection)) {
+				if (KDCollHasFlag(value.id, "playOpin")) {
+					KDSetIDFlag(value.id, "playOpin", 0);
+					setIDs[value.id] = true;
+				}
+			}
+			for (let pers of Object.values(KDPersistentNPCs)) {
+				if (!setIDs[pers.id]) {
+					KDSetIDFlag(pers.id, "playOpin", 0);
+					setIDs[pers.id] = true;
+				}
+			}
+		},
 
 
 

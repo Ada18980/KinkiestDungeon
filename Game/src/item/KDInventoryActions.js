@@ -927,7 +927,7 @@ let KDInventoryAction = {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
-				.replace("ITM", TextGet( "Restraint" + item.name))
+				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + 100)
 			, "#ffffff", 2);
 
@@ -974,7 +974,7 @@ let KDInventoryAction = {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
-				.replace("ITM", TextGet( "Restraint" + item.name))
+				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + 100)
 				.replace("#", "" + quant)
 			, "#ffffff", 2);
@@ -1024,7 +1024,7 @@ let KDInventoryAction = {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
-				.replace("ITM", TextGet( "Restraint" + item.name))
+				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + 100)
 				.replace("#", "" + quant)
 			, "#ffffff", 2);

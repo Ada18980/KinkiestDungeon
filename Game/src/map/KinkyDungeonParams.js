@@ -746,16 +746,18 @@ const KinkyDungeonMapParams = {
 		},
 
 		worldGenCode: () => {
-			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
-				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
-					if (KinkyDungeonMapGet(X, Y) == 'X'
-						&& (KDRandom() < 0.15 + 0.45 * Math.min(1, KinkyDungeonDifficulty/30)
-							|| KDNearbyTiles(X, Y, 1.5).some((tile) => {return tile.tile == 'C';}))) {
-						KinkyDungeonMapSet(X, Y, '3');
-						DialogueCreateEnemy(X, Y, "MummyCursed");
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (!altType || !altType.data?.noHostileDoodad)
+				for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+					for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+						if (KinkyDungeonMapGet(X, Y) == 'X'
+							&& (KDRandom() < 0.15 + 0.45 * Math.min(1, KinkyDungeonDifficulty/30)
+								|| KDNearbyTiles(X, Y, 1.5).some((tile) => {return tile.tile == 'C';}))) {
+							KinkyDungeonMapSet(X, Y, '3');
+							DialogueCreateEnemy(X, Y, "MummyCursed");
+						}
 					}
 				}
-			}
 		},
 
 		"setpieces": [

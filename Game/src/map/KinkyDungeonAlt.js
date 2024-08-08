@@ -530,6 +530,131 @@ let alts = {
 		noboring: false,
 		noSetpiece: true,
 	},
+	"ElevatorEgyptian": {
+		name: "ElevatorEgyptian",
+		Title: "ElevatorEgyptian",
+		noWear: false, // Disables doodad wear
+		bossroom: false,
+		width: 14,
+		height: 16,
+		nopatrols: false,
+		setpieces: {
+		},
+		data: {
+			ElevatorRoom: true,
+			noHostileDoodad: true,
+		},
+		elevatorCondition: (x, y) => {
+			return !KDMapData.Entities.some((enemy) => {
+				return !enemy.maxlifetime && (KDHostile(enemy) || KinkyDungeonAggressive(enemy) || enemy.Enemy?.name == "MummyElevator") && (!KDHelpless(enemy) || enemy.Enemy?.name == "MummyElevator");
+			});
+		},
+
+
+		updatescript: (delta) => {
+			KinkyDungeonResetFog();
+		},
+
+		genType: "ElevatorEgyptian",
+		skin: "tmb",
+		musicParams: "tmb",
+		lightParams: "tmb",
+		useGenParams: "tmb",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		persist: true,
+		orbs: 0,
+		chargers: false,
+		notorches: false,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		placeDoors: false,
+		notraps: true,
+		noClutter: true,
+		nobrick: false,
+		nolore: true,
+		noboring: false,
+		noSetpiece: true,
+	},
+	"ElevatorEgyptian2": {
+		name: "ElevatorEgyptian2",
+		Title: "ElevatorEgyptian",
+		noWear: false, // Disables doodad wear
+		bossroom: false,
+		width: 14,
+		height: 16,
+		nopatrols: false,
+		setpieces: {
+		},
+		data: {
+			ElevatorRoom: true,
+			noHostileDoodad: true,
+		},
+		elevatorCondition: (x, y) => {
+			return !KDMapData.Entities.some((enemy) => {
+				return !enemy.maxlifetime && (KDHostile(enemy) || KinkyDungeonAggressive(enemy) || enemy.Enemy?.name == "MummyElevator") && (!KDHelpless(enemy) || enemy.Enemy?.name == "MummyElevator");
+			});
+		},
+
+		updatescript: (delta) => {
+			if (KDRandom() < 0.2) {
+				for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
+					for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+						if (KinkyDungeonMapGet(X, Y) == 'X'
+							&& (KDRandom() < 0.8
+								&& KinkyDungeonVisionGet(X, Y) < 0.01
+								&& Y > KDPlayer().y + 1 // spooky!!!!
+							)) {
+
+
+							// Move to another spot
+							let xMod = KDRandom() < 0.5 ? -1 : 1;
+							if (KinkyDungeonMapGet(X + xMod, Y) == '0') {
+								KinkyDungeonMapSet(X, Y, '0');
+								KinkyDungeonMapSet(X + xMod, Y, 'X');
+							}
+							//KinkyDungeonMapSet(X, Y, '3');
+							//DialogueCreateEnemy(X, Y, "MummyCursed");
+						}
+					}
+				}
+			}
+			KinkyDungeonResetFog();
+		},
+
+		genType: "ElevatorEgyptian2",
+		skin: "tmb",
+		musicParams: "tmb",
+		lightParams: "tmb",
+		useGenParams: "tmb",
+		spawns: false,
+		chests: false,
+		shrines: false,
+		persist: true,
+		orbs: 0,
+		chargers: false,
+		notorches: false,
+		heart: false,
+		specialtiles: false,
+		shortcut: false,
+		enemies: false,
+		nojail: true,
+		nokeys: true,
+		nostairs: true,
+		placeDoors: false,
+		notraps: true,
+		noClutter: true,
+		nobrick: false,
+		nolore: true,
+		noboring: false,
+		noSetpiece: true,
+	},
 	"GoldVault": {
 		name: "GoldVault",
 		Title: "GoldVault",
@@ -744,6 +869,12 @@ let KinkyDungeonCreateMapGenType = {
 	},
 	"ElevatorRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"ElevatorEgyptian": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateElevatorEgyptian(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+	},
+	"ElevatorEgyptian2": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		KinkyDungeonCreateElevatorEgyptian2(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"GoldVault": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
@@ -2366,6 +2497,78 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 			lightColor: 0x99ff99,
 		});
 	}
+
+	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {
+		Type: "Elevator",
+		Overlay: "ElevatorDisabled",
+	});
+}
+
+
+function KinkyDungeonCreateElevatorEgyptian(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.ElevatorEgyptian, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+	DialogueCreateEnemy(15,3,"MummyElevator");
+
+	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {
+		Type: "Elevator",
+		Overlay: "ElevatorDisabled",
+	});
+}
+
+
+function KinkyDungeonCreateElevatorEgyptian2(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+	// Variable setup
+
+	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
+	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
+	VisitedRooms[0].x = 1;
+	VisitedRooms[0].y = Math.floor(height/2);
+
+	// Now we STRETCH the map
+	let KinkyDungeonOldGrid = KDMapData.Grid;
+	let w = KDMapData.GridWidth;
+	let h = KDMapData.GridHeight;
+	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
+	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
+	KDMapData.Grid = "";
+
+	// Generate the grid
+	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+		for (let X = 0; X < KDMapData.GridWidth; X++)
+			KDMapData.Grid = KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+		KDMapData.Grid = KDMapData.Grid + '\n';
+	}
+
+	KD_PasteTile(KDMapTilesList.ElevatorEgyptian2, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
+	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
+
+	DialogueCreateEnemy(15,3,"MummyElevator");
 
 	KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y - 3, '6');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x) + ',' + (KDMapData.StartPosition.y - 3), {

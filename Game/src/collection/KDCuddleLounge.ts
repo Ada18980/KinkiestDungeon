@@ -1,5 +1,5 @@
 function KDDrawCuddleLounge(x: number, y: number, width: number): number {
-	let dd = 400;
+	let dd = 370;
 	if (y + dd < 940) {
 		let yy = y;
 
@@ -8,11 +8,11 @@ function KDDrawCuddleLounge(x: number, y: number, width: number): number {
 		let rate = KDCuddleLoungeGain();
 		let ii = 0;
 		DrawTextFitKD(TextGet("KDCuddleLounge1").replace("AMNT", Math.round(rate.servants*10)/10 + ""),
-			x + 50, yy + 100 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 70 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
 		DrawTextFitKD(TextGet("KDCuddleLounge2").replace("AMNT", Math.round(rate.prisoners*10)/10 + ""),
-			x + 50, yy + 100 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 70 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
 		DrawTextFitKD(TextGet("KDCuddleLoungeInfo"),
-			x + 50, yy + 100 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 70 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
 
 	}
 	return dd;
