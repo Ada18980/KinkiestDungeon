@@ -1129,6 +1129,7 @@
             <key type="filename">../Game/Enemies/MonsterRope.png</key>
             <key type="filename">../Game/Enemies/Mummy.png</key>
             <key type="filename">../Game/Enemies/MummyCursed.png</key>
+            <key type="filename">../Game/Enemies/MummyElevator.png</key>
             <key type="filename">../Game/Enemies/Mushy.png</key>
             <key type="filename">../Game/Enemies/MushyHappy.png</key>
             <key type="filename">../Game/Enemies/MushySick.png</key>
@@ -1555,6 +1556,8 @@
             <key type="filename">../Game/FloorGeneric/Pizza.png</key>
             <key type="filename">../Game/FloorGeneric/Portal.png</key>
             <key type="filename">../Game/FloorGeneric/Rubble.png</key>
+            <key type="filename">../Game/FloorGeneric/Sarcophagus.png</key>
+            <key type="filename">../Game/FloorGeneric/SarcophagusGone.png</key>
             <key type="filename">../Game/FloorGeneric/Scrap.png</key>
             <key type="filename">../Game/FloorGeneric/Signal/AutoLock.png</key>
             <key type="filename">../Game/FloorGeneric/Signal/Button.png</key>
