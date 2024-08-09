@@ -1115,7 +1115,9 @@ let KDDialogue = {
 							return KDIsElevatorFloorUnlocked(num);
 						},
 						clickFunction: (gagged, player) => {
-							KDElevatorToFloor(KDElevatorFloorIndex[num] ? (KDElevatorFloorIndex[num].Floor) : (typeof num === "string" ? 0 : num), KDElevatorFloorIndex[num]?.RoomType);
+							KDElevatorToFloor(
+								KDElevatorFloorIndex[num] ? (KDElevatorFloorIndex[num].Floor) : (typeof num === "string" ? 0 : num),
+								KDElevatorFloorIndex[num]?.RoomType || KDGameData.ElevatorsUnlocked[num]);
 							return false;
 						},
 						exitDialogue: true,

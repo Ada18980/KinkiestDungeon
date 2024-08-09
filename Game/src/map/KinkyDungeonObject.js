@@ -33,7 +33,7 @@ let KDObjectClick = {
 			if ((!altType?.elevatorCondition && !KDMapData.Entities.some((enemy) => {
 				return KDEnemyRank(enemy) > 2 && (KDHostile(enemy) || KinkyDungeonAggressive(enemy)) && !KDHelpless(enemy);
 			})) || (altType?.elevatorCondition && altType.elevatorCondition(x, y))) {
-				KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel] = true; // Unlock!
+				KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel] = KDGameData.RoomType; // Unlock!
 				let tile = KinkyDungeonTilesGet(x + ',' + y);
 				if (tile) {
 					tile.Overlay = "Elevator";
@@ -463,7 +463,7 @@ function KDElevatorToFloor(floor, RoomType) {
 	let slot = KDWorldMap['0,' + floor];
 	if (slot) {
 		if (RoomType) {
-			let subslot = KDElevatorFloorIndex[RoomType];
+			let subslot = KDElevatorFloorIndex[RoomType] || (slot.data ? slot.data[RoomType] : null);
 			if (subslot) {
 				let params = KinkyDungeonMapParams[subslot.Checkpoint] || (slot.data[slot.main]?.Checkpoint ? KinkyDungeonMapParams[slot.data[slot.main].Checkpoint] : undefined);
 				MiniGameKinkyDungeonLevel = floor;

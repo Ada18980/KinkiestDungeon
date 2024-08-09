@@ -546,7 +546,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * JourneyMap: KDJourneyMap,
 * JourneyTarget: {x: number, y: number},
 * LastDragon: string,
-* ElevatorsUnlocked: Record<number, boolean>,
+* ElevatorsUnlocked: Record<number, string>,
 * TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 * MaxVisionDist: number,
 * MinVisionDist: number,
