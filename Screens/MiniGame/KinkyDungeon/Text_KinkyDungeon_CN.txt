@@ -17533,6 +17533,8 @@ Show Quick Inventory
 显示快速背包
 Skip Tutorial
 跳过教程
+Mod Compatibility Mode
+模组兼容模式
 Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
 (Leave and Disable Tutorial)
@@ -18652,7 +18654,7 @@ Feral
 Status
 状态
 Guest
-游客
+客人
 Servant
 仆人
 Manager
@@ -18665,6 +18667,8 @@ Willpower
 意志
 Prisoner #NUMR/TTL
 囚犯 #NUMR/TTL
+Guest #NUMR/TTL
+客人 #NUMR/TTL
 Select a character to examine
 选择要检查的角色
 Former Faction:
