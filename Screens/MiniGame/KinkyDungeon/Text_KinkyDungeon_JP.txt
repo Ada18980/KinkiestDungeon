@@ -48,9 +48,9 @@ Always Show Minimap
 Enable Sound
 サウンドを有効にする
 Drool/Tears
-衣装:よだれ/涙を有効にする
+よだれ/涙を有効にする
 Draw Armor
-衣装:鎧を描写する
+鎧を描写する
 Enable Music
 音楽を有効にする
 Async Rendering (beta)
@@ -64,11 +64,13 @@ Turn Counter
 Flash Screen on Stun
 スタン時に画面を明滅させる
 Map Particles
-マップのパーティクルを表示
+マップのパーティクル
 Distraction Particles
-興奮時のパーティクルを表示
+興奮時のパーティクル
 Vibration Particles
-バイブ類のパーティクルを表示
+バイブ類のパーティクル
+Gag Particle FX
+猿轡のパーティクル
 Show NPC Status
 NPCステータスを表示する
 Show Spell Range
@@ -159,10 +161,16 @@ Faster Floater Fade
 No Damage Floaters
 ダメージフローターを表示しない
 
+Dynamic Armor (must hide armor)
+ダイナミックアーマー(「鎧を描写する」をオフにする必要あり)
+
 Allow Suspicious Mods
 危険なMODを許可
 Auto Load Mods (offline only)
 MODを自動で読み込む(オフライン専用)
+
+Show Struggle Bars
+もがきゲージを表示する
 
 
 
@@ -644,10 +652,10 @@ Goddesses will equip restraints upon acceptance of a quest.
 Nowhere is Safe
 どこも安全ではない
 Beds and furniture are often trapped.
-ベッドや樽等の家具に罠が混じるようになる
+ベッドや樽等のインテリアに罠が混じるようになる
 
 Quakehoof Associate
-
+クエイクフーフ・アソシエイト
 Start with the Epsilon Collar, which regenerates mana when you play with yourself.
 イプシロンの首輪を装備してゲームを開始する。この首輪を装備して自慰をすると、マナが回復する。
 Epsilon Collar
@@ -1428,7 +1436,7 @@ Exciting: Orbs give random spells
 エキサイティング: オーブはランダムな呪文を与えます
 Kinky: No save codes, orbs give random spells, start with very little
 Kinky: セーブ コードはありません。オーブはランダムな呪文を与えます。最初はごくわずかです
-Log
+Journal
 ノート
 Change Outfit
 着替える
@@ -1568,8 +1576,8 @@ Inspect
 調べる
 Pass NPCs
 NPCを通り抜ける
-Close a Door
-ドアを閉める
+Interact
+インタラクト
 Sprint/Hop
 走る/跳ぶ
 
@@ -1754,8 +1762,8 @@ Enter
 入力
 Message Log
 メッセージログ
-Close Door
-ドアを閉める
+Interact
+インタラクト
 Pass thru allies
 味方を通過
 Auto-Struggle
@@ -1786,8 +1794,8 @@ Reputation
 評判
 Spell List
 スペル一覧
-Logbook
-収集した本
+Journal
+ノート
 Current Key Pressed
 現在押されているキー
 Press a key, then press a button to set that key
@@ -1857,7 +1865,7 @@ Marble Halls
 Doll Storage
 ドール収納庫
 
-Doll Processing
+Processing
 ドール工場
 
 Bandit Hideout
@@ -3423,7 +3431,7 @@ The Ice Dragonheart retreats in a blast of snow.
 The Ice Dragonheart apprehends you! (+RestraintAdded)
 ドラゴンハート・アイスに捕まった！ (+RestraintAdded)
 The Ice Dragonheart gives your body a cold touch! (DamageTaken)
-ドラゴンハート・アイスが体を冷やしてきた！(ダメージテイクン)
+ドラゴンハート・アイスが体を冷やしてきた！(DamageTaken)
 The Dragonheart uses an icy lock on your restraint! (DamageTaken)
 ドラゴンハート・アイスは拘束具に氷のロックをかけてきた！(DamageTaken)
 Poison Dragonheart
@@ -3486,14 +3494,14 @@ Soul Crystal
 ソウルクリスタル
 The crystal shatters into a puff of soul dust!
 ソウルクリスタルは砕け散った！
-The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
+The soul crystal leeches strength from you! (DamageTaken)
+ソウルクリスタルに力を吸い取られた！ (DamageTaken)
 Active Soul Crystal
 ソウルクリスタル(アクティブ)
 The crystal shatters into a puff of soul dust!
 ソウルクリスタルは砕け散った！
-The soul crystal leeches willpower from you! (DamageTaken)
-ソウルクリスタルに気力を吸い取られた！ (DamageTaken)
+The soul crystal leeches strength from you! (DamageTaken)
+ソウルクリスタルに力を吸い取られた！ (DamageTaken)
 Shadow Dragonheart
 ドラゴンハート・シャドー
 The Shadow Dragonheart frowns and runs away.
@@ -3944,7 +3952,7 @@ The bandit hunter retreats.
 The bandit hunter restrains you! (+RestraintAdded)
 盗賊の精鋭に拘束された！(+RestraintAdded)
 The bandit hunter caresses your restrained body! (DamageTaken)
-盗賊の精鋭に身体を縛られて全身を愛撫された！（ダメージテイクン）
+盗賊の精鋭に身体を縛られて全身を愛撫された！（DamageTaken）
 The bandit hunter calls you an amateur and applies a lock! (DamageTaken)
 盗賊の精鋭は嘲りと共に拘束具をロックしてきた！(DamageTaken)
 Bandit Grappler
@@ -5065,12 +5073,10 @@ You fiddle with the key on the TargetRestraint...
 鍵を使って TargetRestraint の解錠を試みた……
 The lock requires a key.
 鍵がないと解錠できない。
-The green padlock only accepts green keys.
-緑の鍵がないと緑の錠前は開けられない。
-The yellow padlock requires a red and a green key.
-赤と緑の鍵がないと黄色の錠前は開けられない。
-The magical lock only accepts blue keys and can't be picked.
-魔法の錠前はピッキングできず、青い鍵がないと開けられない。
+The lock can only be opened with a key.
+鍵がないと解錠できない。
+The magical lock only accepts magical keys and can't be picked.
+魔法の錠前はピッキングできず、魔法の鍵がないと開けられないようだ。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
 魔法の錠前は強力な魔法で守られている。魔法が切れるまで待つしかない……
 The item is cybernetically locked. You will need a key card to unlock it.
@@ -5246,11 +5252,11 @@ You wiggle madly, trying to push against the TargetRestraint. You need more leve
 That doesn't seem to work. Maybe something else will help with the TargetRestraint.
 全く効果がない。TargetRestraint を解くには別の方法を試す必要がある。
 You squirm helplessly against the furniture. Maybe something else will help with the TargetRestraint.
-家具に拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
+インテリアに拘束具をこすりつけるも、何も変わらなかった。 TargetRestraint から抜け出すには別の方法を試す必要がある。
 You twist your body trying to use the furniture, but it doesn't seem to work. The TargetRestraint remains tight.
-家具を使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
+インテリアを使おうと体をひねるが、うまくいかない。TargetRestraint はきつく締まっている。
 You wiggle and squirm, trying to use the furniture to no avail. The TargetRestraint remains tight.
-家具を使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
+インテリアを使って拘束を解こうと体をよじらせるも、 TargetRestraint はきついままだ。
 You need something sharper to get at the TargetRestraint.
 TargetRestraint から抜け出すには、鋭利なものが必要だ。
 You need something sharp to loosen the fasteners on the TargetRestraint.
@@ -5584,8 +5590,8 @@ Cursed
 呪い
 Unlocked
 解錠済み
-Lock Type: 
-鍵の種類：
+Lock:
+鍵：
 Simple
 簡単
 Standard
@@ -5817,7 +5823,7 @@ Curses
 Willpower
 気力
 A tablet inscribed with runes of TYPE.
-TYPE のルーン文字が刻まれた石板
+TYPE の石板
 SHRINETYPE Tablet
 SHRINETYPE の石版
 Decypher
@@ -6031,6 +6037,8 @@ Your arms are pinned behind your back and you can barely move!
 後ろ手に全身を固定されてほとんど動けない！
 You hear a click as the door shuts behind you...
 背後でドアの閉まる音が……
+The display stand suddenly locks into place around you!
+突然動き出したドールスタンドに閉じ込められてしまった！
 Doll Stand
 ドールスタンド
 A mobile display stand for dolls to keep them in place.
@@ -6935,8 +6943,14 @@ It's quite tight and secured by lockable buckles on your sides.
 側面に錠がついており、アームバインダーをしっかりと固定する。
 The armbinder harness comes off with the armbinder.
 このハーネスはアームバインダーを外したときに一緒に外れる。
+The energy link between your ankle cuffs fizzles into nothing.
+足枷のエネルギーリンクが消失した。
+The energy link between your arm cuffs fizzles into nothing.
+手枷のエネルギーリンクが消失した。
+The energy link between your thigh cuffs fizzles into nothing.
+脚枷のエネルギーリンクが消失した。
 The cuff chains come off with the cuffs.
-枷についた鎖は枷と一緒に外れる。
+枷についた鎖は枷と一緒に外れた。
 The hogtie link comes off.
 ホッグタイは解けた。
 Handcuffs
@@ -7582,7 +7596,7 @@ Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 ブルーラテックスはシルクのように滑らかで、非常に伸縮性があり、接着力が非常に優れている。
 
 Heavy Latex Catsuit
-
+頑丈なラテックスキャットスーツ
 A skintight suit that's stretched on tight and made of thick latex. It adheres to latex restraints making struggling more difficult.
 首から下を覆う青いゴム製の厚いキャットスーツ。他のゴム製の拘束具にくっつくため、抜け出すのが困難になる。
 Blue latex is silky smooth, very stretchy, and very good at adhering to itself. Its thickness makes it particularly resistant to cutting.
@@ -8794,7 +8808,7 @@ You pick up a 'magic' wand...
 You pick up a magical ice cube.
 魔力で生成された氷塊を手に入れた。
 You find some treated hemp rope.
-麻縄を手に入れた。
+縄を手に入れた。
 You pick up a feather.
 羽根を手に入れた。
 
@@ -9029,7 +9043,7 @@ Brickwork
 Doodad
 ディスカッション
 Furniture
-家具
+インテリア
 Table
 テーブル
 Shrine
@@ -11336,7 +11350,7 @@ You hop forward!
 You hop and feel the plugs shifting around inside your body.
 飛び跳ねるとバイブが膣中で上下する。
 The plugs shift in and out with each hop...
-飛び跳ねるごとにバイブが挿入を繰り返す……
+飛び跳ねるごとにバイブが激しく上下する……
 The massive plugs slide in and out mercilessly as you hop...
 飛び跳ねるごとに巨大なバイブに串刺しにされる……
 
@@ -12797,6 +12811,9 @@ Vibed!
 オモチャ振動中
 Flying
 浮遊
+Distracted!
+発情
+
 Soap
 ソープ
 Acid
@@ -14017,7 +14034,12 @@ Target needs retraining...
 ターゲットに再教育の必要性を確認……
 Sorry, rules are rules~
 規則は規則ですから。
-
+Moving to assist!
+援護します！
+My orders are to shut you down~
+あなたを制圧します。
+Defenses online!
+ディフェンスモジュール起動。
 
 Does not compute.
 計算不能
@@ -16264,8 +16286,8 @@ You really think you're special, huh?
 Combat formation bravo.
 コンバットフォーメーションB！
 
-I'm sorry! I didn't mean to break that vase!
-ごめんなさい！もう花瓶を割ったりしませんから……
+That thing... it scares me.
+あれは……怖いです。
 I won't do it again, I swear!
 もうしませんから！
 Please no! I don't want the edging training again!
@@ -19640,7 +19662,9 @@ Why don't we have a little fun?
 (SPEAKER は頬を赤らめた)|うん、わかった……
 (The SPEAKER smirks)|Be careful what you ask for~
 (SPEAKER ニヤリと笑った)|本当にいいの～？
-(The SPEAKER flashes its lights)|Calculating strictness threshold...
+(The SPEAKER giggles)|Mmmph~
+(SPEAKER 笑みを浮かべている)|んん～。
+(The SPEAKER pauses)|Calculating strictness threshold...
 (SPEAKER はランプをチカチカと点灯させている)|拘束ノ許容量ヲ計算中……
 (Ask her for help)
 (助けを求める)
@@ -19763,6 +19787,8 @@ Fuuka wraps you tightly in restraints! (+RestraintAdded)
 フウカが拘束具を巻き付けてきた！(+RestraintAdded)
 Fuuka squeezes your breasts and smiles! (DamageTaken)
 フウカが笑顔で胸を揉みしだいてきた！(DamageTaken)
+Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
+フウカが指を鳴らすと、拘束具が全てロックされた！
 
 Angry Fuuka
 怒ったフウカ
@@ -20493,7 +20519,7 @@ Give her a Scroll of Purity
 (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
 (SPEAKER は手足を厳重な枷で繋がれている|まずは錠を開ける必要がある)
 (You don't have any keys that work on the lock)
-(鍵を持っていない)
+(対応する鍵を持っていない)
 (You can't help her, bound as tightly as you are...)
 (自分がきつく縛られているせいで上手く助けられない……)
 (You unlock her, fumbling around for a while with your bound hands)
@@ -20570,6 +20596,23 @@ An enemy found you while you were busy!
 (ベッドに横たわり、仮眠を取った)
 (Lie down and sleep)
 (ベッドで寝る)
+
+(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
+(杭が地面から顔を出している)|(杭の左右には、足のマークが付いている)|(囚人を固定する仕掛けのようだ)
+(The pole rises and immobilizes you!)
+(せり上がってきた杭に動きを封じられてしまった！)
+(Stand over it and place your feet in the footrests)
+(上に立ってみる)
+
+(This is a piece of bondage furniture)
+(拘束用のインテリアがある)
+(You lock yourself in the furniture!)
+(自ら中に入って鍵を閉めた！)
+(Display one of your prisoners)
+(捕虜を閉じ込める)
+(Lock yourself inside)
+(中に入って鍵を閉める)
+
 FOODMSG|(It invites you to partake in its culinary delights)
 FOODMSG|(とても美味しそうな匂いがする……)
 (You eat the food and feel your willpower rising)
@@ -20679,10 +20722,18 @@ That should slow you down!
 これでスピードが落ちるはず！
 Try running away now~
 逃げてみなさいよ～
+Initiating prisoner lockdown protocol--Unknown hardware detected
+収監プロトコル開始‐‐不明なデバイスを検知。
+What's this do?
+これは？
+That harness you're wearing is quite convenient for me~
+このハーネス便利なんだよね～。
 Initiating prisoner lockdown protocol
-収監プロトコル開始
-Your RestraintName suddenly snap together as the EnemyName activates them
-EnemyName が RestraintName をアクティブにしたようだ。
+収容プロトコル開始。
+Your RestraintName suddenly snap together as the EnemyName activates them!
+EnemyName が RestraintName をアクティブにしたようだ！
+Your harness projects energy tethers between your cuffs EnemyName activates it!
+EnemyName がハーネスをコントロールし、枷のエネルギーリンクをアクティブにした！
 Turn Count: 
 ターン数：
 The Shopkeeper leashes you!
@@ -20950,12 +21001,20 @@ A metallic shield preventing you from removing any gags underneath.
 It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
 旧文明の金属でできており、あらゆるダメージに耐性がある。
 
-Doll Mittens
-サイバードールのミトン
+
+
+Cyber Mittens
+サイバーミトン
+These mittens force your hands into fists, keeping you from using them to do anything useful.
+指を拘束し、道具の利用を制限するミトン。
+It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band.
+旧文明の丈夫な金属繊維と金属バンドでできている。
+Cyber Lockdown Mitts
+サイバーロックダウンミトン
 These long mittens force your hands into fists, keeping you from using them to do anything useful.
-指を封印する長いミトン。
-It is made of a strong mesh of ancient metallic fiber, with no seams in sight.
-旧文明の丈夫な金属繊維でできており、縫い目が一切見当たらない。
+指を拘束し、道具の利用を制限する長いミトン。
+It is made of a strong mesh of ancient metallic fiber, wrapped snugly around your arms to make removal by yourself impossible.
+旧文明の丈夫な金属繊維が使われている、腕を完璧に覆うミトン。自力で抜け出すのは不可能。
 
 Doll Heels
 サイバードールのヒール
@@ -20997,8 +21056,10 @@ Detected new hardware.
 新たなハードウェアを検知
 [Restriction Protocol] Detected new hardware: RESTRAINTNAME. Install progress: PERCENT%
 [拘束プログラム] 新たなハードウェアを検知： RESTRAINTNAME インストール中： PERCENT%
-[Restriction Protocol] Installation complete. Engage mobility restrictions.
-[拘束プログラム] インストール完了。移動制限モード起動。
+[Restriction Protocol] Installation complete. Completing uniform.
+[拘束プログラム] インストール完了。ユニフォーム着用確認。
+[Punishment] Engage mobility restrictions.
+[懲罰プログラム] 移動制御プログラム起動。
 [Training Protocol] Detected hardware: RESTRAINTNAME. Install progress: PERCENT%
 [調教プログラム] 新たなハードウェアを検知： RESTRAINTNAME インストール中： PERCENT%
 Supplemental Stimulation
@@ -23540,18 +23601,17 @@ Deals grope damage.
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
-Blade of Fla'peh
-フラペの剣
+Blade of Ejahl
+エジャールの剣
 A piece of prized ancient equipment. Magical energy causes it to vibrate intensely. What could it have been used for?
 貴重な古代の道具。魔法のエネルギーで激しく振動している。何に使われたのだろう？
 Deals grope damage. Can spend 40 charge to add charm damage per hit for 10 turns.
 愛撫属性。エネルギーを40消費して発動する。10ターンの間、攻撃命中時に魅了属性の追加ダメージを与える。
-You retrieve the Blade of Fla'peh.
-フラペの剣を拾った。
- The Blade of Fla'peh deals bonus charm damage!!!
-フラペの剣で魅了属性の追加ダメージを与えた！
-The Blade of Fla-peh buzzes with great power!
-フラペの剣が猛烈に振動している！
+You retrieve the Blade of Ejahl.
+エジャールの剣を拾った。
+Intense Vibrations: The Blade of Ejahl deals bonus charm damage!!!
+強烈な振動：追加で魅了ダメージを与える。
+
 40 charge to deal 30 charm damage per hit for 10 turns.
 エネルギーを40消費して発動する。10ターンの間、攻撃命中時に30魅了属性の追加ダメージを与える。
 Enchanted Rope
@@ -25081,8 +25141,8 @@ Then the archmagus, Sariel Vinlaga, discovered the secret of immortality.|Sharin
 ある日、偉大なる魔術師サリエル・ヴィンラーガは、不死の秘法を発見した。|彼女は世界中に研究を共有し、平和な時代への基礎を築いた。|魔法と科学の融合した、偉大なる文明が幕を開けた。
 But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 しかし、偉大なるサリエルは探求の果てに衰弱し、死亡してしまう。|指導者を失った旧文明は愚者による専制が始まり、軍は無辜の市民を次々と奴隷にしていった。|難を逃れようと民は海を渡り、民を失った旧き帝国は次第に朽ち、忘れられていった。
-Three hundred years later,a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
-300年後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
+Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
+数百年の後、冒険家たちは古代の技術が眠る島を発見した。|今では、富と知恵を求めて無数の冒険者が遺跡を訪れている……|……はるか昔に封印された、邪悪な秘密も知らずに。
 
 An item has increased your spell damage!
 アイテムが魔法の威力を強化している！
@@ -25134,6 +25194,10 @@ Your RestraintName stops working due to water damage!
 RestraintName は水に浸かった影響で動作を停止した！
 Your RestraintName sustains water damage from the high-pressure water!
 RestraintName は高圧水の影響でダメージを受けた！
+The RestraintName fizzles out!
+RestraintName は消えた。
+Your RestraintName short-circuits briefly from the electrical damage!
+RestraintName がショートした！
 
 Quit Game
 ゲームをやめる
@@ -26705,12 +26769,16 @@ The weights swing around and tug on your nipples!
 
 
 More Kinky Furniture
-家具種増加
+インテリア増加
 Replaces 60% of cages with a different kind of kinky furniture such as display stands.
-檻の60%をディスプレイスタンド等の家具に置き換える
+檻の60%をディスプレイスタンド等のインテリアに置き換える
 
 Collection
 コレクション
+Facilities
+設備
+Training
+訓練
 
 Storage
 倉庫
@@ -26856,8 +26924,8 @@ Back to Game
 Slimy Spit
 スピットスライム
 
-Servants and Guests
-使用人とゲスト
+Servants
+使用人
 Prisoners
 囚人
 Promote to Servant
@@ -26884,6 +26952,8 @@ The ENMY tries to spank you but misses!
 ENMY の手を躱した！
 The ENMY gives your butt a squeeze during your cast! (DMGDLT)
 魔法を唱えようとしたら ENMY にお尻を揉まれた！ (DMGDLT)
+The ENMY gives your butt a squeeze from behind! (DMGDLT)
+後ろから ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you move past! (DMGDLT)
 すれ違いざまに ENMY にお尻を揉まれた！ (DMGDLT)
 The ENMY gives your butt a squeeze as you pass by! (DMGDLT)
@@ -27747,14 +27817,11 @@ The mage starts channeling her energy!
 Warden Cuffs
 看守長の手枷
 
-
 Warden Leg Cuffs
 看守長の脚枷
 
-
 Warden Ankle Cuffs
 看守長の足枷
-
 
 Your buttons have been pushed, and not in a pleasant way!
 挑発されてカチンときた。非常に不愉快だ。
@@ -27819,7 +27886,7 @@ Bandit Raid
 Elemental Energy
 精霊の坩堝
 Overgrown
-植物の侵食
+蔦覆い
 Slime Infestation
 スライムの繁殖
 Wolfgirl Training
@@ -27904,17 +27971,17 @@ You find a sinister hood made of soft plush.
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
-古の支配者フラペの特注品。一体型ロック付き。
-Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
-ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state.
+短命の亡国エジャールに身と心を捧げたもののレオタード。衣装を溶かすエンチャントと独特な錠を持つ。
+Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 
 Ceremonial Leotard
 式典のレオタード
-Commissioned by the powerful ancient ruling caste, the Fla'peh. Comes with an integrated lock.
-古の支配者フラペの特注品。一体型ロック付き。
-Its soul crystals dampen willpower changes, reducing all willpower changes by 25%.
-ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を-25%する。
+An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state.
+短命の亡国エジャールに身と心を捧げたもののレオタード。衣装を溶かすエンチャントと独特な錠を持つ。
+Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%.
+ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 You find a ceremonial leotard.
 式典のレオタードを手に入れた。
 
@@ -28367,7 +28434,7 @@ You've stolen something of great value. Now you must give it back.
 盗掘の代償。罪は償わなければならない。
 
 Warden's Ankle Link
-看守長の
+看守長の足枷の鎖
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
 足枷同士をつなぐ短い鎖。辛うじて足を離せる程度の長さ。
 An intense, albeit temporary punishment for breaking the rules.
@@ -28390,8 +28457,12 @@ An intense, albeit temporary punishment for breaking the rules.
 
 ESCP Difficulty: AMNT
 ESCP 難易度： AMNT
-ESCP Power: AMNT%
-ESCP 力： AMNT%
+ESCP Power: AMNT
+ESCP 力： AMNT
+ESCP Ability: AMNT
+ESCP 技術： AMNT
+Max ESCP Depth: AMNT%
+ESCP 力: AMNT%
 
 Struggle
 もがく
@@ -28435,17 +28506,17 @@ The drone attaches to you! (+RestraintAdded)
 Cyber Warden
 サイバーワーデン
 Cyber Guardian
-サイバーガーディアン
+サイバーワーデン
 The cyber warden's suit goes into lockdown, leaving her wiggling helplessly!
-サイバーガーディアンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
+サイバーワーデンのスーツがロックダウンを起こし、彼女は拘束されてしまった！
 The cyber warden applies an advanced locking technology!
-サイバーガーディアンが未知の技術で拘束具に高度な錠を施してきた！
+サイバーワーデンが未知の技術で拘束具に高度な錠を施してきた！
 The cyber warden grabs you and applies a self-tightening restraint! (+RestraintAdded)
-サイバーガーディアンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
+サイバーワーデンに自動で締まる拘束具を取り付けられた！ (+RestraintAdded)
 The cyber warden's touch applies a series of quick electrical shocks! (DamageTaken)
-サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
 The cyber warden's touch applies a series of quick electrical shocks!
-サイバーガーディアンに触れられると、電気ショックが起こる！ (DamageTaken)
+サイバーワーデンに触れられると、電気ショックが起こる！ (DamageTaken)
 
 Auto Enforcer Guardian
 オートエンフォーサーガーディアン
@@ -28610,6 +28681,8 @@ You don't have enough mana
 マナが足りない。
 The enemy rune is wiped clean.
 敵のルーンが掻き消えた。
+You pour negation magic into the ground, but nothing happens.
+拒否のルーンを地面に描いたが、何も起こらなかった。
 All of your runes have been removed.
 自身の描いた全てのルーンを消去した。
 
@@ -28657,6 +28730,10 @@ Ambient
 環境
 Struggle
 もがく
+Items
+アイテム
+Kills
+討伐
 
 You attack TargetEnemy for DamageDealt total damage.
 TargetEnemy に攻撃し、合計 DamageDealt ダメージを与えた。
@@ -28720,13 +28797,17 @@ You light the fuse and pray it doesn't blow up in your face.
 眼の前で爆発しないように祈りながら導火線に火をつけた。
 
 You are holding too many leashes!
-リードの持ちすぎだ！
+これ以上リードは持てない！
 
 
 You feel a corrupting influence... (+AMNT Corruption)
 魂が堕落していくのを感じた……(+AMNT 堕落)
 You feel a restoring influence! (-AMNT Corruption)
 魂が浄化されていくのを感じた……(-AMNT 堕落)
+Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
+ネバネバのゴムが身体に張り付いてくる！(+AMNT ラテックス拘束)
+The latex starts to detach from your skin... (-AMNT Latex Integration)
+ゴムが身体から剥がれていく……(-AMNT ラテックス拘束)
 
 While you have an evasion penalty, even clumsy enemies...
 回避ペナルティがある……
@@ -28743,3 +28824,165 @@ Tip: Slime/Latex tiles only affect entities with less than 45 Glue Resist.
 Tips：スライム／ラテックスのマスは、接着剤耐性が45未満の対象にのみ効果を発揮する。
 Being drenched in water also prevents slime/latex from sticking to you.
 水に濡れるとスライムやラテックスが付着しにくくなる。
+Use the interact tool in the bottom right HUD to sleep in a bed.
+ベッドの上でインタラクトすることで、眠ることができる。
+
+
+Clear Vision
+クリアビジョン
+Blindfolds are much rarer.
+目隠しがとても出現しにくくなる。
+
+Free the Boob
+ノーブラ
+Chastity bras are rarer unless you are wearing nipple toys.
+乳首にオモチャをつけていない限り、貞操ブラが出現しにくくなる。
+Liberate the Boob
+揺らす自由
+Chastity bras are much rarer.
+貞操ブラがとても出現しにくくなる。
+
+Find an elevator to the Summit in order to access facilities.
+施設を使うために、まずはエレベーターを探そう。
+Visit the Summit to allow additional interactions with this facility.
+サミットを訪れて施設を見てみよう。
+
++AMNT% Training/Tick
+調教度/ターン +AMNT%
++AMNT% Opinion/Tick
+好感度/ターン +AMNT%
++AMNT% Productivity
+生産力 +AMNT%
+AMNT/MAXX Prisoners Assigned
+囚人数 AMNT/MAXX
+AMNT/MAXX Servants Assigned
+使用人の数 AMNT/MAXX 
+
+Management
+管理
+Assign servants as managers to boost the production of other facilities.|Managers gain increased opinion and training over time.
+使用人をマネージャーとして配属する。|施設の生産力が増加し、マネージャーの調教度と好感度が増加する。
+
+Bondage Dojo
+緊縛道場
+Assign servants to perfect the art of walking in heels,wearing tight corsets,|communicating while gagged, and overall flexibility.
+使用人を鍛える。ヒールを履いて綺麗に歩けるようになり、きついコルセットを着用できるようになり、|猿轡をしていても完璧に意思の疎通ができるようになり、身体の柔軟性が増す。
+
+Rescue Operations
+救助部隊
+Assign servants to train squads of rescue maids, which you can call in times of need.
+使用人をレスキューメイドとして任命する。必要なときに呼び出すことができる。
+
+Alchemy Lab
+錬金工房
+Assign servants to produce potions from base ingredients you acquire in your adventures.
+使用人に錬金術を研究させる。手に入れた素材からポーションを作ることができる。
+
+Recycler
+リサイクラー
+Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
+tierの低い拘束具を高tierの拘束具に変換する。|多くの人員を配置することで、変換速度が増加する。
+
+Cuddle Lounge
+ラウンジ
+Assign prisoners to the lounge in order to improve your servants' opinion of you.
+好感度を高めるために、囚人をラウンジに配置する。
+
+Recycle Restraints
+拘束具をリサイクル
+Recycle One
+一つリサイクル
+Recycle ALL!
+全てリサイクル
+Recycle all but one
+一つを残してリサイクル
+
+You recycle a ITM
+ITM をリサイクルした。
+You recycle #x ITM
+#x の ITM をリサイクルした。
+
+You're blocking me.
+どいてくれない？
+You're in my way!
+どいて！
+Miss, you're blocking me...
+通らせていただけませんか……？
+Step aside~
+ちょっと通してくれない？
+Path blocked by citizen.
+前方ニ障害物。
+*Bumps into you*
+(通してほしいようだ)
+
+
+
+Cyber Hogtie Tether
+ホッグタイの電子リンク
+
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Thigh Tether
+脚枷の電子リンク
+An energy tether connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+脚枷同士を流れるエネルギー体。脚の動きは制限されるが、ゆっくりと歩くことはできる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Ankle Tether
+足枷の電子リンク
+An energy  tether connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
+足枷同士を流れるエネルギー体。足の動きは制限されるが、ゆっくりと歩くことはできる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+A short energy tether connecting your ankle cuffs together. You can barely separate your legs with this on.
+足枷同士を流れるエネルギー体。足と足の間にほんの少しだけ隙間がある程度。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Elbow Tether
+肘枷の電子リンク
+A very short energy tether connecting your elbow cuffs together. It is quite awkward to remove by yourself.
+肘枷同士を流れるエネルギー体。自力で取り外すにはかなり手間がかかる。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+Cyber Wrist Tether
+手枷の電子リンク
+A very short energy tether connecting your wrist cuffs together.
+手枷同士を流れるエネルギー体。
+It is maintained by a projector inside your cyber cuffs. The energy repels any force and doesn't seem to falter even after repeated attempts to damage it.
+サイバーカフから放出されるエネルギー体。いかなる手段でも傷つけることができず、びくともしない。
+
+
+Desperate Struggle
+最後の抵抗
+Spend 20 WP to shake around violently. Has a chance to loosen restraints you are wearing, based on existing struggle progress. Spreading the effect over multiple restraints reduces the chance of loosening.|Requires 25% or more WP to activate.
+気力を20消費し、全力でもがく。装備している拘束具を緩める可能性があるが、対象となる拘束具が増えるごとに緩む確率が減少する。|発動には25%以上の気力が必要。
+None of your restraints will budge.
+緩められそうな拘束具がない。
+You thrash around with all your might.
+思い切りのたうち回った。
+You don't have the willpower left to struggle...
+全力でもがく気力が残っていない……
+
+
+Owned: AMNT
+所持数: AMNT
+
+Fiber
+繊維
+Latex
+ゴム
+Leather
+革
+Metal
+金属
+Runes
+ルーン
+Stock: 
+在庫: 
+Inputs: 
+投入数: 
