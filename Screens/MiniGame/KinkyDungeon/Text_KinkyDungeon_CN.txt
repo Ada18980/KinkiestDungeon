@@ -19703,8 +19703,8 @@ Convert low tier restraints into raw materials and output higher quality restrai
 将低阶束缚转化为原材料，产出更高品质束缚，增加从者数量可加快转化速度。
 Cuddle Lounge
 拥抱休息室
-Assign prisoners to the lounge in order to improve your servants' opinion of you.
-将囚犯分配到休息室以提高仆人对你的观点。
+Assign prisoners to the lounge in order to improve servant and prisoner opinion.
+将囚犯分配到休息室以提高仆人和囚犯对你的看法。
 Recycle Restraints
 回收限制
 Recycle One
@@ -19922,3 +19922,105 @@ NPC is likely to escape.
 NPC 很有可能逃脱。
 NPC has managed to loosen her bonds.
 NPC 已成功解开她的束缚。
+Any
+全员
+NPC Opinion:
+NPC 好感度:
+NPC Escape Status:
+NPC 逃脱状态:
+NPC Binding:
+NPC 拘束程度:
+NPC Availability:
+NPC 状况:
+Favorited:
+收藏:
+Rank:
+阶级:
+Minor
+低级
+Normal
+正常
+Elite
+精英
+Miniboss
+小型Boss
+Legendary
+传奇
+Bound
+拘束
+Free
+自由
+Secure
+安全
+At Risk
+面临风险
+Escaped
+已逃脱
+Imprisoned
+已监禁
+Positive
+积极
+Negative
+消极
+Favorite
+受欢迎的
+Non-Favorite
+不受欢迎
+Present
+可用
+Unavailable
+不可用
+Auto Bind Interface
+自动拘束接口
+AutoBind
+自动拘束
+Copy Restraints
+复制束缚
+Paste Restraints from NME
+从 NME 粘贴束缚
+Paste to All!
+粘贴到全部！
+OVERWRITE All!
+覆盖所有！
+Need Positive Opinion to Promote
+需要积极的意见来推广
+Servant Enjoyment: AMNT
+仆人享受: AMNT
+Prisoner Enjoyment: AMNT
+囚犯享受: AMNT
+Submissive prisoners and dominant servants add different amounts of opinion per cycle
+顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
+Release Prisoners
+释放囚犯
+Release
+释放
+Mark
+标记
+Unmark
+取消标记
+Mark ALL
+标记所有
+Cancel Selection
+取消选中
+Release Marked Prisoners!
+释放选中的囚犯！
+Ransom Marked Prisoners for GP!
+使用 GP 赎金来赎回囚犯！
+Ransom Value: GP
+赎金: GP
+Current Gold: GP
+当前金币: GP
+[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
+[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒。
+Phase Dance active. Your next move is instant.
+相位舞蹈激活。你的下一步动作是即时的。
+Combat Maneuver active. Your next move is instant.
+战斗机动激活。你的下一步行动是即时的。
+The furniture space is occupied
+家具空间被占用
+Combat Maneuver: Your next move is instant.
+战斗机动: 你的下一步行动是即时的。
+Appointing managers increases the efficiency of other facilities.
+任命管理人员可以提高其他设施的效率。
+Total Efficiency Boost: AMNT
+总体效率提升: AMNT
