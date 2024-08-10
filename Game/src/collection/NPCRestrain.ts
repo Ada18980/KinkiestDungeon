@@ -771,7 +771,7 @@ function KDRunNPCEscapeTick(id: number, ticks: number) {
 		}
 		if (enemy.Enemy?.tags)
 			for (let i = 0; i < ticks; i++) {
-				KDEnemyStruggleTurn(enemy, 1, KDNPCStruggleThreshMult(enemy));
+				KDEnemyStruggleTurn(enemy, 1, KDNPCStruggleThreshMult(enemy), true, true);
 			}
 		KDUpdatePersistentNPC(id);
 		if (returnToString) (enemy as any).Enemy = enemy.Enemy.name;

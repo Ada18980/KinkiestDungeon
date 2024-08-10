@@ -1256,6 +1256,7 @@ interface enemy extends KDHasTags {
 	ignoreflag?: string[],
 	/** flags set when the player is hit but no binding occurs*/
 	failAttackflag?: string[],
+	failAttackflagChance?: number,
 	/** How long to set the flag for */
 	failAttackflagDuration?: number,
 	/** */

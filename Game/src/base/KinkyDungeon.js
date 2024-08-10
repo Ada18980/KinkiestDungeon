@@ -4633,7 +4633,7 @@ function KinkyDungeonLoadGame(String) {
 
 			if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
 			if (saveData.KDPersistentNPCs) KDPersistentNPCs = JSON.parse(saveData.KDPersistentNPCs);
-			if (saveData.KDDeletedIDs) KDPersistentNPCs = JSON.parse(saveData.KDDeletedIDs);
+			if (saveData.KDDeletedIDs) KDDeletedIDs = JSON.parse(saveData.KDDeletedIDs);
 			if (saveData.KDPersonalAlt) KDPersonalAlt = JSON.parse(saveData.KDPersonalAlt);
 
 			if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;

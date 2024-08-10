@@ -331,9 +331,10 @@ function KinkyDungeonStartChase(enemy, Type, faction, force) {
 			KDGameData.PrisonerState = "chase";
 	} else if (KDLocalChaseTypes.includes(Type) && (enemy || faction)) {
 		for (let e of KDMapData.Entities) {
-			if ((KDHostile(e)
+			if ((KDHostile(e, undefined)
 				|| (KDSevereTypes.includes(Type)
-					&& KDFactionAllied(faction ? faction : KDGetFaction(enemy), e)
+					&& KDFactionAllied(faction ? faction : KDGetFaction(enemy), e, undefined,
+						-KDOpinionRepMod(e, KDPlayer())) // We lower the strength of faction alliances based on opinion
 					&& KDGetHonor(KDGetFaction(e), faction ? faction : KDGetFaction(enemy)) < 0.1))
 				&& (!enemy || !enemy.Enemy.tags.peaceful)
 				&& KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 8, false, false)) {
@@ -1599,7 +1600,7 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 				}
 				if (KDGetFaction(e) != "Player"
 					&& KDFactionRelation(KDGetFaction(e), KDMapData.MapFaction) > 0.5) {
-					KDRunNPCEscapeTick(e.id, 24 + Math.floor(32 * KDRandom()));
+					KDRunNPCEscapeTick(e.id, 30 + Math.floor(70 * KDRandom()));
 				}
 			} else {
 				enemies.push(e);

@@ -217,40 +217,56 @@ function KDAddOpinionPersistent(id, amount) {
 }
 
 
+
 /**
- *
+ * Gets the opinion, unmodified by various factors
  * @param {number} id
+ * @param {boolean} [allowFaction] Optionally apply faction rep modifier
+ * @param {boolean} [allowSub] Optionally apply sub modifier
+ * @param {boolean} [allowPerk] Optionally apply perk modifiers
+ * @param {number} [allowOnlyPosNegFaction] positive: allows only positive faction rep, negative: allows only negative faction rep
  * @returns {number}
  */
-function KDGetModifiedOpinionID(id) {
+function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowPerk = true, allowOnlyPosNegFaction = 0) {
 	if (KDIsNPCPersistent(id)) {
 		let enemy = KDGetPersistentNPC(id).entity;
 		let op = enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0;
 
-		let faction = KDGetFaction(enemy);
-		op += 30 * KDFactionRelation("Player", faction);
-		if (KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
-		if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
+		if (allowFaction) {
+			let faction = KDGetFaction(enemy);
+			op += 30 * (!allowOnlyPosNegFaction ? KDFactionRelation("Player", faction) :
+			(allowOnlyPosNegFaction > 0 ? Math.max(KDFactionRelation("Player", faction), 0)
+				: Math.min(KDFactionRelation("Player", faction), 0)
+			)
+			);
+		}
+		if (allowSub && KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
+		if (allowPerk && KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
 
 		return op;
 	} else if (KinkyDungeonFindID(id)) {
-		return KDGetModifiedOpinion(KinkyDungeonFindID(id));
+		return KDGetModifiedOpinion(KinkyDungeonFindID(id), allowFaction, allowSub, allowPerk);
 	} else if (KDGameData.Collection[id + ""]) {
 		let faction = KDIsServant(KDGameData.Collection[id + ""]) ? "Player" : KDGameData.Collection[id + ""].Faction;
 		let op = KDGameData.Collection[id + ""].Opinion || 0;
-		op += 30 * KDFactionRelation("Player", faction);
+		if (allowFaction) {
+			op += 30 * (!allowOnlyPosNegFaction ? KDFactionRelation("Player", faction) :
+			(allowOnlyPosNegFaction > 0 ? Math.max(KDFactionRelation("Player", faction), 0)
+				: Math.min(KDFactionRelation("Player", faction), 0)
+			)
+			);
+		}
 		if (!KDGameData.Collection[id + ""].personality) {
 			KDGameData.Collection[id + ""].personality =
 				KDGetPersonalityType(KinkyDungeonGetEnemyByName(KDGameData.Collection[id + ""].type));
 		}
-		if (KinkyDungeonStatsChoice.get("Dominant")
+		if (allowSub && KinkyDungeonStatsChoice.get("Dominant")
 			&& KDGameData.Collection[id + ""].personality
 			&& KDLoosePersonalities.includes(KDGameData.Collection[id + ""].personality)) op += 12;
-		if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
+		if (allowPerk && KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
 
 		return op;
 	}
-
 }
 
 /**
@@ -445,7 +461,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 	else II++;
 
-	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/20)));
+	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
 	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
 	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 
@@ -1166,11 +1182,8 @@ let KDCollectionTabDraw = {
 		if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (b) => {
 			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
 				if (KDCanPromote(value)) {
-					value.status = "Servant";
-					if (KDIsNPCPersistent(value.id)) {
-						KDUpdatePersistentNPC(value.id);
-					}
-					delete value.Facility;
+					KDPromote(value);
+
 					KDSortCollection();
 					if (KDToggles.Sound)
 						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
@@ -1235,11 +1248,11 @@ function KDDrawNPCBars(value, x, y, width) {
 	let maxBars = KDNPCStruggleThreshMult(enemy);
 	// Draw binding bars
 	//let helpless = KDHelpless(enemy);
-	let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpModBase);
+	let bindAmpMod = 1;//KDGetBindAmp(enemy, bindAmpMfodBase);
 	if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 		let visualbond = bindAmpMod * enemy.visual_boundlevel;
 		let bindingBars = maxBars;//Math.ceil( visualbond / enemy.Enemy.maxhp);
-		let SM = KDGetEnemyStruggleMod(enemy);
+		let SM = KDGetEnemyStruggleMod(enemy, true, true);
 		let futureBound = KDPredictStruggle(enemy, SM, 1);
 		yy += Math.min(maxBars, bindingBars) * spacing - 10;
 		for (let i = 0; i < bindingBars && i < maxBars; i++) {
@@ -1308,4 +1321,13 @@ function KDDrawNPCBars(value, x, y, width) {
  */
 function KDCanPromote(value) {
 	return KDGetModifiedOpinionID(value.id) > 0 || value.Opinion > 0;
+}
+
+function KDPromote(value) {
+	value.status = "Servant";
+	if (KDIsNPCPersistent(value.id)) {
+		KDGetPersistentNPC(value.id).collect = true;
+		KDUpdatePersistentNPC(value.id);
+	}
+	delete value.Facility;
 }

@@ -1315,12 +1315,14 @@ let KinkyDungeonEnemies = [
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 
-	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
 		evasion: -0.5,
 		GFX: {
 			lighting: true,
 		},
+		ignoreflag: ["vineplantatk"], failAttackflag: ["vineplantatk"], failAttackflagDuration: 9, failAttackflagChance: 0.4,
 		maxblock: 1,
 		maxdodge: 0,
 		stamina: 3,

@@ -247,9 +247,9 @@ function KDPleaseSpeaker(Amount) {
 		KDAddOpinionPersistent(enemy.id, Amount * 100);
 		let faction = KDGetFactionOriginal(enemy);
 		if (!KinkyDungeonHiddenFactions.has(faction)) {
-			if (!KinkyDungeonFlags.get("BoundOfferRep" + faction)) {
+			if (!KDEntityHasFlag(enemy, "PleasedRep")) {
 				KinkyDungeonChangeFactionRep(faction, Amount);
-				KinkyDungeonSetFlag("BoundOfferRep" + faction, -1, 1);
+				KDSetIDFlag(enemy.id, "PleasedRep", -1);
 			}
 		}
 	}
@@ -1426,7 +1426,7 @@ function KDRecruitDialogue(name, faction, outfitName, goddess, restraints, restr
 				options: {
 					"Yes": {gag: true, playertext: "Default", response: "Default",
 						clickFunction: (gagged, player) => {
-							KDPleaseSpeaker(0.1);
+							KDPleaseSpeaker(0.5);
 							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 							KinkyDungeonChangeRep("Ghost", 2);
 							for (let i = 0; i < restraintscount; i++) {
@@ -2045,7 +2045,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			if (Ally)
 				KDAllySpeaker(9999, true);
 			else
-				KDPleaseSpeaker(refused ? 0.004 : 0.005); // Less reputation if you refused
+				KDPleaseSpeaker(refused ? 0.004 : 0.012); // Less reputation if you refused
 			KinkyDungeonChangeRep(antigoddess[0], refused ? 1 : 2); // Less submission if you refused
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
@@ -2313,18 +2313,30 @@ function KDIsSubmissiveEnough(enemy) {
 	return false;
 }
 
+
 /**
  *
  * @param {entity} enemy
+ * @param {boolean} [allowFaction] Optionally apply faction rep modifier
+ * @param {boolean} [allowSub] Optionally apply sub modifier
+ * @param {boolean} [allowPerk] Optionally apply perk modifiers
+ * @param {number} [allowOnlyPosNegFaction]
  * @returns {number}
  */
-function KDGetModifiedOpinion(enemy) {
+function KDGetModifiedOpinion(enemy, allowFaction = true, allowSub = true, allowPerk = true, allowOnlyPosNegFaction = 0) {
 	if (!enemy) return 0;
 	let op = enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0;
 
-	op += 30 * KDFactionRelation("Player", KDGetFaction(enemy));
-	if (KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
-	if (KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
+	if (allowFaction) {
+		let faction = KDGetFaction(enemy);
+		op += 30 * (!allowOnlyPosNegFaction ? KDFactionRelation("Player", faction) :
+		(allowOnlyPosNegFaction > 0 ? Math.max(KDFactionRelation("Player", faction), 0)
+			: Math.min(KDFactionRelation("Player", faction), 0)
+		)
+		);
+	}
+	if (allowSub && KinkyDungeonStatsChoice.get("Dominant") && enemy.personality && KDLoosePersonalities.includes(enemy.personality)) op += 12;
+	if (allowPerk && KinkyDungeonStatsChoice.get("Oppression")) op -= 15;
 
 	return op;
 }

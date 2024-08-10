@@ -2613,7 +2613,7 @@ const KDEventMapBuff = {
 				});
 		},
 	},
-	"postQuest": {
+	"tickFlags": {
 		"latexIntegration": (e, buff, entity, data) => {
 			buff.duration -= 100;
 			if (buff.duration < 100) {
@@ -9411,6 +9411,7 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+
 	/** Stuff that occurs after the quest stuff is generated */
 	"postQuest": {
 		/**
@@ -9420,41 +9421,6 @@ let KDEventMapGeneric = {
 		"resetFlags": (e, data) => {
 			KinkyDungeonSetFlag("slept", 0);
 		},
-		/**
-		 * Updates failities
-		 */
-		"updateFac": (e, data) => {
-			KDUpdateFacilities(1);
-		},
-		/**
-		 * Updates NPC escape
-		 */
-		"updateNPCEscape": (e, data) => {
-			KDCollectionNPCEscapeTicks();
-		},
-		/**
-		 * Resets the flags for playing with an NPC
-		 */
-		"updateNPCOpinionFlags": (e, data) => {
-			let setIDs = {};
-
-			for (let value of Object.values(KDGameData.Collection)) {
-				if (KDCollHasFlag(value.id, "playOpin")) {
-					KDSetIDFlag(value.id, "playOpin", 0);
-					setIDs[value.id] = true;
-				}
-			}
-			for (let pers of Object.values(KDPersistentNPCs)) {
-				if (!setIDs[pers.id]) {
-					KDSetIDFlag(pers.id, "playOpin", 0);
-					setIDs[pers.id] = true;
-				}
-			}
-		},
-
-
-
-
 		/** Updates gold locks */
 		"lockStart": (e, data) => {
 			for (let tuple of KinkyDungeonAllRestraintDynamic()) {
@@ -9464,19 +9430,8 @@ let KDEventMapGeneric = {
 				}
 			}
 		},
-		/** Reduce tightness by 1 per floor */
-		"reduceTightness": (e, data) => {
-			if (MiniGameKinkyDungeonLevel > 0 && data?.altType?.tickFlags)
-				for (let tuple of KinkyDungeonAllRestraintDynamic()) {
-					let inv = tuple.item;
-					if (inv.tightness > 0) {
-						KinkyDungeonSendTextMessage(1, TextGet("KDTightnessFade")
-							.replace("RSTRT", KDGetItemName(inv))
-						, "#ffffff", 1);
-						inv.tightness = Math.max(0, inv.tightness - 1);
-					}
-				}
-		},
+
+
 		/** High Profile perk */
 		"HighProfile": (e, data) => {
 			if (!KinkyDungeonStatsChoice.get("HighProfile")) return;
@@ -9669,7 +9624,54 @@ let KDEventMapGeneric = {
 						}
 					}
 				}
-		}
+		},
+		/**
+		 * Updates failities
+		 */
+		"updateFac": (e, data) => {
+			KDUpdateFacilities(1);
+		},
+		/**
+		 * Updates NPC escape
+		 */
+		"updateNPCEscape": (e, data) => {
+			KDCollectionNPCEscapeTicks();
+		},
+		/**
+		 * Resets the flags for playing with an NPC
+		 */
+		"updateNPCOpinionFlags": (e, data) => {
+			let setIDs = {};
+
+			for (let value of Object.values(KDGameData.Collection)) {
+				if (KDCollHasFlag(value.id, "playOpin")) {
+					KDSetIDFlag(value.id, "playOpin", 0);
+					KDSetIDFlag(value.id, "PleasedRep", 0);
+					setIDs[value.id] = true;
+				}
+			}
+			for (let pers of Object.values(KDPersistentNPCs)) {
+				if (!setIDs[pers.id]) {
+					KDSetIDFlag(pers.id, "playOpin", 0);
+					KDSetIDFlag(pers.id, "PleasedRep", 0);
+
+					setIDs[pers.id] = true;
+				}
+			}
+		},
+		/** Reduce tightness by 1 per floor */
+		"reduceTightness": (e, data) => {
+			if (MiniGameKinkyDungeonLevel > 0 && data?.altType?.tickFlags)
+				for (let tuple of KinkyDungeonAllRestraintDynamic()) {
+					let inv = tuple.item;
+					if (inv.tightness > 0) {
+						KinkyDungeonSendTextMessage(1, TextGet("KDTightnessFade")
+							.replace("RSTRT", KDGetItemName(inv))
+						, "#ffffff", 1);
+						inv.tightness = Math.max(0, inv.tightness - 1);
+					}
+				}
+		},
 	},
 	/*"calcDisplayDamage": {
 		"BoostDamage": (e, data) => {

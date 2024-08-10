@@ -2000,6 +2000,8 @@ function KinkyDungeonDrawGame() {
 					DrawButtonKDEx("debugIncFloor", (bdata) => {
 						MiniGameKinkyDungeonLevel += 1;
 						KDGameData.JourneyY += 1;
+						KinkyDungeonSendEvent("tickFlags", {delta: 1});
+						KDTickSpecialStats();
 						return true;
 					}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
 
