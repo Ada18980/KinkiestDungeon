@@ -662,6 +662,10 @@ Magic Hands
 魔法之手
 Enemies can add restraints underneath existing restraints.
 敌人可以透过外层拘束具添加内层拘束。
+Fully Integrated
+完全集成
+Start with your body sealed in an adhesive layer of latex.
+开局时将你的身体密封在一层粘合乳胶层中。
 Start atop a conveyor on your way to be sealed away inside the Facility.
 从传送带顶部开始，被封闭在设施内。
 Cyber Doll
@@ -7750,6 +7754,10 @@ Battle Trance
 战斗恍惚
 While at 40 Battle Rhythm, you attack twice per turn.
 当战斗节拍达到 40 时，你每回合可以攻击两次。
+Combat Maneuver
+战斗动作
+When Battle Trance is active, you gain a free move if the target is defeated before the second attack hits.
+当战斗恍惚激活时，如果目标在第二次攻击命中之前被击败，你将获得一次自由移动。
 Devious Ingenuity
 邪恶的独创性
 Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
