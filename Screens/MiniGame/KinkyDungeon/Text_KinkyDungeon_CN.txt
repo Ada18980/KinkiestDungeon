@@ -7755,7 +7755,7 @@ Battle Trance
 While at 40 Battle Rhythm, you attack twice per turn.
 当战斗节拍达到 40 时，你每回合可以攻击两次。
 Combat Maneuver
-战斗动作
+战斗机动
 When Battle Trance is active, you gain a free move if the target is defeated before the second attack hits.
 当战斗恍惚激活时，如果目标在第二次攻击命中之前被击败，你将获得一次自由移动。
 Devious Ingenuity
@@ -17321,6 +17321,8 @@ Magical water reduces your accuracy and slows you significantly!
 魔法水会降低你的精准度并显着减慢你的速度！
 You attack twice!
 你攻击了两次！
+You gain a free move from Combat Maneuvers!
+你可以通过战斗机动获得一次自由行动！
 Access denied.
 拒绝访问。
 Facility is under lockdown.
