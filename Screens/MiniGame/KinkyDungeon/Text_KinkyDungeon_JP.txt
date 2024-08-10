@@ -579,12 +579,19 @@ Drinking a potion takes 2 turns
 Magic Hands
 マジックハン​​ド
 Enemies can add restraints underneath existing restraints.
-敵は既存の拘束の下に拘束を追加できる
+敵は装備中の拘束の下に拘束を追加できる
+
+Fully Integrated
+完全一体化
+Start with your body sealed in an adhesive layer of latex.
+ラテックスで全身を覆われた状態でゲームを開始する
+
 
 Doll Processing
 人形加工中
 Start atop a conveyor on your way to be sealed away inside the Facility.
-コンベアの上で人形に加工されている状態からゲームを開始する
+コンベアの上で人形に加工されている状態でゲームを開始する
+コンベアの上で人形に加工されている状態でゲームを開始する
 
 Cyber Doll
 サイバードール
@@ -1668,6 +1675,10 @@ Return
 戻る
 Keybindings
 キー設定
+Show free characters on map
+拘束されていないキャラをマップに表示
+Detailed jailed NPCs (experimental)
+囚人の詳細な表示(テスト中)
 Game Options
 オプション
 Load from code
@@ -1876,6 +1887,8 @@ Slave Market
 奴隷市場
 Elevator Hall
 エレベーターホール
+Dark Passageway
+暗がりの通路
 Caldera Beach
 カルデラ湖
 Temple of Air
@@ -2268,7 +2281,7 @@ Plastic Explosive x2
 Mana Potion
 マナポーション
 You sip the mana potion and feel empowered.
-マナポーションを飲むと、力が湧いてくる。
+マナポーションを飲むと、魔力が湧き上がってきた。
 A rare essence used by mages to recover their strength.
 貴重な成分でできた、魔術師の生命線。
 Restores 50% max MP instantly. Excess mana goes into the mana pool.
@@ -2284,7 +2297,7 @@ Adds 200 MP to your mana pool. Requires no hands to use.
 Stamina Potion
 スタミナポーション
 You drink the stamina potion and feel invigorated.
-スタミナポーションを飲むと元気が出でくる。
+スタミナポーションを飲むと元気が出できた。
 A potion brimming with heat and energy.
 熱とエネルギーに満ちたポーション。
 Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
@@ -2292,7 +2305,7 @@ Restores 50% stamina and 250% more over 25 turns. Effect does not stack.
 Willpower Potion
 気力のポーション
 You drink the willpower potion and feel motivated.
-気力のポーションを飲むと、やる気が湧いてくる。
+気力のポーションを飲むと、やる気が湧いてきた。
 A sweet potion, brimming with determination.
 気分を向上させる甘いポーション。
 Restores 25% willpower instantly. Can be used while gagged.
@@ -2750,8 +2763,8 @@ Four Seasons
 四季の杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 発動すると、次の火、水/氷、風/雷、土の呪文のコストを、属性ごとに1回ずつ50減らす。
-Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-影属性。火、氷、酸、打撃、電気、爆発属性のダメージが25%増加する。サブウェポン：火、氷、酸、打撃、電気、爆発属性のダメージが25%増加する。
+Deals shadow damage. +25% fire, ice, soap, crush, electric, blast damage. Offhand: Applies passive bonus.
+影属性。火、氷、ソープ、打撃、電気、爆発属性のダメージが25%増加する。サブウェポン：火、氷、ソープ、打撃、電気、爆発属性のダメージが25%増加する。
 The Arbiter
 アービター
 I have altered the rules. Pray I do not alter them further.
@@ -5076,18 +5089,18 @@ The lock requires a key.
 The lock can only be opened with a key.
 鍵がないと解錠できない。
 The magical lock only accepts magical keys and can't be picked.
-魔法の錠前はピッキングできず、魔法の鍵がないと開けられないようだ。
+魔法の錠はピッキングできず、魔法の鍵がないと開けられないようだ。
 The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
-魔法の錠前は強力な魔法で守られている。魔法が切れるまで待つしかない……
+魔法の錠は強力な魔法で守られている。魔法が切れるまで待つしかない……
 The item is cybernetically locked. You will need a key card to unlock it.
 電子的な錠が取り付けられている。カードキーが必要なようだ。
 This lock requires a command word to unlock. It doesn't have a keyhole.
-どこにも鍵穴が見当たらない。合言葉がないと、この錠前は開かないようだ。
+どこにも鍵穴が見当たらない。コマンドワードを使わないと、この錠は開かないようだ。
 You don't have a key for this lock.
-錠前に合う鍵を持っていない。
+錠に合う鍵を持っていない。
 
 The lock is definitely magical and forces your pick out!
-錠前には魔法がかかっており、ピッキングはできない。
+錠には魔法がかかっており、ピッキングはできない。
 The lock is divine. A mortal shouldn't even try to pick it.
 神の力でロックされている。常人にはピッキングできそうにない。
 You must perform your quest! Don't even think of unlocking it...
@@ -5095,15 +5108,15 @@ You must perform your quest! Don't even think of unlocking it...
 You're not sure a key for this even exists in the mortal realm.
 はたして人間界に鍵はあるのだろうか。
 The lock is made of solid rubber. You can't pick that.
-錠前はゴムで作られており、ピッキングできそうにない。
+錠はゴムで作られており、ピッキングできそうにない。
 You need something sharp to cut the lock.
-錠前を切断する必要がある。
+錠を切断する必要がある。
 The lock doesn't even have a keyhole to pick!
 鍵穴が見当たらない！
 You need a special tool to pick this kind of lock.
 特別な道具が必要なようだ。
-The lock doesn't have a keyhole to pick.
-鍵穴が見当たらない。
+The lock is technological and does not use a key.
+高度な文明の錠が使われている。鍵穴が見当たらない。
 The lock is brimming with security features and is nigh impossible to pick!
 とても精巧な錠前で、ピッキングは不可能に近い。
 
@@ -5695,13 +5708,13 @@ Unlock
 Command
 コマンド
 You utter a command word and release the lock!
-合言葉を唱えると、鍵が開いた！
+コマンドワードを唱えると、鍵が開いた！
 You mutter an unintelligible command word and your locks do not open.
-でたらめに合言葉を唱えたが、解錠できなかった。
+でたらめにコマンドワードを唱えたが、解錠できなかった。
 You mumble a command word but the lock opens!
-合言葉をつぶやくと、鍵が開いた！
+コマンドワードをつぶやくと、鍵が開いた！
 You mess up saying the command word. The lock stays put!
-合言葉を間違えたようだ。鍵は開かなかった。
+コマンドワードを間違えたようだ。鍵は開かなかった。
 
 Swipe Keycard
 カードキー
@@ -9041,7 +9054,7 @@ Object
 Brickwork
 れんが
 Doodad
-ディスカッション
+置物
 Furniture
 インテリア
 Table
@@ -9681,6 +9694,8 @@ Rubberizing Bolt
 ラバーボルト
 Rubber Bolt
 ラバーボルト
+Latex Bolt
+ラテックスボルト
 The latex spreads across your limbs and rubberizes, forming a tough barrier!
 ラバーが全身に広がり、行動を制限される！
 The latex spreads across your limbs and hardens, forming a stretchy layer!
@@ -10548,7 +10563,7 @@ Target only Helpless enemies. Creates a fixture that increases passive mana reco
 無力化した敵をディスプレイスタンドに飾り付ける。それが存在する限り、マナプールから得られるマナの回復量が増加し、即座に50のエネルギーを得る。また、ディスプレイスタンドの近くにいる敵は、魅了と物理属性のダメージが50%増加する。
 You conjure a fixture to hold your helpless target in place!
 無力化した敵をディスプレイスタンドに飾った！
-You watch in horror as your own creation surrounds you, locking you in place with a hefty click!
+You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 自身の召喚したディスプレイスタンドに拘束されてしまった！
 Choose a helpless target
 無力なターゲットを選ぶ
@@ -10621,7 +10636,7 @@ Select which creature to lock
 Magically locks down a target, preventing them from struggling below the current level of binding until freed by an enemy spellcaster (max 100% binding).
 対象の拘束具に鍵をかけ、魔法が解除されるまで拘束値が下がるのを防ぐ。(最大100%)
 You say a command word, and magical locks bind your target!
-合言葉を唱え、拘束具に魔法の錠前を施した！
+コマンドワードを唱え、拘束具に魔法の錠前を施した！
 Chastity
 貞操
 Select which creature to lock in a belt
@@ -10657,7 +10672,7 @@ Select which creature to bind
 Commands nearby restraints to bind a target, dealing DamageDealt chain damage, +50 binding. Ropes snare 3 turns/rope, belts +20 binding/belt, chains deal +15 crush dmg/chain.
 落ちている拘束具に命令し、DamageDealt チェーンダメージと50の拘束値を与える。落ちているアイテム一つにつき、ロープなら3ターンの減速、ベルトなら追加で拘束値20、鎖は追加で15の打撃ダメージを与える。
 You say a command word, and the bindings on the ground do your bidding!
-呪文を唱え、散らばる拘束具に生命を宿らせた！
+コマンドワードを唱え、散らばる拘束具に生命を宿らせた！
 CMD: Disenchant
 CMD: 吸収
 Select an area
@@ -10665,7 +10680,7 @@ Select an area
 Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings.
 広範囲の魔力が宿る非生命体の攻撃スピードを半減させ、30影属性ダメージを与える。範囲内に3体以上の対象がいる場合、消費マナの半分が戻ってくる。自身が範囲内にいる場合、拘束具の一部を解除する。
 You say a command word, siphoning the magic from nearby constructs!
-呪文を唱え、近くの物質から魔力を吸い上げた！
+コマンドワードを唱え、近くの物質から魔力を吸い上げた！
 CMD: Vibrate
 CMD: 振動
 Select an area
@@ -10673,7 +10688,7 @@ Select an area
 Target a large area. Enemies with plugs or toys are teased for Duration turns, taking charm damage each turn.
 広範囲のバイブやローターを一斉に振動させる。 Duration ターンの間振動し、装着者はターンごとに魅了属性ダメージを受ける。
 You say a command word, causing all toys in the area to vibrate!
-呪文を唱え、オモチャを一斉に振動させた！
+コマンドワードを唱え、オモチャを一斉に振動させた！
 CMD: Explosive Finish
 CMD: 性欲爆弾
 Explosive Finish
@@ -10683,7 +10698,7 @@ Select an area
 Target a large area. Consumes enemy distraction to deal up to DamageDealt charm damage, twice if at 90% distraction or more.
 広範囲の対象に DamageDealt 魅了ダメージを与える。ダメージ量は興奮値によって決まり、興奮値が90以上の場合、ダメージを2回受ける。
 You say a command word, resulting in a surge of energy entering your targets!
-呪文を唱え、特殊なエネルギーを敵に注入した！
+コマンドワードを唱え、特殊なエネルギーを敵に注入した！
 CMD: Release
 CMD: リリース
 Select an area
@@ -10691,9 +10706,9 @@ Select an area
 Target bound (but unlocked) targets in a 3x3 area, reducing binding by 100. Removes unlocked restraints on player that are removable.
 3x3エリア内の拘束済みかつロックされていない対象の拘束値を100減らす。自身を選択した場合、ロックされていない拘束具を解除する。
 You say a command word, causing restraints to loosen!
-呪文を唱え、拘束を緩めた！
+コマンドワードを唱え、拘束を緩めた！
 You say a command word, but your restraints remain tight!
-呪文を唱えたが、拘束はきついままだ！
+コマンドワードを唱えたが、拘束はきついままだ！
 Remove Slime
 リムーブスライム
 Select a creature or yourself
@@ -10703,7 +10718,7 @@ Remove Slime and Encasement from target creatures in an area. Also removes slime
 You issue a command to the slime!
 スライムに退くよう命令した！
 You whisper a command word, but the slime is already hardened and won't budge...
-呪文を唱えても、既に固まったスライムには意味がなかった……
+コマンドワードを唱えても、既に固まったスライムには意味がなかった……
 Binding Vines
 バインディングヴァイン
 Binding Ropes
@@ -10747,7 +10762,7 @@ Select area to bind
 Commands nearby restraints to bind targets standing on them. Rope: 30 chain dmg/5 turn snare. Chain: 30 crush dmg/8 turn disarm. Belts: 50 binding/3 turns vulnerability.
 落ちている拘束具に、その上の敵を拘束するよう命令する。種類により追加効果。ロープ：30チェーンダメージと5ターンの減速。鎖：30打撃ダメージと8ターン武装解除。ベルト：拘束値50追加と脆弱状態3ターン。
 You say a command word, and the bindings on the ground do your bidding!
-コマンドを唱え、地面の拘束具に命令を出した！
+コマンドワードを唱え、地面の拘束具に命令を出した！
 CMD: Unlock
 CMD: ロック解除(小)
 Select which creature to unlock
@@ -10755,7 +10770,7 @@ Select which creature to unlock
 On yourself: Removes one purple (magical) lock. On a creature: Reduces the target's binding by 20 points.
 自分：紫(魔法)の錠前を1つ解除する。他：拘束値を20減らす。
 You speak a command word!
-コマンドを唱え、拘束具を解除する！
+コマンドワードを唱え、拘束具を解除する！
 None of the locks you are wearing respond to your magic.
 どのロックにも効果がないようだ。
 You can't help her with this.
@@ -10770,7 +10785,7 @@ Select which creature to unlock
 On yourself: Removes all purple (magical) locks. On a creature: Reduces the target's binding by 100 points.
 自分：紫(魔法)の錠前を全て解除する。他：拘束値を100減らす。
 You speak a powerful command word!
-強力なコマンドを唱え、拘束具を解除する！
+強力なコマンドワードを唱え、拘束具を解除する！
 
 Lesser Invisibility
 半透明化
@@ -11301,7 +11316,7 @@ You feel your toys start to buzz...
 オモチャが振動を始めた……
 You your toys continue to buzz...
 オモチャは振動し続けている……
-The EnemyName remotely causes your toys to to buzz!!!
+The EnemyName remotely causes your toys to buzz!!!
 EnemyName がオモチャを遠隔操作してきた！
 
 Your toys pulse and tingle occasionally.
@@ -12549,9 +12564,9 @@ RestraintName は突如警報音を出しながら震えだした！
 A golden lock fades into a blue lock on one of your restraints!
 拘束具についている金色のロックは、青いロックへと変わった。
 Your command word is heard and the purple lock(s) click and fall off!
-呪文を唱えると、紫色のロックが外れた。
+コマンドワードを唱えると、紫色のロックが外れた。
 Your command word is heard and the charger unlocks!
-呪文を唱えると、充電式ロックが外れた。
+コマンドワードを唱えると、充電式ロックが外れた。
 Are you sure you want to attack?
 本当に攻撃する？
 Are you sure you want to go to the next level? (Click self to confirm)
@@ -15469,8 +15484,8 @@ An outsider!
 よそ者め！
 Hide!
 隠れろ！
-Do not pursue me!
-追いかけてこないでください！
+I have done nothing worthy of punishment!
+何も悪いことはしていませんよ！
 I have come to study human customs. Teach me about Domination.
 人間の文化について興味があるんです。例えばSMとか……
 The outsiders have such... strange and interesting practices.
@@ -19681,7 +19696,7 @@ Why don't we have a little fun?
 (You decide to deal with your problems yourself.)
 (自分でなんとかしよう)
 (Plead with her to unlock you with a Command Word)
-(呪文でロックを解除するよう頼む)
+(コマンドワードでロックを解除するよう頼む)
 (Yes!)
 (お願い！)
 (Never mind...)
@@ -19748,6 +19763,12 @@ Why don't we have a little fun?
 (アイテムを売る)
 (Buy items)
 (アイテムを買う)
+
+(Pick up her leash)
+(リードを手に取る)
+(Release her leash)
+(リードを離す)
+
 Dollmaker
 ドールメイカー
 The Dollmaker throws a device to the ground, teleporting her instantly!
@@ -20516,6 +20537,7 @@ Give her a Scroll of Purity
 (SPEAKER は笑顔で続ける)|よし、いいだろう。|次の階層に私の仲間が囚われているんだ。|どうにかして助け出してやってほしい。
 (Show interest)
 (興味を示す)
+
 (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
 (SPEAKER は手足を厳重な枷で繋がれている|まずは錠を開ける必要がある)
 (You don't have any keys that work on the lock)
@@ -20539,13 +20561,13 @@ Give her a Scroll of Purity
 (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
 (錠をこじ開け、 SPEAKER を助け出した)|うぅぅんっ！|(猿轡を外そうとしたが、断られてしまった……)
 (You don't have enough mana for a command word)
-(呪文を唱えるためのマナが足りない)
+(コマンドワードを唱えるためのマナが足りない)
 (Try as you might, your mouth is sealed tight)
 (口を封じられて呪文を唱えられない)
 (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
-(呪文を使い SPEAKER を助け出した)|ありがとう！|行こう！
+(コマンドワードを使い SPEAKER を助け出した)|ありがとう！|行こう！
 (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
-(呪文を使い SPEAKER を助け出した)|んんぅ。|(彼女は再び猿轡をロックした……)
+(コマンドワードを使い SPEAKER を助け出した)|んんぅ。|(彼女は再び猿轡をロックした……)
 (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
 (SPEAKER は高度な鍵のかかった枷で繋がれている|鍵なしに助け出すのは難しいだろう)
 Use a key to unlock her
@@ -20553,9 +20575,55 @@ Use a key to unlock her
 Try to pick her restraints (JAMPERCENT jam chance)
 ロックピックを使う(JAMPERCENT の確率で失敗)
 Use a command word
-呪文を使う
+コマンドワードを使う
 Apologize profusely!
 謝罪する
+
+(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
+(SPEAKER が捕まっている。|拘束を解けば、彼女を連れ出せるだろう。)
+(You don't have any keys that work on the lock)
+(錠に合う鍵を持っていない)
+(You can't help her, bound as tightly as you are...)
+(自身の拘束がきつすぎて、彼女を解放できない。)
+(You unlock her, fumbling around for a while with your bound hands)
+(縛られた両手でなんとか彼女を解放した。)
+(You unlock the SPEAKER)|Thank you!|Let's get out of here!
+(SPEAKER を解放した)|ありがとう！|さっさとここから逃げましょう！
+(You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+(SPEAKER を解放した)|んぅぅ！|(彼女は猿轡を外したくないようだ……)
+(You don't have any lockpicks)
+(ロックピックを持っていない)
+(You try to pick the lock...)|(Click! A safety shield locks securely into place!)|(Looks like the SPEAKER will be staying here for a while...)
+(ピッキングを試みた……)(失敗してしまった。セーフティ機構が働き、鍵穴が詰まってしまった！)(SPEAKER は置いていくしかないようだ……)
+(You can't pick the lock with your hands bound)
+(縛られた状態ではピッキングはできない。)
+(After a while, you free the SPEAKER)|Thank you!|Let's get moving!
+(悪戦苦闘の後、 SPEAKER を解放することができた。)|ありがとう！|さっさとここから逃げましょう！
+(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
+(悪戦苦闘の後、 SPEAKER を解放することができた。)|んぅぅ！|(猿轡を外そうとすると、彼女は首を振った。彼女は猿轡を外したくないようだ……)
+(You don't have enough mana for a command word)
+(コマンドワードを使用するためのマナが足りない。)
+(Try as you might, your mouth is sealed tight)
+(口をふさがれているため、コマンドワードが唱えられない。)
+(You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
+(コマンドワードを唱え、 SPEAKER を解放した。)|ありがとう！|さっさとここから逃げましょう！
+(You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+(コマンドワードを唱え、 SPEAKER を解放した。)|んぅぅ！|(彼女は猿轡を再び取り付けた……)
+(The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
+(SPEAKER には高度な技術で作られた枷が取り付けられている。|セーフティ機構が働いているため、彼女を助けられそうにない。)
+
+
+Try to pick her restraints
+ロックピックを使う
+Use a command word
+コマンドワードを使う
+Flip her around
+移動させる
+Apologize profusely!
+謝罪する
+You spin her right round!
+彼女を動かした。
+
 An enemy found you while you were busy!
 敵に見つかってしまった！
 (A SPEAKER wakes you up by banging on the bars)|Wake up! Let's get out of here!|(She managed to pick the lock on your cell door)
@@ -20608,10 +20676,25 @@ An enemy found you while you were busy!
 (拘束用のインテリアがある)
 (You lock yourself in the furniture!)
 (自ら中に入って鍵を閉めた！)
+(The SPEAKER slips out of your grip|before you can lock her in place!)
+(SPEAKER を閉じ込めようとしたら、抵抗されてしまった)
 (Display one of your prisoners)
 (捕虜を閉じ込める)
 (Lock yourself inside)
 (中に入って鍵を閉める)
+
+
+(Try to lock NME into the furniture) (PRCNT% Chance)
+(NME を拘束用のインテリアに閉じ込める)(PRCNT% で成功)
+(You close the furniture around your unfortunate victim!)
+(無理やり拘束具に押し込めた！)
+Stun or disable her first.
+まずはスタンさせるか武装解除させる必要がある。
+(Secure NME into the furniture)
+(NME を拘束用インテリアに閉じ込めて完全拘束する)
+(You lock her into the furniture so that she stays in place)
+(彼女を拘束具に押し込めた)
+
 
 FOODMSG|(It invites you to partake in its culinary delights)
 FOODMSG|(とても美味しそうな匂いがする……)
@@ -23736,7 +23819,7 @@ AMNT Physical Armor
 AMNT Bondage Resist
 拘束抵抗力 AMNT
 AMNT TYPE Resist
-TYPE 属性への抵抗力 AMNT
+TYPE 属性の抵抗力 AMNT
 AMNT% TYPE Damage
 TYPE 属性の威力 AMNT% 
 AMNT% weapon phys. dmg
@@ -23746,15 +23829,15 @@ AMNT% weapon magic dmg
 Infuse weapon AMNT% TYPE
 武器の TYPE 属性ダメージ AMNT% 
 AMNT TYPE on attack
-攻撃時 AMNT TYPE 追加ダメージ
-AMNT% Mana Costs
-マナコスト AMNT% 
-AMNT% TYPE Mana Costs
-TYPE 属性のマナコスト AMNT% 
+AMNT TYPE 属性追加ダメージ
++AMNT Mana Efficiency
+マナ効率化 +AMNT
++AMNT TYPE Mana Efficiency
+TYPE 属性のマナ効率化 +AMNT 
 AMNT% regen from mana pool
 マナプールから得られるマナ AMNT% 
 AMNT mana pool on capture
-敵を捕まえたとき AMNT マナプールを回復する
+敵を捕まえたときマナプールを AMNT 回復する
 AMNT% Visibility Reduction
 視認性低下 AMNT% 
 AMNT Distraction Decay
@@ -24164,6 +24247,11 @@ Battle Trance
 While at 40 Battle Rhythm, you attack twice per turn.
 戦闘のリズムが40以上の時、一度の攻撃で二回攻撃する。
 
+Combat Maneuver
+再移動
+When Battle Trance is active, you gain a free move if the target is defeated before the second attack hits.
+バトルトランスの発動中、一度目の攻撃で敵を倒した場合に、移動が可能になる。
+
 Devious Ingenuity
 悪巧み
 Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
@@ -24352,6 +24440,11 @@ High Profile
 厳重警備
 Several enemies on each map will be high value, rewarding more gold and items for defeating them but increasing their strength.
 マップに配置される敵が増え、倒すとより多くのゴールドやアイテムがもらえるが、敵が強くなる。
+
+You apply the RSTR to the ENNME! (AMNT% bound)
+RSTR を ENNME に取り付けた！(拘束値 AMNT%)
+You untie the ENNME! (AMNT% bound)
+ENNME の拘束を緩めた！(拘束値 AMNT%)
 +AMNT Bondage!
 拘束値 +AMNT
 TargetEnemy receives AMNT binding!
@@ -24974,8 +25067,10 @@ The gap in the bubble closes, and you are fully sealed within the bubble!
 泡の隙間が閉じ、完全に閉じ込められた！
 Magical water reduces your accuracy and slows you significantly!
 魔法の泡で命中率と速度が大幅に低下している！
-KinkyDungeonBuffBattleTrance,You attack twice!
+You attack twice!
 二回攻撃！
+You gain a free move from Combat Maneuvers!
+再移動が可能になった！
 
 Access denied.
 アクセス拒否。
@@ -25271,6 +25366,9 @@ Show Quick Inventory
 クイックインベントリ
 Skip Tutorial
 チュートリアルをスキップ
+
+Mod Compatibility Mode
+MOD互換モード
 
 Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 Kinky Dungeonにようこそ！新顔みたいだね！|UIについての説明をする？
@@ -26246,8 +26344,8 @@ You have formed a mental barrier...
 
 Desire Burst
 デザイアバースト
-Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount. (Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
-欲望値を最大DPの30%まで減少させ、近くの敵に30+最大のDP25%分の魅了ダメージを与える強力な爆風を起こす。欲望値が50%以下の場合、その分のダメージが減少する。(欲望値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
+Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+欲望値を最大DPの30%まで減少させ、近くの敵に30+最大DPの25%分の魅了ダメージを与える強力な爆風を起こす。欲望値が50%以下の場合、不足分のダメージが減少する。||(欲望値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
 You channel your distraction into a powerful explosion!
 自身の欲望を強力な爆発に変換した！
 You don't have enough of a desire to do that.
@@ -26819,7 +26917,7 @@ Manager
 マネージャー
 
 Opinion
-オピニオン
+好感度
 Training
 調教
 Willpower
@@ -26827,6 +26925,8 @@ Willpower
 
 Prisoner #NUMR/TTL
 囚人 #NUMR/TTL
+Guest #NUMR/TTL
+ゲスト #NUMR/TTL
 
 
 Select a character to examine
@@ -26859,6 +26959,8 @@ Scholarly
 魔法学校
 Witch's Coven
 魔女
+Warden
+看守長
 Curse
 呪い
 Old Guardians
@@ -26929,9 +27031,9 @@ Servants
 Prisoners
 囚人
 Promote to Servant
-使用人に昇格
-Demote to Prisoner
-囚人に降格
+昇格
+Demote
+降格
 
 The ENMY tries to grab you!
 ENMY が掴みかかってきた！
@@ -27886,7 +27988,7 @@ Bandit Raid
 Elemental Energy
 精霊の坩堝
 Overgrown
-蔦覆い
+蔦覆
 Slime Infestation
 スライムの繁殖
 Wolfgirl Training
@@ -27905,11 +28007,11 @@ Prison
 Sorting Room
 選別所
 
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your three hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 画面下のホットバーをクリックしてアイテムを登録可能|ホットバーをセーブ、ロードで|登録した内容を保存及び呼び出しが可能||別のセーブデータ間でも登録した内容を呼び出すことができる
 
 You step on the item and tug to pull it taut...
-アイテムを踏み、引っ張った……
+アイテムを足で引っ張った……
 You tug furiously against the leash, pulling it taut!
 リードを力いっぱい引っ張った！
 Silenced Hall
@@ -28755,6 +28857,13 @@ NPCにリードを取り付ける。敵や反抗的な味方に取り付ける�
 Target an NPC to leash, or self to unleash all.
 NPCか自身を選択
 
+Brat Handler
+力ずくの主従
+Target an NPC with an equipped leash restraint (via Truss'em'up) to attach a leash. Target self to release all leashes, or target a leashed NPC to unleash them.
+スキル「ぐるぐるまき！」で拘束した敵にリードを取り付ける。自身を選択するとリードを全て手放し、NPCを選択すると、選択したNPCのリードを手放す。
+Target an NPC to leash, or self to unleash all.
+NPCか自身を選択
+
 Clip-On Leash
 クリップ式リード
 A beloved favorite of pets and trainers alike.
@@ -28843,9 +28952,9 @@ Chastity bras are much rarer.
 貞操ブラがとても出現しにくくなる。
 
 Find an elevator to the Summit in order to access facilities.
-施設を使うために、まずはエレベーターを探そう。
+施設を使うためには、エレベーターでセーフゾーンを訪れる必要がある。まずはエレベーターを探そう。
 Visit the Summit to allow additional interactions with this facility.
-サミットを訪れて施設を見てみよう。
+セーフゾーン訪れて施設を見てみよう。
 
 +AMNT% Training/Tick
 調教度/ターン +AMNT%
@@ -28885,7 +28994,7 @@ tierの低い拘束具を高tierの拘束具に変換する。|多くの人員�
 
 Cuddle Lounge
 ラウンジ
-Assign prisoners to the lounge in order to improve your servants' opinion of you.
+Assign prisoners to the lounge in order to improve servant and prisoner opinion.
 好感度を高めるために、囚人をラウンジに配置する。
 
 Recycle Restraints
@@ -28986,3 +29095,299 @@ Stock:
 在庫: 
 Inputs: 
 投入数: 
+
+You slip off the conveyor!
+コンベアからはじき出された！
+The Summit
+セーフゾーン
+Back to Collection
+戻る
+Edit Restraints
+拘束具をセットする
+Editing Restraints
+拘束具をセット中
+Imprison in Furniture
+拘束用インテリアで拘束中
+
+Module (Utility)
+モジュール(その他)
+Leash
+リード
+Module (Punishment)
+モジュール(懲罰)
+~~~ Collar ~~~
+~~~ 首輪 ~~~
+Blindfold / Earplugs
+目隠し/耳栓
+Blindfold
+目隠し
+Mask/Hood
+マスク/フード
+Gag
+猿轡
+Gag / Stuffing
+猿轡/詰め物
+Muzzle
+マズル
+Wrists
+腕
+Heavy Bondage
+重い拘束
+Extra Bondage
+追加拘束
+Encasement
+完全拘束
+Mittens
+ミトン
+Mittens / Tape
+ミトン/テープ
+Gloves / Tape
+グローブ/テープ
+Piercings
+ピアス
+Weights
+重り
+Vibes
+バイブ
+Chastity Bra
+貞操帯
+Catsuit / Leotard
+キャットスーツ/レオタード
+Harness
+ハーネス
+Corset
+コルセット
+Rear Plug
+後ろの穴
+Front Plug
+前の穴
+Vibrator
+バイブレーター
+Chastity Belt
+貞操ベルト
+Thigh Cuffs
+脚枷
+Leg Bondage
+足の拘束
+Legbinder
+レッグバインダー
+Ankles
+足首
+Shins
+脛
+Knees
+膝
+Toe Cuffs
+指枷
+Toe Tie
+指の拘束
+Heels
+ヒール
+
+Equipped: 
+装備中：
+Click to Add 
+クリックして選択
+
+Free Prisoner
+開放する
+Perk Unlocked: 
+解放済みパーク：
+
+Latex Solvent
+ゴム溶剤
+You ready the bottle of Latex Solvent.
+溶剤を準備した。
+A potent acid, capable of dissolving slime and latex.
+スライムやラテックスを溶かせる強力な酸。
+Deal 90 acid damage to target. Adds a 10% debuff to the cut and struggle resistance of latex restraints currently worn.
+90酸ダメージを与える。着用中のラテックス製拘束具の「もがく」「切る」耐性を10%下げる。
+Weakened by Latex Solvent (10%)
+ゴム溶剤の弱体化(10%)
+You spill the solvent on yourself and loosen your latex bonds!
+溶剤を自身にかけ、ラテックスの拘束具を緩めた！
+You splash the ENMY with latex solvent!
+ENMY にゴム溶剤をぶちまけた！
+
+You can't use solvents on targets other than yourself while bound.
+拘束されている間は自分以外に使えない。
+
+Random
+ランダム
+
+Choose Palette
+パレットを選択
+Restraint Palette
+拘束のパレット
+Choose Restraint
+拘束を選択
+Def. Palette: 
+デフォルト：
+Set All Palette
+全て選択
+
+Prisoners
+囚人
+Guests
+ゲスト
+Assign to 
+配置場所：
+Remove from 
+配置をやめる：
+Imprison
+投獄
+Opinion: 
+好感度：
+Last Seen on Floor FLR, LOC
+最後に見かけたのは FLR 階層の LOC 。
+Present in current level
+この階層にいる。
+
+Captured by FCTN
+FCTN に捕まっている
+Captured by enemies
+どこかに捕まっている
+
+Use 'Truss'em'Up' to edit restraints on this NPC
+スキル「ぐるぐるまき！」を使用してNPCの拘束具を変更する
+The NPC needs tightening, but is unavailable right now
+NPC の拘束をより強固にする必要があるが、今はできない
+Tighten loose restraints
+緩んだ拘束具を締め直す
+
+
+NPC has escaped!
+NPC が逃げ出した！
+NPC is likely to escape.
+NPC は逃げ出す機会を伺っている。
+NPC has managed to loosen her bonds.
+NPC は拘束を緩めている。
+
+Any
+全員
+NPC Opinion: 
+NPC の好感度: 
+NPC Escape Status: 
+NPC の逃走状況: 
+NPC Binding: 
+NPC の拘束度: 
+NPC Availability: 
+NPC の状況: 
+Favorited: 
+お気に入り:
+Rank: 
+ランク:
+Minor
+下っ端
+Normal
+普通
+Elite
+エリート
+Miniboss
+中ボス
+Boss
+ボス
+Legendary
+レジェンド
+
+Bound
+拘束
+Free
+自由
+Secure
+安全
+At Risk
+危険
+Escaped
+逃走
+Imprisoned
+収監
+Positive
+好き
+Negative
+嫌い
+Favorite
+お気に入り
+Non-Favorite
+お気に入りじゃない
+
+
+Present
+使用可能
+Unavailable
+使用不可能
+
+Auto Bind Interface
+自動拘束インターフェイス
+AutoBind
+自動拘束
+
+Copy Restraints
+拘束具をコピー
+Paste Restraints from NME
+NME の拘束具をペースト
+Paste to All!
+全てにペースト
+OVERWRITE All!
+全てに上書き
+
+Need Positive Opinion to Promote
+昇格させるには好感度が足りない
+
+Servant Enjoyment: AMNT
+使用人の幸福度: AMNT
+Prisoner Enjoyment: AMNT
+囚人の幸福度: AMNT
+Submissive prisoners and dominant servants add different amounts of opinion per cycle
+マゾの囚人とサドの使用人では、追加される好感度の上昇が異なる
+
+
+Release Prisoners
+囚人を解放する
+Release
+解放
+
+Mark
+マークを付ける
+Unmark
+マークを外す
+Mark ALL
+全員にマークを付ける
+Cancel Selection
+キャンセル
+Release Marked Prisoners!
+マークを付けた囚人を解放
+Ransom Marked Prisoners for GP!
+マークを付けた囚人の身代金を受け取る
+Ransom Value: GP
+身代金: GP
+Current Gold: GP
+所持金: GP
+
+
+[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
+[EXP: AMNT/LMT] ヒールトレーニングを積めば、ハイヒールを履いたときに転びにくくなる。
+
+Phase Dance active. Your next move is instant.
+フェーズダンスが発動中。追加で移動できる。
+Combat Maneuver active. Your next move is instant.
+再移動が発動中。追加で移動できる。
+
+The furniture space is occupied
+既に使われている。
+Combat Maneuver: Your next move is instant.
+再移動：追加で移動できる。
+
+
+Appointing managers increases the efficiency of other facilities.
+マネージャーを設定することで、施設全体の効率が上昇する。
+Total Efficiency Boost: AMNT%
+総合効率アップ: AMNT%
+idle
+待機
+
+(As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!
+(奇妙な像に近づくと、それは音を立てて崩れ落ちていく)|(そしてその中から美しくも憤怒に塗れたキャットガールの像が現れた)|我が眠りを妨げるのは何者か？|侵入者には相応しい罰を与えようぞ！
+
+Mysterious Statue
+奇妙な石像
