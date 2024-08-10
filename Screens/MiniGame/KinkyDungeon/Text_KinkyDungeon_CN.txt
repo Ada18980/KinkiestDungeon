@@ -2581,8 +2581,8 @@ Four Seasons
 四季法杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
-Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
+Deals shadow damage. +25% fire, ice, soap, crush, electric, blast damage. Offhand: Applies passive bonus.
+造成暗影伤害，+25% 火/冰/皂化/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
 The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
