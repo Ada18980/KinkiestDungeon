@@ -795,6 +795,8 @@ let KDJailOutfits = {
 			{Name: "TrapLegbinder", Level: 60},
 			{Name: "SturdyLeatherBeltsFeet", Level: 70},
 			{Name: "SturdyLeatherBeltsLegs", Level: 80},
+			{Name: "LeatherHood", Level: 110, Variant: "AntiMagic", Condition: "SenseDepHood"},
+			{Name: "LeatherMask", Level: 110, Variant: "AntiMagic", Condition: "SenseDep"},
 		],
 	},
 	"dressRestraints": {
@@ -842,6 +844,15 @@ let KDJailConditions = {
 	},
 	NoUnmasked: (r) => {
 		return !KinkyDungeonStatsChoice.get("Unmasked");
+	},
+	Hood: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoHood");
+	},
+	SenseDep: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoSenseDep");
+	},
+	SenseDepHood: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoSenseDep") && !KinkyDungeonStatsChoice.get("NoHood");
 	},
 	ChastityBra: (r) => {
 		return !KinkyDungeonStatsChoice.get("FreeBoob2") && (KinkyDungeonPlayerTags.get("ItemNipples") || !KinkyDungeonStatsChoice.get("FreeBoob1"));

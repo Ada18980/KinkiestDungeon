@@ -1033,6 +1033,7 @@ let KDDialogue = {
 					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 					if (en && !en.player && KDCanBind(en)) {
 						KDImprisonEnemy(en, true, "PrisonerJailOwn");
+						KinkyDungeonAdvanceTime(1);
 					}
 					return false;
 				},
@@ -1067,12 +1068,14 @@ let KDDialogue = {
 						if (KDRandom() < KDGameData.CurrentDialogMsgValue.PRCNT) {
 							if ((!en.specialBoundLevel || !en.specialBoundLevel.Furniture)) {
 								KDTieUpEnemy(en, en.Enemy.maxhp * 0.3 + 10, "Furniture", undefined);
+								KinkyDungeonAdvanceTime(1);
 								if (en.bind) en.bind = 0;
 								en.bind = Math.max(en.bind, 10);
 								en.immobile = Math.max(en.immobile || 0, 10);
 							}
 						} else {
 							KDGameData.CurrentDialogMsg = "FurnitureEnemyFail";
+							KinkyDungeonAdvanceTime(1);
 							return true;
 						}
 

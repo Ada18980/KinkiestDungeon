@@ -9,6 +9,7 @@ interface NamedAndTyped extends Named {
 
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
+
 	id: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],
@@ -535,7 +536,9 @@ interface restraint extends KDRestraintProps {
 	weight: number,
 	minLevel: number,
 
-	Color: string[] | string,
+	deaf?: number,
+
+	Color?: string[] | string,
 
 	/** Descriptor for tightness, e.g. Secure, Thick */
 	tightType?: string,

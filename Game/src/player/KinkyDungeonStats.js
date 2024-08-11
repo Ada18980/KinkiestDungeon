@@ -314,6 +314,33 @@ function KDEntitySenses(entity) {
 	};
 }
 
+/**
+ *
+ * @returns {number}
+ */
+function KDDeafLevel() {
+	let data = {
+		deaflevel: 0,
+		deafMaxWeight: 0.75,
+		deafTotalWeight: 0.25,
+		maxDeaf: 0,
+		totalDeaf: 0,
+		restraints: KinkyDungeonAllRestraintDynamic().filter((inv) => {return KDRestraint(inv.item)?.deaf;})
+	};
+
+
+	for (let inv of data.restraints) {
+		let deaf = KDRestraint(inv.item).deaf;
+		data.maxDeaf = Math.max(deaf, data.maxDeaf);
+		data.totalDeaf += deaf;
+	}
+
+	KinkyDungeonSendEvent("calcDeaf", data);
+
+	data.deaflevel = data.deafMaxWeight * data.maxDeaf + data.deafTotalWeight * data.totalDeaf;
+
+	return data.deaflevel;
+}
 
 /**
  * @param {entity} [entity]
@@ -326,12 +353,12 @@ function KinkyDungeonGetHearingRadius(entity) {
 			entity: entity,
 			noise: 0,
 			base: 8,
-			deaflevel: KinkyDungeonDeaf ? 4 : 0,
+			deaflevel: KDDeafLevel(),
 			hearingMult: 1.0,
 		};
 		KinkyDungeonSendEvent("calcHearing", data);
 		return {
-			radius: Math.round((data.base-data.deaflevel) * data.hearingMult),
+			radius: Math.round((data.base * 5 / (5 + data.deaflevel)) * data.hearingMult),
 			mult: data.hearingMult,
 		};
 	} else {

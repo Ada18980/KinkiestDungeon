@@ -82,7 +82,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Secure", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
 				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "RopeReinforce", "Belts"]},
 			{id: "HeavyBondage", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs"]},
+				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs"]},
 			{id: "Wrists", encasedBy: ["ArmEncase", "HeavyBondage"], allowedGroups: ["ItemArms"],
 				allowedTags: ["ArmCuffsBase", "ChestHarnesses"]},
 		]},

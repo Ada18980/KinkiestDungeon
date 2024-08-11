@@ -860,7 +860,6 @@ function KDApplyItem(C, inv, tags) {
 		let faction = inv.faction ? inv.faction : "";
 
 		// faction color system
-		let color = (typeof restraint.Color === "string") ? [restraint.Color] : restraint.Color;
 		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?
 			JSON.parse(JSON.stringify(restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters))
 			: {};
@@ -902,7 +901,7 @@ function KDApplyItem(C, inv, tags) {
 		let placed = null;
 
 		if (!restraint.armor || KDToggles.DrawArmor) {
-			placed = KDAddModel(C, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], color, data.Filters, inv, data.Properties);
+			placed = KDAddModel(C, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], "", data.Filters, inv, data.Properties);
 		}
 
 		if (placed) {
@@ -943,18 +942,9 @@ function KDApplyItemLegacy(C, inv, tags) {
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = inv.faction ? inv.faction : "";
 
-		let color = (typeof restraint.Color === "string") ? [restraint.Color] : Object.assign([], restraint.Color);
-		if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
-			for (let i = 0; i < restraint.factionColor.length; i++) {
-				for (let n of restraint.factionColor[i]) {
-					if (KinkyDungeonFactionColors[faction][i])
-						color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
-				}
-			}
-		}
 
 		let data = {
-			color: color,
+			color: "",
 			faction: faction,
 		};
 		KinkyDungeonSendEvent("legacyApply", data);

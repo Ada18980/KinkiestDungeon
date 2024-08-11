@@ -103,6 +103,29 @@ const KinkyDungeonRestraints = [
 		]},
 	// endregion
 
+	// region Hood
+	{inventory: true, name: "LeatherHood", inaccessible: true, Color: ["Default", "Default"],
+		Group: "ItemHead", LinkableBy: [...KDMaskLink], gag: 0.7, blindfold: 3, power: 5, weight: 0,
+		Model: "LeatherHood",
+		escapeChance: {"Struggle": -0.35, "Cut": -0.15, "Remove": 0.12, "Pick": 0.11, "Unlock": 0.7},
+		enemyTags: {"sensedep":10},
+		maxwill: 0.1,
+		playerTags: {"ItemMouth1Full":2, "ItemMouth2Full":1, "NoHood": -1000, NoSenseDep: -1000},
+		minLevel: 0, allFloors: true, shrine: ["Leather", "Hoods", "Block_ItemMouth"],
+		deaf: 4,
+	},
+	{inventory: true, name: "LeatherMask", inaccessible: true, Color: ["Default", "Default"],
+		Group: "ItemHead", LinkableBy: [...KDMaskLink], gag: 0.7, blindfold: 3, power: 5, weight: 0,
+		Model: "LeatherHood",
+		escapeChance: {"Struggle": -0.35, "Cut": -0.15, "Remove": 0.12, "Pick": 0.11, "Unlock": 0.7},
+		enemyTags: {"sensedep":10},
+		maxwill: 0.1,
+		playerTags: {"ItemMouth1Full":2, "ItemMouth2Full":1, "Unmasked": -1000, NoSenseDep: -1000},
+		minLevel: 0, allFloors: true, shrine: ["Leather", "Masks", "Block_ItemMouth"],
+		deaf: 4,
+	},
+	// endregion
+
 	//region Charms
 	// Not super punishing but would be hard to apply IRL
 	{inventory: true, name: "DuctTapeCollar", debris: "Fabric", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",

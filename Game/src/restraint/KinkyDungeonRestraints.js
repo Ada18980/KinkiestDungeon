@@ -2774,6 +2774,8 @@ let KDHeavyRestraintPrefs = [
 let KDNoOverrideTags = [
 	"NoVibes",
 	"Unmasked",
+	"NoSenseDep",
+	"NoHood",
 	"FreeBoob",
 	"Unchained",
 	"Damsel",
@@ -3187,6 +3189,8 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 		}
 		if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
 		if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
+		if (KinkyDungeonStatsChoice.get("NoSenseDep")) playerTags.set("NoSenseDep", true);
+		if (KinkyDungeonStatsChoice.get("NoHood")) playerTags.set("NoHood", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob2")) playerTags.set("FreeBoob", true);
 		if (KinkyDungeonStatsChoice.get("FreeBoob1") && !KinkyDungeonPlayerTags.get("ItemNipples")) playerTags.set("FreeBoob", true);
 		if (KinkyDungeonStatsChoice.get("NoKigu")) playerTags.set("NoKigu", true);
@@ -4086,16 +4090,6 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 			}
 
 
-
-			let color = (typeof restraint.Color === "string") ? [restraint.Color] : Object.assign([], restraint.Color);
-			if (restraint.factionColor && faction && KinkyDungeonFactionColors[faction]) {
-				for (let i = 0; i < restraint.factionColor.length; i++) {
-					for (let n of restraint.factionColor[i]) {
-						if (KinkyDungeonFactionColors[faction][i])
-							color[n] = KinkyDungeonFactionColors[faction][i]; // 0 is the primary color
-					}
-				}
-			}
 
 			// If we did not link an item (or unlink one) then we proceed as normal
 			if (!KinkyDungeonCancelFlag) {

@@ -2714,7 +2714,7 @@ function DrawBoxKDTo(Container, Left, Top, Width, Height, Color, NoBorder, Alpha
 			Height: Height,
 			Color: KDBorderColor,
 			LineWidth: 2,
-			zIndex: zIndex + 0.004,
+			zIndex: zIndex + 0.003,
 		});
 	}
 }
@@ -2850,15 +2850,19 @@ function DrawTextVisKD(Container, Map, id, Params) {
 				fontSize: Params.FontSize ? Params.FontSize : 30,
 				fill : string2hex(Params.Color),
 				stroke : Params.BackColor != "none" ? (Params.BackColor ? string2hex(Params.BackColor) : "#333333") : 0x000000,
-				strokeThickness: Params.border != undefined ? Params.border : (Params.BackColor != "none" ? (Params.FontSize ? Math.ceil(Params.FontSize / 8) : 2) : 0),
-				miterLimit: 4,
+				strokeThickness: Params.border != undefined ? Params.border
+					: (Params.BackColor != "none" ?
+						(Params.FontSize ? Math.ceil(Params.FontSize / 8) : 2)
+						: 1),
+				miterLimit: 2,
+				padding: 5,
 			}
 		);
 
 		//console.log(Params)
 		if (Params.Width) {
 			sprite.scale.x = Math.min(1, Params.Width / Math.max(1, sprite.width));
-			sprite.scale.y = sprite.scale.x;
+			//sprite.scale.y = sprite.scale.x;
 		}
 
 		sprite.roundPixels = true;
@@ -3161,7 +3165,8 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, Left, Top, Width, Height, undefined, o);
+				Image, Left, Top,
+				Width, Height, undefined, o);
 			/*DrawImageEx(Image, Left, Top, {
 				Width: Width,
 				Height: Height,
@@ -3172,20 +3177,25 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left, Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
+				Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left,
+				Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
 	}
 
 	// Draw the tooltip
 	if ((HoveringText) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
-		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04), "#ffffff", undefined, undefined, undefined, zIndex + 1, undefined, undefined, undefined, KDButtonFont);
+		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0),
+			2 + Top + Math.floor(Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
+			"#ffffff", undefined, undefined, undefined, zIndex + 1, undefined, undefined, undefined, KDButtonFont);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
-		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0), Top + (Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
+		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0),
+			2 + Top + Math.floor(Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
-			FontSize, undefined, zIndex + 0.001, undefined, undefined, options?.unique, KDButtonFont);
+			FontSize, undefined, zIndex + 0.009, undefined, undefined,
+			options?.unique, KDButtonFont);
 
 	if (options?.hotkey) {
 		let size = (FontSize*0.6) || 14;

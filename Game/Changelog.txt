@@ -31,6 +31,7 @@ TODO:
 TODO remove hogtie when released
 
 5.3.33
+- Increased rep gain from rescuing prisoners
 - Added tall smooth heels by SMoonlightM
 - Added leather hood/mask by SMoonlightM
 

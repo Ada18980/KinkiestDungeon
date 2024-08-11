@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.33"
+KDVersionStr,"5.3.34"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -542,6 +542,10 @@ KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful. Does not include kigurumi masks."
 KinkyDungeonStatNoKigu,"No Kigurumi Masks"
 KinkyDungeonStatDescNoKigu,"Removes face-mimicking masks from the game."
+KinkyDungeonStatNoHood,"No Hoods"
+KinkyDungeonStatDescNoHood,"Removes hoods from the game."
+KinkyDungeonStatNoSenseDep,"No Sense Deprivation"
+KinkyDungeonStatDescNoSenseDep,"Removes sensory deprivation hood/mask from the game."
 KinkyDungeonStatBlackout,"Blackout"
 KinkyDungeonStatDescBlackout,"Blindfolds are stronger. While blindfolded you can only see enemies next to you."
 KinkyDungeonStatNoBlindfolds,"No Blindfolds"
@@ -4579,6 +4583,14 @@ RestraintKiguMask,Suspicious Mask
 LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
 RestraintKiguMaskDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
+
+RestraintLeatherHood,Sensory Hood
+RestraintLeatherHoodDesc2,"A well-fitted hood that covers your head and muffles sounds."
+RestraintLeatherHoodDesc,"No eyeholes. Integrated blindfold and gag. Total darkness."
+
+RestraintLeatherMask,Sensory Mask
+RestraintLeatherMaskDesc2,"A well-fitted mask that covers your face and muffles sounds."
+RestraintLeatherMaskDesc,"No eyeholes. Integrated blindfold and gag. Total darkness."
 
 RestraintShadowLatexHeels,Shadow Heels
 RestraintShadowLatexHeelsDesc,"A set of impractical heels that clasp around your ankles. They make it hard to walk."
@@ -10321,6 +10333,7 @@ KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
 
 KDCategoryToggles,Preferences
+KDCategoryToggles2,Preferences 2
 KDCategoryMulticlass,Multiclass
 KDCategoryMajor,Game-Changing
 KDCategoryRestriction,Restriction
