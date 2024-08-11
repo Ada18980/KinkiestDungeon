@@ -2808,9 +2808,9 @@ let KDDialogue = {
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
 								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 									if (KDFactionRelation("Player", faction) < 0.25)
-										KinkyDungeonChangeFactionRep(faction, 0.005);
+										KinkyDungeonChangeFactionRep(faction, 0.03);
 									else
-										KinkyDungeonChangeFactionRep(faction, 0.0025);
+										KinkyDungeonChangeFactionRep(faction, 0.015);
 								}
 								KinkyDungeonRedKeys -= 1;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
@@ -2867,9 +2867,9 @@ let KDDialogue = {
 									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
 									if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 										if (KDFactionRelation("Player", faction) < 0.25)
-											KinkyDungeonChangeFactionRep(faction, 0.005);
+											KinkyDungeonChangeFactionRep(faction, 0.03);
 										else
-											KinkyDungeonChangeFactionRep(faction, 0.0025);
+											KinkyDungeonChangeFactionRep(faction, 0.015);
 									}
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
 									if (e.Enemy.tags.gagged) {

@@ -2695,6 +2695,21 @@
             <key type="filename">../Models/TallBallet/TallRightClosed.png</key>
             <key type="filename">../Models/TallBallet/TallRightKneel.png</key>
             <key type="filename">../Models/TallBallet/TallRightSpread.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLeftClosed.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLeftHogtie.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLeftKneel.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLeftKneelClosed.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLeftSpread.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLegLeftHogtie.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLegLeftKneel.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLegRightHogtie.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLegRightKneel.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLegRightKneelClosed.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallLegleftKneelClosed.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallRightClosed.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallRightHogtie.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallRightKneel.png</key>
+            <key type="filename">../Models/TallSmoothHeels/TallRightSpread.png</key>
             <key type="filename">../Models/TapeHeavy/AnklesClosed.png</key>
             <key type="filename">../Models/TapeHeavy/AnklesHogtie.png</key>
             <key type="filename">../Models/TapeHeavy/AnklesKneelClosed.png</key>
@@ -4183,6 +4198,40 @@
                 <rect>377,225,754,450</rect>
                 <key>scale9Paddings</key>
                 <rect>377,225,754,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Hood/Blindfold.png</key>
+            <key type="filename">../Models/Hood/BunnyEars.png</key>
+            <key type="filename">../Models/Hood/Gag.png</key>
+            <key type="filename">../Models/Hood/KittyEars.png</key>
+            <key type="filename">../Models/Hood/WolfEars.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>376,239,751,479</rect>
+                <key>scale9Paddings</key>
+                <rect>376,239,751,479</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Hood/Hood.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>376,210,751,419</rect>
+                <key>scale9Paddings</key>
+                <rect>376,210,751,419</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

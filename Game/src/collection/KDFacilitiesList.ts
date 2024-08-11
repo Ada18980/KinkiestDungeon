@@ -81,7 +81,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 	Recycler: {
 		priority: 30,
 		update: (delta) => {
-			if (delta > 0 && KDGameData.FacilitiesData.Servants_Recycler.length > 0) {
+			if (delta > 0) {
 				let resources = KDGetRecyclerRate(KDGameData.FacilitiesData.Servants_Recycler);
 				for (let entry of Object.entries(resources)) {
 					KDGameData.FacilitiesData["Recycler_" + entry[0]] = Math.round(KDGameData.FacilitiesData["Recycler_" + entry[0]] + entry[1]);

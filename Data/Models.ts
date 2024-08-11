@@ -261,7 +261,7 @@ function DisposeCharacter(C: Character, resort: boolean = true, deleteSpecial: b
 		NPCDesiredPoses.delete(C);
 	}
 }
-function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false): void {
+function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false, deletePersistent = true): void {
 	let C = KDNPCChar.get(id);
 	if (C && KDCurrentModels.get(C)) {
 		for (let Container of KDCurrentModels.get(C).Containers.values()) {

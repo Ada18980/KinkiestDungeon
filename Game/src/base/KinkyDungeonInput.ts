@@ -261,9 +261,16 @@ function KDProcessInput(type, data): string {
 			KDDelayedActionPrune(["Action", "Sexy"]);
 			KinkyDungeonDoPlayWithSelf();
 			break;
-		case "sleep":
-			KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
+		case "sleep": {
+			let data = {
+				cancelSleep: false,
+			}
+			KinkyDungeonSendEvent("sleep", data);
+			if (!data.cancelSleep)
+				KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
 			break;
+		}
+
 		case "noise": {
 			KDDelayedActionPrune(["Action", "Dialogue"]);
 			let gagTotal = KinkyDungeonGagTotal(true);
@@ -1200,7 +1207,10 @@ function KDProcessInput(type, data): string {
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
 						let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
 						KinkyDungeonChangeFactionRep(KDGameData.Collection[v + ""].Faction, rep);
-						DisposeEntity(parseInt(v), false);
+						DisposeEntity(parseInt(v), false, false,
+							KDIsNPCPersistent(parseInt(v))
+							&& KDGetGlobalEntity(parseInt(v))
+							&& (KDGetPersistentNPC(parseInt(v))?.collect && KDIsInPlayerBase(parseInt(v))));
 						let e = KinkyDungeonFindID(parseInt(v));
 						if (e)
 							KDRemoveEntity(e, false, false, true);

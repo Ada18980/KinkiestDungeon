@@ -30,6 +30,10 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.33
+- Added tall smooth heels by SMoonlightM
+- Added leather hood/mask by SMoonlightM
+
 5.3.32
 - Added management facility. management servants will wander around and help you fight off escapees.
 - Added quick facilities buttons

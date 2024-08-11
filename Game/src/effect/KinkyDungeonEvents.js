@@ -9611,6 +9611,14 @@ let KDEventMapGeneric = {
 			}
 		},
 	},
+	"sleep": {
+		/**
+		 * Updates NPC escape
+		 */
+		"updateNPCEscape": (e, data) => {
+			KDCollectionNPCEscapeTicks(12 + Math.floor(KDRandom() * 24));
+		},
+	},
 	"tickFlags": {
 		"TempFlagFloorTicks": (e, data) => {
 			if (KDGameData.TempFlagFloorTicks)
@@ -9635,7 +9643,7 @@ let KDEventMapGeneric = {
 		 * Updates NPC escape
 		 */
 		"updateNPCEscape": (e, data) => {
-			KDCollectionNPCEscapeTicks();
+			KDCollectionNPCEscapeTicks(24 + Math.floor(KDRandom() * 36));
 		},
 		/**
 		 * Resets the flags for playing with an NPC

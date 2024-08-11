@@ -154,7 +154,7 @@ KDCollectionTabScreen.Release = (x, xOffset) => {
 
 function KDCanRelease(id: number) {
 	let v = KDGameData.Collection[id + ""];
-	return v && !v.status && !KDGetGlobalEntity(id); // Prisoners only
+	return v && !v.status && !v.escaped; // Prisoners only
 }
 function KDCanRansom(id: number) {
 	let v = KDGameData.Collection[id + ""];
@@ -167,3 +167,8 @@ function KDRansomValue(id: number) {
 	return 10 + rank*rank*30 + rank * 50;
 }
 
+
+function KDIsInPlayerBase(id: number) {
+	return (KDIsNPCPersistent(id) && KDGetPersistentNPC(id)?.room == "Summit")
+		|| (KDGameData.Collection[id + ""] && !KDIsNPCPersistent(id));
+}
