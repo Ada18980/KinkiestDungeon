@@ -37,9 +37,10 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 	if (DrawButtonKDEx("KDReleaseRansom", (b) => {
 
-		KDSendInput("ransomNPC", {
-			selection: KDCollectionReleaseSelection,
-		});
+		if (ransomValue > 0)
+			KDSendInput("ransomNPC", {
+				selection: KDCollectionReleaseSelection,
+			});
 
 		if (KDToggles.Sound)
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Coin" + ".ogg");
@@ -49,7 +50,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Ransom.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
 	})) {

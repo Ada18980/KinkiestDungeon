@@ -52,7 +52,7 @@ async function KDGetModsLoad(execute) {
 }
 
 function KDDrawMods() {
-	if (!KDGetMods && KDToggles.AutoLoadMods) {
+	if (!KDGetMods && (KDToggles.AutoLoadMods || KDToggles.AutoLoadMods == undefined)) {
 		KDGetMods = true;
 		KDGetModsLoad(false);
 	}

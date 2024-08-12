@@ -931,7 +931,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 					KDSelectedGenericBindItem = "";
 				} else if (KDSelectedGenericRestraintType == (cat.raw || cat.consumableRaw)) KDSelectedGenericRestraintType = "";
 				return true;
-			}, KDMapData.RoomType == "Summit",
+			}, true,
 
 			x + XX + 32, y + YY, 72, 72, "",
 			"#ffffff", preview,
@@ -1028,7 +1028,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count);
 					}
 					return true;
-				}, KDMapData.RoomType == "Summit",
+				}, true,
 
 				x + XX + 32, y + YY, 72, 72, "",
 				"#ffffff", img,

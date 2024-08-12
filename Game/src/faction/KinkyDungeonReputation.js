@@ -221,7 +221,7 @@ function KinkyDungeonChangeFactionRep(Rep, Amount) {
 	let curr = KDFactionRelation("Player", Rep);
 
 	if (curr != last) {
-		let amount = 0.5*Math.round((curr - last)*1000)/10; // 0.5% due to the fact that the scale is -1 to +1 but it gets mapped from 0 to 100%
+		let amount = 0.5*(Amount > 0 ? Math.ceil : Math.floor)((curr - last)*10000)/100; // 0.5% due to the fact that the scale is -1 to +1 but it gets mapped from 0 to 100%
 		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `${amount > 0 ? '+' : ''}${amount}% ${TextGet("KinkyDungeonFaction" + Rep)} rep`, "white", 5, true);
 		KDRecentRepIndex += 1;
 	}

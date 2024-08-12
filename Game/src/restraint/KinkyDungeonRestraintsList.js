@@ -4099,8 +4099,8 @@ const KinkyDungeonRestraints = [
 		],
 		remove: ["Bras", "Panties", "Skirts", "Socks", "Shirts", "Boots"],
 		escapeChance: {"Struggle": -0.45, "Cut": -0.05, "Remove": -0.35, "Pick": 0.15},
-		helpChance: {"Remove": 0.1}, maxwill: 0.15, enemyTags: {"shadowLatexPetsuit": 10},
-		playerTags: {"NoPet": -1000}, minLevel: 7, allFloors: true, shrine: ["ShadowLatex", "Latex", "Petsuits", "Illusion", "HinderFeet"]},
+		helpChance: {"Remove": 0.1}, maxwill: 0.15, enemyTags: {"shadowLatexPetsuit": 3},
+		playerTags: {"NoPet": -1000}, minLevel: 9, allFloors: true, shrine: ["ShadowLatex", "Latex", "Petsuits", "Illusion", "HinderFeet"]},
 
 
 	{inventory: true, name: "ShadowLatexGagCollar", debris: "Belts", inaccessible: true, Asset: "LatexPostureCollar", gag: 0.4, Color: "#4E7DFF",
