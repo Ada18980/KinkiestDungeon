@@ -368,6 +368,8 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				delete Model.Filters[KDCurrentLayer];
 				KDCurrentModels.get(C).Models.set(Model.Name, Model);
 			}
+			// Set the rgb value to empty when color is reset
+			ElementValue("KDSelectedColor", "")
 			KDRefreshProps = true;
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			ForceRefreshModels(C);
