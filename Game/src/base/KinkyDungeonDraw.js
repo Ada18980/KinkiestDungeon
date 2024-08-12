@@ -953,11 +953,7 @@ function KDDoModalX(bdata) {
 function KinkyDungeonDrawGame() {
 	KDCurrentEnemyTooltip = null;
 
-	if (KDToggles.ZoomIn) {
-		KinkyDungeonGridSizeDisplay = 100;
-	} else if (KDToggles.ZoomOut) {
-		KinkyDungeonGridSizeDisplay = 50;
-	} else KinkyDungeonGridSizeDisplay = 72;
+	KinkyDungeonGridSizeDisplay = 72 + KDZoomLevels[KDZoomIndex] * 12;
 
 	if (KDModalArea && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game") {
 		let w = 34;
@@ -1107,11 +1103,12 @@ function KinkyDungeonDrawGame() {
 			let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
 			let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
 
-			let CamX = KinkyDungeonPlayerEntity.x - (KDToggles.Center ? 0 : 2) - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
+			let CamX = KinkyDungeonPlayerEntity.x - (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/36)) - Math.floor(KinkyDungeonGridWidthDisplay/2) + OX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.x - Math.floor(KinkyDungeonGridWidthDisplay/2)));
 			let CamY = KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2) + OY;// Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.y - Math.floor(KinkyDungeonGridHeightDisplay/2)));
 
 
-			let CamX_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.x : KinkyDungeonPlayerEntity.visual_x) - (KDToggles.Center ? 0 : 2) - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
+			let CamX_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.x : KinkyDungeonPlayerEntity.visual_x)
+				- (KDToggles.Center ? 0 : Math.ceil(KinkyDungeonGridWidthDisplay/36)) - Math.floor(KinkyDungeonGridWidthDisplay/2) - CamX;//Math.max(0, Math.min(KDMapData.GridWidth - KinkyDungeonGridWidthDisplay, KinkyDungeonPlayerEntity.visual_x - Math.floor(KinkyDungeonGridWidthDisplay/2))) - CamX;
 			let CamY_offsetVis = (KinkyDungeonInspect ? KDInspectCamera.y : KinkyDungeonPlayerEntity.visual_y) - Math.floor(KinkyDungeonGridHeightDisplay/2) - CamY;//Math.max(0, Math.min(KDMapData.GridHeight - KinkyDungeonGridHeightDisplay, KinkyDungeonPlayerEntity.visual_y - Math.floor(KinkyDungeonGridHeightDisplay/2))) - CamY;
 
 
@@ -3186,12 +3183,12 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 	// Draw the tooltip
 	if ((HoveringText) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height)) {
 		DrawTextFitKDTo(Container || kdcanvas, HoveringText, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0),
-			2 + Top + Math.floor(Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
+			Top + Math.floor(Height / 2), Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04),
 			"#ffffff", undefined, undefined, undefined, zIndex + 1, undefined, undefined, undefined, KDButtonFont);
 		//DrawHoverElements.push(() => DrawButtonHover(Left, Top, Width, Height, HoveringText));
 	} else if (Label)
 		DrawTextFitKDTo(Container || kdcanvas, Label, Left + Width / 2 + (ShiftText ? textPush*0.5 : 0),
-			2 + Top + Math.floor(Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
+			Top + Math.floor(Height / 2), (options?.centerText) ? Width : (Width - 4 - Width*0.04 - (textPush ? (textPush + (ShiftText ? 0 : Width*0.04)) : Width*0.04)),
 			Color,
 			(options && options.noTextBG) ? "none" : undefined,
 			FontSize, undefined, zIndex + 0.009, undefined, undefined,

@@ -598,7 +598,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						l = Math.max(0, Math.min(1, (1-light)));
 
 						if (KDToggles.FancyShadows) {
-							pad = 36;
+							pad = KinkyDungeonGridSizeDisplay * 0.5;
 							KDDraw(kdgamefogsmooth, kdpixifogsprites, `${RX},${RY},_@@`,
 								KinkyDungeonRootDirectory + "Vision.png",
 								(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
@@ -620,7 +620,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 						|| (KinkyDungeonVisionGet(RX+1, RY) > 0 || (allowFog && KinkyDungeonFogGet(RX+1, RY) > 0))
 						|| (KinkyDungeonVisionGet(RX, RY-1) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY-1) > 0))
 						|| (KinkyDungeonVisionGet(RX, RY+1) > 0 || (allowFog && KinkyDungeonFogGet(RX, RY+1) > 0)))) {
-						pad = 72;
+						pad = KinkyDungeonGridSizeDisplay;
 						KDDraw(kdgamefogsmoothDark, kdpixifogsprites, `${RX},${RY},_@@0`,
 							KinkyDungeonRootDirectory + "VisionNeg.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
@@ -784,7 +784,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 							xMult*KinkyDungeonGridSizeDisplay + pad*2,
 							yMult*KinkyDungeonGridSizeDisplay + pad*2);
 						kdbrightnessmapGFX.endFill();*/
-						pad = 126;
+						pad = 126/72 * KinkyDungeonGridSizeDisplay;
 						KDDraw(kdbrightnessmapGFX, kdpixibrisprites, `${RX},${RY},_LI`,
 							KinkyDungeonRootDirectory + "Lighting.png",
 							(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,

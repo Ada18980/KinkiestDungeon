@@ -5531,6 +5531,25 @@ let KDKeyCheckers = {
 			return true;
 		}
 	},
+	"Zoom": () => {
+		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game') {
+			switch (KinkyDungeonKeybindingCurrentKey) {
+				// Log, Passing, Door, Auto Struggle, Auto Pathfind
+				//case KinkyDungeonKeyToggle[0]: KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle; break;
+				case KinkyDungeonKeyMap[1]: KDChangeZoom(-1);
+					KinkyDungeonUpdateLightGrid = true;
+					KDRedrawFog = 2;
+					setTimeout(() => {KinkyDungeonAdvanceTime(0);}, 100);
+					return true;
+				case KinkyDungeonKeyMap[2]: KDChangeZoom(+1);
+					KinkyDungeonUpdateLightGrid = true;
+					KDRedrawFog = 2;
+					setTimeout(() => {KinkyDungeonAdvanceTime(0);}, 100);
+					return true;
+			}
+			return false;
+		}
+	},
 
 	"Shop": () => {
 		if (KinkyDungeonState == 'Game' && KinkyDungeonDrawState == 'Game' && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {

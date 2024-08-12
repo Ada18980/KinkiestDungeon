@@ -37,6 +37,11 @@ let KDDialogueTriggers = {
 		["dressmaker"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
 
+	"OfferSenseDep": KDDialogueTriggerOffer("OfferSenseDep", ["Leather", "Illusion"], ["sensedep"],
+		["parole", "", "chase", "jail"],  ["Dom", "Brat"],
+		["dressmaker", "ninja", "leatherRestraints", "leatherRestraintsHeavy"], undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
 	"OfferArmor": KDDialogueTriggerOffer("OfferArmor", ["Metal", "Illusion"], ["shackleGag"],
 		["parole", "", "chase", "jail"],  ["Sub", "Brat"],
 		["shackleGag", "metal", "shackleRestraints", "chain"], undefined, undefined, ["zombie", "skeleton", "robot"],

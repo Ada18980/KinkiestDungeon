@@ -100,8 +100,6 @@ KDToggleNearestNeighbor,Pixelated GFX (needs restart)
 KDToggleAutoCrouchOnTrip,Auto-Crouch when Tripped
 KDToggleRetroAnim,Retro Animations
 KDToggleFlipStatusBars,Flip Status Bars
-KDToggleZoomIn,Zoom In
-KDToggleZoomOut,Zoom Out
 KDToggleHelper,Reduce Accidental Wall Clicks
 KDToggleNipples,Enable Nipples
 KDToggleNippleToysOption,Show Nipple Toys Over Bras
@@ -1017,6 +1015,8 @@ KinkyDungeonKeySkip,Cancel/Back
 KinkyDungeonKeyEnter,Enter
 KinkyDungeonKeyAInspect,Inspect
 KinkyDungeonKeyMap,Expand Minimap
+KinkyDungeonKeyZoomOut,Zoom Out
+KinkyDungeonKeyZoomIn,Zoom In
 KinkyDungeonKeyWaitInterrupt,Wait till Interrupted
 KinkyDungeonKeyMakeNoise,Make Noise
 KinkyDungeonKeyCrouch,Crouch
@@ -10503,6 +10503,35 @@ dOfferKiguForce_Yes,"Fine, you've convinced me."
 dOfferKiguForce_YesGag,"(Giggle and nod)"
 dOfferKiguForce_No,"I don't have time for this. (PERCENT chance to avoid)"
 dOfferKiguForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
+
+
+
+
+rOfferSenseDep,"(The SPEAKER smiles as she hides her hands behind her back)|Have you heard of 'sensory deprivation'?"
+rOfferSenseDepYes,"(The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!"
+rOfferSenseDepYes_Yes,"(The SPEAKER starts pulling the hood over your head)|Let's get you laced in!"
+rOfferSenseDepYes_No,"(The SPEAKER giggles)|Alrighty.|You don't know what you're missing out on~"
+rOfferSenseDepNo,"(The SPEAKER doesn't seem to hear you)"
+rOfferSenseDepForce,"(The SPEAKER looks at you with a devious grin)|Oh, but it's so much fun!|You can run around bumping into things!|It's the ultimate adventure!"
+rOfferSenseDepForceYes,"(The SPEAKER chuckles)|Truth be told, I wasn't asking~|Now why don't you kneel for me..."
+rOfferSenseDepForce_No,"(The SPEAKER pouts)|I thought it would be fun..."
+rOfferSenseDepForce_Yes,"(The SPEAKER starts pulling the hood over your head)|Let's get you laced in!"
+rOfferSenseDepForce_Failure,"(The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~"
+
+dOfferSenseDep_Yes,"Of course! I love it!"
+dOfferSenseDep_YesGag,"(Nod eagerly)"
+dOfferSenseDep_No,"I prefer 'situational awareness'."
+dOfferSenseDep_NoGag,"(Shake your head in alarm)"
+
+dOfferSenseDepYes_Yes,"Doll me up!"
+dOfferSenseDepYes_YesGag,"(Nod again)"
+dOfferSenseDepYes_No,"Actually, that sounds stifling..."
+dOfferSenseDepYes_NoGag,"(Shake your head)"
+
+dOfferSenseDepForce_Yes,"That doesn't sound that bad actually..."
+dOfferSenseDepForce_YesGag,"(Giggle and nod)"
+dOfferSenseDepForce_No,"I don't have time for this. (PERCENT chance to avoid)"
+dOfferSenseDepForce_NoGag,"(Shake your head and groan) (PERCENT chance to avoid)"
 
 
 

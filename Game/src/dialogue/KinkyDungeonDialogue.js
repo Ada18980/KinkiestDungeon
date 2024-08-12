@@ -2045,7 +2045,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			if (Ally)
 				KDAllySpeaker(9999, true);
 			else
-				KDPleaseSpeaker(refused ? 0.004 : 0.012); // Less reputation if you refused
+				KDPleaseSpeaker(refused ? 0.008 : 0.012); // Less reputation if you refused
 			KinkyDungeonChangeRep(antigoddess[0], refused ? 1 : 2); // Less submission if you refused
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);

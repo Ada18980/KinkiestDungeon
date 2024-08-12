@@ -125,7 +125,7 @@ let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
 let KinkyDungeonKeyLogFilter = ['{', '}', ':', '"'];
-let KinkyDungeonKeyMap = ['+'];
+let KinkyDungeonKeyMap = ['+', '<', '>'];
 
 let KDLoadingTextKeys = {};
 
@@ -189,8 +189,6 @@ let KDToggles = {
 	OutlineAura: true,
 	GreyscaleBlindness: true,
 	NearestNeighbor: true,
-	ZoomIn: false,
-	ZoomOut: false,
 	LazyWalk: false,
 	ShiftLatch: true,
 	Nipples: false,
@@ -257,8 +255,6 @@ let KDToggleCategories = {
 	EnemyAura: "UI",
 	OutlineAura: "UI",
 	NearestNeighbor: "GFX",
-	ZoomIn: "UI",
-	ZoomOut: "UI",
 	Helper: "UI",
 	FlipStatusBars: "UI",
 	ShowRestraintOnHover: "UI",
@@ -302,6 +298,8 @@ let KDDefaultKB = {
 	Skip: KinkyDungeonKeySkip[0],
 	Enter: KinkyDungeonKeyEnter[0],
 	Map: KinkyDungeonKeyMap[0],
+	ZoomOut: KinkyDungeonKeyMap[1],
+	ZoomIn: KinkyDungeonKeyMap[2],
 
 	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
 	SwitchLoadout2: KinkyDungeonKeySwitchLoadout[1],
@@ -335,6 +333,9 @@ let KDDefaultKB = {
 	Crouch: KinkyDungeonKeyToggle[9],
 	BulletTransparency: KinkyDungeonKeyToggle[10],
 };
+
+let KDZoomIndex = 4;
+let KDZoomLevels = [6, 4, 2, 0, -1, -2, -3];
 
 let KinkyDungeonRootDirectory = "Game/";
 
@@ -1070,6 +1071,13 @@ function KinkyDungeonLoad() {
 					kdgammafilterstore[0] = KDGamma;
 				}
 			}
+			if (localStorage.getItem("zoomLvl") != undefined) {
+				let parsed = parseInt(localStorage.getItem("zoomLvl"));
+				if (parsed != undefined) {
+					KDZoomIndex = parsed;
+				}
+			}
+
 
 			KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
@@ -3642,7 +3650,7 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.BulletTransparency,
 	];
 
-	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map];
+	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map, KinkyDungeonKeybindings.ZoomOut, KinkyDungeonKeybindings.ZoomIn];
 	KinkyDungeonKeyEnter = [KinkyDungeonKeybindings.Enter];
 	KinkyDungeonKeySpellPage = [KinkyDungeonKeybindings.SpellPage];
 	KinkyDungeonKeySwitchWeapon = [KinkyDungeonKeybindings.SwitchWeapon, KinkyDungeonKeybindings.SwitchWeaponOffhand, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious, KinkyDungeonKeybindings.SwitchWeaponOffhandPrevious2];
@@ -5025,4 +5033,12 @@ function downloadFile(filename, text) {
 
 	// Clean up the object URL after download
 	URL.revokeObjectURL(url);
+}
+
+function KDChangeZoom(change) {
+	KDZoomIndex += change;
+	if (KDZoomIndex < 0) KDZoomIndex = 0;
+	else if (KDZoomIndex > KDZoomLevels.length - 1) KDZoomIndex = KDZoomLevels.length - 1;
+
+	localStorage.setItem('zoomLvl', KDZoomIndex + "");
 }

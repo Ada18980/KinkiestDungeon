@@ -30,6 +30,10 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.34
+- Added sensory hood and sensory mask to leather prison and rare bondage offer
+- Added zoom in/out key
+
 5.3.33
 - Increased rep gain from rescuing prisoners
 - Added tall smooth heels by SMoonlightM
