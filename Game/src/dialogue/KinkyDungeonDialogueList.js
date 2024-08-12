@@ -1033,7 +1033,22 @@ let KDDialogue = {
 				clickFunction: (gagged, player) => {
 					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 					if (en && !en.player && KDCanBind(en)) {
-						KDImprisonEnemy(en, true, "PrisonerJailOwn");
+						let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+						let furn = KDFurniture[tile.Furniture];
+						let rest = KinkyDungeonGetRestraint(
+							{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+							true,
+							"",
+							true,
+							false,
+							false, undefined, true);
+						KDImprisonEnemy(en, true, "PrisonerJailOwn", {
+							name: rest.name,
+							lock: "White",
+							id: KinkyDungeonGetItemID(),
+							faction: KDDefaultNPCBindPalette,
+						});
 						KinkyDungeonAdvanceTime(1);
 					}
 					return false;

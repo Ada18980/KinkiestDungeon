@@ -475,6 +475,7 @@ function KDInputSetNPCRestraint(data) {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
 	let item = null;
+	if (!slot) return;
 	if (KDGameData.Collection[data.npc + ""]) {
 		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
 			let Enemy = KinkyDungeonGetEnemyByName(KDGameData.Collection[data.npc + ""].type);

@@ -500,6 +500,7 @@ function DialogueCreateEnemy(x, y, Name, persistentid, noLoadout) {
 	let Enemy = KinkyDungeonGetEnemyByName(Name);
 	let e = {summoned: true, Enemy: Enemy, id: persistentid || KinkyDungeonGetEnemyID(),
 		x:x, y:y,
+		visual_x: x, visual_y: y,
 		hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 
 	return KDAddEntity(e, persistentid != undefined, undefined, noLoadout);

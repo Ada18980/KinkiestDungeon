@@ -60,7 +60,7 @@ function KDValidateAllFacilities() {
 					if (!KDValidateServant(KDGameData.Collection[servant + ""],
 						facility,
 						tag)) {
-							servants.splice(servants.indexOf(servant));
+							servants.splice(servants.indexOf(servant), 1);
 							delete KDGameData.Collection[servant + ""].Facility;
 						}
 				}

@@ -67,5 +67,24 @@ function KDChangeEntityFacilityAction(entity: entity, action: string) {
 	if (entity.FacilityAction && KDCollectionWanderTypes[entity.FacilityAction]?.onChangeFacility) {
 		entity.FacilityAction = KDCollectionWanderTypes[entity.FacilityAction]
 			.onChangeFacility(value, entity, entity.FacilityAction, action);
+	} else if (entity.FacilityAction == undefined) entity.FacilityAction = "Return";
+}
+
+
+function KDSetServantSpawnTemplate(e: entity) {
+	if (e) {
+		e.allied = 9999;
+		e.hostile = 0;
+		e.boundLevel = 0;
+		KDNPCRefreshBondage(e.id);
+		KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
+		e.hp = e.Enemy.maxhp;
+	}
+}
+function KDSetPrisonerSpawnTemplate(e: entity) {
+	if (e) {
+		e.boundLevel = 0;
+		KDNPCRefreshBondage(e.id);
+		e.hp = e.Enemy.maxhp;
 	}
 }

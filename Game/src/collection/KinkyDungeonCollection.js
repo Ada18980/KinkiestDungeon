@@ -602,7 +602,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		});
 
 
-		let collType = valid ?  KDCurrentFacilityCollectionType.find((type) => {
+		let collType = valid ? KDCurrentFacilityCollectionType.find((type) => {
 			return KDFacilityCollectionDataTypeMap[type] == value.status;
 		}) : "";
 
@@ -734,6 +734,11 @@ function KDDrawCollectionRestrainMain(id, x, y) {
 
 }
 
+function KDIsImprisonedByEnemy(id) {
+	return KDIsImprisoned(KDGetGlobalEntity(id))
+	&& !KDIsInPlayerBase(id);
+}
+
 /**
  *
  * @param {number} id
@@ -749,8 +754,8 @@ function KDNPCUnavailable(id, status) {
 		))
 		|| (status && KDIsInCapturedPartyID(id))
 		|| (KDGetGlobalEntity(id) &&
-			(KDEntityHasFlag(KDGetGlobalEntity(id), "imprisoned")
-			|| (KinkyDungeonFindID(id) && KDHostile(KinkyDungeonFindID(id)))));
+			(KDIsImprisonedByEnemy(id))
+			|| (KinkyDungeonFindID(id) && !KDIsImprisoned(KinkyDungeonFindID(id)) && KDHostile(KinkyDungeonFindID(id))));
 
 }
 
@@ -1327,6 +1332,8 @@ function KDPromote(value) {
 	value.status = "Servant";
 	if (KDIsNPCPersistent(value.id)) {
 		KDGetPersistentNPC(value.id).collect = true;
+		if (KDGetPersistentNPC(value.id).entity)
+			delete KDGetPersistentNPC(value.id).entity.hostile;
 		KDUpdatePersistentNPC(value.id);
 	}
 	delete value.Facility;
