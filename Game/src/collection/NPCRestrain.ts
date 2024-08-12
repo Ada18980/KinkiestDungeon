@@ -1,5 +1,7 @@
 let KDNPCBindingSelectedSlot: NPCBindingSubgroup = null;
 let KDNPCBindingSelectedRow: NPCBindingGroup = null;
+let KDSelectedGenericRestraintType = "";
+let KDSelectedGenericBindItem = "";
 
 interface NPCRestraint extends Named {
 	name: string,
@@ -173,6 +175,39 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 			}, "KDSetRestraintPaletteSelect");
 
+		} else if (KDNPCBindingGeneric) {
+			currentBottomTab = "Generic";
+
+			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250, currentItem, slot, (currentItem, restraint, slt) => {
+				if (currentItem) {
+					// Remove current
+					if (restraints[slot.id]?.name == currentItem.name) {
+						KDSendInput("addNPCRestraint", {
+							slot: slot.id,
+							id: -1,
+							restraint: "",
+							restraintid: -1,
+							lock: "",
+							npc: npcID,
+							faction: undefined,
+							time: KinkyDungeonFindID(npcID) ? 1 : 0,
+						});
+					}
+				} else {
+					// Add new one
+					KDSendInput("addNPCRestraint", {
+						slot: slot.id,
+						id: -1,
+						restraint: restraint.name,
+						restraintid: KinkyDungeonGetItemID(),
+						lock: "White",
+						npc: npcID,
+						faction: KDDefaultNPCBindPalette,
+						time: KinkyDungeonFindID(npcID) ? 1 : 0,
+					});
+				}
+			});
+
 		} else {
 			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
 
@@ -234,11 +269,21 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		DrawButtonKDEx("paletteswapnpcrest", () => {
 			KDNPCBindingPalette = !KDNPCBindingPalette;
+			KDNPCBindingGeneric = false;
 			return true;
 		}, true, 1400, 920, 250, 64,
-		TextGet(KDNPCBindingPalette ? "KDSetRestraintPaletteReturn" : "KDSetRestraintPalette"),
+		TextGet(currentBottomTab ? "KDSetRestraintPaletteReturn" : "KDSetRestraintPalette"),
 		"#ffffff"
 		);
+		if (!currentBottomTab)
+			DrawButtonKDEx("genericrestraint", () => {
+				KDNPCBindingGeneric = !KDNPCBindingGeneric;
+				KDNPCBindingPalette = false;
+				return true;
+			}, true, 1100, 920, 250, 64,
+			TextGet("KDSetRestraintGeneric"),
+			"#ffffff"
+			);
 		// TODO add properties
 	}
 
@@ -269,6 +314,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 }
 
 let KDNPCBindingPalette = false;
+let KDNPCBindingGeneric = false;
 let KDDefaultNPCBindPalette = "";
 
 function KDGetNPCRestraints(id: number): Record<string, NPCRestraint> {
@@ -829,4 +875,186 @@ function KDNPCEscape(entity: entity) {
 
 	DisposeEntity(entity.id, true, false);
 	KDRemoveEntity(entity, false, false, true);
+}
+
+let KDGenericMatsPerRow = 2;
+let KDGenericBindsPerRow = 3;
+let KDGenericBindSpacing = 75;
+
+function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, y: number,
+		currentItem: NPCRestraint, slot: NPCBindingSubgroup,
+		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup) => void) {
+	let XX = 0;
+	let secondXX = KDGenericBindSpacing * (KDGenericMatsPerRow + 0.5);
+	let YY = 0;
+	let colCounter = 0;
+	let index = 0;
+	let selectedcat: RestraintGenericType = null;
+	let highlightedItem: string = "";
+	if (KDSelectedGenericRestraintType == "" && cats[0])
+		KDSelectedGenericRestraintType = cats[0].raw || cats[0].consumableRaw;
+	for (let cat of cats) {
+		let selected = (cat.raw || cat.consumableRaw) == KDSelectedGenericRestraintType;
+		if (selected) selectedcat = cat;
+		let hotkey: string = "";
+		if ((cats[index+1]?.raw || cats[index+1]?.consumableRaw) == KDSelectedGenericRestraintType) {
+			hotkey = KinkyDungeonKey[1];
+		} else
+		if ((cats[index-1]?.raw || cats[index-1]?.consumableRaw) == KDSelectedGenericRestraintType) {
+			hotkey = KinkyDungeonKey[3];
+		}
+		let preview = (cat.raw) ?
+			KDGetRestraintPreviewImage(KDRestraint({name: cat.raw}))
+			: KinkyDungeonRootDirectory + "Items/" + cat.consumableRaw + ".png";
+		let inventoryItem = KinkyDungeonInventoryGetSafe(cat.raw || cat.consumableRaw);
+		DrawTextFitKD("" + (inventoryItem?.quantity || 0),
+		x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+		if (DrawButtonKDExScroll(
+			"res_gen_list" + (cat.raw || cat.consumableRaw),
+			(amount: number) => {
+				if (amount > 0) {
+					if (cats[index-1]) {
+						KDSelectedGenericRestraintType = (cats[index-1].raw || cats[index-1].consumableRaw);
+					}
+				} else {
+					if (cats[index+1]) {
+						KDSelectedGenericRestraintType = (cats[index+1].raw || cats[index+1].consumableRaw);
+					}
+				}
+			},
+			() => {
+				if (KDSelectedGenericRestraintType != (cat.raw || cat.consumableRaw)) {
+					KDSelectedGenericRestraintType = (cat.raw || cat.consumableRaw);
+				} else if (KDSelectedGenericRestraintType == (cat.raw || cat.consumableRaw)) KDSelectedGenericRestraintType = "";
+				return true;
+			}, KDMapData.RoomType == "Summit",
+
+			x + XX + 32, y + YY, 72, 72, "",
+			"#ffffff", preview,
+			undefined, false, !selected, KDButtonColor, undefined, true,
+			{
+				scaleImage: true,
+				centered: true,
+				hotkey: hotkey ? KDHotkeyToText(hotkey) : undefined,
+				hotkeyPress: hotkey,
+			}
+		)) {
+			DrawTextFitKD(TextGet("KDCurrentItemRaw")
+				+ KDGetItemNameString(cat.raw || cat.consumableRaw),
+			x + secondXX + KDGenericBindSpacing, 180, 500, "#ffffff", KDTextGray1,
+			36, "center"
+			);
+			highlightedItem = "Null";
+		}
+		colCounter++;
+		if (colCounter >= KDGenericMatsPerRow) {
+			colCounter = 0;
+			XX = 0;
+			YY += KDGenericBindSpacing;
+		} else {
+			XX += KDGenericBindSpacing;
+		}
+		index++;
+	}
+
+	YY = 0;
+	colCounter = 0;
+	XX = secondXX;
+
+	if (!KDNPCBindingSelectedSlot) {
+		DrawTextFitKD(
+			TextGet("KDSelectABindingSlot"),
+			x + secondXX,
+			y + 200,
+			2 * secondXX,
+			"#ffffff", KDTextGray0
+		);
+	} else if (selectedcat) {
+		index = 0;
+		let items = selectedcat.items.filter(
+			(item) => {
+				return slot.allowedGroups.includes(KDRestraint({name: item.restraint})?.Group)
+				&& slot.allowedTags.some((tag) => {return KDRestraint({name: item.restraint})?.shrine.includes(tag);});
+			}
+		);
+		for (let item of items) {
+
+			let img = KDGetRestraintPreviewImage(KDRestraint({name: item.restraint}));
+
+			let grp = KDGetGroupPreviewImage(KDRestraint({name: item.restraint}).Group);
+
+			let selected = item.restraint == KDSelectedGenericBindItem;
+			//if (selected) highlightedItem = item.restraint;
+			let hotkey: string = "";
+			if (items[index+1]?.restraint == KDSelectedGenericBindItem) {
+				hotkey = KinkyDungeonKey[6];
+			} else
+			if (items[index-1]?.restraint == KDSelectedGenericBindItem) {
+				hotkey = KinkyDungeonKey[7];
+			}
+			//let inventoryItem = KinkyDungeonInventoryGetSafe(item.restraint);
+			//if (inventoryItem)
+			DrawTextFitKD(TextGet("KDCost") + (item.count),
+			x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+			if (DrawButtonKDExScroll(
+				"gen_bind_list" + item.restraint,
+				(amount: number) => {
+					if (amount > 0) {
+						if (items[index-1]) {
+							KDSelectedGenericBindItem = items[index-1].restraint;
+						}
+					} else {
+						if (items[index+1]) {
+							KDSelectedGenericBindItem = items[index+1].restraint;
+						}
+					}
+				},
+				() => {
+					if (KDSelectedGenericBindItem != item.restraint)
+						KDSelectedGenericBindItem = item.restraint;
+					else {
+						callback(currentItem, KDRestraint({name: item.restraint}), KDNPCBindingSelectedSlot);
+					}
+					return true;
+				}, KDMapData.RoomType == "Summit",
+
+				x + XX + 32, y + YY, 72, 72, "",
+				"#ffffff", img,
+				undefined, false, !selected, KDButtonColor, undefined, true,
+				{
+					scaleImage: true,
+					centered: true,
+					hotkey: hotkey ? KDHotkeyToText(hotkey) : undefined,
+					hotkeyPress: hotkey,
+				}
+			) || (!highlightedItem && KDSelectedGenericBindItem == highlightedItem)) {
+				if (!highlightedItem) {
+					DrawTextFitKD(TextGet(KDSelectedGenericBindItem == item.restraint ? "KDCurrentItem2" : "KDCurrentItem3")
+					+ KDGetItemNameString(item.restraint),
+					x + secondXX + KDGenericBindSpacing, 180, 500, "#ffffff", KDTextGray1,
+					36, "center"
+					);
+					highlightedItem = item.restraint;
+				}
+
+			}
+
+			if (grp) {
+				KDDraw(kdcanvas, kdpixisprites, "gen_bind_list_grp" + item.restraint,
+					grp,
+					x + XX + 32, y + YY, 72, 72
+				);
+			}
+			colCounter++;
+			if (colCounter >= KDGenericBindsPerRow) {
+				colCounter = 0;
+				XX = secondXX;
+				YY += KDGenericBindSpacing;
+			} else {
+				XX += KDGenericBindSpacing;
+			}
+			index++;
+		}
+
+	}
 }

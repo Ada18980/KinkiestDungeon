@@ -4868,6 +4868,7 @@ let KDSlimeParts = {
 	"Head": {},
 	"Mouth": {},
 	"Hands": {},
+	"Raw": {},
 };
 
 let KDRopeParts = {
@@ -4890,6 +4891,7 @@ let KDRopeParts = {
 	"Harness": {},
 	"Crotch": {},
 	"Toes": {},
+	"Raw": {},
 };
 
 let KDCuffParts = {
@@ -4986,6 +4988,7 @@ function KDAddCuffVariants(CopyOf, idSuffix, ModelSuffix, tagBase, extraTags, al
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
 				}
 			}
+			if (origRestraint.disassembleAs) props.disassembleAs = idSuffix + "Raw";
 			if (Properties && props.Properties) {
 				for (let layer of Object.keys(Properties)) {
 					props.Properties[layer] = Object.assign({}, Properties[layer]);
@@ -5086,6 +5089,7 @@ function KDAddRopeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, remov
 				linkSize: origRestraint.linkSizes ? JSON.parse(JSON.stringify(origRestraint.linkSizes)) : undefined,
 			};
 
+			if (origRestraint.disassembleAs) props.disassembleAs = idSuffix + "Raw";
 			if (!Enchantable && props.linkCategories) {
 				for (let i = 0; i < props.linkCategories.length; i++) {
 					if (props.linkCategories[i].includes("Enchantable")) {
@@ -5177,6 +5181,7 @@ function KDAddHardSlimeVariants(CopyOf, idSuffix, ModelSuffix, tagBase, allTag, 
 					props.Filters[layer] = Object.assign({}, Filters[layer]);
 				}
 			}
+			if (origRestraint.disassembleAs) props.disassembleAs = idSuffix + "Raw";
 			if (Properties && props.Properties) {
 				for (let layer of Object.keys(Properties)) {
 					props.Properties[layer] = Object.assign({}, Properties[layer]);

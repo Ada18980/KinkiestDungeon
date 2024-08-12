@@ -1191,7 +1191,7 @@ function KDProcessInput(type, data): string {
 				KDChangeRecyclerResources(KDMapToRecycleOutputs(data.selectedItem.recyclecost), -1);
 				KinkyDungeonItemEvent({
 					name: data.selectedItem.item,
-					amount: 1,
+					amount: data.selectedItem.count || 1,
 				});
 			}
 			break;

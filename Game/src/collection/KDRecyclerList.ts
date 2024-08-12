@@ -4,6 +4,7 @@ interface KDBlueprint {
 	type: string,
 	applyvariant?: string,
 	recyclecost?: Record<string, number>,
+	count?: number,
 	recyclecategory?: string,
 	prereq: () => boolean,
 }
@@ -36,13 +37,38 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		prereq: () => {return true;},
 		items: [
 			{
-				name: "RopeSnakeArmsBoxtie",
-				item: "RopeSnakeArmsBoxtie",
+				name: "RopeSnakeRaw",
+				item: "RopeSnakeRaw",
 				type: Restraint,
 				recyclecategory: "Rope",
 				recyclecost: {
-					Rope: 12,
+					Rope: 100,
 				},
+				count: 25,
+				prereq: () => {return true;},
+			},
+			{
+				name: "WeakMagicRopeRaw",
+				item: "WeakMagicRopeRaw",
+				type: Restraint,
+				recyclecategory: "Rope",
+				recyclecost: {
+					Rope: 100,
+					Rune: 1,
+				},
+				count: 25,
+				prereq: () => {return true;},
+			},
+			{
+				name: "StrongMagicRopeRaw",
+				item: "StrongMagicRopeRaw",
+				type: Restraint,
+				recyclecategory: "Rope",
+				recyclecost: {
+					Rope: 100,
+					Rune: 2,
+				},
+				count: 25,
 				prereq: () => {return true;},
 			},
 		]

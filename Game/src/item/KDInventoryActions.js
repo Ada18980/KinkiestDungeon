@@ -919,6 +919,7 @@ let KDInventoryAction = {
 		valid: (player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			if (KDWeapon(item)?.unarmed) return false;
+			if (KDRestraint(item)?.noRecycle != undefined) return false;
 			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
@@ -1039,6 +1040,66 @@ let KDInventoryAction = {
 			return false;
 		},
 	},
+
+	"Disassemble": {
+		icon: (player, item) => {
+			return "InventoryAction/Disassemble";
+		},
+		hotkey: () => KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
+		hotkeyPress: () => KinkyDungeonKeyUpcast[0],
+		show: (player, item) => {
+			return item?.type == LooseRestraint && KDRestraint(item)?.disassembleAs != undefined;
+		},
+		itemlabelcolor: (player, item) => {return "#ffffff";},
+		text:  (player, item) => {
+			let one = (item.quantity || 1) == 1 ? "One" : "";
+			return TextGet("KDInventoryActionDisassemble" + one);
+		},
+		valid: (player, item) => {
+			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
+			if (KDWeapon(item)?.unarmed) return false;
+			return KDRestraint(item)?.disassembleAs != undefined;
+		},
+		/** Happens when you click the button */
+		click: (player, item) => {
+			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
+			if (!itemInv || !(itemInv.quantity > 0)) {
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
+				return;
+			}
+
+			let quant = Math.max(1, ((itemInv.quantity || 1) - 1));
+			let mult = KDRestraint(item)?.disassembleCount || 1;
+			let product = KDRestraint(item)?.disassembleAs;
+
+			//KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
+
+			KinkyDungeonInventoryAddLoose(
+				product, undefined, undefined, quant
+			);
+
+			itemInv.quantity = (itemInv.quantity || 1) - quant;
+			if (itemInv.quantity == 0) KinkyDungeonInventoryRemoveSafe(itemInv);
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
+				.replace("ITM", KDGetItemName(item))
+				.replace("PRD", TextGet("Restraint" + product))
+				.replace("#", "" + quant)
+				.replace("$", "" + quant*mult)
+			, "#ffffff", 2);
+
+		},
+		/** Return true to cancel it */
+		cancel: (player, delta) => {
+			if (delta > 0) {
+				if (KinkyDungeonLastTurnAction) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
+
 
 
 	"Bondage": {

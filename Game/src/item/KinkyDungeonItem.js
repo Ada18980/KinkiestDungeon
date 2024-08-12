@@ -228,16 +228,17 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 		KinkyDungeonAggroAction('key', {});
 	} else if (KDRestraint(Item)) {
 		if (KinkyDungeonRestraintVariants[Item.name]) {
-			KDGiveInventoryVariant(KinkyDungeonRestraintVariants[Item.name], undefined, KinkyDungeonRestraintVariants[Item.name].curse, "", Item.name);
+			KDGiveInventoryVariant(KinkyDungeonRestraintVariants[Item.name], undefined, KinkyDungeonRestraintVariants[Item.name].curse, "", Item.name, undefined, undefined, undefined, Item.amount || 1);
 			color = "#aaaaff";
 			name = "Generic";
 			replace = TextGet("Restraint" + KinkyDungeonRestraintVariants[Item.name].template);
 		} else {
 			if (!KinkyDungeonInventoryGetLoose(Item.name)) {
-				KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:Item.events || KDGetEventsForRestraint(Item.name), quantity: 1});
+				KinkyDungeonInventoryAdd({name: Item.name, id: KinkyDungeonGetItemID(),
+					type: LooseRestraint, events:Item.events || KDGetEventsForRestraint(Item.name), quantity: Item.amount || 1});
 			} else {
 				if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
-				KinkyDungeonInventoryGetLoose(Item.name).quantity += 1;
+				KinkyDungeonInventoryGetLoose(Item.name).quantity += Item.amount || 1;
 			}
 			color = "#ffffff";
 			name = "Generic";

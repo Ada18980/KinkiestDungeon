@@ -256,6 +256,11 @@ interface KDRestraintPropsBase {
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
 	requireSingleTagToEquip?: string[];
+	noRecycle?: boolean,
+	/** Disassembles into a raw item */
+	disassembleAs?: string,
+	/** Disassembles into a raw item */
+	disassembleCount?: number,
 	// Player must have all of these PlayerTags to equip
 	requireAllTagsToEquip?: string[];
 	/** This item always renders when linked */
@@ -2415,6 +2420,8 @@ interface KDInventoryActionDef {
 	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;
 	icon: (player: entity, item: item) => string;
+	hotkey?: () => string,
+	hotkeyPress?: () => string,
 	alsoShow?: string[],
 }
 

@@ -132,6 +132,7 @@
         "Game/src/collection/NPCAutoBind.ts",
         "Game/src/collection/NPCRelease.ts",
         "Game/src/collection/NPCRestrainList.ts",
+        "Game/src/collection/NPCRestrainGenericList.ts",
         "Scripts/KDMods.ts",
         "Scripts/Main.ts",
         "Data/Filters.ts",

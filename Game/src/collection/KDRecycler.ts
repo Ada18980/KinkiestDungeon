@@ -336,7 +336,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				);
 			}
 			colCounter++;
-			if (colCounter >= KDRecyclerCatsPerRow) {
+			if (colCounter >= KDRecyclerItemsPerRow) {
 				colCounter = 0;
 				XX = secondXX;
 				YY += KDRecyclerCatSpacing;
@@ -394,7 +394,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			DrawTextFitKD(Math.ceil(res[i][1]) + "",
 			xxx + 3, y + YY + 212 + 18, 80, "#ffffff", KDTextGray0, 18, "right");
 		}
-		DrawTextFitKD(KDGetItemNameString(selectedItem.item),
+		DrawTextFitKD(KDGetItemNameString(selectedItem.item) + (selectedItem.count ? " x" + selectedItem.count : ""),
 		x + XX + 32 + 100, y + YY + 272, 200, "#ffffff", KDTextGray0, 24, "center");
 		let item = KDItemNoRestraint({name: selectedItem.name});
 		let restraint = KDRestraint({name: selectedItem.name});

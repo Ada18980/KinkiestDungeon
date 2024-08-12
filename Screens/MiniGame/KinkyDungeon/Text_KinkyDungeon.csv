@@ -4921,6 +4921,22 @@ RestraintSlimeCollarDesc,"This collar is designed to make sure its wearer does n
 RestraintSlimeCollarDesc2,"It will occasionally cause slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slime you have on you."
 
 
+RestraintHardSlimeRaw,Rubber
+RestraintHardSlimeRawDesc,"Made from hardened slime."
+RestraintHardSlimeRawDesc2,"The classic smooth, shiny material for full encasement."
+
+RestraintSlimeRaw,Slime
+RestraintSlimeRawDesc,"A semi-organic substance of alchemical origin."
+RestraintSlimeRawDesc2,"It has a mind of its own, and tends to spread if not properly contained."
+
+RestraintHardProtoSlimeRaw,Proto Rubber
+RestraintHardProtoSlimeRawDesc,"Made from hardened proto rubber."
+RestraintHardProtoSlimeRawDesc2,"A hardened form of the essence of latex."
+
+RestraintProtoSlimeRaw,Proto Slime
+RestraintProtoSlimeRawDesc,"Alchemical rubber in its simplest form. Amorphous."
+RestraintProtoSlimeRawDesc2,"Often forms strange growths, seeking damsels to encase."
+
 RestraintHardSlimeBoots,Rubber (Feet)
 RestraintHardSlimeBootsDesc,"Sticky rubber that has fused itself into a skintight layer."
 RestraintHardSlimeBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
@@ -20005,6 +20021,10 @@ KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turn
 KinkyDungeonBuffHaunted,A playful ghost now accompanies you on your journey.
 KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"
 
+RestraintRopeSnakeRaw,Hemp Rope
+RestraintRopeSnakeRawDesc,"The most common type of bondage rope."
+RestraintRopeSnakeRawDesc2,"Soft and comfy. Great for casual wear!"
+
 RestraintRopeSnakeArmsBoxtie,Boxtie
 RestraintRopeSnakeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
 RestraintRopeSnakeArmsBoxtieDesc2,"The ropes squeeze you gently."
@@ -20121,6 +20141,8 @@ KDFilterFiltersArmor,Armor
 KDFilterFiltersSpecial,Special
 KDFilterFiltersEnchanted,Enchanted
 KDFilterFiltersMundane,Mundane
+KDFilterFiltersDisassemble,Can Disassemble
+KDFilterFiltersRaw,Raw Material
 KDFilterFiltersRope,Rope
 KDFilterFiltersMetal,Metal
 KDFilterFiltersLatex,Latex
@@ -20169,6 +20191,10 @@ KDFilterFiltersPanties,Panties
 KDFilterFiltersLegs,Lower
 KDFilterFiltersAnkles,Ankles
 KDFilterFiltersBoots,Boots
+
+RestraintStrongMagicRopeRaw,Spellbound Rope
+RestraintStrongMagicRopeRawDesc,"An enchanted rope with a powerful sealing spell. It cannot be cut by mundane means."
+RestraintStrongMagicRopeRawDesc2,"It almost has a kinky mind of its own."
 
 RestraintStrongMagicRopeArmsBoxtie,Spellbound Boxtie
 RestraintStrongMagicRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
@@ -20226,6 +20252,11 @@ RestraintStrongMagicRopeCollarDesc,"This collar is designed to make sure its wea
 RestraintStrongMagicRopeCollarDesc2,"It will occasionally cause spellbound ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
+
+RestraintWeakMagicRopeRaw,Magic Rope
+RestraintWeakMagicRopeRawDesc,"A novice-level enchanted rope, relatively trivial to untie but resistant to mundane tools."
+RestraintWeakMagicRopeRawDesc2,"Faintly glows with traces of devious thoughts."
+
 RestraintWeakMagicRopeArmsBoxtie,Magic Boxtie
 RestraintWeakMagicRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
 RestraintWeakMagicRopeArmsBoxtieDesc2,"They glow with a trace of magic."
@@ -20282,6 +20313,10 @@ RestraintWeakMagicRopeCollarDesc,"This collar is designed to make sure its weare
 RestraintWeakMagicRopeCollarDesc2,"It will occasionally cause magic ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
 
+RestraintCelestialRopeRaw,Celestial Rope
+RestraintCelestialRopeRawDesc,"Rope that has been exposed to solar energies."
+RestraintCelestialRopeRawDesc2,"Squeezes the wearer if she tries to escape, so that she knows her place."
+
 RestraintCelestialRopeArmsBoxtie,Holy Boxtie
 RestraintCelestialRopeArmsBoxtieDesc,"A box tie keeping your arms secured behind your back."
 RestraintCelestialRopeArmsBoxtieDesc2,"A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body."
@@ -20337,6 +20372,11 @@ RestraintCelestialRopeCollar,Living Holy Rope Collar
 RestraintCelestialRopeCollarDesc,"This collar is designed to make sure its wearer does not escape their ropes."
 RestraintCelestialRopeCollarDesc2,"It will occasionally cause holy ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you."
 
+
+
+RestraintMithrilRopeRaw,Mithril Rope
+RestraintMithrilRopeRawDesc,"Rope made from silver thread, exposed to lunar energies."
+RestraintMithrilRopeRawDesc2,"Lightweight yet unyielding. Truly a high class rope."
 
 
 RestraintMithrilRopeArmsBoxtie,Mithril Boxtie
@@ -20416,6 +20456,11 @@ NameLatexCubeMetal,Mini Metal Cube
 KillLatexCubeMetal,"The liquid metal cube shatters into glittering dust."
 AttackLatexCubeMetal,"The liquid metal cube sticks to you and hardens! (DamageTaken)"
 AttackLatexCubeMetalBind,"The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)"
+
+
+RestraintLiquidMetalRaw,Liquid Metal
+RestraintLiquidMetalRawDesc,"Primordial latex infused with mineral form."
+RestraintLiquidMetalRawDesc2,"Heavy and weighs the wearer down."
 
 RestraintLiquidMetalBoots,Liquid Metal (Feet)
 RestraintLiquidMetalBootsDesc,"A metallic substance that is both flexible and hard. It weighs you down, reducing evasion, and conducts electricity."
@@ -23474,6 +23519,11 @@ KDRecycle,You recycle a ITM
 KDRecycleBulk,You recycle #x ITM
 KDRecycleExcess,You recycle #x ITM
 
+KDDisassembleExcess,You disassemble #x ITM into $x PRD
+KDDisassemble,You disassemble #x ITM into $x PRD
+KDInventoryActionDisassemble,Disassemble all but one
+KDInventoryActionDisassembleOne,Disassemble one
+
 KDDialogue_StepAside,"You're blocking me."
 KDDialogue_StepAsideBrat,"You're in my way!"
 KDDialogue_StepAsideSub,"Miss, you're blocking me..."
@@ -23588,6 +23638,8 @@ KDBindNPCSlot_BootsEncase,Encasement
 
 KDCurrentItem,"Equipped: "
 KDCurrentItem2,"Click to Add "
+KDCurrentItem3,"Apply: "
+KDCurrentItemRaw,"Raw Material: "
 
 KDFreePrisoner,Free Prisoner
 
@@ -23609,6 +23661,7 @@ KDUniversalSolventFail,You can't use solvents on targets other than yourself whi
 KDRandom,Random
 
 KDSetRestraintPalette,Choose Palette
+KDSetRestraintGeneric,Use Raw Material
 KDSetRestraintPaletteSelect,Restraint Palette
 KDSetRestraintPaletteReturn,Choose Restraint
 
@@ -23710,3 +23763,7 @@ Idle,idle
 rMummyElevator,"(As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!"
 
 NameMummyElevator,Mysterious Statue
+
+KDSelectABindingSlot,Select a Binding Slot
+
+KDCost,"Cost: "
