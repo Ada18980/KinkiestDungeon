@@ -1794,7 +1794,7 @@ function KDShopBuyDialogue(name) {
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let faction = KDGetFactionOriginal(enemy);
 						if (!KinkyDungeonHiddenFactions.has(faction)) {
-							KinkyDungeonChangeFactionRep(faction, Math.max(0.00005, KDGameData.CurrentDialogMsgValue["IC_"+i + "_"] * 0.000025));
+							KinkyDungeonChangeFactionRep(faction, Math.max(0.00005, KDGameData.CurrentDialogMsgValue["IC_"+i + "_"] * 0.00005));
 						}
 						enemy.items.splice(i, 1);
 					}
@@ -2233,7 +2233,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let faction = KDGetFactionOriginal(enemy);
 						if (!KinkyDungeonHiddenFactions.has(faction)) {
-							KinkyDungeonChangeFactionRep(faction, Math.max(0.0001, KDGameData.CurrentDialogMsgValue["ItemCost"+i] * 0.0001));
+							KinkyDungeonChangeFactionRep(faction, Math.max(0.0001, KDGameData.CurrentDialogMsgValue["ItemCost"+i] * 0.00025));
 						}
 					}
 				}

@@ -56,6 +56,76 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "LatexPetsuit",
+	Folder: "LatexPetsuit",
+	Parent: "Petsuit",
+	TopLevel: true,
+	Categories: ["Restraints", "Cosplay"],
+	Restraint: true,
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	HideLayerGroups: ["PetsuitArms"],
+	Layers: ToLayerMap([
+		{ Name: "Arms", Layer: "BindForeArms", Pri: -41,
+			Invariant: true,
+			Poses: ToMap(["Front"]),
+		},
+		{ Name: "Legs", Layer: "PetsuitLegs", Pri: -16,
+			Poses: ToMap(["KneelClosed", "Kneel", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+		},
+		{ Name: "LeftLegs", Layer: "PetsuitLegs", Pri: -16,
+			Poses: ToMap(["KneelClosed", "Kneel"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			InheritColor: "Legs",
+			DisplaceAmount: 50,
+			DisplacementInvariant: true,
+			DisplaceLayers: ToMap(["Petsuit"]),
+			DisplacementSprite: "PetsuitSquish",
+		},
+	])
+});
+
+AddModel({
+	Name: "LatexPetsuitGlow",
+	Folder: "LatexPetsuit",
+	Parent: "Petsuit",
+	TopLevel: false,
+	Categories: ["Restraints", "Cosplay"],
+	Restraint: true,
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	HideLayerGroups: ["PetsuitArms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexPetsuit"),
+		{ Name: "GlowArms", Layer: "BindForeArms", Pri: -40,
+			Invariant: true,
+			Poses: ToMap(["Front"]),
+			InheritColor: "Glow",
+			NoOverride: true,
+			NoDisplace: true,
+		},
+		{ Name: "GlowTorso", Layer: "WrapChest", Pri: -40,
+			Invariant: true,
+			InheritColor: "GlowTorso",
+			NoOverride: true,
+			NoDisplace: true,
+		},
+		{ Name: "GlowLegs", Layer: "PetsuitLegs", Pri: -15,
+			Poses: ToMap(["KneelClosed", "Kneel", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			InheritColor: "Glow",
+			NoOverride: true,
+			NoDisplace: true,
+		},
+		{ Name: "GlowLeftLegs", Layer: "PetsuitLegs", Pri: -15,
+			Poses: ToMap(["KneelClosed", "Kneel"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			InheritColor: "Glow",
+			NoOverride: true,
+			NoDisplace: true,
+		},
+	])
+});
 
 
 AddModel({

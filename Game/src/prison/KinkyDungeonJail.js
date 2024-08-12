@@ -1462,7 +1462,8 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 			let tile = KinkyDungeonTilesGet(X + "," + Y);
 			if (tile && ((tile.Jail && tile.ReLock) || tile.OGLock) && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D')) {
 				KinkyDungeonMapSet(X, Y, 'D');
-				if (tile && !tile.Lock) {
+				if (tile && !tile.Lock
+					&& (!tile.Jail || (KDGameData.PrisonerState == 'jail' || KDistChebyshev(KDPlayer().x - X), KDPlayer().y - Y) > 2.5)) {
 					tile.Lock = tile.OGLock || "Red";
 					tile.Type = "Door";
 					KDUpdateDoorNavMap();

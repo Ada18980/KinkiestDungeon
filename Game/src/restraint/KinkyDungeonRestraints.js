@@ -4324,6 +4324,16 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 								}
 
 							}
+						} else if (Keep && rest.disassembleAs) {
+							let dropped = {x:KDPlayer().x, y:KDPlayer().y,
+								name: rest.disassembleAs,
+								amount: rest.disassembleCount || 1};
+							let newPoint = KinkyDungeonGetNearbyPoint(KDPlayer().x, KDPlayer().y, false, undefined, true);
+							if (newPoint) {
+								dropped.x = newPoint.x;
+								dropped.y = newPoint.y;
+							}
+							KDMapData.GroundItems.push(dropped);
 						}
 
 
@@ -4427,6 +4437,16 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem, Keep, NoEvent, Remover, Fo
 						KinkyDungeonInventoryGetLoose(rest.name).quantity += 1;
 					}
 				}
+			} else if (Keep && rest.disassembleAs) {
+				let dropped = {x:KDPlayer().x, y:KDPlayer().y,
+					name: rest.disassembleAs,
+					amount: rest.disassembleCount || 1};
+				let newPoint = KinkyDungeonGetNearbyPoint(KDPlayer().x, KDPlayer().y, false, undefined, true);
+				if (newPoint) {
+					dropped.x = newPoint.x;
+					dropped.y = newPoint.y;
+				}
+				KDMapData.GroundItems.push(dropped);
 			}
 
 

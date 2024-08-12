@@ -12,8 +12,8 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Hoods"],
-	AddPose: ["FaceCoverGag", "Hooded"],
-	HideLayers: ["HairFront", "Brows"],
+	AddPose: ["HideEars", "FaceCoverGag", "Hooded"],
+	HideLayers: ["Brows"],
 	AddPoseConditional: {
 		Xray: ["HoodMask",],
 	},
@@ -41,7 +41,7 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Hoods"],
-	AddPose: ["FaceCoverGag", "Hooded"],
+	AddPose: ["HideEars", "FaceCoverGag", "Hooded"],
 	HideLayers: ["HairFront", "HairOver", "Brows", "Ears"],
 	AddPoseConditional: {
 		Xray: ["HoodMask",],

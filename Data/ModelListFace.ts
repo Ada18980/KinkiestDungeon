@@ -412,6 +412,7 @@ AddModel({
 	Categories: ["Body", "Face", "Cosplay"],
 	AddPose: ["Cosplay"],
 	Folder: "Ears",
+	RemovePoses: ["HideEars"],
 	Layers: ToLayerMap([
 		{ Name: "ElfFront", Layer: "Head", Pri: 0.1,
 			NoOverride: true,
@@ -431,6 +432,7 @@ AddModel({
 	Categories: ["Body", "Face", "Cosplay"],
 	AddPose: ["Cosplay"],
 	Folder: "Ears",
+	RemovePoses: ["HideEars"],
 	Layers: ToLayerMap([
 		{ Name: "ElfLongFront", Layer: "Head", Pri: 0.1,
 			NoOverride: true,
@@ -450,6 +452,7 @@ AddModel({
 	Categories: ["Body", "Face", "Cosplay"],
 	AddPose: ["Cosplay"],
 	Folder: "Ears",
+	RemovePoses: ["HideEars"],
 	Layers: ToLayerMap([
 		{ Name: "ElfFloppyFront", Layer: "Head", Pri: 0.1,
 			NoOverride: true,
@@ -468,6 +471,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Face", "Accessories"],
 	Folder: "Ears",
+	RemovePoses: ["HideEars"],
 	Layers: ToLayerMap([
 		{ Name: "ElfEarringsFront", Layer: "Head", Pri: 0.2,
 			NoOverride: true,
@@ -486,6 +490,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Face", "Accessories"],
 	Folder: "Ears",
+	RemovePoses: ["HideEars"],
 	Layers: ToLayerMap([
 		{ Name: "Earrings", Layer: "Head", Pri: 0.2,
 			NoOverride: true,

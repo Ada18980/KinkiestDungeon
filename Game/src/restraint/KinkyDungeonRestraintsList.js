@@ -99,7 +99,7 @@ const KinkyDungeonRestraints = [
 		Model: "KiguMask",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.33, "Pick": 0.15, "Unlock": 0.6},
 		enemyTags: {"kiguRestraints":1}, playerTags: {"ItemMouth1Full":2, "ItemMouth2Full":1, "NoKigu": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Masks", "Block_ItemMouth"], events: [
-			{trigger: "onWear", type: "setSkinColor"},
+			//{trigger: "onWear", type: "setSkinColor"},
 		]},
 	// endregion
 
@@ -116,7 +116,7 @@ const KinkyDungeonRestraints = [
 	},
 	{inventory: true, name: "LeatherMask", inaccessible: true, Color: ["Default", "Default"],
 		Group: "ItemHead", LinkableBy: [...KDMaskLink], gag: 0.7, blindfold: 3, power: 5, weight: 0,
-		Model: "LeatherHood",
+		Model: "LeatherMask",
 		escapeChance: {"Struggle": -0.35, "Cut": -0.15, "Remove": 0.12, "Pick": 0.11, "Unlock": 0.7},
 		enemyTags: {"sensedep":10},
 		maxwill: 0.1,
@@ -3152,6 +3152,31 @@ const KinkyDungeonRestraints = [
 		},
 		escapeChance: {"Struggle": -0.15, "Cut": 0.12, "Remove": -0.05, "Pick": 0.15},
 		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1}, playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Leather", "Petsuits", "Conjure", "HinderFeet"]},
+	{inventory: true, name: "LatexPetsuit", inaccessible: true, debris: "Slime", Color: "Default", Group: "ItemArms",
+		Model: "LatexPetsuit",
+		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 9, weight: 0,
+		hobble: 2,
+		factionFilters: {
+			Arms: {
+				color: "Catsuit", override: true,
+			},
+			Legs: {
+				color: "Catsuit", override: true,
+			},
+		},
+		alwaysDressModel: [
+			{
+				Model: "Catsuit",
+				factionFilters: {
+					TorsoUpper: {color: "Catsuit", override: true},
+					TorsoLower: {color: "Catsuit", override: true},
+				},
+			},
+		],
+		remove: ["Bras", "Panties", "Skirts", "Socks", "Shirts", "Boots"],
+		escapeChance: {"Struggle": -0.25, "Cut": 0.05, "Remove": -0.2, "Pick": 0.15},
+		helpChance: {"Remove": 0.15}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1, "latexpetsuit": 10},
+		playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Petsuits", "Conjure", "HinderFeet"]},
 	{inventory: true, name: "WolfPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", Color: "Default", Group: "ItemArms",
 		DefaultLock: "Blue",
 		remove: ["Bras", "Panties"],
@@ -4052,6 +4077,31 @@ const KinkyDungeonRestraints = [
 		],
 		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "Latex", "BallSuit", "ShadowEncase"], removeOnLeash: true,
 	},
+
+	{inventory: true, name: "ShadowLatexPetsuit", inaccessible: true, debris: "Slime", Color: "Default", Group: "ItemArms",
+		Model: "LatexPetsuitGlow",
+		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 9, weight: 0,
+		hobble: 2,
+		Filters: {
+			Arms: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":1},
+			Legs: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":1},
+			Glow: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":.25},
+			GlowTorso: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":.04},
+		},
+		alwaysDressModel: [
+			{
+				Model: "TransparentCatsuit",
+				Filters: {
+					TorsoUpper: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":1},
+					TorsoLower: {"gamma":1.3333333333333333,"saturation":0,"contrast":1.45,"brightness":1,"red":0.6078431372549019,"green":0.6078431372549019,"blue":1.196078431372549,"alpha":1},
+				},
+			},
+		],
+		remove: ["Bras", "Panties", "Skirts", "Socks", "Shirts", "Boots"],
+		escapeChance: {"Struggle": -0.45, "Cut": -0.05, "Remove": -0.35, "Pick": 0.15},
+		helpChance: {"Remove": 0.1}, maxwill: 0.15, enemyTags: {"shadowLatexPetsuit": 10},
+		playerTags: {"NoPet": -1000}, minLevel: 7, allFloors: true, shrine: ["ShadowLatex", "Latex", "Petsuits", "Illusion", "HinderFeet"]},
+
 
 	{inventory: true, name: "ShadowLatexGagCollar", debris: "Belts", inaccessible: true, Asset: "LatexPostureCollar", gag: 0.4, Color: "#4E7DFF",
 		Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],factionColor: [[0]], power: 9, weight: -2,

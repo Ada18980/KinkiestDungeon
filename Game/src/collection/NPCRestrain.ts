@@ -178,7 +178,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
 
-			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250, currentItem, slot, (currentItem, restraint, slt) => {
+			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250, currentItem, slot, (currentItem, restraint, slt, item, count) => {
 				if (currentItem) {
 					// Remove current
 					if (restraints[slot.id]?.name == currentItem.name) {
@@ -205,6 +205,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						faction: KDDefaultNPCBindPalette,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
 					});
+					if (item) {
+						item.quantity -= count;
+					}
 				}
 			});
 
@@ -883,7 +886,7 @@ let KDGenericBindSpacing = 75;
 
 function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, y: number,
 		currentItem: NPCRestraint, slot: NPCBindingSubgroup,
-		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup) => void) {
+		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup, item: item, count: number) => void) {
 	let XX = 0;
 	let secondXX = KDGenericBindSpacing * (KDGenericMatsPerRow + 0.5);
 	let YY = 0;
@@ -925,6 +928,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			() => {
 				if (KDSelectedGenericRestraintType != (cat.raw || cat.consumableRaw)) {
 					KDSelectedGenericRestraintType = (cat.raw || cat.consumableRaw);
+					KDSelectedGenericBindItem = "";
 				} else if (KDSelectedGenericRestraintType == (cat.raw || cat.consumableRaw)) KDSelectedGenericRestraintType = "";
 				return true;
 			}, KDMapData.RoomType == "Summit",
@@ -961,6 +965,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 	colCounter = 0;
 	XX = secondXX;
 
+
 	if (!KDNPCBindingSelectedSlot) {
 		DrawTextFitKD(
 			TextGet("KDSelectABindingSlot"),
@@ -970,6 +975,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			"#ffffff", KDTextGray0
 		);
 	} else if (selectedcat) {
+		let quantity = KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw)?.quantity;
 		index = 0;
 		let items = selectedcat.items.filter(
 			(item) => {
@@ -983,6 +989,8 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 
 			let grp = KDGetGroupPreviewImage(KDRestraint({name: item.restraint}).Group);
 
+			if (!KDSelectedGenericBindItem) KDSelectedGenericBindItem = item.restraint;
+
 			let selected = item.restraint == KDSelectedGenericBindItem;
 			//if (selected) highlightedItem = item.restraint;
 			let hotkey: string = "";
@@ -991,6 +999,9 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			} else
 			if (items[index-1]?.restraint == KDSelectedGenericBindItem) {
 				hotkey = KinkyDungeonKey[7];
+			} else
+			if (items[index]?.restraint == KDSelectedGenericBindItem) {
+				hotkey = KinkyDungeonKeyEnter[0];
 			}
 			//let inventoryItem = KinkyDungeonInventoryGetSafe(item.restraint);
 			//if (inventoryItem)
@@ -1012,8 +1023,9 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 				() => {
 					if (KDSelectedGenericBindItem != item.restraint)
 						KDSelectedGenericBindItem = item.restraint;
-					else {
-						callback(currentItem, KDRestraint({name: item.restraint}), KDNPCBindingSelectedSlot);
+					else if (quantity >= item.count) {
+						callback(currentItem, KDRestraint({name: item.restraint}), KDNPCBindingSelectedSlot,
+						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count);
 					}
 					return true;
 				}, KDMapData.RoomType == "Summit",
@@ -1027,7 +1039,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 					hotkey: hotkey ? KDHotkeyToText(hotkey) : undefined,
 					hotkeyPress: hotkey,
 				}
-			) || (!highlightedItem && KDSelectedGenericBindItem == highlightedItem)) {
+			) || (!highlightedItem && KDSelectedGenericBindItem == item.restraint)) {
 				if (!highlightedItem) {
 					DrawTextFitKD(TextGet(KDSelectedGenericBindItem == item.restraint ? "KDCurrentItem2" : "KDCurrentItem3")
 					+ KDGetItemNameString(item.restraint),

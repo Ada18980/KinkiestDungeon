@@ -30,6 +30,9 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("LeatherAnkleCuffs", "Leather", ""),
 			KDAutoGenRestraintBlueprint("TrapGag", "Leather", ""),
 			KDAutoGenRestraintBlueprint("PanelGag", "Leather", ""),
+			KDAutoGenRestraintBlueprint("MagicPetsuit", "Leather", ""),
+			KDAutoGenRestraintBlueprint("KittyPetSuit", "Leather", ""),
+			KDAutoGenRestraintBlueprint("KittySuit", "Leather", ""),
 		]
 	},
 	Rope: {
@@ -87,6 +90,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				},
 				prereq: () => {return true;},
 			},
+			KDAutoGenRestraintBlueprint("WolfPetsuit", "Leather", ""),
 		]
 	},
 	Latex: {
@@ -101,6 +105,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("LatexCatsuit", "Latex", ""),
 			KDAutoGenRestraintBlueprint("HeavyLatexCatsuit", "Latex", ""),
 			KDAutoGenRestraintBlueprint("LatexCorset", "Latex", ""),
+			KDAutoGenRestraintBlueprint("LatexPetsuit", "Latex", ""),
 		]
 	},
 	Armor: {

@@ -3878,6 +3878,10 @@ RestraintMagicPetsuit,Magic Petsuit
 RestraintMagicPetsuitDesc,"A set of straps and buckles enchanted with a powerful spell to render you helpless."
 RestraintMagicPetsuitDesc2,"It's warded against cutting by nonmagic blades."
 
+RestraintLatexPetsuit,Latex Petsuit
+RestraintLatexPetsuitDesc,"A skintight suit that encases you in a tight rubber embrace."
+RestraintLatexPetsuitDesc2,"The thick latex is resistant to even the most determined struggles."
+
 RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
 RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
 RestraintMysticDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
@@ -4616,6 +4620,9 @@ RestraintShadowLatexStrongBoxbinderDesc2,"Its grip encases you tightly, but the 
 RestraintShadowLatexLegbinder,Shadow Legbinder
 RestraintShadowLatexLegbinderDesc,"A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
 RestraintShadowLatexLegbinderDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
+RestraintShadowLatexPetsuit,Shadow Latex Petsuit
+RestraintShadowLatexPetsuitDesc,"A tight petsuit made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament."
+RestraintShadowLatexPetsuitDesc2,"Its grip encases you tightly, but the material is weaker than most metals."
 RestraintObsidianYoke,Obsidian Yoke
 RestraintObsidianYokeDesc,"A yoke made from shining obsidian, stars glittering in the darkness. It pins your arms uselessly at your sides."
 RestraintObsidianYokeDesc2,"It's made of a dark, glistening volcanic metal."
@@ -23638,7 +23645,7 @@ KDBindNPCSlot_BootsEncase,Encasement
 
 KDCurrentItem,"Equipped: "
 KDCurrentItem2,"Click to Add "
-KDCurrentItem3,"Apply: "
+KDCurrentItem3,"Apply "
 KDCurrentItemRaw,"Raw Material: "
 
 KDFreePrisoner,Free Prisoner

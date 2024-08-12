@@ -486,26 +486,7 @@ let KDEventMapInventory = {
 	"onWear": {
 		"setSkinColor": (e, item, data) => {
 			if (item == data.item) {
-				data.color[0] = "#9A7F76";
-				if (StandalonePatched) {
-					if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
-						let color = "#ff5555";//InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
-						if (color == "Asian") {
-							data.color[0] = "#8B7B70";
-						} else if (color == "Black") {
-							data.color[0] = "#684832";
-						}
-					}
-				} else {
-					if (KinkyDungeonPlayer && KinkyDungeonPlayer.Appearance) {
-						let color = InventoryGet(KinkyDungeonPlayer, "BodyUpper").Color;
-						if (color == "Asian") {
-							data.color[0] = "#8B7B70";
-						} else if (color == "Black") {
-							data.color[0] = "#684832";
-						}
-					}
-				}
+				// Ne
 			}
 		}
 	},
@@ -2984,7 +2965,7 @@ const KDEventMapBuff = {
 		"Cursed": (e, buff, entity, data) => {
 			if (buff.power > 0 && entity.player) {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
-					let tags = ["obsidianRestraints", "shadowLatexRestraints", "shadowLatexRestraintsHeavy"];
+					let tags = ["obsidianRestraints", "shadowLatexRestraints", "shadowLatexPetsuit", "shadowLatexRestraintsHeavy"];
 					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 						true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
 							ForceDeep: true,

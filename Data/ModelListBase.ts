@@ -16,7 +16,7 @@ AddModel({
 	AddPose: ["Body"],
 	Layers: ToLayerMap([
 		{ Name: "Head", Layer: "Head", Pri: 0,
-			MorphPoses: {AnimalEars: "NoEar"},
+			MorphPoses: {AnimalEars: "NoEar", HideEars: "NoEar"},
 			AppendPose: {FaceCoverGag: "", FaceBigGag: "BigGag", FaceGag: "Gag"},
 		},
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,
