@@ -71,7 +71,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "OuterGag", encasedBy: ["Hood", "Muzzle"], allowedGroups: ["ItemMouth"],
 				allowedTags: ["FlatGags"]},
 			{id: "InterGag", encasedBy: ["Hood", "Muzzle", "OuterGag"], allowedGroups: ["ItemMouth"],
-				allowedTags: ["FlatGags", "PlugGags", "BallGags"]},
+				allowedTags: ["FlatGags", "PlugGags", "BallGags", "Tape"]},
 			{id: "InnerGag", encasedBy: ["Hood", "Muzzle", "InterGag", "OuterGag"], allowedGroups: ["ItemMouth"],
 				allowedTags: ["FlatGags", "PlugGags", "BallGags", "Stuffing"]},
 		]},

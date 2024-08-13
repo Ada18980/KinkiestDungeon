@@ -385,7 +385,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		let resCenter = x + XX + 32 + 100;
 		let res = Object.entries(selectedItem.recyclecost);
 		for (let i = 0; i < res.length; i++) {
-			let xxx = resCenter - res.length / 2 - 36 + 52 * i;
+			let xxx = resCenter - res.length / 2 * 36 + 52 * i;
 			let resource = res[i][0];
 			KDDraw(kdcanvas, kdpixisprites, "fac_item_res_" + resource,
 				KinkyDungeonRootDirectory + "UI/Resource/" + resource + ".png",

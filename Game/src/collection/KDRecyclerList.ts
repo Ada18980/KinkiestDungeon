@@ -74,29 +74,66 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				count: 25,
 				prereq: () => {return true;},
 			},
+			{
+				name: "CelestialRopeRaw",
+				item: "CelestialRopeRaw",
+				type: Restraint,
+				recyclecategory: "Rope",
+				recyclecost: {
+					Rope: 80,
+					Rune: 3,
+				},
+				count: 25,
+				prereq: () => {return true;},
+			},
+			{
+				name: "RibbonRaw",
+				item: "RibbonRaw",
+				type: Restraint,
+				recyclecategory: "Rope",
+				recyclecost: {
+					Rope: 25,
+					Rune: 3,
+				},
+				count: 30,
+				prereq: () => {return true;},
+			},
 		]
 	},
 	Metal: {
 		name: "Metal",
 		prereq: () => {return true;},
 		items: [
+			KDAutoGenRestraintBlueprint("WolfPetsuit", "Leather", ""),
 			{
-				name: "TrapCuffs",
-				item: "TrapCuffs",
+				name: "MithrilRopeRaw",
+				item: "MithrilRopeRaw",
 				type: Restraint,
+				count: 25,
 				recyclecategory: "Metal",
 				recyclecost: {
-					Metal: 5,
+					Rope: 30,
+					Metal: 30,
 				},
 				prereq: () => {return true;},
 			},
-			KDAutoGenRestraintBlueprint("WolfPetsuit", "Leather", ""),
 		]
 	},
 	Latex: {
 		name: "Latex",
 		prereq: () => {return true;},
 		items: [
+			{
+				name: "VinylTapeRaw",
+				item: "VinylTapeRaw",
+				type: Restraint,
+				count: 25,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 50,
+				},
+				prereq: () => {return true;},
+			},
 			KDAutoGenRestraintBlueprint("KiguMask", "Latex", ""),
 			KDAutoGenRestraintBlueprint("LatexStraitjacket", "Latex", ""),
 			KDAutoGenRestraintBlueprint("LatexArmbinder", "Latex", ""),
@@ -108,20 +145,83 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("LatexPetsuit", "Latex", ""),
 		]
 	},
+	Tape: {
+		name: "Tape",
+		prereq: () => {return true;},
+		items: [
+
+			{
+				name: "VinylTapeRaw",
+				item: "VinylTapeRaw",
+				type: Restraint,
+				count: 25,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 50,
+				},
+				prereq: () => {return true;},
+			},
+			{
+				name: "DuctTapeRaw",
+				item: "DuctTapeRaw",
+				type: Restraint,
+				count: 25,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 20,
+				},
+				prereq: () => {return true;},
+			},
+			{
+				name: "AutoTapeRaw",
+				item: "AutoTapeRaw",
+				type: Restraint,
+				count: 25,
+				recyclecategory: "Metal",
+				recyclecost: {
+					Metal: 10,
+					Latex: 40,
+				},
+				prereq: () => {return true;},
+			},
+			{
+				name: "MysticDuctTapeRaw",
+				item: "MysticDuctTapeRaw",
+				type: Restraint,
+				count: 25,
+				recyclecategory: "Rope",
+				recyclecost: {
+					Rope: 50,
+					Rune: 1,
+				},
+				prereq: () => {return true;},
+			},
+			{
+				name: "CharmRaw",
+				item: "CharmRaw",
+				type: Restraint,
+				count: 25,
+				recyclecategory: "Rope",
+				recyclecost: {
+					Rope: 30,
+					Rune: 1,
+				},
+				prereq: () => {return true;},
+			},
+		]
+	},
 	Armor: {
 		name: "Armor",
 		prereq: () => {return true;},
 		items: [
-			KDAutoGenRestraintBlueprint("MageArmor", "Armor", "", undefined, {Rope: 50, Rune: 5}),
-			KDAutoGenRestraintBlueprint("MagicArmbands", "Armor", "", undefined, {Metal: 30, Rune: 2}),
-			KDAutoGenRestraintBlueprint("SteelSkirt", "Armor", "", undefined, {Metal: 150}),
-			KDAutoGenRestraintBlueprint("SteelSkirt2", "Armor", "", undefined, {Metal: 100}),
-			KDAutoGenRestraintBlueprint("ChainTunic", "Armor", "", undefined, {Metal: 200}),
-			KDAutoGenRestraintBlueprint("ChainBikini", "Armor", "", undefined, {Metal: 150}),
-			KDAutoGenRestraintBlueprint("SteelArmor", "Armor", "", undefined, {Metal: 300}),
-
-
-
+			KDAutoGenRestraintBlueprint("MageArmor", "Armor", "", 1, {Rope: 50, Rune: 5}),
+			KDAutoGenRestraintBlueprint("MagicArmbands", "Armor", "", 1, {Metal: 30, Rune: 2}),
+			KDAutoGenRestraintBlueprint("SteelSkirt", "Armor", "", 1, {Metal: 150}),
+			KDAutoGenRestraintBlueprint("SteelSkirt2", "Armor", "", 1, {Metal: 100}),
+			KDAutoGenRestraintBlueprint("ChainTunic", "Armor", "", 1, {Metal: 200}),
+			KDAutoGenRestraintBlueprint("ChainBikini", "Armor", "", 1, {Metal: 150}),
+			KDAutoGenRestraintBlueprint("SteelArmor", "Armor", "", 1, {Metal: 300}),
+			KDAutoGenRestraintBlueprint("Swimsuit", "Armor", "", 1, {Latex: 250}),
 		]
 	},
 }

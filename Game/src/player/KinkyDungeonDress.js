@@ -874,11 +874,15 @@ function KDApplyItem(C, inv, tags) {
 					if (f[1].override) {
 						filters[f[0]] = KDGetFactionFilters(faction)[f[1].color];
 					} else {
+						let origFilters = filters[f[0]];
 						if (!filters[f[0]]) filters[f[0]] = {};
 						filters[f[0]].saturation = 0;
-						filters[f[0]].constrast = 1;
-						filters[f[0]].gamma = 1;
-						filters[f[0]].brightness = 1;
+						filters[f[0]].constrast = (origFilters)
+							? origFilters.contrast : 1;
+						filters[f[0]].gamma = (origFilters)
+							? origFilters.gamma : 1;
+						filters[f[0]].brightness = (origFilters)
+							? origFilters.brightness : 1;
 						filters[f[0]].red = KDGetFactionFilters(faction)[f[1].color].red;
 						filters[f[0]].blue = KDGetFactionFilters(faction)[f[1].color].blue;
 						filters[f[0]].green = KDGetFactionFilters(faction)[f[1].color].green;

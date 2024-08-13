@@ -1024,6 +1024,7 @@ function KinkyDungeonDrawGame() {
 				KDCollectionTab = "";
 				if (KDCurrentFacilityTarget) {
 					KDCurrentFacilityTarget = "";
+					KDFacilityCollectionCallback = null;
 					KinkyDungeonDrawState = "Facilities";
 				}
 				KDCurrentRestrainingTarget = 0;

@@ -3844,7 +3844,6 @@ RestraintDuctTapeCollar,Living Charm Collar
 RestraintDuctTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their charms."
 RestraintDuctTapeCollarDesc2,"It will occasionally cause charms to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of charms you have on you."
 
-
 RestraintPanelGag,Leather Panel Gag
 RestraintPanelGagDesc,"A gag that seals your lips tightly and stuffs your mouth with a ball."
 RestraintPanelGagDesc2,"Keep your mouth to yourself!"
@@ -3910,6 +3909,62 @@ RestraintMysticDuctTapeCollar,Living Blessed Wrappings Collar
 RestraintMysticDuctTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their wrappings."
 RestraintMysticDuctTapeCollarDesc2,"It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you."
 
+RestraintVinylTapeHands,Tape (Hands)
+RestraintVinylTapeHandsDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeHandsDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeArms,Tape (Arms)
+RestraintVinylTapeArmsDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeArmsDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeLegs,Tape (Legs)
+RestraintVinylTapeLegsDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeLegsDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeFeet,Tape (Feet)
+RestraintVinylTapeFeetDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeFeetDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeHead,Tape (Head)
+RestraintVinylTapeHeadDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeHeadDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeMouth,Tape Gag
+RestraintVinylTapeMouthDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeMouthDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeMouthFull,Tape Mouth Wrap
+RestraintVinylTapeMouthFullDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeMouthFullDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeBoots,Tape Wrapping (Toes)
+RestraintVinylTapeBootsDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeBootsDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeHeadMummy,Tape Wrapping (Head)
+RestraintVinylTapeHeadMummyDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeHeadMummyDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeArmsMummy,Tape Wrapping (Arms)
+RestraintVinylTapeArmsMummyDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeArmsMummyDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeFeetMummy,Tape Wrapping (Feet)
+RestraintVinylTapeFeetMummyDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeFeetMummyDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeLegsMummy,Tape Wrapping (Legs)
+RestraintVinylTapeLegsMummyDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeLegsMummyDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+RestraintVinylTapeCollar,Living Tape Collar
+RestraintVinylTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their tape."
+RestraintVinylTapeCollarDesc2,"It will occasionally cause tape to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of tape you have on you."
+
+
+RestraintAutoTapeRaw,Autotape
+RestraintAutoTapeRawDesc,"Comes in convenient cartridges for machine loading."
+RestraintAutoTapeRawDesc2,"A specialized tape used for capturing purposes during the time of the Old Civilization. Despite its appearance, it contains a gas-permeable membrane that allows ventilation, while its hydrophobic properties resist solvents that would otherwise disrupt the adhesive bond. The adhesive layer is special in that it activates only in contact with other auto-tape, making it safer to use and remove."
+
+RestraintVinylTapeRaw,Rubberized Tape
+RestraintVinylTapeRawDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeRawDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
+
+RestraintCharmRaw,Magic Charms
+RestraintCharmRawDesc,"Magical charms from the ancient graveyard."
+RestraintCharmRawDesc2,"Its magic is not enough to protect it from damage, but it is surprisingly effective at restraining both intruders and cursed entities."
+
+RestraintMysticDuctTapeRaw,Blessed Wrapping
+RestraintMysticDuctTapeRawDesc,"A layer of magic embalming ribbon."
+RestraintMysticDuctTapeRawDesc2,"It clings of its own accord to intruders and naughty catgirls."
 
 RestraintAutoTapeHands,Autotape (Hands)
 RestraintAutoTapeHandsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
@@ -3932,6 +3987,9 @@ RestraintAutoTapeBootsDesc2,"It's very sticky and tough but you could probably g
 RestraintAutoTapeMouth,Autotape (Mouth)
 RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeMouthDesc2,"It's very sticky and tough but you could probably get a knife through it."
+RestraintAutoTapeMouthFull,Autotape (Mouth Wrap)
+RestraintAutoTapeMouthFullDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeMouthFullDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeCollar,Living Auto Tape Collar
 RestraintAutoTapeCollarDesc,"This collar is designed to make sure its wearer does not escape their tape."
 RestraintAutoTapeCollarDesc2,"It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you."
@@ -4853,6 +4911,10 @@ RestraintNylonCableHarness,Nylon Cables (Harness)
 RestraintNylonCableHarnessDesc,"Cables made from nylon polymer. Very strong and self-tightening, but vulnerable to sharp edges."
 RestraintNylonCableHarnessDesc2,"They are wrapped methodically around your body!"
 
+RestraintRibbonRaw,Magic Ribbons
+RestraintRibbonRawDesc,"Magically sealed ribbons to teach intruders a lesson."
+RestraintRibbonRawDesc2,"The magic is powerful enough to ward off most blades, creating a true predicament for one who is trapped by these."
+
 RestraintRibbonArms,Magic Ribbons (Arms)
 RestraintRibbonArmsDesc,"Those ribbons will hold you tight~"
 RestraintRibbonArmsDesc2,"I've put a magic seal in that bow-knot to keep it secure!"
@@ -5023,7 +5085,9 @@ RestraintHardProtoSlimeCollar,Living Proto-Rubber Collar
 RestraintHardProtoSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape the rubber."
 RestraintHardProtoSlimeCollarDesc2,"It will occasionally cause proto-rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-rubber you have on you."
 
-
+RestraintDuctTapeRaw,Sticky Tape
+RestraintDuctTapeRawDesc,"Extra-strength utility tape, for your secure packaging needs."
+RestraintDuctTapeRawDesc2,"It's quite sticky, the adhesive requires some force to get off."
 
 RestraintDuctTapeHands,Tape Mittens
 RestraintDuctTapeHandsDesc,"Sticky tape that holds your hands into a fist!"
@@ -23505,7 +23569,7 @@ KDFacilityInfo_Prisoners,"AMNT/MAXX Prisoners Assigned"
 KDFacilityInfo_Servants,"AMNT/MAXX Servants Assigned"
 
 KDFacility_Management,Management
-KDFacilityDesc_Management,"Assign servants as managers to boost the production of other facilities.|Managers gain increased opinion and training over time."
+KDFacilityDesc_Management,"Assign servants as managers to boost the production of other facilities.|Appointing new management results in a loss of efficiency until the next cycle."
 KDFacility_TrainingDojo,Bondage Dojo
 KDFacilityDesc_TrainingDojo,"Assign servants to perfect the art of walking in heels,wearing tight corsets,|communicating while gagged, and overall flexibility."
 KDFacility_RescueTeam,Rescue Operations

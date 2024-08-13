@@ -106,7 +106,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						grp,
 						XX, YY, wid, wid,
 						undefined, {
-							zIndex: 160,
+							zIndex: restraint ? 0 : 160,
 						}
 					);
 				}
@@ -1054,7 +1054,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			if (grp) {
 				KDDraw(kdcanvas, kdpixisprites, "gen_bind_list_grp" + item.restraint,
 					grp,
-					x + XX + 32, y + YY, 72, 72
+					x + XX + 32, y + YY, 72, 72,
 				);
 			}
 			colCounter++;

@@ -251,8 +251,10 @@ function KDGetServantEnemy(servant: KDCollectionEntry): enemy {
 	return null;
 }
 
+let KDFacilityCollectionCallback: (id: number) => boolean = null;
 
-function KDDrawServantPrisonerList(facility: string, x: number, y: number, width: number, spacing: number = 110) : number {
+function KDDrawServantPrisonerList(facility: string, x: number, y: number, width: number, spacing: number = 110,
+		setCallback?: (id: number) => boolean) : number {
 	let yy = 0;
 
 	let fac = KDFacilityTypes[facility];
@@ -273,6 +275,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KinkyDungeonCheckClothesLoss = true;
 					KDCollectionTab = "";
 					KDCollectionSelected = servant;
+					KDFacilityCollectionCallback = setCallback;
 					return true;
 				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(servant),
 				undefined, undefined, !servant, KDButtonColor, undefined, undefined, {
@@ -295,6 +298,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KinkyDungeonCheckClothesLoss = true;
 					KDCollectionTab = "";
 					KDCollectionSelected = prisoner;
+					KDFacilityCollectionCallback = setCallback;
 					return true;
 				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(prisoner),
 				undefined, undefined, !prisoner, KDButtonColor, undefined, undefined, {

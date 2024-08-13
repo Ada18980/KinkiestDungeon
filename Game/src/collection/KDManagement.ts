@@ -3,7 +3,11 @@ function KDDrawManagement(x: number, y: number, width: number): number {
 	if (y + dd < 940) {
 		let yy = y;
 
-		yy += KDDrawServantPrisonerList("Management", x + 50, yy + 70, width, 80);
+		yy += KDDrawServantPrisonerList("Management", x + 50, yy + 70, width, 80,
+			(id) => {
+				KinkyDungeonSetFlag("manageEfficiencyLoss", -1, 1);
+				return true;
+		});
 
 		let rate = KDGetManagementEfficiency();
 		let ii = 0;
@@ -22,6 +26,7 @@ function KDDrawManagement(x: number, y: number, width: number): number {
 function KDGetManagementEfficiency(): number {
 	let data = {
 		efficiency: 1,
+		gainMult: KinkyDungeonFlags.get("manageEfficiencyLoss") ? 0 : 1
 	};
 
 	let facility = "Management";

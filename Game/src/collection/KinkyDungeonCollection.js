@@ -629,7 +629,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 					if (!valid) return false;
 					if (!assigned) {
 						let data = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
-						if (data) {
+						if (data && (!KDFacilityCollectionCallback || KDFacilityCollectionCallback(value.id))) {
 							data.push(value.id);
 							value.Facility = KDCurrentFacilityTarget;
 						}

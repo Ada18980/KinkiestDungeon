@@ -1008,6 +1008,7 @@ let KDDialogue = {
 						KinkyDungeonDrawState = "Collection";
 						KDCollectionTab = "Imprison";
 						KDCurrentFacilityTarget = "";
+						KDFacilityCollectionCallback = null;
 						KinkyDungeonCheckClothesLoss = true;
 					}
 
