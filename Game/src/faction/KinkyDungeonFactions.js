@@ -60,7 +60,7 @@ function KDHostile(enemy, enemy2) {
  */
 function KDOpinionRepMod(enemy, player) {
 	if (!player?.player) return 0;
-	let op = KDGetModifiedOpinionID(enemy.id, true, true, true, 1);
+	let op = KDGetModifiedOpinionID(enemy.id, true, true, true, 0);
 	if (op) {
 		return 0.1 * Math.max(-3, Math.min(20, op/KDOpinionThreshold));
 	}
@@ -111,10 +111,11 @@ function KDGetFactionOriginal(enemy) {
  * Consults the faction table and decides if the two mentioned factions are hostile
  * @param {string} a - Faction 1
  * @param {string | entity} b - Faction 2
- * @param {number} mod - modifier to faction rep
+ * @param {number} mod - modifier to faction rep - constrained to positive
+ * @param {number} modfree - modifier to faction rep - free
  * @returns {boolean}
  */
-function KDFactionHostile(a, b, mod = 0) {
+function KDFactionHostile(a, b, mod = 0, modfree = 0) {
 	if (a == "Player" && b && !(typeof b === "string") && b.hostile > 0) return true;
 	if (!(typeof b === "string") && b.rage > 0) return true;
 	if (a == "Player" && !(typeof b === "string") && b.allied > 0) return false;
@@ -122,7 +123,7 @@ function KDFactionHostile(a, b, mod = 0) {
 	if (a == "Rage" || b == "Rage") return true;
 	if (a == "Player" && b == "Enemy") return true;
 	if (b == "Player" && a == "Enemy") return true;
-	if (KDFactionRelation(a, b) + mod <= -0.5) return true;
+	if (KDFactionRelation(a, b) + Math.max(0, mod) + modfree <= -0.5) return true;
 	if (a == b) return false;
 	return false;
 }

@@ -556,6 +556,7 @@ AddModel({
 			DisplacementSprite: "Boots",
 			DisplaceAmount: 10,
 			DisplaceLayers: ToMap(["Boots"]),
+			DisplaceZBonus: 100,
 			HidePoseConditional: [
 				["DynamicArmor", "BootsArmor", "SuppressDynamic"],
 			],
@@ -902,6 +903,7 @@ AddModel({
 			DisplacementSprite: "BootsShort",
 			DisplaceAmount: 30,
 			DisplaceLayers: ToMap(["Boots"]),
+			DisplaceZBonus: 100,
 		},
 		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 1,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),

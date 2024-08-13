@@ -39,6 +39,7 @@ AddModel({
 			EraseSprite: "BalletRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["BalletHeelRight"]),
+			EraseZBonus: 100,
 		},
 
 

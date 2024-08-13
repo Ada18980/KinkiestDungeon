@@ -740,7 +740,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				for (let ll of Object.entries(l.DisplaceLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false, l.DisplacementInvariant, l.DisplacementMorph, l.NoAppendDisplacement);
 
-					let zzz = -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
+					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
 						DisplaceFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(LayerGroups[ll[0]])) {
@@ -842,7 +842,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				for (let ll of Object.entries(l.EraseLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
-					let zzz = -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
+					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(LayerGroups[ll[0]])) {
@@ -1026,7 +1026,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				// Add erase filters BEFORE displacement
 				if (!l.NoErase && EraseFilters[origlayer]) {
 					for (let ef of EraseFilters[origlayer]) {
-						if (ef.zIndex != undefined && ef.zIndex < zz) continue;
+						if (ef.zIndex != undefined && ef.zIndex <= zz) continue;
 						let efh = "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {
@@ -1047,7 +1047,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				// Add displacement filters
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
-						if (ef.zIndex != undefined && ef.zIndex < zz) continue;
+						if (ef.zIndex != undefined && ef.zIndex <= zz) continue;
 						let efh = "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {

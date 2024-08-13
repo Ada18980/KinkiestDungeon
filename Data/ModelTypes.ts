@@ -123,6 +123,7 @@ interface ModelLayer extends Namable {
 	DisplacementMorph?: Record<string, string>,
 	/** Amount of displacement */
 	DisplaceAmount?: number,
+	DisplaceZBonus?: number,
 	/** Prevents displacement maps from applying to this item */
 	NoDisplace?: boolean,
 
@@ -142,6 +143,7 @@ interface ModelLayer extends Namable {
 	EraseMorph?: Record<string, string>,
 	/** Amount of Erase */
 	EraseAmount?: number,
+	EraseZBonus?: number,
 	/** Prevents Erase maps from applying to this item */
 	NoErase?: boolean,
 	/** Invariant displacement */
