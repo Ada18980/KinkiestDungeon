@@ -369,7 +369,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				KDCurrentModels.get(C).Models.set(Model.Name, Model);
 			}
 			// Set the rgb value to empty when color is reset
-			ElementValue("KDSelectedColor", "")
+			ElementValue("KDSelectedColor", "");
 			KDRefreshProps = true;
 			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 			ForceRefreshModels(C);
@@ -438,10 +438,10 @@ function KDDrawColorSliders(X, Y, C, Model) {
 
 
 		YY += 60;
-		
+
 		// get the visualbrightness from the color so that the visualbrightness value matches
 		// the actual brightness value which should be shown on the slider.
-		KDVisualBrightness = rgbToHsl(filters["red"]/5, filters["green"]/5, filters["blue"]/5)[2];
+		KDVisualBrightness = rgbToHsl(filters.red/5, filters.green/5, filters.blue/5)[2];
 
 		if (KDToggles.SimpleColorPicker) {
 			let force = false;
