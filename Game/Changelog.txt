@@ -30,6 +30,9 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.35 RC1
+- Various misc bugfixes
+
 5.3.35
 - You can now disassemble rope items into raw rope
 - You can now apply raw items to NPCs via truss em up

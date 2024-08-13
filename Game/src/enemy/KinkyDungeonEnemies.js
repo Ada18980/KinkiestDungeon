@@ -2088,7 +2088,7 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		bg: "#000000",
 		size: 12,
 	});
-	if (!enemy.Enemy.tags?.nobrain && !enemy.Enemy.tags?.scenery) {
+	if (!enemy.Enemy.tags?.nobrain && !enemy.Enemy.tags?.scenery && KDIsHumanoid(enemy)) {
 		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinion(enemy)/KDOpinionThreshold)));
 		let str = TextGet("KDTooltipOpinion"+opinion);
 		TooltipList.push({

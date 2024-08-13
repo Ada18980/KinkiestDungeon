@@ -972,6 +972,7 @@ let KDTileGen = {
 	"EffectTile": (x, y, tile, tileGenerator, data) => {
 		KDCreateEffectTile(x, y, {
 			name: tileGenerator.Tile,
+			duration: 9999,
 		}, 0);
 		return null;
 	},

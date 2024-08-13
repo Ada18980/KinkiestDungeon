@@ -42,15 +42,16 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				}*/
 				// Readd
 				for (let inv of Object.entries(restraints)) {
-					KDInputSetNPCRestraint({
-						slot: inv[0],
-						id: undefined,
-						faction: inv[1].faction,
-						restraint: inv[1].name,
-						restraintid: inv[1].id,
-						lock: inv[1].lock,
-						npc: value.id
-					});
+					if (KinkyDungeonInventoryGetSafe(inv[1].name) && KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)
+						KDInputSetNPCRestraint({
+							slot: inv[0],
+							id: undefined,
+							faction: inv[1].faction,
+							restraint: inv[1].name,
+							restraintid: inv[1].id,
+							lock: inv[1].lock,
+							npc: value.id
+						});
 				}
 				KDValidateEscapeGrace(value);
 			}
@@ -67,7 +68,16 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
 		hotkeyPress: KinkyDungeonKeyEnter[0],
 	})) {
-		DrawTextFitKD(TextGet("KDAutoBindPaste").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, "#ffffff",
+		let missingAll = KDAutoBindRestraints ? Object.values(KDAutoBindRestraints).length > 0 : false;
+		if (KDAutoBindRestraints)
+			for (let inv of Object.entries(KDAutoBindRestraints)) {
+				if (KinkyDungeonInventoryGetSafe(inv[1].name) && KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0) {
+					missingAll = false
+					break;
+				}
+			}
+
+		DrawTextFitKD(TextGet(missingAll ? "KDAutoBindPasteNone" : "KDAutoBindPaste").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, "#ffffff",
 			KDTextGray0);
 	}
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (b) => {
@@ -115,15 +125,16 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 						});
 					}*/
 					for (let inv of Object.entries(restraints)) {
-						KDInputSetNPCRestraint({
-							slot: inv[0],
-							id: undefined,
-							faction: inv[1].faction,
-							restraint: inv[1].name,
-							restraintid: inv[1].id,
-							lock: inv[1].lock,
-							npc: v.id
-						});
+						if (KinkyDungeonInventoryGetSafe(inv[1].name) && KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)
+							KDInputSetNPCRestraint({
+								slot: inv[0],
+								id: undefined,
+								faction: inv[1].faction,
+								restraint: inv[1].name,
+								restraintid: inv[1].id,
+								lock: inv[1].lock,
+								npc: v.id
+							});
 					}
 
 					KDValidateEscapeGrace(v);
@@ -140,7 +151,15 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindPasteAllOver.png",
 	undefined, undefined, entity != undefined,
 	(!KDAutoBindRestraints) ? "#ff5555" : KDButtonColor)) {
-		DrawTextFitKD(TextGet("KDAutoBindPasteAll").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, "#ffffff",
+		let missingAll = KDAutoBindRestraints ? Object.values(KDAutoBindRestraints).length > 0 : false;
+		if (KDAutoBindRestraints)
+			for (let inv of Object.entries(KDAutoBindRestraints)) {
+				if (KinkyDungeonInventoryGetSafe(inv[1].name) && KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0) {
+					missingAll = false
+					break;
+				}
+			}
+		DrawTextFitKD(TextGet(missingAll ? "KDAutoBindPasteNone" : "KDAutoBindPasteAll").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, "#ffffff",
 			KDTextGray0);
 	}
 

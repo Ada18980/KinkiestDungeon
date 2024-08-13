@@ -2994,6 +2994,40 @@ let KDDialogue = {
 					},
 				}
 			},
+			"Reclaim": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					if (KDDialogueEnemy()) {
+						let e = KDDialogueEnemy();
+
+						return (KDIsImprisoned(e) && KDGameData.Collection[e.id + ""] != undefined);
+
+					}
+					return false;
+				},
+				clickFunction: (gagged, player) => {
+					if (KDDialogueEnemy()) {
+						let e = KDDialogueEnemy();
+
+						if (KDIsImprisoned(e) && KDGameData.Collection[e.id + ""] != undefined) {
+							KDRemoveEntity(e, false, false, true);
+							delete KDGameData.Collection[e.id + ""].escaped;
+							delete KDGameData.Collection[e.id + ""].escapegrace;
+							delete KDGameData.Collection[e.id + ""].spawned;
+							KDSetIDFlag(e.id, "escapegrace", 0);
+							if (KDIsNPCPersistent(e.id) && KDGetPersistentNPC(e.id)) {
+								KDGetPersistentNPC(e.id).collect = true;
+								KDGetPersistentNPC(e.id).captured = false;
+							}
+							KinkyDungeonAdvanceTime(1);
+						}
+
+					}
+
+					return false;
+				},
+				exitDialogue: true,
+			},
 			"Pick": {
 				playertext: "Default", response: "Default",
 				clickFunction: (gagged, player) => {

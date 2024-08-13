@@ -790,7 +790,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Cyber3",
 		factionColor: [[], [], [0]],
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
-		bindhands: 1.0, power: 10, weight: 0,
+		bindhands: 1.4, power: 10, weight: 0,
 		escapeChance: {"Struggle": -0.4, "Cut": -0.2, "Remove": 0.04, "Pick": -0.25},
 		limitChance: {"Struggle": 0.3, "Cut": 0.2,},
 		struggleMaxSpeed: {Remove: 0.1},
@@ -813,7 +813,7 @@ const KinkyDungeonRestraints = [
 		DefaultLock: "Cyber2",
 		factionColor: [[], [], [0]],
 		Asset: "LatexElbowGloves", Color: "#ff5277", LinkableBy: [...KDGlovesLink], renderWhenLinked: ["Mittens"], Group: "ItemHands",
-		bindhands: 0.9, power: 9, weight: 0,
+		bindhands: 1.0, power: 9, weight: 0,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.15, "Remove": 0.15, "Pick": -0.1},
 		maxwill: 0.4, enemyTags: {"cyberdollrestraints": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 0, allFloors: true, shrine: ["CyberMittens","Mittens", "Metal", "Cyber"]},
 

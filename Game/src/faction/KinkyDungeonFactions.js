@@ -60,7 +60,7 @@ function KDHostile(enemy, enemy2) {
  */
 function KDOpinionRepMod(enemy, player) {
 	if (!player?.player) return 0;
-	let op = KDGetModifiedOpinionID(enemy.id, true, true, true, 0);
+	let op = KDGetModifiedOpinionID(enemy.id, true, true, true, 1);
 	if (op) {
 		return 0.1 * Math.max(-3, Math.min(20, op/KDOpinionThreshold));
 	}

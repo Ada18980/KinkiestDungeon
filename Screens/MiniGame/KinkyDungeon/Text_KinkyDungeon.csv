@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.35"
+KDVersionStr,"5.3.35 RC1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -12606,6 +12606,7 @@ rPrisonerJailOwnJammed,"(The SPEAKER is locked in high-security manacles.|The sa
 
 dPrisonerJailOwn_Unlock,Use a key to unlock her
 dPrisonerJailOwn_Pick,"Try to pick her restraints"
+dPrisonerJailOwn_Reclaim,"Return her to your collection"
 dPrisonerJailOwn_Word,Use a command word
 dPrisonerJailOwn_Flip,Flip her around
 dPrisonerJailOwnJammedRecent_Apologize,Apologize profusely!
@@ -23731,6 +23732,7 @@ KDDrawSelectedTab_AutoBind,AutoBind
 
 KDAutoBindCopy,Copy Restraints
 KDAutoBindPaste,Paste Restraints from NME
+KDAutoBindPasteNone,No restraints left in inventory
 KDAutoBindPasteAll,Paste to All!
 KDAutoBindPasteAllOver,OVERWRITE All!
 

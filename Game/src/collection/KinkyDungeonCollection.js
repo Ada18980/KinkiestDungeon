@@ -234,9 +234,10 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 
 		if (allowFaction) {
 			let faction = KDGetFaction(enemy);
-			op += 30 * (!allowOnlyPosNegFaction ? KDFactionRelation("Player", faction) :
-			(allowOnlyPosNegFaction > 0 ? Math.max(KDFactionRelation("Player", faction), 0)
-				: Math.min(KDFactionRelation("Player", faction), 0)
+			let rel = KDFactionRelation("Player", faction);
+			op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+			(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
+				: Math.min(rel, 0)
 			)
 			);
 		}
@@ -250,9 +251,10 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 		let faction = KDIsServant(KDGameData.Collection[id + ""]) ? "Player" : KDGameData.Collection[id + ""].Faction;
 		let op = KDGameData.Collection[id + ""].Opinion || 0;
 		if (allowFaction) {
-			op += 30 * (!allowOnlyPosNegFaction ? KDFactionRelation("Player", faction) :
-			(allowOnlyPosNegFaction > 0 ? Math.max(KDFactionRelation("Player", faction), 0)
-				: Math.min(KDFactionRelation("Player", faction), 0)
+			let rel = KDFactionRelation("Player", faction);
+			op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+			(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
+				: Math.min(rel, 0)
 			)
 			);
 		}

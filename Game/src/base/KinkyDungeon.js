@@ -3665,6 +3665,16 @@ let afterLoaded = false;
 
 /**
  * Dummy function. You can modify this function as part of your mod like so:
+ * let _KDModsAfterGameStart = KDModsAfterGameStart;
+ * KDModsAfterGameStart = () => {
+ * [Your stuff here]
+ * _KDModsAfterGameStart();
+ * }
+ * It is declared with `let` intentionally to allow the above, without suggesting a type error
+ */
+let KDModsAfterGameStart = () => {};
+/**
+ * Dummy function. You can modify this function as part of your mod like so:
  * let _KDModsAfterLoad = KDModsAfterLoad;
  * KDModsAfterLoad = () => {
  * [Your stuff here]
@@ -3706,6 +3716,10 @@ function KinkyDungeonStartNewGame(Load) {
 		KDCommitKeybindings();
 	}
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
+
+
+
+	KDModsAfterGameStart();
 }
 
 function KDUpdatePlugSettings(evalHardMode) {
@@ -3830,6 +3844,7 @@ function KinkyDungeonHandleClick() {
 				if (KinkyDungeonKeybindings) {
 					KDCommitKeybindings();
 				}
+				KDModsAfterGameStart();
 			}
 			return true;
 		} else if (MouseIn(1275, 750, 350, 64)) {
