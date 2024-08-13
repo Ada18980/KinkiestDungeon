@@ -206,9 +206,13 @@ let KDToggles = {
 	NoForceGreet: false,
 	StruggleBars: true,
 	ShowJailedNPCSprites: true,
+	ShowZoom: true,
+	Backgrounds: true,
 };
 
 let KDToggleCategories = {
+	Backgrounds: "GFX",
+	ShowZoom: "UI",
 	ShowJailedNPCSprites: "GFX",
 	StruggleBars: "UI",
 	SpellBook: "UI",

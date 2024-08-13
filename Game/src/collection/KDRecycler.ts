@@ -145,7 +145,7 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 	let dd = KDMapData.RoomType == "Summit" ? 400 : 300;
 	let cats = KDListRecyclerCats();
 	if (KDMapData.RoomType == "Summit") {
-		dd += 125 + Math.ceil(cats.length/KDRecyclerCatsPerRow) * KDRecyclerCatSpacing;
+		dd += 125 + 3 * KDRecyclerCatSpacing;
 	}
 	if (y + dd < 940) {
 		let rID = 0;
@@ -214,6 +214,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 	let selectedcat: KDBlueprintCategory = null;
 	if (KDSelectedRecyclerCategory == "Null" && cats[0])
 		KDSelectedRecyclerCategory = cats[0].name;
+	let iin = index;
 	for (let cat of cats) {
 		let selected = cat.name == KDSelectedRecyclerCategory;
 		if (selected) selectedcat = cat;
@@ -224,16 +225,17 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		if (cats[index-1]?.name == KDSelectedRecyclerCategory) {
 			hotkey = KinkyDungeonKey[3];
 		}
+		if (KDSelectedRecyclerCategory == cat.name) iin = index;
 		DrawButtonKDExScroll(
 			"rec_cat_list" + cat.name,
 			(amount: number) => {
-				if (amount > 0) {
-					if (cats[index-1]) {
-						KDSelectedRecyclerCategory = cats[index-1].name;
+				if (amount < 0) {
+					if (cats[iin-1]) {
+						KDSelectedRecyclerCategory = cats[iin-1].name;
 					}
 				} else {
-					if (cats[index+1]) {
-						KDSelectedRecyclerCategory = cats[index+1].name;
+					if (cats[iin+1]) {
+						KDSelectedRecyclerCategory = cats[iin+1].name;
 					}
 				}
 			},
@@ -276,6 +278,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 	if (selectedcat) {
 		index = 0;
 		let items = selectedcat.items;
+		let ii = index;
 		for (let item of items) {
 			let img = (item.type == Restraint || item.type == LooseRestraint) ?
 				KDGetRestraintPreviewImage(KDRestraint({name: item.item}))
@@ -298,16 +301,17 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			if (inventoryItem)
 				DrawTextFitKD("" + (inventoryItem.quantity || 1),
 			x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+			if (KDSelectedRecyclerItem == item.name) ii = index;
 			DrawButtonKDExScroll(
 				"rec_item_list" + item.name,
 				(amount: number) => {
-					if (amount > 0) {
-						if (items[index-1]) {
-							KDSelectedRecyclerItem = items[index-1].name;
+					if (amount < 0) {
+						if (items[ii-1]) {
+							KDSelectedRecyclerItem = items[ii-1].name;
 						}
 					} else {
-						if (items[index+1]) {
-							KDSelectedRecyclerItem = items[index+1].name;
+						if (items[ii+1]) {
+							KDSelectedRecyclerItem = items[ii+1].name;
 						}
 					}
 				},
@@ -385,7 +389,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		let resCenter = x + XX + 32 + 100;
 		let res = Object.entries(selectedItem.recyclecost);
 		for (let i = 0; i < res.length; i++) {
-			let xxx = resCenter - res.length / 2 * 36 + 52 * i;
+			let xxx = resCenter - res.length / 2 * 52 + 52 * i;
 			let resource = res[i][0];
 			KDDraw(kdcanvas, kdpixisprites, "fac_item_res_" + resource,
 				KinkyDungeonRootDirectory + "UI/Resource/" + resource + ".png",
@@ -451,7 +455,7 @@ function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?:
 	return res;
 }
 
-function KDAutoGenRestraintBlueprint(name: string, category: string, applyvariant: string, mult: number = 1.25, forceResourceCost?: Record<string, number>, bonusResource?: Record<string, number>): KDBlueprint {
+function KDAutoGenRestraintBlueprint(name: string, category: string, applyvariant: string, mult: number = 1.25, forceResourceCost?: Record<string, number>, bonusResource?: Record<string, number>, count: number = 1): KDBlueprint {
 	let res = forceResourceCost || {};
 	let restraint = KDRestraint({name: name});
 
@@ -478,6 +482,7 @@ function KDAutoGenRestraintBlueprint(name: string, category: string, applyvarian
 		applyvariant: applyvariant,
 		recyclecategory: category,
 		recyclecost: res,
+		count: count,
 		prereq: () => {return true;},
 	};
 }

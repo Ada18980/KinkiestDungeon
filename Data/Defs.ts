@@ -179,10 +179,10 @@ let LAYERS_BASE = [
 	"BaggyShirt",
 
 	// Skirts that dont follow shilhouette
-	"WrappingLegsOver2",
-	"LegbinderLegsOver2",
 	"OverSkirtDeco",
 	"OverSkirt",
+	"WrappingLegsOver2",
+	"LegbinderLegsOver2",
 	"Greaves",
 
 	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape

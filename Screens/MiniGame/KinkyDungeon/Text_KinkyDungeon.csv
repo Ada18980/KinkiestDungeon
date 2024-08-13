@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.35 RC1"
+KDVersionStr,"5.3.35 RC4"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -45,6 +45,8 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+
+KDToggleBackgrounds,Show Background Art
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
 KDToggleStruggleBars,Show Struggle Bars
@@ -53,6 +55,7 @@ KDToggleAutoLoadMods,Auto Load Mods (offline only)
 KDToggleSpellBook,Classic Inventory Background
 KDToggleSkipIntro,Skip Intro
 KDToggleNoForceGreet,No Forced Greetings
+KDToggleShowZoom,Show Zoom Buttons
 KDToggleShowRestraintOnHover,Show Restraint Info on Escape Hover
 KDToggleForceWarnings,Always Show Warnings
 KDToggleEnableMinimap,Always Show Minimap

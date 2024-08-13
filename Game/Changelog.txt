@@ -30,6 +30,15 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.35 RC4
+- Misc graphical fixes
+
+5.3.35 RC3
+- Further filled out recycler tree
+
+5.3.35 RC2
+- Added vinyl tape and added tape/ribbon/mummy wrap to the Recycler
+
 5.3.35 RC1
 - Various misc bugfixes
 

@@ -32,14 +32,6 @@
 	"spriteSourceSize": {"x":7,"y":4,"w":191,"h":212},
 	"sourceSize": {"w":216,"h":216}
 },
-"Game/Bullets/ChainBolt.png":
-{
-	"frame": {"x":711,"y":2002,"w":72,"h":42},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":10,"w":72,"h":42},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/Earthquake.png":
 {
 	"frame": {"x":1747,"y":1,"w":300,"h":332},
@@ -167,14 +159,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":14,"y":64,"w":189,"h":68},
 	"sourceSize": {"w":216,"h":216}
-},
-"Game/Bullets/WitchChainBolt.png":
-{
-	"frame": {"x":711,"y":2002,"w":72,"h":42},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":10,"w":72,"h":42},
-	"sourceSize": {"w":72,"h":72}
 },
 "Game/Bullets/WitchRope.png":
 {
@@ -574,6 +558,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":33,"w":70,"h":7},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/StaffTape.png":
+{
+	"frame": {"x":791,"y":2006,"w":41,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":15,"w":41,"h":41},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Sword.png":
@@ -1016,14 +1008,6 @@
 	"spriteSourceSize": {"x":1,"y":1,"w":21,"h":13},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Spells/ChainBolt.png":
-{
-	"frame": {"x":711,"y":2002,"w":72,"h":42},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":10,"w":72,"h":42},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Spells/EarthformArc.png":
 {
 	"frame": {"x":2002,"y":1190,"w":40,"h":72},
@@ -1096,14 +1080,6 @@
 	"spriteSourceSize": {"x":15,"y":31,"w":49,"h":20},
 	"sourceSize": {"w":80,"h":80}
 },
-"Game/UI/CollectionFilter/Rank3.png":
-{
-	"frame": {"x":785,"y":2006,"w":46,"h":41},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":14,"y":15,"w":46,"h":41},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/UI/escapegrace.png":
 {
 	"frame": {"x":816,"y":1685,"w":10,"h":34},
@@ -1127,6 +1103,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":19,"w":13,"h":21},
 	"sourceSize": {"w":60,"h":60}
+},
+"Game/UI/Recycler/Wolf.png":
+{
+	"frame": {"x":711,"y":2002,"w":78,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":19,"w":78,"h":45},
+	"sourceSize": {"w":94,"h":94}
 },
 "Game/UI/restraint_key.png":
 {
@@ -1190,6 +1174,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:7d73e0ac23ae2a21c5aa975c86c1fdc5:acaf1bc81a7760b3e98af89fbb8145ce:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3e1ca4f084ad23ec56d49368cef01910:9adc6fa7c1951f0df8800546feb82b4f:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

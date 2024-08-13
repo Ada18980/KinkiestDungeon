@@ -340,6 +340,19 @@ function KinkyDungeonDrawInterface(showControls) {
 	KDDrawSpellChoices();
 	KDDrawNavBar(-1);
 
+	if (KDToggles.ShowZoom) {
+		DrawButtonKDEx("mainZoomIn", () => {
+			KDChangeZoom(-1);
+			return true;
+		}, true, PIXIWidth - 210, PIXIHeight * 0.5 - 50, 42, 42, undefined, "#ffffff",
+		KinkyDungeonRootDirectory + "UI/ZoomIn.png");
+		DrawButtonKDEx("mainZoomOut", () => {
+			KDChangeZoom(1);
+			return true;
+		}, true, PIXIWidth - 210, PIXIHeight * 0.5 - 50 + 48, 42, 42, undefined, "#ffffff",
+		KinkyDungeonRootDirectory + "UI/ZoomOut.png");
+	}
+
 }
 
 function KDDrawSpellChoices() {

@@ -11,7 +11,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "PrisonerBandit",
 		Behavior: {noPlay: true},
 		terrainTags: {}, floors:KDMapInit([])},
-	{name: "MummyElevator", tags: KDMapInit(["prisoner", "mummy", "peaceful", "noshop"]),
+	{name: "MummyElevator", tags: KDMapInit(["prisoner", "mummy", "peaceful", "noshop", "nofidget"]),
 		faction: "Prisoner", immobile: true, lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 100,
 		visionRadius: 0, maxhp: 1000, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		specialdialogue: "MummyElevator",
@@ -4371,6 +4371,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
+		dropTable: [{name: "RopeSnakeRaw", amount: 1, weight: 10}],
 	},
 	{name: "UnforseenRope", faction: "KinkyConstruct", clusterWith: "construct", color: "#ffae70", tags: KDMapInit(["ignoreharmless", "construct", "nosignal", "melee", "ropeRestraints", "ropeRestraints2", "minor", "search"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  stealth: 2.5, squeeze: true,
 		ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"],
@@ -4387,6 +4388,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 			{trigger: "death", type: "RandomRespawn", chance: 0.33},
 		],
+		dropTable: [{name: "RopeSnakeRaw", amount: 1, weight: 10}],
 	},
 	{name: "LearnedRope", faction: "KinkyConstruct", clusterWith: "construct", color: "#ffae70", tags: KDMapInit(["ignoreharmless", "construct", "nosignal", "melee", "ropeRestraints", "ropeRestraints2", "search"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  squeeze: true, disarm: 0.5,
 		ignoreflag: ["ropesnake"], failAttackflag: ["ropesnake"],
@@ -4406,6 +4408,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
+		dropTable: [{name: "RopeSnakeRaw", amount: 1, weight: 10}],
 	},
 	{name: "MonsterRope", faction: "KinkyConstruct", clusterWith: "construct", color: "#ffae70", tags: KDMapInit(["ropeTrap", "ignoreharmless", "doortrap", "construct", "nosignal", "melee", "unstoppable", "ropeRestraintsHogtie", "ropeRestraints", "ropeRestraints2", "elite", "hunter"]),
 		ignorechance: 0.75, followRange: 1, AI: "guard",
@@ -4427,6 +4430,7 @@ let KinkyDungeonEnemies = [
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
 		],
+		dropTable: [{name: "RopeSnakeRaw", amount: 8, weight: 10}],
 	},
 
 	{name: "ElementalRope", outfit: "Lingerie", style: "EarthElemental", faction: "Elemental", playLine: "Elemental", clusterWith: "elemental", bound: "ElementalRope", squeeze: true, color: "#ffae70",
@@ -4443,7 +4447,7 @@ let KinkyDungeonEnemies = [
 		maxdodge: 0,
 		visionRadius: 6, maxhp: 14, minLevel:0, weight:-2, movePoints: 1.5, attackPoints: 3, attack: "MeleeBind", attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 2.5, dmgType: "chain", fullBoundBonus: 2.5,
 		terrainTags: {"secondhalf":2, "thirdhalf":1, "ropeAnger": 4, "ropeRage": 4, "temple": 8, "doortrap": 4, revenge: 5, "elemental": 3, "witch": 5, "rope": 4}, allFloors: true, shrines: ["Rope", "Elements"],
-		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "Knife", ignoreInInventory: true, weight: 3, noSummon: true}],
+		dropTable: [{name: "RopeSnakeRaw", amount: 5, weight: 10}, {name: "WeakMagicRopeRaw", amount: 3, weight: 10}, {name: "Knife", ignoreInInventory: true, weight: 3, noSummon: true}],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Ropes", time: 15, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Ropes", aoe: 1.5, power: 1, chance: 1.0},
@@ -4468,7 +4472,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThinBlue", time: 4, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "LatexThinBlue", aoe: 1.5, power: 1, chance: 1.0},
 		],
-		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 10, noSummon: true}, {name: "RopeRune", weight: 2, noSummon: true}],
+		dropTable: [{name: "HardSlimeRaw", amount: 4, weight: 10}, {name: "RopeRune", weight: 2, noSummon: true}],
 	},
 	{name: "ElementalLeather", outfit: "ElementalLeather", style: "EarthElemental", faction: "Elemental", playLine: "Elemental", clusterWith: "elemental", bound: "ElementalLeather", squeeze: true, color: "#9999a0",
 		tags: KDMapInit(["opendoors", "elemental", "leather", "melee", "chainresist", "crushresist", "jail", "antiMagic", "jailer", "leatherRestraints", "leatherRestraintsHeavy", "ballGagRestraints", "leashing", "search", "doortrap"]),
@@ -4508,7 +4512,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "passout", type: "delete", chance: 1.0}, // All rope krakens vanish after you pass outevents: [
 			{trigger: "spellCast", type: "ropeKrakenSummonTentacle"}, // Drain HP when casting
 		],
-		dropTable: [{name: "Scissors", ignoreInInventory: true, weight: 2}, {name: "Knife", ignoreInInventory: true, weight: 5}, {name: "EnchKnife", ignoreInInventory: true, weight: 2}, {name: "ElfCrystal", weight: 3}]},
+		dropTable: [{name: "StrongMagicRopeRaw", amount: 50, weight: 10}, {name: "Scissors", ignoreInInventory: true, weight: 2}, {name: "Knife", ignoreInInventory: true, weight: 5}, {name: "EnchKnife", ignoreInInventory: true, weight: 2}, {name: "ElfCrystal", weight: 3}]},
 	{name: "RopeMinion", faction: "KinkyConstruct", tags: KDMapInit(["construct", "nosignal", "melee", "fireweakness", "minor","krakententacle"]), ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "RopeKraken", range: 4}, ignoreflag: ["kraken"], dependent: true,
 		visionRadius: 10,
 		Awareness: {
@@ -4520,6 +4524,7 @@ let KinkyDungeonEnemies = [
 		Resistance: {
 			profile: ["rope", "construct"],
 		},
+		dropTable: [{name: "WeakMagicRopeRaw", amount: 1, weight: 10},],
 		maxhp: 8, minLevel: 0, weight:-1000, movePoints: 1.5, attackPoints: 2, attack: "MeleePullWill", attackWidth: 1, attackRange: 1, power: 3, dmgType: "crush", noAlert: true,
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
@@ -4548,7 +4553,7 @@ let KinkyDungeonEnemies = [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 25, power: 3, chance: 1.0, aoe: 1.5}
 		],
 		ondeath: [{type: "spellOnSelf", spell: "WitchSlime"}],
-		dropTable: [{name: "Gold", amountMin: 40, amountMax: 50, weight: 1}, {name: "Slimethrower", weight: 30, ignoreInInventory: true}, {name: "StaffDoll", weight: 40, ignoreInInventory: true}, {name: "StaffGlue", weight: 130, ignoreInInventory: true}]},
+		dropTable: [{name: "SlimeRaw", amountMin: 40, amountMax: 50, weight: 1}, {name: "Slimethrower", weight: 30, ignoreInInventory: true}, {name: "StaffDoll", weight: 40, ignoreInInventory: true}, {name: "StaffGlue", weight: 130, ignoreInInventory: true}]},
 
 	{name: "SarcoKraken", faction: "KinkyConstruct", clusterWith: "construct", color: "#3b7d4f", tags: KDMapInit(["construct", "nosignal", "poisonresist", "soulimmune", "melee", "boss", "elite", "unflinching", "fireresist", "crushweakness", "chainweakness", "glueweakness", "hunter"]),
 		armor: 3.0, spellResist: 1.5,
@@ -4565,7 +4570,7 @@ let KinkyDungeonEnemies = [
 		],
 		visionRadius: 10, maxhp: 34, minLevel: 0, weight:-11, movePoints: 4, attackPoints: 3, attack: "SpellMeleePull", attackWidth: 1.5, attackMinRange: 1.5, attackRange: 6, power: 4, pullDist: 4, pullTowardSelf: true, dmgType: "charm",
 		terrainTags: {"secondhalf":16, "lastthird":5, "boss": -10, "open": 20, "passage": -60, "increasingWeight":1}, floors: KDMapInit(["tmb"]), shrines: [],
-		dropTable: [{name: "Gold", amountMin: 40, amountMax: 50, weight: 12}],
+		dropTable: [{name: "MysticDuctTapeRaw", amountMin: 25, amountMax: 50, weight: 12}],
 	},
 	{name: "SarcoMinion", faction: "KinkyConstruct", color: "#99ff99", tags: KDMapInit(["construct", "nosignal", "poisonresist", "soulimmune", "melee", "fireweakness", "minor", "slashweakness", "chainresist", "sarcotentacle", "mummyRestraints"]),
 		ignorechance: 0.75, followRange: 1, AI: "hunt",  master: {type: "SarcoKraken", range: 7}, ignoreflag: ["kraken"], dependent: true, suicideOnAdd: true,
@@ -4576,6 +4581,7 @@ let KinkyDungeonEnemies = [
 		nopickpocket: true,
 		maxblock: 0,
 		maxdodge: 0,
+		dropTable: [{name: "MysticDuctTapeRaw", amount: 1, weight: 12}],
 		terrainTags: {}, allFloors: true, shrines: ["Rope"]},
 
 

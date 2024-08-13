@@ -660,9 +660,9 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
-	let DisplaceFilters: Record<string, {sprite: any, hash: string, amount: number}[]> = {};
+	let DisplaceFilters: Record<string, {sprite: any, id: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let DisplaceFiltersInUse = {};
-	let EraseFilters: Record<string, {sprite: any, hash: string, amount: number}[]> = {};
+	let EraseFilters: Record<string, {sprite: any, id: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let EraseFiltersInUse = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
@@ -739,8 +739,21 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				for (let ll of Object.entries(l.DisplaceLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false, l.DisplacementInvariant, l.DisplacementMorph, l.NoAppendDisplacement);
-					if (DisplaceFiltersInUse[id]) continue;
-					DisplaceFiltersInUse[id] = true;
+
+					let zzz = -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
+					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
+						DisplaceFiltersInUse[id] = zzz;
+						for (let dg of Object.keys(LayerGroups[ll[0]])) {
+							if (DisplaceFilters[dg])
+								for (let ft of DisplaceFilters[dg]) {
+									if (ft.id == id && ft.zIndex < zzz) {
+										ft.zIndex = zzz;
+									}
+								}
+						}
+						continue;
+					}
+					DisplaceFiltersInUse[id] = zzz;
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
 						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
@@ -748,6 +761,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 							{
 								amount: (l.DisplaceAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
+								zIndex: zzz,
+								id: id,
 								sprite: KDDraw(
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
@@ -755,7 +770,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									id,
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
-										zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
+										zIndex: zzz,
 										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 										scalex: sx != 1 ? sx : undefined,
@@ -827,8 +842,20 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 
 				for (let ll of Object.entries(l.EraseLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
-					if (EraseFiltersInUse[id]) continue;
-					EraseFiltersInUse[id] = true;
+					let zzz = -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
+					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
+						EraseFiltersInUse[id] = zzz;
+						for (let dg of Object.keys(LayerGroups[ll[0]])) {
+							if (EraseFilters[dg])
+								for (let ft of EraseFilters[dg]) {
+									if (ft.id == id && ft.zIndex < zzz) {
+										ft.zIndex = zzz;
+									}
+								}
+						}
+						continue;
+					}
+					EraseFiltersInUse[id] = zzz;
 
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
@@ -837,6 +864,8 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 							{
 								amount: (l.EraseAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
+								id: id,
+								zIndex: zzz,
 								sprite: KDDraw(
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
@@ -844,7 +873,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 									id,
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
-										zIndex: -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0),
+										zIndex: zzz,
 										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 										scalex: sx != 1 ? sx : undefined,
@@ -874,6 +903,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 						{
 							amount: EraseAmount,
 							hash: x,
+							id: 'ef' + x,
 							sprite: KDDraw(
 								ContainerContainer.Container,
 								ContainerContainer.SpriteList,
@@ -976,6 +1006,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				}
 
 				let extrafilter: PIXIFilter[] = [];
+				let zz = -ModelLayers[origlayer] + (LayerPri(MC, l, m, mods) || 0);
 				// Add extrafilters
 				if (ExtraFilters[origlayer]) {
 					for (let ef of ExtraFilters[origlayer]) {
@@ -995,6 +1026,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				// Add erase filters BEFORE displacement
 				if (!l.NoErase && EraseFilters[origlayer]) {
 					for (let ef of EraseFilters[origlayer]) {
+						if (ef.zIndex != undefined && ef.zIndex < zz) continue;
 						let efh = "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {
@@ -1015,6 +1047,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				// Add displacement filters
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
+						if (ef.zIndex != undefined && ef.zIndex < zz) continue;
 						let efh = "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {
@@ -1047,7 +1080,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					img,
 					ox * Zoom, oy * Zoom, undefined, undefined,
 					rot, {
-						zIndex: -ModelLayers[origlayer] + (LayerPri(MC, l, m, mods) || 0),
+						zIndex: zz,
 						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
 						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
 						normalizeAnchorX: MODELWIDTH,

@@ -8557,7 +8557,7 @@ function KDGetUnassignedGuardTiles(type = "Patrol", ignoreNegative = false) {
  * @returns {boolean}
  */
 function KDCanIdleFidget(enemy) {
-	return enemy?.idle && !enemy.Enemy?.nonDirectional && !KDEnemyHasFlag(enemy, "fidget") && !KDEnemyHasFlag(enemy, "nofidget");
+	return enemy?.idle && !enemy.Enemy?.nonDirectional && !enemy.Enemy?.tags?.nofidget && !KDEnemyHasFlag(enemy, "fidget") && !KDEnemyHasFlag(enemy, "nofidget");
 }
 
 /**

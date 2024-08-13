@@ -46,6 +46,9 @@ let pixiview = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
+
+let kdBGMask = new PIXI.Graphics();
+kdBGMask.zIndex = -99;
 //let kdgamefogmask = new PIXI.Graphics();
 let kdgamefogsmoothDark = new PIXI.Container();
 kdgamefogsmoothDark.zIndex = -1.05;
@@ -190,6 +193,7 @@ kdcanvas.addChild(kdenemystatusboard);
 kdcanvas.addChild(kdUItext);
 kdcanvas.addChild(kdminimap);
 
+kdcanvas.addChild(kdBGMask);
 
 //kdcanvas.addChild(new PIXI.Sprite(kdlightmap));
 
@@ -1801,6 +1805,12 @@ function KinkyDungeonDrawGame() {
 					700, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0, 24);
 			}
 
+
+
+			let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
+			if (altType?.drawscript) {
+				altType.drawscript(KDDrawDelta, CamX, CamY, CamX_offsetVis, CamY_offsetVis);
+			}
 
 			if (!KDModalArea) {
 				KDModalArea_x = 600;

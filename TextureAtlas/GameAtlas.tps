@@ -2150,11 +2150,14 @@
             <key type="filename">../Game/Items/Restraint/Gags.png</key>
             <key type="filename">../Game/Items/Restraint/Glue.png</key>
             <key type="filename">../Game/Items/Restraint/Harnesses.png</key>
+            <key type="filename">../Game/Items/Restraint/HolyRope.png</key>
             <key type="filename">../Game/Items/Restraint/Ice.png</key>
             <key type="filename">../Game/Items/Restraint/Latex.png</key>
             <key type="filename">../Game/Items/Restraint/LeatherCuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Legbinders.png</key>
             <key type="filename">../Game/Items/Restraint/MagicBelts.png</key>
+            <key type="filename">../Game/Items/Restraint/MithrilRope.png</key>
+            <key type="filename">../Game/Items/Restraint/MysticDuctTape.png</key>
             <key type="filename">../Game/Items/Restraint/Obsidian.png</key>
             <key type="filename">../Game/Items/Restraint/PanelGags.png</key>
             <key type="filename">../Game/Items/Restraint/PlugGags.png</key>
@@ -2518,6 +2521,7 @@
             <key type="filename">../Game/UI/Recycler/Armor.png</key>
             <key type="filename">../Game/UI/Recycler/Latex.png</key>
             <key type="filename">../Game/UI/Recycler/Leather.png</key>
+            <key type="filename">../Game/UI/Recycler/Leather2.png</key>
             <key type="filename">../Game/UI/Recycler/Rope.png</key>
             <key type="filename">../Game/UI/Recycler/Tape.png</key>
             <key type="filename">../Game/UI/Resource/Latex.png</key>
@@ -3589,6 +3593,7 @@
             <key type="filename">../Game/Items/Restraint/Cuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Metal.png</key>
             <key type="filename">../Game/UI/Recycler/Metal.png</key>
+            <key type="filename">../Game/UI/Recycler/Metal2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3605,6 +3610,11 @@
             </struct>
             <key type="filename">../Game/Items/Restraint/Cyber.png</key>
             <key type="filename">../Game/Items/Restraint/Modules.png</key>
+            <key type="filename">../Game/UI/Recycler/Cyber.png</key>
+            <key type="filename">../Game/UI/Recycler/Dress.png</key>
+            <key type="filename">../Game/UI/Recycler/Module.png</key>
+            <key type="filename">../Game/UI/Recycler/Toys.png</key>
+            <key type="filename">../Game/UI/Recycler/Wolf.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

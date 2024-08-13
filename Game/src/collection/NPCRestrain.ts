@@ -896,6 +896,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 	let highlightedItem: string = "";
 	if (KDSelectedGenericRestraintType == "" && cats[0])
 		KDSelectedGenericRestraintType = cats[0].raw || cats[0].consumableRaw;
+	let iin = index;
 	for (let cat of cats) {
 		let selected = (cat.raw || cat.consumableRaw) == KDSelectedGenericRestraintType;
 		if (selected) selectedcat = cat;
@@ -912,16 +913,17 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 		let inventoryItem = KinkyDungeonInventoryGetSafe(cat.raw || cat.consumableRaw);
 		DrawTextFitKD("" + (inventoryItem?.quantity || 0),
 		x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+		if (KDSelectedGenericRestraintType == (cat.raw || cat.consumableRaw)) iin = index;
 		if (DrawButtonKDExScroll(
 			"res_gen_list" + (cat.raw || cat.consumableRaw),
 			(amount: number) => {
-				if (amount > 0) {
-					if (cats[index-1]) {
-						KDSelectedGenericRestraintType = (cats[index-1].raw || cats[index-1].consumableRaw);
+				if (amount < 0) {
+					if (cats[iin-1]) {
+						KDSelectedGenericRestraintType = (cats[iin-1].raw || cats[iin-1].consumableRaw);
 					}
 				} else {
-					if (cats[index+1]) {
-						KDSelectedGenericRestraintType = (cats[index+1].raw || cats[index+1].consumableRaw);
+					if (cats[iin+1]) {
+						KDSelectedGenericRestraintType = (cats[iin+1].raw || cats[iin+1].consumableRaw);
 					}
 				}
 			},
@@ -983,6 +985,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 				&& slot.allowedTags.some((tag) => {return KDRestraint({name: item.restraint})?.shrine.includes(tag);});
 			}
 		);
+		let ii = 0;
 		for (let item of items) {
 
 			let img = KDGetRestraintPreviewImage(KDRestraint({name: item.restraint}));
@@ -1007,16 +1010,17 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			//if (inventoryItem)
 			DrawTextFitKD(TextGet("KDCost") + (item.count),
 			x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+			if (KDSelectedGenericBindItem == item.restraint) ii = index;
 			if (DrawButtonKDExScroll(
 				"gen_bind_list" + item.restraint,
 				(amount: number) => {
-					if (amount > 0) {
-						if (items[index-1]) {
-							KDSelectedGenericBindItem = items[index-1].restraint;
+					if (amount < 0) {
+						if (items[ii-1]) {
+							KDSelectedGenericBindItem = items[ii-1].restraint;
 						}
 					} else {
-						if (items[index+1]) {
-							KDSelectedGenericBindItem = items[index+1].restraint;
+						if (items[ii+1]) {
+							KDSelectedGenericBindItem = items[ii+1].restraint;
 						}
 					}
 				},

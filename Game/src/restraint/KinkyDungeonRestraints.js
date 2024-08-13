@@ -255,7 +255,7 @@ function KDRestraintBondageMult(item) {
 			type: KDRestraintBondageType(item),
 			override: undefined,
 			overridePriority: 0,
-			mult: 2,
+			mult: r.npcBondageMult || 2,
 		};
 
 		KinkyDungeonSendEvent("calcBondageMult", data);
@@ -275,7 +275,7 @@ function KDRestraintBondageType(item) {
 			item: item,
 			restraint: r,
 			type: "",
-			override: undefined,
+			override: r.npcBondageType,
 			overridePriority: 0,
 		};
 		// Stock methodology

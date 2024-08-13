@@ -4,6 +4,7 @@ let KDJourneyMapMod = {
 	"Random": true,
 };
 
+
 let KDDragonList = [
 	{
 		enemy: "DragonQueenCrystal",
@@ -290,8 +291,8 @@ let alts = {
 		Title: "Summit",
 		noWear: true, // Disables doodad wear
 		bossroom: false,
-		width: 30,
-		height: 15,
+		width: 12,
+		height: 12,
 		nopatrols: true,
 		alwaysRegen: false, // Always regenerate this room
 		persist: true,
@@ -307,6 +308,49 @@ let alts = {
 			KDTriggerNPCEscape(10);
 
 			return true; // Returns whether or not to repopulate this map
+		},
+		drawscript: (delta, CamX, CamY, CamX_offsetVis, CamY_offsetVis) => {
+			if (KDToggles.Backgrounds) {
+				let totalScale = 1.5;
+				let imgwidth = PIXIWidth * totalScale;
+				let imgheight = imgwidth * 0.5;
+
+				let xx = PIXIWidth/2
+					-imgwidth/2
+					+ imgwidth * (0.5 - (KDPlayer().visual_x / KDMapData.GridWidth)) * (totalScale - 1) / totalScale;
+				let yy = PIXIHeight/2
+					-imgheight/2
+					+ imgheight * (0.5 - (KDPlayer().visual_y / KDMapData.GridHeight)) * (totalScale - 1) / totalScale;
+				KDDraw( kdcanvas, kdpixisprites, "summitBG",
+					"Backgrounds/Mountain.png",
+					xx, yy, imgwidth, imgheight,
+					undefined, {
+						zIndex: -100,
+					}
+
+				);
+				kdBGMask.visible = true;
+				setTimeout(() => {
+					kdBGMask.visible = KDGameData.RoomType == "Summit" && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game";
+				}, 20);
+
+				kdBGMask.clear();
+
+
+				// No inverse masks in PIXI.js. I crie
+				kdBGMask.beginFill(0x000000, 1.0);
+
+				kdBGMask.drawRect(
+					(-1 - (CamX + CamX_offsetVis)) * KinkyDungeonGridSizeDisplay,
+					(0 - (CamY + CamY_offsetVis)) * KinkyDungeonGridSizeDisplay,
+					KinkyDungeonGridSizeDisplay * (1 + KDMapData.GridWidth),
+					KinkyDungeonGridSizeDisplay * (1 + KDMapData.GridHeight),
+				);
+
+				kdBGMask.endFill();
+			}
+
+
 		},
 		norestock: true,
 		skin: "vault",

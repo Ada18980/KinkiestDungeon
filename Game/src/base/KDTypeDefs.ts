@@ -202,6 +202,8 @@ interface KDRestraintPropsBase {
 		level_magic?: number,
 	},
 
+	npcBondageMult?: number,
+	npcBondageType?: string,
 	/**
 	 * Subjective modifier for how pissed off an enemy has to be in order to use this item on you. Good for items that "tighten" for example.
 	 * The effects are not straightforward, but some of the things a higher aggro level will do in the future (TODO) are:
