@@ -96,6 +96,8 @@ Distraction Particles
 性奋粒子
 Vibration Particles
 震动粒子
+Gag Particle FX
+堵嘴粒子特效
 Show NPC Status
 显示NPC状态
 Show Spell Range
@@ -302,6 +304,8 @@ Faster Floater Fade
 漂浮物更快消散
 No Damage Floaters
 无伤漂浮物
+Dynamic Armor (must hide armor)
+动态盔甲 (必须隐藏盔甲)
 Helpless!
 无助！
 Evaded!
@@ -658,10 +662,16 @@ Magic Hands
 魔法之手
 Enemies can add restraints underneath existing restraints.
 敌人可以透过外层拘束具添加内层拘束。
+Fully Integrated
+完全集成
+Start with your body sealed in an adhesive layer of latex.
+开局时将你的身体密封在一层粘合乳胶层中。
+Start atop a conveyor on your way to be sealed away inside the Facility.
+从传送带顶部开始，被封闭在设施内。
 Cyber Doll
 赛博娃娃
-Start in Cyber restraints.
-开局时穿戴赛博束缚。
+Start in full Cyber restraints.
+开局时穿戴全套赛博束缚。
 Fuuka's Pet
 Fuuka的宠物
 Start with Fuuka's collar and a few restraints.
@@ -672,8 +682,13 @@ All humanoids that can bind you also apply Fuuka's special restraints.
 所有可束缚你的人形生物可以使用Fuuka特制的拘束具。
 Collected
 搜集
-Start with The Warden's special collar and some restraints.
+Start with The Warden's special belt which punishes you for defiling spell orbs.
+开局时穿戴典狱长的特殊贞操带，它会惩罚你玷污法术球。
 从典狱长的特殊项圈和一些束缚开始。
+Enforcers
+执法者
+All humanoids that can bind you also apply The Warden's cuffs.
+所有能够束缚你的人形生物也会使用典狱长的手铐。
 The Warden's Property
 典狱长的财产
 All humanoids that can bind you also apply The Warden's special restraints.
@@ -1578,6 +1593,12 @@ Return
 返回
 Keybindings
 按键绑定
+Show free characters on map
+在地图上显示自由的角色
+Detailed jailed NPCs (experimental)
+被监禁的 NPC 细节 (实验性)
+Show Struggle Bars
+显示挣扎条
 Allow Suspicious Mods
 允许可疑模组
 Auto Load Mods (offline only)
@@ -2564,8 +2585,8 @@ Four Seasons
 四季法杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，下一次使用时 -50% 火/水/冰/风/雷/岩属性法术的消耗，但每个属性仅可使用一次。
-Deals shadow damage. +25% fire, ice, acid, crush, electric, blast damage. Offhand: Applies passive bonus.
-造成暗影伤害，+25% 火/水/冰/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
+Deals shadow damage. +25% fire, ice, soap, crush, electric, blast damage. Offhand: Applies passive bonus.
+造成暗影伤害，+25% 火/冰/皂化/风/雷/岩/压力/爆炸伤害。副手：应用被动奖励。
 The Arbiter
 仲裁者之杖
 I have altered the rules. Pray I do not alter them further.
@@ -3470,6 +3491,17 @@ The enforcer fires off restraints that wrap around your body and apprehend you! 
 执法器发射出束缚包裹在你身上并逮捕了你！（+RestraintAdded）
 The enforcer releases small drones which lock onto your restraints! (DamageTaken)
 执法器释放小型无人机锁定你的束缚具！（DamageTaken）
+Time to get you into your uniform~
+该穿上制服了~
+You won't be needing any of this.
+你不需要这些。
+There we go, all ready for training!
+好了, 一切准备就绪, 可以进行训练了!
+Cyber Storage
+网络容器
+多功能金属箱，配备有聚碳酸酯防爆门和钢筋。
+Used throughout the reign of the Old Civilization to store slaves and prisoners.
+在整个古代文明统治时期，它被用来关押奴隶和囚犯。
 Artillery Unit
 炮兵部队
 The artillery unit releases magic smoke and explodes.
@@ -4215,7 +4247,7 @@ The guard passes out and drops her possessions!
 The guard locks your restraints!
 守卫锁住你的拘束具！
 The guard places a NewRestraintName on you
-警卫在你身上放置了一个 NewRestraintName
+警卫在你身上放置了一个新的 RestraintName
 The guard plays with you, groping and rubbing your body!
 守卫玩弄你，摸索揉你的身体！
 Armed Guard
@@ -4227,7 +4259,7 @@ The guard shocks you and slaps on some restraints! (+RestraintAdded)
 The guard shocks you with her taser!!!
 警卫用她的电击枪电击你！！！
 The EnemyName applies a NewRestraintName over your OldRestraintName
-EnemyName 在你的 OldRestraintName 上应用 NewRestraintName
+EnemyName 在你的 OldRestraintName 上束缚 NewRestraintName
 The EnemyName removes your OldRestraintName
 EnemyName 移除了你的 OldRestraintName
 The EnemyName restrains you with a NewRestraintName
@@ -4450,20 +4482,18 @@ A light restores the will of its allies!
 一道光恢复了盟友的意志！
 You do not have enough resources to cast the spell!
 你没有足够的资源来施放咒语！
-You AttackName TargetEnemy for DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy for a decreased DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成了少量的 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy for an increased DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成大量的 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy for a devastating DamageDealt DamageType damage!
-你 AttackName TargetEnemy 造成毁灭性的 DamageDealt 点 DamageType 伤害！
-You AttackName TargetEnemy, but your DamageType weapon has no effect!
-你 AttackName TargetEnemy，但你的武器没有效果！
-You AttackName TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
-你 AttackName TargetEnemy 造成 DamageDealt 点 DamageType 伤害！减少了它的魔法抗性！
 AttackName hits TargetEnemy for DamageDealt DamageType damage!
-AttackName 击中 TargetEnemy 造成 DamageDealt 点 DamageType 伤害！
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害!
+AttackName hits TargetEnemy for a decreased DamageDealt DamageType damage!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点少量的 DamageType 伤害!
+AttackName hits TargetEnemy for an increased DamageDealt DamageType damage!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点大量的 DamageType 伤害！
+AttackName hits TargetEnemy for a devastating DamageDealt DamageType damage!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点毁灭性的 DamageType 伤害！
+AttackName hits TargetEnemy, but your DamageType weapon has no effect!
+AttackName 命中 TargetEnemy, 但你的 DamageType 武器似乎没有任何效果！
+AttackName hits TargetEnemy for DamageDealt DamageType damage!, reduced by an anti-magic ward!
+AttackName 命中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害! 减少了它的魔法抗性!
 AttackName hits TargetEnemy for a reduced DamageDealt DamageType damage!
 AttackName 击中 TargetEnemy 造成了少量的 DamageDealt 点 DamageType 伤害！
 AttackName hits TargetEnemy but DamageType damage doesn't have any effect!
@@ -4554,8 +4584,8 @@ The lock doesn't even have a keyhole to pick!
 这锁甚至连钥匙孔都没有！
 You need a special tool to pick this kind of lock.
 你需要一个特殊的工具来撬开这种锁。
-The lock doesn't have a keyhole to pick.
-这把锁没有钥匙孔可撬。
+The lock is technological and does not use a key.
+这把锁是科技锁，不需要钥匙。
 The lock is brimming with security features and is nigh impossible to pick!
 这把锁充满了安全特征，几乎不可能被撬开！
 The key sticks in the lock and jams, mangling the key!
@@ -5227,7 +5257,7 @@ Level RestraintLevel (Rarity)
 Consumable
 消耗品
 Worn
-旧的
+佩戴中
 Equipped
 已装备
 Weapons
@@ -7724,6 +7754,10 @@ Battle Trance
 战斗恍惚
 While at 40 Battle Rhythm, you attack twice per turn.
 当战斗节拍达到 40 时，你每回合可以攻击两次。
+Combat Maneuver
+战斗机动
+When Battle Trance is active, you gain a free move if the target is defeated before the second attack hits.
+当战斗恍惚激活时，如果目标在第二次攻击命中之前被击败，你将获得一次自由移动。
 Devious Ingenuity
 邪恶的独创性
 Trap-type spells and consumables no longer require you to channel them, but still have a delay before arming.
@@ -8958,6 +8992,10 @@ Chain Strike
 锁链攻击
 You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
 你拥有在攻击时召唤锁链的力量。启用后：你的攻击造成 +10 锁链伤害并制造锁链。125% 束缚效率。
+Ropework
+结绳术
+You have the power to weave ropes between your attacks. When enabled: Your attacks deal +10 chain damage and create ropes. 400% bind efficiency.
+你有能力在攻击之间编织绳索。启用后：你的攻击造成 +10 连锁伤害并制造绳索。400% 束缚效率。
 Leather Whip
 皮鞭
 You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
@@ -12136,6 +12174,70 @@ Pathetic.
 真可怜。
 Such feeble attempts.
 没用的。
+It's over, human. You've lost.
+已经结束了，人类。你输了。
+There is no escape.
+跑不了的。
+You are beneath me.
+你比我低下。
+Nice gear. I'll take it.
+好东西。我要了。
+Try getting out of that!
+尝试挣脱它！
+Who am I? You beings may call me PTRN.
+我是谁？你们可以叫我 PTRN。
+She thinks she can beat us~
+她以为她能打败我们~
+No one will save you.
+没有人会救你。
+Come and accept your fate.
+来接受你的命运吧。
+An unruly subject. She needs training.
+一个难以管教的对象。她需要训练。
+You should consider your actions and their consequences~
+你应该考虑你的行为及其后果~
+Now now, a mortal should know her place!
+现在，凡人应该知道自己的地位！
+We are the keepers of balance.
+我们是平衡的维持者。
+Do not mess with us!
+别来惹我们！
+I shall take you myself~
+我亲自带你去~
+Where do you think you're going?
+你觉得你能往哪去？
+I will be free... even if it takes me a thousand years!
+我将获得自由……即使需要一千年！
+Release me you pathetic creature!
+放开我！你这个可怜的家伙！
+I will not be contained!
+我才不会被收容！
+Oh no, whatever shall I do!
+哦不，我该怎么办呢！
+I will be back, mortal!
+我会回来的，凡人！
+You will never trap me!
+你永远也困不住我！
+I yearn for a challenging puzzle!
+我渴望有挑战性的谜题！
+Show me your strongest restraints!
+展现你最强的束缚吧！
+I could probably escape anything.
+我或许能够逃避一切。
+Come here my plaything~
+快过来，我的玩物~
+Mortals are my favorite toy.
+凡人是我最喜欢的玩具。
+It's more fun when you resist!
+反抗才会更有趣！
+Know your place, mortal~
+认清自己的地位吧，凡人~
+I will bring you to my lair~
+我会带你去我的巢穴~
+Mortals shouldn't have too much freedom~
+凡人不应该有太多的自由~
+Mortals should keep their hands to themselves~
+凡人还是先管好自己的事吧~
 Humans are fun to play with.
 和人类一起玩很有趣。
 Toying with me? I shall oblige!
@@ -13744,8 +13846,10 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 （SPEAKER 挥手）|你好，|我制造各种武器。|你想买一些吗？
 (The SPEAKER nods)|Speak softly and carry a big hammer.
 （SPEAKER 点点头）|轻声细语，手持重锤。
-(The SPEAKER waves)|Greetings,|I manufacture all sorts of armor.|Would you like to buy some?
-（SPEAKER 挥手）|你好，|我制造各种防具。|你想买一些吗？
+(The SPEAKER waves)|Hi.|I make armor. Only the finest.|I don't sell it cheap, unlike my twin.
+（SPEAKER 挥手）|嗨。|我只做最好的盔甲。|我与我的孪生兄弟不同，我卖的盔甲可不便宜。
+(The SPEAKER looks at you.)|Do you have a dealer's license?
+（SPEAKER 看着你。）|您有经销商执照吗？
 (The SPEAKER folds her arms)|I don't do charity, girl.
 （SPEAKER 交叉双臂）|我不做慈善事业，小姑娘。
 (The SPEAKER nods)|The most high-impact of sports bras.
@@ -13766,6 +13870,8 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 （SPEAKER 挥手）|你好啊小姐！|什么风把您吹到这来了
 (The SPEAKER folds her arms)|That's not very nice!
 （SPEAKER 交叉双臂）|那样做可不好哦！
+(The SPEAKER looks at you and smiles.)|Don't you already have one?
+（SPEAKER 微笑着看着你）|你不是已经有一个了吗？
 (The SPEAKER folds her arms)|I don't do charity, miss.
 （SPEAKER 交叉双臂）|我不做慈善事业，小姐。
 (The SPEAKER nods)|Could use a higher heel...
@@ -15292,8 +15398,14 @@ Doll Plug Gag
 玩偶塞子口塞
 A soft, flexible plug pressed into your mouth and held in place with a metal shield.
 将柔软、灵活的塞子压入你的嘴中，并用金属罩固定到位。
+Doll Muzzle
+玩偶口套
+A metallic shield preventing you from removing any gags underneath.
+金属罩阻止你移除下面的任何塞子。
+It's made of exquisite Old Civilization metals, resistant to almost all forms of damage.
+它由精致的古代文明金属制成，可以抵抗几乎所有形式的损坏。
 Cyber Mittens
-赛博口套
+赛博手套
 These mittens force your hands into fists, keeping you from using them to do anything useful.
 这些手套迫使你的手握成拳头，使你无法用它们做任何有用的事情。
 It is made of a strong mesh of ancient metallic fiber, kept in place with a metal band.
@@ -15482,6 +15594,16 @@ Body
 身体
 Gloves
 手套
+RibbonBelt
+丝带绳衣
+Upper Chest Strap
+上胸绳
+Shoulder Straps
+肩绳
+Lower Chest Straps
+下胸绳
+Arm Straps
+手臂绳
 Arm Ropes
 手臂绳缚
 Cuffs
@@ -15706,13 +15828,13 @@ A quick tie for apprehending prisoners.
 用于逮捕囚犯的快速捆绑。
 It's not very secure.
 这不是很牢固。
-Intricate Ropework
-复杂的绳索
+Chest Straps
+胸绳
 A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
 用于逮捕囚犯的快速捆绑，穿过手部束缚装置上的带扣。
-Strict Ropework
-严密的绳索
-The finishing touches on a tight and strict piece of ropework.
+Chest Harness
+胸束衣
+The finishing touch on a tight and strict piece of ropework.
 最后的收尾工作是对一根紧密而严厉的绳索进行最后的修饰。
 Rope Hogtie
 驷马
@@ -15775,7 +15897,7 @@ Looks like our time is coming to an end...
 Time to bring you back to your place~
 是时候带你回到原处了~
 You've been quite adorable! Until next time~
-你真是太可爱了！直到下次~
+你真是太可爱了！下次见~
 It's time for your walk, miss.
 小姐，该散步了。
 Now let's see, where to go...
@@ -17199,6 +17321,8 @@ Magical water reduces your accuracy and slows you significantly!
 魔法水会降低你的精准度并显着减慢你的速度！
 You attack twice!
 你攻击了两次！
+You gain a free move from Combat Maneuvers!
+你可以通过战斗机动获得一次自由行动！
 Access denied.
 拒绝访问。
 Facility is under lockdown.
@@ -17409,6 +17533,8 @@ Show Quick Inventory
 显示快速背包
 Skip Tutorial
 跳过教程
+Mod Compatibility Mode
+模组兼容模式
 Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
 (Leave and Disable Tutorial)
@@ -18528,7 +18654,7 @@ Feral
 Status
 状态
 Guest
-游客
+客人
 Servant
 仆人
 Manager
@@ -18541,6 +18667,8 @@ Willpower
 意志
 Prisoner #NUMR/TTL
 囚犯 #NUMR/TTL
+Guest #NUMR/TTL
+客人 #NUMR/TTL
 Select a character to examine
 选择要检查的角色
 Former Faction:
@@ -19167,7 +19295,7 @@ The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 (SPEAKER 看着你)|你的就很好，亲爱的。
 (The SPEAKER chuckles)|You don't have enough gold for that, dear.|Try coming back after a good round of looting!
 (SPEAKER 笑着说)|你没有足够的金币，亲爱的。|等你洗劫一空再回来吧！
-(The SPEAKER nods)|My great grandmother used to wear these."
+(The SPEAKER nods)|My great grandmother used to wear these.
 (SPEAKER 点点头)|我的曾祖母曾经戴过这个。
 (The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead...
 (SPEAKER 点点头)|冒险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
@@ -19271,8 +19399,12 @@ A very short chain connecting your wrist cuffs together.
 一条非常短的链条，将你的手腕铐连接在一起。
 ESCP Difficulty: AMNT
 ESCP 难度：AMNT
-ESCP Power: AMNT%
-ESCP 力量：AMNT%
+ESCP Power: AMNT
+ESCP 力量：AMNT
+ESCP Ability: AMNT
+ESCP 能力: AMNT
+Max ESCP Depth: AMNT%
+最大 ESCP 深度: AMNT%
 Your collar channels the vigor of excitement into magical energy!
 你的项圈将兴奋的活力转化为神奇的能量！
 The collar has already squeezed what it can out of you. Clear your mind first!
@@ -19445,6 +19577,10 @@ Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to
 以NPC为目标绑上皮带。敌人和不情愿的盟友必须首先被捆绑到50%。以自身为目标释放所有的束缚，或者以一个被束缚的NPC为目标释放它们。
 Target an NPC to leash, or self to unleash all.
 以NPC为目标进行束缚，或以自我为目标进行释放。
+Brat Handler
+顽童处理员
+Target an NPC with an equipped leash restraint (via Truss'em'up) to attach a leash. Target self to release all leashes, or target a leashed NPC to unleash them.
+以装备了牵引绳束缚装置的 NPC 为目标（通过'把他们捆起来！'动作）来系上牵引绳。以自己为目标来松开所有牵引绳，或以被牵引的 NPC 为目标来解开它们。
 Clip-On Leash
 夹子皮带
 A beloved favorite of pets and trainers alike.
@@ -19567,8 +19703,8 @@ Convert low tier restraints into raw materials and output higher quality restrai
 将低阶束缚转化为原材料，产出更高品质束缚，增加从者数量可加快转化速度。
 Cuddle Lounge
 拥抱休息室
-Assign prisoners to the lounge in order to improve your servants' opinion of you.
-将囚犯分配到休息室以提高仆人对你的观点。
+Assign prisoners to the lounge in order to improve servant and prisoner opinion.
+将囚犯分配到休息室以提高仆人和囚犯对你的看法。
 Recycle Restraints
 回收限制
 Recycle One
@@ -19618,3 +19754,273 @@ Cyber Wrist Tether
 赛博手腕绑带
 A very short energy tether connecting your wrist cuffs together.
 一条非常短的能量绳将你的手腕铐连接在一起。
+Desperate Struggle
+绝望的挣扎
+Spend 20 WP to shake around violently. Has a chance to loosen restraints you are wearing, based on existing struggle progress. Spreading the effect over multiple restraints reduces the chance of loosening.|Requires 25% or more WP to activate.
+消耗 20 意志剧烈晃动。根据现有的挣扎进度，有机会松开绑在你身上的束缚。将效果分散到多个束缚上可降低松动的几率。|需要 25% 或更多意志力才能使用。
+None of your restraints will budge.
+任何束缚都不会松动。
+You thrash around with all your might.
+你用尽全身的力气挣扎。
+You don't have the willpower left to struggle...
+你没有足够的意志力去挣扎……
+Owned: AMNT
+所属: AMNT
+Inputs:
+输入:
+You slip off the conveyor!
+你从传送带上滑下来了！
+The Summit
+顶点
+Back to Collection
+返回收藏
+Edit Restraints
+修改束缚
+Editing Restraints
+正在修改束缚
+Imprison in Furniture
+囚禁在家具中
+Module (Utility)
+模块 (实用程序)
+Leash
+皮带
+Module (Punishment)
+模块 (惩罚)
+~~~ Collar ~~~
+~~~ 项圈 ~~~
+Blindfold / Earplugs
+眼罩 / 耳塞
+Blindfold
+眼罩
+Mask/Hood
+面罩/头套
+Gag
+口塞
+Gag / Stuffing
+口塞 / 填充
+Muzzle
+口套
+Wrists
+腕部
+Heavy Bondage
+重型束缚
+Extra Bondage
+额外束缚
+Encasement
+包裹
+Mittens
+连指手套
+Mittens / Tape
+连指手套 / 胶带
+Gloves / Tape
+手套 / 胶带
+Piercings
+穿孔
+Weights
+砝码
+Vibes
+震动
+Chastity Bra
+贞操文胸
+Catsuit / Leotard
+紧身连体衣 / 紧身衣
+Harness
+束衣
+Corset
+束胸
+Rear Plug
+肛塞
+Front Plug
+阴塞
+Vibrator
+震动棒
+Chastity Belt
+贞操带
+Thigh Cuffs
+大腿镣铐
+Leg Bondage
+腿部束缚
+Legbinder
+绑腿
+Ankles
+脚踝
+Shins
+小腿
+Knees
+膝盖
+Toe Cuffs
+脚趾铐
+Toe Tie
+脚趾绑带
+Heels
+高跟鞋
+Equipped:
+已装备:
+Click to Add
+点击添加
+Free Prisoners
+释放囚犯
+Perk Unlocked:
+解锁技能:
+Latex Solvent
+乳胶溶剂
+You ready the bottle of Latex Solvent.
+你准备好了一瓶乳胶溶剂。
+A potent acid, capable of dissolving slime and latex.
+一种强酸，能够溶解粘液和乳胶。
+Deal 90 acid damage to target. Adds a 10% debuff to the cut and struggle resistance of latex restraints currently worn.
+对目标造成 90 点酸性伤害。当前穿戴的乳胶束缚带的切割和抗挣扎能力增加 10% 的减益效果。
+Weakened by Latex Solvent (10%)
+被乳胶溶剂削弱 (10%)
+You spill the solvent on yourself and loosen your latex bonds!
+你将溶剂洒在自己身上，乳胶束缚松动!
+You splash the ENMY with latex solvent!
+你将乳胶溶剂泼向 ENMY!
+You can't use solvents on targets other than yourself while bound.
+被束缚时，你不能对除自己之外的目标使用溶剂。
+Random
+随机
+Choose Palette
+选择调色板
+Restraint Palette
+限制调色板
+Choose Restraint
+选择限制
+Def. Palette: 
+默认调色板:
+Set All Palette
+设置所有调色板
+Prisoners
+囚犯
+Guests
+客人
+Assign to
+分配给
+Remove from
+移除自
+Imprison
+监禁
+Opinion:
+观点:
+Last Seen on Floor FLR, LOC
+最后出现在楼层 FLR 的 LOC 位置
+Present in current level
+存在于当前层级
+Captured by FCTN
+由 FCTN 捕获
+Captured by enemies
+由敌人捕获
+Use 'Truss'em'Up' to edit restraints on this NPC
+使用 '把他们捆起来！' 修改此 NPC 的束缚
+The NPC needs tightening, but is unavailable right now
+NPC 需要收紧束缚，但目前无法做到
+Tighten loose restraints
+收紧宽松的束缚
+NPC has escaped!
+NPC 已逃脱!
+NPC is likely to escape.
+NPC 很有可能逃脱。
+NPC has managed to loosen her bonds.
+NPC 已成功解开她的束缚。
+Any
+全员
+NPC Opinion:
+NPC 好感度:
+NPC Escape Status:
+NPC 逃脱状态:
+NPC Binding:
+NPC 拘束程度:
+NPC Availability:
+NPC 状况:
+Favorited:
+收藏:
+Rank:
+阶级:
+Minor
+低级
+Normal
+正常
+Elite
+精英
+Miniboss
+小型Boss
+Legendary
+传奇
+Bound
+拘束
+Free
+自由
+Secure
+安全
+At Risk
+面临风险
+Escaped
+已逃脱
+Imprisoned
+已监禁
+Positive
+积极
+Negative
+消极
+Favorite
+受欢迎的
+Non-Favorite
+不受欢迎
+Present
+可用
+Unavailable
+不可用
+Auto Bind Interface
+自动拘束接口
+AutoBind
+自动拘束
+Copy Restraints
+复制束缚
+Paste Restraints from NME
+从 NME 粘贴束缚
+Paste to All!
+粘贴到全部！
+OVERWRITE All!
+覆盖所有！
+Need Positive Opinion to Promote
+需要积极的意见来推广
+Servant Enjoyment: AMNT
+仆人享受: AMNT
+Prisoner Enjoyment: AMNT
+囚犯享受: AMNT
+Submissive prisoners and dominant servants add different amounts of opinion per cycle
+顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
+Release Prisoners
+释放囚犯
+Release
+释放
+Mark
+标记
+Unmark
+取消标记
+Mark ALL
+标记所有
+Cancel Selection
+取消选中
+Release Marked Prisoners!
+释放选中的囚犯！
+Ransom Marked Prisoners for GP!
+使用 GP 赎金来赎回囚犯！
+Ransom Value: GP
+赎金: GP
+Current Gold: GP
+当前金币: GP
+[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
+[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒。
+Phase Dance active. Your next move is instant.
+相位舞蹈激活。你的下一步动作是即时的。
+Combat Maneuver active. Your next move is instant.
+战斗机动激活。你的下一步行动是即时的。
+The furniture space is occupied
+家具空间被占用
+Combat Maneuver: Your next move is instant.
+战斗机动: 你的下一步行动是即时的。
+Appointing managers increases the efficiency of other facilities.
+任命管理人员可以提高其他设施的效率。
+Total Efficiency Boost: AMNT
+总体效率提升: AMNT
