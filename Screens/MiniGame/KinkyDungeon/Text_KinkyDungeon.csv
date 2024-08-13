@@ -23843,3 +23843,5 @@ NameMummyElevator,Mysterious Statue
 KDSelectABindingSlot,Select a Binding Slot
 
 KDCost,"Cost: "
+
+ZoomSet,Zoom set to PCNT%

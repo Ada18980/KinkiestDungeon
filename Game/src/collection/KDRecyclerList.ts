@@ -266,8 +266,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				undefined, {Rune: 1}),
 			KDAutoGenRestraintBlueprint("TrackingCollar", "Cyber", "", 1.5,
 				undefined, {Rune: 1}),
-			KDAutoGenRestraintBlueprint("CyberLinkCollar", "Cyber", "", 1,
-				undefined, {Rune: 10}),
+			//KDAutoGenRestraintBlueprint("CyberLinkCollar", "Cyber", "", 1,
+			//	undefined, {Rune: 10}),
 		]
 	},
 	Wolf: {
@@ -379,8 +379,6 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("ExpArmbinder", "Latex", ""),
 			KDAutoGenRestraintBlueprint("ExpArmbinderHarness", "Latex", ""),
 			KDAutoGenRestraintBlueprint("ExpCollar", "Latex", ""),
-			KDAutoGenRestraintBlueprint("ExpArmbinderHarness", "Latex", ""),
-			KDAutoGenRestraintBlueprint("ExpArmbinderHarness", "Latex", ""),
 
 
 			{

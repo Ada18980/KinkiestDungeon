@@ -5059,5 +5059,14 @@ function KDChangeZoom(change) {
 	if (KDZoomIndex < 0) KDZoomIndex = 0;
 	else if (KDZoomIndex > KDZoomLevels.length - 1) KDZoomIndex = KDZoomLevels.length - 1;
 
+	KinkyDungeonUpdateLightGrid = true;
+	KDRedrawFog = 2;
+	setTimeout(() => {KinkyDungeonAdvanceTime(0);}, 100);
+
 	localStorage.setItem('zoomLvl', KDZoomIndex + "");
+
+
+	KinkyDungeonSendActionMessage(10, TextGet("ZoomSet").replace("PCNT",
+		"" + Math.round(100*(72 + KDZoomLevels[KDZoomIndex] * 12)/72)
+	), "#ffffff", 1);
 }

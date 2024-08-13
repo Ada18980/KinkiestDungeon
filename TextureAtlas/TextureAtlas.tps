@@ -4237,6 +4237,38 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Models/GagLatex/NeckCorset2.png</key>
+            <key type="filename">../Models/GagLatex/NeckCorsetGag2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>392,243,783,485</rect>
+                <key>scale9Paddings</key>
+                <rect>392,243,783,485</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/GagLatex/NeckCorsetGagRim2.png</key>
+            <key type="filename">../Models/GagLatex/NeckCorsetRim2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>382,238,763,475</rect>
+                <key>scale9Paddings</key>
+                <rect>382,238,763,475</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Models/Hood/Blindfold.png</key>
             <key type="filename">../Models/Hood/BunnyEars.png</key>
             <key type="filename">../Models/Hood/Gag.png</key>

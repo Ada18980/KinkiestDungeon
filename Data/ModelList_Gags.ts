@@ -736,7 +736,6 @@ AddModel({
 		},
 		{ Name: "NeckCorsetRim", Layer: "NeckCorset", Pri: -39.9,
 			Invariant: true,
-			HideWhenOverridden: true,
 			NoOverride: true,
 			TieToLayer: "NeckCorset",
 			InheritColor: "Rim",
@@ -769,6 +768,71 @@ AddModel({
 
 AddModel(GetModelRestraintVersion("LatexNeckCorset", true));
 AddModel(GetModelRestraintVersion("LatexNeckCorsetGag", true));
+
+
+AddModel({
+	Name: "NeckCorset",
+	Folder: "GagLatex",
+	TopLevel: true,
+	Categories: ["Accessories", "Latex"],
+	Layers: ToLayerMap([
+		{ Name: "NeckCorset2", Layer: "NeckCorset", Pri: -40,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Neck",
+		},
+		{ Name: "NeckCorsetRim2", Layer: "NeckCorset", Pri: -40.1,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "NeckCorset2",
+			InheritColor: "Rim",
+		},
+	])
+});
+AddModel({
+	Name: "ShinyLatexMuzzle",
+	Folder: "GagLatex",
+	Parent: "NeckCorset",
+	TopLevel: false,
+	Categories: ["Accessories","Gags","Latex"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		{ Name: "NeckCorsetGag2", Layer: "GagMuzzle", Pri: -20,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Gag",
+		},
+		{ Name: "NeckCorsetGagRim2", Layer: "GagMuzzle", Pri: -20.1,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Rim",
+			TieToLayer: "NeckCorsetGag2",
+		},
+	])
+});
+
+AddModel({
+	Name: "NeckCorsetGag",
+	Folder: "GagLatex",
+	Parent: "NeckCorset",
+	TopLevel: false,
+	Categories: ["Accessories","Gags","Latex"],
+	AddPose: ["FaceCoverGag"],
+	AddPoseConditional: {
+		Xray: ["HideMouth",],
+	},
+	Layers: ToLayerMap([
+		...GetModelLayers("NeckCorset"),
+		...GetModelLayers("ShinyLatexMuzzle"),
+	])
+});
+
+AddModel(GetModelRestraintVersion("ShinyLatexMuzzle", true));
+AddModel(GetModelRestraintVersion("NeckCorset", true));
+AddModel(GetModelRestraintVersion("NeckCorsetGag", true));
 
 
 

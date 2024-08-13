@@ -3508,6 +3508,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/ArmbinderHarness.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>179,179,359,359</rect>
+                <key>scale9Paddings</key>
+                <rect>179,179,359,359</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/BindingDress.png</key>
             <key type="filename">../Game/Items/Restraint/BitGagHarness.png</key>
             <key type="filename">../Game/Items/Restraint/Bracers.png</key>
             <key type="filename">../Game/Items/Restraint/Breastplate.png</key>
@@ -3527,6 +3543,7 @@
             <key type="filename">../Game/Items/Restraint/LeatherGloves.png</key>
             <key type="filename">../Game/Items/Restraint/Legirons.png</key>
             <key type="filename">../Game/Items/Restraint/MagicArmbands.png</key>
+            <key type="filename">../Game/Items/Restraint/Maid.png</key>
             <key type="filename">../Game/Items/Restraint/Mittens.png</key>
             <key type="filename">../Game/Items/Restraint/RedLatexOTNGag.png</key>
             <key type="filename">../Game/Items/Restraint/SarielPanties.png</key>
@@ -3575,7 +3592,10 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/Catsuits.png</key>
             <key type="filename">../Game/Items/Restraint/Collars.png</key>
+            <key type="filename">../Game/Items/Restraint/Corsets.png</key>
+            <key type="filename">../Game/Items/Restraint/FlatGags.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3610,6 +3630,7 @@
             </struct>
             <key type="filename">../Game/Items/Restraint/Cyber.png</key>
             <key type="filename">../Game/Items/Restraint/Modules.png</key>
+            <key type="filename">../Game/Items/Restraint/Posture.png</key>
             <key type="filename">../Game/UI/Recycler/Cyber.png</key>
             <key type="filename">../Game/UI/Recycler/Dress.png</key>
             <key type="filename">../Game/UI/Recycler/Module.png</key>
