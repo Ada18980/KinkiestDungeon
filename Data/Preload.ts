@@ -385,6 +385,9 @@ function incrementProgress(amount) {
 		lastProgress = progress;
 	};
 }
+
+let buildSuff =  "?build=" + TextGet("KDVersionStr");
+
 async function LoadTextureAtlas(list, scale_mode, preload = false) {
 	PIXI.BaseTexture.defaultOptions.scaleMode = scale_mode;
 
@@ -392,32 +395,39 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 		console.log("Found atlas: " + dataFile);
 		let amount = 100;
 		KDLoadingMax += amount;
+
 	}
 	for (let dataFile of list) {
-		let amount = 100;
-		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile).then((value) => {
+		let result = preload ? await PIXI.Assets.backgroundLoad(dataFile+ buildSuff).then((value) => {
 
+			let amount = 100;
 			//console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
 			KDLoadingDone += amount;
 
 		}, () => {
+
+			let amount = 100;
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		})
-		 : await PIXI.Assets.load(dataFile).then((value) => {
+		 : await PIXI.Assets.load(dataFile + buildSuff).then((value) => {
 			for (let s of Object.values(value.linkedSheets)) {
 				for (let t of Object.keys((s as any).textures)) {
 					KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST);
 				}
 			}
 
+			let amount = 100;
 			//console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
 			KDLoadingDone += amount;
+			//console.log(amount)
 		 }, () => {
+
+			let amount = 100;
 			CurrentLoading = "Error Loading " + dataFile;
 			KDLoadingDone += amount;
 		});
@@ -436,19 +446,19 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 
 async function PreloadDisplacement(list) {
 	for (let dataFile of list) {
-		console.log("Found d_map: " + dataFile);
+		//console.log("Found d_map: " + dataFile);
 		let amount = 1;
 		KDLoadingMax += amount;
 	}
 	for (let dataFile of list) {
 		let amount = 1;
-		let texture = PIXI.Texture.fromURL(dataFile, {
+		let texture = PIXI.Texture.fromURL(dataFile + buildSuff, {
 			resourceOptions: {
 				scale: DisplacementScale,
 			}
 		});
 		texture.then((value) => {
-			console.log(value)
+			//console.log(value)
 			CurrentLoading = "Loaded " + dataFile;
 			//console.log(dataFile);
 			KDTex(dataFile, false);
@@ -504,9 +514,14 @@ async function load() {
 
 	PIXI.BaseTexture.defaultOptions.mipmap = PIXI.MIPMAP_MODES.ON;
 	PIXI.BaseTexture.defaultOptions.anisotropicLevel = 0;
+
+	//KDLoadingMax = 100;
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	await PreloadDisplacement(displacementList);
+	// Load everything twice... for good measure
+	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
+	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
 }

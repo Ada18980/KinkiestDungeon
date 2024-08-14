@@ -734,6 +734,12 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				KDGameData.CurrentDialogMsg = name + "Flirt" + (!KDEnemyCanTalk(enemy) ? "Gagged" : (enemy.personality || ""));
 			return false;
 		},
+		prerequisiteFunction: (gagged, player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy)
+				return KDPlayPossible(enemy);
+			return false;
+		},
 		options: {
 			"Leave": {playertext: "Leave", response: "Default",
 				leadsToStage: "",

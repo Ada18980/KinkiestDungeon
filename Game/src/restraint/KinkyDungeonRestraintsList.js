@@ -3451,7 +3451,7 @@ const KinkyDungeonRestraints = [
 			},
 		},
 		playerTagsMult: {
-			"ItemArmsEmpty": 0.05,
+			"ItemArmsEmpty": 0.005, // Impossible to put on without binding arms first
 		},
 		Filters: {
 			Legs: {"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":2.2666666666666666,"red":1,"green":1.8333333333333333,"blue":2.7666666666666666,"alpha":1},

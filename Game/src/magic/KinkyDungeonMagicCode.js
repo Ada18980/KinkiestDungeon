@@ -292,6 +292,10 @@ let KinkyDungeonSpellSpecials = {
 				en.boundLevel = Math.max(0, en.boundLevel - 2*spell.power);
 
 				cc = true;
+
+				if (!KDHelpless(en)) {
+					KDRescueRepGain(en);
+				}
 			}
 
 			if (KDRescueEnemy("Unlock", en, true) || cc) {
@@ -1396,6 +1400,9 @@ let KinkyDungeonSpellSpecials = {
 					en.boundLevel = Math.max(0, en.boundLevel - 5);
 				}
 				KDRescueEnemy("Slime", en, true);
+				if (!KDHelpless(en)) {
+					KDRescueRepGain(en);
+				}
 				KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
 				if (en.Enemy.tags?.rescueslime && !KDEnemyIsTemporary(en)) {
 					// Replace with a random adventurer. We do NOT refresh the health
@@ -1453,9 +1460,13 @@ let KinkyDungeonSpellSpecials = {
 			for (let en of enList) {
 				if (en.boundLevel) {
 					en.boundLevel = Math.max(0, en.boundLevel - spell.power);
+
 				}
 
 				KDRescueEnemy("Remove", en, true);
+				if (!KDHelpless(en)) {
+					KDRescueRepGain(en);
+				}
 			}
 		}
 

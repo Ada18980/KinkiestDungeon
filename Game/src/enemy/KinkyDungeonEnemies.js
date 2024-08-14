@@ -8560,6 +8560,19 @@ function KDCanIdleFidget(enemy) {
 	return enemy?.idle && !enemy.Enemy?.nonDirectional && !enemy.Enemy?.tags?.nofidget && !KDEnemyHasFlag(enemy, "fidget") && !KDEnemyHasFlag(enemy, "nofidget");
 }
 
+function KDRescueRepGain(en) {
+	let faction = KDGetFaction(en);
+	if (!en.summoned && !en.maxlifetime && !KinkyDungeonHiddenFactions.has(faction)) {
+		if (!KDIDHasFlag(en.id, "rescuedRep")) {
+			KinkyDungeonChangeFactionRep(faction,
+				(KDFactionRelation("Player", faction) > 0.25 ? 0.5 : 1)
+				* (KinkyDungeonFlags.get("rescuedFloor" + faction) ? 0.01 : 0.05));
+			KDSetIDFlag(en.id, "rescuedRep", -1);
+			KinkyDungeonSetFlag("rescuedFloor" + faction, -1, 1);
+		}
+	}
+}
+
 /**
  *
  * @param {string} rescueType
@@ -8569,6 +8582,7 @@ function KDCanIdleFidget(enemy) {
  */
 function KDRescueEnemy(rescueType, en, makePlayer = true) {
 	if (!KDHelpless(en) && !(en.boundLevel > 0.01)) {
+
 		let newType = "";
 		if (en.Enemy?.rescueTo) {
 			newType = en.Enemy?.rescueTo[rescueType];
@@ -8859,4 +8873,13 @@ function KDQuickGenNPC(enemy, force) {
 			KDNPCChar_ID.set(NPC, id);
 		}
 	}
+}
+
+/**
+ * Function for filtering various things that would make it impossible for an NPC to play with the player
+ * @param {entity} enemy
+ * @returns {boolean}
+ */
+function KDPlayPossible(enemy) {
+	return enemy?.Enemy && !enemy.Enemy.tags?.nobrain && !enemy.Enemy.tags?.noplay && !enemy.Enemy.Behavior?.noPlay;
 }

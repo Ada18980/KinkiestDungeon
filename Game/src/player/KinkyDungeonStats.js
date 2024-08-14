@@ -1503,7 +1503,7 @@ function KinkyDungeonUpdateStats(delta) {
 	}
 
 	// Update the player tags based on the player's groups
-	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(delta);
+	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(KinkyDungeonPlayer, -1, delta);
 
 	let blind = Math.max(KinkyDungeonBlindLevelBase, KinkyDungeonGetBlindLevel());
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Blindness")) blind = Math.max(0, blind + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Blindness"));

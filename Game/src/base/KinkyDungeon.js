@@ -7,6 +7,7 @@ let KDPaletteWidth = 6;
 
 let KDDefaultPalette = "";
 let KDCULLTIME = 10000; // Garbage collection
+let KDLoadingFinishedSet = false;
 
 // Disable interpolation when scaling, will make texture be pixelated
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.LINEAR;
@@ -1704,7 +1705,14 @@ function KinkyDungeonRun() {
 			/*for (let c of PIXI.Cache._cache.keys()) {
 				KDTex(c);
 			}*/
-			KDLoadingFinished = true;
+			if (!KDLoadingFinishedSet) {
+				KDLoadingFinishedSet = true;
+				setTimeout(() => {
+					if (KDLoadingDone >= KDLoadingMax)
+						KDLoadingFinished = true;
+					else KDLoadingFinishedSet = false;
+				}, 1000);
+			}
 		}
 
 	} else if (KinkyDungeonState == "Intro") {

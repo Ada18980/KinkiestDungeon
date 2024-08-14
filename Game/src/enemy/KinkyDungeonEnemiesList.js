@@ -5514,7 +5514,7 @@ let KDSpecialConditions = {
 						looseLimit: true,
 						onlyUnlimited: true,
 						ignore: enemy.items,
-					}, enemy
+					}, enemy,
 			).length > 0;
 		}
 	}

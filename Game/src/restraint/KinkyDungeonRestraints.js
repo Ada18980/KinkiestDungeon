@@ -3009,10 +3009,11 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 	if (minWeightFallback && RestraintsList.length == 0) {
 		return KDGetRestraintsEligible(
 			enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack,
-			extraTags, agnostic, filter, securityEnemy, curse, 0, false, useAugmented, augmentedInventory, options);
+			extraTags, agnostic, filter, securityEnemy, curse, (filterEps || 0.05) > 0.1 ? filterEps * 0.1 : 0, filterEps > 0.1, useAugmented, augmentedInventory, options);
 	}
-	if (!options?.allowLowPower)
+	if (!options?.allowLowPower){
 		return RestraintsList2;
+	}
 	else return RestraintsList;
 }
 
@@ -4353,7 +4354,7 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 
 
-				if (rest.Group == "ItemNeck" && !Add && KinkyDungeonGetRestraintItem("ItemNeckRestraints"))
+				if (rest.Group == "ItemNeck" && !Add && !KinkyDungeonPlayerTags.get("Collars"))
 					rem.push(...KinkyDungeonRemoveRestraint("ItemNeckRestraints", true, undefined, undefined, Shrine, undefined, Remover, ForceRemove));
 
 				let sfx = (rest && KDGetRemoveSFX(rest)) ? KDGetRemoveSFX(rest) : "Struggle";

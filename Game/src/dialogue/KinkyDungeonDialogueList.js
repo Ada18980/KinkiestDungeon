@@ -3015,6 +3015,9 @@ let KDDialogue = {
 							delete KDGameData.Collection[e.id + ""].escaped;
 							delete KDGameData.Collection[e.id + ""].escapegrace;
 							delete KDGameData.Collection[e.id + ""].spawned;
+							if (KDGetNPCRestraints(e.id)?.Device) {
+								KDSetNPCRestraint(e.id, "Device", null);
+							}
 							KDSetIDFlag(e.id, "escapegrace", 0);
 							if (KDIsNPCPersistent(e.id) && KDGetPersistentNPC(e.id)) {
 								KDGetPersistentNPC(e.id).collect = true;
