@@ -10186,6 +10186,18 @@ let KDEventMapGeneric = {
 
 		}
 	},
+	"beforeNewGame": {
+		// Ran before starting a new game
+	},
+	"afterNewGame": {
+		// Ran immediately after a new game starts
+	},
+	"beforeLoadGame": {
+		// Ran before loading a game
+	},
+	"afterLoadGame": {
+		// Ran after loading a game
+	}
 };
 
 /**

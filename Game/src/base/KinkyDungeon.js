@@ -3697,7 +3697,7 @@ let KDModsAfterGameStart = () => {};
 let KDModsAfterLoad = () => {};
 
 function KinkyDungeonStartNewGame(Load) {
-
+	KinkyDungeonSendEvent("beforeNewGame", {});
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
@@ -3732,6 +3732,7 @@ function KinkyDungeonStartNewGame(Load) {
 
 
 	KDModsAfterGameStart();
+	KinkyDungeonSendEvent("afterNewGame", {});
 }
 
 function KDUpdatePlugSettings(evalHardMode) {
@@ -4516,6 +4517,7 @@ function KinkyDungeonCompressSave(save) {
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
 function KinkyDungeonLoadGame(String) {
+	KinkyDungeonSendEvent("beforeLoadGame", {});
 	let str = String ? DecompressB64(String.trim()) : (localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave')) : "");
 	if (str) {
 		let saveData = JSON.parse(str);
@@ -4743,6 +4745,7 @@ function KinkyDungeonLoadGame(String) {
 			KDFixNeeds();
 			KDSortCollection();
 			KinkyDungeonAdvanceTime(0, true, true);
+			KinkyDungeonSendEvent("afterLoadGame", {});
 			return true;
 		}
 	}
