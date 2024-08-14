@@ -3,7 +3,6 @@ interface NPCBindingGroup {
 	encaseGroup: NPCBindingSubgroup,
 	/** Length must equal 3 */
 	layers: NPCBindingSubgroup[],
-	arousalMode?: boolean,
 }
 
 interface NPCBindingSubgroup {
@@ -11,6 +10,7 @@ interface NPCBindingSubgroup {
 	allowedTags: string[],
 	allowedGroups: string[],
 	encasedBy: string[],
+	requirePerk?: string,
 }
 
 let NPCBindingRestraintSize = {
@@ -97,16 +97,16 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "InnerHands", encasedBy: ["ArmEncase", "HandEncase", "InterHands", "OuterHands"], allowedGroups: ["ItemHands"],
 				allowedTags: ["Gloves", "Tape"]},
 		]},
-	{id: "Chest", arousalMode: true, encaseGroup:
+	{id: "Chest", encaseGroup:
 		{id: "ChastityBra", encasedBy: [], allowedGroups: ["ItemBreast"],
 			allowedTags: ["ChastityBras"]},
 		layers: [
 			{id: "NippleVibe", encasedBy: ["ChastityBra"], allowedGroups: ["ItemNipples"],
-				allowedTags: ["Vibes"]},
+				allowedTags: ["Vibes"], requirePerk: "arousalMode"},
 			{id: "NippleWeight", encasedBy: ["ChastityBra"], allowedGroups: ["ItemNipples"],
-				allowedTags: ["Weights"]},
+				allowedTags: ["Weights"], requirePerk: "arousalMode"},
 			{id: "Piercings", encasedBy: ["ChastityBra"], allowedGroups: ["ItemNipples"],
-				allowedTags: ["Piercings"]},
+				allowedTags: ["Piercings"], requirePerk: "arousalModePiercing"},
 		]},
 	{id: "Torso", encaseGroup:
 		{id: "Corset", encasedBy: [], allowedGroups: ["ItemTorso"],
@@ -119,16 +119,16 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Suits", encasedBy: [], allowedGroups: ["ItemTorso"],
 				allowedTags: ["Suits", "Leotards", "Swimsuits"]},
 		]},
-	{id: "Pelvis", arousalMode: true, encaseGroup:
+	{id: "Pelvis", encaseGroup:
 		{id: "ChastityBelt", encasedBy: [], allowedGroups: ["ItemPelvis"],
 			allowedTags: ["ChastityBelts", "Crotchropes", "Panties"]},
 		layers: [
 			{id: "Vibe", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemVulvaPiercings"],
-				allowedTags: ["Vibes"]},
+				allowedTags: ["Vibes"], requirePerk: "arousalMode"},
 			{id: "FrontPlug", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemVulva"],
-				allowedTags: ["Plugs"]},
+				allowedTags: ["Plugs"], requirePerk: "arousalMode"},
 			{id: "RearPlug", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemButt"],
-				allowedTags: ["Plugs"]},
+				allowedTags: ["Plugs"], requirePerk: "arousalModePlug"},
 		]},
 	{id: "Legs", encaseGroup:
 		{id: "LegEncase", encasedBy: [], allowedGroups: ["ItemLegs"],

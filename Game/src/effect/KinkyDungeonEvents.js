@@ -1558,7 +1558,7 @@ let KDEventMapInventory = {
 		"RequireCollar": (e, item, data) => {
 			if (!data.add && data.item !== item && KDRestraint(item).Group) {
 				let collar = false;
-				if (KDRestraint(data.item)?.Group == "ItemNeck") {
+				if (data.item && KDRestraint(data.item)?.Group == "ItemNeck") {
 					KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(); // We update the restraints but no time drain on batteries, etc
 				}
 				if (KinkyDungeonPlayerTags.get("Collars")) collar = true;

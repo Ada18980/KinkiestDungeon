@@ -76,6 +76,7 @@ function KDSetServantSpawnTemplate(e: entity) {
 		e.allied = 9999;
 		e.hostile = 0;
 		e.boundLevel = 0;
+		e.faction = "Player";
 		KDNPCRefreshBondage(e.id);
 		KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
 		e.hp = e.Enemy.maxhp;

@@ -520,12 +520,18 @@ async function load() {
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
 	await PreloadDisplacement(displacementList);
 	// Load everything twice... for good measure
-	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
-	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
+
+	setTimeout(() => {
+		LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
+		LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
+	}, 700);
+
 	PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
 }
+
 load();
+
 
 (() => {
 	let extensions = PIXI.extensions;

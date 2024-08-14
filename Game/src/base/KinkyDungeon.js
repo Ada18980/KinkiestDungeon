@@ -1379,7 +1379,9 @@ function KinkyDungeonRun() {
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
-	if (!KDStandardRenderException[KinkyDungeonState] || (KDStandardRenderException[KinkyDungeonState].length > 0 && !KDStandardRenderException[KinkyDungeonState][KinkyDungeonDrawState])) {
+	if (!KDStandardRenderException[KinkyDungeonState]
+		|| (KDStandardRenderException[KinkyDungeonState].length > 0
+			&& !KDStandardRenderException[KinkyDungeonState][KinkyDungeonDrawState])) {
 		if (KDBGColor) {
 			FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 				Left: 0,
@@ -1410,10 +1412,11 @@ function KinkyDungeonRun() {
 			KDLogoStartTime = CommonTime() + 400;
 		} else {
 			// Draw the strait-laced logo
-			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
-				zIndex: 0,
-				alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
-			});
+			if (KDTex(KinkyDungeonRootDirectory + "Logo.png"))
+				KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
+					zIndex: 0,
+					alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
+				});
 		}
 	} else
 	if (KinkyDungeonState == "Mods") {
@@ -1672,8 +1675,8 @@ function KinkyDungeonRun() {
 		} else {
 			KDOptOut = true;
 			let cb = () => {
-				let Char = KinkyDungeonPlayer;
-				DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+				//let Char = KinkyDungeonPlayer;
+				//DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 
 				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
 			};
@@ -3697,7 +3700,7 @@ let KDModsAfterGameStart = () => {};
 let KDModsAfterLoad = () => {};
 
 function KinkyDungeonStartNewGame(Load) {
-
+	KinkyDungeonSendEvent("beforeNewGame", {Load: Load});
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
@@ -3732,6 +3735,7 @@ function KinkyDungeonStartNewGame(Load) {
 
 
 	KDModsAfterGameStart();
+	KinkyDungeonSendEvent("afterNewGame", {Load: Load});
 }
 
 function KDUpdatePlugSettings(evalHardMode) {
