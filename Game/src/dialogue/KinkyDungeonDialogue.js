@@ -2002,7 +2002,20 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
 				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				undefined,
-				Lock);
+				Lock,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				{
+					allowLowPower: true
+				});
 			if (r) {
 				KDGameData.CurrentDialogMsgData = {
 					"Data_r": r.name,
@@ -2060,7 +2073,20 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			let num = count;
 			// Apply additional restraints
 			if (num > 1) {
-				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock);
+				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					{
+						allowLowPower: true
+					});
 				if (r)
 					KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 			}
@@ -2095,7 +2121,20 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 					let num = refused ? countAngry : count;
 					// Apply additional restraints
 					if (num > 1) {
-						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock);
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							{
+								allowLowPower: true
+							});
 						if (r)
 							KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 					}

@@ -417,7 +417,20 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else {
 			if (KinkyDungeonPlayerEntity.x == tX && KinkyDungeonPlayerEntity.y == tY) {
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					{
+						allowLowPower: true
+					});
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);

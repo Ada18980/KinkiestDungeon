@@ -30,6 +30,13 @@ TODO:
 
 TODO remove hogtie when released
 
+
+5.3.35 RC6
+- Added toggle for front plugs. May cause balance issues.
+
+5.3.35 RC5
+- Misc fixes
+
 5.3.35 RC4
 - Misc graphical fixes
 

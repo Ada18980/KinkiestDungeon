@@ -330,7 +330,11 @@ let KDBondageMachineFunctions = {
 function KDBasicRestraintsMachine_Player(tags, count, msg) {
 	let succ = 0;
 	for (let i = 0; i < count; i++) {
-		let restraint = KinkyDungeonGetRestraint({tags: tags}, 10, 'grv', false, undefined, undefined, undefined, false);
+		let restraint = KinkyDungeonGetRestraint({tags: tags}, 10, 'grv', false, undefined, undefined, undefined, false,
+			undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
+				allowLowPower: true,
+			}
+		);
 		if (restraint) {
 			succ = KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined, undefined, undefined, undefined, "AncientRobot", true) || succ;
 		}

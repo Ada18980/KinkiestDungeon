@@ -2941,7 +2941,20 @@ const KDEventMapBuff = {
 		"Haunting": (e, buff, entity, data) => {
 			if (buff.power > 0 && entity.player) {
 				let tags = ["comfyRestraints", "trap"];
-				let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple");
+				let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple",
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					{
+						allowLowPower: true
+					});
 				if (!KinkyDungeonFlags.has("GhostHaunted") && !(KDNearbyEnemies(entity.x, entity.y, 1.5).filter((enemy) => {
 					return KinkyDungeonAggressive(enemy);
 				}).length > 0) && restraintAdd) {
@@ -2972,6 +2985,7 @@ const KDEventMapBuff = {
 					let restraintAdd = KinkyDungeonGetRestraint({tags: [...tags]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 						true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
 							ForceDeep: true,
+							allowLowPower: true,
 						});
 					if (restraintAdd) {
 						if (KDRandom() < 0.2) {

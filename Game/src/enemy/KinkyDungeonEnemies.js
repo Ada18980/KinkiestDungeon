@@ -5363,7 +5363,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 												//onlyLimited: !enemy.Enemy.RestraintFilter?.limitedRestraintsOnly,
 												looseLimit: true,
 												require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
-											}, enemy, undefined, true);
+											}, enemy, undefined, true, undefined, {
+												allowLowPower: KDRandom() < 0.5
+											});
 
 										if (!rest) {
 											rest = KDGetRestraintWithVariants(
@@ -5381,7 +5383,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 													looseLimit: true,
 													onlyUnlimited: true,
 													ignore: enemy.items,
-												}, enemy, undefined, true);
+												}, enemy, undefined, true, undefined, {
+													allowLowPower: KDRandom() < 0.5
+												});
 										} else {
 											restraintFromInventory.push(rest.r.name);
 										}

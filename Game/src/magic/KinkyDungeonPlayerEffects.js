@@ -797,7 +797,20 @@ let KDPlayerEffects = {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			effect = true;
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["latexRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["latexRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				{
+					allowLowPower: true
+				});
 			if (restraintAdd) {
 				KDPlayerEffectRestrain(spell, 1, ["latexRestraints"], faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
