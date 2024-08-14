@@ -58,7 +58,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 			}
 			let wid = II == 0 ? 56 : 42;
-			if ((!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk)) && DrawButtonKDEx(
+			if ((!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk)) &&
+				(!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk)) && DrawButtonKDEx(
 				"npc_rest_butsg_"+ sgroup.id,
 				() => {
 					let set = KDSetBindingSlot(sgroup, KDGetEncaseGroupRow(sgroup.id));
@@ -89,7 +90,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 
 			if (II++ == 0) {
-				if (grp && (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk))) {
+				if (grp && (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk))
+					&& (!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk))) {
 					KDDraw(kdcanvas, kdpixisprites, "npc_bind_list_grp" + sgroup.id,
 						grp,
 						XX - Math.floor(wid*0.25), YY - Math.floor(wid*0.25), Math.ceil(wid*1), Math.ceil(wid*1),
@@ -101,7 +103,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				XX += paddingFirstCol;
 
 			} else {
-				if (grp && (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk))) {
+				if (grp && (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk))
+					&& (!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk))) {
 					KDDraw(kdcanvas, kdpixisprites, "npc_bind_list_grp" + sgroup.id,
 						grp,
 						XX, YY, wid, wid,

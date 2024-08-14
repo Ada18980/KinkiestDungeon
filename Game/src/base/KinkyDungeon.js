@@ -136,6 +136,7 @@ let kdSpecialModePerks = [
 	"norescueMode",
 	"arousalModePlug",
 	"arousalModePiercing",
+	"arousalModePlugNoFront",
 ];
 
 
@@ -1088,6 +1089,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
 			KinkyDungeonSexyPiercing = localStorage.getItem("KinkyDungeonSexyPiercing") != undefined ? localStorage.getItem("KinkyDungeonSexyPiercing") == "True" : false;
 			KinkyDungeonSexyPlug = localStorage.getItem("KinkyDungeonSexyPlug") != undefined ? localStorage.getItem("KinkyDungeonSexyPlug") == "True" : false;
+			KinkyDungeonSexyPlugFront = localStorage.getItem("KinkyDungeonSexyPlugFront") != undefined ? localStorage.getItem("KinkyDungeonSexyPlugFront") == "True" : false;
 			KinkyDungeonProgressionMode = localStorage.getItem("KinkyDungeonProgressionMode") != undefined ? localStorage.getItem("KinkyDungeonProgressionMode") : "Key";
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
@@ -1227,6 +1229,7 @@ let KinkyDungeonPerkBondageMode = 1;
 let KinkyDungeonPerkBondageVisMode = 2;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
+let KinkyDungeonSexyPlugFront = false;
 let KDOldValue = "";
 let KDOriginalValue = "";
 
@@ -2230,11 +2233,16 @@ function KinkyDungeonRun() {
 
 		if (KinkyDungeonSexyMode) {
 
+			DrawCheckboxKDEx("KinkyDungeonSexyPlugsFront", (bdata) => {
+				KinkyDungeonSexyPlugFront = !KinkyDungeonSexyPlugFront;
+				localStorage.setItem("KinkyDungeonSexyPlugFront", KinkyDungeonSexyPlugFront ? "True" : "False");
+				return true;
+			}, true, 1500, 420, 64, 64, TextGet("KinkyDungeonSexyPlugsFront"), !KinkyDungeonSexyPlugFront, false, "#ffffff");
 			DrawCheckboxKDEx("KinkyDungeonSexyPlugs", (bdata) => {
 				KinkyDungeonSexyPlug = !KinkyDungeonSexyPlug;
 				localStorage.setItem("KinkyDungeonSexyPlug", KinkyDungeonSexyPlug ? "True" : "False");
 				return true;
-			}, true, 1500, 450, 64, 64, TextGet("KinkyDungeonSexyPlugs"), KinkyDungeonSexyPlug, false, "#ffffff");
+			}, true, 1500, 490, 64, 64, TextGet("KinkyDungeonSexyPlugs"), KinkyDungeonSexyPlug, false, "#ffffff");
 
 			/*DrawCheckboxKDEx("KinkyDungeonSexyPiercings", (bdata) => {
 				KinkyDungeonSexyPiercing = !KinkyDungeonSexyPiercing;
@@ -3741,6 +3749,7 @@ function KinkyDungeonStartNewGame(Load) {
 function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("arousalMode", KinkyDungeonSexyMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("arousalModePlug", KinkyDungeonSexyPlug ? true : undefined);
+	KinkyDungeonStatsChoice.set("arousalModePlugNoFront", KinkyDungeonSexyPlugFront ? true : undefined);
 	KinkyDungeonStatsChoice.set("arousalModePiercing", KinkyDungeonSexyPiercing ? true : undefined);
 
 	KinkyDungeonStatsChoice.set("randomMode", KinkyDungeonRandomMode ? true : undefined);
@@ -4605,6 +4614,7 @@ function KinkyDungeonLoadGame(String) {
 			KinkyDungeonSexyMode = KinkyDungeonStatsChoice.get("arousalMode");
 			KinkyDungeonItemMode = KinkyDungeonStatsChoice.get("itemMode") ? 1 : 0;
 			KinkyDungeonSexyPlug = KinkyDungeonStatsChoice.get("arousalModePlug");
+			KinkyDungeonSexyPlugFront = KinkyDungeonStatsChoice.get("arousalModePlugNoFront");
 			KinkyDungeonSexyPiercing = KinkyDungeonStatsChoice.get("arousalModePiercing");
 			KinkyDungeonRandomMode = KinkyDungeonStatsChoice.get("randomMode");
 			KinkyDungeonSaveMode = KinkyDungeonStatsChoice.get("saveMode");

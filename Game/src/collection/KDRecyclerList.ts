@@ -534,7 +534,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 					Latex: 10,
 					Rune: 1,
 				},
-				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
 			{
 				name: "TrapPlug2",
@@ -546,7 +546,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 					Latex: 10,
 					Rune: 1,
 				},
-				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
 			{
 				name: "TrapPlug3",
@@ -558,7 +558,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 					Latex: 10,
 					Rune: 1,
 				},
-				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
 			{
 				name: "TrapPlug4",
@@ -570,7 +570,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 					Latex: 10,
 					Rune: 1,
 				},
-				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
 			{
 				name: "TrapPlug5",
@@ -582,7 +582,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 					Latex: 10,
 					Rune: 1,
 				},
-				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
 			{
 				name: "RearVibe1",
@@ -605,7 +605,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				recyclecost: {
 					Metal: 4,
 				},
-				prereq: () => {return true;},
+				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
 			{
 				name: "SteelPlugR",

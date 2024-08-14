@@ -11,6 +11,7 @@ interface NPCBindingSubgroup {
 	allowedGroups: string[],
 	encasedBy: string[],
 	requirePerk?: string,
+	noPerk?: string,
 }
 
 let NPCBindingRestraintSize = {
@@ -126,7 +127,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Vibe", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemVulvaPiercings"],
 				allowedTags: ["Vibes"], requirePerk: "arousalMode"},
 			{id: "FrontPlug", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemVulva"],
-				allowedTags: ["Plugs"], requirePerk: "arousalMode"},
+				allowedTags: ["Plugs"], requirePerk: "arousalMode", noPerk: "arousalModePlugNoFront"},
 			{id: "RearPlug", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemButt"],
 				allowedTags: ["Plugs"], requirePerk: "arousalModePlug"},
 		]},

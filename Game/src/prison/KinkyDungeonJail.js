@@ -813,6 +813,7 @@ function KinkyDungeonMissingJailUniform() {
 				&& (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;})))
 			)
 			&& (KinkyDungeonStatsChoice.get("arousalMode") || !rest.arousalMode)
+			&& (!KinkyDungeonStatsChoice.get("arousalModePlugNoFront") || !(rest.shrine.includes("Plugs") && rest.Group == "ItemVulva"))
 			&& (KinkyDungeonStatsChoice.get("arousalModePlug") || rest.Group != "ItemButt")
 			&& (KinkyDungeonStatsChoice.get("arousalModePiercing") || !rest.piercing)) {
 			MissingGroups.push(g);
