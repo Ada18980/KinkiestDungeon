@@ -30,7 +30,9 @@ TODO:
 
 TODO remove hogtie when released
 
-
+5.4.1
+- Time Stop now allows you to tie up enemies more easily during its duration
+- Time ghosts are slightly faster
 5.3.35 RC6
 - Added toggle for front plugs. May cause balance issues.
 

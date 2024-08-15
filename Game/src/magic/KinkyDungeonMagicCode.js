@@ -249,7 +249,7 @@ let KinkyDungeonSpellSpecials = {
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en?.Enemy) {
-			if (KDCanBind(en) && (KinkyDungeonIsDisabled(en) || (en.playWithPlayer && KDCanDom(en)))) {
+			if (KDCanBind(en) && KDCanApplyBondage(en, entity)) {
 				//KDGameData.InventoryAction = "Bondage";
 				KDCurrentRestrainingTarget = en.id;
 				KinkyDungeonDrawState = "Bondage";

@@ -8887,3 +8887,17 @@ function KDQuickGenNPC(enemy, force) {
 function KDPlayPossible(enemy) {
 	return enemy?.Enemy && !enemy.Enemy.tags?.nobrain && !enemy.Enemy.tags?.noplay && !enemy.Enemy.Behavior?.noPlay;
 }
+
+/**
+ *
+ * @param {entity} target
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDCanApplyBondage(target, player) {
+	if (player?.player) {
+		return (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow") > KDEntityBuffedStat(target, "TimeSlow"))
+			|| KinkyDungeonIsDisabled(target) || (target.playWithPlayer && KDCanDom(target));
+	}
+	return KinkyDungeonIsDisabled(target);
+}

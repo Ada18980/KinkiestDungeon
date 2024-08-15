@@ -1415,11 +1415,10 @@ function KinkyDungeonRun() {
 			KDLogoStartTime = CommonTime() + 400;
 		} else {
 			// Draw the strait-laced logo
-			if (KDTex(KinkyDungeonRootDirectory + "Logo.png"))
-				KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
-					zIndex: 0,
-					alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
-				});
+			KDDraw(kdcanvas, kdpixisprites, "logo", "Logo.png", 500, 0, 1000, 1000, undefined, {
+				zIndex: 0,
+				alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
+			});
 		}
 	} else
 	if (KinkyDungeonState == "Mods") {

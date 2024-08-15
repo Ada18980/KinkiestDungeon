@@ -158,7 +158,7 @@ function KinkyDungeonDrawBondage(xOffset = -125) {
 	let x = 1225 + xOffset;
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 	let en = KDCurrentRestrainingTarget ? KDGetGlobalEntity(KDCurrentRestrainingTarget) : null;
-	if (en && KDCanBind(en) && (KinkyDungeonIsDisabled(en) || (en.playWithPlayer && KDCanDom(en)))) {
+	if (en && KDCanBind(en) && KDCanApplyBondage(en, KDPlayer())) {
 		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
 	} else {
 		KinkyDungeonDrawState = "Game";
