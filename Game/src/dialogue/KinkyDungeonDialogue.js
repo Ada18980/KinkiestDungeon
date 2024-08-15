@@ -264,12 +264,13 @@ function KDAddOpinion(enemy, Amount) {
 	if (!enemy) return;
 	let a = Math.min(1000, Math.abs(Amount));
 	while (a > 0 && (Amount < 0 || (enemy.opinion || 0) < Amount * 10)) {
-		enemy.opinion = Math.max(
+		enemy.opinion =
 			(enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0)
 				+ Math.min(10, a)
 					* Math.min(10, a)
-					/ (Amount > 0 ? (Math.min(10, a) + (enemy.opinion || 0)) : -1),
-			0);
+					/ (Amount > 0 ?
+						(Math.min(10, a) + Math.max(0, enemy.opinion || 0))
+						: -(Math.min(10, a) + Math.max(0, -enemy.opinion || 0)));
 		a -= 10;
 	}
 	if (KDGameData.Collection[enemy.id]) KDGameData.Collection[enemy.id].Opinion = enemy.opinion;
@@ -284,12 +285,11 @@ function KDAddOpinionCollection(enemy, Amount) {
 	if (!enemy) return;
 	let a = Math.min(1000, Math.abs(Amount));
 	while (a > 0 && (Amount < 0 || (enemy.Opinion || 0) < Amount * 10)) {
-		enemy.Opinion = Math.max(
+		enemy.Opinion =
 			(enemy.Opinion || 0)
 				+ Math.min(10, a)
 					* Math.min(10, a)
-					/ (Amount > 0 ? (Math.min(10, a) + (enemy.Opinion || 0)) : -1),
-			0);
+					/ (Amount > 0 ? (Math.min(10, a) + (enemy.Opinion || 0)) : -1);
 		a -= 10;
 	}
 	return enemy.Opinion || 0;

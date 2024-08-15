@@ -273,6 +273,13 @@ function KinkyDungeonDrawInterface(showControls) {
 			ElementValue("DebugEnemy", "Maidforce");
 			ElementCreateTextArea("DebugItem");
 			ElementValue("DebugItem", "TrapArmbinder");
+		} else {
+			if (document.getElementById("DebugEnemy")) {
+				ElementRemove("DebugEnemy");
+			}
+			if (document.getElementById("DebugItem")) {
+				ElementRemove("DebugItem");
+			}
 		}
 		return true;
 	}, true, 1750, 20, 100, 50, TextGet("KinkyDungeonRestart"), "#ffffff");
@@ -1577,6 +1584,13 @@ function KinkyDungeonHandleHUD() {
 				ElementValue("DebugEnemy", "Maidforce");
 				ElementCreateTextArea("DebugItem");
 				ElementValue("DebugItem", "TrapArmbinder");
+			} else {
+				if (document.getElementById("DebugEnemy")) {
+					ElementRemove("DebugEnemy");
+				}
+				if (document.getElementById("DebugItem")) {
+					ElementRemove("DebugItem");
+				}
 			}
 			return true;
 		}
@@ -1589,6 +1603,13 @@ function KinkyDungeonHandleHUD() {
 				ElementCreateTextArea("DebugItem");
 				ElementValue("DebugItem", "TrapArmbinder");
 				return true;
+			} else {
+				if (document.getElementById("DebugEnemy")) {
+					ElementRemove("DebugEnemy");
+				}
+				if (document.getElementById("DebugItem")) {
+					ElementRemove("DebugItem");
+				}
 			}
 		}
 		if (KDDebugMode) {
@@ -1866,7 +1887,15 @@ function KDDrawNavBar(skip, quit = false) {
 				ElementCreateTextArea("DebugEnemy");
 				ElementValue("DebugEnemy", "Maidforce");
 				ElementCreateTextArea("DebugItem");
-				ElementValue("DebugItem", "TrapArmbinder");}}
+				ElementValue("DebugItem", "TrapArmbinder");} else {
+					if (document.getElementById("DebugEnemy")) {
+						ElementRemove("DebugEnemy");
+					}
+					if (document.getElementById("DebugItem")) {
+						ElementRemove("DebugItem");
+					}
+				}
+			}
 
 		KinkyDungeonCheckClothesLoss = true;
 		KinkyDungeonDressPlayer();

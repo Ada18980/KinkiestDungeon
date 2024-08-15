@@ -193,7 +193,9 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("ExpBoots", "Leather", ""),
 			KDAutoGenRestraintBlueprint("SteelArmCuffs", "Leather", ""),
 
-			KDAutoGenRestraintBlueprint("MithrilCollar", "Leather", ""),
+			KDAutoGenRestraintBlueprint("MithrilCollar", "Leather", "", 1, {
+				Metal: 10,
+			}),
 			KDAutoGenRestraintBlueprint("MithrilArmCuffs", "Leather", ""),
 			KDAutoGenRestraintBlueprint("MithrilLegCuffs", "Leather", ""),
 			KDAutoGenRestraintBlueprint("MithrilAnkleCuffs", "Leather", ""),

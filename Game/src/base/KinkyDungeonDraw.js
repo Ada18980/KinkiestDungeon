@@ -1963,11 +1963,12 @@ function KinkyDungeonDrawGame() {
 					DrawCheckboxVis(1100, 90, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
 					DrawCheckboxVis(1100, 160, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
 					DrawCheckboxVis(1100, 230, 64, 64, "Link Under", KDDebugLink, false, "#ffffff");
-					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
+
 					DrawButtonVis(1500, 100, 100, 64, "Enemy", "#ffffff", "");
 					DrawButtonVis(1600, 100, 100, 64, "Ally", "#ffffff", "");
 					DrawButtonVis(1700, 100, 100, 64, "Shop", "#ffffff", "");
 					ElementPosition("DebugItem", 1650, 212, 300, 64);
+					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
 					DrawButtonVis(1500, 260, 300, 64, "Add to inventory", "#ffffff", "");
 					DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", "#ffffff", "");
 					DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");

@@ -62,7 +62,7 @@ let param_test = pp.has('test') ? pp.get('test') : "";
 let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
 let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
 
-let KDDebugMode = TestMode != null;
+let KDDebugMode = TestMode != false;
 let KDDebug = false;
 let KDDebugPerks = false;
 let KDDebugGold = false;
