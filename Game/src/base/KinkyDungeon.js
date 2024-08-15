@@ -1649,6 +1649,13 @@ function KinkyDungeonRun() {
 				KinkyDungeonState = "Mods";
 				return true;
 			}, !KDModsLoaded, 1700, 814, 280, 50, TextGet(!KDModsLoaded ? "KDMods" : "KDModsLoaded"), "#ffffff", "");
+
+			if (Object.keys(KDModConfigs).length > 0) {
+                DrawButtonKDEx("modconfigs_button", (bdata) => {
+                    KinkyDungeonState = "ModConfig";
+                    return true;
+                }, true, 1700, 755, 280, 50, TextGet("KDModConfigsButton"), "#ffffff", "");
+            }
 		}
 
 		if (KDRestart)
@@ -2770,6 +2777,10 @@ function KinkyDungeonRun() {
 
 		}
 	}
+
+	else if (KinkyDungeonState == "ModConfig") {
+        KDDrawModConfigs(500);
+    }
 
 	// Cull temp elements
 	KDCullTempElements();

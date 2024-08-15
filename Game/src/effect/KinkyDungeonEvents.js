@@ -10197,6 +10197,12 @@ let KDEventMapGeneric = {
 	},
 	"afterLoadGame": {
 		// Ran after loading a game
+	},
+	"afterModSettingsLoad": {
+		// Ran after loading KDModSettings from Local Storage
+	},
+	"afterModConfig": {
+		// Ran after returning to menu from the mod configuration window. 
 	}
 };
 
