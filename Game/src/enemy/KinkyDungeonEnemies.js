@@ -1868,7 +1868,7 @@ function KDResyncBondage(en) {
 			en.boundLevel += value;
 		}
 		if (en.boundLevel == 0) {
-			en.specialBoundLevel = undefined;
+			en.specialBoundLevel = {};
 		}
 	} else if (en.boundLevel) {
 		en.boundLevel = 0;
@@ -1892,7 +1892,7 @@ function KDSetToExpectedBondage(en, mode = 0) {
 			en.specialBoundLevel = JSON.parse(JSON.stringify(expected));
 		} else {
 			en.boundLevel = 0;
-			en.specialBoundLevel = undefined;
+			en.specialBoundLevel = {};
 		}
 	} else if (mode > 0) {
 		if (expectedSum > (en.boundLevel || 0)) {
@@ -1911,7 +1911,7 @@ function KDSetToExpectedBondage(en, mode = 0) {
 			KDResyncBondage(en);
 		} else if (expectedSum == 0) {
 			en.boundLevel = 0;
-			en.specialBoundLevel = undefined;
+			en.specialBoundLevel = {};
 		}
 	}
 }
@@ -8760,7 +8760,7 @@ function KDEnemyStruggleTurn(enemy, delta, allowStruggleAlwaysThresh, force = fa
 				enemy.specialBoundLevel[entry] *= enemy.boundLevel / sum;
 			}
 		} else {
-			enemy.specialBoundLevel = undefined;
+			enemy.specialBoundLevel = {};
 		}
 	}
 
