@@ -287,8 +287,9 @@ function KDDrawModConfigs(xOffset) {
     YYd = 80;
     let modtoggleoffset = 350;
     if (KDModConfigs.hasOwnProperty(KDModToggleTab)) {
-        let configtabset = ((KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2), (modrows * 2))).length > 0) ? (KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2), (modrows * 2))) : (KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2))); // Select only the page of mods for which we are on 
-        let modsecondrowoffset = 0;
+        //let configtabset = ((KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2), (modrows * 2))).length > 0) ? (KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2), (modrows * 2))) : (KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2))); // Select only the page of mods for which we are on 
+        let configtabset = KDModConfigs[KDModToggleTab].slice((KDModPage) * (modrows * 2), (KDModPage) * (modrows * 2) + (modrows * 2));
+		let modsecondrowoffset = 0;
         let modtogglecount = 0;
         configtabset.forEach((modbutton) => {
             // variable is a toggle of some sort that is expecting a true/false value. 
