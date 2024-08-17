@@ -145,9 +145,9 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		if (!power || power < 0.1) power = 0.1;
 		if (restraint.armor) power += 3;
 		if (restraint.protection) power += 3*restraint.protection;
-		if (KinkyDungeonRestraintVariants[item.name]) {
+		if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
 			let enchants = {};
-			for (let ev of KinkyDungeonRestraintVariants[item.name].events) {
+			for (let ev of KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].events) {
 				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum[item.type || 'restraint']].level;
 			}
 			let sum = 0;

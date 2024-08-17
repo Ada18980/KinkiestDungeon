@@ -30,9 +30,18 @@ TODO:
 
 TODO remove hogtie when released
 
-5.4.1
+
+5.3.35 RC7
+- Fix sailor shirt exposing kneel pose midriff
+- Fix crash when leaving summit sometimes
+- Fix zooming not affecting many indicators
+- Ancient chastity bra clarified to only reduce damage from attacks (current behavior, no change)
+- Ancient chastity bra now blocks 20 damage up from 10
+- Fixed bug where you cant ransom most enemies
 - Time Stop now allows you to tie up enemies more easily during its duration
 - Time ghosts are slightly faster
+
+
 5.3.35 RC6
 - Added toggle for front plugs. May cause balance issues.
 

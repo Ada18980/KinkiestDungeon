@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.35-RC6"
+KDVersionStr,"5.3.35-RC7"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -7640,7 +7640,7 @@ KinkyDungeonCurseStruggleMistressKeyEnchantedBelt,"You tug at your chastity belt
 
 RestraintEnchantedBra,Ancient Chastity Bra
 LootChestEnchantedBra,"You find a chastity bra, glowing magnificently, along with a strange crystal next to it."
-RestraintEnchantedBraDesc2,"A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10."
+RestraintEnchantedBraDesc2,"A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20."
 RestraintEnchantedBraDesc,"'Shield of the chaste'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedBra,"You rub your hands along your breasts but feel only hard, unbreakable metal."
 

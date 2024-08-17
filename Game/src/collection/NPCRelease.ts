@@ -159,7 +159,8 @@ function KDCanRelease(id: number) {
 }
 function KDCanRansom(id: number) {
 	let v = KDGameData.Collection[id + ""];
-	return v && !v.status && !v.escaped && !KDGetGlobalEntity(id) && !KDNPCUnavailable(id, v.status) && v.Faction && !KinkyDungeonHiddenFactions.has(v.Faction); // Prisoners only
+	return v && !v.status && !v.escaped && !KinkyDungeonFindID(id) && !KDNPCUnavailable(id, v.status)
+		&& v.Faction && !KinkyDungeonHiddenFactions.has(v.Faction); // Prisoners only
 }
 function KDRansomValue(id: number) {
 	let v = KDGameData.Collection[id + ""];

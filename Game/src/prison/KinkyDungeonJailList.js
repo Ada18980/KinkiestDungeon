@@ -795,8 +795,8 @@ let KDJailOutfits = {
 			{Name: "TrapLegbinder", Level: 60},
 			{Name: "SturdyLeatherBeltsFeet", Level: 70},
 			{Name: "SturdyLeatherBeltsLegs", Level: 80},
-			{Name: "LeatherHood", Level: 110, Variant: "AntiMagic", Condition: "SenseDepHood"},
-			{Name: "LeatherMask", Level: 110, Variant: "AntiMagic", Condition: "SenseDep"},
+			{Name: "LeatherHood", Level: 110, Condition: "SenseDepHood"},
+			{Name: "LeatherMask", Level: 110, Condition: "SenseDepMask"},
 		],
 	},
 	"dressRestraints": {
@@ -850,6 +850,9 @@ let KDJailConditions = {
 	},
 	SenseDep: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep");
+	},
+	SenseDepMask: (r) => {
+		return !KinkyDungeonStatsChoice.get("NoSenseDep") && !KinkyDungeonStatsChoice.get("Unmasked");
 	},
 	SenseDepHood: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep") && !KinkyDungeonStatsChoice.get("NoHood");

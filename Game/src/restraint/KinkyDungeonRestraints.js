@@ -234,7 +234,7 @@ let KinkyDungeonRestraintsCache = new Map();
  * @returns {restraint}
  */
 function KDRestraint(item) {
-	if (KinkyDungeonRestraintVariants[item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.name].template);
+	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].template);
 	return KinkyDungeonRestraintsCache.get(item.name);
 }
 
@@ -3289,8 +3289,8 @@ function KDGetCursePower(item) {
  * @returns {number}
  */
 function KDGetVariantPower(item) {
-	if (item && KinkyDungeonRestraintVariants[item.name]) {
-		return KinkyDungeonRestraintVariants[item.name].power || 0;
+	if (item && KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+		return KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].power || 0;
 	}
 	return 0;
 }

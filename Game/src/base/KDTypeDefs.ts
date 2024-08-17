@@ -1,5 +1,6 @@
 type Named = {
 	name: string,
+	inventoryVariant?: string,
 }
 
 interface NamedAndTyped extends Named {

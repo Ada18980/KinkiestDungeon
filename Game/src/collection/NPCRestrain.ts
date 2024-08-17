@@ -616,9 +616,9 @@ function KDInputSetNPCRestraint(data) {
 		let restraint = KDRestraint(item);
 		if (restraint?.inventory) {
 			if (!KinkyDungeonInventoryGetSafe(item.name)) {
-				if (KinkyDungeonRestraintVariants[item.name]) {
-					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.name], undefined,
-						KinkyDungeonRestraintVariants[item.name].curse, "", item.name);
+				if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name], undefined,
+						KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].curse, "", item.name);
 
 				} else {
 					KinkyDungeonInventoryAdd({
@@ -628,7 +628,7 @@ function KDInputSetNPCRestraint(data) {
 					type: LooseRestraint,
 					//events:events,
 					quantity: 1,
-					showInQuickInv: KinkyDungeonRestraintVariants[item.name] != undefined,});
+					showInQuickInv: KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined,});
 				}
 
 
