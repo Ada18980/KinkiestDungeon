@@ -19,6 +19,7 @@ Japanese
 Mods Loaded.
 MODがロードされました。
 
+
 Restart please!
 適応には再起動が必要です。
 
@@ -8026,6 +8027,20 @@ A well-fitted mask, covering your entire head neatly and locking in place.
 It has eyeholes for you to somewhat see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
 
+Sensory Hood
+感覚遮断フード
+A well-fitted hood that covers your head and muffles sounds.
+頭を完全に包み、視覚と聴覚を封じるフード。
+No eyeholes. Integrated blindfold and gag. Total darkness.
+目隠しと猿轡、イヤーマフが一体となった拘束具。
+Sensory Mask
+感覚遮断マスク
+A well-fitted mask that covers your face and muffles sounds.
+顔を完全に包み、視覚と聴覚を封じるマスク。
+No eyeholes. Integrated blindfold and gag. Total darkness.
+目隠しと猿轡、イヤーマフが一体となった拘束具。
+
+
 Shadow Heels
 影のヒール
 A set of impractical heels that clasp around your ankles. They make it hard to walk.
@@ -8082,6 +8097,7 @@ Shadow Latex Petsuit
 A tight petsuit made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 異世界の物質で作られたペットスーツ。怪しく輝く光沢は、まるでもがき苦しむ犠牲者を観察する星々の目線を映しているかのようだ。
 Its grip encases you tightly, but the material is weaker than most metals.
+しっかりと身体を包み込んでいるが、他の金属よりも脆い。
 Obsidian Yoke
 黒曜石のヨーク
 A yoke made from shining obsidian, stars glittering in the darkness. It pins your arms uselessly at your sides.
@@ -13188,7 +13204,7 @@ Partial
 Full
 全部
 You do not know if a perk shrine will apply bondage.
-選んで見るまでわからない。
+選択するまでわからない。
 You know that a perk shrine will apply bondage, but not what kind.
 祭壇に拘束されることはわかるが、種類まではわからない。
 You know the exact restraints a perk shrine will apply.
@@ -29589,7 +29605,7 @@ AutoBind
 Copy Restraints
 拘束具をコピー
 Paste Restraints from NME
-NME の拘束具をペースト
+コピー元 NME の拘束具をペースト
 No restraints left in inventory
 拘束具が足りない
 Paste to All!
