@@ -25,6 +25,8 @@ let KinkyDungeonCurrentSpellsPage = 0;
 let KinkyDungeonBooks = ["Elements", "Conjure", "Illusion"];
 let KinkyDungeonPreviewSpell = null;
 
+let KinkyDungeonDisplayLore = false;
+
 let KinkyDungeonSpellChoices = [0, 1, 2];
 /** @type {string[]} */
 let KinkyDungeonWeaponChoices = [];
@@ -1582,11 +1584,28 @@ function KinkyDungeonDrawMagic() {
 		let mult = KDGetFontMult();
 		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)),
 			12*mult, 28*mult).split('\n');
+		let textSplitDesc = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription2"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)),
+			12*mult, 28*mult).split('\n');
 
+		if (TextGet("KinkyDungeonSpellDescription2" + spell.name) != `KinkyDungeonSpellDescription2${spell.name}`) {
+			DrawButtonKDEx("KinkyDungeonDisplayLoreButton", (bdata) => {
+				KinkyDungeonDisplayLore = !KinkyDungeonDisplayLore;
+				return true;
+			}, true, canvasOffsetX_ui + xOffset + 570 + 102, canvasOffsetY_ui + 420 * KinkyDungeonBookScale, 80, 30, TextGet("Lore"), "White", "", "", false, true, KDButtonColor);
+        }
+		
 		let i = 0;
-		for (let N = 0; N < textSplit.length; N++) {
-			DrawTextFitKD(textSplit[N],
-				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
+
+		if (KinkyDungeonDisplayLore) {
+            for (let N = 0; N < textSplitDesc.length; N++) {
+				DrawTextFitKD(textSplitDesc[N],
+					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
+        }
+        else {
+            for (let N = 0; N < textSplit.length; N++) {
+				DrawTextFitKD(textSplit[N],
+					canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale*(1-1/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 350, KDBookText, KDTextTan, 20); i++;}
+        }
 
 		i = 0;
 		if (spell.components?.length > 0) {
@@ -2430,3 +2449,150 @@ function KinkyDungeonGetUnlearnedSpells(minlevel, maxlevel, SpellList) {
 
 	return SpellsUnlearned;
 }
+
+function KinkyDungeonSpellChoiceAssign(spell, hotbarslot = undefined) {
+    // Determine if the spell passed to us is a string or not
+    let spellname;
+    if (typeof spell == "string") {
+        spellname = spell
+    }
+    else {
+        // This is a spell object - take the .name property
+        spellname = spell.name
+    }
+    // Check if the player has this spell unlocked. If they don't, do not assign it. 
+    // Define a spell location and assign it to -1
+    let spellloc = -1;
+    for (let i = 0; i < KinkyDungeonSpells.length; i++) {
+        if (KinkyDungeonSpells[i].name === spellname) {
+            spellloc = i
+        }
+    }
+    // Now assign it to the hotbarslot. If it is undefined, find the next available one up to 29
+    if (spellloc > -1) {
+        if (hotbarslot == undefined) {
+            let i = 0;
+            while (hotbarslot == undefined) {
+                if (KinkyDungeonSpellChoices[i] == undefined) {
+                    hotbarslot = i;
+                }
+                i++;
+            }
+        }
+        if (hotbarslot < 30) {
+            KinkyDungeonSpellChoices[hotbarslot] = spellloc
+        }
+        else {
+            console.log("Error adding spell - hotbarslot is out of range")
+        }
+    }
+    else {
+        console.log("Spell is not in player's spellbook!")
+    }
+}
+
+// Removes a spell with either a spell object or a spell name as a string to the player's hotbar
+function KinkyDungeonSpellChoiceUnassign(spell) {
+    // Determine if the spell passed to us is a string or not
+    let spellname;
+    if (typeof spell == "string") {
+        spellname = spell
+    }
+    else {
+        // This is a spell object - take the .name property
+        spellname = spell.name
+    }
+    // Check if the player has this spell unlocked. If they don't, do not unassign it. 
+    // Define a spell location and assign it to -1
+    let spellloc = -1;
+    for (let i = 0; i < KinkyDungeonSpells.length; i++) {
+        if (KinkyDungeonSpells[i].name === spellname) {
+            spellloc = i
+        }
+    }
+    // Now remove from the hotbar. 
+    if (spellloc > -1) {
+        for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
+            if (KinkyDungeonSpellChoices[i] == spellloc) {
+                KinkyDungeonSpellChoices[i] = undefined
+            }
+        }
+    }
+    else {
+        console.log("Spell is not in player's spellbook!")
+    }
+}
+
+// Adds a spell to the players spell to the player's spellbook if an object is passed
+// Grabs the spell from the spell list if the spell is not an object.
+// Use index to insert at that index. 
+function KinkyDungeonSpellAdd(spellobject, index = undefined) {
+    // Determine if the spell passed to us is a string or not
+    let spell;
+    if (typeof spellobject == "string") {
+        spell = KinkyDungeonFindSpell(spellobject)
+    }
+    else {
+        // This is a spell object - take the .name property
+        spell = spellobject
+    }
+    // Sanity check that we have a valid spell object, either passed in or the name found something
+    if ((spell == undefined) || spell == null) {
+        return false;
+    }
+    // This *should* be a valid spell we can add to the player's spellbook. Hopefully. 
+    // Create a spell object and assign those values to it. 
+    else {
+        let newspell = {
+            name: "NewSpell" + KDRandom().toString(),
+            damage: "inert",
+            components: [],
+            power: 0,
+            time: 0,
+            level: 1,
+            manacost: 0,
+            tags: [],
+            type: "inert",
+        }
+        // Pass all the values from spell onto newspell, overwriting them
+        newspell = Object.assign(newspell, spell);
+        // Finally, push the spell to the list. 
+        if (index !== undefined) {
+            KinkyDungeonSpells.splice(index, 0, newspell)
+        }
+        else {
+            KinkyDungeonSpells.push(newspell);
+        }
+    }
+}
+
+// Removes a spell from the player's spellbook if they have it. 
+function KinkyDungeonSpellRemove(spellobject) {
+    // Determine if the spell passed to us is a string or not
+    let spellname;
+    if (typeof spellobject == "string") {
+        spellname = spellobject
+    }
+    else {
+        // This is a spell object - take the .name property
+        spellname = spellobject.name
+    }
+    // Remove it from the hotbar if the player has it assigned. 
+    KinkyDungeonSpellChoiceUnassign(spellname);
+    // Check if the player has this spell unlocked. If they don't, do not unassign it. 
+    // Define a spell location and assign it to -1
+    let spellloc = -1;
+    for (let i = 0; i < KinkyDungeonSpells.length; i++) {
+        if (KinkyDungeonSpells[i].name === spellname) {
+            spellloc = i
+        }
+    }
+    // Now go to every hotbar slot and reduce by one if they are higher than the list. 
+    for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
+        if (KinkyDungeonSpellChoices[i] > spellloc) {
+            KinkyDungeonSpellChoices[i] -= 1;
+        }
+    }
+    // Finally, splice this from the list. 
+    KinkyDungeonSpells.splice(spellloc, 1);
+} 
