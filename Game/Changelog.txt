@@ -30,6 +30,12 @@ TODO:
 
 TODO remove hogtie when released
 
+
+5.3-RC10
+- Old guardians leashing you to highsec now take you to doll processing Instead
+- Faction rep affects personal opinion less
+- Attacking enemies now reduces their opinion of you (it's personal)
+
 5.3.35 RC8-RC9
 - Added filter field in collection
 - Fixed a bug where sensory mask was being applied infinitely

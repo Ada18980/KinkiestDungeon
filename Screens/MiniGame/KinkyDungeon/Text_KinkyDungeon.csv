@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.35-RC9"
+KDVersionStr,"5.3-RC10"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -8538,6 +8538,7 @@ KinkyDungeonRemindJailChaseCyborgCommandAssault,"My orders are to shut you down~
 KinkyDungeonRemindJailChaseCyborgCommandBlock,"Defenses online!"
 
 
+KDJailerHiSecDialogueRobot,"Error in citizen ID registration. Please submit to processing."
 KinkyDungeonRemindJailPlayHelplessRobot0,"Does not compute."
 KinkyDungeonRemindJailPlayHelplessRobot1,"Some kind of miscalculation has occurred."
 KinkyDungeonRemindJailPlayHelplessRobot2,"This was unforseen."
@@ -8593,6 +8594,64 @@ KinkyDungeonRemindJailChaseRobotHonor2,"New target detected. Please submit to de
 KinkyDungeonRemindJailChaseRobotCommandDefend,"Moving to assist."
 KinkyDungeonRemindJailChaseRobotCommandAssault,"Moving to capture."
 KinkyDungeonRemindJailChaseRobotCommandBlock,"Forming blockade."
+
+
+KDJailerHiSecDialogueRobotProgram,"query([ID]); >ERROR; transport([UNKNOWN], [DOLL])"
+KinkyDungeonRemindJailPlayHelplessRobotProgram0,"Does not compute;"
+KinkyDungeonRemindJailPlayHelplessRobotProgram1,"Some kind of miscalculation has occurred;"
+KinkyDungeonRemindJailPlayHelplessRobotProgram2,"This was unforseen;"
+KinkyDungeonRemindJailPlayBratRobotProgram0,"Unit is retreating;"
+KinkyDungeonRemindJailPlayBratRobotProgram1,"Activating self-preservation instincts;"
+KinkyDungeonRemindJailPlayBratRobotProgram2,"Commence tactical withdrawal;"
+KinkyDungeonRemindJailPlaySubRobotProgram0,"Maintenance needed;"
+KinkyDungeonRemindJailPlaySubRobotProgram1,"Unit needs repair;"
+KinkyDungeonRemindJailPlaySubRobotProgram2,"Commence transfer of power protocol;"
+KinkyDungeonRemindJailPlayRobotProgramFree,"Insufficient bindings; Commence submission protocol;"
+KinkyDungeonRemindJailPlayRobotProgramStruggle,"Commence routine inspection;"
+KinkyDungeonRemindJailPlayRobotProgramLeash,"Inmate is out of containment; Transferring;"
+KinkyDungeonRemindJailPlayRobotProgramLoot,"Theft detected; This is a warning;"
+KinkyDungeonRemindJailPlayRobotProgramKey,"Confiscating item;"
+KinkyDungeonRemindJailChaseRobotProgramAlert,"Unknown subject detected; Presuming hostile;"
+KinkyDungeonRemindJailPlayRobotProgram0,"Inmate detected; Commence training protocol;"
+KinkyDungeonRemindJailPlayRobotProgram1,"Inmate detected; Commence routine inspection;"
+KinkyDungeonRemindJailPlayRobotProgram2,"Inmate detected; Commence submission training;"
+KinkyDungeonRemindJailChaseRobotProgramAttack0,"Violence detected; Subduing assailant;"
+KinkyDungeonRemindJailChaseRobotProgramAttack1,"Damage detected; Initiating combat routine;"
+KinkyDungeonRemindJailChaseRobotProgramAttack2,"Unruly inmate detected; Performing corrective action;"
+KinkyDungeonRemindJailChaseRobotProgramSpell0,"Magic detected; Subduing assailant;"
+KinkyDungeonRemindJailChaseRobotProgramSpell1,"Energy spike detected; Preparing shields;"
+KinkyDungeonRemindJailChaseRobotProgramSpell2,"Unlawful use of magic; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramSpellItem,"Violence detected; Subduing assailant;"
+KinkyDungeonRemindJailChaseRobotProgramShrine,"Unlawful conduct; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramChest,"Theft detected; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramOrb,"Unlawful conduct; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramJailbreak,"Inmate has escaped; Commence capture protocol;"
+KinkyDungeonRemindJailRobotProgramGrab,"Error, subject is attempting to escape;"
+KinkyDungeonRemindJailRobotProgramDisarm,"Target is violent; Disarming subject;"
+KinkyDungeonRemindJailRobotProgramHit,"Target is violent; Increase alert level;"
+KinkyDungeonRemindJailRobotProgramHitPlayer,"Dispensing restraints;"
+KinkyDungeonRemindJailRobotProgramMiss,"Target flees; Revising strategy;"
+KinkyDungeonRemindJailRobotProgramBlock,"Target resists; Revising tactics;"
+KinkyDungeonRemindJailRobotProgramMissedMe,"Target skill below expected level; Revising strategy;"
+KinkyDungeonRemindJailRobotProgramBlockedMe,"Target skill below expected level; Revising tactics;"
+KinkyDungeonRemindJailRobotProgramLeash,"Subject captured; Returning to processing;"
+KinkyDungeonRemindJailRobotProgramPull,"Apply takedown protocol;"
+KinkyDungeonRemindJailRobotProgramStun,"Aggressive target detected; Deploying countermeasures;"
+KinkyDungeonRemindJailRobotProgramPickpocket,"Contraband detected; Confiscating;"
+KinkyDungeonRemindJailRobotProgramLock,"increase_strictness(1);"
+KinkyDungeonRemindJailRobotProgramIntro,"query([SELF]); >PTRN;"
+KinkyDungeonRemindJailChaseRobotProgramDefend0,"Red alert; Joining combat;"
+KinkyDungeonRemindJailChaseRobotProgramDefend1,"Battle stations;"
+KinkyDungeonRemindJailChaseRobotProgramDefend2,"Target identified;"
+KinkyDungeonRemindJailChaseRobotProgramDefendHonor0,"Offering support;"
+KinkyDungeonRemindJailChaseRobotProgramDefendHonor1,"New target identified; Engaging;"
+KinkyDungeonRemindJailChaseRobotProgramDefendHonor2,"Combat detected; Engaging in corrective action;"
+KinkyDungeonRemindJailChaseRobotProgramHonor0,"Updating target registry; Proceed to attack;"
+KinkyDungeonRemindJailChaseRobotProgramHonor1,"Target updated;"
+KinkyDungeonRemindJailChaseRobotProgramHonor2,"New target detected; Please submit() to detainment;"
+KinkyDungeonRemindJailChaseRobotProgramCommandDefend,"defend([ALLY]);"
+KinkyDungeonRemindJailChaseRobotProgramCommandAssault,"capture([CITIZEN]);"
+KinkyDungeonRemindJailChaseRobotProgramCommandBlock,"defend([POINT]);"
 
 KinkyDungeonRemindJailPlayHelplessAlchemist0,"This is too tight..."
 KinkyDungeonRemindJailPlayHelplessAlchemist1,"You won't get me like this!"
@@ -12625,6 +12684,31 @@ rJailerHiSec,"(A SPEAKER approaches you in your cell)|Since you've been a bad gi
 rJailerHiSecResist,"(The SPEAKER folds her arms)|Want to or not, you're going."
 dJailerHiSec_Resist,(Resist)
 dJailerHiSec_Submit,(Submit)
+
+rCyberHiSec,"(A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting."
+rCyberHiSecResist,"(The SPEAKER grins as her systems glow)|I love my job sometimes~"
+dCyberHiSec_Resist,(Resist)
+dCyberHiSec_Submit,(Submit)
+rCyberHiSecQuestion1,"(The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System."
+dCyberHiSec_Question1,W-what does that entail?
+rCyberHiSecQuestion1Gag,"(The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~"
+dCyberHiSec_Question1Gag,Hmmmph? Mmmm! (Act worried and whimper)
+rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders "
+dCyberHiSec_Question2,Not in the 'System'?
+rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
+dCyberHiSec_Question2Gag,Mmmph? (Act confused)
+rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System."
+dCyberHiSec_Question2,Not in the 'System'?
+rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
+dCyberHiSec_Question2Gag,Mmmph? (Act confused)
+rCyberHiSecQuestion3,"(The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her."
+dCyberHiSec_Question3,But why???
+rCyberHiSecQuestion3_Who,"(The SPEAKER frowns)|You should be thankful.|Without Mistress Oriel, we'd all be dead!|Probably..."
+dCyberHiSecQuestion3_Who,Who is Mistress Oriel?
+rCyberHiSecQuestion3_When,"(The SPEAKER pauses for a moment, then answers)|Well, only a few hundred years ago, I think?|This is a bit longer of a downtime than usual,|But all of us are waiting patiently~"
+dCyberHiSecQuestion3_When,When are these orders from?
+rCyberHiSecQuestion3_Why,"(You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?"
+dCyberHiSecQuestion3_Why,The facility is in ruins! This is pointless!
 
 rBanditQuest,"(A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?"
 rBanditQuestHelp,"(The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out."
@@ -20674,8 +20758,8 @@ KDVariableModifier_BaseDamageBuffMelee,"AMNT% weapon phys. dmg"
 KDVariableModifier_BaseDamageBuffMagic,"AMNT% weapon magic dmg"
 KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
 KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
-KDVariableModifier_ManaCost,"+AMNT Mana Efficiency"
-KDVariableModifier_ManaCostSpecific,"+AMNT TYPE Mana Efficiency"
+KDVariableModifier_ManaCost,"AMNT Mana Efficiency"
+KDVariableModifier_ManaCostSpecific,"AMNT TYPE Mana Efficiency"
 KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
 KDVariableModifier_Sneak,"AMNT% Visibility Reduction"

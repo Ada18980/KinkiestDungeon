@@ -428,6 +428,9 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 			if (Enemy && !Enemy.Enemy.allied) {
 				if (Enemy.vp) Enemy.vp = Math.min(2, Enemy.vp*2);
 				KinkyDungeonSetFlag("PlayerCombat", 8);
+				if (!Enemy.hostile) {
+					KDAddOpinionPersistent(Enemy.id, -10);
+				}
 				KinkyDungeonAggroAction('attack', {enemy: Enemy});
 			}
 		}

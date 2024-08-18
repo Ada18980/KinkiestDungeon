@@ -237,7 +237,7 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 		if (allowFaction) {
 			let faction = KDGetFaction(enemy);
 			let rel = KDFactionRelation("Player", faction);
-			op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+			op += (rel > 0 ? 10 : 20) * (!allowOnlyPosNegFaction ? rel :
 			(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
 				: Math.min(rel, 0)
 			)
@@ -254,7 +254,7 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 		let op = KDGameData.Collection[id + ""].Opinion || 0;
 		if (allowFaction) {
 			let rel = KDFactionRelation("Player", faction);
-			op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+			op += (rel > 0 ? 10 : 20) * (!allowOnlyPosNegFaction ? rel :
 			(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
 				: Math.min(rel, 0)
 			)
