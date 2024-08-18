@@ -7838,6 +7838,7 @@ function KDMakeHighValue(enemy) {
 		type: "MoveSpeed",
 		power: 0.1,
 		duration: 9999, infinite: true,
+		tags: ["removeOnRemove"],
 	});
 
 	// Hitpoint bonuses
@@ -8246,6 +8247,9 @@ function KDRemoveEntity(enemy, kill, capture, noEvent, forceIndex) {
 		enemy.playerdmg = undefined;
 		enemy.hostile = 0;
 		enemy.ceasefire = 0;
+		if (KDEnemyHasFlag(enemy, "killtarget")) KDSetIDFlag(enemy.id, "killtarget", 0);
+		KinkyDungeonRemoveBuffsWithTag(enemy, ["removeOnRemove"]);
+
 		//enemy.noDrop = true;
 		if (KDIsNPCPersistent(enemy.id)) {
 			if (KDGetPersistentNPC(enemy.id).collect
