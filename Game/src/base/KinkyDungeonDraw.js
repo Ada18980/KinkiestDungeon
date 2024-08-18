@@ -1003,23 +1003,22 @@ function KinkyDungeonDrawGame() {
 
 
 	// @ts-ignore
-	if ((document.activeElement?.type == "text" || document.activeElement?.type == "textarea")
-		&& (KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
-		let cancelType = null;
-		for (let cancelT of KDCustomCancels) {
-			if (cancelT.condition()) {
-				cancelType = cancelT.cancel;
-				break;
-			}
-		}
-		if (cancelType) {
-			cancelType();
-		}
+	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
+
 		// @ts-ignore
-		else if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
+		if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 		} else {
-			if (KinkyDungeonDrawState == "Magic") {
+			let cancelType = null;
+			for (let cancelT of KDCustomCancels) {
+				if (cancelT.condition()) {
+					cancelType = cancelT.cancel;
+					break;
+				}
+			}
+			if (cancelType) {
+				cancelType();
+			} else if (KinkyDungeonDrawState == "Magic") {
 				KinkyDungeonDrawState = "MagicSpells";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';

@@ -2308,7 +2308,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 	if ((data.struggleType == "Pick" || data.struggleType == "Unlock") && !data.lockType) return "Fail";
 
 	data.escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
-	data.extraLim = (data.struggleType == "Pick" && data.lockType.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
+	data.extraLim = (data.struggleType == "Pick" && data.lockType?.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
 	data.extraLimPenalty = (data.struggleType == "Pick") ? data.extraLim * data.restraint.pickProgress : 0;
 	data.extraLimThreshold = Math.min(1, (data.escapeChance / data.extraLim));
 
