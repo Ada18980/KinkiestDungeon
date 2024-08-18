@@ -1849,7 +1849,7 @@ const KinkyDungeonRestraints = [
 			BeltsLower: {color: "Highlight", override: true},
 		},
 		limitChance: {"Cut": 0.1, "Remove": 0.04, "Unlock": 0.2},
-		maxwill: 0.2, enemyTags: {"wolfRestraintsHeavy" : 1}, playerTags: {}, minLevel: 12, allFloors: true, shrine: ["Latex", "Metal", "Armbinders", "BindingDress", "Block_ItemHands"]},
+		maxwill: 0.2, enemyTags: {"wolfRestraintsHeavy" : 1}, playerTags: {}, minLevel: 12, allFloors: true, shrine: ["Latex", "Metal", "Armbinders", "Block_ItemHands"]},
 	{inventory: true, name: "WolfAnkleCuffs", debris: "Chains", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], Type: "Chained", Color: ['#4F91DE', '#4F91DE', '#3F6945', '#000000'], Group: "ItemFeet", power: 8, weight: 0,
 		Model: "WolfCuffsAnkles",
 		linkCategory: "AnkleCuffs", linkSize: 0.51, noDupe: true,
@@ -4301,7 +4301,7 @@ const KinkyDungeonRestraints = [
 		},
 		escapeChance: {"Struggle": -0.375, "Cut": -0.25, "Remove": -0.1, "Pick": 0},
 		limitChance: {"Struggle": 0.25, "Cut": 0.14, "Remove": 0.12},
-		maxwill: 0.3, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2}, minLevel: 12, allFloors: true, shrine: ["Leather", "Belts", "Boxbinders","BindingDress"]},
+		maxwill: 0.3, enemyTags: {"dragonRestraints":1}, playerTags: {"ItemArmsFull":2}, minLevel: 12, allFloors: true, shrine: ["Boxbinders", "Leather", "Belts"]},
 	{inventory: true, name: "DragonBoots", debris: "Belts", Asset: "BalletWedges", Color: "#424242", Group: "ItemBoots", heelpower: 1, power: 7, weight: 0, remove: ["Shoes"],
 		Model: "BalletHeelsRestraint",
 		Filters: {
@@ -4540,7 +4540,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": -0.1, "Pick": -0.1},
 		limitChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0.5, "Unlock": 0.05}, // Hard to escape the arms box by struggling
 		maxwill: 0.25, enemyTags: {"shadowLatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexArmbinderWorn": 10}, minLevel: 12, allFloors: true,
-		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands", "BindingDress"]},
+		shrine: ["Latex", "ShadowLatex", "Obsidian", "Armbinders", "Block_ItemHands"]},
 
 	{inventory: true, sfx: "Fwoosh", name: "ShadowLatexBoxbinder", inaccessible: true, Asset: "BoxTieArmbinder",
 		Model: "JacketLeotard",
@@ -4600,7 +4600,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.25, "Remove": -0.1, "Pick": -0.1},
 		limitChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0.5, "Unlock": 0.05}, // Hard to escape the arms box by struggling
 		maxwill: 0.25, enemyTags: {"shadowLatexRestraintsHeavy" : -5}, playerTags: {"posLatex": -1, "ShadowLatexBoxbinderWorn": 10}, minLevel: 12, allFloors: true,
-		shrine: ["Latex", "ShadowLatex", "Obsidian", "Boxbinders", "Block_ItemHands", "BindingDress"]},
+		shrine: ["Latex", "ShadowLatex", "Obsidian", "Boxbinders", "Block_ItemHands"]},
 
 	//endregion
 

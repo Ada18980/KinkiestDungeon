@@ -30,7 +30,7 @@ TODO:
 
 TODO remove hogtie when released
 
-5.3.35 RC8
+5.3.35 RC8-RC9
 - Added filter field in collection
 - Fixed a bug where sensory mask was being applied infinitely
 - Autobind should now use raw materials as well for restraints
