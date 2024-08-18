@@ -31,8 +31,11 @@ TODO:
 TODO remove hogtie when released
 
 5.3.35 RC8
+- Added filter field in collection
 - Fixed a bug where sensory mask was being applied infinitely
 - Autobind should now use raw materials as well for restraints
+- Resolved a bug where the binding dress in recycler couldnt be made but still took resources
+- Resolved a bug where enchanted armor got duplicated when it gets knocked off by enemies
 
 5.3.35 RC7
 - Fix sailor shirt exposing kneel pose midriff

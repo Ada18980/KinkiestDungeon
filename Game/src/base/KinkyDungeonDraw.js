@@ -1002,7 +1002,9 @@ function KinkyDungeonDrawGame() {
 	KDRefresh = false;
 
 
-	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
+	// @ts-ignore
+	if ((document.activeElement?.type == "text" || document.activeElement?.type == "textarea")
+		&& (KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
 		let cancelType = null;
 		for (let cancelT of KDCustomCancels) {
 			if (cancelT.condition()) {

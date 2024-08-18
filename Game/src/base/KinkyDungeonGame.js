@@ -4,6 +4,7 @@
 let KDFocusableTextFields = [
 	"PerksFilter",
 	"InvFilter",
+	"CollFilter",
 	"QInvFilter",
 	"MagicFilter",
 ];
@@ -4078,7 +4079,8 @@ let KDShopBuyConfirm = false;
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
-	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey && document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
+	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey
+		&& document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
 		// @ts-ignore
 		document.activeElement.blur();
 	}

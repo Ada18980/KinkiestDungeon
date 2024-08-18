@@ -149,7 +149,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Knees", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet3", "Belts", "SpreaderBars"]},
 			{id: "Shins", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
-				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs"]},
+				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs", "Hogties"]},
 			{id: "AnkleCuffs", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet1", "Belts", "AnkleCuffsBase"]},
 		]},

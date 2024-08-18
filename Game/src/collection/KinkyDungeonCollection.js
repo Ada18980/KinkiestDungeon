@@ -27,6 +27,8 @@ let KDCollectionTabButtons = [
 	"Release",
 ];
 
+let KDCollFilter = "";
+
 let KDCollectionFilters = {
 	Opinion: {
 		Current: 0,
@@ -561,6 +563,8 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 				let value2 = value;
 				//if (KDOriginalValue) {
 				value2.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
+
+				KinkyDungeonCheckClothesLoss = true;
 				//}
 			};
 			if (value.customOutfit) {
@@ -844,6 +848,19 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 	}
 
 
+	let TF = KDTextField("CollFilter",
+		x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2
+		- 200,
+		y - KDCollectionSpacing + 20, 400, 45, "text", "", "45");
+	if (TF.Created) {
+		//KDCollFilter = "";
+		ElementValue("CollFilter", KDCollFilter || "");
+		TF.Element.oninput = (event) => {
+			KDCollFilter = ElementValue("CollFilter");
+			KDCollectionIndex = 0;
+		};
+	}
+
 	// Collection
 	let guests = [];
 	let filters = [];
@@ -853,14 +870,31 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 		}
 	}
 	let rendered = [];
+	let cf = KDCollFilter ? KDCollFilter.toLocaleUpperCase() : null;
 	// Iterate thru the collection, parting out the notable ones to the top
 	for (let value of KDGameData.CollectionSorted) {
 		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
+		if (cf && !((
+			value.name.toLocaleUpperCase()
+				.includes(cf)
+		) || (
+			value.type?.toLocaleUpperCase()
+				.includes(cf)
+		) || (
+			TextGet("Name" + value.type).toLocaleUpperCase()
+				.includes(cf)
+		) || (
+			value.Faction && TextGet("KinkyDungeonFaction" + value.Faction).toLocaleUpperCase()
+				.includes(cf)
+		))) {
+			continue;
+		}
 		if (value.status == "Servant") {
 			guests.push(value);
 			continue;
 		}
 		if (value.status != KDCollectionTabStatus) continue;
+
 
 		if (KDCollectionSelected == value.id) selectedIndex = II + 1;
 
@@ -1076,7 +1110,7 @@ function KDSortCollection() {
 		}
 	);
 	for (let a of KDGameData.CollectionSorted) {
-		if (a.status) KDGameData.CollectionGuests++;
+		if (a.status == "Servant") KDGameData.CollectionGuests++;
 	}
 
 }

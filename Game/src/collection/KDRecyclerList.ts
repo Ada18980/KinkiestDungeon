@@ -315,7 +315,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		prereq: () => {return true;},
 		items: [
 			KDAutoGenRestraintBlueprint("BindingDress", "Dress", "", 1,
-				undefined, {Rope: 10}),
+				{Rope: 50, Latex: 10}),
 			KDAutoGenRestraintBlueprint("DressGag", "Dress", "", 1,
 				undefined, {Rope: 3}),
 			KDAutoGenRestraintBlueprint("DressMuzzle", "Dress", "", 1,

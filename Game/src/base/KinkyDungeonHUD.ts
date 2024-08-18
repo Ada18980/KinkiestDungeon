@@ -795,10 +795,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 		x, y - 5 - 1.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 
 	DrawButtonKDEx("usePotionStamina", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionStamina", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionStamina", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionStamina") && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax,
 	x - buttonWidth/1.85 , y - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax && KinkyDungeonItemCount("PotionStamina")) ? "#AAFFAA" : "#333333",
@@ -818,10 +818,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 			.replace("CURRENT", Math.floor(KinkyDungeonStatMana*10) + ""),
 		x, y - 0.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 	DrawButtonKDEx("usePotionMana", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionMana", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionMana", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionMana") && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax),
 	x - buttonWidth/1.85, y - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatMana < KinkyDungeonStatManaMax && KinkyDungeonItemCount("PotionMana")) ? "#AAAAFF" : "#333333",
@@ -855,10 +855,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 		x  + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1 - 0.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 
 	DrawButtonKDEx("usePotionFrigid", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionFrigid", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionFrigid", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionFrigid") && KinkyDungeonStatDistraction > 0,
 	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatDistraction > 0 && KinkyDungeonItemCount("PotionFrigid")) ? "#333333" : "Pink",
@@ -881,10 +881,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 
 	DrawButtonKDEx("usePotionWill", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionWill", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionWill", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionWill") && KinkyDungeonStatWill < KinkyDungeonStatWillMax,
 	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatWill < KinkyDungeonStatWillMax && KinkyDungeonItemCount("PotionWill")) ? "#ff4444" : "#333333",

@@ -5460,9 +5460,10 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											KinkyDungeonTargetTile = null;
 											KinkyDungeonTargetTileLocation = "";
 											AIData.hitsfx = "Struggle";
-											for (let inv of KinkyDungeonAllRestraint()) {
+											for (let invItem of KinkyDungeonAllRestraintDynamic()) {
+												let inv = invItem.item;
 												if (KDRestraint(inv).removeOnLeash) {
-													KinkyDungeonRemoveRestraint(KDRestraint(inv).Group, false);
+													KinkyDungeonRemoveRestraintSpecific(inv, false);
 													if (KDRestraint(inv).Group == "ItemDevices") {
 														KinkyDungeonSetFlag("Released", 15);
 														KinkyDungeonSetFlag("nojailbreak", 15);
@@ -7334,7 +7335,7 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 		if (protection >= multiPower) {
 			for (let r of protectRestraints) {
 				if (count < multiPower) {
-					KinkyDungeonRemoveRestraint(KDRestraint(r).Group, false, undefined, undefined, undefined, undefined, undefined, true);
+					KinkyDungeonRemoveRestraintSpecific(r, false, undefined, undefined, undefined, undefined, undefined, true);
 					// @ts-ignore
 					KinkyDungeonDropItem({name: r.inventoryVariant || r.inventoryAs || r.name}, KinkyDungeonPlayerEntity, false, true, true);
 					KinkyDungeonSendTextMessage(
