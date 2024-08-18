@@ -316,16 +316,16 @@ function KDDrawModConfigs(xOffset) {
                         KDModSettings[KDModToggleTab][modbutton.refvar] = parseFloat((KDModSettings[KDModToggleTab][modbutton.refvar] - modbutton.stepcount).toFixed(decimalPlacesInBase))
                     }
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
                 // Label for the button
-                DrawTextFitKD(`${modbutton.name}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${modbutton.name}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
                 // Right to increment
                 DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
                     if (KDModSettings[KDModToggleTab][modbutton.refvar] < modbutton.rangehigh) { 
                         KDModSettings[KDModToggleTab][modbutton.refvar] = parseFloat((KDModSettings[KDModToggleTab][modbutton.refvar] + modbutton.stepcount).toFixed(decimalPlacesInBase))
                     }
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20, YY, 64, 64, '>', blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : "#ffffff");
                 YY += YYd;
             }
             // variable has custom code that wants to run when clicking a button. 
@@ -342,6 +342,15 @@ function KDDrawModConfigs(xOffset) {
                 DrawTextFitKD(`${modbutton.name}`, CombarXX + modtoggleoffset + 64 + 190, YY + 32, 480, blocking ? "#888888" : "#ffffff", undefined, 30);
                 YY += YYd;
             }
+			// variable is a string value - Put an input box here. 
+			else if (modbutton.type == "string") {
+				let elem = (KDTextField(modbutton.refvar, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 480, 64, undefined, KDModSettings[KDModToggleTab][modbutton.refvar])).Element;
+				elem.addEventListener('input', function() {
+					let currValue = elem.value;
+					KDModSettings[KDModToggleTab][modbutton.refvar] = currValue;
+				})
+				YY += YYd;
+			}
             modtogglecount++;
             if (modtogglecount == 8) {
                 modsecondrowoffset = 550;
