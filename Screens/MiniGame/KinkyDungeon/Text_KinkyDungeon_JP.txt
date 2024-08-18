@@ -33,12 +33,18 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 (このゲームにはクモや肉食動物/植物は含まれていません)
 (Check out the latest standalone version at the News and Updates link below!)
 (以下のニュースとアップデートのリンクで最新のスタンドアロン バージョンをチェックしてください!)
+
+
+Show Background Art
+背景の絵を表示
 Classic Inventory Background
 インベントリの背景を昔の仕様に戻す
 Skip Intro
 オープニングをスキップ
 No Forced Greetings
 強制的な会話ダイアログを抑制
+Show Zoom Buttons
+ズームボタンを表示
 Show Restraint Info on Escape Hover
 拘束具の情報を表示
 Always Show Warnings
@@ -126,10 +132,11 @@ Chastity over Harness
 
 Show Spell Range
 魔法の有効範囲を表示
-Zoom In
-拡大表示
+
 Zoom Out
-縮小表示
+縮小
+Zoom In
+拡大
 
 Enable Nipples
 乳首を描写
@@ -1099,6 +1106,15 @@ No Kigurumi Masks
 Removes face-mimicking masks from the game.
 怪しいマスクがゲーム内に登場しなくなる。
 
+No Hoods
+フードなし
+Removes hoods from the game.
+フード系の拘束具がゲーム内に登場しなくなる。
+
+No Sense Deprivation
+視界良好
+Removes sensory deprivation hood/mask from the game.
+視界を遮るフードやマスクがゲーム内に登場しなくなる。
 No Blindfolds
 目隠しなし
 In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
@@ -2859,9 +2875,9 @@ Unarmed
 素手
 Accuracy:
 命中率：
-Crit Multiplier:
+Crit Multiplier: 
 会心ダメージ率：
-Bind Crit Multiplier:
+Bind Crit Multiplier: 
 拘束会心ダメージ率：
 Find the keys..
 鍵を見つける……
@@ -2922,9 +2938,9 @@ Edged!
 Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
-Crit:
+Crit: 
 クリティカル：
-Bind:
+Bind: 
 拘束：
 Damage:
 ダメージ：
@@ -5822,9 +5838,9 @@ Goddess Blessing:
 Goddess Curse:
 女神の呪い：
 
-Mana Bonus:
+Mana Bonus: 
 マナボーナス：
-Lack of Mana Penalty:
+Lack of Mana Penalty: 
 マナペナルティ：
 Your excess mana helps you suppress the enchantment!
 自身のマナが拘束具の魔法を弱めた！
@@ -6651,6 +6667,14 @@ A set of straps and buckles enchanted with a powerful spell to render you helple
 着用者を無力化する魔法が込められたペットスーツ。
 It's warded against cutting by nonmagic blades.
 魔法以外の刃物を通さない。
+
+Latex Petsuit
+ラテックスのペットスーツ
+A skintight suit that encases you in a tight rubber embrace.
+身体をぴったりと覆い、包容感を与えるラテックスのペットスーツ。
+The thick latex is resistant to even the most determined struggles.
+分厚いラテックスで作られており、激しくもがいても全く緩まない。
+
 Blessed Wrappings (Head)
 祝福された包帯（頭）
 A band of magic embalming ribbon wrapped tight around your face.
@@ -6703,6 +6727,84 @@ A layer of magic embalming ribbon wrapped tight around your thighs.
 脚にきつく巻き付く、祝福が施された包帯。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
+
+Tape (Hands)
+テープ(手)
+
+Tape (Arms)
+テープ(腕)
+
+Tape (Legs)
+テープ(脚)
+
+Tape (Feet)
+テープ(足)
+
+Tape (Head)
+テープ(顔)
+
+Tape Gag
+テープ(口)
+
+Tape Mouth Wrap
+テープ巻き(口)
+
+Tape Wrapping (Toes)
+テープ巻き(つま先)
+
+Tape Wrapping (Head)
+テープ巻き(頭)
+
+Tape Wrapping (Arms)
+テープ巻き(腕)
+
+Tape Wrapping (Feet)
+テープ巻き(足)
+
+Tape Wrapping (Legs)
+テープ巻き(脚)
+Sleek and shiny tape for the bondage enthusiast.
+滑らかで光沢のある、拘束愛好家のためのテープ。
+A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against.
+伸縮性のある防水テープ。肌を傷めずに剥がすことができ、破れにくい。
+
+Living Tape Collar
+生きているテープの首輪
+This collar is designed to make sure its wearer does not escape their tape.
+着用者をテープで拘束し続けるための首輪。
+It will occasionally cause tape to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of tape you have on you.
+装備していると、時折どこからともなくテープが現れて拘束される。効果は装備しているテープの数で増加する。
+
+
+Autotape
+オートテープ
+Comes in convenient cartridges for machine loading.
+装填用カートリッジ付き。
+A specialized tape used for capturing purposes during the time of the Old Civilization. Despite its appearance, it contains a gas-permeable membrane that allows ventilation, while its hydrophobic properties resist solvents that would otherwise disrupt the adhesive bond. The adhesive layer is special in that it activates only in contact with other auto-tape, making it safer to use and remove.
+旧文明で使用されていた、捕獲用のテープ。見た目とは裏腹に通気性があり、水も弾くため剥がれにくい。着用者の肌を保護するため、オートテープ同士でしかくっつかない。
+
+
+Rubberized Tape
+ラバーテープ
+Sleek and shiny tape for the bondage enthusiast.
+滑らかで光沢のある、拘束愛好家のためのテープ。
+A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against.
+伸縮性のある防水テープ。肌を傷めずに剥がすことができ、破れにくい。
+
+Magic Charms
+魔法のリボン
+Magical charms from the ancient graveyard.
+墓場で見つけられる、魔法のリボン。
+Its magic is not enough to protect it from damage, but it is surprisingly effective at restraining both intruders and cursed entities.
+守護の魔法が不完全であまり傷には強くないが、侵入者やゾンビを捕まえるには十分。
+
+Blessed Wrapping
+祝福された包帯
+A layer of magic embalming ribbon.
+遺体を包むための魔法のリボン。
+It clings of its own accord to intruders and naughty catgirls.
+侵入者や素行の悪いバスト教の信者に勝手に纏わりつく包帯。
+
 Autotape (Hands)
 オートテープ（手）
 Sticky tape made from a metallic material. Used to great effect in police situations.
@@ -6745,6 +6847,13 @@ Sticky tape made from a metallic material. Used to great effect in police situat
 警察官が使用する、金属素材の粘着テープ。
 It's very sticky and tough but you could probably get a knife through it.
 頑丈で粘着性があるが、ナイフで切れる。
+Autotape (Mouth Wrap)
+オートテープ巻き（口）
+Sticky tape made from a metallic material. Used to great effect in police situations.
+警察官が使用する、金属素材の粘着テープ。
+It's very sticky and tough but you could probably get a knife through it.
+頑丈で粘着性があるが、ナイフで切れる。
+
 Stuffing
 詰め物
 A stuffing of cloth.
@@ -7918,6 +8027,20 @@ A well-fitted mask, covering your entire head neatly and locking in place.
 It has eyeholes for you to somewhat see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
 
+Sensory Hood
+感覚遮断フード
+A well-fitted hood that covers your head and muffles sounds.
+頭を完全に包み、視覚と聴覚を封じるフード。
+No eyeholes. Integrated blindfold and gag. Total darkness.
+目隠しと猿轡、イヤーマフが一体となった拘束具。
+Sensory Mask
+感覚遮断マスク
+A well-fitted mask that covers your face and muffles sounds.
+顔を完全に包み、視覚と聴覚を封じるマスク。
+No eyeholes. Integrated blindfold and gag. Total darkness.
+目隠しと猿轡、イヤーマフが一体となった拘束具。
+
+
 Shadow Heels
 影のヒール
 A set of impractical heels that clasp around your ankles. They make it hard to walk.
@@ -7927,12 +8050,12 @@ The material is stronger than leather, and flexes to make struggling difficult.
 Shadow Jacket
 影のジャケット
 A tight straitjacket made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-別の世界の素材で作られた拘束衣。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+異世界の物質で作られた拘束衣。怪しく輝く光沢は、まるでもがき苦しむ犠牲者を観察する星々の目線を映しているかのようだ。
 Its grip encases you tightly, but the material is weaker than most metals.
 しっかりと身体を包み込んでいるが、他の金属よりも脆い。
 
 Black Hole Jacket
-ブラックホールの拘束衣
+ブラックホールの拘束衣	
 Like a black hole, anything that is caught in this jacket has no chance to escape its grasp.
 ブラックホールのように、囚われた犠牲者を決して放さない拘束衣。
 Its grip encases you tightly, but the material is weaker than most metals.
@@ -7940,7 +8063,7 @@ Its grip encases you tightly, but the material is weaker than most metals.
 Shadow Armbinder
 影のアームバインダー
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-別の世界の素材で作られたアームバインダー。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+異世界の物質で作られたアームバインダー。怪しく輝く光沢は、まるでもがき苦しむ犠牲者を観察する星々の目線を映しているかのようだ。
 Its grip encases you tightly, but the material is weaker than most metals.
 しっかりと身体を包み込んでいるが、他の金属よりも脆い。
 
@@ -7960,13 +8083,19 @@ Its grip encases you tightly, but the material is weaker than most metals.
 Shadow Boxbinder
 影のボックスバインダー
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-別の世界の素材で作られたボックスバインダー。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+異世界の物質で作られたボックスバインダー。怪しく輝く光沢は、まるでもがき苦しむ犠牲者を観察する星々の目線を映しているかのようだ。
 Its grip encases you tightly, but the material is weaker than most metals.
 しっかりと身体を包み込んでいるが、他の金属よりも脆い。
 Shadow Legbinder
 影のレッグバインダー
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-別の世界の素材で作られたレッグバインダー。光を反射する素材でできており、瞬く星々が自身の苦境を観察しているかのように見える。
+異世界の物質で作られたレッグバインダー。怪しく輝く光沢は、まるでもがき苦しむ犠牲者を観察する星々の目線を映しているかのようだ。
+Its grip encases you tightly, but the material is weaker than most metals.
+しっかりと身体を包み込んでいるが、他の金属よりも脆い。
+Shadow Latex Petsuit
+シャドーラテックス・ペットスーツ
+A tight petsuit made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
+異世界の物質で作られたペットスーツ。怪しく輝く光沢は、まるでもがき苦しむ犠牲者を観察する星々の目線を映しているかのようだ。
 Its grip encases you tightly, but the material is weaker than most metals.
 しっかりと身体を包み込んでいるが、他の金属よりも脆い。
 Obsidian Yoke
@@ -8174,6 +8303,15 @@ Cables made from nylon polymer. Very strong and self-tightening, but vulnerable 
 ナイロンポリマー製のケーブル。自動式で締まり、もがいても抜け出しにくいが刃物は通す。
 They are wrapped methodically around your body!
 自動でターゲットの身体に巻き付く。
+
+Magic Ribbons
+マジックリボン
+Magically sealed ribbons to teach intruders a lesson.
+侵入者を"教育"するための、魔法を帯びたリボン。
+The magic is powerful enough to ward off most blades, creating a true predicament for one who is trapped by these.
+魔法によって刃も通さない程の強靭さを得ており、捕らえたものを逃さないリボン。
+
+
 Magic Ribbons (Arms)
 マジックリボン（腕）
 Those ribbons will hold you tight~
@@ -8300,6 +8438,35 @@ Sticky slime that adheres to your body. It reacts negatively to mana...
 体に張り付くねばねばしたスライム。魔力を通さない……
 It is an organic material that reforms around every cut you make!
 いくら切ってもすぐに再生する生きた拘束具。
+
+Rubber
+ラバー
+Made from hardened slime.
+固まったスライムから作られたゴム。
+The classic smooth, shiny material for full encasement.
+マミフィケーションに使われる定番の素材。
+
+Slime
+スライム
+A semi-organic substance of alchemical origin.
+錬金術によって生み出された、半有機的生命体。
+It has a mind of its own, and tends to spread if not properly contained.
+意思を持っているため、適切な管理が必要。
+
+Proto Rubber
+プロトラバー
+Made from hardened proto rubber.
+固まったプロトスライムから作られたゴム。
+A hardened form of the essence of latex.
+ゴムのエッセンスを固めたもの。
+
+Proto Slime
+プロトスライム
+Alchemical rubber in its simplest form. Amorphous.
+錬金術で作られた、とても単純な生命体。アモルファス。
+Often forms strange growths, seeking damsels to encase.
+時として不思議な変異を遂げ、少女たちを捕縛しようとする。
+
 Rubber (Feet)
 ゴム(つま先)
 Sticky rubber that has fused itself into a skintight layer.
@@ -8426,6 +8593,14 @@ Sticky slime that has fused itself into a skintight layer.
 身体にピッタリと張り付く粘着性のゴム。
 There's no struggling out now, but since it's solid it may be cuttable.
 ゴムに変わったため、もがいて抜け出しにくくなったが、再生能力は失われたので切れるかもしれない。
+
+Sticky Tape
+粘着テープ
+Extra-strength utility tape, for your secure packaging needs.
+とても長い多目的テープ。梱包したい"もの"に使おう。
+It's quite sticky, the adhesive requires some force to get off.
+粘着力が強く、剥がしにくい。
+
 Tape Mittens
 テープミトン
 Sticky tape that holds your hands into a fist!
@@ -9470,7 +9645,7 @@ Choose target location (2 tile range)
 移動先を選択(2マス先)
 Blink III
 ブリンク III
-Instantly teleport up to 3 tiles away. Must have vision of the target point.
+Instantly teleport up to 3 tiles away. Must have vision of the target point. 
 視界範囲内の、3マス先まで瞬時に移動する。
 You teleport!
 瞬間移動した！
@@ -12413,7 +12588,7 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 関係性3を捧げることによって、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 関係性3を捧げることによって、鍵を授かる。
-For 3 rep the goddess will grant you
+For 3 rep the goddess will grant you 
 関係性3を捧げることによって、
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
@@ -12423,7 +12598,7 @@ For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-For 3 rep the goddess
+For 3 rep the goddess 
 神に関係性を捧げ、助けてもらう。
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -12596,8 +12771,8 @@ Ancient Chastity Bra
 古代の貞操ブラ
 You find a chastity bra, glowing magnificently, along with a strange crystal next to it.
 脇に奇妙なクリスタルの添えられた、輝く貞操ブラを見つけた。
-A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10.
-洗練された古風なデザインの貞操ブラ。エネルギーがある間は、被ダメージを10にする。
+A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20.
+洗練された古風なデザインの貞操ブラ。エネルギーがある間は、敵の攻撃からの被ダメージを20軽減する。
 'Shield of the chaste'
 純潔の盾
 You rub your hands along your breasts but feel only hard, unbreakable metal.
@@ -12740,7 +12915,7 @@ Can disarm (chance: DISARMCHANCE%)
 武装解除可能 (確率: DISARMCHANCE%)
 Resistances:
 耐性:
-Binding:
+Binding: 
 拘束：
 Ambivalent
 関係
@@ -13029,7 +13204,7 @@ Partial
 Full
 全部
 You do not know if a perk shrine will apply bondage.
-選んで見るまでわからない。
+選択するまでわからない。
 You know that a perk shrine will apply bondage, but not what kind.
 祭壇に拘束されることはわかるが、種類まではわからない。
 You know the exact restraints a perk shrine will apply.
@@ -13045,7 +13220,7 @@ Extreme
 エクストリーム
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-Play the game the way it was intended. Cruel and restrictive.
+Play the game the way it was intended. Cruel and restrictive. 
 本来意図された難易度。積極的に捕まりたい人用
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
@@ -13057,6 +13232,8 @@ Removes all chastity belts, vibrating restraints, plugs, and removes the option 
 貞操帯やバイブ等のオモチャ類をゲームに登場させない。
 Includes all that good stuff.
 全ての拘束具がゲームに登場する。
+Allow Front Plugs
+前のプラグ許可
 Allow Rear Plugs
 アナルプラグ許可
 Allow Piercings
@@ -17103,6 +17280,8 @@ Ignite torches and nearby objects
 近くのオブジェクトに着火する。
 Preferences
 好み
+Preferences 2
+好み2
 Multiclass
 マルチクラス
 Game-Changing
@@ -17356,9 +17535,52 @@ That's just creepy.
 Fine, you've convinced me.
 わかった
 (Giggle and nod)
-(笑う)
+(笑いながら頷く)
 I don't have time for this. (PERCENT chance to avoid)
 悪いけどそんなことしている時間はない(PERCENT の確率で拒否)
+
+(The SPEAKER smiles as she hides her hands behind her back)|Have you heard of 'sensory deprivation'?
+(後ろで手を組みながら、 SPEAKER が笑顔を湛え問いかけてきた)|ねえ、"感覚遮断"って知ってる？
+(The SPEAKER presents a RESTRAINT)|Well, I have just the thing for you!|It's nice and comfy, and it has earmuffs built in!
+(SPEAKER は RESTRAINT を渡してきた)|へぇ～、じゃあこれをあげるね。|付け心地が良くてね、耳栓もついてるんだよ！
+(The SPEAKER starts pulling the hood over your head)|Let's get you laced in!
+(SPEAKER はフードを被せてきた)|それじゃあ競争でもしようか！
+(The SPEAKER giggles)|Alrighty.|You don't know what you're missing out on~
+(SPEAKER はクスクスと笑っている)|あら、そう。|こんな貴重な経験を逃しちゃっていいの？
+(The SPEAKER doesn't seem to hear you)
+(SPEAKER にはもう聞こえていないようだ)
+(The SPEAKER looks at you with a devious grin)|Oh, but it's so much fun!|You can run around bumping into things!|It's the ultimate adventure!
+(SPEAKER はいやらしい笑みを浮かべている)|でもでも、とっても楽しいんだよ！|何度も壁にぶつかったり転んだりしてね、|それってつまり冒険じゃん！
+(The SPEAKER chuckles)|Truth be told, I wasn't asking~|Now why don't you kneel for me...
+(SPEAKER は苦笑いをしている)|まあ、正直キミの回答なんてどうでもいいんだけど。|さっさと跪いて……。
+(The SPEAKER pouts)|I thought it would be fun...
+(SPEAKER は不満そうにしている)|楽しいと思うんだけどな～……。
+(The SPEAKER starts pulling the hood over your head)|Let's get you laced in!
+(SPEAKER はフードを被せてきた)|それじゃあ競争でもしようか！
+(The SPEAKER surprises you with a crop to the thigh)|(You involuntarily kneel in front of her)|That's better~|Now why don't you say good night~
+(SPEAKER に太ももを叩かれ、驚いてしまう)|(突然の出来事に、思わず腰が抜けて彼女の前に跪いてしまった)|よしよし。|それじゃあ、良い夜を。
+
+Of course! I love it!
+ええ、大好き！
+
+I prefer 'situational awareness'.
+感覚が尖っている方が好き。
+(Shake your head in alarm)
+(必死に首を横に振る)
+
+Doll me up!
+ええ、お願い！
+
+Actually, that sounds stifling...
+やっぱり危ないからやめておく……
+
+That doesn't sound that bad actually...
+やっぱり面白そう……
+(Giggle and nod)
+(笑いながら頷く)
+I don't have time for this. (PERCENT chance to avoid)
+悪いけどそんなことしている時間はない(PERCENT の確率で拒否)
+
 
 (The SPEAKER smiles and looks down at you deviously)|Hey there, I have a 'job' for you!
 (SPEAKER は厭らしい笑みを浮かべながらこちらを見ている)|ごきげんよう、"お仕事"の時間ですよ！
@@ -18918,7 +19140,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手を交わした)|ようこそドラゴンハートへ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうか。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|残念だ。
@@ -18962,7 +19184,7 @@ What are you going to do about it? (PERCENT chance to avoid)
 (SPEAKER は咳払いをする)|アンタは今私達の縄張りに侵入しているわけだけど。|条件さえ飲んでくれれば私達も見逃してやろうと思う。|私達に危害を加えないと約束してほしいんだ。
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手をかわした)|これからよろしく頼むよ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首をかしげて肩をすくめる)|ああ、そうかい。
 (The SPEAKER nods)|Fair enough.
 (SPEAKER は素直に頷いた)|そうかい。
@@ -20617,6 +20839,8 @@ Try to pick her restraints
 ロックピックを使う
 Use a command word
 コマンドワードを使う
+Return her to your collection
+コレクションに移動
 Flip her around
 移動させる
 Apologize profusely!
@@ -20770,7 +20994,7 @@ Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
 前提：
-Unlocks:
+Unlocks: 
 解放済み：
 You need to learn REQUIREDSPELL before you can learn this one.
 このスキルを学ぶには REQUIREDSPELL を先に習得する必要がある。
@@ -21225,7 +21449,7 @@ Copy
 コピー
 Paste
 ペースト
-Preloading Character Assets:
+Preloading Character Assets: 
 キャラクターアセットをロード中：
 
 
@@ -22709,7 +22933,7 @@ Deals glue damage. Adds 25 slime binding.
 接着剤属性。25のスライム属性拘束値を与える。
 You pick up slime-covered sword.
 スライムに覆われた剣を拾った
-Preloading Character Assets:
+Preloading Character Assets: 
 キャラクターアセット：
 Frost Blade
 フロストブレード
@@ -22854,6 +23078,13 @@ A playful ghost now accompanies you on your journey.
 いたずら好きの幽霊が憑いてくるようになった。
 The ghost haunting you decides to have a little fun! (+RestraintAdded)
 取り憑いている幽霊がいたずらしてきた！ (+RestraintAdded)
+
+Hemp Rope
+麻縄
+The most common type of bondage rope.
+最も普及している、緊縛用の縄。
+Soft and comfy. Great for casual wear!
+縛り心地が良く、普段着に最適。
 
 Boxtie
 高手小手縛り
@@ -23007,6 +23238,10 @@ Enchanted
 エンチャント
 Mundane
 普通
+Can Disassemble
+分解可能
+Raw Material
+素材
 Rope
 縄
 Metal
@@ -23079,6 +23314,13 @@ Accessible
 触れられる
 Inaccessible
 触れられない
+
+Spellbound Rope
+呪文の縄
+An enchanted rope with a powerful sealing spell. It cannot be cut by mundane means.
+強力な呪文の施された縄。通常の手段で切ることは不可能。
+It almost has a kinky mind of its own.
+邪悪な意思を持つロープ。
 
 Spellbound Boxtie
 呪文の高手小手縛り
@@ -23197,6 +23439,12 @@ A tie keeping your knees secured together.
 The knots appear to tie themselves together again, making them impossible to undo!
 解こうとしても、結び目が勝手にきつくなる魔法の縄。
 
+Magic Rope
+魔法の縄
+A novice-level enchanted rope, relatively trivial to untie but resistant to mundane tools.
+初級の付呪が施された縄。一般的な道具にはそこそこの耐性を持つが、簡単に解ける。
+Faintly glows with traces of devious thoughts.
+
 
 Magic Boxtie
 魔法の高手小手縛り
@@ -23304,7 +23552,12 @@ A tie keeping your knees secured together.
 They glow with a trace of magic.
 魔法の込められた縄。淡く輝いている。
 
-
+Celestial Rope
+聖なる縄
+Rope that has been exposed to solar energies.
+陽光を帯びる、神聖な縄。
+Squeezes the wearer if she tries to escape, so that she knows her place.
+抜け出そうとすると、立場をわからせるように締め付けてくる。
 
 Holy Boxtie
 聖なる高手小手縛り
@@ -23418,7 +23671,12 @@ A tie keeping your knees secured together.
 A set of ropes that emit a calm, soothing aura. They magically stretch to fit your body.
 不思議な癒やしの力を放つ縄。魔法の力で伸びて身体にフィットする。
 
-
+Mithril Rope
+ミスリルの縄
+Rope made from silver thread, exposed to lunar energies.
+銀の糸で作られた、月の力を帯びる縄。
+Lightweight yet unyielding. Truly a high class rope.
+軽くて解けにくい、まさに高級ロープ。
 
 Mithril Boxtie
 ミスリルの高手小手縛り
@@ -23574,6 +23832,14 @@ The liquid metal cube sticks to you and hardens! (DamageTaken)
 リキッドメタルキューブが身体にまとわりつき、硬化していく！ (DamageTaken)
 The liquid metal cube expands across your body and hardens, taking the form of restraints! (+RestraintAdded)
 リキッドメタルキューブが身体にまとわりつき、固くなっていく！ (+RestraintAdded)
+
+Liquid Metal
+液体金属
+Primordial latex infused with mineral form.
+原始的なゴム生命体にミネラルを注入した姿。
+Heavy and weighs the wearer down.
+とても重いため、着用者の動きが遅くなる。
+
 Liquid Metal (Feet)
 液体金属(つま先)
 A metallic substance that is both flexible and hard. It weighs you down, reducing evasion.
@@ -23680,7 +23946,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-Deals grope damage.
+Deals grope damage. 
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
@@ -23807,27 +24073,27 @@ Sensitivity: AMNT AP from attacks
 欲情：攻撃時対象のDP AMNT 上昇
 AMNT Stat
  AMNT 上昇
-
+ 
 AMNT Evasion
 回避力 AMNT
 AMNT% Accuracy
-命中率 AMNT%
+命中率 AMNT% 
 AMNT Magic Armor
 マジックアーマー AMNT
 AMNT Physical Armor
-物理アーマー AMNT%
+物理アーマー AMNT% 
 AMNT Bondage Resist
 拘束抵抗力 AMNT
 AMNT TYPE Resist
 TYPE 属性の抵抗力 AMNT
 AMNT% TYPE Damage
-TYPE 属性の威力 AMNT%
+TYPE 属性の威力 AMNT% 
 AMNT% weapon phys. dmg
-物理ダメージ AMNT%
+物理ダメージ AMNT% 
 AMNT% weapon magic dmg
-武器の魔法ダメージ AMNT%
+武器の魔法ダメージ AMNT% 
 Infuse weapon AMNT% TYPE
-武器の TYPE 属性ダメージ AMNT%
+武器の TYPE 属性ダメージ AMNT% 
 AMNT TYPE on attack
 AMNT TYPE 属性追加ダメージ
 +AMNT Mana Efficiency
@@ -23835,18 +24101,18 @@ AMNT TYPE 属性追加ダメージ
 +AMNT TYPE Mana Efficiency
 TYPE 属性のマナ効率化 +AMNT 
 AMNT% regen from mana pool
-マナプールから得られるマナ AMNT%
+マナプールから得られるマナ AMNT% 
 AMNT mana pool on capture
 敵を捕まえたときマナプールを AMNT 回復する
 AMNT% Visibility Reduction
-視認性低下 AMNT%
+視認性低下 AMNT% 
 AMNT Distraction Decay
 DP AMNT 低下
 AMNT Distraction Per Turn
 ターン毎にDP AMNT 上昇
 AMNT AP from attacks
 攻撃時にDP AMNT 上昇
-
+ 
 Drop On Floor
 床に置く
 Remove
@@ -24550,7 +24816,7 @@ The assistant applies a lock! (DamageTaken)
 研究員に拘束具をロックされた！ (DamageTaken)
 The assistant splashes a solvent in your face, blinding you! (DamageTaken)
 研究員に奇妙な液体をかけられ、目潰しされた！ (DamageTaken)
-
+ 
 ...Glue Technician?
 接着剤の技術士……？
 You rescue the glue technician.
@@ -24786,9 +25052,9 @@ RestraintName に亀裂が入り始めた！
 Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
-Load Hotbar
+Load Hotbar 
 ホットバーをロード
-Save Hotbar
+Save Hotbar 
 ホットバーをセーブ
 Clear Hotbar
 ホットバーをクリア
@@ -26179,7 +26445,7 @@ The Collectors
 Dollmaker Inc.
 ドールメイカー株式会社
 
-Receive the following restraints:
+Receive the following restraints: 
 次の拘束をされる：
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
@@ -26196,7 +26462,7 @@ The gag geist teases you playfully!! (DamageTaken)
 The gag geist gags the girl with a ghastly grimace! (+RestraintAdded)
 ギャグガイストがぞっとするような笑みで猿轡を噛ませてきた！ (+RestraintAdded)
 
-Poltergeist
+Poltergeist 
 ポルターガイスト
 The poltergeist goes silent.
 ポルターガイスト現象は収まった。
@@ -26931,7 +27197,7 @@ Guest #NUMR/TTL
 
 Select a character to examine
 詳細を見るキャラクターを選択
-Former Faction:
+Former Faction: 
 勢力：
 
 Minigun
@@ -27169,8 +27435,8 @@ You crouch and move slowly.
 ゆっくりと這いつくばる。
 
 
-Owned by:
-所有者：
+Owned by: 
+所有者： 
 
 Warden's Belt
 看守長のベルト
@@ -27713,7 +27979,7 @@ It will occasionally cause ropes to appear out of nowhere and bind the wearer.  
 Living Auto Tape Collar
 生きているオートテープの首輪
 This collar is designed to make sure its wearer does not escape their tape.
-着用者をオートテープで拘束し続けるための首輪。
+着用者をテープで拘束し続けるための首輪。
 It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you.
 装備していると、時折どこからともなくオートテープが現れて拘束される。効果は装備しているテープの数で増加する。
 
@@ -27947,15 +28213,15 @@ Other paths will become inaccessible.
 他の道には進めなくなる。
 Floor NMB
 フロア NMB
-Tileset:
+Tileset: 
 タイルセット：
-Map Modifier:
+Map Modifier: 
 できごと：
-Layout:
+Layout: 
 レイアウト：
-Controlling Faction:
+Controlling Faction: 
 出現する主な勢力：
-Main Objective:
+Main Objective: 
 メイン目標：
 Points of Interest:
 特徴：
@@ -28235,7 +28501,7 @@ Elbow Chain
 肘枷の鎖
 A very short chain connecting your elbow cuffs together. It is quite awkward to remove by yourself.
 肘枷同士を繋ぐ鎖。自分で外すのは困難。
-RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
+RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall lose.
 鋼鉄製で、施錠されている。解錠するとこの拘束具は勝手に外れる。
 Wrist Chain
 手枷の鎖
@@ -28969,8 +29235,8 @@ AMNT/MAXX Servants Assigned
 
 Management
 管理
-Assign servants as managers to boost the production of other facilities.|Managers gain increased opinion and training over time.
-使用人をマネージャーとして配属する。|施設の生産力が増加し、マネージャーの調教度と好感度が増加する。
+Assign servants as managers to boost the production of other facilities.|Appointing new management results in a loss of efficiency until the next cycle.
+使用人をマネージャーとして配属する。|配属者を変更した場合、次のサイクルまで効率が低下する。
 
 Bondage Dojo
 緊縛道場
@@ -29010,6 +29276,14 @@ You recycle a ITM
 ITM をリサイクルした。
 You recycle #x ITM
 #x の ITM をリサイクルした。
+
+You disassemble #x ITM into $x PRD
+#x の ITM を解体し、 $x の PRD を得た。
+
+Disassemble all but one
+一つを残して解体
+Disassemble one
+一つ解体
 
 You're blocking me.
 どいてくれない？
@@ -29188,6 +29462,10 @@ Equipped:
 装備中：
 Click to Add 
 クリックして選択
+Apply 
+決定 
+Raw Material: 
+素材: 
 
 Free Prisoner
 開放する
@@ -29217,6 +29495,8 @@ Random
 
 Choose Palette
 パレットを選択
+Use Raw Material
+素材を使用
 Restraint Palette
 拘束のパレット
 Choose Restraint
@@ -29325,7 +29605,9 @@ AutoBind
 Copy Restraints
 拘束具をコピー
 Paste Restraints from NME
-NME の拘束具をペースト
+コピー元 NME の拘束具をペースト
+No restraints left in inventory
+拘束具が足りない
 Paste to All!
 全てにペースト
 OVERWRITE All!
@@ -29391,3 +29673,10 @@ idle
 
 Mysterious Statue
 奇妙な石像
+
+Select a Binding Slot
+スロットを選択
+Cost: 
+コスト: 
+Zoom set to PCNT%
+ズーム: PCNT%
