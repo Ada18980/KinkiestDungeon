@@ -30,6 +30,9 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.35 RC8
+- Fixed a bug where sensory mask was being applied infinitely
+- Autobind should now use raw materials as well for restraints
 
 5.3.35 RC7
 - Fix sailor shirt exposing kneel pose midriff

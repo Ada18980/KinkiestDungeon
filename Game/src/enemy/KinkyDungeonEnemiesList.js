@@ -4877,7 +4877,9 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"secondhalf":3, "lastthird":3, "miniboss": -7, "tech": -20, "velvet": 4, "skeleton": 3}, shrines: [], floors:KDMapInit(["cat", "jng", "tmb", "tmp"]), attackLock: "White",
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 14, noSummon: true}]},
 
-	{name: "HighWizard", nameList: "witch", outfit: "WitchShock", style: "Water", clusterWith: "mushroom", bound: "HighWizard", faction: "Mushy", playLine: "Witch", color: "#a583ff", tags: KDMapInit(["leashing", "mage", "mushy", "imprisonable", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter"]), squeeze: true,
+	{name: "HighWizard", nameList: "witch", outfit: "WitchShock", style: "Water", clusterWith: "mushroom",
+		bound: "HighWizard", faction: "Mushy", playLine: "Witch", color: "#a583ff",
+		tags: KDMapInit(["leashing", "mage", "mushy", "imprisonable", "opendoors", "closedoors", "human", "ranged", "unflinching", "hunter"]), squeeze: true,
 		stamina: 2,
 		maxblock: 0,
 		maxdodge: 0,

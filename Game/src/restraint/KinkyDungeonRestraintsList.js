@@ -148,7 +148,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Charms", "Tape", "Raw"]},
@@ -156,7 +156,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Tape", "Raw"]},
@@ -312,7 +312,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["MysticDuctTape", "Charms", "Tape", "Raw"]},
@@ -402,7 +402,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["AutoTape", "Tape", "Raw"]},
@@ -485,7 +485,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["VinylTape", "Tape", "Raw"]},
@@ -902,7 +902,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Rubber", "Latex", "Raw"]},
@@ -910,7 +910,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Slime", "Latex", "Raw"]},
@@ -4839,7 +4839,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Ribbons", "Raw"]},
@@ -4896,7 +4896,7 @@ const KinkyDungeonRestraints = [
 		UnderlinkedAlwaysRender: true,
 		affinity: {Remove: ["Hook"],}, struggleMinSpeed: {"Struggle": 0.1},
 		escapeChance: {"Struggle": 0.15, "Cut": 0.35, "Remove": 0.25}, struggleMaxSpeed: {"Remove": 0.2}, enemyTags: {"magicRibbons":4, "lowWeightRibbons":1}, playerTags: {"ItemTorsoFull":-2}, minLevel: 0,
-		allFloors: true, shrine: ["Rope", "Ties", "Conjure", "Ribbons"], events: [{trigger: "struggle", type: "crotchrope"}]},
+		allFloors: true, shrine: ["RopeCrotch", "Rope", "Ties", "Conjure", "Ribbons",], events: [{trigger: "struggle", type: "crotchrope"}]},
 	{unlimited: true, inventory: true, name: "RibbonHands", Asset: "DuctTape", debris: "Fabric", Color: "#a583ff", LinkableBy: ["Mittens"], Group: "ItemHands", bindhands: 0.7, power: 5, weight: 0, magic: true,
 		Model: "TapeHeavyHands",
 		Filters: {
@@ -4942,7 +4942,7 @@ const KinkyDungeonRestraints = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
-		Group: "ItemDevices", power: 1, weight: 0,
+		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Raw"]},
@@ -5198,7 +5198,7 @@ const KinkyDungeonRestraints = [
 		affinity: {Remove: ["Hook"],},
 		disassembleAs: "RopeSnakeRaw",
 		aggroLevel: 1.0,
-		maxwill: 0.75, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.15}, enemyTags: {"ropeRestraints2":4}, playerTags: {"ItemPelvisFull":-3}, minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeCrotch"],
+		maxwill: 0.75, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.15}, enemyTags: {"ropeRestraints2":4}, playerTags: {"ItemPelvisFull":-3}, minLevel: 0, allFloors: true, shrine: ["RopeCrotch", "RopeSnake", "Rope", "Ties"],
 		events: [{trigger: "struggle", type: "crotchrope"}]},
 	//endregion
 
@@ -5875,7 +5875,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":1.3333333333333333,"green":1,"blue":3.416666666666667,"alpha":1},
 		},
-		failSuffix: {"Remove": "MagicChain"}, escapeChance: {"Struggle": 0.2, "Cut": -0.1, "Remove": -0.05}, enemyTags: {"chainRestraintsMagic":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Conjure"],
+		failSuffix: {"Remove": "MagicChain"}, escapeChance: {"Struggle": 0.2, "Cut": -0.1, "Remove": -0.05}, enemyTags: {"chainRestraintsMagic":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeCrotch", "Chains", "Ties","Metal", "Conjure"],
 		events: [{trigger: "struggle", type: "crotchrope"}]},
 	//endregion
 
@@ -5908,7 +5908,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Rope: {"gamma":0.7333333333333334,"saturation":0,"contrast":1.4166666666666665,"brightness":2.1333333333333333,"red":0.6333333333333334,"green":0.15,"blue":3.0833333333333335,"alpha":1},
 		},
-		strictnessZones: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"], Asset: "CrotchChain", OverridePriority: 26, Color: "#000000", Group: "ItemTorso", power: 2, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": -0.1, "Remove": -0.1}, enemyTags: {"shadowRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"],
+		strictnessZones: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"], Asset: "CrotchChain", OverridePriority: 26, Color: "#000000", Group: "ItemTorso", power: 2, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": -0.1, "Remove": -0.1}, enemyTags: {"shadowRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeCrotch", "Chains", "Ties","Metal", "Illusion"],
 		events: [{trigger: "struggle", type: "crotchrope"}]},
 	//endregion
 
@@ -5941,7 +5941,7 @@ const KinkyDungeonRestraints = [
 		Filters: {
 			Rope: {"gamma":1.6500000000000001,"saturation":0,"contrast":2.033333333333333,"brightness":2.1333333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		strictnessZones: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"], Asset: "CrotchChain", OverridePriority: 26, Color: "#cccccc", Group: "ItemTorso", power: 2, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.2, "Remove": 0.1}, enemyTags: {"ghostRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Chains", "Ties","Metal", "Illusion"],
+		strictnessZones: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"], Asset: "CrotchChain", OverridePriority: 26, Color: "#cccccc", Group: "ItemTorso", power: 2, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.2, "Remove": 0.1}, enemyTags: {"ghostRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeCrotch", "Chains", "Ties","Metal", "Illusion"],
 		events: [{trigger: "struggle", type: "crotchrope"}]},
 	//endregion
 

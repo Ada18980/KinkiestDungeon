@@ -3409,6 +3409,8 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
+	if (restraint.shrine.includes("Raw")) return false;
+
 	function bypasses() {
 		return (
 			(
@@ -4262,7 +4264,11 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 			if (!KinkyDungeonCancelFlag && !Add && !UnLink) {
 				KDRestraintDebugLog.push("Unlinking " + item.name);
-				KinkyDungeonCancelFlag = KinkyDungeonUnLinkItem(item, Keep);
+				let rr = KinkyDungeonUnLinkItem(item, Keep);
+				if (rr.length > 0) {
+					KinkyDungeonCancelFlag = true;
+					rem.push(...rr);
+				}
 			}
 
 			if (!KinkyDungeonCancelFlag) {
@@ -4564,10 +4570,11 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
  *
  * @param {item} item
  * @param {boolean} Keep
- * @returns
+ * @returns {item[]}
  */
 function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 	//if (!data.add && !data.shrine)
+	let rem = [];
 	if (item.type == Restraint) {
 		/**
 		 * @type {item}
@@ -4590,11 +4597,11 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 				} else
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), "lightgreen", 2,
 						false, false, undefined, "Struggle");
-				return true;
+				return [item];
 			}
 		}
 	}
-	return false;
+	return rem;
 }
 
 /**

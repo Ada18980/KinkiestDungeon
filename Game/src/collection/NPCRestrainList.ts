@@ -122,7 +122,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 		]},
 	{id: "Pelvis", encaseGroup:
 		{id: "ChastityBelt", encasedBy: [], allowedGroups: ["ItemPelvis"],
-			allowedTags: ["ChastityBelts", "Crotchropes", "Panties"]},
+			allowedTags: ["ChastityBelts", "RopeCrotch", "Panties"]},
 		layers: [
 			{id: "Vibe", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemVulvaPiercings"],
 				allowedTags: ["Vibes"], requirePerk: "arousalMode"},
