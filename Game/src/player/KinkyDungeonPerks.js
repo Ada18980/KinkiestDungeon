@@ -679,7 +679,9 @@ let KDPerkStart = {
 		if (KinkyDungeonStatsChoice.get("arousalMode")) {
 			KinkyDungeonInventoryAddLoose("TrapBelt");
 			KinkyDungeonInventoryAddLoose("TrapVibe");
-			KinkyDungeonInventoryAddLoose("TrapPlug");
+			if (!KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) {
+				KinkyDungeonInventoryAddLoose("TrapPlug");
+			}
 		}
 		if (KinkyDungeonStatsChoice.get("arousalModePlug")) {
 			KinkyDungeonInventoryAddLoose("RearVibe1");

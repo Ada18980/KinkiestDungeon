@@ -1653,6 +1653,15 @@ let LayerGroups = {
 	"SleeveRight",
 		]
 	),
+
+	WrappingLegsOver: {
+		"WrappingLegsOver2": true,
+		"LegbinderLegsOver2": true,
+		"WrappingLegsOver": true,
+		"LegbinderLegsOver": true,
+		"WrappingLegs": true,
+		"WrappingLegs2": true,
+	},
 	// Extra layer of unpeeling over the head if we are wearing a blindfold or harness gag
 	XrayFace: ToMap(
 		[

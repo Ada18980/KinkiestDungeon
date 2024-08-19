@@ -202,6 +202,22 @@ let KDFactionProperties = {
 		honor_specific: {
 			Dollsmith: -1,
 		},
+		customDefeat: "DollStorage",
+		customHiSecDialogue: (enemy) => {
+			if (KDGetEnemyPlayLine(enemy).includes("Robot")) {
+				KinkyDungeonSendDialogue(enemy, TextGet("KDJailerHiSecDialogue" + KDGetEnemyPlayLine(enemy)),
+					KDGetColor(enemy), 8, 10, true);
+				KinkyDungeonSetFlag("LeashToPrison", -1);
+				if (enemy?.hostile) {
+					enemy.hostile = 300;
+				}
+				KinkyDungeonStartChase(undefined, "Jailbreak");
+			}
+			else {
+				return "CyberHiSec";
+			}
+			return "";
+		},
 		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
 			let w = 0;
 			if (tags.includes("robot")) w += 100;

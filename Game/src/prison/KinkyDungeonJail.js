@@ -813,6 +813,7 @@ function KinkyDungeonMissingJailUniform() {
 				&& (!currentItem.dynamicLink || !KDDynamicLinkList(currentItem, true).some((item) => {return rest.name == item.name;})))
 			)
 			&& (KinkyDungeonStatsChoice.get("arousalMode") || !rest.arousalMode)
+			&& (!KinkyDungeonStatsChoice.get("arousalModePlugNoFront") || !(rest.shrine.includes("Plugs") && rest.Group == "ItemVulva"))
 			&& (KinkyDungeonStatsChoice.get("arousalModePlug") || rest.Group != "ItemButt")
 			&& (KinkyDungeonStatsChoice.get("arousalModePiercing") || !rest.piercing)) {
 			MissingGroups.push(g);
@@ -1228,7 +1229,7 @@ function KDEnterDemonTransition() {
 	KinkyDungeonSaveGame();
 }
 
-function KDEnterDollTerminal(willing, cancelDialogue = true) {
+function KDEnterDollTerminal(willing, cancelDialogue = true, forceOutfit = true) {
 	let dollStand = KinkyDungeonPlayerTags.get("Dollstand");
 
 	KDDefeatedPlayerTick(!willing);
@@ -1245,7 +1246,7 @@ function KDEnterDollTerminal(willing, cancelDialogue = true) {
 		}
 	}
 
-	if (!willing) {
+	if (forceOutfit && !willing) {
 		let defeat_outfit = "CyberDoll";
 		if (KDGetMainFaction() == "Dollsmith") defeat_outfit = "DollSuit";
 		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
@@ -1806,6 +1807,12 @@ let KDCustomDefeats = {
 		KinkyDungeonDefeat(true, enemy);
 		KDCustomDefeatUniforms.ElementalSlave();
 	},
+	DollStorage: (enemy) => {
+		if (KinkyDungeonFlags.has("LeashToPrison"))
+			KDEnterDollTerminal(false, false, false);
+		else
+			KinkyDungeonDefeat(false, enemy);
+	},
 
 
 	RopeDojo: (enemy) => {
@@ -1963,4 +1970,14 @@ function KDChestSecurity(data) {
 
 
 	return 0.25;
+}
+
+function KDGetHiSecDialogue(enemy) {
+	if (enemy) {
+		let faction = KDGetFaction(enemy);
+		if (KDFactionProperties[faction]?.customHiSecDialogue) {
+			return KDFactionProperties[faction].customHiSecDialogue(enemy);
+		}
+	}
+	return "JailerHiSec";
 }

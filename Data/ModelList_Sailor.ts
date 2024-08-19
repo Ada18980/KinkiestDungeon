@@ -94,7 +94,7 @@ AddModel({
 			InheritColor: "Shirt",
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
+			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel",},
 		},
 		{ Name: "ShirtChest", Layer: "ShirtChest", Pri: 14,
 			InheritColor: "Shirt",

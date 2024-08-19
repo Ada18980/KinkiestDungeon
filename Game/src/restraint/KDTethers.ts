@@ -35,7 +35,7 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		//if (!KinkyDungeonInventoryGetConsumable("LeashItem") && !KDHasSpell("LeashSkill")) return false;
 		if (entity
 			// Condition 1: the target is willing
-			&& !(KDWillingLeash(entity))
+			&& !(KDWillingLeash(entity) && !KDCanApplyBondage(entity, KDPlayer()))
 			// Condition 2: the player has the Brat Handler skill and target is wearing a leash item
 			&& !(KDHasSpell("LeashSkill") && KDGetNPCRestraints(entity.id) && Object.values(KDGetNPCRestraints(entity.id))
 				.some((rest) => {return KDRestraint(rest)?.leash;}))

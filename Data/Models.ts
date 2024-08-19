@@ -434,7 +434,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		let flippedPoses = DrawModelProcessPoses(MC, extraPoses);
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
-		let modified = DrawCharacterModels(MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+		let modified = DrawCharacterModels(containerID, MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
 			MC.Containers.get(containerID), refreshfilters, flip);
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
@@ -580,7 +580,7 @@ function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>): string 
 /**
  * Setup sprites from the modelcontainer
  */
-function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer, refreshfilters: boolean, flip: boolean) : boolean {
+function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer, refreshfilters: boolean, flip: boolean) : boolean {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 	let modified = false;
@@ -989,7 +989,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				let sy = transform.sy;
 				let rot = transform.rot;
 
-				let fh = m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "";
+				let fh = containerID + (m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "");
 				/*if (refreshfilters) {
 					if (KDAdjustmentFilterCache.get(fh)) {
 						for (let f of KDAdjustmentFilterCache.get(fh)) {
@@ -1002,7 +1002,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 					(KDAdjustmentFilterCache.get(fh) || [adjustFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) {
-					KDAdjustmentFilterCache.set(FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
+					KDAdjustmentFilterCache.set(containerID + FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
 				}
 
 				let extrafilter: PIXIFilter[] = [];
@@ -1010,15 +1010,15 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				// Add extrafilters
 				if (ExtraFilters[origlayer]) {
 					for (let ef of ExtraFilters[origlayer]) {
-						let efh = FilterHash(ef)
+						let efh = containerID + FilterHash(ef)
 						if (refreshfilters) {
-							KDAdjustmentFilterCache.delete(FilterHash(ef));
+							KDAdjustmentFilterCache.delete(containerID + FilterHash(ef));
 						}
 						f = new PIXI.filters.AdjustmentFilter(ef);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
-							KDAdjustmentFilterCache.set(FilterHash(ef), efilter);
+							KDAdjustmentFilterCache.set(containerID + FilterHash(ef), efilter);
 						}
 						extrafilter.push(...efilter);
 					}
@@ -1027,7 +1027,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				if (!l.NoErase && EraseFilters[origlayer]) {
 					for (let ef of EraseFilters[origlayer]) {
 						if (ef.zIndex != undefined && ef.zIndex <= zz) continue;
-						let efh = "disp_" + ef.hash;
+						let efh = containerID + "ers_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(efh);
@@ -1048,7 +1048,7 @@ function DrawCharacterModels(MC: ModelContainer, X, Y, Zoom, StartMods, Containe
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
 						if (ef.zIndex != undefined && ef.zIndex <= zz) continue;
-						let efh = "disp_" + ef.hash;
+						let efh = containerID + "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(efh);
@@ -1732,6 +1732,8 @@ function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
 }
 
 function RenderModelContainer(MC: ModelContainer, C: Character, containerID: string) {
+	// Sanitize the files in case something was disposed
+
 	if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
 		if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
 		RenderCharacterQueue.get(C).push(async function() {
@@ -1745,7 +1747,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 		});
 	} else {
 		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-			blit: true,
+			//blit: true,
 			clear: true,
 			renderTexture: MC.Containers.get(containerID).RenderTexture,
 		});

@@ -264,12 +264,13 @@ function KDAddOpinion(enemy, Amount) {
 	if (!enemy) return;
 	let a = Math.min(1000, Math.abs(Amount));
 	while (a > 0 && (Amount < 0 || (enemy.opinion || 0) < Amount * 10)) {
-		enemy.opinion = Math.max(
+		enemy.opinion =
 			(enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0)
 				+ Math.min(10, a)
 					* Math.min(10, a)
-					/ (Amount > 0 ? (Math.min(10, a) + (enemy.opinion || 0)) : -1),
-			0);
+					/ (Amount > 0 ?
+						(Math.min(10, a) + Math.max(0, enemy.opinion || 0))
+						: -(Math.min(10, a) + Math.max(0, -enemy.opinion || 0)));
 		a -= 10;
 	}
 	if (KDGameData.Collection[enemy.id]) KDGameData.Collection[enemy.id].Opinion = enemy.opinion;
@@ -284,12 +285,11 @@ function KDAddOpinionCollection(enemy, Amount) {
 	if (!enemy) return;
 	let a = Math.min(1000, Math.abs(Amount));
 	while (a > 0 && (Amount < 0 || (enemy.Opinion || 0) < Amount * 10)) {
-		enemy.Opinion = Math.max(
+		enemy.Opinion =
 			(enemy.Opinion || 0)
 				+ Math.min(10, a)
 					* Math.min(10, a)
-					/ (Amount > 0 ? (Math.min(10, a) + (enemy.Opinion || 0)) : -1),
-			0);
+					/ (Amount > 0 ? (Math.min(10, a) + (enemy.Opinion || 0)) : -1);
 		a -= 10;
 	}
 	return enemy.Opinion || 0;
@@ -2002,7 +2002,20 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
 				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				undefined,
-				Lock);
+				Lock,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				{
+					allowLowPower: true
+				});
 			if (r) {
 				KDGameData.CurrentDialogMsgData = {
 					"Data_r": r.name,
@@ -2060,7 +2073,20 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 			let num = count;
 			// Apply additional restraints
 			if (num > 1) {
-				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock);
+				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					{
+						allowLowPower: true
+					});
 				if (r)
 					KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 			}
@@ -2095,7 +2121,20 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
 					let num = refused ? countAngry : count;
 					// Apply additional restraints
 					if (num > 1) {
-						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock);
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							undefined,
+							{
+								allowLowPower: true
+							});
 						if (r)
 							KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 					}
@@ -2337,7 +2376,7 @@ function KDGetModifiedOpinion(enemy, allowFaction = true, allowSub = true, allow
 	if (allowFaction) {
 		let faction = KDGetFaction(enemy);
 		let rel = KDFactionRelation("Player", faction);
-		op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+		op += (rel > 0 ? 10 : 20) * (!allowOnlyPosNegFaction ? rel :
 		(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
 			: Math.min(rel, 0)
 		)

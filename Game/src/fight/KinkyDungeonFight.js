@@ -428,6 +428,9 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 			if (Enemy && !Enemy.Enemy.allied) {
 				if (Enemy.vp) Enemy.vp = Math.min(2, Enemy.vp*2);
 				KinkyDungeonSetFlag("PlayerCombat", 8);
+				if (!Enemy.hostile) {
+					KDAddOpinionPersistent(Enemy.id, -10);
+				}
 				KinkyDungeonAggroAction('attack', {enemy: Enemy});
 			}
 		}
@@ -2597,21 +2600,21 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
 				KDDraw(kdwarningboardOver, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpell.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
 						zIndex: -0.1,
 						alpha: 0.5,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
 						zIndex: -0.2,
 						alpha: 0.5,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 						zIndex: -0.21,
 						alpha: 0.5,
 					});

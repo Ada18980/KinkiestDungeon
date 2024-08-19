@@ -62,7 +62,7 @@ let param_test = pp.has('test') ? pp.get('test') : "";
 let param_localhost = pp.has('localhost') ? pp.get('localhost') : "";
 let TestMode = param_test || param_branch || param_localhost || ServerURL == 'https://bc-server-test.herokuapp.com/';
 
-let KDDebugMode = TestMode != null;
+let KDDebugMode = TestMode != false;
 let KDDebug = false;
 let KDDebugPerks = false;
 let KDDebugGold = false;
@@ -136,6 +136,7 @@ let kdSpecialModePerks = [
 	"norescueMode",
 	"arousalModePlug",
 	"arousalModePiercing",
+	"arousalModePlugNoFront",
 ];
 
 
@@ -1088,6 +1089,7 @@ function KinkyDungeonLoad() {
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
 			KinkyDungeonSexyPiercing = localStorage.getItem("KinkyDungeonSexyPiercing") != undefined ? localStorage.getItem("KinkyDungeonSexyPiercing") == "True" : false;
 			KinkyDungeonSexyPlug = localStorage.getItem("KinkyDungeonSexyPlug") != undefined ? localStorage.getItem("KinkyDungeonSexyPlug") == "True" : false;
+			KinkyDungeonSexyPlugFront = localStorage.getItem("KinkyDungeonSexyPlugFront") != undefined ? localStorage.getItem("KinkyDungeonSexyPlugFront") == "True" : false;
 			KinkyDungeonProgressionMode = localStorage.getItem("KinkyDungeonProgressionMode") != undefined ? localStorage.getItem("KinkyDungeonProgressionMode") : "Key";
 			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
 			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
@@ -1227,6 +1229,7 @@ let KinkyDungeonPerkBondageMode = 1;
 let KinkyDungeonPerkBondageVisMode = 2;
 let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
+let KinkyDungeonSexyPlugFront = false;
 let KDOldValue = "";
 let KDOriginalValue = "";
 
@@ -1379,7 +1382,9 @@ function KinkyDungeonRun() {
 		kdgamefog.visible = KinkyDungeonState != "TileEditor";
 	}
 	// Draw the characters
-	if (!KDStandardRenderException[KinkyDungeonState] || (KDStandardRenderException[KinkyDungeonState].length > 0 && !KDStandardRenderException[KinkyDungeonState][KinkyDungeonDrawState])) {
+	if (!KDStandardRenderException[KinkyDungeonState]
+		|| (KDStandardRenderException[KinkyDungeonState].length > 0
+			&& !KDStandardRenderException[KinkyDungeonState][KinkyDungeonDrawState])) {
 		if (KDBGColor) {
 			FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 				Left: 0,
@@ -1410,7 +1415,7 @@ function KinkyDungeonRun() {
 			KDLogoStartTime = CommonTime() + 400;
 		} else {
 			// Draw the strait-laced logo
-			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "Logo.png", 500, 0, 1000, 1000, undefined, {
+			KDDraw(kdcanvas, kdpixisprites, "logo", "Logo.png", 500, 0, 1000, 1000, undefined, {
 				zIndex: 0,
 				alpha: 0.5 - 0.5*Math.cos(Math.PI * 2 * (CommonTime() - KDLogoStartTime) / KDLogoEndTime),
 			});
@@ -1679,8 +1684,8 @@ function KinkyDungeonRun() {
 		} else {
 			KDOptOut = true;
 			let cb = () => {
-				let Char = KinkyDungeonPlayer;
-				DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
+				//let Char = KinkyDungeonPlayer;
+				//DrawCharacter(Char, 0, 0, 0.01, undefined, undefined, undefined, undefined, undefined, KinkyDungeonPlayer == Char ? KDToggles.FlipPlayer : false);
 
 				if (KDToggles.SkipIntro) KinkyDungeonState = "Menu"; else KinkyDungeonState = "Intro";
 			};
@@ -2234,11 +2239,16 @@ function KinkyDungeonRun() {
 
 		if (KinkyDungeonSexyMode) {
 
+			DrawCheckboxKDEx("KinkyDungeonSexyPlugsFront", (bdata) => {
+				KinkyDungeonSexyPlugFront = !KinkyDungeonSexyPlugFront;
+				localStorage.setItem("KinkyDungeonSexyPlugFront", KinkyDungeonSexyPlugFront ? "True" : "False");
+				return true;
+			}, true, 1500, 420, 64, 64, TextGet("KinkyDungeonSexyPlugsFront"), !KinkyDungeonSexyPlugFront, false, "#ffffff");
 			DrawCheckboxKDEx("KinkyDungeonSexyPlugs", (bdata) => {
 				KinkyDungeonSexyPlug = !KinkyDungeonSexyPlug;
 				localStorage.setItem("KinkyDungeonSexyPlug", KinkyDungeonSexyPlug ? "True" : "False");
 				return true;
-			}, true, 1500, 450, 64, 64, TextGet("KinkyDungeonSexyPlugs"), KinkyDungeonSexyPlug, false, "#ffffff");
+			}, true, 1500, 490, 64, 64, TextGet("KinkyDungeonSexyPlugs"), KinkyDungeonSexyPlug, false, "#ffffff");
 
 			/*DrawCheckboxKDEx("KinkyDungeonSexyPiercings", (bdata) => {
 				KinkyDungeonSexyPiercing = !KinkyDungeonSexyPiercing;
@@ -3708,7 +3718,7 @@ let KDModsAfterGameStart = () => {};
 let KDModsAfterLoad = () => {};
 
 function KinkyDungeonStartNewGame(Load) {
-	KinkyDungeonSendEvent("beforeNewGame", {});
+	KinkyDungeonSendEvent("beforeNewGame", {Load: Load});
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
@@ -3743,12 +3753,13 @@ function KinkyDungeonStartNewGame(Load) {
 
 
 	KDModsAfterGameStart();
-	KinkyDungeonSendEvent("afterNewGame", {});
+	KinkyDungeonSendEvent("afterNewGame", {Load: Load});
 }
 
 function KDUpdatePlugSettings(evalHardMode) {
 	KinkyDungeonStatsChoice.set("arousalMode", KinkyDungeonSexyMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("arousalModePlug", KinkyDungeonSexyPlug ? true : undefined);
+	KinkyDungeonStatsChoice.set("arousalModePlugNoFront", KinkyDungeonSexyPlugFront ? true : undefined);
 	KinkyDungeonStatsChoice.set("arousalModePiercing", KinkyDungeonSexyPiercing ? true : undefined);
 
 	KinkyDungeonStatsChoice.set("randomMode", KinkyDungeonRandomMode ? true : undefined);
@@ -4614,6 +4625,7 @@ function KinkyDungeonLoadGame(String) {
 			KinkyDungeonSexyMode = KinkyDungeonStatsChoice.get("arousalMode");
 			KinkyDungeonItemMode = KinkyDungeonStatsChoice.get("itemMode") ? 1 : 0;
 			KinkyDungeonSexyPlug = KinkyDungeonStatsChoice.get("arousalModePlug");
+			KinkyDungeonSexyPlugFront = KinkyDungeonStatsChoice.get("arousalModePlugNoFront");
 			KinkyDungeonSexyPiercing = KinkyDungeonStatsChoice.get("arousalModePiercing");
 			KinkyDungeonRandomMode = KinkyDungeonStatsChoice.get("randomMode");
 			KinkyDungeonSaveMode = KinkyDungeonStatsChoice.get("saveMode");
