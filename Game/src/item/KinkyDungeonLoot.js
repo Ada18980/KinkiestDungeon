@@ -21,7 +21,7 @@ function KinkyDungeonAddLostItems(list, excludeBound) {
 				break;
 			}
 		}
-		if (!KinkyDungeonRestraintVariants[item.name]
+		if (!KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]
 			&& (KDRestraint(item)?.noRecover))
 			unique = false;
 		if (!KinkyDungeonWeaponVariants[item.name]

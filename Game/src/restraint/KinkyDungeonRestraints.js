@@ -234,7 +234,7 @@ let KinkyDungeonRestraintsCache = new Map();
  * @returns {restraint}
  */
 function KDRestraint(item) {
-	if (KinkyDungeonRestraintVariants[item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.name].template);
+	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].template);
 	return KinkyDungeonRestraintsCache.get(item.name);
 }
 
@@ -2308,7 +2308,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 	if ((data.struggleType == "Pick" || data.struggleType == "Unlock") && !data.lockType) return "Fail";
 
 	data.escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
-	data.extraLim = (data.struggleType == "Pick" && data.lockType.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
+	data.extraLim = (data.struggleType == "Pick" && data.lockType?.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
 	data.extraLimPenalty = (data.struggleType == "Pick") ? data.extraLim * data.restraint.pickProgress : 0;
 	data.extraLimThreshold = Math.min(1, (data.escapeChance / data.extraLim));
 
@@ -3201,6 +3201,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 		if (KinkyDungeonStatsChoice.get("Damsel")) playerTags.set("Damsel", true);
 		if (KinkyDungeonStatsChoice.get("arousalMode")) playerTags.set("arousalMode", true);
 		if (KinkyDungeonStatsChoice.get("arousalModePlug")) playerTags.set("arousalModePlug", true);
+		if (KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) playerTags.set("arousalModePlugNoFront", true);
 		if (KinkyDungeonStatsChoice.get("arousalModePiercing")) playerTags.set("arousalModePiercing", true);
 
 		let tags = [];
@@ -3288,8 +3289,8 @@ function KDGetCursePower(item) {
  * @returns {number}
  */
 function KDGetVariantPower(item) {
-	if (item && KinkyDungeonRestraintVariants[item.name]) {
-		return KinkyDungeonRestraintVariants[item.name].power || 0;
+	if (item && KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+		return KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].power || 0;
 	}
 	return 0;
 }
@@ -3403,9 +3404,12 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.shrine && restraint.shrine.includes("Vibes") && KinkyDungeonPlayerTags.get("NoVibes")) return false;
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
+	if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return false;
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
+
+	if (restraint.shrine.includes("Raw")) return false;
 
 	function bypasses() {
 		return (
@@ -4040,6 +4044,9 @@ function KinkyDungeonAddRestraint(restraint, Tightness, Bypass, Lock, Keep, Link
 	let start = performance.now();
 	let tight = (Tightness) ? Tightness : 0;
 	if (restraint) {
+		if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return 0;
+		if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return 0;
+
 		// First we try linking under
 		if (!Unlink) {
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
@@ -4257,7 +4264,11 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 			if (!KinkyDungeonCancelFlag && !Add && !UnLink) {
 				KDRestraintDebugLog.push("Unlinking " + item.name);
-				KinkyDungeonCancelFlag = KinkyDungeonUnLinkItem(item, Keep);
+				let rr = KinkyDungeonUnLinkItem(item, Keep);
+				if (rr.length > 0) {
+					KinkyDungeonCancelFlag = true;
+					rem.push(...rr);
+				}
 			}
 
 			if (!KinkyDungeonCancelFlag) {
@@ -4559,10 +4570,11 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
  *
  * @param {item} item
  * @param {boolean} Keep
- * @returns
+ * @returns {item[]}
  */
 function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 	//if (!data.add && !data.shrine)
+	let rem = [];
 	if (item.type == Restraint) {
 		/**
 		 * @type {item}
@@ -4585,11 +4597,11 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 				} else
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), "lightgreen", 2,
 						false, false, undefined, "Struggle");
-				return true;
+				return [item];
 			}
 		}
 	}
-	return false;
+	return rem;
 }
 
 /**

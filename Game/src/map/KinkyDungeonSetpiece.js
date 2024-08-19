@@ -234,6 +234,7 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 						KinkyDungeonTilesSet((cornerX + 1) + "," + (cornerY + 1), {
 							Type: "Trap",
 							Trap: "BedTrap",
+							Furniture: "Bed",
 						});
 				}
 				if (KDRandom() < 0.15) spawnPoints.push({x:cornerX + 1, y:cornerY + 1, required: ["human"], AI: "guard"});
@@ -592,21 +593,25 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 						KinkyDungeonTilesSet((cornerX + 2) + "," + (cornerY + 1), {
 							Type: "Trap",
 							Trap: "BedTrap",
+							Furniture: "Bed",
 						});
 					if (KDRandom() < 0.5)
 						KinkyDungeonTilesSet((cornerX + 4) + "," + (cornerY + 1), {
 							Type: "Trap",
 							Trap: "BedTrap",
+							Furniture: "Bed",
 						});
 					if (KDRandom() < 0.5)
 						KinkyDungeonTilesSet((cornerX + 2) + "," + (cornerY + 5), {
 							Type: "Trap",
 							Trap: "BedTrap",
+							Furniture: "Bed",
 						});
 					if (KDRandom() < 0.5)
 						KinkyDungeonTilesSet((cornerX + 4) + "," + (cornerY + 5), {
 							Type: "Trap",
 							Trap: "BedTrap",
+							Furniture: "Bed",
 						});
 				}
 

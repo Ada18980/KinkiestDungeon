@@ -280,6 +280,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		let items = selectedcat.items;
 		let ii = index;
 		for (let item of items) {
+			if (item.prereq && !item.prereq()) continue;
 			let img = (item.type == Restraint || item.type == LooseRestraint) ?
 				KDGetRestraintPreviewImage(KDRestraint({name: item.item}))
 				: KinkyDungeonRootDirectory + "Items/" + item.item + ".png";

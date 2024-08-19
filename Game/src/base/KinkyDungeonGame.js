@@ -4,6 +4,7 @@
 let KDFocusableTextFields = [
 	"PerksFilter",
 	"InvFilter",
+	"CollFilter",
 	"QInvFilter",
 	"MagicFilter",
 ];
@@ -4078,7 +4079,8 @@ let KDShopBuyConfirm = false;
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
-	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey && document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
+	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey
+		&& document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
 		// @ts-ignore
 		document.activeElement.blur();
 	}
@@ -4544,6 +4546,10 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 				Enemy.hp = 0;
 				KinkyDungeonKilledEnemy = Enemy;
 				KinkyDungeonSendEvent("capture", {enemy: Enemy, attacker: KinkyDungeonPlayerEntity, skip: skip});
+				if (!KDIDHasFlag(Enemy.id, "capOpPen")) {
+					KDSetIDFlag(Enemy.id, "capOpPen", -1);
+					KDAddOpinionPersistent(Enemy.id, -50);
+				}
 				KinkyDungeonChangeStamina(attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "capture", 1);
 				if (KDGameData.Collection[Enemy.id + ""]) {
@@ -4560,7 +4566,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 					KDGetPersistentNPC(Enemy.id).captured = false;
 					KDUpdatePersistentNPC(Enemy.id);
 				}
-				KDAddOpinionPersistent(Enemy.id, -50);
+				//KDAddOpinionPersistent(Enemy.id, -50);
 				result = "capture";
 			}
 

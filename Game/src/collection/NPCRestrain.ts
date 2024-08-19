@@ -58,7 +58,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 			}
 			let wid = II == 0 ? 56 : 42;
-			if (DrawButtonKDEx(
+			if ((!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk)) &&
+				(!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk)) && DrawButtonKDEx(
 				"npc_rest_butsg_"+ sgroup.id,
 				() => {
 					let set = KDSetBindingSlot(sgroup, KDGetEncaseGroupRow(sgroup.id));
@@ -89,7 +90,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 
 			if (II++ == 0) {
-				if (grp) {
+				if (grp && (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk))
+					&& (!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk))) {
 					KDDraw(kdcanvas, kdpixisprites, "npc_bind_list_grp" + sgroup.id,
 						grp,
 						XX - Math.floor(wid*0.25), YY - Math.floor(wid*0.25), Math.ceil(wid*1), Math.ceil(wid*1),
@@ -101,7 +103,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				XX += paddingFirstCol;
 
 			} else {
-				if (grp) {
+				if (grp && (!sgroup.requirePerk || KinkyDungeonStatsChoice.get(sgroup.requirePerk))
+					&& (!sgroup.noPerk || !KinkyDungeonStatsChoice.get(sgroup.noPerk))) {
 					KDDraw(kdcanvas, kdpixisprites, "npc_bind_list_grp" + sgroup.id,
 						grp,
 						XX, YY, wid, wid,
@@ -613,9 +616,9 @@ function KDInputSetNPCRestraint(data) {
 		let restraint = KDRestraint(item);
 		if (restraint?.inventory) {
 			if (!KinkyDungeonInventoryGetSafe(item.name)) {
-				if (KinkyDungeonRestraintVariants[item.name]) {
-					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.name], undefined,
-						KinkyDungeonRestraintVariants[item.name].curse, "", item.name);
+				if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name], undefined,
+						KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].curse, "", item.name);
 
 				} else {
 					KinkyDungeonInventoryAdd({
@@ -625,7 +628,7 @@ function KDInputSetNPCRestraint(data) {
 					type: LooseRestraint,
 					//events:events,
 					quantity: 1,
-					showInQuickInv: KinkyDungeonRestraintVariants[item.name] != undefined,});
+					showInQuickInv: KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined,});
 				}
 
 

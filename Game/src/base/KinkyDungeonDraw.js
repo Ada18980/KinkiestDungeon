@@ -1002,22 +1002,23 @@ function KinkyDungeonDrawGame() {
 	KDRefresh = false;
 
 
+	// @ts-ignore
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
-		let cancelType = null;
-		for (let cancelT of KDCustomCancels) {
-			if (cancelT.condition()) {
-				cancelType = cancelT.cancel;
-				break;
-			}
-		}
-		if (cancelType) {
-			cancelType();
-		}
+
 		// @ts-ignore
-		else if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
+		if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 		} else {
-			if (KinkyDungeonDrawState == "Magic") {
+			let cancelType = null;
+			for (let cancelT of KDCustomCancels) {
+				if (cancelT.condition()) {
+					cancelType = cancelT.cancel;
+					break;
+				}
+			}
+			if (cancelType) {
+				cancelType();
+			} else if (KinkyDungeonDrawState == "Magic") {
 				KinkyDungeonDrawState = "MagicSpells";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
@@ -1207,14 +1208,14 @@ function KinkyDungeonDrawGame() {
 									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
-										KinkyDungeonSpriteSize * (1 + s), KinkyDungeonSpriteSize * (1 + s), undefined, {
+										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											zIndex: 2.1,
 										});
 								} else {
 									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
-										KinkyDungeonSpriteSize * (1 + s), KinkyDungeonSpriteSize * (1 + s), undefined, {
+										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											tint: string2hex(b.aura),
 											zIndex: 2.1,
 										});
@@ -1963,11 +1964,12 @@ function KinkyDungeonDrawGame() {
 					DrawCheckboxVis(1100, 90, 64, 64, "Changeable Perks", KDDebugPerks, false, "#ffffff");
 					DrawCheckboxVis(1100, 160, 64, 64, "Unlimited Gold", KDDebugGold, false, "#ffffff");
 					DrawCheckboxVis(1100, 230, 64, 64, "Link Under", KDDebugLink, false, "#ffffff");
-					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
+
 					DrawButtonVis(1500, 100, 100, 64, "Enemy", "#ffffff", "");
 					DrawButtonVis(1600, 100, 100, 64, "Ally", "#ffffff", "");
 					DrawButtonVis(1700, 100, 100, 64, "Shop", "#ffffff", "");
 					ElementPosition("DebugItem", 1650, 212, 300, 64);
+					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
 					DrawButtonVis(1500, 260, 300, 64, "Add to inventory", "#ffffff", "");
 					DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", "#ffffff", "");
 					DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");

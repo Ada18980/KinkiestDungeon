@@ -710,6 +710,91 @@ let KDDialogue = {
 			},
 		}
 	},
+	"CyberHiSec": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KinkyDungeonSetFlag("LeashToPrison", -1);
+			return false;
+		},
+		options: {
+			"Submit": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					KDEnterDollTerminal(false, true, false);
+					return true;
+				},
+				exitDialogue: true,
+			},
+			"Question1": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				leadsToStage: "",
+				dontTouchText: true,
+			},
+			"Question2": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				leadsToStage: "",
+				dontTouchText: true,
+			},
+			"Question3": {
+				playertext: "Default", response: "Default",
+				gagDisabled: true,
+				options: {
+					"Who": {
+						playertext: "Default", response: "Default",
+						dontTouchText: true,
+						leadsToStage: "",
+					},
+					"When": {
+						playertext: "Default", response: "Default",
+						dontTouchText: true,
+						leadsToStage: "",
+					},
+					"Why": {
+						playertext: "Default", response: "Default",
+						clickFunction: () => {
+							let restraint = KinkyDungeonGetRestraint({tags: ["cyberdollrestraints", "cableGag"]},
+								KDGetEffLevel(),
+								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, "Cyber",
+								undefined, undefined, undefined, undefined, undefined,
+								{
+									allowedGroups: ["ItemMouth"],
+								}
+							);
+
+							if (restraint) {
+								KinkyDungeonAddRestraintIfWeaker(
+									restraint, 3, false, "Cyber", false
+								);
+							}
+
+							return false;
+
+						},
+						leadsToStage: "",
+						dontTouchText: true,
+					},
+				},
+			},
+			"Resist": {
+				playertext: "Default", response: "Default",
+				clickFunction: (gagged, player) => {
+					if (KDDialogueEnemy() && !KDDialogueEnemy().hostile) {
+						KDDialogueEnemy().hostile = 300;
+					}
+					KinkyDungeonStartChase(undefined, "Jailbreak");
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
 	"Tutorial": {
 		response: "Default",
 		clickFunction: (gagged, player) => {

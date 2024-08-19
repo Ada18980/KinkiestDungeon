@@ -13,7 +13,10 @@ let KDSkillCheckTypes : Record<KDSkillCheckType, ((en: entity, player: entity, t
 		return 1 - 1 / Math.max(0.1, 1 + KDReflexMult(player))
 			+ KDEntityBuffedStat(player, "Evasion")
 			- diffMod
-			+ (target ? 0.5 * KDGetSlowMult(target) : 0);
+			+ (target ? 0.5 * KDGetSlowMult(target) : 0)
+			+ (target // Bonus during time stop
+				?  1 * (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow") - KDEntityBuffedStat(target, "TimeSlow"))
+			: 0);
 	},
 };
 

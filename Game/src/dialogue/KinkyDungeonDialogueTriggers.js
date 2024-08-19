@@ -175,7 +175,20 @@ let KDDialogueTriggers = {
 				&& !KinkyDungeonFlags.get("ChastityOffer")
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& KDRandom() < 0.05
-				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)) != undefined);
+				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					{
+						allowLowPower: true
+					}) != undefined);
 		},
 		weight: (enemy, dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
@@ -226,7 +239,20 @@ function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, f
 				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
 				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
 				undefined,
-				Lock) != undefined)
+				Lock,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				undefined,
+				{
+					allowLowPower: true
+				}) != undefined)
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
 }
 function KDShopTrigger(name) {

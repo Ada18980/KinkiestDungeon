@@ -2519,6 +2519,7 @@
             <key type="filename">../Game/UI/Rank/Rank4.png</key>
             <key type="filename">../Game/UI/Rank/Rank5.png</key>
             <key type="filename">../Game/UI/Recycler/Armor.png</key>
+            <key type="filename">../Game/UI/Recycler/Chastity.png</key>
             <key type="filename">../Game/UI/Recycler/Latex.png</key>
             <key type="filename">../Game/UI/Recycler/Leather.png</key>
             <key type="filename">../Game/UI/Recycler/Leather2.png</key>
