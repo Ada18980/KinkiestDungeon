@@ -468,7 +468,7 @@ let KDJailOutfits = {
 			{Name: "Stuffing", Level: 25},
 			{Name: "FeetShackles", Level: 25},
 			{Name: "PrisonBelt", Level: 30},
-			{Name: "TrapPlug", Level: 30},
+			{Name: "TrapPlug", Level: 30, Condition: "Plug"},
 			{Name: "LegShackles", Level: 35},
 			{Name: "HighsecLegbinder", Level: 35},
 			{Name: "TrapBlindfold", Level: 35, Condition: "NoBlindfolds"},
@@ -476,19 +476,19 @@ let KDJailOutfits = {
 			{Name: "HighsecShackles", Level: 40},
 			{Name: "TrapArmbinder", Level: 40, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "TrapBoxbinder", Level: 40, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
-			{Name: "TrapPlug2", Level: 45},
+			{Name: "TrapPlug2", Level: 45, Condition: "Plug"},
 			{Name: "TrapYoke", Level: 50, Condition: "LessYokes", Priority: "MoreYokes"},
 			{Name: "HighsecBallGag", Level: 50, Variant: "AntiMagic", Condition: "Mage"},
 			{Name: "TrapFiddle", Level: 60, Condition: "LessYokes", Priority: "MoreYokes"},
-			{Name: "TrapPlug3", Level: 60},
+			{Name: "TrapPlug3", Level: 60, Condition: "Plug"},
 			{Name: "TrapBoots", Level: 60},
 			{Name: "HighsecMuzzle", Level: 70},
 			{Name: "HighsecArmbinder", Level: 70, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
 			{Name: "HighsecBoxbinder", Level: 70, Condition: "LessBoxbinders", Priority: "MoreBoxbinders"},
 			{Name: "HighsecStraitjacket", Level: 70, Condition: "LessJackets", Priority: "MoreJackets"},
-			{Name: "TrapPlug4", Level: 75},
+			{Name: "TrapPlug4", Level: 75, Condition: "Plug"},
 			{Name: "HighsecLegbinder", Level: 95},
-			{Name: "TrapPlug5", Level: 100},
+			{Name: "TrapPlug5", Level: 100, Condition: "Plug"},
 
 			{Name: "WristLink", Level: 0},
 			{Name: "AnkleLink", Level: 35},
@@ -849,6 +849,12 @@ let KDJailConditions = {
 	},
 	Hood: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoHood");
+	},
+	Plug: (r) => {
+		return !KinkyDungeonPlayerTags.get("SupremeBelt");
+	},
+	Clamp: (r) => {
+		return !KinkyDungeonPlayerTags.get("SupremeBra");
 	},
 	SenseDep: (r) => {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep");

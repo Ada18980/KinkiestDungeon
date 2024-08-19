@@ -869,39 +869,7 @@ let KDEventMapInventory = {
 				}
 			}
 		},
-		"RobeOfChastity": (e, item, data) => {
-			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
-			if (player && !KDIDHasFlag(player.id, "disableRobeChast")) {
-				let nearbyTargets = KDNearbyEnemies(player.x, player.y, e.dist).filter(
-					(en) => {
-						return en.playerdmg > 0 && KDHostile(en, player.player ? undefined : player);
-					}
-				);
-				for (let en of nearbyTargets) {
-					KDCreateEffectTile(en.x, en.y, {
-						name: "Radiance",
-						duration: 2,
-					}, 0);
-					KinkyDungeonDamageEnemy(en, {
-						type: e.damage,
-						damage: e.power + e.mult * Math.max(0, KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction),
-						time: e.time,
-						bind: e.bind,
-						distract: e.distract,
-						bindType: e.bindType,
-					}, false, true, undefined, undefined, player,
-					undefined, undefined, true, false);
 
-				}
-
-				if (player.player) {
-					if (KinkyDungeonStatDistractionLower > 0) {
-						KinkyDungeonChangeDesire(KinkyDungeonStatDistractionMax * -0.01, true);
-					}
-				}
-			}
-
-		},
 
 
 		"ShrineUnlockWiggle": (e, item, data) => {
@@ -1415,6 +1383,45 @@ let KDEventMapInventory = {
 		},
 	},
 	"tickAfter": {
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player && !KDIDHasFlag(player.id, "disableRobeChast")) {
+				let nearbyTargets = KDNearbyEnemies(player.x, player.y, e.dist).filter(
+					(en) => {
+						return (KDistChebyshev(player.x - en.x, player.y - en.y) < 1.5
+							|| KDIDHasFlag(en.id, "RoCflag"))
+						&& !KDHelpless(en)
+						&& en.hp > 0
+						&& !en.Enemy?.tags.nobrain // only affects things that can behold it
+						&& KDHostile(en, player.player ? undefined : player);
+					}
+				);
+				for (let en of nearbyTargets) {
+					KDCreateEffectTile(en.x, en.y, {
+						name: "Radiance",
+						duration: 2,
+					}, 0);
+					KDSetIDFlag(en.id, "RoCflag", 4);
+					KinkyDungeonDamageEnemy(en, {
+						type: e.damage,
+						damage: e.power + e.mult * Math.max(0, KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction),
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
+						nocrit: true,
+					}, false, true, undefined, undefined, player,
+					undefined, undefined, true, false);
+				}
+
+				if (player.player) {
+					if (KinkyDungeonStatDistractionLower > 0) {
+						KinkyDungeonChangeDesire(KinkyDungeonStatDistractionMax * -0.00025, true);
+					}
+				}
+			}
+
+		},
 		"RemoveOnETTag": (e, item, data) => {
 			let tiles = KDEffectTileTags(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (e.tags.some((t) => {return tiles[t] != undefined;}) ) {
@@ -2552,8 +2559,9 @@ let KDEventMapInventory = {
 				if (player.player && KDRandom() < 0.1) {
 					KinkyDungeonSendTextMessage(5, TextGet("KDRobeOfChastityArouse" + Math.floor(KDRandom() * e.count)),
 						"#ffff00", 10);
-					KinkyDungeonChangeDistraction(0.01 * KinkyDungeonGetManaCost(data.spell), false, 1);
 				}
+				KinkyDungeonChangeDesire(e.mult * KinkyDungeonGetManaCost(data.spell), false);
+
 			}
 		},
 		"AlertEnemies": (e, item, data) => {
@@ -9745,7 +9753,7 @@ let KDEventMapGeneric = {
 	"playerAttack": {
 		"trainHeels": (e, data) => {
 			if (KDHostile(data.enemy) && KDIsHumanoid(data.enemy)) {
-				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 0.4);
+				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1.5);
 			}
 		},
 		"GroundedInReality": (e, data) => {
@@ -9780,7 +9788,7 @@ let KDEventMapGeneric = {
 	},
 	"tick": {
 		"trainHeels": (e, data) => {
-			if (KinkyDungeonLastAction == "Move") {
+			if (KinkyDungeonLastAction == "Move" && !(KDGameData.KneelTurns > 0)) {
 				let danger = KinkyDungeonInDanger();
 				let amt = 0.01;
 				let mult = (
@@ -9788,8 +9796,8 @@ let KDEventMapGeneric = {
 					||
 					(KinkyDungeonJailGuard() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonJailGuard()))
 					) ? 1.5 : 1;
-				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0) && danger,
-					KDGameData.HeelPower <= 0 && !danger, amt, amt * mult);
+				KDTickTraining("Heels", KDGameData.HeelPower > 0,
+					KDGameData.HeelPower <= 0 && !danger, amt, mult);
 			}
 		},
 		"runes": (e, data) => {

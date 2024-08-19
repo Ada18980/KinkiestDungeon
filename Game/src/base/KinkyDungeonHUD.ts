@@ -1042,7 +1042,9 @@ function KinkyDungeonDrawActionBar(x, y) {
 			KDSteps(KDGameData.Balance, -KDGetBalanceCost()*1.5), "#283540", "#4fd658");
 
 		if (!KDGameData.Training) KDGameData.Training = {};
-		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining").replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)), 1500, BalanceOffset, 200, "#ffffff", KDTextGray2,
+		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining")
+		.replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)),
+			1500, BalanceOffset, 200, "#ffffff", KDTextGray2,
 			10, "right", 111, 0.9);
 
 	}
@@ -2411,11 +2413,28 @@ function KDProcessBuffIcons(minXX, minYY, side = false) {
 
 	if (KDToggleShowAllBuffs) {
 		for (let training of KDTrainingTypes) {
+			let XPNext = 0;
+			if (KDGameData.Training) {
+				if (KDGameData.Training[training]?.turns_total == 0) {
+					XPNext = 0;
+				} else {
+					let trainingPercentage = Math.min(1,
+						KDGameData.Training[training]?.turns_total/KDTrainingSoftScale)
+						* (Math.max(0, KDGameData.Training[training]?.turns_trained * 1.11
+							- KDGameData.Training[training]?.turns_skipped)/KDGameData.Training[training]?.turns_total);
+					if (KinkyDungeonStatsChoice.get("Mastery" + training)) trainingPercentage *= 0.4;
+					XPNext = trainingPercentage;
+				}
+			}
+
 			statsDraw["training" + training] = {text: TextGet("KDTrainingLevel" + training)
 				.replace("AMNT",
 				"" + Math.floor((KDGameData.Training ? (KDGameData.Training[training]?.training_points || 0) : 0)*100))
+				.replace("NXT",
+				"" + Math.floor((XPNext*100)))
 				.replace("LMT",
-					"" + Math.floor((KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1)*100))
+					"" + Math.floor((
+						KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1)*100))
 			,
 				category: "training", icon: "training/" + training, color: "#2fc6ce", bgcolor: "#333333", priority: 14,
 				count: Math.floor(KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) : 0) + "",

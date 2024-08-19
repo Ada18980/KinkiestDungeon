@@ -604,7 +604,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		if (!noMsg) {
 			KinkyDungeonSendTextMessage(6, TextGet("KDShieldAbsorb").replace("AMNT", "" + Math.round(10 * (amt - Math.max(0, data.dmg)))), "#92e8c0", 1);
 			KDDamageQueue.push({floater: Math.round((amt - Math.max(0, data.dmg))*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`,
-				Entity: KinkyDungeonPlayerEntity, Color: "#92e8c0", Delay: 0, });
+				Entity: KinkyDungeonPlayerEntity, Color: "#92e8c0", Delay: 0, size: 12 + Math.floor(Math.min(24, Math.round((amt - Math.max(0, data.dmg))*3)))});
 		}
 
 		let shieldDmg = Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg)));
@@ -720,8 +720,8 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		}
 		if (changed && KinkyDungeonDamageTypes[data.type]) {
 			data.damaged = true;
-			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(data.dmg * 10), KinkyDungeonDamageTypes[data.type].color, undefined, undefined,
-				` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`);
+			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(data.dmg * 10), KinkyDungeonDamageTypes[data.type].color, 5, undefined,
+				` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`, 12 + Math.floor(Math.min(24, data.dmg*3)), TextGet("KDTook"));
 		}
 	}
 

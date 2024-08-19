@@ -998,7 +998,7 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#e7cf1a", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type]?.name)} ${TextGet("KDdmg")}`,
-						Entity: Enemy, Color: "#ff4444", Delay: Delay, });
+						Entity: Enemy, Color: "#ff4444", Delay: Delay, size: 6 + Math.max(20, Math.floor(predata.dmgDealt * 2))});
 				}
 			}
 
@@ -2579,7 +2579,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			if (damage.sfx && KDToggles.Sound) KinkyDungeonPlaySound(damage.sfx);
 
 			if (damage.floater && !KDToggles.NoDmgFloaters) {
-				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, (KDToggles.FastFloaters ? 0.3 : 1) * damage.Time);
+				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, (KDToggles.FastFloaters ? 0.3 : 1) * damage.Time, undefined, undefined, damage.size);
 			}
 
 			KDDamageQueue.splice(KDDamageQueue.indexOf(damage), 1);

@@ -1344,9 +1344,22 @@ function KDGetEnemyStruggleMod(enemy, force, defaultSpeed) {
 	}
 
 	if (!defaultSpeed && enemy.hp > 0.51 && (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
-		return en != enemy && en.Enemy.bound && !KDHelpless(enemy) && KDBoundEffects(en) < 4 && !KDEnemyHasFlag(en, "imprisoned") && !KinkyDungeonIsDisabled(en) && KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en)) >= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
-	}) || (KDAllied(enemy) && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)))) {
-		mult += 0.15;
+		return en != enemy
+			&& en.Enemy.bound
+			&& !KDHelpless(enemy)
+			&& KDBoundEffects(en) < 4
+			&& !KDEnemyHasFlag(en, "imprisoned")
+			&& !KinkyDungeonIsDisabled(en)
+			&& KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en))
+				>= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
+	}) || (
+		KDAllied(enemy)
+		&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)))) {
+		mult += KDAllied(enemy)
+			&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)
+			&& !KinkyDungeonIsHandsBound(true, true)
+			? 1.0
+			: 0.15;
 	}
 	if (!defaultSpeed && enemy.hp >= enemy.Enemy.maxhp) mult *= 1.5;
 	if (!defaultSpeed && mult > 0) {

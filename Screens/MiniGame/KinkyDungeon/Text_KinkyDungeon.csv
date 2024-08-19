@@ -6450,7 +6450,6 @@ KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
 
 
 KinkyDungeonSpellFlash,Lesser Flash
-KinkyDungeonSpellRing,Ring
 KinkyDungeonSpellFlashBomb,Flash Bomb
 KinkyDungeonSpellSmokeBomb,Smoke Bomb
 KinkyDungeonSpellEnemyFlash,Sparkles!
@@ -6460,9 +6459,15 @@ KinkyDungeonSpellDescriptionFlash,A flash of light which renders anyone caught w
 KinkyDungeonSpellCastFlash,You charge up a bright flash!
 KinkyDungeonSpellTargetFlash,Select where to center the flash (SpellArea radius)
 
-KinkyDungeonSpellDescriptionRing,A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged.
+KinkyDungeonSpellRing,Ring
+KinkyDungeonSpellDescriptionRing,A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged with a 3 turn delay.
 KinkyDungeonSpellCastRing,You point and a noise emanates from the location!
 KinkyDungeonSpellTargetRing,Select where to center the noise (SpellArea radius)
+
+KinkyDungeonSpellHolyBlaze,Holy Blaze
+KinkyDungeonSpellDescriptionHolyBlaze,Call down a 3x3 area of DamageDealt holy damage. Blinds enemies for 3 turns (and also yourself).
+KinkyDungeonSpellCastHolyBlaze,You summon a divine aura!
+KinkyDungeonSpellTargetHolyBlaze,Select where to center the blast (SpellArea radius)
 
 KinkyDungeonSpellGreaterFlash,Greater Flash
 KinkyDungeonSpellDescriptionGreaterFlash,A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
@@ -23127,12 +23132,13 @@ LootEjahlLeotard,"You find a ceremonial leotard."
 
 RestraintRobeOfChastity,The Robe of Chastity
 RestraintRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
-RestraintRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/turn and 5 (+8% missing DP) Holy damage/turn aura. Affects only enemies you have personally damaged. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 1% of mana spent converted into Desire."
+RestraintRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
 KinkyDungeonInventoryItemRobeOfChastity,The Robe of Chastity
 KinkyDungeonInventoryItemRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
-KinkyDungeonInventoryItemRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/turn and 5 (+8% missing DP) Holy damage/turn aura. Affects only enemies you have personally damaged. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 1% of mana spent converted into Desire."
+KinkyDungeonInventoryItemRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
 LootRobeOfChastity,"You retrieve an interesting article dubbed 'the Robe of Chastity."
 
+KDTook,"Took "
 
 rDragonQueenCrystal,"(As you slay the dragon, it begins shapeshifting into human form!)"
 rDragonQueenPoison,"(As you slay the dragon, it begins shapeshifting into human form!)"
@@ -23933,7 +23939,7 @@ KDRansomValue,Ransom Value: GP
 KDCurrentGold,Current Gold: GP
 KDNA,n/a
 
-KDTrainingLevelHeels,[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
+KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
 
 KinkyDungeonBuffQuickness,Phase Dance active. Your next move is instant.
 KinkyDungeonBuffCombatManeuverQuick,Combat Maneuver active. Your next move is instant.

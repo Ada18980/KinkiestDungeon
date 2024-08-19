@@ -2228,7 +2228,7 @@ let KDBulletSpeed = 40;
 let KDEntitiesFloaterRegisty = new Map();
 let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
 
-function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, suff = "") {
+function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, suff = "", size, prefix) {
 	if (Entity.x && Entity.y) {
 		let II = KDEntitiesFloaterRegisty.get(Entity) || 1;
 		II += 1;
@@ -2242,7 +2242,8 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 			speed: 30,// + (Time ? Time : 0) + Math.random()*10,
 			t: 0,
 			color: Color,
-			text: "" + ((typeof Amount === "string") ? Amount : Math.round(Amount * 10)/10) + suff,
+			size: size,
+			text: "" + ((typeof Amount === "string") ? Amount : (prefix || "") + Math.round(Amount * 10)/10) + suff,
 			lifetime: Time ? stringFloaterMult*Time : ((typeof Amount === "string") ? stringFloaterMult*4 : floaterMult*((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
 		KinkyDungeonFloaters.push(floater);
@@ -2298,7 +2299,7 @@ function KinkyDungeonDrawFloaters(CamX, CamY, onlyAbs = false) {
 
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
 				x, y - floater.speed*floater.t/floatermult,
-				1000, floater.color, KDTextGray1, 24, undefined, undefined, KDEase(floater.t / floater.lifetime));
+				1000, floater.color, KDTextGray1, floater.size || 20, undefined, undefined, KDEase(floater.t / floater.lifetime));
 		}
 		if (floater.t < floater.lifetime) newFloaters.push(floater);
 		i += 1;

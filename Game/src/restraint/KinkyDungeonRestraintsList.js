@@ -7198,6 +7198,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		Pauldrons: {color: "Highlight", override: true},
 		GoldBase: {color: "Highlight", override: false},
 		Plate: {color: "LightNeutral", override: false},
+		ChestPlate: {color: "LightNeutral", override: false},
 		Frill: {color: "LightNeutral", override: true},
 	},
 	DefaultLock: "Divine",
@@ -7209,13 +7210,14 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protectionCursed: true,
 	events: [
 		{type: "RobeOfChastity", trigger: "orgasm", count: 3, time: 50, inheritLinked: true},
-		{type: "RobeOfChastity", trigger: "tick", power: 0.5, mult: 0.08, damage: "holy", dist: 3.5, inheritLinked: true},
+		{type: "RobeOfChastity", trigger: "playerCast", count: 3, mult: 0.08, inheritLinked: true},
+		{type: "RobeOfChastity", trigger: "tickAfter", power: 0.2, mult: 0.03, damage: "holy", dist: 3.5, inheritLinked: true},
 		{type: "Buff", trigger: "tick", power: 0.5, buffType: "StatGainDistraction", inheritLinked: true},
 
 	],
 }, "Robe of Chastity",
 "A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.",
-"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/turn and 5 (+8% missing DP) Holy damage/turn aura. Affects only enemies you have personally damaged. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 1% of mana spent converted into Desire.")
+"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.")
 , [...KDHexVariantList.Base]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
