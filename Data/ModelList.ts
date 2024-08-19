@@ -509,7 +509,7 @@ AddModel({
 	Parent: "PlateArmor",
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
-		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 8,
+		{ Name: "Pauldrons", Layer: "Shoulders", Pri: 80,
 			Poses: ToMapSubtract([...ARMPOSES], [...HIDEARMPOSES, "Up"], "Hogtie"),
 			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free", Front: "Free", Crossed: "Free"},
 			HideWhenOverridden: true,

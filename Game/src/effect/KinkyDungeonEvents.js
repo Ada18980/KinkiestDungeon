@@ -381,6 +381,17 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+
+
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player) {
+				if (player.player && KDRandom() < 0.1)
+					KinkyDungeonSendTextMessage(5, TextGet("KDRobeOfChastityFail" + Math.floor(KDRandom() * e.count)),
+						"#ffff00", 10);
+				KDSetIDFlag(player.id, "disableRobeChast", e.time);
+			}
+		},
 		"CursedDenial": (e, item, data) => {
 			KinkyDungeonSendTextMessage(5, TextGet("KDCursedDenialAllow" + Math.floor(KDRandom() * e.count)), "#9074ab", 10);
 		},
@@ -858,6 +869,41 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player && !KDIDHasFlag(player.id, "disableRobeChast")) {
+				let nearbyTargets = KDNearbyEnemies(player.x, player.y, e.dist).filter(
+					(en) => {
+						return en.playerdmg > 0 && KDHostile(en, player.player ? undefined : player);
+					}
+				);
+				for (let en of nearbyTargets) {
+					KDCreateEffectTile(en.x, en.y, {
+						name: "Radiance",
+						duration: 2,
+					}, 0);
+					KinkyDungeonDamageEnemy(en, {
+						type: e.damage,
+						damage: e.power + e.mult * Math.max(0, KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction),
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
+					}, false, true, undefined, undefined, player,
+					undefined, undefined, true, false);
+
+				}
+
+				if (player.player) {
+					if (KinkyDungeonStatDistractionLower > 0) {
+						KinkyDungeonChangeDesire(KinkyDungeonStatDistractionMax * -0.01, true);
+					}
+				}
+			}
+
+		},
+
+
 		"ShrineUnlockWiggle": (e, item, data) => {
 			if (item && KDCurses[e.kind].condition(item)) {
 				KinkyDungeonSendTextMessage(1, TextGet("KDShrineUnlockWiggle").replace("RSTRNT", KDGetItemName(item)), "#88ff88", 1, false, true);
@@ -2498,6 +2544,16 @@ let KDEventMapInventory = {
 				}, data));
 
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+			}
+		},
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player) {
+				if (player.player && KDRandom() < 0.1) {
+					KinkyDungeonSendTextMessage(5, TextGet("KDRobeOfChastityArouse" + Math.floor(KDRandom() * e.count)),
+						"#ffff00", 10);
+					KinkyDungeonChangeDistraction(0.01 * KinkyDungeonGetManaCost(data.spell), false, 1);
+				}
 			}
 		},
 		"AlertEnemies": (e, item, data) => {

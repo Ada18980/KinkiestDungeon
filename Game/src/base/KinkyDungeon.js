@@ -210,9 +210,11 @@ let KDToggles = {
 	ShowJailedNPCSprites: true,
 	ShowZoom: true,
 	Backgrounds: true,
+	RawDP: false,
 };
 
 let KDToggleCategories = {
+	RawDP: "UI",
 	Backgrounds: "GFX",
 	ShowZoom: "UI",
 	ShowJailedNPCSprites: "GFX",

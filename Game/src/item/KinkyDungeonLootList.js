@@ -502,6 +502,10 @@ let KinkyDungeonLootTable = {
 	],
 	"lessergold": [
 		...KDGoldArmor, ...KDGoldArmor2,
+		{name: "RobeOfChastity", arousalMode: true, minLevel: 0, weight:4, message:"LootChestArmor",
+			armor: "RobeOfChastity",
+			messageColor:"yellow", messageTime: 3, allFloors: true, norestraint: ["RobeOfChastity"]},
+
 		{name: "scrolls_purity", minLevel: 0, weight: 1, message:"LootChestScrollsPurity", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "MistressKey", minLevel: 0, weight:1, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
 		{name: "DivineTear", minLevel: 0, weight:5, message:"LootChestDivineTear", messageColor:"yellow", messageTime: 3, allFloors: true},

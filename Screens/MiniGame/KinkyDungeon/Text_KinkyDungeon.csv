@@ -47,6 +47,7 @@ KDToggleTabKeybindings,Keybindings
 
 
 KDToggleBackgrounds,Show Background Art
+KDToggleRawDP,Show DP instead of %
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
 KDToggleStruggleBars,Show Struggle Bars
@@ -889,6 +890,7 @@ StatSpeedSlow,"Slowed"
 StatSpeedVerySlow,"Very Slow"
 StatSpeedImmobile,"Immobile"
 StatDistraction,"DP: PERCENT%"
+StatDistractionHover,"DP: CURRENT/MAX (PERCENT% Desire)"
 StatStamina,"SP: CURRENT/MAX"
 StatWillpower,"Willpower: CURRENT/MAX"
 StatMana,"MP: CURRENT/MAX"
@@ -20854,6 +20856,13 @@ KDCursedDenialDeny2,"Dark Voice: It is not your choice to make~"
 KDCursedDenialAllow0,"Dark Voice: You may enjoy yourself, for now~"
 KDCursedDenialAllow1,"Dark Voice: Yes, take in the pleasure..."
 KDCursedDenialAllow2,"Dark Voice: Enjoy a gift, dear~"
+KDRobeOfChastityFail0,"As you let go of yourself, the Robe of Chastity loses all effects!"
+KDRobeOfChastityFail1,"The magic in the Robe of Chastity fades... for now."
+KDRobeOfChastityFail2,"You have failed to keep the principles of the Paladins... for now."
+
+KDRobeOfChastityArouse0,"You feel vibrations in your leotard as the magically conductive fabric channels your power."
+KDRobeOfChastityArouse1,"Your leotard produces a tingling full-body sensation as it channels your magic!"
+KDRobeOfChastityArouse2,"A tingling sensation serves to remind you of your leotard's magic properties."
 
 KDVariableModifier_CursedBarrier1,"Star: -20 Charm/Psychic Resist"
 KDVariableModifier_CursedBarrier2,"Star: +40 all other resists"
@@ -22922,6 +22931,11 @@ KDManaStationDrain2,"You feel energy flow out of you, lighting up a circle on th
 KDManaStationFail,"The floor beneath you drains your mana, but you don't have enough to satisfy it."
 KDManaStationCharged,"The ground beneath you glows with magical energy!"
 
+KDEffectTileTooltipRadiance,"Radiant Light"
+KDEffectTileTooltipRadianceDesc,"Banishment of the shadow."
+KDEffectTileTooltipShadow,"Living Shadow"
+KDEffectTileTooltipShadowDesc,"Engulfs the tile in darkness."
+
 KDEffectTileTooltipManaEmpty,"Mysterious Plate"
 KDEffectTileTooltipManaEmptyDesc,"What could it be?"
 KDEffectTileTooltipManaPartial,"Mana-Charged Plate"
@@ -23109,6 +23123,15 @@ KinkyDungeonInventoryItemEjahlLeotard,Ceremonial Leotard
 KinkyDungeonInventoryItemEjahlLeotardDesc,"An article worn by the servants of state in the short-lived kingdom of Ejahl. Its locking mechanism and clothes-dissolving enchantments ensure the wearer understands her role as an extension of the state."
 KinkyDungeonInventoryItemEjahlLeotardDesc2,"Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%."
 LootEjahlLeotard,"You find a ceremonial leotard."
+
+
+RestraintRobeOfChastity,The Robe of Chastity
+RestraintRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+RestraintRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/turn and 5 (+8% missing DP) Holy damage/turn aura. Affects only enemies you have personally damaged. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 1% of mana spent converted into Desire."
+KinkyDungeonInventoryItemRobeOfChastity,The Robe of Chastity
+KinkyDungeonInventoryItemRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+KinkyDungeonInventoryItemRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/turn and 5 (+8% missing DP) Holy damage/turn aura. Affects only enemies you have personally damaged. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 1% of mana spent converted into Desire."
+LootRobeOfChastity,"You retrieve an interesting article dubbed 'the Robe of Chastity."
 
 
 rDragonQueenCrystal,"(As you slay the dragon, it begins shapeshifting into human form!)"
@@ -23627,7 +23650,9 @@ KDPropField_XPivot,X Pivot
 KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
-KDPropField_SuppressDynamic,SuppressDynamicArmor
+KDPropField_SuppressDynamic,NoDynamicArmor (0 or 1)
+KDPropField_HideOverridden,HideOverridden (0 or 1)
+KDPropField_NoOverride,NoOverride (0 or 1)
 KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
 KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)

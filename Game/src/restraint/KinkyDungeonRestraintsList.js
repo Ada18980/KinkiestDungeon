@@ -1182,6 +1182,10 @@ const KinkyDungeonRestraints = [
 			Muzzle: {color: "LightNeutral", override: true},
 		},
 		Model: "AdvancedSciFiBallGag",
+		Filters: {
+			Ball: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
+			Display: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
+		},
 		Asset: "FuturisticHarnessBallGag", strictness: 0.35, gag: 0.65,
 		Color: ['#499ed6', '#b927a8', '#222222', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 12, weight: 0,
 		factionColor: [[2], [1], [0]],
@@ -1223,6 +1227,10 @@ const KinkyDungeonRestraints = [
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.35, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.25, requiredTag: "Blindfolds"},
 		],
+		Filters: {
+			HarnessDisplay: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
+			Display: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
+		},
 		Asset: "FuturisticHarnessPanelGag", strictness: 0.35, gag: 1.0,
 		Color: ['#499ed6', '#222222', '#555555', '#FFFFFF', '#000000'], Group: "ItemMouth", power: 15, weight: 0,
 		factionColor: [[], [], [0]],
@@ -1245,6 +1253,10 @@ const KinkyDungeonRestraints = [
 			HarnessRim: {color: "LightNeutral", override: true},
 			Muzzle: {color: "LightNeutral", override: true},
 		},
+		Filters: {
+			HarnessDisplay: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
+			Display: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
+		},
 		DefaultLock: "Cyber",
 		inaccessible: true,
 		Asset: "FuturisticMuzzle", strictness: 0.35, gag: 0.5,
@@ -1265,6 +1277,7 @@ const KinkyDungeonRestraints = [
 		renderWhenLinked: [...KDJacketRender],
 		Model: "JacketBolero",
 		Filters: {
+			Display: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
 			"BeltsLower":{"gamma":1,"saturation":0,"contrast":1.2,"brightness":1.6166666666666665,"red":1.9333333333333333,"green":1,"blue":2.183333333333333,"alpha":1},
 			"BeltsChest":{"gamma":1,"saturation":0,"contrast":1.2,"brightness":1.6166666666666665,"red":1.9333333333333333,"green":1,"blue":2.183333333333333,"alpha":1},
 			"BeltsArms":{"gamma":1,"saturation":0,"contrast":1.2,"brightness":1.6166666666666665,"red":1.9333333333333333,"green":1,"blue":2.183333333333333,"alpha":1},
@@ -1305,6 +1318,9 @@ const KinkyDungeonRestraints = [
 		factionFilters: {
 			Glow: {color: "Highlight", override: true},
 			Shoe: {color: "LightNeutral", override: true},
+		},
+		Filters: {
+			Glow: {"gamma":0.26666666666666666,"saturation":0,"contrast":1,"brightness":1.9333333333333333,"red":0.2833333333333333,"green":0.8999999999999999,"blue":1.9166666666666667,"alpha":1},
 		},
 		DefaultLock: "Cyber",
 		factionColor: [[0], [4], [1]],
@@ -7145,7 +7161,6 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "Cloth"],
 	addPose: ["TorsoArmor"],
-	armor: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
 	protection: 1,
 	displayPower: 2,
@@ -7157,6 +7172,50 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "evasionBuff", power: 0.1, inheritLinked: true},
 	],
 }, "Swimsuit", "The best uniform. Has a (lockable) zipper in the back for convenience!", "Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist, and being drenched dries faster.")
+, [...KDHexVariantList.Base]);
+
+
+KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
+	name: "RobeOfChastity",
+	Group: "ItemTorso",
+	Model: "TheRobeOfChastityRestraint",
+	remove: ["Cloth", "ClothLower", "Tops", "Skirts", "Shirts", "Pants", "Corsets"],
+	debris: "Belts",
+	showInQuickInv: true, good: true,
+	alwaysKeep: true,
+	alwaysRender: true,
+	UnderlinkedAlwaysRender: true,
+	escapeChance: {
+		"Struggle": -50,
+		"Cut": -50,
+		"Remove": 0.25,
+		"Pick": -0.3,
+	},
+	factionFilters: {
+		Fabric: {color: "DarkNeutral", override: true},
+		Cape: {color: "DarkNeutral", override: true},
+		Gold: {color: "Highlight", override: true},
+		Pauldrons: {color: "Highlight", override: true},
+		GoldBase: {color: "Highlight", override: false},
+		Plate: {color: "LightNeutral", override: false},
+		Frill: {color: "LightNeutral", override: true},
+	},
+	DefaultLock: "Divine",
+	shrine: ["Armor", "TorsoArmor", "Cloth"],
+	addPose: ["TorsoArmor"],
+	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
+	protection: 3,
+	displayPower: 30,
+	protectionCursed: true,
+	events: [
+		{type: "RobeOfChastity", trigger: "orgasm", count: 3, time: 50, inheritLinked: true},
+		{type: "RobeOfChastity", trigger: "tick", power: 0.5, mult: 0.08, damage: "holy", dist: 3.5, inheritLinked: true},
+		{type: "Buff", trigger: "tick", power: 0.5, buffType: "StatGainDistraction", inheritLinked: true},
+
+	],
+}, "Robe of Chastity",
+"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.",
+"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/turn and 5 (+8% missing DP) Holy damage/turn aura. Affects only enemies you have personally damaged. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 1% of mana spent converted into Desire.")
 , [...KDHexVariantList.Base]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({

@@ -321,6 +321,14 @@ let KDEffectTiles = {
 		lightColor: 0x7799ff,
 		tags: ["light"],
 	},
+	"Radiance": {
+		name: "Radiance",
+		duration: 2,
+		priority: 50,
+		brightness: 3.5,
+		lightColor: 0xffff00,
+		tags: ["light", "holy"],
+	},
 
 	"ManaEmpty": {
 		name: "ManaEmpty",

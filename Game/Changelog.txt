@@ -35,6 +35,7 @@ TODO remove hogtie when released
 - Old guardians leashing you to highsec now take you to doll processing Instead
 - Faction rep affects personal opinion less
 - Attacking enemies now reduces their opinion of you (it's personal)
+- Added the Robe of Chastity in lesser gold chests
 
 5.3.35 RC8-RC9
 - Added filter field in collection

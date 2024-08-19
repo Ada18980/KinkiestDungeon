@@ -10,7 +10,8 @@ interface NamedAndTyped extends Named {
 
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
-
+	/** Which NPC its on */
+	onEntity?: number,
 	id: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],

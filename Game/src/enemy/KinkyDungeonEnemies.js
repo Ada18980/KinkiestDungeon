@@ -924,7 +924,7 @@ function KDIDHasFlag(id, flag) {
 	if (enemy)
 		return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1))
 			|| KDCollHasFlag(enemy.id, flag);
-	else return KDCollHasFlag(enemy.id, flag);
+	else return enemy ? KDCollHasFlag(enemy.id, flag) : false;
 }
 
 /**

@@ -849,9 +849,24 @@ function KDDrawStatusBars(x, y, width = 125) {
 			"#ff5277", "none", undefined, undefined, undefined, undefined, undefined, 56);
 
 	}
+	let showRaw = MouseIn(
+		x - 5 + width * barWidthOffset2ndSet,
+		y - 5 - 1*heightPerBar + heightPerBar * barHeightOffset2ndSet,
+		flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart),
+		heightPerBar
+	);
+	if (KDToggles.RawDP) {
+		showRaw = !showRaw;
+	}
 	DrawTextFitKD(
-		TextGet("StatDistraction")
-			.replace("PERCENT", "" + Math.round(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100)),
+		!showRaw ? TextGet("StatDistraction")
+			.replace("PERCENT", "" + Math.round(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100))
+			: TextGet("StatDistractionHover")
+			.replace("MAX", KinkyDungeonStatDistractionMax*10 + "")
+			.replace("CURRENT", Math.floor(KinkyDungeonStatDistraction*10) + "")
+			.replace("PERCENT", "" + Math.round(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax * 100))
+
+			,
 		x  + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1 - 0.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 
 	DrawButtonKDEx("usePotionFrigid", (b) => {
