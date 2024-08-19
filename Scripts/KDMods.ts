@@ -351,6 +351,27 @@ function KDDrawModConfigs(xOffset) {
 				})
 				YY += YYd;
 			}
+			// variable is a list of options - Similar to range, but we are iterating over an options property. 
+			else if (modbutton.type == "list") {
+                if (KDModSettings[KDModToggleTab] == undefined) { KDModSettings[KDModToggleTab] = {}};
+                if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { modbutton.default };
+                var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
+                // Left to decrement
+                DrawButtonKDEx(`ModRangeButtonL${modbutton.name}`, (bdata) => {
+					let newindex = ((modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])-1) == -1) ? (modbutton.options.length-1) : (modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])-1);
+                    KDModSettings[KDModToggleTab][modbutton.refvar] = modbutton.options[newindex];
+                    return true;
+                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
+                // Label for the button
+                DrawTextFitKD(`${modbutton.name}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
+                // Right to increment
+                DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
+                    let newindex = ((modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])+1) == modbutton.options.length) ? (0) : (modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])+1);
+                    KDModSettings[KDModToggleTab][modbutton.refvar] = modbutton.options[newindex];
+                    return true;
+                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : "#ffffff");
+                YY += YYd;
+            }
             modtogglecount++;
             if (modtogglecount == 8) {
                 modsecondrowoffset = 550;
