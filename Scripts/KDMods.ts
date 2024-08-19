@@ -344,7 +344,7 @@ function KDDrawModConfigs(xOffset) {
             }
 			// variable is a string value - Put an input box here. 
 			else if (modbutton.type == "string") {
-				let elem = (KDTextField(modbutton.refvar, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 480, 64, undefined, KDModSettings[KDModToggleTab][modbutton.refvar])).Element;
+				let elem = (KDTextField(modbutton.refvar, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 480, 64, undefined, KDModSettings[KDModToggleTab][modbutton.refvar], "100")).Element;
 				elem.addEventListener('input', function() {
 					let currValue = elem.value;
 					KDModSettings[KDModToggleTab][modbutton.refvar] = currValue;
