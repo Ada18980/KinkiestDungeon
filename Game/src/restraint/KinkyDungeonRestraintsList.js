@@ -211,6 +211,7 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "DuctTapeHead", unlimited: true, debris: "Fabric", inaccessible: true, Type: "Wrap", Asset: "DuctTape", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Color: "#AA2222", Group: "ItemHead", power: -2, blindfold: 3, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.9, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "BlindfoldTape",
 		disassembleAs: "CharmRaw",
+		quickBindCondition: "TapeBlindfold",
 		Filters: {
 			Tape: {"gamma":0.18333333333333335,"saturation":1,"contrast":0.8333333333333333,"brightness":1.2166666666666668,"red":5,"green":1.607843137254902,"blue":2.3333333333333335,"alpha":1},
 		},
@@ -218,6 +219,7 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "DuctTapeMouth", unlimited: true, debris: "Fabric", Asset: "DuctTape", Color: "#AA2222", Group: "ItemMouth", AssetGroup: "ItemMouth2", gag: 0.5, power: -2, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.9, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeWrapOver",
 		disassembleAs: "CharmRaw",
+		quickBindCondition: "TapeGag",
 		Filters: {
 			Tape: {"gamma":0.18333333333333335,"saturation":1,"contrast":0.8333333333333333,"brightness":1.2166666666666668,"red":5,"green":1.607843137254902,"blue":2.3333333333333335,"alpha":1},
 		},
@@ -319,6 +321,7 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "MysticDuctTapeHead", unlimited: true, debris: "FabricGreen", inaccessible: true, Type: "Wrap", Asset: "DuctTape", Color: "#55AA22", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", blindfold: 4, power: 1, weight: 0, escapeChance: {"Struggle": 0.2, "Cut": 0.6, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeFace",
 		disassembleAs: "MysticDuctTapeRaw",
+		quickBindCondition: "TapeBlindfold",
 		Filters: {
 			Tape: {"gamma":1,"saturation":1,"contrast":1.2666666666666668,"brightness":0.6666666666666666,"red":1,"green":1.6833333333333333,"blue":0.6666666666666666,"alpha":1},
 		},
@@ -335,6 +338,7 @@ const KinkyDungeonRestraints = [
 		LinkableBy: [...KDTapeLink],
 		disassembleAs: "MysticDuctTapeRaw",
 		renderWhenLinked: [...KDTapeRender],
+		quickBindCondition: "TapeGag",
 		Filters: {
 			Tape: {"gamma":1,"saturation":1,"contrast":1.2666666666666668,"brightness":0.6666666666666666,"red":1,"green":1.6833333333333333,"blue":0.6666666666666666,"alpha":1},
 		},
@@ -449,6 +453,7 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "AutoTapeHead", unlimited: true, inaccessible: true, Type: "Wrap", Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", power: 5, blindfold: 4, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "BlindfoldTape",
 		disassembleAs: "AutoTapeRaw",
+		quickBindCondition: "TapeBlindfold",
 		Filters: {
 			Tape: {"gamma":0.8333333333333333,"saturation":0.9833333333333333,"contrast":1.4166666666666665,"brightness":0.7833333333333334,"red":1,"green":1.4333333333333333,"blue":3.216666666666667,"alpha":1},
 		},
@@ -456,6 +461,7 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "AutoTapeMouth", unlimited: true, accessible: true, Asset: "DuctTape", Type: "Double", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemMouth", AssetGroup: "ItemMouth2", gag: 0.5, power: 5, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeWrapOver",
 		disassembleAs: "AutoTapeRaw",
+		quickBindCondition: "TapeGag",
 		Filters: {
 			Tape: {"gamma":0.8333333333333333,"saturation":0.9833333333333333,"contrast":1.4166666666666665,"brightness":0.7833333333333334,"red":1,"green":1.4333333333333333,"blue":3.216666666666667,"alpha":1},
 		},
@@ -547,6 +553,7 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "VinylTapeHead", unlimited: true, inaccessible: true, Type: "Wrap", Asset: "DuctTape", Color: "#6E9FA3", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", power: 5, blindfold: 4, weight: 0, escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "BlindfoldTape",
 		disassembleAs: "VinylTapeRaw",
+		quickBindCondition: "TapeBlindfold",
 		Filters: {
 			Tape: {"gamma":0.21666666666666667,"saturation":1,"contrast":1.0166666666666666,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -558,6 +565,7 @@ const KinkyDungeonRestraints = [
 		escapeChance: {"Struggle": 0.1, "Cut": 0.2, "Remove": 0}, failSuffix: {"Remove": "Tape"},
 		Model: "TapeWrapOver",
 		disassembleAs: "VinylTapeRaw",
+		quickBindCondition: "TapeGag",
 		Filters: {
 			Tape: {"gamma":0.21666666666666667,"saturation":1,"contrast":1.0166666666666666,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -2336,6 +2344,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, name: "Stuffing", unlimited: true, debris: "Fabric", Asset: "ClothStuffing", LinkableBy: [...KDStuffingLink], Color: "Default", Group: "ItemMouth", power: -20, weight: 0, gag: 0.4,
 		Model: "Stuffing",
 		alwaysRender: true,
+		quickBindCondition: "Stuffing",
 		alwaysInaccessible: true,
 		escapeChance: {"Struggle": 1, "Cut": 1, "Remove": 1}, enemyTags: {"stuffedGag": 100, "clothRestraints":12, "ribbonRestraints":6, "ropeAuxiliary": 4,}, playerTags: {}, minLevel: 0,
 		allFloors: true, shrine: ["Stuffing"]},
@@ -3608,6 +3617,7 @@ const KinkyDungeonRestraints = [
 		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		Model: "ShacklesWrists",
+		quickBindCondition: "Handcuffs",
 		noDupe: true,
 		Group: "ItemArms", Color: "Default", bindarms: true, Type: "Behind", power: 1, escapeChance: {"Struggle": -0.05, "Cut": -0.25, "Remove": 10, "Pick": 5},
 		DefaultLock: "White",
@@ -3622,6 +3632,7 @@ const KinkyDungeonRestraints = [
 	{inventory: true, trappable: true, name: "TrapCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "Cuffs", linkSize: 0.33, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
 		sfxGroup: "Handcuffs",
 		struggleBreak: true,
+		quickBindCondition: "Handcuffs",
 		Model: "HandCuffs",
 		noDupe: true,
 		Color: "Default", bindarms: true, power: 2, DefaultLock: "White",
@@ -3638,6 +3649,7 @@ const KinkyDungeonRestraints = [
 		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		Model: "HingedCuffs",
+		quickBindCondition: "Handcuffs",
 		noDupe: true,
 		linkCategory: "Cuffs", linkSize: 0.4, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
 		Color: "Default", bindarms: true, power: 5, DefaultLock: "White",
@@ -3656,6 +3668,7 @@ const KinkyDungeonRestraints = [
 		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		Model: "Irish8Cuffs",
+		quickBindCondition: "Handcuffs",
 		linkCategory: "Cuffs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
 		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
 		events: [{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true}],
@@ -3743,6 +3756,7 @@ const KinkyDungeonRestraints = [
 
 
 	{inventory: true, name: "WolfCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "SmartCuffs", linkSize: 0.55, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable],
+		quickBindCondition: "Handcuffs",
 		sfxGroup: "Handcuffs",
 		struggleBreak: true,
 		Model: "WolfCuffs",

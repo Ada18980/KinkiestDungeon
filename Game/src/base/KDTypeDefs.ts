@@ -541,6 +541,8 @@ interface KDRestraintPropsBase {
 interface restraint extends KDRestraintProps {
 	power: number,
 	preview?: string,
+	/** Special condition for quick binding! */
+	quickBindCondition?: string,
 	/** Base weight of the restraint, required */
 	weight: number,
 	minLevel: number,

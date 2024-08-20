@@ -595,8 +595,9 @@ function KDDrawSpellChoices() {
 				}
 				// Render number
 				//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 101);
-				if (consumable) {
-					let con = KinkyDungeonInventoryGetConsumable(consumable);
+				if (consumable || arm) {
+					let con = KinkyDungeonInventoryGetConsumable(consumable)
+						|| KinkyDungeonInventoryGetLoose(arm);
 					if (con) {
 						DrawTextFitKD((con.quantity || 0) + 'x',
 							buttonDim.x + buttonDim.w-1,

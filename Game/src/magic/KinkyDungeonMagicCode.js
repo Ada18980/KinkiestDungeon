@@ -258,7 +258,15 @@ let KinkyDungeonSpellSpecials = {
 				}
 			}
 			if (!fail) {
-				if (KDCanBind(en) && KDCanApplyBondage(en, entity)) {
+				if (KDCanBind(en) && KDCanApplyBondage(en, entity,
+						KinkyDungeonTargetingSpellItem ? (
+							KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition ?
+							(t, p) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](
+								t, p,
+								KDRestraint(KinkyDungeonTargetingSpellItem),
+								KinkyDungeonTargetingSpellItem)) :
+							false
+						) : undefined)) {
 					//KDGameData.InventoryAction = "Bondage";
 
 					if (KinkyDungeonTargetingSpellItem) {

@@ -96,7 +96,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						grp,
 						XX - Math.floor(wid*0.25), YY - Math.floor(wid*0.25), Math.ceil(wid*1), Math.ceil(wid*1),
 						undefined, {
-							zIndex: 160,
+							zIndex: restraint ? 0 : 160,
 						}
 					);
 				}
@@ -412,7 +412,7 @@ function KDGetRestraintsForID(id: number): (item | NPCRestraint)[] {
 function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints?: Record<string, NPCRestraint>, allowSameID?: number): NPCBindingSubgroup[] {
 	let group = restraint.Group;
 	let tags = restraint.shrine;
-	return [...row.layers, row.encaseGroup].filter((sg) => {
+	let ret = [...row.layers, row.encaseGroup].filter((sg) => {
 		return sg.id == sgroup.id ||
 			(	(!restraints || !restraints[sg.id] || (allowSameID && restraints[sg.id].id == allowSameID))
 				&& sg.allowedGroups.includes(group)
@@ -421,6 +421,19 @@ function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgr
 				})
 			)
 	});
+
+	if (ret.length > 0) {
+		// Resolve ambiguity
+		let index = ret.findIndex((slot) => {
+			return slot.id == sgroup.id;
+		});
+
+		if (index > 0) {
+			// Javascript witchery
+			ret.unshift(...ret.splice(index, 1));
+		}
+	}
+	return ret;
 }
 
 function KDRowItemIsValid(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints: Record<string, NPCRestraint>): boolean {
@@ -634,7 +647,9 @@ function KDInputSetNPCRestraint(data): boolean {
 	}
 	if (item && !data.noInventory) {
 		let restraint = KDRestraint(item);
-		if (restraint?.inventory) {
+		if (item.conjured) {
+
+			let inventoryAs = item.inventoryVariant || restraint?.inventoryAs || item.name;
 			if (!KinkyDungeonInventoryGetSafe(item.name)) {
 				if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
 					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name], undefined,
@@ -642,7 +657,7 @@ function KDInputSetNPCRestraint(data): boolean {
 
 				} else {
 					KinkyDungeonInventoryAdd({
-					name: item.name,
+					name: inventoryAs,
 					//curse: curse,
 					id: item.id,
 					type: LooseRestraint,
@@ -654,6 +669,11 @@ function KDInputSetNPCRestraint(data): boolean {
 
 				KDSortInventory(KDPlayer());
 			} else KinkyDungeonInventoryGetSafe(item.name).quantity += 1;
+		} else {
+			KinkyDungeonSendTextMessage(4, TextGet("KDConjuredRestraintVanish").replace(
+				"RSTN",
+				KDGetItemName(item),
+			), "#aaaaaa", 1);
 		}
 	}
 

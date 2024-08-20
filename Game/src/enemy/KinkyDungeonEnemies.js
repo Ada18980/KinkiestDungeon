@@ -8921,10 +8921,10 @@ function KDPlayPossible(enemy) {
  * @param {entity} player
  * @returns {boolean}
  */
-function KDCanApplyBondage(target, player) {
+function KDCanApplyBondage(target, player, extraCondition = undefined) {
 	if (player?.player) {
-		return (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow") > KDEntityBuffedStat(target, "TimeSlow"))
-			|| KinkyDungeonHasStatus(target) || KDWillingBondage(target, player);
+		return (extraCondition ? extraCondition(target, player) : false) || (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow") > KDEntityBuffedStat(target, "TimeSlow"))
+			|| (KinkyDungeonIsDisabled(target)) || KDWillingBondage(target, player);
 	}
 	return KinkyDungeonIsDisabled(target);
 }

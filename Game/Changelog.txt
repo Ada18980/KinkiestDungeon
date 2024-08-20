@@ -31,7 +31,8 @@ TODO:
 TODO remove hogtie when released
 
 5.3-RC10
-- You can now use quick inventory to attempt to truss up targets (or wear items by clicking yourself)
+- You can now use quick inventory or hotbar to attempt to truss up targets
+  (or wear items by clicking yourself)
 - Old guardians leashing you to highsec now take you to doll processing Instead
 - Faction rep affects personal opinion less
 - Attacking enemies now reduces their opinion of you (it's personal)

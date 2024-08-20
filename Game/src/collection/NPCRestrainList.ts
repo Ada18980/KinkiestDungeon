@@ -92,11 +92,11 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Wrapping", "Encase"]},
 		layers: [
 			{id: "Secure", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "RopeReinforce", "Belts"]},
+				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "ChestHarnesses", "Belts", "ElbowLink"]},
 			{id: "HeavyBondage", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs"]},
+				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs", "WristLink"]},
 			{id: "Wrists", encasedBy: ["ArmEncase", "HeavyBondage"], allowedGroups: ["ItemArms"],
-				allowedTags: ["ArmCuffsBase", "ChestHarnesses"]},
+				allowedTags: ["ArmCuffsBase", "IntricateRopeArms"]},
 		]},
 	{id: "Hands", encaseGroup:
 		{id: "HandEncase", encasedBy: ["ArmEncase"], allowedGroups: ["ItemHands"],
@@ -149,7 +149,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Legbinder", encasedBy: ["LegEncase"], allowedGroups: ["ItemLegs"],
 				allowedTags: ["Legbinders", "RopeLegs3", "Belts", "SpreaderBars"]},
 			{id: "ThighBinds", encasedBy: ["LegEncase", "Legbinder"], allowedGroups: ["ItemLegs"],
-				allowedTags: ["RopeLegs2", "Belts", "Cuffs", "SpreaderBars"]},
+				allowedTags: ["RopeLegs2", "Belts", "Cuffs", "SpreaderBars", "ThighLink"]},
 			{id: "ThighCuffs", encasedBy: ["LegEncase", "Legbinder"], allowedGroups: ["ItemLegs"],
 				allowedTags: ["RopeLegs1", "Belts", "LegCuffsBase"]},
 		]},
@@ -160,7 +160,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Knees", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet3", "Belts", "SpreaderBars"]},
 			{id: "Shins", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
-				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs", "Hogties"]},
+				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs", "Hogties", "AnkleLink"]},
 			{id: "AnkleCuffs", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet1", "Belts", "AnkleCuffsBase"]},
 		]},
@@ -189,3 +189,19 @@ let KDBondageConditions: Record<string, (r: restraint, id: number) => boolean> =
 		return true; // TODO
 	},
 }
+
+
+let KDQuickBindConditions: Record<string, (target: entity, player: entity, restraint: restraint, item: item) => boolean> = {
+	Handcuffs: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	Stuffing: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	TapeGag: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	TapeBlindfold: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+};

@@ -3825,10 +3825,10 @@ RestraintDuctTapeFeet,Charms (Feet)
 RestraintDuctTapeFeetDesc,"A band of faintly magic ribbon wrapped tight around your ankles."
 RestraintDuctTapeFeetDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintDuctTapeHead,Charms (Head)
-RestraintDuctTapeHeadDesc,"A band of faintly magic ribbon wrapped tight around your eyes."
+RestraintDuctTapeHeadDesc,"A band of faintly magic ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintDuctTapeMouth,Charm Gag
-RestraintDuctTapeMouthDesc,"A band of faintly magic ribbon wrapped tight around your mouth."
+RestraintDuctTapeMouthDesc,"A band of faintly magic ribbon wrapped tight over the mouth. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintDuctTapeBoots,Charm Wrapping (Toes)
 RestraintDuctTapeBootsDesc,"A layer of faintly magic ribbon wrapped tight around your feet."
@@ -3890,10 +3890,10 @@ RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
 RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
 RestraintMysticDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeEyes,Blessed Wrappings (Eyes)
-RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintMysticDuctTapeEyesDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeMouth,Blessed Wrappings (Gag)
-RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight around your mouth."
+RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintMysticDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeArmsMummy,Blessed Wrappings (Arms)
 RestraintMysticDuctTapeArmsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your body."
@@ -3927,10 +3927,10 @@ RestraintVinylTapeFeet,Tape (Feet)
 RestraintVinylTapeFeetDesc,"Sleek and shiny tape for the bondage enthusiast."
 RestraintVinylTapeFeetDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
 RestraintVinylTapeHead,Tape (Head)
-RestraintVinylTapeHeadDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeHeadDesc,"Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintVinylTapeHeadDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
 RestraintVinylTapeMouth,Tape Gag
-RestraintVinylTapeMouthDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeMouthDesc,"Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintVinylTapeMouthDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
 RestraintVinylTapeMouthFull,Tape Mouth Wrap
 RestraintVinylTapeMouthFullDesc,"Sleek and shiny tape for the bondage enthusiast."
@@ -3975,7 +3975,7 @@ RestraintAutoTapeHands,Autotape (Hands)
 RestraintAutoTapeHandsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeHandsDesc2,"It's very sticky and seals your hands tightly, making any struggling ineffective."
 RestraintAutoTapeHead,Autotape (Head)
-RestraintAutoTapeHeadDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeHeadDesc,"Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintAutoTapeHeadDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeArms,Autotape (Arms)
 RestraintAutoTapeArmsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
@@ -3990,7 +3990,7 @@ RestraintAutoTapeBoots,Autotape (Feet)
 RestraintAutoTapeBootsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeBootsDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeMouth,Autotape (Mouth)
-RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintAutoTapeMouthDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeMouthFull,Autotape (Mouth Wrap)
 RestraintAutoTapeMouthFullDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
@@ -4001,7 +4001,7 @@ RestraintAutoTapeCollarDesc2,"It will occasionally cause tape to appear out of n
 
 
 RestraintStuffing,Stuffing
-RestraintStuffingDesc,"A stuffing of cloth."
+RestraintStuffingDesc,"A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintStuffingDesc2,"You could spit it out easily, provided nothing's covering it."
 
 
@@ -4135,7 +4135,7 @@ KinkyDungeonRemoveCuffsCyberLegCuffs,The energy link between your thigh cuffs fi
 KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
 KinkyDungeonRemoveHogtie,The hogtie link comes off.
 RestraintTrapCuffs,Handcuffs
-RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists."
+RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintTrapCuffsDesc2,"The lock doesn't seem very complicated."
 RestraintTrapYoke,Steel Yoke
 RestraintTrapYokeDesc,"A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position."
@@ -4294,7 +4294,7 @@ RestraintVinePlantFeetDesc,"A tie keeping your feet secured together."
 RestraintVinePlantFeetDesc2,"The vines twitch as they try to wrap around tighter."
 
 RestraintWolfCuffs,High-Security Cuffs
-RestraintWolfCuffsDesc,"A set of irish-8-style cuffs that are both restrictive and quick to apply."
+RestraintWolfCuffsDesc,"A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintWolfCuffsDesc2,"It uses a standard lock rather than a simple one."
 RestraintWolfArmbinder,Wolfbinder
 RestraintWolfArmbinderDesc,"A sophisticated training system used to keep wolfgirls from scratching their owners."
@@ -5206,7 +5206,7 @@ RestraintSturdyLeatherBeltsFeetDesc,"A ludicrous amount of belts secured with a 
 RestraintSturdyLeatherBeltsFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 
 RestraintWristShackles,Iron Cuffs
-RestraintWristShacklesDesc,"Tough shackles with a rudimentary lock."
+RestraintWristShacklesDesc,"Tough shackles with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintWristShacklesDesc2,"You could pick these with a hairpin."
 RestraintAnkleShackles,Iron Shackles
 RestraintAnkleShacklesDesc,"Tough shackles with a rudimentary lock."
@@ -5219,11 +5219,11 @@ RestraintThumbCuffsNew,Thumbcuffs
 RestraintThumbCuffsNewDesc,"Interferes with the use of your hands."
 RestraintThumbCuffsNewDesc2,"Another layer of restriction."
 RestraintHingedCuffs,Hinged Handcuffs
-RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
+RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintHingedCuffsDesc2,"Difficult to unlock, let alone pick by yourself."
 
 RestraintIrish8Cuffs,Heavy Handcuffs
-RestraintIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock."
+RestraintIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintIrish8CuffsDesc2,"The position is too awkward to free yourself, even with a key..."
 
 RestraintAnkleIrish8Cuffs,Heavy Leg Irons
@@ -20199,7 +20199,7 @@ RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
 RestraintRopeSnakeCuffsAdv,Chest Straps
-RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeCuffsAdv2,Chest Harness
 RestraintRopeSnakeCuffsAdv2Desc,"The finishing touch on a tight and strict piece of ropework."
@@ -20926,7 +20926,7 @@ KDBondageTarget,Target acquired!
 KinkyDungeonSpellBondage,"Truss em up!"
 KinkyDungeonSpellTargetBondage,"Choose target to bind"
 KinkyDungeonSpellCastBondage,"Target Acquired!"
-KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or have at least 1 status effect. Some items require higher levels of incapacitation to be applied"
+KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied"
 
 DungeonNameShopStart,"The Shoppe"
 DungeonNameJourneyFloor,"Journey Selection"
@@ -23795,8 +23795,8 @@ KDBindNPCSlot_InterGag,Gag
 KDBindNPCSlot_OuterGag,Gag / Stuffing
 KDBindNPCSlot_Muzzle,Muzzle
 KDBindNPCSlot_Wrists,Wrists
-KDBindNPCSlot_HeavyBondage,Heavy Bondage
-KDBindNPCSlot_Secure,Extra Bondage
+KDBindNPCSlot_HeavyBondage,Bondage
+KDBindNPCSlot_Secure,Chest Harness
 KDBindNPCSlot_ArmEncase,Encasement
 KDBindNPCSlot_InnerHands,Mittens
 KDBindNPCSlot_InterHands,Mittens / Tape
@@ -23968,3 +23968,5 @@ KDBondageFailCantAdd,"You can't wear that item, regrettably."
 
 KDBondageCondition_HeavyBondage,Must be stunned 3+ turns or fully bound
 KDBondageCondition_Extra,Depends on another item to be added first
+
+KDConjuredRestraintVanish,The conjured RSTN vanishes as you remove it.
