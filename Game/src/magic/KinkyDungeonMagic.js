@@ -326,6 +326,8 @@ function KDEmpower(data, entity) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDSpellEmpowerFail"), "#ffffff", 1);
 	} else {
 		KinkyDungeonTargetingSpell = null;
+		KinkyDungeonTargetingSpellItem = null;
+		KinkyDungeonTargetingSpellWeapon = null;
 		// Success, we upcast
 		let newLevel = Math.min(KDMaxEmpower, Level + 1);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -431,6 +433,8 @@ function KinkyDungeonHandleSpellCast(spell) {
 		}
 	} else {
 		KinkyDungeonTargetingSpell = null;
+		KinkyDungeonTargetingSpellItem = null;
+		KinkyDungeonTargetingSpellWeapon = null;
 		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)[0]), "#ff5277", 1);
 	}
 	return null;
@@ -462,28 +466,34 @@ function KinkyDungeonClickSpell(i) {
 		clicked = true;
 	} else if (KinkyDungeonArmorChoices[i] && KinkyDungeonInventoryGetLoose(KinkyDungeonArmorChoices[i])) {
 		let item = KinkyDungeonInventoryGetLoose(KinkyDungeonArmorChoices[i]);
-		let equipped = false;
-		let newItem = null;
-		let currentItem = null;
 
-		if (item) {
-			newItem = KDRestraint(item);
-			if (newItem) {
-				currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+		if (KDRestraint(item)?.good || KDRestraint(item)?.armor) {
+			let equipped = false;
+			let newItem = null;
+			let currentItem = null;
 
-				if (!currentItem
-					|| KDCurrentItemLinkable(currentItem, newItem)) {
-					equipped = false;
-				} else equipped = true;
+			if (item) {
+				newItem = KDRestraint(item);
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+
+					if (!currentItem
+						|| KDCurrentItemLinkable(currentItem, newItem)) {
+						equipped = false;
+					} else equipped = true;
+				}
 			}
+			if (!equipped && newItem) {
+				KDSendInput("equip", {name: item.name,
+					inventoryVariant: item.name != newItem.name ?
+						item.name : undefined,
+					faction: item.faction,
+					group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
+			}
+		} else {
+			KDSendInput("quickRestraint", {item: item.name, quantity: 1});
 		}
-		if (!equipped && newItem) {
-			KDSendInput("equip", {name: item.name,
-				inventoryVariant: item.name != newItem.name ?
-					item.name : undefined,
-				faction: item.faction,
-				group: newItem.Group, curse: item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.events)});
-		}
+
 		KinkyDungeonSpellPress = "";
 		clicked = true;
 	}
@@ -520,6 +530,8 @@ function KinkyDungeonHandleSpell(ind) {
 
 	if (spell) {
 		// Otherwise.
+		KinkyDungeonTargetingSpellItem = null;
+		KinkyDungeonTargetingSpellWeapon = null;
 		KinkyDungeonTargetingSpell = spell;
 		KDModalArea = false;
 		KinkyDungeonTargetTile = null;
@@ -1306,6 +1318,8 @@ function KinkyDungeonHandleMagic() {
 
 		if (MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale * 0.5 - 175, canvasOffsetY_ui - 55 + 483*KinkyDungeonBookScale, 375, 45)) {
 			KDSendInput("spellCastFromBook", {CurrentSpell: KinkyDungeonCurrentPage});
+			KinkyDungeonTargetingSpellItem = null;
+			KinkyDungeonTargetingSpellWeapon = null;
 			KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[KinkyDungeonCurrentPage]);
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;

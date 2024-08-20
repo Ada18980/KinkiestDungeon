@@ -30,12 +30,16 @@ TODO:
 
 TODO remove hogtie when released
 
-
 5.3-RC10
+- You can now use quick inventory to attempt to truss up targets (or wear items by clicking yourself)
 - Old guardians leashing you to highsec now take you to doll processing Instead
 - Faction rep affects personal opinion less
 - Attacking enemies now reduces their opinion of you (it's personal)
 - Added the Robe of Chastity in lesser gold chests
+- Fixed bug where traps would spawn in places there were not supposed to be any
+- Fixed bug where the void would sometimes be an actual void and not a discount void (with demon squatters)
+- Fixed bug where prisoners you reclaim would not actually be reclaimed but rather cast into the ether (and are inaccessible as prisoners)
+
 
 5.3.35 RC8-RC9
 - Added filter field in collection

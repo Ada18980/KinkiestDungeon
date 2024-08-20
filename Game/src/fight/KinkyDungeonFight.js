@@ -998,7 +998,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#e7cf1a", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type]?.name)} ${TextGet("KDdmg")}`,
-						Entity: Enemy, Color: "#ff4444", Delay: Delay, size: 6 + Math.max(20, Math.floor(predata.dmgDealt * 2))});
+						Entity: Enemy, Color: "#ff4444", Delay: Delay,
+						size: 12 + Math.min(24, Math.floor(predata.dmgDealt * 2))});
 				}
 			}
 

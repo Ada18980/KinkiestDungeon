@@ -3076,7 +3076,14 @@ let KinkyDungeonHuntDownPlayer = false;
  * @returns {boolean}
  */
 function KinkyDungeonHasStatus(enemy) {
-	return enemy && (enemy.bind > 0 || enemy.slow > 0 || enemy.stun > 0 || enemy.freeze > 0 || enemy.silence > 0 || KinkyDungeonIsSlowed(enemy) || KDBoundEffects(enemy) > 0);
+	return enemy &&
+		(enemy.bind > 0
+			|| enemy.slow > 0
+			|| enemy.stun > 0
+			|| enemy.freeze > 0
+			|| enemy.silence > 0
+			|| KinkyDungeonIsSlowed(enemy)
+			|| KDBoundEffects(enemy) > 0);
 }
 
 /**
@@ -8917,7 +8924,20 @@ function KDPlayPossible(enemy) {
 function KDCanApplyBondage(target, player) {
 	if (player?.player) {
 		return (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow") > KDEntityBuffedStat(target, "TimeSlow"))
-			|| KinkyDungeonIsDisabled(target) || (target.playWithPlayer && KDCanDom(target));
+			|| KinkyDungeonHasStatus(target) || KDWillingBondage(target, player);
 	}
 	return KinkyDungeonIsDisabled(target);
 }
+
+/**
+ *
+ * @param {entity} target
+ * @param {entity} player
+ * @returns {boolean}
+ */
+function KDWillingBondage(target, player) {
+	return (KDIsDistracted(target) && KDLoosePersonalities.includes(target.personality))
+		|| (player?.player && (target.playWithPlayer && KDCanDom(target)));
+}
+
+

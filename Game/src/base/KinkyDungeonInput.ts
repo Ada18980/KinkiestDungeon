@@ -105,6 +105,11 @@ function KDProcessInput(type, data): string {
 			//KinkyDungeonTargetTile = null;
 			//KinkyDungeonTargetTileLocation = null;
 			break;
+
+		case "quickRestraint":
+			KinkyDungeonAttemptQuickRestraint(data.item);
+			break;
+
 		case "switchWeapon": {
 			if (data?.pref != undefined) KDWeaponSwitchPref = data.pref;
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
@@ -1295,7 +1300,7 @@ function KDProcessInput(type, data): string {
 	return "";
 }
 
-function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean): string {
+function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = true): string {
 
 	if (!noUpdate) {
 		KDGameData.OrigEnergyLevel = KDGameData.AncientEnergyLevel;
@@ -1306,7 +1311,9 @@ function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean): string {
 	}
 
 	KinkyDungeonInputQueue.push({type: type, data: data});
-	return KDProcessInputs(true);
+	if (process)
+		return KDProcessInputs(true);
+	else return;
 }
 
 /**

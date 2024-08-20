@@ -33,6 +33,8 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 2);
+		KinkyDungeonInventoryAddLoose("RopeSnakeRaw", undefined, undefined, 10);
+		KinkyDungeonInventoryAddLoose("TrapCuffs", undefined, undefined, 3);
 	},
 	"Rogue": () => { // Rogue
 		KinkyDungeonInventoryAddWeapon("Dirk");
@@ -55,6 +57,8 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
+		KinkyDungeonInventoryAddLoose("RopeSnakeRaw", undefined, undefined, 10);
+		KinkyDungeonInventoryAddLoose("TrapGag", undefined, undefined, 3);
 	},
 	"Mage": () => { // Mage
 		KinkyDungeonInventoryAddWeapon("Knife");
@@ -77,12 +81,14 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
+		KinkyDungeonInventoryAddLoose("StrongMagicRopeRaw", undefined, undefined, 10);
 	},
 	"Peasant": () => { // Peasant
 		KDPushSpell(KinkyDungeonFindSpell("Peasant"));
 		KDPushSpell(KinkyDungeonFindSpell("Bondage"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpellPoints = 3;
+		KinkyDungeonInventoryAddLoose("RopeSnakeRaw", undefined, undefined, 3);
 	},
 	"Trainee": () => { // Trainee
 		KDPushSpell(KinkyDungeonFindSpell("Bondage"));
@@ -98,6 +104,7 @@ let KDClassStart = {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3);
 		KinkyDungeonChangeFactionRep("Apprentice", .2);
 
+		KinkyDungeonInventoryAddLoose("WeakMagicRopeRaw", undefined, undefined, 10);
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapPlug2"), 0, true, "");
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), 10, true, "Gold");
 	},

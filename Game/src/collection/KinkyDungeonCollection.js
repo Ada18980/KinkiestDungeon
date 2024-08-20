@@ -761,7 +761,8 @@ function KDNPCUnavailable(id, status) {
 		|| (status && KDIsInCapturedPartyID(id))
 		|| (KDGetGlobalEntity(id) &&
 			(KDIsImprisonedByEnemy(id))
-			|| (KinkyDungeonFindID(id) && !KDIsImprisoned(KinkyDungeonFindID(id)) && KDHostile(KinkyDungeonFindID(id))));
+			|| (KinkyDungeonFindID(id)
+			&& !KDIsImprisoned(KinkyDungeonFindID(id)) && KDHostile(KinkyDungeonFindID(id))));
 
 }
 
@@ -1282,6 +1283,8 @@ function KDDrawNPCBars(value, x, y, width) {
 	let oldEnemy = enemy.Enemy;
 	KDUnPackEnemy(enemy);
 
+	let defaultSpeed = KDIsImprisoned(enemy) || !KinkyDungeonFindID(enemy.id);
+
 	let II = 0;
 	let height = 12;
 	let spacing = height + 2;
@@ -1293,7 +1296,7 @@ function KDDrawNPCBars(value, x, y, width) {
 	if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 		let visualbond = bindAmpMod * enemy.visual_boundlevel;
 		let bindingBars = maxBars;//Math.ceil( visualbond / enemy.Enemy.maxhp);
-		let SM = KDGetEnemyStruggleMod(enemy, true, true);
+		let SM = KDGetEnemyStruggleMod(enemy, true, defaultSpeed);
 		let futureBound = KDPredictStruggle(enemy, SM, 1);
 		yy += Math.min(maxBars, bindingBars) * spacing - 10;
 		for (let i = 0; i < bindingBars && i < maxBars; i++) {

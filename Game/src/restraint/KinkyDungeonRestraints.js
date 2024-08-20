@@ -321,6 +321,44 @@ function KDRestraintBondageType(item) {
 }
 
 /**
+ * gets a restraint's conditions
+ * @param {Named} item
+ * @returns {string[]}
+ */
+function KDRestraintBondageConditions(item) {
+	let r = KDRestraint(item);
+	if (r) {
+		let data = {
+			item: item,
+			restraint: r,
+			conditions: [],
+			override: undefined,
+			overridePriority: 0,
+		};
+		// Stock methodology
+		if (r.shrine.includes("Armbinders")
+			|| r.shrine.includes("Boxbinders")
+			|| r.shrine.includes("Yokes")
+			|| r.shrine.includes("Fiddles")
+			|| r.shrine.includes("BindingDress")
+			|| r.shrine.includes("Straitjackets")
+			|| r.shrine.includes("Petsuits")) {
+			data.conditions.push("HeavyBondage");
+		}
+
+		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip) {
+			data.conditions.push("Extra");
+		}
+
+		KinkyDungeonSendEvent("calcBondageConditions", data);
+
+
+		return data.conditions.length > 0 ? data.conditions : null;
+	}
+	return null;
+}
+
+/**
  * gets a restraint
  * @param {Named} item
  * @returns {KDBondageStatus}

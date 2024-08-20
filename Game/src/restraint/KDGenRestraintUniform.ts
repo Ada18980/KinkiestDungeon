@@ -7,3 +7,17 @@
 // There are also 'lockrules' which are params that can be applied to establish rules for the types of locks added to restraints, and conjuration status
 
 // Also included is a function to generate the above based on an array of SpecialBondageTypes in order to dynamically generate bondage
+
+function KDGetNPCBindingSlotForItem(restraint: restraint, id: number): {row: NPCBindingGroup, sgroup: NPCBindingSubgroup} {
+	let restraints = KDGetNPCRestraints(id);
+	for (let row of NPCBindingGroups) {
+		for (let sgroup of [row.encaseGroup, ...row.layers]) {
+			if (KDRowItemIsValid(
+				restraint, sgroup, row, restraints
+			)) return {row: row, sgroup: sgroup};
+		}
+
+	}
+
+	return null;
+}

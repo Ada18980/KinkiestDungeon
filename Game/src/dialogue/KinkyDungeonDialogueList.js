@@ -3098,7 +3098,6 @@ let KDDialogue = {
 						if (KDIsImprisoned(e) && KDGameData.Collection[e.id + ""] != undefined) {
 							KDRemoveEntity(e, false, false, true);
 							delete KDGameData.Collection[e.id + ""].escaped;
-							delete KDGameData.Collection[e.id + ""].escapegrace;
 							delete KDGameData.Collection[e.id + ""].spawned;
 							if (KDGetNPCRestraints(e.id)?.Device) {
 								KDSetNPCRestraint(e.id, "Device", null);
@@ -3107,6 +3106,7 @@ let KDDialogue = {
 							if (KDIsNPCPersistent(e.id) && KDGetPersistentNPC(e.id)) {
 								KDGetPersistentNPC(e.id).collect = true;
 								KDGetPersistentNPC(e.id).captured = false;
+								KDGetPersistentNPC(e.id).room = "Summit";
 							}
 							KinkyDungeonAdvanceTime(1);
 						}

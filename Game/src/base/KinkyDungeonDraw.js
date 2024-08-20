@@ -1052,6 +1052,8 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawState = "Game";
 				KinkyDungeonMessageToggle = false;
 				KinkyDungeonTargetingSpell = null;
+				KinkyDungeonTargetingSpellItem = null;
+				KinkyDungeonTargetingSpellWeapon = null;
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonSpellPress = "";
@@ -1349,7 +1351,7 @@ function KinkyDungeonDrawGame() {
 
 
 				// Draw targeting reticule
-				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory && KinkyDungeonIsPlayer()
+				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !(KinkyDungeonShowInventory && !KinkyDungeonTargetingSpell) && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
 					if (KinkyDungeonInspect) {
 						KinkyDungeonSetTargetLocation(KDToggles.Helper);

@@ -89,6 +89,7 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 				if (prereqs && loot.prerequisites.includes("nopetsuit") && KinkyDungeonPlayerTags.get("NoPet")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("nokigu") && KinkyDungeonPlayerTags.get("NoKigu")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("noblindfold") && KinkyDungeonPlayerTags.get("NoBlindfolds")) prereqs = false;
+				if (prereqs && loot.prerequisites.includes("nofrontplug") && KinkyDungeonPlayerTags.get("arousalModePlugNoFront")) prereqs = false;
 
 				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.get("NoVibes")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("alreadyBelted") && KinkyDungeonChastityMult() < 0.9) prereqs = false;

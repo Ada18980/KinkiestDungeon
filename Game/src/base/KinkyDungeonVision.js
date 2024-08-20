@@ -815,7 +815,7 @@ function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 	let borders = false;
 	let zoom = 1;
 	let blackMap = false;
-	if (!KinkyDungeonShowInventory && (KDExpandMinimap)) {
+	if (!(KinkyDungeonShowInventory) && (KDExpandMinimap)) {
 		scale = KDMinimapExpandedZoom;
 		w = KDMinimapExpandedSize;
 		h = Math.floor(KDMinimapHBig/KDMinimapWBig*KDMinimapExpandedSize);

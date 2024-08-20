@@ -24,6 +24,17 @@ let NPCBindingRestraintSize = {
 	Petsuits: 2,
 }
 
+interface KDBondageStats {
+	level: number,
+	type: string,
+	mult: number,
+	amount: number,
+	/** List of conditions required for this item to be applied (not stay on) */
+	conditions?: string[],
+	/** List of conditions required for this item to stay on (TODO incomplete) */
+	stayconditions?: string[],
+}
+
 /**
  *
  * Most items have 1 size
@@ -165,3 +176,16 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 				allowedTags: ["Heels", "Cuffs"]},
 		]},
 ];
+
+
+
+let KDBondageConditions: Record<string, (r: restraint, id: number) => boolean> = {
+	HeavyBondage: (r, id) => {
+		let enemy = KDGetGlobalEntity(id);
+		if (!enemy) return false; // Must create an entity
+		return enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3;
+	},
+	Extra: (r, id) => {
+		return true; // TODO
+	},
+}

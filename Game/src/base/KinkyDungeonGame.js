@@ -3883,7 +3883,7 @@ function KinkyDungeonClickGame(Level) {
 
 	// First we handle buttons
 	let prevSpell = KinkyDungeonTargetingSpell;
-	let prevInv = KinkyDungeonShowInventory;
+	let prevInv = (KinkyDungeonShowInventory && !KinkyDungeonTargetingSpell);
 	if (KDGameData.CurrentDialog) {
 		let result = false;
 		try {
@@ -3899,7 +3899,11 @@ function KinkyDungeonClickGame(Level) {
 		try {
 			if (prevSpell) {
 				if (prevInv) KDCloseQuickInv();
-				else KinkyDungeonTargetingSpell = null;
+				else {
+					KinkyDungeonTargetingSpell = null;
+					KinkyDungeonTargetingSpellItem = null;
+					KinkyDungeonTargetingSpellWeapon = null;
+				}
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			KinkyDungeonGameKey.keyPressed = [
@@ -3961,9 +3965,19 @@ function KinkyDungeonClickGame(Level) {
 								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
 
 								KinkyDungeonTargetingSpell = null;
+								KinkyDungeonTargetingSpellItem = null;
+								KinkyDungeonTargetingSpellWeapon = null;
 							}
-						} else KinkyDungeonTargetingSpell = null;
-					} else KinkyDungeonTargetingSpell = null;
+						} else {
+							KinkyDungeonTargetingSpell = null;
+							KinkyDungeonTargetingSpellItem = null;
+							KinkyDungeonTargetingSpellWeapon = null;
+						}
+					} else {
+						KinkyDungeonTargetingSpell = null;
+						KinkyDungeonTargetingSpellItem = null;
+						KinkyDungeonTargetingSpellWeapon = null;
+					}
 				} else if (KinkyDungeonIsPlayer() && KDMouseInPlayableArea()) {
 					let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
 					if (fastMove && KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) > 0.5
@@ -4304,6 +4318,8 @@ function KinkyDungeonGameKeyUp(lastPress) {
 			if (KinkyDungeonKeySpell.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
 				if (KinkyDungeonDrawState == "Game") {
 					KinkyDungeonTargetingSpell = null;
+					KinkyDungeonTargetingSpellItem = null;
+					KinkyDungeonTargetingSpellWeapon = null;
 				}
 				return true;
 			} else if (KinkyDungeonDrawState == "Game" && KinkyDungeonKeyWeapon.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {

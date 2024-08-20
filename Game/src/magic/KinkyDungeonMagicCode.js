@@ -247,19 +247,148 @@ let KinkyDungeonSpellSpecials = {
 		return "Fail";
 	},
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
-		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en?.Enemy) {
-			if (KDCanBind(en) && KDCanApplyBondage(en, entity)) {
-				//KDGameData.InventoryAction = "Bondage";
-				KDCurrentRestrainingTarget = en.id;
-				KinkyDungeonDrawState = "Bondage";
-				//KinkyDungeonCurrentFilter = LooseRestraint;
-				KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
-				return "Cast";
-			} else {
-				KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
-				return "Fail";
+			let fail = false;
+			if (spell.components && !KDSpellIgnoreComp(spell)) {
+				for (let c of spell.components) {
+					if (!KDSpellComponentTypes[c].check(spell, targetX, targetY)) {
+						fail = true;
+					}
+				}
 			}
+			if (!fail) {
+				if (KDCanBind(en) && KDCanApplyBondage(en, entity)) {
+					//KDGameData.InventoryAction = "Bondage";
+
+					if (KinkyDungeonTargetingSpellItem) {
+						let r = KDRestraint(KinkyDungeonTargetingSpellItem);
+						let raw = r.shrine.includes("Raw");
+
+						if (raw) {
+							KDNPCBindingGeneric = true;
+
+							KDSelectedGenericRestraintType = Object.values(KDRestraintGenericTypes).find(
+								(type) => {return type.raw == r.name;}
+							)?.raw || null;
+
+							KDCurrentRestrainingTarget = en.id;
+							KinkyDungeonDrawState = "Bondage";
+							// Select wrists
+							KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
+						} else {
+							// get the binding slot this item fits in
+							let slots = KDGetNPCBindingSlotForItem(r, en.id);
+							if (slots) {
+								let rs = KDGetNPCRestraints(en.id);
+								if (rs && rs[slots.sgroup.id] != undefined) {
+									// If its filled we indicate to the player that its full
+									KDNPCBindingGeneric = false;
+									KDNPCBindingSelectedRow = slots.row;
+									KDNPCBindingSelectedSlot = slots.sgroup;
+									KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
+								} else {
+									// if it's empty we attempt to apply it
+									let condition = KDCanEquipItemOnNPC(r, en.id);
+									if (condition) {
+										KinkyDungeonSendTextMessage(8,
+											TextGet("KDBondageCondition_" + condition),
+											"#ff5555", 1, true);
+
+										KDCurrentRestrainingTarget = en.id;
+										KinkyDungeonDrawState = "Bondage";
+										// Hover the new item
+										KDNPCBindingGeneric = false;
+										KDNPCBindingSelectedRow = slots.row;
+										KDNPCBindingSelectedSlot = slots.sgroup;
+										KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
+									} else {
+										KDInputSetNPCRestraint({
+											slot: slots.sgroup.id,
+											id: undefined,
+											faction: KinkyDungeonTargetingSpellItem.faction,
+											restraint: KinkyDungeonTargetingSpellItem.name,
+											restraintid: KinkyDungeonTargetingSpellItem.id,
+											lock: "",
+											npc: en.id
+										});
+
+										KinkyDungeonSendTextMessage(10,
+											TextGet("KDTieUpEnemy")
+												.replace("RSTR",
+													KDGetItemName(KinkyDungeonTargetingSpellItem))//TextGet("Restraint" + KDRestraint(item)?.name))
+												.replace("ENNME",
+													TextGet("Name" + en?.Enemy.name))
+												.replace("AMNT",
+													"" + Math.round(100 * en?.boundLevel / en?.Enemy.maxhp)),
+											"#ffffff", 1);
+
+										KinkyDungeonAdvanceTime(1, true);
+										KDSetCollFlag(en.id, "restrained", 1);
+										KDSetCollFlag(en.id, "restrained_recently", 24);
+										KinkyDungeonCheckClothesLoss = true;
+									}
+								}
+							}
+						}
+					} else {
+
+						KDCurrentRestrainingTarget = en.id;
+						KinkyDungeonDrawState = "Bondage";
+
+						// Select wrists
+						KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
+
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
+					}
+
+					//KinkyDungeonCurrentFilter = LooseRestraint;
+					return "Cast";
+				} else {
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
+					return "Fail";
+				}
+			}
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), "#ff5555", 1, true);
+			return "Fail";
+
+		} else if (en == entity) {
+			if (KinkyDungeonTargetingSpellItem) {
+				let r = KDRestraint(KinkyDungeonTargetingSpellItem);
+				if (r) {
+
+					let equippable = false;
+					if (KDDebugLink) {
+						equippable = KDCanAddRestraint(r, true, "", false,
+							KinkyDungeonTargetingSpellItem, true, true);
+					} else {
+						equippable = !KinkyDungeonGetRestraintItem(r.Group)
+							|| KDCurrentItemLinkable(KinkyDungeonGetRestraintItem(r.Group), r);
+					}
+					if (equippable) {
+						if (KDSendInput("equip", {name: KinkyDungeonTargetingSpellItem.name,
+							inventoryVariant: KinkyDungeonTargetingSpellItem.name != r.name ?
+								KinkyDungeonTargetingSpellItem.name : undefined,
+							faction: KinkyDungeonTargetingSpellItem.faction,
+							group: r.Group, curse: KinkyDungeonTargetingSpellItem.curse,
+							currentItem: KinkyDungeonGetRestraintItem(r.Group) ?
+								KinkyDungeonGetRestraintItem(r.Group).name : undefined,
+							events: Object.assign([], KinkyDungeonTargetingSpellItem.events)}, undefined, undefined, true)) {
+							return "Cast";
+						} else {
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+						}
+					} else {
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), "#ff5555", 1, true);
+					}
+
+
+				} else {
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+				}
+			}
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), "#ff5555", 1, true);
+			return "Fail";
 		}
 		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
 		return "Fail";

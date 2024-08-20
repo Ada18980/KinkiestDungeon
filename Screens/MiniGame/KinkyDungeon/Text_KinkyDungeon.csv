@@ -20926,7 +20926,7 @@ KDBondageTarget,Target acquired!
 KinkyDungeonSpellBondage,"Truss em up!"
 KinkyDungeonSpellTargetBondage,"Choose target to bind"
 KinkyDungeonSpellCastBondage,"Target Acquired!"
-KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Items used this way cannot be recovered, and can only be applied to enemies that are stunned, fully bound, or otherwise incapacitated."
+KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or have at least 1 status effect. Some items require higher levels of incapacitation to be applied"
 
 DungeonNameShopStart,"The Shoppe"
 DungeonNameJourneyFloor,"Journey Selection"
@@ -23961,3 +23961,10 @@ KDSelectABindingSlot,Select a Binding Slot
 KDCost,"Cost: "
 
 ZoomSet,Zoom set to PCNT%
+KDBondageFailComponents,You need free arms to tie others!
+KDBondageFailNoSelect,You can use the quick inventory to bind yourself or others
+KDBondageFailError,Error. Please screenshot and report.
+KDBondageFailCantAdd,"You can't wear that item, regrettably."
+
+KDBondageCondition_HeavyBondage,Must be stunned 3+ turns or fully bound
+KDBondageCondition_Extra,Depends on another item to be added first

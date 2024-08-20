@@ -2312,36 +2312,40 @@ function KinkyDungeonDrawQuickInv() {
 							else if (KDGameData.ItemPriority[item.item.name] < 9) KDGameData.ItemPriority[item.item.name] += 1;
 						}
 					} else {
-						let equipped = false;
-						let newItem = null;
-						let currentItem = null;
-						let linkable = null;
+						if (KDRestraint(item.item)?.good || KDRestraint(item.item)?.armor) {
+							let equipped = false;
+							let newItem = null;
+							let currentItem = null;
+							let linkable = null;
 
-						if (item
-							&& item.item) {
-							newItem = KDRestraint(item.item);
-							if (newItem) {
-								currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-								if (!currentItem) equipped = false;
-								else {
-									if (KDDebugLink) {
-										linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
-									} else {
-										linkable = KDCurrentItemLinkable(currentItem, newItem);
+							if (item
+								&& item.item) {
+								newItem = KDRestraint(item.item);
+								if (newItem) {
+									currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+									if (!currentItem) equipped = false;
+									else {
+										if (KDDebugLink) {
+											linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+										} else {
+											linkable = KDCurrentItemLinkable(currentItem, newItem);
+										}
+										if (linkable) {
+											equipped = false;
+										} else equipped = true;
 									}
-									if (linkable) {
-										equipped = false;
-									} else equipped = true;
 								}
 							}
-						}
-						if (!equipped && newItem) {
-							if (KDSendInput("equip", {name: item.item.name,
-								inventoryVariant: item.item.name != newItem.name ?
-									item.item.name : undefined,
-								faction: item.item.faction,
-								group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
-						}
+							if (!equipped && newItem) {
+								if (KDSendInput("equip", {name: item.item.name,
+									inventoryVariant: item.item.name != newItem.name ?
+										item.item.name : undefined,
+									faction: item.item.faction,
+									group: newItem.Group, curse: item.item.curse, currentItem: currentItem ? currentItem.name : undefined, events: Object.assign([], item.item.events)})) return true;
+							}
+						} else
+							KDSendInput("quickRestraint", {item: item.item.name, quantity: 1});
+
 					}
 					return true;
 				}, true,
@@ -2409,6 +2413,8 @@ function KinkyDungeonDrawQuickInv() {
 					zIndex: 111,
 				});
 			}
+			DrawTextKD("" + (item.item.quantity || 1), point.x, point.y + 30, "#ffffff", undefined, 18, "left");
+
 		}
 	}
 }
@@ -3392,3 +3398,21 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0, allowOver
 	}
 }
 
+
+
+
+function KinkyDungeonAttemptQuickRestraint(Name) {
+	if (KDGameData.SleepTurns > 0 || KDGameData.SlowMoveTurns > 0) return false;
+	let item = KinkyDungeonInventoryGetLoose(Name);
+	if (!item) return false;
+
+	//KDCloseQuickInv();
+	if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
+	if (item) {
+		KinkyDungeonTargetingSpell = KDBondageSpell;
+		KinkyDungeonTargetingSpellItem = item;
+		KinkyDungeonTargetingSpellWeapon = null;
+	}
+
+	return true;
+}

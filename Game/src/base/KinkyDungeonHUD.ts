@@ -220,7 +220,7 @@ let KDConfirmDeleteSave = false;
 
 
 function KDHandleGame() {
-	if (KinkyDungeonShowInventory) {
+	if (KinkyDungeonShowInventory && (!KinkyDungeonTargetingSpell || MouseIn(0, 0, 500, PIXIHeight))) {
 		// Done, converted to input
 		KinkyDungeonhandleQuickInv();
 		return true;
@@ -1511,6 +1511,7 @@ function KinkyDungeonActivateWeaponSpell(instant = false) {
 		} else if (!instant) {
 			KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true);
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
+			KinkyDungeonTargetingSpellItem = null;
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
@@ -1534,6 +1535,7 @@ function KinkyDungeonRangedAttack() {
 			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttackOrSpell", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
+			KinkyDungeonTargetingSpellItem = null;
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
@@ -1541,6 +1543,8 @@ function KinkyDungeonRangedAttack() {
 		} else if (KinkyDungeonPlayerDamage.special.type == "attack") {
 			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
+
+			KinkyDungeonTargetingSpellItem = null;
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;

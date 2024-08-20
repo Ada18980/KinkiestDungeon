@@ -23,6 +23,8 @@ let KDCustomCancels = [
 		cancel: () => {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 			KinkyDungeonTargetingSpell = null;
+			KinkyDungeonTargetingSpellItem = null;
+			KinkyDungeonTargetingSpellWeapon = null;
 		},
 	}
 ];

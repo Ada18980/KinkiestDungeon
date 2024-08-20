@@ -721,7 +721,8 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		if (changed && KinkyDungeonDamageTypes[data.type]) {
 			data.damaged = true;
 			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(data.dmg * 10), KinkyDungeonDamageTypes[data.type].color, 5, undefined,
-				` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`, 12 + Math.floor(Math.min(24, data.dmg*3)), TextGet("KDTook"));
+				` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[data.type].name)} ${TextGet("KDdmg")}`,
+				16 + Math.floor(Math.min(32, data.dmg*3)), TextGet("KDTook"));
 		}
 	}
 
