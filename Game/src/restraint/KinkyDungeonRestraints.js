@@ -3153,11 +3153,11 @@ function KDGetRestraintWithVariants(enemy, Level, Index, Bypass, Lock, RequireWi
 	}
 }
 
-function KinkyDungeonUpdateRestraints(C, id, delta) {
+function KinkyDungeonUpdateRestraints(C, id, delta, customRestraints, extraTags) {
 	if (!C && !id) C = KinkyDungeonPlayer;
-	if (C == KinkyDungeonPlayer) {
+	if (C == KinkyDungeonPlayer && !customRestraints) {
 		let playerTags = new Map();
-		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		for (let inv of customRestraints || KinkyDungeonAllRestraintDynamic()) {
 			let group = KDRestraint(inv.item).Group;
 			if (group) {
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
@@ -3242,13 +3242,69 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 		if (KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) playerTags.set("arousalModePlugNoFront", true);
 		if (KinkyDungeonStatsChoice.get("arousalModePiercing")) playerTags.set("arousalModePiercing", true);
 
-		let tags = [];
+		let tags = extraTags || [];
 		KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
 		for (let t of tags) {
 			playerTags.set(t, true);
 		}
 
 		KinkyDungeonSendEvent("updatePlayerTags", {tags: playerTags, player:KinkyDungeonPlayerEntity});
+		return playerTags;
+	} else if (customRestraints) {
+		let playerTags = new Map();
+		for (let inv of customRestraints) {
+			let group = KDRestraint(inv)?.Group;
+			if (group) {
+				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
+				playerTags.set(group + "Full", true);
+				playerTags.set(inv.name + "Worn", true);
+			}
+		}
+		for (let sg of KinkyDungeonStruggleGroupsBase) {
+			let group = sg;
+			if (!customRestraints.some((rest) => {
+				return KDRestraint(rest)?.Group == group;
+			})) playerTags.set(group + "Empty", true);
+		}
+		for (let inv of customRestraints) {
+			if (!KDRestraint(inv)) continue;
+			playerTags.set("Item_"+inv.name, true);
+
+			if (KDRestraint(inv).Link)
+				playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
+			if (KDRestraint(inv).UnLink)
+				playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
+			if (KDRestraint(inv).addTag)
+				for (let tag of KDRestraint(inv).addTag) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			if (KDRestraint(inv).chastity)
+				playerTags.set("ChastityLower", true);
+			if (KDRestraint(inv).chastitybra)
+				playerTags.set("ChastityUpper", true);
+			if (KDRestraint(inv).hobble)
+				playerTags.set("Hobble", true);
+			if (KDRestraint(inv).blockfeet)
+				playerTags.set("BoundFeet", true);
+			if (KDRestraint(inv).bindarms)
+				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).bindhands)
+				playerTags.set("BoundHands", true);
+			if (KDRestraint(inv).blindfold)
+				playerTags.set("Blindfolded", true);
+			if (KDRestraint(inv).shrine) {
+				for (let tag of KDRestraint(inv).shrine) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			}
+
+		}
+		if (extraTags)
+			for (let t of extraTags) {
+				playerTags.set(t, true);
+			}
+
+		KinkyDungeonSendEvent("updateCustomTags", {tags: playerTags, npc:id});
 		return playerTags;
 	} else if (KDGameData.NPCRestraints && KDGameData.NPCRestraints[id + ""]) {
 
@@ -3301,7 +3357,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 
 		}
 
-		let tags = [];
+		let tags = extraTags || [];
 		KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
 		for (let t of tags) {
 			playerTags.set(t, true);
