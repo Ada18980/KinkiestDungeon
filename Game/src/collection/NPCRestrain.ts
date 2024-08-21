@@ -8,6 +8,7 @@ interface NPCRestraint extends Named {
 	lock: string,
 	id: number,
 	faction?: string,
+	conjured?: boolean,
 }
 
 function KDNPCRestraintSlotOrder(): string[] {
@@ -553,10 +554,29 @@ function KDCanEquipItemOnNPC(r: restraint, id: number): string {
 	return "Null";
 }
 
+function KDFreeNPCRestraints(id: number) {
+	if (KDGameData.NPCRestraints) {
+
+		let restraints = KDGameData.NPCRestraints[id + ''];
+		if (restraints) {
+			for (let inv of Object.entries(restraints)) {
+				KDInputSetNPCRestraint({
+					slot: inv[0],
+					id: -1,
+					restraint: "",
+					restraintid: -1,
+					lock: "",
+					npc: id
+				});
+			}
+		}
+	}
+}
+
 function KDInputSetNPCRestraint(data): boolean {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
-	let item = null;
+	let item: item = null;
 	if (!slot) return false;
 	if (KDGameData.Collection[data.npc + ""]) {
 		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
@@ -646,8 +666,17 @@ function KDInputSetNPCRestraint(data): boolean {
 
 	}
 	if (item && !data.noInventory) {
-		let restraint = KDRestraint(item);
-		if (item.conjured) {
+		KDReturnNPCItem(
+			item
+		);
+	}
+
+	return true;
+}
+
+function KDReturnNPCItem(item: item) {
+	let restraint = KDRestraint(item);
+		if (!item.conjured) {
 
 			let inventoryAs = item.inventoryVariant || restraint?.inventoryAs || item.name;
 			if (!KinkyDungeonInventoryGetSafe(item.name)) {
@@ -673,12 +702,10 @@ function KDInputSetNPCRestraint(data): boolean {
 			KinkyDungeonSendTextMessage(4, TextGet("KDConjuredRestraintVanish").replace(
 				"RSTN",
 				KDGetItemName(item),
-			), "#aaaaaa", 1);
+			), "#5577aa", 1);
 		}
-	}
-
-	return true;
 }
+
 function KDGetRestraintBondageStats(item: Named): KDBondageStats {
 	let level = Math.max(KDRestraint(item).power || 0, 1);
 	let type = KDRestraintBondageType(item) || "Leather";

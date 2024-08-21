@@ -12,6 +12,8 @@ interface NamedAndTyped extends Named {
 interface item extends NamedAndTyped {
 	/** Which NPC its on */
 	onEntity?: number,
+	/** Is magically conjured. Cannot be added back to inventory */
+	conjured?: boolean,
 	id: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],
