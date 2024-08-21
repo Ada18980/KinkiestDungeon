@@ -1506,7 +1506,7 @@ Charge: PERCENT
 充能: PERCENT
 Use Potion
 使用药水
-MP
+ MP
 魔力
 Go to sleep
 睡觉
@@ -1750,7 +1750,7 @@ You can't climb down until you get out of this leash...
 在你摆脱牵绳之前，你不能进入下一层......
 You climb down and find yourself in a strange new place.
 你进入了下一层，发现自己身处在一个陌生的新地方。
-plus XXX
+ plus XXX
 加 XXX
 Graveyard
 墓地
@@ -4047,7 +4047,7 @@ The shock witch vanishes into a cloud of thunder, leaving behind a keyring.
 The witch restrains you! (+RestraintAdded)
 女巫束缚了你！（+RestraintAdded）
 The witch dangles a lock in front of you before putting it on! (DamageTaken)
-女巫会在你面前挂一把锁，然后再戴上它！（DamageTaken）
+女巫在你面前晃了晃锁，然后把你锁上！（DamageTaken）
 The witch slaps you playfully! (DamageTaken)
 女巫顽皮地打你一巴掌！（DamageTaken）
 Flame Witch
