@@ -165,10 +165,12 @@ let KDFilterFilters = {};
 KDFilterFilters[LooseRestraint] = {
 	Special: false,
 	Mundane: false,
+	QuickBind: false,
 	Rope: false,
 	Leather: false,
 	Metal: false,
 	Latex: false,
+	Tape: false,
 	Toys: false,
 	Wrapping: false,
 	Ties: false,
@@ -268,7 +270,9 @@ let KDSpecialFilters = {
 		Disassemble: (item, handle) => {
 			return KDRestraint(item)?.disassembleAs != undefined;
 		},
-
+		QuickBind: (item, handle) => {
+			return KDRestraint(item)?.quickBindCondition != undefined;
+		},
 	},
 	armor: {
 		Enchanted: (item, handle) => {
@@ -2413,7 +2417,7 @@ function KinkyDungeonDrawQuickInv() {
 					zIndex: 111,
 				});
 			}
-			DrawTextKD("" + (item.item.quantity || 1), point.x, point.y + 30, "#ffffff", undefined, 18, "left");
+			DrawTextKD("" + (item.item.quantity || 1), point.x, 1000 - V - Rheight + point.y, "#ffffff", undefined, 18, "left");
 
 		}
 	}

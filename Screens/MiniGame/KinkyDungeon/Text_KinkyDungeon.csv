@@ -20343,6 +20343,8 @@ KDFilterFiltersUnlocked,Unlocked
 KDFilterFiltersLocked,Locked
 KDFilterFiltersUnblocked,Accessible
 KDFilterFiltersBlocked,Inaccessible
+KDFilterFiltersQuickBind,Quick-Bind
+KDFilterFiltersTape,Tape
 
 KDFilterFiltersHead,Head
 
