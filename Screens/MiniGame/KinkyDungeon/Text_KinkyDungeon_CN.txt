@@ -3415,7 +3415,7 @@ Rusty Drone
 The drone's mechanisms grind to a halt.
 无人机的机械装置逐渐停止。
 The drone uses a short-ranged electric attack! (DamageTaken)
-无人机使用短距离电攻击！（DamageTaken）
+无人机使用短距离电击！（DamageTaken）
 The drone disassembles itself, revealing a set of restraining cables! (+RestraintAdded)
 无人机自行拆卸，露出一组捆绑绳！（+RestraintAdded）
 Rusty Auto Taper
@@ -3439,7 +3439,7 @@ Drone
 The drone fizzles and falls to the ground!
 无人机发出嘶嘶声并掉到地上！
 The drone zaps you with a restraining energy ray! (DamageTaken)
-无人机用抑制能量射线击杀你！ (DamageTaken)
+无人机用抑制能量射线击中你！ (DamageTaken)
 The drone attaches to you! (+RestraintAdded)
 无人机附着在你身上！ (+RestraintAdded)
 Auto Capture Unit
@@ -6075,13 +6075,13 @@ The ankle cuff chain detaches!
 Your ankle cuff chain is tightened and pulls your feet together!
 你的脚踝铐链已收紧，并将你的双脚拉在一起！
 A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
-将你的踝铐连接在一起的链条。它给了你足够的空间四处走动，尽管速度比平时慢。
+一条将脚踝铐连接在一起的链条。它为你提供了足够的走动空间，但是速度比平时慢。
 It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 它是钢制的，且用锁固定。解锁后会丢失。
 Ankle Chain (Short)
 踝链（短）
 A short chain connecting your ankle cuffs together. You can barely separate your legs with this on.
-将踝铐连接在一起的短链条。戴上后这个你的腿几乎不能分开。
+一条短链将你的脚踝铐连接在一起。戴上它，你的双腿几乎无法分开。
 Short Ankle Chain
 短踝链
 A pair of cuffs chaining your feet tightly together.
@@ -18655,9 +18655,9 @@ SUSPICIOUS MOD DETECTED
 The bright light hurts your dark-adjusted eyes!
 明亮的光线会伤害你适应黑暗的眼睛！
 Unconventional Warfare
-非常规战争
+非常规作战
 Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
-选择一把武器将其附着在你的身上。你一次可以拥有一件附加武器。将其附着在身上需要 5 回合。|附加武器可以在没有手的情况下装备，并且只要你的手臂或腿没有被束缚，就可以保持 60% 的精准度。
+选择一件武器，将其附在身上。你同时只能拥有一件附加武器。需要 5 个回合来装备。|附加武器可以不用手来装备，只要你的手臂或腿没有被绑住，就能保持 60% 的准确度。
 Guerilla Fighting
 游击战
 Light weapons can be wielded if you have your mouth free, at 75% accuracy.
@@ -19237,7 +19237,7 @@ Click a hotbar slot to assign the current item to it.|You can click the swap but
 Zero Resistance
 放弃反抗
 Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
-切换此选项可将束缚抵抗、闪避和格挡设置为 0。启用后，使用 "等待至被打断 "按钮将不会被击中或捆绑中断。
+切换此选项可将束缚抵抗、躲避和阻挡设置为0。启用后，当点击或绑定时，使用“等待中断”按钮将不会中断。
 I'll turn you into a newt! If you don't stop me...
 我要把你变成蝾螈 如果你不阻止我...
 The item is TTT, and will get looser as you progress.
