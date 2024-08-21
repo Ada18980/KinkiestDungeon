@@ -4951,7 +4951,7 @@ Lockable
 Non-Lockable
 不可上锁
 Unlocked
-解锁的
+已解锁
 Lock:
 锁：
 Simple
@@ -5956,6 +5956,16 @@ It's a defunct elevator, likely from the Old Civilization.
 （前往第 14 层）
 (Go to floor 15)
 （前往第 15 层）
+(Go to floor 16)
+（前往第 16 层）
+(Go to floor 17)
+（前往第 17 层）
+(Go to floor 18)
+（前往第 18 层）
+(Go to floor 19)
+（前往第 19 层）
+(Go to floor 20)
+（前往第 20 层）
 (Go to floor 20)
 （前往第 20 层）
 (The viewscreen depicts a face)|Why hello there adventurer! What brings you?
@@ -7435,7 +7445,7 @@ Harnesses
 Maid
 女仆
 Utility
-实用的
+实用
 Enchanted
 附魔的
 Locked
@@ -8257,7 +8267,7 @@ Earthshape (Arc)
 Create a 5-wide arc of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创建一个 5 宽的土制巨石弧。他们有 50 点生命值和 25 点护甲。
 You stomp your foot and monoliths emerge from the ground!
-你一跺脚，巨石从地里冒出来！
+你跺了跺脚，巨石拔地而起！
 Corona
 电晕
 Binding Light
@@ -10691,7 +10701,7 @@ Flying
 Distracted!
 分心!
 Acid
-皂化
+酸性
 Holy
 神圣
 Arcane
