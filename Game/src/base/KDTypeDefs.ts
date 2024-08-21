@@ -2432,6 +2432,7 @@ interface KDInventoryActionDef {
 }
 
 interface KinkyDungeonSave {
+	version: string,
 	KinkyDungeonPlayerEntity: any;
 	level: number;
 	checkpoint: string;

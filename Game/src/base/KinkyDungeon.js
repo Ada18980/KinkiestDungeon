@@ -4434,6 +4434,7 @@ let KinkyDungeonGameKey = {
 function KinkyDungeonGenerateSaveData() {
 	/** @type {KinkyDungeonSave} */
 	let save = {};
+	save.version = TextGet("KDVersionStr");
 	save.level = MiniGameKinkyDungeonLevel;
 	save.checkpoint = MiniGameKinkyDungeonCheckpoint;
 	save.rep = KinkyDungeonGoddessRep;
