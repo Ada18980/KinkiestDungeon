@@ -23972,3 +23972,5 @@ KDBondageCondition_HeavyBondage,Must be stunned 3+ turns or fully bound
 KDBondageCondition_Extra,Depends on another item to be added first
 
 KDConjuredRestraintVanish,The conjured RSTN vanishes as you remove it.
+
+KDAlreadyBound,No free slots to bind in

@@ -3124,6 +3124,7 @@ function KinkyDungeonCanCastSpells(enemy) {
 	return enemy && !(KinkyDungeonIsDisabled(enemy) || enemy.silence > 0);
 }
 
+/** Can the enemy be bound in principle */
 function KDCanBind(enemy) {
 	return (enemy?.Enemy?.bound != undefined);
 }

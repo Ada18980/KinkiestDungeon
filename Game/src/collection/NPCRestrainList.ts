@@ -74,7 +74,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "InterHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
 				allowedTags: ["Blindfolds"]},
 			{id: "InnerHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
-				allowedTags: ["Blindfolds", "Visors"]},
+				allowedTags: ["Blindfolds", "Tape", "Visors"]},
 		]},
 	{id: "Gag", encaseGroup:
 		{id: "Muzzle", encasedBy: ["Hood"], allowedGroups: ["ItemMouth"],

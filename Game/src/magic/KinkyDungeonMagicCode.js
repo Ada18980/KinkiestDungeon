@@ -337,8 +337,26 @@ let KinkyDungeonSpellSpecials = {
 										KinkyDungeonCheckClothesLoss = true;
 									}
 								}
+							} else {
+								KinkyDungeonSendTextMessage(8,
+									TextGet("KDAlreadyBound"),
+									"#ff5555", 1, true);
+
+								KDCurrentRestrainingTarget = en.id;
+								KinkyDungeonDrawState = "Bondage";
+								KinkyDungeonSetFlag("quickBind", 1);
+								// Hover the new item
+								KDNPCBindingGeneric = false;
+								slots = KDGetNPCBindingSlotForItem(r, en.id, true);
+								if (slots) {
+									KDNPCBindingSelectedRow = slots.row;
+									KDNPCBindingSelectedSlot = slots.sgroup;
+								}
+								KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
+								//KinkyDungeonTargetingSpellItem = null;
 							}
 						}
+						return "Cast";
 					} else {
 
 						KDCurrentRestrainingTarget = en.id;
@@ -348,10 +366,10 @@ let KinkyDungeonSpellSpecials = {
 						KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
 
 						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
+						return "Fail";
 					}
 
 					//KinkyDungeonCurrentFilter = LooseRestraint;
-					return "Cast";
 				} else {
 					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
 					return "Fail";

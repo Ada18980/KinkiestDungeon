@@ -437,7 +437,11 @@ function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgr
 	return ret;
 }
 
-function KDRowItemIsValid(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints: Record<string, NPCRestraint>): boolean {
+function KDRowItemIsValid(restraint: restraint,
+		sgroup: NPCBindingSubgroup,
+		row: NPCBindingGroup,
+		restraints: Record<string, NPCRestraint>,
+		allowEmpty: boolean = false): boolean {
 	let group = restraint.Group;
 
 	if (
@@ -447,6 +451,7 @@ function KDRowItemIsValid(restraint: restraint, sgroup: NPCBindingSubgroup, row:
 		if (tags.some((tag) => {
 			return sgroup.allowedTags.includes(tag);
 		})) {
+			if (allowEmpty) return true;
 			let size = KDNPCRestraintSize(restraint, sgroup, row);
 			if (size == 1 ||
 				(
