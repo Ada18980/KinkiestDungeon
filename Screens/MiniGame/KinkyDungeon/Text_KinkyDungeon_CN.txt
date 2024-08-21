@@ -19896,10 +19896,6 @@ Total Efficiency Boost: AMNT
 总体效率提升: AMNT
 Restart required!
 需要重启！
-재시작 필요！
-??? ??！
-¡Reinicio!
-?Reinicio!
 Domit
 支配者
 Beginner: Get a save code every 3 levels, autosave after each floor
@@ -19925,29 +19921,31 @@ Your collar pulses, and a revet appears to avenge the enemy you defeated!
 Your collar pulses, and a revet appears to assist you!
 你的项圈跳动，一个亡魂出现来帮助你！
 A band of faintly magic ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
-一条被赋予微弱魔法的丝带紧紧缠绕在你的眼睛上。
+一条被赋予微弱魔法的丝带紧紧缠绕在你的眼睛上。可用于快速库存或热键栏中的脆弱对象。
 A band of faintly magic ribbon wrapped tight over the mouth. Can be used on vulnerable targets from quick inventory or hotbar.
-一条被赋予微弱魔法的丝带紧紧缠绕在你的嘴边。
+一条被赋予微弱魔法的丝带紧紧缠绕在你的嘴边。可用于快速库存或热键栏中的脆弱对象。
 A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
-一条神奇的祝福丝带紧紧地缠绕在你的眼睛上。
+一条神奇的祝福丝带紧紧地缠绕在你的眼睛上。可用于快速库存或热键栏中的脆弱对象。
 A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar.
-一条神奇的祝福丝带紧紧地缠在你的嘴上。
+一条神奇的祝福丝带紧紧地缠在你的嘴上。可用于快速库存或热键栏中的脆弱对象。
 Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar.
+光滑闪亮的胶带，适合捆绑爱好者使用。可用于快速库存或热键栏中的脆弱对象。
 Sleek and shiny tape for the bondage enthusiast.
+光滑闪亮的胶带，适合捆绑爱好者使用。
 Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar.
-由金属材料制成的胶带。在警察情况下使用效果很好。
+由金属材料制成的粘性胶带。在警用场合使用效果极佳。可用于快速库存或热键栏中的脆弱对象。
 A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一块布团。
+一块布团。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
 A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一对钢制手铐牢固地锁在你的手腕上。
+一对钢制手铐牢固地锁在你的手腕上。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
 A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一套爱尔兰 8 式手铐，既具有束缚性又可快速佩戴。
+一套爱尔兰 8 式手铐，既具有束缚性又可快速佩戴。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
 Tough shackles with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-带有简陋锁的坚固镣铐。
+带有简陋锁的坚固镣铐。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
 Hinged cuffs with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-铰链手铐带有简易锁。
+铰链手铐带有简易锁。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
 A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一套爱尔兰 8 式镣铐，配有基本锁。
+一套爱尔兰 8 式镣铐，配有基本锁。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
 Object
 目标
 Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
@@ -19963,7 +19961,9 @@ The lock is protected by a revet seal. You'll need 25 ectoplasm to disenchant it
 Offer Pece
 忏悔
 A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20.
+设计时尚、古老的贞操胸罩。通电后，它能减少 20% 的攻击伤害。
 A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10.
+设计时尚、古老的贞操胸罩。通电后，它能减少 10 的伤害。
 A good doll needs routine maintece~
 一个好的玩偶需要日常的保养~
 Maintece needed.
@@ -19975,31 +19975,29 @@ Maintece needed.
 (The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordce in order to...|...add to my collection.|Anyway, got any bombs?
 （SPEAKER 看起来有点疯狂）|我正在寻找一些重火力，以便...|...添加到我的收藏中。|无论如何，有炸弹吗？
 (No really, I don't want it!)
-(No really
+（真的，我不想要！）
 It's powered by a chaos-resoce matrix, which can be overloaded by cutting the field.
 它由混沌共振矩阵提供动力，可以通过切割磁场来使其过载。
-Eyes2
+Right Eye
+右眼
 Left Eye
+左眼
 HandCuffs
 手铐
 AMNT Mana Efficiency
-+AMNT Mana Efficiency
++AMNT 法力效果
 AMNT TYPE Mana Efficiency
-+AMNT TYPE Mana Efficiency
++AMNT TYPE 法力效果
 Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied
 指定目标将其束缚并允许你应用背包中的物品。以这种方式使用的物品无法恢复，只能应用于被击晕、完全束缚或以其他方式丧失能力的敌人。
-Include Weapons,
 Include Weapons
-无
+包括武器
 This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 此门加载失败，无法打开。请向 Ada 报告此错误及存档码。
-无
 Dressup Co.
 装扮公司
 Maintece Hall
 保养大厅
-NoDynamicArmor (0 or 1)
-SuppressDynamicArmor
 Submissive prisoners and domit servants add different amounts of opinion per cycle
 顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
 [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
