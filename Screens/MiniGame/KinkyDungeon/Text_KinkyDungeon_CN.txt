@@ -19935,17 +19935,17 @@ Sleek and shiny tape for the bondage enthusiast.
 Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar.
 由金属材料制成的粘性胶带。在警用场合使用效果极佳。可用于快速库存或热键栏中的脆弱对象。
 A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一块布团。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
+一块布团。如果在库存或热键栏中锁定，则可对脆弱对象使用。
 A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一对钢制手铐牢固地锁在你的手腕上。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
+一对钢制手铐牢固地锁在你的手腕上。如果在库存或热键栏中锁定，则可对脆弱对象使用。
 A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一套爱尔兰 8 式手铐，既具有束缚性又可快速佩戴。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
+一套爱尔兰 8 式手铐，既具有束缚性又可快速佩戴。如果在库存或热键栏中锁定，则可对脆弱对象使用。
 Tough shackles with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-带有简陋锁的坚固镣铐。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
+带有简陋锁的坚固镣铐。如果在库存或热键栏中锁定，则可对脆弱对象使用。
 Hinged cuffs with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-铰链手铐带有简易锁。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
+铰链手铐带有简易锁。如果在库存或热键栏中锁定，则可对脆弱对象使用。
 A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一套爱尔兰 8 式镣铐，配有基本锁。如果在库存或热栏中锁定目标，则可对脆弱对象使用。
+一套爱尔兰 8 式镣铐，配有基本锁。如果在库存或热键栏中锁定，则可对脆弱对象使用。
 Object
 目标
 Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
@@ -19963,7 +19963,7 @@ Offer Pece
 A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20.
 设计时尚、古老的贞操胸罩。通电后，它能减少 20% 的攻击伤害。
 A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10.
-设计时尚、古老的贞操胸罩。通电后，它能减少 10 的伤害。
+设计时尚、古老的贞操胸罩。通电后，它能减少 10 点伤害。
 A good doll needs routine maintece~
 一个好的玩偶需要日常的保养~
 Maintece needed.
