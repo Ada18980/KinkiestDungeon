@@ -10311,6 +10311,24 @@ let KDEventMapGeneric = {
 
 		}
 	},
+	"beforeNewGame": {
+		// Ran before starting a new game
+	},
+	"afterNewGame": {
+		// Ran immediately after a new game starts
+	},
+	"beforeLoadGame": {
+		// Ran before loading a game
+	},
+	"afterLoadGame": {
+		// Ran after loading a game
+	},
+	"afterModSettingsLoad": {
+		// Ran after loading KDModSettings from Local Storage
+	},
+	"afterModConfig": {
+		// Ran after returning to menu from the mod configuration window. 
+	}
 };
 
 /**

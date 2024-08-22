@@ -1522,11 +1522,19 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("GameContinue", () => {
 			KDExecuteModsAndStart();
+			// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2. 
+			KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
 
 			return true;
 		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
 			KinkyDungeonState = "Name";
+			for (var i = 1; i < 5; i++) {
+				let num = (i);
+				KinkyDungeonDBLoad(num).then((code) => {
+					loadedsaveslots[num - 1] = code;
+				})
+			}
 			return true;
 		}, true, 1000-350/2, 440, 350, 64, TextGet("GameStart"), "#ffffff", "");
 		DrawButtonKDEx("LoadGame", () => {
@@ -2345,11 +2353,34 @@ function KinkyDungeonRun() {
 			ElementValue("PlayerNameField", name);
 			return true;
 		}, true, 1550, 450, 200, 64, TextGet("KDRandom"), "#ffffff", "");
+		
+		// Left to decrement
+		DrawButtonKDEx(`SaveButtonL`, (bdata) => {
+			if (KDSaveSlot > 1) { 
+				KDSaveSlot--;
+			}
+			return true;
+		}, true, 1350, 550, 64, 64, '<', "#ffffff");
+		// Label for the button
+		DrawTextFitKD(`Choose Save Slot:`, 1150, 585, 360, "#ffffff", undefined, 30);
+		DrawTextFitKD(`${KDSaveSlot}`, 1430, 585, 360, "#ffffff", undefined, 30);
+		// Right to increment
+		DrawButtonKDEx(`SaveButton4`, (bdata) => {
+			if (KDSaveSlot < 4) { 
+				KDSaveSlot++;
+			}
+			return true;
+		}, true, 1450, 550, 64, 64, '>', "#ffffff");
 
+		// If the save slot is occupied, warn the player!
+		if (loadedsaveslots[KDSaveSlot-1] != false) {
+			DrawTextFitKD(`Will Overwrite!`, 1680, 585, 360, "#ff2222", undefined, 36);
+		}
 
 		DrawButtonKDEx("selectName", () => {
 
 			localStorage.setItem("PlayerName", ElementValue("PlayerNameField") || "Ada");
+			localStorage.setItem("KDLastSaveSlot", KDSaveSlot.toString());
 			KDGameData.PlayerName = ElementValue("PlayerNameField") || "Ada";
 			KinkyDungeonState = "Diff";
 
@@ -2829,9 +2860,9 @@ function KinkyDungeonRun() {
 
 		}
 	} else if (KinkyDungeonState == "ModConfig") {
-        KDDrawModConfigs(500);
+        KDDrawModConfigs();
     } else if (KinkyDungeonState == "LoadSlots") {
-		KDDrawLoadMenu(500);
+		KDDrawLoadMenu();
 	}
 	
 
@@ -3764,7 +3795,6 @@ let KDGameSaveDBStoreName = "KinkyDungeonSave";
 // Returns a thenable with the database once it's open. 
 function KinkyDungeonDBOpen() {
 	// Return a promise so we can guarantee the db is open! 
-	// @ts-ignore
 	return new Promise((res, rej) => {
 		// Open the KinkyDungeonSave DB, creating one if it doesn't already exist. 
 		const request = indexedDB.open(KDGameSaveDBStoreName) // Open without a version parameter to get the most current version. 
@@ -3798,6 +3828,10 @@ function KinkyDungeonDBOpen() {
 }
 
 // Save a game to the database
+/**
+ * @param {number} saveslot
+ * @param {string} [gamecode]
+ */
 function KinkyDungeonDBSave(saveslot, gamecode) {
 	let save;
 	if (saveslot == undefined) {
@@ -3816,7 +3850,6 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
 	// Get the savegame database
 	KinkyDungeonDBOpen().then((db) => {
 		// Create a transaction
-		// @ts-ignore
 		const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
 		const store = transaction.objectStore(KDGameSaveDBStoreName);
 		const data = { content: save };
@@ -3836,8 +3869,10 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
 }
 
 // Load a game from the database - Returns a thenable with the gamedata string, false if nothing loaded. 
+/**
+ * @param {number} saveslot
+ */
 function KinkyDungeonDBLoad(saveslot) {
-	// @ts-ignore
 	return new Promise((res, rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
@@ -3847,7 +3882,6 @@ function KinkyDungeonDBLoad(saveslot) {
 		// Get the savegame database
 		KinkyDungeonDBOpen().then((db) => {
 			// Create a transaction
-			// @ts-ignore
 			const transaction = db.transaction(KDGameSaveDBStoreName, "readonly");
 			const store = transaction.objectStore(KDGameSaveDBStoreName);
 			const request = store.get(`save_${saveslot}`)
@@ -3860,20 +3894,22 @@ function KinkyDungeonDBLoad(saveslot) {
 				}
 				else {
 					console.log(`Successfully loaded, but no save data present in slot ${saveslot}`)
-					res(false);
+					res(null);
 				}
 			}
 			request.onerror = () => {
 				console.error(`Could not fetch data in slot save_${saveslot}`);
-				res(false);
+				res(null);
 			}
 		})
 	})
 }
 
 // Delete a saved game in a slot. 
+/**
+ * @param {number} saveslot
+ */
 function KinkyDungeonDBDelete(saveslot) {
-	// @ts-ignore
 	return new Promise((res, rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
@@ -3883,7 +3919,6 @@ function KinkyDungeonDBDelete(saveslot) {
 		// Get the savegame database
 		KinkyDungeonDBOpen().then((db) => {
 			// Create a transaction
-			// @ts-ignore
 			const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
 			const store = transaction.objectStore(KDGameSaveDBStoreName);
 			const request = store.delete(`save_${saveslot}`)
@@ -3902,9 +3937,10 @@ function KinkyDungeonDBDelete(saveslot) {
 
 let LoadMenuCurrentSave;
 let LoadMenuCurrentSlot;
-let loadedsaveslots = [false, false, false, false];
-let loadedSaveforPreview = new Object;
-let KDPreviewModel = {};
+let loadedsaveslots = [null, null, null, null];
+let loadedSaveforPreview = null;
+let KDPreviewModel = null;
+let KDSaveSlot = 0;
 addTextKey(`KDSaveSlotButton1`, "Save Slot 1");
 addTextKey(`KDSaveSlotButton2`, "Save Slot 2");
 addTextKey(`KDSaveSlotButton3`, "Save Slot 3");
@@ -3914,17 +3950,10 @@ addTextKey(`LoadFromCodeButton`, "Load Code");
 addTextKey(`LoadFromFileButton`, "Load File");
 
 // Load Menu function
-// @ts-ignore
-function KDDrawLoadMenu(offset) {
-	// @ts-ignore
-	let XX = KDToggleTab == "Main" ? 940 : 540;
+function KDDrawLoadMenu() {
     let YYstart = 140;
-    // @ts-ignore
-    let YYmax = 800;
     let YY = YYstart;
     let YYd = 74;
-    // @ts-ignore
-    let XXd = 450;
     YY = YYstart + 50;
     YYd = 80;
     let CombarXX = 520;
@@ -3935,7 +3964,7 @@ function KDDrawLoadMenu(offset) {
 		// Slot button
         DrawButtonKDEx(TextGet("KDSaveSlotButton" + num), () => {
             console.log("Pressed button for save slot " + num);
-			loadedSaveforPreview = {};
+			loadedSaveforPreview = null;
 			LoadMenuCurrentSlot = num;
 			LoadMenuCurrentSave = loadedsaveslots[num - 1];	
 			loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
@@ -3944,6 +3973,9 @@ function KDDrawLoadMenu(offset) {
 				// Dress the KDPreviewModel
 				KinkyDungeonDressModelPreview()
 			}
+
+			KDSaveSlot = num;
+			localStorage.setItem('KDLastSaveSlot', num.toString());
 			
 			return true;
         }, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton" + i), "#ffffff", "");
@@ -3952,13 +3984,12 @@ function KDDrawLoadMenu(offset) {
 			DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
 		}
 		// Delete button only if the slot has data
-		if (loadedsaveslots[num - 1] != false) {
-			// @ts-ignore
+		if (loadedsaveslots[num - 1] !== null) {
 			DrawButtonKDEx("KDDeleteSlotButton" + i, (b) => {
 				KinkyDungeonDBDelete(num);
-				loadedsaveslots[num - 1] = false; 
+				loadedsaveslots[num - 1] = null; 
 				return true;
-			}, true, CombarXX + 15, YY, 64, 64, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
+			}, true, CombarXX + 15, YY, 64, 64, "X", "#ffffff", undefined, undefined, undefined, undefined, undefined, 36);
 		}
         YY += YYd;
     }
@@ -3978,6 +4009,9 @@ function KDDrawLoadMenu(offset) {
 				// Dress the KDPreviewModel
 				KinkyDungeonDressModelPreview()
 			}
+
+			KDSaveSlot = 0;
+			localStorage.setItem('KDLastSaveSlot', "0");
 		}
         return true;
     }, true, CombarXX + 220, 880, 180, 64, TextGet("LoadFromCodeButton"), "#ffffff", "");
@@ -3986,11 +4020,6 @@ function KDDrawLoadMenu(offset) {
         getFileInput(KDLoadSave);
         return true;
     }, true, CombarXX + 20, 880, 180, 64, TextGet("LoadFromFileButton"), "#ffffff", "");
-	//let elem = (KDTextField('loadtextfield', CombarXX, YY, 480, 300, undefined, 'loadtextfield', "9999999999999999999999")).Element;
-	/*elem.addEventListener('input', function() {
-		let currValue = elem.value;
-		console.log(currValue);
-	})*/
 	// Draw Save Slot details display
 	FillRectKD(kdcanvas, kdpixisprites, "maintogglebg", {
 		Left: CombarXX + 500,
@@ -4020,42 +4049,33 @@ function KDDrawLoadMenu(offset) {
 	else if (LoadMenuCurrentSlot != undefined) {
 		DrawTextFitKD(`Save Slot ${LoadMenuCurrentSlot}`, CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
 	}
-	if (loadedSaveforPreview.hasOwnProperty('KDGameData')) {
+	if (loadedSaveforPreview.hasOwnProperty("KDGameData")) {
 		// Player Name
-		// @ts-ignore
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, "#ffffff", undefined, 40);
 
 		// Player Paper Doll
-		// @ts-ignore
 		DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true)
 
 		// New Game Text
-		// @ts-ignore
 		DrawTextFitKD(`Floor ${loadedSaveforPreview.level}${(loadedSaveforPreview.npp > 0) ? (" - NG+"+loadedSaveforPreview.npp) : ("")}`, CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 
 		// Journey Type
 		let journeytext = "Standard";
-		// @ts-ignore
 		if (loadedSaveforPreview.journey == "Harder") {
 			journeytext = "Ancient Tombs"
 		}
-		// @ts-ignore
 		else if (loadedSaveforPreview.journey == "Temple") {
 			journeytext = "Kinky Temple"
 		}
-		// @ts-ignore
 		else if (loadedSaveforPreview.journey == "Explorer") {
 			journeytext = "Vast Jungle"
 		}
-		// @ts-ignore
 		else if (loadedSaveforPreview.journey == "Random") {
 			journeytext = "Chaos"
 		}
-		// @ts-ignore
 		else if (loadedSaveforPreview.journey == "Doll") {
 			journeytext = "Doll Processing"
 		}
-		// @ts-ignore
 		else if (loadedSaveforPreview.journey == "Test") {
 			journeytext = "Test Zone"
 		}
@@ -4064,96 +4084,75 @@ function KDDrawLoadMenu(offset) {
 		}
 		// Difficulty
 		let difficultytext = "Normal";
-		// @ts-ignore
 		if (loadedSaveforPreview.hardmode == true) {
 			difficultytext = "Hard";
 		}
-		// @ts-ignore
 		if (loadedSaveforPreview.extrememode == true) {
 			difficultytext = "Extreme";
 		}
 		DrawTextFitKD(`${difficultytext} - ${journeytext}`, CombarXX + 1100, YYstart + 90, 450, "#ffffff", undefined, 40);
 
 		// Save Code Seed
-		// @ts-ignore
 		DrawTextFitKD(`Map Seed: ${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
 
 		// Gold Held by the Player
-		// @ts-ignore
 		KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png", CombarXX + 880, YYstart + 460, 100, 100, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.gold}`, CombarXX + 930, YYstart + 540, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Lockpicks held by the Player
-		// @ts-ignore
 		KDDraw(kdcanvas, kdpixisprites, "picks", KinkyDungeonRootDirectory + "Items/Pick.png", CombarXX + 970, YYstart + 460, 100, 100, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.picks}`, CombarXX + 1020, YYstart + 540, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Red Keys held by the Player
-		// @ts-ignore
 		KDDraw(kdcanvas, kdpixisprites, "rkeys", KinkyDungeonRootDirectory + "Items/RedKey.png", CombarXX + 1060, YYstart + 460, 100, 100, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.rkeys}`, CombarXX + 1110, YYstart + 540, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Blue Keys held by the Player
-		// @ts-ignore
 		KDDraw(kdcanvas, kdpixisprites, "bkeys", KinkyDungeonRootDirectory + "Items/BlueKey.png", CombarXX + 1150, YYstart + 460, 100, 100, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.bkeys}`, CombarXX + 1200, YYstart + 540, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Blue Keys held by the Player
-		// @ts-ignore
 		KDDraw(kdcanvas, kdpixisprites, "MistressKeys", KinkyDungeonRootDirectory + "Items/MistressKey.png", CombarXX + 1240, YYstart + 460, 100, 100, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.mistresskey}`, CombarXX + 1290, YYstart + 540, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Stamina Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionStamina", KinkyDungeonRootDirectory + "UI/UsePotionStamina.png", CombarXX + 1310, YYstart + 260, 50, 50, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.potions.stamina}`, CombarXX + 1360, YYstart + 290, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Mana Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionMana", KinkyDungeonRootDirectory + "UI/UsePotionMana.png", CombarXX + 1310, YYstart + 310, 50, 50, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.potions.mana}`, CombarXX + 1360, YYstart + 340, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Will Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionWill", KinkyDungeonRootDirectory + "UI/UsePotionWill.png", CombarXX + 1310, YYstart + 360, 50, 50, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.potions.will}`, CombarXX + 1360, YYstart + 390, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Frigid Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionDistraction", KinkyDungeonRootDirectory + "UI/UsePotionFrigid.png", CombarXX + 1310, YYstart + 410, 50, 50, undefined, {
             zIndex: 90
         });
-		// @ts-ignore
 		DrawTextFitKD(`${loadedSaveforPreview.potions.dist}`, CombarXX + 1360, YYstart + 440, 200, "#ffffff", "#333333", 24, undefined, 90);
 
 		// Current Player Stats
-		// @ts-ignore
 		DrawTextFitKD(`Stamina: ${Math.floor(loadedSaveforPreview.stamina * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10}`, CombarXX + 1100, YYstart + 290, 400, "#ffffff", undefined, 32);
-		// @ts-ignore
 		DrawTextFitKD(`Mana: ${Math.floor(loadedSaveforPreview.mana * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10}`, CombarXX + 1100, YYstart + 340, 400, "#ffffff", undefined, 32);
-		// @ts-ignore
 		DrawTextFitKD(`Willpower: ${Math.floor(loadedSaveforPreview.will * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10}`, CombarXX + 1100, YYstart + 390, 400, "#ffffff", undefined, 32);
-		// @ts-ignore
 		DrawTextFitKD(`Distraction: ${Math.floor(loadedSaveforPreview.distraction * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10}`, CombarXX + 1100, YYstart + 440, 400, "#ffffff", undefined, 32);
 
 		// Draw bars below the stat text. 
@@ -4183,8 +4182,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarSPBack3`, {
 			Left: CombarXX + 900 + (offsetcount * offsetmult) + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
-			// @ts-ignore
-			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.stamina * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10),
+			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.stamina * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#4fd658",
 			LineWidth: 1,
@@ -4212,8 +4210,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarMPBack3`, {
 			Left: CombarXX + 900 + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
-			// @ts-ignore
-			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.mana * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10),
+			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.mana * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#4c6885",
 			LineWidth: 1,
@@ -4241,8 +4238,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarWPBack3`, {
 			Left: CombarXX + 900 + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
-			// @ts-ignore
-			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.will * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10),
+			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.will * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#ff4444",
 			LineWidth: 1,
@@ -4270,8 +4266,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarDPBack3`, {
 			Left: CombarXX + 900 + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
-			// @ts-ignore
-			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.distraction * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10),
+			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.distraction * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#ff5277",
 			LineWidth: 1,
@@ -4330,6 +4325,9 @@ function KinkyDungeonDressModelPreview() {
 }
 
 // Generate Preview data function
+/**
+ * @param {string} String
+ */
 function KinkyDungeonLoadPreview(String) {
 	try {
 		let str = DecompressB64(String.trim())
@@ -5454,6 +5452,9 @@ function KinkyDungeonSaveGame(ToString) {
 		//Player.KinkyDungeonSave = saveData.KinkyDungeonSave;
 		//ServerAccountUpdate.QueueData(saveData);
 		localStorage.setItem('KinkyDungeonSave', data);
+		if (KDSaveSlot != undefined) {
+			KinkyDungeonDBSave(KDSaveSlot);
+		}
 	}
 	return data;
 }

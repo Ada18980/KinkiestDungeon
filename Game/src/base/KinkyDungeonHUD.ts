@@ -1770,7 +1770,9 @@ function KinkyDungeonHandleHUD() {
 				//Player.KinkyDungeonSave = {};
 				//ServerAccountUpdate.QueueData({KinkyDungeonSave : Player.KinkyDungeonSave});
 				// Update bones here once we create them
-				localStorage.setItem('KinkyDungeonSave', "");
+
+				// With the save slot system, we simply won't delete the save? 
+				//localStorage.setItem('KinkyDungeonSave', "");
 			} else {
 				KDConfirmDeleteSave = true;
 			}
