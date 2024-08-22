@@ -1429,7 +1429,12 @@ function KinkyDungeonRun() {
 			KinkyDungeonState = "Menu";
 			KDExecuteMods();
 			return true;
-		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
+		undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		DrawButtonKDEx("mods_load", (bdata) => {
 			getFileInput();
@@ -1526,7 +1531,7 @@ function KinkyDungeonRun() {
 			/*KinkyDungeonState = "Load";*/
 			KinkyDungeonState = "LoadSlots";
 			KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
-			KDPreviewModel.ID = KinkyDungeonPlayer.ID + 1; // Ensure a unique id. 
+			KDPreviewModel.ID = KinkyDungeonPlayer.ID + 1; // Ensure a unique id.
 			for (var i = 1; i < 5; i++) {
 				let num = (i);
 				KinkyDungeonDBLoad(num).then((code) => {
@@ -1863,13 +1868,6 @@ function KinkyDungeonRun() {
 					return true;
 				}, true, 875, 550, 350, 64, TextGet("KinkyDungeonSaveToFile"), "#ffffff", ""
 			);
-
-	} else if (KinkyDungeonState == "Journey") {
-		DrawTextKD(TextGet("KinkyDungeonJourney"), 1250, 300, "#ffffff", KDTextGray2);
-		DrawButtonVis(875, 350, 750, 64, TextGet("KinkyDungeonJourney0"), "#ffffff", "");
-		DrawButtonVis(875, 450, 750, 64, TextGet("KinkyDungeonJourney1"), "#ffffff", "");
-		DrawButtonVis(875, 550, 750, 64, TextGet("KinkyDungeonJourney2"), "#ffffff", "");
-		DrawButtonVis(1075, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 
 	} else if (KinkyDungeonState == "Challenge") {
 		//DrawTextKD(TextGet("KinkyDungeonChallenge"), 1250, 80, "#ffffff", KDTextGray1, 48);
@@ -2348,7 +2346,12 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("backButton", (b) => {
 			KinkyDungeonState = "Menu";
 			return true;
-		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
+		undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 
 	} else if (KinkyDungeonState == "Wardrobe") {
@@ -2381,7 +2384,11 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("KDPerksBack", (bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
-		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		DrawButtonKDEx("KDPerksClear", (bdata) => {
 			KinkyDungeonStatsChoice = new Map();
@@ -2806,7 +2813,7 @@ function KinkyDungeonRun() {
     } else if (KinkyDungeonState == "LoadSlots") {
 		KDDrawLoadMenu(500);
 	}
-	
+
 
 	// Cull temp elements
 	KDCullTempElements();
@@ -3733,17 +3740,17 @@ let KDModsAfterLoad = () => {};
 let KDGameSaveDB;
 let KDGameSaveDBStoreName = "KinkyDungeonSave";
 
-// Open a new database if it doesn't exist and give a db object that automatically increments when modifying stuff. 
-// Returns a thenable with the database once it's open. 
+// Open a new database if it doesn't exist and give a db object that automatically increments when modifying stuff.
+// Returns a thenable with the database once it's open.
 function KinkyDungeonDBOpen() {
-	// Return a promise so we can guarantee the db is open! 
+	// Return a promise so we can guarantee the db is open!
 	// @ts-ignore
 	return new Promise((res, rej) => {
-		// Open the KinkyDungeonSave DB, creating one if it doesn't already exist. 
-		const request = indexedDB.open(KDGameSaveDBStoreName) // Open without a version parameter to get the most current version. 
+		// Open the KinkyDungeonSave DB, creating one if it doesn't already exist.
+		const request = indexedDB.open(KDGameSaveDBStoreName) // Open without a version parameter to get the most current version.
 		let db;
 
-		// Whenever an update is made, increment the version number. 
+		// Whenever an update is made, increment the version number.
 		request.onupgradeneeded = event => {
 			// @ts-ignore
 			db = event.target.result;
@@ -3752,12 +3759,12 @@ function KinkyDungeonDBOpen() {
 			}
 		};
 
-		// Return the event results when it's successful 
+		// Return the event results when it's successful
 		request.onsuccess = event => {
 			// @ts-ignore
 			db = event.target.result;
 
-			// Give back a db object so we can manipulate it. 
+			// Give back a db object so we can manipulate it.
 			res(db);
 		};
 
@@ -3775,17 +3782,17 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
 	let save;
 	if (saveslot == undefined) {
 		console.error("Save slot is not defined");
-		return; // This is an invalid call or the save slot has not been set. 
-	} 
+		return; // This is an invalid call or the save slot has not been set.
+	}
 	if (gamecode == undefined) {
-		// We are going to use the current game state as a save code. 
+		// We are going to use the current game state as a save code.
 		save = KinkyDungeonGenerateSaveData();
 		save = KinkyDungeonCompressSave(save);
 	}
 	else {
 		save = gamecode;
 	}
-	
+
 	// Get the savegame database
 	KinkyDungeonDBOpen().then((db) => {
 		// Create a transaction
@@ -3808,14 +3815,14 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
 	})
 }
 
-// Load a game from the database - Returns a thenable with the gamedata string, false if nothing loaded. 
+// Load a game from the database - Returns a thenable with the gamedata string, false if nothing loaded.
 function KinkyDungeonDBLoad(saveslot) {
 	// @ts-ignore
 	return new Promise((res, rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
-			return; // This is an invalid call or the save slot has not been set. 
-		} 
+			return; // This is an invalid call or the save slot has not been set.
+		}
 
 		// Get the savegame database
 		KinkyDungeonDBOpen().then((db) => {
@@ -3844,14 +3851,14 @@ function KinkyDungeonDBLoad(saveslot) {
 	})
 }
 
-// Delete a saved game in a slot. 
+// Delete a saved game in a slot.
 function KinkyDungeonDBDelete(saveslot) {
 	// @ts-ignore
 	return new Promise((res, rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
-			return; // This is an invalid call or the save slot has not been set. 
-		} 
+			return; // This is an invalid call or the save slot has not been set.
+		}
 
 		// Get the savegame database
 		KinkyDungeonDBOpen().then((db) => {
@@ -3910,14 +3917,14 @@ function KDDrawLoadMenu(offset) {
             console.log("Pressed button for save slot " + num);
 			loadedSaveforPreview = {};
 			LoadMenuCurrentSlot = num;
-			LoadMenuCurrentSave = loadedsaveslots[num - 1];	
+			LoadMenuCurrentSave = loadedsaveslots[num - 1];
 			loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
 
 			if (!loadedSaveforPreview.hasOwnProperty("invalid")) {
 				// Dress the KDPreviewModel
 				KinkyDungeonDressModelPreview()
 			}
-			
+
 			return true;
         }, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton" + i), "#ffffff", "");
 		// Selected arrow if the currently selected slot matches
@@ -3929,7 +3936,7 @@ function KDDrawLoadMenu(offset) {
 			// @ts-ignore
 			DrawButtonKDEx("KDDeleteSlotButton" + i, (b) => {
 				KinkyDungeonDBDelete(num);
-				loadedsaveslots[num - 1] = false; 
+				loadedsaveslots[num - 1] = false;
 				return true;
 			}, true, CombarXX + 15, YY, 64, 64, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
 		}
@@ -4129,7 +4136,7 @@ function KDDrawLoadMenu(offset) {
 		// @ts-ignore
 		DrawTextFitKD(`Distraction: ${Math.floor(loadedSaveforPreview.distraction * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10}`, CombarXX + 1100, YYstart + 440, 400, "#ffffff", undefined, 32);
 
-		// Draw bars below the stat text. 
+		// Draw bars below the stat text.
 		let heightPerBar = 45;
 		let barwidth = 400;
 		let barborder = 2;
@@ -4294,10 +4301,10 @@ function KinkyDungeonDressModelPreview() {
 		KDPreviewModel.ID++;
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
 		KinkyDungeonCheckClothesLoss = true;
-		setTimeout(() => { 
+		setTimeout(() => {
 			// @ts-ignore
 			KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined, loadedSaveforPreview.inventory.restraint, KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0, loadedSaveforPreview.inventory.restraint), KDToggles.ForcePalette ? KDDefaultPalette : undefined)
-			res(true) 
+			res(true)
 		}, 50);
 	})
 }
@@ -4437,10 +4444,10 @@ function KinkyDungeonLoadPreview(String) {
 				let outputname = item.name;
 				// Check if the item name is on the inventory variants
 				if (returndata.inventoryVariants.hasOwnProperty(item.name)) {
-					// Modify the item name in place 
+					// Modify the item name in place
 					outputname = returndata.inventoryVariants[item.name].template
 				}
-				// This should give us an array of base item names we can reference later. 
+				// This should give us an array of base item names we can reference later.
 				returndata.outfitForPreview.push(outputname)
 			})
 
@@ -4473,7 +4480,7 @@ function KinkyDungeonLoadPreview(String) {
 			if (potionsdist != undefined) {
 				returndata.potions.dist = potionsdist.quantity;
 			}
-			
+
 			/*
 			KDInitInventory();
 
@@ -5859,7 +5866,11 @@ function KDDrawGameSetupTabs(xOffset) {
 	DrawButtonKDEx("backButton", (b) => {
 		KinkyDungeonState = "Menu";
 		return true;
-	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+		hotkeyPress: KinkyDungeonKeySkip[0],
+	});
 }
 
 
