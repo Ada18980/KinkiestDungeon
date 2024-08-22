@@ -2434,10 +2434,25 @@ interface KDInventoryActionDef {
 }
 
 interface KinkyDungeonSave {
+	/** Metadata */
+	saveStat: {
+		appearance: string,
+		default: string,
+		poses: string,
 
-	appearance: string,
-    default: string,
-    poses: string,
+
+		outfit: string,
+		name: string,
+		level: number,
+		sp: string,
+		mp: string,
+		wp: string,
+		dp: string,
+	}
+
+	errorloading: boolean,
+	modsmissing: boolean,
+
 
 	version: string,
 	KinkyDungeonPlayerEntity: any;
@@ -2491,20 +2506,52 @@ interface KinkyDungeonSave {
 	flags: [string, number][];
 	uniqueHits: [string, boolean][];
 	KDCommanderRoles: [number, string][];
-	stats: {
-		picks: number;
-		keys: number;
-		bkeys: number;
-		mana: number;
-		manapool: number;
-		stamina: number;
-		willpower: number;
-		distraction: number;
-		distractionlower: number;
-		wep: any;
-		npp: number;
-		diff: number;
+	picks: number;
+	rkeys: number;
+	bkeys: number;
+	mana: number;
+	manapool: number;
+	stamina: number;
+	willpower: number;
+	distraction: number;
+	distractionlower: number;
+	wep: any;
+	npp: number;
+	diff: number;
+
+
+	// These are used only for preview purposes?
+	// TODO make this cleaner
+	inventoryarray?: {
+		consumable: item[],
+		restraint: item[],
+		looserestraint: item[],
+		weapon: item[],
+		outfit: item[]
 	};
+	potions?: {
+		stamina: number,
+		mana: number,
+		will: number,
+		dist: number,
+	},
+	journey?: string,
+	mistresskey?: number,
+	outfitForPreview?: string[],
+	arousalMode?: boolean,
+	itemMode?: number,
+	plug?: boolean,
+	plugFront?: boolean,
+	piercing?: boolean,
+	random?: boolean,
+	savemode?: boolean,
+	hardmode?: boolean,
+	extrememode?: boolean,
+	//KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
+	perksmode?: number,
+	easymode?: number,
+	progressionmode?: string,
+
 	faction: Record<string, Record<string, number>>;
 }
 

@@ -1763,23 +1763,7 @@ function KinkyDungeonHandleHUD() {
 			}
 			return true;
 		}
-		// Done, converted to input
-		if (KinkyDungeonIsPlayer() && MouseIn(975, 900, 550, 64)) {
-			if (KDConfirmDeleteSave) {
-				KDSendInput("lose", {});
-				//Player.KinkyDungeonSave = {};
-				//ServerAccountUpdate.QueueData({KinkyDungeonSave : Player.KinkyDungeonSave});
-				// Update bones here once we create them
-
-				// With the save slot system, we simply won't delete the save? 
-				//localStorage.setItem('KinkyDungeonSave', "");
-			} else {
-				KDConfirmDeleteSave = true;
-			}
-
-
-			return true;
-		} else if (MouseIn(975, 550, 550, 64)) {
+		if (MouseIn(975, 550, 550, 64)) {
 			KinkyDungeonDrawState = "Game";
 
 			KinkyDungeonCheckClothesLoss = true;
