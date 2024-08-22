@@ -13,9 +13,9 @@ You may redistribute parts of the code as part of a mod, with the following stip
 - You may solicit donations (e.g. Patreon) with respect to mods you create
 - You must credit Strait Laced Games LLC
 
-Kinky Contributor License (Takes effect as of March 6 2023):
+Kinky Contributor License (Takes effect as of March 6 2023): 
 Definitions:
-KINKY DUNGEON - The game currently known as Kinky Dungeon. If the project is later released under a different name or with substantial engine changes, it will still be considered Kinky Dungeon for the purpose of this license, so long as no project under the previous name is being sold or monetized in any way by me (Ada18980).
+KINKY DUNGEON - The game currently known as Kinky Dungeon. If the project is later released under a different name or with substantial engine changes, it will still be considered Kinky Dungeon for the purpose of thsadzxfcszdfcvis license, so long as no project under the previous name is being sold or monetized in any way by me (Ada18980).
 Ada18980 - The individual developer of Kinky Dungeon at the time of this writing
 
 1) By contributing to the game you grant me (Ada18980) and any limited liability corporation owned by me a perpetual, nonrevocable, nontransferable license to:
