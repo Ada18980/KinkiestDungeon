@@ -2316,7 +2316,7 @@ function KinkyDungeonDrawQuickInv() {
 							else if (KDGameData.ItemPriority[item.item.name] < 9) KDGameData.ItemPriority[item.item.name] += 1;
 						}
 					} else {
-						if (KDRestraint(item.item)?.good || KDRestraint(item.item)?.armor) {
+						if (KDToggles.OnlySelfQuickInv || KDRestraint(item.item)?.good || KDRestraint(item.item)?.armor) {
 							let equipped = false;
 							let newItem = null;
 							let currentItem = null;

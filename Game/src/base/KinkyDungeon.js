@@ -211,6 +211,7 @@ let KDToggles = {
 	ShowZoom: true,
 	Backgrounds: true,
 	RawDP: false,
+	OnlySelfQuickInv: false,
 };
 
 let KDToggleCategories = {
@@ -272,6 +273,7 @@ let KDToggleCategories = {
 	FlipPlayer: "Clothes",
 	GreyscaleBlindness: "GFX",
 	DynamicArmor: "Clothes",
+	OnlySelfQuickInv: "UI",
 };
 
 let KDDefaultKB = {
