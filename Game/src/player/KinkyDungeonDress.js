@@ -149,8 +149,9 @@ let KDLastForceRefreshInterval = 100;
  * @param {Record<string, NPCRestraint>} [npcRestraints]
  * @param {item[]} [customInventory]
  * @param {Map<string, boolean>} [customPlayerTags]
+ * @param {string} [customFaction]
  */
-function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, customInventory, customPlayerTags) {
+function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, customInventory, customPlayerTags, customFaction) {
 	if (!Character) Character = KinkyDungeonPlayer;
 
 	let _CharacterRefresh = CharacterRefresh;
@@ -168,8 +169,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 
 	let restraintModels = {};
 
-	let CurrentDress = Character == KinkyDungeonPlayer ? KinkyDungeonCurrentDress : (KDCharacterDress.get(Character) || "Bandit");
 	let DressList = KDGetDressList()[CurrentDress];
+	let CurrentDress = Character == KinkyDungeonPlayer ? KinkyDungeonCurrentDress : Character == KDPreviewModel ? KinkyDungeonCurrentDress : (KDCharacterDress.get(Character) || "Bandit");
 
 	if (KDNPCStyle.get(Character)?.customOutfit) {
 		DressList = [];
@@ -250,7 +251,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 						let renderTypes = KDRestraint(inv).shrine;
 						if (!(!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor))) {
 							if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
-								KDApplyItem(Character, inv, customPlayerTags || KinkyDungeonPlayerTags);
+								KDApplyItem(Character, inv, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
 								if (KDRestraint(inv).Model) {
 
 									restraintModels[KDRestraint(inv).Model] = true;
@@ -265,7 +266,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 							for (let I = 0; I < 30; I++) {
 								if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
 									if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
-										KDApplyItem(Character, link, customPlayerTags || KinkyDungeonPlayerTags);
+										KDApplyItem(Character, link, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
 
 										if (KDRestraint(link).Model) {
 											restraintModels[KDRestraint(link).Model] = true;
@@ -290,7 +291,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 						ids[inv.id] = true; // No dupe
 
 						if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
-							KDApplyItem(Character, inv, NPCTags.get(Character) || new Map());
+							KDApplyItem(Character, inv, NPCTags.get(Character) || new Map(), customFaction);
 							if (KDRestraint(inv).Model) {
 
 								restraintModels[KDRestraint(inv).Model] = true;
@@ -852,13 +853,14 @@ function KDCharacterAppearanceNaked(C) {
  * @param {Character} C
  * @param {*} inv
  * @param {*} tags
+ * @param {string} customFaction
  * @returns
  */
-function KDApplyItem(C, inv, tags) {
+function KDApplyItem(C, inv, tags, customFaction = undefined) {
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
-		let faction = inv.faction ? inv.faction : "";
+		let faction = customFaction ? customFaction : inv.faction ? inv.faction : "";
 
 		// faction color system
 		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?
