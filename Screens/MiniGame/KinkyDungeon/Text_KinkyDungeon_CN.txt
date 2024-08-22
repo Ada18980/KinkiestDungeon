@@ -17,7 +17,7 @@ Next
 Music: kocaeli|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon, GoldieKitsune|Audio:|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 音乐: kocaeli|拘束敌人图形: Song|俄语翻译: Osiris|中文翻译: Alexthymia, Mitki, Timeline|韩语，日语翻译: Phantasm|代码贡献者: Ellie, Demopans, Aelie|美术：Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3, Plasmadragon, GoldieKitsune|音频:|饮用药水 - Jamius|点击 - StrikeWhistler - 已修改|石门_关闭 - AudioTorpedo - 已修改|脚步 - Fission9 - 已修改|火魔法 - Julien Matthey|轻击 - qubodup|重击 - orangesheepdog|空击 - Brsjak - 已修改|Clap - DWSD - 已修改|'门, 正面, 关闭, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'门, 正面, 打开, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|打开箱子 - spookymodem - 已修改|解锁 - BeezleFM|解开 - danhelbling|剪刀 - qubodup|翻找物品 - adcbicycle|仙尘 - jacksonacademyashmore|金属物品破碎 - gristi
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
-Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Breviceps - 已修改|磨刀 - Anthousai|纸声 - Bash360 - 已修改|冻结通电 - JustInvoke - 已修改|水声 - patchytherat - 已修改|grab 3 - ihitokage - 已修改|枪声 - qubodup - 已修改|黄铜掉落 - movingplaid - 已修改|能量武器镭射声 - rkkaleikau - 已修改|雷声 - deleted_user_7146007 - 已修改|把铁链从水槽拖出来 - Hitrison - 已修改|Hihat 7 - TheCoolManARM2 - 已修改|Ambientsoundapp - Lightning Storm.wav - 已修改|kev_durr - Arc Welding.wav - 已修改|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺术家与灵感|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了一个非常棒的狼女|spark utamaro - 对于受到震动器感觉的点子
+Door locked.wav - mitchanary - 已修改|Coins.wav - Saviraz|打开石棺 - Breviceps - 已修改|磨刀 - Anthousai|纸声 - Bash360 - 已修改|冻结通电 - JustInvoke - 已修改|水声 - patchytherat - 已修改|grab 3 - ihitokage - 已修改|枪声 - qubodup - 已修改|黄铜掉落 - movingplaid - 已修改|能量武器镭射声 - rkkaleikau - 已修改|雷声 - deleted_user_7146007 - 已修改|把铁链从水槽拖出来 - Hitrison - 已修改|Hihat 7 - TheCoolManARM2 - 已修改|Ambientsoundapp - Lightning Storm.wav - 已修改|kev_durr - Arc Welding.wav - 已修改|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺术家与灵感|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了一个非常棒的狼娘|spark utamaro - 对于受到震动器感觉的点子
 Language
 语言
 English
@@ -563,9 +563,9 @@ Leather Lovers
 All humanoids that can bind you also apply leather restraints.
 所有可束缚你的人形生物可以使用皮革束缚。
 Wolfgirl Lovers
-狼女之恋
+狼娘之恋
 All humanoids that can bind you also apply wolfgirl restraints.
-所有可束缚你的人形生物可以使用狼女束缚。
+所有可束缚你的人形生物可以使用狼娘束缚。
 Maid Lovers
 女仆之恋
 All humanoids that can bind you also apply maid restraints.
@@ -1123,9 +1123,9 @@ Maid Sweeper
 Start in a magically locked maid outfit.
 开局时穿戴使用魔法锁住的女仆装。
 Wolf Trainee
-受训狼女
+受训狼娘
 Start in a uniform of a naughty wolfgirl.
-开局时穿戴狼女的衣服。
+开局时穿戴狼娘的衣服。
 Latex Toy
 乳胶玩具
 Start bound in lovely latex restraints.
@@ -1953,7 +1953,7 @@ The prisoners are kept in revealing outfits to keep them from hiding things.
 Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
 使武器难以隐藏。并让你更容易受到寒冷的影响。
 Wolfgirl Suit
-狼女套装
+狼娘套装
 An advanced suit designed for sport, breathable and also warm.
 专为运动而设计的高级套装，透气且保暖。
 Made of latex. Resistant to electricity but does not insulate well.
@@ -3313,13 +3313,13 @@ The alchemist screams and runs.
 Alchemist's Pet
 炼金术士的宠物
 The wolfgirl escapes!
-狼女逃了！
+狼娘逃了！
 The wolfgirl lunges at you with a powerful kick!
-狼女强力地向你踢来！
+狼娘强力地向你踢来！
 The wolfgirl cuddles with you! (DamageTaken)
-狼女抱住了你！ (DamageTaken)
+狼娘抱住了你！ (DamageTaken)
 Wolfgirl
-狼女
+狼娘
 Wolfguard
 狼卫士
 The wolfguard's suit punishes her for poor performance!
@@ -3331,15 +3331,15 @@ The wolfguard's escort drones shock you! (DamageTaken)
 The wolfguard's escort drones deploy some restraints! (+RestraintAdded)
 狼卫的护卫无人机部署了一些束缚！（+RestraintAdded）
 Wolfgirl Trainer
-狼女训练师
+狼娘训练师
 The trainer retreats!
 训练师撤退！
 The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)
-狼女训练师玩弄地挤你的胸！ (DamageTaken)
+狼娘训练师玩弄地挤你的胸！ (DamageTaken)
 The wolfgirl trainer secures you in training gear! (+RestraintAdded)
-狼女训练师给你穿上了训练装备！ （+RestraintAdded）
+狼娘训练师给你穿上了训练装备！ （+RestraintAdded）
 The wolfgirl trainer pins you and skillfully locks all of your restraints!
-狼女训练师将你钉住，并巧妙地锁住你所有的束缚具！
+狼娘训练师将你钉住，并巧妙地锁住你所有的束缚具！
 Nevermere Operative
 Nevermere 特工
 The operative does a fumbled retreat!
@@ -5501,7 +5501,7 @@ A mass of alchemical latex stretched over your mouth, then hardened.
 Wolf Panties
 狼内裤
 A set of vibrating panties designed to help subdue unruly wolfgirls.
-一套振动内裤，旨在帮助制服不守规矩的狼女。
+一套振动内裤，旨在帮助制服不守规矩的狼娘。
 It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber.
 它非常紧，一旦夹上就很难取下，但材料是橡胶。
 You don't meet the conditions to equip that.
@@ -5869,7 +5869,7 @@ A wall of ice rises from the ground!
 The dragon's breath poisons you!
 龙息让你中毒！
 The dragon girl strikes you with poisonous razor leaves!
-龙女用有毒的剃须叶攻击你！
+龙娘用有毒的剃须叶攻击你！
 The flower releases soporific spores!
 花释放催眠孢子！
 Poison Breath
@@ -6153,7 +6153,7 @@ Elemental Energy
 Slime Infestation
 黏液侵袭
 Wolfgirl Training
-狼女训练
+狼娘训练
 Drone Patrol
 无人机巡逻
 Shop
@@ -6465,15 +6465,15 @@ It uses a standard lock rather than a simple one.
 Wolfbinder
 狼之束手套
 A sophisticated training system used to keep wolfgirls from scratching their owners.
-一个复杂的训练系统，用来防止狼女抓挠他们的主人。
+一个复杂的训练系统，用来防止狼娘抓挠他们的主人。
 Despite the harsh position, it is padded, breathable, and suitable for long term wear.
 尽管十分严苛，但它具有衬垫、透气性，适合长期佩戴。
 Wolf Queenbinder
-狼女王束手套
+狼娘王束手套
 This was made to be used during a coup attempt.  Unfortunately, its creator ended up wearing it instead, after the coup's failure.
 这枚戒指原本是为政变准备的。不幸的是，政变失败后，它的创造者反而戴上了它。
 Designed to hold the queen of wolves helpless for an indefinite period of time.
-目的是让狼女王无限期地陷入无助状态。
+目的是让狼娘王无限期地陷入无助状态。
 Smart Training Cuffs
 智能训练手铐
 Cuffs with a feature to punish the wearer if they act aggressively.
@@ -6487,25 +6487,25 @@ Looks like you got yourself in trouble.
 Training Harness
 训练束衣
 A harness that keeps a wolfgirl's suit together. It makes escaping more difficult.
-将狼女的装备固定在一起的束带。这让逃跑变得更加困难。
+将狼娘的装备固定在一起的束带。这让逃跑变得更加困难。
 While it is weatherproof and rugged, its straps are merely nylon.
 虽然它防风雨且坚固耐用，但它的表带只是尼龙材质。
 Training Mittens
 训练手套
 When wolfgirls won't keep those pesky claws in line, these will make sure she can't cause too much trouble.
-当狼女不肯控制住那些讨厌的爪子时，这些会确保她不会造成太多麻烦。
+当狼娘不肯控制住那些讨厌的爪子时，这些会确保她不会造成太多麻烦。
 Made from strong reinforced fabric, your claws won't do anything to these mittens.
 这款手套采用坚固的加固织物制成，你的爪子不会对这些手套造成任何伤害。
 Training Gag
 训练口球
 A gag used to prevent wolfgirls from biting their owners.
-用来防止狼女咬主人的口球。
+用来防止狼娘咬主人的口球。
 It is reinforced with steel cables, so getting it off will be tricky.
 它是用钢索加固的，所以要把它取下来会很棘手。
 Training Collar
 训练项圈
 A collar with a decorative tag used to identify wolfgirls.
-带有装饰标签的项圈，用于识别狼女。
+带有装饰标签的项圈，用于识别狼娘。
 Also good for identifying people in general. What a great idea!
 也有助于识别一般人。真是个好主意！
 Training Leash
@@ -7679,7 +7679,7 @@ You channel mana through your body! Empowerment level: LEVEL
 You are already at the maximum empowerment level!
 你已经达到了最高充能级别！
 You don't have any upcast spells yet.
-你没有任何高级法术。
+你没有任何可蓄力法术。
 Upcast from SPELL
 SPELL 进阶
 You fail to concentrate on the spell and it fizzles!
@@ -9033,7 +9033,7 @@ EnemyName 增强了盟友的物理防御！
 The EnemyName deploys an energy shield to allies!
 EnemyName 为盟友部署能量护盾！
 The EnemyName activates the vibrators of nearby wolfgirls, greatly motivating them!
-EnemyName 激活了附近的狼女振动器，极大地激励她们！
+EnemyName 激活了附近的狼娘振动器，极大地激励她们！
 The EnemyName activates the vibrators of nearby dolls, greatly motivating them!
 EnemyName 激活了附近的玩偶的振动器，极大地激励他们！
 The EnemyName creates a zone of increased defense!
@@ -9883,7 +9883,7 @@ Ninjas aren't so tough to fight when their hands are tied behind their back. Goo
 (It's a medical record) Patient seems stable... application of the enchanted cloth seems to have stopped the bleeding. It appears that the ancient magic suppresses all forms of injury, even in humans, until it is taken off.
 （这是一份医疗记录）病人看起来很稳定……使用魔法布似乎已经止血了。看来古老的魔法可以抑制所有形式的伤害，甚至对人类来说也是如此，直到它被解除为止。
 (A record of an ancient... transaction)||The elemental offered us the following from her personal estate:|-one magical lantern that requires no fuel, and can light up the night as if it were day|-one crystal that burns red-hot when kept near metal, providing heat to warm a house|-three enchanted swords imbued with flame|-a hollow glass crystal, used for communication||In exchange, we gave her three wolfgirls we had captured on the surface.
-（一项古老的……交易的记录）||精灵从她的个人财产中向我们提供了以下内容：|-一盏不需要燃料的神奇灯笼，可以照亮黑夜，就像白天一样|-一颗水晶 靠近金属时会燃烧成红热，为房屋提供热量|-三把充满火焰的魔法剑|-空心玻璃晶体，用于通讯||作为交换，我们给了她我们在地表捕获的三个狼女。
+（一项古老的……交易的记录）||精灵从她的个人财产中向我们提供了以下内容：|-一盏不需要燃料的神奇灯笼，可以照亮黑夜，就像白天一样|-一颗水晶 靠近金属时会燃烧成红热，为房屋提供热量|-三把充满火焰的魔法剑|-空心玻璃晶体，用于通讯||作为交换，我们给了她我们在地表捕获的三个狼娘。
 I had heard that ancient humans prayed to the stars here, in an effort to find favor when the Eight had forsaken them. So I went and prayed... and let me tell you, it was a lie, an absolute lie. There are only monsters out there.
 我听说远古人类在这里向星星祈祷，试图在八神抛弃他们后寻求庇护。所以我去祈祷……让我告诉你，这是一个谎言，一个绝对的谎言。那里只有怪物。
 (It is a set of instructions for creating a magic circle to unlock a sealed portal. There are markings in many languages that give conflicting descriptions, claiming that the circle will transmute material to gold, or bring good fortune...)
@@ -10133,7 +10133,7 @@ You stumble upon a group of mages wanting to play dress-up!
 You step on an open book, only to find a furious librarian staring you down!
 你踩在一本打开的书上，却发现一位愤怒的图书管理员正盯着你！
 You are ambushed by wolfgirls!
-你被狼女伏击了！
+你被狼娘伏击了！
 You are ambushed by an alkahestor!
 你被一个宗师炼金师伏击了！
 Small blobs of slime fall from the ceiling!
@@ -13179,13 +13179,13 @@ Ah, but it'll be quick!|(The SPEAKER begins tipping the flask)|See? It's already
 (The SPEAKER tosses the slime on you)|Ha, look, it's alive!|(Sticky RESTRAINT clings to you)
 （SPEAKER 把粘液扔到你身上）|哈，看，它是活的！|（粘性 RESTRAINT 粘在你身上）
 (A SPEAKER whispers to you)|Ever wonder how wolfgirls feel?|Or why they're so obedient?
-（SPEAKER 对你轻声细语）|有没有想过狼女们的感受|或者他们为什么这么听话？
+（SPEAKER 对你轻声细语）|有没有想过狼娘们的感受|或者他们为什么这么听话？
 (The SPEAKER grins)|I've got a RESTRAINT here~|Wanna give it a try?
 （SPEAKER 咧嘴一笑）|我这里有一件RESTRAINT~|想尝试一下吗？
 (The SPEAKER puts on the RESTRAINT)|Perfect. Better behave now~|(The SPEAKER pats your butt)
 （SPEAKER 为你佩戴 RESTRAINT）|完美。现在乖一点吧~|（SPEAKER 拍了拍你的屁股）
 (The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~
-（SPEAKER 翻白眼）|你见过狼女吧？|啊，不管怎样，玩去吧~
+（SPEAKER 翻白眼）|你见过狼娘吧？|啊，不管怎样，玩去吧~
 (The SPEAKER nods glumly)|Not a fan?|Shame, I am~
 （SPEAKER 闷闷不乐地点点头）|不是粉丝？|耻辱，我是~
 (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
@@ -14833,7 +14833,7 @@ The next floor is overgrown.|I'd watch your feet if I were you.
 Slimes, slimes EVERYWHERE!|Fortunately there's a slime-harvesting|operation going on.
 粘液，到处都是粘液|幸运的是，有一个黏液收集|手术正在进行。
 The trainers are taking their wolfgirls out for a walk.|I'd steer clear.|Unless you want to become one of their pets~
-训练师们带着她们的狼女出去散步|我会避开的|除非你想成为她们的宠物~
+训练师们带着她们的狼娘出去散步|我会避开的|除非你想成为她们的宠物~
 Rumor has it that one of the cyber-dolls escaped.|Their handlers are looking for her.|They're catching every young girl they can find!
 有传言说其中一个赛博娃娃逃走了|她们的处理人员正在寻找她|她们抓住了所有能找到的年轻女孩！
 This is totally a normal floor.|No doubt about it.
@@ -16531,7 +16531,7 @@ The fighter throws an enchanted binding ring at you! (+RestraintAdded)
 The fighter throws her weapon at you! (DamageTaken)
 战士将武器扔向你！（DamageTaken）
 Casting SPNME
-铸造 SPNME
+发射 SPNME
 The door suddenly locks behind you!
 门突然在你身后锁上了！
 Apply To Target
@@ -17439,7 +17439,7 @@ A collar module comes off with the collar!
 Shock Module
 电击模块
 A sinister device used to keep unruly wolfgirls in check.
-一个邪恶的装置，用来控制不守规矩的狼女。
+一个邪恶的装置，用来控制不守规矩的狼娘。
 If it works on them, it sure as heck works on you. It has a warning label that says: 'CAUTION: NOT WATERPROOF'
 如果它对他们有效，那么对你也同样有效。它有一个警告标签，上面写着：'注意：不防水'
 Tracking Module
@@ -18181,7 +18181,7 @@ The cursed item drains all of the caster's mana. It demands more.
 Punishment Suit
 惩罚服
 A tool used by Nevermere on the most difficult and recalcitrant wolfgirls.
-Nevermere 用来对付最难对付、最顽固狼女的工具。
+Nevermere 用来对付最难对付、最顽固狼娘的工具。
 Designed to contain superhuman strength, struggling out of this would be a major feat.
 旨在容纳超人的力量，从中挣扎出来将是一项伟大的壮举。
 Shield of (un)Clarity
@@ -19151,7 +19151,7 @@ You find a ceremonial leotard.
 (As you slay the dragon, it begins shapeshifting into human form!)
 （当你杀死龙时，它开始变身为人形！）
 Crystal Dragon Queen
-水晶龙女王
+水晶龙娘王
 The crystal dragon shapeshifts back to human form!
 水晶龙变回人形！
 The crystal dragon strikes you with its claws! (DamageTaken)
@@ -19163,15 +19163,15 @@ The crystal dragon takes flight and swoops toward you!
 The crystal dragon takes flight and slams into you! (Stunned!)
 水晶龙飞起来撞向你！（眩晕！）
 Crystal Dragon Girl
-水晶龙女
+水晶龙娘
 The dragon girl submits to you!
-龙女臣服于你！
+龙娘臣服于你！
 The dragon girl slams you with several hurled crystals! (DamageTaken)
-龙女向你投掷数颗水晶！（DamageTaken）
+龙娘向你投掷数颗水晶！（DamageTaken）
 The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)
-龙女孩召唤出一团凝固的水晶云！（+RestraintAdded）
+龙娘孩召唤出一团凝固的水晶云！（+RestraintAdded）
 Poison Dragon Queen
-毒龙女王
+毒龙娘王
 The poison dragon shapeshifts back to human form!
 毒龙变回人形！
 The poison dragon strikes you with its claws! (DamageTaken)
@@ -19183,13 +19183,13 @@ The poison dragon takes flight and swoops toward you!
 The poison dragon takes flight and slams into you! (Stunned!)
 毒龙飞起来撞向你！（眩晕！）
 Poison Dragon Girl
-毒龙女
+毒龙娘
 The dragon girl slashes you with her venomous nails! (DamageTaken)
-龙女用她有毒的指甲砍你！（DamageTaken）
+龙娘用她有毒的指甲砍你！（DamageTaken）
 The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
-龙女从地面伸出藤蔓来束缚你！（+RestraintAdded）
+龙娘从地面伸出藤蔓来束缚你！（+RestraintAdded）
 Ice Dragon Queen
-冰龙女王
+冰龙娘王
 The ice dragon shapeshifts back to human form!
 冰龙变回人形！
 The ice dragon strikes you with its claws! (DamageTaken)
@@ -19197,13 +19197,13 @@ The ice dragon strikes you with its claws! (DamageTaken)
 The ice dragon catches you in its icy breath! (+RestraintAdded)
 冰龙用它冰冷的气息抓住了你！（+RestraintAdded）
 Ice Dragon Girl
-冰龙女
+冰龙娘
 The dragon girl slams you with several chunks of ice! (DamageTaken)
-龙女用几块冰砸向你！（DamageTaken）
+龙娘用几块冰砸向你！（DamageTaken）
 The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)
-龙女瞬间将冰冷的冰泼向你！（+RestraintAdded）
+龙娘瞬间将冰冷的冰泼向你！（+RestraintAdded）
 Shadow Dragon Queen
-暗影龙女王
+暗影龙娘王
 The shadow dragon shapeshifts back to human form!
 暗影龙变回人形！
 The shadow dragon slashes directly at your mind! (DamageTaken)
@@ -19211,11 +19211,11 @@ The shadow dragon slashes directly at your mind! (DamageTaken)
 The shadow dragon wraps itself around you many times! (+RestraintAdded)
 暗影龙多次缠绕你！（+RestraintAdded）
 Shadow Dragon Girl
-暗影龙女
+暗影龙娘
 The dragon girl stares into your eyes! (DamageTaken)
-龙女凝视着你的眼睛！（DamageTaken）
+龙娘凝视着你的眼睛！（DamageTaken）
 The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
-龙女伸出阴影般的手！（+RestraintAdded）
+龙娘伸出阴影般的手！（+RestraintAdded）
 (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 (SPEAKER 挥手时，身体发出嘎吱声)|嗨！|想买一些古代珍宝吗？|我的古董店有你需要的东西！
 (The SPEAKER cracks her exposed knuckles)|So you've seen through my disguise...
