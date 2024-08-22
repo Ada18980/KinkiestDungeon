@@ -1175,13 +1175,13 @@ function KDDrawWardrobe(screen, Character) {
 	// Return anon function anonymously
 	let clickButton = (index) => {
 		return (bdata) => {
+			KDCurrentOutfit = index;
 			if (C == KinkyDungeonPlayer) {
 				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 				KDOutfitOriginalStore[KDCurrentOutfit] = KDOriginalValue;
 				ElementValue("KDOutfitName", "");
 				localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 			}
-			KDCurrentOutfit = index;
 
 			let NewOutfit = KDOutfitStore[KDCurrentOutfit] || localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
 
@@ -1489,6 +1489,7 @@ function KDDrawWardrobe(screen, Character) {
 				}
 				KinkyDungeonReplaceConfirm = 0;
 				localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+				//localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 				KinkyDungeonDressSet();
 				KDOriginalValue = "";
 				KDRefreshOutfitInfo();

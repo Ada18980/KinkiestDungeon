@@ -100,6 +100,9 @@ let KDExecuted = false;
 
 async function KDExecuteModsAndStart() {
 	await KDExecuteMods();
+
+	if (!KDToggles.OverrideOutfit)
+		KinkyDungeonConfigAppearance = false;
 	KinkyDungeonStartNewGame(true);
 }
 

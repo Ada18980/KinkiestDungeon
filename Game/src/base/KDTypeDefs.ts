@@ -2434,6 +2434,11 @@ interface KDInventoryActionDef {
 }
 
 interface KinkyDungeonSave {
+
+	appearance: string,
+    default: string,
+    poses: string,
+
 	version: string,
 	KinkyDungeonPlayerEntity: any;
 	level: number;

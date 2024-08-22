@@ -422,10 +422,11 @@ function KinkyDungeonInitialize(Level, Load) {
 	KinkyDungeonFlags = new Map();
 
 	KinkyDungeonDressSet();
-	if (KinkyDungeonConfigAppearance) {
+	// Removed to protect against unintended outfit overrides
+	/*if (KinkyDungeonConfigAppearance) {
 		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
 		KinkyDungeonConfigAppearance = false;
-	}
+	}*/
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
 	KinkyDungeonDrawState = "Game";
 	KinkyDungeonCheckClothesLoss = true;
