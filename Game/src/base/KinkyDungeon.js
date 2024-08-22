@@ -4105,41 +4105,19 @@ function KDDrawLoadMenu() {
 		// New Game Text
 		DrawTextFitKD(`Floor ${loadedSaveforPreview.level}${(loadedSaveforPreview.npp > 0) ? (" - NG+"+loadedSaveforPreview.npp) : ("")}`, CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 
-		// Journey Type
-		let journeytext = "Standard";
-		if (loadedSaveforPreview.journey == "Harder") {
-			journeytext = "Ancient Tombs"
-		}
-		else if (loadedSaveforPreview.journey == "Temple") {
-			journeytext = "Kinky Temple"
-		}
-		else if (loadedSaveforPreview.journey == "Explorer") {
-			journeytext = "Vast Jungle"
-		}
-		else if (loadedSaveforPreview.journey == "Random") {
-			journeytext = "Chaos"
-		}
-		else if (loadedSaveforPreview.journey == "Doll") {
-			journeytext = "Doll Processing"
-		}
-		else if (loadedSaveforPreview.journey == "Test") {
-			journeytext = "Test Zone"
-		}
-		else {
-			journeytext = "Standard";
-		}
 		// Difficulty
-		let difficultytext = "Normal";
+		let difficultytext = "KDHardMode0";
 		if (loadedSaveforPreview.hardmode == true) {
-			difficultytext = "Hard";
+			difficultytext = "KDHardMode1";
 		}
 		if (loadedSaveforPreview.extrememode == true) {
-			difficultytext = "Extreme";
+			difficultytext = "KDHardMode2";
 		}
-		DrawTextFitKD(`${difficultytext} - ${journeytext}`, CombarXX + 1100, YYstart + 90, 450, "#ffffff", undefined, 40);
+		DrawTextFitKD(`${TextGet("KDJourney" + (loadedSaveforPreview.journey || "None"))}${TextGet(difficultytext)}`,
+		CombarXX + 1100, YYstart + 90, 450, "#ffffff", undefined, 40);
 
 		// Save Code Seed
-		DrawTextFitKD(`Map Seed: ${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
+		DrawTextFitKD(TextGet("KDMapSeed") + `: ${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
 
 		// Gold Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png",
