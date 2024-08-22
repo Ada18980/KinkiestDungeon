@@ -843,7 +843,7 @@ KinkyDungeonLog,Journal
 
 KinkyDungeonDressPlayer,"Change Outfit"
 KinkyDungeonDressPlayerReset,"Reset Outfit"
-KinkyDungeonDressPlayerImport,"Load from Code"
+KinkyDungeonDressPlayerImport,"Load Game"
 KinkyDungeonConfirm,Confirm Reset?
 
 KinkyDungeonSaveIntro0,"(Your game has been saved)"
@@ -21916,6 +21916,7 @@ KinkyDungeonBuffBreakFree,Your struggle power is greatly increased!!!
 KDTeleportNearby,"The teleportation partially succeeds due to an obstruction, placing you near the intended point."
 KDTeleportFail,"The teleportation fizzles due to obstruction."
 KDConfirm,Confirm
+KDConfirmREALLY,Confirm and OVERWRITE SAVE
 KDName,What is your name?
 
 KinkyDungeonSpellEnrage,"Enrage"
@@ -23981,3 +23982,16 @@ KDAlreadyBound,No free slots to bind in
 
 KinkyDungeonSpellCommandRange,Reaching Authority
 KinkyDungeonSpellDescriptionCommandRange,"If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1"
+
+
+
+KDSaveSlotButton1,"Save Slot 1"
+KDSaveSlotButton2,"Save Slot 2"
+KDSaveSlotButton3,"Save Slot 3"
+KDSaveSlotButton4,"Save Slot 4"
+PlayGameWithCurrentCode,"Load Game"
+LoadFromCodeButton,"Load Code"
+LoadFromFileButton,"Load File"
+
+KDDelete,Delete?
+KDImport,Import to Slot
