@@ -455,11 +455,11 @@ Unarmed attacks deal half damage and cost 2x as much stamina.
 Clumsy
 笨手笨脚
 0.7x base accuracy
-基础精准度变为0.7倍。
+基础命中率变为0.7倍。
 Unfocused
 目光分散
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-当性奋值超过10%时，精准度将降低至0.9倍，随性奋值的升高精准度将持续降低，最高在90%性奋值时降低至0.6倍。
+当性奋值超过10%时，命中率将降低至0.9倍，随性奋值的升高命中率将持续降低，最高在90%性奋值时降低至0.6倍。
 Pristine
 质朴
 There are significantly less shiny loot objects in the dungeon.
@@ -1235,7 +1235,7 @@ You deal PERCENT more DAMAGETYPE damage.
 Your bindings are PERCENT more effective.
 你的束缚效果提高了 PERCENT。
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
-你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害，花费的体力为 STMNA。
+你的基础攻击可造成 DAMAGEDEALT 点DAMAGETYPE伤害，花费 STMNA 点体力
 Plugged!
 被插入！
 Plugged up!!!
@@ -1965,7 +1965,7 @@ Maid Uniform
 An elegant dress meant to denote a maid's status.
 象征女仆身份的优雅礼服。
 Massively increases accuracy against slime mold.
-攻击黏菌时，精准度大幅提高。
+攻击黏菌时，命中率大幅提高。
 Harem Outfit
 后宫制服
 A skimpy outfit with antiquated connotations.
@@ -2031,7 +2031,7 @@ Elven Dress
 A regal minidress worn by visitors to the forest.
 给来客穿的豪华迷你裙。
 Not very good at insulating you from the cold or from touchy fingers. Its elven aura improves accuracy and evasion by +10.
-对于抵御寒冷效果较差。它的精灵光环提高了 +10 的精准度和闪避。
+对于抵御寒冷效果较差。它的精灵光环提高了 +10 的命中率和闪避。
 Scroll of Sleight
 诡计卷轴
 The scroll makes your memories of arm movements clear as day!
@@ -2679,7 +2679,7 @@ Great for cutting trees that happen to be underground.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
 Accuracy:
-精准度 : ‎
+命中率 : ‎
 Crit Multiplier:
 暴击倍率 : ‎
 Bind Crit Multiplier:
@@ -8477,35 +8477,35 @@ Increases crit multiplier by a % equal to your Battle Rhythm.
 Accuracy I
 精准 I
 +10 Accuracy
-+10 精准度
++10 命中率
 Accuracy II
 精准 II
 +15 Accuracy (25 total)
-+15 精准度 ( 总计 25 ) 
++15 命中率 ( 总计 25 ) 
 Accuracy III
 精准 III
 +25 Accuracy (50 total)
-+25 精准度 ( 总计 50 ) 
++25 命中率 ( 总计 50 ) 
 Martial Arts I
 武术 I
 Unarmed strikes gain 15% accuracy and -10% stamina cost.
-徒手攻击提高 15% 精准度并且 -10% 的体力消耗。
+徒手攻击提高 15% 命中率并且 -10% 的体力消耗。
 Martial Arts II
 武术 II
 Unarmed strikes gain 20% accuracy (35% total) and -15% stamina cost (25% total).
-徒手攻击提高 20% 精准度 ( 总计 35% ) 并且 -15% 的体力消耗 ( 总计 25% ) 。
+徒手攻击提高 20% 命中率 ( 总计 35% ) 并且 -15% 的体力消耗 ( 总计 25% ) 。
 Martial Arts III
 武术 III
 Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total).
-徒手攻击提高 25% 精准度 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
+徒手攻击提高 25% 命中率 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
 Precise Critical
 精准暴击
 When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
-当造成物理伤害的暴击时，超过 100% 的精准度将以 50% 的效率转化为额外暴击倍数。
+当造成物理伤害的暴击时，超过 100% 的命中率将以 50% 的效率转化为额外暴击倍数。
 Precise Magic
 精准魔法
 When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
-当造成魔法伤害的暴击时，超过 100% 的精准度会以 50% 的效率转化为额外暴击倍数。
+当造成魔法伤害的暴击时，超过 100% 的命中率会以 50% 的效率转化为额外暴击倍数。
 Magical Overload
 魔法超载
 When landing a critical strike with magic damage, crit multiplier is increased by 25% of your current DP.
@@ -9009,7 +9009,7 @@ You focus intently!
 Truesight
 真实视野
 When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
-启用时 : ‎每回合消耗法力以透视墙壁并将精准度提高 40%。
+启用时 : ‎每回合消耗法力以透视墙壁并将命中率提高 40%。
 Echolocation
 声波定位
 Close your eyes to dramatically improve your hearing and locate enemies through walls.
@@ -10505,7 +10505,7 @@ You can barely stand in these heels. They are rigid, metallic, and unbreakable, 
 Ancient Blindfold
 远古眼罩
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
-完全遮光的面具。充能后，它可以消除视觉造成的精准度损失，将精准度提高 +100%，并将近战伤害提高 +10。
+完全遮光的面具。充能后，它可以消除视觉造成的命中率损失，将命中率提高 +100%，并将近战伤害提高 +10。
 'Mask of the Warrior'
 《战士的面罩》
 You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!
@@ -16339,7 +16339,7 @@ dmg
 AMNT Evasion
 AMNT 闪避
 AMNT% Accuracy
-AMNT% 精准度
+AMNT% 命中率
 AMNT Magic Armor
 AMNT 魔法防御
 AMNT Physical Armor
@@ -17285,7 +17285,7 @@ Enchanted Bubble
 A bubble of magic water envelops you!
 神奇的泡泡包围着你！
 Magical water reduces your accuracy and slows you significantly!
-魔法水会降低你的精准度并显着减慢你的速度！
+魔法水会降低你的命中率并显着减慢你的速度！
 You attack twice!
 你攻击了两次！
 You gain a free move from Combat Maneuvers!
@@ -18223,7 +18223,7 @@ There is nothing to harvest.
 Telekinesis 101
 念动力 101
 Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
-解锁念动力能力。被束缚也可以装备武器，但精准度为 0%。习得'隔空取物'。
+解锁念动力能力。被束缚也可以装备武器，但命中率为 0%。习得'隔空取物'。
 Recover Object
 隔空取物
 Use telekinesis to pick up items and open chests from a distance. Refunds 75% of mana cost if not used to open a chest.
@@ -18663,7 +18663,7 @@ Select a weapon to attach it to your body. You can have one attached weapon at a
 Guerilla Fighting
 游击战
 Light weapons can be wielded if you have your mouth free, at 75% accuracy.
-如果你的嘴巴被堵住了，就可以使用轻型武器，精准度为 75%。
+如果你的嘴巴被堵住了，就可以使用轻型武器，命中率为 75%。
 Tough Armor (1/2 crit mult while aware)
 坚韧护甲 ( 意识状态下暴击倍数为 1/2 ) 
 Absolute Armor (1/2 crit mult)
@@ -20448,8 +20448,6 @@ YukataWaist
 浴衣腰围
 Allow Front Plugs
 允许阴塞
-
-
 
 
 
