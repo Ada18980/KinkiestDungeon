@@ -13427,9 +13427,9 @@ l_RopeArms_ChestLower,"Lower Chest Straps"
 l_RopeArms_Arms,"Arm Straps"
 
 m_HairBow,HairBow
-l_HairBow_Bow,Bow
+l_HairBow_Bow,Bow‎
 m_HairBowFrilly,HairBowFrilly
-l_HairBowFrilly_Bow,Bow
+l_HairBowFrilly_Bow,Bow‎
 l_HairBowFrilly_BowFrills,BowFrills
 m_Hairband,Hairband
 l_Hairband_Hairband,Hairband
@@ -17829,6 +17829,7 @@ m_Petsuit_l_LeftLegs,LeftLegs
 
 m_Hairband2,Hairband2
 m_Hairband2_l_Hairband,Hairband
+l_Hairband2_Hairband,Hairband
 m_BraidCustom_l_BraidCustom,BraidCustom
 m_BraidCustom_l_BraidCustom_Overstrap,BraidCustom_Overstrap
 m_BraidCustomBack_l_BraidCustomBack,BraidCustomBack
