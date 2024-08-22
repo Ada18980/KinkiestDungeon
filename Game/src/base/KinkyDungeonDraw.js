@@ -3071,8 +3071,7 @@ function FillRectKD(Container, Map, id, Params) {
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
-		if (!kdprimitiveparams.has(id))
-			kdprimitiveparams.set(id, Params);
+		kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
 		// Modify the sprite according to the params

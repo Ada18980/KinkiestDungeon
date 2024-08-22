@@ -2805,7 +2805,12 @@ function KinkyDungeonRun() {
 				} else KinkyDungeonState = "Menu";
 				//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 				return true;
-			}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+			}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "",
+			undefined, undefined, undefined, undefined,
+			undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+				hotkeyPress: KinkyDungeonKeySkip[0],
+			});
 
 		}
 	} else if (KinkyDungeonState == "ModConfig") {
@@ -4268,7 +4273,12 @@ function KDDrawLoadMenu(offset) {
         KinkyDungeonState = "Menu";
         ElementRemove("saveInputField");
         return true;
-    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "",
+	undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+		hotkeyPress: KinkyDungeonKeySkip[0],
+	});
 	// Play Game with current save data!
 	DrawButtonKDEx("KDLoadGame", () => {
 		if (LoadMenuCurrentSave != false) {
