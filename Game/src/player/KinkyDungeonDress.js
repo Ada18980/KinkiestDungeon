@@ -169,8 +169,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 
 	let restraintModels = {};
 
-	let DressList = KDGetDressList()[CurrentDress];
 	let CurrentDress = Character == KinkyDungeonPlayer ? KinkyDungeonCurrentDress : Character == KDPreviewModel ? KinkyDungeonCurrentDress : (KDCharacterDress.get(Character) || "Bandit");
+    let DressList = KDGetDressList()[CurrentDress];
 
 	if (KDNPCStyle.get(Character)?.customOutfit) {
 		DressList = [];
