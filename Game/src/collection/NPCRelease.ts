@@ -155,7 +155,7 @@ KDCollectionTabScreen.Release = (x, xOffset) => {
 
 function KDCanRelease(id: number) {
 	let v = KDGameData.Collection[id + ""];
-	return v && !v.status && !v.Facility; // Prisoners only
+	return v && !v.status && !v.Facility && (!v.escaped || !KinkyDungeonFindID(v.id)); // Prisoners only, not in same room
 }
 function KDCanRansom(id: number) {
 	let v = KDGameData.Collection[id + ""];
