@@ -212,6 +212,8 @@ let KDToggles = {
 	Backgrounds: true,
 	RawDP: false,
 	OnlySelfQuickInv: false,
+	OverrideOutfit: false,
+	SaveOutfit: true,
 };
 
 let KDToggleCategories = {
@@ -1235,7 +1237,10 @@ let KinkyDungeonSexyPiercing = false;
 let KinkyDungeonSexyPlug = false;
 let KinkyDungeonSexyPlugFront = false;
 let KDOldValue = "";
+let KDOldSaveCodeValue = "";
 let KDOriginalValue = "";
+
+let KDResetOutfitToggleFlag = false;
 
 let KDRestart = false;
 
@@ -1786,18 +1791,52 @@ function KinkyDungeonRun() {
 		DrawButtonVis(875, 750, 350, 64, TextGet("KinkyDungeonLoadConfirm"), "#ffffff", "");
 
 		DrawButtonKDEx(
-		"KinkyDungeonLoadBack", () => {
-			KinkyDungeonState = "Menu";
-			ElementRemove("saveInputField");
-			return true;
-		}, true, 1275, 750, 350, 64,
-		TextGet("KinkyDungeonLoadBack"),
-		"#ffffff", "", undefined, undefined, undefined, undefined,
-		undefined, undefined, {
-			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
-			hotkeyPress: KinkyDungeonKeySkip[0],
+			"KinkyDungeonLoadBack", () => {
+				KinkyDungeonState = "Menu";
+				KDRestoreOutfit();
+				ElementRemove("saveInputField");
+				return true;
+			}, true, 1275, 750, 350, 64,
+			TextGet("KinkyDungeonLoadBack"),
+			"#ffffff", "", undefined, undefined, undefined, undefined,
+			undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+				hotkeyPress: KinkyDungeonKeySkip[0],
+			}
+		);
+
+		let newValue = ElementValue("saveInputField");
+		if (newValue != KDOldSaveCodeValue) {
+
+			KDOldSaveCodeValue = newValue;
+			let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+			if (orig != ElementValue("saveInputField")) KDOriginalValue = orig;
+			let decompressed = DecompressB64(ElementValue("saveInputField"));
+			if (decompressed) {
+				let origAppearance = KinkyDungeonPlayer.Appearance;
+				try {
+					let decodeSave = JSON.parse(decompressed);
+					if (decodeSave?.appearance) {
+						if (decodeSave.poses) {
+							KDCurrentModels.get(KinkyDungeonPlayer).Poses = decodeSave.poses;
+						}
+						let appearanceFromSave = JSON.stringify(decodeSave.appearance);
+						CharacterAppearanceRestore(KinkyDungeonPlayer, appearanceFromSave, false);
+						CharacterRefresh(KinkyDungeonPlayer);
+						UpdateModels(KinkyDungeonPlayer);
+						//KDInitProtectedGroups(KinkyDungeonPlayer);
+						//KinkyDungeonDressPlayer(KinkyDungeonPlayer, false);
+
+						if (KinkyDungeonPlayer.Appearance.length == 0)
+							throw new DOMException();
+					}
+
+				} catch (e) {
+					console.log("Invalid outfit loaded from save");
+					KinkyDungeonPlayer.Appearance = origAppearance;
+				}
+			}
 		}
-	);
 
 		DrawButtonKDEx(
 			"loadFromFile", () => {
@@ -4793,6 +4832,8 @@ function KinkyDungeonHandleClick() {
 		if (MouseIn(875, 750, 350, 64)) {
 			KinkyDungeonNewGame = 0;
 			KDMapData.Grid = "";
+			if (!KDToggles.OverrideOutfit)
+				KinkyDungeonConfigAppearance = false;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
 			if (KinkyDungeonLoadGame(ElementValue("saveInputField"))) {
@@ -4893,36 +4934,6 @@ function KinkyDungeonHandleClick() {
 			KDRestart = true;
 			return true;
 		}
-		if (!StandalonePatched) {
-			if (MouseIn(690, 930, 150, 64)) {
-				KinkyDungeonState = "LoadOutfit";
-
-				let Char = KDSpeakerNPC || KinkyDungeonPlayer;
-
-				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(Char));
-				CharacterReleaseTotal(Char);
-				ElementCreateTextArea("saveInputField");
-				ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(Char)));
-
-				KinkyDungeonConfigAppearance = true;
-				return true;
-			} else if (MouseIn(460, 930, 220, 64)) {
-				if (KinkyDungeonReplaceConfirm > 0) {
-					KinkyDungeonDresses.Default = KinkyDungeonDefaultDefaultDress;
-					CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
-					CharacterReleaseTotal(KinkyDungeonPlayer);
-					KinkyDungeonSetDress("Default", "Default");
-					KinkyDungeonDressPlayer();
-					KDInitProtectedGroups(KinkyDungeonPlayer);
-					KinkyDungeonConfigAppearance = true;
-					return true;
-				} else {
-					KinkyDungeonReplaceConfirm = 2;
-					return true;
-				}
-			}
-		}
-
 
 		if (MouseIn(1850, 930, 135, 64)) {
 			KinkyDungeonState = "Credits";
@@ -5398,6 +5409,10 @@ function KinkyDungeonGenerateSaveData() {
 	save.consumableVariants = KinkyDungeonConsumableVariants;
 	save.uniqueHits = Array.from(KDUniqueBulletHits);
 
+	save.appearance = JSON.parse(JSON.stringify(KinkyDungeonPlayer.Appearance));
+    save.default = JSON.parse(JSON.stringify(KDGetDressList()['Default']));
+    save.poses = JSON.parse(JSON.stringify(KDCurrentModels.get(KinkyDungeonPlayer).Poses));
+
 	let spells = [];
 	/**@type {item[]} */
 	let newInv = [];
@@ -5561,6 +5576,16 @@ function KinkyDungeonLoadGame(String) {
 			KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("hardperksMode") ? 2 : (KinkyDungeonStatsChoice.get("perksMode") ? 1 : 0);
 			KinkyDungeonEasyMode = KinkyDungeonStatsChoice.get("norescueMode") ? 2 : (KinkyDungeonStatsChoice.get("easyMode") ? 1 : 0);
 			KinkyDungeonProgressionMode = KinkyDungeonStatsChoice.get("escapekey") ? "Key" : KinkyDungeonStatsChoice.get("escaperandom") ? "Random" : KinkyDungeonStatsChoice.get("escapeselect") ? "Select" : "Key";
+
+
+			if (!KDToggles.OverrideOutfit) {
+				if (saveData.poses || saveData.appearance || saveData.default) {
+					KinkyDungeonPlayer.Appearance = JSON.parse(JSON.stringify(saveData.appearance));
+					KDGetDressList()['Default'] = saveData.default;
+					KDCurrentModels.get(KinkyDungeonPlayer).Poses = saveData.poses;
+					UpdateModels(KinkyDungeonPlayer);
+				}
+			}
 
 
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;

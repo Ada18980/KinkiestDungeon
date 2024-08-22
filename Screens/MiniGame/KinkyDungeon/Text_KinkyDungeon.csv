@@ -49,6 +49,8 @@ KDToggleTabKeybindings,Keybindings
 KDToggleBackgrounds,Show Background Art
 KDToggleRawDP,Show DP instead of %
 KDToggleOnlySelfQuickInv,Quick Inv only equips to self
+KDToggleOverrideOutfit,Override Outfit when Loading Save
+KDToggleSaveOutfit,Save Outfits within Save Files
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
 KDToggleStruggleBars,Show Struggle Bars
