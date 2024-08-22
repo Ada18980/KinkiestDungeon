@@ -4183,6 +4183,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarSPBack3`, {
 			Left: CombarXX + 900 + (offsetcount * offsetmult) + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			// @ts-ignore
 			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.stamina * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#4fd658",
@@ -4211,6 +4212,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarMPBack3`, {
 			Left: CombarXX + 900 + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			// @ts-ignore
 			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.mana * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#4c6885",
@@ -4239,6 +4241,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarWPBack3`, {
 			Left: CombarXX + 900 + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			// @ts-ignore
 			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.will * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#ff4444",
@@ -4267,6 +4270,7 @@ function KDDrawLoadMenu(offset) {
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarDPBack3`, {
 			Left: CombarXX + 900 + barborder,
 			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			// @ts-ignore
 			Width: (barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.distraction * 10)) / ((loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#ff5277",
