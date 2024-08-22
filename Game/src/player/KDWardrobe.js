@@ -317,7 +317,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2 + 10, YY + 10, width, "#ffffff", "#000000", 20);
 
 
-				let FF = KDTextField("KDPropField" + field, X, YY, width, 20, undefined, undefined, "20");
+				let FF = KDTextField("KDPropField" + field, X, YY, width, 20, undefined, undefined, "20", "18");
 				if (FF.Created) {
 					if (Model.Properties && Model.Properties[KDCurrentLayer])
 						ElementValue("KDPropField" + field, Model.Properties[KDCurrentLayer][field]);

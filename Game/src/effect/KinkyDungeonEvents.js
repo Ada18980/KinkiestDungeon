@@ -3405,7 +3405,7 @@ const KDEventMapBuff = {
 									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 									damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 										ignoreshield: spell?.ignoreshield,
 										shield_crit: spell?.shield_crit, // Crit thru shield
@@ -3474,7 +3474,7 @@ const KDEventMapBuff = {
 									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 									damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 										ignoreshield: spell?.ignoreshield,
 										shield_crit: spell?.shield_crit, // Crit thru shield
@@ -3687,6 +3687,30 @@ let KDEventMapSpell = {
 
 				// Set a flag to prevent duplicating this event
 				//KinkyDungeonSetFlag("BattleRhythm" + data.castID, 1);
+			}
+		},
+	},
+	"beforeCalcComp": {
+		"ReplaceVerbalIfFail": (e, spell, data) => {
+			if (data.spell?.tags?.includes(e.requiredTag)) {
+				if (data.spell.components) {
+					let failedcomp = [];
+					for (let comp of data.spell.components) {
+						if (!KDSpellComponentTypes[comp].check(spell, data.x, data.y)) {
+							failedcomp.push(comp);
+						}
+					}
+					if (failedcomp.length > 0) {
+						data.components = ["Verbal"];
+					}
+				}
+			}
+		},
+	},
+	"calcSpellRange": {
+		"AddRange": (e, spell, data) => {
+			if (data.spell?.tags?.includes(e.requiredTag)) {
+				data.range += e.power;
 			}
 		},
 	},
@@ -6563,6 +6587,29 @@ let KDEventMapWeapon = {
 			}
 		},
 
+
+		"ElementalEffectOnDisarm": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.enemy.disarm > 0) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance)
+					&& data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						crit: e.crit,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindEff: e.bindEff,
+						distract: e.distract,
+						desireMult: e.desireMult,
+						distractEff: e.distractEff,
+						bindType: e.bindType,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					if (e.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+					}
+				}
+			}
+		},
 		"ElementalEffectCrit": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm && data.predata?.vulnerable) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
@@ -7084,7 +7131,7 @@ let KDEventMapBullet = {
 								effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 								passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 								pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-								lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+								lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 								damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 									ignoreshield: spell?.ignoreshield,
 									shield_crit: spell?.shield_crit, // Crit thru shield
@@ -8737,7 +8784,7 @@ let KDEventMapEnemy = {
 									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 									damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 										ignoreshield: spell?.ignoreshield,
 										shield_crit: spell?.shield_crit, // Crit thru shield

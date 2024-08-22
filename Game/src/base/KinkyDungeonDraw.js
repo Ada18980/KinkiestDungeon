@@ -952,6 +952,14 @@ function KDDoModalX(bdata) {
 	KDPlayerSetPose = false;
 }
 
+function KDGetSpellRange(spell) {
+	let data = {
+		spell: spell,
+		range: spell.range || 0,
+	};
+	KinkyDungeonSendEvent("calcSpellRange", data);
+	return data.range;
+}
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
@@ -1380,7 +1388,7 @@ function KinkyDungeonDrawGame() {
 							"#8888ff"
 						);
 
-						let spellRange = KinkyDungeonTargetingSpell.range * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
+						let spellRange = KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
 
 						let spellValid = (x, y, projAimOverride) => {
 							let free = KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(x, y)) || KinkyDungeonVisionGet(x, y) < 0.1;
@@ -4276,8 +4284,9 @@ function KDTextArea(Name, Left, Top, Width, Height) {
  * @param {string} Type
  * @param {string} Value
  * @param {string} MaxLength
+ * @param {string} [TextSize]
  */
-function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", MaxLength = "30") {
+function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", MaxLength = "30", TextSize) {
 	let Element = KDTempElements.get(Name);
 	let created = false;
 	if (!Element) {
@@ -4285,6 +4294,9 @@ function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", 
 		Element = document.getElementById(Name);
 		KDTempElements.set(Name, Element);
 		if (Element) created = true;
+		if (TextSize) {
+			Element.setAttribute("fontSize", TextSize);
+		}
 	}
 	KDElementPosition(Name, Left, Top, Width, Height);
 	KDDrawnElements.set(Name, Element);

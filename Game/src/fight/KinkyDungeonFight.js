@@ -1639,7 +1639,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 			let startx = b.x;
 			let starty = b.y;
 			let end = false;
-			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > b.bullet.spell.range * 0.8 && b.bullet.spell.speed > 1) || (!b.bullet.spell.enemySpell && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
+			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > (KDGetSpellRange(b.bullet.spell) || b.bullet.spell.range) * 0.8 && b.bullet.spell.speed > 1) || (!b.bullet.spell.enemySpell && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
 
 			KDBulletEffectTiles(b);
 			KDUpdateBulletEffects(b, 0);

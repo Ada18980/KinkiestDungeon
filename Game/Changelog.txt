@@ -33,11 +33,15 @@ TODO remove hogtie when released
 5.3-RC10
 - You can now use quick inventory or hotbar to attempt to truss up targets
   (or wear items by clicking yourself)
+- New upgrade: Reaching Authority
+- Added Spats and BrowsDai1 and 2
 - Releasing NPCs gives back items (so you dont have to free them manually first)
 - Old guardians leashing you to highsec now take you to doll processing Instead
 - Faction rep affects personal opinion less
 - Attacking enemies now reduces their opinion of you (it's personal)
-- Added the Robe of Chastity in lesser gold chests
+- Added the 'Robe of Chastity' in lesser gold chests
+- Flanking enemies now makes them vulnerable (instead of stunned)
+- Fixed a bug where removing one generic restraint item would remove all of them
 - Fixed bug where traps would spawn in places there were not supposed to be any
 - Fixed bug where the void would sometimes be an actual void and not a discount void (with demon squatters)
 - Fixed bug where prisoners you reclaim would not actually be reclaimed but rather cast into the ether (and are inaccessible as prisoners)

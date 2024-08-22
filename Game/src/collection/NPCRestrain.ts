@@ -200,9 +200,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 					// Add new one
 					KDSendInput("addNPCRestraint", {
 						slot: slot.id,
-						id: -1,
+						id: KinkyDungeonGetItemID(),
 						restraint: restraint.name,
-						restraintid: KinkyDungeonGetItemID(),
+						restraintid: -1,
 						lock: "White",
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette,
@@ -597,7 +597,15 @@ function KDInputSetNPCRestraint(data): boolean {
 		let rests = KDGetNPCRestraints(data.npc);
 		let restraint = KDRestraint({name: data.restraint});
 
-		if (restraint && KDCanEquipItemOnNPC(restraint, data.npc)) return false;
+		if (restraint) {
+			let condition = KDCanEquipItemOnNPC(restraint, data.npc);
+			if (condition) {
+				KinkyDungeonSendTextMessage(8,
+					TextGet("KDBondageCondition_" + condition),
+					"#ff5555", 1, true);
+				return false;
+			}
+		}
 
 		if (rests && rests[slot.id]) {
 			KDInputSetNPCRestraint({
@@ -612,7 +620,7 @@ function KDInputSetNPCRestraint(data): boolean {
 		if (KDRowItemIsValid(restraint, slot, row, rests)) {
 			KinkyDungeonCheckClothesLoss = true;
 			let size = KDNPCRestraintSize(restraint, slot, row);
-			let id = data.restraintid || KinkyDungeonGetItemID();
+			let id = data.restraintid > 0 ? data.restraintid : KinkyDungeonGetItemID();
 			let slotsToFill = KDNPCRestraintValidLayers(restraint, slot, row, rests, id);
 
 			if (slotsToFill.length >= size) {
@@ -655,7 +663,13 @@ function KDInputSetNPCRestraint(data): boolean {
 			if (restraint) {
 				// Add the tieup value
 				KDNPCRestraintTieUp(data.npc, restraint, -1);
-				let slots = Object.entries(rests).filter((slt) => {
+				let slots = restraint.id == -1
+				? Object.entries(rests).filter((slt) => {
+					return slt[1].id == restraint.id;
+				}).map((slt) => {
+					return slt[0];
+				})
+				: Object.entries(rests).filter((slt) => {
 					return slt[1].id == restraint.id;
 				}).map((slt) => {
 					return slt[0];
@@ -674,6 +688,11 @@ function KDInputSetNPCRestraint(data): boolean {
 		KDReturnNPCItem(
 			item
 		);
+	}
+
+	let npcSprite = KDNPCChar.get(data.npc);
+	if (npcSprite) {
+		NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.npc, 0));
 	}
 
 	return true;

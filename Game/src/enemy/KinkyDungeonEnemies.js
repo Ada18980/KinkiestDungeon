@@ -4553,7 +4553,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	// If an enemy was trying to attack the player but the player got behind them somehow, they get stunned
 	let flanked = KDCheckVulnerableBackstab(enemy);
 	if (player.player && flanked && !enemy.stun && !enemy.Enemy.tags.nosurpriseflank && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) {
-		enemy.stun = 1;
+		enemy.vulnerable = Math.max(1, enemy.vulnerable||0);
 	}
 
 	// Whether or not the enemy should hold when nearby
@@ -5873,7 +5873,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				}
 				spell = KinkyDungeonFindSpell(spellchoice, true);
 				if (spell && (enemy.blind > 0 && (spell.projectileTargeting))) spell = null;
-				if (spell && ((!spell.castRange && AIData.playerDist > spell.range) || (spell.castRange && AIData.playerDist > spell.castRange))) spell = null;
+				if (spell && ((!spell.castRange && AIData.playerDist > KDGetSpellRange(spell)) || (spell.castRange && AIData.playerDist > spell.castRange))) spell = null;
 				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;
 				if (spell && enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) spell = null;
 				if (spell && spell.noFirstChoice && tries <= 2) spell = null;
@@ -5887,7 +5887,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 							&& e.aware && !KinkyDungeonHasBuff(e.buffs, spell.name)
 							&& !e.rage
 							&& ((KDAllied(enemy) && KDAllied(e)) || (KDHostile(enemy) && KDHostile(e) || KDFactionRelation(KDGetFaction(e), KDGetFaction(enemy)) >= 0.1))
-							&& Math.sqrt((enemy.x - e.x)*(enemy.x - e.x) + (enemy.y - e.y)*(enemy.y - e.y)) < spell.range
+							&& Math.sqrt((enemy.x - e.x)*(enemy.x - e.x) + (enemy.y - e.y)*(enemy.y - e.y)) < KDGetSpellRange(spell)
 							&& (!spell.castCondition || (KDCastConditions[spell.castCondition] && KDCastConditions[spell.castCondition](enemy, e, spell)))) {
 								let allow = !spell.filterTags;
 								if (spell.filterTags && KDMatchTags(spell.filterTags, e)) allow = true;
@@ -5909,7 +5909,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (spell.castCondition && (!KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, enemy, spell))) spell = null;
 					}
 				} else if (spell?.castCondition && (KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, player, spell))) spell = null;
-				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : ((spell && (spell.selfcast || (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name]) || spell.buff || (spell.range && spell.range < 1.6))) ? 0 : 1.5);
+				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : ((spell && (spell.selfcast || (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name]) || spell.buff || (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5);
 				if (spell && spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) spell = null;
 				if (spell && !(!minSpellRange || (AIData.playerDist > minSpellRange))) spell = null;
 				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;

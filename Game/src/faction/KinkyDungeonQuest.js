@@ -591,6 +591,8 @@ let KDQuests = {
 							else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							ee.gxx = point.x;
 							ee.gyy = point.y;
+							ee.spawnX = point.x;
+							ee.spawnY = point.y;
 						}
 					}
 				}
@@ -611,6 +613,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'looseguard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -637,6 +641,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'guard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -656,6 +662,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'guard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -672,6 +680,8 @@ let KDQuests = {
 				KinkyDungeonSetEnemyFlag(enemy, "questtarget", -1);
 				enemy.gxx = point.x;
 				enemy.gyy = point.y;
+				enemy.spawnX = point.x;
+				enemy.spawnY = point.y;
 				enemy.AI = "looseguard";
 			}
 		}
@@ -705,6 +715,8 @@ let KDQuests = {
 							else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							ee.gxx = point.x;
 							ee.gyy = point.y;
+							ee.spawnX = point.x;
+							ee.spawnY = point.y;
 						}
 					}
 				}
@@ -725,6 +737,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'looseguard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -752,6 +766,8 @@ let KDQuests = {
 							else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							ee.gxx = point.x;
 							ee.gyy = point.y;
+							ee.spawnX = point.x;
+							ee.spawnY = point.y;
 						}
 					}
 				}
@@ -773,6 +789,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'looseguard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -800,6 +818,8 @@ let KDQuests = {
 							else ee.AI = KDGetAIOverride(ee, 'guard');
 							ee.gxx = point.x;
 							ee.gyy = point.y;
+							ee.spawnX = point.x;
+							ee.spawnY = point.y;
 						}
 					}
 				}
@@ -821,6 +841,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'guard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -848,6 +870,8 @@ let KDQuests = {
 							else ee.AI = KDGetAIOverride(ee, 'looseguard');
 							ee.gxx = point.x;
 							ee.gyy = point.y;
+							ee.spawnX = point.x;
+							ee.spawnY = point.y;
 						}
 					}
 				}
@@ -869,6 +893,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'looseguard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}
@@ -896,6 +922,8 @@ let KDQuests = {
 							else ee.AI = KDGetAIOverride(ee, 'guard');
 							ee.gxx = point.x;
 							ee.gyy = point.y;
+							ee.spawnX = point.x;
+							ee.spawnY = point.y;
 						}
 					}
 				}
@@ -916,6 +944,8 @@ let KDQuests = {
 						else ee.AI = KDGetAIOverride(ee, 'guard');
 						ee.gxx = point.x;
 						ee.gyy = point.y;
+						ee.spawnX = point.x;
+						ee.spawnY = point.y;
 					}
 				}
 			}

@@ -108,8 +108,8 @@ AddModel({
 	Folder: "Catsuit",
 	Parent: "Catsuit",
 	Layers: ToLayerMap([
-		{ Name: "TorsoLowerLeotard", Layer: "TorsoLower", Pri: 1,
-			InheritColor: "TorsoLower",
+		{ Name: "TorsoLowerLeotard", Layer: "Bodysuit", Pri: -20,
+			InheritColor: "Latex",
 		},
 	])
 });
@@ -398,8 +398,8 @@ AddModel({
 		TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5333333333333333},
 	},
 	Layers: ToLayerMap([
-		{ Name: "TorsoLowerLeotard", Layer: "TorsoLower", Pri: 1,
-			InheritColor: "TorsoLower",
+		{ Name: "TorsoLowerLeotard", Layer: "Bodysuit", Pri: -20,
+			InheritColor: "Latex",
 			//MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
 		},
 	])

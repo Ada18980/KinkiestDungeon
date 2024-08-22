@@ -41,6 +41,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 					});
 				}*/
 				// Readd
+				for (let i = 0; i < 2; i++) // To bruteforce conditions
 				for (let inv of Object.entries(restraints)) {
 					if (
 						(KinkyDungeonInventoryGetSafe(inv[1].name)
@@ -147,6 +148,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 			for (let v of eligible) {
 				let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDAutoBindRestraints));
 				if (restraints) {
+					for (let i = 0; i < 2; i++) // To bruteforce conditions
 					for (let inv of Object.entries(restraints)) {
 						if (
 							(KinkyDungeonInventoryGetSafe(inv[1].name)

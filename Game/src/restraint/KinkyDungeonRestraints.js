@@ -385,7 +385,7 @@ function KDRestraintBondageStatus(item) {
 			overridePriority: 0,
 		};
 		// Stock methodology
-		let powerMult = Math.max(1, Math.max(r.power))**0.75;
+		let powerMult = Math.max(1, 0.2 * Math.max(r.power));
 		if (r.gag) {
 			data.status.silence = Math.ceil(powerMult * r.gag * 1.3);
 		}

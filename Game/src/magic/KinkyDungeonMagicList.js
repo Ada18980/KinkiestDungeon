@@ -15,7 +15,7 @@
 
 let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 6, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 	onhit:"", time:25, power: 2, range: 2.8, size: 1, damage: ""};
-let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
+let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense", "truss"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
 let KDZeroResistanceSpell = {name: "ZeroResistance", tags: ["utility", "defense"], quick: true, school: "Any", manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", noMiscast: true,
 	events: [
@@ -169,7 +169,7 @@ let KinkyDungeonLearnableSpells = [
 		// Legs
 		["NegateRune", "Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
-		["Psychokinesis", "KineticMastery", "SagittaAssault", "Frustration", "ChainStrike", "Ropework", "LeatherBurst", "LeatherWhip", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
+		["CommandRange", "Psychokinesis", "KineticMastery", "SagittaAssault", "Frustration", "ChainStrike", "Ropework", "LeatherBurst", "LeatherWhip", "OneWithSlime", "SlimeWalk", "SlimeMimic", "Engulf"],
 	],
 
 	//Page 3: Illusion
@@ -1136,7 +1136,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 		{name: "SagittaAssault", prerequisite: "Sagitta", tags: ["buff", "offense", "telekinesis"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
 			events: [{type: "SagittaAssault", trigger: "playerCast", power: 3}]},
 
-		{name: "CommandWordGreater", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 14, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
+		{name: "CommandWordGreater", tags: ["command", "binding", "utility", "defense"], sfx: "Magic",
+			school: "Conjure", manacost: 14, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 			prerequisite: "CommandWord",
 			onhit:"", time:100, power: 10, aoe: 0.5, range: 4.5, size: 1, damage: ""},
 
@@ -1421,6 +1422,15 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			type:"special", special: "CommandRelease",
 			onhit:"", time:0, power: 10.0, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 		KDCommandWord,
+		{name: "CommandRange", prerequisite: "CommandWordGreater", tags: ["command", "binding", "utility"],
+			sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Verbal"], level:1,
+			type:"", passive: true,
+			events: [
+				{trigger: "beforeCalcComp", type: "ReplaceVerbalIfFail", requiredTag: "truss"},// No delayedOrder since it has no cost
+				{trigger: "calcSpellRange", type: "AddRange", requiredTag: "command", power: 1},
+				{trigger: "calcSpellRange", type: "AddRange", requiredTag: "truss", power: 2},
+			],
+			onhit:"", time:0, power: 10.0, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 
 		{name: "NegateRune", prerequisite: "CommandDisenchant", tags: ["command", "offense", "aoe"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: ["Legs"], level:1,
 			type:"special", special: "NegateRune",
@@ -3700,11 +3710,11 @@ let KDCastConditions = {
 		return KDEntityHasBuffTags(target, "commandword");
 	},
 	"dollConvert": (enemy, target, spell) => {
-		if (KDNearbyEnemies(enemy.x, enemy.y, spell.range).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 3 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
+		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell)).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 3 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
 		return true;
 	},
 	"dollConvertMany": (enemy, target, spell) => {
-		if (KDNearbyEnemies(enemy.x, enemy.y, spell.range).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 8 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
+		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell)).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 8 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
 		return true;
 	},
 	"wolfDrone": (enemy, target) => {

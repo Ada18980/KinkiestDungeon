@@ -88,7 +88,7 @@ let KinkyDungeonSpellSpecials = {
 						effectTileTrail: spell2.effectTileTrail, effectTileDurationModTrail: spell2.effectTileDurationModTrail, effectTileTrailAoE: spell2.effectTileTrailAoE,
 						passthrough: spell2.noTerrainHit, noEnemyCollision: spell2.noEnemyCollision, alwaysCollideTags: spell2.alwaysCollideTags, nonVolatile:spell2.nonVolatile, noDoubleHit: spell2.noDoubleHit,
 						pierceEnemies: spell2.pierceEnemies, piercing: spell2.piercing, events: spell2.events,
-						lifetime:miscast || selfCast ? 1 : (spell2.bulletLifetime ? spell2.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spell2.range, hit:spell2.onhit,
+						lifetime:miscast || selfCast ? 1 : (spell2.bulletLifetime ? spell2.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: KDGetSpellRange(spell2), hit:spell2.onhit,
 						damage: {evadeable: spell2.evadeable, noblock: spell2.noblock,  damage:spell2.power, type:spell2.damage, crit: spell2.crit, bindcrit: spell2.bindcrit, bind: spell2.bind,
 							shield_crit: spell2?.shield_crit, // Crit thru shield
 							shield_stun: spell2?.shield_stun, // stun thru shield
@@ -249,13 +249,21 @@ let KinkyDungeonSpellSpecials = {
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en?.Enemy) {
-			let fail = false;
-			if (spell.components && !KDSpellIgnoreComp(spell)) {
-				for (let c of spell.components) {
-					if (!KDSpellComponentTypes[c].check(spell, targetX, targetY)) {
-						fail = true;
-					}
-				}
+			let fail = KinkyDungeoCheckComponents(spell, entity.x, entity.y, false).length > 0;
+			if (!fail) {
+				let castdata = {
+					targetX: targetX,
+					targetY: targetY,
+					spell: spell,
+					flags: {
+						miscastChance: KinkyDungeonMiscastChance,
+					},
+					gaggedMiscastFlag: false,
+					gaggedMiscastType: "Gagged",
+				};
+				KDDoGaggedMiscastFlag(castdata);
+
+				if (castdata.gaggedMiscastFlag) fail = true;
 			}
 			if (!fail) {
 				if (KDCanBind(en) && KDCanApplyBondage(en, entity,

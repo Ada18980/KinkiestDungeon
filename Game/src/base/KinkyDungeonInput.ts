@@ -1264,18 +1264,19 @@ function KDProcessInput(type, data): string {
 				lock: "White",
 				npc: number
 			 */
-			KDInputSetNPCRestraint(data);
+			let res = KDInputSetNPCRestraint(data);
 
 			let enemy = KDGetGlobalEntity(data.npc);
 
-			KinkyDungeonSendTextMessage(10,
-				TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
-					.replace("RSTR", KDGetItemNameString(data.restraint))//TextGet("Restraint" + KDRestraint(item)?.name))
-					.replace("ENNME", TextGet("Name" + enemy?.Enemy.name))
-					.replace("AMNT", "" + Math.round(100 * enemy?.boundLevel / enemy?.Enemy.maxhp)),
-				"#ffffff", 1);
+			if (enemy && (!data.restraint || enemy.boundLevel > 0))
+				KinkyDungeonSendTextMessage(10,
+					TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
+						.replace("RSTR", KDGetItemNameString(data.restraint))//TextGet("Restraint" + KDRestraint(item)?.name))
+						.replace("ENNME", TextGet("Name" + enemy?.Enemy.name))
+						.replace("AMNT", "" + Math.round(100 * enemy?.boundLevel / enemy?.Enemy.maxhp)),
+					"#ffffff", 1);
 
-			if (data.time) {
+			if (data.time && res) {
 				KinkyDungeonAdvanceTime(1, true);
 			}
 			if (data.npc > 0) {

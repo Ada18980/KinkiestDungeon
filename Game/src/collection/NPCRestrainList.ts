@@ -181,12 +181,49 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 
 let KDBondageConditions: Record<string, (r: restraint, id: number) => boolean> = {
 	HeavyBondage: (r, id) => {
+		if (r.quickBindCondition) return true;
 		let enemy = KDGetGlobalEntity(id);
 		if (!enemy) return false; // Must create an entity
 		return enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3;
 	},
 	Extra: (r, id) => {
-		return true; // TODO
+		if (r.quickBindCondition) return true;
+		let NPC = KDGetGlobalEntity(id);
+		if (NPC) {
+			KDQuickGenNPC(NPC, false);
+			let npcSprite = KDNPCChar.get(id);
+			if (npcSprite) {
+				if (!NPCTags.get(npcSprite)) {
+					NPCTags.set(npcSprite, new Map());
+					NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, id, 0));
+				}
+
+				if (NPCTags.get(npcSprite)) {
+					if (r.requireAllTagsToEquip) {
+						for (let tag of r.requireAllTagsToEquip) {
+							if (!NPCTags.get(npcSprite).get(tag)) {
+								return false;
+							}
+						}
+					}
+					if (r.requireSingleTagToEquip) {
+						for (let tag of r.requireSingleTagToEquip) {
+							if (NPCTags.get(npcSprite).get(tag)) {
+								return true;
+							}
+						}
+						return false;
+					}
+				}
+
+				return true;
+			} else {
+				return true;
+			}
+
+			return true;
+		}
+		return false;
 	},
 }
 
