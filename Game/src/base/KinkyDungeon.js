@@ -1429,7 +1429,12 @@ function KinkyDungeonRun() {
 			KinkyDungeonState = "Menu";
 			KDExecuteMods();
 			return true;
-		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
+		undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		DrawButtonKDEx("mods_load", (bdata) => {
 			getFileInput();
@@ -1843,13 +1848,6 @@ function KinkyDungeonRun() {
 					return true;
 				}, true, 875, 550, 350, 64, TextGet("KinkyDungeonSaveToFile"), "#ffffff", ""
 			);
-
-	} else if (KinkyDungeonState == "Journey") {
-		DrawTextKD(TextGet("KinkyDungeonJourney"), 1250, 300, "#ffffff", KDTextGray2);
-		DrawButtonVis(875, 350, 750, 64, TextGet("KinkyDungeonJourney0"), "#ffffff", "");
-		DrawButtonVis(875, 450, 750, 64, TextGet("KinkyDungeonJourney1"), "#ffffff", "");
-		DrawButtonVis(875, 550, 750, 64, TextGet("KinkyDungeonJourney2"), "#ffffff", "");
-		DrawButtonVis(1075, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 
 	} else if (KinkyDungeonState == "Challenge") {
 		//DrawTextKD(TextGet("KinkyDungeonChallenge"), 1250, 80, "#ffffff", KDTextGray1, 48);
@@ -2328,7 +2326,12 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("backButton", (b) => {
 			KinkyDungeonState = "Menu";
 			return true;
-		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
+		undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 
 	} else if (KinkyDungeonState == "Wardrobe") {
@@ -2361,7 +2364,11 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("KDPerksBack", (bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
-		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		DrawButtonKDEx("KDPerksClear", (bdata) => {
 			KinkyDungeonStatsChoice = new Map();
@@ -2782,6 +2789,7 @@ function KinkyDungeonRun() {
 
 		}
 	}
+
 
 	// Cull temp elements
 	KDCullTempElements();
@@ -4947,7 +4955,11 @@ function KDDrawGameSetupTabs(xOffset) {
 	DrawButtonKDEx("backButton", (b) => {
 		KinkyDungeonState = "Menu";
 		return true;
-	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+		hotkeyPress: KinkyDungeonKeySkip[0],
+	});
 }
 
 
