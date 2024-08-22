@@ -2426,7 +2426,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 1350, 550, 64, 64, '<', "#ffffff");
 		// Label for the button
-		DrawTextFitKD(`Choose Save Slot:`, 1150, 585, 360, "#ffffff", undefined, 30);
+		DrawTextFitKD(TextGet("KDChooseSlot"), 1150, 585, 360, "#ffffff", undefined, 30);
 		DrawTextFitKD(`${KDSaveSlot}`, 1430, 585, 360, "#ffffff", undefined, 30);
 		// Right to increment
 		DrawButtonKDEx(`SaveButton4`, (bdata) => {
@@ -3948,11 +3948,11 @@ function KDDrawLoadMenu() {
     YYd = 80;
     let CombarXX = 520;
 	// Save slots buttons
-	DrawTextFitKD(`Load Game`, 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
+	DrawTextFitKD(TextGet("PlayGameWithCurrentCode"), 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
 	for (let i = 1; i < 5; i++) {
 		let num = (i);
 		// Slot button
-        DrawButtonKDEx(TextGet("KDSaveSlotButton" + num), () => {
+        DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
             console.log("Pressed button for save slot " + num);
 			loadedSaveforPreview = null;
 			LoadMenuCurrentSlot = num;
@@ -3971,7 +3971,7 @@ function KDDrawLoadMenu() {
 			localStorage.setItem('KDLastSaveSlot', num.toString());
 
 			return true;
-        }, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton" + i), "#ffffff", "");
+        }, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
 		// Selected arrow if the currently selected slot matches
 		if (num == LoadMenuCurrentSlot) {
 			DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
@@ -4086,11 +4086,11 @@ function KDDrawLoadMenu() {
 	});
 	// Save Slot Text
 	if (LoadMenuCurrentSlot == -1) {
-		DrawTextFitKD(`Save From Code`, CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
+		DrawTextFitKD(TextGet("KDSaveFromCode"), CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
 		DrawTextFitKD(`<--`, CombarXX + 430, YY + 180, 50, "#ffffff", undefined, 40);
 	}
 	else if (LoadMenuCurrentSlot != undefined) {
-		DrawTextFitKD(`Save Slot ${LoadMenuCurrentSlot}`, CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
+		DrawTextFitKD(`${TextGet("KDSaveSlotButton")}${LoadMenuCurrentSlot}`, CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
 	}
 	if (loadedSaveforPreview?.hasOwnProperty("KDGameData")) {
 		// Player Name
@@ -4321,8 +4321,11 @@ function KDDrawLoadMenu() {
 			zIndex: 59 + (offsetcount * 5),
 		});
 	}
-	else if (loadedSaveforPreview?.hasOwnProperty("invalid")) {
-		DrawTextFitKD(`Invalid Data`, CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
+	else if (loadedSaveforPreview?.hasOwnProperty("nodata")) {
+		DrawTextFitKD(TextGet("KDNoData"), CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
+		DrawTextFitKD(`?`, CombarXX + 680, YYstart + 350, 450, "#ffffff", undefined, 128);
+	} else if (loadedSaveforPreview?.hasOwnProperty("invalid")) {
+		DrawTextFitKD(TextGet("KDInvalid"), CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 		DrawTextFitKD(`?`, CombarXX + 680, YYstart + 350, 450, "#ffffff", undefined, 128);
 	}
 	// Return to main menu
@@ -4381,6 +4384,12 @@ function KinkyDungeonDressModelPreview() {
  * @returns {KinkyDungeonSave}
  */
 function KinkyDungeonLoadPreview(String) {
+	if (!String) return {
+		// @ts-ignore
+		nodata: true,
+		// @ts-ignore
+		invalid: true,
+	}
 	try {
 		let str = DecompressB64(String.trim())
 		/**

@@ -788,6 +788,7 @@
             <key type="filename">../Game/EffectTiles/PressurePlateActive.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateHold.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateOneUse.png</key>
+            <key type="filename">../Game/EffectTiles/Radiance.png</key>
             <key type="filename">../Game/EffectTiles/Ropes.png</key>
             <key type="filename">../Game/EffectTiles/Rubble.png</key>
             <key type="filename">../Game/EffectTiles/RubbleNoMend.png</key>
@@ -3381,7 +3382,6 @@
                 <false/>
             </struct>
             <key type="filename">../Game/DialogBackground.png</key>
-            <key type="filename">../Game/Logo.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3749,6 +3749,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/RobeOfChastity.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9Paddings</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/Layers.png</key>
             <key type="filename">../Game/UI/Floppy.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
@@ -4082,6 +4097,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/CheckSmall.png</key>
+            <key type="filename">../Game/UI/Plus.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
