@@ -4953,7 +4953,7 @@ Non-Lockable
 Unlocked
 已解锁
 Lock:
-锁 : ‎
+锁 :‎
 Simple
 简单
 Standard
@@ -5249,7 +5249,7 @@ Cost: ItemCostgp
 You climb down to the next level
 你进入新的一层。
 Level RestraintLevel (Rarity)
-等级 RestraintLevel (Rarity)
+等级 RestraintLevel ( Rarity )
 Consumable
 消耗品
 Worn
@@ -16545,7 +16545,7 @@ Target must be bindable and disabled.
 Target acquired!
 目标达成！
 Truss em up!
-把他们捆起来！
+束缚术
 Choose target to bind
 选择要捆绑的目标
 Target Acquired!
@@ -16967,7 +16967,7 @@ This is your previously held weapon. Click to switch to it.
 You can't hold the WPN in your current state.
 你无法在当前状态下握住 WPN。
 Charge!
-冲啊！
+冲刺
 Dash and make an attack attack against a target within 2 tiles. If it deals 20% of their current hp in damage, you knock them back and take their place, otherwise they take +15% max hp crush damage from hitting the wall. If the attack misses, you still dash. Costs stamina equal to your sprint cost plus your attack cost.
 冲刺并对 2 格内的目标进行攻击。如果它造成了他们当前生命值 20% 的伤害，你会将他们击退并取代他们的位置，否则他们会因撞墙而受到 +15% 最大生命值挤压伤害。如果攻击未命中，你仍然会冲刺。体力消耗等于你的冲刺消耗加上你的攻击消耗。
 You charge at the target!
@@ -17551,7 +17551,7 @@ Search Items:
 Search Spells:
 搜索法术 : ‎
 Free
-自由
+免费
 Disarmed!!!
 缴械！！！
 Show Buffs and Stats
@@ -18595,7 +18595,7 @@ Management
 You don't have anywhere to manage your prisoners! Yet...
 你没有地方可以管理你的囚犯！但是...
 Your collection is empty. Use binding attacks to tie up and capture damsels!
-你的收藏是空的。使用束缚攻击来捆绑并捕获少女！
+你的收藏是空的，使用束缚攻击来捆绑并捕获少女！
 Personality
 性格
 Switch
@@ -19469,9 +19469,9 @@ Dialogue
 Ambient
 环境
 (Go to The Summit)
-（前往顶点）
+（前往巅峰设施）
 The Summit is a safe area. Items can be left here without fear of losing them.
-顶点是一个安全地区。物品可以放在这里，不用担心丢失。
+巅峰设施是一个安全地区。物品可以放在这里，不用担心丢失。
 Target an NPC to attach a leash. Enemies and unwilling allies must be tied up to 50% first. Target self to release all leashes, or target a leashed NPC to unleash them.
 以NPC为目标绑上皮带。敌人和不情愿的盟友必须首先被捆绑到50%。以自身为目标释放所有的束缚，或者以一个被束缚的NPC为目标释放它们。
 Target an NPC to leash, or self to unleash all.
@@ -19567,9 +19567,9 @@ Liberate the Boob
 Chastity bras are much rarer.
 贞操文胸将会很少见。
 Find an elevator to the Summit in order to access facilities.
-找到通往山顶的电梯以便使用设施。
+找到通往巅峰设施的电梯以便使用设施。
 Visit the Summit to allow additional interactions with this facility.
-参观峰会可以与该设施进行更多互动。
+参观巅峰设施可以与该设施进行更多互动。
 +AMNT% Training/Tick
 +AMNT% 训练/刻
 +AMNT% Opinion/Tick
@@ -19663,7 +19663,7 @@ Inputs:
 You slip off the conveyor!
 你从传送带上滑下来了！
 The Summit
-顶点
+巅峰设施
 Back to Collection
 返回收藏
 Edit Restraints
