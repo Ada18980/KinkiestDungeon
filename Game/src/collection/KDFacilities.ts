@@ -97,6 +97,8 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 function KDValidateServant(value: KDCollectionEntry, facility: string, type: string): boolean {
 	type = KDFacilityCollectionDataTypeMap[type] || "";
 
+	if (!value) return false;
+
 	if (value.status != type) return false;
 	if (value.escaped) return false;
 	if (KDIsInPartyID(value.id)) return false;

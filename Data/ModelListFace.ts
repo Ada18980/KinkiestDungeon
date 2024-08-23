@@ -138,6 +138,69 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "DaiBrows1",
+	Folder: "EyesDai1",
+	TopLevel: true,
+	Protected: true,
+	//Group: "Brows",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Brows", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			Poses: ToMap(BROWPOSES),
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+		{ Name: "Brows2", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			Poses: ToMap(BROW2POSES),
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+	])
+});
+AddModel({
+	Name: "DaiBrows2",
+	Folder: "EyesDai2",
+	TopLevel: true,
+	Protected: true,
+	//Group: "Brows",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Brows", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			Poses: ToMap(BROWPOSES),
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+		{ Name: "Brows2", Layer: "Brows", Pri: 0,
+			Sprite: "", // Because pose is called BrowsNeutral lol
+			Poses: ToMap(BROW2POSES),
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "Glabella",
+	Folder: "EyesDai1",
+	TopLevel: true,
+	Protected: true,
+	//Group: "Brows",
+	Categories: ["Eyes","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Ridge", Layer: "Brows", Pri: 0,
+			Poses: ToMap(["Brows2Angry", "BrowsAngry", "Brows2Sad", "BrowsSad"]),
+			MorphPoses: {
+				Brows2Angry: "Angry",
+				BrowsAngry: "Angry",
+				Brows2Sad: "Sad",
+				BrowsSad: "Sad",
+			},
+			HidePoses: ToMap(["EncaseHead"]),
+		},
+	])
+});
+
+
 
 AddModel({
 	Name: "KoiMouth",

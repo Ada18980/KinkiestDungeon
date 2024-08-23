@@ -604,11 +604,29 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			}
 		}
 	}
+
+
 	for (let m of Models.values()) {
+
+
 		for (let l of Object.values(m.Layers)) {
+
+
+			let prop: LayerProperties = null;
+			if (m.Properties) {
+				prop = m.Properties[l.InheritColor || l.Name];
+				if (!prop && m.Properties[KDLayerPropName(l, MC.Poses)]) {
+					prop = m.Properties[KDLayerPropName(l, MC.Poses)];
+				} else if (prop) {
+					Object.assign(prop, m.Properties[KDLayerPropName(l, MC.Poses)]);
+				}
+			}
+
 			let pri = LayerPri(MC, l, m, StartMods);
 			if (!l.DontAlwaysOverride && LayerIsHidden(MC, l, m, StartMods)) continue;
-			if (!l.NoOverride) {
+
+
+			if (!l.NoOverride && !(prop?.NoOverride != undefined && prop.NoOverride == 1)) {
 				let layer = LayerLayer(MC, l, m, StartMods);
 				MC.HighestPriority[layer] = Math.max(MC.HighestPriority[layer] || -500, pri || -500);
 			}
@@ -1117,7 +1135,18 @@ const KDAdjustmentFilterCache: Map<string, PIXIFilter[]> = new Map();
  */
 function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Poses: Record<string, boolean>): boolean {
 	// Hide if not highest
-	if (Layer.HideWhenOverridden) {
+	let prop: LayerProperties = null;
+	if (Model.Properties) {
+		prop = Model.Properties[Layer.InheritColor || Layer.Name];
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		} else if (prop) {
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+		}
+	}
+
+	if ((Layer.HideWhenOverridden && !(prop?.HideOverridden != undefined && prop?.HideOverridden == 0))
+		|| (prop?.HideOverridden == 1)) {
 		if (Layer.HideOverrideLayerMulti && !Layer.ForceSingleOverride) {
 			for (let hideGroup of Layer.HideOverrideLayerMulti) {
 				for (let LL of Object.keys(LayerGroups[hideGroup])) {
@@ -1140,7 +1169,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		}
 	}
 	if (Model.Properties) {
-		let prop = Model.Properties[Layer.InheritColor || Layer.Name];
+		prop = Model.Properties[Layer.InheritColor || Layer.Name];
 		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
 			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
 		} else if (prop) {

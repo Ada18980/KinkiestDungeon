@@ -30,9 +30,41 @@ TODO:
 
 TODO remove hogtie when released
 
-5.4.1
+5.3-RC10
+- You can now use quick inventory or hotbar to attempt to truss up targets
+  (or wear items by clicking yourself)
+- New upgrade: Reaching Authority
+- Added Spats and BrowsDai1 and 2
+- Releasing NPCs gives back items (so you dont have to free them manually first)
+- Old guardians leashing you to highsec now take you to doll processing Instead
+- Faction rep affects personal opinion less
+- Attacking enemies now reduces their opinion of you (it's personal)
+- Added the 'Robe of Chastity' in lesser gold chests
+- Flanking enemies now makes them vulnerable (instead of stunned)
+- Fixed a bug where removing one generic restraint item would remove all of them
+- Fixed bug where traps would spawn in places there were not supposed to be any
+- Fixed bug where the void would sometimes be an actual void and not a discount void (with demon squatters)
+- Fixed bug where prisoners you reclaim would not actually be reclaimed but rather cast into the ether (and are inaccessible as prisoners)
+
+
+5.3.35 RC8-RC9
+- Added filter field in collection
+- Fixed a bug where sensory mask was being applied infinitely
+- Autobind should now use raw materials as well for restraints
+- Resolved a bug where the binding dress in recycler couldnt be made but still took resources
+- Resolved a bug where enchanted armor got duplicated when it gets knocked off by enemies
+
+5.3.35 RC7
+- Fix sailor shirt exposing kneel pose midriff
+- Fix crash when leaving summit sometimes
+- Fix zooming not affecting many indicators
+- Ancient chastity bra clarified to only reduce damage from attacks (current behavior, no change)
+- Ancient chastity bra now blocks 20 damage up from 10
+- Fixed bug where you cant ransom most enemies
 - Time Stop now allows you to tie up enemies more easily during its duration
 - Time ghosts are slightly faster
+
+
 5.3.35 RC6
 - Added toggle for front plugs. May cause balance issues.
 

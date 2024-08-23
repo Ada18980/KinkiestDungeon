@@ -27,6 +27,8 @@ let KDCollectionTabButtons = [
 	"Release",
 ];
 
+let KDCollFilter = "";
+
 let KDCollectionFilters = {
 	Opinion: {
 		Current: 0,
@@ -158,7 +160,7 @@ function KinkyDungeonDrawBondage(xOffset = -125) {
 	let x = 1225 + xOffset;
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 	let en = KDCurrentRestrainingTarget ? KDGetGlobalEntity(KDCurrentRestrainingTarget) : null;
-	if (en && KDCanBind(en) && KDCanApplyBondage(en, KDPlayer())) {
+	if (en && KDCanBind(en) && (KDCanApplyBondage(en, KDPlayer()) || KinkyDungeonFlags.get("quickBind"))) {
 		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
 	} else {
 		KinkyDungeonDrawState = "Game";
@@ -235,7 +237,7 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 		if (allowFaction) {
 			let faction = KDGetFaction(enemy);
 			let rel = KDFactionRelation("Player", faction);
-			op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+			op += (rel > 0 ? 10 : 20) * (!allowOnlyPosNegFaction ? rel :
 			(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
 				: Math.min(rel, 0)
 			)
@@ -252,7 +254,7 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 		let op = KDGameData.Collection[id + ""].Opinion || 0;
 		if (allowFaction) {
 			let rel = KDFactionRelation("Player", faction);
-			op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+			op += (rel > 0 ? 10 : 20) * (!allowOnlyPosNegFaction ? rel :
 			(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
 				: Math.min(rel, 0)
 			)
@@ -561,6 +563,8 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 				let value2 = value;
 				//if (KDOriginalValue) {
 				value2.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
+
+				KinkyDungeonCheckClothesLoss = true;
 				//}
 			};
 			if (value.customOutfit) {
@@ -757,7 +761,8 @@ function KDNPCUnavailable(id, status) {
 		|| (status && KDIsInCapturedPartyID(id))
 		|| (KDGetGlobalEntity(id) &&
 			(KDIsImprisonedByEnemy(id))
-			|| (KinkyDungeonFindID(id) && !KDIsImprisoned(KinkyDungeonFindID(id)) && KDHostile(KinkyDungeonFindID(id))));
+			|| (KinkyDungeonFindID(id)
+			&& !KDIsImprisoned(KinkyDungeonFindID(id)) && KDHostile(KinkyDungeonFindID(id))));
 
 }
 
@@ -844,6 +849,19 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 	}
 
 
+	let TF = KDTextField("CollFilter",
+		x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2
+		- 200,
+		y - KDCollectionSpacing + 20, 400, 45, "text", "", "45");
+	if (TF.Created) {
+		//KDCollFilter = "";
+		ElementValue("CollFilter", KDCollFilter || "");
+		TF.Element.oninput = (event) => {
+			KDCollFilter = ElementValue("CollFilter");
+			KDCollectionIndex = 0;
+		};
+	}
+
 	// Collection
 	let guests = [];
 	let filters = [];
@@ -853,14 +871,31 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 		}
 	}
 	let rendered = [];
+	let cf = KDCollFilter ? KDCollFilter.toLocaleUpperCase() : null;
 	// Iterate thru the collection, parting out the notable ones to the top
 	for (let value of KDGameData.CollectionSorted) {
 		if (value.status) KDGetPersistentNPC(value.id); // All guests and servants are persistent
+		if (cf && !((
+			value.name.toLocaleUpperCase()
+				.includes(cf)
+		) || (
+			value.type?.toLocaleUpperCase()
+				.includes(cf)
+		) || (
+			TextGet("Name" + value.type).toLocaleUpperCase()
+				.includes(cf)
+		) || (
+			value.Faction && TextGet("KinkyDungeonFaction" + value.Faction).toLocaleUpperCase()
+				.includes(cf)
+		))) {
+			continue;
+		}
 		if (value.status == "Servant") {
 			guests.push(value);
 			continue;
 		}
 		if (value.status != KDCollectionTabStatus) continue;
+
 
 		if (KDCollectionSelected == value.id) selectedIndex = II + 1;
 
@@ -1076,7 +1111,7 @@ function KDSortCollection() {
 		}
 	);
 	for (let a of KDGameData.CollectionSorted) {
-		if (a.status) KDGameData.CollectionGuests++;
+		if (a.status == "Servant") KDGameData.CollectionGuests++;
 	}
 
 }
@@ -1248,6 +1283,8 @@ function KDDrawNPCBars(value, x, y, width) {
 	let oldEnemy = enemy.Enemy;
 	KDUnPackEnemy(enemy);
 
+	let defaultSpeed = KDIsImprisoned(enemy) || !KinkyDungeonFindID(enemy.id);
+
 	let II = 0;
 	let height = 12;
 	let spacing = height + 2;
@@ -1259,7 +1296,7 @@ function KDDrawNPCBars(value, x, y, width) {
 	if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 		let visualbond = bindAmpMod * enemy.visual_boundlevel;
 		let bindingBars = maxBars;//Math.ceil( visualbond / enemy.Enemy.maxhp);
-		let SM = KDGetEnemyStruggleMod(enemy, true, true);
+		let SM = KDGetEnemyStruggleMod(enemy, true, defaultSpeed);
 		let futureBound = KDPredictStruggle(enemy, SM, 1);
 		yy += Math.min(maxBars, bindingBars) * spacing - 10;
 		for (let i = 0; i < bindingBars && i < maxBars; i++) {

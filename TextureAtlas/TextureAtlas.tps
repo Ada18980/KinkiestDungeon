@@ -2205,6 +2205,39 @@
             <key type="filename">../Models/Ribbon/TopThigh3Closed.png</key>
             <key type="filename">../Models/Ribbon/TopThigh3KneelClosed.png</key>
             <key type="filename">../Models/Ribbon/TopToeClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/BaseClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/BaseKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/BaseSpread.png</key>
+            <key type="filename">../Models/RobeOfChastity/Cape.png</key>
+            <key type="filename">../Models/RobeOfChastity/CapeKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestBase.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestBaseTied.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestFabric.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestFabricTied.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestFrill.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestGold.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestGoldBase.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestGoldBaseTied.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestGoldTied.png</key>
+            <key type="filename">../Models/RobeOfChastity/ChestPlate.png</key>
+            <key type="filename">../Models/RobeOfChastity/FabricClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/FabricKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/FabricSpread.png</key>
+            <key type="filename">../Models/RobeOfChastity/FrillClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/FrillKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/FrillSpread.png</key>
+            <key type="filename">../Models/RobeOfChastity/GoldBaseClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/GoldBaseKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/GoldBaseSpread.png</key>
+            <key type="filename">../Models/RobeOfChastity/GoldClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/GoldKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/GoldSpread.png</key>
+            <key type="filename">../Models/RobeOfChastity/PauldronsFree.png</key>
+            <key type="filename">../Models/RobeOfChastity/PauldronsTied.png</key>
+            <key type="filename">../Models/RobeOfChastity/PauldronsYoked.png</key>
+            <key type="filename">../Models/RobeOfChastity/PlateClosed.png</key>
+            <key type="filename">../Models/RobeOfChastity/PlateKneel.png</key>
+            <key type="filename">../Models/RobeOfChastity/PlateSpread.png</key>
             <key type="filename">../Models/Robes/Bra.png</key>
             <key type="filename">../Models/Robes/Chest.png</key>
             <key type="filename">../Models/Robes/PantsClosed.png</key>
@@ -2428,6 +2461,7 @@
             <key type="filename">../Models/Sailor/ShirtChestTied.png</key>
             <key type="filename">../Models/Sailor/ShirtChestUp.png</key>
             <key type="filename">../Models/Sailor/ShirtChestYoked.png</key>
+            <key type="filename">../Models/Sailor/ShirtKneel.png</key>
             <key type="filename">../Models/Sailor/SleeveLeft.png</key>
             <key type="filename">../Models/Sailor/SleeveLeftTied.png</key>
             <key type="filename">../Models/Sailor/SleeveLeftUp.png</key>
@@ -2579,6 +2613,10 @@
             <key type="filename">../Models/SmoothHeels/RightHogtie.png</key>
             <key type="filename">../Models/SmoothHeels/RightKneel.png</key>
             <key type="filename">../Models/SmoothHeels/RightSpread.png</key>
+            <key type="filename">../Models/Spats/SpatsClosed.png</key>
+            <key type="filename">../Models/Spats/SpatsKneel.png</key>
+            <key type="filename">../Models/Spats/SpatsKneelClosed.png</key>
+            <key type="filename">../Models/Spats/SpatsSpread.png</key>
             <key type="filename">../Models/SteelChastity/Belt.png</key>
             <key type="filename">../Models/SteelChastity/BeltPadlock.png</key>
             <key type="filename">../Models/SteelChastity/BeltPadlockPin.png</key>
@@ -3735,6 +3773,177 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Models/EyesDai1/Brows2Angry.png</key>
+            <key type="filename">../Models/EyesDai1/RidgeAngry.png</key>
+            <key type="filename">../Models/EyesDai1/RidgeSad.png</key>
+            <key type="filename">../Models/EyesDai2/Brows2Angry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>351,177,703,355</rect>
+                <key>scale9Paddings</key>
+                <rect>351,177,703,355</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/Brows2Annoyed.png</key>
+            <key type="filename">../Models/EyesDai2/Brows2Annoyed.png</key>
+            <key type="filename">../Models/FaceKjus/Brows2Annoyed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>359,202,717,405</rect>
+                <key>scale9Paddings</key>
+                <rect>359,202,717,405</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/Brows2Neutral.png</key>
+            <key type="filename">../Models/EyesDai2/Brows2Neutral.png</key>
+            <key type="filename">../Models/FaceKjus/Brows2Neutral.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>362,212,725,423</rect>
+                <key>scale9Paddings</key>
+                <rect>362,212,725,423</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/Brows2Sad.png</key>
+            <key type="filename">../Models/EyesDai2/Brows2Sad.png</key>
+            <key type="filename">../Models/FaceKjus/Brows2Sad.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>363,266,726,531</rect>
+                <key>scale9Paddings</key>
+                <rect>363,266,726,531</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/Brows2Surprised.png</key>
+            <key type="filename">../Models/EyesDai2/Brows2Surprised.png</key>
+            <key type="filename">../Models/FaceKjus/Brows2Surprised.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>407,251,813,502</rect>
+                <key>scale9Paddings</key>
+                <rect>407,251,813,502</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/BrowsAngry.png</key>
+            <key type="filename">../Models/EyesDai2/BrowsAngry.png</key>
+            <key type="filename">../Models/FaceKjus/BrowsAngry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>347,203,693,407</rect>
+                <key>scale9Paddings</key>
+                <rect>347,203,693,407</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/BrowsAnnoyed.png</key>
+            <key type="filename">../Models/EyesDai2/BrowsAnnoyed.png</key>
+            <key type="filename">../Models/FaceKjus/BrowsAnnoyed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>382,213,765,427</rect>
+                <key>scale9Paddings</key>
+                <rect>382,213,765,427</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/BrowsNeutral.png</key>
+            <key type="filename">../Models/EyesDai2/BrowsNeutral.png</key>
+            <key type="filename">../Models/FaceKjus/BrowsNeutral.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>372,230,743,461</rect>
+                <key>scale9Paddings</key>
+                <rect>372,230,743,461</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/BrowsSad.png</key>
+            <key type="filename">../Models/EyesDai2/BrowsSad.png</key>
+            <key type="filename">../Models/FaceKjus/BrowsSad.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>403,258,805,515</rect>
+                <key>scale9Paddings</key>
+                <rect>403,258,805,515</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesDai1/BrowsSurprised.png</key>
+            <key type="filename">../Models/EyesDai2/BrowsSurprised.png</key>
+            <key type="filename">../Models/FaceKjus/BrowsSurprised.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>369,205,738,409</rect>
+                <key>scale9Paddings</key>
+                <rect>369,205,738,409</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Models/EyesK2/Eyes2Angry.png</key>
             <key type="filename">../Models/EyesK2/Eyes2Closed.png</key>
             <key type="filename">../Models/EyesK2/Eyes2Dazed.png</key>
@@ -3875,141 +4084,6 @@
                 <rect>417,291,833,581</rect>
                 <key>scale9Paddings</key>
                 <rect>417,291,833,581</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/Brows2Annoyed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>359,202,717,405</rect>
-                <key>scale9Paddings</key>
-                <rect>359,202,717,405</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/Brows2Neutral.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>362,212,725,423</rect>
-                <key>scale9Paddings</key>
-                <rect>362,212,725,423</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/Brows2Sad.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>363,266,726,531</rect>
-                <key>scale9Paddings</key>
-                <rect>363,266,726,531</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/Brows2Surprised.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>407,251,813,502</rect>
-                <key>scale9Paddings</key>
-                <rect>407,251,813,502</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/BrowsAngry.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>347,203,693,407</rect>
-                <key>scale9Paddings</key>
-                <rect>347,203,693,407</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/BrowsAnnoyed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>382,213,765,427</rect>
-                <key>scale9Paddings</key>
-                <rect>382,213,765,427</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/BrowsNeutral.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>372,230,743,461</rect>
-                <key>scale9Paddings</key>
-                <rect>372,230,743,461</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/BrowsSad.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>403,258,805,515</rect>
-                <key>scale9Paddings</key>
-                <rect>403,258,805,515</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/BrowsSurprised.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>369,205,738,409</rect>
-                <key>scale9Paddings</key>
-                <rect>369,205,738,409</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

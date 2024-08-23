@@ -952,6 +952,14 @@ function KDDoModalX(bdata) {
 	KDPlayerSetPose = false;
 }
 
+function KDGetSpellRange(spell) {
+	let data = {
+		spell: spell,
+		range: spell.range || 0,
+	};
+	KinkyDungeonSendEvent("calcSpellRange", data);
+	return data.range;
+}
 
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
@@ -1002,22 +1010,23 @@ function KinkyDungeonDrawGame() {
 	KDRefresh = false;
 
 
+	// @ts-ignore
 	if ((KinkyDungeonGameKey.keyPressed[9]) && !KinkyDungeonDrawStatesModal.includes(KinkyDungeonDrawState)) {
-		let cancelType = null;
-		for (let cancelT of KDCustomCancels) {
-			if (cancelT.condition()) {
-				cancelType = cancelT.cancel;
-				break;
-			}
-		}
-		if (cancelType) {
-			cancelType();
-		}
+
 		// @ts-ignore
-		else if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
+		if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) {
 			KinkyDungeonGameKey.keyPressed[9] = false;
 		} else {
-			if (KinkyDungeonDrawState == "Magic") {
+			let cancelType = null;
+			for (let cancelT of KDCustomCancels) {
+				if (cancelT.condition()) {
+					cancelType = cancelT.cancel;
+					break;
+				}
+			}
+			if (cancelType) {
+				cancelType();
+			} else if (KinkyDungeonDrawState == "Magic") {
 				KinkyDungeonDrawState = "MagicSpells";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
@@ -1051,6 +1060,8 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawState = "Game";
 				KinkyDungeonMessageToggle = false;
 				KinkyDungeonTargetingSpell = null;
+				KinkyDungeonTargetingSpellItem = null;
+				KinkyDungeonTargetingSpellWeapon = null;
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonSpellPress = "";
@@ -1207,14 +1218,14 @@ function KinkyDungeonDrawGame() {
 									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
-										KinkyDungeonSpriteSize * (1 + s), KinkyDungeonSpriteSize * (1 + s), undefined, {
+										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											zIndex: 2.1,
 										});
 								} else {
 									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.aurasprite ? b.aurasprite : "Aura") + ".png",
 										(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
-										KinkyDungeonSpriteSize * (1 + s), KinkyDungeonSpriteSize * (1 + s), undefined, {
+										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											tint: string2hex(b.aura),
 											zIndex: 2.1,
 										});
@@ -1348,7 +1359,7 @@ function KinkyDungeonDrawGame() {
 
 
 				// Draw targeting reticule
-				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !KinkyDungeonShowInventory && KinkyDungeonIsPlayer()
+				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !(KinkyDungeonShowInventory && !KinkyDungeonTargetingSpell) && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
 					if (KinkyDungeonInspect) {
 						KinkyDungeonSetTargetLocation(KDToggles.Helper);
@@ -1377,7 +1388,7 @@ function KinkyDungeonDrawGame() {
 							"#8888ff"
 						);
 
-						let spellRange = KinkyDungeonTargetingSpell.range * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
+						let spellRange = KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
 
 						let spellValid = (x, y, projAimOverride) => {
 							let free = KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(x, y)) || KinkyDungeonVisionGet(x, y) < 0.1;
@@ -2227,7 +2238,7 @@ let KDBulletSpeed = 40;
 let KDEntitiesFloaterRegisty = new Map();
 let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
 
-function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, suff = "") {
+function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, suff = "", size, prefix) {
 	if (Entity.x && Entity.y) {
 		let II = KDEntitiesFloaterRegisty.get(Entity) || 1;
 		II += 1;
@@ -2241,7 +2252,8 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 			speed: 30,// + (Time ? Time : 0) + Math.random()*10,
 			t: 0,
 			color: Color,
-			text: "" + ((typeof Amount === "string") ? Amount : Math.round(Amount * 10)/10) + suff,
+			size: size,
+			text: "" + ((typeof Amount === "string") ? Amount : (prefix || "") + Math.round(Amount * 10)/10) + suff,
 			lifetime: Time ? stringFloaterMult*Time : ((typeof Amount === "string") ? stringFloaterMult*4 : floaterMult*((Amount < 3) ? 2 : (Amount > 5 ? 3 : 2))),
 		};
 		KinkyDungeonFloaters.push(floater);
@@ -2297,7 +2309,7 @@ function KinkyDungeonDrawFloaters(CamX, CamY, onlyAbs = false) {
 
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
 				x, y - floater.speed*floater.t/floatermult,
-				1000, floater.color, KDTextGray1, 24, undefined, undefined, KDEase(floater.t / floater.lifetime));
+				1000, floater.color, KDTextGray1, floater.size || 20, undefined, undefined, KDEase(floater.t / floater.lifetime));
 		}
 		if (floater.t < floater.lifetime) newFloaters.push(floater);
 		i += 1;
@@ -4048,6 +4060,9 @@ let KDEffectTileTooltips = {
 	'Glue': {
 		color: "#e7cf1a",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#e7cf1a", "KDEffectTileTooltipCMDGlue");}},
+	'Radiance': {
+		color: "#ffff00",
+		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffff00", "Radiance");}},
 	'Latex': {
 		color: "#d952ff",
 		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
@@ -4269,8 +4284,9 @@ function KDTextArea(Name, Left, Top, Width, Height) {
  * @param {string} Type
  * @param {string} Value
  * @param {string} MaxLength
+ * @param {string} [TextSize]
  */
-function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", MaxLength = "30") {
+function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", MaxLength = "30", TextSize) {
 	let Element = KDTempElements.get(Name);
 	let created = false;
 	if (!Element) {
@@ -4278,6 +4294,9 @@ function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", 
 		Element = document.getElementById(Name);
 		KDTempElements.set(Name, Element);
 		if (Element) created = true;
+		if (TextSize) {
+			Element.setAttribute("fontSize", TextSize);
+		}
 	}
 	KDElementPosition(Name, Left, Top, Width, Height);
 	KDDrawnElements.set(Name, Element);

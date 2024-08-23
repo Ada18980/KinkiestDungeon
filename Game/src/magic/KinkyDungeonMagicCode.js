@@ -88,7 +88,7 @@ let KinkyDungeonSpellSpecials = {
 						effectTileTrail: spell2.effectTileTrail, effectTileDurationModTrail: spell2.effectTileDurationModTrail, effectTileTrailAoE: spell2.effectTileTrailAoE,
 						passthrough: spell2.noTerrainHit, noEnemyCollision: spell2.noEnemyCollision, alwaysCollideTags: spell2.alwaysCollideTags, nonVolatile:spell2.nonVolatile, noDoubleHit: spell2.noDoubleHit,
 						pierceEnemies: spell2.pierceEnemies, piercing: spell2.piercing, events: spell2.events,
-						lifetime:miscast || selfCast ? 1 : (spell2.bulletLifetime ? spell2.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: spell2.range, hit:spell2.onhit,
+						lifetime:miscast || selfCast ? 1 : (spell2.bulletLifetime ? spell2.bulletLifetime : 1000), origin: {x: entity.x, y: entity.y}, range: KDGetSpellRange(spell2), hit:spell2.onhit,
 						damage: {evadeable: spell2.evadeable, noblock: spell2.noblock,  damage:spell2.power, type:spell2.damage, crit: spell2.crit, bindcrit: spell2.bindcrit, bind: spell2.bind,
 							shield_crit: spell2?.shield_crit, // Crit thru shield
 							shield_stun: spell2?.shield_stun, // stun thru shield
@@ -247,19 +247,182 @@ let KinkyDungeonSpellSpecials = {
 		return "Fail";
 	},
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
-		let en = KinkyDungeonEnemyAt(targetX, targetY);
+		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en?.Enemy) {
-			if (KDCanBind(en) && KDCanApplyBondage(en, entity)) {
-				//KDGameData.InventoryAction = "Bondage";
-				KDCurrentRestrainingTarget = en.id;
-				KinkyDungeonDrawState = "Bondage";
-				//KinkyDungeonCurrentFilter = LooseRestraint;
-				KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
-				return "Cast";
-			} else {
-				KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
-				return "Fail";
+			let fail = KinkyDungeoCheckComponents(spell, entity.x, entity.y, false).length > 0;
+			if (!fail) {
+				let castdata = {
+					targetX: targetX,
+					targetY: targetY,
+					spell: spell,
+					flags: {
+						miscastChance: KinkyDungeonMiscastChance,
+					},
+					gaggedMiscastFlag: false,
+					gaggedMiscastType: "Gagged",
+				};
+				KDDoGaggedMiscastFlag(castdata);
+
+				if (castdata.gaggedMiscastFlag) fail = true;
 			}
+			if (!fail) {
+				if (KDCanBind(en) && KDCanApplyBondage(en, entity,
+						KinkyDungeonTargetingSpellItem ? (
+							KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition ?
+							(t, p) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](
+								t, p,
+								KDRestraint(KinkyDungeonTargetingSpellItem),
+								KinkyDungeonTargetingSpellItem)) :
+							false
+						) : undefined)) {
+					//KDGameData.InventoryAction = "Bondage";
+
+					if (KinkyDungeonTargetingSpellItem) {
+						let r = KDRestraint(KinkyDungeonTargetingSpellItem);
+						let raw = r.shrine.includes("Raw");
+
+						if (raw) {
+							KDNPCBindingGeneric = true;
+
+							KDSelectedGenericRestraintType = Object.values(KDRestraintGenericTypes).find(
+								(type) => {return type.raw == r.name;}
+							)?.raw || null;
+
+							KDCurrentRestrainingTarget = en.id;
+							KinkyDungeonDrawState = "Bondage";
+							// Select wrists
+							KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
+						} else {
+							// get the binding slot this item fits in
+							let slots = KDGetNPCBindingSlotForItem(r, en.id);
+							if (slots) {
+								let rs = KDGetNPCRestraints(en.id);
+								if (rs && rs[slots.sgroup.id] != undefined) {
+									// If its filled we indicate to the player that its full
+									KDNPCBindingGeneric = false;
+									KDNPCBindingSelectedRow = slots.row;
+									KDNPCBindingSelectedSlot = slots.sgroup;
+									KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
+								} else {
+									// if it's empty we attempt to apply it
+									let condition = KDCanEquipItemOnNPC(r, en.id);
+									if (condition) {
+										KinkyDungeonSendTextMessage(8,
+											TextGet("KDBondageCondition_" + condition),
+											"#ff5555", 1, true);
+
+										KDCurrentRestrainingTarget = en.id;
+										KinkyDungeonDrawState = "Bondage";
+										// Hover the new item
+										KDNPCBindingGeneric = false;
+										KDNPCBindingSelectedRow = slots.row;
+										KDNPCBindingSelectedSlot = slots.sgroup;
+										KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
+									} else {
+										KDInputSetNPCRestraint({
+											slot: slots.sgroup.id,
+											id: undefined,
+											faction: KinkyDungeonTargetingSpellItem.faction,
+											restraint: KinkyDungeonTargetingSpellItem.name,
+											restraintid: KinkyDungeonTargetingSpellItem.id,
+											lock: "",
+											npc: en.id
+										});
+
+										KinkyDungeonSendTextMessage(10,
+											TextGet("KDTieUpEnemy")
+												.replace("RSTR",
+													KDGetItemName(KinkyDungeonTargetingSpellItem))//TextGet("Restraint" + KDRestraint(item)?.name))
+												.replace("ENNME",
+													TextGet("Name" + en?.Enemy.name))
+												.replace("AMNT",
+													"" + Math.round(100 * en?.boundLevel / en?.Enemy.maxhp)),
+											"#ffffff", 1);
+
+										KinkyDungeonAdvanceTime(1, true);
+										KDSetCollFlag(en.id, "restrained", 1);
+										KDSetCollFlag(en.id, "restrained_recently", 24);
+										KinkyDungeonCheckClothesLoss = true;
+									}
+								}
+							} else {
+								KinkyDungeonSendTextMessage(8,
+									TextGet("KDAlreadyBound"),
+									"#ff5555", 1, true);
+
+								KDCurrentRestrainingTarget = en.id;
+								KinkyDungeonDrawState = "Bondage";
+								KinkyDungeonSetFlag("quickBind", 1);
+								// Hover the new item
+								KDNPCBindingGeneric = false;
+								slots = KDGetNPCBindingSlotForItem(r, en.id, true);
+								if (slots) {
+									KDNPCBindingSelectedRow = slots.row;
+									KDNPCBindingSelectedSlot = slots.sgroup;
+								}
+								KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
+								//KinkyDungeonTargetingSpellItem = null;
+							}
+						}
+						return "Cast";
+					} else {
+
+						KDCurrentRestrainingTarget = en.id;
+						KinkyDungeonDrawState = "Bondage";
+
+						// Select wrists
+						KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
+
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
+						return "Fail";
+					}
+
+					//KinkyDungeonCurrentFilter = LooseRestraint;
+				} else {
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
+					return "Fail";
+				}
+			}
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), "#ff5555", 1, true);
+			return "Fail";
+
+		} else if (en == entity) {
+			if (KinkyDungeonTargetingSpellItem) {
+				let r = KDRestraint(KinkyDungeonTargetingSpellItem);
+				if (r) {
+
+					let equippable = false;
+					if (KDDebugLink) {
+						equippable = KDCanAddRestraint(r, true, "", false,
+							KinkyDungeonTargetingSpellItem, true, true);
+					} else {
+						equippable = !KinkyDungeonGetRestraintItem(r.Group)
+							|| KDCurrentItemLinkable(KinkyDungeonGetRestraintItem(r.Group), r);
+					}
+					if (equippable) {
+						if (KDSendInput("equip", {name: KinkyDungeonTargetingSpellItem.name,
+							inventoryVariant: KinkyDungeonTargetingSpellItem.name != r.name ?
+								KinkyDungeonTargetingSpellItem.name : undefined,
+							faction: KinkyDungeonTargetingSpellItem.faction,
+							group: r.Group, curse: KinkyDungeonTargetingSpellItem.curse,
+							currentItem: KinkyDungeonGetRestraintItem(r.Group) ?
+								KinkyDungeonGetRestraintItem(r.Group).name : undefined,
+							events: Object.assign([], KinkyDungeonTargetingSpellItem.events)}, undefined, undefined, true)) {
+							return "Cast";
+						} else {
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+						}
+					} else {
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), "#ff5555", 1, true);
+					}
+
+
+				} else {
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+				}
+			}
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), "#ff5555", 1, true);
+			return "Fail";
 		}
 		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
 		return "Fail";

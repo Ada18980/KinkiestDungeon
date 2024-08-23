@@ -427,6 +427,7 @@ function KD_PasteTile(tile, x, y, data) {
 					KinkyDungeonTilesSet((x + xx) + "," + (y + yy), {
 						Type: "Trap",
 						Trap: "BedTrap",
+						Furniture: "Bed",
 					});
 			}
 		}

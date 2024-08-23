@@ -220,7 +220,7 @@ let KDConfirmDeleteSave = false;
 
 
 function KDHandleGame() {
-	if (KinkyDungeonShowInventory) {
+	if (KinkyDungeonShowInventory && (!KinkyDungeonTargetingSpell || MouseIn(0, 0, 500, PIXIHeight))) {
 		// Done, converted to input
 		KinkyDungeonhandleQuickInv();
 		return true;
@@ -595,8 +595,9 @@ function KDDrawSpellChoices() {
 				}
 				// Render number
 				//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 101);
-				if (consumable) {
-					let con = KinkyDungeonInventoryGetConsumable(consumable);
+				if (consumable || arm) {
+					let con = KinkyDungeonInventoryGetConsumable(consumable)
+						|| KinkyDungeonInventoryGetLoose(arm);
 					if (con) {
 						DrawTextFitKD((con.quantity || 0) + 'x',
 							buttonDim.x + buttonDim.w-1,
@@ -787,7 +788,8 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 	// Draw Stamina
 	KinkyDungeonBar(x - 5, y + 5 - 2.5*heightPerBar, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatStaminaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax,
-		"#4fd658", "#283540", KDGameData.LastSP/KinkyDungeonStatStaminaMax * 100, "#ffee83",
+		"#4fd658", "#222222", KDGameData.LastSP/KinkyDungeonStatStaminaMax * 100,
+		KDGameData.LastSP > KinkyDungeonStatStamina ? "#e64539" : "#ffee83",
 		KDSteps(KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax, attackCost/KinkyDungeonStatStaminaMax), "#283540", "#4fd658");
 	DrawTextFitKD(
 		TextGet("StatStamina").replace("MAX", KinkyDungeonStatStaminaMax*10 + "")
@@ -795,10 +797,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 		x, y - 5 - 1.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 
 	DrawButtonKDEx("usePotionStamina", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionStamina", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionStamina", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionStamina") && KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax,
 	x - buttonWidth/1.85 , y - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax && KinkyDungeonItemCount("PotionStamina")) ? "#AAFFAA" : "#333333",
@@ -809,7 +811,8 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 	// Draw mana
 	KinkyDungeonBar(x - 5, y - 1*heightPerBar, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatManaMax/KDMaxStatStart), heightPerBar, 100*KinkyDungeonStatMana/KinkyDungeonStatManaMax,
-		"#4fa4b8", "#4c6885", KDGameData.LastMP/KinkyDungeonStatManaMax * 100, "#92e8c0",
+		"#4fa4b8", "#222222", KDGameData.LastMP/KinkyDungeonStatManaMax * 100,
+		KDGameData.LastMP > KinkyDungeonStatMana ? "#2d5782" : "#92e8c0",
 		KDLinspace(0, 1, Math.ceil(KinkyDungeonStatManaMax/5)), "#4c6885", "#4fa4b8");
 	KinkyDungeonBar(x - 5, y - offBarHeight, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatManaMax/KDMaxStatStart), offBarHeight, 100*KinkyDungeonStatManaPool/KinkyDungeonStatManaPoolMax,
 		"#efefff", "none", undefined, undefined, undefined, undefined, undefined, 56);
@@ -818,10 +821,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 			.replace("CURRENT", Math.floor(KinkyDungeonStatMana*10) + ""),
 		x, y - 0.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 	DrawButtonKDEx("usePotionMana", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionMana", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionMana", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionMana") && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax),
 	x - buttonWidth/1.85, y - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatMana < KinkyDungeonStatManaMax && KinkyDungeonItemCount("PotionMana")) ? "#AAAAFF" : "#333333",
@@ -835,7 +838,8 @@ function KDDrawStatusBars(x, y, width = 125) {
 	// Draw distraction
 	KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 0.75*heightPerBar + heightPerBar * barHeightOffset2ndSet, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart), heightPerBar/2,
 		100*KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, "#ff5277",
-		"#692464", KDGameData.LastAP/KinkyDungeonStatDistractionMax * 100, "#ffa1b4",
+		"#692464", KDGameData.LastAP/KinkyDungeonStatDistractionMax * 100,
+		KDGameData.LastAP > KinkyDungeonStatDistraction ? "#aaaaaa" : "#ffa1b4",
 		distRate < 0 ? KDSteps(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, KDGetDistractionRate(0)/KinkyDungeonStatDistractionMax, 3) : undefined, distRate < 0 ? "#692464" : undefined, distRate < 0 ? "#692464" : undefined);
 	if (KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax >= 0.05) {
 		KDDraw(kdcanvas, kdpixisprites, "dist_lower", KinkyDungeonRootDirectory + "UI/Heart.png",
@@ -849,16 +853,31 @@ function KDDrawStatusBars(x, y, width = 125) {
 			"#ff5277", "none", undefined, undefined, undefined, undefined, undefined, 56);
 
 	}
+	let showRaw = MouseIn(
+		x - 5 + width * barWidthOffset2ndSet,
+		y - 5 - 1*heightPerBar + heightPerBar * barHeightOffset2ndSet,
+		flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart),
+		heightPerBar
+	);
+	if (KDToggles.RawDP) {
+		showRaw = !showRaw;
+	}
 	DrawTextFitKD(
-		TextGet("StatDistraction")
-			.replace("PERCENT", "" + Math.round(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100)),
+		!showRaw ? TextGet("StatDistraction")
+			.replace("PERCENT", "" + Math.round(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax * 100))
+			: TextGet("StatDistractionHover")
+			.replace("MAX", KinkyDungeonStatDistractionMax*10 + "")
+			.replace("CURRENT", Math.floor(KinkyDungeonStatDistraction*10) + "")
+			.replace("PERCENT", "" + Math.round(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax * 100))
+
+			,
 		x  + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1 - 0.5*heightPerBar, 200, "#ffffff", "#000000", 16, "left", undefined, undefined, 4);
 
 	DrawButtonKDEx("usePotionFrigid", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionFrigid", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionFrigid", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionFrigid") && KinkyDungeonStatDistraction > 0,
 	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 1.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatDistraction > 0 && KinkyDungeonItemCount("PotionFrigid")) ? "#333333" : "Pink",
@@ -872,7 +891,8 @@ function KDDrawStatusBars(x, y, width = 125) {
 	// Draw will
 	KinkyDungeonBar(x - 5 + width * barWidthOffset2ndSet, y - 5 - 2*heightPerBar + heightPerBar * barHeightOffset2ndSet, flip * width * (barBaseScale + barAmountScale*KinkyDungeonStatDistractionMax/KDMaxStatStart), heightPerBar,
 		100*KinkyDungeonStatWill/KinkyDungeonStatWillMax, "#ff4444", "#222222",
-		KDGameData.LastWP/KinkyDungeonStatWillMax * 100, "#aa0000",
+		KDGameData.LastWP/KinkyDungeonStatWillMax * 100,
+		KDGameData.LastAP > KinkyDungeonStatWill ? "#aa0000" : "#ffee83",
 		KDLinspace(0, 1, 4), "#222222", "#ff4444");
 	DrawTextFitKD(
 		TextGet("StatWill")
@@ -881,10 +901,10 @@ function KDDrawStatusBars(x, y, width = 125) {
 
 
 	DrawButtonKDEx("usePotionWill", (b) => {
-		if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
+		//if (KinkyDungeonCanTalk(true) || KinkyDungeonPotionCollar())
 			// Done, converted to input
-			KDSendInput("consumable", {item: "PotionWill", quantity: 1});
-		else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
+		KDSendInput("consumable", {item: "PotionWill", quantity: 1});
+		//else KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), "orange", 1);
 		return true;
 	}, KinkyDungeonItemCount("PotionWill") && KinkyDungeonStatWill < KinkyDungeonStatWillMax,
 	x - buttonWidth/1.85 + width * barWidthOffset2ndSet, y + heightPerBar * barHeightOffset2ndSet - 5 - 2.5*heightPerBar + 10, buttonWidth, 26, "", (KinkyDungeonStatWill < KinkyDungeonStatWillMax && KinkyDungeonItemCount("PotionWill")) ? "#ff4444" : "#333333",
@@ -1027,7 +1047,9 @@ function KinkyDungeonDrawActionBar(x, y) {
 			KDSteps(KDGameData.Balance, -KDGetBalanceCost()*1.5), "#283540", "#4fd658");
 
 		if (!KDGameData.Training) KDGameData.Training = {};
-		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining").replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)), 1500, BalanceOffset, 200, "#ffffff", KDTextGray2,
+		DrawTextFitKDTo(kdstatusboard, TextGet("KDBalanceTraining")
+		.replace("AMNT", "" + (KDGameData.Training.Heels?.training_stage || 0)),
+			1500, BalanceOffset, 200, "#ffffff", KDTextGray2,
 			10, "right", 111, 0.9);
 
 	}
@@ -1494,6 +1516,7 @@ function KinkyDungeonActivateWeaponSpell(instant = false) {
 		} else if (!instant) {
 			KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.special.spell, true);
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
+			KinkyDungeonTargetingSpellItem = null;
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
@@ -1517,6 +1540,7 @@ function KinkyDungeonRangedAttack() {
 			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttackOrSpell", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
+			KinkyDungeonTargetingSpellItem = null;
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
@@ -1524,6 +1548,8 @@ function KinkyDungeonRangedAttack() {
 		} else if (KinkyDungeonPlayerDamage.special.type == "attack") {
 			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true, manacost: 0,
 				onhit:"", time:25, power: 0, range: KinkyDungeonPlayerDamage.special.range ? KinkyDungeonPlayerDamage.special.range : 1.5, size: 1, damage: ""};
+
+			KinkyDungeonTargetingSpellItem = null;
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
@@ -2396,11 +2422,28 @@ function KDProcessBuffIcons(minXX, minYY, side = false) {
 
 	if (KDToggleShowAllBuffs) {
 		for (let training of KDTrainingTypes) {
+			let XPNext = 0;
+			if (KDGameData.Training) {
+				if (KDGameData.Training[training]?.turns_total == 0) {
+					XPNext = 0;
+				} else {
+					let trainingPercentage = Math.min(1,
+						KDGameData.Training[training]?.turns_total/KDTrainingSoftScale)
+						* (Math.max(0, KDGameData.Training[training]?.turns_trained * 1.11
+							- KDGameData.Training[training]?.turns_skipped)/KDGameData.Training[training]?.turns_total);
+					if (KinkyDungeonStatsChoice.get("Mastery" + training)) trainingPercentage *= 0.4;
+					XPNext = trainingPercentage;
+				}
+			}
+
 			statsDraw["training" + training] = {text: TextGet("KDTrainingLevel" + training)
 				.replace("AMNT",
 				"" + Math.floor((KDGameData.Training ? (KDGameData.Training[training]?.training_points || 0) : 0)*100))
+				.replace("NXT",
+				"" + Math.floor((XPNext*100)))
 				.replace("LMT",
-					"" + Math.floor((KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1)*100))
+					"" + Math.floor((
+						KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1)*100))
 			,
 				category: "training", icon: "training/" + training, color: "#2fc6ce", bgcolor: "#333333", priority: 14,
 				count: Math.floor(KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) : 0) + "",

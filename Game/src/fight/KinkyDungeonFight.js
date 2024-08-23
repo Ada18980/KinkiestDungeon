@@ -428,6 +428,9 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 			if (Enemy && !Enemy.Enemy.allied) {
 				if (Enemy.vp) Enemy.vp = Math.min(2, Enemy.vp*2);
 				KinkyDungeonSetFlag("PlayerCombat", 8);
+				if (!Enemy.hostile) {
+					KDAddOpinionPersistent(Enemy.id, -10);
+				}
 				KinkyDungeonAggroAction('attack', {enemy: Enemy});
 			}
 		}
@@ -995,7 +998,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 				if (predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) {
 					if (predata.critical && !predata.customCrit) KDDamageQueue.push({floater: TextGet("KDCritical"), Entity: Enemy, Color: "#e7cf1a", Delay: Delay});
 					KDDamageQueue.push({floater: Math.round(predata.dmgDealt*10) + ` ${TextGet("KinkyDungeonDamageType" + KinkyDungeonDamageTypes[predata.type]?.name)} ${TextGet("KDdmg")}`,
-						Entity: Enemy, Color: "#ff4444", Delay: Delay, });
+						Entity: Enemy, Color: "#ff4444", Delay: Delay,
+						size: 12 + Math.min(24, Math.floor(predata.dmgDealt * 2))});
 				}
 			}
 
@@ -1635,7 +1639,7 @@ function KinkyDungeonUpdateBullets(delta, Allied) {
 			let startx = b.x;
 			let starty = b.y;
 			let end = false;
-			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > b.bullet.spell.range * 0.8 && b.bullet.spell.speed > 1) || (!b.bullet.spell.enemySpell && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
+			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > (KDGetSpellRange(b.bullet.spell) || b.bullet.spell.range) * 0.8 && b.bullet.spell.speed > 1) || (!b.bullet.spell.enemySpell && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
 
 			KDBulletEffectTiles(b);
 			KDUpdateBulletEffects(b, 0);
@@ -2576,7 +2580,7 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 			if (damage.sfx && KDToggles.Sound) KinkyDungeonPlaySound(damage.sfx);
 
 			if (damage.floater && !KDToggles.NoDmgFloaters) {
-				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, (KDToggles.FastFloaters ? 0.3 : 1) * damage.Time);
+				KinkyDungeonSendFloater(damage.Entity, damage.floater, damage.Color, (KDToggles.FastFloaters ? 0.3 : 1) * damage.Time, undefined, undefined, damage.size);
 			}
 
 			KDDamageQueue.splice(KDDamageQueue.indexOf(damage), 1);
@@ -2597,21 +2601,21 @@ function KinkyDungeonDrawFight(canvasOffsetX, canvasOffsetY, CamX, CamY) {
 
 				KDDraw(kdwarningboardOver, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpell.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
 						zIndex: -0.1,
 						alpha: 0.5,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 						tint: string2hex(t.color || "#ff5555"),
 						zIndex: -0.2,
 						alpha: 0.5,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
-					KinkyDungeonSpriteSize*scale, KinkyDungeonSpriteSize*scale, undefined, {
+					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 						zIndex: -0.21,
 						alpha: 0.5,
 					});

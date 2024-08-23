@@ -14,5 +14,17 @@ let KDCustomCancels = [
 			KinkyDungeonGameKey.keyPressed[9] = false;
 			KinkyDungeonKeybindingCurrentKey = '';
 		},
+	},
+	{
+		// Recycle
+		condition: () => {
+			return KinkyDungeonTargetingSpell && KinkyDungeonDrawState == "Game";
+		},
+		cancel: () => {
+			KinkyDungeonGameKey.keyPressed[9] = false;
+			KinkyDungeonTargetingSpell = null;
+			KinkyDungeonTargetingSpellItem = null;
+			KinkyDungeonTargetingSpellWeapon = null;
+		},
 	}
 ];

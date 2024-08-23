@@ -198,6 +198,8 @@
         "Data/ModelList_SMoonlight.ts",
         "Data/ModelList_PureWind.ts",
         "Data/ModelList_Bubble.ts",
+        "Data/ModelList_RobeOfChastity.ts",
+        "Data/ModelList_Spats.ts",
         "Data/ModelStylesList.ts",
         "Data/ModelStylesFace.ts",
         "Data/ModelStylesHair.ts",
@@ -205,6 +207,7 @@
         "Data/ModelStylesCosplay.ts",
         "Data/ModelDresses.ts",
         "Game/src/player/KDWardrobe.js",
+        "Game/src/restraint/KDGenRestraintUniform.ts"
     ],
     "compilerOptions": {
         "target": "es2020",

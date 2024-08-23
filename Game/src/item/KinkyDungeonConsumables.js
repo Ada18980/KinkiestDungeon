@@ -144,6 +144,7 @@ function KinkyDungeonConsumableEffect(Consumable, type) {
 		if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
 		KinkyDungeonTargetingSpell = KinkyDungeonFindSpell(Consumable.spell, true);
 		KinkyDungeonTargetingSpellItem = Consumable;
+		KinkyDungeonTargetingSpellWeapon = null;
 	} else if (type == "charge") {
 		KinkyDungeonChangeCharge(Consumable.amount);
 		//KDGameData.AncientEnergyLevel = Math.min(Math.max(0, KDGameData.AncientEnergyLevel + Consumable.amount), 1.0);

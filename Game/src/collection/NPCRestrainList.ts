@@ -24,6 +24,17 @@ let NPCBindingRestraintSize = {
 	Petsuits: 2,
 }
 
+interface KDBondageStats {
+	level: number,
+	type: string,
+	mult: number,
+	amount: number,
+	/** List of conditions required for this item to be applied (not stay on) */
+	conditions?: string[],
+	/** List of conditions required for this item to stay on (TODO incomplete) */
+	stayconditions?: string[],
+}
+
 /**
  *
  * Most items have 1 size
@@ -63,7 +74,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "InterHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
 				allowedTags: ["Blindfolds"]},
 			{id: "InnerHead", encasedBy: ["Hood"], allowedGroups: ["ItemHead"],
-				allowedTags: ["Blindfolds", "Visors"]},
+				allowedTags: ["Blindfolds", "Tape", "Visors"]},
 		]},
 	{id: "Gag", encaseGroup:
 		{id: "Muzzle", encasedBy: ["Hood"], allowedGroups: ["ItemMouth"],
@@ -81,11 +92,11 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Wrapping", "Encase"]},
 		layers: [
 			{id: "Secure", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "RopeReinforce", "Belts"]},
+				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "ChestHarnesses", "Belts", "ElbowLink"]},
 			{id: "HeavyBondage", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs"]},
+				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs", "WristLink"]},
 			{id: "Wrists", encasedBy: ["ArmEncase", "HeavyBondage"], allowedGroups: ["ItemArms"],
-				allowedTags: ["ArmCuffsBase", "ChestHarnesses"]},
+				allowedTags: ["ArmCuffsBase", "IntricateRopeArms"]},
 		]},
 	{id: "Hands", encaseGroup:
 		{id: "HandEncase", encasedBy: ["ArmEncase"], allowedGroups: ["ItemHands"],
@@ -122,7 +133,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 		]},
 	{id: "Pelvis", encaseGroup:
 		{id: "ChastityBelt", encasedBy: [], allowedGroups: ["ItemPelvis"],
-			allowedTags: ["ChastityBelts", "Crotchropes", "Panties"]},
+			allowedTags: ["ChastityBelts", "RopeCrotch", "Panties"]},
 		layers: [
 			{id: "Vibe", encasedBy: ["ChastityBelt"], allowedGroups: ["ItemVulvaPiercings"],
 				allowedTags: ["Vibes"], requirePerk: "arousalMode"},
@@ -138,7 +149,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Legbinder", encasedBy: ["LegEncase"], allowedGroups: ["ItemLegs"],
 				allowedTags: ["Legbinders", "RopeLegs3", "Belts", "SpreaderBars"]},
 			{id: "ThighBinds", encasedBy: ["LegEncase", "Legbinder"], allowedGroups: ["ItemLegs"],
-				allowedTags: ["RopeLegs2", "Belts", "Cuffs", "SpreaderBars"]},
+				allowedTags: ["RopeLegs2", "Belts", "Cuffs", "SpreaderBars", "ThighLink"]},
 			{id: "ThighCuffs", encasedBy: ["LegEncase", "Legbinder"], allowedGroups: ["ItemLegs"],
 				allowedTags: ["RopeLegs1", "Belts", "LegCuffsBase"]},
 		]},
@@ -149,7 +160,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "Knees", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet3", "Belts", "SpreaderBars"]},
 			{id: "Shins", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
-				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs"]},
+				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs", "Hogties", "AnkleLink"]},
 			{id: "AnkleCuffs", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet1", "Belts", "AnkleCuffsBase"]},
 		]},
@@ -165,3 +176,69 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 				allowedTags: ["Heels", "Cuffs"]},
 		]},
 ];
+
+
+
+let KDBondageConditions: Record<string, (r: restraint, id: number) => boolean> = {
+	HeavyBondage: (r, id) => {
+		if (r.quickBindCondition) return true;
+		let enemy = KDGetGlobalEntity(id);
+		if (!enemy) return false; // Must create an entity
+		return enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3;
+	},
+	Extra: (r, id) => {
+		if (r.quickBindCondition) return true;
+		let NPC = KDGetGlobalEntity(id);
+		if (NPC) {
+			KDQuickGenNPC(NPC, false);
+			let npcSprite = KDNPCChar.get(id);
+			if (npcSprite) {
+				if (!NPCTags.get(npcSprite)) {
+					NPCTags.set(npcSprite, new Map());
+					NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, id, 0));
+				}
+
+				if (NPCTags.get(npcSprite)) {
+					if (r.requireAllTagsToEquip) {
+						for (let tag of r.requireAllTagsToEquip) {
+							if (!NPCTags.get(npcSprite).get(tag)) {
+								return false;
+							}
+						}
+					}
+					if (r.requireSingleTagToEquip) {
+						for (let tag of r.requireSingleTagToEquip) {
+							if (NPCTags.get(npcSprite).get(tag)) {
+								return true;
+							}
+						}
+						return false;
+					}
+				}
+
+				return true;
+			} else {
+				return true;
+			}
+
+			return true;
+		}
+		return false;
+	},
+}
+
+
+let KDQuickBindConditions: Record<string, (target: entity, player: entity, restraint: restraint, item: item) => boolean> = {
+	Handcuffs: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	Stuffing: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	TapeGag: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	TapeBlindfold: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+};

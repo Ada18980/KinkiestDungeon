@@ -243,3 +243,20 @@ let KDRestraintGenericTypes = {
 		],
 	},
 };
+
+let KDGenericRestraintRawCache: Record<string, {raw: string, count: number}> = {};
+
+function KDRefreshRawCache() {
+	KDGenericRestraintRawCache = {};
+	for (let mat of Object.values(KDRestraintGenericTypes)) {
+		let raw = mat.raw;
+		for (let item of mat.items) {
+			KDGenericRestraintRawCache[item.restraint] = {
+				count: item.count,
+				raw: raw,
+			}
+		}
+	}
+}
+
+KDRefreshRawCache();

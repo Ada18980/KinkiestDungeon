@@ -234,7 +234,7 @@ let KinkyDungeonRestraintsCache = new Map();
  * @returns {restraint}
  */
 function KDRestraint(item) {
-	if (KinkyDungeonRestraintVariants[item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.name].template);
+	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].template);
 	return KinkyDungeonRestraintsCache.get(item.name);
 }
 
@@ -321,6 +321,44 @@ function KDRestraintBondageType(item) {
 }
 
 /**
+ * gets a restraint's conditions
+ * @param {Named} item
+ * @returns {string[]}
+ */
+function KDRestraintBondageConditions(item) {
+	let r = KDRestraint(item);
+	if (r) {
+		let data = {
+			item: item,
+			restraint: r,
+			conditions: [],
+			override: undefined,
+			overridePriority: 0,
+		};
+		// Stock methodology
+		if (r.shrine.includes("Armbinders")
+			|| r.shrine.includes("Boxbinders")
+			|| r.shrine.includes("Yokes")
+			|| r.shrine.includes("Fiddles")
+			|| r.shrine.includes("BindingDress")
+			|| r.shrine.includes("Straitjackets")
+			|| r.shrine.includes("Petsuits")) {
+			data.conditions.push("HeavyBondage");
+		}
+
+		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip) {
+			data.conditions.push("Extra");
+		}
+
+		KinkyDungeonSendEvent("calcBondageConditions", data);
+
+
+		return data.conditions.length > 0 ? data.conditions : null;
+	}
+	return null;
+}
+
+/**
  * gets a restraint
  * @param {Named} item
  * @returns {KDBondageStatus}
@@ -347,7 +385,7 @@ function KDRestraintBondageStatus(item) {
 			overridePriority: 0,
 		};
 		// Stock methodology
-		let powerMult = Math.max(1, Math.max(r.power))**0.75;
+		let powerMult = Math.max(1, 0.2 * Math.max(r.power));
 		if (r.gag) {
 			data.status.silence = Math.ceil(powerMult * r.gag * 1.3);
 		}
@@ -2308,7 +2346,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 	if ((data.struggleType == "Pick" || data.struggleType == "Unlock") && !data.lockType) return "Fail";
 
 	data.escapeSpeed = KDBaseEscapeSpeed * data.speedMult;
-	data.extraLim = (data.struggleType == "Pick" && data.lockType.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
+	data.extraLim = (data.struggleType == "Pick" && data.lockType?.pick_lim) ? Math.max(0, data.lockType.pick_lim) : 0;
 	data.extraLimPenalty = (data.struggleType == "Pick") ? data.extraLim * data.restraint.pickProgress : 0;
 	data.extraLimThreshold = Math.min(1, (data.escapeChance / data.extraLim));
 
@@ -3115,11 +3153,11 @@ function KDGetRestraintWithVariants(enemy, Level, Index, Bypass, Lock, RequireWi
 	}
 }
 
-function KinkyDungeonUpdateRestraints(C, id, delta) {
+function KinkyDungeonUpdateRestraints(C, id, delta, customRestraints, extraTags) {
 	if (!C && !id) C = KinkyDungeonPlayer;
-	if (C == KinkyDungeonPlayer) {
+	if (C == KinkyDungeonPlayer && !customRestraints) {
 		let playerTags = new Map();
-		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		for (let inv of customRestraints || KinkyDungeonAllRestraintDynamic()) {
 			let group = KDRestraint(inv.item).Group;
 			if (group) {
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
@@ -3204,13 +3242,69 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 		if (KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) playerTags.set("arousalModePlugNoFront", true);
 		if (KinkyDungeonStatsChoice.get("arousalModePiercing")) playerTags.set("arousalModePiercing", true);
 
-		let tags = [];
+		let tags = extraTags || [];
 		KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
 		for (let t of tags) {
 			playerTags.set(t, true);
 		}
 
 		KinkyDungeonSendEvent("updatePlayerTags", {tags: playerTags, player:KinkyDungeonPlayerEntity});
+		return playerTags;
+	} else if (customRestraints) {
+		let playerTags = new Map();
+		for (let inv of customRestraints) {
+			let group = KDRestraint(inv)?.Group;
+			if (group) {
+				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
+				playerTags.set(group + "Full", true);
+				playerTags.set(inv.name + "Worn", true);
+			}
+		}
+		for (let sg of KinkyDungeonStruggleGroupsBase) {
+			let group = sg;
+			if (!customRestraints.some((rest) => {
+				return KDRestraint(rest)?.Group == group;
+			})) playerTags.set(group + "Empty", true);
+		}
+		for (let inv of customRestraints) {
+			if (!KDRestraint(inv)) continue;
+			playerTags.set("Item_"+inv.name, true);
+
+			if (KDRestraint(inv).Link)
+				playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
+			if (KDRestraint(inv).UnLink)
+				playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
+			if (KDRestraint(inv).addTag)
+				for (let tag of KDRestraint(inv).addTag) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			if (KDRestraint(inv).chastity)
+				playerTags.set("ChastityLower", true);
+			if (KDRestraint(inv).chastitybra)
+				playerTags.set("ChastityUpper", true);
+			if (KDRestraint(inv).hobble)
+				playerTags.set("Hobble", true);
+			if (KDRestraint(inv).blockfeet)
+				playerTags.set("BoundFeet", true);
+			if (KDRestraint(inv).bindarms)
+				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).bindhands)
+				playerTags.set("BoundHands", true);
+			if (KDRestraint(inv).blindfold)
+				playerTags.set("Blindfolded", true);
+			if (KDRestraint(inv).shrine) {
+				for (let tag of KDRestraint(inv).shrine) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			}
+
+		}
+		if (extraTags)
+			for (let t of extraTags) {
+				playerTags.set(t, true);
+			}
+
+		KinkyDungeonSendEvent("updateCustomTags", {tags: playerTags, npc:id});
 		return playerTags;
 	} else if (KDGameData.NPCRestraints && KDGameData.NPCRestraints[id + ""]) {
 
@@ -3263,7 +3357,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta) {
 
 		}
 
-		let tags = [];
+		let tags = extraTags || [];
 		KinkyDungeonAddTags(tags, MiniGameKinkyDungeonLevel);
 		for (let t of tags) {
 			playerTags.set(t, true);
@@ -3289,8 +3383,8 @@ function KDGetCursePower(item) {
  * @returns {number}
  */
 function KDGetVariantPower(item) {
-	if (item && KinkyDungeonRestraintVariants[item.name]) {
-		return KinkyDungeonRestraintVariants[item.name].power || 0;
+	if (item && KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+		return KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].power || 0;
 	}
 	return 0;
 }
@@ -3408,6 +3502,8 @@ function KDCanAddRestraint(restraint, Bypass, Lock, NoStack, r, Deep, noOverpowe
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
+
+	if (restraint.shrine.includes("Raw")) return false;
 
 	function bypasses() {
 		return (
@@ -4262,7 +4358,11 @@ function KinkyDungeonRemoveRestraint(Group, Keep, Add, NoEvent, Shrine, UnLink, 
 
 			if (!KinkyDungeonCancelFlag && !Add && !UnLink) {
 				KDRestraintDebugLog.push("Unlinking " + item.name);
-				KinkyDungeonCancelFlag = KinkyDungeonUnLinkItem(item, Keep);
+				let rr = KinkyDungeonUnLinkItem(item, Keep);
+				if (rr.length > 0) {
+					KinkyDungeonCancelFlag = true;
+					rem.push(...rr);
+				}
 			}
 
 			if (!KinkyDungeonCancelFlag) {
@@ -4564,10 +4664,11 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
  *
  * @param {item} item
  * @param {boolean} Keep
- * @returns
+ * @returns {item[]}
  */
 function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 	//if (!data.add && !data.shrine)
+	let rem = [];
 	if (item.type == Restraint) {
 		/**
 		 * @type {item}
@@ -4590,11 +4691,11 @@ function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
 				} else
 					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), "lightgreen", 2,
 						false, false, undefined, "Struggle");
-				return true;
+				return [item];
 			}
 		}
 	}
-	return false;
+	return rem;
 }
 
 /**

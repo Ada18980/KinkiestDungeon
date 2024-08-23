@@ -98,14 +98,18 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined);
 				if (point) {
 					let e = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true);
-					KDSetServantSpawnTemplate(e);
-					e.FacilityAction = "Management";
+					if (e) {
+						KDSetServantSpawnTemplate(e);
+						e.FacilityAction = "Management";
+					}
 				}
 			} else {
 				let point = KDMapData.Labels?.ServantEntrance ? KDMapData.Labels.ServantEntrance[0] : {x: 1, y: 3};
 				let e = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true);
-				KDSetServantSpawnTemplate(e);
-				e.FacilityAction = "Management";
+				if (e) {
+					KDSetServantSpawnTemplate(e);
+					e.FacilityAction = "Management";
+				}
 			}
 			return null;
 		},
@@ -136,14 +140,19 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 					let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined,);
 					if (point) {
 						let e = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true);
-						KDSetServantSpawnTemplate(e);
-						e.FacilityAction = "CuddleLounge";
+						if (e) {
+							KDSetServantSpawnTemplate(e);
+							e.FacilityAction = "CuddleLounge";
+						}
 					}
 				} else {
 					let point = KDMapData.Labels?.LoungeEntrance ? KDMapData.Labels.LoungeEntrance[0] : {x: 1, y: 3};
 					let e = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true);
-					KDSetServantSpawnTemplate(e);
-					e.FacilityAction = "CuddleLounge";
+					if (e) {
+						KDSetServantSpawnTemplate(e);
+						e.FacilityAction = "CuddleLounge";
+					}
+
 				}
 			}
 

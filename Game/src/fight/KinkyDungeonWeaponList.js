@@ -33,14 +33,19 @@ let KDWeaponLootList = {
  */
 let KinkyDungeonWeapons = {
 	"Unarmed": {name: "Unarmed", dmg: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, noequip: true, sfx: "Unarmed",
-		tags: ["unarmed"],},
+		tags: ["unarmed"],
+		events: [
+			{type: "ElementalEffectOnDisarm", trigger: "playerAttack", power: 0, damage: "stun", time: 3, chance: 0.5, sfx: "Slap"}
+		],
+	},
 
 
-	"Rock": {name: "Rock", dmg: 3, chance: 0.8, staminacost: 3.8, type: "crush", unarmed: false, rarity: 0, shop: true, heavy: true, sfx: "HeavySwing",
+	"Rock": {name: "Rock", dmg: 3, chance: 0.8, staminacost: 3.8, type: "crush",
+		unarmed: false, rarity: 0, shop: true, heavy: true, sfx: "HeavySwing",
 		crit: 1.5,
 		tags: ["rock"],
 		events: [
-			{type: "ElementalEffectCrit", trigger: "playerAttack", power: 0, damage: "stun", time: 6}
+			{type: "ElementalEffectCrit", trigger: "playerAttack", power: 0, damage: "stun", time: 6, sfx: "Slap"}
 		],
 	},
 

@@ -381,6 +381,17 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+
+
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player) {
+				if (player.player && KDRandom() < 0.1)
+					KinkyDungeonSendTextMessage(5, TextGet("KDRobeOfChastityFail" + Math.floor(KDRandom() * e.count)),
+						"#ffff00", 10);
+				KDSetIDFlag(player.id, "disableRobeChast", e.time);
+			}
+		},
 		"CursedDenial": (e, item, data) => {
 			KinkyDungeonSendTextMessage(5, TextGet("KDCursedDenialAllow" + Math.floor(KDRandom() * e.count)), "#9074ab", 10);
 		},
@@ -858,6 +869,9 @@ let KDEventMapInventory = {
 				}
 			}
 		},
+
+
+
 		"ShrineUnlockWiggle": (e, item, data) => {
 			if (item && KDCurses[e.kind].condition(item)) {
 				KinkyDungeonSendTextMessage(1, TextGet("KDShrineUnlockWiggle").replace("RSTRNT", KDGetItemName(item)), "#88ff88", 1, false, true);
@@ -1369,6 +1383,45 @@ let KDEventMapInventory = {
 		},
 	},
 	"tickAfter": {
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player && !KDIDHasFlag(player.id, "disableRobeChast")) {
+				let nearbyTargets = KDNearbyEnemies(player.x, player.y, e.dist).filter(
+					(en) => {
+						return (KDistChebyshev(player.x - en.x, player.y - en.y) < 1.5
+							|| KDIDHasFlag(en.id, "RoCflag"))
+						&& !KDHelpless(en)
+						&& en.hp > 0
+						&& !en.Enemy?.tags.nobrain // only affects things that can behold it
+						&& KDHostile(en, player.player ? undefined : player);
+					}
+				);
+				for (let en of nearbyTargets) {
+					KDCreateEffectTile(en.x, en.y, {
+						name: "Radiance",
+						duration: 2,
+					}, 0);
+					KDSetIDFlag(en.id, "RoCflag", 4);
+					KinkyDungeonDamageEnemy(en, {
+						type: e.damage,
+						damage: e.power + e.mult * Math.max(0, KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction),
+						time: e.time,
+						bind: e.bind,
+						distract: e.distract,
+						bindType: e.bindType,
+						nocrit: true,
+					}, false, true, undefined, undefined, player,
+					undefined, undefined, true, false);
+				}
+
+				if (player.player) {
+					if (KinkyDungeonStatDistractionLower > 0) {
+						KinkyDungeonChangeDesire(KinkyDungeonStatDistractionMax * -0.00025, true);
+					}
+				}
+			}
+
+		},
 		"RemoveOnETTag": (e, item, data) => {
 			let tiles = KDEffectTileTags(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (e.tags.some((t) => {return tiles[t] != undefined;}) ) {
@@ -2500,6 +2553,17 @@ let KDEventMapInventory = {
 				if (e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 			}
 		},
+		"RobeOfChastity": (e, item, data) => {
+			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
+			if (player) {
+				if (player.player && KDRandom() < 0.1) {
+					KinkyDungeonSendTextMessage(5, TextGet("KDRobeOfChastityArouse" + Math.floor(KDRandom() * e.count)),
+						"#ffff00", 10);
+				}
+				KinkyDungeonChangeDesire(e.mult * KinkyDungeonGetManaCost(data.spell), false);
+
+			}
+		},
 		"AlertEnemies": (e, item, data) => {
 			if (!e.chance || KDRandom() < e.chance) {
 				KinkyDungeonAlert = Math.max(KinkyDungeonAlert, e.power);
@@ -3341,7 +3405,7 @@ const KDEventMapBuff = {
 									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 									damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 										ignoreshield: spell?.ignoreshield,
 										shield_crit: spell?.shield_crit, // Crit thru shield
@@ -3410,7 +3474,7 @@ const KDEventMapBuff = {
 									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 									damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 										ignoreshield: spell?.ignoreshield,
 										shield_crit: spell?.shield_crit, // Crit thru shield
@@ -3623,6 +3687,30 @@ let KDEventMapSpell = {
 
 				// Set a flag to prevent duplicating this event
 				//KinkyDungeonSetFlag("BattleRhythm" + data.castID, 1);
+			}
+		},
+	},
+	"beforeCalcComp": {
+		"ReplaceVerbalIfFail": (e, spell, data) => {
+			if (data.spell?.tags?.includes(e.requiredTag)) {
+				if (data.spell.components) {
+					let failedcomp = [];
+					for (let comp of data.spell.components) {
+						if (!KDSpellComponentTypes[comp].check(spell, data.x, data.y)) {
+							failedcomp.push(comp);
+						}
+					}
+					if (failedcomp.length > 0) {
+						data.components = ["Verbal"];
+					}
+				}
+			}
+		},
+	},
+	"calcSpellRange": {
+		"AddRange": (e, spell, data) => {
+			if (data.spell?.tags?.includes(e.requiredTag)) {
+				data.range += e.power;
 			}
 		},
 	},
@@ -6499,6 +6587,29 @@ let KDEventMapWeapon = {
 			}
 		},
 
+
+		"ElementalEffectOnDisarm": (e, weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.enemy.disarm > 0) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance)
+					&& data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						crit: e.crit,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindEff: e.bindEff,
+						distract: e.distract,
+						desireMult: e.desireMult,
+						distractEff: e.distractEff,
+						bindType: e.bindType,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					if (e.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+					}
+				}
+			}
+		},
 		"ElementalEffectCrit": (e, weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm && data.predata?.vulnerable) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
@@ -7020,7 +7131,7 @@ let KDEventMapBullet = {
 								effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 								passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 								pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-								lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+								lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 								damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 									ignoreshield: spell?.ignoreshield,
 									shield_crit: spell?.shield_crit, // Crit thru shield
@@ -8673,7 +8784,7 @@ let KDEventMapEnemy = {
 									effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
 									passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile:spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
 									pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: spell.range, hit:spell.onhit,
+									lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: {x: origin.x, y: origin.y}, range: KDGetSpellRange(spell), hit:spell.onhit,
 									damage: {evadeable: spell.evadeable, noblock: spell.noblock,
 										ignoreshield: spell?.ignoreshield,
 										shield_crit: spell?.shield_crit, // Crit thru shield
@@ -9689,7 +9800,7 @@ let KDEventMapGeneric = {
 	"playerAttack": {
 		"trainHeels": (e, data) => {
 			if (KDHostile(data.enemy) && KDIsHumanoid(data.enemy)) {
-				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 0.4);
+				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1.5);
 			}
 		},
 		"GroundedInReality": (e, data) => {
@@ -9724,7 +9835,7 @@ let KDEventMapGeneric = {
 	},
 	"tick": {
 		"trainHeels": (e, data) => {
-			if (KinkyDungeonLastAction == "Move") {
+			if (KinkyDungeonLastAction == "Move" && !(KDGameData.KneelTurns > 0)) {
 				let danger = KinkyDungeonInDanger();
 				let amt = 0.01;
 				let mult = (
@@ -9732,8 +9843,8 @@ let KDEventMapGeneric = {
 					||
 					(KinkyDungeonJailGuard() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonJailGuard()))
 					) ? 1.5 : 1;
-				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0) && danger,
-					KDGameData.HeelPower <= 0 && !danger, amt, amt * mult);
+				KDTickTraining("Heels", KDGameData.HeelPower > 0,
+					KDGameData.HeelPower <= 0 && !danger, amt, mult);
 			}
 		},
 		"runes": (e, data) => {

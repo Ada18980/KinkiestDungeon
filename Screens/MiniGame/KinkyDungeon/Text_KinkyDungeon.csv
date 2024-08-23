@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.35-RC6"
+KDVersionStr,"5.3-RC10"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -47,6 +47,8 @@ KDToggleTabKeybindings,Keybindings
 
 
 KDToggleBackgrounds,Show Background Art
+KDToggleRawDP,Show DP instead of %
+KDToggleOnlySelfQuickInv,Quick Inv only equips to self
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
 KDToggleStruggleBars,Show Struggle Bars
@@ -889,6 +891,7 @@ StatSpeedSlow,"Slowed"
 StatSpeedVerySlow,"Very Slow"
 StatSpeedImmobile,"Immobile"
 StatDistraction,"DP: PERCENT%"
+StatDistractionHover,"DP: CURRENT/MAX (PERCENT% Desire)"
 StatStamina,"SP: CURRENT/MAX"
 StatWillpower,"Willpower: CURRENT/MAX"
 StatMana,"MP: CURRENT/MAX"
@@ -1556,7 +1559,7 @@ KinkyDungeonInventoryItemTorch,Torch
 KinkyDungeonInventoryItemTorchDesc,"Second only to the mighty towel in usefulness."
 KinkyDungeonInventoryItemTorchDesc2,"Deals fire damage. Provides light."
 KinkyDungeonInventoryItemUnarmed,Unarmed
-KinkyDungeonInventoryItemUnarmedDesc,"Fight with your hands and feet."
+KinkyDungeonInventoryItemUnarmedDesc,"Fight with your hands and feet. 50% chance to stun target if the target is disarmed."
 KinkyDungeonInventoryItemUnarmedDesc2,"Deals unarmed damage."
 KinkyDungeonInventoryItemSword,Sword
 KinkyDungeonInventoryItemSwordDesc,"The blade is strong, its edge sharp."
@@ -3823,10 +3826,10 @@ RestraintDuctTapeFeet,Charms (Feet)
 RestraintDuctTapeFeetDesc,"A band of faintly magic ribbon wrapped tight around your ankles."
 RestraintDuctTapeFeetDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintDuctTapeHead,Charms (Head)
-RestraintDuctTapeHeadDesc,"A band of faintly magic ribbon wrapped tight around your eyes."
+RestraintDuctTapeHeadDesc,"A band of faintly magic ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintDuctTapeMouth,Charm Gag
-RestraintDuctTapeMouthDesc,"A band of faintly magic ribbon wrapped tight around your mouth."
+RestraintDuctTapeMouthDesc,"A band of faintly magic ribbon wrapped tight over the mouth. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintDuctTapeBoots,Charm Wrapping (Toes)
 RestraintDuctTapeBootsDesc,"A layer of faintly magic ribbon wrapped tight around your feet."
@@ -3888,10 +3891,10 @@ RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
 RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
 RestraintMysticDuctTapeHeadDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeEyes,Blessed Wrappings (Eyes)
-RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight around your eyes."
+RestraintMysticDuctTapeEyesDesc,"A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintMysticDuctTapeEyesDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeMouth,Blessed Wrappings (Gag)
-RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight around your mouth."
+RestraintMysticDuctTapeMouthDesc,"A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintMysticDuctTapeMouthDesc2,"It clings, almost of its own accord, but seems vulnerable to both cutting and stretching."
 RestraintMysticDuctTapeArmsMummy,Blessed Wrappings (Arms)
 RestraintMysticDuctTapeArmsMummyDesc,"A layer of magic embalming ribbon wrapped tight around your body."
@@ -3925,10 +3928,10 @@ RestraintVinylTapeFeet,Tape (Feet)
 RestraintVinylTapeFeetDesc,"Sleek and shiny tape for the bondage enthusiast."
 RestraintVinylTapeFeetDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
 RestraintVinylTapeHead,Tape (Head)
-RestraintVinylTapeHeadDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeHeadDesc,"Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintVinylTapeHeadDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
 RestraintVinylTapeMouth,Tape Gag
-RestraintVinylTapeMouthDesc,"Sleek and shiny tape for the bondage enthusiast."
+RestraintVinylTapeMouthDesc,"Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintVinylTapeMouthDesc2,"A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against."
 RestraintVinylTapeMouthFull,Tape Mouth Wrap
 RestraintVinylTapeMouthFullDesc,"Sleek and shiny tape for the bondage enthusiast."
@@ -3973,7 +3976,7 @@ RestraintAutoTapeHands,Autotape (Hands)
 RestraintAutoTapeHandsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeHandsDesc2,"It's very sticky and seals your hands tightly, making any struggling ineffective."
 RestraintAutoTapeHead,Autotape (Head)
-RestraintAutoTapeHeadDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeHeadDesc,"Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintAutoTapeHeadDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeArms,Autotape (Arms)
 RestraintAutoTapeArmsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
@@ -3988,7 +3991,7 @@ RestraintAutoTapeBoots,Autotape (Feet)
 RestraintAutoTapeBootsDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
 RestraintAutoTapeBootsDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeMouth,Autotape (Mouth)
-RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
+RestraintAutoTapeMouthDesc,"Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar."
 RestraintAutoTapeMouthDesc2,"It's very sticky and tough but you could probably get a knife through it."
 RestraintAutoTapeMouthFull,Autotape (Mouth Wrap)
 RestraintAutoTapeMouthFullDesc,"Sticky tape made from a metallic material. Used to great effect in police situations."
@@ -3999,7 +4002,7 @@ RestraintAutoTapeCollarDesc2,"It will occasionally cause tape to appear out of n
 
 
 RestraintStuffing,Stuffing
-RestraintStuffingDesc,"A stuffing of cloth."
+RestraintStuffingDesc,"A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintStuffingDesc2,"You could spit it out easily, provided nothing's covering it."
 
 
@@ -4133,7 +4136,7 @@ KinkyDungeonRemoveCuffsCyberLegCuffs,The energy link between your thigh cuffs fi
 KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
 KinkyDungeonRemoveHogtie,The hogtie link comes off.
 RestraintTrapCuffs,Handcuffs
-RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists."
+RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintTrapCuffsDesc2,"The lock doesn't seem very complicated."
 RestraintTrapYoke,Steel Yoke
 RestraintTrapYokeDesc,"A steel bar clamped firmly around your wrists and neck, leaving you in a helpless position."
@@ -4292,7 +4295,7 @@ RestraintVinePlantFeetDesc,"A tie keeping your feet secured together."
 RestraintVinePlantFeetDesc2,"The vines twitch as they try to wrap around tighter."
 
 RestraintWolfCuffs,High-Security Cuffs
-RestraintWolfCuffsDesc,"A set of irish-8-style cuffs that are both restrictive and quick to apply."
+RestraintWolfCuffsDesc,"A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintWolfCuffsDesc2,"It uses a standard lock rather than a simple one."
 RestraintWolfArmbinder,Wolfbinder
 RestraintWolfArmbinderDesc,"A sophisticated training system used to keep wolfgirls from scratching their owners."
@@ -5204,7 +5207,7 @@ RestraintSturdyLeatherBeltsFeetDesc,"A ludicrous amount of belts secured with a 
 RestraintSturdyLeatherBeltsFeetDesc2,"Lockable and fully adjustable to ensure snugness."
 
 RestraintWristShackles,Iron Cuffs
-RestraintWristShacklesDesc,"Tough shackles with a rudimentary lock."
+RestraintWristShacklesDesc,"Tough shackles with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintWristShacklesDesc2,"You could pick these with a hairpin."
 RestraintAnkleShackles,Iron Shackles
 RestraintAnkleShacklesDesc,"Tough shackles with a rudimentary lock."
@@ -5217,11 +5220,11 @@ RestraintThumbCuffsNew,Thumbcuffs
 RestraintThumbCuffsNewDesc,"Interferes with the use of your hands."
 RestraintThumbCuffsNewDesc2,"Another layer of restriction."
 RestraintHingedCuffs,Hinged Handcuffs
-RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock."
+RestraintHingedCuffsDesc,"Hinged cuffs with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintHingedCuffsDesc2,"Difficult to unlock, let alone pick by yourself."
 
 RestraintIrish8Cuffs,Heavy Handcuffs
-RestraintIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock."
+RestraintIrish8CuffsDesc,"A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar."
 RestraintIrish8CuffsDesc2,"The position is too awkward to free yourself, even with a key..."
 
 RestraintAnkleIrish8Cuffs,Heavy Leg Irons
@@ -6448,7 +6451,6 @@ KinkyDungeonSpellTargetDisplayStand,Choose a helpless target
 
 
 KinkyDungeonSpellFlash,Lesser Flash
-KinkyDungeonSpellRing,Ring
 KinkyDungeonSpellFlashBomb,Flash Bomb
 KinkyDungeonSpellSmokeBomb,Smoke Bomb
 KinkyDungeonSpellEnemyFlash,Sparkles!
@@ -6458,9 +6460,15 @@ KinkyDungeonSpellDescriptionFlash,A flash of light which renders anyone caught w
 KinkyDungeonSpellCastFlash,You charge up a bright flash!
 KinkyDungeonSpellTargetFlash,Select where to center the flash (SpellArea radius)
 
-KinkyDungeonSpellDescriptionRing,A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged.
+KinkyDungeonSpellRing,Ring
+KinkyDungeonSpellDescriptionRing,A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged with a 3 turn delay.
 KinkyDungeonSpellCastRing,You point and a noise emanates from the location!
 KinkyDungeonSpellTargetRing,Select where to center the noise (SpellArea radius)
+
+KinkyDungeonSpellHolyBlaze,Holy Blaze
+KinkyDungeonSpellDescriptionHolyBlaze,Call down a 3x3 area of DamageDealt holy damage. Blinds enemies for 3 turns (and also yourself).
+KinkyDungeonSpellCastHolyBlaze,You summon a divine aura!
+KinkyDungeonSpellTargetHolyBlaze,Select where to center the blast (SpellArea radius)
 
 KinkyDungeonSpellGreaterFlash,Greater Flash
 KinkyDungeonSpellDescriptionGreaterFlash,A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
@@ -7640,7 +7648,7 @@ KinkyDungeonCurseStruggleMistressKeyEnchantedBelt,"You tug at your chastity belt
 
 RestraintEnchantedBra,Ancient Chastity Bra
 LootChestEnchantedBra,"You find a chastity bra, glowing magnificently, along with a strange crystal next to it."
-RestraintEnchantedBraDesc2,"A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10."
+RestraintEnchantedBraDesc2,"A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20."
 RestraintEnchantedBraDesc,"'Shield of the chaste'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedBra,"You rub your hands along your breasts but feel only hard, unbreakable metal."
 
@@ -8538,6 +8546,7 @@ KinkyDungeonRemindJailChaseCyborgCommandAssault,"My orders are to shut you down~
 KinkyDungeonRemindJailChaseCyborgCommandBlock,"Defenses online!"
 
 
+KDJailerHiSecDialogueRobot,"Error in citizen ID registration. Please submit to processing."
 KinkyDungeonRemindJailPlayHelplessRobot0,"Does not compute."
 KinkyDungeonRemindJailPlayHelplessRobot1,"Some kind of miscalculation has occurred."
 KinkyDungeonRemindJailPlayHelplessRobot2,"This was unforseen."
@@ -8593,6 +8602,64 @@ KinkyDungeonRemindJailChaseRobotHonor2,"New target detected. Please submit to de
 KinkyDungeonRemindJailChaseRobotCommandDefend,"Moving to assist."
 KinkyDungeonRemindJailChaseRobotCommandAssault,"Moving to capture."
 KinkyDungeonRemindJailChaseRobotCommandBlock,"Forming blockade."
+
+
+KDJailerHiSecDialogueRobotProgram,"query([ID]); >ERROR; transport([UNKNOWN], [DOLL])"
+KinkyDungeonRemindJailPlayHelplessRobotProgram0,"Does not compute;"
+KinkyDungeonRemindJailPlayHelplessRobotProgram1,"Some kind of miscalculation has occurred;"
+KinkyDungeonRemindJailPlayHelplessRobotProgram2,"This was unforseen;"
+KinkyDungeonRemindJailPlayBratRobotProgram0,"Unit is retreating;"
+KinkyDungeonRemindJailPlayBratRobotProgram1,"Activating self-preservation instincts;"
+KinkyDungeonRemindJailPlayBratRobotProgram2,"Commence tactical withdrawal;"
+KinkyDungeonRemindJailPlaySubRobotProgram0,"Maintenance needed;"
+KinkyDungeonRemindJailPlaySubRobotProgram1,"Unit needs repair;"
+KinkyDungeonRemindJailPlaySubRobotProgram2,"Commence transfer of power protocol;"
+KinkyDungeonRemindJailPlayRobotProgramFree,"Insufficient bindings; Commence submission protocol;"
+KinkyDungeonRemindJailPlayRobotProgramStruggle,"Commence routine inspection;"
+KinkyDungeonRemindJailPlayRobotProgramLeash,"Inmate is out of containment; Transferring;"
+KinkyDungeonRemindJailPlayRobotProgramLoot,"Theft detected; This is a warning;"
+KinkyDungeonRemindJailPlayRobotProgramKey,"Confiscating item;"
+KinkyDungeonRemindJailChaseRobotProgramAlert,"Unknown subject detected; Presuming hostile;"
+KinkyDungeonRemindJailPlayRobotProgram0,"Inmate detected; Commence training protocol;"
+KinkyDungeonRemindJailPlayRobotProgram1,"Inmate detected; Commence routine inspection;"
+KinkyDungeonRemindJailPlayRobotProgram2,"Inmate detected; Commence submission training;"
+KinkyDungeonRemindJailChaseRobotProgramAttack0,"Violence detected; Subduing assailant;"
+KinkyDungeonRemindJailChaseRobotProgramAttack1,"Damage detected; Initiating combat routine;"
+KinkyDungeonRemindJailChaseRobotProgramAttack2,"Unruly inmate detected; Performing corrective action;"
+KinkyDungeonRemindJailChaseRobotProgramSpell0,"Magic detected; Subduing assailant;"
+KinkyDungeonRemindJailChaseRobotProgramSpell1,"Energy spike detected; Preparing shields;"
+KinkyDungeonRemindJailChaseRobotProgramSpell2,"Unlawful use of magic; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramSpellItem,"Violence detected; Subduing assailant;"
+KinkyDungeonRemindJailChaseRobotProgramShrine,"Unlawful conduct; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramChest,"Theft detected; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramOrb,"Unlawful conduct; Please submit to arrest;"
+KinkyDungeonRemindJailChaseRobotProgramJailbreak,"Inmate has escaped; Commence capture protocol;"
+KinkyDungeonRemindJailRobotProgramGrab,"Error, subject is attempting to escape;"
+KinkyDungeonRemindJailRobotProgramDisarm,"Target is violent; Disarming subject;"
+KinkyDungeonRemindJailRobotProgramHit,"Target is violent; Increase alert level;"
+KinkyDungeonRemindJailRobotProgramHitPlayer,"Dispensing restraints;"
+KinkyDungeonRemindJailRobotProgramMiss,"Target flees; Revising strategy;"
+KinkyDungeonRemindJailRobotProgramBlock,"Target resists; Revising tactics;"
+KinkyDungeonRemindJailRobotProgramMissedMe,"Target skill below expected level; Revising strategy;"
+KinkyDungeonRemindJailRobotProgramBlockedMe,"Target skill below expected level; Revising tactics;"
+KinkyDungeonRemindJailRobotProgramLeash,"Subject captured; Returning to processing;"
+KinkyDungeonRemindJailRobotProgramPull,"Apply takedown protocol;"
+KinkyDungeonRemindJailRobotProgramStun,"Aggressive target detected; Deploying countermeasures;"
+KinkyDungeonRemindJailRobotProgramPickpocket,"Contraband detected; Confiscating;"
+KinkyDungeonRemindJailRobotProgramLock,"increase_strictness(1);"
+KinkyDungeonRemindJailRobotProgramIntro,"query([SELF]); >PTRN;"
+KinkyDungeonRemindJailChaseRobotProgramDefend0,"Red alert; Joining combat;"
+KinkyDungeonRemindJailChaseRobotProgramDefend1,"Battle stations;"
+KinkyDungeonRemindJailChaseRobotProgramDefend2,"Target identified;"
+KinkyDungeonRemindJailChaseRobotProgramDefendHonor0,"Offering support;"
+KinkyDungeonRemindJailChaseRobotProgramDefendHonor1,"New target identified; Engaging;"
+KinkyDungeonRemindJailChaseRobotProgramDefendHonor2,"Combat detected; Engaging in corrective action;"
+KinkyDungeonRemindJailChaseRobotProgramHonor0,"Updating target registry; Proceed to attack;"
+KinkyDungeonRemindJailChaseRobotProgramHonor1,"Target updated;"
+KinkyDungeonRemindJailChaseRobotProgramHonor2,"New target detected; Please submit() to detainment;"
+KinkyDungeonRemindJailChaseRobotProgramCommandDefend,"defend([ALLY]);"
+KinkyDungeonRemindJailChaseRobotProgramCommandAssault,"capture([CITIZEN]);"
+KinkyDungeonRemindJailChaseRobotProgramCommandBlock,"defend([POINT]);"
 
 KinkyDungeonRemindJailPlayHelplessAlchemist0,"This is too tight..."
 KinkyDungeonRemindJailPlayHelplessAlchemist1,"You won't get me like this!"
@@ -12626,6 +12693,31 @@ rJailerHiSecResist,"(The SPEAKER folds her arms)|Want to or not, you're going."
 dJailerHiSec_Resist,(Resist)
 dJailerHiSec_Submit,(Submit)
 
+rCyberHiSec,"(A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting."
+rCyberHiSecResist,"(The SPEAKER grins as her systems glow)|I love my job sometimes~"
+dCyberHiSec_Resist,(Resist)
+dCyberHiSec_Submit,(Submit)
+rCyberHiSecQuestion1,"(The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System."
+dCyberHiSec_Question1,W-what does that entail?
+rCyberHiSecQuestion1Gag,"(The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~"
+dCyberHiSec_Question1Gag,Hmmmph? Mmmm! (Act worried and whimper)
+rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders "
+dCyberHiSec_Question2,Not in the 'System'?
+rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
+dCyberHiSec_Question2Gag,Mmmph? (Act confused)
+rCyberHiSecQuestion2,"(The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System."
+dCyberHiSec_Question2,Not in the 'System'?
+rCyberHiSecQuestion2Gag,"(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System."
+dCyberHiSec_Question2Gag,Mmmph? (Act confused)
+rCyberHiSecQuestion3,"(The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her."
+dCyberHiSec_Question3,But why???
+rCyberHiSecQuestion3_Who,"(The SPEAKER frowns)|You should be thankful.|Without Mistress Oriel, we'd all be dead!|Probably..."
+dCyberHiSecQuestion3_Who,Who is Mistress Oriel?
+rCyberHiSecQuestion3_When,"(The SPEAKER pauses for a moment, then answers)|Well, only a few hundred years ago, I think?|This is a bit longer of a downtime than usual,|But all of us are waiting patiently~"
+dCyberHiSecQuestion3_When,When are these orders from?
+rCyberHiSecQuestion3_Why,"(You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?"
+dCyberHiSecQuestion3_Why,The facility is in ruins! This is pointless!
+
 rBanditQuest,"(A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?"
 rBanditQuestHelp,"(The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out."
 dBanditQuest_Help,(Show interest)
@@ -13334,9 +13426,9 @@ l_RopeArms_ChestLower,"Lower Chest Straps"
 l_RopeArms_Arms,"Arm Straps"
 
 m_HairBow,HairBow
-l_HairBow_Bow,Bow
+l_HairBow_Bow,Bow‎
 m_HairBowFrilly,HairBowFrilly
-l_HairBowFrilly_Bow,Bow
+l_HairBowFrilly_Bow,Bow‎
 l_HairBowFrilly_BowFrills,BowFrills
 m_Hairband,Hairband
 l_Hairband_Hairband,Hairband
@@ -17736,6 +17828,7 @@ m_Petsuit_l_LeftLegs,LeftLegs
 
 m_Hairband2,Hairband2
 m_Hairband2_l_Hairband,Hairband
+l_Hairband2_Hairband,Hairband
 m_BraidCustom_l_BraidCustom,BraidCustom
 m_BraidCustom_l_BraidCustom_Overstrap,BraidCustom_Overstrap
 m_BraidCustomBack_l_BraidCustomBack,BraidCustomBack
@@ -20108,7 +20201,7 @@ RestraintRopeSnakeCuffs,Rope Cuffs
 RestraintRopeSnakeCuffsDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsDesc2,"It's not very secure."
 RestraintRopeSnakeCuffsAdv,Chest Straps
-RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners, looped through buckles on the hand restraints."
+RestraintRopeSnakeCuffsAdvDesc,"A quick tie for apprehending prisoners."
 RestraintRopeSnakeCuffsAdvDesc2,"It's not very secure."
 RestraintRopeSnakeCuffsAdv2,Chest Harness
 RestraintRopeSnakeCuffsAdv2Desc,"The finishing touch on a tight and strict piece of ropework."
@@ -20252,6 +20345,8 @@ KDFilterFiltersUnlocked,Unlocked
 KDFilterFiltersLocked,Locked
 KDFilterFiltersUnblocked,Accessible
 KDFilterFiltersBlocked,Inaccessible
+KDFilterFiltersQuickBind,Quick-Bind
+KDFilterFiltersTape,Tape
 
 KDFilterFiltersHead,Head
 
@@ -20674,8 +20769,8 @@ KDVariableModifier_BaseDamageBuffMelee,"AMNT% weapon phys. dmg"
 KDVariableModifier_BaseDamageBuffMagic,"AMNT% weapon magic dmg"
 KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
 KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
-KDVariableModifier_ManaCost,"+AMNT Mana Efficiency"
-KDVariableModifier_ManaCostSpecific,"+AMNT TYPE Mana Efficiency"
+KDVariableModifier_ManaCost,"AMNT Mana Efficiency"
+KDVariableModifier_ManaCostSpecific,"AMNT TYPE Mana Efficiency"
 KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
 KDVariableModifier_Sneak,"AMNT% Visibility Reduction"
@@ -20770,6 +20865,13 @@ KDCursedDenialDeny2,"Dark Voice: It is not your choice to make~"
 KDCursedDenialAllow0,"Dark Voice: You may enjoy yourself, for now~"
 KDCursedDenialAllow1,"Dark Voice: Yes, take in the pleasure..."
 KDCursedDenialAllow2,"Dark Voice: Enjoy a gift, dear~"
+KDRobeOfChastityFail0,"As you let go of yourself, the Robe of Chastity loses all effects!"
+KDRobeOfChastityFail1,"The magic in the Robe of Chastity fades... for now."
+KDRobeOfChastityFail2,"You have failed to keep the principles of the Paladins... for now."
+
+KDRobeOfChastityArouse0,"You feel vibrations in your leotard as the magically conductive fabric channels your power."
+KDRobeOfChastityArouse1,"Your leotard produces a tingling full-body sensation as it channels your magic!"
+KDRobeOfChastityArouse2,"A tingling sensation serves to remind you of your leotard's magic properties."
 
 KDVariableModifier_CursedBarrier1,"Star: -20 Charm/Psychic Resist"
 KDVariableModifier_CursedBarrier2,"Star: +40 all other resists"
@@ -20828,7 +20930,7 @@ KDBondageTarget,Target acquired!
 KinkyDungeonSpellBondage,"Truss em up!"
 KinkyDungeonSpellTargetBondage,"Choose target to bind"
 KinkyDungeonSpellCastBondage,"Target Acquired!"
-KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Items used this way cannot be recovered, and can only be applied to enemies that are stunned, fully bound, or otherwise incapacitated."
+KinkyDungeonSpellDescriptionBondage,"Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied"
 
 DungeonNameShopStart,"The Shoppe"
 DungeonNameJourneyFloor,"Journey Selection"
@@ -22838,6 +22940,11 @@ KDManaStationDrain2,"You feel energy flow out of you, lighting up a circle on th
 KDManaStationFail,"The floor beneath you drains your mana, but you don't have enough to satisfy it."
 KDManaStationCharged,"The ground beneath you glows with magical energy!"
 
+KDEffectTileTooltipRadiance,"Radiant Light"
+KDEffectTileTooltipRadianceDesc,"Banishment of the shadow."
+KDEffectTileTooltipShadow,"Living Shadow"
+KDEffectTileTooltipShadowDesc,"Engulfs the tile in darkness."
+
 KDEffectTileTooltipManaEmpty,"Mysterious Plate"
 KDEffectTileTooltipManaEmptyDesc,"What could it be?"
 KDEffectTileTooltipManaPartial,"Mana-Charged Plate"
@@ -23026,6 +23133,16 @@ KinkyDungeonInventoryItemEjahlLeotardDesc,"An article worn by the servants of st
 KinkyDungeonInventoryItemEjahlLeotardDesc2,"Its soul crystals harden the mind and dampen changes in willpower, reducing all willpower changes by 25%."
 LootEjahlLeotard,"You find a ceremonial leotard."
 
+
+RestraintRobeOfChastity,The Robe of Chastity
+RestraintRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+RestraintRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
+KinkyDungeonInventoryItemRobeOfChastity,The Robe of Chastity
+KinkyDungeonInventoryItemRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+KinkyDungeonInventoryItemRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
+LootRobeOfChastity,"You retrieve an interesting article dubbed 'the Robe of Chastity."
+
+KDTook,"Took "
 
 rDragonQueenCrystal,"(As you slay the dragon, it begins shapeshifting into human form!)"
 rDragonQueenPoison,"(As you slay the dragon, it begins shapeshifting into human form!)"
@@ -23543,7 +23660,9 @@ KDPropField_XPivot,X Pivot
 KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
-KDPropField_SuppressDynamic,SuppressDynamicArmor
+KDPropField_SuppressDynamic,NoDynamicArmor (0 or 1)
+KDPropField_HideOverridden,HideOverridden (0 or 1)
+KDPropField_NoOverride,NoOverride (0 or 1)
 KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
 KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
@@ -23680,8 +23799,8 @@ KDBindNPCSlot_InterGag,Gag
 KDBindNPCSlot_OuterGag,Gag / Stuffing
 KDBindNPCSlot_Muzzle,Muzzle
 KDBindNPCSlot_Wrists,Wrists
-KDBindNPCSlot_HeavyBondage,Heavy Bondage
-KDBindNPCSlot_Secure,Extra Bondage
+KDBindNPCSlot_HeavyBondage,Bondage
+KDBindNPCSlot_Secure,Chest Harness
 KDBindNPCSlot_ArmEncase,Encasement
 KDBindNPCSlot_InnerHands,Mittens
 KDBindNPCSlot_InterHands,Mittens / Tape
@@ -23824,7 +23943,7 @@ KDRansomValue,Ransom Value: GP
 KDCurrentGold,Current Gold: GP
 KDNA,n/a
 
-KDTrainingLevelHeels,[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
+KDTrainingLevelHeels,"[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels."
 
 KinkyDungeonBuffQuickness,Phase Dance active. Your next move is instant.
 KinkyDungeonBuffCombatManeuverQuick,Combat Maneuver active. Your next move is instant.
@@ -23846,3 +23965,17 @@ KDSelectABindingSlot,Select a Binding Slot
 KDCost,"Cost: "
 
 ZoomSet,Zoom set to PCNT%
+KDBondageFailComponents,You need free arms to tie others!
+KDBondageFailNoSelect,You can use the quick inventory to bind yourself or others
+KDBondageFailError,Error. Please screenshot and report.
+KDBondageFailCantAdd,"You can't wear that item, regrettably."
+
+KDBondageCondition_HeavyBondage,Must be stunned 3+ turns or fully bound
+KDBondageCondition_Extra,Depends on another item to be added first
+
+KDConjuredRestraintVanish,The conjured RSTN vanishes as you remove it.
+
+KDAlreadyBound,No free slots to bind in
+
+KinkyDungeonSpellCommandRange,Reaching Authority
+KinkyDungeonSpellDescriptionCommandRange,"If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1"

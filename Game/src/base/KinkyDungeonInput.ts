@@ -105,6 +105,11 @@ function KDProcessInput(type, data): string {
 			//KinkyDungeonTargetTile = null;
 			//KinkyDungeonTargetTileLocation = null;
 			break;
+
+		case "quickRestraint":
+			KinkyDungeonAttemptQuickRestraint(data.item);
+			break;
+
 		case "switchWeapon": {
 			if (data?.pref != undefined) KDWeaponSwitchPref = data.pref;
 			KDDelayedActionPrune(["Action", "SwitchWeapon"]);
@@ -1204,6 +1209,8 @@ function KDProcessInput(type, data): string {
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRelease(parseInt(v))) {
+						KDFreeNPCRestraints(parseInt(v));
+
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
 						let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
 						KinkyDungeonChangeFactionRep(KDGameData.Collection[v + ""].Faction, rep);
@@ -1224,6 +1231,9 @@ function KDProcessInput(type, data): string {
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRansom(parseInt(v))) {
+						KDFreeNPCRestraints(parseInt(v));
+
+
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
 						let rep = -2*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
 						KinkyDungeonChangeFactionRep(KDGameData.Collection[v + ""].Faction, rep);
@@ -1241,22 +1251,8 @@ function KDProcessInput(type, data): string {
 			KDSortCollection();
 			break;
 		case "freeNPCRestraint": {
-			if (KDGameData.NPCRestraints) {
+			KDFreeNPCRestraints(data.npc);
 
-				let restraints = KDGameData.NPCRestraints[data.npc + ''];
-				if (restraints) {
-					for (let inv of Object.entries(restraints)) {
-						KDInputSetNPCRestraint({
-							slot: inv[0],
-							id: -1,
-							restraint: "",
-							restraintid: -1,
-							lock: "",
-							npc: data.npc
-						});
-					}
-				}
-			}
 			KinkyDungeonCheckClothesLoss = true;
 			break;
 		}
@@ -1268,18 +1264,19 @@ function KDProcessInput(type, data): string {
 				lock: "White",
 				npc: number
 			 */
-			KDInputSetNPCRestraint(data);
+			let res = KDInputSetNPCRestraint(data);
 
 			let enemy = KDGetGlobalEntity(data.npc);
 
-			KinkyDungeonSendTextMessage(10,
-				TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
-					.replace("RSTR", KDGetItemNameString(data.restraint))//TextGet("Restraint" + KDRestraint(item)?.name))
-					.replace("ENNME", TextGet("Name" + enemy?.Enemy.name))
-					.replace("AMNT", "" + Math.round(100 * enemy?.boundLevel / enemy?.Enemy.maxhp)),
-				"#ffffff", 1);
+			if (enemy && (!data.restraint || enemy.boundLevel > 0))
+				KinkyDungeonSendTextMessage(10,
+					TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
+						.replace("RSTR", KDGetItemNameString(data.restraint))//TextGet("Restraint" + KDRestraint(item)?.name))
+						.replace("ENNME", TextGet("Name" + enemy?.Enemy.name))
+						.replace("AMNT", "" + Math.round(100 * enemy?.boundLevel / enemy?.Enemy.maxhp)),
+					"#ffffff", 1);
 
-			if (data.time) {
+			if (data.time && res) {
 				KinkyDungeonAdvanceTime(1, true);
 			}
 			if (data.npc > 0) {
@@ -1295,7 +1292,7 @@ function KDProcessInput(type, data): string {
 	return "";
 }
 
-function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean): string {
+function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = true): string {
 
 	if (!noUpdate) {
 		KDGameData.OrigEnergyLevel = KDGameData.AncientEnergyLevel;
@@ -1306,7 +1303,9 @@ function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean): string {
 	}
 
 	KinkyDungeonInputQueue.push({type: type, data: data});
-	return KDProcessInputs(true);
+	if (process)
+		return KDProcessInputs(true);
+	else return;
 }
 
 /**

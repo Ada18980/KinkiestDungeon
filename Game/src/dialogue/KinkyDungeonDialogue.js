@@ -2376,7 +2376,7 @@ function KDGetModifiedOpinion(enemy, allowFaction = true, allowSub = true, allow
 	if (allowFaction) {
 		let faction = KDGetFaction(enemy);
 		let rel = KDFactionRelation("Player", faction);
-		op += (rel > 0 ? 15 : 30) * (!allowOnlyPosNegFaction ? rel :
+		op += (rel > 0 ? 10 : 20) * (!allowOnlyPosNegFaction ? rel :
 		(allowOnlyPosNegFaction > 0 ? Math.max(rel, 0)
 			: Math.min(rel, 0)
 		)

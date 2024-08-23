@@ -369,10 +369,10 @@ let alts = {
 		shortcut: false,
 		enemies: false,
 		nojail: true,
+		notraps: true,
 		nokeys: true,
 		nostairs: true,
 		nostartstairs: true,
-		notraps: false,
 		noClutter: true,
 		nobrick: true,
 		nolore: true,
@@ -384,8 +384,8 @@ let alts = {
 		noWear: false, // Disables doodad wear
 		bossroom: false,
 		alwaysRegen: true,
-		width: 14,
-		height: 14,
+		width: 15,
+		height: 15,
 		nopatrols: false,
 		onExit: (data) => {
 			// Return to the normal map
@@ -450,8 +450,8 @@ let alts = {
 		Title: "BanditFort",
 		noWear: false, // Disables doodad wear
 		bossroom: false,
-		width: 14,
-		height: 14,
+		width: 15,
+		height: 15,
 		sizeBonus: true,
 		nopatrols: false,
 		setpieces: {
@@ -1917,6 +1917,9 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	if (!KDMapData.EndPosition) {
 		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
 		KinkyDungeonGenNavMap(KDMapData.StartPosition);
+	}
+	if (!KDMapData.EndPosition) {
+		KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.x};
 	}
 	KDMapData.StartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KDMapData.EndPosition.x, y - KDMapData.EndPosition.y) > width/4;},false, false);
 	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);

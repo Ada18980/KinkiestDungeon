@@ -87,6 +87,7 @@ function KDRefreshPersistentNPC(id: number) {
 }
 
 function KDGetGlobalEntity(id: number): entity {
+	if (id == -1) return KDPlayer();
 	let entity = KinkyDungeonFindID(id);
 	if (entity) return entity;
 	if (KDIsNPCPersistent(id))

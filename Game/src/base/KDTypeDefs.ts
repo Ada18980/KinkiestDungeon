@@ -1,5 +1,6 @@
 type Named = {
 	name: string,
+	inventoryVariant?: string,
 }
 
 interface NamedAndTyped extends Named {
@@ -9,7 +10,10 @@ interface NamedAndTyped extends Named {
 
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
-
+	/** Which NPC its on */
+	onEntity?: number,
+	/** Is magically conjured. Cannot be added back to inventory */
+	conjured?: boolean,
 	id: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],
@@ -539,6 +543,8 @@ interface KDRestraintPropsBase {
 interface restraint extends KDRestraintProps {
 	power: number,
 	preview?: string,
+	/** Special condition for quick binding! */
+	quickBindCondition?: string,
 	/** Base weight of the restraint, required */
 	weight: number,
 	minLevel: number,
@@ -2428,6 +2434,7 @@ interface KDInventoryActionDef {
 }
 
 interface KinkyDungeonSave {
+	version: string,
 	KinkyDungeonPlayerEntity: any;
 	level: number;
 	checkpoint: string;
@@ -3515,6 +3522,8 @@ interface KDFactionProps {
 	honor_specific: Record<string, number>,
 	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
 	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
+	/** Executes once when starting high sec dialogue */
+	customHiSecDialogue?: (guard: entity) => string,
 	/** Custom defeat to use */
 	customDefeat?: string,
 	/** Custom jail allied faction to use */

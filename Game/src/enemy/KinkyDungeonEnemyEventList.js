@@ -896,9 +896,13 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24, ftype =
 				true,
 				false,
 				false);
-			KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
+			if (rest) {
+				KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
+				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+				KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
+			}
+			else return false;
+
 		}
 
 		KDResetAllAggro();

@@ -210,9 +210,12 @@ let KDToggles = {
 	ShowJailedNPCSprites: true,
 	ShowZoom: true,
 	Backgrounds: true,
+	RawDP: false,
+	OnlySelfQuickInv: false,
 };
 
 let KDToggleCategories = {
+	RawDP: "UI",
 	Backgrounds: "GFX",
 	ShowZoom: "UI",
 	ShowJailedNPCSprites: "GFX",
@@ -270,6 +273,7 @@ let KDToggleCategories = {
 	FlipPlayer: "Clothes",
 	GreyscaleBlindness: "GFX",
 	DynamicArmor: "Clothes",
+	OnlySelfQuickInv: "UI",
 };
 
 let KDDefaultKB = {
@@ -1427,7 +1431,12 @@ function KinkyDungeonRun() {
 			KinkyDungeonState = "Menu";
 			KDExecuteMods();
 			return true;
-		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 975, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
+		undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		DrawButtonKDEx("mods_load", (bdata) => {
 			getFileInput();
@@ -1747,7 +1756,20 @@ function KinkyDungeonRun() {
 		KDDrawTileEditor();
 	} else if (KinkyDungeonState == "Load") {
 		DrawButtonVis(875, 750, 350, 64, TextGet("KinkyDungeonLoadConfirm"), "#ffffff", "");
-		DrawButtonVis(1275, 750, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+
+		DrawButtonKDEx(
+		"KinkyDungeonLoadBack", () => {
+			KinkyDungeonState = "Menu";
+			ElementRemove("saveInputField");
+			return true;
+		}, true, 1275, 750, 350, 64,
+		TextGet("KinkyDungeonLoadBack"),
+		"#ffffff", "", undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		}
+	);
 
 		DrawButtonKDEx(
 			"loadFromFile", () => {
@@ -1841,13 +1863,6 @@ function KinkyDungeonRun() {
 					return true;
 				}, true, 875, 550, 350, 64, TextGet("KinkyDungeonSaveToFile"), "#ffffff", ""
 			);
-
-	} else if (KinkyDungeonState == "Journey") {
-		DrawTextKD(TextGet("KinkyDungeonJourney"), 1250, 300, "#ffffff", KDTextGray2);
-		DrawButtonVis(875, 350, 750, 64, TextGet("KinkyDungeonJourney0"), "#ffffff", "");
-		DrawButtonVis(875, 450, 750, 64, TextGet("KinkyDungeonJourney1"), "#ffffff", "");
-		DrawButtonVis(875, 550, 750, 64, TextGet("KinkyDungeonJourney2"), "#ffffff", "");
-		DrawButtonVis(1075, 850, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 
 	} else if (KinkyDungeonState == "Challenge") {
 		//DrawTextKD(TextGet("KinkyDungeonChallenge"), 1250, 80, "#ffffff", KDTextGray1, 48);
@@ -2326,7 +2341,12 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("backButton", (b) => {
 			KinkyDungeonState = "Menu";
 			return true;
-		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
+		undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 
 	} else if (KinkyDungeonState == "Wardrobe") {
@@ -2359,7 +2379,11 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("KDPerksBack", (bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
-		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
+		undefined, undefined, {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
+		});
 
 		DrawButtonKDEx("KDPerksClear", (bdata) => {
 			KinkyDungeonStatsChoice = new Map();
@@ -2552,7 +2576,7 @@ function KinkyDungeonRun() {
 						//KinkyDungeonFastMovePath.splice(0, 1);
 						if (Math.max(Math.abs(next.x-KinkyDungeonPlayerEntity.x), Math.abs(next.y-KinkyDungeonPlayerEntity.y)) < 1.5) {
 							let MP = KDGameData.MovePoints;
-							if (KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true)
+							if (KDSendInput("move", {dir: {x:next.x-KinkyDungeonPlayerEntity.x, y:next.y-KinkyDungeonPlayerEntity.y}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, false)
 								== "move" || MP == KDGameData.MovePoints) {
 								KinkyDungeonFastMovePath.splice(0, 1);
 							}
@@ -2776,7 +2800,12 @@ function KinkyDungeonRun() {
 				} else KinkyDungeonState = "Menu";
 				//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 				return true;
-			}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+			}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "", undefined, undefined, undefined, undefined,
+			undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+				hotkeyPress: KinkyDungeonKeySkip[0],
+			}
+		);
 
 		}
 	}
@@ -3871,10 +3900,6 @@ function KinkyDungeonHandleClick() {
 				KDModsAfterGameStart();
 			}
 			return true;
-		} else if (MouseIn(1275, 750, 350, 64)) {
-			KinkyDungeonState = "Menu";
-			ElementRemove("saveInputField");
-			return true;
 		}
 	} else if (KinkyDungeonState == "LoadOutfit"){
 		let Char = KDSpeakerNPC || KinkyDungeonPlayer;
@@ -4432,6 +4457,7 @@ let KinkyDungeonGameKey = {
 function KinkyDungeonGenerateSaveData() {
 	/** @type {KinkyDungeonSave} */
 	let save = {};
+	save.version = TextGet("KDVersionStr");
 	save.level = MiniGameKinkyDungeonLevel;
 	save.checkpoint = MiniGameKinkyDungeonCheckpoint;
 	save.rep = KinkyDungeonGoddessRep;
@@ -4944,7 +4970,11 @@ function KDDrawGameSetupTabs(xOffset) {
 	DrawButtonKDEx("backButton", (b) => {
 		KinkyDungeonState = "Menu";
 		return true;
-	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
+	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
+	undefined, undefined, {
+		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+		hotkeyPress: KinkyDungeonKeySkip[0],
+	});
 }
 
 

@@ -8,6 +8,7 @@ interface NPCRestraint extends Named {
 	lock: string,
 	id: number,
 	faction?: string,
+	conjured?: boolean,
 }
 
 function KDNPCRestraintSlotOrder(): string[] {
@@ -86,7 +87,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				KDButtonColor, undefined, undefined, {
 					scaleImage: true,
 				}
-			)) tooltip = sgroup.id;
+			) || KDNPCBindingSelectedSlot?.id == sgroup.id) tooltip = sgroup.id;
 
 
 			if (II++ == 0) {
@@ -96,7 +97,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						grp,
 						XX - Math.floor(wid*0.25), YY - Math.floor(wid*0.25), Math.ceil(wid*1), Math.ceil(wid*1),
 						undefined, {
-							zIndex: 160,
+							zIndex: restraint ? 0 : 160,
 						}
 					);
 				}
@@ -180,7 +181,6 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
-
 			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250, currentItem, slot, (currentItem, restraint, slt, item, count) => {
 				if (currentItem) {
 					// Remove current
@@ -200,9 +200,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 					// Add new one
 					KDSendInput("addNPCRestraint", {
 						slot: slot.id,
-						id: -1,
+						id: KinkyDungeonGetItemID(),
 						restraint: restraint.name,
-						restraintid: KinkyDungeonGetItemID(),
+						restraintid: -1,
 						lock: "White",
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette,
@@ -413,7 +413,7 @@ function KDGetRestraintsForID(id: number): (item | NPCRestraint)[] {
 function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints?: Record<string, NPCRestraint>, allowSameID?: number): NPCBindingSubgroup[] {
 	let group = restraint.Group;
 	let tags = restraint.shrine;
-	return [...row.layers, row.encaseGroup].filter((sg) => {
+	let ret = [...row.layers, row.encaseGroup].filter((sg) => {
 		return sg.id == sgroup.id ||
 			(	(!restraints || !restraints[sg.id] || (allowSameID && restraints[sg.id].id == allowSameID))
 				&& sg.allowedGroups.includes(group)
@@ -422,9 +422,26 @@ function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgr
 				})
 			)
 	});
+
+	if (ret.length > 0) {
+		// Resolve ambiguity
+		let index = ret.findIndex((slot) => {
+			return slot.id == sgroup.id;
+		});
+
+		if (index > 0) {
+			// Javascript witchery
+			ret.unshift(...ret.splice(index, 1));
+		}
+	}
+	return ret;
 }
 
-function KDRowItemIsValid(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints: Record<string, NPCRestraint>): boolean {
+function KDRowItemIsValid(restraint: restraint,
+		sgroup: NPCBindingSubgroup,
+		row: NPCBindingGroup,
+		restraints: Record<string, NPCRestraint>,
+		allowEmpty: boolean = false): boolean {
 	let group = restraint.Group;
 
 	if (
@@ -434,6 +451,7 @@ function KDRowItemIsValid(restraint: restraint, sgroup: NPCBindingSubgroup, row:
 		if (tags.some((tag) => {
 			return sgroup.allowedTags.includes(tag);
 		})) {
+			if (allowEmpty) return true;
 			let size = KDNPCRestraintSize(restraint, sgroup, row);
 			if (size == 1 ||
 				(
@@ -523,11 +541,48 @@ function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number =
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
 
-function KDInputSetNPCRestraint(data) {
+function KDCanEquipItemOnNPC(r: restraint, id: number): string {
+	let enemy = KDGetGlobalEntity(id);
+	// TODO make this function work on player too
+	if (enemy) {
+		let stats = KDGetRestraintBondageStats(r);
+		if (stats.conditions) {
+			for (let condition of stats.conditions) {
+				if (!KDBondageConditions[condition](r, id)) {
+					return condition;
+				}
+			}
+		}
+
+		return "";
+	}
+	return "Null";
+}
+
+function KDFreeNPCRestraints(id: number) {
+	if (KDGameData.NPCRestraints) {
+
+		let restraints = KDGameData.NPCRestraints[id + ''];
+		if (restraints) {
+			for (let inv of Object.entries(restraints)) {
+				KDInputSetNPCRestraint({
+					slot: inv[0],
+					id: -1,
+					restraint: "",
+					restraintid: -1,
+					lock: "",
+					npc: id
+				});
+			}
+		}
+	}
+}
+
+function KDInputSetNPCRestraint(data): boolean {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
-	let item = null;
-	if (!slot) return;
+	let item: item = null;
+	if (!slot) return false;
 	if (KDGameData.Collection[data.npc + ""]) {
 		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
 			let Enemy = KinkyDungeonGetEnemyByName(KDGameData.Collection[data.npc + ""].type);
@@ -540,6 +595,18 @@ function KDInputSetNPCRestraint(data) {
 	}
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
+		let restraint = KDRestraint({name: data.restraint});
+
+		if (restraint) {
+			let condition = KDCanEquipItemOnNPC(restraint, data.npc);
+			if (condition) {
+				KinkyDungeonSendTextMessage(8,
+					TextGet("KDBondageCondition_" + condition),
+					"#ff5555", 1, true);
+				return false;
+			}
+		}
+
 		if (rests && rests[slot.id]) {
 			KDInputSetNPCRestraint({
 				slot: slot.id,
@@ -550,11 +617,10 @@ function KDInputSetNPCRestraint(data) {
 				npc: data.npc
 			});
 		}
-		let restraint = KDRestraint({name: data.restraint});
 		if (KDRowItemIsValid(restraint, slot, row, rests)) {
 			KinkyDungeonCheckClothesLoss = true;
 			let size = KDNPCRestraintSize(restraint, slot, row);
-			let id = data.restraintid || KinkyDungeonGetItemID();
+			let id = data.restraintid > 0 ? data.restraintid : KinkyDungeonGetItemID();
 			let slotsToFill = KDNPCRestraintValidLayers(restraint, slot, row, rests, id);
 
 			if (slotsToFill.length >= size) {
@@ -597,7 +663,13 @@ function KDInputSetNPCRestraint(data) {
 			if (restraint) {
 				// Add the tieup value
 				KDNPCRestraintTieUp(data.npc, restraint, -1);
-				let slots = Object.entries(rests).filter((slt) => {
+				let slots = restraint.id == -1
+				? Object.entries(rests).filter((slt) => {
+					return slt[1].id == restraint.id;
+				}).map((slt) => {
+					return slt[0];
+				})
+				: Object.entries(rests).filter((slt) => {
 					return slt[1].id == restraint.id;
 				}).map((slt) => {
 					return slt[0];
@@ -613,41 +685,63 @@ function KDInputSetNPCRestraint(data) {
 
 	}
 	if (item && !data.noInventory) {
-		let restraint = KDRestraint(item);
-		if (restraint?.inventory) {
+		KDReturnNPCItem(
+			item
+		);
+	}
+
+	let npcSprite = KDNPCChar.get(data.npc);
+	if (npcSprite) {
+		NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.npc, 0));
+	}
+
+	return true;
+}
+
+function KDReturnNPCItem(item: item) {
+	let restraint = KDRestraint(item);
+		if (!item.conjured) {
+
+			let inventoryAs = item.inventoryVariant || restraint?.inventoryAs || item.name;
 			if (!KinkyDungeonInventoryGetSafe(item.name)) {
-				if (KinkyDungeonRestraintVariants[item.name]) {
-					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.name], undefined,
-						KinkyDungeonRestraintVariants[item.name].curse, "", item.name);
+				if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+					KDGiveInventoryVariant(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name], undefined,
+						KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].curse, "", item.name);
 
 				} else {
 					KinkyDungeonInventoryAdd({
-					name: item.name,
+					name: inventoryAs,
 					//curse: curse,
 					id: item.id,
 					type: LooseRestraint,
 					//events:events,
 					quantity: 1,
-					showInQuickInv: KinkyDungeonRestraintVariants[item.name] != undefined,});
+					showInQuickInv: KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] != undefined,});
 				}
 
 
 				KDSortInventory(KDPlayer());
 			} else KinkyDungeonInventoryGetSafe(item.name).quantity += 1;
+		} else {
+			KinkyDungeonSendTextMessage(4, TextGet("KDConjuredRestraintVanish").replace(
+				"RSTN",
+				KDGetItemName(item),
+			), "#5577aa", 1);
 		}
-	}
 }
 
-function KDGetRestraintBondageStats(item: Named) {
+function KDGetRestraintBondageStats(item: Named): KDBondageStats {
 	let level = Math.max(KDRestraint(item).power || 0, 1);
 	let type = KDRestraintBondageType(item) || "Leather";
 	let mult = KDRestraintBondageMult(item) || 0;
+	let conditions = KDRestraintBondageConditions(item);
 
 	return {
 		level: level,
 		type: type,
 		mult: mult,
 		amount: mult*level,
+		conditions: conditions,
 	};
 }
 
