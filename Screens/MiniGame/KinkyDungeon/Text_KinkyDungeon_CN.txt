@@ -239,11 +239,11 @@ Disabled
 Partial
 部分
 You recover important items when you advance floors.
-当你前进楼层时，你重要的物品会恢复。
+当你前进楼层时，你重要的物品会恢复
 Once items are lost, they are gone for good.
-物品一旦丢失，就再也没有了。
+物品一旦丢失，就再也没有了
 Each item has a 25% chance of appearing in the chest between floors.
-每件物品都有 25% 的概率出现在楼层之间的箱子里。
+每件物品都有 25% 的概率出现在楼层之间的箱子里
 You find a familiar adventuring outfit!
 你找到了熟悉的冒险服装！
 You feel energy flow out of you, activating the floor below!
@@ -5394,7 +5394,7 @@ It is extremely strict but it is only fabric. The lacing is intricate and will t
 Ornamental Gag
 装饰堵嘴
 A gag meant to keep servants of the Resurrection Temple quiet by forcing a plug into their mouth.
-一种堵嘴装置，旨在通过将塞子塞进复活圣殿的仆人嘴里来让他们保持安静。
+一种堵嘴装置，旨在通过将塞子塞进复活神殿的仆人嘴里来让他们保持安静。
 It is difficult to pull off and though it is made from white leather, a magic enchantment protects it from cutting.
 很难扯下，虽然它是用白色皮革制成的，但是有一个魔法结界保护它不被切割。
 Panel Plug Gag
@@ -9754,7 +9754,7 @@ Enemy Notes
 Overgrown
 杂草丛生
 Temple
-寺庙
+神殿
 Tombs
 坟墓
 Library
@@ -9776,7 +9776,7 @@ They say that the maiden who safeguards the graveyard is kind to her pets...
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
  ( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
- ( 《万古之书》中的一页 ) |他们所说的 '失落的圣殿'，是一个饱受猜测的对象。看来它的创造者只崇拜四位造物主女神，而不是所有的八女神。它可能是几百年前被遗弃的，当时一场洪水引起了巨大的恐慌，这似乎发生在大法师使人类永生之前，因为里面仍然发现了许多遗骸。
+ ( 《万古之书》中的一页 ) |他们所说的 '失落的神殿'，是一个饱受猜测的对象。看来它的创造者只崇拜四位造物主女神，而不是所有的八女神。它可能是几百年前被遗弃的，当时一场洪水引起了巨大的恐慌，这似乎发生在大法师使人类永生之前，因为里面仍然发现了许多遗骸。
 (A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
  ( 《万古之书》中的一页 ) |自古以来，星星对于学者来说一直是个谜。曾几何时，人类相信每一颗星星都是一位神，他们通过向黑夜中投掷糖来供奉，认为星星无数，而令人类高兴的糖粒也数不胜数。宗教已经超越了这一点，但太阳系仪仍然是人类崇拜星星而不是八星时代的遗迹。
 (A page from the Book of Aeons)|The 'Bellows' is the nickname given to the primitive facilities of the Old Civilization, buried deep beneath the ground. While much of it remains in disrepair, many of the Old Civilization's successors have attempted to keep it in good working order, as the technology is precious and impossible to replicate with modern methods. It seems that many of these successors have fallen prey to some delusions about its purpose, as much of the equipment preserved has little use aside from collecting prisoners.
@@ -10848,13 +10848,13 @@ Less
 Much Less
 非常少
 No pain, no gain.
-一份耕耘，一份收获。
+一分耕耘，一分收获
 Gain 10 extra perks, to give you a false sense of security.
-获得 10 项额外技能点，给你一种虚假的安全感。
+获得 10 项额外技能点，给你一种虚假的安全感
 Lose 10 perk points, just to keep things interesting.
-失去 10 个技能点，只是为了增加趣味性。
+失去 10 个技能点，只是为了增加趣味性
 Lose 25 perk points, making things very interesting.
-失去 25 个技能点，让事情变得更有趣点吧。
+失去 25 个技能点，让事情变得更有趣点吧
 Perk Progression Mode:
 技能进展模式 : ‎
 Optional
@@ -10864,13 +10864,13 @@ Mandatory
 Debuffs Only
 仅减益效果
 No perks between floors.
-楼层中没有技能。
+楼层中没有技能
 The standard mode. You may choose between one of three perk altars between floors.
-标准模式，你可以在楼层之间的三个技能神泉中选择一个。
+标准模式，你可以在楼层之间的三个技能神泉中选择一个
 A twist on the standard mode. You must choose before progressing.
-标准模式的一个变型，在前往下一层之前必须选择一个。
+标准模式的一个变型，在前往下一层之前必须选择一个
 You must pick a debuff between floors before progressing.
-在前往下一层之前，必须在楼层之间选择一个减益效果。
+在前往下一层之前，必须在楼层之间选择一个减益效果
 Perk Shrine Bondage:
 技能神泉束缚 : ‎
 Never
@@ -10880,11 +10880,11 @@ Sometimes
 Always
 总是
 Perk shrines will not offer bondage as part of the deal.
-技能神泉不会提供束缚。
+技能神泉不会提供束缚
 Bondage will sometimes be offered alongside perks.
-有时，束缚会与技能一起提供。
+有时，束缚会与技能一起提供
 Perk shrines are always accompanied by bondage.
-技能神泉总会提供束缚。
+技能神泉总会提供束缚
 Perk Shrine Bondage Info:
 技能神泉束缚信息 : ‎
 Hidden
@@ -10892,11 +10892,11 @@ Hidden
 Full
 完全
 You do not know if a perk shrine will apply bondage.
-你不知道技能神泉是否会施加束缚。
+你不知道技能神泉是否会施加束缚
 You know that a perk shrine will apply bondage, but not what kind.
-你知道技能神泉会施加束缚，但不知道是什么样的。
+你知道技能神泉会施加束缚，但不知道是什么样的
 You know the exact restraints a perk shrine will apply.
-你知道技能神泉会施加什么束缚具。
+你知道技能神泉会施加什么束缚具
 Hard Mode:
 难度模式 : ‎
 Normal Mode
@@ -10904,31 +10904,31 @@ Normal Mode
 Hard Mode
 困难模式
 Extreme
-极端模式
+极限模式
 A supposedly reasonable difficulty curve.
-据称合理的难度曲线。
+合理的难度曲线
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
-风险自负。通过双击“困难模式”按钮解锁。
+你将自食其果，该难度通过双击“困难模式”按钮解锁
 Aroused
 性欲
 Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
-移除所有贞操带、振动拘束、塞子，并移除自慰的选项。
+移除所有贞操带、振动拘束、塞子，并移除自慰的选项
 Includes all that good stuff.
-包括所有的好东西。
+包括所有的好东西
 Allow Rear Plugs
 允许肛塞
 Allow Piercings
 允许穿孔
 Start with 200 willpower and Iron Will, good at melee and blocking attacks.
-以 200 点意志力和钢铁意志技能开始游戏，擅长近战攻击和防砍。
+战士擅长近战攻击和防砍，开始游戏时将意志力上限提升到 200 点，并学得钢铁意志技能
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-以 200 点体力和潜行技能开始，擅长潜行和躲避。
+盗贼擅长潜行和躲避，开始游戏时将体力上限提升到 200 点，并学得潜行技能
 Start with 200 mana and Magical Sight, good at casting spells.
-以 200 点魔力和魔之眼技能开始游戏，擅长施法。
+法师擅长施法，开始游戏时将魔力上限提升到 200 点，并学得魔之眼技能
 Start with nothing to your name. For those who want a challenge.
-开始时一无所有。适用于那些想要挑战的人。
+适用于那些想要挑战的人，开始游戏时一无所有
 You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
-你是一名法师，但还没有完成正式的“训练”。需要以性欲模式游玩。
+你是一名法师，不过没有完成正式的“训练”。需要以性欲模式游玩
 Spell Choice:
 技能选择 : ‎
 Choose Spells
@@ -10936,9 +10936,9 @@ Choose Spells
 Random Spells
 随机法术
 Break orbs. Get points. Buy spells. It's that simple.
-打破水晶，获得积分，购买法术，就是这么简单。
+打破水晶，获得积分，购买法术，就是这么简单
 Break orbs and pray you get something good.
-打破水晶，祈祷你能得到好东西。
+打破水晶，祈祷你能得到好东西
 Save Mode:
 存档模式 : ‎
 Save Codes
@@ -10946,9 +10946,9 @@ Save Codes
 Roguelike
 肉鸽游戏
 Grants a save code every floor you can write down. Autosaves only on floor start.
-每当你到达新的楼层时会给予你一个存档码，你可以将其记下。当你进入下一层时存档会自动存档。
+每当你到达新的楼层时会给予你一个存档码，你可以将其记下。当你进入下一层时存档会自动存档
 No save codes, forced autosaves. You are in it to win it.
-没有存档码，只会自动存档。你来到这里只是为了赢。
+没有存档码，只会自动存档。你来到这里只是为了赢
 Prison Strictness:
 监狱安全性 : ‎
 Easy
@@ -10956,23 +10956,23 @@ Easy
 Strict
 严格
 If you get captured, you might get rescued if you have good relations.
-当你被抓后，如果你与派系有良好的关系，你可能会获救。
+当你被抓后，如果你与派系有良好的关系，你可能会获救
 If you get captured, you will always get rescued and pay a fee.
-当你被抓后，你总是会被营救，但需要支付一笔费用。
+当你被抓后，你总是会被营救，但需要支付一笔费用
 If you get captured, you are totally on your own.
-当你被抓后，你就只能靠自己了。
+当你被抓后，你就只能靠自己了
 Start Playing
 开始游玩
 Lock your settings in, nice and tight.
-锁定你的设置，享受紧缚。
+锁定你的设置，享受紧缚
 Choose some perks to spice up your run.
-选择一些额外技能，为你的游玩增添趣味。
+选择一些额外技能，为你的游玩增添趣味
 This game engages in safe and consensual analytics.
-该游戏涉及安全和自愿的数据分析。
+该游戏涉及安全和自愿的数据分析
 It sends data about spell choices, levels reached, etc, to help balance and improve the game.
-它发送有关法术选择、达到的等级等的数据，以帮助平衡和改进游戏。
+它发送有关法术选择、达到的等级等的数据，以帮助平衡和改进游戏
 No personal data is sent or stored.
-不会发送或存储任何个人数据。
+不会发送或存储任何个人数据
 Accept
 接受
 Don't Track Me
@@ -14844,11 +14844,11 @@ This is the entrance to the ancient tombs.|It's harder than the normal entrance.
 This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
 地牢的这一部分被混沌女神改变了|你要经过的区域顺序完全是随机的。
 Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
-传说在广阔的丛林中有一座神庙。戴好你的装备，去寻找宝藏吧！
+传说在广阔的丛林中有一座神殿。戴好你的装备，去寻找宝藏吧！
 You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
 你在一个古老的玩偶工厂迷路了|这段旅程主要包含游戏后期的图块集。
 You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
-你在一座古老的神庙里迷失了方向，被一位变态的女神所迷失。|你会找到出路，还是会发现自己被困得更深？
+你在一座古老的神殿里迷失了方向，被一位变态的女神所迷失。|你会找到出路，还是会发现自己被困得更深？
 You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
 你在废墟中迷失了方向。|图块顺序颠倒了！
 This is a debug mode journey for testing the latest region.
@@ -19076,7 +19076,7 @@ Warden Leg Cuffs
 Warden Ankle Cuffs
 典狱长踝铐
 Play the game the way it was intended. Cruel and restrictive.
-按照游戏的初衷来玩，残酷的束缚。
+按照游戏的初衷来玩，残酷的束缚
 More Bubbles
 更多泡泡
 Enemies that use bubbles (e.g. aqua slimes, water witches) will appear more frequently.
@@ -20445,20 +20445,60 @@ YukataWaist
 浴衣腰围
 Allow Front Plugs
 允许阴塞
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Load Game
+加载游戏
+Save Slot
+存档
+Load File
+加载文件
+Load Code
+加载代码
+No Data
+无数据
+Play (NO SLOT!)
+启动 ( 未选择存档 )
+Play Slot 
+启动 ⁧ 号存档 ⁦⁦
+Save From Code
+从代码中导入
+Floor
+Standard Route
+标准路线
+Alternate Route
+变种路线
+Temple Route
+神殿路线
+Jungle Route
+丛林路线
+Factory Route
+工厂路线
+Reverse Route
+颠倒路线
+Chaos Route
+混沌路线
+Map Seed: 
+地图种子 : ‎
+Choose Save Slot:
+选择存档槽位 : 
+Will Overwrite!
+存档将被覆盖
+ (Hard)
+ ( 困难 )
+ (Extreme)
+ ( 极限 )
+Confirm and OVERWRITE SAVE
+确认并覆盖存档
+Override Outfit when Loading Save
+加载存档时覆盖服装
+Save Outfits within Save Files
+将服装数据附加到存档内
+Show Background Art
+显示背景
+Show Zoom Buttons
+显示缩放按钮
+Show DP instead of %
+显示具体的分心值
+Quick Inv only equips to self
+快速背包物品仅对自身使用
+Journal
+日志

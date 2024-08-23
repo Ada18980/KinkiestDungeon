@@ -4176,7 +4176,7 @@ function KDDrawLoadMenu() {
 		CombarXX + 1100, YYstart + 90, 450, "#ffffff", undefined, 40);
 
 		// Save Code Seed
-		DrawTextFitKD(TextGet("KDMapSeed") + `: ${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
+		DrawTextFitKD(TextGet("KDMapSeed") + `${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
 
 
 
