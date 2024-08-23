@@ -54,7 +54,7 @@ AddModel({
 		{ Name: "HemLowerBack", Layer: "SkirtBack", Pri: -45.2,
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			TieToLayer: "Skirt",
-			Poses: ToMap(["Closed", "Hogtie"]),
+			Poses: ToMap(["Spread"]),
 			NoOverride: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,

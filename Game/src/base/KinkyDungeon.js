@@ -962,6 +962,20 @@ function KDSaveToggles() {
 	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
 }
 
+async function KDMigrateSaveToNewSystem() {
+	// Refresh saves
+	for (var i = 1; i < 5; i++) {
+		let num = (i);
+		await KinkyDungeonDBLoad(num).then((code) => {
+			loadedsaveslots[num - 1] = code;
+		});
+	}
+	// Check for save 1
+	if (!loadedsaveslots[0]) {
+		KinkyDungeonDBSave(1, localStorage.getItem('KinkyDungeonSave'));
+	}
+}
+
 /**
  * Loads the kinky dungeon game
  * @returns {void} - Nothing
@@ -1116,6 +1130,35 @@ function KinkyDungeonLoad() {
 					KDZoomIndex = parsed;
 				}
 			}
+
+
+
+			if (localStorage.getItem('KDLastSaveSlot') == undefined
+				&& localStorage.getItem('KinkyDungeonSave')) {
+				localStorage.setItem('KDLastSaveSlot', "1");
+				KDMigrateSaveToNewSystem();
+			}
+
+			DrawButtonKDEx("GameContinue", () => {
+				KDExecuteModsAndStart();
+				// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2.
+				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
+
+				return true;
+			}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
+			DrawButtonKDEx("GameStart", () => {
+				KinkyDungeonState = "Name";
+				if (KDSaveSlot < 1) KDSaveSlot = 1;
+				for (var i = 1; i < 5; i++) {
+					let num = (i);
+					KinkyDungeonDBLoad(num).then((code) => {
+						loadedsaveslots[num - 1] = code;
+					});
+				}
+				return true;
+			}, true, 1000-350/2, 440, 350, 64, TextGet("GameStart"), "#ffffff", "");
+
+
 
 
 			KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
@@ -4097,8 +4140,12 @@ function KDDrawLoadMenu() {
 		DrawTextFitKD(`${TextGet("KDSaveSlotButton")}${LoadMenuCurrentSlot}`, CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
 	}
 	if (loadedSaveforPreview?.hasOwnProperty("KDGameData")) {
-		// Player Name
+		// Player Name and Class
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, "#ffffff", undefined, 40);
+		if (loadedSaveforPreview.KDGameData.Class)
+			DrawTextFitKD(
+				TextGet("KinkyDungeonStatMC_" + loadedSaveforPreview.KDGameData.Class),
+				CombarXX + 680, YYstart + 670, 400, "#ffffff", undefined, 28);
 
 		// Player Paper Doll
 		if (ModelPreviewLoaded) {
