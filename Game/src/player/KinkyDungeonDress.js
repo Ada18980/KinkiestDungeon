@@ -58,7 +58,7 @@ function KDGetDressList() {
 
 // Return all dresses so theres no longer any Lost items
 function KinkyDungeonInitializeDresses() {
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonUndress = 0;
 	if (Object.values(KDGetDressList()).length > 0) {
 		for (let d of Object.values(KDGetDressList())) {
@@ -129,7 +129,8 @@ function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 				clothes.Lost = false;
 			}
 		}
-		KinkyDungeonCheckClothesLoss = true;
+		//KinkyDungeonCheckClothesLoss = true;
+		KDCharacterDress.set(Character || KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer(Character, NoRestraints);
 		KDRefresh = true;
 	}
@@ -198,8 +199,10 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 
 		KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true};
 
+		if (KinkyDungeonCheckClothesLoss) KDRefreshCharacter.set(Character, true);
+
 		// if true, nakeds the player, then reclothes
-		if (KinkyDungeonCheckClothesLoss) {
+		if (KDRefreshCharacter.get(Character)) {
 
 
 			if (!KDNaked) KDCharacterNaked(Character);
@@ -328,7 +331,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 		if (Character == KinkyDungeonPlayer) {
 			for (let clothes of DressList) {
 				if (!clothes) continue;
-				if (StandalonePatched && !clothes.Lost && KinkyDungeonCheckClothesLoss) {
+				if (StandalonePatched && !clothes.Lost && KDRefreshCharacter.get(Character)) {
 					if (clothes.Item && (restraintModels[clothes.Item] || restraintModels[clothes.Item + "Restraint"])) {
 						clothes.Lost = true;
 					} else if (IsModelLost(Character, clothes.Item))
@@ -336,7 +339,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 				}
 				if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 				data.updateDress = true;
-				if (!clothes.Lost && KinkyDungeonCheckClothesLoss) {
+				if (!clothes.Lost && KDRefreshCharacter.get(Character)) {
 
 
 
@@ -379,7 +382,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 				}
 
 				if (!clothes.Lost) {
-					if (KinkyDungeonCheckClothesLoss) {
+					if (KDRefreshCharacter.get(Character)) {
 						let item = KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, clothes.Color, clothes.Filters, clothes.Properties);
 						alreadyClothed[clothes.Group || clothes.Item] = true;
 						if (item) {
@@ -410,7 +413,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 				data.updateDress = true;
 
 				//if (!clothes.Lost) {
-				if (KinkyDungeonCheckClothesLoss) {
+				if (KDRefreshCharacter.get(Character)) {
 					KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, clothes.Color, clothes.Filters, clothes.Properties);
 					alreadyClothed[clothes.Group || clothes.Item] = true;
 				}
@@ -420,7 +423,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 		}
 
 		if (!NoRestraints) {
-			if (KinkyDungeonCheckClothesLoss) {
+			if (KDRefreshCharacter.get(Character)) {
 				data.extraForceDress = [];
 				KinkyDungeonSendEvent("beforeDressRestraints", data);
 				KinkyDungeonWearForcedClothes(Character, restraints, data.extraForceDress);
@@ -445,39 +448,9 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 					// Force player into being on the ground
 					let newLegPoses = AllowedLegPoses.filter((element) => {return !STANDPOSES.includes(element);});
 					if (newLegPoses.length > 0) AllowedLegPoses = newLegPoses;
-				} else {
-					if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && !Character.IsKneeling()) {
-						CharacterSetActivePose(Character, "Kneel", false);
-					}
 				}
-
-			} else if (KDGameData.SleepTurns < 1) {
-				if (StandalonePatched) {
-					// Nothing needed
-				} else {
-					if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "Kneel") && !CharacterDoItemsSetPose(Character, "Kneel") && Character.IsKneeling()) {
-						CharacterSetActivePose(Character, "BaseLower", false);
-					} else if (KDToggleXRay && KinkyDungeonPlayerTags.get("BoundFeet")) {
-						if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "LegsClosed") && !CharacterDoItemsSetPose(Character, "LegsClosed") && !Character.IsKneeling()) {
-							CharacterSetActivePose(Character, "LegsClosed", false);
-						}
-					} else if (CharacterItemsHavePoseAvailable(Character, "BodyLower", "BaseLower") && !CharacterDoItemsSetPose(Character, "BaseLower") && !Character.IsKneeling()) {
-						CharacterSetActivePose(Character, "BaseLower", false);
-					}
-					if (KDToggleXRay && (KinkyDungeonPlayerTags.get("BoundArms") || KinkyDungeonPlayerTags.get("BoundHands"))) {
-						if (CharacterItemsHavePoseAvailable(Character, "BodyUpper", "BackElbowTouch") && !CharacterDoItemsSetPose(Character, "BackElbowTouch")) {
-							CharacterSetActivePose(Character, "BackElbowTouch", false);
-						}
-					} else {
-						if (CharacterItemsHavePoseAvailable(Character, "BodyUpper", "BaseUpper") && !CharacterDoItemsSetPose(Character, "BaseUpper")) {
-							CharacterSetActivePose(Character, "BaseUpper", false);
-						}
-					}
-				}
-
 			}
 		}
-
 
 		if (StandalonePatched) {
 			// Pose set routine
@@ -642,7 +615,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 				Xray.push("XrayBra");
 			}
 		}
-		if (KinkyDungeonCheckClothesLoss || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
+		if (KDRefreshCharacter.get(Character) || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
 			UpdateModels(Character, Xray);
 		let ReUpdate = false;
 
@@ -676,15 +649,18 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 			}
 		}
 
-		if (KinkyDungeonCheckClothesLoss || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
+		if (KDRefreshCharacter.get(Character) || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
 			if (ReUpdate) UpdateModels(Character, Xray);
 		if (Force) {
 			ForceRefreshModels(Character);
 		}
 
 		KinkyDungeonCheckClothesLoss = false;
+		KDRefreshCharacter.delete(Character);
 	}
 }
+
+let KDRefreshCharacter = new Map();
 
 /**
  * Initializes protected groups like ears and tail

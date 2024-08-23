@@ -760,7 +760,7 @@ function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = fal
 			}
 			if (dress) {
 
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C);
 			}
 
@@ -1188,19 +1188,19 @@ function KDDrawWardrobe(screen, Character) {
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
 				KinkyDungeonSetDress("None", "None", C, true);
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
 				CharacterAppearanceRestore(C, DecompressB64(NewOutfit), C != KinkyDungeonPlayer);
 				CharacterRefresh(C);
 				KDInitProtectedGroups(C);
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
 			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups(KinkyDungeonPlayer);
 			}
@@ -1300,7 +1300,7 @@ function KDDrawWardrobe(screen, Character) {
 				if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
 					KinkyDungeonSetDress(enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
 				}
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(KDSpeakerNPC, true);
 				KinkyDungeonDressPlayer(KDSpeakerNPC, true);
 			}
 			return true;
@@ -1321,7 +1321,7 @@ function KDDrawWardrobe(screen, Character) {
 			//CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(C, true);
 			if (KinkyDungeonCurrentDress != "Bikini")
 				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
 			else
@@ -1540,7 +1540,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 		KDChangeWardrobe(C);
 		CharacterReleaseTotal(C);
 		CharacterNaked(C);
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(C, true);
 		KinkyDungeonSetDress("None", "None", C, true);
 		KinkyDungeonDressPlayer(C, true);
 		KDInitProtectedGroups(C);
@@ -1553,7 +1553,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 		KDInitProtectedGroups(C);
 	}
 
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(C, true);
 	KinkyDungeonDressPlayer(C, true);
 	/*if (stringified) {
 		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, stringified);

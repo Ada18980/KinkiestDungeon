@@ -1252,8 +1252,8 @@ function KDProcessInput(type, data): string {
 			break;
 		case "freeNPCRestraint": {
 			KDFreeNPCRestraints(data.npc);
-
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			break;
 		}
 		case "addNPCRestraint":
@@ -1283,7 +1283,8 @@ function KDProcessInput(type, data): string {
 				KDSetCollFlag(data.npc, "restrained", 1);
 				KDSetCollFlag(data.npc, "restrained_recently", 24);
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 		break;
 	}
 	if (data.GameData) {

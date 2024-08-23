@@ -4609,8 +4609,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
 		],
-		LinkableBy: [...KDJacketLink],
-		renderWhenLinked: [...KDJacketRender],
+		LinkableBy: [...KDBoxbinderLink],
+		renderWhenLinked: [...KDBoxbinderLink],
 		Model: "JacketExtraLeotard",
 		Filters: {
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},

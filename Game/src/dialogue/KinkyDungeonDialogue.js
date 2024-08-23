@@ -72,7 +72,7 @@ function KDDrawDialogue(delta) {
 	if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
 		KinkyDungeonDrawState = "Game";
 
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		// Get the current dialogue and traverse down the tree
 		let dialogue = KDGetDialogue();
@@ -368,7 +368,7 @@ function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 
 
 	KDDoDialogue({dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonDressPlayer();
 }
 
@@ -461,7 +461,7 @@ function KDStartDialogInput(Dialogue, Speaker, Click, Personality, enemy) {
 	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
 
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonDressPlayer();
 }
 

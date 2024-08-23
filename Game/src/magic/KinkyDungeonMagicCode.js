@@ -342,7 +342,8 @@ let KinkyDungeonSpellSpecials = {
 										KinkyDungeonAdvanceTime(1, true);
 										KDSetCollFlag(en.id, "restrained", 1);
 										KDSetCollFlag(en.id, "restrained_recently", 24);
-										KinkyDungeonCheckClothesLoss = true;
+										if (KDNPCChar.get(en.id))
+											KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 									}
 								}
 							} else {

@@ -3065,7 +3065,8 @@ let KDDialogue = {
 						e.flip = !e.flip;
 						KinkyDungeonSetEnemyFlag(e, "blush", 2);
 						KDUpdatePersistentNPC(e.id);
-						KinkyDungeonCheckClothesLoss = true;
+						if (KDNPCChar.get(e.id))
+							KDRefreshCharacter.set(KDNPCChar.get(e.id), true);
 
 						KDGameData.CurrentDialogStage = "";
 						KDGameData.CurrentDialogMsg = "PrisonerJailOwnFlip";

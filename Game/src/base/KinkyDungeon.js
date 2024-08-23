@@ -1165,7 +1165,7 @@ function KinkyDungeonLoad() {
 			else
 				CharacterNaked(KinkyDungeonPlayer);
 
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 
 			KDInitProtectedGroups(KinkyDungeonPlayer);
@@ -1561,6 +1561,7 @@ function KinkyDungeonRun() {
 		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
 			KinkyDungeonState = "Name";
+			if (KDSaveSlot < 1) KDSaveSlot = 1;
 			for (var i = 1; i < 5; i++) {
 				let num = (i);
 				KinkyDungeonDBLoad(num).then((code) => {
@@ -1756,7 +1757,7 @@ function KinkyDungeonRun() {
 			KinkyDungeonDressSet();
 			CharacterNaked(KinkyDungeonPlayer);
 			KinkyDungeonInitializeDresses();
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 			KDInitProtectedGroups(KinkyDungeonPlayer);
 			CharacterRefresh(KinkyDungeonPlayer);
@@ -2442,7 +2443,8 @@ function KinkyDungeonRun() {
 		// If the save slot is occupied, warn the player!
 		let danger = false;
 		if (loadedsaveslots[KDSaveSlot-1]) {
-			DrawTextFitKD(`Will Overwrite!`, 1680, 585, 360, "#ff5555", undefined, 36);
+			danger = true;
+			DrawTextFitKD(TextGet("KDWillOverride"), 1680, 585, 360, "#ff5555", undefined, 36);
 		} else {
 			KDConfirmDeleteSave = false;
 		}
@@ -3934,7 +3936,7 @@ for (let i = 0; i < maxSaveSlots; i++) {
  */
 let loadedSaveforPreview = null;
 let KDPreviewModel = null;
-let KDSaveSlot = 0;
+let KDSaveSlot = 1;
 
 // Moved these to text doc -Ada
 
@@ -4099,9 +4101,19 @@ function KDDrawLoadMenu() {
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, "#ffffff", undefined, 40);
 
 		// Player Paper Doll
-		if (ModelPreviewLoaded)
+		if (ModelPreviewLoaded) {
+			if (!KDCurrentModels.get(KDPreviewModel)) {
+				DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true)
+
+				KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined,
+					loadedSaveforPreview.inventoryarray.restraint,
+					KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
+						loadedSaveforPreview.inventoryarray.restraint),
+					KDToggles.ForcePalette ? KDDefaultPalette : undefined)
+			}
 			DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true)
 
+		}
 		// New Game Text
 		DrawTextFitKD(`Floor ${loadedSaveforPreview.level}${(loadedSaveforPreview.npp > 0) ? (" - NG+"+loadedSaveforPreview.npp) : ("")}`, CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 
@@ -4362,7 +4374,10 @@ function KDDrawLoadMenu() {
 			ElementRemove("saveInputField");
 		}
         return true;
-    }, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? true : false), 1570, 880, 350, 64, TextGet("PlayGameWithCurrentCode"), (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? "#ffffff" : "#888888"), "");
+    }, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? true : false), 1570, 880, 350, 64,
+
+		LoadMenuCurrentSlot > 0 ? TextGet("KDPlayWithSlot") + LoadMenuCurrentSlot
+	: TextGet("KDPlayWithoutSlot"), (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? "#ffffff" : "#888888"), "");
 }
 
 function KinkyDungeonDressModelPreview() {
@@ -4370,13 +4385,16 @@ function KinkyDungeonDressModelPreview() {
 		KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 		KDPreviewModel.ID++;
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
-		KinkyDungeonCheckClothesLoss = true;
-		setTimeout(() => {
-			// @ts-ignore
-			KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined, loadedSaveforPreview.inventoryarray.restraint, KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0, loadedSaveforPreview.inventoryarray.restraint), KDToggles.ForcePalette ? KDDefaultPalette : undefined)
-			ModelPreviewLoaded = true;
-			res(true)
-		}, 50);
+		//setTimeout(() => {
+		KDRefreshCharacter.set(KDPreviewModel, true);
+		KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined,
+			loadedSaveforPreview.inventoryarray.restraint,
+			KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
+				loadedSaveforPreview.inventoryarray.restraint),
+			KDToggles.ForcePalette ? KDDefaultPalette : undefined)
+		ModelPreviewLoaded = true;
+		res(true)
+		//}, 50);
 	})
 }
 
@@ -4474,16 +4492,16 @@ function KinkyDungeonLoadPreview(String) {
 				//KDOrigMana = KinkyDungeonStatMana*10;
 				//KDOrigDistraction = KinkyDungeonStatDistraction*10;
 			} else {
-				if (saveData.stats.picks != undefined) returndata.picks = saveData.picks;
-				if (saveData.stats.keys != undefined) returndata.rkeys = saveData.rkeys;
-				if (saveData.stats.bkeys != undefined) returndata.bkeys = saveData.bkeys;
-				if (saveData.stats.mana != undefined) returndata.mana = saveData.mana;
-				if (saveData.stats.manapool != undefined) returndata.manapool = saveData.manapool;
-				if (saveData.stats.stamina != undefined) returndata.stamina = saveData.stamina;
-				if (saveData.stats.willpower != undefined) returndata.willpower = saveData.willpower;
-				if (saveData.stats.distraction != undefined) returndata.distraction = saveData.distraction;
-				if (saveData.stats.distractionlower != undefined) returndata.distractionlower = saveData.distractionlower;
-				if (saveData.stats.npp != undefined) returndata.npp = saveData.npp;
+				if (saveData.picks != undefined) returndata.picks = saveData.picks;
+				if (saveData.keys != undefined) returndata.rkeys = saveData.rkeys;
+				if (saveData.bkeys != undefined) returndata.bkeys = saveData.bkeys;
+				if (saveData.mana != undefined) returndata.mana = saveData.mana;
+				if (saveData.manapool != undefined) returndata.manapool = saveData.manapool;
+				if (saveData.stamina != undefined) returndata.stamina = saveData.stamina;
+				if (saveData.willpower != undefined) returndata.willpower = saveData.willpower;
+				if (saveData.distraction != undefined) returndata.distraction = saveData.distraction;
+				if (saveData.distractionlower != undefined) returndata.distractionlower = saveData.distractionlower;
+				if (saveData.npp != undefined) returndata.npp = saveData.npp;
 			}
 			returndata.KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
 			if (saveData.KDGameData != undefined) returndata.KDGameData = Object.assign({}, saveData.KDGameData);
@@ -4924,7 +4942,7 @@ function KinkyDungeonHandleClick() {
 				CharacterReleaseTotal(Char);
 				if (Char == KinkyDungeonPlayer)
 					KinkyDungeonDressSet();
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(Char, true);
 				KinkyDungeonDressPlayer(Char, true);
 				KinkyDungeonState = "Wardrobe";
 				//KDWardrobeCallback = null;
@@ -5776,7 +5794,7 @@ function KinkyDungeonLoadGame(String) {
 			if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
 
 			KinkyDungeonSetMaxStats();
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KDNaked = false;
 			KinkyDungeonDressPlayer();
 			KDRefresh = true;

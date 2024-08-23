@@ -530,7 +530,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
 			KinkyDungeonSetDress(enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
 		}
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KDSpeakerNPC, true);
 	} else {
 		KDSpeakerNPC = KDNPCChar.get(value.id);
 		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
@@ -564,7 +564,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 				//if (KDOriginalValue) {
 				value2.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
 
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(KDSpeakerNPC, true);
 				//}
 			};
 			if (value.customOutfit) {
@@ -1169,7 +1169,8 @@ let KDCollectionTabDraw = {
 					});
 					//en.ceasefire = 9999;
 					en.playWithPlayer = 0;
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(en.id))
+						KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 					KDUpdatePersistentNPC(en.id, true);
 					//KinkyDungeonDrawState = "Game";
 					KinkyDungeonAdvanceTime(1);

@@ -24008,3 +24008,7 @@ KDJourneyDoll,Factory Route
 KDJourneyLost,Reverse Route
 KDJourneyRandom,Chaos Route
 KDMapSeed,Map Seed
+KDWillOverride,Will Overwrite!
+
+KDPlayWithSlot,"Play Slot "
+KDPlayWithoutSlot,Play (NO SLOT!)

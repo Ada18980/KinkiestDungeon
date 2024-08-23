@@ -82,7 +82,8 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				}
 				KDValidateEscapeGrace(value);
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(value.id))
+				KDRefreshCharacter.set(KDNPCChar.get(value.id), true);
 		}
 
 		if (KDToggles.Sound)
@@ -190,7 +191,8 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 					KDValidateEscapeGrace(v);
 				}
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(value.id))
+				KDRefreshCharacter.set(KDNPCChar.get(value.id), true);
 
 		}
 

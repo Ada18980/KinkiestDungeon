@@ -676,7 +676,8 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 			// We refresh
 			if (enemy.refreshSprite
 				|| !kdpixisprites.get("xspr_" + enemy.id + id)) {
-				KinkyDungeonCheckClothesLoss = true;
+				if (char)
+					KDRefreshCharacter.set(char, true);
 				if (!NPCTags.get(char)) {
 					NPCTags.set(char, new Map());
 				}
@@ -729,7 +730,8 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 			// We refresh
 			if (enemy.refreshSprite
 				|| !kdpixisprites.get("xspr_" + enemy.id + id)) {
-				KinkyDungeonCheckClothesLoss = true;
+				if (char)
+					KDRefreshCharacter.set(char, true);
 				if (!NPCTags.get(char)) {
 					NPCTags.set(char, new Map());
 				}
@@ -4034,6 +4036,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.MovableTiles = KinkyDungeonMovableTilesEnemy;
 	AIData.AvoidTiles = "" + KDDefaultAvoidTiles;
 	if (enemy.Enemy.tags && enemy.Enemy.tags.opendoors) AIData.MovableTiles = KinkyDungeonMovableTilesSmartEnemy;
+	else if (enemy == KinkyDungeonLeashingEnemy() || enemy == KinkyDungeonJailGuard()) AIData.MovableTiles = KinkyDungeonMovableTilesSmartEnemy;
 	if (enemy.Enemy.ethereal) {
 		AIData.AvoidTiles = "";
 		AIData.MovableTiles = AIData.MovableTiles + "1X";
@@ -8899,7 +8902,7 @@ function KDQuickGenNPC(enemy, force) {
 			if (enemyType?.outfit || enemyType.outfit) {
 				KinkyDungeonSetDress(enemyType?.outfit || enemyType.outfit, enemyType?.outfit || enemyType.outfit, NPC, true);
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(NPC, true);
 		} else {
 			NPC = KDNPCChar.get(id);
 			KDNPCChar_ID.set(NPC, id);

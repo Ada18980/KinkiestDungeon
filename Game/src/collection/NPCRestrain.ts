@@ -156,7 +156,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						r.faction = currentItem.faction;
 					}
 					KDSetNPCRestraints(npcID, restraints);
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(npcID))
+						KDRefreshCharacter.set(KDNPCChar.get(npcID), true);
 				}
 
 				return true;
@@ -174,7 +175,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						slt.faction = palette;
 					})
 					KDSetNPCRestraints(npcID, restraints);
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(npcID))
+						KDRefreshCharacter.set(KDNPCChar.get(npcID), true);
 				}
 
 			}, "KDSetRestraintPaletteSelect");
@@ -618,7 +620,8 @@ function KDInputSetNPCRestraint(data): boolean {
 			});
 		}
 		if (KDRowItemIsValid(restraint, slot, row, rests)) {
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			let size = KDNPCRestraintSize(restraint, slot, row);
 			let id = data.restraintid > 0 ? data.restraintid : KinkyDungeonGetItemID();
 			let slotsToFill = KDNPCRestraintValidLayers(restraint, slot, row, rests, id);
@@ -659,7 +662,8 @@ function KDInputSetNPCRestraint(data): boolean {
 		let rests = KDGetNPCRestraints(data.npc);
 		if (rests) {
 			let restraint = rests[slot.id];
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			if (restraint) {
 				// Add the tieup value
 				KDNPCRestraintTieUp(data.npc, restraint, -1);

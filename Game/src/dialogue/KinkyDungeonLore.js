@@ -608,7 +608,7 @@ function KDDrawInventoryTabs(xOffset, drawBG = true) {
 	KinkyDungeonDrawState != "Inventory", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KDCollectionTab = "";
 		KDCurrentFacilityTarget = "";
 		KDFacilityCollectionCallback = null;

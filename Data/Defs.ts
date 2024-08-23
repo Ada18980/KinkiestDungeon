@@ -1246,6 +1246,7 @@ let LayerGroups = {
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
+		"Option_BindChestLower",
 	]),
 
 	"RibbonThighs": ToMap([
