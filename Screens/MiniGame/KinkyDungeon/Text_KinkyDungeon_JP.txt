@@ -2614,7 +2614,7 @@ Katana
 She who strikes first, hits second.
 後の先を取る。
 Deals slash damage. Deals up to 50 bonus damage by waiting 10 turns between attacks.
-斬撃属性。待機時、次の攻撃で与えるダメージが増加する。最大10ターン/50ダメージ
+斬撃属性。攻撃しなかった場合、次の攻撃で与えるダメージが増加する。最大10ターン/50ダメージ
 You pick up a katana.
 刀を手に入れた。
 Shadow's Edge
@@ -12460,7 +12460,7 @@ You find a magic orb, containing the SHCL spell 'SPLNME' and angering a goddess.
 You find a magic orb, containing a random spell and angering a goddess.
 魔法のオーブを見つけた。手に取ればランダムで魔法を習得し、神を怒らせることになる。
 Should you break it, she will send her minions after you. Which Goddess will you anger?
-手に取れば神を怒らせ、手先が送られてくるだろう。どうする？
+手に取れば神を怒らせ、良くないことが起きるかもしれない。
 Random (-10% rep loss)
 ランダム(関係性-10%)
 
