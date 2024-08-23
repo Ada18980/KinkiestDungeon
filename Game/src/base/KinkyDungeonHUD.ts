@@ -2598,7 +2598,8 @@ function KDProcessBuffIcons(minXX, minYY, side = false) {
 						.replace("DAMAGECATEGORY", TextGet(melee ? "KinkyDungeonDamageTypemelee" : "KinkyDungeonDamageTypemagic").toLocaleLowerCase())
 						.replace("PERCENT1", Math.round(resist * (melee ? meleeResist : magicResist) * 100) + "%")
 						.replace("PERCENT2", Math.round(DR * 100) + "")
-						.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%"),
+						.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%")
+						.replace("COUNTPERCENT", (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%"),
 					count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
 					countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
 					icon: "dmg" + type,
