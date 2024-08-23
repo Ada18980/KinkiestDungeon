@@ -229,7 +229,7 @@ Curse of Increasing Tightness: Your restraints get tighter over time.
 Curse of Lethargy: Reduce distraction over time, but miscast chance is increased by AMNT%.
 嗜睡诅咒 : ‎随着时间推移减少性奋值，但施法错误的可能性增加 AMNT%。
 Curse of Mute: You cannot converse, and verbal spells cost AMNT% more mana.
-哑巴诅咒 : ‎你无法交谈，并且言语类咒语会消耗 AMNT% 以上的法力。
+哑巴诅咒 : ‎你无法交谈，并且言语类咒语会消耗 AMNT% 以上的魔力。
 Curse of Clumsiness: After casting an arm spell, you drop your currently held weapon.
 笨拙诅咒 : ‎施展手臂法术后，你会当前持有的武器会掉落。
 Curse of Deflection: 50% chance for an attack to be redirected against an adjacent hostile target.
@@ -395,7 +395,7 @@ All spells above 1st level cost 2x as many spell points.
 Blessed
 祝福
 You can drink mana from the shrine fountains once per floor without chance of punishment.
-你在每层第一次饮用神泉恢复法力时不受到任何惩罚。
+你在每层第一次饮用神泉恢复魔力时不受到任何惩罚。
 Cursed
 诅咒
 Goddess reputations can never exceed 25.
@@ -415,7 +415,7 @@ You start the game with +1 spell point. Your first two spell categories are free
 Meditation
 冥想
 You slowly regenerate mana, up to a maximum of 50.
-你缓慢地恢复法力值，最多 50 点。
+你缓慢地恢复魔力值，最多 50 点。
 Willpower
 坚毅
 -50% stamina drain from being at high arousal.
@@ -455,11 +455,11 @@ Unarmed attacks deal half damage and cost 2x as much stamina.
 Clumsy
 笨手笨脚
 0.7x base accuracy
-基础精准度变为0.7倍。
+基础命中率变为0.7倍。
 Unfocused
 目光分散
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
-当性奋值超过10%时，精准度将降低至0.9倍，随性奋值的升高精准度将持续降低，最高在90%性奋值时降低至0.6倍。
+当性奋值超过10%时，命中率将降低至0.9倍，随性奋值的升高命中率将持续降低，最高在90%性奋值时降低至0.6倍。
 Pristine
 质朴
 There are significantly less shiny loot objects in the dungeon.
@@ -735,13 +735,13 @@ Beds and furniture are often trapped.
 Quakehoof Associate
 震蹄助手
 Start with the Epsilon Collar, which regenerates mana when you play with yourself.
-开局穿戴能量子项圈，当你自慰时会恢复法力。
+开局穿戴能量子项圈，当你自慰时会恢复魔力。
 Epsilon Collar
 能量子项圈
 A collar reserved for the most prestigious of submissives.
 这是专为最尊贵的顺从者准备的项圈。
 Restores mana when you play with yourself, but increases the distraction given. Only works when Desire is below the limit.
-自慰时可恢复法力，但会提高增加性奋值的程度。仅当欲望低于上限时有效。
+自慰时可恢复魔力，但会提高增加性奋值的程度。仅当欲望低于上限时有效。
 Bullet Hell
 子弹地狱
 Hides warning lines for non-AoE bullets and projectiles.
@@ -797,7 +797,7 @@ While below 10% distraction, you gain +10% ice damage and can walk on ice withou
 Grounded in Reality
 现实锚定
 While at max mana, your attacks deal an additional 30% of their base damage as electric damage.
-当法力值最大时，攻击可造成额外 30% 基础伤害的电击伤害。
+当魔力值最大时，攻击可造成额外 30% 基础伤害的电击伤害。
 Like the Wind
 风之旋律
 While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 1.
@@ -1135,13 +1135,13 @@ Elemental Slave
 Start in a full set of magically locked obsidian cuffs.
 开局时穿戴被魔法锁住的全套黑曜石铐。
 Mana Burst
-法力冲击
+魔力冲击
 While at 100% distraction, you get -100% miscast chance but spending too much mana at once may cause you to go over the edge.
-当性奋值为 100% ，施法失败概率会 -100%，但一次消耗过多的法力值可能会导致高潮。
+当性奋值为 100% ，施法失败概率会 -100%，但一次消耗过多的魔力值可能会导致高潮。
 Arousing Magic
 催化魔法
 Your magic is powered by otherworldly distracting energies. Casting spells increases distraction based on the mana spent.
-你的魔法由超凡脱俗的催情能量驱动，施法时会根据消耗的法力增加性奋值。
+你的魔法由超凡脱俗的催情能量驱动，施法时会根据消耗的魔力增加性奋值。
 Clearheaded
 冷静之术
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
@@ -1229,13 +1229,13 @@ Quickness: Your next movement is so fast it doesn't advance a turn.
 All Damage Reduction:
 所有伤害减免 : ‎
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-你受到 PERCENT1 DAMAGETYPE 伤害，基于 PERCENT2 DAMAGETYPE 抗性和 PERCENT3 DAMAGECATEGORY 修正
+你受到的DAMAGETYPE伤害COUNTPERCENT [基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正]
 You deal PERCENT more DAMAGETYPE damage.
-你造成的 DAMAGETYPE 伤害增加了 PERCENT。
+你造成的DAMAGETYPE伤害增加了 PERCENT
 Your bindings are PERCENT more effective.
-你的束缚效果提高了 PERCENT。
+你的束缚效果提高了 PERCENT
 Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
-你的基础攻击可造成 DAMAGEDEALT 点 DAMAGETYPE 伤害，花费的体力为 STMNA。
+你的基础攻击可花费 STMNA 点体力造成 DAMAGEDEALT 点DAMAGETYPE伤害
 Plugged!
 被插入！
 Plugged up!!!
@@ -1297,45 +1297,46 @@ You're seeing things...
 You've been poisoned!
 你中毒了！
 -50% MP Cost (Latex)
-乳胶法术的魔力消耗减少 50%。
+乳胶法术的魔力消耗减少 50% [ ⁧[
 -50% MP Cost (Leather)
-皮革法术的魔力消耗减少 50%。
+皮革法术的魔力消耗减少 50% [ ⁧[
 -50% MP Cost (Metal)
-金属法术的魔力消耗减少 50%。
+金属法术的魔力消耗减少 50% [ ⁧[
 -50% MP Cost (Rope)
-绳索法术的魔力消耗减少 50%。
+绳索法术的魔力消耗减少 50% [ ⁧[
 Regeneration
 再生能力
 -50% MP Cost (Elements)
-元素法术的魔力消耗减少 50%。
--50% MP Cost (Conjuration)
-咒术的魔力消耗减少 50%。
+元素法术的魔力消耗减少 50% [ ⁧[
+-50% MP Cost (Conjuration) 
+咒术的魔力消耗减少 50% [ ⁧[
 -50% MP Cost (Illusion)
-咒术的魔力消耗减少 50%。
+咒术的魔力消耗减少 50% [ ⁧[
+]]]]]]]]]]]]]]
 Conductive: When you or an enemy takes electric damage, the other takes half of it as well!
-导电 : ‎当你或敌人受到电击伤害时，双方都会承受被攻击个体的 50% 电击伤害！
+导电 : ‎当你或敌人受到电击伤害时，双方都会承受被攻击个体的 50% 电击伤害
 Lightning Rod: Gain significantly boosted electric resist.
-避雷针 : ‎大幅增加电击抗性。
+避雷针 : ‎大幅增加电击抗性
 Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
-潮湿 : ‎提高火焰抗性，但降低对寒冰和电击的抗性，并获得导电。
+潮湿 : ‎提高火焰抗性，但降低对寒冰和电击的抗性，并获得导电
 Chilled: The cold makes it hard to move! You are slowed.
-寒冷 : ‎寒冷使得移动变得困难！降低移动速度。
+寒冷 : ‎寒冷使得移动变得困难，降低移动速度
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上！降低粘液抗性 30% 和移动速度。
+粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上，降低 30% 粘液抗性和移动速度
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
-不稳定 : ‎你站在不牢固的地面上。你更容易被击中，并且降低移动速度。
+不稳定 : ‎你站在不牢固的地面上，降低移动速度，且更容易被击中
 Ignore Ice Tiles
 忽略寒冰效果
 Ignited: You are dealing fire damage to yourself and nearby enemies!
-燃烧 : ‎你对自己和附近的敌人造成火焰伤害！
+燃烧 : ‎你对自己和附近的敌人造成火焰伤害
 You are on fire and taking damage!
 你正在燃烧并受到伤害！
 Divine Punishment: Deals bonus damage when you hit an enemy.
-狂暴状态 : ‎当你击中敌人时，造成额外的伤害。
+狂暴状态 : ‎当你击中敌人时，造成额外的伤害
 Divine Protection: Reduces damage taken, and deals retaliation damage.
-神圣保护 : ‎减少所受伤害，并反弹给造成伤害的敌人。
+神圣保护 : ‎减少所受伤害，并反弹给造成伤害的敌人
 Divine Cunning: You turn invisible briefly after attacking.
-神圣之灵 : ‎你在攻击后短暂变得隐形。
+神圣之灵 : ‎你在攻击后短暂变得隐形
 -MP Cost (Fire)
 减少火焰法术的 MP 消耗
 -MP Cost (Air)
@@ -1345,33 +1346,33 @@ Divine Cunning: You turn invisible briefly after attacking.
 -MP Cost (Earth)
 减少岩法术的 MP 消耗
 Slime Form: You gain bonuses and can slip through bars!
-粘液形态 : ‎你获得一些加成，并能穿过栅栏！
+粘液形态 : ‎你获得一些加成，并能穿过栅栏
 Shroud: Visibility decreased, evasion increased.
-影雾 : ‎降低可见度，增加闪避。
+影雾 : ‎降低可见度，增加闪避
 Camoflage: While next to a wall, you are very hard to see.
-伪装 : ‎靠近墙壁时，你很难被其他生物察觉到。
+伪装 : ‎靠近墙壁时，你很难被其他生物察觉到
 Stone Skin: Increased armor.
-石肤 : ‎增加护甲。
+石肤 : ‎增加护甲
 Darkblade: Increased damage.
-暗影之刃 : ‎增加伤害。
+暗影之刃 : ‎增加伤害
 Runic Ward: Increased Magic Armor.
-符文盾 : ‎增加魔法护甲。
+符文盾 : ‎增加魔法护甲
 Great Invisibility: It is impossible for enemies to see you.
-高级隐形 : ‎敌人无法看到你。
+高级隐形 : ‎敌人无法看到你
 Invisibility: It is very difficult for enemies to see you.
-隐形 : ‎敌人很难看到你。
+隐形 : ‎敌人很难看到你
 Lesser Invisibility: It is harder for enemies to see you.
-次级隐身 : ‎敌人较难看到你。
+次级隐身 : ‎敌人较难看到你
 FULL POWER: Cutting power increased.
-充满能量 : ‎切割能力提高。
+充满能量 : ‎切割能力提高
 Graceful: Struggling power increased.
-优雅 : ‎挣扎能力提高。
+优雅 : ‎挣扎能力提高
 Iron Blood: Reduced melee cost, increased mana costs.
-铁血 : ‎减少近战体力消耗，但增加施放法术的法力消耗。
+铁血 : ‎减少近战体力消耗，但增加施放法术的魔力消耗
 Sleepy: You are sluggish and have a hard time keeping your eyes open.
-疲倦 : ‎你感到疲倦，难以保持清醒。
+疲倦 : ‎你感到疲倦，难以保持清醒
 Afterimage: Evasion greatly increased.
-残像 : ‎闪避大幅增加。
+残像 : ‎闪避大幅增加
 We did it! We made outselves invisible--mmmmph!!!
 我们做到了！我们让自己隐形了——嗯嗯呜嗯↗↘↗ ！
 You are not currently attempting to disguise yourself. Click to reenable.
@@ -1385,19 +1386,19 @@ You can launch another Sagitta instantly!
 Your motivation is powerful enough your spells cannot be stopped!
 你的动力足够强大，无法阻止你的法术！
 Locked Down: Struggling power is greatly reduced.
-锁定 : ‎挣扎能力大幅降低。
+锁定 : ‎挣扎能力大幅降低
 Verbose: You can cast verbal spells while gagged.
-言灵无碍 : ‎你可以在佩戴口球的情况下施放言语法术。
+言灵无碍 : ‎你可以在佩戴口球的情况下施放言语法术
 Dextrous: You can cast arm spells while tied up.
-手法巧妙: 你可以在手臂被捆绑的情况下施放需要手臂的法术。
+手法巧妙: 你可以在手臂被捆绑的情况下施放需要手臂的法术
 Spell Dance: You can cast leg spells while tied up.
-舞步神通 : ‎你可以在双腿被捆绑的情况下施放需要腿部的法术。
+舞步神通 : ‎你可以在双腿被捆绑的情况下施放需要腿部的法术
 Bondage Buster: Lazor is charging...
 束缚破坏者 : ‎激光正在充能中...
 Katana: Patience is key...
 Katana : ‎耐心是关键...
 Stormbreaker: You have the Power.
-风暴克星 : ‎你拥有力量。
+风暴克星 : ‎你拥有力量
 Game Setup:
 游戏设置
 Beginner: Get a save code every 3 levels
@@ -1493,7 +1494,7 @@ Willpower: CURRENT/MAX
 MP: CURRENT/MAX
 魔力值 : ‎CURRENT/MAX
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
-法力从有着 POOLMANA 点储备法力的储备池中缓慢恢复，喝药水可以恢复储备池。
+魔力从有着 POOLMANA 点储备魔力的储备池中缓慢恢复，喝药水可以恢复储备池。
 Your Desire is the baseline Distraction you decay toward, and is increased by distracting things.
 你的欲望程度是你性奋值增加的基准，并且会因性奋的事物而增加。
 Stamina recovers more quickly when you aren't spending it.
@@ -1679,7 +1680,7 @@ Load Loadout 3
 Cycle Spell Page
 循环法术页面
 Upcast Spells
-凝聚法力
+凝聚魔力
 Cancel Upcast
 停止凝聚
 Swap Weapon 1
@@ -1965,7 +1966,7 @@ Maid Uniform
 An elegant dress meant to denote a maid's status.
 象征女仆身份的优雅礼服。
 Massively increases accuracy against slime mold.
-攻击黏菌时，精准度大幅提高。
+攻击黏菌时，命中率大幅提高。
 Harem Outfit
 后宫制服
 A skimpy outfit with antiquated connotations.
@@ -2031,7 +2032,7 @@ Elven Dress
 A regal minidress worn by visitors to the forest.
 给来客穿的豪华迷你裙。
 Not very good at insulating you from the cold or from touchy fingers. Its elven aura improves accuracy and evasion by +10.
-对于抵御寒冷效果较差。它的精灵光环提高了 +10 的精准度和闪避。
+对于抵御寒冷效果较差。它的精灵光环提高了 +10 的命中率和闪避。
 Scroll of Sleight
 诡计卷轴
 The scroll makes your memories of arm movements clear as day!
@@ -2679,7 +2680,7 @@ Great for cutting trees that happen to be underground.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
 Accuracy:
-精准度 : ‎
+命中率 : ‎
 Crit Multiplier:
 暴击倍率 : ‎
 Bind Crit Multiplier:
@@ -5083,7 +5084,7 @@ It's a pile of slag emitting a strange magic smoke...
 That object is locked with a LKTP.
 目标被 LKTP 上锁。
 A shrine to the goddess of TYPE. A pool of mana glimmers below.
-TYPE 女神的神泉。一池法力在下方闪烁。
+TYPE 女神的神泉。一池魔力在下方闪烁。
 A shrine to the goddess of TYPE.
 TYPE 女神的神泉。
 That door is open. Do you want to close it?
@@ -5111,7 +5112,7 @@ Ropes
 Restoration
 恢复
 Elements
-精灵
+元素
 Conjuration
 咒术
 Illusions
@@ -5127,13 +5128,13 @@ Goddess Blessing:
 Goddess Curse:
 女神诅咒 : ‎
 Mana Bonus:
-法力奖励 : ‎
+魔力奖励 : ‎
 Lack of Mana Penalty:
-缺乏法力惩罚 : ‎
+缺乏魔力惩罚 : ‎
 Your excess mana helps you suppress the enchantment!
-你多余的法力可以帮助你抵抗附魔！
+你多余的魔力可以帮助你抵抗附魔！
 Your mana is too weak to fight the magical enchantment...
-你的法力太弱，无法对抗魔法附魔。。。
+你的魔力太弱，无法对抗魔法附魔。。。
 Curses
 诅咒
 A tablet inscribed with runes of TYPE.
@@ -5223,15 +5224,15 @@ Bottle
 You have no restraints to 'offer' to the goddess.
 你可以毫无限制地向女神“献祭”。
 This shrine's mana pool is empty.
-该神泉的法力池已空。
+该神泉的魔力池已空。
 You drink from the pool and and absorb its energies.
 你饮用池中的水并吸收池中的能量。
 You absorb the pool's energies through your face.
 你通过脸部吸收泉水的能量。
 You collect what mana you can in a bottle.
-你可以在瓶子里收集尽可能多的法力。
+你可以在瓶子里收集尽可能多的魔力。
 You drink from the pool and your mana is restored.
-你从池子里喝下泉水，你的法力就会恢复。
+你从池子里喝下泉水，你的魔力就会恢复。
 You drink again, but you feel as if you are trespassing.
 你再次喝下泉水，但你觉得你好像在冒犯。
 You drink again, knowing the risk this may entail...
@@ -5903,7 +5904,7 @@ The dragon dances through the shadows!
 You tip over as you try to roll yourself! (oof!)
 当你试图翻身时你会被磕到！ ( 哎哟！ ) 
 The shadowy energies surrounding you drain away your mana...
-你周围的阴暗能量会耗尽你的法力......
+你周围的阴暗能量会耗尽你的魔力......
 Shadow Sphere
 暗影球体
 A giant shadow latex sphere that leaves you rolling around...
@@ -6287,13 +6288,13 @@ Anti-Magic Gag
 A gag designed to cripple mages. It's made of a squishy rubbery material.
 旨在削弱法师的口塞。它由柔软的橡胶材料制成。
 It's sealed with a magical spell that rapidly absorbs mana! When it drains 40 mana it will transform into an ordinary gag and inflate.
-它被封印着快速吸收魔力的魔法咒语！当它耗尽 40 点法力时，它会变成一个普通的口塞并膨胀。
+它被封印着快速吸收魔力的魔法咒语！当它耗尽 40 点魔力时，它会变成一个普通的口塞并膨胀。
 Anti-Mage Gag
 反法师口塞
 A gag designed to cripple experienced spellcasters. It's made of a magic-absorbing rubber.
 旨在削弱经验丰富的法师的口塞。它是由吸魔橡胶制成的。
 You feel the energy flowing out of you! When it drains 100 mana it will transform into an ordinary gag and inflate.
-你感觉到能量从你身上流出！当它耗尽 100 点法力时，它会变成一个普通的口塞并膨胀。
+你感觉到能量从你身上流出！当它耗尽 100 点魔力时，它会变成一个普通的口塞并膨胀。
 Ballet Heels
 芭蕾高跟鞋
 A pair of shoes with heels so tall it forces you on your toes.
@@ -6365,7 +6366,7 @@ Prototype Egg
 A teaser that periodically vibrates.
 周期性振动的小玩具。
 High efficiency mana conversion means longer tease duration. Type: Teasing, Pleasure, Edging
-高效率法力转换意味着更长的振动持续时间。类型 : ‎戏弄、快感、寸止
+高效率魔力转换意味着更长的振动持续时间。类型 : ‎戏弄、快感、寸止
 Vibrating Plug
 振动塞
 A sizeable plug that makes you happy... a little too happy.
@@ -6935,7 +6936,7 @@ Glue (Legs)
 Slime (Feet)
 粘液 ( 脚 ) 
 Sticky slime that adheres to your body. It reacts negatively to mana...
-粘在身上的粘液。它对法力产生负面反应...
+粘在身上的粘液。它对魔力产生负面反应...
 It is an organic material that reforms around every cut you make!
 它是一种有机材料，可以对你所做的每一次切割行为进行变化！
 Slime (Ankles)
@@ -7273,7 +7274,7 @@ You pick up a blue key.
 You pick up a willpower potion.
 你拿起了一瓶意志力药水。
 You pick up a glowing blue mana potion.
-你拿起一瓶发光的蓝色法力药水。
+你拿起一瓶发光的蓝色魔力药水。
 You pick up a glowing blue orb.
 你拿起一个发光的蓝色球体。
 You pick up an invisibility potion.
@@ -7689,9 +7690,9 @@ You fail to concentrate on the spell and it fizzles!
 Your gag causes you to mispronounce the magic words!
 你的堵嘴让你念错了魔法词！
 The ice drains your concentration! Your mana and stamina are slipping away!
-冰会消耗你的体力！你的法力和体力正在流失！
+冰会消耗你的体力！你的魔力和体力正在流失！
 A strange, chaotic energy flows into you! Your will is weakened and your mana fades!
-一股奇异的、混沌的能量涌入你的体内！你的体力被削弱，你的法力在消逝！
+一股奇异的、混沌的能量涌入你的体内！你的体力被削弱，你的魔力在消逝！
 The ampule shatters on impact!
 安瓿一碰就碎了！
 The gas ampule shatters on impact!
@@ -7763,7 +7764,7 @@ As a trainee, you have learned the technique of inducing clarity via a trance-li
 Inner Power
 内力
 As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown.
-作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你下一个法术的法力消耗将在乘数计算之前减少相当于你最大法力值的 20%。 切换被动法术的冷却时间减半。
+作为一名巫师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你下一个法术的魔力消耗将在乘数计算之前减少相当于你最大魔力值的 20%。 切换被动法术的冷却时间减半。
 Battlemage
 战斗法师
 Inner Power cooldown is no longer reset after attacking.
@@ -7775,11 +7776,11 @@ While on cooldown, Inner Power cooldown is no longer reset after casting spells.
 Arcane Recharge
 奥术充能
 Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool.
-召唤混乱的能量，你的意志力会受到攻击，以换取力量。对自己造成 80 点精神伤害，并消耗你最大意志力的 10% 以完全恢复法力。不会补充法力池。
+召唤混乱的能量，你的意志力会受到攻击，以换取力量。对自己造成 80 点精神伤害，并消耗你最大意志力的 10% 以完全恢复魔力。不会补充魔力池。
 Way of Pleasure
 快乐之道
 You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
-你选择了绝对快乐的道路。高潮后，你会恢复 25 点法力，如果你有足够的意志力，则将相同数量的法力恢复到法力池中。阻碍纪律之道。
+你选择了绝对快乐的道路。高潮后，你会恢复 25 点魔力，如果你有足够的意志力，则将相同数量的魔力恢复到魔力池中。阻碍纪律之道。
 Intense Power
 强劲动力
 After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied.
@@ -7803,11 +7804,11 @@ Mental Resistance: You are allowing yourself to let go if forced to. Click to to
 Way of Discipline
 纪律之道
 You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery and you regenerate 0.5 mana per turn, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Pleasure.
-你选择了绝对纪律的道路。处于即将高潮的边缘时会增加被动法力恢复，并且每回合可再生 0.5 法力，如果你有多余的意志力，则可以将相同数量的法力恢复到法力池中。阻碍快乐之路。
+你选择了绝对纪律的道路。处于即将高潮的边缘时会增加被动魔力恢复，并且每回合可再生 0.5 魔力，如果你有多余的意志力，则可以将相同数量的魔力恢复到魔力池中。阻碍快乐之路。
 Way of Denial
 拒绝之道
 Harnessing your mental discipline, you regenerate 20 mana each time you are denied, restoring the same amount to the Mana Pool if you have willpower to spare.
-利用你的精神纪律，每次你被拒绝高潮时，你都会再生 20 点法力，如果你有多余的意志力，则将相同数量的法力恢复到法力池中。
+利用你的精神纪律，每次你被拒绝高潮时，你都会再生 20 点魔力，如果你有多余的意志力，则将相同数量的魔力恢复到魔力池中。
 Flame Novice
 基础火法术
 Unlocks fire spells. Learn Firebolt.
@@ -7883,7 +7884,7 @@ The glue slows you down! (-DamageDealt SP)
 Firebolt
 火焰弹
 Elemental's Firebolt
-元素的火焰弹
+元素火焰弹
 Elemental's Gust
 元素之风
 Gust
@@ -8301,7 +8302,7 @@ Choose monoliths to enchant
 Coalesce
 聚合
 Gathers slime and slimed enemies into a central point. Deals DamageDealt glue damage per square of slime and Encases slimed enemies. Costs half mana if there is only slime.
-将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶水伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半法力值。
+将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶水伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半魔力值。
 You command the slime to draw enemies in!
 你命令粘液包裹敌人！
 Choose area containing slime
@@ -8477,35 +8478,35 @@ Increases crit multiplier by a % equal to your Battle Rhythm.
 Accuracy I
 精准 I
 +10 Accuracy
-+10 精准度
++10 命中率
 Accuracy II
 精准 II
 +15 Accuracy (25 total)
-+15 精准度 ( 总计 25 ) 
++15 命中率 ( 总计 25 ) 
 Accuracy III
 精准 III
 +25 Accuracy (50 total)
-+25 精准度 ( 总计 50 ) 
++25 命中率 ( 总计 50 ) 
 Martial Arts I
 武术 I
 Unarmed strikes gain 15% accuracy and -10% stamina cost.
-徒手攻击提高 15% 精准度并且 -10% 的体力消耗。
+徒手攻击提高 15% 命中率并且 -10% 的体力消耗。
 Martial Arts II
 武术 II
 Unarmed strikes gain 20% accuracy (35% total) and -15% stamina cost (25% total).
-徒手攻击提高 20% 精准度 ( 总计 35% ) 并且 -15% 的体力消耗 ( 总计 25% ) 。
+徒手攻击提高 20% 命中率 ( 总计 35% ) 并且 -15% 的体力消耗 ( 总计 25% ) 。
 Martial Arts III
 武术 III
 Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total).
-徒手攻击提高 25% 精准度 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
+徒手攻击提高 25% 命中率 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
 Precise Critical
 精准暴击
 When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
-当造成物理伤害的暴击时，超过 100% 的精准度将以 50% 的效率转化为额外暴击倍数。
+当造成物理伤害的暴击时，超过 100% 的命中率将以 50% 的效率转化为额外暴击倍数。
 Precise Magic
 精准魔法
 When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
-当造成魔法伤害的暴击时，超过 100% 的精准度会以 50% 的效率转化为额外暴击倍数。
+当造成魔法伤害的暴击时，超过 100% 的命中率会以 50% 的效率转化为额外暴击倍数。
 Magical Overload
 魔法超载
 When landing a critical strike with magic damage, crit multiplier is increased by 25% of your current DP.
@@ -8525,11 +8526,11 @@ While standing still on slime, or fully bound with at least one latex item, you 
 Magical Implements
 魔法武器精通
 While holding a magical weapon like a staff or magic knife, your mana costs are reduced by 20%.
-手持法杖或魔法刀等魔法武器时，法力消耗降低20%。
+手持法杖或魔法刀等魔法武器时，魔力消耗降低20%。
 Mage Circuits
 魔法电路
 Increases the size of the passive mana pool by +400.
-使被动法力池增加 400 点。
+使被动魔力池增加 400 点。
 Archmage
 大魔法师
 Upcasted spells cost 25% less mana.
@@ -8549,17 +8550,17 @@ Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn
 Lightning Rod
 避雷针
 After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
-在施放消耗法力的风或雷法术后，变得导电并获得 300% 的电击抗性，持续 3 回合。
+在施放消耗魔力的风或雷法术后，变得导电并获得 300% 的电击抗性，持续 3 回合。
 When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless.
 启用后，处在贞操带中的敌人变得无助时会成为愤怒沮丧的宠物。
 Mana Up I
-法力上升 I
+魔力上升 I
 Increases maximum MP by 12
 最大 MP 增加 12
 Mana Up II
-法力上升 II
+魔力上升 II
 Mana Up III
-法力上升 III
+魔力上升 III
 Strong Mind I
 意志坚定 I
 Increases maximum Distraction by 33% of base and Distraction regen by -0.1 per turn
@@ -8765,7 +8766,7 @@ Choose location
 Conjure Petsuit
 召唤宠物服
 Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
-仅可对无助的敌人施放。将它们变成跟随你的宠物，并增加你从法力池中恢复的被动法力。
+仅可对无助的敌人施放。将它们变成跟随你的宠物，并增加你从魔力池中恢复的被动魔力。
 You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
 你召唤出的魔法宠物服，紧紧包住了你瞄准的目标，使她不得不跟着你！
 You watch in horror as your own creation lunges toward you, binding your hands and feet!
@@ -8775,7 +8776,7 @@ Choose a helpless target
 Conjure Display Stand
 召唤展示架
 Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage.
-仅可对无助的敌人施放。创建一个装置，可以增加法力池中的被动法力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
+仅可对无助的敌人施放。创建一个装置，可以增加魔力池中的被动魔力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
 You conjure a fixture to hold your helpless target in place!
 你召唤出一个装置来束缚无助的目标！
 You watch in horror as your own creation encircles you, locking you in place with a hefty click!
@@ -8871,7 +8872,7 @@ You say a command word, and the bindings on the ground do your bidding!
 CMD: Disenchant
 指令 : ‎附魔解除
 Target a large area. Permanently slows constructs, reduces attack speed by 50%, and deals 30 shadow damage. Refunds 50% mana at 3 or more targets. Cast on self to disenchant bindings.
-瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点暗影伤害。到达 3 个或更多目标时退还 50% 的法力值。对自身施放以分解束缚。
+瞄准范围大。永久减慢构造体速度，降低攻击速度 50%，并造成 30 点暗影伤害。到达 3 个或更多目标时退还 50% 的魔力值。对自身施放以分解束缚。
 You say a command word, siphoning the magic from nearby constructs!
 你念出咒语，开始从附近的构装体中抽取魔力！
 CMD: Vibrate
@@ -8973,7 +8974,7 @@ You utter a word of healing.
 Flame Blade
 火焰之刃
 When enabled: Melee weapon attacks cost mana and create a flame strike that deals 30 fire damage to adjacent targets.
-启用后近战武器攻击消耗法力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
+启用后近战武器攻击消耗魔力值并造成火焰伤害，对相邻目标造成 30 点火焰伤害。
 Tentacle Slap
 触手拍击
 You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +10 glue damage and create slime. 150% bind efficiency.
@@ -9009,7 +9010,7 @@ You focus intently!
 Truesight
 真实视野
 When enabled: Drain mana every turn to see through walls and increase accuracy by 40%.
-启用时 : ‎每回合消耗法力以透视墙壁并将精准度提高 40%。
+启用时 : ‎每回合消耗魔力以透视墙壁并将命中率提高 40%。
 Echolocation
 声波定位
 Close your eyes to dramatically improve your hearing and locate enemies through walls.
@@ -9723,7 +9724,7 @@ Level:
 Spell Point Cost:
 法术点消耗 : ‎
 Mana Cost:
-法力消耗 : ‎
+魔力消耗 : ‎
 Remove Spell 1
 移除法术 1
 Remove Spell 2
@@ -9775,7 +9776,7 @@ They say that the maiden who safeguards the graveyard is kind to her pets...
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
  ( 《万古之书》中的一页 ) |据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识 ( 魔法、精神、技术 ) 后，她指派十二位小魔法师负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
 (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
- ( 《万古之书》中的一页 ) |长袍废墟对于学者来说仍然是一个谜。几乎没有任何光线从天花板的裂缝中透进来，但这个区域却充满了生机。众所周知，人类免于死亡的再生能力依赖于个人自身的法力供应。那么没有法力的植物和野兽如何生存呢？虔诚的人说是恢复女神保护了丛林，但旧文明是否发展出了一种维持地下生命的手段？
+ ( 《万古之书》中的一页 ) |长袍废墟对于学者来说仍然是一个谜。几乎没有任何光线从天花板的裂缝中透进来，但这个区域却充满了生机。众所周知，人类免于死亡的再生能力依赖于个人自身的魔力供应。那么没有魔力的植物和野兽如何生存呢？虔诚的人说是恢复女神保护了丛林，但旧文明是否发展出了一种维持地下生命的手段？
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
  ( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -9929,7 +9930,7 @@ The item is extremely secure with five separate keyholes.
 You insert your 5 keys into the lock and the item finally comes off.
 你将 5 把钥匙插入锁中，物品最终脱落。
 Magic-Draining: This item drains your mana quickly up to a limit, then slowly after.
-魔法耗尽 : ‎该物品会快速耗尽你的法力直至达到极限，然后慢慢耗尽。
+魔法耗尽 : ‎该物品会快速耗尽你的魔力直至达到极限，然后慢慢耗尽。
 Curse of Tickling: This item is tickling you without end!
 挠痒诅咒 : ‎这个物品会不停地挠你！
 Curse of Punishment: Inflicts psychic damage when you attack or cast a spell.
@@ -10005,7 +10006,7 @@ The lock-shaped rune flashes as you realize struggling is pointless.
 You overload the magical seal, causing it to vanish and release the item.
 你使魔法封印过载，导致它消失并解开该物品。
 The item is magically sealed, requiring 200 mana to unlock it (includes mana from mana pool).
-该物品被魔法封印，需要 200 点法力才能解锁 ( 包括法力池中的法力 ) 。
+该物品被魔法封印，需要 200 点魔力才能解锁 ( 包括魔力池中的魔力 ) 。
 You tug on the item, but the magic can't be broken with anything other than brute force.
 你用力拉扯物品，但除了蛮力之外，魔法无法被破坏。
 You tug on the item but it is magically sealed to your body!
@@ -10505,7 +10506,7 @@ You can barely stand in these heels. They are rigid, metallic, and unbreakable, 
 Ancient Blindfold
 远古眼罩
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
-完全遮光的面具。充能后，它可以消除视觉造成的精准度损失，将精准度提高 +100%，并将近战伤害提高 +10。
+完全遮光的面具。充能后，它可以消除视觉造成的命中率损失，将命中率提高 +100%，并将近战伤害提高 +10。
 'Mask of the Warrior'
 《战士的面罩》
 You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!
@@ -10515,7 +10516,7 @@ Ancient Muzzle
 You find a muzzle with a long rubbery plug on the inside, glowing magnificently, along with a strange crystal next to it.
 你发现里面有一个长长的橡胶棒，闪闪发光，旁边还有一个奇怪的水晶。
 A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 2.5x.
-一个紧紧地盖在脸上的口套。充能后，它会恢复法力值，提高潜行能力，并对失去意识的敌人造成的伤害增加 2.5 倍。
+一个紧紧地盖在脸上的口套。充能后，它会恢复魔力值，提高潜行能力，并对失去意识的敌人造成的伤害增加 2.5 倍。
 'Muzzle of the Saboteur'
 '破坏者的口套'
 You claw at your face, but not only does the soft plug fill your mouth completely, the muzzle itself is nigh-unbreakable!
@@ -10525,7 +10526,7 @@ Ancient Gag
 You find a ball gag harness with a long rubbery plug instead of a ball, glowing magnificently, along with a strange crystal next to it.
 你会发现一个带有长橡胶棒而不是球的口塞，它发出华丽的光芒，旁边还有一个奇怪的水晶。
 A gag that fills the mouth. When powered, regens mana, reduces miscast by 30%, and boosts damage to enemies that are stunned, frozen, bound, or slowed by 30%.
-塞满嘴巴的堵嘴。充能后，恢复法力，减少 30% 的施法失败几率，并使对被击晕、冰冻、束缚或减速的敌人造成的伤害提高 30%。
+塞满嘴巴的堵嘴。充能后，恢复魔力，减少 30% 的施法失败几率，并使对被击晕、冰冻、束缚或减速的敌人造成的伤害提高 30%。
 'Gag of the Focused'
 '专注的口塞'
 You tug on the straps at your cheeks, but the straps are so tight the plug doesn't even move!
@@ -10553,7 +10554,7 @@ Ancient Stimulator
 You find a flat, round device with a hole on one side, along with a strange crystal next to it.
 你会发现一个扁平的圆形装置，一侧有一个洞，旁边还有一个奇怪的水晶。
 A device that teases the wearer for casting spells and attacking. When powered, it reduces mana and stamina costs for casting spells and attacking.
-在穿戴者攻击或者施法时会挑弄使用者。充能后，它会降低施法和攻击的法力和体力消耗。
+在穿戴者攻击或者施法时会挑弄使用者。充能后，它会降低施法和攻击的魔力和体力消耗。
 'The Persuader'
 '说服者'
 You realize the magical device has attached to your body using suction. It won't come off!
@@ -10611,7 +10612,7 @@ DAMAGETYPE : ‎MULTIPLIERx 修正
 Physical Armor: AMOUNT
 物理护甲 : ‎AMOUNT
 Magic Armor: AMOUNT
-魔法装甲 : ‎AMOUNT
+魔法护甲 : ‎AMOUNT
 Evasion: AMOUNT%
 逃避 : ‎AMOUNT%
 Deals DAMAGETYPE damage
@@ -10727,7 +10728,7 @@ Pain
 Spirit Draining
 精神汲取
 Mana Draining
-法力消耗
+魔力消耗
 Electric
 电
 Shock
@@ -10927,7 +10928,7 @@ Start with 200 willpower and Iron Will, good at melee and blocking attacks.
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
 以 200 点体力和潜行技能开始，擅长潜行和躲避。
 Start with 200 mana and Magical Sight, good at casting spells.
-以 200 点法力和魔之眼技能开始游戏，擅长施法。
+以 200 点魔力和魔之眼技能开始游戏，擅长施法。
 Start with nothing to your name. For those who want a challenge.
 开始时一无所有。适用于那些想要挑战的人。
 You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
@@ -11117,7 +11118,7 @@ Your magical potential is impressive~
 A magnificent display of magic!
 一场华丽的魔法展示！
 You would make a great mana source~
-你会成为一个很棒的法力来源~
+你会成为一个很棒的魔力来源~
 Did you think you could outsmart me?
 你以为你能比我聪明吗？
 I am the only goddess you need.
@@ -12671,7 +12672,7 @@ Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to laun
 25 charge to enter Slime Form for 25 turns, and create slime around yourself.
 25 点充能进入粘液形态 25 回合，并在自己周围制造出粘液。
 50 charge to reduce mana cost of next fire, earth, air, and water spell by 50 (once for each element)
-50 点充能可将下一个火、土、空气和水法术的法力消耗减少 50 ( 每个元素一次 ) 
+50 点充能可将下一个火、土、空气和水法术的魔力消耗减少 50 ( 每个元素一次 ) 
 25 charge to disarm a target for 8 turns, rendering them unable to attack.
 25 次充能可以解除目标的武装，持续8回合，使其无法攻击。
 5 charge (+2.5 per charge) to channel and fire a beam that deals 30 + 3/charge electric damage, or 90 at max charge.
@@ -13865,7 +13866,7 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 (The SPEAKER giggles)|Smile for the camera!
  ( SPEAKER 咯咯笑 ) |对着镜头微笑！
 (The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows.
- ( SPEAKER 点点头 ) |它就像法力，但更便于携带！它能为复制符文提供能量，这样你就不会缺箭了。
+ ( SPEAKER 点点头 ) |它就像魔力，但更便于携带！它能为复制符文提供能量，这样你就不会缺箭了。
 (The SPEAKER giggles)|I like to include these as a gift with every purchase~
  ( SPEAKER 咯咯笑 ) |我喜欢在每次成交时附上这个作为礼物~
 (The SPEAKER waves)|Greetings,|I manufacture all sorts of goods.|Would you like to buy some?
@@ -14309,7 +14310,7 @@ Why don't we have a little fun?
 (Yes!)
  ( 是的！ ) 
 (The SPEAKER would rather 'conserve her mana')
- ( SPEAKER 宁愿“保存她的法力” ) 
+ ( SPEAKER 宁愿“保存她的魔力” ) 
 (The SPEAKER utters a command word on you)
  ( SPEAKER 对你发出指令 ) 
 (Your magical locks continue to restrain you.)
@@ -14873,15 +14874,15 @@ Oh no! That trap reduced your willpower!|Fortunately you have a potion.|You can 
 Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
 另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。| ( 注意 : ‎你可以使用底部栏上的“>>”按钮切换冲刺 ) |你可以在保护自己的同时 退回到上面的房间即可恢复你的体力。|点击底部栏中的“关门”按钮关上门。|
 Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the right menu, then navigate to the Spell Tree.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
-你的MP，或法力，用来施法|为了施展法术，你需要学习一种|单击右侧菜单中的“法术”按钮，然后导航到“法术树”|然后点击火焰学徒，学习解锁火焰弹|然后，按空格键返回，然后按向右键切换页面|点击Firebolt，学习它，然后将其分配到法术1。
+你的MP，或者叫魔力，是用来施法的|为了施展法术，你需要学习一种|单击右侧菜单中的“法术”按钮，然后导航到“法术树”|然后点击火焰学徒，学习解锁火焰弹|然后，按空格键返回，然后按向右键切换页面|点击Firebolt，学习它，然后将其分配到法术1。
 On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
 在右边，你会看到你的统计数据和法术插槽|你可以点击一个法术槽，或者点击键盘上的1-4来施放一个法术|然后在地图上点击你想要瞄准的地方|它们上面的小扳手图标可以让你|将它们换成法术书中的另一个法术。
 There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
 那边有个僵尸|幸运的是，僵尸的火力很弱|火焰弹射程很长|所以只需施放火焰弹并点击僵尸即可|重复，直到它死去。
 Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
-法力药水可以恢复法力，让你能够施展法术。|你会注意到你的法力也会缓慢恢复。|恢复的法力来自你的法力池，|它是法力条下方显示的一条细线。|当法力耗尽时，你可以再次施展法术了！
+魔力药水可以恢复魔力，让你能够施展法术。|你会注意到你的魔力也会缓慢恢复。|恢复的魔力来自你的魔力池，|它是魔力条下方显示的一条细线。|当魔力耗尽时，你可以再次施展法术了！
 Your DP, or Distraction, is a measure of...|How much you are enjoying things.|These sorts of thoughts cloud your mind,|so spellcasting is more difficult when you are distracted.|Go grab the potion over there.
-你的DP，或分心值，是标准…|你享受事物的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
+你的DP，或者叫分心值，是一个标准…|衡量你享受的程度|这些想法让你的头脑变得模糊，所以当你性奋时，施法会更加困难|去那边拿药水。
 Did you like that?|Anyway, there's a zombie over there. You should drink that potion.|It will clear your mind so you can cast again.|Hurry, or it will get you!
 你喜欢吗|不管怎样，那边有个僵尸。你应该喝那种药水|它会让你头脑清醒，这样你就可以再次施展|快点，不然它会抓住你的！
 That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
@@ -14991,7 +14992,7 @@ Give her a Scroll of Purity
 (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
  ( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|(她在你给她解开堵嘴时摇头...)
 (You don't have enough mana for a command word)
- ( 你没有足够的法力来写命令词。 ) 
+ ( 你没有足够的魔力来写命令词。 ) 
 (Try as you might, your mouth is sealed tight)
  ( 你尽你所能，你的嘴封得很紧 ) 
 (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
@@ -15041,7 +15042,7 @@ An enemy found you while you were busy!
 (A SPEAKER wakes you up)|We came to rescue you. Come on!
  ( SPEAKER 把你叫醒 ) |我们是来救你的。来吧！
 (The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)
-(床看起来舒服又诱人)|(在这里小憩可以恢复你一半的意志力和 100% 的最大法力)|(每层楼只能睡一次，除非入狱)
+(床看起来舒服又诱人)|(在这里小憩可以恢复你一半的意志力和 100% 的最大魔力)|(每层楼只能睡一次，除非入狱)
 (You lay in the bed and doze off...)
  ( 你躺在床上打瞌睡… ) 
 (Lie down and sleep)
@@ -15079,11 +15080,11 @@ Pizza
 (PUSH THE BUTTON)
  ( 按按钮 ) 
 (You find a map of the local leylines.)|(Committing these to memory will allow you to harness additional mana.)
- ( 你找到当地地脉的地图。 ) | ( 将这些记入记忆将使你能够利用额外的法力。 ) 
+ ( 你找到当地地脉的地图。 ) | ( 将这些记入记忆将使你能够利用额外的魔力。 ) 
 (Are you sure?)|(This decision is permanent.)
  ( 你确定吗？ ) | ( 此决定是永久性的。 ) 
 (Gain +100 to Max Mana Pool)
- ( 最大法力池 +100 ) 
+ ( 最大魔力池 +100 ) 
 (I don't want to.)
  ( 我不想。 ) 
 (You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
@@ -15111,11 +15112,11 @@ Pizza
 (Wait it out)
  ( 等待 ) 
 (Mystic energies spring forth from the ground)|(Standing here will fully replenish your passive mana pool)|(One use only)
- ( 神秘能量从地面涌出 ) | ( 站在这里将完全补充你的被动法力池 ) | ( 仅限一次使用 ) 
+ ( 神秘能量从地面涌出 ) | ( 站在这里将完全补充你的被动魔力池 ) | ( 仅限一次使用 ) 
 (You step on the magical fissue and its energies absorb into you)|(Afterward, the ground crackles and fizzles, but no energy is left.)
  ( 你踩到魔法的石头，它的能量吸收到你身上 ) | ( 之后，地面噼啪作响，但没有留下任何能量。 ) 
 (Recharge your mana pool)
- ( 补充你的法力池 ) 
+ ( 补充你的魔力池 ) 
 Upcast Level LEVEL
 LEVEL 级
 Prerequisite
@@ -16271,11 +16272,11 @@ Enchanted Rope
 She who lives by the rope, is tied up by the rope.
 靠绳索生存的她，被绳索束缚着。
 Deals chain damage and applies 50 points of rope binding. Draws 10 mana per hit to apply 50 extra points of magical binding. If you don't have mana, you fail to control the rope...
-造成锁链伤害并施加 50 点绳索束缚。每次击中吸取 10 点法力以施加 50 点额外的魔法束缚。如果你没有法力，你就无法控制绳子......
+造成锁链伤害并施加 50 点绳索束缚。每次击中吸取 10 点魔力以施加 50 点额外的魔法束缚。如果你没有魔力，你就无法控制绳子......
 You find some enchanted rope.
 你找到一些附魔绳子。
 Without mana to control it, the enchanted rope springs back upon you!
-如果没有法力来控制它，魔法绳子就会弹回到你身上！
+如果没有魔力来控制它，魔法绳子就会弹回到你身上！
 Bow
 弓
 Light Bow
@@ -16339,7 +16340,7 @@ dmg
 AMNT Evasion
 AMNT 闪避
 AMNT% Accuracy
-AMNT% 精准度
+AMNT% 命中率
 AMNT Magic Armor
 AMNT 魔法防御
 AMNT Physical Armor
@@ -16359,13 +16360,13 @@ Infuse weapon AMNT% TYPE
 AMNT TYPE on attack
 AMNT TYPE 在攻击时
 AMNT% Mana Costs
-AMNT% 法力消耗
+AMNT% 魔力消耗
 AMNT% TYPE Mana Costs
-AMNT% TYPE 法力消耗
+AMNT% TYPE 魔力消耗
 AMNT% regen from mana pool
-来自法力池 AMNT% 的回复
+来自魔力池 AMNT% 的回复
 AMNT mana pool on capture
-AMNT 捕获时的法力池
+AMNT 捕获时的魔力池
 AMNT% Visibility Reduction
 AMNT% 可见度降低
 AMNT Distraction Decay
@@ -16377,7 +16378,7 @@ After attacking with a teasing weapon:
 Gain AMNT% Spell Damage for DRTN turns
 DRTN 回合获得 AMNT% 法术伤害
 Drains mana from the wearer.
-吸取佩戴者的法力。
+吸取佩戴者的魔力。
 AMNT Stat
 AMNT 统计
 Drop On Floor
@@ -16567,13 +16568,13 @@ A cursed NEWITM flies out of the chest and latches tightly to you!
 With a puff of magic, a NEWITM appears on your body!
 随着一股魔力，NEWITM 出现在你的身上！
 You draw upon chaotic energies, restoring mana!
-你汲取混沌能量，恢复法力！
+你汲取混沌能量，恢复魔力！
 You draw upon chaotic energies, but your mind is unable to hold back the arcane forces!
 你吸取了混沌能量，但你的思想却无法阻挡神秘的力量！
 Your attempt to call upon chaotic energies fails.
 你召唤混沌能量的尝试失败了。
 You are already at max mana.
-你已经达到最大法力值了。
+你已经达到最大魔力值了。
 The vibrator holds at full power to drive you over the edge!
 振动器保持最大功率，让你到达绝顶！
 The weapon needs to be loaded to fire.
@@ -16679,13 +16680,13 @@ Aether, 宇宙的守护者
 Oblivion, Keeper of Secrets
 Oblivion, 秘密的守护者
 Arcane Energy is stored by casting spells, up to 100% Max mana.
-奥术能量通过施展法术来储存，最高可达 100% 最大法力值。
+奥术能量通过施展法术来储存，奥术能量上限为 100% 魔力值上限
 Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
-战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点。
+战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点
 Arcane Blast
 奥术冲击
 When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。施放此法术会消耗它，造成最多 25% 最大法力的奥术伤害。穿透敌人和墙壁。
+当你通过施法消耗魔力时，将魔力转化储存为 40% 奥术能量，奥术能量上限为 100% 魔力值上限。施放此法术会消耗奥术能量，它可造成最多 25% 魔力值上限的奥术伤害，能穿透敌人和墙壁。
 Your eyes glow as energy surges from within!
 当能量从内部涌动时，你的眼睛会发光！
 Critical Hit!
@@ -16703,7 +16704,7 @@ You avoid the attack in a flurry of impressive maneuvers!
 Arcane Barrier
 奥术屏障
 When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. When enabled, slowly convert Arcane Energy into a shield at a 1:2 ratio. Max shield is equal to 10% Max Mana.
-当你通过施法消耗法力时，你会储存 40% 的奥术能量，最高可达 100% 最大法力。启用后，以 1:2 的比例缓慢将奥术能量转化为护盾。最大护盾等于 10% 的最大魔法值。
+当你通过施法消耗魔力时，将魔力转化储存为 40% 奥术能量，奥术能量上限为 100% 魔力值上限。启用此法术后，奥术能量将以 1:2 的比例缓慢转化为等于 10% 魔力值上限的护盾。
 You sense that a high value target is near.
 你感觉到一个高价值目标正在靠近。
 You push yourself beyond physical limits!
@@ -16729,7 +16730,7 @@ Struggling is improved and escape is quicker!
 Akashic Conflux
 以太超流
 Costs 100 Arcane Energy and refunds 100 Mana. Bringing memories to life, you call upon your magical knowledge to ignore arm, leg, and verbal spell components for 3 turns.
-花费 100 奥术能量并返还 100 法力。将记忆带入生活，无需手臂、腿和言语即可进行施法，持续 3 回合。
+花费 100 奥术能量并返还 100 魔力。将记忆带入生活，无需手臂、腿和言语即可进行施法，持续 3 回合。
 You can ignore Arm, Leg, and Verbal components!
 你可以忽略手臂、腿和言语部分！
 Magical whisperings circle around you, enabling you to cast spells without components!
@@ -16739,7 +16740,7 @@ You don't have enough Arcane Energy. You need AMNT.
 Chaotic Overflow
 混沌溢出
 Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
-利用你最大意志力的 25% 在持续时间回合中忽略法术成分并完全恢复你的法力。能量是无法控制的，所以会产生某些后果……
+利用你最大意志力的 25% 在持续时间回合中忽略法术成分并完全恢复你的魔力。能量是无法控制的，所以会产生某些后果……
 Chaotic energy flows through you!!!
 混乱的能量流过你的身体！！！
 You try to call forth the chaotic energy, but it isn't interested in you anymore...
@@ -16777,9 +16778,9 @@ Select a restraint to remove the curse from
 You don't have any restraints that can be removed
 你没有任何可以解除的束缚
 As you are low on mana, you are unable to store Arcane Energy.
-由于你的法力不足，你无法储存奥术能量。
+由于你的魔力不足，你无法储存奥术能量。
 You are recharging your next mana cost reduction.
-你正在为下一次的法力消耗减少充能。
+你正在为下一次的魔力消耗减少充能。
 Fast Recharge I
 快速充能 I
 Inner power now recharges after 10 turns instead of 16.
@@ -16833,7 +16834,7 @@ Bulwark (Blocks some explosions)
 Blindsight (See through walls)
 盲视 ( 看穿墙壁 ) 
 Mana Harvesting
-法力收获
+魔力收获
 Defeating or capturing a spellcaster-type enemy recovers 10 arcane energy, reduced to 1 for other humanoids.
 击败或捕获施法者类型的敌人可恢复 10 点奥术能量，而其他类人生物则减少至 1 点。
 A powerful wind pushes you away!!!
@@ -16843,7 +16844,7 @@ Staff of Ropes
 An enchanted rope kept in check by a magical seal. Surely this won't backfire...
 一根被魔法封印控制住的魔法绳子。这肯定不会适得其反...
 +20% rope bindings applied. Deals chain damage. Active: Spend 25 mana to unleash the ropes in a wide AoE.
-+20% 绳索束缚添加。造成连锁伤害。主动 : ‎花费 25 点法力在大范围内释放绳索。
++20% 绳索束缚添加。造成连锁伤害。主动 : ‎花费 25 点魔力在大范围内释放绳索。
 You pick up a staff of ropes. Finally, a way to contain its power!
 你拿起一根绳子。 终于找到了遏制其力量的方法！
 Staff of Belts
@@ -17045,7 +17046,7 @@ Contains a malevolent spirit that wishes only to tie up damsels.
 You find a magical tome with a sealed padlock on it.
 你发现一本魔法书，上面有一把密封的挂锁。
 You know the location of ancient leylines and can draw upon 100 additional mana.
-你知道远古地脉的位置，并且可以额外利用 100 点法力。
+你知道远古地脉的位置，并且可以额外利用 100 点魔力。
 You don't want to open the book... (need willpower)
 你不想打开这本书... ( 需要意志力 ) 
 Chain Spirit
@@ -17173,7 +17174,7 @@ Demon Girl
 You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
 你与可怕的实体有联系，给予 +50% 的暗影伤害和在暗影之间传送的能力。你对神圣的束缚和明亮的光芒是软弱的。
 You are a minor angel sent to perform a specific task. You are forced to wear a full set of divine restraints, but gain an infinite mana pool, +20 Magic Armor, and +25% magic damage.
-你是一位小天使，被派去执行特定任务。你被迫穿戴全套神圣束缚，但获得无限法力池、+20 魔法防御和 +25% 魔法伤害。
+你是一位小天使，被派去执行特定任务。你被迫穿戴全套神圣束缚，但获得无限魔力池、+20 魔法防御和 +25% 魔法伤害。
 Elven Ancestry
 精灵血统
 You were blessed with immortality by Ninril, Goddess of Restoration, granting -50% sprint cost and -30 Physical Resist. While your WP is above 0, you regenerate WP and heal nearby allies.
@@ -17285,7 +17286,7 @@ Enchanted Bubble
 A bubble of magic water envelops you!
 神奇的泡泡包围着你！
 Magical water reduces your accuracy and slows you significantly!
-魔法水会降低你的精准度并显着减慢你的速度！
+魔法水会降低你的命中率并显着减慢你的速度！
 You attack twice!
 你攻击了两次！
 You gain a free move from Combat Maneuvers!
@@ -17537,7 +17538,7 @@ These are the action buttons.|You can use them to perform various actions like c
 These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
 这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记还包含有关可用任务的信息，|以及您在各种方面的声誉以及派系。
 This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
-这是状态栏，提供有关您的基本统计数据的信息。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施放法术。你有所谓的'法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
+这是状态栏，提供有关您的基本统计数据的信息。|分心决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|魔力用于施放法术。你有所谓的'魔力池'，|这是多余的魔力，它会慢慢地补充你的魔力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
 This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
 这是热栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
 Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
@@ -17591,9 +17592,9 @@ Listen to what the Goddess asks of you.
 Accept the Goddess' quest.
 接受女神的任务。
 Drink the mana in the shrine. Can be done once.
-喝神泉里的法力。可以喝一次。
+喝神泉里的魔力。可以喝一次。
 Bottle the mana in the shrine for later. Can be done once.
-将法力装在神泉中以供稍后使用。可以做一次。
+将魔力装在神泉中以供稍后使用。可以做一次。
 Cancel Quest
 取消任务
 Cancels the quest. You will not be penalized.
@@ -17827,7 +17828,7 @@ You begin to move at lightning speed!
 ACCEL BEGIN!
 加速开始！
 Not enough mana.
-法力不够。
+魔力不够。
 You need to free your legs.
 你需要先让你的腿可以自由活动。
 Swap
@@ -17985,7 +17986,7 @@ You spin towards a location, slashing at nearby enemies!
 The Shadow Within
 内心的阴影
 Shadow Dance no longer requires you to be in shadow in order to dash to another shadow, but the mana cost is doubled when doing so.
-阴影之舞不再需要你处于阴影中才能冲向另一个阴影，但这样做时法力消耗会加倍。
+阴影之舞不再需要你处于阴影中才能冲向另一个阴影，但这样做时魔力消耗会加倍。
 Summon Holy Orb
 召唤圣球
 Select where to put the holy orb (cannot place on occupied squares)
@@ -18173,13 +18174,13 @@ The explosive barrel falls apart and drops its gunpowder.
 The explosive barrel catches fire and explodes!
 炸药桶着火并爆炸！
 The item demands copious mana, more than you can supply. You'll have to tie up a mage.
-该物品需要大量法力，超出了你的供应能力。你必须绑住一个法师。
+该物品需要大量魔力，超出了你的供应能力。你必须绑住一个法师。
 The cursed seal glows and pulsates as you struggle fruitlessly.
 当你徒劳地挣扎时，被诅咒的封印会发光并脉动。
 The curse has been lifted through judicious application of spellcasters.
 通过施法者的明智运用，诅咒已被解除。
 The cursed item drains all of the caster's mana. It demands more.
-被诅咒的物品会耗尽施法者的所有法力。它需要更多。
+被诅咒的物品会耗尽施法者的所有魔力。它需要更多。
 Punishment Suit
 惩罚服
 A tool used by Nevermere on the most difficult and recalcitrant wolfgirls.
@@ -18195,7 +18196,7 @@ You form a... distracting mental barrier, shielding yourself for AMNT damage!!!
 You are too distracted to form a mental barrier...
 你分心值太高，无法形成精神屏障……
 You have the mental clarity but not the magical clarity! (not enough mana)
-你的精神很清晰，但对魔法却很迷茫！ ( 法力值不足 ) 
+你的精神很清晰，但对魔法却很迷茫！ ( 魔力值不足 ) 
 You have formed a mental barrier...
 你已经形成了一个精神屏障...
 Desire Burst
@@ -18207,7 +18208,7 @@ You channel your distraction into a powerful explosion!
 You don't have enough of a desire to do that.
 你没有足够的意志力去做这件事。
 You have the desire but not the mana!
-你有性欲，但没有法力！
+你有性欲，但没有魔力！
 Your divine-locked restraints can only be removed by completing a shrine quest.
 你的神圣锁束缚只能通过完成神泉的任务来解开。
 The Goddess hates you. That won't work.
@@ -18223,11 +18224,11 @@ There is nothing to harvest.
 Telekinesis 101
 念动力 101
 Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
-解锁念动力能力。被束缚也可以装备武器，但精准度为 0%。习得'隔空取物'。
+解锁念动力能力。被束缚也可以装备武器，但命中率为 0%。习得'隔空取物'。
 Recover Object
 隔空取物
 Use telekinesis to pick up items and open chests from a distance. Refunds 75% of mana cost if not used to open a chest.
-使用念动力从远处拾取物品并打开箱子。如果不用于打开箱子，则退还 75% 的法力消耗。
+使用念动力从远处拾取物品并打开箱子。如果不用于打开箱子，则退还 75% 的魔力消耗。
 The items float to you!
 物品飘向了你！
 There's nothing to pick up.
@@ -18247,7 +18248,7 @@ Select an area with items
 Kinetic Slash
 念动斩
 Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
-命令装备的武器在一个直线区域挥击，对途中的敌人造成 20 + 80% 的武器伤害。视为普攻。如果使用重型武器，+10 法力消耗。
+命令装备的武器在一个直线区域挥击，对途中的敌人造成 20 + 80% 的武器伤害。视为普攻。如果使用重型武器，+10 魔力消耗。
 You swing!
 你命令武器攻击！
 Choose where to swing (must not be unarmed or hands free weapon)
@@ -18255,7 +18256,7 @@ Choose where to swing (must not be unarmed or hands free weapon)
 Kinetic Lance
 念动投掷
 Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon.
-命令你的武器以毁灭性的速度发射出去，刺穿敌人并造成 30+160% 武器伤害，武器掉落在轨迹末端。视为普攻。如果使用重型武器，+15 法力消耗。
+命令你的武器以毁灭性的速度发射出去，刺穿敌人并造成 30+160% 武器伤害，武器掉落在轨迹末端。视为普攻。如果使用重型武器，+15 魔力消耗。
 You propel your weapon forward!
 你命令武器飞速向前！
 Choose where to launch your weapon.
@@ -18263,7 +18264,7 @@ Choose where to launch your weapon.
 Sagitta
 天剑
 Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon.
-召唤并一柄天剑并向指定方向踢出。造成10 + 40%的武器伤害。视为普攻。如果使用重型武器，+5 法力消耗。
+召唤并一柄天剑并向指定方向踢出。造成10 + 40%的武器伤害。视为普攻。如果使用重型武器，+5 魔力消耗。
 You unleash a deadly projectile!
 你踢出了一枚致命的天剑！
 Choose aim direction.
@@ -18275,7 +18276,7 @@ After casting Sagitta, you can recast it up to three more times without advancin
 Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
-你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生分心 ( 基于法力消耗 ) 。无法在 100% DP 下使用。
+你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神紧张，法术会产生分心 ( 基于魔力消耗 ) 。无法在 100% DP 下使用。
 Kinetic Mastery
 气功大师
 Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
@@ -18373,11 +18374,11 @@ The Shibari Witch takes your clothes off!
 A Hard Place
 艰难之地
 While your willpower is 0, your mana pool slowly drains and your stamina regen is reduced by 30%.
-当你的意志力为0时，你的法力池会慢慢耗尽，你的体力回复会减少30%。
+当你的意志力为0时，你的魔力池会慢慢耗尽，你的体力回复会减少30%。
 The Spark of Magic
 魔法的火花
 When your mana pool is exhausted, your attacks deal 50% reduced base damage.
-当你的法力池耗尽时，你的攻击造成的基础伤害减少 50%。
+当你的魔力池耗尽时，你的攻击造成的基础伤害减少 50%。
 Burned Out
 筋疲力尽
 Casting spells reduces willpower based on how little distraction you have, also you cannot play with yourself
@@ -18579,7 +18580,7 @@ You emit a loud noise and listen for echoes...
 Your mouth is too heavily stuffed!
 你的嘴被塞得太严实了！
 You don't have the mana to cast Sonar!
-你没有法力来施放声纳！
+你没有魔力来施放声纳！
 The weights swing around and tug on your nipples!
 砝码会左右摆动并拉扯你的乳头！
 More Kinky Furniture
@@ -18663,7 +18664,7 @@ Select a weapon to attach it to your body. You can have one attached weapon at a
 Guerilla Fighting
 游击战
 Light weapons can be wielded if you have your mouth free, at 75% accuracy.
-如果你的嘴巴被堵住了，就可以使用轻型武器，精准度为 75%。
+如果你的嘴巴被堵住了，就可以使用轻型武器，命中率为 75%。
 Tough Armor (1/2 crit mult while aware)
 坚韧护甲 ( 意识状态下暴击倍数为 1/2 ) 
 Absolute Armor (1/2 crit mult)
@@ -19419,7 +19420,7 @@ Stun Resistance!
 Negate Rune
 否定符文
 Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead.
-移除目标方块上的符文。如果对自己施放，则改为移除你创建的所有符文。如果对敌方符文施放，则改为恢复 10 点法力。
+移除目标方块上的符文。如果对自己施放，则改为移除你创建的所有符文。如果对敌方符文施放，则改为恢复 10 点魔力。
 You scribe a negation rune!
 你写下了一个否定符文！
 Target a single rune, or yourself to negate all your runes.
@@ -19987,9 +19988,9 @@ Left Eye
 HandCuffs
 手铐
 AMNT Mana Efficiency
-+AMNT 法力效果
++AMNT 魔力效果
 AMNT TYPE Mana Efficiency
-+AMNT TYPE 法力效果
++AMNT TYPE 魔力效果
 Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied
 指定目标将其束缚并允许你应用背包中的物品。以这种方式使用的物品无法恢复，只能应用于被击晕、完全束缚或以其他方式丧失能力的敌人。
 Include Weapons
@@ -20448,8 +20449,6 @@ YukataWaist
 浴衣腰围
 Allow Front Plugs
 允许阴塞
-
-
 
 
 
