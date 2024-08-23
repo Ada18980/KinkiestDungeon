@@ -1194,6 +1194,7 @@ let KDCollectionTabDraw = {
 			if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
 				KDSendInput("freeNPCRestraint", {
 					npc: value.id,
+					player: KDPlayer().id,
 				});
 			else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);

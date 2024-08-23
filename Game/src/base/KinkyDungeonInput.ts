@@ -1204,13 +1204,13 @@ function KDProcessInput(type, data): string {
 		case "recycle":
 			break;
 		case "tightenNPCRestraint":
-			KDNPCRefreshBondage(data.npc);
+			KDNPCRefreshBondage(data.npc, data.player);
 			break;
 		case "releaseNPC":
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRelease(parseInt(v))) {
-						KDFreeNPCRestraints(parseInt(v));
+						KDFreeNPCRestraints(parseInt(v), data.player);
 
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
 						let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
@@ -1232,7 +1232,7 @@ function KDProcessInput(type, data): string {
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRansom(parseInt(v))) {
-						KDFreeNPCRestraints(parseInt(v));
+						KDFreeNPCRestraints(parseInt(v), data.player);
 
 
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
@@ -1252,7 +1252,7 @@ function KDProcessInput(type, data): string {
 			KDSortCollection();
 			break;
 		case "freeNPCRestraint": {
-			KDFreeNPCRestraints(data.npc);
+			KDFreeNPCRestraints(data.npc, data.player);
 			if (KDNPCChar.get(data.npc))
 				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			break;

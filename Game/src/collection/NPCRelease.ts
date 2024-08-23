@@ -6,6 +6,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 		KDSendInput("releaseNPC", {
 			selection: KDCollectionReleaseSelection,
+			player: KDPlayer().id,
 		});
 
 		if (KDToggles.Sound)
@@ -40,6 +41,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 		if (ransomValue > 0)
 			KDSendInput("ransomNPC", {
 				selection: KDCollectionReleaseSelection,
+				player: KDPlayer().id,
 			});
 
 		if (KDToggles.Sound)

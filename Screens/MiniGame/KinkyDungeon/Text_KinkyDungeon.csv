@@ -843,7 +843,7 @@ KinkyDungeonLog,Journal
 
 KinkyDungeonDressPlayer,"Change Outfit"
 KinkyDungeonDressPlayerReset,"Reset Outfit"
-KinkyDungeonDressPlayerImport,"Load Game"
+KinkyDungeonDressPlayerImport,"Load from Code"
 KinkyDungeonConfirm,Confirm Reset?
 
 KinkyDungeonSaveIntro0,"(Your game has been saved)"

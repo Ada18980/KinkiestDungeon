@@ -326,7 +326,8 @@ let KinkyDungeonSpellSpecials = {
 											restraint: KinkyDungeonTargetingSpellItem.name,
 											restraintid: KinkyDungeonTargetingSpellItem.id,
 											lock: "",
-											npc: en.id
+											npc: en.id,
+											player: entity?.id,
 										});
 
 										KinkyDungeonSendTextMessage(10,

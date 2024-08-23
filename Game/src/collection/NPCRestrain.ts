@@ -76,6 +76,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							npc: npcID,
 							faction: undefined,
 							time: KinkyDungeonFindID(npcID) ? 1 : 0,
+							player: KDPlayer().id,
 						});
 					}
 					return true;
@@ -196,6 +197,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							npc: npcID,
 							faction: undefined,
 							time: KinkyDungeonFindID(npcID) ? 1 : 0,
+							player: KDPlayer().id,
 						});
 					}
 				} else {
@@ -209,6 +211,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
+						player: KDPlayer().id,
 					});
 					if (item) {
 						item.quantity -= count;
@@ -238,6 +241,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						npc: npcID,
 						faction: undefined,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
+						player: KDPlayer().id,
 					});
 				} else {
 					KDSendInput("addNPCRestraint", {
@@ -249,6 +253,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette || inv.item.faction,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
+						player: KDPlayer().id,
 					});
 				}
 			}, (inv) => {
@@ -301,6 +306,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				if (!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect)
 					KDSendInput("tightenNPCRestraint", {
 						npc: npcID,
+						player: KDPlayer().id,
 					});
 				else {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNeedsTighten"), "#ffffff", 2, true, true);
@@ -491,7 +497,7 @@ function KDGetEncaseGroupSlot(id): NPCBindingSubgroup {
 	return null;
 }
 
-function KDNPCRefreshBondage(id: number) {
+function KDNPCRefreshBondage(id: number, player: number, force?: boolean) {
 	let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDGetNPCRestraints(id)));
 
 	if (restraints) {
@@ -505,7 +511,9 @@ function KDNPCRefreshBondage(id: number) {
 					restraint: "",
 					restraintid: -1,
 					lock: "",
-					npc: id
+					npc: id,
+					player: player,
+					force: true,
 				});
 
 			}
@@ -522,7 +530,9 @@ function KDNPCRefreshBondage(id: number) {
 					restraint: inv[1].name,
 					restraintid: -1,
 					lock: inv[1].lock,
-					npc: id
+					npc: id,
+					player: player,
+					force: true,
 				});
 			}
 		}
@@ -561,7 +571,7 @@ function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean): string
 	return "Null";
 }
 
-function KDFreeNPCRestraints(id: number) {
+function KDFreeNPCRestraints(id: number, player: number) {
 	if (KDGameData.NPCRestraints) {
 
 		let restraints = KDGameData.NPCRestraints[id + ''];
@@ -573,7 +583,8 @@ function KDFreeNPCRestraints(id: number) {
 					restraint: "",
 					restraintid: -1,
 					lock: "",
-					npc: id
+					npc: id,
+					player: player,
 				});
 			}
 		}
@@ -585,6 +596,7 @@ function KDInputSetNPCRestraint(data): boolean {
 	let slot = KDGetEncaseGroupSlot(data.slot);
 	let item: item = null;
 	if (!slot) return false;
+	let willing = data.force || false;
 	if (KDGameData.Collection[data.npc + ""]) {
 		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
 			let Enemy = KinkyDungeonGetEnemyByName(KDGameData.Collection[data.npc + ""].type);
@@ -594,6 +606,7 @@ function KDInputSetNPCRestraint(data): boolean {
 				movePoints: 0, attackPoints: 0}); // Make them persistent
 			npc.collect = true; // They are in collection
 		}
+		willing = willing || KDGetPersistentNPC(data.npc)?.collect;
 	}
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
@@ -601,7 +614,8 @@ function KDInputSetNPCRestraint(data): boolean {
 
 		if (restraint) {
 			// Willing: true because they cant resist
-			let condition = KDCanEquipItemOnNPC(restraint, data.npc, true);
+			let condition = KDCanEquipItemOnNPC(restraint, data.npc, willing || KDWillingBondage(KDGetGlobalEntity(data.npc),
+			data.player ? KDLookupID(data.player) : undefined));
 			if (condition) {
 				KinkyDungeonSendTextMessage(8,
 					TextGet("KDBondageCondition_" + condition),
@@ -617,7 +631,8 @@ function KDInputSetNPCRestraint(data): boolean {
 				restraint: "",
 				restraintid: -1,
 				lock: "",
-				npc: data.npc
+				npc: data.npc,
+				player: data.player,
 			});
 		}
 		if (KDRowItemIsValid(restraint, slot, row, rests)) {

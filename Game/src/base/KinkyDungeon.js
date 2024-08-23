@@ -1432,6 +1432,7 @@ function KinkyDungeonRun() {
 		KinkyDungeonCanvas.height = 1000;
 	} else {
 
+		// @ts-ignore
 		KinkyDungeonGridWidthDisplay = 16;
 		KinkyDungeonGridHeightDisplay = 9;
 		canvasOffsetX = canvasOffsetX_ui;
@@ -1502,6 +1503,7 @@ function KinkyDungeonRun() {
 	} else
 	if (KinkyDungeonState == "Mods") {
 
+		// @ts-ignore
 		DrawButtonKDEx("mods_back", (bdata) => {
 			KinkyDungeonState = "Menu";
 			KDExecuteMods();
@@ -1513,6 +1515,7 @@ function KinkyDungeonRun() {
 			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
 
+		// @ts-ignore
 		DrawButtonKDEx("mods_load", (bdata) => {
 			getFileInput();
 			return true;
@@ -1555,6 +1558,7 @@ function KinkyDungeonRun() {
 
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
+		// @ts-ignore
 		DrawButtonKDEx("patronnext", (bdata) => {
 			if (KinkyDungeonPatronPos * maxPatron < credits.length - maxPatron * maxPatron) KinkyDungeonPatronPos += 1;
 			else KinkyDungeonPatronPos = 0;
@@ -1623,7 +1627,7 @@ function KinkyDungeonRun() {
 				let num = (i);
 				KinkyDungeonDBLoad(num).then((code) => {
 					loadedsaveslots[num - 1] = code;
-				})
+				});
 			}
 
 			loadedSaveforPreview = null;
@@ -1671,13 +1675,8 @@ function KinkyDungeonRun() {
 			}, true, 1000-350/2, ii, 350, 64, "Tile Editor", "#ffffff", "");
 		}
 
-		if (!StandalonePatched) {
 
-			DrawButtonVis(460, 942, 220, 50, TextGet((KinkyDungeonReplaceConfirm > 0 ) ? "KinkyDungeonConfirm" : "KinkyDungeonDressPlayerReset"), "#ffffff", "");
-			DrawButtonVis(690, 942, 150, 50, TextGet("KinkyDungeonDressPlayerImport"), "#ffffff", "");
-		}
-
-
+		// @ts-ignore
 		DrawButtonKDEx("GoToWardrobe", (bdata) => {
 
 			if (StandalonePatched) {
@@ -1732,12 +1731,14 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
 
 		if (!StandalonePatched) {
+			// @ts-ignore
 			DrawButtonKDEx("Deviantart", (bdata) => {
 				let url = 'https://www.deviantart.com/ada18980';
 				window.open(url, '_blank');
 				return true;
 			}, true, 1700, 694, 280, 50, TextGet("KinkyDungeonDeviantart"), "#ffffff", "");
 
+			// @ts-ignore
 			DrawButtonKDEx("Patreon", (bdata) => {
 				let url = 'https://www.patreon.com/ada18980';
 				KDSendEvent('patreon');
@@ -1755,17 +1756,19 @@ function KinkyDungeonRun() {
 
 		if (KDPatched) {
 
+			// @ts-ignore
 			DrawButtonKDEx("mods_button", (bdata) => {
 				KinkyDungeonState = "Mods";
 				return true;
 			}, (!KDExecuted), 1700, 814, 280, 50, !KDExecuted ? TextGet("KDMods") : ((KDModFileCount === 1) ? `${KDModFileCount} ${TextGet("KDModsLoaded").replace("s","")}` : `${KDModFileCount} ${TextGet("KDModsLoaded")}`), !KDExecuted ? `#ffffff` : `#888888`, "");
 
 			if (Object.keys(KDModConfigs).length > 0) {
-                DrawButtonKDEx("modconfigs_button", (bdata) => {
-                    KinkyDungeonState = "ModConfig";
-                    return true;
-                }, true, 1700, 755, 280, 50, TextGet("KDModConfigsButton"), "#ffffff", "");
-            }
+				// @ts-ignore
+				DrawButtonKDEx("modconfigs_button", (bdata) => {
+					KinkyDungeonState = "ModConfig";
+					return true;
+				}, true, 1700, 755, 280, 50, TextGet("KDModConfigsButton"), "#ffffff", "");
+			}
 		}
 
 		if (KDRestart)
@@ -1931,6 +1934,7 @@ function KinkyDungeonRun() {
 				}, true, 875, 650, 750, 64, TextGet("KinkyDungeonLoadFromFile") + ": " + KDSaveName, "#ffffff", ""
 			);
 
+			// @ts-ignore
 			DrawButtonKDEx("loadclothes", (b) => {
 				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
@@ -2010,6 +2014,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDHardMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonHardMode0", (bdata) => {
 			KinkyDungeonExtremeMode = false;
 			KinkyDungeonHardMode = false;
@@ -2021,6 +2026,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonHardModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonHardMode1", (bdata) => {
 			if (KinkyDungeonHardMode) {
 				KinkyDungeonExtremeMode = true;
@@ -2039,6 +2045,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDEasyMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonEasyMode0", (bdata) => {
 			KinkyDungeonEasyMode = 0;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
@@ -2048,6 +2055,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonEasyMode1", (bdata) => {
 			KinkyDungeonEasyMode = 1;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
@@ -2057,6 +2065,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonEasyMode2", (bdata) => {
 			KinkyDungeonEasyMode = 2;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
@@ -2072,6 +2081,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDSaveMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonSaveMode0", (bdata) => {
 			KinkyDungeonSaveMode = false;
 			localStorage.setItem("KinkyDungeonSaveMode", KinkyDungeonSaveMode ? "True" : "False");
@@ -2081,6 +2091,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonSaveModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonSaveMode1", (bdata) => {
 			KinkyDungeonSaveMode = true;
 			localStorage.setItem("KinkyDungeonSaveMode", KinkyDungeonSaveMode ? "True" : "False");
@@ -2094,6 +2105,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDPerksMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerksMode0", (bdata) => {
 			KinkyDungeonPerksMode = 0;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
@@ -2103,6 +2115,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerksModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerksMode1", (bdata) => {
 			KinkyDungeonPerksMode = 1;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
@@ -2112,6 +2125,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerksModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerksMode2", (bdata) => {
 			KinkyDungeonPerksMode = 2;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
@@ -2120,6 +2134,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonPerksMode2")) {
 			DrawTextFitKD(TextGet("KinkyDungeonPerksModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerksMode3", (bdata) => {
 			KinkyDungeonPerksMode = 3;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
@@ -2135,6 +2150,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDPerkProgressionMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode0", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 0;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
@@ -2144,6 +2160,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode1", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 1;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
@@ -2153,6 +2170,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode2", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 2;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
@@ -2161,6 +2179,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonPerkProgressionMode2")) {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonPerkProgressionMode3", (bdata) => {
 			KinkyDungeonPerkProgressionMode = 3;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
@@ -2176,6 +2195,7 @@ function KinkyDungeonRun() {
 		if (KinkyDungeonPerkProgressionMode > 0) {
 			DrawTextFitKD(TextGet("KDPerkBondageMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+			// @ts-ignore
 			DrawButtonKDEx("KinkyDungeonPerkBondageMode0", (bdata) => {
 				KinkyDungeonPerkBondageMode = 0;
 				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
@@ -2185,6 +2205,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
+			// @ts-ignore
 			DrawButtonKDEx("KinkyDungeonPerkBondageMode1", (bdata) => {
 				KinkyDungeonPerkBondageMode = 1;
 				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
@@ -2194,6 +2215,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
+			// @ts-ignore
 			DrawButtonKDEx("KinkyDungeonPerkBondageMode2", (bdata) => {
 				KinkyDungeonPerkBondageMode = 2;
 				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
@@ -2210,6 +2232,7 @@ function KinkyDungeonRun() {
 		if (KinkyDungeonPerkBondageMode > 0 && KinkyDungeonPerkProgressionMode > 0) {
 			DrawTextFitKD(TextGet("KDPerkBondageVisMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+			// @ts-ignore
 			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode0", (bdata) => {
 				KinkyDungeonPerkBondageVisMode = 0;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
@@ -2219,6 +2242,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
+			// @ts-ignore
 			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode1", (bdata) => {
 				KinkyDungeonPerkBondageVisMode = 1;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
@@ -2228,6 +2252,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
+			// @ts-ignore
 			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode2", (bdata) => {
 				KinkyDungeonPerkBondageVisMode = 2;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
@@ -2243,6 +2268,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDItemMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonItemMode0", (bdata) => {
 			KinkyDungeonItemMode = 0;
 			localStorage.setItem("KinkyDungeonItemMode", KinkyDungeonItemMode + "");
@@ -2252,6 +2278,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonItemModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonItemMode1", (bdata) => {
 			KinkyDungeonItemMode = 1;
 			localStorage.setItem("KinkyDungeonItemMode", KinkyDungeonItemMode + "");
@@ -2261,6 +2288,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonItemModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonItemMode2", (bdata) => {
 			KinkyDungeonItemMode = 2;
 			localStorage.setItem("KinkyDungeonItemMode", KinkyDungeonItemMode + "");
@@ -2321,6 +2349,7 @@ function KinkyDungeonRun() {
 			X = i % 4;
 			Y = Math.floor(i / 4);
 
+			// @ts-ignore
 			DrawButtonKDEx("Class" + i, (bdata) => {
 				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
 				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
@@ -2340,6 +2369,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDSexyMode"), 875 - 50, 420 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonSexyMode0", (bdata) => {
 			KinkyDungeonSexyMode = false;
 			KDUpdatePlugSettings(true);
@@ -2350,6 +2380,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonSexyModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonSexyMode1", (bdata) => {
 			KinkyDungeonSexyMode = true;
 			KDUpdatePlugSettings(true);
@@ -2363,6 +2394,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDRandomMode"), 875 - 50, 500 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonRandomMode0", (bdata) => {
 			KinkyDungeonRandomMode = false;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
@@ -2372,6 +2404,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonRandomModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
+		// @ts-ignore
 		DrawButtonKDEx("KinkyDungeonRandomMode1", (bdata) => {
 			KinkyDungeonRandomMode = true;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
@@ -2384,11 +2417,13 @@ function KinkyDungeonRun() {
 
 		if (KinkyDungeonSexyMode) {
 
+			// @ts-ignore
 			DrawCheckboxKDEx("KinkyDungeonSexyPlugsFront", (bdata) => {
 				KinkyDungeonSexyPlugFront = !KinkyDungeonSexyPlugFront;
 				localStorage.setItem("KinkyDungeonSexyPlugFront", KinkyDungeonSexyPlugFront ? "True" : "False");
 				return true;
 			}, true, 1500, 420, 64, 64, TextGet("KinkyDungeonSexyPlugsFront"), !KinkyDungeonSexyPlugFront, false, "#ffffff");
+			// @ts-ignore
 			DrawCheckboxKDEx("KinkyDungeonSexyPlugs", (bdata) => {
 				KinkyDungeonSexyPlug = !KinkyDungeonSexyPlug;
 				localStorage.setItem("KinkyDungeonSexyPlug", KinkyDungeonSexyPlug ? "True" : "False");
@@ -2464,6 +2499,7 @@ function KinkyDungeonRun() {
 		}, true, 1550, 450, 200, 64, TextGet("KDRandom"), "#ffffff", "");
 
 		// Left to decrement
+		// @ts-ignore
 		DrawButtonKDEx(`SaveButtonL`, (bdata) => {
 			if (KDSaveSlot > 1) {
 				KDSaveSlot--;
@@ -2475,6 +2511,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDChooseSlot"), 1150, 585, 360, "#ffffff", undefined, 30);
 		DrawTextFitKD(`${KDSaveSlot}`, 1430, 585, 360, "#ffffff", undefined, 30);
 		// Right to increment
+		// @ts-ignore
 		DrawButtonKDEx(`SaveButton4`, (bdata) => {
 			if (KDSaveSlot < maxSaveSlots) {
 				KDSaveSlot++;
@@ -2512,6 +2549,7 @@ function KinkyDungeonRun() {
 			(Math.random() > 0.5 ? -1 : 1) + 750 : 650, 750, 64, TextGet(KDConfirmDeleteSave ?
 			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? "#ff5555" : "#ffffff", "");
 
+		// @ts-ignore
 		DrawButtonKDEx("backButton", (b) => {
 			KinkyDungeonState = "Menu";
 			return true;
@@ -2538,6 +2576,7 @@ function KinkyDungeonRun() {
 
 		let minPoints = 0;
 
+		// @ts-ignore
 		DrawButtonKDEx("KDPerksStart", (bdata) => {
 			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints) {
 				KDLose = false;
@@ -2550,6 +2589,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints ? "#ffffff" : "pink", "");
 
+		// @ts-ignore
 		DrawButtonKDEx("KDPerksBack", (bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
@@ -2559,24 +2599,28 @@ function KinkyDungeonRun() {
 			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
 
+		// @ts-ignore
 		DrawButtonKDEx("KDPerksClear", (bdata) => {
 			KinkyDungeonStatsChoice = new Map();
 			KDUpdatePlugSettings(true);
 			return true;
 		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
 
+		// @ts-ignore
 		DrawButtonKDEx("KDPerkConfig1", (bdata) => {
 			KinkyDungeonPerksConfig = "1";
 			KinkyDungeonLoadStats();
 			return true;
 		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
 
+		// @ts-ignore
 		DrawButtonKDEx("KDPerkConfig2", (bdata) => {
 			KinkyDungeonPerksConfig = "2";
 			KinkyDungeonLoadStats();
 			return true;
 		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
 
+		// @ts-ignore
 		DrawButtonKDEx("KDPerkConfig3", (bdata) => {
 			KinkyDungeonPerksConfig = "3";
 			KinkyDungeonLoadStats();
@@ -2586,6 +2630,7 @@ function KinkyDungeonRun() {
 
 		let TF = KDTextField("PerksFilter", 600, 930, 210, 54, "text", "", "45");
 		if (TF.Created) {
+			// @ts-ignore
 			TF.Element.oninput = (event) => {
 				KDPerksFilter = ElementValue("PerksFilter");
 			};
@@ -2593,6 +2638,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
 
 		if (!KDClipboardDisabled)
+			// @ts-ignore
 			DrawButtonKDEx("copyperks", (bdata) => {
 				let txt = "";
 				for (let k of KinkyDungeonStatsChoice.keys()) {
@@ -2604,6 +2650,7 @@ function KinkyDungeonRun() {
 		else {
 			let CF = KDTextField("KDCopyPerks", 1700, 930, 280, 54, undefined, undefined, "10000");
 			if (CF.Created) {
+				// @ts-ignore
 				CF.Element.oninput = (event) => {
 					let text = ElementValue("KDCopyPerks");
 					try {
@@ -2633,6 +2680,7 @@ function KinkyDungeonRun() {
 		}
 
 		if (!KDClipboardDisabled)
+			// @ts-ignore
 			DrawButtonKDEx("pasteperks", (bdata) => {
 				navigator.clipboard.readText()
 					.then(text => {
@@ -2948,6 +2996,7 @@ function KinkyDungeonRun() {
 
 				let CF = KDTextField("KDBGColor", x + scale*(0.5 + w)/2 - 100, y + 24, 200, 30, undefined, KDBGColor + "", "7");
 				if (CF.Created) {
+					// @ts-ignore
 					CF.Element.oninput = (event) => {
 						let value = ElementValue("KDBGColor");
 						try {
@@ -2979,12 +3028,12 @@ function KinkyDungeonRun() {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
 				hotkeyPress: KinkyDungeonKeySkip[0],
 			}
-		);
+			);
 
 		}
 	} else if (KinkyDungeonState == "ModConfig") {
-        KDDrawModConfigs();
-    } else if (KinkyDungeonState == "LoadSlots") {
+		KDDrawModConfigs();
+	} else if (KinkyDungeonState == "LoadSlots") {
 		KDDrawLoadMenu();
 	}
 
@@ -3576,9 +3625,11 @@ function KDSendWeapon(weapon) {
 		});
 }
 
+// @ts-ignore
 function KDSendStatus(type, data, data2) {
 	// Banish Google from existence
 }
+// @ts-ignore
 function KDSendEvent(type) {
 	// Banish Google from existence
 }
@@ -3828,9 +3879,10 @@ let KDGameSaveDBStoreName = "KinkyDungeonSave";
 // Returns a thenable with the database once it's open.
 function KinkyDungeonDBOpen() {
 	// Return a promise so we can guarantee the db is open!
+	// @ts-ignore
 	return new Promise((res, rej) => {
 		// Open the KinkyDungeonSave DB, creating one if it doesn't already exist.
-		const request = indexedDB.open(KDGameSaveDBStoreName) // Open without a version parameter to get the most current version.
+		const request = indexedDB.open(KDGameSaveDBStoreName); // Open without a version parameter to get the most current version.
 		let db;
 
 		// Whenever an update is made, increment the version number.
@@ -3857,7 +3909,7 @@ function KinkyDungeonDBOpen() {
 			console.log(event);
 			res(db);
 		};
-	})
+	});
 }
 
 // Save a game to the database
@@ -3890,15 +3942,15 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
 
 		request.onsuccess = () => {
 			console.log(`Game saved to save_${saveslot}`, request.result);
-		}
+		};
 		request.onerror = () => {
 			console.error("Could not add data to the store");
-		}
+		};
 		request.complete = () => {
 			transaction.close();
 			return true;
-		}
-	})
+		};
+	});
 }
 
 // Load a game from the database - Returns a thenable with the gamedata string, false if nothing loaded.
@@ -3906,6 +3958,7 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
  * @param {number} saveslot
  */
 function KinkyDungeonDBLoad(saveslot) {
+	// @ts-ignore
 	return new Promise((res, rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
@@ -3917,7 +3970,7 @@ function KinkyDungeonDBLoad(saveslot) {
 			// Create a transaction
 			const transaction = db.transaction(KDGameSaveDBStoreName, "readonly");
 			const store = transaction.objectStore(KDGameSaveDBStoreName);
-			const request = store.get(`save_${saveslot}`)
+			const request = store.get(`save_${saveslot}`);
 
 			request.onsuccess = () => {
 				if (request.result) {
@@ -3926,16 +3979,16 @@ function KinkyDungeonDBLoad(saveslot) {
 					res(outstring);
 				}
 				else {
-					console.log(`Successfully loaded, but no save data present in slot ${saveslot}`)
+					console.log(`Successfully loaded, but no save data present in slot ${saveslot}`);
 					res(null);
 				}
-			}
+			};
 			request.onerror = () => {
 				console.error(`Could not fetch data in slot save_${saveslot}`);
 				res(null);
-			}
-		})
-	})
+			};
+		});
+	});
 }
 
 // Delete a saved game in a slot.
@@ -3943,6 +3996,7 @@ function KinkyDungeonDBLoad(saveslot) {
  * @param {number} saveslot
  */
 function KinkyDungeonDBDelete(saveslot) {
+	// @ts-ignore
 	return new Promise((res, rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
@@ -3954,18 +4008,18 @@ function KinkyDungeonDBDelete(saveslot) {
 			// Create a transaction
 			const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
 			const store = transaction.objectStore(KDGameSaveDBStoreName);
-			const request = store.delete(`save_${saveslot}`)
+			const request = store.delete(`save_${saveslot}`);
 
 			request.onsuccess = () => {
 				console.log(`Slot ${saveslot} deleted successfully`);
 				res(true);
-			}
+			};
 			request.onerror = () => {
 				console.error(`Error deleting slot ${saveslot}`);
 				res(false);
-			}
-		})
-	})
+			};
+		});
+	});
 }
 
 let LoadMenuCurrentSave;
@@ -3988,25 +4042,26 @@ let KDDeleteSaveIndex = -1;
 
 // Load Menu function
 function KDDrawLoadMenu() {
-    let YYstart = 140;
-    let YY = YYstart;
-    let YYd = 74;
-    YY = YYstart + 50;
-    YYd = 80;
-    let CombarXX = 520;
+	let YYstart = 140;
+	let YY = YYstart;
+	let YYd = 74;
+	YY = YYstart + 50;
+	YYd = 80;
+	let CombarXX = 520;
 	// Save slots buttons
 	DrawTextFitKD(TextGet("PlayGameWithCurrentCode"), 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
 	for (let i = 1; i < 5; i++) {
 		let num = (i);
 		// Slot button
-        DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
-            console.log("Pressed button for save slot " + num);
+		DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
+			console.log("Pressed button for save slot " + num);
 			loadedSaveforPreview = null;
 			LoadMenuCurrentSlot = num;
 			LoadMenuCurrentSave = loadedsaveslots[num - 1];
 			loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
 
-			if (!loadedSaveforPreview.hasOwnProperty("invalid")) {
+			// @ts-ignore
+			if (!loadedSaveforPreview.invalid) {
 				// Dress the KDPreviewModel
 				ModelPreviewLoaded = false;
 				KinkyDungeonDressModelPreview();
@@ -4018,13 +4073,14 @@ function KDDrawLoadMenu() {
 			localStorage.setItem('KDLastSaveSlot', num.toString());
 
 			return true;
-        }, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
+		}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
 		// Selected arrow if the currently selected slot matches
 		if (num == LoadMenuCurrentSlot) {
 			DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
 		}
 		// Delete button only if the slot has data
 		if (loadedsaveslots[num - 1]) {
+			// @ts-ignore
 			DrawButtonKDEx("KDDeleteSlotButton" + i, (b) => {
 				if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
 					KDConfirmDeleteSave = true;
@@ -4049,11 +4105,13 @@ function KDDrawLoadMenu() {
 					YY + 32,
 					120,
 					"#ff5555",
-				)
+				);
 			}
-		} else if (LoadMenuCurrentSlot == -1 && loadedSaveforPreview && !loadedSaveforPreview?.hasOwnProperty("invalid")) {
+		// @ts-ignore
+		} else if (LoadMenuCurrentSlot == -1 && loadedSaveforPreview && !loadedSaveforPreview?.invalid) {
 			// Import button
 			if (
+				// @ts-ignore
 				DrawButtonKDEx("KDImportSlotButton" + i, (b) => {
 					if (!loadedsaveslots[num - 1]) {
 						loadedsaveslots[num - 1] = ElementValue("saveInputField");
@@ -4080,21 +4138,22 @@ function KDDrawLoadMenu() {
 				);
 			}
 		}
-        YY += YYd;
-    }
+		YY += YYd;
+	}
 	// Pastebox for code
 	ElementPosition("saveInputField", CombarXX + 215, YY + 165, 400, 300);
 	let newValue = ElementValue("saveInputField");
 	// Load from Code button
 	DrawButtonKDEx("LoadFromCodeButton", () => {
-        KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+		KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 		LoadMenuCurrentSlot = undefined;
-        loadedSaveforPreview = KinkyDungeonLoadPreview(newValue);
+		loadedSaveforPreview = KinkyDungeonLoadPreview(newValue);
 		if (loadedSaveforPreview) {
 			LoadMenuCurrentSlot = -1;
 			LoadMenuCurrentSave = newValue;
 
-			if (!loadedSaveforPreview.hasOwnProperty("invalid")) {
+			// @ts-ignore
+			if (!loadedSaveforPreview.invalid) {
 				// Dress the KDPreviewModel
 				ModelPreviewLoaded = false;
 				KinkyDungeonDressModelPreview();
@@ -4103,13 +4162,13 @@ function KDDrawLoadMenu() {
 			KDSaveSlot = 0;
 			localStorage.setItem('KDLastSaveSlot', "0");
 		}
-        return true;
-    }, true, CombarXX + 220, 880, 180, 64, TextGet("LoadFromCodeButton"), "#ffffff", "");
+		return true;
+	}, true, CombarXX + 220, 880, 180, 64, TextGet("LoadFromCodeButton"), "#ffffff", "");
 	// Load from File button
 	DrawButtonKDEx("LoadFromFileButton", () => {
-        getFileInput(KDLoadSave);
-        return true;
-    }, true, CombarXX + 20, 880, 180, 64, TextGet("LoadFromFileButton"), "#ffffff", "");
+		getFileInput(KDLoadSave);
+		return true;
+	}, true, CombarXX + 20, 880, 180, 64, TextGet("LoadFromFileButton"), "#ffffff", "");
 	// Draw Save Slot details display
 	FillRectKD(kdcanvas, kdpixisprites, "maintogglebg", {
 		Left: CombarXX + 500,
@@ -4139,7 +4198,7 @@ function KDDrawLoadMenu() {
 	else if (LoadMenuCurrentSlot != undefined) {
 		DrawTextFitKD(`${TextGet("KDSaveSlotButton")}${LoadMenuCurrentSlot}`, CombarXX + 680, YYstart + 40, 400, "#ffffff", undefined, 40);
 	}
-	if (loadedSaveforPreview?.hasOwnProperty("KDGameData")) {
+	if (loadedSaveforPreview?.KDGameData) {
 		// Player Name and Class
 		DrawTextFitKD(loadedSaveforPreview.KDGameData.PlayerName, CombarXX + 680, YYstart + 630, 400, "#ffffff", undefined, 40);
 		if (loadedSaveforPreview.KDGameData.Class)
@@ -4150,15 +4209,15 @@ function KDDrawLoadMenu() {
 		// Player Paper Doll
 		if (ModelPreviewLoaded) {
 			if (!KDCurrentModels.get(KDPreviewModel)) {
-				DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true)
+				DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true);
 
 				KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined,
 					loadedSaveforPreview.inventoryarray.restraint,
 					KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
 						loadedSaveforPreview.inventoryarray.restraint),
-					KDToggles.ForcePalette ? KDDefaultPalette : undefined)
+					KDToggles.ForcePalette ? KDDefaultPalette : undefined);
 			}
-			DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true)
+			DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true);
 
 		}
 		// New Game Text
@@ -4173,7 +4232,7 @@ function KDDrawLoadMenu() {
 			difficultytext = "KDHardMode2";
 		}
 		DrawTextFitKD(`${TextGet("KDJourney" + (loadedSaveforPreview.journey || "None"))}${TextGet(difficultytext)}`,
-		CombarXX + 1100, YYstart + 90, 450, "#ffffff", undefined, 40);
+			CombarXX + 1100, YYstart + 90, 450, "#ffffff", undefined, 40);
 
 		// Save Code Seed
 		DrawTextFitKD(TextGet("KDMapSeed") + `${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
@@ -4220,40 +4279,40 @@ function KDDrawLoadMenu() {
 		// Gold Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png",
 			CombarXX + 880, YYstart + itemOffset, 100, 100, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.gold}`, CombarXX + 930, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Lockpicks held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "picks", KinkyDungeonRootDirectory + "Items/Pick.png",
 			CombarXX + 970, YYstart + itemOffset, 100, 100, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.picks}`, CombarXX + 1020, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Red Keys held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "rkeys", KinkyDungeonRootDirectory + "Items/RedKey.png",
 			CombarXX + 1060, YYstart + itemOffset, 100, 100, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.rkeys}`, CombarXX + 1110, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Blue Keys held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "bkeys", KinkyDungeonRootDirectory + "Items/BlueKey.png",
 			CombarXX + 1150, YYstart + itemOffset, 100, 100, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.bkeys}`, CombarXX + 1200, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Blue Keys held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "MistressKeys", KinkyDungeonRootDirectory + "Items/MistressKey.png",
 			CombarXX + 1240, YYstart + itemOffset, 100, 100, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.mistresskey}`, CombarXX + 1290, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
@@ -4302,8 +4361,8 @@ function KDDrawLoadMenu() {
 		// Stamina Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionStamina", KinkyDungeonRootDirectory + "UI/UsePotionStamina.png",
 			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.potions.stamina}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
@@ -4344,8 +4403,8 @@ function KDDrawLoadMenu() {
 		// Mana Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionMana", KinkyDungeonRootDirectory + "UI/UsePotionMana.png",
 			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
-			zIndex: 90
-		});
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.potions.mana}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
@@ -4386,8 +4445,8 @@ function KDDrawLoadMenu() {
 		// Will Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionWill", KinkyDungeonRootDirectory + "UI/UsePotionWill.png",
 			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
-			zIndex: 90
-		});
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.potions.will}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
@@ -4428,26 +4487,28 @@ function KDDrawLoadMenu() {
 		// Frigid Potions Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "PotionDistraction", KinkyDungeonRootDirectory + "UI/UsePotionFrigid.png",
 			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
-            zIndex: 90
-        });
+				zIndex: 90
+			});
 		DrawTextFitKD(`${loadedSaveforPreview.potions.dist}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 	}
-	else if (loadedSaveforPreview?.hasOwnProperty("nodata")) {
+	// @ts-ignore
+	else if (loadedSaveforPreview?.nodata) {
 		DrawTextFitKD(TextGet("KDNoData"), CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 		DrawTextFitKD(`?`, CombarXX + 680, YYstart + 350, 450, "#ffffff", undefined, 128);
-	} else if (loadedSaveforPreview?.hasOwnProperty("invalid")) {
+	// @ts-ignore
+	} else if (loadedSaveforPreview?.invalid) {
 		DrawTextFitKD(TextGet("KDInvalid"), CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 		DrawTextFitKD(`?`, CombarXX + 680, YYstart + 350, 450, "#ffffff", undefined, 128);
 	}
 	// Return to main menu
 	DrawButtonKDEx("KDBackOptions", () => {
-        KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
-        KinkyDungeonState = "Menu";
-        ElementRemove("saveInputField");
-        return true;
-    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "",
+		KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+		KinkyDungeonState = "Menu";
+		ElementRemove("saveInputField");
+		return true;
+	}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "",
 	undefined, undefined, undefined, undefined, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
 		hotkeyPress: KinkyDungeonKeySkip[0],
@@ -4465,7 +4526,7 @@ function KDDrawLoadMenu() {
 				//KDInitializeJourney(KDJourney);
 				if (KDMapData.Grid == "")
 					KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)],
-					KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
+						KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
 				KinkyDungeonState = "Game";
 				if (KinkyDungeonKeybindings) {
 					KDCommitKeybindings();
@@ -4476,15 +4537,16 @@ function KDDrawLoadMenu() {
 			LoadMenuCurrentSlot = undefined;
 			ElementRemove("saveInputField");
 		}
-        return true;
-    }, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? true : false), 1570, 880, 350, 64,
+		return true;
+	}, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? true : false), 1570, 880, 350, 64,
 
 		LoadMenuCurrentSlot > 0 ? TextGet("KDPlayWithSlot") + LoadMenuCurrentSlot
 	: TextGet("KDPlayWithoutSlot"), (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? "#ffffff" : "#888888"), "");
 }
 
 function KinkyDungeonDressModelPreview() {
-	return new Promise(async (res, rej) => {
+	// @ts-ignore
+	return new Promise((res, rej) => {
 		KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 		KDPreviewModel.ID++;
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
@@ -4494,11 +4556,11 @@ function KinkyDungeonDressModelPreview() {
 			loadedSaveforPreview.inventoryarray.restraint,
 			KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
 				loadedSaveforPreview.inventoryarray.restraint),
-			KDToggles.ForcePalette ? KDDefaultPalette : undefined)
+			KDToggles.ForcePalette ? KDDefaultPalette : undefined);
 		ModelPreviewLoaded = true;
-		res(true)
+		res(true);
 		//}, 50);
-	})
+	});
 }
 
 // Generate Preview data function
@@ -4512,9 +4574,9 @@ function KinkyDungeonLoadPreview(String) {
 		nodata: true,
 		// @ts-ignore
 		invalid: true,
-	}
+	};
 	try {
-		let str = DecompressB64(String.trim())
+		let str = DecompressB64(String.trim());
 		/**
 		 * @type {KinkyDungeonSave}
 		 */
@@ -4525,8 +4587,8 @@ function KinkyDungeonLoadPreview(String) {
 		returndata = {};
 
 		if (str) {
-		let saveData = JSON.parse(str);
-		if (saveData
+			let saveData = JSON.parse(str);
+			if (saveData
 			&& saveData.spells != undefined
 			&& saveData.level != undefined
 			&& saveData.checkpoint != undefined
@@ -4535,195 +4597,195 @@ function KinkyDungeonLoadPreview(String) {
 			&& saveData.rep != undefined
 			&& saveData.dress != undefined) {
 
-			returndata.errorloading = false;
-			returndata.modsmissing = false;
+				returndata.errorloading = false;
+				returndata.modsmissing = false;
 
-			// No need for this?
-			//if (saveData.flags && saveData.flags.length) returndata.flags = new Map(saveData.flags);
-			returndata.level = saveData.level;
-			if (Array.from(Object.keys(KinkyDungeonMapParams)).includes(saveData.checkpoint))
-				returndata.checkpoint = saveData.checkpoint;
-			else returndata.checkpoint = "grv";
-			//KinkyDungeonShrineCosts = saveData.costs;
-			//KinkyDungeonGoddessRep = saveData.rep;
-			returndata.dress = saveData.dress;
-			if (saveData.seed) returndata.seed = saveData.seed;
-			if (saveData.pcosts) returndata.pcosts = saveData.pcosts;
-			//if (saveData.choices) KinkyDungeonSpellChoices = saveData.choices;
-			//if (saveData.choices_wep) KinkyDungeonWeaponChoices = saveData.choices_wep;
-			//if (saveData.choices_arm) KinkyDungeonArmorChoices = saveData.choices_arm;
-			//if (saveData.choices_con) KinkyDungeonConsumableChoices = saveData.choices_con;
-			//if (saveData.choices2) KinkyDungeonSpellChoicesToggle = saveData.choices2;
-			//if (saveData.buffs) KinkyDungeonPlayerBuffs = saveData.buffs;
-			if (saveData.gold != undefined) returndata.gold = saveData.gold;
-			//if (saveData.id != undefined) KinkyDungeonEnemyID = saveData.id;
-			//if (saveData.idspell != undefined) KinkyDungeonSpellID = saveData.idspell;
-			if (saveData.points != undefined) returndata.points = saveData.points;
-			//if (saveData.lostitems != undefined) KinkyDungeonLostItems = saveData.lostitems;
-			if (saveData.rescued != undefined) returndata.rescued = saveData.rescued;
-			if (saveData.aid != undefined) returndata.aid = saveData.aid;
-			//if (saveData.KDCurrentWorldSlot) KDCurrentWorldSlot = saveData.KDCurrentWorldSlot;
+				// No need for this?
+				//if (saveData.flags && saveData.flags.length) returndata.flags = new Map(saveData.flags);
+				returndata.level = saveData.level;
+				if (Array.from(Object.keys(KinkyDungeonMapParams)).includes(saveData.checkpoint))
+					returndata.checkpoint = saveData.checkpoint;
+				else returndata.checkpoint = "grv";
+				//KinkyDungeonShrineCosts = saveData.costs;
+				//KinkyDungeonGoddessRep = saveData.rep;
+				returndata.dress = saveData.dress;
+				if (saveData.seed) returndata.seed = saveData.seed;
+				if (saveData.pcosts) returndata.pcosts = saveData.pcosts;
+				//if (saveData.choices) KinkyDungeonSpellChoices = saveData.choices;
+				//if (saveData.choices_wep) KinkyDungeonWeaponChoices = saveData.choices_wep;
+				//if (saveData.choices_arm) KinkyDungeonArmorChoices = saveData.choices_arm;
+				//if (saveData.choices_con) KinkyDungeonConsumableChoices = saveData.choices_con;
+				//if (saveData.choices2) KinkyDungeonSpellChoicesToggle = saveData.choices2;
+				//if (saveData.buffs) KinkyDungeonPlayerBuffs = saveData.buffs;
+				if (saveData.gold != undefined) returndata.gold = saveData.gold;
+				//if (saveData.id != undefined) KinkyDungeonEnemyID = saveData.id;
+				//if (saveData.idspell != undefined) KinkyDungeonSpellID = saveData.idspell;
+				if (saveData.points != undefined) returndata.points = saveData.points;
+				//if (saveData.lostitems != undefined) KinkyDungeonLostItems = saveData.lostitems;
+				if (saveData.rescued != undefined) returndata.rescued = saveData.rescued;
+				if (saveData.aid != undefined) returndata.aid = saveData.aid;
+				//if (saveData.KDCurrentWorldSlot) KDCurrentWorldSlot = saveData.KDCurrentWorldSlot;
 
 
-			// These are ignored for compatibility reasons
-			if (saveData.stats) {
+				// These are ignored for compatibility reasons
+				if (saveData.stats) {
 				// @ts-ignore
-				if (saveData.stats.picks != undefined) returndata.picks = saveData.stats.picks;
-				// @ts-ignore
-				if (saveData.stats.keys != undefined) returndata.rkeys = saveData.stats.keys;
-				// @ts-ignore
-				if (saveData.stats.bkeys != undefined) returndata.bkeys = saveData.stats.bkeys;
-				// @ts-ignore
-				if (saveData.stats.mana != undefined) returndata.mana = saveData.stats.mana;
-				// @ts-ignore
-				if (saveData.stats.manapool != undefined) returndata.manapool = saveData.stats.manapool;
-				// @ts-ignore
-				if (saveData.stats.stamina != undefined) returndata.stamina = saveData.stats.stamina;
-				// @ts-ignore
-				if (saveData.stats.willpower != undefined) returndata.willpower = saveData.stats.willpower;
-				// @ts-ignore
-				if (saveData.stats.distraction != undefined) returndata.distraction = saveData.stats.distraction;
-				// @ts-ignore
-				if (saveData.stats.distractionlower != undefined) returndata.distractionlower = saveData.stats.distractionlower;
-				//if (saveData.stats.wep != undefined) KDSetWeapon(saveData.stats.wep);
-				// @ts-ignore
-				if (saveData.stats.npp != undefined) returndata.npp = saveData.stats.npp;
+					if (saveData.stats.picks != undefined) returndata.picks = saveData.stats.picks;
+					// @ts-ignore
+					if (saveData.stats.keys != undefined) returndata.rkeys = saveData.stats.keys;
+					// @ts-ignore
+					if (saveData.stats.bkeys != undefined) returndata.bkeys = saveData.stats.bkeys;
+					// @ts-ignore
+					if (saveData.stats.mana != undefined) returndata.mana = saveData.stats.mana;
+					// @ts-ignore
+					if (saveData.stats.manapool != undefined) returndata.manapool = saveData.stats.manapool;
+					// @ts-ignore
+					if (saveData.stats.stamina != undefined) returndata.stamina = saveData.stats.stamina;
+					// @ts-ignore
+					if (saveData.stats.willpower != undefined) returndata.willpower = saveData.stats.willpower;
+					// @ts-ignore
+					if (saveData.stats.distraction != undefined) returndata.distraction = saveData.stats.distraction;
+					// @ts-ignore
+					if (saveData.stats.distractionlower != undefined) returndata.distractionlower = saveData.stats.distractionlower;
+					//if (saveData.stats.wep != undefined) KDSetWeapon(saveData.stats.wep);
+					// @ts-ignore
+					if (saveData.stats.npp != undefined) returndata.npp = saveData.stats.npp;
 
 
 				//KDOrigStamina = KinkyDungeonStatStamina*10;
 				//KDOrigWill = KinkyDungeonStatWill*10;
 				//KDOrigMana = KinkyDungeonStatMana*10;
 				//KDOrigDistraction = KinkyDungeonStatDistraction*10;
-			} else {
-				if (saveData.picks != undefined) returndata.picks = saveData.picks;
-				if (saveData.rkeys != undefined) returndata.rkeys = saveData.rkeys;
-				if (saveData.bkeys != undefined) returndata.bkeys = saveData.bkeys;
-				if (saveData.mana != undefined) returndata.mana = saveData.mana;
-				if (saveData.manapool != undefined) returndata.manapool = saveData.manapool;
-				if (saveData.stamina != undefined) returndata.stamina = saveData.stamina;
-				if (saveData.willpower != undefined) returndata.willpower = saveData.willpower;
-				if (saveData.distraction != undefined) returndata.distraction = saveData.distraction;
-				if (saveData.distractionlower != undefined) returndata.distractionlower = saveData.distractionlower;
-				if (saveData.npp != undefined) returndata.npp = saveData.npp;
-			}
-			returndata.KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
-			if (saveData.KDGameData != undefined) returndata.KDGameData = Object.assign({}, saveData.KDGameData);
-
-
-			//InitFacilities();
-
-			//KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
-			//if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
-			if (saveData.inventoryVariants) returndata.inventoryVariants = saveData.inventoryVariants;
-			if (saveData.weaponVariants) returndata.weaponVariants = saveData.weaponVariants;
-			if (saveData.consumableVariants) returndata.consumableVariants = saveData.consumableVariants;
-
-			if (saveData.statchoice != undefined) {
-				returndata.statchoice = saveData.statchoice;
-				let statsMap = new Map(returndata.statchoice);
-
-				returndata.arousalMode = statsMap.get("arousalMode");
-				returndata.itemMode = statsMap.get("itemMode") ? 1 : 0;
-				returndata.plug = statsMap.get("arousalModePlug");
-				returndata.plugFront = statsMap.get("arousalModePlugNoFront");
-				returndata.piercing = statsMap.get("arousalModePiercing");
-				returndata.random = statsMap.get("randomMode");
-				returndata.savemode = statsMap.get("saveMode");
-				returndata.hardmode = statsMap.get("hardMode");
-				returndata.extrememode = statsMap.get("extremeMode");
-				//KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
-				returndata.perksmode = statsMap.get("hardperksMode") ? 2 : (statsMap.get("perksMode") ? 1 : 0);
-				returndata.easymode = statsMap.get("norescueMode") ? 2 : (statsMap.get("easyMode") ? 1 : 0);
-				returndata.progressionmode = statsMap.get("escapekey") ? "Key" : statsMap.get("escaperandom") ? "Random" : statsMap.get("escapeselect") ? "Select" : "Key";
-
-			}
-			//if (saveData.uniqueHits != undefined) KDUniqueBulletHits = new Map(saveData.uniqueHits);
-
-
-
-
-			//if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
-			//KDInitFactions();
-			//if (typeof KDGameData.TimeSinceLastVibeStart === "number") KDGameData.TimeSinceLastVibeStart = {};
-			//if (typeof KDGameData.TimeSinceLastVibeEnd === "number") KDGameData.TimeSinceLastVibeEnd = {};
-
-			//if (!KDGameData.AlreadyOpened) KDGameData.AlreadyOpened = [];
-
-			//if (saveData.perks) {
-			//	KDUnlockedPerks = saveData.perks;
-			//	KDLoadPerks();
-			//}
-			//KDUnlockPerk();
-			let inventoryarray = {
-				consumable: [],
-				restraint: [],
-				looserestraint: [],
-				weapon: [],
-				outfit: []
-			};
-
-			for (let item of saveData.inventory) {
-				try {
-					inventoryarray[item.type].push({
-						name: item.name,
-						quantity: item.quantity,
-						id: item.id
-					})
+				} else {
+					if (saveData.picks != undefined) returndata.picks = saveData.picks;
+					if (saveData.rkeys != undefined) returndata.rkeys = saveData.rkeys;
+					if (saveData.bkeys != undefined) returndata.bkeys = saveData.bkeys;
+					if (saveData.mana != undefined) returndata.mana = saveData.mana;
+					if (saveData.manapool != undefined) returndata.manapool = saveData.manapool;
+					if (saveData.stamina != undefined) returndata.stamina = saveData.stamina;
+					if (saveData.willpower != undefined) returndata.willpower = saveData.willpower;
+					if (saveData.distraction != undefined) returndata.distraction = saveData.distraction;
+					if (saveData.distractionlower != undefined) returndata.distractionlower = saveData.distractionlower;
+					if (saveData.npp != undefined) returndata.npp = saveData.npp;
 				}
-				catch (err) {
-					console.log("Error adding item");
-					console.log(item);
-					returndata.errorloading = true;
-				}
-			}
-			returndata.inventoryarray = inventoryarray;
-			returndata.outfitForPreview = [];
+				returndata.KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
+				if (saveData.KDGameData != undefined) returndata.KDGameData = Object.assign({}, saveData.KDGameData);
 
-			// Now we have all the restraints in inventory, lets try to parse any variants for the paper doll preview.
-			inventoryarray['restraint'].forEach((item) => {
-				let outputname = item.name;
-				// Check if the item name is on the inventory variants
-				if (returndata.inventoryVariants.hasOwnProperty(item.name)) {
+
+				//InitFacilities();
+
+				//KDEventData = JSON.parse(JSON.stringify(KDEventDataBase));
+				//if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
+				if (saveData.inventoryVariants) returndata.inventoryVariants = saveData.inventoryVariants;
+				if (saveData.weaponVariants) returndata.weaponVariants = saveData.weaponVariants;
+				if (saveData.consumableVariants) returndata.consumableVariants = saveData.consumableVariants;
+
+				if (saveData.statchoice != undefined) {
+					returndata.statchoice = saveData.statchoice;
+					let statsMap = new Map(returndata.statchoice);
+
+					returndata.arousalMode = statsMap.get("arousalMode");
+					returndata.itemMode = statsMap.get("itemMode") ? 1 : 0;
+					returndata.plug = statsMap.get("arousalModePlug");
+					returndata.plugFront = statsMap.get("arousalModePlugNoFront");
+					returndata.piercing = statsMap.get("arousalModePiercing");
+					returndata.random = statsMap.get("randomMode");
+					returndata.savemode = statsMap.get("saveMode");
+					returndata.hardmode = statsMap.get("hardMode");
+					returndata.extrememode = statsMap.get("extremeMode");
+					//KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
+					returndata.perksmode = statsMap.get("hardperksMode") ? 2 : (statsMap.get("perksMode") ? 1 : 0);
+					returndata.easymode = statsMap.get("norescueMode") ? 2 : (statsMap.get("easyMode") ? 1 : 0);
+					returndata.progressionmode = statsMap.get("escapekey") ? "Key" : statsMap.get("escaperandom") ? "Random" : statsMap.get("escapeselect") ? "Select" : "Key";
+
+				}
+				//if (saveData.uniqueHits != undefined) KDUniqueBulletHits = new Map(saveData.uniqueHits);
+
+
+
+
+				//if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
+				//KDInitFactions();
+				//if (typeof KDGameData.TimeSinceLastVibeStart === "number") KDGameData.TimeSinceLastVibeStart = {};
+				//if (typeof KDGameData.TimeSinceLastVibeEnd === "number") KDGameData.TimeSinceLastVibeEnd = {};
+
+				//if (!KDGameData.AlreadyOpened) KDGameData.AlreadyOpened = [];
+
+				//if (saveData.perks) {
+				//KDUnlockedPerks = saveData.perks;
+				//KDLoadPerks();
+				//}
+				//KDUnlockPerk();
+				let inventoryarray = {
+					consumable: [],
+					restraint: [],
+					looserestraint: [],
+					weapon: [],
+					outfit: []
+				};
+
+				for (let item of saveData.inventory) {
+					try {
+						inventoryarray[item.type].push({
+							name: item.name,
+							quantity: item.quantity,
+							id: item.id
+						});
+					}
+					catch (err) {
+						console.log("Error adding item");
+						console.log(item);
+						returndata.errorloading = true;
+					}
+				}
+				returndata.inventoryarray = inventoryarray;
+				returndata.outfitForPreview = [];
+
+				// Now we have all the restraints in inventory, lets try to parse any variants for the paper doll preview.
+				inventoryarray.restraint.forEach((item) => {
+					let outputname = item.name;
+					// Check if the item name is on the inventory variants
+					if (returndata.inventoryVariants[item.name]) {
 					// Modify the item name in place
-					outputname = returndata.inventoryVariants[item.name].template
+						outputname = returndata.inventoryVariants[item.name].template;
+					}
+					// This should give us an array of base item names we can reference later.
+					returndata.outfitForPreview.push(outputname);
+				});
+
+				// Find out how many Mistress Keys the save has.
+				returndata.mistresskey = 0;
+				let mistresskeysobj = returndata.inventoryarray.consumable.find((item) => item.name === "MistressKey");
+				if (mistresskeysobj != undefined) {
+					returndata.mistresskey = mistresskeysobj.quantity;
 				}
-				// This should give us an array of base item names we can reference later.
-				returndata.outfitForPreview.push(outputname)
-			})
+				// Find out how many potions the save has.
+				returndata.potions = {
+					stamina: 0,
+					mana: 0,
+					will: 0,
+					dist: 0
+				};
+				let potionsstamina = returndata.inventoryarray.consumable.find((item) => item.name === "PotionStamina");
+				if (potionsstamina != undefined) {
+					returndata.potions.stamina = potionsstamina.quantity;
+				}
+				let potionsmana = returndata.inventoryarray.consumable.find((item) => item.name === "PotionMana");
+				if (potionsmana != undefined) {
+					returndata.potions.mana = potionsmana.quantity;
+				}
+				let potionswill = returndata.inventoryarray.consumable.find((item) => item.name === "PotionWill");
+				if (potionswill != undefined) {
+					returndata.potions.will = potionswill.quantity;
+				}
+				let potionsdist = returndata.inventoryarray.consumable.find((item) => item.name === "PotionFrigid");
+				if (potionsdist != undefined) {
+					returndata.potions.dist = potionsdist.quantity;
+				}
 
-			// Find out how many Mistress Keys the save has.
-			returndata.mistresskey = 0;
-			let mistresskeysobj = returndata.inventoryarray['consumable'].find((item) => item.name === "MistressKey");
-			if (mistresskeysobj != undefined) {
-				returndata.mistresskey = mistresskeysobj.quantity;
-			}
-			// Find out how many potions the save has.
-			returndata.potions = {
-				stamina: 0,
-				mana: 0,
-				will: 0,
-				dist: 0
-			}
-			let potionsstamina = returndata.inventoryarray['consumable'].find((item) => item.name === "PotionStamina");
-			if (potionsstamina != undefined) {
-				returndata.potions.stamina = potionsstamina.quantity;
-			}
-			let potionsmana = returndata.inventoryarray['consumable'].find((item) => item.name === "PotionMana");
-			if (potionsmana != undefined) {
-				returndata.potions.mana = potionsmana.quantity;
-			}
-			let potionswill = returndata.inventoryarray['consumable'].find((item) => item.name === "PotionWill");
-			if (potionswill != undefined) {
-				returndata.potions.will = potionswill.quantity;
-			}
-			let potionsdist = returndata.inventoryarray['consumable'].find((item) => item.name === "PotionFrigid");
-			if (potionsdist != undefined) {
-				returndata.potions.dist = potionsdist.quantity;
-			}
+				returndata.journey = saveData.KDGameData.Journey;
 
-			returndata.journey = saveData.KDGameData.Journey;
-
-			/*
+				/*
 			KDInitInventory();
 
 			for (let item of saveData.inventory) {
@@ -4759,20 +4821,20 @@ function KinkyDungeonLoadPreview(String) {
 			}
 			*/
 
-			//KinkyDungeonSpells = [];
-			//KDRefreshSpellCache = true;
-			//for (let spell of saveData.spells) {
-			//	let sp = KinkyDungeonFindSpell(spell);
-			//	if (sp) KDPushSpell(sp);
-			//}
+				//KinkyDungeonSpells = [];
+				//KDRefreshSpellCache = true;
+				//for (let spell of saveData.spells) {
+				//let sp = KinkyDungeonFindSpell(spell);
+				//if (sp) KDPushSpell(sp);
+				//}
 
-			//if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
-			//if (saveData.KDPersistentNPCs) KDPersistentNPCs = JSON.parse(saveData.KDPersistentNPCs);
-			//if (saveData.KDDeletedIDs) KDDeletedIDs = JSON.parse(saveData.KDDeletedIDs);
-			//if (saveData.KDPersonalAlt) KDPersonalAlt = JSON.parse(saveData.KDPersonalAlt);
+				//if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
+				//if (saveData.KDPersistentNPCs) KDPersistentNPCs = JSON.parse(saveData.KDPersistentNPCs);
+				//if (saveData.KDDeletedIDs) KDDeletedIDs = JSON.parse(saveData.KDDeletedIDs);
+				//if (saveData.KDPersonalAlt) KDPersonalAlt = JSON.parse(saveData.KDPersonalAlt);
 
-			//if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
-			/*if (saveData.KDMapData) {
+				//if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
+				/*if (saveData.KDMapData) {
 				KDMapData = Object.assign(KDDefaultMapData("", ""), JSON.parse(JSON.stringify(saveData.KDMapData)));
 				if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
 				KinkyDungeonGenNavMap();
@@ -4800,8 +4862,8 @@ function KinkyDungeonLoadPreview(String) {
 
 			KDUpdateEnemyCache = true;
 			*/
-			// bandaid
-			/*for (let enemy of KDMapData.Entities) {
+				// bandaid
+				/*for (let enemy of KDMapData.Entities) {
 				if (enemy.buffs) {
 					for (let b of Object.keys(enemy.buffs)) {
 						if (!enemy.buffs[b]) {
@@ -4811,28 +4873,28 @@ function KinkyDungeonLoadPreview(String) {
 				}
 			}*/
 
-			//if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
+				//if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
 
-			//KinkyDungeonSetMaxStats();
-			//KinkyDungeonCheckClothesLoss = true;
-			//KDNaked = false;
+				//KinkyDungeonSetMaxStats();
+				//KinkyDungeonCheckClothesLoss = true;
+				//KDNaked = false;
 
-			// Here is where we can figure out how to dress the player in preview
-			//KinkyDungeonDressPlayer();
+				// Here is where we can figure out how to dress the player in preview
+				//KinkyDungeonDressPlayer();
 
 
-			//KDRefresh = true;
-			//KDUpdateEnemyCache = true;
+				//KDRefresh = true;
+				//KDUpdateEnemyCache = true;
 
-			//if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
+				//if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
 
-			//if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
-			//if (String)
-			//	localStorage.setItem('KinkyDungeonSave', String);
+				//if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
+				//if (String)
+				//localStorage.setItem('KinkyDungeonSave', String);
 
-			//if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
+				//if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
 
-			/*
+				/*
 			if (!KinkyDungeonMapIndex.grv || !KDGameData.JourneyProgression)
 				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 
@@ -4850,8 +4912,8 @@ function KinkyDungeonLoadPreview(String) {
 			KinkyDungeonSendEvent("afterLoadGame", {});
 			return true;
 			*/
-			return returndata;
-		}
+				return returndata;
+			}
 		}
 		else {
 			return {
@@ -5390,6 +5452,7 @@ window.addEventListener('touchmove', function(event) {
 		MouseClicked = true; // To prevent KDClick on end
 	}
 });
+// @ts-ignore
 window.addEventListener('touchend', function(event) {
 	if (CommonIsMobile && mouseDown && !MouseClicked) {
 		KDClick();
@@ -5599,7 +5662,7 @@ function KinkyDungeonGenerateSaveData() {
 
 	save.saveStat = {
 		appearance: JSON.parse(JSON.stringify(KinkyDungeonPlayer.Appearance)),
-		default: JSON.parse(JSON.stringify(KDGetDressList()['Default'])),
+		default: JSON.parse(JSON.stringify(KDGetDressList().Default)),
 		poses: JSON.parse(JSON.stringify(KDCurrentModels.get(KinkyDungeonPlayer).Poses)),
 
 		outfit: KDGameData.Outfit,
@@ -5609,7 +5672,7 @@ function KinkyDungeonGenerateSaveData() {
 		mp: Math.round(KinkyDungeonStatMana * 10) + '/' + KinkyDungeonStatManaMax * 10,
 		wp: Math.round(KinkyDungeonStatWill * 10) + '/' + KinkyDungeonStatWillMax * 10,
 		dp: Math.round(KinkyDungeonStatDistraction * 10) + '/' + KinkyDungeonStatDistractionMax * 10,
-	}
+	};
 
 	let spells = [];
 	/**@type {item[]} */
@@ -5788,7 +5851,7 @@ function KinkyDungeonLoadGame(String) {
 			if (!KDToggles.OverrideOutfit && saveData.saveStat) {
 				if (saveData.saveStat.poses || saveData.saveStat.appearance || saveData.saveStat.default) {
 					KinkyDungeonPlayer.Appearance = JSON.parse(JSON.stringify(saveData.saveStat.appearance));
-					KDGetDressList()['Default'] = saveData.saveStat.default;
+					KDGetDressList().Default = saveData.saveStat.default;
 					KDCurrentModels.get(KinkyDungeonPlayer).Poses = saveData.saveStat.poses;
 					UpdateModels(KinkyDungeonPlayer);
 				}
@@ -6096,15 +6159,18 @@ function KinkyDungeonGetCanvas(id) {
 
 
 
+// @ts-ignore
 function KDDrawGameSetupTabs(xOffset) {
 	if (KDGameData.PlayerName) {
 		DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 	}
+	// @ts-ignore
 	DrawButtonKDEx("TabDiff", (b) => {
 		KinkyDungeonState = "Diff";
 		return true;
 	}, true, 500, 10, 740, 40, TextGet("KDDiffTab_Diff"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonState != "Diff", KDButtonColor);
+	// @ts-ignore
 	DrawButtonKDEx("TabChallenge", (b) => {
 		KinkyDungeonState = "Challenge";
 		return true;
@@ -6112,6 +6178,7 @@ function KDDrawGameSetupTabs(xOffset) {
 	KinkyDungeonState != "Challenge", KDButtonColor);
 
 
+	// @ts-ignore
 	DrawButtonKDEx("backButton", (b) => {
 		KinkyDungeonState = "Menu";
 		return true;
@@ -6161,6 +6228,7 @@ function KDDrawToggleTabs(xOffset) {
 	let list = KDToggleGroups;
 	let II = 0;
 	for (let tab of list) {
+		// @ts-ignore
 		DrawButtonKDEx("TabTog" + tab, (b) => {
 			KDToggleTab = tab;
 			return true;
@@ -6171,6 +6239,7 @@ function KDDrawToggleTabs(xOffset) {
 	}
 }
 
+// @ts-ignore
 function KinkyDungeonMultiplayerUpdate(delay) {
 	// Do nothing. Placeholder for when/if there is ever any MP functionality
 }

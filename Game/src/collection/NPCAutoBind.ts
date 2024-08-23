@@ -64,7 +64,8 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 										restraint: inv[1].name,
 										restraintid: inv[1].id,
 										lock: inv[1].lock,
-										npc: value.id
+										npc: value.id,
+										player: KDPlayer().id,
 									})) {
 										KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
 										-= KDGenericRestraintRawCache[inv[1].name].count;
@@ -119,6 +120,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
 			KDSendInput("freeNPCRestraint", {
 				npc: value.id,
+				player: KDPlayer().id,
 			});
 		else {
 			KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
@@ -172,7 +174,8 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 											restraint: inv[1].name,
 											restraintid: inv[1].id,
 											lock: inv[1].lock,
-											npc: value.id
+											npc: value.id,
+											player: KDPlayer().id,
 										})) {
 											KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
 											-= KDGenericRestraintRawCache[inv[1].name].count;
