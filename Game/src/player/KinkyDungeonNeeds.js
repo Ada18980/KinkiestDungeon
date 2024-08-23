@@ -1,7 +1,7 @@
 "use strict";
 
 let KDNeedsParams = {
-	FrustrationPerTurn: 0.01,
+	FrustrationPerTurn: 0.05,
 	FrustrationPerDesire: 0.03,
 	FrustrationPerOrgasm: -10,
 	FrustrationPerVibeLevel: -0.1,
@@ -27,11 +27,11 @@ function KDTickNeeds(delta) {
 				+ KDNeedsParams.PassionPerDesire * KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax
 				+ KDNeedsParams.PassionPerVibeLevel * KinkyDungeonVibeLevel
 			)));
-	KinkyDungeonGoddessRep.Frustration = Math.max(-50, Math.min(50, KinkyDungeonGoddessRep.Frustration + delta*
+	KinkyDungeonGoddessRep.Frustration = Math.max(-50,
+		Math.min(50, KinkyDungeonGoddessRep.Frustration + delta*
 		(
-			KDNeedsParams.FrustrationPerTurn
-			+ KDNeedsParams.FrustrationPerDesire * KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax
-			+ KDNeedsParams.FrustrationPerVibeLevel * KinkyDungeonVibeLevel
+			(KDGameData.OrgasmTurns / KinkyDungeonOrgasmTurnsMax)
+			* (KDNeedsParams.FrustrationPerTurn + KDNeedsParams.FrustrationPerVibeLevel * KinkyDungeonVibeLevel)
 		)));
 }
 
@@ -64,8 +64,11 @@ function KDNeedsOrgasm(data, mult = 1) {
  * @param {number} mult
  */
 function KDNeedsEdge(data, mult = 1) {
-	KinkyDungeonChangeRep("Passion", -(1 + (2 + 4 * KDRandom()) * 0.01*(50 - KinkyDungeonGoddessRep.Frustration)));
-	KinkyDungeonChangeRep("Frustration", (5 + (3 + 3 * KDRandom()) * 0.01*(KinkyDungeonGoddessRep.Passion + 50)));
+	if (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsMax * 0.5) {
+		KinkyDungeonChangeRep("Passion", -(1 + (2 + 4 * KDRandom()) * 0.01*(50 - KinkyDungeonGoddessRep.Frustration)));
+		KinkyDungeonChangeRep("Frustration", (5 + (3 + 3 * KDRandom()) * 0.01*(KinkyDungeonGoddessRep.Passion + 50)));
+	}
+
 }
 
 /**
