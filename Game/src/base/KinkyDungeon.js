@@ -2510,7 +2510,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, (KDConfirmDeleteSave ? (Math.random() > 0.5 ? -1 : 1) : 0) + 875, KDConfirmDeleteSave ?
 			(Math.random() > 0.5 ? -1 : 1) + 750 : 650, 750, 64, TextGet(KDConfirmDeleteSave ?
-			"KDConfirmREALLY" : "KDConfirm"), "#ff5555", "");
+			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? "#ff5555" : "#ffffff", "");
 
 		DrawButtonKDEx("backButton", (b) => {
 			KinkyDungeonState = "Menu";
@@ -4145,7 +4145,7 @@ function KDDrawLoadMenu() {
 		if (loadedSaveforPreview.KDGameData.Class)
 			DrawTextFitKD(
 				TextGet("KinkyDungeonStatMC_" + loadedSaveforPreview.KDGameData.Class),
-				CombarXX + 680, YYstart + 670, 400, "#ffffff", undefined, 28);
+				CombarXX + 680, YYstart + 665, 400, "#ffffff", undefined, 28);
 
 		// Player Paper Doll
 		if (ModelPreviewLoaded) {
@@ -4178,87 +4178,87 @@ function KDDrawLoadMenu() {
 		// Save Code Seed
 		DrawTextFitKD(TextGet("KDMapSeed") + `: ${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
 
+
+
+		// Draw misc challenge settings
+		let challengeInfo = [""];
+		let challengeheight = 0;
+		let challengeIndex = 0;
+		let challengeMaxPerRow = 2;
+
+		challengeInfo[challengeheight] = challengeInfo[challengeIndex] + TextGet("KinkyDungeonSexyMode" + (loadedSaveforPreview.arousalMode ? "1" : "0"));
+		challengeIndex++;
+
+		if (loadedSaveforPreview.random) {
+			if (challengeIndex >= challengeMaxPerRow) {
+				challengeheight++;
+				challengeInfo.push("");
+			}
+			if (challengeInfo[challengeheight]) challengeInfo[challengeheight] = challengeInfo[challengeheight] + ", ";
+			challengeInfo[challengeheight] = challengeInfo[challengeheight] + TextGet("KinkyDungeonRandomMode1");
+			challengeIndex++;
+		}
+		if (loadedSaveforPreview.savemode) {
+			if (challengeIndex >= challengeMaxPerRow) {
+				challengeheight++;
+				challengeInfo.push("");
+			}
+			if (challengeInfo[challengeheight]) challengeInfo[challengeheight] = challengeInfo[challengeheight] + ", ";
+			challengeInfo[challengeheight] = challengeInfo[challengeheight] + TextGet("KinkyDungeonSaveMode" + (loadedSaveforPreview.savemode ? "1" : "0"));
+			challengeIndex++;
+		}
+
+		for (let i = 0; i <= challengeheight; i++) {
+			DrawTextFitKD(challengeInfo[i], CombarXX + 1100,
+				YYstart + 260 - (challengeheight + 1) * 20 + i * 40,
+				400, "#ffffff", undefined, 32);
+		}
+
+
+
+		let itemOffset = 575;
 		// Gold Held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "gold", KinkyDungeonRootDirectory + "Items/Gold.png",
-			CombarXX + 880, YYstart + 460, 100, 100, undefined, {
+			CombarXX + 880, YYstart + itemOffset, 100, 100, undefined, {
             zIndex: 90
         });
-		DrawTextFitKD(`${loadedSaveforPreview.gold}`, CombarXX + 930, YYstart + 540, 200, "#ffffff", "#333333",
+		DrawTextFitKD(`${loadedSaveforPreview.gold}`, CombarXX + 930, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Lockpicks held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "picks", KinkyDungeonRootDirectory + "Items/Pick.png",
-			CombarXX + 970, YYstart + 460, 100, 100, undefined, {
+			CombarXX + 970, YYstart + itemOffset, 100, 100, undefined, {
             zIndex: 90
         });
-		DrawTextFitKD(`${loadedSaveforPreview.picks}`, CombarXX + 1020, YYstart + 540, 200, "#ffffff", "#333333",
+		DrawTextFitKD(`${loadedSaveforPreview.picks}`, CombarXX + 1020, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Red Keys held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "rkeys", KinkyDungeonRootDirectory + "Items/RedKey.png",
-			CombarXX + 1060, YYstart + 460, 100, 100, undefined, {
+			CombarXX + 1060, YYstart + itemOffset, 100, 100, undefined, {
             zIndex: 90
         });
-		DrawTextFitKD(`${loadedSaveforPreview.rkeys}`, CombarXX + 1110, YYstart + 540, 200, "#ffffff", "#333333",
+		DrawTextFitKD(`${loadedSaveforPreview.rkeys}`, CombarXX + 1110, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Blue Keys held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "bkeys", KinkyDungeonRootDirectory + "Items/BlueKey.png",
-			CombarXX + 1150, YYstart + 460, 100, 100, undefined, {
+			CombarXX + 1150, YYstart + itemOffset, 100, 100, undefined, {
             zIndex: 90
         });
-		DrawTextFitKD(`${loadedSaveforPreview.bkeys}`, CombarXX + 1200, YYstart + 540, 200, "#ffffff", "#333333",
+		DrawTextFitKD(`${loadedSaveforPreview.bkeys}`, CombarXX + 1200, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
 		// Blue Keys held by the Player
 		KDDraw(kdcanvas, kdpixisprites, "MistressKeys", KinkyDungeonRootDirectory + "Items/MistressKey.png",
-			CombarXX + 1240, YYstart + 460, 100, 100, undefined, {
+			CombarXX + 1240, YYstart + itemOffset, 100, 100, undefined, {
             zIndex: 90
         });
-		DrawTextFitKD(`${loadedSaveforPreview.mistresskey}`, CombarXX + 1290, YYstart + 540, 200, "#ffffff", "#333333",
+		DrawTextFitKD(`${loadedSaveforPreview.mistresskey}`, CombarXX + 1290, YYstart + itemOffset + 80, 200, "#ffffff", "#333333",
 			24, undefined, 90);
 
-		// Stamina Potions Held by the Player
-		KDDraw(kdcanvas, kdpixisprites, "PotionStamina", KinkyDungeonRootDirectory + "UI/UsePotionStamina.png",
-			CombarXX + 1310, YYstart + 260, 50, 50, undefined, {
-            zIndex: 90
-        });
-		DrawTextFitKD(`${loadedSaveforPreview.potions.stamina}`, CombarXX + 1360, YYstart + 290, 200, "#ffffff", "#333333",
-			24, undefined, 90);
 
-		// Mana Potions Held by the Player
-		KDDraw(kdcanvas, kdpixisprites, "PotionMana", KinkyDungeonRootDirectory + "UI/UsePotionMana.png",
-			CombarXX + 1310, YYstart + 310, 50, 50, undefined, {
-            zIndex: 90
-        });
-		DrawTextFitKD(`${loadedSaveforPreview.potions.mana}`, CombarXX + 1360, YYstart + 340, 200, "#ffffff", "#333333",
-			24, undefined, 90);
-
-		// Will Potions Held by the Player
-		KDDraw(kdcanvas, kdpixisprites, "PotionWill", KinkyDungeonRootDirectory + "UI/UsePotionWill.png",
-			CombarXX + 1310, YYstart + 360, 50, 50, undefined, {
-            zIndex: 90
-        });
-		DrawTextFitKD(`${loadedSaveforPreview.potions.will}`, CombarXX + 1360, YYstart + 390, 200, "#ffffff", "#333333",
-			24, undefined, 90);
-
-		// Frigid Potions Held by the Player
-		KDDraw(kdcanvas, kdpixisprites, "PotionDistraction", KinkyDungeonRootDirectory + "UI/UsePotionFrigid.png",
-			CombarXX + 1310, YYstart + 410, 50, 50, undefined, {
-            zIndex: 90
-        });
-		DrawTextFitKD(`${loadedSaveforPreview.potions.dist}`, CombarXX + 1360, YYstart + 440, 200, "#ffffff", "#333333",
-			24, undefined, 90);
-
-		// Current Player Stats
-		DrawTextFitKD(`Stamina: ${Math.floor(loadedSaveforPreview.stamina * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10}`,
-			CombarXX + 1100, YYstart + 290, 400, "#ffffff", undefined, 32);
-		DrawTextFitKD(`Mana: ${Math.floor(loadedSaveforPreview.mana * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10}`,
-			CombarXX + 1100, YYstart + 340, 400, "#ffffff", undefined, 32);
-		DrawTextFitKD(`Willpower: ${Math.floor(loadedSaveforPreview.willpower * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10}`,
-			CombarXX + 1100, YYstart + 390, 400, "#ffffff", undefined, 32);
-		DrawTextFitKD(`Distraction: ${Math.floor(loadedSaveforPreview.distraction * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10}`,
-			CombarXX + 1100, YYstart + 440, 400, "#ffffff", undefined, 32);
+		let barOffset = itemOffset - 47;
 
 		// Draw bars below the stat text.
 		let heightPerBar = 45;
@@ -4266,9 +4266,10 @@ function KDDrawLoadMenu() {
 		let barborder = 2;
 		let offsetmult = 50;
 		let offsetcount = 0;
+
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarSPBack`, {
 			Left: CombarXX + 900 + (offsetcount * offsetmult),
-			Top: YYstart + 263 + (offsetcount * offsetmult),
+			Top: barOffset + (offsetcount * offsetmult) - heightPerBar/2,
 			Width: barwidth,
 			Height: heightPerBar,
 			Color: "#0d0d0d",
@@ -4277,7 +4278,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarSPBack2`, {
 			Left: CombarXX + 900 + (offsetcount * offsetmult) + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: barwidth - (barborder * 2),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#283540",
@@ -4286,7 +4287,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarSPBack3`, {
 			Left: CombarXX + 900 + (offsetcount * offsetmult) + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.stamina * 10))
 				/ ((loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
@@ -4294,10 +4295,23 @@ function KDDrawLoadMenu() {
 			LineWidth: 1,
 			zIndex: 59,
 		});
+
+		DrawTextFitKD(`Stamina: ${Math.floor(loadedSaveforPreview.stamina * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.SP + 10) * 10}`,
+			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, "#ffffff", undefined, 32);
+
+		// Stamina Potions Held by the Player
+		KDDraw(kdcanvas, kdpixisprites, "PotionStamina", KinkyDungeonRootDirectory + "UI/UsePotionStamina.png",
+			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
+            zIndex: 90
+        });
+		DrawTextFitKD(`${loadedSaveforPreview.potions.stamina}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
+			24, undefined, 90);
+
+
 		offsetcount++;
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarMPBack`, {
 			Left: CombarXX + 900,
-			Top: YYstart + 263 + (offsetcount * offsetmult),
+			Top: barOffset + (offsetcount * offsetmult) - heightPerBar/2,
 			Width: barwidth,
 			Height: heightPerBar,
 			Color: "#0d0d0d",
@@ -4306,7 +4320,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarMPBack2`, {
 			Left: CombarXX + 900 + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: barwidth - (barborder * 2),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#4fa4b8",
@@ -4315,7 +4329,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarMPBack3`, {
 			Left: CombarXX + 900 + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.mana * 10))
 				/ ((loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
@@ -4323,10 +4337,23 @@ function KDDrawLoadMenu() {
 			LineWidth: 1,
 			zIndex: 59 + (offsetcount * 5),
 		});
+
+		DrawTextFitKD(`Mana: ${Math.floor(loadedSaveforPreview.mana * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.MP + 10) * 10}`,
+			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, "#ffffff", undefined, 32);
+
+		// Mana Potions Held by the Player
+		KDDraw(kdcanvas, kdpixisprites, "PotionMana", KinkyDungeonRootDirectory + "UI/UsePotionMana.png",
+			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
+			zIndex: 90
+		});
+		DrawTextFitKD(`${loadedSaveforPreview.potions.mana}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
+			24, undefined, 90);
+
+
 		offsetcount++;
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarWPBack`, {
 			Left: CombarXX + 900,
-			Top: YYstart + 263 + (offsetcount * offsetmult),
+			Top: barOffset + (offsetcount * offsetmult) - heightPerBar/2,
 			Width: barwidth,
 			Height: heightPerBar,
 			Color: "#0d0d0d",
@@ -4335,7 +4362,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarWPBack2`, {
 			Left: CombarXX + 900 + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: barwidth - (barborder * 2),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#222222",
@@ -4344,7 +4371,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarWPBack3`, {
 			Left: CombarXX + 900 + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.willpower * 10))
 				/ ((loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
@@ -4352,10 +4379,23 @@ function KDDrawLoadMenu() {
 			LineWidth: 1,
 			zIndex: 59 + (offsetcount * 5),
 		});
+
+		DrawTextFitKD(`Willpower: ${Math.floor(loadedSaveforPreview.willpower * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.WP + 10) * 10}`,
+			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, "#ffffff", undefined, 32);
+
+		// Will Potions Held by the Player
+		KDDraw(kdcanvas, kdpixisprites, "PotionWill", KinkyDungeonRootDirectory + "UI/UsePotionWill.png",
+			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
+			zIndex: 90
+		});
+		DrawTextFitKD(`${loadedSaveforPreview.potions.will}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
+			24, undefined, 90);
+
+
 		offsetcount++;
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarDPBack`, {
 			Left: CombarXX + 900,
-			Top: YYstart + 263 + (offsetcount * offsetmult),
+			Top: barOffset + (offsetcount * offsetmult) - heightPerBar/2,
 			Width: barwidth,
 			Height: heightPerBar,
 			Color: "#0d0d0d",
@@ -4364,7 +4404,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarDPBack2`, {
 			Left: CombarXX + 900 + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: barwidth - (barborder * 2),
 			Height: heightPerBar - (barborder * 2),
 			Color: "#692464",
@@ -4373,7 +4413,7 @@ function KDDrawLoadMenu() {
 		});
 		FillRectKD(kdcanvas, kdpixisprites, `KDPreviewBarDPBack3`, {
 			Left: CombarXX + 900 + barborder,
-			Top: YYstart + 263 + (offsetcount * offsetmult) + barborder,
+			Top: barOffset + (offsetcount * offsetmult) + barborder - heightPerBar/2,
 			Width: Math.floor((barwidth - (barborder * 2)) * (Math.floor(loadedSaveforPreview.distraction * 10))
 				/ ((loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10)),
 			Height: heightPerBar - (barborder * 2),
@@ -4381,6 +4421,18 @@ function KDDrawLoadMenu() {
 			LineWidth: 1,
 			zIndex: 59 + (offsetcount * 5),
 		});
+
+		DrawTextFitKD(`Distraction: ${Math.floor(loadedSaveforPreview.distraction * 10)}/${(loadedSaveforPreview.KDGameData.StatMaxBonus?.AP + 10) * 10}`,
+			CombarXX + 1100, barOffset + (offsetcount * offsetmult), 400, "#ffffff", undefined, 32);
+
+		// Frigid Potions Held by the Player
+		KDDraw(kdcanvas, kdpixisprites, "PotionDistraction", KinkyDungeonRootDirectory + "UI/UsePotionFrigid.png",
+			CombarXX + 1310, barOffset + (offsetcount * offsetmult) - 13, 44, 26, undefined, {
+            zIndex: 90
+        });
+		DrawTextFitKD(`${loadedSaveforPreview.potions.dist}`, CombarXX + 1360, barOffset + (offsetcount * offsetmult), 200, "#ffffff", "#333333",
+			24, undefined, 90);
+
 	}
 	else if (loadedSaveforPreview?.hasOwnProperty("nodata")) {
 		DrawTextFitKD(TextGet("KDNoData"), CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
@@ -4395,7 +4447,11 @@ function KDDrawLoadMenu() {
         KinkyDungeonState = "Menu";
         ElementRemove("saveInputField");
         return true;
-    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "",
+	undefined, undefined, undefined, undefined, undefined, undefined, {
+		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+		hotkeyPress: KinkyDungeonKeySkip[0],
+	});
 	// Play Game with current save data!
 	DrawButtonKDEx("KDLoadGame", () => {
 		if (LoadMenuCurrentSave != false) {

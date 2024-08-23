@@ -64,7 +64,7 @@ let KDMusicTickRate = 100;
 /** @type {HTMLAudioElement} */
 let KDCurrentMusicSound = null;
 let KDCurrentMusicSoundUpdate = null;
-let allowMusic = false;
+let allowMusic = navigator.userAgent.includes('Electron');
 
 function KDGetCurrentCheckpoint() {
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
@@ -156,14 +156,24 @@ function KDPlayMusic(Sound, Volume) {
 			KDNewSong = "";
 		}
 	}, false);
-	audio.play();
-	KDCurrentLoops = 0;
-	//KDCurrentFade = 1;
+	audio.play().then(() => {
+		KDCurrentLoops = 0;
+		//KDCurrentFade = 1;
 
-	KDLastSong = Sound;
-	KDCurrentSong = Sound;
-	KDSendMusicToast(TextGet(Sound));
-	KDNewSong = "";
+		KDLastSong = Sound;
+		KDCurrentSong = Sound;
+		KDSendMusicToast(TextGet(Sound));
+		KDNewSong = "";
+	}).catch((error) => {
+		if (error.name === 'NotAllowedError') {
+			// Music will try to play again after a user gesture (onclick event)
+			console.log('Autoplay is blocked by browser policy.');
+			allowMusic = false;
+		} else {
+			console.log('An error occurred while trying to play the audio:', error.message);
+			KDSendMusicToast(error.message); // This shouldn't happen, but now you'll get a bug report.
+		}
+	});
 }
 
 function KDEndMusic() {
