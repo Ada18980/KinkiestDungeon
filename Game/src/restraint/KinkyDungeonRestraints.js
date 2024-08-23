@@ -376,6 +376,7 @@ function KDRestraintBondageStatus(item) {
 				slow: 0,
 				blind: 0,
 				disarm: 0,
+				reduceaccuracy: 0,
 				toy: 0,
 				plug: 0,
 				belt: 0,
@@ -385,7 +386,7 @@ function KDRestraintBondageStatus(item) {
 			overridePriority: 0,
 		};
 		// Stock methodology
-		let powerMult = Math.max(1, 0.2 * Math.max(r.power));
+		let powerMult = Math.max(0.2, 0.2 * Math.max(r.power));
 		if (r.gag) {
 			data.status.silence = Math.ceil(powerMult * r.gag * 1.3);
 		}
@@ -398,9 +399,12 @@ function KDRestraintBondageStatus(item) {
 		if (r.hobble || r.blockfeet) {
 			data.status.slow = Math.ceil(powerMult * 4);
 		}
-		if (r.bindarms || r.bindhands) {
+		if (r.bindhands) {
 			data.status.disarm = Math.ceil(powerMult * Math.max(r.bindarms ? 0.3 : 0, r.bindhands || 0.1));
+		} else if (r.bindarms) {
+			data.status.reduceaccuracy = powerMult * 3;
 		}
+
 		if (r.chastity || r.chastitybra) {
 			data.status.belt = r.chastity ? 2 : 1;
 		}
@@ -420,6 +424,7 @@ function KDRestraintBondageStatus(item) {
 		slow: 0,
 		blind: 0,
 		disarm: 0,
+		reduceaccuracy: 0,
 		toy: 0,
 		plug: 0,
 		belt: 0,

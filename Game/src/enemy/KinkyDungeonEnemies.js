@@ -2242,6 +2242,19 @@ function KDDrawEnemyTooltip(enemy, offset) {
 		});
 	}
 
+	let accuracy = KDEnemyAccuracy(enemy, KDPlayer());
+	if (accuracy < 1) {
+		let st = TextGet("KinkyDungeonTooltipDealsAccuracy").replace(
+			"AMNT", "" + Math.round(100 * (accuracy))
+		);
+		TooltipList.push({
+			str: st,
+			fg: "#e64539",
+			bg: "#000000",
+			size: 20,
+		});
+	}
+
 	if (analyze) {
 		if (enemy.Enemy.disarm) {
 			let dt = KinkyDungeonDamageTypes[enemy.Enemy.dmgType];
@@ -3294,6 +3307,14 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				}
 				if (status.disarm) {
 					enemy.disarm = Math.max(enemy.disarm || 0, status.disarm);
+				}
+				if (status.reduceaccuracy) {
+					KinkyDungeonApplyBuffToEntity(enemy,
+						KDRestraintReduceAccuracy,
+						{
+							power: status.reduceaccuracy,
+						},
+					);
 				}
 			}
 
@@ -8674,9 +8695,9 @@ function KDAcceptsLeash(enemy, leash) {
  */
 function KDEnemyAccuracy(enemy, player) {
 	let accuracy = enemy.Enemy.accuracy ? enemy.Enemy.accuracy : 1.0;
-	if (enemy.distraction) AIData.accuracy = AIData.accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
-	if (AIData.bindLevel) AIData.accuracy = AIData.accuracy / (1 + 0.5 * AIData.bindLevel);
-	if (enemy.blind > 0) AIData.accuracy = AIData.playerDist > 1.5 ? 0 : AIData.accuracy * 0.5;
+	if (enemy.distraction) accuracy = accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
+	if (enemy.boundLevel) accuracy = accuracy / (1 + 0.5 * enemy.boundLevel);
+	if (enemy.blind > 0) accuracy = AIData.playerDist > 1.5 ? 0 : accuracy * 0.5;
 
 	if (player?.player) {
 		if (accuracy < 1 && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5) {
@@ -8700,6 +8721,9 @@ function KDEnemyAccuracy(enemy, player) {
 		}
 		if (player.vulnerable) accuracy *= KDVulnerableHitMult;
 	}
+
+	accuracy *= KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(enemy, "Accuracy"));
+	accuracy *= KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(enemy, "AccuracyPenalty"));
 
 	return Math.min(1, accuracy);
 }

@@ -1266,12 +1266,15 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (KinkyDungeonFlags.get("SuppressGuardCall")) return;
 			if (!KinkyDungeonFlags.get("GuardCallBlock")) {
-				// Wont call a guard in first 45 turns
-				KinkyDungeonSetFlag("GuardCallBlock", 400);
-				KinkyDungeonSetFlag("GuardCalled", e.time || 45);
+				KinkyDungeonSetFlag("GuardCallBlock", 300);
+				if (!KinkyDungeonFlags.get("GuardCalled")) {
+					KinkyDungeonSetFlag("GuardCalled", -1);
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDCallForHelpHint"), "#ffffff", 20);
+				}
 			}
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.05)) {
-				KinkyDungeonSetFlag("GuardCalled", 45);
+				KinkyDungeonSetFlag("GuardCalled", e.time || 45);
 				console.log("Attempting to call guard");
 				if (KDMapData.Entities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
 					console.log("Called guard");

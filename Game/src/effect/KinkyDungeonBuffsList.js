@@ -212,6 +212,8 @@ let KDRestraintDisarmLight = {id: "RestDisarmLight", aura: "#ff5555", type: "Dis
 	{type: "ApplyDisarm", trigger: "playerAttack"},
 ]};
 
+let KDRestraintReduceAccuracy = {id: "RestraintAccPen", type: "AccuracyPenalty", power: 0, duration: 2,};
+
 let KDBuffReference = {
 	"RestraintDisarmLight": [KDRestraintDisarmLight],
 	"Unsteady": [KDUnsteady, KDUnsteady2, KDUnsteady3],

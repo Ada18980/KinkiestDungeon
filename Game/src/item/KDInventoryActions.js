@@ -1161,6 +1161,14 @@ let KDInventoryAction = {
 					if (status.disarm) {
 						enemy.disarm = Math.max(enemy.disarm || 0, status.disarm);
 					}
+					if (status.reduceaccuracy) {
+						KinkyDungeonApplyBuffToEntity(enemy,
+							KDRestraintReduceAccuracy,
+							{
+								power: status.reduceaccuracy,
+							},
+						);
+					}
 
 					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockLight.ogg");
 

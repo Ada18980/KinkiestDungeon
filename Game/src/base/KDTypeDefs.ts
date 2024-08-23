@@ -3005,6 +3005,7 @@ type KDBondageStatus = {
 	slow: number,
 	blind: number,
 	disarm: number,
+	reduceaccuracy: number,
 	toy: number,
 	plug: number,
 	belt: number,

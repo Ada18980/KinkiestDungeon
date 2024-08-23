@@ -305,7 +305,7 @@ let KinkyDungeonSpellSpecials = {
 									KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
 								} else {
 									// if it's empty we attempt to apply it
-									let condition = KDCanEquipItemOnNPC(r, en.id);
+									let condition = KDCanEquipItemOnNPC(r, en.id, KDWillingBondage(en, entity));
 									if (condition) {
 										KinkyDungeonSendTextMessage(8,
 											TextGet("KDBondageCondition_" + condition),

@@ -7737,6 +7737,7 @@ KinkyDungeonTooltipArmor,"Physical Armor: AMOUNT"
 KinkyDungeonTooltipSpellResist,"Magic Armor: AMOUNT"
 KinkyDungeonTooltipEvasion,"Evasion: AMOUNT%"
 KinkyDungeonTooltipDealsDamage,"Deals DAMAGETYPE damage"
+KinkyDungeonTooltipDealsAccuracy,"AMNT% chance to hit you"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
 KDTooltipHP,"HP: "
@@ -24012,3 +24013,5 @@ KDWillOverride,Will Overwrite!
 
 KDPlayWithSlot,"Play Slot "
 KDPlayWithoutSlot,Play (NO SLOT!)
+
+KDCallForHelpHint,"Looks like you might be stuck. Try calling for help (bottom right of UI)"
