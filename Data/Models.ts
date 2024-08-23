@@ -678,9 +678,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
-	let DisplaceFilters: Record<string, {sprite: any, id: string, hash: string, amount: number, zIndex?: number}[]> = {};
+	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let DisplaceFiltersInUse = {};
-	let EraseFilters: Record<string, {sprite: any, id: string, hash: string, amount: number, zIndex?: number}[]> = {};
+	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let EraseFiltersInUse = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
@@ -781,6 +781,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								hash: id + m.Name + "," + l.Name,
 								zIndex: zzz,
 								id: id,
+								spriteName: l.DisplacementSprite,
 								sprite: KDDraw(
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
@@ -883,6 +884,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								amount: (l.EraseAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
 								id: id,
+								spriteName: l.EraseSprite,
 								zIndex: zzz,
 								sprite: KDDraw(
 									ContainerContainer.Container,
@@ -1044,7 +1046,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// Add erase filters BEFORE displacement
 				if (!l.NoErase && EraseFilters[origlayer]) {
 					for (let ef of EraseFilters[origlayer]) {
-						if (ef.zIndex != undefined && ef.zIndex <= zz) continue;
+						if (ef.spriteName == l.EraseSprite) continue;
+						if (ef.zIndex != undefined && ef.zIndex - (l.EraseZBonus || 0) <= zz + 0.01) continue;
 						let efh = containerID + "ers_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {
@@ -1065,7 +1068,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// Add displacement filters
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
-						if (ef.zIndex != undefined && ef.zIndex <= zz) continue;
+						if (ef.spriteName == l.DisplacementSprite) continue;
+						if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
 						let efh = containerID + "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {

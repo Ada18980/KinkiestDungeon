@@ -837,6 +837,11 @@ AddModel({
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
 		},
+		{ Name: "BlouseShoulderRight", Layer: "UpSleeveRight", Pri: 40,
+			HideWhenOverridden: true,
+			InheritColor: "SleeveRight",
+			Poses: ToMap([...SHOULDERPOSES]),
+		},
 	])
 });
 

@@ -1249,6 +1249,14 @@ let LayerGroups = {
 		"Option_BindChestLower",
 	]),
 
+	"MaidArmPoofRight": ToMap([
+		"TorsoUpper",
+		"Torso",
+		"SleeveRight",
+		"ArmRight",
+		"GloveRight",
+	]),
+
 	"RibbonThighs": ToMap([
 		"PantLeft",
 		"PantRight",
