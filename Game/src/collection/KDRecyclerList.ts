@@ -43,6 +43,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("TrapMittens", "Leather", ""),
 			KDAutoGenRestraintBlueprint("TrapBoots", "Leather", ""),
 			KDAutoGenRestraintBlueprint("TrapGag", "Leather", ""),
+			KDAutoGenRestraintBlueprint("TrapBlindfold", "Leather", ""),
 			KDAutoGenRestraintBlueprint("PanelGag", "Leather", ""),
 			KDAutoGenRestraintBlueprint("PanelPlugGag", "Leather", ""),
 			KDAutoGenRestraintBlueprint("PanelPlugGagHarness", "Leather", ""),
@@ -56,14 +57,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("KittyPetSuit", "Leather", ""),
 			KDAutoGenRestraintBlueprint("KittySuit", "Leather", ""),
 
-			KDAutoGenRestraintBlueprint("AsylumJacket", "Dress", "", 2,
-				undefined, {Rope: 3}),
-			KDAutoGenRestraintBlueprint("TransportJacket", "Dress", "", 3,
-				undefined, {Rope: 3}),
-			KDAutoGenRestraintBlueprint("AsylumLegbinder", "Dress", "", 3,
-				undefined, {Rope: 3}),
-
-
+			KDAutoGenRestraintBlueprint("LeatherHood", "Leather", ""),
+			KDAutoGenRestraintBlueprint("LeatherMask", "Leather", ""),
 		]
 	},
 	Leather2: {
@@ -80,6 +75,12 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("HighsecMuzzle", "Leather", "", 1.5),
 			KDAutoGenRestraintBlueprint("HighsecLegbinder", "Leather", "", 1.5),
 
+			KDAutoGenRestraintBlueprint("AsylumJacket", "Dress", "", 2,
+				undefined, {Rope: 3}),
+			KDAutoGenRestraintBlueprint("TransportJacket", "Dress", "", 3,
+				undefined, {Rope: 3}),
+			KDAutoGenRestraintBlueprint("AsylumLegbinder", "Dress", "", 3,
+				undefined, {Rope: 3}),
 
 			KDAutoGenRestraintBlueprint("LeatherArmCuffs", "Leather", ""),
 			KDAutoGenRestraintBlueprint("LeatherLegCuffs", "Leather", ""),
