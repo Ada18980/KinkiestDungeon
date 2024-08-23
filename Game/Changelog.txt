@@ -34,6 +34,10 @@ TODO remove hogtie when released
 - Saves will now save your outfit as well, and restore it during saves. You can turn off both saving and loading of outfits
 - Added multiple save slots and mod config by Enraa
 
+
+5.3-Patch1
+- Added toggle to only bind self from quick inv (instead of targeting)
+
 5.3-RC10
 - You can now use quick inventory or hotbar to attempt to truss up targets
   (or wear items by clicking yourself)

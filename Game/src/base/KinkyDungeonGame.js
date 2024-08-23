@@ -1578,7 +1578,10 @@ function KDIsImprisoned(enemy) {
  * @returns {boolean}
  */
 function KDCanBringAlly(e) {
-	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e) && !KDIsImprisoned(e);
+	return e.Enemy &&
+		(((e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e))
+		|| (e.leash && e.leash.entity == KDPlayer().id))
+	&& !KDIsImprisoned(e);
 }
 
 function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
