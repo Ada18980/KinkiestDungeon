@@ -10327,7 +10327,7 @@ let KDEventMapGeneric = {
 		// Ran after loading KDModSettings from Local Storage
 	},
 	"afterModConfig": {
-		// Ran after returning to menu from the mod configuration window. 
+		// Ran after returning to menu from the mod configuration window.
 	}
 };
 

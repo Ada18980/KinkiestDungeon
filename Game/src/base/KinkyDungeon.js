@@ -4596,7 +4596,7 @@ function KinkyDungeonLoadPreview(String) {
 				//KDOrigDistraction = KinkyDungeonStatDistraction*10;
 			} else {
 				if (saveData.picks != undefined) returndata.picks = saveData.picks;
-				if (saveData.keys != undefined) returndata.rkeys = saveData.rkeys;
+				if (saveData.rkeys != undefined) returndata.rkeys = saveData.rkeys;
 				if (saveData.bkeys != undefined) returndata.bkeys = saveData.bkeys;
 				if (saveData.mana != undefined) returndata.mana = saveData.mana;
 				if (saveData.manapool != undefined) returndata.manapool = saveData.manapool;
@@ -5739,7 +5739,7 @@ function KinkyDungeonLoadGame(String) {
 				if (saveData.stats.npp != undefined) KinkyDungeonNewGame = saveData.stats.npp;
 			} else {
 				if (saveData.picks != undefined) KinkyDungeonLockpicks = saveData.picks;
-				if (saveData.keys != undefined) KinkyDungeonRedKeys = saveData.keys;
+				if (saveData.keys != undefined) KinkyDungeonRedKeys = saveData.rkeys;
 				if (saveData.bkeys != undefined) KinkyDungeonBlueKeys = saveData.bkeys;
 				if (saveData.mana != undefined) KinkyDungeonStatMana = saveData.mana;
 				if (saveData.manapool != undefined) KinkyDungeonStatManaPool = saveData.manapool;
