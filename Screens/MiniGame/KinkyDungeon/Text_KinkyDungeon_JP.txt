@@ -37,6 +37,14 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 
 Show Background Art
 背景の絵を表示
+Show DP instead of %
+DPを数値で表示する
+Quick Inv only equips to self
+ｸｲｯｸｲﾝﾍﾞﾝﾄﾘからの拘束具使用は自縛のみ
+Override Outfit when Loading Save
+セーブデータのロード時に服装上書き
+Save Outfits within Save Files
+セーブ内に服装データを保存
 Classic Inventory Background
 インベントリの背景を昔の仕様に戻す
 Skip Intro
@@ -1465,8 +1473,8 @@ Change Outfit
 着替える
 Reset Outfit
 衣装をリセット
-Load from Code
-コードからロード
+Load Game
+ロード
 Confirm Reset?
 リセットしてもよろしいですか？
 (Your game has been saved)
@@ -1547,12 +1555,13 @@ Very Slow
 非常に遅い
 Immobile
 動けない
-SP: CURRENT/MAX
-SP：CURRENT/MAX
+
 Willpower: CURRENT/MAX
 WP：CURRENT/MAX
-MP: CURRENT/MAX
-MP：CURRENT/MAX
+
+DP: CURRENT/MAX (PERCENT% Desire)
+DP: CURRENT/MAX (欲情値 PERCENT%)
+
 Mana slowly recovers from a pool equal to POOLMANA. Drink potions to restore the pool.
 マナはマナプールからゆっくりと補充される。ポーションを飲むことでマナプールの回復ができる
 Your minimum distraction increases over time as you encounter distracting things.
@@ -1678,9 +1687,9 @@ Start New Game
 New Game+
 ニューゲーム+
 Continue Last Save
-ロード
+最後のセーブデータをロード
 Load From Code
-コードからロード
+ロード
 Save Outfit (overwrites!)
 衣装を上書き保存
 Save Keybindings
@@ -1697,8 +1706,6 @@ Detailed jailed NPCs (experimental)
 囚人の詳細な表示(テスト中)
 Game Options
 オプション
-Load from code
-コードからロード
 Back to main menu
 メインメニューに戻る
 Load Mod
@@ -2420,7 +2427,7 @@ You smash the rune in front of you, and icicles pierce through the floor!
 It feels cold to the touch.
 触ると冷たく感じる。
 Creates icicles around you for 5-8 turns. They deal 40 damage and freeze for 3 turns.
-5-8ターンの間、周囲につららを生成する。氷柱は40のダメージを与え、3 ターンの間凍結する。
+5-8ターンの間、周囲につららを生成する。つららが命中した敵に40のダメージを与え、3 ターンの間凍結させる。
 
 You steal the doll's identification card.
 ドールのIDカードを盗んだ。
@@ -2701,20 +2708,20 @@ Deals fire damage. Provides light.
 火属性。装備していると周囲が照らされる。
 Unarmed
 素手
-Fight with your hands and feet.
-手と足で戦え
+Fight with your hands and feet. 50% chance to stun target if the target is disarmed.
+戦いの基本。攻撃時、敵が武装解除状態の場合、50%の確率でスタン状態にする。
 Deals unarmed damage.
 素手属性。
 Sword
 剣
 The blade is strong, its edge sharp.
-刃は強く、刃は鋭く
+刃は強く、刃は鋭く。
 A fast and accurate weapon that deals slash damage.
 斬撃属性。精確で素早い。
 Flamberge
 フランベルジェ
 A blade forged in magic fire.
-魔法の炎で鍛えられた刃
+魔法の炎で鍛えられた刃。
 Deals 20 bonus slash damage on hit. Offhand: Produces light.
 命中時、20ポイントの斬撃性追加ダメージを与える。サブウェポン：武器が光る。
 Escort Drone
@@ -6566,14 +6573,14 @@ It clings, almost of its own accord, but seems vulnerable to both cutting and st
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 Charms (Head)
 リボン（頭）
-A band of faintly magic ribbon wrapped tight around your eyes.
-目の周りに巻き付く、微弱な魔力を帯びたリボン。
+A band of faintly magic ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
+目の周りに巻き付く、微弱な魔力を帯びたリボン。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 Charm Gag
 リボンギャグ
-A band of faintly magic ribbon wrapped tight around your mouth.
-口の周りに張り付く、微弱な魔力を帯びたリボン。
+A band of faintly magic ribbon wrapped tight over the mouth. Can be used on vulnerable targets from quick inventory or hotbar.
+口の周りに張り付く、微弱な魔力を帯びたリボン。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 Charm Wrapping (Toes)
@@ -6678,21 +6685,21 @@ The thick latex is resistant to even the most determined struggles.
 Blessed Wrappings (Head)
 祝福された包帯（頭）
 A band of magic embalming ribbon wrapped tight around your face.
-顔周りにきつく巻き付く、祝福が施された包帯。
+顔周りにきつく巻き付く、祝福が施された包帯。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 
 Blessed Wrappings (Eyes)
 祝福された包帯 (目)
-A band of magic embalming ribbon wrapped tight around your eyes.
+A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
 目の周りにきつく巻き付く、祝福が施された包帯。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 
 Blessed Wrappings (Gag)
 祝福された包帯 (口)
-A band of magic embalming ribbon wrapped tight around your mouth.
-口にきつく巻き付く、祝福が施された包帯。
+A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar.
+口にきつく巻き付く、祝福が施された包帯。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 自然に巻き付いてくるが、切るのも引っ張るのも有効。
 Blessed Wrappings (Arms)
@@ -6765,6 +6772,8 @@ Tape Wrapping (Legs)
 テープ巻き(脚)
 Sleek and shiny tape for the bondage enthusiast.
 滑らかで光沢のある、拘束愛好家のためのテープ。
+Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar.
+滑らかで光沢のある、拘束愛好家のためのテープ。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 A stretchy, waterproof tape that sticks only to itself. As such, it can be safely applied and removed from people without causing discomfort. Its stretchiness allows it to be rolled on extra tight, and it won't break if struggled against.
 伸縮性のある防水テープ。肌を傷めずに剥がすことができ、破れにくい。
 
@@ -6807,8 +6816,8 @@ It clings of its own accord to intruders and naughty catgirls.
 
 Autotape (Hands)
 オートテープ（手）
-Sticky tape made from a metallic material. Used to great effect in police situations.
-警察官が使用する、金属素材の粘着テープ。
+Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar.
+警察官が使用する、金属素材の粘着テープ。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 It's very sticky and seals your hands tightly, making any struggling ineffective.
 粘着性が高く、手をしっかり覆っているのでもがいても効果が薄い。
 Autotape (Head)
@@ -6856,8 +6865,8 @@ It's very sticky and tough but you could probably get a knife through it.
 
 Stuffing
 詰め物
-A stuffing of cloth.
-布の詰め物
+A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+布の詰め物。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 You could spit it out easily, provided nothing's covering it.
 他の猿轡で口を覆われていなければ、簡単に吐き出せる。
 
@@ -7077,8 +7086,8 @@ The hogtie link comes off.
 ホッグタイは解けた。
 Handcuffs
 手錠
-A pair of steel cuffs locked securely around your wrists.
-手首を拘束する金属製の枷。
+A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+手首を拘束する金属製の枷。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 The lock doesn't seem very complicated.
 ロックはそれほど複雑ではない。
 Steel Yoke
@@ -7488,8 +7497,8 @@ The vines twitch as they try to wrap around tighter.
 意志を持っているかのようにきつく縛ろうとうごめくつるの縄。
 High-Security Cuffs
 厳重な手枷
-A set of irish-8-style cuffs that are both restrictive and quick to apply.
-アイリッシュ8スタイルの手枷。素早く拘束できる。
+A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+アイリッシュ8スタイルの手枷。素早く拘束できる。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 It uses a standard lock rather than a simple one.
 普通の錠が使われている。
 Quik-Bind Cuffs
@@ -8812,8 +8821,8 @@ Lockable and fully adjustable to ensure snugness.
 ぴったりとフィットするように、細かい位置で調整可能。
 Iron Cuffs
 手枷
-Tough shackles with a rudimentary lock.
-簡単な錠前の付いた枷。
+Tough shackles with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+簡単な錠前の付いた枷。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 You could pick these with a hairpin.
 ロックピックで簡単に開けられる。
 Shackles
@@ -8833,8 +8842,8 @@ Another layer of restriction.
 
 Hinged Handcuffs
 ヒンジ付き手錠
-Hinged cuffs with a rudimentary lock.
-簡単な錠前の付いたヒンジの枷
+Hinged cuffs with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+簡単な錠前の付いたヒンジの枷。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 Difficult to unlock, let alone pick by yourself.
 一人で解錠するのは難しい。
 
@@ -8847,8 +8856,8 @@ The position is too awkward to free yourself, even with a key...
 
 Heavy Leg Irons
 重い脚枷
-A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock.
-簡単な錠前の付いたアイリッシュ8スタイルの脚枷。
+A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+簡単な錠前の付いたアイリッシュ8スタイルの脚枷。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 The position is awkward, but it's on your feet so you can remove them yourself if you have free hands.
 鍵を使っても抜け出すのが難しい……
 
@@ -10744,8 +10753,6 @@ Choose a helpless target
 無力なターゲットを選ぶ
 Lesser Flash
 レッサーフラッシュ
-Ring
-フラッシュリング
 Flash Bomb
 閃光爆弾
 Flashbang
@@ -10761,13 +10768,26 @@ A flash of light which renders anyone caught within blind for 7 turns
 You charge up a bright flash!
 閃光を放つ呪文を唱えた！！
 Select where to center the flash (SpellArea radius)
-場所を選択 (範囲 RADIUS)
-A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged.
-Duration ターンの間敵を気絶させる閃光と爆音を放つ。遠距離に放つことができ、音を探知した敵は寄ってくる。
+場所を選択 (範囲 SpellArea)
+
+Ring
+爆音
+A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged with a 3 turn delay.
+Duration ターンの間、敵を気絶させる爆音を放つ。音を探知した敵は寄ってくる。遠距離に発動する場合、3ターンの詠唱が必要。
 You point and a noise emanates from the location!
 閃光と爆音を指差した箇所から炸裂させた！
 Select where to center the noise (SpellArea radius)
-場所を選択 (範囲 RADIUS)
+場所を選択 (範囲 SpellArea)
+
+Holy Blaze
+ホーリーブレイズ
+Call down a 3x3 area of DamageDealt holy damage. Blinds enemies for 3 turns (and also yourself).
+3x3の範囲に DamageDealt 聖属性ダメージを与え、3ターンの間盲目状態を付与するエリアを生成する。
+You summon a divine aura!
+小さな聖域を召喚した！
+Select where to center the blast (SpellArea radius)
+場所を選択 (範囲 SpellArea)
+
 Greater Flash
 グレーターフラッシュ
 A massive flash of light which renders anyone caught within blind for 16 turns and stuns briefly.
@@ -10775,11 +10795,11 @@ A massive flash of light which renders anyone caught within blind for 16 turns a
 You charge up a bright flash!
 巨大な閃光を放つ呪文を唱えた！
 Select where to center the flash (SpellArea radius)
-場所を選択 (範囲 RADIUS)
+場所を選択 (範囲 SpellArea)
 Focused Flash
 フォーカスフラッシュ
 Select where to center the flash (SpellArea radius)
-場所を選択 (範囲 RADIUS)
+場所を選択 (範囲 SpellArea)
 A focused flash of light which renders anyone caught within blind for 30 turns and stuns for Duration turns.
 30ターンの間、圧縮された光で敵を盲目にし、 Duration ターンの間スタンさせる。
 You slowly charge up a powerful flash!
@@ -10791,7 +10811,7 @@ Smoke Bomb
 Sleep Gas
 睡眠ガス
 Select where to center the shroud (SpellArea radius)
-範囲を選択 (範囲 RADIUS)
+範囲を選択 (範囲 SpellArea)
 Creates a cloud for Duration turns that buffs evasion for all creatures. You are temporarily invisible for 8 turns after leaving.
 Duration ターンの間、隠密性と回避力を上昇させる霧を出す。隠密性の上昇は霧から出て8ターン目まで続く。
 You exhale a misty shroud
@@ -11979,7 +11999,7 @@ Catacombs
 Jungle
 密林
 Temple
-失われた神殿
+秘匿された神殿
 Tombs
 遺跡
 Library
@@ -12003,7 +12023,7 @@ Bellows
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。クリスタルの洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
-アイオーンの書の1ページ|「失われた神殿」という名称は、そこに住まう者たちから借りた仮名にすぎない。神殿の作成者は、8 人の女神ではなく、4 人の女神のみを崇拝していたようだ。 100年前の大洪水の時、大魔術師によって人類が不滅になる前に作られたと見られ、内部には多くの遺体が未だ残っている。
+アイオーンの書の1ページ|「秘匿された神殿」という名称は、そこに住まう者たちから借りた仮名にすぎない。神殿の作成者は、8 人の女神ではなく、4 人の女神のみを崇拝していたようだ。 100年前の大洪水の時、大魔術師によって人類が不滅になる前に作られたと見られ、内部には多くの遺体が未だ残っている。
 (A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
 アイオーンの書の1ページ|星は太古の昔から神秘の対象であった。かつて人は空を見上げ、すべての星々を神と讃えた。星が無数にあるように、砂糖の粒も人間をとても喜ばせた。宗教はそれを過ぎてしまったが。オーラリーは人々が女神ではなく星を崇拝していた時代の名残である。
 (A page from the Book of Aeons)|The 'Bellows' is the nickname given to the primitive facilities of the Old Civilization, buried deep beneath the ground. While much of it remains in disrepair, many of the Old Civilization's successors have attempted to keep it in good working order, as the technology is precious and impossible to replicate with modern methods. It seems that many of these successors have fallen prey to some delusions about its purpose, as much of the equipment preserved has little use aside from collecting prisoners.
@@ -14233,6 +14253,9 @@ My orders are to shut you down~
 Defenses online!
 ディフェンスモジュール起動。
 
+
+Error in citizen ID registration. Please submit to processing.
+ID登録エラー、処置開始。
 Does not compute.
 計算不能
 Some kind of miscalculation has occurred.
@@ -14345,6 +14368,113 @@ Moving to capture.
 捕獲開始
 Forming blockade.
 防衛網形成
+
+query([ID]); >ERROR; transport([UNKNOWN], [DOLL])
+query([ID]); >ERROR; ([UNKNOWN], [DOLL]) を輸送します。
+Does not compute;
+計算不能;
+Some kind of miscalculation has occurred;
+予測演算のエラーを確認;
+This was unforseen;
+予期せぬ自体に遭遇;
+Unit is retreating;
+後退開始;
+Activating self-preservation instincts;
+自己防衛システム起動;
+Commence tactical withdrawal;
+戦術的撤退開始;
+Maintenance needed;
+メンテナンスを推奨;
+Unit needs repair;
+修理の必要あり;
+Commence transfer of power protocol;
+電力供給プログラム;
+Insufficient bindings; Commence submission protocol;
+対象の拘束が不十分; 制圧プログラム起動;
+Commence routine inspection;
+定期検査開始;
+Inmate is out of containment; Transferring;
+規則違反を確認; 輸送開始;
+Theft detected; This is a warning;
+窃盗行為を確認; 警告;
+Confiscating item;
+許可されていない所持品の確認;
+Unknown subject detected; Presuming hostile;
+不明な生命体を検知; 敵対生物と認定;
+Inmate detected; Commence training protocol;
+受刑者を確認; トレーニングプロトコル開始
+Inmate detected; Commence routine inspection;
+受刑者を確認; 定期検査開始;
+Inmate detected; Commence submission training;
+受刑者を確認; 調教プログラム開始;
+Violence detected; Subduing assailant;
+暴力行為を検知; 脅威を拘束します;
+Damage detected; Initiating combat routine;
+損傷を検知; 戦闘システム起動;
+Unruly inmate detected; Performing corrective action;
+規則違反を検知; 懲罰プログラム起動;
+Magic detected; Subduing assailant;
+魔法を検知; 脅威を拘束します;
+Energy spike detected; Preparing shields;
+異常な力場を検知; シールド起動;
+Unlawful use of magic; Please submit to arrest;
+許可されていない魔法を検知; 逮捕します;
+Unlawful conduct; Please submit to arrest;
+許可されていない行為を検知:\; 逮捕します;
+Theft detected; Please submit to arrest;
+窃盗行為を検知; 逮捕します;
+Inmate has escaped; Commence capture protocol;
+受刑者の脱走を確認; 捕獲プログラム起動;
+Error, subject is attempting to escape;
+エラー、逃走の意思を確認;
+Target is violent; Disarming subject;
+脅威を確認; 武装解除を優先;
+Target is violent; Increase alert level;
+脅威を確認; 警報レベルを引き上げます;
+Dispensing restraints;
+拘束具射出;
+Target flees; Revising strategy;
+ターゲットの回避を確認; 戦闘プログラム変更;
+Target resists; Revising tactics;
+ターゲットの抵抗を確認; 戦略プログラム変更;
+Target skill below expected level; Revising strategy;
+予測を下回る行動を検知; 戦闘プログラム変更;
+Target skill below expected level; Revising tactics;
+予測を下回る行動を検知; 戦略プログラム変更;
+Subject captured; Returning to processing;
+捕獲完了; 帰還開始;
+Apply takedown protocol;
+テイクダウン・プロトコル開始;
+Aggressive target detected; Deploying countermeasures;
+ターゲットの抵抗を確認; 対抗措置の実践を開始;
+Contraband detected; Confiscating;
+密輸品の所持を確認; 没収します;
+increase_strictness(1);
+拘束強化(1);
+Red alert; Joining combat;
+レッドアラート; 参戦します;
+Battle stations;
+戦闘開始;
+Target identified;
+ターゲット確認;
+Offering support;
+支援開始;
+New target identified; Engaging;
+新たなターゲットを確認; エンゲージ;
+Combat detected; Engaging in corrective action;
+戦闘行為を確認; 介入を開始;
+Updating target registry; Proceed to attack;
+ターゲットを更新; 攻撃開始;
+Target updated;
+ターゲット更新;
+New target detected; Please submit() to detainment;
+新たなターゲットを確認; 捕獲します;
+defend([ALLY]);
+警護:([ALLY]);
+capture([CITIZEN]);
+捕獲:([CITIZEN]);
+defend([POINT]);
+警備:([POINT]);
 
 Looks like I'm up to no good... better stop me!
 良からぬ考えが浮かんできたな……止めるなら今のうちだぞ。
@@ -20615,22 +20745,7 @@ Rumor has it that one of the cyber-dolls escaped.|Their handlers are looking for
 噂によると、サイバードールの一体がこの先のフロアで逃げ出したみたいだね。|機械が彼女を捕まえようと探し回っているよ。|もっとも、キミみたいな女の子も捕まえようとするみたいだけどね。
 This is totally a normal floor.|No doubt about it.
 この先のフロアは普通だよ。|それは間違いない。
-This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
-このポータルを通ればノーマルルートに行けるよ。|チュートリアルを完了させてもここに着くよ。
-This is the entrance to the ancient tombs.|It's harder than the normal entrance.
-古代の遺跡への入り口だよ。|ノーマルルートよりも難しいみたいだね。
-This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
-混沌の神が顕現したみたいだね。|通るエリアがランダムになるよ。
-Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
-広大なジャングルの中に秘められた古代遺跡を探しに行こう！|中折れ帽を被って宝探しだ！
-You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
-古代の人形工場に続いているよ。|主にゲーム後半のエリアが出現するようになっているよ！
-You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
-古代の四大神を祀る神殿に迷い込んでしまった！|出口を見つけるのか、それともさらなる深みに沈んでいくのか、それは君次第だ。
-You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
-廃墟の中をさまよい続け、道に迷ってしまった！|出現するエリアが逆になるよ！
-This is a debug mode journey for testing the latest region.
-デバッグ用だよ。最後に追加されたエリアに行けるよ。
+
 These are the stairs to the tutorial hall.
 この先はチュートリアル用エリアだよ。
 Congratulations! You've completed the tutorial!|Now get in there and stay out of trouble~
@@ -20753,6 +20868,46 @@ Give her a Scroll of Purity
 (抵抗する)
 (Submit)
 (従う)
+
+(A SPEAKER approaches you in your cell)|Looks like you're not in the System.|I'm going to have to take you to sorting.
+(SPEAKER が近づいてきた)|あなたはシステムに登録されておりません。|登録のため、移送を開始いたします。
+(The SPEAKER grins as her systems glow)|I love my job sometimes~
+(SPEAKER はかすかに口角を上げ、目を光らせている)|この仕事を選んで良かったです。
+(The SPEAKER grins)|It means you'll get nicely packaged,|so that we can sort you through the System.
+(SPEAKER は薄ら笑みを浮かべている)|つまり、あなたを包装します。|そうすれば、システムによりあなたをソートすることができます。
+W-what does that entail?
+えっと、つまり？
+(The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
+(SPEAKER は酷薄な笑みを浮かべている)|つまり、あなたを包装して|そのあとどうするかを決める、ということです。
+Hmmmph? Mmmm! (Act worried and whimper)
+んぅぅ？ うぅぅ(不安な素振りを見せる)
+(The SPEAKER folds her arms)|Mistress Oriel's orders 
+(SPEAKER は腕を組み答える)|我らが主"オーリエル"の命令です。
+Not in the 'System'?
+それは誰の命令なの？
+(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
+(SPEAKER は機械的な笑みを浮かべている)|心配しないでください、|あなたはシステムにより選別され、最適な場所に送られます。
+Mmmph? (Act confused)
+むぅぅ？(混乱した素振りを見せる)
+(The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
+(SPEAKER は腕を組み答える)|全ての者を登録すること。|それがオーリエルの命令です。
+(The SPEAKER pauses for a moment, then speaks)|I'm am just following Mistress Oriel's orders.|I'm sure she will have time to speak with you if you want to ask her.
+(SPEAKER は少しの間考え込み、答える)|私はオーリエルの命令をこなすだけです。|もし会うことがあれば、あの方が答えてくれるでしょう。
+But why???
+なぜ？
+(The SPEAKER frowns)|You should be thankful.|Without Mistress Oriel, we'd all be dead!|Probably...
+(SPEAKER はやや不機嫌そうに答える)|あの方がいなければ我々は既に死んでいます。|敬意を持って呼ぶように。
+Who is Mistress Oriel?
+オーリエルって何者？
+(The SPEAKER pauses for a moment, then answers)|Well, only a few hundred years ago, I think?|This is a bit longer of a downtime than usual,|But all of us are waiting patiently~
+(SPEAKER は少しの間考え込み、答える)|数百年前からだったと記憶しています。|今は休止しておりますが、|我らは皆再開の時を待っています。
+When are these orders from?
+いつから命令を実行しているの？
+(You anger the SPEAKER. She gags you.)|Unlike you, we were trained not to complain about orders given to us.|So until you receive your training, why don't you be nice and quiet?
+(SPEAKER に猿轡をかませられた。彼女を怒らせてしまったようだ)|我々はあなたとは違って辛抱強いのです。|調教の時間まで大人しくしていてください。
+The facility is in ruins! This is pointless!
+もう工場は機能していないし、こんなこと無意味よ！
+
 (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
 (SPEAKER は腕を組み佇んでいる)|何見てるんだ？|ああ、冒険者か。|少し話があるんだが。|やってほしいことがあるんだ。
 (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
@@ -22358,6 +22513,8 @@ Lower Chest Straps
 Arm Straps
 腕のストラップ
 
+Bow‎ 
+リボン
 HairBow
 リボン
 HairBowFrilly
@@ -23100,8 +23257,8 @@ It's not very secure.
 簡単に抜け出せる。
 Chest Straps
 胸縄
-A quick tie for apprehending prisoners, looped through buckles on the hand restraints.
-他の拘束具と繋ぎ合わせ、拘束を強固にするための縄。
+A quick tie for apprehending prisoners.
+囚人を素早く縛るための縄。
 It's not very secure.
 簡単に抜け出せる。
 Rope Hogtie
@@ -23314,6 +23471,11 @@ Accessible
 触れられる
 Inaccessible
 触れられない
+
+Quick-Bind
+お手軽拘束
+Tape
+テープ
 
 Spellbound Rope
 呪文の縄
@@ -24057,6 +24219,10 @@ Spellblade: Infuse weapon AMNT% TYPE
 スペルブレード：武器攻撃が TYPE 属性になりダメージ AMNT% 上昇
 Infuse: AMNT TYPE on attack
 エンチャント： AMNT TYPE 追加ダメージ
+AMNT Mana Efficiency
+MP効率上昇　AMNT
+AMNT TYPE Mana Efficiency
+MP効率上昇　AMNT　TYPE 属性
 Efficient: AMNT% Mana Costs
 効率的：マナコスト AMNT% 軽減
 Empower: AMNT% regen from mana pool
@@ -24232,9 +24398,22 @@ Dark Voice: It is not your choice to make~
 Dark Voice: You may enjoy yourself, for now~
 闇からの声：存分に快楽を貪りなさい！
 Dark Voice: Yes, take in the pleasure...
-闇からの声：イ毛け！
+闇からの声：イけ！
 Dark Voice: Enjoy a gift, dear~
 闇からの声：ご褒美だよ、絶頂しなさい。
+As you let go of yourself, the Robe of Chastity loses all effects!
+自慰で絶頂すると、貞操の衣は効果を失う
+The magic in the Robe of Chastity fades... for now.
+貞操の衣の効果が消え去った……
+You have failed to keep the principles of the Paladins... for now.
+パラディンの貞節を守れなかった……
+You feel vibrations in your leotard as the magically conductive fabric channels your power.
+レオタードが震え、生地を通して魔力が全身に伝わってきた。
+Your leotard produces a tingling full-body sensation as it channels your magic!
+レオタードに魔力を流し込まれ、全身が敏感になった。
+A tingling sensation serves to remind you of your leotard's magic properties.
+ピリピリとした感覚にレオタードの特性を思い出す。
+
 Star: -20 Charm/Psychic Resist
 星屑の加護：物理/魅了耐性-20
 Star: +40 all other resists
@@ -24321,8 +24500,8 @@ Choose target to bind
 縛るターゲットを選択
 Target Acquired!
 ターゲット確認
-Designates the target for bondage and allows you to apply items from the inventory. Items used this way cannot be recovered, and can only be applied to enemies that are stunned, fully bound, or otherwise incapacitated.
-拘束対象を指定し、インベントリからアイテムを使用する。この方法で使用したアイテム再度取得できず、気絶している敵や完全に拘束されている敵など、行動不能になっている敵にのみ使用することができる。
+Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied
+拘束対象を指定し、インベントリからアイテムを使用する。拘束されることを望んでいるか、無力化されている対象にのみ使用可能。拘束具によって必要な無力化の度合いが異なる。
 The Shoppe
 お店
 Journey Selection
@@ -25968,7 +26147,7 @@ of Resistance
 of Power
 (力)
 Arcane
-秘術の
+秘術
 Entuned
 調律の
 Draining
@@ -26117,6 +26296,8 @@ The teleportation partially succeeds due to an obstruction, placing you near the
 障害物に阻まれ、指定位置の近くにテレポートした。
 The teleportation fizzles due to obstruction.
 障害物に阻まれ、テレポートは失敗した。
+Confirm and OVERWRITE SAVE
+上書き保存
 Confirm
 決定
 What is your name?
@@ -26597,7 +26778,7 @@ Designed to contain superhuman strength, struggling out of this would be a major
 Shield of (un)Clarity
 (不)明瞭のバリア
 Channel your clarity of mind into a powerful shield, filling your distraction bar completely and granting a temporary shield equal to 50% of the DP generated. 10% of the DP gained is gained as Desire, which prevents DP decaying below a certain point.
-DPをMAXにし、増えた分のDPの50%分のシールドを一時的に獲得する。上昇したDPの10%分の欲望値を獲得し、最低DPが増える。
+DPをMAXにし、増えた分のDPの50%分のシールドを一時的に獲得する。上昇したDPの10%分の欲情値を獲得し、最低DPが増える。
 You form a... distracting mental barrier, shielding yourself for AMNT damage!!!
 情欲のバリアを生成し、 AMNT ダメージ分のシールドを得た！
 You are too distracted to form a mental barrier...
@@ -26611,11 +26792,11 @@ You have formed a mental barrier...
 Desire Burst
 デザイアバースト
 Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
-欲望値を最大DPの30%まで減少させ、近くの敵に30+最大DPの25%分の魅了ダメージを与える強力な爆風を起こす。欲望値が50%以下の場合、不足分のダメージが減少する。||(欲望値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
+欲情値を最大DPの30%まで減少させ、近くの敵に30+最大DPの25%分の魅了ダメージを与える強力な爆風を起こす。欲情値が50%以下の場合、不足分のダメージが減少する。||(欲情値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
 You channel your distraction into a powerful explosion!
 自身の欲望を強力な爆発に変換した！
 You don't have enough of a desire to do that.
-欲望値が足りない。
+欲情値が足りない。
 You have the desire but not the mana!
 欲望は十分だが、マナが足りない。
 
@@ -28109,6 +28290,15 @@ The floor beneath you drains your mana, but you don't have enough to satisfy it.
 The ground beneath you glows with magical energy!
 床が魔法のエネルギーで輝きだした！
 
+Radiant Light
+光
+Banishment of the shadow.
+闇を遠ざける
+Living Shadow
+蠢く闇
+Engulfs the tile in darkness.
+周囲を包む闇
+
 Mysterious Plate
 奇妙なプレート
 What could it be?
@@ -28352,6 +28542,16 @@ Its soul crystals harden the mind and dampen changes in willpower, reducing all 
 ソウルクリスタルが着用者の意志を不変のものとする。気力の変化値を25%減少させる。
 You find a ceremonial leotard.
 式典のレオタードを手に入れた。
+
+The Robe of Chastity
+貞操の衣
+A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+神々から力を授かるためのレオタード。この上に服を着ない限り、着用者の内に秘めた力を引き出す特性を持つ。
+It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
+パラディンの貞節を守っている場合、40ターンの間、ターン毎に欲情値-1%、攻撃を受けたときに2(消費したDPの3%)の聖属性ダメージを相手に与えるオーラを得る。魔力の伝導する生地により、DPの獲得値が50%増加し、消費したマナの8%が欲情値に変換される。
+You retrieve an interesting article dubbed 'the Robe of Chastity.
+"貞操の衣"と名付けられた布を見つけた。
+
 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
@@ -29405,10 +29605,10 @@ Muzzle
 マズル
 Wrists
 腕
-Heavy Bondage
-重い拘束
-Extra Bondage
-追加拘束
+Bondage
+拘束
+Chest Harness
+胴のハーネス
 Encasement
 完全拘束
 Mittens
@@ -29646,9 +29846,8 @@ Ransom Value: GP
 Current Gold: GP
 所持金: GP
 
-
-[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
-[EXP: AMNT/LMT] ヒールトレーニングを積めば、ハイヒールを履いたときに転びにくくなる。
+[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
+[EXP: AMNT/LMT +NXT 次の階層] ヒールトレーニングを積めば、ハイヒールを履いたときに転びにくくなる。
 
 Phase Dance active. Your next move is instant.
 フェーズダンスが発動中。追加で移動できる。
@@ -29680,3 +29879,101 @@ Cost:
 コスト: 
 Zoom set to PCNT%
 ズーム: PCNT%
+
+You need free arms to tie others!
+まずは自分の拘束を解かなくては。
+You can use the quick inventory to bind yourself or others
+クイックインベントリから自身や他人を拘束することができる。
+Error. Please screenshot and report.
+！！！エラーです。Discordかitch.coにて報告してください！！！
+You can't wear that item, regrettably.
+残念なことに、これを自身に装着することはできない。
+
+Must be stunned 3+ turns or fully bound
+完全に拘束するには3ターン以上のスタンが必要。
+Depends on another item to be added first
+最初に追加されるアイテムによる
+
+The conjured RSTN vanishes as you remove it.
+召喚された RSTN は消え去った。
+
+No free slots to bind in
+空きスロットがない。
+
+Reaching Authority
+根幹への到達
+If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
+腕を使用できない場合でも、口を使用することによって拘束が可能になる。スキル「ぐるぐるまき！」の射程が2増加し、全てのコマンド系スペルの射程が1増加する。
+
+
+Save Slot 
+セーブ
+Load Game
+ロード
+Load Code
+コードをロード
+Load File
+ファイルをロード
+Save From Code
+コードとしてセーブ
+
+Delete?
+削除しますか？
+Import to Slot
+スロットにインポート
+Invalid Data
+無効なデータ
+No Data
+データなし
+
+
+This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
+このポータルを通ればノーマルルートに行けるよ。|チュートリアルを完了させてもここに着くよ。
+This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
+通常ルートとは違う道、古代の遺跡に続いているよ。|ノーマルルートよりも難しいみたいだね。
+This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
+混沌の神が顕現したみたいだね。|通るエリアがランダムになるよ。
+Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
+広大なジャングルの中に秘められた古代遺跡を探しに行こう！|カウボーイハットを被って宝探しだ！
+You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
+古代の人形工場に続いているよ。|主にゲーム後半のエリアが出現するようになっているよ！
+You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
+古代の四大神を祀る神殿に迷い込んでしまった！|出口を見つけるのか、それともさらなる深みに沈んでいくのか、それは君次第だ。
+You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
+廃墟の中をさまよい続け、道に迷ってしまった！|出現するエリアが通常ルートの逆になるよ！
+This is a debug mode journey for testing the latest region.
+デバッグ用だよ。最後に追加されたエリアに行けるよ。
+
+
+
+ (Hard)
+ (ハード)
+ (Extreme)
+ (ｴｸｽﾄﾘｰﾑ)
+
+Choose Save Slot:
+セーブスロット:
+
+Standard Route
+通常
+Alternate Route
+ハード
+Temple Route
+神殿
+Jungle Route
+ジャングル
+Factory Route
+工場
+Reverse Route
+逆さ道
+Chaos Route
+ランダム
+Map Seed
+Seed値
+Will Overwrite!
+既存のデータあり。上書きする？
+
+Play Slot 
+プレイ
+Play (NO SLOT!)
+セーブを選択してください
