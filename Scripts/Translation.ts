@@ -279,20 +279,19 @@ function TranslationLoad(): void {
 }
 
 function GetUserPreferredLanguage() {
-	var language;
-	try{language = Intl.DateTimeFormat().resolvedOptions().locale.split('-');}
-	catch{language = navigator.language.split('-');}
-	if (!language) {
+	var languages;
+	try{languages = Intl.DateTimeFormat().resolvedOptions().locale.split('-');}
+	catch{languages = navigator.language.split('-');}
+	if (!languages) {
 		return "";
 	}
 
-	var langCode = language[0];
-	var regionCode = language[1];
+	for (let i = 0; i < languages.length; i++) 
+	{
+		let lang = languages[i];
+		if (KDLanguages.includes(lang))
+			return lang;	
+	}
+	return "";
 
-    if (KDLanguages.includes(langCode))
-        return langCode;
-    else if (KDLanguages.includes(regionCode))
-        return regionCode;
-    else
-        return "";
 }
