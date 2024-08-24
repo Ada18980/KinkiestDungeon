@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3-RC10"
+KDVersionStr,"5.4.1-nightly"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -842,8 +842,8 @@ KinkyDungeonDifficulty2,"Kinky: No save codes, orbs give random spells, start wi
 KinkyDungeonLog,Journal
 
 KinkyDungeonDressPlayer,"Change Outfit"
-KinkyDungeonDressPlayerReset,"Reset Outfit"
-KinkyDungeonDressPlayerImport,"Load from Code"
+KinkyDungeonDressPlayerReset,"Reset to Default"
+KinkyDungeonDressPlayerImport,"Outfit Code"
 KinkyDungeonConfirm,Confirm Reset?
 
 KinkyDungeonSaveIntro0,"(Your game has been saved)"
@@ -24008,10 +24008,16 @@ KDJourneyExplorer,Jungle Route
 KDJourneyDoll,Factory Route
 KDJourneyLost,Reverse Route
 KDJourneyRandom,Chaos Route
-KDMapSeed,"Map Seed: ""
+KDMapSeed,"Map Seed: "
 KDWillOverride,Will Overwrite!
 
 KDPlayWithSlot,"Play Slot "
 KDPlayWithoutSlot,Play (NO SLOT!)
 
 KDCallForHelpHint,"Looks like you might be stuck. Try calling for help (bottom right of UI)"
+
+KDBackupPalette,Save to File
+KDLoadPalette,Load from File
+
+KDBackupOutfits,Store to File
+KDLoadOutfits,Load from File

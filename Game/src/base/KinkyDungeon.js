@@ -4549,6 +4549,12 @@ function KinkyDungeonDressModelPreview() {
 	return new Promise((res, rej) => {
 		KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 		KDPreviewModel.ID++;
+		if (loadedSaveforPreview.saveStat.appearance) {
+			KDPreviewModel.Appearance = JSON.parse(JSON.stringify(loadedSaveforPreview.saveStat.appearance));
+			if (KDCurrentModels.get(KDPreviewModel))
+				KDCurrentModels.get(KDPreviewModel).Poses = loadedSaveforPreview.saveStat.poses;
+			UpdateModels(KDPreviewModel);
+		}
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
 		//setTimeout(() => {
 		KDRefreshCharacter.set(KDPreviewModel, true);
@@ -6273,30 +6279,6 @@ function KDLoadSave(files) {
 	}
 }
 
-
-function KDLoadOutfit(files) {
-	for (let f of files) {
-		if (f && f.name) {
-			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith('.txt')) {
-				let str = "";
-				KDSaveName = f.name;
-				try {
-					const reader = new FileReader();
-					reader.addEventListener('load', (event) => {
-						str = event.target.result.toString();
-						ElementValue("saveInputField",
-							str
-						);
-					});
-					reader.readAsText(f);
-				} catch (err) {
-					console.log (err);
-				}
-				return;
-			}
-		}
-	}
-}
 
 function downloadFile(filename, text) {
 	const blob = new Blob([text], { type: 'text/plain' });

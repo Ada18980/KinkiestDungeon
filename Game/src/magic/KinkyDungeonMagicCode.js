@@ -326,6 +326,10 @@ let KinkyDungeonSpellSpecials = {
 											restraint: KinkyDungeonTargetingSpellItem.name,
 											restraintid: KinkyDungeonTargetingSpellItem.id,
 											lock: "",
+											variant: undefined,
+											events: KinkyDungeonTargetingSpellItem.events,
+											powerbonus: undefined,
+											inventoryVariant: KinkyDungeonTargetingSpellItem.inventoryVariant,
 											npc: en.id,
 											player: entity?.id,
 										});

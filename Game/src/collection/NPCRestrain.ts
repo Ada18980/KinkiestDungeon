@@ -5,10 +5,14 @@ let KDSelectedGenericBindItem = "";
 
 interface NPCRestraint extends Named {
 	name: string,
+	variant?: string,
+	events?: KinkyDungeonEvent[],
+	powerbonus?: number,
 	lock: string,
 	id: number,
 	faction?: string,
 	conjured?: boolean,
+	inventoryVariant?: string,
 }
 
 function KDNPCRestraintSlotOrder(): string[] {
@@ -184,7 +188,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
-			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250, currentItem, slot, (currentItem, restraint, slt, item, count) => {
+			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250,
+			currentItem, slot, (currentItem, restraint, slt, item, count, itemtype) => {
 				if (currentItem) {
 					// Remove current
 					if (restraints[slot.id]?.name == currentItem.name) {
@@ -207,7 +212,11 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						id: KinkyDungeonGetItemID(),
 						restraint: restraint.name,
 						restraintid: -1,
-						lock: "White",
+						lock: "",
+						variant: itemtype.variant,
+						events: itemtype.events,
+						powerbonus: itemtype.powerbonus,
+						inventoryVariant: itemtype.inventoryVariant,
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
@@ -249,7 +258,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						id: inv.item.id,
 						restraint: inv.item.name,
 						restraintid: inv.item.id,
-						lock: "White",
+						lock: "",
 						npc: npcID,
 						faction: KDDefaultNPCBindPalette || inv.item.faction,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
@@ -418,12 +427,21 @@ function KDGetRestraintsForID(id: number): (item | NPCRestraint)[] {
 	return [];
 }
 
-function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints?: Record<string, NPCRestraint>, allowSameID?: number): NPCBindingSubgroup[] {
+function KDNPCRestraintValidLayers(restraint: restraint,
+		sgroup: NPCBindingSubgroup,
+		row: NPCBindingGroup,
+		restraints?: Record<string, NPCRestraint>,
+		allowSameID?: number,
+		power?: number): NPCBindingSubgroup[] {
 	let group = restraint.Group;
 	let tags = restraint.shrine;
 	let ret = [...row.layers, row.encaseGroup].filter((sg) => {
 		return sg.id == sgroup.id ||
-			(	(!restraints || !restraints[sg.id] || (allowSameID && restraints[sg.id].id == allowSameID))
+			(	(!restraints // no restraints array given => general case
+				|| !restraints[sg.id] // Slot is empty
+				|| (allowSameID && restraints[sg.id].id == allowSameID) // allows same ID as current item
+				|| (power != undefined && power > KDGetNPCRestraintPower(restraints[sg.id])) // power given, check if power is higher
+			)
 				&& sg.allowedGroups.includes(group)
 				&& tags.some((tag) => {
 					return sg.allowedTags.includes(tag);
@@ -449,7 +467,8 @@ function KDRowItemIsValid(restraint: restraint,
 		sgroup: NPCBindingSubgroup,
 		row: NPCBindingGroup,
 		restraints: Record<string, NPCRestraint>,
-		allowEmpty: boolean = false): boolean {
+		treatAsEmpty: boolean = false,
+		power?: number): boolean {
 	let group = restraint.Group;
 
 	if (
@@ -459,12 +478,12 @@ function KDRowItemIsValid(restraint: restraint,
 		if (tags.some((tag) => {
 			return sgroup.allowedTags.includes(tag);
 		})) {
-			if (allowEmpty) return true;
+			if (treatAsEmpty) return true;
 			let size = KDNPCRestraintSize(restraint, sgroup, row);
 			if (size == 1 ||
 				(
 					size <=
-						KDNPCRestraintValidLayers(restraint, sgroup, row, restraints).length
+						KDNPCRestraintValidLayers(restraint, sgroup, row, restraints, undefined, power).length
 				)
 			) {
 				return true;
@@ -526,10 +545,15 @@ function KDNPCRefreshBondage(id: number, player: number, force?: boolean) {
 				KDInputSetNPCRestraint({
 					slot: inv[0],
 					id: inv[1].id,
+
 					faction: inv[1].faction,
 					restraint: inv[1].name,
 					restraintid: -1,
 					lock: inv[1].lock,
+					variant: inv[1].variant,
+					events: inv[1].events,
+					powerbonus: inv[1].powerbonus,
+
 					npc: id,
 					player: player,
 					force: true,
@@ -643,12 +667,26 @@ function KDInputSetNPCRestraint(data): boolean {
 			let slotsToFill = KDNPCRestraintValidLayers(restraint, slot, row, rests, id);
 
 			if (slotsToFill.length >= size) {
-				let rrr = {
+				let rrr: NPCRestraint = {
 					lock: data.lock,
 					name: data.restraint,
 					id: id,
 					faction: data.faction,
+
+					variant: data.variant,
+					powerbonus: data.inventoryVariant ? KinkyDungeonRestraintVariants[data.inventoryVariant]?.power : data.powerbonus,
+					inventoryVariant: data.inventoryVariant,
 				};
+
+				if (data.inventoryVariant) {
+					rrr.events = KDGetEventsForRestraint(data.restraint);
+					if (rrr.events && KinkyDungeonRestraintVariants[data.inventoryVariant]?.events)
+						Object.assign(rrr.events,
+							JSON.parse(JSON.stringify(KinkyDungeonRestraintVariants[data.inventoryVariant]?.events)));
+				} else if (data.events) {
+					rrr.events = JSON.parse(JSON.stringify(data.events));
+				}
+
 				for (let i = 0; i < size; i++) {
 					item = KDSetNPCRestraint(data.npc, slotsToFill[i].id, rrr);
 				}
@@ -660,6 +698,7 @@ function KDInputSetNPCRestraint(data): boolean {
 						name: item.name,
 						id: item.id,
 						faction: item.faction,
+						inventoryVariant: item.inventoryVariant,
 					}, -1);
 				KDNPCRestraintTieUp(data.npc, rrr, 1);
 			} else return;
@@ -1003,7 +1042,7 @@ let KDGenericBindSpacing = 75;
 
 function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, y: number,
 		currentItem: NPCRestraint, slot: NPCBindingSubgroup,
-		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup, item: item, count: number) => void) {
+		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup, item: item, count: number, itemtype: RestraintGenericTypeSlot) => void) {
 	let XX = 0;
 	let secondXX = KDGenericBindSpacing * (KDGenericMatsPerRow + 0.5);
 	let YY = 0;
@@ -1146,7 +1185,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 						KDSelectedGenericBindItem = item.restraint;
 					else if (quantity >= item.count) {
 						callback(currentItem, KDRestraint({name: item.restraint}), KDNPCBindingSelectedSlot,
-						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count);
+						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count, item);
 					}
 					return true;
 				}, true,

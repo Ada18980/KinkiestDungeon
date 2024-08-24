@@ -30,16 +30,6 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		if (KDAutoBindRestraints) {
 			let restraints = KDAutoBindRestraints;
 			if (restraints) {
-				/*for (let inv of Object.entries(restraints)) {
-					KDInputSetNPCRestraint({
-						slot: inv[0],
-						id: -1,
-						restraint: "",
-						restraintid: -1,
-						lock: "",
-						npc: value.id
-					});
-				}*/
 				// Readd
 				for (let i = 0; i < 2; i++) // To bruteforce conditions
 				for (let inv of Object.entries(restraints)) {
@@ -64,6 +54,11 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 										restraint: inv[1].name,
 										restraintid: inv[1].id,
 										lock: inv[1].lock,
+										variant: inv[1].variant,
+										events: inv[1].events,
+										powerbonus: inv[1].powerbonus,
+										inventoryVariant: inv[1].inventoryVariant,
+
 										npc: value.id,
 										player: KDPlayer().id,
 									})) {
@@ -174,6 +169,11 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 											restraint: inv[1].name,
 											restraintid: inv[1].id,
 											lock: inv[1].lock,
+											variant: inv[1].variant,
+											events: inv[1].events,
+											powerbonus: inv[1].powerbonus,
+											inventoryVariant: inv[1].inventoryVariant,
+
 											npc: value.id,
 											player: KDPlayer().id,
 										})) {

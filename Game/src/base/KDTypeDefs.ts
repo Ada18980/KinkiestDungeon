@@ -2436,9 +2436,9 @@ interface KDInventoryActionDef {
 interface KinkyDungeonSave {
 	/** Metadata */
 	saveStat: {
-		appearance: string,
+		appearance: any[],
 		default: string,
-		poses: string,
+		poses: Record<string, boolean>,
 
 
 		outfit: string,

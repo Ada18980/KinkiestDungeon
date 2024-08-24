@@ -75,13 +75,13 @@ function KDDrawMods() {
 	}
 }
 
-function getFileInput(callback?) {
+function getFileInput(callback?, ...callbackArgs) {
 	let input = document.createElement('input');
 	input.type = 'file';
 	input.multiple = true;
 	input.onchange = _this => {
 		let files = Array.from(input.files);
-		if (callback) {callback(files);}
+		if (callback) {callback(files,...callbackArgs);}
 		else KDLoadMod(files);
 	};
 	input.click();
@@ -262,10 +262,10 @@ function KDDrawModConfigs() {
     YYd = 80;
     let CombarXX = 550;
     let modrows = 8; // Number of mods or config options
-    // Draw text as a title for mod configuration 
+    // Draw text as a title for mod configuration
     DrawTextFitKD(`Mod Configuration - ${TextGet("KDModButton" + (KDModToggleTab))}`, 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
     let loadedmods = Object.keys(KDModConfigs);
-    loadedmods = loadedmods.splice((KDModListPage) * modrows, modrows); // Select only the page of mods for which we are on 
+    loadedmods = loadedmods.splice((KDModListPage) * modrows, modrows); // Select only the page of mods for which we are on
     loadedmods.forEach((loadedmod) => {
         DrawButtonKDEx(TextGet("KDModButton" + (loadedmod)), () => {
             console.log("Pressed button for " + loadedmod);
@@ -286,7 +286,7 @@ function KDDrawModConfigs() {
             DrawButtonKDEx("KDModConfigListDown", (b) => {
                 KDModListPage += 1;
                 return true;
-            }, true, CombarXX + 105, YYstart + ((YYd) * modrows) + 50, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png"); 
+            }, true, CombarXX + 105, YYstart + ((YYd) * modrows) + 50, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
         }
     }
     YY = YYstart + 50;
@@ -297,7 +297,7 @@ function KDDrawModConfigs() {
 		let modsecondrowoffset = 0;
         let modtogglecount = 0;
         configtabset.forEach((modbutton) => {
-            // variable is a toggle of some sort that is expecting a true/false value. 
+            // variable is a toggle of some sort that is expecting a true/false value.
             if (modbutton.type == "boolean") {
                 if (KDModSettings[KDModToggleTab] == undefined) { KDModSettings[KDModToggleTab] = {}};
                 if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { KDModSettings[KDModToggleTab][modbutton.refvar] = (modbutton.default != undefined) ? modbutton.default : false};
@@ -308,16 +308,16 @@ function KDDrawModConfigs() {
                 }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, TextGet(modbutton.name), KDModSettings[KDModToggleTab][modbutton.refvar], false, blocking ? "#888888" : "#ffffff");
                 YY += YYd;
             }
-            // variable is a range that cycles by stepcount between rangelow and rangehigh. 
+            // variable is a range that cycles by stepcount between rangelow and rangehigh.
             else if (modbutton.type == "range") {
                 if (KDModSettings[KDModToggleTab] == undefined) { KDModSettings[KDModToggleTab] = {}};
                 if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { KDModSettings[KDModToggleTab][modbutton.refvar] = (modbutton.default != undefined) ? modbutton.default : ((modbutton.rangehigh + modbutton.rangelow) / 2)};
                 var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
-                // Determine the significant digits from the stepcount - this will be used in a .toFixed operation to ensure we get valid results. 
+                // Determine the significant digits from the stepcount - this will be used in a .toFixed operation to ensure we get valid results.
                 let decimalPlacesInBase = (modbutton.stepcount.toString()).includes('.') ? (modbutton.stepcount.toString()).split('.')[1].length : 0;
                 // Left to decrement
                 DrawButtonKDEx(`ModRangeButtonL${modbutton.name}`, (bdata) => {
-                    if (KDModSettings[KDModToggleTab][modbutton.refvar] > modbutton.rangelow) { 
+                    if (KDModSettings[KDModToggleTab][modbutton.refvar] > modbutton.rangelow) {
                         KDModSettings[KDModToggleTab][modbutton.refvar] = parseFloat((KDModSettings[KDModToggleTab][modbutton.refvar] - modbutton.stepcount).toFixed(decimalPlacesInBase))
                     }
                     return true;
@@ -326,14 +326,14 @@ function KDDrawModConfigs() {
                 DrawTextFitKD(`${modbutton.name}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
                 // Right to increment
                 DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
-                    if (KDModSettings[KDModToggleTab][modbutton.refvar] < modbutton.rangehigh) { 
+                    if (KDModSettings[KDModToggleTab][modbutton.refvar] < modbutton.rangehigh) {
                         KDModSettings[KDModToggleTab][modbutton.refvar] = parseFloat((KDModSettings[KDModToggleTab][modbutton.refvar] + modbutton.stepcount).toFixed(decimalPlacesInBase))
                     }
                     return true;
                 }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : "#ffffff");
                 YY += YYd;
             }
-            // variable has custom code that wants to run when clicking a button. 
+            // variable has custom code that wants to run when clicking a button.
             else if (modbutton.type == "custom") {
                 if (KDModSettings[KDModToggleTab] == undefined) { KDModSettings[KDModToggleTab] = {}};
                 if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { KDModSettings[KDModToggleTab][modbutton.refvar] = (modbutton.default != undefined) ? modbutton.default : false};
@@ -341,13 +341,13 @@ function KDDrawModConfigs() {
                 DrawButtonKDEx(modbutton.name, modbutton.click(), blocking ? false : true, CombarXX + modtoggleoffset, YY, 350, 64, modbutton.name, blocking ? "#888888" : "#ffffff", "");
                 YY += YYd;
             }
-            // variable is a spacer - Only print text here. 
+            // variable is a spacer - Only print text here.
             else if (modbutton.type == "text") {
                 var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
                 DrawTextFitKD(`${modbutton.name}`, CombarXX + modtoggleoffset + 64 + 190, YY + 32, 480, blocking ? "#888888" : "#ffffff", undefined, 30);
                 YY += YYd;
             }
-			// variable is a string value - Put an input box here. 
+			// variable is a string value - Put an input box here.
 			else if (modbutton.type == "string") {
 				let elem = (KDTextField(modbutton.refvar, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 480, 64, undefined, KDModSettings[KDModToggleTab][modbutton.refvar], "100")).Element;
 				elem.addEventListener('input', function() {
@@ -356,7 +356,7 @@ function KDDrawModConfigs() {
 				})
 				YY += YYd;
 			}
-			// variable is a list of options - Similar to range, but we are iterating over an options property. 
+			// variable is a list of options - Similar to range, but we are iterating over an options property.
 			else if (modbutton.type == "list") {
                 if (KDModSettings[KDModToggleTab] == undefined) { KDModSettings[KDModToggleTab] = {}};
                 if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { modbutton.default };
@@ -394,7 +394,7 @@ function KDDrawModConfigs() {
                 DrawButtonKDEx("KDModToggleListDown", (b) => {
                     KDModPage += 1;
                     return true;
-                }, true, CombarXX + 105 + modtoggleoffset * 2, YYstart + ((YYd) * modrows) + 50, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png"); 
+                }, true, CombarXX + 105 + modtoggleoffset * 2, YYstart + ((YYd) * modrows) + 50, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
             }
         }
     }
@@ -407,7 +407,7 @@ function KDDrawModConfigs() {
         catch (err) {
             console.error(err);
         }
-        KinkyDungeonSendEvent("afterModConfig", {}); // Mods can register events with this handle in generic events, to do stuff after leaving the mod config window. 
+        KinkyDungeonSendEvent("afterModConfig", {}); // Mods can register events with this handle in generic events, to do stuff after leaving the mod config window.
         return true;
     }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
 }
