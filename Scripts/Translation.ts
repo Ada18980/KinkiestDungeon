@@ -265,7 +265,6 @@ function TranslationNextLanguage(): void {
  */
 function TranslationLoad(): void {
 	let L;
-	debugger;
 	if (localStorage.getItem("LanguageChange") == "0" || localStorage.getItem("LanguageChange") == null)
 	{
 		L = GetUserPreferredLanguage();
