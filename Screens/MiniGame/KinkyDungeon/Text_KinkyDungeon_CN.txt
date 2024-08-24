@@ -15489,9 +15489,9 @@ The straps on your gag prevent you from loosening the blindfold!
 The straps on your gag keep your blindfold securely in place!
 口塞上的带子可将眼罩牢牢固定住！
 Revert
-恢复
+重置
 Confirm Revert?
-确认恢复？
+确认重置？
 Save
 保存
 Save Changes?
@@ -15503,7 +15503,7 @@ Back to Wardrobe
 Confirm Strip?
 确认要脱衣服？
 Strip!
-脱光
+‎ 脱光
 Export Outfit
 导出衣服
 Export AlwaysDress
@@ -20548,3 +20548,5 @@ Save Game to File
 保存游戏到文件
 Super Strength
 超级力量
+AMNT% chance to hit you
+AMNT% 的概率击中你
