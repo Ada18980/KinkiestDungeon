@@ -77,7 +77,7 @@ Draw Armor
 Enable Music
 启用音乐
 Async Rendering (beta)
-异步渲染 (测试版)
+异步渲染 ( 测试版 )
 Bloom & Glow
 曝光 & 发光
 Transparent UI
@@ -301,7 +301,7 @@ Faster Floater Fade
 No Damage Floaters
 无伤漂浮物
 Dynamic Armor (must hide armor)
-动态盔甲 (必须隐藏盔甲)
+动态盔甲 ( 必须隐藏盔甲 )
 Helpless!
 无助！
 Evaded!
@@ -669,7 +669,7 @@ Cyber Doll
 Start in full Cyber restraints.
 开局时穿戴全套赛博束缚。
 Fuuka's Pet
-Fuuka的宠物
+Fuuka宠物
 Start with Fuuka's collar and a few restraints.
 开局时穿戴Fuuka的项圈和一些别的束缚。
 Fuuka Fan Club
@@ -966,10 +966,6 @@ Not a Pet
 我不是宠物！
 Petsuits occur less often.
 宠物服出现的概率较低。
-Unmasked
-无面罩
-Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
-头套和全覆盖面罩将不会出现，但眼罩更强大。
 Blackout
 屏蔽护目
 Blindfolds are stronger. While blindfolded you can only see enemies next to you.
@@ -1071,15 +1067,15 @@ Peasant
 You possess the agricultural mastery of the Peasant class.
 你掌握了农民阶级的农业知识。
 Panic! (Chests)
-惊恐！ ( 箱子 ) 
+惊恐 ( 箱子 ) 
 When you open a trapped chest, you are stunned for 2 turns.
 当你开启陷阱箱时，你会晕眩2回合。
 Panic! (Traps)
-惊恐！ ( 陷阱 ) 
+惊恐 ( 陷阱 ) 
 When you step on a trap, you are stunned for 2 turns.
 当你踩到陷阱时，你会晕眩2回合。
 Panic sets in! (Stunned 2 turns)
-陷入恐慌！ ( 眩晕2回合 ) 
+陷入恐慌！( 眩晕2回合 ) 
 Butterfingers
 黄油手指
 Having arms bound prevents you from using your hands to struggle or unlock yourself.
@@ -1594,7 +1590,7 @@ Keybindings
 Show free characters on map
 在地图上显示自由的角色
 Detailed jailed NPCs (experimental)
-被监禁的 NPC 细节 (实验性)
+被监禁的 NPC 细节 ( 实验性 )
 Show Struggle Bars
 显示挣扎条
 Allow Suspicious Mods
@@ -1622,9 +1618,9 @@ Cancel
 Filter
 筛选
 DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
-【警告】加载模组具有危险性，因为其可在你的计算机上肆意执行任何代码。
+【警告】加载模组具有危险性，因为模组可在你的计算机上执行任何代码，
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
-就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的模组。
+比如连接到未知服务器等，请只加载来源可信赖的模组。
 Up
 向上
 Down
@@ -5538,9 +5534,9 @@ An armbinder enclosing your hands and arms completely, making your hands useless
 Made of a flexible, yet durable material, it's going to be really tough to escape.
 它由灵活而耐用的材料制成，很难逃脱。
 High-Security Boxbinder
-高安全性盒束包扎带
+高安全性盒式束手套
 A boxbinder enclosing your hands and arms completely, making your hands useless.
-盒束包扎带将你的手和手臂完全包住，使你的手变得毫无用处。
+盒式束手套将你的手和手臂完全包住，使你的手变得毫无用处。
 High-Security Straitjacket
 高安全性拘束衣
 A straitjacket enclosing your hands and arms completely, making your hands useless.
@@ -6204,9 +6200,9 @@ A tight leather armbinder enclosing your hands and arms completely.
 It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
 它非常舒适，并由背面的可锁扣固定。自己开锁是不可能的。
 Leather Boxbinder
-皮革束包扎带
+皮革盒式束手套
 A secure but comfortable binder meant for long-term wear.
-一种安全而舒适的盒束包扎带，适合长期佩戴。
+一种安全而舒适的盒式束手套，适合长期佩戴。
 Leather Armbinder Harness
 皮革束手套束衣
 Leather belts securing your armbinder tightly.
@@ -6588,9 +6584,9 @@ This straitjacket has extra straps and buckles to make sure you won't be struggl
 Latex Armbinder
 乳胶束手套
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
-一种紧密的臂夹，将你的手臂紧紧地固定在背后，完全封闭。
+一种紧密的束手套，将你的手臂紧紧地固定在背后，完全封闭。
 Latex Boxbinder
-乳胶盒束包扎带
+乳胶盒式束手套
 Latex Legbinder
 乳胶束腿套
 A tight legbinder that keeps your legs together!
@@ -6768,9 +6764,9 @@ Shadow Armbinder
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
 由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Shadow Boxbinder
-暗影盒束包扎带
+暗影盒式束手套
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-由超凡脱俗的材料制成的盒束包扎带。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+由超凡脱俗的材料制成的盒式束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Shadow Legbinder
 暗影束腿套
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
@@ -15973,9 +15969,9 @@ Mundane
 Armbinders
 束手套
 Legbinders
-束手套
+束腿套
 Boxbinders
-盒束包扎带
+盒式束手套
 Devices
 装置
 Toys
@@ -18783,13 +18779,13 @@ Less Armbinders
 Armbinders are less favored over other heavy bondage.
 与其他重型束缚相比，束手套更不受欢迎。
 More Boxbinders
-更多盒束包扎带
+更多盒式束手套
 Boxbinders are favored over other heavy bondage.
-与其他重型束缚相比，盒束包扎带更不受欢迎。
+与其他重型束缚相比，盒式束手套更不受欢迎。
 Less Boxbinders
-减少盒束包扎带
+减少盒式束手套
 Boxbinders are less favored over other heavy bondage.
-与其他重型束缚相比，盒束包扎带似乎不太受青睐。
+与其他重型束缚相比，盒式束手套似乎不太受青睐。
 More Straitjackets
 更多拘束衣
 Straitjackets are favored over other heavy bondage.
@@ -19114,10 +19110,6 @@ No Blindfolds
 不愿蒙眼
 In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
 在大多数情况下，你不会被蒙上眼睛，但布眼罩除外，因为布眼罩很容易逃脱。
-No Kigurumi Masks
-没有KIG面具
-Removes face-mimicking masks from the game.
-取消游戏中的仿脸面具。
 Safeword Please
 请说安全词
 Allies don't help you unless you ask first.
@@ -20550,3 +20542,21 @@ Super Strength
 超级力量
 AMNT% chance to hit you
 AMNT% 的概率击中你
+No Hoods
+无头套
+Removes hoods from the game.
+移除游戏中所有头套
+No Sense Deprivation
+无感觉剥夺
+Removes sensory deprivation hood/mask from the game.
+移除游戏中所有感觉剥夺头套和面罩
+No Kigurumi Masks
+无KI面罩
+Removes face-mimicking masks from the game.
+移除游戏中所有KIG面罩
+Unmasked
+无面罩
+Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
+头套和全覆盖面罩将不会出现，但眼罩将得到增强
+Preferences 2
+偏好 2
