@@ -11,7 +11,7 @@ AddModel({
 	Folder: "Elf",
 	Parent: "Elf",
 	TopLevel: true,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "Panties", Pri: -30,
 			Invariant: true,
@@ -24,7 +24,7 @@ AddModel({
 	Folder: "Elf",
 	Parent: "Elf",
 	TopLevel: true,
-	Categories: ["Underwear", "Tops"],
+	Categories: ["Underwear", "Panties", "Tops"],
 	Layers: ToLayerMap([
 		{ Name: "Chest", Layer: "ShirtChest", Pri: 30,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
@@ -46,7 +46,7 @@ AddModel({
 	Folder: "Elf",
 	Parent: "ElfTop",
 	TopLevel: false,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "Chest", Layer: "BraChest", Pri: 30,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],

@@ -201,7 +201,7 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, allian
 					overrideFloor = true;
 					weightMulti *= 1.25;
 				}
-			} else {
+			} else if (noOverride.includes(t)) {
 				// We DO override if the enemy has outOfBoxWeightMult, otherwise we apply a penalty.
 				if (enemy.outOfBoxWeightMult) {
 					weightMulti *= 1.25;

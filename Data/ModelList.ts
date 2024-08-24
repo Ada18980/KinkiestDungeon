@@ -104,7 +104,7 @@ AddModel({
 AddModel({
 	Name: "CatsuitLowerLeotard",
 	TopLevel: true,
-	Categories: ["Suits", "Underwear"],
+	Categories: ["Suits", "Underwear", "Panties"],
 	Folder: "Catsuit",
 	Parent: "Catsuit",
 	Layers: ToLayerMap([
@@ -390,7 +390,7 @@ AddModel({
 AddModel({
 	Name: "TransparentCatsuitLowerLeotard",
 	TopLevel: true,
-	Categories: ["Suits", "Underwear"],
+	Categories: ["Suits", "Underwear", "Panties"],
 	Folder: "Catsuit",
 	Parent: "Catsuit",
 	Filters: {

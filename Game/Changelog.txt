@@ -35,6 +35,7 @@ TODO remove hogtie when released
 - Saves will now save your outfit as well, and restore it during saves. You can turn off both saving and loading of outfits
 - Added multiple save slots and mod config by Enraa
 - Added panties by Boxtie
+- Added CyberPanties
 - Added Gothic Skirt by Lumpychan
 
 5.3-Patch1

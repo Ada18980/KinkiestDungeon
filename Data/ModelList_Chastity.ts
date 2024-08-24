@@ -315,6 +315,31 @@ AddModel({
 });
 AddModel(GetModelFashionVersion("CyberBelt", true));
 
+
+AddModel({
+	Name: "CyberPanties",
+	Folder: "Chastity",
+	Parent: "CyberBelt",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Underwear", "Panties", "Metal", "SciFi"],
+	Layers: ToLayerMap([
+		{ Name: "CyberPanties", Layer: "Panties", Pri: -10,
+			Invariant: true,
+			InheritColor: "Metal",
+			MorphPoses: {Closed: "Closed", "Hogtie": "Closed"},
+		},
+		{ Name: "CyberPantiesLining", Layer: "Panties", Pri: -10.1,
+			Invariant: true,
+			DisplacementInvariant: true,
+			NoOverride: true,
+			TieToLayer: "CyberPanties",
+			InheritColor: "Lining",
+			MorphPoses: {Closed: "Closed", "Hogtie": "Closed"},
+		},
+	])
+});
+
 AddModel({
 	Name: "ProtoBelt",
 	Folder: "Chastity",

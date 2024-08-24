@@ -24021,3 +24021,8 @@ KDLoadPalette,Load from File
 
 KDBackupOutfits,Store to File
 KDLoadOutfits,Load from File
+
+KinkyDungeonStatMC_Mage,"Wizard"
+
+KDSlotLocFormat,"FLR-DGN"
+KDSlotLocNG+," (NG+AMNT)"

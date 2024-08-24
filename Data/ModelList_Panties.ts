@@ -11,7 +11,7 @@ AddModel({
 	Folder: "Panties",
 	Parent: "Panties",
 	TopLevel: true,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "Base", Layer: "Panties", Pri: -25,
 			Invariant: true,
@@ -33,7 +33,7 @@ AddModel({
 	Folder: "Panties",
 	Parent: "Panties",
 	TopLevel: false,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Panties"),
 		{ Name: "Bow", Layer: "Panties", Pri: -24.7,
@@ -50,7 +50,7 @@ AddModel({
 	Folder: "Panties",
 	Parent: "Panties",
 	TopLevel: false,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Panties"),
 		{ Name: "Stripes", Layer: "Panties", Pri: -24.9,
@@ -74,7 +74,7 @@ AddModel({
 	Folder: "Panties",
 	Parent: "Panties",
 	TopLevel: false,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		...GetModelLayers("PantiesBow"),
 		{ Name: "Stripes", Layer: "Panties", Pri: -24.9,

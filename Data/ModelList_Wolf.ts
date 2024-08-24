@@ -11,7 +11,7 @@ AddModel({
 	Folder: "Wolf",
 	Parent: "Wolf",
 	TopLevel: true,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "Panties", Pri: 10,
 			Invariant: true,
@@ -458,7 +458,7 @@ AddModel({
 	Folder: "WolfCatsuit",
 	Parent: "Wolf",
 	TopLevel: false,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "Bodysuit", Pri: 10,
 			Invariant: true,
@@ -487,7 +487,7 @@ AddModel({
 	Folder: "WolfCatsuit",
 	Parent: "Wolf",
 	TopLevel: true,
-	Categories: ["Underwear", "Tops"],
+	Categories: ["Underwear", "Panties", "Tops"],
 	Layers: ToLayerMap([
 		{ Name: "Chest", Layer: "SuitChest", Pri: 30,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],

@@ -528,7 +528,10 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			}
 		}
 		if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
-			KinkyDungeonSetDress(enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
+			KinkyDungeonSetDress(
+				enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit,
+				enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit,
+				KDSpeakerNPC, true);
 		}
 		KDRefreshCharacter.set(KDSpeakerNPC, true);
 	} else {
@@ -556,6 +559,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 			//KDSpeakerNPC = null;
 			KinkyDungeonState = "Wardrobe";
+			KDCanRevertFlag = value.customOutfit != undefined;
 			ForceRefreshModels(KDSpeakerNPC);
 			KDOriginalValue = "";
 			CharacterReleaseTotal(KDSpeakerNPC);
@@ -570,16 +574,22 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			if (value.customOutfit) {
 				let outfit = value.customOutfit;
 				KDWardrobeRevertCallback = () => {
-					CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit));
+					if (outfit)
+						CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit));
 					CharacterRefresh(KDSpeakerNPC);
 					KDInitProtectedGroups(KDSpeakerNPC);
+					KDRefreshCharacter.set(KDSpeakerNPC, true);
 					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
 				};
 				KDWardrobeResetCallback = () => {
 					delete value.customOutfit;
 				};
 			} else {
-				KDWardrobeRevertCallback = null;
+				KDWardrobeRevertCallback = () => {
+					delete value.customOutfit;
+					KDRefreshCharacter.set(KDSpeakerNPC, true);
+					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+				};
 				KDWardrobeResetCallback = null;
 			}
 
