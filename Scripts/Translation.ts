@@ -265,14 +265,14 @@ function TranslationNextLanguage(): void {
  */
 function TranslationLoad(): void {
 	let L;
-	if (localStorage.getItem("LanguageChange") == "0" || localStorage.getItem("LanguageChange") == null)
+	if (localStorage.getItem("LanguageChange") == "1")
 	{
-		L = GetUserPreferredLanguage();
-		if (L != null) localStorage.setItem("BondageClubLanguage",L);
+		L = localStorage.getItem("BondageClubLanguage");
 	}
 	else
 	{
-		L = localStorage.getItem("BondageClubLanguage");
+		L = GetUserPreferredLanguage();
+		if (L != null) localStorage.setItem("BondageClubLanguage",L);
 	}
 	
 	if (L != null) TranslationLanguage = L;
