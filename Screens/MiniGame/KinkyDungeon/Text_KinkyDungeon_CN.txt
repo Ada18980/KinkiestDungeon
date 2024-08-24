@@ -19896,8 +19896,8 @@ Ransom Value: GP
 赎金: GP
 Current Gold: GP
 当前金币: GP
-[EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
-[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
+[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
+[经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
 Phase Dance active. Your next move is instant.
 相位舞蹈激活。你的下一步动作是即时的。
 Combat Maneuver active. Your next move is instant.
@@ -20016,8 +20016,6 @@ Maintece Hall
 保养大厅
 Submissive prisoners and domit servants add different amounts of opinion per cycle
 顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
-[EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
-[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒。
 'Cosplay'
 Cosplay
 HairBow
@@ -20560,3 +20558,8 @@ Hoods and full-face covering masks do not appear, but blindfolds are more powerf
 头套和全覆盖面罩将不会出现，但眼罩将得到增强
 Preferences 2
 偏好 2
+Reaching Authority
+语威延伸
+If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
+如果手臂被限制，现在你可以仅通过言语组件来施展束缚。
+在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
