@@ -809,7 +809,7 @@ While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage w
 Sticky Situation
 粘滞窘境
 You take 40% more glue damage.
-你受到的胶水伤害增加 40%。
+你受到的胶体伤害增加 40%。
 Breathless
 气喘吁吁
 Taking chain, poison, and crush damage makes you dizzy.
@@ -1318,7 +1318,7 @@ Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
 Chilled: The cold makes it hard to move! You are slowed.
 寒冷 : ‎寒冷使得移动变得困难，降低移动速度
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上，降低 30% 粘液抗性和移动速度
+粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上，降低 30% 胶体抗性和移动速度
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
 不稳定 : ‎你站在不牢固的地面上，降低移动速度，且更容易被击中
 Ignore Ice Tiles
@@ -2324,7 +2324,7 @@ Dollmaker's Staff
 You remember this being used on someone else.
 你记得这被用在别人身上。
 +15% glue damage. Deals psychic damage. Fully bound enemies captured with this weapon become latex dolls which fight with you.
-+15% 粘液伤害，并造成精神伤害。被这把武器完全束缚的敌人将变成与你一起战斗的乳胶娃娃。
++15% 胶体伤害，并造成精神伤害。被这把武器完全束缚的敌人将变成与你一起战斗的乳胶娃娃。
 You are unable to control more than 3 dolls. The new doll is protesting and remains bound.
 你无法控制超过3个娃娃，新的娃娃正在挣扎并保持束缚状态。
 Staff of Incineration
@@ -2368,7 +2368,7 @@ Staff of Slime
 A slimy and magical implement..
 一把又黏又神奇的工具。
 +10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
-+10% 粘液伤害，造成粘液伤害。副手 : ‎应用被动奖励。
++10% 胶体伤害，造成胶体伤害。副手 : ‎应用被动奖励。
 Staff of Shocking
 电击法杖
 +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
@@ -2520,7 +2520,7 @@ Deals fire damage. Provides light.
 Unarmed
 徒手
 Physical
-躯体
+物理
 Fight with your hands and feet.
 用你的手和脚战斗。
 Deals unarmed damage.
@@ -2576,9 +2576,9 @@ Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fir
 Metamorphosis
 变形法杖
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
-你可以进入粘液形态，持续25回合。在粘液形态下，你可以穿过栅栏，增加 50 点闪避，并在受到攻击时对攻击你的目标造成 25 点粘液伤害。
+你可以进入粘液形态，持续25回合。在粘液形态下，你可以穿过栅栏，增加 50 点闪避，并在受到攻击时对攻击你的目标造成 25 点胶体伤害。
 Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
-造成胶水伤害。固定目标 2 回合。副手 : ‎命中时定身目标。
+造成胶体伤害。固定目标 2 回合。副手 : ‎命中时定身目标。
 Four Seasons
 四季法杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
@@ -2626,7 +2626,7 @@ Latex Projector
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
 造成碾压伤害。可用于喷洒“+”形粘液池。
 Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies.
-花费 15 点能量来制造一滩粘液，每块造成 35 点胶水伤害并减缓敌人的速度。
+花费 15 点能量来制造一滩粘液，每块造成 35 点胶体伤害并减缓敌人的速度。
 Magic Axe
 魔法斧
 Sick and vile, like the hearts of your enemies.
@@ -2686,17 +2686,17 @@ Find the keys..
 Find the exit!
 寻找出口！
 You are receiving help from a friendly ally.
-你得到了友好盟友的帮助。
+你得到了友好盟友的帮助
 You found a hook you can use to pull on straps and loops.
-你找到了一个钩子，可以用来拉动带子和环扣。
+你找到了一个钩子，可以用来拉动带子和环扣
 You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
-你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚。
+你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚
 You found a corner to help manipulate buckles and snaps with.
-你找到了一个角落，可以帮助你操纵带扣和卡扣。
+你找到了一个角落，可以帮助你操纵带扣和卡扣
 You found a crack and could maybe wedge a knife or tool into it to keep it still.
-你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定。
+你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
 You found something sticky and might be able to pull off fabrics.
-你找到了一些黏糊糊的东西，也许可以用它来撕掉布料。
+你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
 Evasion:
 闪避 : ‎
 Visibility:
@@ -2861,6 +2861,8 @@ The illusion vanishes into thin air.
 幻象消失得无影无踪。
 Wall
 墙
+Create a stationary wall for Duration turns. It takes 20% damage from spells. Cast on an open door to close it and give it additional armor.
+创造一堵可持续 Duration 个回合的墙，法术对其仅能造成 20% 伤害。在开启的门上释放可将门封闭，并为其提供额外护甲。
 The wall shatters into pieces, which fade away slowly.
 墙壁破碎成碎片，慢慢消失。
 Static Sphere
@@ -8227,12 +8229,17 @@ Lightning Rune
 闪电符文
 You conjure a charged trap!
 你设置了一个闪电陷阱！
+A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
+可造成电击伤害并眩晕 4 个回合的陷阱。设置需要 3 个回合。200% 碰撞倍增器。
+放置一个暴击倍率为 200% 的闪电陷阱，可对敌人造成 DamageDealt 点电击伤害并眩晕 4 个回合。需要 3 个回合来设置。
 Choose location for trap
 选择放置陷阱的位置
 Freeze Rune
 霜冻符文
 You conjure an icy trap!
 你设置了一个霜冻陷阱！
+A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
+放置一个暴击倍率为 200% 的霜冻陷阱，可对敌人造成 DamageDealt 点寒冰伤害并冻结 30 个回合。需要 3 个回合来设置。
 Flame Rune
 火焰符文
 A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
@@ -8298,7 +8305,7 @@ Choose monoliths to enchant
 Coalesce
 聚合
 Gathers slime and slimed enemies into a central point. Deals DamageDealt glue damage per square of slime and Encases slimed enemies. Costs half mana if there is only slime.
-将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶水伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半魔力值。
+将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶体伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半魔力值。
 You command the slime to draw enemies in!
 你命令粘液包裹敌人！
 Choose area containing slime
@@ -8314,11 +8321,11 @@ Target an area with at least 3 slime tiles. Summons a large slime that is friend
 Latex Puppet
 乳胶木偶
 Target an area containing helpless encased enemies. Transforms up to 3 of them into latex dolls that serve you for a while.
-瞄准包含无助的敌人的区域，将最多 3 个无助的敌人变成乳胶娃娃，使其为你服务一段时间。
+瞄准包含完全束缚的敌人的区域，将最多 3 个完全束缚的敌人变成乳胶娃娃，使其为你服务一段时间。
 You concentrate magical energy into your victim's bindings, forcing them to move...
 你将魔法能量注入到受害者的束缚中，迫使他们移动......
 Choose area containing encased helpless enemies.
-选择含有被束缚的无助的敌人的区域。
+选择含有被完全束缚的敌人的区域。
 Solidify
 固化
 Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound.
@@ -8367,8 +8374,12 @@ Wall of Latex (Vert)
 乳胶墙 ( 垂直 ) 
 You tap your foot and a wall of latex stretches out across the corridor.
 你轻踮脚尖，一堵乳胶墙慢慢地从地上升起。
+Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
+创造一堵可持续 20 个回合的垂直乳胶墙，穿过的目标将被乳胶包裹；如果没有被包裹，将受到 50 点胶体伤害并获得致盲效果。
 Wall of Latex (Horiz)
 乳胶墙 ( 水平 ) 
+Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
+创造一堵可持续 20 个回合的水平乳胶墙，穿过的目标将被乳胶包裹；如果没有被包裹，将受到 50 点胶体伤害并获得致盲效果。
 Earthshape
 地形转变
 Unlocks 3 spells that allow creating mounds, rings, or lines of 50hp, 25 armor rocks.
@@ -8543,6 +8554,8 @@ Frozen Prison
 寒冰牢狱
 Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
 冻结敌人并施加敌人最大生命值 10% 的束缚，每冻结一回合增加 10 点。
+Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding.
+冻结敌人，使敌人的拘束值至少达到 20%，每冻结一回合还会增加 10% 束缚。
 Lightning Rod
 避雷针
 After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
@@ -8623,6 +8636,8 @@ Conjured Blindfold
 魔法眼罩
 The blindfold wraps around your head and buckles tightly!
 眼罩缠绕在你的头上并扣紧！
+Summons a blindfold which deals DamageDealt chain damage and blinds for 20 turns. +40 binding if target is not blinded.
+召唤眼罩来捆绑目标，对目标造成 DamageDealt 点锁链伤害，并使其致盲 20 个回合；如果没有致盲，则增加目标 40 点束缚。
 The blindfold hits you! (DamageDealt)
 眼罩击中了你！ ( 造成 DamageDealt 点伤害 ) 
 You conjure a blindfold!
@@ -8655,6 +8670,8 @@ The gag will appear next to you and fly toward the target point.
 口塞出现在你旁边并飞向目标点。
 Conjure Armbinder
 召唤束手套
+Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Cannot be blocked.
+召唤束手套来捆绑目标，对目标造成 DamageDealt 点锁链伤害，并在 13 个回合内缴械目标，无法阻止。
 Conjured Armbinder
 魔法束手套
 The armbinder slips itself around your arms and buckles itself tightly!
@@ -8694,7 +8711,7 @@ The amorphous rubber stretches out into a restraint on your body!
 The amorphous rubber sticks to you! (DamageDealt)
 不规则的橡胶粘在了你的身上！ ( DamageDealt ) 
 Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced.
-召唤一个口塞，造成 DamageDealt 胶水伤害并沉默 15 回合。如果目标没有被沉默，则 +40 捆绑。
+召唤一个口塞，造成 DamageDealt 胶体伤害并沉默 15 回合。如果目标没有被沉默，则 +40 捆绑。
 Conjure Latex Armbinder
 召唤乳胶束手套
 Conjured Latex Armbinder
@@ -8702,7 +8719,7 @@ Conjured Latex Armbinder
 The armbinder slips itself around your arms and snaps on tightly!
 束手套自动滑入你的手臂上并紧紧包住了你的手臂！
 Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked.
-召唤一件束手套，造成 DamageDealt 胶水伤害并解除武装，持续 13 回合。无法被阻挡。
+召唤一件束手套，造成 DamageDealt 胶体伤害并解除武装，持续 13 回合。无法被阻挡。
 Conjure Latex Legbinder
 召唤乳胶束腿套
 Conjured Latex Legbinder
@@ -8710,7 +8727,7 @@ Conjured Latex Legbinder
 The legbinder slips itself around your legs and snaps on tightly!
 束腿套自动滑入你的腿上并紧紧包住了你的腿！
 Summons a legbinder which deals DamageDealt glue damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
-召唤束腿套，造成 DamageDealt 胶水伤害并召唤陷阱，持续 10 回合。如果目标没有被诱捕，则 +50 捆绑。无法被阻挡。
+召唤束腿套，造成 DamageDealt 胶体伤害并召唤陷阱，持续 10 回合。如果目标没有被诱捕，则 +50 捆绑。无法被阻挡。
 Conjure Straitjacket
 召唤拘束衣
 Conjured Straitjacket
@@ -8762,19 +8779,19 @@ Choose location
 Conjure Petsuit
 召唤宠物服
 Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
-仅可对无助的敌人施放。将它们变成跟随你的宠物，并增加你从魔力池中恢复的被动魔力。
+仅可对完全束缚的敌人施放。将它们变成跟随你的宠物，并增加你从魔力池中恢复的被动魔力。
 You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
 你召唤出的魔法宠物服，紧紧包住了你瞄准的目标，使她不得不跟着你！
 You watch in horror as your own creation lunges toward you, binding your hands and feet!
 你惊恐地看着你自己的造物冲向了你，束缚了你的手脚！
 Choose a helpless target
-选择一个无助的目标
+选择一个完全束缚的目标
 Conjure Display Stand
 召唤展示架
 Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage.
-仅可对无助的敌人施放。创建一个装置，可以增加魔力池中的被动魔力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
+仅可对完全束缚的敌人施放。创建一个装置，可以增加魔力池中的被动魔力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
 You conjure a fixture to hold your helpless target in place!
-你召唤出一个装置来束缚无助的目标！
+你召唤出一个装置来束缚完全束缚的目标！
 You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 你惊恐地看着你自己的创造物束缚着你，用沉重的锁将你固定在了原地！
 Lesser Flash
@@ -8836,7 +8853,7 @@ Chastity
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
-对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加分心值。
+对完全束缚的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加分心值。
 You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
 Your own spell locks you in chastity!
@@ -8849,6 +8866,8 @@ Select an area
 选择一个区域
 Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside.
 创造一个区域，为进入区域且束缚超过 50% 的个体装备贞操带。
+Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside.
+创建一个区域，对踏入该区域的任何敌人持续装备贞操带。
 You conjure a realm of absolute purity.
 召唤出一个绝对纯洁的区域。
 Zone of Excitement
@@ -8913,6 +8932,8 @@ Select area to awaken
 选择唤醒区域
 You command the slime to draw in targets!
 你命令粘液包裹目标！
+Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets.
+唤醒指定区域内的粘液，使其对区域内的目标造成 25 点胶体伤害，并将完全束缚的目标包裹起来。
 CMD: Bind
 指令 : ‎束缚
 Select area to bind
@@ -8936,11 +8957,11 @@ You must target yourself, an enemy, or a locked object.
 The command is intricate and you are unable to enunciate it properly!
 指令很复杂，你根本无法正确说出来！
 CMD: Greater Unlock
-指令 : ‎强大的解锁
-On yourself: Removes all magical locks. On a creature: Reduces the target's binding by 100 points.
-对你自己 : ‎移除所有魔法锁。对生物 : ‎减少目标束缚 100 点。
+指令 : ‎强大解锁
+On yourself: Removes all purple (magical) locks. On a creature: Reduces the target's binding by 100 points.
+对你自己 : ‎移除所有紫色魔法锁。对生物 : ‎减少目标束缚 100 点。
 You speak a powerful command word!
-你念出强大的指令！
+你的命令铿锵有力！
 Lesser Invisibility
 次级隐形
 You become semitransparent!
@@ -8974,7 +8995,7 @@ When enabled: Melee weapon attacks cost mana and create a flame strike that deal
 Tentacle Slap
 触手拍击
 You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +10 glue damage and create slime. 150% bind efficiency.
-你有能力在攻击时将黏液变成触手。启用后 : ‎你的攻击造成 +10 胶水伤害并产生黏液。150% 绑定效率。
+你有能力在攻击时将黏液变成触手。启用后 : ‎你的攻击造成 +10 胶体伤害并产生黏液。150% 绑定效率。
 Chain Strike
 锁链攻击
 You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
@@ -8990,7 +9011,7 @@ You have the power to strike with conjured belts when you attack. When enabled: 
 Engulf
 吞噬
 When enabled: Your melee attacks deal +20 glue damage and create slime.
-启用时 : ‎你的近战攻击额外造成 20 点胶水伤害并制造粘液。
+启用时 : ‎你的近战攻击额外造成 20 点胶体伤害并制造粘液。
 Super Strengthen
 超级强化
 When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage.
@@ -9186,7 +9207,7 @@ Witch's Slime Ball
 Robotic Arm
 机械臂
 A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
-召唤一滩在撞击时造成 DamageDealt 点胶水伤害的粘液，并用粘液覆盖该区域。
+召唤一滩在撞击时造成 DamageDealt 点胶体伤害的粘液，并用粘液覆盖该区域。
 You conjure a pool of slime!
 你召唤了一滩粘液！
 Select where the slime will appear
@@ -9194,13 +9215,13 @@ Select where the slime will appear
 Slime Eruption
 粘液喷发
 A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them briefly.
-巨大的粘液爆炸会造成伤害，对进入的敌人造成胶水伤害并短暂束缚他们。
+巨大的粘液爆炸会造成伤害，对进入的敌人造成胶体伤害并短暂束缚他们。
 You conjure an explosion of slime!
 你使粘液喷发！
 Slime Splash
 粘液飞溅
 After one turn, deals DamageDealt glue damage in a small area and spreads slime.
-在一回合后在小范围内召唤一滩造成 DamageDealt 点胶水伤害的粘液。
+在一回合后在小范围内召唤一滩造成 DamageDealt 点胶体伤害的粘液。
 You conjure a small amount of slime!
 你召唤了少量的粘液！
 Water Ball
@@ -9300,7 +9321,7 @@ Icy Aura
 Slime Ball
 粘液球
 A ball of slime leaves a trail of sticky slime (20 damage when stepped on). It deals DamageDealt glue damage on a hit.
-一团粘液会留下粘糊糊的痕迹 ( 踩到时造成 20 伤害 ) 。它在击中时造成 DamageDealt 点胶水伤害。
+一团粘液会留下粘糊糊的痕迹 ( 踩到时造成 20 伤害 ) 。它在击中时造成 DamageDealt 点胶体伤害。
 You hurl a ball of slime!
 你扔出一个粘液球！
 Summon Skeleton
@@ -9926,25 +9947,25 @@ The item is extremely secure with five separate keyholes.
 You insert your 5 keys into the lock and the item finally comes off.
 你将 5 把钥匙插入锁中，物品最终脱落。
 Magic-Draining: This item drains your mana quickly up to a limit, then slowly after.
-魔法耗尽 : ‎该物品会快速耗尽你的魔力直至达到极限，然后慢慢耗尽。
+魔法耗尽 : ‎该物品会快速耗尽你的魔力直至达到极限，然后慢慢耗尽
 Curse of Tickling: This item is tickling you without end!
-挠痒诅咒 : ‎这个物品会不停地挠你！
+挠痒诅咒 : ‎这个物品会不停地挠你
 Curse of Punishment: Inflicts psychic damage when you attack or cast a spell.
-惩罚诅咒 : ‎当你攻击或施展法术时对你造成精神伤害。
+惩罚诅咒 : ‎当你攻击或施展法术时对你造成精神伤害
 Curse of Illumination: Produces light and makes you easier to see.
-照明诅咒 : ‎产生光并让你更容易被敌人看到。
+照明诅咒 : ‎产生光并让你更容易被敌人看到
 Curse of Attraction: Women find you irresistable.
-吸引力诅咒 : ‎女人觉得你无法抗拒。
+吸引力诅咒 : ‎女人觉得你无法抗拒
 Curse of Animation: Causes loose restraints to animate and attack you!
-活力诅咒 : ‎松动的束缚会活跃起来并攻击你！
+活力诅咒 : ‎松动的束缚会活跃起来并攻击你
 Curse of Sensitivity: Makes it easier to lose control of yourself.
-敏感诅咒 : ‎使人更容易失去对自己的控制。
+敏感诅咒 : ‎使人更容易失去对自己的控制
 Curse of Distraction: Multiplies DP gain by 1.5x.
-分心诅咒 : ‎将 DP 增益乘以 1.5 倍。
+分心诅咒 : ‎将 DP 增益乘以 1.5 倍
 Curse of Exhaustion: Multiplies SP gain by 0.6x.
-虚弱诅咒 : ‎SP 增益乘以0.6倍。
+虚弱诅咒 : ‎SP 增益乘以0.6倍
 Curse of Futility: Multiplies WP gain by 0.5x.
-徒劳诅咒 : ‎将 WP 增益乘以 0.5 倍。
+徒劳诅咒 : ‎将 WP 增益乘以 0.5 倍
 Curse of Submission: Gain submissiveness when you lose control of yourself...
 屈服诅咒 : ‎你会在你失去对自己的控制时屈服......
 The curse is dormant, waiting for the time to strike...
@@ -9968,7 +9989,7 @@ The item contains technological markings. Perhaps applying some electricity will
 The cursed seal gives off sparks as you struggle fruitlessly against it.
 当你与被诅咒的封印进行徒劳的挣扎时，它会发出火花。
 The item contains an alchemical seal. Perhaps Glue damage will overload it?
-该物品包含一个炼金印章。也许胶水伤害会导致其过载？
+该物品包含一个炼金印章。也许胶体伤害会导致其过载？
 The item stretches as you tug on it, but snaps back to its original place.
 当你拉动该物品时，它会拉伸，但会弹回到原来的位置。
 The item is covered in markings of chains. Perhaps you need to take Chain damage?
@@ -12680,7 +12701,7 @@ Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to laun
 50 charge: Free nearby allies and disrobe enemies, increasing charm damage by 100% and removing 100 armor.
 50 点充能 : ‎释放附近的盟友并脱去敌人的衣服，增加100%的魅力伤害并去除100点护甲。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
-创建一个十字粘液池，每一击造成 35 点胶水伤害
+创建一个十字粘液池，每一击造成 35 点胶体伤害
 Ignite torches and nearby objects
 点燃火把和附近的物体
 Preferences
@@ -15482,7 +15503,7 @@ Back to Wardrobe
 Confirm Strip?
 确认要脱衣服？
 Strip!
-脱光！
+脱光
 Export Outfit
 导出衣服
 Export AlwaysDress
@@ -15656,7 +15677,7 @@ Slime Sword
 It wiggles as you move it around.
 当你移动它时它也会摆动。
 Deals glue damage. Adds 25 slime binding.
-造成胶水伤害。添加 25 个粘液束缚。
+造成胶体伤害。添加 25 个粘液束缚。
 You pick up slime-covered sword.
 你拿起沾满粘液的剑。
 Frost Blade
@@ -16676,7 +16697,7 @@ Aether, 宇宙的守护者
 Oblivion, Keeper of Secrets
 Oblivion, 秘密的守护者
 Arcane Energy is stored by casting spells, up to 100% Max mana.
-奥术能量通过施展法术来储存，奥术能量上限为 100% 魔力值上限
+奥术能量可通过施展法术来储存，奥术能量上限为 100% 魔力值上限
 Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
 战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点
 Arcane Blast
@@ -16806,7 +16827,7 @@ TargetEnemy 被禁用并收到附加的 AMNT 捆绑！
 TargetEnemy resists bondage and receives a reduced AMNT binding!
 TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 Target must be helpless.
-目标必须得是无助的。
+目标必须得是完全束缚的。
 You steal the target's disguise!
 你窃取了目标的伪装！
 You remove your disguise.
@@ -16818,7 +16839,7 @@ Steal Disguise
 Choose target to steal from
 选择要窃取的目标
 Steal's a helpless enemy's clothes, adding a great deal of distraction to her and stealing her disguise for yourself. Until you recast this on yourself, you gain a stealth bonus against members of the same faction.
-窃取无助的敌人的衣服，给她增添了很大的性奋值，同时也窃取了她的伪装给自己。除非你对自己重新施放这个，否则你会在对抗同一派系的成员时获得隐身奖励。
+窃取完全束缚的敌人的衣服，给她增添了很大的性奋值，同时也窃取了她的伪装给自己。除非你对自己重新施放这个，否则你会在对抗同一派系的成员时获得隐身奖励。
 Unstoppable (Ignore status/bondage)
 势不可挡 ( 无视状态/束缚 ) 
 Unflinching (Resist status/bondage)
@@ -17188,9 +17209,9 @@ Fortified
 Barricades set up by enemies do not expire, and enemies set them up even when not alerted.
 敌人设置的路障不会过期，即使没有警报，敌人也会设置路障。
 Pass thru helpless allies
-绕过无助的盟友
+绕过完全束缚的盟友
 Pass thru helpless enemies
-绕过无助的敌人
+绕过完全束缚的敌人
 Pass thru neutrals
 绕过中立实体
 Pass thru summons
@@ -18052,11 +18073,15 @@ The Liquid Metal explodes and covers you!
 The Liquid Metal takes advantage of your status and engulfs you!
 液态金属正在吞噬你！
 Silver Burst
-爆发金属
+金属爆发
 Select a liquid metal tile
 选择液态金属块
+Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding.
+对液体金属生物释放，3 回合后它将爆发，扩散出更多液态金属并吞噬附近的任何生物。造成 DamageDealt 点碾压伤害并增加 80 点金属拘束。
 The ground shakes as a huge wall of liquid metal approaches!
-大地震动，巨大的液态金属墙逼近！
+随着一堵巨大的液态金属墙的逼近，地面开始震动！
+A powerful explosion simmers beneath the surface...
+强烈的爆炸在地表下酝酿着...
 Liquid Metal Cube
 液态金属方块
 The liquid metal cube engulfs you and squeezes tightly! (DamageTaken)
@@ -19880,7 +19905,7 @@ Ransom Value: GP
 Current Gold: GP
 当前金币: GP
 [EXP: AMNT/LMT] Heel training improves your balance to keep you from falling.
-[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒。
+[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
 Phase Dance active. Your next move is instant.
 相位舞蹈激活。你的下一步动作是即时的。
 Combat Maneuver active. Your next move is instant.
@@ -20456,26 +20481,27 @@ Load Code
 No Data
 无数据
 Play (NO SLOT!)
-启动 ( 未选择存档 )
+加载 ( 未选择存档 )
 Play Slot 
-启动 ⁧ 号存档 ⁦⁦
+加载 ⁧ 号存档 ⁦⁦
 Save From Code
 从代码中导入
 Floor
+楼层
 Standard Route
-标准路线
+标准路线 ‎
 Alternate Route
-变种路线
+变种路线 ‎
 Temple Route
-神殿路线
+神殿路线 ‎
 Jungle Route
-丛林路线
+丛林路线 ‎
 Factory Route
-工厂路线
+工厂路线 ‎
 Reverse Route
-颠倒路线
+颠倒路线 ‎
 Chaos Route
-混沌路线
+混沌路线 ‎
 Map Seed: 
 地图种子 : ‎
 Choose Save Slot:
@@ -20499,6 +20525,26 @@ Show Zoom Buttons
 Show DP instead of %
 显示具体的分心值
 Quick Inv only equips to self
-快速背包物品仅对自身使用
+快速背包物品仅装备玩家自己
 Journal
 日志
+Outfit Code
+服装代码
+Store to File
+保存为文件
+Delete?
+删除？
+Mod Configuration
+模组配置
+No Mod Selected
+未选择模组
+Looks like you might be stuck. Try calling for help (bottom right of UI)
+看来你可能被卡住了，尝试呼叫帮助（界面右下角）
+Delete Save
+删除存档
+Saving Disabled
+保存被禁用
+Save Game to File
+保存游戏到文件
+Super Strength
+超级力量
