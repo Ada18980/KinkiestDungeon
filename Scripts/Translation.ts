@@ -265,7 +265,8 @@ function TranslationNextLanguage(): void {
  */
 function TranslationLoad(): void {
 	let L;
-	if (localStorage.getItem("LanguageChange") == "0")
+	debugger;
+	if (localStorage.getItem("LanguageChange") == "0" || localStorage.getItem("LanguageChange") == null)
 	{
 		L = GetUserPreferredLanguage();
 		if (L != null) localStorage.setItem("BondageClubLanguage",L);
@@ -279,7 +280,9 @@ function TranslationLoad(): void {
 }
 
 function GetUserPreferredLanguage() {
-	var language = navigator.language.split('-');
+	var language;
+	try{language = Intl.DateTimeFormat().resolvedOptions().locale.split('-');}
+	catch{language = navigator.language.split('-');}
 	if (!language) {
 		return "";
 	}
@@ -293,4 +296,4 @@ function GetUserPreferredLanguage() {
         return regionCode;
     else
         return "";
-  }
+}
