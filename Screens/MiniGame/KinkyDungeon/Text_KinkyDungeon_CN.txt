@@ -20561,5 +20561,4 @@ Preferences 2
 Reaching Authority
 语威延伸
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
-如果手臂被限制，现在你可以仅通过言语组件来施展束缚。
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
