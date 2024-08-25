@@ -17983,11 +17983,11 @@ Vine Bolt
 Gunslinger
 枪手
 Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
-武器技能和其他需要消耗能量的技能会将其 20% 的成本转化为战斗节拍。
+将武器和其他技能消耗的体力的 20% 转化为战斗节拍。
 Effortless Assault
 连招
 Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
-基于你你的战斗节拍层数的百分比来减少武器体力消耗。
+战斗节拍将等比例减少武器攻击所需要的体力。
 +50 Evasion from using Phase
 使用相位时 +50 闪避
 Blade Dance
