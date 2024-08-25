@@ -26,6 +26,12 @@ AddModel({
 			InheritColor: "Rim",
 			TieToLayer: "Bra",
 		},
+		{ Name: "InnerLines", Layer: "BraChest", Pri: -34.7,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Seams",
+			TieToLayer: "Bra",
+		},
 		{ Name: "BraUnder", Layer: "Bra", Pri: -35,
 			Invariant: true,
 			NoOverride: true,
@@ -39,6 +45,64 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "BraStriped",
+	Folder: "Bra",
+	Parent: "Bra",
+	TopLevel: false,
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Bra"),
+		{ Name: "Stripes", Layer: "BraChest", Pri: -34.8,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "BraCherry",
+	Folder: "Bra",
+	Parent: "Bra",
+	TopLevel: false,
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Bra"),
+		{ Name: "Cherry", Layer: "BraChest", Pri: -34.8,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "BraRose",
+	Folder: "Bra",
+	Parent: "Bra",
+	TopLevel: false,
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Bra"),
+		{ Name: "Rose", Layer: "BraChest", Pri: -34.8,
+			Invariant: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "BraInvertedRose",
+	Folder: "Bra",
+	Parent: "Bra",
+	TopLevel: false,
+	Categories: ["Bras"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Bra"),
+		{ Name: "InvertedRose", Layer: "BraChest", Pri: -34.8,
+			Invariant: true,
+		},
+	])
+});
+
 
 
 AddModel({
