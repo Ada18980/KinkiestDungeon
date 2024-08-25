@@ -1103,13 +1103,13 @@ Muzzle Lover
 Greatly increases the occurrence of muzzles.
 增加口套的出现频率。
 Armbinder Lover
-束手套爱好者
+单手套爱好者
 More armbinders, less straitjackets.
-增加束手套的出现频率，减少拘束衣的出现频率。
+增加单手套的出现频率，减少拘束衣的出现频率。
 Jacket Lover
 拘束衣爱好者
 More straitjackets, less armbinders.
-增加拘束衣的出现频率，减少束手套的出现频率。
+增加拘束衣的出现频率，减少单手套的出现频率。
 Maid Sweeper
 可爱女仆
 Start in a magically locked maid outfit.
@@ -3948,13 +3948,13 @@ The blindfold crawls over your helpless face! (DamageTaken)
 The blindfold dashes to you!
 眼罩冲向你！
 Amorous Armbinder
-色情的束手套
+色情的单手套
 The armbinder flops to the floor.
-束手套扑通一声倒在地板上。
+单手套扑通一声倒在地板上。
 The armbinder slips itself around your arms and pushes your elbows together! (+RestraintAdded)
-束手套会绕着你的手臂滑动，并将你的肘部挤压到一起！ ( +RestraintAdded )
+单手套会绕着你的手臂滑动，并将你的肘部挤压到一起！ ( +RestraintAdded )
 The armbinder rubs itself all over your body! (DamageTaken)
-束手套在你身上摩擦！ ( DamageTaken )
+单手套在你身上摩擦！ ( DamageTaken )
 Stringent Straitjacket
 严格的拘束衣
 The straitjacket falls apart.
@@ -5528,15 +5528,15 @@ A pair of strict boots for making pets more manageable. A skilled person can sti
 They are reinforced with top-quality hardened latex.
 它们采用硬化乳胶加固。
 High-Security Armbinder
-高安全性束手套
+高安全性单手套
 An armbinder enclosing your hands and arms completely, making your hands useless.
-束手套将你的手和手臂完全包住，使你的手变得毫无用处。
+单手套将你的手和手臂完全包住，使你的手变得毫无用处。
 Made of a flexible, yet durable material, it's going to be really tough to escape.
 它由灵活而耐用的材料制成，很难逃脱。
 High-Security Boxbinder
-高安全性盒式束手套
+高安全性盒式单手套
 A boxbinder enclosing your hands and arms completely, making your hands useless.
-盒式束手套将你的手和手臂完全包住，使你的手变得毫无用处。
+盒式单手套将你的手和手臂完全包住，使你的手变得毫无用处。
 High-Security Straitjacket
 高安全性拘束衣
 A straitjacket enclosing your hands and arms completely, making your hands useless.
@@ -6194,23 +6194,23 @@ A tight leather legbinder that keeps your feet glued together.
 It's quite snug and the laces are secured with a lockable panel. Getting at them requires picking the lock.
 它非常舒适，绳结由可锁定的面板遮挡并固定。想要触碰它们就需要先解开锁。
 Leather Armbinder
-皮革束手套
+皮革单手套
 A tight leather armbinder enclosing your hands and arms completely.
-一个紧身的皮革束手套完全包住你的手和手臂。
+一个紧身的皮革单手套完全包住你的手和手臂。
 It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
 它非常舒适，并由背面的可锁扣固定。自己开锁是不可能的。
 Leather Boxbinder
-皮革盒式束手套
+皮革盒式单手套
 A secure but comfortable binder meant for long-term wear.
-一种安全而舒适的盒式束手套，适合长期佩戴。
+一种安全而舒适的盒式单手套，适合长期佩戴。
 Leather Armbinder Harness
-皮革束手套束衣
+皮革单手套束衣
 Leather belts securing your armbinder tightly.
 皮带紧紧地固定着你的束手袋。
 It's quite tight and secured by lockable buckles on your sides.
 它非常紧，并由你两侧的可上锁带扣固定。
 The armbinder harness comes off with the armbinder.
-会随着束手套一起挣脱。
+会随着单手套一起挣脱。
 The energy link between your ankle cuffs fizzles into nothing.
 踝铐之间的能量链条逐渐消失。
 The energy link between your arm cuffs fizzles into nothing.
@@ -6460,13 +6460,13 @@ A set of irish-8-style cuffs that are both restrictive and quick to apply.
 It uses a standard lock rather than a simple one.
 它使用标准锁而不是简单锁。
 Wolfbinder
-狼之束手套
+狼之单手套
 A sophisticated training system used to keep wolfgirls from scratching their owners.
 一个复杂的训练系统，用来防止狼娘抓挠他们的主人。
 Despite the harsh position, it is padded, breathable, and suitable for long term wear.
 尽管十分严苛，但它具有衬垫、透气性，适合长期佩戴。
 Wolf Queenbinder
-狼娘王束手套
+狼娘王单手套
 This was made to be used during a coup attempt.  Unfortunately, its creator ended up wearing it instead, after the coup's failure.
 这枚戒指原本是为政变准备的。不幸的是，政变失败后，它的创造者反而戴上了它。
 Designed to hold the queen of wolves helpless for an indefinite period of time.
@@ -6582,11 +6582,11 @@ Secure Latex Jacket
 This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
 这件拘束衣有额外的带子和扣子，确保你不会通过挣扎而脱下它。
 Latex Armbinder
-乳胶束手套
+乳胶单手套
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
-一种紧密的束手套，将你的手臂紧紧地固定在背后，完全封闭。
+一种紧密的单手套，将你的手臂紧紧地固定在背后，完全封闭。
 Latex Boxbinder
-乳胶盒式束手套
+乳胶盒式单手套
 Latex Legbinder
 乳胶束腿套
 A tight legbinder that keeps your legs together!
@@ -6760,13 +6760,13 @@ A tight straitjacket made of an otherworldly material. It is shiny and reflectiv
 Its grip encases you tightly, but the material is weaker than most metals.
 它的握力将你紧紧包裹住，但其材料比大多数金属都脆弱。
 Shadow Armbinder
-暗影束手套
+暗影单手套
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+由超凡脱俗的材料制成的单手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Shadow Boxbinder
-暗影盒式束手套
+暗影盒式单手套
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-由超凡脱俗的材料制成的盒式束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
+由超凡脱俗的材料制成的盒式单手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Shadow Legbinder
 暗影束腿套
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
@@ -8665,19 +8665,19 @@ You conjure a gag!
 The gag will appear next to you and fly toward the target point.
 口塞出现在你旁边并飞向目标点。
 Conjure Armbinder
-召唤束手套
+召唤单手套
 Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Cannot be blocked.
-召唤束手套来捆绑目标，对目标造成 DamageDealt 点锁链伤害，并在 13 个回合内缴械目标，无法阻止。
+召唤单手套来捆绑目标，对目标造成 DamageDealt 点锁链伤害，并在 13 个回合内缴械目标，无法阻止。
 Conjured Armbinder
-魔法束手套
+魔法单手套
 The armbinder slips itself around your arms and buckles itself tightly!
-束手套自动套在你的手臂上并紧紧包住了你的手臂！
+单手套自动套在你的手臂上并紧紧包住了你的手臂！
 The armbinder hits you! (DamageDealt)
-束手套击中了你！ ( 造成 DamageDealt 点伤害 )
+单手套击中了你！ ( 造成 DamageDealt 点伤害 )
 You conjure a armbinder!
-你召唤出束手套！
+你召唤出单手套！
 The armbinder will appear next to you and fly toward the target point.
-束手套出现在你旁边并飞向目标点。
+单手套出现在你旁边并飞向目标点。
 Conjure Legbinder
 召唤束腿套
 Conjured Legbinder
@@ -8709,13 +8709,13 @@ The amorphous rubber sticks to you! (DamageDealt)
 Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced.
 召唤一个口塞，造成 DamageDealt 胶体伤害并沉默 15 回合。如果目标没有被沉默，则 +40 捆绑。
 Conjure Latex Armbinder
-召唤乳胶束手套
+召唤乳胶单手套
 Conjured Latex Armbinder
-魔法乳胶束手套
+魔法乳胶单手套
 The armbinder slips itself around your arms and snaps on tightly!
-束手套自动滑入你的手臂上并紧紧包住了你的手臂！
+单手套自动滑入你的手臂上并紧紧包住了你的手臂！
 Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked.
-召唤一件束手套，造成 DamageDealt 胶体伤害并解除武装，持续 13 回合。无法被阻挡。
+召唤一件单手套，造成 DamageDealt 胶体伤害并解除武装，持续 13 回合。无法被阻挡。
 Conjure Latex Legbinder
 召唤乳胶束腿套
 Conjured Latex Legbinder
@@ -9341,7 +9341,7 @@ A floating blindfold appears and starts flying toward you!
 A floating yoke appears and starts flying toward you!
 一个漂浮的枷锁出现并开始向你飞来！
 A floating armbinder appears and starts flying toward you!
-一个漂浮的束手套出现并开始向你飞来！
+一个漂浮的单手套出现并开始向你飞来！
 A floating straitjacket appears and starts flying toward you!
 一件漂浮的拘束衣出现并开始向你飞来！
 A floating harness appears and starts flying toward you!
@@ -10583,13 +10583,13 @@ Tight mittens that force the hands into fists. When powered, they increase all m
 You rub your mittens together, but they are unfazed by anything you do to them and your hands are clasped tight.
 你反复揉搓手套，但它们对你对它们做的任何事情都没有反应，你的手紧紧地握着。
 Ancient Armbinder
-远古束手套
+远古单手套
 You find a monoglove, glowing magnificently, along with a strange crystal next to it.
 你会发现一只单手套，闪闪发光，旁边还有一块奇怪的水晶。
 An extremely strict armbinder. When powered, reduces miscast chance by 30%, increases all magic damage to enemies by 40%, and increases spell range by 50%.
-一个极其严厉的束手套。充能后，施法错误率降低30%，对敌人的所有魔法伤害提高40%，施法距离提高50%。
+一个极其严厉的单手套。充能后，施法错误率降低30%，对敌人的所有魔法伤害提高40%，施法距离提高50%。
 'Armbinder of the Artillerist'
-'炮手的束手套'
+'炮手的单手套'
 You try to wiggle your arms, but they can barely move in this position and are clasped tight. Your arms are sealed.
 你试图摆动你的手臂，但在这个位置上它们几乎不能移动并且被紧紧地抓住。你的手臂被封住了。
 Ancient Ankle Cuffs
@@ -15967,11 +15967,11 @@ Restraint
 Mundane
 平凡
 Armbinders
-束手套
+单手套
 Legbinders
 束腿套
 Boxbinders
-盒式束手套
+盒式单手套
 Devices
 装置
 Toys
@@ -18159,9 +18159,9 @@ It's a blindfold, but invisible!
 How exactly is this supposed to work?
 这究竟是如何做到的？
 Invisible Armbinder
-隐形束手套
+隐形单手套
 It's an armbinder, but invisible!
-这是个束手套，但是是隐形的！
+这是个单手套，但是是隐形的！
 Invisible Legbinder
 隐形束腿套
 It's an legbinder, but invisible!
@@ -18771,21 +18771,21 @@ ENMY 试图拿走你的武器，但是被你紧紧抓住了！
 The ENMY reaches for your inventory but can't quite reach it!
 ENMY 伸手去拿你的物品，但无法完全够到！
 More Armbinders
-更多束手套
+更多单手套
 Armbinders are favored over other heavy bondage.
-与其他重型的束缚相比，束手套更受欢迎。
+与其他重型的束缚相比，单手套更受欢迎。
 Less Armbinders
-减少束手套
+减少单手套
 Armbinders are less favored over other heavy bondage.
-与其他重型束缚相比，束手套更不受欢迎。
+与其他重型束缚相比，单手套更不受欢迎。
 More Boxbinders
-更多盒式束手套
+更多盒式单手套
 Boxbinders are favored over other heavy bondage.
-与其他重型束缚相比，盒式束手套更不受欢迎。
+与其他重型束缚相比，盒式单手套更不受欢迎。
 Less Boxbinders
-减少盒式束手套
+减少盒式单手套
 Boxbinders are less favored over other heavy bondage.
-与其他重型束缚相比，盒式束手套似乎不太受青睐。
+与其他重型束缚相比，盒式单手套似乎不太受青睐。
 More Straitjackets
 更多拘束衣
 Straitjackets are favored over other heavy bondage.
@@ -19299,7 +19299,7 @@ You must first accept the quest before offering at the shrine.
 The RSTRT feels a little looser!
 你感到 RSTRT 有点松！
 Crystal Armbinder
-水晶束手套
+水晶单手套
 A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires.
 生长的水晶将你的手臂融合在一起。混乱的能量向各个方向辐射，导致你慢慢失去对欲望的控制。
 Crystals are tough but not unbreakable.
