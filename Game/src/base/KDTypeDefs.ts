@@ -1604,6 +1604,10 @@ interface entity {
 
 	// Custom play line
 	playLine?: string,
+	// Custom outfit
+	outfit?: string,
+	// Custom style
+	style?: string,
 	// Custom intro
 	intro?: string,
 

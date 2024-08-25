@@ -321,7 +321,6 @@ AddModel({
 	Folder: "Chastity",
 	Parent: "CyberBelt",
 	TopLevel: true,
-	Restraint: true,
 	Categories: ["Underwear", "Panties", "Metal", "SciFi"],
 	Layers: ToLayerMap([
 		{ Name: "CyberPanties", Layer: "Panties", Pri: -10,

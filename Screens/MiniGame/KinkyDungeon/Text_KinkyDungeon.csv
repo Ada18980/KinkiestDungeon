@@ -1596,9 +1596,12 @@ KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, 
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
 KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm"
-KinkyDungeonInventoryItemBondageBuster,Bondage Buster
+KinkyDungeonInventoryItemBondageBuster,Bondage Buster EX
 KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
+KinkyDungeonInventoryItemBondageBusterII,Bondage Buster MK II
+KinkyDungeonInventoryItemBondageBusterIIDesc,"Can fire a beam (3 turn channel) that deals 35 electric damage in an area and applies an equal amount of energy bondage. While charge is below 50%, has a 10% chance to misfire."
+KinkyDungeonInventoryItemBondageBusterIIDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 2 turns."
 KinkyDungeonInventoryItemBlaster,Nevermere Blaster
 KinkyDungeonInventoryItemBlasterDesc,"Can fire a blast that deals 25 electric damage."
 KinkyDungeonInventoryItemBlasterDesc2,"Melee mode deals tickle damage."
@@ -5365,7 +5368,8 @@ ItemPickupTheEncaser,"You pick up Metamorphosis."
 ItemPickupFourSeasons,"You pick up Four Seasons."
 ItemPickupArbiter,"You pick up The Arbiter."
 ItemPickupDreamcatcher,"You pick up Dreamcatcher."
-ItemPickupBondageBuster,"You retrieve the Bondage Buster."
+ItemPickupBondageBuster,"You retrieve the Bondage Buster EX."
+ItemPickupBondageBusterII,"You salvage a Bondage Buster MK II."
 ItemPickupBlaster,"You retrieve a Nevermere Blaster Mark IV."
 ItemPickupMessengerOfLove,"You retrieve the Messenger of Love."
 ItemPickupMoiraiScissors,"You retrieve Moirai's scissors."
@@ -6815,8 +6819,8 @@ KinkyDungeonSpellSlimethrower2,Slime
 KinkyDungeonSpellCastSlimethrower,You project a pool of sticky slime!
 KinkyDungeonSpellHeartArrow,Arrow of Love
 KinkyDungeonSpellCastHeartArrow,You loose a glowing arrow!
-KinkyDungeonSpellBondageBustBeam,Bondage Buster
-KinkyDungeonSpellBondageBust,Bondage Buster
+KinkyDungeonSpellBondageBustBeam,Bondage Buster EX
+KinkyDungeonSpellBondageBust,Bondage Buster EX
 KinkyDungeonSpellEnemyBlast,Blaster
 KinkyDungeonSpellCastBondageBust,You charge up a beam and fire it!
 KinkyDungeonSpellCastDisarm,You swing your weapon and pull away the target's equipment!

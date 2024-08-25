@@ -2052,8 +2052,8 @@ I have altered the rules. Pray I do not alter them further.
 He alterado las reglas. Ruego que no los altere más.
 Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
 Inflige daño en cadena con un 110 % de eficiencia vinculante, +40 de daño de las sombras a las invocaciones. +25% daño de pegamento y cadena. Ataque a distancia: Desarmar
-Bondage Buster
-destructor de la servidumbre
+Bondage Buster EX
+Bondage Buster EX
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
 Puede disparar un rayo (canal de 1 turno) que inflige 30 de daño eléctrico, pero se carga cuando no se dispara, lo que inflige 90 de daño total con 10 turnos de carga.
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
@@ -7386,8 +7386,8 @@ You pick up The Arbiter.
 Recoges al árbitro.
 You pick up Dreamcatcher.
 Recoges Dreamcatcher.
-You retrieve the Bondage Buster.
-Recuperas el Bondage Buster.
+You retrieve the Bondage Buster EX.
+Recuperas el Bondage Buster EX.
 You retrieve a Nevermere Blaster Mark IV.
 Recuperas un Nevermere Blaster Mark IV.
 You retrieve the Messenger of Love.

@@ -2007,8 +2007,8 @@ I have altered the rules. Pray I do not alter them further.
 I have altered the rules. Pray I do not alter them further.
 Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
 Deals chain damage with 110% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
-Bondage Buster
-Bondage Buster
+Bondage Buster EX
+Bondage Buster EX
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.

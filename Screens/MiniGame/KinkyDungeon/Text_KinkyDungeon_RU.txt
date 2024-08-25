@@ -2611,8 +2611,8 @@ I have altered the rules. Pray I do not alter them further.
 Я изменил правила. Молитесь, чтобы этого не повторилось.
 Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
 Наносит цепной урон со 125%-ной эффективностью сковывания, +40 урона тьмой по суммонам. +25% цепного урона и урона слизью. Способность оружия: Обезоруживание.
-Bondage Buster
-Бондаж-бластер
+Bondage Buster EX
+Бондаж-бластер EX
 Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
 Может выстрелить лучом (применяется 1 ход) который наносит 30 единиц электрического урона и накладывает сковывание, числом равное энергии. Заряжается, когда не стреляет, нанося до 90 единиц урона за 10 ходов заряда
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
@@ -8717,8 +8717,8 @@ You pick up The Arbiter.
 Вы находите Арбитра.
 You pick up Dreamcatcher.
 Вы находите Ловец Снов.
-You retrieve the Bondage Buster.
-Вы подбираете Бондаж-бластер.
+You retrieve the Bondage Buster EX.
+Вы подбираете Бондаж-бластер EX.
 You retrieve a Nevermere Blaster Mark IV.
 Вы подбираете Бластер Невермера Марк-IV.
 You retrieve the Messenger of Love.
@@ -11047,8 +11047,8 @@ You loose a glowing arrow!
 Вы выпускаете светящуюся стрелу!
 Bondage Buster
 Бондаж-бластер
-Bondage Buster
-Бондаж-бластер
+Bondage Buster EX
+Бондаж-бластер EX
 Blaster
 Бластер
 You charge up a beam and fire it!

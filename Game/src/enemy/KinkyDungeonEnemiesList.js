@@ -1780,7 +1780,7 @@ let KinkyDungeonEnemies = [
 		playLine: "Cyborg",
 		outfit: "Cyborg",
 		style: "Bandit",
-		bound: "Cyborg", color: "#f0b541",
+		bound: "CyborgGuardian", color: "#f0b541",
 		tags: KDMapInit(["leashing", "opendoors", "closedoors", "jail", "jailer", "melee", "unflinching", "miniboss", "robot", "cyborg", "guardian", "cyberhogtie", "cyberdollrestraints", "cyberdollheavy", "controlharness", "handcuffer",
 			"electricweakness", "coldresist", "iceresist", "slashresist", "pierceresist"]),
 		noDisplace: false, disarm: 0.5,
