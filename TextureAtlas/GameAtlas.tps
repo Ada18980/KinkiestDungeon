@@ -3766,6 +3766,10 @@
             </struct>
             <key type="filename">../Game/Layers.png</key>
             <key type="filename">../Game/UI/Floppy.png</key>
+            <key type="filename">../Game/UI/Load.png</key>
+            <key type="filename">../Game/UI/Reset.png</key>
+            <key type="filename">../Game/UI/Restore.png</key>
+            <key type="filename">../Game/UI/Safe.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
             <key type="filename">../Game/UI/UsePotionFrigid.png</key>
             <key type="filename">../Game/UI/UsePotionInject.png</key>
@@ -4187,6 +4191,21 @@
                 <rect>10,10,21,21</rect>
                 <key>scale9Paddings</key>
                 <rect>10,10,21,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/UI/Revert.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,12,24,24</rect>
+                <key>scale9Paddings</key>
+                <rect>12,12,24,24</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

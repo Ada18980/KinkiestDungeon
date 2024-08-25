@@ -1682,6 +1682,7 @@ function KinkyDungeonRun() {
 			if (StandalonePatched) {
 				KDSpeakerNPC = null;
 				KinkyDungeonState = "Wardrobe";
+				KDCanRevertFlag = false;
 				KDWardrobeCallback = null;
 				KDWardrobeRevertCallback = null;
 				KDPlayerSetPose = false;
@@ -1938,6 +1939,7 @@ function KinkyDungeonRun() {
 			DrawButtonKDEx("loadclothes", (b) => {
 				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
+				KDCanRevertFlag = false;
 				//KDWardrobeCallback = null;
 				//KDWardrobeRevertCallback = null;
 
@@ -4070,7 +4072,6 @@ function KDDrawLoadMenu() {
 			KDConfirmDeleteSave = false;
 
 			KDSaveSlot = num;
-			localStorage.setItem('KDLastSaveSlot', num.toString());
 
 			return true;
 		}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
@@ -4160,7 +4161,6 @@ function KDDrawLoadMenu() {
 			}
 
 			KDSaveSlot = 0;
-			localStorage.setItem('KDLastSaveSlot', "0");
 		}
 		return true;
 	}, true, CombarXX + 220, 880, 180, 64, TextGet("LoadFromCodeButton"), "#ffffff", "");
@@ -4215,13 +4215,17 @@ function KDDrawLoadMenu() {
 					loadedSaveforPreview.inventoryarray.restraint,
 					KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
 						loadedSaveforPreview.inventoryarray.restraint),
-					KDToggles.ForcePalette ? KDDefaultPalette : undefined);
+					KDToggles.ForcePalette ? KDDefaultPalette : undefined, true);
 			}
 			DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true);
 
 		}
 		// New Game Text
-		DrawTextFitKD(`Floor ${loadedSaveforPreview.level}${(loadedSaveforPreview.npp > 0) ? (" - NG+"+loadedSaveforPreview.npp) : ("")}`, CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
+		DrawTextFitKD(TextGet("KDSlotLocFormat")
+			.replace("FLR", "" + loadedSaveforPreview.level)
+			.replace("DGN", TextGet("DungeonName" + loadedSaveforPreview.checkpoint))
+			+ ((loadedSaveforPreview.npp > 0) ? TextGet("KDSlotLocNG")
+				.replace("AMNT", "" + loadedSaveforPreview.npp) : ""), CombarXX + 1100, YYstart + 40, 450, "#ffffff", undefined, 40);
 
 		// Difficulty
 		let difficultytext = "KDHardMode0";
@@ -4549,10 +4553,11 @@ function KinkyDungeonDressModelPreview() {
 	return new Promise((res, rej) => {
 		KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 		KDPreviewModel.ID++;
-		if (loadedSaveforPreview.saveStat.appearance) {
+		if (loadedSaveforPreview.saveStat?.appearance) {
 			KDPreviewModel.Appearance = JSON.parse(JSON.stringify(loadedSaveforPreview.saveStat.appearance));
 			if (KDCurrentModels.get(KDPreviewModel))
 				KDCurrentModels.get(KDPreviewModel).Poses = loadedSaveforPreview.saveStat.poses;
+
 			UpdateModels(KDPreviewModel);
 		}
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
@@ -4562,7 +4567,7 @@ function KinkyDungeonDressModelPreview() {
 			loadedSaveforPreview.inventoryarray.restraint,
 			KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
 				loadedSaveforPreview.inventoryarray.restraint),
-			KDToggles.ForcePalette ? KDDefaultPalette : undefined);
+			KDToggles.ForcePalette ? KDDefaultPalette : undefined, true);
 		ModelPreviewLoaded = true;
 		res(true);
 		//}, 50);
@@ -4791,133 +4796,8 @@ function KinkyDungeonLoadPreview(String) {
 
 				returndata.journey = saveData.KDGameData.Journey;
 
-				/*
-			KDInitInventory();
+				returndata.saveStat = saveData.saveStat;
 
-			for (let item of saveData.inventory) {
-				if (item.type == Restraint) {
-					let restraint = KinkyDungeonGetRestraintByName(item.name);
-					if (restraint) {
-						KinkyDungeonAddRestraint(restraint, 0, true, item.lock, undefined, undefined, undefined, undefined, item.faction, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true); // Add the item
-						let createdrestraint = KinkyDungeonGetRestraintItem(restraint.Group);
-						if (createdrestraint) createdrestraint.lock = item.lock; // Lock if applicable
-						if (createdrestraint) createdrestraint.events = item.events; // events if applicable
-						if (item.dynamicLink) {
-							let host = item;
-							let link = item.dynamicLink;
-							while (link) {
-								if (!KinkyDungeonGetRestraintByName(link.name)) {
-									//host = link; do not chjange the host
-									link = link.dynamicLink;
-									host.dynamicLink = link;
-								} else {
-									host = link;
-									link = link.dynamicLink;
-								}
-
-							}
-						}
-						KinkyDungeonInventoryAdd(item);
-					}
-				} else {
-					if (KDConsumable(item) != undefined || KDWeapon(item) != undefined || KDRestraint(item) != undefined || KDOutfit(item) != undefined)
-						KinkyDungeonInventoryAdd(item);
-				}
-				KDUpdateItemEventCache = true;
-			}
-			*/
-
-				//KinkyDungeonSpells = [];
-				//KDRefreshSpellCache = true;
-				//for (let spell of saveData.spells) {
-				//let sp = KinkyDungeonFindSpell(spell);
-				//if (sp) KDPushSpell(sp);
-				//}
-
-				//if (saveData.KDWorldMap) KDWorldMap = JSON.parse(JSON.stringify(saveData.KDWorldMap));
-				//if (saveData.KDPersistentNPCs) KDPersistentNPCs = JSON.parse(saveData.KDPersistentNPCs);
-				//if (saveData.KDDeletedIDs) KDDeletedIDs = JSON.parse(saveData.KDDeletedIDs);
-				//if (saveData.KDPersonalAlt) KDPersonalAlt = JSON.parse(saveData.KDPersonalAlt);
-
-				//if (saveData.KinkyDungeonPlayerEntity) KinkyDungeonPlayerEntity = saveData.KinkyDungeonPlayerEntity;
-				/*if (saveData.KDMapData) {
-				KDMapData = Object.assign(KDDefaultMapData("", ""), JSON.parse(JSON.stringify(saveData.KDMapData)));
-				if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
-				KinkyDungeonGenNavMap();
-			} else {
-				if (saveData.KinkyDungeonEffectTiles) KDMapData.EffectTiles = saveData.KinkyDungeonEffectTiles;
-				if (saveData.KinkyDungeonTiles) KDMapData.Tiles = saveData.KinkyDungeonTiles;
-				if (saveData.KinkyDungeonTilesSkin) KDMapData.TilesSkin = saveData.KinkyDungeonTilesSkin;
-				if (saveData.KinkyDungeonTilesMemory) KDMapData.TilesMemory = saveData.KinkyDungeonTilesMemory;
-				if (saveData.KinkyDungeonRandomPathablePoints) KDMapData.RandomPathablePoints = saveData.KinkyDungeonRandomPathablePoints;
-				if (saveData.KinkyDungeonEntities) KDMapData.Entities = saveData.KinkyDungeonEntities;
-				if (saveData.KinkyDungeonBullets) KDMapData.Bullets = saveData.KinkyDungeonBullets;
-				if (saveData.KinkyDungeonStartPosition) KDMapData.StartPosition = saveData.KinkyDungeonStartPosition;
-				if (saveData.KinkyDungeonEndPosition) KDMapData.EndPosition = saveData.KinkyDungeonEndPosition;
-				if (saveData.KinkyDungeonGrid) {
-					KDMapData.Grid = saveData.KinkyDungeonGrid;
-					KDMapData.GridWidth = saveData.KinkyDungeonGridWidth;
-					KDMapData.GridHeight = saveData.KinkyDungeonGridHeight;
-				}
-				KinkyDungeonResetFog();
-				if (saveData.KinkyDungeonFogGrid) KDMapData.FogGrid = saveData.KinkyDungeonFogGrid;
-			}
-			KinkyDungeonLeashingEnemy();
-			KinkyDungeonJailGuard();
-			if (saveData.KDCommanderRoles) KDCommanderRoles = new Map(saveData.KDCommanderRoles);
-
-			KDUpdateEnemyCache = true;
-			*/
-				// bandaid
-				/*for (let enemy of KDMapData.Entities) {
-				if (enemy.buffs) {
-					for (let b of Object.keys(enemy.buffs)) {
-						if (!enemy.buffs[b]) {
-							delete enemy.buffs[b];
-						}
-					}
-				}
-			}*/
-
-				//if (typeof KDGameData.PreviousWeapon == 'string') KDGameData.PreviousWeapon = ["Unarmed", "Unarmed", "Unarmed", "Unarmed"];
-
-				//KinkyDungeonSetMaxStats();
-				//KinkyDungeonCheckClothesLoss = true;
-				//KDNaked = false;
-
-				// Here is where we can figure out how to dress the player in preview
-				//KinkyDungeonDressPlayer();
-
-
-				//KDRefresh = true;
-				//KDUpdateEnemyCache = true;
-
-				//if (saveData.mapIndex && !saveData.mapIndex.length) KinkyDungeonMapIndex = saveData.mapIndex;
-
-				//if (!KDGameData.SlowMoveTurns) KDGameData.SlowMoveTurns = 0;
-				//if (String)
-				//localStorage.setItem('KinkyDungeonSave', String);
-
-				//if (saveData.KDGameData && saveData.KDGameData.LastMapSeed) KDsetSeed(saveData.KDGameData.LastMapSeed);
-
-				/*
-			if (!KinkyDungeonMapIndex.grv || !KDGameData.JourneyProgression)
-				KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
-
-			if (!KDGameData.JourneyMap) {
-				KDInitJourneyMap(MiniGameKinkyDungeonLevel);
-			}
-
-			if (saveData.KDMapData || saveData.KinkyDungeonGrid) {
-				KDUpdateVision();
-			}
-			KinkyDungeonFloaters = [];
-			KDFixNeeds();
-			KDSortCollection();
-			KinkyDungeonAdvanceTime(0, true, true);
-			KinkyDungeonSendEvent("afterLoadGame", {});
-			return true;
-			*/
 				return returndata;
 			}
 		}
@@ -5116,6 +4996,7 @@ function KinkyDungeonHandleClick() {
 				KDRefreshCharacter.set(Char, true);
 				KinkyDungeonDressPlayer(Char, true);
 				KinkyDungeonState = "Wardrobe";
+				KDCanRevertFlag = false;
 				//KDWardrobeCallback = null;
 				//KDWardrobeRevertCallback = null;
 
@@ -5160,6 +5041,7 @@ function KinkyDungeonHandleClick() {
 			if (StandalonePatched) {
 				KDRestoreOutfit();
 				KinkyDungeonState = "Wardrobe";
+				KDCanRevertFlag = false;
 				KDWardrobeCallback = null;
 				KDWardrobeRevertCallback = null;
 			} else {
@@ -5747,6 +5629,7 @@ function KinkyDungeonCompressSave(save) {
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
 function KinkyDungeonLoadGame(String) {
+	localStorage.setItem('KDLastSaveSlot', "" + KDSaveSlot);
 	KinkyDungeonSendEvent("beforeLoadGame", {});
 	let str = String ? DecompressB64(String.trim()) : (localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave')) : "");
 	if (str) {
@@ -5760,6 +5643,11 @@ function KinkyDungeonLoadGame(String) {
 			&& saveData.rep != undefined
 			&& saveData.dress != undefined) {
 
+			if (!KDToggles.OverrideOutfit && saveData.saveStat) {
+				if (saveData.saveStat.default) {
+					KDGetDressList().Default = saveData.saveStat.default;
+				}
+			}
 
 			KDPathfindingCacheFails = 0;
 			KDPathfindingCacheHits = 0;

@@ -4,6 +4,8 @@
 let KDConfirmType = "";
 let KinkyDungeonReplaceConfirm = 0;
 
+let KDCanRevertFlag = false;
+
 let KDCurrentOutfit = 0;
 let KDMaxOutfits = 99;
 let KDMaxOutfitsDisplay = 10;
@@ -1298,9 +1300,9 @@ function KDDrawWardrobe(screen, Character) {
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
 			KDRefreshCharacter.set(C, true);
-			if (KinkyDungeonCurrentDress != "Bikini")
+			if (KDCharacterDress.get(C) != "Bikini") {
 				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
-			else
+			} else
 				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
 			if (C == KinkyDungeonPlayer) {
@@ -1351,7 +1353,7 @@ function KDDrawWardrobe(screen, Character) {
 	}, true, 465, 820, 240, 50,
 	TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'revert') ?
 		"KDWardrobeCancelConfirm" :
-		"KDWardrobeCancel"), KDOriginalValue ? "#ffffff" : "#888888",
+		"KDWardrobeCancel"), ((C == KinkyDungeonPlayer && KDOriginalValue) || (KDCanRevertFlag)) ? "#ffffff" : "#888888",
 		KinkyDungeonRootDirectory + "UI/Revert.png", undefined, undefined, undefined,
 		undefined, undefined, true);
 	if (C == KinkyDungeonPlayer) {
@@ -1479,7 +1481,7 @@ function KDDrawWardrobe(screen, Character) {
 				}
 			navigator.clipboard.writeText(JSON.stringify(exportData));
 			return true;
-		}, true, 725, 790, 100, 60,
+		}, true, 945, 950, 100, 60,
 		TextGet("KDCreateOutfit"), "#99ff99", "");
 		DrawButtonKDEx("KDCreateAlwaysDress", (bdata) => {
 			/** @type {alwaysDressModel[]} */
@@ -1500,7 +1502,7 @@ function KDDrawWardrobe(screen, Character) {
 				}
 			navigator.clipboard.writeText(JSON.stringify(exportData));
 			return true;
-		}, true, 725, 730, 100, 60,
+		}, true, 945, 890, 100, 60,
 		TextGet("KDCreateAlwaysDress"), "#99ff99", "");
 
 
@@ -1521,7 +1523,7 @@ function KDDrawWardrobe(screen, Character) {
 				}
 			navigator.clipboard.writeText(JSON.stringify(exportData));
 			return true;
-		}, true, 945, 730, 100, 60,
+		}, true, 945, 710, 100, 60,
 		TextGet("KDCreateFace"), "#99ff99", "");
 		DrawButtonKDEx("KDCreateHair", (bdata) => {
 			let exportData = [];
@@ -1540,7 +1542,7 @@ function KDDrawWardrobe(screen, Character) {
 				}
 			navigator.clipboard.writeText(JSON.stringify(exportData));
 			return true;
-		}, true, 845, 790, 100, 60,
+		}, true, 945, 830, 100, 60,
 		TextGet("KDCreateHair"), "#99ff99", "");
 		DrawButtonKDEx("KDCreateCosplay", (bdata) => {
 			let exportData = [];
@@ -1559,7 +1561,7 @@ function KDDrawWardrobe(screen, Character) {
 				}
 			navigator.clipboard.writeText(JSON.stringify(exportData));
 			return true;
-		}, true, 945, 790, 100, 60,
+		}, true, 945, 770, 100, 60,
 		TextGet("KDCreateCosplay"), "#99ff99", "");
 	}
 

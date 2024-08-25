@@ -482,7 +482,7 @@ AddModel({
 	Folder: "Dress",
 	Parent: "Dress",
 	TopLevel: true,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "LaceCrotchPanel", Layer: "Panties", Pri: 30,
 			//swaplayerpose: {Kneel: "PantiesLower", KneelClosed: "PantiesLower"},
@@ -514,7 +514,7 @@ AddModel({
 	Folder: "Dress",
 	Parent: "LacePanties",
 	TopLevel: false,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "LaceCrotchPanel", Layer: "CrotchPanelMid", Pri: 30,
 			//swaplayerpose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},

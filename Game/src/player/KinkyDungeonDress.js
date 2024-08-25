@@ -120,9 +120,8 @@ function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 	if (!Character || Character == KinkyDungeonPlayer) {
 		if (Outfit) KDGameData.Outfit = Outfit;
 		KinkyDungeonCurrentDress = Dress;
-	} else {
-		KDCharacterDress.set(Character, Dress);
 	}
+	KDCharacterDress.set(Character, Dress);
 	if (KDGetDressList()) {
 		if (!Character || Character == KinkyDungeonPlayer) {
 			for (let clothes of KDGetDressList()[KinkyDungeonCurrentDress]) {
@@ -130,7 +129,7 @@ function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
 			}
 		}
 		//KinkyDungeonCheckClothesLoss = true;
-		KDCharacterDress.set(Character || KinkyDungeonPlayer);
+		KDRefreshCharacter.set(Character || KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer(Character, NoRestraints);
 		KDRefresh = true;
 	}
@@ -151,8 +150,9 @@ let KDLastForceRefreshInterval = 100;
  * @param {item[]} [customInventory]
  * @param {Map<string, boolean>} [customPlayerTags]
  * @param {string} [customFaction]
+ * @param {boolean} [noDressOutfit]
  */
-function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, customInventory, customPlayerTags, customFaction) {
+function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, customInventory, customPlayerTags, customFaction, noDressOutfit) {
 	if (!Character) Character = KinkyDungeonPlayer;
 
 	let _CharacterRefresh = CharacterRefresh;
@@ -170,10 +170,11 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 
 	let restraintModels = {};
 
-	let CurrentDress = (Character == KinkyDungeonPlayer || Character == KinkyDungeonCurrentDress) ? KinkyDungeonCurrentDress : Character == KDPreviewModel ? KinkyDungeonCurrentDress : (KDCharacterDress.get(Character) || "Bandit");
-	let DressList = KDGetDressList()[CurrentDress];
+	let CurrentDress = Character == KinkyDungeonPlayer ? KinkyDungeonCurrentDress
+		: (Character == KDPreviewModel ? KinkyDungeonCurrentDress : (KDCharacterDress.get(Character) || "Bandit"));
+	let DressList = noDressOutfit ? [] : KDGetDressList()[CurrentDress];
 
-	if (KDNPCStyle.get(Character)?.customOutfit) {
+	if (!noDressOutfit && KDNPCStyle.get(Character)?.customOutfit) {
 		DressList = [];
 		for (let a of JSON.parse(DecompressB64(KDNPCStyle.get(Character)?.customOutfit))) {
 			if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {

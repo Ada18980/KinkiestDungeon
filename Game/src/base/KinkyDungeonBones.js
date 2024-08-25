@@ -152,7 +152,9 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Dressmaker", [
 		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "Melissa", color: "#853cff", prisoner: true, free: true, customPlayLine: "Melissa", customIntro: "My name's Melissa! I know I'm pretty, but try not to stare too much~", customSprite: "Melissa"},
+		{name: "Melissa", color: "#853cff", prisoner: true, free: true, customPlayLine: "Melissa",
+			customStyle: "Melissa", customOutfit: "Melissa",
+			customIntro: "My name's Melissa! I know I'm pretty, but try not to stare too much~", customSprite: "Melissa"},
 		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "Hello, I am a dressmaker and the name's Alice! Need a new dress?", customSprite: ""},
 	],
 	],
@@ -1082,6 +1084,12 @@ function KDProcessCustomPatronPet(pets, e, index) {
 			e.CustomSprite = custom.customSprite;
 			if (custom.customPlayLine) {
 				e.playLine = custom.customPlayLine;
+			}
+			if (custom.customStyle) {
+				e.style = custom.customStyle;
+			}
+			if (custom.customOutfit) {
+				e.outfit = custom.customOutfit;
 			}
 			if (custom.customIntro) {
 				e.intro = custom.customIntro;
