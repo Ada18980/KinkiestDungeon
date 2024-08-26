@@ -2174,7 +2174,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
  * A shop where the seller sells items
  * @returns {KinkyDialogue}
  */
-function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, itemsdrop) {
+function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, itemsdrop, multiplier = 1) {
 	if (!markup) markup = 1.0;
 	let shop = {
 		shop: true,
@@ -2241,7 +2241,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 				let buy = false;
 				if (KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["ItemCost"+i]) {
 					buy = true;
-					if (!KDGiveItem(item)) {
+					if (!KDGiveItem(item, multiplier)) {
 						KDGameData.CurrentDialogMsg = name + "_AlreadyHave";
 						buy = false;
 					}

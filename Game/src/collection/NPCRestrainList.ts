@@ -243,4 +243,7 @@ let KDQuickBindConditions: Record<string, (target: entity, player: entity, restr
 	TapeBlindfold: (target, player, restraint, item) => {
 		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
 	},
+	BallGag: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0 || KDEntityHasFlag(target, "verbalcast");
+	},
 };

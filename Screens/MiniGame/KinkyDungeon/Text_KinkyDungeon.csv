@@ -2750,6 +2750,8 @@ NameArmorerQuest,Armorer
 KillArmorerQuest,You murder the armorer!
 NameBowyerQuest,Bowyer
 KillBowyerQuest,You murder the bowyer!
+NameShadyQuest,Not a Kidnapper
+KillShadyQuest,You bring the kidnapper to justice!
 
 NameDressmaker,Dressmaker
 KillDressmaker,"The dressmaker storms out in a rage."
@@ -3655,10 +3657,10 @@ RestraintTrackingCollarDesc,"An advanced collar for registering prisoners into t
 RestraintTrackingCollarDesc2,"It seems to be made of flexible steel plates, and it has a high-security lock."
 
 RestraintLatexBallGag,Latex Ball Gag
-RestraintLatexBallGagDesc,"A devious device that looks like a ball gag, but has a mouth-filling rod on the inside."
+RestraintLatexBallGagDesc,"A devious device that looks like a ball gag, but has a mouth-filling rod on the inside. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintLatexBallGagDesc2,"The strap is made of a durable but flexible material"
 RestraintLatexBallGagLarge,Large Latex Ball Gag
-RestraintLatexBallGagLargeDesc,"A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder."
+RestraintLatexBallGagLargeDesc,"A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintLatexBallGagLargeDesc2,"The strap is made of a durable but flexible material"
 
 RestraintLatexOTNGag,Latex Mask
@@ -3683,7 +3685,7 @@ RestraintRedLatexMaskDesc,"A mass of alchemical latex stretched over your entire
 RestraintRedLatexMaskDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
 
 RestraintRedLatexBallGag,Rubberized Ball Gag
-RestraintRedLatexBallGagDesc,"A mass of alchemical latex inflated to fill your mouth, then hardened."
+RestraintRedLatexBallGagDesc,"A mass of alchemical latex inflated to fill your mouth, then hardened. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintRedLatexBallGagDesc2,"Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!"
 
 RestraintRedLatexOTNGag,Rubberized OTN Mask
@@ -4007,7 +4009,7 @@ RestraintAutoTapeCollarDesc2,"It will occasionally cause tape to appear out of n
 
 
 RestraintStuffing,Stuffing
-RestraintStuffingDesc,"A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar."
+RestraintStuffingDesc,"A stuffing of cloth. Can be applied on vulnerable targets or those who casted a verbal spell last turn."
 RestraintStuffingDesc2,"You could spit it out easily, provided nothing's covering it."
 
 
@@ -4159,19 +4161,19 @@ RestraintPVCHarness,Rubberized Harness
 RestraintPVCHarnessDesc,"A harness made of latex polymer, resistant to most solvents and corrosion."
 RestraintPVCHarnessDesc2,"Can be worn all day! Also convenient to hold."
 RestraintTrapGag,Ball Gag
-RestraintTrapGagDesc,"A gag made of a red squishy material."
+RestraintTrapGagDesc,"A gag made of a red squishy material. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintTrapGagDesc2,"You can't seem to enunciate your spells properly with this in."
 RestraintTrapGagLarge,Large Ball Gag
-RestraintTrapGagLargeDesc,"A mouth-filling gag made of a red squishy material."
+RestraintTrapGagLargeDesc,"A mouth-filling gag made of a red squishy material. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintTrapGagLargeDesc2,"You can't seem to enunciate your spells properly with this in."
 RestraintMagicGag,Tight Ball Gag
-RestraintMagicGagDesc,"A gag made of a red squishy material, buckled as tight as it will go."
+RestraintMagicGagDesc,"A gag made of a red squishy material, buckled as tight as it will go. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintMagicGagDesc2,"You can't seem to enunciate your spells properly with this in."
 RestraintMagicGagLarge,Huge Ball Gag
-RestraintMagicGagLargeDesc,"A massive gag made of a red squishy material, buckled as tight as it will go."
+RestraintMagicGagLargeDesc,"A massive gag made of a red squishy material, buckled as tight as it will go. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintMagicGagLargeDesc2,"You absolutely can't enunciate your spells properly with this in."
 RestraintMagicGag2,Magic Ball Gag
-RestraintMagicGag2Desc,"A gag enchanted with magic. It grows to fill your mouth so you can hardly speak."
+RestraintMagicGag2Desc,"A gag enchanted with magic. It grows to fill your mouth so you can hardly speak. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength."
 RestraintMagicGag2Desc2,"It's brimming with conjured energy. A normal knife won't work here!"
 RestraintAntiMagicGag,Anti-Magic Gag
 RestraintAntiMagicGagDesc,"A gag designed to cripple mages. It's made of a squishy rubbery material."
@@ -9856,7 +9858,7 @@ KinkyDungeonRemindJailChaseElementalHonor0,"Why don't we turn the tables?"
 KinkyDungeonRemindJailChaseElementalHonor1,"It'll be fun seeing you squirm~"
 KinkyDungeonRemindJailChaseElementalHonor2,"We are the keepers of balance."
 KinkyDungeonRemindJailChaseElementalCommandDefend,"Do not mess with us!"
-KinkyDungeonRemindJailChaseElementalCommandAssault,"I shall take you myself~"
+KinkyDungeonRemindJailChaseElementalCommandAssault,"I shall take you for myself~"
 KinkyDungeonRemindJailChaseElementalCommandBlock,"Where do you think you're going?"
 
 
@@ -9971,7 +9973,7 @@ KinkyDungeonRemindJailChaseAngelHonor0,"Why don't we turn the tables?"
 KinkyDungeonRemindJailChaseAngelHonor1,"It'll be fun seeing you squirm~"
 KinkyDungeonRemindJailChaseAngelHonor2,"We are the keepers of balance."
 KinkyDungeonRemindJailChaseAngelCommandDefend,"Do not mess with us!"
-KinkyDungeonRemindJailChaseAngelCommandAssault,"I shall take you myself~"
+KinkyDungeonRemindJailChaseAngelCommandAssault,"I shall take you for myself~"
 KinkyDungeonRemindJailChaseAngelCommandBlock,"Where do you think you're going?"
 
 KinkyDungeonRemindJailPlayHelplessDomMaid0,"This is too tight..."
@@ -11898,6 +11900,20 @@ rBowyerShopCrossbow,"(The SPEAKER shrugs)|It's big and bulky, but I guess it has
 rBowyerShopCrossbowPistol,"(The SPEAKER giggles)|Smile for the camera!"
 rBowyerShopAncientPowerSource,"(The SPEAKER nods)|It's like mana, but much more portable!|It powers duplication runes so you don't run out of arrows."
 rBowyerShopTrapBlindfold,"(The SPEAKER giggles)|I like to include these as a gift with every purchase~"
+
+rShadyShop,"(The SPEAKER whispers in a hushed tone)|Welcome.|I'm not supposed to be here, so|if you don't want to do business, get out.|I only sell in packs of 10, by the way."
+rShadyShopAttack,"(The SPEAKER tries to get away)|Damn!"
+rShadyShop_AlreadyHave,"(The SPEAKER looks you over and shrugs)|Don't joke around."
+rShadyShop_NoMoney,"(The SPEAKER folds her arms)|Don't have money? Better go find some."
+rShadyShopStuffing,"(The SPEAKER produces a bag of stuffings)|Quite the staple."
+rShadyShopRopeSnakeRaw,"(The SPEAKER produces a bundle of rope)|Aren't you quite the artist.|That was rhetorical."
+rShadyShopVinylTapeRaw,"(The SPEAKER produces some bondage tape)|It only sticks to itself, doesn't leave residue.|Gotta be responsible, you know?"
+rShadyShopClothGag,"(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally..."
+rShadyShopClothGag2,"(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally..."
+rShadyShopClothGag3,"(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally..."
+rShadyShopClothGagOver,"(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally..."
+rShadyShopClothBlindfold,"(The SPEAKER produces a bag of cloth strips)|How tight you tie it depends on how bratty your target is."
+
 
 
 rAntiqueShop,"(The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!"
@@ -24030,3 +24046,10 @@ KinkyDungeonStatMC_Mage,"Wizard"
 
 KDSlotLocFormat,"FLR-DGN"
 KDSlotLocNG+," (NG+AMNT)"
+
+
+KDBondageFailInvalidTargetHandcuffs,Target must be vulnerable.
+KDBondageFailInvalidTargetStuffing,Target must be vulnerable or have casted a verbal spell.
+KDBondageFailInvalidTargetTapeGag,Target must be vulnerable.
+KDBondageFailInvalidTargetTapeBlindfold,Target must be vulnerable.
+KDBondageFailInvalidTargetBallGag,Target must have casted a verbal spell.

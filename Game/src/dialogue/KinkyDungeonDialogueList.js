@@ -2781,7 +2781,9 @@ let KDDialogue = {
 	"AntiqueShop": KDSaleShop("AntiqueShop", ["Sunglasses", "Snuffer", "SackOfSacks", "Rope"], [], ["blacksmith"], 0.4, 2),
 	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Lockpick", "Knife", "Sword", "Hammer", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
 	"ArmorerShop": KDSaleShop("ArmorerShop", ["Shield", "Breastplate", "Bracers", "Gauntlets", "SteelBoots", "ChainTunic", "ChainBikini", "TrapBelt", "TrapBra"], [], ["blacksmith"], 0.4, 2.0),
-	"BowyerShop": KDSaleShop("BowyerShop", ["AncientPowerSource", "Bow", "BowRecurve", "Crossbow", "CrossbowPistol", "Bustier", "LeatherGloves", "LeatherBoots", "TrapBlindfold"], [], ["blacksmith"], 0.4, 1.75),
+	"BowyerShop": KDSaleShop("BowyerShop", ["AncientPowerSource", "Bow", "BowRecurve", "Crossbow", "CrossbowPistol", "Bustier", "LeatherGloves", "LeatherBoots", "TrapBlindfold"], [], ["blacksmith"], 0.4, 1.5),
+	"ShadyShop": KDSaleShop("ShadyShop",
+		["RopeSnakeRaw", "VinylTapeRaw", "Stuffing", "ClothGag", "ClothGag2", "ClothGag3", "ClothGagOver"], [], ["blacksmith"], 0.4, 5, "SmokeBomb", 10),
 	"PrisonerBandit": {
 		response: "Default",
 		personalities: ["Sub"],

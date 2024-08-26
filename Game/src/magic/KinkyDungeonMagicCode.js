@@ -266,7 +266,10 @@ let KinkyDungeonSpellSpecials = {
 				if (castdata.gaggedMiscastFlag) fail = true;
 			}
 			if (!fail) {
-				if (KDCanBind(en) && KDCanApplyBondage(en, entity,
+				if (KDCanBind(en)) {
+					//KDGameData.InventoryAction = "Bondage";
+
+					let canApply = KDCanApplyBondage(en, entity,
 						KinkyDungeonTargetingSpellItem ? (
 							KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition ?
 							(t, p) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](
@@ -274,8 +277,11 @@ let KinkyDungeonSpellSpecials = {
 								KDRestraint(KinkyDungeonTargetingSpellItem),
 								KinkyDungeonTargetingSpellItem)) :
 							false
-						) : undefined)) {
-					//KDGameData.InventoryAction = "Bondage";
+						) : undefined);
+					if (!canApply) {
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"
+							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), "#ff5555", 1, true);
+					}
 
 					if (KinkyDungeonTargetingSpellItem) {
 						let r = KDRestraint(KinkyDungeonTargetingSpellItem);
@@ -318,7 +324,7 @@ let KinkyDungeonSpellSpecials = {
 										KDNPCBindingSelectedRow = slots.row;
 										KDNPCBindingSelectedSlot = slots.sgroup;
 										KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
-									} else {
+									} else if (canApply) {
 										KDInputSetNPCRestraint({
 											slot: slots.sgroup.id,
 											id: undefined,

@@ -244,19 +244,26 @@ function KDRestraint(item) {
 /**
  * gets a restraint
  * @param {Named} item
+ * @param {entity} target
  * @returns {number}
  */
-function KDRestraintBondageMult(item) {
+function KDRestraintBondageMult(item, target) {
 	let r = KDRestraint(item);
 	if (r) {
 		let data = {
 			item: item,
+			target: target,
 			restraint: r,
 			type: KDRestraintBondageType(item),
 			override: undefined,
 			overridePriority: 0,
 			mult: r.npcBondageMult || 2,
 		};
+
+		if (r.quickBindMult && target && !KinkyDungeonIsDisabled(target)) {
+			data.mult *= r.quickBindMult;
+			data.quickBind = true;
+		}
 
 		KinkyDungeonSendEvent("calcBondageMult", data);
 		return data.mult * ((KDSpecialBondage[data.type]) ? (KDSpecialBondage[data.type].enemyBondageMult || 1) : 1);

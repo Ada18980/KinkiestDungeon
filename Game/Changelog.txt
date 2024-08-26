@@ -37,6 +37,11 @@ TODO remove hogtie when released
 - Added panties by Boxtie
 - Added CyberPanties
 - Added Gothic Skirt by Lumpychan
+- Added Bra and PantiesHigh by Boxtie
+- Added custom outfits for 3 of the custom patrons
+- Added a sneaky dealer npc
+- Made truss em up menu show different colors and helpful messages based on what the restraining conditions are
+- Can now vault over soul crystals
 
 5.3-Patch1
 - Added toggle to only bind self from quick inv (instead of targeting)

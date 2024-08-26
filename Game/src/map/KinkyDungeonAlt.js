@@ -2392,6 +2392,11 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, '2');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 3) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
+	DialogueCreateEnemy(KDMapData.StartPosition.x + 12, KDMapData.StartPosition.y - 3, "ShadyQuest").AI = "guard";
+	KinkyDungeonMapSet(KDMapData.StartPosition.x + 12, KDMapData.StartPosition.y - 3, '2');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 12) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
+
+
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, "AntiqueQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, '2');

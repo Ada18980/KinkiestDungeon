@@ -3881,7 +3881,7 @@ let KDEventMapSpell = {
 		"VaultBasic": (e, spell, data) => {
 			if (!data.passThru && KinkyDungeonSlowLevel < 2) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
-				if (enemy && !enemy?.player && !KDIsImmobile(enemy)
+				if (enemy && !enemy?.player && (KDIsFlying(enemy) || !KDIsImmobile(enemy))
 					&& (KDIsFlying(enemy) || enemy.vulnerable || KinkyDungeonIsSlowed(enemy) || KinkyDungeonIsDisabled(enemy))) {
 					data.passThru = true;
 				}
@@ -3890,7 +3890,7 @@ let KDEventMapSpell = {
 		"Vault": (e, spell, data) => {
 			if (!data.passThru && KinkyDungeonSlowLevel < 2) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
-				if (enemy && !enemy?.player && !KDIsImmobile(enemy)) {
+				if (enemy && !enemy?.player && (KDIsFlying(enemy) || !KDIsImmobile(enemy))) {
 					data.passThru = true;
 				}
 			}
