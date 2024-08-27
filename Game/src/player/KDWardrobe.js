@@ -1402,7 +1402,7 @@ function KDDrawWardrobe(screen, Character) {
 					delete value.customOutfit;
 
 					let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
-					if (!value.bodystyle || !value.facestyle || !value.hairstyle || value.cosplaystyle == undefined) {
+					if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
 						if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
 							if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
 								let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
@@ -1423,7 +1423,9 @@ function KDDrawWardrobe(screen, Character) {
 						}
 					}
 					if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
-						KinkyDungeonSetDress(enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
+						KinkyDungeonSetDress(
+							value.outfit || enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit,
+							value.outfit || enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
 					}
 					KDRefreshCharacter.set(KDSpeakerNPC, true);
 					KinkyDungeonDressPlayer(KDSpeakerNPC, true);

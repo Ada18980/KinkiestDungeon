@@ -2971,15 +2971,15 @@ function KDGiveItem(name, quantity = 1) {
 		return true;
 	} else if (KinkyDungeonRestraintVariants[name]) {
 		let variant = KinkyDungeonRestraintVariants[name];
-		KDGiveInventoryVariant(variant, undefined, variant.curse, undefined, name, KinkyDungeonRestraintVariants[name].suffix);
+		KDGiveInventoryVariant(variant, undefined, variant.curse, undefined, name, KinkyDungeonRestraintVariants[name].suffix, undefined, undefined, quantity);
 		return true;
 	} else if (KDRestraint({name: name})) {
 		let restraint = KDRestraint({name: name});
 		if (!KinkyDungeonInventoryGetLoose(name)) {
-			KinkyDungeonInventoryAdd({name: name, type: LooseRestraint, events:restraint.events, quantity: 1, id: KinkyDungeonGetItemID()});
+			KinkyDungeonInventoryAdd({name: name, type: LooseRestraint, events:restraint.events, quantity: quantity, id: KinkyDungeonGetItemID()});
 		} else {
 			if (!KinkyDungeonInventoryGetLoose(name).quantity) KinkyDungeonInventoryGetLoose(name).quantity = 0;
-			KinkyDungeonInventoryGetLoose(name).quantity += 1;
+			KinkyDungeonInventoryGetLoose(name).quantity += quantity;
 		}
 		return true;
 	} else if (KDOutfit({name: name})) {

@@ -988,15 +988,19 @@
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Nara.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Parov.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Selly.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Nara.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Selly.png</key>
             <key type="filename">../Game/Enemies/Cyborg.png</key>
+            <key type="filename">../Game/Enemies/CyborgBerserker.png</key>
+            <key type="filename">../Game/Enemies/CyborgEnforcer.png</key>
             <key type="filename">../Game/Enemies/CyborgGuardian.png</key>
             <key type="filename">../Game/Enemies/Decoy.png</key>
             <key type="filename">../Game/Enemies/Demon.png</key>
@@ -1176,6 +1180,7 @@
             <key type="filename">../Game/Enemies/ShadowGhast.png</key>
             <key type="filename">../Game/Enemies/ShadowHand.png</key>
             <key type="filename">../Game/Enemies/ShadowWarrior.png</key>
+            <key type="filename">../Game/Enemies/ShadyQuest.png</key>
             <key type="filename">../Game/Enemies/ShopkeeperRescue.png</key>
             <key type="filename">../Game/Enemies/ShopkeeperStart.png</key>
             <key type="filename">../Game/Enemies/ShrineMaiden.png</key>
@@ -1269,6 +1274,9 @@
             <key type="filename">../Game/EnemiesBound/ConjurerTickler.png</key>
             <key type="filename">../Game/EnemiesBound/CorruptedAdventurer.png</key>
             <key type="filename">../Game/EnemiesBound/Cyborg.png</key>
+            <key type="filename">../Game/EnemiesBound/CyborgBerserker.png</key>
+            <key type="filename">../Game/EnemiesBound/CyborgEnforcer.png</key>
+            <key type="filename">../Game/EnemiesBound/CyborgGuardian.png</key>
             <key type="filename">../Game/EnemiesBound/Demon.png</key>
             <key type="filename">../Game/EnemiesBound/Deputy.png</key>
             <key type="filename">../Game/EnemiesBound/Dollmaker.png</key>

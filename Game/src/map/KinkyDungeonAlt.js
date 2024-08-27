@@ -302,6 +302,12 @@ let alts = {
 		data: {
 			summit: true,
 		},
+
+
+		elevatorCondition: (x, y) => {
+			return true; // Always unlocked once you are in
+		},
+
 		loadscript: (firstTime) => {
 			// Summit loadscript triggers escape for up to 10 NPCs
 
@@ -495,8 +501,8 @@ let alts = {
 		Title: "Caldera",
 		noWear: false, // Disables doodad wear
 		bossroom: false,
-		width: 20,
-		height: 20,
+		width: 21,
+		height: 21,
 		nopatrols: false,
 		setpieces: {
 			GuaranteedCell: 100,
@@ -2391,6 +2397,11 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, "BowyerQuest").AI = "guard";
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 3, KDMapData.StartPosition.y - 3, '2');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 3) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
+
+	DialogueCreateEnemy(KDMapData.StartPosition.x + 12, KDMapData.StartPosition.y - 3, "ShadyQuest").AI = "guard";
+	KinkyDungeonMapSet(KDMapData.StartPosition.x + 12, KDMapData.StartPosition.y - 3, '2');
+	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 12) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
+
 
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, "AntiqueQuest").AI = "guard";

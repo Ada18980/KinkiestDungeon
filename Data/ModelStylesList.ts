@@ -912,6 +912,42 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"LightBlueCute",
 		],
 	},
+	Melissa: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Melissa",
+		],
+		Hairstyle: [
+			"Melissa",
+		],
+	},
+	Nara: {
+		Cosplay: [
+			"Nara",
+		],
+		Bodystyle: [
+			"Nara",
+		],
+		Facestyle: [
+			"Nara",
+		],
+		Hairstyle: [
+			"Nara",
+		],
+	},
+	Myrtrice: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Myrtrice",
+		],
+		Hairstyle: [
+			"Myrtrice",
+		],
+	},
 	Fuuka: {
 		Cosplay: [
 			"Fuuka",

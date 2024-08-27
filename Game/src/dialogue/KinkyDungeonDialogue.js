@@ -854,7 +854,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 				},
 				options: {
 					"Wand": {
-						playertext: "Default", response: "Default", gag: true,
+						playertext: "Default", response: "Default",
 						prerequisiteFunction: (gagged, player) => {
 							return KinkyDungeonInventoryGet("VibeWand") != undefined && !KinkyDungeonIsHandsBound(true, true, 0.99);
 						},
@@ -870,7 +870,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						leadsToStage: "", dontTouchText: true, exitDialogue: true,
 					},
 					"Cuddle": {
-						playertext: "Default", response: "Default", gag: true,
+						playertext: "Default", response: "Default",
 						prerequisiteFunction: (gagged, player) => {
 							return true;
 						},
@@ -887,7 +887,7 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 						leadsToStage: "", dontTouchText: true, exitDialogue: true,
 					},
 					"Vibe": {
-						playertext: "Default", response: "Default", gag: true,
+						playertext: "Default", response: "Default",
 						prerequisiteFunction: (gagged, player) => {
 							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 							return KDEntityBuffedStat(enemy, "Plug") && KinkyDungeonInventoryGet("VibeRemote") != undefined && !KinkyDungeonIsHandsBound(true, true, 0.99);
@@ -2174,7 +2174,7 @@ function KDYesNoBasic(name, goddess, antigoddess, restraint, diffSpread, Offdiff
  * A shop where the seller sells items
  * @returns {KinkyDialogue}
  */
-function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, itemsdrop) {
+function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, itemsdrop, multiplier = 1) {
 	if (!markup) markup = 1.0;
 	let shop = {
 		shop: true,
@@ -2241,7 +2241,7 @@ function KDSaleShop(name, items, requireTags, requireSingleTag, chance, markup, 
 				let buy = false;
 				if (KinkyDungeonGold >= KDGameData.CurrentDialogMsgValue["ItemCost"+i]) {
 					buy = true;
-					if (!KDGiveItem(item)) {
+					if (!KDGiveItem(item, multiplier)) {
 						KDGameData.CurrentDialogMsg = name + "_AlreadyHave";
 						buy = false;
 					}

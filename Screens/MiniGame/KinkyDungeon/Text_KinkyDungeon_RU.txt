@@ -787,7 +787,7 @@ Novice Pet
 Начинающий питомец
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 Теперь вы можете перейти на спринт только нося петсьют. (Апгрейды доступны в дереве заклинаний)
-Novice Pet Perk
+Novice Pet Training
 Начинающий питомец (Перк)
 You can now sprint while wearing a petsuit.
 Теперь вы можете перейти на спринт только нося петсьют.
@@ -16331,7 +16331,7 @@ We are the keepers of balance.
 Мы - хранители равновесия.
 Do not mess with us!
 Не связывайся с нами!
-I shall take you myself~
+I shall take you for myself~
 Я провожу тебя сама~
 Where do you think you're going?
 Куда, по-твоему, ты направляешься?
@@ -16551,7 +16551,7 @@ We are the keepers of balance.
 Мы - хранители равновесия.
 Do not mess with us!
 Не связывайся с нами!
-I shall take you myself~
+I shall take you for myself~
 Я провожу тебя сама~
 Where do you think you're going?
 Куда, по-твоему, ты направляешься?

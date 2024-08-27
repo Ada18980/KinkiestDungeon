@@ -4570,3 +4570,22 @@ let KDCustomDraw = {
 		KinkyDungeonDrawBondage();
 	}
 };
+
+let KDCustomDrawInvColorFilter = {
+	"Bondage": (data) => {
+		return (inv) => {
+			if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, data.restraints))
+				return data.force ? KDTextGray1 : KDCanApplyBondage(data.entity, data.player,
+					inv ? (
+						KDRestraint(inv)?.quickBindCondition ?
+						(t, p) => (KDQuickBindConditions[KDRestraint(inv)?.quickBindCondition](
+							t, p,
+							KDRestraint(inv),
+							inv)) :
+						false
+					) : undefined) ? "#63ab3f" : "#f0b541";
+			return "#e64539";
+		};
+	},
+
+};

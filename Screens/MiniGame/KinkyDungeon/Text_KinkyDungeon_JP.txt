@@ -890,7 +890,7 @@ Novice Pet
 新参ペット
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 ペットスーツを装備していても走ることができる(スキルツリーにてアップグレード可能)
-Novice Pet Perk
+Novice Pet Training
 新参ペット(パーク)
 You can now sprint while wearing a petsuit.
 ペットスーツを装備していても走ることができる
@@ -1370,7 +1370,7 @@ Conductive: When you or an enemy takes electric damage, the other takes half of 
 Lightning Rod: Gain significantly boosted electric resist.
 避雷針：電気属性への抵抗が大幅に増加する
 Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
-びしょぬれ：火耐性、氷弱化、電気弱体化を付与し、電導体質になる
+びしょぬれ：火耐性、氷弱点、電気弱点を付与し、電導体質になる
 Chilled: The cold makes it hard to move! You are slowed.
 凍えている: 寒さで動きが鈍くなっている
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
@@ -1471,10 +1471,10 @@ Journal
 ノート
 Change Outfit
 着替える
-Reset Outfit
-衣装をリセット
-Load Game
-ロード
+Reset to Default
+デフォルト衣装に戻す
+Outfit Code
+コードを使用
 Confirm Reset?
 リセットしてもよろしいですか？
 (Your game has been saved)
@@ -2795,11 +2795,18 @@ I have altered the rules. Pray I do not alter them further.
 Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
 チェーン属性のダメージを与え、125%の威力で拘束値を増加させる。召喚物を攻撃する際、40ポイントの影属性追加ダメージを与える。チェーン属性と接着剤属性のダメージが25%増加する。アビリティ: 武装解除
 Bondage Buster EX
-ボンデージバスター EX
+ボンデージバスターEX
 Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
-1ターンかけてチャージし、30電気属性ダメージと拘束値を与えるビームを発射する。発射しなかった場合は充電され、10ターンの充電で合計90のダメージを与える。
+1ターンかけてチャージし、30電気属性ダメージと拘束値を与えるビームを発射する。発射せずにいると充電され、10ターンの充電で合計90のダメージを与える。
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
 近接モードではくすぐり属性のダメージを与え、敵に4ターンの間くすぐり弱点を付与する。
+Bondage Buster MK II
+ボンデージバスターMkII
+Can fire a beam (3 turn channel) that deals 35 electric damage in an area and applies an equal amount of energy bondage. While charge is below 50%, has a 10% chance to misfire.
+3ターンかけてチャージし、35電気属性ダメージと拘束値を与えるビームを発射する。発射せずにいると充電される。充電が50%以下の場合、発射に失敗する可能性がある。
+Melee mode deals tickle damage and marks enemies as vulnerable for 2 turns.
+近接モードではくすぐり属性のダメージを与え、敵に2ターンの間くすぐり弱点を付与する。
+
 Nevermere Blaster
 ネバーミアブラスター
 Can fire a blast that deals 25 electric damage.
@@ -4619,6 +4626,16 @@ Blacksmith
 鍛冶屋
 You murder the blacksmith!
 鍛冶屋を鍛え直してしまった！
+Bowyer
+バイヤー
+You murder the bowyer!
+バイヤーを倒してしまった！
+
+Not a Kidnapper
+誘拐犯じゃない
+You bring the kidnapper to justice!
+誘拐犯を捕まえろ！
+
 Dressmaker
 仕立て屋
 The dressmaker storms out in a rage.
@@ -6215,14 +6232,14 @@ It seems to be made of flexible steel plates, and it has a high-security lock.
 柔軟な鋼板で作られているようで、高度なロックがかかっている。
 Latex Ball Gag
 ラテックスボールギャグ
-A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
-ボールギャグのように見えるが、ボール部分がディルドのように伸びていて外すのが難しい。
+A devious device that looks like a ball gag, but has a mouth-filling rod on the inside. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+ボールギャグのように見えるが、ボール部分がディルドのように伸びていて外すのが難しい。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 The strap is made of a durable but flexible material
 ストラップは柔軟かつ丈夫な素材でできている。
 Large Latex Ball Gag
 大きなラテックスボールギャグ
-A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder.
-大きなボールギャグのように見えるが、ボール部分がディルドのように伸びていて外すのが難しい。
+A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+大きなボールギャグのように見えるが、ボール部分がディルドのように伸びていて外すのが難しい。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 The strap is made of a durable but flexible material
 ストラップは柔軟かつ丈夫な素材でできている。
 Latex Mask
@@ -6259,14 +6276,14 @@ Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
 一般的なゴムとは違い、柔軟かつ丈夫で少し粘着性がある。
 Rubberized Ball Gag
 ラバーボールギャグ
-A mass of alchemical latex inflated to fill your mouth, then hardened.
-錬金術で作られたゴムのボールギャグ。
+A mass of alchemical latex inflated to fill your mouth, then hardened. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+錬金術で作られたゴムのボールギャグ。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
 一般的なゴムとは違い、柔軟かつ丈夫で少し粘着性がある。
 Rubberized OTN Mask
-赤ラテックスマスク
+ラバー鼻上マスク
 A mass of alchemical latex stretched over your mouth, then hardened.
-赤いゴムの膜が鼻上までピッタリと張り付いている。
+鼻上までピッタリと張り付く、錬金術で作られたゴムのマスク。
 Unlike typical rubber, this stuff is durable, flexible, and somewhat sticky!
 一般的なゴムとは違い、柔軟かつ丈夫で少し粘着性がある。
 Wolf Panties
@@ -6865,8 +6882,8 @@ It's very sticky and tough but you could probably get a knife through it.
 
 Stuffing
 詰め物
-A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-布の詰め物。クイックインベントリやホットバーから、任意のターゲットに使用できる。
+A stuffing of cloth. Can be applied on vulnerable targets or those who casted a verbal spell last turn.
+布の詰め物。弱体化及び前のターンに口を使用する呪文を唱えた相手に使用可能。
 You could spit it out easily, provided nothing's covering it.
 他の猿轡で口を覆われていなければ、簡単に吐き出せる。
 
@@ -7126,29 +7143,29 @@ Can be worn all day! Also convenient to hold.
 
 Ball Gag
 ボールギャグ
-A gag made of a red squishy material.
-赤いボールの付いた猿轡。
+A gag made of a red squishy material. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+赤いボールギャグ。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 You can't seem to enunciate your spells properly with this in.
 呪文を正しく発音できなくなる。
 Large Ball Gag
 大きなボールギャグ
-A mouth-filling gag made of a red squishy material.
-赤い大きなボールの付いた猿轡。
+A mouth-filling gag made of a red squishy material. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+球の大きくなったボールギャグ。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 Tight Ball Gag
 タイトボールギャグ
-A gag made of a red squishy material, buckled as tight as it will go.
-赤いボールが更に大きくなった猿轡。
+A gag made of a red squishy material, buckled as tight as it will go. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+球が更に大きくなったボールギャグ。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 You can't seem to enunciate your spells properly with this in.
 呪文を正しく発音できなくなる。
 Huge Ball Gag
 巨大なボールギャグ
-A massive gag made of a red squishy material, buckled as tight as it will go.
-赤いボールが巨大になった猿轡。
+A massive gag made of a red squishy material, buckled as tight as it will go. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+球が更に更に大きくなったボールギャグ。弱体化及び前のターンに口を使用する呪文を使用した相手に対して、半分の力で使用できる。
 You absolutely can't enunciate your spells properly with this in.
 球が大きく、まともに放つことができなくなる。
 Magic Ball Gag
 マジックボールギャグ
-A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
+A gag enchanted with magic. It grows to fill your mouth so you can hardly speak. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
 魔法のボールギャグ。口を完全に塞ぎ、発音どころかうめき声しか出ない。
 It's brimming with conjured energy. A normal knife won't work here!
 魔力のせいで普通のナイフでは切れない。
@@ -9070,8 +9087,10 @@ You pick up The Arbiter.
 アービターを手に入れた。
 You pick up Dreamcatcher.
 ドリームキャッチャーを手に入れた。
-You retrieve the Bondage Buster.
-ボンデージバスターを手に入れた。
+You retrieve the Bondage Buster EX.
+ボンデージバスターEXを手に入れた。
+You salvage a Bondage Buster MK II.
+ボンデージバスターMkIIを手に入れた。
 You retrieve a Nevermere Blaster Mark IV.
 ネバーミア ブラスター マーク IV を手に入れた。
 You retrieve the Messenger of Love.
@@ -10025,7 +10044,7 @@ Choose line direction (max range 4 tiles)
 Tremor
 クエイク
 Make vulnerable and slow enemies in targeted area for Duration turns, and deal DamageDealt crush damage. Creates a slowing field after.
-Duration ターンの間、敵に脆弱状態と減速状態を付与し、 DamageDealt 打撃ダメージを与えるエリアを生成する。その後、減速エリアを生成する。
+Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageDealt 打撃ダメージを与えるエリアを生成する。その後、減速エリアを生成する。
 You call forth the rage of the earth.
 大地の怒りを呼び覚ました！
 Choose AoE
@@ -10338,7 +10357,7 @@ You are harder to see when waiting.
 Vault
 通り抜け
 You can sprint under flying enemies and through vulnerable, slowed, or disabled enemies. Does not work on immobile enemies such as doors and turrets.
-走ることで、飛行、脆弱状態、減速状態、行動不能状態の敵をすり抜けることができる。ドアやタレットのような動かない敵はすり抜けられない。
+走ることで、飛行、弱体化、減速状態、行動不能状態の敵をすり抜けることができる。ドアやタレットのような動かない敵はすり抜けられない。
 Improved Vault
 風のように
 You can dash through enemies that aren't immobile.
@@ -10955,7 +10974,7 @@ CMD:バインド
 Select area to bind
 範囲を選択
 Commands nearby restraints to bind targets standing on them. Rope: 30 chain dmg/5 turn snare. Chain: 30 crush dmg/8 turn disarm. Belts: 50 binding/3 turns vulnerability.
-落ちている拘束具に、その上の敵を拘束するよう命令する。種類により追加効果。ロープ：30チェーンダメージと5ターンの減速。鎖：30打撃ダメージと8ターン武装解除。ベルト：拘束値50追加と脆弱状態3ターン。
+落ちている拘束具に、その上の敵を拘束するよう命令する。種類により追加効果。ロープ：30チェーンダメージと5ターンの減速。鎖：30打撃ダメージと8ターン武装解除。ベルト：拘束値50追加と弱体化3ターン。
 You say a command word, and the bindings on the ground do your bidding!
 コマンドワードを唱え、地面の拘束具に命令を出した！
 CMD: Unlock
@@ -11359,7 +11378,7 @@ Arrow of Love
 愛の矢
 You loose a glowing arrow!
 光る矢を放つ！
-Bondage Buster
+Bondage Buster EX
 ボンデージバスター
 Blaster
 ブラスター
@@ -12931,6 +12950,8 @@ Evasion: AMOUNT%
 回避率: AMOUNT%
 Deals DAMAGETYPE damage
 DAMAGETYPE タイプ
+AMNT% chance to hit you
+AMNT% の確率で命中
 Can disarm (chance: DISARMCHANCE%)
 武装解除可能 (確率: DISARMCHANCE%)
 Resistances:
@@ -12986,7 +13007,7 @@ Demise immanent
 Demise imminent
 そろそろ消える
 Vulnerable
-脆弱状態
+弱体化
 Stunned
 スタン
 Snared
@@ -13097,7 +13118,7 @@ Unflinching
 
 
 You crit the vulnerable EnemyName for AMOUNT extra damage!
-脆弱状態の EnemyName に攻撃が命中し AMOUNT の追加ダメージ！
+弱体化状態の EnemyName に攻撃が命中し AMOUNT の追加ダメージ！
 You crit the unsuspecting EnemyName for AMOUNT extra damage!
 不意打ちをして EnemyName に AMOUNT の追加ダメージ！
 The enemy steals a pick from you!
@@ -13263,7 +13284,7 @@ Fighter
 Start with 200 willpower and Iron Will, good at melee and blocking attacks.
 最大気力200、パーク「鉄の意志」を所持。近接攻撃で戦うクラス。
 Rogue
-ローグ
+盗賊
 Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
 最大スタミナ200、パーク「隠密」を所持。隠密と回避を主体にするクラス。
 Wizard
@@ -16416,7 +16437,7 @@ We are the keepers of balance.
 
 Do not mess with us!
 私達に関わるな！
-I shall take you myself~
+I shall take you for myself~
 私が連れて行く。
 Where do you think you're going?
 どこに行くつもり？
@@ -19539,6 +19560,25 @@ Never! (PERCENT chance to avoid)
 (SPEAKER は頷いている)|マナのようなものですが、持ち運びできるエネルギー源です。|エネルギーがある限り矢を複製できるので、弓を扱うなら必須ですね。
 (The SPEAKER giggles)|I like to include these as a gift with every purchase~
 (SPEAKER は薄ら笑みを浮かべている)|商品を購入されたお客様にこれをプレゼントするのが好きなんです。
+
+(The SPEAKER whispers in a hushed tone)|Welcome.|I'm not supposed to be here, so|if you don't want to do business, get out.|I only sell in packs of 10, by the way.
+(SPEAKER がささやきかけてきた)|いらっしゃい。|私は招かれざる客なんだ、ここにいちゃいけねえ。|だから買うならさっさと買ってくれ。|ちなみに商品は全部"10個入り"だ。
+(The SPEAKER tries to get away)|Damn!
+(SPEAKER は逃げ出した)|クソッ！
+(The SPEAKER looks you over and shrugs)|Don't joke around.
+(SPEAKER は肩をすくめている)|冗談はよしてくれ。
+(The SPEAKER folds her arms)|Don't have money? Better go find some.
+(SPEAKER は不満げに腕を組んでいる)|金がない？じゃあ稼いでこいよ。
+(The SPEAKER produces a bag of stuffings)|Quite the staple.
+(SPEAKER は袋詰めの詰め物を取り出した)|定番だな。
+(The SPEAKER produces a bundle of rope)|Aren't you quite the artist.|That was rhetorical.
+(SPEAKER 縄の束を取り出した)|縄師か。|技巧派だな。
+(The SPEAKER produces some bondage tape)|It only sticks to itself, doesn't leave residue.|Gotta be responsible, you know?
+(SPEAKER テープを取り出した)|テープ同士でしかくっつかないやつだ。|痕も責任も残らない。。
+(The SPEAKER produces a bag of cloth gags)|It's a matter of taste, really.|No, I didn't mean that literally...
+(SPEAKER 布の入った袋を取り出した)|どれも好みの問題だな。|いや、文字通りの意味じゃなくて……
+(The SPEAKER produces a bag of cloth strips)|How tight you tie it depends on how bratty your target is.
+(SPEAKER 布の入った袋を取り出した)|相手が暴れれば暴れるほど拘束もきつくする必要があるからな。
 
 (The SPEAKER rattles as she waves)|Heya!|Looking to buy some ancient treasures?|My antiques shop has just what you need!
 (SPEAKER )|ねえ！|お宝に興味はないかい？|アタシは骨董品を扱っているんだけど、いいものが揃っているよ！
@@ -25371,7 +25411,7 @@ You have animalistic features such as a bite spell, -10% attack stamina cost, an
 Demon Girl
 悪魔
 You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
-禁忌の存在と関わりがある。影属性ダメージ+50%。影の間をてレポートする能力を得る。光に当たるか聖なる拘束具を装備している時、弱体化する。
+禁忌の存在と関わりがある。影属性ダメージ+50%。影の間をてレポートする能力を得る。光や聖なる拘束具に弱くなる。
 Angelic
 天使
 You are a minor angel sent to perform a specific task. You are forced to wear a full set of divine restraints, but gain an infinite mana pool, +20 Magic Armor, and +25% magic damage.
@@ -29955,21 +29995,21 @@ Choose Save Slot:
 セーブスロット:
 
 Standard Route
-通常
+通常ルート
 Alternate Route
-ハード
+ハードルート
 Temple Route
-神殿
+神殿ルート
 Jungle Route
-ジャングル
+ジャングルルート
 Factory Route
-工場
+工場ルート
 Reverse Route
-逆さ道
+逆さ道ルート
 Chaos Route
-ランダム
-Map Seed
-Seed値
+ランダムルート
+Map Seed: 
+Seed値: 
 Will Overwrite!
 既存のデータあり。上書きする？
 
@@ -29977,3 +30017,25 @@ Play Slot
 プレイ
 Play (NO SLOT!)
 セーブを選択してください
+
+Looks like you might be stuck. Try calling for help (bottom right of UI)
+どうしようもなくなったら、助けを呼んでみるといい。(UI右下のボタン)
+
+Save to File
+ファイルにセーブ
+Load from File
+ファイルをロード
+
+Store to File
+ファイルにセーブ
+Load from File
+ファイルをロード
+
+Wizard
+魔法使い
+
+
+Target must be vulnerable.
+相手を弱体化状態にさせる必要がある。
+Target must be vulnerable or have casted a verbal spell.
+相手が口を使用する呪文を唱えているか、弱体化状態にさせる必要がある。

@@ -545,6 +545,8 @@ interface restraint extends KDRestraintProps {
 	preview?: string,
 	/** Special condition for quick binding! */
 	quickBindCondition?: string,
+	/** Multiplier to bondage strength if target isn't disabled */
+	quickBindMult?: number,
 	/** Base weight of the restraint, required */
 	weight: number,
 	minLevel: number,
@@ -1606,6 +1608,8 @@ interface entity {
 	playLine?: string,
 	// Custom outfit
 	outfit?: string,
+	// Custom outfit when captured
+	outfitBound?: string,
 	// Custom style
 	style?: string,
 	// Custom intro
