@@ -16386,10 +16386,10 @@ AMNT Distraction Decay
 AMNT 分心衰减
 AMNT Distraction Per Turn
 AMNT 每回合分心
-After attacking with a teasing weapon:
-使用诱惑武器攻击后 : ‎
-Gain AMNT% Spell Damage for DRTN turns
-DRTN 回合获得 AMNT% 法术伤害
+AMNT% regen from mana pool
+AMNT% 魔力池回复
+AMNT mana pool on capture
+AMNT 被捕时的魔力池
 Drains mana from the wearer.
 吸取佩戴者的魔力。
 AMNT Stat
