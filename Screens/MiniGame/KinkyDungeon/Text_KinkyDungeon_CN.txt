@@ -909,7 +909,7 @@ Novice Pet
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 你现在可以穿着宠物服冲刺了。 ( 可在技能树中升级 )
 Novice Pet Training
-新手宠物技能
+新手宠物训练
 You can now sprint while wearing a petsuit.
 你现在可以穿着宠物服冲刺了。
 Eager Pet
