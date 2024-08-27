@@ -1687,60 +1687,63 @@ function KDGetEscapeChance(restraint, StruggleType, escapeChancePre, limitChance
 	//limitChance += 0.05; // Small penalty for not having help
 	//}
 
-	if (KinkyDungeonStatsChoice.get("HighSecurity")) {
-		KinkyDungeonKeyPickBreakAmount = KDDamselPickAmount;
-	} else {
-		KinkyDungeonKeyPickBreakAmount = KinkyDungeonKeyPickBreakAmountBase;
-	}
+	if (StruggleType != "Unlock") {
+		if (KinkyDungeonStatsChoice.get("HighSecurity")) {
+			KinkyDungeonKeyPickBreakAmount = KDDamselPickAmount;
+		} else {
+			KinkyDungeonKeyPickBreakAmount = KinkyDungeonKeyPickBreakAmountBase;
+		}
 
-	if (KinkyDungeonStatsChoice.get("ShoddyKnives")) {
-		KinkyDungeonKnifeBreakAmount = KDBunnyKnifeAmount;
-		KinkyDungeonEnchKnifeBreakAmount = KDBunnyEnchKnifeAmount;
-	} else {
-		KinkyDungeonKnifeBreakAmount = KinkyDungeonKnifeBreakAmountBase;
-		KinkyDungeonEnchKnifeBreakAmount = KinkyDungeonEnchKnifeBreakAmountBase;
-	}
-	if (KinkyDungeonStatsChoice.get("FreeSpirit") && (KDRestraint(restraint).chastity || KDRestraint(restraint).chastitybra)) escapeChance += 0.5;
-
-
-	if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
-		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDUnchainedBonus;
-	} else
-	if (KinkyDungeonStatsChoice.get("Artist") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope")) {
-		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDArtistBonus;
-	} else
-	if (KinkyDungeonStatsChoice.get("Slippery") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex")) {
-		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDSlipperyBonus;
-	} else
-	if (KinkyDungeonStatsChoice.get("Escapee") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather")) {
-		escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDEscapeeBonus;
-	}
+		if (KinkyDungeonStatsChoice.get("ShoddyKnives")) {
+			KinkyDungeonKnifeBreakAmount = KDBunnyKnifeAmount;
+			KinkyDungeonEnchKnifeBreakAmount = KDBunnyEnchKnifeAmount;
+		} else {
+			KinkyDungeonKnifeBreakAmount = KinkyDungeonKnifeBreakAmountBase;
+			KinkyDungeonEnchKnifeBreakAmount = KinkyDungeonEnchKnifeBreakAmountBase;
+		}
+		if (KinkyDungeonStatsChoice.get("FreeSpirit") && (KDRestraint(restraint).chastity || KDRestraint(restraint).chastitybra)) escapeChance += 0.5;
 
 
-	if (KinkyDungeonStatsChoice.get("Damsel") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
-		if (escapeChance > 0)
-			limitChance += escapeChance * 0.2;
-		if (StruggleType != "Pick" && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDamselBonus)
-			limitChance *= KDDamselBonus;
+		if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
+			escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDUnchainedBonus;
+		} else
+		if (KinkyDungeonStatsChoice.get("Artist") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope")) {
+			escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDArtistBonus;
+		} else
+		if (KinkyDungeonStatsChoice.get("Slippery") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex")) {
+			escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDSlipperyBonus;
+		} else
+		if (KinkyDungeonStatsChoice.get("Escapee") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather")) {
+			escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDEscapeeBonus;
+		}
+
+
+		if (KinkyDungeonStatsChoice.get("Damsel") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
+			if (escapeChance > 0)
+				limitChance += escapeChance * 0.2;
+			if (StruggleType != "Pick" && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDamselBonus)
+				limitChance *= KDDamselBonus;
+		}
+		else if (KinkyDungeonStatsChoice.get("Bunny") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope")) {
+			if (escapeChance > 0)
+				limitChance += escapeChance * 0.2;
+			if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDBunnyBonus)
+				limitChance *= KDBunnyBonus;
+		}
+		else if (KinkyDungeonStatsChoice.get("Doll") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex")) {
+			if (escapeChance > 0)
+				limitChance += escapeChance * 0.2;
+			if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDollBonus)
+				limitChance *= KDDollBonus;
+		}
+		else if (KinkyDungeonStatsChoice.get("Dragon") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather")) {
+			if (escapeChance > 0)
+				limitChance += escapeChance * 0.2;
+			if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDragonBonus)
+				limitChance *= KDDragonBonus;
+		}
 	}
-	else if (KinkyDungeonStatsChoice.get("Bunny") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Rope")) {
-		if (escapeChance > 0)
-			limitChance += escapeChance * 0.2;
-		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDBunnyBonus)
-			limitChance *= KDBunnyBonus;
-	}
-	else if (KinkyDungeonStatsChoice.get("Doll") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Latex")) {
-		if (escapeChance > 0)
-			limitChance += escapeChance * 0.2;
-		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDollBonus)
-			limitChance *= KDDollBonus;
-	}
-	else if (KinkyDungeonStatsChoice.get("Dragon") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Leather")) {
-		if (escapeChance > 0)
-			limitChance += escapeChance * 0.2;
-		if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDragonBonus)
-			limitChance *= KDDragonBonus;
-	}
+
 
 	let data = {
 		restraint: restraint,
@@ -2201,7 +2204,7 @@ function KDGetStruggleData(data) {
 
 
 	// Struggling is affected by tightness
-	if (data.escapeChance > 0) {// && StruggleType == "Struggle") {
+	if (data.escapeChance > 0 && data.struggleType != "Unlock") {// && StruggleType == "Struggle") {
 		for (let T = 0; T < data.restraint.tightness; T++) {
 			data.escapeChance *= KDGetTightnessEffect(data.escapeChance, data.struggleType, T); // Tougher for each tightness, however struggling will reduce the tightness
 		}

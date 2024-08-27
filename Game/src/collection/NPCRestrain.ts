@@ -1068,7 +1068,7 @@ function KDNPCStruggleThreshMultType(enemy: enemy) {
 
 function KDTriggerNPCEscape(maxNPC: number = 10) {
 	let eligibleNPCs = Object.values(KDGameData.Collection).filter((value) => {
-		return value.escaped;
+		return value.escaped && KDWantsToEscape(value);
 	});
 
 	let count = 0;

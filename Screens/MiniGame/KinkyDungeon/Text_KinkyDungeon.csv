@@ -508,7 +508,7 @@ KinkyDungeonSpellDescriptionLockedUpX,"Relinquish the Locked Up perk. One time o
 
 KinkyDungeonStatNovicePet,"Novice Pet"
 KinkyDungeonStatDescNovicePet,"You can now sprint while wearing a petsuit. (Upgrades available in spell tree)"
-KinkyDungeonSpellNovicePet0,Novice Pet Perk
+KinkyDungeonSpellNovicePet0,Novice Pet Training
 KinkyDungeonSpellDescriptionNovicePet0,"You can now sprint while wearing a petsuit."
 KinkyDungeonSpellNovicePet1,Eager Pet
 KinkyDungeonSpellDescriptionNovicePet1,"+1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit."

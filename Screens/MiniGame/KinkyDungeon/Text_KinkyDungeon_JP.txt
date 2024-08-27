@@ -890,7 +890,7 @@ Novice Pet
 新参ペット
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 ペットスーツを装備していても走ることができる(スキルツリーにてアップグレード可能)
-Novice Pet Perk
+Novice Pet Training
 新参ペット(パーク)
 You can now sprint while wearing a petsuit.
 ペットスーツを装備していても走ることができる

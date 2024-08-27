@@ -3699,7 +3699,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				KDUpdatePersistentNPC(enemy.id, KDGameData.Collection[enemy.id + ""] != undefined);
 
 				// Delete the enemy
-				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else {
+				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else if (KDGetFaction(enemy) != "Player") {
 					if (enemy.aware && (enemy.lifetime == undefined || enemy.lifetime > 9000) && !enemy.Enemy.tags.temporary && !enemy.Enemy.tags.peaceful) {
 						if (enemy.hostile > 0 && enemy.hostile < 9000 && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
 							if (!(enemy.silence > 0) && KDEnemyCanSignalOthers(enemy)) {

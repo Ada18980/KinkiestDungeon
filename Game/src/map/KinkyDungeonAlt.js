@@ -302,6 +302,12 @@ let alts = {
 		data: {
 			summit: true,
 		},
+
+
+		elevatorCondition: (x, y) => {
+			return true; // Always unlocked once you are in
+		},
+
 		loadscript: (firstTime) => {
 			// Summit loadscript triggers escape for up to 10 NPCs
 
@@ -495,8 +501,8 @@ let alts = {
 		Title: "Caldera",
 		noWear: false, // Disables doodad wear
 		bossroom: false,
-		width: 20,
-		height: 20,
+		width: 21,
+		height: 21,
 		nopatrols: false,
 		setpieces: {
 			GuaranteedCell: 100,

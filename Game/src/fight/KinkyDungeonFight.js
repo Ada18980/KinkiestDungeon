@@ -1254,7 +1254,8 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		Enemy.vulnerable = Math.max(Enemy.vulnerable, 1);
 	}
 
-	predata.aggro = (Enemy.lifetime > 9000 || !Enemy.maxlifetime) && predata.type != "heal" && predata.type != "inert" && (!Spell || !Spell.allySpell) && (!bullet || !bullet.spell || !bullet.spell.allySpell);
+	predata.aggro = KDGetFaction(Enemy) != "Player"
+		&& (Enemy.lifetime > 9000 || !Enemy.maxlifetime) && predata.type != "heal" && predata.type != "inert" && (!Spell || !Spell.allySpell) && (!bullet || !bullet.spell || (!bullet.spell.allySpell && !bullet.spell.enemySpell));
 
 	KinkyDungeonSendEvent("afterDamageEnemy", predata);
 

@@ -787,7 +787,7 @@ Novice Pet
 Начинающий питомец
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 Теперь вы можете перейти на спринт только нося петсьют. (Апгрейды доступны в дереве заклинаний)
-Novice Pet Perk
+Novice Pet Training
 Начинающий питомец (Перк)
 You can now sprint while wearing a petsuit.
 Теперь вы можете перейти на спринт только нося петсьют.
