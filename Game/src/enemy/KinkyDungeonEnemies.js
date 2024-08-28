@@ -8960,8 +8960,11 @@ function KDPlayPossible(enemy) {
  */
 function KDCanApplyBondage(target, player, extraCondition = undefined) {
 	if (player?.player) {
-		return (extraCondition ? extraCondition(target, player) : false) || (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow") > KDEntityBuffedStat(target, "TimeSlow"))
-			|| (KinkyDungeonIsDisabled(target)) || KDWillingBondage(target, player);
+		return (extraCondition ? extraCondition(target, player) : false)
+			|| (KDEntityBuffedStat(KinkyDungeonPlayerEntity, "TimeSlow")
+				> KDEntityBuffedStat(target, "TimeSlow"))
+			|| (KinkyDungeonIsDisabled(target))
+			|| KDWillingBondage(target, player);
 	}
 	return KinkyDungeonIsDisabled(target);
 }

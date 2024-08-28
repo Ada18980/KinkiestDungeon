@@ -1620,9 +1620,13 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("LoadGame", () => {
 			/*KinkyDungeonState = "Load";*/
 			KinkyDungeonState = "LoadSlots";
+
 			KDConfirmDeleteSave = false;
 			KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 			KDPreviewModel.ID = KinkyDungeonPlayer.ID + 1; // Ensure a unique id.
+			KinkyDungeonDBLoad(0).then((code) => {
+				KDSlot0 = code;
+			});
 			for (var i = 1; i < 5; i++) {
 				let num = (i);
 				KinkyDungeonDBLoad(num).then((code) => {
@@ -4042,6 +4046,8 @@ let KDSaveSlot = 1;
 let ModelPreviewLoaded = false;
 let KDDeleteSaveIndex = -1;
 
+let KDSlot0 = "";
+
 // Load Menu function
 function KDDrawLoadMenu() {
 	let YYstart = 140;
@@ -4148,9 +4154,18 @@ function KDDrawLoadMenu() {
 	DrawButtonKDEx("LoadFromCodeButton", () => {
 		KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 		LoadMenuCurrentSlot = undefined;
-		loadedSaveforPreview = KinkyDungeonLoadPreview(newValue);
-		if (loadedSaveforPreview) {
+		if (newValue) {
+			loadedSaveforPreview = KinkyDungeonLoadPreview(newValue);
+			if (loadedSaveforPreview) LoadMenuCurrentSlot = -1;
+		} else if (KDSlot0) {
+			loadedSaveforPreview = KinkyDungeonLoadPreview(KDSlot0);
+			if (loadedSaveforPreview) LoadMenuCurrentSlot = 0;
+		}
+		else {
+			loadedSaveforPreview = null;
 			LoadMenuCurrentSlot = -1;
+		}
+		if (loadedSaveforPreview) {
 			LoadMenuCurrentSave = newValue;
 
 			// @ts-ignore
@@ -4163,7 +4178,10 @@ function KDDrawLoadMenu() {
 			KDSaveSlot = 0;
 		}
 		return true;
-	}, true, CombarXX + 220, 880, 180, 64, TextGet("LoadFromCodeButton"), "#ffffff", "");
+	}, true, CombarXX + 220, 880, 180, 64,
+	TextGet((!ElementValue("saveInputField") && KDSlot0) ?
+		"LoadFromCodeButton0" :
+		"LoadFromCodeButton"), "#ffffff", "");
 	// Load from File button
 	DrawButtonKDEx("LoadFromFileButton", () => {
 		getFileInput(KDLoadSave);

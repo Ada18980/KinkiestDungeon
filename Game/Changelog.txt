@@ -30,15 +30,7 @@ TODO:
 
 TODO remove hogtie when released
 
-5.4.2
-- Fixed bug where cyber restraints could sometimes be impossible to unlock even with a keycard
-- Fixed bug where summit elevator could trap you in while still letting escapees out
-- Fixed bug where active soul crystals could not be vaulted around even though the vault upgrade says you can
-- Fixed issue where truss em up couldnt be opened even if you had quick-bind restraints that could be used with it.
-- Hopefully fixed issue where your party members would turn on you due to other ally's AoE
-- Fixed issue where caldera could have inaccessible regions and the player might even start in one)
-
-5.4.1
+5.3.36
 - MODDERS: Replaced KinkyDungeonCheckClothesLoss with KDRedrawCharacter, a map. The old variable still works as a generic way to do it to 'whatever gets rendered next'
 - Saves will now save your outfit as well, and restore it during saves. You can turn off both saving and loading of outfits
 - Added multiple save slots and mod config by Enraa
@@ -49,7 +41,13 @@ TODO remove hogtie when released
 - Added custom outfits for 3 of the custom patrons
 - Added a sneaky dealer npc
 - Made truss em up menu show different colors and helpful messages based on what the restraining conditions are
-- Can now vault over soul crystals
+- Fixed bug where cyber restraints could sometimes be impossible to unlock even with a keycard
+- Fixed bug where summit elevator could trap you in while still letting escapees out
+- Fixed bug where active soul crystals could not be vaulted around even though the vault upgrade says you can
+- Fixed issue where truss em up couldnt be opened even if you had quick-bind restraints that could be used with it.
+- Hopefully fixed issue where your party members would turn on you due to other ally's AoE
+- Fixed issue where caldera could have inaccessible regions and the player might even start in one
+
 
 5.3-Patch1
 - Added toggle to only bind self from quick inv (instead of targeting)
