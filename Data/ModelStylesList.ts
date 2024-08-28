@@ -154,7 +154,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		],
 		Facestyle: [
 			"GreenNormal",
-			"GreenAgry",
+			"GreenAngry",
 			"GreenCute",
 			"CyanNormal",
 			"Cyan",
