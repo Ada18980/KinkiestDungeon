@@ -788,6 +788,7 @@
             <key type="filename">../Game/EffectTiles/PressurePlateActive.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateHold.png</key>
             <key type="filename">../Game/EffectTiles/PressurePlateOneUse.png</key>
+            <key type="filename">../Game/EffectTiles/Radiance.png</key>
             <key type="filename">../Game/EffectTiles/Ropes.png</key>
             <key type="filename">../Game/EffectTiles/Rubble.png</key>
             <key type="filename">../Game/EffectTiles/RubbleNoMend.png</key>
@@ -987,15 +988,19 @@
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Nara.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Parov.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Selly.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Nara.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Selly.png</key>
             <key type="filename">../Game/Enemies/Cyborg.png</key>
+            <key type="filename">../Game/Enemies/CyborgBerserker.png</key>
+            <key type="filename">../Game/Enemies/CyborgEnforcer.png</key>
             <key type="filename">../Game/Enemies/CyborgGuardian.png</key>
             <key type="filename">../Game/Enemies/Decoy.png</key>
             <key type="filename">../Game/Enemies/Demon.png</key>
@@ -1175,6 +1180,7 @@
             <key type="filename">../Game/Enemies/ShadowGhast.png</key>
             <key type="filename">../Game/Enemies/ShadowHand.png</key>
             <key type="filename">../Game/Enemies/ShadowWarrior.png</key>
+            <key type="filename">../Game/Enemies/ShadyQuest.png</key>
             <key type="filename">../Game/Enemies/ShopkeeperRescue.png</key>
             <key type="filename">../Game/Enemies/ShopkeeperStart.png</key>
             <key type="filename">../Game/Enemies/ShrineMaiden.png</key>
@@ -1268,6 +1274,9 @@
             <key type="filename">../Game/EnemiesBound/ConjurerTickler.png</key>
             <key type="filename">../Game/EnemiesBound/CorruptedAdventurer.png</key>
             <key type="filename">../Game/EnemiesBound/Cyborg.png</key>
+            <key type="filename">../Game/EnemiesBound/CyborgBerserker.png</key>
+            <key type="filename">../Game/EnemiesBound/CyborgEnforcer.png</key>
+            <key type="filename">../Game/EnemiesBound/CyborgGuardian.png</key>
             <key type="filename">../Game/EnemiesBound/Demon.png</key>
             <key type="filename">../Game/EnemiesBound/Deputy.png</key>
             <key type="filename">../Game/EnemiesBound/Dollmaker.png</key>
@@ -3381,7 +3390,6 @@
                 <false/>
             </struct>
             <key type="filename">../Game/DialogBackground.png</key>
-            <key type="filename">../Game/Logo.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -3749,8 +3757,27 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/RobeOfChastity.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9Paddings</key>
+                <rect>63,63,125,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/Layers.png</key>
             <key type="filename">../Game/UI/Floppy.png</key>
+            <key type="filename">../Game/UI/Load.png</key>
+            <key type="filename">../Game/UI/Reset.png</key>
+            <key type="filename">../Game/UI/Restore.png</key>
+            <key type="filename">../Game/UI/Safe.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
             <key type="filename">../Game/UI/UsePotionFrigid.png</key>
             <key type="filename">../Game/UI/UsePotionInject.png</key>
@@ -4082,6 +4109,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/CheckSmall.png</key>
+            <key type="filename">../Game/UI/Plus.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -4171,6 +4199,21 @@
                 <rect>10,10,21,21</rect>
                 <key>scale9Paddings</key>
                 <rect>10,10,21,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/UI/Revert.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,12,24,24</rect>
+                <key>scale9Paddings</key>
+                <rect>12,12,24,24</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -23,8 +23,10 @@ let KDLeashablePersonalities = {
 
 let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	ShadowTether: (entity) => {
-		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow)) return false;
-		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity) && KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
+		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow))
+			return false;
+		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)
+			&& KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
 		if (entity.player) {
 			return KinkyDungeonPlayerTags.get("Shadow");
 		} else {
@@ -35,7 +37,9 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		//if (!KinkyDungeonInventoryGetConsumable("LeashItem") && !KDHasSpell("LeashSkill")) return false;
 		if (entity
 			// Condition 1: the target is willing
-			&& !(KDWillingLeash(entity) && !KDCanApplyBondage(entity, KDPlayer()))
+			&& !(KDWillingLeash(entity))
+			// Condition 1.5: the target is made willing
+			&& !(KDCanApplyBondage(entity, KDPlayer()))
 			// Condition 2: the player has the Brat Handler skill and target is wearing a leash item
 			&& !(KDHasSpell("LeashSkill") && KDGetNPCRestraints(entity.id) && Object.values(KDGetNPCRestraints(entity.id))
 				.some((rest) => {return KDRestraint(rest)?.leash;}))

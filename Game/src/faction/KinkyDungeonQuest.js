@@ -549,6 +549,20 @@ let KDQuests = {
 			return false;
 		}
 	},
+	"ShadyQuest": {
+		name: "ShadyQuest",
+		npc: "ShadyQuest",
+		visible: false,
+		weight: (RoomType, MapMod, data, currentQuestList) => {
+			return 100;
+		},
+		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+			if (RoomType == "PerkRoom") {
+				return true;
+			}
+			return false;
+		}
+	},
 	"ArmorerQuest": {
 		name: "ArmorerQuest",
 		npc: "ArmorerQuest",

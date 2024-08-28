@@ -266,7 +266,10 @@ let KinkyDungeonSpellSpecials = {
 				if (castdata.gaggedMiscastFlag) fail = true;
 			}
 			if (!fail) {
-				if (KDCanBind(en) && KDCanApplyBondage(en, entity,
+				if (KDCanBind(en)) {
+					//KDGameData.InventoryAction = "Bondage";
+
+					let canApply = KDCanApplyBondage(en, entity,
 						KinkyDungeonTargetingSpellItem ? (
 							KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition ?
 							(t, p) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](
@@ -274,8 +277,11 @@ let KinkyDungeonSpellSpecials = {
 								KDRestraint(KinkyDungeonTargetingSpellItem),
 								KinkyDungeonTargetingSpellItem)) :
 							false
-						) : undefined)) {
-					//KDGameData.InventoryAction = "Bondage";
+						) : undefined);
+					if (!canApply) {
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"
+							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), "#ff5555", 1, true);
+					}
 
 					if (KinkyDungeonTargetingSpellItem) {
 						let r = KDRestraint(KinkyDungeonTargetingSpellItem);
@@ -305,7 +311,7 @@ let KinkyDungeonSpellSpecials = {
 									KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
 								} else {
 									// if it's empty we attempt to apply it
-									let condition = KDCanEquipItemOnNPC(r, en.id);
+									let condition = KDCanEquipItemOnNPC(r, en.id, KDWillingBondage(en, entity));
 									if (condition) {
 										KinkyDungeonSendTextMessage(8,
 											TextGet("KDBondageCondition_" + condition),
@@ -318,7 +324,7 @@ let KinkyDungeonSpellSpecials = {
 										KDNPCBindingSelectedRow = slots.row;
 										KDNPCBindingSelectedSlot = slots.sgroup;
 										KDSelectedGenericBindItem = KinkyDungeonTargetingSpellItem.name;
-									} else {
+									} else if (canApply) {
 										KDInputSetNPCRestraint({
 											slot: slots.sgroup.id,
 											id: undefined,
@@ -326,7 +332,12 @@ let KinkyDungeonSpellSpecials = {
 											restraint: KinkyDungeonTargetingSpellItem.name,
 											restraintid: KinkyDungeonTargetingSpellItem.id,
 											lock: "",
-											npc: en.id
+											variant: undefined,
+											events: KinkyDungeonTargetingSpellItem.events,
+											powerbonus: undefined,
+											inventoryVariant: KinkyDungeonTargetingSpellItem.inventoryVariant,
+											npc: en.id,
+											player: entity?.id,
 										});
 
 										KinkyDungeonSendTextMessage(10,
@@ -342,7 +353,8 @@ let KinkyDungeonSpellSpecials = {
 										KinkyDungeonAdvanceTime(1, true);
 										KDSetCollFlag(en.id, "restrained", 1);
 										KDSetCollFlag(en.id, "restrained_recently", 24);
-										KinkyDungeonCheckClothesLoss = true;
+										if (KDNPCChar.get(en.id))
+											KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
 									}
 								}
 							} else {

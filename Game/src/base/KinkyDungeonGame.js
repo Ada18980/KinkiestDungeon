@@ -422,13 +422,14 @@ function KinkyDungeonInitialize(Level, Load) {
 	KinkyDungeonFlags = new Map();
 
 	KinkyDungeonDressSet();
-	if (KinkyDungeonConfigAppearance) {
+	// Removed to protect against unintended outfit overrides
+	/*if (KinkyDungeonConfigAppearance) {
 		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
 		KinkyDungeonConfigAppearance = false;
-	}
+	}*/
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
 	KinkyDungeonDrawState = "Game";
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonDressPlayer();
 
 	KinkyDungeonMapIndex = {};
@@ -1577,7 +1578,10 @@ function KDIsImprisoned(enemy) {
  * @returns {boolean}
  */
 function KDCanBringAlly(e) {
-	return e.Enemy && (e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e) && !KDIsImprisoned(e);
+	return e.Enemy &&
+		(((e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e))
+		|| (e.leash && e.leash.entity == KDPlayer().id))
+	&& !KDIsImprisoned(e);
 }
 
 function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
@@ -4204,7 +4208,7 @@ function KinkyDungeonGameKeyDown() {
 			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
 
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 				KinkyDungeonDressPlayer();
 			}
 		} else if (KinkyDungeonDrawState == "Magic" && (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey || KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey)) {
@@ -4275,7 +4279,7 @@ function KinkyDungeonGameKeyDown() {
 				KinkyDungeonDrawState = "Game";
 
 
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 				KinkyDungeonDressPlayer();
 			}
 		} else

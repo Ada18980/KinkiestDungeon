@@ -282,6 +282,7 @@ function KDProcessInput(type, data): string {
 			KinkyDungeonMakeNoise(Math.ceil(10 - 8 * Math.min(1, gagTotal * gagTotal)), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true);
 			KinkyDungeonSendTextMessage(10, TextGet("KDShoutHelp" + Math.min(3, Math.floor(gagTotal *3.3))), "yellow", 1);
 			KinkyDungeonSetFlag("CallForHelp", 12);
+			KinkyDungeonSetFlag("GuardCalled", 0);
 			break;
 		}
 
@@ -1203,13 +1204,13 @@ function KDProcessInput(type, data): string {
 		case "recycle":
 			break;
 		case "tightenNPCRestraint":
-			KDNPCRefreshBondage(data.npc);
+			KDNPCRefreshBondage(data.npc, data.player);
 			break;
 		case "releaseNPC":
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRelease(parseInt(v))) {
-						KDFreeNPCRestraints(parseInt(v));
+						KDFreeNPCRestraints(parseInt(v), data.player);
 
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
 						let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
@@ -1231,7 +1232,7 @@ function KDProcessInput(type, data): string {
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
 					if (KDCanRansom(parseInt(v))) {
-						KDFreeNPCRestraints(parseInt(v));
+						KDFreeNPCRestraints(parseInt(v), data.player);
 
 
 						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
@@ -1251,9 +1252,9 @@ function KDProcessInput(type, data): string {
 			KDSortCollection();
 			break;
 		case "freeNPCRestraint": {
-			KDFreeNPCRestraints(data.npc);
-
-			KinkyDungeonCheckClothesLoss = true;
+			KDFreeNPCRestraints(data.npc, data.player);
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			break;
 		}
 		case "addNPCRestraint":
@@ -1283,7 +1284,8 @@ function KDProcessInput(type, data): string {
 				KDSetCollFlag(data.npc, "restrained", 1);
 				KDSetCollFlag(data.npc, "restrained_recently", 24);
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 		break;
 	}
 	if (data.GameData) {

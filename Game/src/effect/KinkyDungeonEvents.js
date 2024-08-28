@@ -1266,12 +1266,15 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (KinkyDungeonFlags.get("SuppressGuardCall")) return;
 			if (!KinkyDungeonFlags.get("GuardCallBlock")) {
-				// Wont call a guard in first 45 turns
-				KinkyDungeonSetFlag("GuardCallBlock", 400);
-				KinkyDungeonSetFlag("GuardCalled", e.time || 45);
+				KinkyDungeonSetFlag("GuardCallBlock", 300);
+				if (!KinkyDungeonFlags.get("GuardCalled")) {
+					KinkyDungeonSetFlag("GuardCalled", -1);
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDCallForHelpHint"), "#ffffff", 20);
+				}
 			}
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.05)) {
-				KinkyDungeonSetFlag("GuardCalled", 45);
+				KinkyDungeonSetFlag("GuardCalled", e.time || 45);
 				console.log("Attempting to call guard");
 				if (KDMapData.Entities.length < 400 || KDGameData.CagedTime > KDMaxCageTime) {
 					console.log("Called guard");
@@ -3878,7 +3881,7 @@ let KDEventMapSpell = {
 		"VaultBasic": (e, spell, data) => {
 			if (!data.passThru && KinkyDungeonSlowLevel < 2) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
-				if (enemy && !enemy?.player && !KDIsImmobile(enemy)
+				if (enemy && !enemy?.player && (KDIsFlying(enemy) || !KDIsImmobile(enemy))
 					&& (KDIsFlying(enemy) || enemy.vulnerable || KinkyDungeonIsSlowed(enemy) || KinkyDungeonIsDisabled(enemy))) {
 					data.passThru = true;
 				}
@@ -3887,7 +3890,7 @@ let KDEventMapSpell = {
 		"Vault": (e, spell, data) => {
 			if (!data.passThru && KinkyDungeonSlowLevel < 2) {
 				let enemy = KinkyDungeonEntityAt(data.nextPosx, data.nextPosy);
-				if (enemy && !enemy?.player && !KDIsImmobile(enemy)) {
+				if (enemy && !enemy?.player && (KDIsFlying(enemy) || !KDIsImmobile(enemy))) {
 					data.passThru = true;
 				}
 			}
@@ -10311,6 +10314,24 @@ let KDEventMapGeneric = {
 
 		}
 	},
+	"beforeNewGame": {
+		// Ran before starting a new game
+	},
+	"afterNewGame": {
+		// Ran immediately after a new game starts
+	},
+	"beforeLoadGame": {
+		// Ran before loading a game
+	},
+	"afterLoadGame": {
+		// Ran after loading a game
+	},
+	"afterModSettingsLoad": {
+		// Ran after loading KDModSettings from Local Storage
+	},
+	"afterModConfig": {
+		// Ran after returning to menu from the mod configuration window.
+	}
 };
 
 /**

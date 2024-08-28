@@ -1076,7 +1076,7 @@ function KinkyDungeonDrawActionBar(x, y) {
 			KDToggleXRay += 1;
 			if (KDToggleXRay > (StandalonePatched ? 2 : 1)) KDToggleXRay = 0;
 
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer(KinkyDungeonPlayer, false, true);
 			return true;
 		}, true, 580, 925, 60, 60, "", "#ffffff", KinkyDungeonRootDirectory + "UI/XRay" + KDToggleXRay + ".png", "", false, false,
@@ -1756,31 +1756,17 @@ function KinkyDungeonHandleHUD() {
 				KinkyDungeonDrawState = "Game";
 
 
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 				KinkyDungeonDressPlayer();
 			} else {
 				KDConfirmDeleteSave = true;
 			}
 			return true;
 		}
-		// Done, converted to input
-		if (KinkyDungeonIsPlayer() && MouseIn(975, 900, 550, 64)) {
-			if (KDConfirmDeleteSave) {
-				KDSendInput("lose", {});
-				//Player.KinkyDungeonSave = {};
-				//ServerAccountUpdate.QueueData({KinkyDungeonSave : Player.KinkyDungeonSave});
-				// Update bones here once we create them
-				localStorage.setItem('KinkyDungeonSave', "");
-			} else {
-				KDConfirmDeleteSave = true;
-			}
-
-
-			return true;
-		} else if (MouseIn(975, 550, 550, 64)) {
+		if (MouseIn(975, 550, 550, 64)) {
 			KinkyDungeonDrawState = "Game";
 
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 			return true;
 		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
@@ -1810,7 +1796,7 @@ function KinkyDungeonUpdateStruggleGroups() {
 	let struggleGroups = KinkyDungeonStruggleGroupsBase;
 	KinkyDungeonStruggleGroups = [];
 
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 
 	for (let S = 0; S < struggleGroups.length; S++) {
 		let sg = struggleGroups[S];
@@ -1904,7 +1890,7 @@ function KDDrawNavBar(skip, quit = false) {
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (bdata) => {
 		if (skip == 0) {
 			KinkyDungeonDrawState = "Game";
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 
 		} else {KinkyDungeonDrawState = "Restart";
@@ -1923,7 +1909,7 @@ function KDDrawNavBar(skip, quit = false) {
 				}
 			}
 
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), "#ffffff",
@@ -1936,7 +1922,7 @@ function KDDrawNavBar(skip, quit = false) {
 			KinkyDungeonDrawState = "Game";
 		else
 			KinkyDungeonDrawState = "Inventory";
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonInventory"), "#ffffff",
@@ -1961,7 +1947,7 @@ function KDDrawNavBar(skip, quit = false) {
 		else
 			KinkyDungeonDrawState = "MagicSpells";
 
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonMagic"), "#ffffff",
@@ -1979,7 +1965,7 @@ function KDDrawNavBar(skip, quit = false) {
 			KinkyDungeonDrawState = "Quest";
 			KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {Cover: 1});
 		}
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;
 	}, true, bx, by, bwidth, bheight, logtxt, "#ffffff",
@@ -2602,7 +2588,8 @@ function KDProcessBuffIcons(minXX, minYY, side = false) {
 						.replace("DAMAGECATEGORY", TextGet(melee ? "KinkyDungeonDamageTypemelee" : "KinkyDungeonDamageTypemagic").toLocaleLowerCase())
 						.replace("PERCENT1", Math.round(resist * (melee ? meleeResist : magicResist) * 100) + "%")
 						.replace("PERCENT2", Math.round(DR * 100) + "")
-						.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%"),
+						.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%")
+						.replace("COUNTPERCENT", (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%"),
 					count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
 					countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
 					icon: "dmg" + type,

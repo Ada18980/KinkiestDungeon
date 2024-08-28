@@ -152,7 +152,9 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Dressmaker", [
 		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "Melissa", color: "#853cff", prisoner: true, free: true, customPlayLine: "Melissa", customIntro: "My name's Melissa! I know I'm pretty, but try not to stare too much~", customSprite: "Melissa"},
+		{name: "Melissa", color: "#853cff", prisoner: true, free: true, customPlayLine: "Melissa",
+			customStyle: "Melissa", customOutfit: "Melissa", customOutfitBound: "MelissaBound",
+			customIntro: "My name's Melissa! I know I'm pretty, but try not to stare too much~", customSprite: "Melissa"},
 		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "Hello, I am a dressmaker and the name's Alice! Need a new dress?", customSprite: ""},
 	],
 	],
@@ -173,7 +175,15 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["WitchFlame", [
-		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "", customIntro: "All creatures are made to bow to me.", customSprite: "Myrtrice"},
+		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "",
+			customStyle: "Myrtrice", customOutfit: "Myrtrice",
+			customIntro: "All creatures are made to bow to me.", customSprite: "Myrtrice"},
+	],
+	],
+	["DragonGirlShadow", [
+		{name: "Nara", color: "#5F54FF", prisoner: true, free: true, customPlayLine: "",
+			customStyle: "Nara", customOutfit: "Nara", customSprite: "Nara"
+		}
 	],
 	],
 	["WitchIce", [
@@ -1055,6 +1065,15 @@ function KDProcessCustomPatron(Enemy, e, chanceBoost) {
 			if (custom.customPlayLine) {
 				e.playLine = custom.customPlayLine;
 			}
+			if (custom.customStyle) {
+				e.style = custom.customStyle;
+			}
+			if (custom.customOutfit) {
+				e.outfit = custom.customOutfit;
+			}
+			if (custom.customOutfitBound) {
+				e.outfitBound = custom.customOutfitBound;
+			}
 			if (custom.customIntro) {
 				e.intro = custom.customIntro;
 			}
@@ -1082,6 +1101,15 @@ function KDProcessCustomPatronPet(pets, e, index) {
 			e.CustomSprite = custom.customSprite;
 			if (custom.customPlayLine) {
 				e.playLine = custom.customPlayLine;
+			}
+			if (custom.customStyle) {
+				e.style = custom.customStyle;
+			}
+			if (custom.customOutfit) {
+				e.outfit = custom.customOutfit;
+			}
+			if (custom.customOutfitBound) {
+				e.outfitBound = custom.customOutfitBound;
 			}
 			if (custom.customIntro) {
 				e.intro = custom.customIntro;

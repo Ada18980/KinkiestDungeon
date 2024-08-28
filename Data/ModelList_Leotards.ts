@@ -64,7 +64,7 @@ AddModel({
 	Folder: "Swimsuit",
 	Parent: "StrappySwimsuit",
 	TopLevel: true,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "VBikini", Layer: "Panties", Pri: 39,
 			Invariant: true,
@@ -79,7 +79,7 @@ AddModel({
 	Folder: "Swimsuit",
 	Parent: "StrappySwimsuit",
 	TopLevel: true,
-	Categories: ["Underwear"],
+	Categories: ["Underwear", "Panties"],
 	Layers: ToLayerMap([
 		{ Name: "StrappyLower", Layer: "Panties", Pri: 40,
 			Invariant: true,

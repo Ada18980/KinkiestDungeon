@@ -233,7 +233,7 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 
 			return false;
@@ -252,7 +252,7 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 			KinkyDungeonAdvanceTime(1, true, true);
 
@@ -264,9 +264,9 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
-			KinkyDungeonCheckClothesLoss = true;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 			return false;
 		}
@@ -280,7 +280,7 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 			KinkyDungeonDrawState = "Game";
 
 
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return false;
 	}

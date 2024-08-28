@@ -18,6 +18,15 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 			Torso: {"gamma":1,"saturation":0.08333333333333333,"contrast":3.0833333333333335,"brightness":0.3833333333333333,"red":0.9333333333333333,"green":0.55,"blue":1.8333333333333333,"alpha":1},
 		}},
 	],
+
+	Nara:  [
+		{Item: "Body", Group: "Body", Color: "#ffffff", Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":0,"contrast":0.72,"brightness":1,"red":1.55,"green":1.1833333333333333,"blue":1.0833333333333335,"alpha":1},
+			Torso: {"gamma":1,"saturation":0,"contrast":0.72,"brightness":1,"red":1.55,"green":1.1833333333333333,"blue":1.0833333333333335,"alpha":1},
+			Nipples: {"gamma":1,"saturation":0,"contrast":0.72,"brightness":1,"red":1.55,"green":1.1833333333333333,"blue":1.0833333333333335,"alpha":1},
+		}},
+	],
+
 	"Pale" : [
 		{Item: "Body", Group: "Body", Color: "#ffffff", Lost: false, Filters: {"Head":{"gamma":1,"saturation":0.5666666666666667,"contrast":1.3666666666666667,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"Torso":{"gamma":1,"saturation":0.5666666666666667,"contrast":1.3666666666666667,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},
 	],

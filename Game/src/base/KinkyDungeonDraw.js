@@ -1071,7 +1071,7 @@ function KinkyDungeonDrawGame() {
 				KDRepSelectionMode = "";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 				KinkyDungeonDressPlayer();
 			}
 		}
@@ -2024,6 +2024,22 @@ function KinkyDungeonDrawGame() {
 						KDTickSpecialStats();
 						return true;
 					}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
+					DrawButtonKDEx("+maxAP", (bdata) => {
+						KDGameData.StatMaxBonus.AP += 10;
+						return true;
+					}, true, 600, 720, 150, 64, "+Max DP", "#ffaaaa", "");
+					DrawButtonKDEx("+maxMP", (bdata) => {
+						KDGameData.StatMaxBonus.MP += 10;
+						return true;
+					}, true, 750, 720, 150, 64, "+Max MP", "#0088ff", "");
+					DrawButtonKDEx("+maxSP", (bdata) => {
+						KDGameData.StatMaxBonus.SP += 10;
+						return true;
+					}, true, 600, 800, 150, 64, "+Max SP", "#44ff00", "");
+					DrawButtonKDEx("+maxWP", (bdata) => {
+						KDGameData.StatMaxBonus.WP += 10;
+						return true;
+					}, true, 750, 800, 150, 64, "+Max WP", "#ff5555", "");
 
 
 
@@ -2035,7 +2051,7 @@ function KinkyDungeonDrawGame() {
 			DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), "#ffffff", "");
 			DrawButtonVis(975, 650, 550, 64, TextGet("KinkyDungeonRestartQuitNoErase"), "#ffffff", "");
 			DrawButtonVis(975, 800, 550, 64, TextGet("KinkyDungeonRestartCapture" + (KDConfirmDeleteSave ? "Confirm" : "")),  (KDGameData.PrisonerState == 'jail' || !KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : "#ffffff", "");
-			DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), "#ffffff", "");
+			//DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), "#ffffff", "");
 			DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), "#ffffff", "");
 
 			/*DrawButtonKDEx("GameConfigKeys", () => {
@@ -4219,10 +4235,10 @@ function KDDrawTooltip(TooltipList, offset) {
 			// We refresh
 			if (KDDrewEnemyTooltipThisFrame) {
 				if (!KDDrewEnemyTooltip) {
-					KinkyDungeonCheckClothesLoss = true;
+					KDRefreshCharacter.set(listItem.npcSprite, true);
 				}
 			}
-			if (KinkyDungeonCheckClothesLoss) {
+			if (KDRefreshCharacter.get(listItem.npcSprite)) {
 				if (!NPCTags.get(listItem.npcSprite)) {
 					NPCTags.set(listItem.npcSprite, new Map());
 				}
@@ -4553,4 +4569,23 @@ let KDCustomDraw = {
 		}
 		KinkyDungeonDrawBondage();
 	}
+};
+
+let KDCustomDrawInvColorFilter = {
+	"Bondage": (data) => {
+		return (inv) => {
+			if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, data.restraints))
+				return data.force ? KDTextGray1 : KDCanApplyBondage(data.entity, data.player,
+					inv ? (
+						KDRestraint(inv)?.quickBindCondition ?
+						(t, p) => (KDQuickBindConditions[KDRestraint(inv)?.quickBindCondition](
+							t, p,
+							KDRestraint(inv),
+							inv)) :
+						false
+					) : undefined) ? "#63ab3f" : "#f0b541";
+			return "#e64539";
+		};
+	},
+
 };

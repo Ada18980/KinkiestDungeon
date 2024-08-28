@@ -1546,6 +1546,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "LatexBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#4EA1FF", "Default"], Type: "Tight", Group: "ItemMouth", power: 7, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
 		Model: "SmoothBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		Filters: {
 			Ball: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":1.3333333333333333,"blue":2.8499999999999996,"alpha":1},
 		},
@@ -1563,6 +1564,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.8, enemyTags: {"latexRestraints" : 3, "latexGag" : 10, "latexgagSpell": 10, "jailRestraints": 1}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, maxLevel: 5, allFloors: true, shrine: ["BallGags", "Latex" , "Gags"]},
 	{inventory: true, name: "LatexBallGagLarge", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#4EA1FF", "Default"], Type: "Tight", Group: "ItemMouth", power: 7, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
 		Model: "SmoothLargeBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		Filters: {
 			Ball: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":1.3333333333333333,"blue":2.8499999999999996,"alpha":1},
 		},
@@ -1776,6 +1778,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.8, enemyTags: {"redLatexBasic":6}, playerTags: {"ItemMouthFull": 6}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex", "FlatGags", "Gags"]},
 	{inventory: true, unlimited: true, name: "RedLatexBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#ff5277", "#882222"],
 		Model: "BallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -2857,6 +2860,7 @@ const KinkyDungeonRestraints = [
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Harnesses"]},
 	{inventory: true, trappable: true, name: "TrapGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "BallGag",
 		Model: "BallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -2873,6 +2877,7 @@ const KinkyDungeonRestraints = [
 		shrine: ["BallGags", "Leather", "Latex" , "Gags"]},
 	{inventory: true, trappable: true, name: "TrapGagLarge", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "BallGag",
 		Model: "LargeBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3266,6 +3271,7 @@ const KinkyDungeonRestraints = [
 	// Generic ball gag thats stronger than the trap one
 	{inventory: true, name: "MagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], gag: 0.35,
 		Model: "BallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3279,6 +3285,7 @@ const KinkyDungeonRestraints = [
 		maxwill: 0.9, enemyTags: {"ballGagRestraints" : 4, "gagSpell": 10}, playerTags: {}, minLevel: 0, maxLevel: 7, allFloors: true, shrine: ["BallGags", "Latex" , "Gags"]},
 	{inventory: true, name: "MagicGagLarge", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], gag: 0.35,
 		Model: "LargeBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3293,6 +3300,7 @@ const KinkyDungeonRestraints = [
 
 	{inventory: true, name: "MagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]],
 		Model: "LargeBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3306,6 +3314,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"ballGagRestraintsMagic" : 4, "gagSpellStrong": 10}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BallGags", "Leather" , "Gags", "Conjure"]},
 	{inventory: true, name: "AntiMagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Model: "BallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		Filters: {
 			"Ball": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":3.016666666666667,"blue":3.95,"alpha":1},
 		},
@@ -3318,6 +3327,7 @@ const KinkyDungeonRestraints = [
 		enemyTags: {}, playerTags: {}, minLevel: 3, maxLevel: 7, allFloors: true, shrine: ["Illusion", "BallGags", "Leather" , "Gags", "Conjure"]},
 	{inventory: true, name: "AntiMagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Model: "BallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		Filters: {
 			"Ball": {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":3.016666666666667,"blue":3.95,"alpha":1},
 		},
@@ -3383,20 +3393,20 @@ const KinkyDungeonRestraints = [
 	// Simple cloth stuff
 	{inventory: true, name: "ClothGag", LinkableBy: [...KDBallGagLink], debris: "Fabric", renderWhenLinked: [...KDBallGagLink], Asset: "ClothGag", gag: 0.35, Type: "Knotted", Color: "#959595", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothCleave",
-		maxwill: 0.75, enemyTags: {"clothRestraints":8, "ropeAuxiliary": 3}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "BallGags", "Gags"]},
+		maxwill: 0.75, enemyTags: {"clothRestraints":8, "ropeAuxiliary": 3}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["ClothGag", "Rope", "BallGags", "Gags"]},
 	{inventory: true, name: "ClothGag2", LinkableBy: [...KDBallGagLink], debris: "Fabric", renderWhenLinked: [...KDBallGagLink], Asset: "ClothGag", gag: 0.45, Type: "Knotted", Color: "#959595", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothCleaveThick",
-		maxwill: 0.6, enemyTags: {"clothRestraints":6, "ropeAuxiliary": 2}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Rope", "BallGags", "Gags"]},
+		maxwill: 0.6, enemyTags: {"clothRestraints":6, "ropeAuxiliary": 2}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["ClothGag", "Rope", "BallGags", "Gags"]},
 	{inventory: true, name: "ClothGag3", LinkableBy: [...KDBallGagLink], debris: "Fabric", renderWhenLinked: [...KDBallGagLink], Asset: "ClothGag", gag: 0.65, Type: "Knotted", Color: "#959595", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothKnot",
-		maxwill: 0.35, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 3, allFloors: true, shrine: ["Rope", "BallGags", "Gags"]},
+		maxwill: 0.35, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 3, allFloors: true, shrine: ["ClothGag", "Rope", "BallGags", "Gags"]},
 	{inventory: true, name: "ClothGagOver", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Asset: "ClothGag", gag: 0.35, Type: "OTN", Color: "#959595", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothOTN",
-		maxwill: 0.75, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, debris: "Fabric", playerTags: {"ItemMouthEmpty": -4, "ItemMouth2Empty": -4}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Rope", "Gags"]},
+		maxwill: 0.75, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, debris: "Fabric", playerTags: {"ItemMouthEmpty": -4, "ItemMouth2Empty": -4}, minLevel: 0, allFloors: true, shrine: ["ClothGag", "FlatGags", "Rope", "Gags"]},
 	{inventory: true, name: "ClothBlindfold", Asset: "ClothBlindfold", debris: "Fabric", Color: "#959595", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothBlindfold",
 		affinity: {Struggle: ["Sticky", "Hook"], Remove: ["Hook"],},
-		maxwill: 0.85, blindfold: 2, enemyTags: {"clothRestraints":8, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Rope", "Blindfolds"]},
+		maxwill: 0.85, blindfold: 2, enemyTags: {"clothRestraints":8, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["ClothBlindfold", "Rope", "Blindfolds"]},
 
 	//region Baast warriors only apply two things so its okay that these have a high maxwill
 	{inventory: true, name: "KittyGag", Asset: "KittyHarnessPanelGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.6,
@@ -4609,8 +4619,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
 		],
-		LinkableBy: [...KDJacketLink],
-		renderWhenLinked: [...KDJacketRender],
+		LinkableBy: [...KDBoxbinderLink],
+		renderWhenLinked: [...KDBoxbinderLink],
 		Model: "JacketExtraLeotard",
 		Filters: {
 			BeltsChest: {"gamma":1,"saturation":0,"contrast":1.7166666666666666,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -7175,6 +7185,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "Cloth"],
 	addPose: ["TorsoArmor"],
+	armor: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
 	protection: 1,
 	displayPower: 2,
@@ -7218,6 +7229,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	DefaultLock: "Divine",
 	shrine: ["Armor", "TorsoArmor", "Cloth"],
 	addPose: ["TorsoArmor"],
+	armor: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
 	protection: 3,
 	displayPower: 30,

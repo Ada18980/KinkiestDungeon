@@ -137,6 +137,8 @@ let DisplacementMaps = [
 'FutureBox.png',
 'TapeTopRight.png',
 'TapeTopRightBoxtie.png',
+'TightUpperSquish.png',
+'LightMaidRightArmErase.png',
 'TapeTopRightCrossed.png',
 'TapeTopRightWristtie.png',
 'Thigh1SquishClosed.png',

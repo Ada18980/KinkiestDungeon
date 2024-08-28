@@ -5,6 +5,9 @@
  */
 let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 	"Fuuka" : [{"Item":"ElfEars","Group":"ElfEars","Color":"#ffffff","Lost":false}],
+	Nara: [
+		{"Item":"SuccubusTail","Group":"SuccubusTail","Color":"#ffffff","Lost":false,"Filters":{"SuccubusTail":{"gamma":0.7666666666666666,"saturation":0,"contrast":0.7666666666666666,"brightness":4.9,"red":1.3,"green":0.5166666666666666,"blue":1.4833333333333334,"alpha":0.65},"SuccubusTailLight":{"gamma":1.0166666666666666,"saturation":0.016666666666666666,"contrast":1,"brightness":2.166666666666667,"red":0.3666666666666667,"green":0.3833333333333333,"blue":1.4833333333333334,"alpha":0.65}}},
+		{"Item":"ElfEarsLong","Group":"ElfEarsLong","Color":"#ffffff","Lost":false,"Filters":{"ElfLongBack":{"gamma":1,"saturation":0,"contrast":0.72,"brightness":1,"red":1.55,"green":1.1833333333333333,"blue":1.0833333333333335,"alpha":1},"ElfLongFront":{"gamma":1,"saturation":0,"contrast":0.72,"brightness":1,"red":1.55,"green":1.1833333333333333,"blue":1.0833333333333335,"alpha":1}}}],
 	"Elf1": [
 		{
 			Item: "ElfEarsLong", Color: "#ffffff", Lost: false
@@ -21,6 +24,7 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 			{"EarringRight":{"gamma":1,"saturation":1,"contrast":1,"brightness":1.3,"red":1,"green":1,"blue":1,"alpha":1},"EarringLeft":{"gamma":1,"saturation":1,"contrast":0.65,"brightness":1.7000000000000002,"red":0.55,"green":0.55,"blue":2.033333333333333,"alpha":1.75}}
 		},
 	],
+
 	"Elf3": [
 		{
 			Item: "ElfEarsLong", Color: "#ffffff", Lost: false

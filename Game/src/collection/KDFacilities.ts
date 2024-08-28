@@ -274,7 +274,8 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
 					KinkyDungeonDrawState = "Collection";
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(servant))
+						KDRefreshCharacter.set(KDNPCChar.get(servant), true);
 					KDCollectionTab = "";
 					KDCollectionSelected = servant;
 					KDFacilityCollectionCallback = setCallback;
@@ -297,7 +298,8 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KDCurrentFacilityTarget = facility;
 					KDCurrentFacilityCollectionType = ["Servants", "Prisoners"];
 					KinkyDungeonDrawState = "Collection";
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(prisoner))
+						KDRefreshCharacter.set(KDNPCChar.get(prisoner), true);
 					KDCollectionTab = "";
 					KDCollectionSelected = prisoner;
 					KDFacilityCollectionCallback = setCallback;

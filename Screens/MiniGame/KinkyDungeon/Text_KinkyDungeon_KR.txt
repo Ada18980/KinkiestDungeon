@@ -2080,8 +2080,8 @@ I have altered the rules. Pray I do not alter them further.
 규칙을 변경했습니다. 더 이상 변경하지 않도록 기도해 주십시오.
 Deals chain damage with 200% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Ranged attack: Disarm
 200% 바인딩 효율로 체인 데미지를 입히고, 소환 시 +40 암흑 데미지. +25% 글루 및 체인 데미지. 원거리 공격: 무장 해제
-Bondage Buster
-본디지 버스터
+Bondage Buster EX
+본디지 버스터 EX
 Can fire a beam (1 turn channel) that deals 30 electric damage, but charges when not fired, dealing 90 total damage at 10 turns of charge.
 30의 전기 피해를 주는 빔(1턴 채널)을 발사할 수 있지만, 발사하지 않으면 충전되어 10턴 충전 시 총 90의 피해를 입힙니다.
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
@@ -7296,8 +7296,8 @@ You pick up The Arbiter.
 당신은 The Arbiter를 선택합니다.
 You pick up Dreamcatcher.
 드림캐쳐 주워.
-You retrieve the Bondage Buster.
-본디지 버스터를 되찾았습니다.
+You retrieve the Bondage Buster EX.
+본디지 버스터를 되찾았습니다 EX.
 You retrieve a Nevermere Blaster Mark IV.
 Nevermere Blaster Mark IV를 회수했습니다.
 You retrieve the Messenger of Love.
