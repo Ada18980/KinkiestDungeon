@@ -7373,8 +7373,10 @@ You pick up a bomb!
 你拿起了炸弹！
 You pick up Dragonslaver.
 你拿起了驯龙者。
-You retrieve the Bondage Buster.
-你取回了束缚破坏者。
+You retrieve the Bondage Buster EX.
+你取回了束缚破坏者 EX。
+You salvage a Bondage Buster MK II.
+你挽救了一台束缚破坏者 MK II.
 You retrieve Moirai's scissors.
 你取回了Moirai的剪刀。
 You pick up a bunch of scrolls!
