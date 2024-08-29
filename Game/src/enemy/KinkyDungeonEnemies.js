@@ -4015,7 +4015,9 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	AIData.leashing = enemy.Enemy.tags.leashing && (KDFactionRelation(KDGetFaction(enemy), "Jail")) > -0.5;
 	AIData.highdistraction = KDIsDistracted(enemy);
-	AIData.distracted = AIData.highdistraction && KDLoosePersonalities.includes(enemy.personality);
+	AIData.distracted = AIData.highdistraction
+		&& KDLoosePersonalities.includes(enemy.personality)
+		&& AIData.playerDist > 2.5 && KDRandom() < (KDGetFaction(enemy) == "Player" ? 0.1 : 0.4);
 	// Check if the enemy ignores the player
 	if (player.player && (enemy.aware || enemy.vp > 0) && !KDAllied(enemy) && !KDEnemyHasFlag(enemy, "noignore")) {
 		if (AIData.playerDist < 1.5 && KinkyDungeonAllRestraint().some((r) => {return KDRestraint(r).ignoreNear;})) AIData.ignore = true;
