@@ -269,11 +269,12 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 	}
 
 
-
-	if (((KDForcedToGround() || data.legBondage) && data.armBondage)
+	if (((KDForcedToGround() || data.legBondage || KinkyDungeonSlowLevel > 1) && data.armBondage)
 		&& (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		// Total helplessness
-		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.01 : 0.5;
+		KinkyDungeonPlayerDamage.chance *= (KDForcedToGround() || data.legBondage) ? 0.5
+			: Math.max(0.5, Math.min(1.0, 1.25 - 0.25 * KinkyDungeonSlowLevel));
+
 		if ((!data.brawler || !weapon?.unarmed) && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
 			KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.01 : 0.5;
 	}
