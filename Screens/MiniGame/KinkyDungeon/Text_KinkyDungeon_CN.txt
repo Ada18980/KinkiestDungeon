@@ -430,8 +430,8 @@ Distracted
 增加 15% 施法失败几率 ( 始终 )
 Brawler
 格斗大师
-Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage.
-徒手攻击额外造成10伤害并且减速不会减少徒手伤害。
+Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage.
+徒手攻击额外造成10伤害并且被束缚不会减少徒手伤害。
 Way of the Squish
 轻抚攻击
 Unarmed attacks deal grope damage against humans.
@@ -909,7 +909,7 @@ Novice Pet
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 你现在可以穿着宠物服冲刺了。 ( 可在技能树中升级 )
 Novice Pet Training
-新手宠物技能
+新手宠物训练
 You can now sprint while wearing a petsuit.
 你现在可以穿着宠物服冲刺了。
 Eager Pet
@@ -1390,7 +1390,7 @@ Dextrous: You can cast arm spells while tied up.
 Spell Dance: You can cast leg spells while tied up.
 舞步神通 : ‎你可以在双腿被捆绑的情况下施放需要腿部的法术
 Bondage Buster: Lazor is charging...
-束缚破坏者 : ‎激光正在充能中...
+束缚破坏者: ‎激光正在充能中...
 Katana: Patience is key...
 Katana : ‎耐心是关键...
 Stormbreaker: You have the Power.
@@ -1411,8 +1411,8 @@ Change Outfit
 换装
 Reset Outfit
 重置外观
-Load from Code
-从代码中加载
+Load Saved Game
+加载已保存的游戏
 Confirm Reset?
 确认重置？
 (Your game has been saved)
@@ -2595,6 +2595,12 @@ Bondage Buster EX
 束缚破坏者 EX
 Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge.
 可以发射一道光束 ( 1 回合回合 ) ，造成 30 点电击伤害，并施加等量的能量束缚。未发射时会充能，充能 10 回合可造成 90 点总伤害。
+Bondage Buster MK II
+束缚破坏者 MK II
+Can fire a beam (3 turn channel) that deals 35 electric damage in an area and applies an equal amount of energy bondage. While charge is below 50%, has a 10% chance to misfire.
+可以发射一道光束 ( 1 回合回合 )，对一定范围内造成 35 点电击伤害，并施加等量的能量束缚。当电荷低于 50% 时，有 10% 的几率会射不中。
+Melee mode deals tickle damage and marks enemies as vulnerable for 2 turns.
+近战模式会造成挠痒伤害，并将敌人标记为易受攻击，持续 2 回合。
 Blaster
 爆破者
 Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns.
@@ -5457,14 +5463,14 @@ It seems to be made of flexible steel plates, and it has a high-security lock.
 它似乎由柔性钢板制成，并且具有高安全性锁。
 Latex Ball Gag
 乳胶口球
-A devious device that looks like a ball gag, but has a mouth-filling rod on the inside.
-一种看起来像口球的装备，但内部有一个能填满嘴的棒。
+A devious device that looks like a ball gag, but has a mouth-filling rod on the inside. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一种看起来像口球的装备，但内部有一个能填满嘴的棒。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 The strap is made of a durable but flexible material
 带子由耐用但柔韧的材料制成
 Large Latex Ball Gag
 大号乳胶口球
-A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder.
-一种看起来像大口球的装备，但内部有一个能填满嘴的橡胶棒。
+A devious device that looks like a large ball gag, but absolutely fills your mouth with a rubber cylinder. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一种看起来像大口球的装备，但内部有一个能填满嘴的橡胶棒。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 Latex Mask
 乳胶面具
 A slick layer of blue latex stretched over the mouth.
@@ -5491,8 +5497,8 @@ A mass of alchemical latex stretched over your entire face, then hardened.
 一团炼金乳胶铺满了你的整张脸，然后变硬。
 Rubberized Ball Gag
 橡胶口球
-A mass of alchemical latex inflated to fill your mouth, then hardened.
-大量炼金乳胶膨胀并填满你的嘴，然后变硬。
+A mass of alchemical latex inflated to fill your mouth, then hardened. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+大量炼金乳胶膨胀并填满你的嘴，然后变硬。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 Rubberized OTN Mask
 橡胶覆嘴式面具
 A mass of alchemical latex stretched over your mouth, then hardened.
@@ -6255,28 +6261,28 @@ Can be worn all day! Also convenient to hold.
 可以穿一整天！握持也方便。
 Ball Gag
 口球
-A gag made of a red squishy material.
-一种由红色柔软材料制成的堵嘴物。
+A gag made of a red squishy material. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一种由红色柔软材料制成的堵嘴物。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 You can't seem to enunciate your spells properly with this in.
 佩戴上后，你似乎无法正确地念出你的咒语。
 Large Ball Gag
 大号口球
-A mouth-filling gag made of a red squishy material.
-一种由红色软质材料制成的口塞。
+A mouth-filling gag made of a red squishy material. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一种由红色软质材料制成的口塞。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 Tight Ball Gag
 紧致口球
-A gag made of a red squishy material, buckled as tight as it will go.
-一个由红色柔软材料制成的口球，被扣的很紧。
+A gag made of a red squishy material, buckled as tight as it will go. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一个由红色柔软材料制成的口球，被扣的很紧。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 Huge Ball Gag
 巨大号口球
-A massive gag made of a red squishy material, buckled as tight as it will go.
-一个巨大的口球，由红色软材料制成，被扣的很紧。
+A massive gag made of a red squishy material, buckled as tight as it will go. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一个巨大的口球，由红色软材料制成，被扣的很紧。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 You absolutely can't enunciate your spells properly with this in.
 佩戴上后，你绝对无法正确地念出你的咒语。
 Magic Ball Gag
 附魔口球
-A gag enchanted with magic. It grows to fill your mouth so you can hardly speak.
-一个被附魔的口球。它会长到填满你的嘴巴，所以你几乎不能说话。
+A gag enchanted with magic. It grows to fill your mouth so you can hardly speak. Can be applied on vulnerable targets or those who casted a verbal spell last turn, at half strength.
+一个被附魔的口球。它会长到填满你的嘴巴，所以你几乎不能说话。可以以一半的强度应用于脆弱的目标或上一回合施展过口头咒语的人。
 It's brimming with conjured energy. A normal knife won't work here!
 它充满了魔法能量。普通的刀在这里是行不通的！
 Anti-Magic Gag
@@ -7367,8 +7373,10 @@ You pick up a bomb!
 你拿起了炸弹！
 You pick up Dragonslaver.
 你拿起了驯龙者。
-You retrieve the Bondage Buster.
-你取回了束缚破坏者。
+You retrieve the Bondage Buster EX.
+你取回了束缚破坏者 EX。
+You salvage a Bondage Buster MK II.
+你挽救了一台束缚破坏者 MK II.
 You retrieve Moirai's scissors.
 你取回了Moirai的剪刀。
 You pick up a bunch of scrolls!
@@ -19933,8 +19941,8 @@ Sleek and shiny tape for the bondage enthusiast.
 光滑闪亮的胶带，适合捆绑爱好者使用。
 Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar.
 由金属材料制成的粘性胶带。在警用场合使用效果极佳。可用于快速库存或快捷栏中的脆弱对象。
-A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar.
-一块布团。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+A stuffing of cloth. Can be applied on vulnerable targets or those who casted a verbal spell last turn.
+一块布团。可以用于脆弱的目标或上一回合施展过口头咒语的人。
 A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar.
 一对钢制手铐牢固地锁在你的手腕上。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
 A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar.
@@ -20452,6 +20460,8 @@ Save Slot
 Load File
 加载文件
 Load Code
+加载槽位0
+Load Slot 0
 加载代码
 No Data
 无数据
