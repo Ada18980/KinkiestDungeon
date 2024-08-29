@@ -123,7 +123,7 @@ let KDEncasedDoll = {
 };
 let KDChastity = {
 	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", aurasprite: "Chastity", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["chastity"], events: [
-		{type: "Distract", power: 0.1, trigger: "tick", prereq: "bound"},
+		{type: "Distract", power: 0.01, trigger: "tick", prereq: "bound"},
 	]
 };
 let KDVibrate1 = {
