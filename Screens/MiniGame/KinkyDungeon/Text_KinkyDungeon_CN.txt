@@ -430,8 +430,8 @@ Distracted
 增加 15% 施法失败几率 ( 始终 )
 Brawler
 格斗大师
-Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage.
-徒手攻击额外造成10伤害并且减速不会减少徒手伤害。
+Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage.
+徒手攻击额外造成10伤害并且被束缚不会减少徒手伤害。
 Way of the Squish
 轻抚攻击
 Unarmed attacks deal grope damage against humans.
@@ -1411,8 +1411,8 @@ Change Outfit
 换装
 Reset Outfit
 重置外观
-Load from Code
-从代码中加载
+Load Saved Game
+加载已保存的游戏
 Confirm Reset?
 确认重置？
 (Your game has been saved)
