@@ -1390,6 +1390,9 @@ interface weapon {
 	rarity: number;
 	staminacost?: number;
 	magic?: boolean;
+	/** Determines if the weapon is a gun/staff type (does damage regardless of binding)
+	 * or a whack type that needs force to be effective*/
+	noDamagePenalty?: boolean,
 	cutBonus?: number;
 	playSelfBonus?: number;
 	playSelfMsg?: string;

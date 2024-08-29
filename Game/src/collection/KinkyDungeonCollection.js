@@ -531,7 +531,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		KDNPCChar.set(value.id, KDSpeakerNPC);
 		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 		KDNPCStyle.set(KDSpeakerNPC, value);
-		if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
+		if (!value.bodystyle && !value.facestyle && !value.hairstyle) {
 			if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
 				if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
 					let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];

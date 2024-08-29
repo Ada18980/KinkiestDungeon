@@ -1402,7 +1402,7 @@ function KDDrawWardrobe(screen, Character) {
 					delete value.customOutfit;
 
 					let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
-					if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
+					if (!value.bodystyle && !value.facestyle && !value.hairstyle) {
 						if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
 							if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
 								let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
