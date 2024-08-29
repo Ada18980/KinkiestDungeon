@@ -8906,7 +8906,7 @@ function KDQuickGenNPC(enemy, force) {
 			value = value || KDGetPersistentNPC(enemy.id);
 			// Use a pointer
 			KDNPCStyle.set(NPC, value);
-			if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
+			if (!value.bodystyle && !value.facestyle && !value.hairstyle) {
 				if (enemyType?.style || enemyType.style) {
 					if (KDModelStyles[enemyType?.style || enemyType.style]) {
 						let style = KDModelStyles[enemyType?.style || enemyType.style];

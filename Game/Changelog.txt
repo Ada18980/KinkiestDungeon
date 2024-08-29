@@ -47,7 +47,7 @@ TODO remove hogtie when released
 - Fixed issue where truss em up couldnt be opened even if you had quick-bind restraints that could be used with it.
 - Hopefully fixed issue where your party members would turn on you due to other ally's AoE
 - Fixed issue where caldera could have inaccessible regions and the player might even start in one
-
+- Brawler should no longer give you full accuracy while arm + legbindered, but should always give full unarmed damage
 
 5.3-Patch1
 - Added toggle to only bind self from quick inv (instead of targeting)

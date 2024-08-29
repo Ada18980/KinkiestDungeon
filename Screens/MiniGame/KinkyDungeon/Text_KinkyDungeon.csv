@@ -199,7 +199,7 @@ KinkyDungeonStat19,"Distracted"
 KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
 KinkyDungeonStat20,"Brawler"
-KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage."
+KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage."
 
 KinkyDungeonStatUnarmedGrope,"Way of the Squish"
 KinkyDungeonStatDescUnarmedGrope,"Unarmed attacks deal grope damage against humans."
@@ -965,7 +965,7 @@ KinkyDungeonStaminaWarningNone,"You feel like you are going to pass out..."
 GameStart,Start New Game
 KinkyDungeonNewGamePlus,New Game+
 GameContinue,Continue Last Save
-LoadGame,Load From Code
+LoadGame,Load Saved Game
 LoadOutfit,Save Outfit (overwrites!)
 LoadOutfitClothes,Save Outfit (Clothes Only!)
 GameReturnToMenu,Save Keybindings

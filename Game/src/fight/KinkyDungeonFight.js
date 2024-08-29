@@ -231,7 +231,11 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		canUse: KinkyDungeonCanUseWeapon(NoOverride, undefined, weapon),
 		forceUse: false, // Set this to true if you want to disable accuracy penalty from Telekinesis 101
 		handBondage:  KDHandBondageTotal(true),
-		armBondage : KinkyDungeonIsArmsBound(false, true)};
+		armBondage : KinkyDungeonIsArmsBound(false, true),
+		legBondage: !KDGetAvailablePosesLegs(KinkyDungeonPlayer, undefined, true)
+			.includes("Spread"),
+		brawler: KinkyDungeonStatsChoice.get("Brawler"),
+	};
 
 	if (!NoOverride)
 		KinkyDungeonSendEvent("calcDamage", data);
@@ -262,29 +266,31 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 
 	if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
 		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
-	} else {
+	}
+
+
+
+	if (((KDForcedToGround() || data.legBondage) && data.armBondage)
+		&& (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
+		// Total helplessness
+		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.01 : 0.5;
+		if (!data.brawler && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
+			KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.01 : 0.5;
+	}
+
+	if (data.legBondage || !data.brawler) {
 		if (data.armBondage && (flags.KDDamageArms || weapon?.unarmed) && (!weapon?.noHands)) {
 			KinkyDungeonPlayerDamage.chance *= KDIsHogtied(KinkyDungeonPlayer) ? 0.1 : 0.5;
-			if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg /= 2;
-		} else if (data.handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
-			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
-			if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
-		}
-		if (KinkyDungeonSlowLevel > 1 && (!KinkyDungeonPlayerDamage.name || weapon?.unarmed)) {
-			KinkyDungeonPlayerDamage.dmg /= 2;
-		}
-	}
-	if (((KDForcedToGround() || !KinkyDungeonCanStand()) && KinkyDungeonIsArmsBound()) && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
-		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.001 : 0.5;
-		if (!KDWeaponIsMagic(KinkyDungeonPlayerDamage)) KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.001 : 0.5;
-		if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
-			if (data.armBondage) {
-				KinkyDungeonPlayerDamage.chance *= 0.5;
+			if (!data.brawler && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
 				KinkyDungeonPlayerDamage.dmg /= 2;
-			} else if (data.handBondage) {
-				KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
+		} else if (!data.brawler && data.handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
+			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
+			if (!data.brawler && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
 				KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
-			}
+		}
+		if (KinkyDungeonSlowLevel > 1) {
+			if (!data.brawler && (!KinkyDungeonPlayerDamage.name || weapon?.unarmed))
+				KinkyDungeonPlayerDamage.dmg *= Math.max(0.5, Math.min(1.0, 1.25 - 0.25 * KinkyDungeonSlowLevel));
 		}
 	}
 
@@ -2973,6 +2979,21 @@ function KDCanOffhand(item) {
 
 	return data.item && data.canOffhand;
 }
+
+/**
+ * Returns whether or not a weapon takes a damage penalty from not being wielded properly
+ * e.g. staffs
+ * @param {Named} weapon
+ * @returns {boolean}
+ */
+function KDWeaponNoDamagePenalty(weapon) {
+	if (KDWeapon({name: weapon.name})?.noDamagePenalty) return true;
+	// Quik n dirty
+	if (KinkyDungeonWeaponVariants[weapon.name]?.events?.some((e) => {
+		return e.type == "noDamagePenalty" && e.trigger == "calcEvasion";})) return true;
+	return false;
+}
+
 
 /**
  * @param {Named} weapon

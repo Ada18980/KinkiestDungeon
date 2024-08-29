@@ -880,6 +880,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 
 	let tooltip = false;
 	let catsdrawn = 0;
+	let perksdrawn = 0;
 	let catsdrawnStrict = 0;
 
 	function inView() {
@@ -897,6 +898,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	let filled_x = {
 
 	};
+
 	for (let c of KDCategories) {
 		Y = Math.max(Y, Y_alt);
 		let height = KDPerksYPad + KDPerksButtonHeight*Math.max(c.buffs.length, c.debuffs.length);
@@ -936,6 +938,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					let colorSelected = KDGetPerkCost(stat[1]) > 0 ? "#eeeeff" : KDGetPerkCost(stat[1]) < 0 ? "#ffeeee" : "#eeeeff";
 					let colorExpensive = KDGetPerkCost(stat[1]) > 0 ? "#555588" : KDGetPerkCost(stat[1]) < 0 ? "#885555" : "#555588";
 
+					perksdrawn += 1;
 					DrawButtonKDExTo(kdUItext, stat[0], (bdata) => {
 						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
 							KinkyDungeonStatsChoice.set(stat[0], true);
@@ -1021,7 +1024,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 		};
 	}, "KDCategory");
 
-	if (catsdrawn < 3 && KDPerksIndex > 0) KDPerksIndex -= 1;
+	if ((catsdrawn < 3 || perksdrawn == 0) && KDPerksIndex > 0) KDPerksIndex -= 1;
 
 	return tooltip;
 }
