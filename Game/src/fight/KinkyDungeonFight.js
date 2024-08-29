@@ -274,22 +274,26 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree, NoOverride) {
 		&& (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon.unarmed)) {
 		// Total helplessness
 		KinkyDungeonPlayerDamage.chance *= KDIsHogtied() ? 0.01 : 0.5;
-		if (!data.brawler && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
+		if ((!data.brawler || !weapon?.unarmed) && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
 			KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.01 : 0.5;
 	}
 
-	if (data.legBondage || !data.brawler) {
-		if (data.armBondage && (flags.KDDamageArms || weapon?.unarmed) && (!weapon?.noHands)) {
+	if (data.legBondage || !data.brawler || !isUnarmed(KinkyDungeonPlayerDamage)) {
+		if (data.armBondage && (flags.KDDamageArms || isUnarmed(KinkyDungeonPlayerDamage))
+			&& (!weapon?.noHands)) {
 			KinkyDungeonPlayerDamage.chance *= KDIsHogtied(KinkyDungeonPlayer) ? 0.1 : 0.5;
-			if (!data.brawler && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
+			if ((!data.brawler || !isUnarmed(KinkyDungeonPlayerDamage))
+				&& !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
 				KinkyDungeonPlayerDamage.dmg /= 2;
-		} else if (!data.brawler && data.handBondage && (flags.KDDamageHands || weapon?.unarmed) && (!weapon || !weapon.noHands || weapon?.unarmed)) {
+		} else if (data.handBondage && (flags.KDDamageHands || isUnarmed(KinkyDungeonPlayerDamage))
+			&& (!weapon || !weapon.noHands || (!data.brawler && isUnarmed(KinkyDungeonPlayerDamage)))) {
 			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
-			if (!data.brawler && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
+			if ((!data.brawler || !isUnarmed(KinkyDungeonPlayerDamage))
+				&& !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
 				KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
 		}
 		if (KinkyDungeonSlowLevel > 1) {
-			if (!data.brawler && (!KinkyDungeonPlayerDamage.name || weapon?.unarmed))
+			if (!data.brawler && !isUnarmed(KinkyDungeonPlayerDamage))
 				KinkyDungeonPlayerDamage.dmg *= Math.max(0.5, Math.min(1.0, 1.25 - 0.25 * KinkyDungeonSlowLevel));
 		}
 	}
