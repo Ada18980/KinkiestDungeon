@@ -123,7 +123,7 @@ let KDEncasedDoll = {
 };
 let KDChastity = {
 	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", aurasprite: "Chastity", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["chastity"], events: [
-		{type: "Distract", power: 0.1, trigger: "tick", prereq: "bound"},
+		{type: "Distract", power: 0.01, trigger: "tick", prereq: "bound"},
 	]
 };
 let KDVibrate1 = {
@@ -152,13 +152,13 @@ let KDToy = {
 };
 let KDPlugged = {
 	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", aurasprite: "Plugged", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["plugged"], events: [
-		{type: "Distract", power: 2.0, trigger: "tick"},
+		{type: "Distract", power: 0.2, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
 let KDDoublePlugged = {
 	id: "DoublePlugged", type: "Plug", power: 2.0, aura: "#dddddd", aurasprite: "DoublePlugged", player: false, enemies: true, duration: 9998, range: 0.5, tags: ["plugged"], events: [
-		{type: "Distract", power: 5.0, trigger: "tick"},
+		{type: "Distract", power: 0.5, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
