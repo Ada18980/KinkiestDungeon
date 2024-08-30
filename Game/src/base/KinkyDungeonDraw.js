@@ -4,16 +4,18 @@ let KDDebugOverlay = false;
 /** @type {PoseMod[]} */
 let CHIBIMOD = StandalonePatched ? [
 	{
-		Layer: "HairBack",
-		scale_x: 0.6,
-		scale_y: 0.6,
-		offset_x: 550,
-		offset_y: 400,
-	},
-	{
 		Layer: "Head",
 		scale_x: 2.5,
 		scale_y: 2.5,
+		rotation_x_anchor: 1190,
+		rotation_y_anchor: 690,
+		offset_x: 1100,
+		offset_y: 620,
+	},
+	{
+		Layer: "HairBack",
+		scale_x: 0.6,
+		scale_y: 0.6,
 		rotation_x_anchor: 1190,
 		rotation_y_anchor: 690,
 		offset_x: 1100,
