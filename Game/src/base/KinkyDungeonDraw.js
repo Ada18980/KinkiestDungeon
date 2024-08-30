@@ -5,17 +5,8 @@ let KDDebugOverlay = false;
 let CHIBIMOD = StandalonePatched ? [
 	{
 		Layer: "Head",
-		scale_x: 2.5,
-		scale_y: 2.5,
-		rotation_x_anchor: 1190,
-		rotation_y_anchor: 690,
-		offset_x: 1100,
-		offset_y: 620,
-	},
-	{
-		Layer: "HairBack",
-		scale_x: 0.6,
-		scale_y: 0.6,
+		scale_x: 2,
+		scale_y: 2,
 		rotation_x_anchor: 1190,
 		rotation_y_anchor: 690,
 		offset_x: 1100,
@@ -1678,7 +1669,7 @@ function KinkyDungeonDrawGame() {
 			// Draw the player no matter what
 
 			let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
-			let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1200
+			let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1100
 				: KinkyDungeonGridSizeDisplay/250;
 
 			if (KDDrawPlayer)

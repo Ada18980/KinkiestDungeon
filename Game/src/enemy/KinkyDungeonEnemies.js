@@ -694,7 +694,7 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 			DrawCharacter(char,
 				(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - (1)*(w - KinkyDungeonGridSizeDisplay)/2 + size * 0.25,
 				(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2 + size/6,
-				size/1200, false, board, undefined, CHIBIMOD, 0, enemy.flip, undefined, "spr_" + enemy.id + id);
+				size/1100, false, board, undefined, CHIBIMOD, 0, enemy.flip, undefined, "spr_" + enemy.id + id);
 
 		} else {
 			let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + "Enemies/" + sp + ".png",
@@ -748,7 +748,7 @@ function KDDrawEnemySprite(board, enemy, tx, ty, CamX, CamY, StaticView, zIndex 
 			DrawCharacter(char,
 				(tx + (enemy.offX || 0) - CamX)*KinkyDungeonGridSizeDisplay - (1)*(w - KinkyDungeonGridSizeDisplay)/2 + size * 0.25,
 				(ty + (enemy.offY || 0) - CamY)*KinkyDungeonGridSizeDisplay - (h - KinkyDungeonGridSizeDisplay)/2+ size/6,
-				size/1200, false, board, undefined, CHIBIMOD, 0, enemy.flip, undefined, "spr_" + enemy.id + id);
+				size/1100, false, board, undefined, CHIBIMOD, 0, enemy.flip, undefined, "spr_" + enemy.id + id);
 
 		} else {
 			let spr = KDDraw(board, kdpixisprites, "spr_" + enemy.id + id, KinkyDungeonRootDirectory + dir + sp + ".png",
