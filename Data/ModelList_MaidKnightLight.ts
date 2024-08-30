@@ -67,7 +67,7 @@ AddModel({
 			InheritColor: "Top",
 			Poses: ToMap([...ARMPOSES]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
-			Invariant: true,
+			//Invariant: true,
 		},
 
 	])

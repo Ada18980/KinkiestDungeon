@@ -706,21 +706,25 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let transform = new Transform();
 
 				let layer = LayerLayer(MC, l, m, mods);
+				let tt = [];
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
-						transform = transform.recursiveTransform(
-							mod.offset_x || 0,
-							mod.offset_y || 0,
-							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
-							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
-							mod.scale_x || 1,
-							mod.scale_y || 1,
-						(mod.rotation * Math.PI / 180) || 0
-						);
+						tt.push(() => {
+							transform = transform.recursiveTransform(
+								mod.offset_x || 0,
+								mod.offset_y || 0,
+								mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+								mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+								mod.scale_x || 1,
+								mod.scale_y || 1,
+							(mod.rotation * Math.PI / 180) || 0
+							);
+						});
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+				for (let ii = tt.length - 1; ii >= 0; ii--) tt[ii]();
 
 				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
@@ -810,21 +814,25 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let transform = new Transform();
 
 				let layer = LayerLayer(MC, l, m, mods);
+				let tt = [];
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
-						transform = transform.recursiveTransform(
-							mod.offset_x || 0,
-							mod.offset_y || 0,
-							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
-							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
-							mod.scale_x || 1,
-							mod.scale_y || 1,
-							(mod.rotation * Math.PI / 180) || 0
-						);
+						tt.push(() => {
+							transform = transform.recursiveTransform(
+								mod.offset_x || 0,
+								mod.offset_y || 0,
+								mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+								mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+								mod.scale_x || 1,
+								mod.scale_y || 1,
+								(mod.rotation * Math.PI / 180) || 0
+							);
+						});
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+				for (let ii = tt.length - 1; ii >= 0; ii--) tt[ii]();
 				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
@@ -959,21 +967,25 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 
 
+				let tt = [];
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
-						transform = transform.recursiveTransform(
-							mod.offset_x || 0,
-							mod.offset_y || 0,
-							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
-							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
-							mod.scale_x || 1,
-							mod.scale_y || 1,
-							(mod.rotation * Math.PI / 180) || 0
-						);
+						tt.push(() => {
+							transform = transform.recursiveTransform(
+								mod.offset_x || 0,
+								mod.offset_y || 0,
+								mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+								mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+								mod.scale_x || 1,
+								mod.scale_y || 1,
+								(mod.rotation * Math.PI / 180) || 0
+							);
+						});
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+				for (let ii = tt.length - 1; ii >= 0; ii--) tt[ii]();
 
 				let Properties: LayerProperties = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
 				if (Properties) {
@@ -1647,21 +1659,25 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 
 	let transform = new Transform();
 	let layer = hp.Parent;
+	let tt = [];
 	while (layer) {
 		let mod_selected: PoseMod[] = mods[layer] || [];
 		for (let mod of mod_selected) {
-			transform = transform.recursiveTransform(
-				mod.offset_x || 0,
-				mod.offset_y || 0,
-				mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
-				mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
-				mod.scale_x || 1,
-				mod.scale_y || 1,
-				(mod.rotation * Math.PI / 180) || 0
-			);
+			tt.push(() => {
+				transform = transform.recursiveTransform(
+					mod.offset_x || 0,
+					mod.offset_y || 0,
+					mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+					mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+					mod.scale_x || 1,
+					mod.scale_y || 1,
+					(mod.rotation * Math.PI / 180) || 0
+				);
+			});
 		}
 		layer = LayerProperties[layer]?.Parent;
 	}
+	for (let ii = tt.length - 1; ii >= 0; ii--) tt[ii]();
 
 	// Move the hardpoint
 	transform = transform.recursiveTransform(

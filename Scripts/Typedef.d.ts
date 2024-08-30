@@ -2170,9 +2170,5 @@ interface NotificationSetting {
 
 // External globals, added by other libraries
 interface Window {
-	dataLayer?: {
-		push(data: object): void
-	} | undefined;
-
 	WebFontConfig: object;
 }

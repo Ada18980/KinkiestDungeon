@@ -334,11 +334,12 @@ function KDDrawColorSliders(X, Y, C, Model) {
 							let parsed = value;
 							if (deff == "") {
 								// Nothing!
+								parsed = "";
 							} else if (deff.includes(',')) {
 								parsed = parsed.split(',').filter((str) => {
 									return str != "";
 								});
-							} else parsed = parseFloat(value) || value;
+							} else parsed = parseFloat(value) || parseFloat(value + "0") || value;
 							if (value) {
 								KDChangeWardrobe(C);
 								if (!Model.Properties) Model.Properties = {};

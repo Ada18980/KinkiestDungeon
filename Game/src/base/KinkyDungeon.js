@@ -3591,44 +3591,18 @@ function KinkyDungeonGetTraitsCount() {
 }
 
 function KDSendTrait(trait) {
-	if (window.dataLayer)
-		window.dataLayer.push({
-			'event':'trait',
-			'traitType':trait,
-			'journey':KDJourney,
-		});
+	// Banish Google
 }
 
 function KDSendSpell(spell) {
-	if (window.dataLayer)
-		window.dataLayer.push({
-			'event':'spell',
-			'spellType':spell,
-			'currentLevel':MiniGameKinkyDungeonLevel,
-			'currentCheckpoint':MiniGameKinkyDungeonCheckpoint,
-			'journey':KDJourney,
-		});
+	// Banish Google
 }
 
 function KDSendSpellCast(spell) {
-	if (window.dataLayer)
-		window.dataLayer.push({
-			'event':'spellCast',
-			'spellType':spell,
-			'currentLevel':MiniGameKinkyDungeonLevel,
-			'currentCheckpoint':MiniGameKinkyDungeonCheckpoint,
-			'journey':KDJourney,
-		});
+	// Banish Google
 }
 function KDSendWeapon(weapon) {
-	if (window.dataLayer)
-		window.dataLayer.push({
-			'event':'weapon',
-			'weapon':weapon,
-			'currentLevel':MiniGameKinkyDungeonLevel,
-			'currentCheckpoint':MiniGameKinkyDungeonCheckpoint,
-			'journey':KDJourney,
-		});
+	// Banish Google
 }
 
 // @ts-ignore
