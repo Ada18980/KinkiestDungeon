@@ -3669,6 +3669,8 @@ let KinkyDungeonEnemies = [
 	{name: "ElementalEarth", nameList: "elemental", outfit: "ElementalEarth", style: "EarthElemental", faction: "Elemental", playLine: "Elemental", clusterWith: "elemental", bound: "ElementalEarth", color: "#C1703A",
 		tags: KDMapInit(["opendoors", "flying", "imprisonable", "elemental", "fireresist", "melee", "nofreeze", "earth", "miniboss", "electricimmune", "guardCall", "unflinching", "iceweakness", "unarmedresist", "slashresist", "pierceresist", "obsidianRestraints", "shackleRestraints", "leashing", "magicresist", "jail", "jailer", "hunter"]),
 		armor: 2.0, followRange: 1, AI: "hunt",
+		earthmove: true,
+		blindSight: 2.5,
 		specialCD: 15, specialAttack: "Dash", specialRemove: "BindWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 4, specialMinRange: 1.5, specialsfx: "Miss", castWhileMoving: true, dashThruWalls: true,
 		spells: ["ArmorUp", "Earthfield",], spellCooldownMult: 1, spellCooldownMod: 14, followLeashedOnly: true, spellRdy: true,
 		attackLock: "White",
@@ -3687,6 +3689,8 @@ let KinkyDungeonEnemies = [
 	{name: "KeeperEarth", nameList: "elemental", outfit: "KeeperEarth", style: "EarthElemental", faction: "Elemental", playLine: "Elemental", clusterWith: "elemental", bound: "ElementalEarth", color: "#C1703A",
 		tags: KDMapInit(["opendoors", "flying", "imprisonable", "elemental", "fireresist", "melee", "nofreeze", "earth", "elite", "electricimmune", "guardCall", "unflinching", "iceweakness", "unarmedresist", "slashresist", "pierceresist", "obsidianRestraints", "shackleRestraints", "leashing", "magicresist", "jail", "jailer", "hunter"]),
 		armor: 2.0, followRange: 3.5, AI: "hunt",
+		earthmove: true,
+		blindSight: 2.5,
 		effect: {
 			effect: {name: "PushAway", damage: "crush", power: 1, dist: 2, msg: "KDKeeperKick"},
 		},

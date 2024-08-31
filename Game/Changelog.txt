@@ -30,6 +30,12 @@ TODO:
 
 TODO remove hogtie when released
 
+5.4-nightly1
+- Added Absurdly Huge Maps perk
+- Reworked the maze algorithm so it can now handle empty tiles generated
+- Made cracks propagate into walls more
+- Made the pickaxe able to break some blocks depending on geometry
+
 5.3.37
 - Brawler should no longer give you full accuracy while arm + legbindered, but should always give full unarmed damage
 - Fixed a bug where keys vanish into oblivion

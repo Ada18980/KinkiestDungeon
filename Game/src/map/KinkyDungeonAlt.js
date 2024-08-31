@@ -1429,7 +1429,7 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 		let genParams = KDGetMazeParams();
 
-		let maze = KDGenMaze(1, 1, {w: width, h: height}, {
+		let maze = KDGenMaze(1, 1, {w: width/KDTE_Scale, h: height/KDTE_Scale}, {
 			scale: 1,
 			endchance: genParams.chance_STOP,
 			newest: genParams.newest,

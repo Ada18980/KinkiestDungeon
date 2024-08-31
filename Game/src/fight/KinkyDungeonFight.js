@@ -359,13 +359,13 @@ function KDGetSpellAccuracy() {
 function KDGetSlowMult(Enemy) {
 	let mult = 1;
 
-	if (Enemy && Enemy.bind > 0) mult *= 3;
-	else if (Enemy && Enemy.slow > 0) mult *= 2;
+	if (Enemy && Enemy.bind > 0) mult *= 2;
+	else if (Enemy && Enemy.slow > 0) mult *= 1.4;
 
 	if (Enemy && KinkyDungeonIsStunned(Enemy)) mult *= 5;
 	else {
 		if (Enemy && Enemy.distraction > 0) mult *= 1 + 2 * Math.min(1, Enemy.distraction / Enemy.Enemy.maxhp);
-		if (Enemy) mult *= 1 + 0.25 * KDBoundEffects(Enemy);
+		if (Enemy) mult *= 1 + 0.125 * KDBoundEffects(Enemy);
 	}
 
 	return mult;

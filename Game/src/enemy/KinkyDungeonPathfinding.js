@@ -218,7 +218,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 								else if (tile == "T") costBonus = 4;
 								costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
 								costBonus = (MapTile && MapTile.OL) ? costBonus + 12 : costBonus;
-								costBonus = (KDMapData.Traffic?.length > 0) ? costBonus + (KDMapData.Traffic[yy][xx] || 0) : costBonus;
+								costBonus = (KDMapData.Traffic?.length > 0 && KDMapData.Traffic[yy]) ? costBonus + (KDMapData.Traffic[yy][xx] || 0) : costBonus;
 								costBonus = Math.max(0, costBonus);
 							}
 							succ.set(xx + "," + yy, {x: xx, y: yy,

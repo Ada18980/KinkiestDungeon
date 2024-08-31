@@ -4064,8 +4064,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (enemy.Enemy.ethereal) {
 		AIData.AvoidTiles = "";
 		AIData.MovableTiles = AIData.MovableTiles + "1X";
-	} else if (enemy.Enemy.squeeze && KinkyDungeonLeashingEnemy()?.id != enemy.id) {
-		AIData.MovableTiles = AIData.MovableTiles + 'b';
+	} else if ((enemy.Enemy.squeeze || enemy.Enemy.earthmove) && KinkyDungeonLeashingEnemy()?.id != enemy.id) {
+		AIData.MovableTiles = AIData.MovableTiles + (enemy.Enemy.earthmove ? '4' : '') + (enemy.Enemy.squeeze ? 'b' : '');
 		AIData.AvoidTiles = "";
 	}
 
@@ -6096,7 +6096,8 @@ function KinkyDungeonCanSwapWith(e, Enemy) {
 	if (Enemy && KDEnemyHasFlag(Enemy, "donotswap")) return false; // Definition of noSwap
 
 	if (Enemy && Enemy.Enemy && Enemy.Enemy.ethereal && e && e.Enemy && !e.Enemy.ethereal) return false; // Ethereal enemies NEVER have seniority, this can teleport other enemies into walls
-	if (Enemy && Enemy.Enemy && Enemy.Enemy.squeeze && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
+	if (Enemy && Enemy.Enemy && (Enemy.Enemy.squeeze && KinkyDungeonMapGet(Enemy.x, Enemy.y) == 'b') && e && e.Enemy && !e.Enemy.squeeze) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
+	if (Enemy && Enemy.Enemy && (Enemy.Enemy.earthmove && KinkyDungeonMapGet(Enemy.x, Enemy.y) == '4') && e && e.Enemy && !e.Enemy.earthmove) return false; // Squeeze enemies NEVER have seniority, this can teleport other enemies into walls
 
 	if (!e.Enemy.tags || (e.Enemy.tags.scenery && !Enemy.Enemy.tags.scenery))
 		return true;

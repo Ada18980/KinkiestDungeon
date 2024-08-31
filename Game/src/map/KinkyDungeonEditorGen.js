@@ -547,8 +547,8 @@ function KD_PasteTile(tile, x, y, data) {
  * @returns {{x: number, y: number}[]}
  */
 function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
-	let tileWidth = KDTE_Scale * tile.w;
-	let tileHeight = KDTE_Scale * tile.h;
+	let tileWidth = Math.round(KDTE_Scale * tile.w);
+	let tileHeight = Math.round(KDTE_Scale * tile.h);
 	let scale = seed?.scale || 1;
 	let branchchance = seed?.branchchance || 0;
 	let endchance = seed?.endchance || 0;
@@ -690,7 +690,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 		for (let endp of EndPoints) {
 			let x = endp.x;
 			let y = endp.y;
-			if (x > 0 && y > 0 && x < tile.w && y < tile.h && KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
+			if (x > 0 && y > 0 && x < tileWidth && y < tileHeight && KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
 				// This is a dead end, now lets remove it unless its on the border
 				let links = Object.values(BacktrackLinks[x + ',' + y])
 					.filter((link) => {return !RemoveTiles[link.x + ',' + link.y];});

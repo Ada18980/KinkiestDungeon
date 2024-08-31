@@ -546,27 +546,27 @@ function KDGetMapSize() {
 function KDGetMazeParams() {
 	if (KinkyDungeonStatsChoice.get("MapLarge")) return {
 		oldest: 0.5,
-		newest: 0.65,
-		chance_STOP: .15,
-		opennessMult: .85,
+		newest: 0.4,
+		chance_STOP: .25,
+		opennessMult: .8,
 	};
 	if (KinkyDungeonStatsChoice.get("MapHuge")) return {
-		oldest: 0.42,
-		newest: 0.25,
-		chance_STOP: .5,
+		oldest: 0.45,
+		newest: 0.35,
+		chance_STOP: .45,
 		opennessMult: .65,
 	};
 	if (KinkyDungeonStatsChoice.get("MapGigantic")) return {
-		oldest: 0.35,
-		newest: 0.05,
-		chance_STOP: .8,
-		opennessMult: .4,
+		oldest: 0.4,
+		newest: 0.25,
+		chance_STOP: .55,
+		opennessMult: .45,
 	};
 	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return {
-		oldest: 0.2,
-		newest: 0.1,
-		chance_STOP: .95,
-		opennessMult: .05,
+		oldest: 0.35,
+		newest: 0.2,
+		chance_STOP: .85,
+		opennessMult: .1,
 	};
 	return {
 		oldest: 0.1,
