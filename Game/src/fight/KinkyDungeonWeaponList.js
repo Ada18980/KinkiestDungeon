@@ -328,6 +328,7 @@ let KinkyDungeonWeapons = {
 	"Pickaxe": {name: "Pickaxe", dmg: 3, chance: 1.0, staminacost: 3.0, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "LightSwing",
 		tags: ["utility"],
 		crit: 1.4,
+		special: {type: "spell", spell: "Pickaxe", range: 1.5},
 		events: [{type: "ApplyBuff", trigger: "playerAttack", buff: {id: "ArmorDown", type: "ArmorBreak", duration: 6, power: -1.5, player: true, enemies: true, tags: ["debuff", "armor"]}}]},
 	"Torch": {name: "Torch", dmg: 1.5, chance: 0.75, type: "fire", unarmed: false, rarity: 1, shop: true, sfx: "FireSpell",
 		crit: 1.1, noDamagePenalty: true,

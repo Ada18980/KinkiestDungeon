@@ -4,6 +4,11 @@ let KDDialogueData = {
 	CurrentDialogueIndex: 0,
 };
 
+/**
+ * Milliseconds during which clicks are ignored to avoid inadverdent clicking
+ */
+let KDDialogueDelay = 400;
+
 
 /**
  *
@@ -360,7 +365,7 @@ let KinkyDungeonDialogueTimer = 0;
 function KDStartDialog(Dialogue, Speaker, Click, Personality, enemy) {
 	KinkyDungeonInterruptSleep();
 	KDDisableAutoWait();
-	KinkyDungeonDialogueTimer = CommonTime() + 700 + KDGameData.SlowMoveTurns * 200;
+	KinkyDungeonDialogueTimer = CommonTime() + KDDialogueDelay + KDGameData.SlowMoveTurns * 200;
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";

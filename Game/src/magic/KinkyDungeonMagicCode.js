@@ -246,6 +246,7 @@ let KinkyDungeonSpellSpecials = {
 		}
 		return "Fail";
 	},
+
 	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en?.Enemy) {
@@ -437,6 +438,44 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		}
 		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
+		return "Fail";
+	},
+	"Pickaxe": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		let tile = KinkyDungeonMapGet(targetX, targetY);
+		if (KDCrackableTiles.includes(tile)) {
+			let fail = false;/*KinkyDungeoCheckComponents(spell, entity.x, entity.y, false).length > 0;
+			if (!fail) {
+				let castdata = {
+					targetX: targetX,
+					targetY: targetY,
+					spell: spell,
+					flags: {
+						miscastChance: KinkyDungeonMiscastChance,
+					},
+					gaggedMiscastFlag: false,
+					gaggedMiscastType: "Gagged",
+				};
+				KDDoGaggedMiscastFlag(castdata);
+
+				if (castdata.gaggedMiscastFlag) fail = true;
+			}*/
+			if (!fail) {
+				let tileOppX = targetX + Math.sign(targetX - entity.x);
+				let tileOppY = targetY + Math.sign(targetY - entity.y);
+				let oppTile = KinkyDungeonMapGet(tileOppX, tileOppY);
+				if (KDCrackableTiles.includes(oppTile) || KinkyDungeonMovableTiles.includes(oppTile)) {
+					KinkyDungeonChangeStamina(-3, false, true);
+					KDCrackTile(targetX, targetY, undefined, {});
+					KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeSucceed"), "#88ff88", 1, false);
+					return "Cast";
+				}
+				KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoOpen"), "#ffffff", 1, true);
+				return "Fail";
+			}
+			KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5555", 1, true);
+			return "Fail";
+		}
+		KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoTarget"), "#ff5555", 1, true);
 		return "Fail";
 	},
 	"CommandWord": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {

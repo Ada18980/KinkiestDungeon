@@ -35,12 +35,6 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 	 */
 	let tileOrder = [];
 
-	// Determine order of filling tiles
-	while (tiles_temp.length > 0) {
-		let ind = Math.floor(KDRandom() * tiles_temp.length);
-		tileOrder.push(tiles_temp[ind]);
-		tiles_temp.splice(ind, 1);
-	}
 
 	/**
 	 * tiles that are filled in
@@ -52,6 +46,21 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 	 * @type {Record<string, string>}
 	 */
 	let indexFilled = {};
+
+	// Determine order of filling tiles
+	while (tiles_temp.length > 0) {
+		let ind = Math.floor(KDRandom() * tiles_temp.length);
+		if (indices[tiles_temp[ind]])
+			tileOrder.push(tiles_temp[ind]);
+		else {
+			indexFilled[tiles_temp[ind]] = '';
+
+			// @ts-ignore
+			tilesFilled[tiles_temp[ind]] = {};
+		}
+		tiles_temp.splice(ind, 1);
+	}
+
 
 	/**
 	 * Count of each tag in a filled tile
@@ -542,6 +551,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 	let tileHeight = KDTE_Scale * tile.h;
 	let scale = seed?.scale || 1;
 	let branchchance = seed?.branchchance || 0;
+	let endchance = seed?.endchance || 0;
 	let hbias = seed?.hbias || 0;
 	let vbias = seed?.vbias || 0;
 	let wobble = seed?.wobble || 0;
@@ -550,7 +560,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 	//return tile.grid[x + y*(tileWidth+1)];
 	//};
 	let isMazeBlock = (x, y) => {
-		return tile.Tiles[x + ',' + y] && tile.Tiles[x + ',' + y].MazeBlock;
+		return tile.Tiles && tile.Tiles[x + ',' + y] && tile.Tiles[x + ',' + y].MazeBlock;
 	};
 
 	let ActivatedTiles = {};
@@ -569,6 +579,11 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 	// Growing Tree algorithm
 	let CarvedTiles = [];
 	let ActiveTiles = [];
+	let EndPoints = [];
+	let BacktrackLinks = {};
+	let RemoveTiles = {};
+
+	let recordBacktrack = endchance > 0;
 
 	let chooseNext = () => {
 		if (ActiveTiles.length == 0) return null; // We are done
@@ -619,6 +634,25 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 			// Try all
 			if (spread(options[i].x, options[i].y, options[i].xe, options[i].ye)) {
 				succeed = true;
+				if (recordBacktrack) {
+					if (!BacktrackLinks[x + ',' + y]) {
+						BacktrackLinks[x + ',' + y] = {};
+					}
+					if (!BacktrackLinks[options[i].xe + ',' + options[i].ye]) {
+						BacktrackLinks[options[i].xe + ',' + options[i].ye] = {};
+					}
+					if (!BacktrackLinks[options[i].x + ',' + options[i].y]) {
+						BacktrackLinks[options[i].x + ',' + options[i].y] = {};
+					}
+					BacktrackLinks[x + ',' + y][options[i].xe + ',' + options[i].ye]
+						= {x: options[i].xe, y: options[i].ye};
+					BacktrackLinks[options[i].xe + ',' + options[i].ye][options[i].x + ',' + options[i].y]
+						= {x: options[i].x, y: options[i].y};
+					BacktrackLinks[options[i].xe + ',' + options[i].ye][x + ',' + y]
+						= {x: x, y: y};
+					BacktrackLinks[options[i].x + ',' + options[i].y][options[i].xe + ',' + options[i].ye]
+						= {x: options[i].xe, y: options[i].ye};
+				}
 				break;
 			}
 			options.splice(i, 1);
@@ -627,7 +661,11 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 		// Remove this from active tiles if no luck
 		if (!succeed) {
 			for (let t of ActiveTiles) {
-				if (t.x == x && t.y == y) ActiveTiles.splice(ActiveTiles.indexOf(t), 1); // TODO optimize
+				if (t.x == x && t.y == y) {
+					ActiveTiles.splice(ActiveTiles.indexOf(t), 1); // TODO optimize
+					if (recordBacktrack && BacktrackLinks[t.x + ',' + t.y] && Object.values(BacktrackLinks[t.x + ',' + t.y]).length == 1)
+						EndPoints.push({x: t.x, y: t.y});
+				}
 			}
 		}
 
@@ -636,12 +674,55 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 		return chooseNext();
 	};
 
+
 	// Start with the seed tile
 	ActiveTiles.push({x: startX, y: startY});
 	let activeTile = operate(startX, startY);
 
 	while (activeTile) {
 		activeTile = operate(activeTile.x, activeTile.y);
+	}
+
+
+	// optionally we have a chance to remove brances up until a branch
+
+	if (endchance > 0) {
+		for (let endp of EndPoints) {
+			let x = endp.x;
+			let y = endp.y;
+			if (x > 0 && y > 0 && x < tile.w && y < tile.h && KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
+				// This is a dead end, now lets remove it unless its on the border
+				let links = Object.values(BacktrackLinks[x + ',' + y])
+					.filter((link) => {return !RemoveTiles[link.x + ',' + link.y];});
+				while (links?.length <= 1) {
+					// only go until there are branches
+					for (let xx = 0; xx < scale; xx++)
+						for (let yy = 0; yy < scale; yy++)
+							RemoveTiles[(x+xx) + ',' + (y+yy)] = true;
+					if (links?.length > 0) {
+						x = links[0].x;
+						y = links[0].y;
+						links = (links.length > 0 && BacktrackLinks[x + ',' + y]) ?
+							Object.values(BacktrackLinks[x + ',' + y])
+								.filter((link) => {return !RemoveTiles[link.x + ',' + link.y];}) : null;
+					} else {
+						links = null;
+					}
+
+
+				}
+			}
+		}
+
+		let newCarved = [];
+
+		for (let t of CarvedTiles) {
+			if (!RemoveTiles[t.x + ',' + t.y]) {
+				newCarved.push(t);
+			}
+		}
+
+		CarvedTiles = newCarved;
 	}
 
 	return CarvedTiles;
@@ -1051,7 +1132,7 @@ function KDAggregateTileTags(x, y, w, h, tilesFilled, globalTags) {
 
 			if (index) {
 				let neighbor = tilesFilled[indX + ',' + indY];
-				if (neighbor) {
+				if (neighbor?.tags) {
 					for (let t of neighbor.tags) {
 						tags[index + t] = true;
 						tags[t] = true;

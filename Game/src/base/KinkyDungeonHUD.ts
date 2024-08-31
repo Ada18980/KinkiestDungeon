@@ -232,7 +232,7 @@ function KDHandleGame() {
 	}
 
 	if (KinkyDungeonIsPlayer() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height))
-		KinkyDungeonSetTargetLocation(KDToggles.Helper);
+		KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
 
 

@@ -2990,9 +2990,9 @@ function KDGetNearestGuardLabel(x, y, entity, ignoreID, ignoreEntity, typeFilter
  */
 function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false) {
 	let tries = 0;
+	let points = Object.values(KDMapData.RandomPathablePoints);
 
 	while (tries < 100) {
-		let points = Object.values(KDMapData.RandomPathablePoints);
 		let point = points[Math.floor(points.length * KDRandom())];
 		if (point) {
 			let X = point.x;//1 + Math.floor(KDRandom()*(KDMapData.GridWidth - 1));

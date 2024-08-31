@@ -3024,3 +3024,20 @@ function KDEvasiveManeuversCost() {
 function KDEntityBlocksExp(entity) {
 	return entity.Enemy?.tags?.bulwark || KDEntityBuffedStat(entity, "Bulwark") > 0;
 }
+
+function KDCrackTile(x, y, allowCrack, data) {
+	let origTile = KinkyDungeonMapGet(x, y);
+	KinkyDungeonSendEvent("beforeCrackTile", data);
+	if (allowCrack || KDCrackableTiles.includes(origTile)) {
+
+		let Mend = KDMendableTiles.includes(data.origTile);
+		KinkyDungeonMapSet(x, y, '0');
+		KDCreateEffectTile(x, y, {
+			name: Mend ? "Rubble" : "RubbleNoMend",
+			duration: 9999,
+		}, 0);
+		KinkyDungeonUpdateLightGrid = true;
+
+		KinkyDungeonSendEvent("crackTile", data);
+	}
+}

@@ -14,8 +14,8 @@ let CHIBIMOD = [
 	},
 	{
 		Layer: "Head",
-		scale_x: 2,
-		scale_y: 2,
+		scale_x: 2.25,
+		scale_y: 2.25,
 		rotation_x_anchor: 1190,
 		rotation_y_anchor: 690,
 		offset_x: 1100,
@@ -1371,21 +1371,21 @@ function KinkyDungeonDrawGame() {
 				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !(KinkyDungeonShowInventory && !KinkyDungeonTargetingSpell) && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
 					if (KinkyDungeonInspect) {
-						KinkyDungeonSetTargetLocation(KDToggles.Helper);
+						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
 					} else if (KDInteracting) {
-						KinkyDungeonSetTargetLocation(KDToggles.Helper);
+						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "UI/Interact.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 								zIndex: 100,
 							});
 					} else if (KinkyDungeonTargetingSpell) {
-						KinkyDungeonSetTargetLocation(KDToggles.Helper);
+						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
 						KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule", KinkyDungeonRootDirectory + "TargetSpell.png",
 							(KinkyDungeonTargetX - CamX)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
@@ -1487,7 +1487,7 @@ function KinkyDungeonDrawGame() {
 							}
 
 					} else if ((KinkyDungeonFastMove && !(!KinkyDungeonSuppressSprint && KinkyDungeonToggleAutoSprint && KDCanSprint()) && (KinkyDungeonMoveDirection.x != 0 || KinkyDungeonMoveDirection.y != 0))) {
-						KinkyDungeonSetTargetLocation(KDToggles.Helper);
+						KinkyDungeonSetTargetLocation(!KinkyDungeonTargetingSpell && KDToggles.Helper);
 
 
 						let allowFog = KDAllowFog();

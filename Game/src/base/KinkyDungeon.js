@@ -2639,6 +2639,7 @@ function KinkyDungeonRun() {
 			// @ts-ignore
 			TF.Element.oninput = (event) => {
 				KDPerksFilter = ElementValue("PerksFilter");
+				KDPerksIndex = 0;
 			};
 		}
 		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
@@ -3085,9 +3086,13 @@ function KinkyDungeonRun() {
 		if (pixirenderer) {
 			pixirenderer.render(kdcanvas, {
 				clear: false,
+				antialias: !CommonIsMobile,
+				useContextAlpha: false,
 			});
 			pixirenderer.render(kdui, {
 				clear: false,
+				antialias: !CommonIsMobile,
+				useContextAlpha: false,
 			});
 		}
 	}
@@ -4134,6 +4139,7 @@ function KDDrawLoadMenu() {
 		} else if (KDSlot0) {
 			loadedSaveforPreview = KinkyDungeonLoadPreview(KDSlot0);
 			if (loadedSaveforPreview) LoadMenuCurrentSlot = 0;
+			LoadMenuCurrentSave = KDSlot0;
 		}
 		else {
 			loadedSaveforPreview = null;

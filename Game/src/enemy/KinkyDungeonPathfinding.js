@@ -209,16 +209,16 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
 							if (!ignoreTrafficLaws) {
-								if (tile == "V" && !(MapTile?.Sfty)) costBonus = 7;
-								else if (tile == "N") costBonus = 15;
-								else if (tile == "D") costBonus = 2;
+								if (tile == "V" && !(MapTile?.Sfty)) costBonus = 14;
+								else if (tile == "N") costBonus = 30;
+								else if (tile == "D") costBonus = 3;
 								else if (tile == "d") costBonus = -2;
-								else if (tile == "g") costBonus = 2;
-								else if (tile == "L") costBonus = 4;
-								else if (tile == "T") costBonus = 2;
+								else if (tile == "g") costBonus = 9;
+								else if (tile == "L") costBonus = 9;
+								else if (tile == "T") costBonus = 4;
 								costBonus = (MapTile && MapTile.Lock) ? costBonus + 2 : costBonus;
-								costBonus = (MapTile && MapTile.OL) ? costBonus + 8 : costBonus;
-								costBonus = (KDMapData.Traffic?.length > 0) ? costBonus + KDMapData.Traffic[yy][xx] : costBonus;
+								costBonus = (MapTile && MapTile.OL) ? costBonus + 12 : costBonus;
+								costBonus = (KDMapData.Traffic?.length > 0) ? costBonus + (KDMapData.Traffic[yy][xx] || 0) : costBonus;
 								costBonus = Math.max(0, costBonus);
 							}
 							succ.set(xx + "," + yy, {x: xx, y: yy,

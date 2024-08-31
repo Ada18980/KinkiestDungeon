@@ -4,6 +4,8 @@ let StruggleAnimation = false;
 let RenderCharacterQueue = new Map();
 let RenderCharacterLock = new Map();
 
+let KDCulling = true;
+
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */
@@ -425,7 +427,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		Container.Container.sortableChildren = true;
 		//Container.Container.cacheAsBitmap = true;
 		if (zIndex) Container.Mesh.zIndex = zIndex;
-		Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
+		//Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
 	}
 
 	// Actual loop for drawing the models on the character
@@ -795,6 +797,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										scalex: sx != 1 ? sx : undefined,
 										scaley: sy != 1 ? sy : undefined,
 										alpha: 0.0,
+										cullable: KDCulling,
 									}, false,
 									ContainerContainer.SpritesDrawn,
 									Zoom
@@ -899,6 +902,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										scalex: sx != 1 ? sx : undefined,
 										scaley: sy != 1 ? sy : undefined,
 										alpha: 0.0,
+										cullable: KDCulling,
 									}, false,
 									ContainerContainer.SpritesDrawn,
 									Zoom
@@ -933,6 +937,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								0, {
 									zIndex: 1000000,
 									alpha: 0.0,
+									cullable: KDCulling,
 								}, false,
 								ContainerContainer.SpritesDrawn,
 								Zoom
@@ -1076,7 +1081,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							KDAdjustmentFilterCache.delete(efh);
 						}
 						KDTex(dsprite.name, false); // try to preload it
-						f = new PIXI.DisplacementFilter(
+						f = new DisplaceFilter(
 							dsprite,
 							ef.amount,
 						);
@@ -1110,6 +1115,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						scalex: sx != 1 ? sx : undefined,
 						scaley: sy != 1 ? sy : undefined,
 						filters: filters,
+						cullable: KDCulling,
 					}, false,
 					ContainerContainer.SpritesDrawn,
 					Zoom
@@ -1774,6 +1780,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 			PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
 				clear: true,
 				renderTexture: MC.Containers.get(containerID).RenderTexture,
+				blit: true,
 			});
 			RenderCharacterLock.delete(C);
 			MC.ForceUpdate.add(containerID);
@@ -1783,6 +1790,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 			//blit: true,
 			clear: true,
 			renderTexture: MC.Containers.get(containerID).RenderTexture,
+			blit: true,
 		});
 		MC.ForceUpdate.add(containerID);
 	}

@@ -2152,6 +2152,13 @@ let KinkyDungeonSpellListEnemies = [
 
 
 
+	{name: "Pickaxe", tags: ["pickaxe", "melee"], color: "#88ff88", sfx: "HeavySwing", manacost: 0, noMiscast: true, components: [], level: 1,
+		type:"special",
+		special: "Pickaxe",
+		faction: "Player",
+		staminacost: 0,
+		CastInWalls: true,
+		onhit:"", power: 2.5, delay: 0, range: 1.5, damage: "pierce", speed: 1.5},
 
 	{name: "ArrowNormal", tags: ["arrowreplace"], color: "#88ff88", sfx: "Arrow", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt",
 		faction: "Player",

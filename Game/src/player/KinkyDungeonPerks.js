@@ -481,6 +481,7 @@ let KinkyDungeonStatsPresets = {
 	"MapLarge": {category: "Map", id: "MapLarge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 	"MapHuge": {category: "Map", id: "MapHuge", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 	"MapGigantic": {category: "Map", id: "MapGigantic", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
+	"MapAbsurd": {category: "Map", id: "MapAbsurd", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 
 	"TrustFall": {category: "Restriction", id: "TrustFall", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 };
@@ -880,7 +881,6 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 
 	let tooltip = false;
 	let catsdrawn = 0;
-	let perksdrawn = 0;
 	let catsdrawnStrict = 0;
 
 	function inView() {
@@ -899,6 +899,8 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 
 	};
 
+	let perksdrawn = 0;
+
 	for (let c of KDCategories) {
 		Y = Math.max(Y, Y_alt);
 		let height = KDPerksYPad + KDPerksButtonHeight*Math.max(c.buffs.length, c.debuffs.length);
@@ -908,25 +910,20 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 			Y = KDPerksYStart;
 		}
 
+		let oldY = Y;
+		let oldYAlt = Y_alt;
 		Y += KDPerksYPad;
 		Y_alt = Y;
-		//MainCanvas.textAlign = "left";
-		DrawTextFitKDTo(kdUItext, TextGet("KDCategory" + c.name), X + KDPerksButtonWidth + KDPerksButtonWidthPad/2, Y - KDPerksButtonHeight/2 - 5, KDPerksButtonWidth*2, "#ffffff",
-			undefined, undefined, undefined, undefined, undefined, undefined, true);
-		//MainCanvas.textAlign = "center";
-		if (inView()) {
-			catsdrawn += 1;
-		}
-		if (inViewStrict()) {
-			catsdrawnStrict += 1;
-			if (!firstDrawn) firstDrawn = c.name;
-		}
+
+		let drawn = 0;
 		for (let stat of c.buffs.concat(c.debuffs)) {
 			if ((!stat[1].locked || KDUnlockedPerks.includes(stat[0]))
 				&& (NonSelectable || !KDPerksFilter || TextGet("KinkyDungeonStat" + ("" + stat[1].id)).toLocaleLowerCase().includes(KDPerksFilter.toLocaleLowerCase()))) {
 				let YY = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? Y_alt : Y;
 				let XX = (!stat[1].buff && (stat[1].cost < 0 || stat[1].debuff)) ? X + KDPerksButtonWidth + KDPerksButtonWidthPad : X;
 
+				drawn++;
+				perksdrawn++;
 				if (inView()) {
 					let colorAvailable = NonSelectable ?
 					fadeColor :
@@ -938,7 +935,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					let colorSelected = KDGetPerkCost(stat[1]) > 0 ? "#eeeeff" : KDGetPerkCost(stat[1]) < 0 ? "#ffeeee" : "#eeeeff";
 					let colorExpensive = KDGetPerkCost(stat[1]) > 0 ? "#555588" : KDGetPerkCost(stat[1]) < 0 ? "#885555" : "#555588";
 
-					perksdrawn += 1;
+					//perksdrawn++;x
 					DrawButtonKDExTo(kdUItext, stat[0], (bdata) => {
 						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
 							KinkyDungeonStatsChoice.set(stat[0], true);
@@ -988,6 +985,23 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 				else Y += KDPerksButtonHeight + KDPerksButtonHeightPad;
 			}
 		}
+
+		if (drawn > 0) {
+			DrawTextFitKDTo(kdUItext, TextGet("KDCategory" + c.name), X + KDPerksButtonWidth + KDPerksButtonWidthPad/2, oldY + KDPerksYPad - KDPerksButtonHeight/2 - 5, KDPerksButtonWidth*2, "#ffffff",
+				undefined, undefined, undefined, undefined, undefined, undefined, true);
+			//MainCanvas.textAlign = "left";
+			//MainCanvas.textAlign = "center";
+			if (inView()) {
+				catsdrawn += 1;
+			}
+			if (inViewStrict()) {
+				catsdrawnStrict += 1;
+				if (!firstDrawn) firstDrawn = c.name;
+			}
+		} else {
+			Y = oldY;
+			Y_alt = oldYAlt;
+		}
 		indexList[c.name] = indexX;
 	}
 
@@ -1025,6 +1039,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	}, "KDCategory");
 
 	if ((catsdrawn < 3 || perksdrawn == 0) && KDPerksIndex > 0) KDPerksIndex -= 1;
+
 
 	return tooltip;
 }

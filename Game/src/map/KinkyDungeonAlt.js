@@ -1388,6 +1388,7 @@ function KinkyDungeonCreateCaldera(POI, VisitedRooms, width, height, openness, d
 }
 
 
+let usePrimmMaze = false;
 
 /**
  *
@@ -1406,7 +1407,6 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	//
 
 	VisitedRooms = [];
-	KinkyDungeonMapSet(1, 1, '0', VisitedRooms);
 
 	let Walls = {};
 	let WallsList = {};
@@ -1416,104 +1416,140 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	//if (KDDebug)
 	console.log("Created maze with dimensions " + width + "x" + height + ", openness: "+ openness + ", density: "+ density);
 
-	VisitedCells[VisitedRooms[0].x + "," + VisitedRooms[0].y] = {x:VisitedRooms[0].x, y:VisitedRooms[0].y};
+	let genPrimmMaze = () => {
 
-	// Walls are basically even/odd pairs.
-	for (let X = 2; X < width; X += 2)
-		for (let Y = 1; Y < height; Y += 2)
-			if (KinkyDungeonMapGet(X, Y) == '1') {
-				Walls[X + "," + Y] = {x:X, y:Y};
-			}
-	for (let X = 1; X < width; X += 2)
-		for (let Y = 2; Y < height; Y += 2)
-			if (KinkyDungeonMapGet(X, Y) == '1') {
-				Walls[X + "," + Y] = {x:X, y:Y};
-			}
+		KDMapData.Grid = "";
 
-	// Setup the wallslist for the first room
-	KinkyDungeonMazeWalls(VisitedRooms[0], Walls, WallsList);
-
-	// Per a randomized primm algorithm from Wikipedia, we loop through the list of walls until there are no more walls
-
-	let WallKeys = Object.keys(WallsList);
-	//let CellKeys = Object.keys(VisitedCells);
-
-	while (WallKeys.length > 0) {
-		let I = Math.floor(KDRandom() * WallKeys.length);
-		let wall = Walls[WallKeys[I]];
-		let unvisitedCell = null;
-
-		// Check if wall is horizontal or vertical and determine if there is a single unvisited cell on the other side of the wall
-		if (wall.x % 2 == 0) { //horizontal wall
-			if (!VisitedCells[(wall.x-1) + "," + wall.y]) unvisitedCell = {x:wall.x-1, y:wall.y};
-			if (!VisitedCells[(wall.x+1) + "," + wall.y]) {
-				if (unvisitedCell) unvisitedCell = null;
-				else unvisitedCell = {x:wall.x+1, y:wall.y};
-			}
-		} else { //vertical wall
-			if (!VisitedCells[wall.x + "," + (wall.y-1)]) unvisitedCell = {x:wall.x, y:wall.y-1};
-			if (!VisitedCells[wall.x + "," + (wall.y+1)]) {
-				if (unvisitedCell) unvisitedCell = null;
-				else unvisitedCell = {x:wall.x, y:wall.y+1};
-			}
+		// Generate the grid
+		for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+			for (let X = 0; X < KDMapData.GridWidth; X++)
+				KDMapData.Grid = KDMapData.Grid + '1';//KDMapData.Grid + KinkyDungeonOldGrid[Math.floor(X * w / KDMapData.GridWidth) + Math.floor(Y * h / KDMapData.GridHeight)*(w+1)];
+			KDMapData.Grid = KDMapData.Grid + '\n';
 		}
 
-		// We only add a new cell if only one of the cells is unvisited
-		if (unvisitedCell) {
-			delete Walls[wall.x + "," + wall.y];
+		let genParams = KDGetMazeParams();
 
-			KinkyDungeonMapSet(wall.x, wall.y, '0');
-			KinkyDungeonMapSet(unvisitedCell.x, unvisitedCell.y, '0');
-			VisitedCells[unvisitedCell.x + "," + unvisitedCell.y] = unvisitedCell;
+		let maze = KDGenMaze(1, 1, {w: width, h: height}, {
+			scale: 1,
+			endchance: genParams.chance_STOP,
+			newest: genParams.newest,
+			oldest: genParams.oldest,
+			branchchance: 0.02 * openness * genParams.opennessMult,
+		}, undefined);
 
-			KinkyDungeonMazeWalls(unvisitedCell, Walls, WallsList);
+
+		for (let t of maze) {
+			if (KinkyDungeonMapGet(t.x, t.y) == '1')
+				KinkyDungeonMapSet(t.x, t.y, '0');
 		}
+	};
 
-		// Either way we remove this wall from consideration
-		delete WallsList[wall.x + "," + wall.y];
-		// Update keys
+	if (!usePrimmMaze) {
+		genPrimmMaze();
+	} else {
+		KinkyDungeonMapSet(1, 1, '0', VisitedRooms);
+		VisitedCells[VisitedRooms[0].x + "," + VisitedRooms[0].y] = {x:VisitedRooms[0].x, y:VisitedRooms[0].y};
 
-		WallKeys = Object.keys(WallsList);
-		//CellKeys = Object.keys(VisitedCells);
-	}
-
-	// The maze is complete. Now we open up some tiles
-
-	for (let X = 1; X < KDMapData.GridWidth; X += 1)
-		for (let Y = 1; Y < KDMapData.GridWidth; Y += 1) {
-			if ((X % 2 == 0 && Y % 2 == 1) || (X % 2 == 1 && Y % 2 == 0)) {
-				let size = 1;//+Math.ceil(KDRandom() * (openness));
-				if (KDRandom() < 0.4 - 0.02*density * size * size) {
-
-					let tile = '0';
-
-					// We open up the tiles
-					for (let XX = X; XX < X +size; XX++)
-						for (let YY = Y; YY < Y+size; YY++) {
-							if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(XX, YY)))
-								KinkyDungeonMapSet(XX, YY, tile);
-							VisitedCells[XX + "," + YY] = {x:XX, y:YY};
-							KinkyDungeonMazeWalls({x:XX, y:YY}, Walls, WallsList);
-							delete Walls[XX + "," + YY];
-						}
+		// Walls are basically even/odd pairs.
+		for (let X = 2; X < width; X += 2)
+			for (let Y = 1; Y < height; Y += 2)
+				if (KinkyDungeonMapGet(X, Y) == '1') {
+					Walls[X + "," + Y] = {x:X, y:Y};
 				}
-				if (KDRandom() < 0.02 * openness) {
+		for (let X = 1; X < width; X += 2)
+			for (let Y = 2; Y < height; Y += 2)
+				if (KinkyDungeonMapGet(X, Y) == '1') {
+					Walls[X + "," + Y] = {x:X, y:Y};
+				}
 
-					let tile = '0';
+		// Setup the wallslist for the first room
+		KinkyDungeonMazeWalls(VisitedRooms[0], Walls, WallsList);
 
-					// We open up the tiles
-					for (let XX = X-1; XX <= X + 1; XX++)
-						for (let YY = Y; YY <= Y + 1; YY++)
-							if (XX == 0 || YY == 0) {
+		// Per a randomized primm algorithm from Wikipedia, we loop through the list of walls until there are no more walls
+
+		let WallKeys = Object.keys(WallsList);
+		//let CellKeys = Object.keys(VisitedCells);
+
+		while (WallKeys.length > 0) {
+			let I = Math.floor(KDRandom() * WallKeys.length);
+			let wall = Walls[WallKeys[I]];
+			let unvisitedCell = null;
+
+			// Check if wall is horizontal or vertical and determine if there is a single unvisited cell on the other side of the wall
+			if (wall.x % 2 == 0) { //horizontal wall
+				if (!VisitedCells[(wall.x-1) + "," + wall.y]) unvisitedCell = {x:wall.x-1, y:wall.y};
+				if (!VisitedCells[(wall.x+1) + "," + wall.y]) {
+					if (unvisitedCell) unvisitedCell = null;
+					else unvisitedCell = {x:wall.x+1, y:wall.y};
+				}
+			} else { //vertical wall
+				if (!VisitedCells[wall.x + "," + (wall.y-1)]) unvisitedCell = {x:wall.x, y:wall.y-1};
+				if (!VisitedCells[wall.x + "," + (wall.y+1)]) {
+					if (unvisitedCell) unvisitedCell = null;
+					else unvisitedCell = {x:wall.x, y:wall.y+1};
+				}
+			}
+
+			// We only add a new cell if only one of the cells is unvisited
+			if (unvisitedCell) {
+				delete Walls[wall.x + "," + wall.y];
+
+				KinkyDungeonMapSet(wall.x, wall.y, '0');
+				KinkyDungeonMapSet(unvisitedCell.x, unvisitedCell.y, '0');
+				VisitedCells[unvisitedCell.x + "," + unvisitedCell.y] = unvisitedCell;
+
+				KinkyDungeonMazeWalls(unvisitedCell, Walls, WallsList);
+			}
+
+			// Either way we remove this wall from consideration
+			delete WallsList[wall.x + "," + wall.y];
+			// Update keys
+
+			WallKeys = Object.keys(WallsList);
+			//CellKeys = Object.keys(VisitedCells);
+		}
+
+		// The maze is complete. Now we open up some tiles
+
+		for (let X = 1; X < KDMapData.GridWidth; X += 1)
+			for (let Y = 1; Y < KDMapData.GridWidth; Y += 1) {
+				if ((X % 2 == 0 && Y % 2 == 1) || (X % 2 == 1 && Y % 2 == 0)) {
+					let size = 1;//+Math.ceil(KDRandom() * (openness));
+					if (KDRandom() < 0.4 - 0.02*density * size * size) {
+
+						let tile = '0';
+
+						// We open up the tiles
+						for (let XX = X; XX < X +size; XX++)
+							for (let YY = Y; YY < Y+size; YY++) {
 								if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(XX, YY)))
 									KinkyDungeonMapSet(XX, YY, tile);
 								VisitedCells[XX + "," + YY] = {x:XX, y:YY};
 								KinkyDungeonMazeWalls({x:XX, y:YY}, Walls, WallsList);
 								delete Walls[XX + "," + YY];
 							}
+					}
+					if (KDRandom() < 0.02 * openness) {
+
+						let tile = '0';
+
+						// We open up the tiles
+						for (let XX = X-1; XX <= X + 1; XX++)
+							for (let YY = Y; YY <= Y + 1; YY++)
+								if (XX == 0 || YY == 0) {
+									if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(XX, YY)))
+										KinkyDungeonMapSet(XX, YY, tile);
+									VisitedCells[XX + "," + YY] = {x:XX, y:YY};
+									KinkyDungeonMazeWalls({x:XX, y:YY}, Walls, WallsList);
+									delete Walls[XX + "," + YY];
+								}
+					}
 				}
 			}
-		}
+	}
+
+
+
 
 	// Now we create a new map based on the maze
 	let w = KDMapData.GridWidth;
@@ -1530,18 +1566,35 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 		}
 	}
 
-
 	// Set points for start and end points on the map...
 	let starty = 1 + Math.floor(KDRandom() * (index_h - 2));
 	let endy = 1 + Math.floor(KDRandom() * (index_h - 2));
 	let topx = 1 + Math.floor(KDRandom() * (index_w - 2));
 	let botx = 1 + Math.floor(KDRandom() * (index_w - 2));
 
-	// Randomize start positions a little :)
 	let startx = 0;
 	let topy = 0;
 	let endx = index_w - 1;
 	let boty = index_h - 1;
+
+	if (!usePrimmMaze) {
+		// non-primm mazes have the potential to need to be regenerated, so we keep doing it to validate
+		let maxTries = 10000;
+		let tries = 0;
+		let test = () => {
+			if (KinkyDungeonMapGet(1 + startx*2, 1 + starty*2) != '0') return false;
+			if (KinkyDungeonMapGet(1 + endx*2, 1 + endy*2) != '0') return false;
+			if (KinkyDungeonMapGet(1 + topx*2, 1 + topy*2) != '0') return false;
+			if (KinkyDungeonMapGet(1 + botx*2, 1 + boty*2) != '0') return false;
+
+			return true;
+		};
+		while (!test() && tries++ < maxTries) {
+			genPrimmMaze();
+		}
+
+	}
+
 
 	/**
 	 * Start, end, top, bot positions
@@ -1562,10 +1615,13 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 	for (let x = 1; x < KDMapData.GridWidth; x += 2) {
 		for (let y = 1; y < KDMapData.GridHeight; y += 2) {
 			let index = "";
+
 			if (KinkyDungeonMapGet(x, y - 1) == '0' || ((x - 1)/2 == startx && (y - 1)/2 - 1 == starty) || ((y - 1)/2 == topy && (x - 1)/2 == topx) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "u";
 			if (KinkyDungeonMapGet(x, y + 1) == '0' || ((x - 1)/2 == startx && (y - 1)/2 + 1 == starty) || ((y - 1)/2 == boty && (x - 1)/2 == botx) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "d";
 			if (KinkyDungeonMapGet(x - 1, y) == '0' || ((x - 1)/2 - 1 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "l";
 			if (KinkyDungeonMapGet(x + 1, y) == '0' || ((x - 1)/2 + 1 == startx && (y - 1)/2 == starty) || ((x - 1)/2 == endx && (y - 1)/2 == endy) || ((x - 1)/2 == startx && (y - 1)/2 == starty)) index = index + "r";
+
+
 			indices[(1 + (x - 1)/2) + "," + (1 + (y - 1)/2)] = index;
 		}
 	}

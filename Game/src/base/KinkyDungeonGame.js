@@ -528,10 +528,52 @@ function KDCreateBoringness(noBoring) {
  * @returns {number}
  */
 function KDGetMapSize() {
-	if (KinkyDungeonStatsChoice.get("MapLarge")) return 1;
-	if (KinkyDungeonStatsChoice.get("MapHuge")) return 3;
-	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 5;
+	if (KinkyDungeonStatsChoice.get("MapLarge")) return 3;
+	if (KinkyDungeonStatsChoice.get("MapHuge")) return 6;
+	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 9;
+	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return 25;
 	return 0;
+}
+
+/**
+ * @returns {{
+ *  oldest: number,
+ *  newest: number,
+ *  chance_STOP: number,
+ *  opennessMult: number,
+ * }}
+ */
+function KDGetMazeParams() {
+	if (KinkyDungeonStatsChoice.get("MapLarge")) return {
+		oldest: 0.5,
+		newest: 0.65,
+		chance_STOP: .15,
+		opennessMult: .85,
+	};
+	if (KinkyDungeonStatsChoice.get("MapHuge")) return {
+		oldest: 0.42,
+		newest: 0.25,
+		chance_STOP: .5,
+		opennessMult: .65,
+	};
+	if (KinkyDungeonStatsChoice.get("MapGigantic")) return {
+		oldest: 0.35,
+		newest: 0.05,
+		chance_STOP: .8,
+		opennessMult: .4,
+	};
+	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return {
+		oldest: 0.2,
+		newest: 0.1,
+		chance_STOP: .95,
+		opennessMult: .05,
+	};
+	return {
+		oldest: 0.1,
+		newest: 0.8,
+		chance_STOP: 0,
+		opennessMult: 1,
+	};
 }
 
 /**
@@ -1320,7 +1362,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			&& KinkyDungeonFindPath(KDMapData.StartPosition.x, KDMapData.StartPosition.y, KDMapData.EndPosition.x, KDMapData.EndPosition.y,
 				false, false, false, KinkyDungeonMovableTilesSmartEnemy,
 				false, false, false, undefined, false,
-				undefined, false, true).length > 0)) iterations = maxIter;
+				undefined, false, true)?.length > 0)) iterations = maxIter;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == maxIter) {
@@ -1420,7 +1462,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 let KDStageBossGenerated = false;
 
 /**
- * Creates a list of all tiles accessible and not hidden by doors
+ * Creates a list of all tiles accessible and not hidden by doors or dangerous
  */
 function KinkyDungeonGenNavMap(fromPoint) {
 	if (!fromPoint) fromPoint = KDMapData.EndPosition || KDMapData.StartPosition;
@@ -1431,7 +1473,8 @@ function KinkyDungeonGenNavMap(fromPoint) {
 		let Y = a[1].y;
 		let tags = [];
 		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OL)
-			KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
+			if (!KDDefaultAvoidTiles.includes(KinkyDungeonMapGet(X, Y)))
+				KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
 	}
 	KDUpdateChokes = true;
 }
@@ -1459,18 +1502,21 @@ function KDLowPriorityNavMesh() {
 	}
 	for (let a of NavMap) {
 		for (let b of NavMap) {
-			let path = KinkyDungeonFindPath(a.x, a.y, b.x, b.y, false, false, false, KinkyDungeonMovableTilesSmartEnemy,
-				false, false, false, undefined, false,
-				(x, y, xx, yy) => {
-					return KDistTaxicab(x - xx, y - yy);
-				}, true,true);
-			if (path)
-				for (let p of path) {
-					//let tile = KinkyDungeonTilesGet(p.x + "," + p.y) || {};
-					//tile.HT = true; // High traffic
-					KDMapData.Traffic[p.y][p.x] = 0;
-					//KinkyDungeonTilesSet(p.x + "," + p.y, tile);
-				}
+			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(a.x, a.y))
+				&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(b.x, b.y))) {
+				let path = KinkyDungeonFindPath(a.x, a.y, b.x, b.y, false, false, false, KinkyDungeonMovableTilesSmartEnemy,
+					false, false, false, undefined, false,
+					(x, y, xx, yy) => {
+						return KDistTaxicab(x - xx, y - yy);
+					}, true,true);
+				if (path)
+					for (let p of path) {
+						//let tile = KinkyDungeonTilesGet(p.x + "," + p.y) || {};
+						//tile.HT = true; // High traffic
+						KDMapData.Traffic[p.y][p.x] = 0;
+						//KinkyDungeonTilesSet(p.x + "," + p.y, tile);
+					}
+			}
 		}
 	}
 
@@ -3426,9 +3472,36 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhookchance, ceilinghookchance, width, height, altType) {
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
-			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < Chance)
+			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < Chance) {
 				KinkyDungeonMapSet(X, Y, '4');
-			else
+				// Cracks then expand in a random direction twice
+				let curXOld = X;
+				let curYOld = Y;
+				for (let a = 0; a < 2; a++) {
+					let curX = curXOld;
+					let curY = curYOld;
+					for (let i = 0; i < 7; i++) {
+						let xd = KDRandom() < 0.33 ? 0 :
+							(KDRandom() < 0.5 ? -1 : 1);
+						let yd = xd ? 0 : (KDRandom() < 0.5 ? -1 : 1);
+						curX += xd;
+						curY += yd;
+						if ((KinkyDungeonMapGet(curX, curY) == '1'
+							&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(curX + 1, curY))
+							&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(curX - 1, curY))
+							&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(curX, curY + 1))
+							&& !KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(curX, curY - 1)))
+							// Crakcs propagate
+							|| KinkyDungeonMapGet(curX, curY) == '4') {
+							KinkyDungeonMapSet(curX, curY, '4');
+						} else {
+							curX -= xd;
+							curY -= yd;
+						}
+					}
+				}
+
+			} else
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KDMapData.TilesSkin[X + "," + Y]) {
 				KinkyDungeonMapSet(X, Y, 'Y');
 				if (KDAlreadyOpened(X, Y)) {
@@ -5763,7 +5836,7 @@ function KDGenerateBaseTraffic(width, height) {
 	for (let X = 0; X < height; X++) {
 		let row = [];
 		for (let Y = 0; Y < width; Y++)
-			row.push(3);
+			row.push(5);
 		KDMapData.Traffic.push(row);
 	}
 }

@@ -410,11 +410,13 @@ KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Qu
 
 
 KinkyDungeonStatMapLarge,"Expansive Halls"
-KinkyDungeonStatDescMapLarge,"Increases the size of maps by 1 in each direction."
+KinkyDungeonStatDescMapLarge,"Increases the size of maps by 3 in each direction. Maps will be less dense."
 KinkyDungeonStatMapHuge,"Gargantuan Halls"
-KinkyDungeonStatDescMapHuge,"Increases the size of maps by 2 in each direction."
+KinkyDungeonStatDescMapHuge,"Increases the size of maps by 6 in each direction. Maps will have a mix of tunnels and dead ends."
 KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
-KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 3 in each direction."
+KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 9 in each direction. Maps will be mostly tunnels."
+KinkyDungeonStatMapAbsurd,"Absurdly Huge Maps"
+KinkyDungeonStatDescMapAbsurd,"(Experimental) Make the maps really really big. Probably breaks the game."
 
 KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Binding on enemies is 30% stronger."
@@ -10498,6 +10500,7 @@ KinkyDungeonSpecialTorch,Ignite torches and nearby objects
 KinkyDungeonSpecialFlamberge,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
+KinkyDungeonSpecialPickaxe,"Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks."
 
 KDCategoryToggles,Preferences
 KDCategoryToggles2,Preferences 2
@@ -24573,3 +24576,13 @@ KDBondageFailInvalidTargetStuffing,Target must be vulnerable or have casted a ve
 KDBondageFailInvalidTargetTapeGag,Target must be vulnerable.
 KDBondageFailInvalidTargetTapeBlindfold,Target must be vulnerable.
 KDBondageFailInvalidTargetBallGag,Target must have casted a verbal spell.
+
+
+KinkyDungeonSpellPickaxe,"Diggy diggy hole"
+KinkyDungeonSpellTargetPickaxe,"Select a cracked wall."
+KinkyDungeonSpellCastPickaxe,"You strike the earth!"
+
+KDPickaxeFailNoTarget,"Must select a cracked wall."
+KDPickaxeFailNoComp,"Your arms aren't free to swing the axe!"
+KDPickaxeFailNoOpen,"You strike the earth, but it is nothing but solid wall on the other side."
+KDPickaxeSucceed,"You strike the earth! It crumbles before you!"
