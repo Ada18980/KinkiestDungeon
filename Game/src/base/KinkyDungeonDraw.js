@@ -2,7 +2,16 @@
 
 let KDDebugOverlay = false;
 /** @type {PoseMod[]} */
-let CHIBIMOD = StandalonePatched ? [
+let CHIBIMOD = [
+	{
+		Layer: "HairBack",
+		scale_x: 0.75,
+		scale_y: 0.75,
+		rotation_x_anchor: 1190,
+		rotation_y_anchor: 690,
+		offset_x: 1100,
+		offset_y: 620,
+	},
 	{
 		Layer: "Head",
 		scale_x: 2,
@@ -12,7 +21,7 @@ let CHIBIMOD = StandalonePatched ? [
 		offset_x: 1100,
 		offset_y: 620,
 	},
-] : [];
+];
 
 let KDInspectCamera = {x: 0, y: 0};
 

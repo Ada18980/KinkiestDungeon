@@ -1855,10 +1855,10 @@ class Transform {
         let _sx = this.sx * sx;
         let _sy = this.sy * sy;
 
-        let _ox = -(sx*ax*Math.cos(rot)
-            - sy*ay*Math.sin(rot));
-        let _oy = -(sx*ax*Math.sin(rot)
-            + sy*ay*Math.cos(rot));
+        let _ox = -(_sx*ax*Math.cos(rot)
+            - _sy*ay*Math.sin(rot));
+        let _oy = -(_sx*ax*Math.sin(rot)
+            + _sy*ay*Math.cos(rot));
 
         // Transform to parent coordinates
         let __ox2 = this.sx*(ox) + _ox;
