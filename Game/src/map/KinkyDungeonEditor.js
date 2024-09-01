@@ -65,6 +65,7 @@ let KDEditorTileBrushIndex2 = 0;
 let KDTilePalette = {
 	'Clear': {type: "clear", tile: '0'},
 	'Wall': {type: "tile", tile: '1'},
+	'WallReinforced': {type: "tile", tile: 'f'},
 	'----Spawns----': {type: "none"},
 	'Spawn': {type: "tile", tile: 'G', special: {Type: "Spawn", required: []}},
 	'SpawnGuard': {type: "tile", tile: 'G', special: {Type: "Spawn", required: [], AI: "guard"}},
@@ -226,6 +227,9 @@ let KDTilePalette = {
 	'PressurePlateHold':  {type: "effect", effectTile: "PressurePlateHold"},
 	'PressurePlateOneUse':  {type: "effect", effectTile: "PressurePlateOneUse"},
 	'ManaPlate':  {type: "effect", effectTile: "ManaEmpty"},
+	'TeleportPlate':  {type: "effect", effectTile: "TeleportPlate"},
+	'NoTeleportPlate':  {type: "effect", effectTile: "NoTeleportPlate"},
+	'TeleportPlateMana':  {type: "effect", effectTile: "TeleportPlateMana"},
 	'----Lighting----': {type: "none"},
 	'Torch':  {type: "effect", effectTile: "Torch"},
 	'PotentialTorch': {type: "effect", effectTile: "TorchUnlit"},

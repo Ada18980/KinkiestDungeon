@@ -79,10 +79,10 @@ let KinkyDungeonPOI = [];
 let KinkyDungeonStairTiles = 'sSH';
 let KDDefaultAvoidTiles = "gtVN@";
 let KinkyDungeonGroundTiles = "023wW][?/";
-let KinkyDungeonWallTiles = "14,6";
+let KinkyDungeonWallTiles = "14,6f";
 let KDCrackableTiles = '4Xaom-';
 let KDMendableTiles = '4';
-let KinkyDungeonBlockTiles = "14,6bgX7";
+let KinkyDungeonBlockTiles = "14,6bgX7f";
 let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNVvt5"; // Objects which can be moved into: floors, debris, open doors, staircases
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
@@ -422,12 +422,10 @@ function KinkyDungeonInitialize(Level, Load) {
 	KinkyDungeonFlags = new Map();
 
 	KinkyDungeonDressSet();
-	// Removed to protect against unintended outfit overrides
-	/*if (KinkyDungeonConfigAppearance) {
-		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
-		KinkyDungeonConfigAppearance = false;
-	}*/
-	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer));
+	// Refresh the character
+	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer,
+		KDGetCharMetadata(KinkyDungeonPlayer)
+	));
 	KinkyDungeonDrawState = "Game";
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonDressPlayer();
@@ -543,35 +541,35 @@ function KDGetMapSize() {
  *  opennessMult: number,
  * }}
  */
-function KDGetMazeParams() {
+function KDGetMazeParams(params) {
 	if (KinkyDungeonStatsChoice.get("MapLarge")) return {
 		oldest: 0.5,
 		newest: 0.4,
-		chance_STOP: .25,
+		chance_STOP: .25 + 0.75*(params.deadend || 0),
 		opennessMult: .8,
 	};
 	if (KinkyDungeonStatsChoice.get("MapHuge")) return {
 		oldest: 0.45,
 		newest: 0.35,
-		chance_STOP: .45,
+		chance_STOP: .45 + 0.55*(params.deadend || 0),
 		opennessMult: .65,
 	};
 	if (KinkyDungeonStatsChoice.get("MapGigantic")) return {
 		oldest: 0.4,
 		newest: 0.25,
-		chance_STOP: .55,
+		chance_STOP: .55 + 0.45*(params.deadend || 0),
 		opennessMult: .45,
 	};
 	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return {
 		oldest: 0.35,
-		newest: 0.2,
-		chance_STOP: .85,
+		newest: 0.04,
+		chance_STOP: .85 + 0.15*(params.deadend || 0),
 		opennessMult: .1,
 	};
 	return {
 		oldest: 0.1,
 		newest: 0.8,
-		chance_STOP: 0,
+		chance_STOP: 0 + (params.deadend || 0),
 		opennessMult: 1,
 	};
 }
@@ -617,6 +615,7 @@ function KDSaveRoom(slot, saveconstantX) {
 	// Remove navmap cause it will be regenned
 
 	KDMapData.RandomPathablePoints = {};
+	RandomPathList = [];
 
 	let CurrentMapData = JSON.parse(JSON.stringify(KDMapData));
 
@@ -1467,14 +1466,18 @@ let KDStageBossGenerated = false;
 function KinkyDungeonGenNavMap(fromPoint) {
 	if (!fromPoint) fromPoint = KDMapData.EndPosition || KDMapData.StartPosition;
 	KDMapData.RandomPathablePoints = {};
+	RandomPathList = [];
 	let accessible = KinkyDungeonGetAccessible(fromPoint.x, fromPoint.y);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
 		let Y = a[1].y;
 		let tags = [];
 		if (!KinkyDungeonTilesGet(a[0]) || !KinkyDungeonTilesGet(a[0]).OL)
-			if (!KDDefaultAvoidTiles.includes(KinkyDungeonMapGet(X, Y)))
+			if (!KDDefaultAvoidTiles.includes(KinkyDungeonMapGet(X, Y))) {
+				if (!KDMapData.RandomPathablePoints[a[0]]) RandomPathList.push({x: X, y:Y, tags:tags});
 				KDMapData.RandomPathablePoints[a[0]] = {x: X, y:Y, tags:tags};
+			}
+
 	}
 	KDUpdateChokes = true;
 }
@@ -3472,6 +3475,8 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhookchance, ceilinghookchance, width, height, altType) {
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
+			let category = KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {};
+			if (category?.tags?.includes("noWear")) continue;
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < Chance) {
 				KinkyDungeonMapSet(X, Y, '4');
 				// Cracks then expand in a random direction twice
@@ -3560,6 +3565,8 @@ function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, alt
 	if (!altType || !altType.noClutter)
 		for (let X = 1; X < width-1; X += 1)
 			for (let Y = 1; Y < height-1; Y += 1) {
+				let category = KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {};
+				if (category?.tags?.includes("noClutter")) continue;
 				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && (KinkyDungeonTilesGet(X + "," + Y).OL || KinkyDungeonTilesGet(X + "," + Y).Skin))
 					&& !(Object.values(KinkyDungeonEffectTilesGet(X + ',' + Y) || {})?.length > 0)
 					&& (KinkyDungeonMapGet(X+1, Y) != 'd' && KinkyDungeonMapGet(X+1, Y) != 'D'

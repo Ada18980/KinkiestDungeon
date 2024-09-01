@@ -527,6 +527,9 @@ function KDApplyAlpha(id, alpha, fade, delta) {
 		case "sine3000": {
 			return Math.max(0, Math.min(1, .5 + 0.25 * Math.sin(CommonTime()/3000)));
 		}
+		case "ice": {
+			return Math.max(0, Math.min(1, .25 + 0.25 * Math.sin(CommonTime()/5000)));
+		}
 	}
 }
 

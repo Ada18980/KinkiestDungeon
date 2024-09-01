@@ -2867,10 +2867,11 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
  * @param {*} Enemy
  * @param {*} playerDist
  * @param {*} minDist
+ * @param {number} maxDist
  * @returns {{x: number, y: number}}
  */
-function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false) {
-	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist, ignoreOL);
+function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false, maxDist = 100) {
+	return KinkyDungeonGetRandomEnemyPointCriteria(undefined, avoidPlayer, onlyPlayer, Enemy, playerDist, minDist, ignoreOL, maxDist);
 }
 
 /**
@@ -2978,6 +2979,8 @@ function KDGetNearestGuardLabel(x, y, entity, ignoreID, ignoreEntity, typeFilter
 	return label;
 }
 
+let RandomPathList = [];
+
 /**
  *
  * @param {*} criteria
@@ -2986,11 +2989,12 @@ function KDGetNearestGuardLabel(x, y, entity, ignoreID, ignoreEntity, typeFilter
  * @param {*} Enemy
  * @param {*} playerDist
  * @param {*} minDist
+ * @param {number} maxDist
  * @returns {{x: number, y: number}}
  */
-function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false) {
+function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false, maxDist = 100) {
 	let tries = 0;
-	let points = Object.values(KDMapData.RandomPathablePoints);
+	let points = RandomPathList;
 
 	while (tries < 100) {
 		let point = points[Math.floor(points.length * KDRandom())];
@@ -2999,7 +3003,9 @@ function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlay
 			let Y = point.y;//1 + Math.floor(KDRandom()*(KDMapData.GridHeight - 1));
 			let PlayerEntity = KinkyDungeonNearestPlayer({x:X, y:Y});
 
-			if (((!avoidPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > minDist)
+			if (
+				(!maxDist || !Enemy || KDistChebyshev(Enemy.x - X, Enemy.y - Y) < maxDist)
+				&& ((!avoidPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) > minDist)
 				&& (!onlyPlayer || Math.sqrt((X - PlayerEntity.x) * (X - PlayerEntity.x) + (Y - PlayerEntity.y) * (Y - PlayerEntity.y)) <= playerDist))
 				&& (!KinkyDungeonPointInCell(X, Y)) && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(X, Y))
 				&& (!Enemy || KinkyDungeonNoEnemyExceptSub(X, Y, true, Enemy))
@@ -8163,7 +8169,8 @@ function KDRemoveFromParty(enemy, capture) {
 	for (let pm of (KDGameData.Party)) {
 		if (pm.id == enemy.id) {
 			KDGameData.Party.splice(KDGameData.Party.indexOf(pm), 1);
-			if (capture) {
+			let enn = KinkyDungeonGetEnemyByName(enemy.Enemy);
+			if (capture && (!enemy.maxlifetime || enemy.maxlifetime > 9000) && enn?.bound && KDCapturableType(enn)) {
 				//if (!enemy.hostile) { // In the future player will be able to keep as slaves
 				KDAddToCapturedParty(pm);
 				//}
@@ -8903,7 +8910,7 @@ function KDQuickGenNPC(enemy, force) {
 		if (!enemyType.style) return; // Dont make one for enemies without styles
 		let NPC = null;
 		if (!KDNPCChar.get(id)) {
-			NPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + id));
+			NPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + id, KDEnemyName(enemy), value?.Palette));
 			KDNPCChar.set(id, NPC);
 			KDNPCChar_ID.set(NPC, id);
 			value = value || KDGetPersistentNPC(enemy.id);

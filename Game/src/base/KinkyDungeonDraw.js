@@ -28,7 +28,7 @@ let KDInspectCamera = {x: 0, y: 0};
 let KDRecentRepIndex = 0;
 
 
-let KDWallReplacers = "146,dDzZbgS";
+let KDWallReplacers = "14f6,dDzZbgS";
 
 let KinkyDungeonSuppressSprint = true;
 
@@ -403,6 +403,11 @@ const KDSprites = {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
+	},
+	"f": (x, y, Fog, noReplace) => { // Reinforced wall
+		if (KDWallVert(x, y, noReplace))
+			return "WallRVert";
+		return "WallR";
 	},
 	"2": (x, y, Fog, noReplace) => {
 		return "Brickwork";
@@ -3141,6 +3146,7 @@ function FillRectKD(Container, Map, id, Params) {
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
+ * @param {any[]} [options.filters] - filters
  * @returns {void} - Nothing
  */
 function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -3177,6 +3183,7 @@ function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringTe
  * @param {string} [options.tint] - tint
  * @param {string} [options.hotkey] - hotkey
  * @param {string} [options.hotkeyPress] - hotkey
+ * @param {any[]} [options.filters] - filters
  * @returns {void} - Nothing
  */
 function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
@@ -3208,6 +3215,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 		if (Stretch || options?.scaleImage) {
 			let o = {
 				zIndex: zIndex + 0.01,
+				filters: options?.filters,
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
@@ -3220,6 +3228,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 		} else {
 			let o = {
 				zIndex: zIndex + 0.01,
+				filters: options?.filters,
 			};
 			if (options?.tint) o.tint = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
@@ -4033,6 +4042,63 @@ let KDEffectTileTooltips = {
 			});
 		}
 	},
+	'NoTeleportPlate': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
+	},
+	'TeleportPlateMana': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
+	},
+	'TeleportPlate': {
+		color: "#ffffff",
+		code: (tile, x, y, TooltipList) => {
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 24,
+				center: true,
+			});
+			TooltipList.push({
+				str: TextGet("KDEffectTileTooltip" + tile.name + "Desc"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 16,
+				center: true,
+			});
+		}
+	},
 	'Inferno': {
 		color: "#ff8855",
 		code: (tile, x, y, TooltipList) => {
@@ -4491,10 +4557,11 @@ function KDGetTargetRetType(x, y) {
  * @param {number} w
  * @param {number} scale
  * @param {string} selected
+ * @param {string} [deffault]
  * @param {(string) => void} callback
  */
-function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelectPalette") {
-	if (selected == undefined) selected = KDDefaultPalette;
+function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelectPalette", deffault) {
+	if (selected == undefined) selected = (deffault != undefined ? deffault : KDDefaultPalette);
 	let XX = x;
 	let YY = y;
 	//let row = 0;

@@ -1427,7 +1427,7 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 			KDMapData.Grid = KDMapData.Grid + '\n';
 		}
 
-		let genParams = KDGetMazeParams();
+		let genParams = KDGetMazeParams(data.params);
 
 		let maze = KDGenMaze(1, 1, {w: width/KDTE_Scale, h: height/KDTE_Scale}, {
 			scale: 1,

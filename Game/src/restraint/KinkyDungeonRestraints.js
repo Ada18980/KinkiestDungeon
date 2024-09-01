@@ -3196,7 +3196,8 @@ function KinkyDungeonUpdateRestraints(C, id, delta, customRestraints, extraTags)
 			let inv = inv2.item;
 			playerTags.set("Item_"+inv.name, true);
 
-			if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+			if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette)
+				&& (KDToggles.ApplyPaletteRestraint && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
 				inv.faction = outfit?.palette || KDDefaultPalette;
 			}
 

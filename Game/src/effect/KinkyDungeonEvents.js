@@ -2949,7 +2949,8 @@ const KDEventMapBuff = {
 					let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 					for (let inv of KDGetRestraintsForEntity(entity)) {
 
-						if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette) && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette])) {
+						if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette)
+							&& (KDToggles.ApplyPaletteTransform && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
 							palette = outfit?.palette || KDDefaultPalette;
 						}
 					}
@@ -7800,7 +7801,17 @@ let KDEventMapBullet = {
 			}
 
 			if (nearest) {
-				KDMoveEntity(enemy, nearest.x, nearest.y, true);
+				let tdata = {
+					x: nearest.x,
+					y: nearest.y,
+					cancel: false,
+					entity: enemy,
+					willing: true,
+				};
+				KinkyDungeonSendEvent("beforeTeleport", tdata);
+				if (tdata.cancel) {
+					KDMoveEntity(enemy, nearest.x, nearest.y, true);
+				}
 				KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
 			}
@@ -7849,20 +7860,30 @@ let KDEventMapBullet = {
 				&& KinkyDungeonBrightnessGet(point.x, point.y) <= KDShadowThreshold*2
 				&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(point.x, point.y))
 				&& !KinkyDungeonEntityAt(point.x, point.y)) {
-				KDMoveEntity(enemy, point.x, point.y, true);
-				//KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
-				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
-				if (KDRandom() < 0.4)
-					KinkyDungeonSendDialogue(
-						enemy,
-						TextGet("KDTeleportsBehindYou" + Math.floor(KDRandom() * 3)),
-						KDGetColor(enemy),
-						4,
-						10,
-					);
-				let spell = KinkyDungeonFindSpell("Summon", true);
-				if (spell) {
-					KinkyDungeonCastSpell(point.x, point.y, spell, undefined, undefined, undefined);
+				let tdata = {
+					x: point.x,
+					y: point.y,
+					cancel: false,
+					entity: enemy,
+					willing: true,
+				};
+				KinkyDungeonSendEvent("beforeTeleport", tdata);
+				if (tdata.cancel) {
+					KDMoveEntity(enemy, point.x, point.y, true);
+					//KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
+					if (KDRandom() < 0.4)
+						KinkyDungeonSendDialogue(
+							enemy,
+							TextGet("KDTeleportsBehindYou" + Math.floor(KDRandom() * 3)),
+							KDGetColor(enemy),
+							4,
+							10,
+						);
+					let spell = KinkyDungeonFindSpell("Summon", true);
+					if (spell) {
+						KinkyDungeonCastSpell(point.x, point.y, spell, undefined, undefined, undefined);
+					}
 				}
 			}
 
@@ -8022,7 +8043,18 @@ let KDEventMapBullet = {
 					let en = enemies[Math.floor(KDRandom() * enemies.length)];
 					let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, false, true);
 					if (point) {
-						KDMoveEntity(en, point.x, point.y, false, false, true);
+						let tdata = {
+							x: point.x,
+							y: point.y,
+							cancel: false,
+							entity: en,
+							willing: false,
+						};
+						KinkyDungeonSendEvent("beforeTeleport", tdata);
+
+						if (!tdata.cancel) {
+							KDMoveEntity(en, point.x, point.y, false, false, true);
+						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
 				}
@@ -8039,9 +8071,19 @@ let KDEventMapBullet = {
 					let en = enemies[Math.floor(KDRandom() * enemies.length)];
 					let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, false, true);
 					if (point) {
-						KDMoveEntity(en, point.x, point.y, false, false, true);
-						en.teleporting = Math.max(en.teleporting || 0, 4);
-						en.teleportingmax = Math.max(en.teleportingmax || 0, 4);
+						let tdata = {
+							x: point.x,
+							y: point.y,
+							cancel: false,
+							entity: en,
+							willing: false,
+						};
+						KinkyDungeonSendEvent("beforeTeleport", tdata);
+						if (tdata.cancel) {
+							KDMoveEntity(en, point.x, point.y, false, false, true);
+							en.teleporting = Math.max(en.teleporting || 0, 4);
+							en.teleportingmax = Math.max(en.teleportingmax || 0, 4);
+						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
 				}
@@ -8058,9 +8100,19 @@ let KDEventMapBullet = {
 					let en = enemies[Math.floor(KDRandom() * enemies.length)];
 					let point = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, false, true);
 					if (point) {
-						KDMoveEntity(en, point.x, point.y, false, false, true);
-						en.teleporting = Math.max(en.teleporting || 0, 1);
-						en.teleportingmax = Math.max(en.teleportingmax || 0, 1);
+						let tdata = {
+							x: point.x,
+							y: point.y,
+							cancel: false,
+							entity: en,
+							willing: false,
+						};
+						KinkyDungeonSendEvent("beforeTeleport", tdata);
+						if (tdata.cancel) {
+							KDMoveEntity(en, point.x, point.y, false, false, true);
+							en.teleporting = Math.max(en.teleporting || 0, 1);
+							en.teleportingmax = Math.max(en.teleportingmax || 0, 1);
+						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
 				}
@@ -8434,7 +8486,7 @@ let KDEventMapEnemy = {
 			let player = KDPlayer();
 			if (data.enemy == enemy && data.target == player && data.restraintsAdded && data.restraintsAdded.length == 0 && !KinkyDungeonFlags.get("shadowEngulf")) {
 
-				KDTripleBuffKill("ShadowEngulf", player, 9, (tt) => {
+				KDTripleBuffKill("ShadowEngulf", player, 15, (tt) => {
 					// Passes out the player, but does NOT teleport
 					KinkyDungeonPassOut(true);
 					KDBreakTether(player);
@@ -9219,6 +9271,103 @@ let KDEventMapGeneric = {
 			KDStunResist(data);
 		},
 	},
+
+	"teleport": {
+		"TeleportPlate": (e, data) => {
+			// Creates a wire spark if teleported on
+			let etiles = KDGetEffectTiles(data.x, data.y);
+			if (etiles) {
+				let tilesFiltered = Object.values(etiles)?.filter((tile) => {
+					return tile.tags?.includes("teleportwire");
+				});
+				if (tilesFiltered.length > 0) {
+					KDCreateEffectTile(data.x, data.y, {
+						name: "WireSparks",
+						duration: 2,
+					}, 0);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportPlateReact"), "#8888ff", 1);
+				}
+			}
+
+		},
+		"TeleportPlateMana": (e, data) => {
+			// Creates a wire spark if teleported on
+			let etiles = KDGetEffectTiles(data.x, data.y);
+			if (etiles) {
+				let count = 5;
+				let tilesFiltered = Object.values(etiles)?.filter((tile) => {
+					return tile.tags?.includes("teleportcrystal");
+				});
+				if (tilesFiltered.length > 0) {
+					if (data.entity.player) {
+						KinkyDungeonChangeMana(-20, false, undefined, true, true);
+						let restraintToAdd = KinkyDungeonGetRestraint({
+							tags: ["ropeMagicStrong"]}, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+						true, "Gold", false, false, false);
+
+						if (restraintToAdd) {
+							KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
+							if (count > 1)
+								for (let i = 1; i < (count || 1); i++) {
+									restraintToAdd = KinkyDungeonGetRestraint({
+										tags: ["ropeMagicStrong"]}, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									true, "Gold", false, false, false);
+									if (restraintToAdd) KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
+								}
+						}
+					} else {
+						KDTieUpEnemy(
+							data.entity,
+							10, "Magic", undefined, true,
+						);
+						KDSilenceEnemy(data.entity, 12);
+					}
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportPlateManaReact"), "#8888ff", 1);
+				}
+			}
+
+		},
+
+
+	},
+	"beforeTeleport": {
+		"NoTeleportPlate": (e, data) => {
+			if (!data.cancel && data.entity) {
+				// Creates a wire spark if teleported on
+				let etiles = KDGetEffectTiles(data.entity.x, data.entity.y);
+				if (etiles) {
+					let tilesFiltered = Object.values(etiles)?.filter((tile) => {
+						return tile.tags?.includes("blockteleport");
+					});
+					if (tilesFiltered.length > 0) {
+						data.cancel = true;
+						KinkyDungeonSendEvent("blockTeleport", data);
+						KinkyDungeonSendTextMessage(10, TextGet("KDNoTeleportPlateReact"), "#8888ff", 1);
+					}
+				}
+			}
+		},
+	},
+	"blockTeleport": {
+		"NoTeleportPlate": (e, data) => {
+			if (data.entity) {
+				// Creates a wire spark if teleported on
+				let etiles = KDGetEffectTiles(data.entity.x, data.entity.y);
+				if (etiles) {
+					let tilesFiltered = Object.values(etiles)?.filter((tile) => {
+						return tile.tags?.includes("blockteleportwire");
+					});
+					if (tilesFiltered.length > 0) {
+						KDCreateEffectTile(data.entity.x, data.entity.y, {
+							name: "WireSparks",
+							duration: 2,
+						}, 0);
+					}
+				}
+			}
+		},
+	},
+
 	"beforePlayerLaunchAttack": {
 		"ReplacePerks": (e, data) => {
 			if (KinkyDungeonPlayerDamage.unarmed && KDIsHumanoid(data.target)) {

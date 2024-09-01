@@ -284,6 +284,15 @@ function KDCapturable(enemy) {
 
 /**
  *
+ * @param {enemy} enemy
+ * @returns {boolean}
+ */
+function KDCapturableType(enemy) {
+	return !(KDNoCaptureTypes.some((tag) => {return enemy.tags[tag];}));
+}
+
+/**
+ *
  * @param {entity} enemy
  * @param {string} [status]
  * @param {string} [status]
@@ -527,7 +536,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 		}
 
 	if (!KDNPCChar.get(value.id)) {
-		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id));
+		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id, value.name, value.Palette));
 		KDNPCChar.set(value.id, KDSpeakerNPC);
 		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 		KDNPCStyle.set(KDSpeakerNPC, value);
@@ -590,7 +599,8 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			KDWardrobeCallback = () => {
 				let value2 = value;
 				//if (KDOriginalValue) {
-				value2.customOutfit = LZString.compressToBase64(CharacterAppearanceStringify(KDSpeakerNPC));
+				value2.customOutfit = LZString.compressToBase64(AppearanceItemStringify(KDSpeakerNPC.Appearance));
+				value2.Palette = KDSpeakerNPC.Palette;
 
 				KDRefreshCharacter.set(KDSpeakerNPC, true);
 				//}
@@ -622,8 +632,11 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 			KinkyDungeonInitializeDresses();
 			KDUpdateModelList();
 			KDRefreshOutfitInfo();
-			let orig = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
-			let current = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+			let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+			let orig = itt ?
+				JSON.parse(LZString.decompressFromBase64(itt)).appearance
+				|| itt : "";
+			let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
 			if (orig != current) KDOriginalValue = orig;
 			ForceRefreshModelsAsync(KDSpeakerNPC);
 			//KinkyDungeonDressPlayer(KDSpeakerNPC, true, true);
@@ -1183,13 +1196,22 @@ function KDSortCollection() {
  * @param {entity} enemy
  * @returns {string}
  */
-function KDGetEnemyName(enemy) {
+function KDGenEnemyName(enemy) {
 	if (enemy?.Enemy?.nonHumanoid) return TextGet("Name" + enemy.Enemy.name);
 	let faction = KDGetFaction(enemy) || KDGetFactionOriginal(enemy);
 	let nameList = KDFactionProperties[faction]?.nameList ? KDFactionProperties[faction].nameList[Math.floor(Math.random() * KDFactionProperties[faction].nameList.length)] : faction;
 	if (enemy.Enemy?.nameList) nameList = enemy.Enemy?.nameList;
 	if (KDNameList[nameList]) return KDNameList[nameList][Math.floor(KDNameList[nameList].length * KDRandom())];
 	else return KDNameList.default[Math.floor(KDNameList.default.length * KDRandom())];
+}
+
+/**
+ * @deprecated
+ * @param {entity} enemy
+ * @returns {string}
+ */
+function KDGetEnemyName(enemy) {
+	return KDGenEnemyName(enemy);
 }
 
 

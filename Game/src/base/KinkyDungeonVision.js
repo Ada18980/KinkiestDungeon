@@ -348,13 +348,16 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 
 	let rad = KinkyDungeonGetVisionRadius();
+	let rad2 = rad + 8; // Limited interaction radius
 	// Generate the grid
 	let bb = 0;
 	let d = 1;
 	let newL = 0;
 	for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 		for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++)
-			if (KinkyDungeonCheckPath(X, Y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)
+			if (KDistChebyshev(X - KDPlayer().x, Y - KDPlayer().y) < rad2
+				&& KinkyDungeonCheckPath(X, Y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+					true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)
 				&& KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(X, Y))) {
 				bb = KinkyDungeonBrightnessGet(X, Y);//Math.max( Math.min(10, 1.6 * (flags.nightVision - 1)), Math.min(flags.nightVision, 1) * KinkyDungeonBrightnessGet(X, Y));
 				d = KDistEuclidean(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
@@ -435,6 +438,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 		// Main grid square loop
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
 			for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+				if (KDistChebyshev(X - KDPlayer().x, Y - KDPlayer().y) > rad2) continue;
 				let tile = KinkyDungeonMapGet(X, Y);
 				if ((LightsTemp.get(X + "," + Y) || (KinkyDungeonTransparentObjects.includes(tile) || (X == KinkyDungeonPlayerEntity.x && Y == KinkyDungeonPlayerEntity.y))) && !KDVisionBlockers.get(X + "," + Y)) {
 					let brightness = KinkyDungeonVisionGet(X, Y);
@@ -482,6 +486,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	// Now make lights bright
 	for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 		for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
+			if (KDistChebyshev(X - KDPlayer().x, Y - KDPlayer().y) > rad2) continue;
 			vv = KinkyDungeonVisionGet(X, Y);
 			bb = KinkyDungeonBrightnessGet(X, Y);
 			if (vv > 0 && KDLightCropValue + bb > vv && LightsTemp.get(X + "," + Y)) {
@@ -492,6 +497,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 	for (let X = 0; X < KDMapData.GridWidth; X++) {
 		for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+			if (KDistChebyshev(X - KDPlayer().x, Y - KDPlayer().y) > rad2) continue;
 			let dd = KDistChebyshev(X - KinkyDungeonPlayerEntity.x, Y - KinkyDungeonPlayerEntity.y);
 			if (dd > rad)
 				KinkyDungeonVisionSet(X, Y, 0);
@@ -521,7 +527,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 		let fog = true;//KDAllowFog();
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
 			for (let Y = 0; Y < KDMapData.GridHeight; Y++)
-				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1) {
+				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1 && KDistChebyshev(X - KDPlayer().x, Y - KDPlayer().y) < rad2) {
 					dist = KDistChebyshev(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);
 					if (dist < Math.ceil(minDist)) {
 						let distE = KDistEuclidean(KinkyDungeonPlayerEntity.x - X, KinkyDungeonPlayerEntity.y - Y);

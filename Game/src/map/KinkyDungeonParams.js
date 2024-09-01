@@ -269,10 +269,10 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce"],
 
-		"min_width" : 5,
-		"max_width" : 7,
-		"min_height" : 5,
-		"max_height" : 6,
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 6,
+		"max_height" : 7,
 		"defeat_outfit": "Prisoner",
 		"shrines": [
 			//{Type: "Charms", Weight: 5},
@@ -377,10 +377,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedSkeleton"},
 		],
 
-		"min_width" : 5,
-		"max_width" : 7,
-		"min_height" : 5,
-		"max_height" : 6,
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 6,
+		"max_height" : 7,
 
 		factionList: ["AncientRobot", "Bandit", "Apprentice", "Bountyhunter", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
@@ -554,10 +554,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
 		],
 
-		"min_width" : 5,
-		"max_width" : 6,
-		"min_height" : 5,
-		"max_height" : 5,
+		"min_width" : 6,
+		"max_width" : 7,
+		"min_height" : 6,
+		"max_height" : 7,
 
 		factionList: ["AncientRobot", "Nevermere", "Bandit", "Bountyhunter", "Elf", "Bast", "Dragon", "Maidforce", "Alchemist"],
 
@@ -674,10 +674,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "GreaterSkeleton"},
 		],
 
-		"min_width" : 5,
-		"max_width" : 7,
-		"min_height" : 5,
-		"max_height" : 5,
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 6,
+		"max_height" : 6,
 
 		factionList: ["Apprentice", "Bandit", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
@@ -797,10 +797,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "MummyCursed"},
 		],
 
-		"min_width" : 5,
-		"max_width" : 6,
-		"min_height" : 5,
-		"max_height" : 7,
+		"min_width" : 6,
+		"max_width" : 7,
+		"min_height" : 6,
+		"max_height" : 8,
 
 		factionList: ["Bast", "Bandit", "AncientRobot", "Elemental", "Dragon"],
 
@@ -905,10 +905,11 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "BookBondage"},
 		],
 
-		"min_width" : 5,
-		"max_width" : 5,
-		"min_height" : 5,
-		"max_height" : 5,
+		"min_width" : 7,
+		"max_width" : 7,
+		"min_height" : 7,
+		"max_height" : 7,
+		deadend: 0.1,
 
 		factionList: ["Elf", "Bandit", "Apprentice", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
@@ -1017,10 +1018,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
 		],
 
-		"min_width" : 4,
-		"max_width" : 5,
-		"min_height" : 5,
-		"max_height" : 7,
+		"min_width" : 5,
+		"max_width" : 6,
+		"min_height" : 6,
+		"max_height" : 8,
 
 		factionList: ["Nevermere", "Elf", "Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
@@ -1132,10 +1133,10 @@ const KinkyDungeonMapParams = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Poltergeist"},
 		],
 
-		"min_width" : 5,
-		"max_width" : 7,
-		"min_height" : 5,
-		"max_height" : 7,
+		"min_width" : 6,
+		"max_width" : 8,
+		"min_height" : 6,
+		"max_height" : 8,
 
 		enemyTags: ["shadowcreature", "magical", "shadow", "elemental", "angel"],
 		"defeat_outfit": "LatexPrisoner",
@@ -1577,10 +1578,11 @@ const KinkyDungeonMapParams = {
 
 		],
 
-		"min_width" : 6,
-		"max_width" : 8,
-		"min_height" : 4,
-		"max_height" : 4,
+		"min_width" : 7,
+		"max_width" : 9,
+		"min_height" : 5,
+		"max_height" : 5,
+		deadend: 0.5,
 
 		worldGenCode: () => {
 			KDAddPipes(0.2, 0.35, 0.7, 0.2);
@@ -1911,10 +1913,11 @@ const KinkyDungeonMapParams = {
 			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 50},
 		],
 
-		"min_width" : 5,
-		"max_width" : 5,
-		"min_height" : 5,
-		"max_height" : 5,
+		"min_width" : 6,
+		"max_width" : 6,
+		"min_height" : 7,
+		"max_height" : 7,
+		deadend: .15,
 
 		factionList: ["Elf", "Bast", "Dragon"],
 

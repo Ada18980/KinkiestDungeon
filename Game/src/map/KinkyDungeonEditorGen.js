@@ -268,7 +268,11 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 	let maxWeight = 0;
 
 	for (let mapTile of Object.values(KDMapTilesList)) {
-		if (mapTile.primInd == index || (mapTile.flexEdge && mapTile.flexEdge['1,1'] && (mapTile.primInd.includes(index) || (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
+		if (mapTile.primInd == index ||
+			(mapTile.flexEdge
+				&& mapTile.flexEdge['1,1']
+				&& (mapTile.primInd.includes(index)
+					|| (mapTile.flexEdgeSuper && mapTile.flexEdgeSuper['1,1'])))) {
 			if (!KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled)) continue;
 
 			if (!KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess)) continue;
@@ -337,18 +341,27 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 			// The index store of the map tile, we compare to the indices of indexfilled
 			let ind = mapTile.index[xx + ',' + yy];
 			// Skip map tile if out of bounds
-			if (!indices[(xx + indX - 1) + ',' + (yy + indY - 1)]) return false;
+			if (indices[(xx + indX - 1) + ',' + (yy + indY - 1)] == undefined) return false;
 			// Skip this mapTile if it doesnt fit
 			if (ind != indices[(xx + indX - 1) + ',' + (yy + indY - 1)] && KDLooseIndexRankingSuspend(indices[(xx + indX - 1) + ',' + (yy + indY - 1)], ind, mapTile.w, mapTile.h, xx, yy)) {
-				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy] && ((mapTile.flexEdgeSuper && mapTile.flexEdgeSuper[xx + ',' + yy]) || (
-					// 1st condition: tile is inside this one
-					// 2nd condition: this tile doesn't need it
-					// 3rd condition: other index is already filled
-					(yy > 1 || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)])
-					&& (yy < mapTile.h || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d') || indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)])
-					&& (xx < mapTile.w || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l') || indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)])
-					&& (xx > 1 || !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r') || indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)])
-				))) fail = true;
+				if (mapTile.flexEdge && mapTile.flexEdge[xx + ',' + yy] && (
+					(mapTile.flexEdgeSuper && mapTile.flexEdgeSuper[xx + ',' + yy]) || (
+						// 1st condition: tile is inside this one
+						// 2nd condition: this tile doesn't need it
+						// 3rd condition: other index is already filled
+						(yy > 1
+							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('u')
+							|| indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 - 1)] != undefined)
+						&& (yy < mapTile.h
+							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('d')
+							|| indexFilled[(xx + indX - 1) + ',' + (yy + indY - 1 + 1)] != undefined)
+						&& (xx < mapTile.w
+							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('l')
+							|| indexFilled[(xx + indX - 1 - 1) + ',' + (yy + indY - 1)] != undefined)
+						&& (xx > 1
+							|| !indices[(xx + indX - 1) + ',' + (yy + indY - 1)].includes('r')
+							|| indexFilled[(xx + indX - 1 + 1) + ',' + (yy + indY - 1)] != undefined)
+					))) fail = true;
 				else return false;
 			}
 			// Skip this mapTile if it's already filled
@@ -690,7 +703,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 		for (let endp of EndPoints) {
 			let x = endp.x;
 			let y = endp.y;
-			if (x > 0 && y > 0 && x < tileWidth && y < tileHeight && KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
+			if (KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
 				// This is a dead end, now lets remove it unless its on the border
 				let links = Object.values(BacktrackLinks[x + ',' + y])
 					.filter((link) => {return !RemoveTiles[link.x + ',' + link.y];});

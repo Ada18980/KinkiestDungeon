@@ -2941,7 +2941,7 @@ let KinkyDungeonEnemies = [
 			lighting: true,
 		},
 		tags: KDMapInit(["obstacledoor", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless",
-			"soulimmune", "slashresist", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "chainimmune", "glueresist", "soapresist", "tickleresist", "groperesist", "painresist", "charmimmune",
+			"soulimmune", "slashresist", "electricresist", "crushweakness", "unarmedresist", "chainimmune", "glueresist", "soapresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 			"bulwark",
 		]), spellResist: 0, sneakthreshold: 0.6,
 		evasion: -9, ignorechance: 1.0, armor: 3, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,

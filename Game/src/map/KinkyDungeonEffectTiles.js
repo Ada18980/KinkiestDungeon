@@ -24,6 +24,7 @@ let KDEffectTiles = {
 		name: "Ice",
 		duration: 1,
 		priority: 1,
+		fade: "ice",
 		tags: ["ice", "slippery", "terrain"],
 	},
 	"Acid": {
@@ -330,6 +331,26 @@ let KDEffectTiles = {
 		tags: ["light", "holy"],
 	},
 
+	"TeleportPlate": {
+		name: "TeleportPlate",
+		duration: 9999, infinite: true,
+		priority: 10,
+		tags: ["teleportwire"],
+	},
+	"NoTeleportPlate": {
+		name: "TeleportPlate",
+		duration: 9999, infinite: true,
+		priority: 10,
+		tags: ["blockteleport", "blockteleportwire"],
+	},
+	"TeleportPlateMana": {
+		name: "TeleportPlateMana",
+		duration: 9999, infinite: true,
+		priority: 10,
+		tags: ["teleportwire", "teleportcrystal"],
+	},
+
+
 	"ManaEmpty": {
 		name: "ManaEmpty",
 		duration: 9999, infinite: true,
@@ -337,7 +358,7 @@ let KDEffectTiles = {
 		tags: [],
 	},
 	"ManaPartial": {
-		name: "ManaEmpty",
+		name: "ManaPartial",
 		duration: 9999, infinite: true,
 		priority: 50,
 		tags: ["wire"],

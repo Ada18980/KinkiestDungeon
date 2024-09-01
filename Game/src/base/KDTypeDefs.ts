@@ -8,6 +8,11 @@ interface NamedAndTyped extends Named {
 	type?: string,
 }
 
+interface KDOutfitMetadata {
+	name: string,
+	palette: string,
+}
+
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
 	/** Which NPC its on */
@@ -687,6 +692,7 @@ interface floorParams {
 	max_width : number,
 	min_height : number,
 	max_height : number,
+	deadend? : number,
 
 	ShopExclusives? : string[],
 	ShopExclusivesArousal? : string[],
@@ -2451,6 +2457,7 @@ interface KinkyDungeonSave {
 		appearance: any[],
 		default: string,
 		poses: Record<string, boolean>,
+		Palette: string,
 
 
 		outfit: string,
@@ -3551,6 +3558,9 @@ interface KDCollectionEntry {
 	escaped?: boolean,
 	escapegrace?: boolean,
 	personality: string,
+
+	/** Optional NPC palette */
+	Palette?: string,
 
 	spawned?: boolean,
 

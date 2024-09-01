@@ -1097,9 +1097,27 @@ let KinkyDungeonSpellSpecials = {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && !en.player) {
 			if (!KDIsImmobile(en)) {
+
+
 				let newX = entity.x;
 				let newY = entity.y;
+
+
+				let tdata = {
+					x: newX,
+					y: newY,
+					cancel: false,
+					entity: KDPlayer(),
+					willing: true,
+				};
+				KinkyDungeonSendEvent("beforeTeleport", tdata);
+
+				if (tdata.cancel) {
+					return "Fail";
+				}
+
 				if (!(en.Enemy.tags?.unstoppable)) {
+
 					KDMovePlayer(en.x, en.y, true, false, false, true);
 					KDMoveEntity(en, newX, newY, false, false, KDHostile(en));
 
@@ -1149,7 +1167,7 @@ let KinkyDungeonSpellSpecials = {
 				}
 
 			KinkyDungeonSendActionMessage(3, TextGet("KDUniversalSolventSucceedEnemy")
-				.replace("ENMY", KDGetEnemyName(en)),
+				.replace("ENMY", KDGenEnemyName(en)),
 			"#88FFAA", 2 + (spell.channel ? spell.channel - 1 : 0));
 
 

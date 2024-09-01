@@ -2193,15 +2193,43 @@ function KinkyDungeonBulletHit(b, born, outOfTime, outOfRange, d, dt, end) {
 				let point = KinkyDungeonGetNearbyPoint(b.x, b.y, true, undefined, false, false);
 				if (point) {
 					KinkyDungeonSetFlag("teleported", 1);
-					KDMovePlayer(point.x, point.y, false);
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
+					let tdata = {
+						x: point.x,
+						y: point.y,
+						cancel: false,
+						entity: KDPlayer(),
+						willing: true,
+					};
+					KinkyDungeonSendEvent("beforeTeleport", tdata);
+					if (!tdata.cancel) {
+						KDMovePlayer(point.x, point.y, false);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTeleportNearby"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
+						KinkyDungeonSendEvent("teleport", tdata);
+					} else {
+						KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
+					}
 				} else {
 					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
 				}
 			} else {
 				KinkyDungeonSetFlag("teleported", 1);
-				KDMovePlayer(b.x, b.y, true);
+				let tdata = {
+					x: b.x,
+					y: b.y,
+					cancel: false,
+					entity: KDPlayer(),
+					willing: true,
+				};
+				KinkyDungeonSendEvent("beforeTeleport", tdata);
+				if (!tdata.cancel) {
+					KDMovePlayer(b.x, b.y, false);
+					KinkyDungeonSendEvent("teleport", tdata);
+				} else {
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportFail"), "#e7cf1a", 2, undefined, undefined, undefined, "Combat");
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
+				}
 			}
 
 
@@ -3032,6 +3060,9 @@ function KDCrackTile(x, y, allowCrack, data) {
 
 		let Mend = KDMendableTiles.includes(data.origTile);
 		KinkyDungeonMapSet(x, y, '0');
+		if (KinkyDungeonTilesGet(x + ',' + y)) {
+			delete KinkyDungeonTilesGet(x + ',' + y).Type;
+		}
 		KDCreateEffectTile(x, y, {
 			name: Mend ? "Rubble" : "RubbleNoMend",
 			duration: 9999,

@@ -40,6 +40,7 @@ function CharacterReset(CharacterID: number, CharacterAssetFamily: string, Type:
 	let NewCharacter: Character = {
 		ID: CharacterID,
 		Name: "",
+		Palette: "",
 		Type,
 		AssetFamily: CharacterAssetFamily,
 		AccountName: "",
@@ -93,24 +94,6 @@ function CharacterReset(CharacterID: number, CharacterAssetFamily: string, Type:
 	return NewCharacter;
 }
 
-
-/**
- * Attributes a random name for the character, does not select a name in use
- * @param C - Character for which to attribute a name
- */
-function CharacterRandomName(C: Character): void {
-
-	// Generates a name from the name bank
-	let NewName = CharacterName[Math.floor(Math.random() * CharacterName.length)];
-	C.Name = NewName;
-
-	// If the name is already taken, we generate a new one
-	for (let CN = 0; CN < Character.length; CN++)
-		if ((Character[CN].Name == NewName) && (Character[CN].ID != C.ID)) {
-			CharacterRandomName(C);
-			return;
-		}
-}
 
 /**
  * Create a minimal character object
@@ -261,7 +244,7 @@ function CharacterNickname(C: Character): string {
  * @param NPCType - Archetype of the NPC
  * @returns The randomly generated NPC
  */
-function CharacterLoadNPC(NPCType: string): NPCCharacter {
+function CharacterLoadNPC(NPCType: string, Name: string, Palette?: string): NPCCharacter {
 
 	// Checks if the NPC already exists and returns it if it's the case
 	for (let C = 0; C < Character.length; C++)
@@ -272,7 +255,9 @@ function CharacterLoadNPC(NPCType: string): NPCCharacter {
 	CharacterReset(CharacterNextId++, "Female3DCG", CharacterType.NPC);
 	const CNew = Character[Character.length - 1];
 	CNew.AccountName = NPCType;
-	CharacterRandomName(CNew);
+	CNew.Name = Name;
+	if (Palette)
+		CNew.Palette = Palette;
 	//CharacterAppearanceBuildAssets(C);
 	//CharacterAppearanceFullRandom(C);
 

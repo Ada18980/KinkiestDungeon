@@ -700,6 +700,7 @@ interface Character {
 	Reputation: any[];
 	Skill: any[];
 	Pose: string[];
+	Palette: string;
 	Effect: string[];
 	Tints: ResolvedTintDefinition[];
 	FocusGroup: AssetGroup | null;

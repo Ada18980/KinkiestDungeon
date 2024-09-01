@@ -170,7 +170,7 @@ function KDPlayMusic(Sound, Volume) {
 			console.log('Autoplay is blocked by browser policy.');
 			allowMusic = false;
 		} else {
-			console.log('An error occurred while trying to play the audio:', error.message);
+			console.log('An error occurred while trying to play ' + Sound + " -- ", error.message);
 			KDSendMusicToast(error.message); // This shouldn't happen, but now you'll get a bug report.
 		}
 	});

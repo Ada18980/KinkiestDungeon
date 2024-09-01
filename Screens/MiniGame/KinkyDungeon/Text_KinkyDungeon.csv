@@ -46,6 +46,16 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
 
+KDToggleApplyPaletteRestraint,Apply palette to Restraints
+KDToggleApplyPaletteTransform,Apply palette to transforms
+
+KDToggleIgnoreApplyCharPalette,Don't use character palette
+KDToggleAlwaysApplyCharPalette,Always use character palette
+KDToggleDefaultApplyCharPalette,Use character palette for default outfit
+
+KDToggleBackgrounds,Show Background Art
+
+
 KDToggleBackgrounds,Show Background Art
 KDToggleRawDP,Show DP instead of %
 KDToggleOnlySelfQuickInv,Quick Inv only equips to self
@@ -23482,6 +23492,15 @@ KDEffectTileTooltipRadianceDesc,"Banishment of the shadow."
 KDEffectTileTooltipShadow,"Living Shadow"
 KDEffectTileTooltipShadowDesc,"Engulfs the tile in darkness."
 
+KDEffectTileTooltipTeleportPlate,"Planar Focus"
+KDEffectTileTooltipTeleportPlateDesc,"Absorbs teleportation energies."
+
+KDEffectTileTooltipNoTeleportPlate,"Planar Diffractor"
+KDEffectTileTooltipNoTeleportPlateDesc,"Diffuses teleportation energies."
+
+KDEffectTileTooltipTeleportPlateMana,"Planar Focusing Crystal"
+KDEffectTileTooltipTeleportPlateManaDesc,"Amplifies teleportation energies."
+
 KDEffectTileTooltipManaEmpty,"Mysterious Plate"
 KDEffectTileTooltipManaEmptyDesc,"What could it be?"
 KDEffectTileTooltipManaPartial,"Mana-Charged Plate"
@@ -24559,11 +24578,9 @@ KDPlayWithoutSlot,Play (NO SLOT!)
 
 KDCallForHelpHint,"Looks like you might be stuck. Try calling for help (bottom right of UI)"
 
-KDBackupPalette,Save to File
-KDLoadPalette,Load from File
-
-KDBackupOutfits,Store to File
-KDLoadOutfits,Load from File
+KDBackupOutfits,Backup
+KDLoadOutfits,Restore
+KDSetPalette,Set Palette
 
 KinkyDungeonStatMC_Mage,"Wizard"
 
@@ -24586,3 +24603,9 @@ KDPickaxeFailNoTarget,"Must select a cracked wall."
 KDPickaxeFailNoComp,"Your arms aren't free to swing the axe!"
 KDPickaxeFailNoOpen,"You strike the earth, but it is nothing but solid wall on the other side."
 KDPickaxeSucceed,"You strike the earth! It crumbles before you!"
+
+KDTeleportPlateReact,The planar focus resonates with the teleportation magic!
+KDTeleportPlateManaReact,"The planar focusing crystal activates! Mana is drained, and turns into bindings!"
+KDNoTeleportPlateReact,The planar diffractor blocks the teleportation!
+
+KDSetCharacterPalette,Set Character Palette

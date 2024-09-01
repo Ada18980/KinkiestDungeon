@@ -30,6 +30,15 @@ TODO:
 
 TODO remove hogtie when released
 
+5.4-nightly2
+- !!!MODDERS - IMPORTANT!!!
+- "kinkydungeonappearanceX" now contains an expanded object with metadata. Please update mods that handle the localstorage version of character
+- CharacterAppearanceStringify now encodes metadata into the provided string
+- CharacterAppearanceRestore can handle both old and new strigified characters
+- You will need to update any code that directly references a string created by CharacterAppearanceStringify instead of using CharacterAppearanceRestore
+- saveStat in the save files now has Palette field
+
+
 5.4-nightly1
 - Added Absurdly Huge Maps perk
 - Reworked the maze algorithm so it can now handle empty tiles generated
