@@ -2895,6 +2895,7 @@ let KinkyDungeonSpellListEnemies = [
 			duration: 50,
 		},
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 0.4, dist: 15, count: 0.2, limit: 0},],
+		bind: 8,
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: .1, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "Bind", damage: "pierce", power: 7.2, tag: "onebar"}},
 	{enemySpell: true, name: "SummonOneBar", noSprite: true, minRange: 0, manacost: 2, specialCD: 12,
 		noSumMsg: true,

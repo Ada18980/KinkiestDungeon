@@ -2578,7 +2578,7 @@ const KinkyDungeonRestraints = [
 	},
 	// Bed trap, always possible to struggle out but takes time
 	{removePrison: true, name: "BedTrap", debris: "Belts", Asset: "Bed", Color: ["#523629", "#4c6885", "#808284"], Group: "ItemDevices", power: 2, weight: 1, immobile: true, alwaysStruggleable: true,
-		Model: "Bed",
+		Model: "BondageBed",
 		restriction: 10,
 		tightType: "Secure",
 		escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.05, "Pick": -1.0, "Unlock": -1.0},

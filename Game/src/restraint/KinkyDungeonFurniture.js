@@ -56,6 +56,15 @@ let KDFurniture = {
 			// Nothing yet TODO add special features like dressing the player
 		}
 	},
+	"Bed": {
+		floor: "Floor",
+		sprite: "Bed",
+		restraintTag: "bed",
+		tickFunction: (delta) => {
+			// Small stamina regen :)
+			KinkyDungeonChangeStamina(0.1, true, false, false);
+		}
+	},
 	"DisplayEgyptian": {
 		floor: "Floor",
 		sprite: "DisplayEgyptian",

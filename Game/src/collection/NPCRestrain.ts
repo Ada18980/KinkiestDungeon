@@ -975,7 +975,9 @@ function KDWantsToEscape(value: KDCollectionEntry): boolean {
 	return !value.status // Is prisoner
 		&& (!value.Opinion || value.Opinion < 0) // Doesn't like you
 		&& (!KDGetGlobalEntity(value.id) // has no entity or is unimprisoned
-			|| !KDIsImprisoned(KDGetGlobalEntity(value.id)));
+			|| (!KDIsImprisoned(KDGetGlobalEntity(value.id))
+		))
+		&& !KDIsInPartyID(value.id);
 }
 function KDIsOKWithRestraining(value: KDCollectionEntry): boolean {
 	return (value.Opinion > 0)

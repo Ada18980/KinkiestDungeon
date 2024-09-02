@@ -3705,7 +3705,9 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				KDUpdatePersistentNPC(enemy.id, KDGameData.Collection[enemy.id + ""] != undefined);
 
 				// Delete the enemy
-				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1;} else if (KDGetFaction(enemy) != "Player") {
+				if (KinkyDungeonEnemyCheckHP(enemy, E))
+				{ E -= 1;}
+				else if (KDGetFaction(enemy) != "Player") {
 					if (enemy.aware && (enemy.lifetime == undefined || enemy.lifetime > 9000) && !enemy.Enemy.tags.temporary && !enemy.Enemy.tags.peaceful) {
 						if (enemy.hostile > 0 && enemy.hostile < 9000 && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
 							if (!(enemy.silence > 0) && KDEnemyCanSignalOthers(enemy)) {
@@ -5905,6 +5907,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 					spellchoice = enemy.Enemy.spells[Math.floor(KDRandom()*enemy.Enemy.spells.length)];
 				}
 				spell = KinkyDungeonFindSpell(spellchoice, true);
+				if (spell?.targetPlayerOnly && !player.player) spell = null;
 				if (spell && (enemy.blind > 0 && (spell.projectileTargeting))) spell = null;
 				if (spell && ((!spell.castRange && AIData.playerDist > KDGetSpellRange(spell)) || (spell.castRange && AIData.playerDist > spell.castRange))) spell = null;
 				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;

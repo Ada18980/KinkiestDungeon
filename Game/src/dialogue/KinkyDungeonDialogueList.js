@@ -968,7 +968,7 @@ let KDDialogue = {
 					}
 
 					KinkyDungeonSetFlag("slept", -1);
-					if (KinkyDungeonPlayerInCell(true)) {
+					if (KinkyDungeonPlayerInCell(true) && KDGameData.PrisonerState == 'jail') {
 						KinkyDungeonChangeRep("Ghost", KinkyDungeonIsArmsBound() ? 5 : 2);
 					}
 					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
@@ -4481,7 +4481,6 @@ let KDDialogue = {
 			if (KinkyDungeonStatsChoice.get("extremeMode")) e.Enemy.maxhp *= 4;
 			else if (KinkyDungeonStatsChoice.get("hardMode")) e.Enemy.maxhp *= 2;
 			e.hp = e.Enemy.maxhp;
-			//e.hostile = 300;
 			e.modified = true;
 			return false;
 		},

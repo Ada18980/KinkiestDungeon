@@ -210,6 +210,7 @@ let KDMaxAlertTimerAggro = 300;
  * @param {{enemy?: entity, x?: number, y?: number, faction?: string, force?: boolean}} data
  */
 function KinkyDungeonAggroAction(action, data) {
+	if (data?.faction == "Player") return;
 	let e = null;
 	switch (action) {
 		// Attacking ALWAYS makes the enemy angry
@@ -318,6 +319,7 @@ let KDSevereTypes = ["Attack"];
  */
 function KinkyDungeonStartChase(enemy, Type, faction, force) {
 	if (!force && enemy && (!enemy.aware && !(enemy.vp > 0.5))) return;
+	if (KDGetFaction(enemy) == "player") return;
 	if ((!enemy && !KDLocalChaseTypes.includes(Type))) {
 		if (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') {
 			KinkyDungeonChangeRep("Ghost", -10);

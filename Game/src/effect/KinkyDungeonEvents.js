@@ -5134,33 +5134,7 @@ let KDEventMapSpell = {
 					}, true);
 			}
 		},
-		/*"EnemySense": (e, spell, data) => {
-			let activate = false;
-			if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell)) && !KinkyDungeonPlayerBuffs.EnemySense) {
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell) * data.update);
-				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "EnemySense", type: "EnemySense", duration: 13});
-				activate = true;
-			}
-			if (KinkyDungeonPlayerBuffs.EnemySense && KinkyDungeonPlayerBuffs.EnemySense.duration > 1)
-				for (let enemy of KDMapData.Entities) {
-					if (!KinkyDungeonVisionGet(enemy.x, enemy.y)
-						&& Math.sqrt((KinkyDungeonPlayerEntity.x - enemy.x) * (KinkyDungeonPlayerEntity.x - enemy.x) + (KinkyDungeonPlayerEntity.y - enemy.y) * (KinkyDungeonPlayerEntity.y - enemy.y)) < e.dist) {
-						let color = "#882222";
-						if (enemy.Enemy.stealth > 0 || KDAmbushAI(enemy)) color = "#441111";
-						if (color == "#882222" || Math.sqrt((KinkyDungeonPlayerEntity.x - enemy.x) * (KinkyDungeonPlayerEntity.x - enemy.x) + (KinkyDungeonPlayerEntity.y - enemy.y) * (KinkyDungeonPlayerEntity.y - enemy.y)) < e.distStealth)
-							KDDraw(kdcanvas, kdpixisprites, enemy.id + "_sense", KinkyDungeonRootDirectory + "Aura.png",
-								(enemy.visual_x - data.CamX - data.CamX_offset) * KinkyDungeonGridSizeDisplay,
-								(enemy.visual_y - data.CamY - data.CamY_offset) * KinkyDungeonGridSizeDisplay,
-								KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
-									tint: string2hex(color),
-								});
-					}
-				}
-			else if (!activate) {
-				KinkyDungeonDisableSpell("EnemySense");
-				KinkyDungeonExpireBuff(KinkyDungeonPlayerBuffs, "EnemySense");
-			}
-		},*/
+
 	},
 	"getLights": {
 		"Light": (e, spell, data) => {

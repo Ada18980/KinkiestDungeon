@@ -2215,8 +2215,10 @@ interface spell {
 	noTargetEnemies?: boolean;
 	/** Exception list for NoTargetEnemies */
 	exceptionFactions?: string[];
-	/** noTargetAllies */
+	/**  */
 	noTargetAllies?: boolean;
+	/** Can only target the player */
+	targetPlayerOnly?: boolean;
 	/** Sets the enemy's specialCD shared between others */
 	specialCD?: number;
 	/** AI wont choose this as first choice */

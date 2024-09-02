@@ -96,6 +96,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "Bed",
 	Folder: "Furniture",
@@ -113,6 +114,24 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "BondageBed",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture", "Display"],
+	AddPose: ["Display", "LiftKneel"],
+	Layers: ToLayerMap([
+		...GetModelLayers("Bed"),
+
+		{ Name: "BedStraps", Layer: "FurnitureFront", Pri: 20,
+			Invariant: true,
+			TieToLayer: "Bed",
+			MorphPoses: {UprightHogtie: "", SuspendedHogtie: "", Hogtie: "Hogtie"}
+		},
+	])
+});
 
 AddModel({
 	Name: "LatexCube",

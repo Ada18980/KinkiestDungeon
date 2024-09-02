@@ -425,7 +425,12 @@ function KinkyDungeonGetEvasion(Enemy, NoOverride, IsSpell, IsMagic, cost) {
 
 
 function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
-	if (Enemy && Enemy.Enemy && (!Spell || !Spell.enemySpell) && (!Spell || !Spell.noAggro) && (!Faction || Faction == "Player") && !(Enemy.rage > 0) && (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
+	if (Enemy?.Enemy
+		&& (!Spell || !Spell.enemySpell)
+		&& (!Spell || !Spell.noAggro)
+		&& (!Faction || Faction == "Player")
+		&& !(Enemy.rage > 0)
+		&& (!Attacker || Attacker.player || Attacker.Enemy.allied)) {
 		if (Enemy.playWithPlayer && (KDCanDom(Enemy) || !KDHostile(Enemy))) {
 			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
@@ -1265,8 +1270,16 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 		Enemy.vulnerable = Math.max(Enemy.vulnerable, 1);
 	}
 
-	predata.aggro = KDGetFaction(Enemy) != "Player"
-		&& (Enemy.lifetime > 9000 || !Enemy.maxlifetime) && predata.type != "heal" && predata.type != "inert" && (!Spell || !Spell.allySpell) && (!bullet || !bullet.spell || (!bullet.spell.allySpell && !bullet.spell.enemySpell));
+	predata.aggro =
+		KDGetFaction(Enemy) != "Player"
+		&& (Enemy.lifetime > 9000 || !Enemy.maxlifetime)
+		&& predata.type != "heal"
+		&& predata.type != "inert"
+		&& (!Spell
+			|| !Spell.allySpell)
+		&& (!bullet
+			|| !bullet.spell
+			|| (!bullet.spell.allySpell && !bullet.spell.enemySpell));
 
 	KinkyDungeonSendEvent("afterDamageEnemy", predata);
 
@@ -2575,7 +2588,7 @@ function KDBulletHitEnemy(bullet, enemy, d, nomsg) {
 			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", KDToggles.FastFloaters ? 1 : 3);
 		if (bullet.bullet.faction == "Player")
 			KDHealRepChange(enemy, enemy.hp - origHP);
-	} else if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
+	} else //if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
 	{
 		// Avoid damaging the enemy if its a no direct damage spell
 		if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage) && bullet.bullet.damage.type != "inert")
