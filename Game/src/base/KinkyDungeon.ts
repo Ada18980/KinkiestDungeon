@@ -151,7 +151,7 @@ let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
 let KinkyDungeonKeyLogFilter = ['{', '}', ':', '"'];
 let KinkyDungeonKeyMap = ['+', '<', '>'];
 
-let KDLoadingTextKeys = {};
+let KDLoadingTextKeys: Record<string, string> = {};
 
 let kdSpecialModePerks = [
 	"arousalMode",

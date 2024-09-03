@@ -3844,7 +3844,8 @@ function KDApplyVarToInvVar(restraint, variant) {
 		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events({variant: restvar}))));
 	}
 	for (let e of variant.enchants) {
-		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(restraint.name, undefined, undefined, variant.enchants[0], variant.enchants.slice(1), {variant: variant}))));
+		/*  TODO: Figure out what that last argument was meant to do.  */
+		events.push(...JSON.parse(JSON.stringify(KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(restraint.name, undefined, undefined, variant.enchants[0], variant.enchants.slice(1) /* , {variant: variant} */))));
 	}
 	return restvar;
 }

@@ -3472,7 +3472,7 @@ interface KDEnchantmentType {
 	level: number,
 	filter: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => boolean,
 	weight: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => number,
-	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data: KDHexEnchantEventsData) => KinkyDungeonEvent[]
+	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data?: KDHexEnchantEventsData) => KinkyDungeonEvent[]
 }
 
 interface KDHexEnchantEventsData {
