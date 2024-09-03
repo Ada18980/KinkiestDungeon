@@ -1773,11 +1773,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 								let ttCJKcheck1 = CJKcheck(tt,1);
 								let ttCJKcheck2 = CJKcheck(tt);
 
-								if (ttCJKcheck1){
+								if (ttCJKcheck1  &&  typeof (ttCJKcheck1) != 'boolean'){
 									let i;
 									for (i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8;}
 								}
-								if (ttCJKcheck2){
+								if (ttCJKcheck2  &&  typeof (ttCJKcheck2) != 'boolean'){
 									let i;
 									for (i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16;}
 								}
@@ -1794,11 +1794,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 							let nameCJKcheck1 = CJKcheck(name,1);
 							let nameCJKcheck2 = CJKcheck(name);
 
-							if (nameCJKcheck1){
+							if (nameCJKcheck1  &&  typeof (nameCJKcheck1) != 'boolean'){
 								let i;
 								for (i in nameCJKcheck1){namelength += nameCJKcheck1[i].length * 8;}
 							}
-							if (nameCJKcheck2){
+							if (nameCJKcheck2  && typeof (nameCJKcheck2) != 'boolean'){
 								let i;
 								for (i in nameCJKcheck2){namelength += nameCJKcheck2[i].length * 16;}
 							}
@@ -1828,11 +1828,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
 
-						if (dialougeCJKcheck1){
+						if (dialougeCJKcheck1  &&  typeof (dialougeCJKcheck1) != 'boolean'){
 							let i;
 							for (i in dialougeCJKcheck1){dialougelenth += dialougeCJKcheck1[i].length * 8;}
 						}
-						if (dialougeCJKcheck2){
+						if (dialougeCJKcheck2  &&  typeof (dialougeCJKcheck2) != 'boolean'){
 							let i;
 							for (i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;}
 						}
@@ -4945,7 +4945,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
 									// long distance hunt
 									let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
-										return KDistChebyshev(enemy.x - X && enemy.y - Y) < 24;
+										return KDistChebyshev(enemy.x - X, enemy.y - Y) < 24;
 									}, false,
 									enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
 									if (newPoint) {

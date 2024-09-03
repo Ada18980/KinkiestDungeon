@@ -41,7 +41,7 @@
         "Game/src/map/KinkyDungeonEditor.js",
         "Game/src/map/KinkyDungeonEditorGen.js",
         "Game/src/base/KinkyDungeonErrors.js",
-        "Game/src/base/KinkyDungeon.js",
+        "Game/src/base/KinkyDungeon.ts",
         "Game/src/base/KDRender.ts",
         "Game/src/base/KinkyDungeonGame.js",
         "Game/src/player/KinkyDungeonVibe.js",

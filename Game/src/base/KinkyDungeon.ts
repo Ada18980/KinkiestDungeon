@@ -53,8 +53,7 @@ let KDClipboardDisabled = window.location.host.includes('itch.zone');
 (async function() {
 	let queryOpts = { name: 'clipboard-read', allowWithoutGesture: false };
 	try {
-		// @ts-ignore
-		let permissionStatus = await navigator.permissions.query(queryOpts);
+		let permissionStatus = await navigator.permissions.query(queryOpts as PermissionDescriptor);
 		permissionStatus.onchange = () => {
 			//console.log(permissionStatus.state);
 			if (permissionStatus.state == 'denied') KDClipboardDisabled = true;
@@ -103,10 +102,8 @@ let KinkyDungeonSpellsConfig = "1";
 let KDUnlockedPerks = [];
 
 let KinkyDungeonBackground = "BrickWall";
-/**
- * @type {Character}
- */
-let KinkyDungeonPlayer = null;
+
+let KinkyDungeonPlayer: Character = null;
 let KDSpeakerNPC = null;
 let KinkyDungeonState = "Logo";
 
@@ -240,6 +237,7 @@ let KDToggles = {
 	OnlySelfQuickInv: false,
 	OverrideOutfit: false,
 	SaveOutfit: true,
+	ModCompat: false,
 
 	ApplyPaletteRestraint: true,
 	//ApplyPaletteOutfit: true,
@@ -439,194 +437,193 @@ let KDDefaultMaxParty = 3;
 let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
 let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
-/**
-*  @typedef {{
-* JourneyProgression: string[],
-* AttachedWep: string,
-* InventoryAction: string,
-* InventoryActionManaCost: number,
-* SellMarkup: number,
-* CurseLevel: number,
-* UsingConsumable: string,
-* BondageTarget: number,
-* FoodTarget: number,
-* KeysNeeded: boolean,
-* JailRemoveRestraintsTimer: number;
-* KinkyDungeonSpawnJailers: number;
-* KinkyDungeonSpawnJailersMax: number;
-* KinkyDungeonLeashedPlayer: number;
-* KinkyDungeonLeashingEnemy: number;
-* JailGuard: number;
-* GuardTimer: number;
-* GuardTimerMax: number;
-* GuardSpawnTimer: number;
-* GuardSpawnTimerMax: number;
-* GuardSpawnTimerMin: number;
-* KinkyDungeonMaxPrisonReduction: number;
-* KinkyDungeonPrisonReduction: number;
-* KinkyDungeonPrisonExtraGhostRep: number;
-* PrisonGoodBehaviorFromLeash: number;
-* KinkyDungeonJailTourTimer: number;
-* KinkyDungeonJailTourTimerMin: number;
-* KinkyDungeonJailTourTimerMax: number;
-* KinkyDungeonPenanceCostCurrent: number;
-* KinkyDungeonAngel: number;
-* KDPenanceStage: number;
-* SpawnedPartyPrisoners: Record<string, number>;
-* KDPenanceStageEnd: number;
-* AngelCurrentRep: string;
-* KDPenanceMode: string;
-* OrgasmStage: number;
-* OrgasmTurns: number;
-* OrgasmStamina: number;
-* SleepTurns: number;
-* SlowMoveTurns: number;
-* PlaySelfTurns: number;
-* RescueFlag: boolean;
-* KinkyDungeonPenance: boolean;
-* GuardApplyTime: number;
-* WarningLevel: number;
-* AncientEnergyLevel: number;
-* OrigEnergyLevel: number;
-* LastMP: number;
-* LastAP: number;
-* LastSP: number;
-* LastWP: number;
-* Outfit: string,
-* Champion: string,
-* ChampionCurrent: number,
-* LastMapSeed: string,
-* AlreadyOpened: {x: number, y:number}[],
-* Journey: string,
-* CheckpointIndices: number[],
-* PrisonerState: string,
-* TimesJailed: number,
-* JailTurns: number,
-* JailKey: boolean,
-* CurrentDialog: string,
-* CurrentDialogStage: string,
-* OrgasmNextStageTimer: number,
-* DistractionCooldown: number,
-* ConfirmAttack: boolean,
-* CurrentDialogMsg: string,
-* CurrentDialogMsgSpeaker: string,
-* CurrentDialogMsgPersonality: string,
-* CurrentDialogMsgID: number,
-* CurrentDialogMsgData: Record<string, string>,
-* CurrentDialogMsgValue: Record<string, number>,
-* AlertTimer: number,
-* RespawnQueue: {enemy: string, faction: string}[],
-* HeartTaken: boolean,
-* CurrentVibration: KinkyVibration,
-* Edged: boolean,
-* TimeSinceLastVibeStart: Record<string, number>,
-* TimeSinceLastVibeEnd: Record<string, number>,
-* OfferFatigue: number,
-* Favors: Record<string, number>,
-* RoomType: string,
-* MapMod: string,
-* HunterTimer: number,
-* Hunters: number[],
-* Quests: string[],
-* QuestData: Record<string, any>,
-* RevealedTiles: Record<string, number>,
-* RevealedFog: Record<string, number>,
-* PriorJailbreaks: number,
-* PriorJailbreaksDecay: number,
-* PreviousWeapon: string[],
-* PreviousWeaponLock: boolean[],
-* StaminaPause: number,
-* StaminaSlow: number,
-* ManaSlow: number,
-* TempFlagFloorTicks: Record<string, number>,
-* KneelTurns: number,
-* AllowedSpellPages : Record<string, string[]>,
-* KeyringLocations : {x: number, y: number}[],
-* HiddenItems : Record<string, boolean>,
-* ItemPriority : Record<string, number>,
-* CagedTime : number,
-* DelayedActions: KDDelayedAction[],
-* OfferCount: number,
-* ItemID: number,
-* Offhand: string,
-* OffhandOld: string,
-* OffhandReturn: string,
-* ShopkeeperFee: number,
-* DollCount: number,
-* ChestsGenerated: string[],
-* DollRoomCount: number,
-* CollectedHearts: number,
-* CollectedOrbs: number,
-* otherPlaying: number,
-* Training: Record<string, KDTrainingRecord>,
-* QuickLoadout: KDPresetLoadout[],
-* CurrentLoadout: number,
-* HighestLevelCurrent: number,
-* HighestLevel: number,
-* KDChasingEnemies: entity[],
-* ShopRewardProgram: number,
-* ShopRewardProgramThreshold: number,
-* tickAlertTimer: boolean,
-* HostileFactions: string[],
-* MovePoints: number,
-* Wait: number,
-* Class: string,
-* Party: entity[],
-* CapturedParty: entity[],
-* PlayerName: string,
-* QuickLoadout_Weapon: boolean,
-* QuickLoadout_Merge: boolean,
-* ItemsSold: Record<string, number>,
-* MaxParty: number,
-* Crouch: boolean,
-* FocusControlToggle: Record<string, boolean>,
-* FloorRobotType: Record<string, string>,
-* EpicenterLevel: number,
-* BlockTokens: number,
-* DodgeTokens: number,
-* ShieldTokens: number,
-* BlockTokensMax: number,
-* DodgeTokensMax: number,
-* ShieldTokensMax: number,
-* Shield: number,
-* ShieldDamage: number,
-* Balance: number,
-* BalancePause: boolean,
-* NPCRestraints: Record<string, Record<string, NPCRestraint>>
-* Collection: Record<string, KDCollectionEntry>,
-* CollectionSorted: KDCollectionEntry[],
-* HeelPower: number,
-* visionAdjust: number,
-* visionAdjustBlind: number,
-* visionBlind: number,
-* CollectionGuests: number,
-* SelectedEscapeMethod: string,
-* Restriction: number,
-* JourneyX: number,
-* JourneyY: number,
-* ShortcutIndex: number,
-* JourneyMap: KDJourneyMap,
-* JourneyTarget: {x: number, y: number},
-* LastDragon: string,
-* ElevatorsUnlocked: Record<number, string>,
-* TeleportLocations: Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
-* MaxVisionDist: number,
-* MinVisionDist: number,
-* NightVision: number,
-* LockoutChance: number,
-* StatMaxBonus: Record<string, number>,
-* LogFilters: Record<string, boolean>,
-* NoForceGreet: boolean,
-* InteractTargetX: number,
-* InteractTargetY: number,
-* RegimentID: number,
-* FacilitiesData: FacilitiesData,
-* Regiments: Record<string, KDRegiment>
-* QuickLoadouts: Record<string, string[]>}},
 
-*}} KDGameDataBase
-*/
-let KDGameDataBase = {
+interface KDGameDataBase {
+	JourneyProgression:		string[],
+	AttachedWep:			string,
+	InventoryAction:		string,
+	InventoryActionManaCost:	number,
+	SellMarkup:			number,
+	CurseLevel:			number,
+	UsingConsumable:		string,
+	BondageTarget:			number,
+	FoodTarget:			number,
+	KeysNeeded:			boolean,
+	JailRemoveRestraintsTimer:	number;
+	KinkyDungeonSpawnJailers:	number;
+	KinkyDungeonSpawnJailersMax:	number;
+	KinkyDungeonLeashedPlayer:	number;
+	KinkyDungeonLeashingEnemy:	number;
+	JailGuard:			number;
+	GuardTimer:			number;
+	GuardTimerMax:			number;
+	GuardSpawnTimer:		number;
+	GuardSpawnTimerMax:		number;
+	GuardSpawnTimerMin:		number;
+	KinkyDungeonMaxPrisonReduction:	number;
+	KinkyDungeonPrisonReduction:	number;
+	KinkyDungeonPrisonExtraGhostRep: number;
+	PrisonGoodBehaviorFromLeash:	number;
+	KinkyDungeonJailTourTimer:	number;
+	KinkyDungeonJailTourTimerMin:	number;
+	KinkyDungeonJailTourTimerMax:	number;
+	KinkyDungeonPenanceCostCurrent:	number;
+	KinkyDungeonAngel:		number;
+	KDPenanceStage:			number;
+	SpawnedPartyPrisoners:		Record<string, number>;
+	KDPenanceStageEnd:		number;
+	AngelCurrentRep:		string;
+	KDPenanceMode:			string;
+	OrgasmStage:			number;
+	OrgasmTurns:			number;
+	OrgasmStamina:			number;
+	SleepTurns:			number;
+	SlowMoveTurns:			number;
+	PlaySelfTurns:			number;
+	RescueFlag:			boolean;
+	KinkyDungeonPenance:		boolean;
+	GuardApplyTime:			number;
+	WarningLevel:			number;
+	AncientEnergyLevel:		number;
+	OrigEnergyLevel:		number;
+	LastMP:				number;
+	LastAP:				number;
+	LastSP:				number;
+	LastWP:				number;
+	Outfit:				string,
+	Champion:			string,
+	ChampionCurrent:		number,
+	LastMapSeed:			string,
+	AlreadyOpened:			{x: number, y:number}[],
+	Journey:			string,
+	CheckpointIndices:		number[],
+	PrisonerState:			string,
+	TimesJailed:			number,
+	JailTurns:			number,
+	JailKey:			boolean,
+	CurrentDialog:			string,
+	CurrentDialogStage:		string,
+	OrgasmNextStageTimer:		number,
+	DistractionCooldown:		number,
+	ConfirmAttack:			boolean,
+	CurrentDialogMsg:		string,
+	CurrentDialogMsgSpeaker:	string,
+	CurrentDialogMsgPersonality:	string,
+	CurrentDialogMsgID:		number,
+	CurrentDialogMsgData:		Record<string, string>,
+	CurrentDialogMsgValue:		Record<string, number>,
+	AlertTimer:			number,
+	RespawnQueue:			{enemy: string, faction: string}[],
+	HeartTaken:			boolean,
+	CurrentVibration:		KinkyVibration,
+	Edged:				boolean,
+	TimeSinceLastVibeStart:		Record<string, number>,
+	TimeSinceLastVibeEnd:		Record<string, number>,
+	OfferFatigue:			number,
+	Favors:				Record<string, number>,
+	RoomType:			string,
+	MapMod:				string,
+	HunterTimer:			number,
+	Hunters:			number[],
+	Quests:				string[],
+	QuestData:			Record<string, any>,
+	RevealedTiles:			Record<string, number>,
+	RevealedFog:			Record<string, number>,
+	PriorJailbreaks:		number,
+	PriorJailbreaksDecay:		number,
+	PreviousWeapon:			string[],
+	PreviousWeaponLock:		boolean[],
+	StaminaPause:			number,
+	StaminaSlow:			number,
+	ManaSlow:			number,
+	TempFlagFloorTicks:		Record<string, number>,
+	KneelTurns:			number,
+	AllowedSpellPages :		Record<string, string[]>,
+	KeyringLocations :		{x: number, y: number}[],
+	HiddenItems :			Record<string, boolean>,
+	ItemPriority :			Record<string, number>,
+	CagedTime :			number,
+	DelayedActions:			KDDelayedAction[],
+	OfferCount:			number,
+	ItemID:				number,
+	Offhand:			string,
+	OffhandOld:			string,
+	OffhandReturn:			string,
+	ShopkeeperFee:			number,
+	DollCount:			number,
+	ChestsGenerated:		string[],
+	DollRoomCount:			number,
+	CollectedHearts:		number,
+	CollectedOrbs:			number,
+	otherPlaying:			number,
+	Training:			Record<string, KDTrainingRecord>,
+	QuickLoadout:			KDPresetLoadout[],
+	CurrentLoadout:			number,
+	HighestLevelCurrent:		number,
+	HighestLevel:			number,
+	KDChasingEnemies:		entity[],
+	ShopRewardProgram:		number,
+	ShopRewardProgramThreshold:	number,
+	tickAlertTimer:			boolean,
+	HostileFactions:		string[],
+	MovePoints:			number,
+	Wait:				number,
+	Class:				string,
+	Party:				entity[],
+	CapturedParty:			entity[],
+	PlayerName:			string,
+	QuickLoadout_Weapon:		boolean,
+	QuickLoadout_Merge:		boolean,
+	ItemsSold:			Record<string, number>,
+	MaxParty:			number,
+	Crouch:				boolean,
+	FocusControlToggle:		Record<string, boolean>,
+	FloorRobotType:			Record<string, string>,
+	EpicenterLevel:			number,
+	BlockTokens:			number,
+	DodgeTokens:			number,
+	ShieldTokens:			number,
+	BlockTokensMax:			number,
+	DodgeTokensMax:			number,
+	ShieldTokensMax:		number,
+	Shield:				number,
+	ShieldDamage:			number,
+	Balance:			number,
+	BalancePause:			boolean,
+	NPCRestraints:			Record<string, Record<string, NPCRestraint>>
+	Collection:			Record<string, KDCollectionEntry>,
+	CollectionSorted:		KDCollectionEntry[],
+	HeelPower:			number,
+	visionAdjust:			number,
+	visionAdjustBlind:		number,
+	visionBlind:			number,
+	CollectionGuests:		number,
+	SelectedEscapeMethod:		string,
+	Restriction:			number,
+	JourneyX:			number,
+	JourneyY:			number,
+	ShortcutIndex:			number,
+	JourneyMap:			KDJourneyMap,
+	JourneyTarget:			{x: number, y: number},
+	LastDragon:			string,
+	ElevatorsUnlocked:		Record<number, boolean>,
+	TeleportLocations:		Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
+	MaxVisionDist:			number,
+	MinVisionDist:			number,
+	NightVision:			number,
+	LockoutChance:			number,
+	StatMaxBonus:			Record<string, number>,
+	LogFilters:			Record<string, boolean>,
+	NoForceGreet:			boolean,
+	InteractTargetX:		number,
+	InteractTargetY:		number,
+	RegimentID:			number,
+	FacilitiesData:			FacilitiesData,
+	Regiments:			Record<string, KDRegiment>,
+	QuickLoadouts:			Record<string, string[]>,
+};
+
+let KDGameDataBase: KDGameDataBase = {
 	Regiments: {},
 	FacilitiesData: null,
 	InteractTargetX: 0,
@@ -833,7 +830,6 @@ let KDGameDataBase = {
 	ItemID: 0,
 	ShopkeeperFee: 0,
 	otherPlaying: 0,
-	CategoryIndex: {},
 	HighestLevel: 1,
 	HighestLevelCurrent: 1,
 	tickAlertTimer: false,
@@ -864,10 +860,8 @@ let KDGameDataBase = {
 		WP: 0,
 	},
 };
-/**
- * @type {KDGameDataBase}
- */
-let KDGameData = Object.assign({}, KDGameDataBase);
+
+let KDGameData: KDGameDataBase = Object.assign({}, KDGameDataBase);
 
 
 function KinkyDungeonLeashingEnemy() {
@@ -883,13 +877,10 @@ function KinkyDungeonLeashingEnemy() {
 }
 let KDJailGuard = null;
 
-/**
- *
- * @returns {entity}
- */
-function KinkyDungeonJailGuard() {
+function KinkyDungeonJailGuard(): entity {
 	return KDLookupID(KDGameData.JailGuard);
 }
+
 let KDAngel = null;
 function KinkyDungeonAngel() {
 	if (KDGameData.KinkyDungeonAngel) {
@@ -902,7 +893,7 @@ function KinkyDungeonAngel() {
 	return KDAngel;
 }
 
-function KDUnlockPerk(Perk) {
+function KDUnlockPerk (Perk: string = "") {
 	if (Perk && !KDUnlockedPerks.includes(Perk)) {
 		KDSendMusicToast(TextGet("KDPerkUnlockedToast") + TextGet("KinkyDungeonStat" + (KinkyDungeonStatsPresets[Perk]?.id || Perk)));
 		KDUnlockedPerks.push(Perk);
@@ -945,12 +936,7 @@ function KDLoadPerks() {
 
 let KDBGColor = "";
 
-/**
- *
- * @param {any[]} list
- * @return {Record<any, any>}
- */
-function KDMapInit(list) {
+function KDMapInit(list: any): Record<any, any> {
 	let map = {};
 	for (let l of list) {
 		map[l] = true;
@@ -958,16 +944,16 @@ function KDMapInit(list) {
 	return map;
 }
 
-function KDistEuclidean(x, y) {
+function KDistEuclidean(x: number, y: number): number {
 	return Math.sqrt(x*x + y*y);
 }
 
-function KDistChebyshev(x, y) {
+function KDistChebyshev(x: number, y: number): number {
 	return Math.max(Math.abs(x), Math.abs(y));
 }
 
 
-function KDistTaxicab(x, y) {
+function KDistTaxicab(x: number, y: number): number {
 	return Math.abs(x) + Math.abs(y);
 }
 
@@ -1005,9 +991,8 @@ async function KDMigrateSaveToNewSystem() {
 
 /**
  * Loads the kinky dungeon game
- * @returns {void} - Nothing
  */
-function KinkyDungeonLoad() {
+function KinkyDungeonLoad(): void {
 
 	try {
 		//@ts-ignore
@@ -1292,17 +1277,17 @@ function KinkyDungeonLoad() {
 
 /**
  * Restricts Devious Dungeon Challenge to only occur when inside the arcade
- * @returns {boolean} - If the player is in the arcade
+ * @returns - If the player is in the arcade
  */
-function KinkyDungeonDeviousDungeonAvailable() {
+function KinkyDungeonDeviousDungeonAvailable(): boolean {
 	return KinkyDungeonIsPlayer() && (DialogGamingPreviousRoom == "Arcade" || MiniGameReturnFunction == "ArcadeKinkyDungeonEnd") && !KDPatched;
 }
 
 /**
  * Returns whether or not the player is the one playing, which determines whether or not to draw the UI and struggle groups
- * @returns {boolean} - If the player is the game player
+ * @returns - If the player is the game player
  */
-function KinkyDungeonIsPlayer() {
+function KinkyDungeonIsPlayer(): boolean {
 	return (!KinkyDungeonPlayerCharacter || KinkyDungeonPlayerCharacter == Player) ;
 }
 
@@ -1345,7 +1330,7 @@ let fpscounter = 0;
 let lastfps = 0;
 let dispfps = 60;
 
-async function sleep(msec) {
+async function sleep(msec: number) {
 	return new Promise(resolve => setTimeout(resolve, msec));
 }
 
@@ -1530,8 +1515,7 @@ function KinkyDungeonRun() {
 	} else
 	if (KinkyDungeonState == "Mods") {
 
-		// @ts-ignore
-		DrawButtonKDEx("mods_back", (bdata) => {
+		DrawButtonKDEx("mods_back", (_bdata) => {
 			KinkyDungeonState = "Menu";
 			KDExecuteMods();
 			return true;
@@ -1542,8 +1526,7 @@ function KinkyDungeonRun() {
 			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
 
-		// @ts-ignore
-		DrawButtonKDEx("mods_load", (bdata) => {
+		DrawButtonKDEx("mods_load", (_bdata) => {
 			getFileInput();
 			return true;
 		}, true, 975, 250, 350, 64, TextGet("KinkyDungeonLoadMod"), "#ffffff", "");
@@ -1585,8 +1568,7 @@ function KinkyDungeonRun() {
 
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
-		// @ts-ignore
-		DrawButtonKDEx("patronnext", (bdata) => {
+		DrawButtonKDEx("patronnext", (_bdata) => {
 			if (KinkyDungeonPatronPos * maxPatron < credits.length - maxPatron * maxPatron) KinkyDungeonPatronPos += 1;
 			else KinkyDungeonPatronPos = 0;
 			return true;
@@ -1707,8 +1689,7 @@ function KinkyDungeonRun() {
 		}
 
 
-		// @ts-ignore
-		DrawButtonKDEx("GoToWardrobe", (bdata) => {
+		DrawButtonKDEx("GoToWardrobe", (_bdata) => {
 
 			if (StandalonePatched) {
 				KDSpeakerNPC = null;
@@ -1775,15 +1756,13 @@ function KinkyDungeonRun() {
 		DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), "#ffffff", "");
 
 		if (!StandalonePatched) {
-			// @ts-ignore
-			DrawButtonKDEx("Deviantart", (bdata) => {
+			DrawButtonKDEx("Deviantart", (_bdata) => {
 				let url = 'https://www.deviantart.com/ada18980';
 				window.open(url, '_blank');
 				return true;
 			}, true, 1700, 694, 280, 50, TextGet("KinkyDungeonDeviantart"), "#ffffff", "");
 
-			// @ts-ignore
-			DrawButtonKDEx("Patreon", (bdata) => {
+			DrawButtonKDEx("Patreon", (_bdata) => {
 				let url = 'https://www.patreon.com/ada18980';
 				KDSendEvent('patreon');
 				window.open(url, '_blank');
@@ -1800,15 +1779,13 @@ function KinkyDungeonRun() {
 
 		if (KDPatched) {
 
-			// @ts-ignore
-			DrawButtonKDEx("mods_button", (bdata) => {
+			DrawButtonKDEx("mods_button", (_bdata) => {
 				KinkyDungeonState = "Mods";
 				return true;
 			}, (!KDExecuted), 1700, 814, 280, 50, !KDExecuted ? TextGet("KDMods") : ((KDModFileCount === 1) ? `${KDModFileCount} ${TextGet("KDModsLoaded").replace("s","")}` : `${KDModFileCount} ${TextGet("KDModsLoaded")}`), !KDExecuted ? `#ffffff` : `#888888`, "");
 
 			if (Object.keys(KDModConfigs).length > 0) {
-				// @ts-ignore
-				DrawButtonKDEx("modconfigs_button", (bdata) => {
+				DrawButtonKDEx("modconfigs_button", (_bdata) => {
 					KinkyDungeonState = "ModConfig";
 					return true;
 				}, true, 1700, 755, 280, 50, TextGet("KDModConfigsButton"), "#ffffff", "");
@@ -1982,8 +1959,7 @@ function KinkyDungeonRun() {
 				}, true, 875, 650, 750, 64, TextGet("KinkyDungeonLoadFromFile") + ": " + KDSaveName, "#ffffff", ""
 			);
 
-			// @ts-ignore
-			DrawButtonKDEx("loadclothes", (b) => {
+			DrawButtonKDEx("loadclothes", (_b) => {
 				KDSaveCodeOutfit(Char, true);
 				KinkyDungeonState = "Wardrobe";
 				KDCanRevertFlag = false;
@@ -2069,8 +2045,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDHardMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonHardMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonHardMode0", (_bdata) => {
 			KinkyDungeonExtremeMode = false;
 			KinkyDungeonHardMode = false;
 			localStorage.setItem("KinkyDungeonHardMode", KinkyDungeonHardMode ? "True" : "False");
@@ -2081,8 +2056,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonHardModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonHardMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonHardMode1", (_bdata) => {
 			if (KinkyDungeonHardMode) {
 				KinkyDungeonExtremeMode = true;
 			}
@@ -2100,8 +2074,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDEasyMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonEasyMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonEasyMode0", (_bdata) => {
 			KinkyDungeonEasyMode = 0;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
@@ -2110,8 +2083,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonEasyMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonEasyMode1", (_bdata) => {
 			KinkyDungeonEasyMode = 1;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
@@ -2120,8 +2092,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonEasyModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonEasyMode2", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonEasyMode2", (_bdata) => {
 			KinkyDungeonEasyMode = 2;
 			localStorage.setItem("KinkyDungeonEasyMode", KinkyDungeonEasyMode + "");
 			return true;
@@ -2136,8 +2107,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDSaveMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonSaveMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonSaveMode0", (_bdata) => {
 			KinkyDungeonSaveMode = false;
 			localStorage.setItem("KinkyDungeonSaveMode", KinkyDungeonSaveMode ? "True" : "False");
 			return true;
@@ -2146,8 +2116,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonSaveModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonSaveMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonSaveMode1", (_bdata) => {
 			KinkyDungeonSaveMode = true;
 			localStorage.setItem("KinkyDungeonSaveMode", KinkyDungeonSaveMode ? "True" : "False");
 			return true;
@@ -2160,8 +2129,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDPerksMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerksMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerksMode0", (_bdata) => {
 			KinkyDungeonPerksMode = 0;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
 			return true;
@@ -2170,8 +2138,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerksModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerksMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerksMode1", (_bdata) => {
 			KinkyDungeonPerksMode = 1;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
 			return true;
@@ -2180,8 +2147,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerksModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerksMode2", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerksMode2", (_bdata) => {
 			KinkyDungeonPerksMode = 2;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
 			return true;
@@ -2189,8 +2155,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonPerksMode2")) {
 			DrawTextFitKD(TextGet("KinkyDungeonPerksModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerksMode3", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerksMode3", (_bdata) => {
 			KinkyDungeonPerksMode = 3;
 			localStorage.setItem("KinkyDungeonPerksMode", KinkyDungeonPerksMode + "");
 			return true;
@@ -2205,8 +2170,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDPerkProgressionMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerkProgressionMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerkProgressionMode0", (_bdata) => {
 			KinkyDungeonPerkProgressionMode = 0;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
@@ -2215,8 +2179,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerkProgressionMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerkProgressionMode1", (_bdata) => {
 			KinkyDungeonPerkProgressionMode = 1;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
@@ -2225,8 +2188,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerkProgressionMode2", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerkProgressionMode2", (_bdata) => {
 			KinkyDungeonPerkProgressionMode = 2;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
@@ -2234,8 +2196,7 @@ function KinkyDungeonRun() {
 		if (MouseInKD("KinkyDungeonPerkProgressionMode2")) {
 			DrawTextFitKD(TextGet("KinkyDungeonPerkProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonPerkProgressionMode3", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonPerkProgressionMode3", (_bdata) => {
 			KinkyDungeonPerkProgressionMode = 3;
 			localStorage.setItem("KinkyDungeonPerkProgressionMode", KinkyDungeonPerkProgressionMode + "");
 			return true;
@@ -2250,8 +2211,7 @@ function KinkyDungeonRun() {
 		if (KinkyDungeonPerkProgressionMode > 0) {
 			DrawTextFitKD(TextGet("KDPerkBondageMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-			// @ts-ignore
-			DrawButtonKDEx("KinkyDungeonPerkBondageMode0", (bdata) => {
+			DrawButtonKDEx("KinkyDungeonPerkBondageMode0", (_bdata) => {
 				KinkyDungeonPerkBondageMode = 0;
 				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
 				return true;
@@ -2260,8 +2220,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
-			// @ts-ignore
-			DrawButtonKDEx("KinkyDungeonPerkBondageMode1", (bdata) => {
+			DrawButtonKDEx("KinkyDungeonPerkBondageMode1", (_bdata) => {
 				KinkyDungeonPerkBondageMode = 1;
 				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
 				return true;
@@ -2270,8 +2229,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
-			// @ts-ignore
-			DrawButtonKDEx("KinkyDungeonPerkBondageMode2", (bdata) => {
+			DrawButtonKDEx("KinkyDungeonPerkBondageMode2", (_bdata) => {
 				KinkyDungeonPerkBondageMode = 2;
 				localStorage.setItem("KinkyDungeonPerkBondageMode", KinkyDungeonPerkBondageMode + "");
 				return true;
@@ -2287,8 +2245,7 @@ function KinkyDungeonRun() {
 		if (KinkyDungeonPerkBondageMode > 0 && KinkyDungeonPerkProgressionMode > 0) {
 			DrawTextFitKD(TextGet("KDPerkBondageVisMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-			// @ts-ignore
-			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode0", (bdata) => {
+			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode0", (_bdata) => {
 				KinkyDungeonPerkBondageVisMode = 0;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
 				return true;
@@ -2297,8 +2254,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
-			// @ts-ignore
-			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode1", (bdata) => {
+			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode1", (_bdata) => {
 				KinkyDungeonPerkBondageVisMode = 1;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
 				return true;
@@ -2307,8 +2263,7 @@ function KinkyDungeonRun() {
 				DrawTextFitKD(TextGet("KinkyDungeonPerkBondageVisModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
 
-			// @ts-ignore
-			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode2", (bdata) => {
+			DrawButtonKDEx("KinkyDungeonPerkBondageVisMode2", (_bdata) => {
 				KinkyDungeonPerkBondageVisMode = 2;
 				localStorage.setItem("KinkyDungeonPerkBondageVisMode", KinkyDungeonPerkBondageVisMode + "");
 				return true;
@@ -2323,8 +2278,7 @@ function KinkyDungeonRun() {
 
 		DrawTextFitKD(TextGet("KDItemMode"), 875 - 50, 190 + II*spacing + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonItemMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonItemMode0", (_bdata) => {
 			KinkyDungeonItemMode = 0;
 			localStorage.setItem("KinkyDungeonItemMode", KinkyDungeonItemMode + "");
 			return true;
@@ -2333,8 +2287,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonItemModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonItemMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonItemMode1", (_bdata) => {
 			KinkyDungeonItemMode = 1;
 			localStorage.setItem("KinkyDungeonItemMode", KinkyDungeonItemMode + "");
 			return true;
@@ -2343,8 +2296,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonItemModeDesc1"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonItemMode2", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonItemMode2", (_bdata) => {
 			KinkyDungeonItemMode = 2;
 			localStorage.setItem("KinkyDungeonItemMode", KinkyDungeonItemMode + "");
 			return true;
@@ -2404,8 +2356,7 @@ function KinkyDungeonRun() {
 			X = i % 4;
 			Y = Math.floor(i / 4);
 
-			// @ts-ignore
-			DrawButtonKDEx("Class" + i, (bdata) => {
+			DrawButtonKDEx("Class" + i, (_bdata) => {
 				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
 				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
 				return true;
@@ -2424,8 +2375,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDSexyMode"), 875 - 50, 420 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonSexyMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonSexyMode0", (_bdata) => {
 			KinkyDungeonSexyMode = false;
 			KDUpdatePlugSettings(true);
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
@@ -2435,8 +2385,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonSexyModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonSexyMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonSexyMode1", (_bdata) => {
 			KinkyDungeonSexyMode = true;
 			KDUpdatePlugSettings(true);
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
@@ -2449,8 +2398,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDRandomMode"), 875 - 50, 500 + 22, 300, "#ffffff", KDTextGray1, undefined, "right");
 
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonRandomMode0", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonRandomMode0", (_bdata) => {
 			KinkyDungeonRandomMode = false;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
 			return true;
@@ -2459,8 +2407,7 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonRandomModeDesc0"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
-		// @ts-ignore
-		DrawButtonKDEx("KinkyDungeonRandomMode1", (bdata) => {
+		DrawButtonKDEx("KinkyDungeonRandomMode1", (_bdata) => {
 			KinkyDungeonRandomMode = true;
 			localStorage.setItem("KinkyDungeonRandomMode", KinkyDungeonRandomMode ? "True" : "False");
 			return true;
@@ -2472,14 +2419,12 @@ function KinkyDungeonRun() {
 
 		if (KinkyDungeonSexyMode) {
 
-			// @ts-ignore
-			DrawCheckboxKDEx("KinkyDungeonSexyPlugsFront", (bdata) => {
+			DrawCheckboxKDEx("KinkyDungeonSexyPlugsFront", (_bdata) => {
 				KinkyDungeonSexyPlugFront = !KinkyDungeonSexyPlugFront;
 				localStorage.setItem("KinkyDungeonSexyPlugFront", KinkyDungeonSexyPlugFront ? "True" : "False");
 				return true;
 			}, true, 1500, 420, 64, 64, TextGet("KinkyDungeonSexyPlugsFront"), !KinkyDungeonSexyPlugFront, false, "#ffffff");
-			// @ts-ignore
-			DrawCheckboxKDEx("KinkyDungeonSexyPlugs", (bdata) => {
+			DrawCheckboxKDEx("KinkyDungeonSexyPlugs", (_bdata) => {
 				KinkyDungeonSexyPlug = !KinkyDungeonSexyPlug;
 				localStorage.setItem("KinkyDungeonSexyPlug", KinkyDungeonSexyPlug ? "True" : "False");
 				return true;
@@ -2554,8 +2499,7 @@ function KinkyDungeonRun() {
 		}, true, 1550, 450, 200, 64, TextGet("KDRandom"), "#ffffff", "");
 
 		// Left to decrement
-		// @ts-ignore
-		DrawButtonKDEx(`SaveButtonL`, (bdata) => {
+		DrawButtonKDEx(`SaveButtonL`, (_bdata) => {
 			if (KDSaveSlot > 1) {
 				KDSaveSlot--;
 			}
@@ -2566,8 +2510,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KDChooseSlot"), 1150, 585, 360, "#ffffff", undefined, 30);
 		DrawTextFitKD(`${KDSaveSlot}`, 1430, 585, 360, "#ffffff", undefined, 30);
 		// Right to increment
-		// @ts-ignore
-		DrawButtonKDEx(`SaveButton4`, (bdata) => {
+		DrawButtonKDEx(`SaveButton4`, (_bdata) => {
 			if (KDSaveSlot < maxSaveSlots) {
 				KDSaveSlot++;
 			}
@@ -2605,8 +2548,7 @@ function KinkyDungeonRun() {
 			(Math.random() > 0.5 ? -1 : 1) + 750 : 650, 750, 64, TextGet(KDConfirmDeleteSave ?
 			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? "#ff5555" : "#ffffff", "");
 
-		// @ts-ignore
-		DrawButtonKDEx("backButton", (b) => {
+		DrawButtonKDEx("backButton", (_b) => {
 			KinkyDungeonState = "Menu";
 			return true;
 		}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "",
@@ -2632,8 +2574,7 @@ function KinkyDungeonRun() {
 
 		let minPoints = 0;
 
-		// @ts-ignore
-		DrawButtonKDEx("KDPerksStart", (bdata) => {
+		DrawButtonKDEx("KDPerksStart", (_bdata) => {
 			if (KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints) {
 				KDLose = false;
 				KinkyDungeonStartNewGame();
@@ -2645,8 +2586,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, 875, 920, 350, 64, TextGet("KinkyDungeonStartGame"), KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) >= minPoints ? "#ffffff" : "pink", "");
 
-		// @ts-ignore
-		DrawButtonKDEx("KDPerksBack", (bdata) => {
+		DrawButtonKDEx("KDPerksBack", (_bdata) => {
 			KinkyDungeonState = "Menu";
 			return true;
 		}, true, 1275, 920, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
@@ -2655,29 +2595,25 @@ function KinkyDungeonRun() {
 			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
 
-		// @ts-ignore
-		DrawButtonKDEx("KDPerksClear", (bdata) => {
+		DrawButtonKDEx("KDPerksClear", (_bdata) => {
 			KinkyDungeonStatsChoice = new Map();
 			KDUpdatePlugSettings(true);
 			return true;
 		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), "#ffffff", "");
 
-		// @ts-ignore
-		DrawButtonKDEx("KDPerkConfig1", (bdata) => {
+		DrawButtonKDEx("KDPerkConfig1", (_bdata) => {
 			KinkyDungeonPerksConfig = "1";
 			KinkyDungeonLoadStats();
 			return true;
 		}, true, 270, 930, 100, 54, TextGet("KinkyDungeonConfig") + "1", KinkyDungeonPerksConfig == "1" ? "#ffffff" : "#888888", "");
 
-		// @ts-ignore
-		DrawButtonKDEx("KDPerkConfig2", (bdata) => {
+		DrawButtonKDEx("KDPerkConfig2", (_bdata) => {
 			KinkyDungeonPerksConfig = "2";
 			KinkyDungeonLoadStats();
 			return true;
 		}, true, 380, 930, 100, 54, TextGet("KinkyDungeonConfig") + "2", KinkyDungeonPerksConfig == "2" ? "#ffffff" : "#888888", "");
 
-		// @ts-ignore
-		DrawButtonKDEx("KDPerkConfig3", (bdata) => {
+		DrawButtonKDEx("KDPerkConfig3", (_bdata) => {
 			KinkyDungeonPerksConfig = "3";
 			KinkyDungeonLoadStats();
 			return true;
@@ -2686,8 +2622,7 @@ function KinkyDungeonRun() {
 
 		let TF = KDTextField("PerksFilter", 600, 930, 210, 54, "text", "", "45");
 		if (TF.Created) {
-			// @ts-ignore
-			TF.Element.oninput = (event) => {
+			TF.Element.oninput = (_event: InputEvent) => {
 				KDPerksFilter = ElementValue("PerksFilter");
 				KDPerksIndex = 0;
 			};
@@ -2695,8 +2630,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(TextGet("KinkyDungeonFilter"), 600 + 210/2, 930 + 54/2, 210, "#aaaaaa");
 
 		if (!KDClipboardDisabled)
-			// @ts-ignore
-			DrawButtonKDEx("copyperks", (bdata) => {
+			DrawButtonKDEx("copyperks", (_bdata) => {
 				let txt = "";
 				for (let k of KinkyDungeonStatsChoice.keys()) {
 					if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
@@ -2707,8 +2641,7 @@ function KinkyDungeonRun() {
 		else {
 			let CF = KDTextField("KDCopyPerks", 1700, 930, 280, 54, undefined, undefined, "10000");
 			if (CF.Created) {
-				// @ts-ignore
-				CF.Element.oninput = (event) => {
+				CF.Element.oninput = (_event: InputEvent) => {
 					let text = ElementValue("KDCopyPerks");
 					try {
 						let list = text.split('|');
@@ -2737,8 +2670,7 @@ function KinkyDungeonRun() {
 		}
 
 		if (!KDClipboardDisabled)
-			// @ts-ignore
-			DrawButtonKDEx("pasteperks", (bdata) => {
+			DrawButtonKDEx("pasteperks", (_bdata) => {
 				navigator.clipboard.readText()
 					.then(text => {
 						let list = text.split('\n');
@@ -3058,8 +2990,7 @@ function KinkyDungeonRun() {
 
 				let CF = KDTextField("KDBGColor", x + scale*(0.5 + w)/2 - 100, y + 24, 200, 30, undefined, KDBGColor + "", "7");
 				if (CF.Created) {
-					// @ts-ignore
-					CF.Element.oninput = (event) => {
+					CF.Element.oninput = (_event: InputEvent) => {
 						let value = ElementValue("KDBGColor");
 						try {
 							if (/^#[0-9A-F]{6}$/i.test(value)) {
@@ -3089,6 +3020,7 @@ function KinkyDungeonRun() {
 				for (let o of options) {
 					if (o.name) {
 						DrawCheckboxKDEx("toggle" + o.name, () => {
+							// @ts-ignore
 							if (o.cb) o.cb();
 							else {
 								KDToggles[o.name] = !KDToggles[o.name];
@@ -3183,9 +3115,9 @@ function KinkyDungeonRun() {
 
 	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
 		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
-			for (let b of Object.entries(KDButtonsCache)) {
-				if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
-					KDClickButton(b[0]);
+			for (let [k, v] of Object.entries(KDButtonsCache)) {
+				if (v.hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
+					KDClickButton(k);
 					return true;
 				}
 			}
@@ -3220,7 +3152,7 @@ let kdTrackGameParticles = false;
 
 let KDlastCull = new Map();
 
-function KDCullSprites() {
+function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > (KDlastCull.get(kdpixisprites) || 0) + KDCULLTIME;
 	for (let sprite of kdpixisprites.entries()) {
@@ -3237,7 +3169,7 @@ function KDCullSprites() {
 		}
 	}
 }
-function KDCullSpritesList(list) {
+function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
 	let cull = CommonTime() > (KDlastCull.get(list) || 0) + KDCULLTIME;
 	for (let sprite of list.entries()) {
@@ -3252,37 +3184,43 @@ function KDCullSpritesList(list) {
 	}
 }
 
-/**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => boolean, hotkeyPress?: string}>}
- */
-let KDButtonsCache = {
-
-};
-/**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number}>}
- */
-let KDLastButtonsCache = {
-
+let KDButtonsCache: Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => void, hotkeyPress?: string}> = {
 };
 
+let KDLastButtonsCache: Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata?: any) => boolean, priority: number}> = {
+};
 
 /**
  * Draws a button component
- * @param {string} name - Name of the button element
- * @param {boolean} enabled - Whether or not you can click on it
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text to display in the button
- * @param {string} Color - Color of the component
- * @param {string} [Image] - URL of the image to draw inside the button, if applicable
- * @param {string} [HoveringText] - Text of the tooltip, if applicable
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {boolean} [NoBorder] - Disables the border and stuff
- * @returns {void} - Nothing
+ * @param name - Name of the button element
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables the border and stuff
+ * @returns - Nothing
  */
-function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder) {
+function DrawButtonKD (
+	name:		string,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean
+): void
+{
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
 	KDButtonsCache[name] = {
 		Left,
@@ -3297,36 +3235,55 @@ function DrawButtonKD(name, enabled, Left, Top, Width, Height, Label, Color, Ima
 
 /**
  * Draws a button component
- * @param {string} name - Name of the button element
- * @param {(bdata: any) => boolean} func - Whether or not you can click on it
- * @param {boolean} enabled - Whether or not you can click on it
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text to display in the button
- * @param {string} Color - Color of the component
- * @param {string} [Image] - URL of the image to draw inside the button, if applicable
- * @param {string} [HoveringText] - Text of the tooltip, if applicable
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {boolean} [NoBorder] - Disables border
- * @param {string} [FillColor] - BG color
- * @param {number} [FontSize] - Font size
- * @param {boolean} [ShiftText] - Shift text to make room for the button
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha] - Dont show text backgrounds
- * @param {number} [options.zIndex] - zIndex
- * @param {boolean} [options.scaleImage] - zIndex
- * @param {boolean} [options.centered] - centered
- * @param {boolean} [options.centerText] - centered
- * @param {string} [options.tint] - tint
- * @param {string} [options.hotkey] - hotkey
- * @param {string} [options.hotkeyPress] - hotkey
- * @param {any[]} [options.filters] - filters
- * @returns {boolean} - Whether or not the mouse is in the button
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables border
+ * @param [FillColor] - BG color
+ * @param [FontSize] - Font size
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha] - Dont show text backgrounds
+ * @param [options.zIndex] - zIndex
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @param [options.filters] - filters
+ * @returns - Whether or not the mouse is in the button
  */
-function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
+function DrawButtonKDEx (
+	name:		string,
+	func:		(bdata: any) => any,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean,
+	FillColor?:	string,
+	FontSize?:	number,
+	ShiftText?:	boolean,
+	options?:	any,
+): boolean
+{
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = {
 		Left,
@@ -3345,35 +3302,55 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
 
 /**
  * Draws a button component
- * @param {string} name - Name of the button element
- * @param {(bdata: any) => boolean} func - Whether or not you can click on it
- * @param {boolean} enabled - Whether or not you can click on it
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text to display in the button
- * @param {string} Color - Color of the component
- * @param {string} [Image] - URL of the image to draw inside the button, if applicable
- * @param {string} [HoveringText] - Text of the tooltip, if applicable
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {boolean} [NoBorder] - Disables border
- * @param {string} [FillColor] - BG color
- * @param {number} [FontSize] - Font size
- * @param {boolean} [ShiftText] - Shift text to make room for the button
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha] - Dont show text backgrounds
- * @param {number} [options.zIndex] - zIndex
- * @param {boolean} [options.scaleImage] - zIndex
- * @param {boolean} [options.centered] - centered
- * @param {boolean} [options.centerText] - centered
- * @param {string} [options.tint] - tint
- * @param {string} [options.hotkey] - hotkey
- * @param {string} [options.hotkeyPress] - hotkey
- * @returns {boolean} - Whether or not the mouse is in the button
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables border
+ * @param [FillColor] - BG color
+ * @param [FontSize] - Font size
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha] - Dont show text backgrounds
+ * @param [options.zIndex] - zIndex
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @returns - Whether or not the mouse is in the button
  */
-function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
+function DrawButtonKDExScroll (
+	name:		string,
+	scrollfunc:	(amount: number) => boolean | void,
+	func:		(bdata: any) => boolean,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean,
+	FillColor?:	string,
+	FontSize?:	number,
+	ShiftText?:	boolean,
+	options?:	any,
+): boolean
+{
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = {
 		Left,
@@ -3391,33 +3368,53 @@ function DrawButtonKDExScroll(name, scrollfunc, func, enabled, Left, Top, Width,
 
 /**
  * Draws a button component
- * @param {any} Container - Container to draw to
- * @param {string} name - Name of the button element
- * @param {(bdata: any) => boolean} func - Whether or not you can click on it
- * @param {boolean} enabled - Whether or not you can click on it
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text to display in the button
- * @param {string} Color - Color of the component
- * @param {string} [Image] - URL of the image to draw inside the button, if applicable
- * @param {string} [HoveringText] - Text of the tooltip, if applicable
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {boolean} [NoBorder] - Disables border
- * @param {string} [FillColor] - BG color
- * @param {number} [FontSize] - Font size
- * @param {boolean} [ShiftText] - Shift text to make room for the button
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha] - Dont show text backgrounds
- * @param {number} [options.zIndex] - zIndex
- * @param {string} [options.hotkey] - hotkey
- * @param {string} [options.hotkeyPress] - hotkey
- * @param {boolean} [options.unique] - This button is unique, so X and Y are not differentiators
- * @returns {boolean} - Whether or not the mouse is in the button
+ * @param Container - Container to draw to
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables border
+ * @param [FillColor] - BG color
+ * @param [FontSize] - Font size
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha] - Dont show text backgrounds
+ * @param [options.zIndex] - zIndex
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @param [options.unique] - This button is unique, so X and Y are not differentiators
+ * @returns - Whether or not the mouse is in the button
  */
-function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, options) {
+function DrawButtonKDExTo (
+	Container:	any,
+	name:		string,
+	func:		(bdata: any) => boolean,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean,
+	FillColor?:	string,
+	FontSize?:	number,
+	ShiftText?:	boolean,
+	options?:	any,
+): boolean
+{
 	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
 	KDButtonsCache[name] = {
 		Left,
@@ -3432,7 +3429,7 @@ function DrawButtonKDExTo(Container, name, func, enabled, Left, Top, Width, Heig
 	return MouseIn(Left,Top,Width,Height);
 }
 
-function KDMouseWheel(event) {
+function KDMouseWheel (event: WheelEvent): void {
 	if (!KDProcessButtonScroll(event.deltaY)) {
 		// If we fail we dilate the buttons vertically
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
@@ -3452,7 +3449,7 @@ function KDMouseWheel(event) {
 	if (KDFunctionSpellPageScroll(event.deltaY || event.deltaX)) return;
 }
 
-function KDFunctionOptionsScroll(amount) {
+function KDFunctionOptionsScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Toggles") {
 		let index = KDToggleGroups.indexOf(KDToggleTab);
 		if (amount > 0) {
@@ -3468,7 +3465,7 @@ function KDFunctionOptionsScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionPerksScroll(amount) {
+function KDFunctionPerksScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Stats" || KinkyDungeonDrawState == "Perks2" ) {
 		if (amount > 0) {
 			KDClickButton("perks>");
@@ -3479,7 +3476,7 @@ function KDFunctionPerksScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionQuestScroll(amount) {
+function KDFunctionQuestScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Quest") {
 		if (amount > 0) {
 			KDClickButton("questDown");
@@ -3490,7 +3487,7 @@ function KDFunctionQuestScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionCollectionScroll(amount) {
+function KDFunctionCollectionScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")) {
 		if (amount > 0) {
 			KDClickButton("collDOWN");
@@ -3501,7 +3498,7 @@ function KDFunctionCollectionScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionFacilitiesScroll(amount) {
+function KDFunctionFacilitiesScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Facilities") {
 		if (amount > 0) {
 			KDClickButton("facDown");
@@ -3512,7 +3509,7 @@ function KDFunctionFacilitiesScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionSpellPageScroll(amount) {
+function KDFunctionSpellPageScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" ) {
 		if (amount > 0) {
 			KDCycleSpellPage(false, true);
@@ -3523,7 +3520,7 @@ function KDFunctionSpellPageScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionMagicPageScroll(amount) {
+function KDFunctionMagicPageScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Magic" ) {
 		if (amount > 0) {
 			KDClickButton("magicnextpage");
@@ -3534,7 +3531,7 @@ function KDFunctionMagicPageScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionMagicSpellPageScroll(amount) {
+function KDFunctionMagicSpellPageScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "MagicSpells") {
 		if (MouseY < 225) {
 			if (amount > 0) {
@@ -3550,7 +3547,7 @@ function KDFunctionMagicSpellPageScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionInventoryScroll(amount) {
+function KDFunctionInventoryScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Inventory" ) {
 		if (amount > 0) {
 			KDClickButton("invnextpage");
@@ -3561,7 +3558,7 @@ function KDFunctionInventoryScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionMsgScroll(amount) {
+function KDFunctionMsgScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonMessageToggle) {
 		if (amount > 0) {
 			KDClickButton("logscrolldown");
@@ -3572,7 +3569,7 @@ function KDFunctionMsgScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionRestraintIndexScroll(amount) {
+function KDFunctionRestraintIndexScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonDrawStruggleHover && currentDrawnSG && currentDrawnSGLength) {
 		if (amount > 0) {
 			if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] < currentDrawnSGLength - 1)) KDStruggleGroupLinkIndex[currentDrawnSG.group] += 1;
@@ -3583,7 +3580,7 @@ function KDFunctionRestraintIndexScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionDialogueScroll(amount) {
+function KDFunctionDialogueScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KDGameData.CurrentDialog) {
 		if (amount > 0) {
 			KDClickButton("dialogueDOWN");
@@ -3594,7 +3591,7 @@ function KDFunctionDialogueScroll(amount) {
 	}
 	return false;
 }
-function KDFunctionShopScroll(amount) {
+function KDFunctionShopScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonTargetTile?.Type == "Shrine" && KinkyDungeonTargetTile.Name == "Commerce") {
 		if (amount < 0) {
 			KinkyDungeonShopIndex = (KinkyDungeonShopIndex + 1) % KDMapData.ShopItems.length;
@@ -3611,13 +3608,7 @@ function KDFunctionShopScroll(amount) {
 }
 
 
-/**
- *
- * @param {number} amount
- * @param {number} padV
- * @returns {boolean}
- */
-function KDProcessButtonScroll(amount, padV = 0) {
+function KDProcessButtonScroll(amount: number, padV: number = 0): boolean {
 	let buttons = [];
 	for (let button of Object.entries(KDButtonsCache)) {
 		if (button[1].enabled && button[1].scrollfunc) {
@@ -3656,10 +3647,8 @@ function KDProcessButtons() {
 
 /**
  * Buttons are clickable one frame later, please factor this in to UI design (especially when enforcing validation)
- * @param {string} name
- * @returns {boolean}
  */
-function KDClickButton(name) {
+function KDClickButton(name: string): boolean {
 	let button = KDButtonsCache[name] || KDLastButtonsCache[name];
 	if (button && button.enabled) {
 		return button.func();
@@ -3667,7 +3656,7 @@ function KDClickButton(name) {
 	return false;
 }
 
-function MouseInKD(name, padX = 0, padV = 0) {
+function MouseInKD(name: string, padX: number = 0, padV: number = 0) {
 	let button = KDButtonsCache[name];
 	if (button && button.enabled) {
 		return MouseIn(button.Left - padX, button.Top - padV, button.Width + 2*padX, button.Height + 2*padV);
@@ -3679,27 +3668,27 @@ function KinkyDungeonGetTraitsCount() {
 	return Array.from(KinkyDungeonStatsChoice.keys()).filter((element) => {return !element.includes('arousalMode');}).length;
 }
 
-function KDSendTrait(trait) {
+function KDSendTrait(_trait) {
 	// Banish Google
 }
 
-function KDSendSpell(spell) {
+function KDSendSpell(_spell) {
 	// Banish Google
 }
 
-function KDSendSpellCast(spell) {
+function KDSendSpellCast(_spell) {
 	// Banish Google
 }
-function KDSendWeapon(weapon) {
+function KDSendWeapon(_weapon) {
 	// Banish Google
 }
 
 // @ts-ignore
-function KDSendStatus(type, data, data2) {
+function KDSendStatus(_type, _data, _data2?) {
 	// Banish Google from existence
 }
 // @ts-ignore
-function KDSendEvent(type) {
+function KDSendEvent(_type) {
 	// Banish Google from existence
 }
 
@@ -3722,13 +3711,10 @@ function KinkyDungeonLoadStats() {
 let KinkyDungeonGameFlag = false;
 
 
-function KDInitializeJourney(Journey, Level) {
+function KDInitializeJourney(Journey: string, Level: number = 0) {
 	KDCurrentWorldSlot = {x: 0, y: Level || 0};
 	KDWorldMap = {};
-	/**
-	 * @type {string[]}
-	 */
-	let newIndex = [];
+	let newIndex: string[] = [];
 
 	if (Journey)
 		KDGameData.Journey = Journey;
@@ -3941,21 +3927,21 @@ function KDCommitKeybindings() {
 
 let afterLoaded = false;
 
-let KDGameSaveDB;
 let KDGameSaveDBStoreName = "KinkyDungeonSave";
 
-// Open a new database if it doesn't exist and give a db object that automatically increments when modifying stuff.
-// Returns a thenable with the database once it's open.
-function KinkyDungeonDBOpen() {
+/**
+ * Open a new database if it doesn't exist and give a db object that automatically increments when modifying stuff.
+ * Returns a thenable with the database once it's open.
+ */
+function KinkyDungeonDBOpen(): Promise<IDBDatabase> {
 	// Return a promise so we can guarantee the db is open!
-	// @ts-ignore
-	return new Promise((res, rej) => {
+	return new Promise<IDBDatabase>((res, _rej) => {
 		// Open the KinkyDungeonSave DB, creating one if it doesn't already exist.
 		const request = indexedDB.open(KDGameSaveDBStoreName); // Open without a version parameter to get the most current version.
-		let db;
+		let db: IDBDatabase;
 
 		// Whenever an update is made, increment the version number.
-		request.onupgradeneeded = event => {
+		request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
 			// @ts-ignore
 			db = event.target.result;
 			if (!db.objectStoreNames.contains(KDGameSaveDBStoreName)) {
@@ -3964,16 +3950,15 @@ function KinkyDungeonDBOpen() {
 		};
 
 		// Return the event results when it's successful
-		request.onsuccess = event => {
-			// @ts-ignore
-			db = event.target.result;
+		request.onsuccess = (event: Event) => {
+			db = (event.target as IDBOpenDBRequest).result;
 
 			// Give back a db object so we can manipulate it.
 			res(db);
 		};
 
 		// Throw an error if it breaks
-		request.onerror = event => {
+		request.onerror = (event: Event) => {
 			console.error("IndexedDB error");
 			console.log(event);
 			res(db);
@@ -3981,12 +3966,10 @@ function KinkyDungeonDBOpen() {
 	});
 }
 
-// Save a game to the database
 /**
- * @param {number} saveslot
- * @param {string} [gamecode]
+ * Save a game to the database.
  */
-function KinkyDungeonDBSave(saveslot, gamecode) {
+function KinkyDungeonDBSave(saveslot: number, gamecode?: string) {
 	let save;
 	if (saveslot == undefined) {
 		console.error("Save slot is not defined");
@@ -4015,20 +3998,18 @@ function KinkyDungeonDBSave(saveslot, gamecode) {
 		request.onerror = () => {
 			console.error("Could not add data to the store");
 		};
-		request.complete = () => {
-			transaction.close();
+		transaction.oncomplete = () => {
+			db.close();
 			return true;
 		};
 	});
 }
 
-// Load a game from the database - Returns a thenable with the gamedata string, false if nothing loaded.
 /**
- * @param {number} saveslot
+ * Load a game from the database - Returns a thenable with the gamedata string, false if nothing loaded.
  */
-function KinkyDungeonDBLoad(saveslot) {
-	// @ts-ignore
-	return new Promise((res, rej) => {
+function KinkyDungeonDBLoad(saveslot: number): Promise<string | null> {
+	return new Promise((res, _rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
 			return; // This is an invalid call or the save slot has not been set.
@@ -4060,13 +4041,11 @@ function KinkyDungeonDBLoad(saveslot) {
 	});
 }
 
-// Delete a saved game in a slot.
 /**
- * @param {number} saveslot
+ * Delete a saved game in a slot.
  */
-function KinkyDungeonDBDelete(saveslot) {
-	// @ts-ignore
-	return new Promise((res, rej) => {
+function KinkyDungeonDBDelete(saveslot: number) {
+	return new Promise((res, _rej) => {
 		if (saveslot == undefined) {
 			console.error("Save slot is not defined");
 			return; // This is an invalid call or the save slot has not been set.
@@ -4091,16 +4070,14 @@ function KinkyDungeonDBDelete(saveslot) {
 	});
 }
 
-let LoadMenuCurrentSave;
-let LoadMenuCurrentSlot;
-let loadedsaveslots = [];
+let LoadMenuCurrentSave: string;
+let LoadMenuCurrentSlot: number;
+let loadedsaveslots: string[] = [];
 for (let i = 0; i < maxSaveSlots; i++) {
 	loadedsaveslots.push(null);
 }
-/**
- * @type {KinkyDungeonSave}
- */
-let loadedSaveforPreview = null;
+
+let loadedSaveforPreview: KinkyDungeonSave = null;
 let KDPreviewModel = null;
 let KDSaveSlot = 1;
 
@@ -4150,8 +4127,7 @@ function KDDrawLoadMenu() {
 		}
 		// Delete button only if the slot has data
 		if (loadedsaveslots[num - 1]) {
-			// @ts-ignore
-			DrawButtonKDEx("KDDeleteSlotButton" + i, (b) => {
+			DrawButtonKDEx("KDDeleteSlotButton" + i, (_b) => {
 				if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
 					KDConfirmDeleteSave = true;
 					KDDeleteSaveIndex = num;
@@ -4181,8 +4157,7 @@ function KDDrawLoadMenu() {
 		} else if (LoadMenuCurrentSlot == -1 && loadedSaveforPreview && !loadedSaveforPreview?.invalid) {
 			// Import button
 			if (
-				// @ts-ignore
-				DrawButtonKDEx("KDImportSlotButton" + i, (b) => {
+				DrawButtonKDEx("KDImportSlotButton" + i, (_b) => {
 					if (!loadedsaveslots[num - 1]) {
 						loadedsaveslots[num - 1] = ElementValue("saveInputField");
 						KinkyDungeonDBSave(num, newValue = loadedsaveslots[num - 1]);
@@ -4601,7 +4576,7 @@ function KDDrawLoadMenu() {
 	});
 	// Play Game with current save data!
 	DrawButtonKDEx("KDLoadGame", () => {
-		if (LoadMenuCurrentSave != false) {
+		if (LoadMenuCurrentSave != "") {
 			KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 			KinkyDungeonNewGame = 0;
 			KDMapData.Grid = "";
@@ -4624,15 +4599,14 @@ function KDDrawLoadMenu() {
 			ElementRemove("saveInputField");
 		}
 		return true;
-	}, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? true : false), 1570, 880, 350, 64,
+	}, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != "")) ? true : false), 1570, 880, 350, 64,
 
 		LoadMenuCurrentSlot > 0 ? TextGet("KDPlayWithSlot") + LoadMenuCurrentSlot
-	: TextGet("KDPlayWithoutSlot"), (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != false)) ? "#ffffff" : "#888888"), "");
+	: TextGet("KDPlayWithoutSlot"), (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != "")) ? "#ffffff" : "#888888"), "");
 }
 
 function KinkyDungeonDressModelPreview() {
-	// @ts-ignore
-	return new Promise((res, rej) => {
+	return new Promise((res, _rej) => {
 		KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
 		KDPreviewModel.ID++;
 		if (loadedSaveforPreview.saveStat?.appearance) {
@@ -4656,40 +4630,35 @@ function KinkyDungeonDressModelPreview() {
 	});
 }
 
-// Generate Preview data function
 /**
- * @param {string} String
- * @returns {KinkyDungeonSave}
+ * Generate Preview data function
  */
-function KinkyDungeonLoadPreview(String) {
-	if (!String) return {
-		// @ts-ignore
-		nodata: true,
-		// @ts-ignore
-		invalid: true,
-	};
+function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
+	if (!String) {
+		return {
+			// @ts-ignore
+			nodata: true,
+			invalid: true,
+		};
+	}
 	try {
-		let str = DecompressB64(String.trim());
-		/**
-		 * @type {KinkyDungeonSave}
-		 */
-		let returndata = null;
+		let str: string = DecompressB64(String.trim());
+		let returndata: KinkyDungeonSave = null;
 
 		// We do a little JS witchery here
-		// @ts-ignore
-		returndata = {};
+		returndata = {} as KinkyDungeonSave;
 
 		if (str) {
 			let saveData = JSON.parse(str);
-			if (saveData
-			&& saveData.spells != undefined
-			&& saveData.level != undefined
-			&& saveData.checkpoint != undefined
-			&& saveData.inventory != undefined
-			&& saveData.costs != undefined
-			&& saveData.rep != undefined
-			&& saveData.dress != undefined) {
-
+			if (    saveData
+			    &&  saveData.spells != undefined
+			    &&  saveData.level != undefined
+			    &&  saveData.checkpoint != undefined
+			    &&  saveData.inventory != undefined
+			    &&  saveData.costs != undefined
+			    &&  saveData.rep != undefined
+			    &&  saveData.dress != undefined)
+			{
 				returndata.errorloading = false;
 				returndata.modsmissing = false;
 
@@ -4722,26 +4691,16 @@ function KinkyDungeonLoadPreview(String) {
 
 				// These are ignored for compatibility reasons
 				if (saveData.stats) {
-				// @ts-ignore
 					if (saveData.stats.picks != undefined) returndata.picks = saveData.stats.picks;
-					// @ts-ignore
 					if (saveData.stats.keys != undefined) returndata.rkeys = saveData.stats.keys;
-					// @ts-ignore
 					if (saveData.stats.bkeys != undefined) returndata.bkeys = saveData.stats.bkeys;
-					// @ts-ignore
 					if (saveData.stats.mana != undefined) returndata.mana = saveData.stats.mana;
-					// @ts-ignore
 					if (saveData.stats.manapool != undefined) returndata.manapool = saveData.stats.manapool;
-					// @ts-ignore
 					if (saveData.stats.stamina != undefined) returndata.stamina = saveData.stats.stamina;
-					// @ts-ignore
 					if (saveData.stats.willpower != undefined) returndata.willpower = saveData.stats.willpower;
-					// @ts-ignore
 					if (saveData.stats.distraction != undefined) returndata.distraction = saveData.stats.distraction;
-					// @ts-ignore
 					if (saveData.stats.distractionlower != undefined) returndata.distractionlower = saveData.stats.distractionlower;
 					//if (saveData.stats.wep != undefined) KDSetWeapon(saveData.stats.wep);
-					// @ts-ignore
 					if (saveData.stats.npp != undefined) returndata.npp = saveData.stats.npp;
 
 
@@ -4899,7 +4858,7 @@ function KinkyDungeonLoadPreview(String) {
 	}
 }
 
-function KinkyDungeonStartNewGame(Load) {
+function KinkyDungeonStartNewGame(Load: boolean = false) {
 	KinkyDungeonSendEvent("beforeNewGame", {Load: Load});
 	KinkyDungeonNewGame = 0;
 	let cp = KinkyDungeonMapIndex.grv;
@@ -4939,7 +4898,7 @@ function KinkyDungeonStartNewGame(Load) {
 	KinkyDungeonSendEvent("afterNewGame", {Load: Load});
 }
 
-function KDUpdatePlugSettings(evalHardMode) {
+function KDUpdatePlugSettings(evalHardMode: boolean) {
 	KinkyDungeonStatsChoice.set("arousalMode", KinkyDungeonSexyMode ? true : undefined);
 	KinkyDungeonStatsChoice.set("arousalModePlug", KinkyDungeonSexyPlug ? true : undefined);
 	KinkyDungeonStatsChoice.set("arousalModePlugNoFront", KinkyDungeonSexyPlugFront ? true : undefined);
@@ -5266,9 +5225,8 @@ function KinkyDungeonHandleClick() {
 
 /**
  * Handles clicks during the kinky dungeon game
- * @returns {void} - Nothing
  */
-function KinkyDungeonClick() {
+function KinkyDungeonClick(): void {
 	//
 }
 
@@ -5323,9 +5281,8 @@ function KDClick() {
 
 /**
  * Handles exit during the kinky dungeon game
- * @returns {void} - Nothing
  */
-function KinkyDungeonExit() {
+function KinkyDungeonExit(): void {
 	KinkyDungeonGameKey.removeKeyListener();
 	CommonDynamicFunction(MiniGameReturnFunction + "()");
 
@@ -5365,9 +5322,8 @@ function KinkyDungeonExit() {
 
 /**
  * Handles key presses during the mini game. (Both keyboard and mobile)
- * @returns {void} - Nothing
  */
-function KinkyDungeonKeyDown() {
+function KinkyDungeonKeyDown(): void {
 	// n/a
 }
 
@@ -5423,8 +5379,7 @@ window.addEventListener('touchmove', function(event) {
 		MouseClicked = true; // To prevent KDClick on end
 	}
 });
-// @ts-ignore
-window.addEventListener('touchend', function(event) {
+window.addEventListener('touchend', function(_event: TouchEvent) {
 	if (CommonIsMobile && mouseDown && !MouseClicked) {
 		KDClick();
 		MouseClicked = true;
@@ -5441,23 +5396,22 @@ window.addEventListener('wheel', function(event) {
 
 
 /**
- * Game keyboard input handler object: Handles keyboard inputs.
+ * Game keyboard input handler object. Contains the functions and properties required to handle key press events.
  * @constant
- * @type {object} - The game keyboard input handler object. Contains the functions and properties required to handle key press events.
  */
-let KinkyDungeonGameKey = {
+let KinkyDungeonGameKey: any = {
 	keyPressed : [false, false, false, false, false, false, false, false, false],
 
-	KEY_UP : 'KeyB',
-	KEY_DOWN : 'KeyV',
-	KEY_LEFT : 'KeyC',
-	KEY_RIGHT : 'KeyX',
-	KEY_UPLEFT : 'KeyC',
-	KEY_UPRIGHT : 'KeyB',
-	KEY_DOWNLEFT : 'KeyX',
-	KEY_DOWNRIGHT : 'KeyV',
-	KEY_WAIT : 'KeyV',
-	KEY_SKIP : 'KeyEnter',
+	KEY_UP:		'KeyB',
+	KEY_DOWN:	'KeyV',
+	KEY_LEFT:	'KeyC',
+	KEY_RIGHT:	'KeyX',
+	KEY_UPLEFT:	'KeyC',
+	KEY_UPRIGHT:	'KeyB',
+	KEY_DOWNLEFT:	'KeyX',
+	KEY_DOWNRIGHT:	'KeyV',
+	KEY_WAIT:	'KeyV',
+	KEY_SKIP:	'KeyEnter',
 
 	load : function(){
 		KinkyDungeonGameKey.keyPressed = [false, false, false, false, false, false, false, false, false];
@@ -5473,7 +5427,7 @@ let KinkyDungeonGameKey = {
 		window.removeEventListener('keyup', KinkyDungeonGameKey.keyUpEvent);
 	},
 	keyDownEvent : {
-		handleEvent : function (event) {
+		handleEvent : function (event: KeyboardEvent) {
 			let code = !(event.code.includes("Digit") || (event.key.length == 1 && event.code != "Space")) ? event.code : event.key.toUpperCase();
 			if (!KDLastKeyTime[code] || (!code.includes("Shift") && event.shiftKey)) {
 				KinkyDungeonKeybindingCurrentKey = code;
@@ -5535,7 +5489,7 @@ let KinkyDungeonGameKey = {
 		}
 	},
 	keyUpEvent : {
-		handleEvent : function (event) {
+		handleEvent : function (event: KeyboardEvent) {
 			let code = !(event.code.includes("Digit") || (event.key.length == 1 && event.code != "Space")) ? event.code : event.key.toUpperCase();
 
 			KinkyDungeonKeybindingCurrentKeyRelease = code;
@@ -5593,11 +5547,9 @@ let KinkyDungeonGameKey = {
 
 /**
  * Outputs a savegame
- * @returns {KinkyDungeonSave} - Saved game object
  */
-function KinkyDungeonGenerateSaveData() {
-	/** @type {KinkyDungeonSave} */
-	let save = {};
+function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
+	let save = {} as KinkyDungeonSave;
 	save.version = TextGet("KDVersionStr");
 	save.level = MiniGameKinkyDungeonLevel;
 	save.checkpoint = MiniGameKinkyDungeonCheckpoint;
@@ -5647,8 +5599,7 @@ function KinkyDungeonGenerateSaveData() {
 	};
 
 	let spells = [];
-	/**@type {item[]} */
-	let newInv = [];
+	let newInv: item[] = [];
 
 	for (let inv of KinkyDungeonFullInventory()) {
 		let item = Object.assign({}, inv);
@@ -5691,7 +5642,7 @@ function KinkyDungeonGenerateSaveData() {
 	return save;
 }
 
-function KinkyDungeonSaveGame(ToString) {
+function KinkyDungeonSaveGame(ToString: boolean = false) {
 	let save = KinkyDungeonGenerateSaveData();
 
 	let data = KinkyDungeonCompressSave(save);
@@ -5706,26 +5657,26 @@ function KinkyDungeonSaveGame(ToString) {
 	return data;
 }
 
-function KinkyDungeonCompressSave(save) {
+function KinkyDungeonCompressSave(save: any) {
 	return LZString.compressToBase64(JSON.stringify(save));
 }
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
-function KinkyDungeonLoadGame(String) {
+function KinkyDungeonLoadGame(String: string = "") {
 	localStorage.setItem('KDLastSaveSlot', "" + KDSaveSlot);
 	KinkyDungeonSendEvent("beforeLoadGame", {});
 	let str = String ? DecompressB64(String.trim()) : (localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave')) : "");
 	if (str) {
 		let saveData = JSON.parse(str);
-		if (saveData
-			&& saveData.spells != undefined
-			&& saveData.level != undefined
-			&& saveData.checkpoint != undefined
-			&& saveData.inventory != undefined
-			&& saveData.costs != undefined
-			&& saveData.rep != undefined
-			&& saveData.dress != undefined) {
-
+		if (    saveData
+		    &&  saveData.spells != undefined
+		    &&  saveData.level != undefined
+		    &&  saveData.checkpoint != undefined
+		    &&  saveData.inventory != undefined
+		    &&  saveData.costs != undefined
+		    &&  saveData.rep != undefined
+		    &&  saveData.dress != undefined)
+		{
 			if (!KDToggles.OverrideOutfit && saveData.saveStat) {
 				if (saveData.saveStat.default) {
 					KDGetDressList().Default = saveData.saveStat.default;
@@ -5981,10 +5932,9 @@ let KinkyDungeonSeed = (Math.random() * 4294967296).toString();
 let KDRandom = sfc32(xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)());
 
 /**
- *
  * @param {boolean} Native Decides whether or not to use native KDRandom to randomize
  */
-function KDrandomizeSeed(Native) {
+function KDrandomizeSeed(Native: boolean) {
 	let rand = Native ? KDRandom : () => {return Math.random();};
 	KinkyDungeonSeed = (rand() * 4294967296).toString();
 	for (let i = 0; i < 20; i++) {
@@ -5997,8 +5947,8 @@ function KDrandomizeSeed(Native) {
 	}
 }
 
-function KDsetSeed(string) {
-	KinkyDungeonSeed = string;
+function KDsetSeed(str: string) {
+	KinkyDungeonSeed = str;
 	KDRandom = sfc32(xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)());
 	for (let i = 0; i < 1000; i++) {
 		KDRandom();
@@ -6010,7 +5960,7 @@ function KDsetSeed(string) {
  * @param str - The string to hash.
  * @returns A function that returns a random number.
  */
-function xmur3(str) {
+function xmur3(str: string) {
 	let h = 1779033703 ^ str.length;
 	for(let i = 0; i < str.length; i++) {
 		h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
@@ -6030,7 +5980,7 @@ function xmur3(str) {
  * @param d - The seed.
  * @returns A function that returns a random number between 0 and 1.
  */
-function sfc32(a, b, c, d) {
+function sfc32(a: number, b: number, c: number, d: number) {
 	return function() {
 		a >>>= 0; b >>>= 0; c >>>= 0; d >>>= 0;
 		let t = (a + b) | 0;
@@ -6044,19 +5994,11 @@ function sfc32(a, b, c, d) {
 	};
 }
 
-/**
- * @type {Map<string, HTMLAudioElement>}
- */
-let kdSoundCache = new Map();
+let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
-/**
- *
- * @param {string} Path
- * @param {number} [volume]
- */
-function AudioPlayInstantSoundKD(Path, volume) {
+function AudioPlayInstantSoundKD(Path: string, volume?: number) {
 	if (!KDToggles.Sound) return false;
-	const vol = KDSfxVolume * (volume != null ? volume : Player.AudioSettings.Volume);
+	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : Player.AudioSettings.Volume);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
 		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : new Audio();
@@ -6075,14 +6017,14 @@ function AudioPlayInstantSoundKD(Path, volume) {
 /**
  * From https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0
  */
-function hashCode(s) {
+function hashCode(s: string) {
 	let h = 0;
 	for(let i = 0; i < s.length; i++)
 		h = Math.imul(31, h) + s.charCodeAt(i) | 0;
 	return h;
 }
 
-function TextGetKD(Text) {
+function TextGetKD(Text: string) {
 	if (TextGet(Text))
 		return TextGet(Text);
 	else return KDLoadingTextKeys[Text] || "Missing text";
@@ -6110,7 +6052,8 @@ function KinkyDungeonCheckPlayerRefresh() {
 	}
 }
 
-function CJKcheck(text,p = 0,o = "search"){
+function CJKcheck(text: string, p: number = 0, o: string = "search"): RegExpMatchArray | boolean
+{
 	if (o == "search")
 	{
 		//Find all English characters and space
@@ -6128,11 +6071,7 @@ function CJKcheck(text,p = 0,o = "search"){
 	}
 }
 
-/**
- * @param {string} id
- * @returns {HTMLCanvasElement}
- */
-function KinkyDungeonGetCanvas(id) {
+function KinkyDungeonGetCanvas(id: string): HTMLCanvasElement {
 	const canvas = document.getElementById(id);
 	if (!(canvas instanceof HTMLCanvasElement)) throw new Error(`Not a canvas element: ${canvas.id}`);
 	return canvas;
@@ -6140,27 +6079,23 @@ function KinkyDungeonGetCanvas(id) {
 
 
 
-// @ts-ignore
-function KDDrawGameSetupTabs(xOffset) {
+function KDDrawGameSetupTabs(_xOffset: number = 0) {
 	if (KDGameData.PlayerName) {
 		DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 	}
-	// @ts-ignore
-	DrawButtonKDEx("TabDiff", (b) => {
+	DrawButtonKDEx("TabDiff", (_b) => {
 		KinkyDungeonState = "Diff";
 		return true;
 	}, true, 500, 10, 740, 40, TextGet("KDDiffTab_Diff"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonState != "Diff", KDButtonColor);
-	// @ts-ignore
-	DrawButtonKDEx("TabChallenge", (b) => {
+	DrawButtonKDEx("TabChallenge", (_b) => {
 		KinkyDungeonState = "Challenge";
 		return true;
 	}, true, 1250, 10, 740, 40, TextGet("KDDiffTab_Challenge"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonState != "Challenge", KDButtonColor);
 
 
-	// @ts-ignore
-	DrawButtonKDEx("backButton", (b) => {
+	DrawButtonKDEx("backButton", (_b) => {
 		KinkyDungeonState = "Menu";
 		return true;
 	}, true, 1075, 900, 350, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "", undefined, undefined, undefined, undefined,
@@ -6172,19 +6107,14 @@ function KDDrawGameSetupTabs(xOffset) {
 
 
 
-/**
- *
- * @param {string} str
- * @returns {string}
- */
-function DecompressB64(str) {
+function DecompressB64(str: string): string {
 	if (!str || !str.trim) return str;
 	return LZString.decompressFromBase64("".concat(...str.trim().split('\n')));
 }
 
 let KDToggleTab = "Main";
 
-function KDDrawToggleTabs(xOffset) {
+function KDDrawToggleTabs(xOffset: number) {
 	let w = 1990 - xOffset;
 	FillRectKD(kdcanvas, kdpixisprites, "maintogglebg", {
 		Left: xOffset,
@@ -6209,8 +6139,7 @@ function KDDrawToggleTabs(xOffset) {
 	let list = KDToggleGroups;
 	let II = 0;
 	for (let tab of list) {
-		// @ts-ignore
-		DrawButtonKDEx("TabTog" + tab, (b) => {
+		DrawButtonKDEx("TabTog" + tab, (_b) => {
 			KDToggleTab = tab;
 			return true;
 		}, true, xOffset + II * w / list.length, 10, w / list.length - 4, 40,
@@ -6220,8 +6149,7 @@ function KDDrawToggleTabs(xOffset) {
 	}
 }
 
-// @ts-ignore
-function KinkyDungeonMultiplayerUpdate(delay) {
+function KinkyDungeonMultiplayerUpdate(_delay) {
 	// Do nothing. Placeholder for when/if there is ever any MP functionality
 }
 
@@ -6256,7 +6184,7 @@ function KDLoadSave(files) {
 }
 
 
-function downloadFile(filename, text) {
+function downloadFile(filename: string, text: string) {
 	const blob = new Blob([text], { type: 'text/plain' });
 	const url = URL.createObjectURL(blob);
 
@@ -6277,7 +6205,7 @@ function downloadFile(filename, text) {
 	URL.revokeObjectURL(url);
 }
 
-function KDChangeZoom(change) {
+function KDChangeZoom(change: number) {
 	KDZoomIndex += change;
 	if (KDZoomIndex < 0) KDZoomIndex = 0;
 	else if (KDZoomIndex > KDZoomLevels.length - 1) KDZoomIndex = KDZoomLevels.length - 1;

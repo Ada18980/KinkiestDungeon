@@ -1466,7 +1466,7 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 			if (tile && ((tile.Jail && tile.ReLock) || tile.OGLock) && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D')) {
 				KinkyDungeonMapSet(X, Y, 'D');
 				if (tile && !tile.Lock
-					&& (!tile.Jail || (KDGameData.PrisonerState == 'jail' || KDistChebyshev(KDPlayer().x - X), KDPlayer().y - Y) > 2.5)) {
+					&& (!tile.Jail || KDGameData.PrisonerState == 'jail' || KDistChebyshev(KDPlayer().x - X, KDPlayer().y - Y) > 2.5)) {
 					tile.Lock = tile.OGLock || "Red";
 					tile.Type = "Door";
 					KDUpdateDoorNavMap();
@@ -1667,7 +1667,9 @@ function KDKickEnemy(e, minDist = 10) {
 	if (!e.Enemy.tags.temporary) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
 			let p = (e.spawnX != undefined && e.spawnY != undefined) ? {x: e.spawnX, y: e.spawnY} : undefined;
-			if (!p || KDistEuclidean(e.x - (e.spawnX != undefined ? e.spawnX : e.x), e.y - (e.spawnY != undefined ? e.spawnY : e.y) < minDist)) {
+			if (!p  ||  KDistEuclidean (e.x - (e.spawnX != undefined ? e.spawnX : e.x),
+				                    e.y - (e.spawnY != undefined ? e.spawnY : e.y)) < minDist)
+			{
 				p = KinkyDungeonGetRandomEnemyPoint(true);
 			}
 			if (p) {
