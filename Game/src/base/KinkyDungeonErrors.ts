@@ -3,32 +3,32 @@
 /**
  * Sets up the KD crash handler
  */
-function KinkyDungeonSetupCrashHandler() {
+function KinkyDungeonSetupCrashHandler(): void {
 	window.addEventListener("error", KinkyDungeonOnUncaughtError);
 }
 
 /**
  * Tears down the KD crash handler
  */
-function KinkyDungeonTeardownCrashHandler() {
+function KinkyDungeonTeardownCrashHandler(): void {
 	window.removeEventListener("error", KinkyDungeonOnUncaughtError);
 }
 
 /**
  * Error event handler for uncaught errors
- * @param {ErrorEvent} event - The error event
+ * @param event - The error event
  */
-function KinkyDungeonOnUncaughtError(event) {
+function KinkyDungeonOnUncaughtError(event: ErrorEvent): void {
 	const report = KinkyDungeonGenerateErrorReport(event);
 	KinkyDungeonShowCrashReportModal(report);
 }
 
 /**
  * Generates an error report string containing crash debug data
- * @param {ErrorEvent} event - The error event
- * @returns {string} - The report
+ * @param event - The error event
+ * @returns The report
  */
-function KinkyDungeonGenerateErrorReport(event) {
+function KinkyDungeonGenerateErrorReport(event: ErrorEvent): string {
 	return [
 		KinkyDungeonCrashReportErrorDetails(event),
 		KinkyDungeonCrashReportStateData(),
@@ -40,16 +40,16 @@ function KinkyDungeonGenerateErrorReport(event) {
 
 /**
  * Generates a report string containing debug data about the current state of the game
- * @returns {string} - The report
+ * @returns  The report
  */
-function KinkyDungeonCrashReportStateData() {
-	let version;
+function KinkyDungeonCrashReportStateData(): string {
+	let version: string;
 	try {
 		version = (TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr")) || "Version unknown";
 	} catch {
 		version = "Version unknown";
 	}
-	let modFiles;
+	let modFiles: string;
 	try {
 		modFiles = KDAllModFiles.map(({filename}) => filename).join(",");
 	} catch {
@@ -82,10 +82,10 @@ function KinkyDungeonCrashReportStateData() {
 
 /**
  * Generates an error report string containing debug data about the thrown error
- * @param {ErrorEvent} event - The error event
- * @returns {string} - The report
+ * @param event - The error event
+ * @returns  The report
  */
-function KinkyDungeonCrashReportErrorDetails(event) {
+function KinkyDungeonCrashReportErrorDetails(event: ErrorEvent): string {
 	return [
 		"========== Kinky Dungeon Crash Report ==========",
 		"",
@@ -98,9 +98,9 @@ function KinkyDungeonCrashReportErrorDetails(event) {
 
 /**
  * Generates a report string containing the current save state of the game
- * @returns {string} - The report
+ * @returns The report
  */
-function KinkyDungeonCrashReportSaveData() {
+function KinkyDungeonCrashReportSaveData(): string {
 	let saveData = localStorage.getItem("KinkyDungeonSave");
 	if (!saveData) {
 		try {
@@ -118,9 +118,9 @@ function KinkyDungeonCrashReportSaveData() {
 
 /**
  * Generates a report string containing debug data with general diagnostics information
- * @returns {string} - The report
+ * @returns The report
  */
-function KinkyDungeonCrashReportDiagnostics() {
+function KinkyDungeonCrashReportDiagnostics(): string {
 	return [
 		"========== Diagnostics ==========",
 		"",
@@ -135,9 +135,9 @@ function KinkyDungeonCrashReportDiagnostics() {
 
 /**
  * Generates a report string containing debug data with device detection information
- * @returns {string} - The report
+ * @returns The report
  */
-function KinkyDungeonCrashReportDeviceDetails() {
+function KinkyDungeonCrashReportDeviceDetails(): string {
 	return [
 		"========== Device Detection ==========",
 		"",
@@ -147,17 +147,18 @@ function KinkyDungeonCrashReportDeviceDetails() {
 
 /**
  * Sanitizes a string to remove beta codes from it
- * @returns {string} - The sanitized string
+ * @returns The sanitized string
  */
-function KinkyDungeonStackSanitize(stack) {
+function KinkyDungeonStackSanitize(stack: string): string {
+	// @ts-ignore
 	return stack.replaceAll(/\/\d{10,}/g, "<beta>");
 }
 
 /**
  * Opens the KD crash report modal, displaying the provided report
- * @param {string} report - The report to display
+ * @param report - The report to display
  */
-function KinkyDungeonShowCrashReportModal(report) {
+function KinkyDungeonShowCrashReportModal(report: string) {
 	const id = "kinky-dungeon-crash-report";
 
 	if (document.querySelector(`#${id}`)) {
@@ -272,7 +273,7 @@ function KinkyDungeonShowCrashReportModal(report) {
 	document.body.appendChild(backdrop);
 }
 
-function KinkyDungeonErrorImage(src) {
+function KinkyDungeonErrorImage(src: string): HTMLImageElement {
 	const img = document.createElement("img");
 	img.src = `${KinkyDungeonRootDirectory}Enemies/${src}.png`;
 	Object.assign(img.style, {
@@ -281,7 +282,7 @@ function KinkyDungeonErrorImage(src) {
 	return img;
 }
 
-function KinkyDungeonErrorPreamble(content) {
+function KinkyDungeonErrorPreamble(content: string[]): HTMLParagraphElement {
 	const preamble = document.createElement("p");
 	Object.assign(preamble.style, {
 		margin: "0 0 0.5em",
@@ -291,7 +292,7 @@ function KinkyDungeonErrorPreamble(content) {
 	return preamble;
 }
 
-function KinkyDungeonErrorModalButton(text) {
+function KinkyDungeonErrorModalButton(text: string): HTMLButtonElement {
 	const button = document.createElement("button");
 	button.textContent = text;
 	Object.assign(button.style, {
@@ -305,7 +306,7 @@ function KinkyDungeonErrorModalButton(text) {
 	return button;
 }
 
-function KinkyDungeonErrorCopy(report, reportElement) {
+function KinkyDungeonErrorCopy(report: string, reportElement: HTMLElement): Promise<boolean> {
 	return navigator.clipboard.writeText(report)
 		.then(() => true)
 		.catch(() => {
