@@ -2580,16 +2580,21 @@ const KinkyDungeonRestraints = [
 	{removePrison: true, name: "BedTrap", debris: "Belts", Asset: "Bed", Color: ["#523629", "#4c6885", "#808284"], Group: "ItemDevices", power: 2, weight: 1, immobile: true, alwaysStruggleable: true,
 		Model: "BondageBed",
 		restriction: 10,
+		bindarms: true,
 		tightType: "Secure",
-		escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.05, "Pick": -1.0, "Unlock": -1.0},
-		struggleMinSpeed: {"Struggle": 0.025}, alwaysEscapable: ["Struggle"],
-		struggleMaxSpeed: {"Struggle": 0.05, "Cut": 0.03, "Remove": 0.05}, helpChance: {"Remove": 0.4, "Pick": 0.2, "Unlock": 1.0},
+		escapeChance: {"Struggle": 0.0, "Cut": 0.05, "Remove": 0.05, "Pick": -0.3, "Unlock": -0.3},
+		struggleMinSpeed: {"Struggle": 0.025},
+		struggleMaxSpeed: {"Struggle": 0.2, "Cut": 0.05, "Remove": 0.2}, helpChance: {"Remove": 0.4, "Pick": 0.5, "Unlock": 1.0},
 		limitChance: {"Struggle": 0.01, "Cut": 0, "Remove": 0.01, "Pick": 0, "Unlock": 0},
 		alwaysDress: [
 			{Item: "BedStraps", Group: "ItemAddon", Color: ['Default'], override: false},
 		],
-		enemyTags: {"bed":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture"], ignoreSpells: true, removeOnLeash: true,
-		events: [{trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
+		addTag: ["HandsBehind"],
+		enemyTags: {"bed":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture", "HandsBehind"], ignoreSpells: true, removeOnLeash: true,
+		events: [
+			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true}
+		]},
 	//region High security prison restraints
 	{inventory: true, name: "HighsecArmbinder", debris: "Belts", strictness: 0.1, Asset: "LeatherArmbinder", inaccessible: true, LinkableBy: [...KDArmbinderLink], renderWhenLinked: [...KDArmbinderLink], Type: "Strap", Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
 		limitChance: {"Unlock": 0.2}, power: 7, weight: 2,

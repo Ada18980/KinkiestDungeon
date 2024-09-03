@@ -45,7 +45,7 @@ function KDCuddleLoungeGain(): {servants: number, prisoners: number} {
 	for (let servant of KDGameData.FacilitiesData["Servants_" + facility]) {
 		let value = KDGameData.Collection[servant + ""];
 		if (value) {
-			let mult = data.efficiency;
+			let mult = data.efficiency * (3 / (2 + KDGameData.FacilitiesData["Servants_" + facility].length));
 			let personality = "";
 			if (KDIsNPCPersistent(value.id) && KDGetPersistentNPC(value.id).entity?.personality) {
 				personality = KDGetPersistentNPC(value.id).entity?.personality;
@@ -55,13 +55,13 @@ function KDCuddleLoungeGain(): {servants: number, prisoners: number} {
 			}
 			let x = (1+KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type)));
 			data.servants += mult * 0.1 * (0.65+0.25*x+0.125*x*x);
-			data.prisoners += mult * 1 * (0.65+0.25*x+0.125*x*x);
+			data.prisoners += mult *1.0 * (0.65+0.25*x+0.125*x*x);
 		}
 	}
 	for (let servant of KDGameData.FacilitiesData["Prisoners_" + facility]) {
 		let value = KDGameData.Collection[servant + ""];
 		if (value) {
-			let mult = data.efficiency;
+			let mult = data.efficiency * (6 / (5 + KDGameData.FacilitiesData["Prisoners_" + facility].length));
 			let personality = "";
 			if (KDIsNPCPersistent(value.id) && KDGetPersistentNPC(value.id).entity?.personality) {
 				personality = KDGetPersistentNPC(value.id).entity?.personality;
@@ -70,8 +70,8 @@ function KDCuddleLoungeGain(): {servants: number, prisoners: number} {
 				mult *= KDCuddleLoungePersonalityMult.Servant[personality];
 			}
 			let x = (1+KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type)));
-			data.servants += mult * 0.1 * (0.65+0.25*x+0.125*x*x);
-			data.prisoners += mult * 1 * (0.65+0.25*x+0.125*x*x);
+			data.servants += mult * 1.0 * (0.65+0.25*x+0.125*x*x);
+			data.prisoners += mult *0.1 * (0.65+0.25*x+0.125*x*x);
 		}
 	}
 

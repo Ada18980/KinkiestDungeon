@@ -1465,6 +1465,9 @@
             <key type="filename">../Models/Furniture/Barrel.png</key>
             <key type="filename">../Models/Furniture/Bed.png</key>
             <key type="filename">../Models/Furniture/BedHogtie.png</key>
+            <key type="filename">../Models/Furniture/BedStraps.png</key>
+            <key type="filename">../Models/Furniture/BedStrapsHogtie.png</key>
+            <key type="filename">../Models/Furniture/BedStrapsHogtieBoxtie.png</key>
             <key type="filename">../Models/Furniture/CageBack.png</key>
             <key type="filename">../Models/Furniture/CageFront.png</key>
             <key type="filename">../Models/Furniture/DisplayFront.png</key>

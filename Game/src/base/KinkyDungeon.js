@@ -146,7 +146,7 @@ let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-']; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection
+let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-', '_', "Home"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
@@ -330,6 +330,8 @@ let KDDefaultKB = {
 	UpLeft: KinkyDungeonKey[4],
 	UpRight: KinkyDungeonKey[5],
 
+	SpellWeapon: KinkyDungeonKeyWeapon[0],
+
 	Spell1: KinkyDungeonKeySpell[0],
 	Spell2: KinkyDungeonKeySpell[1],
 	Spell3: KinkyDungeonKeySpell[2],
@@ -340,31 +342,25 @@ let KDDefaultKB = {
 	Spell8: KinkyDungeonKeySpell[7],
 	Spell9: KinkyDungeonKeySpell[8],
 	Spell0: KinkyDungeonKeySpell[9],
-	SpellWeapon: KinkyDungeonKeyWeapon[0],
-	SpellConfig1: KinkyDungeonKeySpellConfig[0],
-	SpellConfig2: KinkyDungeonKeySpellConfig[1],
-	SpellConfig3: KinkyDungeonKeySpellConfig[2],
+
+
+
+	Wait: KinkyDungeonKeyWait[0],
+	WaitInterrupt: KinkyDungeonKeyToggle[6],
+	Skip: KinkyDungeonKeySkip[0],
+	Enter: KinkyDungeonKeyEnter[0],
+
+	Pass: KinkyDungeonKeyToggle[1],
+	Door: KinkyDungeonKeyToggle[2],
+	Sprint: KinkyDungeonKeySprint[0],
+	MakeNoise: KinkyDungeonKeyToggle[7],
+	PlaySelf: KinkyDungeonKeyToggle[8],
+	Crouch: KinkyDungeonKeyToggle[9],
 
 	Upcast: KinkyDungeonKeyUpcast[0],
 	UpcastCancel: KinkyDungeonKeyUpcast[1],
-
-	Wait: KinkyDungeonKeyWait[0],
-	Skip: KinkyDungeonKeySkip[0],
-	Enter: KinkyDungeonKeyEnter[0],
-	Map: KinkyDungeonKeyMap[0],
-	ZoomOut: KinkyDungeonKeyMap[1],
-	ZoomIn: KinkyDungeonKeyMap[2],
-
-	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
-	SwitchLoadout2: KinkyDungeonKeySwitchLoadout[1],
-	SwitchLoadout3: KinkyDungeonKeySwitchLoadout[2],
 	SpellPage: KinkyDungeonKeySpellPage[0],
-	SwitchWeapon: KinkyDungeonKeySwitchWeapon[0],
-	SwitchWeaponOffhand: KinkyDungeonKeySwitchWeapon[1],
-	SwitchWeaponOffhandPrevious: KinkyDungeonKeySwitchWeapon[2],
-	SwitchWeaponOffhandPrevious2: KinkyDungeonKeySwitchWeapon[3],
 
-	Sprint: KinkyDungeonKeySprint[0],
 
 	QInventory: KinkyDungeonKeyMenu[0],
 	Inventory: KinkyDungeonKeyMenu[1],
@@ -373,19 +369,30 @@ let KDDefaultKB = {
 	Log: KinkyDungeonKeyMenu[4],
 	Quest: KinkyDungeonKeyMenu[5],
 	Collection: KinkyDungeonKeyMenu[6],
+	Facilities: KinkyDungeonKeyMenu[7],
+	Restart: KinkyDungeonKeyMenu[8],
 
 
-	MsgLog: KinkyDungeonKeyToggle[0],
-	Pass: KinkyDungeonKeyToggle[1],
-	Door: KinkyDungeonKeyToggle[2],
+	SwitchWeapon: KinkyDungeonKeySwitchWeapon[0],
+	SwitchWeaponOffhand: KinkyDungeonKeySwitchWeapon[1],
+	SwitchWeaponOffhandPrevious: KinkyDungeonKeySwitchWeapon[2],
+	SwitchWeaponOffhandPrevious2: KinkyDungeonKeySwitchWeapon[3],
+	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
+	SwitchLoadout2: KinkyDungeonKeySwitchLoadout[1],
+	SwitchLoadout3: KinkyDungeonKeySwitchLoadout[2],
+	SpellConfig1: KinkyDungeonKeySpellConfig[0],
+	SpellConfig2: KinkyDungeonKeySpellConfig[1],
+	SpellConfig3: KinkyDungeonKeySpellConfig[2],
+
 	AStruggle: KinkyDungeonKeyToggle[3],
 	APathfind: KinkyDungeonKeyToggle[4],
 	AInspect: KinkyDungeonKeyToggle[5],
-	WaitInterrupt: KinkyDungeonKeyToggle[6],
-	MakeNoise: KinkyDungeonKeyToggle[7],
-	PlaySelf: KinkyDungeonKeyToggle[8],
-	Crouch: KinkyDungeonKeyToggle[9],
+
 	BulletTransparency: KinkyDungeonKeyToggle[10],
+	Map: KinkyDungeonKeyMap[0],
+	MsgLog: KinkyDungeonKeyToggle[0],
+	ZoomOut: KinkyDungeonKeyMap[1],
+	ZoomIn: KinkyDungeonKeyMap[2],
 };
 
 let KDZoomIndex = 4;
@@ -2902,7 +2909,7 @@ function KinkyDungeonRun() {
 		if (KDToggleTab == "Keybindings") {
 			// Draw temp start screen
 			DrawButtonKDEx("KBBack", () => {
-				KinkyDungeonKeybindings = KinkyDungeonKeybindingsTemp;
+				KinkyDungeonKeybindings = Object.assign({}, KinkyDungeonKeybindingsTemp);
 				if (KinkyDungeonGameFlag) {
 					KinkyDungeonState = "Game";
 					if (KinkyDungeonKeybindings) {
@@ -2916,7 +2923,7 @@ function KinkyDungeonRun() {
 
 			// Draw temp start screen
 			DrawButtonKDEx("KBBack2", () => {
-				KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
+				KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindings);
 				if (KinkyDungeonGameFlag) {
 					KinkyDungeonState = "Game";
 				} else KinkyDungeonState = "Menu";
@@ -2924,6 +2931,11 @@ function KinkyDungeonRun() {
 				return true;
 			}, true, 1450, 700, 350, 64, TextGet("GameReturnToMenu2"), "#ffffff", "");
 
+			// Draw temp start screen
+			DrawButtonKDEx("KDReset", () => {
+				KinkyDungeonKeybindingsTemp = Object.assign({}, KDDefaultKB);
+				return true;
+			}, true, 1450, 500, 350, 64, TextGet("KDResetKeys"), "#ffffff", "");
 
 
 			// Draw key buttons

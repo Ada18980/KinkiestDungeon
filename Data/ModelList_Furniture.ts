@@ -121,14 +121,26 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture", "Display"],
-	AddPose: ["Display", "LiftKneel"],
+	AddPose: ["Display", "LiftKneel", "HandsBehind"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Bed"),
 
-		{ Name: "BedStraps", Layer: "FurnitureFront", Pri: 20,
+		{ Name: "BedStraps", Layer: "FurnitureLinked", Pri: 20,
 			Invariant: true,
 			TieToLayer: "Bed",
-			MorphPoses: {UprightHogtie: "", SuspendedHogtie: "", Hogtie: "Hogtie"}
+			HidePoses: {Hogtie: true},
+		},
+		{ Name: "BedStrapsHogtie", Layer: "FurnitureLinked", Pri: 20,
+			Invariant: true,
+			TieToLayer: "Bed",
+			Poses: {Hogtie: true},
+			MorphPoses: {Boxtie: "Boxtie", Front: "Boxtie", Crossed: "Boxtie",
+				UprightHogtie: "", SuspendedHogtie: ""},
+			DisplacementSprite: "BedStrapsHogtie",
+			DisplaceLayers: ToMap(["Ribbon1"]),
+			DisplacementMorph: {Boxtie: "Boxtie", Front: "Boxtie", Crossed: "Boxtie"},
+			DisplaceAmount: 100,
+			DisplacementInvariant: true,
 		},
 	])
 });

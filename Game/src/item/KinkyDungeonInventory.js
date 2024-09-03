@@ -32,7 +32,7 @@ let KDInventoryActionsDefault = {
 				ret.push("Lock");
 			}
 		} else {
-			ret.push("CurseStruggle", "CurseInfo");
+			ret.push("CurseInfo", "CurseStruggle");
 			if (KinkyDungeonCurseAvailable(item, KDGetCurse(item))) ret.push("CurseUnlock");
 		}
 		return ret;

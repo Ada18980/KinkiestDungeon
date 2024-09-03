@@ -4508,34 +4508,42 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						4, 5, false, true);
 			}
 			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+			let wasAware = enemy.aware;
 			enemy.aware = true;
 			// Share aggro
-			if (!AIData.ignore && player.player && KDHostile(enemy) && AIData.aggressive && !enemy.rage && KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
-				let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
-				for (let e of ent) {
-					if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy) {
-						if (player.player && KDPlayerLight < 1.5) {
-							if (!e.aware && !KDEnemyHasFlag(e, "dontChase")) {
-								KDAddThought(e.id, "Blind", 3, 3);
-								e.path = null;
-								let pp = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
-								if (pp) {
-									e.gx = pp.x;
-									e.gy = pp.y;
-								} else {
-									e.gx = player.x;
-									e.gy = player.y;
+			if (!AIData.ignore
+				&& player.player
+				&& KDHostile(enemy)
+				&& AIData.aggressive
+				&& KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+				KinkyDungeonMakeNoiseSignal(enemy, 1, !wasAware);
+				if (!enemy.rage) {
+					let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
+					for (let e of ent) {
+						if (KDHostile(e) && KinkyDungeonAggressive(e) && !enemy.rage && e != enemy) {
+							if (player.player && KDPlayerLight < 1.5) {
+								if (!e.aware && !KDEnemyHasFlag(e, "dontChase")) {
+									KDAddThought(e.id, "Blind", 3, 3);
+									e.path = null;
+									let pp = KinkyDungeonGetNearbyPoint(player.x, player.y, true, undefined, true);
+									if (pp) {
+										e.gx = pp.x;
+										e.gy = pp.y;
+									} else {
+										e.gx = player.x;
+										e.gy = player.y;
+									}
+
 								}
+							} else {
+								if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);
 
+								if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+
+								e.aware = true;
 							}
-						} else {
-							if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);
 
-							if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
-
-							e.aware = true;
 						}
-
 					}
 				}
 			}

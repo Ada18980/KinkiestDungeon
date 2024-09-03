@@ -1057,6 +1057,8 @@ KinkyDungeonKeyReputation,Reputation
 KinkyDungeonKeyQuest,Quests
 KinkyDungeonKeyMagic,Spell List
 KinkyDungeonKeyLog,Journal
+KinkyDungeonKeyRestart,Pause Menu
+KinkyDungeonKeyFacilities,Facilities
 
 KinkyDungeonCurrentPress,"Current Key Pressed"
 KinkyDungeonCurrentPressInfo,"Press a key, then press a button to set that key"
@@ -24609,3 +24611,5 @@ KDTeleportPlateManaReact,"The planar focusing crystal activates! Mana is drained
 KDNoTeleportPlateReact,The planar diffractor blocks the teleportation!
 
 KDSetCharacterPalette,Set Character Palette
+
+KDResetKeys,Reset all Keybindings

@@ -13,11 +13,11 @@
 // These are groups that the game is not allowed to remove because they were tied at the beginning
 let KinkyDungeonRestraintsLocked = [];
 
-let KDWillEscapePenalty = 0.25;
+let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
-let KDWillEscapePenaltyStart = 0.0;
-let KDWillEscapePenaltyStartArms = 0.0;
-let KDWillEscapePenaltyEnd = 0.0;
+let KDWillEscapePenaltyStart = 0.25;
+let KDWillEscapePenaltyStartArms = 0.1;
+let KDWillEscapePenaltyEnd = 0.05;
 
 let KDMinEscapeRate = 0.4;
 let KDMinPickRate = 0.2;
@@ -2213,7 +2213,7 @@ function KDGetStruggleData(data) {
 	if (KDRestraint(data.restraint) && KDRestraint(data.restraint).struggleMaxSpeed && KDRestraint(data.restraint).struggleMaxSpeed[data.struggleType] != undefined)
 		data.escapeChance = Math.min(data.escapeChance, KDRestraint(data.restraint).struggleMaxSpeed[data.struggleType]);
 
-	if (data.escapeChance > 0 && KinkyDungeonHasWill(0.01, false)) {
+	if (data.escapeChance > 0 && !KinkyDungeonHasWill(0.01, false)) {
 		data.escapeChance -= data.willEscapePenalty;
 		if (data.escapeChance <= 0) {
 			if (!data.query) {

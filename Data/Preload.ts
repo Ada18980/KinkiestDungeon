@@ -134,6 +134,7 @@ let KDButtonFontList = Array.from(KDFonts.keys());
 
 let DisplacementMaps = [
 'HideBoxtieHand.png',
+'BedStrapsHogtie.png',
 'FutureBox.png',
 'TapeTopRight.png',
 'TapeTopRightBoxtie.png',

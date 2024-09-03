@@ -4374,6 +4374,26 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
 				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
 				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
+				case KinkyDungeonKeyMenu[8]: KinkyDungeonDrawState = "Restart"; break;
+			}
+			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			return true;
+		}
+	} else if (KinkyDungeonDrawState == "Restart") {
+		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKey)) {
+			switch (KinkyDungeonKeybindingCurrentKey) {
+				// QuikInv, Inventory, Reputation, Magic, Log
+				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
+				case KinkyDungeonKeyMenu[1]: KinkyDungeonDrawState = "Inventory"; break;
+				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "Reputation"; break;
+				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "MagicSpells"; break;
+				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = "Logbook"; break;
+				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest"; break;
+				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = "Collection"; break;
+				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
+				case KinkyDungeonKeySkip[0]:
+				case KinkyDungeonKeyMenu[8]:
+					KinkyDungeonDrawState = "Game"; break;
 			}
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;

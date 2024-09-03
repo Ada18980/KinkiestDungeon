@@ -5872,8 +5872,27 @@ let KDEnemyAction = {
 			enemy.gy = enemy.y;
 		},
 		maintain: (enemy, delta) => {
-			// Stops investigating if alerted
-			return !(enemy.idle || (KinkyDungeonAggressive(enemy) && enemy.aware) || enemy.attackPoints || KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) <= 1.5);
+			// Stops investigating if alerted or idle
+			return !(enemy.idle
+				|| (KinkyDungeonAggressive(enemy) && enemy.aware)
+				|| enemy.attackPoints
+				|| KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) <= 1.5);
+		},
+		sprint: false,
+	},
+	"investigatesignal": {
+		holdleash: true,
+		end: (enemy) => {
+			// Reset position
+			enemy.gx = enemy.x;
+			enemy.gy = enemy.y;
+		},
+		maintain: (enemy, delta) => {
+			// Stops investigating if alerted or idle
+			return !(enemy.idle
+				|| (enemy.aware)
+				|| enemy.attackPoints
+				|| KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) <= 1.5);
 		},
 		sprint: true,
 	},

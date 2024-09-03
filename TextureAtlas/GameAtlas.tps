@@ -3808,6 +3808,7 @@
             <key type="filename">../Game/UI/Reset.png</key>
             <key type="filename">../Game/UI/Restore.png</key>
             <key type="filename">../Game/UI/Safe.png</key>
+            <key type="filename">../Game/UI/SetPalette.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
             <key type="filename">../Game/UI/UsePotionFrigid.png</key>
             <key type="filename">../Game/UI/UsePotionInject.png</key>

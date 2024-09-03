@@ -656,6 +656,53 @@ function KinkyDungeonGetCost(Spell) {
 	return Math.max(0, cost + bonus);
 }
 
+
+
+/**
+ *
+ * @param {entity} enemy - Origin
+ * @param {number} mult - Radius multiplier
+ * @param {boolean} hideShockwave
+ */
+function KinkyDungeonMakeNoiseSignal(enemy, mult = 1, hideShockwave) {
+	let data = {
+		enemy: enemy,
+		mult: mult,
+		bonus: 0,
+		bonusafter: 2,
+		radius: 5,
+		enemiesHeard: [],
+		particle: !hideShockwave,
+	};
+	KinkyDungeonSendEvent("beforeSignal", data);
+
+	data.radius += data.bonus;
+	data.radius *= mult;
+	data.radius += data.bonusafter;
+
+	for (let e of KDMapData.Entities) {
+		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesignal" || e.action == "investigatesound")
+			&& !e.path
+			&& KDFactionAllied(KDGetFaction(enemy), KDGetFaction(e))
+			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
+			&& !e.Enemy.tags.deaf
+			&& !KDAmbushAI(e)
+			&& KDCanHearSound(e, data.radius, enemy.x, enemy.y)) {
+			e.gx = data.x;
+			e.gy = data.y;
+			e.action = "investigatesignal";
+			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - data.x, e.y - data.y));
+			data.enemiesHeard.push(e);
+		}
+	}
+
+	KinkyDungeonMakeNoise(data.radius, enemy.x, enemy.y, !data.particle, true);
+
+
+
+	KinkyDungeonSendEvent("afterSignal", data);
+}
+
 /**
  *
  * @param {number} radius - Magnitude of the noise
@@ -689,7 +736,7 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave, attachToEn
 			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
 			&& !e.Enemy.tags.deaf
 			&& !KDAmbushAI(e)
-			&& KDistEuclidean(e.x - data.x, e.y - data.y) <= data.radius) {
+			&& KDCanHearSound(e, data.radius, data.x, data.y)) {
 			e.gx = data.x;
 			e.gy = data.y;
 			e.action = "investigatesound";
