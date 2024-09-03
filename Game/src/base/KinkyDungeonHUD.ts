@@ -1915,7 +1915,7 @@ function KDDrawNavBar(skip, quit = false) {
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), "#ffffff",
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,
 	{
-		//hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[8]),
 	}); bindex++; bInc();
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goInv", (bdata) => {
 		if (skip == 1)

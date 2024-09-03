@@ -1266,11 +1266,11 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (KinkyDungeonFlags.get("SuppressGuardCall")) return;
 			if (!KinkyDungeonFlags.get("GuardCallBlock")) {
-				KinkyDungeonSetFlag("GuardCallBlock", 300);
+				KinkyDungeonSetFlag("GuardCallBlock", 80);
 				if (!KinkyDungeonFlags.get("GuardCalled")) {
 					KinkyDungeonSetFlag("GuardCalled", -1);
 				} else {
-					KinkyDungeonSendTextMessage(10, TextGet("KDCallForHelpHint"), "#ffffff", 20);
+					KinkyDungeonSendTextMessage(11, TextGet("KDCallForHelpHint"), "#ffffff", 35, true);
 				}
 			}
 			if (!KinkyDungeonFlags.has("GuardCalled") && KDRandom() < (e.chance ? e.chance : 0.05)) {

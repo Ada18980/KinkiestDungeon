@@ -1670,7 +1670,11 @@ function KinkyDungeonDrawInventory() {
 						"",
 						!KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
 						true, KDInventoryAction[action].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) ? KDButtonColor : "rgba(255, 50, 50, 0.5)",
-						undefined, undefined, {centered: true},
+						undefined, undefined, {centered: true,
+							hotkey: KDInventoryAction[action].hotkey ? KDInventoryAction[action].hotkey() : undefined,
+							hotkeyPress: KDInventoryAction[action].hotkeyPress ? KDInventoryAction[action].hotkeyPress() : undefined,
+
+						},
 						)) {
 							DrawTextFitKD(KDInventoryAction[action].text ?
 								KDInventoryAction[action].text(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)

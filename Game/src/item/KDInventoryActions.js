@@ -7,8 +7,8 @@ let KDMarketRateDecay = 0.95;
  */
 let KDInventoryAction = {
 	"Equip": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[0]),
-		hotkeyPress: () => KinkyDungeonKeySpell[0],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[0]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[0];},
 		text: (player, item) => {
 			return TextGet("KDInventoryAction" + (KinkyDungeonPlayerWeapon != item.name ? "Equip" : "Unequip"));
 		},
@@ -119,8 +119,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Drop": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[2]),
-		hotkeyPress: () => KinkyDungeonKeySpell[2],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[2]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[2];},
 		icon: (player, item) => {
 			return "InventoryAction/Drop";
 		},
@@ -136,8 +136,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Hotbar": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[3]),
-		hotkeyPress: () => KinkyDungeonKeySpell[3],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
 		icon: (player, item) => {
 			return "InventoryAction/Hotbar";
 		},
@@ -152,8 +152,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Remove": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[6]),
-		hotkeyPress: () => KinkyDungeonKeySpell[6],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[6]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[6];},
 		icon: (player, item) => {
 			return "InventoryAction/Remove";
 		},
@@ -178,8 +178,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Unlock": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[4]),
-		hotkeyPress: () => KinkyDungeonKeySpell[4],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
 		icon: (player, item) => {
 			return "Locks/" + item.lock;
 		},
@@ -204,8 +204,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Lock": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[7]),
-		hotkeyPress: () => KinkyDungeonKeySpell[7],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[7]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[7];},
 		icon: (player, item) => {
 			return "InventoryAction/Lock";
 		},
@@ -230,8 +230,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Pick": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[5]),
-		hotkeyPress: () => KinkyDungeonKeySpell[5],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[5]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[5];},
 		icon: (player, item) => {
 			return "InventoryAction/Pick";
 		},
@@ -257,8 +257,8 @@ let KDInventoryAction = {
 	},
 
 	"CurseStruggle": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[3]),
-		hotkeyPress: () => KinkyDungeonKeySpell[3],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
 		icon: (player, item) => {
 			return "InventoryAction/CurseStruggle";
 		},
@@ -276,8 +276,8 @@ let KDInventoryAction = {
 		},
 	},
 	"CurseInfo": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[2]),
-		hotkeyPress: () => KinkyDungeonKeySpell[2],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[2]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[2];},
 		icon: (player, item) => {
 			return "InventoryAction/CurseInfo";
 		},
@@ -295,8 +295,8 @@ let KDInventoryAction = {
 		},
 	},
 	"CurseUnlock": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[4]),
-		hotkeyPress: () => KinkyDungeonKeySpell[4],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
 		icon: (player, item) => {
 			return "InventoryAction/CurseUnlock";
 		},
@@ -319,8 +319,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Struggle": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[2]),
-		hotkeyPress: () => KinkyDungeonKeySpell[2],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[2]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[2];},
 		icon: (player, item) => {
 			return "InventoryAction/Struggle";
 		},
@@ -343,8 +343,8 @@ let KDInventoryAction = {
 		},
 	},
 	"Cut": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[3]),
-		hotkeyPress: () => KinkyDungeonKeySpell[3],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
 		icon: (player, item) => {
 			return (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerWeapon :"InventoryAction/Cut";
 		},
@@ -372,8 +372,8 @@ let KDInventoryAction = {
 	},
 
 	"Favorite": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[1]),
-		hotkeyPress: () => KinkyDungeonKeySpell[1],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[1]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[1];},
 		text: (player, item) => {
 			return TextGet("KDInventoryAction" + (!(KDGameData.ItemPriority[item.name|| item.name] > 9) ? "Favorite" : "Unfavorite"));
 		},
@@ -607,8 +607,8 @@ let KDInventoryAction = {
 		},
 	},
 	"RemoveMagicLock": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeyEnter[0]),
-		hotkeyPress: () => KinkyDungeonKeyEnter[0],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeyEnter[0]);},
+		hotkeyPress: () => {return KinkyDungeonKeyEnter[0];},
 		icon: (player, item) => {
 			return "InventoryAction/CommandWord";
 		},
@@ -1087,8 +1087,8 @@ let KDInventoryAction = {
 	},
 
 	"Disassemble": {
-		hotkey: () => KDHotkeyToText(KinkyDungeonKeySpell[4]),
-		hotkeyPress: () => KinkyDungeonKeySpell[4],
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
 		icon: (player, item) => {
 			return "InventoryAction/Disassemble";
 		},

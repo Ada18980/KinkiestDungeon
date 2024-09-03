@@ -4379,7 +4379,13 @@ function KinkyDungeonGameKeyDown() {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		}
-	} else if (KinkyDungeonDrawState == "Restart") {
+	} else if (KinkyDungeonDrawState == "Restart"
+
+		&& !(
+			// @ts-ignore
+			(CommonIsMobile || document.activeElement?.type == "text" || document.activeElement?.type == "textarea")
+		)
+	) {
 		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKey)) {
 			switch (KinkyDungeonKeybindingCurrentKey) {
 				// QuikInv, Inventory, Reputation, Magic, Log

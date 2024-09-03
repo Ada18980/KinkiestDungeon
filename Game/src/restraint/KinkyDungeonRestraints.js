@@ -1950,7 +1950,36 @@ function KDGetStruggleData(data) {
 		data.escapeChance -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown") * 0.1;
 	}
 
+	if (!KinkyDungeonHasWill(0.01, false)) {
+		if (data.escapeChance > (data.escapePenalty > 0 ? data.escapePenalty : data.escapePenalty * data.buffMult)) {
+			data.escapePenalty += data.willEscapePenalty;
+			if (data.escapeChance <= (data.escapePenalty > 0 ? data.escapePenalty : data.escapePenalty * data.buffMult)) {
+				if (!data.query) {
+					// Replace with frustrated moan later~
+					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
+						+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).NoWill) ? KDGetEscapeSFX(data.restraint).NoWill : "Struggle")
+						+ ".ogg");
+					KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
+						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+					KinkyDungeonLastAction = "Struggle";
+					KinkyDungeonSendEvent("struggle", {
+						restraint: data.restraint,
+						group: data.struggleGroup,
+						struggleType: data.struggleType,
+						result: "Will",
+					});
+				}
+				return "Will";
+			}
+		} else {
+			// Dont check anything
+			data.escapePenalty += data.willEscapePenalty;
+		}
+	}
+
+
 	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
+
 	if (data.escapePenalty) {
 		data.escapeChance -= data.escapePenalty;
 	}
@@ -2213,27 +2242,7 @@ function KDGetStruggleData(data) {
 	if (KDRestraint(data.restraint) && KDRestraint(data.restraint).struggleMaxSpeed && KDRestraint(data.restraint).struggleMaxSpeed[data.struggleType] != undefined)
 		data.escapeChance = Math.min(data.escapeChance, KDRestraint(data.restraint).struggleMaxSpeed[data.struggleType]);
 
-	if (data.escapeChance > 0 && !KinkyDungeonHasWill(0.01, false)) {
-		data.escapeChance -= data.willEscapePenalty;
-		if (data.escapeChance <= 0) {
-			if (!data.query) {
-				// Replace with frustrated moan later~
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
-					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).NoWill) ? KDGetEscapeSFX(data.restraint).NoWill : "Struggle")
-					+ ".ogg");
-				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
-					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
-				KinkyDungeonLastAction = "Struggle";
-				KinkyDungeonSendEvent("struggle", {
-					restraint: data.restraint,
-					group: data.struggleGroup,
-					struggleType: data.struggleType,
-					result: "Will",
-				});
-			}
-			return "Will";
-		}
-	}
+
 
 	return "";
 }

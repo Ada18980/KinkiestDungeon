@@ -38,6 +38,11 @@ TODO remove hogtie when released
 - You will need to update any code that directly references a string created by CharacterAppearanceStringify instead of using CharacterAppearanceRestore
 - saveStat in the save files now has Palette field
 
+5.4-nightly2
+- Fixed bug where running out of WP didnt reduce struggle power
+- Bed trap now has straps ^^
+- Cuddle lounge now improves servant opinions a lot more
+- Cuddle lounge is less effective per prisoner the more prisoners in it
 
 5.4-nightly1
 - Added Absurdly Huge Maps perk

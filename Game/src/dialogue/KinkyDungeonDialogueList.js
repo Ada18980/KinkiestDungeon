@@ -1056,7 +1056,7 @@ let KDDialogue = {
 
 						let furn = KDFurniture[tile.Furniture];
 						if (furn) {
-							KinkyDungeonSetFlag("GuardCalled", 300);
+							KinkyDungeonSetFlag("GuardCalled", 50);
 							let rest = KinkyDungeonGetRestraint(
 								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
 								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
