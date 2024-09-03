@@ -26,7 +26,7 @@
         "Game/src/base/KDShaders.ts",
         "Game/src/player/KDAutoStruggle.js",
         "Game/src/player/KDClasses.js",
-        "Game/src/base/KDParticles.js",
+        "Game/src/base/KDParticles.ts",
         "Game/src/restraint/KDLocks.js",
         "Game/src/item/KDModifier.js",
         "Game/src/item/KDHex.js",

@@ -3737,6 +3737,7 @@ let errorImg = {};
 /**
  * Returns a PIXI.Texture, or null if there isnt one
  * @param {string} Image
+ * @param {boolean} [Nearest] - Use "nearest" scale mode
  * @returns {any}
  */
 function KDTex(Image, Nearest) {

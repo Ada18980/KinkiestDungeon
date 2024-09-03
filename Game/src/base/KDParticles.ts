@@ -1,22 +1,19 @@
 'use strict';
 
-/** @type {Map<Number, {info: any, sprite: any}>} */
-let KDParticles = new Map();
+let KDParticles: Map<Number, {info: any, sprite: any}> = new Map();
 let KDParticleid = 0;
 
-/** @type {Map<Number, {emitted: any, emitter: any, sprite: any, type: any, img: string}>} */
-let KDParticleEmitters = new Map();
+let KDParticleEmitters: Map<Number, {emitted: any, emitter: any, sprite: any, type: any, img: string}> = new Map();
 let KDParticleEmitterid = 0;
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {string} img
- * @param {string} type
- * @param {KDParticleData} data
+ * @param x
+ * @param y
+ * @param img
+ * @param _type
+ * @param data
  */
-function KDAddParticle(x, y, img, type, data) {
+function KDAddParticle(x: number, y: number, img: string, _type: string, data: KDParticleData): void {
 	if (KDParticles.size > 1000) return;
 	let tex = KDTex(img);
 
@@ -63,16 +60,15 @@ function KDAddParticle(x, y, img, type, data) {
 
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {string} img
- * @param {string} imgemitted
- * @param {string} type
- * @param {KDParticleEmitterData} emitter
- * @param {KDParticleData} emitted
+ * @param x
+ * @param y
+ * @param img
+ * @param imgemitted
+ * @param type
+ * @param emitter
+ * @param emitted
  */
-function KDAddParticleEmitter(x, y, img, imgemitted, type, emitter, emitted) {
+function KDAddParticleEmitter(x: number, y: number, img: string, imgemitted: string, type: string, emitter: KDParticleEmitterData, emitted: KDParticleData): void {
 	if (KDParticleEmitters.size > 1000) return;
 	let tex = KDTex(img);
 
@@ -119,13 +115,12 @@ function KDAddParticleEmitter(x, y, img, imgemitted, type, emitter, emitted) {
 }
 
 
-function KDUpdateParticles(delta) {
+function KDUpdateParticles(delta: number) {
 	let id = 0;
-	/**  @type {KDParticleData} */
-	let info = null;
+	let info: KDParticleData = null;
 	let sprite = null;
 	for (let particle of KDParticles.entries()) {
-		id = particle[0];
+		id = particle[0].valueOf();
 		info = particle[1].info;
 		sprite = particle[1].sprite;
 
@@ -167,10 +162,9 @@ function KDUpdateParticles(delta) {
 	}
 
 
-	/**  @type {KDParticleEmitterData} */
-	let emitter = null;
+	let emitter: KDParticleEmitterData = null;
 	for (let particle of KDParticleEmitters.entries()) {
-		id = particle[0];
+		id = particle[0].valueOf();
 		emitter = particle[1].emitter;
 		sprite = particle[1].sprite;
 
@@ -218,7 +212,7 @@ function KDUpdateParticles(delta) {
 	}
 }
 
-function KDRemoveParticle(id) {
+function KDRemoveParticle(id: number) {
 	if (KDParticles.has(id)) {
 		kdparticles.removeChild(KDParticles.get(id).sprite);
 		KDParticles.get(id).sprite.destroy();
@@ -226,7 +220,7 @@ function KDRemoveParticle(id) {
 	}
 }
 
-function KDRemoveParticleEmitter(id) {
+function KDRemoveParticleEmitter(id: number) {
 	if (KDParticleEmitters.has(id)) {
 		kdparticles.removeChild(KDParticleEmitters.get(id).sprite);
 		KDParticleEmitters.get(id).sprite.destroy();
@@ -239,11 +233,11 @@ let lastVibeParticle = 0;
 
 /**
  * Draws arousal heart particles
- * @param {number} pinkChance - 0 to 1
- * @param {number} density - 0 to 1
- * @param {number} purpleChance - 0 to 1
+ * @param pinkChance - 0 to 1
+ * @param density - 0 to 1
+ * @param purpleChance - 0 to 1
  */
-function KDDrawArousalParticles(pinkChance, density, purpleChance) {
+function KDDrawArousalParticles(pinkChance: number, density: number, purpleChance: number) {
 	if (density == 0) return;
 	let arousalRate = 100 / density;
 
@@ -255,7 +249,7 @@ function KDDrawArousalParticles(pinkChance, density, purpleChance) {
 
 }
 
-function KDDrawVibeParticles(density) {
+function KDDrawVibeParticles(density: number) {
 
 	let arousalRate = 100 / density;
 	if (StandalonePatched) arousalRate *= 2;
@@ -266,7 +260,7 @@ function KDDrawVibeParticles(density) {
 	}
 }
 
-function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.png`, attachToCamera = true) {
+function KDAddShockwave(x: number, y: number, size: number, spr: string = `Particles/Shockwave.png`, attachToCamera: boolean = true) {
 	let lifetime = 700 + size;
 	let data = {
 		time: 0,
@@ -281,8 +275,8 @@ function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.png`, attachToCam
 		rotation: 0,
 	};
 	if (attachToCamera) {
-		data.camX = KinkyDungeonCamX;
-		data.camY = KinkyDungeonCamY;
+		data['camX'] = KinkyDungeonCamX;
+		data['camY'] = KinkyDungeonCamY;
 	}
 	KDAddParticle(
 		x,
@@ -291,7 +285,7 @@ function KDAddShockwave(x, y, size, spr = `Particles/Shockwave.png`, attachToCam
 		undefined, data);
 }
 
-function KDSendGagParticles(entity) {
+function KDSendGagParticles(entity: entity): void {
 	if (!KDToggles.GagParticles) return;
 	if (entity?.player) {
 		// Player
@@ -453,11 +447,10 @@ function KDCreateVibeParticle() {
 }
 
 /**
- *
- * @param {number} pinkChance - 0 to 1
- * @param {number} purpleChance - 0 to 1
+ * @param pinkChance - 0 to 1
+ * @param purpleChance - 0 to 1
  */
-function KDCreateArousalParticle(pinkChance, purpleChance) {
+function KDCreateArousalParticle(pinkChance: number, purpleChance: number) {
 	let lifetime = 2000 + Math.random() * 1000;
 	let y = 200 + Math.random() * 700;
 	let xval = Math.random() < 0.5 ? 0.3 * Math.random() : (1 - 0.3 * Math.random());
