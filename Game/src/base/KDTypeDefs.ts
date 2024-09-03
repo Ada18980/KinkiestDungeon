@@ -380,6 +380,7 @@ interface KDRestraintPropsBase {
 		KnifeDrop?: string,
 		KeyDrop?: string,
 		PickDrop?: string,
+		Blocked?: string,
 	},
 	sfxFinishEscape?: {
 		Struggle?: string,
@@ -2425,6 +2426,8 @@ interface KDStruggleData {
 	extraLim: number,
 	extraLimPenalty: number,
 	extraLimThreshold: number,
+
+	upfrontWill?: boolean,
 }
 
 interface KDFilteredInventoryItem {
@@ -2614,6 +2617,8 @@ interface KDMapDataType {
 
 	flags?: string[],
 	data: any,
+
+	Regiments: Record<string, number>,
 
 
 	GroundItems: {x: number, y: number, name: string, amount?: number} [];
@@ -3389,6 +3394,7 @@ interface KDSFXGroup {
 		KnifeDrop?: string,
 		KeyDrop?: string,
 		PickDrop?: string,
+		Blocked?: string,
 	},
 	sfxFinishEscape?: {
 		Struggle?: string,

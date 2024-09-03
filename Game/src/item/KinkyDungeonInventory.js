@@ -950,7 +950,7 @@ function KinkyDungeonFilterInventory(Filter, enchanted, ignoreHidden, ignoreFilt
 								cost: KinkyDungeonStatStaminaCostStruggle,
 								wcost: KinkyDungeonStatWillCostStruggle,
 								escapePenalty: -KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StrugglePower"),
-								willEscapePenalty: KDGetWillPenalty(),
+								willEscapePenalty: KDGetWillPenalty("Unlock"),
 								canCut: KinkyDungeonWeaponCanCut(false, false),
 								canCutMagic: KinkyDungeonWeaponCanCut(false, true),
 								toolBonus: 0.0,

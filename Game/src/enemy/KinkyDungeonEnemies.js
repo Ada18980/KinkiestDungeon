@@ -6060,22 +6060,29 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 }
 
 // Unique ID for enemies, to prevent bullets from hitting them
-// Dont want to pass object handles around in case we ever allow saving a room
+// Dont want to pass object handles around
 function KinkyDungeonGetEnemyID() {
-	if (KinkyDungeonEnemyID > 100000000) KinkyDungeonEnemyID = 0;
+	if (KinkyDungeonEnemyID > 100000000) KinkyDungeonEnemyID = 1;
 	return KinkyDungeonEnemyID++;
 }
 // Unique ID for enemies, to prevent bullets from hitting them
-// Dont want to pass object handles around in case we ever allow saving a room
+// Dont want to pass object handles around
 function KinkyDungeonGetSpellID() {
-	if (KinkyDungeonSpellID > 100000000) KinkyDungeonSpellID = 0;
+	if (KinkyDungeonSpellID > 100000000) KinkyDungeonSpellID = 1;
 	return KinkyDungeonSpellID++;
 }
 // Unique ID for items for identification reasons
-// Dont want to pass object handles around in case we ever allow saving a room
+// Dont want to pass object handles around
 function KinkyDungeonGetItemID() {
-	if (KDGameData.ItemID > 100000000 || KDGameData.ItemID == undefined) KDGameData.ItemID = 0;
+	if (KDGameData.ItemID > 100000000 || KDGameData.ItemID == undefined) KDGameData.ItemID = 1;
 	return KDGameData.ItemID++;
+}
+
+// Unique ID for items for identification reasons
+// Dont want to pass object handles around
+function KinkyDungeonGetRegimentID() {
+	if (KDGameData.RegimentID > 100000000 || KDGameData.RegimentID == undefined) KDGameData.RegimentID = 1;
+	return KDGameData.RegimentID++;
 }
 
 let KinkyDungeonEnemyID = 1;

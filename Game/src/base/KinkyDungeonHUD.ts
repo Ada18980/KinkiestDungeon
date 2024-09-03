@@ -3118,11 +3118,22 @@ function KDDrawStruggleGroups() {
 					} else {
 						let O = lastO + 1;
 						DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
-							Math.max(0, Math.round(100 * (0.01 * (item.tightness || 0) + 1 - struggleData.origEscapeChance + struggleData.escapePenalty + Math.max(0, struggleData.extraLim, struggleData.limitChance)))) + ""
+							Math.max(0,
+								Math.round(100 *
+									(0.01 * (item.tightness || 0)
+									+ 1
+									- struggleData.origEscapeChance + struggleData.escapePenalty
+									+ Math.max(0, struggleData.extraLim, struggleData.limitChance))))
+								+ "" +
+									((struggleData.escapePenalty) ? ` (${struggleData.escapePenalty > 0 ?
+										Math.round(-100 * struggleData.escapePenalty)
+										: "+" + Math.round(-100 * struggleData.escapePenalty)
+									}${struggleData.escapePenalty > 0 ? TextGet("KDPenalty") : TextGet("KDBonus")})` : "")
 						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
 						530, MY + O * lineSize, "#ffffff", "#333333", fontSize, "left", 150); O++;
-						let a = Math.min(1, Math.max(-1, struggleData.escapeChance - Math.max(0, struggleData.extraLim, struggleData.limitChance)));
-						let b = Math.min(1, Math.max(-1, struggleData.escapeChance));
+						let a = Math.min(10, Math.max(-10, struggleData.escapeChance
+							- Math.max(0, struggleData.extraLim, struggleData.limitChance)));
+						let b = Math.min(10, Math.max(-10, struggleData.escapeChance));
 
 						if (StruggleType == "Cut") {
 							let maxPossible;
@@ -3142,18 +3153,30 @@ function KDDrawStruggleGroups() {
 							b = maxPossible;
 						}
 
-						let amnt = Math.round(100 * a)
-							+ "-"
-							+ Math.round(100 * b);
+						let amnt = (StruggleType != "Struggle") ?
+							Math.round(100 * a)
+							+ " -> "
+							+ Math.round(100 * b)
+							:
+							Math.round(100 * b)
+							+ " -> "
+							+ Math.round(100 * a);
 						if (a < 0 && b < 0)
 							amnt = Math.round(100 * Math.max(a, b)) + "";
 						else if (a == b)
 							amnt = Math.round(100 * a) + "";
-						else if (a < 0 && b >= 0) {
+						else if (a < 0 && b > 0) {
 							a = Math.max(0, a);
-							amnt = Math.round(100 * a)
-								+ "-"
-								+ Math.round(100 * b);
+							if (a == b) {
+								amnt = Math.round(100 * a) + "";
+							} else {
+								amnt = Math.round(100 * b)
+									+ " -> "
+									+ Math.round(100 * a);
+							}
+
+						} else if (a < 0 && b == 0) {
+							amnt = Math.round(100 * a) + "";
 						}
 						DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
 							amnt

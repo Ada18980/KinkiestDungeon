@@ -184,6 +184,8 @@ function KDDefaultMapData(RoomType = "", MapMod = "") {
 		PrisonType: "",
 		data: {},
 
+		Regiments: {},
+
 		RoomType: RoomType,
 		MapMod: MapMod,
 		RandomPathablePoints: {},
@@ -899,7 +901,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 			if (!altType?.noPersistentPrisoners && !mapMod?.noPersistentPrisoners)
 				KDRepopulatePersistentNPCs();
 		}
-
+		UpdateRegiments({
+			mapX: worldLocation.x,
+			mapY: worldLocation.y,
+			room: KDGameData.RoomType,
+		});
 
 		return;
 	}
@@ -1456,6 +1462,13 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 	}
 
 	KinkyDungeonGenNavMap();
+
+	UpdateRegiments({
+		mapX: worldLocation.x,
+		mapY: worldLocation.y,
+		room: KDGameData.RoomType,
+	});
+
 }
 
 let KDStageBossGenerated = false;
@@ -4107,7 +4120,8 @@ function KinkyDungeonGetMovable() {
 function KinkyDungeonListenKeyMove() {
 	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
 
-	if (KinkyDungeonLastMoveTimer < performance.now() && (KinkyDungeonControlsEnabled() || KinkyDungeonInspect) && KinkyDungeonDrawState == "Game" && !KDModalArea) {
+	if (KinkyDungeonLastMoveTimer < performance.now() && (KinkyDungeonControlsEnabled() || KinkyDungeonInspect)
+		&& KinkyDungeonDrawState == "Game" && !KDModalArea) {
 		let moveDirection = null;
 		let moveDirectionDiag = null;
 

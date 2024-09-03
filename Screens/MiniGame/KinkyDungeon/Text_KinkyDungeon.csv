@@ -24613,3 +24613,10 @@ KDNoTeleportPlateReact,The planar diffractor blocks the teleportation!
 KDSetCharacterPalette,Set Character Palette
 
 KDResetKeys,Reset all Keybindings
+
+KDStruggleBlocked,That item is blocked! You can't remove it.
+
+KDMin," min."
+KDMax," max."
+KDBonus," bonus"
+KDPenalty," penalty"

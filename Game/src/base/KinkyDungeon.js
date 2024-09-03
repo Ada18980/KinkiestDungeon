@@ -172,7 +172,7 @@ let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
 	SpellBook: false,
-	ShowRestraintOnHover: true,
+	ShowRestraintOnHover: false,
 	HiResModel: false,
 	Fullscreen: false,
 	SkipIntro: false,
@@ -619,12 +619,15 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 * NoForceGreet: boolean,
 * InteractTargetX: number,
 * InteractTargetY: number,
+* RegimentID: number,
 * FacilitiesData: FacilitiesData,
+* Regiments: Record<string, KDRegiment>
 * QuickLoadouts: Record<string, string[]>}},
 
 *}} KDGameDataBase
 */
 let KDGameDataBase = {
+	Regiments: {},
 	FacilitiesData: null,
 	InteractTargetX: 0,
 	InteractTargetY: 0,
@@ -826,6 +829,7 @@ let KDGameDataBase = {
 
 	KDChasingEnemies: [],
 
+	RegimentID: 0,
 	ItemID: 0,
 	ShopkeeperFee: 0,
 	otherPlaying: 0,
