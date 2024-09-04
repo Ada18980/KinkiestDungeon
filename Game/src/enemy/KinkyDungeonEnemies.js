@@ -4945,7 +4945,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
 									// long distance hunt
 									let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
-										return KDistChebyshev(enemy.x - X && enemy.y - Y) < 24;
+										return KDistChebyshev(enemy.x - X, enemy.y - Y) < 24;
 									}, false,
 									enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
 									if (newPoint) {

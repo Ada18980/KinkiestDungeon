@@ -958,15 +958,33 @@ function KDMapInit(list) {
 	return map;
 }
 
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number}
+ */
 function KDistEuclidean(x, y) {
 	return Math.sqrt(x*x + y*y);
 }
 
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number}
+ */
 function KDistChebyshev(x, y) {
 	return Math.max(Math.abs(x), Math.abs(y));
 }
 
 
+/**
+ *
+ * @param {number} x
+ * @param {number} y
+ * @returns {number}
+ */
 function KDistTaxicab(x, y) {
 	return Math.abs(x) + Math.abs(y);
 }

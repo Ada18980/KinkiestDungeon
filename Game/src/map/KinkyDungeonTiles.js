@@ -200,7 +200,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 			//let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
 			let originalRoom = KDGameData.RoomType;
 			let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
-			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : journeyTile?.RoomType;
+			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : (KinkyDungeonAltFloor(journeyTile?.RoomType));
 			let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomTarget);
 
 			let data = {
@@ -295,6 +295,7 @@ function KinkyDungeonHandleStairs(toTile, suppressCheckPoint) {
 						KDGameData.MapMod = ""; // Reset the map mod
 					} else if (!data.overrideRoomType) {
 						roomType = (altRoom?.skiptunnel) ? "" : "PerkRoom"; // We do a perk room, then a tunnel
+						altRoomTarget = KinkyDungeonAltFloor(roomType);
 						KDGameData.MapMod = ""; // Reset the map mod
 					}
 				}
