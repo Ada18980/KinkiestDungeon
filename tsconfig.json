@@ -72,7 +72,7 @@
         "Game/src/fight/KinkyDungeonWeaponList.js",
         "Game/src/base/KinkyDungeonInput.ts",
         "Game/src/base/KinkyDungeonHUD.ts",
-        "Game/src/base/KinkyDungeonDraw.js",
+        "Game/src/base/KinkyDungeonDraw.ts",
         "Game/src/restraint/KinkyDungeonFurniture.js",
         "Game/src/magic/KinkyDungeonMagic.js",
         "Game/src/magic/KinkyDungeonMagicCode.js",
@@ -229,6 +229,6 @@
 
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "lib": ["DOM", "ES2020"]
+        "lib": ["DOM", "ES2020"],
     }
 }

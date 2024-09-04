@@ -1311,9 +1311,8 @@ function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = 
 
 /**
  * Handles inputs once per frame
- * @returns {string}
  */
-function KDProcessInputs(ReturnResult) {
+function KDProcessInputs(ReturnResult?: boolean): string {
 	for (let i = 0; i < 3; i++) {
 		if (KinkyDungeonInputQueue.length > 0) {
 			let input = KinkyDungeonInputQueue.splice(0, 1)[0];

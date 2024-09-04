@@ -1,8 +1,7 @@
 "use strict";
 
 let KDDebugOverlay = false;
-/** @type {PoseMod[]} */
-let CHIBIMOD = [
+let CHIBIMOD: PoseMod[] = [
 	{
 		Layer: "HairBack",
 		scale_x: 0.65,
@@ -50,8 +49,7 @@ let KDBreathAnimTime = 1400;
 let KDFlipPlayer = false;
 
 // PIXI experimental
-/** @type HTMLCanvasElement */
-let pixiview = null;
+let pixiview: HTMLCanvasElement = null;
 let pixirenderer = null;
 let pixirendererKD = null;
 let kdgamefog = new PIXI.Graphics();
@@ -245,52 +243,26 @@ let KDTextRed1 = "#110000";
 let KDCurseColor = "#ff55aa";
 let KDGoodColor = "#77ff99";
 
-/**
- * @type {Map<string, boolean>}
- */
-let kdSpritesDrawn = new Map();
+let kdSpritesDrawn: Map<string, boolean> = new Map();
 
-/**
- * @type {Map<string, any>}
- */
-let kdlightsprites = new Map();
-/**
- * @type {Map<string, any>}
- */
-let kdpixisprites = new Map();
-/**
- * @type {Map<string, any>}
- */
-let kdminimapsprites = new Map();
-/**
- * @type {Map<string, any>}
- */
-let kdpixifogsprites = new Map();
-/**
- * @type {Map<string, any>}
- */
-let kdpixibrisprites = new Map();
+let kdlightsprites: Map<string, any> = new Map();
+let kdpixisprites: Map<string, any> = new Map();
+let kdminimapsprites: Map<string, any> = new Map();
+let kdpixifogsprites: Map<string, any> = new Map();
+let kdpixibrisprites: Map<string, any> = new Map();
 
 
 
-/**
- * @type {Map<string, any>}
- */
-let kdprimitiveparams = new Map();
+let kdprimitiveparams: Map<string, any> = new Map();
+
+let kdpixitex: Map<string, any> = new Map();
 
 /**
-  * @type {Map<string, any>}
-  */
-let kdpixitex = new Map();
-
-/**
- *
- * @param {number} x
- * @param {number} y
- * @param {string} [noReplace]
- * @returns {boolean}
+ * @param x
+ * @param y
+ * @param [noReplace]
  */
-function KDWallVert(x, y, noReplace) {
+function KDWallVert(x: number, y: number, noReplace?: string): boolean {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileBelow = KinkyDungeonMapGet(x, y + 1);
 	if (
@@ -305,13 +277,11 @@ function KDWallVert(x, y, noReplace) {
 	return false;
 }
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {string} [noReplace]
- * @returns {boolean}
+ * @param x
+ * @param y
+ * @param [noReplace]
  */
-function KDWallVertAbove(x, y, noReplace) {
+function KDWallVertAbove(x: number, y: number, noReplace?: string): boolean {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileAbove = KinkyDungeonMapGet(x, y - 1);
 	if (
@@ -324,13 +294,11 @@ function KDWallVertAbove(x, y, noReplace) {
 	return false;
 }
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {string} [noReplace]
- * @returns {boolean}
+ * @param x
+ * @param y
+ * @param [noReplace]
  */
-function KDWallVertBoth(x, y, noReplace) {
+function KDWallVertBoth(x: number, y: number, noReplace?: string): boolean {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileBelow = KinkyDungeonMapGet(x, y + 1);
 	let tileAbove = KinkyDungeonMapGet(x, y - 1);
@@ -346,12 +314,10 @@ function KDWallVertBoth(x, y, noReplace) {
 	return false;
 }
 /**
- *
- * @param {number} x
- * @param {number} y
- * @returns {boolean}
+ * @param x
+ * @param y
  */
-function KDWallHorizTunnel(x, y) {
+function KDWallHorizTunnel(x: number, y: number): boolean {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileUp = KinkyDungeonMapGet(x, y - 1);
 	let tileBelow = KinkyDungeonMapGet(x, y + 1);
@@ -365,12 +331,11 @@ function KDWallHorizTunnel(x, y) {
 	return false;
 }
 /**
- *
- * @param {number} x
- * @param {number} y
+ * @param x
+ * @param y
  * @returns {boolean}
  */
-function KDWallVertTunnel(x, y) {
+function KDWallVertTunnel(x: number, y: number): boolean {
 	//let tileUp = KinkyDungeonMapGet(x, y);
 	let tileRight = KinkyDungeonMapGet(x + 1, y);
 	let tileLeft = KinkyDungeonMapGet(x - 1, y);
@@ -387,48 +352,47 @@ function KDWallVertTunnel(x, y) {
 let KDChainablePillar = 'bdD';
 
 
-/** @type KDSprites */
-const KDSprites = {
-	"5": (x, y, Fog, noReplace) => {
+const KDSprites: KDSprites = {
+	"5": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile?.Sprite) return tile.Sprite;
 		return "Floor";
 	},
-	"6": (x, y, Fog, noReplace) => {
+	"6": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile?.Sprite) return tile.Sprite;
 		return "Wall";
 	},
-	"1": (x, y, Fog, noReplace) => {
+	"1": (x, y, _Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
 	},
-	"f": (x, y, Fog, noReplace) => { // Reinforced wall
+	"f": (x, y, _Fog, noReplace) => { // Reinforced wall
 		if (KDWallVert(x, y, noReplace))
 			return "WallRVert";
 		return "WallR";
 	},
-	"2": (x, y, Fog, noReplace) => {
+	"2": (_x, _y, _Fog, _noReplace) => {
 		return "Brickwork";
 	},
-	"3": (x, y, Fog, noReplace) => {
+	"3": (_x, _y, Fog, _noReplace) => {
 		return Fog ? "Doodad" : "MimicBlock";
 	},
-	"b": (x, y, Fog, noReplace) => {
+	"b": (x, y, _Fog, noReplace) => {
 		if (KDWallVertAbove(x, y, noReplace))
 			return KDChainablePillar.includes(KinkyDungeonMapGet(x, y-1)) ? "BarsVertCont" : "BarsVert";
 		return "Bars";
 	},
-	"X": (x, y, Fog, noReplace) => {
+	"X": (_x, _y, _Fog, _noReplace) => {
 		return "Doodad";
 	},
-	"4": (x, y, Fog, noReplace) => {
+	"4": (x, y, _Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
 	},
-	"L": (x, y, Fog, noReplace) => {
+	"L": (x, y, _Fog, _noReplace) => {
 		if (KinkyDungeonTilesGet(x + "," + y)) {
 			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";
 			if (furn) {
@@ -437,16 +401,16 @@ const KDSprites = {
 		}
 		return "Barrel";
 	},
-	"F": (x, y, Fog, noReplace) => {
+	"F": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"?": (x, y, Fog, noReplace) => {
+	"?": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"/": (x, y, Fog, noReplace) => {
+	"/": (_x, _y, _Fog, _noReplace) => {
 		return "RubbleLooted";
 	},
-	",": (x, y, Fog, noReplace) => {
+	",": (x, y, _Fog, noReplace) => {
 		if (KDWallVert(x, y, noReplace))
 			return "WallVert";
 		return "Wall";
@@ -495,24 +459,24 @@ const KDSprites = {
 		else KDMapData.TilesMemory[x + "," + y] = "DoorOpen";
 		return KDMapData.TilesMemory[x + "," + y];
 	},
-	"a": (x, y, Fog, noReplace) => {
+	"a": (_x, _y, _Fog, _noReplace) => {
 		return "ShrineBroken";
 	},
-	"A": (x, y, Fog, noReplace) => {
+	"A": (x, y, _Fog, _noReplace) => {
 		return (KinkyDungeonTilesGet(x + "," + y) && KinkyDungeonTilesGet(x + "," + y).Type == "Shrine" && KinkyDungeonTilesGet(x + "," + y).Name == "Commerce") ? "ShrineC" : (
 			(KinkyDungeonTilesGet(x + "," + y) && KinkyDungeonTilesGet(x + "," + y).drunk) ? "ShrineEmpty" : "Shrine"
 		);
 	},
-	"H": (x, y, Fog, noReplace) => {
+	"H": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"s": (x, y, Fog, noReplace) => {
+	"s": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"S": (x, y, Fog, noReplace) => {
+	"S": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"g": (x, y, Fog, noReplace) => {
+	"g": (x, y, _Fog, _noReplace) => {
 		if (KDWallHorizTunnel(x, y))
 			return "GrateHoriz";
 		else if (!KDWallVert(x, y)) {
@@ -522,175 +486,174 @@ const KDSprites = {
 		}
 		return "Grate";
 	},
-	"r": (x, y, Fog, noReplace) => {
+	"r": (_x, _y, _Fog, _noReplace) => {
 		return "RubbleLooted";
 	},
-	"T": (x, y, Fog, noReplace) => {
+	"T": (_x, _y, _Fog, _noReplace) => {
 		return (KinkyDungeonBlindLevel > 0) ?"Floor" : "Trap";
 	},
-	"Y": (x, y, Fog, noReplace) => {
+	"Y": (_x, _y, _Fog, _noReplace) => {
 		return "Doodad";
 	},
-	"R": (x, y, Fog, noReplace) => {
+	"R": (_x, _y, _Fog, _noReplace) => {
 		return "RubbleLooted";
 	},
-	"m": (x, y, Fog, noReplace) => {
+	"m": (_x, _y, _Fog, _noReplace) => {
 		return "Brickwork";
 	},
-	"M": (x, y, Fog, noReplace) => {
+	"M": (_x, _y, _Fog, _noReplace) => {
 		return "Brickwork";
 	},
-	"O": (x, y, Fog, noReplace) => {
+	"O": (_x, _y, _Fog, _noReplace) => {
 		return "OrbEmpty";
 	},
-	"P": (x, y, Fog, noReplace) => {
+	"P": (_x, _y, _Fog, _noReplace) => {
 		return "OrbEmpty";
 	},
-	"p": (x, y, Fog, noReplace) => {
+	"p": (_x, _y, _Fog, _noReplace) => {
 		return "OrbEmpty";
 	},
-	"o": (x, y, Fog, noReplace) => {
+	"o": (_x, _y, _Fog, _noReplace) => {
 		return "OrbEmpty";
 	},
-	"w": (x, y, Fog, noReplace) => {
+	"w": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"W": (x, y, Fog, noReplace) => {
+	"W": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"]": (x, y, Fog, noReplace) => {
+	"]": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"[": (x, y, Fog, noReplace) => {
+	"[": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"=": (x, y, Fog, noReplace) => {
+	"=": (_x, _y, _Fog, _noReplace) => {
 		return "Brickwork";
 	},
-	"+": (x, y, Fog, noReplace) => {
+	"+": (_x, _y, _Fog, _noReplace) => {
 		return "Brickwork";
 	},
-	"-": (x, y, Fog, noReplace) => {
+	"-": (_x, _y, _Fog, _noReplace) => {
 		return "Brickwork";
 	},
-	"l": (x, y, Fog, noReplace) => {
+	"l": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	";": (x, y, Fog, noReplace) => {
+	";": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"V": (x, y, Fog, noReplace) => {
+	"V": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"v": (x, y, Fog, noReplace) => {
+	"v": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"t": (x, y, Fog, noReplace) => {
+	"t": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"u": (x, y, Fog, noReplace) => {
+	"u": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
-	"N": (x, y, Fog, noReplace) => {
+	"N": (_x, _y, _Fog, _noReplace) => {
 		return "Floor";
 	},
 };
 
-/** @type KDSprites */
-const KDOverlays = {
-	"5": (x, y, Fog, noReplace) => {
+const KDOverlays: KDSprites = {
+	"5": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile?.Overlay) return tile.Overlay;
 		return "";
 	},
-	"6": (x, y, Fog, noReplace) => {
+	"6": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile?.Overlay) return tile.Overlay;
 		return "";
 	},
-	"Z": (x, y, Fog, noReplace) => {
+	"Z": (_x, _y, _Fog, _noReplace) => {
 		return "Signal/AutoLock";
 	},
-	"H": (x, y, Fog, noReplace) => {
+	"H": (_x, _y, _Fog, _noReplace) => {
 		return "StairsDown";
 	},
-	"s": (x, y, Fog, noReplace) => {
+	"s": (_x, _y, _Fog, _noReplace) => {
 		return "StairsDown";
 	},
-	"S": (x, y, Fog, noReplace) => {
+	"S": (_x, _y, _Fog, _noReplace) => {
 		return "StairsUp";
 	},
-	"-": (x, y, Fog, noReplace) => {
+	"-": (_x, _y, _Fog, _noReplace) => {
 		return "ChargerSpent";
 	},
-	"l": (x, y, Fog, noReplace) => {
+	"l": (_x, _y, _Fog, _noReplace) => {
 		return "Leyline";
 	},
-	";": (x, y, Fog, noReplace) => {
+	";": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile?.Portal) return tile.Portal;
 		return "";
 	},
-	"+": (x, y, Fog, noReplace) => {
+	"+": (_x, _y, _Fog, _noReplace) => {
 		return "Charger";
 	},
-	"=": (x, y, Fog, noReplace) => {
+	"=": (_x, _y, _Fog, _noReplace) => {
 		return "ChargerCrystal";
 	},
-	"Y": (x, y, Fog, noReplace) => {
+	"Y": (_x, _y, _Fog, _noReplace) => {
 		return "Rubble";
 	},
-	"/": (x, y, Fog, noReplace) => {
+	"/": (_x, _y, _Fog, _noReplace) => {
 		return "Scrap";
 	},
-	"R": (x, y, Fog, noReplace) => {
+	"R": (_x, _y, _Fog, _noReplace) => {
 		return "Rubble";
 	},
-	"$": (x, y, Fog, noReplace) => {
+	"$": (_x, _y, _Fog, _noReplace) => {
 		return "Angel";
 	},
-	"m": (x, y, Fog, noReplace) => {
+	"m": (_x, _y, _Fog, _noReplace) => {
 		return "TabletSpent";
 	},
-	"M": (x, y, Fog, noReplace) => {
+	"M": (x, y, _Fog, _noReplace) => {
 		if (KinkyDungeonTilesGet(x + "," + y) && !Object.keys(KinkyDungeonGoddessRep).includes(KinkyDungeonTilesGet(x + "," + y).Name)) return "Tablet" + KinkyDungeonTilesGet(x + "," + y).Name;
 		return "Tablet";
 	},
-	"[": (x, y, Fog, noReplace) => {
+	"[": (_x, _y, _Fog, _noReplace) => {
 		return "Spores";
 	},
-	"]": (x, y, Fog, noReplace) => {
+	"]": (_x, _y, _Fog, _noReplace) => {
 		return "HappyGas";
 	},
-	"w": (x, y, Fog, noReplace) => {
+	"w": (_x, _y, _Fog, _noReplace) => {
 		return "Water";
 	},
-	"W": (x, y, Fog, noReplace) => {
+	"W": (_x, _y, _Fog, _noReplace) => {
 		return "Water";
 	},
-	"O": (x, y, Fog, noReplace) => {
+	"O": (_x, _y, _Fog, _noReplace) => {
 		return "Orb";
 	},
-	"P": (x, y, Fog, noReplace) => {
+	"P": (_x, _y, _Fog, _noReplace) => {
 		return "Perk";
 	},
-	",": (x, y, Fog, noReplace) => {
+	",": (_x, _y, _Fog, _noReplace) => {
 		return "HookLow";
 	},
-	"?": (x, y, Fog, noReplace) => {
+	"?": (_x, _y, _Fog, _noReplace) => {
 		return "HookHigh";
 	},
-	"B": (x, y, Fog, noReplace) => {
+	"B": (_x, _y, _Fog, _noReplace) => {
 		return "Bed";
 	},
-	"G": (x, y, Fog, noReplace) => {
+	"G": (x, y, _Fog, _noReplace) => {
 		let sprite = "Ghost";
 		if (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Msg || KinkyDungeonTilesGet(x + "," + y).Dialogue)) {
 			sprite = "GhostImportant";
 		}
 		return sprite;
 	},
-	"L": (x, y, Fog, noReplace) => {
+	"L": (x, y, _Fog, _noReplace) => {
 		if (KinkyDungeonTilesGet(x + "," + y)) {
 			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";
 			if (furn) {
@@ -698,7 +661,7 @@ const KDOverlays = {
 			}
 		}
 	},
-	"F": (x, y, Fog, noReplace) => {
+	"F": (x, y, _Fog, _noReplace) => {
 		let sprite = "Table";
 		if (KinkyDungeonTilesGet(x + "," + y)) {
 			let table = "Table";
@@ -708,7 +671,7 @@ const KDOverlays = {
 		}
 		return sprite;
 	},
-	"4": (x, y, Fog, noReplace) => {
+	"4": (x, y, _Fog, _noReplace) => {
 		let left = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x - 1, y));
 		let right = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, y));
 		let up = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y - 1));
@@ -729,7 +692,7 @@ const KDOverlays = {
 
 
 
-	"c": (x, y, Fog, noReplace) => {
+	"c": (x, y, _Fog, _noReplace) => {
 		return (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "gold" || KinkyDungeonTilesGet(x + "," + y).Loot == "lessergold")) ? "ChestGoldOpen" :
 		((KinkyDungeonTilesGet(x + "," + y) && (KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot])) ? KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot] + "Open" :
 			((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "blue")) ? "ChestBlueOpen" :
@@ -737,7 +700,7 @@ const KDOverlays = {
 			((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "pearl" || KinkyDungeonTilesGet(x + "," + y).Loot == "lesserpearl")) ? "ChestPearlOpen" : "ChestOpen"))));
 	},
 
-	"C": (x, y, Fog, noReplace) => {
+	"C": (x, y, _Fog, _noReplace) => {
 		return (KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "gold" || KinkyDungeonTilesGet(x + "," + y).Loot == "lessergold")) ? "ChestGold" :
 		((KinkyDungeonTilesGet(x + "," + y) && (KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot])) ? KDSpecialChests[KinkyDungeonTilesGet(x + "," + y).Loot] :
 		((KinkyDungeonTilesGet(x + "," + y) && (KinkyDungeonTilesGet(x + "," + y).Loot == "blue")) ? "ChestBlue" :
@@ -746,10 +709,10 @@ const KDOverlays = {
 	},
 
 
-	"@": (x, y, Fog, noReplace) => {
+	"@": (_x, _y, _Fog, _noReplace) => {
 		return "Signal/Button";
 	},
-	"V": (x, y, Fog, noReplace) => {
+	"V": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile) {
 			let tU = KinkyDungeonTilesGet(x + "," + (y - 1));
@@ -788,7 +751,7 @@ const KDOverlays = {
 		}
 		return "Conveyor/Conveyor";
 	},
-	"v": (x, y, Fog, noReplace) => {
+	"v": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile) {
 			let tU = KinkyDungeonTilesGet(x + "," + (y - 1));
@@ -827,13 +790,13 @@ const KDOverlays = {
 		}
 		return "Conveyor/Conveyor";
 	},
-	"t": (x, y, Fog, noReplace) => {
+	"t": (_x, _y, _Fog, _noReplace) => {
 		return "DollTerminal";
 	},
-	"u": (x, y, Fog, noReplace) => {
+	"u": (_x, _y, _Fog, _noReplace) => {
 		return "DollSupply";
 	},
-	"N": (x, y, Fog, noReplace) => {
+	"N": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + ',' + y);
 		let tileAbove = KinkyDungeonMapGet(x, y - 1);
 		let tileBelow = KinkyDungeonMapGet(x, y + 1);
@@ -875,9 +838,8 @@ const KDOverlays = {
 	},
 };
 
-/** @type KDSprites */
-const KDOverlays2 = {
-	"V": (x, y, Fog, noReplace) => {
+const KDOverlays2: KDSprites = {
+	"V": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile && tile.SwitchMode != undefined) {
 			let sprite = "";
@@ -896,7 +858,7 @@ const KDOverlays2 = {
 		}
 		return "";
 	},
-	"v": (x, y, Fog, noReplace) => {
+	"v": (x, y, _Fog, _noReplace) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile && tile.SwitchMode != undefined) {
 			let sprite = "";
@@ -915,19 +877,19 @@ const KDOverlays2 = {
 		}
 		return "";
 	},
-	"W": (x, y, Fog, noReplace) => {
+	"W": (_x, _y, _Fog, _noReplace) => {
 		return "WaterFoam";
 	},
 };
 
-function KinkyDungeonGetSprite(code, x, y, Fog, noReplace) {
+function KinkyDungeonGetSprite(code: string, x: number, y: number, Fog: boolean, noReplace: string) {
 	let sprite = "Floor";
 	if (KDSprites[code]) sprite = KDSprites[code](x, y, Fog, noReplace);
 	return sprite;
 }
 
 /** For multilayer sprites */
-function KinkyDungeonGetSpriteOverlay2(code, x, y, Fog, noReplace) {
+function KinkyDungeonGetSpriteOverlay2(code: string, x: number, y: number, Fog: boolean, noReplace: string) {
 	let sprite = "";
 	if (KDOverlays2[code]) sprite = KDOverlays2[code](x, y, Fog, noReplace);
 	if (KinkyDungeonTilesGet(x + "," + y) && KinkyDungeonTilesGet(x + "," + y).Skin2) {
@@ -936,7 +898,7 @@ function KinkyDungeonGetSpriteOverlay2(code, x, y, Fog, noReplace) {
 	return sprite;
 }
 
-function KinkyDungeonGetSpriteOverlay(code, x, y, Fog, noReplace) {
+function KinkyDungeonGetSpriteOverlay(code: string, x: number, y: number, Fog: boolean, noReplace: string) {
 	let sprite = "";
 	if (KDOverlays[code]) sprite = KDOverlays[code](x, y, Fog, noReplace);
 	if (KinkyDungeonTilesGet(x + "," + y) && KinkyDungeonTilesGet(x + "," + y).Skin) {
@@ -953,20 +915,16 @@ let KDSpecialChests = {
 	"robot" : "Chests/Robot",
 };
 
-/**
- * @type {Record<string, number>}
- */
-let KDLastKeyTime = {
-};
+let KDLastKeyTime: Record<string, number> = {};
 
-function KDDoModalX(bdata) {
+function KDDoModalX(_bdata) {
 	KinkyDungeonTargetTile = null;
 	KinkyDungeonTargetTileLocation = "";
 	KDModalArea = false;
 	KDPlayerSetPose = false;
 }
 
-function KDGetSpellRange(spell) {
+function KDGetSpellRange(spell: spell): number {
 	let data = {
 		spell: spell,
 		range: spell.range || 0,
@@ -1404,7 +1362,7 @@ function KinkyDungeonDrawGame() {
 
 						let spellRange = KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
 
-						let spellValid = (x, y, projAimOverride) => {
+						let spellValid = (x: number, y: number, projAimOverride?: boolean) => {
 							let free = KinkyDungeonOpenObjects.includes(KinkyDungeonMapGet(x, y)) || KinkyDungeonVisionGet(x, y) < 0.1;
 							if (!KinkyDungeonTargetingSpell.projectileTargeting && !KinkyDungeonTargetingSpell.CastInDark && !KinkyDungeonVisionGet(x, y)) return false;
 							let Valid = (!KinkyDungeonTargetingSpell.castCondition
@@ -1587,35 +1545,35 @@ function KinkyDungeonDrawGame() {
 						if (!enemy.ambushtrigger && KDAIType[KDGetAI(KinkyDungeonEnemyAt(cursorX, cursorY))]?.ambushtile) {
 							ambushTile = KDAIType[KDGetAI(enemy)].ambushtile;
 						} else {
-							tooltips.push((offset) => KDDrawEnemyTooltip(enemy, offset));
+							tooltips.push((offset: number) => KDDrawEnemyTooltip(enemy, offset));
 						}
 					}
 
 					if (!enemy && KDGameData.CurrentDialog) {
 						enemy = KDGetSpeaker();
 						if (enemy)
-							tooltips.push((offset) => KDDrawEnemyDialogue(enemy, offset));
+							tooltips.push((offset: number) => KDDrawEnemyDialogue(enemy, offset));
 					}
 
 					let items = KDMapData.GroundItems.filter((item) => {return item.x == cursorX && item.y == cursorY;});
 					if (items.length > 0) {
-						tooltips.push((offset) => KDDrawItemsTooltip(items, offset));
+						tooltips.push((offset: number) => KDDrawItemsTooltip(items, offset));
 					}
 
 					let eTiles = KDGetEffectTiles(cursorX, cursorY);
 					for (let etile of Object.values(eTiles)) {
 						if (KDEffectTileTooltips[etile.name] && KDCanSeeEffectTile(etile)) {
-							tooltips.push((offset) => KDDrawEffectTileTooltip(etile, cursorX, cursorY, offset));
+							tooltips.push((offset: number) => KDDrawEffectTileTooltip(etile, cursorX, cursorY, offset));
 						}
 					}
 					let tile = ambushTile || KinkyDungeonMapGet(cursorX, cursorY);
 					if (KDTileTooltips[tile] && (KinkyDungeonInspect || KDInteracting || KDTileTooltips[tile](cursorX, cursorY).noInspect)) {
-						tooltips.push((offset) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
+						tooltips.push((offset: number) => KDDrawTileTooltip(tile, cursorX, cursorY, offset));
 					}
 				} else if (KDGameData.CurrentDialog) {
 					let enemy = KDGetSpeaker();
 					if (enemy)
-						tooltips.push((offset) => KDDrawEnemyDialogue(enemy, offset));
+						tooltips.push((offset: number) => KDDrawEnemyDialogue(enemy, offset));
 				}
 
 				let tooltipOffset = KDFocusControls ? 70 : 0;
@@ -1999,31 +1957,31 @@ function KinkyDungeonDrawGame() {
 					DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");
 					DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", "#ffffff", "");
 
-					DrawButtonKDEx("debugAddKey", (bdata) => {
+					DrawButtonKDEx("debugAddKey", (_bdata) => {
 						KinkyDungeonRedKeys += 1;
 						KinkyDungeonBlueKeys += 1;
 						KinkyDungeonLockpicks += 1;
 						return true;
 					}, true, 600, 160, 300, 64, "Add keys and lockpicks", "#ffffff", "");
-					DrawButtonKDEx("debugAddVision", (bdata) => {
+					DrawButtonKDEx("debugAddVision", (_bdata) => {
 						KinkyDungeonSeeAll = !KinkyDungeonSeeAll;
 						return true;
 					}, true, 600, 240, 300, 64, "Toggle OmniVision™", "#ffffff", "");
-					DrawButtonKDEx("debugAddSP", (bdata) => {
+					DrawButtonKDEx("debugAddSP", (_bdata) => {
 						KinkyDungeonSpellPoints += 1;
 						return true;
 					}, true, 600, 320, 300, 64, "Add spell point", "#ffffff", "");
-					DrawButtonKDEx("debugClearQuickInv", (bdata) => {
+					DrawButtonKDEx("debugClearQuickInv", (_bdata) => {
 						KinkyDungeonInventory.get('looserestraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
 						return true;
 					}, true, 600, 400, 300, 64, "Clear loose restraints", "#ffffff", "");
-					DrawButtonKDEx("debugClearPlayerInv", (bdata) => {
+					DrawButtonKDEx("debugClearPlayerInv", (_bdata) => {
 						KinkyDungeonInventory.get('restraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
 						return true;
 					}, true, 600, 480, 300, 64, "Clear worn restraints", "#ffffff", "");
-					DrawButtonKDEx("debugaddallrest", (bdata) => {
+					DrawButtonKDEx("debugaddallrest", (_bdata) => {
 						// eslint-disable-next-line no-unused-vars
 						for (let r of KinkyDungeonRestraints) {
 							if (!KinkyDungeonInventoryGetLoose(r.name))
@@ -2031,26 +1989,26 @@ function KinkyDungeonDrawGame() {
 						}
 						return true;
 					}, true, 600, 560, 300, 64, "Add all restraints", "#ffffff", "");
-					DrawButtonKDEx("debugIncFloor", (bdata) => {
+					DrawButtonKDEx("debugIncFloor", (_bdata) => {
 						MiniGameKinkyDungeonLevel += 1;
 						KDGameData.JourneyY += 1;
 						KinkyDungeonSendEvent("tickFlags", {delta: 1});
 						KDTickSpecialStats();
 						return true;
 					}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
-					DrawButtonKDEx("+maxAP", (bdata) => {
+					DrawButtonKDEx("+maxAP", (_bdata) => {
 						KDGameData.StatMaxBonus.AP += 10;
 						return true;
 					}, true, 600, 720, 150, 64, "+Max DP", "#ffaaaa", "");
-					DrawButtonKDEx("+maxMP", (bdata) => {
+					DrawButtonKDEx("+maxMP", (_bdata) => {
 						KDGameData.StatMaxBonus.MP += 10;
 						return true;
 					}, true, 750, 720, 150, 64, "+Max MP", "#0088ff", "");
-					DrawButtonKDEx("+maxSP", (bdata) => {
+					DrawButtonKDEx("+maxSP", (_bdata) => {
 						KDGameData.StatMaxBonus.SP += 10;
 						return true;
 					}, true, 600, 800, 150, 64, "+Max SP", "#44ff00", "");
-					DrawButtonKDEx("+maxWP", (bdata) => {
+					DrawButtonKDEx("+maxWP", (_bdata) => {
 						KDGameData.StatMaxBonus.WP += 10;
 						return true;
 					}, true, 750, 800, 150, 64, "+Max WP", "#ff5555", "");
@@ -2088,7 +2046,7 @@ function KinkyDungeonDrawGame() {
 			DrawButtonVis(1650, 920, 300, 64, TextGet("KinkyDungeonLoadBack"), "#ffffff", "");
 
 			if (!KDClipboardDisabled)
-				DrawButtonKDEx("copyperks", (bdata) => {
+				DrawButtonKDEx("copyperks", (_bdata) => {
 					let txt = "";
 					for (let k of KinkyDungeonStatsChoice.keys()) {
 						if (!k.startsWith("arousal") && !k.endsWith("Mode")) txt += (txt ? "\n" : "") + k;
@@ -2213,13 +2171,12 @@ function KDShouldDrawFloaters() {
 
 /**
  * Draws arousal screen filter
- * @param {number} y1 - Y to draw filter at.
- * @param {number} h - Height of filter
- * @param {number} Width - Width of filter
- * @param {number} ArousalOverride - Override to the existing arousal value
- * @returns {void} - Nothing.
+ * @param y1 - Y to draw filter at.
+ * @param h - Height of filter
+ * @param Width - Width of filter
+ * @param ArousalOverride - Override to the existing arousal value
  */
-function KDDrawArousalScreenFilter(y1, h, Width, ArousalOverride, Color = '255, 100, 176', AlphaBonus = 0) {
+function KDDrawArousalScreenFilter(_y1: number, _h: number, _Width: number, _ArousalOverride: number, _Color: string = '255, 100, 176', _AlphaBonus: number = 0): void {
 	/*let Progress = (ArousalOverride) ? ArousalOverride : Player.ArousalSettings.Progress;
 	let amplitude = 0.24 * Math.min(1, 2 - 1.5 * Progress/100); // Amplitude of the oscillation
 	let percent = Progress/100.0;
@@ -2268,7 +2225,7 @@ let KDBulletSpeed = 40;
 let KDEntitiesFloaterRegisty = new Map();
 let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
 
-function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, suff = "", size, prefix) {
+function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color: string, Time?: number, LocationOverride?: boolean, suff: string = "", size?: number, prefix?: string) {
 	if (Entity.x && Entity.y) {
 		let II = KDEntitiesFloaterRegisty.get(Entity) || 1;
 		II += 1;
@@ -2291,7 +2248,7 @@ function KinkyDungeonSendFloater(Entity, Amount, Color, Time, LocationOverride, 
 }
 
 
-function KinkyDungeonDrawFloaters(CamX, CamY, onlyAbs = false) {
+function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean = false) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
 
 	let KDFloaterYCache = {};
@@ -2351,10 +2308,9 @@ function KinkyDungeonDrawFloaters(CamX, CamY, onlyAbs = false) {
 
 /**
  * Easing function makes things smooth
- * @param {number} value
- * @returns {number}
+ * @param value
  */
-function KDEase(value) {
+function KDEase(value: number): number {
 	if (value < 0.25)
 		return Math.sin(value * Math.PI * 2);
 	else if (value > 0.75)
@@ -2391,9 +2347,9 @@ let KDLogFilters = [
 	"Kills",
 ];
 
-function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false, width = KDMsgWidthMin) {
+function KinkyDungeonDrawMessages(NoLog?: boolean, shiftx: number = 0, noBG: boolean = false, width: number = KDMsgWidthMin) {
 	if (!NoLog) {
-		DrawButtonKDEx("logtog", (bdata) => {
+		DrawButtonKDEx("logtog", (_bdata) => {
 			KinkyDungeonMessageToggle = !KinkyDungeonMessageToggle;
 			KDLogIndex = 0;
 			return true;
@@ -2419,7 +2375,7 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false, width = KDMsg
 			let ii = 0;
 			for (let filter of KDLogFilters) {
 				if (
-					DrawButtonKDEx("logtog" + filter, (bdata) => {
+					DrawButtonKDEx("logtog" + filter, (_bdata) => {
 						KDGameData.LogFilters[filter] = !KDGameData.LogFilters[filter];
 						return true;
 					}, true, filterX + spacing * (ii%filterCols), filterY + spacing*Math.floor(ii/filterCols), size, size, "", "#ffffff",
@@ -2537,13 +2493,13 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false, width = KDMsg
 			ii++;
 		}
 		if (KinkyDungeonMessageLog.length > KDMaxLog) {
-			DrawButtonKDEx("logscrollup", (bdata) => {
+			DrawButtonKDEx("logscrollup", (_bdata) => {
 				if (KDLogIndex > 0)
 					KDLogIndex = Math.max(0, KDLogIndex - KDLogIndexInc);
 				return true;
 			}, true, 1500, 20, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
 			//KDMsgX + shiftx + KDMsgWidth/2 - 45, KDLogTopPad + KDLogHeight + 10
-			DrawButtonKDEx("logscrolldown", (bdata) => {
+			DrawButtonKDEx("logscrolldown", (_bdata) => {
 				if (KDLogIndex < KinkyDungeonMessageLog.length - KDMaxLog)
 					KDLogIndex = Math.min(Math.max(0, KinkyDungeonMessageLog.length - KDMaxLog), KDLogIndex + KDLogIndexInc);
 				return true;
@@ -2557,9 +2513,10 @@ function KinkyDungeonDrawMessages(NoLog, shiftx = 0, noBG = false, width = KDMsg
 	}
 }
 
-function KDhexToRGB(h) {
+function KDhexToRGB(h: string) {
 	let r = "", g = "", b = "";
 
+	// TODO: Sanity check that h[0] == '#'
 	// 3 digits
 	if (h.length == 4) {
 		r = h[1] + h[1];
@@ -2576,7 +2533,10 @@ function KDhexToRGB(h) {
 	return {r:r, g:g, b:b};
 }
 
-function KinkyDungeonUpdateVisualPosition(Entity, amount) {
+function KinkyDungeonUpdateVisualPosition(Entity: any, amount: number) {
+	/*
+	 * FIXME: `Entity` looks like an entity type, but this function manipulates fields not defined in the interface.
+	 */
 	if (amount < 0 || Entity.visual_x == undefined || Entity.visual_y == undefined) {
 		Entity.visual_x = (Entity.xx != undefined) ? Entity.xx : Entity.x;
 		Entity.visual_y = (Entity.yy != undefined) ? Entity.yy : Entity.y;
@@ -2656,9 +2616,8 @@ function KinkyDungeonUpdateVisualPosition(Entity, amount) {
 
 /**
  * Sets the target location based on MOUSE location
- * @param {boolean} helper
  */
-function KinkyDungeonSetTargetLocation(helper = true) {
+function KinkyDungeonSetTargetLocation(helper: boolean = true) {
 	//let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
 	//let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
 	KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamX);
@@ -2711,6 +2670,17 @@ function KinkyDungeonSetMoveDirection() {
 
 }
 
+type RectParams = {
+	Left:       number,
+	Top:        number,
+	Width:      number,
+	Height:     number,
+	Color:      string,
+	zIndex:     number,
+	LineWidth?: number,
+	alpha?:     number
+}
+
 let KDBoxThreshold = 60;
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
@@ -2718,34 +2688,34 @@ let KDBorderColor = '#f0b541';
 
 /**
  * Draws a box component
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Color - Color of the component
- * @param {boolean} [NoBorder] - Color of the component
- * @param {number} [Alpha] - Transparency of the box
- * @param {number} [zIndex] - z Index
- *  @returns {void} - Nothing
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Color - Color of the component
+ * @param [NoBorder] - Color of the component
+ * @param [Alpha] - Transparency of the box
+ * @param [zIndex] - z Index
+ * @returns - Nothing
  */
-function DrawBoxKD(Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90) {
+function DrawBoxKD(Left: number, Top: number, Width: number, Height: number, Color: string, NoBorder?: boolean, Alpha?: number, zIndex: number = 90): void {
 	DrawBoxKDTo(kdcanvas, Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex);
 }
 
 /**
  * Draws a box component
- * @param {any} Container - Container to draw to
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Color - Color of the component
- * @param {boolean} [NoBorder] - Color of the component
- * @param {number} [Alpha] - Transparency of the box
- * @param {number} [zIndex] - z Index
- *  @returns {void} - Nothing
+ * @param Container - Container to draw to
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Color - Color of the component
+ * @param [NoBorder] - Color of the component
+ * @param [Alpha] - Transparency of the box
+ * @param [zIndex] - z Index
+ * @returns - Nothing
  */
-function DrawBoxKDTo(Container, Left, Top, Width, Height, Color, NoBorder, Alpha, zIndex = 90) {
+function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width: number, Height: number, Color: string, NoBorder?: boolean, Alpha?: number, zIndex: number = 90): void {
 	FillRectKD(Container || kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
 		Left: Left,
 		Top: Top,
@@ -2773,43 +2743,86 @@ function DrawBoxKDTo(Container, Left, Top, Width, Height, Color, NoBorder, Alpha
 let KDFont = 'Arial';
 
 /**
- *
- * @param {*} Text
- * @param {*} X
- * @param {*} Y
- * @param {*} Width
- * @param {*} Color
- * @param {*} [BackColor]
- * @param {*} [FontSize]
- * @param {*} [Align]
- * @param {*} [zIndex]
- * @param {*} [alpha]
- * @param {*} [border]
- * @param {boolean} [unique] - This button is not differentiated by position
- * @param {string} [font] - This button is not differentiated by position
+ * @param Text
+ * @param X
+ * @param Y
+ * @param Width
+ * @param Color
+ * @param [BackColor]
+ * @param [FontSize]
+ * @param [Align]
+ * @param [zIndex]
+ * @param [alpha]
+ * @param [border]
+ * @param [unique] - This button is not differentiated by position
+ * @param [font] - This button is not differentiated by position
  */
-function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined, font) {
+function DrawTextFitKD (
+	Text:       string,
+	X:          number,
+	Y:          number,
+	Width:      number,
+	Color:      string,
+	BackColor?: string,
+	FontSize?:  number,
+	Align?:     string,
+	zIndex:     number = 110,
+	alpha:      number = 1.0,
+	border:     number = undefined,
+	unique:     boolean = undefined,
+	font?:      string
+) {
 	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font);
 }
 
+type TextParamsType = {
+	Text:      string,
+	X:         number,
+	Y:         number,
+	Width?:    number,
+	Color:     string,
+	BackColor: string,
+	FontSize?: number,
+	align?:    string,
+	zIndex?:   number,
+	alpha?:    number,
+	border?:   number,
+	unique?:   boolean,
+	font?:     string,
+}
+
 /**
- *
- * @param {any} Container
- * @param {*} Text
- * @param {*} X
- * @param {*} Y
- * @param {*} Width
- * @param {*} Color
- * @param {*} [BackColor]
- * @param {*} [FontSize]
- * @param {*} [Align]
- * @param {*} [zIndex]
- * @param {*} [alpha]
- * @param {*} [border]
- * @param {boolean} [unique] - This button is not differentiated by position
- * @param {string} [font] - This button is not differentiated by position
+ * @param Container
+ * @param Text
+ * @param X
+ * @param Y
+ * @param Width
+ * @param Color
+ * @param [BackColor]
+ * @param [FontSize]
+ * @param [Align]
+ * @param [zIndex]
+ * @param [alpha]
+ * @param [border]
+ * @param [unique] - This button is not differentiated by position
+ * @param [font] - This button is not differentiated by position
  */
-function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined, unique = undefined, font) {
+function DrawTextFitKDTo (
+	Container:  PIXIContainer,
+	Text:       string,
+	X:          number,
+	Y:          number,
+	Width:      number,
+	Color:      string,
+	BackColor?: string,
+	FontSize?:  number,
+	Align?:     string,
+	zIndex:     number = 110,
+	alpha:      number = 1.0,
+	border:     number = undefined,
+	unique:     boolean = undefined,
+	font?:     string
+) {
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
@@ -2831,18 +2844,28 @@ function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSiz
 }
 
 /**
- *
- * @param {*} Text
- * @param {*} X
- * @param {*} Y
- * @param {*} Color
- * @param {*} [BackColor]
- * @param {*} [FontSize]
- * @param {*} [Align]
- * @param {*} [zIndex]
- * @param {*} [alpha]
+ * @param Text
+ * @param X
+ * @param Y
+ * @param Color
+ * @param [BackColor]
+ * @param [FontSize]
+ * @param [Align]
+ * @param [zIndex]
+ * @param [alpha]
  */
-function DrawTextKD(Text, X, Y, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined) {
+function DrawTextKD (
+	Text:       string,
+	X:          number,
+	Y:          number,
+	Color:      string,
+	BackColor?: string,
+	FontSize?:  number,
+	Align?:     string,
+	zIndex:     number = 110,
+	alpha:      number = 1.0,
+	border:     number = undefined
+) {
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
@@ -2862,14 +2885,13 @@ function DrawTextKD(Text, X, Y, Color, BackColor, FontSize, Align, zIndex = 110,
 }
 
 
+
 let KDAllowText = true;
 
 /**
- *
- * @param {{Text: string, X: number, Y: number, Width?: number, Color: string, BackColor: string, FontSize?: number, align?: string, zIndex?: number, alpha?: number, border?: number, unique?: boolean, font?: string}} Params
- * @returns {boolean} - If it worked
+ * @returns  True if it worked
  */
-function DrawTextVisKD(Container, Map, id, Params) {
+function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): boolean {
 	if (!KDAllowText) return;
 	let sprite = Map.get(id);
 	let same = true;
@@ -2939,12 +2961,13 @@ function DrawTextVisKD(Container, Map, id, Params) {
 
 /**
  * Draws a basic rectangle filled with a given color
- * @param {any} Container
- * @param {Map<string, any>} Map
- * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth: number, zIndex: number, alpha?: number}} Params - rect parameters
- * @returns {boolean} - If it worked
+ * @param Container
+ * @param Map
+ * @param Params - rect parameters
+ * @param Params - rect parameters
+ * @returns - If it worked
  */
-function DrawRectKD(Container, Map, id, Params) {
+function DrawRectKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -2983,12 +3006,12 @@ function DrawRectKD(Container, Map, id, Params) {
 }
 /**
  * Draws a hollow circle
- * @param {any} Container
- * @param {Map<string, any>} Map
- * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth: number, zIndex: number, alpha?: number}} Params - rect parameters
- * @returns {boolean} - If it worked
+ * @param Container
+ * @param Map
+ * @param Params - Circle drawing parameters (a circle is very blunt rectangle)
+ * @returns - If it worked
  */
-function DrawCircleKD(Container, Map, id, Params) {
+function DrawCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -3029,12 +3052,12 @@ function DrawCircleKD(Container, Map, id, Params) {
 
 /**
  * Draws a +
- * @param {any} Container
- * @param {Map<string, any>} Map
- * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth: number, zIndex: number, alpha?: number}} Params - rect parameters
- * @returns {boolean} - If it worked
+ * @param Container
+ * @param Map
+ * @param Params - rendering parameters
+ * @returns - If it worked
  */
-function DrawCrossKD(Container, Map, id, Params) {
+function DrawCrossKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -3076,12 +3099,12 @@ function DrawCrossKD(Container, Map, id, Params) {
 
 /**
  * Draws a basic rectangle filled with a given color
- * @param {any} Container
- * @param {Map<string, any>} Map
- * @param {{Left: number, Top: number, Width: number, Height: number, Color: string, LineWidth?: number, zIndex: number, alpha?: number}} Params - rect parameters
- * @returns {boolean} - If it worked
+ * @param Container
+ * @param Map
+ * @param Params - rect parameters
+ * @returns - If it worked
  */
-function FillRectKD(Container, Map, id, Params) {
+function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: RectParams): boolean {
 	let sprite = Map.get(id);
 	let same = true;
 	if (sprite && kdprimitiveparams.has(id)) {
@@ -3119,74 +3142,136 @@ function FillRectKD(Container, Map, id, Params) {
 	return false;
 }
 
+type ButtonOptions = {
+	///  Dont show text backgrounds
+	noTextBG?:    boolean;
+	alpha?:       number;
+	/// zIndex
+	zIndex?:      number;
+	/// This button is not differentiated by position
+	unique?:      boolean;
+	/// Scale image to fit
+	scaleImage?:  boolean;
+	/// centered
+	centered?:    boolean
+	/// centered
+	centerText?:  boolean;
+	/// tint
+	tint?:        string;
+	/// hotkey
+	hotkey?:      string;
+	/// hotkey
+	hotkeyPress?: string;
+	/// filters
+	filters?:     any[];
+	font?:        string;
+	fontSize?:    number;
+	maxWidth?:    number;
+}
+
 /**
  * Draws a button component
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text to display in the button
- * @param {string} Color - Color of the component
- * @param {string} [Image] - URL of the image to draw inside the button, if applicable
- * @param {string} [HoveringText] - Text of the tooltip, if applicable
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {boolean} [NoBorder] - Disables the button border and only draws the image and selection halo
- * @param {string} [FillColor] - Color of the background
- * @param {number} [FontSize] - Color of the background
- * @param {boolean} [ShiftText] - Shift text to make room for the button
- * @param {boolean} [Stretch] - Stretch the image to fit
- * @param {number} [zIndex] - Stretch the image to fit
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha]
- * @param {number} [options.zIndex] - zIndex
- * @param {boolean} [options.scaleImage] - zIndex
- * @param {boolean} [options.centered] - centered
- * @param {boolean} [options.centerText] - centered
- * @param {string} [options.tint] - tint
- * @param {string} [options.hotkey] - hotkey
- * @param {string} [options.hotkeyPress] - hotkey
- * @param {any[]} [options.filters] - filters
- * @returns {void} - Nothing
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables the button border and only draws the image and selection halo
+ * @param [FillColor] - Color of the background
+ * @param [FontSize] - Color of the background
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [Stretch] - Stretch the image to fit
+ * @param [zIndex] - Stretch the image to fit
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha]
+ * @param [options.zIndex] - zIndex
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @param [options.filters] - filters
  */
-function DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
+function DrawButtonVis (
+	Left:          number,
+	Top:           number,
+	Width:         number,
+	Height:        number,
+	Label:         string,
+	Color:         string,
+	Image?:        string,
+	HoveringText?: string,
+	Disabled?:     boolean,
+	NoBorder?:     boolean,
+	FillColor?:    string,
+	FontSize?:     number,
+	ShiftText?:    boolean,
+	Stretch?:      boolean,
+	zIndex:        number = 100,
+	options?:      ButtonOptions
+): void
+{
 	DrawButtonVisTo(kdcanvas, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex, options);
 }
 
 
 /**
  * Draws a button component
- * @param {any} Container - Container to draw to
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text to display in the button
- * @param {string} Color - Color of the component
- * @param {string} [Image] - URL of the image to draw inside the button, if applicable
- * @param {string} [HoveringText] - Text of the tooltip, if applicable
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {boolean} [NoBorder] - Disables the button border and only draws the image and selection halo
- * @param {string} [FillColor] - Color of the background
- * @param {number} [FontSize] - Color of the background
- * @param {boolean} [ShiftText] - Shift text to make room for the button
- * @param {boolean} [Stretch] - Stretch the image to fit
- * @param {number} [zIndex] - Stretch the image to fit
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha]
- * @param {number} [options.zIndex] - zIndex
- * @param {boolean} [options.unique] - This button is not differentiated by position
- * @param {boolean} [options.scaleImage] - zIndex
- * @param {boolean} [options.centered] - centered
- * @param {boolean} [options.centerText] - centered
- * @param {string} [options.tint] - tint
- * @param {string} [options.hotkey] - hotkey
- * @param {string} [options.hotkeyPress] - hotkey
- * @param {any[]} [options.filters] - filters
- * @returns {void} - Nothing
+ * @param Container - Container to draw to
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables the button border and only draws the image and selection halo
+ * @param [FillColor] - Color of the background
+ * @param [FontSize] - Color of the background
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [Stretch] - Stretch the image to fit
+ * @param [zIndex] - Stretch the image to fit
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha]
+ * @param [options.zIndex] - zIndex
+ * @param [options.unique] - This button is not differentiated by position
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @param [options.filters] - filters
  */
-function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, Stretch, zIndex = 100, options) {
+function DrawButtonVisTo (
+	Container:     PIXIContainer,
+	Left:          number,
+	Top:           number,
+	Width:         number,
+	Height:        number,
+	Label:         string,
+	Color:         string,
+	Image?:        string,
+	HoveringText?: string,
+	Disabled?:     boolean,
+	NoBorder?:     boolean,
+	FillColor?:    string,
+	FontSize?:     number,
+	ShiftText?:    boolean,
+	Stretch?:      boolean,
+	zIndex:        number = 100,
+	options?:      ButtonOptions
+): void
+{
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (!NoBorder || FillColor)
 		DrawBoxKDTo(Container, Left, Top, Width, Height,
@@ -3217,7 +3302,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 				zIndex: zIndex + 0.01,
 				filters: options?.filters,
 			};
-			if (options?.tint) o.tint = options.tint;
+			if (options?.tint) o['tint'] = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top,
 				Width, Height, undefined, o);
@@ -3230,7 +3315,7 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 				zIndex: zIndex + 0.01,
 				filters: options?.filters,
 			};
-			if (options?.tint) o.tint = options.tint;
+			if (options?.tint) o['tint'] = options.tint;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left,
 				Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
@@ -3266,21 +3351,32 @@ function DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Imag
 
 /**
  * Draws a checkbox component
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Text - Label associated with the checkbox
- * @param {boolean} IsChecked - Whether or not the checkbox is checked
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {string} [TextColor] - Color of the text
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha]
- * @param {number} [options.zIndex] - zIndex
- * @returns {void} - Nothing
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Text - Label associated with the checkbox
+ * @param IsChecked - Whether or not the checkbox is checked
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [TextColor] - Color of the text
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha]
+ * @param [options.zIndex] - zIndex
  */
-function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
+function DrawCheckboxVis (
+	Left:        number,
+	Top:         number,
+	Width:       number,
+	Height:      number,
+	Text:        string,
+	IsChecked:   boolean,
+	Disabled:    boolean = false,
+	TextColor:   string = KDTextGray0,
+	_CheckImage: string = "Icons/Checked.png",
+	options?:    ButtonOptions
+): void
+{
 	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333", undefined, "left");
 	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
 		undefined, undefined, undefined, undefined, undefined, options?.zIndex, options);
@@ -3290,27 +3386,41 @@ function DrawCheckboxVis(Left, Top, Width, Height, Text, IsChecked, Disabled = f
 
 /**
  * Draws a checkbox component
- * @param {string} name - Name of the button element
- * @param {(bdata: any) => boolean} func - Whether or not you can click on it
- * @param {boolean} enabled - Whether or not you can click on it
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Text - Label associated with the checkbox
- * @param {boolean} IsChecked - Whether or not the checkbox is checked
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {string} [TextColor] - Color of the text
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha]
- * @param {number} [options.zIndex] - zIndex
- * @param {number} [options.maxWidth] - Max width
- * @param {number} [options.fontSize] - fontSize
- * @param {boolean} [options.scaleImage] - zIndex
- * @returns {void} - Nothing
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Text - Label associated with the checkbox
+ * @param IsChecked - Whether or not the checkbox is checked
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [TextColor] - Color of the text
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha]
+ * @param [options.zIndex] - zIndex
+ * @param [options.maxWidth] - Max width
+ * @param [options.fontSize] - fontSize
+ * @param [options.scaleImage] - zIndex
  */
-function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = KDTextGray0, CheckImage = "Icons/Checked.png", options) {
+function DrawCheckboxKDEx (
+	name:         string,
+	func:         (bdata: any) => boolean,
+	enabled:      boolean,
+	Left:         number,
+	Top:          number,
+	Width:        number,
+	Height:       number,
+	Text:         string,
+	IsChecked:    boolean,
+	Disabled:     boolean = false,
+	TextColor:    string = KDTextGray0,
+	_CheckImage:  string = "Icons/Checked.png",
+	options?:     ButtonOptions
+): void
+{
 	DrawTextFitKD(Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : "#ffffff", IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);
@@ -3319,25 +3429,39 @@ function DrawCheckboxKDEx(name, func, enabled, Left, Top, Width, Height, Text, I
 
 /**
  * Draw a back & next button component
- * @param {number} Left - Position of the component from the left of the canvas
- * @param {number} Top - Position of the component from the top of the canvas
- * @param {number} Width - Width of the component
- * @param {number} Height - Height of the component
- * @param {string} Label - Text inside the component
- * @param {string} Color - Color of the component
- * @param {string} [Image] - Image URL to draw in the component
- * @param {() => string} [BackText] - Text for the back button tooltip
- * @param {() => string} [NextText] - Text for the next button tooltip
- * @param {boolean} [Disabled] - Disables the hovering options if set to true
- * @param {number} [ArrowWidth] - How much of the button the previous/next sections cover. By default, half each.
- * @param {boolean} [NoBorder] - Disables the hovering options if set to true
- * @param {object} [options] - Additional options
- * @param {boolean} [options.noTextBG] - Dont show text backgrounds
- * @param {number} [options.alpha]
- * @param {string} [options.font]
- * @returns {void} - Nothing
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text inside the component
+ * @param Color - Color of the component
+ * @param [Image] - Image URL to draw in the component
+ * @param [BackText] - Text for the back button tooltip
+ * @param [NextText] - Text for the next button tooltip
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [ArrowWidth] - How much of the button the previous/next sections cover. By default, half each.
+ * @param [NoBorder] - Disables the hovering options if set to true
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha]
+ * @param [options.font]
  */
-function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, BackText, NextText, Disabled, ArrowWidth, NoBorder, options) {
+function DrawBackNextButtonVis (
+	Left:         number,
+	Top:          number,
+	Width:        number,
+	Height:       number,
+	Label:        string,
+	_Color:       string,
+	Image?:       string,
+	_BackText?:   () => string,
+	_NextText?:   () => string,
+	Disabled?:    boolean,
+	ArrowWidth?:  number,
+	_NoBorder?:   boolean,
+	options?:     ButtonOptions
+): void
+{
 	//let id = "BackNext" + Left + "," + Top + "," + Width + Color;
 	// Set the widths of the previous/next sections to be colored cyan when hovering over them
 	// By default each covers half the width, together covering the whole button
@@ -3451,7 +3575,7 @@ function DrawBackNextButtonVis(Left, Top, Width, Height, Label, Color, Image, Ba
  * @param {boolean} [Debug]
  * @returns {any}
  */
-function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis, Debug) {
+function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset: number, _CamX_offsetVis: number, _CamY_offsetVis: number, Debug?: boolean): any {
 	let tooltip = "";
 	let KinkyDungeonForceRender = "";
 	let KinkyDungeonForceRenderFloor = "";
@@ -3621,24 +3745,40 @@ function KDDrawMap(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_of
 }
 
 /**
- *
- * @param {any} Container
- * @param {Map<string, any>} Map
- * @param {string} Image
- * @param {number} Left
- * @param {number} Top
- * @param {number} Width
- * @param {number} Height
- * @param {number} [Rotation]
- * @param {any} [options]
- * @param {boolean} [Centered]
- * @param {Map<string, boolean>} [SpritesDrawn]
- * @param {number} [Scale]
- * @param {boolean} [Nearest]
+ * @param Container
+ * @param Map
+ * @param id
+ * @param Image
+ * @param Left
+ * @param Top
+ * @param Width
+ * @param Height
+ * @param [Rotation]
+ * @param [options]
+ * @param [Centered]
+ * @param [SpritesDrawn]
+ * @param [Scale]
+ * @param [Nearest]
  * @returns {any}
  */
-function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, options, Centered, SpritesDrawn, Scale, Nearest) {
-	let sprite = Map.get(id);
+function KDDraw (
+	Container:     PIXIContainer,
+	Map:           Map<string, any>,
+	id:            string,
+	Image:         string,
+	Left:          number,
+	Top:           number,
+	Width:         number,
+	Height:        number,
+	Rotation?:     number,
+	options?:      any,
+	Centered?:     boolean,
+	SpritesDrawn?: Map<string, boolean>,
+	Scale?:        number,
+	Nearest?:      boolean
+): any
+{
+	let sprite: PIXISprite = Map.get(id);
 	if (!sprite?.parent) sprite = null;
 	if (!sprite) {
 		// Load the texture
@@ -3690,9 +3830,9 @@ function KDDraw(Container, Map, id, Image, Left, Top, Width, Height, Rotation, o
 			if (options.filters && sprite.cacheAsBitmap) {
 				sprite.filters = null;
 			} else {
-				for (let o of Object.entries(options)) {
-					if (o[1] != undefined || o[0] != "tint")
-						sprite[o[0]] = o[1];
+				for (let [k, v] of Object.entries(options)) {
+					if (v != undefined || k != "tint")
+						sprite[k] = v;
 				}
 			}
 
@@ -3736,11 +3876,11 @@ let errorImg = {};
 
 /**
  * Returns a PIXI.Texture, or null if there isnt one
- * @param {string} Image
- * @param {boolean} [Nearest] - Use "nearest" scale mode
- * @returns {any}
+ * @param Image
+ * @param [Nearest] - Use "nearest" scale mode
+ * @returns - Requested texture
  */
-function KDTex(Image, Nearest) {
+function KDTex(Image: string, Nearest?: boolean): PIXITexture {
 	if (kdpixitex.has(Image)) return kdpixitex.get(Image);
 	if (errorImg[KDModFiles[Image] || Image]) return null;
 	try {
@@ -3757,16 +3897,11 @@ function KDTex(Image, Nearest) {
 	}
 }
 
-/**
- *
- * @param {string} str
- * @returns
- */
-function string2hex(str) {
+function string2hex(str: string) {
 	return PIXI.utils.string2hex(str);
 }
 
-function GetAdjacentList(list, index, width) {
+function GetAdjacentList(list: string[], index: number, width: number) {
 	return {
 		left: list.slice(0, index),
 		right: list.slice(index+width),
@@ -3774,7 +3909,7 @@ function GetAdjacentList(list, index, width) {
 }
 
 
-function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
+function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _CamY_offset?: number) {
 	KinkyDungeonUpdateLightGrid = false;
 	KDRedrawFog = 2;
 
@@ -3848,10 +3983,7 @@ function KDUpdateVision(CamX, CamY, CamX_offset, CamY_offset) {
 	KDVisionUpdate = 0;
 }
 
-/**
- * @type {Record<string, (x: number, y: number) => {color: string, text: string, desc?: string, noInspect?: boolean}>}
- */
-let KDTileTooltips = {
+let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, text: string, desc?: string, noInspect?: boolean}> = {
 	'1': () => {return {color: "#aaaaaa", text: "1"};},
 	'5': () => {return {color: "#aaaaaa", text: "5"};},
 	'6': () => {return {color: "#aaaaaa", text: "6"};},
@@ -3894,7 +4026,7 @@ let KDTileTooltips = {
 	'N': () => {return {color: "#4c6885", noInspect: true, text: "N"};},
 };
 
-function KDGetTileColor(x, y) {
+function KDGetTileColor(x: number, y: number): string {
 	let color = "";
 
 	if (!KDIsInBounds(x, y, 0)) return "#000000";
@@ -3921,7 +4053,7 @@ function KDGetTileColor(x, y) {
 }
 
 
-function KDDrawTileTooltip(maptile, x, y, offset) {
+function KDDrawTileTooltip(maptile: string, x: number, y: number, offset: number) {
 	let TooltipList = [];
 	TooltipList.push({
 		str: TextGet("KDTileTooltip" + KDTileTooltips[maptile](x, y).text),
@@ -3945,12 +4077,11 @@ function KDDrawTileTooltip(maptile, x, y, offset) {
 
 
 /**
- * @type {Record<string, {color: string, code: (tile, x, y, TooltipList) => void}>}
  */
-let KDEffectTileTooltips = {
+let KDEffectTileTooltips: Record<string, {color: string, code: (tile: effectTile, x: number, y: number, TooltipList: any[]) => void}> = {
 	'Portals/DarkPortal': {
 		color: "#8b53e9",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#8b53e9",
@@ -3969,7 +4100,7 @@ let KDEffectTileTooltips = {
 	},
 	'Runes': {
 		color: "#ff5555",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#ff5555",
@@ -3988,7 +4119,7 @@ let KDEffectTileTooltips = {
 	},
 	'RunesTrap': {
 		color: "#92e8c0",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#92e8c0",
@@ -4007,7 +4138,7 @@ let KDEffectTileTooltips = {
 	},
 	'BoobyTrapMagic': {
 		color: "#92e8c0",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#92e8c0",
@@ -4026,7 +4157,7 @@ let KDEffectTileTooltips = {
 	},
 	'BoobyTrap': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#ffffff",
@@ -4045,7 +4176,7 @@ let KDEffectTileTooltips = {
 	},
 	'NoTeleportPlate': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#ffffff",
@@ -4064,7 +4195,7 @@ let KDEffectTileTooltips = {
 	},
 	'TeleportPlateMana': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#ffffff",
@@ -4083,7 +4214,7 @@ let KDEffectTileTooltips = {
 	},
 	'TeleportPlate': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#ffffff",
@@ -4102,7 +4233,7 @@ let KDEffectTileTooltips = {
 	},
 	'Inferno': {
 		color: "#ff8855",
-		code: (tile, x, y, TooltipList) => {
+		code: (tile, _x, _y, TooltipList) => {
 			TooltipList.push({
 				str: TextGet("KDEffectTileTooltip" + tile.name),
 				fg: "#ff8855",
@@ -4121,114 +4252,113 @@ let KDEffectTileTooltips = {
 	},
 	'Ember': {
 		color: "#ffaa88",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffaa88");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffaa88");}},
 	'Ice': {
 		color: "#88ffff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");}},
 	'Water': {
 		color: "#8888ff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8888ff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8888ff");}},
 	'Vines': {
 		color: "#44ff44",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");}},
 	'Ropes': {
 		color: "#ffae70",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffae70", "KDEffectTileTooltipCMDBindings");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffae70", "KDEffectTileTooltipCMDBindings");}},
 	'Chains': {
 		color: "#aaaaaa",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#aaaaaa", "KDEffectTileTooltipCMDBindings");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#aaaaaa", "KDEffectTileTooltipCMDBindings");}},
 	'Belts': {
 		color: "#8f4d57",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8f4d57", "KDEffectTileTooltipCMDBindings");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8f4d57", "KDEffectTileTooltipCMDBindings");}},
 	'Fabric': {
 		color: "#ff5277",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff5277", "KDEffectTileTooltipCMDBindings");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff5277", "KDEffectTileTooltipCMDBindings");}},
 	'FabricGreen': {
 		color: "#4fd658",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#4fd658", "KDEffectTileTooltipCMDBindings");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#4fd658", "KDEffectTileTooltipCMDBindings");}},
 	'Slime': {
 		color: "#d952ff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff", "KDEffectTileTooltipCMDSlime");}},
 	'Glue': {
 		color: "#e7cf1a",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#e7cf1a", "KDEffectTileTooltipCMDGlue");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#e7cf1a", "KDEffectTileTooltipCMDGlue");}},
 	'Radiance': {
 		color: "#ffff00",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffff00", "Radiance");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffff00", "Radiance");}},
 	'Latex': {
 		color: "#d952ff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
 	'LatexThin': {
 		color: "#d952ff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
 	'Steam': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'Smoke': {
 		color: "#000000",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#888888");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#888888");}},
 	'Torch': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'TorchUnlit': {
 		color: "#888888",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'Lantern': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'LanternUnlit': {
 		color: "#888888",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'IllusOrb': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'IllusOrbDead': {
 		color: "#555555",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'EdgeOrb': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'MotionLamp': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'ManaEmpty': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'ManaPartial': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'ManaFull': {
 		color: "#ffffff",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'EdgeOrbDead': {
 		color: "#555555",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'TorchOrb': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'OrbLantern': {
 		color: "#ff8933",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ffffff");}},
 	'Cracked': {
 		color: "#ff8844",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
 	'Rubble': {
 		color: "#ff8844",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
 	'RubbleNoMend': {
 		color: "#ff8844",
-		code: (tile, x, y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#ff8844");}},
 };
 /**
- *
- * @param {effectTile} tile
- * @param {any[]} TooltipList
- * @param {string} color
- * @param {string} [extra]
- * @param {string} [descColor]
- * @param {string} [extraColor]
+ * @param tile
+ * @param TooltipList
+ * @param color
+ * @param [extra]
+ * @param [descColor]
+ * @param [extraColor]
  */
-function KDETileTooltipSimple(tile, TooltipList, color, extra, descColor = "#ffffff", extraColor = "#ffffff") {
+function KDETileTooltipSimple(tile: effectTile, TooltipList: any[], color: string, extra?: string, descColor: string = "#ffffff", extraColor: string = "#ffffff") {
 	TooltipList.push({
 		str: TextGet("KDEffectTileTooltip" + tile.name),
 		fg: color,
@@ -4255,27 +4385,19 @@ function KDETileTooltipSimple(tile, TooltipList, color, extra, descColor = "#fff
 }
 
 /**
- *
- * @param {effectTile} tile
- * @param {number} x
- * @param {number} y
- * @param {number} offset
- * @returns {number}
+ * @param tile
+ * @param x
+ * @param y
+ * @param offset
  */
-function KDDrawEffectTileTooltip(tile, x, y, offset) {
+function KDDrawEffectTileTooltip(tile: effectTile, x: number, y: number, offset: number): number {
 	let TooltipList = [];
 	KDEffectTileTooltips[tile.name].code(tile, x, y, TooltipList);
 
 	return KDDrawTooltip(TooltipList, offset);
 }
 
-/**
- *
- * @param {any[]} TooltipList
- * @param {number} offset
- * @returns {number}
- */
-function KDDrawTooltip(TooltipList, offset) {
+function KDDrawTooltip(TooltipList: any[], offset: number): number {
 	let TooltipWidth = 300;
 	let TooltipHeight = 0;
 	let extra = 5;
@@ -4346,13 +4468,13 @@ let KDDrawnElements = new Map();
 
 /**
  * Creates a text field with the specified params
- * @param {string} Name
- * @param {number} Left
- * @param {number} Top
- * @param {number} Width
- * @param {number} Height
+ * @param Name
+ * @param Left
+ * @param Top
+ * @param Width
+ * @param Height
  */
-function KDTextArea(Name, Left, Top, Width, Height) {
+function KDTextArea(Name: string, Left: number, Top: number, Width: number, Height: number) {
 	let Element = KDTempElements.get(Name);
 	let created = false;
 	if (!Element) {
@@ -4368,17 +4490,17 @@ function KDTextArea(Name, Left, Top, Width, Height) {
 
 /**
  * Creates a text field with the specified params
- * @param {string} Name
- * @param {number} Left
- * @param {number} Top
- * @param {number} Width
- * @param {number} Height
- * @param {string} Type
- * @param {string} Value
- * @param {string} MaxLength
- * @param {string} [TextSize]
+ * @param Name
+ * @param Left
+ * @param Top
+ * @param Width
+ * @param Height
+ * @param [Type]
+ * @param [Value]
+ * @param [MaxLength]
+ * @param [TextSize]
  */
-function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", MaxLength = "30", TextSize) {
+function KDTextField(Name: string, Left: number, Top: number, Width: number, Height: number, Type: string = "text", Value: string = "", MaxLength: string = "30", TextSize?: string) {
 	let Element = KDTempElements.get(Name);
 	let created = false;
 	if (!Element) {
@@ -4399,7 +4521,7 @@ function KDTextField(Name, Left, Top, Width, Height, Type = "text", Value = "", 
 /**
  * Culls the text fields and other DOM elements created
  */
-function KDCullTempElements() {
+function KDCullTempElements(): void {
 	for (let Name of KDTempElements.keys()) {
 		if (!KDDrawnElements.get(Name)) {
 			ElementRemove(Name);
@@ -4413,14 +4535,13 @@ function KDCullTempElements() {
 
 /**
  * Draws an existing HTML element at a specific position within the document. The element is "centered" on the given coordinates by dividing its height and width by two.
- * @param {string} ElementID - The id of the input tag to (re-)position.
- * @param {number} X - Center point of the element on the X axis.
- * @param {number} Y - Center point of the element on the Y axis.
- * @param {number} W - Width of the element.
- * @param {number} [H] - Height of the element.
- * @returns {void} - Nothing
+ * @param ElementID - The id of the input tag to (re-)position.
+ * @param X - Center point of the element on the X axis.
+ * @param Y - Center point of the element on the Y axis.
+ * @param W - Width of the element.
+ * @param [H] - Height of the element.
  */
-function KDElementPosition(ElementID, X, Y, W, H) {
+function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H?: number): void {
 	let E = document.getElementById(ElementID);
 
 	if (!E) {
@@ -4460,10 +4581,10 @@ function KDElementPosition(ElementID, X, Y, W, H) {
 	});
 }
 
-/** Whether or not to show the quick inv
- * @returns {boolean}
-*/
-function KDShowQuickInv() {
+/**
+ * Whether or not to show the quick inv
+ */
+function KDShowQuickInv(): boolean {
 	return KinkyDungeonShowInventory || (KDGameData.CurrentDialog && KDDialogue[KDGameData.CurrentDialog] && KDDialogue[KDGameData.CurrentDialog].inventory);
 }
 
@@ -4473,7 +4594,7 @@ let KDLastCamPos = {x: 0, y: 0};
 let KDDrawPlayer = true;
 
 
-function KDPlayerDrawPoseButtons(C) {
+function KDPlayerDrawPoseButtons(C: Character) {
 	if (!KDModalArea) {
 		KDModalArea_x = 650;
 		KDModalArea_y = 430;
@@ -4485,12 +4606,9 @@ function KDPlayerDrawPoseButtons(C) {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @returns {number} - the color in hex
+ * @returns  the color in hex
  */
-function KDGetLightColor(x, y) {
+function KDGetLightColor(x: number, y: number): number {
 	let light = KinkyDungeonBrightnessGet(x, y);
 	let color = KDAvgColor(KinkyDungeonColorGet(x, y), KinkyDungeonShadowGet(x, y), light, 1);
 	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
@@ -4498,23 +4616,16 @@ function KDGetLightColor(x, y) {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @returns {number} - the color in hex
+ * @returns  the color in hex
  */
-function KDGetLightColorGreyscale(x, y) {
+function KDGetLightColorGreyscale(x: number, y: number): number {
 	let light = KinkyDungeonBrightnessGet(x, y);
 	let color = KDAvgColor(0xaaaaff, 0x030303, light, 1);
 	color = KDAvgColor(color, 0xffffff, 1, 0.5); // Brighten
 	return color;
 }
 
-/**
- *
- * @returns {boolean}
- */
-function KDMouseInPlayableArea() {
+function KDMouseInPlayableArea(): boolean {
 	return MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
 		&& !MouseIn(0, 0, 500, 1000)
 		&& !MouseIn(1940, 0, 70, 1000)
@@ -4524,19 +4635,14 @@ function KDMouseInPlayableArea() {
 		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
 }
 
-/**
- *
- * @param {string} hotkey
- * @returns {string}
- */
-function KDHotkeyToText(hotkey) {
+function KDHotkeyToText(hotkey: string): string {
 	if (!hotkey) return "---";
 	return hotkey.replace("Digit", "").replace("Key", "").replace("Control", "Ctrl");
 }
 
 
 
-function KDGetTargetRetType(x, y) {
+function KDGetTargetRetType(x: number, y: number): string {
 	let enemy = KinkyDungeonEnemyAt(x, y);
 
 	if (enemy) {
@@ -4552,24 +4658,23 @@ function KDGetTargetRetType(x, y) {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {number} w
- * @param {number} scale
- * @param {string} selected
- * @param {string} [deffault]
- * @param {(string) => void} callback
+ * @param x
+ * @param y
+ * @param w
+ * @param [scale]
+ * @param [selected]
+ * @param [callback]
+ * @parap [text]
+ * @param [deffault]
  */
-function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelectPalette", deffault) {
+function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, selected: string, callback?: (s: string) => void, text: string = "KDSelectPalette", deffault?: string) {
 	if (selected == undefined) selected = (deffault != undefined ? deffault : KDDefaultPalette);
 	let XX = x;
 	let YY = y;
 	//let row = 0;
 	let column = 0;
 	let spacing = 80;
-	/** @type {[string, Record<string, LayerFilter>]} */
-	let zero = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
+	let zero: [string, Record<string, LayerFilter>] = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
 	DrawTextFitKD(TextGet(text), x + scale*(0.5 + w)/2, y - 36, scale*w, "#ffffff", KDTextGray0, 20);
 
 	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
@@ -4579,7 +4684,7 @@ function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelec
 					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
 				]
 			});
-		DrawButtonKDEx("choosepalette" + value[0], (b) => {
+		DrawButtonKDEx("choosepalette" + value[0], (_b) => {
 			if (callback) callback(value[0]);
 			else {
 				KDDefaultPalette = value[0];
@@ -4604,15 +4709,7 @@ function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelec
 	}
 }
 
-/**
- *
- * @param {number} color
- * @param {number} alpha
- * @param {number} quality
- * @param {number} thickness
- * @returns {PIXIFilter}
- */
-function KDGetOutlineFilter(color, alpha, quality, thickness) {
+function KDGetOutlineFilter(color: number, alpha: number, quality: number, thickness: number): PIXIFilter {
 	if (StandalonePatched) {
 		if (!KDOutlineFilterCache.get(`${color}_${alpha}_${quality}`)) {
 			KDOutlineFilterCache.set(`${color}_${alpha}_${quality}`, new PIXI.filters.OutlineFilter(thickness, color, quality, alpha, true));
@@ -4622,14 +4719,14 @@ function KDGetOutlineFilter(color, alpha, quality, thickness) {
 	return null;
 }
 
-function KDClearOutlineFilterCache() {
+function KDClearOutlineFilterCache(): void {
 	for (let f of KDOutlineFilterCache.values()) {
 		f.destroy();
 	}
 	KDOutlineFilterCache = new Map();
 }
 
-function KDGetFontMult(font) {
+function KDGetFontMult(font?: string) {
 	if (!font) font = KDSelectedFont;
 	if (KDFontsAlias.get(font)) {
 		return KDFontsAlias.get(font).width;
@@ -4648,14 +4745,22 @@ let KDCustomDraw = {
 	}
 };
 
+type InvColorFilterData = {
+	restraints:  Record<string, NPCRestraint>;
+	id:          number;
+	entity:      entity;
+	player:      entity;
+	force:       boolean;
+}
+
 let KDCustomDrawInvColorFilter = {
-	"Bondage": (data) => {
-		return (inv) => {
+	"Bondage": (data: InvColorFilterData) => {
+		return (inv: any) => {
 			if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, data.restraints))
 				return data.force ? KDTextGray1 : KDCanApplyBondage(data.entity, data.player,
 					inv ? (
 						KDRestraint(inv)?.quickBindCondition ?
-						(t, p) => (KDQuickBindConditions[KDRestraint(inv)?.quickBindCondition](
+						(t: entity, p: entity) => (KDQuickBindConditions[KDRestraint(inv)?.quickBindCondition](
 							t, p,
 							KDRestraint(inv),
 							inv)) :
@@ -4664,5 +4769,4 @@ let KDCustomDrawInvColorFilter = {
 			return "#e64539";
 		};
 	},
-
 };

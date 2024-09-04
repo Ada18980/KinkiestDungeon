@@ -2075,11 +2075,11 @@ function KinkyDungeonListSpells(Mode) {
 					DrawTextFitKD(TextGet("KinkyDungeonSpell" + spell.name),
 						xx + h + 2 + (spell.upcastFrom ? 0 : 8),
 						yy + h/2,
-						w - h*1.75, color, undefined, (spell.upcastFrom ? 18 : 22), "left", undefined, undefined, false);
+						w - h*1.75, color, undefined, (spell.upcastFrom ? 18 : 22), "left", undefined, undefined);
 					DrawTextFitKD(suff,
 						xx + w - 8,
 						yy + h/2,
-						h, KinkyDungeonSpellPoints >= cost ? color : "#ff5555", undefined, 20, "right", undefined, undefined, false);
+						h, KinkyDungeonSpellPoints >= cost ? color : "#ff5555", undefined, 20, "right", undefined, undefined);
 				} else if (Mode == "Click") {
 					if (MouseIn(xx,
 						yy,

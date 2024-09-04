@@ -1641,7 +1641,7 @@ interface entity {
 	/** Determines if an enemy can be dommed or not */
 	domVariance?: number,
 	hideTimer?: boolean,
-	Enemy: enemy,
+	Enemy?: enemy,
 
 	/** Amount of sound the entity is currently producing */
 	sound?: number,
@@ -1677,7 +1677,7 @@ interface entity {
 	specialdialogue?: string,
 	aggro?: number,
 	id?: number,
-	hp: number,
+	hp?: number,
 	mana?: number,
 	AI?: string,
 	moved?: boolean,
