@@ -1045,16 +1045,14 @@ let KDPatrons = [
 ];
 
 /**
- *
- * @param {enemy} Enemy
- * @param {entity} e
- * @param {number} chanceBoost
- * @returns {any}
+ * @param Enemy
+ * @param e
+ * @param chanceBoost
  */
-function KDProcessCustomPatron(Enemy, e, chanceBoost) {
+function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number): any {
 	let chance = 0.05 + (chanceBoost || 0); // Lower chance if 'subordinate'
 	if (!e.CustomName && KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
-		let customs = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
+		let customs: any[] = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
 			return (element.prisoner && KDEnemyHasFlag(e, "imprisoned")) || (element.free && !KDEnemyHasFlag(e, "imprisoned"));
 		});
 		if (customs.length > 0) {
@@ -1085,13 +1083,11 @@ function KDProcessCustomPatron(Enemy, e, chanceBoost) {
 
 
 /**
- *
- * @param {any[]} pets
- * @param {entity} e
- * @param {number} index
- * @returns {any}
+ * @param pets
+ * @param e
+ * @param index
  */
-function KDProcessCustomPatronPet(pets, e, index) {
+function KDProcessCustomPatronPet(pets: any[], e: entity, index: number): any {
 	if (pets) {
 		let customs = pets[e.Enemy.name];
 		if (customs?.length > 0 && index < customs.length) {
