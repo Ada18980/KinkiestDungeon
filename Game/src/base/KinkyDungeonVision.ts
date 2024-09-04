@@ -3,11 +3,11 @@
 // -Ada
 
 let KDMinimapIcons = {
-	'G': (x, y) => {return "UI/MiniMap/Ghost.png";},
-	'O': (x, y) => {return "UI/MiniMap/Orb.png";},
-	'S': (x, y) => {return "UI/MiniMap/Stairs.png";},
-	's': (x, y) => {return "UI/MiniMap/StairsDown.png";},
-	'H': (x, y) => {return "UI/MiniMap/StairsDown.png";},
+	'G': (_x, _y) => {return "UI/MiniMap/Ghost.png";},
+	'O': (_x, _y) => {return "UI/MiniMap/Orb.png";},
+	'S': (_x, _y) => {return "UI/MiniMap/Stairs.png";},
+	's': (_x, _y) => {return "UI/MiniMap/StairsDown.png";},
+	'H': (_x, _y) => {return "UI/MiniMap/StairsDown.png";},
 	'A': (x, y) => {
 		if (KinkyDungeonTilesGet(x + "," + y)?.drunk) {
 			if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
@@ -17,15 +17,15 @@ let KDMinimapIcons = {
 		if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
 			return "UI/MiniMap/ShrineManaQuest.png";
 		return "UI/MiniMap/ShrineMana.png";},
-	'=': (x, y) => {return "UI/MiniMap/ChargerEmpty.png";},
-	'+': (x, y) => {return "UI/MiniMap/ChargerCrystal.png";},
-	'D': (x, y) => {return "UI/MiniMap/DoorClosed.png";},
-	'd': (x, y) => {return "UI/MiniMap/DoorOpen.png";},
-	'B': (x, y) => {return "UI/MiniMap/Bed.png";},
-	'b': (x, y) => {return "UI/MiniMap/Bars.png";},
-	'g': (x, y) => {return "UI/MiniMap/Grate.png";},
-	'M': (x, y) => {return "UI/MiniMap/Tablet.png";},
-	'C': (x, y) => {return "UI/MiniMap/Chest.png";},
+	'=': (_x, _y) => {return "UI/MiniMap/ChargerEmpty.png";},
+	'+': (_x, _y) => {return "UI/MiniMap/ChargerCrystal.png";},
+	'D': (_x, _y) => {return "UI/MiniMap/DoorClosed.png";},
+	'd': (_x, _y) => {return "UI/MiniMap/DoorOpen.png";},
+	'B': (_x, _y) => {return "UI/MiniMap/Bed.png";},
+	'b': (_x, _y) => {return "UI/MiniMap/Bars.png";},
+	'g': (_x, _y) => {return "UI/MiniMap/Grate.png";},
+	'M': (_x, _y) => {return "UI/MiniMap/Tablet.png";},
+	'C': (_x, _y) => {return "UI/MiniMap/Chest.png";},
 };
 
 
@@ -36,7 +36,7 @@ let KinkyDungeonSeeAll = false;
 let KDVisionBlockers = new Map();
 let KDLightBlockers = new Map();
 
-function KinkyDungeonCheckProjectileClearance(xx, yy, x2, y2) {
+function KinkyDungeonCheckProjectileClearance(xx: number, yy: number, x2: number, y2: number): boolean {
 	let tiles = KinkyDungeonTransparentObjects;
 	let moveDirection = KinkyDungeonGetDirection(x2 - xx, y2 - yy);
 	let x1 = xx + moveDirection.x;
@@ -51,7 +51,7 @@ function KinkyDungeonCheckProjectileClearance(xx, yy, x2, y2) {
 	return true;
 }
 
-function KinkyDungeonCheckPathCount(x1, y1, x2, y2, allowBars, blockEnemies, maxFails, blockOnlyLOSBlock) {
+function KinkyDungeonCheckPathCount(x1: number, y1: number, x2: number, y2: number, allowBars: boolean, blockEnemies: boolean, maxFails: number, blockOnlyLOSBlock: boolean): number {
 	if (x1 == x2 && y1 == y2) return 0;
 	let length = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 	// Allowbars = checking for vision only
@@ -88,7 +88,7 @@ function KinkyDungeonCheckPathCount(x1, y1, x2, y2, allowBars, blockEnemies, max
 	return fails;
 }
 
-function KinkyDungeonCheckPath(x1, y1, x2, y2, allowBars, blockEnemies, maxFails = 1, blockOnlyLOSBlock) {
+function KinkyDungeonCheckPath(x1: number, y1: number, x2: number, y2: number, allowBars: boolean = false, blockEnemies: boolean = false, maxFails: number = 1, blockOnlyLOSBlock?: boolean): boolean {
 	return KinkyDungeonCheckPathCount(x1, y1, x2, y2, allowBars, blockEnemies, maxFails, blockOnlyLOSBlock) < maxFails;
 }
 
@@ -107,7 +107,7 @@ function KinkyDungeonResetFog() {
 	}
 }
 
-function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, delta) {
+function KinkyDungeonMakeBrightnessMap(_width: number, _height: number, mapBrightness: number, Lights: any[], delta: number): void {
 	let flags = {
 		SeeThroughWalls: 0,
 	};
@@ -192,10 +192,7 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 		}
 	}
 
-	/**
-	 * @type {{x: number, y: number, brightness: number, color: number, shadow: number}[]}
-	 */
-	let nextBrightness = [];
+	let nextBrightness: {x: number, y: number, brightness: number, color: number, shadow: number}[] = [];
 
 	for (let L = maxPass; L > 0; L--) {
 		// if a grid square is next to a brighter transparent object, it gets that light minus one, or minus two if diagonal
@@ -258,14 +255,12 @@ function KinkyDungeonMakeBrightnessMap(width, height, mapBrightness, Lights, del
 	KDPlayerLight = KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 }
 
-/** Averages two hex colors according to weights w1 and w2
- * @param {number} color1
- * @param {number} color2
+/**
+ * Averages two hex colors according to weights w1 and w2
  * @param {number} w1 - Weight of color1
  * @param {number} w2 - Weight of color2
- * @returns {number}
  */
-function KDAvgColor(color1, color2, w1, w2) {
+function KDAvgColor(color1: number, color2: number, w1: number, w2: number): number {
 	let r = (color1 & 0xFF0000) >> 16;
 	let g = (color1 & 0x00FF00) >> 8;
 	let b = (color1 & 0x0000FF);
@@ -276,7 +271,7 @@ function KDAvgColor(color1, color2, w1, w2) {
 	return (r << 16) + (g << 8) + b;
 }
 
-function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapBrightness) {
+function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any, Lights: any, delta: number, _mapBrightness: number): void {
 	let flags = {
 		SeeThroughWalls: 0,
 		nightVision: KDGameData.NightVision,
@@ -427,10 +422,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 	}
 
 
-	/**
-	 * @type {{x: number, y: number, brightness: number}[]}
-	 */
-	let nextBrightness = [];
+	let nextBrightness: {x: number, y: number, brightness: number}[] = [];
 
 	for (let L = maxPass; L > 0; L--) {
 		// if a grid square is next to a brighter transparent object, it gets that light minus one, or minus two if diagonal
@@ -562,7 +554,7 @@ function KinkyDungeonMakeVisionMap(width, height, Viewports, Lights, delta, mapB
 
 let KDLightCropValue = 6;
 
-function KDDrawFog(CamX, CamY, CamX_offset, CamY_offset, CamX_offsetVis, CamY_offsetVis) {
+function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset: number, _CamX_offsetVis: number, _CamY_offsetVis: number): void {
 	if (KDRedrawFog > 0) {
 		KDRedrawMM = 1;
 		kdgamefog.clear();
@@ -897,17 +889,16 @@ let KDMinimapHTarget = KDMinimapHCurrent;
 
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {number} w
- * @param {number} h
- * @param {number} scale
- * @param {number} alpha
- * @param {boolean} gridborders
- * @param {boolean} blackMap
+ * @param x
+ * @param y
+ * @param w
+ * @param h
+ * @param scale
+ * @param alpha
+ * @param gridborders
+ * @param blackMap
  */
-function KDRenderMinimap(x, y, w, h, scale, alpha, gridborders, blackMap) {
+function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: number, alpha: number, gridborders: boolean, blackMap: boolean): void {
 	kdminimap.clear();
 	kdminimap.lineStyle(1, 0xaaaaaa);
 	kdminimap.beginFill(0x000000, alpha);
@@ -989,12 +980,11 @@ function KDAllowFog() {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {number} amount
+ * @param x
+ * @param y
+ * @param amount
  */
-function KDRevealTile(x, y, amount) {
+function KDRevealTile(x: number, y: number, amount: number) {
 	KinkyDungeonUpdateLightGrid = true;
 	if (!KDGameData.RevealedTiles) KDGameData.RevealedTiles = {};
 	if (!KDGameData.RevealedFog) KDGameData.RevealedFog = {};
