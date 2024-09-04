@@ -113,7 +113,7 @@
         "Game/src/prison/KinkyDungeonJailList.js",
         "Game/src/KinkyDungeonTests.js",
         "Game/src/item/KinkyDungeonLootList.js",
-        "Game/src/base/KinkyDungeonMusic.js",
+        "Game/src/base/KinkyDungeonMusic.ts",
         "Game/src/enemy/KinkyDungeonNames.js",
         "Game/src/player/KDDelayedActions.js",
         "Game/src/enemy/KDCommander.js",

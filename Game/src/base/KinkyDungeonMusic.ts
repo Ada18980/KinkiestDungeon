@@ -22,12 +22,12 @@ let KDMusicYMax = 50;
 let KDMusicYSpeed = 0.15;
 let KDMusicToast = "";
 
-function KDSendMusicToast(song) {
+function KDSendMusicToast(song: string): void {
 	KDMusicToast = song;
 	KDMusicUpdateTime = CommonTime();
 }
 
-function KDDrawMusic(delta) {
+function KDDrawMusic(delta: number): void {
 	if (CommonTime() - KDMusicUpdateTime < KDMusicUpdateDuration) {
 		if (KDMusicY < KDMusicYMax) {
 			KDMusicY = Math.max(0, Math.min(KDMusicY + delta*KDMusicYSpeed, KDMusicYMax));
@@ -61,8 +61,7 @@ let KDCurrentFade = 1;
 let KDMusicFadeTime = 2500; // 2 seconds
 let KDMusicFadeInTime = 2500; // 2 seconds
 let KDMusicTickRate = 100;
-/** @type {HTMLAudioElement} */
-let KDCurrentMusicSound = null;
+let KDCurrentMusicSound: HTMLAudioElement = null;
 let KDCurrentMusicSoundUpdate = null;
 let allowMusic = navigator.userAgent.includes('Electron');
 
@@ -130,11 +129,11 @@ function KDUpdateMusic() {
 
 }
 
-function KDPlayMusic(Sound, Volume) {
+function KDPlayMusic(Sound: string, Volume?: number) {
 
 	// Start the new sound
 	let audio = KDCurrentMusicSound || new Audio();
-	let vol = Player.AudioSettings.Volume * (Volume != undefined ? Volume : 1.0);
+	let vol = Player.AudioSettings.Volume * (typeof Volume != 'undefined' ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
 	if (KDPatched) {
