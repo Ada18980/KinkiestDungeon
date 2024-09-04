@@ -82,6 +82,28 @@ AddModel({
 });
 
 AddModel({
+	Name: "LightMaidKnightHairband",
+	Parent: "LightMaidKnight",
+	Folder: "MaidKnightLight",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Headband", Layer: "HairFront", Pri: 15,
+			NoOverride: true,
+		},
+		{ Name: "HeadbandFrill", Layer: "HairFront", Pri: 15.1,
+			NoOverride: true, TieToLayer: "Hairband",
+			InheritColor: "Frill",
+		},
+		{ Name: "HeadbandRibbon", Layer: "HairFront", Pri: 15.1,
+			NoOverride: true, TieToLayer: "Hairband",
+			InheritColor: "Ribbon",
+		},
+	])
+});
+
+AddModel({
 	Name: "Braid",
 	Folder: "Hair",
 	TopLevel: true,
