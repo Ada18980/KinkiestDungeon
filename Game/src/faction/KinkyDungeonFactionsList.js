@@ -376,6 +376,37 @@ let KDFactionProperties = {
 		jailOutfit: "Prisoner",
 	},
 
+	Virus: {
+		honor: 0,
+		honor_specific: {
+			AncientRobot: -1,
+			Dollsmith: 1,
+		},
+		customDefeat: "DollStorage",
+		customHiSecDialogue: (enemy) => {
+			if (KDGetEnemyPlayLine(enemy).includes("Robot")) {
+				KinkyDungeonSendDialogue(enemy, TextGet("KDJailerHiSecDialogue" + KDGetEnemyPlayLine(enemy)),
+					KDGetColor(enemy), 8, 10, true);
+				KinkyDungeonSetFlag("LeashToPrison", -1);
+				if (enemy?.hostile) {
+					enemy.hostile = 300;
+				}
+				KinkyDungeonStartChase(undefined, "Jailbreak");
+			}
+			else {
+				return "CyberHiSec";
+			}
+			return "";
+		},
+		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+			return 0;
+		},
+		jailAlliedFaction: "Dollsmith",
+		jailBackupFaction: "Dollsmith",
+		jailOutfit: "CyberDoll",
+
+	},
+
 	Owners: {
 		customDefeat: "ElementalSlave",
 		jailAlliedFaction: "Elemental",

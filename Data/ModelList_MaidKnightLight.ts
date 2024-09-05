@@ -388,7 +388,7 @@ AddModel({
 	Categories: ["Shoes"],
 	Layers: ToLayerMap([
 		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 8,
-			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
+			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
@@ -424,7 +424,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
 			HideWhenOverridden: true,
 		},
-		{ Name: "BootLeftHogtie", Layer: "ShoeLeftHogtie", Pri: 8,
+		{ Name: "FootBootLeftHogtie", Layer: "ShoeLeftHogtie", Pri: 8,
 			Poses: ToMap(["Hogtie"]),
 			Invariant: true,
 			InheritColor: "ShoeLeft",

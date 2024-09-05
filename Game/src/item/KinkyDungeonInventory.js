@@ -3194,7 +3194,7 @@ function KDDrawHotbarBottom(selected, spells, selectSpell, xshift = 0, allowOver
 
 				if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
 					DrawTextFitKD(TextGet((arm ? "Restraint" : ("KinkyDungeonInventoryItem")) + name),
-						buttonDim.x, buttonDim.y - 140, 300, 300,
+						buttonDim.x, buttonDim.y - 140, 300,
 						"#ffffff", "#333333", undefined, "center");
 				}
 				// Render number

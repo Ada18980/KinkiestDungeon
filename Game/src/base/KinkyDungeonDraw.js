@@ -2774,17 +2774,17 @@ let KDFont = 'Arial';
 
 /**
  *
- * @param {*} Text
- * @param {*} X
- * @param {*} Y
- * @param {*} Width
- * @param {*} Color
- * @param {*} [BackColor]
- * @param {*} [FontSize]
- * @param {*} [Align]
- * @param {*} [zIndex]
- * @param {*} [alpha]
- * @param {*} [border]
+ * @param {string} Text
+ * @param {number} X
+ * @param {number} Y
+ * @param {number} Width
+ * @param {string} Color
+ * @param {string} [BackColor]
+ * @param {number} [FontSize]
+ * @param {string} [Align]
+ * @param {number} [zIndex]
+ * @param {number} [alpha]
+ * @param {number} [border]
  * @param {boolean} [unique] - This button is not differentiated by position
  * @param {string} [font] - This button is not differentiated by position
  */
@@ -2795,17 +2795,17 @@ function DrawTextFitKD(Text, X, Y, Width, Color, BackColor, FontSize, Align, zIn
 /**
  *
  * @param {any} Container
- * @param {*} Text
- * @param {*} X
- * @param {*} Y
- * @param {*} Width
- * @param {*} Color
- * @param {*} [BackColor]
- * @param {*} [FontSize]
- * @param {*} [Align]
- * @param {*} [zIndex]
- * @param {*} [alpha]
- * @param {*} [border]
+ * @param {string} Text
+ * @param {number} X
+ * @param {number} Y
+ * @param {number} Width
+ * @param {string} Color
+ * @param {string} [BackColor]
+ * @param {number} [FontSize]
+ * @param {string} [Align]
+ * @param {number} [zIndex]
+ * @param {number} [alpha]
+ * @param {number} [border]
  * @param {boolean} [unique] - This button is not differentiated by position
  * @param {string} [font] - This button is not differentiated by position
  */
@@ -2832,15 +2832,15 @@ function DrawTextFitKDTo(Container, Text, X, Y, Width, Color, BackColor, FontSiz
 
 /**
  *
- * @param {*} Text
- * @param {*} X
- * @param {*} Y
- * @param {*} Color
- * @param {*} [BackColor]
- * @param {*} [FontSize]
- * @param {*} [Align]
- * @param {*} [zIndex]
- * @param {*} [alpha]
+ * @param {string} Text
+ * @param {number} X
+ * @param {number} Y
+ * @param {string} Color
+ * @param {string} [BackColor]
+ * @param {number} [FontSize]
+ * @param {string} [Align]
+ * @param {number} [zIndex]
+ * @param {number} [alpha]
  */
 function DrawTextKD(Text, X, Y, Color, BackColor, FontSize, Align, zIndex = 110, alpha = 1.0, border = undefined) {
 	if (!Text) return;
