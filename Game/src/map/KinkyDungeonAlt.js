@@ -980,8 +980,11 @@ let KinkyDungeonCreateMapGenType = {
 function KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
 
+	/** @type {GridEntry} */
 	let Walls = {};
+	/** @type {GridEntry} */
 	let WallsList = {};
+	/** @type {GridEntry} */
 	let VisitedCells = {};
 
 	// Initialize the first cell in our Visited Cells list
@@ -1176,8 +1179,11 @@ function KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, openness, dens
 function KinkyDungeonCreateCaldera(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
 	// Variable setup
 
+	/** @type {GridEntry} */
 	let Walls = {};
+	/** @type {GridEntry} */
 	let WallsList = {};
+	/** @type {GridEntry} */
 	let VisitedCells = {};
 
 	// Initialize the first cell in our Visited Cells list
@@ -1408,8 +1414,11 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 	VisitedRooms = [];
 
+	/** @type {GridEntry} */
 	let Walls = {};
+	/** @type {GridEntry} */
 	let WallsList = {};
+	/** @type {GridEntry} */
 	let VisitedCells = {};
 
 	// Initialize the first cell in our Visited Cells list

@@ -2223,6 +2223,7 @@ let KDBulletSpeed = 40;
 
 // We use this to offset floaters
 let KDEntitiesFloaterRegisty = new Map();
+/// @ts-ignore   Weird tsserver error about `KinkyDungeonGridSizeDisplay` being used before being defined.  `tsc` doesn't seem to care.
 let KDFloaterSpacing = 18 / KinkyDungeonGridSizeDisplay;
 
 function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color: string, Time?: number, LocationOverride?: boolean, suff: string = "", size?: number, prefix?: string) {

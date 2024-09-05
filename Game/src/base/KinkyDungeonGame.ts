@@ -23,27 +23,20 @@ let KinkyDungeonGagMumbleChancePerRestraint = 0.0025;
 
 let MiniGameKinkyDungeonCheckpoint = "grv";
 let MiniGameKinkyDungeonLevel = -1;
-/**
- * @type Record<string, string>
- */
-let KinkyDungeonMapIndex = {};
+let KinkyDungeonMapIndex: Record<string, string> = {};
 
-/** @type {Record<string, KDWorldSlot>} */
-let KDWorldMap = {};
+let KDWorldMap: Record<string, KDWorldSlot> = {};
 let KDCurrentWorldSlot = {x: 0, y: 0};
-/** @type {KDMapDataType} */
-let KDMapData = {};
+let KDMapData: KDMapDataType = {} as KDMapDataType;
 /** This data can be regenerated as needed */
-let KDMapExtraData = {};
+let KDMapExtraData = {
+	Boringness:     [] as number[],
+	VisionGrid:     [] as number[],
+	ColorGrid:      [] as number[],
+	ShadowGrid:     [] as number[],
+	BrightnessGrid: [] as number[],
+};
 
-/**
- * @type {number[]}
- */
-KDMapExtraData.Boringness = [];
-KDMapExtraData.VisionGrid = [];
-KDMapExtraData.ColorGrid = [];
-KDMapExtraData.ShadowGrid = [];
-KDMapExtraData.BrightnessGrid = [];
 let KinkyDungeonUpdateLightGrid = true;
 let KinkyDungeonGrid_Last = "";
 
@@ -137,8 +130,7 @@ let KinkyDungeonNextDataLastTimeReceived = 0;
 let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more than 15 seconds of no data received
 
 let KinkyDungeonLastMoveDirection = null;
-/** @type {spell} */
-let KinkyDungeonTargetingSpell = null;
+let KinkyDungeonTargetingSpell: spell = null;
 
 /**
  * Item to decrement by 1 when spell is cast
@@ -168,12 +160,10 @@ let KinkyDungeonSFX = [];
 
 
 /**
- *
- * @param {string} RoomType
- * @param {string} MapMod
- * @returns {KDMapDataType}
+ * @param [RoomType]
+ * @param [MapMod]
  */
-function KDDefaultMapData(RoomType = "", MapMod = "") {
+function KDDefaultMapData(RoomType: string = "", MapMod: string = ""): KDMapDataType {
 	return {
 		Checkpoint: MiniGameKinkyDungeonCheckpoint,
 		Title: "",
@@ -239,94 +229,79 @@ KDMapData = KDDefaultMapData();
 
 
 /**
- *
- * @param {string} location
- * @param {Record<string, effectTile>} value
+ * @param location
+ * @param value
  */
-function KinkyDungeonEffectTilesSet(location, value) {
+function KinkyDungeonEffectTilesSet(location: string, value: Record<string, effectTile>): void {
 	KDMapData.EffectTiles[location] = value;
 }
 /**
- *
- * @param {string} location
- * @returns {Record<string, effectTile>}
+ * @param location
  */
-function KinkyDungeonEffectTilesGet(location) {
+function KinkyDungeonEffectTilesGet(location: string): Record<string, effectTile> {
 	return KDMapData.EffectTiles[location];
 }
 
 
 
 /**
- *
- * @param {any} value
+ * @param value
  */
-function KDSetPlayerTile(value) {
+function KDSetPlayerTile(value: any): any {
 	KDMapData.Tiles[KinkyDungeonPlayerEntity.x + ',' + KinkyDungeonPlayerEntity.y] = value;
 	return value;
 }
-/**
- *
- * @returns {any}
- */
-function KDGetPlayerTile() {
+
+function KDGetPlayerTile(): any {
 	return KDMapData.Tiles[KinkyDungeonPlayerEntity.x + ',' + KinkyDungeonPlayerEntity.y];
 }
 
 
 /**
- *
- * @param {string} location
- * @param {any} value
+ * @param location
+ * @param value
  */
-function KinkyDungeonTilesSet(location, value) {
+function KinkyDungeonTilesSet(location: string, value: any): any {
 	KDMapData.Tiles[location] = value;
 	return value;
 }
 /**
- *
- * @param {string} location
- * @returns {any}
+ * @param location
  */
-function KinkyDungeonTilesGet(location) {
+function KinkyDungeonTilesGet(location: string): any {
 	return KDMapData.Tiles[location];
 }
 
 /**
- *
- * @param {string} location
+ * @param location
  */
-function KinkyDungeonTilesDelete(location) {
+function KinkyDungeonTilesDelete(location: string): void {
 	delete KDMapData.Tiles[location];
 }
 
 
 /**
- *
- * @param {string} location
- * @param {any} value
+ * @param location
+ * @param value
  */
-function KinkyDungeonSkinSet(location, value) {
+function KinkyDungeonSkinSet(location: string, value: any) {
 	KDMapData.TilesSkin[location] = value;
 }
 /**
- *
- * @param {string} location
- * @returns {any}
+ * @param location
  */
-function KinkyDungeonSkinGet(location) {
+function KinkyDungeonSkinGet(location: string): any {
 	return KDMapData.TilesSkin[location];
 }
 
 /**
- *
- * @param {string} location
+ * @param location
  */
-function KinkyDungeonSkinDelete(location) {
+function KinkyDungeonSkinDelete(location: string) {
 	delete KDMapData.TilesSkin[location];
 }
 
-function KDAlreadyOpened(x, y) {
+function KDAlreadyOpened(x: number, y: number): boolean {
 	if (KDGameData.AlreadyOpened) {
 		for (let ao of KDGameData.AlreadyOpened) {
 			if (ao.x == x && ao.y == y) {
@@ -337,22 +312,23 @@ function KDAlreadyOpened(x, y) {
 	return false;
 }
 
-function KinkyDungeonPlaySound(src, entity, vol) {
+function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
 	if (KDToggles.Sound && !KinkyDungeonSFX.includes(src)) {
 		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
+			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
 			AudioPlayInstantSoundKD(src, vol);
 			KinkyDungeonSFX.push(src);
 		}
 	}
 }
 
-function KinkyDungeonSetCheckPoint(Checkpoint, AutoSave, suppressCheckPoint) {
+function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppressCheckPoint?: any) {
 	if (Checkpoint != undefined) MiniGameKinkyDungeonCheckpoint = Checkpoint;
 	else if (Math.floor(MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint) == MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint)
 		MiniGameKinkyDungeonCheckpoint = KDDefaultJourney[Math.min(KDDefaultJourney.length - 1, Math.floor((MiniGameKinkyDungeonLevel) / KDLevelsPerCheckpoint))];
 }
 
-function KinkyDungeonNewGamePlus() {
+function KinkyDungeonNewGamePlus(): void {
 	MiniGameKinkyDungeonLevel = 0;
 
 	KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
@@ -371,7 +347,7 @@ function KinkyDungeonNewGamePlus() {
 	}
 }
 
-function KDResetData(Data) {
+function KDResetData(Data?: KDGameDataBase): void {
 	if (!Data) Data = KDGameDataBase;
 	KDGameData = JSON.parse(JSON.stringify( Data));
 	KDPersistentNPCs = {};
@@ -383,14 +359,14 @@ function KDResetData(Data) {
 	}
 	InitFacilities();
 }
-function KDResetEventData(Data) {
+function KDResetEventData(Data?: any) {
 	if (!Data) Data = KDEventDataBase;
 	KDEventData = JSON.parse(JSON.stringify( Data));
 }
 
 
 
-function KinkyDungeonInitialize(Level, Load) {
+function KinkyDungeonInitialize(Level: number, Load?: any) {
 	KDWorldMap = {};
 	KDMapData = KDDefaultMapData();
 	KDCurrentWorldSlot = {x: 0, y: 0};
@@ -481,7 +457,7 @@ function KDInitCanvas() {
 	KinkyDungeonCanvasFow.height = KinkyDungeonCanvas.height;
 }
 
-function KDCreateBoringness(noBoring) {
+function KDCreateBoringness(noBoring: boolean) {
 	let start = performance.now();
 	// Initialize boringness array
 	KDMapExtraData.Boringness = [];
@@ -524,10 +500,7 @@ function KDCreateBoringness(noBoring) {
 	console.log("Time to create Boring" + (performance.now() - start));
 }
 
-/**
- * @returns {number}
- */
-function KDGetMapSize() {
+function KDGetMapSize(): number {
 	if (KinkyDungeonStatsChoice.get("MapLarge")) return 3;
 	if (KinkyDungeonStatsChoice.get("MapHuge")) return 6;
 	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 9;
@@ -535,15 +508,8 @@ function KDGetMapSize() {
 	return 0;
 }
 
-/**
- * @returns {{
- *  oldest: number,
- *  newest: number,
- *  chance_STOP: number,
- *  opennessMult: number,
- * }}
- */
-function KDGetMazeParams(params) {
+function KDGetMazeParams(params: floorParams): { oldest: number, newest: number, chance_STOP: number, opennessMult: number }
+{
 	if (KinkyDungeonStatsChoice.get("MapLarge")) return {
 		oldest: 0.5,
 		newest: 0.4,
@@ -577,21 +543,19 @@ function KDGetMazeParams(params) {
 }
 
 /**
- *
- * @param {{x: number, y: number}} point
- * @returns {KDWorldSlot}
+ * @param point
  */
-function KDGetWorldMapLocation(point) {
+function KDGetWorldMapLocation(point: { x: number, y: number }): KDWorldSlot {
 	return KDWorldMap[point.x + ',' + point.y];
 }
 
 /**
  * Creates a new world location at the specific area
- * @param {number} x
- * @param {number} y
- * @param {string} main - The main maptype which you return to
+ * @param x
+ * @param y
+ * @param [main] - The main maptype which you return to
  */
-function KDCreateWorldLocation(x, y, main = "") {
+function KDCreateWorldLocation(x: number, y: number, _main: string = "") {
 	KDWorldMap[x + ',' + y] = {
 		data: {},
 		x: x,
@@ -603,11 +567,10 @@ function KDCreateWorldLocation(x, y, main = "") {
 }
 
 /**
- *
- * @param {{x: number; y: number;}} slot
- * @param {boolean} saveconstantX
+ * @param slot
+ * @param saveconstantX
  */
-function KDSaveRoom(slot, saveconstantX) {
+function KDSaveRoom(slot: { x: number, y: number }, saveconstantX: boolean) {
 	slot = slot || KDCurrentWorldSlot;
 	let CurrentLocation = KDWorldMap[(saveconstantX ? 0 : slot.x) + "," + slot.y];
 	if (!CurrentLocation) KDCreateWorldLocation(0, slot.y);
@@ -628,9 +591,9 @@ function KDSaveRoom(slot, saveconstantX) {
 
 /**
  * Decompress enemies
- * @param {KDMapDataType} data
+ * @param data
  */
-function KDUnPackEnemies(data) {
+function KDUnPackEnemies(data: KDMapDataType) {
 	for (let enemy of data.Entities) {
 		if (!enemy.modified) {
 			enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name || enemy.Enemy);
@@ -639,18 +602,18 @@ function KDUnPackEnemies(data) {
 }
 /**
  * Decompress enemies
- * @param {entity} enemy
+ * @param enemy
  */
-function KDUnPackEnemy(enemy) {
+function KDUnPackEnemy(enemy: entity) {
 	if (!enemy.modified) {
 		enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name || enemy.Enemy);
 	}
 }
 /**
  * Decompress enemies
- * @param {entity} enemy
+ * @param enemy
  */
-function KDPackEnemy(enemy) {
+function KDPackEnemy(enemy: entity) {
 	if (!enemy.modified) {
 		// @ts-ignore
 		enemy.Enemy = {name: enemy.Enemy};
@@ -658,9 +621,9 @@ function KDPackEnemy(enemy) {
 }
 /**
  * Compress enemies to reduce file size
- * @param {KDMapDataType} data
+ * @param data
  */
-function KDPackEnemies(data) {
+function KDPackEnemies(data: KDMapDataType) {
 	for (let enemy of data.Entities) {
 		if (!enemy.modified) {
 			// @ts-ignore
@@ -672,14 +635,14 @@ function KDPackEnemies(data) {
 
 /**
  * Loads a map from a world location
- * @param {number} x
- * @param {number} y
- * @param {string} room
- * @param {number} direction - 0 is default (start position), 1 is end, 2 is south shortcut, 3 is north shortcut
- * @param {boolean} constantX
- * @param {boolean} ignoreAware - Enemies will lock the door if this is true and they see you enter
+ * @param x
+ * @param y
+ * @param room
+ * @param [direction] - 0 is default (start position), 1 is end, 2 is south shortcut, 3 is north shortcut
+ * @param [constantX]
+ * @param [ignoreAware] - Enemies will lock the door if this is true and they see you enter
  */
-function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = true) {
+function KDLoadMapFromWorld(x: number, y: number, room: string, direction: number = 0, constantX?: boolean, ignoreAware: boolean = true) {
 	let origx = x;
 	if (constantX) x = 0;
 
@@ -747,11 +710,10 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 }
 
 /**
- *
- * @param {number} direction
- * @param {number} sideRoomIndex
+ * @param [direction]
+ * @param [sideRoomIndex]
  */
-function KDPlacePlayerBasedOnDirection(direction = 0, sideRoomIndex = -1) {
+function KDPlacePlayerBasedOnDirection(direction: number = 0, sideRoomIndex: number = -1) {
 	if (sideRoomIndex >= 0 && KDMapData.ShortcutPositions && KDMapData.ShortcutPositions[sideRoomIndex]) {
 		KinkyDungeonPlayerEntity = {MemberNumber:Player.MemberNumber, x: KDMapData.ShortcutPositions[sideRoomIndex].x, y:KDMapData.ShortcutPositions[sideRoomIndex].y, player:true};
 	} else if (direction == 1 && KDMapData.EndPosition) {
@@ -761,7 +723,7 @@ function KDPlacePlayerBasedOnDirection(direction = 0, sideRoomIndex = -1) {
 	}
 }
 
-function KDInitTempValues(seed) {
+function KDInitTempValues(seed?: boolean): void {
 	KDGameData.ChestsGenerated = [];
 	KDPathfindingCacheFails = 0;
 	KDPathfindingCacheHits = 0;
@@ -813,7 +775,7 @@ function KDInitTempValues(seed) {
 }
 
 /** Game related options */
-function KDUpdateOptionGame() {
+function KDUpdateOptionGame(): void {
 	if (KinkyDungeonStatsChoice.get("NoForceGreet") && !KDGameData.NoForceGreet) {
 		KDGameData.NoForceGreet = true;
 	} else if (!KinkyDungeonStatsChoice.get("NoForceGreet") && KDGameData.NoForceGreet) {
@@ -821,25 +783,38 @@ function KDUpdateOptionGame() {
 	}
 }
 
-// Starts the the game at a specified level
-// Example usage:
-// KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, 1, false, undefined, "", undefined, true);
 /**
- *
- * @param {floorParams} MapParams
- * @param {string} RoomType
- * @param {string} MapMod
- * @param {number} Floor
- * @param {boolean} [testPlacement]
- * @param {boolean} [seed]
- * @param {string} [forceFaction]
- * @param {string} [forceEscape]
- * @param {{x: number, y: number}} [worldLocation]
- * @param {boolean} [useExisting]
- * @param {string} [origMapType]
- * @param {number} [direction]
+ * Starts the the game at a specified level
+ * Example usage:
+ * KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, 1, false, undefined, "", undefined, true);
+ * @param MapParams
+ * @param RoomType
+ * @param MapMod
+ * @param Floor
+ * @param [testPlacement]
+ * @param [seed]
+ * @param [forceFaction]
+ * @param [worldLocation]
+ * @param [useExisting]
+ * @param [origMapType]
+ * @param [direction]
+ * @param [forceEscape]
  */
-function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement, seed, forceFaction, worldLocation, useExisting, origMapType = "", direction = 0, forceEscape) {
+function KinkyDungeonCreateMap (
+	MapParams:       floorParams,
+	RoomType:        string,
+	MapMod:          string,
+	Floor:           number,
+	testPlacement?:  boolean,
+	seed?:           boolean,
+	forceFaction?:   string,
+	worldLocation?:  { x: number, y: number },
+	useExisting?:    boolean,
+	origMapType:     string = "",
+	direction:       number = 0,
+	forceEscape?:    string
+): void
+{
 	KDUpdateOptionGame();
 	KDBreakTether(KDPlayer());
 
@@ -1061,7 +1036,7 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 		let nodoorchance = MapParams.nodoorchance;
 		let doorlockchance = MapParams.doorlockchance;
 		let gasChance = ((!altType || !altType.noClutter) && MapParams.gaschance && KDRandom() < MapParams.gaschance) ? (MapParams.gasdensity ? MapParams.gasdensity : 0) : 0;
-		let gasType = MapParams.gastype ? MapParams.gastype : 0;
+		let gasType = MapParams.gastype ? MapParams.gastype : "0";
 		let brickchance = MapParams.brickchance; // Chance for brickwork to start being placed
 		let wallRubblechance = MapParams.wallRubblechance ? MapParams.wallRubblechance : 0;
 		let barrelChance = MapParams.barrelChance ? MapParams.barrelChance : 0.08;
@@ -1476,7 +1451,7 @@ let KDStageBossGenerated = false;
 /**
  * Creates a list of all tiles accessible and not hidden by doors or dangerous
  */
-function KinkyDungeonGenNavMap(fromPoint) {
+function KinkyDungeonGenNavMap(fromPoint?: { x: number, y: number }) {
 	if (!fromPoint) fromPoint = KDMapData.EndPosition || KDMapData.StartPosition;
 	KDMapData.RandomPathablePoints = {};
 	RandomPathList = [];
@@ -1538,10 +1513,14 @@ function KDLowPriorityNavMesh() {
 
 }
 
+type GridEntry = {
+	[ _: string ]: { x: number, y: number }
+};
+
 // Checks everything that is accessible to the player
-function KinkyDungeonGetAccessible(startX, startY, testX, testY) {
+function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: number, testY?: number): GridEntry {
 	let tempGrid = {};
-	let checkGrid = {};
+	let checkGrid: GridEntry = {};
 	checkGrid[(startX + "," + startY)] = {x: startX, y: startY};
 	while (Object.entries(checkGrid).length > 0) {
 		for (let g of Object.entries(checkGrid)) {
@@ -1567,9 +1546,9 @@ function KinkyDungeonGetAccessible(startX, startY, testX, testY) {
 }
 
 // Checks everything that is accessible to the player, treating all doors as walls
-function KinkyDungeonGetAccessibleRoom(startX, startY) {
+function KinkyDungeonGetAccessibleRoom(startX: number, startY: number): string[] {
 	let tempGrid = {};
-	let checkGrid = {};
+	let checkGrid: GridEntry = {};
 	checkGrid[startX + "," + startY] = {x: startX, y: startY};
 	while (Object.entries(checkGrid).length > 0) {
 		for (let g of Object.entries(checkGrid)) {
@@ -1592,7 +1571,7 @@ function KinkyDungeonGetAccessibleRoom(startX, startY) {
 }
 
 // Tests if the player can reach the end stair even if the test spot is blocked
-function KinkyDungeonIsAccessible(testX, testY) {
+function KinkyDungeonIsAccessible(testX: number, testY: number): boolean {
 	let accessible = KinkyDungeonGetAccessible(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, testX, testY);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
@@ -1603,7 +1582,7 @@ function KinkyDungeonIsAccessible(testX, testY) {
 }
 
 // Tests if the player can reach the spot from the start point
-function KinkyDungeonIsReachable(testX, testY, testLockX, testLockY) {
+function KinkyDungeonIsReachable(testX: number, testY: number, testLockX: number, testLockY: number): boolean {
 	let accessible = KinkyDungeonGetAccessible(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, testLockX, testLockY);
 	for (let a of Object.entries(accessible)) {
 		let X = a[1].x;
@@ -1613,7 +1592,7 @@ function KinkyDungeonIsReachable(testX, testY, testLockX, testLockY) {
 	return false;
 }
 
-function KinkyDungeonGetAllies() {
+function KinkyDungeonGetAllies(): entity[] {
 	let temp = [];
 	for (let e of KDMapData.Entities) {
 		if (KDCanBringAlly(e)) {
@@ -1625,28 +1604,24 @@ function KinkyDungeonGetAllies() {
 }
 
 /**
- *
- * @param {entity} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KDIsImprisoned(enemy) {
+function KDIsImprisoned(enemy: entity): boolean {
 	return KDEntityHasFlag(enemy, "imprisoned");
 }
 
 
 /**
- *
- * @param {entity} e
- * @returns {boolean}
+ * @param e
  */
-function KDCanBringAlly(e) {
+function KDCanBringAlly(e: entity): boolean {
 	return e.Enemy &&
 		(((e.Enemy.keepLevel || KDIsInParty(e)) && KDAllied(e) && !KDHelpless(e))
 		|| (e.leash && e.leash.entity == KDPlayer().id))
 	&& !KDIsImprisoned(e);
 }
 
-function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
+function KDChooseFactions(factionList: string[], Floor: number, Tags: string[], BonusTags: any, Set: boolean) {
 	// Determine factions to spawn
 	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
 	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags));
@@ -1685,7 +1660,17 @@ function KDChooseFactions(factionList, Floor, Tags, BonusTags, Set) {
 	return randomFactions;
 }
 
-function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, width, height, altRoom, randomFactions, factionEnemy) {
+type SpawnBox = {
+	requiredTags:      string[],
+	tags:              string[],
+	currentCount:      number,
+	maxCount:          number,
+	filterTags?:       string[],
+	ignoreAllyCount?:  boolean,
+	bias?:             number,
+}
+
+function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: string[], BonusTags: any, Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
 	KinkyDungeonHuntDownPlayer = false;
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
@@ -1716,7 +1701,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 	let filterTagsSpawn = ["boss", "miniboss"];
 	let filterTagsCluster = ["boss", "miniboss"];
 
-	let spawnBoxes = [
+	let spawnBoxes: SpawnBox[] = [
 		{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.025},
 		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
 		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
@@ -1979,10 +1964,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 				let e = {Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, shield: Enemy.shield,
 					movePoints: 0, attackPoints: 0, AI: KDGetAITypeOverride(Enemy, AI) || AI || Enemy.AI, faction: faction};
 				if (spawnPoint) {
-					e.spawnX = X;
-					e.spawnY = Y;
+					e['spawnX'] = X;
+					e['spawnY'] = Y;
 					if (keys) {
-						e.keys = true;
+						e['keys'] = true;
 					}
 				}
 				KDAddEntity(e);
@@ -2065,7 +2050,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints, InJail, Tags, BonusTags, Floor, w
 
 let KinkyDungeonSpecialAreas = [];
 
-function KinkyDungeonGetClosestSpecialAreaDist(x ,y) {
+function KinkyDungeonGetClosestSpecialAreaDist(x: number, y: number): number {
 	let minDist = 10000;
 	for (let area of KinkyDungeonSpecialAreas) {
 		let dist = KDistChebyshev(x - area.x, y - area.y) - area.radius;
@@ -2079,8 +2064,21 @@ function KinkyDungeonGetClosestSpecialAreaDist(x ,y) {
 // Type 1: hollow, no empty border
 // Type 2: only empty space
 // Type 3: completely filled
-function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Padding, OL, NW, flexCorner, Jail) {
-	let pad = Padding ? Padding : 0;
+function KinkyDungeonCreateRectangle (
+	Left:         number,
+	Top:          number,
+	Width:        number,
+	Height:       number,
+	Border?:      boolean,
+	Fill?:        boolean,
+	Padding?:     number | boolean,
+	OL?:          boolean,
+	NW?:          boolean,
+	flexCorner?:  boolean,
+	Jail?:        boolean
+): void
+{
+	let pad = (typeof Padding === 'number') ? Padding : +Padding;
 	let borderType = (Border) ? '1' : '0';
 	let fillType = (Fill) ? '1' : '0';
 	for (let X = -pad; X < Width + pad; X++)
@@ -2159,7 +2157,7 @@ function KinkyDungeonCreateRectangle(Left, Top, Width, Height, Border, Fill, Pad
 	}
 }
 
-function KinkyDungeonPlaceStairs(startpos, width, height, noStairs, nostartstairs, origMapType) {
+function KinkyDungeonPlaceStairs(_startpos: number, width: number, height: number, noStairs: boolean, nostartstairs: boolean, origMapType: string): void {
 	// Starting stairs are predetermined and guaranteed to be open
 	if (!nostartstairs) {
 		KinkyDungeonMapSet(KDMapData.StartPosition.x, KDMapData.StartPosition.y, 'S');
@@ -2261,7 +2259,7 @@ function KinkyDungeonPlaceStairs(startpos, width, height, noStairs, nostartstair
 	//if (KDMapData.MainPath != MiniGameKinkyDungeonCheckpoint && !nostartstairs) KinkyDungeonSkinArea({skin: KDMapData.MainPath}, KDMapData.EndPosition.x, KDMapData.EndPosition.y, 4.99);
 }
 
-function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
+function KinkyDungeonSkinArea(skin: any, X: number, Y: number, Radius: number, NoStairs?: boolean) {
 	for (let xx = Math.floor(X - Radius); xx <= Math.ceil(X + Radius); xx++) {
 		for (let yy = Math.floor(Y - Radius); yy <= Math.ceil(Y + Radius); yy++) {
 			if (xx >= 0 && xx <= KDMapData.GridWidth - 1 && yy >= 0 && yy <= KDMapData.GridHeight - 1) {
@@ -2281,7 +2279,7 @@ function KinkyDungeonSkinArea(skin, X, Y, Radius, NoStairs) {
 
 let KDMinBoringness = 0; // Minimum boringness for treasure spawn
 
-function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, treasurechance, treasurecount, rubblechance, Floor, width, height) {
+function KinkyDungeonPlaceChests(params: floorParams, chestlist: any[], spawnPoints: any[], shrinelist: any[], treasurechance: number, treasurecount: number, rubblechance: number, Floor: number, width: number, height: number) {
 
 	let shrinePoints = new Map();
 
@@ -2297,7 +2295,7 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 
 	let specialdata = {
 		altType: KDGetAltType(MiniGameKinkyDungeonLevel),
-		specialChests: params.specialChests ? JSON.parse(JSON.stringify(params.specialChests)) : {},
+		specialChests: (params.specialChests ? JSON.parse(JSON.stringify(params.specialChests)) : {}) as Record<string, number>,
 	};
 
 	KinkyDungeonSendEvent("specialChests", specialdata);
@@ -2566,7 +2564,7 @@ function KinkyDungeonPlaceChests(params, chestlist, spawnPoints, shrinelist, tre
 }
 
 
-function KinkyDungeonPlaceLore(width, height) {
+function KinkyDungeonPlaceLore(width: number, height: number): number {
 	let loreList = [];
 
 	// Populate the lore
@@ -2586,7 +2584,7 @@ function KinkyDungeonPlaceLore(width, height) {
 	return count;
 }
 
-function KinkyDungeonPlaceHeart(width, height, Floor) {
+function KinkyDungeonPlaceHeart(width: number, height: number, _Floor: number): boolean {
 	let heartList = [];
 
 	// Populate the lore
@@ -2611,7 +2609,24 @@ function KinkyDungeonPlaceHeart(width, height, Floor) {
 
 
 
-function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTypes, shrinecount, shrinefilter, ghostchance, manaChance, orbcount, filterTypes, Floor, width, height, allowQuests, allowHearts) {
+function KinkyDungeonPlaceShrines (
+	chestlist:     any[],
+	shrinelist:    any[],
+	shrinechance:  number,
+	shrineTypes:   any[],
+	shrinecount:   number,
+	shrinefilter:  string[],
+	_ghostchance:  number,
+	manaChance:    number,
+	orbcount:      number,
+	filterTypes:   string[],
+	Floor:         number,
+	width:         number,
+	height:        number,
+	allowQuests:   boolean,
+	allowHearts:   boolean
+): number
+{
 	KinkyDungeonCommercePlaced = 0;
 
 
@@ -2644,8 +2659,8 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 	};
 
 	if (allowHearts) {
-		tablets.Heart = 0;
-		tabletsAmount.Heart = 2;
+		tablets['Heart'] = 0;
+		tabletsAmount['Heart'] = 2;
 	}
 	for (let goddess of Object.keys(KinkyDungeonShrineBaseCosts)) {
 		tablets[goddess] = 0;
@@ -2663,10 +2678,10 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 		maxcount += amt;
 	}
 
-	let isDoodad = (X, Y) => {
+	let isDoodad = (X: number, Y: number) => {
 		return "aXmo".includes(KinkyDungeonMapGet(X, Y));
 	};
-	if (shrinelist <= maxcount)
+	if (shrinelist.length <= maxcount)
 		// Populate the chests
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
@@ -2754,7 +2769,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 
 
 	// If we STILL dont have enough, we expand the criteria
-	if (shrinelist <= maxcount)
+	if (shrinelist.length <= maxcount)
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
 				if (KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)) && Math.max(Math.abs(X - KDMapData.StartPosition.x), Math.abs(Y - KDMapData.StartPosition.y)) > KinkyDungeonJailLeash
@@ -2878,10 +2893,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 			else {
 				let placedChampion = !allowQuests;
 				let playerTypes = KinkyDungeonRestraintTypes(shrinefilter);
-				/**
-				 * @type {{type: string, drunk?: boolean}}
-				 */
-				let stype = shrineTypes.length < orbcount ? {type: "Orb"}
+				let stype: {type: string, drunk?: boolean} = shrineTypes.length < orbcount ? {type: "Orb"}
 					: ((KDGameData.Champion && !placedChampion && shrineTypes.length == orbcount) ? {type: KDGameData.Champion} :
 						((shrineTypes.length == ((KDGameData.Champion && allowQuests) ? orbcount + 1 : orbcount) && playerTypes.length > 0) ?
 							{type: playerTypes[Math.floor(KDRandom() * playerTypes.length)]}
@@ -2948,7 +2960,7 @@ function KinkyDungeonPlaceShrines(chestlist, shrinelist, shrinechance, shrineTyp
 }
 
 
-function KinkyDungeonPlaceChargers(chargerlist, chargerchance, litchargerchance, chargercount, Floor, width, height) {
+function KinkyDungeonPlaceChargers(chargerlist: any[], chargerchance: number, litchargerchance: number, chargercount: number, _Floor: number, width: number, height: number): void {
 	let chargerPoints = new Map();
 
 	for (let s of chargerlist) {
@@ -3048,13 +3060,11 @@ function KinkyDungeonPlaceChargers(chargerlist, chargerchance, litchargerchance,
 let KinkyDungeonCommercePlaced = 0;
 
 /**
- *
- * @param {number} Floor
- * @param {number} manaChance
- * @param {string[]} filterTypes
- * @returns
+ * @param Floor
+ * @param manaChance
+ * @param filterTypes
  */
-function KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance) {
+function KinkyDungeonGenerateShrine(_Floor: number, filterTypes: string[], manaChance: number) {
 	let Params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	let drunk = !(KDRandom() < manaChance);
 
@@ -3087,7 +3097,7 @@ function KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance) {
 }
 
 
-function KinkyDungeonPlaceSpecialTiles(gaschance, gasType, Floor, width, height) {
+function KinkyDungeonPlaceSpecialTiles(gaschance: number, gasType: string, _Floor: number, width: number, height: number): void {
 	if (gaschance > 0) {
 		for (let X = 1; X < width; X += 1)
 			for (let Y = 1; Y < height; Y += 1)
@@ -3108,7 +3118,7 @@ function KinkyDungeonPlaceSpecialTiles(gaschance, gasType, Floor, width, height)
 
 }
 
-function KinkyDungeonPlaceBrickwork( brickchance, Floor, width, height) {
+function KinkyDungeonPlaceBrickwork( brickchance: number, _Floor: number, width: number, height: number) {
 	// Populate the chests
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
@@ -3130,7 +3140,7 @@ function KinkyDungeonPlaceBrickwork( brickchance, Floor, width, height) {
 			}
 }
 
-function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchance, Floor, width, height) {
+function KinkyDungeonPlaceTraps(traps: any[], traptypes: any[], trapchance: number, doorlocktrapchance: number, Floor: number, width: number, height: number): void {
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
 			let hosttile = KinkyDungeonMapGet(X, Y);
@@ -3221,7 +3231,7 @@ function KinkyDungeonPlaceTraps( traps, traptypes, trapchance, doorlocktrapchanc
 
 }
 
-function KinkyDungeonPlacePatrols(Count, width, height) {
+function KinkyDungeonPlacePatrols(Count: number, width: number, height: number): void {
 	for (let i = 1; i <= Count; i++) {
 		if (KDMapData.PatrolPoints.length < Count)
 			for (let L = 1000; L > 0; L -= 1) { // Try up to 1000 times
@@ -3237,21 +3247,14 @@ function KinkyDungeonPlacePatrols(Count, width, height) {
 	}
 }
 
-/**
- *
- * @returns {number}
- */
-function KDGetEffLevel() {
+function KDGetEffLevel(): number {
 	let effLevel = MiniGameKinkyDungeonLevel + Math.round(KinkyDungeonDifficulty/5);
 	if (KinkyDungeonNewGame) effLevel += KinkyDungeonMaxLevel;
 
 	return effLevel;
 }
 
-/**
- * @returns {string}
- */
-function KDRandomizeRedLock() {
+function KDRandomizeRedLock(): string {
 	let level = KDGetEffLevel();
 	if (KDRandom() < -0.1 + Math.min(0.5, level * 0.03)) return "Red_Hi";
 	if (KDRandom() < 0.25 + Math.min(0.55, level * 0.03)) return "Red_Med";
@@ -3260,16 +3263,14 @@ function KDRandomizeRedLock() {
 
 
 /**
- * @param {boolean} [Guaranteed]
- * @param {number} [Floor]
- * @param {boolean} [AllowGold]
- * @param {string} [Type] - Used to customize the type
- * @param {any} [Data] - Used to customize the type
- *
+ * @param [Guaranteed]
+ * @param [Floor]
+ * @param [AllowGold]
+ * @param [Type] - Used to customize the type
+ * @param [Data] - Used to customize the type
  */
-function KDGetLockList(Guaranteed, Floor, AllowGold, Type, Data) {
-	/** @type {Record<string, number>} */
-	let ret = {};
+function KDGetLockList(Guaranteed?: boolean, Floor?: number, AllowGold?: boolean, Type?: string, Data?: any): Record<string, number> {
+	let ret: Record<string, number> = {};
 	for (let obj of Object.keys(KDLocks)) {
 		if (KDLocks[obj].filter(Guaranteed, Floor, AllowGold, Type, Data))
 			ret[obj] = KDLocks[obj].weight(Guaranteed, Floor, AllowGold, Type, Data);
@@ -3279,14 +3280,13 @@ function KDGetLockList(Guaranteed, Floor, AllowGold, Type, Data) {
 
 /**
  * Generates a lock
- * @param {boolean} [Guaranteed]
- * @param {number} [Floor]
- * @param {boolean} [AllowGold]
- * @param {string} [Type] - Used to customize the type
- * @param {any} [Data] - Used to customize the type
- * @returns {string}
+ * @param [Guaranteed]
+ * @param [Floor]
+ * @param [AllowGold]
+ * @param [Type] - Used to customize the type
+ * @param [Data] - Used to customize the type
  */
-function KinkyDungeonGenerateLock(Guaranteed, Floor, AllowGold, Type, Data) {
+function KinkyDungeonGenerateLock(Guaranteed?: boolean, Floor?: number, AllowGold?: boolean, Type?: string, Data?: any): string {
 	let level = (Floor) ? Floor : KDGetEffLevel();
 	//let Params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 
@@ -3342,7 +3342,19 @@ let KDPlaceMode = {
 	MODE_MODIFYPOTENTIALANDEXISTING: 0x1,
 	MODE_MODIFYEXISTINGONLY: 0x2,
 };
-function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlockchance, trapChance, grateChance, Floor, width, height, placeMode = KDPlaceMode.MODE_PLACENEW) {
+function KinkyDungeonPlaceDoors (
+	doorchance:      number,
+	doortrapchance:  number,
+	nodoorchance:    number,
+	doorlockchance:  number,
+	trapChance:      number,
+	grateChance:     number,
+	Floor:           number,
+	width:           number,
+	height:          number,
+	placeMode:       number = KDPlaceMode.MODE_PLACENEW
+)
+{
 	let doorlist = [];
 	let doorlist_2ndpass = [];
 	let trapLocations = [];
@@ -3350,13 +3362,13 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 	// Populate the doors
 	for (let X = 1; X < width; X += 1)
 		for (let Y = 1; Y < height; Y += 1)
-			if ((
-				(placeMode == KDPlaceMode.MODE_PLACENEW && KinkyDungeonMapGet(X, Y) != 'D' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)))
-					|| ((placeMode == KDPlaceMode.MODE_MODIFYEXISTINGONLY || placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING) && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D'))
-					|| (placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING && (KinkyDungeonTilesGet(X + "," + Y)?.PotentialDoor))
-			)
-				&& (!KinkyDungeonTilesGet(X + "," + Y)
-					|| (!KinkyDungeonTilesGet(X + "," + Y).OL && !KinkyDungeonTilesGet(X + "," + Y).Lock && !KinkyDungeonTilesGet(X + "," + Y).RequiredDoor))) {
+			if (    (    (placeMode == KDPlaceMode.MODE_PLACENEW && KinkyDungeonMapGet(X, Y) != 'D' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(X, Y)))
+			         ||  ((placeMode == KDPlaceMode.MODE_MODIFYEXISTINGONLY || placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING) && (KinkyDungeonMapGet(X, Y) == 'd' || KinkyDungeonMapGet(X, Y) == 'D'))
+			         ||  (placeMode == KDPlaceMode.MODE_MODIFYPOTENTIALANDEXISTING && (KinkyDungeonTilesGet(X + "," + Y)?.PotentialDoor))
+			        )
+			    &&  (    !KinkyDungeonTilesGet(X + "," + Y)
+			         ||  (!KinkyDungeonTilesGet(X + "," + Y).OL && !KinkyDungeonTilesGet(X + "," + Y).Lock && !KinkyDungeonTilesGet(X + "," + Y).RequiredDoor)))
+			{
 				// Check the 3x3 area
 				let wallcount = 0;
 				let up = false;
@@ -3485,10 +3497,10 @@ function KinkyDungeonPlaceDoors(doorchance, doortrapchance, nodoorchance, doorlo
 	return trapLocations;
 }
 
-function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhookchance, ceilinghookchance, width, height, altType) {
+function KinkyDungeonReplaceDoodads(Chance: number, barchance: number, wallRubblechance: number, wallhookchance: number, ceilinghookchance: number, width: number, height: number, altType?: any) {
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
-			let category = KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {};
+			let category = (KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {}) as {category: string, tags: string[]};
 			if (category?.tags?.includes("noWear")) continue;
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < Chance) {
 				KinkyDungeonMapSet(X, Y, '4');
@@ -3573,12 +3585,12 @@ function KinkyDungeonReplaceDoodads(Chance, barchance, wallRubblechance, wallhoo
 
 }
 
-function KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, altType) {
+function KinkyDungeonPlaceFurniture(barrelChance: number, cageChance: number, width: number, height: number, altType: any) {
 	// Add special stuff
 	if (!altType || !altType.noClutter)
 		for (let X = 1; X < width-1; X += 1)
 			for (let Y = 1; Y < height-1; Y += 1) {
-				let category = KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {};
+				let category = (KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {}) as {category: string, tags: string[]};
 				if (category?.tags?.includes("noClutter")) continue;
 				if (KinkyDungeonMapGet(X, Y) == '0' && !(KinkyDungeonTilesGet(X + "," + Y) && (KinkyDungeonTilesGet(X + "," + Y).OL || KinkyDungeonTilesGet(X + "," + Y).Skin))
 					&& !(Object.values(KinkyDungeonEffectTilesGet(X + ',' + Y) || {})?.length > 0)
@@ -3623,7 +3635,7 @@ let KDFood = {
 	},
 };
 
-function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
+function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: any) {
 
 	if (altType && altType.noClutter) return;
 
@@ -3749,7 +3761,8 @@ function KinkyDungeonPlaceFood(foodChance, width, height, altType) {
 		list.splice(N, 1);
 	}
 }
-function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring, width, height, altType, torchreplace) {
+
+function KinkyDungeonPlaceTorches(torchchance: number, torchlitchance: number, torchchanceboring: number, width: number, height: number, _altType: any, torchreplace: any) {
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
 			if (KinkyDungeonMapGet(X, Y) == '1'
@@ -3777,10 +3790,10 @@ function KinkyDungeonPlaceTorches(torchchance, torchlitchance, torchchanceboring
 
 /**
  * Replace vertical wall '1' with '|'
- * @param {number} width
- * @param {number} height
+ * @param width
+ * @param height
  */
-function KinkyDungeonReplaceVert(width, height) {
+function KinkyDungeonReplaceVert(width: number, height: number) {
 	for (let X = 0; X <= width-1; X += 1)
 		for (let Y = 0; Y <= height-1; Y += 1) {
 			let tileUp = KinkyDungeonMapGet(X, Y);
@@ -3806,14 +3819,15 @@ function KinkyDungeonReplaceVert(width, height) {
 }
 
 
-function KinkyDungeonMazeWalls(Cell, Walls, WallsList) {
+/*  TODO: Work out/create the proper types for these.  */
+function KinkyDungeonMazeWalls(Cell: any, Walls: GridEntry, WallsList: GridEntry) {
 	if (Walls[(Cell.x+1) + "," + Cell.y]) WallsList[(Cell.x+1) + "," + Cell.y] = {x:Cell.x+1, y:Cell.y};
 	if (Walls[(Cell.x-1) + "," + Cell.y]) WallsList[(Cell.x-1) + "," + Cell.y] = {x:Cell.x-1, y:Cell.y};
 	if (Walls[Cell.x + "," + (Cell.y+1)]) WallsList[Cell.x + "," + (Cell.y+1)] = {x:Cell.x, y:Cell.y+1};
 	if (Walls[Cell.x + "," + (Cell.y-1)]) WallsList[Cell.x + "," + (Cell.y-1)] = {x:Cell.x, y:Cell.y-1};
 }
 
-function KinkyDungeonMapSet(X, Y, SetTo, VisitedRooms) {
+function KinkyDungeonMapSet(X: number, Y: number, SetTo: string, VisitedRooms?: any[]): boolean {
 	let height = KDMapData.GridHeight;
 	let width = KDMapData.GridWidth;
 
@@ -3825,7 +3839,7 @@ function KinkyDungeonMapSet(X, Y, SetTo, VisitedRooms) {
 	}
 	return false;
 }
-function KinkyDungeonMapSetForce(X, Y, SetTo, VisitedRooms) {
+function KinkyDungeonMapSetForce(X: number, Y: number, SetTo: string, VisitedRooms?: any[]): boolean {
 	let width = KDMapData.GridWidth;
 
 	KDMapData.Grid = KDMapData.Grid.replaceAt(X + Y*(width+1), SetTo);
@@ -3836,11 +3850,11 @@ function KinkyDungeonMapSetForce(X, Y, SetTo, VisitedRooms) {
 }
 
 
-function KinkyDungeonBoringGet(X, Y) {
+function KinkyDungeonBoringGet(X: number, Y: number): number {
 	return KDMapExtraData.Boringness[X + Y*(KDMapData.GridWidth)];
 }
 
-function KinkyDungeonBoringSet(X, Y, SetTo) {
+function KinkyDungeonBoringSet(X: number, Y: number, SetTo: number) {
 	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
 		KDMapExtraData.Boringness[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
@@ -3848,14 +3862,14 @@ function KinkyDungeonBoringSet(X, Y, SetTo) {
 	return false;
 }
 
-function KinkyDungeonMapGet(X, Y) {
+function KinkyDungeonMapGet(X: number, Y: number): string {
 	//let height = KDMapData.Grid.split('\n').length;
 	//let width = //KDMapData.Grid.split('\n')[0].length;
 
 	return KDMapData.Grid[X + Y*(KDMapData.GridWidth+1)];
 }
 
-function KinkyDungeonVisionSet(X, Y, SetTo) {
+function KinkyDungeonVisionSet(X: number, Y: number, SetTo: number): boolean {
 	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
 		KDMapExtraData.VisionGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
 		return true;
@@ -3863,7 +3877,7 @@ function KinkyDungeonVisionSet(X, Y, SetTo) {
 	return false;
 }
 
-function KinkyDungeonBrightnessSet(X, Y, SetTo, monotonic) {
+function KinkyDungeonBrightnessSet(X: number, Y: number, SetTo: number, monotonic?: boolean): boolean {
 	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
 		if (!monotonic || SetTo > KDMapExtraData.BrightnessGrid[X + Y*(KDMapData.GridWidth)])
 			KDMapExtraData.BrightnessGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
@@ -3872,7 +3886,7 @@ function KinkyDungeonBrightnessSet(X, Y, SetTo, monotonic) {
 	return false;
 }
 
-function KinkyDungeonColorSet(X, Y, SetTo, monotonic) {
+function KinkyDungeonColorSet(X: number, Y: number, SetTo: number, monotonic?: boolean): boolean {
 	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
 		if (!monotonic || SetTo > KDMapExtraData.ColorGrid[X + Y*(KDMapData.GridWidth)])
 			KDMapExtraData.ColorGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
@@ -3880,7 +3894,7 @@ function KinkyDungeonColorSet(X, Y, SetTo, monotonic) {
 	}
 	return false;
 }
-function KinkyDungeonShadowSet(X, Y, SetTo, monotonic) {
+function KinkyDungeonShadowSet(X: number, Y: number, SetTo: number, monotonic?: boolean): boolean {
 	if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1) {
 		if (!monotonic || SetTo > KDMapExtraData.ShadowGrid[X + Y*(KDMapData.GridWidth)])
 			KDMapExtraData.ShadowGrid[X + Y*(KDMapData.GridWidth)] = SetTo;
@@ -3889,21 +3903,21 @@ function KinkyDungeonShadowSet(X, Y, SetTo, monotonic) {
 	return false;
 }
 
-function KinkyDungeonVisionGet(X, Y) {
+function KinkyDungeonVisionGet(X: number, Y: number): number {
 	return KDMapExtraData.VisionGrid[X + Y*(KDMapData.GridWidth)];
 }
 
-function KinkyDungeonBrightnessGet(X, Y) {
+function KinkyDungeonBrightnessGet(X: number, Y: number): number {
 	return KDMapExtraData.BrightnessGrid[X + Y*(KDMapData.GridWidth)];
 }
-function KinkyDungeonColorGet(X, Y) {
+function KinkyDungeonColorGet(X: number, Y: number): number {
 	return KDMapExtraData.ColorGrid[X + Y*(KDMapData.GridWidth)];
 }
-function KinkyDungeonShadowGet(X, Y) {
+function KinkyDungeonShadowGet(X: number, Y: number): number {
 	return KDMapExtraData.ShadowGrid[X + Y*(KDMapData.GridWidth)];
 }
 
-function KinkyDungeonFogGet(X, Y) {
+function KinkyDungeonFogGet(X: number, Y: number): any {
 	return KDMapData.FogGrid[X + Y*(KDMapData.GridWidth)];
 }
 
@@ -3913,7 +3927,7 @@ const canvasOffsetX_ui = 500;
 const canvasOffsetY_ui = 164;
 
 // returns an object containing coordinates of which direction the player will move after a click, plus a time multiplier
-function KinkyDungeonGetDirection(dx, dy) {
+function KinkyDungeonGetDirection(dx: number, dy: number) {
 
 	let X = 0;
 	let Y = 0;
@@ -3937,7 +3951,7 @@ function KinkyDungeonGetDirection(dx, dy) {
 }
 
 // GetDirection, but it also pivots randomly 45 degrees to either side
-function KinkyDungeonGetDirectionRandom(dx, dy) {
+function KinkyDungeonGetDirectionRandom(dx: number, dy: number) {
 	let dir = KinkyDungeonGetDirection(dx, dy);
 	let pivot = Math.floor(KDRandom()*3)-1;
 
@@ -3961,7 +3975,7 @@ function KinkyDungeonControlsEnabled() {
 	return !KinkyDungeonInspect && KDGameData.SlowMoveTurns < 1 && KinkyDungeonStatFreeze < 1 && KDGameData.SleepTurns < 1 && !KDGameData.CurrentDialog && !KinkyDungeonMessageToggle;
 }
 
-function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet, data) {
+function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any, player: any, bullet: any, data: any) {
 	let spell = KinkyDungeonFindSpell(SpellToCast.name, true);
 	let spellname = undefined;
 	if (spell) {
@@ -3972,7 +3986,7 @@ function KDStartSpellcast(tx, ty, SpellToCast, enemy, player, bullet, data) {
 }
 
 // Click function for the game portion
-function KinkyDungeonClickGame(Level) {
+function KinkyDungeonClickGame(_Level?: number) {
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
 	CharacterRefresh = () => {KDRefresh = true;};
@@ -4126,7 +4140,7 @@ function KinkyDungeonListenKeyMove() {
 		let moveDirectionDiag = null;
 
 		let MovableTiles = KinkyDungeonGetMovable();
-		let itemsAtTile = (x, y) => {
+		let itemsAtTile = (x: number, y: number) => {
 			return KDMapData.GroundItems.some((item) => {return item.x == KinkyDungeonPlayerEntity.x + x && item.y == KinkyDungeonPlayerEntity.y + y;});
 		};
 
@@ -4183,7 +4197,7 @@ function KinkyDungeonListenKeyMove() {
 		}
 	}
 	if (KinkyDungeonLastMoveTimerStart < performance.now() && KinkyDungeonLastMoveTimer == 0) KinkyDungeonLastMoveTimerStart = 0;
-	if (!KinkyDungeonGameKey.keyPressed.some((element)=>{return element;})) { KinkyDungeonLastMoveTimer = 0;}
+	if (!KinkyDungeonGameKey.keyPressed.some((element: any)=>{return element;})) { KinkyDungeonLastMoveTimer = 0;}
 	//KDSetFocusControl("");
 }
 
@@ -4424,7 +4438,7 @@ function KinkyDungeonGameKeyDown() {
 }
 
 
-function KinkyDungeonGameKeyUp(lastPress) {
+function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 	//if (KDGameData.CurrentDialog) return;
 	//if (!KinkyDungeonControlsEnabled()) return;
 	let delta = CommonTime() - lastPress;
@@ -4494,7 +4508,7 @@ function KinkyDungeonGameKeyUp(lastPress) {
 	return false;
 }
 
-function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe, entity, filter = "Self") {
+function KinkyDungeonSendTextMessage(priority: number, text: string, color: string, time?: number, noPush?: boolean, noDupe?: boolean, entity?: entity, filter: string = "Self"): boolean {
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
@@ -4516,7 +4530,7 @@ function KinkyDungeonSendTextMessage(priority, text, color, time, noPush, noDupe
 }
 
 
-function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDupe, entity, filter = "Action", antifilter) {
+function KinkyDungeonSendActionMessage(priority: number, text: string, color: string, time: number, noPush?: boolean, noDupe?: boolean, entity?: entity, filter: string = "Action", antifilter?: any): boolean {
 	if (entity && KinkyDungeonVisionGet(entity.x, entity.y) < 1) return false;
 	if (text) {
 		if (!noPush)
@@ -4538,7 +4552,7 @@ function KinkyDungeonSendActionMessage(priority, text, color, time, noPush, noDu
 
 let KinkyDungeonNoMoveFlag = false;
 
-function KDAttackCost(weapon) {
+function KDAttackCost(weapon?: weapon) {
 	let data = {
 		attackCost: KinkyDungeonStatStaminaCostAttack,
 		bonus: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStaminaBonus"),
@@ -4554,12 +4568,10 @@ function KDAttackCost(weapon) {
 }
 
 /**
- *
- * @param {entity} Enemy
- * @param {number} [skip]
- * @returns {string}
+ * @param Enemy
+ * @param [skip]
  */
-function KinkyDungeonLaunchAttack(Enemy, skip) {
+function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 	let attackCost = KDAttackCost();
 	let capture = false;
 	let result = "fail";
@@ -4725,7 +4737,7 @@ function KinkyDungeonLaunchAttack(Enemy, skip) {
 	return result;
 }
 
-function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
+function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number, AllowInteract: boolean, SuppressSprint?: boolean): boolean {
 	let moveX = moveDirection.x + KinkyDungeonPlayerEntity.x;
 	let moveY = moveDirection.y + KinkyDungeonPlayerEntity.y;
 	let moved = false;
@@ -4747,7 +4759,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 		}
 	}
 
-	let allowPass = Enemy
+	let allowPass: boolean = Enemy
 		&& KDCanPassEnemy(KinkyDungeonPlayerEntity, Enemy);
 	if (Enemy && !allowPass && !passThroughSprint) {
 		if (AllowInteract) {
@@ -4993,7 +5005,7 @@ function KinkyDungeonMove(moveDirection, delta, AllowInteract, SuppressSprint) {
 	return moved;
 }
 
-function KinkyDungeonWaitMessage(NoTime, delta) {
+function KinkyDungeonWaitMessage(NoTime: boolean, delta: number): void {
 	if (!KDIsAutoAction()) {
 		if (KinkyDungeonStatWillpowerExhaustion > 1) KinkyDungeonSendActionMessage(3, TextGet("WaitSpellExhaustion"), "orange", 2);
 		else if (!KinkyDungeonHasStamina(2.5, false)) KinkyDungeonSendActionMessage(1, TextGet("WaitExhaustion"
@@ -5016,9 +5028,11 @@ function KinkyDungeonWaitMessage(NoTime, delta) {
 }
 
 
-// Returns th number of turns that must elapse
-// Sets MovePoints to 0
-function KinkyDungeonMoveTo(moveX, moveY, willSprint, allowPass) {
+/**
+ * Returns th number of turns that must elapse
+ * Sets MovePoints to 0
+ */
+function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _allowPass: boolean) {
 	//if (KinkyDungeonNoEnemy(moveX, moveY, true)) {
 	let stepOff = false;
 	let xx = KinkyDungeonPlayerEntity.x;
@@ -5117,7 +5131,7 @@ let KDVisionUpdate = 0;
 
 let KDLastTick = 0;
 
-function KinkyDungeonAdvanceTime(delta, NoUpdate, NoMsgTick) {
+function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: boolean) {
 	if (!KinkyDungeonPlayerEntity.id) KinkyDungeonPlayerEntity.id = -1;
 
 	if (delta > 0) {
@@ -5449,18 +5463,28 @@ function KinkyDungeonTargetTileMsg() {
 
 /**
  * Sets an item in the character appearance
- * @param {Character} C - The character whose appearance should be changed
- * @param {string} Group - The name of the corresponding groupr for the item
- * @param {Asset|null} ItemAsset - The asset collection of the item to be changed
- * @param {string|string[]} NewColor - The new color (as "#xxyyzz" hex value) for that item
- * @param {number} [DifficultyFactor=0] - The difficulty, on top of the base asset difficulty, that should be assigned
+ * @param C - The character whose appearance should be changed
+ * @param Group - The name of the corresponding groupr for the item
+ * @param ItemAsset - The asset collection of the item to be changed
+ * @param NewColor - The new color (as "#xxyyzz" hex value) for that item
+ * @param [DifficultyFactor] - The difficulty, on top of the base asset difficulty, that should be assigned
  * to the item
- * @param {number} [ItemMemberNumber=-1] - The member number of the player adding the item - defaults to -1
- * @param {boolean} [Refresh=true] - Determines, wether the character should be redrawn after the item change
- * @param {item} [item] - The item, to pass to the event
- * @returns {Item} - the item itself
+ * @param [ItemMemberNumber] - The member number of the player adding the item - defaults to -1
+ * @param [Refresh] - Determines, wether the character should be redrawn after the item change
+ * @param [item] - The item, to pass to the event
+ * @returns - the item itself
  */
-function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMemberNumber, Refresh, item) {
+function KDAddAppearance (
+	C:                 Character,
+	_Group:            string,
+	ItemAsset:         Asset | null,
+	NewColor:          string | string[],
+	DifficultyFactor:  number = 0,
+	ItemMemberNumber:  number = -1,
+	_Refresh:          boolean = true,
+	item?:             Item
+): Item
+{
 	DifficultyFactor = 0;
 
 	// Unlike the stock function, we do NOT remove the previous one
@@ -5473,8 +5497,7 @@ function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMe
 
 	// Add the new item to the character appearance
 	if (ItemAsset != null) {
-		/** @type {Item} */
-		const NA = {
+		const NA: Item = {
 			Asset: ItemAsset,
 			Difficulty: parseInt((ItemAsset.Difficulty == null) ? 0 : ItemAsset.Difficulty) + parseInt(DifficultyFactor),
 			Color: data.color,
@@ -5489,16 +5512,25 @@ function KDAddAppearance(C, Group, ItemAsset, NewColor, DifficultyFactor, ItemMe
 
 /**
  * Sets an item in the character appearance
- * @param {Character} C - The character whose appearance should be changed
- * @param {string} Group - The name of the corresponding groupr for the item
- * @param {Model} ItemModel - The asset collection of the item to be changed
- * @param {string|string[]} NewColor - The new color (as "#xxyyzz" hex value) for that item
- * @param {item} [item] - The item, to pass to the event
- * @param {Record<string, LayerFilter>} filters - The item, to pass to the event
- * @param {Record<string, LayerProperties>} [Properties] - The item, to pass to the event
- * @returns {Item} - the item itself
+ * @param C - The character whose appearance should be changed
+ * @param Group - The name of the corresponding groupr for the item
+ * @param ItemModel - The asset collection of the item to be changed
+ * @param NewColor - The new color (as "#xxyyzz" hex value) for that item
+ * @param filters - The item, to pass to the event
+ * @param [item] - The item, to pass to the event
+ * @param [Properties] - The item, to pass to the event
+ * @returns - the item itself
  */
-function KDAddModel(C, Group, ItemModel, NewColor, filters, item, Properties) {
+function KDAddModel (
+	C:           Character,
+	_Group:      string,
+	ItemModel:   Model,
+	NewColor:    string | string[],
+	filters:     Record<string, LayerFilter>,
+	item?:       Item,
+	Properties?: Record<string, LayerProperties>
+): Item
+{
 
 	// Unlike the stock function, we do NOT remove the previous one
 	let data = {
@@ -5510,8 +5542,7 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item, Properties) {
 
 	// Add the new item to the character appearance
 	if (ItemModel != null) {
-		/** @type {Item} */
-		const NA = {
+		const NA: Item = {
 			Model: JSON.parse(JSON.stringify(ItemModel)),
 			Difficulty: 0,//parseInt((ItemModel.Difficulty == null) ? 0 : ItemModel.Difficulty) + parseInt(DifficultyFactor),
 			Color: data.color,
@@ -5533,7 +5564,7 @@ function KDAddModel(C, Group, ItemModel, NewColor, filters, item, Properties) {
 	return null;
 }
 
-function KinkyDungeonCloseDoor(x, y) {
+function KinkyDungeonCloseDoor(x: number, y: number) {
 	if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
 		KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8933", 2);
 	else {
@@ -5547,14 +5578,8 @@ function KinkyDungeonCloseDoor(x, y) {
 	}
 }
 
-/**
- * @type {Map<string, entity>}
- */
-let KDEnemyCache = null;
-/**
- * @type {Map<string, Map<number, boolean>>}
- */
-let KDEnemyEventCache = null;
+let KDEnemyCache: Map<string, entity> = null;
+let KDEnemyEventCache: Map<string, Map<number, boolean>> = null;
 let KDUpdateEnemyCache = true;
 let KDIDCache = new Map();
 
@@ -5585,11 +5610,10 @@ let KDTileQuery = "";
 let KDTileLast = null;
 
 /**
- *
- * @param {number} [x]
- * @param {number} [y]
+ * @param [x]
+ * @param [y]
  */
-function KDTile(x, y) {
+function KDTile(x?: number, y?: number): any {
 	if (x == undefined) x = KinkyDungeonPlayerEntity.x;
 	if (y == undefined) y = KinkyDungeonPlayerEntity.y;
 	let q = x + "," + y;
@@ -5603,11 +5627,10 @@ function KDTile(x, y) {
 }
 
 /**
- *
- * @param {number} [x]
- * @param {number} [y]
+ * @param [x]
+ * @param [y]
  */
-function KDTileDelete(x, y) {
+function KDTileDelete(x?: number, y?: number): void {
 	if (x == undefined) x = KinkyDungeonPlayerEntity.x;
 	if (y == undefined) y = KinkyDungeonPlayerEntity.y;
 	KinkyDungeonTilesDelete(x + "," + y);
@@ -5615,10 +5638,10 @@ function KDTileDelete(x, y) {
 
 /**
  * Stuns the player for [turns] turns
- * @param {number} turns
- * @param {boolean} [noFlag] - Doesn't add the 'stun' flag which makes the game think you are in trouble
+ * @param turns
+ * @param [noFlag] - Doesn't add the 'stun' flag which makes the game think you are in trouble
  */
-function KDStunTurns(turns, noFlag) {
+function KDStunTurns(turns: number, noFlag?: boolean) {
 	if (!noFlag)
 		KinkyDungeonSetFlag("playerStun", turns + 1);
 	KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, turns);
@@ -5627,19 +5650,19 @@ function KDStunTurns(turns, noFlag) {
 
 /**
  * Kneels the player for [turns] turns
- * @param {number} turns
+ * @param turns
  */
-function KDKneelTurns(turns) {
+function KDKneelTurns(turns: number) {
 	KinkyDungeonSetFlag("playerStun", turns + 1);
 	KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, turns);
 }
 
 /**
  * Picks a string based on weights
- * @param {Record<string, number>} list - a list of weights with string keys
- * @returns {string} - the key that was selected
+ * @param list - a list of weights with string keys
+ * @returns - the key that was selected
  */
-function KDGetByWeight(list) {
+function KDGetByWeight(list: Record<string, number>): string {
 	let WeightTotal = 0;
 	let Weights = [];
 	let type = "";
@@ -5770,12 +5793,11 @@ let KDKeyCheckers = {
 
 /**
  *
- * @param {number} Floor
- * @param {string} [MapMod]
- * @param {string} [RoomType]
- * @returns {any}
+ * @param Floor
+ * @param [MapMod]
+ * @param [RoomType]
  */
-function KDGetAltType(Floor, MapMod, RoomType) {
+function KDGetAltType(Floor: number, MapMod?: string, RoomType?: string): any {
 	let mapMod = null;
 	if (MapMod ? MapMod : KDGameData.MapMod) {
 		mapMod = KDMapMods[MapMod ? MapMod : KDGameData.MapMod];
@@ -5787,11 +5809,10 @@ function KDGetAltType(Floor, MapMod, RoomType) {
 
 /**
  *
- * @param {entity} player
- * @param {entity} Enemy
- * @returns {boolean}
+ * @param player
+ * @param Enemy
  */
-function KDCanPassEnemy(player, Enemy) {
+function KDCanPassEnemy(_player: entity, Enemy: entity): boolean {
 	return !KDIsImmobile(Enemy)
 	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
 	&& ((KinkyDungeonToggleAutoPass
@@ -5813,22 +5834,18 @@ function KDCanPassEnemy(player, Enemy) {
 
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {number} pad
- * @returns {boolean}
+ * @param x
+ * @param y
+ * @param [pad]
  */
-function KDIsInBounds(x, y, pad = 1) {
+function KDIsInBounds(x: number, y: number, pad: number = 1): boolean {
 	return x >= pad && x <= KDMapData.GridWidth-pad-1 && y >= pad && y <= KDMapData.GridHeight-pad-1;
 }
 
 /**
- *
- * @param {*} sprintdata
- * @returns {number}
+ * @param sprintdata
  */
-function KDSprintCost(sprintdata) {
+function KDSprintCost(sprintdata: any): number {
 	let data = {
 		sprintdata: sprintdata,
 		sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),
@@ -5843,11 +5860,10 @@ function KDSprintCost(sprintdata) {
 
 
 /**
- *
- * @param {KDMapDataType} map
- * @param {string} flag
+ * @param map
+ * @param flag
  */
-function KDSetMapFlag(map, flag) {
+function KDSetMapFlag(map: KDMapDataType, flag: string) {
 	if (!map) return;
 	if (!map.flags) {
 		map.flags = [];
@@ -5858,10 +5874,9 @@ function KDSetMapFlag(map, flag) {
 }
 
 /**
- *
- * @param {Character} C
+ * @param C
  */
-function KDUpdateForceOutfit(C) {
+function KDUpdateForceOutfit(C: Character) {
 	let forceOutfit = "";
 	let forceOutfitPri = 0;
 	let r = null;
@@ -5877,8 +5892,11 @@ function KDUpdateForceOutfit(C) {
 	}
 }
 
-function KDGenerateBaseTraffic(width, height) {
+function KDGenerateBaseTraffic(width?: number, height?: number) {
 	KDMapData.Traffic = [];
+	if (typeof width === 'undefined'  ||  typeof height === 'undefined')
+		return;
+
 	// Generate the grid
 	for (let X = 0; X < height; X++) {
 		let row = [];
@@ -5901,7 +5919,7 @@ function KDPruneWorld() {
 }
 
 
-function KDTurnToFace(dx, dy) {
+function KDTurnToFace(dx: number, dy: number) {
 	KinkyDungeonPlayerEntity.facing_x = Math.min(1, Math.abs(dx)) * Math.sign(dx);
 	KinkyDungeonPlayerEntity.facing_y = Math.min(1, Math.abs(dy)) * Math.sign(dy);
 

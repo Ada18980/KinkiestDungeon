@@ -6100,6 +6100,7 @@ function KinkyDungeonNoEnemy(x, y, Player) {
 /**
  *
  * @param {entity} enemy
+ * @param {boolean} [strict]
  * @returns {boolean}
  */
 function KDIsImmobile(enemy, strict) {

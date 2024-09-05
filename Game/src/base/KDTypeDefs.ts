@@ -3338,7 +3338,7 @@ interface KDPrisonType {
 	default_state: string,
 
 	/** Each turn this function runs. If a state is returned it sets the state*/
-	update: (delta: number) => string,
+	update: (delta: number) => string | void;
 }
 
 interface KDPresetLoadout {

@@ -718,7 +718,7 @@ function KDDrawSpellChoices() {
 	}
 }
 
-function KDCycleSpellPage(reverse, noWrap, force = false) {
+function KDCycleSpellPage(reverse: boolean = false, noWrap: boolean = false, force: boolean = false) {
 	if (reverse) {
 		KDSpellPage -= 1;
 	} else KDSpellPage += 1;
