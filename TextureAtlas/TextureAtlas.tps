@@ -222,6 +222,7 @@
             <key type="filename">../Models/ArmorPlate/BootRightSpread.png</key>
             <key type="filename">../Models/ArmorPlate/Breastplate.png</key>
             <key type="filename">../Models/ArmorPlate/BreastplateHogtie.png</key>
+            <key type="filename">../Models/ArmorPlate/FootBootLeftHogtie.png</key>
             <key type="filename">../Models/ArmorPlate/GauntletLeftCrossed.png</key>
             <key type="filename">../Models/ArmorPlate/GauntletLeftFree.png</key>
             <key type="filename">../Models/ArmorPlate/GauntletLeftFront.png</key>
@@ -2040,12 +2041,13 @@
             <key type="filename">../Models/MaidKnightLight/DressChestUp.png</key>
             <key type="filename">../Models/MaidKnightLight/DressChestWristtie.png</key>
             <key type="filename">../Models/MaidKnightLight/DressChestYoked.png</key>
-            <key type="filename">../Models/MaidKnightLight/DressDecoBackSpread.png</key>
-            <key type="filename">../Models/MaidKnightLight/DressDecoSpread.png</key>
+            <key type="filename">../Models/MaidKnightLight/DressDeco.png</key>
+            <key type="filename">../Models/MaidKnightLight/DressDecoBack.png</key>
             <key type="filename">../Models/MaidKnightLight/DressKneel.png</key>
             <key type="filename">../Models/MaidKnightLight/DressSkirt.png</key>
             <key type="filename">../Models/MaidKnightLight/DressSkirtHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/DressSkirtKneel.png</key>
+            <key type="filename">../Models/MaidKnightLight/FootBootLeftHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/FootSockLeftHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/FootSockRightKneel.png</key>
             <key type="filename">../Models/MaidKnightLight/ForeArmLeftCrossed.png</key>
@@ -3127,6 +3129,7 @@
             <key type="filename">../Models/Warrior/Bustier.png</key>
             <key type="filename">../Models/Warrior/BustierChest.png</key>
             <key type="filename">../Models/Warrior/Collar.png</key>
+            <key type="filename">../Models/Warrior/FootShoeLeftHogtie.png</key>
             <key type="filename">../Models/Warrior/ForeGloveLeftFront.png</key>
             <key type="filename">../Models/Warrior/ForeGloveRightFront.png</key>
             <key type="filename">../Models/Warrior/GloveLeftFree.png</key>

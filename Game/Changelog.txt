@@ -30,6 +30,12 @@ TODO:
 
 TODO remove hogtie when released
 
+5.4-nightly3
+- Fixed an issue where Rogue's problem solving triggered twice
+- Fixed (hopefully) an issue where audio crashed randomly
+- Fixed an issue where enemies send repeated soundwaves
+- Fixed an issue where dolls werent properly displaced when shoving the player into their space
+
 5.4-nightly2
 - !!!MODDERS - IMPORTANT!!!
 - "kinkydungeonappearanceX" now contains an expanded object with metadata. Please update mods that handle the localstorage version of character

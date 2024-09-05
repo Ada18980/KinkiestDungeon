@@ -704,7 +704,12 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 			let lyr = KDLayerPropName(l, MC.Poses);
 			// Apply displacement
-			if (l.DisplaceLayers && (!l.DisplacementPoses || l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))) {
+			if (l.DisplaceLayers
+				&& (!l.DisplacementPoses
+					|| l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))
+				&& (!l.DisplacementPosesExclude
+					|| l.DisplacementPosesExclude.every((pose) => {return !MC.Poses[pose];}))
+				) {
 				let transform = new Transform();
 
 				let layer = LayerLayer(MC, l, m, mods);
@@ -809,7 +814,12 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 			}
 			// Apply erase
-			if (l.EraseLayers && (!l.ErasePoses || l.ErasePoses.some((pose) => {return MC.Poses[pose];}))) {
+			if (l.EraseLayers
+				&& (!l.ErasePoses
+					|| l.ErasePoses.some((pose) => {return MC.Poses[pose];}))
+				&& (!l.ErasePosesExclude
+					|| l.ErasePosesExclude.every((pose) => {return !MC.Poses[pose];}))
+			) {
 				let transform = new Transform();
 
 				let layer = LayerLayer(MC, l, m, mods);

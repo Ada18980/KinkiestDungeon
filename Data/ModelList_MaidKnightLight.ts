@@ -389,10 +389,13 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 8,
 			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
 			AppendPose: ToMapDupe(["RopesAnkle"]),
+
+			DisplacementPosesExclude: ["Hogtie"],
+			ErasePosesExclude: ["Hogtie"],
 
 			DisplacementSprite: "Heels2",
 			DisplaceAmount: 80,
@@ -412,7 +415,7 @@ AddModel({
 
 			EraseInvariant: true,
 			EraseMorph: {Closed: "Closed"},
-			EraseSprite: "HeelsRightErase",
+			EraseSprite: "HeelsRightErase2",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
 			EraseZBonus: 100,

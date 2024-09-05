@@ -873,7 +873,7 @@ function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24, ftype =
 
 	let ee = KinkyDungeonEnemyAt(nearestfurniture.x, nearestfurniture.y);
 	if (ee && ee != enemy) {
-		KDKickEnemy(ee);
+		KDKickEnemy(ee, undefined, true);
 	}
 	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y)
 		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,

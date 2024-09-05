@@ -287,6 +287,8 @@ let DisplacementMaps = [
 'Heels2Spread.png',
 'HeelsRightErase.png',
 'HeelsRightEraseClosed.png',
+'HeelsRightErase2.png',
+'HeelsRightErase2Closed.png',
 'JacketArmsBoxtie.png',
 'JacketArmsCrossed.png',
 'JacketArmsWristtie.png',

@@ -10,8 +10,6 @@
 
 // Power is a scale of how powerful the restraint is supposed to be. It should roughly match the difficulty of the item, but can be higher for special items. Power 10 or higher might be totally impossible to struggle out of.
 
-// These are groups that the game is not allowed to remove because they were tied at the beginning
-let KinkyDungeonRestraintsLocked = [];
 
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
@@ -635,9 +633,6 @@ function KinkyDungeonLock(item, lock, NoEvent = false, Link = false, pick = fals
 			KinkyDungeonSendEvent("postUnlock", {item: item});
 		}
 
-		InventoryUnlock(KinkyDungeonPlayer,  KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group);
-		if (!KinkyDungeonRestraintsLocked.includes( KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group))
-			InventoryUnlock(Player, KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group);
 	}
 
 }
@@ -1980,6 +1975,10 @@ function KDGetStruggleData(data) {
 	if (data.escapePenalty < 0) data.escapePenalty *= buffMult;
 
 
+	// Struggling is unaffected by having arms bound
+	let minAmount = 0.1 - Math.max(0, 0.01*KDRestraint(data.restraint).power);
+	if (data.struggleType == "Remove" && !data.hasAffinity) minAmount = 0;
+
 
 	if (data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
 		data.escapePenalty += data.willEscapePenalty;
@@ -2081,14 +2080,11 @@ function KDGetStruggleData(data) {
 				}
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSetFlag("escapeimpossible", 2);
-				return "Impossible";
 			}
+			return "Impossible";
 		}
 	}
 
-	// Struggling is unaffected by having arms bound
-	let minAmount = 0.1 - Math.max(0, 0.01*KDRestraint(data.restraint).power);
-	if (data.struggleType == "Remove" && !data.hasAffinity) minAmount = 0;
 	// Bound arms make fine motor skill escaping more difficult in general
 	if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && data.struggleType != "Struggle" && armsBound) {
 		if (data.struggleGroup == "ItemArms")
@@ -2278,7 +2274,9 @@ function KDGetStruggleData(data) {
 	}
 
 
-	if (data.escapeChance > Math.max(0, data.limitChance, data.extraLim) || (KDRestraint(data.restraint).alwaysEscapable && KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
+	if (data.escapeChance > Math.max(0, data.limitChance, data.extraLim)
+		|| (KDRestraint(data.restraint).alwaysEscapable
+			&& KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		// Min struggle speed is always 0.05 = 20 struggle attempts
 		data.minSpeed = (KDRestraint(data.restraint).struggleMinSpeed && KDRestraint(data.restraint).struggleMinSpeed[data.struggleType]) ? KDRestraint(data.restraint).struggleMinSpeed[data.struggleType] : data.minSpeed;
 		data.escapeChance = Math.max(data.escapeChance, data.minSpeed);
@@ -3247,14 +3245,7 @@ function KinkyDungeonUpdateRestraints(C, id, delta, customRestraints, extraTags)
 		}
 		for (let sg of KinkyDungeonStruggleGroupsBase) {
 			let group = sg;
-			if (group == "ItemM") {
-				if (!KinkyDungeonGetRestraintItem("ItemMouth")) playerTags.set("ItemMouth" + "Empty", true);
-				if (!KinkyDungeonGetRestraintItem("ItemMouth2")) playerTags.set("ItemMouth2" + "Empty", true);
-				if (!KinkyDungeonGetRestraintItem("ItemMouth3")) playerTags.set("ItemMouth3" + "Empty", true);
-			} else if (group == "ItemH") {
-				if (!KinkyDungeonGetRestraintItem("ItemHood")) playerTags.set("ItemHood" + "Empty", true);
-				if (!KinkyDungeonGetRestraintItem("ItemHead")) playerTags.set("ItemHead" + "Empty", true);
-			} else if (!KinkyDungeonGetRestraintItem(group)) playerTags.set(group + "Empty", true);
+			if (!KinkyDungeonGetRestraintItem(group)) playerTags.set(group + "Empty", true);
 		}
 		let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 		for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
