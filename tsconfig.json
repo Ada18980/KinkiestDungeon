@@ -93,7 +93,7 @@
         "Game/src/dialogue/KinkyDungeonLoreList.js",
         "Game/src/faction/KinkyDungeonReputation.js",
         "Game/src/map/KinkyDungeonTraps.ts",
-        "Game/src/map/KinkyDungeonTiles.js",
+        "Game/src/map/KinkyDungeonTiles.ts",
         "Game/src/map/KinkyDungeonTilesList.ts",
         "Game/src/enemy/KinkyDungeonPathfinding.js",
         "Game/src/effect/KinkyDungeonBuffs.js",

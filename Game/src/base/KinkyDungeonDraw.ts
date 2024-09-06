@@ -3568,13 +3568,11 @@ function DrawBackNextButtonVis (
 
 
 /**
- *
- * @param {number} CamX
- * @param {number} CamY
- * @param {number} CamX_offset
- * @param {number} CamY_offset
- * @param {boolean} [Debug]
- * @returns {any}
+ * @param CamX
+ * @param CamY
+ * @param CamX_offset
+ * @param CamY_offset
+ * @param [Debug]
  */
 function KDDrawMap(CamX: number, CamY: number, CamX_offset: number, CamY_offset: number, _CamX_offsetVis: number, _CamY_offsetVis: number, Debug?: boolean): any {
 	let tooltip = "";

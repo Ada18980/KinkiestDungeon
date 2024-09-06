@@ -3665,7 +3665,7 @@ function KDSendWeapon(_weapon) {
 }
 
 // @ts-ignore
-function KDSendStatus(_type, _data, _data2?) {
+function KDSendStatus(_type, _data?, _data2?) {
 	// Banish Google from existence
 }
 // @ts-ignore

@@ -2951,8 +2951,8 @@ function KDBulletTrailAoEMod(b) {
  * @param {number} yy
  * @param {number} rad
  * @param {string} modifier
- * @param {originx} xx
- * @param {originy} yy
+ * @param {number} [originx]
+ * @param {number} [originy]
  */
 function AOECondition(bx, by, xx, yy, rad, modifier = "", originx, originy) {
 	if (!originx) originx = bx;
