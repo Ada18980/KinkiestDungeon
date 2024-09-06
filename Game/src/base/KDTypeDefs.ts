@@ -2249,7 +2249,7 @@ interface KDQuest {
 	tick?: (delta) => void;
 	worldgenstart?: () => void;
 	accept?: () => void;
-	weight: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => number;
+	weight: (RoomType: any, MapMod: any, data: any, currentQuestList?: any) => number;
 	prerequisite: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => boolean;
 	tags?: string[],
 };

@@ -2,9 +2,8 @@
 
 /**
  * Base costs for all the shrines. Starts at this value, increases thereafter
- * @type {Record<string, number>}
  */
-let KinkyDungeonShrineBaseCosts = {
+let KinkyDungeonShrineBaseCosts: Record<string, number> = {
 	//"Charms": 25,
 	"Leather": 40,
 	"Latex": 40,
@@ -27,9 +26,8 @@ let KDMinGoddessBonus = 0.15;
 
 /**
  * Cost growth, overrides the default amount
- * @type {Record<string, number>}
  */
-let KinkyDungeonShrineBaseCostGrowth = {
+let KinkyDungeonShrineBaseCostGrowth: Record<string, number> = {
 	"Elements": 2,
 	"Conjure": 2,
 	"Illusion": 2,
@@ -41,9 +39,8 @@ let KinkyDungeonShrinePoolChancePerUse = 0.2;
 
 /**
  * Current costs multipliers for shrines
- * @type {Record<string, number>}
  */
-let KinkyDungeonShrineCosts = {};
+let KinkyDungeonShrineCosts: Record<string, number> = {};
 
 let KinkyDungeonShrineTypeRemove = ["Charms", "Leather", "Metal", "Rope", "Latex", "Gags", "Blindfolds", "Boots"]; // These shrines will always remove restraints associated with their shrine
 
@@ -57,11 +54,9 @@ function KinkyDungeonShrineInit() {
 
 
 /**
- *
- * @param {string} Name
- * @returns {string}
+ * @param Name
  */
-function KDGoddessColor(Name) {
+function KDGoddessColor(Name: string): string {
 	let color = "#ffffff";
 	if (Name == "Illusion") color = "#8154FF";
 	else if (Name == "Conjure") color = "#D4AAFF";
@@ -74,7 +69,7 @@ function KDGoddessColor(Name) {
 	return color;
 }
 
-function KinkyDungeonShrineAvailable(type) {
+function KinkyDungeonShrineAvailable(type: string): boolean {
 	if (type == "Commerce") {
 		if (KDMapData.ShopItems.length > 0) return true;
 		else return false;
@@ -90,10 +85,9 @@ function KinkyDungeonShrineAvailable(type) {
 let KDLevelsPerCheckpoint = 4;
 
 /**
- *
- * @param {number} Level
+ * @param Level
  */
-function KinkyDungeonGenerateShop(Level) {
+function KinkyDungeonGenerateShop(Level: number): any[] {
 	let ShopItems = [];
 	let items_mid = 0;
 	let items_high = 0;
@@ -129,13 +123,11 @@ function KinkyDungeonGenerateShop(Level) {
 }
 
 /**
- *
- * @param {any} item
- * @param {boolean} [noScale]
- * @param {boolean} [sell]
- * @returns {number}
+ * @param item
+ * @param [noScale]
+ * @param [sell]
  */
-function KinkyDungeonItemCost(item, noScale, sell) {
+function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): number {
 	if (!item) return 0;
 	if (item.cost != null) return item.cost;
 
@@ -146,7 +138,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 		if (restraint.armor) power += 3;
 		if (restraint.protection) power += 3*restraint.protection;
 		if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
-			let enchants = {};
+			let enchants: Record<string, number> = {};
 			for (let ev of KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].events) {
 				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum[item.type || 'restraint']].level;
 			}
@@ -178,7 +170,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 
 		if (costMod) rarity += costMod;
 		if (KinkyDungeonConsumableVariants[item.name] || KinkyDungeonWeaponVariants[item.name]) {
-			let enchants = {};
+			let enchants: Record<string, number> = {};
 			for (let ev of KinkyDungeonConsumableVariants[item.name] ? KinkyDungeonConsumableVariants[item.name].events : KinkyDungeonWeaponVariants[item.name].events) {
 				if (ev.original && KDEventEnchantmentModular[ev.original]) enchants[ev.original] = KDEventEnchantmentModular[ev.original].types[KDModifierEnum[item.type || 'restraint']].level;
 			}
@@ -207,7 +199,7 @@ function KinkyDungeonItemCost(item, noScale, sell) {
 	return costs;
 }
 
-function KinkyDungeonShrineCost(type) {
+function KinkyDungeonShrineCost(type: string): number {
 	let mult = 1.0;
 	let growth = 1.0;
 	let noMult = false;
@@ -241,7 +233,7 @@ function KinkyDungeonShrineCost(type) {
 	return Math.round(Math.round(KinkyDungeonShrineBaseCosts[type] * mult/10)*10 * (1 + 0.01 * KinkyDungeonDifficulty));
 }
 
-function KDAddBasic(item) {
+function KDAddBasic(item: item | shopItem) {
 	if (item.name == "RedKey") {
 		KinkyDungeonRedKeys += 1;
 	} else if (item.name == "BlueKey") {
@@ -261,7 +253,7 @@ function KDAddBasic(item) {
 	}
 }
 
-function KinkyDungeonPayShrine(type, mult = 1) {
+function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 	let cost = KinkyDungeonShrineCost(type);
 	KinkyDungeonGold -= cost * mult;
 	let ShrineMsg = "";
@@ -426,7 +418,7 @@ function KinkyDungeonDrawShrine() {
 				// Draw the item and cost
 			}
 
-			DrawButtonKDEx("shrinebuy", (bdata) => {
+			DrawButtonKDEx("shrinebuy", (_bdata) => {
 				KDSendInput("shrineBuy", {type: type, shopIndex: KinkyDungeonShopIndex});
 				return true;
 			}, cost <= KinkyDungeonGold, KDModalArea_x + 550, YY + 25, 200, 60, TextGet("KinkyDungeonCommercePurchase").replace("ItemCost", "" + cost*discount), (cost*discount <= KinkyDungeonGold) ? "#ffffff" : "#ff5555", "", "");
@@ -447,7 +439,7 @@ function KinkyDungeonDrawShrine() {
 							{
 								zIndex: 69,
 							});
-					DrawButtonKDEx("l.name" + ii, (bdata) => {
+					DrawButtonKDEx("l.name" + ii, (_bdata) => {
 						KinkyDungeonShopIndex = index;
 						return true;
 					}, true,
@@ -519,7 +511,7 @@ function KinkyDungeonDrawShrine() {
 
 		let II = 0;
 		let shrineActionSpacing = 80;
-		if (DrawButtonKDEx("shrineUse", (bdata) => {
+		if (DrawButtonKDEx("shrineUse", (_bdata) => {
 			KDSendInput("shrineUse", {type: type, cost: cost*discount, targetTile: KinkyDungeonTargetTileLocation});
 			KinkyDungeonTargetTileLocation = "";
 			KinkyDungeonTargetTile = null;
@@ -532,7 +524,7 @@ function KinkyDungeonDrawShrine() {
 		II++;
 		let tiles = KinkyDungeonRescueTiles();
 		let rescueAvailable = tiles.length > 0;
-		if (DrawButtonKDEx("shrinePray", (bdata) => {
+		if (DrawButtonKDEx("shrinePray", (_bdata) => {
 			if (rescueAvailable) {
 				KDSendInput("shrinePray", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
@@ -546,7 +538,7 @@ function KinkyDungeonDrawShrine() {
 				KDModalArea_x+400, YY + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 		II++;
 
-		if (DrawButtonKDEx("drinkShrine", (bdata) => {
+		if (DrawButtonKDEx("drinkShrine", (_bdata) => {
 			KDSendInput("shrineDrink", {type: type, targetTile: KinkyDungeonTargetTileLocation});
 			return true;
 		}, true,KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
@@ -556,7 +548,7 @@ function KinkyDungeonDrawShrine() {
 				KDModalArea_x+400, YY + 55 - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 
 		II++;
-		if (DrawButtonKDEx("bottleShrine", (bdata) => {
+		if (DrawButtonKDEx("bottleShrine", (_bdata) => {
 			KDSendInput("shrineBottle", {type: type, targetTile: KinkyDungeonTargetTileLocation});
 			return true;
 		}, true, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
@@ -568,7 +560,7 @@ function KinkyDungeonDrawShrine() {
 		II++;
 
 		if (KDGameData.Champion == type) {
-			if (DrawButtonKDEx("shrineDevote", (bdata) => {
+			if (DrawButtonKDEx("shrineDevote", (_bdata) => {
 				KDSendInput("shrineDevote", {type: "", cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
@@ -579,7 +571,7 @@ function KinkyDungeonDrawShrine() {
 				DrawTextFitKD(TextGet(KDGameData.Champion != type ? "KDShrineActionDescChampionRemoveFail" : "KDShrineActionDescChampionRemove"),
 					KDModalArea_x+400, YY + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 		} else {
-			if (DrawButtonKDEx("shrineDevote", (bdata) => {
+			if (DrawButtonKDEx("shrineDevote", (_bdata) => {
 				KDSendInput("shrineDevote", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
@@ -593,7 +585,7 @@ function KinkyDungeonDrawShrine() {
 		II++;
 
 		if (KinkyDungeonTargetTile?.Quest) {
-			if (DrawButtonKDEx("shrineQuest", (bdata) => {
+			if (DrawButtonKDEx("shrineQuest", (_bdata) => {
 				KDSendInput("shrineQuest", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
@@ -641,10 +633,7 @@ function KinkyDungeonDrawShrine() {
 	}
 }
 
-/**
- * @type {Record<string, {require: string[], requireSingle: string[], filter?: string[]}>}
- */
-let KDGoddessRevengeMobTypes = {
+let KDGoddessRevengeMobTypes: Record<string, {require: string[], requireSingle: string[], filter?: string[]}> = {
 	Rope: {require: undefined, requireSingle: ["ropeTrap", "rope"], filter: ["human", "immobile"]},
 	Latex: {require: undefined, requireSingle: ["slime", "latexTrap", "latex"], filter: ["human", "immobile"]},
 	Metal: {require: undefined, requireSingle: ["metalTrap", "metal"], filter: ["human", "immobile"]},
@@ -656,15 +645,13 @@ let KDGoddessRevengeMobTypes = {
 };
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {string} Goddess
- * @param {number} [mult]
- * @param {number} [LevelBoost]
- * @returns {number}
+ * @param x
+ * @param y
+ * @param Goddess
+ * @param [mult]
+ * @param [LevelBoost]
  */
-function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
+function KDSummonRevengeMobs(_x: number, _y: number, Goddess: string, mult: number = 1.0, LevelBoost: number = 2): number {
 	let spawned = 0;
 	let maxspawn = 2 + Math.round(Math.min(3 + KDRandom() * 2, KinkyDungeonDifficulty/10) + Math.min(3 + KDRandom() * 2, 1*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
 	if (mult) maxspawn *= mult;
@@ -700,16 +687,14 @@ function KDSummonRevengeMobs(x, y, Goddess, mult = 1.0, LevelBoost = 2) {
 }
 
 /**
- *
- * @param {boolean} Bottle - Is this bottling or drinking?
- * @returns {boolean}
+ * @param Bottle - Is this bottling or drinking?
  */
-function KDCanDrinkShrine(Bottle) {
+function KDCanDrinkShrine(Bottle: boolean): boolean {
 	if (Bottle && KinkyDungeonIsHandsBound(true, true, 0.9)) return false;
 	return !KinkyDungeonTargetTile.drunk && (Bottle || KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonPlayerTags.get("slime"));
 }
 
-function KinkyDungeonGetSetPieces(Dict) {
+function KinkyDungeonGetSetPieces(Dict: any) {
 	let ret = [];
 	for (let sh of Dict) {
 		if (sh.Type) {
@@ -719,7 +704,7 @@ function KinkyDungeonGetSetPieces(Dict) {
 	return ret;
 }
 
-function KinkyDungeonGetMapShrines(Dict) {
+function KinkyDungeonGetMapShrines(Dict: any) {
 	let ret = [];
 	for (let sh of Dict) {
 		if (sh.Type) {
@@ -729,7 +714,7 @@ function KinkyDungeonGetMapShrines(Dict) {
 	return ret;
 }
 
-function KinkyDungeonTakeOrb(Amount, X, Y) {
+function KinkyDungeonTakeOrb(Amount: number, X: number, Y: number) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
 	KinkyDungeonDrawState = "Orb";
 	KinkyDungeonOrbAmount = Amount;
@@ -766,7 +751,7 @@ function KinkyDungeonDrawOrb() {
 				if (value > 30) color = "#4fd658";
 				else color = "#9bd45d";
 			}
-			DrawButtonKDEx("orbspell" + shrine, (b) => {
+			DrawButtonKDEx("orbspell" + shrine, (_b) => {
 				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 				KinkyDungeonDrawState = "Game";
 				return true;
@@ -780,14 +765,14 @@ function KinkyDungeonDrawOrb() {
 
 	}
 
-	DrawButtonKDEx("orbspellrandom", (b) => {
+	DrawButtonKDEx("orbspellrandom", (_b) => {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
 		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 		KinkyDungeonDrawState = "Game";
 		return true;
 	}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonSurpriseMe"), "white");
 	i += 2;
-	DrawButtonKDEx("cancelorb", (bdata) => {
+	DrawButtonKDEx("cancelorb", (_bdata) => {
 		KinkyDungeonDrawState = "Game";
 		return true;
 	}, true, canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonCancel"), "white");
@@ -806,7 +791,7 @@ let KDPerkConfirm = false;
 let KDPerkOrbPerks = [];
 let KDPerkOrbBondage = [];
 let KDPerkOrbMethod = "Default";
-function KinkyDungeonTakePerk(Amount, X, Y) {
+function KinkyDungeonTakePerk(Amount: number, X: number, Y: number) {
 	KinkyDungeonSetFlag("NoDialogue", 3);
 
 	KDPerkOrbPerks = KinkyDungeonTilesGet(X + "," + Y).Perks;
@@ -892,7 +877,7 @@ function KinkyDungeonDrawPerkOrb() {
 		DrawTextFitKD(TextGet("KinkyDungeonPerkConfirm"), 1250, 800, 1300, "#ffffff", KDTextGray2, 30);
 	}
 
-	DrawButtonKDEx("reject", (bdata) => {
+	DrawButtonKDEx("reject", (_bdata) => {
 		KinkyDungeonDrawState = "Game";
 		return true;
 	}, true, 1250-1300, 850 + 120 - 1000, 2600, 2000, TextGet("KinkyDungeonPerkReject"), "#ffffff", undefined, undefined, undefined, true, undefined, undefined, undefined,
@@ -901,7 +886,7 @@ function KinkyDungeonDrawPerkOrb() {
 		alpha: 0,
 	});
 
-	DrawButtonKDEx("accept", (bdata) => {
+	DrawButtonKDEx("accept", (_bdata) => {
 		if (KDPerkConfirm) {
 			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, method: KDPerkOrbMethod, Amount: 1, x: KDOrbX, y: KDOrbY});
 			KinkyDungeonDrawState = "Game";
@@ -916,18 +901,18 @@ function KinkyDungeonDrawPerkOrb() {
 
 }
 
-function KDGetPosNegColor(value) {
+function KDGetPosNegColor(value: number): string {
 	return (value ? (value > 0 ? KDGoodColor : KDCurseColor) : "#dddddd");
 }
 
-function KDGetGoddessBonus(shrine) {
+function KDGetGoddessBonus(shrine: string): number {
 	if (KinkyDungeonGoddessRep[shrine]) {
 		return KinkyDungeonGoddessRep[shrine] / 50 * (KinkyDungeonGoddessRep[shrine] > 0 ? KDMaxGoddessBonus : KDMinGoddessBonus);
 	}
 	return 0;
 }
 
-function KDDrawRestraintBonus(shrine, x, y, width = 100, FontSize, align, zIndex, alpha, forceColor) {
+function KDDrawRestraintBonus(shrine: string, x: number, y: number, width: number = 100, FontSize?: number, align?: string, zIndex?: number, alpha?: number, forceColor?: string) {
 	let bonus = KDGetGoddessBonus(shrine);
 	let color = forceColor ? forceColor : KDGetPosNegColor(bonus);
 	let str = (bonus >= 0 ? "+" : "") + Math.round(bonus * 100) + "%";
@@ -935,17 +920,12 @@ function KDDrawRestraintBonus(shrine, x, y, width = 100, FontSize, align, zIndex
 }
 
 /**
- *
- * @param {KDMapDataType} map
- * @param {*} tile
- * @returns {string}
+ * @param map
+ * @param tile
  */
-function KDGetShrineQuest(map, tile) {
+function KDGetShrineQuest(map: KDMapDataType, tile: any): string {
 	if (!tile) return "";
-	/**
-	 * @type {Record<string, number>}
-	 */
-	let eligibleQuests = {};
+	let eligibleQuests: Record<string, number> = {};
 	for (let q of Object.values(KDQuests)) {
 		if (q.tags?.includes(tile.Name) && !KDGameData.Quests?.includes(q.name) && !map.flags?.includes(q.name)) {
 			eligibleQuests[q.name] = q.weight(KDMapData.RoomType, KDMapData.MapMod, {});
@@ -957,11 +937,10 @@ function KDGetShrineQuest(map, tile) {
 }
 
 /**
- *
- * @param {KDMapDataType} map
- * @param {*} tile
+ * @param map
+ * @param tile
  */
-function KDSetShrineQuest(map, tile, quest) {
+function KDSetShrineQuest(map: KDMapDataType, tile: any, quest: string) {
 	if (!tile) return;
 	tile.Quest = quest;
 	KDSetMapFlag(map, quest);

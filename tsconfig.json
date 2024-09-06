@@ -78,7 +78,7 @@
         "Game/src/magic/KinkyDungeonMagicCode.js",
         "Game/src/magic/KinkyDungeonMagicList.js",
         "Game/src/magic/KinkyDungeonPlayerEffects.js",
-        "Game/src/map/KinkyDungeonShrine.js",
+        "Game/src/map/KinkyDungeonShrine.ts",
         "Game/src/map/KinkyDungeonObject.js",
         "Game/src/item/KinkyDungeonItem.js",
         "Game/src/player/KinkyDungeonDress.js",
