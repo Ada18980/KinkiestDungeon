@@ -35,6 +35,9 @@ TODO remove hogtie when released
 - Fixed (hopefully) an issue where audio crashed randomly
 - Fixed an issue where enemies send repeated soundwaves
 - Fixed an issue where dolls werent properly displaced when shoving the player into their space
+- Fixed some Light Maid Knight clipping and missing textures
+- Fixed some issues with struggle power calc
+
 
 5.4-nightly2
 - !!!MODDERS - IMPORTANT!!!

@@ -2739,6 +2739,8 @@ AttackFungalBind,"The fun-gal clips a restraint around your neck! (+RestraintAdd
 AttackFungalLock,"The fun-gal produces a magical lock on all your restraints! (DamageTaken)"
 AttackFungal,"The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)"
 KinkyDungeonSpellCrystalPuff,Crystal Glyph
+KinkyDungeonSpellCrystalSlash,Crystal Slash
+KinkyDungeonSpellCrystalBolt,Crystal Bolt
 
 
 NameDressmakerQuest,Tailor

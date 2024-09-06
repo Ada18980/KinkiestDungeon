@@ -8715,7 +8715,7 @@ function KDGateAttack(enemy, AID) {
  * @returns {boolean}
  */
 function KDAcceptsLeash(enemy, leash) {
-	return enemy.Enemy?.tags?.submissive || (KDGetPersonality(enemy) && KDLoosePersonalities.includes(KDGetPersonality(enemy)));
+	return enemy.Enemy?.tags?.submissive || (enemy.personality && KDLoosePersonalities.includes(enemy.personality));
 }
 
 /**

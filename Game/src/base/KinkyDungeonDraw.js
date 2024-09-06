@@ -3871,7 +3871,7 @@ let KDTileTooltips = {
 			: undefined};},
 	'c': () => {return {color: "#ffffff", text: "c"};},
 	'T': () => {return {color: "#444444", text: "T"};},
-	'4': () => {return {color: "#ffffff", noInspect: true, text: "4"};},
+	'4': () => {return {color: "#898989", noInspect: true, text: "4"};},
 	'X': () => {return {color: "#aaaaaa", text: "X"};},
 	'?': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
