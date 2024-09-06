@@ -1,9 +1,8 @@
 "use strict";
 
 
-/** @type {Record<string, KDTrapType>} */
-let KDTrapTypes = {
-	CustomSleepDart: (tile, entity, x, y) => {
+let KDTrapTypes: Record<string, KDTrapType> = {
+	CustomSleepDart: (_tile, entity, x, y) => {
 		let spell = KinkyDungeonFindSpell("TrapSleepDart", true);
 		if (spell) {
 			// Search any tile 4 tiles up or down that have Line of Sight to the player
@@ -64,7 +63,7 @@ let KDTrapTypes = {
 			msg: TextGet("KDBedTrap"),
 		};
 	},
-	CageTrap: (tile, entity, x, y) => {
+	CageTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
@@ -75,7 +74,7 @@ let KDTrapTypes = {
 			msg: TextGet("KDCageTrap"),
 		};
 	},
-	DisplayTrap: (tile, entity, x, y) => {
+	DisplayTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
@@ -86,7 +85,7 @@ let KDTrapTypes = {
 			msg: TextGet("KDDisplayTrap"),
 		};
 	},
-	DisplayStandTrap: (tile, entity, x, y) => {
+	DisplayStandTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
@@ -97,7 +96,7 @@ let KDTrapTypes = {
 			msg: TextGet("KDDisplayTrap"),
 		};
 	},
-	BarrelTrap: (tile, entity, x, y) => {
+	BarrelTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
@@ -191,7 +190,7 @@ let KDTrapTypes = {
 };
 
 let KDTrapTypesStepOff = {
-	DoorLock: (tile, entity, x, y) => {
+	DoorLock: (tile: any, entity: entity, x: number, y: number) => {
 		let created = 0;
 		if (KinkyDungeonNoEnemy(x, y)) {
 			let lifetime = tile.Lifetime ? tile.Lifetime : undefined;
@@ -239,7 +238,7 @@ let KDTrapTypesStepOff = {
 
 let KinkyDungeonTrapMoved = false;
 
-function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
+function KinkyDungeonHandleStepOffTraps(entity: entity, x: number, y: number, moveX: number, moveY: number) {
 	let flags = {
 		AllowTraps: true,
 	};
@@ -270,7 +269,7 @@ function KinkyDungeonHandleStepOffTraps(entity, x, y, moveX, moveY) {
 
 }
 
-function KinkyDungeonHandleTraps(entity, x, y, Moved) {
+function KinkyDungeonHandleTraps(entity: entity, x: number, y: number, Moved: boolean) {
 	let flags = {
 		AllowTraps: true,
 	};
@@ -310,22 +309,27 @@ function KinkyDungeonHandleTraps(entity, x, y, Moved) {
 	KinkyDungeonTrapMoved = false;
 }
 
-function KDTrigPanic(chest) {
+function KDTrigPanic(chest?: boolean) {
 	if ((!chest && KinkyDungeonStatsChoice.has("Panic2")) || (chest && KinkyDungeonStatsChoice.has("Panic"))) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff5277", 4);
 		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 2);
 	}
 }
 
-/**
- *
- * @returns {{ Name: string; Enemy?: string; Spell?: string; Level: number; Power: number; Weight: number; strict?: true; teleportTime?: number}[]}
- */
-function KinkyDungeonGetGoddessTrapTypes() {
-	/**
-	 * @type {{ Name: string; Enemy?: string; Spell?: string; Level: number; Power: number; Weight: number; strict?: true; teleportTime?: number,}[]}
-	 */
-	let trapTypes = [];
+type TrapTypeGoddess = {
+	Name:           string;
+	Enemy?:         string;
+	Spell?:         string;
+	Level:          number;
+	Power:          number;
+	Weight:         number;
+	strict?:        true;
+	teleportTime?:  number;
+}
+
+function KinkyDungeonGetGoddessTrapTypes(): TrapTypeGoddess[] {
+	let trapTypes: TrapTypeGoddess[] = [];
+
 	if (KinkyDungeonGoddessRep.Rope < KDANGER) {
 		trapTypes.push({ Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 15 });
 		trapTypes.push({ Name: "SpawnEnemies", strict: true,Enemy: "Ninja", Level: 0, Power: 3, Weight: 10 });
@@ -397,7 +401,7 @@ function KinkyDungeonGetGoddessTrapTypes() {
 	return trapTypes;
 }
 
-function KinkyDungeonGetTrap(trapTypes, Level, tags) {
+function KinkyDungeonGetTrap(trapTypes: any[], Level: number, tags: string[]) {
 
 	let trapWeightTotal = 0;
 	let trapWeights = [];
@@ -409,7 +413,7 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 
 		if (effLevel >= trap.Level && (!trap.arousalMode || KinkyDungeonStatsChoice.get("arousalMode"))) {
 			trapWeights.push({trap: trap, weight: trapWeightTotal});
-			let weight = trap.Weight + weightBonus;
+			let weight: number = trap.Weight + weightBonus;
 			if (trap.terrainTags)
 				for (let tag of tags)
 					if (trap.terrainTags[tag]) weight += trap.terrainTags[tag];
@@ -433,6 +437,8 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 				Spell: trapWeights[L].trap.Spell,
 				Power: trapWeights[L].trap.Power,
 				extraTag: trapWeights[L].trap.extraTag,
+				Hostile: undefined,
+				Faction: undefined,
 			};
 		}
 	}
@@ -440,7 +446,7 @@ function KinkyDungeonGetTrap(trapTypes, Level, tags) {
 }
 
 
-function KDSmokePuff(x, y, radius, density, nomsg) {
+function KDSmokePuff(x: number, y: number, radius: number, density: number, nomsg?: boolean) {
 	if (!nomsg)
 		KinkyDungeonSendTextMessage(2, TextGet("KDSmokePuff"), "white", 2);
 	for (let X = x - Math.floor(radius); X <= x + Math.floor(radius); X++)
@@ -454,7 +460,7 @@ function KDSmokePuff(x, y, radius, density, nomsg) {
 		}
 }
 
-function KDSteamPuff(x, y, radius, density, nomsg) {
+function KDSteamPuff(x: number, y: number, radius: number, density: number, nomsg?: boolean) {
 	if (!nomsg)
 		KinkyDungeonSendTextMessage(2, TextGet("KDSteamPuff"), "white", 2);
 	for (let X = x - Math.floor(radius); X <= x + Math.floor(radius); X++)
