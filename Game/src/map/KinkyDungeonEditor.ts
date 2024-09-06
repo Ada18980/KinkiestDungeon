@@ -17,21 +17,12 @@ let KDEditorTileFlexSuper = "";
 
 let KDEditorTileIndexQuery = '1,1';
 
-/**
- * @type {Record<string, string>}
- */
-let KDEditorTileIndexStore = {
+let KDEditorTileIndexStore: Record<string, string> = {
 	"1,1": 'lr',
 };
-/**
- * @type {Record<string, string>}
- */
-let KDEditorTileFlexStore = {
+let KDEditorTileFlexStore: Record<string, string> = {
 };
-/**
- * @type {Record<string, string>}
- */
-let KDEditorTileFlexSuperStore = {
+let KDEditorTileFlexSuperStore: Record<string, string> = {
 };
 
 let KDEditorCurrentMapTileName = 'test';
@@ -269,7 +260,7 @@ let KDTilePalette = {
 	},
 };
 
-function KDGetTileIndexImg(index) {
+function KDGetTileIndexImg(index: string) {
 	return {
 		u: index.includes('u'),
 		d: index.includes('d'),
@@ -322,13 +313,13 @@ function KDDrawTileEditor() {
 		KDTE_UpdateUI(false);
 
 		if (!KDTE_State) {
-			DrawButtonKDEx("ToTags", (bdata) => {
+			DrawButtonKDEx("ToTags", (_bdata) => {
 				KDTE_State = "Tags";
 				return true;
 			}, true, 20 , 920, 250, 64, 'Edit Tile Tags', "#ffffff");
 			KDDrawEditorUI();
 		} else {
-			DrawButtonKDEx("backToBrushes", (bdata) => {
+			DrawButtonKDEx("backToBrushes", (_bdata) => {
 				KDTE_State = "";
 				return true;
 			}, true, 20 , 920, 250, 64, 'Go Back', "#ffffff");
@@ -404,7 +395,7 @@ function KDDrawEditorUI() {
 		yy += grid * 5;
 	}
 
-	DrawButtonKDEx("flextoggle", (bdata) => {
+	DrawButtonKDEx("flextoggle", (_bdata) => {
 		KDEditorTileFlex = KDEditorTileFlex ? "" : "y";
 		if (KDEditorTileFlexStore[KDEditorTileIndexQuery] && !KDEditorTileFlex) {
 			delete KDEditorTileFlexStore[KDEditorTileIndexQuery];
@@ -414,7 +405,7 @@ function KDDrawEditorUI() {
 		return true;
 	}, true, 150 , 160, 140, 45, 'Flex', "#ffffff", KDEditorTileFlex ? (KinkyDungeonRootDirectory + "UI/CheckSmall.png") : undefined);
 
-	DrawButtonKDEx("flexsupertoggle", (bdata) => {
+	DrawButtonKDEx("flexsupertoggle", (_bdata) => {
 		KDEditorTileFlexSuper = KDEditorTileFlexSuper ? "" : "y";
 		if (KDEditorTileFlexSuperStore[KDEditorTileIndexQuery] && !KDEditorTileFlexSuper) {
 			delete KDEditorTileFlexSuperStore[KDEditorTileIndexQuery];
@@ -433,7 +424,7 @@ function KDDrawEditorUI() {
 	let width = 200;
 	let brushKeys = Object.keys(KDTilePalette);
 
-	DrawButtonKDEx("tilebrushup", (bdata) => {
+	DrawButtonKDEx("tilebrushup", (_bdata) => {
 		if (KDEditorTileBrushIndex == 0) KDEditorTileBrushIndex = brushKeys.length - 4;
 		else KDEditorTileBrushIndex = Math.max(0, KDEditorTileBrushIndex - 14);
 		return true;
@@ -449,14 +440,14 @@ function KDDrawEditorUI() {
 			KDEditorTileBrushIndex = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex + 3*Math.round(amount/grid));
 			KDEditorTileBrushIndex = Math.max(0, KDEditorTileBrushIndex);
 		},
-		(bdata) => {
+		(_bdata) => {
 			KDEditorTileBrush = brushKeys[index];
 			return true;
 		}, true, xx , yy, width, grid-5, brushKeys[index], brushKeys[index] == KDEditorTileBrush ? "#ffffff" : (brushKeys[index].startsWith('-') ? "#77ff77" : "#888888"));
 
 		yy += grid;
 	}
-	DrawButtonKDEx("tilebrushdown", (bdata) => {
+	DrawButtonKDEx("tilebrushdown", (_bdata) => {
 		if (KDEditorTileBrushIndex >= brushKeys.length - 6) KDEditorTileBrushIndex = 0;
 		else KDEditorTileBrushIndex = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex + 14);
 		return true;
@@ -468,7 +459,7 @@ function KDDrawEditorUI() {
 	xx = 1590;
 	grid = 40;
 
-	DrawButtonKDEx("tilebrushup2", (bdata) => {
+	DrawButtonKDEx("tilebrushup2", (_bdata) => {
 		if (KDEditorTileBrushIndex2 == 0) KDEditorTileBrushIndex2 = brushKeys.length - 4;
 		else KDEditorTileBrushIndex2 = Math.max(0, KDEditorTileBrushIndex2 - 8);
 		return true;
@@ -483,14 +474,14 @@ function KDDrawEditorUI() {
 			KDEditorTileBrushIndex2 = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex2 + 2*Math.round(amount/grid));
 			KDEditorTileBrushIndex2 = Math.max(0, KDEditorTileBrushIndex2);
 		},
-		(bdata) => {
+		(_bdata) => {
 			KDEditorTileBrush = brushKeys[index];
 			return true;
 		}, true, xx , yy, width, grid-5, brushKeys[index], brushKeys[index] == KDEditorTileBrush ? "#ffffff" : (brushKeys[index].startsWith('-') ? "#77ff77" : "#888888"));
 
 		yy += grid;
 	}
-	DrawButtonKDEx("tilebrushdown2", (bdata) => {
+	DrawButtonKDEx("tilebrushdown2", (_bdata) => {
 		if (KDEditorTileBrushIndex2 >= brushKeys.length - 6) KDEditorTileBrushIndex2 = 0;
 		else KDEditorTileBrushIndex2 = Math.min(brushKeys.length - 4, KDEditorTileBrushIndex2 + 8);
 		return true;
@@ -504,7 +495,7 @@ function KDDrawEditorUI() {
 	width = 200;
 	DrawTextFitKD("Tile List", xx + width/2 , yy - 30, width, "#ffffff", undefined, 36);
 
-	DrawButtonKDEx("tilenameup", (bdata) => {
+	DrawButtonKDEx("tilenameup", (_bdata) => {
 		if (KDEditorTileNameIndex == 0) KDEditorTileNameIndex = tileKeys.length - 4;
 		else KDEditorTileNameIndex = Math.max(0, KDEditorTileNameIndex - 9);
 		KDTELoadConfirm = false;
@@ -521,7 +512,7 @@ function KDDrawEditorUI() {
 			KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 5*Math.round(amount/grid));
 			KDEditorTileNameIndex = Math.max(0, KDEditorTileNameIndex);
 		},
-		(bdata) => {
+		(_bdata) => {
 			if (KDEditorCurrentMapTileName != tileKeys[index] || !KDTELoadConfirm) {
 				KDEditorCurrentMapTileName = tileKeys[index];
 				ElementValue("MapTileTitle", KDEditorCurrentMapTileName);
@@ -534,7 +525,7 @@ function KDDrawEditorUI() {
 		}, true, xx , yy, width, grid-5, tileKeys[index], tileKeys[index] == KDEditorCurrentMapTileName ? "#ffffff" : "#888888");
 		if (KDTELoadConfirm && tileKeys[index] == KDEditorCurrentMapTileName) {
 			DrawTextFitKD("Double click to LOAD", xx + width * 1.65 , yy + grid/2, width, "#ffffff", undefined);
-			DrawButtonKDEx("deletetilename" + i, (bdata) => {
+			DrawButtonKDEx("deletetilename" + i, (_bdata) => {
 				delete KDMapTilesListEditor[KDEditorCurrentMapTileName];
 				return true;
 			}, true, xx - 160, yy, 150, grid-5, "Delete!!!", tileKeys[index] == KDEditorCurrentMapTileName ? "#ffffff" : "#888888");
@@ -542,35 +533,35 @@ function KDDrawEditorUI() {
 
 		yy += grid;
 	}
-	DrawButtonKDEx("tilenamedown", (bdata) => {
+	DrawButtonKDEx("tilenamedown", (_bdata) => {
 		if (KDEditorTileNameIndex >= tileKeys.length - 6) KDEditorTileNameIndex = 0;
 		else KDEditorTileNameIndex = Math.min(tileKeys.length - 4, KDEditorTileNameIndex + 9);
 		KDTELoadConfirm = false;
 		return true;
 	}, true, xx , yy, width, grid-5, 'v', KDEditorTileNameIndex < tileKeys.length - 4 ? "#ffffff" : "#888888");
 
-	DrawButtonKDEx("tilesave", (bdata) => {
+	DrawButtonKDEx("tilesave", (_bdata) => {
 		KDTE_SaveTile(KDEditorCurrentMapTileName);
 		return true;
 	}, true, 900 , 150, 200, 60, 'Save Tile', "#ffffff");
 
 
-	DrawButtonKDEx("maptileR", (bdata) => {
+	DrawButtonKDEx("maptileR", (_bdata) => {
 		KinkyDungeonPlayerEntity.x = Math.max(0, Math.min(KDMapData.GridWidth - 1, KinkyDungeonPlayerEntity.x + 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 1000 , 900, 50, 50, '>', "#ffffff");
-	DrawButtonKDEx("maptileL", (bdata) => {
+	DrawButtonKDEx("maptileL", (_bdata) => {
 		KinkyDungeonPlayerEntity.x = Math.max(0, Math.min(KDMapData.GridWidth - 1, KinkyDungeonPlayerEntity.x - 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 900 , 900, 50, 50, '<', "#ffffff");
-	DrawButtonKDEx("maptileD", (bdata) => {
+	DrawButtonKDEx("maptileD", (_bdata) => {
 		KinkyDungeonPlayerEntity.y = Math.max(0, Math.min(KDMapData.GridHeight - 1, KinkyDungeonPlayerEntity.y + 3));
 		KDTELoadConfirm = false;
 		return true;
 	}, true, 950 , 950, 50, 50, 'v', "#ffffff");
-	DrawButtonKDEx("maptileU", (bdata) => {
+	DrawButtonKDEx("maptileU", (_bdata) => {
 		KinkyDungeonPlayerEntity.y = Math.max(0, Math.min(KDMapData.GridHeight - 1, KinkyDungeonPlayerEntity.y - 3));
 		KDTELoadConfirm = false;
 		return true;
@@ -633,7 +624,9 @@ function KDDrawEditorUI() {
 					if (JSON.parse(text)) {
 						console.log(JSON.parse(text));
 						console.log("Parse successful!!!");
-						for (let tile of Object.values(JSON.parse(text))) {
+						for (let t of Object.values(JSON.parse(text))) {
+							/*  FIXME: workaround type clash  */
+							const tile: any = t;
 							if (tile && tile.name) {
 								if (!KDMapTilesListEditor[tile.name]) {
 									KDMapTilesListEditor[tile.name] = tile;
@@ -789,7 +782,7 @@ let KDTE_MAXDIM = 20;
 
 let KDTELoadConfirm = false;
 
-function KDTE_Clear(x, y, force = false) {
+function KDTE_Clear(x: number, y: number, force: boolean = false) {
 	if (force || !KDIsSmartMovable(x, y)) {
 		KinkyDungeonMapSetForce(x, y, '0');
 		KinkyDungeonTilesDelete(x + "," + y);
@@ -808,8 +801,8 @@ function KDTE_Clear(x, y, force = false) {
 	}
 }
 
-let KDTE_Brush = {
-	"clear": (brush, curr, noSwap) => {
+let KDTE_Brush: Record<string, (brush: any, curr: string, noSwap: boolean) => void> = {
+	"clear": (_brush, _curr, _noSwap) => {
 		KDTE_Clear(KinkyDungeonTargetX, KinkyDungeonTargetY, true);
 		for (let p of KinkyDungeonPOI) {
 			if (p.x == KinkyDungeonTargetX && p.y == KinkyDungeonTargetY) {
@@ -855,7 +848,7 @@ let KDTE_Brush = {
 			}
 		}
 	},
-	'offlimits': (brush, curr, noSwap) => {
+	'offlimits': (_brush, _curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
 			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).OL) {
 				if (!noSwap)
@@ -866,7 +859,7 @@ let KDTE_Brush = {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {OL: true});
 		}
 	},
-	'NW': (brush, curr, noSwap) => {
+	'NW': (_brush, _curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
 			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).NW) {
 				if (!noSwap)
@@ -877,7 +870,7 @@ let KDTE_Brush = {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {NW: true});
 		}
 	},
-	'MazeBlock': (brush, curr, noSwap) => {
+	'MazeBlock': (_brush, _curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
 			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeBlock) {
 				if (!noSwap)
@@ -888,11 +881,10 @@ let KDTE_Brush = {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {MazeBlock: true});
 		}
 	},
-	'Label': (brush, curr, noSwap) => {
+	'Label': (brush, _curr, _noSwap) => {
 		if (!KDMapData.Labels) KDMapData.Labels = {};
 
-		/** @type {KDLabel} */
-		let label = {
+		let label: KDLabel = {
 			name: "null",
 			type: "null",
 			assigned: -1,
@@ -918,7 +910,7 @@ let KDTE_Brush = {
 		}
 
 	},
-	'MazeSeed': (brush, curr, noSwap) => {
+	'MazeSeed': (brush, _curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
 			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).MazeSeed) {
 				if (!noSwap)
@@ -936,7 +928,7 @@ let KDTE_Brush = {
 			}
 		}
 	},
-	'jail': (brush, curr, noSwap) => {
+	'jail': (_brush, _curr, noSwap) => {
 		if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)) {
 			if (KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY).Jail) {
 				if (!noSwap)
@@ -947,7 +939,7 @@ let KDTE_Brush = {
 			KinkyDungeonTilesSet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY, {Jail: true});
 		}
 	},
-	'Keyring': (brush, curr, noSwap) => {
+	'Keyring': (_brush, _curr, noSwap) => {
 		let keyringLength = KDGameData.KeyringLocations.length;
 		let filtered = KDGameData.KeyringLocations.filter((e) => {return e.x != KinkyDungeonTargetX || e.y != KinkyDungeonTargetY;});
 		if (filtered.length != keyringLength) {
@@ -970,7 +962,7 @@ let KDTE_Brush = {
 			}
 		}
 	},
-	"POI": (brush, curr, noSwap) => {
+	"POI": (_brush, _curr, noSwap) => {
 		let deleted = false;
 		for (let p of KinkyDungeonPOI) {
 			if (p.x == KinkyDungeonTargetX && p.y == KinkyDungeonTargetY) {
@@ -1014,7 +1006,7 @@ let KDTE_Inaccessible = false;
 let KDTE_confirmreset = false;
 let KDTE_confirmcommit = false;
 
-function KDHandleTileEditor(noSwap) {
+function KDHandleTileEditor(noSwap?: boolean): void {
 
 	// @ts-ignore
 	if (document.activeElement && (document.activeElement?.type == "text" || document.activeElement?.type == "textarea" || KDFocusableTextFields.includes(document.activeElement.id))) return;
@@ -1065,7 +1057,7 @@ function KDHandleTileEditor(noSwap) {
 
 }
 
-function KDTE_UpdateUI(Load) {
+function KDTE_UpdateUI(Load: boolean): void {
 	let tagCount = 17;
 	if (Load) {
 		ElementCreateTextArea("MapTileTitle");
@@ -1170,7 +1162,7 @@ function KDTE_UpdateUI(Load) {
 		DrawTextFitKD("Some entrances are inaccessible. This tile will occur more rarely in worldgen", 1000, 800, 1000, "#ff5555");
 }
 
-function KDTESetIndexToTile(propTile) {
+function KDTESetIndexToTile(propTile: string): void {
 	if (KDMapTilesListEditor[propTile]) {
 		let tileKeys = Object.keys(KDMapTilesListEditor);
 		let brushKeys = Object.keys(KDTilePalette);
@@ -1179,7 +1171,7 @@ function KDTESetIndexToTile(propTile) {
 	}
 }
 
-function KDTE_CullIndex(tileKeys, brushKeys) {
+function KDTE_CullIndex(tileKeys: string[], brushKeys: string[]): void {
 	KDEditorTileNameIndex = Math.max(0, Math.min(tileKeys.length - 6, KDEditorTileNameIndex));
 	KDEditorTileBrushIndex = Math.max(0, Math.min(brushKeys.length - 6, KDEditorTileBrushIndex));
 	KDEditorTileBrushIndex2 = Math.max(0, Math.min(brushKeys.length - 6, KDEditorTileBrushIndex2));
@@ -1201,14 +1193,13 @@ function KDTE_CloseUI() {
 
 
 /**
- *
- * @param {number} w
- * @param {number} h
- * @param {string} chkpoint
- * @param {boolean} closed - The edges will be closed index
- * @param {boolean} empty - All floor
+ * @param w
+ * @param h
+ * @param [chkpoint]
+ * @param [closed] - The edges will be closed index
+ * @param [empty] - All floor
  *  */
-function KDTE_Create(w, h, chkpoint = 'grv', closed = false, empty = false) {
+function KDTE_Create(w: number, h: number, chkpoint: string = 'grv', closed: boolean = false, empty: boolean = false): void {
 	MiniGameKinkyDungeonCheckpoint = 'grv';
 	KinkyDungeonMapIndex = {
 		'grv' : chkpoint,
@@ -1281,11 +1272,8 @@ function KDTE_Create(w, h, chkpoint = 'grv', closed = false, empty = false) {
 	KDTE_UpdateUI(true);
 }
 
-function KDTE_LoadTile(name, loadedTile) {
-	/**
-	 * @type {KDMapTile}
-	 */
-	let nt = loadedTile || KDMapTilesListEditor[name];
+function KDTE_LoadTile(name: any, loadedTile?: KDMapTile) {
+	let nt: KDMapTile = loadedTile || KDMapTilesListEditor[name];
 	KDTE_Create(nt.w, nt.h);
 	KDEditorTileIndexStore = nt.index;
 	KDEditorTileFlexStore = nt.flexEdge || {};
@@ -1346,14 +1334,10 @@ function KDTE_LoadTile(name, loadedTile) {
 	}
 }
 
-/**
- * @returns {KDMapTile}
- */
-function KDTE_ExportTile() {
+function KDTE_ExportTile(): KDMapTile {
 	/**
-	 * @type {KDMapTile}
 	 */
-	let saveTile = {
+	let saveTile: KDMapTile = {
 		name: KDEditorCurrentMapTileName,
 		Labels: JSON.parse(JSON.stringify(KDMapData.Labels)),
 		w: KDMapData.GridWidth / KDTE_Scale,
@@ -1396,7 +1380,7 @@ function KDTE_ExportTile() {
 	return saveTile;
 }
 
-function KDTE_SaveTile(tile) {
+function KDTE_SaveTile(_tile?: string) {
 	let saveTile = KDTE_ExportTile();
 
 	// JSON recreation to kill all references
@@ -1408,18 +1392,19 @@ function KDTE_SaveTile(tile) {
 	localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
 }
 
-/**
- * @returns {{indX1: number, indY1: number, dir1: string, indX2: number, indY2: number, dir2: string}[]}
- */
-function KDTEGetInaccessible() {
-	/**
-	 * @type {{indX1: number, indY1: number, dir1: string, indX2: number, indY2: number, dir2: string}[]}
-	 */
-	let list = [];
-	/**
-	 * @type {{indX: number, indY: number, dir: string}[]}
-	 */
-	let listEntrances = [];
+/*  TODO: Promote to KDTypeDefs?  */
+type InaccessibleEntry = {
+	indX1:  number;
+	indY1:  number;
+	dir1:   string;
+	indX2:  number;
+	indY2:  number;
+	dir2:   string;
+}
+
+function KDTEGetInaccessible(): InaccessibleEntry[] {
+	let list: InaccessibleEntry[] = [];
+	let listEntrances: {indX: number, indY: number, dir: string}[] = [];
 
 	// Figure out the list of entrances we need to compare
 	for (let ind of Object.entries(KDEditorTileIndexStore)) {
@@ -1486,7 +1471,7 @@ function KDTEGetInaccessible() {
 	return list;
 }
 
-function KDObjFromMapArray(array) {
+function KDObjFromMapArray(array: any): any {
 	if (array.length != undefined) {
 		let map = {};
 		for (let entry of array) {
@@ -1506,7 +1491,7 @@ function KDReloadAllEditorTiles() {
 	}
 }
 
-function KDTE_GetField(field) {
+function KDTE_GetField(field: any): any {
 	if (!field[1]) return undefined;
 	if (ElementValue("KDTECustomField" + field[0]) == "") return undefined;
 	if (field[1].type == 'array') return ElementValue("KDTECustomField" + field[0])?.split(',');
