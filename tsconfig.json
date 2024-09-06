@@ -102,7 +102,7 @@
         "Game/src/prison/KinkyDungeonJail.js",
         "Game/src/prison/KDPrison.js",
         "Game/src/prison/KDPrisonList.ts",
-        "Game/src/map/KinkyDungeonSetpiece.js",
+        "Game/src/map/KinkyDungeonSetpiece.ts",
         "Game/src/dialogue/KinkyDungeonDialogue.js",
         "Game/src/dialogue/KinkyDungeonDialogueTriggers.js",
         "Game/src/dialogue/KinkyDungeonDialogueList.js",

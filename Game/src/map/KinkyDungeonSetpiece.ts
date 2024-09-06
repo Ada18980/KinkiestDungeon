@@ -26,7 +26,34 @@ let KDSetPieces = [
 
 let KDCountSetpiece = new Map();
 
-function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, chargerlist, spawnPoints, InJail, width, height) {
+type ChestEntry = {
+	x:         number;
+	y:         number;
+	priority:  boolean;
+	Faction:   string;
+	NoTrap:    boolean;
+}
+
+type ShrineEntry = {
+	x:         number;
+	y:         number;
+	priority:  boolean;
+}
+
+type SpawnEntry = {
+	x:         number;
+	y:         number;
+	required:  string[];
+	AI:        string;
+	tags?:     string[];
+	ftags?:    string[];
+	faction?:  string;
+	force?:    boolean;
+	keys?:     boolean;
+	priority?: boolean;
+}
+
+function KinkyDungeonPlaceSetPieces(POI: any, trapLocations: { x: number, y: number }[], chestlist: ChestEntry[], shrinelist: ShrineEntry[], chargerlist: any[], spawnPoints: SpawnEntry[], InJail: boolean, width: number, height: number) {
 	KDCountSetpiece = new Map();
 	let pieces = new Map();
 
@@ -99,7 +126,7 @@ function KinkyDungeonPlaceSetPieces(POI, trapLocations, chestlist, shrinelist, c
 
 }
 
-function KDGetFavoredSetpieces(POI, setpieces) {
+function KDGetFavoredSetpieces(POI: any, setpieces: any[]) {
 	let pieces = [];
 	for (let p of POI) {
 		if (p.used) continue;
@@ -111,7 +138,7 @@ function KDGetFavoredSetpieces(POI, setpieces) {
 	}
 	return setpieces.filter((p) => {return pieces.includes(p.Name);});
 }
-function KDGetFavoringSetpieces(Name, tags, POI, POIBlacklist) {
+function KDGetFavoringSetpieces(Name: string, tags: string[], POI: any, POIBlacklist?: Map<any, boolean>) {
 	let pois = [];
 	for (let p of POI) {
 		if (POIBlacklist && POIBlacklist.get(p)) continue;
@@ -125,7 +152,7 @@ function KDGetFavoringSetpieces(Name, tags, POI, POIBlacklist) {
 		for (let p of POI) {
 			if (POIBlacklist && POIBlacklist.get(p)) continue;
 			if (p.used) continue;
-			if (p.requireTags.length == 0 || p.requireTags.some((tag) => {return tags.includes(tag);})) {
+			if (p.requireTags.length == 0 || p.requireTags.some((tag: string) => {return tags.includes(tag);})) {
 				pois.push(p);
 			}
 		}
@@ -133,7 +160,7 @@ function KDGetFavoringSetpieces(Name, tags, POI, POIBlacklist) {
 	return pois[Math.floor(KDRandom() * pois.length)];
 }
 
-function KinkyDungeonGetSetPiece(POI, setpieces, pieces) {
+function KinkyDungeonGetSetPiece(POI: any, setpieces: any[], pieces: Map<string, any>) {
 	let setpieces2 = KDGetFavoredSetpieces(POI, setpieces);
 	if (setpieces2.length < 1 || KDRandom() < 0.1) setpieces2 = setpieces;
 
@@ -159,7 +186,20 @@ function KinkyDungeonGetSetPiece(POI, setpieces, pieces) {
 	}
 }
 
-function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestlist, shrinelist, chargerlist, spawnPoints, forcePOI, altType, MapParams) {
+function KinkyDungeonGenerateSetpiece (
+	POI:            any,
+	Piece:          any,
+	InJail:         boolean,
+	trapLocations:  { x: number, y: number }[],
+	chestlist:      ChestEntry[],
+	shrinelist:     ShrineEntry[],
+	_chargerlist:   any[],
+	spawnPoints:    SpawnEntry[],
+	forcePOI:       boolean,
+	altType:        any,
+	MapParams:      floorParams
+)
+{
 	let radius = Piece.Radius;
 	let xPadStart = Piece.xPad || 5;
 	let yPadStart = Piece.yPad || 2;
@@ -741,11 +781,11 @@ function KinkyDungeonGenerateSetpiece(POI, Piece, InJail, trapLocations, chestli
 
 /**
  * This function unblocks movement to ensure a map is pathable
- * @param {number} x
- * @param {number} y
- * @returns {boolean} - whether it's possible
+ * @param x
+ * @param y
+ * @returns - whether it's possible
  */
-function KDUnblock(x, y) {
+function KDUnblock(x: number, y: number): boolean {
 	let blocked = false;
 	let blockTiles = "1X";
 	let t = KinkyDungeonMapGet(x, y-1);
@@ -819,7 +859,7 @@ function KDUnblock(x, y) {
 	return !blocked;
 }
 
-function SetpieceSpawnPrisoner(x, y, persistentOnly) {
+function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean) {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
@@ -835,9 +875,8 @@ function SetpieceSpawnPrisoner(x, y, persistentOnly) {
 		|| capturedPersistent.length > 0;
 	if (!noPersistent && persistentAvailable) {
 		/**
-		 * @type {entity}
 		 */
-		let e = null;
+		let e: entity = null;
 		if (KDGameData.CapturedParty?.length > 0) {
 			let index = Math.floor(KDRandom() * KDGameData.CapturedParty.length);
 			if (!KDGameData.SpawnedPartyPrisoners) KDGameData.SpawnedPartyPrisoners = {};
@@ -887,7 +926,7 @@ function SetpieceSpawnPrisoner(x, y, persistentOnly) {
 }
 
 
-function KDTorch(X, Y, altType, MapParams) {
+function KDTorch(X: number, Y: number, altType: any, MapParams: any) {
 	let torchreplace = (altType && altType.torchreplace) ? altType.torchreplace : (MapParams.torchreplace ? MapParams.torchreplace : null);
 	KDCreateEffectTile(X, Y + 1, {
 		name: torchreplace?.sprite ? torchreplace.sprite : "Torch",
@@ -897,8 +936,8 @@ function KDTorch(X, Y, altType, MapParams) {
 	if (!KinkyDungeonTilesGet(X + "," + Y))
 		KinkyDungeonTilesSet(X + "," + Y, {});
 }
-function KDTorchUnlit(X, Y, altType, MapParams) {
 
+function KDTorchUnlit(X: number, Y: number, altType: any, MapParams: any) {
 	let torchreplace = (altType && altType.torchreplace) ? altType.torchreplace : (MapParams.torchreplace ? MapParams.torchreplace : null);
 	KDCreateEffectTile(X, Y + 1, {
 		name: torchreplace?.unlitsprite ? torchreplace.unlitsprite : "TorchUnlit",
@@ -909,13 +948,13 @@ function KDTorchUnlit(X, Y, altType, MapParams) {
 		KinkyDungeonTilesSet(X + "," + Y, {});
 }
 
-function KDChest(X, Y, loot = "chest", faction = "") {
+function KDChest(X: number, Y: number, loot: string = "chest", faction: string = "") {
 	KinkyDungeonMapSet(X, Y, 'C');
 	KinkyDungeonTilesSet((X) + "," + (Y), {Loot: loot, Faction: faction, Roll: KDRandom()});
 }
 
-function KDCreateDoors(Left, Top, Width, Height, openChance = 0, convertDoodads = true) {
-	let doors = {};
+function KDCreateDoors(Left: number, Top: number, Width: number, Height: number, openChance: number = 0, convertDoodads: boolean = true) {
+	let doors: Record<string, { x: number, y: number }> = {};
 
 	// Create double doors
 	let rows = [Top, Top + Height - 1];
@@ -969,7 +1008,7 @@ function KDCreateDoors(Left, Top, Width, Height, openChance = 0, convertDoodads 
 
 }
 
-function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToChestList) {
+function KDPlaceChest(cornerX: number, cornerY: number, _radius: number, chestlist: ChestEntry[], spawnPoints: SpawnEntry[], NoAddToChestList?: boolean): string {
 	// Determine faction
 	let bandit = [
 		{faction: "Bandit", tags: ["bandit"], rtags: ["bandit"], ftags: ["miniboss", "boss"]},
@@ -1029,7 +1068,7 @@ function KDPlaceChest(cornerX, cornerY, radius, chestlist, spawnPoints, NoAddToC
 	return factionSelected.faction;
 }
 
-function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspreadchance) {
+function KDAddPipes(pipechance: number, pipelatexchance: number, thinlatexchance: number, heavylatexspreadchance: number): void {
 	for (let x = 1; x < KDMapData.GridWidth - 2; x++)
 		for (let y = 1; y < KDMapData.GridHeight - 2; y++) {
 			if (
@@ -1065,13 +1104,12 @@ function KDAddPipes(pipechance, pipelatexchance, thinlatexchance, heavylatexspre
 }
 
 /**
- *
- * @param {entity} e
- * @param {boolean} noJam
- * @param {string} dialogue
- * @param {NPCRestraint} [restraint]
+ * @param e
+ * @param noJam
+ * @param [dialogue]
+ * @param [restraint]
  */
-function KDImprisonEnemy(e, noJam, dialogue = "PrisonerJail", restraint) {
+function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "PrisonerJail", restraint?: NPCRestraint): void {
 	if (noJam)
 		KinkyDungeonSetEnemyFlag(e, "nojam", -1);
 	e.specialdialogue = dialogue;
