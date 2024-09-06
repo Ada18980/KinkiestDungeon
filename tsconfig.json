@@ -63,7 +63,7 @@
         "Game/src/enemy/KinkyDungeonEnemiesList.js",
         "Game/src/enemy/KinkyDungeonEnemyEventList.js",
         "Game/src/enemy/KinkyDungeonEnemyTeaseAttacks.js",
-        "Game/src/map/KinkyDungeonEscapeList.js",
+        "Game/src/map/KinkyDungeonEscapeList.ts",
         "Game/src/item/KinkyDungeonCurse.js",
         "Game/src/restraint/KinkyDungeonRestraints.js",
         "Game/src/restraint/KDTethers.ts",

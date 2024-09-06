@@ -273,7 +273,7 @@ let KinkyDungeonEscapeTypes = {
 	},
 };
 
-function KDEscapeWorldgenStart(method) {
+function KDEscapeWorldgenStart(method: string) {
 	if (method) {
 		if (KinkyDungeonEscapeTypes[method] && KinkyDungeonEscapeTypes[method].worldgenstart) {
 			KinkyDungeonEscapeTypes[method].worldgenstart();
