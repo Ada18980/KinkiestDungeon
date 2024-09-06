@@ -50,7 +50,7 @@
         "Game/src/map/KDLairs.ts",
         "Game/src/map/KDRegiments.ts",
         "Game/src/base/KinkyDungeonBones.ts",
-        "Game/src/map/KinkyDungeonMapMods.js",
+        "Game/src/map/KinkyDungeonMapMods.ts",
         "Game/src/map/KDSideRooms.ts",
         "Game/src/map/KinkyDungeonBoss.ts",
         "Game/src/player/KinkyDungeonPerks.js",

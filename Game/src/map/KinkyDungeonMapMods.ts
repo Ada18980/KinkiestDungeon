@@ -1,14 +1,11 @@
 "use strict";
 
-/**
- * @type {Record<string, MapMod>}
- */
-let KDMapMods = {
+let KDMapMods: Record<string, MapMod> = {
 	"None": {
 		name: "None",
 		roomType: "",
 		weight: 300,
-		filter: (slot) => {
+		filter: (_slot) => {
 			return 1.0;
 		},
 		tags: [],
@@ -200,14 +197,12 @@ let KDMapMods = {
 
 // KDGetMapGenList(3, KDMapMods);
 /**
- *
- * @param {number} count
- * @param {Record<string, MapMod>} mods
- * @param {KDJourneySlot} slot
- * @returns {MapMod[]}
+ * @param count
+ * @param mods
+ * @param slot
  */
-function KDGetMapGenList(count, mods, slot) {
-	let ret = [];
+function KDGetMapGenList(count: number, mods: Record<string, MapMod>, slot: KDJourneySlot): MapMod[] {
+	let ret: MapMod[] = [];
 	for (let i = 0; i < count; i++) {
 		let genWeightTotal = 0;
 		let genWeights = [];
