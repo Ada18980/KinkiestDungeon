@@ -865,6 +865,7 @@ function KDIgnition(b, tile, d) {
  * @param {number} delta
  * @param {number} X
  * @param {number} Y
+ * @param {boolean} [unwilling]
  */
 function KDConveyor(delta, X, Y, unwilling) {
 	let tile = KinkyDungeonTilesGet(X + "," + Y);

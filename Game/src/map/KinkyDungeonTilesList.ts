@@ -19,9 +19,8 @@ let KDCornerTiles = {
 
 /**
  * Updates local tiles such as conveyors
- * @type {Record<string, (delta: number, X?: number, Y?: number) => void>}
  */
-let KDTileUpdateFunctionsLocal = {
+let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: number) => void> = {
 	"]": (delta, X, Y) => {// Happy Gas!
 		if (delta > 0)
 			KDDealEnvironmentalDamage(X, Y, 0.5, {
@@ -41,7 +40,7 @@ let KDTileUpdateFunctionsLocal = {
 				bind: 0,
 			});
 	},
-	'z': (delta, X, Y) => {
+	'z': (_delta, X, Y) => {
 		let entity = KinkyDungeonEntityAt(X, Y);
 		if (entity) return;
 		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
@@ -53,7 +52,7 @@ let KDTileUpdateFunctionsLocal = {
 			}
 		}
 	},
-	'Z': (delta, X, Y) => {
+	'Z': (_delta, X, Y) => {
 		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
 		if (mapTile?.wireType == "AutoDoor_HoldOpen" || mapTile?.wireType == "AutoDoor_HoldClosed") {
 			let tags = KDEffectTileTags(X, Y);
@@ -63,13 +62,13 @@ let KDTileUpdateFunctionsLocal = {
 			}
 		}
 	},
-	"w": (delta, X, Y) => {
+	"w": (_delta, X, Y) => {
 		KDCreateEffectTile(X, Y, {
 			name: "Water",
 			duration: 2,
 		}, 0);
 	},
-	"W": (delta, X, Y) => {
+	"W": (_delta, X, Y) => {
 		KDCreateEffectTile(X, Y, {
 			name: "Water",
 			duration: 2,
@@ -156,7 +155,7 @@ let KDTileUpdateFunctionsLocal = {
 			tile.cd -= delta;
 		}
 	},
-	"t": (delta, X, Y) => {
+	"t": (_delta, X, Y) => {
 		// Consume prisoners on the tile
 		let entity = KinkyDungeonEntityAt(X, Y);
 		if (entity && !entity.player) {
@@ -183,21 +182,20 @@ let KDTileUpdateFunctionsLocal = {
 
 /**
  * Return value: whether or not to continue to allow peripheral tile updates
- * @type {Record<string, KDBondageMachineFunc>}
  */
-let KDBondageMachineFunctions = {
+let KDBondageMachineFunctions: Record<string, KDBondageMachineFunc> = {
 	"Latex": {
-		eligible_player: (tile, x, y, entity) => {
+		eligible_player: (_tile, _x, _y, _entity) => {
 			return KDGetRestraintsEligible({tags: ['latexEncase', 'latexCatsuits']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
-		function_player: (tile, delta, x, y, entity) => {
+		function_player: (_tile, _delta, _x, _y, _entity) => {
 			KDBasicRestraintsMachine_Player(['latexEncase', 'latexCatsuits'], 2, "KDEncasement");
 			return false;
 		},
-		eligible_enemy: (tile, x, y, entity) => {
+		eligible_enemy: (_tile, _x, _y, _entity) => {
 			return true;
 		},
-		function_enemy: (tile, delta, x, y, entity) => {
+		function_enemy: (_tile, _delta, _x, _y, entity) => {
 			KDTieUpEnemy(entity, 4.0, "Latex", "glue");
 			if (KDBoundEffects(entity) > 2 ) {
 				KDTieUpEnemy(entity, 4.0, "Latex", "glue");
@@ -212,17 +210,17 @@ let KDBondageMachineFunctions = {
 		},
 	},
 	"Metal": {
-		eligible_player: (tile, x, y, entity) => {
+		eligible_player: (_tile, _x, _y, _entity) => {
 			return KDGetRestraintsEligible({tags: ["hitechCables", "cableGag", "controlHarness"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
-		function_player: (tile, delta, x, y, entity) => {
+		function_player: (_tile, _delta, _x, _y, _entity) => {
 			KDBasicRestraintsMachine_Player(["hitechCables", "cableGag", "controlHarness"], 2, "KDMetalMachine");
 			return false;
 		},
-		eligible_enemy: (tile, x, y, entity) => {
+		eligible_enemy: (_tile, _x, _y, _entity) => {
 			return true;
 		},
-		function_enemy: (tile, delta, x, y, entity) => {
+		function_enemy: (_tile, _delta, _x, _y, entity) => {
 			KDTieUpEnemy(entity, 4.0, "Metal", "chain");
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
@@ -233,17 +231,17 @@ let KDBondageMachineFunctions = {
 		},
 	},
 	"Doll": {
-		eligible_player: (tile, x, y, entity) => {
+		eligible_player: (_tile, _x, _y, _entity) => {
 			return KDGetRestraintsEligible({tags: ["cyberdollrestraints"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
-		function_player: (tile, delta, x, y, entity) => {
+		function_player: (_tile, _delta, _x, _y, _entity) => {
 			KDBasicRestraintsMachine_Player(["cyberdollrestraints"], 2, "KDDollMachine");
 			return false;
 		},
-		eligible_enemy: (tile, x, y, entity) => {
+		eligible_enemy: (_tile, _x, _y, _entity) => {
 			return true;
 		},
-		function_enemy: (tile, delta, x, y, entity) => {
+		function_enemy: (_tile, _delta, _x, _y, entity) => {
 			KDTieUpEnemy(entity, 4.0, "Metal", "chain");
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
@@ -254,17 +252,17 @@ let KDBondageMachineFunctions = {
 		},
 	},
 	"Tape": {
-		eligible_player: (tile, x, y, entity) => {
+		eligible_player: (_tile, _x, _y, _entity) => {
 			return KDGetRestraintsEligible({tags: ["autoTape"]}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
-		function_player: (tile, delta, x, y, entity) => {
+		function_player: (_tile, _delta, _x, _y, _entity) => {
 			KDBasicRestraintsMachine_Player(["autoTape"], 2, "KDTapeMachine");
 			return false;
 		},
-		eligible_enemy: (tile, x, y, entity) => {
+		eligible_enemy: (_tile, _x, _y, _entity) => {
 			return true;
 		},
-		function_enemy: (tile, delta, x, y, entity) => {
+		function_enemy: (_tile, _delta, _x, _y, entity) => {
 			KDTieUpEnemy(entity, 4.0, "Tape", "glue");
 			if (KDBoundEffects(entity) < 1 ) {
 				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
@@ -275,16 +273,16 @@ let KDBondageMachineFunctions = {
 		},
 	},
 	"Plug": {
-		eligible_player: (tile, x, y, entity) => {
+		eligible_player: (_tile, _x, _y, _entity) => {
 			return KDGetRestraintsEligible({tags: ['machinePlug']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
-		function_player: (tile, delta, x, y, entity) => {
+		function_player: (_tile, _delta, _x, _y, _entity) => {
 			return KDBasicRestraintsMachine_Player(['machinePlug'], 1, "KDPlugMachine") != 0;
 		},
-		eligible_enemy: (tile, x, y, entity) => {
+		eligible_enemy: (_tile, _x, _y, entity) => {
 			return (entity.boundLevel > 0 || KDEntityGetBuff(entity, "Chastity")) && !(entity.buffs && KinkyDungeonGetBuffedStat(entity.buffs, "Plug") >= 2);
 		},
-		function_enemy: (tile, delta, x, y, entity) => {
+		function_enemy: (_tile, _delta, _x, _y, entity) => {
 			if (!KinkyDungeonGetBuffedStat(entity.buffs, "Plug")) {
 				KDPlugEnemy(entity);
 				if (KinkyDungeonGetBuffedStat(entity.buffs, "Plug") > 0) {
@@ -297,16 +295,16 @@ let KDBondageMachineFunctions = {
 		},
 	},
 	"Chastity": {
-		eligible_player: (tile, x, y, entity) => {
+		eligible_player: (_tile, _x, _y, _entity) => {
 			return KDGetRestraintsEligible({tags: ['machineChastity', 'cyberdollchastity']}, 10, 'grv', false, undefined, undefined, undefined, false).length > 0;
 		},
-		function_player: (tile, delta, x, y, entity) => {
+		function_player: (_tile, _delta, _x, _y, _entity) => {
 			return KDBasicRestraintsMachine_Player(['machineChastity', 'cyberdollchastity'], 1, "KDChastityMachine") != 0;
 		},
-		eligible_enemy: (tile, x, y, entity) => {
+		eligible_enemy: (_tile, _x, _y, entity) => {
 			return entity.boundLevel > 0 && !KDEntityGetBuff(entity, "Chastity");
 		},
-		function_enemy: (tile, delta, x, y, entity) => {
+		function_enemy: (_tile, _delta, _x, _y, entity) => {
 			KDTieUpEnemy(entity, 2.0, "Metal", "chain");
 			if (!KDEntityGetBuff(entity, "Chastity")) {
 				KinkyDungeonApplyBuffToEntity(entity, KDChastity);
@@ -322,12 +320,11 @@ let KDBondageMachineFunctions = {
 };
 
 /**
- *
- * @param {string[]} tags
- * @param {number} count
- * @param {string} msg
+ * @param tags
+ * @param count
+ * @param msg
  */
-function KDBasicRestraintsMachine_Player(tags, count, msg) {
+function KDBasicRestraintsMachine_Player(tags: string[], count: number, msg: string) {
 	let succ = 0;
 	for (let i = 0; i < count; i++) {
 		let restraint = KinkyDungeonGetRestraint({tags: tags}, 10, 'grv', false, undefined, undefined, undefined, false,
@@ -349,10 +346,9 @@ function KDBasicRestraintsMachine_Player(tags, count, msg) {
 
 /**
  * Return value: whether or not to continue to allow peripheral tile updates
- * @type {Record<string, (delta: number) => boolean>}
  */
-let KDTileUpdateFunctions = {
-	"W": (delta) => { // Happy Gas!
+let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
+	"W": (_delta) => { // Happy Gas!
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDWaterSlow);
 		KinkyDungeonSendTextMessage(5, TextGet("KDWaterIsWet"), "#4fa4b8", 1);
 		return true;
@@ -362,7 +358,7 @@ let KDTileUpdateFunctions = {
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonHappyGas"), "pink", 1);
 		return true;
 	},
-	"[": (delta) => { // Happy Gas!
+	"[": (_delta) => { // Happy Gas!
 		KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness + (2) * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2), 5);
 		KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSporeGas"), "pink", 1);
 		return true;
@@ -397,11 +393,11 @@ let KDTileUpdateFunctions = {
 		}
 		return true;
 	},
-	"?": (delta) =>  { // High hook
+	"?": (_delta) =>  { // High hook
 		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonHookHigh"), "lightgreen", 1, true);
 		return true;
 	},
-	"/": (delta) =>  { // Low hook
+	"/": (_delta) =>  { // Low hook
 		KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonScrap"), "lightgreen", 1, true);
 		return true;
 	},
@@ -409,10 +405,9 @@ let KDTileUpdateFunctions = {
 
 /**
  * Return true if movement is stopped
- * @type {Record<string, (moveX, moveY) => boolean>}
  */
-let KDMoveObjectFunctions = {
-	'B': (moveX, moveY) => {
+let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => boolean> = {
+	'B': (_moveX, _moveY) => {
 		/*if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
 			KDGameData.InteractTargetX = moveX;
 			KDGameData.InteractTargetY = moveY;
@@ -425,7 +420,7 @@ let KDMoveObjectFunctions = {
 		}
 		return false;
 	},
-	'@': (moveX, moveY) => {
+	'@': (_moveX, _moveY) => {
 		if (!KinkyDungeonFlags.get("nobutton")) {
 			KDStartDialog("Button", "", true);
 		}
@@ -547,7 +542,7 @@ let KDMoveObjectFunctions = {
 		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 		return true;
 	},
-	'-': (moveX, moveY) => { // Open the chest
+	'-': (_moveX, _moveY) => { // Open the chest
 		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonObjectChargerDestroyed"), "#999999", 1, true);
 		return true;
 	},
@@ -556,10 +551,9 @@ let KDMoveObjectFunctions = {
 
 /**
  * Return is whether or not something the player should know about happened
- * @type {Record<string, (delta, tile: effectTile) => boolean>}
  */
-let KDEffectTileFunctionsStandalone = {
-	"Inferno": (delta, tile) => {
+let KDEffectTileFunctionsStandalone: Record<string, (delta, tile: effectTile) => boolean> = {
+	"Inferno": (_delta, tile) => {
 		if (tile.duration > 4 && KDRandom() < 0.3 && !(tile.pauseDuration > 0)) {
 			KDCreateAoEEffectTiles(tile.x, tile.y,  {
 				name: "Ember",
@@ -568,17 +562,17 @@ let KDEffectTileFunctionsStandalone = {
 		}
 		return true;
 	},
-	"Vines": (delta, tile) => {
+	"Vines": (_delta, tile) => {
 		KDGrow(tile, "Vines");
 		return false;
 	},
-	"Soap": (delta, tile) => {
+	"Soap": (_delta, tile) => {
 		if (!KDEffectTileTags(tile.x, tile.y).wet) {
 			tile.duration = 0;
 		}
 		return false;
 	},
-	"SlimeBurning": (delta, tile) => {
+	"SlimeBurning": (_delta, tile) => {
 		if (tile.duration > 0 && !(tile.pauseDuration > 0)) {
 			KDCreateEffectTile(tile.x, tile.y, {
 				name: "Inferno",
@@ -593,37 +587,37 @@ let KDEffectTileFunctionsStandalone = {
 		}
 		return true;
 	},
-	"Torch": (delta, tile) => {
+	"Torch": (_delta, tile) => {
 		if (tile.duration > 9000) {
 			tile.duration = 9999;
 		}
 		return true;
 	},
-	"TorchUnlit": (delta, tile) => {
+	"TorchUnlit": (_delta, tile) => {
 		if (tile.duration > 9000) {
 			tile.duration = 9999;
 		}
 		return true;
 	},
-	"Lantern": (delta, tile) => {
+	"Lantern": (_delta, tile) => {
 		if (tile.duration > 9000) {
 			tile.duration = 9999;
 		}
 		return true;
 	},
-	"LanternUnlit": (delta, tile) => {
+	"LanternUnlit": (_delta, tile) => {
 		if (tile.duration > 9000) {
 			tile.duration = 9999;
 		}
 		return true;
 	},
-	"TorchOrb": (delta, tile) => {
+	"TorchOrb": (_delta, tile) => {
 		if (tile.duration > 9000) {
 			tile.duration = 9999;
 		}
 		return true;
 	},
-	"ManaFull": (delta, tile) => {
+	"ManaFull": (_delta, tile) => {
 		KDCreateEffectTile(tile.x, tile.y, {
 			name: "WireSparks",
 			duration: 2,
@@ -632,7 +626,7 @@ let KDEffectTileFunctionsStandalone = {
 	},
 };
 
-function KDSlimeImmuneEntity(entity) {
+function KDSlimeImmuneEntity(entity: entity) {
 	if (entity.player) {
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "glueDamageResist") >= 0.45) return true;
 		for (let inv of KinkyDungeonAllRestraint()) {
@@ -643,7 +637,7 @@ function KDSlimeImmuneEntity(entity) {
 	} else return KDSlimeImmune(entity);
 }
 
-function KDSoapImmuneEntity(entity) {
+function KDSoapImmuneEntity(entity: entity) {
 	if (entity.player) {
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "soapDamageResist") >= 0.45) return true;
 		for (let inv of KinkyDungeonAllRestraint()) {
@@ -654,24 +648,22 @@ function KDSoapImmuneEntity(entity) {
 	} else return KDSoapImmune(entity);
 }
 
-function KDSlimeWalker(entity) {
+function KDSlimeWalker(entity: entity) {
 	if (KDSlimeImmuneEntity(entity)) return true;
 	else if (!entity.player && KDIsFlying(entity)) return true;
 	return false;
 }
 
-function KDSoapWalker(entity) {
+function KDSoapWalker(entity: entity) {
 	if (KDSoapImmuneEntity(entity)) return true;
 	else if (!entity.player && KDIsFlying(entity)) return true;
 	return false;
 }
 
 /**
- *
- * @param {entity} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KDSlimeImmune(enemy) {
+function KDSlimeImmune(enemy: entity): boolean {
 	return enemy.Enemy?.tags.slime
 		//|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
 		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "immune")
@@ -679,11 +671,9 @@ function KDSlimeImmune(enemy) {
 		|| KDEntityBuffedStat(enemy, "glueDamageResist") >= 0.45;
 }
 /**
- *
- * @param {entity} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KDSoapImmune(enemy) {
+function KDSoapImmune(enemy: entity): boolean {
 	return enemy.Enemy?.tags.slime
 		//|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "glue", "resist")
 		|| KinkyDungeonGetImmunity(enemy.Enemy?.tags, enemy.Enemy?.Resistance?.profile, "soap", "immune")
@@ -693,10 +683,9 @@ function KDSoapImmune(enemy) {
 /**
  * These happen when stepped on
  * Return is whether or not something the player should know about happened
- * @type {Record<string, (delta, entity: entity, tile: effectTile) => boolean>}
  */
-let KDEffectTileFunctions = {
-	"PressurePlateHold": (delta, entity, tile) => {
+let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: effectTile) => boolean> = {
+	"PressurePlateHold": (_delta, _entity, tile) => {
 		KDCreateEffectTile(tile.x, tile.y, {
 			name: "WireSparks",
 			duration: 2,
@@ -705,18 +694,18 @@ let KDEffectTileFunctions = {
 	},
 
 
-	"MotionLamp": (delta, entity, tile) => {
+	"MotionLamp": (_delta, _entity, tile) => {
 		KDCreateEffectTile(tile.x, tile.y, {
 			name: "MotionLampLight",
 			duration: 12,
 		}, 0);
 		return false;
 	},
-	"ManaFull": (delta, entity, tile) => {
+	"ManaFull": (_delta, _entity, _tile) => {
 		KinkyDungeonSendTextMessage(8, TextGet("KDManaStationCharged"), "#7799ff");
 		return false;
 	},
-	"ManaEmpty": (delta, entity, tile) => {
+	"ManaEmpty": (_delta, entity, tile) => {
 		if (entity.player) {
 			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
 				KinkyDungeonChangeMana(-5, false, 0, true, true);
@@ -733,7 +722,7 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
-	"ManaPartial": (delta, entity, tile) => {
+	"ManaPartial": (_delta, entity, tile) => {
 		if (entity.player) {
 			if (KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 5) {
 				KinkyDungeonChangeMana(-5, false, 0, true, true);
@@ -752,7 +741,7 @@ let KDEffectTileFunctions = {
 		return false;
 	},
 
-	"PressurePlate": (delta, entity, tile) => {
+	"PressurePlate": (_delta, _entity, tile) => {
 		let tags = KDEffectTileTags(tile.x, tile.y);
 		if (!tags.ppactive) {
 			KDCreateEffectTile(tile.x, tile.y, {
@@ -766,7 +755,7 @@ let KDEffectTileFunctions = {
 		}, 0);
 		return false;
 	},
-	"PressurePlateOneUse": (delta, entity, tile) => {
+	"PressurePlateOneUse": (_delta, _entity, tile) => {
 		KDCreateEffectTile(tile.x, tile.y, {
 			name: "WireSparks",
 			duration: 2,
@@ -774,7 +763,7 @@ let KDEffectTileFunctions = {
 		tile.duration = 0;
 		return false;
 	},
-	"SlimeBurning": (delta, entity, tile) => {
+	"SlimeBurning": (_delta, entity, tile) => {
 		if (!KDEntityHasBuff(entity, "Drenched")) {
 			let slimeWalker = KDSlimeWalker(entity);
 			if (!slimeWalker) {
@@ -789,7 +778,7 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
-	"Slime": (delta, entity, tile) => {
+	"Slime": (_delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else if (!KDEntityHasBuff(entity, "Drenched")) {
@@ -806,7 +795,7 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
-	"Glue": (delta, entity, tile) => {
+	"Glue": (_delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else if (!KDEntityHasBuff(entity, "Drenched")) {
@@ -820,7 +809,7 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
-	"Latex": (delta, entity, tile) => {
+	"Latex": (_delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else {
@@ -875,7 +864,7 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
-	"Bubble": (delta, entity, tile) => {
+	"Bubble": (_delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else {
@@ -890,7 +879,7 @@ let KDEffectTileFunctions = {
 		}
 		return false;
 	},
-	"LiquidMetal": (delta, entity, tile) => {
+	"LiquidMetal": (_delta, entity, tile) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else {
@@ -945,7 +934,7 @@ let KDEffectTileFunctions = {
 		}
 		return true;
 	},
-	"Ice": (delta, entity, tile) => {
+	"Ice": (_delta, entity, _tile) => {
 		if ((!entity.player && !entity.Enemy.tags.ice && !entity.Enemy.tags.nofreeze) || (entity.player && !KDChillWalk(entity)))
 			KinkyDungeonApplyBuffToEntity(entity, KDChilled);
 		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
@@ -954,14 +943,14 @@ let KDEffectTileFunctions = {
 		}
 		return true;
 	},
-	"Soap": (delta, entity, tile) => {
+	"Soap": (_delta, entity, _tile) => {
 		if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
 			KinkyDungeonSetFlag("slipped", 1);
 		}
 		return true;
 	},
-	"Water": (delta, entity, tile) => {
+	"Water": (_delta, entity, tile) => {
 		if (tile.pauseSprite == tile.name + "Frozen") {
 			if (entity.player && KinkyDungeonPlayerBuffs.Slipping && !KinkyDungeonFlags.get("slipped")) {
 				KDSlip({x: KinkyDungeonPlayerEntity.x - KinkyDungeonPlayerEntity.lastx, y: KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty});
@@ -974,7 +963,7 @@ let KDEffectTileFunctions = {
 		}
 		return true;
 	},
-	"Inferno": (delta, entity, tile) => {
+	"Inferno": (delta, entity, _tile) => {
 		if (entity.player) {
 			KinkyDungeonDealDamage({
 				type: "fire",
@@ -1002,9 +991,8 @@ let KDEffectTileFunctions = {
 
 /**
  * Return is whether or not something the player should know about happened
- * @type {Record<string, (newTile: effectTile, existingTile: effectTile) => boolean>}
  */
-let KDEffectTileCreateFunctionsCreator = {
+let KDEffectTileCreateFunctionsCreator: Record<string, (newTile: effectTile, existingTile: effectTile) => boolean> = {
 	"Ropes": (newTile, existingTile) => {
 		KDInferno(newTile, existingTile, 4);
 		return true;
@@ -1044,13 +1032,13 @@ let KDEffectTileCreateFunctionsCreator = {
 		}
 		return true;
 	},
-	"Latex": (newTile, existingTile) => {
+	"Latex": (_newTile, existingTile) => {
 		if (existingTile.tags.includes("slime")) {
 			existingTile.duration = 0;
 		}
 		return true;
 	},
-	"LiquidMetal": (newTile, existingTile) => {
+	"LiquidMetal": (_newTile, existingTile) => {
 		if (existingTile.tags.includes("slime") || existingTile.tags.includes("latex")) {
 			existingTile.duration = 0;
 		}
@@ -1070,7 +1058,7 @@ let KDEffectTileCreateFunctionsCreator = {
 		}
 		return true;
 	},
-	"Sparks": (newTile, existingTile) => {
+	"Sparks": (_newTile, existingTile) => {
 		if (existingTile.tags.includes("conductive")) {
 			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
 			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
@@ -1114,7 +1102,7 @@ let KDEffectTileCreateFunctionsCreator = {
 		}
 		return true;
 	},
-	"Chill": (newTile, existingTile) => {
+	"Chill": (_newTile, existingTile) => {
 		if (existingTile.tags.includes("conductcold")) {
 			let rt = KDEffectTileTags(existingTile.x + 1, existingTile.y);
 			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
@@ -1220,15 +1208,14 @@ let KDEffectTileCreateFunctionsCreator = {
 /**
  * Return is whether or not something the player should know about happened
  * Return type is whether or not the signal should stop (true) or pass (false)
- * @type {Record<string, (tile: any, x: number, y: number) => boolean>}
  */
-let KDActivateMapTile = {
-	"increment": (tile, x, y) => {
+let KDActivateMapTile: Record<string, (tile: any, x: number, y: number) => boolean> = {
+	"increment": (tile, _x, _y) => {
 		if (!tile.count) tile.count = 0;
 		tile.count += 1;
 		return false;
 	},
-	"AutoDoor_Toggle": (tile, x, y) => {
+	"AutoDoor_Toggle": (_tile, x, y) => {
 		let entity = KinkyDungeonEntityAt(x, y);
 		if (entity) return true;
 
@@ -1238,32 +1225,32 @@ let KDActivateMapTile = {
 			KinkyDungeonMapSet(x, y, 'Z');
 		return false;
 	},
-	"Conveyor_Toggle": (tile, x, y) => {
+	"Conveyor_Toggle": (tile, _x, _y) => {
 		if (tile.SwitchMode == "Off") tile.SwitchMode = "On";
 		else tile.SwitchMode = "Off";
 		return false;
 	},
-	"Conveyor_Switch": (tile, x, y) => {
+	"Conveyor_Switch": (tile, _x, _y) => {
 		if (tile.DX) tile.DX *= -1;
 		else if (tile.DY) tile.DY *= -1;
 		return false;
 	},
-	"AutoDoor_HoldOpen": (tile, x, y) => {
+	"AutoDoor_HoldOpen": (_tile, x, y) => {
 		KinkyDungeonMapSet(x, y, 'z');
 		return false;
 	},
-	"AutoDoor_HoldClosed": (tile, x, y) => {
+	"AutoDoor_HoldClosed": (_tile, x, y) => {
 		let entity = KinkyDungeonEntityAt(x, y);
 		if (entity) return false;
 
 		KinkyDungeonMapSet(x, y, 'Z');
 		return false;
 	},
-	"AutoDoor_Open": (tile, x, y) => {
+	"AutoDoor_Open": (_tile, x, y) => {
 		KinkyDungeonMapSet(x, y, 'z');
 		return false;
 	},
-	"AutoDoor_Close": (tile, x, y) => {
+	"AutoDoor_Close": (_tile, x, y) => {
 		let entity = KinkyDungeonEntityAt(x, y);
 		if (entity) return false;
 
@@ -1275,9 +1262,8 @@ let KDActivateMapTile = {
 
 /**
  * Return is whether or not something the player should know about happened
- * @type {Record<string, (newTile: effectTile, existingTile: effectTile) => boolean>}
  */
-let KDEffectTileCreateFunctionsExisting = {
+let KDEffectTileCreateFunctionsExisting: Record<string, (newTile: effectTile, existingTile: effectTile) => boolean> = {
 	"Ropes": (newTile, existingTile) => {
 		KDInferno(existingTile, newTile, 4);
 		return true;
@@ -1322,13 +1308,13 @@ let KDEffectTileCreateFunctionsExisting = {
 		}
 		return true;
 	},
-	"Latex": (newTile, existingTile) => {
+	"Latex": (newTile, _existingTile) => {
 		if (newTile.tags.includes("slime")) {
 			newTile.duration = 0;
 		}
 		return true;
 	},
-	"LiquidMetal": (newTile, existingTile) => {
+	"LiquidMetal": (newTile, _existingTile) => {
 		if (newTile.tags.includes("slime") || newTile.tags.includes("latex")) {
 			newTile.duration = 0;
 		}
@@ -1358,10 +1344,9 @@ let KDEffectTileCreateFunctionsExisting = {
 
 /**
  * Return is whether or not the move should be interrupted
- * @type {Record<string, (entity, tile: effectTile, willing, dir, sprint) => {cancelmove: boolean, returnvalue: boolean}>}
  */
-let KDEffectTileMoveOnFunctions = {
-	"Cracked": (entity, tile, willing, dir, sprint) => {
+let KDEffectTileMoveOnFunctions: Record<string, (entity: entity, tile: effectTile, willing: boolean, dir: { x: number, y: number }, sprint: boolean) => {cancelmove: boolean, returnvalue: boolean}> = {
+	"Cracked": (entity, tile, _willing, _dir, _sprint) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else if (!entity.Enemy || (!entity.Enemy.tags.earth && !entity.Enemy.tags.unstoppable)) {
@@ -1377,7 +1362,7 @@ let KDEffectTileMoveOnFunctions = {
 		return {cancelmove: false, returnvalue: false};
 	},
 
-	"Rubble": (entity, tile, willing, dir, sprint) => {
+	"Rubble": (entity, tile, _willing, _dir, _sprint) => {
 		if (tile.pauseDuration > 0) {
 			// Meep
 		} else if (!entity.Enemy || (!entity.Enemy.tags.earth && !entity.Enemy.tags.unstoppable)) {
@@ -1392,7 +1377,7 @@ let KDEffectTileMoveOnFunctions = {
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
-	"LiquidMetal": (entity, tile, willing, dir, sprint) => {
+	"LiquidMetal": (entity, _tile, willing, dir, sprint) => {
 		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip(dir);
 			KinkyDungeonSetFlag("slipped", 1);
@@ -1400,7 +1385,7 @@ let KDEffectTileMoveOnFunctions = {
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
-	"Ice": (entity, tile, willing, dir, sprint) => {
+	"Ice": (entity, _tile, willing, dir, sprint) => {
 		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip(dir);
 			KinkyDungeonSetFlag("slipped", 1);
@@ -1408,7 +1393,7 @@ let KDEffectTileMoveOnFunctions = {
 		}
 		return {cancelmove: false, returnvalue: false};
 	},
-	"Soap": (entity, tile, willing, dir, sprint) => {
+	"Soap": (entity, _tile, willing, dir, sprint) => {
 		if (sprint && entity.player && willing && (dir.x || dir.y) && !KinkyDungeonFlags.get("slipped")) {
 			KDSlip(dir);
 			KinkyDungeonSetFlag("slipped", 1);
@@ -1431,9 +1416,8 @@ let KDEffectTileMoveOnFunctions = {
 
 /**
  * Return is idk
- * @type {Record<string, (b, tile: effectTile, d) => boolean>}
  */
-let KDEffectTileBulletFunctions = {
+let KDEffectTileBulletFunctions: Record<string, (b, tile: effectTile, d) => boolean> = {
 	"Ropes": (b, tile, d) => {
 		KDIgnition(b, tile, d);
 		return true;
@@ -1446,7 +1430,7 @@ let KDEffectTileBulletFunctions = {
 		KDIgnition(b, tile, d);
 		return true;
 	},
-	"SlimeBurning": (b, tile, d) => {
+	"SlimeBurning": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if (type == "soap") {
@@ -1466,7 +1450,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Slime": (b, tile, d) => {
+	"Slime": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if (type == "soap") {
@@ -1486,7 +1470,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Ember": (b, tile, d) => {
+	"Ember": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if (type == "stun" && b.bullet.damage.damage > 1) {
@@ -1503,7 +1487,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Glue": (b, tile, d) => {
+	"Glue": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if (type == "soap" || type == "acid") {
@@ -1513,7 +1497,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Torch": (b, tile, d) => {
+	"Torch": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if (KDTorchExtinguishTypes.includes(type)) {
@@ -1526,7 +1510,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"TorchUnlit": (b, tile, d) => {
+	"TorchUnlit": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if ((KDIgnitionSources.includes(type))) {
@@ -1539,7 +1523,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Lantern": (b, tile, d) => {
+	"Lantern": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if (KDTorchExtinguishTypes.includes(type)) {
@@ -1552,7 +1536,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"LanternUnlit": (b, tile, d) => {
+	"LanternUnlit": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if ((KDIgnitionSources.includes(type))) {
@@ -1565,7 +1549,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Ice": (b, tile, d) => {
+	"Ice": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if ((KDIgnitionSources.includes(type)) && b.bullet.damage.damage > 0) {
@@ -1580,7 +1564,7 @@ let KDEffectTileBulletFunctions = {
 		}
 		return true;
 	},
-	"Water": (b, tile, d) => {
+	"Water": (b, tile, _d) => {
 		if (b.bullet.damage) {
 			let type = b.bullet.damage.type;
 			if ((type == "ice" || type == "frost")) {
@@ -1611,11 +1595,11 @@ let KDEffectTileBulletFunctions = {
 
 
 let KDStairsAltAction = {
-	"RandomTeleport": (toTile, suppressCheckPoint) => {
+	"RandomTeleport": (_toTile, _suppressCheckPoint) => {
 		// Delete the stairs and teleport the player to a random location on another set of stairs
 		KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '2');
 		delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
-		let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+		let point = KinkyDungeonGetRandomEnemyPointCriteria((x: number, y: number) => {
 			return KinkyDungeonMapGet(x, y) == 's'
 				&& KinkyDungeonTilesGet(x + "," + y)?.AltStairAction == "RandomTeleport";
 		}, false, false, undefined, undefined, undefined, true);
@@ -1631,12 +1615,12 @@ let KDStairsAltAction = {
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		}
 	},
-	"Null": (toTile, suppressCheckPoint) => {
+	"Null": (_toTile, _suppressCheckPoint) => {
 		// Beep
 	}
 };
 
-function KDAttemptDoor(moveX, moveY) {
+function KDAttemptDoor(moveX: number, moveY: number) {
 	KinkyDungeonAdvanceTime(1, true);
 	let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
 	if (!open) {

@@ -2912,12 +2912,13 @@ let KDNoOverrideTags = [
  * @param {*} RequireWill
  * @param {*} LeashingOnly
  * @param {*} NoStack
- * @param {*} extraTags
- * @param {boolean} minWeightFallback
- * @param {*} agnostic - Determines if playertags and current bondage are ignored
- * @param {number} filterEps - Anything under this is filtered unless nothing is above it
+ * @param {*} [extraTags]
+ * @param {boolean} [agnostic] - Determines if playertags and current bondage are ignored
+ * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {string} [curse] - Going to add this curse
+ * @param {number} [filterEps] - Anything under this is filtered unless nothing is above it
+ * @param {boolean} [minWeightFallback]
  * @param {boolean} [useAugmented] - useAugmented
  * @param {string[]} [augmentedInventory]
  * @param {object} [options]
@@ -2926,7 +2927,6 @@ let KDNoOverrideTags = [
  * @param {boolean} [options.dontPreferVariant]
  * @param {boolean} [options.allowLowPower]
  * @param {boolean} [options.ForceDeep]
- * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, variant?: ApplyVariant, weight: number}[]}
  */
 function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill, LeashingOnly, NoStack, extraTags, agnostic, filter, securityEnemy, curse, filterEps = 0.9, minWeightFallback = true, useAugmented = false, augmentedInventory = undefined, options) {

@@ -664,10 +664,10 @@ function KDArmorFormula(DamageAmount, Armor) {
  * @param {*} Spell
  * @param {*} bullet
  * @param {*} attacker
- * @param {*} Delay
- * @param {*} noAlreadyHit
- * @param {*} noVuln
- * @param {*} Critical
+ * @param {*} [Delay]
+ * @param {*} [noAlreadyHit]
+ * @param {*} [noVuln]
+ * @param {*} [Critical]
  * @param {boolean} [Attack]
  * @returns
  */
@@ -2998,7 +2998,7 @@ function KDIsTeasing(Damage) {
  * @param {number} y
  * @param {number} aoe
  * @param {any} Damage
- * @param {entity} Damage
+ * @param {entity} [Attacker]
  */
 function KDDealEnvironmentalDamage(x, y, aoe, Damage, Attacker) {
 	for (let enemy of KDNearbyEnemies(x, y, aoe)) {
