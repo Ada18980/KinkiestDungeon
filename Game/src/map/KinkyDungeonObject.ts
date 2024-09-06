@@ -2,9 +2,8 @@
 
 /**
  * Script happens when you display an object message
- * @type {Record<string,() => void>}
  */
-let KDObjectMessages = {
+let KDObjectMessages: Record<string, () => void> = {
 	"Ghost": () => KinkyDungeonGhostMessage(),
 	"Angel": () => KinkyDungeonAngelMessage(),
 	"Food": () => KinkyDungeonFoodMessage(),
@@ -14,9 +13,8 @@ let KDObjectMessages = {
  * Script happens when you move to an object
  * MUTUALLY exclusive with KDObjectDraw, as this
  * overrides the default behavior of clicking on the object and bringing up a modal
- * @type {Record<string,(x: number, y: number) => void>}
  */
-let KDObjectClick = {
+let KDObjectClick: Record<string, (x: number, y: number) => void> = {
 	"Food": (x, y) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile.Food && KDFood[tile.Food] && !KDFood[tile.Food].inedible && !tile.Eaten) {
@@ -45,15 +43,14 @@ let KDObjectClick = {
 		} else
 			KinkyDungeonElevatorMessage();
 	},
-	"Oriel": (x, y) => {
+	"Oriel": (_x, _y) => {
 		KDStartDialog("Oriel", "", true, "");
 	},
 };
 /**
  * Script happens when you interact to an object
- * @type {Record<string,(x: number, y: number) => void>}
  */
-let KDObjectInteract = {
+let KDObjectInteract: Record<string, (x: number, y: number) => void> = {
 	"DollDropoff": (x, y) => {
 		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 			if (!KinkyDungeonGetRestraintItem("ItemDevices")) {
@@ -80,9 +77,8 @@ let KDObjectInteract = {
 };
 /**
  * Script happens when you interact to an tile
- * @type {Record<string,(x: number, y: number) => void>}
  */
-let KDTileInteract = {
+let KDTileInteract: Record<string, (x: number, y: number) => void> = {
 	'B': (x, y) => {
 		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 			if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
@@ -95,18 +91,16 @@ let KDTileInteract = {
 /**
  * Script to handle click in an object's modal
  * tbh should remove this soon
- * @type {Record<string,() => boolean>}
  */
-let KDObjectHandle = {
+let KDObjectHandle: Record<string, () => boolean> = {
 	"Charger": () => KinkyDungeonHandleCharger(),
 };
 /**
  * Determines if an object has an interface and also if it pauses the game when you click on it
  * You dont need an interface (for example the updated food table) but then you need
  * an entry in KDObjectClick instead.
- * @type {Record<string,() => void>}
  */
-let KDObjectDraw = {
+let KDObjectDraw: Record<string, () => void> = {
 	"Ghost": () => KinkyDungeonDrawGhost(),
 	"Angel": () => KinkyDungeonDrawAngel(),
 	"Charger": () => KinkyDungeonDrawCharger(),
@@ -305,7 +299,7 @@ function KinkyDungeonAngelMessage() {
 	}
 }
 
-function KinkyDungeonFoodMessage(Tile) {
+function KinkyDungeonFoodMessage(Tile?: any) {
 	let tile = Tile || KinkyDungeonTargetTile;
 	if (tile) {
 		let msg = TextGet("KinkyDungeonFood" + (tile.Food ? tile.Food : ""));
@@ -356,7 +350,7 @@ function KinkyDungeonDrawTablet() {
 		if (KinkyDungeonTargetTile.Name == "Heart") {
 			KDDrawHeartTablet();
 		} else {
-			DrawButtonKDEx("Tablet",(bdata) => {
+			DrawButtonKDEx("Tablet",(_bdata) => {
 				KDSendInput("tabletInteract", {action: "read", targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
@@ -369,7 +363,7 @@ function KinkyDungeonDrawTablet() {
 function KinkyDungeonDrawFood() {
 	KDModalArea = true;
 	if (KinkyDungeonTargetTile && KinkyDungeonTargetTile.Food && KinkyDungeonTargetTile.Food != "Plate") {
-		DrawButtonKDEx("Food",(bdata) => {
+		DrawButtonKDEx("Food",(_bdata) => {
 			KDSendInput("foodInteract", {action: "eat", targetTile: KinkyDungeonTargetTileLocation});
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = "";
@@ -445,20 +439,17 @@ let KDElevatorFloorIndex = {
 };
 
 /**
- *
- * @param {string | number} num
- * @returns {boolean}
+ * @param num
  */
-function KDIsElevatorFloorUnlocked(num) {
+function KDIsElevatorFloorUnlocked(num: string | number): boolean {
 	return typeof num === "string" ? (KDGameData.ElevatorsUnlocked[num] || KDAlwaysUnlockedElevFloors[num])
 		: num != MiniGameKinkyDungeonLevel && KDGameData.ElevatorsUnlocked[num];
 }
 
 /**
- *
- * @param {number} floor
+ * @param floor
  */
-function KDElevatorToFloor(floor, RoomType) {
+function KDElevatorToFloor(floor: number, RoomType: string) {
 	// Only works if the map has been generated
 	let slot = KDWorldMap['0,' + floor];
 	if (slot) {
@@ -513,21 +504,21 @@ let KDBuyableStats = [
 
 let KDStat = {
 	AP: {
-		getMax: (player) => {return KinkyDungeonStatDistractionMax;},
-		getCurrent: (player) => {return KinkyDungeonStatDistraction;},
+		getMax: (_player) => {return KinkyDungeonStatDistractionMax;},
+		getCurrent: (_player) => {return KinkyDungeonStatDistraction;},
 	},
 	SP: {
-		getMax: (player) => {return KinkyDungeonStatStaminaMax;},
-		getCurrent: (player) => {return KinkyDungeonStatStamina;},
+		getMax: (_player) => {return KinkyDungeonStatStaminaMax;},
+		getCurrent: (_player) => {return KinkyDungeonStatStamina;},
 	},
 	MP: {
-		getMax: (player) => {return KinkyDungeonStatManaMax;},
-		getCurrent: (player) => {return KinkyDungeonStatMana;},
+		getMax: (_player) => {return KinkyDungeonStatManaMax;},
+		getCurrent: (_player) => {return KinkyDungeonStatMana;},
 	},
 	WP: {
-		getMax: (player) => {return KinkyDungeonStatWillMax;},
-		getCurrent: (player) => {return KinkyDungeonStatWill;},
-		getAmnt2: (amnt) => {return 0.01*Math.floor(100*amnt*0.02);},
+		getMax: (_player) => {return KinkyDungeonStatWillMax;},
+		getCurrent: (_player) => {return KinkyDungeonStatWill;},
+		getAmnt2: (amnt: number) => {return 0.01*Math.floor(100*amnt*0.02);},
 	},
 };
 
@@ -575,7 +566,7 @@ function KDDrawHeartTablet() {
 		if (statMax >= 20) amount -= 0.5;
 		if (statMax >= 30) amount -= 1;
 
-		DrawButtonKDEx("heartbuy" + stat, (bdata) => {
+		DrawButtonKDEx("heartbuy" + stat, (_bdata) => {
 			//KDSendInput("shrineBuy", {type: type, shopIndex: KinkyDungeonShopIndex});
 			if (canBuy)
 				KDStatChoice = stat;
@@ -603,7 +594,7 @@ function KDDrawHeartTablet() {
 			DrawTextFitKD(TextGet("KDStatBuy" + KDStatChoice + "Desc2").replace("AMNT", "" + amnt2),
 				KDModalArea_x + 625, KDModalArea_y - 220 + 25, 450, "#ffffff", undefined, 20,);
 
-		DrawButtonKDEx("heartbuyconfirm", (bdata) => {
+		DrawButtonKDEx("heartbuyconfirm", (_bdata) => {
 			KDSendInput("heart", {type: KDStatChoice, targetTile: KinkyDungeonTargetTileLocation, amount: amount});
 			return true;
 		}, true, KDModalArea_x + 500, KDModalArea_y - 50, 250, 45, TextGet("KDStatBuyConfirm"), "#ffffff", "", "", false,
@@ -675,7 +666,7 @@ function KDDrawOrb() {
 				if (value > 30) color = "#4fd658";
 				else color = "#9bd45d";
 			}
-			DrawButtonKDEx("orbspell" + shrine, (b) => {
+			DrawButtonKDEx("orbspell" + shrine, (_b) => {
 				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 				return true;
 			}, true, XX, yPad + KDModalArea_y + spacing * i - 27, 250, spacing - 8, TextGet("KinkyDungeonShrine" + shrine), "white", undefined, undefined, undefined, false, KDTextGray2);
@@ -688,7 +679,7 @@ function KDDrawOrb() {
 
 	}
 
-	DrawButtonKDEx("orbspellrandom", (b) => {
+	DrawButtonKDEx("orbspellrandom", (_b) => {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
 		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 		KinkyDungeonDrawState = "Game";
