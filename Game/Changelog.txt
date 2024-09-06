@@ -30,6 +30,13 @@ TODO:
 
 TODO remove hogtie when released
 
+
+5.4-nightly4
+- Fix issue with Commerce Goddes Rewards Program™ portals spawning on non-empty tiles
+- Fix issue with weird flashing dialogue options involving leashes
+- Fix issue with both tool multiplier and buff multiplier applying to edge bonus (such as hook, etc)
+- Fix issues with light maid knight socks poking through the bottom of shoes
+
 5.4-nightly3
 - Fixed an issue where Rogue's problem solving triggered twice
 - Fixed (hopefully) an issue where audio crashed randomly

@@ -1923,13 +1923,6 @@ function KDGetStruggleData(data) {
 	// Psychic doesnt modify original chance, so that you understand its the perk helping you
 	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.25);
 
-	let edgeBonus = 0.12*toolMult;
-	// Easier to struggle if your legs are free, due to leverage
-	// Slight boost to remove as well, but not as much due to the smaller movements required
-	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity)
-		data.escapePenalty -= edgeBonus * (0.5 + 0.3*Math.max(2 - KinkyDungeonSlowLevel, 0));
-	else if ((data.struggleType == "Remove") && data.hasAffinity)
-		data.escapePenalty -= edgeBonus * (0.2 + 0.15*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
 	// Restriction penalties AFTER bonuses
 	if (data.restriction > 0 && !KinkyDungeonHasHelp()) {
@@ -1963,6 +1956,15 @@ function KDGetStruggleData(data) {
 			data.escapePenalty += data.escapeChance * penalty * restrictionMult;
 		}
 	}
+
+
+	let edgeBonus = 0.12*toolMult;
+	// Easier to struggle if your legs are free, due to leverage
+	// Slight boost to remove as well, but not as much due to the smaller movements required
+	if ((data.struggleType == "Struggle" || data.struggleType == "Cut") && data.hasAffinity)
+		data.escapeChance += edgeBonus * (0.4 + 0.2*Math.max(2 - KinkyDungeonSlowLevel, 0));
+	else if ((data.struggleType == "Remove") && data.hasAffinity)
+		data.escapeChance += edgeBonus * (0.2 + 0.15*Math.max(2 - KinkyDungeonSlowLevel, 0));
 
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown")) {
