@@ -99,7 +99,7 @@ let bosses = {
 	},
 };
 
-function KinkyDungeonBossFloor(Floor) {
+function KinkyDungeonBossFloor(Floor: number): any {
 	if (Floor == 4) return bosses.Fuuka;
 	if (Floor == 8) return bosses.TheWarden;
 	//if (Floor == 12) return bosses.SilverWitch;
