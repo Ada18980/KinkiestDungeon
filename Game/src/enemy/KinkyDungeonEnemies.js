@@ -8159,9 +8159,11 @@ function KDAddToParty(enemy) {
 	// Add a copy to the party
 	enemy.faction = "Player";
 	KDGameData.Party.push(JSON.parse(JSON.stringify(enemy)));
-	if (!KDGameData.Collection[enemy.id + ""])
-		KDAddCollection(enemy, undefined, "Guest");
-	KDGetPersistentNPC(enemy.id).collect = true; // Collect them
+	if (KDCapturable(enemy)) {
+		if (!KDGameData.Collection[enemy.id + ""])
+			KDAddCollection(enemy, undefined, "Guest");
+		KDGetPersistentNPC(enemy.id).collect = true; // Collect them
+	}
 	return true;
 
 }

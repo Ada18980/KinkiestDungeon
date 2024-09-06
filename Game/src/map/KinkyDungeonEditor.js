@@ -223,6 +223,8 @@ let KDTilePalette = {
 	'----Signals----': {type: "none"},
 	'Button': {type: "tile", tile: '@'},
 	'Wire':  {type: "effect", effectTile: "Wire"},
+	'WireVert':  {type: "effect", effectTile: "WireVert"},
+	'WireHoriz':  {type: "effect", effectTile: "WireHoriz"},
 	'PressurePlate':  {type: "effect", effectTile: "PressurePlate"},
 	'PressurePlateHold':  {type: "effect", effectTile: "PressurePlateHold"},
 	'PressurePlateOneUse':  {type: "effect", effectTile: "PressurePlateOneUse"},

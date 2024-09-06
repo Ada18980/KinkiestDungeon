@@ -1322,7 +1322,13 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			if (KDGameData.Party?.length >= KDGameData.MaxParty) return false;
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDAllied(enemy) && !KDIsInParty(enemy) && !KDEnemyHasFlag(enemy, "shop") && !enemy.Enemy.tags?.peaceful && !enemy.Enemy.allied;
+				return KDAllied(enemy)
+					&& !KDIsInParty(enemy)
+					&& !KDEnemyHasFlag(enemy, "shop")
+					&& !enemy.Enemy.tags?.peaceful
+					&& !enemy.maxlifetime
+					&& KDCapturable(enemy)
+					&& !enemy.Enemy.allied;
 				// No shopkeepers, noncombatants, or summons...
 			}
 			return false;
