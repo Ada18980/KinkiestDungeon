@@ -31,6 +31,9 @@ TODO:
 TODO remove hogtie when released
 
 
+5.4-nightly5
+- Added directional wires (vertical, horizontal, endpoint)
+
 5.4-nightly4
 - Fix issue with Commerce Goddes Rewards Program™ portals spawning on non-empty tiles
 - Fix issue with weird flashing dialogue options involving leashes

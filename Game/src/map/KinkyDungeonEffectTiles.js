@@ -282,6 +282,24 @@ let KDEffectTiles = {
 		priority: 50,
 		tags: ["hiddenmagic", "wire"],
 	},
+	"WireEnd": {
+		name: "Wire",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["hiddenmagic", "wireend"],
+	},
+	"WireVert": {
+		name: "WireVert",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["hiddenmagic", "wire", "vert"],
+	},
+	"WireHoriz": {
+		name: "WireHoriz",
+		duration: 9999, infinite: true,
+		priority: 50,
+		tags: ["hiddenmagic", "wire", "horiz"],
+	},
 	"PressurePlate": {
 		name: "PressurePlate",
 		duration: 9999, infinite: true,
@@ -335,19 +353,19 @@ let KDEffectTiles = {
 		name: "TeleportPlate",
 		duration: 9999, infinite: true,
 		priority: 10,
-		tags: ["teleportwire"],
+		tags: ["wireout", "teleportwire"],
 	},
 	"NoTeleportPlate": {
 		name: "TeleportPlate",
 		duration: 9999, infinite: true,
 		priority: 10,
-		tags: ["blockteleport", "blockteleportwire"],
+		tags: ["wireout", "blockteleport", "blockteleportwire"],
 	},
 	"TeleportPlateMana": {
 		name: "TeleportPlateMana",
 		duration: 9999, infinite: true,
 		priority: 10,
-		tags: ["teleportwire", "teleportcrystal"],
+		tags: ["wireout", "teleportwire", "teleportcrystal"],
 	},
 
 

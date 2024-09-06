@@ -1159,7 +1159,10 @@ let KDEffectTileCreateFunctionsCreator = {
 		return true;
 	},
 	"WireSparks": (newTile, existingTile) => {
-		if (existingTile.tags.includes("wire")) {
+		// Wire => takes both input and output
+		// Wireout => only outputs signal, does not conduct
+		if (existingTile.tags.includes("wire")
+			|| existingTile.tags.includes("wireout") || newTile.data?.force) {
 			let mapTile = KinkyDungeonTilesGet(newTile.x + ',' + newTile.y);
 			if (mapTile?.wireType) {
 				if (KDActivateMapTile[mapTile.wireType](mapTile, newTile.x, newTile.y)) {
@@ -1171,7 +1174,7 @@ let KDEffectTileCreateFunctionsCreator = {
 			let lt = KDEffectTileTags(existingTile.x - 1, existingTile.y);
 			let ut = KDEffectTileTags(existingTile.x, existingTile.y - 1);
 			let dt = KDEffectTileTags(existingTile.x, existingTile.y + 1);
-			if (!rt.signalFrame && rt.wire) {
+			if (!rt.signalFrame && (rt.wire || rt.wireend) && !rt.vert && !existingTile.tags?.includes("vert")) {
 				KDCreateEffectTile(existingTile.x + 1, existingTile.y, {
 					name: "WireSparksAct",
 					duration: 1,
@@ -1181,7 +1184,7 @@ let KDEffectTileCreateFunctionsCreator = {
 					duration: 2,
 				}, 0);
 			}
-			if (!lt.signalFrame && lt.wire) {
+			if (!lt.signalFrame && (lt.wire || lt.wireend) && !lt.vert && !existingTile.tags?.includes("vert")) {
 				KDCreateEffectTile(existingTile.x - 1, existingTile.y, {
 					name: "WireSparksAct",
 					duration: 1,
@@ -1191,7 +1194,7 @@ let KDEffectTileCreateFunctionsCreator = {
 					duration: 2,
 				}, 0);
 			}
-			if (!dt.signalFrame && dt.wire) {
+			if (!dt.signalFrame && (dt.wire || dt.wireend) && !dt.horiz && !existingTile.tags?.includes("horiz")) {
 				KDCreateEffectTile(existingTile.x, existingTile.y + 1, {
 					name: "WireSparksAct",
 					duration: 1,
@@ -1201,7 +1204,7 @@ let KDEffectTileCreateFunctionsCreator = {
 					duration: 2,
 				}, 0);
 			}
-			if (!ut.signalFrame && ut.wire) {
+			if (!ut.signalFrame && (ut.wire || ut.wireend) && !ut.horiz && !existingTile.tags?.includes("horiz")) {
 				KDCreateEffectTile(existingTile.x, existingTile.y - 1, {
 					name: "WireSparksAct",
 					duration: 1,
