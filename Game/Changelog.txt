@@ -36,6 +36,7 @@ TODO remove hogtie when released
 - Fix issue with weird flashing dialogue options involving leashes
 - Fix issue with both tool multiplier and buff multiplier applying to edge bonus (such as hook, etc)
 - Fix issues with light maid knight socks poking through the bottom of shoes
+- Fixed issue with summons being added to collection if you add them to party
 
 5.4-nightly3
 - Fixed an issue where Rogue's problem solving triggered twice

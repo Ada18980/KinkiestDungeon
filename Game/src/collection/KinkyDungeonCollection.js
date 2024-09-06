@@ -279,7 +279,7 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
  * @returns {boolean}
  */
 function KDCapturable(enemy) {
-	return !(KDNoCaptureTypes.some((tag) => {return enemy.Enemy.tags[tag];}));
+	return enemy?.Enemy.bound && !enemy.Enemy.allied && !(KDNoCaptureTypes.some((tag) => {return enemy.Enemy.tags[tag];}));
 }
 
 /**
