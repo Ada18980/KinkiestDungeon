@@ -1,9 +1,6 @@
 "use strict";
 
-/**
- * @type {Record<string, KDSideRoom>}
- */
-let KDSideRooms = {
+let KDSideRooms: Record<string, KDSideRoom> = {
 	"DemonTransition": {
 		name: "DemonTransition",
 		weight: 150,
@@ -46,7 +43,7 @@ let KDSideRooms = {
 		mapMod: "None",
 		escapeMethod: "None",
 		faction: "Bandit",
-		stairCreation: (tile, x, y) => {
+		stairCreation: (_tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "shoppe"}, x, y, 1.5);
 			return true;
 		},
@@ -64,7 +61,7 @@ let KDSideRooms = {
 		mapMod: "None",
 		escapeMethod: "None",
 		faction: "Elf",
-		stairCreation: (tile, x, y) => {
+		stairCreation: (_tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "cst"}, x, y, 1.5);
 			return true;
 		},
@@ -82,7 +79,7 @@ let KDSideRooms = {
 		mapMod: "None",
 		escapeMethod: "None",
 		faction: "AncientRobot",
-		stairCreation: (tile, x, y) => {
+		stairCreation: (_tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "bel"}, x, y, 1.5);
 			return true;
 		},
@@ -100,7 +97,7 @@ let KDSideRooms = {
 		mapMod: "None",
 		escapeMethod: "None",
 		faction: "Bast",
-		stairCreation: (tile, x, y) => {
+		stairCreation: (_tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "tmb"}, x, y, 1.5);
 			return true;
 		},
@@ -118,7 +115,7 @@ let KDSideRooms = {
 		mapMod: "None",
 		escapeMethod: "None",
 		faction: "Bast",
-		stairCreation: (tile, x, y) => {
+		stairCreation: (_tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "tmb"}, x, y, 1.5);
 			return true;
 		},
@@ -127,7 +124,7 @@ let KDSideRooms = {
 		name: "GoldVault",
 		weight: 100,
 		chance: 0.4,
-		filter: (slot, top) => {
+		filter: (_slot, top) => {
 			if (top) return 0;
 			return 1;
 		},
@@ -135,7 +132,7 @@ let KDSideRooms = {
 		mapMod: "None",
 		escapeMethod: "None",
 		faction: "AncientRobot",
-		stairCreation: (tile, x, y) => {
+		stairCreation: (_tile, x, y) => {
 			KinkyDungeonSkinArea({skin: "vault"}, x, y, 1.5);
 			return true;
 		},
@@ -144,13 +141,12 @@ let KDSideRooms = {
 
 // KDGetMapGenList(3, KDMapMods);
 /**
- * @param {KDJourneySlot} slot
- * @param {boolean} side
- * @param {string[]} ignore
- * @param {string} [requireTag]
- * @returns {KDSideRoom}
+ * @param slot
+ * @param side
+ * @param ignore
+ * @param [requireTag]
  */
-function KDGetSideRoom(slot, side, ignore, requireTag) {
+function KDGetSideRoom(slot: KDJourneySlot, side: boolean, ignore: string[], requireTag?: string): KDSideRoom {
 	let genWeightTotal = 0;
 	let genWeights = [];
 	let mult = 1.0;
