@@ -1,8 +1,6 @@
 "use strict";
-/**
- * @type {Record<mapKey,floorParams>}
- */
-const KinkyDungeonMapParams = {
+
+const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 	"menu":{
 		successorNegative: {
 			menu: 1.0,
