@@ -4516,7 +4516,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& KDHostile(enemy)
 				&& AIData.aggressive
 				&& KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
-				KinkyDungeonMakeNoiseSignal(enemy, 1, !wasAware);
+				KinkyDungeonMakeNoiseSignal(enemy, 1, wasAware);
 				if (!enemy.rage) {
 					let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
 					for (let e of ent) {
@@ -8718,7 +8718,7 @@ function KDGateAttack(enemy, AID) {
  * @returns {boolean}
  */
 function KDAcceptsLeash(enemy, leash) {
-	return enemy.Enemy?.tags?.submissive || (KDGetPersonality(enemy) && KDLoosePersonalities.includes(KDGetPersonality(enemy)));
+	return enemy.Enemy?.tags?.submissive || (enemy.personality && KDLoosePersonalities.includes(enemy.personality));
 }
 
 /**

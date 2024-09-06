@@ -704,7 +704,12 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 			let lyr = KDLayerPropName(l, MC.Poses);
 			// Apply displacement
-			if (l.DisplaceLayers && (!l.DisplacementPoses || l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))) {
+			if (l.DisplaceLayers
+				&& (!l.DisplacementPoses
+					|| l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))
+				&& (!l.DisplacementPosesExclude
+					|| l.DisplacementPosesExclude.every((pose) => {return !MC.Poses[pose];}))
+				) {
 				let transform = new Transform();
 
 				let layer = LayerLayer(MC, l, m, mods);
@@ -809,7 +814,12 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 			}
 			// Apply erase
-			if (l.EraseLayers && (!l.ErasePoses || l.ErasePoses.some((pose) => {return MC.Poses[pose];}))) {
+			if (l.EraseLayers
+				&& (!l.ErasePoses
+					|| l.ErasePoses.some((pose) => {return MC.Poses[pose];}))
+				&& (!l.ErasePosesExclude
+					|| l.ErasePosesExclude.every((pose) => {return !MC.Poses[pose];}))
+			) {
 				let transform = new Transform();
 
 				let layer = LayerLayer(MC, l, m, mods);
@@ -1388,6 +1398,11 @@ function GetTrimmedAppearance(C: Character) {
 				poses[pose] = true;
 			}
 		}
+		if (A.Model && A.Model.Categories) {
+			for (let pose of A.Model.Categories) {
+				poses[pose] = true;
+			}
+		}
 	}
 	for (let A of appearance) {
 		if (A.Model && A.Model.AddPoseConditional) {
@@ -1463,6 +1478,11 @@ function UpdateModels(C: Character, Xray?: string[]) {
 				poses[pose] = true;
 			}
 		}
+		if (A.Model && A.Model.Categories) {
+			for (let pose of A.Model.Categories) {
+				poses[pose] = true;
+			}
+		}
 	}
 	for (let A of appearance) {
 		if (A.Model && A.Model.AddPoseConditional) {
@@ -1510,6 +1530,11 @@ function UpdateModels(C: Character, Xray?: string[]) {
 	for (let m of MC.Models.values()) {
 		if (m.AddPose) {
 			for (let pose of m.AddPose) {
+				MC.Poses[pose] = true;
+			}
+		}
+		if (m.Categories) {
+			for (let pose of m.Categories) {
 				MC.Poses[pose] = true;
 			}
 		}
@@ -1734,6 +1759,11 @@ function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
 	for (let m of MC.Models.values()) {
 		if (m.AddPose) {
 			for (let pose of m.AddPose) {
+				MC.Poses[pose] = true;
+			}
+		}
+		if (m.Categories) {
+			for (let pose of m.Categories) {
 				MC.Poses[pose] = true;
 			}
 		}

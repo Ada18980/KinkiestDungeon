@@ -327,7 +327,11 @@ function KinkyDungeonPayShrine(type, mult = 1) {
 			if (KinkyDungeonShopIndex > 0) KinkyDungeonShopIndex -= 1;
 
 			KDGameData.ShopRewardProgram += cost*mult;
-			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true);
+			let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+				true, undefined, undefined,
+				true, (x, y) => {
+					return KinkyDungeonMapGet(x, y) == '0' && !KinkyDungeonTilesGet(x + ',' + y)?.Type;
+				});
 			if (!KDGameData.ShopRewardProgramThreshold) KDGameData.ShopRewardProgramThreshold = KDRewardProgramBase;
 			if (!KDGameData.ShopRewardProgram) KDGameData.ShopRewardProgram = 0;
 			if (point && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(point.x, point.y)) && KDGameData.ShopRewardProgram > KDGameData.ShopRewardProgramThreshold) {

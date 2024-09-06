@@ -129,8 +129,11 @@ function KDUpdateMusic() {
 
 }
 
-function KDPlayMusic(Sound: string, Volume?: number) {
+let KDMusicBusy = false;
 
+function KDPlayMusic(Sound: string, Volume?: number) {
+	if (KDMusicBusy) return;
+	KDMusicBusy = true;
 	// Start the new sound
 	let audio = KDCurrentMusicSound || new Audio();
 	let vol = Player.AudioSettings.Volume * (typeof Volume != 'undefined' ? Volume : 1.0);
@@ -163,14 +166,17 @@ function KDPlayMusic(Sound: string, Volume?: number) {
 		KDCurrentSong = Sound;
 		KDSendMusicToast(TextGet(Sound));
 		KDNewSong = "";
+		KDMusicBusy = false;
 	}).catch((error) => {
 		if (error.name === 'NotAllowedError') {
 			// Music will try to play again after a user gesture (onclick event)
 			console.log('Autoplay is blocked by browser policy.');
 			allowMusic = false;
+			KDMusicBusy = false;
 		} else {
 			console.log('An error occurred while trying to play ' + Sound + " -- ", error.message);
-			KDSendMusicToast(error.message); // This shouldn't happen, but now you'll get a bug report.
+			KDSendMusicToast("Error playing " + Sound + ": " + error.message); // This shouldn't happen, but now you'll get a bug report.
+			KDMusicBusy = false;
 		}
 	});
 }

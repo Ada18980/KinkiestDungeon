@@ -7,8 +7,8 @@ let KinkyDungeonStruggleGroups = [];
 let KinkyDungeonStruggleGroupsBase = [
 	"ItemDevices",
 	"ItemEars",
-	"ItemH",
-	"ItemM",
+	"ItemHead",
+	"ItemMouth",
 	"ItemNeck",
 	"ItemNeckRestraints",
 	"ItemArms",
@@ -1801,17 +1801,6 @@ function KinkyDungeonUpdateStruggleGroups() {
 	for (let S = 0; S < struggleGroups.length; S++) {
 		let sg = struggleGroups[S];
 		let Group = sg;
-		if (sg == "ItemM") {
-			//if (InventoryGet(KinkyDungeonPlayer, "ItemMouth3")) Group = "ItemMouth3";
-			//else if (InventoryGet(KinkyDungeonPlayer, "ItemMouth2")) Group = "ItemMouth2";
-			//else Group = "ItemMouth";
-			Group = "ItemMouth";
-		}
-		if (sg == "ItemH") {
-			//if (KinkyDungeonGetRestraintItem("ItemHood")) Group = "ItemHood";
-			//else Group = "ItemHead";
-			Group = "ItemHead";
-		}
 
 		let restraint = KinkyDungeonGetRestraintItem(Group);
 

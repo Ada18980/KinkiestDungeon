@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4-nightly2"
+KDVersionStr,"5.4-nightly3"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -2739,6 +2739,8 @@ AttackFungalBind,"The fun-gal clips a restraint around your neck! (+RestraintAdd
 AttackFungalLock,"The fun-gal produces a magical lock on all your restraints! (DamageTaken)"
 AttackFungal,"The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)"
 KinkyDungeonSpellCrystalPuff,Crystal Glyph
+KinkyDungeonSpellCrystalSlash,Crystal Slash
+KinkyDungeonSpellCrystalBolt,Crystal Bolt
 
 
 NameDressmakerQuest,Tailor
@@ -22440,7 +22442,7 @@ KinkyDungeonSpellDescriptionEvasiveManeuvers,"While active, you evade almost all
 KinkyDungeonSpellBreakFree,Break Free
 KinkyDungeonSpellDescriptionBreakFree,"Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0."
 KinkyDungeonSpellProblemSolving,Problem Solving
-KinkyDungeonSpellDescriptionProblemSolving,"While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist"
+KinkyDungeonSpellDescriptionProblemSolving,"While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%"
 
 
 KDEvasiveManeuversEnd,You run out of strength to keep dodging...

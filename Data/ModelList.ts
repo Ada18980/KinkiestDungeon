@@ -550,9 +550,10 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 25,
 			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
 			NoDisplace: true,
+			DisplacementPosesExclude: ["Hogtie"],
 			DisplacementSprite: "Boots",
 			DisplaceAmount: 10,
 			DisplaceLayers: ToMap(["Boots"]),
@@ -1457,7 +1458,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "ShoeLeft", Layer: "ShoeLeft", Pri: 1,
 			Poses: ToMap([...LEGPOSES]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
 			AppendPose: ToMapDupe(["RopesAnkle"]),

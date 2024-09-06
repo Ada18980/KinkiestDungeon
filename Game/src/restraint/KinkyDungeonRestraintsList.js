@@ -3857,7 +3857,9 @@ const KinkyDungeonRestraints = [
 		enemyTags: {"invisRestraints":1, },
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Illusion", "Blindfolds"]},
 
-	{renderWhenLinked: [...KDArmbinderLink], inventory: true, trappable: true, name: "InvisibleArmbinder", debris: "Belts", inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink], Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
+	{renderWhenLinked: [...KDArmbinderLink], inventory: true, trappable: true, name: "InvisibleArmbinder", debris: "Belts",
+		inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink],
+		Type: "WrapStrap", Group: "ItemArms", Color: "Default", bindarms: true, bindhands: 1.0, power: 6, weight: 2,
 		Model: "SmoothArmbinder",
 
 		Filters: {

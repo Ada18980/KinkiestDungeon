@@ -401,7 +401,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 
 
 function KDWillingLeash(entity: entity): boolean {
-	return KDGetPersonality(entity) != undefined
-				&& KDLeashablePersonalities[KDGetPersonality(entity)]
-				&& KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer());
+	return entity?.personality != undefined
+				&& KDLeashablePersonalities[entity.personality]
+				&& KDLeashablePersonalities[entity.personality](entity, KDPlayer());
 }

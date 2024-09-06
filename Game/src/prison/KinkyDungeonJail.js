@@ -771,14 +771,7 @@ function KinkyDungeonHandleJailSpawns(delta) {
 
 function KinkyDungeonLockableItems() {
 	let LockableGroups = [];
-	for (let gr of KinkyDungeonStruggleGroupsBase) {
-		let g = gr;
-		if (gr == "ItemM") {
-			g = "ItemMouth";
-		}
-		if (gr == "ItemH") {
-			g = "ItemHead";
-		}
+	for (let g of KinkyDungeonStruggleGroupsBase) {
 		let currentItem = KinkyDungeonGetRestraintItem(g);
 		if (currentItem && !currentItem.lock && KinkyDungeonIsLockable(KDRestraint(currentItem))) {
 			LockableGroups.push(g);
@@ -789,18 +782,8 @@ function KinkyDungeonLockableItems() {
 
 function KinkyDungeonMissingJailUniform() {
 	let MissingGroups = [];
-	for (let gr of KinkyDungeonStruggleGroupsBase) {
-		let g = gr;
-		if (gr == "ItemM") {
-			if (KinkyDungeonGetRestraintItem("ItemMouth2")) g = "ItemMouth3";
-			else if (KinkyDungeonGetRestraintItem("ItemMouth")) g = "ItemMouth2";
-			else g = "ItemMouth";
-		}
-		if (gr == "ItemH") {
-			//if (KinkyDungeonGetRestraintItem("ItemHood")) g = "ItemHood";
-			//else
-			g = "ItemHead";
-		}
+	for (let g of KinkyDungeonStruggleGroupsBase) {
+
 		let jrest = KinkyDungeonGetJailRestraintForGroup(g);
 		let rest = jrest.restraint;
 		let currentItem = KinkyDungeonGetRestraintItem(g);
@@ -1663,8 +1646,8 @@ function KDWanderEnemy(en) {
  * Moves an enemy to a random position on the map
  * @param {entity} e
  */
-function KDKickEnemy(e, minDist = 10) {
-	if (!e.Enemy.tags.temporary) {
+function KDKickEnemy(e, minDist = 10, force = false) {
+	if (!e.Enemy.tags.temporary || force) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
 			let p = (e.spawnX != undefined && e.spawnY != undefined) ? {x: e.spawnX, y: e.spawnY} : undefined;
 			if (!p  ||  KDistEuclidean (e.x - (e.spawnX != undefined ? e.spawnX : e.x),

@@ -476,7 +476,7 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 			classSpecific: "Rogue", prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 				{type: "ProblemSolving", mult: 0.2, power: 0.4, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
-				{type: "ProblemSolving", mult: 0.2, power: 0.4, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
+				//{type: "ProblemSolving", mult: 0.2, power: 0.25, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
 			]},
 		{name: "EvasiveManeuvers", tags: ["utility", "defense", "evasion"], school: "Special", manacost: 0, components: [],
 			defaultOff: true,
