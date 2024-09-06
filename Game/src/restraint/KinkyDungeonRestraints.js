@@ -3844,6 +3844,11 @@ function KDApplyVarToInvVar(restraint, variant) {
 		events.push(...JSON.parse(JSON.stringify(KDEventHexModular[e].events({variant: restvar}))));
 	}
 	for (let e of variant.enchants) {
+		/*
+		 * TODO: Figure out the proper typing for the final "variant"
+		 * argument. It's typed as a KDHexEnchantEventsData, but
+		 * that's not what's being passed.
+		 */
 		events.push(...JSON.parse(JSON.stringify(
 			KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(
 				restraint.name, undefined, undefined, variant.enchants[0], variant.enchants.slice(1) /* , {variant: variant} */))));

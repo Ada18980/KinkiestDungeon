@@ -135,7 +135,7 @@ let alts = {
 		},
 
 
-		updatescript: (delta) => {
+		updatescript: (_delta) => {
 			for (let en of KDMapData.Entities) {
 				if (en.hp < en.Enemy.maxhp && KDAllied(en)) {
 					en.hp = Math.min(en.Enemy.maxhp, en.hp + 0.5);
@@ -304,18 +304,18 @@ let alts = {
 		},
 
 
-		elevatorCondition: (x, y) => {
+		elevatorCondition: (_x, _y) => {
 			return true; // Always unlocked once you are in
 		},
 
-		loadscript: (firstTime) => {
+		loadscript: (_firstTime) => {
 			// Summit loadscript triggers escape for up to 10 NPCs
 
 			KDTriggerNPCEscape(10);
 
 			return true; // Returns whether or not to repopulate this map
 		},
-		drawscript: (delta, CamX, CamY, CamX_offsetVis, CamY_offsetVis) => {
+		drawscript: (_delta, CamX: number, CamY: number, CamX_offsetVis: number, CamY_offsetVis: number) => {
 			if (KDToggles.Backgrounds) {
 				let totalScale = 1.5;
 				let imgwidth = PIXIWidth * totalScale;
@@ -393,7 +393,7 @@ let alts = {
 		width: 15,
 		height: 15,
 		nopatrols: false,
-		onExit: (data) => {
+		onExit: (data: any) => {
 			// Return to the normal map
 			data.overrideRoomType = true;
 			let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
@@ -404,7 +404,7 @@ let alts = {
 			}
 			data.AdvanceAmount = 0;
 		},
-		afterExit: (data) => {
+		afterExit: (_data) => {
 			// Dump the player in a random place on top of a demon portal
 			let point = KinkyDungeonGetRandomEnemyPoint(false, false);
 			if (point) {
@@ -594,14 +594,14 @@ let alts = {
 			ElevatorRoom: true,
 			noHostileDoodad: true,
 		},
-		elevatorCondition: (x, y) => {
+		elevatorCondition: (_x, _y) => {
 			return !KDMapData.Entities.some((enemy) => {
 				return !enemy.maxlifetime && (KDHostile(enemy) || KinkyDungeonAggressive(enemy) || enemy.Enemy?.name == "MummyElevator") && (!KDHelpless(enemy) || enemy.Enemy?.name == "MummyElevator");
 			});
 		},
 
 
-		updatescript: (delta) => {
+		updatescript: (_delta) => {
 			KinkyDungeonResetFog();
 		},
 
@@ -646,13 +646,13 @@ let alts = {
 			ElevatorRoom: true,
 			noHostileDoodad: true,
 		},
-		elevatorCondition: (x, y) => {
+		elevatorCondition: (_x, _y) => {
 			return !KDMapData.Entities.some((enemy) => {
 				return !enemy.maxlifetime && (KDHostile(enemy) || KinkyDungeonAggressive(enemy) || enemy.Enemy?.name == "MummyElevator") && (!KDHelpless(enemy) || enemy.Enemy?.name == "MummyElevator");
 			});
 		},
 
-		updatescript: (delta) => {
+		updatescript: (_delta) => {
 			if (KDRandom() < 0.2) {
 				for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 					for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {
@@ -900,7 +900,7 @@ let KDJourneyListSkin = {
 };
 if (param_test) KDJourneyList.push("Test");
 
-function KinkyDungeonAltFloor(Type) {
+function KinkyDungeonAltFloor(Type: string) {
 	if (KDPersonalAlt[Type])
 		return alts[KDPersonalAlt[Type].RoomType];
 	return alts[Type];
@@ -941,7 +941,7 @@ let KinkyDungeonCreateMapGenType = {
 	"PerkRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
-	"Chamber": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"Chamber": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 2, 1.5, 8, data);
 	},
 	"Maze": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
@@ -953,39 +953,36 @@ let KinkyDungeonCreateMapGenType = {
 	"TileMaze": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
-	"NarrowMaze": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"NarrowMaze": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
-	"DollRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"DollRoom": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
-	"DollStorage": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"DollStorage": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
-	"Summit": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"Summit": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
-	"DemonTransition": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"DemonTransition": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
-	"Dollmaker": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"Dollmaker": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
-	"Warden": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+	"Warden": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	},
 };
 
 
-function KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateMaze(POI: any[], VisitedRooms: any[], width: number, height: number, openness: number, density: number, hallopenness: number, data: any): void {
 	// Variable setup
 
-	/** @type {GridEntry} */
-	let Walls = {};
-	/** @type {GridEntry} */
-	let WallsList = {};
-	/** @type {GridEntry} */
-	let VisitedCells = {};
+	let Walls: GridEntry = {};
+	let WallsList: GridEntry = {};
+	let VisitedCells: GridEntry = {};
 
 	// Initialize the first cell in our Visited Cells list
 	if (KDDebug) console.log("Created maze with dimensions " + width + "x" + height + ", openness: "+ openness + ", density: "+ density);
@@ -1176,15 +1173,12 @@ function KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, openness, dens
 		}
 }
 
-function KinkyDungeonCreateCaldera(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateCaldera(POI: any[], VisitedRooms: GridEntry, width: number, height: number, openness: number, density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
-	/** @type {GridEntry} */
-	let Walls = {};
-	/** @type {GridEntry} */
-	let WallsList = {};
-	/** @type {GridEntry} */
-	let VisitedCells = {};
+	let Walls: GridEntry = {};
+	let WallsList: GridEntry = {};
+	let VisitedCells: GridEntry = {};
 
 	// Initialize the first cell in our Visited Cells list
 	if (KDDebug) console.log("Created maze with dimensions " + width + "x" + height + ", openness: "+ openness + ", density: "+ density);
@@ -1397,29 +1391,25 @@ function KinkyDungeonCreateCaldera(POI, VisitedRooms, width, height, openness, d
 let usePrimmMaze = false;
 
 /**
- *
- * @param {*} POI
- * @param {*} VisitedRooms
- * @param {*} width
- * @param {*} height
- * @param {*} openness
- * @param {*} density
- * @param {*} hallopenness
- * @param {{params: floorParams; chestlist: any[]; traps: any[]; shrinelist: any[]; chargerlist: any[]; spawnpoints: any[]}} data
+ * @param POI
+ * @param VisitedRooms
+ * @param width
+ * @param height
+ * @param openness
+ * @param density
+ * @param hallopenness
+ * @param data
  */
-function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateTileMaze(_POI: any[], VisitedRooms: any[], width: number, height: number, openness: number, density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	//
 
 	VisitedRooms = [];
 
-	/** @type {GridEntry} */
-	let Walls = {};
-	/** @type {GridEntry} */
-	let WallsList = {};
-	/** @type {GridEntry} */
-	let VisitedCells = {};
+	let Walls: GridEntry = {};
+	let WallsList: GridEntry = {};
+	let VisitedCells: GridEntry = {};
 
 	// Initialize the first cell in our Visited Cells list
 	//if (KDDebug)
@@ -1607,20 +1597,15 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 
 	/**
 	 * Start, end, top, bot positions
-	 * @type {Record<string, boolean>}
 	 */
-	let requiredAccess = {
-	};
+	let requiredAccess: Record<string, boolean> = {};
 	requiredAccess[(startx + 1) + "," + (starty + 1)] = true;
 	requiredAccess[(topx + 1) + "," + (topy + 1)] = true;
 	requiredAccess[(endx + 1) + "," + (endy + 1)] = true;
 	requiredAccess[(botx + 1) + "," + (boty + 1)] = true;
 
 	// Now we convert the maze into an array of indices
-	/**
-	 * @type {Record<string, string>}
-	 */
-	let indices = {};
+	let indices: Record<string, string> = {};
 	for (let x = 1; x < KDMapData.GridWidth; x += 2) {
 		for (let y = 1; y < KDMapData.GridHeight; y += 2) {
 			let index = "";
@@ -1695,7 +1680,7 @@ function KinkyDungeonCreateTileMaze(POI, VisitedRooms, width, height, openness, 
 }
 
 
-function KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateRoom(_POI: any, _VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
 	// Variable setup
 
 	KinkyDungeonCreateRectangle(0, 0, width, height, true, false, false, false);
@@ -1717,7 +1702,7 @@ function KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, dens
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 }
 
-function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateDollStorage(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	KDMapData.StartPosition = {x: 7 * 4-1, y: 7 * 1+2};
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.y};
 	VisitedRooms[0].x = 1;
@@ -1748,7 +1733,7 @@ function KinkyDungeonCreateDollStorage(POI, VisitedRooms, width, height, opennes
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 }
-function KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateSummit(_POI: any, VisitedRooms: any[], _width: number, _height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	if (!KinkyDungeonFlags.get("1stSummit")) {
 		KinkyDungeonSendTextMessage(10, TextGet("KDSummitIntro"), "#ffffff", 12, undefined, undefined, undefined, "");
 		KinkyDungeonSetFlag("1stSummit", -1);
@@ -1785,7 +1770,7 @@ function KinkyDungeonCreateSummit(POI, VisitedRooms, width, height, openness, de
 
 }
 
-function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
 	// Variable setup
 
 
@@ -1978,7 +1963,7 @@ function KinkyDungeonCreateDollRoom(POI, VisitedRooms, width, height, openness, 
 	}
 }
 
-function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateDemonTransition(POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Create the map
 	KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 0, 10, 0, data);
 	KinkyDungeonGenNavMap(KDMapData.StartPosition);
@@ -1992,7 +1977,7 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	if (!KDMapData.EndPosition) {
 		KDMapData.EndPosition = {x: KDMapData.StartPosition.x, y: KDMapData.StartPosition.x};
 	}
-	KDMapData.StartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KDistChebyshev(x - KDMapData.EndPosition.x, y - KDMapData.EndPosition.y) > width/4;},false, false);
+	KDMapData.StartPosition = KinkyDungeonGetRandomEnemyPointCriteria((x: number, y: number) => {return KDistChebyshev(x - KDMapData.EndPosition.x, y - KDMapData.EndPosition.y) > width/4;},false, false);
 	//let playerPos = KinkyDungeonGetRandomEnemyPoint(false, false);
 
 	KinkyDungeonPlayerEntity.x = KDMapData.StartPosition.x;
@@ -2017,7 +2002,7 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	// Create random stair pairs
 	let count = 20;
 	for (let i = 0; i < count; i++) {
-		let point1 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {return KinkyDungeonMapGet(x, y) != 's' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y));},true, false);
+		let point1 = KinkyDungeonGetRandomEnemyPointCriteria((x: number, y: number) => {return KinkyDungeonMapGet(x, y) != 's' && KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y));},true, false);
 		if (point1) {
 			KinkyDungeonMapSet(point1.x, point1.y, 's');
 			KinkyDungeonTilesSet(point1.x + "," + point1.y, {AltStairAction: "RandomTeleport"});
@@ -2025,7 +2010,7 @@ function KinkyDungeonCreateDemonTransition(POI, VisitedRooms, width, height, ope
 	}
 }
 
-function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateDollmaker(_POI: any, _VisitedRooms: any[], _width: number, _height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
 
@@ -2034,8 +2019,10 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
 	KDMapData.Grid = "";
 
+	/* Set but never used
 	width = KDMapData.GridWidth;
 	height = KDMapData.GridHeight;
+	 */
 
 	// Generate the grid
 	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
@@ -2071,14 +2058,16 @@ function KinkyDungeonCreateDollmaker(POI, VisitedRooms, width, height, openness,
 	}); // Has to be tunnel
 }
 
-function KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateWarden(_POI: any, _VisitedRooms: any[], _width: number, _height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Now we STRETCH the map
 	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
 	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
 	KDMapData.Grid = "";
 
+	/* Set but never used.
 	width = KDMapData.GridWidth;
 	height = KDMapData.GridHeight;
+	 */
 
 	// Generate the grid
 	for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
@@ -2116,7 +2105,7 @@ function KinkyDungeonCreateWarden(POI, VisitedRooms, width, height, openness, de
 	}); // Has to be tunnel
 }
 
-function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateTunnel(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	KinkyDungeonCreateRectangle(0, 0, width, height, true, true, false, false);
@@ -2224,7 +2213,7 @@ function KinkyDungeonCreateTunnel(POI, VisitedRooms, width, height, openness, de
 }
 
 
-function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
 	// Variable setup
 
 	KinkyDungeonCreateRectangle(0, 0, width, height, true, true, false, false);
@@ -2272,8 +2261,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 	let perksplaced = 0;
 	if (!KinkyDungeonStatsChoice.get("noperks")) {
 		let perkCount = 3;
-		/** @type {Record<string, boolean>} */
-		let perks = {};
+		let perks: Record<string, boolean> = {};
 		for (let i = 0; i < perkCount; i++) {
 			let newperks = KinkyDungeonStatsChoice.get("perksdebuff") ? KDGetRandomPerks(perks, true) : KDGetRandomPerks(perks);
 			let bondage = KDGetPerkShrineBondage(newperks);
@@ -2314,7 +2302,7 @@ function KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, 
 }
 
 
-function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateJourneyFloor(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 2, y: height};
@@ -2415,7 +2403,7 @@ function KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openne
 }
 
 
-function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateShopStart(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 2, y: height};
@@ -2486,7 +2474,7 @@ function KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness,
 
 }
 
-function KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateGoldVault(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setups
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
@@ -2516,7 +2504,7 @@ function KinkyDungeonCreateGoldVault(POI, VisitedRooms, width, height, openness,
 }
 
 
-function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
@@ -2543,10 +2531,7 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
 	let def = KDDragonList[Math.floor(KDRandom() * KDDragonList.length)];
-	/**
-	 * @type {Record<string, number>}
-	 */
-	let obstacles = {};
+	let obstacles: Record<string, number> = {}
 	if (def) {
 		DialogueCreateEnemy(15,2 + 7 + 2,def.enemy);
 		obstacles = def.obstacles;
@@ -2629,7 +2614,7 @@ function KinkyDungeonCreateElevatorRoom(POI, VisitedRooms, width, height, openne
 }
 
 
-function KinkyDungeonCreateElevatorEgyptian(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateElevatorEgyptian(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
@@ -2665,7 +2650,7 @@ function KinkyDungeonCreateElevatorEgyptian(POI, VisitedRooms, width, height, op
 }
 
 
-function KinkyDungeonCreateElevatorEgyptian2(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateElevatorEgyptian2(_POI: any, VisitedRooms: any[], _width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 15, y: 2 + 7 * 4};
@@ -2700,7 +2685,7 @@ function KinkyDungeonCreateElevatorEgyptian2(POI, VisitedRooms, width, height, o
 	});
 }
 
-function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateTestTile(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 2, y: height};
@@ -2735,7 +2720,7 @@ function KinkyDungeonCreateTestTile(POI, VisitedRooms, width, height, openness, 
 }
 
 
-function KinkyDungeonCreateTutorial(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
+function KinkyDungeonCreateTutorial(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
 	// Variable setup
 
 	KDMapData.StartPosition = {x: 2, y: height};

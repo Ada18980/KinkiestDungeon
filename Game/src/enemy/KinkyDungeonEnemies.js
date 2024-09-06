@@ -2863,11 +2863,11 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
 /**
  *
  * @param {*} avoidPlayer
- * @param {*} onlyPlayer
- * @param {*} Enemy
- * @param {*} playerDist
- * @param {*} minDist
- * @param {number} maxDist
+ * @param {*} [onlyPlayer]
+ * @param {entity} [Enemy]
+ * @param {*} [playerDist]
+ * @param {*} [minDist]
+ * @param {number} [maxDist]
  * @returns {{x: number, y: number}}
  */
 function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false, maxDist = 100) {
@@ -2986,10 +2986,10 @@ let RandomPathList = [];
  * @param {*} criteria
  * @param {*} avoidPlayer
  * @param {*} onlyPlayer
- * @param {*} Enemy
- * @param {*} playerDist
- * @param {*} minDist
- * @param {number} maxDist
+ * @param {*} [Enemy]
+ * @param {*} [playerDist]
+ * @param {*} [minDist]
+ * @param {number} [maxDist]
  * @returns {{x: number, y: number}}
  */
 function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false, maxDist = 100) {
@@ -6663,14 +6663,16 @@ function KDPushModifier(power, enemy, allowNeg = false) {
  * @param {entity} enemy
  * @param {number} amount
  * @param {string} type
- * @param {any} Damage
+ * @param {any} [Damage]
+ * @param {any} [Msg]
+ * @param {any} [Delay]
  * @returns {*}
  */
 function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
 	if (!enemy) return 0;
 	let data = {
 		amount: amount,
-		specialAmount: amount,
+		specialAmount: amount,   // FIXME: This field is never used anywhere else.
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
 		Msg: Msg,

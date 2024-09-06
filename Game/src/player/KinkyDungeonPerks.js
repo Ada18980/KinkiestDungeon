@@ -1098,6 +1098,7 @@ function drawHorizList(list, x, y, w, h, max, fontSize, clickfnc, prefix, revers
 /**
  *
  * @param {Record<string, boolean>} existing
+ * @param {boolean} [debuff]
  * @returns {string[]}
  */
 function KDGetRandomPerks(existing, debuff) {
