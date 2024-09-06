@@ -4,10 +4,7 @@ let KDLatexDmg = 1;
 let KDLatexBind = 2;
 let KDBubbleDmg = 3;
 
-/**
- * @type {Record<string, effectTile>}
- */
-let KDEffectTiles = {
+let KDEffectTiles: Record<string, effectTile> = {
 	"FateBoundGround": {
 		name: "FateBoundGround",
 		duration: 2,
