@@ -3418,6 +3418,7 @@ interface KDEnemyAction {
 	/** Enemy will sprint during this action */
 	sprint?: boolean;
 	end?: (enemy) => void;
+	filter?: (enemy) => boolean;
 	maintain: (enemy, delta) => boolean;
 }
 

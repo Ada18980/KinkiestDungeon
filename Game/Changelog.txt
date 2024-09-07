@@ -32,6 +32,9 @@ TODO remove hogtie when released
 
 5.4-nightly6
 - Changed worldgen to make sizing a bit more reasonable
+- Angel can help you with divine locks
+- Added Crystal lock
+
 
 5.4-nightly5
 - Added directional wires (vertical, horizontal, endpoint)

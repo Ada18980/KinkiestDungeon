@@ -81,6 +81,7 @@ function KDRefillChests(data: KDMapDataType) {
 	/**
 	 * Only refill when player has been captured--for balance reasons
 	 */
+	if (!data.data) data.data = {};
 	let lastRefill = data.data.lastChestRefill;
 	let currentTick = KinkyDungeonCurrentTick;
 

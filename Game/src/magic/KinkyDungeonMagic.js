@@ -683,6 +683,7 @@ function KinkyDungeonMakeNoiseSignal(enemy, mult = 1, hideShockwave) {
 	for (let e of KDMapData.Entities) {
 		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesignal" || e.action == "investigatesound")
 			&& !e.path
+			&& KDEnemyAction.investigatesignal.filter(e)
 			&& KDFactionAllied(KDGetFaction(enemy), KDGetFaction(e))
 			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
 			&& !e.Enemy.tags.deaf
@@ -735,6 +736,7 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave, attachToEn
 			&& (KDHostile(e) || KDRandom() < 0.33)
 			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
 			&& !e.Enemy.tags.deaf
+			&& KDEnemyAction.investigatesound.filter(e)
 			&& !KDAmbushAI(e)
 			&& KDCanHearSound(e, data.radius, data.x, data.y)) {
 			e.gx = data.x;

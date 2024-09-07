@@ -2672,6 +2672,7 @@
             <key type="filename">../Game/Locks/Blind.png</key>
             <key type="filename">../Game/Locks/Blocked.png</key>
             <key type="filename">../Game/Locks/Blue.png</key>
+            <key type="filename">../Game/Locks/Crystal.png</key>
             <key type="filename">../Game/Locks/Curse.png</key>
             <key type="filename">../Game/Locks/Cyber.png</key>
             <key type="filename">../Game/Locks/Cyber2.png</key>

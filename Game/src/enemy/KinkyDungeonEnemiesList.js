@@ -5872,6 +5872,9 @@ let KDEnemyAction = {
 			enemy.gx = enemy.x;
 			enemy.gy = enemy.y;
 		},
+		filter: (enemy) => {
+			return !(enemy.aware);
+		},
 		maintain: (enemy, delta) => {
 			// Stops investigating if alerted or idle
 			return !(enemy.idle
@@ -5887,6 +5890,9 @@ let KDEnemyAction = {
 			// Reset position
 			enemy.gx = enemy.x;
 			enemy.gy = enemy.y;
+		},
+		filter: (enemy) => {
+			return !(enemy.aware);
 		},
 		maintain: (enemy, delta) => {
 			// Stops investigating if alerted or idle

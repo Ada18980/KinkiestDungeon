@@ -1194,6 +1194,7 @@ function KinkyDungeonLoad() {
 			DrawButtonKDEx("GameStart", () => {
 				KinkyDungeonState = "Name";
 				let emptySlot = undefined;
+				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 				for (var i = 1; i < 5; i++) {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
@@ -1205,8 +1206,6 @@ function KinkyDungeonLoad() {
 							emptySlot = num;
 							KDSaveSlot = emptySlot;
 						}
-						if (!emptySlot)
-							KDSaveSlot = num;
 					});
 				}
 				return true;
