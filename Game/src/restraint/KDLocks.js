@@ -68,6 +68,68 @@ let KDLocks = {
 		loot_special: false,
 		loot_locked: true,
 	},
+	"Crystal": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
+		},
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return false;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 1.4,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.5, // Multiplies the picking rate
+		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		canPick: (data) => {
+			return false;
+		},
+		doPick: (data) => {
+			return false;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return false;
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Knife",
+		canUnlock: (data) => {
+			return KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.25;
+		},
+		doUnlock: (data) => {
+			return true;
+		},
+		removeKeys: (data) => {
+
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
 	"Cyber": {
 		specialActions: (tile, player) => {
 			KDCyberActions(tile, player, 20);

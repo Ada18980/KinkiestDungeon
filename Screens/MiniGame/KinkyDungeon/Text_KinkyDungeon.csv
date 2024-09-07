@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4-nightly5"
+KDVersionStr,"5.4-nightly6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -420,11 +420,11 @@ KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Qu
 
 
 KinkyDungeonStatMapLarge,"Expansive Halls"
-KinkyDungeonStatDescMapLarge,"Increases the size of maps by 3 in each direction. Maps will be less dense."
+KinkyDungeonStatDescMapLarge,"Increases the size of maps by 2 in the long dimension. Maps will be less dense."
 KinkyDungeonStatMapHuge,"Gargantuan Halls"
-KinkyDungeonStatDescMapHuge,"Increases the size of maps by 6 in each direction. Maps will have a mix of tunnels and dead ends."
+KinkyDungeonStatDescMapHuge,"Increases the size of maps by 4 in the long dimension. Maps will have a mix of tunnels and dead ends."
 KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
-KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 9 in each direction. Maps will be mostly tunnels."
+KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 6 in the long dimension. Maps will be mostly tunnels."
 KinkyDungeonStatMapAbsurd,"Absurdly Huge Maps"
 KinkyDungeonStatDescMapAbsurd,"(Experimental) Make the maps really really big. Probably breaks the game."
 
@@ -3083,6 +3083,9 @@ KinkyDungeonStruggleCantPickCyber2Lock,"The lock is technological and does not u
 KinkyDungeonStruggleCantPickCyber3Lock,"The lock is technological and does not use a key."
 KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
 
+KinkyDungeonStruggleCantPickCrystalLock,"The lock is encased in magical crystals that block the keyhole."
+KinkyDungeonStruggleUnlockNoCrystalKey,"Your distraction makes the crystals regrow immediately after breaking them off."
+
 KinkyDungeonStruggleUnlockJammed,"The key sticks in the lock and jams, mangling the key!"
 
 KinkyDungeonStruggleUnlockSuccess,"You unlock the TargetRestraint."
@@ -3332,6 +3335,7 @@ KinkyDiscLockType,"Disc"
 KinkyRubberLockType,"Rubber"
 KinkyDivineLockType,"Divine"
 KinkyDivine2LockType,"Divine"
+KinkyCrystalLockType,"Crystal"
 KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
 KinkyPurpleLockType,"Magic"
@@ -3348,6 +3352,7 @@ KinkyDiscLock,"Disc Lock"
 KinkyRubberLock,"Rubber Lock"
 KinkyDivineLock,"Divine Lock"
 KinkyDivine2Lock,"Divine Lock"
+KinkyCrystalLock,"Crystal Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
 KinkyPurpleLock,"Purple Lock"
@@ -12105,11 +12110,15 @@ dItemShopBuy9,(Buy Item9 for ItemCost9 gp)
 rAngelHelp,"(The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)"
 rAngelHelpKnife,"(The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?"
 rAngelHelpPick,"(The SPEAKER gives you three picks)|I don't know how you plan to use these..."
-rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees..."
+rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable."
+rAngelHelpDivineFail,"(The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*"
+rAngelHelpDivineQuest,"(The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!"
+rAngelHelpDivine,"(The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)"
 
 dAngelHelp_Knife,(Ask for 2 knives)
 dAngelHelp_Pick,(Ask for 3 lockpicks)
 dAngelHelp_BlueKey,(Ask for a magic key)
+dAngelHelp_Divine,(Ask for help with a divine lock)
 
 KinkyDungeonAngelNoSpace,There is no valid space next to you!
 
@@ -22561,46 +22570,46 @@ KDHolyOrbPunish,"The holy orb observes your lack of discipline, and issues a pun
 
 RestraintDivineBelt,Divine Chastity Belt
 RestraintDivineBeltDesc2,"A chastity belt forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBeltDesc,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
+RestraintDivineBeltDesc,"There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge."
 KDDivineBeltDeny,Your Divine Chastity Belt causes the vibrators to stop.
 
 
 KinkyDungeonInventoryItemDivineBelt,Divine Chastity Belt
 KinkyDungeonInventoryItemDivineBeltDesc,"A chastity belt forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBeltDesc2,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
+KinkyDungeonInventoryItemDivineBeltDesc2,"There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge."
 
 KinkyDungeonLootDivineBelt,You find a heavenly chastity belt. Who could it be for?
 
 RestraintDivineBra,Divine Chastity Bra
 RestraintDivineBraDesc2,"A chastity bra forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBraDesc,"There is no way out but to repent. Its divine aura prevents you from pleasuring yourself."
+RestraintDivineBraDesc,"There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself."
 KDDivineBraDeny,Your Divine Chastity Bra causes your whole body to go numb.
 
 KinkyDungeonInventoryItemDivineBra,Divine Chastity Bra
 KinkyDungeonInventoryItemDivineBraDesc,"A chastity bra forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBraDesc2,"There is no way out but to repent. Its divine aura prevents you from pleasuring yourself."
+KinkyDungeonInventoryItemDivineBraDesc2,"There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself."
 
 KinkyDungeonLootDivineBra,You find a heavenly chastity bra. Who could it be for?
 
 RestraintDivineBelt2,Heavenly Chastity Belt
 RestraintDivineBelt2Desc2,"A chastity belt forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBelt2Desc,"There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge."
+RestraintDivineBelt2Desc,"There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge."
 KDDivineBelt2Deny,Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 
 KinkyDungeonInventoryItemDivineBelt2,Heavenly Chastity Belt
 KinkyDungeonInventoryItemDivineBelt2Desc,"A chastity belt forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBelt2Desc2,"There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge."
+KinkyDungeonInventoryItemDivineBelt2Desc2,"There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge."
 
 KinkyDungeonLootDivineBelt2,You find a heavenly chastity belt. Who could it be for?
 
 RestraintDivineBra2,Heavenly Chastity Bra
 RestraintDivineBra2Desc2,"A chastity bra forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBra2Desc,"There is no way out but to repent. Its divine aura converts self-pleasure to stamina."
+RestraintDivineBra2Desc,"There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina."
 KDDivineBra2Deny,The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 
 KinkyDungeonInventoryItemDivineBra2,Heavenly Chastity Bra
 KinkyDungeonInventoryItemDivineBra2Desc,"A chastity bra forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBra2Desc2,"There is no way out but to repent. Its divine aura converts self-pleasure to stamina."
+KinkyDungeonInventoryItemDivineBra2Desc2,"There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina."
 
 KinkyDungeonLootDivineBra2,You find a heavenly chastity bra. Who could it be for?
 
@@ -24575,7 +24584,7 @@ KDJourneyDoll,Factory Route
 KDJourneyLost,Reverse Route
 KDJourneyRandom,Chaos Route
 KDMapSeed,"Map Seed: "
-KDWillOverride,Will Overwrite!
+KDWillOverride,Will Overwrite NME!
 
 KDPlayWithSlot,"Play Slot "
 KDPlayWithoutSlot,Play (NO SLOT!)

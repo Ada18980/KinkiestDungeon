@@ -437,6 +437,27 @@ let KDDialogue = {
 				},
 				leadsToStage: "", dontTouchText: true,
 			},
+			"Divine": {
+				playertext: "Default", response: "AngelHelpDivine",
+				prerequisiteFunction: (gagged, player) => {
+					return !KinkyDungeonFlags.get("AngelHelped") && KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2", "Divine"]).length > 0;
+				},
+				clickFunction: (gagged, player) => {
+					let lockedRestraints = KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2"]);
+					if (KDGetBlessings().length > 0 && lockedRestraints.length > 0) {
+						let luckyItem = lockedRestraints[Math.floor(KDRandom() * lockedRestraints.length)];
+						KinkyDungeonLock(luckyItem, "");
+						KinkyDungeonSetFlag("AngelHelped", 5);
+					} else {
+						if (KinkyDungeonPlayerGetRestraintsWithLocks(["Divine"]).length > 0)
+							KDGameData.CurrentDialogMsg = "AngelHelpDivineQuest";
+						else
+							KDGameData.CurrentDialogMsg = "AngelHelpDivineFail";
+					}
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
 			"Leave": {playertext: "Leave", exitDialogue: true},
 		}
 	},

@@ -3901,8 +3901,9 @@ let KinkyDungeonEnemies = [
 		terrainTags: {"passage": -999, "temple": 20, "open": 125}, floors:KDMapInit(["tmp"]), shrines: ["Conjure"],
 		dropTable: [{name: "AncientPowerSourceSpent", weight: 9}, {name: "AncientPowerSource", weight: 1}]},
 	{name: "SoulCrystalActive", clusterWith: "chaos", color: "#880000", immobile: true, hitsfx: "Evil",
-		tags: KDMapInit(["crystal", "soul", "active", "unstoppable", "miniboss", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33,
+		tags: KDMapInit(["crystal", "soul", "active", "unstoppable", "minor", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33,
 		evasion: -9, ignorechance: 1.0, armor: 1.5, followRange: 1, AI: "wander",
+		difficulty: 0.5,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 5.5, color: "#ff5277"}
 		],

@@ -221,10 +221,13 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 	for (let L = lootWeights.length - 1; L >= 0; L--) {
 		if (selection > lootWeights[L].weight) {
 			if (returnOnly) return lootWeights[L].loot;
-			let replace = KinkyDungeonLootEvent(lootWeights[L].loot, Level, TextGet(lootWeights[L].loot.message), lootWeights[L].loot.lock);
+			for (let i = 0; i < (lootWeights[L].loot.count || 1); i++) {
+				let replace = KinkyDungeonLootEvent(lootWeights[L].loot, Level, TextGet(lootWeights[L].loot.message), lootWeights[L].loot.lock);
 
-			if (!KinkyDungeonSendActionMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2))
-				KinkyDungeonSendTextMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2, true, true);
+				if (!KinkyDungeonSendActionMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2))
+					KinkyDungeonSendTextMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2, true, true);
+
+			}
 
 			return true;
 		}
@@ -257,6 +260,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		lock: Lock,
 	};
 	KinkyDungeonSendEvent("loot", data);
+
+
 	Loot = data.loot;
 	Replacemsg = data.replacemsg;
 	Lock = data.lock;

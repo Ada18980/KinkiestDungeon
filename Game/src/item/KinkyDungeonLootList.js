@@ -348,6 +348,21 @@ let KinkyDungeonLootTable = {
 		{name: "gunpowder", minLevel: 0, weight:8, message:"LootChestGunpowder", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "rope", minLevel: 0, weight:1, weapon: "Rope", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["Rope"]},
 	],
+	"kinky": [
+		{name: "Trap", minLevel: 0, weight: 10,
+			count: 4,
+			armortags: ["trap", "leatherRestraints", "leatherRestraintsHeavy"], armor: "TrapGag", // Backup to a gag
+			faction: "Jail",
+			message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "Latex", minLevel: 0, weight: 10,
+			count: 4,
+			armortags: ["latexRestraintsHeavy", "latexpetsuit", "latexRestraints"], armor: "TrapGag", // Backup to a gag
+			faction: "Jail",
+			message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "CommonToy", weaponlist: "CommonToy", minLevel: 0, weight:1,
+			message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "rope", minLevel: 0, weight:1, weapon: "Rope", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["Rope"]},
+	],
 	"blue": [
 		{name: "spell_points", magic: true, minLevel: 0, weight:1, message:"LootChestSpellPoints", messageColor:"lightblue", messageTime: 3, allFloors: true, max: 1},
 	],

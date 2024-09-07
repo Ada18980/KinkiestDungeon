@@ -2474,6 +2474,8 @@ interface KinkyDungeonSave {
 		dp: string,
 	}
 
+	KinkyDungeonCurrentTick: number,
+
 	errorloading: boolean,
 	modsmissing: boolean,
 
@@ -2616,7 +2618,7 @@ interface KDMapDataType {
 	Labels: Record<string, KDLabel[]>,
 
 	flags?: string[],
-	data: any,
+	data: Record<string, any>,
 
 	Regiments: Record<string, number>,
 

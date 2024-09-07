@@ -30,6 +30,8 @@ TODO:
 
 TODO remove hogtie when released
 
+5.4-nightly6
+- Changed worldgen to make sizing a bit more reasonable
 
 5.4-nightly5
 - Added directional wires (vertical, horizontal, endpoint)

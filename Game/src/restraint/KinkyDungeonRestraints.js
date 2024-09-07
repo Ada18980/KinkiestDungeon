@@ -168,7 +168,7 @@ function KDGetWillPenalty(StruggleType) {
 			scale = Math.min(1.0, (scalestart - perc) / (scalestart - KDWillEscapePenaltyEnd));
 		else if (perc <= 0) scale = 1.0;
 	}
-	return scale * max * (StruggleType == "Cut" ? 0.5 : 1.0);
+	return scale * max * ((StruggleType == "Cut") ? 0.5 : (StruggleType == "Struggle" ? 1.0 : 0.1));
 }
 
 let KinkyDungeonCurrentEscapingItem = null;
@@ -1982,7 +1982,7 @@ function KDGetStruggleData(data) {
 	if (data.struggleType == "Remove" && !data.hasAffinity) minAmount = 0;
 
 
-	if (data.upfrontWill && !KinkyDungeonHasHelp() && !KinkyDungeonHasWill(0.01, false)) {
+	if (data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
 		data.escapePenalty += data.willEscapePenalty;
 		if (data.escapeChance - data.escapePenalty + data.willEscapePenalty > 0
 			&& data.escapeChance - data.escapePenalty < 0) {
@@ -2252,7 +2252,7 @@ function KDGetStruggleData(data) {
 		data.limitChance *= KDRestraint(data.restraint).limitMult[data.struggleType];
 
 
-	if (!data.upfrontWill && !KinkyDungeonHasHelp() && !KinkyDungeonHasWill(0.01, false)) {
+	if (!data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
 		data.limitChance += data.willEscapePenalty;
 		if (data.escapeChance - data.limitChance + data.willEscapePenalty > 0
 			&& data.escapeChance - data.limitChance < 0) {

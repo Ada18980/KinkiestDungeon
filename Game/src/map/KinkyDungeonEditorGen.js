@@ -887,6 +887,8 @@ let KDTileGen = {
 					Loot: tileGenerator.Lock == "Blue" ? "blue" : (tileGenerator.Loot ? tileGenerator.Loot : "chest"),
 					Faction: tileGenerator.Faction,
 					Roll: KDRandom(),
+					refill: tileGenerator.refill,
+					origloot: (tileGenerator.Loot ? tileGenerator.Loot : "storage"),
 					Special: tileGenerator.Lock == "Blue",
 					RedSpecial: tileGenerator.Lock?.includes("Red"),
 					lootTrap: KDGenChestTrap(false, x, y, (tileGenerator.Loot ? tileGenerator.Loot : "chest"), tileGenerator.Lock, tileGenerator.NoTrap),
@@ -906,8 +908,10 @@ let KDTileGen = {
 		return {
 			NoTrap: tileGenerator.NoTrap,
 			Type: tileGenerator.Lock ? "Lock" : undefined, Lock: tileGenerator.Lock,
-			Loot: tileGenerator.Lock == "Blue" ? "blue" : (tileGenerator.Loot ? tileGenerator.Loot : "chest"),
+			Loot: tileGenerator.Lock == "Blue" ? "blue" : (tileGenerator.Loot ? tileGenerator.Loot : "storage"),
 			Faction: faction,
+			refill: tileGenerator.refill,
+			origloot: (tileGenerator.Loot ? tileGenerator.Loot : "storage"),
 			Roll: KDRandom(),
 			Special: tileGenerator.Lock == "Blue",
 			RedSpecial: tileGenerator.Lock?.includes("Red"),
@@ -991,6 +995,11 @@ let KDTileGen = {
 	},
 	"JailBed": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'B');
+		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1});
+		return {Jail: true, OL: true};
+	},
+	"JailPoint": (x, y, tile, tileGenerator, data) => {
+		KinkyDungeonMapSet(x, y, '0');
 		KDMapData.JailPoints.push({x: x, y: y, type: "jail", radius: 1});
 		return {Jail: true, OL: true};
 	},
