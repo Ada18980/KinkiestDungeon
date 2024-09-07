@@ -272,14 +272,6 @@
 	"spriteSourceSize": {"x":6,"y":24,"w":60,"h":26},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Bullets/MagicRope.png":
-{
-	"frame": {"x":1148,"y":2018,"w":57,"h":27},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":8,"y":22,"w":57,"h":27},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/MiniCable.png":
 {
 	"frame": {"x":1637,"y":2023,"w":62,"h":19},
@@ -318,14 +310,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":22,"w":58,"h":28},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Bullets/RubberMissile.png":
-{
-	"frame": {"x":1881,"y":2023,"w":55,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":25,"w":55,"h":22},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Bullets/RuneTrap_VacCube.png":
@@ -528,6 +512,22 @@
 	"spriteSourceSize": {"x":19,"y":45,"w":34,"h":13},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/EffectTiles/WireHoriz.png":
+{
+	"frame": {"x":1701,"y":2023,"w":61,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":25,"w":61,"h":22},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/EffectTiles/WireVert.png":
+{
+	"frame": {"x":537,"y":1547,"w":22,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":6,"w":22,"h":60},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Enemies/Apprentice.png":
 {
 	"frame": {"x":2000,"y":1435,"w":43,"h":67},
@@ -562,7 +562,7 @@
 },
 "Game/Enemies/Bat.png":
 {
-	"frame": {"x":1701,"y":2023,"w":58,"h":23},
+	"frame": {"x":1764,"y":2023,"w":58,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":15,"w":58,"h":23},
@@ -770,7 +770,7 @@
 },
 "Game/EnemiesBound/LesserSkeleton.png":
 {
-	"frame": {"x":537,"y":1547,"w":22,"h":58},
+	"frame": {"x":537,"y":1609,"w":22,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":8,"w":22,"h":58},
@@ -790,14 +790,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":35,"w":60,"h":28},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/EnemiesBound/Skeleton.png":
-{
-	"frame": {"x":537,"y":1607,"w":22,"h":58},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":26,"y":8,"w":22,"h":58},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/FloorGeneric/Bars.png":
@@ -906,7 +898,7 @@
 },
 "Game/Items/BoltCutters.png":
 {
-	"frame": {"x":1821,"y":2023,"w":58,"h":18},
+	"frame": {"x":1148,"y":2018,"w":58,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":26,"w":58,"h":18},
@@ -968,6 +960,14 @@
 	"spriteSourceSize": {"x":36,"y":46,"w":36,"h":14},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Items/Hammer.png":
+{
+	"frame": {"x":1884,"y":2023,"w":50,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":22,"w":50,"h":24},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Items/MagicHammer.png":
 {
 	"frame": {"x":380,"y":2016,"w":63,"h":28},
@@ -978,7 +978,7 @@
 },
 "Game/Items/MistressKey.png":
 {
-	"frame": {"x":1761,"y":2023,"w":58,"h":19},
+	"frame": {"x":1824,"y":2023,"w":58,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":24,"w":58,"h":19},
@@ -1418,7 +1418,7 @@
 },
 "Game/Spells/ZeroResistance.png":
 {
-	"frame": {"x":537,"y":1667,"w":23,"h":40},
+	"frame": {"x":537,"y":1669,"w":23,"h":40},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":25,"y":16,"w":23,"h":40},
@@ -1530,7 +1530,7 @@
 },
 "Game/UI/Wait.png":
 {
-	"frame": {"x":537,"y":1667,"w":23,"h":40},
+	"frame": {"x":537,"y":1669,"w":23,"h":40},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":19,"y":10,"w":23,"h":40},
@@ -1576,6 +1576,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:b58cdf954f2c20e323d188aaf52119bb:386027cf0b448dcd621d2f9a4378ada6:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0997d2c25cc1760a74031e87ecc68f23:11dedc3655fb47963f7f388c864eaee8:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

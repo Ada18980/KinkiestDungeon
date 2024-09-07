@@ -33,6 +33,9 @@ TODO remove hogtie when released
 
 5.4-nightly5
 - Added directional wires (vertical, horizontal, endpoint)
+- fixed bug w/ opinion not updating on cuddle lounge pets when you revisit summit
+- fixed fighter break free ability
+- Changed rune graphics to be more consistent with the game
 
 5.4-nightly4
 - Fix issue with Commerce Goddes Rewards Program™ portals spawning on non-empty tiles

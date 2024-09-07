@@ -57,7 +57,7 @@ let KDTrapTypes = {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
 		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
-		tile.Type = "Furniture";
+		tile.Type = undefined;
 		KinkyDungeonMakeNoise(10, x, y);
 		return {
 			triggered: true,

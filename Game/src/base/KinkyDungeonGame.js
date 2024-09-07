@@ -637,6 +637,33 @@ function KDUnPackEnemies(data) {
 		}
 	}
 }
+
+/**
+ * Decompress persistent entities
+ * goes thru all entities on a map, and compares their current location according to persistent NPC record
+ * @param {number} Level
+ * @param {KDMapDataType} data
+ * @param {boolean} removeMissing - Remove enemies that are missing, i.e. their persistent NPC record says they are in another room
+ */
+function KDSyncPersistentEntities(Level, data, removeMissing = true) {
+	let newEntities = [];
+	for (let enemy of data.Entities) {
+		if (KDIsNPCPersistent(enemy.id)) {
+			let pers = KDGetPersistentNPC(enemy.id);
+			if (removeMissing && (pers.room != data.RoomType || pers.mapY != Level)) {
+				enemy = null;
+			} else {
+				enemy = pers.entity;
+			}
+		}
+		if (enemy)
+			newEntities.push(enemy)
+	}
+	let oldEntities = data.Entities;
+	data.Entities = newEntities;
+	oldEntities.splice(0, oldEntities.length);
+}
+
 /**
  * Decompress enemies
  * @param {entity} enemy
@@ -702,6 +729,7 @@ function KDLoadMapFromWorld(x, y, room, direction = 0, constantX, ignoreAware = 
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
 
 	// UnPack enemies
+	KDSyncPersistentEntities(y, NewMapData, true);
 	KDUnPackEnemies(NewMapData);
 
 	// Filter non-present enemies

@@ -2676,7 +2676,7 @@ const KDEventMapBuff = {
 	"beforeStruggleCalc": {
 		"BreakFree": (e, buff, entity, data) => {
 			if (data.struggleType == "Struggle")
-				data.escapePenalty -= e.power;
+				data.escapePenalty -= buff.power;
 		},
 		"latexIntegrationDebuff": (e, buff, entity, data) => {
 			if (data.restraint && (data.struggleType === "Struggle" || data.struggleType === "Remove") && KDRestraint(data.restraint).shrine.includes("Cyber")) {

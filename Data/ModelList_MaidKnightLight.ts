@@ -146,11 +146,12 @@ AddModel({
 	RemovePoses: ["EncaseTorsoUpper"],
 	Layers: ToLayerMap([
 		{ Name: "DressChest", Layer: "ShirtChest", Pri: 25,
-			InheritColor: "Top",
 			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
-			Invariant: true,
-			NoOverride: true,
+			HidePoses: ToMap(["EncaseTorsoUpper"]),
+			InheritColor: "Dress",
+			MorphPoses: {Front: "Boxtie", Crossed: "Boxtie"},
 		},
 	])
 });
@@ -248,6 +249,8 @@ AddModel({
 			DisplacementPosesExclude: ["Hogtie"],
 			ErasePosesExclude: ["Hogtie"],
 
+			NoAppendDisplacement: true,
+			NoAppendErase: true,
 			DisplacementSprite: "Heels2",
 			DisplaceAmount: 80,
 			DisplaceLayers: ToMap(["Heels"]),
@@ -277,6 +280,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 
+			NoAppendErase: true,
 			EraseInvariant: true,
 			EraseMorph: {Closed: "Closed"},
 			EraseSprite: "HeelsRightErase2",

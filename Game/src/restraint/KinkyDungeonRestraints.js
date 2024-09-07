@@ -1982,7 +1982,7 @@ function KDGetStruggleData(data) {
 	if (data.struggleType == "Remove" && !data.hasAffinity) minAmount = 0;
 
 
-	if (data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
+	if (data.upfrontWill && !KinkyDungeonHasHelp() && !KinkyDungeonHasWill(0.01, false)) {
 		data.escapePenalty += data.willEscapePenalty;
 		if (data.escapeChance - data.escapePenalty + data.willEscapePenalty > 0
 			&& data.escapeChance - data.escapePenalty < 0) {
@@ -2252,7 +2252,7 @@ function KDGetStruggleData(data) {
 		data.limitChance *= KDRestraint(data.restraint).limitMult[data.struggleType];
 
 
-	if (!data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
+	if (!data.upfrontWill && !KinkyDungeonHasHelp() && !KinkyDungeonHasWill(0.01, false)) {
 		data.limitChance += data.willEscapePenalty;
 		if (data.escapeChance - data.limitChance + data.willEscapePenalty > 0
 			&& data.escapeChance - data.limitChance < 0) {
@@ -2405,7 +2405,7 @@ function KinkyDungeonStruggle(struggleGroup, StruggleType, index, query = false,
 		toolMult: 1.0,
 		buffBonus: 0.0,
 		failSuffix: "",
-		buffMult: KinkyDungeonHasWill(0.01, false) ? 1.0 : 0.75,
+		buffMult: 1.0,
 		struggleTime: 1.0,
 		restriction: KDGameData.Restriction || 0,
 		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0),

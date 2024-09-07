@@ -816,8 +816,11 @@
             <key type="filename">../Game/EffectTiles/Water.png</key>
             <key type="filename">../Game/EffectTiles/WaterFrozen.png</key>
             <key type="filename">../Game/EffectTiles/Wire.png</key>
+            <key type="filename">../Game/EffectTiles/WireEnd.png</key>
+            <key type="filename">../Game/EffectTiles/WireHoriz.png</key>
             <key type="filename">../Game/EffectTiles/WireSparks.png</key>
             <key type="filename">../Game/EffectTiles/WireSparksAct.png</key>
+            <key type="filename">../Game/EffectTiles/WireVert.png</key>
             <key type="filename">../Game/Enemies/AcidBarrel.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Brat_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Dom_Fighter.png</key>
