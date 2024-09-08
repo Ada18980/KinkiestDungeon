@@ -1694,7 +1694,7 @@ const KinkyDungeonRestraints = [
 			Binder: {color: "DarkNeutral", override: true},
 		},
 		events: [
-			{trigger: "tick", type: "crystalDrain", power: -0.034, inheritLinked: true},
+			{trigger: "tick", type: "crystalDrain", power: -0.01, inheritLinked: true},
 			{trigger: "struggle", type: "crystalPunish"},
 		],
 		escapeChance: {"Struggle": 0.15, "Cut": 0.15, "Remove": 0.1, "Pick": 0.35},
@@ -4655,6 +4655,29 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region Obsidian
+	{inventory: true, removePrison: true, name: "ObsidianLeash",
+		debris: "Belts", tether: 2.9, Asset: "CollarLeash",
+		Color: "#44fF76", Group: "ItemNeckRestraints", leash: true, power: 3, weight: 10, harness: true,
+		Model: "Leash",
+		struggleBreak: true,
+		magic: true,
+		affinity: {
+			Cut: ["SharpHookOrFoot"],
+			Struggle: ["HookOrFoot"],
+		},
+		Filters: {
+			Leash: {"gamma":1,"saturation":0,"contrast":0.8166666666666667,"brightness":1.7166666666666666,"red":1.3833333333333333,"green":1,"blue":3.2666666666666666,"alpha":0.6833333333333333},
+		},
+		unlimited: true,
+		events: [
+			{trigger: "postRemoval", type: "RequireCollar"},
+		],
+		limitChance: {Struggle: 0.1, Cut: 0.1},
+		DefaultLock: "Purple",
+		escapeChance: {"Struggle": -0.35, "Cut": 0.05, "Remove": 0.4, "Pick": 0.35},
+		enemyTags: {"obsidianLeash":9, "obsidianRestraints": 10},
+		playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999},
+		minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
 
 	{inventory: true, name: "ObsidianGag", debris: "Chains", gag: 0.75, Asset: "MuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ["#1C1847", "#1C1847"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 9, weight: -4, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		Model: "GagMetalRiveted",
@@ -5997,7 +6020,7 @@ const KinkyDungeonRestraints = [
 
 	{removePrison: true, divine: true, name: "DivineCuffs", accessible: true, Asset: "FuturisticCuffs", LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable], DefaultLock: "Gold", Type: "Wrist", Color: ['#6AB0ED', '#AE915C', '#FFFFFF'], Group: "ItemArms", bindarms: true, power: 49, weight: 0,
 		Model: "DivineCuffsArms",
-		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather", "HogtieLower"]},
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather", "HogtieLower"]},
 
 	{inventory: true, arousalMode: true, name: "DivineBelt", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#D3B24B"], Group: "ItemPelvis", chastity: true,
 		power: 49, weight: 0,
@@ -6021,7 +6044,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger:"tryOrgasm",  type: "DivineBelt"},
 		],
-		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99},
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100},
+		DefaultLock: "Divine2",
 		enemyTags: {"divinebelt": 10}, playerTags: {}, minLevel: 0, allFloors: true,
 		shrine: ["Chastity", "Metal", "Latex", "Rope", "Leather", "ChastityBelts", "SupremeBelt"]},
 	{inventory: true, arousalMode: true, name: "DivineBelt2", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#D3B24B"], Group: "ItemPelvis", chastity: true,
@@ -6046,7 +6070,8 @@ const KinkyDungeonRestraints = [
 		events: [
 			{trigger:"tryOrgasm",  type: "DivineBelt2"},
 		],
-		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99},
+		DefaultLock: "Divine2",
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100},
 		enemyTags: {"divinebelt": 10}, playerTags: {}, minLevel: 0, allFloors: true,
 		shrine: ["Divine", "Chastity", "Metal", "Latex", "Rope", "Leather", "ChastityBelts", "SupremeBelt"]},
 
@@ -6062,7 +6087,8 @@ const KinkyDungeonRestraints = [
 		power: 49,
 		weight: 0,
 		Model: "DivineBra",
-		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {"divinebra": 10},
+		DefaultLock: "Divine2",
+		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": 1, Pick: -100}, enemyTags: {"divinebra": 10},
 		playerTags: {"FreeBoob": -1000}, minLevel: 0, allFloors: true, shrine: ["Divine", "Chastity", "Metal", "Latex", "Rope", "Leather", "ChastityBras", "SupremeBra"],
 		//LinkableBy: ["Ornate"],
 		events: [
@@ -6081,7 +6107,8 @@ const KinkyDungeonRestraints = [
 		power: 49,
 		weight: 0,
 		Model: "DivineBraRunic",
-		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {"divinebra": 10},
+		DefaultLock: "Divine2",
+		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": 1, Pick: -100}, enemyTags: {"divinebra": 10},
 		playerTags: {"FreeBoob": -1000}, minLevel: 0, allFloors: true, shrine: ["Divine", "Chastity", "Metal", "Latex", "Rope", "Leather", "ChastityBras", "SupremeBra"],
 		//LinkableBy: ["Ornate"],
 		events: [
@@ -6089,16 +6116,22 @@ const KinkyDungeonRestraints = [
 		],
 	},
 
-	{removePrison: true, divine: true, name: "DivineAnkleCuffs", accessible: true, Asset: "FuturisticAnkleCuffs", LinkableBy: [...KDBindable], DefaultLock: "Gold", Color: ['#AE915C', '#71D2EE', '#AE915C', '#000000'], Group: "ItemFeet", Type: "Closed", blockfeet: true, addTag: ["FeetLinked"],power: 49, weight: 0,
+	{removePrison: true, divine: true, name: "DivineAnkleCuffs", accessible: true, Asset: "FuturisticAnkleCuffs",
+		LinkableBy: [...KDBindable], DefaultLock: "Divine2", Color: ['#AE915C', '#71D2EE', '#AE915C', '#000000'],
+		Group: "ItemFeet", Type: "Closed", blockfeet: true, addTag: ["FeetLinked"],power: 49, weight: 0,
 		Model: "DivineCuffsAnkles",
-		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
-	{removePrison: true, divine: true, name: "DivineGag", accessible: true, gag: 0.9, Asset: "FuturisticMuzzle", Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Gold", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
+	{removePrison: true, divine: true, name: "DivineGag", accessible: true, gag: 0.9, Asset: "FuturisticMuzzle",
+		Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
+		Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Divine2", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
 		Model: "DivineGag", Link: "DivineMuzzle",
-		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
-	{removePrison: true, divine: true, name: "DivineMuzzle", accessible: true, gag: 0.6, Asset: "FuturisticMuzzle", Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Gold", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
+	{removePrison: true, divine: true, name: "DivineMuzzle", accessible: true, gag: 0.6, Asset: "FuturisticMuzzle",
+		Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
+		Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Divine2", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
 		Model: "DivineMuzzle",
 		Filters: {"Muzzle":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":0.7333333333333334,"red":2.283333333333333,"green":1.7333333333333334,"blue":1,"alpha":2.8000000000000003},"Harness":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":3.233333333333333,"red":1,"green":1,"blue":1,"alpha":1},"Collar":{"gamma":1,"saturation":1,"contrast":0.8166666666666667,"brightness":2.8666666666666667,"red":1,"green":1,"blue":1,"alpha":1},"Rim":{"gamma":1.8666666666666667,"saturation":1,"contrast":1,"brightness":3.1666666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
-		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": -99}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 12, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
+		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 12, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
 
 	{inventory: true, name: "BasicCollar", debris: "Belts", accessible: true, Asset: "LeatherCollar", Color: ["#000000", "Default"], Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 1, weight: 0, escapeChance: {"Struggle": -0.2, "Cut": 0.15, "Remove": 0.5, "Pick": 0.1},
 		Model: "LeatherCollar",
@@ -6894,9 +6927,10 @@ KDAddCuffVariants(
 	0,
 	{
 		Color: ["#a694cb", "#ff5277"],
+		DefaultLock: "Crystal",
 	},
 	[
-		{trigger: "tick", type: "crystalDrain", power: -0.034, inheritLinked: true},
+		{trigger: "tick", type: "crystalDrain", power: -0.01, inheritLinked: true},
 		{trigger: "struggle", type: "crystalPunish"},
 	],
 	{

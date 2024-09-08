@@ -153,6 +153,25 @@ function KDPearlRequirement() {
 	return has;
 }
 
+/**
+ * Returns whether or not the player meets a requirement for ANY pearl reward
+ * @returns {string[]}
+ */
+function KDGetBlessings() {
+	let blessings = [];
+	for (let rep of Object.entries(KinkyDungeonGoddessRep)) {
+		let rewards = KDBlessedRewards[rep[0]];
+		if (rewards) {
+			if (rep[1] > 45) {
+				blessings.push(rep[0]);
+				break;
+			}
+		}
+
+	}
+	return blessings;
+}
+
 function KinkyDungeonInitReputation() {
 	KinkyDungeonGoddessRep = {"Ghost" : -50, "Prisoner" : -50, "Frustration" : -50, "Passion" : -50};
 	for (let shrine in KinkyDungeonShrineBaseCosts) {

@@ -680,17 +680,19 @@ function KinkyDungeonMakeNoiseSignal(enemy, mult = 1, hideShockwave) {
 	data.radius *= mult;
 	data.radius += data.bonusafter;
 
-	for (let e of KDMapData.Entities) {
-		if ((!e.aware || e.idle) && (!e.action || e.action == "investigatesignal" || e.action == "investigatesound")
+	for (let e of KDNearbyEnemies(enemy.x, enemy.y, data.radius * 2)) {
+		if (e != enemy && (!e.aware || e.idle) && (!e.action || e.action == "investigatesignal" || e.action == "investigatesound")
 			&& !e.path
+			&& KDEnemyAction.investigatesignal.filter(e)
 			&& KDFactionAllied(KDGetFaction(enemy), KDGetFaction(e))
 			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
 			&& !e.Enemy.tags.deaf
 			&& !KDAmbushAI(e)
 			&& KDCanHearSound(e, data.radius, enemy.x, enemy.y)) {
-			e.gx = data.x;
-			e.gy = data.y;
+			e.gx = enemy.x;
+			e.gy = enemy.y;
 			e.action = "investigatesignal";
+			KinkyDungeonSetEnemyFlag(e, "");
 			KDAddThought(e.id, "Search", 2, 2 + 3*KDistEuclidean(e.x - data.x, e.y - data.y));
 			data.enemiesHeard.push(e);
 		}
@@ -735,6 +737,7 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY, hideShockwave, attachToEn
 			&& (KDHostile(e) || KDRandom() < 0.33)
 			&& (!e.Enemy.tags.peaceful || KDRandom() < 0.15)
 			&& !e.Enemy.tags.deaf
+			&& KDEnemyAction.investigatesound.filter(e)
 			&& !KDAmbushAI(e)
 			&& KDCanHearSound(e, data.radius, data.x, data.y)) {
 			e.gx = data.x;

@@ -15,6 +15,16 @@ let KDDrenched = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", aur
 ]};
 
 
+let KDAdrenaline = {
+	// Is a hell of a drug
+	id: "Adrenaline", type: "VisionRad", power: 0.5, duration: 2, tags: ["adren"],
+};
+
+let KDAdrenaline2 = {
+	// Is a hell of a drug
+	id: "Adrenaline2", type: "VisionRad", power: 2, duration: 2,
+};
+
 let KDBurning = {id: "Burning", type: "event", aura: "#ff8933", aurasprite: "Flaming", noAuraColor: true, power: 0.5, player: true, duration: 6, enemies: true, events: [
 	{type: "RemoveBurning", trigger: "tick"},
 	{type: "ElementalEffect", power: 0.5, damage: "fire", trigger: "tick"},

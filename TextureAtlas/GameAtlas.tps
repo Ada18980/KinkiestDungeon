@@ -816,8 +816,11 @@
             <key type="filename">../Game/EffectTiles/Water.png</key>
             <key type="filename">../Game/EffectTiles/WaterFrozen.png</key>
             <key type="filename">../Game/EffectTiles/Wire.png</key>
+            <key type="filename">../Game/EffectTiles/WireEnd.png</key>
+            <key type="filename">../Game/EffectTiles/WireHoriz.png</key>
             <key type="filename">../Game/EffectTiles/WireSparks.png</key>
             <key type="filename">../Game/EffectTiles/WireSparksAct.png</key>
+            <key type="filename">../Game/EffectTiles/WireVert.png</key>
             <key type="filename">../Game/Enemies/AcidBarrel.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Brat_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Dom_Fighter.png</key>
@@ -987,6 +990,7 @@
             <key type="filename">../Game/Enemies/Conjurer.png</key>
             <key type="filename">../Game/Enemies/ConjurerTickler.png</key>
             <key type="filename">../Game/Enemies/CorruptedAdventurer.png</key>
+            <key type="filename">../Game/Enemies/CuffedGirl.png</key>
             <key type="filename">../Game/Enemies/Cuffs.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
@@ -1276,6 +1280,7 @@
             <key type="filename">../Game/EnemiesBound/Conjurer.png</key>
             <key type="filename">../Game/EnemiesBound/ConjurerTickler.png</key>
             <key type="filename">../Game/EnemiesBound/CorruptedAdventurer.png</key>
+            <key type="filename">../Game/EnemiesBound/CuffedGirl.png</key>
             <key type="filename">../Game/EnemiesBound/Cyborg.png</key>
             <key type="filename">../Game/EnemiesBound/CyborgBerserker.png</key>
             <key type="filename">../Game/EnemiesBound/CyborgEnforcer.png</key>
@@ -2669,6 +2674,7 @@
             <key type="filename">../Game/Locks/Blind.png</key>
             <key type="filename">../Game/Locks/Blocked.png</key>
             <key type="filename">../Game/Locks/Blue.png</key>
+            <key type="filename">../Game/Locks/Crystal.png</key>
             <key type="filename">../Game/Locks/Curse.png</key>
             <key type="filename">../Game/Locks/Cyber.png</key>
             <key type="filename">../Game/Locks/Cyber2.png</key>
@@ -2677,6 +2683,7 @@
             <key type="filename">../Game/Locks/Divine.png</key>
             <key type="filename">../Game/Locks/Divine2.png</key>
             <key type="filename">../Game/Locks/Dollmaker.png</key>
+            <key type="filename">../Game/Locks/ExCrystal.png</key>
             <key type="filename">../Game/Locks/Fuuka.png</key>
             <key type="filename">../Game/Locks/Gold.png</key>
             <key type="filename">../Game/Locks/Grey.png</key>

@@ -2474,6 +2474,8 @@ interface KinkyDungeonSave {
 		dp: string,
 	}
 
+	KinkyDungeonCurrentTick: number,
+
 	errorloading: boolean,
 	modsmissing: boolean,
 
@@ -2616,7 +2618,7 @@ interface KDMapDataType {
 	Labels: Record<string, KDLabel[]>,
 
 	flags?: string[],
-	data: any,
+	data: Record<string, any>,
 
 	Regiments: Record<string, number>,
 
@@ -3416,6 +3418,7 @@ interface KDEnemyAction {
 	/** Enemy will sprint during this action */
 	sprint?: boolean;
 	end?: (enemy) => void;
+	filter?: (enemy) => boolean;
 	maintain: (enemy, delta) => boolean;
 }
 

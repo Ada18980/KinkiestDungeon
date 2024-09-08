@@ -441,6 +441,14 @@ function KinkyDungeonAggro(Enemy, Spell, Attacker, Faction) {
 				}
 			}
 		} else {
+			KinkyDungeonApplyBuffToEntity(Enemy, KDAdrenaline, {
+				duration: 4,
+				power: 0.8,
+			});
+			KinkyDungeonApplyBuffToEntity(Enemy, KDAdrenaline2, {
+				duration: 2,
+				power: 0.5,
+			});
 			if (Enemy && !Enemy.Enemy.allied) {
 				if (Enemy.vp) Enemy.vp = Math.min(2, Enemy.vp*2);
 				KinkyDungeonSetFlag("PlayerCombat", 8);

@@ -43,9 +43,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		enemyTags: [],
 
 		"traps": [],
-		"min_width" : 5,
+		"min_width" : 4,
 		"max_width" : 7,
-		"min_height" : 5,
+		"min_height" : 4,
 		"max_height" : 6,
 		"defeat_outfit": "Prisoner",
 		"shrines": [],
@@ -97,9 +97,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		enemyTags: [],
 
 		"traps": [],
-		"min_width" : 5,
+		"min_width" : 4,
 		"max_width" : 7,
-		"min_height" : 5,
+		"min_height" : 4,
 		"max_height" : 6,
 		"defeat_outfit": "Prisoner",
 		"shrines": [],
@@ -149,9 +149,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		tagModifiers: {},
 		enemyTags: ["bandit", "explosiveBarrel"],
 
-		"min_width" : 5,
+		"min_width" : 4,
 		"max_width" : 7,
-		"min_height" : 5,
+		"min_height" : 4,
 		"max_height" : 6,
 		"defeat_outfit": "Prisoner",
 
@@ -267,9 +267,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		factionList: ["Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce"],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
-		"min_height" : 6,
+		"min_height" : 5,
 		"max_height" : 7,
 		"defeat_outfit": "Prisoner",
 		"shrines": [
@@ -375,9 +375,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "SummonedSkeleton"},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
-		"min_height" : 6,
+		"min_height" : 5,
 		"max_height" : 7,
 
 		factionList: ["AncientRobot", "Bandit", "Apprentice", "Bountyhunter", "Bast", "Dragon", "Maidforce", "Alchemist"],
@@ -552,9 +552,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 7,
-		"min_height" : 6,
+		"min_height" : 5,
 		"max_height" : 7,
 
 		factionList: ["AncientRobot", "Nevermere", "Bandit", "Bountyhunter", "Elf", "Bast", "Dragon", "Maidforce", "Alchemist"],
@@ -672,14 +672,15 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "GreaterSkeleton"},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
-		"min_height" : 6,
+		"min_height" : 5,
 		"max_height" : 6,
 
 		factionList: ["Apprentice", "Bandit", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["skeleton", "temple", "ghost", "magical"],
+		enemyTags: ["skeleton", "temple", "ghost", "soul", "magical"],
+
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},
@@ -795,9 +796,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "MummyCursed"},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 7,
-		"min_height" : 6,
+		"min_height" : 5,
 		"max_height" : 8,
 
 		factionList: ["Bast", "Bandit", "AncientRobot", "Elemental", "Dragon"],
@@ -903,9 +904,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "BookBondage"},
 		],
 
-		"min_width" : 7,
+		"min_width" : 6,
 		"max_width" : 7,
-		"min_height" : 7,
+		"min_height" : 6,
 		"max_height" : 7,
 		deadend: 0.1,
 
@@ -1016,9 +1017,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
 		],
 
-		"min_width" : 5,
+		"min_width" : 4,
 		"max_width" : 6,
-		"min_height" : 6,
+		"min_height" : 4,
 		"max_height" : 8,
 
 		factionList: ["Nevermere", "Elf", "Bandit", "Apprentice", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
@@ -1131,9 +1132,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Poltergeist"},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
-		"min_height" : 6,
+		"min_height" : 5,
 		"max_height" : 8,
 
 		enemyTags: ["shadowcreature", "magical", "shadow", "elemental", "angel"],
@@ -1241,7 +1242,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
 		"min_height" : 4,
 		"max_height" : 4,
@@ -1340,7 +1341,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		"traps": [
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
 		"min_height" : 4,
 		"max_height" : 4,
@@ -1455,7 +1456,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 8,
 		"min_height" : 4,
 		"max_height" : 4,
@@ -1576,10 +1577,10 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		],
 
-		"min_width" : 7,
+		"min_width" : 4,
 		"max_width" : 9,
-		"min_height" : 5,
-		"max_height" : 5,
+		"min_height" : 4,
+		"max_height" : 9,
 		deadend: 0.5,
 
 		worldGenCode: () => {
@@ -1797,9 +1798,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Observer"},
 		],
 
-		"min_width" : 5,
+		"min_width" : 4,
 		"max_width" : 7,
-		"min_height" : 5,
+		"min_height" : 4,
 		"max_height" : 6,
 
 		factionList: ["Demon"],
@@ -1911,9 +1912,9 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Name: "SpecificSpell", Spell: "TrapLatexBall", Level: 0, Power: 3, Weight: 50},
 		],
 
-		"min_width" : 6,
+		"min_width" : 5,
 		"max_width" : 6,
-		"min_height" : 7,
+		"min_height" : 6,
 		"max_height" : 7,
 		deadend: .15,
 

@@ -68,6 +68,154 @@ let KDLocks = {
 		loot_special: false,
 		loot_locked: true,
 	},
+	"Crystal": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
+		},
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return false;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 2.0,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.5, // Multiplies the picking rate
+		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		canPick: (data) => {
+			return false;
+		},
+		doPick: (data) => {
+			return false;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return false;
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Knife",
+		canUnlock: (data) => {
+			return KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.25;
+		},
+		doUnlock: (data) => {
+			KinkyDungeonSendTextMessage(10, TextGet("KDCrystalUnlock"), "#ffff00", 2);
+			KinkyDungeonLock(data.item, "ExCrystal");
+			KinkyDungeonChangeDistraction(-1);
+			return false;
+		},
+		removeKeys: (data) => {
+
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+		penalty: {
+			"Struggle": 0.05,
+			"Cut": 0.1,
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
+	"ExCrystal": {
+		canNPCPass: (xx, yy, MapTile, Enemy) => {
+			return KDEnemyRank(Enemy) > 0 || Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
+		},
+		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return false;
+		},
+		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 1.5,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 1.5, // Multiplies the picking rate
+		pick_diff: -0.1, // Added to the item's pick difficulty
+
+		canPick: (data) => {
+			return true;
+		},
+		doPick: (data) => {
+			return true;
+		},
+		failPick: (data) => {
+			return "Fail";
+		},
+		breakChance: (data) => {
+			return KDRandom()*1.5 < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Red",
+		canUnlock: (data) => {
+			return KinkyDungeonRedKeys > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
+		},
+		doUnlock: (data) => {
+			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25) {
+				KinkyDungeonSendTextMessage(10, TextGet("KDCrystalLock"), "#ffff00", 2);
+				KinkyDungeonLock(data.item, "Crystal");
+				return false;
+			}
+			return true;
+		},
+		removeKeys: (data) => {
+			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonRedKeys > 0) {
+				KinkyDungeonRedKeys -= 1;
+				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), "lightgreen", 2);
+				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), 1);
+			} else if (!data?.unlock) {
+				if (KinkyDungeonRedKeys > 0) {
+					KinkyDungeonRedKeys -= 1;
+					KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+				} else if (KinkyDungeonInventoryGet("CuffKeys")) {
+					KinkyDungeonDropItem({name: "CuffKeys"}, KinkyDungeonPlayerEntity, true, true);
+					KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), -1);
+				}
+			}
+		},
+		failUnlock: (data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
 	"Cyber": {
 		specialActions: (tile, player) => {
 			KDCyberActions(tile, player, 20);
@@ -113,7 +261,9 @@ let KDLocks = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			return KDCyberUnlock(data, 20);
+			if (!data.NoEvent)
+				KDCyberUnlock(data, 20);
+			return true;
 		},
 		removeKeys: (data) => {
 
@@ -187,7 +337,9 @@ let KDLocks = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			return KDCyberUnlock(data, 50);
+			if (!data.NoEvent)
+				KDCyberUnlock(data, 50);
+			return true;
 		},
 		removeKeys: (data) => {
 
@@ -261,7 +413,9 @@ let KDLocks = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			return KDCyberUnlock(data, 150);
+			if (!data.NoEvent)
+				KDCyberUnlock(data, 150);
+			return true;
 		},
 		removeKeys: (data) => {
 

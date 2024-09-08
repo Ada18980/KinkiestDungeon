@@ -372,6 +372,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 	KDCurrentWorldSlot = {x: 0, y: 0};
 	KDUpdateChokes = true;
 	KDUpdateItemEventCache = true;
+	KinkyDungeonCurrentTick = 0;
 
 	if (StandalonePatched)
 		KDInitCurrentPose(true);
@@ -504,7 +505,7 @@ function KDGetMapSize(): number {
 	if (KinkyDungeonStatsChoice.get("MapLarge")) return 3;
 	if (KinkyDungeonStatsChoice.get("MapHuge")) return 6;
 	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 9;
-	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return 25;
+	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return 24;
 	return 0;
 }
 
@@ -600,6 +601,33 @@ function KDUnPackEnemies(data: KDMapDataType) {
 		}
 	}
 }
+
+/**
+ * Decompress persistent entities
+ * goes thru all entities on a map, and compares their current location according to persistent NPC record
+ * @param {number} Level
+ * @param {KDMapDataType} data
+ * @param {boolean} removeMissing - Remove enemies that are missing, i.e. their persistent NPC record says they are in another room
+ */
+function KDSyncPersistentEntities(Level, data, removeMissing = true) {
+	let newEntities = [];
+	for (let enemy of data.Entities) {
+		if (KDIsNPCPersistent(enemy.id)) {
+			let pers = KDGetPersistentNPC(enemy.id);
+			if (removeMissing && (pers.room != data.RoomType || pers.mapY != Level)) {
+				enemy = null;
+			} else {
+				enemy = pers.entity;
+			}
+		}
+		if (enemy)
+			newEntities.push(enemy);
+	}
+	let oldEntities = data.Entities;
+	data.Entities = newEntities;
+	oldEntities.splice(0, oldEntities.length);
+}
+
 /**
  * Decompress enemies
  * @param enemy
@@ -665,6 +693,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
 
 	// UnPack enemies
+	KDSyncPersistentEntities(y, NewMapData, true);
 	KDUnPackEnemies(NewMapData);
 
 	// Filter non-present enemies
@@ -946,13 +975,15 @@ function KinkyDungeonCreateMap (
 
 		// make it more consistent
 		let random = KDRandom();
-		let height = MapParams.min_height * 2 + 2*Math.floor(0.5*random * (MapParams.max_height * 2 - MapParams.min_height * 2));
-		let width = MapParams.min_width * 2 + 2*Math.floor(0.5*(1 - random) * (MapParams.max_width * 2 - MapParams.min_width * 2));
-
 		let mapSizeBonus = (!altType || altType.sizeBonus) ? KDGetMapSize() : 0;
+		let height = (MapParams.min_height) * 2 + Math.ceil(mapSizeBonus*0.5)
+			+ 2*Math.floor(0.5*random * (MapParams.max_height * 2 - MapParams.min_height * 2 + Math.floor(mapSizeBonus*0.5)));
+		let width = (MapParams.min_width) * 2 + Math.ceil(mapSizeBonus*0.5)
+			+ 2*Math.floor(0.5*(1 - random) * (MapParams.max_width * 2 - MapParams.min_width * 2 + Math.floor(mapSizeBonus*0.5)));
 
-		height = Math.max(2, height + mapSizeBonus);
-		width = Math.max(2, width + mapSizeBonus);
+
+		height = Math.max(2, height);
+		width = Math.max(2, width);
 
 		if (KDTileToTest) {
 			altType = alts.TestTile;
@@ -1854,7 +1885,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 			}
 		}
 
-		let playerDist = 6;
+		let playerDist = 9;
 		let PlayerEntity = KDMapData.StartPosition;
 
 		let spawnBox_filter = spawnBoxes.filter((bb) => {
@@ -3827,6 +3858,12 @@ function KinkyDungeonMazeWalls(Cell: any, Walls: GridEntry, WallsList: GridEntry
 	if (Walls[Cell.x + "," + (Cell.y-1)]) WallsList[Cell.x + "," + (Cell.y-1)] = {x:Cell.x, y:Cell.y-1};
 }
 
+/**
+ * @param X
+ * @param Y
+ * @param SetTo
+ * @param [VisitedRooms]
+ */
 function KinkyDungeonMapSet(X: number, Y: number, SetTo: string, VisitedRooms?: any[]): boolean {
 	let height = KDMapData.GridHeight;
 	let width = KDMapData.GridWidth;
@@ -3850,6 +3887,23 @@ function KinkyDungeonMapSetForce(X: number, Y: number, SetTo: string, VisitedRoo
 }
 
 
+/**
+ * @param data
+ * @param X
+ * @param Y
+ * @param SetTo
+ */
+function KinkyDungeonMapDataSet(data: KDMapDataType, X: number, Y: number, SetTo: string): boolean {
+	let height = data.GridHeight;
+	let width = data.GridWidth;
+
+	if (X > 0 && X < width-1 && Y > 0 && Y < height-1) {
+		data.Grid = data.Grid.replaceAt(X + Y*(width+1), SetTo);
+		return true;
+	}
+	return false;
+}
+
 function KinkyDungeonBoringGet(X: number, Y: number): number {
 	return KDMapExtraData.Boringness[X + Y*(KDMapData.GridWidth)];
 }
@@ -3862,11 +3916,25 @@ function KinkyDungeonBoringSet(X: number, Y: number, SetTo: number) {
 	return false;
 }
 
+/**
+ * @param X
+ * @param Y
+ */
 function KinkyDungeonMapGet(X: number, Y: number): string {
 	//let height = KDMapData.Grid.split('\n').length;
 	//let width = //KDMapData.Grid.split('\n')[0].length;
 
 	return KDMapData.Grid[X + Y*(KDMapData.GridWidth+1)];
+}
+/**
+ *
+ * @param {KDMapDataType} data
+ * @param {number} X
+ * @param {number} Y
+ * @returns {string}
+ */
+function KinkyDungeonMapDataGet(data, X, Y) {
+	return data.Grid[X + Y*(data.GridWidth+1)];
 }
 
 function KinkyDungeonVisionSet(X: number, Y: number, SetTo: number): boolean {
@@ -5344,6 +5412,16 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		if (KDEnemyHasFlag(en, "removeVuln")) {
 			en.vulnerable = 0;
 		}
+	}
+
+	if (delta > 0) {
+		KDTickMaps(
+			MiniGameKinkyDungeonLevel - KDMapTickRange,
+			MiniGameKinkyDungeonLevel + KDMapTickRange,
+			false,
+			true,
+			true
+		);
 	}
 
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});

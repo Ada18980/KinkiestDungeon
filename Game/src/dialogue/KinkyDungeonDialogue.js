@@ -1216,7 +1216,8 @@ function KDAllyDialogue(name, requireTags, requireSingleTag, excludeTags, weight
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker && enemy.Enemy.unlockCommandLevel > 0) {
 				return !KDHostile(enemy) && enemy.Enemy.bound && !enemy.Enemy.tags.nohelp && !KDHelpless(enemy)
-				&& !KDEnemyHasFlag(enemy, "NoHelpCommandWord") && !KDEnemyHasFlag(enemy, "commandword") && KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0;
+				&& !KDEnemyHasFlag(enemy, "NoHelpCommandWord") && !KDEnemyHasFlag(enemy, "commandword")
+				&& KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0;
 			}
 			return false;
 		},

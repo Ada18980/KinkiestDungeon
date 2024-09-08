@@ -1219,7 +1219,7 @@ let KDEventMapInventory = {
 			if (!data.delta) return;
 			if (e.power) {
 				KinkyDungeonChangeMana(e.power);
-				KinkyDungeonChangeDistraction(-e.power * 3 * KDBuffResist(KinkyDungeonPlayerBuffs, "soul"), false, 0.1);
+				KinkyDungeonChangeDistraction(-e.power * KDBuffResist(KinkyDungeonPlayerBuffs, "soul"), false, 0.1);
 				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), "lightblue", 2, true);
 			}
 		},
@@ -2676,7 +2676,7 @@ const KDEventMapBuff = {
 	"beforeStruggleCalc": {
 		"BreakFree": (e, buff, entity, data) => {
 			if (data.struggleType == "Struggle")
-				data.escapePenalty -= e.power;
+				data.escapePenalty -= buff.power;
 		},
 		"latexIntegrationDebuff": (e, buff, entity, data) => {
 			if (data.restraint && (data.struggleType === "Struggle" || data.struggleType === "Remove") && KDRestraint(data.restraint).shrine.includes("Cyber")) {

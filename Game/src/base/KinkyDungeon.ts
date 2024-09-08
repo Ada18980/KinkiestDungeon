@@ -1160,11 +1160,19 @@ function KinkyDungeonLoad(): void {
 			}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 			DrawButtonKDEx("GameStart", () => {
 				KinkyDungeonState = "Name";
-				if (KDSaveSlot < 1) KDSaveSlot = 1;
+				let emptySlot = undefined;
+				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 				for (var i = 1; i < 5; i++) {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
+						let decoded = LZString.decompressFromBase64(code);
+						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName) loadedsaveNames[num - 1] =
+							JSON.parse(decoded)?.KDGameData?.PlayerName;
+						if (!emptySlot && !code) {
+							emptySlot = num;
+							KDSaveSlot = emptySlot;
+						}
 					});
 				}
 				return true;
@@ -1598,11 +1606,20 @@ function KinkyDungeonRun() {
 		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
 			KinkyDungeonState = "Name";
-			if (KDSaveSlot < 1) KDSaveSlot = 1;
+			let emptySlot = undefined;
 			for (var i = 1; i < 5; i++) {
 				let num = (i);
 				KinkyDungeonDBLoad(num).then((code) => {
 					loadedsaveslots[num - 1] = code;
+					let decoded = LZString.decompressFromBase64(code);
+					if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName) loadedsaveNames[num - 1] =
+						JSON.parse(decoded)?.KDGameData?.PlayerName;
+					if (!emptySlot && !code) {
+						emptySlot = num;
+						KDSaveSlot = emptySlot;
+					}
+					if (!emptySlot)
+						KDSaveSlot = num;
 				});
 			}
 			return true;
@@ -2503,7 +2520,9 @@ function KinkyDungeonRun() {
 		let danger = false;
 		if (loadedsaveslots[KDSaveSlot-1]) {
 			danger = true;
-			DrawTextFitKD(TextGet("KDWillOverride"), 1680, 585, 360, "#ff5555", undefined, 36);
+			DrawTextFitKD(TextGet("KDWillOverride").replace("NME",
+				loadedsaveNames[KDSaveSlot-1] ? loadedsaveNames[KDSaveSlot-1] : ""
+			), 1550, 585, 440, "#ff5555", undefined, 36, "left");
 		} else {
 			KDConfirmDeleteSave = false;
 		}
@@ -4054,8 +4073,10 @@ function KinkyDungeonDBDelete(saveslot: number) {
 let LoadMenuCurrentSave: string;
 let LoadMenuCurrentSlot: number;
 let loadedsaveslots: string[] = [];
+let loadedsaveNames: string[] = [];
 for (let i = 0; i < maxSaveSlots; i++) {
 	loadedsaveslots.push(null);
+	loadedsaveNames.push("");
 }
 
 let loadedSaveforPreview: KinkyDungeonSave = null;
@@ -4642,6 +4663,8 @@ function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
 			{
 				returndata.errorloading = false;
 				returndata.modsmissing = false;
+
+				if (saveData.KinkyDungeonCurrentTick) returndata.KinkyDungeonCurrentTick = saveData.KinkyDungeonCurrentTick;
 
 				// No need for this?
 				//if (saveData.flags && saveData.flags.length) returndata.flags = new Map(saveData.flags);
@@ -5564,6 +5587,8 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	save.consumableVariants = KinkyDungeonConsumableVariants;
 	save.uniqueHits = Array.from(KDUniqueBulletHits);
 
+	save.KinkyDungeonCurrentTick = KinkyDungeonCurrentTick;
+
 	save.saveStat = {
 		appearance: JSON.parse(JSON.stringify(KinkyDungeonPlayer.Appearance)),
 		default: JSON.parse(JSON.stringify(KDGetDressList().Default)),
@@ -5683,6 +5708,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			KinkyDungeonCurrentDress = saveData.dress;
 			KDGameData.KinkyDungeonSpawnJailers = 0;
 			KDGameData.KinkyDungeonSpawnJailersMax = 0;
+			if (saveData.KinkyDungeonCurrentTick) KinkyDungeonCurrentTick = saveData.KinkyDungeonCurrentTick;
 			if (saveData.seed) KDsetSeed(saveData.seed);
 			if (saveData.pcosts) KinkyDungeonPenanceCosts = saveData.pcosts;
 			if (saveData.choices) KinkyDungeonSpellChoices = saveData.choices;
