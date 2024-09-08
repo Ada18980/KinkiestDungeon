@@ -33,7 +33,7 @@
         "Game/src/item/KDEnchant.js",
         "Game/src/enemy/KDAIList.js",
         "Game/src/enemy/KDLoadoutList.js",
-        "Game/src/restraint/KDApplyVariants.js",
+        "Game/src/restraint/KDApplyVariants.ts",
         "Game/src/item/KDInventoryActions.js",
         "Game/src/player/KinkyDungeonStats.js",
         "Game/src/player/KDTraining.js",

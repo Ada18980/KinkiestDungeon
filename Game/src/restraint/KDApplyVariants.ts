@@ -1,9 +1,6 @@
 "use strict";
 
-/**
- * @type {Record<string, ApplyVariant>}
- */
-let KDApplyVariants = {
+let KDApplyVariants: Record<string, ApplyVariant> = {
 	"AntiMagic": {
 		minfloor: 0,
 		//maxfloor: 0,
