@@ -2,18 +2,15 @@
 
 
 
-/**
- * @type {Record<string, KDLockType>}
- */
-let KDLocks = {
+let KDLocks: Record<string, KDLockType> = {
 	"Rubber": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.rubber || Enemy?.Enemy?.tags.slime || Enemy?.Enemy?.tags.latex;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -24,37 +21,37 @@ let KDLocks = {
 		pick_speed: 1.5, // Multiplies the picking rate
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return false;
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Knife",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonGetAffinity(false, "Sharp");
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -69,13 +66,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Crystal": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -86,23 +83,23 @@ let KDLocks = {
 		pick_speed: 1.5, // Multiplies the picking rate
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return false;
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Knife",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.25;
 		},
 		doUnlock: (data) => {
@@ -111,10 +108,10 @@ let KDLocks = {
 			KinkyDungeonChangeDistraction(-1);
 			return false;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 		penalty: {
@@ -123,7 +120,7 @@ let KDLocks = {
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -138,13 +135,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"ExCrystal": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 0 || Enemy?.Enemy?.tags.crystal || Enemy?.Enemy?.tags.chaos || Enemy?.Enemy?.tags.elemental;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -155,23 +152,23 @@ let KDLocks = {
 		pick_speed: 1.5, // Multiplies the picking rate
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return true;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom()*1.5 < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
 		},
 		doUnlock: (data) => {
@@ -197,12 +194,12 @@ let KDLocks = {
 				}
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -220,14 +217,14 @@ let KDLocks = {
 		specialActions: (tile, player) => {
 			KDCyberActions(tile, player, 20);
 		},
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
 		},
 
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -240,23 +237,23 @@ let KDLocks = {
 
 		hackPick: true,
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return false;
 		},
 
 		// Key
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "KeyCard",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonInventoryGet("KeyCard") != undefined;
 		},
 		unlock_diff: -1.0,
@@ -265,15 +262,15 @@ let KDLocks = {
 				KDCyberUnlock(data, 20);
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -291,14 +288,14 @@ let KDLocks = {
 		specialActions: (tile, player) => {
 			KDCyberActions(tile, player, 50);
 		},
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
 		},
 
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -316,23 +313,23 @@ let KDLocks = {
 			"Cut": 0.2,
 		},
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return false;
 		},
 
 		// Key
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "KeyCard",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonInventoryGet("KeyCard") != undefined;
 		},
 		unlock_diff: -1.0,
@@ -341,15 +338,15 @@ let KDLocks = {
 				KDCyberUnlock(data, 50);
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -367,14 +364,14 @@ let KDLocks = {
 		specialActions: (tile, player) => {
 			KDCyberActions(tile, player, 150);
 		},
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || Enemy?.Enemy?.tags.dollsmith || Enemy?.Enemy?.tags.cyberaccess || KDEnemyHasFlag(Enemy, "cyberaccess");
 		},
 
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -392,23 +389,23 @@ let KDLocks = {
 
 		hackPick: true,
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return false;
 		},
 
 		// Key
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "KeyCard",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonInventoryGet("KeyCard") != undefined;
 		},
 		unlock_diff: -1.0,
@@ -417,15 +414,15 @@ let KDLocks = {
 				KDCyberUnlock(data, 150);
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -440,13 +437,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"White": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 0;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type) => {
+		filter: (_Guaranteed, Floor, _AllowGold, _Type) => {
 			return Floor < 11;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type) => {
 			return Math.max(10, 100 - Floor * 10);
 		},
 
@@ -457,26 +454,26 @@ let KDLocks = {
 		pick_speed: 1.5, // Multiplies the picking rate
 		pick_diff: -0.1, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return true;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom()*1.5 < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
 		removeKeys: (data) => {
@@ -494,12 +491,12 @@ let KDLocks = {
 				}
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -514,13 +511,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 1;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return true;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 50;
 		},
 
@@ -531,26 +528,26 @@ let KDLocks = {
 		pick_speed: 1.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return true;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 
 			return true;
 		},
@@ -560,12 +557,12 @@ let KDLocks = {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -580,13 +577,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red_Med": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 1;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return true;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return 15 + Floor * 3;
 		},
 
@@ -598,26 +595,26 @@ let KDLocks = {
 		pick_diff: 0.0, // Added to the item's pick difficulty
 		pick_lim: 0.15, // Added to the item's pick limitchance
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return true;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 
 			return true;
 		},
@@ -627,12 +624,12 @@ let KDLocks = {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -647,13 +644,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Red_Hi": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 1;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return true;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return 15 + Floor * 3;
 		},
 
@@ -665,26 +662,26 @@ let KDLocks = {
 		pick_diff: 0.0, // Added to the item's pick difficulty
 		pick_lim: 0.3, // Added to the item's pick limitchance
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return true;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 
 			return true;
 		},
@@ -694,12 +691,12 @@ let KDLocks = {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -714,13 +711,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"HiSec": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 2;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return Floor > 2;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return 16 + Floor * 4;
 		},
 
@@ -732,26 +729,26 @@ let KDLocks = {
 		pick_diff: -1.0, // Added to the item's pick difficulty
 		pick_lim: 1.0, // Added to the item's pick limitchance
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return true;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 
 			return true;
 		},
@@ -761,12 +758,12 @@ let KDLocks = {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -781,13 +778,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Disc": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 2;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return Floor > 1;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return 20 + Floor * 5;
 		},
 
@@ -799,28 +796,28 @@ let KDLocks = {
 		pick_diff: -0.25, // Added to the item's pick difficulty
 		pick_lim: 0.3, // Added to the item's pick limitchance
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			let pick = KinkyDungeonInventoryGet("DiscPick");
 			//if (!data.noMsg) KinkyDungeonSendTextMessage(10, TextGet("KDNeedDiscPick"), "#ffffff", 2, true);
 			return pick != undefined;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return true;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonRedKeys > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 
 			return true;
 		},
@@ -830,12 +827,12 @@ let KDLocks = {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -850,13 +847,13 @@ let KDLocks = {
 		loot_locked: true,
 	},
 	"Blue": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 3 || (Enemy?.Enemy?.unlockCommandLevel > 1 && KDEnemyCanTalk(Enemy));
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, Floor, _AllowGold, Type, _Data) => {
 			return Type != "Door" && Floor > 4;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return 8 * Floor - 30;
 		},
 
@@ -872,26 +869,26 @@ let KDLocks = {
 		pick_speed: 0.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Break";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return true;
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Blue",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonBlueKeys > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
 		removeKeys: (data) => {
@@ -900,12 +897,12 @@ let KDLocks = {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -920,13 +917,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Gold": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 3 || Enemy?.Enemy?.tags.robot || Enemy?.Enemy?.tags.cyborg || (Enemy?.Enemy?.unlockCommandLevel > 2 && KDEnemyCanTalk(Enemy));
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, Floor, AllowGold, _Type, _Data) => {
 			return AllowGold && Floor > 10;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
 			return 2 * Floor - 15;
 		},
 
@@ -942,26 +939,26 @@ let KDLocks = {
 		pick_speed: 0.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Break";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return true;
 		},
 
 		// Key
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Mistress",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return KinkyDungeonItemCount("MistressKey") > 0;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
 		removeKeys: (data) => {
@@ -970,7 +967,7 @@ let KDLocks = {
 			}
 			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("MistressKey"), -1);
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
@@ -981,7 +978,7 @@ let KDLocks = {
 			}
 		},
 		// Start of level -- for gold locks and others
-		levelStart: (item, data) => {
+		levelStart: (item) => {
 			if ((MiniGameKinkyDungeonLevel >= item.data?.lockTimer || !item.data?.lockTimer || item.data?.lockTimer >= KinkyDungeonMaxLevel)) {
 				KinkyDungeonLock(item, "Blue");
 				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonGoldLockRemove"), "yellow", 2);
@@ -1000,13 +997,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Divine": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 4 || Enemy?.Enemy?.tags.angel || Enemy?.Enemy?.tags.holy;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -1022,37 +1019,37 @@ let KDLocks = {
 		pick_speed: 0.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Break";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return true;
 		},
 
 		// Key
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Blue",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return false;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 			//
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks and others
-		levelStart: (item) => {
+		levelStart: (_item) => {
 			KinkyDungeonSendTextMessage(8, TextGet("KDDivineLockReminder"), "#ffff44", 2, false, true);
 		},
 		shrineImmune: true,
@@ -1068,13 +1065,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Divine2": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 4 || Enemy?.Enemy?.tags.angel || Enemy?.Enemy?.tags.holy;
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return false;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return 0;
 		},
 
@@ -1090,37 +1087,37 @@ let KDLocks = {
 		pick_speed: 0.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Break";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return true;
 		},
 
 		// Key
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Blue",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return false;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 			//
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks and others
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: true,
 
@@ -1135,13 +1132,13 @@ let KDLocks = {
 		loot_locked: false,
 	},
 	"Purple": {
-		canNPCPass: (xx, yy, MapTile, Enemy) => {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 3 || (Enemy?.Enemy?.unlockCommandLevel > 0 &&KDEnemyCanTalk(Enemy));
 		},
-		filter: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		filter: (_Guaranteed, _Floor, _AllowGold, _Type, _Data) => {
 			return true;
 		},
-		weight: (Guaranteed, Floor, AllowGold, Type, Data) => {
+		weight: (_Guaranteed, _Floor, _AllowGold, _Type, Data) => {
 			return 30 + 30 * (Data?.enemy?.Enemy.unlockCommandLevel > 0 ? Data?.enemy?.Enemy.unlockCommandLevel : (Data?.enemy ? -1 : 0));
 		},
 
@@ -1153,37 +1150,37 @@ let KDLocks = {
 		pick_speed: 0.0, // Multiplies the picking rate
 		pick_diff: 0.0, // Added to the item's pick difficulty
 
-		canPick: (data) => {
+		canPick: (_data) => {
 			return false;
 		},
-		doPick: (data) => {
+		doPick: (_data) => {
 			return false;
 		},
-		failPick: (data) => {
+		failPick: (_data) => {
 			return "Fail";
 		},
-		breakChance: (data) => {
+		breakChance: (_data) => {
 			return false;
 		},
 
 		// Key
 		unlockable: false, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Blue",
-		canUnlock: (data) => {
+		canUnlock: (_data) => {
 			return false;
 		},
-		doUnlock: (data) => {
+		doUnlock: (_data) => {
 			return true;
 		},
-		removeKeys: (data) => {
+		removeKeys: (_data) => {
 			//
 		},
-		failUnlock: (data) => {
+		failUnlock: (_data) => {
 			return "Fail";
 		},
 
 		// Start of level -- for gold locks
-		levelStart: (item) => {
+		levelStart: (_item) => {
 		},
 		shrineImmune: false,
 
@@ -1200,11 +1197,9 @@ let KDLocks = {
 };
 
 /**
- *
- * @param {entity} player
  * @returns {boolean}
  */
-function KDCyberHostile(player) {
+function KDCyberHostile(player: entity): boolean {
 	let faction = player.player ? "Player" : KDGetFaction(player);
 	if (faction == "Player") {
 		return KDGameData.HostileFactions.includes("AncientRobot") || (
@@ -1215,11 +1210,9 @@ function KDCyberHostile(player) {
 }
 
 /**
- *
- * @param {entity} player
- * @returns {boolean}
+ * @param player
  */
-function KDCyberAccess(player) {
+function KDCyberAccess(player: entity): boolean {
 	let faction = player.player ? "Player" : KDGetFaction(player);
 	if (faction == "Player") {
 		return !KDGameData.HostileFactions.includes("AncientRobot")
@@ -1231,26 +1224,22 @@ function KDCyberAccess(player) {
 }
 
 /**
- *
- * @param {entity} player
- * @returns {boolean}
+ * @param player
  */
-function KDCyberLink(player) {
+function KDCyberLink(player: entity): boolean {
 	if (player.player) {
 		return KinkyDungeonPlayerTags.get("CyberLink") || KinkyDungeonFlags.get("CyberLink");
 	}
 	return player.Enemy?.tags.cyberlink;
 }
 /**
- *
- * @param {entity} player
- * @returns {boolean}
+ * @param player
  */
-function KDTryHack(player) {
+function KDTryHack(player: entity): boolean {
 	return KDRandom() < (KDCyberLink(player) ? 0.5 : 0);
 }
 
-function KDCyberUnlock(data, base = 20) {
+function KDCyberUnlock(data: any, base: number = 20): boolean {
 	KDLockoutGain(KinkyDungeonPlayerEntity, data, base);
 	KDGameData.LockoutChance = Math.min((KDGameData.LockoutChance || 0) + data.lockoutgain, 1);
 	if (KDLockoutChance(KinkyDungeonPlayerEntity) >= 0.99) {
@@ -1268,7 +1257,7 @@ function KDCyberUnlock(data, base = 20) {
 	return true;
 }
 
-function KDCyberActions(data, player, base) {
+function KDCyberActions(_data: any, player: entity, base: number) {
 	DrawButtonKDEx("ModalDoorSwipe", () => {
 		KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation, base: base});
 		return true;

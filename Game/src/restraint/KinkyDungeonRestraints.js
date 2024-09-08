@@ -5983,6 +5983,7 @@ function KDLockoutChance(player) {
  *
  * @param {entity} player
  * @param {any} data
+ * @param {number} [base]
  * @returns {void}
  */
 function KDLockoutGain(player, data, base = 20) {
