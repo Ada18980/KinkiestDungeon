@@ -277,9 +277,22 @@ function KDIsHopeless(enemy) {
 	return enemy && !enemy.player && (enemy.boundLevel > KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
 }
 
+function KDEnemyVisionRadius(enemy) {
+	let data = {
+		enemy: enemy,
+		radius: enemy.Enemy.visionRadius || 2,
+		mult: KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(enemy, "VisionRad")),
+		bonusBefore: 0.0,
+		bonusAfter: 0.0,
+	};
+	KinkyDungeonSendEvent("calcEnemyVision", data);
+
+	return (data.bonusBefore + data.radius) * data.mult + data.bonusAfter;
+}
+
 function KinkyDungeonNearestPlayer(enemy, requireVision, decoy, visionRadius, AI_Data) {
 	if (enemy && enemy.Enemy && !visionRadius) {
-		visionRadius = enemy.Enemy.visionRadius;
+		visionRadius = KDEnemyVisionRadius(enemy);
 		if (enemy.blind && !enemy.aware) visionRadius = 1.5;
 	}
 	if (decoy) {
@@ -3544,7 +3557,7 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 				// Delete the enemy
 				if (KinkyDungeonEnemyCheckHP(enemy, E)) { E -= 1; continue;}
 
-				let player = (!KinkyDungeonAngel()) ? KinkyDungeonNearestPlayer(enemy, false, true, enemy.Enemy.visionRadius ? (enemy.Enemy.visionRadius + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0, AIData) : KinkyDungeonPlayerEntity;
+				let player = (!KinkyDungeonAngel()) ? KinkyDungeonNearestPlayer(enemy, false, true, enemy.Enemy.visionRadius ? (KDEnemyVisionRadius(enemy) + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0, AIData) : KinkyDungeonPlayerEntity;
 				if (player) {
 					if (player.player) KinkyDungeonSetEnemyFlag(enemy, "targ_player", 1);
 					else if (KDGetFaction(player) == "Player") KinkyDungeonSetEnemyFlag(enemy, "targ_ally", 1);
@@ -3625,8 +3638,9 @@ function KinkyDungeonUpdateEnemies(maindelta, Allied) {
 
 					if (idle && enemy.hp > 0) {
 						if (KDCanIdleFidget(enemy)) {
-							let checkX = enemy.flip ? enemy.x + 3 : enemy.x - 3;
-							if (KinkyDungeonCheckPath(enemy.x, enemy.y, checkX, enemy.y, true, true, 1)) {
+							let checkX = enemy.flip ? enemy.x - 3 : enemy.x + 3;
+							if (KDRandom() < 0.1
+								|| KinkyDungeonCheckPath(enemy.x, enemy.y, checkX, enemy.y, true, true, 1)) {
 								enemy.flip = !enemy.flip;
 								KinkyDungeonSetEnemyFlag(enemy, "fidget", 10);
 							}
@@ -3985,7 +3999,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	AIData.ignore = false;
 	AIData.visionMod = visionMod;
 	AIData.followRange = enemy.Enemy.followRange == 1 ? 1.5 : enemy.Enemy.followRange;
-	AIData.visionRadius = enemy.Enemy.visionRadius ? (enemy.Enemy.visionRadius + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0;
+	AIData.visionRadius = enemy.Enemy.visionRadius ? (KDEnemyVisionRadius(enemy) + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0;
 	AIData.visionRadius = Math.max(1.5, AIData.visionRadius + KinkyDungeonGetBuffedStat(enemy.buffs, "Vision"));
 	let AIType = KDAIType[enemy.AI ? enemy.AI : enemy.Enemy.AI];
 	if (AIData.visionMod && AIData.visionRadius > 1.5) AIData.visionRadius = Math.max(1.5, AIData.visionRadius * AIData.visionMod);
@@ -4263,7 +4277,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 	if (AIData.playerDist < 1.5) AIData.playChance += 0.1;
 
 
-	if (AIData.playerDist < enemy.Enemy.visionRadius / 2) AIData.playChance += 0.1;
+	if (AIData.playerDist < AIData.visionRadius / 2) AIData.playChance += 0.1;
 	if (AIData.playerDist < 1.5) AIData.playChance += 0.3;
 
 	if (KDAllied(enemy) || (!AIData.hostile && KDGameData.PrisonerState != "jail" && KDGameData.PrisonerState != "parole" && !KinkyDungeonStatsChoice.has("Submissive"))) AIData.playChance *= 0.07; // Drastically reduced chance to play if not hostile
@@ -4444,6 +4458,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	if (enemy.vp > 0.2 && (!KDForcedToGround() && KinkyDungeonCanStand())) AIData.sneakMult += 0.1;
 	if (enemy.vp > 0.5 && (!KDForcedToGround() && KinkyDungeonCanStand())) AIData.sneakMult += 0.3;
+
+	AIData.sneakMult *= KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(enemy, "sneakMult"));
 
 	let sneakPerc = (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer || AIData.canSeePlayerChase) ?
 		KinkyDungeonTrackSneak(enemy, delta * (AIData.sneakMult), player, (AIData.canSeePlayerClose) ? 0 : (enemy.Enemy.tags.darkvision ? 0.5 : 1.5))
@@ -8646,7 +8662,9 @@ function KDGetUnassignedGuardTiles(type = "Patrol", ignoreNegative = false) {
  * @returns {boolean}
  */
 function KDCanIdleFidget(enemy) {
-	return enemy?.idle && !enemy.Enemy?.nonDirectional && !enemy.Enemy?.tags?.nofidget && !KDEnemyHasFlag(enemy, "fidget") && !KDEnemyHasFlag(enemy, "nofidget");
+	return enemy?.idle && !enemy.Enemy?.nonDirectional && !enemy.Enemy?.tags?.nofidget
+		&& (!KDEnemyHasFlag(enemy, "fidget") || KDEntityHasBuffTags(enemy, "adren"))
+		&& !KDEnemyHasFlag(enemy, "nofidget");
 }
 
 function KDRescueRepGain(en) {

@@ -33,9 +33,10 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				// Readd
 				for (let i = 0; i < 2; i++) // To bruteforce conditions
 					for (let inv of Object.entries(restraints)) {
+						let hasInv = (KinkyDungeonInventoryGetSafe(inv[1].name)
+							&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0);
 						if (
-							(KinkyDungeonInventoryGetSafe(inv[1].name)
-								&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)
+							hasInv
 							|| (KDGenericRestraintRawCache[inv[1].name]
 								&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
 									> KDGenericRestraintRawCache[inv[1].name].count
@@ -56,8 +57,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 								npc: value.id,
 								player: KDPlayer().id,
 							})) {
-								if (!(KinkyDungeonInventoryGetSafe(inv[1].name)
-									&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)) {
+								if (!hasInv) {
 									KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
 									-= KDGenericRestraintRawCache[inv[1].name].count;
 									if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
@@ -143,9 +143,10 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				if (restraints) {
 					for (let i = 0; i < 2; i++) // To bruteforce conditions
 						for (let inv of Object.entries(restraints)) {
+							let hasInv = (KinkyDungeonInventoryGetSafe(inv[1].name)
+								&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0);
 							if (
-								(KinkyDungeonInventoryGetSafe(inv[1].name)
-									&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)
+								hasInv
 								|| (KDGenericRestraintRawCache[inv[1].name]
 									&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
 										> KDGenericRestraintRawCache[inv[1].name].count
@@ -166,8 +167,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 									npc: value.id,
 									player: KDPlayer().id,
 								})) {
-									if (!(KinkyDungeonInventoryGetSafe(inv[1].name)
-										&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)) {
+									if (!hasInv) {
 										KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
 										-= KDGenericRestraintRawCache[inv[1].name].count;
 										if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity

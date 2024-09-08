@@ -620,18 +620,23 @@ function KinkyDungeonLock(item, lock, NoEvent = false, Link = false, pick = fals
 			item.pickProgress = 0;
 		}
 	} else {
-		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock) KDLocks[item.lock].doUnlock({item: item, link: Link, unlock: !pick, pick: pick});
-		item.lock = lock;
-		if (!NoEvent) {
-			if (item.events) {
-				for (let e of item.events) {
-					if (e.trigger == "postUnlock" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-						KinkyDungeonHandleInventoryEvent("postUnlock", e, item, {item: item, id: KinkyDungeonGetItemID()});
+		let cancel = false;
+		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock)
+			cancel = !KDLocks[item.lock].doUnlock({item: item, link: Link, unlock: !pick, pick: pick, NoEvent: NoEvent});
+		if (!cancel) {
+			item.lock = lock;
+			if (!NoEvent) {
+				if (item.events) {
+					for (let e of item.events) {
+						if (e.trigger == "postUnlock" && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+							KinkyDungeonHandleInventoryEvent("postUnlock", e, item, {item: item, id: KinkyDungeonGetItemID()});
+						}
 					}
 				}
+				KinkyDungeonSendEvent("postUnlock", {item: item});
 			}
-			KinkyDungeonSendEvent("postUnlock", {item: item});
 		}
+
 
 	}
 
@@ -898,7 +903,7 @@ function KinkyDungeonUnlockRestraintsWithShrine(shrine) {
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (item.lock && !KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine) && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && KDLocks[item.lock] && !KDLocks[item.lock]?.shrineImmune) {
 
-			KinkyDungeonLock(item, "");
+			KinkyDungeonLock(item, "", true);
 			count++;
 		}
 	}

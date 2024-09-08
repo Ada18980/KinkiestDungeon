@@ -420,11 +420,11 @@ KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Qu
 
 
 KinkyDungeonStatMapLarge,"Expansive Halls"
-KinkyDungeonStatDescMapLarge,"Increases the size of maps by 2 in the long dimension. Maps will be less dense."
+KinkyDungeonStatDescMapLarge,"Increases the size of maps by 3 in the long dimension. Maps will be less dense."
 KinkyDungeonStatMapHuge,"Gargantuan Halls"
-KinkyDungeonStatDescMapHuge,"Increases the size of maps by 4 in the long dimension. Maps will have a mix of tunnels and dead ends."
+KinkyDungeonStatDescMapHuge,"Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends."
 KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
-KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 6 in the long dimension. Maps will be mostly tunnels."
+KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels."
 KinkyDungeonStatMapAbsurd,"Absurdly Huge Maps"
 KinkyDungeonStatDescMapAbsurd,"(Experimental) Make the maps really really big. Probably breaks the game."
 
@@ -3085,6 +3085,9 @@ KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security featur
 
 KinkyDungeonStruggleCantPickCrystalLock,"The lock is encased in magical crystals that block the keyhole."
 KinkyDungeonStruggleUnlockNoCrystalKey,"Your distraction makes the crystals regrow immediately after breaking them off."
+
+KinkyDungeonStruggleCantPickExCrystalLock,"The crystal fragments in the lock make it difficult to pick."
+KinkyDungeonStruggleUnlockNoExCrystalKey,"You need a key to actually unlock the ex-crystallized lock."
 
 KinkyDungeonStruggleUnlockJammed,"The key sticks in the lock and jams, mangling the key!"
 
@@ -24634,3 +24637,13 @@ KDPenalty," penalty"
 
 KinkyDungeonCurseStruggleMistressKeyQuakeCollar,"You put it on, why would you want to take it off?~"
 KinkyDungeonCurseInfoMistressKeyQuakeCollar,"You'll need an ancient key to unlock the ancient-made collar."
+
+
+NameCuffedGirl,Ancient Worshipper
+KillCuffedGirl,The ancient worshipper repents of her ways.
+AttackCuffedGirlBind,"The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)"
+AttackCuffedGirlLock,"Crystals start to grow on your locks! (DamageTaken)"
+AttackCuffedGirl,"The ancient worshipper mumbles at you for assistance! (DamageTaken)"
+
+KDCrystalUnlock,"The crystals break off, revealing a keyhole and weakening the item."
+KDCrystalLock,"Your distraction causes the crystals to grow back, encasing the lock again!"

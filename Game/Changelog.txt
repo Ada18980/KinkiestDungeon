@@ -34,6 +34,7 @@ TODO remove hogtie when released
 - Changed worldgen to make sizing a bit more reasonable
 - Angel can help you with divine locks
 - Added Crystal lock
+- Added Ancient Worshipper
 
 
 5.4-nightly5

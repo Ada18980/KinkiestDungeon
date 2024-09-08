@@ -1694,7 +1694,7 @@ const KinkyDungeonRestraints = [
 			Binder: {color: "DarkNeutral", override: true},
 		},
 		events: [
-			{trigger: "tick", type: "crystalDrain", power: -0.034, inheritLinked: true},
+			{trigger: "tick", type: "crystalDrain", power: -0.01, inheritLinked: true},
 			{trigger: "struggle", type: "crystalPunish"},
 		],
 		escapeChance: {"Struggle": 0.15, "Cut": 0.15, "Remove": 0.1, "Pick": 0.35},
@@ -6907,7 +6907,7 @@ KDAddCuffVariants(
 		DefaultLock: "Crystal",
 	},
 	[
-		{trigger: "tick", type: "crystalDrain", power: -0.034, inheritLinked: true},
+		{trigger: "tick", type: "crystalDrain", power: -0.01, inheritLinked: true},
 		{trigger: "struggle", type: "crystalPunish"},
 	],
 	{

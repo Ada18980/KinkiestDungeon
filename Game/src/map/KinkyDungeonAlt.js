@@ -13,6 +13,7 @@ let KDDragonList = [
 			ChaoticCrystalActive: 0.25,
 			SoulCrystal: 0.05,
 			SoulCrystalActive: 0.01,
+			CuffedGirl: 0.1,
 		},
 	},
 	{

@@ -529,9 +529,9 @@ function KDCreateBoringness(noBoring) {
  * @returns {number}
  */
 function KDGetMapSize() {
-	if (KinkyDungeonStatsChoice.get("MapLarge")) return 2;
-	if (KinkyDungeonStatsChoice.get("MapHuge")) return 4;
-	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 6;
+	if (KinkyDungeonStatsChoice.get("MapLarge")) return 3;
+	if (KinkyDungeonStatsChoice.get("MapHuge")) return 6;
+	if (KinkyDungeonStatsChoice.get("MapGigantic")) return 9;
 	if (KinkyDungeonStatsChoice.get("MapAbsurd")) return 24;
 	return 0;
 }
@@ -1000,11 +1000,11 @@ function KinkyDungeonCreateMap(MapParams, RoomType, MapMod, Floor, testPlacement
 
 		// make it more consistent
 		let random = KDRandom();
-		let mapSizeBonus = Math.round((!altType || altType.sizeBonus) ? 0.5 * KDGetMapSize() : 0);
-		let height = (MapParams.min_height) * 2 + mapSizeBonus
-			+ 2*Math.floor(0.5*random * (MapParams.max_height * 2 - MapParams.min_height * 2 + mapSizeBonus));
-		let width = (MapParams.min_width) * 2 + mapSizeBonus
-			+ 2*Math.floor(0.5*(1 - random) * (MapParams.max_width * 2 - MapParams.min_width * 2 + mapSizeBonus));
+		let mapSizeBonus = (!altType || altType.sizeBonus) ? KDGetMapSize() : 0;
+		let height = (MapParams.min_height) * 2 + Math.ceil(mapSizeBonus*0.5)
+			+ 2*Math.floor(0.5*random * (MapParams.max_height * 2 - MapParams.min_height * 2 + Math.floor(mapSizeBonus*0.5)));
+		let width = (MapParams.min_width) * 2 + Math.ceil(mapSizeBonus*0.5)
+			+ 2*Math.floor(0.5*(1 - random) * (MapParams.max_width * 2 - MapParams.min_width * 2 + Math.floor(mapSizeBonus*0.5)));
 
 
 		height = Math.max(2, height);

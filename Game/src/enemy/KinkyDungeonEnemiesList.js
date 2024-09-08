@@ -3199,6 +3199,7 @@ let KinkyDungeonEnemies = [
 		spells: ["CrystalBolt", "CrystalSlash"],  spellCooldownMult: 1, spellCooldownMod: -1,
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
+		attackLock: "Crystal",
 
 		terrainTags: {"crystalline": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
 		ondeath: [{type: "summon", enemy: "DragonGirlCrystal", range: 0.5, count: 1, strict: false}],
@@ -3225,7 +3226,7 @@ let KinkyDungeonEnemies = [
 		visionRadius: 9, maxhp: 30, minLevel:0, weight:0, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
 		stunTime: 1, attackWidth: 1, attackRange: 1, power: 4.5, dmgType: "crush", fullBoundBonus: 2,
 		terrainTags: {"magic": 7, "dragongirl": 50}, shrines: ["Leather", "Conjure"], floors: {},
-		attackLock: "Purple", maxdodge: 0,
+		attackLock: "Crystal", maxdodge: 0,
 		stamina: 7,
 		preferBlock: true,
 		dropTable: [{name: "EarthRune", weight: 3}]},
@@ -3886,8 +3887,39 @@ let KinkyDungeonEnemies = [
 		visionRadius: 8, maxhp: 8, minLevel:5, weight:0, movePoints: 99999, attackPoints: 4, attack: "Spell", attackWidth: 8, attackRange: 3, power: 4, dmgType: "souldrain",
 		terrainTags: {"passage": -999, "temple": 50, "open": 90}, floors:KDMapInit(["tmp"]), shrines: []},
 
+	// region ancientworship
+	{name: "CuffedGirl", clusterWith: "chaos", bound: "CuffedGirl", playLine: "Gagged", color: "#9564b8",
+		tags: KDMapInit([
+			"minor",
+			"ignoretiedup", "nocapture", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
+			"crystalRestraints", "crystalRestraintsHeavy",
+			"soulresist", "crushweakness", "charmweakness",
+			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms",
+		]),
+		Sound: {
+			baseAmount: 4,
+			moveAmount: 5,
+		},
+		nopickpocket: true,
+		maxblock: 0,
+		maxdodge: 0,
+		nonDirectional: true,
+		ignorechance: 0, armor: 0, spellResist: 1, followRange: 1.5, AI: "hunt",  cohesion: 0.45, sneakThreshold: 1,
+		evasion: -0.4,
+		master: {type: "SoulCrystalActive", range: 4, loose: true, aggressive: true},
+		visionRadius: 7.5, maxhp: 16, minLevel:0, weight:9, movePoints: 2.7,
+		attackPoints: 3, attack: "MeleeBindLockAll", attackWidth: 2.5, attackRange: 1, power: 2,
+		dmgType: "soul", fullBoundBonus: 2,
+		ondeath: [{type: "spellOnSelf", spell: "SoulCrystalBind"}],
+		terrainTags: {"elementsAnger": 3, "elementsRage": 3, temple: 13,
+			"soul": 24, "chaos": 35, "elemental": 1,
+			revenge: 10}, shrines: ["Elements"], floors:KDMapInit(["tmp", "ore", "DemonTransition"]),
+	},
+	//endregion
+
 	{name: "SoulCrystal", clusterWith: "chaos", color: "#880000", immobile: true, hitsfx: "Evil",
-		tags: KDMapInit(["crystal", "soul", "minor", "unstoppable", "ranged", "crushweakness", "soulimmune", "flying"]), spellResist: 0.33, sneakthreshold: 0.6,
+		tags: KDMapInit(["crystal", "soul", "minor", "unstoppable", "ranged",
+			"crushweakness", "soulimmune", "flying"]), spellResist: 0.33, sneakthreshold: 0.6,
 		evasion: -9, ignorechance: 1.0, armor: 1.5, followRange: 1, AI: "wander",
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff5277"}
@@ -5896,8 +5928,8 @@ let KDEnemyAction = {
 		},
 		maintain: (enemy, delta) => {
 			// Stops investigating if alerted or idle
-			return !(enemy.idle
-				|| (enemy.aware)
+			return ((enemy.idle && KDRandom() < 0.5)
+				|| !(enemy.aware)
 				|| enemy.attackPoints
 				|| KDistChebyshev(enemy.x - enemy.gx, enemy.y - enemy.gy) <= 1.5);
 		},

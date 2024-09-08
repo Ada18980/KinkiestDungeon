@@ -681,7 +681,8 @@ const KinkyDungeonMapParams = {
 
 		factionList: ["Apprentice", "Bandit", "Bountyhunter", "Elemental", "Dragon", "Maidforce", "Alchemist"],
 
-		enemyTags: ["skeleton", "temple", "ghost", "magical"],
+		enemyTags: ["skeleton", "temple", "ghost", "soul", "magical"],
+
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},

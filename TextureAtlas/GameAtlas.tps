@@ -990,6 +990,7 @@
             <key type="filename">../Game/Enemies/Conjurer.png</key>
             <key type="filename">../Game/Enemies/ConjurerTickler.png</key>
             <key type="filename">../Game/Enemies/CorruptedAdventurer.png</key>
+            <key type="filename">../Game/Enemies/CuffedGirl.png</key>
             <key type="filename">../Game/Enemies/Cuffs.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
@@ -1279,6 +1280,7 @@
             <key type="filename">../Game/EnemiesBound/Conjurer.png</key>
             <key type="filename">../Game/EnemiesBound/ConjurerTickler.png</key>
             <key type="filename">../Game/EnemiesBound/CorruptedAdventurer.png</key>
+            <key type="filename">../Game/EnemiesBound/CuffedGirl.png</key>
             <key type="filename">../Game/EnemiesBound/Cyborg.png</key>
             <key type="filename">../Game/EnemiesBound/CyborgBerserker.png</key>
             <key type="filename">../Game/EnemiesBound/CyborgEnforcer.png</key>
