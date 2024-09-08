@@ -1651,7 +1651,7 @@ function KinkyDungeonCreateTileMaze(_POI: any[], VisitedRooms: any[], width: num
 	}
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
-	let tagModifiers = data.params.tagModifiers ? data.params.tagModifiers : undefined;
+	let tagModifiers = data.params.tagModifiers ? (data.params as floorParams).tagModifiers : undefined;
 
 	// Now we decide which tiles to use. This is a lengthy process, so it is its own function
 	// This happens with the loading--future tiles depend on present tiles

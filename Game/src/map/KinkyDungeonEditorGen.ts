@@ -4,48 +4,51 @@
 let KD_GENWEIGHTCUTOFF = 100000;
 
 
-function KDAddLabel(label) {
+function KDAddLabel(label: any) {
 	if (!KDMapData.Labels) KDMapData.Labels = {};
 	if (!KDMapData.Labels[label.type]) KDMapData.Labels[label.type] = [];
 	KDMapData.Labels[label.type].push(label);
 }
 
 /**
- *
- * @param {number} w
- * @param {number} h
- * @param {Record<string, string>} indices
- * @param {any} data
- * @param {Record<string, boolean>} requiredAccess
- * @param {Record<string, number>} maxTagFlags
- * @returns {Record<string, KDMapTile>}
+ * @param w
+ * @param h
+ * @param indices
+ * @param data
+ * @param requiredAccess
+ * @param maxTagFlags
  */
-function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, tagModifiers) {
+function KDMapTilesPopulate (
+	_w:              number,
+	_h:              number,
+	indices:         Record<string, string>,
+	data:            any,
+	requiredAccess:  Record<string, boolean>,
+	maxTagFlags:     Record<string, number>,
+	tagModifiers:    Record<string, number>
+): Record<string, KDMapTile>
+{
 	/**
 	 * temp helper var
-	 * @type {string[]}
 	 */
-	let tiles_temp = [];
+	let tiles_temp: string[] = [];
 	for (let t of Object.keys(indices)) {
 		tiles_temp.push(t);
 	}
 	/**
 	 * order of which tiles to consider, sampled randomly from indices
-	 * @type {string[]}
 	 */
-	let tileOrder = [];
+	let tileOrder: string[] = [];
 
 
 	/**
 	 * tiles that are filled in
-	 * @type {Record<string, KDMapTile>}
 	 */
-	let tilesFilled = {};
+	let tilesFilled: Record<string, KDMapTile> = {};
 	/**
 	 * indices that are filled in
-	 * @type {Record<string, string>}
 	 */
-	let indexFilled = {};
+	let indexFilled: Record<string, string> = {};
 
 	// Determine order of filling tiles
 	while (tiles_temp.length > 0) {
@@ -64,9 +67,8 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 
 	/**
 	 * Count of each tag in a filled tile
-	 * @type {Record<string, number>}
 	 */
-	let tagCounts = {};
+	let tagCounts: Record<string, number> = {};
 
 	// Next we start filling in tiles!
 
@@ -74,19 +76,13 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 
 	let ii = 0;
 
-	/**
-	 * @type {Record<string, boolean>}
-	 */
-	let globalTags = Object.assign({}, data.params.globalTags || {});
+	let globalTags: Record<string, boolean> = Object.assign({}, data.params.globalTags || {});
 
 	if (KinkyDungeonStatsChoice.get("arousalMode")) globalTags.arousalMode = true;
 	if (KinkyDungeonStatsChoice.get("hardMode")) globalTags.hardMode = true;
 
 	if (data?.MapData) {
-		/**
-		 * @type {KDMapDataType}
-		 */
-		let mapData = data.MapData;
+		let mapData: KDMapDataType = data.MapData;
 		if (mapData.JailFaction) {
 			for (let jf of mapData.JailFaction) {
 				globalTags["jf_" + jf] = true;
@@ -185,14 +181,12 @@ function KDMapTilesPopulate(w, h, indices, data, requiredAccess, maxTagFlags, ta
 }
 
 /**
- *
- * @param {KDMapTile} mapTile - Tile to be evaluated for weight
- * @param {Record<string, boolean>} tags - Tags of the INCOMING tile, not the current one
- * @param {Record<string, number>} tagCounts - Counts of all tags on the map at present
- * @param {Record<string, number>} tagModifiers - Tags of the incoming tile will get a multiplier if the incoming tile has it
- * @returns {number}
+ * @param mapTile - Tile to be evaluated for weight
+ * @param tags - Tags of the INCOMING tile, not the current one
+ * @param tagCounts - Counts of all tags on the map at present
+ * @param tagModifiers - Tags of the incoming tile will get a multiplier if the incoming tile has it
  */
-function KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers) {
+function KDGetTileWeight(mapTile: KDMapTile, tags: Record<string, boolean>, tagCounts: Record<string, number>, tagModifiers: Record<string, number>): number {
 	let weight = mapTile.weight;
 
 	// Forbid tags are not allowed
@@ -242,19 +236,30 @@ function KDGetTileWeight(mapTile, tags, tagCounts, tagModifiers) {
 
 
 /**
- *
- * @param {string} index
- * @param {number} indX
- * @param {number} indY
- * @param {Record<string, KDMapTile>} tilesFilled
- * @param {Record<string, string>} indexFilled
- * @param {Record<string, boolean>} requiredAccess
- * @param {Record<string, boolean>} globalTags
- * @param {Record<string, string>} indices
- * @param {Record<string, number>} tagModifiers
- * @returns {string}
+ * @param index
+ * @param indX
+ * @param indY
+ * @param tilesFilled
+ * @param indexFilled
+ * @param tagCounts
+ * @param requiredAccess
+ * @param globalTags
+ * @param indices
+ * @param tagModifiers
  */
-function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, requiredAccess, globalTags, indices, tagModifiers) {
+function KD_GetMapTile (
+	index:           string,
+	indX:            number,
+	indY:            number,
+	tilesFilled:     Record<string, KDMapTile>,
+	indexFilled:     Record<string, string>,
+	tagCounts:       Record<string, number>,
+	requiredAccess:  Record<string, boolean>,
+	globalTags:      Record<string, boolean>,
+	indices:         Record<string, string>,
+	tagModifiers:    Record<string, number>
+): string
+{
 	let tagList = {
 		"1,1": KDAggregateTileTags(indX, indY, 1, 1, tilesFilled, globalTags),
 	};
@@ -323,16 +328,14 @@ function KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, r
 }
 
 /**
- *
- * @param {KDMapTile} mapTile
- * @param {number} indX
- * @param {number} indY
- * @param {Record<string, string>} indices
- * @param {Record<string, boolean>} requiredAccess
- * @param {Record<string, string>} indexFilled
- * @returns {boolean}
+ * @param mapTile
+ * @param indX
+ * @param indY
+ * @param indices
+ * @param requiredAccess
+ * @param indexFilled
  */
-function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, indexFilled) {
+function KDCheckMapTileFilling(mapTile: KDMapTile, indX: number, indY: number, indices: Record<string, string>, requiredAccess: Record<string, Boolean>, indexFilled: Record<string, string>): boolean {
 	let passCount = 0;
 	// Skip over larger tiles that dont fit the tilesFilled map or are already filled
 	for (let xx = 1; xx <= mapTile.w; xx++)
@@ -377,7 +380,7 @@ function KDCheckMapTileFilling(mapTile, indX, indY, indices, requiredAccess, ind
 }
 
 /** Suspends the inside of large tiles */
-function KDLooseIndexRankingSuspend(indexCheck, indexTile, w, h, xx, yy) {
+function KDLooseIndexRankingSuspend(indexCheck: string, indexTile: string, w: number, h: number, xx: number, yy: number): boolean {
 	if (w == 1 && h == 1) return true; // Tiles that are 1/1 dont get requirements suspended
 	if (xx > 1 && xx < w && yy > 1 && yy < h) return false; // Suspended tiles in the middle
 	if (!indexCheck) return true; // This means we hit the border
@@ -390,15 +393,13 @@ function KDLooseIndexRankingSuspend(indexCheck, indexTile, w, h, xx, yy) {
 }
 
 /**
- *
- * @param {KDMapTile} mapTile
- * @param {number} indX
- * @param {number} indY
- * @param {Record<string, string>} indexFilled
- * @param {Record<string, boolean>} requiredAccess
- * @returns {boolean}
+ * @param mapTile
+ * @param indX
+ * @param indY
+ * @param indexFilled
+ * @param requiredAccess
  */
-function KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess) {
+function KDCheckMapTileAccess(mapTile: KDMapTile, indX: number, indY: number, indexFilled: Record<string, string>, _requiredAccess: Record<string, boolean>) {
 	// If any entrance pairs are inaccessible then BOTH must be filled in...
 	if (mapTile.inaccessible) {
 		for (let access of mapTile.inaccessible) {
@@ -424,14 +425,12 @@ function KDCheckMapTileAccess(mapTile, indX, indY, indexFilled, requiredAccess) 
 }
 
 /**
- *
- * @param {KDMapTile} tile
- * @param {number} x
- * @param {number} y
- * @param {any} y
- * @returns {string[]}
+ * @param tile
+ * @param x
+ * @param y
+ * @param y
  */
-function KD_PasteTile(tile, x, y, data) {
+function KD_PasteTile(tile: KDMapTile, x: number, y: number, data: any): string[] {
 	let tileWidth = KDTE_Scale * tile.w;
 	let tileHeight = KDTE_Scale * tile.h;
 	// Avoid errors
@@ -551,15 +550,13 @@ function KD_PasteTile(tile, x, y, data) {
 }
 
 /**
- *
- * @param {number} startX
- * @param {number} startY
- * @param {any} tile
- * @param {any} seed
- * @param {{x: number, y: number}[]} MazeBlock
- * @returns {{x: number, y: number}[]}
+ * @param startX
+ * @param startY
+ * @param tile
+ * @param seed
+ * @param MazeBlock
  */
-function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
+function KDGenMaze(startX: number, startY: number, tile: any, seed: any, _MazeBlock: { x: number, y: number }[]): { x: number, y: number }[] {
 	let tileWidth = Math.round(KDTE_Scale * tile.w);
 	let tileHeight = Math.round(KDTE_Scale * tile.h);
 	let scale = seed?.scale || 1;
@@ -572,13 +569,13 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 	//let getGrid = (x, y) => {
 	//return tile.grid[x + y*(tileWidth+1)];
 	//};
-	let isMazeBlock = (x, y) => {
+	let isMazeBlock = (x: number, y: number) => {
 		return tile.Tiles && tile.Tiles[x + ',' + y] && tile.Tiles[x + ',' + y].MazeBlock;
 	};
 
 	let ActivatedTiles = {};
 
-	let isValid = (x, y, allowActivated) => {
+	let isValid = (x: number, y: number, allowActivated: boolean): boolean => {
 		if (x >= 0 && y >= 0 && x+scale <= tileWidth && y+scale <= tileHeight) {
 			//if (getGrid(x, y) != '1') return false;
 			if (isMazeBlock(x, y)) return false;
@@ -593,8 +590,8 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 	let CarvedTiles = [];
 	let ActiveTiles = [];
 	let EndPoints = [];
-	let BacktrackLinks = {};
-	let RemoveTiles = {};
+	let BacktrackLinks: { [ _: string ] : { x: number; y: number } }[] = [];
+	let RemoveTiles: Record<string, boolean>[] = [];
 
 	let recordBacktrack = endchance > 0;
 
@@ -608,7 +605,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 	};
 
 	// xe = x_edge, ye = y_edge
-	let spread = (x, y, xe, ye) => {
+	let spread = (x: number, y: number, xe: number, ye: number): boolean => {
 		// Carve a path if its valid
 		// Chance to merge into an existing path
 		if (isValid(x, y, KDRandom() < branchchance) && !isMazeBlock(xe, ye)) {
@@ -626,7 +623,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 		return false;
 	};
 
-	let operate = (x, y) => {
+	let operate = (x: number, y: number) => {
 		for (let xx = 0; xx < scale; xx++)
 			for (let yy = 0; yy < scale; yy++)
 				CarvedTiles.push({x:xx+x, y:yy+y});
@@ -705,8 +702,8 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 			let y = endp.y;
 			if (KDRandom() < endchance && BacktrackLinks[x + ',' + y]) {
 				// This is a dead end, now lets remove it unless its on the border
-				let links = Object.values(BacktrackLinks[x + ',' + y])
-					.filter((link) => {return !RemoveTiles[link.x + ',' + link.y];});
+				let links: any[] = Object.values(BacktrackLinks[x + ',' + y])
+					.filter((link: { x: number; y: number}) => {return !RemoveTiles[link.x + ',' + link.y];});
 				while (links?.length <= 1) {
 					// only go until there are branches
 					for (let xx = 0; xx < scale; xx++)
@@ -717,7 +714,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 						y = links[0].y;
 						links = (links.length > 0 && BacktrackLinks[x + ',' + y]) ?
 							Object.values(BacktrackLinks[x + ',' + y])
-								.filter((link) => {return !RemoveTiles[link.x + ',' + link.y];}) : null;
+								.filter((link: { x: number; y: number}) => {return !RemoveTiles[link.x + ',' + link.y];}) : null;
 					} else {
 						links = null;
 					}
@@ -742,7 +739,7 @@ function KDGenMaze(startX, startY, tile, seed, MazeBlock) {
 }
 
 
-let KDEffectTileGen = {
+let KDEffectTileGen: Record<string, (x: number, y: number, tile: any, tileGenerator: any, data: any) => any> = {
 	"TorchUnlit": (x, y, tile, tileGenerator, data) => {
 		let torchlitchance = data.params.torchlitchance || 0.6;
 		/*
@@ -1078,14 +1075,13 @@ let KDTileGen = {
 
 /**
  * Creates a map tile based on a generator tile
- * @param {number} x
- * @param {number} y
- * @param {any} tileGenerator
- * @param {any} data
- * @returns {any}
+ * @param x
+ * @param y
+ * @param tileGenerator
+ * @param data
  */
-function KDCreateTile(x, y, tileGenerator, data) {
-	let tile = {};
+function KDCreateTile(x: number, y: number, tileGenerator: any, data: any): any {
+	let tile: any = {};
 	if (tileGenerator.Type) {
 		tile = KDTileGen[tileGenerator.Type](x, y, tile, tileGenerator, data);
 	} else {
@@ -1100,13 +1096,12 @@ function KDCreateTile(x, y, tileGenerator, data) {
 
 /**
  * Creates a map tile based on a generator tile
- * @param {number} x
- * @param {number} y
- * @param {any} tileGenerator
- * @param {any} data
- * @returns {any}
+ * @param x
+ * @param y
+ * @param tileGenerator
+ * @param data
  */
-function KDCreateEffectTileTile(x, y, tileGenerator, data) {
+function KDCreateEffectTileTile(x: number, y: number, tileGenerator: any, data: any): any {
 	let tile = {};
 	if (tileGenerator.name && KDEffectTileGen[tileGenerator.name]) {
 		tile = KDEffectTileGen[tileGenerator.name](x, y, tile, tileGenerator, data);

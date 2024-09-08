@@ -39,7 +39,7 @@
         "Game/src/player/KDTraining.js",
         "Game/src/map/KinkyDungeonEditorTiles.ts",
         "Game/src/map/KinkyDungeonEditor.ts",
-        "Game/src/map/KinkyDungeonEditorGen.js",
+        "Game/src/map/KinkyDungeonEditorGen.ts",
         "Game/src/base/KinkyDungeonErrors.ts",
         "Game/src/base/KinkyDungeon.ts",
         "Game/src/base/KDRender.ts",
