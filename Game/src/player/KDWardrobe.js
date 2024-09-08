@@ -6,6 +6,21 @@ let KinkyDungeonReplaceConfirm = 0;
 
 let KDCanRevertFlag = false;
 
+let ColorPickerFilterCode = "";
+let ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+	brightness: 1,
+	saturation: 1,
+	gamma: 1,
+	alpha: 1,
+	red: 1,
+	blue: 1,
+	green: 1,
+	contrast: 1,
+});
+
+let KDCurrentColorFilterCode = {};
+let KDCurrentColorFilter = {};
+
 let KDCurrentOutfit = 0;
 let KDMaxOutfits = 99;
 let KDMaxOutfitsDisplay = 10;
@@ -160,9 +175,42 @@ function KDDrawSavedColors(X, y, max, C) {
 			i -= KDSavedColorPerRow;
 			Y += vspacing;
 		}
+		if (KDSavedColors[ii]) {
+			if (KDCurrentColorFilterCode[ii] != JSON.stringify(KDSavedColors[ii])) {
+				KDCurrentColorFilterCode[ii] = JSON.stringify(KDSavedColors[ii]);
+				if (KDCurrentColorFilter[ii])
+					KDCurrentColorFilter[ii].destroy();
+				KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]);
+			}
+		} else if (KDCurrentColorFilterCode[ii] != undefined) {
+			KDCurrentColorFilterCode[ii] = undefined;
+			if (KDCurrentColorFilter[ii])
+				KDCurrentColorFilter[ii].destroy();
+			KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter({
+				brightness: 1,
+				saturation: 1,
+				gamma: 1,
+				alpha: 1,
+				red: 1,
+				blue: 1,
+				green: 1,
+				contrast: 1,
+			});
+		}
+		if (!KDCurrentColorFilter[ii]) KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter({
+			brightness: 1,
+			saturation: 1,
+			gamma: 1,
+			alpha: 1,
+			red: 1,
+			blue: 1,
+			green: 1,
+			contrast: 1,
+		});
+
 		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + ii, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
 			filters: [
-				new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]),
+				KDCurrentColorFilter[ii],
 			]
 		});
 		DrawButtonKDEx("SavedColorCopy" + ii, (bdata) => {
@@ -493,7 +541,6 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			}
 
 			let radius = 150;
-			KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
 			if (ElementValue("KDSelectedColor") && Model?.Filters && Model.Filters[KDCurrentLayer]) {
 				let hsl = rgbToHsl(
 					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
@@ -503,13 +550,54 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
 				let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
 
-				let value = ElementValue("KDSelectedColor");
-				let RegExp = /^#[0-9A-F]{6}$/i;
 
-				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
-					tint: RegExp.test(value) ? KDhexToRGB(ElementValue("KDSelectedColor")) : 0xffffff,
-				});
+				if (ColorPickerFilterCode != (1 - hsl[2]) + "," + hsl[2]) {
+					ColorPickerFilterCode = (1 - hsl[2]) + "," + hsl[2];
+					ColorPickerFilter.destroy();
+					let lumi =
+						Math.min(1, 5 * hsl[2]);
+					ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+						brightness: 1,
+						saturation: Math.max(0, Math.min(1, 1.5 - 1.5*hsl[2])),
+						gamma: 1,
+						alpha: 1,
+						red: lumi,
+						blue: lumi,
+						green: lumi,
+						contrast: 1,
+					});
+				}
+
+				let value = ElementValue("KDSelectedColor");
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
+
+				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0,
+					{
+						tint: RegExp.test(value) ?
+							new PIXI.Color(ElementValue("KDSelectedColor")).toNumber() : 0xffffff,
+					});
+			} else {
+				if (ColorPickerFilterCode) {
+					ColorPickerFilterCode = "";
+					ColorPickerFilter.destroy();
+					ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+						brightness: 1,
+						saturation: 1,
+						gamma: 1,
+						alpha: 1,
+						red: 1,
+						blue: 1,
+						green: 1,
+						contrast: 1,
+					});
+				}
 			}
+
+			KDDraw(kdcanvas, kdpixisprites, "colorpicker",
+				KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300,
+				undefined, {
+					filters: [ColorPickerFilter],
+				});
 
 
 			let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
@@ -607,7 +695,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		if (TF.Created) {
 			TF.Element.oninput = (event) => {
 				let value = ElementValue("KDSelectedColor");
-				let RegExp = /^#[0-9A-F]{6}$/i;
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
 
 				if (RegExp.test(value)) {
 					let hex = KDhexToRGB(value);
@@ -1229,12 +1317,17 @@ function KDDrawWardrobe(screen, Character) {
 	KinkyDungeonRootDirectory + "UI/Restore.png", "", false, false,
 	undefined, undefined, true);
 
-	if (KDSelectedModel) {
-		KDDrawColorSliders(1625, 100, C, KDSelectedModel);
+	if (KDShowCharacterPalette) {
+		// nyet
 	} else {
-		KDCurrentLayer = "";
-		KDRefreshProps = true;
+		if (KDSelectedModel) {
+			KDDrawColorSliders(1625, 100, C, KDSelectedModel);
+		} else {
+			KDCurrentLayer = "";
+			KDRefreshProps = true;
+		}
 	}
+
 	// Return anon function anonymously
 	let clickButton = (index) => {
 		return (bdata) => {

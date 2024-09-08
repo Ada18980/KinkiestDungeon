@@ -568,6 +568,7 @@ AddModel({
 			NoDisplace: true,
 
 			DisplacementSprite: "BalletCuffs",
+			DisplaceZBonus: 10000,
 			DisplaceAmount: 20,
 			DisplaceLayers: ToMap(["BalletHeelsCuffs"]),
 			HidePoseConditional: [

@@ -4550,6 +4550,8 @@ function KDGetTargetRetType(x, y) {
 	return "Move";
 }
 
+let KDPIXIPaletteFilters = new Map();
+
 /**
  *
  * @param {number} x
@@ -4572,10 +4574,13 @@ function KDDrawPalettes(x, y, w, scale = 72, selected, callback, text = "KDSelec
 	DrawTextFitKD(TextGet(text), x + scale*(0.5 + w)/2, y - 36, scale*w, "#ffffff", KDTextGray0, 20);
 
 	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
+		if (!KDPIXIPaletteFilters.get(value[0]))
+			KDPIXIPaletteFilters.set(value[0],
+				new PIXI.filters.AdjustmentFilter(value[1].Highlight));
 		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
-					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
+					KDPIXIPaletteFilters.get(value[0]),
 				]
 			});
 		DrawButtonKDEx("choosepalette" + value[0], (b) => {

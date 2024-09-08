@@ -53,6 +53,7 @@ AddModel({
 			TieToLayer: "ShinyBalletLeft",
 
 			DisplacementSprite: "BalletCuffs",
+			DisplaceZBonus: 10000,
 			DisplaceAmount: 70,
 			DisplaceLayers: ToMap(["BalletHeelsCuffs"]),
 		},

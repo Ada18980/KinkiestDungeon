@@ -2741,6 +2741,7 @@ AttackFungal,"The fun-gal rubs your chest with her long, slender fingers! (Damag
 KinkyDungeonSpellCrystalPuff,Crystal Glyph
 KinkyDungeonSpellCrystalSlash,Crystal Slash
 KinkyDungeonSpellCrystalBolt,Crystal Bolt
+KinkyDungeonSpellCrystalBoltSingle,Crystal Bolt
 
 
 NameDressmakerQuest,Tailor
@@ -4357,7 +4358,7 @@ RestraintWolfLeashDesc,"A leash used for training pets."
 RestraintWolfLeashDesc2,"It is a steel cable with a weatherproof rubber coating, and a convenient handle."
 RestraintObsidianLeash,Magical Leash
 RestraintObsidianLeashDesc,"A leash made of magical energy, linked to a submissive's collar."
-RestraintObsidianLeashDesc2,"Very difficult to break unless you have a magical blade."
+RestraintObsidianLeashDesc2,"Very difficult to break unless you have a strong magical blade."
 
 KinkyDungeonLinkWolfAnkleCuffs,"Your ankle cuffs snap together on their own!"
 KinkyDungeonUnLinkWolfAnkleCuffs2,"Your ankle cuffs detach!"
@@ -24645,8 +24646,20 @@ KinkyDungeonCurseInfoMistressKeyQuakeCollar,"You'll need an ancient key to unloc
 NameCuffedGirl,Ancient Worshipper
 KillCuffedGirl,The ancient worshipper repents of her ways.
 AttackCuffedGirlBind,"The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)"
-AttackCuffedGirlLock,"Crystals start to grow on your locks! (DamageTaken)"
+AttackCuffedGirlLock,"Crystals start to grow on one of your restraints! (DamageTaken)"
 AttackCuffedGirl,"The ancient worshipper mumbles at you for assistance! (DamageTaken)"
+
+NameCuffedGirl2,Ancient Congregant
+KillCuffedGirl2,The ancient congregant repents of her ways.
+AttackCuffedGirl2Bind,"The ancient congregant's crystal restraints spread to you! (+RestraintAdded)"
+AttackCuffedGirl2Lock,"Crystals start to grow on your restraints! (DamageTaken)"
+AttackCuffedGirl2,"The ancient congregant mumbles at you for assistance! (DamageTaken)"
+
+NameCuffedGirl3,Ancient Hierophant
+KillCuffedGirl3,The ancient hierophant repents of her ways.
+AttackCuffedGirl3Bind,"The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)"
+AttackCuffedGirl3Lock,"Crystals start to grow on your restraints! (DamageTaken)"
+AttackCuffedGirl3,"The ancient hierophant mumbles at you for assistance! (DamageTaken)"
 
 KDCrystalUnlock,"The crystals break off, revealing a keyhole and weakening the item."
 KDCrystalLock,"Your distraction causes the crystals to grow back, encasing the lock again!"
