@@ -119,7 +119,7 @@
         "Game/src/enemy/KDCommander.js",
         "Game/src/map/KDJourney.ts",
         "Game/src/restraint/KinkyDungeonRestraintsList.js",
-        "Game/src/collection/KinkyDungeonCollection.js",
+        "Game/src/collection/KinkyDungeonCollection.ts",
         "Game/src/collection/KDCollectionWander.ts",
         "Game/src/collection/KDCollectionWanderList.ts",
         "Game/src/base/KDCustomCancel.ts",

@@ -3,10 +3,7 @@
 let KDCollectionTab = "";
 
 let KDCurrentFacilityTarget = "";
-/**
- * @type {string[]}
- */
-let KDCurrentFacilityCollectionType = [];
+let KDCurrentFacilityCollectionType: string[] = [];
 let KDCurrentRestrainingTarget = 0;
 
 let KDCollectionTabStatus = "";
@@ -29,12 +26,18 @@ let KDCollectionTabButtons = [
 
 let KDCollFilter = "";
 
-let KDCollectionFilters = {
+type CollectionFilterItem = {
+	Current:    number;
+	Options:    string[];
+	FilterCode: Record<string, (value: KDCollectionEntry) => boolean>;
+}
+
+let KDCollectionFilters: Record<string, CollectionFilterItem> = {
 	Opinion: {
 		Current: 0,
 		Options: ["", "Positive", "Negative"],
 		FilterCode: {
-			"": (value) => {return true;},
+			"": (_value) => {return true;},
 			Negative: (value) => {return !value.Opinion || value.Opinion < 0;},
 			Positive: (value) => {return value.Opinion > 0;},
 		},
@@ -43,7 +46,7 @@ let KDCollectionFilters = {
 		Current: 0,
 		Options: ["", "EscapeRisk", "Escaped", "Imprisoned"],
 		FilterCode: {
-			"": (value) => {return true;},
+			"": (_value) => {return true;},
 			Safe: (value) => {return !KDNPCUnavailable(value.id, value.status);},
 			EscapeRisk: (value) => {return !value.escaped && value.escapegrace;},
 			Escaped: (value) => {return value.escaped;},
@@ -54,7 +57,7 @@ let KDCollectionFilters = {
 		Current: 0,
 		Options: ["", "Bound", "Free"],
 		FilterCode: {
-			"": (value) => {return true;},
+			"": (_value) => {return true;},
 			Bound: (value) => {return KDGetNPCRestraints(value.id) && Object.values(KDGetNPCRestraints(value.id)).length > 0;},
 			Free: (value) => {return !KDGetNPCRestraints(value.id) || Object.values(KDGetNPCRestraints(value.id)).length == 0;},
 		},
@@ -63,7 +66,7 @@ let KDCollectionFilters = {
 		Current: 0,
 		Options: ["", "Available", "Unavailable"],
 		FilterCode: {
-			"": (value) => {return true;},
+			"": (_value) => {return true;},
 			Available: (value) => {return !KDNPCUnavailable(value.id, value.status);},
 			Unavailable: (value) => {return KDNPCUnavailable(value.id, value.status);},
 		},
@@ -72,7 +75,7 @@ let KDCollectionFilters = {
 		Current: 0,
 		Options: ["", "Rank0", "Rank1", "Rank2", "Rank3", "Rank4", "Rank5"],
 		FilterCode: {
-			"": (value) => {return true;},
+			"": (_value) => {return true;},
 			Rank0: (value) => {return 0 == KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type));},
 			Rank1: (value) => {return 1 == KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type));},
 			Rank2: (value) => {return 2 == KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type));},
@@ -92,11 +95,11 @@ let KDCollectionFilters = {
 	},*/
 };
 
-function KDDrawCollectionFilters(x, y) {
+function KDDrawCollectionFilters(x: number, y: number) {
 	let spacing = 80;
 	let II = 0;
 	for (let filter of Object.entries(KDCollectionFilters)) {
-		if (DrawButtonKDEx("KDCollFilter" + filter[0], (b) => {
+		if (DrawButtonKDEx("KDCollFilter" + filter[0], (_b) => {
 			filter[1].Current += 1;
 			if (filter[1].Current >= filter[1].Options.length) {
 				filter[1].Current = 0;
@@ -112,11 +115,12 @@ function KDDrawCollectionFilters(x, y) {
 		}
 	}
 }
-function KDDrawCollectionTabOptions(x, y) {
+
+function KDDrawCollectionTabOptions(x: number, y: number) {
 	let spacing = 80;
 	let II = 0;
 	for (let tab of KDCollectionTabButtons) {
-		if (DrawButtonKDEx("KDCollTabSet" + tab, (b) => {
+		if (DrawButtonKDEx("KDCollTabSet" + tab, (_b) => {
 			if (KDCollectionTab) KDCollectionTab = "";
 			else KDCollectionTab = tab;
 			return true;
@@ -132,7 +136,7 @@ function KDDrawCollectionTabOptions(x, y) {
 	}
 }
 
-function KinkyDungeonDrawCollection(xOffset = -125) {
+function KinkyDungeonDrawCollection(xOffset: number = -125) {
 
 	let x = 1225 + xOffset;
 	if (!KDGameData.Collection) KDGameData.Collection = {};
@@ -171,11 +175,9 @@ function KinkyDungeonDrawBondage(xOffset = -125) {
 }
 
 /**
- *
- * @param {number} id
- * @returns {string}
+ * @param id
  */
-function KDCollectionImage(id) {
+function KDCollectionImage(id: number): string {
 	let value = KDGameData.Collection["" + id];
 	if (value) {
 		let sp = (value.sprite || value.type);
@@ -194,11 +196,10 @@ function KDCollectionImage(id) {
 }
 
 /**
- *
- * @param {number} id
- * @param {number} amount
+ * @param id
+ * @param amount
  */
-function KDAddOpinionPersistent(id, amount) {
+function KDAddOpinionPersistent(id: number, amount: number): void {
 	let opinion = undefined;
 	if (KDIsNPCPersistent(id)) {
 		KDUpdatePersistentNPC(id);
@@ -212,24 +213,20 @@ function KDAddOpinionPersistent(id, amount) {
 		} else {
 			KDAddOpinionCollection(KDGameData.Collection[id + ""], amount);
 		}
-
 	}
-
-
 }
 
 
 
 /**
  * Gets the opinion, unmodified by various factors
- * @param {number} id
- * @param {boolean} [allowFaction] Optionally apply faction rep modifier
- * @param {boolean} [allowSub] Optionally apply sub modifier
- * @param {boolean} [allowPerk] Optionally apply perk modifiers
- * @param {number} [allowOnlyPosNegFaction] positive: allows only positive faction rep, negative: allows only negative faction rep
- * @returns {number}
+ * @param id
+ * @param [allowFaction] Optionally apply faction rep modifier
+ * @param [allowSub] Optionally apply sub modifier
+ * @param [allowPerk] Optionally apply perk modifiers
+ * @param [allowOnlyPosNegFaction] positive: allows only positive faction rep, negative: allows only negative faction rep
  */
-function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowPerk = true, allowOnlyPosNegFaction = 0) {
+function KDGetModifiedOpinionID(id: number, allowFaction: boolean = true, allowSub: boolean = true, allowPerk: boolean = true, allowOnlyPosNegFaction: number = 0): number {
 	if (KDIsNPCPersistent(id)) {
 		let enemy = KDGetPersistentNPC(id).entity;
 		let op = enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0;
@@ -275,31 +272,27 @@ function KDGetModifiedOpinionID(id, allowFaction = true, allowSub = true, allowP
 
 /**
  *
- * @param {entity} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KDCapturable(enemy) {
+function KDCapturable(enemy: entity): boolean {
 	return enemy?.Enemy.bound && !enemy.Enemy.allied && !(KDNoCaptureTypes.some((tag) => {return enemy.Enemy.tags[tag];}));
 }
 
 /**
- *
- * @param {enemy} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KDCapturableType(enemy) {
+function KDCapturableType(enemy: enemy): boolean {
 	return !(KDNoCaptureTypes.some((tag) => {return enemy.tags[tag];}));
 }
 
 /**
- *
- * @param {entity} enemy
- * @param {string} [status]
- * @param {string} [status]
- * @param {string} [servantclass]
- * @param {string} [type]
+ * @param enemy
+ * @param [type]
+ * @param [status]
+ * @param [servantclass]
+ * @param [type]
  */
-function KDAddCollection(enemy, type, status, servantclass) {
+function KDAddCollection(enemy: entity, type?: string, status?: string, servantclass?: string) {
 	if (!KDGameData.Collection) KDGameData.Collection = {};
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
@@ -307,8 +300,7 @@ function KDAddCollection(enemy, type, status, servantclass) {
 
 	if (!KDGameData.Collection["" + enemy.id]) {
 		// Add her
-		/** @type {KDCollectionEntry} */
-		let entry = {
+		let entry: KDCollectionEntry = {
 			id: enemy.id,
 			name: KDGetPersistentNPC(enemy.id).Name,
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
@@ -378,11 +370,10 @@ function KDAddCollection(enemy, type, status, servantclass) {
 
 
 
-function KDUpdateCollectionFlags(delta) {
+function KDUpdateCollectionFlags(delta: number) {
 	for (let npc of Object.values(KDGameData.Collection)) {
 		if (npc.flags) {
-			/** @type {Record<string, number>} */
-			let newF = {};
+			let newF: Record<string, number> = {};
 			for (let entry of Object.entries(npc.flags)) {
 				if (entry[1] > delta) newF[entry[0]] = entry[1] - delta;
 				else if (entry[1] == -1) newF[entry[0]] = -1;
@@ -395,33 +386,27 @@ function KDUpdateCollectionFlags(delta) {
 }
 
 /**
- *
- * @param {entity} entity
- * @returns {Character}
+ * @param entity
  */
-function KDGetCharacter(entity) {
+function KDGetCharacter(entity: entity): Character {
 	if (entity?.id == KDPlayer().id) {
 		return KinkyDungeonPlayer;
 	}
 	return KDNPCChar.get(entity.id);
 }
 /**
- *
- * @param {Character} C
- * @returns {number}
+ * @param C
  */
-function KDGetCharacterID(C) {
+function KDGetCharacterID(C: Character): number {
 	if (C == KinkyDungeonPlayer) {
 		return KDPlayer().id;
 	}
 	return KDNPCChar_ID.get(C);
 }
 /**
- *
- * @param {Character} C
- * @returns {entity}
+ * @param C
  */
-function KDGetCharacterEntity(C) {
+function KDGetCharacterEntity(C: Character): entity {
 	if (C == KinkyDungeonPlayer) {
 		return KDPlayer();
 	}
@@ -431,14 +416,13 @@ function KDGetCharacterEntity(C) {
 }
 
 /**
- *
- * @param {KDCollectionEntry} value
- * @param {number} x
- * @param {number} y
- * @param {number} index
- * @param {string} tab
+ * @param value
+ * @param x
+ * @param y
+ * @param index
+ * @param [tab]
  */
-function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
+function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: number, index: number, tab: string = "") {
 
 	FillRectKD(kdcanvas, kdpixisprites, "collectionselectionbg", {
 		Left: x,
@@ -587,7 +571,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 
 		let III = 0;
 		let buttonSpacing = 85;
-		if (!KDCollectionTab && KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (b) => {
+		if (!KDCollectionTab && KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (_b) => {
 			if (KDToggles.Sound)
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 			//KDSpeakerNPC = null;
@@ -676,7 +660,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 						zIndex: 160,
 					}
 				);
-				if (DrawButtonKDEx("facilityAssign", (b) => {
+				if (DrawButtonKDEx("facilityAssign", (_b) => {
 					if (!valid) return false;
 					if (!assigned) {
 						let data = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
@@ -690,10 +674,7 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 						});
 						for (let f of listRender) {
 							for (let dt of KDFacilityCollectionDataTypes) {
-								/**
-								 * @type {number[]}
-								 */
-								let data = KDGameData.FacilitiesData[dt + "_" + f[0]];
+								let data: number[] = KDGameData.FacilitiesData[dt + "_" + f[0]];
 								if (data?.includes(value.id)) {
 									delete value.Facility;
 									data.splice(data.indexOf(value.id), 1);
@@ -728,12 +709,11 @@ function KDDrawSelectedCollectionMember(value, x, y, index, tab = "") {
 }
 
 /**
- *
- * @param {number} id
- * @param {number} x
- * @param {number} y
+ * @param id
+ * @param x
+ * @param y
  */
-function KDDrawCollectionRestrain(id, x, y) {
+function KDDrawCollectionRestrain(id: number, x: number, y: number) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
 	KDDrawCollectionRestrainMain(id, x, y);
@@ -744,17 +724,13 @@ function KDDrawCollectionRestrain(id, x, y) {
 
 /**
  * Gets the collection entry, or a virtual one if one doesnt exist
- * @param {number} id
- * @returns {KDCollectionEntry}
+ * @param id
  */
-function KDGetVirtualCollectionEntry(id) {
+function KDGetVirtualCollectionEntry(id: number): KDCollectionEntry {
 	if (KDGameData.Collection["" + id]) return KDGameData.Collection["" + id];
 
 	let enemy = KDGetGlobalEntity(id);
-	/**
-	 * @type {KDCollectionEntry}
-	 */
-	let entry = {
+	let entry: KDCollectionEntry = {
 		id: enemy.id,
 		name: KDIsNPCPersistent(id) ?
 			KDGetPersistentNPC(enemy.id).Name
@@ -801,31 +777,25 @@ function KDGetVirtualCollectionEntry(id) {
 }
 
 /**
- *
- * @param {number} id
- * @param {number} x
- * @param {number} y
+ * @param id
+ * @param x
+ * @param y
  */
-function KDDrawCollectionRestrainMain(id, x, y) {
-
+function KDDrawCollectionRestrainMain(id: number, x: number, y: number) {
 	let restraints = KDGetNPCRestraints(id);
 	KDDrawNPCRestrain(id, restraints, x, y);
-
-
 }
 
-function KDIsImprisonedByEnemy(id) {
+function KDIsImprisonedByEnemy(id: number) {
 	return KDIsImprisoned(KDGetGlobalEntity(id))
 	&& !KDIsInPlayerBase(id);
 }
 
 /**
- *
- * @param {number} id
- * @param {string} status
- * @returns {boolean}
+ * @param id
+ * @param status
  */
-function KDNPCUnavailable(id, status) {
+function KDNPCUnavailable(id: number, status: string): boolean {
 	return KDGameData.Collection[id + ""]?.escaped || (KDIsNPCPersistent(id) &&
 		(
 			//KDGameData.NPCRestraints[id + ""]?.Device != undefined
@@ -840,14 +810,8 @@ function KDNPCUnavailable(id, status) {
 
 }
 
-/**
- * @type {Map<number, Character>}
- */
-let KDNPCChar = new Map();
-/**
- * @type {Map<Character, number>}
- */
-let KDNPCChar_ID = new Map();
+let KDNPCChar: Map<number, Character> = new Map();
+let KDNPCChar_ID: Map<Character, number> = new Map();
 let KDNPCStyle = new Map();
 let KDCollectionSelected = 0;
 let KDCollectionIndex = 0;
@@ -856,12 +820,9 @@ let KDCollectionRows = 6;
 let KDCollectionColumns = 10;
 let KDCollectionSpacing = 80;
 
-/**
- * @type {KDCollectionEntry[]}
- */
-let KDDrawnCollectionInventory = [];
+let KDDrawnCollectionInventory: KDCollectionEntry[] = [];
 
-function KDDrawCollectionInventory(x, y, drawCallback) {
+function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
 	let XX = x;
@@ -874,7 +835,7 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 
 
 	if (KDCollectionIndex + KDCollectionRows * KDCollectionColumns < KDGameData.CollectionSorted.length) {
-		DrawButtonKDEx("collDOWN", (b) => {
+		DrawButtonKDEx("collDOWN", (_b) => {
 			KDCollectionIndex = Math.max(
 				0,
 				Math.min(
@@ -887,7 +848,7 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 		);
 	}
 	if (KDCollectionIndex > 0) {
-		DrawButtonKDEx("collUP", (b) => {
+		DrawButtonKDEx("collUP", (_b) => {
 			KDCollectionIndex = Math.max(
 				0,
 				Math.min(
@@ -911,7 +872,7 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 	let xpad = 24;
 	for (let i = 0; i < KDCollectionTabStatusOptions.length; i++) {
 		let option = KDCollectionTabStatusOptions[i];
-		DrawButtonKDEx("collectionTab" + option, (b) => {
+		DrawButtonKDEx("collectionTab" + option, (_b) => {
 			KDCollectionTabStatus = option;
 			return true;
 		},true,
@@ -930,7 +891,7 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 	if (TF.Created) {
 		//KDCollFilter = "";
 		ElementValue("CollFilter", KDCollFilter || "");
-		TF.Element.oninput = (event) => {
+		TF.Element.oninput = (_event) => {
 			KDCollFilter = ElementValue("CollFilter");
 			KDCollectionIndex = 0;
 		};
@@ -992,7 +953,7 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 		}
 
 
-		if (DrawButtonKDEx(value.name + "_coll," + value.id, (data) => {
+		if (DrawButtonKDEx(value.name + "_coll," + value.id, (_data) => {
 			KDCollectionSelected = value.id;
 			return true;
 		}, true,
@@ -1073,7 +1034,7 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 			}
 
 
-			if (DrawButtonKDEx(value.name + "_guest," + value.id, (data) => {
+			if (DrawButtonKDEx(value.name + "_guest," + value.id, (_data) => {
 				KDCollectionSelected = value.id;
 				return true;
 			}, true,
@@ -1141,10 +1102,9 @@ function KDDrawCollectionInventory(x, y, drawCallback) {
 }
 
 /**
- *
- * @param {KDCollectionEntry} value
+ * @param value
  */
-function KDValidateEscapeGrace(value) {
+function KDValidateEscapeGrace(value: KDCollectionEntry) {
 	if (KDWantsToEscape(value)) {
 		let entity = KDGetGlobalEntity(value.id);
 		let bondageAmount = Math.min(entity?.boundLevel || 0,
@@ -1192,11 +1152,9 @@ function KDSortCollection() {
 }
 
 /**
- *
- * @param {entity} enemy
- * @returns {string}
+ * @param enemy
  */
-function KDGenEnemyName(enemy) {
+function KDGenEnemyName(enemy: entity): string {
 	if (enemy?.Enemy?.nonHumanoid) return TextGet("Name" + enemy.Enemy.name);
 	let faction = KDGetFaction(enemy) || KDGetFactionOriginal(enemy);
 	let nameList = KDFactionProperties[faction]?.nameList ? KDFactionProperties[faction].nameList[Math.floor(Math.random() * KDFactionProperties[faction].nameList.length)] : faction;
@@ -1207,10 +1165,9 @@ function KDGenEnemyName(enemy) {
 
 /**
  * @deprecated
- * @param {entity} enemy
- * @returns {string}
+ * @param enemy
  */
-function KDGetEnemyName(enemy) {
+function KDGetEnemyName(enemy: entity): string {
 	return KDGenEnemyName(enemy);
 }
 
@@ -1219,13 +1176,10 @@ let KDCollectionTabScreen = {
 
 };
 
-/**
- * @type {Record<string, KDCollectionTabDrawDef>}
- */
-let KDCollectionTabDraw = {
+let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 	Imprison: (value, buttonSpacing, III, x, y) => {
 		let entity = KinkyDungeonFindID(value.id) || KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
-		if (DrawButtonKDEx("ImprisonNPC", (b) => {
+		if (DrawButtonKDEx("ImprisonNPC", (_b) => {
 
 			if (entity || KDNPCUnavailable(value.id, value.status)) {
 				return false;
@@ -1274,7 +1228,7 @@ let KDCollectionTabDraw = {
 		return III;
 	},
 	Restrain: (value, buttonSpacing, III, x, y) => {
-		if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (b) => {
+		if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (_b) => {
 			if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
 				KDSendInput("freeNPCRestraint", {
 					npc: value.id,
@@ -1293,7 +1247,7 @@ let KDCollectionTabDraw = {
 			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
 				KDTextGray0);
 		}
-		if (DrawButtonKDEx("returnToCollectionRestrain", (b) => {
+		if (DrawButtonKDEx("returnToCollectionRestrain", (_b) => {
 			KDCurrentRestrainingTarget = 0;
 			if (KDToggles.Sound)
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
@@ -1307,7 +1261,7 @@ let KDCollectionTabDraw = {
 		return III;
 	},
 	Default: (value, buttonSpacing, III, x, y) => {
-		if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (b) => {
+		if (KDPromotableStatus.includes(value.status) && DrawButtonKDEx("promoteNPC", (_b) => {
 			if (!(KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns)) {
 				if (KDCanPromote(value)) {
 					KDPromote(value);
@@ -1321,7 +1275,7 @@ let KDCollectionTabDraw = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
 		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? "#ff5555" : "")) {
 			DrawTextFitKD(TextGet(KDCanPromote(value) ? "KDPromoteNPC" : "KDPromoteNotEnough"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
-		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (b) => {
+		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (_b) => {
 			value.status = value.oldstatus || "";
 			delete value.Facility;
 			KDSortCollection();
@@ -1338,7 +1292,7 @@ let KDCollectionTabDraw = {
 			|| Object.values(KDGetNPCRestraints(value.id)).length > 0
 			|| KDIsOKWithRestraining(value))
 			&& !KDNPCUnavailable(value.id, value.status))
-			if (DrawButtonKDEx("CollectionRestrain", (b) => {
+			if (DrawButtonKDEx("CollectionRestrain", (_b) => {
 				KDCurrentRestrainingTarget = value.id;
 				if (KDToggles.Sound)
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
@@ -1354,13 +1308,13 @@ let KDCollectionTabDraw = {
 };
 
 /**
- *
- * @param {KDCollectionEntry} value
- * @param {number} x
- * @param {number} y
- * @returns {number} II
+ * @param value
+ * @param x
+ * @param y
+ * @param width
+ * @returns II
  */
-function KDDrawNPCBars(value, x, y, width) {
+function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: number): number {
 	let enemy = KDGetGlobalEntity(value.id);
 	if (!enemy) return 0;
 
@@ -1383,7 +1337,7 @@ function KDDrawNPCBars(value, x, y, width) {
 		let visualbond = bindAmpMod * enemy.visual_boundlevel;
 		let bindingBars = maxBars;//Math.ceil( visualbond / enemy.Enemy.maxhp);
 		let SM = KDGetEnemyStruggleMod(enemy, true, defaultSpeed);
-		let futureBound = KDPredictStruggle(enemy, SM, 1);
+		let futureBound: Record<string, number> = KDPredictStruggle(enemy, SM, 1);
 		yy += Math.min(maxBars, bindingBars) * spacing - 10;
 		for (let i = 0; i < bindingBars && i < maxBars; i++) {
 			if (i > 0) II++;
@@ -1446,14 +1400,13 @@ function KDDrawNPCBars(value, x, y, width) {
 
 /**
  * Whether or not you can promote to servant
- * @param {KDCollectionEntry} value
- * @returns {boolean}
+ * @param value
  */
-function KDCanPromote(value) {
+function KDCanPromote(value: KDCollectionEntry): boolean {
 	return KDGetModifiedOpinionID(value.id) > 0 || value.Opinion > 0;
 }
 
-function KDPromote(value) {
+function KDPromote(value: KDCollectionEntry) {
 	value.status = "Servant";
 	if (KDIsNPCPersistent(value.id)) {
 		KDGetPersistentNPC(value.id).collect = true;

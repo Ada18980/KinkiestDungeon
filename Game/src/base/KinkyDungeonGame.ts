@@ -605,11 +605,11 @@ function KDUnPackEnemies(data: KDMapDataType) {
 /**
  * Decompress persistent entities
  * goes thru all entities on a map, and compares their current location according to persistent NPC record
- * @param {number} Level
- * @param {KDMapDataType} data
- * @param {boolean} removeMissing - Remove enemies that are missing, i.e. their persistent NPC record says they are in another room
+ * @param Level
+ * @param data
+ * @param [removeMissing] - Remove enemies that are missing, i.e. their persistent NPC record says they are in another room
  */
-function KDSyncPersistentEntities(Level, data, removeMissing = true) {
+function KDSyncPersistentEntities(Level: number, data: KDMapDataType, removeMissing: boolean = true) {
 	let newEntities = [];
 	for (let enemy of data.Entities) {
 		if (KDIsNPCPersistent(enemy.id)) {
@@ -3926,14 +3926,13 @@ function KinkyDungeonMapGet(X: number, Y: number): string {
 
 	return KDMapData.Grid[X + Y*(KDMapData.GridWidth+1)];
 }
+
 /**
- *
- * @param {KDMapDataType} data
- * @param {number} X
- * @param {number} Y
- * @returns {string}
+ * @param data
+ * @param X
+ * @param Y
  */
-function KinkyDungeonMapDataGet(data, X, Y) {
+function KinkyDungeonMapDataGet(data: KDMapDataType, X: number, Y: number): string {
 	return data.Grid[X + Y*(data.GridWidth+1)];
 }
 

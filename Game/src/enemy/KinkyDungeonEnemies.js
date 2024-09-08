@@ -6722,6 +6722,7 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
  * @param {entity} enemy
  * @param {number} struggleMod
  * @param {number} delta
+ * @param {number} [allowStruggleAlwaysThresh]
  * @returns {any}
  */
 function KDPredictStruggle(enemy, struggleMod, delta, allowStruggleAlwaysThresh) {
