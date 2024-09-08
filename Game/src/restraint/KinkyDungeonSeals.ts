@@ -8,8 +8,7 @@
 // Greater Seals are safeguarded by powerful magic. To remove one you must use a Restoration Crystal.
 // While you possess a Greater Seal, minibosses that drop Restoration Crystals will spawn on every floor with normal enemies.
 
-/** @type {Record<string, KDSealGroup>} */
-let KDSealGroups = {
+let KDSealGroups: Record<string, KDSealGroup> = {
 	"LettingGo": {
 		arousalMode: true,
 		level: 1,
