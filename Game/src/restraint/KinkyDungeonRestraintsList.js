@@ -4655,6 +4655,29 @@ const KinkyDungeonRestraints = [
 	//endregion
 
 	//region Obsidian
+	{inventory: true, removePrison: true, name: "ObsidianLeash",
+		debris: "Belts", tether: 2.9, Asset: "CollarLeash",
+		Color: "#44fF76", Group: "ItemNeckRestraints", leash: true, power: 3, weight: 10, harness: true,
+		Model: "Leash",
+		struggleBreak: true,
+		magic: true,
+		affinity: {
+			Cut: ["SharpHookOrFoot"],
+			Struggle: ["HookOrFoot"],
+		},
+		Filters: {
+			Leash: {"gamma":1,"saturation":0,"contrast":0.8166666666666667,"brightness":1.7166666666666666,"red":1.3833333333333333,"green":1,"blue":3.2666666666666666,"alpha":0.6833333333333333},
+		},
+		unlimited: true,
+		events: [
+			{trigger: "postRemoval", type: "RequireCollar"},
+		],
+		limitChance: {Struggle: 0.1, Cut: 0.1},
+		DefaultLock: "Purple",
+		escapeChance: {"Struggle": -0.35, "Cut": 0.05, "Remove": 0.4, "Pick": 0.35},
+		enemyTags: {"obsidianLeash":9, "obsidianRestraints": 10},
+		playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999},
+		minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
 
 	{inventory: true, name: "ObsidianGag", debris: "Chains", gag: 0.75, Asset: "MuzzleGag", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Color: ["#1C1847", "#1C1847"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 9, weight: -4, escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.2, "Pick": 0.25},
 		Model: "GagMetalRiveted",

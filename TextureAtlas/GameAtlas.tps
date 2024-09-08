@@ -2683,6 +2683,7 @@
             <key type="filename">../Game/Locks/Divine.png</key>
             <key type="filename">../Game/Locks/Divine2.png</key>
             <key type="filename">../Game/Locks/Dollmaker.png</key>
+            <key type="filename">../Game/Locks/ExCrystal.png</key>
             <key type="filename">../Game/Locks/Fuuka.png</key>
             <key type="filename">../Game/Locks/Gold.png</key>
             <key type="filename">../Game/Locks/Grey.png</key>

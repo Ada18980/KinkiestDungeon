@@ -94,7 +94,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Apron", Layer: "BeltDeco", Pri: 25,
+		{ Name: "Flower", Layer: "BeltDeco", Pri: 25,
 			Invariant: true,
 			NoOverride: true,
 		},

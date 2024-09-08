@@ -3890,12 +3890,17 @@ let KinkyDungeonEnemies = [
 	// region ancientworship
 	{name: "CuffedGirl", clusterWith: "chaos", bound: "CuffedGirl", playLine: "Gagged", color: "#9564b8",
 		tags: KDMapInit([
-			"minor",
+			"minor", "leashing", "obsidianLeash",
 			"ignoretiedup", "nocapture", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
 			"crystalRestraints", "crystalRestraintsHeavy",
 			"soulresist", "crushweakness", "charmweakness",
-			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms",
+			"submissive", "noshop", "gagged", "imprisonable", "rescuecrystal", "noarms",
 		]),
+		style: "Worshipper",
+		outfit: "Worshipper",
+		events: [
+			{trigger: "tick", type: "secretToy"},
+		],
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 5,
