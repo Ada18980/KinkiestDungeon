@@ -35,6 +35,17 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 (以下のニュースとアップデートのリンクで最新のスタンドアロン バージョンをチェックしてください!)
 
 
+Apply palette to Restraints
+拘束具にﾊﾟﾚｯﾄで設定した色を使用
+Apply palette to transforms
+人外要素にﾊﾟﾚｯﾄで設定した色を使用
+Don't use character palette
+ﾊﾟﾚｯﾄで設定した色を使用しない
+Always use character palette
+常にﾊﾟﾚｯﾄで設定した色を使用
+Use character palette for default outfit
+ﾃﾞﾌｫﾙﾄ衣装にﾊﾟﾚｯﾄで設定した色を使用
+
 Show Background Art
 背景の絵を表示
 Show DP instead of %
@@ -332,8 +343,8 @@ Distracted
 
 Brawler
 喧嘩屋
-Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage.
-素手の時、ダメージが10増加し、減速状態でもダメージが減少しなくなる
+Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage.
+素手の時、ダメージが10増加し、拘束されていてもダメージが減少しなくなる
 
 Way of the Squish
 くねくねの道
@@ -712,17 +723,21 @@ Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space w
 4ターン移動しなかった場合、次の移動にターンを消費しない
 
 Expansive Halls
-広大
-Increases the size of maps by 1 in each direction.
-マップが広くなる
+広大な迷路
+Increases the size of maps by 3 in the long dimension. Maps will be less dense.
+マップが広くなり、代わりに密度が低くなる
 Gargantuan Halls
-ガルガンチュア
-Increases the size of maps by 2 in each direction.
-マップが更に広くなる
+壮大な迷路
+Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
+マップが更に広くなり、トンネルと行き止まりが増える
 Labyrinthine Halls
-迷宮
-Increases the size of maps by 3 in each direction.
-マップが更に更に広くなる
+真の迷路
+Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
+マップが更に更に広くなり、トンネルがとても増える
+Absurdly Huge Maps
+やりすぎた迷路
+(Experimental) Make the maps really really big. Probably breaks the game.
+(試験段階)マップがやばいくらい広くなる。不具合が起きる可能性あり。
 
 Rigger
 リガー
@@ -758,7 +773,7 @@ While above 95% stamina, you gain +30 Evasion and your slow level is reduced by 
 Immovable Object
 不退転
 While above 90% willpower, you gain +150 Bondage Resist and Earth buff spells cost half mana.
-気力が90%以上の場合、拘束抵抗力が150上昇し、地属性のバフ魔法のコストが半減する
+気力が90%以上の場合、拘束耐性が150上昇し、地属性のバフ魔法のコストが半減する
 Path of Least Resistance
 楽な道
 While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage when enemies restrain you.
@@ -890,8 +905,8 @@ Novice Pet
 新参ペット
 You can now sprint while wearing a petsuit. (Upgrades available in spell tree)
 ペットスーツを装備していても走ることができる(スキルツリーにてアップグレード可能)
-Novice Pet Perk
-新参ペット(パーク)
+Novice Pet Training
+新参ペットの訓練
 You can now sprint while wearing a petsuit.
 ペットスーツを装備していても走ることができる
 Eager Pet
@@ -1317,16 +1332,16 @@ Hands are useless!
 手が使えない
 Hands are impaired! Some tasks will be harder...
 手が上手く使えない。いくつかの行動にペナルティを得る
-Movement significantly impaired!
-動きが鈍い
-Movement slightly impaired.
-動きが少し鈍い
-Movement severely impaired!
-動きがとても鈍い
-Movement is almost impossible. Sprinting and hopping are disabled.
-移動がほぼ不可能。走り、飛び跳ねが使用不可能。
-Immobilized!
-動けない！
+Slow Level 2: Movement significantly impaired!
+減速2:動きが鈍い
+Slow Level 1: Movement slightly impaired.
+減速1:動きが少し鈍い
+Slow Level 3: Movement severely impaired!
+減速3:動きがとても鈍い
+Slow Level 4+: Movement is almost impossible. Sprinting and hopping are disabled.
+減速4:移動がほぼ不可能。走り、飛び跳ねが使用不可能。
+Slow Level 10+: Immobilized!
+減速10+:動けない！
 Your mouth is free for potion-drinking and spellcasting activities.
 口は拘束されていない
 Your vision is clear.
@@ -1534,7 +1549,7 @@ Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 回避率: Percent%。基礎回避率 EVASIONSUM に EVASIONPENALTY% のペナルティを受けている。
 
 Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist and RESBLKPENALTY penalty.
-レベル10の拘束を封じる確率:AMNT1%。基礎拘束回避率 AMNT2 に RESBLKPENALTY のペナルティを受けている。
+レベル10の拘束を封じる確率:AMNT1%。基礎拘束耐性 AMNT2 に RESBLKPENALTY のペナルティを受けている。
 
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
 ブロック率： Percent%。基礎ブロック率 BLOCKSUM に BLOCKPENALTY% のペナルティを受けている。
@@ -1594,8 +1609,8 @@ Play with yourself
 オナニーする
 Go to sleep
 寝る
-Make noise!
-騒ぎ立てる
+Call for Help!!!
+助けを呼ぶ
 Wait until interrupted
 自動待機
 Auto-struggle
@@ -1688,7 +1703,7 @@ New Game+
 ニューゲーム+
 Continue Last Save
 最後のセーブデータをロード
-Load From Code
+Load Saved Game
 ロード
 Save Outfit (overwrites!)
 衣装を上書き保存
@@ -1830,6 +1845,10 @@ Spell List
 スペル一覧
 Journal
 ノート
+Pause Menu
+ポーズ
+Facilities
+設備
 Current Key Pressed
 現在押されているキー
 Press a key, then press a button to set that key
@@ -4597,6 +4616,10 @@ The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 ファンガールが細い指で胸を優しく揉んできた！ (DamageTaken)
 Crystal Glyph
 クリスタルグリフ
+Crystal Slash
+クリスタルスラッシュ
+Crystal Bolt
+クリスタルボルト
 Tailor
 仕立て屋
 You murder the tailor!
@@ -5166,6 +5189,17 @@ The lock is definitely magical and forces your pick out!
 鍵穴からロックピックが弾かれてしまった！
 The lock doesn't even have a keyhole to pick!
 鍵穴が見当たらない！
+
+The lock is encased in magical crystals that block the keyhole.
+鍵穴は魔法のクリスタルで覆われている。
+Your distraction makes the crystals regrow immediately after breaking them off.
+クリスタルを割っても、性欲を吸収してすぐに再生してしまう。
+
+The crystal fragments in the lock make it difficult to pick.
+クリスタルの破片が鍵穴に入り込んでおり、ピッキングはできそうにない。
+You need a key to actually unlock the ex-crystallized lock.
+クリスタルで覆われた錠を外す鍵を持っていない。
+
 The key sticks in the lock and jams, mangling the key!
 鍵が引っかかり、鍵穴の中で折れてしまった！
 You unlock the TargetRestraint.
@@ -5657,6 +5691,8 @@ Rubber
 ゴム
 Divine
 神
+Crystal
+クリスタル
 Runic
 呪文
 Magic
@@ -5671,21 +5707,23 @@ Advanced Cyber
 Ancient
 古代
 Simple Lock
-簡単な錠前
+簡単な錠
 Standard Lock
-普通の錠前
+普通の錠
 Secure Lock
-難しい錠前
+難しい錠
 Disc Lock
 ディスクロック
 Rubber Lock
-ゴムの錠前
+ゴムの錠
 Divine Lock
-神の錠前
+女神の錠
+Crystal Lock
+クリスタルの錠
 Runic Lock
-呪文の錠前
+呪文の錠
 Purple Lock
-紫の錠前
+紫の錠
 Cyber Lock
 電子錠
 Integrated Cyber Lock
@@ -7582,6 +7620,14 @@ A leash used for training pets.
 ペットの散歩に使うリード
 It is a steel cable with a weatherproof rubber coating, and a convenient handle.
 ゴムで被覆されており、過酷な環境でも劣化しない鋼鉄のリード。
+
+Magical Leash
+魔法のリード
+A leash made of magical energy, linked to a submissive's collar.
+魔力によって首輪から伸びる魔法のリード。
+Very difficult to break unless you have a strong magical blade.
+魔力を帯びた刃物がないと切断は難しい。
+
 Your ankle cuffs snap together on their own!
 足首の枷同士が勝手に連結した！
 Your ankle cuffs detach!
@@ -10338,7 +10384,7 @@ While you have 100 current willpower or more, regain an additional 4 stamina per
 Defiance
 反抗
 For each 10 current willpower you have over 50, gain +5 Bondage Resist.
-現在の気力が50以上の時、10を超えるごとに5ポイントの拘束抵抗力を得る。
+現在の気力が50以上の時、10を超えるごとに5ポイントの拘束耐性を得る。
 Willful Struggle
 決意の抵抗
 For each 10 current willpower you have over 50, gain +1% struggle power.
@@ -17423,12 +17469,10 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 十字形にスライム溜まりを作り、毎ターン35ダメージを与える。
 Ignite torches and nearby objects
 近くのオブジェクトに着火する。
-Ignite torches and nearby objects
-近くのオブジェクトに着火する。
-Ignite torches and nearby objects
-近くのオブジェクトに着火する。
-Ignite torches and nearby objects
-近くのオブジェクトに着火する。
+
+Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
+ひび割れたタイルを攻撃する。反対側のマスがひび割れているか空白である場合、破壊する。
+
 Preferences
 好み
 Preferences 2
@@ -19906,14 +19950,22 @@ You're giving me everything you have.
 (SPEAKER はナイフを渡してきた)|自分を切らないでくださいね？
 (The SPEAKER gives you three picks)|I don't know how you plan to use these...
 (SPEAKER はロックピックを渡してきた)|これで何をするのかは知りませんが……
-(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
+(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
 (SPEAKER は惜しみながら青い鍵を渡してきた)|これは貴重なものなのですが……
+(The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
+(SPEAKER はこちらを感心するように見つめている)|天使じゃないと女神の加護が宿った拘束具は外せません。|応募してくれたら外してあげますよ？ｗ
+(The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
+(SPEAKER はこちらを感心するように見つめている)|クエストの邪魔はできませんね。
+(The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
+(SPEAKER はこちらを感心するように見つめている)|女神の祝福を受けているようですね、助けてあげましょう。|(彼女が祈りを捧げると、ランダムな女神の拘束具の錠が外れた)
 (Ask for 2 knives)
 (ナイフ2本を希望する)
 (Ask for 3 lockpicks)
 (ロックピック3本を希望する)
 (Ask for a magic key)
 (魔法の鍵を希望する)
+(Ask for help with a divine lock)
+(女神の錠を外すよう頼む)
 There is no valid space next to you!
 隣にスペースがないと天使を呼び出せない。
 (You approach the SPEAKER)
@@ -26301,8 +26353,8 @@ Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Res
 戦闘のリズムを20消費し、拘束から抜け出す力が20%上昇し、拘束耐性が1%上昇する。60ターン経過、または気力が0になるまで続く。
 Problem Solving
 一挙解決
-While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
-アクティブ時、「もがく」が10ターン継続するようになる。拘束から抜け出す時、道具やバフによるボーナスが+40%増加する。拘束耐性が20%上昇する。
+While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%
+アクティブ時、「もがく」が10ターン継続するようになり、バフや道具によるボーナスが25+拘束耐性の20%分上昇する。
 
 
 You run out of strength to keep dodging...
@@ -26506,8 +26558,8 @@ Divine Chastity Belt
 神の貞操帯
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 聖なる光によって作り出された貞操帯。神によってのみ解放される。
-There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
+天使の力を持ってしても外すことのできない貞操帯。神聖なオーラで絶頂直前にバイブを止める。
 Your Divine Chastity Belt causes the vibrators to stop.
 貞操帯の放つ神聖なオーラでバイブレーターが停止した。
 
@@ -26515,8 +26567,8 @@ Divine Chastity Belt
 神の貞操帯
 A chastity belt forged in holy light. Only the will of a Goddess will release you!
 聖なる光によって作り出された貞操帯。神によってのみ解放される。
-There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
+天使の力を持ってしても外すことのできない貞操帯。神聖なオーラで絶頂直前にバイブを止める。
 
 You find a heavenly chastity belt. Who could it be for?
 神聖な貞操帯を見つけた。一体誰に使うのだろう？
@@ -26525,16 +26577,16 @@ Heavenly Chastity Belt
 天国の貞操帯
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
-There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
-慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
+天使の力を持ってしても外すことのできない貞操帯。神聖なオーラで絶頂直前にバイブを止める。
 Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 貞操帯の放つ神聖なオーラでバイブレーターが停止した。
 Heavenly Chastity Belt
 天国の貞操帯
 A chastity belt forged in holy light. Only the will of a Goddess will release you!
 聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
-There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
-慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
+天使の力を持ってしても外すことのできない貞操帯。神聖なオーラで絶頂直前にバイブを止める。
 You find a heavenly chastity belt. Who could it be for?
 天国の貞操帯を見つけた。一体誰が置いたのだろうか？
 
@@ -26543,15 +26595,15 @@ Heavenly Chastity Bra
 天国の貞操ブラ
 A chastity bra forged in holy light. Only a Goddess' will can release you.
 聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
-There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
-慙悔によってのみ解放される。神聖なオーラで快楽をスタミナに変換する。
+There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
+天使の力を持ってしても外すことのできない貞操ブラ。神聖なオーラで快楽をスタミナに変換する。
 
 Divine Chastity Bra
 神の貞操ブラ
 A chastity bra forged in holy light. Only the will of a Goddess will release you!
 聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
-There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
-慙悔によってのみ解放される。神聖なオーラで自慰が妨げられる。
+There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
+天使の力を持ってしても外すことのできない貞操ブラ。神聖なオーラで自慰が妨げられる。
 You find a heavenly chastity bra. Who could it be for?
 天国の貞操ブラを見つけた。一体誰が置いたのだろう？
 
@@ -28339,6 +28391,21 @@ Living Shadow
 Engulfs the tile in darkness.
 周囲を包む闇
 
+Planar Focus
+テレポーターの中心
+Absorbs teleportation energies.
+テレポートエネルギーを吸収する装置。
+
+Planar Diffractor
+テレポーターの回折機
+Diffuses teleportation energies.
+テレポートエネルギーを拡散させる装置。
+
+Planar Focusing Crystal
+テレポータークリスタル
+Amplifies teleportation energies.
+テレポートエネルギーを増大させる装置。
+
 Mysterious Plate
 奇妙なプレート
 What could it be?
@@ -29003,7 +29070,7 @@ You must first accept the quest before offering at the shrine.
 Zero Resistance
 無抵抗
 Toggle this to set bondage resist, evasion, and block to 0. While enabled, using the 'wait until interrupted' button will not be interrupted when hit or bound.
-使用すると、拘束抵抗値、回避値、ブロック値が0になり、「自動待機」使用時に攻撃や拘束をされても待機し続けるようになる。
+使用すると、拘束耐性、回避値、ブロック値が0になり、「自動待機」使用時に攻撃や拘束をされても待機し続けるようになる。
 
 The RSTRT feels a little looser!
 RSTRT が少し緩んだ！
@@ -29954,6 +30021,8 @@ Load Code
 コードをロード
 Load File
 ファイルをロード
+Load Slot 0
+スロット 0 をロード
 Save From Code
 コードとしてセーブ
 
@@ -30010,8 +30079,8 @@ Chaos Route
 ランダムルート
 Map Seed: 
 Seed値: 
-Will Overwrite!
-既存のデータあり。上書きする？
+Will Overwrite NME!
+NME を上書きする？
 
 Play Slot 
 プレイ
@@ -30020,6 +30089,13 @@ Play (NO SLOT!)
 
 Looks like you might be stuck. Try calling for help (bottom right of UI)
 どうしようもなくなったら、助けを呼んでみるといい。(UI右下のボタン)
+
+Backup
+バックアップ
+Restore
+復元
+Set Palette
+パレットを設定
 
 Save to File
 ファイルにセーブ
@@ -30034,8 +30110,71 @@ Load from File
 Wizard
 魔法使い
 
-
 Target must be vulnerable.
 相手を弱体化状態にさせる必要がある。
 Target must be vulnerable or have casted a verbal spell.
 相手が口を使用する呪文を唱えているか、弱体化状態にさせる必要がある。
+Target must have casted a verbal spell.
+相手が口を使用する呪文を唱えている必要がある。
+
+Diggy diggy hole
+穴掘り
+Select a cracked wall.
+ひび割れた壁を選択
+You strike the earth!
+壁にツルハシを突き立てた！
+
+Must select a cracked wall.
+ひび割れた壁を選択する必要がある。
+Your arms aren't free to swing the axe!
+腕が自由でないとツルハシは振るえない。
+You strike the earth, but it is nothing but solid wall on the other side.
+壁にツルハシを突き立てるも、硬い岩盤に突き当たった。
+You strike the earth! It crumbles before you!
+ツルハシを突き立てると、壁が崩れ去った！
+
+The planar focus resonates with the teleportation magic!
+テレポーターがテレポート魔法と共鳴した！
+The planar focusing crystal activates! Mana is drained, and turns into bindings!
+テレポートクリスタルが起動するが、マナが漏れて拘束具に変化した！
+The planar diffractor blocks the teleportation!
+回析機がテレポートを阻害した！
+
+Set Character Palette
+パレットを選択
+
+Reset all Keybindings
+キー設定をリセット
+
+That item is blocked! You can't remove it.
+取り除けない。
+
+ min.
+最低
+ max.
+最大
+ bonus
+ボーナス
+ penalty
+ﾍﾟﾅﾙﾃｨ
+
+You put it on, why would you want to take it off?~
+わざわざ取り付けておいて、どうして今更外そうとするの？
+You'll need an ancient key to unlock the ancient-made collar.
+古代の拘束具を外すには古代の鍵が必要だ。
+
+Ancient Worshipper
+古代文明の信徒
+The ancient worshipper repents of her ways.
+古代文明の信徒は改心した。
+The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
+古代文明の信徒の拘束具が伝播した！ (+RestraintAdded)
+Crystals start to grow on your locks! (DamageTaken)
+クリスタルが成長し、錠を形成した！ (DamageTaken)
+The ancient worshipper mumbles at you for assistance! (DamageTaken)
+古代文明の信徒が助けを求め縋ってきた！ (DamageTaken)
+
+The crystals break off, revealing a keyhole and weakening the item.
+結晶が割れ、拘束具の鍵穴が露出した。
+Your distraction causes the crystals to grow back, encasing the lock again!
+性欲を浴びてクリスタルが成長し、錠を再び覆ってしまった。
