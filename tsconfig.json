@@ -118,7 +118,7 @@
         "Game/src/player/KDDelayedActions.js",
         "Game/src/enemy/KDCommander.js",
         "Game/src/map/KDJourney.ts",
-        "Game/src/restraint/KinkyDungeonRestraintsList.js",
+        "Game/src/restraint/KinkyDungeonRestraintsList.ts",
         "Game/src/collection/KinkyDungeonCollection.ts",
         "Game/src/collection/KDCollectionWander.ts",
         "Game/src/collection/KDCollectionWanderList.ts",

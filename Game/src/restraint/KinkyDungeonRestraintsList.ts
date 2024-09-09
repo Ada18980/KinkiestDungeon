@@ -50,9 +50,8 @@ let KDBeltLink = [...KDBindable, ...KDDevices]; // For ACTUAL belt, not chastity
 
 
 /**
- * @type {restraint[]}
  */
-const KinkyDungeonRestraints = [
+const KinkyDungeonRestraints: restraint[] = [
 	// region Scarf
 	{name: "ScarfArms", unlimited: true, accessible: true, debris: "Fabric", Asset: "DuctTape", Color: "#880022", Group: "ItemArms", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], bindarms: true, power: 0, weight: 0, escapeChance: {"Struggle": 0.5, "Cut": 0.9, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],},
@@ -7724,7 +7723,7 @@ let KDControlHarnessCategories = {
 	"Cuffs": {
 		activateCount: 3,
 		activateTags: ["ArmCuffsBase", "LegCuffsBase", "AnkleCuffsBase"],
-		activateFunction: (e, item, data, invItems) => {
+		activateFunction: (_e: KinkyDungeonEvent, item: item, _data: any, _invItems: item[]) => {
 			//if (!KinkyDungeonFlags.get("ControlHarnessCuffs")) {
 
 			// If there are any cuffs to upgrade
@@ -7757,7 +7756,7 @@ let KDControlHarnessCategories = {
 			//KinkyDungeonSetFlag("ControlHarnessCuffs", 1);
 			//}
 		},
-		updateFunction: (e, item, data, invItems) => {
+		updateFunction: (_e: KinkyDungeonEvent, _item: item, data: any, invItems: item[]) => {
 			let upgradedTags = ["ControlHArm", "ControlHAnkle", "ControlHLeg"];
 			if (upgradedTags.some((tag) => {return KinkyDungeonPlayerTags.get(tag) != true;})) {
 				KinkyDungeonSendTextMessage(4,
@@ -7773,7 +7772,7 @@ let KDControlHarnessCategories = {
 	"RemoteLink": {
 		activateCount: 0,
 		activateTags: [],
-		activateFunction: (e, item, data, invItems) => {
+		activateFunction: (_e: KinkyDungeonEvent, item: item, _data: any, _invItems: item[]) => {
 			//if (!KinkyDungeonFlags.get("ControlHarnessCuffs")) {
 
 			// If there are any cuffs to upgrade
@@ -7806,14 +7805,14 @@ let KDControlHarnessCategories = {
 			//KinkyDungeonSetFlag("ControlHarnessCuffs", 1);
 			//}
 		},
-		updateFunction: (e, item, data, invItems) => {
+		updateFunction: (_e: KinkyDungeonEvent, _item: item, _data: any, _invItems: item[]) => {
 
 		},
 	},
 	"Chastity": {
 		activateCount: 2,
 		activateTags: ["CyberChastityL", "CyberChastityU"],
-		activateFunction: (e, item, data, invItems) => {
+		activateFunction: (_e: KinkyDungeonEvent, item: item, _data: any, _invItems: item[]) => {
 			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 			//if (!KinkyDungeonFlags.get("ControlHarnessCuffs")) {
 
@@ -7845,7 +7844,7 @@ let KDControlHarnessCategories = {
 			//KinkyDungeonSetFlag("ControlHarnessCuffs", 1);
 			//}
 		},
-		updateFunction: (e, item, data, invItems) => {
+		updateFunction: (_e: KinkyDungeonEvent, _item: item, data: any, invItems: item[]) => {
 			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 
 			let fillGroups = ["ItemVulva", "ItemVulvaPiercings", "ItemButt", "ItemNipples"];
@@ -7863,9 +7862,8 @@ let KDControlHarnessCategories = {
 };
 
 /**
- * @type {Record<string, KDSFXGroup>}
  */
-let KDSFXGroups = {
+let KDSFXGroups: Record<string, KDSFXGroup> = {
 	"Handcuffs": {
 		sfx: "LockHeavy",
 		sfxEscape: {
