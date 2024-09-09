@@ -1867,7 +1867,8 @@ let KDDialogue = {
 					let door = doorTile;
 					if (door) {
 						if (doorTile.tile) {
-							doorTile.OGLock = doorTile.Lock;
+							/*  FIXME: `door` and `doorTile` are not used again, so this appears to be a noop.  */
+							doorTile['OGLock'] = doorTile['Lock'];
 							doorTile.tile.Lock = undefined;
 							KDUpdateDoorNavMap();
 						}

@@ -852,7 +852,7 @@ let KDIntentEvents = {
 /**
  *
  * @param {entity} enemy
- * @param {any} AIData
+ * @param {any} [AIData]
  */
 function KDResetIntent(enemy, AIData) {
 	enemy.IntentLeashPoint = null;

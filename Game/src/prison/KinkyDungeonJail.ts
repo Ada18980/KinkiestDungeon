@@ -12,7 +12,7 @@ let KDMaxKeys = 2;
 /** Only these have jail events */
 let KDJailFilters = ['jail'];
 
-function KDAssignGuardAction(guard, xx, yy) {
+function KDAssignGuardAction(guard: entity, xx: number, yy: number): void {
 	let eventWeightTotal = 0;
 	let eventWeights = [];
 
@@ -31,7 +31,7 @@ function KDAssignGuardAction(guard, xx, yy) {
 	}
 }
 
-function KDGetJailEvent(guard, xx, yy) {
+function KDGetJailEvent(guard: entity, xx: number, yy: number): (g: entity, x: number, y: number) => void {
 	let eventWeightTotal = 0;
 	let eventWeights = [];
 
@@ -47,11 +47,11 @@ function KDGetJailEvent(guard, xx, yy) {
 			return eventWeights[L].event.trigger;
 		}
 	}
-	return (g, x, y) => {};
+	return (_g, _x, _y) => {};
 }
 
 
-function KinkyDungeonLoseJailKeys(Taken, boss, enemy) {
+function KinkyDungeonLoseJailKeys(Taken?: boolean, boss?: boolean, enemy?: entity): void {
 	// KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'chase'
 	if (KinkyDungeonFlags.has("BossUnlocked")) return;
 	if (KDMapData.KeysHeld > 0) {
@@ -81,7 +81,7 @@ function KinkyDungeonUpdateJailKeys() {
 	}
 }
 
-function KinkyDungeonAggroFaction(faction, noAllyRepPenalty, securityPenalty = 0) {
+function KinkyDungeonAggroFaction(faction: string, noAllyRepPenalty?: boolean, securityPenalty: number = 0): boolean {
 	if (faction == "Player") return false;
 	let list = [];
 	let list2 = [];
@@ -142,12 +142,10 @@ function KinkyDungeonPlayerIsVisibleToJailers() {
 }
 
 /**
- *
- * @param {number} playChance
- * @param {entity} enemy
- * @returns {number}
+ * @param playChance
+ * @param enemy
  */
-function KDCalcPlayChance(playChance, enemy) {
+function KDCalcPlayChance(playChance: number, enemy: entity): number {
 	// Reduce chance of play in combat
 	if (KinkyDungeonFlags.get("PlayerCombat")) playChance *= 0.2;
 	if (!KinkyDungeonFlags.get("wander")) playChance *= 0.75;
@@ -169,11 +167,9 @@ function KDCalcPlayChance(playChance, enemy) {
 }
 
 /**
- *
- * @param {entity} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KinkyDungeonCanPlay(enemy) {
+function KinkyDungeonCanPlay(enemy: entity): boolean {
 
 	return (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail' || (!KDHostile(enemy)
 		&& !(KDAllied(enemy) && !KDEnemyHasFlag(enemy, "allyPlay"))))
@@ -205,11 +201,10 @@ let KDMaxAlertTimer = 14;
 let KDMaxAlertTimerAggro = 300;
 
 /**
- *
- * @param {string} action
- * @param {{enemy?: entity, x?: number, y?: number, faction?: string, force?: boolean}} data
+ * @param action
+ * @param data
  */
-function KinkyDungeonAggroAction(action, data) {
+function KinkyDungeonAggroAction(action: string, data: {enemy?: entity, x?: number, y?: number, faction?: string, force?: boolean}): void {
 	if (data?.faction == "Player") return;
 	let e = null;
 	switch (action) {
@@ -301,23 +296,16 @@ function KinkyDungeonAggroAction(action, data) {
 	}
 }
 
-/**
- * @type {string[]}
- */
-let KDLocalChaseTypes = ["Refusal", "Attack", "Spell", "SpellItem", "Shrine", "Orb", "Chest"];
-/**
- * @type {string[]}
- */
-let KDSevereTypes = ["Attack"];
+let KDLocalChaseTypes: string[] = ["Refusal", "Attack", "Spell", "SpellItem", "Shrine", "Orb", "Chest"];
+let KDSevereTypes: string[] = ["Attack"];
 
 /**
- *
- * @param {entity} enemy
- * @param {string} Type
- * @param {string} [faction]
- * @param {boolean} [force]
+ * @param enemy
+ * @param Type
+ * @param [faction]
+ * @param [force]
  */
-function KinkyDungeonStartChase(enemy, Type, faction, force) {
+function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, force?: boolean) {
 	if (!force && enemy && (!enemy.aware && !(enemy.vp > 0.5))) return;
 	if (KDGetFaction(enemy) == "player") return;
 	if ((!enemy && !KDLocalChaseTypes.includes(Type))) {
@@ -373,11 +361,10 @@ function KinkyDungeonStartChase(enemy, Type, faction, force) {
 }
 
 /**
- *
- * @param {entity} enemy
- * @param {string} Type
+ * @param enemy
+ * @param Type
  */
-function KinkyDungeonPlayExcuse(enemy, Type) {
+function KinkyDungeonPlayExcuse(enemy: entity, Type: string): void {
 	if (Type == "Free" && enemy && enemy.Enemy.noChaseUnrestrained) {
 		return;
 	}
@@ -396,31 +383,27 @@ function KinkyDungeonPlayExcuse(enemy, Type) {
 }
 
 /**
- *
- * @param {entity} enemy
- * @param {number} mult
- * @param {number} base
+ * @param enemy
+ * @param mult
+ * @param base
  */
-function KDSetPlayCD(enemy, mult, base = 10) {
+function KDSetPlayCD(enemy: entity, mult: number, base: number = 10): void {
 	enemy.playWithPlayerCD = Math.max(enemy.playWithPlayerCD || 0, base * mult + (enemy.playWithPlayer || 0) * mult);
 }
 
 /**
- *
- * @param {string} Group
- * @param {KDJailRestraint[]} [jailRestraintList]
- * @param {string} [lock]
- * @returns {{restraint: restraint, variant: string}}
+ * @param Group
+ * @param [jailRestraintList]
+ * @param [lock]
  */
-function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList, lock) {
+function KinkyDungeonGetJailRestraintForGroup(Group: string, jailRestraintList?: KDJailRestraint[], lock?: string): {restraint: restraint, variant: string} {
 	if (!jailRestraintList) {
 		jailRestraintList = KDGetJailRestraints();
 	}
 
 	/**
-	 * @type {restraint}
 	 */
-	let cand = null;
+	let cand: restraint = null;
 	let variant = "";
 	let candLevel = 0;
 	let currentItem = KinkyDungeonGetRestraintItem(Group);
@@ -502,22 +485,19 @@ function KinkyDungeonGetJailRestraintForGroup(Group, jailRestraintList, lock) {
 
 
 /**
- *
- * @param {string} Group
- * @param {boolean} agnostic - Dont care about whether it can be put on or not
- * @param {KDJailRestraint[]} [jailRestraintList]
- * @param {string} [lock]
- * @returns {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
+ * @param Group
+ * @param [jailRestraintList]
+ * @param [agnostic] - Dont care about whether it can be put on or not
+ * @param [lock]
+ * @param [ignoreLevel]
+ * @param [ignoreWarn]
  */
-function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList, agnostic = false, lock, ignoreLevel = false, ignoreWorn = false) {
+function KinkyDungeonGetJailRestraintsForGroup(Group: string, jailRestraintList?: KDJailRestraint[], agnostic: boolean = false, lock?: string, ignoreLevel: boolean = false, _ignoreWorn: boolean = false): {restraint: restraint, variant: string, def: KDJailRestraint}[] {
 	if (!jailRestraintList) {
 		jailRestraintList = KDGetJailRestraints();
 	}
 
-	/**
-	 * @type {{restraint: restraint, variant: string, def: KDJailRestraint}[]}
-	 */
-	let cands = [];
+	let cands: {restraint: restraint, variant: string, def: KDJailRestraint}[] = [];
 	for (let pri of [true, false]) {
 		for (let r of jailRestraintList) {
 			let level = 0;
@@ -550,11 +530,9 @@ function KinkyDungeonGetJailRestraintsForGroup(Group, jailRestraintList, agnosti
 }
 
 /**
- *
- * @param {KDJailRestraint} r
- * @returns {boolean}
+ * @param r
  */
-function KDJailCondition(r) {
+function KDJailCondition(r: KDJailRestraint): boolean {
 	if (r.Condition && KDJailConditions[r.Condition]) {
 		return KDJailConditions[r.Condition](r);
 	}
@@ -562,11 +540,9 @@ function KDJailCondition(r) {
 }
 
 /**
- *
- * @param {KDJailRestraint} r
- * @returns {boolean}
+ * @param r
  */
-function KDPriorityCondition(r) {
+function KDPriorityCondition(r: KDJailRestraint): boolean {
 	if (r.Priority && KDJailConditions[r.Priority]) {
 		return KDJailConditions[r.Priority](r);
 	}
@@ -574,7 +550,7 @@ function KDPriorityCondition(r) {
 }
 
 
-function KinkyDungeonGetJailRestraintLevelFor(Name) {
+function KinkyDungeonGetJailRestraintLevelFor(Name: string): number {
 	for (let r of KDGetJailRestraints()) {
 		if (r.Name === Name) {
 			return r.Level;
@@ -584,11 +560,9 @@ function KinkyDungeonGetJailRestraintLevelFor(Name) {
 }
 
 /**
- *
- * @param {string[]} [filter] - Have to be in a jail, not a dropoff
- * @returns {boolean}
+ * @param [filter] - Have to be in a jail, not a dropoff
  */
-function KinkyDungeonInJail(filter) {
+function KinkyDungeonInJail(filter: string[]): boolean {
 	return KinkyDungeonPlayerInCell(false, false, filter);//KDGameData.KinkyDungeonSpawnJailers > 0 && KDGameData.KinkyDungeonSpawnJailers + 1 >= KDGameData.KinkyDungeonSpawnJailersMax;
 }
 
@@ -626,7 +600,7 @@ function KinkyDungeonPlaceJailKeys() {
 	}
 }
 
-function KinkyDungeonHandleJailSpawns(delta) {
+function KinkyDungeonHandleJailSpawns(delta: number): void {
 	if (KDGameData.JailTurns) KDGameData.JailTurns += delta;
 	else KDGameData.JailTurns = 1;
 	if (KinkyDungeonInJail(KDJailFilters)) KDGameData.JailRemoveRestraintsTimer += delta;
@@ -838,12 +812,11 @@ function KinkyDungeonTooMuchRestraint() {
 }
 
 /**
- *
- * @param {entity} player
- * @param {entity} enemy
- * @param {{x: number, y: number}} point
+ * @param player
+ * @param enemy
+ * @param point
  */
-function KDPutInJail(player, enemy, point) {
+function KDPutInJail(player: entity, enemy: entity, point: { x: number, y: number }): void {
 	let entity = enemy ? enemy : player;
 	let nearestJail = KinkyDungeonNearestJailPoint(entity.x, entity.y);
 	let jailRadius = (nearestJail && nearestJail.radius) ? nearestJail.radius : 1.5;
@@ -863,12 +836,11 @@ function KDPutInJail(player, enemy, point) {
 }
 
 /**
- *
- * @param {number} xx
- * @param {number} yy
- * @param {string} type
+ * @param xx
+ * @param yy
+ * @param type
  */
-function KinkyDungeonHandleLeashTour(xx, yy, type) {
+function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void {
 	let player = KDPlayer();
 	// Remove the leash when we are done
 	if (KDIsPlayerTetheredToEntity(KDPlayer(), KinkyDungeonJailGuard()) && !KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints) {
@@ -1025,7 +997,7 @@ function KinkyDungeonHandleLeashTour(xx, yy, type) {
 	}
 }
 
-function KDGetEffSecurityLevel(faction, Cap) {
+function KDGetEffSecurityLevel(faction?: string, Cap?: boolean): number {
 	if (!faction) faction = KDGetMainFaction();
 	let basemod =
 		(KinkyDungeonStatsChoice.get("NoWayOut") ? 10 : 0)
@@ -1041,12 +1013,11 @@ function KDGetEffSecurityLevel(faction, Cap) {
 }
 
 /**
- *
- * @param {number} xx
- * @param {number} yy
- * @param {string} type
+ * @param xx
+ * @param yy
+ * @param type
  */
-function KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type) {
+function KinkyDungeonJailGuardGetLeashWaypoint(xx: number, yy: number, type: string): void {
 	if (type == "transfer") {
 		// Go back to a random mcell
 		let nearestJail = KinkyDungeonRandomJailPoint(["jail"], [KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)]);
@@ -1075,7 +1046,7 @@ function KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type) {
 	}
 }
 
-function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
+function KinkyDungeonJailGetLeashPoint(xx: number, yy: number, enemy: entity): { x: number, y: number } {
 	let randomPoint = { x: xx, y: yy };
 	for(let i = 0; i < 40; ++i) {
 		let candidatePoint = KinkyDungeonGetRandomEnemyPoint(true, false, enemy);
@@ -1091,12 +1062,12 @@ function KinkyDungeonJailGetLeashPoint(xx, yy, enemy) {
 }
 
 /**
- * @param {boolean} [any]
- * @param {boolean} [qualified] - Makes sure the player is qualified
- * @param {string[]} [filter]
- * @returns {boolean} - Returns if the player is inside the nearest jail cell
+ * @param [any]
+ * @param [qualified] - Makes sure the player is qualified
+ * @param [filter]
+ * @returns - Returns if the player is inside the nearest jail cell
  */
-function KinkyDungeonPlayerInCell(any, qualified, filter) {
+function KinkyDungeonPlayerInCell(any?: boolean, qualified?: boolean, filter?: string[]): boolean {
 	if (!filter && KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.Jail) {
 		return true;
 	}
@@ -1106,14 +1077,14 @@ function KinkyDungeonPlayerInCell(any, qualified, filter) {
 	//return (Math.abs(KinkyDungeonPlayerEntity.x - KDMapData.StartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(KinkyDungeonPlayerEntity.y - KDMapData.StartPosition.y) <= KinkyDungeonJailLeash);
 }
 
-function KinkyDungeonPointInCell(x, y, radius = 2) {
+function KinkyDungeonPointInCell(x: number, y: number, radius: number = 2): boolean {
 	let nearestJail = KinkyDungeonNearestJailPoint(x, y);
 	if (!nearestJail) return false;
 	return KDistChebyshev(x - nearestJail.x, y - nearestJail.y) < radius;
 	//return (Math.abs(x - KDMapData.StartPosition.x) < KinkyDungeonJailLeashX - 1 && Math.abs(y - KDMapData.StartPosition.y) <= KinkyDungeonJailLeash);
 }
 
-function KinkyDungeonPassOut(noteleport) {
+function KinkyDungeonPassOut(noteleport?: boolean) {
 	KDDefeatedPlayerTick();
 	KDBreakTether(KinkyDungeonPlayerEntity);
 	KDGameData.KinkyDungeonLeashedPlayer = 0;
@@ -1166,7 +1137,7 @@ function KinkyDungeonPassOut(noteleport) {
 	KDGameData.SlowMoveTurns = 10;
 }
 
-function KDGetJailDoor(x, y) {
+function KDGetJailDoor(x: number, y: number): { tile: any; x: number; y: number } {
 	let point = KinkyDungeonNearestJailPoint(x, y);
 	if (point) {
 		x = point.x;
@@ -1176,7 +1147,7 @@ function KDGetJailDoor(x, y) {
 	return {tile: KinkyDungeonTilesGet((x) + "," + y), x: x, y: y};
 }
 
-function KDDefeatedPlayerTick(nodefeat) {
+function KDDefeatedPlayerTick(nodefeat?: boolean) {
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
 	KDGameData.JailGuard = 0;
@@ -1214,7 +1185,7 @@ function KDEnterDemonTransition() {
 	KinkyDungeonSaveGame();
 }
 
-function KDEnterDollTerminal(willing, cancelDialogue = true, forceOutfit = true) {
+function KDEnterDollTerminal(willing: boolean, cancelDialogue: boolean = true, forceOutfit: boolean = true): void {
 	let dollStand = KinkyDungeonPlayerTags.get("Dollstand");
 
 	KDDefeatedPlayerTick(!willing);
@@ -1311,7 +1282,7 @@ function KDApplyLivingCollars() {
 	}
 }
 
-function KinkyDungeonDefeat(PutInJail, leashEnemy) {
+function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KinkyDungeonInterruptSleep();
 	KDBreakAllLeashedTo(KinkyDungeonPlayerEntity);
 
@@ -1465,10 +1436,9 @@ function KinkyDungeonDefeat(PutInJail, leashEnemy) {
 }
 
 /**
- *
- * @param {boolean} JailBorderOnly
+ * @param JailBorderOnly
  */
-function KDRepairRubble(JailBorderOnly) {
+function KDRepairRubble(JailBorderOnly: boolean) {
 	let tile = null;
 	for (let X = 0; X < KDMapData.GridWidth - 1; X++) {
 		for (let Y = 0; Y < KDMapData.GridHeight - 1; Y++) {
@@ -1501,23 +1471,20 @@ function KDRepairRubble(JailBorderOnly) {
 }
 
 /**
- *
- * @param {entity} enemy
- * @returns {boolean}
+ * @param enemy
  */
-function KDEnemyIsTemporary(enemy) {
+function KDEnemyIsTemporary(enemy: entity): boolean {
 	return enemy.Enemy.tags.temporary || (enemy.lifetime > 0);
 }
 
 /**
  * Kicks enemies away, and also out of offlimits zones if they are aware
- * @param {any} nearestJail
- * @param {boolean} ignoreAware
- * @param {number} Level
- * @param {boolean} [noCull]
- * @returns
+ * @param nearestJail
+ * @param ignoreAware
+ * @param Level
+ * @param [noCull]
  */
-function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
+function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, noCull?: boolean): boolean {
 
 	let altRoom = KDMapData.RoomType;
 	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
@@ -1600,7 +1567,7 @@ function KDKickEnemies(nearestJail, ignoreAware, Level, noCull) {
 	return atLeastOneAware;
 }
 
-function KDResetAllIntents(nonHostileOnly, endPlay = 30, player) {
+function KDResetAllIntents(nonHostileOnly?: boolean, endPlay: number = 30, _player?: void) {
 	for (let e of  KDMapData.Entities) {
 		if (!nonHostileOnly || !KinkyDungeonAggressive(e)) {
 			if (endPlay) {
@@ -1614,14 +1581,14 @@ function KDResetAllIntents(nonHostileOnly, endPlay = 30, player) {
 
 	}
 }
-function KDResetAllAggro(player) {
+function KDResetAllAggro(_player?: void): void {
 	KDGameData.HostileFactions = [];
 	for (let e of KDMapData.Entities) {
 		if (e.hostile && !KDIntentEvents[e.IntentAction]?.noMassReset)
 			e.hostile = 0;
 	}
 }
-function KDForceWanderFar(player, radius = 10) {
+function KDForceWanderFar(player: any, radius: number = 10) {
 	let enemies = KDNearbyEnemies(player.x, player.y, radius);
 	for (let en of enemies) {
 		if (en.gx == player.x && en.gy == player.y) {
@@ -1632,10 +1599,9 @@ function KDForceWanderFar(player, radius = 10) {
 }
 
 /**
- *
- * @param {entity} en
+ * @param en
  */
-function KDWanderEnemy(en) {
+function KDWanderEnemy(en: entity) {
 	en.gx = en.x;
 	en.gy = en.y;
 	KinkyDungeonSetEnemyFlag(en, "forceWFar", 5);
@@ -1644,9 +1610,9 @@ function KDWanderEnemy(en) {
 
 /**
  * Moves an enemy to a random position on the map
- * @param {entity} e
+ * @param e
  */
-function KDKickEnemy(e, minDist = 10, force = false) {
+function KDKickEnemy(e: entity, minDist: number = 10, force: boolean = false) {
 	if (!e.Enemy.tags.temporary || force) {
 		if (!e.Enemy.tags.prisoner && !KDEnemyHasFlag(e, "imprisoned")) {
 			let p = (e.spawnX != undefined && e.spawnY != undefined) ? {x: e.spawnX, y: e.spawnY} : undefined;
@@ -1675,16 +1641,16 @@ function KDKickEnemy(e, minDist = 10, force = false) {
 
 /**
  * Moves an enemy to a random position nearby
- * @param {entity} e
+ * @param e
  */
-function KDKickEnemyLocal(e) {
+function KDKickEnemyLocal(e: entity) {
 	let point = KinkyDungeonGetNearbyPoint(e.x, e.y, true, undefined, true, true);
 	if (point) {
 		KDMoveEntity(e, point.x, point.y, false);
 	}
 }
 
-function KinkyDungeonStripInventory(KeepPicks) {
+function KinkyDungeonStripInventory(KeepPicks: boolean) {
 	KinkyDungeonRedKeys = 0;
 	KinkyDungeonBlueKeys = 0;
 	KinkyDungeonLockpicks = KeepPicks ? (Math.min(Math.max(0, Math.round(3 * (1 - (KDGetEffSecurityLevel(undefined, true) + 50)/100))), KinkyDungeonLockpicks)) : 0;
@@ -1705,7 +1671,7 @@ function KinkyDungeonStripInventory(KeepPicks) {
 	}
 }
 
-function KDExpireFlags(enemy) {
+function KDExpireFlags(enemy: entity) {
 	if (enemy.flags) {
 		for (let f of Object.entries(enemy.flags)) {
 			if (f[1] > 0 && f[1] < 9000) enemy.flags[f[0]] = 0;
@@ -1715,12 +1681,11 @@ function KDExpireFlags(enemy) {
 
 /**
  * Gets the jail outfit of the guard, or using overrideTags instead of the guard's taggs
- * @param {string[]} [overrideTags]
- * @param {boolean} [requireJail]
- * @param {boolean} [requireParole]
- * @returns {KDJailRestraint[]}
+ * @param [overrideTags]
+ * @param [requireJail]
+ * @param [requireParole]
  */
-function KDGetJailRestraints(overrideTags, requireJail, requireParole) {
+function KDGetJailRestraints(overrideTags?: string[], requireJail?: boolean, requireParole?: boolean): KDJailRestraint[] {
 	let restraints = [];
 	//let pris = {};
 	let guard = KinkyDungeonJailGuard();
@@ -1768,10 +1733,9 @@ function KDGetJailRestraints(overrideTags, requireJail, requireParole) {
 }
 
 /**
- * @type {Record<string, (enemy: entity) => void>}
  */
-let KDCustomDefeats = {
-	"DemonTransition": (enemy) => {
+let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
+	"DemonTransition": (_enemy) => {
 		KDEnterDemonTransition();
 	},
 	WolfgirlHunters: (enemy) => {
@@ -1802,7 +1766,7 @@ let KDCustomDefeats = {
 	},
 
 
-	RopeDojo: (enemy) => {
+	RopeDojo: (_enemy) => {
 		KinkyDungeonPassOut(false);
 		KDCustomDefeatUniforms.RopeDojo();
 	},
@@ -1918,7 +1882,7 @@ let KDCustomDefeatUniforms = {
 	},
 };
 
-function KDFixPlayerClothes(faction) {
+function KDFixPlayerClothes(faction: string) {
 	for (let inv of KinkyDungeonAllRestraintDynamic()) {
 		inv.item.faction = faction;
 	}
@@ -1942,11 +1906,9 @@ let KDChestPenalty = {
 };
 
 /**
- *
- * @param {{enemy?: entity, x?: number, y?: number, faction?: string}} data
- * @returns {number}
+ * @param data
  */
-function KDChestSecurity(data) {
+function KDChestSecurity(data: {enemy?: entity, x?: number, y?: number, faction?: string}): number {
 	if (data.x) {
 		let tile = KinkyDungeonTilesGet(data.x + "," + data.y);
 		if (tile) {
@@ -1959,7 +1921,7 @@ function KDChestSecurity(data) {
 	return 0.25;
 }
 
-function KDGetHiSecDialogue(enemy) {
+function KDGetHiSecDialogue(enemy: entity): string {
 	if (enemy) {
 		let faction = KDGetFaction(enemy);
 		if (KDFactionProperties[faction]?.customHiSecDialogue) {
