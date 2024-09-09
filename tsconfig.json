@@ -73,7 +73,7 @@
         "Game/src/base/KinkyDungeonInput.ts",
         "Game/src/base/KinkyDungeonHUD.ts",
         "Game/src/base/KinkyDungeonDraw.ts",
-        "Game/src/restraint/KinkyDungeonFurniture.js",
+        "Game/src/restraint/KinkyDungeonFurniture.ts",
         "Game/src/magic/KinkyDungeonMagic.js",
         "Game/src/magic/KinkyDungeonMagicCode.js",
         "Game/src/magic/KinkyDungeonMagicList.js",

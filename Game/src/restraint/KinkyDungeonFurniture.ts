@@ -4,7 +4,7 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "Cage",
 		restraintTag: "cage",
-		tickFunction: (delta) => {
+		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
@@ -24,7 +24,7 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "DisplayStand",
 		restraintTag: "displaystand",
-		tickFunction: (delta) => {
+		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
@@ -44,7 +44,7 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "FutureBox",
 		restraintTag: "futurebox",
-		tickFunction: (delta) => {
+		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
 	},
@@ -52,7 +52,7 @@ let KDFurniture = {
 		floor: "Brickwork",
 		sprite: "Sarcophagus",
 		restraintTag: "sarcophagus",
-		tickFunction: (delta) => {
+		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
 	},
@@ -60,7 +60,7 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "Bed",
 		restraintTag: "bed",
-		tickFunction: (delta) => {
+		tickFunction: (_delta) => {
 			// Small stamina regen :)
 			KinkyDungeonChangeStamina(0.1, true, false, false);
 		}
@@ -69,7 +69,7 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "DisplayEgyptian",
 		restraintTag: "displaystand",
-		tickFunction: (delta) => {
+		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
