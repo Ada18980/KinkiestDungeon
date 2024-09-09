@@ -1,12 +1,11 @@
 'use strict';
 
 /**
- * @param {number} x
- * @param {number} y
- * @returns {entity}
+ * @param x
+ * @param y
  */
-function KDGetNearestFactionGuard(x, y) {
-	let condition = (en) => {
+function KDGetNearestFactionGuard(x: number, y: number): entity {
+	let condition = (en: entity) => {
 		return (KDEnemyHasFlag(en, "mapguard")
 			|| (
 				KDGetFaction(en) == KDGetMainFaction()
@@ -34,11 +33,9 @@ function KDGetNearestFactionGuard(x, y) {
 }
 
 /**
- *
- * @param {entity} player
- * @returns {entity}
+ * @param player
  */
-function KDPrisonCommonGuard(player, call = false) {
+function KDPrisonCommonGuard(player: entity, _call: boolean = false): entity {
 	// Suppress standard guard call behavior
 	KinkyDungeonSetFlag("SuppressGuardCall", 10);
 	let guard = KDGetNearestFactionGuard(player.x, player.y);
@@ -51,30 +48,17 @@ function KDPrisonCommonGuard(player, call = false) {
 
 /**
  * Gets the groups and restraints to add based on a set of jail tags
- * @param {entity} player
- * @param {string[]} jailLists
- * @param {string} lock
- * @param {number} maxPower
- * @returns {KDJailGetGroupsReturn}
+ * @param player
+ * @param jailLists
+ * @param lock
+ * @param maxPower
  */
-function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
-	/**
-	 * @type {string[]}
-	 */
-	let groupsToStrip = [];
-	/**
-	 * @type {{item: string; variant: string}[]}
-	 */
-	let itemsToApply = [];
+function KDPrisonGetGroups(_player: entity, jailLists: string[], lock: string, maxPower: number): KDJailGetGroupsReturn {
+	let groupsToStrip: string[] = [];
+	let itemsToApply: {item: string; variant: string}[] = [];
 	let itemsApplied = {};
-	/**
-	 * @type {Record<string, boolean>}
-	 */
-	let itemsToKeep = {};
-	/**
-	 * @type {Record<string, boolean>}
-	 */
-	let itemsToStrip = {};
+	let itemsToKeep: Record<string, boolean> = {};
+	let itemsToStrip: Record<string, boolean> = {};
 
 	// First populate the items
 	let jailList = KDGetJailRestraints(jailLists, false, false);
@@ -129,10 +113,9 @@ function KDPrisonGetGroups(player, jailLists, lock, maxPower) {
 
 /**
  * Throttles prison checks
- * @param {entity} player
- * @returns {boolean}
+ * @param player
  */
-function KDPrisonTick(player) {
+function KDPrisonTick(_player: entity): boolean {
 	if (!KinkyDungeonFlags.get("prisonCheck")) {
 		KinkyDungeonSetFlag("prisonCheck", 3 + Math.floor(KDRandom() * 3));
 		return true;
@@ -141,11 +124,9 @@ function KDPrisonTick(player) {
 }
 
 /**
- *
- * @param {entity} player
- * @returns {boolean}
+ * @param player
  */
-function KDPrisonIsInFurniture(player) {
+function KDPrisonIsInFurniture(player: entity): boolean {
 	if (KinkyDungeonPlayerTags.get("Furniture")) {
 		let tile = KinkyDungeonTilesGet(player.x + "," + player.y);
 		if (tile?.Furniture) {
@@ -156,22 +137,18 @@ function KDPrisonIsInFurniture(player) {
 }
 
 /**
- *
- * @param {entity} player
- * @param {string} state
- * @returns {string}
+ * @param player
+ * @param state
  */
-function KDGoToSubState(player, state) {
+function KDGoToSubState(_player: entity, state: string): string {
 	KDMapData.PrisonStateStack.unshift(KDMapData.PrisonState);
 	return state;
 }
 
 /**
- *
- * @param {entity} player
- * @returns {string}
+ * @param player
  */
-function KDPopSubstate(player) {
+function KDPopSubstate(_player: entity): string {
 	let state = KDMapData.PrisonStateStack[0];
 	if (state) {
 		KDMapData.PrisonStateStack.splice(0, 1);
@@ -183,11 +160,10 @@ function KDPopSubstate(player) {
 
 /**
  * Resets the prison state stack
- * @param {entity} player
- * @param {string} state
- * @returns {string}
+ * @param player
+ * @param state
  */
-function KDSetPrisonState(player, state) {
+function KDSetPrisonState(_player: entity, state: string): string {
 	if (KDMapData.PrisonStateStack?.length > 0) {
 		for (let s of KDMapData.PrisonStateStack) {
 			if (KDPrisonTypes[KDMapData.PrisonType].states[s].finally) KDPrisonTypes[KDMapData.PrisonType].states[s].finally(0, state, true);
@@ -199,10 +175,8 @@ function KDSetPrisonState(player, state) {
 }
 
 /**
- *
- * @param {entity} player
- * @returns {string}
+ * @param player
  */
-function KDCurrentPrisonState(player) {
+function KDCurrentPrisonState(_player: entity): string {
 	return KDMapData.PrisonState;
 }
