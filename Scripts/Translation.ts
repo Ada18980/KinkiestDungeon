@@ -111,28 +111,13 @@ function TranslationAvailable(FullPath: string): boolean {
  * @returns Array of strings with each line divided. For each translated line, the english string precedes the translated one in the array.
  */
 function TranslationParseTXT(str: string): string[] {
-
-	const arr = [];
-	let c;
-	str = str.replace(/\r\n/g, '\n').trim();
-
-	// iterate over each character, keep track of current row (of the returned array)
-	for (let row = c = 0; c < str.length; c++) {
-		let cc = str[c];        // current character, next character
-		arr[row] = arr[row] || "";             // create a new row if necessary
-		if (cc == '\n') { ++row; continue; }   // If it's a newline, move on to the next row
-		arr[row] += cc;                        // Otherwise, append the current character to the row
-	}
-
-	// Removes any comment rows (starts with ###)
-	for (let row = arr.length - 1; row >= 0; row--)
-		if (arr[row].indexOf("###") == 0) {
-			arr.splice(row, 1);
-		}
-
-	// Trims the full translated array
-	for (let row = 0; row < arr.length; row++)
-		arr[row] = arr[row].trim();
+	const arr: string[] = str
+		.replace(/\r\n/g, '\n')
+		.trim()
+		.split('\n')
+		.filter(line => !line.startsWith('###'))
+		.map(line => line.trim());
+	
 	return arr;
 }
 
