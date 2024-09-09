@@ -110,7 +110,7 @@
         "Game/src/faction/KinkyDungeonFactions.js",
         "Game/src/faction/KinkyDungeonFactionsList.js",
         "Game/src/player/KinkyDungeonNeeds.js",
-        "Game/src/prison/KinkyDungeonJailList.js",
+        "Game/src/prison/KinkyDungeonJailList.ts",
         "Game/src/KinkyDungeonTests.js",
         "Game/src/item/KinkyDungeonLootList.js",
         "Game/src/base/KinkyDungeonMusic.ts",

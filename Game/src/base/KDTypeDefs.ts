@@ -1758,6 +1758,8 @@ interface entity {
 	NextJailLeashTourWaypointX?: number,
 	NextJailLeashTourWaypointY?: number,
 	KinkyDungeonJailTourInfractions?: number,
+	/**  Used by guards.  */
+	CurrentRestraintSwapGroup?: string,
 }
 
 type KinkyDungeonDress = {

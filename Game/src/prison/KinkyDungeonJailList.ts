@@ -1,16 +1,13 @@
 "use strict";
 
-/**
- * @type {Record<string, {weight: (guard: any, xx: any, yy: any) => number, trigger: (guard: any, xx: any, yy: any) => void}>}
- */
-let KDJailEvents = {
+let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => number, trigger: (guard: any, xx: any, yy: any) => void}> = {
 	"spawnGuard": {
 		// Determines the weight
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return 70;
 		},
 		// Occurs when the jail event triggers
-		trigger: (g, xx, yy) => {
+		trigger: (_g, xx, yy) => {
 			// Allow the player to sleep 150 turns after the guard shows up
 			if (KinkyDungeonFlags.get("slept") == -1) {
 				KinkyDungeonSetFlag("slept", 0);
@@ -27,10 +24,22 @@ let KDJailEvents = {
 					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"]);
 				}
 			}
-			let guard = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
-				x:xx, y:yy, gx: xx - 2, gy: yy, CurrentAction: "jailWander", keys: true, AI: KDGetAITypeOverride(Enemy, "guard") || "guard",
-				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-			if (mainFaction) guard.faction = mainFaction;
+			let guard = {
+				summoned: true,
+				Enemy: Enemy,
+				id: KinkyDungeonGetEnemyID(),
+				x:xx,
+				y:yy,
+				gx: xx - 2,
+				gy: yy,
+				CurrentAction: "jailWander",
+				keys: true,
+				AI: KDGetAITypeOverride(Enemy, "guard") || "guard",
+				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp,
+				movePoints: 0,
+				attackPoints: 0
+			};
+			if (mainFaction) guard['faction'] = mainFaction;
 			if (!KinkyDungeonFlags.get("JailIntro")) {
 				KinkyDungeonSetFlag("JailIntro", -1);
 				KDStartDialog("PrisonIntro", guard.Enemy.name, true, "");
@@ -54,11 +63,11 @@ let KDJailEvents = {
 	},
 	"spawnRescue": {
 		// Determines the weight
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return KDCanSpawnShopkeeper() ? 100 : 0;
 		},
 		// Occurs when the jail event triggers
-		trigger: (g, xx, yy) => {
+		trigger: (_g, _xx, _yy) => {
 			KDStartDialog("ShopkeeperRescue", "ShopkeeperRescue", true, "", undefined);
 		},
 	},
@@ -68,38 +77,47 @@ let KDJailEvents = {
 for (let rescue of Object.entries(KDPrisonRescues)) {
 	KDJailEvents[rescue[0]] = {
 		// Determines the weight
-		weight: (guard, xx, yy) => {
+		weight: (guard: entity, _xx: number, _yy: number) => {
 			if (guard) return 0;
 			if (KinkyDungeonStatsChoice.get("norescueMode")) return 0;
 			if (KDGameData.JailTurns <= 70 || KDFactionRelation("Player", rescue[1].faction) < 0.09) return 0;
 			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) - 0.005 * (KDGameData.PriorJailbreaks ? (KDGameData.PriorJailbreaks - (KDGameData.PriorJailbreaksDecay || 0)) : 0));
 		},
 		// Occurs when the jail event triggers
-		trigger: (guard, xx, yy) => {
+		trigger: (_guard: entity, _xx: number, _yy: number) => {
 			KDStartDialog(rescue[0], rescue[1].speaker, true, "", undefined);
 		},
 	};
 }
 
 /**
- *
- * @param {boolean} [override] - Override jailing requirement
- * @returns {boolean}
+ * @param [override] - Override jailing requirement
  */
-function KDCanSpawnShopkeeper(override) {
+function KDCanSpawnShopkeeper(override?: boolean): boolean {
 	return (KinkyDungeonStatsChoice.get("easyMode") && (override || (KinkyDungeonFlags.get("JailIntro") && !KinkyDungeonFlags.get("JailRepeat"))) && !KinkyDungeonFlags.get("refusedShopkeeperRescue") && !KDIsPlayerTethered(KinkyDungeonPlayerEntity));
 }
 
 
-let KDGuardActions = {
+type guardAction_num  = (guard: entity, xx: number, yy: number) => number;
+type guardAction_bool = (guard: entity, xx: number, yy: number) => boolean;
+type guardAction_void = (guard: entity, xx: number, yy: number, delta?: number) => void;
+
+type guardActionEntry = {
+	weight:       guardAction_num;
+	assignable?:  guardAction_bool;
+	assign:       guardAction_void;
+	handle:       guardAction_void;
+}
+
+let KDGuardActions: Record<string, guardActionEntry> = {
 	"jailWander": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return 100;
 		},
-		assignable: (guard, xx, yy) => { // Can assign a new behavior on top of this one
+		assignable: (guard, _xx, _yy) => { // Can assign a new behavior on top of this one
 			return KDistChebyshev(guard.gx - guard.x, guard.gy - guard.y) < 1.5;
 		},
-		assign: (guard, xx, yy) => {
+		assign: (_guard, _xx, _yy) => {
 
 		},
 		handle: (guard, xx, yy) => {
@@ -116,11 +134,11 @@ let KDGuardActions = {
 		},
 	},
 	"release": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			let missingJailUniform = KinkyDungeonMissingJailUniform();
 			return (KinkyDungeonCheckRelease() >= 0 && KinkyDungeonLockableItems().length == 0 && missingJailUniform.length < 1) ? 1000 : 0;
 		},
-		assign: (guard, xx, yy) => {
+		assign: (guard, _xx, _yy) => {
 			KinkyDungeonInterruptSleep();
 			if (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDMapData.JailFaction?.length > 0) || KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
 				let dd = KDGetHiSecDialogue(guard);
@@ -142,20 +160,20 @@ let KDGuardActions = {
 				}
 			}
 		},
-		handle: (guard, xx, yy) => {
+		handle: (guard, _xx, _yy) => {
 			guard.gx = KinkyDungeonPlayerEntity.x;
 			guard.gy = KinkyDungeonPlayerEntity.y;
 		},
 	},
 	"jailTease": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return 10 + (KinkyDungeonGoddessRep.Ghost + 50);
 		},
-		assign: (guard, xx, yy) => {
+		assign: (guard, _xx, _yy) => {
 			// Always a random chance to tease
 			guard.CurrentAction = "jailTease";
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (guard, xx, yy, _delta) => {
 			let playerHasVibrator = Array.from(KinkyDungeonAllRestraint()).some(i => KDRestraint(i).allowRemote);
 			guard.gx = xx - 2;
 			guard.gy = yy;
@@ -179,7 +197,7 @@ let KDGuardActions = {
 		}
 	},
 	"bindings": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			let missingJailUniform = KinkyDungeonMissingJailUniform();
 			let tooMuchRestraint = KinkyDungeonTooMuchRestraint();
 			let lockableRestraint = KinkyDungeonLockableItems();
@@ -189,7 +207,7 @@ let KDGuardActions = {
 					|| missingJailUniform.length > 0
 					|| (tooMuchRestraint.length > 0 && KDGameData.JailRemoveRestraintsTimer > KinkyDungeonJailRemoveRestraintsTimerMin)) ? (100 + (missingJailUniform.length > 0 ? 100 : 0)) : 0;
 		},
-		assign: (guard, xx, yy) => {
+		assign: (guard, _xx, _yy) => {
 			let missingJailUniform = KinkyDungeonMissingJailUniform();
 			let tooMuchRestraint = KinkyDungeonTooMuchRestraint();
 			let lockableRestraint = KinkyDungeonLockableItems();
@@ -237,18 +255,18 @@ let KDGuardActions = {
 				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerLock").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 			}
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (_guard, _xx, _yy, _delta) => {
 			// Dummy, this one assigns to a different style
 		},
 	},
 	"jailRemoveRestraints": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return 0; // Assigned by JailBindings
 		},
-		assign: (guard, xx, yy) => {
+		assign: (_guard, _xx, _yy) => {
 			// Assigned by JailBindings
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (guard, _xx, _yy, delta) => {
 			let applyTime = 2;
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
@@ -290,13 +308,13 @@ let KDGuardActions = {
 		},
 	},
 	"jailAddRestraints": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return 0; // Assigned by JailBindings
 		},
-		assign: (guard, xx, yy) => {
+		assign: (_guard, _xx, _yy) => {
 			// Assigned by JailBindings
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (guard, _xx, _yy, delta) => {
 			let applyTime = 2;
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
@@ -342,13 +360,13 @@ let KDGuardActions = {
 		},
 	},
 	"jailLockRestraints": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			return 0; // Assigned by JailBindings
 		},
-		assign: (guard, xx, yy) => {
+		assign: (_guard, _xx, _yy) => {
 			// Assigned by JailBindings
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (guard, _xx, _yy, delta) => {
 			let applyTime = 2;
 			let playerDist = Math.sqrt((guard.x - KinkyDungeonPlayerEntity.x)*(guard.x - KinkyDungeonPlayerEntity.x) + (guard.y - KinkyDungeonPlayerEntity.y)*(guard.y - KinkyDungeonPlayerEntity.y));
 			let touchesPlayer = KinkyDungeonCheckLOS(guard, KinkyDungeonPlayerEntity, playerDist, 1.5, false, false);
@@ -392,11 +410,11 @@ let KDGuardActions = {
 		},
 	},
 	"jailLeashTour": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			KDGameData.KinkyDungeonJailTourTimer = 0;
 			return (KDGameData.SleepTurns < 1 && KDGameData.KinkyDungeonJailTourTimer < 1 && KinkyDungeonGoddessRep.Ghost >= -45) ? (5 + Math.max(0, (50 + KinkyDungeonGoddessRep.Ghost)/5)) : 0;
 		},
-		assign: (guard, xx, yy) => {
+		assign: (guard, _xx, _yy) => {
 			guard.RemainingJailLeashTourWaypoints = 2 + Math.ceil(KDRandom() * 4);
 			guard.CurrentAction = "jailLeashTour";
 			guard.KinkyDungeonJailTourInfractions = 0;
@@ -405,7 +423,7 @@ let KDGuardActions = {
 
 			KinkyDungeonSendDialogue(guard, msg, "#e7cf1a", 4, 9);
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (_guard, xx, yy, delta) => {
 			if (KDGameData.KinkyDungeonJailTourTimer > 0) {
 				KDGameData.KinkyDungeonJailTourTimer = Math.max(0, KDGameData.KinkyDungeonJailTourTimer - delta);
 			}
@@ -416,11 +434,11 @@ let KDGuardActions = {
 		},
 	},
 	"jailLeashTransfer": {
-		weight: (guard, xx, yy) => {
+		weight: (_guard, _xx, _yy) => {
 			KDGameData.KinkyDungeonJailTourTimer = 0;
 			return (KDGameData.JailTurns > 30 && KinkyDungeonRandomJailPoint(["jail"], [KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)])) ? 5 : 0;
 		},
-		assign: (guard, xx, yy) => {
+		assign: (guard, _xx, _yy) => {
 			guard.RemainingJailLeashTourWaypoints = 1;
 			guard.CurrentAction = "jailLeashTransfer";
 			guard.KinkyDungeonJailTourInfractions = 0;
@@ -429,7 +447,7 @@ let KDGuardActions = {
 
 			KinkyDungeonSendDialogue(guard, msg, "#e7cf1a", 4, 9);
 		},
-		handle: (guard, xx, yy, delta) => {
+		handle: (_guard, xx, yy, delta) => {
 			if (KDGameData.KinkyDungeonJailTourTimer > 0) {
 				KDGameData.KinkyDungeonJailTourTimer = Math.max(0, KDGameData.KinkyDungeonJailTourTimer - delta);
 			}
@@ -453,10 +471,7 @@ let KDJailReleaseTurns = [
 
 let KDSecurityLevelHiSec = 0;
 
-/**
- * @type {Record<string, {overridelowerpriority: boolean, priority: number, jail: boolean, parole: boolean, restraints: KDJailRestraint[]}>}
-*/
-let KDJailOutfits = {
+let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: number, jail: boolean, parole: boolean, restraints: KDJailRestraint[]}> = {
 	"jailer": {
 		overridelowerpriority: false,
 		priority: -1,
@@ -828,89 +843,86 @@ KDJailOutfits.angel = JSON.parse(JSON.stringify(KDJailOutfits.celestialRopes));
 KDJailOutfits.robot = JSON.parse(JSON.stringify(KDJailOutfits.dollsmith));
 KDJailOutfits.cyborg = JSON.parse(JSON.stringify(KDJailOutfits.dollsmith));
 
-/**
- * @type {Record<string, (r: KDJailRestraint) => boolean>}
- */
-let KDJailConditions = {
-	Mage: (r) => {
+let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
+	Mage: (_r) => {
 		return KinkyDungeonStatManaMax > 17;
 	},
-	Warrior: (r) => {
+	Warrior: (_r) => {
 		return KinkyDungeonStatWillMax > 17;
 	},
-	Rogue: (r) => {
+	Rogue: (_r) => {
 		return KinkyDungeonStatStaminaMax > 17;
 	},
-	Kinky: (r) => {
+	Kinky: (_r) => {
 		return KinkyDungeonStatDistractionMax > 17;
 	},
-	NoUnmasked: (r) => {
+	NoUnmasked: (_r) => {
 		return !KinkyDungeonStatsChoice.get("Unmasked");
 	},
-	Hood: (r) => {
+	Hood: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoHood");
 	},
-	Plug: (r) => {
+	Plug: (_r) => {
 		return !KinkyDungeonPlayerTags.get("SupremeBelt");
 	},
-	Clamp: (r) => {
+	Clamp: (_r) => {
 		return !KinkyDungeonPlayerTags.get("SupremeBra");
 	},
-	SenseDep: (r) => {
+	SenseDep: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep");
 	},
-	SenseDepMask: (r) => {
+	SenseDepMask: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep") && !KinkyDungeonStatsChoice.get("Unmasked");
 	},
-	SenseDepHood: (r) => {
+	SenseDepHood: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep") && !KinkyDungeonStatsChoice.get("NoHood");
 	},
-	ChastityBra: (r) => {
+	ChastityBra: (_r) => {
 		return !KinkyDungeonStatsChoice.get("FreeBoob2") && (KinkyDungeonPlayerTags.get("ItemNipples") || !KinkyDungeonStatsChoice.get("FreeBoob1"));
 	},
-	NoPetsuit: (r) => {
+	NoPetsuit: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoPet");
 	},
-	NoKigu: (r) => {
+	NoKigu: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoKigu");
 	},
-	NoBlindfolds: (r) => {
+	NoBlindfolds: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoBlindfolds");
 	},
-	LessArmbinders: (r) => {
+	LessArmbinders: (_r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Armbinders")
 			|| (KinkyDungeonStatsChoice.get("Less_Jackets")
 			&& KinkyDungeonStatsChoice.get("Less_Boxbinders")
 			&& KinkyDungeonStatsChoice.get("Less_Yokes"));
 	},
-	LessBoxbinders: (r) => {
+	LessBoxbinders: (_r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Boxbinders")
 			|| (KinkyDungeonStatsChoice.get("Less_Jackets")
 			&& KinkyDungeonStatsChoice.get("Less_Armbinders")
 			&& KinkyDungeonStatsChoice.get("Less_Yokes"));
 	},
-	LessJackets: (r) => {
+	LessJackets: (_r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Jackets")
 			|| (KinkyDungeonStatsChoice.get("Less_Armbinders")
 			&& KinkyDungeonStatsChoice.get("Less_Boxbinders")
 			&& KinkyDungeonStatsChoice.get("Less_Yokes"));
 	},
-	LessYokes: (r) => {
+	LessYokes: (_r) => {
 		return !KinkyDungeonStatsChoice.get("Less_Yokes")
 			|| (KinkyDungeonStatsChoice.get("Less_Jackets")
 			&& KinkyDungeonStatsChoice.get("Less_Boxbinders")
 			&& KinkyDungeonStatsChoice.get("Less_Armbinders"));
 	},
-	MoreArmbinders: (r) => {
+	MoreArmbinders: (_r) => {
 		return KinkyDungeonStatsChoice.get("More_Armbinders");
 	},
-	MoreYokes: (r) => {
+	MoreYokes: (_r) => {
 		return KinkyDungeonStatsChoice.get("More_Yokes");
 	},
-	MoreBoxbinders: (r) => {
+	MoreBoxbinders: (_r) => {
 		return KinkyDungeonStatsChoice.get("More_Boxbinders");
 	},
-	MoreJackets: (r) => {
+	MoreJackets: (_r) => {
 		return KinkyDungeonStatsChoice.get("More_Jackets");
 	},
 };
