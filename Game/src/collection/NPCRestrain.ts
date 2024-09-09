@@ -704,9 +704,14 @@ function KDInputSetNPCRestraint(data): boolean {
 		}
 		willing = willing || KDGetPersistentNPC(data.npc)?.collect;
 	}
+
+	let globalEntity = KDGetGlobalEntity(data.npc);
+	let packed = globalEntity ? KDUnPackEnemy(globalEntity) : false;
+
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
 		let restraint = KDRestraint({name: data.restraint});
+
 
 		if (restraint) {
 			// Willing: true because they cant resist
@@ -784,6 +789,8 @@ function KDInputSetNPCRestraint(data): boolean {
 				}
 			}
 		}
+
+		if (packed) KDPackEnemy(globalEntity);
 	} else {
 
 		let rests = KDGetNPCRestraints(data.npc);
@@ -825,6 +832,8 @@ function KDInputSetNPCRestraint(data): boolean {
 	if (npcSprite) {
 		NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.npc, 0));
 	}
+
+	if (packed) KDPackEnemy(globalEntity);
 
 	return true;
 }
@@ -884,9 +893,13 @@ function KDGetExpectedBondageAmount(id: number, target: entity): Record<string, 
 	let already = {};
 	for (let item of restraints) {
 		if (!already[item.id]) {
-			let stats = KDGetRestraintBondageStats(item, target)
-			already[item.id] = true;
-			result[stats.type] = (result[stats.type] || 0) + stats.amount;
+			if (KDRestraint(item)) {
+				let stats = KDGetRestraintBondageStats(item, target)
+				already[item.id] = true;
+				result[stats.type] = (result[stats.type] || 0) + stats.amount;
+			} else if (item) {
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
+			}
 		}
 	}
 	return result;
@@ -898,7 +911,7 @@ function KDGetExpectedBondageAmountTotal(id: number, target: entity): number {
 	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
 	let already = {};
 	for (let item of restraints) {
-		if (!already[item.id]) {
+		if (!already[item.id] && KDRestraint(item)) {
 			let stats = KDGetRestraintBondageStats(item, target)
 			already[item.id] = true;
 			result +=  stats.amount;
@@ -928,10 +941,15 @@ function KDGetNPCEscapableRestraints(id: number, target: entity): {slot: string,
 		let entries = Object.entries(restraints);
 		let strugglePoints = KDGetNPCStrugglePoints(id);
 		for (let entry of entries) {
-			let stats = KDGetRestraintBondageStats(entry[1], target);
-			if (strugglePoints[stats.type] >= stats.amount) {
-				retval.push({slot: entry[0], inv: entry[1]});
+			if (KDRestraint(entry[1])) {
+				let stats = KDGetRestraintBondageStats(entry[1], target);
+				if (strugglePoints[stats.type] >= stats.amount) {
+					retval.push({slot: entry[0], inv: entry[1]});
+				}
+			} else if (entry[1]) {
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
 			}
+
 		}
 	}
 	return retval;

@@ -981,7 +981,7 @@ function KDChangeWardrobe(C) {
 	if (C == KinkyDungeonPlayer)
 		try {
 			if (!KDOriginalValue)
-				KDOriginalValue = LZString.compressToBase64(AppearanceItemStringify(C.Appearance));
+				KDOriginalValue = AppearanceItemStringify(C.Appearance);
 		} catch (e) {
 			// Fail
 		}
@@ -1750,7 +1750,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 function KDRestoreOutfit() {
 	// Restore the original outfit
 	if (KDOriginalValue) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue));
+		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue) || KDOriginalValue);
 		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();

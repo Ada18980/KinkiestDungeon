@@ -983,6 +983,7 @@
 	"Game/Buffs/boundSlow": ["Game/Buffs/boundSlow1.png","Game/Buffs/boundSlow2.png","Game/Buffs/boundSlow3.png","Game/Buffs/boundSlow4.png"],
 	"Game/Bullets/EffectEnemyCM": ["Game/Bullets/EffectEnemyCM2.png","Game/Bullets/EffectEnemyCM3.png"],
 	"Game/EffectTiles/Inferno": ["Game/EffectTiles/Inferno_0.png","Game/EffectTiles/Inferno_1.png","Game/EffectTiles/Inferno_2.png","Game/EffectTiles/Inferno_3.png"],
+	"Game/Enemies/CuffedGirl": ["Game/Enemies/CuffedGirl2.png","Game/Enemies/CuffedGirl3.png"],
 	"Game/Enemies/DollmakerBoss": ["Game/Enemies/DollmakerBoss1.png","Game/Enemies/DollmakerBoss2.png","Game/Enemies/DollmakerBoss3.png"],
 	"Game/Enemies/Fuuka": ["Game/Enemies/Fuuka1.png","Game/Enemies/Fuuka2.png"],
 	"Game/Enemies/TheWarden": ["Game/Enemies/TheWarden1.png","Game/Enemies/TheWarden2.png"],
@@ -1006,6 +1007,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:637e696ccc42ac6f94289ee818bed383:84dc90a3bf2a5baf3bab547aebf3e1d6:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:818e4738fb4f3631c638bcbc8a17c59d:baed4aaad87f2e9b756505990b34d1db:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

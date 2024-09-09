@@ -30,6 +30,10 @@ TODO:
 
 TODO remove hogtie when released
 
+5.4-nightly7
+- Updated version number
+- Clarified cuddle lounge mechanics
+
 5.4-nightly6
 - Changed worldgen to make sizing a bit more reasonable
 - Angel can help you with divine locks

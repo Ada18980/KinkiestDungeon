@@ -1,16 +1,8 @@
 {"frames": {
 
-"Game/Aura/Airbender1.png":
-{
-	"frame": {"x":988,"y":1264,"w":19,"h":19},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":92,"w":19,"h":19},
-	"sourceSize": {"w":144,"h":144}
-},
 "Game/Aura/Airbender2.png":
 {
-	"frame": {"x":988,"y":1118,"w":19,"h":36},
+	"frame": {"x":988,"y":1177,"w":19,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":75,"w":19,"h":36},
@@ -42,10 +34,18 @@
 },
 "Game/Aura/Missiles2.png":
 {
-	"frame": {"x":988,"y":1078,"w":18,"h":38},
+	"frame": {"x":988,"y":1137,"w":18,"h":38},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":73,"w":18,"h":38},
+	"sourceSize": {"w":144,"h":144}
+},
+"Game/Aura/Missiles3.png":
+{
+	"frame": {"x":988,"y":1078,"w":18,"h":57},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":54,"w":18,"h":57},
 	"sourceSize": {"w":144,"h":144}
 },
 "Game/Aura/Plugged.png":
@@ -1088,6 +1088,14 @@
 	"spriteSourceSize": {"x":2,"y":0,"w":214,"h":216},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Conditions/BlockBuff.png":
+{
+	"frame": {"x":2027,"y":238,"w":18,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":1,"w":18,"h":17},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Conditions/ShieldBuff.png":
 {
 	"frame": {"x":2021,"y":2023,"w":25,"h":23},
@@ -1126,14 +1134,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":52,"w":15,"h":17},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Enemies/Angel.png":
-{
-	"frame": {"x":610,"y":1916,"w":36,"h":67},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":20,"y":3,"w":36,"h":67},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/AnimBlindfold.png":
@@ -1234,10 +1234,18 @@
 },
 "Game/Enemies/SummonedDrone.png":
 {
-	"frame": {"x":988,"y":1156,"w":19,"h":36},
+	"frame": {"x":988,"y":1215,"w":19,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":22,"w":19,"h":36},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Enemies/WitchShibari.png":
+{
+	"frame": {"x":610,"y":1916,"w":41,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":41,"h":67},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/EnemiesBound/BanditPet.png":
@@ -1296,14 +1304,6 @@
 	"spriteSourceSize": {"x":25,"y":1,"w":29,"h":65},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/FloorGeneric/Angel.png":
-{
-	"frame": {"x":610,"y":1916,"w":36,"h":67},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":20,"y":1,"w":36,"h":67},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/FloorGeneric/Charger.png":
 {
 	"frame": {"x":2014,"y":982,"w":32,"h":61},
@@ -1352,22 +1352,6 @@
 	"spriteSourceSize": {"x":0,"y":2,"w":112,"h":54},
 	"sourceSize": {"w":116,"h":56}
 },
-"Game/InvItemSortLeft.png":
-{
-	"frame": {"x":988,"y":1194,"w":18,"h":33},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":21,"w":18,"h":33},
-	"sourceSize": {"w":76,"h":76}
-},
-"Game/InvItemSortRight.png":
-{
-	"frame": {"x":988,"y":1229,"w":18,"h":33},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":58,"y":21,"w":18,"h":33},
-	"sourceSize": {"w":76,"h":76}
-},
 "Game/Items/AncientPowerSourceSpent.png":
 {
 	"frame": {"x":1198,"y":1354,"w":22,"h":57},
@@ -1406,6 +1390,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":12,"y":28,"w":47,"h":18},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/Group/ItemButt.png":
+{
+	"frame": {"x":988,"y":1253,"w":18,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":39,"w":18,"h":29},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Group/ItemMouth.png":
@@ -1736,14 +1728,6 @@
 	"spriteSourceSize": {"x":15,"y":31,"w":49,"h":20},
 	"sourceSize": {"w":80,"h":80}
 },
-"Game/UI/CheckSmall.png":
-{
-	"frame": {"x":2027,"y":238,"w":19,"h":16},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":9,"y":8,"w":19,"h":16},
-	"sourceSize": {"w":30,"h":30}
-},
 "Game/UI/Heart.png":
 {
 	"frame": {"x":1152,"y":1061,"w":14,"h":14},
@@ -1784,6 +1768,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:637e696ccc42ac6f94289ee818bed383:84dc90a3bf2a5baf3bab547aebf3e1d6:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:818e4738fb4f3631c638bcbc8a17c59d:baed4aaad87f2e9b756505990b34d1db:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

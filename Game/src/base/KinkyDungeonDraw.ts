@@ -4730,6 +4730,17 @@ function KDClearOutlineFilterCache(): void {
 	KDOutlineFilterCache = new Map();
 }
 
+function KDDoGraphicsSanitize(): void {
+	for (let t of KDRenderTexToDestroy) {
+		t.destroy(true);
+	}
+	KDRenderTexToDestroy = [];
+	for (let f of KDFilterCacheToDestroy) {
+		f.destroy();
+	}
+	KDFilterCacheToDestroy = [];
+}
+
 function KDGetFontMult(font?: string) {
 	if (!font) font = KDSelectedFont;
 	if (KDFontsAlias.get(font)) {

@@ -4,6 +4,9 @@ let StruggleAnimation = false;
 let RenderCharacterQueue = new Map();
 let RenderCharacterLock = new Map();
 
+let KDFilterCacheToDestroy: PIXIFilter[] = [];
+let KDRenderTexToDestroy: PIXITexture[] = [];
+
 let KDCulling = true;
 
 /**
@@ -386,7 +389,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		DrawCanvas.removeChild(MC.Containers.get(containerID).Mesh);
 		MC.Containers.get(containerID).Container.destroy();
 		MC.Containers.get(containerID).Mesh.destroy();
-		MC.Containers.get(containerID).RenderTexture.destroy(true);
+		KDRenderTexToDestroy.push(MC.Containers.get(containerID).RenderTexture);
 		MC.Containers.delete(containerID);
 		MC.ContainersDrawn.delete(containerID);
 		refreshfilters = true;
@@ -394,7 +397,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			KDGlobalFilterCacheRefresh = false;
 			for (let fc of KDAdjustmentFilterCache.values()) {
 				for (let f of fc) {
-					f.destroy();
+					KDFilterCacheToDestroy.push(f);
 				}
 			}
 			KDAdjustmentFilterCache.clear();
@@ -1025,14 +1028,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let rot = transform.rot;
 
 				let fh = containerID + (m.Filters ? (m.Filters[l.InheritColor || l.Name] ? FilterHash(m.Filters[l.InheritColor || l.Name]) : "") : "");
-				/*if (refreshfilters) {
-					if (KDAdjustmentFilterCache.get(fh)) {
-						for (let f of KDAdjustmentFilterCache.get(fh)) {
-							f.destroy();
-						}
-					}
-					KDAdjustmentFilterCache.delete(fh);
-				}*/
+
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
 					(KDAdjustmentFilterCache.get(fh) || [adjustFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
@@ -1801,9 +1797,8 @@ function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
 }
 
 function RenderModelContainer(MC: ModelContainer, C: Character, containerID: string) {
-	// Sanitize the files in case something was disposed
-
-	if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
+	// Rendering is never actually async
+	/*if (KDToggles.AsyncRendering && KinkyDungeonDrawState == "Game" && KinkyDungeonState == "Game") {
 		if (!RenderCharacterQueue.get(C)) RenderCharacterQueue.set(C, []);
 		RenderCharacterQueue.get(C).push(async function() {
 			RenderCharacterLock.set(C, true);
@@ -1815,15 +1810,15 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 			RenderCharacterLock.delete(C);
 			MC.ForceUpdate.add(containerID);
 		});
-	} else {
-		PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
-			//blit: true,
-			clear: true,
-			renderTexture: MC.Containers.get(containerID).RenderTexture,
-			blit: true,
-		});
-		MC.ForceUpdate.add(containerID);
-	}
+	} else {*/
+	PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
+		//blit: true,
+		clear: true,
+		renderTexture: MC.Containers.get(containerID).RenderTexture,
+		blit: true,
+	});
+	MC.ForceUpdate.add(containerID);
+	//}
 }
 
 function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) {

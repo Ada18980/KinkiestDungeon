@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4-nightly6"
+KDVersionStr,"5.4-nightly7"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -846,7 +846,7 @@ KinkyDungeonBuffKatanaCharge,"Katana: Patience is key..."
 KinkyDungeonBuffStormCharge,"Stormbreaker: You have the Power."
 
 KinkyDungeonDifficulty,Game Setup:
-KinkyDungeonDifficulty0,Beginner: Get a save code every 3 levels, autosave after each floor
+KinkyDungeonDifficulty0,"Beginner: Get a save code every 3 levels, autosave after each floor"
 KinkyDungeonDifficulty1,"Roguelike: No save codes, only autosave"
 KinkyDungeonDifficulty3,"Exciting: Orbs give random spells"
 KinkyDungeonDifficulty2,"Kinky: No save codes, orbs give random spells, start with very little"
@@ -5809,7 +5809,7 @@ KinkyDungeonSpellTargetGust,Choose aim direction
 
 
 KinkyDungeonSpellKnife,Knife
-KinkyDungeonSpellDescriptionKnife,Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
+KinkyDungeonSpellDescriptionKnife,"Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward."
 KinkyDungeonSpellCastKnife,You a throw a knife!
 KinkyDungeonSpellTargetKnife,Choose aim direction
 
@@ -5969,7 +5969,7 @@ KinkyDungeonSpellCastAnalyze,You analyze the target!
 KinkyDungeonSpellTargetAnalyze,Choose object to analyze
 
 KinkyDungeonSpellGreaterShield,Barrier Runes
-KinkyDungeonSpellDescriptionGreaterShield,Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
+KinkyDungeonSpellDescriptionGreaterShield,"Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement."
 KinkyDungeonSpellCastGreaterShield,You raise a field of runes with a command word!
 KinkyDungeonSpellTargetGreaterShield,Choose barrier location
 
@@ -6635,7 +6635,7 @@ KinkyDungeonSpellCastCamo,You pose in a clandestine manner.
 
 KinkyDungeonSpellShadowBlade,Darkblade
 KinkyDungeonSpellTargetShadowBlade,Select which creature to buff
-KinkyDungeonSpellDescriptionShadowBlade,Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
+KinkyDungeonSpellDescriptionShadowBlade,"Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower."
 KinkyDungeonSpellCastShadowBlade,You call forth dark runes on your weapon and arms!
 
 KinkyDungeonSpellHeal2,Heal
@@ -12882,7 +12882,7 @@ rLeylineMapCancel,"(Are you sure?)|(This decision is permanent.)"
 dLeylineMap_Leave,(Gain +100 to Max Mana Pool)
 dLeylineMap_Cancel,(I don't want to.)
 dLeylineMapCancel_Leave,(Gain +100 to Max Mana Pool)
-dLeylineMapCancel_Cancel,(No really, I don't want it!)
+dLeylineMapCancel_Cancel,"(No really, I don't want it!)"
 
 rDollTerminal_Step,"(You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)"
 rDollTerminal_StepEnter,"(Are you sure?)|(This seems like a bad idea!)"
@@ -22112,7 +22112,7 @@ KinkyDungeonSpellsPageClass,"Unique"
 
 KDInventoryActionRemoveMagicLock,Unlock using magic
 
-KDQuickLoadout_Weapon,Include Weapons,
+KDQuickLoadout_Weapon,Include Weapons
 KDQuickLoadout_Merge,Merge Armor
 
 KDNeedDiscPick,You need a special tool to pick this kind of lock.
@@ -24501,8 +24501,8 @@ KDAutoBindPasteAllOver,OVERWRITE All!
 
 KDPromoteNotEnough,Need Positive Opinion to Promote
 
-KDCuddleLounge1,Servant Enjoyment: AMNT
-KDCuddleLounge2,Prisoner Enjoyment: AMNT
+KDCuddleLounge1,Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+KDCuddleLounge2,Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 KDCuddleLoungeInfo,Submissive prisoners and dominant servants add different amounts of opinion per cycle
 
 
@@ -24663,3 +24663,5 @@ AttackCuffedGirl3,"The ancient hierophant mumbles at you for assistance! (Damage
 
 KDCrystalUnlock,"The crystals break off, revealing a keyhole and weakening the item."
 KDCrystalLock,"Your distraction causes the crystals to grow back, encasing the lock again!"
+
+KDErrorMods,ERROR: Restraint does not exist. Did you forget to load mods?

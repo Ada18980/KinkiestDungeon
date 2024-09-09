@@ -633,9 +633,11 @@ function KDSyncPersistentEntities(Level: number, data: KDMapDataType, removeMiss
  * @param enemy
  */
 function KDUnPackEnemy(enemy: entity) {
+	let packed = !enemy.Enemy?.maxhp;
 	if (!enemy.modified) {
 		enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name || enemy.Enemy);
 	}
+	return packed;
 }
 /**
  * Decompress enemies
@@ -644,7 +646,7 @@ function KDUnPackEnemy(enemy: entity) {
 function KDPackEnemy(enemy: entity) {
 	if (!enemy.modified) {
 		// @ts-ignore
-		enemy.Enemy = {name: enemy.Enemy};
+		enemy.Enemy = {name: enemy.Enemy.name};
 	}
 }
 /**
