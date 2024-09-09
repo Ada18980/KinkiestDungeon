@@ -4633,6 +4633,17 @@ function KDClearOutlineFilterCache() {
 	KDOutlineFilterCache = new Map();
 }
 
+function KDDoGraphicsSanitize() {
+	for (let t of KDRenderTexToDestroy) {
+		t.destroy(true);
+	}
+	KDRenderTexToDestroy = [];
+	for (let f of KDFilterCacheToDestroy) {
+		f.destroy();
+	}
+	KDFilterCacheToDestroy = [];
+}
+
 function KDGetFontMult(font) {
 	if (!font) font = KDSelectedFont;
 	if (KDFontsAlias.get(font)) {

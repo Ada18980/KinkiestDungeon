@@ -1081,8 +1081,8 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		for (let t of Object.values(effectTiles)) {
 			if (t.affinities && t.affinities.includes(affinity)) return true;
 			else if (data.canStand && data.groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
-			else if (Message && !data.msgedStand && (!data.canStand || !data.groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
-				data.msgedStand = true;
+			else if (Message && !data.msgedstand && (!data.canStand || !data.groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
+				data.msgedstand = true;
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
 					false, false, undefined, "Struggle");
 			}
@@ -1093,7 +1093,7 @@ function KinkyDungeonGetAffinity(Message, affinity, group, entity) {
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '?') {
 			if (data.canStand && data.groupIsHigh) return true;
-			else if (!data.msgedStand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
+			else if (!data.msgedstand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
 				false, false, undefined, "Struggle");
 		} else if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - 1) == ',') return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
@@ -1392,7 +1392,7 @@ function KinkyDungeonIsArmsBoundC(C, ApplyGhost, Other) {
 		return KinkyDungeonIsArmsBound(ApplyGhost, Other);
 	} else {
 		for (let inv of KDGetRestraintsForCharacter(C)) {
-			if (KDRestraint(inv).bindarms) {
+			if (KDRestraint(inv)?.bindarms) {
 				return true;
 			}
 		}

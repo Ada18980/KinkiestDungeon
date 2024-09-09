@@ -183,7 +183,6 @@ let KDToggles = {
 	HighResDisplacement: false,
 	Bloom: true,
 	StunFlash: true,
-	AsyncRendering: false,
 	ParticlesFX: true,
 	ArousalHearts: true,
 	VibeHearts: true,
@@ -264,7 +263,6 @@ let KDToggleCategories = {
 	HighResDisplacement: "GFX",
 	Bloom: "GFX",
 	StunFlash: "UI",
-	AsyncRendering: "GFX",
 	ParticlesFX: "GFX",
 	ArousalHearts: "Clothes",
 	VibeHearts: "Clothes",
@@ -3228,6 +3226,8 @@ function KinkyDungeonRun() {
 		ElementRemove("DebugEnemy");
 		ElementRemove("DebugItem");
 	}
+
+	KDDoGraphicsSanitize();
 }
 
 let KDDrawDelta = 0;

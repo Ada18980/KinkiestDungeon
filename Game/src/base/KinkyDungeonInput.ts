@@ -1265,10 +1265,13 @@ function KDProcessInput(type, data): string {
 				lock: "White",
 				npc: number
 			 */
+
+
 			let res = KDInputSetNPCRestraint(data);
 
 			let enemy = KDGetGlobalEntity(data.npc);
 
+			let packed = enemy ? KDUnPackEnemy(enemy) : false;
 			if (enemy && (!data.restraint || enemy.boundLevel > 0))
 				KinkyDungeonSendTextMessage(10,
 					TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
@@ -1286,6 +1289,8 @@ function KDProcessInput(type, data): string {
 			}
 			if (KDNPCChar.get(data.npc))
 				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
+
+			if (packed) KDPackEnemy(enemy);
 		break;
 	}
 	if (data.GameData) {

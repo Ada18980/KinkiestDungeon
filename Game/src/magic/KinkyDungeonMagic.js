@@ -2648,6 +2648,7 @@ function KinkyDungeonSpellAdd(spellobject, index = undefined) {
 		else {
 			KinkyDungeonSpells.push(newspell);
 		}
+		KDRefreshSpellCache = true;
 	}
 }
 
@@ -2680,4 +2681,5 @@ function KinkyDungeonSpellRemove(spellobject) {
 	}
 	// Finally, splice this from the list.
 	KinkyDungeonSpells.splice(spellloc, 1);
+	KDRefreshSpellCache = true;
 }

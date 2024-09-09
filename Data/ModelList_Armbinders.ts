@@ -14,7 +14,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Latex", "Armbinders"],
+	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		{ Name: "BinderLeft", Layer: "BindArmLeft", Pri: 30,
 			HideWhenOverridden: true,
@@ -42,7 +42,7 @@ AddModel({
 	Folder: "Armbinder",
 	TopLevel: true,
 	Restraint: true,
-	Categories: ["Restraints", "Leather", "Armbinders"],
+	Categories: ["Restraints", "Leather", "Binders"],
 	AddPose: ["HideHands"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
@@ -70,7 +70,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Leather", "Armbinders"],
+	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
 		{ Name: "Cross", Layer: "BindArms", Pri: 30,
@@ -88,7 +88,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Latex", "Armbinders"],
+	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "Cross", Layer: "BindArms", Pri: 30,
@@ -106,7 +106,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Leather", "Armbinders"],
+	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
 		{ Name: "Secure", Layer: "BindArms", Pri: 30,
@@ -124,7 +124,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Latex", "Armbinders"],
+	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "Secure", Layer: "BindArms", Pri: 30,
@@ -142,7 +142,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Leather", "Armbinders"],
+	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
 		{ Name: "Gwen", Layer: "BindArms", Pri: 30,
@@ -161,7 +161,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Latex", "Armbinders"],
+	Categories: ["Restraints", "Latex", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SmoothArmbinder"),
 		{ Name: "Gwen", Layer: "BindArms", Pri: 30,
@@ -182,7 +182,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "Armbinder",
 	AddPose: ["HideHands"],
-	Categories: ["Restraints", "Leather", "Armbinders"],
+	Categories: ["Restraints", "Leather", "Binders"],
 	Layers: ToLayerMap([
 		...GetModelLayers("Armbinder"),
 		{ Name: "WolfHarness", Layer: "BindArms", Pri: 30,
