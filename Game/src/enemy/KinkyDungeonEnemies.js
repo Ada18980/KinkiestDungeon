@@ -7351,9 +7351,10 @@ function KDGetTags(enemy, removeSpecial) {
  *
  * @param {entity} enemy
  * @param {boolean} useSpecial
- * @returns {Record<string, boolean>}
+ * @returns {Record<string, number>}
  */
 function KDGetExtraTags(enemy, useSpecial) {
+	/* @type {Record<string, number>} */
 	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
 	if (addOn) {
 		/*let effLevel = KDGetEffLevel();

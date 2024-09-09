@@ -273,7 +273,7 @@ let KDEventMapInventory = {
 		 * @param {KDEventData_PostApply} data
 		*/
 		"BubbleCombine": (e, item, data) => {
-			KinkyDungeonUpdateRestraints(0);
+			KinkyDungeonUpdateRestraints();
 			if ((KinkyDungeonPlayerTags.get("CombineBubble1") || KDRestraint(item)?.shrine?.includes("CombineBubble1"))
 				&& (KinkyDungeonPlayerTags.get("CombineBubble2") || KDRestraint(item)?.shrine?.includes("CombineBubble2"))
 				&& (KinkyDungeonPlayerTags.get("CombineBubble3") || KDRestraint(item)?.shrine?.includes("CombineBubble3"))) {

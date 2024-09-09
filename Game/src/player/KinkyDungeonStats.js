@@ -1176,6 +1176,11 @@ function KinkyDungeonHasWill(Cost, AddRate) {
 
 	return s >= Cost;
 }
+/**
+ * @param {number} Cost
+ * @param {boolean} [AddRate]
+ * @returns {boolean}
+ */
 function KinkyDungeonHasMana(Cost, AddRate) {
 	let s = KinkyDungeonStatMana;
 	if (AddRate) s += KinkyDungeonStatManaRate;

@@ -19,7 +19,8 @@ interface item extends NamedAndTyped {
 	onEntity?: number,
 	/** Is magically conjured. Cannot be added back to inventory */
 	conjured?: boolean,
-	id: number,
+	/* FIXME: Making this optional fixed certain call sites.  Verify this doesn't break anything.  */
+	id?: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */

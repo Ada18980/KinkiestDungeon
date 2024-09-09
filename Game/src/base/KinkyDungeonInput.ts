@@ -3,9 +3,9 @@
 let KinkyDungeonInputQueue: {type: string, data: any}[] = [];
 
 /**
- *
- * Delegate to KDProcessInputs */
-function KDProcessInput(type, data): string {
+ * Delegate to KDProcessInputs
+ */
+function KDProcessInput(type: string, data: any): string {
 	let Result = null;
 	let loose = null;
 	let msg = "";
@@ -1293,7 +1293,7 @@ function KDProcessInput(type, data): string {
 	return "";
 }
 
-function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = true): string {
+function KDSendInput(type: string, data: any, _frame?: boolean, noUpdate?: boolean, process = true): string {
 
 	if (!noUpdate) {
 		KDGameData.OrigEnergyLevel = KDGameData.AncientEnergyLevel;
@@ -1306,7 +1306,7 @@ function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = 
 	KinkyDungeonInputQueue.push({type: type, data: data});
 	if (process)
 		return KDProcessInputs(true);
-	else return;
+	else return "";
 }
 
 /**
