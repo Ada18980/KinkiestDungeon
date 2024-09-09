@@ -892,10 +892,14 @@ function KDGetExpectedBondageAmount(id: number, target: entity): Record<string, 
 	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
 	let already = {};
 	for (let item of restraints) {
-		if (!already[item.id] && KDRestraint(item)) {
-			let stats = KDGetRestraintBondageStats(item, target)
-			already[item.id] = true;
-			result[stats.type] = (result[stats.type] || 0) + stats.amount;
+		if (!already[item.id]) {
+			if (KDRestraint(item)) {
+				let stats = KDGetRestraintBondageStats(item, target)
+				already[item.id] = true;
+				result[stats.type] = (result[stats.type] || 0) + stats.amount;
+			} else if (item) {
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
+			}
 		}
 	}
 	return result;
@@ -942,6 +946,8 @@ function KDGetNPCEscapableRestraints(id: number, target: entity): {slot: string,
 				if (strugglePoints[stats.type] >= stats.amount) {
 					retval.push({slot: entry[0], inv: entry[1]});
 				}
+			} else if (entry[1]) {
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
 			}
 
 		}

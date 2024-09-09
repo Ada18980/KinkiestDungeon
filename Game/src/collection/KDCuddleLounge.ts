@@ -79,7 +79,7 @@ function KDCuddleLoungeGain(): {servants: number, prisoners: number, servantPoin
 				personality = KDGetPersistentNPC(value.id).entity?.personality;
 			}
 			if (personality && KDCuddleLoungePersonalityMult.Prisoner[personality]) {
-				mult *= KDCuddleLoungePersonalityMult.Servant[personality];
+				mult *= KDCuddleLoungePersonalityMult.Prisoner[personality];
 			}
 			let x = (1+KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type)));
 			data.servants += countMult*mult * 1.0 * (0.65+0.25*x+0.125*x*x);

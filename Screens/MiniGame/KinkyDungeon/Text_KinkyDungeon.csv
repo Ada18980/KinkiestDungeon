@@ -24663,3 +24663,5 @@ AttackCuffedGirl3,"The ancient hierophant mumbles at you for assistance! (Damage
 
 KDCrystalUnlock,"The crystals break off, revealing a keyhole and weakening the item."
 KDCrystalLock,"Your distraction causes the crystals to grow back, encasing the lock again!"
+
+KDErrorMods,ERROR: Restraint does not exist. Did you forget to load mods?
