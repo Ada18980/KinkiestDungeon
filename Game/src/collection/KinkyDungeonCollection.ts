@@ -557,7 +557,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	}
 
 	if (KDSpeakerNPC) {
-		if (KinkyDungeonCheckClothesLoss) {
+		if (KinkyDungeonCheckClothesLoss || KDRefreshCharacter.get(KDSpeakerNPC)) {
 			if (!NPCTags.get(KDSpeakerNPC)) {
 				NPCTags.set(KDSpeakerNPC, new Map());
 			}

@@ -1372,7 +1372,6 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
 	KDMapData.KeysHeld = 0;
-	KinkyDungeonSaveGame();
 
 	if (PutInJail) {
 		//KDGameData.RoomType = "Jail"; // We do a tunnel every other room
@@ -1433,6 +1432,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 	KDRepairRubble(true);
 
+	KinkyDungeonSaveGame();
 }
 
 /**

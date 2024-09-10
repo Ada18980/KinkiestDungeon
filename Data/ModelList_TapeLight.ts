@@ -12,6 +12,10 @@ AddModel({
 	TopLevel: false,
 	Restraint: true,
 	Categories: ["Restraints", "Tape"],
+	AddPoseConditional: {
+		RestrainingShoes: ["TapeBoots"],
+	},
+	RemovePoses: ["RestrainingShoes"],
 	Layers: ToLayerMap([
 		{ Name: "Feet", Layer: "WrappingLegs", Pri: 10,
 			Poses: ToMap(["Closed", "KneelClosed"]),

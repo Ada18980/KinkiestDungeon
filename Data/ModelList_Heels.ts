@@ -13,6 +13,7 @@ AddModel({
 	Restraint: false,
 	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
+	RemovePoses: ["TapeBoots"],
 	Layers: ToLayerMap([
 		{ Name: "BalletLeft", Layer: "ShoeLeftOver", Pri: 50, // Bondage overrides plate mail
 			HideWhenOverridden: true,
@@ -93,6 +94,7 @@ AddModel({
 	Restraint: false,
 	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
+	RemovePoses: ["TapeBoots"],
 	Layers: ToLayerMap([
 		{ Name: "FlatBalletLeft", Layer: "ShoeLeftOver", Pri: 51, // Bondage overrides plate mail
 			HideWhenOverridden: true,
@@ -152,6 +154,7 @@ AddModel({
 	Restraint: false,
 	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
+	RemovePoses: ["TapeBoots"],
 	Layers: ToLayerMap([
 		{ Name: "ShinyBalletLeft", Layer: "ShoeLeftOver", Pri: 52, // Bondage overrides plate mail
 			HideWhenOverridden: true,
@@ -208,9 +211,15 @@ AddModel({
 
 
 
-AddModel(GetModelRestraintVersion("BalletHeels", true));
-AddModel(GetModelRestraintVersion("FlatBalletHeels", true));
-AddModel(GetModelRestraintVersion("ShinyBalletHeels", true));
+AddModel(GetModelRestraintVersion("BalletHeels", true,
+	["RestrainingShoes"], ["TapeBoots"]
+));
+AddModel(GetModelRestraintVersion("FlatBalletHeels", true,
+	["RestrainingShoes"], ["TapeBoots"]
+));
+AddModel(GetModelRestraintVersion("ShinyBalletHeels", true,
+	["RestrainingShoes"], ["TapeBoots"]
+));
 
 
 AddModel({
@@ -443,6 +452,7 @@ AddModel({
 	Restraint: false,
 	Categories: ["Shoes"],
 	AddPose: ["Heels", "FeetCovered"],
+	RemovePoses: ["TapeBoots"],
 	Layers: ToLayerMap([
 		{ Name: "TallLeft", Layer: "ShoeLeft", Pri: 26,
 			InheritColor: "Shoe",
@@ -493,7 +503,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Shoes"],
-	AddPose: ["Heels"],
+	AddPose: ["Heels", "RestrainingShoes"],
 	Layers: ToLayerMap([
 		...GetModelLayers("TallHeels"),
 	])
