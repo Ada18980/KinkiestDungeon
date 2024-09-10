@@ -4642,6 +4642,10 @@ function KDDoGraphicsSanitize() {
 		f.destroy();
 	}
 	KDFilterCacheToDestroy = [];
+	for (let s of KDSpritesToCull) {
+		s.destroy();
+	}
+	KDSpritesToCull = [];
 }
 
 function KDGetFontMult(font) {

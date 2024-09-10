@@ -30,9 +30,11 @@ TODO:
 
 TODO remove hogtie when released
 
-5.4-nightly7
+
+5.4-nightly7b
 - Updated version number
 - Clarified cuddle lounge mechanics
+- b version: fixed a crash and a visual bug, hopefully
 
 5.4-nightly6
 - Changed worldgen to make sizing a bit more reasonable

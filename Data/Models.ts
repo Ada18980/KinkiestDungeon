@@ -6,6 +6,7 @@ let RenderCharacterLock = new Map();
 
 let KDFilterCacheToDestroy: PIXIFilter[] = [];
 let KDRenderTexToDestroy: PIXITexture[] = [];
+let KDSpritesToCull: PIXISprite[] = [];
 
 let KDCulling = true;
 
@@ -183,7 +184,9 @@ function GetModelWithExtraLayers(NewModel: string, BaseModel: string, Layers: Mo
 	return null;
 }
 
-function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
+function GetModelRestraintVersion(BaseModel: string, Parent: boolean,
+	extraAddPoses?: string[],
+	removeRemovePoses?: string[]): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));
 		model.Name = model.Name + "Restraint";
@@ -193,6 +196,15 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean): Model {
 		if (!model.Categories) model.Categories = [];
 		model.Categories.push("Restraints");
 		model.Restraint = true;
+		if (extraAddPoses) {
+			// This bit of javascript gives me a headache
+			model.AddPose = [...(model.AddPose || []), ...extraAddPoses];
+		}
+		if (removeRemovePoses) {
+			if (model.RemovePoses) {
+				model.RemovePoses = model.RemovePoses.filter((rp) => {return !removeRemovePoses.includes(rp);})
+			}
+		}
 		return model;
 	}
 	return null;
@@ -1835,7 +1847,7 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 				sprite[1].parent.removeChild(sprite[1]);
 				Container.SpriteList.delete(sprite[0]);
 				modified = true;
-				sprite[1].destroy();
+				KDSpritesToCull.push(sprite[1]);
 			} else sprite[1].visible = false;
 		}
 	}

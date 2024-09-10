@@ -902,6 +902,9 @@ function KinkyDungeonSetEnemyFlag(enemy, flag, duration) {
  * @param {number} duration
  */
 function KDSetIDFlag(id, flag, duration) {
+	if (id == -1) {
+		KinkyDungeonSetFlag(flag, duration);
+	}
 	let enemy = KDGetGlobalEntity(id);
 	if (!enemy) {
 		KDSetCollFlag(id, flag, duration);
@@ -936,6 +939,9 @@ function KDEnemyHasFlag(enemy, flag) {
  * @returns {boolean}
  */
 function KDIDHasFlag(id, flag) {
+	if (id == -1) {
+		return KinkyDungeonFlags.get(flag) > 0;
+	}
 	let enemy = KDGetGlobalEntity(id);
 	if (enemy)
 		return (enemy.flags && (enemy.flags[flag] > 0 || enemy.flags[flag] == -1))
