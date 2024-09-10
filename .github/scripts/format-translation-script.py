@@ -49,25 +49,27 @@ def write_translated_file(csv_lines : list, translations : list, output_path : s
     translated = set()
     with open(output_path, 'w', encoding='utf-8') as file:
         for line in csv_lines:
-            if (line is None) or (not line[1]):
-                file.write('\n')  
+            if not line or not line[1]:
+                file.write('\n')
                 continue
             
             key, original, *_ = line
             
             if original in translated:
-                # Not sure if it is better to mark
-                # file.write(f'<!REPEAT> {original}\n')
                 continue
                 
             translated.add(original)
             
-            # The next line of the original text corresponding to the List is the translation. If the translation is not found, use "# Original" instead.
-            original_index = translations.index(original) if original in translations else -1
-            if original_index == -1:
+            # The next line of the original text corresponding to the List is the translation. If the translation is not found,will use "### Original" instead.
+            try:
+                original_index = translations.index(original)
+                translation = translations[original_index + 1].strip()
+                if not translation:
+                    raise ValueError
+            except (ValueError, IndexError):
                 file.write(f'### {original}\n')
                 continue
-            translation = translations[original_index + 1]
+            
             file.write(f'{original}\n{translation}\n')
 
 original_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
@@ -88,10 +90,10 @@ modified_files = sys.argv[1:]
 print(f'Modified Files: {modified_files}')
 
 # if originnal file is modified, then all translation files need to be reformatted
-if original_csv_path in modified_files:
+if any(file.endswith('Text_KinkyDungeon.csv') for file in modified_files):
     modified_files = translation_files
 
-modified_files = [file for file in modified_files if file in translation_files]
+modified_files = [file for file in modified_files if file.endswith('.txt')]
 
 csv_lines = read_csv_with_empty_lines(original_csv_path)
 
