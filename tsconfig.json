@@ -45,7 +45,7 @@
         "Game/src/base/KDRender.ts",
         "Game/src/base/KinkyDungeonGame.ts",
         "Game/src/player/KinkyDungeonVibe.js",
-        "Game/src/effect/KinkyDungeonBuffsList.js",
+        "Game/src/effect/KinkyDungeonBuffsList.ts",
         "Game/src/map/KinkyDungeonAlt.ts",
         "Game/src/map/KDLairs.ts",
         "Game/src/map/KDRegiments.ts",

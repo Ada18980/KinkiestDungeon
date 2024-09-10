@@ -213,7 +213,7 @@ let KDWaterSlow = {id: "WaterSlow", type: "MoveSpeed", power: -1.0, player: true
 
 let KDNoChill = {id: "ChillWalk", aura: "#73efe8", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
 let KDNoChillNoAura = {id: "ChillWalk2", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
-function KDChillWalk(entity) {
+function KDChillWalk(entity: entity) {
 	return KDEntityHasBuff(entity, "ChillWalk") || KDEntityHasBuff(entity, "ChillWalk2");
 }
 
@@ -237,15 +237,13 @@ let KDBuffReference = {
 
 let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
 
-/** @type {Record<string, (entity: entity, buff: any) => void>}>} */
-let KDCustomBuff = {
+let KDCustomBuff: Record<string, (entity: entity, buff: any) => void> = {
 };
 
 /**
- * @type {Record<string, (buff, entity) => void>}}
  */
-let KDBuffClick = {
-	"SlimeMimic": (buff, entity) => {
+let KDBuffClick: Record<string, (buff: any, entity: entity) => void> = {
+	"SlimeMimic": (_buff, entity) => {
 		// Toggle SlimeMimic on/off
 		let b = KinkyDungeonPlayerBuffs.d_SlimeMimic;
 		if (b && b.duration > 0) {
@@ -256,7 +254,7 @@ let KDBuffClick = {
 			);
 		}
 	},
-	"OrgasmResist": (buff, entity) => {
+	"OrgasmResist": (_buff, entity) => {
 		// Toggle SlimeMimic on/off
 		let b = KinkyDungeonPlayerBuffs.d_OrgasmResist;
 		if (b && b.duration > 0) {
