@@ -4968,9 +4968,9 @@ function KDGetManaBonus(bonus: number, penalty: number, threshold: number, bonus
 /**
  * Gets the goddess bonus for this item
  * @param item
- * @param data - Escape chance data
+ * @param [data] - Escape chance data
  */
-function KDGetItemGoddessBonus(item: item, data: any): number {
+function KDGetItemGoddessBonus(item: item, data?: any): number {
 	if (!item) return 0;
 	if (data) {
 		if (data.struggleType == "Unlock") return 0;
