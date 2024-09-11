@@ -19901,8 +19901,6 @@ Appointing managers increases the efficiency of other facilities.
 任命管理人员可以提高其他设施的效率。
 Total Efficiency Boost: AMNT
 总体效率提升: AMNT
-Restart required!
-需要重启！
 Domit
 支配者
 Beginner: Get a save code every 3 levels, autosave after each floor
