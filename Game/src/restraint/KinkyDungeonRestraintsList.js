@@ -1400,7 +1400,8 @@ const KinkyDungeonRestraints = [
 		unlimited: true,
 		Group: "ItemArms", bindarms: false, power: 12, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.65, "Remove": 0.25, "Pick": -0.15},
-		enemyTags: {"cyberdollcuffs":20, "cyberdollrestraints":6}, playerTags: {"ItemArmsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Cyber", "CyberCuffs", "Cuffs", "Metal",  "ArmCuffsBase", "CyberWristCuffs"],
+		enemyTags: {"cyberdollcuffs":20, "cyberdollrestraints":6}, playerTags: {"ItemArmsFull":-2},
+		minLevel: 4, allFloors: true, shrine: ["Cyber", "CyberCuffs", "Cuffs", "Metal",  "ArmCuffsBase", "CyberWristCuffs"],
 		maxwill: 0.8
 	},
 	//endregion
@@ -7725,7 +7726,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 let KDControlHarnessCategories = {
 	"Cuffs": {
 		activateCount: 3,
-		activateTags: ["ArmCuffsBase", "LegCuffsBase", "AnkleCuffsBase"],
+		activateTags: ["CyberWristCuffs", "CyberAnkleCuffs", "CyberLegCuffs"],
 		activateFunction: (e, item, data, invItems) => {
 			//if (!KinkyDungeonFlags.get("ControlHarnessCuffs")) {
 

@@ -1735,6 +1735,8 @@
             <key type="filename">../Game/Floors/Floor_cst/Floor.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Giant Bubble.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Grate.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/GrateHoriz.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/GrateVert.png</key>
             <key type="filename">../Game/Floors/Floor_cst/MimicBlock.png</key>
             <key type="filename">../Game/Floors/Floor_cst/OrbEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_cst/RubbleLooted.png</key>

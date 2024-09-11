@@ -2501,6 +2501,7 @@ function KinkyDungeonCapture(enemy) {
 	//let goddessCapture = false;
 	msg = "KinkyDungeonCaptureBasic";
 	KDDropStolenItems(enemy);
+	KinkyDungeonSetEnemyFlag(enemy, "questtarget", 0);
 	if (KDIsImprisoned(enemy)) KDFreeNPC(enemy);
 	if (KDIsNPCPersistent(enemy.id)) {
 		KDGetPersistentNPC(enemy.id).collect = true;

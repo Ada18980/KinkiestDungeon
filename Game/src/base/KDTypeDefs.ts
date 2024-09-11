@@ -1423,6 +1423,7 @@ interface weapon {
 	/** Slows player after attacking */
 	channelslow?: boolean;
 	novulnerable?: boolean;
+	nocrit?: boolean;
 	tags?: string[];
 	special?: {
 		type: string,

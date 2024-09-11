@@ -896,7 +896,7 @@ function KDProcessInput(type, data): string {
 				KinkyDungeonConsumableChoices[data.I] = data.name;
 			} else if (KDWeapon({name: data.name})) {
 				KinkyDungeonWeaponChoices[data.I] = data.name;
-			} else {
+			} else if (KDRestraint({name: data.name})) {
 				KinkyDungeonArmorChoices[data.I] = data.name;
 			}
 			/*
