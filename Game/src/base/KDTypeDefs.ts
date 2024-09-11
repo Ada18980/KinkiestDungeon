@@ -439,6 +439,8 @@ interface KDRestraintPropsBase {
 	forceRemovePrison?: boolean,
 	/** Changes the dialogue text when you fail to remove the item */
 	failSuffix?: Record<string, string>,
+	/** Custom equip message */
+	customEquip?: string,
 	/** Changes the dialogue text when you try to struggle completely */
 	specStruggleTypes?: string[],
 	/** List of Groups removed */

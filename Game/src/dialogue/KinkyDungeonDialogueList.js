@@ -1865,7 +1865,7 @@ let KDDialogue = {
 					let doorTile = KDGetJailDoor(player.x, player.y);
 					/** @type {KDPoint} */
 					let door = doorTile;
-					if (door) {
+					if (door && KDistChebyshev(door.x-player.x, door.y-player.y) < 5) {
 						if (doorTile.tile) {
 							doorTile.OGLock = doorTile.Lock;
 							doorTile.tile.Lock = undefined;

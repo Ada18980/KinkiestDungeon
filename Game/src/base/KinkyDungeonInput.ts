@@ -237,18 +237,22 @@ function KDProcessInput(type, data): string {
 
 				KDStunTurns(KinkyDungeonGetRestraintByName(data.name)?.protection ? 4 : 2, true);
 
-				msg = "KinkyDungeonSelfBondage";
-				if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
-					if (KinkyDungeonIsChaste(false)) {
-						msg = "KinkyDungeonSelfBondagePlug";
+				let customEq = KDRestraint(loose).customEquip || "";
+				msg = "KinkyDungeonSelfBondage" + customEq;
+				if (!customEq) {
+					if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
+						if (KinkyDungeonIsChaste(false)) {
+							msg = "KinkyDungeonSelfBondagePlug";
+						}
+					} else if (KDRestraint(loose).Group == "Item") {
+						if (KinkyDungeonIsChaste(true)) {
+							msg = "KinkyDungeonSelfBondageNipple";
+						}
+					} else if (KDRestraint(loose).enchanted) {
+						msg = "KinkyDungeonSelfBondageEnchanted";
 					}
-				} else if (KDRestraint(loose).Group == "Item") {
-					if (KinkyDungeonIsChaste(true)) {
-						msg = "KinkyDungeonSelfBondageNipple";
-					}
-				} else if (KDRestraint(loose).enchanted) {
-					msg = "KinkyDungeonSelfBondageEnchanted";
 				}
+
 				KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
 
 				return msg;
