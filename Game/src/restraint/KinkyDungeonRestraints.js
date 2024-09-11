@@ -4899,7 +4899,8 @@ function KDSuccessRemove(StruggleType, restraint, lockType, index, data, host) {
 		}
 	}
 	let suff = "";
-	if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = "Aroused";
+	if (KDRestraint(restraint)?.customEscapeSucc) suff = KDRestraint(restraint)?.customEscapeSucc;
+	else if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = "Aroused";
 	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + "Success" + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), "lightgreen", 2);
 
 	KinkyDungeonSendEvent("afterSuccessRemove", data);
