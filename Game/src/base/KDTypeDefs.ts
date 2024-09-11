@@ -2265,6 +2265,8 @@ interface KinkyDialogue {
 	data?: Record<string, string>;
 	/** Tags for filtering */
 	tags?: string[];
+	singletag?: string[];
+	excludeTags?: string[];
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
@@ -2310,6 +2312,9 @@ interface KinkyDialogue {
 	options?: Record<string, KinkyDialogue>;
 	/** Name of a dialogue to get extra options from. Merges them, preferring this dialogue's options if the name is the same */
 	extraOptions?: string;
+
+	outfit?: string;
+	chance?: number;
 }
 
 interface KinkyVibration {

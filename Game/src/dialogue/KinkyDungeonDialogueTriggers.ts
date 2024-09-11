@@ -3,8 +3,7 @@
 /** No dialogues will trigger when the player dist is higher than this */
 let KinkyDungeonMaxDialogueTriggerDist = 5.9;
 
-/** @type {Record<string, KinkyDialogueTrigger>} */
-let KDDialogueTriggers = {
+let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 	"WeaponStop": {
 		dialogue: "WeaponFound",
 		allowedPrisonStates: ["parole"],
@@ -14,7 +13,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		talk: true,
 		blockDuringPlaytime: false,
-		prerequisite: (enemy, dist, AIData) => {
+		prerequisite: (enemy, dist, _AIData) => {
 			return (KinkyDungeonPlayerDamage
 				&& !KinkyDungeonPlayerDamage.unarmed
 				&& KinkyDungeonPlayerDamage.name
@@ -23,7 +22,7 @@ let KDDialogueTriggers = {
 				&& KDRandom() < 0.25
 				&& !KinkyDungeonFlags.has("demand"));
 		},
-		weight: (enemy, dist) => {
+		weight: (enemy, _dist) => {
 			return KDStrictPersonalities.includes(enemy.personality) ? 10 : 1;
 		},
 	},
@@ -167,7 +166,7 @@ let KDDialogueTriggers = {
 		noAlly: true,
 		talk: true,
 		blockDuringPlaytime: true,
-		prerequisite: (enemy, dist, AIData) => {
+		prerequisite: (_enemy, dist, _AIData) => {
 			return (dist < 1.5
 				&& KinkyDungeonStatsChoice.has("arousalMode")
 				&& !KinkyDungeonFlags.get("DangerFlag")
@@ -190,7 +189,7 @@ let KDDialogueTriggers = {
 						allowLowPower: true
 					}) != undefined);
 		},
-		weight: (enemy, dist) => {
+		weight: (_enemy, _dist) => {
 			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
 		},
 	},
@@ -217,16 +216,16 @@ let KDDialogueTriggers = {
 
 /**
  * Generic condition for Bondage Offers
- * @param {entity} enemy
- * @param {any} AIData
- * @param {number} dist - Current player dist, its sent as a param for faster runtime
- * @param {number} maxdist
- * @param {number} chance
- * @param {string[]} restraintTags - Tags of required restraints
- * @param {string} Lock
- * @returns {boolean}
+ * @param enemy
+ * @param AIData
+ * @param dist - Current player dist, its sent as a param for faster runtime
+ * @param maxdist
+ * @param chance
+ * @param restraintTags - Tags of required restraints
+ * @param force
+ * @param [Lock]
  */
-function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, force, Lock = "Red") {
+function KDDefaultPrereqs(enemy: entity, AIData: any, dist: number, maxdist: number, chance: number, restraintTags: string[], force: boolean, Lock: string = "Red"): boolean {
 	return dist < maxdist
 			&& (!AIData.domMe || force)
 			&& !KDEnemyHasFlag(enemy, "playstart")
@@ -255,7 +254,8 @@ function KDDefaultPrereqs(enemy, AIData, dist, maxdist, chance, restraintTags, f
 				}) != undefined)
 			&& (KinkyDungeonStatsChoice.get("Undeniable") || !KDIsBrat(enemy) || force);
 }
-function KDShopTrigger(name) {
+
+function KDShopTrigger(name: string): KinkyDialogueTrigger {
 	return {
 		dialogue: name,
 		allowedPrisonStates: ["parole", ""],
@@ -264,7 +264,7 @@ function KDShopTrigger(name) {
 		talk: true,
 		excludeTags: ["noshop"],
 		blockDuringPlaytime: true,
-		prerequisite: (enemy, dist, AIData) => {
+		prerequisite: (enemy, dist, _AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !KDGameData.NoForceGreet
@@ -272,19 +272,17 @@ function KDShopTrigger(name) {
 				&& KDEnemyHasFlag(enemy, name)
 				&& !KDEnemyHasFlag(enemy, "NoShop"));
 		},
-		weight: (enemy, dist) => {
+		weight: (_enemy, _dist) => {
 			return 100;
 		},
 	};
 }
 
 /**
- *
- * @param {string} name
- * @param {KinkyDialogue} name
- * @returns {KinkyDialogueTrigger}
+ * @param name
+ * @param dialogue
  */
-function KDRecruitTrigger(name, dialogue) {
+function KDRecruitTrigger(name: string, dialogue: KinkyDialogue): KinkyDialogueTrigger {
 	if (dialogue)
 		return {
 			dialogue: name,
@@ -296,7 +294,7 @@ function KDRecruitTrigger(name, dialogue) {
 			nonHostile: true,
 			noCombat: true,
 			blockDuringPlaytime: true,
-			prerequisite: (enemy, dist, AIData) => {
+			prerequisite: (enemy, dist, _AIData) => {
 				return (dist < 1.5
 					&& !KinkyDungeonFlags.get("Recruited")
 					&& !KinkyDungeonFlags.get("DangerFlag")
@@ -308,7 +306,7 @@ function KDRecruitTrigger(name, dialogue) {
 					&& KDFactionRelation("Player", KDGetFactionOriginal(enemy)) > -0.1
 					&& KDRandom() < dialogue.chance);
 			},
-			weight: (enemy, dist) => {
+			weight: (_enemy, _dist) => {
 				return 10;
 			},
 		};
@@ -316,11 +314,11 @@ function KDRecruitTrigger(name, dialogue) {
 }
 
 /** Boss intro dialogue */
-function KDBossTrigger(name, enemyName) {
+function KDBossTrigger(name: string, enemyName: string[]): KinkyDialogueTrigger {
 	return {
 		dialogue: name,
 		nonHostile: true,
-		prerequisite: (enemy, dist, AIData) => {
+		prerequisite: (enemy, dist, _AIData) => {
 			return (dist < 2.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)
@@ -328,22 +326,22 @@ function KDBossTrigger(name, enemyName) {
 				&& !KinkyDungeonFlags.has("BossUnlocked")
 				&& !KinkyDungeonFlags.has("BossDialogue" + name));
 		},
-		weight: (enemy, dist) => {
+		weight: (_enemy, _dist) => {
 			return 100;
 		},
 	};
 }
 /**
  * Lose to a boss
- * @param {string} name
- * @param {string[]} enemyName
- * @param {string[]} tags
- * @returns {KinkyDialogueTrigger}
+ * @param name
+ * @param enemyName
+ * @param tags
+ * @param [condition]
  */
-function KDBossLose(name, enemyName, tags, condition) {
+function KDBossLose(name: string, enemyName: string[], tags: string[], condition?: () => boolean): KinkyDialogueTrigger {
 	return {
 		dialogue: name,
-		prerequisite: (enemy, dist, AIData) => {
+		prerequisite: (enemy, dist, _AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)
@@ -352,13 +350,13 @@ function KDBossLose(name, enemyName, tags, condition) {
 				&& ((!condition && !KinkyDungeonHasWill(0.1)) || (condition && condition()))
 				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint))));
 		},
-		weight: (enemy, dist) => {
+		weight: (_enemy, _dist) => {
 			return 100;
 		},
 	};
 }
 
-function KinkyDungeonGetShopForEnemy(enemy, guaranteed) {
+function KinkyDungeonGetShopForEnemy(enemy: entity, guaranteed?: boolean): string {
 	if (enemy.Enemy.tags.noshop) return "";
 	let shoplist = [];
 	for (let s of Object.values(KDShops)) {
