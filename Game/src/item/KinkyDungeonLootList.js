@@ -277,19 +277,25 @@ let KinkyDungeonLootTable = {
 		{name: "BagOfGoodies", arousalMode: true, minLevel: 0, weight:1.0, weapon: "BagOfGoodies", noweapon: ["BagOfGoodies"], message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	],
 	"shelf": [
+		{name: "ArcaneCrystal", minLevel: 5, weight:5, weapon: "ArcaneCrystal",
+			noweapon: ["ArcaneCrystal"], message:"LootChestWeapon",
+			messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "redkey", key: true, minLevel: 1, weight:1, message:"LootBookshelfKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "bluekey", key: true, minLevel: 0, weight:0.33, message:"LootBookshelfBlueKey", messageColor:"lightgreen", messageTime: 3, allFloors: true},
 		{name: "scroll_arms", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "scroll_legs", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "scroll_verbal", minLevel: 0, weight:1, message:"LootBookshelfScroll", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "trap_book", minLevel: 1, weight:5, message:"LootBookshelfTrap", messageColor:"#ff5277", messageTime: 3, allFloors: true},
-		{name: "ArcaneTome", minLevel: 0, weapon: "ArcaneTome", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["ArcaneTome"]},
+		{name: "ArcaneTome", minLevel: 0, weapon: "ArcaneTome", weight:1, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["ArcaneTome"]},
 		{name: "BondageTome", minLevel: 0, weapon: "BondageTome", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["BondageTome"]},
 	],
 	"pearl": [
 		{name: "pearlReward", minLevel: 0, weight:1, message:"LootPearlChest", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["pearlChest"],},
 	],
 	"shadow": [
+		{name: "ArcaneCrystal", minLevel: 5, weight:3, weapon: "ArcaneCrystal",
+			noweapon: ["ArcaneCrystal"], message:"LootChestWeapon",
+			messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "slimeThrower", minLevel: 0, weapon: "Slimethrower", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["Slimethrower"]},
 		{name: "StaffDoll", minLevel: 0, weapon: "StaffDoll", weight:2, message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffDoll"]},
 		{name: "staff_incineration", minLevel: 0, weight:.5, weapon: "StaffIncineration", message:"LootChestWeapon", messageColor:"lightblue", messageTime: 3, allFloors: true, noweapon: ["StaffIncineration"]},
@@ -333,6 +339,9 @@ let KinkyDungeonLootTable = {
 		{name: "MistressKey", minLevel: 0, weight:0.1, message:"LootChestMistressKey", messageColor:"yellow", messageTime: 3, allFloors: true},
 	],
 	"lessershadow": [
+		{name: "ArcaneCrystal", minLevel: 5, weight:3, weapon: "ArcaneCrystal",
+			noweapon: ["ArcaneCrystal"], message:"LootChestWeapon",
+			messageColor:"lightblue", messageTime: 3, allFloors: true},
 		//{name: "AncientCores", minLevel: 0, weight:1.5, message:"LootChestAncientCores", messageColor:"yellow", messageTime: 3, allFloors: true, max: 1},
 		//{name: "bluekey", minLevel: 0, weight:1.0, message:"LootChestBlueKey", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "pick", minLevel: 0, weight:2.5, message:"LootRubbleLockpick", messageColor:"lightgreen", messageTime: 3, allFloors: true, prerequisites: ["fewpick"],},
@@ -487,6 +496,11 @@ let KinkyDungeonLootTable = {
 		...KDEnchantedRestraints,
 	],
 	"wizard": [
+
+		{name: "ArcaneCrystal", minLevel: 5, weight:3, weapon: "ArcaneCrystal",
+			noweapon: ["ArcaneCrystal"], message:"LootChestWeapon",
+			messageColor:"lightblue", messageTime: 3, allFloors: true},
+
 		{name: "spell_illusion_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["UnlearnedIllusion", "lowlevel"]}, // lowlevel is spell levels 1-2
 		{name: "spell_conjuration_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["UnlearnedConjure", "lowlevel"]}, // lowlevel is spell levels 1-2
 		{name: "spell_elemental_low", magic: true, minLevel: 0, weight: 0.75, message:"LootChestSpell", messageColor:"lightblue", messageTime: 3, allFloors: true, prerequisites: ["UnlearnedElements", "lowlevel"]}, // lowlevel is spell levels 1-2

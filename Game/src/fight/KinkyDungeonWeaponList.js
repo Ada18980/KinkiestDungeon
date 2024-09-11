@@ -288,20 +288,24 @@ let KinkyDungeonWeapons = {
 			{type: "AoEDamageFrozen", trigger: "tick", aoe: 10, power: 0.5, damage: "ice"}]},
 
 	// Tier 1 orbs
-	"ArcaneCrystal": {name: "ArcaneCrystal", dmg: 3.3, chance: 0.8, staminacost: 3.0, type: "arcane", noHands: true, unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
+	"ArcaneCrystal": {name: "ArcaneCrystal", dmg: 3.3, chance: 0.8, staminacost: 3.0, type: "arcane",
+		noHands: true, unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
+		nocrit: true,
 		tags: ["illum"], noDamagePenalty: true,
 		angle: 0,
 		events: [{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3.5, color: "#6700ff"}, {type: "Float", trigger: "draw"}, ]},
-	"ArcaneTome": {name: "ArcaneTome", dmg: 1.0, chance: 1.0, staminacost: 1.5, crit: 1.5,
+	"ArcaneTome": {name: "ArcaneTome", dmg: 1.5, chance: 1.0, staminacost: 1.5, crit: 1.0,
 		tags: ["tome"], noDamagePenalty: true,
 		type: "arcane", unarmed: false, novulnerable: true, magic: true, rarity: 2, shop: true, sfx: "Laser",
+		nocrit: true,
 		special: {type: "spell", selfCast: true, spell: "TomeArcane", prereq: "HasWill"},
 		events: [
 			{type: "Buff", kind: "Book", trigger: "tick", power: 0.05, buffType: "magicDamageBuff", offhand: true},
 		]},
-	"BondageTome": {name: "BondageTome", dmg: 1.0, chance: 1.0, staminacost: 1.5, crit: 1.25,
+	"BondageTome": {name: "BondageTome", dmg: 1.5, chance: 1.0, staminacost: 1.5, crit: 1.0,
 		tags: ["tome"], noDamagePenalty: true,
 		type: "chain", unarmed: false, novulnerable: true, magic: true, rarity: 3, shop: true, sfx: "Chain",
+		nocrit: true,
 		bindType: "Magic", bindEff: 1.5, bindcrit: 2.0,
 		special: {type: "spell", selfCast: true, spell: "TomeBondage", prereq: "HasWill"},
 		events: [

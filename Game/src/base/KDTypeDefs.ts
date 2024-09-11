@@ -440,6 +440,10 @@ interface KDRestraintPropsBase {
 	forceRemovePrison?: boolean,
 	/** Changes the dialogue text when you fail to remove the item */
 	failSuffix?: Record<string, string>,
+	/** Custom equip message */
+	customEquip?: string,
+	/** Custom success message */
+	customEscapeSucc?: string,
 	/** Changes the dialogue text when you try to struggle completely */
 	specStruggleTypes?: string[],
 	/** List of Groups removed */
@@ -1420,6 +1424,7 @@ interface weapon {
 	/** Slows player after attacking */
 	channelslow?: boolean;
 	novulnerable?: boolean;
+	nocrit?: boolean;
 	tags?: string[];
 	special?: {
 		type: string,

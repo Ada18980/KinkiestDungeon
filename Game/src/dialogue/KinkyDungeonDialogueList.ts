@@ -1852,7 +1852,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					// Type shenanigans unintended
 					let doorTile = KDGetJailDoor(player.x, player.y);
 					let door: KDPoint = doorTile;
-					if (door) {
+					if (door && KDistChebyshev(door.x-player.x, door.y-player.y) < 5) {
 						if (doorTile.tile) {
 							/*  FIXME: `door` and `doorTile` are not used again, so this appears to be a noop.  */
 							doorTile['OGLock'] = doorTile['Lock'];

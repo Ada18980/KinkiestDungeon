@@ -31,6 +31,14 @@ TODO:
 TODO remove hogtie when released
 
 
+5.4-nightly8
+- Added modding parameter to allow custom msg for equipping and successfully removing restraints
+- fixed bug where assigning outfit to hotbar disappears the slot
+- fixed missing assets in coastal tileset
+- Increased arcane tome damage and clarified that they're not supposed to crit
+- Removed arcane crystal from wizard start, has arcane tome instead
+- added arcane crystal to wizard study chest, shadow chest, and wall loot in library
+
 5.4-nightly7b
 - Updated version number
 - Clarified cuddle lounge mechanics

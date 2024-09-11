@@ -7666,6 +7666,7 @@ KinkyDungeonPurpleLockRemoveCharger,Your command word is heard and the charger u
 KDGameData.ConfirmAttack,Are you sure you want to attack?
 KinkyDungeonConfirmStairs,Are you sure you want to go to the next level? (Click self to confirm)
 
+
 KinkyDungeonSelfBondage,You shudder as you apply the RestraintName to yourself...
 KinkyDungeonSelfBondagePlug,"You insert the RestraintName and close your belt's shield over it, with a click as it locks in place."
 KinkyDungeonSelfBondageNipple,"You attack the RestraintName and close your bra's shield over it, with a click as it locks in place."
@@ -21860,13 +21861,13 @@ KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
 KinkyDungeonSpellDescriptionWizardOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)"
 
 KinkyDungeonInventoryItemArcaneTome,Arcane Tome
-KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards."
+KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike."
 KinkyDungeonInventoryItemArcaneTomeDesc2,"+5% magic damage. Offhand: Applies passive bonus."
 ItemPickupArcaneTome,"You find a magical tome."
 KinkyDungeonSpecialArcaneTome,"Open the book. What can go wrong?"
 
 KinkyDungeonInventoryItemBondageTome,Tome of Bondage
-KinkyDungeonInventoryItemBondageTomeDesc,"Contains a malevolent spirit that wishes only to tie up damsels."
+KinkyDungeonInventoryItemBondageTomeDesc,"Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike."
 KinkyDungeonInventoryItemBondageTomeDesc2,"+10% binding effectiveness. Offhand: Applies passive bonus."
 ItemPickupBondageTome,"You find a magical tome with a sealed padlock on it."
 KinkyDungeonSpecialBondageTome,"Open the book. What can go wrong?"
