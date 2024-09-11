@@ -2784,7 +2784,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 	"ArmorerShop": KDSaleShop("ArmorerShop", ["Shield", "Breastplate", "Bracers", "Gauntlets", "SteelBoots", "ChainTunic", "ChainBikini", "TrapBelt", "TrapBra"], [], ["blacksmith"], 0.4, 2.0),
 	"BowyerShop": KDSaleShop("BowyerShop", ["AncientPowerSource", "Bow", "BowRecurve", "Crossbow", "CrossbowPistol", "Bustier", "LeatherGloves", "LeatherBoots", "TrapBlindfold"], [], ["blacksmith"], 0.4, 1.5),
 	"ShadyShop": KDSaleShop("ShadyShop",
-		["RopeSnakeRaw", "VinylTapeRaw", "Stuffing", "ClothGag", "ClothGag2", "ClothGag3", "ClothGagOver"], [], ["blacksmith"], 0.4, 5, "SmokeBomb", 10),
+		["RopeSnakeRaw", "VinylTapeRaw", "Stuffing", "ClothGag", "ClothGag2", "ClothGag3", "ClothGagOver"], [], ["blacksmith"], 0.4, 5, ["SmokeBomb"], 10),
 	"PrisonerBandit": {
 		response: "Default",
 		personalities: ["Sub"],
