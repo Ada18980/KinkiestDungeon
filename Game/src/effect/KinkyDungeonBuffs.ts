@@ -1,6 +1,6 @@
 "use strict";
 
-function KinkyDungeonSendBuffEvent(Event, data) {
+function KinkyDungeonSendBuffEvent(Event: string, data: any) {
 	if (!KDMapHasEvent(KDEventMapBuff, Event)) return;
 	for (let buff of Object.values(KinkyDungeonPlayerBuffs)) {
 		if (buff && buff.events) {
@@ -27,19 +27,19 @@ function KinkyDungeonSendBuffEvent(Event, data) {
 	}
 }
 
-// Decreases time left in buffs and also applies effects
 /**
- *
- * @param {entity} entity
- * @param {number} delta
- * @param {boolean} endFloor
+ * Decreases time left in buffs and also applies effects
+ * @param entity
+ * @param delta
+ * @param endFloor
  */
-function KinkyDungeonTickBuffs(entity, delta, endFloor) {
+function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean): void {
 	let list = null;
 	if (entity == KinkyDungeonPlayerEntity)
 		list = KinkyDungeonPlayerBuffs;
 	else if (entity.buffs) list = entity.buffs;
-	for (const [key, value] of Object.entries(list)) {
+	for (const [key, v] of Object.entries(list)) {
+		const value: any = v;
 		if (value) {
 			if (value.endFloor && endFloor) KinkyDungeonExpireBuff(entity, key);
 			else if (value.endSleep && KDGameData.SleepTurns > 1) KinkyDungeonExpireBuff(entity, key);
@@ -70,18 +70,18 @@ function KinkyDungeonTickBuffs(entity, delta, endFloor) {
 }
 
 /**
- *
- * @param {entity} entity
- * @param {string} tag
- * @param {number} Amount
+ * @param entity
+ * @param tag
+ * @param Amount
  */
-function KinkyDungeonTickBuffTag(entity, tag, Amount = 1) {
+function KinkyDungeonTickBuffTag(entity: entity, tag: string, Amount: number = 1): void {
 	let list = null;
 	if (entity == KinkyDungeonPlayerEntity)
 		list = KinkyDungeonPlayerBuffs;
 	else if (entity.buffs) list = entity.buffs;
 	if (list)
-		for (const [key, value] of Object.entries(list)) {
+		for (const [key, v] of Object.entries(list)) {
+			const value: any = v;
 			if (value) {
 				if (value.maxCount && value.tags?.includes(tag)) {
 					if (!value.currentCount) value.currentCount = 0;
@@ -93,12 +93,10 @@ function KinkyDungeonTickBuffTag(entity, tag, Amount = 1) {
 }
 
 /**
- *
- * @param {entity} entity
- * @param {string} tag
- * @returns {boolean}
+ * @param entity
+ * @param tag
  */
-function KDEntityHasBuffTags(entity, tag) {
+function KDEntityHasBuffTags(entity: entity, tag: string): boolean {
 	let list = entity.player ? KinkyDungeonPlayerBuffs : entity.buffs;
 	if (list) {
 		for (const buff of Object.values(list)) {
@@ -109,13 +107,13 @@ function KDEntityHasBuffTags(entity, tag) {
 	}
 	return false;
 }
+
 /**
- *
- * @param {entity} entity
- * @param {string} tag
+ * @param entity
+ * @param tag
  * @returns {Record<string, any>}
  */
-function KDGetBuffsWithTag(entity, tag) {
+function KDGetBuffsWithTag(entity: entity, tag: string): Record<string, any> {
 	let ret = {};
 	let list = entity.player ? KinkyDungeonPlayerBuffs : entity.buffs;
 	if (list) {
@@ -129,17 +127,17 @@ function KDGetBuffsWithTag(entity, tag) {
 }
 
 /**
- *
- * @param {entity} entity
- * @param {string[]} tags
+ * @param entity
+ * @param tags
  */
-function KinkyDungeonRemoveBuffsWithTag(entity, tags) {
+function KinkyDungeonRemoveBuffsWithTag(entity: entity, tags: string[]) {
 	let list = null;
 	if (entity && entity.player) {
 		list = KinkyDungeonPlayerBuffs;
 	} else if (entity?.buffs) list = entity.buffs;
 	if (list)
-		for (const [key, value] of Object.entries(list)) {
+		for (const [key, v] of Object.entries(list)) {
+			const value: any = v;
 			if (value) {
 				for (let t of tags)
 					if (value.tags && value.tags.includes(t)) {
@@ -150,7 +148,7 @@ function KinkyDungeonRemoveBuffsWithTag(entity, tags) {
 }
 
 // Updates buffs for all creatures
-function KinkyDungeonUpdateBuffs(delta, endFloor) {
+function KinkyDungeonUpdateBuffs(delta: number, endFloor: boolean) {
 	// Tick down buffs the buffs
 	KinkyDungeonSendEvent("tickBuffs", {delta: delta});
 	KinkyDungeonTickBuffs(KinkyDungeonPlayerEntity, delta, endFloor);
@@ -172,7 +170,7 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 					for (let enemy of nearby) {
 						if ((KDHostile(enemy) || !buff.noAlly)
 							&& (KDAllied(enemy) || !buff.onlyAlly)
-							&& (!b.bullet.spell.filterTags || b.bullet.spell.filterTags.some((tag) => {return enemy.Enemy.tags[tag];}))
+							&& (!b.bullet.spell.filterTags || b.bullet.spell.filterTags.some((tag: string) => {return enemy.Enemy.tags[tag];}))
 							//&& buff.range >= Math.sqrt((enemy.x - b.x) * (enemy.x - b.x) + (enemy.y - b.y) * (enemy.y - b.y))
 						) {
 							KinkyDungeonApplyBuffToEntity(enemy, buff);
@@ -187,19 +185,21 @@ function KinkyDungeonUpdateBuffs(delta, endFloor) {
 	KDUpdatePlayerShield();
 }
 
-function KDUpdatePlayerShield(PlayerBuffs) {
+function KDUpdatePlayerShield(PlayerBuffs?: any): void {
 	if (!PlayerBuffs) PlayerBuffs = KinkyDungeonPlayerBuffs;
 	let buffs = Object.values(PlayerBuffs);//Object.values(KinkyDungeonPlayerBuffs).sort((a, b) => {return (a.power || 0) - (b.power || 0);});
 	KDGameData.Shield = 0;
 
-	for (let b of buffs) {
+	for (const bb of buffs) {
+		const b: any = bb;
 		if (b.type == "Shield" && b.power > 0)
 			KDGameData.Shield += b.power;
 	}
 }
 
 
-function KDDamagePlayerShield(Amount, Player) {
+function KDDamagePlayerShield(Amount: number, Player: any) {
+	/*  FIXME: This doesn't seem to be used for anything...  */
 	if (!Player) Player = KinkyDungeonPlayerEntity;
 	let PlayerBuffs = KinkyDungeonPlayerBuffs;
 	let buffs = Object.values(PlayerBuffs).filter((b) => {return b.type == "Shield";}).sort((a, b) => {return (a.power || 0) - (b.power || 0);});
@@ -219,15 +219,14 @@ function KDDamagePlayerShield(Amount, Player) {
 	KDUpdatePlayerShield(PlayerBuffs);
 }
 
-/**  */
-function KDBuffEnabled(list, buff, onlyPositiveDuration) {
+function KDBuffEnabled(list: Record<string, any>, buff: any, onlyPositiveDuration: boolean) {
 	return (!onlyPositiveDuration || buff.duration > 0)
-		&& (!buff.disabletypes || !buff.disabletypes.some((tag) => {
+		&& (!buff.disabletypes || !buff.disabletypes.some((tag: string) => {
 			return list[tag] != undefined;
 		}));
 }
 
-function KinkyDungeonGetBuffedStat(list, Stat, onlyPositiveDuration) {
+function KinkyDungeonGetBuffedStat(list: Record<string, any>, Stat: any, onlyPositiveDuration?: boolean): number {
 	let stat = 0;
 	if (list)
 		for (let buff of Object.values(list)) {
@@ -238,12 +237,11 @@ function KinkyDungeonGetBuffedStat(list, Stat, onlyPositiveDuration) {
 		}
 	return stat;
 }
-function KinkyDungeonGetMaxBuffedStat(list, Stat, onlyPositiveDuration) {
+function KinkyDungeonGetMaxBuffedStat(list: Record<string, any>, Stat: any, onlyPositiveDuration: boolean): number {
 	let stat = 0;
 	if (list)
 		for (let buff of Object.values(list)) {
-			if (buff && buff.type == Stat
-				&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
+			if (buff && buff.type == Stat && KDBuffEnabled(list, buff, onlyPositiveDuration)) {
 				stat = Math.max(stat, buff.power);
 			}
 		}
@@ -251,11 +249,10 @@ function KinkyDungeonGetMaxBuffedStat(list, Stat, onlyPositiveDuration) {
 }
 
 /**
- *
- * @param {entity} entity
- * @param {string} key
+ * @param entity
+ * @param key
  */
-function KinkyDungeonExpireBuff(entity, key) {
+function KinkyDungeonExpireBuff(entity: entity, key: string): void {
 	let list = null;
 	if (entity == KinkyDungeonPlayerEntity)
 		list = KinkyDungeonPlayerBuffs;
@@ -271,12 +268,11 @@ function KinkyDungeonExpireBuff(entity, key) {
 }
 
 /**
- *
- * @param {entity} entity
- * @param {any} origbuff
- * @param {any} [changes]
+ * @param entity
+ * @param origbuff
+ * @param [changes]
  */
-function KinkyDungeonApplyBuffToEntity(entity, origbuff, changes) {
+function KinkyDungeonApplyBuffToEntity(entity: entity, origbuff: any, changes?: any) {
 	if (entity && entity.player) {
 		return KDApplyBuff(KinkyDungeonPlayerBuffs, origbuff, changes, entity);
 	} else if (entity) {
@@ -286,9 +282,9 @@ function KinkyDungeonApplyBuffToEntity(entity, origbuff, changes) {
 	return null;
 }
 
-function KDApplyBuff(list, origbuff, changes, entity) {
+function KDApplyBuff(list: Record<string, any>, origbuff: any, changes: any, entity: entity): any {
 	if (!origbuff) return null;
-	let buff = {};
+	let buff: any = {};
 	Object.assign(buff, origbuff);
 	if (changes)
 		Object.assign(buff, changes);
@@ -314,59 +310,54 @@ function KDApplyBuff(list, origbuff, changes, entity) {
 	}
 }
 
-function KinkyDungeonGetbuff(list, Buff) {
+function KinkyDungeonGetbuff(list: Record<string, any>, Buff: string): any {
 	if (list && list[Buff]) return list[Buff];
 	else return null;
 }
 
-function KinkyDungeonHasBuff(list, Buff, excludeNoDuration) {
+function KinkyDungeonHasBuff(list: Record<string, any>, Buff: string, excludeNoDuration?: boolean): boolean {
 	if (list && list[Buff] && (!excludeNoDuration || list[Buff].duration > 0)) return true;
 	else return false;
 }
 
 /**
- *
- * @param {entity} entity
- * @param {string} buff
- * @param {boolean} excludeNoDuration
- * @returns {boolean}
+ * @param entity
+ * @param buff
+ * @param [excludeNoDuration]
  */
-function KDEntityHasBuff(entity, buff, excludeNoDuration = false) {
+function KDEntityHasBuff(entity: entity, buff: string, excludeNoDuration: boolean = false): boolean {
 	if (entity.player) {
 		return KinkyDungeonHasBuff(KinkyDungeonPlayerBuffs, buff, excludeNoDuration);
 	} else return KinkyDungeonHasBuff(entity.buffs, buff, excludeNoDuration);
 }
+
 /**
- *
- * @param {entity} entity
- * @param {string} stat
- * @param {boolean} [onlyPositiveDuration]
- * @returns {number}
+ * @param entity
+ * @param stat
+ * @param [onlyPositiveDuration]
  */
-function KDEntityBuffedStat(entity, stat, onlyPositiveDuration) {
+function KDEntityBuffedStat(entity: entity, stat: string, onlyPositiveDuration?: boolean): number {
 	if (!entity) return 0;
 	if (entity.player) {
 		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
 	} else return KinkyDungeonGetBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
+
 /**
- *
- * @param {entity} entity
- * @param {string} stat
- * @param {boolean} [onlyPositiveDuration]
- * @returns {number}
+ * @param entity
+ * @param stat
+ * @param [onlyPositiveDuration]
  */
-function KDEntityMaxBuffedStat(entity, stat, onlyPositiveDuration) {
+function KDEntityMaxBuffedStat(entity: entity, stat: string, onlyPositiveDuration?: boolean): number {
 	if (entity.player) {
 		return KinkyDungeonGetMaxBuffedStat(KinkyDungeonPlayerBuffs, stat, onlyPositiveDuration);
 	} else return KinkyDungeonGetMaxBuffedStat(entity.buffs, stat, onlyPositiveDuration);
 }
 
 /**
- *
- * @param {entity} entity
+ * @param entity
  */
-function KDEntityGetBuff(entity, buff) {
+function KDEntityGetBuff(entity: entity, buff: string): any {
 	if (entity.player) {
 		return KinkyDungeonGetbuff(KinkyDungeonPlayerBuffs, buff);
 	} else return KinkyDungeonGetbuff(entity.buffs, buff);
