@@ -41,7 +41,7 @@ def read_csv_with_empty_lines(file_path) -> list:
 # Read the translation file
 def read_translation_file(file_path) -> list:
     with open(file_path, 'r', encoding='utf-8') as file:
-        lines = [line.strip() for line in file.readlines()]
+        lines = [ line.strip() for line in file.readlines() if not line.lstrip().startswith('###') ]
     return lines
 
 
@@ -61,10 +61,11 @@ def write_translated_file(csv_lines : list, translations : list, output_path : s
             translated.add(original)
             
             # The next line of the original text corresponding to the List is the translation. If the translation is not found,will use "### Original" instead.
+            # When the translation is the same as the original text, "### Original" is also used because it is meaningless.
             try:
                 original_index = translations.index(original)
                 translation = translations[original_index + 1].strip()
-                if not translation:
+                if not translation or (original == translation) :
                     raise ValueError
             except (ValueError, IndexError):
                 file.write(f'### {original}\n')
