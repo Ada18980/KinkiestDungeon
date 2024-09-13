@@ -30,6 +30,8 @@ TODO:
 
 TODO remove hogtie when released
 
+5.4-nightly9
+- Allow linking armor under accessible restraints
 
 5.4-nightly8
 - Added modding parameter to allow custom msg for equipping and successfully removing restraints

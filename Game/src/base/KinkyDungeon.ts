@@ -1149,35 +1149,6 @@ function KinkyDungeonLoad(): void {
 				KDMigrateSaveToNewSystem();
 			}
 
-			DrawButtonKDEx("GameContinue", () => {
-				KDExecuteModsAndStart();
-				// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2.
-				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
-
-				return true;
-			}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
-			DrawButtonKDEx("GameStart", () => {
-				KinkyDungeonState = "Name";
-				let emptySlot = undefined;
-				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
-				for (var i = 1; i < 5; i++) {
-					let num = (i);
-					KinkyDungeonDBLoad(num).then((code) => {
-						loadedsaveslots[num - 1] = code;
-						let decoded = LZString.decompressFromBase64(code);
-						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName) loadedsaveNames[num - 1] =
-							JSON.parse(decoded)?.KDGameData?.PlayerName;
-						if (!emptySlot && !code) {
-							emptySlot = num;
-							KDSaveSlot = emptySlot;
-						}
-					});
-				}
-				return true;
-			}, true, 1000-350/2, 440, 350, 64, TextGet("GameStart"), "#ffffff", "");
-
-
-
 
 			KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
 			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
@@ -1604,6 +1575,7 @@ function KinkyDungeonRun() {
 		}, localStorage.getItem('KinkyDungeonSave') != '', 1000-350/2, 360, 350, 64, TextGet("GameContinue"), localStorage.getItem('KinkyDungeonSave') ? "#ffffff" : "pink", "");
 		DrawButtonKDEx("GameStart", () => {
 			KinkyDungeonState = "Name";
+			KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 			let emptySlot = undefined;
 			for (var i = 1; i < 5; i++) {
 				let num = (i);
@@ -1616,8 +1588,6 @@ function KinkyDungeonRun() {
 						emptySlot = num;
 						KDSaveSlot = emptySlot;
 					}
-					if (!emptySlot)
-						KDSaveSlot = num;
 				});
 			}
 			return true;

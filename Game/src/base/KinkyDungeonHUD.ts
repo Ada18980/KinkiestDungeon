@@ -1996,6 +1996,11 @@ function KDSetFocusControl(control) {
  * @param {string} control
  */
 function KDInitFocusControl(control) {
+
+	if (localStorage.getItem("focusControl")) {
+		KDGameData.FocusControlToggle = JSON.parse("focusControl");
+	}
+
 	KDSetFocusControlToggle("", "");
 	if (KDFocusControlButtons[control]) {
 		for (let button of Object.entries(KDFocusControlButtons[control])) {
@@ -2023,6 +2028,8 @@ function KDInputFocusControlToggle(key, value) {
 			}
 		}
 	}
+
+	localStorage.setItem("focusControl", JSON.stringify(KDGameData.FocusControlToggle));
 }
 
 
