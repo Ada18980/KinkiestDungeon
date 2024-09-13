@@ -2,8 +2,7 @@
 
 let KinkyDungeonStatStaminaCostAttack = -1.0; // Cost to attack
 
-/** @type {Record<string, Record<string, number>>} */
-let KDWeaponLootList = {
+let KDWeaponLootList: Record<string, Record<string, number>> = {
 	"CommonWeapon": {
 		"Sword": 1,
 		"Spear": 1,
@@ -29,9 +28,8 @@ let KDWeaponLootList = {
 };
 
 /**
- * @type {Record<string, weapon>}
  */
-let KinkyDungeonWeapons = {
+let KinkyDungeonWeapons: Record<string, weapon> = {
 	"Unarmed": {name: "Unarmed", dmg: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, noequip: true, sfx: "Unarmed",
 		tags: ["unarmed"],
 		events: [
