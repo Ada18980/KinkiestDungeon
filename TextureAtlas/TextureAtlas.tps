@@ -2093,19 +2093,15 @@
             <key type="filename">../Models/MaidKnightLight/PauldronStrapYoked.png</key>
             <key type="filename">../Models/MaidKnightLight/ShoulderRightUp.png</key>
             <key type="filename">../Models/MaidKnightLight/SockLeftClosed.png</key>
-            <key type="filename">../Models/MaidKnightLight/SockLeftClosedShoe.png</key>
             <key type="filename">../Models/MaidKnightLight/SockLeftHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/SockLeftKneel.png</key>
             <key type="filename">../Models/MaidKnightLight/SockLeftKneelClosed.png</key>
             <key type="filename">../Models/MaidKnightLight/SockLeftSpread.png</key>
-            <key type="filename">../Models/MaidKnightLight/SockLeftSpreadShoe.png</key>
             <key type="filename">../Models/MaidKnightLight/SockRightClosed.png</key>
-            <key type="filename">../Models/MaidKnightLight/SockRightClosedShoe.png</key>
             <key type="filename">../Models/MaidKnightLight/SockRightHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/SockRightKneel.png</key>
             <key type="filename">../Models/MaidKnightLight/SockRightKneelClosed.png</key>
             <key type="filename">../Models/MaidKnightLight/SockRightSpread.png</key>
-            <key type="filename">../Models/MaidKnightLight/SockRightSpreadShoe.png</key>
             <key type="filename">../Models/Mittens/BandLeftFree.png</key>
             <key type="filename">../Models/Mittens/BandLeftFront.png</key>
             <key type="filename">../Models/Mittens/BandLeftYoked.png</key>
@@ -2199,6 +2195,7 @@
             <key type="filename">../Models/Ninja/SkirtOverKneel.png</key>
             <key type="filename">../Models/Ninja/SkirtOverKneelCrotchStrap.png</key>
             <key type="filename">../Models/Ninja/SockLeftClosed.png</key>
+            <key type="filename">../Models/Ninja/SockLeftHogtie.png</key>
             <key type="filename">../Models/Ninja/SockLeftKneel.png</key>
             <key type="filename">../Models/Ninja/SockLeftKneelClosed.png</key>
             <key type="filename">../Models/Ninja/SockLeftSpread.png</key>

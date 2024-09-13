@@ -204,7 +204,8 @@ function KDProcessInput(type, data): string {
 						if (KDDebugLink) {
 							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 						} else {
-							linkable = KDCurrentItemLinkable(currentItem, newItem);
+							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+							//KDCurrentItemLinkable(currentItem, newItem);
 						}
 						if (linkable) {
 							equipped = false;
@@ -1338,7 +1339,8 @@ function KDProcessInputs(ReturnResult) {
 }
 
 function KDInteract(x, y) {
-	KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
+	if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y))
+		KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
 	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	if (tile?.Type) {
