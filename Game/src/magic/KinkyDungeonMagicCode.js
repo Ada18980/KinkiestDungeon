@@ -995,7 +995,7 @@ let KinkyDungeonSpellSpecials = {
 							if (spell.aoe) KinkyDungeonChestConfirm = true;
 							success = KDMoveObjectFunctions[tile](tt.x, tt.y);
 							KinkyDungeonChestConfirm = false;
-						} {
+						} else {
 							locked = true;
 							success = false;
 						}
