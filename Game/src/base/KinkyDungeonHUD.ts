@@ -718,7 +718,7 @@ function KDDrawSpellChoices() {
 	}
 }
 
-function KDCycleSpellPage(reverse, noWrap, force = false) {
+function KDCycleSpellPage(reverse: boolean = false, noWrap: boolean = false, force: boolean = false) {
 	if (reverse) {
 		KDSpellPage -= 1;
 	} else KDSpellPage += 1;
@@ -1847,11 +1847,10 @@ function KDCanRemove(item) {
 }
 
 /**
- *
- * @param {item} inv
- * @param {boolean} allowInaccessible
+ * @param inv
+ * @param [allowInaccessible]
  */
-function KDGetItemLinkIndex(inv, allowInaccessible) {
+function KDGetItemLinkIndex(inv: item, _allowInaccessible?: boolean): number {
 	let item = KinkyDungeonGetRestraintItem(KDRestraint(inv).Group);
 	let surfaceItems = KDDynamicLinkListSurface(item);
 	return surfaceItems.indexOf(inv);

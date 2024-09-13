@@ -1792,11 +1792,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 								let ttCJKcheck1 = CJKcheck(tt,1);
 								let ttCJKcheck2 = CJKcheck(tt);
 
-								if (ttCJKcheck1){
+								if (ttCJKcheck1  &&  typeof (ttCJKcheck1) != 'boolean'){
 									let i;
 									for (i in ttCJKcheck1){ttlength += ttCJKcheck1[i].length * 8;}
 								}
-								if (ttCJKcheck2){
+								if (ttCJKcheck2  &&  typeof (ttCJKcheck2) != 'boolean'){
 									let i;
 									for (i in ttCJKcheck2){ttlength += ttCJKcheck2[i].length * 16;}
 								}
@@ -1813,11 +1813,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 							let nameCJKcheck1 = CJKcheck(name,1);
 							let nameCJKcheck2 = CJKcheck(name);
 
-							if (nameCJKcheck1){
+							if (nameCJKcheck1  &&  typeof (nameCJKcheck1) != 'boolean'){
 								let i;
 								for (i in nameCJKcheck1){namelength += nameCJKcheck1[i].length * 8;}
 							}
-							if (nameCJKcheck2){
+							if (nameCJKcheck2  && typeof (nameCJKcheck2) != 'boolean'){
 								let i;
 								for (i in nameCJKcheck2){namelength += nameCJKcheck2[i].length * 16;}
 							}
@@ -1847,11 +1847,11 @@ function KinkyDungeonDrawEnemiesHP(delta, canvasOffsetX, canvasOffsetY, CamX, Ca
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
 
-						if (dialougeCJKcheck1){
+						if (dialougeCJKcheck1  &&  typeof (dialougeCJKcheck1) != 'boolean'){
 							let i;
 							for (i in dialougeCJKcheck1){dialougelenth += dialougeCJKcheck1[i].length * 8;}
 						}
-						if (dialougeCJKcheck2){
+						if (dialougeCJKcheck2  &&  typeof (dialougeCJKcheck2) != 'boolean'){
 							let i;
 							for (i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;}
 						}
@@ -2883,11 +2883,11 @@ function KDNearbyNeutrals(x, y, dist, neutralEnemy) {
 /**
  *
  * @param {*} avoidPlayer
- * @param {*} onlyPlayer
- * @param {*} Enemy
- * @param {*} playerDist
- * @param {*} minDist
- * @param {number} maxDist
+ * @param {*} [onlyPlayer]
+ * @param {entity} [Enemy]
+ * @param {*} [playerDist]
+ * @param {*} [minDist]
+ * @param {number} [maxDist]
  * @returns {{x: number, y: number}}
  */
 function KinkyDungeonGetRandomEnemyPoint(avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false, maxDist = 100) {
@@ -3006,10 +3006,10 @@ let RandomPathList = [];
  * @param {*} criteria
  * @param {*} avoidPlayer
  * @param {*} onlyPlayer
- * @param {*} Enemy
- * @param {*} playerDist
- * @param {*} minDist
- * @param {number} maxDist
+ * @param {*} [Enemy]
+ * @param {*} [playerDist]
+ * @param {*} [minDist]
+ * @param {number} [maxDist]
  * @returns {{x: number, y: number}}
  */
 function KinkyDungeonGetRandomEnemyPointCriteria(criteria, avoidPlayer, onlyPlayer, Enemy, playerDist = 6, minDist = 6, ignoreOL = false, maxDist = 100) {
@@ -6123,6 +6123,7 @@ function KinkyDungeonNoEnemy(x, y, Player) {
 /**
  *
  * @param {entity} enemy
+ * @param {boolean} [strict]
  * @returns {boolean}
  */
 function KDIsImmobile(enemy, strict) {
@@ -6685,14 +6686,16 @@ function KDPushModifier(power, enemy, allowNeg = false) {
  * @param {entity} enemy
  * @param {number} amount
  * @param {string} type
- * @param {any} Damage
+ * @param {any} [Damage]
+ * @param {any} [Msg]
+ * @param {any} [Delay]
  * @returns {*}
  */
 function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
 	if (!enemy) return 0;
 	let data = {
 		amount: amount,
-		specialAmount: amount,
+		specialAmount: amount,   // FIXME: This field is never used anywhere else.
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
 		Msg: Msg,
@@ -6726,6 +6729,7 @@ function KDTieUpEnemy(enemy, amount, type = "Leather", Damage, Msg, Delay) {
  * @param {entity} enemy
  * @param {number} struggleMod
  * @param {number} delta
+ * @param {number} [allowStruggleAlwaysThresh]
  * @returns {any}
  */
 function KDPredictStruggle(enemy, struggleMod, delta, allowStruggleAlwaysThresh) {
@@ -7354,9 +7358,10 @@ function KDGetTags(enemy, removeSpecial) {
  *
  * @param {entity} enemy
  * @param {boolean} useSpecial
- * @returns {Record<string, boolean>}
+ * @returns {Record<string, number>}
  */
 function KDGetExtraTags(enemy, useSpecial) {
+	/* @type {Record<string, number>} */
 	let addOn = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
 	if (addOn) {
 		/*let effLevel = KDGetEffLevel();

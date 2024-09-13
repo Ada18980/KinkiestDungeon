@@ -19,7 +19,8 @@ interface item extends NamedAndTyped {
 	onEntity?: number,
 	/** Is magically conjured. Cannot be added back to inventory */
 	conjured?: boolean,
-	id: number,
+	/* FIXME: Making this optional fixed certain call sites.  Verify this doesn't break anything.  */
+	id?: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],
 	/** If the item has a different curse from the base curse */
@@ -1646,7 +1647,7 @@ interface entity {
 	/** Determines if an enemy can be dommed or not */
 	domVariance?: number,
 	hideTimer?: boolean,
-	Enemy: enemy,
+	Enemy?: enemy,
 
 	/** Amount of sound the entity is currently producing */
 	sound?: number,
@@ -1682,7 +1683,7 @@ interface entity {
 	specialdialogue?: string,
 	aggro?: number,
 	id?: number,
-	hp: number,
+	hp?: number,
 	mana?: number,
 	AI?: string,
 	moved?: boolean,
@@ -1762,6 +1763,8 @@ interface entity {
 	NextJailLeashTourWaypointX?: number,
 	NextJailLeashTourWaypointY?: number,
 	KinkyDungeonJailTourInfractions?: number,
+	/**  Used by guards.  */
+	CurrentRestraintSwapGroup?: string,
 }
 
 type KinkyDungeonDress = {
@@ -2254,7 +2257,7 @@ interface KDQuest {
 	tick?: (delta) => void;
 	worldgenstart?: () => void;
 	accept?: () => void;
-	weight: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => number;
+	weight: (RoomType: any, MapMod: any, data: any, currentQuestList?: any) => number;
 	prerequisite: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => boolean;
 	tags?: string[],
 };
@@ -2267,6 +2270,8 @@ interface KinkyDialogue {
 	data?: Record<string, string>;
 	/** Tags for filtering */
 	tags?: string[];
+	singletag?: string[];
+	excludeTags?: string[];
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
@@ -2312,6 +2317,9 @@ interface KinkyDialogue {
 	options?: Record<string, KinkyDialogue>;
 	/** Name of a dialogue to get extra options from. Merges them, preferring this dialogue's options if the name is the same */
 	extraOptions?: string;
+
+	outfit?: string;
+	chance?: number;
 }
 
 interface KinkyVibration {
@@ -3345,7 +3353,7 @@ interface KDPrisonType {
 	default_state: string,
 
 	/** Each turn this function runs. If a state is returned it sets the state*/
-	update: (delta: number) => string,
+	update: (delta: number) => string | void;
 }
 
 interface KDPresetLoadout {
@@ -3480,7 +3488,7 @@ interface KDEnchantmentType {
 	level: number,
 	filter: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => boolean,
 	weight: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => number,
-	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data: KDHexEnchantEventsData) => KinkyDungeonEvent[]
+	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data?: KDHexEnchantEventsData) => KinkyDungeonEvent[]
 }
 
 interface KDHexEnchantEventsData {

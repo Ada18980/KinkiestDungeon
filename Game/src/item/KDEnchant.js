@@ -116,7 +116,7 @@ let KDEventEnchantmentModular = {
 						enchantments: enchantments,
 					};
 					return [
-						...KDGenerateEffectConditionPair("Common", "Common", KDModifierEnum.restraint, item, 0, 10, 1, data)
+						...KDGenerateEffectConditionPair("Common", "Common", ModifierEnum.restraint, item, 0, 10, 1, data)
 					];}},
 		}},
 

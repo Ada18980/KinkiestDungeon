@@ -602,7 +602,7 @@ function KDInitPerks() {
 		// We use magichands for the start scenarios
 		KinkyDungeonStatsChoice.set("MagicHands", true);
 	}
-	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(0.0);
+	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints();
 	for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
 		.sort((a, b) => {
 			return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);
@@ -1098,6 +1098,7 @@ function drawHorizList(list, x, y, w, h, max, fontSize, clickfnc, prefix, revers
 /**
  *
  * @param {Record<string, boolean>} existing
+ * @param {boolean} [debuff]
  * @returns {string[]}
  */
 function KDGetRandomPerks(existing, debuff) {

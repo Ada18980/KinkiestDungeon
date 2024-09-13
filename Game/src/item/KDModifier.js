@@ -167,7 +167,7 @@ let KDModifierConditions = {
 					return 10;
 				},
 				events: (item, pos, neut, neg, data) => {
-					let effects = KDGenericEffects(item, KDModifierEnum.restraint, pos, neut, neg, data);
+					let effects = KDGenericEffects(item, ModifierEnum.restraint, pos, neut, neg, data);
 					for (let eff of effects) {
 						if (eff.trigger == "CONDITION") {
 							eff.trigger = "playerAttack";
@@ -201,7 +201,7 @@ let KDModifierConditions = {
 					return 100;
 				},
 				events: (item, pos, neut, neg, data) => {
-					let effects = KDGenericEffects(item, KDModifierEnum.restraint, pos, neut, neg, data);
+					let effects = KDGenericEffects(item, ModifierEnum.restraint, pos, neut, neg, data);
 					for (let eff of effects) {
 						if (eff.trigger == "CONDITION") {
 							eff.trigger = "playerCast";
@@ -235,13 +235,13 @@ let KDModifierConditions = {
 function KDGenericEffects(item, type, pos, neut, neg, data) {
 	let effects = [];
 	for (let eff of [...pos]) {
-		effects.push(...eff.types[type].events(item, KDPosNeutNeg.positive, data));
+		effects.push(...eff.types[type].events(item, PosNeutNeg.positive, data));
 	}
 	for (let eff of [...neut]) {
-		effects.push(...eff.types[type].events(item, KDPosNeutNeg.neutral, data));
+		effects.push(...eff.types[type].events(item, PosNeutNeg.neutral, data));
 	}
 	for (let eff of [...neg]) {
-		effects.push(...eff.types[type].events(item, KDPosNeutNeg.negative, data));
+		effects.push(...eff.types[type].events(item, PosNeutNeg.negative, data));
 	}
 	return effects;
 }

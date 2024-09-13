@@ -282,7 +282,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance + (Loot.enchantscale|| 0) * levelPercent)) {
 			while (enchants > 0) {
 				let ench = KDGetByWeight(
-					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, KDModifierEnum.weapon, weapon, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
+					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, ModifierEnum.weapon, weapon, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
 				);
 				if (!enchantVariant) {
 					enchantVariant = ench;
@@ -379,7 +379,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance + (Loot.enchantscale|| 0) * levelPercent || (Loot.nouncursed && !hexVariant && KinkyDungeonInventoryGet(Loot.nouncursed)) || (hexVariant && Loot.alwaysenchanthex))) {
 			while (enchants > 0) {
 				let ench = KDGetByWeight(
-					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, KDModifierEnum.restraint, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
+					KinkyDungeonGetEnchantmentsByListWeighted(Loot.enchantlist, ModifierEnum.restraint, armor, false, Loot.enchantlevelmin, Loot.enchantlevelmax, [enchantVariant, ...enchant_extra])
 				);
 				if (!enchantVariant) {
 					enchantVariant = ench;

@@ -1180,6 +1180,7 @@ function KDSetFactionRelation(a, b, relation) {
  * @param {string} a
  * @param {string} b
  * @param {number} amount
+ * @param {boolean} [AffectRivals]
  */
 function KDChangeFactionRelation(a, b, amount, AffectRivals) {
 	if (a == "Rage" || b == "Rage") return;

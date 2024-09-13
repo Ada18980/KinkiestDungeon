@@ -3,9 +3,9 @@
 let KinkyDungeonInputQueue: {type: string, data: any}[] = [];
 
 /**
- *
- * Delegate to KDProcessInputs */
-function KDProcessInput(type, data): string {
+ * Delegate to KDProcessInputs
+ */
+function KDProcessInput(type: string, data: any): string {
 	let Result = null;
 	let loose = null;
 	let msg = "";
@@ -36,8 +36,7 @@ function KDProcessInput(type, data): string {
 			let sp = data.spell ? data.spell : KinkyDungeonFindSpell(data.spellname, true);
 			if (!data.spell) data.spell = sp;
 			if (sp) {
-				/** @type {{result: string, data: any}} */
-				let res = KinkyDungeonCastSpell(data.tx, data.ty, sp, data.enemy, data.player, data.bullet, undefined, data);
+				let res: { result: string, data: any } = KinkyDungeonCastSpell(data.tx, data.ty, sp, data.enemy, data.player, data.bullet, undefined, data);
 				if (res.result == "Cast" && sp.sfx) {
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sp.sfx + ".ogg");
 				}
@@ -1304,7 +1303,7 @@ function KDProcessInput(type, data): string {
 	return "";
 }
 
-function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = true): string {
+function KDSendInput(type: string, data: any, _frame?: boolean, noUpdate?: boolean, process = true): string {
 
 	if (!noUpdate) {
 		KDGameData.OrigEnergyLevel = KDGameData.AncientEnergyLevel;
@@ -1317,14 +1316,13 @@ function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = 
 	KinkyDungeonInputQueue.push({type: type, data: data});
 	if (process)
 		return KDProcessInputs(true);
-	else return;
+	else return "";
 }
 
 /**
  * Handles inputs once per frame
- * @returns {string}
  */
-function KDProcessInputs(ReturnResult) {
+function KDProcessInputs(ReturnResult?: boolean): string {
 	for (let i = 0; i < 3; i++) {
 		if (KinkyDungeonInputQueue.length > 0) {
 			let input = KinkyDungeonInputQueue.splice(0, 1)[0];
