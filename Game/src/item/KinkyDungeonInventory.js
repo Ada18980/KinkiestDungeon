@@ -2336,7 +2336,9 @@ function KinkyDungeonDrawQuickInv() {
 										if (KDDebugLink) {
 											linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 										} else {
-											linkable = KDCurrentItemLinkable(currentItem, newItem);
+											//linkable = KDCurrentItemLinkable(currentItem, newItem);
+											linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+
 										}
 										if (linkable) {
 											equipped = false;

@@ -25,7 +25,9 @@ let KDInventoryAction = {
 						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 					} else {
 						if (!currentItem) return "InventoryAction/Equip";
-						linkable = KDCurrentItemLinkable(currentItem, newItem);
+						linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+
+						//linkable = KDCurrentItemLinkable(currentItem, newItem);
 					}
 					if (linkable) {
 						return "InventoryAction/Equip";
@@ -52,7 +54,9 @@ let KDInventoryAction = {
 						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 					} else {
 						if (!currentItem) return true;
-						linkable = KDCurrentItemLinkable(currentItem, newItem);
+						//linkable = KDCurrentItemLinkable(currentItem, newItem);
+						linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+
 					}
 					if (linkable) {
 						return true;
@@ -77,7 +81,9 @@ let KDInventoryAction = {
 						if (KDDebugLink) {
 							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 						} else {
-							linkable = KDCurrentItemLinkable(currentItem, newItem);
+							//linkable = KDCurrentItemLinkable(currentItem, newItem);
+							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+
 						}
 						if (!currentItem || linkable) {
 							equipped = false;
