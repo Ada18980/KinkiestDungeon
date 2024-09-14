@@ -30,7 +30,13 @@ TODO:
 
 TODO remove hogtie when released
 
-5.4-nightly9
+5.3.38-RC2
+- Made dirt piles and giant mushrooms not block leashing NPCs
+
+
+5.3.38-RC1
+- Updated version number
+- Merged a great huge typescript refactor by ewhac. Several longstanding bugs got caught and fixed as a result
 - Allow linking armor under accessible restraints
 
 5.4-nightly8

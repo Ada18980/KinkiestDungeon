@@ -1998,7 +1998,7 @@ function KDSetFocusControl(control) {
 function KDInitFocusControl(control) {
 
 	if (localStorage.getItem("focusControl")) {
-		KDGameData.FocusControlToggle = JSON.parse("focusControl");
+		KDGameData.FocusControlToggle = JSON.parse(localStorage.getItem("focusControl"));
 	}
 
 	KDSetFocusControlToggle("", "");

@@ -182,8 +182,8 @@ let KinkyDungeonEnemies = [
 
 	// End Quest NPC
 
-	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "noknockback", "melee", "notalk", "nonvulnerable", "nobrain", "nosignal", "immobile", "acidweakness", "soapsevereweakness"]),
-		faction: "Door", immobile: true, spellResist: -3, lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
+	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "immobile", "noknockback", "melee", "nofidget", "notalk", "nonvulnerable", "nobrain", "nosignal", "acidweakness", "soapsevereweakness"]),
+		faction: "Door", spellResist: -3, lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 4, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		ondeath: [
 			{type: "DirtPile"}
@@ -3002,9 +3002,9 @@ let KinkyDungeonEnemies = [
 		],
 	},
 
-	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "scenery", "nonvulnerable", "minor", "inactive", "harmless", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakthreshold: 0.6,
+	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "nofidget", "scenery", "nonvulnerable", "minor", "inactive", "harmless", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakthreshold: 0.6,
 		lowpriority: true,
-		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
+		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
 		Sound: {
