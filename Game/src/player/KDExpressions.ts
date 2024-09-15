@@ -339,7 +339,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				BrowsPose: "BrowsSad",
 				Brows2Pose: "Brows2Sad",
 				BlushPose: "BlushExtreme",
-				MouthPose: "MouthSmile",
+				MouthPose: KinkyDungeonGoddessRep.Ghost > 0 ? "MouthSmile" : "MouthEmbarrassed",
 			};
 		},
 	},
@@ -358,7 +358,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				BrowsPose: "BrowsNeutral",
 				Brows2Pose: "Brows2Neutral",
 				BlushPose: "BlushHigh",
-				MouthPose: "MouthSmile",
+				MouthPose: KinkyDungeonGoddessRep.Ghost > 0 ? "MouthSmile" : "MouthPout",
 			};
 		},
 	},
