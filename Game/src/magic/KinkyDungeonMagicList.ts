@@ -13,11 +13,11 @@
 // trail, trailchance, traildamage, traillifetime: for lingering projectiles left behind the projectile
 // onhit: What happens on AoE. Deals aoedamage damage, or just power otherwise
 
-let KDCommandWord = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 6, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
+let KDCommandWord: spell = {name: "CommandWord", tags: ["command", "binding", "utility", "defense"], sfx: "Magic", school: "Conjure", manacost: 6, components: ["Verbal"], level:1, type:"special", special: "CommandWord", noMiscast: true,
 	onhit:"", time:25, power: 2, range: 2.8, size: 1, damage: ""};
-let KDBondageSpell = {name: "Bondage", tags: ["binding", "utility", "offense", "truss"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
+let KDBondageSpell: spell = {name: "Bondage", tags: ["binding", "utility", "offense", "truss"], quick: true, school: "Any", manacost: 0, components: ["Arms"], level:1, spellPointCost: 0, type:"special", special: "Bondage", noMiscast: true,
 	onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""};
-let KDZeroResistanceSpell = {name: "ZeroResistance", tags: ["utility", "defense"], quick: true, school: "Any", manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", noMiscast: true,
+let KDZeroResistanceSpell: spell = {name: "ZeroResistance", tags: ["utility", "defense"], quick: true, school: "Any", manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", noMiscast: true,
 	events: [
 		{type: "ZeroResistance", trigger: "tick", },
 	],
@@ -26,7 +26,7 @@ let KDZeroResistanceSpell = {name: "ZeroResistance", tags: ["utility", "defense"
 /**
  * These are starting spells
  */
-let KinkyDungeonSpellsStart = [
+let KinkyDungeonSpellsStart: spell[] = [
 	//{name: "FleetFooted", sfx: "FireSpell", school: "Illusion", manacost: 0.5, components: [], level:1, type:"passive",
 	//events: [{type: "FleetFooted", trigger: "beforeMove", power: 1}, {type: "FleetFooted", trigger: "afterMove"}, {type: "FleetFooted", trigger: "beforeTrap", msg: "KinkyDungeonFleetFootedIgnoreTrapFail", chance: 0.35}]},
 ];
@@ -78,7 +78,7 @@ let KDSpellColumns = {
 
 };
 
-function KDAddSpellPage(page, columnLabels = []) {
+function KDAddSpellPage(page: string, columnLabels: string[] = []) {
 	if (!KDGameData.AllowedSpellPages) KDGameData.AllowedSpellPages = {};
 	KDGameData.AllowedSpellPages[page] = columnLabels;
 }
@@ -187,11 +187,10 @@ let KinkyDungeonLearnableSpells = [
 ];
 
 /**
- *
- * @param {string} page
- * @param {string[][]} list
+ * @param page
+ * @param list
  */
-function KDDefineSpellPage(page, list) {
+function KDDefineSpellPage(page: string, list: string[][]) {
 	KinkyDungeonSpellPages.push(page);
 	KinkyDungeonLearnableSpells.push(list);
 }
@@ -199,9 +198,8 @@ function KDDefineSpellPage(page, list) {
 
 /**
  * Spells that the player can choose
- * @type {Record<string, spell[]>}
  */
-let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. When you plan to use a mystic seal, you get 3 spells to choose from.
+let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can unlock in the 3 books. When you plan to use a mystic seal, you get 3 spells to choose from.
 	"Any": [
 		KDBondageSpell,
 		KDZeroResistanceSpell,
@@ -1697,9 +1695,8 @@ let KinkyDungeonSpellList = { // List of spells you can unlock in the 3 books. W
 };
 /**
  * Spells that are not in the base spell lists
- * @type {spell[]}
  */
-let KinkyDungeonSpellListEnemies = [
+let KinkyDungeonSpellListEnemies: spell[] = [
 	{name: "AwakenStrike", tags: ["offense", "latex", "slime", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0.5, components: ["Verbal"],
 		noTargetPlayer: true, mustTarget: true, level:1, type:"hit", onhit:"instant", evadeable: false, noblock: true, power: 2.5, time: 5, range: 1.5, size: 1, lifetime: 1, aoe: 0.5, damage: "glue",
 		playerEffect: {name: "Bind", damage: "glue", power: 3, tag: "slimeRestraints"},
@@ -3544,8 +3541,7 @@ KDDefineSpellPage("Command", [
 ]);
 
 
-/** @type {Record<string, KDBondage>} */
-let KDSpecialBondage = {
+let KDSpecialBondage: Record<string, KDBondage> = {
 	"Energy": {
 		priority: 25,
 		color: "#e7cf1a",
@@ -3672,9 +3668,8 @@ let KDMagicDefs = {
 	SlimeKraken_TentacleCountShare: 0.1, //1 slime max per this much hp
 };
 
-/** @type {Record<string, (enemy: entity, target: entity, spell?: spell) => boolean>} */
-let KDCastConditions = {
-	"latexLegbinderSpell": (enemy, target) => {
+let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spell) => boolean> = {
+	"latexLegbinderSpell": (_enemy, target) => {
 		if (target.player) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["latexlegbinderSpell"]}, 100, "tmb");
 			if (!restraint) return false;
@@ -3685,7 +3680,7 @@ let KDCastConditions = {
 	"iceWallMelee": (enemy, target) => {
 		return enemy.hp < enemy.Enemy.maxhp/2 && KDistEuclidean(enemy.x-target.x, enemy.y - target.y) < 3;
 	},
-	"latexGagSpell": (enemy, target) => {
+	"latexGagSpell": (_enemy, target) => {
 		if (target.player) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["latexgagSpell"]}, 100, "tmb");
 			if (!restraint) return false;
@@ -3693,7 +3688,7 @@ let KDCastConditions = {
 		}
 		return true;
 	},
-	"latexArmbinderSpell": (enemy, target) => {
+	"latexArmbinderSpell": (_enemy, target) => {
 		if (target.player) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["latexarmbinderSpell"]}, 100, "tmb");
 			if (!restraint) return false;
@@ -3701,15 +3696,15 @@ let KDCastConditions = {
 		}
 		return true;
 	},
-	"notImmobile": (enemy, target) => {
+	"notImmobile": (_enemy, _target) => {
 		if (KinkyDungeonSlowLevel < 10) return true;
 		return false;
 	},
-	"Windup_Start": (enemy, target) => {
+	"Windup_Start": (enemy, _target) => {
 		if (!KDEnemyHasFlag(enemy, "windup")) return true;
 		return false;
 	},
-	"Windup_Ready": (enemy, target) => {
+	"Windup_Ready": (enemy, _target) => {
 		if (KDEnemyHasFlag(enemy, "windup")) return true;
 		return false;
 	},
@@ -3717,33 +3712,33 @@ let KDCastConditions = {
 		if (KDEnemyHasFlag(enemy, "commandword")) return false;
 		return KDEntityHasBuffTags(target, "commandword");
 	},
-	"dollConvert": (enemy, target, spell) => {
+	"dollConvert": (enemy, _target, spell) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell)).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 3 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
 		return true;
 	},
-	"dollConvertMany": (enemy, target, spell) => {
+	"dollConvertMany": (enemy, _target, spell) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, KDGetSpellRange(spell)).filter((en) => {return en.Enemy?.tags.smithdoll;}).length > 8 || KDNearbyEnemies(enemy.x, enemy.y, spell.aoe).filter((en) => {return !en.allied && en.Enemy?.tags.dollmakerconvert;}).length < 1) return false;
 		return true;
 	},
-	"wolfDrone": (enemy, target) => {
+	"wolfDrone": (enemy, _target) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.wolfdrone;}).length > 3) return false;
 		return true;
 	},
-	"wolfTapeDrone": (enemy, target) => {
+	"wolfTapeDrone": (enemy, _target) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.wolfdrone;}).length > 3) return false;
 		return true;
 	},
-	"shadowHand3count": (enemy, target) => {
+	"shadowHand3count": (enemy, _target) => {
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.name == "ShadowHand";}).length > 3) return false;
 		return true;
 	},
-	"ropeKraken": (enemy, target) => {
+	"ropeKraken": (enemy, _target) => {
 		if (enemy.hp <= KDMagicDefs?.RopeKraken_TentacleThreshold) return false;
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.krakententacle;}).length
 			> KDMagicDefs?.RopeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.RopeKraken_TentacleCountShare)) return false;
 		return true;
 	},
-	"slimeKraken": (enemy, target) => {
+	"slimeKraken": (enemy, _target) => {
 		if (enemy.hp <= KDMagicDefs?.SlimeKraken_TentacleThreshold) return false;
 		if (KDNearbyEnemies(enemy.x, enemy.y, 10).filter((en) => {return en.Enemy?.tags.latexTrap;}).length
 			> KDMagicDefs?.SlimeKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.SlimeKraken_TentacleCountShare)) return false;
@@ -3761,7 +3756,7 @@ let KDCastConditions = {
 			> Math.min(KDMagicDefs?.SarcoKraken_TentacleCountMax - 1, KDMagicDefs?.SarcoKraken_TentacleCountMin + Math.floor(enemy.hp/enemy.Enemy.maxhp/KDMagicDefs?.SarcoKraken_TentacleCountShare))) return false;
 		return true;
 	},
-	"sarcoEngulf": (enemy, target) => {
+	"sarcoEngulf": (_enemy, target) => {
 		if (target.player && !KinkyDungeonPlayerTags.get("Sarcophagus")) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
 			if (!restraint) return false;
@@ -3769,7 +3764,7 @@ let KDCastConditions = {
 		}
 		return false;
 	},
-	"sarcoHex": (enemy, target) => {
+	"sarcoHex": (_enemy, target) => {
 		if (target.player && !KinkyDungeonPlayerTags.get("Sarcophagus")) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["mummyRestraints"]}, 100, "tmb");
 			if (!restraint) return true;
@@ -3777,37 +3772,37 @@ let KDCastConditions = {
 		}
 		return false;
 	},
-	"NoGag": (enemy, target) => {
+	"NoGag": (_enemy, target) => {
 		if (target.player && !KinkyDungeonPlayerTags.get("ItemMouthFull")) {
 			return true;
 		}
 		return false;
 	},
-	"EnemyEnchantRope": (enemy, target) => {
+	"EnemyEnchantRope": (_enemy, target) => {
 		if (target.player && KinkyDungeonPlayerTags.get("RopeSnake")) {
 			return true;
 		}
 		else if (target?.specialBoundLevel?.Rope > 0) return true;
 		return false;
 	},
-	"EnemyEnchantRope2": (enemy, target) => {
+	"EnemyEnchantRope2": (_enemy, target) => {
 		if (target.player && (KinkyDungeonPlayerTags.get("RopeSnake") || KinkyDungeonPlayerTags.get("WeakMagicRopes"))) {
 			return true;
 		}
 		else if (target?.specialBoundLevel?.Rope > 0) return true;
 		return false;
 	},
-	"MagicMissileChannel": (enemy, target) => {
+	"MagicMissileChannel": (enemy, _target) => {
 		return !KDEnemyHasFlag(enemy, "MagicMissileChannelFinished");
 	},
-	"NotDragonChanneled": (enemy, target) => {
+	"NotDragonChanneled": (enemy, _target) => {
 		return !KDEnemyHasFlag(enemy, "dragonChannel") && !KDEnemyHasFlag(enemy, "dragonChannelCD");
 	},
-	"DragonChanneled": (enemy, target) => {
+	"DragonChanneled": (enemy, _target) => {
 		return KDEnemyHasFlag(enemy, "dragonChannel");
 	},
 
-	"WardenCageDrop": (enemy, target) => {
+	"WardenCageDrop": (_enemy, target) => {
 		if (target.player && KinkyDungeonPlayerTags.get("OneBar")) {
 			return true;
 		}
@@ -3815,9 +3810,8 @@ let KDCastConditions = {
 	},
 };
 
-/** @type {Record<string, (player: entity, x: number, y: number) => boolean>} */
-let KDPlayerCastConditions = {
-	"hasArcaneEnergy": (player, x, y) => {
+let KDPlayerCastConditions: Record<string, (player: entity, x: number, y: number) => boolean> = {
+	"hasArcaneEnergy": (_player, _x, _y) => {
 		return KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArcaneEnergy") > 0;
 	},
 	"noStationaryBullet": (player, x, y) => {
@@ -3829,14 +3823,14 @@ let KDPlayerCastConditions = {
 		return (KinkyDungeonFlags.get("TheShadowWithin") || KinkyDungeonBrightnessGet(player.x, player.y) < KDShadowThreshold || KDNearbyEnemies(player.x, player.y, 1.5).some((en) => {return en.Enemy?.tags?.shadow;}))
 			&& (KinkyDungeonBrightnessGet(x, y) < KDShadowThreshold || KDNearbyEnemies(x, y, 1.5).some((en) => {return en.Enemy?.tags?.shadow;}));
 	},
-	"LiquidMetalBurst": (player, x, y) => {
+	"LiquidMetalBurst": (_player, x, y) => {
 
 		return KDEffectTileTags(x, y).liquidmetal;
 	},
-	"weapon": (player, x, y) => {
+	"weapon": (_player, _x, _y) => {
 		return KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed;
 	},
-	"FloatingWeapon": (player, x, y) => {
+	"FloatingWeapon": (_player, _x, _y) => {
 		return KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed && (!KinkyDungeonPlayerDamage.noHands || KinkyDungeonPlayerDamage.telekinetic);
 	},
 
@@ -3845,7 +3839,7 @@ let KDPlayerCastConditions = {
 
 
 
-let KDCustomCost = {
+let KDCustomCost: Record<string, (data: any) => void> = {
 	"SprintPlusAttack": (data) => {
 		data.cost = Math.round(10 * -(KDAttackCost() + KDSprintCost())) + "SP";
 		data.color = "#88ff88";

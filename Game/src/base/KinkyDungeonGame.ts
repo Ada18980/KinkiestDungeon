@@ -5924,7 +5924,7 @@ function KDIsInBounds(x: number, y: number, pad: number = 1): boolean {
 /**
  * @param sprintdata
  */
-function KDSprintCost(sprintdata: any): number {
+function KDSprintCost(sprintdata?: any): number {
 	let data = {
 		sprintdata: sprintdata,
 		sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),
