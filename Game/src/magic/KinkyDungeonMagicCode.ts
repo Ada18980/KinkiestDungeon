@@ -1,10 +1,8 @@
 "use strict";
 
-/**
- * @type {Record<string, (spell: any, data: any, targetX: any, targetY: any, tX: any, tY: any, entity: any, enemy: any, moveDirection: any, bullet: any, miscast: any, faction: any, cast: any, selfCast: any) => void | string>}
- */
-let KinkyDungeonSpellSpecials = {
-	"analyze": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+/*  FIXME: Type signature changed; please check.  */
+let KinkyDungeonSpellSpecials: Record<string, (spell: spell, data: any, targetX: number, targetY: number, tX: number, tY: number, entity: entity, enemy: any, moveDirection: any, bullet: any, miscast: any, faction: string, cast: any, selfCast: any) => void | string> = {
+	"analyze": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			if (!en.buffs || !en.buffs.Analyze) {
@@ -24,7 +22,7 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		}
 	},
-	"LeashSpell": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"LeashSpell": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en != entity) {
 			if (!KDLeashReason.PlayerLeash(undefined)) {
@@ -62,7 +60,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		}
 	},
-	"BoulderKick": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"BoulderKick": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			if (en.Enemy.tags.summonedRock) {
@@ -105,10 +103,10 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		} else return "Fail";
 	},
-	"Volcanism": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) =>  {
+	"Volcanism": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) =>  {
 		let rocks = [];
 		for (let e of KDMapData.Entities) {
-			if (spell.filterTags.some((tag) => {return e.Enemy.tags[tag];}) && KDistEuclidean(targetX - e.x, targetY - e.y) <= spell.aoe
+			if (spell.filterTags.some((tag: string) => {return e.Enemy.tags[tag];}) && KDistEuclidean(targetX - e.x, targetY - e.y) <= spell.aoe
 				&& (!e.buffs || !KinkyDungeonHasBuff(e.buffs, KDVolcanism.id))) {
 				rocks.push(e);
 			}
@@ -119,10 +117,10 @@ let KinkyDungeonSpellSpecials = {
 			rock.hostile = 9999;
 		}
 	},
-	"dress": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"dress": (spell, _data, _targetX, _targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		KinkyDungeonSetDress(spell.outfit);
 	},
-	"MoiraiScissors": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"MoiraiScissors": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.range);
 
 		if (enList.length > 0) {
@@ -172,7 +170,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
 		return "Fail";
 	},
-	"Charge": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Charge": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let cost = KDAttackCost() + KDSprintCost();
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		let space = false;
@@ -247,7 +245,7 @@ let KinkyDungeonSpellSpecials = {
 		return "Fail";
 	},
 
-	"Bondage": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Bondage": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en?.Enemy) {
 			let fail = KinkyDungeoCheckComponents(spell, entity.x, entity.y, false).length > 0;
@@ -273,7 +271,7 @@ let KinkyDungeonSpellSpecials = {
 					let canApply = KDCanApplyBondage(en, entity,
 						KinkyDungeonTargetingSpellItem ? (
 							KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition ?
-							(t, p) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](
+							(t: entity, p: entity) => (KDQuickBindConditions[KDRestraint(KinkyDungeonTargetingSpellItem)?.quickBindCondition](
 								t, p,
 								KDRestraint(KinkyDungeonTargetingSpellItem),
 								KinkyDungeonTargetingSpellItem)) :
@@ -440,7 +438,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
 		return "Fail";
 	},
-	"Pickaxe": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Pickaxe": (_spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let tile = KinkyDungeonMapGet(targetX, targetY);
 		if (KDCrackableTiles.includes(tile)) {
 			let fail = false;/*KinkyDungeoCheckComponents(spell, entity.x, entity.y, false).length > 0;
@@ -478,7 +476,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoTarget"), "#ff5555", 1, true);
 		return "Fail";
 	},
-	"CommandWord": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandWord": (spell, data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KDSpellIgnoreComp(spell) && (data.gaggedMiscastFlag && KinkyDungeonGagTotal() >= 0.25)) {
 			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5555", 1);
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
@@ -548,7 +546,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5555", 1, true);
 		return "Fail";
 	},
-	"Windup": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Windup": (spell, _data, _targetX, _targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KDEnemyHasFlag(entity, "winding")) {
 			KinkyDungeonSetEnemyFlag(entity, "winding", spell.time);
 			KinkyDungeonSetEnemyFlag(entity, "winding2", spell.time - 1);
@@ -561,7 +559,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonSendTextMessage(4, TextGet("KDWindup"), "#888888", 2);
 		return "Cast";
 	},
-	"Lockdown": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Lockdown": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && !en.player && en.boundLevel > 0) {
 			KinkyDungeonApplyBuffToEntity(en, {
@@ -589,7 +587,7 @@ let KinkyDungeonSpellSpecials = {
 
 		return "Fail";
 	},
-	"Wall": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Wall": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (!en) {
 			let tile = KinkyDungeonMapGet(targetX, targetY);
@@ -606,7 +604,7 @@ let KinkyDungeonSpellSpecials = {
 			}
 		} else return "Fail";
 	},
-	"Enemy_CM1": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Enemy_CM1": (_spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			KinkyDungeonTickBuffTag(en, "CM1", 1);
@@ -622,7 +620,7 @@ let KinkyDungeonSpellSpecials = {
 		}
 		return "Fail";
 	},
-	"Chastity": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Chastity": (spell, _data, targetX, targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && en.Enemy.bound && KinkyDungeonIsDisabled(en) && !en.Enemy.nonHumanoid) {
 			KDTieUpEnemy(en, spell.power, "Metal");
@@ -655,7 +653,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		}
 	},
-	"DisplayStand": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"DisplayStand": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -701,7 +699,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		} else return "Fail";
 	},
-	"Petsuit": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Petsuit": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["petsuitSpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -746,7 +744,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		} else return "Fail";
 	},
-	"CommandCapture": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandCapture": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, bullet, miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && (en.player || en.Enemy.bound)) {
 			// Only bind bindable targets
@@ -786,7 +784,7 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		} else return "Fail";
 	},
-	"AnimatePuppet": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"AnimatePuppet": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let maxCount = 3;
 		let enemies = [];
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
@@ -828,7 +826,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"Animate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Animate": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let maxCount = 3;
 		let slots = [];
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
@@ -861,7 +859,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"AnimateLarge": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"AnimateLarge": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let slimeCount = 0;
 		let slots = [];
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
@@ -892,7 +890,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"ElasticGrip": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"ElasticGrip": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
 			return "Fail";
@@ -941,7 +939,7 @@ let KinkyDungeonSpellSpecials = {
 			} else return "Fail";
 		} else return "Fail";
 	},
-	"RecoverObject": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"RecoverObject": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!spell.aoe && !KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailObstacle"+spell.name), "#ff5555", 1);
 			return "Fail";
@@ -1018,7 +1016,7 @@ let KinkyDungeonSpellSpecials = {
 		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
 		return "Fail";
 	},
-	"TelekineticSlash": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"TelekineticSlash": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let tilesHit = [];
 		for (let xx = -spell.aoe; xx <= spell.aoe; xx++) {
 			for (let yy = -spell.aoe; yy <= spell.aoe; yy++) {
@@ -1089,7 +1087,7 @@ let KinkyDungeonSpellSpecials = {
 	},
 
 
-	"Swap": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Swap": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
 			return "Fail";
@@ -1140,7 +1138,7 @@ let KinkyDungeonSpellSpecials = {
 		} else return "Fail";
 	},
 
-	"UniversalSolvent": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"UniversalSolvent": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (KDistChebyshev(entity.x - targetX, entity.y - targetY) && KinkyDungeonIsArmsBound(true, true)) {
 			KinkyDungeonSendActionMessage(8, TextGet("KDUniversalSolventFail"), "#ff5555", 1);
 			return "Fail";
@@ -1222,7 +1220,7 @@ let KinkyDungeonSpellSpecials = {
 		}
 		return "Fail";
 	},
-	"Awaken": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Awaken": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let count = 0;
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
@@ -1247,7 +1245,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"Spread": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Spread": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let slots = [];
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
@@ -1279,7 +1277,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"CommandBind": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandBind": (spell, _data, _targetX, _targetY, tX, tY, entity, _enemy, _moveDirection, bullet, miscast, faction, _cast, _selfCast) => {
 		let count = 0;
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
@@ -1306,7 +1304,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"Coalesce": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Coalesce": (spell, _data, _targetX, _targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let count = 0;
 		let finalTile = "Slime";
 		let finalTilePri = -1;
@@ -1362,7 +1360,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell)/2);
 		return "Cast";
 	},
-	"SlimeToLatex": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"SlimeToLatex": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let count = 0;
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
@@ -1388,7 +1386,7 @@ let KinkyDungeonSpellSpecials = {
 		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
-	"LiquidMetal": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"LiquidMetal": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let count = 0;
 		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
 			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
@@ -1415,7 +1413,7 @@ let KinkyDungeonSpellSpecials = {
 		return "Cast";
 	},
 
-	"CommandDisenchant": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandDisenchant": (spell, _data, _targetX, _targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 
 		if (enList.length > 0) {
@@ -1444,7 +1442,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"NegateRune": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"NegateRune": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
 		let bList = KDMapData.Bullets.filter((b) => {
 			return AOECondition(tX, tY, b.x, b.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "") && b.bullet?.spell?.tags?.includes("rune");
 		});
@@ -1483,7 +1481,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"DollConvert": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"DollConvert": (spell, _data, _targetX, _targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 
 		if (enList.length > 0) {
@@ -1516,7 +1514,7 @@ let KinkyDungeonSpellSpecials = {
 		return "Fail";
 	},
 
-	"CommandVibrate": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandVibrate": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
 			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
 			|| KinkyDungeonPlayerTags.get("ItemButtFull")
@@ -1548,7 +1546,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"CommandVibrateLV2": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandVibrateLV2": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
 			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
 			|| KinkyDungeonPlayerTags.get("ItemButtFull")
@@ -1576,7 +1574,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"CommandVibrateLV3": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandVibrateLV3": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
 			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
 			|| KinkyDungeonPlayerTags.get("ItemButtFull")
@@ -1604,7 +1602,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"CommandOrgasm": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandOrgasm": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
 		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")
 			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull") || KinkyDungeonPlayerTags.get("ItemButtFull") || KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull"))) {
 
@@ -1634,7 +1632,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"CommandSlime": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandSlime": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 		let count = 0;
 
@@ -1696,7 +1694,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		}
 	},
-	"CommandRelease": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"CommandRelease": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 		let count = 0;
 
@@ -1741,7 +1739,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Fail";
 		}
 	},
-	"AllyToggle": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"AllyToggle": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && KDAllied(en)) {
 			if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
@@ -1756,7 +1754,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"AllyAttention": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"AllyAttention": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let list = KDNearbyEnemies(targetX, targetY, spell.aoe);
 		let succeed = false;
 		for (let en of list)
@@ -1774,7 +1772,7 @@ let KinkyDungeonSpellSpecials = {
 		if (succeed) return "Cast";
 		return "Fail";
 	},
-	"AllyDeselect": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"AllyDeselect": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let list = KDNearbyEnemies(targetX, targetY, spell.aoe);
 		let succeed = false;
 		for (let en of list)
@@ -1785,7 +1783,7 @@ let KinkyDungeonSpellSpecials = {
 		if (succeed) return "Cast";
 		return "Fail";
 	},
-	"AllyMove": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"AllyMove": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let list = KDMapData.Entities.filter((en) => {
 			return !KDHelpless(en) && KDAllied(en);
 		});
@@ -1800,7 +1798,7 @@ let KinkyDungeonSpellSpecials = {
 		if (succeed) return "Cast";
 		return "Fail";
 	},
-	"Disarm": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"Disarm": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			let time = Math.max(1, spell.time
@@ -1812,7 +1810,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"weaponAttack": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"weaponAttack": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
@@ -1820,7 +1818,7 @@ let KinkyDungeonSpellSpecials = {
 			return "Cast";
 		} else return "Fail";
 	},
-	"weaponAttackOrSpell": (spell, data, targetX, targetY, tX, tY, entity, enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+	"weaponAttackOrSpell": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
@@ -1832,8 +1830,8 @@ let KinkyDungeonSpellSpecials = {
 	}
 };
 
-let KDCommandCaptureBindings = {
-	"vine": (spell, entity, faction, bullet, miscast, attacker, counter) => {
+let KDCommandCaptureBindings: Record<string, (spell: spell, entity: entity, faction: string, bullet: any, miscast: any, attacker: entity, counter: number) => void> = {
+	"vine": (spell, entity, faction, bullet, _miscast, _attacker, _counter) => {
 		// Vines slow the target down
 		if (entity.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1850,7 +1848,7 @@ let KDCommandCaptureBindings = {
 			if (!(entity.slow)) entity.slow = spell.level * 5;
 		}
 	},
-	"rope": (spell, entity, faction, bullet, miscast, attacker, counter) => {
+	"rope": (spell, entity, faction, bullet, _miscast, attacker, counter) => {
 		// Ropes slow the target down
 		if (entity.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1874,7 +1872,7 @@ let KDCommandCaptureBindings = {
 			}, false, false, undefined, undefined, attacker);
 		}
 	},
-	"fabric": (spell, entity, faction, bullet, miscast, attacker, counter) => {
+	"fabric": (spell, entity, faction, bullet, _miscast, attacker, counter) => {
 		// Ropes slow the target down
 		if (entity.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ribbonRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1898,7 +1896,7 @@ let KDCommandCaptureBindings = {
 			}, false, false, undefined, undefined, attacker);
 		}
 	},
-	"belt": (spell, entity, faction, bullet, miscast, attacker, counter) => {
+	"belt": (spell, entity, faction, bullet, _miscast, attacker, _counter) => {
 		// Belts apply extra binding (10 per spell level)
 		if (entity.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leatherRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1920,7 +1918,7 @@ let KDCommandCaptureBindings = {
 			}, false, true, undefined, undefined, attacker);
 		}
 	},
-	"chain": (spell, entity, faction, bullet, miscast, attacker, counter) => {
+	"chain": (spell, entity, faction, bullet, _miscast, attacker, _counter) => {
 		// Chains deal crush damage
 		if (entity.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
@@ -1945,20 +1943,20 @@ let KDCommandCaptureBindings = {
 };
 
 
-let KDCommandBindBindings = {
-	"vine": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+let KDCommandBindBindings: Record<string, (spell: spell, x: number, y: number, faction: string, bullet: any, miscast: any, attacker: entity, counter?: number) => void> = {
+	"vine": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindVine", true), undefined, undefined, undefined, "Player");
 	},
-	"rope": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+	"rope": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
 	},
-	"fabric": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+	"fabric": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
 	},
-	"chain": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+	"chain": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindChain", true), undefined, undefined, undefined, "Player");
 	},
-	"belt": (spell, x, y, faction, bullet, miscast, attacker, counter) => {
+	"belt": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindBelt", true), undefined, undefined, undefined, "Player");
 	},
 };
