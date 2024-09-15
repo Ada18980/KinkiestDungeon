@@ -397,7 +397,6 @@ let KDZoomLevels = [6, 4, 2, 0, -1, -2, -3];
 let KinkyDungeonRootDirectory = "Game/";
 
 //"Screens/MiniGame/KinkyDungeon/";
-let KinkyDungeonPlayerCharacter = null; // Other player object
 let KinkyDungeonGameData = null; // Data sent by other player
 let KinkyDungeonGameDataNullTimer = 4000; // If data is null, we query this often
 let KinkyDungeonGameDataNullTimerTime = 0;
@@ -1053,9 +1052,8 @@ function KinkyDungeonLoad(): void {
 		if (!KinkyDungeonPlayer) { // new game
 			KDrandomizeSeed(false);
 			if (KDPatched) {
+				// Default player character for legacy reasons
 				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada"));
-			} else {
-				KinkyDungeonPlayer = CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada");
 			}
 
 			KDLoadToggles();
@@ -1239,7 +1237,7 @@ function KinkyDungeonDeviousDungeonAvailable(): boolean {
  * @returns - If the player is the game player
  */
 function KinkyDungeonIsPlayer(): boolean {
-	return (!KinkyDungeonPlayerCharacter || KinkyDungeonPlayerCharacter == Player) ;
+	return true;//(!KinkyDungeonPlayerCharacter || KinkyDungeonPlayerCharacter == Player) ;
 }
 
 /**
@@ -5240,14 +5238,14 @@ function KinkyDungeonExit(): void {
 	// Refresh the player character if needed
 	if (ArcadeDeviousChallenge && KinkyDungeonPlayerNeedsRefresh) {
 		if (ServerPlayerIsInChatRoom()) {
-			ChatRoomCharacterUpdate(Player);
+			ChatRoomCharacterUpdate(DefaultPlayer);
 		} else {
-			CharacterRefresh(Player);
+			CharacterRefresh(DefaultPlayer);
 		}
 	}
 
 	if (CharacterAppearancePreviousEmoticon) {
-		CharacterSetFacialExpression(Player, "Emoticon", CharacterAppearancePreviousEmoticon);
+		CharacterSetFacialExpression(DefaultPlayer, "Emoticon", CharacterAppearancePreviousEmoticon);
 		CharacterAppearancePreviousEmoticon = "";
 	}
 
@@ -5258,12 +5256,12 @@ function KinkyDungeonExit(): void {
 
 	if (CurrentScreen == "ChatRoom" && KinkyDungeonState != "Menu" && KDLose) {
 		let Dictionary = [
-			{ Tag: "SourceCharacter", Text: CharacterNickname(Player), MemberNumber: Player.MemberNumber },
+			{ Tag: "SourceCharacter", Text: CharacterNickname(DefaultPlayer), MemberNumber: DefaultPlayer.MemberNumber },
 			{ Tag: "KinkyDungeonLevel", Text: String(MiniGameKinkyDungeonLevel)},
 		];
 		ChatRoomPublishCustomAction("KinkyDungeonLose", false, Dictionary);
 	}
-	CharacterRefresh(Player, true);
+	CharacterRefresh(DefaultPlayer, true);
 
 	KinkyDungeonTeardownCrashHandler();
 }
@@ -5952,7 +5950,7 @@ let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
 function AudioPlayInstantSoundKD(Path: string, volume?: number) {
 	if (!KDToggles.Sound) return false;
-	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : Player.AudioSettings.Volume);
+	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
 		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : new Audio();
@@ -6000,9 +5998,9 @@ function KinkyDungeonCheckPlayerRefresh() {
 	KinkyDungeonPlayerNeedsRefresh = false;
 
 	if (ServerPlayerIsInChatRoom()) {
-		ChatRoomCharacterUpdate(Player);
+		ChatRoomCharacterUpdate(DefaultPlayer);
 	} else {
-		CharacterRefresh(Player);
+		CharacterRefresh(DefaultPlayer);
 	}
 }
 

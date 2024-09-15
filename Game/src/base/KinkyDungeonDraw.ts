@@ -1705,30 +1705,6 @@ function KinkyDungeonDrawGame() {
 
 
 
-				if (!StandalonePatched) {
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdgameboard, {
-							clear: false,
-						});
-					}
-
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdgamefog, {
-							clear: false,
-						});
-					}
-
-					// Draw the context layer even if we haven't updated it
-					if (pixirendererKD) {
-						pixirendererKD.render(kdparticles, {
-							clear: false,
-						});
-					}
-					MainCanvas.drawImage(KinkyDungeonCanvas, canvasOffsetX, canvasOffsetY);
-					DrawCharacter(KinkyDungeonPlayer, 0, 0, 1);
-				}
 
 				if (KinkyDungeonCurrentEscapingItem && KinkyDungeonFlags.get("escaping")) {
 					let item = KinkyDungeonCurrentEscapingItem;
@@ -1816,13 +1792,14 @@ function KinkyDungeonDrawGame() {
 			}
 
 			KinkyDungeonSendEvent("afterDrawFrame", data);
-		} else {
+		}
+		/*else {
 			DrawTextKD(TextGet("KinkyDungeonLoading"), 1100, 500, "#ffffff", KDTextGray2);
 			if (CommonTime() > KinkyDungeonGameDataNullTimerTime + KinkyDungeonGameDataNullTimer) {
 				ServerSend("ChatRoomChat", { Content: "RequestFullKinkyDungeonData", Type: "Hidden", Target: KinkyDungeonPlayerCharacter.MemberNumber });
 				KinkyDungeonGameDataNullTimerTime = CommonTime();
 			}
-		}
+		}*/
 	} else {
 
 

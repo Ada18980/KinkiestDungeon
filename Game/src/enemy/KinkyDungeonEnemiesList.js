@@ -3893,7 +3893,7 @@ let KinkyDungeonEnemies = [
 	{name: "CuffedGirl", clusterWith: "chaos", bound: "CuffedGirl", playLine: "Gagged", color: "#9564b8",
 		tags: KDMapInit([
 			"minor", "leashing", "obsidianLeash", "obsidianCollar",
-			"ignoretiedup", "nocapture", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
+			"ignoretiedup", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
 			"crystalRestraints", "crystalRestraintsHeavy",
 			"soulresist", "crushweakness", "charmweakness",
 			"submissive", "noshop", "gagged", "imprisonable", "rescuecrystal", "noarms",
@@ -3926,7 +3926,7 @@ let KinkyDungeonEnemies = [
 		playLine: "Gagged", color: "#9564b8",
 		tags: KDMapInit([
 			"leashing", "obsidianLeash", "obsidianCollar",
-			"ignoretiedup", "nocapture", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
+			"ignoretiedup", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
 			"crystalRestraints", "crystalRestraintsHeavy",
 			"soulresist", "crushweakness", "charmweakness",
 			"submissive", "noshop", "gagged", "imprisonable", "rescuecrystal", "noarms",
@@ -3962,7 +3962,7 @@ let KinkyDungeonEnemies = [
 		tags: KDMapInit([
 			"elite",
 			"leashing", "obsidianLeash", "obsidianCollar",
-			"ignoretiedup", "nocapture", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
+			"ignoretiedup", "elementsTrap", "chaos", "disarmresist", "blindimmune", "melee",
 			"crystalRestraints", "crystalRestraintsHeavy",
 			"soulresist", "crushweakness", "charmweakness",
 			"submissive", "noshop", "gagged", "imprisonable", "rescuecrystal", "noarms",

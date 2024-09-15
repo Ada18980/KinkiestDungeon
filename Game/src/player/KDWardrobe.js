@@ -1362,8 +1362,8 @@ function KDDrawWardrobe(screen, Character) {
 			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 				CharacterAppearanceRestore(KinkyDungeonPlayer,
-					CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player,
-						KDGetCharMetadata(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player)
+					CharacterAppearanceStringify(DefaultPlayer,
+						KDGetCharMetadata(DefaultPlayer)
 					));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
@@ -1528,7 +1528,7 @@ function KDDrawWardrobe(screen, Character) {
 					KDChangeWardrobe(C);
 					KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
 					CharacterAppearanceRestore(KinkyDungeonPlayer,
-						CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player,
+						CharacterAppearanceStringify(DefaultPlayer,
 							KDGetCharMetadata(KinkyDungeonPlayer)
 						)
 					);

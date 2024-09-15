@@ -1505,8 +1505,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			) {
 				let added = false;
 				for (let restraint of e.list) {
-					if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint), e.power, true,
-					e.lock, data.keep)) {
+					if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint),
+					e.power, true,
+					e.lock, data.keep, undefined, undefined, item.faction)) {
 						added = true;
 					}
 				}

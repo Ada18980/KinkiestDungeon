@@ -98,9 +98,6 @@ interface Character {
 }
 
 interface PlayerCharacter extends Character {
-	AudioSettings?: {
-		Volume: number;
-	};
 }
 
 //#endregion

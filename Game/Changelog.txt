@@ -32,7 +32,7 @@ TODO remove hogtie when released
 
 5.3.38-RC2
 - Made dirt piles and giant mushrooms not block leashing NPCs
-
+- Added gag necklace
 
 5.3.38-RC1
 - Updated version number

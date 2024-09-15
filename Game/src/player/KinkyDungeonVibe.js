@@ -105,7 +105,7 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 		if (Sound && !KDVibeSounds[Location].update) {
 			// Start the new sound
 			let audio = new Audio();
-			let vol = Player.AudioSettings.Volume * (Volume != undefined ? Volume : 1.0);
+			let vol = (Volume != undefined ? Volume : 1.0);
 			if (KDVibeSounds[Location].vol) vol *= KDVibeSounds[Location].vol;
 			KDVibeSounds[Location].Audio = audio;
 			KDVibeSounds[Location].update = true;
@@ -126,7 +126,7 @@ function KDUpdateVibeSound(Location, Sound, Volume) {
 		KDVibeSounds[Location].update = true;
 	}
 	if (Volume != undefined && KDVibeSounds[Location] && KDVibeSounds[Location].Audio) {
-		KDVibeSounds[Location].Audio.volume = Math.min(Player.AudioSettings.Volume * Volume * (KDVibeSounds[Location].vol ? KDVibeSounds[Location].vol : 1.0), 1);
+		KDVibeSounds[Location].Audio.volume = Math.min(Volume * (KDVibeSounds[Location].vol ? KDVibeSounds[Location].vol : 1.0), 1);
 	}
 }
 

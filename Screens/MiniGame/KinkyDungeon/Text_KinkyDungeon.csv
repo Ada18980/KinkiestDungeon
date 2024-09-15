@@ -24671,3 +24671,7 @@ KDGagNecklaceOn,"After popping the gag out of your mouth, it hangs loose around 
 KDGagNecklaceOff,"The gag is now in your mouth."
 
 KDErrorMods,ERROR: Restraint does not exist. Did you forget to load mods?
+
+RestraintGagNecklace,Gag Necklace
+RestraintGagNecklaceDesc,A cute accessory for those who wish to (not) make a statement.
+RestraintGagNecklaceDesc2,Functions as a collar.

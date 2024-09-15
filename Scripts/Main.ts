@@ -53,7 +53,6 @@ window.onload = function() {
 	CharacterNextId = 1;
 	CharacterReset(0);
 
-	Player.AudioSettings = { Volume: 1 };
 
 	CurrentCharacter = null;
 

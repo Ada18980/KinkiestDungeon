@@ -1,5 +1,5 @@
 // Main variables
-let Player: PlayerCharacter;
+let DefaultPlayer: PlayerCharacter;
 let KeyPress: number | string = "";
 let CurrentModule: string;
 let CurrentScreen: string;

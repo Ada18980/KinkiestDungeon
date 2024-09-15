@@ -21,8 +21,8 @@ function CharacterReset(CharacterID: number): Character {
 	};
 
 	// Creates the inventory and default appearance
-	if (CharacterID == 0) {
-		Player = NewCharacter;
+	if (CharacterID == 0 && !DefaultPlayer) {
+		DefaultPlayer = NewCharacter;
 		CharacterAppearanceSetDefault(NewCharacter);
 	}
 
@@ -131,7 +131,7 @@ function CharacterResetFacialExpression(C: Character): void {
  * Gets the currently selected character
  */
 function CharacterGetCurrent(): Character | null {
-	return Player;
+	return DefaultPlayer;
 }
 
 /**
