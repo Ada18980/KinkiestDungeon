@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.38-RC1"
+KDVersionStr,"5.3.38-RC2"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -23163,6 +23163,8 @@ KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
 KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
 KDTeaseAttack_AddStuffing,The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 KDTeaseAttackResist_AddStuffing,"The ENMY reaches for your mouth and fails!"
+KDTeaseAttack_AddGag,The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+KDTeaseAttackResist_AddGag,"The ENMY reaches for the gag around your neck!"
 KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
 KDTeaseAttack_Disarm,The ENMY pulls your weapon away!
@@ -24664,5 +24666,8 @@ AttackCuffedGirl3,"The ancient hierophant mumbles at you for assistance! (Damage
 
 KDCrystalUnlock,"The crystals break off, revealing a keyhole and weakening the item."
 KDCrystalLock,"Your distraction causes the crystals to grow back, encasing the lock again!"
+
+KDGagNecklaceOn,"After popping the gag out of your mouth, it hangs loose around your neck."
+KDGagNecklaceOff,"The gag is now in your mouth."
 
 KDErrorMods,ERROR: Restraint does not exist. Did you forget to load mods?

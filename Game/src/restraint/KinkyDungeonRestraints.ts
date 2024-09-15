@@ -2090,8 +2090,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	if (data.struggleGroup == "ItemNipples" || data.struggleGroup == "ItemNipplesPiercings") bra = KinkyDungeonGetRestraintItem("ItemBreast");
 	if (bra && KDRestraint(bra) && KDRestraint(bra).chastitybra) data.escapeChance = 0.0;
 
-	if (!data.query)
+	if (!data.query) {
+		KinkyDungeonSetFlag(data.struggleType, 1);
 		KinkyDungeonSetFlag("escaping", 1);
+	}
 
 	if (data.escapeChance <= 0
 		&& (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {

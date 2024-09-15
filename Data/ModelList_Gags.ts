@@ -1596,3 +1596,28 @@ AddModel(GetModelFashionVersion("SimpleSciFiMuzzle", true));
 AddModel(GetModelFashionVersion("AdvancedSciFiMuzzle2", true));
 
 
+
+
+
+AddModel({
+	Name: "GagNecklace",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints","Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "GagNecklaceBall", Layer: "Collar", Pri: 250.1,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "GagNecklace",
+			InheritColor: "Ball",
+		},
+		{ Name: "GagNecklace", Layer: "Collar", Pri: 250,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Strap",
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("GagNecklace", true));

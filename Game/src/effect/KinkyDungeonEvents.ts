@@ -283,6 +283,12 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
 				KinkyDungeonRemoveRestraintSpecific(item, true, true);
 		},
+		"requireNoGags": (_e, item, data) => {
+			if (item != data.item && KinkyDungeonPlayerTags.get("Gags")) {
+				KinkyDungeonRemoveRestraintSpecific(item, true, true);
+				KinkyDungeonSendTextMessage(4, TextGet("KDGagNecklaceOff"), "#ffffff", 4);
+			}
+		},
 		"EngageCurse": (_e, item, data) => {
 			if (item == data.item)
 				KinkyDungeonSendEvent("EngageCurse", {});
@@ -1493,9 +1499,20 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 	},
 	"postRemoval": {
 		"replaceItem": (e, item, data) => {
-			if (data.item === item && !data.add && !data.shrine && e.list) {
+			if (data.item === item && !data.add && !data.shrine && e.list
+				&& (!e.requireFlag || KinkyDungeonFlags.get(e.requireFlag)
+			)
+			) {
+				let added = false;
 				for (let restraint of e.list) {
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint), e.power, true, e.lock, data.keep);
+					if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint), e.power, true,
+					e.lock, data.keep)) {
+						added = true;
+					}
+				}
+				if (added) {
+					KinkyDungeonSendTextMessage(5, TextGet(e.msg)
+						.replace("RSTNME", TextGet("Restraint" + item.name)), "#ffffff", 2);
 				}
 			}
 		},

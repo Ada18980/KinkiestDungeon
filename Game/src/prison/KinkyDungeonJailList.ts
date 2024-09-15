@@ -442,6 +442,13 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			guard.RemainingJailLeashTourWaypoints = 1;
 			guard.CurrentAction = "jailLeashTransfer";
 			guard.KinkyDungeonJailTourInfractions = 0;
+			let nearestJail = KinkyDungeonRandomJailPoint(["jail"], [KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)]);
+			if (nearestJail) {
+				guard.NextJailLeashTourWaypointX = nearestJail.x;
+				guard.NextJailLeashTourWaypointY = nearestJail.y;
+				guard.gx = guard.NextJailLeashTourWaypointX;
+				guard.gy = guard.NextJailLeashTourWaypointY;
+			}
 			KinkyDungeonInterruptSleep();
 			let msg = TextGet("KinkyDungeonRemindJailTourStartCell").replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 

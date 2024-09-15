@@ -920,8 +920,12 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 				KinkyDungeonAttachTetherToEntity(2, KinkyDungeonJailGuard(), player);
 			}
 		} else if (KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints > 0
-            && (KDistChebyshev(KinkyDungeonJailGuard().x - KinkyDungeonJailGuard().NextJailLeashTourWaypointX, KinkyDungeonJailGuard().y - KinkyDungeonJailGuard().NextJailLeashTourWaypointY) < 2
-            || (KDRandom() < 0.05 && KDistChebyshev(KinkyDungeonJailGuard().x - KinkyDungeonJailGuard().NextJailLeashTourWaypointX, KinkyDungeonJailGuard().y - KinkyDungeonJailGuard().NextJailLeashTourWaypointY) < 5)
+            && (KDistChebyshev(
+				KinkyDungeonJailGuard().x - KinkyDungeonJailGuard().NextJailLeashTourWaypointX,
+				KinkyDungeonJailGuard().y - KinkyDungeonJailGuard().NextJailLeashTourWaypointY) < 2
+            || (KDRandom() < 0.05 && KDistChebyshev(
+				KinkyDungeonJailGuard().x - KinkyDungeonJailGuard().NextJailLeashTourWaypointX,
+				KinkyDungeonJailGuard().y - KinkyDungeonJailGuard().NextJailLeashTourWaypointY) < 5)
 			|| KDRandom() < 0.01)) {
 			KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints--;
 			if (KinkyDungeonJailGuard().NextJailLeashTourWaypointX > KinkyDungeonJailLeashX + 2) {

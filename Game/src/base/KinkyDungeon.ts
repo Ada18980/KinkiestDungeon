@@ -604,7 +604,7 @@ interface KDGameDataBase {
 	JourneyMap:			KDJourneyMap,
 	JourneyTarget:			{x: number, y: number},
 	LastDragon:			string,
-	ElevatorsUnlocked:		Record<number, boolean>,
+	ElevatorsUnlocked:		Record<number, string | boolean>,
 	TeleportLocations:		Record<string, {x: number, y: number, type: string, checkpoint: string, level: number}>,
 	MaxVisionDist:			number,
 	MinVisionDist:			number,

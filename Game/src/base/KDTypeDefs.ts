@@ -1495,6 +1495,7 @@ interface KinkyDungeonEvent {
 	always?: boolean,
 	bindEff?: number,
 	type: string;
+	requireFlag?: string;
 	trigger: string;
 	threshold?: number,
 	restraint?: string;
