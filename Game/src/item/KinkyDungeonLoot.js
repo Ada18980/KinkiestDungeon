@@ -1095,7 +1095,7 @@ function KDGetWeightedString(WeightList, params) {
  * @returns {boolean}
  */
 function KDCanCurse(tags) {
-	return KDCheckPrereq(undefined, "AlreadyCursed", {tags: [tags]}, {});
+	return KDCheckPrereq(undefined, "AlreadyCursed", {tags: tags, type: undefined, trigger: undefined}, {});
 }
 
 /**
