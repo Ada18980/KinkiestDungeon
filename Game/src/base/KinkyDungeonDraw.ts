@@ -2534,11 +2534,8 @@ function KDhexToRGB(h: string) {
 	return {r:r, g:g, b:b};
 }
 
-function KinkyDungeonUpdateVisualPosition(Entity: any, amount: number) {
-	/*
-	 * FIXME: `Entity` looks like an entity type, but this function manipulates fields not defined in the interface.
-	TODO add bullet type and make Entity: entity | bullet
-	 */
+function KinkyDungeonUpdateVisualPosition(Entity: any /*entity | KDBulletVisual*/, amount: number) {
+	// TODO refactor this to somehow allow the handling of both entity and KDBulletVisual
 	if (amount < 0 || Entity.visual_x == undefined || Entity.visual_y == undefined) {
 		Entity.visual_x = (Entity.xx != undefined) ? Entity.xx : Entity.x;
 		Entity.visual_y = (Entity.yy != undefined) ? Entity.yy : Entity.y;

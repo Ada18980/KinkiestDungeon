@@ -15,12 +15,34 @@ let KDUnfocusedParams = {
 	ThreshMin: 0.1,
 	ThreshMax: 0.9,
 };
+
+interface KDBulletVisual {
+	end: boolean,
+	temporary: boolean,
+	zIndex: number,
+	spin: number,
+	spinAngle: number,
+	name: string,
+	size: number,
+	spriteID: string,
+	xx:number,
+	yy:number,
+	visual_x: number,
+	visual_y: number,
+	aoe?: boolean,
+	updated: boolean,
+	vx: number,
+	vy: number,
+	scale: number,
+	alpha: number,
+	delay: number};
+
 let KDDodgeAmount = 0.75;
 let KinkyDungeonMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonBlockMissChancePerBlind = 0.1; // Max 3
 let KinkyDungeonMissChancePerSlow = 0.1; // Max 3
 KDMapData.Bullets = []; // Bullets on the game board
-let KinkyDungeonBulletsVisual: Map<string, {end: boolean, temporary: boolean, zIndex: number, spin: number, spinAngle: number, name: string, size: number, spriteID: string, xx:number, yy:number, visual_x: number, visual_y: number, aoe?: boolean, updated: boolean, vx: number, vy: number, scale: number, alpha: number, delay: number}> = new Map(); // Bullet sprites on the game board
+let KinkyDungeonBulletsVisual: Map<string, KDBulletVisual> = new Map(); // Bullet sprites on the game board
 let KinkyDungeonBulletsID = {}; // Bullets on the game board
 
 let KDVulnerableDmg = 1.0;
@@ -591,8 +613,7 @@ function KinkyDungeonEvasion(Enemy: entity, IsSpell?: boolean, IsMagic?: boolean
 			if (point) {
 				KDMoveEntity(Enemy, point.x, point.y, true, true, true, false);
 				Enemy.movePoints = 0;
-				/*  FIXME: This is the only place where `attackWhileDodging` appears.  */
-				if (!Enemy.Enemy.attackWhileMoving /* && !Enemy.Enemy.attackWhileDodging */) {
+				if (!Enemy.Enemy.attackWhileMoving) {
 					Enemy.attackPoints = 0;
 					Enemy.warningTiles = [];
 				}
