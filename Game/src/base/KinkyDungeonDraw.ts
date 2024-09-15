@@ -2537,6 +2537,7 @@ function KDhexToRGB(h: string) {
 function KinkyDungeonUpdateVisualPosition(Entity: any, amount: number) {
 	/*
 	 * FIXME: `Entity` looks like an entity type, but this function manipulates fields not defined in the interface.
+	TODO add bullet type and make Entity: entity | bullet
 	 */
 	if (amount < 0 || Entity.visual_x == undefined || Entity.visual_y == undefined) {
 		Entity.visual_x = (Entity.xx != undefined) ? Entity.xx : Entity.x;
@@ -4570,7 +4571,7 @@ function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H
 	// Sets the element style
 	Object.assign(E.style, {
 		fontSize: Font + "px",
-		fontFamily: CommonGetFontName(),
+		fontFamily: "Verdana",
 		position: "fixed",
 		left: Left + "px",
 		top: Top + "px",

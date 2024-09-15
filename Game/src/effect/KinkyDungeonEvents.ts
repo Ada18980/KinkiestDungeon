@@ -10418,7 +10418,7 @@ function KinkyDungeonHandleGenericEvent(Event: string, data: any) {
 
 
 
-/*  FIXME: Nobody calls this with an `item` or `tags` parameter...  */
+/*  TODO: Utilize item and tags parameter in future :) */
 function KDEventPrereq(_e: string, item?: item, tags?: any) {
 	if (tags) {
 		if (!tags.length) {

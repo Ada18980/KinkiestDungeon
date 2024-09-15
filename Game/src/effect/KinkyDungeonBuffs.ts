@@ -198,8 +198,7 @@ function KDUpdatePlayerShield(PlayerBuffs?: any): void {
 }
 
 
-function KDDamagePlayerShield(Amount: number, Player: any) {
-	/*  FIXME: This doesn't seem to be used for anything...  */
+function KDDamagePlayerShield(Amount: number, Player: entity) {
 	if (!Player) Player = KinkyDungeonPlayerEntity;
 	let PlayerBuffs = KinkyDungeonPlayerBuffs;
 	let buffs = Object.values(PlayerBuffs).filter((b) => {return b.type == "Shield";}).sort((a, b) => {return (a.power || 0) - (b.power || 0);});

@@ -608,7 +608,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		}
 
 		let shieldDmg = Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg)));
-		KDDamagePlayerShield(shieldDmg);
+		KDDamagePlayerShield(shieldDmg, KDPlayer());
 		if (data.dmg < 0) data.dmg = 0;
 		data.dmgShield += shieldDmg;
 	}

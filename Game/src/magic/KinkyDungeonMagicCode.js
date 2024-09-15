@@ -1722,7 +1722,7 @@ let KinkyDungeonSpellSpecials = {
 			let restraints = KinkyDungeonAllRestraint();
 			if (restraints.length > 0) tried = true;
 			for (let r of restraints) {
-				if (!r.lock && !KDGetCurse(r) && KDGetEscapeChance(KDRestraint(r), "Remove", undefined, undefined, false, false).escapeChance > 0 && !KDGroupBlocked(KDRestraint(r).Group)) {
+				if (!r.lock && !KDGetCurse(r) && KDGetEscapeChance(r, "Remove", undefined, undefined, false, false).escapeChance > 0 && !KDGroupBlocked(KDRestraint(r).Group)) {
 					KinkyDungeonRemoveRestraint(KDRestraint(r).Group);
 					active = true;
 				}

@@ -2188,8 +2188,6 @@ function KDYesNoBasic (
 function KDSaleShop(name: string, items: string[], requireTags: string[], requireSingleTag: string[], chance: number, markup: number, itemsdrop?: string[], multiplier: number = 1): KinkyDialogue {
 	if (!markup) markup = 1.0;
 	let shop: KinkyDialogue = {
-		/*  FIXME: Was this actually supposed to be here?  */
-		// shop: true,
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
 			/*let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

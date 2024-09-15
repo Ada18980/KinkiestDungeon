@@ -520,7 +520,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		}
 
 	if (!KDNPCChar.get(value.id)) {
-		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + value.id, value.name, value.Palette));
+		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC(value.id, value.name, value.Palette));
 		KDNPCChar.set(value.id, KDSpeakerNPC);
 		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 		KDNPCStyle.set(KDSpeakerNPC, value);

@@ -591,8 +591,6 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item, link: Link});
 			item.lock = lock;
 
-			if (!StandalonePatched)
-				InventoryLock(KinkyDungeonPlayer, InventoryGet(KinkyDungeonPlayer, KDRestraint(item).AssetGroup ? KDRestraint(item).AssetGroup : KDRestraint(item).Group), "IntricatePadlock", Player.MemberNumber, true);
 			item.pickProgress = 0;
 		}
 	} else {

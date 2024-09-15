@@ -1,32 +1,6 @@
 let Character: Character[] = [];
 let CharacterNextId = 1;
 
-const CharacterDeafLevels: Map<EffectName, number> = new Map([
-	["DeafTotal", 4],
-	["DeafHeavy", 3],
-	["DeafNormal", 2],
-	["DeafLight", 1],
-]);
-
-const CharacterBlurLevels: Map<EffectName, number> = new Map([
-	["BlurTotal", 50],
-	["BlurHeavy", 20],
-	["BlurNormal", 8],
-	["BlurLight", 3],
-]);
-
-/**
- * An enum representing the various character archetypes
- * ONLINE: The player, or a character representing another online player
- * NPC: Any NPC
- * SIMPLE: Any simple character, generally used internally and not to represent an actual in-game character
- */
-let CharacterType: {[_: string]: CharacterType} = {
-	ONLINE: "online",
-	NPC: "npc",
-	SIMPLE: "simple",
-};
-
 /**
  * Loads a character into the buffer, creates it if it does not exist
  * @param CharacterID - ID of the character
@@ -34,53 +8,17 @@ let CharacterType: {[_: string]: CharacterType} = {
  * @param Type - The character type
  * @returns The newly loaded character
  */
-function CharacterReset(CharacterID: number, CharacterAssetFamily: string, Type: CharacterType = CharacterType.ONLINE): Character {
+function CharacterReset(CharacterID: number): Character {
 
 	// Prepares the character sheet
 	let NewCharacter: Character = {
 		ID: CharacterID,
 		Name: "",
 		Palette: "",
-		Type,
-		AssetFamily: CharacterAssetFamily,
-		AccountName: "",
-		Owner: "",
-		Lover: "",
-		Money: 0,
-		Inventory: [],
 		Appearance: [],
-		Stage: "0",
-		CurrentDialog: "",
-		Dialog: [],
-		Reputation: [],
-		Skill: [],
-		Pose: [],
-		Effect: [],
-		Tints: [],
-		FocusGroup: null,
-		Canvas: null,
-		CanvasBlink: null,
-		MustDraw: false,
-		BlinkFactor: Math.round(Math.random() * 10) + 10,
-		AllowItem: true,
-		BlockItems: [],
-		LimitedItems: [],
-		BlackList: [],
-		IsKneeling: function () {
-			throw new Error("Function not implemented.");
-		},
-		FavoriteItems: [],
-		WhiteList: [],
 		HeightModifier: 0,
-		IsEnclose: () => false,
+		Pose: [],
 	};
-
-	// If the character doesn't exist, we create it
-	let CharacterIndex = Character.findIndex(c => c.ID == CharacterID);
-	if (CharacterIndex == -1)
-		Character.push(NewCharacter);
-	else
-		Character[CharacterIndex] = NewCharacter;
 
 	// Creates the inventory and default appearance
 	if (CharacterID == 0) {
@@ -94,37 +32,6 @@ function CharacterReset(CharacterID: number, CharacterAssetFamily: string, Type:
 	return NewCharacter;
 }
 
-
-/**
- * Create a minimal character object
- * @param AccName - The account name to give to the character
- * @returns  The created character
- */
-function CharacterLoadSimple(AccName: string): Character {
-	// Checks if the character already exists and returns it if it's the case
-	for (let C = 0; C < Character.length; C++)
-		if (Character[C].AccountName === AccName)
-			return Character[C];
-
-	// Create the new character
-	const CNew = CharacterReset(CharacterNextId++, "Female3DCG", CharacterType.SIMPLE);
-	CNew.AccountName = AccName;
-
-	// Returns the new character
-	return CNew;
-}
-
-/**
- * Deletes an NPC from the buffer
- * @param NPCType - Account name of the npc to delete
- */
-function CharacterDelete(NPCType: string): void {
-	for (let C = 0; C < Character.length; C++)
-		if (Character[C].AccountName == NPCType) {
-			Character.splice(C, 1);
-			return;
-		}
-}
 
 /**
  * Adds a pose to a character's pose list, does not add it if it's already there
@@ -244,23 +151,11 @@ function CharacterNickname(C: Character): string {
  * @param NPCType - Archetype of the NPC
  * @returns The randomly generated NPC
  */
-function CharacterLoadNPC(NPCType: string, Name: string, Palette?: string): NPCCharacter {
-
-	// Checks if the NPC already exists and returns it if it's the case
-	for (let C = 0; C < Character.length; C++)
-		if (Character[C].AccountName == NPCType)
-			return Character[C];
-
-	// Randomize the new character
-	CharacterReset(CharacterNextId++, "Female3DCG", CharacterType.NPC);
-	const CNew = Character[Character.length - 1];
-	CNew.AccountName = NPCType;
+function CharacterLoadNPC(id: number, Name: string, Palette?: string): Character {
+	const CNew = CharacterReset(id);
 	CNew.Name = Name;
 	if (Palette)
 		CNew.Palette = Palette;
-	//CharacterAppearanceBuildAssets(C);
-	//CharacterAppearanceFullRandom(C);
-
 	// Returns the new character
 	return CNew;
 

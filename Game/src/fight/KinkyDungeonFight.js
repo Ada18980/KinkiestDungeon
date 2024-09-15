@@ -629,28 +629,41 @@ function KinkyDungeonEvasion(Enemy, IsSpell, IsMagic, Attacker, chance) {
  * @param {string[] | undefined} profile
  * @param {string} type
  * @param {string} resist
+ * @param {number} mode - 0 = either, 1 = specific, 2 = general
  * @returns {boolean}
  */
-function KinkyDungeonGetImmunity(tags, profile, type, resist) {
+function KinkyDungeonGetImmunity(tags, profile, type, resist, mode = 0) {
 	let t = type;
 	if (KDDamageEquivalencies[type]) t = KDDamageEquivalencies[type];
 
 	for (let i = 0; i < 10 && KinkyDungeonDamageTypesExtension[t]; i++) {
 		if (KinkyDungeonDamageTypesExtension[t] && resist != "weakness" && resist != "severeweakness") t = KinkyDungeonDamageTypesExtension[t];
 	}
-	if (tags && (tags[t + resist]
-		|| ((KinkyDungeonMeleeDamageTypes.includes(t) && (type != "unarmed" || !resist.includes("weakness"))) && tags["melee" + resist])
-		|| (!KinkyDungeonMeleeDamageTypes.includes(t) && tags["magic"+resist])))
-		return true;
-	if (profile) {
-		for (let pp of profile) {
-			let p = KDResistanceProfiles[pp];
-			if (p && (p[t + resist]
-				|| ((KinkyDungeonMeleeDamageTypes.includes(t) && (type != "unarmed" || !resist.includes("weakness"))) && p["melee" + resist])
-				|| (!KinkyDungeonMeleeDamageTypes.includes(t) && p["magic"+resist])))
-				return true;
+	if (!mode || mode == 1) {
+		if (tags && tags[t + resist])
+			return true;
+		if (profile) {
+			for (let pp of profile) {
+				let p = KDResistanceProfiles[pp];
+				if (p && (p[t + resist]))
+					return true;
+			}
 		}
 	}
+	if (!mode || mode == 2) {
+		if (tags && (((KinkyDungeonMeleeDamageTypes.includes(t) && (type != "unarmed" || !resist.includes("weakness"))) && tags["melee" + resist])
+			|| (!KinkyDungeonMeleeDamageTypes.includes(t) && tags["magic"+resist])))
+			return true;
+		if (profile) {
+			for (let pp of profile) {
+				let p = KDResistanceProfiles[pp];
+				if (p && (((KinkyDungeonMeleeDamageTypes.includes(t) && (type != "unarmed" || !resist.includes("weakness"))) && p["melee" + resist])
+					|| (!KinkyDungeonMeleeDamageTypes.includes(t) && p["magic"+resist])))
+					return true;
+			}
+		}
+	}
+
 	return false;
 }
 
@@ -853,10 +866,15 @@ function KinkyDungeonDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, at
 
 
 		if (Enemy.Enemy.tags) {
-			if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "severeweakness")) resistDamage = -2;
-			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "weakness")) resistDamage = -1;
-			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "immune")) resistDamage = 2;
-			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "resist")) resistDamage = 1;
+			if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "severeweakness", 1)) resistDamage = -2;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "weakness", 1)) resistDamage = -1;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "resist", 1)) resistDamage = 1;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "immune", 1)) resistDamage = 2;
+
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "severeweakness", 2)) resistDamage = -2;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "weakness", 2)) resistDamage = -1;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "resist", 2)) resistDamage = 1;
+			else if (KinkyDungeonGetImmunity(Enemy.Enemy.tags, Enemy.Enemy.Resistance?.profile, predata.type, "immune", 2)) resistDamage = 2;
 
 			if (Enemy.Enemy.tags.unstoppable) resistStun = 2;
 			else if (Enemy.Enemy.tags.unflinching) resistStun = 1;

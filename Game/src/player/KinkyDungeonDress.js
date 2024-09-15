@@ -198,8 +198,6 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 			Character: Character,
 		};
 
-		KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true};
-
 		if (KinkyDungeonCheckClothesLoss) KDRefreshCharacter.set(Character, true);
 
 		// if true, nakeds the player, then reclothes
@@ -773,11 +771,8 @@ function KinkyDungeonGetOutfit(Name) {
  */
 function KDInventoryWear(Character, AssetName, AssetGroup, par, color, filters, Properties) {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
-	const A = AssetGet(Character.AssetFamily, AssetGroup, AssetName);
-	if ((StandalonePatched && !M) || (!StandalonePatched && !A)) return;
-	let item = StandalonePatched ?
-		KDAddModel(Character, AssetGroup, M, color || "Default", filters, undefined, Properties)
-		: KDAddAppearance(Character, AssetGroup, A, color || A.DefaultColor);
+	if (!M) return;
+	let item = KDAddModel(Character, AssetGroup, M, color || "Default", filters, undefined, Properties);
 	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(Character, true);
 	return item;
@@ -912,69 +907,6 @@ function KDApplyItem(C, inv, tags, customFaction = undefined) {
 			}
 		}
 		return;
-	} else
-		KDApplyItemLegacy(inv, tags);
-}
-
-/** Legacy */
-function KDApplyItemLegacy(C, inv, tags) {
-	if (!C) C = KinkyDungeonPlayer;
-	let _ChatRoomCharacterUpdate = ChatRoomCharacterUpdate;
-	ChatRoomCharacterUpdate = () => {};
-	try {
-		let restraint = KDRestraint(inv);
-		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
-		let faction = inv.faction ? inv.faction : "";
-
-
-		let data = {
-			color: "",
-			faction: faction,
-		};
-		KinkyDungeonSendEvent("legacyApply", data);
-
-		//let already = InventoryGet(C, AssetGroup);
-		//let difficulty = already?.Property?.Difficulty || 0;
-
-		/** @type {Item} */
-		let placed = null;
-
-		if (!restraint.armor || KDToggles.DrawArmor) {
-			placed = KDAddAppearance(C, AssetGroup, AssetGet("3DCGFemale", AssetGroup, restraint.Asset), data.color, undefined, undefined, undefined, inv);
-		}
-
-		if (placed) {
-			let type = restraint.Type;
-			if (restraint.changeRenderType && Object.keys(restraint.changeRenderType).some((k) => {return tags.has(k);})) {
-				let key = Object.keys(restraint.changeRenderType).filter((k) => {return tags.has(k);})[0];
-				if (key) {
-					type = restraint.changeRenderType[key];
-				}
-			}
-			placed.Property = {Type: type, Difficulty: restraint.power, LockedBy: inv.lock ? "MetalPadlock" : undefined};
-
-			/*if ((!already) && type) {
-				C.FocusGroup = AssetGroupGet("Female3DCG", AssetGroup);
-				let options = window["Inventory" + ((AssetGroup.includes("ItemMouth")) ? "ItemMouth" : AssetGroup) + restraint.Asset + "Options"];
-				if (!options) options = TypedItemDataLookup[`${AssetGroup}${restraint.Asset}`].options; // Try again
-				const option = options.find(o => o.Name === type);
-				ExtendedItemSetType(C, options, option);
-				C.FocusGroup = null;
-			}*/
-
-			if (restraint.Modules) {
-				let D = ModularItemDataLookup[AssetGroup + restraint.Asset];
-				let asset = D.asset;
-				let modules = D.modules;
-				placed.Property = ModularItemMergeModuleValues({ asset, modules }, restraint.Modules);
-				placed.Property.LockedBy = inv.lock ? "MetalPadlock" : undefined;
-			} else if (type) TypedItemSetOptionByName(C, placed, type, false);
-			if (restraint.OverridePriority) {
-				placed.Property.OverridePriority = restraint.OverridePriority;
-			}
-		}
-	} finally {
-		ChatRoomCharacterUpdate = _ChatRoomCharacterUpdate;
 	}
 }
 

@@ -963,11 +963,6 @@ function KDLoadToggles() {
 		if (loaded[t] != undefined)
 			KDToggles[t] = loaded[t];
 	}
-
-
-	if (Player && !Player.GraphicsSettings) {
-		Player.GraphicsSettings = {AnimationQuality: 0};
-	}
 }
 function KDSaveToggles() {
 	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
@@ -1058,12 +1053,10 @@ function KinkyDungeonLoad(): void {
 		if (!KinkyDungeonPlayer) { // new game
 			KDrandomizeSeed(false);
 			if (KDPatched) {
-				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC("NPC_Avatar", localStorage.getItem("PlayerName") || "Ada"));
+				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada"));
 			} else {
-				KinkyDungeonPlayer = CharacterLoadNPC("NPC_Avatar", localStorage.getItem("PlayerName") || "Ada");
+				KinkyDungeonPlayer = CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada");
 			}
-			KinkyDungeonPlayer.Type = "simple";
-			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: true, };
 
 			KDLoadToggles();
 
@@ -1220,8 +1213,8 @@ function KinkyDungeonLoad(): void {
 			//KinkyDungeonState = "Menu";
 			KinkyDungeonGameData = null;
 
-			CharacterAppearancePreviousEmoticon = WardrobeGetExpression(Player).Emoticon;
-			ServerSend("ChatRoomCharacterExpressionUpdate", { Name: "Gaming", Group: "Emoticon", Appearance: ServerAppearanceBundle(Player.Appearance) });
+			//CharacterAppearancePreviousEmoticon = WardrobeGetExpression(Player).Emoticon;
+			//ServerSend("ChatRoomCharacterExpressionUpdate", { Name: "Gaming", Group: "Emoticon", Appearance: ServerAppearanceBundle(Player.Appearance) });
 		} else {
 			KinkyDungeonState = "Game";
 			if (!KinkyDungeonGameData) {
@@ -1685,26 +1678,10 @@ function KinkyDungeonRun() {
 
 				CharacterRefresh(KinkyDungeonPlayer);
 			}
-			KinkyDungeonPlayer.OnlineSharedSettings = {AllowFullWardrobeAccess: true};
 			KinkyDungeonNewDress = true;
-			if (KDPatched && !StandalonePatched) {
-				// Give all of the items
-
-				for (let A = 0; A < Asset.length; A++)
-
-					if ((Asset[A] != null) && (Asset[A].Group != null) && !InventoryAvailable(Player, Asset[A].Name, Asset[A].Group.Name))
-
-						InventoryAdd(Player, Asset[A].Name, Asset[A].Group.Name);
-			}
 
 			CharacterReleaseTotal(KinkyDungeonPlayer);
 			KinkyDungeonDressPlayer();
-			KinkyDungeonPlayer.OnlineSharedSettings = {BlockBodyCosplay: false, AllowFullWardrobeAccess: true};
-			if (!StandalonePatched) {
-				if (!KDPatched)
-					MainCanvas.textAlign = "center";
-				CharacterAppearanceLoadCharacter(KinkyDungeonPlayer);
-			}
 			KinkyDungeonConfigAppearance = true;
 			if (appearance) {
 				CharacterAppearanceRestore(KinkyDungeonPlayer, appearance);

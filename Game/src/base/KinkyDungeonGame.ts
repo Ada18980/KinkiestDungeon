@@ -5556,7 +5556,7 @@ function KinkyDungeonTargetTileMsg() {
 function KDAddAppearance (
 	C:                 Character,
 	_Group:            string,
-	ItemAsset:         Asset | null,
+	ItemAsset:         any,
 	NewColor:          string | string[],
 	DifficultyFactor:  number = 0,
 	ItemMemberNumber:  number = -1,

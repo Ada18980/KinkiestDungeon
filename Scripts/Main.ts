@@ -51,10 +51,8 @@ window.onload = function() {
 	// LoginLoad
 	Character = [];
 	CharacterNextId = 1;
-	CharacterReset(0, "Female3DCG");
+	CharacterReset(0);
 
-	Player.ArousalSettings = { VFXFilter: "VFXFilterHeavy" };
-	Player.OnlineSharedSettings = { ItemsAffectExpressions: true };
 	Player.AudioSettings = { Volume: 1 };
 
 	CurrentCharacter = null;

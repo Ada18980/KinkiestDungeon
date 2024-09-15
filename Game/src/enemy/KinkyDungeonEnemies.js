@@ -8961,7 +8961,7 @@ function KDQuickGenNPC(enemy, force) {
 		if (!enemyType.style) return; // Dont make one for enemies without styles
 		let NPC = null;
 		if (!KDNPCChar.get(id)) {
-			NPC = suppressCanvasUpdate(() => CharacterLoadNPC("coll" + id, KDEnemyName(enemy), value?.Palette));
+			NPC = suppressCanvasUpdate(() => CharacterLoadNPC(id, KDEnemyName(enemy), value?.Palette));
 			KDNPCChar.set(id, NPC);
 			KDNPCChar_ID.set(NPC, id);
 			value = value || KDGetPersistentNPC(enemy.id);

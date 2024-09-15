@@ -1,7 +1,7 @@
 "use strict";
 
 
-let KDMapTilesListEditor = localStorage.getItem("KDMapTilesListEditor") ? JSON.parse(localStorage.getItem("KDMapTilesListEditor")) : Object.assign({}, KDMapTilesList);
+let KDMapTilesListEditor: Record<string, KDMapTile> = localStorage.getItem("KDMapTilesListEditor") ? JSON.parse(localStorage.getItem("KDMapTilesListEditor")) : Object.assign({}, KDMapTilesList);
 
 let KDTileToTest = null;
 

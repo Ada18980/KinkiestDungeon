@@ -6,7 +6,7 @@
 */
 function InventoryGet(C: Character, AssetGroup: string): Item | null {
 	for (let A = 0; A < C.Appearance.length; A++) {
-		if ((C.Appearance[A].Asset != null) && (C.Appearance[A].Asset.Group.Family == C.AssetFamily) && (C.Appearance[A].Asset.Group.Name == AssetGroup))
+		if ((C.Appearance[A].Asset != null) && (C.Appearance[A].Asset.Group.Name == AssetGroup))
 			return C.Appearance[A];
 
 		if ((C.Appearance[A].Model != null) && (C.Appearance[A].Model.Group == AssetGroup))
@@ -14,7 +14,3 @@ function InventoryGet(C: Character, AssetGroup: string): Item | null {
 	}
 	return null;
 }
-
-let Asset = [];
-let InventoryAdd = (a, b, c) => {};
-let InventoryAvailable = (a, b, c) : boolean => {return false;};

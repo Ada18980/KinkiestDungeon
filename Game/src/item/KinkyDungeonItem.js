@@ -83,6 +83,8 @@ function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
 		}
 
 	let foundslot = PreferOrigin ? {x:Origin.x, y:Origin.y} : null;
+	/*
+	Old code???
 	if (!(Origin == KinkyDungeonPlayerEntity && PreferOrigin && KinkyDungeonPlayer.IsEnclose())) {
 		if (!foundslot || !(KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(foundslot.x, foundslot.y))
 		&& (allowEnemies || KinkyDungeonNoEnemy(foundslot.x, foundslot.y, true))))
@@ -95,7 +97,7 @@ function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
 					C = 100;
 				} else slots.splice(C, 1);
 			}
-	}
+	}*/
 
 
 	if (foundslot) {
