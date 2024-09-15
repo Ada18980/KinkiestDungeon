@@ -1508,6 +1508,8 @@
             <key type="filename">../Models/FutureHarness/StrapsMid.png</key>
             <key type="filename">../Models/GagLatex/NeckCorset.png</key>
             <key type="filename">../Models/GagLatex/NeckCorsetRim.png</key>
+            <key type="filename">../Models/GagLeather/GagNecklace.png</key>
+            <key type="filename">../Models/GagLeather/GagNecklaceBall.png</key>
             <key type="filename">../Models/Gothic/Buttons.png</key>
             <key type="filename">../Models/Gothic/HemLower.png</key>
             <key type="filename">../Models/Gothic/HemLowerBackCrotchStrap.png</key>
