@@ -166,7 +166,7 @@ function KDFactionFavorable(a, b) {
  * @param {number} Floor
  * @param {string} Checkpoint
  * @param {string[]} tags
- * @param {any} bonustags
+ * @param {Record<string, {bonus: number, mult: number}>} bonustags
  * @param {number} [X]
  * @param {number} [Y]
  * @returns {Record<string, number>}
@@ -176,7 +176,7 @@ function KDGetFactionProps(list, Floor, Checkpoint, tags, bonustags, X = 0, Y = 
 	let mp = {};
 	for (let faction of list) {
 		if (KDFactionProperties[faction]) {
-			mp[faction] = KDFactionProperties[faction].weight(Floor, Checkpoint, tags, X, Y);
+			mp[faction] = KDFactionProperties[faction].weight(Floor, Checkpoint, tags, bonustags, X, Y);
 		}
 	}
 	return mp;
