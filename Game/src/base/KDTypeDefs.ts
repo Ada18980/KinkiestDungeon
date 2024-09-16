@@ -2255,7 +2255,7 @@ interface KDQuest {
 	npc: string;
 	visible: boolean;
 	nocancel?: boolean,
-	tick?: (delta) => void;
+	tick?: (delta: number) => void;
 	worldgenstart?: () => void;
 	accept?: () => void;
 	weight: (RoomType: any, MapMod: any, data: any, currentQuestList?: any) => number;

@@ -3,10 +3,7 @@
 let QuestCompleteWeight = 1000;
 let KDDefaultGoddessQuestRep = 5;
 
-/**
- * @type {Record<string, KDQuest>}
- */
-let KDQuests = {
+let KDQuests: Record<string, KDQuest> = {
 	"DressmakerQuest": {
 		name: "DressmakerQuest",
 		npc: "DressmakerQuest",
@@ -21,7 +18,7 @@ let KDQuests = {
 				}
 			}
 		},
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				let weight = 15;
 				if (KinkyDungeonPlayerTags.has("BindingDress")) {
@@ -31,7 +28,7 @@ let KDQuests = {
 			}
 			return 0;
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			//if (KinkyDungeonFlags.has("DressmakerQuest") && KinkyDungeonPlayerTags.has("BindingDress")) {
 			//return false;
 			//}
@@ -55,7 +52,7 @@ let KDQuests = {
 
 			}
 		},
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				let weight = 30;
 				if (
@@ -70,10 +67,10 @@ let KDQuests = {
 			}
 			return 0;
 		},
-		accept: (data) => {
+		accept: () => {
 			KinkyDungeonSetFlag("ApprenticeQuestSpawn", 0);
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (KDHasQuest("ApprenticeQuest") && !(KinkyDungeonInventoryGet("ScrollLegs")
 				|| KinkyDungeonInventoryGet("ScrollArms")
 				|| KinkyDungeonInventoryGet("ScrollVerbal")
@@ -91,7 +88,7 @@ let KDQuests = {
 		name: "DragonheartQuest",
 		npc: "DragonheartQuest",
 		visible: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				let weight = 20;
 				return weight;
@@ -111,7 +108,7 @@ let KDQuests = {
 
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (KDHasQuest("DragonheartQuest")) {
 				return false;
 			}
@@ -126,7 +123,7 @@ let KDQuests = {
 		name: "MaidforceQuest",
 		npc: "MaidforceQuest",
 		visible: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				let weight = 20;
 				return weight;
@@ -174,7 +171,7 @@ let KDQuests = {
 				KinkyDungeonSetFlag("MaidforceQuest", -1, 1);
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (KDHasQuest("MaidforceQuest")) {
 				return false;
 			}
@@ -190,7 +187,7 @@ let KDQuests = {
 		npc: "Wolfgirl",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
@@ -223,7 +220,7 @@ let KDQuests = {
 				}
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		}
 	},
@@ -233,7 +230,7 @@ let KDQuests = {
 		npc: "Dressmaker",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
@@ -266,7 +263,7 @@ let KDQuests = {
 				}
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		}
 	},
@@ -277,7 +274,7 @@ let KDQuests = {
 		npc: "DirtPile",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
@@ -340,7 +337,7 @@ let KDQuests = {
 				}
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		}
 	},
@@ -350,13 +347,13 @@ let KDQuests = {
 		npc: "ElementalFire",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
 			KinkyDungeonSetFlag("ElementalSlaveTeleport", -1);
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		},
 		tick: (delta) => {
@@ -417,7 +414,7 @@ let KDQuests = {
 		npc: "DollmakerBoss1",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
@@ -450,7 +447,7 @@ let KDQuests = {
 				}
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		}
 	},
@@ -461,7 +458,7 @@ let KDQuests = {
 		npc: "Nawashi",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 0;
 		},
 		worldgenstart: () => {
@@ -479,7 +476,7 @@ let KDQuests = {
 				}
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		}
 	},
@@ -488,7 +485,7 @@ let KDQuests = {
 		npc: "BanditQuest",
 		visible: true,
 		nocancel: true,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				let weight = 20;
 				return weight;
@@ -510,7 +507,7 @@ let KDQuests = {
 				KinkyDungeonSetFlag("BanditPrisoner", -1, 1);
 			}
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (KDHasQuest("BanditPrisoner")) {
 				return false;
 			}
@@ -525,10 +522,10 @@ let KDQuests = {
 		name: "BlacksmithQuest",
 		npc: "BlacksmithQuest",
 		visible: false,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 100;
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				return true;
 			}
@@ -539,10 +536,10 @@ let KDQuests = {
 		name: "BowyerQuest",
 		npc: "BowyerQuest",
 		visible: false,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 100;
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				return true;
 			}
@@ -553,10 +550,10 @@ let KDQuests = {
 		name: "ShadyQuest",
 		npc: "ShadyQuest",
 		visible: false,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 100;
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				return true;
 			}
@@ -567,10 +564,10 @@ let KDQuests = {
 		name: "ArmorerQuest",
 		npc: "ArmorerQuest",
 		visible: false,
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 100;
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (RoomType, _MapMod, _data, _currentQuestList) => {
 			if (RoomType == "PerkRoom") {
 				return true;
 			}
@@ -579,7 +576,7 @@ let KDQuests = {
 	},
 
 
-	"LatexQuest": KDGenQuestTemplate("LatexQuest", "PinkAlchemist", "Latex", (goddess, flag) => {
+	"LatexQuest": KDGenQuestTemplate("LatexQuest", "PinkAlchemist", "Latex", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let ens = KinkyDungeonSummonEnemy(point.x, point.y, "LatexCube", Math.max(1, Math.min(3, Math.round(KDGetEffLevel()/6))), 2.9);
@@ -636,7 +633,7 @@ let KDQuests = {
 		}
 	}, 1, ["latexRestraints", "latexRestraintsHeavy"]),
 
-	"WillQuest": KDGenQuestTemplate("WillQuest", "Elf", "Will", (goddess, flag) => {
+	"WillQuest": KDGenQuestTemplate("WillQuest", "Elf", "Will", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let count = 4 + KDRandom() * Math.min(8, KDGetEffLevel()/3);
@@ -685,7 +682,7 @@ let KDQuests = {
 		}
 	}, 1.5, ["mithrilCuffs", "leatherRestraints", "leatherRestraintsHeavy"]),
 
-	"RopeQuest": KDGenQuestTemplate("RopeQuest", "RopeKraken", "Rope", (goddess, flag) => {
+	"RopeQuest": KDGenQuestTemplate("RopeQuest", "RopeKraken", "Rope", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let e = KinkyDungeonSummonEnemy(point.x, point.y, "RopeKraken", Math.max(1, Math.min(6, Math.round(KDGetEffLevel()/6))), 2.9);
@@ -701,7 +698,7 @@ let KDQuests = {
 		}
 	}, 2, ["dressRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
 
-	"LeatherQuest": KDGenQuestTemplate("LeatherQuest", "ChainBeing", "Leather", (goddess, flag) => {
+	"LeatherQuest": KDGenQuestTemplate("LeatherQuest", "ChainBeing", "Leather", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let beings = ["ChainBeing", "CorruptedAdventurer", "ShadowGhast"];
@@ -760,7 +757,7 @@ let KDQuests = {
 		}
 	}, 1, ["dragonRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
 
-	"MetalQuest": KDGenQuestTemplate("MetalQuest", "Drone", "Metal", (goddess, flag) => {
+	"MetalQuest": KDGenQuestTemplate("MetalQuest", "Drone", "Metal", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let count = 1 + KDRandom() * Math.min(3, KDGetEffLevel()/3);
@@ -812,7 +809,7 @@ let KDQuests = {
 		}
 	}, 0.7, ["cyberdollrestraints", "cyberdollheavy", "controlharness"]),
 
-	"ConjureQuest": KDGenQuestTemplate("ConjureQuest", "WitchShock", "Conjure", (goddess, flag) => {
+	"ConjureQuest": KDGenQuestTemplate("ConjureQuest", "WitchShock", "Conjure", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let count = 1 + KDRandom() * Math.min(3, KDGetEffLevel()/3);
@@ -864,7 +861,7 @@ let KDQuests = {
 		}
 	}, 1, ["dressRestraints", "latexRestraints"]),
 
-	"ElementsQuest": KDGenQuestTemplate("ElementsQuest", "DemonStar", "Elements", (goddess, flag) => {
+	"ElementsQuest": KDGenQuestTemplate("ElementsQuest", "DemonStar", "Elements", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let count = 1 + KDRandom() * Math.min(3, KDGetEffLevel()/3);
@@ -916,7 +913,7 @@ let KDQuests = {
 		}
 	}, 1, ["steelbondage", "crystalRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
 
-	"IllusionQuest": KDGenQuestTemplate("IllusionQuest", "DragonShadow", "Illusion", (goddess, flag) => {
+	"IllusionQuest": KDGenQuestTemplate("IllusionQuest", "DragonShadow", "Illusion", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (point) {
 			let count = 1 + KDRandom() * Math.min(3, KDGetEffLevel()/3);
@@ -970,8 +967,8 @@ let KDQuests = {
 
 
 
-function KDQuestList(count, mods, RoomType, MapMod, data) {
-	let ret = [];
+function KDQuestList(count: number, mods: Record<string, KDQuest>, RoomType: string, MapMod: string, data: any): KDQuest[] {
+	let ret: KDQuest[] = [];
 	for (let i = 0; i < count; i++) {
 		let genWeightTotal = 0;
 		let genWeights = [];
@@ -995,7 +992,7 @@ function KDQuestList(count, mods, RoomType, MapMod, data) {
 	return ret;
 }
 
-function KDQuestWorldgenStart(quests) {
+function KDQuestWorldgenStart(quests: string[]) {
 	if (quests) {
 		for (let q of quests) {
 			if (KDQuests[q] && KDQuests[q].worldgenstart) {
@@ -1005,7 +1002,7 @@ function KDQuestWorldgenStart(quests) {
 	}
 }
 
-function KDQuestTick(quests, delta) {
+function KDQuestTick(quests: string[], delta: number) {
 	if (quests) {
 		for (let q of quests) {
 			if (KDQuests[q] && KDQuests[q].tick) {
@@ -1014,13 +1011,15 @@ function KDQuestTick(quests, delta) {
 		}
 	}
 }
-function KDRemoveQuest(quest) {
+
+function KDRemoveQuest(quest: string) {
 	if (!KDGameData.Quests)
 		KDGameData.Quests = [];
 	else if (KDGameData.Quests.indexOf(quest) > -1)
 		KDGameData.Quests.splice(KDGameData.Quests.indexOf(quest), 1);
 }
-function KDAddQuest(quest) {
+
+function KDAddQuest(quest: string) {
 	if (!KDGameData.Quests) KDGameData.Quests = [];
 	if (!KDGameData.Quests.includes(quest)) {
 		if (KDQuests[quest]?.accept) {
@@ -1031,7 +1030,7 @@ function KDAddQuest(quest) {
 	}
 }
 
-function KDHasQuest(quest) {
+function KDHasQuest(quest: string): boolean {
 	if (!KDGameData.Quests) return false;
 	return KDGameData.Quests.includes(quest);
 }
@@ -1079,7 +1078,7 @@ function KinkyDungeonDrawQuest() {
 					DrawTextFitKD(TextGet("KDQuest_" + q), xStart + xOffset + 200, yStart + (II-KDQuestsIndex)*spacing, 850, "#ffffff", KDTextGray0, 28, "left");
 					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + KDQuests[q]?.npc + ".png",
 						xStart + xOffset + 100, yStart + (II-KDQuestsIndex)*spacing - 36, 72, 72);
-					if (DrawButtonKDEx("kdquestquit" + q, (b) => {
+					if (DrawButtonKDEx("kdquestquit" + q, (_b) => {
 						if (!KDQuests[q]?.nocancel)
 							KDRemoveQuest(q);
 						return true;
@@ -1106,11 +1105,11 @@ function KinkyDungeonDrawQuest() {
 	}
 
 	if (KDQuestsVisible > KDMaxQuests) {
-		DrawButtonKDEx("questUp", (b) => {
+		DrawButtonKDEx("questUp", (_b) => {
 			KDQuestsIndex -= 2;
 			return true;
 		}, true, xStart, yStart - spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
-		DrawButtonKDEx("questDown", (b) => {
+		DrawButtonKDEx("questDown", (_b) => {
 			KDQuestsIndex += 2;
 			return true;
 		}, true, xStart, yStart + KDMaxQuests*spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
@@ -1125,29 +1124,29 @@ function KinkyDungeonDrawQuest() {
 	KDDrawLoreRepTabs(xOffset);
 }
 
-function KDGetQuestData(quest) {
+function KDGetQuestData(quest: string): any {
 	if (KDGameData.QuestData) return KDGameData.QuestData[quest] || {};
 	return {};
 }
-function KDSetQuestData(quest, data) {
+
+function KDSetQuestData(quest: string, data: any) {
 	if (!KDGameData.QuestData) KDGameData.QuestData = {};
 	KDGameData.QuestData[quest] = data;
 }
 
 /**
- *
- * @param {string} Name
- * @param {string} Icon
- * @param {string} Goddess
- * @param {(Goddess, Flag) => void} spawnFunction
- * @param {number} Rep
- * @param {number} restraintsCountMult
- * @param {string[]} restraintsTags
- * @returns {KDQuest}
+ * @param Name
+ * @param Icon
+ * @param Goddess
+ * @param spawnFunction
+ * @param restraintsCountMult
+ * @param restraintsTags
+ * @param [Loot]
+ * @param [Rep]
  */
-function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountMult, restraintsTags, Loot, Rep = KDDefaultGoddessQuestRep) {
+function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFunction: (Goddess: string, Flag: string) => void, restraintsCountMult: number, restraintsTags: string[], Loot?: string, Rep: number = KDDefaultGoddessQuestRep): KDQuest {
 	if (!Loot) Loot = Name;
-	let quest = {
+	let quest: KDQuest = {
 		name: Name,
 		npc: Icon,
 		visible: true,
@@ -1215,10 +1214,10 @@ function KDGenQuestTemplate(Name, Icon, Goddess, spawnFunction, restraintsCountM
 				}
 			}
 		},
-		weight: (RoomType, MapMod, data, currentQuestList) => {
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return 10;
 		},
-		prerequisite: (RoomType, MapMod, data, currentQuestList) => {
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
 			return false;
 		},
 		tags: [Goddess],
