@@ -2,11 +2,10 @@
 
 /**
  * Determines if the enemy (which can be hostile) is aggressive, i.e. will pursue the player or ignore
- * @param {entity} [enemy]
- * @param {entity} [player]
- * @returns {boolean}
+ * @param [enemy]
+ * @param [player]
  */
-function KinkyDungeonAggressive(enemy, player) {
+function KinkyDungeonAggressive(enemy?: entity, player?: entity): boolean {
 	if (!player || player.player) {
 		// Player mode
 		if (enemy && enemy.hostile > 0) return true;
@@ -24,21 +23,20 @@ function KinkyDungeonAggressive(enemy, player) {
 
 /**
  * Returns whether or not the enemy is ALLIED, i.e it will follow the player
- * @param {entity} enemy
+ * @param enemy
  * @returns {boolean}
  */
-function KDAllied(enemy) {
+function KDAllied(enemy: entity): boolean {
 	return !(enemy.rage > 0) && !(enemy.hostile > 0) && KDFactionAllied("Player", enemy, undefined,
 		KDOpinionRepMod(enemy, KDPlayer()));
 }
 
 /**
  * Returns whether the enemy is HOSTILE to the player (if no optional argument) or the optional enemy
- * @param {entity} enemy
- * @param {entity} [enemy2]
- * @returns {boolean}
+ * @param enemy
+ * @param [enemy2]
  */
-function KDHostile(enemy, enemy2) {
+function KDHostile(enemy: entity, enemy2?: entity): boolean {
 	if (enemy == enemy2) return false;
 	return (enemy.rage > 0) ||
 		(
@@ -53,12 +51,11 @@ function KDHostile(enemy, enemy2) {
 }
 
 /**
- *
- * @param {entity} enemy
- * @param {player} enemy
- * @returns {number} The modifier to reputation based on the NPC's opinion
+ * @param enemy
+ * @param player
+ * @returns The modifier to reputation based on the NPC's opinion
  */
-function KDOpinionRepMod(enemy, player) {
+function KDOpinionRepMod(enemy: entity, player: entity): number {
 	if (!player?.player) return 0;
 	let op = KDGetModifiedOpinionID(enemy.id, true, true, true, 0);
 	if (op) {
@@ -68,20 +65,17 @@ function KDOpinionRepMod(enemy, player) {
 }
 
 /**
- *
- * @param {KDCollectionEntry} value
- * @returns {boolean}
+ * @param value
  */
-function KDIsServant(value) {
+function KDIsServant(value: KDCollectionEntry): boolean {
 	return value && value.status == "Servant";
 }
 
 /**
  * Gets the faction of the enemy, returning "Player" if its an ally, or "Enemy" if no faction
- * @param {entity} enemy
- * @returns {string}
+ * @param enemy
  */
-function KDGetFaction(enemy) {
+function KDGetFaction(enemy: entity): string {
 	if (!enemy) return undefined;
 	if (enemy.player) return "Player";
 	if (enemy.rage > 0) return "Rage";
@@ -95,10 +89,9 @@ function KDGetFaction(enemy) {
 
 /**
  * Gets the faction of the enemy, returning "Player" if its an ally, or "Enemy" if no faction
- * @param {entity} enemy
- * @returns {string}
+ * @param enemy
  */
-function KDGetFactionOriginal(enemy) {
+function KDGetFactionOriginal(enemy: entity): string {
 	if (enemy.player) return "Player";
 	if (enemy.faction) return enemy.faction;
 	if (KDGameData.Collection && KDIsServant(KDGameData.Collection[enemy.id + ""])) return "Player";
@@ -109,13 +102,12 @@ function KDGetFactionOriginal(enemy) {
 
 /**
  * Consults the faction table and decides if the two mentioned factions are hostile
- * @param {string} a - Faction 1
- * @param {string | entity} b - Faction 2
- * @param {number} mod - modifier to faction rep - constrained to positive
- * @param {number} modfree - modifier to faction rep - free
- * @returns {boolean}
+ * @param a - Faction 1
+ * @param b - Faction 2
+ * @param [mod] - modifier to faction rep - constrained to positive
+ * @param [modfree] - modifier to faction rep - free
  */
-function KDFactionHostile(a, b, mod = 0, modfree = 0) {
+function KDFactionHostile(a: string, b: string | entity, mod: number = 0, modfree: number = 0): boolean {
 	if (a == "Player" && b && !(typeof b === "string") && b.hostile > 0) return true;
 	if (!(typeof b === "string") && b.rage > 0) return true;
 	if (a == "Player" && !(typeof b === "string") && b.allied > 0) return false;
@@ -130,13 +122,12 @@ function KDFactionHostile(a, b, mod = 0, modfree = 0) {
 
 /**
  * Consults the faction table and decides if the two mentioned factions are allied
- * @param {string} a - Faction 1
- * @param {string | entity} b - Faction 2
- * @param {number} [threshold] - Faction 2
- * @param {number} mod
- * @returns {boolean}
+ * @param a - Faction 1
+ * @param b - Faction 2
+ * @param [threshold] - Faction 2
+ * @param [mod]
  */
-function KDFactionAllied(a, b, threshold = 0.7, mod = 0) {
+function KDFactionAllied(a: string, b: string | entity, threshold: number = 0.7, _mod: number = 0): boolean {
 	if (a == "Player" && b && !(typeof b === "string") && b.hostile > 0) return false;
 	if (!(typeof b === "string") && b.rage > 0) return false;
 	if (a == "Player" && !(typeof b === "string") && b.allied > 0) return true;
@@ -151,29 +142,25 @@ function KDFactionAllied(a, b, threshold = 0.7, mod = 0) {
 
 /**
  * Consults the faction table and decides if the two mentioned factions are favorable (i.e no friendly fire)
- * @param {string} a - Faction 1
- * @param {string | entity} b - Faction 2
- * @returns {boolean}
+ * @param a - Faction 1
+ * @param b - Faction 2
  */
-function KDFactionFavorable(a, b) {
+function KDFactionFavorable(a: string, b: string | entity): boolean {
 	return KDFactionAllied(a, b, 0.099);
 }
 
 
 /**
- *
- * @param {string[]} list
- * @param {number} Floor
- * @param {string} Checkpoint
- * @param {string[]} tags
- * @param {Record<string, {bonus: number, mult: number}>} bonustags
- * @param {number} [X]
- * @param {number} [Y]
- * @returns {Record<string, number>}
+ * @param list
+ * @param Floor
+ * @param Checkpoint
+ * @param tags
+ * @param bonustags
+ * @param [X]
+ * @param [Y]
  */
-function KDGetFactionProps(list, Floor, Checkpoint, tags, bonustags, X = 0, Y = 0) {
-	/** @type {Record<string, number>} */
-	let mp = {};
+function KDGetFactionProps(list: string[], Floor: number, Checkpoint: string, tags: string[], bonustags: Record<string, {bonus: number, mult: number}>, X: number = 0, Y: number = 0): Record<string, number> {
+	let mp: Record<string, number> = {};
 	for (let faction of list) {
 		if (KDFactionProperties[faction]) {
 			mp[faction] = KDFactionProperties[faction].weight(Floor, Checkpoint, tags, bonustags, X, Y);
@@ -184,11 +171,10 @@ function KDGetFactionProps(list, Floor, Checkpoint, tags, bonustags, X = 0, Y = 
 
 /**
  * Gets the honor from faction a toward faction b
- * @param {string} a
- * @param {string} b
- * @returns {number}
+ * @param a
+ * @param b
  */
-function KDGetHonor(a, b) {
+function KDGetHonor(a: string, b: string): number {
 	if (KDFactionProperties[a]) {
 		if (KDFactionProperties[a].honor_specific[b]) {
 			return KDFactionProperties[a].honor_specific[b];

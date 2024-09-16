@@ -107,7 +107,7 @@
         "Game/src/dialogue/KinkyDungeonDialogueTriggers.ts",
         "Game/src/dialogue/KinkyDungeonDialogueList.ts",
         "Game/src/dialogue/KDSkillCheck.ts",
-        "Game/src/faction/KinkyDungeonFactions.js",
+        "Game/src/faction/KinkyDungeonFactions.ts",
         "Game/src/faction/KinkyDungeonFactionsList.ts",
         "Game/src/player/KinkyDungeonNeeds.js",
         "Game/src/prison/KinkyDungeonJailList.ts",
