@@ -28,7 +28,7 @@
         "Game/src/player/KDClasses.js",
         "Game/src/base/KDParticles.ts",
         "Game/src/restraint/KDLocks.ts",
-        "Game/src/item/KDModifier.js",
+        "Game/src/item/KDModifier.ts",
         "Game/src/item/KDHex.ts",
         "Game/src/item/KDEnchant.ts",
         "Game/src/enemy/KDAIList.js",
