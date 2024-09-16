@@ -30,7 +30,7 @@
         "Game/src/restraint/KDLocks.ts",
         "Game/src/item/KDModifier.js",
         "Game/src/item/KDHex.js",
-        "Game/src/item/KDEnchant.js",
+        "Game/src/item/KDEnchant.ts",
         "Game/src/enemy/KDAIList.js",
         "Game/src/enemy/KDLoadoutList.js",
         "Game/src/restraint/KDApplyVariants.ts",
