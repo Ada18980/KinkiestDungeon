@@ -671,6 +671,8 @@ function KinkyDungeonMakeNoiseSignal(enemy, mult = 1, hideShockwave) {
 		bonus: 0,
 		bonusafter: 2,
 		radius: 5,
+		x: enemy.x,
+		y: enemy.y,
 		enemiesHeard: [],
 		particle: !hideShockwave,
 	};

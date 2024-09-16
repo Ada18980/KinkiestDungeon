@@ -23,6 +23,18 @@ let NPCBindingRestraintSize = {
 	Spreaderbars: 2,
 	Petsuits: 2,
 }
+let NPCBindingMouthSlots = [
+	"Muzzle",
+	"OuterGag",
+	"InterGag",
+	"InnerGag",
+]
+let NPCBindingNeckSlots = [
+	"Collar",
+	"ModulePunish",
+	"ModuleUtility",
+	"CollarTag",
+]
 
 interface KDBondageStats {
 	level: number,

@@ -893,8 +893,20 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 					let msg = TextGet("KinkyDungeonAddRestraints").replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name));
 					msg = msg.replace("NewRestraintName", TextGet("Restraint"+collar.name));
 					KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
-					KinkyDungeonJailGuard().NextJailLeashTourWaypointX = KinkyDungeonJailGuard().x;
-					KinkyDungeonJailGuard().NextJailLeashTourWaypointY = KinkyDungeonJailGuard().y;
+					if (type == "transfer") {
+						let guard = KinkyDungeonJailGuard();
+						let nearestJail = KinkyDungeonRandomJailPoint(["jail"], [KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)]);
+						if (nearestJail) {
+							guard.NextJailLeashTourWaypointX = nearestJail.x;
+							guard.NextJailLeashTourWaypointY = nearestJail.y;
+							guard.gx = guard.NextJailLeashTourWaypointX;
+							guard.gy = guard.NextJailLeashTourWaypointY;
+						}
+					} else {
+
+						KinkyDungeonJailGuard().NextJailLeashTourWaypointX = KinkyDungeonJailGuard().x;
+						KinkyDungeonJailGuard().NextJailLeashTourWaypointY = KinkyDungeonJailGuard().y;
+					}
 					KinkyDungeonJailGuard().gx = KinkyDungeonJailGuard().x;
 					KinkyDungeonJailGuard().gy = KinkyDungeonJailGuard().y;
 				} else {
@@ -905,6 +917,20 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 					KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 					KinkyDungeonJailGuard().NextJailLeashTourWaypointX = KinkyDungeonJailGuard().x;
 					KinkyDungeonJailGuard().NextJailLeashTourWaypointY = KinkyDungeonJailGuard().y;
+					if (type == "transfer") {
+						let guard = KinkyDungeonJailGuard();
+						let nearestJail = KinkyDungeonRandomJailPoint(["jail"], [KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)]);
+						if (nearestJail) {
+							guard.NextJailLeashTourWaypointX = nearestJail.x;
+							guard.NextJailLeashTourWaypointY = nearestJail.y;
+							guard.gx = guard.NextJailLeashTourWaypointX;
+							guard.gy = guard.NextJailLeashTourWaypointY;
+						}
+					} else {
+
+						KinkyDungeonJailGuard().NextJailLeashTourWaypointX = KinkyDungeonJailGuard().x;
+						KinkyDungeonJailGuard().NextJailLeashTourWaypointY = KinkyDungeonJailGuard().y;
+					}
 					KinkyDungeonJailGuard().gx = KinkyDungeonJailGuard().x;
 					KinkyDungeonJailGuard().gy = KinkyDungeonJailGuard().y;
 				}

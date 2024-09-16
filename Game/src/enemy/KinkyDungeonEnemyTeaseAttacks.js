@@ -286,21 +286,29 @@ let KDTeaseAttacks = {
 		priority: 4,
 		blockable: true, dodgeable: true,
 		filter: (enemy, player, AIData) => {
-			return KDBasicTeaseAttack(enemy, player)
+			if (KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
 				&& KDHasArms(enemy)
 				&& (
 					KinkyDungeonFlags.get("verbalspell")
-					&& KDCanAddRestraint(KDRestraint({name: "TrapGag"}), false, "", true, undefined, false, true)
-				);
+				)) {
+				let gagType = KDGetNecklaceGagType(KDPlayer()) || "TrapGag";
+
+				if (KDCanAddRestraint(KDRestraint({name: gagType}), false, "", true, undefined, false, true)) {
+					return true;
+				}
+			}
+			return false;
 		},
 		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
-			let selected = "TrapGag";
+			let selected = KDGetNecklaceGagType(KDPlayer()) || "TrapGag";
+
+
 			KinkyDungeonSetFlag("stuff", 4);
 			if (dmg.happened && KinkyDungeonAddRestraintIfWeaker(selected, 0, false, "", true)) {
 

@@ -1663,6 +1663,15 @@ let KDPlayerEffects = {
 
 		return {sfx: "Miss", effect: effect};
 	},
+	"Hogtie": (target, damage, playerEffect, spell, faction, bullet, entity) => {
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraintsHogtie"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+		if (restraintAdd) {
+			KDPlayerEffectRestrain(spell, 1, ["ropeRestraintsHogtie"], faction);
+			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonRopeEngulf"), "#ff5277", 2);
+			return {sfx: "Struggle", effect: true};
+		}
+		return {sfx: "Struggle", effect: false};
+	},
 	"RopeEngulfWeak": (target, damage, playerEffect, spell, faction, bullet, entity) => {
 		let effect = false;
 		if (KDTestSpellHits(spell, 0.5, 0.5)) {
