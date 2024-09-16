@@ -95,28 +95,14 @@ let KDFactionGoddess = {
 	},
 };
 
-/**
- * @type {Record<string, number>}
- */
-let KinkyDungeonGoddessRep = {
-};
+let KinkyDungeonGoddessRep: Record<string, number> = {};
 
-/**
- * @type {Record<string, boolean>}
- */
-let KinkyDungeonRescued = {};
-/**
- * @type {Record<string, boolean>}
- */
-let KinkyDungeonAid = {};
+let KinkyDungeonRescued: Record<string, boolean> = {};
+let KinkyDungeonAid: Record<string, boolean> = {};
 
 let KDRepSelectionMode = "";
 
-/**
- *
- * @type {Object.<string, string[]>}
- */
-let KDBlessedRewards = {
+let KDBlessedRewards: Record<string, string[]> = {
 	"Latex": ["TheEncaser"],
 	"Rope": ["MoiraiScissors"],
 	"Metal": ["BondageBuster"],
@@ -129,9 +115,8 @@ let KDBlessedRewards = {
 
 /**
  * Returns whether or not the player meets a requirement for a pearl reward chest
- * @returns {boolean}
  */
-function KDPearlRequirement() {
+function KDPearlRequirement(): boolean {
 	let has = false;
 	for (let rep of Object.entries(KinkyDungeonGoddessRep)) {
 		let rewards = KDBlessedRewards[rep[0]];
@@ -155,9 +140,8 @@ function KDPearlRequirement() {
 
 /**
  * Returns whether or not the player meets a requirement for ANY pearl reward
- * @returns {string[]}
  */
-function KDGetBlessings() {
+function KDGetBlessings(): string[] {
 	let blessings = [];
 	for (let rep of Object.entries(KinkyDungeonGoddessRep)) {
 		let rewards = KDBlessedRewards[rep[0]];
@@ -192,11 +176,9 @@ function KinkyDungeonInitReputation() {
 }
 
 /**
- *
- * @param {number} Amount
- * @returns {string}
+ * @param Amount
  */
-function KinkyDungeonRepName(Amount) {
+function KinkyDungeonRepName(Amount: number): string {
 	let name = "";
 
 	if (Amount >= 10) name = "Thankful";
@@ -211,11 +193,9 @@ function KinkyDungeonRepName(Amount) {
 
 
 /**
- *
- * @param {number} Amount
- * @returns {string}
+ * @param Amount
  */
-function KinkyDungeonRepNameFaction(Amount) {
+function KinkyDungeonRepNameFaction(Amount: number): string {
 	let name = "";
 
 	if (Amount > 0.2) name = "Thankful";
@@ -229,12 +209,10 @@ function KinkyDungeonRepNameFaction(Amount) {
 }
 
 /**
- *
- * @param {string} Rep
- * @param {number} Amount
- * @returns {boolean}
+ * @param Rep
+ * @param Amount
  */
-function KinkyDungeonChangeFactionRep(Rep, Amount) {
+function KinkyDungeonChangeFactionRep(Rep: string, Amount: number): boolean {
 	let last = KDFactionRelation("Player", Rep);
 	KDChangeFactionRelation("Player", Rep, Amount);
 	let curr = KDFactionRelation("Player", Rep);
@@ -249,12 +227,10 @@ function KinkyDungeonChangeFactionRep(Rep, Amount) {
 }
 
 /**
- *
- * @param {string} Rep
- * @param {number} Amount
- * @returns {boolean}
+ * @param Rep
+ * @param Amount
  */
-function KinkyDungeonChangeRep(Rep, Amount) {
+function KinkyDungeonChangeRep(Rep: string, Amount: number): boolean {
 	if (KinkyDungeonGoddessRep[Rep] != undefined) {
 		let last = KinkyDungeonGoddessRep[Rep];
 		let minimum = (Rep == "Ghost" && KinkyDungeonStatsChoice.get("Submissive")) || (Rep == "Prisoner" && KinkyDungeonStatsChoice.get("Wanted")) ? 20: -50;
@@ -276,17 +252,19 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 		}
 
 		if (KDFactionGoddess[Rep]) {
-			for (let f of Object.entries(KDFactionGoddess[Rep])) {
+			for (const [k, v] of Object.entries(KDFactionGoddess[Rep]) as [string, number][]) {
 				let mult = (Amount > 0 ? 1 : 1);
 				if (Amount > 0) {
-					if (KDFactionRelation("Player", f[0]) <= -0.25) mult *= 0.5;
-					else if (KDFactionRelation("Player", f[0]) <= -0.1) mult *= 0.75;
-					else if (KDFactionRelation("Player", f[0]) >= 0.55) mult *= 0;
-					else if (KDFactionRelation("Player", f[0]) >= 0.35) mult *= 0.25;
-					else if (KDFactionRelation("Player", f[0]) >= 0.25) mult *= 0.5;
-					else if (KDFactionRelation("Player", f[0]) >= 0.1) mult *= 0.75;
+					/*  FIXME: Check I refactored this correctly.  */
+					const relation = KDFactionRelation("Player", k);
+					if (relation <= -0.25)      mult *= 0.5;
+					else if (relation <= -0.1)  mult *= 0.75;
+					else if (relation >= 0.55)  mult *= 0;
+					else if (relation >= 0.35)  mult *= 0.25;
+					else if (relation >= 0.25)  mult *= 0.5;
+					else if (relation >= 0.1)   mult *= 0.75;
 				}
-				KDChangeFactionRelation("Player", f[0], f[1] * mult * Amount);
+				KDChangeFactionRelation("Player", k, v * mult * Amount);
 			}
 		}
 
@@ -296,7 +274,7 @@ function KinkyDungeonChangeRep(Rep, Amount) {
 	return false;
 }
 
-function KinkyDungeonHandleReputation() {
+function KinkyDungeonHandleReputation(): boolean {
 	return true;
 }
 
@@ -381,7 +359,7 @@ function KinkyDungeonDrawReputation() {
 						return true;
 					}, true, 900, 800, 250, 50, TextGet("KinkyDungeonAskChampion"), "white");*/
 				} else {
-					DrawButtonKDEx("backtorep", (bdata) => {
+					DrawButtonKDEx("backtorep", (_bdata) => {
 						KDRepSelectionMode = "";
 						return true;
 					}, true, 600, 800, 550, 50, TextGet("KinkyDungeonBack"), "white");
@@ -390,7 +368,7 @@ function KinkyDungeonDrawReputation() {
 				if (KinkyDungeonShrineBaseCosts[rep]) {
 					//DrawButtonVis(canvasOffsetX_ui + xOffset + 275 + XX + 400, yPad + canvasOffsetY_ui + spacing * i - 20, 100, 40, TextGet("KinkyDungeonAid"), value > 10 ? "white" : "pink");
 					if (KDRepSelectionMode == "Rescue") {
-						DrawButtonKDEx("rep_rescue" + rep, (bdata) => {
+						DrawButtonKDEx("rep_rescue" + rep, (_bdata) => {
 							if (KinkyDungeonCanRescue(rep, value)) {
 								if (KDSendInput("rescue", {rep: rep, value: value}) != "FailRescue") {
 									KinkyDungeonDrawState = "Game";
@@ -406,7 +384,7 @@ function KinkyDungeonDrawReputation() {
 					}
 					if (KDRepSelectionMode == "Champion") {
 						let isChampion = KDGameData.Champion == rep;
-						DrawButtonKDEx("rep_champ" + rep, (bdata) => {
+						DrawButtonKDEx("rep_champ" + rep, (_bdata) => {
 							KDSendInput("champion", {rep: rep, value: value});
 							return true;
 						}, true, canvasOffsetX_ui + xOffset + 275 + XX + 520, yPad + canvasOffsetY_ui + spacing * i - 20, 150, 40, TextGet(isChampion ? "KinkyDungeonChampionCurrent" : "KinkyDungeonChampionSwitch"),
@@ -579,20 +557,17 @@ function KinkyDungeonDrawFactionRep() {
 
 /**
  * Current costs multipliers for shrines
- * @type {Record<string, number>}
  */
-let KinkyDungeonPenanceCosts = {};
+let KinkyDungeonPenanceCosts: Record<string, number> = {};
 let KinkyDungeonPenanceRepBonus = 5;
 let KinkyDungeonPenanceRepBonusFail = 1;
 let KinkyDungeonPenanceCostGrowth = 50;
 let KinkyDungeonPenanceCostDefault = 200;
 
 /**
- *
- * @param {string} rep
- * @returns {number}
+ * @param rep
  */
-function KinkyDungeonPenanceCost(rep) {
+function KinkyDungeonPenanceCost(rep: string): number {
 	if (KinkyDungeonGoddessRep[rep]) {
 		if (KinkyDungeonPenanceCosts[rep]) {
 			return KinkyDungeonPenanceCosts[rep];
@@ -602,47 +577,40 @@ function KinkyDungeonPenanceCost(rep) {
 }
 
 /**
- *
- * @param {string} rep
- * @param {number} value
- * @returns {boolean}
+ * @param rep
+ * @param value
  */
-function KinkyDungeonCanPenance(rep, value) {
+function KinkyDungeonCanPenance(_rep: string, value: number): boolean {
 	return value < 40 && !KDGameData.KinkyDungeonPenance && KDMapData.Bullets.length < 1;
 }
 
 /**
- *
- * @param {string} rep
- * @returns {number}
+ * @param rep
+ * @param value
  */
-function KinkyDungeonAidManaCost(rep, value) {
+function KinkyDungeonAidManaCost(_rep: string, value: number): number {
 	let percent = (value + 50)/100;
 	return Math.ceil((1 - KinkyDungeonStatMana/KinkyDungeonStatManaMax) * 15 * Math.max(0.3, Math.min(1, 1.3 - percent)));
 }
 
 /**
- *
- * @param {string} rep
- * @param {number} value
- * @returns {number}
+ * @param rep
+ * @param value
  */
-function KinkyDungeonAidManaAmount(rep, value) {
+function KinkyDungeonAidManaAmount(_rep: string, _value: number): number {
 	return KinkyDungeonStatManaMax - KinkyDungeonStatMana;//1 + Math.floor(19 * (value + 50) / 100);
 }
 
 /**
- *
- * @param {string} rep
- * @param {number} value
- * @returns {boolean}
+ * @param rep
+ * @param value
  */
-function KinkyDungeonCanAidMana(rep, value) {
+function KinkyDungeonCanAidMana(_rep: string, value: number): boolean {
 	return value > -30 && KinkyDungeonStatMana < KinkyDungeonStatManaMax;
 }
 
-function KinkyDungeonRescueTiles() {
-	let tiles = [];
+function KinkyDungeonRescueTiles(): { x: number, y: number }[] {
+	let tiles: { x: number, y: number }[] = [];
 	for (let X = KinkyDungeonPlayerEntity.x - 1; X <= KinkyDungeonPlayerEntity.x + 1; X++)
 		for (let Y = KinkyDungeonPlayerEntity.y - 1; Y <= KinkyDungeonPlayerEntity.y + 1; Y++) {
 			if (X != 0 || Y != 0) {
@@ -655,20 +623,17 @@ function KinkyDungeonRescueTiles() {
 }
 
 /**
- *
- * @param {string} rep
- * @param {number} value
- * @returns {boolean}
+ * @param rep
+ * @param value
  */
-function KinkyDungeonCanRescue(rep, value) {
+function KinkyDungeonCanRescue(rep: string, value: number): boolean {
 	return KinkyDungeonAllRestraint().length > 0 && value > KDRAGE && !KinkyDungeonRescued[rep] && KinkyDungeonRescueTiles().length > 0;
 }
 
 /**
- *
- * @param {number} delta
+ * @param delta
  */
-function KinkyDungeonUpdateAngel(delta) {
+function KinkyDungeonUpdateAngel(_delta: number): void {
 	// Remove it
 	if (KinkyDungeonFlags.get("AngelHelp") > 0 && KinkyDungeonFlags.get("AngelHelp") < 5) {
 		for (let t of Object.entries(KDMapData.Tiles)) {
@@ -689,11 +654,10 @@ function KinkyDungeonUpdateAngel(delta) {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
+ * @param x
+ * @param y
  */
-function KinkyDungeonCreateAngel(x, y) {
+function KinkyDungeonCreateAngel(x: number, y: number) {
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true);
 	if (point) {
 		let Enemy = KinkyDungeonGetEnemyByName("Angel");
