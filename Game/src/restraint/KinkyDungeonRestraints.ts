@@ -5142,7 +5142,7 @@ type kdCuffPart = {
 }
 
 let KDCuffParts: Record<string, kdCuffPart> = {
-	"LivingCollar": {base: true, enemyTagSuffix: "Collar", enemyTagOverride: {"livingCollar":10}},
+	"LivingCollar": {base: true, enemyTagSuffix: "LivingCollar", enemyTagOverride: {"livingCollar":10}},
 	"AnkleCuffs": {base: true,},// Link: "AnkleCuffs2"},
 	//"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	//"AnkleCuffs3": {UnLink: "AnkleCuffs2"},
