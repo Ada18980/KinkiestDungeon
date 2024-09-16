@@ -2,17 +2,14 @@
 
 let KDMarketRateDecay = 0.95;
 
-/**
- * @type {Record<string, KDInventoryActionDef>}
- */
-let KDInventoryAction = {
+let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	"Equip": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[0]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[0];},
-		text: (player, item) => {
+		text: (_player, item) => {
 			return TextGet("KDInventoryAction" + (KinkyDungeonPlayerWeapon != item.name ? "Equip" : "Unequip"));
 		},
-		icon: (player, item) => {
+		icon: (_player, item) => {
 			if (item.type == LooseRestraint) {
 				let newItem = null;
 				let currentItem = null;
@@ -36,7 +33,7 @@ let KDInventoryAction = {
 			}
 			return KinkyDungeonPlayerWeapon != item.name ? "InventoryAction/Equip" : "InventoryAction/Unequip";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if ((item?.type == Restraint)) return false;
 			if (item.type == LooseRestraint) {
 				let newItem = null;
@@ -46,8 +43,8 @@ let KDInventoryAction = {
 				newItem = KDRestraint(item);
 				if (newItem) {
 
-					if (newItem.requireSingleTagToEquip && !newItem.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
-					if (newItem.requireAllTagsToEquip && newItem.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+					if (newItem.requireSingleTagToEquip && !newItem.requireSingleTagToEquip.some((tag: any) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+					if (newItem.requireAllTagsToEquip && newItem.requireAllTagsToEquip.some((tag: any) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					if (KDDebugLink) {
@@ -66,7 +63,7 @@ let KDInventoryAction = {
 			}
 			return item.type == Outfit || item.type == Weapon;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			if (item.type == LooseRestraint) {
 				let equipped = false;
 				let newItem = null;
@@ -120,58 +117,58 @@ let KDInventoryAction = {
 				}
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Drop": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[2]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[2];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Drop";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if ((item?.type == Restraint)) return false;
 			return true;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDSendInput("drop", {item: item.name});
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Hotbar": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Hotbar";
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;
 		},
-		click: (player, item) => {
+		click: (_player, _item) => {
 			KDConfigHotbar = !KDConfigHotbar;
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Remove": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[6]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[6];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Remove";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !KDGetCurse(item) && !item.lock;
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			return !sg.blocked;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
@@ -179,25 +176,25 @@ let KDInventoryAction = {
 				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Remove"});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Unlock": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
-		icon: (player, item) => {
+		icon: (_player, item) => {
 			return "Locks/" + item.lock;
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !KDGetCurse(item) && !item.lock == false;
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			return !sg.blocked;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
@@ -205,25 +202,25 @@ let KDInventoryAction = {
 				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Unlock"});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Lock": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[7]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[7];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Lock";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !KDGetCurse(item) && !item.lock && KinkyDungeonIsLockable(KDRestraint(item));
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			return !sg.blocked;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
@@ -231,25 +228,25 @@ let KDInventoryAction = {
 				KDSendInput("lock", {group: sg.group, index: itemIndex, type: "White"});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Pick": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[5]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[5];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Pick";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !KDGetCurse(item) && !item.lock == false;
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			return KinkyDungeonLockpicks > 0 && !sg.blocked;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
@@ -257,7 +254,7 @@ let KDInventoryAction = {
 				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Unlock"});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
@@ -265,54 +262,54 @@ let KDInventoryAction = {
 	"CurseStruggle": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/CurseStruggle";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !(KDGetCurse(item) || item.lock);
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KinkyDungeonCurseStruggle(item, (KDGetCurse(item)));
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"CurseInfo": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[2]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[2];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/CurseInfo";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !(KDGetCurse(item) || item.lock);
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KinkyDungeonCurseInfo(item, (KDGetCurse(item)));
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"CurseUnlock": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/CurseUnlock";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !KDGetCurse(item) == true;
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			return KinkyDungeonCurseAvailable(item, (KDGetCurse(item)));
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			if (itemIndex >= 0 && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
 				let r = KDRestraint(item);
@@ -320,23 +317,23 @@ let KDInventoryAction = {
 				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Struggle": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[2]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[2];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Struggle";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return !KDGetCurse(item) && !item.lock;
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			if (itemIndex >= 0) {
 				let r = KDRestraint(item);
@@ -344,27 +341,27 @@ let KDInventoryAction = {
 				KDSendInput(KDGetCurse(item) ? "struggleCurse" : "struggle", {group: sg.group, index: itemIndex, type: "Struggle", curse: KDGetCurse(item)});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Cut": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[3]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[3];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerWeapon :"InventoryAction/Cut";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			return !KDGetCurse(item) && !sg.noCut;
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			return !sg.blocked;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
@@ -372,7 +369,7 @@ let KDInventoryAction = {
 				KDSendInput("struggle", {group: sg.group, index: itemIndex, type: "Cut"});
 			}
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
@@ -380,16 +377,16 @@ let KDInventoryAction = {
 	"Favorite": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[1]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[1];},
-		text: (player, item) => {
+		text: (_player, item) => {
 			return TextGet("KDInventoryAction" + (!(KDGameData.ItemPriority[item.name|| item.name] > 9) ? "Favorite" : "Unfavorite"));
 		},
-		icon: (player, item) => {
+		icon: (_player, item) => {
 			return !(KDGameData.ItemPriority[item.name|| item.name] > 9) ? "InventoryAction/Favorite" : "InventoryAction/Unfavorite";
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
 			if (!(KDGameData.ItemPriority[item.name|| item.name] > 9)) KDGameData.ItemPriority[item.name|| item.name] = 10;
 			else KDGameData.ItemPriority[item.name|| item.name] = 0;
@@ -403,39 +400,39 @@ let KDInventoryAction = {
 			}
 
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"Use": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Use";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			return item.quantity > 0;
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDSendInput("consumable", {item: item.name, quantity: 1});
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 
 	"QuickSlot1": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return KDGameData.PreviousWeapon[0] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[0]]?.template || KDGameData.PreviousWeapon[0]) : "InventoryAction/Quickslot";
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
 		},
-		label: (player, item) => {
+		label: (_player, _item) => {
 			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[0]) {
 				return TextGet("KDLocked");
 			}
 			return "";
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDGameData.PreviousWeapon[0] = item.name;
 			if (!KDGameData.PreviousWeaponLock) {
 				KDGameData.PreviousWeaponLock = [];
@@ -445,24 +442,24 @@ let KDInventoryAction = {
 			}
 			KDGameData.PreviousWeaponLock[0] = !KDGameData.PreviousWeaponLock[0];
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"QuickSlot2": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return KDGameData.PreviousWeapon[1] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[1]]?.template || KDGameData.PreviousWeapon[1]) : "InventoryAction/Quickslot";
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
 		},
-		label: (player, item) => {
+		label: (_player, _item) => {
 			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[1]) {
 				return TextGet("KDLocked");
 			}
 			return "";
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDGameData.PreviousWeapon[1] = item.name;
 			if (!KDGameData.PreviousWeaponLock) {
 				KDGameData.PreviousWeaponLock = [];
@@ -472,24 +469,24 @@ let KDInventoryAction = {
 			}
 			KDGameData.PreviousWeaponLock[1] = !KDGameData.PreviousWeaponLock[1];
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"QuickSlot3": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return KDGameData.PreviousWeapon[2] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[2]]?.template || KDGameData.PreviousWeapon[2]) : "InventoryAction/Quickslot";
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
 		},
-		label: (player, item) => {
+		label: (_player, _item) => {
 			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[2]) {
 				return TextGet("KDLocked");
 			}
 			return "";
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDGameData.PreviousWeapon[2] = item.name;
 			if (!KDGameData.PreviousWeaponLock) {
 				KDGameData.PreviousWeaponLock = [];
@@ -499,24 +496,24 @@ let KDInventoryAction = {
 			}
 			KDGameData.PreviousWeaponLock[2] = !KDGameData.PreviousWeaponLock[2];
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 	"QuickSlot4": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return KDGameData.PreviousWeapon[3] ? "Items/" + (KinkyDungeonWeaponVariants[KDGameData.PreviousWeapon[3]]?.template || KDGameData.PreviousWeapon[3]) : "InventoryAction/Quickslot";
 		},
-		valid: (player, item) => {
+		valid: (_player, _item) => {
 			return true;//KDGameData.PreviousWeapon[0] != item.name;
 		},
-		label: (player, item) => {
+		label: (_player, _item) => {
 			if (KDGameData.PreviousWeaponLock && KDGameData.PreviousWeaponLock[3]) {
 				return TextGet("KDLocked");
 			}
 			return "";
 		},
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDGameData.PreviousWeapon[3] = item.name;
 			if (!KDGameData.PreviousWeaponLock) {
 				KDGameData.PreviousWeaponLock = [];
@@ -526,22 +523,22 @@ let KDInventoryAction = {
 			}
 			KDGameData.PreviousWeaponLock[3] = !KDGameData.PreviousWeaponLock[3];
 		},
-		cancel: (player, delta) => {
+		cancel: (_player, _delta) => {
 			return false; // NA for default actions
 		},
 	},
 
 
 	"RemoveCurseOrHex": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Macaron";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (!(item?.type == Restraint)) return false;
 			return KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel);
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			if (KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel)) {
 				if (KDHasRemovableCurse(item, KDGameData.CurseLevel)) {
 					if (item.curse && KDCurses[item.curse]) {
@@ -601,7 +598,7 @@ let KDInventoryAction = {
 			}
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction
 					|| !(KinkyDungeonAllRestraintDynamic().some((r) => {return KDHasRemovableCurse(r.item, KDGameData.CurseLevel) || KDHasRemovableHex(r.item, KDGameData.CurseLevel);}))) {
@@ -615,15 +612,15 @@ let KDInventoryAction = {
 	"RemoveMagicLock": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeyEnter[0]);},
 		hotkeyPress: () => {return KinkyDungeonKeyEnter[0];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/CommandWord";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (!(item?.type == Restraint)) return false;
 			return KDMagicLocks.includes(item.lock);
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			if (KDMagicLocks.includes(item.lock)) {
 				KinkyDungeonLock(item, "");
 
@@ -637,7 +634,7 @@ let KDInventoryAction = {
 			}
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (!KinkyDungeonHasMana(KDGameData.InventoryActionManaCost) || !(KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0)) {
 					return true;
@@ -647,15 +644,15 @@ let KDInventoryAction = {
 		},
 	},
 	"Offhand": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Offhand";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (!(item?.type == Weapon && KDCanOffhand(item))) return false;
 			return KinkyDungeonCanUseWeapon(false, undefined, KDWeapon(item));
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDGameData.Offhand = item.name;
 			KDGameData.OffhandOld = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
@@ -664,7 +661,7 @@ let KDInventoryAction = {
 			KinkyDungeonDressPlayer();
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -674,25 +671,25 @@ let KDInventoryAction = {
 		},
 	},
 	"Attach": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Attach";
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (!(item?.type == Weapon && !KDWeapon(item)?.noHands && !KDWeapon(item)?.unarmed)) return false;
 			return item.name != KDGameData.AttachedWep;
 		},
-		label:  (player, item) => {
+		label:  (_player, _item) => {
 			if (KDGameData.AttachedWep && KinkyDungeonInventoryGet(KDGameData.AttachedWep))
 				return KDGetItemNameString(KDGameData.AttachedWep);
 			return "";
 		},
-		itemlabel:  (player, item) => {
+		itemlabel:  (_player, item) => {
 			if (KDGameData.AttachedWep == item.name)
 				return TextGet("KDAttached");
 			return "";
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDGameData.AttachedWep = item.name;
 			KinkyDungeonAdvanceTime(1, true, true);
 			KDStunTurns(4, true);
@@ -702,7 +699,7 @@ let KDInventoryAction = {
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tape.ogg");
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -713,10 +710,10 @@ let KDInventoryAction = {
 	},
 	"Sell": {
 		alsoShow: ["SellBulk", "SellExcess"],
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Sell";
 		},
-		label:  (player, item) => {
+		label:  (_player, item) => {
 			if (KDWeapon(item)?.unarmed) return "";
 			let mult = 1;
 			let quantity = 1;
@@ -729,7 +726,7 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
-		itemlabel:  (player, item) => {
+		itemlabel:  (_player, item) => {
 			if (KDWeapon(item)?.unarmed) return "";
 			let mult = 1;
 			let quantity = 1;
@@ -742,8 +739,8 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
-		itemlabelcolor: (player, item) => {return "#ffff44";},
-		text:  (player, item) => {
+		itemlabelcolor: (_player, _item) => {return "#ffff44";},
+		text:  (_player, item) => {
 			let mult = 1;
 			let quantity = 1;
 			let quantitystart = 0;
@@ -755,13 +752,13 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			if (KDWeapon(item)?.unarmed) return false;
 			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			let mult = 1;
 			let quantity = 1;
 			let quantitystart = 0;
@@ -788,7 +785,7 @@ let KDInventoryAction = {
 			, "#ffffff", 2);
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -798,10 +795,10 @@ let KDInventoryAction = {
 		},
 	},
 	"SellBulk": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/SellBulk";
 		},
-		label:  (player, item) => {
+		label:  (_player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1);
 			let quantitystart = 0;
@@ -814,7 +811,7 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
-		text:  (player, item) => {
+		text:  (_player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1);
 			let quantitystart = 0;
@@ -827,15 +824,15 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSellBulk").replace("VLU", value + "");
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1);
 			let quantitystart = 0;
@@ -862,7 +859,7 @@ let KDInventoryAction = {
 			, "#ffffff", 2);
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -872,10 +869,10 @@ let KDInventoryAction = {
 		},
 	},
 	"SellExcess": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/SellExcess";
 		},
-		label:  (player, item) => {
+		label:  (_player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1) - 1;
 			let quantitystart = 0;
@@ -888,7 +885,7 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
-		text:  (player, item) => {
+		text:  (_player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1) - 1;
 			let quantitystart = 0;
@@ -901,16 +898,16 @@ let KDInventoryAction = {
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSellExcess").replace("VLU", value + "");
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			if (!item.quantity || item.quantity == 1) return false;
 			return item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			let mult = 1;
 			let quantity = ((item.quantity) ? item.quantity : 1) - 1;
 			let quantitystart = 0;
@@ -937,7 +934,7 @@ let KDInventoryAction = {
 			, "#ffffff", 2);
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -950,31 +947,31 @@ let KDInventoryAction = {
 
 	"Recycle": {
 		alsoShow: ["RecycleBulk", "RecycleExcess"],
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Recycle";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return item?.type == LooseRestraint;
 		},
-		label:  (player, item) => {
+		label:  (_player, item) => {
 			return KDRecycleString(item, 1);
 		},
-		itemlabel:  (player, item) => {
+		itemlabel:  (_player, item) => {
 			return KDRecycleString(item, 1);
 		},
-		itemlabelcolor: (player, item) => {return "#ffffff";},
-		text:  (player, item) => {
+		itemlabelcolor: (_player, _item) => {return "#ffffff";},
+		text:  (_player, _item) => {
 			let value = Math.round(100);
 			return TextGet("KDInventoryActionRecycle").replace("VLU", value + "");
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			if (KDWeapon(item)?.unarmed) return false;
 			if (KDRestraint(item)?.noRecycle != undefined) return false;
 			return item?.type == Weapon || item?.type == LooseRestraint || item?.type == Consumable;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			KDChangeRecyclerInput(KDRecycleItem(item, 1));
 			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
@@ -985,7 +982,7 @@ let KDInventoryAction = {
 
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -995,24 +992,24 @@ let KDInventoryAction = {
 		},
 	},
 	"RecycleBulk": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/RecycleBulk";
 		},
-		label:  (player, item) => {
+		label:  (_player, item) => {
 			return KDRecycleString(item, item.quantity || 1);
 		},
-		text:  (player, item) => {
+		text:  (_player, item) => {
 			return KDRecycleString(item, item.quantity || 1);
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return item?.type == LooseRestraint;
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return item?.type == LooseRestraint;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv) {
@@ -1032,7 +1029,7 @@ let KDInventoryAction = {
 			, "#ffffff", 2);
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -1042,27 +1039,27 @@ let KDInventoryAction = {
 		},
 	},
 	"RecycleExcess": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/RecycleExcess";
 		},
-		label:  (player, item) => {
+		label:  (_player, item) => {
 			if (item.quantity > 1)
 				return KDRecycleString(item, item.quantity - 1);
 			return "";
 		},
-		text:  (player, item) => {
+		text:  (_player, _item) => {
 			let value = Math.round(100);
 			return TextGet("KDInventoryActionRecycleExcess").replace("VLU", value + "");
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			return (item?.type == LooseRestraint);
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return item?.type == LooseRestraint;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv || !(itemInv.quantity > 1)) {
@@ -1082,7 +1079,7 @@ let KDInventoryAction = {
 			, "#ffffff", 2);
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -1095,24 +1092,24 @@ let KDInventoryAction = {
 	"Disassemble": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[4]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[4];},
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Disassemble";
 		},
-		show: (player, item) => {
+		show: (_player, item) => {
 			return item?.type == LooseRestraint && KDRestraint(item)?.disassembleAs != undefined;
 		},
-		itemlabelcolor: (player, item) => {return "#ffffff";},
-		text:  (player, item) => {
+		itemlabelcolor: (_player, _item) => {return "#ffffff";},
+		text:  (_player, item) => {
 			let one = (item.quantity || 1) == 1 ? "One" : "";
 			return TextGet("KDInventoryActionDisassemble" + one);
 		},
-		valid: (player, item) => {
+		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name|| item.name] > 9) return false;
 			if (KDWeapon(item)?.unarmed) return false;
 			return KDRestraint(item)?.disassembleAs != undefined;
 		},
 		/** Happens when you click the button */
-		click: (player, item) => {
+		click: (_player, item) => {
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv || !(itemInv.quantity > 0)) {
 				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
@@ -1141,7 +1138,7 @@ let KDInventoryAction = {
 
 		},
 		/** Return true to cancel it */
-		cancel: (player, delta) => {
+		cancel: (_player, delta) => {
 			if (delta > 0) {
 				if (KinkyDungeonLastTurnAction) {
 					return true;
@@ -1154,7 +1151,7 @@ let KDInventoryAction = {
 
 
 	"Bondage": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Bondage";
 		},
 		/** Returns if the button is greyed out */
@@ -1248,7 +1245,7 @@ let KDInventoryAction = {
 		},
 	},
 	"Food": {
-		icon: (player, item) => {
+		icon: (_player, _item) => {
 			return "InventoryAction/Cookie";
 		},
 		/** Returns if the button is greyed out */
