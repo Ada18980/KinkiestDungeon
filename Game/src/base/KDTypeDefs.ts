@@ -146,6 +146,8 @@ interface KDRestraintProps extends KDRestraintPropsBase {
 }
 
 interface KDRestraintPropsBase {
+	/** Type of gag this turns into when used to gag the player */
+	necklaceGagType?: string,
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
 	/** Used in standalone to replace Properties */

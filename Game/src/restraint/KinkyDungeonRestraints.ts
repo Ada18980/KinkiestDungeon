@@ -6057,3 +6057,24 @@ function KDMaxCutDepth(threshold: number, cutBonus: number, origEscapeChance: nu
 			Math.max(0, origLimitChance)
 		))));
 }
+
+
+function KDGetNecklaceGagType(player: entity) {
+	if (player.player) {
+		if (KinkyDungeonGetRestraintItem("ItemNeck")) {
+			let list = KDDynamicLinkList(KinkyDungeonGetRestraintItem("ItemNeck"), true);
+			for (let item of list) {
+				if (KDRestraint(item)?.necklaceGagType) return KDRestraint(item)?.necklaceGagType;
+			}
+		}
+	} else if (KDGameData.NPCRestraints[player.id + ""]) {
+		let items = KDGetNPCRestraints(player.id);
+		for (let slot of NPCBindingNeckSlots) {
+			if (items[slot]) {
+				if (KDRestraint(items[slot])?.necklaceGagType) return KDRestraint(items[slot])?.necklaceGagType;
+			}
+		}
+	}
+
+	return "";
+}
