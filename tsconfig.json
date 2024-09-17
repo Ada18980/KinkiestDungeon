@@ -112,7 +112,7 @@
         "Game/src/player/KinkyDungeonNeeds.js",
         "Game/src/prison/KinkyDungeonJailList.ts",
         "Game/src/KinkyDungeonTests.js",
-        "Game/src/item/KinkyDungeonLootList.js",
+        "Game/src/item/KinkyDungeonLootList.ts",
         "Game/src/base/KinkyDungeonMusic.ts",
         "Game/src/enemy/KinkyDungeonNames.js",
         "Game/src/player/KDDelayedActions.js",
