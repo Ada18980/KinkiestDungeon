@@ -4630,8 +4630,19 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	// Whether or not the enemy should hold when nearby
 	// Summons are mainly the ones who should behave like this
-	AIData.holdStillWhenNear = AIData.aggressive || (!enemy.Enemy.attackWhileMoving && enemy.warningTiles.length > 0) || enemy.Enemy.Behavior?.holdStillWhenNear || (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
-		&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere"));
+	AIData.holdStillWhenNear = !(
+		(enemy == KinkyDungeonLeashingEnemy() && !AIData.wantsToAttack)
+		|| (KDEnemyHasFlag(enemy, "overrideMove"))
+	)
+		&& (
+			AIData.aggressive
+			|| (!enemy.Enemy.attackWhileMoving && enemy.warningTiles.length > 0)
+			|| enemy.Enemy.Behavior?.holdStillWhenNear
+			|| (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
+				&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow")
+				&& !KDEnemyHasFlag(enemy, "StayHere"))
+		);
+
 
 	if (!AIData.startedDialogue) {
 		if (
