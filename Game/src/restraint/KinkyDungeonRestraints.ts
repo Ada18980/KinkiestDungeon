@@ -4408,7 +4408,8 @@ function KinkyDungeonAddRestraint (
  * @param [ForceRemove] - Ignore AlwaysKeep, for example if armor gets confiscated
  * @returns removed items
  */
-function KinkyDungeonRemoveRestraintSpecific(item: item, Keep?: boolean, Add?: boolean, NoEvent?: boolean, Shrine?: boolean, UnLink?: boolean, Remover?: entity, ForceRemove?: boolean): item[] {
+function KinkyDungeonRemoveRestraintSpecific(item: item, Keep?: boolean, Add?: boolean,
+	NoEvent?: boolean, Shrine?: boolean, UnLink?: boolean, Remover?: entity, ForceRemove?: boolean): item[] {
 	KDUpdateItemEventCache = true;
 
 	let rest = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);

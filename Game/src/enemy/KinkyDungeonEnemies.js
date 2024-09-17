@@ -7456,15 +7456,27 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 		if (protection >= multiPower) {
 			for (let r of protectRestraints) {
 				if (count < multiPower) {
-					KinkyDungeonRemoveRestraintSpecific(r, false, undefined, undefined, undefined, undefined, undefined, true);
 					// @ts-ignore
-					KinkyDungeonDropItem({name: r.inventoryVariant || r.inventoryAs || r.name}, KinkyDungeonPlayerEntity, false, true, true);
-					KinkyDungeonSendTextMessage(
-						5, TextGet("KDArmorBlock")
-							.replace("ArmorName", KDGetItemName(r))
-							.replace("EnemyName", name),
-						"#ff8933", 1,
-						false, false, undefined, "Combat");
+					if (KinkyDungeonDropItem({name: r.inventoryVariant || r.inventoryAs || r.name}, KinkyDungeonPlayerEntity, false, true, true)) {
+						KinkyDungeonRemoveRestraintSpecific(r, false,
+							undefined, undefined, undefined, undefined,
+							undefined, true);
+						KinkyDungeonSendTextMessage(
+							5, TextGet("KDArmorBlock")
+								.replace("ArmorName", KDGetItemName(r))
+								.replace("EnemyName", name),
+							"#ff8933", 1,
+							false, false, undefined, "Combat");
+					} else {
+						KinkyDungeonSendTextMessage(
+							5, TextGet("KDArmorBlockBug")
+								.replace("ArmorName", KDGetItemName(r))
+								.replace("EnemyName", name),
+							"#ff8933", 1,
+							false, false, undefined, "Combat");
+					}
+
+
 				}
 				count += KDRestraint(r).protection;
 			}

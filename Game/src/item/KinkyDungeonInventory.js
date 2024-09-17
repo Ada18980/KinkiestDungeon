@@ -2748,6 +2748,20 @@ function KDPruneInventoryVariants(worn = true, loose = true, lost = true, ground
 			}
 		}
 
+		if (!KDGameData.PersistentItems) KDGameData.PersistentItems = {};
+		for (let plist of Object.values(KDGameData.PersistentItems)) {
+			for (let name of Object.keys(plist)) {
+				if (KinkyDungeonRestraintVariants[name]) {
+					found[name] = true;
+				}
+				if (KinkyDungeonConsumableVariants[name]) {
+					found[name] = true;
+				}
+				if (KinkyDungeonWeaponVariants[name]) {
+					found[name] = true;
+				}
+			}
+		}
 	}
 	if (entities) {
 		let list = KDMapData.Entities;
