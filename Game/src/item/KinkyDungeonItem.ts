@@ -1,9 +1,8 @@
 "use strict";
 
 /** Certain items, when dropped, have specific properties
- * @type {Record<string, KDDroppedItemProp>}
 */
-let KDDroppedItemProperties = {
+let KDDroppedItemProperties: Record<string, KDDroppedItemProp> = {
 	"RedKey": {
 		tinyness: 2,
 	},
@@ -35,7 +34,14 @@ let KDDroppedItemProperties = {
 
 };
 
-function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
+type GroundItem = {
+	x: number;
+	y: number;
+	name: string;
+	amount?: number;
+}
+
+function KinkyDungeonItemDrop(x: number, y: number, dropTable: any[], summoned: boolean): boolean | GroundItem {
 	if (dropTable) {
 		let dropWeightTotal = 0;
 		let dropWeights = [];
@@ -53,7 +59,7 @@ function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 		for (let L = dropWeights.length - 1; L >= 0; L--) {
 			if (selection > dropWeights[L].weight) {
 				if (dropWeights[L].drop.name != "Nothing" && (!KinkyDungeonStatsChoice.get("Stealthy") || dropWeights[L].drop.name != "Gold") && (!summoned || !dropWeights[L].drop.noSummon)) {
-					let dropped = {x:x, y:y, name: dropWeights[L].drop.name, amount: dropWeights[L].drop.amountMin ? (dropWeights[L].drop.amountMin + Math.floor(KDRandom()*dropWeights[L].drop.amountMax)) : dropWeights[L].drop.amount};
+					let dropped: GroundItem = {x:x, y:y, name: dropWeights[L].drop.name, amount: dropWeights[L].drop.amountMin ? (dropWeights[L].drop.amountMin + Math.floor(KDRandom()*dropWeights[L].drop.amountMax)) : dropWeights[L].drop.amount};
 					if (!KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(x, y))) {
 						let newPoint = KinkyDungeonGetNearbyPoint(x, y, false, undefined, true);
 						if (newPoint) {
@@ -74,7 +80,7 @@ function KinkyDungeonItemDrop(x, y, dropTable, summoned) {
 	return false;
 }
 
-function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
+function KinkyDungeonDropItem(Item: any, Origin: any, PreferOrigin: boolean, noMsg?: boolean, _allowEnemies?: boolean): boolean {
 	let slots = [];
 	for (let X = -Math.ceil(1); X <= Math.ceil(1); X++)
 		for (let Y = -Math.ceil(1); Y <= Math.ceil(1); Y++) {
@@ -102,7 +108,7 @@ function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
 
 	if (foundslot) {
 
-		let dropped = {x:foundslot.x, y:foundslot.y, name: Item.name};
+		let dropped: GroundItem = {x:foundslot.x, y:foundslot.y, name: Item.name};
 		if (Item.amountMin && Item.amountMax) {
 			dropped.amount = Item.amountMin + Math.floor(KDRandom()*Item.amountMax);
 		} else if (Item.amount) {
@@ -119,7 +125,7 @@ function KinkyDungeonDropItem(Item, Origin, PreferOrigin, noMsg, allowEnemies) {
 	return false;
 }
 
-function KinkyDungeonItemEvent(Item, nomsg) {
+function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 	let color = "white";
 	let priority = 1;
 	let sfx = "Coins";
@@ -258,7 +264,7 @@ function KinkyDungeonItemEvent(Item, nomsg) {
 }
 
 
-function KDAllowUseItems(Message,x, y) {
+function KDAllowUseItems(Message: boolean, _x?: number, _y?: number): boolean {
 	let ret = !KinkyDungeonStatsChoice.get("CantTouchThat") || KinkyDungeonHasHelp() || !(KinkyDungeonIsArmsBound() && !KinkyDungeonCanUseFeet() && KinkyDungeonIsHandsBound(false, true, 0.01));
 	if (!ret && KinkyDungeonCanTalk()) {
 		if (KDGameData.KneelTurns > 0) {return true;}
@@ -268,7 +274,7 @@ function KDAllowUseItems(Message,x, y) {
 	return ret;
 }
 
-function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
+function KinkyDungeonItemCheck(x: number, y: number, _Index: number, autoEquip?: boolean) {
 	let allowManip = KDAllowUseItems(false, x, y);
 	let msg = false;
 	let pickedone = false;
@@ -310,17 +316,15 @@ function KinkyDungeonItemCheck(x, y, Index, autoEquip) {
 	}
 }
 
-function KDCanSeeDroppedItem(item) {
+function KDCanSeeDroppedItem(item: GroundItem): boolean {
 	if (KDDroppedItemProperties[item.name]?.tinyness <= KinkyDungeonBlindLevel) return false;
 	return true;
 }
 
 /**
- *
- * @param {Named} item
- * @returns {string};
+ * @param item
  */
-function KDGetItemType(item) {
+function KDGetItemType(item: Named): string {
 	if (KDWeapon(item)) return Weapon;
 	if (KDRestraint(item)) return LooseRestraint;
 	if (KDConsumable(item)) return Consumable;
@@ -328,7 +332,7 @@ function KDGetItemType(item) {
 	return Misc;
 }
 
-function KinkyDungeonDrawItems(canvasOffsetX, canvasOffsetY, CamX, CamY) {
+function KinkyDungeonDrawItems(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let sprite = null;
 	let counts = {};
 	let max = 10;
@@ -378,7 +382,7 @@ function KinkyDungeonDrawHeart() {
 	DrawButtonVis(1250, 700, 250, 60, TextGet("KinkyDungeonHeartMana"), KinkyDungeonStatManaMax < KDMaxStat ? "#ffffff" : "#999999");
 	DrawButtonVis(1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
 
-	DrawButtonKDEx("discardheart", (bdata) => {
+	DrawButtonKDEx("discardheart", (_bdata) => {
 		KinkyDungeonDrawState = "Game";
 		return true;
 	}, CommonTime() > KinkyDungeonDialogueTimer, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
@@ -418,12 +422,10 @@ let KDCustomItems = {
 };
 
 /**
- *
- * @param {any[]} items
- * @param {number} offset
- * @returns {number}
+ * @param items
+ * @param offset
  */
-function KDDrawItemsTooltip(items, offset) {
+function KDDrawItemsTooltip(items: any[], offset: number): number {
 	let TooltipList = [];
 	TooltipList.push({
 		str: TextGet("KDTooltipItems"),

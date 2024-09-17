@@ -877,7 +877,8 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 
 							recovOne = true;
 							//KinkyDungeonInventoryAdd(lostitem);
-							KinkyDungeonItemEvent(lostitem, KDRestraint(lostitem)?.armor || KinkyDungeonRestraintVariants[lostitem.name]);
+							// FIXME: Check that `!!KinkyDungeonRestraintVariants[]` is the right thing to do here.
+							KinkyDungeonItemEvent(lostitem, KDRestraint(lostitem)?.armor || !!KinkyDungeonRestraintVariants[lostitem.name]);
 						}
 						//KinkyDungeonLostItems.splice(I, 1);
 						//I -= 1;

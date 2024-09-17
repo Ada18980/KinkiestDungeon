@@ -80,7 +80,7 @@
         "Game/src/magic/KinkyDungeonPlayerEffects.ts",
         "Game/src/map/KinkyDungeonShrine.ts",
         "Game/src/map/KinkyDungeonObject.ts",
-        "Game/src/item/KinkyDungeonItem.js",
+        "Game/src/item/KinkyDungeonItem.ts",
         "Game/src/player/KinkyDungeonDress.js",
         "Game/src/player/KDExpressions.ts",
         "Game/src/enemy/KDPersistence.ts",
