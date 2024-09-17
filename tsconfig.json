@@ -57,7 +57,7 @@
         "Game/src/map/KinkyDungeonParams.ts",
         "Game/src/base/KinkyDungeonVision.ts",
         "Game/src/faction/KinkyDungeonQuest.ts",
-        "Game/src/item/KinkyDungeonLoot.js",
+        "Game/src/item/KinkyDungeonLoot.ts",
         "Game/src/enemy/KinkyDungeonEnemies.js",
         "Game/src/enemy/KinkyDungeonPersonality.js",
         "Game/src/enemy/KinkyDungeonEnemiesList.js",
