@@ -4522,7 +4522,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			}
 		}
 		if (sneakPerc > 0.99 && (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer)) {
-			if (!enemy.aware && AIData.aggressive) {
+			if (!enemy.aware && AIData.aggressive && !KDHelpless(enemy)) {
 				KDAddThought(enemy.id, "Aware", 3, 3);
 				if (KDRandom() < actionDialogueChanceIntense)
 					KinkyDungeonSendDialogue(enemy,
@@ -4539,7 +4539,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& KDHostile(enemy)
 				&& AIData.aggressive
 				&& KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
-				KinkyDungeonMakeNoiseSignal(enemy, 1, wasAware);
+
+				if (!KDEntityHasFlag(enemy, "shoutforhelp")) {
+					KinkyDungeonMakeNoiseSignal(enemy, 1, wasAware);
+					KinkyDungeonSetEnemyFlag(enemy, "shoutforhelp",
+						Math.floor((10 - KDEnemyRank(enemy)) * (1 + KDRandom())));
+				}
+
 				if (!enemy.rage) {
 					let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
 					for (let e of ent) {

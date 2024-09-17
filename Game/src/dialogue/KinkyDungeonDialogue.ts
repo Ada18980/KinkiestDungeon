@@ -265,6 +265,11 @@ function KDAddOpinion(enemy: entity, Amount: number): number {
 		a -= 10;
 	}
 	if (KDGameData.Collection[enemy.id]) KDGameData.Collection[enemy.id].Opinion = enemy.opinion;
+	if (enemy.opinion > 0) {
+		// After being made happier they will reconsider their hostilities
+		enemy.hostile = undefined;
+		enemy.rage = undefined;
+	}
 	return enemy.opinion || 0;
 }
 /**
