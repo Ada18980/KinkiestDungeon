@@ -7196,6 +7196,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	displayPower: 4,
 	noRecover: true,
+	inventory: true,
 	removePrison: true,
 	events: [
 		{trigger: "tick", type: "ApplyConduction", duration: 2},
@@ -7231,6 +7232,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	strictness: 0.05,
 	restriction: 1,
 	protectionCursed: true,
+	inventory: true,
 	noRecover: true,
 	removePrison: true,
 	events: [
@@ -7250,6 +7252,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	alwaysKeep: true,
 	alwaysRender: true,
 	UnderlinkedAlwaysRender: true,
+	inventory: true,
 	escapeChance: {
 		"Struggle": 0.2,
 		"Cut": 0.2,
@@ -7283,6 +7286,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	alwaysKeep: true,
 	alwaysRender: true,
 	UnderlinkedAlwaysRender: true,
+	inventory: true,
 	escapeChance: {
 		"Struggle": -50,
 		"Cut": -50,
@@ -7340,6 +7344,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 2,
 	displayPower: 7,
 	protectionCursed: true,
+	inventory: true,
 	strictness: 0.08,
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 	addPose: ["TorsoArmor"],
@@ -7378,6 +7383,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	protection: 1,
 	protectionCursed: true,
+	inventory: true,
 	strictness: 0.08,
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Light"],
 	addPose: ["TorsoArmor"],
@@ -7416,6 +7422,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	debris: "Belts",
 	protection: 3,
 	protectionCursed: true,
+	inventory: true,
 	strictness: 0.15,
 	displayPower: 10,
 	removePrison: true,
@@ -7450,6 +7457,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	displayPower: 10,
 	removePrison: true,
+	inventory: true,
 	events: [
 		{trigger: "perksBonus", type: "spellDamage", power: 0.3, inheritLinked: true},
 		{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
@@ -7479,6 +7487,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	debris: "Belts",
 	protectionCursed: true,
+	inventory: true,
 	displayPower: 5,
 	removePrison: true,
 	events: [
@@ -7510,6 +7519,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 2,
 	debris: "Belts",
 	protectionCursed: true,
+	inventory: true,
 	displayPower: 8,
 	removePrison: true,
 	events: [
@@ -7543,6 +7553,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	displayPower: 5,
 	noRecover: true,
+	inventory: true,
 	removePrison: true,
 	events: [
 		{trigger: "tick", type: "ApplyConduction", duration: 2},
@@ -7576,6 +7587,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
 	protection: 1,
+	inventory: true,
 	removePrison: true,
 	events: [
 		{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
@@ -7604,6 +7616,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	displayPower: 3,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
+	inventory: true,
 	protection: 1,
 	removePrison: true,
 	events: [
@@ -7639,6 +7652,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	displayPower: 6,
 	removePrison: true,
+	inventory: true,
 	events: [
 		{trigger: "tick", type: "evasionBuff", power: .25, inheritLinked: true},
 		{trigger: "tick", type: "sneakBuff", power: .15, inheritLinked: true},
@@ -7668,6 +7682,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	displayPower: 5,
 	removePrison: true,
+	inventory: true,
 	events: [
 		{trigger: "perksBonus", type: "spellDamage", power: 0.05, inheritLinked: true},
 		{trigger: "tick", type: "spellWardBuff", power: 0.5, inheritLinked: true},
@@ -7700,6 +7715,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	debris: "Belts",
 	noRecover: true,
 	removePrison: true,
+	inventory: true,
 	events: [
 		{trigger: "tick", type: "ApplyConduction", duration: 2},
 		{trigger: "tick", type: "armorBuff", power: 0.5, inheritLinked: true},
@@ -7733,6 +7749,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	displayPower: 2,
 	protection: 1,
 	removePrison: true,
+	inventory: true,
 	events: [
 		{trigger: "tick", type: "RestraintBlock", power: 1.0, inheritLinked: true},
 	],

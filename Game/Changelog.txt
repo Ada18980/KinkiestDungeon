@@ -32,6 +32,8 @@ TODO remove hogtie when released
 
 5.3.38-RC3
 - Monster rope should now add hogtie properly (only applies to new monster ropes generated)
+- Fixed some bugs involving leashing and hostility
+- Fixed critical bug with enchanted items disappearing when dropped by enemy attack!!!
 
 5.3.38-RC2
 - Made dirt piles and giant mushrooms not block leashing NPCs

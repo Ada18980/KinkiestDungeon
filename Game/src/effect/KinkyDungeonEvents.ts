@@ -270,7 +270,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						if (restraint.shrine?.includes("CombineBubble1")
 								|| restraint.shrine?.includes("CombineBubble2")
 								|| restraint.shrine?.includes("CombineBubble3")) {
-							KinkyDungeonRemoveRestraintSpecific(inv.item, true, true, true);
+							KinkyDungeonRemoveRestraintSpecific(inv.item, true, false, true);
 						}
 					}
 				}
@@ -281,11 +281,11 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 
 		"NoYoke": (_e, item, data) => {
 			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
-				KinkyDungeonRemoveRestraintSpecific(item, true, true);
+				KinkyDungeonRemoveRestraintSpecific(item, true, false);
 		},
 		"requireNoGags": (_e, item, data) => {
 			if (item != data.item && KinkyDungeonPlayerTags.get("Gags")) {
-				KinkyDungeonRemoveRestraintSpecific(item, true, true);
+				KinkyDungeonRemoveRestraintSpecific(item, true, false);
 				KinkyDungeonSendTextMessage(4, TextGet("KDGagNecklaceOff"), "#ffffff", 4);
 			}
 		},

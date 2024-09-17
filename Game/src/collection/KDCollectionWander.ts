@@ -80,6 +80,8 @@ function KDSetServantSpawnTemplate(e: entity) {
 		KDNPCRefreshBondage(e.id, 0, true);
 		KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
 		e.hp = e.Enemy.maxhp;
+		e.hostile = undefined;
+		e.rage = undefined;
 	}
 }
 function KDSetPrisonerSpawnTemplate(e: entity) {

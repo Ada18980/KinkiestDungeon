@@ -4408,7 +4408,8 @@ function KinkyDungeonAddRestraint (
  * @param [ForceRemove] - Ignore AlwaysKeep, for example if armor gets confiscated
  * @returns removed items
  */
-function KinkyDungeonRemoveRestraintSpecific(item: item, Keep?: boolean, Add?: boolean, NoEvent?: boolean, Shrine?: boolean, UnLink?: boolean, Remover?: entity, ForceRemove?: boolean): item[] {
+function KinkyDungeonRemoveRestraintSpecific(item: item, Keep?: boolean, Add?: boolean,
+	NoEvent?: boolean, Shrine?: boolean, UnLink?: boolean, Remover?: entity, ForceRemove?: boolean): item[] {
 	KDUpdateItemEventCache = true;
 
 	let rest = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
@@ -5142,7 +5143,7 @@ type kdCuffPart = {
 }
 
 let KDCuffParts: Record<string, kdCuffPart> = {
-	"LivingCollar": {base: true, enemyTagSuffix: "Collar", enemyTagOverride: {"livingCollar":10}},
+	"LivingCollar": {base: true, enemyTagSuffix: "LivingCollar", enemyTagOverride: {"livingCollar":10}},
 	"AnkleCuffs": {base: true,},// Link: "AnkleCuffs2"},
 	//"AnkleCuffs2": {Link: "AnkleCuffs3", UnLink: "AnkleCuffs"}, //, ModelSuffix: "Chained"
 	//"AnkleCuffs3": {UnLink: "AnkleCuffs2"},

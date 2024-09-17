@@ -80,7 +80,7 @@ function KinkyDungeonItemDrop(x: number, y: number, dropTable: any[], summoned: 
 	return false;
 }
 
-function KinkyDungeonDropItem(Item: any, Origin: any, PreferOrigin: boolean, noMsg?: boolean, _allowEnemies?: boolean): boolean {
+function KinkyDungeonDropItem(Item: any, Origin: any, PreferOrigin: boolean, noMsg?: boolean, allowEnemies?: boolean): boolean {
 	let slots = [];
 	for (let X = -Math.ceil(1); X <= Math.ceil(1); X++)
 		for (let Y = -Math.ceil(1); Y <= Math.ceil(1); Y++) {
@@ -89,21 +89,21 @@ function KinkyDungeonDropItem(Item: any, Origin: any, PreferOrigin: boolean, noM
 		}
 
 	let foundslot = PreferOrigin ? {x:Origin.x, y:Origin.y} : null;
-	/*
-	Old code???
-	if (!(Origin == KinkyDungeonPlayerEntity && PreferOrigin && KinkyDungeonPlayer.IsEnclose())) {
-		if (!foundslot || !(KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(foundslot.x, foundslot.y))
-		&& (allowEnemies || KinkyDungeonNoEnemy(foundslot.x, foundslot.y, true))))
-			for (let C = 0; C < 100; C++) {
-				let slot = slots[Math.floor(KDRandom() * slots.length)];
-				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Origin.x+slot.x, Origin.y+slot.y))
-					&& (allowEnemies || KinkyDungeonNoEnemy(Origin.x+slot.x, Origin.y+slot.y, true))) {
-					foundslot = {x: Origin.x+slot.x, y: Origin.y+slot.y};
 
-					C = 100;
-				} else slots.splice(C, 1);
-			}
-	}*/
+	// Old code used for enclosure in box--todo reimplement enclosure
+	//if (!(Origin == KinkyDungeonPlayerEntity && PreferOrigin && KinkyDungeonPlayer.IsEnclose())) {
+	if (!foundslot || !(KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(foundslot.x, foundslot.y))
+		&& (allowEnemies || KinkyDungeonNoEnemy(foundslot.x, foundslot.y, true))))
+		for (let C = 0; C < 100; C++) {
+			let slot = slots[Math.floor(KDRandom() * slots.length)];
+			if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(Origin.x+slot.x, Origin.y+slot.y))
+				&& (allowEnemies || KinkyDungeonNoEnemy(Origin.x+slot.x, Origin.y+slot.y, true))) {
+				foundslot = {x: Origin.x+slot.x, y: Origin.y+slot.y};
+
+				C = 100;
+			} else slots.splice(C, 1);
+		}
+	//}
 
 
 	if (foundslot) {

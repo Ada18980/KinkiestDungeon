@@ -868,6 +868,13 @@ function KinkyDungeonCreateMap (
 	});
 
 	KDMapData.GroundItems = persistentItems;
+
+	if (!KDGameData.PersistentItems) KDGameData.PersistentItems = {};
+	KDGameData.PersistentItems[RoomType + "," + KDCurrentWorldSlot.x + "," + KDCurrentWorldSlot.y] = {};
+	for (let item of KDMapData.GroundItems) {
+		KDGameData.PersistentItems[RoomType + "," + KDCurrentWorldSlot.x + "," + KDCurrentWorldSlot.y][item.name] =
+			(KDGameData.PersistentItems[RoomType + "," + KDCurrentWorldSlot.x + "," + KDCurrentWorldSlot.y][item.name] || 0) + (item.amount || 1);
+	}
 	for (let item of lostItems) {
 		KDAddLostItemSingle(item.name, item.amount || 1);
 	}

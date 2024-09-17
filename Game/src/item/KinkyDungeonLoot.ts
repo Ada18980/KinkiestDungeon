@@ -1063,8 +1063,7 @@ let KDTrapChestType: Record<string, trapChestFunc> = {
 
 function KDTriggerLoot(Loot: string, Type: string) {
 	let lootobj = KinkyDungeonLootTable[Type].find((element) => {return element.name == Loot;});
-	//  FIXME: KinkyDungeonMapIndex's type matches none of the functions's parameters.
-	//console.log(KinkyDungeonLootEvent(lootobj, KinkyDungeonMapIndex, lootobj.message));
+	console.log(KinkyDungeonLootEvent(lootobj, MiniGameKinkyDungeonLevel, lootobj.message));
 }
 
 /**

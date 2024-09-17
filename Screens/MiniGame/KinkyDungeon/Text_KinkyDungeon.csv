@@ -1758,6 +1758,7 @@ KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 KinkyDungeonAngelUnlock,"(The angel looks puzzled and unlocks your divine restraints)"
 
 KDArmorBlock,"The EnemyName pulls away your ArmorName!!!"
+KDArmorBlockBug,"There was a bug removing your ArmorName. Please report!"
 KDBypasses,"The EnemyName bypasses your security to add the RestraintName!"
 KDAttackBlocked,"The EnemyName tries to restrain you, but you resist the bondage!"
 KDRestraintBlockedItem,"Resist!"

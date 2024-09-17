@@ -4522,7 +4522,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 			}
 		}
 		if (sneakPerc > 0.99 && (AIData.canSensePlayer || AIData.canSeePlayer || AIData.canShootPlayer)) {
-			if (!enemy.aware && AIData.aggressive) {
+			if (!enemy.aware && AIData.aggressive && !KDHelpless(enemy)) {
 				KDAddThought(enemy.id, "Aware", 3, 3);
 				if (KDRandom() < actionDialogueChanceIntense)
 					KinkyDungeonSendDialogue(enemy,
@@ -4539,7 +4539,13 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 				&& KDHostile(enemy)
 				&& AIData.aggressive
 				&& KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
-				KinkyDungeonMakeNoiseSignal(enemy, 1, wasAware);
+
+				if (!KDEntityHasFlag(enemy, "shoutforhelp")) {
+					KinkyDungeonMakeNoiseSignal(enemy, 1, wasAware);
+					KinkyDungeonSetEnemyFlag(enemy, "shoutforhelp",
+						Math.floor((10 - KDEnemyRank(enemy)) * (1 + KDRandom())));
+				}
+
 				if (!enemy.rage) {
 					let ent = KDNearbyEnemies(enemy.x, enemy.y, KinkyDungeonEnemyAlertRadius);
 					for (let e of ent) {
@@ -4624,8 +4630,19 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 	// Whether or not the enemy should hold when nearby
 	// Summons are mainly the ones who should behave like this
-	AIData.holdStillWhenNear = AIData.aggressive || (!enemy.Enemy.attackWhileMoving && enemy.warningTiles.length > 0) || enemy.Enemy.Behavior?.holdStillWhenNear || (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
-		&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow") && !KDEnemyHasFlag(enemy, "StayHere"));
+	AIData.holdStillWhenNear = !(
+		(enemy == KinkyDungeonLeashingEnemy() && !AIData.wantsToAttack)
+		|| (KDEnemyHasFlag(enemy, "overrideMove"))
+	)
+		&& (
+			AIData.aggressive
+			|| (!enemy.Enemy.attackWhileMoving && enemy.warningTiles.length > 0)
+			|| enemy.Enemy.Behavior?.holdStillWhenNear
+			|| (player.player && enemy.Enemy.allied && !enemy.Enemy.Behavior?.behaveAsEnemy
+				&& KDAllied(enemy) && !KDEnemyHasFlag(enemy, "NoFollow")
+				&& !KDEnemyHasFlag(enemy, "StayHere"))
+		);
+
 
 	if (!AIData.startedDialogue) {
 		if (
@@ -7439,15 +7456,27 @@ function KDRunBondageResist(enemy, faction, restraintsToAdd, blockFunction, rest
 		if (protection >= multiPower) {
 			for (let r of protectRestraints) {
 				if (count < multiPower) {
-					KinkyDungeonRemoveRestraintSpecific(r, false, undefined, undefined, undefined, undefined, undefined, true);
 					// @ts-ignore
-					KinkyDungeonDropItem({name: r.inventoryVariant || r.inventoryAs || r.name}, KinkyDungeonPlayerEntity, false, true, true);
-					KinkyDungeonSendTextMessage(
-						5, TextGet("KDArmorBlock")
-							.replace("ArmorName", KDGetItemName(r))
-							.replace("EnemyName", name),
-						"#ff8933", 1,
-						false, false, undefined, "Combat");
+					if (KinkyDungeonDropItem({name: r.inventoryVariant || r.inventoryAs || r.name}, KinkyDungeonPlayerEntity, false, true, true)) {
+						KinkyDungeonRemoveRestraintSpecific(r, false,
+							undefined, undefined, undefined, undefined,
+							undefined, true);
+						KinkyDungeonSendTextMessage(
+							5, TextGet("KDArmorBlock")
+								.replace("ArmorName", KDGetItemName(r))
+								.replace("EnemyName", name),
+							"#ff8933", 1,
+							false, false, undefined, "Combat");
+					} else {
+						KinkyDungeonSendTextMessage(
+							5, TextGet("KDArmorBlockBug")
+								.replace("ArmorName", KDGetItemName(r))
+								.replace("EnemyName", name),
+							"#ff8933", 1,
+							false, false, undefined, "Combat");
+					}
+
+
 				}
 				count += KDRestraint(r).protection;
 			}

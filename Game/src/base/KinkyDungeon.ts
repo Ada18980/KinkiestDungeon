@@ -436,6 +436,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 
 interface KDGameDataBase {
+	PersistentItems: Record<string, Record<string, number>>,
 	JourneyProgression:		string[],
 	AttachedWep:			string,
 	InventoryAction:		string,
@@ -621,6 +622,7 @@ interface KDGameDataBase {
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	PersistentItems: {},
 	Regiments: {},
 	FacilitiesData: null,
 	InteractTargetX: 0,
