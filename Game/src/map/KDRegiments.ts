@@ -37,10 +37,22 @@ let KDMapTickTime = 50;
 /** Only tick 2 floors behind or ahead */
 let KDMapTickRange = 2;
 
-function KDTickMaps(minFloor: number, maxFloor: number, onlyMain: false,
+function KDTickMaps(delta: number,
+	minFloor: number,
+	maxFloor: number,
+	onlyMain: false,
 	updateReg: boolean,
 	updateChests: boolean,
 ): boolean {
+	// Always update repop queue for this map, but do it delayed for others
+
+	if (MiniGameKinkyDungeonLevel >= minFloor && MiniGameKinkyDungeonLevel <= maxFloor) {
+		KDUpdateRepopQueue(
+			KDMapData, delta
+		);
+	}
+
+
 	if (KinkyDungeonFlags.get("KDMapTick")) return false;
 	KinkyDungeonSetFlag("KDMapTick", KDMapTickTime);
 	let mapsToUpdate: WorldCoord[] = [];
@@ -63,6 +75,11 @@ function KDTickMaps(minFloor: number, maxFloor: number, onlyMain: false,
 		if (!loc) continue;
 
 		let data = loc.data[coords.room]
+		if (data != KDMapData) {
+			KDUpdateRepopQueue(
+				data, KDMapTickTime
+			);
+		}
 		if (updateReg)
 			UpdateRegiments(coords);
 		if (updateChests)

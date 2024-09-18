@@ -1003,6 +1003,20 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
 			KinkyDungeonSetFlag("nobed", 8);
+
+			let en: entity = null;
+			let leashed = KDGetLeashedTo(_player);
+			if (leashed.length > 0) en = leashed[0];
+
+			if (en && !en.player && KDCanBind(en)) {
+				KDGameData.CurrentDialogMsgData.NME = KDEnemyName(en);
+				KDGameData.CurrentDialogMsgValue.ID = en.id;
+				KDGameData.CurrentDialogMsgData.PRCNT = "" +
+					Math.round(100 * Math.min(1, Math.max(0,
+						KDGetSkillCheck(en, _player, en, KDSkillCheckType.Agility, .5))));
+				KDGameData.CurrentDialogMsgValue.PRCNT = KDGetSkillCheck(en, _player, en, KDSkillCheckType.Agility, .5);
+			}
+
 			return false;
 		},
 		options: {
@@ -1022,6 +1036,207 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 					return false;
 				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"NPC": {
+				playertext: "Default", response: "Default",
+				greyoutFunction: (_gagged, _player) => {
+					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+						if (KinkyDungeonEntityAt(
+							KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+							KDGameData.InteractTargetY + (nearestJail.direction?.y || 0))) {
+								return false;
+						}
+					}
+					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+				},
+				greyoutTooltip: "KDOccupied",
+				clickFunction: (_gagged, _player) => {
+
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						KinkyDungeonDrawState = "Collection";
+						KDCollectionTab = "Dropoff";
+						KDCurrentFacilityTarget = "";
+						KDFacilityCollectionCallback = null;
+						KinkyDungeonCheckClothesLoss = true;
+					}
+
+					return false;
+				},
+				exitDialogue: true,
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"EnemyHelpless": {
+				playertext: "Default", response: "Default",
+				greyoutFunction: (_gagged, _player) => {
+					let en: entity = null;
+					let leashed = KDGetLeashedTo(_player);
+					if (leashed.length > 0) en = leashed[0];
+					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+						if (KinkyDungeonEntityAt(
+							KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+							KDGameData.InteractTargetY + (nearestJail.direction?.y || 0))
+							&& KinkyDungeonEntityAt(
+								KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+								KDGameData.InteractTargetY + (nearestJail.direction?.y || 0)) != en) {
+								return false;
+						}
+					}
+					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+						|| KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == en;
+				},
+				prerequisiteFunction: (_gagged, _player) => {
+
+
+					let en: entity = null;
+					let leashed = KDGetLeashedTo(_player);
+					if (leashed.length > 0) en = leashed[0];
+
+					if (en && !en.player && KDCanBind(en)) {
+						return KDHelpless(en) || KDWillingBondage(en, _player);
+					}
+					return false;
+				},
+				clickFunction: (_gagged, _player) => {
+					let en: entity = null;
+					let leashed = KDGetLeashedTo(_player);
+					if (leashed.length > 0) en = leashed[0];
+					if (en && !en.player && KDCanBind(en)) {
+
+						let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+						if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+							KDMoveEntity(en,
+								KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+								KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
+							KDBreakTether(en);
+							if (nearestJail.restrainttags) {
+								let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
+									KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									true,
+									"",
+									true,
+									false,
+									false, undefined, true);
+
+
+								if (restraint) {
+									KDSetNPCRestraint(en.id, "Device", {
+										name: restraint.name,
+										lock: "White",
+										id: KinkyDungeonGetItemID(),
+										faction: KDDefaultNPCBindPalette,
+									});
+									// Add the tieup value
+									KDNPCRestraintTieUp(en.id, {
+										name: restraint.name,
+										lock: "White",
+										id: KinkyDungeonGetItemID(),
+										faction: KDDefaultNPCBindPalette,
+									}, 1);
+									KinkyDungeonAdvanceTime(1);
+								}
+							}
+						}
+
+					}
+					return false;
+				},
+				exitDialogue: true,
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Enemy": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (_gagged, _player) => {
+					let en: entity = null;
+					let leashed = KDGetLeashedTo(KDPlayer());
+					if (leashed.length > 0) en = leashed[0];
+					if (en && !en.player && KDCanBind(en)) {
+
+						let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+						if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+							if (KinkyDungeonEntityAt(
+								KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+								KDGameData.InteractTargetY + (nearestJail.direction?.y || 0))
+								&& KinkyDungeonEntityAt(
+									KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+									KDGameData.InteractTargetY + (nearestJail.direction?.y || 0)) != en) {
+									if (!(!KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+										|| KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == en))
+										return false;
+							}
+						}
+
+
+						return !KDHelpless(en) && (!en.specialBoundLevel || !en.specialBoundLevel.Furniture);
+					}
+					return false;
+				},
+				greyoutFunction: (_gagged, _player) => {
+					let en: entity = null;
+					let leashed = KDGetLeashedTo(KDPlayer());
+					if (leashed.length > 0) en = leashed[0];
+
+					if (en && !en.player && KDCanBind(en)) {
+						return KinkyDungeonIsDisabled(en) || KDGameData.CurrentDialogMsgValue.PRCNT > 0;
+					}
+					return false;
+				},
+				greyoutTooltip: "KDFurnEnemyDisabled",
+				clickFunction: (_gagged, _player) => {
+					let en: entity = null;
+					let leashed = KDGetLeashedTo(_player);
+					if (leashed.length > 0) en = leashed[0];
+					if (en && !en.player && KDCanBind(en)) {
+
+
+						if (KDRandom() < KDGameData.CurrentDialogMsgValue.PRCNT) {
+
+							let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+							if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+								KDMoveEntity(en,
+									KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+									KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
+
+								KDBreakTether(en);
+								if ((!en.specialBoundLevel || !en.specialBoundLevel.Furniture)) {
+									KDTieUpEnemy(en, en.Enemy.maxhp * 0.3 + 10, "Furniture", undefined);
+									KinkyDungeonAdvanceTime(1);
+									if (en.bind) en.bind = 0;
+									en.bind = Math.max(en.bind, 10);
+								}
+
+								KinkyDungeonAdvanceTime(1);
+							}
+
+
+						} else {
+							KDGameData.CurrentDialogMsg = "FurnitureEnemyFail";
+							KinkyDungeonAdvanceTime(1);
+							return true;
+						}
+
+					}
+					return false;
+				},
+				exitDialogue: true,
 				options: {
 					"Leave": {
 						playertext: "Leave", response: "Default",

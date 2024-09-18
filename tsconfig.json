@@ -212,7 +212,8 @@
         "Data/ModelStylesCosplay.ts",
         "Data/ModelDresses.ts",
         "Game/src/player/KDWardrobe.js",
-        "Game/src/restraint/KDGenRestraintUniform.ts"
+        "Game/src/restraint/KDGenRestraintUniform.ts",
+        "Game/src/enemy/KDPathConditions.ts"
     ],
     "compilerOptions": {
         "target": "es2020",

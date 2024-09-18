@@ -85,6 +85,10 @@ AddModel({
 			AddPriWithPose: {
 				ItemBootsRubberOver: 45,
 			},
+			DisplaceLayers: ToMap(["Heels"]),
+			DisplaceAmount: 100,
+			DisplacementSprite: "SlimeLeft",
+			DisplacementPoses: ["Closed"],
 		},
 		{ Name: "FootRight", Layer: "WrappingLegsRight", Pri: 50,
 			//SwapLayerPose: {Kneel: "WrappingLegsRight", KneelClosed: "WrappingLegsRight"},
@@ -95,6 +99,10 @@ AddModel({
 			AddPriWithPose: {
 				ItemBootsRubberOver: 45,
 			},
+			DisplaceLayers: ToMap(["HeelRight"]),
+			DisplaceAmount: 100,
+			DisplacementSprite: "SlimeRight",
+			DisplacementPoses: ["Closed"],
 		},
 	])
 });

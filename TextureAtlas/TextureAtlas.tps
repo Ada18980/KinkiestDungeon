@@ -2012,6 +2012,7 @@
             <key type="filename">../Models/MaidKnightLight/ApronChestCrossed.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronChestFront.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronChestUp.png</key>
+            <key type="filename">../Models/MaidKnightLight/ApronChestYoked.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronKneel.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronKneelHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/ArmLeftBoxtie.png</key>

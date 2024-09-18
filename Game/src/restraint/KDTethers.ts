@@ -91,13 +91,22 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	},
 };
 
-function KDGetLeashedToCount(entity: entity) {
+function KDGetLeashedToCount(entity: entity): number {
 	let n = 0;
 	for (let en of KDMapData.Entities.filter((en) => {return en.leash?.entity;})) {
 		if (en.leash.entity == entity.id) n++;
 	}
 	if (KDPlayer().leash?.entity == entity.id) n++;
 	return n;
+}
+
+function KDGetLeashedTo(entity: entity): entity[] {
+	let ret: entity[] = [];
+	for (let en of KDMapData.Entities.filter((en) => {return en.leash?.entity;})) {
+		if (en.leash.entity == entity.id) ret.push(en);
+	}
+	if (KDPlayer().leash?.entity == entity.id) ret.push(KDPlayer());
+	return ret;
 }
 
 function KDGetTetherLength(entity: entity): number {

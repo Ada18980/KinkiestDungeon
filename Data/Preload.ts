@@ -133,6 +133,8 @@ let KDButtonFontListIndex = 0;
 let KDButtonFontList = Array.from(KDFonts.keys());
 
 let DisplacementMaps = [
+'SlimeLeftClosed.png',
+'SlimeRightClosed.png',
 'HideBoxtieHand.png',
 'BedStrapsHogtie.png',
 'FutureBox.png',
