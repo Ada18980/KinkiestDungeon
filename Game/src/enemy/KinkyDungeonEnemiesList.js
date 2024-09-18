@@ -4575,7 +4575,9 @@ let KinkyDungeonEnemies = [
 		maxblock: 0,
 		maxdodge: 0,
 		stamina: 2,
-		visionRadius: 6, maxhp: 20, minLevel: 3, weight:0, movePoints: 3, attackPoints: 3, attack: "EffectMeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 5, multiBind: 6, dmgType: "chain", fullBoundBonus: 6,
+		visionRadius: 6, maxhp: 20, minLevel: 3, weight:0, movePoints: 3.5, attackPoints: 3,
+		attack: "EffectMeleeBindSuicideWill", suicideOnAdd: true, attackWidth: 3, attackRange: 1,
+		power: 8, multiBind: 10, dmgType: "chain", fullBoundBonus: 6,
 		terrainTags: {"secondhalf":1, "lastthird":4, "increasingWeight":2, "trap": 20, revenge: 20}, allFloors: true, shrines: ["Rope"],
 		ondeath: [
 			{type: "summon", enemy: "RopeSnake", range: 2.5, count: 3, strict: true, lifetime: 30},

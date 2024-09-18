@@ -250,7 +250,7 @@ KinkyDungeonStatDescUndeniable,"Born with an intense submissive desire, you cann
 
 
 KinkyDungeonStatFranticStruggle,"Frantic Struggle"
-KinkyDungeonStatDescFranticStruggle,"Your struggling is 3 times as fast, but less efficient in terms of stamina."
+KinkyDungeonStatDescFranticStruggle,"Your escaping is 3 times as fast, but less efficient in terms of stamina."
 
 KinkyDungeonStat28,"Escape Artist"
 KinkyDungeonStatDesc28,"Start with high Rope reputation, and all rope restraints are easier to escape from."
@@ -24368,6 +24368,7 @@ KDRestrainNPC,Edit Restraints
 
 KDDrawSelectedTab_Restrain,Editing Restraints
 KDDrawSelectedTab_Imprison,Imprison in Furniture
+KDDrawSelectedTab_Dropoff,Dropoff Prisoner
 
 KDBindNPCSlot_ModuleUtility,Module (Utility)
 KDBindNPCSlot_CollarTag,Leash

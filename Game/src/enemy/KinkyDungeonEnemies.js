@@ -5467,6 +5467,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 											{
 												//minPower: rThresh,
 												//onlyLimited: !enemy.Enemy.RestraintFilter?.limitedRestraintsOnly,
+												ignore: [...restraintAdd.map((rst) => {return rst.r.name;})],
 												looseLimit: true,
 												require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
 											}, enemy, undefined, true, undefined, {
@@ -5488,7 +5489,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 													maxPower: rThresh + 0.01,
 													looseLimit: true,
 													onlyUnlimited: true,
-													ignore: enemy.items,
+													ignore: [...enemy.items, ...restraintAdd.map((rst) => {return rst.r.name;})],
 												}, enemy, undefined, true, undefined, {
 													allowLowPower: KDRandom() < 0.5
 												});

@@ -1248,12 +1248,22 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
 						(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id, true);
 					if (en) {
+						KDBreakTether(en);
+						KDMoveEntity(en,
+							KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
+							KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
 						KDSetNPCRestraint(en.id, "Device", {
 							name: rest.name,
 							lock: "White",
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						});
+						KDNPCRestraintTieUp(en.id, {
+							name: rest.name,
+							lock: "White",
+							id: KinkyDungeonGetItemID(),
+							faction: KDDefaultNPCBindPalette,
+						}, 1);
 						//en.ceasefire = 9999;
 						en.playWithPlayer = 0;
 						if (KDNPCChar.get(en.id))

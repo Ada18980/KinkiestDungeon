@@ -1059,8 +1059,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				greyoutTooltip: "KDOccupied",
 				clickFunction: (_gagged, _player) => {
 
-					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
-					if (tile?.Furniture) {
+					let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
 						KinkyDungeonDrawState = "Collection";
 						KDCollectionTab = "Dropoff";
 						KDCurrentFacilityTarget = "";
@@ -1118,10 +1118,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 						let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 						if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+							KDBreakTether(en);
 							KDMoveEntity(en,
 								KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
 								KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
-							KDBreakTether(en);
 							if (nearestJail.restrainttags) {
 								let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
 									KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
@@ -1211,11 +1211,12 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 							let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 							if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+
+								KDBreakTether(en);
 								KDMoveEntity(en,
 									KDGameData.InteractTargetX + (nearestJail.direction?.x || 0),
 									KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
 
-								KDBreakTether(en);
 								if ((!en.specialBoundLevel || !en.specialBoundLevel.Furniture)) {
 									KDTieUpEnemy(en, en.Enemy.maxhp * 0.3 + 10, "Furniture", undefined);
 									KinkyDungeonAdvanceTime(1);
