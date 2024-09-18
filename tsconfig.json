@@ -87,7 +87,7 @@
         "Game/src/map/KinkyDungeonEffectTiles.ts",
         "Game/src/player/KinkyDungeonDressList.js",
         "Game/src/item/KinkyDungeonConsumables.ts",
-        "Game/src/item/KinkyDungeonConsumablesList.js",
+        "Game/src/item/KinkyDungeonConsumablesList.ts",
         "Game/src/item/KinkyDungeonInventory.ts",
         "Game/src/dialogue/KinkyDungeonLore.ts",
         "Game/src/dialogue/KinkyDungeonLoreList.ts",
