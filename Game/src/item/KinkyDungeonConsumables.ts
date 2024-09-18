@@ -1,29 +1,28 @@
 "use strict";
 
 /**
- *
- * @param {Named} item
- * @returns {consumable}
+ * @param item
  */
-function KDConsumable(item) {
+function KDConsumable(item: Named): consumable {
 	return KinkyDungeonConsumables[item.name];
 }
 
-function KinkyDungeonFindConsumable(Name) {
+function KinkyDungeonFindConsumable(Name: string): consumable {
 	for (let con of Object.values(KinkyDungeonConsumables)) {
 		if (con.name == Name) return con;
 	}
 	return undefined;
 }
 
-function KinkyDungeonFindBasic(Name) {
+/** Returns an abbreviated consumable.  */
+function KinkyDungeonFindBasic(Name: string): any {
 	for (let con of Object.values(KinkyDungneonBasic)) {
 		if (con.name == Name) return con;
 	}
 	return undefined;
 }
 
-function KinkyDungeonFindConsumableOrBasic(Name) {
+function KinkyDungeonFindConsumableOrBasic(Name: string): consumable | any {
 	for (let con of Object.values(KinkyDungeonConsumables)) {
 		if (con.name == Name) return con;
 	}
@@ -34,7 +33,7 @@ function KinkyDungeonFindConsumableOrBasic(Name) {
 	return undefined;
 }
 
-function KinkyDungeonGetInventoryItem(Name, Filter = Consumable) {
+function KinkyDungeonGetInventoryItem(Name: string, Filter: string = Consumable): itemPreviewEntry {
 	let Filtered = KinkyDungeonFilterInventory(Filter);
 	for (let item of Filtered) {
 		if (item.name == Name) return item;
@@ -42,7 +41,7 @@ function KinkyDungeonGetInventoryItem(Name, Filter = Consumable) {
 	return null;
 }
 
-function KinkyDungeonItemCount(Name) {
+function KinkyDungeonItemCount(Name: string): number {
 	let item = KinkyDungeonGetInventoryItem(Name);
 	if (item && item.item && item.item.quantity) {
 		return item.item.quantity;
@@ -50,7 +49,7 @@ function KinkyDungeonItemCount(Name) {
 	return 0;
 }
 
-function KinkyDungeonGetShopItem(Level, Rarity, Shop, ShopItems, uniqueTags = {}) {
+function KinkyDungeonGetShopItem(_Level: number, Rarity: number, _Shop: boolean, ShopItems: any[], uniqueTags: Record<string, boolean> = {}) {
 	let Table = [];
 	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	if (params.ShopExclusives) {
@@ -65,29 +64,28 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop, ShopItems, uniqueTags = {}
 			}
 		}
 	}
-	/**@type {Record<string, any>} */
-	let Shopable = Object.entries(KinkyDungeonConsumables).filter(([k, v]) => (v.shop));
+	let Shopable: Record<string, any> = Object.entries(KinkyDungeonConsumables).filter(([_k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = Consumable;
 		if ((KinkyDungeonStatsChoice.get('arousalMode') || !KinkyDungeonConsumables[s.name].arousalMode))
 			Table.push(s);
 	}
-	Shopable = Object.entries(KinkyDungneonBasic).filter(([k, v]) => (v.shop));
+	Shopable = Object.entries(KinkyDungneonBasic).filter(([_k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = "basic";
 		if ((!s.ignoreInventory || !KinkyDungeonInventoryGet(s.ignoreInventory)) && (KinkyDungeonStatsChoice.get('arousalMode') || !s.arousalMode))
 			Table.push(s);
 	}
-	Shopable = Object.entries(KinkyDungneonShopRestraints).filter(([k, v]) => (v.shop));
+	Shopable = Object.entries(KinkyDungneonShopRestraints).filter(([_k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = LooseRestraint;
 		if (!KinkyDungeonInventoryGet(s.name) && (KinkyDungeonStatsChoice.get('arousalMode') || !s.arousalMode))
 			Table.push(s);
 	}
-	Shopable = Object.entries(KinkyDungeonWeapons).filter(([k, v]) => (v.shop));
+	Shopable = Object.entries(KinkyDungeonWeapons).filter(([_k, v]) => (v.shop));
 	for (let S = 0; S < Shopable.length; S++) {
 		let s = Shopable[S][1];
 		s.shoptype = Weapon;
@@ -100,7 +98,7 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop, ShopItems, uniqueTags = {}
 		let available = Table.filter((item) => (item.rarity == R && !ShopItems.some((item2) => {return item2.name == item.name;})));
 		available = available.filter((item) => {
 
-			return !item.uniqueTags || !item.uniqueTags.some((t) => {return uniqueTags[t];});
+			return !item.uniqueTags || !item.uniqueTags.some((t: string) => {return uniqueTags[t];});
 		});
 		if (available.length > 0) return available[Math.floor(KDRandom() * available.length)];
 	}
@@ -109,12 +107,10 @@ function KinkyDungeonGetShopItem(Level, Rarity, Shop, ShopItems, uniqueTags = {}
 
 
 /**
- *
- * @param {consumable} consumable
- * @param {number} Quantity
- * @return {boolean}
+ * @param consumable
+ * @param Quantity
  */
-function KinkyDungeonChangeConsumable(consumable, Quantity) {
+function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number): boolean {
 	let item = KinkyDungeonInventoryGetConsumable(consumable.name);
 	if (item) {
 		item.quantity += Quantity;
@@ -131,7 +127,7 @@ function KinkyDungeonChangeConsumable(consumable, Quantity) {
 	return false;
 }
 
-function KinkyDungeonConsumableEffect(Consumable, type) {
+function KinkyDungeonConsumableEffect(Consumable: consumable, type?: string) {
 	if (!type) type = Consumable.type;
 
 	if (KDConsumableEffects[type]) {
@@ -173,7 +169,7 @@ function KinkyDungeonPotionCollar() {
 	return false;
 }
 
-function KinkyDungeonCanDrink(byEnemy) {
+function KinkyDungeonCanDrink(byEnemy?: boolean): boolean {
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).allowPotions) return true;
 	}
@@ -181,7 +177,7 @@ function KinkyDungeonCanDrink(byEnemy) {
 	return KinkyDungeonCanTalk(true);
 }
 
-function KinkyDungeonAttemptConsumable(Name, Quantity) {
+function KinkyDungeonAttemptConsumable(Name: any, Quantity: number): boolean {
 	if (KDGameData.SleepTurns > 0 || KDGameData.SlowMoveTurns > 0) return false;
 	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
 	if (!item) return false;
@@ -319,7 +315,7 @@ function KinkyDungeonAttemptConsumable(Name, Quantity) {
 	return true;
 }
 
-function KinkyDungeonUseConsumable(Name, Quantity) {
+function KinkyDungeonUseConsumable(Name: string, Quantity: number): boolean {
 	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
 	if (!item || item.item.quantity < Quantity) return false;
 
