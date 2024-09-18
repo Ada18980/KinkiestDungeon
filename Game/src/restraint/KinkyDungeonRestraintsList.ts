@@ -702,7 +702,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [{trigger: "tick", type: "ShadowHandTether", requiredTag: "shadowHandEnemy", chance: 1.0, dist: 1.5},{trigger: "beforeStruggleCalc", type: "shadowBuff", inheritLinked: true}]},
 
 	//region Slime
-	{inventory: true, name: "SlimeCollar", debris: "Slime", Asset: "LatexCollar2", factionColor: [[], [0]], Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4, DefaultLock: "Blue",
+	{inventory: true, name: "SlimeCollar", debris: "Slime", Asset: "LatexCollar2", factionColor: [[], [0]],
+		Color: "Default", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],
+		power: 9, weight: 4, DefaultLock: "Blue",
 		Model: "ElfCollarRestraint",
 		struggleBreak: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 0.33, "Pick": -0.15},

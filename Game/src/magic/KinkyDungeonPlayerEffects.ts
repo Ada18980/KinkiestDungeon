@@ -1660,8 +1660,10 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Miss", effect: effect};
 	},
-	"Hogtie": (_target, _damage, _playerEffect, spell, faction, _bullet, _entity) => {
-		let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraintsHogtie"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+	"Hogtie": (_target, _damage, playerEffect, spell, faction, _bullet, _entity) => {
+		let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraintsHogtie"]},
+			MiniGameKinkyDungeonLevel + (playerEffect?.power || spell?.power || 1),
+			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 		if (restraintAdd) {
 			KDPlayerEffectRestrain(spell, 1, ["ropeRestraintsHogtie"], faction);
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonRopeEngulf"), "#ff5277", 2);

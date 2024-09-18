@@ -901,6 +901,9 @@ interface enemy extends KDHasTags {
 	allied?: boolean,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
+	/** lookup condition in KDPathConditions,
+	 * basically allows enemies to path through an immobile enemy under certain circumstances */
+	pathcondition?: string,
 	/** Generates token chance = 1 - 1 / (1 + evasion) */
 	evasion?: number,
 	/** Generates token chance = 1 - 1 / (1 + block) */
@@ -2624,7 +2627,17 @@ interface KDLabel {
 	assigned: number,
 }
 
+interface RepopQueueData {
+	x: number,
+	y: number,
+	time: number,
+	entity: entity,
+	/** Allow placing the object at a slightly different location */
+	loose?: boolean,
+}
+
 interface KDMapDataType {
+	RepopulateQueue: RepopQueueData[],
 	Checkpoint: string,
 	Title: string,
 	PrisonState: string,

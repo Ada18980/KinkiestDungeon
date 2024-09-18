@@ -4786,7 +4786,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 									}
 								}
 								enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
-									KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(), KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
+									KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
 									AIData.ignoreLocks, AIData.MovableTiles,
 									undefined, undefined, undefined, enemy,
 									!enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
@@ -4890,7 +4890,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 						if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
 							enemy.path = KinkyDungeonFindPath(
 								enemy.x, enemy.y, enemy.gx, enemy.gy,
-								KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
+								KDEnemyHasFlag(enemy, "blocked"),
 								KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
 								AIData.ignoreLocks, AIData.MovableTiles,
 								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
@@ -5545,7 +5545,7 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
 								// Leash pullback
 								if (AIData.playerDist < 1.5) {
-									let path = KinkyDungeonFindPath(enemy.x, enemy.y, leashPos.x, leashPos.y, false, false, true, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined, enemy);
+									let path = KinkyDungeonFindPath(enemy.x, enemy.y, leashPos.x, leashPos.y, true, false, true, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined, enemy);
 									if (path && path.length > 0) {
 										let leashPoint = path[0];
 										let enemySwap = KinkyDungeonEnemyAt(leashPoint.x, leashPoint.y);
@@ -6157,7 +6157,14 @@ function KDIsImmobile(enemy, strict) {
  * @returns
  */
 function KinkyDungeonCanSwapWith(e, Enemy) {
-	if (KDIsImmobile(e) && (e.Enemy.immobile)) return false; // Definition of noSwap
+	if ((
+		(KDIsImmobile(e) && (e.Enemy.immobile))
+		|| e.Enemy?.pathcondition
+	) &&
+		(!e.Enemy?.pathcondition || !(
+			KDPathConditions[e.Enemy.pathcondition]
+			&& !KDPathConditions[e.Enemy.pathcondition].query(Enemy, e)
+		))) return false; // Fail path conditions
 	if (e && KDEnemyHasFlag(e, "noswap")) return false; // Definition of noSwap
 	if (Enemy && KDEnemyHasFlag(Enemy, "donotswap")) return false; // Definition of noSwap
 
@@ -6244,8 +6251,8 @@ function KinkyDungeonEnemyAt(x, y) {
  * @param {number} x
  * @param {number} y
  * @param {boolean} requireVision
- * @param {number} [vx]
- * @param {number} [vy]
+ * @param {number} [vx] - vision x, usually player x
+ * @param {number} [vy] - vision y, usually player y
  * @param {boolean} player
  * @returns {entity}
  */
@@ -6316,13 +6323,24 @@ function KinkyDungeonEnemyTryMove(enemy, Direction, delta, x, y, canSprint) {
 		}
 
 		if (ee && KinkyDungeonCanSwapWith(ee, enemy)) {
-			KDMoveEntity(ee, enemy.x, enemy.y, false,undefined, undefined, true);
-			KinkyDungeonSetEnemyFlag(enemy, "fidget", 0);
-			ee.warningTiles = [];
-			ee.movePoints = 0;
-			ee.stun = 1;
-			KinkyDungeonSetEnemyFlag(ee, "donotswap", 4);
-			KinkyDungeonSetEnemyFlag(ee, "fidget", 0);
+			let move = 1;
+			if (ee.Enemy?.pathcondition
+				&& KDPathConditions[ee.Enemy.pathcondition]
+				&& KDPathConditions[ee.Enemy.pathcondition].doPassthrough
+			) {
+				move = KDPathConditions[ee.Enemy.pathcondition].doPassthrough(enemy, ee, KDMapData);
+			}
+			if (move == 1) {
+				KDMoveEntity(ee, enemy.x, enemy.y, false,undefined, undefined, true);
+				KinkyDungeonSetEnemyFlag(enemy, "fidget", 0);
+				ee.warningTiles = [];
+				ee.movePoints = 0;
+				ee.stun = 1;
+				KinkyDungeonSetEnemyFlag(ee, "donotswap", 4);
+				KinkyDungeonSetEnemyFlag(ee, "fidget", 0);
+			} else if (move == 0) {
+				return false;
+			}
 		} else if (KinkyDungeonEntityAt(enemy.x + Direction.x, enemy.y + Direction.y)?.player) {
 			KDMovePlayer(enemy.x, enemy.y, false, false, false, true);
 		}
@@ -6537,12 +6555,19 @@ function KinkyDungeonEnemyCanMove(enemy, dir, MovableTiles, AvoidTiles, ignoreLo
 /**
  *
  * @param {number} id
+ * @param {KDMapDataType} [mapData]
  * @returns {entity}
  */
-function KinkyDungeonFindID(id) {
-	if (KDIDCache.get(id)) return KDIDCache.get(id);
-	for (let e of KDMapData.Entities) {
-		if (e.id == id) return e;
+function KinkyDungeonFindID(id, mapData) {
+	if (!mapData || mapData == KDMapData) {
+		if (KDIDCache.get(id)) return KDIDCache.get(id);
+		for (let e of KDMapData.Entities) {
+			if (e.id == id) return e;
+		}
+	} else {
+		for (let e of mapData.Entities) {
+			if (e.id == id) return e;
+		}
 	}
 	return null;
 }
@@ -8265,11 +8290,13 @@ function KDRemoveFromParty(enemy, capture) {
  * @param {entity} entity
  * @param {boolean} [makepersistent] - If true, the game will update the npc to be persistent
  * @param {boolean} [dontteleportpersistent] - If true, the game will create a new NPC not a persistent one
- * @param {boolean} [noLoadout]
+ * @param {boolean} [noLoadout] - if true, will not restock the NPC
+ * @param {KDMapDataType} [mapData] - map data to update
  * @returns {entity}
  */
 
-function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) {
+function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout, mapData) {
+	if (!mapData) mapData = KDMapData;
 	let data = {
 		enemy: entity,
 		x: entity.x,
@@ -8279,15 +8306,18 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) 
 		data: undefined,
 		loadout: undefined,
 		persistent: makepersistent,
+		mapData: mapData,
 	};
 
-	KDUpdateEnemyCache = true;
-	KDGetEnemyCache();
+	if (mapData == KDMapData) {
+		KDUpdateEnemyCache = true;
+		KDGetEnemyCache();
+	}
 
 	if (!dontteleportpersistent && KDIsNPCPersistent(data.enemy.id) && KinkyDungeonFindID(data.enemy.id)) {
 		// Move the enemy instead of creating
 
-		let npc = KinkyDungeonFindID(data.enemy.id);
+		let npc = KinkyDungeonFindID(data.enemy.id, mapData);
 
 		KDUnPackEnemy(data.enemy);
 		npc.x = data.x;
@@ -8297,7 +8327,8 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) 
 
 		if (data.enemy.hp <= 0.5) data.enemy.hp = 0.51;
 
-		KDUpdateEnemyCache = true;
+		if (mapData == KDMapData)
+			KDUpdateEnemyCache = true;
 
 		return npc;
 	} else if (!dontteleportpersistent && KDDeletedIDs[data.enemy.id]) {
@@ -8323,7 +8354,7 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) 
 		}
 	}
 	KinkyDungeonSendEvent("addEntity", data);
-	KDMapData.Entities.push(data.enemy);
+	mapData.Entities.push(data.enemy);
 	if (!noLoadout)
 		KDSetLoadout(data.enemy, data.loadout);
 	if (!data.enemy.data && data.enemy.Enemy.data) data.enemy.data = data.enemy.Enemy.data;
@@ -8338,12 +8369,15 @@ function KDAddEntity(entity, makepersistent, dontteleportpersistent, noLoadout) 
 			for (let b of buffs)
 				data.enemy.buffs[b.id] = b;
 	}
-	KDUpdateEnemyCache = true;
+	if (mapData == KDMapData)
+		KDUpdateEnemyCache = true;
 
 	// In case it wasnt made already
 	if (createpersistent) KDGetPersistentNPC(data.enemy.id);
 
-	if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
+
+	// Note: you have to do this yourself if you are manipulating enemies on other maps
+	if ((mapData == KDMapData) && KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 		KDGetPersistentNPC(data.enemy.id).collect = false;
 	return data.enemy;
 }

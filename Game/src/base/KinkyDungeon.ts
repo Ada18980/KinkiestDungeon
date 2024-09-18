@@ -4154,7 +4154,7 @@ function KDDrawLoadMenu() {
 			LoadMenuCurrentSlot = -1;
 		}
 		if (loadedSaveforPreview) {
-			LoadMenuCurrentSave = newValue;
+			LoadMenuCurrentSave = newValue ? newValue : KDSlot0;
 
 			// @ts-ignore
 			if (!loadedSaveforPreview.invalid) {
@@ -4167,7 +4167,7 @@ function KDDrawLoadMenu() {
 		}
 		return true;
 	}, true, CombarXX + 220, 880, 180, 64,
-	TextGet((!ElementValue("saveInputField") && KDSlot0) ?
+	TextGet((!newValue && KDSlot0) ?
 		"LoadFromCodeButton0" :
 		"LoadFromCodeButton"), "#ffffff", "");
 	// Load from File button
@@ -4551,7 +4551,8 @@ function KDDrawLoadMenu() {
 	}, (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != "")) ? true : false), 1570, 880, 350, 64,
 
 		LoadMenuCurrentSlot > 0 ? TextGet("KDPlayWithSlot") + LoadMenuCurrentSlot
-	: TextGet("KDPlayWithoutSlot"), (((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != "")) ? "#ffffff" : "#888888"), "");
+	: TextGet("KDPlayWithoutSlot"),
+	(((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != "")) ? "#ffffff" : "#888888"), "");
 }
 
 function KinkyDungeonDressModelPreview() {

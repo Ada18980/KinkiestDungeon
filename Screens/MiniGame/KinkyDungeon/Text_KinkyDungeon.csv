@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.38-RC3"
+KDVersionStr,"5.3.38-RC4"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -12849,6 +12849,9 @@ dBed_Sleep,(Lie down and sleep)
 rDollDropoff,"(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)"
 rDollDropoffUse,"(The pole rises and immobilizes you!)"
 dDollDropoff_Use,(Stand over it and place your feet in the footrests)
+dDollDropoff_NPC,(Drop off a prisoner from your collection)
+dDollDropoff_Enemy,(Put NME on the stand) (PRCNT% Chance)
+dDollDropoff_EnemyHelpless,(Put NME on the stand)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
 rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"

@@ -168,6 +168,8 @@ function KDDefaultMapData(RoomType: string = "", MapMod: string = ""): KDMapData
 		Checkpoint: MiniGameKinkyDungeonCheckpoint,
 		Title: "",
 
+		RepopulateQueue: [],
+
 		Labels: {},
 		PrisonState: "",
 		PrisonStateStack: [],
@@ -5423,7 +5425,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	}
 
 	if (delta > 0) {
-		KDTickMaps(
+		KDTickMaps(delta,
 			MiniGameKinkyDungeonLevel - KDMapTickRange,
 			MiniGameKinkyDungeonLevel + KDMapTickRange,
 			false,
@@ -6012,5 +6014,58 @@ function KDTurnToFace(dx: number, dy: number) {
 	if (KinkyDungeonPlayerEntity.facing_x || KinkyDungeonPlayerEntity.facing_y) {
 		KinkyDungeonPlayerEntity.facing_x_last = KinkyDungeonPlayerEntity.facing_x;
 		KinkyDungeonPlayerEntity.facing_y_last = KinkyDungeonPlayerEntity.facing_y;
+	}
+}
+
+
+function KDAddRepopQueue(repopdata: RepopQueueData, data: KDMapDataType) {
+	if (!data.RepopulateQueue)
+		data.RepopulateQueue = [];
+
+	data.RepopulateQueue.push(repopdata);
+}
+
+function KDUpdateRepopQueue(data: KDMapDataType, delta: number) {
+	// Obv only if there is any thing to repop
+	if (data.RepopulateQueue?.length > 0) {
+		// subtract delta from time
+		for (let e of data.RepopulateQueue) {
+			e.time -= delta;
+		}
+		let currentTodo = data.RepopulateQueue.filter((entry) => {
+			return entry.time < 0;
+		});
+		// Sort the todo list to repop in order
+		currentTodo = currentTodo.sort((a, b) => {
+			return a.time - b.time;
+		});
+		// Repop
+		for (let current of currentTodo) {
+			let point: KDPoint = null;
+			if (!KinkyDungeonEntityAt(
+				current.x, current.y, false, undefined, undefined, true
+			)) {
+				point = {
+					x: current.x,
+					y: current.y,
+				};
+			} else if (current.loose) {
+				point = KinkyDungeonGetNearbyPoint(current.x, current.y, true, undefined, false, true);
+			}
+			if (point) {
+				current.entity.x = point.x;
+				current.entity.y = point.y;
+				current.entity.visual_x = point.x;
+				current.entity.visual_y = point.y;
+				KDAddEntity(current.entity, false, false, true,
+					data);
+				// Remove these from queue
+				let ind = data.RepopulateQueue.indexOf(current);
+				if (ind >= 0)
+					data.RepopulateQueue.splice(
+						ind, 1
+					);
+			}
+		}
 	}
 }

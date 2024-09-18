@@ -1227,6 +1227,57 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}
 		return III;
 	},
+	Dropoff: (value, buttonSpacing, III, x, y) => {
+		let entity = KinkyDungeonFindID(value.id) || KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+		if (DrawButtonKDEx("DropoffNPC", (_b) => {
+
+			if (entity || KDNPCUnavailable(value.id, value.status)) {
+				return false;
+			}
+
+			let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
+			if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
+				let rest = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
+					KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					true,
+					"",
+					true,
+					false,
+					false, undefined, true);
+				if (rest) {
+					let en = DialogueCreateEnemy(KDGameData.InteractTargetX, KDGameData.InteractTargetY,
+						(value.Enemy || KinkyDungeonGetEnemyByName(value.type)).name, value.id, true);
+					if (en) {
+						KDSetNPCRestraint(en.id, "Device", {
+							name: rest.name,
+							lock: "White",
+							id: KinkyDungeonGetItemID(),
+							faction: KDDefaultNPCBindPalette,
+						});
+						//en.ceasefire = 9999;
+						en.playWithPlayer = 0;
+						if (KDNPCChar.get(en.id))
+							KDRefreshCharacter.set(KDNPCChar.get(en.id), true);
+						KDUpdatePersistentNPC(en.id, true);
+						//KinkyDungeonDrawState = "Game";
+						KinkyDungeonAdvanceTime(1);
+					}
+				}
+
+				if (KDToggles.Sound)
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockHeavy" + ".ogg");
+			}
+
+			return true;
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
+		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
+		undefined, undefined, entity != undefined,
+			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor)) {
+			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
+				KDTextGray0);
+		}
+		return III;
+	},
 	Restrain: (value, buttonSpacing, III, x, y) => {
 		if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (_b) => {
 			if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
