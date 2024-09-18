@@ -1663,7 +1663,7 @@ function KDCanBringAlly(e: entity): boolean {
 	&& !KDIsImprisoned(e);
 }
 
-function KDChooseFactions(factionList: string[], Floor: number, Tags: string[], BonusTags: any, Set: boolean) {
+function KDChooseFactions(factionList: string[], Floor: number, Tags: string[], BonusTags: Record<string, {bonus: number, mult: number}>, Set: boolean): string[] {
 	// Determine factions to spawn
 	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
 	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags));
@@ -1840,7 +1840,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 		let filterTags = JSON.parse(JSON.stringify(filterTagsBase));
 
 		if (altRoom && altRoom.factionSpawnsRequired) {
-			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]]] : "jailer";
+			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]] : "jailer";
 			if (jt) tags.push(jt);
 		}
 
@@ -5933,7 +5933,7 @@ function KDIsInBounds(x: number, y: number, pad: number = 1): boolean {
 /**
  * @param sprintdata
  */
-function KDSprintCost(sprintdata: any): number {
+function KDSprintCost(sprintdata?: any): number {
 	let data = {
 		sprintdata: sprintdata,
 		sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),

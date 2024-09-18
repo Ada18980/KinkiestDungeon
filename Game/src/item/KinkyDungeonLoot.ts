@@ -1,17 +1,16 @@
 "use strict";
 
-/** @type {item[]} */
-let KinkyDungeonLostItems = [];
+let KinkyDungeonLostItems: item[] = [];
 let KDTightRestraintsMod = 6;
 let KDTightRestraintsMult = 2;
 
 let KDPartialLootRecoveryChance = 0.25;
 
 /**
- * @param {item[]} list
- * @param {boolean} excludeBound - "bound weapons", i.e. magic knives and weapons in really old nomenclature back when there were like 4 weapons
+ * @param list
+ * @param excludeBound - "bound weapons", i.e. magic knives and weapons in really old nomenclature back when there were like 4 weapons
  */
-function KinkyDungeonAddLostItems(list, excludeBound) {
+function KinkyDungeonAddLostItems(list: item[], excludeBound: boolean) {
 	for (let item of list) {
 		let unique = true;
 		if (item.type && item.name == "Knife") unique = false;
@@ -53,9 +52,9 @@ let cursedRestraintCache = {
 let KinkyDungeonSpecialLoot = false;
 let KinkyDungeonLockedLoot = false;
 
-function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, minWeight = 0.1, minWeightFallback = true) {
+function KinkyDungeonLoot(Level: number, Index: string, Type: string, roll?: number, tile?: any, returnOnly?: boolean, noTrap?: boolean, minWeight: number = 0.1, minWeightFallback: boolean = true): boolean | any {
 	let lootWeightTotal = 0;
-	let lootWeights = [];
+	let lootWeights: { loot: any; weight: number; }[] = [];
 
 	let lootType = KinkyDungeonLootTable[Type];
 	for (let loot of lootType) {
@@ -69,8 +68,8 @@ function KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, mi
 			if (loot.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) prereqs = false;
 
 
-			if (loot.noflag?.some((flag) => {return KinkyDungeonFlags.get(flag) != undefined;})) prereqs = false;
-			if (loot.notag?.some((flag) => {return KinkyDungeonPlayerTags.get(flag) != undefined;})) prereqs = false;
+			if (loot.noflag?.some((flag: string) => {return KinkyDungeonFlags.get(flag) != undefined;})) prereqs = false;
+			if (loot.notag?.some((flag: any) => {return KinkyDungeonPlayerTags.get(flag) != undefined;})) prereqs = false;
 
 			if (loot.prerequisites && prereqs) {
 
@@ -253,7 +252,7 @@ As for why there are so many restraints in general rather than your typical sort
 */
 
 
-function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
+function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Lock?: string): string {
 	let data = {
 		loot: Loot,
 		replacemsg: Replacemsg,
@@ -301,8 +300,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			for (let e of enchant_extra) {
 				events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.weapon].events(weapon, Loot, "", enchantVariant, enchant_extra));
 			}
-			/** @type {KDWeaponVariant} */
-			let variant = {
+			let variant: KDWeaponVariant = {
 				template: weapon,
 				events: events,
 			};
@@ -397,10 +395,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 			unlockcurse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted(curselist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax));
 		}
 		if (hexVariant || enchantVariant) {
-			/** @type {KinkyDungeonEvent[]} */
-			let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
-			/** @type {KDRestraintVariant} */
-			let variant = {
+			let events: KinkyDungeonEvent[] = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+			let variant: KDRestraintVariant = {
 				template: armor,
 				events: events,
 			};
@@ -856,15 +852,15 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 							else
 								KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMistressKeysTakenAway"), "orange", 2);
 							remove = true;
-						} if (lostitem.type == Weapon && KDWeapon(lostitem) && !KinkyDungeonInventoryGet(lostitem)) {
+						} if (lostitem.type == Weapon && KDWeapon(lostitem) && !KinkyDungeonInventoryGet(lostitem.name)) {
 							//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 							//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 6);
 							remove = true;
-						} else if (lostitem.type == Outfit && KDOutfit(lostitem) && !KinkyDungeonInventoryGet(lostitem)) {
+						} else if (lostitem.type == Outfit && KDOutfit(lostitem) && !KinkyDungeonInventoryGet(lostitem.name)) {
 							//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 							//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
 							remove = true;
-						} else if (lostitem.type == LooseRestraint && KDRestraint(lostitem) && !KinkyDungeonInventoryGet(lostitem)) {
+						} else if (lostitem.type == LooseRestraint && KDRestraint(lostitem) && !KinkyDungeonInventoryGet(lostitem.name)) {
 							//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
 							//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
 							//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
@@ -881,7 +877,8 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 
 							recovOne = true;
 							//KinkyDungeonInventoryAdd(lostitem);
-							KinkyDungeonItemEvent(lostitem, KDRestraint(lostitem)?.armor || KinkyDungeonRestraintVariants[lostitem.name]);
+							// FIXME: Check that `!!KinkyDungeonRestraintVariants[]` is the right thing to do here.
+							KinkyDungeonItemEvent(lostitem, KDRestraint(lostitem)?.armor || !!KinkyDungeonRestraintVariants[lostitem.name]);
 						}
 						//KinkyDungeonLostItems.splice(I, 1);
 						//I -= 1;
@@ -916,7 +913,7 @@ function KinkyDungeonLootEvent(Loot, Floor, Replacemsg, Lock) {
 }
 
 
-function KinkyDungeonAddGold(value) {
+function KinkyDungeonAddGold(value: number) {
 	if (!isNaN(value)) {
 		KinkyDungeonGold += value;
 		//if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable()) CharacterChangeMoney(Player, Math.round(value/10));
@@ -927,7 +924,7 @@ function KinkyDungeonAddGold(value) {
 }
 
 
-function KDSpawnLootTrap(x, y, trap, mult, duration) {
+function KDSpawnLootTrap(x: number, y: number, _trap: any, _mult: number, duration: number) {
 	let spawned = 0;
 	/*let maxspawn = 1 + Math.round(Math.min(2 + KDRandom() * 2, KinkyDungeonDifficulty/25) + Math.min(2 + KDRandom() * 2, 0.5*MiniGameKinkyDungeonLevel/KDLevelsPerCheckpoint));
 	if (mult) maxspawn *= mult;
@@ -998,7 +995,7 @@ function KDSpawnLootTrap(x, y, trap, mult, duration) {
 	}
 }
 
-function KDGenChestTrap(guaranteed, x, y, chestType, lock, noTrap) {
+function KDGenChestTrap(guaranteed: boolean, x: number, y: number, chestType: string, lock: any, noTrap: boolean): any {
 	let trap = undefined;
 	if (chestType && chestType != "cache" && chestType != "chest" && chestType != "silver" && !KDTrapChestType[chestType]) return undefined;
 	if (lock && KDRandom() < 0.8) return undefined;
@@ -1052,26 +1049,27 @@ let KDChestTrapWeights = {
 	},
 };
 
-let KDTrapChestType = {
-	"default" : (guaranteed, x, y, chestType, lock, noTrap) => {
+type trapChestFunc = (guaranteed: boolean, x: number, y: number, chestType: string, lock: any, noTrap: boolean) => { trap: string, mult: number, time: number, duration?: number };
+
+let KDTrapChestType: Record<string, trapChestFunc> = {
+	"default" : (_guaranteed, _x, _y, _chestType, _lock, _noTrap) => {
 		let obj = KDGetWeightedString(KDChestTrapWeights) || "metalTrap";
 		return {trap: obj, mult: KDChestTrapWeights[obj].mult, time: KDChestTrapWeights[obj].time};
 	},
-	"shadow" : (guaranteed, x, y, chestType, lock, noTrap) => {
+	"shadow" : (_guaranteed, _x, _y, _chestType, _lock, _noTrap) => {
 		return {trap: "shadowTrap", mult: 2.5, duration: 300, time: 3};
 	},
 };
 
-function KDTriggerLoot(Loot, Type) {
+function KDTriggerLoot(Loot: string, Type: string) {
 	let lootobj = KinkyDungeonLootTable[Type].find((element) => {return element.name == Loot;});
 	console.log(KinkyDungeonLootEvent(lootobj, MiniGameKinkyDungeonLevel, lootobj.message));
 }
 
 /**
- *
- * @param {Record<string, object>} WeightList - contains values that have a weight param
+ * @param WeightList - contains values that have a weight param
  */
-function KDGetWeightedString(WeightList, params) {
+function KDGetWeightedString(WeightList: Record<string, any>, params?: any): any {
 	let WeightTotal = 0;
 	let Weights = [];
 
@@ -1091,19 +1089,18 @@ function KDGetWeightedString(WeightList, params) {
 }
 
 /**
- * @param {string[]} tags - Type of restraint
- * @returns {boolean}
+ * @param tags - Type of restraint
  */
-function KDCanCurse(tags) {
+function KDCanCurse(tags: string[]): boolean {
 	return KDCheckPrereq(undefined, "AlreadyCursed", {tags: tags, type: undefined, trigger: undefined}, {});
 }
 
 /**
  * Helper function used to summon cursed epicenters
- * @param {number} x
- * @param {number} y
+ * @param x
+ * @param y
  */
-function KDSummonCurseTrap(x, y) {
+function KDSummonCurseTrap(x: number, y: number) {
 	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["epicenter"]);
 	if (enemy) {
 		let point = {x: x, y: y};//KinkyDungeonGetNearbyPoint(x, y, true);

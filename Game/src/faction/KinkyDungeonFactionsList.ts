@@ -17,10 +17,7 @@ let KinkyDungeonFactionColors = {
 
 let KDFactionNoCollection = ["Ambush"];
 
-/**
- * @type {Record<string, Record<string, LayerFilter>>}
- */
-let KinkyDungeonFactionFilters = {
+let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 	"Jail": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8833333333333333,"brightness":1.5666666666666669,"red":4.216666666666667,"green":0.7166666666666667,"blue":0.7000000000000001,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
@@ -160,16 +157,15 @@ let KinkyDungeonFactionFilters = {
 };
 
 /**
- * @type {Record<string, KDFactionProps>}
  */
-let KDFactionProperties = {
+let KDFactionProperties: Record<string, KDFactionProps> = {
 	Dressmaker: {
 		honor: -1,
 		jailBackupFaction: "Apprentice",
 		honor_specific: {
 			Witch: 1,
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("dressmaker")) w += 40;
 			if (tags.includes("magical")) w += 5;
@@ -186,7 +182,7 @@ let KDFactionProperties = {
 		honor: 1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 10;
 			if (tags.includes("bountyhunter")) w += 40;
 			if (tags.includes("ninja")) w += 20;
@@ -218,7 +214,7 @@ let KDFactionProperties = {
 			}
 			return "";
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 0;
 			if (tags.includes("robot")) w += 100;
 			if (tags.includes("oldrobot")) w += 10;
@@ -237,7 +233,7 @@ let KDFactionProperties = {
 			Plant: 0,
 			Nature: 0,
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 0;
 			if (tags.includes("elf")) w += 50;
 			if (tags.includes("nature")) w += 40;
@@ -251,7 +247,7 @@ let KDFactionProperties = {
 		honor: 0,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 0;
 			if (tags.includes("bast")) w += 100;
 			if (tags.includes("mummy")) w += 50;
@@ -265,7 +261,7 @@ let KDFactionProperties = {
 		jailBackupFaction: "Bountyhunter",
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("maid")) w += 100;
 			if (tags.includes("slime")) w += 20;
@@ -281,7 +277,7 @@ let KDFactionProperties = {
 		jailBackupFaction: "Bountyhunter",
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("dragon")) w += 40;
 			if (tags.includes("elemental")) w += 15;
@@ -297,7 +293,7 @@ let KDFactionProperties = {
 		jailBackupFaction: "Witch",
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 0;
 			if (tags.includes("elemental")) w += 40;
 			if (tags.includes("magical")) w += 20;
@@ -317,7 +313,7 @@ let KDFactionProperties = {
 			Witch: 0,
 			Wizard: -1,
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("apprentice")) w += 40;
 			if (tags.includes("witch")) w += 25;
@@ -333,7 +329,7 @@ let KDFactionProperties = {
 		jailBackupFaction: "Dressmaker",
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("nevermere")) w += 40;
 			if (tags.includes("metal")) w += 15;
@@ -349,7 +345,7 @@ let KDFactionProperties = {
 		jailBackupFaction: "Apprentice",
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("alchemist")) w += 40;
 			if (tags.includes("latex")) w += 25;
@@ -365,7 +361,7 @@ let KDFactionProperties = {
 		honor: -1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 20;
 			if (tags.includes("bandit")) w += 40;
 			if (tags.includes("cavern")) w += 15;
@@ -398,7 +394,7 @@ let KDFactionProperties = {
 			}
 			return "";
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
 			return 0;
 		},
 		jailAlliedFaction: "Dollsmith",
@@ -414,7 +410,7 @@ let KDFactionProperties = {
 		honor: 1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
 			return 0;
 		},
 		jailOutfit: "Obsidian",
@@ -426,7 +422,7 @@ let KDFactionProperties = {
 		honor: 1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
 			return 0;
 		},
 		jailOutfit: "Nevermere",
@@ -438,7 +434,7 @@ let KDFactionProperties = {
 		honor: 1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
 			return 0;
 		},
 		jailOutfit: "Lingerie",
@@ -450,7 +446,7 @@ let KDFactionProperties = {
 		honor: 1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
 			return 0;
 		},
 		jailOutfit: "Bikini",
@@ -462,7 +458,7 @@ let KDFactionProperties = {
 		honor: -1,
 		honor_specific: {
 		},
-		weight: (Floor, Checkpoint, tags, bonustags, X, Y) => {
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
 			return 0;
 		},
 		jailOutfit: "BindingDress",
@@ -514,12 +510,12 @@ let KDHiddenFactions = [
 	"Adventurer",
 ];
 
-let KinkyDungeonHiddenFactions = new Map();
+let KinkyDungeonHiddenFactions: Map<string, boolean> = new Map();
 for (let f of KDHiddenFactions) {
 	KinkyDungeonHiddenFactions.set(f, true);
 }
 
-function KinkyDungeonHiddenFactionsPush(str) {
+function KinkyDungeonHiddenFactionsPush(str: any) {
 	KinkyDungeonHiddenFactions.set(str, true);
 }
 
@@ -1110,7 +1106,7 @@ let KinkyDungeonFactionRelationsBase = {
 
 let KinkyDungeonFactionRelations = Object.assign({}, KinkyDungeonFactionRelationsBase);
 
-function KDFactionRelation(a, b) {
+function KDFactionRelation(a: string, b: string): number {
 	if (a == "Rage" || b == "Rage") return -1.0;
 	if (a == b) return 1.0;
 	if (KDFactionRelations.get(a) && KDFactionRelations.get(a).get(b)) {
@@ -1119,12 +1115,9 @@ function KDFactionRelation(a, b) {
 	return 0.0;
 }
 
-/**
- * @type {Map<string, Map<string, number>>};
- */
-let KDFactionRelations = new Map();
+let KDFactionRelations: Map<string, Map<string, number>> = new Map();
 
-function KDInitFactions(Reset) {
+function KDInitFactions(Reset?: boolean) {
 	if (Reset) {
 		KinkyDungeonFactionRelations = Object.assign({}, KinkyDungeonFactionRelationsBase);
 		for (let relation of Object.entries(KinkyDungeonFactionRelationsBase)) {
@@ -1162,11 +1155,11 @@ function KDInitFactions(Reset) {
 
 /**
  * Sets faction relation and refreshes the map
- * @param {string} a
- * @param {string} b
- * @param {number} relation
+ * @param a
+ * @param b
+ * @param relation
  */
-function KDSetFactionRelation(a, b, relation) {
+function KDSetFactionRelation(a: string, b: string, relation: number) {
 	if (a == "Rage" || b == "Rage") return;
 	if (KinkyDungeonFactionRelations[a])
 		KinkyDungeonFactionRelations[a][b] = Math.max(-1, Math.min(1, relation));
@@ -1177,12 +1170,12 @@ function KDSetFactionRelation(a, b, relation) {
 
 /**
  * Changes faction relation and refreshes the map
- * @param {string} a
- * @param {string} b
- * @param {number} amount
- * @param {boolean} [AffectRivals]
+ * @param a
+ * @param b
+ * @param amount
+ * @param [AffectRivals]
  */
-function KDChangeFactionRelation(a, b, amount, AffectRivals) {
+function KDChangeFactionRelation(a: string, b: string, amount: number, AffectRivals?: boolean) {
 	if (a == "Rage" || b == "Rage") return;
 	if ((a != "Player" && KinkyDungeonHiddenFactions.has(a)) || (b != "Player" && KinkyDungeonHiddenFactions.has(b))) return;
 	if (!KinkyDungeonFactionRelations[a]) KinkyDungeonFactionRelations[a] = KinkyDungeonFactionRelationsBase[a] || 0;

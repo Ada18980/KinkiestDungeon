@@ -59,15 +59,13 @@ let KDEnchantVariantList = {
 };
 
 /**
- *
- * @param {number} amt
- * @param {string} item
- * @param {any} Loot
- * @param {string} curse
- * @param {string} primaryEnchantment
- * @returns {number}
+ * @param amt
+ * @param item
+ * @param Loot
+ * @param curse
+ * @param primaryEnchantment
  */
-function KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
+function KDGenericMultEnchantmentAmount(amt: number, _item: string, Loot: any, curse: string, primaryEnchantment: string): number {
 	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
 	if (Loot?.amtMult) amt *= Loot.amtMult;
 	if (primaryEnchantment) amt *= 0.45; // Reduce the power if there are already enchantments
@@ -77,14 +75,13 @@ function KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantme
 /**
  * Normalized for stats that are multiplicative, E.G mana costs
  * Only works for stuff normalized to a range of (0-100)
- * @param {number} amt
- * @param {string} item
- * @param {any} Loot
- * @param {string} curse
- * @param {string} primaryEnchantment
- * @returns {number}
+ * @param amt
+ * @param item
+ * @param Loot
+ * @param curse
+ * @param primaryEnchantment
  */
-function KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment) {
+function KDNormalizedMultEnchantmentAmount(amt: number, _item: string, Loot: any, curse: string, primaryEnchantment: string): number {
 	let original = amt * 0.01;
 	amt *= 1 + ((KDGetEffLevel() - 1)/(KinkyDungeonMaxLevel - 1)); // Higher floor = higher rewards
 	if (Loot?.amtMult) amt *= Loot.amtMult;
@@ -93,18 +90,17 @@ function KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchan
 	return 100 * (1 - (1 - original) * Math.pow(1 - original, (amt / (100 * original))));
 }
 
-/** @type {Record<string, KDEnchantment>} */
-let KDEventEnchantmentModular = {
+let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 	"CommonPair": {
 		tags: ["condition"],
 		types: {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
-				weight: (item, allEnchant) => {
+				weight: (_item, allEnchant) => {
 					if (allEnchant.includes("condition")) return 0;
 					return 5;
 				},
@@ -127,7 +123,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -138,7 +134,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.hobble) return 20;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 4);
 					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -154,7 +150,7 @@ let KDEventEnchantmentModular = {
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -163,7 +159,7 @@ let KDEventEnchantmentModular = {
 					if (KDWeapon({name: item})?.crit > KDDefaultCrit) return 10;
 					return 4;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
 					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -174,7 +170,7 @@ let KDEventEnchantmentModular = {
 						{original: "Accuracy", trigger: "icon", type: "tintIcon", power: 1, color: "#ffffff"},
 					];}},
 			0: /*restraint*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -184,7 +180,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.bindarms) return 1;
 					return 24;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
 					let amt = 6 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -201,7 +197,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 2,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -212,7 +208,7 @@ let KDEventEnchantmentModular = {
 					if (!KDRestraint({name: item})?.armor) return 15;
 					return 4;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
 					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -229,7 +225,7 @@ let KDEventEnchantmentModular = {
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (item, _allEnchant) => {
 					return (KinkyDungeonWeapons[item]?.type == 'ice' || KinkyDungeonWeapons[item]?.type == 'frost');
 				},
 				weight: (item, allEnchant) => {
@@ -237,7 +233,7 @@ let KDEventEnchantmentModular = {
 					if (KDWeapon({name: item})?.type == "ice" || KDWeapon({name: item})?.type == "frost") return 100;
 					return 15;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
 					let amt = 1 + Math.round((0.4 + 0.6*KDRandom()) * 2 * Math.pow(power, 0.6));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -256,7 +252,7 @@ let KDEventEnchantmentModular = {
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (item, _allEnchant) => {
 					return (KinkyDungeonWeapons[item]?.type == 'cold' || KinkyDungeonWeapons[item]?.light);
 				},
 				weight: (item, allEnchant) => {
@@ -267,7 +263,7 @@ let KDEventEnchantmentModular = {
 					if (KDWeapon({name: item})?.type == "cold") return 100;
 					return 20;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
 					let amt = 4 + Math.round((0.4 + 0.6*KDRandom()) * 5 * Math.pow(power, 0.7));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -286,14 +282,14 @@ let KDEventEnchantmentModular = {
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 1,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("SpellWard")) return 0;
 					return KinkyDungeonWeapons[item]?.magic ? 12 : 2 + (KinkyDungeonWeapons[item]?.tags?.includes("shield") ? 30 : 0);
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
 					let amt = 7 + Math.round((0.4 + 0.6*KDRandom()) * 20 * Math.pow(power, 0.6));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -304,7 +300,7 @@ let KDEventEnchantmentModular = {
 						{original: "SpellWard", trigger: "icon", type: "tintIcon", power: 2, color: "#4444ff"},
 					];}},
 			0: /*restraint*/{level: 2,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -312,7 +308,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.magic) return 40;
 					return 5;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
 					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -329,7 +325,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 2,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -337,7 +333,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.armor || KDRestraint({name: item})?.good) return 10;
 					return 0;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 5);
 					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 8 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -353,7 +349,7 @@ let KDEventEnchantmentModular = {
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 3,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -372,7 +368,7 @@ let KDEventEnchantmentModular = {
 						{original: "DamageResist", trigger: "inventoryTooltip", type: "varModifier", msg: "DamageResist", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
 					];}},
 			0: /*restraint*/{level: 3,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -400,7 +396,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 4,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -429,7 +425,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -442,7 +438,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.armor) return 8;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
 					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -459,7 +455,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -493,7 +489,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -501,7 +497,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.magic) return 12;
 					return 6;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 0.5 + Math.round((0.4 + 0.6*KDRandom()) * 1.5 * Math.pow(power, 0.5));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -518,7 +514,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, // weapon
 			0: /*restraint*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -548,7 +544,7 @@ let KDEventEnchantmentModular = {
 		types: {
 			2: null, //consumable
 			1: /*weapon*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -571,10 +567,10 @@ let KDEventEnchantmentModular = {
 						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#e7cf1a", bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
 			0: /*restraint*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
-				weight: (item, allEnchant, data) => {
+				weight: (item, allEnchant, _data) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
 					if (KDRestraint({name: item})?.armor) return 11;
 					return 8;
@@ -599,7 +595,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 2,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -607,7 +603,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.gag) return 20;
 					return 12;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 3);
 					let amt = 15 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -624,7 +620,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 4,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -633,7 +629,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.bindhands) return 1;
 					return 18;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 1.5 + Math.round((0.4 + 0.6*KDRandom()) * 3.5 * Math.pow(power, 0.33));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -651,7 +647,7 @@ let KDEventEnchantmentModular = {
 			2: null, //consumable
 			1: null, //weapon
 			0: /*restraint*/{level: 5,
-				filter: (item, allEnchant) => {
+				filter: (_item, _allEnchant) => {
 					return true;
 				},
 				weight: (item, allEnchant) => {
@@ -662,7 +658,7 @@ let KDEventEnchantmentModular = {
 					if (KDRestraint({name: item})?.heelpower) return 5;
 					return 3;
 				},
-				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 1.8 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.4));
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -675,26 +671,24 @@ let KDEventEnchantmentModular = {
 		}},
 };
 
-function KDGetItemPower(item) {
+function KDGetItemPower(item: string): number {
 	return KinkyDungeonGetRestraintByName(item)?.displayPower || KinkyDungeonGetRestraintByName(item)?.power || 0;
 }
 
-function KDGetItemRarity(item) {
+function KDGetItemRarity(item: string): number {
 	return KinkyDungeonFindWeapon(item)?.rarity || KinkyDungeonFindConsumable(item)?.rarity || 0;
 }
 
 /**
- *
- * @param {string} item
- * @param {*} Loot
- * @param {string} curse
- * @param {string} primaryEnchantment
- * @param {string[]} enchantments
- * @param {KDHexEnchantEventsData} data
- * @param {string[]} types
- * @returns {string}
+ * @param item
+ * @param Loot
+ * @param curse
+ * @param primaryEnchantment
+ * @param enchantments
+ * @param data
+ * @param types
  */
-function KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types) {
+function KDEnchantDetermineKind(_item: string, _Loot: any, _curse: string, _primaryEnchantment: string, _enchantments: string[], data: KDHexEnchantEventsData, types: string[]): string {
 	let type = CommonRandomItemFromList("", types);
 	if (data?.variant?.events) {
 		for (let event of data?.variant?.events) {

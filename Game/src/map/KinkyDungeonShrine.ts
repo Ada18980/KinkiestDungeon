@@ -97,7 +97,7 @@ function KinkyDungeonGenerateShop(Level: number): any[] {
 		items_high = -1;
 		itemCount += 2;
 	}
-	let uniqueTags = {};
+	let uniqueTags: Record<string, boolean> = {};
 	for (let I = itemCount; I > 0; I--) {
 		let Rarity = Math.floor(KDRandom() * 0.4 * KDMaxRarity/KinkyDungeonMaxLevel*Level);
 		if (items_high < 3) {

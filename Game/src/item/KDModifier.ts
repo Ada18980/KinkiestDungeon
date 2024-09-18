@@ -34,8 +34,7 @@ let KDModifierConditionVariantList = {
 	],
 };
 
-/**@type {Record<string, KDModifierEffect>} */
-let KDModifierEffects = {
+let KDModifierEffects: Record<string, KDModifierEffect> = {
 	SpellDamageBuff: {
 		tags: ['buff', 'positive', 'temp', 'magic'],
 		types: {
@@ -46,13 +45,13 @@ let KDModifierEffects = {
 			// Restraint
 			0: {
 				level: 6,
-				filter: (item, positive, data) => {
+				filter: (_item, _positive, _data) => {
 					return true;
 				},
-				weight: (item, positive, data) => {
+				weight: (_item, _positive, _data) => {
 					return 10;
 				},
-				events: (item, positive, data) => {
+				events: (item, _positive, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
 					let amt = 5 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
 
@@ -78,17 +77,17 @@ let KDModifierEffects = {
 			// Restraint
 			0: {
 				level: 5,
-				filter: (item, positive, data) => {
+				filter: (_item, _positive, _data) => {
 					return true;
 				},
-				weight: (item, positive, data) => {
+				weight: (_item, _positive, _data) => {
 					return 10;
 				},
-				onSelect: (item, data) => {
+				onSelect: (_item, data) => {
 					if (!data.element)
 						data.element = CommonRandomItemFromList("", KDELEMENTS);
 				},
-				events: (item, positive, data) => {
+				events: (item, _positive, data) => {
 					let type = data.element;
 
 					let power = Math.max(KDGetItemPower(item), 2);
@@ -117,17 +116,17 @@ let KDModifierEffects = {
 			// Restraint
 			0: {
 				level: 4,
-				filter: (item, positive, data) => {
+				filter: (_item, _positive, _data) => {
 					return true;
 				},
-				weight: (item, positive, data) => {
+				weight: (_item, _positive, _data) => {
 					return 10;
 				},
-				onSelect: (item, data) => {
+				onSelect: (_item, data) => {
 					if (!data.element)
 						data.element = CommonRandomItemFromList("", KDELEMENTS);
 				},
-				events: (item, positive, data) => {
+				events: (item, _positive, data) => {
 					let type = data.element;
 
 					let power = Math.max(KDGetItemPower(item), 2);
@@ -148,8 +147,7 @@ let KDModifierEffects = {
 	},
 };
 
-/**@type {Record<string, KDModifierCondition>} */
-let KDModifierConditions = {
+let KDModifierConditions: Record<string, KDModifierCondition> = {
 	OnTease: {
 		tags: ['accessible', 'melee', 'common', 'riskmed'],
 		types: {
@@ -160,10 +158,10 @@ let KDModifierConditions = {
 			// Restraint
 			0: {
 				level: 6,
-				filter: (item, pos, neut, neg, data) => {
+				filter: (_item, _pos, _neut, _neg, _data) => {
 					return true;
 				},
-				weight: (item, pos, neut, neg, data) => {
+				weight: (_item, _pos, _neut, _neg, _data) => {
 					return 10;
 				},
 				events: (item, pos, neut, neg, data) => {
@@ -194,10 +192,10 @@ let KDModifierConditions = {
 			// Restraint
 			0: {
 				level: 6,
-				filter: (item, pos, neut, neg, data) => {
+				filter: (_item, _pos, _neut, _neg, data) => {
 					return data.element && KDELEMENTS.includes(data.element);
 				},
-				weight: (item, pos, neut, neg, data) => {
+				weight: (_item, _pos, _neut, _neg, _data) => {
 					return 100;
 				},
 				events: (item, pos, neut, neg, data) => {
@@ -223,17 +221,15 @@ let KDModifierConditions = {
 };
 
 /**
- *
- * @param {string} item
- * @param {ModifierEnum} type
- * @param {KDModifierEffect[]} pos
- * @param {KDModifierEffect[]} neut
- * @param {KDModifierEffect[]} neg
- * @param {KDModifierConditionData} data
- * @returns {KinkyDungeonEvent[]}
+ * @param item
+ * @param type
+ * @param pos
+ * @param neut
+ * @param neg
+ * @param data
  */
-function KDGenericEffects(item, type, pos, neut, neg, data) {
-	let effects = [];
+function KDGenericEffects(item: string, type: ModifierEnum, pos: KDModifierEffect[], neut: KDModifierEffect[], neg: KDModifierEffect[], data: KDModifierConditionData): KinkyDungeonEvent[] {
+	let effects: KinkyDungeonEvent[] = [];
 	for (let eff of [...pos]) {
 		effects.push(...eff.types[type].events(item, PosNeutNeg.positive, data));
 	}

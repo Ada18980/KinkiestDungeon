@@ -2,10 +2,7 @@
 
 let KDMaxRarity = 10; // By normal means
 
-/**
- * @type {Record<string, consumable>}
- */
-let KinkyDungeonConsumables = {
+let KinkyDungeonConsumables: Record<string, consumable> = {
 	"PotionMana" : {name: "PotionMana", potion: true, rarity: 0, shop: true, type: "restore", mp_instant: 5, mpool_instant: 0, mp_gradual: 0, scaleWithMaxMP: true, gagFloor: 0.5, duration: 0, sfx: "PotionDrink"},
 	"ManaOrb" : {name: "ManaOrb", noHands: true, rarity: 2, shop: true, type: "restore", mp_instant: 0, mpool_instant: 20, mp_gradual: 0, scaleWithMaxMP: false, duration: 0, sfx: "Invis"},
 	"PotionWill" : {name: "PotionWill", potion: true, rarity: 1, shop: true, type: "restore", wp_instant: 2.5, wp_gradual: 0, scaleWithMaxWP: true, duration: 0, gagFloor: 0.5, sfx: "PotionDrink"},
@@ -49,10 +46,7 @@ let KinkyDungeonConsumables = {
 };
 
 // Separate for organizational purposes
-/**
- * @type {Record<string, consumable>}
- */
-let KDCookies = {
+let KDCookies: Record<string, consumable> = {
 	"Cookie" : {name: "Cookie", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
 	"Brownies" : {name: "Brownies", rarity: 1, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
 	"Donut" : {name: "Donut", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
@@ -106,9 +100,8 @@ let KinkyDungneonShopRestraints = {
 	"Sunglasses2" : {name: "Sunglasses2", rarity: 2, shop: true, uniqueTags: ["shades"]},
 };
 
-/** @type {Record<string, (consumable) => void>} */
-let KDConsumableEffects = {
-	"Snuffer": (Consumable) => {
+let KDConsumableEffects: Record<string, (Consumable: consumable) => void> = {
+	"Snuffer": (_Consumable) => {
 		let tiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		for (let tile of Object.values(tiles)) {
 			if (tile?.tags?.includes("snuffable")) {
@@ -123,7 +116,7 @@ let KDConsumableEffects = {
 		}
 		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5555", 3);
 	},
-	"SackOfSacks": (Consumable) => {
+	"SackOfSacks": (_Consumable) => {
 		let tiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		for (let tile of Object.values(tiles)) {
 			if (tile?.tags?.includes("unsackable")) {
@@ -156,7 +149,8 @@ let KDConsumableEffects = {
 		}
 	},
 	"subAdd": (Consumable) => {
-		let amount = Consumable.data?.subAdd || 5;
+		//  FIXME: Check this translation is correct.
+		let amount = typeof Consumable.data?.subAdd === 'number' ? Consumable.data?.subAdd : 5;
 		KinkyDungeonChangeRep("Ghost", amount);
 	},
 	"restore": (Consumable) => {
@@ -198,7 +192,6 @@ let KDConsumableEffects = {
 	},
 };
 
-/** @type {Record<string, (item: item, Quantity: number) => boolean>} */
-let KDConsumablePrereq = {
+let KDConsumablePrereq: Record<string, (item: item, Quantity: number) => boolean> = {
 
 };
