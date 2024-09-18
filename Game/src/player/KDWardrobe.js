@@ -320,6 +320,9 @@ function KDDrawColorSliders(X, Y, C, Model) {
 							Model.Properties[KDCurrentLayer].XPivot = parsed.XPivot;
 							Model.Properties[KDCurrentLayer].YPivot = parsed.YPivot;
 							Model.Properties[KDCurrentLayer].XScale = parsed.XScale;
+							Model.Properties[KDCurrentLayer].Protected = parsed.Protected;
+							Model.Properties[KDCurrentLayer].NoOverride = parsed.NoOverride;
+							Model.Properties[KDCurrentLayer].HideOverridden = parsed.HideOverridden;
 							Model.Properties[KDCurrentLayer].YScale = parsed.YScale;
 							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 							KDRefreshProps = true;
@@ -346,6 +349,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			"YScale": "1",
 			"Rotation": "0",
 			"LayerBonus": "0",
+			"Protected": "0",
 			"SuppressDynamic": "0",
 			"HideOverridden": "0",
 			"NoOverride": "0",
@@ -360,7 +364,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			YY += 400;
 		} else {
 			let YYold = YY;
-			YY -= 25;
+			YY -= 24;
 			for (let field0 of Object.entries(fields)) {
 
 				let field = field0[0];
@@ -1614,7 +1618,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+					if (a.Model && !(KDModelIsProtected(a.model)) && !a.Model.Restraint && !a.Model.Cosplay) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1634,7 +1638,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+					if (a.Model && !KDModelIsProtected(a.Model) && !a.Model.Restraint && !a.Model.Cosplay) {
 						exportData.push({
 							Model: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1656,7 +1660,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Face") && !a.Model.Categories?.includes("Hair") && !a.Model.Categories?.includes("Cosplay"))) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Face") && !a.Model.Categories?.includes("Hair") && !a.Model.Categories?.includes("Cosplay"))) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1675,7 +1679,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Hairstyles") && !a.Model.Categories?.includes("Cosplay"))) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Hairstyles") && !a.Model.Categories?.includes("Cosplay"))) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1694,7 +1698,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Cosplay"))) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Cosplay"))) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,

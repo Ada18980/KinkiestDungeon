@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.38-RC4"
+KDVersionStr,"5.3.38-RC6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -2746,28 +2746,28 @@ KinkyDungeonSpellCrystalBoltSingle,Crystal Bolt
 
 
 NameDressmakerQuest,Tailor
-KillDressmakerQuest,You murder the tailor!
+KillDressmakerQuest,You rob the tailor!
 
 NameApprenticeQuest,Student
-KillApprenticeQuest,You murder the student!
+KillApprenticeQuest,You rob the student!
 
 NameDragonheartQuest,Tactician
-KillDragonheartQuest,You murder the tactician!
+KillDragonheartQuest,You rob the tactician!
 
 NameMaidforceQuest,Informant
-KillMaidforceQuest,You murder the informant!
+KillMaidforceQuest,You rob the informant!
 
 NameBanditQuest,Thug
-KillBanditQuest,You murder the thug!
+KillBanditQuest,You rob the thug!
 
 NameAntiqueQuest,Antique Merchant
 KillAntiqueQuest,You smash the antique merchant!
 NameBlacksmithQuest,Blacksmith
-KillBlacksmithQuest,You murder the blacksmith!
+KillBlacksmithQuest,You rob the blacksmith!
 NameArmorerQuest,Armorer
-KillArmorerQuest,You murder the armorer!
+KillArmorerQuest,You rob the armorer!
 NameBowyerQuest,Bowyer
-KillBowyerQuest,You murder the bowyer!
+KillBowyerQuest,You rob the bowyer!
 NameShadyQuest,Not a Kidnapper
 KillShadyQuest,You bring the kidnapper to justice!
 
@@ -24250,6 +24250,7 @@ KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
 KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
 KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
+KDPropField_Protected,Protected
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File

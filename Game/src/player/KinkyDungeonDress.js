@@ -81,7 +81,7 @@ function KinkyDungeonDressSet(C) {
 		for (let A = 0; A < C.Appearance.length; A++) {
 			let save = false;
 			if (StandalonePatched) {
-				if (C.Appearance[A].Model?.Protected) save = true;
+				if (C.Appearance[A].Model && KDModelIsProtected(C.Appearance[A].Model)) save = true;
 				if (!C.Appearance[A].Model?.Restraint) save = true;
 				if (save) {
 					KDGetDressList().Default.push({
@@ -177,7 +177,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 	if (!noDressOutfit && KDNPCStyle.get(Character)?.customOutfit) {
 		DressList = [];
 		for (let a of JSON.parse(DecompressB64(KDNPCStyle.get(Character)?.customOutfit))) {
-			if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+			if (a.Model && !KDModelIsProtected(a.Model) && !a.Model.Restraint && !a.Model.Cosplay) {
 				DressList.push({
 					Item: a.Model.Name || a.Model,
 					Group: a.Model.Group || a.Model.Name || a.Model,
@@ -222,7 +222,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 				if (StandalonePatched) {
 					let model = Character.Appearance[A]?.Model;
 					if (model && ((!model.Restraint && !model.Group?.startsWith("Item") && !clothGroups[model.Group || model.Name])
-						|| model.Protected || model.SuperProtected)) {
+						|| KDModelIsProtected(model) || model.SuperProtected)) {
 						//Character.Appearance.splice(A, 1);
 						//A -= 1;
 						newAppearance[model.Group || model.Name] = Character.Appearance[A];
@@ -798,7 +798,7 @@ function KDCharacterAppearanceNaked(C) {
 				let f = !(C.Appearance[A]?.Model
 					&& ((C == KinkyDungeonPlayer &&
 						KDProtectedCosplay.includes(C.Appearance[A].Model.Group))
-						|| C.Appearance[A].Model.Protected
+						|| KDModelIsProtected(C.Appearance[A].Model)
 						|| C.Appearance[A].Model.SuperProtected));
 				if (!f){continue;}
 				C.Appearance.splice(A, 1);

@@ -213,7 +213,8 @@
         "Data/ModelDresses.ts",
         "Game/src/player/KDWardrobe.js",
         "Game/src/restraint/KDGenRestraintUniform.ts",
-        "Game/src/enemy/KDPathConditions.ts"
+        "Game/src/enemy/KDPathConditions.ts",
+        "Game/src/map/KDShop.ts"
     ],
     "compilerOptions": {
         "target": "es2020",

@@ -1906,6 +1906,8 @@ interface spell {
 	miscastSfx?: string,
 	/** This spell doesnt hurt the target upon directly hitting, only the AoE */
 	noDirectDamage?: true,
+	/** This spell doesnt apply the hit effect on collision*/
+	noDirectHit?: true,
 	/** This spell does not leave a warning to the player */
 	hideWarnings?: boolean,
 	/** This spell does leave a warning to the player */

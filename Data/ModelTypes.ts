@@ -240,6 +240,7 @@ type LayerProperties = {
     Rotation?: number,
     XScale?: number,
     YScale?: number,
+    Protected?: number,
     SuppressDynamic?: number,
     HideOverridden?: number,
     NoOverride?: number,

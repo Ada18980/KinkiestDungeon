@@ -1108,13 +1108,16 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 					volatilehit: spell.volatilehit,
 					width:sz, height:sz, summon:spell.summon,
 					targetX: tX, targetY: tY,
+					aoe: spell.type == "dot" ? spell.bulletAoE : undefined,
 					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, lifetime:spell.delay +
-						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0), cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
+						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0),
+					cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
-					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
+					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit,
+					noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					damage: spell.type == "inert" ? null : {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult,
 						shield_crit: spell?.shield_crit, // Crit thru shield
 						shield_stun: spell?.shield_stun, // stun thru shield
@@ -1151,7 +1154,8 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 					targetX: tX, targetY: tY,
 					followPlayer: (!enemy && player && spell.followCaster) ? true : undefined,
 					followCaster: (enemy && spell.followCaster) ? enemy.id : undefined,
-					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events, aoe: spell.aoe,
+					source: (entity?.player ? -1 : entity?.id) || bullet?.bullet?.source, lifetime:spell.lifetime, cast: cast, dot: spell.dot, events: spell.events,
+					aoe: spell.aoe,
 					passthrough:(spell.CastInWalls || spell.WallsOnly || spell.noTerrainHit), hit:spell.onhit, noDoubleHit: spell.noDoubleHit, effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
 					damage: {evadeable: spell.evadeable, noblock: spell.noblock,  damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
 						shield_crit: spell?.shield_crit, // Crit thru shield

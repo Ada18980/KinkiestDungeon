@@ -1932,3 +1932,30 @@ class Transform {
 			transform.rot, )
 	}
 }
+
+function KDModelIsProtected(m: Model): boolean {
+	if (m) {
+		// Check if at least one layer is
+		if (m.Properties) {
+			if (Object.values(m.Properties).some(
+				(l) => {
+					return l.Protected > 0;
+				}
+			)) return true;
+		}
+		// Check base model property
+		if (m.Protected) {
+			if (m.Properties) {
+				if (Object.values(m.Properties).some(
+					(l) => {
+						return l.Protected < 0;
+					}
+				)) return false;
+			}
+
+			return true;
+		}
+	}
+
+	return false;
+}

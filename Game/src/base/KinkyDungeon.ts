@@ -562,6 +562,7 @@ interface KDGameDataBase {
 	KDChasingEnemies:		entity[],
 	ShopRewardProgram:		number,
 	ShopRewardProgramThreshold:	number,
+	ShopkeepersMurdered: number,
 	tickAlertTimer:			boolean,
 	HostileFactions:		string[],
 	MovePoints:			number,
@@ -683,6 +684,8 @@ let KDGameDataBase: KDGameDataBase = {
 	FoodTarget: -1,
 	ShopRewardProgram: 0,
 	ShopRewardProgramThreshold: 500,
+
+	ShopkeepersMurdered: 0,
 
 	QuickLoadouts: {},
 	CurrentLoadout: 0,

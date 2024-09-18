@@ -30,6 +30,13 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.38-RC6
+- Fix some issues with runes (aoe, cast time)
+- New Expert Tool tag: Protected. Put 1 here to make the layer protected.
+If a model has any protected layers then it will be treated like ears, etc.
+Converse: if you set it to -1 then it will make a protected model no longer protected.
+1 overrides -1.
+
 5.3.38-RC5
 - fixed monster rope hogtie crash
 - enemies can now path thru barricades and destructible doors

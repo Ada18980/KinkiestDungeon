@@ -52,7 +52,17 @@ let cursedRestraintCache = {
 let KinkyDungeonSpecialLoot = false;
 let KinkyDungeonLockedLoot = false;
 
-function KinkyDungeonLoot(Level: number, Index: string, Type: string, roll?: number, tile?: any, returnOnly?: boolean, noTrap?: boolean, minWeight: number = 0.1, minWeightFallback: boolean = true): boolean | any {
+function KinkyDungeonLoot(
+	Level: number,
+	Index: string,
+	Type: string,
+	roll?: number,
+	tile?: any,
+	/** Used for the case where you only want to return the loot object and not execute it */
+	returnOnly?: boolean,
+	noTrap?: boolean,
+	minWeight: number = 0.1,
+	minWeightFallback: boolean = true): boolean | any {
 	let lootWeightTotal = 0;
 	let lootWeights: { loot: any; weight: number; }[] = [];
 

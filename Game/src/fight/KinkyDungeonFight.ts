@@ -1907,13 +1907,17 @@ function KDCheckCollideableBullets(entity: entity, force: boolean) {
 				&& (b.time > 1 // Only bullets that arent instantly ending
 					&& (!entity.player || !(b.vx != 0 || b.vy != 0)))) {// Enemies can run into bullets as they move, but the player can walk into bullets that are moving without being hit
 			let pierce = b.bullet.spell && (b.bullet.spell.piercing || b.bullet.spell.pierceEnemies);
-			//let noDirect = b.bullet.spell && (b.bullet.spell.noDirectDamage);
+
 			//if (noDirect && b.bullet.damage.damage != 0) continue;
 			if (pierce && b.bullet.damage.damage != 0) continue;
 			if (!KDBulletCanHitEntity(b, entity) && !force) continue;
 
-			if (entity.player) KDBulletHitPlayer(b, KinkyDungeonPlayerEntity);
-			else KDBulletHitEnemy(b, entity, 0, b.bullet.NoMsg);
+			let noDirect = b.bullet.spell && (b.bullet.spell.noDirectHit);
+			if (!noDirect) {
+				if (entity.player) KDBulletHitPlayer(b, KinkyDungeonPlayerEntity);
+				else KDBulletHitEnemy(b, entity, 0, b.bullet.NoMsg);
+			}
+
 			if (!pierce) {
 				KDMapData.Bullets.splice(E, 1);
 				KinkyDungeonBulletsID[b.spriteID] = null;
