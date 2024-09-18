@@ -43,19 +43,19 @@ let KDCurseUnlockList = {
  * condition: required to remove it
  * remove: happens when removing
  * events: these events are added to the restraint
- * @type {Record<string, KDCursedDef>} */
-let KDCurses = {
+ */
+let KDCurses: Record<string, KDCursedDef> = {
 	"GhostLock" : {
 		powerMult: 5,
 		lock: true,
 		level: 10,
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonItemCount("Ectoplasm") >= 25;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
 		}
 	},
@@ -63,13 +63,13 @@ let KDCurses = {
 		powerMult: 4,
 		lock: true,
 		level: 15,
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonItemCount("DollID") >= 4;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -4);
 		}
 	},
@@ -77,13 +77,13 @@ let KDCurses = {
 		powerMult: 2.8,
 		lock: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonSpellPoints > 0;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonSpellPoints -= 1;
 		}
 	},
@@ -91,14 +91,14 @@ let KDCurses = {
 		powerMult: 4,
 		lock: true,
 		level: 12,
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
 			return KinkyDungeonSpellPoints >= amount;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
 			KinkyDungeonSpellPoints -= amount;
 		},
@@ -116,16 +116,16 @@ let KDCurses = {
 		noShrine: true,
 		activatecurse: true,
 		level: 30,
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			for (let inv of KinkyDungeonAllRestraintDynamic()) {
 				if (KDGetCurse(inv.item) == "CursedDamage") return false;
 			}
 			return true;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			//KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
 		}
 	},
@@ -136,13 +136,13 @@ let KDCurses = {
 		activatecurse: true,
 		level: 9,
 		customIcon_hud: "StarCurse",
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return false;
 		},
-		remove: (item, host) => {},
+		remove: (_item, _host) => {},
 		customInfo: (item, Curse) => {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
@@ -159,26 +159,26 @@ let KDCurses = {
 		noShrine: true,
 		customIcon_RemoveFailure: "Locks/Gold",
 		level: 10,
-		weight: (item) => {
+		weight: (_item) => {
 			return 1;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonItemCount("MistressKey") > 0;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
 		}
 	},
 	"5Keys" : {
 		lock: true,
 		level: 3,
-		weight: (item) => {
+		weight: (_item) => {
 			return 3;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonRedKeys >= 5;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonRedKeys -= 5;
 		}
 	},
@@ -186,13 +186,13 @@ let KDCurses = {
 		powerMult: 2.1,
 		lock: true,
 		level: 1,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonRedKeys >= 1;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonRedKeys -= 1;
 		}
 	},
@@ -200,13 +200,13 @@ let KDCurses = {
 		lock: true,
 		activatecurse: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonBlueKeys >= 1;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonBlueKeys -= 1;
 		}
 	},
@@ -214,11 +214,11 @@ let KDCurses = {
 		powerMult: 2.2,
 		activatecurse: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "fire", trigger: "beforePlayerDamage", kind: "CurseMelt"},
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "crush", trigger: "beforePlayerDamage", kind: "CurseMelt"},
@@ -228,11 +228,11 @@ let KDCurses = {
 		powerMult: 2.2,
 		activatecurse: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 4, damage: "ice", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
 			{type: "RemoveOnDmg", power: 1, mult: 0.5, count: 4, damage: "acid", trigger: "beforePlayerDamage", kind: "CurseExtinguish"},
@@ -247,11 +247,11 @@ let KDCurses = {
 		powerMult: 2.2,
 		activatecurse: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 2, damage: "electric", trigger: "beforePlayerDamage", kind: "CurseShock"},
 			{type: "RemoveOnDmg", power: 1, count: 2, damage: "estim", trigger: "beforePlayerDamage", kind: "CurseShock"},
@@ -261,11 +261,11 @@ let KDCurses = {
 		powerMult: 2.2,
 		activatecurse: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 5, damage: "glue", trigger: "beforePlayerDamage", kind: "CurseGlue"}
 		],
@@ -274,11 +274,11 @@ let KDCurses = {
 		powerMult: 2.2,
 		activatecurse: true,
 		level: 4,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 5, damage: "chain", trigger: "beforePlayerDamage", kind: "CurseChain"}
 		],
@@ -287,11 +287,11 @@ let KDCurses = {
 		powerMult: 2.5,
 		activatecurse: true,
 		level: 6,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "afterCapture", kind: "SacrificeMage"}
 		],
@@ -300,16 +300,16 @@ let KDCurses = {
 		powerMult: 2,
 		activatecurse: true,
 		level: 2,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		onApply: (item, host) => {
+		onApply: (_item, _host) => {
 			KinkyDungeonChangeWill(-1);
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonStatWill >= KinkyDungeonStatWillMax*0.99;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			// For free!
 		}
 	},
@@ -317,13 +317,13 @@ let KDCurses = {
 		powerMult: 2,
 		activatecurse: true,
 		level: 2,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
-		condition: (item) => {
+		condition: (_item) => {
 			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
 		},
-		remove: (item, host) => {
+		remove: (_item, _host) => {
 			KinkyDungeonChangeMana(-20, false, 0, true, true);
 		}
 	},
@@ -331,71 +331,71 @@ let KDCurses = {
 		powerMult: 2.5,
 		activatecurse: true,
 		level: 2,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineWill"}
 		],
-		condition: (item) => {
+		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Will";
 			});
-		}, remove: (item, host) => {/* For free! */}},
+		}, remove: (_item, _host) => {/* For free! */}},
 	"ShrineElements" : {
 		powerMult: 2.5,
 		activatecurse: true,
 		level: 2,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineElements"}
 		],
-		condition: (item) => {
+		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Elements";
 			});
-		}, remove: (item, host) => {/* For free! */}},
+		}, remove: (_item, _host) => {/* For free! */}},
 	"ShrineConjure" : {
 		powerMult: 2.5,
 		activatecurse: true,
 		level: 2,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineConjure"}
 		],
-		condition: (item) => {
+		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Conjure";
 			});
-		}, remove: (item, host) => {/* For free! */}},
+		}, remove: (_item, _host) => {/* For free! */}},
 	"ShrineIllusion" : {
 		powerMult: 2.5,
 		activatecurse: true,
 		level: 2,
-		weight: (item) => {
+		weight: (_item) => {
 			return 10;
 		},
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineIllusion"}
 		],
-		condition: (item) => {
+		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Illusion";
 			});
-		}, remove: (item, host) => {/* For free! */}},
+		}, remove: (_item, _host) => {/* For free! */}},
 	"OrgasmResist" : {
 		powerMult: 2.9,
 		activatecurse: true,
 		level: 5,
-		weight: (item) => {
+		weight: (_item) => {
 			return KinkyDungeonStatsChoice.get("arousalMode") ? 7 : 0;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "RemoveOnEdge", power: 1, count: 50, trigger: "tick", kind: "OrgasmResist", msg: "KDRemoveOnEdge"},
 			{type: "IncrementRemovalVar", power: 3, count: 50, trigger: "edge", kind: "OrgasmResist", msg: "KDRemoveOnEdgeSucceed"},
@@ -406,11 +406,11 @@ let KDCurses = {
 		powerMult: 2.5,
 		activatecurse: true,
 		level: 5,
-		weight: (item) => {
+		weight: (_item) => {
 			return KinkyDungeonStatsChoice.get("arousalMode") ? 9 : 0;
 		},
-		condition: (item) => {return false;},
-		remove: (item, host) => {},
+		condition: (_item) => {return false;},
+		remove: (_item, _host) => {},
 		events: [
 			{type: "IncrementRemovalVar", power: 25, count: 50, trigger: "orgasm", kind: "HaveOrgasm", msg: "KDRemoveOnOrgasmFail"},
 		],
@@ -426,9 +426,8 @@ curseInfoSensitivity,"Curse of Sensitivity: Makes it easier to lose control of y
  */
 
 /** Cursed variants of restraints
- * @type {Record<string, KDCursedVar>}
  */
-let KDCursedVars = {
+let KDCursedVars: Record<string, KDCursedVar> = {
 	"Common": {
 		level: 1,
 		variant: (restraint, newRestraintName) => {
@@ -443,10 +442,10 @@ let KDCursedVars = {
 
 /**
  * Bestows an event-type curse onto an item by adding events
- * @param {item} item
- * @param {KinkyDungeonEvent[]} ev
+ * @param item
+ * @param ev
  */
-function KDBestowCurse(item, ev) {
+function KDBestowCurse(item: item, ev: KinkyDungeonEvent[]): void {
 	// Sanitize to avoid duped pointer
 	ev = JSON.parse(JSON.stringify(ev));
 	if (!item.events) item.events = [];
@@ -458,21 +457,19 @@ function KDBestowCurse(item, ev) {
 }
 
 /**
- *
- * @param {restraint} restraint
- * @param {string} newRestraintName
- * @param {KinkyDungeonEvent[]} ev
- * @param {number} power
- * @param {string} lock
- * @param {Record<string, number>} enemyTags
- * @returns {any}
+ * @param restraint
+ * @param newRestraintName
+ * @param ev
+ * @param power
+ * @param lock
+ * @param enemyTags
+ * @param noPick
  */
-function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = undefined, enemyTags = {basicCurse: 10}, noPick = true) {
+function KDAddEventVariant(restraint: restraint, newRestraintName: string, ev: KinkyDungeonEvent[], power: number = 4, lock: string = undefined, enemyTags: Record<string, number> = {basicCurse: 10}, noPick: boolean = true): any {
 	// Sanitize to avoid duped pointer
 	ev = JSON.parse(JSON.stringify(ev));
 	KinkyDungeonDupeRestraintText(restraint.name, newRestraintName);
-	/** @type {KinkyDungeonEvent[]} */
-	let events = ev.concat(restraint.events);
+	let events: KinkyDungeonEvent[] = ev.concat(restraint.events);
 	let escapeChance = Object.assign({}, restraint.escapeChance);
 	Object.assign(escapeChance, {
 		Struggle: Math.min(restraint.escapeChance.Struggle, -0.2),
@@ -501,7 +498,7 @@ function KDAddEventVariant(restraint, newRestraintName, ev, power = 4, lock = un
 	};
 }
 
-function KinkyDungeonCurseInfo(item, Curse) {
+function KinkyDungeonCurseInfo(item: item, Curse: string) {
 	if (Curse == "MistressKey" && KinkyDungeonItemCount("MistressKey")) {
 		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfoMistressKeyHave").replace("KeyAmount", "" + KinkyDungeonItemCount("MistressKey")), "White", 2);
 	} else if (KDCurses[Curse].customInfo) {
@@ -511,7 +508,7 @@ function KinkyDungeonCurseInfo(item, Curse) {
 	}
 }
 
-function KinkyDungeonCurseStruggle(item, Curse) {
+function KinkyDungeonCurseStruggle(item: item, Curse: string) {
 	if (Curse == "MistressKey") {
 		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse + item.name), "White", 2);
 	} else if (KDCurses[Curse].customStruggle) {
@@ -519,7 +516,7 @@ function KinkyDungeonCurseStruggle(item, Curse) {
 	} else KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse), "White", 2);
 }
 
-function KinkyDungeonCurseAvailable(item, Curse) {
+function KinkyDungeonCurseAvailable(item: item, Curse: string) {
 	if (KDCurses[Curse] && KDCurses[Curse].condition(item)) {
 		return true;
 	}
@@ -527,12 +524,11 @@ function KinkyDungeonCurseAvailable(item, Curse) {
 }
 
 /**
- *
- * @param {string} group
- * @param {number} index
- * @param {string} Curse
+ * @param group
+ * @param index
+ * @param Curse
  */
-function KinkyDungeonCurseUnlock(group, index, Curse) {
+function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
 	let unlock = true;
 	let keep = true;
 	let restraint = KinkyDungeonGetRestraintItem(group);
@@ -566,10 +562,9 @@ function KinkyDungeonCurseUnlock(group, index, Curse) {
 }
 
 /**
- * @param {string} curse
- * @returns {number}
+ * @param curse
  */
-function KDCursePower(curse) {
+function KDCursePower(curse: string): number {
 	if (KDCurses[curse]) {
 		return KDCurses[curse].powerBoost || 5;
 	}
@@ -577,10 +572,9 @@ function KDCursePower(curse) {
 }
 
 /**
- * @param {string} curse
- * @returns {number}
+ * @param curse
  */
-function KDCurseMult(curse) {
+function KDCurseMult(curse: string): number {
 	if (KDCurses[curse]) {
 		return KDCurses[curse].powerMult || 3;
 	}
