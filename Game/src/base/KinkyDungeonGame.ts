@@ -4146,22 +4146,19 @@ function KinkyDungeonClickGame(_Level?: number) {
 
 				if (KinkyDungeonTargetingSpell) {
 					if (KDMouseInPlayableArea()) {
-						if (KinkyDungeoCheckComponents(KinkyDungeonTargetingSpell).length == 0 || (
-							(KinkyDungeonStatsChoice.get("Slayer") && KinkyDungeonTargetingSpell.school == "Elements")
-							|| (KinkyDungeonStatsChoice.get("Conjurer") && KinkyDungeonTargetingSpell.school == "Conjure")
-							|| (KinkyDungeonStatsChoice.get("Magician") && KinkyDungeonTargetingSpell.school == "Illusion"))) {
-							if (KinkyDungeonSpellValid) {
-								KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
+						//if (KinkyDungeoCheckComponents(KinkyDungeonTargetingSpell).length == 0) {
+						if (KinkyDungeonSpellValid) {
+							KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
 
-								KinkyDungeonTargetingSpell = null;
-								KinkyDungeonTargetingSpellItem = null;
-								KinkyDungeonTargetingSpellWeapon = null;
-							}
-						} else {
 							KinkyDungeonTargetingSpell = null;
 							KinkyDungeonTargetingSpellItem = null;
 							KinkyDungeonTargetingSpellWeapon = null;
 						}
+						/*} else {
+							KinkyDungeonTargetingSpell = null;
+							KinkyDungeonTargetingSpellItem = null;
+							KinkyDungeonTargetingSpellWeapon = null;
+						}*/
 					} else {
 						KinkyDungeonTargetingSpell = null;
 						KinkyDungeonTargetingSpellItem = null;
