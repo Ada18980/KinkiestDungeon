@@ -7247,7 +7247,7 @@ function KDAddLostItemSingle(item, quantity = 1) {
 	} else if (KDRestraint({name: item}) && (
 		KinkyDungeonRestraintVariants[item]
 		|| (KDRestraint({name: item}).armor && !KDRestraint({name: item})?.noRecover)
-		|| KDRestraintSpecial(item))) {
+		|| KDRestraintSpecial({name: item}))) {
 		KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, events: KDGetEventsForRestraint(item), quantity: 1, id: KinkyDungeonGetItemID()}], false);
 		return true;
 	} else if (KDConsumable({name: item})) {
