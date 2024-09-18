@@ -2772,46 +2772,46 @@ type AIType = {
 	/** This is the tile for the AI which registers as tooltip */
 	ambushtile?: string,
 	/** Happens at the start immediately after AI is assigned*/
-	init: (enemy: entity, player: entity, aidata) => void,
+	init: (enemy: entity, player: entity, aidata: KDAIData) => void,
 	/** Happens before movement. Return true to skip movement loop*/
-	beforemove: (enemy: entity, player: entity, aidata) => boolean,
+	beforemove: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether the enemy chases the target if it sees them */
-	chase: (enemy: entity, player: entity, aidata) => boolean,
+	chase: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Similar to chase but not quite.
 	 * Will the enemy choose to go to the last seen target location?
 	 * If it sees the target
 	 * Can be false if you want an enemy to be more reserved about where it goes*/
-	trackvisibletarget: (enemy: entity, player: entity, aidata) => boolean,
+	trackvisibletarget: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether enemy will chase the player across a long distance */
-	persist: (enemy: entity, player: entity, aidata) => boolean,
+	persist: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether the enemy moves toward gx */
-	move: (enemy: entity, player: entity, aidata) => boolean,
+	move: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** whether the enemy obeys commands like Follow Me and such */
-	follower: (enemy: entity, player: entity, aidata) => boolean,
+	follower: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether the enemy follows sound sources or not */
-	followsound: (enemy: entity, player: entity, aidata) => boolean,
+	followsound: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether enemy will randomly wander to nearby points*/
-	wander_near: (enemy: entity, player: entity, aidata) => boolean,
+	wander_near: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether enemy will randomly choose points on the map to wander to */
-	wander_far: (enemy: entity, player: entity, aidata) => boolean,
+	wander_far: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Function to replace wandernear. Return true to cancel stock func, false otherwise*/
-	wandernear_func?: (enemy: entity, player: entity, aidata) => boolean,
+	wandernear_func?: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Function to replace wanderfar. Return true to cancel stock func, false otherwise*/
-	wanderfar_func?: (enemy: entity, player: entity, aidata) => boolean,
+	wanderfar_func?: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether it sets gx to gxx when idle, and gy to gyy */
-	resetguardposition: (enemy: entity, player: entity, aidata) => boolean,
+	resetguardposition: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Whether enemy attacks */
-	attack: (enemy: entity, player: entity, aidata) => boolean,
+	attack: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** whether enemy casts spells */
-	spell: (enemy: entity, player: entity, aidata) => boolean,
+	spell: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** This function executes before wander location changes. Return True to override wander behavior */
-	aftermove: (enemy: entity, player: entity, aidata) => boolean,
+	aftermove: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** This executes after enemy is determined to be idle or not. If true, prevents spells.*/
-	afteridle?: (enemy: entity, player: entity, aidata) => boolean,
+	afteridle?: (enemy: entity, player: entity, aidata: KDAIData) => boolean,
 	/** Returns the current wander long delay.*/
-	wanderDelay_long?: (enemy: entity, aidata) => number,
+	wanderDelay_long?: (enemy: entity, aidata?: KDAIData) => number,
 	/** Returns the current wander short delay.*/
-	wanderDelay_short?: (enemy: entity, aidata) => number,
+	wanderDelay_short?: (enemy: entity, aidata?: KDAIData) => number,
 
 }
 
