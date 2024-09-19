@@ -26919,5 +26919,83 @@ Reaching Authority
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
 
+Your buttons have been pushed, and not in a pleasant way!
+你的按钮已经被按下了，而且是以一种不愉快的方式！
+Defeat all taunting enemies or stay within the tiles to avoid shame!
+击败所有嘲讽的敌人或留在方格内以避免被羞辱！
+Degradating Taunts
+侮辱性嘲讽
+You failed to come up with a proper comeback!
+你没能想出合适的反击方式！
 
+The field of frost damages you as you are chilled!
+冰霜领域会让你因寒冷而受到伤害！
+Confirm Path
+确认路径
+
+
+Navigation Map
+导航地图
+Choose a path to take by clicking on a highlighted room.
+通过单击突出显示的房间来选择要采取的路径。
+Other paths will become inaccessible.
+其他路径将变得无法通行。
+Floor NMB
+层级 NMB
+Tileset:
+地形设置:
+Map Modifier:
+地图改动:
+Layout:
+布局:
+Controlling Faction:
+控制派系:
+Main Objective:
+主要目标:
+Points of Interest:
+兴趣点:
+
+Magical Study
+魔法研究
+Maintenance Hall
+保养大厅
+Ancient Chest
+远古宝箱
+Caldera Passage
+火山口通道
+Auction Hall
+拍卖厅
+Dark Altar
+黑暗祭坛
+Dimensional Rift
+次元裂隙
+Hoard
+宝库
+
+Witch's Lair
+女巫巢穴
+Mold Infestation
+霉菌感染
+Bandit Raid
+盗贼袭击
+Elemental Energy
+精灵能量
+Slime Infestation
+黏液侵袭
+Wolfgirl Training
+狼娘训练
+Drone Patrol
+无人机巡逻
+
+Shop
+店铺
+Chamber
+寝室
+Prison
+监狱
+Sorting Room
+分拣室
+
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在运行时共享。
 
