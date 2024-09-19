@@ -3378,13 +3378,15 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 				&& KinkyDungeonCanCastSpells(enemy)
 				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 
+				let dist = 11 - Math.min(4, buff.power);
 				let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ?
-					KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy) : [];
+					KDNearbyEnemies(enemy.x, enemy.y, dist, enemy).filter((en) => {
+						return !KDHelpless(en);
+					}) : [];
 				if ((e.always || enemy.aware || enemy.vp > 0.5)
 					&& (e.always || nearby.length > 0 || KinkyDungeonAggressive(enemy))) {
 					if (buff.power > 0) {
 						let player = KDHostile(enemy, KDPlayer()) ? KDPlayer() : null;
-						let dist = 11 - Math.min(4, buff.power);
 						let playerdist = player ? KDistChebyshev(enemy.x - player.x, enemy.y - player.y) : dist + 1;
 						if (nearby.length > 0) {
 							nearby = nearby.filter((en) => {
@@ -3398,7 +3400,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 										enemy,
 										player,
 										KDistChebyshev(enemy.x - player.x, enemy.y - player.y),
-										dist, false, true, 2)) break;
+										dist, false, true, 1)) break;
 								}
 							}
 						}
@@ -3407,7 +3409,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							enemy,
 							player,
 							KDistChebyshev(enemy.x - player.x, enemy.y - player.y),
-							dist, false, true, 2)) {
+							dist, false, true, 1)) {
 							let origin = enemy;
 							let spell = KinkyDungeonFindSpell(e.spell, true);
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
@@ -3461,22 +3463,35 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 				&& KinkyDungeonCanCastSpells(enemy)
 				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 
-				let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ? KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy) : [];
+				let dist = 3;
+				let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ?
+					KDNearbyEnemies(enemy.x, enemy.y, dist, enemy).filter((en) => {
+						return !KDHelpless(en);
+					}) : [];
 				if ((e.always || enemy.aware || enemy.vp > 0.5)
 					&& (e.always || nearby.length > 0 || KinkyDungeonAggressive(enemy))) {
 					if (buff.power > 0) {
-						let player = KinkyDungeonPlayerEntity;
-						let playerdist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+						let player = KDHostile(enemy, KDPlayer()) ? KDPlayer() : null;
+						let playerdist = player ? KDistChebyshev(enemy.x - player.x, enemy.y - player.y) : dist + 1;
 						if (nearby.length > 0) {
 							nearby = nearby.filter((en) => {
 								return KDistChebyshev(enemy.x - en.x, enemy.y - en.y) < playerdist;
 							});
 							if (nearby.length > 0) {
-								player = nearby[Math.floor(KDRandom() * nearby.length)];
+								// 2 attempts to retarget
+								for (let i = 0; i < 2; i++) {
+									player = nearby[Math.floor(KDRandom() * nearby.length)];
+									if (KinkyDungeonCheckLOS(
+										enemy,
+										player,
+										KDistChebyshev(enemy.x - player.x, enemy.y - player.y),
+										dist, false, true, 1)) break;
+								}
 							}
 						}
 
-						if (KinkyDungeonCheckLOS(enemy, player, KDistChebyshev(enemy.x - player.x, enemy.y - player.y), 3, false, true, 2)) {
+						if (KinkyDungeonCheckLOS(enemy, player,
+								KDistChebyshev(enemy.x - player.x, enemy.y - player.y), dist, false, true, 1)) {
 							let origin = enemy;
 							let spell = KinkyDungeonFindSpell(e.spell, true);
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
@@ -7063,10 +7078,11 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				if (enemy && KinkyDungeonCanCastSpells(enemy)) {
 					// Spawn many magic missiles!
 
-					let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ? KDNearbyEnemies(enemy.x, enemy.y, e.dist, enemy) : [];
+					let nearby = (e.always || enemy.aware || enemy.vp > 0.5) ?
+						KDNearbyEnemies(enemy.x, enemy.y, 8, enemy) : [];
 
-					let player = KinkyDungeonPlayerEntity;
-					let playerdist = KDistChebyshev(enemy.x - player.x, enemy.y - player.y);
+					let player = KDHostile(enemy, KDPlayer()) ? KDPlayer() : null;
+					let playerdist = player ? KDistChebyshev(enemy.x - player.x, enemy.y - player.y) : 10;
 					if (nearby.length > 0) {
 						nearby = nearby.filter((en) => {
 							return KDistChebyshev(enemy.x - en.x, enemy.y - en.y) < playerdist;
@@ -8086,9 +8102,9 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 					let entity = null;
 					let playerDist = 1000;
 					if (KDFactionHostile(b.bullet.faction, "Player")) {
-						playerDist = KDistEuclidean(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
+						playerDist = KDistEuclidean(KDPlayer().x - b.bullet.targetX, KDPlayer().y - b.bullet.targetY);
 						if (playerDist <= e.dist) {
-							entity = KinkyDungeonPlayerEntity;
+							entity = KDPlayer();
 							minDist = playerDist;
 						}
 					}

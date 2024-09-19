@@ -50,7 +50,7 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-### 5.3.37
+### 5.3.38-RC6
 By Ada18980
 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
@@ -76,8 +76,17 @@ Keybindings
 按键绑定
 
 
+### Apply palette to Restraints
+### Apply palette to transforms
+
+### Don't use character palette
+### Always use character palette
+### Use character palette for default outfit
+
 Show Background Art
 显示背景
+
+
 Show DP instead of %
 显示具体的分心值
 Quick Inv only equips to self
@@ -433,8 +442,7 @@ Born with an intense submissive desire, you cannot refuse bondage from dialogues
 
 Frantic Struggle
 疯狂挣扎
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-你的挣扎速度变为原来的 3 倍，但提高挣扎时的体力消耗。
+### Your escaping is 3 times as fast, but less efficient in terms of stamina.
 
 Escape Artist
 逃脱大师
@@ -734,16 +742,15 @@ Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space w
 
 Expansive Halls
 宽敞之牢
-Increases the size of maps by 1 in each direction.
-将每个方向的地图大小增加 1。
+### Increases the size of maps by 3 in the long dimension. Maps will be less dense.
 Gargantuan Halls
 广阔之牢
-Increases the size of maps by 2 in each direction.
-将每个方向的地图大小增加 2。
+### Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
 Labyrinthine Halls
 辽阔之牢
-Increases the size of maps by 3 in each direction.
-将每个方向的地图大小增加 3。
+### Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
+### Absurdly Huge Maps
+### (Experimental) Make the maps really really big. Probably breaks the game.
 
 Rigger
 索具装配工
@@ -1465,6 +1472,7 @@ Stormbreaker: You have the Power.
 
 Game Setup:
 游戏设置
+### Beginner: Get a save code every 3 levels, autosave after each floor
 Roguelike: No save codes, only autosave
 Roguelike : ‎没有保存代码，只有自动保存
 Exciting: Orbs give random spells
@@ -1595,8 +1603,7 @@ Play with yourself
 Let go...
 高潮...
 
-Make noise!
-制造噪音！
+### Call for Help!!!
 Wait until interrupted
 等待至被打断
 Auto-struggle
@@ -1821,6 +1828,9 @@ Quests
 任务
 Spell List
 法术列表
+### Pause Menu
+Facilities
+设施
 
 Current Key Pressed
 当前按键
@@ -3023,6 +3033,7 @@ Angel: MMMMMPHH!!!
 
 The EnemyName pulls away your ArmorName!!!
 EnemyName 夺走了你的 ArmorName！！！
+### There was a bug removing your ArmorName. Please report!
 The EnemyName bypasses your security to add the RestraintName!
 EnemyName 绕过你的安全措施添加了 RestrictName！
 The EnemyName tries to restrain you, but you resist the bondage!
@@ -4579,32 +4590,29 @@ The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 真菌用她修长的手指摩擦你的胸部！  ( DamageTaken )
 Crystal Glyph
 水晶雕文
+### Crystal Slash
+### Crystal Bolt
 
 
 Tailor
 裁缝
-You murder the tailor!
-你杀了裁缝！
+### You rob the tailor!
 
 Student
 学生
-You murder the student!
-你杀了学生！
+### You rob the student!
 
 Tactician
 战术家
-You murder the tactician!
-你杀了战术家！
+### You rob the tactician!
 
 Informant
 线人
-You murder the informant!
-你杀了线人！
+### You rob the informant!
 
 Thug
 恶棍
-You murder the thug!
-你杀了恶棍！
+### You rob the thug!
 
 Antique Merchant
 古董商人
@@ -4612,14 +4620,13 @@ You smash the antique merchant!
 你砸了古董商！
 Blacksmith
 铁匠
-You murder the blacksmith!
-你杀了铁匠！
+### You rob the blacksmith!
 Armorer
 防具师
-### You murder the armorer!
+### You rob the armorer!
 Bowyer
 制弓师
-### You murder the bowyer!
+### You rob the bowyer!
 ### Not a Kidnapper
 ### You bring the kidnapper to justice!
 
@@ -5090,6 +5097,12 @@ The lock is technological and does not use a key.
 The lock is brimming with security features and is nigh impossible to pick!
 这把锁充满了安全特征，几乎不可能被撬开！
 
+### The lock is encased in magical crystals that block the keyhole.
+### Your distraction makes the crystals regrow immediately after breaking them off.
+
+### The crystal fragments in the lock make it difficult to pick.
+### You need a key to actually unlock the ex-crystallized lock.
+
 The key sticks in the lock and jams, mangling the key!
 钥匙在锁里被卡住了，钥匙坏了！
 
@@ -5515,6 +5528,7 @@ Disc
 圆盘
 Rubber
 橡胶
+### Crystal
 Runic
 符文
 Magic
@@ -5539,6 +5553,7 @@ Rubber Lock
 橡胶锁
 Divine Lock
 神圣锁
+### Crystal Lock
 Runic Lock
 符文锁
 Purple Lock
@@ -6982,6 +6997,9 @@ A leash used for training pets.
 用于训练宠物的牵绳。
 It is a steel cable with a weatherproof rubber coating, and a convenient handle.
 它是一种带有防风雨橡胶涂层的钢缆和一个方便的手柄。
+### Magical Leash
+### A leash made of magical energy, linked to a submissive's collar.
+### Very difficult to break unless you have a strong magical blade.
 
 Your ankle cuffs snap together on their own!
 你的脚铐会自行扣合！
@@ -8691,6 +8709,7 @@ You exhale a mighty wind!
 你呼出一股强大的风！
 
 
+### Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
 You a throw a knife!
 你扔出一把刀！
 
@@ -8931,6 +8950,7 @@ Choose object to analyze
 
 Barrier Runes
 符文障
+### Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
 You raise a field of runes with a command word!
 你轻声吟唱屏障之咒，创造出一片巨石屏障！
 Choose barrier location
@@ -9935,6 +9955,7 @@ You pose in a clandestine manner.
 
 Darkblade
 暗影之刃
+### Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
 You call forth dark runes on your weapon and arms!
 你在你的武器和手臂上召唤出黑暗符文！
 
@@ -11645,6 +11666,7 @@ Are you sure you want to attack?
 你确定要攻击吗？
 Are you sure you want to go to the next level? (Click self to confirm)
 你确定要进入下一层吗？  ( 点击自己确认 )
+
 
 You shudder as you apply the RestraintName to yourself...
 当你给自己装备 RestraintName 时，你不寒而栗……
@@ -14980,6 +15002,7 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 创建一个十字粘液池，每一击造成 35 点胶体伤害
 Ignite torches and nearby objects
 点燃火把和附近的物体
+### Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 
 Preferences
 偏好
@@ -16977,8 +17000,10 @@ You're giving me everything you have.
 ( SPEAKER给你两把刀 ) |别伤到自己，好吗？
 (The SPEAKER gives you three picks)|I don't know how you plan to use these...
 ( SPEAKER给你三个选择 ) |我不知道你打算怎么用这些……
-(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
-( SPEAKER不情愿地给了你一把魔法钥匙 ) |好吧，这些可不是从树上长出来的……
+### (The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
+### (The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
+### (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
+### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
 
 (Ask for 2 knives)
 ( 要2把刀 )
@@ -16986,6 +17011,7 @@ You're giving me everything you have.
 ( 要 3 个撬锁工具 )
 (Ask for a magic key)
 ( 要一把魔法钥匙 )
+### (Ask for help with a divine lock)
 
 There is no valid space next to you!
 你旁边没有有效空间！
@@ -18012,6 +18038,9 @@ An enemy found you while you were busy!
 ( 杆子升起并把你制服！ )
 (Stand over it and place your feet in the footrests)
 ( 站在上面并将脚放在脚凳上 )
+### (Drop off a prisoner from your collection)
+### (Put NME on the stand) (PRCNT% Chance)
+### (Put NME on the stand)
 ### (This is a piece of bondage furniture)
 ### (You lock yourself in the furniture!)
 ### (The SPEAKER slips out of your grip|before you can lock her in place!)
@@ -18063,6 +18092,7 @@ Pizza
 ( 最大魔力池 +100 )
 (I don't want to.)
 ( 我不想。 )
+### (No really, I don't want it!)
 
 (You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
 ( 你发现一个奇怪的电梯，里面有一个控制面板 ) | ( 你觉得这会带你去某个地方。 )
@@ -22505,8 +22535,7 @@ Equip to hotbar and cast to designate an Offhand weapon to gain passive effects 
 
 Arcane Tome
 奥术之书
-Contains advanced formulas and thrilling tales of thirsty wizards.
-包含先进的公式和饥渴的巫师的惊心动魄的故事。
+### Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
 +5% magic damage. Offhand: Applies passive bonus.
 +5% 魔法伤害。副手 : ‎应用被动奖励。
 You find a magical tome.
@@ -22514,8 +22543,7 @@ You find a magical tome.
 Open the book. What can go wrong?
 打开这本书。会出现什么问题？
 
-Contains a malevolent spirit that wishes only to tie up damsels.
-蕴藏着只想束缚少女的恶灵。
+### Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
 +10% binding effectiveness. Offhand: Applies passive bonus.
 +10% 绑定效率。副手 : ‎应用被动奖励。
 You find a magical tome with a sealed padlock on it.
@@ -22918,6 +22946,7 @@ All selected units switch to Aggressive mode
 Unlock using magic
 使用魔法解锁
 
+### Include Weapons
 Merge Armor
 合并盔甲
 
@@ -23452,8 +23481,7 @@ Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Res
 消耗20个战斗节拍，逃跑力+20%，束缚抗力增加1%。持续60回合或直到你的意志力达到0。
 Problem Solving
 解决问题
-While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
-活跃时，挣扎需要额外 10 回合，但来自工具和增益的逃脱力量加成增加 +40% 加上束缚抗性的 20%
+### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%
 
 
 You run out of strength to keep dodging...
@@ -23631,8 +23659,7 @@ Divine Chastity Belt
 神圣贞操带
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 圣光锻造的贞操带。只有女神才能释放你。
-There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-除了忏悔别无选择。它神圣的光环会导致振动器在你到达高潮边缘之前停止。
+### There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
 Your Divine Chastity Belt causes the vibrators to stop.
 你的神圣贞操带会使振动器停止。
 
@@ -23647,8 +23674,7 @@ Divine Chastity Bra
 神圣贞操文胸
 A chastity bra forged in holy light. Only a Goddess' will can release you.
 圣光锻造的贞操文胸。只有女神才能释放你。
-There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
-除了忏悔别无选择。它神圣的光环会阻止你自慰。
+### There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
 Your Divine Chastity Bra causes your whole body to go numb.
 你的神圣贞操文胸会让你整个身体变得麻木。
 
@@ -23660,8 +23686,7 @@ You find a heavenly chastity bra. Who could it be for?
 
 Heavenly Chastity Belt
 天堂贞操带
-There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
-除了忏悔别无选择。它神圣的光环会让振动器抑制你到达高潮边缘。
+### There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
 Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 你的神圣贞操带神奇地减弱振动，足以让你感到紧张。
 
@@ -23669,8 +23694,7 @@ Your Divine Chastity Belt magically dampens the vibrations just enough to edge y
 
 Heavenly Chastity Bra
 天堂贞操文胸
-There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
-除了忏悔别无选择。它神圣的光环会将自我取悦转化为体力。
+### There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
 The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 神圣的光环会耗尽你自慰的快乐，并将其转化为体力。
 
@@ -24329,8 +24353,6 @@ Replaces 60% of cages with a different kind of kinky furniture such as display s
 
 Collection
 收藏
-Facilities
-设施
 
 Storage
 存储
@@ -24502,6 +24524,8 @@ The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 ENMY 将填充物塞入你张开的嘴里！(DMGDLT)
 The ENMY reaches for your mouth and fails!
 ENMY 将手伸向你的嘴，但失败了！
+### The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+### The ENMY reaches for the gag around your neck!
 The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ENMY 将你们的双手拉到一起，并在你的双手之间夹上一个绑带！(DMGDLT)
 The ENMY grabs your wrists but you pull away!
@@ -24980,6 +25004,15 @@ The ground beneath you glows with magical energy!
 ### Banishment of the shadow.
 ### Living Shadow
 ### Engulfs the tile in darkness.
+
+### Planar Focus
+### Absorbs teleportation energies.
+
+### Planar Diffractor
+### Diffuses teleportation energies.
+
+### Planar Focusing Crystal
+### Amplifies teleportation energies.
 
 Mysterious Plate
 神秘板块
@@ -25881,6 +25914,7 @@ Layer Bonus
 ### Require Pose (e.g. ChestArmor)
 ### Hide Prefix (e.g Encase)
 ### Hide Suffix (e.g TorsoUpper)
+### Protected
 
 Load from File
 从文件载入
@@ -26045,6 +26079,7 @@ Editing Restraints
 正在修改束缚
 Imprison in Furniture
 囚禁在家具中
+### Dropoff Prisoner
 
 Module (Utility)
 模块 (实用程序)
@@ -26224,10 +26259,8 @@ OVERWRITE All!
 Need Positive Opinion to Promote
 需要积极的意见来推广
 
-Servant Enjoyment: AMNT
-仆人享受: AMNT
-Prisoner Enjoyment: AMNT
-囚犯享受: AMNT
+### Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+### Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 Submissive prisoners and dominant servants add different amounts of opinion per cycle
 顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
 
@@ -26268,6 +26301,7 @@ Combat Maneuver: Your next move is instant.
 
 Appointing managers increases the efficiency of other facilities.
 任命管理人员可以提高其他设施的效率。
+
 Total Efficiency Boost: AMNT
 总体效率提升: AMNT
 Restart required!
@@ -26998,4 +27032,166 @@ Sorting Room
 
 Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在运行时共享。
+
+
+### Total Efficiency Boost: AMNT%
+### idle
+
+### (As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!
+
+### Mysterious Statue
+
+### Select a Binding Slot
+
+### Cost: 
+
+### Zoom set to PCNT%
+### You need free arms to tie others!
+### You can use the quick inventory to bind yourself or others
+### Error. Please screenshot and report.
+### You can't wear that item, regrettably.
+
+### Must be stunned 3+ turns or fully bound
+### Depends on another item to be added first
+
+### The conjured RSTN vanishes as you remove it.
+
+### No free slots to bind in
+
+### Reaching Authority
+### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
+
+### Save Slot 
+Load Game
+加载游戏
+Load Code
+加载槽位0
+Load Slot 0
+加载代码
+Load File
+加载文件
+Save From Code
+从代码中导入
+
+### Delete?
+### Import to Slot
+### Invalid Data
+No Data
+无数据
+
+
+This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
+这是地牢的正常入口|教程在大厅的开头。
+### This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
+This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
+地牢的这一部分被混沌女神改变了|你要经过的区域顺序完全是随机的。
+Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
+传说在广阔的丛林中有一座神殿。戴好你的装备，去寻找宝藏吧！
+You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
+你在一个古老的玩偶工厂迷路了|这段旅程主要包含游戏后期的图块集。
+You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
+你在一座古老的神殿里迷失了方向，被一位变态的女神所迷失。|你会找到出路，还是会发现自己被困得更深？
+You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
+你在废墟中迷失了方向。|图块顺序颠倒了！
+
+
+###  (Hard)
+###  (Extreme)
+
+Choose Save Slot:
+选择存档槽位 :
+
+Standard Route
+标准路线
+Alternate Route
+变种路线
+Temple Route
+神殿路线
+Jungle Route
+丛林路线
+Factory Route
+工厂路线
+Reverse Route
+颠倒路线
+Chaos Route
+混沌路线
+### Map Seed: 
+### Will Overwrite NME!
+
+### Play Slot 
+Play (NO SLOT!)
+启动 ( 未选择存档 )
+
+### Looks like you might be stuck. Try calling for help (bottom right of UI)
+
+### Backup
+### Restore
+### Set Palette
+
+
+### FLR-DGN
+###  (NG+AMNT)
+
+
+### Target must be vulnerable.
+### Target must be vulnerable or have casted a verbal spell.
+### Target must have casted a verbal spell.
+
+
+### Diggy diggy hole
+### Select a cracked wall.
+### You strike the earth!
+
+### Must select a cracked wall.
+### Your arms aren't free to swing the axe!
+### You strike the earth, but it is nothing but solid wall on the other side.
+### You strike the earth! It crumbles before you!
+
+### The planar focus resonates with the teleportation magic!
+### The planar focusing crystal activates! Mana is drained, and turns into bindings!
+### The planar diffractor blocks the teleportation!
+
+### Set Character Palette
+
+### Reset all Keybindings
+
+### That item is blocked! You can't remove it.
+
+###  min.
+###  max.
+###  bonus
+###  penalty
+
+### You put it on, why would you want to take it off?~
+### You'll need an ancient key to unlock the ancient-made collar.
+
+
+### Ancient Worshipper
+### The ancient worshipper repents of her ways.
+### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on one of your restraints! (DamageTaken)
+### The ancient worshipper mumbles at you for assistance! (DamageTaken)
+
+### Ancient Congregant
+### The ancient congregant repents of her ways.
+### The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on your restraints! (DamageTaken)
+### The ancient congregant mumbles at you for assistance! (DamageTaken)
+
+### Ancient Hierophant
+### The ancient hierophant repents of her ways.
+### The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
+### The ancient hierophant mumbles at you for assistance! (DamageTaken)
+
+### The crystals break off, revealing a keyhole and weakening the item.
+### Your distraction causes the crystals to grow back, encasing the lock again!
+
+### After popping the gag out of your mouth, it hangs loose around your neck.
+### The gag is now in your mouth.
+
+### ERROR: Restraint does not exist. Did you forget to load mods?
+
+### Gag Necklace
+### A cute accessory for those who wish to (not) make a statement.
+### Functions as a collar.
 

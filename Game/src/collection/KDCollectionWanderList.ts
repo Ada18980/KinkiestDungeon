@@ -27,7 +27,11 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 		maintain: (value, entity, delta) => {
 			if (entity) {
 				// Go to the dorm and despawn
-				let point = KDMapData.Labels?.ServantEntrance ? KDMapData.Labels.ServantEntrance[0] : {x: 1, y: 3};
+				let point = KDMapData.Labels?.ServantEntrance ? KDMapData.Labels.ServantEntrance[0] : null;
+				if (!point) {
+					delete entity.FacilityAction;
+					return;
+				}
 				if (KDistChebyshev(entity.x - point.x, entity.y - point.y) < 0.5) {
 					KDRemoveEntity(entity, false, false, true);
 					value.spawned = false;
@@ -71,7 +75,12 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 		maintain: (value, entity, delta) => {
 			if (entity) {
 				// Go to the dorm and despawn
-				let point = KDMapData.Labels?.LoungeEntrance ? KDMapData.Labels.LoungeEntrance[0] : {x: 1, y: 3};
+				let point = KDMapData.Labels?.LoungeEntrance ? KDMapData.Labels.LoungeEntrance[0] : null;
+
+				if (!point) {
+					delete entity.FacilityAction;
+					return;
+				}
 				if (KDistChebyshev(entity.x - point.x, entity.y - point.y) < 0.5) {
 					KDRemoveEntity(entity, false, false, true);
 					value.spawned = false;
@@ -167,7 +176,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 
 		// Maintenance condition
 		maintain: (value, entity, delta) => {
-			let point = KDMapData.Labels?.Lounge ? KDMapData.Labels.Lounge[0] : {x: 5, y: 17};
+			let point = KDMapData.Labels?.Lounge ? KDMapData.Labels.Lounge[0] : null;
 			if (point) {
 				entity.AI = "looseguard";
 				entity.gxx = point.x;

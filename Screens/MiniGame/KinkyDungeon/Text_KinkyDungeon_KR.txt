@@ -42,7 +42,7 @@ Mods Loaded.
 
 ### Version
 ### Kinky Dungeon
-### 5.3.37
+### 5.3.38-RC6
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 당신은 마법의 고대 지하 도시로 내려가는 모험가입니다.
@@ -60,7 +60,16 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 ### Keybindings
 
 
+### Apply palette to Restraints
+### Apply palette to transforms
+
+### Don't use character palette
+### Always use character palette
+### Use character palette for default outfit
+
 ### Show Background Art
+
+
 ### Show DP instead of %
 ### Quick Inv only equips to self
 ### Override Outfit when Loading Save
@@ -324,8 +333,7 @@ Born with an intense submissive desire, you cannot refuse bondage from dialogues
 
 Frantic Struggle
 광란의 투쟁
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-몸부림이 3배 빠르지만 스태미너 효율은 떨어집니다.
+### Your escaping is 3 times as fast, but less efficient in terms of stamina.
 
 Escape Artist
 탈출 아티스트
@@ -576,11 +584,13 @@ Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space w
 
 
 ### Expansive Halls
-### Increases the size of maps by 1 in each direction.
+### Increases the size of maps by 3 in the long dimension. Maps will be less dense.
 ### Gargantuan Halls
-### Increases the size of maps by 2 in each direction.
+### Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
 ### Labyrinthine Halls
-### Increases the size of maps by 3 in each direction.
+### Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
+### Absurdly Huge Maps
+### (Experimental) Make the maps really really big. Probably breaks the game.
 
 Rigger
 리거
@@ -1180,6 +1190,7 @@ Stormbreaker: You have the Power.
 
 Game Setup:
 게임 설정:
+### Beginner: Get a save code every 3 levels, autosave after each floor
 Roguelike: No save codes, only autosave
 Roguelike: 저장 코드 없음, 자동 저장만
 Exciting: Orbs give random spells
@@ -1294,8 +1305,7 @@ Play with yourself
 Let go...
 간닷...
 
-Make noise!
-소음을 낸다!
+### Call for Help!!!
 Wait until interrupted
 중단될 때까지 기다리십시오
 Auto-struggle
@@ -1477,6 +1487,8 @@ Reputation
 ### Quests
 Spell List
 주문 목록
+### Pause Menu
+### Facilities
 
 Current Key Pressed
 현재 키 눌림
@@ -2525,6 +2537,7 @@ Angel: MMMMMPHH!!!
 (천사가 의아해하며 당신의 신성한 구속을 풀어줍니다)
 
 ### The EnemyName pulls away your ArmorName!!!
+### There was a bug removing your ArmorName. Please report!
 ### The EnemyName bypasses your security to add the RestraintName!
 ### The EnemyName tries to restrain you, but you resist the bondage!
 ### Resist!
@@ -3917,43 +3930,39 @@ The fun-gal retreats into the ground.
 ### The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 Crystal Glyph
 크리스탈 문양
+### Crystal Slash
+### Crystal Bolt
 
 
 Tailor
 재단사
-You murder the tailor!
-당신은 재단사를 살해!
+### You rob the tailor!
 
 Student
 학생
-You murder the student!
-당신은 학생을 살해!
+### You rob the student!
 
 Tactician
 전술가
-You murder the tactician!
-당신은 전술가를 죽인다!
+### You rob the tactician!
 
 Informant
 피조사자
-You murder the informant!
-당신은 정보원을 죽인다!
+### You rob the informant!
 
 Thug
 자객
-You murder the thug!
-당신은 깡패를 죽인다!
+### You rob the thug!
 
 ### Antique Merchant
 ### You smash the antique merchant!
 Blacksmith
 대장장이
-You murder the blacksmith!
-당신은 대장장이를 살해!
+### You rob the blacksmith!
 ### Armorer
-### You murder the armorer!
+### You rob the armorer!
 ### Bowyer
-### You murder the bowyer!
+### You rob the bowyer!
 ### Not a Kidnapper
 ### You bring the kidnapper to justice!
 
@@ -4363,6 +4372,12 @@ The lock doesn't even have a keyhole to pick!
 ### The lock is technological and does not use a key.
 ### The lock is brimming with security features and is nigh impossible to pick!
 
+### The lock is encased in magical crystals that block the keyhole.
+### Your distraction makes the crystals regrow immediately after breaking them off.
+
+### The crystal fragments in the lock make it difficult to pick.
+### You need a key to actually unlock the ex-crystallized lock.
+
 The key sticks in the lock and jams, mangling the key!
 열쇠가 자물쇠에 꽂혀서 끼어서 열쇠가 망가졌어요!
 
@@ -4623,6 +4638,7 @@ Simple
 ### Disc
 Rubber
 고무
+### Crystal
 ### Runic
 Magic
 마법
@@ -4637,6 +4653,7 @@ Simple Lock
 ### Disc Lock
 ### Rubber Lock
 ### Divine Lock
+### Crystal Lock
 ### Runic Lock
 Purple Lock
 보라 자물쇠
@@ -5868,6 +5885,9 @@ A leash used for training pets.
 애완동물 훈련에 사용하는 목줄입니다.
 It is a steel cable with a weatherproof rubber coating, and a convenient handle.
 내후성 고무 코팅과 편리한 손잡이가 있는 강철 케이블입니다.
+### Magical Leash
+### A leash made of magical energy, linked to a submissive's collar.
+### Very difficult to break unless you have a strong magical blade.
 
 Your ankle cuffs snap together on their own!
 당신의 발목 수갑이 저절로 찰칵!
@@ -7342,6 +7362,7 @@ You press your wrists together and conjure a blast of wind!
 ### You exhale a mighty wind!
 
 
+### Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
 You a throw a knife!
 당신은 칼을 던져!
 
@@ -7551,6 +7572,7 @@ Choose object to analyze
 
 Barrier Runes
 배리어 룬
+### Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
 You raise a field of runes with a command word!
 당신은 명령어로 룬 필드를 올립니다!
 Choose barrier location
@@ -8474,6 +8496,7 @@ You pose in a clandestine manner.
 
 Darkblade
 다크블레이드
+### Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
 You call forth dark runes on your weapon and arms!
 당신은 당신의 무기와 팔에 암흑의 룬을 불러냅니다!
 
@@ -10054,6 +10077,7 @@ Are you sure you want to attack?
 공격하시겠습니까?
 Are you sure you want to go to the next level? (Click self to confirm)
 다음 단계로 이동하시겠습니까? (확인하려면 자체 클릭)
+
 
 You shudder as you apply the RestraintName to yourself...
 RestraintName을 자신에게 적용하면서 몸서리칩니다...
@@ -13238,6 +13262,7 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 타격당 35의 접착제 피해를 입히는 '+' 모양의 슬라임 웅덩이를 만듭니다.
 Ignite torches and nearby objects
 횃불과 주변 물체에 불을 붙입니다.
+### Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 
 ### Preferences
 ### Preferences 2
@@ -15237,8 +15262,10 @@ You're giving me everything you have.
 (SPEAKER 가 너에게 칼 두 개를 준다)|이걸로 다치지마, 알았지?
 (The SPEAKER gives you three picks)|I don't know how you plan to use these...
 (SPEAKER 가 당신에게 세 가지 선택권을 줍니다)|나는 당신이 이것들을 어떻게 사용할 계획인지 모르겠습니다...
-(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
-(SPEAKER 가 마지못해 마법의 열쇠를 준다)|좋아, 이건 나무에서 자라지 않아...
+### (The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
+### (The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
+### (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
+### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
 
 (Ask for 2 knives)
 (칼 2개 요청)
@@ -15246,6 +15273,7 @@ You're giving me everything you have.
 (락픽 3개 요청)
 (Ask for a magic key)
 (마법의 열쇠를 부탁해)
+### (Ask for help with a divine lock)
 
 There is no valid space next to you!
 옆에 유효한 공간이 없습니다!
@@ -16077,6 +16105,9 @@ An enemy found you while you were busy!
 ### (There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
 ### (The pole rises and immobilizes you!)
 ### (Stand over it and place your feet in the footrests)
+### (Drop off a prisoner from your collection)
+### (Put NME on the stand) (PRCNT% Chance)
+### (Put NME on the stand)
 ### (This is a piece of bondage furniture)
 ### (You lock yourself in the furniture!)
 ### (The SPEAKER slips out of your grip|before you can lock her in place!)
@@ -16111,6 +16142,7 @@ An enemy found you while you were busy!
 ### (Are you sure?)|(This decision is permanent.)
 ### (Gain +100 to Max Mana Pool)
 ### (I don't want to.)
+### (No really, I don't want it!)
 
 ### (You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
 ### (Are you sure?)|(This seems like a bad idea!)
@@ -19438,12 +19470,12 @@ Ranged Attack
 ### Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
 
 ### Arcane Tome
-### Contains advanced formulas and thrilling tales of thirsty wizards.
+### Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
 ### +5% magic damage. Offhand: Applies passive bonus.
 ### You find a magical tome.
 ### Open the book. What can go wrong?
 
-### Contains a malevolent spirit that wishes only to tie up damsels.
+### Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
 ### +10% binding effectiveness. Offhand: Applies passive bonus.
 ### You find a magical tome with a sealed padlock on it.
 
@@ -19672,6 +19704,7 @@ Ranged Attack
 
 ### Unlock using magic
 
+### Include Weapons
 ### Merge Armor
 
 
@@ -19972,7 +20005,7 @@ Ranged Attack
 ### Break Free
 ### Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0.
 ### Problem Solving
-### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
+### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%
 
 
 ### You run out of strength to keep dodging...
@@ -20080,7 +20113,7 @@ Ranged Attack
 
 ### Divine Chastity Belt
 ### A chastity belt forged in holy light. Only a Goddess' will can release you.
-### There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+### There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
 ### Your Divine Chastity Belt causes the vibrators to stop.
 
 
@@ -20090,7 +20123,7 @@ Ranged Attack
 
 ### Divine Chastity Bra
 ### A chastity bra forged in holy light. Only a Goddess' will can release you.
-### There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
+### There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
 ### Your Divine Chastity Bra causes your whole body to go numb.
 
 ### A chastity bra forged in holy light. Only the will of a Goddess will release you!
@@ -20098,13 +20131,13 @@ Ranged Attack
 ### You find a heavenly chastity bra. Who could it be for?
 
 ### Heavenly Chastity Belt
-### There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
+### There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
 ### Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 
 
 
 ### Heavenly Chastity Bra
-### There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
+### There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
 ### The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 
 
@@ -20498,7 +20531,6 @@ Hogtied!
 ### Replaces 60% of cages with a different kind of kinky furniture such as display stands.
 
 ### Collection
-### Facilities
 
 ### Storage
 ### Management
@@ -20601,6 +20633,8 @@ Hogtied!
 ### The ENMY sticks a VTY into you! (DMGDLT)
 ### The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 ### The ENMY reaches for your mouth and fails!
+### The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+### The ENMY reaches for the gag around your neck!
 ### The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ### The ENMY grabs your wrists but you pull away!
 ### The ENMY pulls your weapon away!
@@ -20882,6 +20916,15 @@ Hogtied!
 ### Banishment of the shadow.
 ### Living Shadow
 ### Engulfs the tile in darkness.
+
+### Planar Focus
+### Absorbs teleportation energies.
+
+### Planar Diffractor
+### Diffuses teleportation energies.
+
+### Planar Focusing Crystal
+### Amplifies teleportation energies.
 
 ### Mysterious Plate
 ### What could it be?
@@ -21476,6 +21519,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Require Pose (e.g. ChestArmor)
 ### Hide Prefix (e.g Encase)
 ### Hide Suffix (e.g TorsoUpper)
+### Protected
 
 ### Load from File
 ### Save to File
@@ -21581,6 +21625,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Editing Restraints
 ### Imprison in Furniture
+### Dropoff Prisoner
 
 ### Module (Utility)
 ### Module (Punishment)
@@ -21692,8 +21737,8 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Need Positive Opinion to Promote
 
-### Servant Enjoyment: AMNT
-### Prisoner Enjoyment: AMNT
+### Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+### Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 ### Submissive prisoners and dominant servants add different amounts of opinion per cycle
 
 
@@ -21786,15 +21831,16 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Reverse Route
 ### Chaos Route
 ### Map Seed: 
-### Will Overwrite!
+### Will Overwrite NME!
 
 ### Play Slot 
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)
 
-
-### Store to File
+### Backup
+### Restore
+### Set Palette
 
 
 ### FLR-DGN
@@ -21804,3 +21850,61 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Target must be vulnerable.
 ### Target must be vulnerable or have casted a verbal spell.
 ### Target must have casted a verbal spell.
+
+
+### Diggy diggy hole
+### Select a cracked wall.
+### You strike the earth!
+
+### Must select a cracked wall.
+### Your arms aren't free to swing the axe!
+### You strike the earth, but it is nothing but solid wall on the other side.
+### You strike the earth! It crumbles before you!
+
+### The planar focus resonates with the teleportation magic!
+### The planar focusing crystal activates! Mana is drained, and turns into bindings!
+### The planar diffractor blocks the teleportation!
+
+### Set Character Palette
+
+### Reset all Keybindings
+
+### That item is blocked! You can't remove it.
+
+###  min.
+###  max.
+###  bonus
+###  penalty
+
+### You put it on, why would you want to take it off?~
+### You'll need an ancient key to unlock the ancient-made collar.
+
+
+### Ancient Worshipper
+### The ancient worshipper repents of her ways.
+### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on one of your restraints! (DamageTaken)
+### The ancient worshipper mumbles at you for assistance! (DamageTaken)
+
+### Ancient Congregant
+### The ancient congregant repents of her ways.
+### The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on your restraints! (DamageTaken)
+### The ancient congregant mumbles at you for assistance! (DamageTaken)
+
+### Ancient Hierophant
+### The ancient hierophant repents of her ways.
+### The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
+### The ancient hierophant mumbles at you for assistance! (DamageTaken)
+
+### The crystals break off, revealing a keyhole and weakening the item.
+### Your distraction causes the crystals to grow back, encasing the lock again!
+
+### After popping the gag out of your mouth, it hangs loose around your neck.
+### The gag is now in your mouth.
+
+### ERROR: Restraint does not exist. Did you forget to load mods?
+
+### Gag Necklace
+### A cute accessory for those who wish to (not) make a statement.
+### Functions as a collar.
