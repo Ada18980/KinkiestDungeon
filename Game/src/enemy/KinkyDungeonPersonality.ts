@@ -99,10 +99,9 @@ let KDEnemyPersonalities = {
 
 /**
  * Do NOT call this during UI loop, as can lead to desyncs in future w/ replay system or possible netcode
- * @param {entity} enemy
- * @returns {string}
+ * @param enemy
  */
-function KDGetPersonality(enemy) {
+function KDGetPersonality(enemy: entity): string {
 	if (!enemy.Enemy) return undefined;
 	if (enemy.personality) return enemy.personality;
 	let WeightTotal = 0;
@@ -134,11 +133,9 @@ function KDGetPersonality(enemy) {
 
 
 /**
- *
- * @param {enemy} Enemy
- * @returns {string}
+ * @param Enemy
  */
-function KDGetPersonalityType(Enemy) {
+function KDGetPersonalityType(Enemy: enemy): string {
 	let WeightTotal = 0;
 	let Weights = [];
 
@@ -167,10 +164,8 @@ function KDGetPersonalityType(Enemy) {
 }
 
 /**
- *
- * @param {entity} enemy
- * @returns {string}
+ * @param enemy
  */
-function KDJailPersonality(enemy) {
+function KDJailPersonality(enemy: entity): string {
 	return (enemy.personality && KDJailPersonalities[enemy.personality]) ? enemy.personality : "";
 }
