@@ -768,7 +768,7 @@ function KDDoGaggedMiscastFlag(data: any) {
  * @param [forceFaction]
  * @param [castData]
  */
-function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, enemy: entity, player: any, bullet: any, forceFaction?: string, castData?: any): {result: string, data: any} {
+function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, enemy: entity, player: any, bullet?: any, forceFaction?: string, castData?: any): {result: string, data: any} {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
