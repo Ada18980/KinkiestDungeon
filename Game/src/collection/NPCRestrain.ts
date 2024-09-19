@@ -213,7 +213,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								t, p,
 								restraint,
 								null)) :
-							false)) {
+							undefined)) {
 
 								let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
 									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
@@ -292,7 +292,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							t, p,
 							restraint,
 							null)) :
-						false)) {
+						undefined)) {
 
 						let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
 							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))

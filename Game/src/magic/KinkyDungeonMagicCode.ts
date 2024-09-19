@@ -275,7 +275,7 @@ let KinkyDungeonSpellSpecials: Record<string, (spell: spell, data: any, targetX:
 								t, p,
 								KDRestraint(KinkyDungeonTargetingSpellItem),
 								KinkyDungeonTargetingSpellItem)) :
-							false
+							undefined
 						) : undefined);
 					if (!canApply) {
 						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"

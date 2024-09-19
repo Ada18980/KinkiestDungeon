@@ -696,7 +696,7 @@ function KDArmorFormula(DamageAmount: number, Armor: number): number {
  * @param Damage
  * @param Ranged
  * @param NoMsg
- * @param Spell
+ * @param [Spell]
  * @param [bullet]
  * @param [attacker]
  * @param [Delay]
@@ -705,7 +705,7 @@ function KDArmorFormula(DamageAmount: number, Armor: number): number {
  * @param [Critical]
  * @param [Attack]
  */
-function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, NoMsg: boolean, Spell: any, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
+function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, NoMsg: boolean, Spell?: any, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
