@@ -6,6 +6,7 @@ let CharacterAppearancePreviousEmoticon = null;
 function CharacterAppearanceSetDefault(C: Character): void {
 	C.Appearance = [];
 	C.Pose = [];
+	C.Palette = "";
 }
 
 /**
@@ -13,7 +14,7 @@ function CharacterAppearanceSetDefault(C: Character): void {
  */
 function CharacterAppearanceNaked(C: Character): void {
 	for (let A = C.Appearance.length - 1; A >= 0; A--)
-		if (!C.Appearance[A].Model?.Protected)
+		if (C.Appearance[A].Model && !KDModelIsProtected(C.Appearance[A].Model))
 			C.Appearance.splice(A, 1);
 }
 
@@ -36,8 +37,11 @@ function CharacterAppearanceSetItem(C: Character, Group: string, ItemAsset: any,
  * @param C - The character whose appearance should be serialised
  * @returns A serialised version of the character's current appearance
  */
-function CharacterAppearanceStringify(C: Character): string {
-	return AppearanceItemStringify(C.Appearance);
+function CharacterAppearanceStringify(C: Character, metadata : KDOutfitMetadata): string {
+	return JSON.stringify({
+		metadata: metadata,
+		appearance: AppearanceItemStringify(C.Appearance),
+	});
 }
 
 function AppearanceItemStringify(Item: any[]): string {
@@ -63,19 +67,20 @@ function AppearanceItemStringify(Item: any[]): string {
  * @param clothesOnly - The serialised appearance to restore
  */
 function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: boolean = false): void {
-	let newAppearance = AppearanceItemParse(backup);
+	let parsed = JSON.parse(LZString.decompressFromBase64(backup) || backup);
+	let newAppearance = AppearanceItemParse(parsed?.metadata ? parsed.appearance : backup);
 	if (!clothesOnly) {
 		C.Appearance = newAppearance;
 		return;
 	}
 	let finalAppearance = [];
 	for (let item of newAppearance) {
-		if (!item.Model.Protected) {
+		if (!KDModelIsProtected(item.Model)) {
 			finalAppearance.push(item);
 		}
 	}
 	for (let item of C.Appearance) {
-		if (item.Model.Protected) {
+		if (KDModelIsProtected(item.Model)) {
 			finalAppearance.push(item);
 		}
 	}

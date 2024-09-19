@@ -17,6 +17,7 @@ let KDTeaseAttackLists = {
 		"VibeToy",
 		"InsertToy",
 		"AddStuffing",
+		"AddGag",
 		"Disarm",
 		"Pickpocket",
 		/*,
@@ -271,6 +272,55 @@ let KDTeaseAttacks = {
 			} else {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttackResist_AddStuffing")
+						.replace("ENMY", TextGet("Name" + enemy.Enemy.name))
+						.replace("VTY", TextGet("Restraint"+selected))
+						+ TextGet("ResistType" + (blocked ? "Block" : (evaded ? "Dodge" : ""))),
+					"#ff9999", 1);
+			}
+
+			return true;
+		},
+	},
+	AddGag: {
+		name: "AddStuffing",
+		priority: 4,
+		blockable: true, dodgeable: true,
+		filter: (enemy, player, AIData) => {
+			if (KDBasicTeaseAttack(enemy, player)
+				&& !KinkyDungeonIsSlowed(enemy)
+				&& !KDIsDisarmed(enemy)
+				&& KDHasArms(enemy)
+				&& (
+					KinkyDungeonFlags.get("verbalspell")
+				)) {
+				let gagType = KDGetNecklaceGagType(KDPlayer()) || "TrapGag";
+
+				if (KDCanAddRestraint(KDRestraint({name: gagType}), false, "", true, undefined, false, true)) {
+					return true;
+				}
+			}
+			return false;
+		},
+		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
+			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
+			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
+			let selected = KDGetNecklaceGagType(KDPlayer()) || "TrapGag";
+
+
+			KinkyDungeonSetFlag("stuff", 4);
+			if (dmg.happened && KinkyDungeonAddRestraintIfWeaker(selected, 0, false, "", true)) {
+
+				KinkyDungeonSendTextMessage(4,
+					TextGet("KDTeaseAttack_AddGag")
+						.replace("ENMY", TextGet("Name" + enemy.Enemy.name))
+						.replace("DMGDLT", dmg.string)
+						.replace("VTY", TextGet("Restraint"+selected)),
+					"#ff9999", 1);
+			} else {
+				KinkyDungeonSendTextMessage(4,
+					TextGet("KDTeaseAttackResist_AddGag")
 						.replace("ENMY", TextGet("Name" + enemy.Enemy.name))
 						.replace("VTY", TextGet("Restraint"+selected))
 						+ TextGet("ResistType" + (blocked ? "Block" : (evaded ? "Dodge" : ""))),

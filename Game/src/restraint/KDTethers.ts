@@ -23,8 +23,10 @@ let KDLeashablePersonalities = {
 
 let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	ShadowTether: (entity) => {
-		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow)) return false;
-		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity) && KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
+		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow))
+			return false;
+		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)
+			&& KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
 		if (entity.player) {
 			return KinkyDungeonPlayerTags.get("Shadow");
 		} else {
@@ -35,7 +37,9 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		//if (!KinkyDungeonInventoryGetConsumable("LeashItem") && !KDHasSpell("LeashSkill")) return false;
 		if (entity
 			// Condition 1: the target is willing
-			&& !(KDWillingLeash(entity) && !KDCanApplyBondage(entity, KDPlayer()))
+			&& !(KDWillingLeash(entity))
+			// Condition 1.5: the target is made willing
+			&& !(KDCanApplyBondage(entity, KDPlayer()))
 			// Condition 2: the player has the Brat Handler skill and target is wearing a leash item
 			&& !(KDHasSpell("LeashSkill") && KDGetNPCRestraints(entity.id) && Object.values(KDGetNPCRestraints(entity.id))
 				.some((rest) => {return KDRestraint(rest)?.leash;}))
@@ -87,13 +91,22 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	},
 };
 
-function KDGetLeashedToCount(entity: entity) {
+function KDGetLeashedToCount(entity: entity): number {
 	let n = 0;
 	for (let en of KDMapData.Entities.filter((en) => {return en.leash?.entity;})) {
 		if (en.leash.entity == entity.id) n++;
 	}
 	if (KDPlayer().leash?.entity == entity.id) n++;
 	return n;
+}
+
+function KDGetLeashedTo(entity: entity): entity[] {
+	let ret: entity[] = [];
+	for (let en of KDMapData.Entities.filter((en) => {return en.leash?.entity;})) {
+		if (en.leash.entity == entity.id) ret.push(en);
+	}
+	if (KDPlayer().leash?.entity == entity.id) ret.push(KDPlayer());
+	return ret;
 }
 
 function KDGetTetherLength(entity: entity): number {
@@ -397,7 +410,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 
 
 function KDWillingLeash(entity: entity): boolean {
-	return KDGetPersonality(entity) != undefined
-				&& KDLeashablePersonalities[KDGetPersonality(entity)]
-				&& KDLeashablePersonalities[KDGetPersonality(entity)](entity, KDPlayer());
+	return entity?.personality != undefined
+				&& KDLeashablePersonalities[entity.personality]
+				&& KDLeashablePersonalities[entity.personality](entity, KDPlayer());
 }

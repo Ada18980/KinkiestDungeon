@@ -6,6 +6,21 @@ let KinkyDungeonReplaceConfirm = 0;
 
 let KDCanRevertFlag = false;
 
+let ColorPickerFilterCode = "";
+let ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+	brightness: 1,
+	saturation: 1,
+	gamma: 1,
+	alpha: 1,
+	red: 1,
+	blue: 1,
+	green: 1,
+	contrast: 1,
+});
+
+let KDCurrentColorFilterCode = {};
+let KDCurrentColorFilter = {};
+
 let KDCurrentOutfit = 0;
 let KDMaxOutfits = 99;
 let KDMaxOutfitsDisplay = 10;
@@ -19,6 +34,8 @@ let FilterUpdateInterval = 90;
 
 let KDModelListMax = 14;
 let KDModelListViewSkip = 7;
+
+let KDShowCharacterPalette = false;
 
 
 let KDModelList_Categories_index = 0;
@@ -158,9 +175,42 @@ function KDDrawSavedColors(X, y, max, C) {
 			i -= KDSavedColorPerRow;
 			Y += vspacing;
 		}
+		if (KDSavedColors[ii]) {
+			if (KDCurrentColorFilterCode[ii] != JSON.stringify(KDSavedColors[ii])) {
+				KDCurrentColorFilterCode[ii] = JSON.stringify(KDSavedColors[ii]);
+				if (KDCurrentColorFilter[ii])
+					KDCurrentColorFilter[ii].destroy();
+				KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]);
+			}
+		} else if (KDCurrentColorFilterCode[ii] != undefined) {
+			KDCurrentColorFilterCode[ii] = undefined;
+			if (KDCurrentColorFilter[ii])
+				KDCurrentColorFilter[ii].destroy();
+			KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter({
+				brightness: 1,
+				saturation: 1,
+				gamma: 1,
+				alpha: 1,
+				red: 1,
+				blue: 1,
+				green: 1,
+				contrast: 1,
+			});
+		}
+		if (!KDCurrentColorFilter[ii]) KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter({
+			brightness: 1,
+			saturation: 1,
+			gamma: 1,
+			alpha: 1,
+			red: 1,
+			blue: 1,
+			green: 1,
+			contrast: 1,
+		});
+
 		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + ii, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
 			filters: [
-				new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]),
+				KDCurrentColorFilter[ii],
 			]
 		});
 		DrawButtonKDEx("SavedColorCopy" + ii, (bdata) => {
@@ -270,6 +320,9 @@ function KDDrawColorSliders(X, Y, C, Model) {
 							Model.Properties[KDCurrentLayer].XPivot = parsed.XPivot;
 							Model.Properties[KDCurrentLayer].YPivot = parsed.YPivot;
 							Model.Properties[KDCurrentLayer].XScale = parsed.XScale;
+							Model.Properties[KDCurrentLayer].Protected = parsed.Protected;
+							Model.Properties[KDCurrentLayer].NoOverride = parsed.NoOverride;
+							Model.Properties[KDCurrentLayer].HideOverridden = parsed.HideOverridden;
 							Model.Properties[KDCurrentLayer].YScale = parsed.YScale;
 							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 							KDRefreshProps = true;
@@ -296,6 +349,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			"YScale": "1",
 			"Rotation": "0",
 			"LayerBonus": "0",
+			"Protected": "0",
 			"SuppressDynamic": "0",
 			"HideOverridden": "0",
 			"NoOverride": "0",
@@ -310,7 +364,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			YY += 400;
 		} else {
 			let YYold = YY;
-			YY -= 25;
+			YY -= 24;
 			for (let field0 of Object.entries(fields)) {
 
 				let field = field0[0];
@@ -334,11 +388,12 @@ function KDDrawColorSliders(X, Y, C, Model) {
 							let parsed = value;
 							if (deff == "") {
 								// Nothing!
+								parsed = "";
 							} else if (deff.includes(',')) {
 								parsed = parsed.split(',').filter((str) => {
 									return str != "";
 								});
-							} else parsed = parseFloat(value) || value;
+							} else parsed = parseFloat(value) || parseFloat(value + "0") || value;
 							if (value) {
 								KDChangeWardrobe(C);
 								if (!Model.Properties) Model.Properties = {};
@@ -490,7 +545,6 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			}
 
 			let radius = 150;
-			KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
 			if (ElementValue("KDSelectedColor") && Model?.Filters && Model.Filters[KDCurrentLayer]) {
 				let hsl = rgbToHsl(
 					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
@@ -500,13 +554,54 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
 				let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
 
-				let value = ElementValue("KDSelectedColor");
-				let RegExp = /^#[0-9A-F]{6}$/i;
 
-				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
-					tint: RegExp.test(value) ? KDhexToRGB(ElementValue("KDSelectedColor")) : 0xffffff,
-				});
+				if (ColorPickerFilterCode != (1 - hsl[2]) + "," + hsl[2]) {
+					ColorPickerFilterCode = (1 - hsl[2]) + "," + hsl[2];
+					ColorPickerFilter.destroy();
+					let lumi =
+						Math.min(1, 5 * hsl[2]);
+					ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+						brightness: 1,
+						saturation: Math.max(0, Math.min(1, 1.5 - 1.5*hsl[2])),
+						gamma: 1,
+						alpha: 1,
+						red: lumi,
+						blue: lumi,
+						green: lumi,
+						contrast: 1,
+					});
+				}
+
+				let value = ElementValue("KDSelectedColor");
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
+
+				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0,
+					{
+						tint: RegExp.test(value) ?
+							new PIXI.Color(ElementValue("KDSelectedColor")).toNumber() : 0xffffff,
+					});
+			} else {
+				if (ColorPickerFilterCode) {
+					ColorPickerFilterCode = "";
+					ColorPickerFilter.destroy();
+					ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+						brightness: 1,
+						saturation: 1,
+						gamma: 1,
+						alpha: 1,
+						red: 1,
+						blue: 1,
+						green: 1,
+						contrast: 1,
+					});
+				}
 			}
+
+			KDDraw(kdcanvas, kdpixisprites, "colorpicker",
+				KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300,
+				undefined, {
+					filters: [ColorPickerFilter],
+				});
 
 
 			let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
@@ -604,7 +699,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		if (TF.Created) {
 			TF.Element.oninput = (event) => {
 				let value = ElementValue("KDSelectedColor");
-				let RegExp = /^#[0-9A-F]{6}$/i;
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
 
 				if (RegExp.test(value)) {
 					let hex = KDhexToRGB(value);
@@ -890,7 +985,7 @@ function KDChangeWardrobe(C) {
 	if (C == KinkyDungeonPlayer)
 		try {
 			if (!KDOriginalValue)
-				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(C));
+				KDOriginalValue = AppearanceItemStringify(C.Appearance);
 		} catch (e) {
 			// Fail
 		}
@@ -1150,7 +1245,14 @@ function KDDrawWardrobe(screen, Character) {
 	if (!ElementValue("KDOutfitName")) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
 	}
-	KDDrawModelList(720, C);
+	if (KDShowCharacterPalette) {
+		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.Palette || "", (pal) => {
+			C.Palette = pal;
+
+		}, "KDSetCharacterPalette");
+	} else {
+		KDDrawModelList(720, C);
+	}
 
 	DrawBoxKD(1025, 710, 950, 285, KDButtonColor, false, 0.5, -10);
 	if (KDPlayerSetPose) {
@@ -1183,31 +1285,60 @@ function KDDrawWardrobe(screen, Character) {
 
 
 
-	DrawButtonKDEx("BackupOutfit", (bdata) => {
-		downloadFile((ElementValue("savename") || KDOutfitInfo[KDCurrentOutfit] || "Outfit") + KDOUTFITEXTENSION,
-			LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer)));
+	let palette = C.Palette;
+	let o = {
+	};
+
+	if (palette && KinkyDungeonFactionFilters[palette]) {
+		o.filters = [
+			new PIXI.filters.AdjustmentFilter(KinkyDungeonFactionFilters[palette].Highlight),
+		];
+	}
+
+
+	DrawButtonKDEx("SetPalette", (bdata) => {
+		KDShowCharacterPalette = !KDShowCharacterPalette;
 		return true;
-	}, true, 715, 875, 240, 50, TextGet("KDBackupOutfits"), "#ffffff",
+	}, true, 715, 875, 240, 50, TextGet("KDSetPalette"), "#ffffff",
+	KinkyDungeonRootDirectory + "UI/SetPalette.png", "", false, false,
+	undefined, undefined, true, o);
+
+
+	DrawButtonKDEx("BackupOutfit", (bdata) => {
+		downloadFile((ElementValue("savename") || KDOutfitInfo[KDCurrentOutfit] || "Outfit") + KDOUTFITBACKUP,
+			LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
+				KDGetCharMetadata(C || KinkyDungeonPlayer)
+			)));
+		return true;
+	}, true, 715, 930, 115, 50, TextGet("KDBackupOutfits"), "#ffffff",
 	KinkyDungeonRootDirectory + "UI/Safe.png", "", false, false,
 	undefined, undefined, true);
+
 	DrawButtonKDEx("RestoreOutfit", (bdata) => {
 		getFileInput(KDLoadOutfitDirect, C);
 		return true;
-	}, true, 715, 930, 240, 50, TextGet("KDLoadOutfits"), "#ffffff",
+	}, true, 835, 930, 115, 50, TextGet("KDLoadOutfits"), "#ffffff",
 	KinkyDungeonRootDirectory + "UI/Restore.png", "", false, false,
 	undefined, undefined, true);
 
-	if (KDSelectedModel) {
-		KDDrawColorSliders(1625, 100, C, KDSelectedModel);
+	if (KDShowCharacterPalette) {
+		// nyet
 	} else {
-		KDCurrentLayer = "";
-		KDRefreshProps = true;
+		if (KDSelectedModel) {
+			KDDrawColorSliders(1625, 100, C, KDSelectedModel);
+		} else {
+			KDCurrentLayer = "";
+			KDRefreshProps = true;
+		}
 	}
+
 	// Return anon function anonymously
 	let clickButton = (index) => {
 		return (bdata) => {
 			if (C == KinkyDungeonPlayer) {
-				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
+					KDGetCharMetadata(C || KinkyDungeonPlayer)
+				));
 				KDOutfitOriginalStore[KDCurrentOutfit] = KDOriginalValue;
 				ElementValue("KDOutfitName", "");
 			}
@@ -1222,16 +1353,25 @@ function KDDrawWardrobe(screen, Character) {
 				KinkyDungeonSetDress("None", "None", C, true);
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
-				CharacterAppearanceRestore(C, DecompressB64(NewOutfit), C != KinkyDungeonPlayer);
+				let newOut = DecompressB64(NewOutfit);
+				CharacterAppearanceRestore(C, newOut, C != KinkyDungeonPlayer);
+				let newParsed = JSON.parse(newOut);
+				if (newParsed?.metadata) {
+					C.Palette = newParsed.metadata.palette;
+				} else C.Palette = "";
 				CharacterRefresh(C);
 				KDInitProtectedGroups(C);
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
 			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
-				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
+				CharacterAppearanceRestore(KinkyDungeonPlayer,
+					CharacterAppearanceStringify(DefaultPlayer,
+						KDGetCharMetadata(DefaultPlayer)
+					));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
+				C.Palette = "";
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups(KinkyDungeonPlayer);
@@ -1295,8 +1435,6 @@ function KDDrawWardrobe(screen, Character) {
 	DrawButtonKDEx("StripOutfit", (bdata) => {
 		if (KDConfirmType == "strip" && KinkyDungeonReplaceConfirm > 0) {
 			KDChangeWardrobe(C);
-			//if (C == KinkyDungeonPlayer)
-			//CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
 			KDRefreshCharacter.set(C, true);
@@ -1327,10 +1465,11 @@ function KDDrawWardrobe(screen, Character) {
 		KinkyDungeonState = "LoadOutfit";
 
 
-		//LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 		CharacterReleaseTotal(C || KinkyDungeonPlayer);
 		ElementCreateTextArea("saveInputField");
-		ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer)));
+		ElementValue("saveInputField", LZString.compressToBase64(
+			AppearanceItemStringify((C || KinkyDungeonPlayer).Appearance)
+		));
 		return true;
 	}, true,465, 875, 240, 50, TextGet("KinkyDungeonDressPlayerImport"),
 	"#ffffff", KinkyDungeonRootDirectory + "UI/Load.png", undefined, undefined, undefined,
@@ -1364,7 +1503,12 @@ function KDDrawWardrobe(screen, Character) {
 					KDSaveOutfitInfo();
 				}
 				KinkyDungeonReplaceConfirm = 0;
-				localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+				localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit,
+					LZString.compressToBase64(
+						CharacterAppearanceStringify(C || KinkyDungeonPlayer,
+							KDGetCharMetadata(C || KinkyDungeonPlayer)
+						)
+					));
 				//localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 				KinkyDungeonDressSet();
 				KDOriginalValue = "";
@@ -1387,7 +1531,11 @@ function KDDrawWardrobe(screen, Character) {
 				if (C == KinkyDungeonPlayer) {
 					KDChangeWardrobe(C);
 					KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
-					CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
+					CharacterAppearanceRestore(KinkyDungeonPlayer,
+						CharacterAppearanceStringify(DefaultPlayer,
+							KDGetCharMetadata(KinkyDungeonPlayer)
+						)
+					);
 					CharacterReleaseTotal(KinkyDungeonPlayer);
 					KinkyDungeonSetDress("Default", "Default", C, true);
 					KinkyDungeonDressPlayer();
@@ -1402,7 +1550,7 @@ function KDDrawWardrobe(screen, Character) {
 					delete value.customOutfit;
 
 					let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
-					if (!value.bodystyle || !value.facestyle || !value.hairstyle) {
+					if (!value.bodystyle && !value.facestyle && !value.hairstyle) {
 						if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
 							if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
 								let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
@@ -1470,7 +1618,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+					if (a.Model && !(KDModelIsProtected(a.model)) && !a.Model.Restraint && !a.Model.Cosplay) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1490,7 +1638,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
+					if (a.Model && !KDModelIsProtected(a.Model) && !a.Model.Restraint && !a.Model.Cosplay) {
 						exportData.push({
 							Model: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1512,7 +1660,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Face") && !a.Model.Categories?.includes("Hair") && !a.Model.Categories?.includes("Cosplay"))) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Face") && !a.Model.Categories?.includes("Hair") && !a.Model.Categories?.includes("Cosplay"))) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1531,7 +1679,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Hairstyles") && !a.Model.Categories?.includes("Cosplay"))) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Hairstyles") && !a.Model.Categories?.includes("Cosplay"))) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1550,7 +1698,7 @@ function KDDrawWardrobe(screen, Character) {
 			let exportData = [];
 			if (C?.Appearance)
 				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Cosplay"))) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Cosplay"))) {
 						exportData.push({
 							Item: a.Model.Name,
 							Group: a.Model.Group || a.Model.Name,
@@ -1599,11 +1747,6 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 
 	KDRefreshCharacter.set(C, true);
 	KinkyDungeonDressPlayer(C, true);
-	/*if (stringified) {
-		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, stringified);
-		KDSaveOutfitInfo();
-		KDRefreshOutfitInfo();
-	}*/
 
 	//KinkyDungeonNewDress = true;
 }
@@ -1611,7 +1754,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 function KDRestoreOutfit() {
 	// Restore the original outfit
 	if (KDOriginalValue) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue));
+		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue) || KDOriginalValue);
 		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();
@@ -1717,7 +1860,7 @@ let KDVisualBrightness = 0.5;
 function KDLoadOutfit(files) {
 	for (let f of files) {
 		if (f && f.name) {
-			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith('.txt')) {
+			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith(KDOUTFITBACKUP) || f.name.endsWith('.txt')) {
 				let str = "";
 				KDSaveName = f.name;
 				try {
@@ -1740,7 +1883,7 @@ function KDLoadOutfit(files) {
 function KDLoadOutfitDirect(files, Char) {
 	for (let f of files) {
 		if (f && f.name) {
-			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith('.txt')) {
+			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith(KDOUTFITBACKUP) || f.name.endsWith('.txt')) {
 				let str = "";
 				KDSaveName = f.name;
 				try {
@@ -1753,6 +1896,10 @@ function KDLoadOutfitDirect(files, Char) {
 							let origAppearance = Char.Appearance;
 							try {
 								CharacterAppearanceRestore(Char, decompressed, false);
+								let newParsed = JSON.parse(decompressed);
+								if (newParsed) {
+									Char.Palette = newParsed.metadata.palette;
+								}
 								CharacterRefresh(Char);
 								KDOldValue = str;
 								KDInitProtectedGroups(Char);
@@ -1773,4 +1920,16 @@ function KDLoadOutfitDirect(files, Char) {
 			}
 		}
 	}
+}
+
+/**
+ *
+ * @param {Character} C
+ * @returns {KDOutfitMetadata}
+ */
+function KDGetCharMetadata(C) {
+	return {
+		name: C.Name,
+		palette: C.Palette,
+	};
 }

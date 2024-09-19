@@ -30,15 +30,105 @@ TODO:
 
 TODO remove hogtie when released
 
-5.4.2
-- Fixed bug where cyber restraints could sometimes be impossible to unlock even with a keycard
-- Fixed bug where summit elevator could trap you in while still letting escapees out
-- Fixed bug where active soul crystals could not be vaulted around even though the vault upgrade says you can
-- Fixed issue where truss em up couldnt be opened even if you had quick-bind restraints that could be used with it.
-- Hopefully fixed issue where your party members would turn on you due to other ally's AoE
-- Fixed issue where caldera could have inaccessible regions and the player might even start in one)
+5.3.38-RC6
+- Fix some issues with runes (aoe, cast time)
+- New Expert Tool tag: Protected. Put 1 here to make the layer protected.
+If a model has any protected layers then it will be treated like ears, etc.
+Converse: if you set it to -1 then it will make a protected model no longer protected.
+1 overrides -1.
 
-5.4.1
+5.3.38-RC5
+- fixed monster rope hogtie crash
+- enemies can now path thru barricades and destructible doors
+- allow placing prisoners in doll stands (both collection and leashed)
+
+5.3.38-RC4
+- Fixed bug where the light maid knight socks had unintended holes and the toes would stick out
+- Fixed bug where the leather mask would cause a bald patch when using x rays
+
+5.3.38-RC3
+- Monster rope should now add hogtie properly (only applies to new monster ropes generated)
+- Fixed some bugs involving leashing and hostility
+- Fixed critical bug with enchanted items disappearing when dropped by enemy attack!!!
+
+5.3.38-RC2
+- Made dirt piles and giant mushrooms not block leashing NPCs
+- Added gag necklace
+
+5.3.38-RC1
+- Updated version number
+- Merged a great huge typescript refactor by ewhac. Several longstanding bugs got caught and fixed as a result
+- Allow linking armor under accessible restraints
+
+5.4-nightly8
+- Added modding parameter to allow custom msg for equipping and successfully removing restraints
+- fixed bug where assigning outfit to hotbar disappears the slot
+- fixed missing assets in coastal tileset
+- Increased arcane tome damage and clarified that they're not supposed to crit
+- Removed arcane crystal from wizard start, has arcane tome instead
+- added arcane crystal to wizard study chest, shadow chest, and wall loot in library
+
+5.4-nightly7b
+- Updated version number
+- Clarified cuddle lounge mechanics
+- b version: fixed a crash and a visual bug, hopefully
+
+5.4-nightly6
+- Changed worldgen to make sizing a bit more reasonable
+- Angel can help you with divine locks
+- Added Crystal lock
+- Added Ancient Worshippers
+- Made the simple color picker more accurate
+
+
+5.4-nightly5
+- Added directional wires (vertical, horizontal, endpoint)
+- fixed bug w/ opinion not updating on cuddle lounge pets when you revisit summit
+- fixed fighter break free ability
+- Changed rune graphics to be more consistent with the game
+
+5.4-nightly4
+- Fix issue with Commerce Goddes Rewards Program™ portals spawning on non-empty tiles
+- Fix issue with weird flashing dialogue options involving leashes
+- Fix issue with both tool multiplier and buff multiplier applying to edge bonus (such as hook, etc)
+- Fix issues with light maid knight socks poking through the bottom of shoes
+- Fixed issue with summons being added to collection if you add them to party
+
+5.4-nightly3
+- Fixed an issue where Rogue's problem solving triggered twice
+- Fixed (hopefully) an issue where audio crashed randomly
+- Fixed an issue where enemies send repeated soundwaves
+- Fixed an issue where dolls werent properly displaced when shoving the player into their space
+- Fixed some Light Maid Knight clipping and missing textures
+- Fixed some issues with struggle power calc
+
+
+5.4-nightly2
+- !!!MODDERS - IMPORTANT!!!
+- "kinkydungeonappearanceX" now contains an expanded object with metadata. Please update mods that handle the localstorage version of character
+- CharacterAppearanceStringify now encodes metadata into the provided string
+- CharacterAppearanceRestore can handle both old and new strigified characters
+- You will need to update any code that directly references a string created by CharacterAppearanceStringify instead of using CharacterAppearanceRestore
+- saveStat in the save files now has Palette field
+
+5.4-nightly2
+- Fixed bug where running out of WP didnt reduce struggle power
+- Bed trap now has straps ^^
+- Cuddle lounge now improves servant opinions a lot more
+- Cuddle lounge is less effective per prisoner the more prisoners in it
+
+5.4-nightly1
+- Added Absurdly Huge Maps perk
+- Reworked the maze algorithm so it can now handle empty tiles generated
+- Made cracks propagate into walls more
+- Made the pickaxe able to break some blocks depending on geometry
+
+5.3.37
+- Brawler should no longer give you full accuracy while arm + legbindered, but should always give full unarmed damage
+- Fixed a bug where keys vanish into oblivion
+- Distracted allies should be a little less unreliable
+
+5.3.36
 - MODDERS: Replaced KinkyDungeonCheckClothesLoss with KDRedrawCharacter, a map. The old variable still works as a generic way to do it to 'whatever gets rendered next'
 - Saves will now save your outfit as well, and restore it during saves. You can turn off both saving and loading of outfits
 - Added multiple save slots and mod config by Enraa
@@ -49,7 +139,12 @@ TODO remove hogtie when released
 - Added custom outfits for 3 of the custom patrons
 - Added a sneaky dealer npc
 - Made truss em up menu show different colors and helpful messages based on what the restraining conditions are
-- Can now vault over soul crystals
+- Fixed bug where cyber restraints could sometimes be impossible to unlock even with a keycard
+- Fixed bug where summit elevator could trap you in while still letting escapees out
+- Fixed bug where active soul crystals could not be vaulted around even though the vault upgrade says you can
+- Fixed issue where truss em up couldnt be opened even if you had quick-bind restraints that could be used with it.
+- Hopefully fixed issue where your party members would turn on you due to other ally's AoE
+- Fixed issue where caldera could have inaccessible regions and the player might even start in one
 
 5.3-Patch1
 - Added toggle to only bind self from quick inv (instead of targeting)

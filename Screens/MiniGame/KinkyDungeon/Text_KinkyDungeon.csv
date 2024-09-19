@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.1-nightly"
+KDVersionStr,"5.3.38-RC6"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -44,6 +44,16 @@ KDToggleTabMain,Main
 KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
+
+
+KDToggleApplyPaletteRestraint,Apply palette to Restraints
+KDToggleApplyPaletteTransform,Apply palette to transforms
+
+KDToggleIgnoreApplyCharPalette,Don't use character palette
+KDToggleAlwaysApplyCharPalette,Always use character palette
+KDToggleDefaultApplyCharPalette,Use character palette for default outfit
+
+KDToggleBackgrounds,Show Background Art
 
 
 KDToggleBackgrounds,Show Background Art
@@ -199,7 +209,7 @@ KinkyDungeonStat19,"Distracted"
 KinkyDungeonStatDesc19,"+15% miscast chance (at all times)"
 
 KinkyDungeonStat20,"Brawler"
-KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being slowed does not decrease unarmed damage."
+KinkyDungeonStatDesc20,"Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage."
 
 KinkyDungeonStatUnarmedGrope,"Way of the Squish"
 KinkyDungeonStatDescUnarmedGrope,"Unarmed attacks deal grope damage against humans."
@@ -240,7 +250,7 @@ KinkyDungeonStatDescUndeniable,"Born with an intense submissive desire, you cann
 
 
 KinkyDungeonStatFranticStruggle,"Frantic Struggle"
-KinkyDungeonStatDescFranticStruggle,"Your struggling is 3 times as fast, but less efficient in terms of stamina."
+KinkyDungeonStatDescFranticStruggle,"Your escaping is 3 times as fast, but less efficient in terms of stamina."
 
 KinkyDungeonStat28,"Escape Artist"
 KinkyDungeonStatDesc28,"Start with high Rope reputation, and all rope restraints are easier to escape from."
@@ -410,11 +420,13 @@ KinkyDungeonStatDescQuickness,"Grants Quickness after not moving for 4 turns. Qu
 
 
 KinkyDungeonStatMapLarge,"Expansive Halls"
-KinkyDungeonStatDescMapLarge,"Increases the size of maps by 1 in each direction."
+KinkyDungeonStatDescMapLarge,"Increases the size of maps by 3 in the long dimension. Maps will be less dense."
 KinkyDungeonStatMapHuge,"Gargantuan Halls"
-KinkyDungeonStatDescMapHuge,"Increases the size of maps by 2 in each direction."
+KinkyDungeonStatDescMapHuge,"Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends."
 KinkyDungeonStatMapGigantic,"Labyrinthine Halls"
-KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 3 in each direction."
+KinkyDungeonStatDescMapGigantic,"Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels."
+KinkyDungeonStatMapAbsurd,"Absurdly Huge Maps"
+KinkyDungeonStatDescMapAbsurd,"(Experimental) Make the maps really really big. Probably breaks the game."
 
 KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Binding on enemies is 30% stronger."
@@ -748,11 +760,11 @@ KDStatBlind,"Your vision is impaired!"
 KDStatArms,"Arms are bound!"
 KDStatHands,"Hands are useless!"
 KDStatHandsPartial,"Hands are impaired! Some tasks will be harder..."
-KDStatSpeedSlow,"Movement significantly impaired!"
-KDStatSpeedSlightlySlow,"Movement slightly impaired."
-KDStatSpeedVerySlow,"Movement severely impaired!"
-KDStatSpeedNoSprint,"Movement is almost impossible. Sprinting and hopping are disabled."
-KDStatSpeedImmobile,"Immobilized!"
+KDStatSpeedSlow,"Slow Level 2: Movement significantly impaired!"
+KDStatSpeedSlightlySlow,"Slow Level 1: Movement slightly impaired."
+KDStatSpeedVerySlow,"Slow Level 3: Movement severely impaired!"
+KDStatSpeedNoSprint,"Slow Level 4+: Movement is almost impossible. Sprinting and hopping are disabled."
+KDStatSpeedImmobile,"Slow Level 10+: Immobilized!"
 KDStatFreeMouth,"Your mouth is free for potion-drinking and spellcasting activities."
 KDStatFreeEyes,"Your vision is clear."
 KDStatFreeHands,"Your hands are unobstructed."
@@ -834,7 +846,7 @@ KinkyDungeonBuffKatanaCharge,"Katana: Patience is key..."
 KinkyDungeonBuffStormCharge,"Stormbreaker: You have the Power."
 
 KinkyDungeonDifficulty,Game Setup:
-KinkyDungeonDifficulty0,Beginner: Get a save code every 3 levels, autosave after each floor
+KinkyDungeonDifficulty0,"Beginner: Get a save code every 3 levels, autosave after each floor"
 KinkyDungeonDifficulty1,"Roguelike: No save codes, only autosave"
 KinkyDungeonDifficulty3,"Exciting: Orbs give random spells"
 KinkyDungeonDifficulty2,"Kinky: No save codes, orbs give random spells, start with very little"
@@ -914,7 +926,7 @@ KinkyDungeonTryOrgasm,"Let go..."
 KDLetGo,"Let go..."
 KDPlay,"Play with yourself"
 KDSleep,"Go to sleep"
-KDHelp,"Make noise!"
+KDHelp,"Call for Help!!!"
 KDWait,"Wait until interrupted"
 KDAutoStruggle,"Auto-struggle"
 KDAutoPath,"Auto-path"
@@ -965,7 +977,7 @@ KinkyDungeonStaminaWarningNone,"You feel like you are going to pass out..."
 GameStart,Start New Game
 KinkyDungeonNewGamePlus,New Game+
 GameContinue,Continue Last Save
-LoadGame,Load From Code
+LoadGame,Load Saved Game
 LoadOutfit,Save Outfit (overwrites!)
 LoadOutfitClothes,Save Outfit (Clothes Only!)
 GameReturnToMenu,Save Keybindings
@@ -1045,6 +1057,8 @@ KinkyDungeonKeyReputation,Reputation
 KinkyDungeonKeyQuest,Quests
 KinkyDungeonKeyMagic,Spell List
 KinkyDungeonKeyLog,Journal
+KinkyDungeonKeyRestart,Pause Menu
+KinkyDungeonKeyFacilities,Facilities
 
 KinkyDungeonCurrentPress,"Current Key Pressed"
 KinkyDungeonCurrentPressInfo,"Press a key, then press a button to set that key"
@@ -1744,6 +1758,7 @@ KinkyDungeonAngelDefeated,"Angel: MMMMMPHH!!!"
 KinkyDungeonAngelUnlock,"(The angel looks puzzled and unlocks your divine restraints)"
 
 KDArmorBlock,"The EnemyName pulls away your ArmorName!!!"
+KDArmorBlockBug,"There was a bug removing your ArmorName. Please report!"
 KDBypasses,"The EnemyName bypasses your security to add the RestraintName!"
 KDAttackBlocked,"The EnemyName tries to restrain you, but you resist the bondage!"
 KDRestraintBlockedItem,"Resist!"
@@ -2725,31 +2740,34 @@ AttackFungalBind,"The fun-gal clips a restraint around your neck! (+RestraintAdd
 AttackFungalLock,"The fun-gal produces a magical lock on all your restraints! (DamageTaken)"
 AttackFungal,"The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)"
 KinkyDungeonSpellCrystalPuff,Crystal Glyph
+KinkyDungeonSpellCrystalSlash,Crystal Slash
+KinkyDungeonSpellCrystalBolt,Crystal Bolt
+KinkyDungeonSpellCrystalBoltSingle,Crystal Bolt
 
 
 NameDressmakerQuest,Tailor
-KillDressmakerQuest,You murder the tailor!
+KillDressmakerQuest,You rob the tailor!
 
 NameApprenticeQuest,Student
-KillApprenticeQuest,You murder the student!
+KillApprenticeQuest,You rob the student!
 
 NameDragonheartQuest,Tactician
-KillDragonheartQuest,You murder the tactician!
+KillDragonheartQuest,You rob the tactician!
 
 NameMaidforceQuest,Informant
-KillMaidforceQuest,You murder the informant!
+KillMaidforceQuest,You rob the informant!
 
 NameBanditQuest,Thug
-KillBanditQuest,You murder the thug!
+KillBanditQuest,You rob the thug!
 
 NameAntiqueQuest,Antique Merchant
 KillAntiqueQuest,You smash the antique merchant!
 NameBlacksmithQuest,Blacksmith
-KillBlacksmithQuest,You murder the blacksmith!
+KillBlacksmithQuest,You rob the blacksmith!
 NameArmorerQuest,Armorer
-KillArmorerQuest,You murder the armorer!
+KillArmorerQuest,You rob the armorer!
 NameBowyerQuest,Bowyer
-KillBowyerQuest,You murder the bowyer!
+KillBowyerQuest,You rob the bowyer!
 NameShadyQuest,Not a Kidnapper
 KillShadyQuest,You bring the kidnapper to justice!
 
@@ -3067,6 +3085,12 @@ KinkyDungeonStruggleCantPickCyber2Lock,"The lock is technological and does not u
 KinkyDungeonStruggleCantPickCyber3Lock,"The lock is technological and does not use a key."
 KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
 
+KinkyDungeonStruggleCantPickCrystalLock,"The lock is encased in magical crystals that block the keyhole."
+KinkyDungeonStruggleUnlockNoCrystalKey,"Your distraction makes the crystals regrow immediately after breaking them off."
+
+KinkyDungeonStruggleCantPickExCrystalLock,"The crystal fragments in the lock make it difficult to pick."
+KinkyDungeonStruggleUnlockNoExCrystalKey,"You need a key to actually unlock the ex-crystallized lock."
+
 KinkyDungeonStruggleUnlockJammed,"The key sticks in the lock and jams, mangling the key!"
 
 KinkyDungeonStruggleUnlockSuccess,"You unlock the TargetRestraint."
@@ -3316,6 +3340,7 @@ KinkyDiscLockType,"Disc"
 KinkyRubberLockType,"Rubber"
 KinkyDivineLockType,"Divine"
 KinkyDivine2LockType,"Divine"
+KinkyCrystalLockType,"Crystal"
 KinkyWhiteLockType,"Simple"
 KinkyBlueLockType,"Runic"
 KinkyPurpleLockType,"Magic"
@@ -3332,6 +3357,7 @@ KinkyDiscLock,"Disc Lock"
 KinkyRubberLock,"Rubber Lock"
 KinkyDivineLock,"Divine Lock"
 KinkyDivine2Lock,"Divine Lock"
+KinkyCrystalLock,"Crystal Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
 KinkyPurpleLock,"Purple Lock"
@@ -4331,6 +4357,9 @@ RestraintWolfCollarDesc2,"Also good for identifying people in general. What a gr
 RestraintWolfLeash,Training Leash
 RestraintWolfLeashDesc,"A leash used for training pets."
 RestraintWolfLeashDesc2,"It is a steel cable with a weatherproof rubber coating, and a convenient handle."
+RestraintObsidianLeash,Magical Leash
+RestraintObsidianLeashDesc,"A leash made of magical energy, linked to a submissive's collar."
+RestraintObsidianLeashDesc2,"Very difficult to break unless you have a strong magical blade."
 
 KinkyDungeonLinkWolfAnkleCuffs,"Your ankle cuffs snap together on their own!"
 KinkyDungeonUnLinkWolfAnkleCuffs2,"Your ankle cuffs detach!"
@@ -5781,7 +5810,7 @@ KinkyDungeonSpellTargetGust,Choose aim direction
 
 
 KinkyDungeonSpellKnife,Knife
-KinkyDungeonSpellDescriptionKnife,Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
+KinkyDungeonSpellDescriptionKnife,"Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward."
 KinkyDungeonSpellCastKnife,You a throw a knife!
 KinkyDungeonSpellTargetKnife,Choose aim direction
 
@@ -5941,7 +5970,7 @@ KinkyDungeonSpellCastAnalyze,You analyze the target!
 KinkyDungeonSpellTargetAnalyze,Choose object to analyze
 
 KinkyDungeonSpellGreaterShield,Barrier Runes
-KinkyDungeonSpellDescriptionGreaterShield,Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
+KinkyDungeonSpellDescriptionGreaterShield,"Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement."
 KinkyDungeonSpellCastGreaterShield,You raise a field of runes with a command word!
 KinkyDungeonSpellTargetGreaterShield,Choose barrier location
 
@@ -6607,7 +6636,7 @@ KinkyDungeonSpellCastCamo,You pose in a clandestine manner.
 
 KinkyDungeonSpellShadowBlade,Darkblade
 KinkyDungeonSpellTargetShadowBlade,Select which creature to buff
-KinkyDungeonSpellDescriptionShadowBlade,Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
+KinkyDungeonSpellDescriptionShadowBlade,"Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower."
 KinkyDungeonSpellCastShadowBlade,You call forth dark runes on your weapon and arms!
 
 KinkyDungeonSpellHeal2,Heal
@@ -7637,6 +7666,7 @@ KinkyDungeonPurpleLockRemoveCharger,Your command word is heard and the charger u
 
 KDGameData.ConfirmAttack,Are you sure you want to attack?
 KinkyDungeonConfirmStairs,Are you sure you want to go to the next level? (Click self to confirm)
+
 
 KinkyDungeonSelfBondage,You shudder as you apply the RestraintName to yourself...
 KinkyDungeonSelfBondagePlug,"You insert the RestraintName and close your belt's shield over it, with a click as it locks in place."
@@ -10498,6 +10528,7 @@ KinkyDungeonSpecialTorch,Ignite torches and nearby objects
 KinkyDungeonSpecialFlamberge,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffFlame,Ignite torches and nearby objects
 KinkyDungeonSpecialStaffIncineration,Ignite torches and nearby objects
+KinkyDungeonSpecialPickaxe,"Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks."
 
 KDCategoryToggles,Preferences
 KDCategoryToggles2,Preferences 2
@@ -12088,11 +12119,15 @@ dItemShopBuy9,(Buy Item9 for ItemCost9 gp)
 rAngelHelp,"(The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)"
 rAngelHelpKnife,"(The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?"
 rAngelHelpPick,"(The SPEAKER gives you three picks)|I don't know how you plan to use these..."
-rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees..."
+rAngelHelpBlueKey,"(The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable."
+rAngelHelpDivineFail,"(The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*"
+rAngelHelpDivineQuest,"(The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!"
+rAngelHelpDivine,"(The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)"
 
 dAngelHelp_Knife,(Ask for 2 knives)
 dAngelHelp_Pick,(Ask for 3 lockpicks)
 dAngelHelp_BlueKey,(Ask for a magic key)
+dAngelHelp_Divine,(Ask for help with a divine lock)
 
 KinkyDungeonAngelNoSpace,There is no valid space next to you!
 
@@ -12814,6 +12849,9 @@ dBed_Sleep,(Lie down and sleep)
 rDollDropoff,"(There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)"
 rDollDropoffUse,"(The pole rises and immobilizes you!)"
 dDollDropoff_Use,(Stand over it and place your feet in the footrests)
+dDollDropoff_NPC,(Drop off a prisoner from your collection)
+dDollDropoff_Enemy,(Put NME on the stand) (PRCNT% Chance)
+dDollDropoff_EnemyHelpless,(Put NME on the stand)
 rFurniture,"(This is a piece of bondage furniture)"
 rFurnitureUse,"(You lock yourself in the furniture!)"
 rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"
@@ -12849,7 +12887,7 @@ rLeylineMapCancel,"(Are you sure?)|(This decision is permanent.)"
 dLeylineMap_Leave,(Gain +100 to Max Mana Pool)
 dLeylineMap_Cancel,(I don't want to.)
 dLeylineMapCancel_Leave,(Gain +100 to Max Mana Pool)
-dLeylineMapCancel_Cancel,(No really, I don't want it!)
+dLeylineMapCancel_Cancel,"(No really, I don't want it!)"
 
 rDollTerminal_Step,"(You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)"
 rDollTerminal_StepEnter,"(Are you sure?)|(This seems like a bad idea!)"
@@ -20059,6 +20097,525 @@ m_FashionBubbleLegs,FashionBubbleLegs
 m_FashionBubbleLegs_l_Legs,Legs
 
 
+m_Hair5_Highlight_l_Hair5_FrontE,Hair5_FrontE
+m_BlankEyes,BlankEyes
+m_BlankEyes_l_Eyes,Eyes
+m_BlankEyes_l_Eyes2,Eyes2
+m_BlankEyes_l_Whites,Whites
+m_BlankEyes_l_Whites2,Whites2
+m_DaiBrows1,DaiBrows1
+m_DaiBrows1_l_Brows,Brows
+m_DaiBrows1_l_Brows2,Brows2
+m_DaiBrows2,DaiBrows2
+m_DaiBrows2_l_Brows,Brows
+m_DaiBrows2_l_Brows2,Brows2
+m_Glabella,Glabella
+m_Glabella_l_Ridge,Ridge
+m_Bra,Bra
+m_Bra_l_Bra,Bra
+m_Bra_l_BraRim,BraRim
+m_Bra_l_InnerLines,InnerLines
+m_Bra_l_BraUnder,BraUnder
+m_Bra_l_BraUnderRim,BraUnderRim
+m_BraStriped,BraStriped
+m_BraStriped_l_Bra,Bra
+m_BraStriped_l_BraRim,BraRim
+m_BraStriped_l_InnerLines,InnerLines
+m_BraStriped_l_BraUnder,BraUnder
+m_BraStriped_l_BraUnderRim,BraUnderRim
+m_BraStriped_l_Stripes,Stripes
+m_BraCherry,BraCherry
+m_BraCherry_l_Bra,Bra
+m_BraCherry_l_BraRim,BraRim
+m_BraCherry_l_InnerLines,InnerLines
+m_BraCherry_l_BraUnder,BraUnder
+m_BraCherry_l_BraUnderRim,BraUnderRim
+m_BraCherry_l_Cherry,Cherry
+m_BraRose,BraRose
+m_BraRose_l_Bra,Bra
+m_BraRose_l_BraRim,BraRim
+m_BraRose_l_InnerLines,InnerLines
+m_BraRose_l_BraUnder,BraUnder
+m_BraRose_l_BraUnderRim,BraUnderRim
+m_BraRose_l_Rose,Rose
+m_BraInvertedRose,BraInvertedRose
+m_BraInvertedRose_l_Bra,Bra
+m_BraInvertedRose_l_BraRim,BraRim
+m_BraInvertedRose_l_InnerLines,InnerLines
+m_BraInvertedRose_l_BraUnder,BraUnder
+m_BraInvertedRose_l_BraUnderRim,BraUnderRim
+m_BraInvertedRose_l_InvertedRose,InvertedRose
+m_BraStraps,BraStraps
+m_BraStraps_l_Straps,Straps
+m_Panties,Panties
+m_Panties_l_Base,Base
+m_Panties_l_Lines,Lines
+m_PantiesBow,PantiesBow
+m_PantiesBow_l_Bow,Bow
+m_PantiesStriped,PantiesStriped
+m_PantiesStriped_l_Base,Base
+m_PantiesStriped_l_Lines,Lines
+m_PantiesStriped_l_Stripes,Stripes
+m_PantiesInvertedRose,PantiesInvertedRose
+m_PantiesInvertedRose_l_Base,Base
+m_PantiesInvertedRose_l_Lines,Lines
+m_PantiesInvertedRose_l_InvertedRose,InvertedRose
+m_PantiesCherry,PantiesCherry
+m_PantiesCherry_l_Base,Base
+m_PantiesCherry_l_Lines,Lines
+m_PantiesCherry_l_Cherry,Cherry
+m_PantiesBowStriped,PantiesBowStriped
+m_PantiesBowStriped_l_Base,Base
+m_PantiesBowStriped_l_Lines,Lines
+m_PantiesBowStriped_l_Bow,Bow
+m_PantiesBowStriped_l_Stripes,Stripes
+m_PantiesHigh,PantiesHigh
+m_PantiesHigh_l_Base,Base
+m_PantiesHigh_l_Lines,Lines
+m_PantiesHighStriped,PantiesHighStriped
+m_PantiesHighStriped_l_Base,Base
+m_PantiesHighStriped_l_Lines,Lines
+m_PantiesHighStriped_l_Stripes,Stripes
+m_SwimsuitRestraint,SwimsuitRestraint
+m_SwimsuitRestraint_l_Swimsuit,Swimsuit
+m_SwimsuitRestraint_l_SwimsuitChest,SwimsuitChest
+m_DressBlouseSleeveRight_l_BlouseShoulderRight,BlouseShoulderRight
+m_DressBlouseSleeves_l_BlouseShoulderRight,BlouseShoulderRight
+m_DressBlouse_l_BlouseShoulderRight,BlouseShoulderRight
+m_Dress_l_BlouseShoulderRight,BlouseShoulderRight
+m_SlayerCollar,SlayerCollar
+m_SlayerCollar_l_CapeCollar,CapeCollar
+m_SlayerCollar_l_CapeCollarButton,CapeCollarButton
+m_SlayerCollar_l_CapeCollarRim,CapeCollarRim
+m_SlayerCape,SlayerCape
+m_SlayerCape_l_CapeCollar,CapeCollar
+m_SlayerCape_l_CapeCollarButton,CapeCollarButton
+m_SlayerCape_l_CapeCollarRim,CapeCollarRim
+m_SlayerCape_l_CapeCollarInner,CapeCollarInner
+m_SlayerCape_l_Cape,Cape
+m_SlayerCape_l_CapeStripe,CapeStripe
+m_SlayerCape_l_CapeShoulderLeft,CapeShoulderLeft
+m_SlayerCape_l_CapeShoulderRight,CapeShoulderRight
+m_SlayerCape_l_CapeShoulderLeftButton,CapeShoulderLeftButton
+m_SlayerCape_l_CapeShoulderRightButton,CapeShoulderRightButton
+m_SlayerCape_l_CapeBack,CapeBack
+m_LeatherMask,LeatherMask
+m_LeatherMask_l_Hood,Hood
+m_LeatherMask_l_Gag,Gag
+m_LeatherMask_l_Blindfold,Blindfold
+m_FashionLeatherMask,FashionLeatherMask
+m_FashionLeatherMask_l_Hood,Hood
+m_FashionLeatherMask_l_Gag,Gag
+m_FashionLeatherMask_l_Blindfold,Blindfold
+m_LeatherHood,LeatherHood
+m_LeatherHood_l_Hood,Hood
+m_LeatherHood_l_Gag,Gag
+m_LeatherHood_l_Blindfold,Blindfold
+m_LeatherHood_l_WolfEars,WolfEars
+m_LeatherHood_l_KittyEars,KittyEars
+m_LeatherHood_l_BunnyEars,BunnyEars
+m_FashionLeatherHood,FashionLeatherHood
+m_FashionLeatherHood_l_Hood,Hood
+m_FashionLeatherHood_l_Gag,Gag
+m_FashionLeatherHood_l_Blindfold,Blindfold
+m_FashionLeatherHood_l_WolfEars,WolfEars
+m_FashionLeatherHood_l_KittyEars,KittyEars
+m_FashionLeatherHood_l_BunnyEars,BunnyEars
+m_CyberLongMittenLeft,CyberLongMittenLeft
+m_CyberLongMittenLeft_l_CapForeLongMittenLeft,CapForeLongMittenLeft
+m_CyberLongMittenLeft_l_CapLongMittenLeft,CapLongMittenLeft
+m_CyberLongMittenLeft_l_LongMittenLeft,LongMittenLeft
+m_CyberLongMittenLeft_l_ForeLongMittenLeft,ForeLongMittenLeft
+m_CyberLongMittenLeft_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_CyberLongMittenLeft_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_CyberLongMittenLeft_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_CyberLongMittenLeft_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_CyberLongMittenLeft_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_CyberLongMittenLeft_l_LockLongMittenLeft,LockLongMittenLeft
+m_CyberLongMittenLeft_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_CyberLongMittenLeft_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_CyberLongMittenLeft_l_StrapsForeLongMittenLeft,StrapsForeLongMittenLeft
+m_CyberLongMittenLeft_l_StrapsLongMittenLeft,StrapsLongMittenLeft
+m_CyberLongMittenLeft_l_UpperCuffLongMittenLeft,UpperCuffLongMittenLeft
+m_CyberLongMittenLeft_l_UpperDisplayLongMittenLeft,UpperDisplayLongMittenLeft
+m_CyberLongMittenLeft_l_UpperLockLongMittenLeft,UpperLockLongMittenLeft
+m_CyberLongMittenLeft_l_UpperGlowLongMittenLeft,UpperGlowLongMittenLeft
+m_CyberLongMittenRight,CyberLongMittenRight
+m_CyberLongMittenRight_l_CapForeLongMittenRight,CapForeLongMittenRight
+m_CyberLongMittenRight_l_CapLongMittenRight,CapLongMittenRight
+m_CyberLongMittenRight_l_LongMittenRight,LongMittenRight
+m_CyberLongMittenRight_l_ForeLongMittenRight,ForeLongMittenRight
+m_CyberLongMittenRight_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_CyberLongMittenRight_l_CuffLongMittenRight,CuffLongMittenRight
+m_CyberLongMittenRight_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_CyberLongMittenRight_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_CyberLongMittenRight_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_CyberLongMittenRight_l_LockLongMittenRight,LockLongMittenRight
+m_CyberLongMittenRight_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_CyberLongMittenRight_l_GlowLongMittenRight,GlowLongMittenRight
+m_CyberLongMittenRight_l_StrapsForeLongMittenRight,StrapsForeLongMittenRight
+m_CyberLongMittenRight_l_StrapsLongMittenRight,StrapsLongMittenRight
+m_CyberLongMittenRight_l_UpperCuffLongMittenRight,UpperCuffLongMittenRight
+m_CyberLongMittenRight_l_UpperDisplayLongMittenRight,UpperDisplayLongMittenRight
+m_CyberLongMittenRight_l_UpperLockLongMittenRight,UpperLockLongMittenRight
+m_CyberLongMittenRight_l_UpperGlowLongMittenRight,UpperGlowLongMittenRight
+m_CyberLongMittens,CyberLongMittens
+m_CyberLongMittens_l_CapForeLongMittenLeft,CapForeLongMittenLeft
+m_CyberLongMittens_l_CapLongMittenLeft,CapLongMittenLeft
+m_CyberLongMittens_l_LongMittenLeft,LongMittenLeft
+m_CyberLongMittens_l_ForeLongMittenLeft,ForeLongMittenLeft
+m_CyberLongMittens_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_CyberLongMittens_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_CyberLongMittens_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_CyberLongMittens_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_CyberLongMittens_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_CyberLongMittens_l_LockLongMittenLeft,LockLongMittenLeft
+m_CyberLongMittens_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_CyberLongMittens_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_CyberLongMittens_l_StrapsForeLongMittenLeft,StrapsForeLongMittenLeft
+m_CyberLongMittens_l_StrapsLongMittenLeft,StrapsLongMittenLeft
+m_CyberLongMittens_l_UpperCuffLongMittenLeft,UpperCuffLongMittenLeft
+m_CyberLongMittens_l_UpperDisplayLongMittenLeft,UpperDisplayLongMittenLeft
+m_CyberLongMittens_l_UpperLockLongMittenLeft,UpperLockLongMittenLeft
+m_CyberLongMittens_l_UpperGlowLongMittenLeft,UpperGlowLongMittenLeft
+m_CyberLongMittens_l_CapForeLongMittenRight,CapForeLongMittenRight
+m_CyberLongMittens_l_CapLongMittenRight,CapLongMittenRight
+m_CyberLongMittens_l_LongMittenRight,LongMittenRight
+m_CyberLongMittens_l_ForeLongMittenRight,ForeLongMittenRight
+m_CyberLongMittens_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_CyberLongMittens_l_CuffLongMittenRight,CuffLongMittenRight
+m_CyberLongMittens_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_CyberLongMittens_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_CyberLongMittens_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_CyberLongMittens_l_LockLongMittenRight,LockLongMittenRight
+m_CyberLongMittens_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_CyberLongMittens_l_GlowLongMittenRight,GlowLongMittenRight
+m_CyberLongMittens_l_StrapsForeLongMittenRight,StrapsForeLongMittenRight
+m_CyberLongMittens_l_StrapsLongMittenRight,StrapsLongMittenRight
+m_CyberLongMittens_l_UpperCuffLongMittenRight,UpperCuffLongMittenRight
+m_CyberLongMittens_l_UpperDisplayLongMittenRight,UpperDisplayLongMittenRight
+m_CyberLongMittens_l_UpperLockLongMittenRight,UpperLockLongMittenRight
+m_CyberLongMittens_l_UpperGlowLongMittenRight,UpperGlowLongMittenRight
+m_CyberMittenLeft,CyberMittenLeft
+m_CyberMittenLeft_l_MittenLeft,MittenLeft
+m_CyberMittenLeft_l_ForeMittenLeft,ForeMittenLeft
+m_CyberMittenLeft_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_CyberMittenLeft_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_CyberMittenLeft_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_CyberMittenLeft_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_CyberMittenLeft_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_CyberMittenLeft_l_LockLongMittenLeft,LockLongMittenLeft
+m_CyberMittenLeft_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_CyberMittenLeft_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_CyberMittenLeft_l_CapForeLongMittenLeft,CapForeLongMittenLeft
+m_CyberMittenLeft_l_CapLongMittenLeft,CapLongMittenLeft
+m_CyberMittenRight,CyberMittenRight
+m_CyberMittenRight_l_MittenRight,MittenRight
+m_CyberMittenRight_l_ForeMittenRight,ForeMittenRight
+m_CyberMittenRight_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_CyberMittenRight_l_CuffLongMittenRight,CuffLongMittenRight
+m_CyberMittenRight_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_CyberMittenRight_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_CyberMittenRight_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_CyberMittenRight_l_LockLongMittenRight,LockLongMittenRight
+m_CyberMittenRight_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_CyberMittenRight_l_GlowLongMittenRight,GlowLongMittenRight
+m_CyberMittenRight_l_CapForeLongMittenRight,CapForeLongMittenRight
+m_CyberMittenRight_l_CapLongMittenRight,CapLongMittenRight
+m_CyberMittens,CyberMittens
+m_CyberMittens_l_MittenLeft,MittenLeft
+m_CyberMittens_l_ForeMittenLeft,ForeMittenLeft
+m_CyberMittens_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_CyberMittens_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_CyberMittens_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_CyberMittens_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_CyberMittens_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_CyberMittens_l_LockLongMittenLeft,LockLongMittenLeft
+m_CyberMittens_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_CyberMittens_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_CyberMittens_l_CapForeLongMittenLeft,CapForeLongMittenLeft
+m_CyberMittens_l_CapLongMittenLeft,CapLongMittenLeft
+m_CyberMittens_l_MittenRight,MittenRight
+m_CyberMittens_l_ForeMittenRight,ForeMittenRight
+m_CyberMittens_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_CyberMittens_l_CuffLongMittenRight,CuffLongMittenRight
+m_CyberMittens_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_CyberMittens_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_CyberMittens_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_CyberMittens_l_LockLongMittenRight,LockLongMittenRight
+m_CyberMittens_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_CyberMittens_l_GlowLongMittenRight,GlowLongMittenRight
+m_CyberMittens_l_CapForeLongMittenRight,CapForeLongMittenRight
+m_CyberMittens_l_CapLongMittenRight,CapLongMittenRight
+m_CyberArmLeft,CyberArmLeft
+m_CyberArmLeft_l_ArmLongMittenLeft,ArmLongMittenLeft
+m_CyberArmLeft_l_ForeLongMittenLeft,ForeLongMittenLeft
+m_CyberArmLeft_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_CyberArmLeft_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_CyberArmLeft_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_CyberArmLeft_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_CyberArmLeft_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_CyberArmLeft_l_LockLongMittenLeft,LockLongMittenLeft
+m_CyberArmLeft_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_CyberArmLeft_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_CyberArmLeft_l_StrapsForeLongMittenLeft,StrapsForeLongMittenLeft
+m_CyberArmLeft_l_StrapsLongMittenLeft,StrapsLongMittenLeft
+m_CyberArmLeft_l_UpperCuffLongMittenLeft,UpperCuffLongMittenLeft
+m_CyberArmLeft_l_UpperDisplayLongMittenLeft,UpperDisplayLongMittenLeft
+m_CyberArmLeft_l_UpperLockLongMittenLeft,UpperLockLongMittenLeft
+m_CyberArmLeft_l_UpperGlowLongMittenLeft,UpperGlowLongMittenLeft
+m_CyberArmRight,CyberArmRight
+m_CyberArmRight_l_ArmLongMittenRight,ArmLongMittenRight
+m_CyberArmRight_l_ForeLongMittenRight,ForeLongMittenRight
+m_CyberArmRight_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_CyberArmRight_l_CuffLongMittenRight,CuffLongMittenRight
+m_CyberArmRight_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_CyberArmRight_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_CyberArmRight_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_CyberArmRight_l_LockLongMittenRight,LockLongMittenRight
+m_CyberArmRight_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_CyberArmRight_l_GlowLongMittenRight,GlowLongMittenRight
+m_CyberArmRight_l_StrapsForeLongMittenRight,StrapsForeLongMittenRight
+m_CyberArmRight_l_StrapsLongMittenRight,StrapsLongMittenRight
+m_CyberArmRight_l_UpperCuffForeLongMittenRight,UpperCuffForeLongMittenRight
+m_CyberArmRight_l_UpperCuffLongMittenRight,UpperCuffLongMittenRight
+m_CyberArmRight_l_UpperDisplayLongMittenRight,UpperDisplayLongMittenRight
+m_CyberArmRight_l_UpperLockLongMittenRight,UpperLockLongMittenRight
+m_CyberArmRight_l_UpperGlowLongMittenRight,UpperGlowLongMittenRight
+m_CyberArms,CyberArms
+m_CyberArms_l_ArmLongMittenLeft,ArmLongMittenLeft
+m_CyberArms_l_ForeLongMittenLeft,ForeLongMittenLeft
+m_CyberArms_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_CyberArms_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_CyberArms_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_CyberArms_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_CyberArms_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_CyberArms_l_LockLongMittenLeft,LockLongMittenLeft
+m_CyberArms_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_CyberArms_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_CyberArms_l_StrapsForeLongMittenLeft,StrapsForeLongMittenLeft
+m_CyberArms_l_StrapsLongMittenLeft,StrapsLongMittenLeft
+m_CyberArms_l_UpperCuffLongMittenLeft,UpperCuffLongMittenLeft
+m_CyberArms_l_UpperDisplayLongMittenLeft,UpperDisplayLongMittenLeft
+m_CyberArms_l_UpperLockLongMittenLeft,UpperLockLongMittenLeft
+m_CyberArms_l_UpperGlowLongMittenLeft,UpperGlowLongMittenLeft
+m_CyberArms_l_ArmLongMittenRight,ArmLongMittenRight
+m_CyberArms_l_ForeLongMittenRight,ForeLongMittenRight
+m_CyberArms_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_CyberArms_l_CuffLongMittenRight,CuffLongMittenRight
+m_CyberArms_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_CyberArms_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_CyberArms_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_CyberArms_l_LockLongMittenRight,LockLongMittenRight
+m_CyberArms_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_CyberArms_l_GlowLongMittenRight,GlowLongMittenRight
+m_CyberArms_l_StrapsForeLongMittenRight,StrapsForeLongMittenRight
+m_CyberArms_l_StrapsLongMittenRight,StrapsLongMittenRight
+m_CyberArms_l_UpperCuffForeLongMittenRight,UpperCuffForeLongMittenRight
+m_CyberArms_l_UpperCuffLongMittenRight,UpperCuffLongMittenRight
+m_CyberArms_l_UpperDisplayLongMittenRight,UpperDisplayLongMittenRight
+m_CyberArms_l_UpperLockLongMittenRight,UpperLockLongMittenRight
+m_CyberArms_l_UpperGlowLongMittenRight,UpperGlowLongMittenRight
+m_FashionCyberLongMittens,FashionCyberLongMittens
+m_FashionCyberLongMittens_l_CapForeLongMittenLeft,CapForeLongMittenLeft
+m_FashionCyberLongMittens_l_CapLongMittenLeft,CapLongMittenLeft
+m_FashionCyberLongMittens_l_LongMittenLeft,LongMittenLeft
+m_FashionCyberLongMittens_l_ForeLongMittenLeft,ForeLongMittenLeft
+m_FashionCyberLongMittens_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_FashionCyberLongMittens_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_FashionCyberLongMittens_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_FashionCyberLongMittens_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_FashionCyberLongMittens_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_FashionCyberLongMittens_l_LockLongMittenLeft,LockLongMittenLeft
+m_FashionCyberLongMittens_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_FashionCyberLongMittens_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_FashionCyberLongMittens_l_StrapsForeLongMittenLeft,StrapsForeLongMittenLeft
+m_FashionCyberLongMittens_l_StrapsLongMittenLeft,StrapsLongMittenLeft
+m_FashionCyberLongMittens_l_UpperCuffLongMittenLeft,UpperCuffLongMittenLeft
+m_FashionCyberLongMittens_l_UpperDisplayLongMittenLeft,UpperDisplayLongMittenLeft
+m_FashionCyberLongMittens_l_UpperLockLongMittenLeft,UpperLockLongMittenLeft
+m_FashionCyberLongMittens_l_UpperGlowLongMittenLeft,UpperGlowLongMittenLeft
+m_FashionCyberLongMittens_l_CapForeLongMittenRight,CapForeLongMittenRight
+m_FashionCyberLongMittens_l_CapLongMittenRight,CapLongMittenRight
+m_FashionCyberLongMittens_l_LongMittenRight,LongMittenRight
+m_FashionCyberLongMittens_l_ForeLongMittenRight,ForeLongMittenRight
+m_FashionCyberLongMittens_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_FashionCyberLongMittens_l_CuffLongMittenRight,CuffLongMittenRight
+m_FashionCyberLongMittens_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_FashionCyberLongMittens_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_FashionCyberLongMittens_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_FashionCyberLongMittens_l_LockLongMittenRight,LockLongMittenRight
+m_FashionCyberLongMittens_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_FashionCyberLongMittens_l_GlowLongMittenRight,GlowLongMittenRight
+m_FashionCyberLongMittens_l_StrapsForeLongMittenRight,StrapsForeLongMittenRight
+m_FashionCyberLongMittens_l_StrapsLongMittenRight,StrapsLongMittenRight
+m_FashionCyberLongMittens_l_UpperCuffLongMittenRight,UpperCuffLongMittenRight
+m_FashionCyberLongMittens_l_UpperDisplayLongMittenRight,UpperDisplayLongMittenRight
+m_FashionCyberLongMittens_l_UpperLockLongMittenRight,UpperLockLongMittenRight
+m_FashionCyberLongMittens_l_UpperGlowLongMittenRight,UpperGlowLongMittenRight
+m_FashionCyberMittens,FashionCyberMittens
+m_FashionCyberMittens_l_MittenLeft,MittenLeft
+m_FashionCyberMittens_l_ForeMittenLeft,ForeMittenLeft
+m_FashionCyberMittens_l_CuffForeLongMittenLeft,CuffForeLongMittenLeft
+m_FashionCyberMittens_l_CuffLongMittenLeft,CuffLongMittenLeft
+m_FashionCyberMittens_l_DisplayForeLongMittenLeft,DisplayForeLongMittenLeft
+m_FashionCyberMittens_l_DisplayLongMittenLeft,DisplayLongMittenLeft
+m_FashionCyberMittens_l_LockForeLongMittenLeft,LockForeLongMittenLeft
+m_FashionCyberMittens_l_LockLongMittenLeft,LockLongMittenLeft
+m_FashionCyberMittens_l_GlowForeLongMittenLeft,GlowForeLongMittenLeft
+m_FashionCyberMittens_l_GlowLongMittenLeft,GlowLongMittenLeft
+m_FashionCyberMittens_l_CapForeLongMittenLeft,CapForeLongMittenLeft
+m_FashionCyberMittens_l_CapLongMittenLeft,CapLongMittenLeft
+m_FashionCyberMittens_l_MittenRight,MittenRight
+m_FashionCyberMittens_l_ForeMittenRight,ForeMittenRight
+m_FashionCyberMittens_l_CuffForeLongMittenRight,CuffForeLongMittenRight
+m_FashionCyberMittens_l_CuffLongMittenRight,CuffLongMittenRight
+m_FashionCyberMittens_l_DisplayForeLongMittenRight,DisplayForeLongMittenRight
+m_FashionCyberMittens_l_DisplayLongMittenRight,DisplayLongMittenRight
+m_FashionCyberMittens_l_LockForeLongMittenRight,LockForeLongMittenRight
+m_FashionCyberMittens_l_LockLongMittenRight,LockLongMittenRight
+m_FashionCyberMittens_l_GlowForeLongMittenRight,GlowForeLongMittenRight
+m_FashionCyberMittens_l_GlowLongMittenRight,GlowLongMittenRight
+m_FashionCyberMittens_l_CapForeLongMittenRight,CapForeLongMittenRight
+m_FashionCyberMittens_l_CapLongMittenRight,CapLongMittenRight
+m_CyberThighLink,CyberThighLink
+m_CyberThighLink_l_ThighLink,ThighLink
+m_CyberThighLink_l_GlowThighLink,GlowThighLink
+m_CyberAnkleLink,CyberAnkleLink
+m_CyberAnkleLink_l_AnkleLink,AnkleLink
+m_CyberAnkleLink_l_GlowAnkleLink,GlowAnkleLink
+m_FashionCyberThighLink,FashionCyberThighLink
+m_FashionCyberThighLink_l_ThighLink,ThighLink
+m_FashionCyberThighLink_l_GlowThighLink,GlowThighLink
+m_FashionCyberAnkleLink,FashionCyberAnkleLink
+m_FashionCyberAnkleLink_l_AnkleLink,AnkleLink
+m_FashionCyberAnkleLink_l_GlowAnkleLink,GlowAnkleLink
+m_CyberPanties,CyberPanties
+m_CyberPanties_l_CyberPanties,CyberPanties
+m_CyberPanties_l_CyberPantiesLining,CyberPantiesLining
+m_TallSmoothHeels,TallSmoothHeels
+m_TallSmoothHeels_l_TallLeft,TallLeft
+m_TallSmoothHeels_l_TallRight,TallRight
+m_TallSmoothHeels_l_TallLegLeft,TallLegLeft
+m_TallSmoothHeels_l_TallLegRight,TallLegRight
+m_TallSmoothHeelsRestraint,TallSmoothHeelsRestraint
+m_TallSmoothHeelsRestraint_l_TallLeft,TallLeft
+m_TallSmoothHeelsRestraint_l_TallRight,TallRight
+m_TallSmoothHeelsRestraint_l_TallLegLeft,TallLegLeft
+m_TallSmoothHeelsRestraint_l_TallLegRight,TallLegRight
+m_NeckCorset,NeckCorset
+m_NeckCorset_l_NeckCorset2,NeckCorset2
+m_NeckCorset_l_NeckCorsetRim2,NeckCorsetRim2
+m_ShinyLatexMuzzle,ShinyLatexMuzzle
+m_ShinyLatexMuzzle_l_NeckCorsetGag2,NeckCorsetGag2
+m_ShinyLatexMuzzle_l_NeckCorsetGagRim2,NeckCorsetGagRim2
+m_NeckCorsetGag,NeckCorsetGag
+m_NeckCorsetGag_l_NeckCorset2,NeckCorset2
+m_NeckCorsetGag_l_NeckCorsetRim2,NeckCorsetRim2
+m_NeckCorsetGag_l_NeckCorsetGag2,NeckCorsetGag2
+m_NeckCorsetGag_l_NeckCorsetGagRim2,NeckCorsetGagRim2
+m_ShinyLatexMuzzleRestraint,ShinyLatexMuzzleRestraint
+m_ShinyLatexMuzzleRestraint_l_NeckCorsetGag2,NeckCorsetGag2
+m_ShinyLatexMuzzleRestraint_l_NeckCorsetGagRim2,NeckCorsetGagRim2
+m_NeckCorsetRestraint,NeckCorsetRestraint
+m_NeckCorsetRestraint_l_NeckCorset2,NeckCorset2
+m_NeckCorsetRestraint_l_NeckCorsetRim2,NeckCorsetRim2
+m_NeckCorsetGagRestraint,NeckCorsetGagRestraint
+m_NeckCorsetGagRestraint_l_NeckCorset2,NeckCorset2
+m_NeckCorsetGagRestraint_l_NeckCorsetRim2,NeckCorsetRim2
+m_NeckCorsetGagRestraint_l_NeckCorsetGag2,NeckCorsetGag2
+m_NeckCorsetGagRestraint_l_NeckCorsetGagRim2,NeckCorsetGagRim2
+m_LatexPetsuit,LatexPetsuit
+m_LatexPetsuit_l_Arms,Arms
+m_LatexPetsuit_l_Legs,Legs
+m_LatexPetsuit_l_LeftLegs,LeftLegs
+m_LatexPetsuitGlow,LatexPetsuitGlow
+m_LatexPetsuitGlow_l_Arms,Arms
+m_LatexPetsuitGlow_l_Legs,Legs
+m_LatexPetsuitGlow_l_LeftLegs,LeftLegs
+m_LatexPetsuitGlow_l_GlowArms,GlowArms
+m_LatexPetsuitGlow_l_GlowTorso,GlowTorso
+m_LatexPetsuitGlow_l_GlowLegs,GlowLegs
+m_LatexPetsuitGlow_l_GlowLeftLegs,GlowLeftLegs
+m_MiniCape,MiniCape
+m_MiniCape_l_Cape,Cape
+m_Epaulettes,Epaulettes
+m_Epaulettes_l_Pauldrons,Pauldrons
+m_TheRobeOfChastity,TheRobeOfChastity
+m_TheRobeOfChastity_l_Base,Base
+m_TheRobeOfChastity_l_ChestBase,ChestBase
+m_TheRobeOfChastity_l_Frill,Frill
+m_TheRobeOfChastity_l_ChestFrill,ChestFrill
+m_TheRobeOfChastity_l_Gold,Gold
+m_TheRobeOfChastity_l_ChestGold,ChestGold
+m_TheRobeOfChastity_l_Plate,Plate
+m_TheRobeOfChastity_l_ChestPlate,ChestPlate
+m_TheRobeOfChastity_l_GoldBase,GoldBase
+m_TheRobeOfChastity_l_ChestGoldBase,ChestGoldBase
+m_TheRobeOfChastity_l_Fabric,Fabric
+m_TheRobeOfChastity_l_ChestFabric,ChestFabric
+m_TheRobeOfChastity_l_Cape,Cape
+m_TheRobeOfChastity_l_Pauldrons,Pauldrons
+m_TheRobeOfChastityRestraint,TheRobeOfChastityRestraint
+m_TheRobeOfChastityRestraint_l_Base,Base
+m_TheRobeOfChastityRestraint_l_ChestBase,ChestBase
+m_TheRobeOfChastityRestraint_l_Frill,Frill
+m_TheRobeOfChastityRestraint_l_ChestFrill,ChestFrill
+m_TheRobeOfChastityRestraint_l_Gold,Gold
+m_TheRobeOfChastityRestraint_l_ChestGold,ChestGold
+m_TheRobeOfChastityRestraint_l_Plate,Plate
+m_TheRobeOfChastityRestraint_l_ChestPlate,ChestPlate
+m_TheRobeOfChastityRestraint_l_GoldBase,GoldBase
+m_TheRobeOfChastityRestraint_l_ChestGoldBase,ChestGoldBase
+m_TheRobeOfChastityRestraint_l_Fabric,Fabric
+m_TheRobeOfChastityRestraint_l_ChestFabric,ChestFabric
+m_TheRobeOfChastityRestraint_l_Cape,Cape
+m_TheRobeOfChastityRestraint_l_Pauldrons,Pauldrons
+m_Spats,Spats
+m_Spats_l_Spats,Spats
+m_GothicSkirt,GothicSkirt
+m_GothicSkirt_l_Skirt,Skirt
+m_GothicSkirt_l_WaistbandClips,WaistbandClips
+m_GothicSkirt_l_Buttons,Buttons
+m_GothicSkirt_l_Lines,Lines
+m_GothicSkirt_l_HemLower,HemLower
+m_GothicSkirt_l_HemLowerBack,HemLowerBack
+m_GothicSkirt_l_HemUpper,HemUpper
+m_GothicSkirtLace,GothicSkirtLace
+m_GothicSkirtLace_l_Skirt,Skirt
+m_GothicSkirtLace_l_WaistbandClips,WaistbandClips
+m_GothicSkirtLace_l_Buttons,Buttons
+m_GothicSkirtLace_l_Lines,Lines
+m_GothicSkirtLace_l_HemLower,HemLower
+m_GothicSkirtLace_l_HemLowerBack,HemLowerBack
+m_GothicSkirtLace_l_HemUpper,HemUpper
+m_GothicSkirtLace_l_LaceLower,LaceLower
+m_GothicSkirtLace_l_LaceUpper,LaceUpper
+m_LightMaidKnight_Dress,LightMaidKnight_Dress
+m_LightMaidKnight_Dress_l_Dress,Dress
+m_LightMaidKnight_Dress_l_DressChest,DressChest
+m_LightMaidKnight_Dress_l_DressSkirt,DressSkirt
+m_LightMaidKnight_Dress_l_DressDeco,DressDeco
+m_LightMaidKnight_Dress_l_DressDecoBack,DressDecoBack
+m_LightMaidKnight_Bra,LightMaidKnight_Bra
+m_LightMaidKnight_Bra_l_DressChest,DressChest
+m_LightMaidKnight_Top,LightMaidKnight_Top
+m_LightMaidKnight_Top_l_DressChest,DressChest
+m_LightMaidKnight_SleeveLeft,LightMaidKnight_SleeveLeft
+m_LightMaidKnight_SleeveLeft_l_ArmLeft,ArmLeft
+m_LightMaidKnight_SleeveLeft_l_ForeArmLeft,ForeArmLeft
+m_LightMaidKnight_SleeveRight,LightMaidKnight_SleeveRight
+m_LightMaidKnight_SleeveRight_l_ArmRight,ArmRight
+m_LightMaidKnight_SleeveRight_l_ForeArmRight,ForeArmRight
+m_LightMaidKnight_SleeveRight_l_ShoulderRight,ShoulderRight
+m_LightMaidKnight_Sleeves,LightMaidKnight_Sleeves
+m_LightMaidKnight_Sleeves_l_ArmLeft,ArmLeft
+m_LightMaidKnight_Sleeves_l_ForeArmLeft,ForeArmLeft
+m_LightMaidKnight_Sleeves_l_ArmRight,ArmRight
+m_LightMaidKnight_Sleeves_l_ForeArmRight,ForeArmRight
+m_LightMaidKnight_Sleeves_l_ShoulderRight,ShoulderRight
+
+
 
 
 
@@ -21308,13 +21865,13 @@ KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
 KinkyDungeonSpellDescriptionWizardOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)"
 
 KinkyDungeonInventoryItemArcaneTome,Arcane Tome
-KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards."
+KinkyDungeonInventoryItemArcaneTomeDesc,"Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike."
 KinkyDungeonInventoryItemArcaneTomeDesc2,"+5% magic damage. Offhand: Applies passive bonus."
 ItemPickupArcaneTome,"You find a magical tome."
 KinkyDungeonSpecialArcaneTome,"Open the book. What can go wrong?"
 
 KinkyDungeonInventoryItemBondageTome,Tome of Bondage
-KinkyDungeonInventoryItemBondageTomeDesc,"Contains a malevolent spirit that wishes only to tie up damsels."
+KinkyDungeonInventoryItemBondageTomeDesc,"Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike."
 KinkyDungeonInventoryItemBondageTomeDesc2,"+10% binding effectiveness. Offhand: Applies passive bonus."
 ItemPickupBondageTome,"You find a magical tome with a sealed padlock on it."
 KinkyDungeonSpecialBondageTome,"Open the book. What can go wrong?"
@@ -21560,7 +22117,7 @@ KinkyDungeonSpellsPageClass,"Unique"
 
 KDInventoryActionRemoveMagicLock,Unlock using magic
 
-KDQuickLoadout_Weapon,Include Weapons,
+KDQuickLoadout_Weapon,Include Weapons
 KDQuickLoadout_Merge,Merge Armor
 
 KDNeedDiscPick,You need a special tool to pick this kind of lock.
@@ -21906,7 +22463,7 @@ KinkyDungeonSpellDescriptionEvasiveManeuvers,"While active, you evade almost all
 KinkyDungeonSpellBreakFree,Break Free
 KinkyDungeonSpellDescriptionBreakFree,"Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0."
 KinkyDungeonSpellProblemSolving,Problem Solving
-KinkyDungeonSpellDescriptionProblemSolving,"While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist"
+KinkyDungeonSpellDescriptionProblemSolving,"While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%"
 
 
 KDEvasiveManeuversEnd,You run out of strength to keep dodging...
@@ -22025,46 +22582,46 @@ KDHolyOrbPunish,"The holy orb observes your lack of discipline, and issues a pun
 
 RestraintDivineBelt,Divine Chastity Belt
 RestraintDivineBeltDesc2,"A chastity belt forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBeltDesc,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
+RestraintDivineBeltDesc,"There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge."
 KDDivineBeltDeny,Your Divine Chastity Belt causes the vibrators to stop.
 
 
 KinkyDungeonInventoryItemDivineBelt,Divine Chastity Belt
 KinkyDungeonInventoryItemDivineBeltDesc,"A chastity belt forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBeltDesc2,"There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge."
+KinkyDungeonInventoryItemDivineBeltDesc2,"There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge."
 
 KinkyDungeonLootDivineBelt,You find a heavenly chastity belt. Who could it be for?
 
 RestraintDivineBra,Divine Chastity Bra
 RestraintDivineBraDesc2,"A chastity bra forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBraDesc,"There is no way out but to repent. Its divine aura prevents you from pleasuring yourself."
+RestraintDivineBraDesc,"There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself."
 KDDivineBraDeny,Your Divine Chastity Bra causes your whole body to go numb.
 
 KinkyDungeonInventoryItemDivineBra,Divine Chastity Bra
 KinkyDungeonInventoryItemDivineBraDesc,"A chastity bra forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBraDesc2,"There is no way out but to repent. Its divine aura prevents you from pleasuring yourself."
+KinkyDungeonInventoryItemDivineBraDesc2,"There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself."
 
 KinkyDungeonLootDivineBra,You find a heavenly chastity bra. Who could it be for?
 
 RestraintDivineBelt2,Heavenly Chastity Belt
 RestraintDivineBelt2Desc2,"A chastity belt forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBelt2Desc,"There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge."
+RestraintDivineBelt2Desc,"There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge."
 KDDivineBelt2Deny,Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 
 KinkyDungeonInventoryItemDivineBelt2,Heavenly Chastity Belt
 KinkyDungeonInventoryItemDivineBelt2Desc,"A chastity belt forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBelt2Desc2,"There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge."
+KinkyDungeonInventoryItemDivineBelt2Desc2,"There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge."
 
 KinkyDungeonLootDivineBelt2,You find a heavenly chastity belt. Who could it be for?
 
 RestraintDivineBra2,Heavenly Chastity Bra
 RestraintDivineBra2Desc2,"A chastity bra forged in holy light. Only a Goddess' will can release you."
-RestraintDivineBra2Desc,"There is no way out but to repent. Its divine aura converts self-pleasure to stamina."
+RestraintDivineBra2Desc,"There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina."
 KDDivineBra2Deny,The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 
 KinkyDungeonInventoryItemDivineBra2,Heavenly Chastity Bra
 KinkyDungeonInventoryItemDivineBra2Desc,"A chastity bra forged in holy light. Only the will of a Goddess will release you!"
-KinkyDungeonInventoryItemDivineBra2Desc2,"There is no way out but to repent. Its divine aura converts self-pleasure to stamina."
+KinkyDungeonInventoryItemDivineBra2Desc2,"There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina."
 
 KinkyDungeonLootDivineBra2,You find a heavenly chastity bra. Who could it be for?
 
@@ -22610,6 +23167,8 @@ KDTeaseAttack_InsertToy,The ENMY sticks a VTY into you! (DMGDLT)
 KDTeaseAttackResist_InsertToy,"The ENMY reaches for her VTY!"
 KDTeaseAttack_AddStuffing,The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 KDTeaseAttackResist_AddStuffing,"The ENMY reaches for your mouth and fails!"
+KDTeaseAttack_AddGag,The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+KDTeaseAttackResist_AddGag,"The ENMY reaches for the gag around your neck!"
 KDTeaseAttack_AddCarabiner,The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 KDTeaseAttackResist_AddCarabiner,"The ENMY grabs your wrists but you pull away!"
 KDTeaseAttack_Disarm,The ENMY pulls your weapon away!
@@ -22959,6 +23518,15 @@ KDEffectTileTooltipRadiance,"Radiant Light"
 KDEffectTileTooltipRadianceDesc,"Banishment of the shadow."
 KDEffectTileTooltipShadow,"Living Shadow"
 KDEffectTileTooltipShadowDesc,"Engulfs the tile in darkness."
+
+KDEffectTileTooltipTeleportPlate,"Planar Focus"
+KDEffectTileTooltipTeleportPlateDesc,"Absorbs teleportation energies."
+
+KDEffectTileTooltipNoTeleportPlate,"Planar Diffractor"
+KDEffectTileTooltipNoTeleportPlateDesc,"Diffuses teleportation energies."
+
+KDEffectTileTooltipTeleportPlateMana,"Planar Focusing Crystal"
+KDEffectTileTooltipTeleportPlateManaDesc,"Amplifies teleportation energies."
 
 KDEffectTileTooltipManaEmpty,"Mysterious Plate"
 KDEffectTileTooltipManaEmptyDesc,"What could it be?"
@@ -23682,6 +24250,7 @@ KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
 KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
 KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
+KDPropField_Protected,Protected
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File
@@ -23800,6 +24369,7 @@ KDRestrainNPC,Edit Restraints
 
 KDDrawSelectedTab_Restrain,Editing Restraints
 KDDrawSelectedTab_Imprison,Imprison in Furniture
+KDDrawSelectedTab_Dropoff,Dropoff Prisoner
 
 KDBindNPCSlot_ModuleUtility,Module (Utility)
 KDBindNPCSlot_CollarTag,Leash
@@ -23940,8 +24510,8 @@ KDAutoBindPasteAllOver,OVERWRITE All!
 
 KDPromoteNotEnough,Need Positive Opinion to Promote
 
-KDCuddleLounge1,Servant Enjoyment: AMNT
-KDCuddleLounge2,Prisoner Enjoyment: AMNT
+KDCuddleLounge1,Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+KDCuddleLounge2,Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 KDCuddleLoungeInfo,Submissive prisoners and dominant servants add different amounts of opinion per cycle
 
 
@@ -23998,6 +24568,7 @@ KinkyDungeonSpellDescriptionCommandRange,"If arm components are unavailable, you
 KDSaveSlotButton,"Save Slot "
 PlayGameWithCurrentCode,"Load Game"
 LoadFromCodeButton,"Load Code"
+LoadFromCodeButton0,"Load Slot 0"
 LoadFromFileButton,"Load File"
 KDSaveFromCode,Save From Code
 
@@ -24029,18 +24600,16 @@ KDJourneyDoll,Factory Route
 KDJourneyLost,Reverse Route
 KDJourneyRandom,Chaos Route
 KDMapSeed,"Map Seed: "
-KDWillOverride,Will Overwrite!
+KDWillOverride,Will Overwrite NME!
 
 KDPlayWithSlot,"Play Slot "
 KDPlayWithoutSlot,Play (NO SLOT!)
 
 KDCallForHelpHint,"Looks like you might be stuck. Try calling for help (bottom right of UI)"
 
-KDBackupPalette,Save to File
-KDLoadPalette,Load from File
-
-KDBackupOutfits,Store to File
-KDLoadOutfits,Load from File
+KDBackupOutfits,Backup
+KDLoadOutfits,Restore
+KDSetPalette,Set Palette
 
 KinkyDungeonStatMC_Mage,"Wizard"
 
@@ -24053,3 +24622,62 @@ KDBondageFailInvalidTargetStuffing,Target must be vulnerable or have casted a ve
 KDBondageFailInvalidTargetTapeGag,Target must be vulnerable.
 KDBondageFailInvalidTargetTapeBlindfold,Target must be vulnerable.
 KDBondageFailInvalidTargetBallGag,Target must have casted a verbal spell.
+
+
+KinkyDungeonSpellPickaxe,"Diggy diggy hole"
+KinkyDungeonSpellTargetPickaxe,"Select a cracked wall."
+KinkyDungeonSpellCastPickaxe,"You strike the earth!"
+
+KDPickaxeFailNoTarget,"Must select a cracked wall."
+KDPickaxeFailNoComp,"Your arms aren't free to swing the axe!"
+KDPickaxeFailNoOpen,"You strike the earth, but it is nothing but solid wall on the other side."
+KDPickaxeSucceed,"You strike the earth! It crumbles before you!"
+
+KDTeleportPlateReact,The planar focus resonates with the teleportation magic!
+KDTeleportPlateManaReact,"The planar focusing crystal activates! Mana is drained, and turns into bindings!"
+KDNoTeleportPlateReact,The planar diffractor blocks the teleportation!
+
+KDSetCharacterPalette,Set Character Palette
+
+KDResetKeys,Reset all Keybindings
+
+KDStruggleBlocked,That item is blocked! You can't remove it.
+
+KDMin," min."
+KDMax," max."
+KDBonus," bonus"
+KDPenalty," penalty"
+
+KinkyDungeonCurseStruggleMistressKeyQuakeCollar,"You put it on, why would you want to take it off?~"
+KinkyDungeonCurseInfoMistressKeyQuakeCollar,"You'll need an ancient key to unlock the ancient-made collar."
+
+
+NameCuffedGirl,Ancient Worshipper
+KillCuffedGirl,The ancient worshipper repents of her ways.
+AttackCuffedGirlBind,"The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)"
+AttackCuffedGirlLock,"Crystals start to grow on one of your restraints! (DamageTaken)"
+AttackCuffedGirl,"The ancient worshipper mumbles at you for assistance! (DamageTaken)"
+
+NameCuffedGirl2,Ancient Congregant
+KillCuffedGirl2,The ancient congregant repents of her ways.
+AttackCuffedGirl2Bind,"The ancient congregant's crystal restraints spread to you! (+RestraintAdded)"
+AttackCuffedGirl2Lock,"Crystals start to grow on your restraints! (DamageTaken)"
+AttackCuffedGirl2,"The ancient congregant mumbles at you for assistance! (DamageTaken)"
+
+NameCuffedGirl3,Ancient Hierophant
+KillCuffedGirl3,The ancient hierophant repents of her ways.
+AttackCuffedGirl3Bind,"The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)"
+AttackCuffedGirl3Lock,"Crystals start to grow on your restraints! (DamageTaken)"
+AttackCuffedGirl3,"The ancient hierophant mumbles at you for assistance! (DamageTaken)"
+
+KDCrystalUnlock,"The crystals break off, revealing a keyhole and weakening the item."
+KDCrystalLock,"Your distraction causes the crystals to grow back, encasing the lock again!"
+
+KDGagNecklaceOn,"After popping the gag out of your mouth, it hangs loose around your neck."
+KDGagNecklaceOff,"The gag is now in your mouth."
+
+KDErrorMods,ERROR: Restraint does not exist. Did you forget to load mods?
+
+RestraintGagNecklace,Gag Necklace
+RestraintGagNecklaceDesc,A cute accessory for those who wish to (not) make a statement.
+RestraintGagNecklaceDesc2,Functions as a collar.

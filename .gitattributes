@@ -1,0 +1,17 @@
+*.txt		text
+*.[tj]s		text
+*.py		text
+*.yml		text
+*.yaml		text
+*.csv		text
+*.tps		text
+*.md		text
+*.json		text
+*.css		text
+
+*.png		-text
+*.webp		-text
+*.ttf		-text
+*.ogg		-text
+*.aesprite	-text
+*.zip		-text

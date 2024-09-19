@@ -779,6 +779,7 @@
             <key type="filename">../Game/EffectTiles/ManaPartial.png</key>
             <key type="filename">../Game/EffectTiles/MotionLamp.png</key>
             <key type="filename">../Game/EffectTiles/MotionLampLight.png</key>
+            <key type="filename">../Game/EffectTiles/NoTeleportPlate.png</key>
             <key type="filename">../Game/EffectTiles/OrbLantern.png</key>
             <key type="filename">../Game/EffectTiles/Portals/CommercePortal.png</key>
             <key type="filename">../Game/EffectTiles/Portals/CommercePortalReturn.png</key>
@@ -805,6 +806,8 @@
             <key type="filename">../Game/EffectTiles/StarryTrail.png</key>
             <key type="filename">../Game/EffectTiles/Steam.png</key>
             <key type="filename">../Game/EffectTiles/TauntGround.png</key>
+            <key type="filename">../Game/EffectTiles/TeleportPlate.png</key>
+            <key type="filename">../Game/EffectTiles/TeleportPlateMana.png</key>
             <key type="filename">../Game/EffectTiles/Torch.png</key>
             <key type="filename">../Game/EffectTiles/TorchOrb.png</key>
             <key type="filename">../Game/EffectTiles/TorchOrbNoPanel.png</key>
@@ -813,8 +816,11 @@
             <key type="filename">../Game/EffectTiles/Water.png</key>
             <key type="filename">../Game/EffectTiles/WaterFrozen.png</key>
             <key type="filename">../Game/EffectTiles/Wire.png</key>
+            <key type="filename">../Game/EffectTiles/WireEnd.png</key>
+            <key type="filename">../Game/EffectTiles/WireHoriz.png</key>
             <key type="filename">../Game/EffectTiles/WireSparks.png</key>
             <key type="filename">../Game/EffectTiles/WireSparksAct.png</key>
+            <key type="filename">../Game/EffectTiles/WireVert.png</key>
             <key type="filename">../Game/Enemies/AcidBarrel.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Brat_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Dom_Fighter.png</key>
@@ -984,6 +990,9 @@
             <key type="filename">../Game/Enemies/Conjurer.png</key>
             <key type="filename">../Game/Enemies/ConjurerTickler.png</key>
             <key type="filename">../Game/Enemies/CorruptedAdventurer.png</key>
+            <key type="filename">../Game/Enemies/CuffedGirl.png</key>
+            <key type="filename">../Game/Enemies/CuffedGirl2.png</key>
+            <key type="filename">../Game/Enemies/CuffedGirl3.png</key>
             <key type="filename">../Game/Enemies/Cuffs.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
@@ -1273,6 +1282,8 @@
             <key type="filename">../Game/EnemiesBound/Conjurer.png</key>
             <key type="filename">../Game/EnemiesBound/ConjurerTickler.png</key>
             <key type="filename">../Game/EnemiesBound/CorruptedAdventurer.png</key>
+            <key type="filename">../Game/EnemiesBound/CuffedGirl.png</key>
+            <key type="filename">../Game/EnemiesBound/CuffedGirl2.png</key>
             <key type="filename">../Game/EnemiesBound/Cyborg.png</key>
             <key type="filename">../Game/EnemiesBound/CyborgBerserker.png</key>
             <key type="filename">../Game/EnemiesBound/CyborgEnforcer.png</key>
@@ -1613,6 +1624,8 @@
             <key type="filename">../Game/Floors/Floor_DemonTransition/ShrineEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_DemonTransition/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_DemonTransition/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_bel/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_bel/Bars.png</key>
@@ -1642,6 +1655,8 @@
             <key type="filename">../Game/Floors/Floor_bel/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_bel/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_bel/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_bel/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_bel/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_bel/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_cat/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_cat/Bars.png</key>
@@ -1671,6 +1686,8 @@
             <key type="filename">../Game/Floors/Floor_cat/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_cat/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_cat/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_cat/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_cat/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_cat/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_cry/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_cry/Bars.png</key>
@@ -1700,6 +1717,8 @@
             <key type="filename">../Game/Floors/Floor_cry/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_cry/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_cry/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_cry/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_cry/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_cry/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Bars.png</key>
@@ -1716,6 +1735,8 @@
             <key type="filename">../Game/Floors/Floor_cst/Floor.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Giant Bubble.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Grate.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/GrateHoriz.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/GrateVert.png</key>
             <key type="filename">../Game/Floors/Floor_cst/MimicBlock.png</key>
             <key type="filename">../Game/Floors/Floor_cst/OrbEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_cst/RubbleLooted.png</key>
@@ -1725,6 +1746,8 @@
             <key type="filename">../Game/Floors/Floor_cst/ShrineEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_cst/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_cst/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_cst/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_grv/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_grv/Bars.png</key>
@@ -1753,6 +1776,8 @@
             <key type="filename">../Game/Floors/Floor_grv/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_grv/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_grv/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_grv/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_grv/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_grv/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_jng/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_jng/Bars.png</key>
@@ -1779,6 +1804,8 @@
             <key type="filename">../Game/Floors/Floor_jng/ShrineEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_jng/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_jng/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_jng/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_jng/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_jng/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_jngWild/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_jngWild/Bars.png</key>
@@ -1807,6 +1834,8 @@
             <key type="filename">../Game/Floors/Floor_jngWild/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_jngWild/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_jngWild/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_jngWild/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_jngWild/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_lib/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_lib/Bars.png</key>
@@ -1836,6 +1865,8 @@
             <key type="filename">../Game/Floors/Floor_lib/Tile.png</key>
             <key type="filename">../Game/Floors/Floor_lib/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_lib/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_lib/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_lib/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_lib/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_ore/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_ore/Bars.png</key>
@@ -1893,7 +1924,8 @@
             <key type="filename">../Game/Floors/Floor_shoppe/Tile.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/Wall.png</key>
-            <key type="filename">../Game/Floors/Floor_shoppe/WallOld.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_shoppe/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_shoppe/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/Bars.png</key>
@@ -1921,6 +1953,8 @@
             <key type="filename">../Game/Floors/Floor_shrine/ShrineEmpty.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_shrine/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_shrine/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/Bars.png</key>
@@ -1951,6 +1985,8 @@
             <key type="filename">../Game/Floors/Floor_tmb/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_tmb/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_tmb/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_tmb/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Bars.png</key>
@@ -1980,6 +2016,8 @@
             <key type="filename">../Game/Floors/Floor_tmp/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_tmp/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_tmp/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_tmp/WallVert.png</key>
             <key type="filename">../Game/Floors/Floor_vault/Barrel.png</key>
             <key type="filename">../Game/Floors/Floor_vault/Bars.png</key>
@@ -2009,6 +2047,8 @@
             <key type="filename">../Game/Floors/Floor_vault/StairsUp.png</key>
             <key type="filename">../Game/Floors/Floor_vault/Trap.png</key>
             <key type="filename">../Game/Floors/Floor_vault/Wall.png</key>
+            <key type="filename">../Game/Floors/Floor_vault/WallR.png</key>
+            <key type="filename">../Game/Floors/Floor_vault/WallRVert.png</key>
             <key type="filename">../Game/Floors/Floor_vault/WallVert.png</key>
             <key type="filename">../Game/InventoryAction/Attach.png</key>
             <key type="filename">../Game/InventoryAction/Bondage.png</key>
@@ -2639,6 +2679,7 @@
             <key type="filename">../Game/Locks/Blind.png</key>
             <key type="filename">../Game/Locks/Blocked.png</key>
             <key type="filename">../Game/Locks/Blue.png</key>
+            <key type="filename">../Game/Locks/Crystal.png</key>
             <key type="filename">../Game/Locks/Curse.png</key>
             <key type="filename">../Game/Locks/Cyber.png</key>
             <key type="filename">../Game/Locks/Cyber2.png</key>
@@ -2647,6 +2688,7 @@
             <key type="filename">../Game/Locks/Divine.png</key>
             <key type="filename">../Game/Locks/Divine2.png</key>
             <key type="filename">../Game/Locks/Dollmaker.png</key>
+            <key type="filename">../Game/Locks/ExCrystal.png</key>
             <key type="filename">../Game/Locks/Fuuka.png</key>
             <key type="filename">../Game/Locks/Gold.png</key>
             <key type="filename">../Game/Locks/Grey.png</key>
@@ -3778,6 +3820,7 @@
             <key type="filename">../Game/UI/Reset.png</key>
             <key type="filename">../Game/UI/Restore.png</key>
             <key type="filename">../Game/UI/Safe.png</key>
+            <key type="filename">../Game/UI/SetPalette.png</key>
             <key type="filename">../Game/UI/UsePotionAncient.png</key>
             <key type="filename">../Game/UI/UsePotionFrigid.png</key>
             <key type="filename">../Game/UI/UsePotionInject.png</key>

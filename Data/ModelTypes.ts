@@ -115,6 +115,11 @@ interface ModelLayer extends Namable {
     Poses?: Record<string, boolean>,
 	/** Only displace in these poses */
 	DisplacementPoses?: string[],
+
+	/** No displacement map in these poses */
+	DisplacementPosesExclude?: string[],
+	/** No erase map in these poses */
+	ErasePosesExclude?: string[],
 	/** Adds a displacement map for rope squish and such. If the same sprite is in use it wont be duped*/
 	DisplacementSprite?: string,
 	/** Which layers to apply displacement to */
@@ -235,6 +240,7 @@ type LayerProperties = {
     Rotation?: number,
     XScale?: number,
     YScale?: number,
+    Protected?: number,
     SuppressDynamic?: number,
     HideOverridden?: number,
     NoOverride?: number,

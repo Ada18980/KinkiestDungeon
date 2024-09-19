@@ -38,7 +38,6 @@ AddModel({
 		{ Name: "Bow", Layer: "Panties", Pri: -24.7,
 			Invariant: true,
 			NoOverride: true,
-			TieToLayer: "Base",
 		},
 	])
 });

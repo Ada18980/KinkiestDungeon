@@ -226,17 +226,17 @@ async function KDExecuteMods() {
 		console.log(e);
 	}
 
-	for (let entry of Object.entries(KDModFiles)) {
+	for (let [k, v] of Object.entries(KDModFiles) as [string, string][]) {
 		// compat w/ PIXI loading
-		let ext = PIXI.utils.path.extname(entry[0]);
+		let ext = PIXI.utils.path.extname(k);
 		//if (ext) PIXI.Assets.load();
-		KDModFiles[PIXI.utils.path.toAbsolute(entry[0])] = entry[1];
-		PIXI.Assets.resolver.add(entry[0], {
-			src: entry[1],
+		KDModFiles[PIXI.utils.path.toAbsolute(k)] = v;
+		PIXI.Assets.resolver.add(k, {
+			src: v,
 			format: ext,
 		});
-		PIXI.Assets.resolver.add(PIXI.utils.path.toAbsolute(entry[0]), {
-			src: entry[1],
+		PIXI.Assets.resolver.add(PIXI.utils.path.toAbsolute(k), {
+			src: v,
 			format: ext,
 		});
 	}

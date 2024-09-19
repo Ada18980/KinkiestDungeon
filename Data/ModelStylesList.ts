@@ -154,7 +154,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		],
 		Facestyle: [
 			"GreenNormal",
-			"GreenAgry",
+			"GreenAngry",
 			"GreenCute",
 			"CyanNormal",
 			"Cyan",
@@ -271,6 +271,38 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Elf3",
 		],
 	},
+	Worshipper: {
+		Hairstyle: [
+			"WhiteLongHair",
+			"WhiteLongHair",
+			"Maid6",
+			"WhiteTwintails",
+		],
+		Bodystyle: [
+			"Pale",
+			"ElementalPale",
+			"Tan",
+		],
+		Facestyle: [
+			"Worshipper",
+			"Worshipper",
+			"Worshipper",
+			"PurpleCute",
+			"PurpleAngry",
+			"MagentaCute",
+		],
+		Cosplay: [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"Elf1",
+			"Elf2",
+			"Elf3",
+		],
+	},
+
 	EarthElemental: {
 		Hairstyle: [
 			"BrownPonytail",
