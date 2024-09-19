@@ -107,13 +107,12 @@ function KinkyDungeonRefreshEnemiesCache() {
  * @returns {enemy}
  */
 function KinkyDungeonGetEnemyByName(Name) {
-	// @ts-ignore
-	if (typeof Name == "string") return Name;
+	if (typeof Name != "string") return Name;
 	if (KDEnemiesCache.size > 0) {
-		return KDEnemiesCache.get(Name);
+		return KDEnemiesCache.get(Name) || KinkyDungeonEnemies.find(element => element.name == Name);
 	} else {
 		KinkyDungeonRefreshEnemiesCache();
-		return KDEnemiesCache.get(Name);
+		return KDEnemiesCache.get(Name) || KinkyDungeonEnemies.find(element => element.name == Name);
 	}
 }
 

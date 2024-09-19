@@ -19,6 +19,24 @@ let KDModSettings = {};
 let KDModConfigs = {};
 let KDModFileCount = 0;
 
+interface MODJSON {
+	modname: string,
+	moddesc: string,
+	author: string,
+	modbuild: number,
+	gamemajor: number,
+	gameminor: number,
+	gamepatch_min: number,
+	gamepatch_max: number,
+	priority: number,
+	/** number is minimum version number */
+	dependencies: Record<string, number>,
+	/** optional or recommended */
+	optional: Record<string, string>,
+	/** warn or error */
+	incompatibilities: Record<string, string>,
+}
+
 async function KDGetModsLoad(execute) {
 	try {
 		//@ts-ignore
