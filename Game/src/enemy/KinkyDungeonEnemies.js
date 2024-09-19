@@ -4473,7 +4473,8 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 
 
-	if ((!AIData.aggressive && player.player && KDEnemyHasFlag(enemy, "seePlayer")) || enemy == KinkyDungeonLeashingEnemy()) {
+	if ((!AIData.aggressive && player.player
+		&& KDEnemyHasFlag(enemy, "seePlayer")) || enemy == KinkyDungeonLeashingEnemy()) {
 		enemy.aware = true;
 		sneakPerc = 1;
 	}
@@ -4969,98 +4970,117 @@ function KinkyDungeonEnemyLoop(enemy, player, delta, visionMod, playerItems) {
 
 			}
 
-			if (!KDEnemyHasFlag(enemy, "Defensive") && !KDEnemyHasFlag(enemy, "StayHere") && !KDEnemyHasFlag(enemy, "overrideMove") && !KDIsImmobile(enemy) && !AIType.aftermove(enemy, player, AIData) && (!AIData.moveTowardPlayer && !KDEnemyHasFlag(enemy, "dontChase"))) {
-				if (AIType.resetguardposition(enemy, player, AIData) && !AIData.allyFollowPlayer && Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
+			/** QoL for party members to follow you */
+			let allyHoming = (AIData.allyFollowPlayer && KDIsInParty(enemy) && enemy.idle && !enemy.aware);
+
+			if ((allyHoming || !KDEnemyHasFlag(enemy, "Defensive"))
+				&& !KDEnemyHasFlag(enemy, "StayHere")
+				&& !KDEnemyHasFlag(enemy, "overrideMove")
+				&& !KDIsImmobile(enemy)
+				&& !AIType.aftermove(enemy, player, AIData)
+				&& (allyHoming
+					|| (!AIData.moveTowardPlayer && !KDEnemyHasFlag(enemy, "dontChase")))) {
+
+				if (AIType.resetguardposition(enemy, player, AIData)
+					&& !AIData.allyFollowPlayer
+					&& Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 1.5 && enemy.gxx && enemy.gyy) {
 					enemy.gx = enemy.gxx;
 					enemy.gy = enemy.gyy;
 				}
-				let wanderfar = AIType.wander_far(enemy, player, AIData) || KDEnemyHasFlag(enemy, "forceWFar");
-				let wandernear = AIType.wander_near(enemy, player, AIData);
-				if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive || enemy.ignore)) {
-					if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 2.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
-						AIData.master = KinkyDungeonFindMaster(enemy).master;
-						if (!KDEnemyHasFlag(enemy, "wander")) {
-							if (!AIData.master && wanderfar) {
-								if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
-									// long distance hunt
-									let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
-										return KDistChebyshev(enemy.x - X, enemy.y - Y) < 24;
-									}, false,
-									enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
-									if (newPoint) {
-										// Gravitate toward interesting stuff
-										let np =
-											(['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy)))
-											? KDGetNearestGuardLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8)
-											: KDGetNearestInterestingLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8);
-										if (np) {
-											newPoint.x = np.x;
-											newPoint.y = np.y;
-											np.assigned = enemy.id;
-										}
-										enemy.gx = newPoint.x;
-										enemy.gy = newPoint.y;
-										KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-									}
-								}
-								KinkyDungeonSetEnemyFlag(enemy, "wander", AIType.wanderDelay_long(enemy) || 50);
-							} else if (wandernear) {
-								KinkyDungeonSetEnemyFlag(enemy, "wander", AIType.wanderDelay_short(enemy) || 20);
-								if (!AIType.wandernear_func || !AIType.wandernear_func(enemy, player, AIData)) {
-									if (KinkyDungeonAlert && AIData.playerDist < Math.max(4, AIData.visionRadius)) {
-										enemy.gx = KinkyDungeonPlayerEntity.x;
-										enemy.gy = KinkyDungeonPlayerEntity.y;
-									} else {
-										// Short distance
-										let ex = enemy.x;
-										let ey = enemy.y;
-										let cohesion = enemy.Enemy.cohesion ? enemy.Enemy.cohesion : 0.5;
-										let masterCloseness = enemy.Enemy.cohesion ? enemy.Enemy.cohesion : 0.7;
-										if (AIData.master && KDRandom() < masterCloseness) {
-											ex = AIData.master.x;
-											ey = AIData.master.y;
-											KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-										} else if (KDRandom() < cohesion) {
-											let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
-											let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
-											for (let e of ent) {
-												if (e == enemy) continue;
-												if (['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy))) continue;
-												if (['guard', 'ambush', 'looseguard'].includes(KDGetAI(e))) continue;
-												if (!(
-													(enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith])
-													|| e.Enemy.clusterWith && !enemy.Enemy.tags[enemy.Enemy.clusterWith]
-												)) continue;
-												if (KDGetFaction(e) != KDGetFaction(enemy)) continue;
-												if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL) continue;
-												let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
-												if (dist < minDist) {
-													minDist = dist;
-													let ePoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
-													if (ePoint) {
-														ex = ePoint.x;
-														ey = ePoint.y;
-														KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
-													}
-												}
-											}
-										}
-										let newPoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
-										if (newPoint && (KDGetFaction(enemy) != "Player" || !KinkyDungeonPointInCell(newPoint.x, newPoint.y))) {
+
+				if (allyHoming) {
+					// TODO add mechanism for allies finding where you are
+					enemy.gx = KDPlayer().x;
+					enemy.gy = KDPlayer().y;
+				} else {
+					let wanderfar = AIType.wander_far(enemy, player, AIData) || KDEnemyHasFlag(enemy, "forceWFar");
+					let wandernear = AIType.wander_near(enemy, player, AIData);
+					if ((wanderfar || wandernear) && !AIData.allyFollowPlayer && (!enemy.Enemy.allied && !KDEnemyHasFlag(enemy, "StayHere")) && !KDEnemyHasFlag(enemy, "StayHere") && enemy.movePoints < 1 && (!enemy.aware || !AIData.aggressive || enemy.ignore)) {
+						if ((Math.max(Math.abs(enemy.x - enemy.gx), Math.abs(enemy.y - enemy.gy)) < 2.5 || (KDRandom() < 0.02 && KDEnemyHasFlag(enemy, "failpath"))) || (!(enemy.vp > 0.05) && (!enemy.path || KDRandom() < 0.1))) {
+							AIData.master = KinkyDungeonFindMaster(enemy).master;
+							if (!KDEnemyHasFlag(enemy, "wander")) {
+								if (!AIData.master && wanderfar) {
+									if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
+										// long distance hunt
+										let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
+											return KDistChebyshev(enemy.x - X, enemy.y - Y) < 24;
+										}, false,
+										enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+										if (newPoint) {
 											// Gravitate toward interesting stuff
 											let np =
 												(['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy)))
-												? KDGetNearestGuardLabel(newPoint.x, newPoint.y, enemy, enemy.id, false, "Patrol", 8)
-												: KDGetNearestInterestingLabel(newPoint.x, newPoint.y, enemy, enemy.id, false, "Patrol", 8);
+												? KDGetNearestGuardLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8)
+												: KDGetNearestInterestingLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8);
 											if (np) {
 												newPoint.x = np.x;
 												newPoint.y = np.y;
 												np.assigned = enemy.id;
 											}
-											if (!AIType.strictwander || KinkyDungeonCheckPath(enemy.x, enemy.y, newPoint.x, newPoint.y)) {
-												enemy.gx = newPoint.x;
-												enemy.gy = newPoint.y;
+											enemy.gx = newPoint.x;
+											enemy.gy = newPoint.y;
+											KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+										}
+									}
+									KinkyDungeonSetEnemyFlag(enemy, "wander", AIType.wanderDelay_long(enemy) || 50);
+								} else if (wandernear) {
+									KinkyDungeonSetEnemyFlag(enemy, "wander", AIType.wanderDelay_short(enemy) || 20);
+									if (!AIType.wandernear_func || !AIType.wandernear_func(enemy, player, AIData)) {
+										if (KinkyDungeonAlert && AIData.playerDist < Math.max(4, AIData.visionRadius)) {
+											enemy.gx = KinkyDungeonPlayerEntity.x;
+											enemy.gy = KinkyDungeonPlayerEntity.y;
+										} else {
+											// Short distance
+											let ex = enemy.x;
+											let ey = enemy.y;
+											let cohesion = enemy.Enemy.cohesion ? enemy.Enemy.cohesion : 0.5;
+											let masterCloseness = enemy.Enemy.cohesion ? enemy.Enemy.cohesion : 0.7;
+											if (AIData.master && KDRandom() < masterCloseness) {
+												ex = AIData.master.x;
+												ey = AIData.master.y;
 												KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+											} else if (KDRandom() < cohesion) {
+												let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
+												let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
+												for (let e of ent) {
+													if (e == enemy) continue;
+													if (['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy))) continue;
+													if (['guard', 'ambush', 'looseguard'].includes(KDGetAI(e))) continue;
+													if (!(
+														(enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith])
+														|| e.Enemy.clusterWith && !enemy.Enemy.tags[enemy.Enemy.clusterWith]
+													)) continue;
+													if (KDGetFaction(e) != KDGetFaction(enemy)) continue;
+													if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL) continue;
+													let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
+													if (dist < minDist) {
+														minDist = dist;
+														let ePoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
+														if (ePoint) {
+															ex = ePoint.x;
+															ey = ePoint.y;
+															KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+														}
+													}
+												}
+											}
+											let newPoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
+											if (newPoint && (KDGetFaction(enemy) != "Player" || !KinkyDungeonPointInCell(newPoint.x, newPoint.y))) {
+												// Gravitate toward interesting stuff
+												let np =
+													(['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy)))
+													? KDGetNearestGuardLabel(newPoint.x, newPoint.y, enemy, enemy.id, false, "Patrol", 8)
+													: KDGetNearestInterestingLabel(newPoint.x, newPoint.y, enemy, enemy.id, false, "Patrol", 8);
+												if (np) {
+													newPoint.x = np.x;
+													newPoint.y = np.y;
+													np.assigned = enemy.id;
+												}
+												if (!AIType.strictwander || KinkyDungeonCheckPath(enemy.x, enemy.y, newPoint.x, newPoint.y)) {
+													enemy.gx = newPoint.x;
+													enemy.gy = newPoint.y;
+													KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+												}
 											}
 										}
 									}
@@ -8243,6 +8263,9 @@ function KDAddToParty(enemy) {
 		if (!KDGameData.Collection[enemy.id + ""])
 			KDAddCollection(enemy, undefined, "Guest");
 		KDGetPersistentNPC(enemy.id).collect = true; // Collect them
+	}
+	if (KDGameData.Collection[enemy.id + ""]?.Facility) {
+		KDGameData.Collection[enemy.id + ""].Facility = "";
 	}
 	return true;
 
