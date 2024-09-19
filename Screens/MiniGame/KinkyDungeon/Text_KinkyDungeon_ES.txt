@@ -9560,12 +9560,8 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 ¡Te retuerces inútilmente, atormentado por los enormes tapones dentro de ti!
 You climb into the grate
 Te subes a la rejilla
-Mmmph...
-Mmmm...
-Mmmmmmmmm...
-Mmmmmmmmm...
-Hhmmpphh...
-Hmmmpphh...
+
+
 Gghhhh!!!
 ¡¡¡Gghhhh!!!
 Mmmmmphh!!!
@@ -9582,16 +9578,12 @@ Mmmmmmmmm~
 Mmmmmmmmm~
 Unnnghhh...
 Unnnghhh...
-Mmmmmmmphhh..
-Mmmmmmmmm..
-Mmmmmphh~
-Mmmmmmm~
+
+
 Mmm~
 Mmm~
-Mmmmm~~
-Mmmmm~~
-Mmmmmm~~~
-Mmmmm~~~
+
+
 You are blinded!
 ¡Estás ciego!
 You took DamageDealt damage!
@@ -11306,14 +11298,12 @@ Nice and tight!
 ¡Agradable y apretado!
 Mmmmph!!!
 ¡¡¡Mmmmmmm!!!
-Mmmmm~
-Mmmmm~
+
 Mmmgh!
 ¡Mmm!
 Mmmmmm <3
 Hmmmm <3
-Mmmmmm~
-Mmmmm~
+
 Mmmph~
 mmmmm~
 *looks at you nervously*
@@ -11344,10 +11334,8 @@ Wwwmmmthhh!
 ¡Wwwmmmthhh!
 Mmmmmph!
 ¡Mmmmmmm!
-Mmmph.
-Mmmm.
-Mmmph!
-Mmmph!
+
+
 *looks at you suspiciously*
 *te mira con suspicacia*
 *looks at you angrily*
@@ -11368,38 +11356,28 @@ Mmmph!!!
 *risitas*
 Mmmph.
 Mmmm.
-Nngghhh!
-Nngghhhh!
-Mmm-hmmm.
-Mmm-hmmm.
-Mmmmmmm~
-Mmmmmmm~
-Mmmph~
-mmmmm~
+
+
+
+
 Mmmmph!!!
 ¡¡¡Mmmmmmm!!!
-Mmmmm~
-Mmmmm~
+
 Mmmgh!
 ¡Mmm!
 Mmmmmm <3
 Hmmmm <3
-Mmmmmm~
-Mmmmm~
-Mmmph~
-mmmmm~
-*Mmmmmm~*
-*Mmmmm~*
+
+
+
 *muffled giggle*
 *risita ahogada*
-Mmmm~
-Mmmm~
+
 Mmmph?
 ¿Mmm?
 Mmmghgh!!!
 ¡¡¡Mmmghgh!!!
-Mmmmph...
-Mmmmmm...
+
 Hhhhmph!
 ¡Hhhhmph!
 Mmmmmmmmm...
@@ -11416,8 +11394,7 @@ Wwwmmmthhh!
 ¡Wwwmmmthhh!
 Mmmmmph!
 ¡Mmmmmmm!
-Mmmph.
-Mmmm.
+
 Mmmph!
 Mmmph!
 Mmmph?
@@ -11438,16 +11415,14 @@ Mmmph!!!
 ¡¡¡Mmmmm!!!
 *muffled giggle*
 *risita ahogada*
-Mmmph.
-Mmmm.
+
 Nngghhh!
 Nngghhhh!
 Mmm-hmmm.
 Mmm-hmmm.
 Mmmmmmm~
 Mmmmmmm~
-Mmmph~
-mmmmm~
+
 You'll never catch me!
 ¡Nunca me atraparás!
 Where'd you come from?
@@ -15646,8 +15621,7 @@ Exciting!
 ¡Emocionante!
 That sounds great. But who are you miss?
 Eso suena genial. Pero, ¿quién eres, señorita?
-Mmmmph~
-Mmmmmm~
+
 (SPEAKER giggles)|Hehe... We will have so much fun~
 (EL SPEAKER se ríe)|Jeje... Nos divertiremos mucho~
 (...)
