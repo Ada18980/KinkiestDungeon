@@ -12132,7 +12132,7 @@ Normal Mode
 Hard Mode
 困难模式
 Extreme
-极限模式
+极端模式
 A supposedly reasonable difficulty curve.
 合理的难度曲线
 ### Play the game the way it was intended. Cruel and restrictive. 
@@ -26857,7 +26857,7 @@ Will Overwrite!
  (Hard)
  ( 困难 )
  (Extreme)
- ( 极限 )
+ ( 极端 )
 Confirm and OVERWRITE SAVE
 确认并覆盖存档
 Override Outfit when Loading Save
