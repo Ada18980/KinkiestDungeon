@@ -46,7 +46,7 @@ Mods Loaded.
 Version
 Версия перевода 5.2.24, версия игры
 ### Kinky Dungeon
-### 5.3.37
+### 5.3.38-RC6
 By Ada18980
 От Ada18980
 You are an adventurer descending into an ancient underground city of magic.
@@ -71,7 +71,16 @@ Keybindings
 Управление
 
 
+### Apply palette to Restraints
+### Apply palette to transforms
+
+### Don't use character palette
+### Always use character palette
+### Use character palette for default outfit
+
 ### Show Background Art
+
+
 ### Show DP instead of %
 ### Quick Inv only equips to self
 ### Override Outfit when Loading Save
@@ -405,8 +414,7 @@ Born with an intense submissive desire, you cannot refuse bondage from dialogues
 
 Frantic Struggle
 Неистовое сопротивление
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-Вы Боретесь с ограничителями в 3 раза быстрее, но общие затраты выносливости становятся выше.
+### Your escaping is 3 times as fast, but less efficient in terms of stamina.
 
 Escape Artist
 Гуру верёвок
@@ -697,16 +705,15 @@ Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space w
 
 Expansive Halls
 Обширные залы
-Increases the size of maps by 1 in each direction.
-Увеличивает размер карты на 1 в каждом направлении.
+### Increases the size of maps by 3 in the long dimension. Maps will be less dense.
 Gargantuan Halls
 Впечатляющие залы
-Increases the size of maps by 2 in each direction.
-Увеличивает размер карты на 2 в каждом направлении.
+### Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
 Labyrinthine Halls
 Настоящий лабиринт
-Increases the size of maps by 3 in each direction.
-Увеличивает размер карты на 3 в каждом направлении.
+### Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
+### Absurdly Huge Maps
+### (Experimental) Make the maps really really big. Probably breaks the game.
 
 Rigger
 Риггер
@@ -1436,6 +1443,7 @@ Stormbreaker: You have the Power.
 
 Game Setup:
 Настройки игры:
+### Beginner: Get a save code every 3 levels, autosave after each floor
 Roguelike: No save codes, only autosave
 Рогалик: Никаких кодов сохранения, только автосохранение
 Exciting: Orbs give random spells
@@ -1559,8 +1567,7 @@ Play with yourself
 Let go...
 Кончить...
 
-Make noise!
-Подать звук!
+### Call for Help!!!
 Wait until interrupted
 Ждать, пока вас не прервут
 Auto-struggle
@@ -1777,6 +1784,8 @@ Quests
 Задания
 Spell List
 Список заклинаний
+### Pause Menu
+### Facilities
 
 Current Key Pressed
 В данный момент нажато
@@ -2980,6 +2989,7 @@ Angel: MMMMMPHH!!!
 
 The EnemyName pulls away your ArmorName!!!
 EnemyName срывает с вас ArmorName!!!
+### There was a bug removing your ArmorName. Please report!
 The EnemyName bypasses your security to add the RestraintName!
 EnemyName перебирает ваши ограничители, чтобы добавить RestraintName!
 The EnemyName tries to restrain you, but you resist the bondage!
@@ -4574,32 +4584,29 @@ The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 Заражённая спорами трёт вашу грудь своими длинными, тонкими пальцами! (DamageTaken)
 Crystal Glyph
 Кристаллический глиф
+### Crystal Slash
+### Crystal Bolt
 
 
 Tailor
 Швея
-You murder the tailor!
-Вы убили швею!
+### You rob the tailor!
 
 Student
 Студентка
-You murder the student!
-Вы убили студентку!
+### You rob the student!
 
 Tactician
 Тактик
-You murder the tactician!
-Вы убили тактика!
+### You rob the tactician!
 
 Informant
 Информатор
-You murder the informant!
-Вы убили информатора!
+### You rob the informant!
 
 Thug
 Бандитка
-You murder the thug!
-Вы убили бандитку!
+### You rob the thug!
 
 Antique Merchant
 Торговка антиквариатом
@@ -4607,16 +4614,13 @@ You smash the antique merchant!
 Вы разбили торговку антиквариатом!
 Blacksmith
 Кузнец
-You murder the blacksmith!
-Вы убили кузнеца!
+### You rob the blacksmith!
 Armorer
 Оружейница
-You murder the armorer!
-Вы убили оружейницу!
+### You rob the armorer!
 Bowyer
 Лучница
-You murder the bowyer!
-Вы убили лучницу!
+### You rob the bowyer!
 ### Not a Kidnapper
 ### You bring the kidnapper to justice!
 
@@ -5098,6 +5102,12 @@ You need a special tool to pick this kind of lock.
 The lock is brimming with security features and is nigh impossible to pick!
 Замок напичкан улучшениями защиты, его практически невозможно взломать!
 
+### The lock is encased in magical crystals that block the keyhole.
+### Your distraction makes the crystals regrow immediately after breaking them off.
+
+### The crystal fragments in the lock make it difficult to pick.
+### You need a key to actually unlock the ex-crystallized lock.
+
 The key sticks in the lock and jams, mangling the key!
 Ключ застревает в замке и тот заклинивает, сгибая ключ!
 
@@ -5529,6 +5539,7 @@ Disc
 Диск
 Rubber
 Резиновый
+### Crystal
 Runic
 Рунический
 Magic
@@ -5550,6 +5561,7 @@ Rubber Lock
 Резиновый замок
 Divine Lock
 Божественный замок
+### Crystal Lock
 Runic Lock
 Рунический замок
 Purple Lock
@@ -6981,6 +6993,9 @@ A leash used for training pets.
 Поводок, используемый для дрессировки домашних животных.
 It is a steel cable with a weatherproof rubber coating, and a convenient handle.
 Это стальной трос с устойчивым к погодным явлениям резиновым покрытием и удобной ручкой.
+### Magical Leash
+### A leash made of magical energy, linked to a submissive's collar.
+### Very difficult to break unless you have a strong magical blade.
 
 Your ankle cuffs snap together on their own!
 Манжеты на щиколотках скрепляются сами по себе!
@@ -8717,6 +8732,7 @@ You exhale a mighty wind!
 Вы выдыхаете могучий ветер!
 
 
+### Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
 You a throw a knife!
 Вы бросаете нож!
 
@@ -8960,6 +8976,7 @@ Choose object to analyze
 
 Barrier Runes
 Руны барьера
+### Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
 You raise a field of runes with a command word!
 Вы создаете поле рун с помощью командного слова!
 Choose barrier location
@@ -9983,6 +10000,7 @@ You pose in a clandestine manner.
 
 Darkblade
 Темный клинок
+### Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
 You call forth dark runes on your weapon and arms!
 Вы вызываете темные руны на своем оружии и кистях рук!
 
@@ -11741,6 +11759,7 @@ Are you sure you want to attack?
 Вы уверены, что хотите атаковать?
 Are you sure you want to go to the next level? (Click self to confirm)
 Вы уверены, что хотите перейти на следующий уровень? (Нажмите на себя для подтверждения)
+
 
 You shudder as you apply the RestraintName to yourself...
 Вы вздрагиваете, когда надеваете на себя RestraintName...
@@ -15875,6 +15894,7 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 Создайте лужицу слизи в форме '+', которая наносит 35 единиц урона от клея за попадание.
 Ignite torches and nearby objects
 Поджигает факелы и близлежащие предметы
+### Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 
 Preferences
 Предпочтения
@@ -18028,8 +18048,10 @@ You're giving me everything you have.
 (SPEAKER дает вам два ножа)|Не поранься ими, хорошо?
 (The SPEAKER gives you three picks)|I don't know how you plan to use these...
 (SPEAKER дает вам три отмычки)|Я не знаю, как ты планируешь это использовать...
-(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
-(SPEAKER неохотно дает вам магический ключ)|Ладно, но учти, они не растут на деревьях...
+### (The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
+### (The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
+### (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
+### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
 
 (Ask for 2 knives)
 (Попросить 2 ножа)
@@ -18037,6 +18059,7 @@ You're giving me everything you have.
 (Попросить 3 отмычки)
 (Ask for a magic key)
 (Попросить магический ключ)
+### (Ask for help with a divine lock)
 
 There is no valid space next to you!
 Рядом с вами нет свободного места!
@@ -19050,6 +19073,9 @@ An enemy found you while you were busy!
 ### (There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
 ### (The pole rises and immobilizes you!)
 ### (Stand over it and place your feet in the footrests)
+### (Drop off a prisoner from your collection)
+### (Put NME on the stand) (PRCNT% Chance)
+### (Put NME on the stand)
 ### (This is a piece of bondage furniture)
 ### (You lock yourself in the furniture!)
 ### (The SPEAKER slips out of your grip|before you can lock her in place!)
@@ -19101,6 +19127,7 @@ Pizza
 (Получить +100 к максимальному резерву маны)
 (I don't want to.)
 (Я не хочу.)
+### (No really, I don't want it!)
 
 (You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
 (Вы находите странный лифт с панелью управления внутри)|(У вас создается впечатление, что он вас куда-то доставит.)
@@ -23310,8 +23337,7 @@ Equip to hotbar and cast to designate an Offhand weapon to gain passive effects 
 
 Arcane Tome
 Фолиант Арканы
-Contains advanced formulas and thrilling tales of thirsty wizards.
-Содержит продвинутые формулы и захватывающие истории о алчущих магах.
+### Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
 +5% magic damage. Offhand: Applies passive bonus.
 +5% к магическому урону. В левой руке: Применяется пассивный бонус.
 You find a magical tome.
@@ -23319,8 +23345,7 @@ You find a magical tome.
 Open the book. What can go wrong?
 Откройте книгу. Что может пойти не так?
 
-Contains a malevolent spirit that wishes only to tie up damsels.
-Внутри него живет злой дух, единственное желание которого - связывать девушек.
+### Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
 +10% binding effectiveness. Offhand: Applies passive bonus.
 Эффективность Сковывания +10%. В левой руке: Применяется пассивный бонус.
 You find a magical tome with a sealed padlock on it.
@@ -23723,6 +23748,7 @@ All selected units switch to Aggressive mode
 Unlock using magic
 Разблокировать с помощью магии
 
+### Include Weapons
 Merge Armor
 Объединить защиту
 
@@ -24260,8 +24286,7 @@ Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Res
 Потратьте 20 Боевого Ритма, чтобы увеличить эффективность освобождения на +20% плюс 1% от Сопротивления Сковыванию. Длится 60 ходов или пока ваша сила воли не достигнет 0.
 Problem Solving
 Решение проблем
-While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
-Пока активно, борьба занимает дополнительные 10 ходов, но бонусы к эффективности освобождения от инструментов и баффов увеличиваются на +40% плюс 20% от Сопротивления Сковыванию
+### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%
 
 
 You run out of strength to keep dodging...
@@ -24440,8 +24465,7 @@ Divine Chastity Belt
 Божественный пояс целомудрия
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 Пояс целомудрия, выкованный в святом свете. Только воля Богини может освободить вас.
-There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-Из него нет выхода, кроме покаяния. Его божественная аура заставляет вибраторы отключаться прямо перед тем, как вы перейдете грань.
+### There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
 Your Divine Chastity Belt causes the vibrators to stop.
 Ваш Божественный пояс целомудрия заставляет вибраторы остановиться.
 
@@ -24456,8 +24480,7 @@ Divine Chastity Bra
 Божественный бюстгальтер целомудрия
 A chastity bra forged in holy light. Only a Goddess' will can release you.
 Бюстгальтер целомудрия, выкованный в святом свете. Только воля Богини может освободить вас.
-There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
-Из него нет выхода, кроме покаяния. Его божественная аура мешает вам доставить себе удовольствие.
+### There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
 Your Divine Chastity Bra causes your whole body to go numb.
 Ваш божественный бюстгальтер целомудрия заставляет все ваше тело онеметь.
 
@@ -24469,8 +24492,7 @@ You find a heavenly chastity bra. Who could it be for?
 
 Heavenly Chastity Belt
 Небесный пояс целомудрия
-There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
-Из него нет выхода, кроме покаяния. Его божественная аура заставляет вибраторы отключаться прямо перед тем, как вы перейдете грань.
+### There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
 Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 Ваш Божественный пояс целомудрия волшебным образом подавляет вибрации ровно настолько, чтобы остановить вас на краю.
 
@@ -24478,8 +24500,7 @@ Your Divine Chastity Belt magically dampens the vibrations just enough to edge y
 
 Heavenly Chastity Bra
 Небесный бюстгальтер целомудрия
-There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
-Из него нет выхода, кроме покаяния. Его божественная аура конвертирует самоудовлетворение в выносливость.
+### There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
 The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 Божественная аура поглощает удовольствие от вашего самоудовлетворения и преобразует его в выносливость.
 
@@ -25149,7 +25170,6 @@ Replaces 60% of cages with a different kind of kinky furniture such as display s
 
 Collection
 Коллекция
-### Facilities
 
 Storage
 Хранилище
@@ -25325,6 +25345,8 @@ The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 ENMY засовывает набивку в ваш открытый рот! (DMGDLT)
 The ENMY reaches for your mouth and fails!
 ENMY тянется к вашему рту и терпит неудачу!
+### The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+### The ENMY reaches for the gag around your neck!
 The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ENMY сводит ваши руки вместе и вставляет между ними зажим! (DMGDLT)
 The ENMY grabs your wrists but you pull away!
@@ -25828,6 +25850,15 @@ The ground beneath you glows with magical energy!
 ### Banishment of the shadow.
 ### Living Shadow
 ### Engulfs the tile in darkness.
+
+### Planar Focus
+### Absorbs teleportation energies.
+
+### Planar Diffractor
+### Diffuses teleportation energies.
+
+### Planar Focusing Crystal
+### Amplifies teleportation energies.
 
 Mysterious Plate
 Таинственная пластина
@@ -26700,6 +26731,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### Require Pose (e.g. ChestArmor)
 ### Hide Prefix (e.g Encase)
 ### Hide Suffix (e.g TorsoUpper)
+### Protected
 
 ### Load from File
 ### Save to File
@@ -26805,6 +26837,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Editing Restraints
 ### Imprison in Furniture
+### Dropoff Prisoner
 
 ### Module (Utility)
 ### Module (Punishment)
@@ -26916,8 +26949,8 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Need Positive Opinion to Promote
 
-### Servant Enjoyment: AMNT
-### Prisoner Enjoyment: AMNT
+### Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+### Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 ### Submissive prisoners and dominant servants add different amounts of opinion per cycle
 
 
@@ -27012,15 +27045,16 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Reverse Route
 ### Chaos Route
 ### Map Seed: 
-### Will Overwrite!
+### Will Overwrite NME!
 
 ### Play Slot 
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)
 
-
-### Store to File
+### Backup
+### Restore
+### Set Palette
 
 
 ### FLR-DGN
@@ -27030,3 +27064,61 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Target must be vulnerable.
 ### Target must be vulnerable or have casted a verbal spell.
 ### Target must have casted a verbal spell.
+
+
+### Diggy diggy hole
+### Select a cracked wall.
+### You strike the earth!
+
+### Must select a cracked wall.
+### Your arms aren't free to swing the axe!
+### You strike the earth, but it is nothing but solid wall on the other side.
+### You strike the earth! It crumbles before you!
+
+### The planar focus resonates with the teleportation magic!
+### The planar focusing crystal activates! Mana is drained, and turns into bindings!
+### The planar diffractor blocks the teleportation!
+
+### Set Character Palette
+
+### Reset all Keybindings
+
+### That item is blocked! You can't remove it.
+
+###  min.
+###  max.
+###  bonus
+###  penalty
+
+### You put it on, why would you want to take it off?~
+### You'll need an ancient key to unlock the ancient-made collar.
+
+
+### Ancient Worshipper
+### The ancient worshipper repents of her ways.
+### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on one of your restraints! (DamageTaken)
+### The ancient worshipper mumbles at you for assistance! (DamageTaken)
+
+### Ancient Congregant
+### The ancient congregant repents of her ways.
+### The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on your restraints! (DamageTaken)
+### The ancient congregant mumbles at you for assistance! (DamageTaken)
+
+### Ancient Hierophant
+### The ancient hierophant repents of her ways.
+### The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
+### The ancient hierophant mumbles at you for assistance! (DamageTaken)
+
+### The crystals break off, revealing a keyhole and weakening the item.
+### Your distraction causes the crystals to grow back, encasing the lock again!
+
+### After popping the gag out of your mouth, it hangs loose around your neck.
+### The gag is now in your mouth.
+
+### ERROR: Restraint does not exist. Did you forget to load mods?
+
+### Gag Necklace
+### A cute accessory for those who wish to (not) make a statement.
+### Functions as a collar.

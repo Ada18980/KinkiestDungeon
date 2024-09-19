@@ -40,7 +40,7 @@ Restart please!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.37
+### 5.3.38-RC6
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 あなたは古代の地下魔法都市に挑む冒険者です。
@@ -62,8 +62,17 @@ Keybindings
 キー設定
 
 
+### Apply palette to Restraints
+### Apply palette to transforms
+
+### Don't use character palette
+### Always use character palette
+### Use character palette for default outfit
+
 Show Background Art
 背景の絵を表示
+
+
 Show DP instead of %
 DPを数値で表示する
 Quick Inv only equips to self
@@ -417,8 +426,7 @@ NPCとのダイアログで拘束される時、抵抗できなくなる
 
 Frantic Struggle
 めちゃくちゃにもがく
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-「もがく」選択時に3倍のボーナスを得るが、スタミナをより多く消費する
+### Your escaping is 3 times as fast, but less efficient in terms of stamina.
 
 Escape Artist
 縄抜け
@@ -718,16 +726,15 @@ Grants Quickness after not moving for 4 turns. Quickness lets you move 1 space w
 
 Expansive Halls
 広大
-Increases the size of maps by 1 in each direction.
-マップが広くなる
+### Increases the size of maps by 3 in the long dimension. Maps will be less dense.
 Gargantuan Halls
 ガルガンチュア
-Increases the size of maps by 2 in each direction.
-マップが更に広くなる
+### Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
 Labyrinthine Halls
 迷宮
-Increases the size of maps by 3 in each direction.
-マップが更に更に広くなる
+### Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
+### Absurdly Huge Maps
+### (Experimental) Make the maps really really big. Probably breaks the game.
 
 Rigger
 リガー
@@ -1460,6 +1467,7 @@ Stormbreaker: You have the Power.
 
 Game Setup:
 ゲームのセットアップ:
+### Beginner: Get a save code every 3 levels, autosave after each floor
 Roguelike: No save codes, only autosave
 ローグライク: セーブ コードなし、自動保存のみ
 Exciting: Orbs give random spells
@@ -1588,8 +1596,7 @@ Play with yourself
 Let go...
 絶頂
 
-Make noise!
-騒ぎ立てる
+### Call for Help!!!
 Wait until interrupted
 自動待機
 Auto-struggle
@@ -1804,6 +1811,9 @@ Quests
 クエスト
 Spell List
 スペル一覧
+### Pause Menu
+Facilities
+設備
 
 Current Key Pressed
 現在押されているキー
@@ -3010,6 +3020,7 @@ Angel: MMMMMPHH!!!
 
 The EnemyName pulls away your ArmorName!!!
 EnemyName に ArmorName を引き剥がされた！
+### There was a bug removing your ArmorName. Please report!
 The EnemyName bypasses your security to add the RestraintName!
 EnemyName は隙を見つけて RestraintName を追加した！
 ### The EnemyName tries to restrain you, but you resist the bondage!
@@ -4582,32 +4593,29 @@ The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 ファンガールが細い指で胸を優しく揉んできた！ (DamageTaken)
 Crystal Glyph
 クリスタルグリフ
+### Crystal Slash
+### Crystal Bolt
 
 
 Tailor
 仕立て屋
-You murder the tailor!
-仕立て屋を仕立ててしまった！
+### You rob the tailor!
 
 Student
 見習い魔女
-You murder the student!
-見習い魔女を落第にしてしまった！
+### You rob the student!
 
 Tactician
 策士
-You murder the tactician!
-策士を倒してしまった！
+### You rob the tactician!
 
 Informant
 情報屋
-You murder the informant!
-情報屋を倒してしまった！
+### You rob the informant!
 
 Thug
 ごろつき
-You murder the thug!
-ごろつきを刑務所送りにしてしまった！
+### You rob the thug!
 
 Antique Merchant
 古物商
@@ -4615,15 +4623,13 @@ You smash the antique merchant!
 古物商を壊してしまった！
 Blacksmith
 鍛冶屋
-You murder the blacksmith!
-鍛冶屋を鍛え直してしまった！
+### You rob the blacksmith!
 Armorer
 鎧鍛冶
-### You murder the armorer!
+### You rob the armorer!
 Bowyer
 バイヤー
-You murder the bowyer!
-バイヤーを倒してしまった！
+### You rob the bowyer!
 Not a Kidnapper
 誘拐犯じゃない
 You bring the kidnapper to justice!
@@ -5111,6 +5117,12 @@ The lock is technological and does not use a key.
 The lock is brimming with security features and is nigh impossible to pick!
 とても精巧な錠前で、ピッキングは不可能に近い。
 
+### The lock is encased in magical crystals that block the keyhole.
+### Your distraction makes the crystals regrow immediately after breaking them off.
+
+### The crystal fragments in the lock make it difficult to pick.
+### You need a key to actually unlock the ex-crystallized lock.
+
 The key sticks in the lock and jams, mangling the key!
 鍵が引っかかり、鍵穴の中で折れてしまった！
 
@@ -5540,6 +5552,7 @@ Disc
 ディスク
 Rubber
 ゴム
+### Crystal
 Runic
 呪文
 Magic
@@ -5564,6 +5577,7 @@ Rubber Lock
 ゴムの錠前
 Divine Lock
 神の錠前
+### Crystal Lock
 Runic Lock
 呪文の錠前
 Purple Lock
@@ -7051,6 +7065,9 @@ A leash used for training pets.
 ペットの散歩に使うリード
 It is a steel cable with a weatherproof rubber coating, and a convenient handle.
 ゴムで被覆されており、過酷な環境でも劣化しない鋼鉄のリード。
+### Magical Leash
+### A leash made of magical energy, linked to a submissive's collar.
+### Very difficult to break unless you have a strong magical blade.
 
 Your ankle cuffs snap together on their own!
 足首の枷同士が勝手に連結した！
@@ -8803,6 +8820,7 @@ You exhale a mighty wind!
 強力な風を吐き出した！
 
 
+### Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
 You a throw a knife!
 ナイフを投げた！
 
@@ -9044,6 +9062,7 @@ Choose object to analyze
 
 Barrier Runes
 バリアのルーン
+### Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
 You raise a field of runes with a command word!
 呪文を唱えると、防護壁が展開する！
 Choose barrier location
@@ -10057,6 +10076,7 @@ You pose in a clandestine manner.
 
 Darkblade
 ダークブレード
+### Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
 You call forth dark runes on your weapon and arms!
 闇の力を武器に宿した！
 
@@ -11797,6 +11817,7 @@ Your command word is heard and the charger unlocks!
 Are you sure you want to attack?
 本当に攻撃する？
 ### Are you sure you want to go to the next level? (Click self to confirm)
+
 
 You shudder as you apply the RestraintName to yourself...
 RestraintName を自身に取り付けた……
@@ -15936,6 +15957,7 @@ Create a '+' shaped pool of slime that deals 35 glue damage per hit
 十字形にスライム溜まりを作り、毎ターン35ダメージを与える。
 Ignite torches and nearby objects
 近くのオブジェクトに着火する。
+### Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 
 Preferences
 好み
@@ -18109,8 +18131,10 @@ You're giving me everything you have.
 (SPEAKER はナイフを渡してきた)|自分を切らないでくださいね？
 (The SPEAKER gives you three picks)|I don't know how you plan to use these...
 (SPEAKER はロックピックを渡してきた)|これで何をするのかは知りませんが……
-(The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
-(SPEAKER は惜しみながら青い鍵を渡してきた)|これは貴重なものなのですが……
+### (The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
+### (The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
+### (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
+### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
 
 (Ask for 2 knives)
 (ナイフ2本を希望する)
@@ -18118,6 +18142,7 @@ You're giving me everything you have.
 (ロックピック3本を希望する)
 (Ask for a magic key)
 (魔法の鍵を希望する)
+### (Ask for help with a divine lock)
 
 There is no valid space next to you!
 隣にスペースがないと天使を呼び出せない。
@@ -19148,6 +19173,9 @@ An enemy found you while you were busy!
 (せり上がってきた杭に動きを封じられてしまった！)
 (Stand over it and place your feet in the footrests)
 (上に立ってみる)
+### (Drop off a prisoner from your collection)
+### (Put NME on the stand) (PRCNT% Chance)
+### (Put NME on the stand)
 (This is a piece of bondage furniture)
 (拘束用のインテリアがある)
 (You lock yourself in the furniture!)
@@ -19209,6 +19237,7 @@ Pizza
 (マナを回復する)
 (I don't want to.)
 (今は必要ない)
+### (No really, I don't want it!)
 
 (You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
 (端末の付いた奇妙なエレベーターを見つけた)|(これに乗ればどこかに行けそうだ)
@@ -23918,8 +23947,7 @@ Equip to hotbar and cast to designate an Offhand weapon to gain passive effects 
 
 Arcane Tome
 アーケインの書
-Contains advanced formulas and thrilling tales of thirsty wizards.
-高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。
+### Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
 +5% magic damage. Offhand: Applies passive bonus.
 魔法ダメージ+5%。　サブウェポン時：魔法ダメージ+5%。
 You find a magical tome.
@@ -23927,8 +23955,7 @@ You find a magical tome.
 Open the book. What can go wrong?
 本を開くことの何が悪い？
 
-Contains a malevolent spirit that wishes only to tie up damsels.
-少女を縛るのが大好きな悪鬼が封印されている。
+### Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
 +10% binding effectiveness. Offhand: Applies passive bonus.
 拘束力+10%。　サブウェポン時：拘束力+10%。
 You find a magical tome with a sealed padlock on it.
@@ -24333,6 +24360,7 @@ All selected units switch to Aggressive mode
 Unlock using magic
 魔法を使って解錠
 
+### Include Weapons
 Merge Armor
 鎧を統合
 
@@ -24867,8 +24895,7 @@ Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Res
 戦闘のリズムを20消費し、拘束から抜け出す力が20%上昇し、拘束耐性が1%上昇する。60ターン経過、または気力が0になるまで続く。
 Problem Solving
 一挙解決
-While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
-アクティブ時、「もがく」が10ターン継続するようになる。拘束から抜け出す時、道具やバフによるボーナスが+40%増加する。拘束耐性が20%上昇する。
+### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%
 
 
 You run out of strength to keep dodging...
@@ -25048,8 +25075,7 @@ Divine Chastity Belt
 神の貞操帯
 A chastity belt forged in holy light. Only a Goddess' will can release you.
 聖なる光によって作り出された貞操帯。神によってのみ解放される。
-There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
-慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+### There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
 Your Divine Chastity Belt causes the vibrators to stop.
 貞操帯の放つ神聖なオーラでバイブレーターが停止した。
 
@@ -25064,8 +25090,7 @@ Divine Chastity Bra
 神の貞操ブラ
 A chastity bra forged in holy light. Only a Goddess' will can release you.
 聖なる光によって鍛えられた貞操帯。神のみがこの貞操帯を取り外せる。
-There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
-慙悔によってのみ解放される。神聖なオーラで自慰が妨げられる。
+### There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
 ### Your Divine Chastity Bra causes your whole body to go numb.
 
 A chastity bra forged in holy light. Only the will of a Goddess will release you!
@@ -25076,8 +25101,7 @@ You find a heavenly chastity bra. Who could it be for?
 
 Heavenly Chastity Belt
 天国の貞操帯
-There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
-慙悔によってのみ解放される。神聖なオーラで絶頂直前にバイブを止める。
+### There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
 Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 貞操帯の放つ神聖なオーラでバイブレーターが停止した。
 
@@ -25085,8 +25109,7 @@ Your Divine Chastity Belt magically dampens the vibrations just enough to edge y
 
 Heavenly Chastity Bra
 天国の貞操ブラ
-There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
-慙悔によってのみ解放される。神聖なオーラで快楽をスタミナに変換する。
+### There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
 ### The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 
 
@@ -25749,8 +25772,6 @@ Replaces 60% of cages with a different kind of kinky furniture such as display s
 
 Collection
 コレクション
-Facilities
-設備
 
 Storage
 倉庫
@@ -25930,6 +25951,8 @@ The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 ENMY が口に詰め物を詰め込んできた！ (DMGDLT)
 The ENMY reaches for your mouth and fails!
 ENMY が口に詰め物を詰め込もうとしてきたが、失敗した！
+### The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+### The ENMY reaches for the gag around your neck!
 The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ENMY に腕を掴まれ、拘束されてしまった！ (DMGDLT)
 The ENMY grabs your wrists but you pull away!
@@ -26436,6 +26459,15 @@ Living Shadow
 蠢く闇
 Engulfs the tile in darkness.
 周囲を包む闇
+
+### Planar Focus
+### Absorbs teleportation energies.
+
+### Planar Diffractor
+### Diffuses teleportation energies.
+
+### Planar Focusing Crystal
+### Amplifies teleportation energies.
 
 Mysterious Plate
 奇妙なプレート
@@ -27424,6 +27456,7 @@ You are more likely to succumb to curses.
 ### Require Pose (e.g. ChestArmor)
 ### Hide Prefix (e.g Encase)
 ### Hide Suffix (e.g TorsoUpper)
+### Protected
 
 Load from File
 ロード
@@ -27598,6 +27631,7 @@ Editing Restraints
 拘束具をセット中
 Imprison in Furniture
 拘束用インテリアで拘束中
+### Dropoff Prisoner
 
 Module (Utility)
 モジュール(その他)
@@ -27780,10 +27814,8 @@ OVERWRITE All!
 Need Positive Opinion to Promote
 昇格させるには好感度が足りない
 
-Servant Enjoyment: AMNT
-使用人の幸福度: AMNT
-Prisoner Enjoyment: AMNT
-囚人の幸福度: AMNT
+### Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+### Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 Submissive prisoners and dominant servants add different amounts of opinion per cycle
 マゾの囚人とサドの使用人では、追加される好感度の上昇が異なる
 
@@ -27928,8 +27960,7 @@ Reverse Route
 Chaos Route
 ランダムルート
 ### Map Seed: 
-Will Overwrite!
-既存のデータあり。上書きする？
+### Will Overwrite NME!
 
 ### Play Slot 
 Play (NO SLOT!)
@@ -27938,9 +27969,9 @@ Play (NO SLOT!)
 Looks like you might be stuck. Try calling for help (bottom right of UI)
 どうしようもなくなったら、助けを呼んでみるといい。(UI右下のボタン)
 
-
-Store to File
-ファイルにセーブ
+### Backup
+### Restore
+### Set Palette
 
 
 ### FLR-DGN
@@ -27952,3 +27983,61 @@ Target must be vulnerable.
 Target must be vulnerable or have casted a verbal spell.
 相手が口を使用する呪文を唱えているか、弱体化状態にさせる必要がある。
 ### Target must have casted a verbal spell.
+
+
+### Diggy diggy hole
+### Select a cracked wall.
+### You strike the earth!
+
+### Must select a cracked wall.
+### Your arms aren't free to swing the axe!
+### You strike the earth, but it is nothing but solid wall on the other side.
+### You strike the earth! It crumbles before you!
+
+### The planar focus resonates with the teleportation magic!
+### The planar focusing crystal activates! Mana is drained, and turns into bindings!
+### The planar diffractor blocks the teleportation!
+
+### Set Character Palette
+
+### Reset all Keybindings
+
+### That item is blocked! You can't remove it.
+
+###  min.
+###  max.
+###  bonus
+###  penalty
+
+### You put it on, why would you want to take it off?~
+### You'll need an ancient key to unlock the ancient-made collar.
+
+
+### Ancient Worshipper
+### The ancient worshipper repents of her ways.
+### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on one of your restraints! (DamageTaken)
+### The ancient worshipper mumbles at you for assistance! (DamageTaken)
+
+### Ancient Congregant
+### The ancient congregant repents of her ways.
+### The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on your restraints! (DamageTaken)
+### The ancient congregant mumbles at you for assistance! (DamageTaken)
+
+### Ancient Hierophant
+### The ancient hierophant repents of her ways.
+### The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
+### The ancient hierophant mumbles at you for assistance! (DamageTaken)
+
+### The crystals break off, revealing a keyhole and weakening the item.
+### Your distraction causes the crystals to grow back, encasing the lock again!
+
+### After popping the gag out of your mouth, it hangs loose around your neck.
+### The gag is now in your mouth.
+
+### ERROR: Restraint does not exist. Did you forget to load mods?
+
+### Gag Necklace
+### A cute accessory for those who wish to (not) make a statement.
+### Functions as a collar.

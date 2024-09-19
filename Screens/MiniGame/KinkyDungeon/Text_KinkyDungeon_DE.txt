@@ -30,7 +30,7 @@
 
 ### Version
 ### Kinky Dungeon
-### 5.3.37
+### 5.3.38-RC6
 ### By Ada18980
 ### You are an adventurer descending into an ancient underground city of magic.
 ### Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -45,7 +45,16 @@
 ### Keybindings
 
 
+### Apply palette to Restraints
+### Apply palette to transforms
+
+### Don't use character palette
+### Always use character palette
+### Use character palette for default outfit
+
 ### Show Background Art
+
+
 ### Show DP instead of %
 ### Quick Inv only equips to self
 ### Override Outfit when Loading Save
@@ -239,7 +248,7 @@
 
 
 ### Frantic Struggle
-### Your struggling is 3 times as fast, but less efficient in terms of stamina.
+### Your escaping is 3 times as fast, but less efficient in terms of stamina.
 
 ### Escape Artist
 ### Start with high Rope reputation, and all rope restraints are easier to escape from.
@@ -405,11 +414,13 @@
 
 
 ### Expansive Halls
-### Increases the size of maps by 1 in each direction.
+### Increases the size of maps by 3 in the long dimension. Maps will be less dense.
 ### Gargantuan Halls
-### Increases the size of maps by 2 in each direction.
+### Increases the size of maps by 6 in the long dimension. Maps will have a mix of tunnels and dead ends.
 ### Labyrinthine Halls
-### Increases the size of maps by 3 in each direction.
+### Increases the size of maps by 9 in the long dimension. Maps will be mostly tunnels.
+### Absurdly Huge Maps
+### (Experimental) Make the maps really really big. Probably breaks the game.
 
 ### Rigger
 ### Binding on enemies is 30% stronger.
@@ -824,6 +835,7 @@
 ### Stormbreaker: You have the Power.
 
 ### Game Setup:
+### Beginner: Get a save code every 3 levels, autosave after each floor
 ### Roguelike: No save codes, only autosave
 ### Exciting: Orbs give random spells
 ### Kinky: No save codes, orbs give random spells, start with very little
@@ -900,7 +912,7 @@
 ### Play with yourself
 ### Let go...
 
-### Make noise!
+### Call for Help!!!
 ### Wait until interrupted
 ### Auto-struggle
 ### Auto-path
@@ -1016,6 +1028,8 @@
 ### Reputation
 ### Quests
 ### Spell List
+### Pause Menu
+### Facilities
 
 ### Current Key Pressed
 ### Press a key, then press a button to set that key
@@ -1681,6 +1695,7 @@
 ### (The angel looks puzzled and unlocks your divine restraints)
 
 ### The EnemyName pulls away your ArmorName!!!
+### There was a bug removing your ArmorName. Please report!
 ### The EnemyName bypasses your security to add the RestraintName!
 ### The EnemyName tries to restrain you, but you resist the bondage!
 ### Resist!
@@ -2575,31 +2590,33 @@
 ### The fun-gal produces a magical lock on all your restraints! (DamageTaken)
 ### The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 ### Crystal Glyph
+### Crystal Slash
+### Crystal Bolt
 
 
 ### Tailor
-### You murder the tailor!
+### You rob the tailor!
 
 ### Student
-### You murder the student!
+### You rob the student!
 
 ### Tactician
-### You murder the tactician!
+### You rob the tactician!
 
 ### Informant
-### You murder the informant!
+### You rob the informant!
 
 ### Thug
-### You murder the thug!
+### You rob the thug!
 
 ### Antique Merchant
 ### You smash the antique merchant!
 ### Blacksmith
-### You murder the blacksmith!
+### You rob the blacksmith!
 ### Armorer
-### You murder the armorer!
+### You rob the armorer!
 ### Bowyer
-### You murder the bowyer!
+### You rob the bowyer!
 ### Not a Kidnapper
 ### You bring the kidnapper to justice!
 
@@ -2869,6 +2886,12 @@
 ### The lock is technological and does not use a key.
 ### The lock is brimming with security features and is nigh impossible to pick!
 
+### The lock is encased in magical crystals that block the keyhole.
+### Your distraction makes the crystals regrow immediately after breaking them off.
+
+### The crystal fragments in the lock make it difficult to pick.
+### You need a key to actually unlock the ex-crystallized lock.
+
 ### The key sticks in the lock and jams, mangling the key!
 
 ### You unlock the TargetRestraint.
@@ -3105,6 +3128,7 @@
 ### Secure
 ### Disc
 ### Rubber
+### Crystal
 ### Runic
 ### Magic
 ### Cyber
@@ -3117,6 +3141,7 @@
 ### Disc Lock
 ### Rubber Lock
 ### Divine Lock
+### Crystal Lock
 ### Runic Lock
 ### Purple Lock
 ### Cyber Lock
@@ -3943,6 +3968,9 @@
 ### Training Leash
 ### A leash used for training pets.
 ### It is a steel cable with a weatherproof rubber coating, and a convenient handle.
+### Magical Leash
+### A leash made of magical energy, linked to a submissive's collar.
+### Very difficult to break unless you have a strong magical blade.
 
 ### Your ankle cuffs snap together on their own!
 ### Your ankle cuffs detach!
@@ -4940,6 +4968,7 @@
 ### You exhale a mighty wind!
 
 
+### Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
 ### You a throw a knife!
 
 ### Shadow Dagger
@@ -5077,6 +5106,7 @@
 ### Choose object to analyze
 
 ### Barrier Runes
+### Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
 ### You raise a field of runes with a command word!
 ### Choose barrier location
 
@@ -5654,6 +5684,7 @@
 ### You pose in a clandestine manner.
 
 ### Darkblade
+### Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
 ### You call forth dark runes on your weapon and arms!
 
 ### Heal
@@ -6622,6 +6653,7 @@
 
 ### Are you sure you want to attack?
 ### Are you sure you want to go to the next level? (Click self to confirm)
+
 
 ### You shudder as you apply the RestraintName to yourself...
 ### You insert the RestraintName and close your belt's shield over it, with a click as it locks in place.
@@ -8846,6 +8878,7 @@
 ### 50 charge: Free nearby allies and disrobe enemies, increasing charm damage by 100% and removing 100 armor.
 ### Create a '+' shaped pool of slime that deals 35 glue damage per hit
 ### Ignite torches and nearby objects
+### Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
 
 ### Preferences
 ### Preferences 2
@@ -10112,11 +10145,15 @@
 ### (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
 ### (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
 ### (The SPEAKER gives you three picks)|I don't know how you plan to use these...
-### (The SPEAKER reluctantly gives you a magic key)|Okay, these don't grow on trees...
+### (The SPEAKER reluctantly gives you a magic key)|Okay, but remember that these are rare and valuable.
+### (The SPEAKER looks impressed with your predicament)|No angel can remove these without a divine blessing.|Perhaps you should apply for one? *snickers*
+### (The SPEAKER looks impressed with your predicament)|I won't get between you and your quest duties!
+### (The SPEAKER looks impressed with your predicament)|Since you are Blessed by a goddess, I can help you.|(She performs a short prayer and a random divine lock comes off)
 
 ### (Ask for 2 knives)
 ### (Ask for 3 lockpicks)
 ### (Ask for a magic key)
+### (Ask for help with a divine lock)
 
 ### There is no valid space next to you!
 
@@ -10701,6 +10738,9 @@
 ### (There is a pole sticking out of the ground)|(A footrest rises from the floor on either side of the pole)|(This seems like an automated binding system for prisoners...)
 ### (The pole rises and immobilizes you!)
 ### (Stand over it and place your feet in the footrests)
+### (Drop off a prisoner from your collection)
+### (Put NME on the stand) (PRCNT% Chance)
+### (Put NME on the stand)
 ### (This is a piece of bondage furniture)
 ### (You lock yourself in the furniture!)
 ### (The SPEAKER slips out of your grip|before you can lock her in place!)
@@ -10735,6 +10775,7 @@
 ### (Are you sure?)|(This decision is permanent.)
 ### (Gain +100 to Max Mana Pool)
 ### (I don't want to.)
+### (No really, I don't want it!)
 
 ### (You find a strange elevator with a control panel inside)|(You get the impression this will take you somewhere.)
 ### (Are you sure?)|(This seems like a bad idea!)
@@ -14004,12 +14045,12 @@
 ### Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
 
 ### Arcane Tome
-### Contains advanced formulas and thrilling tales of thirsty wizards.
+### Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
 ### +5% magic damage. Offhand: Applies passive bonus.
 ### You find a magical tome.
 ### Open the book. What can go wrong?
 
-### Contains a malevolent spirit that wishes only to tie up damsels.
+### Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
 ### +10% binding effectiveness. Offhand: Applies passive bonus.
 ### You find a magical tome with a sealed padlock on it.
 
@@ -14238,6 +14279,7 @@
 
 ### Unlock using magic
 
+### Include Weapons
 ### Merge Armor
 
 
@@ -14538,7 +14580,7 @@
 ### Break Free
 ### Consume 20 Battle Rhythm to increase escape power by +20% plus 1% of Bondage Resist. Lasts 60 turns or until your willpower reaches 0.
 ### Problem Solving
-### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +40% plus 20% of Bondage Resist
+### While active, struggling takes an additional 10 turns, but escape power bonuses from tools and buffs is increased by +(25 + 20% Bondage Resist)%
 
 
 ### You run out of strength to keep dodging...
@@ -14646,7 +14688,7 @@
 
 ### Divine Chastity Belt
 ### A chastity belt forged in holy light. Only a Goddess' will can release you.
-### There is no way out but to repent. Its divine aura causes vibrators to cease right before you go over the edge.
+### There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
 ### Your Divine Chastity Belt causes the vibrators to stop.
 
 
@@ -14656,7 +14698,7 @@
 
 ### Divine Chastity Bra
 ### A chastity bra forged in holy light. Only a Goddess' will can release you.
-### There is no way out but to repent. Its divine aura prevents you from pleasuring yourself.
+### There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
 ### Your Divine Chastity Bra causes your whole body to go numb.
 
 ### A chastity bra forged in holy light. Only the will of a Goddess will release you!
@@ -14664,13 +14706,13 @@
 ### You find a heavenly chastity bra. Who could it be for?
 
 ### Heavenly Chastity Belt
-### There is no way out but to repent. Its divine aura causes vibrators to dampen right before you go over the edge.
+### There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
 ### Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
 
 
 
 ### Heavenly Chastity Bra
-### There is no way out but to repent. Its divine aura converts self-pleasure to stamina.
+### There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
 ### The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
 
 
@@ -15063,7 +15105,6 @@
 ### Replaces 60% of cages with a different kind of kinky furniture such as display stands.
 
 ### Collection
-### Facilities
 
 ### Storage
 ### Management
@@ -15166,6 +15207,8 @@
 ### The ENMY sticks a VTY into you! (DMGDLT)
 ### The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 ### The ENMY reaches for your mouth and fails!
+### The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+### The ENMY reaches for the gag around your neck!
 ### The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ### The ENMY grabs your wrists but you pull away!
 ### The ENMY pulls your weapon away!
@@ -15447,6 +15490,15 @@
 ### Banishment of the shadow.
 ### Living Shadow
 ### Engulfs the tile in darkness.
+
+### Planar Focus
+### Absorbs teleportation energies.
+
+### Planar Diffractor
+### Diffuses teleportation energies.
+
+### Planar Focusing Crystal
+### Amplifies teleportation energies.
 
 ### Mysterious Plate
 ### What could it be?
@@ -16040,6 +16092,7 @@
 ### Require Pose (e.g. ChestArmor)
 ### Hide Prefix (e.g Encase)
 ### Hide Suffix (e.g TorsoUpper)
+### Protected
 
 ### Load from File
 ### Save to File
@@ -16145,6 +16198,7 @@
 
 ### Editing Restraints
 ### Imprison in Furniture
+### Dropoff Prisoner
 
 ### Module (Utility)
 ### Module (Punishment)
@@ -16256,8 +16310,8 @@
 
 ### Need Positive Opinion to Promote
 
-### Servant Enjoyment: AMNT
-### Prisoner Enjoyment: AMNT
+### Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+### Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
 ### Submissive prisoners and dominant servants add different amounts of opinion per cycle
 
 
@@ -16346,15 +16400,16 @@
 ### Reverse Route
 ### Chaos Route
 ### Map Seed: 
-### Will Overwrite!
+### Will Overwrite NME!
 
 ### Play Slot 
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)
 
-
-### Store to File
+### Backup
+### Restore
+### Set Palette
 
 
 ### FLR-DGN
@@ -16364,3 +16419,61 @@
 ### Target must be vulnerable.
 ### Target must be vulnerable or have casted a verbal spell.
 ### Target must have casted a verbal spell.
+
+
+### Diggy diggy hole
+### Select a cracked wall.
+### You strike the earth!
+
+### Must select a cracked wall.
+### Your arms aren't free to swing the axe!
+### You strike the earth, but it is nothing but solid wall on the other side.
+### You strike the earth! It crumbles before you!
+
+### The planar focus resonates with the teleportation magic!
+### The planar focusing crystal activates! Mana is drained, and turns into bindings!
+### The planar diffractor blocks the teleportation!
+
+### Set Character Palette
+
+### Reset all Keybindings
+
+### That item is blocked! You can't remove it.
+
+###  min.
+###  max.
+###  bonus
+###  penalty
+
+### You put it on, why would you want to take it off?~
+### You'll need an ancient key to unlock the ancient-made collar.
+
+
+### Ancient Worshipper
+### The ancient worshipper repents of her ways.
+### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on one of your restraints! (DamageTaken)
+### The ancient worshipper mumbles at you for assistance! (DamageTaken)
+
+### Ancient Congregant
+### The ancient congregant repents of her ways.
+### The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
+### Crystals start to grow on your restraints! (DamageTaken)
+### The ancient congregant mumbles at you for assistance! (DamageTaken)
+
+### Ancient Hierophant
+### The ancient hierophant repents of her ways.
+### The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
+### The ancient hierophant mumbles at you for assistance! (DamageTaken)
+
+### The crystals break off, revealing a keyhole and weakening the item.
+### Your distraction causes the crystals to grow back, encasing the lock again!
+
+### After popping the gag out of your mouth, it hangs loose around your neck.
+### The gag is now in your mouth.
+
+### ERROR: Restraint does not exist. Did you forget to load mods?
+
+### Gag Necklace
+### A cute accessory for those who wish to (not) make a statement.
+### Functions as a collar.
