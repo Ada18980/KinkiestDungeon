@@ -12,11 +12,8 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Hoods"],
-	AddPose: ["HideEars", "FaceCoverGag", "Hooded"],
+	AddPose: ["HideEars", "FaceCoverGag", "Hooded", "HoodMask"],
 	HideLayers: ["Brows"],
-	AddPoseConditional: {
-		Xray: ["HoodMask",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Hood", Layer: "Hood", Pri: 50,
 			Invariant: true,

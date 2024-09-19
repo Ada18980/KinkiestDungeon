@@ -98,7 +98,7 @@ let KDEnemyPersonalities = {
 };
 
 /**
- *
+ * Do NOT call this during UI loop, as can lead to desyncs in future w/ replay system or possible netcode
  * @param {entity} enemy
  * @returns {string}
  */

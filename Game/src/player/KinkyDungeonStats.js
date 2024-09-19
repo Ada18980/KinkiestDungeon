@@ -608,7 +608,7 @@ function KinkyDungeonDealDamage(Damage, bullet, noAlreadyHit, noInterrupt, noMsg
 		}
 
 		let shieldDmg = Math.max(0, Math.min(KDGameData.Shield, amt - Math.max(0, data.dmg)));
-		KDDamagePlayerShield(shieldDmg);
+		KDDamagePlayerShield(shieldDmg, KDPlayer());
 		if (data.dmg < 0) data.dmg = 0;
 		data.dmgShield += shieldDmg;
 	}
@@ -1176,6 +1176,11 @@ function KinkyDungeonHasWill(Cost, AddRate) {
 
 	return s >= Cost;
 }
+/**
+ * @param {number} Cost
+ * @param {boolean} [AddRate]
+ * @returns {boolean}
+ */
 function KinkyDungeonHasMana(Cost, AddRate) {
 	let s = KinkyDungeonStatMana;
 	if (AddRate) s += KinkyDungeonStatManaRate;

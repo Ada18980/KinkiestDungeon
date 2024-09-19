@@ -13,6 +13,7 @@ AddModel({
 	Parent: "BalletHeels",
 	Categories: ["Shoes", "Heels"],
 	AddPose: ["Ballet"],
+	RemovePoses: ["TapeBoots"],
 	Layers: ToLayerMap([
 		{ Name: "ShinyBalletLeft", Layer: "ShoeLeftOver", Pri: 52, // Bondage overrides plate mail
 			HideWhenOverridden: true,
@@ -53,6 +54,7 @@ AddModel({
 			TieToLayer: "ShinyBalletLeft",
 
 			DisplacementSprite: "BalletCuffs",
+			DisplaceZBonus: 10000,
 			DisplaceAmount: 70,
 			DisplaceLayers: ToMap(["BalletHeelsCuffs"]),
 		},
@@ -69,5 +71,7 @@ AddModel({
 });
 
 
-AddModel(GetModelRestraintVersion("CyberBalletHeels", true));
+AddModel(GetModelRestraintVersion("CyberBalletHeels", true,
+	["RestrainingShoes"],
+	["TapeBoots"]));
 

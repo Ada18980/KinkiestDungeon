@@ -54,11 +54,75 @@ AddModel({
 
 
 
+AddModel({
+	Name: "LightMaidKnight_Apron",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "ApronChest", Layer: "ChestDeco", Pri: -30,
+			InheritColor: "Top",
+			Poses: ToMap([...ARMPOSES]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			Invariant: true,
+			MorphPoses: {
+				Boxtie: "Boxtie",
+				Wristtie: "Boxtie",
+				Crossed: "Crossed",
+				Front: "Front",
+				Yoked: "Yoked",
+				Up: "Up",
+			},
+		},
+		{ Name: "Apron", Layer: "BeltDeco", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
+			Invariant: true,
+		},
+		{ Name: "ApronBack", Layer: "BeltBack", Pri: -15,
+			Invariant: true,
+			InheritColor: "Back",
+		},
+
+	])
+});
+AddModel({
+	Name: "LightMaidKnight_Flower",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Flower", Layer: "BeltDeco", Pri: 25,
+			Invariant: true,
+			NoOverride: true,
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "MaidApron",
+	Folder: "Maid",
+	Parent: "Maid",
+	TopLevel: true,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Apron", Layer: "BeltDeco", Pri: 30,
+			Poses: ToMap([...LEGPOSES]),
+			HideWhenOverridden: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "LightMaidKnight_Bra",
 	Folder: "MaidKnightLight",
-	Parent: "LightMaidKnight_Dress",
+	Parent: "LightMaidKnight",
 	TopLevel: true,
 	Categories: ["Bras"],
 	RemovePoses: ["EncaseTorsoUpper"],
@@ -76,17 +140,18 @@ AddModel({
 AddModel({
 	Name: "LightMaidKnight_Top",
 	Folder: "MaidKnightLight",
-	Parent: "LightMaidKnight_Dress",
+	Parent: "LightMaidKnight",
 	TopLevel: true,
 	Categories: ["Tops"],
 	RemovePoses: ["EncaseTorsoUpper"],
 	Layers: ToLayerMap([
 		{ Name: "DressChest", Layer: "ShirtChest", Pri: 25,
-			InheritColor: "Top",
 			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
-			Invariant: true,
-			NoOverride: true,
+			HidePoses: ToMap(["EncaseTorsoUpper"]),
+			InheritColor: "Dress",
+			MorphPoses: {Front: "Boxtie", Crossed: "Boxtie"},
 		},
 	])
 });
@@ -95,7 +160,7 @@ AddModel({
 AddModel({
 	Name: "LightMaidKnight_SleeveLeft",
 	Folder: "MaidKnightLight",
-	Parent: "LightMaidKnight_Dress",
+	Parent: "LightMaidKnight",
 	TopLevel: false,
 	Categories: ["Sleeves"],
 	RemovePoses: ["EncaseTorsoUpper"],
@@ -122,7 +187,7 @@ AddModel({
 AddModel({
 	Name: "LightMaidKnight_SleeveRight",
 	Folder: "MaidKnightLight",
-	Parent: "LightMaidKnight_Dress",
+	Parent: "LightMaidKnight",
 	TopLevel: false,
 	Categories: ["Sleeves"],
 	RemovePoses: ["EncaseTorsoUpper"],
@@ -159,11 +224,278 @@ AddModel({
 AddModel({
 	Name: "LightMaidKnight_Sleeves",
 	Folder: "MaidKnightLight",
-	Parent: "LightMaidKnight_Dress",
+	Parent: "LightMaidKnight",
 	TopLevel: true,
 	Categories: ["Sleeves"],
 	Layers: ToLayerMap([
 		...GetModelLayers("LightMaidKnight_SleeveLeft"),
 		...GetModelLayers("LightMaidKnight_SleeveRight"),
+	])
+});
+
+
+
+AddModel({
+	Name: "LightMaidKnight_SockRight",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 4,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+
+		},
+		{ Name: "FootSockLeftHogtie", Layer: "SockLeftHogtie", Pri: 4,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "SockLeft",
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "LightMaidKnight_SockLeft",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockRight", Layer: "StockingRight", Pri: 4,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+
+		},
+		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: 4,
+			HidePoses: ToMap(["FeetLinked"]),
+			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
+			Invariant: true,
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "LightMaidKnight_Socks",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Socks"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LightMaidKnight_SockLeft"),
+		...GetModelLayers("LightMaidKnight_SockRight"),
+	])
+});
+
+
+AddModel({
+	Name: "LightMaidKnight_GloveLeft",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: -4,
+			Poses: ToMapSubtract([...ARMPOSES], ["Crossed", "Boxtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Front: "ForeGloveLeft"},
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "LightMaidKnight_GloveRight",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: -4,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight", Front: "ForeGloveRight"},
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "LightMaidKnight_Gloves",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LightMaidKnight_GloveLeft"),
+		...GetModelLayers("LightMaidKnight_GloveRight"),
+	])
+});
+
+
+AddModel({
+	Name: "LightMaidKnight_GuardLeft",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Accessories", "Armor"],
+	Layers: ToLayerMap([
+		{ Name: "GuardLeft", Layer: "BindWristLeft", Pri: 20,
+			Poses: ToMapSubtract([...ARMPOSES], ["Boxtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Front: "BindForeWristLeft"},
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "LightMaidKnight_GuardRight",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Accessories", "Armor"],
+	Layers: ToLayerMap([
+		{ Name: "GuardRight", Layer: "BindWristRight", Pri: 20,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "BindCrossWristRight", Front: "ForeBindWristRight"},
+			NoOverride: true,
+			HidePoseConditional: [
+				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
+AddModel({
+	Name: "LightMaidKnight_Guards",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Accessories", "Armor"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LightMaidKnight_GuardLeft"),
+		...GetModelLayers("LightMaidKnight_GuardRight"),
+	])
+});
+
+
+
+
+AddModel({
+	Name: "LightMaidKnight_Boots",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 8,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			AppendPose: ToMapDupe(["RopesAnkle"]),
+
+			DisplacementPosesExclude: ["Hogtie"],
+			ErasePosesExclude: ["Hogtie"],
+
+			DisplacementSprite: "Heels2",
+			DisplaceAmount: 80,
+			DisplaceLayers: ToMap(["Heels"]),
+			DisplaceZBonus: 10000,
+			EraseInvariant: true,
+			EraseMorph: {Spread: "Spread", Closed: "Closed"},
+			EraseSprite: "HeelsErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["Heels"]),
+		},
+		{ Name: "BootRight", Layer: "ShoeRight", Pri: 8,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			AppendPose: ToMapDupe(["RopesAnkle"]),
+
+			EraseInvariant: true,
+			EraseMorph: {Closed: "Closed"},
+			EraseSprite: "HeelsRightErase2",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["HeelRight"]),
+			EraseZBonus: 100,
+		},
+		{ Name: "BootRightKneel", Layer: "ShoeRightKneel", Pri: 8,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			InheritColor: "ShoeRight",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			HideWhenOverridden: true,
+		},
+		{ Name: "FootBootLeftHogtie", Layer: "ShoeLeftHogtie", Pri: 8,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			InheritColor: "ShoeLeft",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+
+
+AddModel({
+	Name: "LightMaidKnight_Pauldron",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "PauldronLeft", Layer: "Shoulders", Pri: 150,
+			Invariant: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Hogtie: "Hogtie",
+				Wristtie: "Wristtie",
+				Boxtie: "Boxtie",
+				Front: "Front",
+				Crossed: "Crossed"
+			},
+			HideWhenOverridden: true,
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "PauldronStrap", Layer: "UpperArmStraps", Pri: -30,
+			Invariant: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Hogtie: "Hogtie",
+				Wristtie: "Wristtie",
+				Boxtie: "Boxtie",
+				Front: "Front",
+				Crossed: "Crossed"
+			},
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+AddModel({
+	Name: "LightMaidKnight",
+	Folder: "MaidKnightLight",
+	Parent: "LightMaidKnight",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LightMaidKnight_Dress"),
+		...GetModelLayers("LightMaidKnight_Sleeves"),
+		...GetModelLayers("LightMaidKnight_Apron"),
+		...GetModelLayers("LightMaidKnight_Flower"),
+		...GetModelLayers("LightMaidKnight_Pauldron"),
+		...GetModelLayers("LightMaidKnight_Socks"),
+		...GetModelLayers("LightMaidKnight_Boots"),
+		...GetModelLayers("LightMaidKnight_Guards"),
+		...GetModelLayers("LightMaidKnightHairband"),
 	])
 });

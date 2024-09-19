@@ -29,6 +29,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("ChainBikini", "Armor", "", 1, {Metal: 150}),
 			KDAutoGenRestraintBlueprint("SteelArmor", "Armor", "", 1, {Metal: 300}),
 			KDAutoGenRestraintBlueprint("Swimsuit", "Armor", "", 1, {Latex: 250}),
+
+			KDAutoGenRestraintBlueprint("GagNecklace", "Armor", "", 1, {Latex: 15}),
 		]
 	},
 	Leather: {
@@ -315,6 +317,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		name: "Dress",
 		prereq: () => {return true;},
 		items: [
+			KDAutoGenRestraintBlueprint("ObsidianLeash", "Dress", "", 1,
+				{Rope: 20, Runes: 1}, undefined, 20),
 			KDAutoGenRestraintBlueprint("BindingDress", "Dress", "", 1,
 				{Rope: 50, Latex: 10}),
 			KDAutoGenRestraintBlueprint("DressGag", "Dress", "", 1,

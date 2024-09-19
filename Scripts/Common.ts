@@ -1,9 +1,9 @@
 // Main variables
-let Player: PlayerCharacter;
+let DefaultPlayer: PlayerCharacter;
 let KeyPress: number | string = "";
 let CurrentModule: string;
 let CurrentScreen: string;
-let CurrentCharacter: Character | NPCCharacter | null = null;
+let CurrentCharacter: Character | null = null;
 let CurrentOnlinePlayers = 0;
 let CurrentDarkFactor = 1.0;
 let CommonIsMobile = false;
@@ -375,8 +375,6 @@ function CommonSetScreen(NewModule: string, NewScreen: string): void {
 	CurrentScreen = NewScreen;
 
 	CurrentDarkFactor = 1.0;
-	CommonGetFont.clearCache();
-	CommonGetFontName.clearCache();
 	TextLoad();
 }
 
@@ -452,65 +450,6 @@ function CommonArraysEqual(a1: any[], a2: any[]): boolean {
 }
 
 
-/**
- * Creates a simple memoizer.
- * The memoized function does calculate its result exactly once and from that point on, uses
- * the result stored in a local cache to speed up things.
- * @param func - The function to memoize
- * @returns The result of the memoized function
- */
-function CommonMemoize<T extends Function>(func: T): MemoizedFunction<T> {
-	let memo: {[_: string]: any} = {};
-	let memoized: any = function () {
-		let index: any = [];
-		for (let i = 0; i < arguments.length; i++) {
-			if (typeof arguments[i] === "object") {
-				index.push(JSON.stringify(arguments[i]));
-			} else {
-				index.push(String(arguments[i]));
-			}
-		} // for
-		if (!(index in memo)) {
-			memo[index] = func.apply(this, arguments);
-		}
-		return memo[index];
-	}; // function
-
-	// add a clear cache method
-	memoized.clearCache = function () {
-		memo = {};
-	};
-	return memoized;
-} // CommonMemoize
-
-/**
- * Memoized getter function. Returns a font string specifying the player's
- * preferred font and the provided size. This is memoized as it is called on
- * every frame in many cases.
- * @param size - The font size that should be specified in the
- * returned font string
- * @returns A font string specifying the requested font size and
- * the player's preferred font stack. For example:
- * 12px "Courier New", "Courier", monospace
- */
-const CommonGetFont: MemoizedFunction<(size: number) => string> = CommonMemoize((size: number) => {
-	return `${size}px ${CommonGetFontName()}`;
-});
-
-/**
- * Memoized getter function. Returns a font string specifying the player's
- * preferred font stack. This is memoized as it is called on every frame in
- * many cases.
- * @returns A font string specifying the player's preferred font
- * stack. For example:
- * "Courier New", "Courier", monospace
- */
-const CommonGetFontName: MemoizedFunction<() => string> = CommonMemoize(() => {
-	const pref = Player && Player.GraphicsSettings && Player.GraphicsSettings.Font;
-	const fontStack = CommonFontStacks[pref] || CommonFontStacks.Arial;
-	const font = fontStack[0].map(fontName => `"${fontName}"`).join(", ");
-	return `${font}, ${fontStack[1]}`;
-});
 
 
 /**

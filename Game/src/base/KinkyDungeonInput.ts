@@ -3,9 +3,9 @@
 let KinkyDungeonInputQueue: {type: string, data: any}[] = [];
 
 /**
- *
- * Delegate to KDProcessInputs */
-function KDProcessInput(type, data): string {
+ * Delegate to KDProcessInputs
+ */
+function KDProcessInput(type: string, data: any): string {
 	let Result = null;
 	let loose = null;
 	let msg = "";
@@ -36,8 +36,7 @@ function KDProcessInput(type, data): string {
 			let sp = data.spell ? data.spell : KinkyDungeonFindSpell(data.spellname, true);
 			if (!data.spell) data.spell = sp;
 			if (sp) {
-				/** @type {{result: string, data: any}} */
-				let res = KinkyDungeonCastSpell(data.tx, data.ty, sp, data.enemy, data.player, data.bullet, undefined, data);
+				let res: { result: string, data: any } = KinkyDungeonCastSpell(data.tx, data.ty, sp, data.enemy, data.player, data.bullet, undefined, data);
 				if (res.result == "Cast" && sp.sfx) {
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sp.sfx + ".ogg");
 				}
@@ -204,7 +203,8 @@ function KDProcessInput(type, data): string {
 						if (KDDebugLink) {
 							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
 						} else {
-							linkable = KDCurrentItemLinkable(currentItem, newItem);
+							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+							//KDCurrentItemLinkable(currentItem, newItem);
 						}
 						if (linkable) {
 							equipped = false;
@@ -237,18 +237,22 @@ function KDProcessInput(type, data): string {
 
 				KDStunTurns(KinkyDungeonGetRestraintByName(data.name)?.protection ? 4 : 2, true);
 
-				msg = "KinkyDungeonSelfBondage";
-				if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
-					if (KinkyDungeonIsChaste(false)) {
-						msg = "KinkyDungeonSelfBondagePlug";
+				let customEq = KDRestraint(loose).customEquip || "";
+				msg = "KinkyDungeonSelfBondage" + customEq;
+				if (!customEq) {
+					if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
+						if (KinkyDungeonIsChaste(false)) {
+							msg = "KinkyDungeonSelfBondagePlug";
+						}
+					} else if (KDRestraint(loose).Group == "Item") {
+						if (KinkyDungeonIsChaste(true)) {
+							msg = "KinkyDungeonSelfBondageNipple";
+						}
+					} else if (KDRestraint(loose).enchanted) {
+						msg = "KinkyDungeonSelfBondageEnchanted";
 					}
-				} else if (KDRestraint(loose).Group == "Item") {
-					if (KinkyDungeonIsChaste(true)) {
-						msg = "KinkyDungeonSelfBondageNipple";
-					}
-				} else if (KDRestraint(loose).enchanted) {
-					msg = "KinkyDungeonSelfBondageEnchanted";
 				}
+
 				KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
 
 				return msg;
@@ -892,7 +896,7 @@ function KDProcessInput(type, data): string {
 				KinkyDungeonConsumableChoices[data.I] = data.name;
 			} else if (KDWeapon({name: data.name})) {
 				KinkyDungeonWeaponChoices[data.I] = data.name;
-			} else {
+			} else if (KDRestraint({name: data.name})) {
 				KinkyDungeonArmorChoices[data.I] = data.name;
 			}
 			/*
@@ -1265,10 +1269,13 @@ function KDProcessInput(type, data): string {
 				lock: "White",
 				npc: number
 			 */
+
+
 			let res = KDInputSetNPCRestraint(data);
 
 			let enemy = KDGetGlobalEntity(data.npc);
 
+			let packed = enemy ? KDUnPackEnemy(enemy) : false;
 			if (enemy && (!data.restraint || enemy.boundLevel > 0))
 				KinkyDungeonSendTextMessage(10,
 					TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
@@ -1286,6 +1293,8 @@ function KDProcessInput(type, data): string {
 			}
 			if (KDNPCChar.get(data.npc))
 				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
+
+			if (packed) KDPackEnemy(enemy);
 		break;
 	}
 	if (data.GameData) {
@@ -1294,7 +1303,7 @@ function KDProcessInput(type, data): string {
 	return "";
 }
 
-function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = true): string {
+function KDSendInput(type: string, data: any, _frame?: boolean, noUpdate?: boolean, process = true): string {
 
 	if (!noUpdate) {
 		KDGameData.OrigEnergyLevel = KDGameData.AncientEnergyLevel;
@@ -1307,14 +1316,13 @@ function KDSendInput(type, data, frame?: boolean, noUpdate?: boolean, process = 
 	KinkyDungeonInputQueue.push({type: type, data: data});
 	if (process)
 		return KDProcessInputs(true);
-	else return;
+	else return "";
 }
 
 /**
  * Handles inputs once per frame
- * @returns {string}
  */
-function KDProcessInputs(ReturnResult) {
+function KDProcessInputs(ReturnResult?: boolean): string {
 	for (let i = 0; i < 3; i++) {
 		if (KinkyDungeonInputQueue.length > 0) {
 			let input = KinkyDungeonInputQueue.splice(0, 1)[0];
@@ -1329,7 +1337,8 @@ function KDProcessInputs(ReturnResult) {
 }
 
 function KDInteract(x, y) {
-	KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
+	if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y))
+		KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
 	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	if (tile?.Type) {

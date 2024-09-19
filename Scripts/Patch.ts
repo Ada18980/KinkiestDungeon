@@ -7,38 +7,8 @@ const ChatRoomChatLog: {Garbled: string, Time: number, SenderName: string}[] = [
 const DialogGamingPreviousRoom: string = "";
 const MiniGameReturnFunction: string = "ArcadeKinkyDungeonEnd";
 
-/**
- * Returns the expressions of character C as a single big object
- * @param C - The character whose expressions should be returned
- * @returns Expression - The expresssion of a character
- */
-function WardrobeGetExpression(C: Character): any {
-	let characterExpression = {};
-	ServerAppearanceBundle(C.Appearance).filter(item => item.Property != null && item.Property.Expression != null).forEach(item => characterExpression[item.Group] = item.Property.Expression);
-	return characterExpression;
-}
 
-/**
- * Prepares an appearance bundle so we can push it to the server. It minimizes it by keeping only the necessary
- * information. (Asset name, group name, color, properties and difficulty)
- * @param Appearance - The appearance array to bundle
- * @returns The appearance bundle created from the given appearance array
- */
-function ServerAppearanceBundle(Appearance: Item[]): AppearanceBundle {
-	let Bundle: AppearanceBundle = [];
-	for (let A = 0; A < Appearance.length; A++) {
-		let N: any = {};
-		N.Group = Appearance[A].Asset.Group.Name;
-		N.Name = Appearance[A].Asset.Name;
-		if ((Appearance[A].Color != null) && (Appearance[A].Color != "Default")) N.Color = Appearance[A].Color;
-		if ((Appearance[A].Difficulty != null) && (Appearance[A].Difficulty != 0)) N.Difficulty = Appearance[A].Difficulty;
-		if (Appearance[A].Property != null) N.Property = Appearance[A].Property;
-		Bundle.push(N);
-	}
-	return Bundle;
-}
 
-function AssetGet(family: string, group: string, asset: string): Asset | undefined { return undefined; };
 
 /**
  * Returns a specific reputation value for the player
@@ -57,8 +27,6 @@ const ModularItemDataLookup: {[_: string]: any} = {};
 function TypedItemSetOption(C: PlayerCharacter, item: Item, options: any, option: any, push = false) {}
 function TypedItemSetOptionByName(a: Character, b: Item, c: string, d: boolean) {}
 
-function ModularItemMergeModuleValues({ asset, modules }: { asset: any; modules: any; }, moduleValues: number[]): ItemProperties { return undefined; }
-
 function ExtendedItemSetType(C: any, Options: any, Option: any) {}
 function ExtendedItemExit() {}
 
@@ -66,7 +34,6 @@ let MiniGameVictory = true;
 
 function InventoryRemove(C: Character, AssetGroup: string, Refresh = false) {}
 function InventoryGetLock(Lock: Item): any {}
-function InventoryAllow(C: PlayerCharacter, asset: Asset, prerequisites = asset.Prerequisite, setDialog = true) { return true; }
 function InventoryWear(C: Character, AssetName: any, AssetGroup: any, ItemColor?: any, Difficulty?: undefined, MemberNumber?: undefined, Craft?: undefined, Refresh=true) {}
 function InventoryLock(C: Character, Item: Item, Lock: string, MemberNumber: number, Update = true) {}
 function InventoryUnlock(C: Character, Item: string) {}

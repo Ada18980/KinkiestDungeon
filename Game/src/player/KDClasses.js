@@ -62,9 +62,9 @@ let KDClassStart = {
 	},
 	"Mage": () => { // Mage
 		KinkyDungeonInventoryAddWeapon("Knife");
-		KinkyDungeonInventoryAddWeapon("ArcaneCrystal");
-		KDGameData.PreviousWeapon = ["ArcaneCrystal", "Knife", "Unarmed", "Unarmed"];
-		KDSetWeapon("ArcaneCrystal");
+		KinkyDungeonInventoryAddWeapon("ArcaneTome");
+		KDGameData.PreviousWeapon = ["ArcaneTome", "Knife", "Unarmed", "Unarmed"];
+		KDSetWeapon("ArcaneTome");
 
 		KDPushSpell(KinkyDungeonFindSpell("ManaRegen"));
 		KDPushSpell(KinkyDungeonFindSpell("Bondage"));

@@ -1,5 +1,6 @@
 let KDCollectionReleaseSelection: Record<string, boolean> = {};
 
+// @ts-ignore: squelch error: block-scoped variable used before declaration.
 KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	let tooltip = false;
 	if (DrawButtonKDEx("KDReleaseRelease", (b) => {
@@ -140,6 +141,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	return III;
 };
 
+// @ts-ignore: squelch error: block-scoped variable used before declaration.
 KDCollectionTabScreen.Release = (x, xOffset) => {
 	KDDrawCollectionInventory(x + xOffset, 150, (value, x, y) => {
 		if (KDCollectionReleaseSelection[value.id])

@@ -11,6 +11,7 @@
     "license": "All Rights Reserved",
     "private": true,
     "devDependencies": {
+        "@typescript/lib-dom": "npm:@types/web@^0.0.151",
         "http-server": "^14.1.1",
         "pixi-filters": "5.2.0",
         "pixi.js": "^7.2.1",

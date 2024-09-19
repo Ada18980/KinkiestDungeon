@@ -544,11 +544,11 @@ function RefreshTempPoses(Character: Character, Restraints: boolean, Buffs: bool
 
 	if (Restraints) {
 		for (let inv of KDGetRestraintsForID(KDGetCharacterID(Character))) {
-			if (KDRestraint(inv).addPose)
+			if (KDRestraint(inv)?.addPose)
 				for (let tag of KDRestraint(inv).addPose) {
 					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
 				}
-			if (KDRestraint(inv).addPoseIfTopLevel && KinkyDungeonGetRestraintItem(KDRestraint(inv).Group) == inv)
+			if (KDRestraint(inv)?.addPoseIfTopLevel && KinkyDungeonGetRestraintItem(KDRestraint(inv).Group) == inv)
 				for (let tag of KDRestraint(inv).addPoseIfTopLevel) {
 					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
 				}

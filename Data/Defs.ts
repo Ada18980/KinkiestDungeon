@@ -1517,6 +1517,8 @@ let LayerGroups = {
 	// This slot is for things like breastplates and things that go over
 	"WrappingChest",
 
+	"UpperArmStraps",
+
 	"Jacket",
 	"ChestDeco",
 	"Chestplate",
