@@ -95,7 +95,7 @@
         "Game/src/map/KinkyDungeonTraps.ts",
         "Game/src/map/KinkyDungeonTiles.ts",
         "Game/src/map/KinkyDungeonTilesList.ts",
-        "Game/src/enemy/KinkyDungeonPathfinding.js",
+        "Game/src/enemy/KinkyDungeonPathfinding.ts",
         "Game/src/effect/KinkyDungeonBuffs.ts",
         "Game/src/effect/KinkyDungeonEvents.ts",
         "Game/src/enemy/KinkyDungeonSpawns.ts",

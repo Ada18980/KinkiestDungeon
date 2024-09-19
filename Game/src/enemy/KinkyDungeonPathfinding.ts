@@ -1,14 +1,17 @@
 "use strict";
 
-/**
- * @type {Map<string, {x: number, y: number}[]>}
- */
-let KDPathCache = new Map();
+interface KDPointCostSource extends KDPoint {
+	/**  g = cost  */
+	g: number;
+	/**  f = cost with heuristic  */
+	f: number;
+	/**  s = source  */
+	s: string;
+};
 
-/**
- * @type {Map<string, {x: number, y: number}[]>}
- */
-let KDPathCacheIgnoreLocks = new Map();
+let KDPathCache: Map<string, KDPoint[]> = new Map();
+
+let KDPathCacheIgnoreLocks: Map<string, KDPoint[]> = new Map();
 
 let KDSmartMovable = new Map();
 let KDMovable = new Map();
@@ -21,12 +24,10 @@ function KDUpdateDoorNavMap() {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @returns {boolean}
+ * @param x
+ * @param y
  */
-function KDIsMovable(x, y) {
+function KDIsMovable(x: number, y: number): boolean {
 	if (KDMovable.has(x+','+y)) {
 		return KDMovable.get(x+','+y);
 	} else {
@@ -37,12 +38,10 @@ function KDIsMovable(x, y) {
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @returns {boolean}
+ * @param x
+ * @param y
  */
-function KDIsSmartMovable(x, y) {
+function KDIsSmartMovable(x: number, y: number): boolean {
 	if (KDSmartMovable.has(x+','+y)) {
 		return KDSmartMovable.get(x+','+y);
 	} else {
@@ -58,24 +57,42 @@ let KDPathfindingCacheFails = 0;
 let KDPFTrim = 40;
 
 /**
- * @param {number} startx - the start position
- * @param {number} starty - the start position
- * @param {number} endx - the end positon
- * @param {number} endy - the end positon
- * @param {boolean} blockEnemy - Do enemies block movement?
- * @param {boolean} blockPlayer - Does player block movement?
- * @param {string} Tiles - Allowed move tiles!
- * @param {entity} [Enemy] - Enemy trying to pathfind
- * @param {boolean} [trimLongDistance] - Give up after 1000 or so tiles checked
- * @param {(x: number, y: number, xx: number, yy: number) => number} [heuristicOverride]
- * @param {boolean} [taxicab]
- * @param {boolean} [ignoreTrafficLaws]
- * @param {boolean} [RequireLight]
- * @param {boolean} [noDoors]
- * @param {boolean} [needDoorMemory]
- * @returns {any} - Returns an array of x, y points in order
+ * @param startx - the start position
+ * @param starty - the start position
+ * @param endx - the end positon
+ * @param endy - the end positon
+ * @param blockEnemy - Do enemies block movement?
+ * @param blockPlayer - Does player block movement?
+ * @param ignoreLocks
+ * @param Tiles - Allowed move tiles!
+ * @param [RequireLight]
+ * @param [noDoors]
+ * @param [needDoorMemory]
+ * @param [Enemy] - Enemy trying to pathfind
+ * @param [trimLongDistance] - Give up after 1000 or so tiles checked
+ * @param [heuristicOverride]
+ * @param [taxicab]
+ * @param [ignoreTrafficLaws]
  */
-function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlayer, ignoreLocks, Tiles, RequireLight, noDoors, needDoorMemory, Enemy, trimLongDistance, heuristicOverride, taxicab, ignoreTrafficLaws) {
+function KinkyDungeonFindPath (
+	startx:              number,
+	starty:              number,
+	endx:                number,
+	endy:                number,
+	blockEnemy:          boolean,
+	blockPlayer:         boolean,
+	ignoreLocks:         boolean,
+	Tiles:               string,
+	RequireLight?:       boolean,
+	noDoors?:            boolean,
+	needDoorMemory?:     boolean,
+	Enemy?:              entity,
+	trimLongDistance?:   boolean,
+	heuristicOverride?:  (x: number, y: number, xx: number, yy: number) => number,
+	taxicab?:            boolean,
+	ignoreTrafficLaws?:  boolean
+): KDPoint[]
+{
 	let tileShort = Tiles;
 	if (Tiles == KinkyDungeonMovableTilesSmartEnemy) tileShort = "TSE";
 	else if (Tiles == KinkyDungeonMovableTilesEnemy) tileShort = "TE";
@@ -104,7 +121,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 		return [{x: endx, y: endy}];
 	}
 
-	function heuristic(xx, yy, endxx, endyy) {
+	function heuristic(xx: number, yy: number, endxx: number, endyy: number) {
 		return ((xx - endxx) * (xx - endxx) + (yy - endyy) * (yy - endyy)) ** 0.5;
 	}
 	let heur = heuristicOverride || heuristic;
@@ -113,12 +130,12 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 	// s = source
 	let TilesTemp = Tiles;
 	if (noDoors) TilesTemp = Tiles.replace("D", "");
-	let start = {x: startx, y: starty, g: 0, f: 0, s: ""};
+	let start: KDPointCostSource = {x: startx, y: starty, g: 0, f: 0, s: ""};
 
 	// We generate a grid based on map size
-	let open = new Map();
+	let open: Map<string, KDPointCostSource> = new Map();
 	open.set(startx + "," + starty, start);
-	let closed = new Map();
+	let closed: Map<string, KDPointCostSource> = new Map();
 
 	let costBonus = 0;
 	let MapTile = null;
@@ -131,8 +148,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 			console.log("Quit pathfinding");
 			return undefined; // Give up
 		}
-		let lowest = {};
-		lowest = undefined;
+		let lowest: KDPointCostSource = undefined;
 		let lc = 1000000000;
 		// Get the open tile with the lowest weight
 		open.forEach(o => {
@@ -254,7 +270,7 @@ function KinkyDungeonFindPath(startx, starty, endx, endy, blockEnemy, blockPlaye
 }
 
 // Goes back and gets path backwards from xx, adding endx and endy
-function KinkyDungeonGetPath(closed, xx, yy, endx, endy) {
+function KinkyDungeonGetPath(closed: Map<string, KDPointCostSource>, xx: number, yy: number, endx?: number, endy?: number): KDPoint[] {
 	let list = [];
 	if (endx && endy) list.push({x: endx, y: endy});
 
@@ -270,15 +286,14 @@ function KinkyDungeonGetPath(closed, xx, yy, endx, endy) {
 }
 
 /**
- *
- * @param {Map<string, any[]>} PathMap
- * @param {any[]} newPath
- * @param {number} endx
- * @param {number} endy
- * @param {string} Tiles
- * @param {string} Finalindex
+ * @param PathMap
+ * @param newPath
+ * @param endx
+ * @param endy
+ * @param Tiles
+ * @param Finalindex
  */
-function KDSetPathfindCache(PathMap, newPath, endx, endy, Tiles, Finalindex) {
+function KDSetPathfindCache(PathMap: Map<string, KDPoint[]>, newPath: KDPoint[], endx: number, endy: number, Tiles: string, Finalindex: string): void {
 	for (let i = 0; i < newPath.length - 1; i++) {
 		let path = newPath.slice(i);
 		let index = `${path[0].x},${path[0].y},${endx},${endy},${Tiles}`;
