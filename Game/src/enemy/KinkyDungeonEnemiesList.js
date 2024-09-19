@@ -5187,7 +5187,7 @@ let KinkyDungeonEnemies = [
 		maxdodge: 0,
 		terrainTags: {"jailGuard": 15, "Guard": 1}, allFloors: true, disarm: 0.5, evasion: -0.5, focusPlayer: true, attackLock: "White",
 		dropTable: [{name: "Pick", weight: 15}, {name: "RedKey", weight: 5}]},
-	{name: "Chef", nameList: "italian", outfit: "Chef", style: "Fire", faction: "Jail", bound: "Jailer", tags: KDMapInit(["leashing", "ignoregagged", "opendoors", "closedoors", "melee", "ballGagRestraintsMagic"]), followRange: 1, AI: "hunt",
+	{name: "Chef", nameList: "italian", outfit: "Chef", style: "Fire", bound: "Jailer", tags: KDMapInit(["leashing", "ignoregagged", "opendoors", "closedoors", "melee", "ballGagRestraintsMagic"]), followRange: 1, AI: "hunt",
 		visionRadius: 6, maxhp: 24, minLevel: -1, weight:-1000, movePoints: 1.4, armor: 1.5,
 		stamina: 6,
 		maxblock: 5,
