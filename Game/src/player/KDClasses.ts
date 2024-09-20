@@ -1,10 +1,10 @@
 'use strict';
 
-let KDClassReqs = {
+let KDClassReqs: Record<string, () => boolean> = {
 	"Trainee": () => {return KinkyDungeonSexyMode;}
 };
 
-let KDClassStart = {
+let KDClassStart: Record<string, () => void> = {
 	"Fighter": () => { // Fighter
 		KinkyDungeonInventoryAddWeapon("Shield");
 		KinkyDungeonInventoryAddWeapon("Sword");
