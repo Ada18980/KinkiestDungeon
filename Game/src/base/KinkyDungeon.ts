@@ -96,6 +96,10 @@ let KDDebugLink = false;
 let KDAllModFiles = [];
 let KDModFiles = {};
 
+let VersionMajor = -1;
+let VersionMinor = -1;
+let VersionPatch = -1;
+
 let KinkyDungeonPerksConfig = "1";
 let KinkyDungeonSpellsConfig = "1";
 
@@ -1063,12 +1067,6 @@ function KinkyDungeonLoad(): void {
 
 			KDLoadToggles();
 
-			if (KDToggles.AutoLoadMods) {
-				if (!KDGetMods) {
-					KDGetMods = true;
-					KDGetModsLoad(true);
-				}
-			}
 
 			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
 			KDBGColor = localStorage.getItem("KDBGColor") != undefined ? localStorage.getItem("KDBGColor") : "#000000";
@@ -1320,6 +1318,45 @@ function KDCloseFullscreen() {
 }
 
 function KinkyDungeonRun() {
+	if (VersionMajor < 0) {
+		let parseString = TextGet("KDVersionStr");
+		if (parseString && parseString != "KDVersionStr") {
+			let arr = parseString.split('.');
+
+
+			try {
+				VersionMajor = parseInt(arr[0]);
+			} catch {
+				VersionMajor = 0;
+			}
+			try {
+				VersionMinor = parseInt(arr[1]);
+			} catch {
+				VersionMinor = 0;
+			}
+			try {
+				if (arr[2].includes('.')) {
+					arr[2] = arr[2].substring(0, arr[2].indexOf('.'));
+				}
+				if (arr[2].includes('-')) {
+					arr[2] = arr[2].substring(0, arr[2].indexOf('-'));
+				}
+				VersionPatch = parseInt(arr[2]);
+			} catch {
+				VersionPatch = 0;
+			}
+
+
+			if (KDToggles.AutoLoadMods) {
+				if (!KDGetMods) {
+					KDGetMods = true;
+					KDGetModsLoad(true);
+				}
+			}
+		}
+	}
+
+
 	KDJourneyGraphics.clear();
 	KDJourneyGraphicsLower.clear();
 	KDJourneyGraphicsUpper.clear();
@@ -5065,6 +5102,7 @@ function KinkyDungeonHandleClick() {
 			let langIndex = KDLanguages.indexOf(localStorage.getItem("BondageClubLanguage")) || 0;
 			let newIndex = (langIndex + 1) % KDLanguages.length;
 			localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
+			localStorage.setItem("LanguageChange","1")
 			KDRestart = true;
 			return true;
 		}

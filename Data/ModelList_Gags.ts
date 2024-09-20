@@ -13,9 +13,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceGag", "StuffMouth"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "FrillyPanel", Layer: "Gag", Pri: 13,
 			OffsetX: 942,
@@ -54,9 +51,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceGag", "StuffMouth"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		...GetModelLayers("MaidGag"),
 		{ Name: "Duster", Layer: "MouthProp", Pri: 15,
@@ -186,9 +180,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag", "StuffMouth"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Panel", Layer: "GagFlat", Pri: 5,
 			Sprite: "Panel",
@@ -233,9 +224,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag", "StuffMouth"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Muzzle", Layer: "GagMuzzle", Pri: 3,
 			Sprite: "Muzzle",
@@ -348,9 +336,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Full", Layer: "GagMuzzle", Pri: -50,
 			OffsetX: 942,
@@ -369,9 +354,6 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Wrap", Layer: "GagFlat", Pri: -50,
 			OffsetX: 942,
@@ -391,9 +373,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Full", Layer: "GagOver", Pri: -50,
 			OffsetX: 942,
@@ -412,9 +391,6 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Wrap", Layer: "GagOver", Pri: -45,
 			OffsetX: 942,
@@ -514,9 +490,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagMuzzle", Pri: -30,
 			OffsetX: 942,
@@ -537,9 +510,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "OTM", Layer: "GagFlat", Pri: -1,
 			OffsetX: 942,
@@ -564,9 +534,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagFlat", Pri: 20,
 			OffsetX: 942,
@@ -590,9 +557,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "OTNFlat", Layer: "GagFlat", Pri: 30,
 			OffsetX: 942,
@@ -631,9 +595,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "OTNFlat", Layer: "GagFlat", Pri: 30,
 			OffsetX: 942,
@@ -687,9 +648,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		...GetModelLayers("GagLatexFlat"),
 		{ Name: "Plug", Layer: "GagFlatStraps", Pri: 40,
@@ -750,9 +708,6 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Accessories","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		...GetModelLayers("LatexNeckCorset"),
 		//...GetModelLayers("GagLatexFlat"),
@@ -796,9 +751,6 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Accessories","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "NeckCorsetGag2", Layer: "GagMuzzle", Pri: -20,
 			Invariant: true,
@@ -821,9 +773,6 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Accessories","Gags","Latex"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		...GetModelLayers("NeckCorset"),
 		...GetModelLayers("ShinyLatexMuzzle"),
@@ -871,9 +820,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Metal"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "OTN", Layer: "GagFlat", Pri: 30,
 			OffsetX: 942,
@@ -893,9 +839,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Fabric"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "FabricMuzzle", Layer: "GagFlat", Pri: 45,
 			OffsetX: 942,
@@ -919,9 +862,6 @@ AddModel({
 	Parent: "GagFabric",
 	Categories: ["Restraints","Gags","Fabric"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		...GetModelLayers("GagFabric"),
 		{ Name: "KittyMouth", Layer: "GagFlat", Pri: 45.1,
@@ -949,9 +889,6 @@ AddModel({
 	Parent: "GagFabric",
 	Categories: ["Restraints","Gags","Fabric"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Filters: {
 		Panel: {"gamma":0.9833333333333333,"saturation":1,"contrast":0.8,"brightness":3.1,"red":1,"green":1,"blue":1,"alpha":1},
 		Strap: {"gamma":0.8,"saturation":1,"contrast":0.9666666666666667,"brightness":2.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
@@ -982,9 +919,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Fabric"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "FabricMuzzle", Layer: "GagFlat", Pri: 45,
 			OffsetX: 942,
@@ -1007,9 +941,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags","Metal"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		...GetModelLayers("GagMetal"),
 		{ Name: "OTNRivets", Layer: "GagFlat", Pri: 30.1,
@@ -1230,9 +1161,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceBigGag", "StuffMouth"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{ Name: "Panel", Layer: "GagFlatStraps", Pri: 17,
 			Sprite: "SciFiPanel",
@@ -1315,9 +1243,6 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiPanelGag", "AdvancedSciFiPanelGag
 	},
 ], "SciFiPanelGag", false, {
 	AddPose: ["StuffMouth", "FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 }));
 AddModel(GetModelWithExtraLayers("UltimateSciFiPanelGag2", "AdvancedSciFiPanelGag", [
 
@@ -1329,9 +1254,6 @@ AddModel(GetModelWithExtraLayers("UltimateSciFiPanelGag2", "AdvancedSciFiPanelGa
 	},
 ], "SciFiPanelGag", false, {
 	AddPose: ["StuffMouth", "FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 }));
 
 AddModel(GetModelFashionVersion("SegmentedLargePanelGag", true));
@@ -1478,9 +1400,6 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
 	AddPose: ["FaceCoverGag"],
-	AddPoseConditional: {
-		Xray: ["HideMouth",],
-	},
 	Layers: ToLayerMap([
 		{
 			Name: "HarnessRim", Layer: "GagMuzzleStraps", Pri: 110.1,

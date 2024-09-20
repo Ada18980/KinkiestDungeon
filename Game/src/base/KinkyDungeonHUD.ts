@@ -2664,7 +2664,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	}
 
 	for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
-		if ((b.aura || b.labelcolor) && b.duration > 0) {
+		if ((b.aura || b.labelcolor) && b.duration > 0 && !b.hide) {
 			let count = b.maxCount > 1 ? b.maxCount - (b.currentCount ? b.currentCount : 0) : 0;
 			let pri = 0;
 			if (b.duration) pri += Math.min(90, b.duration);

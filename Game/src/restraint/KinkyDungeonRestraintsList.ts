@@ -7901,7 +7901,7 @@ let KDControlHarnessCategories = {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDControlHarnessChastityUpdate")
 						.replace("RESTRAINTNAME", TextGet("Restraint" + data.item.name))
-						.replace("PERCENT", "" + Math.round(100 * invItems.length / 3)),
+						.replace("PERCENT", "" + Math.round(100 * invItems.length / 2)),
 					"#ffffff",
 					1,
 				);

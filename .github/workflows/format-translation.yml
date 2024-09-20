@@ -10,12 +10,7 @@ on:
       - newartwork
     paths:
       - 'Screens/MiniGame/KinkyDungeon/*'
-  pull_request:
-    branches:
-      - newartwork
-    paths:
-      - 'Screens/MiniGame/KinkyDungeon/*'
- 
+
 jobs:
   format-translation:
     runs-on: ubuntu-latest

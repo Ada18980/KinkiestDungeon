@@ -264,6 +264,34 @@ function TranslationNextLanguage(): void {
  * Loads the previous translation language from local storage if it exists
  */
 function TranslationLoad(): void {
-	let L = localStorage.getItem("BondageClubLanguage");
+	let L;
+	if (localStorage.getItem("LanguageChange") == "1")
+	{
+		L = localStorage.getItem("BondageClubLanguage");
+	}
+	else
+	{
+		L = GetUserPreferredLanguage();
+		if (L != null) localStorage.setItem("BondageClubLanguage",L);
+	}
+	
 	if (L != null) TranslationLanguage = L;
+}
+
+function GetUserPreferredLanguage() {
+	var languages;
+	try{languages = Intl.DateTimeFormat().resolvedOptions().locale.split('-');}
+	catch{languages = navigator.language.split('-');}
+	if (!languages) {
+		return "";
+	}
+
+	for (let i = 0; i < languages.length; i++) 
+	{
+		let lang = languages[i];
+		if (KDLanguages.includes(lang))
+			return lang;	
+	}
+	return "";
+
 }
