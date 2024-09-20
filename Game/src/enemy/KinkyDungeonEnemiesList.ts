@@ -2,10 +2,7 @@
 
 let KDNoCaptureTypes = ["skeleton", "construct", "nobrain", "nocapture"];
 
-/**
- * @type {enemy[]}
- */
-let KinkyDungeonEnemies = [
+let KinkyDungeonEnemies: enemy[] = [
 	// Prisoners
 	{name: "PrisonerBandit", tags: KDMapInit(["prisoner", "bandit", "human", "peaceful", "noshop"]), faction: "Prisoner", immobile: true, lowpriority: true, evasion: -100, armor: 0, followRange: 100, AI: "wander", regen: 0.1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "PrisonerBandit",
@@ -5597,8 +5594,8 @@ let KinkyDungeonEnemies = [
 ];
 
 
-let KDOndeath = {
-	"DirtPile": (enemy, o) => {
+let KDOndeath: Record<string, (enemy: entity, o: any) => void> = {
+	"DirtPile": (enemy, _o) => {
 		if (!KDGameData.QuestData.DirtPiles) KDGameData.QuestData.DirtPiles = {
 			pilesTotal: 0,
 			pilesSinceLastSpawn: 0,
@@ -5639,17 +5636,17 @@ let KDOndeath = {
 	"dialogue": (enemy, o) => {
 		KDStartDialog(o.dialogue, enemy.Enemy.name, o.click, enemy.personality, enemy);
 	},
-	"murder": (enemy, o) => {
+	"murder": (_enemy, _o) => {
 		KDMurderShopkeeper(1);
 	},
 	"spellOnSelf": (enemy, o) => {
 		let spell = KinkyDungeonFindSpell(o.spell, true);
 		if (spell) KinkyDungeonCastSpell(enemy.x, enemy.y, spell, undefined, undefined, undefined, KDGetFaction(enemy));
 	},
-	"removeQuest": (enemy, o) => {
+	"removeQuest": (_enemy, o) => {
 		KDRemoveQuest(o.quest);
 	},
-	"dollID": (enemy, o) => {
+	"dollID": (enemy, _o) => {
 		if (KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 9) {
 			if (!KinkyDungeonFlags.get("gotDollID")) {
 				let dropped = {x:enemy.x, y:enemy.y, name: "DollID"};
@@ -5658,13 +5655,12 @@ let KDOndeath = {
 			}
 		}
 	},
-	"addQuest": (enemy, o) => {
+	"addQuest": (_enemy, o) => {
 		KDAddQuest(o.quest);
 	},
 };
 
-/** @type {Record<string, SpecialCondition>} */
-let KDSpecialConditions = {
+let KDSpecialConditions: Record<string, SpecialCondition> = {
 	"canRestrainWithExtra": {
 		resetCD: false,
 		criteria: (enemy, AIData) => {
@@ -5689,18 +5685,16 @@ let KDSpecialConditions = {
 		}
 	}
 };
-/**
- * @type {Record<string, KDSpecialEnemyBuff>}
- */
-let KDSpecialBuffs = {
+
+let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 	"Armored": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (_enemy, _types) => {
 			return 40;
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Armored",
 				aura: "#ffffff",
@@ -5717,10 +5711,10 @@ let KDSpecialBuffs = {
 			if (KDIsImmobile(enemy)) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (_enemy, _types) => {
 			return 40;
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Fast",
 				aura: "#ffffff",
@@ -5737,10 +5731,10 @@ let KDSpecialBuffs = {
 			if (!enemy.Enemy.attack?.includes("Melee") && !enemy.Enemy.specialAttack?.includes("Melee")) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (_enemy, _types) => {
 			return 40;
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Muscle",
 				aura: "#ffffff",
@@ -5759,13 +5753,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"EnergyShield": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Reg", "Hardmode_Reg"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (_enemy, _types) => {
 			return 40;
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "EnergyShield",
 				aura: "#ffffff",
@@ -5788,10 +5782,10 @@ let KDSpecialBuffs = {
 			if (enemy.Enemy.tags?.robot || enemy.Enemy.tags?.construct || enemy.Enemy.tags?.nobrain) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + (enemy.Enemy.shrines?.includes("Will") ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "HealingAuraSBuff",
 				aura: "#ffffff",
@@ -5806,13 +5800,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"Missiles": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 4 + (enemy.Enemy.shrines?.includes("Latex") || enemy.Enemy.tags?.robot ? 40 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			let count = Math.min(4, Math.max(1, Math.ceil(KDGetEffLevel()/3)));
 			if ((enemy.Enemy.tags?.boss)) count = 4;
 			else if (enemy.Enemy.tags?.miniboss) count = Math.max(count, 3);
@@ -5832,13 +5826,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"Airbender": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss", "Extreme"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 4 + ((enemy.Enemy.kite || enemy.Enemy.tags?.ranged) ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			let count = 2;
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Airbender",
@@ -5854,13 +5848,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"ElectrifyX": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + (enemy.Enemy.shrines?.includes("Metal") ? 20 : 0) + ((enemy.Enemy.tags?.water) ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "ElectrifyX",
 				duration: 9999, infinite: true,
@@ -5876,10 +5870,10 @@ let KDSpecialBuffs = {
 			if (enemy.Enemy.tags?.water || enemy.Enemy.tags?.ice) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + (enemy.Enemy.tags?.fire ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "FireexpX",
 				duration: 9999, infinite: true,
@@ -5891,13 +5885,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"VineexpX": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + (enemy.Enemy.tags?.plant || enemy.Enemy.tags?.nature || enemy.Enemy.tags?.elf ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "VineexpX",
 				duration: 9999, infinite: true,
@@ -5913,10 +5907,10 @@ let KDSpecialBuffs = {
 			if (enemy.Enemy.tags?.fire) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + ((enemy.Enemy.tags?.water) ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "BubbleexpX",
 				duration: 9999, infinite: true,
@@ -5928,13 +5922,13 @@ let KDSpecialBuffs = {
 		},
 	},
 	"IceexpX": {
-		filter: (enemy, types) => {
+		filter: (_enemy, types) => {
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + ((enemy.Enemy.tags?.ice) ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "IceexpX",
 				duration: 9999, infinite: true,
@@ -5950,10 +5944,10 @@ let KDSpecialBuffs = {
 			if (KDIsImmobile(enemy)) return false;
 			return types.some((type) => {return ["HighValue", "NGP_Boss", "Hardmode_Boss"].includes(type);});
 		},
-		weight: (enemy, types) => {
+		weight: (enemy, _types) => {
 			return 10 + (enemy.Enemy.attack?.includes("Bind") ? 20 : 0);
 		},
-		apply: (enemy, types) => {
+		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "BearTrapper",
 				duration: 9999, infinite: true,
@@ -5967,20 +5961,19 @@ let KDSpecialBuffs = {
 };
 
 /**
- *
- * @param {entity} enemy
+ * @param enemy
  */
-function KDEndEnemyAction(enemy) {
+function KDEndEnemyAction(enemy: entity) {
 	if (KDEnemyAction[enemy.action]?.end) {
 		KDEnemyAction[enemy.action].end(enemy);
 	}
 	enemy.action = "";
 }
+
 /**
- *
- * @param {entity} enemy
+ * @param enemy
  */
-function KDMaintainEnemyAction(enemy, delta) {
+function KDMaintainEnemyAction(enemy: entity, delta: number) {
 	let forceEnd = false;
 	if (enemy.FacilityAction) {
 		KDTickCollectionWanderEntity(enemy, delta);
@@ -5992,10 +5985,7 @@ function KDMaintainEnemyAction(enemy, delta) {
 	}
 }
 
-/**
- * @type {Record<string, KDEnemyAction>}
- */
-let KDEnemyAction = {
+let KDEnemyAction: Record<string, KDEnemyAction> = {
 	"investigatesound": {
 		holdleash: true,
 		end: (enemy) => {
@@ -6006,7 +5996,7 @@ let KDEnemyAction = {
 		filter: (enemy) => {
 			return !(enemy.aware);
 		},
-		maintain: (enemy, delta) => {
+		maintain: (enemy, _delta) => {
 			// Stops investigating if alerted or idle
 			return !(enemy.idle
 				|| (KinkyDungeonAggressive(enemy) && enemy.aware)
@@ -6025,7 +6015,7 @@ let KDEnemyAction = {
 		filter: (enemy) => {
 			return !(enemy.aware);
 		},
-		maintain: (enemy, delta) => {
+		maintain: (enemy, _delta) => {
 			// Stops investigating if alerted or idle
 			return ((enemy.idle && KDRandom() < 0.5)
 				|| !(enemy.aware)
