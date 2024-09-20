@@ -6318,6 +6318,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				} else {
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].aura = e.color;
 					KinkyDungeonPlayerBuffs[weapon.name + "Load"].duration = 7;
+					KinkyDungeonPlayerBuffs[weapon.name + "Load"].text = ">" + Math.round(e.power - currentLoad) + "<";
 				}
 			}
 		},
