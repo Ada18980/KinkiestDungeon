@@ -3711,7 +3711,7 @@ type KDTeaseAttack = {
 	blockable: boolean,
 	dodgeable: boolean,
 	/** Allows this to be added to the list */
-	filter: (enemy: entity, player: entity, AIData: any) => boolean,
+	filter: (enemy: entity, player: entity, AIData: KDAIData) => boolean,
 	/** Returns true if it connects, false otherwise if blocked/ignored somehow */
 	apply: (enemy: entity, player: entity, AIData: any, blocked: boolean, evaded: boolean, damageMod: number) => boolean,
 };
