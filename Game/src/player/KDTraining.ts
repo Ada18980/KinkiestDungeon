@@ -4,31 +4,31 @@ let KDTrainingTypes = [
 	"Heels",
 ];
 
-function KDGetHeelTraining() {
+function KDGetHeelTraining(): number {
 	if (!KDGameData.Training) KDGameData.Training = {};
 	return (KDGameData.Training?.Heels?.training_stage || 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelTraining");
 }
 
-function KDTrip(delta) {
+function KDTrip(delta: number) {
 	KinkyDungeonSendTextMessage(10, TextGet("KDTrip"), "#ff5555", 5);
 	KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns + delta, delta + KDTripDuration());
 	KDGameData.Balance = KDGetRecoverBalance();
 	KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 }
 
-function KDGetRecoverBalance() {
+function KDGetRecoverBalance(): number {
 	return (0.1 + 0.4 * KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TripBalanceRecovery"));
 }
 
-function KDGetBalanceRate() {
+function KDGetBalanceRate(): number {
 	return (0.15 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalance")) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "RegenBalanceMult"));
 }
-function KDTripDuration() {
+function KDTripDuration(): number {
 	let mult = 4 / (4 + KDGetHeelTraining());
 	return Math.max(2, Math.round(5 * mult));
 }
 
-function KDGetBalanceCost() {
+function KDGetBalanceCost(): number {
 	let mult = 1;//KinkyDungeonStatsChoice.has("HeelWalker") ? 0.5 : 1;
 	if (KinkyDungeonStatsChoice.get("PoorBalance")) mult *= 1.7;
 	if (!KinkyDungeonIsArmsBound()) mult *= 0.5;
@@ -40,7 +40,7 @@ function KDGetBalanceCost() {
 /**
  * Goes thru all training categories and advances them by an amount, and resets the turns
  */
-function KDAdvanceTraining() {
+function KDAdvanceTraining(): void {
 	if (!KDGameData.Training) KDGameData.Training = {};
 	for (let entry of Object.entries(KDGameData.Training)) {
 		//let training = entry[0];
@@ -62,14 +62,13 @@ function KDAdvanceTraining() {
 }
 
 /**
- *
- * @param {string} Name
- * @param {boolean} trained
- * @param {boolean} skipped
- * @param {number} total
- * @param {number} bonus - Multiplier for turns trained or skipped
+ * @param Name
+ * @param trained
+ * @param skipped
+ * @param total
+ * @param bonus - Multiplier for turns trained or skipped
  */
-function KDTickTraining(Name, trained, skipped, total, bonus = 1) {
+function KDTickTraining(Name: string, trained: boolean, skipped: boolean, total: number, bonus: number = 1): void {
 	if (!KDGameData.Training) KDGameData.Training = {};
 	if (!KDGameData.Training[Name]) {
 		KDGameData.Training[Name] = {
