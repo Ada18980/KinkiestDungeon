@@ -30,6 +30,10 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.38-RC7
+- Fixed issues where NPCs would hug the corner of the map after losing sight of you
+- High value enemies will now use their missiles in combat (watch out for friendly fire)
+
 5.3.38-RC6
 - Fix some issues with runes (aoe, cast time)
 - New Expert Tool tag: Protected. Put 1 here to make the layer protected.
