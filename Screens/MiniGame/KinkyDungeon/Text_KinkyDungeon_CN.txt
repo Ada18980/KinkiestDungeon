@@ -128,7 +128,7 @@ Draw Armor
 Enable Music
 启用音乐
 Async Rendering (beta)
-异步渲染 (测试版)
+异步渲染 ( 测试版 )
 Bloom & Glow
 曝光 & 发光
 Transparent UI
@@ -228,8 +228,7 @@ Faster Floater Fade
 No Damage Floaters
 无伤漂浮物
 Dynamic Armor (must hide armor)
-动态盔甲 (必须隐藏盔甲)
-
+动态盔甲 ( 必须隐藏盔甲 )
 Helpless!
 无助！
 Evaded!
@@ -644,7 +643,7 @@ Cyber Doll
 Start in full Cyber restraints.
 开局时穿戴全套赛博束缚。
 Fuuka's Pet
-Fuuka的宠物
+Fuuka宠物
 Start with Fuuka's collar and a few restraints.
 开局时穿戴Fuuka的项圈和一些别的束缚。
 Fuuka Fan Club
@@ -796,7 +795,7 @@ While at 0 WP, you gain +35 Evasion and deal 20% of your max WP as soap damage w
 Sticky Situation
 粘滞窘境
 You take 40% more glue damage.
-你受到的胶水伤害增加 40%。
+你受到的胶体伤害增加 40%。
 Breathless
 气喘吁吁
 Taking chain, poison, and crush damage makes you dizzy.
@@ -1168,18 +1167,13 @@ Greatly increases the occurrence of muzzles.
 增加口套的出现频率。
 
 Armbinder Lover
-束手套爱好者
+单手套爱好者
 More armbinders, less straitjackets.
-增加束手套的出现频率，减少拘束衣的出现频率。
-
+增加单手套的出现频率，减少拘束衣的出现频率。
 Jacket Lover
 拘束衣爱好者
 More straitjackets, less armbinders.
-增加拘束衣的出现频率，减少束手套的出现频率。
-
-
-
-
+增加拘束衣的出现频率，减少单手套的出现频率。
 Maid Sweeper
 可爱女仆
 Start in a magically locked maid outfit.
@@ -1392,7 +1386,7 @@ Drenched: Grants fire resist, ice/electric weakness, and makes you conductive.
 Chilled: The cold makes it hard to move! You are slowed.
 寒冷 : ‎寒冷使得移动变得困难，降低移动速度
 Slimed: It's sticky and dense! You are slowed and 30% more vulnerable to glue damage.
-粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上，降低 30% 粘液抗性和移动速度
+粘液覆盖 : ‎浓稠而又黏糊糊粘液覆盖在你身上，降低 30% 胶体抗性和移动速度
 Unsteady: You're on loose footing. You are easier to hit and are slowed.
 不稳定 : ‎你站在不牢固的地面上，降低移动速度，且更容易被击中
 Ignore Ice Tiles
@@ -1693,6 +1687,20 @@ Cancel Changes
 取消修改
 Return
 返回
+Keybindings
+按键绑定
+Show free characters on map
+在地图上显示自由的角色
+Detailed jailed NPCs (experimental)
+被监禁的 NPC 细节 ( 实验性 )
+Show Struggle Bars
+显示挣扎条
+Allow Suspicious Mods
+允许可疑模组
+Auto Load Mods (offline only)
+自动加载模组 ( 仅离线版 )
+Classic Inventory Background
+经典背包背景
 Game Options
 游戏选项
 
@@ -1713,10 +1721,9 @@ Filter
 筛选
 
 DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
-【警告】加载模组具有危险性，因为其可在你的计算机上肆意执行任何代码。
+【警告】加载模组具有危险性，因为模组可在你的计算机上执行任何代码，
 Like connecting to a server, etc. Only load mods from a TRUSTED source.
-就如同连接到不可信的服务器一样。请仅仅只加载来源可信赖的模组。
-
+比如连接到未知服务器等，请只加载来源可信赖的模组。
 Up
 向上
 Down
@@ -2486,7 +2493,7 @@ Dollmaker's Staff
 You remember this being used on someone else.
 你记得这被用在别人身上。
 +15% glue damage. Deals psychic damage. Fully bound enemies captured with this weapon become latex dolls which fight with you.
-+15% 粘液伤害，并造成精神伤害。被这把武器完全束缚的敌人将变成与你一起战斗的乳胶娃娃。
++15% 胶体伤害，并造成精神伤害。被这把武器完全束缚的敌人将变成与你一起战斗的乳胶娃娃。
 You are unable to control more than 3 dolls. The new doll is protesting and remains bound.
 你无法控制超过3个娃娃，新的娃娃正在挣扎并保持束缚状态。
 
@@ -2532,7 +2539,7 @@ Staff of Slime
 A slimy and magical implement..
 一把又黏又神奇的工具。
 +10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
-+10% 粘液伤害，造成粘液伤害。副手 : ‎应用被动奖励。
++10% 胶体伤害，造成胶体伤害。副手 : ‎应用被动奖励。
 Staff of Shocking
 电击法杖
 +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
@@ -2696,7 +2703,10 @@ Deals fire damage. Provides light.
 造成火焰伤害。可以提供光亮。
 Unarmed
 徒手
-### Fight with your hands and feet. 50% chance to stun target if the target is disarmed.
+Physical
+物理
+Fight with your hands and feet.
+用你的手和脚战斗。
 Deals unarmed damage.
 造成徒手伤害。
 Sword
@@ -2750,9 +2760,9 @@ Deals slash damage. Can make ranged attacks.. Drains 0.75% ancient energy to fir
 Metamorphosis
 变形法杖
 You can enter slime form for 25 turns, which lets you pass thru bars, +50 Evasion, and deals 25 glue damage when attacked.
-你可以进入粘液形态，持续25回合。在粘液形态下，你可以穿过栅栏，增加 50 点闪避，并在受到攻击时对攻击你的目标造成 25 点粘液伤害。
+你可以进入粘液形态，持续25回合。在粘液形态下，你可以穿过栅栏，增加 50 点闪避，并在受到攻击时对攻击你的目标造成 25 点胶体伤害。
 Deals glue damage. Roots targets for 2 turns on a hit. Offhand: Roots targets on hit.
-造成胶水伤害。固定目标 2 回合。副手 : ‎命中时定身目标。
+造成胶体伤害。固定目标 2 回合。副手 : ‎命中时定身目标。
 Four Seasons
 四季法杖
 Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
@@ -2806,7 +2816,7 @@ Latex Projector
 Deals crush damage. Can be used to spray a '+' shaped pool of slime.
 造成碾压伤害。可用于喷洒“+”形粘液池。
 Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies.
-花费 15 点能量来制造一滩粘液，每块造成 35 点胶水伤害并减缓敌人的速度。
+花费 15 点能量来制造一滩粘液，每块造成 35 点胶体伤害并减缓敌人的速度。
 Magic Axe
 魔法斧
 Sick and vile, like the hearts of your enemies.
@@ -2862,21 +2872,21 @@ Find the keys..
 Find the exit!
 寻找出口！
 You are receiving help from a friendly ally.
-你得到了友好盟友的帮助。
+你得到了友好盟友的帮助
 You found a hook you can use to pull on straps and loops.
-你找到了一个钩子，可以用来拉动带子和环扣。
+你找到了一个钩子，可以用来拉动带子和环扣
 You have access to something sharp and can attempt to Cut restraints, or Remove more effectively.
-你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚。
+你可以使用锋利的工具来尝试切断拘束具，其可更有效地解除束缚
 You found a corner to help manipulate buckles and snaps with.
-你找到了一个角落，可以帮助你操纵带扣和卡扣。
+你找到了一个角落，可以帮助你操纵带扣和卡扣
 You found a crack and could maybe wedge a knife or tool into it to keep it still.
-你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定。
+你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
 You found something sticky and might be able to pull off fabrics.
-你找到了一些黏糊糊的东西，也许可以用它来撕掉布料。
-### Evasion: 
-### Visibility: 
-
-
+你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
+Evasion:
+闪避 : ‎
+Visibility:
+可见度 : ‎
 Submissive: Enemies won't attack you, but they will try to play with you.
 顺从者 : ‎敌人不会尝试攻击你，但他们会尝试对你做一些奇妙的互动。
 On the Run! Enemies are hostile.
@@ -3053,6 +3063,8 @@ The illusion vanishes into thin air.
 幻象消失得无影无踪。
 Wall
 墙
+Create a stationary wall for Duration turns. It takes 20% damage from spells. Cast on an open door to close it and give it additional armor.
+创造一堵可持续 Duration 个回合的墙，法术对其仅能造成 20% 伤害。在开启的门上释放可将门封闭，并为其提供额外护甲。
 The wall shatters into pieces, which fade away slowly.
 墙壁破碎成碎片，慢慢消失。
 ### Locked Door
@@ -4337,14 +4349,13 @@ The blindfold dashes to you!
 眼罩冲向你！
 
 Amorous Armbinder
-色情的束手套
+色情的单手套
 The armbinder flops to the floor.
-束手套扑通一声倒在地板上。
+单手套扑通一声倒在地板上。
 The armbinder slips itself around your arms and pushes your elbows together! (+RestraintAdded)
-束手套会绕着你的手臂滑动，并将你的肘部挤压到一起！ ( +RestraintAdded )
+单手套会绕着你的手臂滑动，并将你的肘部挤压到一起！ ( +RestraintAdded )
 The armbinder rubs itself all over your body! (DamageTaken)
-束手套在你身上摩擦！ ( DamageTaken )
-
+单手套在你身上摩擦！ ( DamageTaken )
 Stringent Straitjacket
 严格的拘束衣
 The straitjacket falls apart.
@@ -6171,15 +6182,15 @@ They are reinforced with top-quality hardened latex.
 
 
 High-Security Armbinder
-高安全性束手套
+高安全性单手套
 An armbinder enclosing your hands and arms completely, making your hands useless.
-束手套将你的手和手臂完全包住，使你的手变得毫无用处。
+单手套将你的手和手臂完全包住，使你的手变得毫无用处。
 Made of a flexible, yet durable material, it's going to be really tough to escape.
 它由灵活而耐用的材料制成，很难逃脱。
 High-Security Boxbinder
-高安全性盒束包扎带
+高安全性盒式单手套
 A boxbinder enclosing your hands and arms completely, making your hands useless.
-盒束包扎带将你的手和手臂完全包住，使你的手变得毫无用处。
+盒式单手套将你的手和手臂完全包住，使你的手变得毫无用处。
 High-Security Straitjacket
 高安全性拘束衣
 A straitjacket enclosing your hands and arms completely, making your hands useless.
@@ -6655,23 +6666,23 @@ A tight leather legbinder that keeps your feet glued together.
 It's quite snug and the laces are secured with a lockable panel. Getting at them requires picking the lock.
 它非常舒适，绳结由可锁定的面板遮挡并固定。想要触碰它们就需要先解开锁。
 Leather Armbinder
-皮革束手套
+皮革单手套
 A tight leather armbinder enclosing your hands and arms completely.
-一个紧身的皮革束手套完全包住你的手和手臂。
+一个紧身的皮革单手套完全包住你的手和手臂。
 It's quite snug and secured by lockable buckles in the back. Picking the locks yourself is impossible.
 它非常舒适，并由背面的可锁扣固定。自己开锁是不可能的。
 Leather Boxbinder
-皮革束包扎带
+皮革盒式单手套
 A secure but comfortable binder meant for long-term wear.
-一种安全而舒适的盒束包扎带，适合长期佩戴。
+一种安全而舒适的盒式单手套，适合长期佩戴。
 Leather Armbinder Harness
-皮革束手套束衣
+皮革单手套束衣
 Leather belts securing your armbinder tightly.
 皮带紧紧地固定着你的束手袋。
 It's quite tight and secured by lockable buckles on your sides.
 它非常紧，并由你两侧的可上锁带扣固定。
 The armbinder harness comes off with the armbinder.
-会随着束手套一起挣脱。
+会随着单手套一起挣脱。
 The energy link between your ankle cuffs fizzles into nothing.
 踝铐之间的能量链条逐渐消失。
 The energy link between your arm cuffs fizzles into nothing.
@@ -6935,13 +6946,13 @@ A set of irish-8-style cuffs that are both restrictive and quick to apply. Can b
 It uses a standard lock rather than a simple one.
 它使用标准锁而不是简单锁。
 Wolfbinder
-狼之束手套
+狼之单手套
 A sophisticated training system used to keep wolfgirls from scratching their owners.
 一个复杂的训练系统，用来防止狼娘抓挠他们的主人。
 Despite the harsh position, it is padded, breathable, and suitable for long term wear.
 尽管十分严苛，但它具有衬垫、透气性，适合长期佩戴。
 Wolf Queenbinder
-狼娘王束手套
+狼娘王单手套
 This was made to be used during a coup attempt.  Unfortunately, its creator ended up wearing it instead, after the coup's failure.
 这枚戒指原本是为政变准备的。不幸的是，政变失败后，它的创造者反而戴上了它。
 Designed to hold the queen of wolves helpless for an indefinite period of time.
@@ -7084,11 +7095,11 @@ Secure Latex Jacket
 This straitjacket has extra straps and buckles to make sure you won't be struggling out of it.
 这件拘束衣有额外的带子和扣子，确保你不会通过挣扎而脱下它。
 Latex Armbinder
-乳胶束手套
+乳胶单手套
 A tight armbinder that pins your arms tightly behind your back, enclosed completely.
-一种紧密的臂夹，将你的手臂紧紧地固定在背后，完全封闭。
+一种紧密的单手套，将你的手臂紧紧地固定在背后，完全封闭。
 Latex Boxbinder
-乳胶盒束包扎带
+乳胶盒式单手套
 Latex Legbinder
 乳胶束腿套
 A tight legbinder that keeps your legs together!
@@ -7351,17 +7362,13 @@ Its grip encases you tightly, but the material is weaker than most metals.
 ### Black Hole Jacket
 ### Like a black hole, anything that is caught in this jacket has no chance to escape its grasp.
 Shadow Armbinder
-暗影束手套
+暗影单手套
 A tight armbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-由超凡脱俗的材料制成的束手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
-### Black Hole Armbinder
-### Like a black hole, anything that is caught in this armbinder has no chance to escape its grasp.
+由超凡脱俗的材料制成的单手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Shadow Boxbinder
-暗影盒束包扎带
+暗影盒式单手套
 A tight boxbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
-由超凡脱俗的材料制成的盒束包扎带。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
-### Black Hole Boxbinder
-### Like a black hole, anything that is caught in this boxbinder has no chance to escape its grasp.
+由超凡脱俗的材料制成的盒式单手套。它闪亮且反光，当你观察自己的困境时，你可以看到星星在闪烁。
 Shadow Legbinder
 暗影束腿套
 A tight legbinder made of an otherworldly material. It is shiny and reflective, and you can see stars twinkling as you observe your predicament.
@@ -9077,6 +9084,9 @@ Lightning Rune
 ### A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
 You conjure a charged trap!
 你设置了一个闪电陷阱！
+A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
+可造成电击伤害并眩晕 4 个回合的陷阱。设置需要 3 个回合。200% 碰撞倍增器。
+放置一个暴击倍率为 200% 的闪电陷阱，可对敌人造成 DamageDealt 点电击伤害并眩晕 4 个回合。需要 3 个回合来设置。
 Choose location for trap
 选择放置陷阱的位置
 
@@ -9085,7 +9095,8 @@ Freeze Rune
 ### A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
 You conjure an icy trap!
 你设置了一个霜冻陷阱！
-
+A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
+放置一个暴击倍率为 200% 的霜冻陷阱，可对敌人造成 DamageDealt 点寒冰伤害并冻结 30 个回合。需要 3 个回合来设置。
 Flame Rune
 火焰符文
 A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
@@ -9156,7 +9167,7 @@ Choose monoliths to enchant
 Coalesce
 聚合
 Gathers slime and slimed enemies into a central point. Deals DamageDealt glue damage per square of slime and Encases slimed enemies. Costs half mana if there is only slime.
-将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶水伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半魔力值。
+将粘液和粘液包裹的敌人聚集到一个中心点。 每块粘液造成 DamageDealt 点胶体伤害并包裹粘液中的敌人。如果目标只有粘液则只消耗一半魔力值。
 You command the slime to draw enemies in!
 你命令粘液包裹敌人！
 Choose area containing slime
@@ -9176,12 +9187,11 @@ Target an area with at least 3 slime tiles. Summons a large slime that is friend
 Latex Puppet
 乳胶木偶
 Target an area containing helpless encased enemies. Transforms up to 3 of them into latex dolls that serve you for a while.
-瞄准包含无助的敌人的区域，将最多 3 个无助的敌人变成乳胶娃娃，使其为你服务一段时间。
+瞄准包含完全束缚的敌人的区域，将最多 3 个完全束缚的敌人变成乳胶娃娃，使其为你服务一段时间。
 You concentrate magical energy into your victim's bindings, forcing them to move...
 你将魔法能量注入到受害者的束缚中，迫使他们移动......
 Choose area containing encased helpless enemies.
-选择含有被束缚的无助的敌人的区域。
-
+选择含有被完全束缚的敌人的区域。
 Solidify
 固化
 Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound.
@@ -9238,11 +9248,12 @@ Wall of Latex (Vert)
 ### Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
 You tap your foot and a wall of latex stretches out across the corridor.
 你轻踮脚尖，一堵乳胶墙慢慢地从地上升起。
-
+Creates a vertical wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
+创造一堵可持续 20 个回合的垂直乳胶墙，穿过的目标将被乳胶包裹；如果没有被包裹，将受到 50 点胶体伤害并获得致盲效果。
 Wall of Latex (Horiz)
 乳胶墙 ( 水平 )
-### Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
-
+Creates a horizontal wall of latex for 20 turns. Enemies that pass through are encased, take 50 glue damage if not encased, and blinded.
+创造一堵可持续 20 个回合的水平乳胶墙，穿过的目标将被乳胶包裹；如果没有被包裹，将受到 50 点胶体伤害并获得致盲效果。
 Earthshape
 地形转变
 Unlocks 3 spells that allow creating mounds, rings, or lines of 50hp, 25 armor rocks.
@@ -9442,7 +9453,10 @@ Fire damage ignites enemies for 5 damage per turn for 6 turns.
 火焰伤害可使敌人进入燃烧状态 6 回合，每回合造成 5 点伤害。
 Frozen Prison
 寒冰牢狱
-### Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding.
+Freezing an enemy applies 10% of the enemy's max hp in binding, plus 10 per turn of freeze.
+冻结敌人并施加敌人最大生命值 10% 的束缚，每冻结一回合增加 10 点。
+Freezing an enemy applies 10 binding per turn of freeze added, plus brings the enemy to a minimum of 20% binding.
+冻结敌人，使敌人的拘束值至少达到 20%，每冻结一回合还会增加 10% 束缚。
 Lightning Rod
 避雷针
 After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
@@ -9535,6 +9549,8 @@ Conjured Blindfold
 魔法眼罩
 The blindfold wraps around your head and buckles tightly!
 眼罩缠绕在你的头上并扣紧！
+Summons a blindfold which deals DamageDealt chain damage and blinds for 20 turns. +40 binding if target is not blinded.
+召唤眼罩来捆绑目标，对目标造成 DamageDealt 点锁链伤害，并使其致盲 20 个回合；如果没有致盲，则增加目标 40 点束缚。
 The blindfold hits you! (DamageDealt)
 眼罩击中了你！ ( 造成 DamageDealt 点伤害 )
 ### Summons a blindfold which deals DamageDealt chain damage and blinds for 20 turns. +40 binding if target is not blinded.
@@ -9571,19 +9587,19 @@ The gag will appear next to you and fly toward the target point.
 口塞出现在你旁边并飞向目标点。
 
 Conjure Armbinder
-召唤束手套
+召唤单手套
+Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Cannot be blocked.
+召唤单手套来捆绑目标，对目标造成 DamageDealt 点锁链伤害，并在 13 个回合内缴械目标，无法阻止。
 Conjured Armbinder
-魔法束手套
+魔法单手套
 The armbinder slips itself around your arms and buckles itself tightly!
-束手套自动套在你的手臂上并紧紧包住了你的手臂！
+单手套自动套在你的手臂上并紧紧包住了你的手臂！
 The armbinder hits you! (DamageDealt)
-束手套击中了你！ ( 造成 DamageDealt 点伤害 )
-### Summons an armbinder which deals DamageDealt chain damage and disarms for 13 turns. Cannot be blocked.
+单手套击中了你！ ( 造成 DamageDealt 点伤害 )
 You conjure a armbinder!
-你召唤出束手套！
+你召唤出单手套！
 The armbinder will appear next to you and fly toward the target point.
-束手套出现在你旁边并飞向目标点。
-
+单手套出现在你旁边并飞向目标点。
 Conjure Legbinder
 召唤束腿套
 Conjured Legbinder
@@ -9615,17 +9631,15 @@ The amorphous rubber stretches out into a restraint on your body!
 The amorphous rubber sticks to you! (DamageDealt)
 不规则的橡胶粘在了你的身上！ ( DamageDealt )
 Summons a gag which deals DamageDealt glue damage and silences for 15 turns. +40 binding if target is not silenced.
-召唤一个口塞，造成 DamageDealt 胶水伤害并沉默 15 回合。如果目标没有被沉默，则 +40 捆绑。
-
+召唤一个口塞，造成 DamageDealt 胶体伤害并沉默 15 回合。如果目标没有被沉默，则 +40 捆绑。
 Conjure Latex Armbinder
-召唤乳胶束手套
+召唤乳胶单手套
 Conjured Latex Armbinder
-魔法乳胶束手套
+魔法乳胶单手套
 The armbinder slips itself around your arms and snaps on tightly!
-束手套自动滑入你的手臂上并紧紧包住了你的手臂！
+单手套自动滑入你的手臂上并紧紧包住了你的手臂！
 Summons an armbinder which deals DamageDealt glue damage and disarms for 13 turns. Cannot be blocked.
-召唤一件束手套，造成 DamageDealt 胶水伤害并解除武装，持续 13 回合。无法被阻挡。
-
+召唤一件单手套，造成 DamageDealt 胶体伤害并解除武装，持续 13 回合。无法被阻挡。
 Conjure Latex Legbinder
 召唤乳胶束腿套
 Conjured Latex Legbinder
@@ -9633,9 +9647,7 @@ Conjured Latex Legbinder
 The legbinder slips itself around your legs and snaps on tightly!
 束腿套自动滑入你的腿上并紧紧包住了你的腿！
 Summons a legbinder which deals DamageDealt glue damage and snares for 10 turns. +50 binding if target is not snared. Cannot be blocked.
-召唤束腿套，造成 DamageDealt 胶水伤害并召唤陷阱，持续 10 回合。如果目标没有被诱捕，则 +50 捆绑。无法被阻挡。
-
-
+召唤束腿套，造成 DamageDealt 胶体伤害并召唤陷阱，持续 10 回合。如果目标没有被诱捕，则 +50 捆绑。无法被阻挡。
 Conjure Straitjacket
 召唤拘束衣
 Conjured Straitjacket
@@ -9703,20 +9715,19 @@ Choose location
 Conjure Petsuit
 召唤宠物服
 Target only Helpless enemies. Transforms them into a pet that follows you and increases your passive mana recovery from mana pool.
-仅可对无助的敌人施放。将它们变成跟随你的宠物，并增加你从魔力池中恢复的被动魔力。
+仅可对完全束缚的敌人施放。将它们变成跟随你的宠物，并增加你从魔力池中恢复的被动魔力。
 You conjure an enchanted petsuit which wraps around your target, forcing her to follow you!
 你召唤出的魔法宠物服，紧紧包住了你瞄准的目标，使她不得不跟着你！
 You watch in horror as your own creation lunges toward you, binding your hands and feet!
 你惊恐地看着你自己的造物冲向了你，束缚了你的手脚！
 Choose a helpless target
-选择一个无助的目标
-
+选择一个完全束缚的目标
 Conjure Display Stand
 召唤展示架
 Target only Helpless enemies. Creates a fixture that increases passive mana recovery from mana pool, restores 50 Charge, and makes nearby enemies take 50% more charm/psychic damage.
-仅可对无助的敌人施放。创建一个装置，可以增加魔力池中的被动魔力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
+仅可对完全束缚的敌人施放。创建一个装置，可以增加魔力池中的被动魔力恢复，恢复 50 点能量，并使附近的敌人受到 50% 的妩媚/精神伤害。
 You conjure a fixture to hold your helpless target in place!
-你召唤出一个装置来束缚无助的目标！
+你召唤出一个装置来束缚完全束缚的目标！
 You watch in horror as your own creation encircles you, locking you in place with a hefty click!
 你惊恐地看着你自己的创造物束缚着你，用沉重的锁将你固定在了原地！
 
@@ -9794,7 +9805,7 @@ Chastity
 Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
-对无助的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加分心值。
+对完全束缚的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加分心值。
 You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
 Your own spell locks you in chastity!
@@ -9806,7 +9817,10 @@ Zone of Purity
 纯洁区
 Select an area
 选择一个区域
-### Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside.
+Creates an area which applies Chastity constantly to any enemy over 50% bondage that steps inside.
+创造一个区域，为进入区域且束缚超过 50% 的个体装备贞操带。
+Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside.
+创建一个区域，对踏入该区域的任何敌人持续装备贞操带。
 You conjure a realm of absolute purity.
 召唤出一个绝对纯洁的区域。
 
@@ -9893,7 +9907,8 @@ Select area to awaken
 ### Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets.
 You command the slime to draw in targets!
 你命令粘液包裹目标！
-
+Activates the slime in an area, causing it to deal 25 glue damage. Encases fully bound targets.
+唤醒指定区域内的粘液，使其对区域内的目标造成 25 点胶体伤害，并将完全束缚的目标包裹起来。
 CMD: Bind
 指令 : ‎束缚
 Select area to bind
@@ -9919,11 +9934,11 @@ The command is intricate and you are unable to enunciate it properly!
 指令很复杂，你根本无法正确说出来！
 
 CMD: Greater Unlock
-指令 : ‎强大的解锁
-### On yourself: Removes all purple (magical) locks. On a creature: Reduces the target's binding by 100 points.
+指令 : ‎强大解锁
+On yourself: Removes all purple (magical) locks. On a creature: Reduces the target's binding by 100 points.
+对你自己 : ‎移除所有紫色魔法锁。对生物 : ‎减少目标束缚 100 点。
 You speak a powerful command word!
-你念出强大的指令！
-
+你的命令铿锵有力！
 Lesser Invisibility
 次级隐形
 You become semitransparent!
@@ -9961,8 +9976,7 @@ When enabled: Melee weapon attacks cost mana and create a flame strike that deal
 Tentacle Slap
 触手拍击
 You have the power to make tentacles out of slime when you attack. When enabled: Your attacks deal +10 glue damage and create slime. 150% bind efficiency.
-你有能力在攻击时将黏液变成触手。启用后 : ‎你的攻击造成 +10 胶水伤害并产生黏液。150% 绑定效率。
-
+你有能力在攻击时将黏液变成触手。启用后 : ‎你的攻击造成 +10 胶体伤害并产生黏液。150% 绑定效率。
 Chain Strike
 锁链攻击
 You have the power to summon chains when you attack. When enabled: Your attacks deal +10 chain damage and create chains. 125% bind efficiency.
@@ -9977,8 +9991,12 @@ Leather Whip
 皮鞭
 You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
 你有能力在攻击时使用魔法腰带进行攻击。启用后 : ‎你的攻击造成 +10 痛苦伤害并制造腰带。250% 束缚效率。
-
-### Super Strength
+Engulf
+吞噬
+When enabled: Your melee attacks deal +20 glue damage and create slime.
+启用时 : ‎你的近战攻击额外造成 20 点胶体伤害并制造粘液。
+Super Strengthen
+超级强化
 When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage.
 启用时 : ‎挣扎更加强大，如果你的武器造成物理伤害，你的近战攻击力会提高20。
 Your body glows with magical energy!
@@ -10207,7 +10225,7 @@ Witch's Slime Ball
 Robotic Arm
 机械臂
 A pool of slime deals DamageDealt glue damage to enemies on impact and covers the area in temporary slime.
-召唤一滩在撞击时造成 DamageDealt 点胶水伤害的粘液，并用粘液覆盖该区域。
+召唤一滩在撞击时造成 DamageDealt 点胶体伤害的粘液，并用粘液覆盖该区域。
 You conjure a pool of slime!
 你召唤了一滩粘液！
 Select where the slime will appear
@@ -10216,14 +10234,14 @@ Select where the slime will appear
 Slime Eruption
 粘液喷发
 A huge blast of slime deals DamageDealt glue damage to enemies that enter and binds them briefly.
-巨大的粘液爆炸会造成伤害，对进入的敌人造成胶水伤害并短暂束缚他们。
+巨大的粘液爆炸会造成伤害，对进入的敌人造成胶体伤害并短暂束缚他们。
 You conjure an explosion of slime!
 你使粘液喷发！
 
 Slime Splash
 粘液飞溅
 After one turn, deals DamageDealt glue damage in a small area and spreads slime.
-在一回合后在小范围内召唤一滩造成 DamageDealt 点胶水伤害的粘液。
+在一回合后在小范围内召唤一滩造成 DamageDealt 点胶体伤害的粘液。
 You conjure a small amount of slime!
 你召唤了少量的粘液！
 
@@ -10342,7 +10360,7 @@ Icy Aura
 Slime Ball
 粘液球
 A ball of slime leaves a trail of sticky slime (20 damage when stepped on). It deals DamageDealt glue damage on a hit.
-一团粘液会留下粘糊糊的痕迹 ( 踩到时造成 20 伤害 ) 。它在击中时造成 DamageDealt 点胶水伤害。
+一团粘液会留下粘糊糊的痕迹 ( 踩到时造成 20 伤害 ) 。它在击中时造成 DamageDealt 点胶体伤害。
 You hurl a ball of slime!
 你扔出一个粘液球！
 
@@ -10368,7 +10386,7 @@ A floating blindfold appears and starts flying toward you!
 A floating yoke appears and starts flying toward you!
 一个漂浮的枷锁出现并开始向你飞来！
 A floating armbinder appears and starts flying toward you!
-一个漂浮的束手套出现并开始向你飞来！
+一个漂浮的单手套出现并开始向你飞来！
 A floating straitjacket appears and starts flying toward you!
 一件漂浮的拘束衣出现并开始向你飞来！
 A floating harness appears and starts flying toward you!
@@ -11050,25 +11068,25 @@ You insert your 5 keys into the lock and the item finally comes off.
 ### [RNAME]
 
 Magic-Draining: This item drains your mana quickly up to a limit, then slowly after.
-魔法耗尽 : ‎该物品会快速耗尽你的魔力直至达到极限，然后慢慢耗尽。
-
+魔法耗尽 : ‎该物品会快速耗尽你的魔力直至达到极限，然后慢慢耗尽
 Curse of Tickling: This item is tickling you without end!
-挠痒诅咒 : ‎这个物品会不停地挠你！
+挠痒诅咒 : ‎这个物品会不停地挠你
 Curse of Punishment: Inflicts psychic damage when you attack or cast a spell.
-惩罚诅咒 : ‎当你攻击或施展法术时对你造成精神伤害。
+惩罚诅咒 : ‎当你攻击或施展法术时对你造成精神伤害
 Curse of Illumination: Produces light and makes you easier to see.
-照明诅咒 : ‎产生光并让你更容易被敌人看到。
+照明诅咒 : ‎产生光并让你更容易被敌人看到
 Curse of Attraction: Women find you irresistable.
-吸引力诅咒 : ‎女人觉得你无法抗拒。
+吸引力诅咒 : ‎女人觉得你无法抗拒
 Curse of Animation: Causes loose restraints to animate and attack you!
-活力诅咒 : ‎松动的束缚会活跃起来并攻击你！
+活力诅咒 : ‎松动的束缚会活跃起来并攻击你
 Curse of Sensitivity: Makes it easier to lose control of yourself.
-敏感诅咒 : ‎使人更容易失去对自己的控制。
+敏感诅咒 : ‎使人更容易失去对自己的控制
 Curse of Distraction: Multiplies DP gain by 1.5x.
-分心诅咒 : ‎将 DP 增益乘以 1.5 倍。
-### Curse of Exhaustion: -25% Stamina regen cap.
+分心诅咒 : ‎将 DP 增益乘以 1.5 倍
+Curse of Exhaustion: Multiplies SP gain by 0.6x.
+虚弱诅咒 : ‎SP 增益乘以0.6倍
 Curse of Futility: Multiplies WP gain by 0.5x.
-徒劳诅咒 : ‎将 WP 增益乘以 0.5 倍。
+徒劳诅咒 : ‎将 WP 增益乘以 0.5 倍
 Curse of Submission: Gain submissiveness when you lose control of yourself...
 屈服诅咒 : ‎你会在你失去对自己的控制时屈服......
 The curse is dormant, waiting for the time to strike...
@@ -11094,7 +11112,7 @@ The item contains technological markings. Perhaps applying some electricity will
 The cursed seal gives off sparks as you struggle fruitlessly against it.
 当你与被诅咒的封印进行徒劳的挣扎时，它会发出火花。
 The item contains an alchemical seal. Perhaps Glue damage will overload it?
-该物品包含一个炼金印章。也许胶水伤害会导致其过载？
+该物品包含一个炼金印章。也许胶体伤害会导致其过载？
 The item stretches as you tug on it, but snaps back to its original place.
 当你拉动该物品时，它会拉伸，但会弹回到原来的位置。
 The item is covered in markings of chains. Perhaps you need to take Chain damage?
@@ -11772,13 +11790,13 @@ You rub your mittens together, but they are unfazed by anything you do to them a
 你反复揉搓手套，但它们对你对它们做的任何事情都没有反应，你的手紧紧地握着。
 
 Ancient Armbinder
-远古束手套
+远古单手套
 You find a monoglove, glowing magnificently, along with a strange crystal next to it.
 你会发现一只单手套，闪闪发光，旁边还有一块奇怪的水晶。
 An extremely strict armbinder. When powered, reduces miscast chance by 30%, increases all magic damage to enemies by 40%, and increases spell range by 50%.
-一个极其严厉的束手套。充能后，施法错误率降低30%，对敌人的所有魔法伤害提高40%，施法距离提高50%。
+一个极其严厉的单手套。充能后，施法错误率降低30%，对敌人的所有魔法伤害提高40%，施法距离提高50%。
 'Armbinder of the Artillerist'
-'炮手的束手套'
+'炮手的单手套'
 You try to wiggle your arms, but they can barely move in this position and are clasped tight. Your arms are sealed.
 你试图摆动你的手臂，但在这个位置上它们几乎不能移动并且被紧紧地抓住。你的手臂被封住了。
 
@@ -12136,7 +12154,7 @@ Normal Mode
 Hard Mode
 困难模式
 Extreme
-极限模式
+极端模式
 A supposedly reasonable difficulty curve.
 合理的难度曲线
 ### Play the game the way it was intended. Cruel and restrictive. 
@@ -14981,7 +14999,7 @@ Target an enemy: Attack with Dragonslaver. Target a tile: Spend 8 charge to laun
 50 charge: Free nearby allies and disrobe enemies, increasing charm damage by 100% and removing 100 armor.
 50 点充能 : ‎释放附近的盟友并脱去敌人的衣服，增加100%的魅力伤害并去除100点护甲。
 Create a '+' shaped pool of slime that deals 35 glue damage per hit
-创建一个十字粘液池，每一击造成 35 点胶水伤害
+创建一个十字粘液池，每一击造成 35 点胶体伤害
 Ignite torches and nearby objects
 点燃火把和附近的物体
 ### Hit a cracked tile. If there is empty space or cracks on the opposite side, it breaks.
@@ -18517,9 +18535,9 @@ The straps on your gag keep your blindfold securely in place!
 口塞上的带子可将眼罩牢牢固定住！
 
 Revert
-恢复
+重置
 Confirm Revert?
-确认恢复？
+确认重置？
 Save
 保存
 Save Changes?
@@ -18531,7 +18549,7 @@ Back to Wardrobe
 Confirm Strip?
 确认要脱衣服？
 Strip!
-脱光！
+‎ 脱光
 Export Outfit
 导出衣服
 Export AlwaysDress
@@ -20909,7 +20927,7 @@ Slime Sword
 It wiggles as you move it around.
 当你移动它时它也会摆动。
 Deals glue damage. Adds 25 slime binding.
-造成胶水伤害。添加 25 个粘液束缚。
+造成胶体伤害。添加 25 个粘液束缚。
 You pick up slime-covered sword.
 你拿起沾满粘液的剑。
 
@@ -21227,11 +21245,11 @@ Mundane
 ### Can Disassemble
 ### Raw Material
 Armbinders
-束手套
+单手套
 Legbinders
-束手套
+束腿套
 Boxbinders
-盒束包扎带
+盒式单手套
 Devices
 装置
 Toys
@@ -21727,14 +21745,10 @@ AMNT Distraction Decay
 AMNT 分心衰减
 AMNT Distraction Per Turn
 AMNT 每回合分心
-### AMNT AP from attacks
-
-After attacking with a teasing weapon:
-使用诱惑武器攻击后 : ‎
-
-Gain AMNT% Spell Damage for DRTN turns
-DRTN 回合获得 AMNT% 法术伤害
-
+AMNT% regen from mana pool
+AMNT% 魔力池回复
+AMNT mana pool on capture
+AMNT 被捕时的魔力池
 Drains mana from the wearer.
 吸取佩戴者的魔力。
 
@@ -22101,7 +22115,7 @@ Oblivion, Keeper of Secrets
 Oblivion, 秘密的守护者
 
 Arcane Energy is stored by casting spells, up to 100% Max mana.
-奥术能量通过施展法术来储存，奥术能量上限为 100% 魔力值上限
+奥术能量可通过施展法术来储存，奥术能量上限为 100% 魔力值上限
 Battle Rhythm is gained by spending stamina through attacks, up to 40 total.
 战斗节拍是通过攻击消耗体力来获得的，总共最多 40 点
 
@@ -22264,7 +22278,7 @@ TargetEnemy resists bondage and receives a reduced AMNT binding!
 TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 
 Target must be helpless.
-目标必须得是无助的。
+目标必须得是完全束缚的。
 You steal the target's disguise!
 你窃取了目标的伪装！
 You remove your disguise.
@@ -22276,10 +22290,7 @@ Steal Disguise
 Choose target to steal from
 选择要窃取的目标
 Steal's a helpless enemy's clothes, adding a great deal of distraction to her and stealing her disguise for yourself. Until you recast this on yourself, you gain a stealth bonus against members of the same faction.
-窃取无助的敌人的衣服，给她增添了很大的性奋值，同时也窃取了她的伪装给自己。除非你对自己重新施放这个，否则你会在对抗同一派系的成员时获得隐身奖励。
-
-
-
+窃取完全束缚的敌人的衣服，给她增添了很大的性奋值，同时也窃取了她的伪装给自己。除非你对自己重新施放这个，否则你会在对抗同一派系的成员时获得隐身奖励。
 Unstoppable (Ignore status/bondage)
 势不可挡 ( 无视状态/束缚 )
 Unflinching (Resist status/bondage)
@@ -22705,9 +22716,9 @@ Barricades set up by enemies do not expire, and enemies set them up even when no
 
 
 Pass thru helpless allies
-绕过无助的盟友
+绕过完全束缚的盟友
 Pass thru helpless enemies
-绕过无助的敌人
+绕过完全束缚的敌人
 Pass thru neutrals
 绕过中立实体
 Pass thru summons
@@ -23599,12 +23610,11 @@ Vine Bolt
 Gunslinger
 枪手
 Weapons abilities and other abilities that cost charge contribute 20% of their cost to Battle Rhythm.
-武器技能和其他需要消耗能量的技能会将其 20% 的成本转化为战斗节拍。
+将武器和其他技能消耗的体力的 20% 转化为战斗节拍。
 Effortless Assault
 连招
 Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
-基于你你的战斗节拍层数的百分比来减少武器体力消耗。
-
+战斗节拍将等比例减少武器攻击所需要的体力。
 +50 Evasion from using Phase
 使用相位时 +50 闪避
 
@@ -23709,14 +23719,15 @@ The Liquid Metal takes advantage of your status and engulfs you!
 
 
 Silver Burst
-爆发金属
+金属爆发
 Select a liquid metal tile
 选择液态金属块
-### Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding.
-### A powerful explosion simmers beneath the surface...'
-
+Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding.
+对液体金属生物释放，3 回合后它将爆发，扩散出更多液态金属并吞噬附近的任何生物。造成 DamageDealt 点碾压伤害并增加 80 点金属拘束。
 The ground shakes as a huge wall of liquid metal approaches!
-大地震动，巨大的液态金属墙逼近！
+随着一堵巨大的液态金属墙的逼近，地面开始震动！
+A powerful explosion simmers beneath the surface...
+强烈的爆炸在地表下酝酿着...
 Liquid Metal Cube
 液态金属方块
 ### The liquid metal cube dissolves into a huge pile of glittering dust.
@@ -23810,10 +23821,9 @@ How exactly is this supposed to work?
 这究竟是如何做到的？
 
 Invisible Armbinder
-隐形束手套
+隐形单手套
 It's an armbinder, but invisible!
-这是个束手套，但是是隐形的！
-
+这是个单手套，但是是隐形的！
 Invisible Legbinder
 隐形束腿套
 It's an legbinder, but invisible!
@@ -24529,21 +24539,21 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 
 
 More Armbinders
-更多束手套
+更多单手套
 Armbinders are favored over other heavy bondage.
-与其他重型的束缚相比，束手套更受欢迎。
+与其他重型的束缚相比，单手套更受欢迎。
 Less Armbinders
-减少束手套
+减少单手套
 Armbinders are less favored over other heavy bondage.
-与其他重型束缚相比，束手套更不受欢迎。
+与其他重型束缚相比，单手套更不受欢迎。
 More Boxbinders
-更多盒束包扎带
+更多盒式单手套
 Boxbinders are favored over other heavy bondage.
-与其他重型束缚相比，盒束包扎带更不受欢迎。
+与其他重型束缚相比，盒式单手套更不受欢迎。
 Less Boxbinders
-减少盒束包扎带
+减少盒式单手套
 Boxbinders are less favored over other heavy bondage.
-与其他重型束缚相比，盒束包扎带似乎不太受青睐。
+与其他重型束缚相比，盒式单手套似乎不太受青睐。
 More Straitjackets
 更多拘束衣
 Straitjackets are favored over other heavy bondage.
@@ -25090,88 +25100,32 @@ Warden Leg Cuffs
 
 Warden Ankle Cuffs
 典狱长踝铐
-
-
-Your buttons have been pushed, and not in a pleasant way!
-你的按钮已经被按下了，而且是以一种不愉快的方式！
-Defeat all taunting enemies or stay within the tiles to avoid shame!
-击败所有嘲讽的敌人或留在方格内以避免被羞辱！
-Degradating Taunts
-侮辱性嘲讽
-You failed to come up with a proper comeback!
-你没能想出合适的反击方式！
-
-The field of frost damages you as you are chilled!
-冰霜领域会让你因寒冷而受到伤害！
-Confirm Path
-确认路径
-
-
-Navigation Map
-导航地图
-Choose a path to take by clicking on a highlighted room.
-通过单击突出显示的房间来选择要采取的路径。
-Other paths will become inaccessible.
-其他路径将变得无法通行。
-Floor NMB
-层级 NMB
-Tileset:
-地形设置:
-Map Modifier:
-地图改动:
-Layout:
-布局:
-Controlling Faction:
-控制派系:
-Main Objective:
-主要目标:
-Points of Interest:
-兴趣点:
-
-Magical Study
-魔法研究
-Maintenance Hall
-保养大厅
-Ancient Chest
-远古宝箱
-Caldera Passage
-火山口通道
-Auction Hall
-拍卖厅
-Dark Altar
-黑暗祭坛
-Dimensional Rift
-次元裂隙
-Hoard
-宝库
-
-Witch's Lair
-女巫巢穴
-Mold Infestation
-霉菌感染
-Bandit Raid
-盗贼袭击
-Elemental Energy
-精灵能量
-Slime Infestation
-黏液侵袭
-Wolfgirl Training
-狼娘训练
-Drone Patrol
-无人机巡逻
-
-Shop
-店铺
-Chamber
-寝室
-Prison
-监狱
-Sorting Room
-分拣室
-
-Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
-点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在运行时共享。
-
+Play the game the way it was intended. Cruel and restrictive.
+按照游戏的初衷来玩，残酷的束缚
+More Bubbles
+更多泡泡
+Enemies that use bubbles (e.g. aqua slimes, water witches) will appear more frequently.
+使用泡泡的敌人 ( 如水生史莱姆、水巫师 ) 会更频繁地出现。
+Less Bubbles
+减少泡泡
+Fewer bubble-related enemies will appear, although this does not remove them entirely.
+与泡泡有关的敌人将会减少，但这并不能完全移除他们。
+No Blindfolds
+不愿蒙眼
+In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily.
+在大多数情况下，你不会被蒙上眼睛，但布眼罩除外，因为布眼罩很容易逃脱。
+Safeword Please
+请说安全词
+Allies don't help you unless you ask first.
+除非你先开口，否则盟友是不会帮你的。
+Stalker
+潜行者
+Darkness is twice as effective in hiding from enemies.
+躲避敌人时，在黑暗中会给予你双倍的隐蔽效果
+Antique Merchant
+古董商人
+You smash the antique merchant!
+你砸了古董商！
 You step on the item and tug to pull it taut...
 你踩在物品上并用力拉紧它......
 You tug furiously against the leash, pulling it taut!
@@ -25618,7 +25572,7 @@ The RSTRT feels a little looser!
 你感到 RSTRT 有点松！
 
 Crystal Armbinder
-水晶束手套
+水晶单手套
 A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires.
 生长的水晶将你的手臂融合在一起。混乱的能量向各个方向辐射，导致你慢慢失去对欲望的控制。
 Crystals are tough but not unbreakable.
@@ -26332,11 +26286,8 @@ Ransom Value: GP
 赎金: GP
 Current Gold: GP
 当前金币: GP
-### n/a
-
 [EXP: AMNT/LMT, +NXT next floor] Heel training reduces balance loss from heels.
-[经验: AMNT/LMT] 高跟鞋训练可以提高你的平衡能力，防止你摔倒。
-
+[经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
 Phase Dance active. Your next move is instant.
 相位舞蹈激活。你的下一步动作是即时的。
 Combat Maneuver active. Your next move is instant.
@@ -26350,6 +26301,739 @@ Combat Maneuver: Your next move is instant.
 
 Appointing managers increases the efficiency of other facilities.
 任命管理人员可以提高其他设施的效率。
+
+Total Efficiency Boost: AMNT
+总体效率提升: AMNT
+Restart required!
+需要重启！
+Domit
+支配者
+Beginner: Get a save code every 3 levels, autosave after each floor
+初学者 : ‎每3层获得一个保存代码
+You find some unexploded ordce.
+你发现了一些未爆炸的弹药
+Made of a magical, resot material.
+由神奇的共振材料制成。
+Revet
+亡魂
+The revet pouts as it vanishes.
+亡魂生气的消失了。
+The revet restrains you! (+RestraintAdded)
+亡魂束缚了你！ ( +RestraintAdded )
+The revet squeezes your breasts and slows you! (DamageTaken)
+亡魂在揉捏你的胸并减慢你的速度！ ( DamageTaken )
+The revet grabs you and caresses your tummy! (DamageTaken)
+亡魂抓住了你并抚摸你的肚子！ ( DamageTaken )
+A revet appears!
+一个亡魂出现了！
+Your collar pulses, and a revet appears to avenge the enemy you defeated!
+你的项圈跳动，一个亡魂出现，为你击败的敌人报仇！
+Your collar pulses, and a revet appears to assist you!
+你的项圈跳动，一个亡魂出现来帮助你！
+A band of faintly magic ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
+一条被赋予微弱魔法的丝带紧紧缠绕在你的眼睛上。可用于快速库存或快捷栏中的脆弱对象。
+A band of faintly magic ribbon wrapped tight over the mouth. Can be used on vulnerable targets from quick inventory or hotbar.
+一条被赋予微弱魔法的丝带紧紧缠绕在你的嘴边。可用于快速库存或快捷栏中的脆弱对象。
+A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
+一条神奇的祝福丝带紧紧地缠绕在你的眼睛上。可用于快速库存或快捷栏中的脆弱对象。
+A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar.
+一条神奇的祝福丝带紧紧地缠在你的嘴上。可用于快速库存或快捷栏中的脆弱对象。
+Sleek and shiny tape for the bondage enthusiast. Can be used on vulnerable targets from quick inventory or hotbar.
+光滑闪亮的胶带，适合捆绑爱好者使用。可用于快速库存或快捷栏中的脆弱对象。
+Sleek and shiny tape for the bondage enthusiast.
+光滑闪亮的胶带，适合捆绑爱好者使用。
+Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar.
+由金属材料制成的粘性胶带。在警用场合使用效果极佳。可用于快速库存或快捷栏中的脆弱对象。
+A stuffing of cloth. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+一块布团。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+一对钢制手铐牢固地锁在你的手腕上。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+A set of irish-8-style cuffs that are both restrictive and quick to apply. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+一套爱尔兰 8 式手铐，既具有束缚性又可快速佩戴。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+Tough shackles with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+带有简陋锁的坚固镣铐。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+Hinged cuffs with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+铰链手铐带有简易锁。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+A set of irish-8 style snap-shut cuffs fitted with a rudimentary lock. Can be applied on vulnerable targets if targeted from inventory or hotbar.
+一套爱尔兰 8 式镣铐，配有基本锁。如果在库存或快捷栏中锁定，则可对脆弱对象使用。
+Object
+目标
+Throw one of your knives DamageDealt damage. Lands in the target's tile, but is recoverable afterward.
+投掷你的一把刀，造成 DamageDealt 伤害，并落在命中目标的格子中。
+Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
+创造一个 1x1 的可通过的巨石屏障，在 DelayTime 回合内阻挡来自投射物的 BlockAmount 点伤害。
+A loud noise which stuns for Duration turns and attracts enemies to it. Long-ranged with a 3 turn delay.
+会在 Duration 回合内眩晕并吸引敌人。远距离释放。
+Make the targeted creature (or self) gain +20 damage for Duration turns or 5 attacks, whichever is lower.
+使目标生物在 Duration 回合内或下 5 次攻击中伤害增加 20。
+The lock is protected by a revet seal. You'll need 25 ectoplasm to disenchant it.
+这把锁由永久性密封件保护。你需要 25 个灵浆来打开它。
+Offer Pece
+忏悔
+A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20.
+设计时尚、古老的贞操胸罩。通电后，它能减少 20% 的攻击伤害。
+A chastity bra of sleek, ancient design. While powered, it reduces incoming damage by 10.
+设计时尚、古老的贞操胸罩。通电后，它能减少 10 点伤害。
+A good doll needs routine maintece~
+一个好的玩偶需要日常的保养~
+Maintece needed.
+需要维护。
+(The SPEAKER pouts indigtly)|Why say yes then?!|(The SPEAKER walks off grumbling)
+ ( SPEAKER 愤怒地撅起嘴 ) |那为什么要说'是'？！| ( SPEAKER 抱怨着走开 )
+(The SPEAKER pouts indigtly)|Oh no, you don't get out that easy.|You said you'd help!
+ ( SPEAKER 愤怒地撅起嘴 ) |哦不，你没那么容易出去。|你说过你会帮忙的！
+(The SPEAKER looks somewhat crazed)|I'm looking for some heavy ordce in order to...|...add to my collection.|Anyway, got any bombs?
+ ( SPEAKER 看起来有点疯狂 ) |我正在寻找一些重火力，以便...|...添加到我的收藏中。|无论如何，有炸弹吗？
+(No really, I don't want it!)
+ ( 真的，我不想要！ )
+It's powered by a chaos-resoce matrix, which can be overloaded by cutting the field.
+它由混沌共振矩阵提供动力，可以通过切割磁场来使其过载。
+Right Eye
+右眼
+Left Eye
+左眼
+HandCuffs
+手铐
+AMNT Mana Efficiency
++AMNT 魔力效果
+AMNT TYPE Mana Efficiency
++AMNT TYPE 魔力效果
+Designates the target for bondage and allows you to apply items from the inventory. Can only be applied to entities that are willing or disabled. Some items require higher levels of incapacitation to be applied
+指定目标将其束缚并允许你应用背包中的物品。以这种方式使用的物品无法恢复，只能应用于被击晕、完全束缚或以其他方式丧失能力的敌人。
+Include Weapons
+包括武器
+This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
+此门加载失败，无法打开。请向 Ada 报告此错误及存档码。
+Dressup Co.
+装扮公司
+Maintece Hall
+保养大厅
+Submissive prisoners and domit servants add different amounts of opinion per cycle
+顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
+'Cosplay'
+Cosplay
+HairBow
+蝴蝶结(发)
+Bow‎
+蝴蝶结
+HairBowFrilly
+蝴蝶结褶边(发)
+BowFrills
+蝴蝶结褶边
+Hairband
+发带
+MaidHairband
+女仆发带
+MaidFrill
+女仆发带褶边
+Hairband2
+发带2
+BackStraight
+后直发
+Curly
+卷发
+Curly Back
+卷发(后)
+CurlyBack
+卷发(后)
+Underlight
+打光
+Braid
+发辫
+Braid Front
+发辫(前)
+Braid Back
+发辫(后)
+Bangs Only
+仅刘海
+Bangs
+刘海
+Braid+Back
+发辫(后+)
+Braid Upper
+发辫(上)
+Braid Lower
+发辫(下)
+Back Only
+仅后部
+Fluffy
+蓬松的
+Fuzzy
+蓬松
+FrontStraight
+前直发
+Straight
+直发
+StraightBangs
+直刘海
+MessyBack
+凌乱(后)
+Messy
+凌乱
+MessyBackShort
+凌乱(后短)
+Short Messy
+凌乱(短)
+Ponytail
+马尾辫
+FluffyPonytail
+蓬松马尾辫
+Ponytail2
+马尾辫2
+TwintailRight
+双马尾(右)
+TwintailLeft
+双马尾(左)
+Ahoge
+呆毛
+AuraHair
+Aura发型
+HairAura_Front
+Aura发型(前)
+AuraBang_Left
+Aura刘海(左)
+HairAura_Left
+Aura发型(左)
+HairAura_LeftB
+Aura发型(左B)
+AuraBang_Right
+Aura刘海(右)
+HairAura_Right
+Aura发型(右)
+HairAura_RightB
+Aura发型(右B)
+AuraBang_Left_Back
+Aura刘海(左后)
+AuraBang_Right_Back
+Aura刘海(右后)
+Hair2
+发型2
+Hair2_Front
+发型2(前)
+Hair2_FrontB
+发型2(前B)
+Hair2_FrontC
+发型2(前C)
+Hair2_LeftPuff
+发型2(蓬松左)
+Hair2_Left
+发型2(左)
+Hair2_RightPuff
+发型2(蓬松右)
+Hair2_Right
+发型2(右)
+Hair3
+发型3
+Hair3_FrontA
+发型3(前A)
+Hair3_FrontC
+发型3(前C)
+Hair3_FrontD
+发型3(前D)
+Hair3_Short
+发型3(短)
+Hair4
+发型4
+Hair4_TailLeft
+发型4(马尾左)
+Hair4_TailRight
+发型4(马尾右)
+Hair5
+发型5
+Hair5_Highlight
+发型5(高光)
+Hair5_TailLeft
+发型5(马尾左)
+Hair5_TailRight
+发型5(马尾右)
+Hair6
+发型6
+Hair6_TailLeft
+发型6(马尾左)
+Hair6_TailRight
+发型6(马尾右)
+ElfCirclet
+精灵头环
+Circlet
+头环
+Gem
+宝石
+ElfEars
+精灵耳
+ElfFront
+精灵耳(前)
+ElfBack
+精灵耳(后)
+ElfEarsLong
+精灵长耳
+ElfLongFront
+精灵长耳(前)
+ElfLongBack
+精灵长耳(后)
+ElfEarsFloppy
+精灵垂耳
+ElfFloppyFront
+精灵垂耳(前)
+ElfFloppyBack
+精灵垂耳(后)
+BunnyEars
+兔耳
+EarsInner
+耳内
+KittyEars
+猫耳
+Kitty
+猫
+KittyInner
+猫(内)
+WolfEars
+狼耳
+Wolf
+狼
+WolfInner
+狼(内)
+FoxEars
+狐耳
+Fox
+狐
+FoxInner
+狐(内)
+WolfTail
+狼尾
+KittyTail
+猫尾
+Kitty2Tail
+猫尾2
+Kitty2
+猫2
+FoxTail
+狐尾
+Fox2Tail
+狐尾2
+Fox3Tail
+狐尾3
+Fox4Tail
+狐尾4
+Fox5Tail
+狐尾5
+Fox6Tail
+狐尾6
+Fox7Tail
+狐尾7
+KittyLatex
+胶猫
+KittyLatexEar
+胶猫耳
+KittyLatexTail
+胶猫尾
+KittyLatexTail2
+胶猫尾2
+SuccubusFeet
+魅魔之足
+Succubus
+魅魔
+SuccubusWing
+魅魔之翼
+SuccubusHorn
+魅魔之角
+SuccubusTail
+魅魔之尾
+SuccubusClaws
+魅魔之手
+NightWhip
+夜之鞭
+LatexWhip
+乳胶鞭
+NippleClamps
+乳头穿孔
+RingVibes
+乳环
+NippleWeights
+乳头砝码
+VibePiercings
+震动穿孔
+WitchHat
+女巫帽
+ApprenticeHat
+学徒帽
+ZombieHat
+僵尸帽
+Cat Eyes
+猫眼
+Cat Brows
+猫眉
+HumanEyes
+人眼
+Simple Mouth
+简单嘴
+Simple Blush
+简单腮红
+KjusEyes
+Kjus眼
+KjusEyes2
+Kjus眼2
+KjusEyes3
+Kjus眼3
+KjusEyes4
+Kjus眼4
+KjusMouth
+Kjus嘴
+KjusBrows
+Kjus眉
+KjusBlush
+Kjus腮红
+Hikimayu
+黛眉
+DaskEyes
+Dask眼
+Earrings
+耳环
+ElfEarrings
+精灵耳环
+Glasses
+眼镜
+MonocleLeft
+单片眼镜(左)
+MonocleRight
+单片眼镜(右)
+Goggles
+护目镜
+FullVisor
+全面罩
+FullVisorRim
+全面罩(边框)
+GasMask
+防毒面具
+BanditShorts
+强盗短裤
+Shorts
+短裤
+BanditWrist
+强盗短裤
+BanditPouch
+强盗腿环
+BanditKnee
+强盗膝盖
+BanditWrist
+强盗手环
+BanditBoots
+强盗靴子
+BanditBreastplate
+强盗胸甲
+Maidforce Agent
+女仆特工
+Striped Skirt
+条纹短裙
+MaidApron
+女仆围裙
+MaidBlouse
+女仆衬衫
+MaidBow
+女仆领带
+MaidCorset
+女仆束胸
+MaidCorsetFull
+女仆束胸(全)
+MaidShoes
+女仆鞋
+MaidSocks
+女仆长袜
+Stockings
+丝袜
+Witch
+女巫
+WitchBlouse
+女巫衬衫
+WitchCorset
+女巫束胸
+WitchShoes
+女巫鞋
+WitchSkirt
+女巫长裙
+Dragonheart
+龙之心
+WarriorBoots
+战士靴
+SportsBra
+运动内衣
+WarriorBustier
+战士束胸
+WarriorBelt
+战士腰带
+DragonNecklace
+龙项链
+DragonArmband
+龙臂章
+DragonCollar
+龙项圈
+WarriorSkirt
+战士短裙
+Robes
+死灵
+ZombieChestTalisman
+僵尸胸部护身符
+ZombieTalisman
+僵尸护身符
+ZombieTalismanBent
+僵尸护身符(弯)
+RobeBra
+死灵胸罩
+RobeSleeves
+死灵长袖
+RobeSleevesDeco
+死灵长袖带
+Ribbon
+丝带
+RobeSkirt
+死灵短裙
+Bunny Suit
+兔女郎
+BunnySocks
+兔女郎丝袜
+BunnyGloveLeft
+兔女郎手套(左)
+BunnyGloveRight
+兔女郎手套(右)
+BunnyGloves
+兔女郎手套
+BunnyLeotard
+兔女郎紧身衣
+BunnyLeotardUnder
+兔女郎紧身衣(底)
+Sailor
+水手服
+SailorCollar
+水手领
+SailorBow
+水手结
+SailorTop
+水手服(顶)
+SailorSleeves
+水手服袖
+SailorShirt
+水手服
+Dress
+礼服
+LaceCorset
+蕾丝束胸
+LaceBra
+蕾丝胸罩
+LaceBustier
+蕾丝胸罩
+LaceDeco
+蕾丝装饰
+LaceBraDeco
+蕾丝胸罩装饰
+BowCorset
+蝴蝶结束胸
+LatexCorset
+乳胶束胸
+LacePanties
+蕾丝内裤
+DressSkirt
+礼服裙
+DressSkirtSplit
+礼服裙(开叉)
+DressShoes
+礼服鞋
+BindingDress
+束缚连衣裙
+MageSkirt
+法师裙
+MageTop
+法师(顶)
+ChineseDress
+旗袍
+ChineseBra
+旗袍(胸)
+ChineseTop
+旗袍(顶)
+Yukata
+浴衣
+YukataWaist
+浴衣腰围
+Allow Front Plugs
+允许阴塞
+Load Game
+加载游戏
+Load Code
+加载代码
+No Data
+无数据
+Play (NO SLOT!)
+加载 ( 未选择存档 )
+Play Slot
+加载 ⁧ 号存档 ⁦⁦
+Save From Code
+从代码中导入
+Floor
+楼层
+Standard Route
+标准路线 ‎
+Alternate Route
+变种路线 ‎
+Temple Route
+神殿路线 ‎
+Jungle Route
+丛林路线 ‎
+Factory Route
+工厂路线 ‎
+Reverse Route
+颠倒路线 ‎
+Chaos Route
+混沌路线 ‎
+Map Seed:
+地图种子 : ‎
+Choose Save Slot:
+选择存档槽位 :
+Will Overwrite!
+存档将被覆盖
+ (Hard)
+ ( 困难 )
+ (Extreme)
+ ( 极端 )
+Confirm and OVERWRITE SAVE
+确认并覆盖存档
+Override Outfit when Loading Save
+加载存档时覆盖服装
+Save Outfits within Save Files
+将服装数据附加到存档内
+Show Background Art
+显示背景
+Show Zoom Buttons
+显示缩放按钮
+Show DP instead of %
+显示具体的分心值
+Quick Inv only equips to self
+快速背包物品仅装备玩家自己
+Journal
+日志
+Outfit Code
+服装代码
+Store to File
+保存为文件
+Delete?
+删除？
+Mod Configuration
+模组配置
+No Mod Selected
+未选择模组
+Looks like you might be stuck. Try calling for help (bottom right of UI)
+看来你可能被卡住了，尝试呼叫帮助（界面右下角）
+Delete Save
+删除存档
+Saving Disabled
+保存被禁用
+Save Game to File
+保存游戏到文件
+Super Strength
+超级力量
+AMNT% chance to hit you
+AMNT% 的概率击中你
+No Hoods
+无头套
+Removes hoods from the game.
+移除游戏中所有头套
+No Sense Deprivation
+无感觉剥夺
+Removes sensory deprivation hood/mask from the game.
+移除游戏中所有感觉剥夺头套和面罩
+No Kigurumi Masks
+无KI面罩
+Removes face-mimicking masks from the game.
+移除游戏中所有KIG面罩
+Unmasked
+无面罩
+Hoods and full-face covering masks do not appear, but blindfolds are more powerful.
+头套和全覆盖面罩将不会出现，但眼罩将得到增强
+Preferences 2
+偏好 2
+Reaching Authority
+语威延伸
+If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
+在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
+
+Your buttons have been pushed, and not in a pleasant way!
+你的按钮已经被按下了，而且是以一种不愉快的方式！
+Defeat all taunting enemies or stay within the tiles to avoid shame!
+击败所有嘲讽的敌人或留在方格内以避免被羞辱！
+Degradating Taunts
+侮辱性嘲讽
+You failed to come up with a proper comeback!
+你没能想出合适的反击方式！
+
+The field of frost damages you as you are chilled!
+冰霜领域会让你因寒冷而受到伤害！
+Confirm Path
+确认路径
+
+
+Navigation Map
+导航地图
+Choose a path to take by clicking on a highlighted room.
+通过单击突出显示的房间来选择要采取的路径。
+Other paths will become inaccessible.
+其他路径将变得无法通行。
+Floor NMB
+层级 NMB
+Tileset:
+地形设置:
+Map Modifier:
+地图改动:
+Layout:
+布局:
+Controlling Faction:
+控制派系:
+Main Objective:
+主要目标:
+Points of Interest:
+兴趣点:
+
+Magical Study
+魔法研究
+Maintenance Hall
+保养大厅
+Ancient Chest
+远古宝箱
+Caldera Passage
+火山口通道
+Auction Hall
+拍卖厅
+Dark Altar
+黑暗祭坛
+Dimensional Rift
+次元裂隙
+Hoard
+宝库
+
+Witch's Lair
+女巫巢穴
+Mold Infestation
+霉菌感染
+Bandit Raid
+盗贼袭击
+Elemental Energy
+精灵能量
+Slime Infestation
+黏液侵袭
+Wolfgirl Training
+狼娘训练
+Drone Patrol
+无人机巡逻
+
+Shop
+店铺
+Chamber
+寝室
+Prison
+监狱
+Sorting Room
+分拣室
+
+Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
+点击快捷栏位置，即可将项目分配到该槽。|您可以点击右侧的交换按钮，在三个热栏之间进行切换。||您还可以为您的快捷栏保存和加载预设。|这些预设在运行时共享。
+
+
 ### Total Efficiency Boost: AMNT%
 ### idle
 
@@ -26510,3 +27194,4 @@ Play (NO SLOT!)
 ### Gag Necklace
 ### A cute accessory for those who wish to (not) make a statement.
 ### Functions as a collar.
+

@@ -5102,6 +5102,7 @@ function KinkyDungeonHandleClick() {
 			let langIndex = KDLanguages.indexOf(localStorage.getItem("BondageClubLanguage")) || 0;
 			let newIndex = (langIndex + 1) % KDLanguages.length;
 			localStorage.setItem("BondageClubLanguage", KDLanguages[newIndex]);
+			localStorage.setItem("LanguageChange","1")
 			KDRestart = true;
 			return true;
 		}
