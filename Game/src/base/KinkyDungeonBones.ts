@@ -114,9 +114,11 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["NinjaStalker", [
 		{name: "Alisa", color: "#575699", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
+		{name: "Rai", color: "#5D6396", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rai"},
 	],
 	],
 	["Ninja", [
+		{name: "Rai", color: "#5D6396", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rai2"},
 		{name: "Alisa", color: "#575699", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
 		{name: "Rizo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
 		{name: "Rizo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "Another day, another hunt.", customSprite: "Alisa"},
@@ -175,9 +177,12 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["WitchFlame", [
-		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "",
+		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "Myrtrice",
 			customStyle: "Myrtrice", customOutfit: "Myrtrice",
 			customIntro: "All creatures are made to bow to me.", customSprite: "Myrtrice"},
+		{name: "Myrtrice", color: "#d30000", prisoner: false, free: true, customPlayLine: "Myrtrice",
+			customStyle: "Myrtrice", customOutfit: "Myrtrice",
+			customIntro: "All creatures are made to bow to me.", customSprite: "Myrtrice2"},
 	],
 	],
 	["DragonGirlShadow", [

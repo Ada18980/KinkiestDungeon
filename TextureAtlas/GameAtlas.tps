@@ -997,6 +997,7 @@
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Myrtrice2.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Nara.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Parov.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Rook.png</key>

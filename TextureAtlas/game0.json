@@ -32,14 +32,6 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":144,"h":144}
 },
-"Game/AutoStruggle.png":
-{
-	"frame": {"x":1993,"y":2011,"w":54,"h":34},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":17,"w":54,"h":34},
-	"sourceSize": {"w":56,"h":56}
-},
 "Game/Bullets/ArcaneStrikeHit.png":
 {
 	"frame": {"x":1747,"y":974,"w":216,"h":216},
@@ -178,7 +170,7 @@
 },
 "Game/Bullets/SlimeWallVertHit.png":
 {
-	"frame": {"x":1993,"y":1791,"w":18,"h":72},
+	"frame": {"x":1993,"y":1717,"w":18,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":0,"w":18,"h":72},
@@ -218,7 +210,7 @@
 },
 "Game/Conditions/ArmorBuff.png":
 {
-	"frame": {"x":1993,"y":1938,"w":46,"h":71},
+	"frame": {"x":1993,"y":1937,"w":46,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":46,"h":71},
@@ -274,10 +266,10 @@
 },
 "Game/Enemies/CustomSprite/Myrtrice.png":
 {
-	"frame": {"x":1993,"y":1717,"w":52,"h":72},
+	"frame": {"x":1993,"y":1791,"w":51,"h":71},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":11,"y":0,"w":52,"h":72},
+	"spriteSourceSize": {"x":13,"y":1,"w":51,"h":71},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/LatexCubeHidden.png":
@@ -304,9 +296,25 @@
 	"spriteSourceSize": {"x":20,"y":5,"w":31,"h":62},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/EnemiesBound/Head/CherubFire.png":
+{
+	"frame": {"x":1993,"y":2010,"w":54,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":28,"w":54,"h":37},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/EnemiesBound/HolyConstruct.png":
+{
+	"frame": {"x":1993,"y":2010,"w":54,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":28,"w":54,"h":37},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/FloorGeneric/Crack.png":
 {
-	"frame": {"x":1993,"y":1865,"w":50,"h":71},
+	"frame": {"x":1993,"y":1864,"w":50,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":0,"w":50,"h":71},
@@ -354,7 +362,7 @@
 },
 "Game/FloorGeneric/Dummy1.png":
 {
-	"frame": {"x":2013,"y":1791,"w":34,"h":71},
+	"frame": {"x":2013,"y":1717,"w":34,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":19,"y":1,"w":34,"h":71},
@@ -930,7 +938,7 @@
 },
 "Game/Spells/SlimeWallVert.png":
 {
-	"frame": {"x":1993,"y":1791,"w":18,"h":72},
+	"frame": {"x":1993,"y":1717,"w":18,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":0,"w":18,"h":72},
@@ -1007,6 +1015,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:cd45dd3b98fe2739696c2386a6ef9b3c:9b1095aa07d6e300e2f0b7c24c8c3454:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:15156976ea52d1951e1869e4fd077a9c:2de14517533c77f69d73090308066121:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

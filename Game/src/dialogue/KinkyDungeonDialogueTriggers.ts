@@ -100,7 +100,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 		["elf"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
 
-	"OfferWolfRestraint": KDDialogueTriggerOffer("OfferWolfRestraint", ["Metal", "Latex"], ["wolfRestraints"],
+	"OfferWolfRestraint": KDDialogueTriggerOffer("OfferWolfRestraint", ["Metal", "Latex"], ["wolfRestraints", "wolfRestraintsHeavy"],
 		["parole", "", "chase", "jail"],  ["Dom", ""],
 		["trainer"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),

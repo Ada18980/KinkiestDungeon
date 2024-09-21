@@ -589,15 +589,15 @@ function KDDrawHeartTablet() {
 		let amnt = Math.floor(amount * 10);
 		let amnt2 = KDStat[KDStatChoice].getAmnt2 ? KDStat[KDStatChoice].getAmnt2(amnt) : 0;
 		DrawTextFitKD(TextGet("KDStatBuy" + KDStatChoice + "Desc").replace("AMNT", "" + amnt),
-			KDModalArea_x + 625, KDModalArea_y - 220, 450, "#ffffff", undefined, 20,);
+			KDModalArea_x + 625, KDModalArea_y + 220, 450, "#ffffff", undefined, 20,);
 		if (TextGet("KDStatBuy" + KDStatChoice + "Desc2") != "KDStatBuy" + KDStatChoice + "Desc2")
 			DrawTextFitKD(TextGet("KDStatBuy" + KDStatChoice + "Desc2").replace("AMNT", "" + amnt2),
-				KDModalArea_x + 625, KDModalArea_y - 220 + 25, 450, "#ffffff", undefined, 20,);
+				KDModalArea_x + 625, KDModalArea_y + 220 + 25, 450, "#ffffff", undefined, 20,);
 
 		DrawButtonKDEx("heartbuyconfirm", (_bdata) => {
 			KDSendInput("heart", {type: KDStatChoice, targetTile: KinkyDungeonTargetTileLocation, amount: amount});
 			return true;
-		}, true, KDModalArea_x + 500, KDModalArea_y - 50, 250, 45, TextGet("KDStatBuyConfirm"), "#ffffff", "", "", false,
+		}, true, KDModalArea_x + 500, KDModalArea_y + 300, 250, 45, TextGet("KDStatBuyConfirm"), "#ffffff", "", "", false,
 		false, KDTextGray2);
 	}
 

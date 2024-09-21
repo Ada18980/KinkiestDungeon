@@ -258,7 +258,7 @@
 },
 "Game/Bullets/LockBullet.png":
 {
-	"frame": {"x":1221,"y":1681,"w":60,"h":26},
+	"frame": {"x":966,"y":2018,"w":60,"h":26},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":24,"w":60,"h":26},
@@ -298,7 +298,7 @@
 },
 "Game/Bullets/RobotBolt.png":
 {
-	"frame": {"x":1088,"y":2018,"w":58,"h":28},
+	"frame": {"x":1150,"y":2018,"w":58,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":22,"w":58,"h":28},
@@ -442,7 +442,7 @@
 },
 "Game/Bullets/ZombieOrb.png":
 {
-	"frame": {"x":1027,"y":2018,"w":59,"h":28},
+	"frame": {"x":1089,"y":2018,"w":59,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":22,"w":59,"h":28},
@@ -640,20 +640,20 @@
 	"spriteSourceSize": {"x":11,"y":0,"w":52,"h":70},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Enemies/CustomSprite/Myrtrice2.png":
+{
+	"frame": {"x":1221,"y":1460,"w":60,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":60,"h":72},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Enemies/CustomSprite/Selly.png":
 {
 	"frame": {"x":2000,"y":1366,"w":44,"h":67},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":16,"y":0,"w":44,"h":67},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Enemies/DollmakerBoss3b.png":
-{
-	"frame": {"x":1221,"y":1608,"w":62,"h":71},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":5,"y":1,"w":62,"h":71},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/DragonVineFlower.png":
@@ -778,7 +778,7 @@
 },
 "Game/EnemiesBound/NawashiZombie.png":
 {
-	"frame": {"x":966,"y":2018,"w":59,"h":29},
+	"frame": {"x":1028,"y":2018,"w":59,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":31,"w":59,"h":29},
@@ -810,7 +810,7 @@
 },
 "Game/FloorGeneric/FutureBox.png":
 {
-	"frame": {"x":1221,"y":1460,"w":60,"h":72},
+	"frame": {"x":1221,"y":1534,"w":60,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":0,"w":60,"h":72},
@@ -898,7 +898,7 @@
 },
 "Game/Items/BoltCutters.png":
 {
-	"frame": {"x":1148,"y":2018,"w":58,"h":18},
+	"frame": {"x":1221,"y":1682,"w":58,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":26,"w":58,"h":18},
@@ -1458,7 +1458,7 @@
 },
 "Game/UI/CollectionTab/AutoBind.png":
 {
-	"frame": {"x":1221,"y":1534,"w":60,"h":72},
+	"frame": {"x":1221,"y":1608,"w":60,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":60,"h":72},
@@ -1576,6 +1576,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:cd45dd3b98fe2739696c2386a6ef9b3c:9b1095aa07d6e300e2f0b7c24c8c3454:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:15156976ea52d1951e1869e4fd077a9c:2de14517533c77f69d73090308066121:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

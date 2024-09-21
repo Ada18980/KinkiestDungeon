@@ -5692,8 +5692,16 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				let list = KDMapData.Entities.filter((en) => {
 					return KDAllied(en);
 				});
+				let i = 0;
 				for (let en of list)
 					if (en && en.buffs?.AllySelect) {
+						if (!KDEntityHasFlag(en, "Defensive") && (KDRandom() < 0.5 || i == 0)) {
+							KinkyDungeonSendDialogue(en,
+								TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(en) ? KDGetEnemyPlayLine(en) : "") + "CommandDefend")
+									.replace("EnemyName", TextGet("Name" + en.Enemy.name)), KDGetColor(en),
+								7, 7, false, true);
+							i++;
+						}
 						KinkyDungeonSetEnemyFlag(en, "Defensive", -1);
 					}
 			}
