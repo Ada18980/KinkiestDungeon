@@ -24,7 +24,7 @@
         "Scripts/Appearance.ts",
         "Game/src/base/KDModUtils.ts",
         "Game/src/base/KDShaders.ts",
-        "Game/src/player/KDAutoStruggle.js",
+        "Game/src/player/KDAutoStruggle.ts",
         "Game/src/player/KDClasses.ts",
         "Game/src/base/KDParticles.ts",
         "Game/src/restraint/KDLocks.ts",
