@@ -204,10 +204,7 @@ let KDPerkUpdateStats = {
 	},
 };
 
-/**
- * @type {Record<string, () => string>}
- */
-let KDPerkCount = {
+let KDPerkCount: Record<string, () => string> = {
 	"BerserkerRage": () => {
 		return " "
 			+ (KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax > 0.25 ? "! " : "")
@@ -225,10 +222,7 @@ let KDPerkCount = {
 	},
 };
 
-/**
- * @type {Record<string, KDPerk>}
- */
-let KinkyDungeonStatsPresets = {
+let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"MC_Fighter":  {category: "Multiclass", id: "MC_Fighter", debuff: true, cost: 2, blockclass: ["Fighter"], tags: ["start", "mc"]},
 	"MC_Rogue":  {category: "Multiclass", id: "MC_Rogue", cost: 2, blockclass: ["Rogue"], tags: ["start", "mc"]},
 	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", debuff: true, cost: 2, blockclass: ["Mage"], tags: ["start", "mc"]},
@@ -488,7 +482,7 @@ let KinkyDungeonStatsPresets = {
 
 
 
-function KDGetPerkCost(perk) {
+function KDGetPerkCost(perk: KDPerk): number {
 	if (!perk) return 0;
 	if (!perk.costGroup) return perk.cost;
 	let costGroups = {};
@@ -509,7 +503,7 @@ function KDGetPerkCost(perk) {
 	else return perk.cost;
 }
 
-function KinkyDungeonGetStatPoints(Stats) {
+function KinkyDungeonGetStatPoints(Stats: Map<any, any>): number {
 	let total = KinkyDungeonStatsChoice.get("vhardperksMode") ? -25
 		: (KinkyDungeonStatsChoice.get("hardperksMode") ? -10
 		: (KinkyDungeonStatsChoice.get("perksMode") ? 10
@@ -523,13 +517,13 @@ function KinkyDungeonGetStatPoints(Stats) {
 	}
 	return total;
 }
+
 /**
  * Determine if a perk can be picked with a certain number of points remaining
- * @param {string} Stat
- * @param {number} [points]
- * @returns {boolean}
+ * @param Stat
+ * @param [points]
  */
-function KinkyDungeonCanPickStat(Stat, points) {
+function KinkyDungeonCanPickStat(Stat: string, points?: number): boolean {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
 	if (KDGetPerkCost(stat) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(stat)) return false;
@@ -550,10 +544,9 @@ function KinkyDungeonCanPickStat(Stat, points) {
 
 /**
  * General validation for a perk
- * @param {KDPerk} stat
- * @returns {boolean}
+ * @param stat
  */
-function KDValidatePerk(stat) {
+function KDValidatePerk(stat: KDPerk): boolean {
 	if (stat.requireArousal && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 	if (stat.blockclass) {
 		for (let t of stat.blockclass)
@@ -563,11 +556,11 @@ function KDValidatePerk(stat) {
 }
 
 /**
- * @param {string} perk1
- * @param {string} perk2
- * @returns {boolean}
- * Determines if perk1 is blocked by another perk or in general */
-function KDPerkBlocked(perk1, perk2) {
+ * Determines if perk1 is blocked by another perk or in general
+ * @param perk1
+ * @param perk2
+ */
+function KDPerkBlocked(perk1: string, perk2: string): boolean {
 	if (KinkyDungeonStatsPresets[perk2] && KinkyDungeonStatsPresets[perk1]) {
 		if (!KDValidatePerk(KinkyDungeonStatsPresets[perk1])) return false;
 		if (KinkyDungeonStatsPresets[perk2].block && KinkyDungeonStatsPresets[perk2].block.includes(perk1)) {
@@ -581,7 +574,7 @@ function KDPerkBlocked(perk1, perk2) {
 	return false;
 }
 
-function KinkyDungeonCanUnPickStat(Stat) {
+function KinkyDungeonCanUnPickStat(Stat: string): boolean {
 	let stat = KinkyDungeonStatsPresets[Stat];
 	if (!stat) return false;
 	if (KDGetPerkCost(stat) < 0 && KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice) < -KDGetPerkCost(stat)) return false;
@@ -873,7 +866,8 @@ let KDPerksIndexUIWeight = 4;
 let KDCategories = [
 
 ];
-function KinkyDungeonDrawPerks(NonSelectable) {
+
+function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 	let fadeColor = NonSelectable ? "#808080" : "#999999";
 	let X = Math.round(KDPerksXStart - KDPerksScroll * KDPerksIndexUI);
 	let Y = KDPerksYStart;
@@ -946,7 +940,7 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 					let colorExpensive = KDGetPerkCost(stat[1]) > 0 ? "#555588" : KDGetPerkCost(stat[1]) < 0 ? "#885555" : "#555588";
 
 					//perksdrawn++;x
-					DrawButtonKDExTo(kdUItext, stat[0], (bdata) => {
+					DrawButtonKDExTo(kdUItext, stat[0], (_bdata) => {
 						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
 							KinkyDungeonStatsChoice.set(stat[0], true);
 							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
@@ -1016,14 +1010,14 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	}
 
 
-	DrawButtonKDEx("perks>", (bdata) => {
+	DrawButtonKDEx("perks>", (_bdata) => {
 		if (catsdrawn > 2 && !(document.activeElement?.id == 'PerksFilter')) {
 			KDPerksIndex += 1;
 		}
 		return true;
 	}, true, 1750, 50, 100, 50, ">>", KDTextWhite);
 
-	DrawButtonKDEx("perks<", (bdata) => {
+	DrawButtonKDEx("perks<", (_bdata) => {
 		if (KDPerksIndex > 0 && !(document.activeElement?.id == 'PerksFilter')) {
 			KDPerksIndex -= 1;
 		}
@@ -1035,14 +1029,14 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 	let left = adjLists.left;
 	let right = adjLists.right;
 
-	drawVertList(left.reverse(), 380, tooltip ? 85 : 190, 250, 25, tooltip ? 4 : 8, 18, (data) => {
-		return (bdata) => {
+	drawVertList(left.reverse(), 380, tooltip ? 85 : 190, 250, 25, tooltip ? 4 : 8, 18, (data: any) => {
+		return (_bdata: any) => {
 			KDPerksIndex = indexList[data.name];
 			return true;
 		};
 	}, "KDCategory");
-	drawVertList(right, 1620, tooltip ? 85 : 190, 250, 25, tooltip ? 4 : 8, 18, (data) => {
-		return (bdata) => {
+	drawVertList(right, 1620, tooltip ? 85 : 190, 250, 25, tooltip ? 4 : 8, 18, (data: any) => {
+		return (_bdata: any) => {
 			KDPerksIndex = Math.max(0, indexList[data.name] - 2);
 			return true;
 		};
@@ -1055,18 +1049,17 @@ function KinkyDungeonDrawPerks(NonSelectable) {
 }
 
 /**
- *
- * @param {any[]} list
- * @param {number} x
- * @param {number} y
- * @param {number} w
- * @param {number} h
- * @param {number} max
- * @param {number} fontSize
- * @param {(any) => ((any) => boolean)} clickfnc
- * @param {string} prefix
+ * @param list
+ * @param x
+ * @param y
+ * @param w
+ * @param h
+ * @param max
+ * @param fontSize
+ * @param clickfnc
+ * @param prefix
  */
-function drawVertList(list, x, y, w, h, max, fontSize, clickfnc, prefix) {
+function drawVertList(list: any[], x: number, y: number, w: number, h: number, max: number, fontSize: number, clickfnc: (a: any) => ((a: any) => boolean), prefix: string) {
 	for (let i = 0; i < list.length && i < max; i++) {
 		let name = list[i];
 		DrawButtonKDEx(name + x + "," + y, clickfnc({name: name}), true, x - w/2, y - (h+1) * i, w, h, TextGet(prefix + name), KDTextWhite, undefined, undefined, undefined, true, undefined, fontSize);
@@ -1075,19 +1068,18 @@ function drawVertList(list, x, y, w, h, max, fontSize, clickfnc, prefix) {
 
 
 /**
- *
- * @param {any[]} list
- * @param {number} x
- * @param {number} y
- * @param {number} w
- * @param {number} h
- * @param {number} max
- * @param {number} fontSize
- * @param {(any) => ((any) => boolean)} clickfnc
- * @param {string} prefix
- * @param {boolean} reverse
+ * @param list
+ * @param x
+ * @param y
+ * @param w
+ * @param h
+ * @param max
+ * @param fontSize
+ * @param clickfnc
+ * @param prefix
+ * @param reverse
  */
-function drawHorizList(list, x, y, w, h, max, fontSize, clickfnc, prefix, reverse) {
+function drawHorizList(list: any[], x: number, y: number, w: number, h: number, max: number, fontSize: number, clickfnc: (a: any) => ((a: any) => boolean), prefix: string, reverse: boolean) {
 	for (let i = 0; i < list.length && i < max; i++) {
 		let name = list[i];
 		DrawButtonKDEx(name + x + "," + y, clickfnc({name: name}), true, x + (reverse ? -1 : 1) * (w+1) * i - w/2, y, w, h,
@@ -1096,12 +1088,10 @@ function drawHorizList(list, x, y, w, h, max, fontSize, clickfnc, prefix, revers
 }
 
 /**
- *
- * @param {Record<string, boolean>} existing
- * @param {boolean} [debuff]
- * @returns {string[]}
+ * @param existing
+ * @param [debuff]
  */
-function KDGetRandomPerks(existing, debuff) {
+function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean): string[] {
 	let poscandidate = null;
 	let poscandidates = [];
 	let singlepointcandidates = [];
@@ -1171,11 +1161,9 @@ function KDGetRandomPerks(existing, debuff) {
 }
 
 /**
- *
- * @param {string[]} perks
- * @returns {string[]}
+ * @param perks
  */
-function KDGetPerkShrineBondage(perks) {
+function KDGetPerkShrineBondage(perks: string[]): string[] {
 	let ret = [];
 	if (!KinkyDungeonStatsChoice.get("perkNoBondage")) {
 		let cost = 0;

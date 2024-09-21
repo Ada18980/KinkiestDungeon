@@ -53,7 +53,7 @@
         "Game/src/map/KinkyDungeonMapMods.ts",
         "Game/src/map/KDSideRooms.ts",
         "Game/src/map/KinkyDungeonBoss.ts",
-        "Game/src/player/KinkyDungeonPerks.js",
+        "Game/src/player/KinkyDungeonPerks.ts",
         "Game/src/map/KinkyDungeonParams.ts",
         "Game/src/base/KinkyDungeonVision.ts",
         "Game/src/faction/KinkyDungeonQuest.ts",
