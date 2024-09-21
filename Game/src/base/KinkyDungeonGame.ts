@@ -1719,7 +1719,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 
 	let enemyCount = 4 + Math.floor(Math.sqrt(Floor) + width/10 + height/10 + Math.sqrt(KinkyDungeonDifficulty));
 	if (KinkyDungeonStatsChoice.get("Stealthy")) enemyCount = Math.round(enemyCount * KDStealthyEnemyCountMult);
-	let neutralCount = 0.4 * enemyCount;
+	let neutralCount = 0.4 * enemyCount; // Cant have more than 40% of the level NOT be hostile
 	if (KDTileToTest) {
 		enemyCount = 1;
 	}
