@@ -1321,7 +1321,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 			}
 		}
 		KinkyDungeonChangeMana(-data.manacost);
-		if (spell.staminacost) KinkyDungeonChangeStamina(-spell.staminacost, false, true);
+		if (spell.staminacost) KinkyDungeonChangeStamina(-spell.staminacost, false, 1);
 		if (data.channel) {
 			KinkyDungeonSetFlag("channeling", data.channel);
 			KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);

@@ -462,7 +462,7 @@ let KinkyDungeonSpellSpecials: Record<string, (spell: spell, data: any, targetX:
 				let tileOppY = targetY + Math.sign(targetY - entity.y);
 				let oppTile = KinkyDungeonMapGet(tileOppX, tileOppY);
 				if (KDCrackableTiles.includes(oppTile) || KinkyDungeonMovableTiles.includes(oppTile)) {
-					KinkyDungeonChangeStamina(-3, false, true);
+					KinkyDungeonChangeStamina(-3, false, 1);
 					KDCrackTile(targetX, targetY, undefined, {});
 					KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeSucceed"), "#88ff88", 1, false);
 					return "Cast";

@@ -35,7 +35,7 @@
         "Game/src/enemy/KDLoadoutList.ts",
         "Game/src/restraint/KDApplyVariants.ts",
         "Game/src/item/KDInventoryActions.ts",
-        "Game/src/player/KinkyDungeonStats.js",
+        "Game/src/player/KinkyDungeonStats.ts",
         "Game/src/player/KDTraining.ts",
         "Game/src/map/KinkyDungeonEditorTiles.ts",
         "Game/src/map/KinkyDungeonEditor.ts",

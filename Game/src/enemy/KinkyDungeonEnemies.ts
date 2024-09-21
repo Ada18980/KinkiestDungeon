@@ -5750,7 +5750,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						}
 						data.happened += dmg.happened;
 						if (staminaDamage) {
-							KinkyDungeonChangeStamina(-staminaDamage, false, true, false, KDGetStamDamageThresh());
+							KinkyDungeonChangeStamina(-staminaDamage, false, 1, false, KDGetStamDamageThresh());
 							data.happened += staminaDamage;
 						}
 						if (!enemy.playWithPlayer)

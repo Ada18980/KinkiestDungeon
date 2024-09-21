@@ -1466,7 +1466,7 @@ function KinkyDungeonPickAttempt(): boolean {
 	}
 	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonAttemptPick" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject")), (Pass == "Success") ? "lightgreen" : "#ff5277", 1);
 	if (chargecosts) {
-		KinkyDungeonChangeStamina(cost, 1);
+		KinkyDungeonChangeStamina(cost, true);
 		KinkyDungeonChangeWill(wcost);
 	}
 	KinkyDungeonSetFlag("tryescaping", 3);
