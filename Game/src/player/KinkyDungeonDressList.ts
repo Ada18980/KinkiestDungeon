@@ -1,10 +1,7 @@
 "use strict";
 
-// Outfit resource, uncached
-/**
- * @type {outfit[]}
- */
-let KinkyDungeonOutfitsBase = [
+/**  Outfit resource, uncached  */
+let KinkyDungeonOutfitsBase: outfit[] = [
 	{name: "OutfitDefault", dress: "Default", shop: false, rarity: 1,},// To avoid breaking saves
 	{name: "Default", dress: "Default", shop: false, rarity: 1},
 	{name: "LatexPrisoner", dress: "LatexPrisoner", shop: false, rarity: 1},
@@ -128,9 +125,8 @@ let KinkyDungeonOutfitsBase = [
 
 /**
  * List off all dresses items
- * @type {Record<string,KinkyDungeonDress>}
  */
-let KinkyDungeonDresses = {
+let KinkyDungeonDresses: Record<string,KinkyDungeonDress> = {
 	"Default" : KinkyDungeonDefaultDefaultDress,
 	"Prisoner" : [
 		{Item: "SleevelessCatsuit", Group: "Suit", Color: "#8A120C", Lost: false},

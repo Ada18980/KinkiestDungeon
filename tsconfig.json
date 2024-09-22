@@ -85,7 +85,7 @@
         "Game/src/player/KDExpressions.ts",
         "Game/src/enemy/KDPersistence.ts",
         "Game/src/map/KinkyDungeonEffectTiles.ts",
-        "Game/src/player/KinkyDungeonDressList.js",
+        "Game/src/player/KinkyDungeonDressList.ts",
         "Game/src/item/KinkyDungeonConsumables.ts",
         "Game/src/item/KinkyDungeonConsumablesList.ts",
         "Game/src/item/KinkyDungeonInventory.ts",
