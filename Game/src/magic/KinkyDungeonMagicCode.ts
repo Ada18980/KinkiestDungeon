@@ -1530,7 +1530,7 @@ let KinkyDungeonSpellSpecials: Record<string, (spell: spell, data: any, targetX:
 			if (!KDGameData.CurrentVibration) {
 				KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 0.5, 30, undefined, undefined, undefined, undefined, true);
 			} else {
-				KinkyDungeonAddVibeModifier(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 1, 30, undefined, false, false, false, false, true, 0.1, 0.2);
+				KinkyDungeonAddVibeModifier(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes[0], 1, 30, undefined, false, false, false, false, true, 0.1, 0.2);
 			}
 			cast = true;
 		}
