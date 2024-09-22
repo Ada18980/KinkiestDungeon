@@ -1785,16 +1785,6 @@ function KDFilterSpellPageNames() {
 	return pages;
 }
 
-/*  FIXME: `pages` is probably actually a number...  */
-function KDCorrectCurrentSpellPage(_pages: any): number {
-	let ret = 0;
-	for (let i = 0; i < KinkyDungeonCurrentSpellsPage; i++) {
-		if (!KDGameData.AllowedSpellPages[KinkyDungeonSpellPages[i]]) {
-			ret += 1;
-		}
-	}
-	return ret;
-}
 
 let KDMagicFilter = "";
 

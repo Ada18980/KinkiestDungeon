@@ -255,7 +255,6 @@ function KinkyDungeonChangeRep(Rep: string, Amount: number): boolean {
 			for (const [k, v] of Object.entries(KDFactionGoddess[Rep]) as [string, number][]) {
 				let mult = (Amount > 0 ? 1 : 1);
 				if (Amount > 0) {
-					/*  FIXME: Check I refactored this correctly.  */
 					const relation = KDFactionRelation("Player", k);
 					if (relation <= -0.25)      mult *= 0.5;
 					else if (relation <= -0.1)  mult *= 0.75;

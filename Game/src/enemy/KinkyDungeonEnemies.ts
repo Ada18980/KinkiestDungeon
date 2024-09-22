@@ -6741,7 +6741,7 @@ function KDTieUpEnemy(enemy: entity, amount: number, type: string = "Leather", D
 	if (!enemy) return 0;
 	let data = {
 		amount: amount,
-		specialAmount: amount,   // FIXME: This field is never used anywhere else.
+		specialAmount: amount,
 		type: type, // Type of BONDAGE, e.g. leather, rope, etc
 		Damage: Damage,
 		Msg: Msg,

@@ -4004,8 +4004,14 @@ let canvasOffsetY = 0;
 const canvasOffsetX_ui = 500;
 const canvasOffsetY_ui = 164;
 
+interface MoveDirection {
+	x: number,
+	y: number,
+	delta: number,
+}
+
 // returns an object containing coordinates of which direction the player will move after a click, plus a time multiplier
-function KinkyDungeonGetDirection(dx: number, dy: number) {
+function KinkyDungeonGetDirection(dx: number, dy: number): MoveDirection {
 
 	let X = 0;
 	let Y = 0;

@@ -1,7 +1,22 @@
 "use strict";
 
-/*  FIXME: Type signature changed; please check.  */
-let KinkyDungeonSpellSpecials: Record<string, (spell: spell, data: any, targetX: number, targetY: number, tX: number, tY: number, entity: entity, enemy: any, moveDirection: any, bullet: any, miscast: any, faction: string, cast: any, selfCast: any) => void | string> = {
+type KDSpellSpecialCode = (
+	spell: spell,
+	data: any,
+	targetX: number,
+	targetY: number,
+	tX: number,
+	tY: number,
+	entity: entity,
+	enemy: entity,
+	moveDirection: MoveDirection,
+	bullet: any, /** TODO add bullet definition */
+	miscast: boolean,
+	faction: string,
+	cast: any, /** Todo add CastInfo definition */
+	selfCast: boolean) => void | string;
+
+let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"analyze": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
