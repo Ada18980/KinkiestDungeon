@@ -1,5 +1,5 @@
 let TranslationLanguage = "EN";
-let TranslationCache = {};
+let TranslationCache: Record<string, string[]> = {};
 
 /**
  * Dictionary for all supported languages and their files
@@ -274,7 +274,7 @@ function TranslationLoad(): void {
 		L = GetUserPreferredLanguage();
 		if (L != null) localStorage.setItem("BondageClubLanguage",L);
 	}
-	
+
 	if (L != null) TranslationLanguage = L;
 }
 
@@ -286,11 +286,11 @@ function GetUserPreferredLanguage() {
 		return "";
 	}
 
-	for (let i = 0; i < languages.length; i++) 
+	for (let i = 0; i < languages.length; i++)
 	{
 		let lang = languages[i];
 		if (KDLanguages.includes(lang))
-			return lang;	
+			return lang;
 	}
 	return "";
 

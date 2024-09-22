@@ -11,9 +11,10 @@ function KDRunTests() {
 	KDDebug = false;
 }
 
-function KDTestMapGen(count, Ranges, Checkpoints) {
+function KDTestMapGen(count: number, Ranges: number[], Checkpoints: number[]): boolean {
 	for (let Checkpoint of Checkpoints) {
-		MiniGameKinkyDungeonCheckpoint = Checkpoint;
+		// FIXME: Ensure this conversion from number to string is correct.
+		MiniGameKinkyDungeonCheckpoint = String(Checkpoint);
 		for (let FloorRange of Ranges)
 			for (let f = FloorRange; f < FloorRange + KDLevelsPerCheckpoint; f++) {
 				console.log(`Testing floor ${f}`);
@@ -34,7 +35,7 @@ function KDTestMapGen(count, Ranges, Checkpoints) {
 }
 
 
-function KDTestFullRunthrough(GameLoops, Init, NGP) {
+function KDTestFullRunthrough(GameLoops: number, Init: boolean, NGP: boolean): boolean {
 	let EnemySpawnData = {};
 	console.log("Testing full runthrough");
 	if (Init) {
@@ -80,8 +81,8 @@ function KDTestFullRunthrough(GameLoops, Init, NGP) {
 	return true;
 }
 
-function KDTestjailer(iter) {
-	let totals = {};
+function KDTestjailer(iter: number) {
+	let totals: any = {};
 	for (let i = 0; i < iter; i++) {
 		KDJailEvents.spawnGuard.trigger(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (KinkyDungeonJailGuard()) {
@@ -98,7 +99,7 @@ function KDTestjailer(iter) {
 	console.log(totals);
 }
 
-async function KDExportTranslationFile(cull) {
+async function KDExportTranslationFile(cull: boolean) {
 	await sleep(1000);
 	let file = "";
 	let cache = cull ? {} : undefined;
@@ -119,9 +120,9 @@ async function KDExportTranslationFile(cull) {
 
 /**
  * Tests the variant item system
- * @param {string} name
+ * @param name
  */
-function KDAddTestVariant(name) {
+function KDAddTestVariant(name: string): void {
 	let variant = {template: name,
 		events:[
 			{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true},
