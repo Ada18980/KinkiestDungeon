@@ -417,8 +417,10 @@ function KDCloseQuickInv() {
 }
 
 function KDRestraintSpecial(item: Named): boolean {
-	// FIXME: Check that last bit with the typecast.
-	return KDRestraint(item)?.enchanted || KDRestraint(item)?.special || KDRestraint(item)?.showInQuickInv || (item as item).showInQuickInv;
+	return KDRestraint(item)?.enchanted
+		|| KDRestraint(item)?.special
+		|| KDRestraint(item)?.showInQuickInv
+		|| (item as item).showInQuickInv;
 }
 
 let KDWeaponSwitchPref = 0;

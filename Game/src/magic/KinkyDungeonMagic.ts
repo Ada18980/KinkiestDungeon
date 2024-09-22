@@ -1785,16 +1785,6 @@ function KDFilterSpellPageNames() {
 	return pages;
 }
 
-/*  FIXME: `pages` is probably actually a number...  */
-function KDCorrectCurrentSpellPage(_pages: any): number {
-	let ret = 0;
-	for (let i = 0; i < KinkyDungeonCurrentSpellsPage; i++) {
-		if (!KDGameData.AllowedSpellPages[KinkyDungeonSpellPages[i]]) {
-			ret += 1;
-		}
-	}
-	return ret;
-}
 
 let KDMagicFilter = "";
 
@@ -2250,7 +2240,9 @@ function KinkyDungeonSendMagicEvent(Event: string, data: any, forceSpell?: spell
 				|| KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
 			if (spell && spell.events && KDEventSpells.get(Event)?.get(spell)) {
 				for (let e of spell.events) {
-					if (e.trigger == Event && ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive") || spell.type != "passive" || e.always || spell.name == forceSpell?.name)) {
+					if (e.trigger == Event && !e.always
+						&& ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive")
+							|| spell.type != "passive" || spell.name == forceSpell?.name)) {
 						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
 							KinkyDungeonHandleMagicEvent(Event, e, spell, data);
 						} else {

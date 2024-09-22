@@ -187,14 +187,19 @@ function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) 
 			|| (!(KDistEuclidean(KinkyDungeonJailGuard().x - KinkyDungeonPlayerEntity.x, KinkyDungeonJailGuard().y - KinkyDungeonPlayerEntity.y) <= KDGetTetherLength(KinkyDungeonPlayerEntity) + 2)))) {
 
 			let tile = KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y);
+			let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
+			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : null;
+			let currentAdvanceAmount = KDAdvanceAmount[toTile](altRoom, null);
 			let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
-				: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+				: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + (KDGameData.JourneyY + currentAdvanceAmount)];
 
+
+			if (!altRoomTarget && !(tile && tile.RoomType)) {
+				altRoomTarget = (KinkyDungeonAltFloor(journeyTile?.RoomType));
+			}
 			let roomType = "";
 			//let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
 			let originalRoom = KDGameData.RoomType;
-			let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
-			let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : (KinkyDungeonAltFloor(journeyTile?.RoomType));
 			let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomTarget);
 
 			let data = {
@@ -354,7 +359,7 @@ function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) 
 					if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 					KinkyDungeonSendEvent("AfterAdvance", data);
 					let saveData = KinkyDungeonSaveGame(true);
-					if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
+					if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1 && MiniGameKinkyDungeonLevel == KDGameData.HighestLevelCurrent) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
 						if ((!KinkyDungeonStatsChoice.get("saveMode")) && !suppressCheckPoint) {
 							KinkyDungeonState = "Save";
 							ElementCreateTextArea("saveDataField");
@@ -915,14 +920,14 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true): { x: numbe
 
 
 
-let KDAdvanceAmount: Record<string, (altRoom: any, altRoomPrevious: any) => number> = {
-	'S': (_altRoom, altRoomPrevious) => { // Stairs up
-		return (altRoomPrevious?.skiptunnel ? -1 : 0);
+let KDAdvanceAmount: Record<string, (altRoom: any, altRoomNext: any) => number> = {
+	'S': (_altRoom, altRoomNext) => { // Stairs up
+		return (altRoomNext?.skiptunnel ? -1 : 0);
 	},
-	's': (altRoom, _altRoomPrevious) => { // Stairs down
+	's': (altRoom, altRoomNext) => { // Stairs down
 		return (altRoom?.skiptunnel ? 1 : 0);
 	},
-	'H': (_altRoom, _altRoomPrevious) => { // Stairs down
+	'H': (_altRoom, altRoomNext) => { // Stairs down
 		return 0;
 	},
 };

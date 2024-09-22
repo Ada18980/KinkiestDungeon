@@ -2874,11 +2874,6 @@ function KDGetRestraintsEligible (
 	}
 	if (extraTags)
 		for (let t of Object.entries(extraTags)) {
-			/*
-			 * FIXME: `extraTags` is passed in variously as a
-			 * Record<string, number> and a Record<string, boolean>.
-			 * Find out what the truth is.
-			 */
 			if (effLevel >= +t[1])
 				tags.set(t[0], true);
 		}

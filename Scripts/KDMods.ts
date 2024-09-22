@@ -28,13 +28,31 @@ interface MODJSON {
 	gameminor: number,
 	gamepatch_min: number,
 	gamepatch_max: number,
+	/** Higher = earlier */
 	priority: number,
 	/** number is minimum version number */
-	dependencies: Record<string, number>,
+	dependencies?: Record<string, number>,
 	/** optional or recommended */
-	optional: Record<string, string>,
+	optional?: Record<string, string>,
 	/** warn or error */
-	incompatibilities: Record<string, string>,
+	incompatibilities?: Record<string, string>,
+}
+
+function KDLoadModJSON(JSON: string): MODJSON {
+	let ret: MODJSON = {
+		modname: "",
+		moddesc: "",
+		author: "",
+
+		modbuild: 0,
+		gamemajor: 5,
+		gameminor: 3,
+		gamepatch_min: -1,
+		gamepatch_max: -1,
+		priority: 0,
+	};
+
+	return ret;
 }
 
 async function KDGetModsLoad(execute) {

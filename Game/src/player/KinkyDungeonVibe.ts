@@ -312,12 +312,27 @@ function KDIsVibeCD(cooldown: Record<string, number>): boolean {
 	return pass;
 }
 
+/**
+ * @param source
+ * @param name
+ * @param location
+ * @param intensityMod
+ * @param [duration]
+ * @param [intensitySetpoint]
+ * @param [edgeOnly]
+ * @param [forceDeny]
+ * @param [bypassDeny]
+ * @param [bypassEdge]
+ * @param [extendDuration]
+ * @param [denyChanceMod]
+ * @param [denyChanceLikelyMod]
+ */
 function KinkyDungeonAddVibeModifier (
 	source:                string,
 	name:                  string,
 	location:              string,
 	intensityMod:          number,
-	duration:              number,
+	duration?:             number,
 	intensitySetpoint?:    number,
 	edgeOnly?:             boolean,
 	forceDeny?:            boolean,

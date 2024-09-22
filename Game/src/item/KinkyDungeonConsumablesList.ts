@@ -149,7 +149,6 @@ let KDConsumableEffects: Record<string, (Consumable: consumable) => void> = {
 		}
 	},
 	"subAdd": (Consumable) => {
-		//  FIXME: Check this translation is correct.
 		let amount = typeof Consumable.data?.subAdd === 'number' ? Consumable.data?.subAdd : 5;
 		KinkyDungeonChangeRep("Ghost", amount);
 	},

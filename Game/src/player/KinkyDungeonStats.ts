@@ -1734,12 +1734,11 @@ function KinkyDungeonCapStats() {
 
 function KDIsHogtied(C?: Character): boolean {
 	if (!C) C = KinkyDungeonPlayer;
-	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Hogtie : C.Pose.includes("Hogtied");
+	return  KDCurrentModels.get(C)?.Poses.Hogtie;
 }
 function KDIsKneeling(C?: any): boolean {
 	if (!C) C = KinkyDungeonPlayer;
-	// FIXME: Property `IsKneeling` does not exist on type Character
-	return StandalonePatched ? KDCurrentModels.get(C)?.Poses.Kneel || KDCurrentModels.get(C)?.Poses.KneelClosed : C.IsKneeling();
+	return KDCurrentModels.get(C)?.Poses.Kneel || KDCurrentModels.get(C)?.Poses.KneelClosed;
 }
 
 function KinkyDungeonLegsBlocked() {
