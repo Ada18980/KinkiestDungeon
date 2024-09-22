@@ -1,9 +1,6 @@
 "use strict";
 
-/**
- * @type {KDTeaseAttackListsType}
- */
-let KDTeaseAttackLists = {
+let KDTeaseAttackLists: KDTeaseAttackListsType = {
 	Basic: [
 		"SquishBreast",
 		"LeashGrab",
@@ -25,25 +22,22 @@ let KDTeaseAttackLists = {
 	],
 };
 
-/**
- * @type {KDTeaseAttacksType}
- */
-let KDTeaseAttacks = {
+let KDTeaseAttacks: KDTeaseAttacksType = {
 	Praise: {
 		name: "Praise",
 		priority: 1,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& KDEnemyCanTalk(enemy)
 				&& (
 					KinkyDungeonGoddessRep.Ghost + 50 >= 75
 				);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(0.5 + 1.5 * (KinkyDungeonGoddessRep.Ghost + 50)/100), type: "soul"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(0.5 + 1.5 * (KinkyDungeonGoddessRep.Ghost + 50)/100), type: "soul"});
 			let index = Math.floor(Math.random() * 3);
 			let suff = (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "");
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/DamageWeak.ogg");
@@ -71,7 +65,7 @@ let KDTeaseAttacks = {
 		name: "SquishBreast",
 		priority: 1,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KDPlayerFacingAway(player, enemy)
 				&& (
@@ -81,10 +75,10 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "grope"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "grope"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			KinkyDungeonSetFlag("grope", 4);
 			if (dmg.happened) {
@@ -108,7 +102,7 @@ let KDTeaseAttacks = {
 		name: "SpankButt",
 		priority: 2,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					KinkyDungeonFlags.get("legspell")
@@ -117,11 +111,11 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			KinkyDungeonSetFlag("spank", 4);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1.5, type: "grope"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1.5, type: "grope"});
 			if (!(blocked || evaded))
 				KinkyDungeonChangeDistraction(1*damagemod, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Slap.ogg");
@@ -148,7 +142,7 @@ let KDTeaseAttacks = {
 		name: "VibeToy",
 		priority: 1.25,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KDPlayerFacingAway(player, enemy)
 				&& !KDIsDisarmed(enemy)
@@ -160,10 +154,10 @@ let KDTeaseAttacks = {
 					&& 1*KinkyDungeonChastityMult() < 1.5
 				);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(1.5 - 1*KinkyDungeonChastityMult()), type: "charm"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(1.5 - 1*KinkyDungeonChastityMult()), type: "charm"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Vibe.ogg");
 			let toys = KDGetVibeToys(enemy);
 			let toy = (toys.length > 0) ? toys[Math.floor(KDRandom() * toys.length)] : "";
@@ -194,7 +188,7 @@ let KDTeaseAttacks = {
 		name: "InsertToy",
 		priority: 3,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
@@ -209,11 +203,11 @@ let KDTeaseAttacks = {
 					)
 				);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			KinkyDungeonSetFlag("insert", 4);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "pierce"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "pierce"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			let toys = KDGetVibeToys(enemy).filter((toy) => {
 				return KDCanAddRestraint(KDRestraint({name: toy}), false, "", true, undefined, false, true);
@@ -243,7 +237,7 @@ let KDTeaseAttacks = {
 		name: "AddStuffing",
 		priority: 3,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
@@ -254,10 +248,10 @@ let KDTeaseAttacks = {
 					&& KDCanAddRestraint(KDRestraint({name: "Stuffing"}), false, "", true, undefined, false, true)
 				);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
 			let selected = "Stuffing";
 			KinkyDungeonSetFlag("stuff", 4);
@@ -285,7 +279,7 @@ let KDTeaseAttacks = {
 		name: "AddStuffing",
 		priority: 4,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			if (KDBasicTeaseAttack(enemy, player)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& !KDIsDisarmed(enemy)
@@ -301,10 +295,10 @@ let KDTeaseAttacks = {
 			}
 			return false;
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "chain"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Struggle.ogg");
 			let selected = KDGetNecklaceGagType(KDPlayer()) || "TrapGag";
 
@@ -334,7 +328,7 @@ let KDTeaseAttacks = {
 		name: "SqueezeButt",
 		priority: 1,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					KinkyDungeonFlags.get("legspell")
@@ -344,10 +338,10 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*0.5, type: "grope"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*0.5, type: "grope"});
 			if (!(blocked || evaded))
 				KinkyDungeonChangeDistraction(1*damagemod, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
@@ -373,7 +367,7 @@ let KDTeaseAttacks = {
 		name: "ShoulderMassage",
 		priority: 1,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					(KDPlayerFacingAway(player, enemy) || KinkyDungeonCanStand())
@@ -385,10 +379,10 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "plush"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "plush"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			KinkyDungeonSetFlag("soft", 4);
 			if (dmg.happened) {
@@ -412,7 +406,7 @@ let KDTeaseAttacks = {
 		name: "Headpat",
 		priority: 2,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					!KinkyDungeonCanStand()
@@ -422,11 +416,11 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			KinkyDungeonSetFlag("headpat", 4);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(2 - 1.9*(KinkyDungeonGoddessRep.Ghost + 50)/100), type: "plush"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(2 - 1.9*(KinkyDungeonGoddessRep.Ghost + 50)/100), type: "plush"});
 			if ((KinkyDungeonGoddessRep.Ghost + 50)/100 > 0)
 				if (!(blocked || evaded))
 					KinkyDungeonChangeDistraction((KinkyDungeonGoddessRep.Ghost + 50)/100 * 2*damagemod, false, 0.5);
@@ -452,7 +446,7 @@ let KDTeaseAttacks = {
 		name: "TickleArmpits",
 		priority: 1,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					KinkyDungeonFlags.get("armspell")
@@ -462,10 +456,10 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "tickle"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1, type: "tickle"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tickle.ogg");
 			KinkyDungeonSetFlag("tickle", 4);
 			if (dmg.happened) {
@@ -489,7 +483,7 @@ let KDTeaseAttacks = {
 		name: "TickleFeet",
 		priority: 2,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, _aiData) => {
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					KinkyDungeonFlags.get("legspell")
@@ -500,7 +494,7 @@ let KDTeaseAttacks = {
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy);
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, player, _aiData, blocked, evaded, damagemod) => {
 			KinkyDungeonSetEnemyFlag(enemy, "teaseAtkCD", (enemy.Enemy?.attackPoints*2) || 4);
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let strip = false;
@@ -516,7 +510,7 @@ let KDTeaseAttacks = {
 					}
 				}
 			}
-			let dmg = (blocked || evaded) ? {dmg: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "tickle"});
+			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*2, type: "tickle"});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tickle.ogg");
 			KinkyDungeonSetFlag("tickle", 4);
 			if (dmg.happened) {
@@ -541,11 +535,11 @@ let KDTeaseAttacks = {
 		name: "Disarm",
 		priority: 10,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, aiData) => {
 			if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& (
-					AIData.attack.includes("Bind")
+					aiData.attack.includes("Bind")
 					&& enemy.Enemy.disarm
 					&& KinkyDungeonFlags.get("disarmFlagVulnerable")
 					&& KinkyDungeonFlags.get("disarmFlagVulnerable") != 3
@@ -555,7 +549,7 @@ let KDTeaseAttacks = {
 			}
 			return false;
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, _damagemod) => {
 			if (!blocked && !evaded) {
 				// Easier to evase harness grabs
 				KinkyDungeonDisarm(enemy);
@@ -578,17 +572,17 @@ let KDTeaseAttacks = {
 		name: "Pickpocket",
 		priority: 9,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, aiData) => {
 			if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& (
-					player.player && AIData.attack.includes("Bind") && KDCanPickpocketPlayer(player) && !KDEnemyHasFlag(enemy, "nosteal")
+					player.player && aiData.attack.includes("Bind") && KDCanPickpocketPlayer(player) && !KDEnemyHasFlag(enemy, "nosteal")
 					&& !enemy.Enemy.nopickpocket && KDMapData.KeysHeld==0 && KDCanPickpocket(enemy)
 				) && KDPlayerIsStunned() &&
 				(
 					((KDIsPlayerTethered(KinkyDungeonPlayerEntity) || KinkyDungeonSlowLevel > 9) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed
 							&& KinkyDungeonIsArmsBound())
-					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && AIData.playerItems.length > 0 && AIData.playerItems.length > 0
+					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && aiData.playerItems.length > 0 && aiData.playerItems.length > 0
 						&& KinkyDungeonIsArmsBound() && (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.05))
 					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonLockpicks > 0)
 					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonRedKeys > 0)
@@ -600,10 +594,10 @@ let KDTeaseAttacks = {
 			}
 			return false;
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, aiData, blocked, evaded, _damagemod) => {
 			if (!blocked && !evaded) {
 
-				let item = AIData.playerItems.length > 0 ? AIData.playerItems[Math.floor(KDRandom() * AIData.playerItems.length)] : undefined;
+				let item = aiData.playerItems.length > 0 ? aiData.playerItems[Math.floor(KDRandom() * aiData.playerItems.length)] : undefined;
 				let picked = false;
 				// If the player's location is trapped she will get disarmed
 				if ((KDIsPlayerTethered(KinkyDungeonPlayerEntity) || KinkyDungeonSlowLevel > 9) && KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed
@@ -611,7 +605,7 @@ let KDTeaseAttacks = {
 					// Disarm the player
 					KinkyDungeonDisarm(enemy, "Leash");
 					picked = true;
-				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && item && AIData.playerItems.length > 0
+				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && item && aiData.playerItems.length > 0
 					&& KinkyDungeonIsArmsBound() && ((!KinkyDungeonPlayerDamage || item.name != KinkyDungeonPlayerDamage.name) || KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.05) && KDRandom() < 0.5) {
 					if (item.type == Weapon) {
 						if (KDWeapon(item)?.name == KinkyDungeonPlayerDamage?.name)
@@ -624,8 +618,7 @@ let KDTeaseAttacks = {
 							enemy.items.push(item.name);
 					} else if (item.type == Consumable) {
 						KinkyDungeonChangeConsumable(KinkyDungeonConsumables[item.name], -1);
-						/** @type {item} */
-						let item2 = Object.assign({}, item);
+						let item2: item = Object.assign({}, item);
 						//KinkyDungeonAddLostItems([item2], false);
 						item2.quantity = 1;
 						if (!enemy.items) enemy.items = [item.name];
@@ -681,11 +674,11 @@ let KDTeaseAttacks = {
 		name: "LeashGrab",
 		priority: 6,
 		blockable: true, dodgeable: true,
-		filter: (enemy, player, AIData) => {
+		filter: (enemy, player, aiData) => {
 			if (KDBasicTeaseAttack(enemy, player, true)
 				&& !KinkyDungeonIsSlowed(enemy)
 				&& (
-					AIData.attack.includes("Bind")
+					aiData.attack.includes("Bind")
 					&& enemy.Enemy.bound
 					&& KDGameData.MovePoints > -1
 					&& KinkyDungeonTorsoGrabCD < 1
@@ -712,7 +705,7 @@ let KDTeaseAttacks = {
 
 			return false;
 		},
-		apply: (enemy, player, AIData, blocked, evaded, damagemod) => {
+		apply: (enemy, _player, _aiData, blocked, evaded, _damagemod) => {
 			if (!blocked && !evaded) {
 				// Easier to evase harness grabs
 				let harnessChance = 0;

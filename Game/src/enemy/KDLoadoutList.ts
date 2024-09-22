@@ -1,10 +1,7 @@
 'use strict';
 
 
-/**
- * @type {Record<string, KDLoadout>}
- */
-let KDLoadouts = {
+let KDLoadouts: Record<string, KDLoadout> = {
 	"guard": {
 		name: "guard",
 		tags: ["elite"],

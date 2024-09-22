@@ -2,7 +2,7 @@
 
 
 
-function KinkyDungeonAddTags(tags, Floor) {
+function KinkyDungeonAddTags(tags: string[], Floor: number) {
 	let security = (KDGetEffSecurityLevel() + 50);
 
 
@@ -110,7 +110,7 @@ function KinkyDungeonAddTags(tags, Floor) {
 	}
 
 
-	let overrideTags = [];
+	// let overrideTags = [];
 	if (KinkyDungeonGoddessRep.Will < -45) {tags.push("plant"); tags.push("beast");}
 	if (KinkyDungeonGoddessRep.Metal < -45) tags.push("robot");
 	if (KinkyDungeonGoddessRep.Leather < -45) tags.push("bandit");
@@ -137,8 +137,6 @@ function KinkyDungeonAddTags(tags, Floor) {
 		tags: tags,
 	};
 	KinkyDungeonSendEvent("calcEnemyTags", data);
-
-	return overrideTags;
 }
 
 let KDPerkToggleTags = [
@@ -159,9 +157,24 @@ let KDPerkToggleTags = [
  * @param {string[]} [requireSingleTag]
  * @param {number} minWeight - Cut off weights below this one
  * @param {boolean} minWeightFallback - Fallback to 0 minweight
+ * @param {boolean} noOverrideFloor - Fallback to 0 minweight
  * @returns {enemy}
  */
-function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, alliances, bonusTags, filterTags, requireSingleTag, minWeight = 0.0, minWeightFallback = true, noOverrideFloor = false) {
+function KinkyDungeonGetEnemy (
+	enemytags:          string[],
+	Level:              number,
+	Index:              string,
+	Tile:               string,
+	requireTags?:       string[],
+	alliances?:         {requireHostile?: string, requireAllied?: string, requireNonHostile?: string},
+	bonusTags?:         Record<string, {bonus: number, mult: number}>,
+	filterTags?:        string[],
+	requireSingleTag?:  string[],
+	minWeight:          number = 0.0,
+	minWeightFallback:  boolean = true,
+	noOverrideFloor:    boolean = false
+): enemy
+{
 	let enemyWeightTotal = 0;
 	let enemyWeights = [];
 	let tags = Object.assign([], enemytags);
@@ -268,15 +281,13 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, allian
 }
 
 /**
- *
- * @param {number} x
- * @param {number} y
- * @param {boolean} noTransgress
- * @param {boolean} normalDrops
- * @param {string[]} [requireTags]
- * @returns {entity}
+ * @param x
+ * @param y
+ * @param noTransgress
+ * @param normalDrops
+ * @param [requireTags]
  */
-function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
+function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, normalDrops: boolean, requireTags?: string[]): entity {
 	//if (!noTransgress)
 	// KinkyDungeonAggroAction('call', {});
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
@@ -300,7 +311,7 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 				x:KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, gx: point.x, gy: point.y,
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 
-			if (mainFaction) guard.faction = mainFaction;
+			if (mainFaction) guard['faction'] = mainFaction;
 			KinkyDungeonSetEnemyFlag(guard, "norep", -1);
 			KDGameData.JailGuard = guard.id;
 			KDAddEntity(guard);
@@ -310,7 +321,7 @@ function KinkyDungeonCallGuard(x, y, noTransgress, normalDrops, requireTags) {
 			KinkyDungeonJailGuard().gy = point.y;
 			KinkyDungeonJailGuard().gxx = point.x;
 			KinkyDungeonJailGuard().gyy = point.y;
-			if (KinkyDungeonFindPath(KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false, true, KinkyDungeonMovableTilesSmartEnemy) < 15) {
+			if (KinkyDungeonFindPath(KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false, true, KinkyDungeonMovableTilesSmartEnemy)?.length < 15) {
 				let p = KinkyDungeonGetRandomEnemyPoint(true, true, undefined, 20, 10);
 				KinkyDungeonJailGuard().x = p.x;
 				KinkyDungeonJailGuard().y = p.y;
@@ -330,7 +341,7 @@ let KinkyDungeonSearchHuntersAmount = 90;
 let KinkyDungeonSearchEntranceAdjustAmount = 130;
 let KinkyDungeonSearchEntranceChaseAmount = 160;
 
-function KinkyDungeonHandleWanderingSpawns(delta) {
+function KinkyDungeonHandleWanderingSpawns(delta: number) {
 	if (KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel) && !KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel).spawns) return;
 	if (KDGameData.RoomType && KinkyDungeonAltFloor(KDGameData.RoomType) && !KinkyDungeonAltFloor(KDGameData.RoomType).spawns) return;
 	let effLevel = MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty;
@@ -480,10 +491,7 @@ function KinkyDungeonHandleWanderingSpawns(delta) {
 				KDGameData.HunterTimer = Math.max(KDGameData.HunterTimer, HunterPulse);
 			} else {
 				// Hunters are dead, we spawn more
-				/**
-				 * @type {entity[]}
-				 */
-				let eToSpawn = [];
+				let eToSpawn: entity[] = [];
 				KDGameData.Hunters = [];
 
 				// Determine enemies to spawn

@@ -5,20 +5,20 @@
 
 /**
  * Location and location/neighbors
- * @type {Record<string, {x: number, y: number, neighbors: number}>} */
-let KDCommanderChokes = null;
+ */
+let KDCommanderChokes: Record<string, {x: number, y: number, neighbors: number}> = null;
 let KDUpdateChokes = true;
 
 /**
  * Who is helping the struggler
- * @type {Record<string, number>} */
-let KDStruggleAssisters = {};
+ */
+let KDStruggleAssisters: Record<string, number> = {};
 
 
 /**
  * Enemy ID and role
- * @type {Map<number, string>} */
-let KDCommanderRoles = new Map();
+ */
+let KDCommanderRoles: Map<number, string> = new Map();
 
 let KDCOMMANDERMAXNEIGHBORS = 2;
 
@@ -26,11 +26,10 @@ let KDChokeTiles = ['d', 'D', 'g', 's', 'S', 'H'];
 
 /**
  * The Commander determines role assignments and orders enemies
- * @param {number} delta
+ * @param delta
  */
-function KDCommanderUpdate(delta) {
-	/** @type {KDCommanderOrderData} */
-	let data = {
+function KDCommanderUpdate(delta: number) {
+	let data: KDCommanderOrderData = {
 		delta: delta,
 		aggressive: false,
 		fleeThresh: 0.6,
@@ -56,18 +55,17 @@ function KDCommanderUpdate(delta) {
 
 /**
  * Updates the current chokes on the map
- * @param {KDCommanderOrderData} data
+ * @param data
  */
-function KDCommanderUpdateChokes(data) {
+function KDCommanderUpdateChokes(_data: KDCommanderOrderData) {
 
 	KDMovable = new Map();
 	KDSmartMovable = new Map();
 
 	KDCommanderChokes = {};
-	/** @type {Record<string, {x:number, y:number}>} */
-	let chokes = {};
+	let chokes: Record<string, {x:number, y:number}> = {};
 	// Identify potential chokes
-	let hp, hn, vp, vn = false;
+	let hp: boolean, hn: boolean, vp: boolean, vn: boolean = false;
 	for (let x = 1; x < KDMapData.GridWidth - 1; x++) {
 		for (let y = 1; y < KDMapData.GridHeight - 1; y++) {
 			if (
@@ -132,7 +130,7 @@ function KDCommanderUpdateChokes(data) {
 	}
 
 	// Add any chokes with suitable geometry
-	let check = (x, y) => {
+	let check = (x: number, y: number) => {
 		return chokes[x+','+y] != undefined
 			|| !KDIsSmartMovable(x, y);
 	};
@@ -163,9 +161,9 @@ function KDCommanderUpdateChokes(data) {
 }
 /**
  * Updates the current roles of enemies
- * @param {KDCommanderOrderData} data
+ * @param data
  */
-function KDCommanderUpdateRoles(data) {
+function KDCommanderUpdateRoles(data: KDCommanderOrderData) {
 	if (data.delta > 0) {
 		for (let enemy of KDMapData.Entities) {
 			// Set roles if there isn't one
@@ -184,9 +182,9 @@ function KDCommanderUpdateRoles(data) {
 
 /**
  * Updates the current roles of enemies
- * @param {KDCommanderOrderData} data
+ * @param data
  */
-function KDCommanderUpdateOrders(data) {
+function KDCommanderUpdateOrders(data: KDCommanderOrderData) {
 	if (data.delta > 0) {
 		for (let order of Object.entries(KDCommanderOrders)) {
 			order[1].global_before(data);
@@ -216,12 +214,11 @@ function KDCommanderUpdateOrders(data) {
 
 /**
  * Updates the current roles of enemies
- * @param {entity} enemy
- * @param {KDCommanderOrderData} data
+ * @param enemy
+ * @param data
  */
-function KDGetOrdersList(enemy, data) {
-	/** @type {Record<string, number>} */
-	let ret = {};
+function KDGetOrdersList(enemy: entity, data: KDCommanderOrderData): Record<string, number> {
+	let ret: Record<string, number> = {};
 	for (let obj of Object.keys(KDCommanderOrders)) {
 		if (KDCommanderOrders[obj].filter(enemy, data))
 			ret[obj] = KDCommanderOrders[obj].weight(enemy, data);
@@ -241,20 +238,17 @@ let KDStationedChokepointsDist = {};
 let KD_Avg_VX = 0;
 let KD_Avg_VY = 0;
 
-/**
- * @type {Record<string, KDCommanderOrder>}
- */
-let KDCommanderOrders = {
+let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 	dummy: {
 		// Dummy for setting global stuff
-		filter: (enemy, data) => {return false;},
-		weight: (enemy, data) => {return 0;},
-		apply: (enemy, data) => {},
+		filter: (_enemy, _data) => {return false;},
+		weight: (_enemy, _data) => {return 0;},
+		apply: (_enemy, _data) => {},
 
 		// Role maintenance
-		maintain: (enemy, data) => {return false;},
-		remove: (enemy, data) => {},
-		update: (enemy, data) => {},
+		maintain: (_enemy, _data) => {return false;},
+		remove: (_enemy, _data) => {},
+		update: (_enemy, _data) => {},
 
 		// Global role variables
 		global_before: ( data) => {
@@ -273,7 +267,7 @@ let KDCommanderOrders = {
 				KD_Avg_VY = (data.VavgWeight  * KD_Avg_VY + (KinkyDungeonPlayerEntity.y - KinkyDungeonPlayerEntity.lasty)) / (1 + data.VavgWeight);
 			}
 		},
-		global_after: (data) => {
+		global_after: (_data) => {
 
 		},
 	},
@@ -288,10 +282,10 @@ let KDCommanderOrders = {
 			return (!KDAIType[KDGetAI(enemy)]
 			|| (!KDAIType[KDGetAI(enemy)].guard && (!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)));
 		},
-		weight: (enemy, data) => {
+		weight: (enemy, _data) => {
 			return Math.max(0, 100 - 35 * KDAssaulters - (KDEnemyRank(enemy) * 20));
 		},
-		apply: (enemy, data) => {
+		apply: (enemy, _data) => {
 			if (enemy.aware)
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandAssault")
@@ -309,14 +303,14 @@ let KDCommanderOrders = {
 			if (enemy.ignore) return false;
 			return (!enemy.IntentAction && data.aggressive && enemy.aware && !KinkyDungeonIsDisabled(enemy) && KDHostile(enemy));
 		},
-		remove: (enemy, data) => {
+		remove: (enemy, _data) => {
 			if (!KDEnemyIsTemporary(enemy)) {
 				KDAssaulters -= 1;
 				if (KDAssaulterList.indexOf(enemy) > -1)
 					KDAssaulterList.splice(KDAssaulterList.indexOf(enemy), 1);
 			}
 		},
-		update: (enemy, data) => {
+		update: (enemy, _data) => {
 			// Increment the number of assaulters but only if the enemy isnt temporary
 			if (!KDEnemyIsTemporary(enemy)) {
 				KDAssaulters += 1;
@@ -329,13 +323,13 @@ let KDCommanderOrders = {
 		},
 
 		// Global role variables
-		global_before: ( data) => {
+		global_before: (_data) => {
 			// Reset the number of assaulters
 			KDAssaulters = 0;
 			KDMaxAssaulters = 3;
 			KDAssaulterList = [];
 		},
-		global_after: (data) => {
+		global_after: (_data) => {
 
 		},
 	},
@@ -350,10 +344,10 @@ let KDCommanderOrders = {
 			return (!KDAIType[KDGetAI(enemy)]
 			|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)));
 		},
-		weight: (enemy, data) => {
+		weight: (_enemy, data) => {
 			return data.combat ? 24 : 1;
 		},
-		apply: (enemy, data) => {
+		apply: (enemy, _data) => {
 			if (enemy.aware || enemy.vp > 0.1)
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend")
@@ -365,8 +359,8 @@ let KDCommanderOrders = {
 		maintain: (enemy, data) => {
 			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && !KinkyDungeonIsDisabled(enemy));
 		},
-		remove: (enemy, data) => {},
-		update: (enemy, data) => {
+		remove: (_enemy, _data) => {},
+		update: (enemy, _data) => {
 			// AI control
 			if (enemy.idle && KDAssaulterList.length > 0) {
 				let target = KDAssaulterList[Math.floor(KDRandom() * KDAssaulterList.length)];
@@ -379,8 +373,8 @@ let KDCommanderOrders = {
 		},
 
 		// Global role variables
-		global_before: ( data) => {},
-		global_after: (data) => {},
+		global_before: (_data) => {},
+		global_after: (_data) => {},
 	},
 
 	guard: {
@@ -411,7 +405,7 @@ let KDCommanderOrders = {
 			}
 			return false;
 		},
-		weight: (enemy, data) => {
+		weight: (enemy, _data) => {
 			let w = 100;
 			if (enemy.Enemy.tags.minor) w = 200;
 			else if (enemy.Enemy.tags.elite) w = 40;
@@ -420,7 +414,7 @@ let KDCommanderOrders = {
 			else if (enemy.Enemy.tags.boss) w = 1;
 			return (enemy.Enemy.kite || enemy.Enemy.tags?.ranged || enemy.Enemy.tags?.caster) ? w : w*0.3;
 		},
-		apply: (enemy, data) => {
+		apply: (enemy, _data) => {
 			if (enemy.aware)
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandBlock")
@@ -429,7 +423,7 @@ let KDCommanderOrders = {
 		},
 
 		// Role maintenance
-		maintain: (enemy, data) => {
+		maintain: (enemy, _data) => {
 			if (enemy.ignore) return false;
 			let fort = KinkyDungeonStatsChoice.get("Fortify_Barricade") && KDGetMainFaction() && KDFactionRelation(KDGetFaction(enemy), KDGetMainFaction()) > 0.15;
 			if (!enemy.IntentAction && !(KDEnemyHasFlag(enemy, "noGuard") || KDEnemyHasFlag(enemy, "targ_ally") || KDEnemyHasFlag(enemy, "targ_npc"))
@@ -451,7 +445,7 @@ let KDCommanderOrders = {
 			}
 			return false;
 		},
-		remove: (enemy, data) => {
+		remove: (_enemy, _data) => {
 		},
 		update: (enemy, data) => {
 			let choke = null;
@@ -601,7 +595,7 @@ let KDCommanderOrders = {
 			KDStationedChokepointsDist = {};
 			data.invalidChoke = {};
 		},
-		global_after: (data) => {
+		global_after: (_data) => {
 			if (KDAssaulters == 0) {
 				for (let id of KDCommanderRoles.entries()) {
 					if (id[1] == "guard" && KinkyDungeonFindID(id[0])?.aware) {
@@ -631,10 +625,10 @@ let KDCommanderOrders = {
 			) return true;
 			return false;
 		},
-		weight: (enemy, data) => {
+		weight: (_enemy, data) => {
 			return data.combat ? 100 : 15;
 		},
-		apply: (enemy, data) => {
+		apply: (enemy, _data) => {
 			if (enemy.aware || enemy.vp > 0.1) {
 				KinkyDungeonSendDialogue(enemy,
 					TextGet((KDHelpless(enemy) ? "KinkyDungeonRemindJailPlayHelpless" : "KinkyDungeonRemindJailPlayBrat") + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + Math.floor(KDRandom() * 3))
@@ -658,20 +652,20 @@ let KDCommanderOrders = {
 			return (!enemy.IntentAction && data.aggressive && KDHostile(enemy) && enemy.vp > 0 && KDEnemyHasFlag(enemy, "targ_player"))
 				&& (KDAssaulters > 1 || KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 3);
 		},
-		remove: (enemy, data) => {},
-		update: (enemy, data) => {
+		remove: (_enemy, _data) => {},
+		update: (enemy, _data) => {
 			if (KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) KDBreakTether(KinkyDungeonPlayerEntity);
 			KinkyDungeonSetEnemyFlag(enemy, "runAway", 5 + Math.round(5 * KDRandom()));
 		},
 
 		// Global role variables
-		global_before: ( data) => {},
-		global_after: (data) => {},
+		global_before: (_data) => {},
+		global_after: (_data) => {},
 	},
 
 	helpStruggle: {
 		// Move toward struggling allies to help them
-		filter: (enemy, data) => {
+		filter: (enemy, _data) => {
 			if (!enemy.IntentAction
 				&& KDIsHumanoid(enemy)
 				&& (enemy.attackPoints < 1)
@@ -689,10 +683,10 @@ let KDCommanderOrders = {
 			) return true;
 			return false;
 		},
-		weight: (enemy, data) => {
+		weight: (_enemy, data) => {
 			return data.combat ? 50 : 400;
 		},
-		apply: (enemy, data) => {
+		apply: (enemy, _data) => {
 			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.15)
 				KinkyDungeonSendDialogue(enemy,
 					TextGet("KinkyDungeonRemindJailChase" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "CommandDefend")
@@ -702,7 +696,7 @@ let KDCommanderOrders = {
 		},
 
 		// Role maintenance
-		maintain: (enemy, data) => {
+		maintain: (enemy, _data) => {
 			if (!KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).some((en) => {
 				return en != enemy && KDBoundEffects(en) > 1 && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
 				&& !KDEnemyHasFlag(en, "imprisoned")
@@ -716,8 +710,8 @@ let KDCommanderOrders = {
 				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
 				&& KDBoundEffects(enemy) < 4);
 		},
-		remove: (enemy, data) => {},
-		update: (enemy, data) => {
+		remove: (_enemy, _data) => {},
+		update: (enemy, _data) => {
 			if (!KDEnemyHasFlag(enemy, "tickHS")) {
 				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, undefined, true, enemy).filter((en) => {
 					return en != enemy && KDBoundEffects(en) > 1 && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
@@ -759,7 +753,7 @@ let KDCommanderOrders = {
 		},
 
 		// Global role variables
-		global_before: ( data) => {
+		global_before: (_data) => {
 			let struggleList = JSON.parse(JSON.stringify(KDStruggleAssisters));
 			KDStruggleAssisters = {};
 			for (let en of KDMapData.Entities) {
@@ -768,21 +762,19 @@ let KDCommanderOrders = {
 				}
 			}
 		},
-		global_after: (data) => {},
+		global_after: (_data) => {},
 	},
 };
 
 /**
- *
- * @param {entity} enemy
- * @param {number} x
- * @param {number} y
- * @param {boolean} checkpoint
- * @returns {string}
+ * @param enemy
+ * @param x
+ * @param y
+ * @param checkpoint
+ * @param type
  */
-function KDGetBarricade(enemy, x, y, checkpoint = false, type = []) {
-	/** @type {Record<string, number>} */
-	let traps = {};
+function KDGetBarricade(enemy: entity, x: number, y: number, checkpoint: boolean = false, type: string[] = []): string {
+	let traps: Record<string, number> = {};
 	let max = 0;
 	let lvl = KDGetEffLevel();
 	if (!checkpoint) return ""; // TODO allow optional
@@ -803,182 +795,176 @@ function KDGetBarricade(enemy, x, y, checkpoint = false, type = []) {
 	return "Barricade";*/
 }
 
-/**
- * @type {Record<string, KDBoobyTrap>}
- */
-let KDBarricades = {
+let KDBarricades: Record<string, KDBoobyTrap> = {
 	"Barricade": {
 		minlevel: 2,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return !enemy.Enemy.tags.leather && !enemy.Enemy.tags.rope && !enemy.Enemy.tags.slime && !enemy.Enemy.tags.robot && !enemy.Enemy.tags.dollsmith && !enemy.Enemy.tags.cyborg;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 1;
 		},
 	},
 	"BarricadeBlastDoor": {
 		minlevel: 4,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (_enemy, _x, _y, _checkpoint, _type) => {
 			let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 			let params = KinkyDungeonMapParams[altRoom?.useGenParams ? altRoom.useGenParams : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 			if (params?.enemyTags?.includes("oldrobot"))
 				return true;
 			return false;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 100;
 		},
 		lifetime: 9999,
 	},
 	"BarricadeRobot": {
 		minlevel: 4,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return (enemy.Enemy.tags.robot || enemy.Enemy.tags.cyborg) && !enemy.Enemy.tags.oldrobot;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 20;
 		},
 	},
 	"BarricadeMagic": {
 		minlevel: 3,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.mage;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 15;
 		},
 	},
 	"BarricadeConcrete": {
 		minlevel: 7,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.Security?.level_tech > 0 || (MiniGameKinkyDungeonLevel > 3 && KDRandom() < 0.1 * KDEnemyRank(enemy));
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 11;
 		},
 	},
 	"BarricadeMetal": {
 		minlevel: 3,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.metal;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"ChaoticCrystal": {
 		minlevel: 2,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.chaos;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"GiantMushroom": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.mushroom;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeFire": {
 		minlevel: 4,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.fire;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeWater": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.water;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeIce": {
 		minlevel: 3,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.ice;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeEarth": {
 		minlevel: 5,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.earth;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeElectric": {
 		minlevel: 4,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.electric;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeAir": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.air;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeVine": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.nature;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 	"BarricadeShadowMetal": {
 		minlevel: 3,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.shadow || enemy.Enemy.tags?.demon;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 11;
 		},
 	},
 	"BarricadeShadow": {
 		minlevel: 2,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.shadow;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 25;
 		},
 	},
 };
 
 /**
- *
- * @param {entity} enemy
- * @param {number} x
- * @param {number} y
- * @param {boolean} checkpoint
- * @param {string[]} type
- * @returns {string}
+ * @param enemy
+ * @param x
+ * @param y
+ * @param checkpoint
+ * @param type
  */
-function KDGetTrapSpell(enemy, x, y, checkpoint = false, type = []) {
-	/** @type {Record<string, number>} */
-	let traps = {};
+function KDGetTrapSpell(enemy: entity, x: number, y: number, checkpoint: boolean = false, type: string[] = []): string {
+	let traps: Record<string, number> = {};
 	let lvl = KDGetEffLevel();
 	for (let obj of Object.keys(KDBoobyTraps)) {
 		if (lvl >= KDBoobyTraps[obj].minlevel && KDBoobyTraps[obj].filter(enemy, x, y, checkpoint, type))
@@ -988,133 +974,130 @@ function KDGetTrapSpell(enemy, x, y, checkpoint = false, type = []) {
 }
 
 
-/**
- * @type {Record<string, KDBoobyTrap>}
- */
-let KDBoobyTraps = {
+let KDBoobyTraps: Record<string, KDBoobyTrap> = {
 	"RuneTrap_Rope": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.rope || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.ropeRestraints);
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Belt": {
 		minlevel: 2,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.leather || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints);
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Chain": {
 		minlevel: 2,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.metal || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.chainRestraints) || enemy.Enemy.tags?.magicchain;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Ribbon": {
 		minlevel: 3,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.ribbon || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.ribbonRestraints || enemy.Enemy.tags?.ribbonRestraintsHarsh));
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 15;
 		},
 	},
 	"RuneTrap_Leather": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.leather || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.leatherRestraints && enemy.Enemy.tags?.antiMagic);
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 7;
 		},
 	},
 	"RuneTrap_Latex": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.conjurer || (enemy.Enemy.unlockCommandLevel > 0 && enemy.Enemy.tags?.latexRestraints);
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 7;
 		},
 	},
 	"RuneTrap_Rubber": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.latex || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom));
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_VacCube": {
 		minlevel: 5,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.latex || (enemy.Enemy.tags?.latexEncase || enemy.Enemy.tags?.latexEncaseRandom);
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 7;
 		},
 	},
 	"RuneTrap_Slime": {
 		minlevel: 4,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.alchemist || enemy.Enemy.tags?.slime || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.slimeRestraints || enemy.Enemy.tags?.slimeRestraintsRandom));
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_Vine": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.elf || (enemy.Enemy.unlockCommandLevel > 0 && (enemy.Enemy.tags?.nature || enemy.Enemy.tags?.vineRestraints));
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_Bubble": {
 		minlevel: 1,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.water;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_SlimeBubble": {
 		minlevel: 4,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.slime;
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return 20;
 		},
 	},
 	"RuneTrap_LatexSphere": {
 		minlevel: 5,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.latex && !KinkyDungeonStatsChoice.get("bubbleOptout");
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return KinkyDungeonStatsChoice.get("bubblePref") ? 50 : 5;
 		},
 	},
 	"RuneTrap_LatexBall": {
 		minlevel: 5,
-		filter: (enemy, x, y, checkpoint, type) => {
+		filter: (enemy, _x, _y, _checkpoint, _type) => {
 			return enemy.Enemy.tags?.latex && !KinkyDungeonStatsChoice.get("bubbleOptout");
 		},
-		weight: (enemy, x, y, checkpoint, type) => {
+		weight: (_enemy, _x, _y, _checkpoint, _type) => {
 			return KinkyDungeonStatsChoice.get("bubblePref") ? 50 : 5;
 		},
 	},

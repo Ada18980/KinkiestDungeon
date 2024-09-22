@@ -4758,7 +4758,7 @@ let KDCustomDrawInvColorFilter = {
 							t, p,
 							KDRestraint(inv),
 							inv)) :
-						false
+						undefined
 					) : undefined) ? "#63ab3f" : "#f0b541";
 			return "#e64539";
 		};

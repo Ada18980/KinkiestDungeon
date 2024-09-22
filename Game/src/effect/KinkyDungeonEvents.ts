@@ -4839,7 +4839,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			let cost = KDEvasiveManeuversCost();
 			if (KinkyDungeonStatStamina >= cost) {
 				if (data.delta > 0)
-					KinkyDungeonChangeStamina(data.delta * (-cost), false, true, false);
+					KinkyDungeonChangeStamina(data.delta * (-cost), false, 1, false);
 			} else {
 				for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 					if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]]?.name == spell.name) {
@@ -5889,7 +5889,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 							let max = 0.4 * KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(player, "MaxBattleRhythm"));
 							KinkyDungeonMakeNoise(e.dist, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 							KinkyDungeonSetFlag("Enraged", e.time);
-							KinkyDungeonChangeStamina(-KinkyDungeonGetStaminaCost(spell), false, false, true);
+							KinkyDungeonChangeStamina(-KinkyDungeonGetStaminaCost(spell), false, 0, true);
 							let powerAdded = 0.01 * e.power;
 							if (powerAdded > 0)
 								KinkyDungeonSetFlag("BRCombat", 20);
@@ -8867,7 +8867,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				}
 				let player = KinkyDungeonPlayerEntity;
 				if (player.player && data.allied && KDistEuclidean(enemy.x - player.x, enemy.y - player.y) < e.dist) {
-					KinkyDungeonChangeStamina(e.power * e.mult, true, false);
+					KinkyDungeonChangeStamina(e.power * e.mult, true, 0);
 				}
 			}
 		},
