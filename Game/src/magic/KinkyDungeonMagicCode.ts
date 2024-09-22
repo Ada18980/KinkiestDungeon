@@ -1530,11 +1530,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	},
 
 	"CommandVibrate": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, cast, _selfCast) => {
-		if (!KDGameData.CurrentVibration && AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, spell.aoetype || "")
-			&& (KinkyDungeonPlayerTags.get("ItemVulvaFull")
-			|| KinkyDungeonPlayerTags.get("ItemButtFull")
-			|| KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")
-			|| KinkyDungeonPlayerTags.get("ItemNipplesFull"))) {
+		if (!KDGameData.CurrentVibration
+			&& AOECondition(tX, tY,
+				KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+				spell.aoe, spell.aoetype || "")) {
 
 			let vibes = [];
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
@@ -1542,20 +1541,22 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
 			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipples");
 
-			if (!KDGameData.CurrentVibration) {
-				KinkyDungeonStartVibration(
-					KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name,
-					"tease",
-					vibes,
-					0.5, 30, undefined, undefined, undefined, undefined, true);
-			} else {
-				KinkyDungeonAddVibeModifier(
-					KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name,
-					"tease",
-					vibes[0],
-					1, 30, undefined, false, false, false, false, true, 0.1, 0.2);
+			if (vibes.length > 0) {
+				if (!KDGameData.CurrentVibration) {
+					KinkyDungeonStartVibration(
+						KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name,
+						"tease",
+						vibes,
+						0.5, 30, undefined, undefined, undefined, undefined, true);
+				} else {
+					KinkyDungeonAddVibeModifier(
+						KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name,
+						"tease",
+						vibes[0],
+						1, 30, undefined, false, false, false, false, true, 0.1, 0.2);
+				}
+				cast = true;
 			}
-			cast = true;
 		}
 		cast = KDCastSpellToEnemies((en) => {
 			if (en.Enemy.bound && KDEnemyCanBeVibed(en)) {
