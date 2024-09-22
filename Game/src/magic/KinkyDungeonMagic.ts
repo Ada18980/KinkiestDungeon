@@ -2250,7 +2250,9 @@ function KinkyDungeonSendMagicEvent(Event: string, data: any, forceSpell?: spell
 				|| KinkyDungeonSpells[KinkyDungeonSpellChoices[i]];
 			if (spell && spell.events && KDEventSpells.get(Event)?.get(spell)) {
 				for (let e of spell.events) {
-					if (e.trigger == Event && ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive") || spell.type != "passive" || e.always || spell.name == forceSpell?.name)) {
+					if (e.trigger == Event && !e.always
+						&& ((KinkyDungeonSpellChoicesToggle[i] && spell.type == "passive")
+							|| spell.type != "passive" || spell.name == forceSpell?.name)) {
 						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
 							KinkyDungeonHandleMagicEvent(Event, e, spell, data);
 						} else {

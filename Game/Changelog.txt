@@ -30,6 +30,10 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.38-RC8
+- Fixed issue where some battle rhythm effects were applying twice
+- Fixed issue where 1st floor was getting regenerated
+
 5.3.38-RC7
 - Fixed issues where NPCs would hug the corner of the map after losing sight of you
 - High value enemies will now use their missiles in combat (watch out for friendly fire)
