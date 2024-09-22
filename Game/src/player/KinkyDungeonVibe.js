@@ -232,6 +232,7 @@ function KDRandomizeVibeSound() {
  * @param {string} source
  * @param {string} name
  * @param {number} intensity
+ * @param {string[]} locations
  * @param {number} duration
  * @param {number} [numLoops]
  * @param {number} [denyTime ]
@@ -295,6 +296,22 @@ function KDIsVibeCD(cooldown) {
 	return pass;
 }
 
+/**
+ *
+ * @param {string} source
+ * @param {string} name
+ * @param {string} location
+ * @param {number} intensityMod
+ * @param {number} [duration]
+ * @param {number} [intensitySetpoint]
+ * @param {boolean} [edgeOnly]
+ * @param {boolean} [forceDeny]
+ * @param {boolean} [bypassDeny]
+ * @param {boolean} [bypassEdge]
+ * @param {boolean} [extendDuration]
+ * @param {number} [denyChanceMod]
+ * @param {number} [denyChanceLikelyMod]
+ */
 function KinkyDungeonAddVibeModifier(source, name, location, intensityMod, duration, intensitySetpoint, edgeOnly, forceDeny, bypassDeny, bypassEdge, extendDuration, denyChanceMod, denyChanceLikelyMod) {
 	if (KDGameData.CurrentVibration) {
 		for (let mod of KDGameData.CurrentVibration.VibeModifiers) {

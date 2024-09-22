@@ -1960,7 +1960,7 @@ let KDCurrentEnemyTooltip: entity = null;
  * @param offset
  */
 function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
-	let analyze = KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
+	let analyze = KDGameData.Collection[enemy.id + ""] || KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
 	if (KDEnemyName(enemy))
