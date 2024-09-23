@@ -406,6 +406,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 	"Special": [
 		{name: "Offhand", tags: ["utility", "defense", "offense"], quick: true, school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm",
 			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			mixedPassive: true,
 			events: [
 				{type: "Offhand", trigger: "toggleSpell", },
 				{type: "Offhand", trigger: "draw", always: true,},
@@ -415,6 +416,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "UnconventionalWarfare", tags: ["utility", "defense", "offense"], quick: true, school: "Special", prerequisite: "CombatTraining", classSpecific: "Fighter", hideWithout: "BattleRhythm",
 			manacost: 0, components: [], level:1, spellPointCost: 0, type:"passive", defaultOff: true,
+			mixedPassive: true,
 			events: [
 				{type: "UnconventionalWarfare", trigger: "toggleSpell", },
 				{type: "UnconventionalWarfare", trigger: "calcDamage", always: true, delayedOrder: 2},
@@ -526,6 +528,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "ArcaneBarrier", tags: ["arcane", "will", "utility"], prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen", school: "Special", manacost: 0, components: [], level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			mixedPassive: true,
 			events: [
 				{type: "ArcaneStore", trigger: "spellTrigger", always: true},
 				{type: "ArcaneStore", trigger: "playerCast", always: true},
@@ -535,9 +538,10 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			]},
 
 
-		{name: "BattleRhythm", tags: ["fight", "will", "stamina"], prerequisite: "Null", hideUnlearnable: true, school: "Special", manacost: 0, components: [], level:1,
-			mixedPassive: true,
+		{name: "BattleRhythm", tags: ["fight", "will", "stamina"], prerequisite: "Null", hideUnlearnable: true, school: "Special",
+			manacost: 0, components: [], level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
+			mixedPassive: true,
 			events: [
 				{type: "BattleRhythmStore", trigger: "beforePlayerLaunchAttack", always: true},
 				{type: "BattleRhythm", trigger: "doAttackCalculation"},

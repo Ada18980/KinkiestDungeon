@@ -30,6 +30,7 @@ TODO:
 
 TODO remove hogtie when released
 
+
 5.3.38-RC10
 - Fixed some bugs with bosses doing dialogue while part of the player faction
 - Living collars can now be disenchanted to delay their effects.
