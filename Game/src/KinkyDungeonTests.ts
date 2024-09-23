@@ -4,17 +4,16 @@
 
 function KDRunTests() {
 	KDDebug = true;
-	if (KDTestMapGen(100, [0, 6, 12, 18,], [0, 1, 2, 3, 11,])
+	if (KDTestMapGen(100, [0, 6, 12, 18,], ['grv', 'cat', 'jng'])
 		&& KDTestFullRunthrough(3, true, true)) {
 		console.log("All tests passed!");
 	}
 	KDDebug = false;
 }
 
-function KDTestMapGen(count: number, Ranges: number[], Checkpoints: number[]): boolean {
+function KDTestMapGen(count: number, Ranges: number[], Checkpoints: string[]): boolean {
 	for (let Checkpoint of Checkpoints) {
-		// FIXME: Ensure this conversion from number to string is correct.
-		MiniGameKinkyDungeonCheckpoint = String(Checkpoint);
+		MiniGameKinkyDungeonCheckpoint = Checkpoint;
 		for (let FloorRange of Ranges)
 			for (let f = FloorRange; f < FloorRange + KDLevelsPerCheckpoint; f++) {
 				console.log(`Testing floor ${f}`);
