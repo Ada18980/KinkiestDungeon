@@ -594,6 +594,8 @@ function KDDrawModConfigs() {
 function KDLoadModSettings() {
     try {
         KDModSettings = JSON.parse(localStorage.getItem('KDModSettings'))
+        // Assign null objects as {}
+        if (KDModSettings === null) { KDModSettings = {} }
     }
     catch (err) {
         console.log("Cannot load mod config from local storage.")
