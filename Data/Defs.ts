@@ -172,6 +172,7 @@ let LAYERS_BASE = [
 
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
+	"BeltCharmSide",
 	"BeltCharm",
 	"BeltDeco",
 	"Belt",
@@ -1558,6 +1559,7 @@ let LayerGroups = {
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
 	"BeltCharm",
+	"BeltCharmSide",
 	"Belt",
 	"BeltDeco",
 	"BeltUnder",
@@ -1672,6 +1674,16 @@ let LayerGroups = {
 		"LegbinderLegsOver": true,
 		"WrappingLegs": true,
 		"WrappingLegs2": true,
+	},
+	BindWristLeft: {
+		"BindWristLeft": true,
+		"BindForeWristLeft": true,
+		"BindCrossWristLeft": true,
+	},
+	BindWristRight: {
+		"BindWristRight": true,
+		"BindForeWristRight": true,
+		"BindCrossWristRight": true,
 	},
 	// Extra layer of unpeeling over the head if we are wearing a blindfold or harness gag
 	XrayFace: ToMap(

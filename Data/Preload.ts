@@ -365,6 +365,12 @@ let DisplacementMaps = [
 'SlimeThighsClosed.png',
 'SlimeThighsHogtie.png',
 'EraseSkirtSplit.png',
+'GuardLeftYoked.png',
+'GuardRightYoked.png',
+'GuardLeftFree.png',
+'GuardRightFree.png',
+'GuardLeftFront.png',
+'GuardRightFront.png',
 ];
 
 // Scale factor for displacement and erase maps

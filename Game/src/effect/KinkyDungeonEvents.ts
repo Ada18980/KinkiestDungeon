@@ -1319,6 +1319,16 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (data.delta <= 0) return;
 			let timer = KDItemDataQuery(item, "livingTimer") || 0;
 			let freq = KDItemDataQuery(item, "livingFreq") || e.frequencyMax;
+			if (KDEntityBuffedStat(KDPlayer(), "Disenchant") > 0) {
+				let val = Math.round(KDEntityBuffedStat(KDPlayer(), "Disenchant") * 20);
+				if (timer > -val + 3) {
+					KinkyDungeonSendTextMessage(8, TextGet("KDLivingCollarSuspendDisenchant").replace(
+						"AMNT", "" + val
+					), "#88ff88", 8);
+					KDItemDataSet(item, "livingTimer", -val);
+				}
+				return;
+			}
 			if (timer < freq) {
 				timer = timer + 1;
 				KDItemDataSet(item, "livingTimer", timer);

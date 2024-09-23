@@ -125,16 +125,16 @@ function KDDrawMods() {
 			info = "";
 			try {
 				name = KDModInfo[keys[i]].modname || name; // if blank, ignore modname
-				if (KDModInfo[keys[i]].gamemajor > 0 && VersionMajor < KDModInfo[keys[i]].gamemajor) {
+				if (KDModInfo[keys[i]].gamemajor >= 0 && VersionMajor != KDModInfo[keys[i]].gamemajor) {
 					color = "#ff0000";
 					info = "KDModOutdated2";
-				} else if (KDModInfo[keys[i]].gameminor > 0 && VersionMinor < KDModInfo[keys[i]].gameminor) {
+				} else if (KDModInfo[keys[i]].gameminor >= 0 && VersionMinor != KDModInfo[keys[i]].gameminor) {
+					color = "#ff8800";
+					info = "KDModOutdated3";
+				} else if (KDModInfo[keys[i]].gamepatch_min >= 0 && VersionPatch < KDModInfo[keys[i]].gamepatch_min) {
 					color = "#ffff00";
 					info = "KDModOutdated";
-				} else if (KDModInfo[keys[i]].gamepatch_min > 0 && VersionPatch < KDModInfo[keys[i]].gamepatch_min) {
-					color = "#ffff00";
-					info = "KDModOutdated";
-				} else if (KDModInfo[keys[i]].gamepatch_max > 0 && VersionPatch > KDModInfo[keys[i]].gamepatch_max) {
+				} else if (KDModInfo[keys[i]].gamepatch_max >= 0 && VersionPatch > KDModInfo[keys[i]].gamepatch_max) {
 					color = "#ffff00";
 					info = "KDModOutdated";
 				}
@@ -199,9 +199,10 @@ async function KDUpdateModInfo() {
 		await sleep(100);
 	}
 	KDLoading = false;
+	let errored = false;
 	let modsProcessed = 0;
+	let modFiles: {mod: File, name: string, priority: number}[] = [];
 	try {
-		let modFiles: {mod: File, name: string, priority: number}[] = [];
 		KDModLoadOrder = [];
 		for (let mod of Object.entries(KDMods)) {
 			let file = mod[1];
@@ -261,11 +262,16 @@ async function KDUpdateModInfo() {
 	} catch (e) {
 		modsProcessed = Object.entries(KDMods).length;
 		console.log(e.toString());
+		errored = true;
 		KDModLoadOrder = Object.entries(KDMods).map((ent) => {return {mod: ent[1], name: ent[0]};});
 	}
 	while(modsProcessed < Object.entries(KDMods).length) {
 		await sleep(100);
 	}
+	if (!errored)
+		KDModLoadOrder = modFiles.sort((a, b) => {
+			return (b.priority || 0) - (a.priority || 0);
+		}).map((ent) => {return {mod: ent.mod, name: ent.name};});
 	KDLoading = false;
 
 }
