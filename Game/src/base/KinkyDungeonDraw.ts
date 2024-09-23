@@ -1945,9 +1945,9 @@ function KinkyDungeonDrawGame() {
 						return true;
 					}, true, 600, 240, 300, 64, "Toggle OmniVision™", "#ffffff", "");
 					DrawButtonKDEx("debugAddSP", (_bdata) => {
-						KinkyDungeonSpellPoints += 1;
+						KinkyDungeonSpellPoints += 10;
 						return true;
-					}, true, 600, 320, 300, 64, "Add spell point", "#ffffff", "");
+					}, true, 600, 320, 300, 64, "Add 10 spell points", "#ffffff", "");
 					DrawButtonKDEx("debugClearQuickInv", (_bdata) => {
 						KinkyDungeonInventory.get('looserestraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
