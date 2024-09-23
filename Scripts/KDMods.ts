@@ -31,12 +31,16 @@ interface MODJSON {
 	gamepatch_max: number,
 	/** Higher = earlier */
 	priority: number,
-	/** number is minimum version number */
+	/** number is minimum version number  UNIMPLEMENTED */
 	dependencies?: Record<string, number>,
-	/** optional or recommended */
+	/** optional or recommended  UNIMPLEMENTED */
 	optional?: Record<string, string>,
-	/** warn or error */
+	/** warn or error  UNIMPLEMENTED */
 	incompatibilities?: Record<string, string>,
+	/** if the mod id is present, loads before. UNIMPLEMENTED */
+	loadbefore?: string[],
+	/** if the mod id is present, loads after. UNIMPLEMENTED */
+	loadafter?: string[],
 }
 
 function KDLoadModJSON(json: string): MODJSON {
