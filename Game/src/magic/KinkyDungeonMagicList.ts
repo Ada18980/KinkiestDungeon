@@ -2742,7 +2742,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "RubberMissile", bindType: "Slime", color: "#ff3388", sfx: "Missile", manacost: 8, components: ["Arms"],
 		spellcast: {spell: "RubberMissileExplosion", target: "onhit", directional:true, offset: false},
 		events: [{type: "RubberMissileHoming", trigger: "bulletAfterTick", power: 1.0, dist: 5.5, count: 0.5, limit: 0.7},],
-		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "RubberMissile", count: 2, time: 4, power: 4, damage: "glue"}},
+		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2.0, delay: 0, range: 50, damage: "crush", speed: 0.5, playerEffect: {name: "RubberMissile", count: 2, time: 4, power: 4, damage: "glue"}},
 	{enemySpell: true, name: "RubberMissileExplosion", landsfx: "Lightning", bindType: "Slime", school: "Element", manacost: 0, components: [],
 		effectTileDurationMod: 3, effectTile: {
 			name: "Slime",

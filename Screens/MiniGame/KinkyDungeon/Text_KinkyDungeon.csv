@@ -24738,3 +24738,11 @@ KDErrorMods,ERROR: Restraint does not exist. Did you forget to load mods?
 RestraintGagNecklace,Gag Necklace
 RestraintGagNecklaceDesc,A cute accessory for those who wish to (not) make a statement.
 RestraintGagNecklaceDesc2,Functions as a collar.
+
+KDNoModJSON,No mod info!
+KDModOutdated,Outdated!
+KDModOutdated2,VERY Outdated!
+KDModDependency,Check dependencies!
+KDModIncompatible,Check compatibility!
+KDModMiscError,Misc Error
+KDModVer," v"

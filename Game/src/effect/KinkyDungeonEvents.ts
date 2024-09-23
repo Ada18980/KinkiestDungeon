@@ -3437,7 +3437,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 										shield_distract: spell?.shield_distract, // Distract thru shield
 										shield_vuln: spell?.shield_vuln, // Vuln thru shield
 
-										damage:spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
+										damage:e.power || spell.power, type:spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
 										bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, false, enemy.x, enemy.y);
 							b.visual_x = origin.x;
 							b.visual_y = origin.y;
@@ -8258,7 +8258,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 	"tick": {
 
 		"FuukaManagement": (e, enemy, _data) => {
-			if (enemy.hostile && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
+			if (enemy.hostile && !KDGameData.Collection[enemy.id + ""] && !KDEnemyHasFlag(enemy, "fuukaPillars")) {
 				KinkyDungeonSetEnemyFlag(enemy, "fuukaPillars", -1);
 				for (let i = 0; i < e.count; i++) {
 					let point = KinkyDungeonGetRandomEnemyPointCriteria((x: number, y: number) => {
@@ -8271,7 +8271,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 			}
 		},
 		"WardenManagement": (e, enemy, _data) => {
-			if (enemy.hostile) {
+			if (enemy.hostile && !KDGameData.Collection[enemy.id + ""]) {
 				KDMakeHostile(enemy, KDMaxAlertTimerAggro);
 
 
@@ -8287,7 +8287,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 
 				}
 			}
-			if (enemy.hostile && !KDEnemyHasFlag(enemy, "wardenReleasedPrisoners")) {
+			if (enemy.hostile && !KDGameData.Collection[enemy.id + ""] && !KDEnemyHasFlag(enemy, "wardenReleasedPrisoners")) {
 				KinkyDungeonSetEnemyFlag(enemy, "wardenReleasedPrisoners", -1);
 				let count = 0;
 				for (let en of KDMapData.Entities) {
@@ -8364,7 +8364,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 			}
 		},
 		"BossAssignFaction": (e, enemy, _data) => {
-			if (!enemy.faction && !KinkyDungeonIsDisabled(enemy) && KDBoundEffects(enemy) < 4) {
+			if (!enemy.faction && !KDGameData.Collection[enemy.id + ""] && !KinkyDungeonIsDisabled(enemy) && KDBoundEffects(enemy) < 4) {
 				if (enemy.hostile || KDMapData.Entities.some((en) => {return en.Enemy.tags?.stageBoss && en.hostile;})) enemy.faction = e.kind;
 			}
 		},

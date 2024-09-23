@@ -5819,7 +5819,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 				aurasprite: "Missiles4",
 				noAuraColor: true,
 				events: [
-					{trigger: "afterEnemyTick", count: count, type: "Missiles",
+					{trigger: "afterEnemyTick", count: count, type: "Missiles", power: 1.5,
 						time: 12 + ((enemy.Enemy.tags?.minor) ? 10 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 5), spell: "RubberMissile"},
 				],
 			});

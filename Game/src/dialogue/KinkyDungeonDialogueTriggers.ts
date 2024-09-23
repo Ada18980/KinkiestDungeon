@@ -320,6 +320,7 @@ function KDBossTrigger(name: string, enemyName: string[]): KinkyDialogueTrigger 
 		nonHostile: true,
 		prerequisite: (enemy, dist, _AIData) => {
 			return (dist < 2.5
+				&& KDGetFaction(enemy) != "Player"
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !(KDGameData.SleepTurns > 0)
 				&& enemyName.includes(enemy.Enemy.name)
@@ -344,6 +345,7 @@ function KDBossLose(name: string, enemyName: string[], tags: string[], condition
 		prerequisite: (enemy, dist, _AIData) => {
 			return (dist < 1.5
 				&& !KinkyDungeonFlags.get("NoTalk")
+				&& KDGetFaction(enemy) != "Player"
 				&& !(KDGameData.SleepTurns > 0)
 				&& enemyName.includes(enemy.Enemy.name)
 				&& !KinkyDungeonFlags.has("BossUnlocked")

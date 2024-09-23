@@ -345,6 +345,19 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Front: "BindForeWristLeft"},
 			NoOverride: true,
+			HidePoseConditional: [
+				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "GuardCuffLeft", Layer: "BindWristLeft", Pri: -20,
+			Poses: ToMapSubtract([...ARMPOSES], ["Boxtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Front: "BindForeWristLeft"},
+			NoOverride: true,
+			HideWhenOverridden: true,
+			HidePoseConditional: [
+				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
+			],
 		},
 	])
 });
@@ -360,6 +373,16 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "BindCrossWristRight", Front: "ForeBindWristRight"},
 			NoOverride: true,
+			HidePoseConditional: [
+				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "GuardCuffRight", Layer: "BindWristRight", Pri: -20,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "BindCrossWristRight", Front: "ForeBindWristRight"},
+			NoOverride: true,
+			HideWhenOverridden: true,
 			HidePoseConditional: [
 				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
 			],

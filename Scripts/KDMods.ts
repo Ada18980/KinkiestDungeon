@@ -1,6 +1,7 @@
 let KDModsLoaded = false;
 
-let KDMods = {};
+let KDMods: Record<string, File> = {};
+let KDModInfo: Record<string, MODJSON> = {};
 let KDModIndex = 0;
 let KDModCount = 9;
 let KDModSpacing = 50;
@@ -38,7 +39,7 @@ interface MODJSON {
 	incompatibilities?: Record<string, string>,
 }
 
-function KDLoadModJSON(JSON: string): MODJSON {
+function KDLoadModJSON(json: string): MODJSON {
 	let ret: MODJSON = {
 		modname: "",
 		moddesc: "",
@@ -51,6 +52,15 @@ function KDLoadModJSON(JSON: string): MODJSON {
 		gamepatch_max: -1,
 		priority: 0,
 	};
+
+	try {
+		// Reduce chance of bomb
+		if (json.length < 100000) {
+			Object.assign(ret, JSON.parse(json));
+		}
+	} catch (e) {
+		console.log(e.toString());
+	}
 
 	return ret;
 }
@@ -79,7 +89,9 @@ async function KDGetModsLoad(execute) {
 
 					// Create a File object with the Blob
 					const fileObject = new File([blob], mod.base, { type: 'application/octet-stream' });
-					if (fileObject) KDMods[mod.base] = fileObject;
+					if (fileObject) {
+						KDMods[mod.base] = fileObject;
+					}
 				}
 
 			}
@@ -91,6 +103,8 @@ async function KDGetModsLoad(execute) {
 
 	if (execute) {
 		KDExecuteMods();
+	} else {
+		await KDUpdateModInfo();
 	}
 }
 
@@ -100,13 +114,46 @@ function KDDrawMods() {
 		KDGetModsLoad(false);
 	}
 	let count = 0;
-	let keys = Object.keys(KDMods);
+	let keys = KDModLoadOrder.map((ent) => {return ent.name;});
 	for (let i = KDModIndex; i < keys.length && count < KDModCount; i++) {
-		DrawTextKD(keys[i], 975, 370 + KDModSpacing * count, "#ffffff", KDTextGray2);
-		DrawButtonKDEx("moddelete_" + i, (bdata) => {
-			delete KDMods[keys[i]];
-			return true;
-		}, true, 1275, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), "#ffffff", "");
+		let color = "#222222";
+		let info = "KDNoModJSON";
+		let name = keys[i];
+		let ver = 0;
+		if (KDModInfo[keys[i]]) {
+			color = "#ffffff";
+			info = "";
+			try {
+				name = KDModInfo[keys[i]].modname || name; // if blank, ignore modname
+				if (KDModInfo[keys[i]].gamemajor > 0 && VersionMajor < KDModInfo[keys[i]].gamemajor) {
+					color = "#ff0000";
+					info = "KDModOutdated2";
+				} else if (KDModInfo[keys[i]].gameminor > 0 && VersionMinor < KDModInfo[keys[i]].gameminor) {
+					color = "#ffff00";
+					info = "KDModOutdated";
+				} else if (KDModInfo[keys[i]].gamepatch_min > 0 && VersionPatch < KDModInfo[keys[i]].gamepatch_min) {
+					color = "#ffff00";
+					info = "KDModOutdated";
+				} else if (KDModInfo[keys[i]].gamepatch_max > 0 && VersionPatch > KDModInfo[keys[i]].gamepatch_max) {
+					color = "#ffff00";
+					info = "KDModOutdated";
+				}
+
+				ver = KDModInfo[keys[i]].modbuild;
+			} catch (e) {
+				console.log(e.toString());
+				color = "#ff00ff";
+				info = "KDModMiscError";
+			}
+		}
+		DrawTextKD(name + (info ? ` (${TextGet(info)})` : (TextGet("KDModVer") + ver)), 975, 370 + KDModSpacing * count, color, KDTextGray2);
+		if (!KDExecuted)
+			DrawButtonKDEx("moddelete_" + i, (bdata) => {
+				delete KDMods[keys[i]];
+				delete KDModInfo[keys[i]];
+				KDUpdateModInfo();
+				return true;
+			}, true, 1275, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), "#ffffff", "");
 		count++;
 	}
 }
@@ -128,11 +175,15 @@ function KDLoadMod(files: any[]) {
 	for (let f of files) {
 		if (f && f.name) {
 			KDMods[f.name] = f;
+			KDLoadModJSON[f.name] = null;
 		}
 	}
+
+	KDUpdateModInfo();
 }
 
 let KDExecuted = false;
+let KDLoading = false;
 
 async function KDExecuteModsAndStart() {
 	await KDExecuteMods();
@@ -142,15 +193,96 @@ async function KDExecuteModsAndStart() {
 	KinkyDungeonStartNewGame(true);
 }
 
+/** Updates mod info by unzipping mods and reading the info only */
+async function KDUpdateModInfo() {
+	while (KDLoading) {
+		await sleep(100);
+	}
+	KDLoading = false;
+	let modsProcessed = 0;
+	try {
+		let modFiles: {mod: File, name: string, priority: number}[] = [];
+		KDModLoadOrder = [];
+		for (let mod of Object.entries(KDMods)) {
+			let file = mod[1];
+			let entries = await model.getEntries(file, {});
+			let priority = 0;
+			let foundInfo = false;
+			if (entries && entries.length) {
+				for (let entry of entries) {
+					let filename = entry.filename.split('/').pop();
+					if (filename == 'mod.json') {
+						foundInfo = true;
+						const controller = new AbortController();
+						const signal = controller.signal;
+						const blobURL = await model.getURL(entry, {
+							password: undefined,
+							onprogress: (index, max) => {
+								console.log(`Loading progress: ${index},${max}`);
+							},
+							signal
+						});
+						let blob = await fetch(blobURL).then(r => r.blob());
+						let reader = new FileReader();
+						let file = new File([blob], entry.filename);
+
+						reader.onload = function(event) {
+							console.log("LOADING MOD INFO " + file.name);
+							if (typeof event.target.result === "string") {
+								//@ts-ignore
+								let res = event.target.result;
+								let json = KDLoadModJSON(res);
+								if (json) {
+									KDModInfo[mod[0]] = json;
+									if (json.priority) {
+										priority = json.priority;
+									}
+
+									modFiles.push({mod: mod[1], name: mod[0], priority: priority});
+
+									KDModLoadOrder = modFiles.sort((a, b) => {
+										return (b.priority || 0) - (a.priority || 0);
+									}).map((ent) => {return {mod: ent.mod, name: ent.name};});
+									modsProcessed += 1;
+								}
+							}
+						};
+						await reader.readAsText(file);
+
+					}
+				}
+			}
+			if (!foundInfo) {
+				modFiles.push({mod: mod[1], name: mod[0], priority: priority});
+				modsProcessed += 1;
+			}
+		}
+		console.log(modFiles);
+	} catch (e) {
+		modsProcessed = Object.entries(KDMods).length;
+		console.log(e.toString());
+		KDModLoadOrder = Object.entries(KDMods).map((ent) => {return {mod: ent[1], name: ent[0]};});
+	}
+	while(modsProcessed < Object.entries(KDMods).length) {
+		await sleep(100);
+	}
+	KDLoading = false;
+
+}
+
+let KDModLoadOrder: {mod: File, name: string}[] = [];
+
 async function KDExecuteMods() {
 	if (KDExecuted) return;
 	KDExecuted = true;
 	KDAwaitingModLoad = true;
 	KDAllModFiles = [];
 
+	await KDUpdateModInfo();
+
 	if (KDOffline) {
 		let mods = [];
-		for (let file of Object.values(KDMods)) {
+		for (let file of KDModLoadOrder.map((ent) => {return ent.mod;})) {
 		//@ts-ignore
 			console.log(file.path);
 			//@ts-ignore
@@ -158,8 +290,10 @@ async function KDExecuteMods() {
 		}
 		//@ts-ignore
 		localStorage.setItem("KDMods", JSON.stringify(mods));
+
+		await KDUpdateModInfo();
 	}
-	for (let file of Object.values(KDMods)) {
+	for (let file of KDModLoadOrder.map((ent) => {return ent.mod;})) {
 		let entries = await model.getEntries(file, {});
 		if (entries && entries.length) {
 			//const filenamesUTF8 = Boolean(!entries.find(entry => !entry.filenameUTF8));
@@ -192,7 +326,6 @@ async function KDExecuteMods() {
 			console.log(blobURL);
 			let blob = await fetch(blobURL).then(r => r.blob());
 			console.log(blob);
-			let reader = new FileReader();
 
 			if (entry.filename.startsWith('.')) {
 				// none

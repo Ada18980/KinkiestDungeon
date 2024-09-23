@@ -1517,10 +1517,11 @@ function KinkyDungeonRun() {
 			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
 
-		DrawButtonKDEx("mods_load", (_bdata) => {
-			getFileInput();
-			return true;
-		}, true, 975, 250, 350, 64, TextGet("KinkyDungeonLoadMod"), "#ffffff", "");
+		(!KDExecuted)
+			DrawButtonKDEx("mods_load", (_bdata) => {
+				getFileInput();
+				return true;
+			}, true, 975, 250, 350, 64, TextGet("KinkyDungeonLoadMod"), "#ffffff", "");
 		DrawTextKD(TextGet("KinkyDungeonLoadModWarning1"), 1175, 100, "#ffffff", KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonLoadModWarning2"), 1175, 150, "#ffffff", KDTextGray2);
 
@@ -1765,7 +1766,13 @@ function KinkyDungeonRun() {
 			DrawButtonKDEx("mods_button", (_bdata) => {
 				KinkyDungeonState = "Mods";
 				return true;
-			}, (!KDExecuted), 1700, 814, 280, 50, !KDExecuted ? TextGet("KDMods") : ((KDModFileCount === 1) ? `${KDModFileCount} ${TextGet("KDModsLoaded").replace("s","")}` : `${KDModFileCount} ${TextGet("KDModsLoaded")}`), !KDExecuted ? `#ffffff` : `#888888`, "");
+			}, true, 1700, 814, 280, 50,
+			!KDExecuted ?
+				 TextGet("KDMods") :
+				((KDModFileCount === 1) ?
+					`${KDModFileCount} ${TextGet("KDModsLoaded").replace("s","")}` :
+					`${KDModFileCount} ${TextGet("KDModsLoaded")}`),
+				`#ffffff`, "");
 
 			if (Object.keys(KDModConfigs).length > 0) {
 				DrawButtonKDEx("modconfigs_button", (_bdata) => {

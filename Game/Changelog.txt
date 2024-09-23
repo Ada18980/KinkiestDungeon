@@ -30,6 +30,9 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.38-RC9
+- MODDERS: Added mod.json format, see https://itch.io/t/4135169/mod-json
+
 5.3.38-RC8
 - Fixed issue where some battle rhythm effects were applying twice
 - Fixed issue where 1st floor was getting regenerated
