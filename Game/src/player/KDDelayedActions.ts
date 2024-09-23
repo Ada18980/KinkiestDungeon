@@ -1,9 +1,10 @@
 'use strict';
 
-/** Prunes delayed actions with tags
- * @param {string[]} tags
-*/
-function KDDelayedActionPrune(tags) {
+/**
+ * Prunes delayed actions with tags
+ * @param tags
+ */
+function KDDelayedActionPrune(tags: string[]) {
 	KDGameData.DelayedActions = KDGameData.DelayedActions ? KDGameData.DelayedActions.filter((action) => {
 		for (let t of tags) {
 			if (action.tags.includes(t)) return false;
@@ -14,24 +15,25 @@ function KDDelayedActionPrune(tags) {
 
 /**
  * Adds a delayed action
- * @param {KDDelayedAction} action
+ * @param action
  */
-function KDAddDelayedAction(action) {
+function KDAddDelayedAction(action: KDDelayedAction) {
 	KDGameData.DelayedActions.push(Object.assign({}, action));
 }
 
-/** This is processed for delayed actions
- * @type {Record<string, (action: KDDelayedAction) => void>}
+/**
+ * This is processed for delayed actions
  */
-let KDDelayedActionUpdate = {
+let KDDelayedActionUpdate: Record<string, (action: KDDelayedAction) => void> = {
 	"RequireWill": (action) => {
 		if (!(KinkyDungeonStatWill > 0)) action.time = 0;
 	},
 };
-/** This is processed for delayed actions
- * @type {Record<string, (action: KDDelayedAction) => void>}
+
+/**
+ * This is processed for delayed actions
  */
-let KDDelayedActionCommit = {
+let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 	"Consumable": (action) => {
 		if (KinkyDungeonGetInventoryItem(action.data.Name))
 			KinkyDungeonUseConsumable(action.data.Name, action.data.Quantity);

@@ -19,7 +19,7 @@ function KDFixNeeds() {
 }
 
 
-function KDTickNeeds(delta) {
+function KDTickNeeds(delta: number) {
 	KinkyDungeonGoddessRep.Passion = Math.max(-50, Math.min(50,
 		KinkyDungeonGoddessRep.Passion + delta*
 			(
@@ -36,11 +36,10 @@ function KDTickNeeds(delta) {
 }
 
 /**
- *
- * @param {any} data
- * @param {number} mult
+ * @param data
+ * @param mult
  */
-function KDNeedsPlaySelf(data, mult = 1) {
+function KDNeedsPlaySelf(_data: any, _mult: number = 1) {
 	KinkyDungeonChangeRep("Passion", (KDNeedsParams.PassionPerPlay
 		- 0.01*(0.1 + 0.4 * KDRandom())*KDNeedsParams.PassionPerPlay*(KinkyDungeonGoddessRep.Passion + 50)
 		- 0.01*(0.1 + 0.3 * KDRandom())*KDNeedsParams.PassionPerPlay*(KinkyDungeonGoddessRep.Frustration + 50)));
@@ -49,21 +48,19 @@ function KDNeedsPlaySelf(data, mult = 1) {
 
 
 /**
- *
- * @param {any} data
- * @param {number} mult
+ * @param data
+ * @param mult
  */
-function KDNeedsOrgasm(data, mult = 1) {
+function KDNeedsOrgasm(_data: any, _mult: number = 1) {
 	KinkyDungeonChangeRep("Passion", (KDNeedsParams.PassionPerOrgasm + 0.01*(1 + 2 * KDRandom())*KDNeedsParams.PassionPerOrgasm*(50 - KinkyDungeonGoddessRep.Passion)));
 	KinkyDungeonChangeRep("Frustration", (KDNeedsParams.FrustrationPerOrgasm + 0.01*(1 + 2 * KDRandom())*KDNeedsParams.FrustrationPerOrgasm*(KinkyDungeonGoddessRep.Frustration + 50)));
 }
 
 /**
- *
- * @param {any} data
- * @param {number} mult
+ * @param data
+ * @param mult
  */
-function KDNeedsEdge(data, mult = 1) {
+function KDNeedsEdge(_data: any, _mult: number = 1) {
 	if (KDGameData.OrgasmTurns > KinkyDungeonOrgasmTurnsMax * 0.5) {
 		KinkyDungeonChangeRep("Passion", -(1 + (2 + 4 * KDRandom()) * 0.01*(50 - KinkyDungeonGoddessRep.Frustration)));
 		KinkyDungeonChangeRep("Frustration", (5 + (3 + 3 * KDRandom()) * 0.01*(KinkyDungeonGoddessRep.Passion + 50)));
@@ -72,11 +69,10 @@ function KDNeedsEdge(data, mult = 1) {
 }
 
 /**
- *
- * @param {any} data
- * @param {number} mult
+ * @param data
+ * @param mult
  */
-function KDNeedsDeny(data, mult = 1) {
+function KDNeedsDeny(_data: any, _mult: number = 1) {
 	KinkyDungeonChangeRep("Passion", -(2 + (8 + 12 * KDRandom()) * 0.01*(50 - KinkyDungeonGoddessRep.Frustration)));
 	KinkyDungeonChangeRep("Frustration", (10 + (15 * KDRandom()) * 0.01*(KinkyDungeonGoddessRep.Passion + 50)));
 }

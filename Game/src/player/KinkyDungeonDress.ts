@@ -5,15 +5,13 @@ let KDNaughtySetting = false;
 // For cacheing
 let KinkyDungeonOutfitCache = new Map();
 
-/**@type {string[]} Contains protected zones*/
-let KDProtectedCosplay = [];
+/** Contains protected zones */
+let KDProtectedCosplay: string[] = [];
 
 /**
- *
- * @param {Named} item
- * @returns {outfit}
+ * @param item
  */
-function KDOutfit(item) {
+function KDOutfit(item: Named): outfit {
 	return KinkyDungeonOutfitCache.get(item.name);
 }
 
@@ -26,17 +24,15 @@ function KinkyDungeonRefreshOutfitCache() {
 
 /**
  * These priorities override the default BC
- * @type {Record<string, Record<string, number>>}
  */
-let KDClothOverrides = {
+let KDClothOverrides: Record<string, Record<string, number>> = {
 	"Cloth": {
 		"SleevelessTop": 24.9,
 	},
 };
 
 // Default dress (witch hat and skirt and corset)
-/** @type {KinkyDungeonDress} */
-let KinkyDungeonDefaultDefaultDress = [
+let KinkyDungeonDefaultDefaultDress: KinkyDungeonDress = [
 	{Item: "WitchHat1", Group: "Hat", Color: "Default", Lost: false},
 	{Item: "LeatherCorsetTop1", Group: "Cloth", Color: "Default", Lost: false},
 	{Item: "LatexSkirt1", Group: "ClothLower", Color: "Default", OverridePriority: 17, Lost: false, Skirt: true},
@@ -73,7 +69,7 @@ function KinkyDungeonInitializeDresses() {
 let KinkyDungeonNewDress = false;
 
 // Sets the player's dress to whatever she is wearing
-function KinkyDungeonDressSet(C) {
+function KinkyDungeonDressSet(C?: Character) {
 	if (KinkyDungeonNewDress) {
 		KDGetDressList().Default = [];
 		if (!C) C = KinkyDungeonPlayer;
@@ -116,7 +112,7 @@ function KinkyDungeonDressSet(C) {
 
 let KDCharacterDress = new Map();
 
-function KinkyDungeonSetDress(Dress, Outfit, Character, NoRestraints) {
+function KinkyDungeonSetDress(Dress: string, Outfit?: string, Character?: Character, NoRestraints?: boolean) {
 	if (!Character || Character == KinkyDungeonPlayer) {
 		if (Outfit) KDGameData.Outfit = Outfit;
 		KinkyDungeonCurrentDress = Dress;
@@ -143,26 +139,33 @@ let KDLastForceRefreshInterval = 100;
 /**
  * It sets the player's appearance based on their stats.
  *
- * @param {*} [Character]
- * @param {*} [NoRestraints]
- * @param {*} [Force]
- * @param {Record<string, NPCRestraint>} [npcRestraints]
- * @param {item[]} [customInventory]
- * @param {Map<string, boolean>} [customPlayerTags]
- * @param {string} [customFaction]
- * @param {boolean} [noDressOutfit]
+ * @param [Character]
+ * @param [NoRestraints]
+ * @param [Force]
+ * @param [npcRestraints]
+ * @param [customInventory]
+ * @param [customPlayerTags]
+ * @param [customFaction]
+ * @param [noDressOutfit]
  */
-function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, customInventory, customPlayerTags, customFaction, noDressOutfit) {
+function KinkyDungeonDressPlayer (
+	Character?:         Character,
+	NoRestraints?:      boolean,
+	Force?:             boolean,
+	npcRestraints?:     Record<string, NPCRestraint>,
+	customInventory?:   item[],
+	customPlayerTags?:  Map<string, boolean>,
+	customFaction?:     string,
+	noDressOutfit?:     boolean
+)
+{
 	if (!Character) Character = KinkyDungeonPlayer;
 
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
 	CharacterRefresh = () => {KDRefresh = true;};
 	CharacterAppearanceBuildCanvas = () => {};
-	/**
-	 * @type {item[]}
-	 */
-	let restraints = [];
+	let restraints: item[] = [];
 
 	if (StandalonePatched) {
 		AppearanceCleanup(Character);
@@ -196,6 +199,7 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 			updateDress: false,
 			updateExpression: false,
 			Character: Character,
+			extraForceDress: undefined,
 		};
 
 		if (KinkyDungeonCheckClothesLoss) KDRefreshCharacter.set(Character, true);
@@ -502,9 +506,8 @@ function KinkyDungeonDressPlayer(Character, NoRestraints, Force, npcRestraints, 
 			// Expressions for standalone
 
 
-			/** @type {KDExpression} */
-			let expression = null;
-			let stackedPriorities = {};
+			let expression: KDExpression = null;
+			let stackedPriorities: Record<string, number> = {};
 			let flags = KDGetEntityFlags(Character);
 			for (let e of Object.entries(KDExpressions)) {
 				if (!expression || e[1].priority > expression.priority) {
@@ -663,9 +666,9 @@ let KDRefreshCharacter = new Map();
 
 /**
  * Initializes protected groups like ears and tail
- * @param {Character} C
+ * @param C
  */
-function KDInitProtectedGroups(C) {
+function KDInitProtectedGroups(C: Character) {
 	if (!C) C = KinkyDungeonPlayer;
 	if (C == KinkyDungeonPlayer) {
 		KDProtectedCosplay = [];
@@ -684,14 +687,11 @@ function KDInitProtectedGroups(C) {
 /**
  * If the player is wearing a restraint that has a `alwaysDress` property, and the player is not wearing the item specified
  * in the `alwaysDress` property, the player will be forced to wear the items.
+ * @param C
+ * @param [restraints]
+ * @param [extraForceDress]
  */
-/**
- *
- * @param {item[]} [restraints]
- * @param {alwaysDressModel[]} [extraForceDress]
- * @param {Character} C
- */
-function KinkyDungeonWearForcedClothes(C, restraints, extraForceDress) {
+function KinkyDungeonWearForcedClothes(C: Character, restraints?: item[], extraForceDress?: alwaysDressModel[]) {
 	if (!C) C = KinkyDungeonPlayer;
 
 	for (let dress of extraForceDress) {
@@ -742,14 +742,14 @@ function KinkyDungeonWearForcedClothes(C, restraints, extraForceDress) {
 		}
 	}
 }
-function KDCharacterAppearanceSetColorForGroup(Player, Color, Group) {
+function KDCharacterAppearanceSetColorForGroup(Player: Character, Color: ItemColor, Group: string) {
 	let item = InventoryGet(Player, Group);
 	if (item) {
 		item.Color = Color;
 	}
 }
 
-function KinkyDungeonGetOutfit(Name) {
+function KinkyDungeonGetOutfit(Name: string): any {
 	if (KinkyDungeonOutfitCache && KinkyDungeonOutfitCache.get(Name)) {
 		let outfit = {};
 		Object.assign(outfit, KinkyDungeonOutfitCache.get(Name));
@@ -761,15 +761,15 @@ function KinkyDungeonGetOutfit(Name) {
 
 /**
  * Makes the KinkyDungeonPlayer wear an item on a body area
- * @param {Character} Character
- * @param {string} AssetName - The name of the asset to wear
- * @param {string} AssetGroup - The name of the asset group to wear
- * @param {string} [par] - parent item
- * @param {string | string[]} [color] - parent item
- * @param {Record<string, LayerFilter>} [filters] - parent item
- * @param {Record<string, LayerProperties>} [Properties] - parent item
+ * @param Character
+ * @param AssetName - The name of the asset to wear
+ * @param AssetGroup - The name of the asset group to wear
+ * @param [par] - parent item
+ * @param [color] - parent item
+ * @param [filters] - parent item
+ * @param [Properties] - parent item
  */
-function KDInventoryWear(Character, AssetName, AssetGroup, par, color, filters, Properties) {
+function KDInventoryWear(Character: Character, AssetName: string, AssetGroup: string, _par?: string, color?: ItemColor, filters?: Record<string, LayerFilter>, Properties?: Record<string, LayerProperties>): Item {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
 	if (!M) return;
 	let item = KDAddModel(Character, AssetGroup, M, color || "Default", filters, undefined, Properties);
@@ -778,7 +778,7 @@ function KDInventoryWear(Character, AssetName, AssetGroup, par, color, filters, 
 	return item;
 }
 
-function KDCharacterNaked(Character) {
+function KDCharacterNaked(Character: Character) {
 	if (!Character) Character = KinkyDungeonPlayer;
 	KDCharacterAppearanceNaked(Character);
 	CharacterRefresh(Character);
@@ -786,10 +786,9 @@ function KDCharacterNaked(Character) {
 
 /**
  * Removes all items that can be removed, making the player naked. Checks for a blocking of CosPlayItem removal.
- * @param {Character} C
- * @returns {void} - Nothing
+ * @param C
  */
-function KDCharacterAppearanceNaked(C) {
+function KDCharacterAppearanceNaked(C: Character): void {
 	// For each item group (non default items only show at a 20% rate)
 	for (let A = C.Appearance.length - 1; A >= 0; A--) {
 		if (StandalonePatched) {
@@ -821,14 +820,12 @@ function KDCharacterAppearanceNaked(C) {
 }
 
 /**
- *
- * @param {Character} C
- * @param {*} inv
- * @param {*} tags
- * @param {string} customFaction
- * @returns
+ * @param C
+ * @param inv
+ * @param tags
+ * @param customFaction
  */
-function KDApplyItem(C, inv, tags, customFaction = undefined) {
+function KDApplyItem(C: Character, inv: any, tags: any, customFaction: string = undefined): void {
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
@@ -876,8 +873,7 @@ function KDApplyItem(C, inv, tags, customFaction = undefined) {
 		//let already = InventoryGet(C, AssetGroup);
 		//let difficulty = already?.Property?.Difficulty || 0;
 
-		/** @type {Item} */
-		let placed = null;
+		let placed: Item = null;
 
 		if (!restraint.armor || KDToggles.DrawArmor) {
 			placed = KDAddModel(C, AssetGroup, ModelDefs[restraint.Model || restraint.Asset], "", data.Filters, inv, data.Properties);
@@ -911,7 +907,7 @@ function KDApplyItem(C, inv, tags, customFaction = undefined) {
 }
 
 
-function KinkyDungeonSendOutfitEvent(Event, data) {
+function KinkyDungeonSendOutfitEvent(Event: string, data: any) {
 	if (!KDMapHasEvent(KDEventMapOutfit, Event)) return;
 	let outfit = KDOutfit({name: data.CurrentDress || KinkyDungeonCurrentDress});
 	if (outfit && outfit.events) {
@@ -924,11 +920,9 @@ function KinkyDungeonSendOutfitEvent(Event, data) {
 }
 
 /**
- *
- * @param {Character} C
- * @returns {string[]}
+ * @param C
  */
-function KDGetExtraPoses(C) {
+function KDGetExtraPoses(C: Character): string[] {
 	let poses = [];
 	if (C == KinkyDungeonPlayer) {
 		// For player
@@ -950,21 +944,17 @@ function KDGetExtraPoses(C) {
 
 
 /**
- *
- * @param {Character} C
- * @returns {Map<string, number>}
+ * @param C
  */
-function KDGetEntityFlags(C) {
-	/** @type {Map<string, number>} */
-	let flags = new Map();
+function KDGetEntityFlags(C: Character): Map<string, number> {
+	let flags: Map<string, number> = new Map();
 
 	if (C == KinkyDungeonPlayer) {
 		for (let flag of KinkyDungeonFlags.entries()) {
 			flags.set(flag[0], flag[1]);
 		}
 	} else {
-		/** @type {Record<string, number>} */
-		let flgs = {};
+		let flgs: Record<string, number> = {};
 		let id = KDGetCharacterID(C);
 		if (id) {
 			let entity = KinkyDungeonFindID(id);
@@ -982,10 +972,9 @@ function KDGetEntityFlags(C) {
 }
 
 /**
- *
- * @param {Character} Character
+ * @param Character
  */
-function KDUpdateTempPoses(Character) {
+function KDUpdateTempPoses(Character: Character) {
 	KDRefreshPoseOptions(Character);
 	// Append temp poses
 	for (let pose of Object.keys(KDCurrentModels.get(Character).TempPoses)) {
@@ -1004,7 +993,7 @@ function KDUpdateTempPoses(Character) {
 }
 
 
-function KDGetFactionFilters(faction) {
+function KDGetFactionFilters(faction: string): Record<string, LayerFilter> {
 	if (KinkyDungeonFactionFilters[faction])
 		return KinkyDungeonFactionFilters[faction];
 	if (KDFactionProperties[faction]?.jailAlliedFaction && KinkyDungeonFactionFilters[KDFactionProperties[faction]?.jailAlliedFaction])
