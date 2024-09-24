@@ -4346,8 +4346,8 @@ function KinkyDungeonGameKeyDown() {
 	} else if (KinkyDungeonKeySpellConfig.includes(KinkyDungeonKeybindingCurrentKey)) {
 		if (KinkyDungeonState == "Game") {
 			let index = 1 + KinkyDungeonKeySpellConfig.indexOf(KinkyDungeonKeybindingCurrentKey);
-			if (localStorage.getItem('KinkyDungeonSpellsChoice' + KinkyDungeonSpellsConfig)) {
-				KinkyDungeonSpellsConfig = index + "";
+			if (localStorage.getItem('KinkyDungeonSpellsChoice' + String (index))) {
+				KinkyDungeonSpellsConfig = String (index);
 				KinkyDungeonLoadSpellsConfig();
 			}
 		}

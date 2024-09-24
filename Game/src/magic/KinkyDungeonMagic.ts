@@ -2305,7 +2305,7 @@ function KinkyDungeonLoadSpellsConfig() {
 	if (spellsChoice) {
 		//KinkyDungeonSpellChoices = [];
 		KDClearChoices();
-		let list = JSON.parse(spellsChoice);
+		let list: string[] = JSON.parse(spellsChoice);
 		for (let spell of list) {
 			if (KDHasSpell(spell)) {
 				KinkyDungeonSpellChoices.push(KinkyDungeonSpells.findIndex((sp) => {
@@ -2424,7 +2424,7 @@ function KDDrawHotbar(xLoc: number, _yLoc: number, _name: string, _fn: (I: numbe
 		KinkyDungeonLoadSpellsConfig();
 		return true;
 	}, true, xLoc + 450, 640, w - 25 - h, 54,
-	localStorage.getItem('KinkyDungeonSpellsChoice' + 2) ? TextGet("KinkyDungeonLoadConfig") + "3" : "x", KinkyDungeonSpellsConfig == "3" ? "#ffffff" : "#888888", "");
+	localStorage.getItem('KinkyDungeonSpellsChoice' + 3) ? TextGet("KinkyDungeonLoadConfig") + "3" : "x", KinkyDungeonSpellsConfig == "3" ? "#ffffff" : "#888888", "");
 
 	DrawButtonKDEx("KDSaveSpellsConfig1", (_bdata) => {
 		KinkyDungeonSpellsConfig = "1";
