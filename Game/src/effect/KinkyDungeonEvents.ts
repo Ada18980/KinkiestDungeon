@@ -4041,7 +4041,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 	},
 	"calcMana": {
 		"HeavyKinetic": (e, spell, data) => {
-			if (data.spell?.name == spell?.name && KinkyDungeonPlayerDamage?.heavy) {
+			if (data.spell?.name == spell?.name && KinkyDungeonPlayerDamage?.heavy && !KinkyDungeonFlags.get("KineticMastery")) {
 				data.cost += e.power;
 			}
 		},

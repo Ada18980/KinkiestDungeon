@@ -1047,6 +1047,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (!hit) {
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
 				}
+				KDTriggerSpell(spell, data, false, false);
 				hit = true;
 				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
 				let scaling = 0.9 * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));

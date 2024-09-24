@@ -1429,6 +1429,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	// Process wait equation
 	if (delta > 0 && KDGameData.StaminaPause > 0) KDGameData.StaminaPause -= delta;
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
+	if (delta > 0 && KDGameData.ManaSlow > 0) KDGameData.ManaSlow -= delta;
 
 	let baseRate = KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1;
 	let kneelRate = baseRate * (KinkyDungeonIsArmsBound() ? 0.85 : 1);

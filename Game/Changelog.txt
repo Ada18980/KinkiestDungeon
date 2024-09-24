@@ -31,6 +31,12 @@ TODO:
 TODO remove hogtie when released
 
 
+5.3.39
+- Fix issue with trail warnings disappearing one turn before they are supposed to
+- Fixed heavy wep + kinetic mastery issue
+- Fixed issue w/ mana regen
+- Fixed inner power + kinetic slash + flame blade issue
+
 5.3.38-RC10
 - Fixed some bugs with bosses doing dialogue while part of the player faction
 - Living collars can now be disenchanted to delay their effects.

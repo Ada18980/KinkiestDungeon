@@ -1093,8 +1093,10 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 			]},
 
-		{name: "KineticMastery", tags: ["telekinesis", "defense", "utility"], prerequisite: "TelekineticSlash", school: "Conjure", learnFlags: ["KineticMastery"],
-			spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
+		{name: "KineticMastery", tags: ["telekinesis", "defense", "utility"], prerequisite: "TelekineticSlash", school: "Conjure",
+			learnFlags: ["KineticMastery"],
+			spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0,
+			lifetime: 0, power: 0, damage: "inert", events: [
 				{type: "KineticMastery", trigger: "beforeMultMana", requiredTag: "kinetic", mult: 0.7},
 			]},
 
