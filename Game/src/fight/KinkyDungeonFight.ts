@@ -1749,7 +1749,16 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 				let checkCollision = (b.bullet.faction == "Player" && (b.x != KinkyDungeonPlayerEntity.x || b.y != KinkyDungeonPlayerEntity.y))
 					|| justBorn || (b.x != startx || b.y != starty) || (!b.vx && !b.vy) || (KDistEuclidean(b.vx, b.vy) < 0.9); // Check collision for bullets only once they leave their square or if they are slower than one
 				if ((checkCollision && !KinkyDungeonBulletsCheckCollision(b, undefined, undefined, delta - d, false)) || outOfTime || outOfRange) {
-					if (!(b.bullet.spell && ((!b.bullet.trail && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y))))) || (b.bullet.trail && b.bullet.spell.piercingTrail))) || outOfRange || outOfTime)
+					if (!(b.bullet.spell
+						&& (
+							(!b.bullet.trail
+								&& (b.bullet.spell.piercing
+									|| (b.bullet.spell.pierceEnemies
+										&& KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))
+							|| (b.bullet.trail
+								&& b.bullet.spell.piercingTrail)))
+						|| outOfRange
+						|| outOfTime)
 						end = true;
 					if (end) {
 						d = 0;
@@ -1770,10 +1779,17 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 				// Update the bullet's visual position
 				KinkyDungeonUpdateSingleBulletVisual(b, end);
 
-				let show = (KDFactionRelation("Player", b.bullet.faction) < 0.5 || (b.bullet.spell && b.bullet.spell.playerEffect) || b.bullet.playerEffect || (b.bullet.spell && b.bullet.spell.alwaysWarn))
+				let show =
+					(KDFactionRelation("Player", b.bullet.faction) < 0.5
+						|| (b.bullet.spell && b.bullet.spell.playerEffect)
+						|| b.bullet.playerEffect
+						|| (b.bullet.spell && b.bullet.spell.alwaysWarn))
 					&& !(b.bullet.spell && b.bullet.spell.hideWarnings)
 					&& ((b.bullet.spell && b.bullet.spell.alwaysWarn)
-						|| (b.bullet.hit == "lingering" || (b.bullet.spell && b.bullet.name == b.bullet.spell.name && (b.bullet.spell.onhit == "aoe" || b.bullet.spell.onhit == "dot")))
+						|| b.bullet.hit == "lingering"
+						|| (b.bullet.spell && b.bullet.name == b.bullet.spell.name
+							&& (b.bullet.spell.onhit == "aoe" || b.bullet.spell.onhit == "dot"))
+						|| (b.bullet.trail && !b.bullet.spell?.nonVolatileTrail)
 						|| ((b.lifetime > 0 || b.lifetime == undefined) && b.bullet.damage && b.bullet.damage.type && b.bullet.damage.type != "heal" && b.bullet.damage.type != "inert")
 					);
 				if (KinkyDungeonStatsChoice.get("BulletHell2") || (b.vx || b.vy) && KinkyDungeonStatsChoice.get("BulletHell")) show = false;
@@ -1813,7 +1829,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 						let dist = Math.sqrt((b.bullet.origin.x - bx) * (b.bullet.origin.x - bx) + (b.bullet.origin.y - by) * (b.bullet.origin.y - by));
 						if (dist > b.bullet.range) outOfRange = true;
 					}
-					let outOfTime = (b.bullet.lifetime != 0 && ((!b.bullet.damage && btime <= 0.001) || ((b.bullet.damage) && btime <= 1.001)));
+					let outOfTime = (b.bullet.lifetime != 0
+						&& (btime <= 0.001 || ((b.bullet.damage && !b.bullet.trail) && btime <= 1.001)));
 					let checkCollision = (bx != startx || by != starty)
 						|| (!b.vx && !b.vy) || (KDistEuclidean(b.vx, b.vy) < 0.9) || b.bullet.aoe; // Check collision for bullets only once they leave their square or if they are slower than one
 					if (outOfTime || outOfRange) {
@@ -1858,7 +1875,7 @@ function KinkyDungeonUpdateSingleBulletVisual(b: any, end: boolean, delay?: numb
 		if (visx == undefined) visx = b.xx;
 		if (visy == undefined) visy = b.yy;
 
-		let temp = (!b.vx && !b.vy && b.time <= 1 && !b.bullet.hit);
+		let temp = (!b.vx && !b.vy && b.time <= 1 && !(b.bullet.hit || (b.bullet.trail && !b.bullet.spell?.nonVolatileTrail)));
 		let zIndex = (b.vx == 0 && b.vy == 0) ? 2 : 0;
 		zIndex += b.bullet.spell?.power || 0;
 		KinkyDungeonBulletsVisual.set(b.spriteID, {end: end, zIndex: zIndex, temporary: temp, spin: b.bullet.bulletSpin, spinAngle: spinAngle, name: b.bullet.name, spriteID: b.spriteID, size: b.bullet.width ? b.bullet.width : 1, aoe: (b.bullet.spell && b.bullet.spell.aoe) ? b.bullet.spell.aoe : undefined, vx: b.vx, vy: b.vy, xx: b.xx, yy: b.yy, visual_x: visx, visual_y: visy, updated: true, scale: scale, alpha: alpha, delay: dd});

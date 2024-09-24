@@ -4,8 +4,8 @@ let KDDebugOverlay = false;
 let CHIBIMOD: PoseMod[] = [
 	{
 		Layer: "HairBack",
-		scale_x: 0.65,
-		scale_y: 0.65,
+		scale_x: 0.8,
+		scale_y: 0.8,
 		rotation_x_anchor: 1190,
 		rotation_y_anchor: 690,
 		offset_x: 1100,
