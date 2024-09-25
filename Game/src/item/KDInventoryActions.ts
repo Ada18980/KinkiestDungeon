@@ -579,7 +579,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 					if (KDGetRestraintVariant(item).prefix == "Cursed") KDGetRestraintVariant(item).prefix = "Purified";
 				}
 
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
 
 				if (KDGameData.UsingConsumable) {
 					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), "#ff5555", 1, true);
@@ -626,7 +626,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#e7cf1a", 2);
 				KinkyDungeonChangeMana(-KDGameData.InventoryActionManaCost || 0);
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 
 				KDGameData.InventoryAction = "";
 				KinkyDungeonLastAction = "Cast";
@@ -778,7 +778,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KinkyDungeonAddGold(value);
 			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + 1;
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSell")
 				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
 				.replace("VLU", "" + value)
@@ -851,7 +851,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + quantity;
 			KinkyDungeonAddGold(value);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSellBulk")
 				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
 				.replace("VLU", "" + value)
@@ -926,7 +926,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			if (!KDGameData.ItemsSold) KDGameData.ItemsSold = {};
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + quantity;
 			KinkyDungeonAddGold(value);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSellExcess")
 				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
 				.replace("VLU", "" + value)
@@ -973,7 +973,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Happens when you click the button */
 		click: (_player, item) => {
 			KDChangeRecyclerInput(KDRecycleItem(item, 1));
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
 				.replace("ITM", KDGetItemName(item))
@@ -1013,14 +1013,14 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
 				return;
 			}
 
 			let quant = (itemInv.quantity || 1);
 
 			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
 				.replace("ITM", KDGetItemName(item))
@@ -1063,14 +1063,14 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv || !(itemInv.quantity > 1)) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
 				return;
 			}
 
 			let quant = (itemInv.quantity - 1);
 
 			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
 				.replace("ITM", KDGetItemName(item))
@@ -1112,7 +1112,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		click: (_player, item) => {
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name);
 			if (!itemInv || !(itemInv.quantity > 0)) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/BeepEngage.ogg");
 				return;
 			}
 
@@ -1128,7 +1128,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			itemInv.quantity = (itemInv.quantity || 1) - quant;
 			if (itemInv.quantity == 0) KinkyDungeonInventoryRemoveSafe(itemInv);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
 				.replace("ITM", KDGetItemName(item))
 				.replace("PRD", TextGet("Restraint" + product))
@@ -1218,7 +1218,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 						);
 					}
 
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockLight.ogg");
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockLight.ogg");
 
 					if (!enemy.items) enemy.items = [];
 					enemy.items.push(item.inventoryVariant || item.name);
@@ -1279,7 +1279,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 						"#ffffff", 1);
 
 
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Cookie.ogg");
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Cookie.ogg");
 
 					if (item.quantity > 1) item.quantity -= 1;
 					else KinkyDungeonInventoryRemoveSafe(item);

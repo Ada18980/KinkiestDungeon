@@ -448,7 +448,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 	'R': (moveX, moveY) => {
 		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, MiniGameKinkyDungeonCheckpoint, "rubble");
 
 			KinkyDungeonMapSet(moveX, moveY, 'r');
@@ -503,7 +503,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 					KDTrigPanic(true);
 					KDSpawnLootTrap(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, lootTrap.trap, lootTrap.mult, lootTrap.duration);
 				}
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ChestOpen.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ChestOpen.ogg");
 				KinkyDungeonMapSet(moveX, moveY, 'c');
 				KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 			}
@@ -519,7 +519,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 		if (allowManip) {
 			let chestType = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint) == "lib" ? "shelf" : "rubble";
 			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), chestType);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 		} else {
@@ -530,7 +530,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 	'O': (moveX, moveY) => { // Open the chest
 		if (KinkyDungeonIsPlayer())
 			KinkyDungeonTakeOrb(1, moveX, moveY); // 1 spell point
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 		KDGameData.AlreadyOpened.push({x: moveX, y: moveY});
 		return true;
 	},
@@ -539,7 +539,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 			KDPerkConfirm = false;
 			KinkyDungeonTakePerk(1, moveX, moveY); // 1 perk choice
 		}
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 		return true;
 	},
 	'-': (_moveX, _moveY) => { // Open the chest
@@ -1612,10 +1612,10 @@ let KDStairsAltAction = {
 			delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
 
 			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleport"), "#ff5555", 5);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		} else {
 			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleportFail"), "#ff5555", 5);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		}
 	},
 	"Null": (_toTile, _suppressCheckPoint) => {
@@ -1648,7 +1648,7 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 					KinkyDungeonSetFlag("failUnfair", 5);
 					KinkyDungeonSetFlag("failUnfairFirst", 10);
 				}
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
 			}
 		}
 	}
@@ -1661,6 +1661,6 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 			KinkyDungeonAggroFaction(faction, true);
 		}
 
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorOpen.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorOpen.ogg");
 	}
 }

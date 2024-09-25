@@ -1279,6 +1279,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						if (point) {
 							ee.x = point.x;
 							ee.y = point.y;
+							ee.path = undefined;
 						}
 					}
 					//if (ee && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
@@ -1299,6 +1300,11 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (guard && !KinkyDungeonFlags.has("guardTP") && KDGameData.CagedTime > KDMaxCageTime && KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y) > 4) {
 				DialogueBringSpecific(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, guard);
 				KinkyDungeonSetFlag("guardTP", 20);
+
+				if (!guard.IntentAction) {
+					guard.IntentAction = 'freeFurniture';
+					guard.playWithPlayer = 12;
+				}
 			}
 		},
 		"slimeSpread": (e, _item, data) => {
@@ -1826,7 +1832,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 							KinkyDungeonSendTextMessage(5, TextGet("KDBubbleBounce"), "#ffffff", 2);
 
 						}
-						if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+						if (KDSoundEnabled() && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 					}
 				}
 			}
@@ -1842,7 +1848,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						//KinkyDungeonLinkItem(newRestraint, item, item.tightness, "");
 						if (
 							KinkyDungeonAddRestraintIfWeaker(newRestraint, item.tightness, true, "", false, undefined, undefined, item.faction, true)) {
-							if (KDToggles.Sound && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+							if (KDSoundEnabled() && e.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
 						}
 
 					}

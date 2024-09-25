@@ -315,7 +315,7 @@ function KDAlreadyOpened(x: number, y: number): boolean {
 }
 
 function KinkyDungeonPlaySound(src: string, entity?: entity, vol?: number) {
-	if (KDToggles.Sound && !KinkyDungeonSFX.includes(src)) {
+	if (KDSoundEnabled() && !KinkyDungeonSFX.includes(src)) {
 		if (!entity || KinkyDungeonVisionGet(entity.x, entity.y) > 0) {
 			/*  TODO: Ensure a missing `vol` parameter passes through as undefined.  */
 			AudioPlayInstantSoundKD(src, vol);
@@ -4100,7 +4100,7 @@ function KinkyDungeonClickGame(_Level?: number) {
 					KinkyDungeonTargetingSpellWeapon = null;
 				}
 			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			KinkyDungeonGameKey.keyPressed = [
 				false,
 				false,
@@ -4114,7 +4114,7 @@ function KinkyDungeonClickGame(_Level?: number) {
 			if (KinkyDungeonAutoWaitSuppress) KinkyDungeonAutoWaitSuppress = false;
 			else if (KDIsAutoAction()) {
 				KDDisableAutoWait();
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
 			}
 		} finally {
 			CharacterRefresh = _CharacterRefresh;
@@ -4127,7 +4127,7 @@ function KinkyDungeonClickGame(_Level?: number) {
 	else if (KDIsAutoAction() && MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)) {
 		KDDisableAutoWait();
 
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
 	}
 	// If no buttons are clicked then we handle move
 	else if ((KinkyDungeonControlsEnabled() || KinkyDungeonInspect) && KinkyDungeonDrawState == "Game") {
@@ -4308,19 +4308,19 @@ function KinkyDungeonGameKeyDown() {
 	if (KinkyDungeonState == "TileEditor") {
 		if (KinkyDungeonKey[0] == KinkyDungeonKeybindingCurrentKey) {
 			KDClickButton("maptileU");
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		} else if (KinkyDungeonKey[1] == KinkyDungeonKeybindingCurrentKey) {
 			KDClickButton("maptileL");
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		} else if (KinkyDungeonKey[2] == KinkyDungeonKeybindingCurrentKey) {
 			KDClickButton("maptileD");
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		} else if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
 			KDClickButton("maptileR");
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		}
 	}
@@ -4364,15 +4364,15 @@ function KinkyDungeonGameKeyDown() {
 		return true;
 	} else if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonKeySprint.includes(KinkyDungeonKeybindingCurrentKey)) {
 		KinkyDungeonToggleAutoSprint = !KinkyDungeonToggleAutoSprint;
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		return true;
 	} else if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonKeySpellPage.includes(KinkyDungeonKeybindingCurrentKey)) {
 		KDCycleSpellPage();
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		return true;
 	} else if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonKeySwitchWeapon.includes(KinkyDungeonKeybindingCurrentKey)) {
 		KDSwitchWeapon();
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		return true;
 	} else if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonKeySwitchLoadout.includes(KinkyDungeonKeybindingCurrentKey)) {
 		let i = 1 + KinkyDungeonKeySwitchLoadout.indexOf(KinkyDungeonKeybindingCurrentKey);
@@ -4380,7 +4380,7 @@ function KinkyDungeonGameKeyDown() {
 		KDGameData.CurrentLoadout = i;
 		KDLoadQuickLoadout(i, true);
 
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		return true;
 	} else if (KinkyDungeonState == "Stats") {
 		if (KinkyDungeonKey[3] == KinkyDungeonKeybindingCurrentKey) {
@@ -4485,7 +4485,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
 				case KinkyDungeonKeyMenu[8]: KinkyDungeonDrawState = "Restart"; break;
 			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		}
 	} else if (KinkyDungeonDrawState == "Restart"
@@ -4510,7 +4510,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[8]:
 					KinkyDungeonDrawState = "Game"; break;
 			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		}
 	}
@@ -4546,15 +4546,15 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 				return true;
 			} else if (KinkyDungeonDrawState == "Game" && KinkyDungeonKeySprint.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
 				KinkyDungeonToggleAutoSprint = !KinkyDungeonToggleAutoSprint;
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 				return true;
 			} else if (KinkyDungeonDrawState == "Game" && KinkyDungeonKeySpellPage.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
 				KDCycleSpellPage(true);
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 				return true;
 			} else if (KinkyDungeonDrawState == "Game" && KinkyDungeonKeySwitchWeapon.includes(KinkyDungeonKeybindingCurrentKeyRelease)) {
 				KDSwitchWeapon();
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 				return true;
 			}
 		}
@@ -4567,7 +4567,7 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
 				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
 			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		} else if (KinkyDungeonKeyToggle.includes(KinkyDungeonKeybindingCurrentKeyRelease) && KinkyDungeonDrawState == 'Game') {
 			switch (KinkyDungeonKeybindingCurrentKeyRelease) {
@@ -4580,7 +4580,7 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
 				case KinkyDungeonKeyToggle[10]: KDBulletTransparency = !KDBulletTransparency; break;
 			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		}
 	}
@@ -4952,7 +4952,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 								}
 								KinkyDungeonLastAction = "Move";
 								moved = true;
-								if (KDToggles.Sound) {
+								if (KDSoundEnabled()) {
 									if (quick) {
 										KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 									} else {
@@ -5062,7 +5062,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 			KinkyDungeonAdvanceTime(1);
 		} else { // If we are blind we can bump into walls!
 			if (KinkyDungeonVisionGet(moveX, moveY) <= 1) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Footstep.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Footstep.ogg");
 				KinkyDungeonSendActionMessage(2, TextGet("KDWallBump"), "white", 2);
 				KinkyDungeonInterruptSleep();
 				// Due to rendering system
@@ -5537,7 +5537,7 @@ function KinkyDungeonTargetTileMsg() {
 		if (KinkyDungeonTargetTile.Faction)
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
 				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff5277", 2, true);
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObjectLock")
 			.replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name))
 			.replace("LKTP", TextGet(`Kinky${KinkyDungeonTargetTile.Lock}Lock`))
@@ -5663,7 +5663,7 @@ function KinkyDungeonCloseDoor(x: number, y: number) {
 		KinkyDungeonTargetTile = null;
 		KinkyDungeonMapSet(x, y, "D");
 		KinkyDungeonTargetTileLocation = "";
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
 		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonCloseDoorDone"), "white", 2);
 		KinkyDungeonAdvanceTime(1, true);
 	}
@@ -5787,7 +5787,7 @@ let KDKeyCheckers = {
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
 				case KinkyDungeonKeyToggle[10]: KDBulletTransparency = !KDBulletTransparency; break;
 			}
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
 		}
 	},

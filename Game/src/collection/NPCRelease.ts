@@ -10,7 +10,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 			player: KDPlayer().id,
 		});
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Dollify" + ".ogg");
 
 		// DamageWeak
@@ -45,7 +45,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 				player: KDPlayer().id,
 			});
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Coin" + ".ogg");
 
 		// DamageWeak
@@ -67,7 +67,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 		KDCollectionReleaseSelection = {};
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
 
 		return true;
@@ -90,7 +90,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 				KDCollectionReleaseSelection[v.id] = true;
 		}
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Danger" + ".ogg");
 
 		return true;
@@ -107,7 +107,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 	if (DrawButtonKDEx("KDReleaseMarkUnmark", (b) => {
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 			+ (!KDCollectionReleaseSelection[value.id] ? "DangerWeak" : "DamageWeak") + ".ogg");
 

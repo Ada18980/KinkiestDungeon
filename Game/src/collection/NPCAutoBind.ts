@@ -12,7 +12,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		KDAutoBindRestraints = JSON.parse(JSON.stringify(KDGetNPCRestraints(value.id)));
 		KDAutoBindRestraintsName = (KDGameData.Collection[value.id + ""] || KDGetVirtualCollectionEntry(value.id)).name;
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
@@ -77,7 +77,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				KDRefreshCharacter.set(KDNPCChar.get(value.id), true);
 		}
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
@@ -115,7 +115,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		else {
 			KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
 		}
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
@@ -188,7 +188,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 
 		}
 
-		if (KDToggles.Sound)
+		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,

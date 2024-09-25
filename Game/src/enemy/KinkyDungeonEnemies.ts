@@ -6298,6 +6298,7 @@ function KinkyDungeonEnemyTryMove (
 			KinkyDungeonMapSet(enemy.x, enemy.y, 'D');
 			if ((KDGameData.PrisonerState == 'jail' || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
 				&& KinkyDungeonTilesGet(enemy.x + "," + enemy.y)
+				&& !KDEntityHasFlag(enemy, "noReLock")
 				&& KDHostile(enemy)
 				&& (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock)
 				&& (!KinkyDungeonFlags.has("nojailbreak") || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)) {

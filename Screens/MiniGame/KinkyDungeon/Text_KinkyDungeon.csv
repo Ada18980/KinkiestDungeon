@@ -55,7 +55,7 @@ KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
 KDToggleBackgrounds,Show Background Art
 
-
+KDToggleSoundOffWhenMin,Mute when Minimized
 KDToggleBackgrounds,Show Background Art
 KDToggleRawDP,Show DP instead of %
 KDToggleOnlySelfQuickInv,Quick Inv only equips to self

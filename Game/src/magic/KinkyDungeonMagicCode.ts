@@ -494,7 +494,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"CommandWord": (spell, data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KDSpellIgnoreComp(spell) && (data.gaggedMiscastFlag && KinkyDungeonGagTotal() >= 0.25)) {
 			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5555", 1);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
 			return "Miscast";
 		}
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
@@ -527,7 +527,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 			if (KDRescueEnemy("Unlock", en, true) || cc) {
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
 			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoEnemy"), "#ff5555", 1, true);
@@ -540,7 +540,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					}
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#e7cf1a", 2);
 					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				} else {
 					KDGameData.InventoryAction = "RemoveMagicLock";
 					KinkyDungeonDrawState = "Inventory";
@@ -555,7 +555,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove = false;
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "#e7cf1a", 2);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
 		}
 		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5555", 1, true);
@@ -582,7 +582,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			});
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
 			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
 		} else if (en && en.player) {
 			let lockable = KinkyDungeonPlayerGetLockableRestraints();
@@ -593,7 +593,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				KinkyDungeonSendTextMessage(4, TextGet("KDSelfLock"), "#8888ff", 2);
 				KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
 
@@ -611,10 +611,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (e) {
 				if (door) {
 					KinkyDungeonMapSet(targetX, targetY, 'D');
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
 				}
 				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
 		} else return "Fail";
@@ -624,7 +624,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (en) {
 			KinkyDungeonTickBuffTag(en, "CM1", 1);
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyCM" + (entity?.Enemy?.unlockCommandLevel || 1), true), undefined, undefined, undefined);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			if (entity?.Enemy) {
 				KinkyDungeonSetEnemyFlag(entity, "commandword", entity.Enemy.unlockCommandCD || 90);
 				KinkyDungeonSendActionMessage(7,

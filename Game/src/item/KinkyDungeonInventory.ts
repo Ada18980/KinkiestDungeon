@@ -2477,7 +2477,7 @@ function KDDropItemInv(name: string, player?: entity, playerDropped: boolean = t
 
 		KDMapData.GroundItems.push(dropped);
 
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 	}
 }
 

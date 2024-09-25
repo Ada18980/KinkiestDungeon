@@ -172,6 +172,7 @@ let KinkyDungeonGraphicsQuality = true;
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 let KDToggles = {
+	SoundOffWhenMin: true,
 	SpellBook: false,
 	ShowRestraintOnHover: false,
 	HiResModel: false,
@@ -1576,7 +1577,7 @@ function KinkyDungeonRun() {
 			});
 		}
 		KinkyDungeonGameFlag = false;
-		DrawCheckboxVis(1700, 25, 64, 64, TextGet("KDToggleSound"), KDToggles.Sound, false, "#ffffff");
+		DrawCheckboxVis(1700, 25, 64, 64, TextGet("KDToggleSound"), KDSoundEnabled(), false, "#ffffff");
 		// Draw temp start screen
 		if (KDLose) {
 			DrawTextKD(TextGet("End"), 1000, 250, "#ffffff", KDTextGray2);
@@ -4889,7 +4890,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	if (KinkyDungeonKeybindings) {
 		KDCommitKeybindings();
 	}
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
+	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
 
 
@@ -5270,7 +5271,7 @@ function KDClick() {
 			KDIntroProgress[KDIntroStage - 1] = 4; // UI delay
 	} else
 	if (KinkyDungeonHandleClick()) {
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 	}
 	if (KinkyDungeonReplaceConfirm > 0) KinkyDungeonReplaceConfirm -= 1;
 
@@ -6000,7 +6001,7 @@ function sfc32(a: number, b: number, c: number, d: number) {
 let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
 function AudioPlayInstantSoundKD(Path: string, volume?: number) {
-	if (!KDToggles.Sound) return false;
+	if (!KDSoundEnabled()) return false;
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
@@ -6223,4 +6224,18 @@ function KDChangeZoom(change: number) {
 	KinkyDungeonSendActionMessage(10, TextGet("ZoomSet").replace("PCNT",
 		"" + Math.round(100*(72 + KDZoomLevels[KDZoomIndex] * 12)/72)
 	), "#ffffff", 1);
+}
+
+let KDMinimized = false;
+let KDFocusSounds = setInterval(() => {
+    if (document.hasFocus()) {
+		KDMinimized = false;
+    }
+    else {
+        KDMinimized = true;
+    }
+}, 100);
+
+function KDSoundEnabled() {
+	return KDToggles.Sound && (!KDToggles.SoundOffWhenMin || !KDMinimized);
 }

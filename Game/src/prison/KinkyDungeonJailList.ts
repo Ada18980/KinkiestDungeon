@@ -148,6 +148,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 8);
 				KDGameData.PrisonerState = 'parole';
 				guard.CurrentAction = "jailWander";
+				KinkyDungeonSetEnemyFlag(guard, "noReLock", 10);
 				// Unlock all jail doors
 				for (let T of Object.values(KDMapData.Tiles)) {
 					if (T.Type == "Door") {

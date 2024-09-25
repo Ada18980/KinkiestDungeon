@@ -139,7 +139,7 @@ function KDProcessInput(type: string, data: any): string {
 					KDGameData.SlowMoveTurns = time - 1;
 			}
 			KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonEquipWeapon").replace("WEAPONNAME", KDGetItemNameString(data.weapon)), "white", 5);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 
 			// Reequip offhand if able
 			if (KDGameData.OffhandOld && !KDGameData.Offhand
@@ -161,14 +161,14 @@ function KDProcessInput(type: string, data: any): string {
 			}
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
 			KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonUnEquipWeapon").replace("WEAPONNAME", KDGetItemNameString(data.weapon)), "white", 5);
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
 		case "dress":
 			KDDelayedActionPrune(["Action", "Dress"]);
 			KinkyDungeonSetDress(data.dress, data.outfit);
 			KDGameData.SlowMoveTurns = 5;
 			KinkyDungeonSleepTime = CommonTime() + 200;
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
 		case "drop": {
 			KDDropItemInv(data.item);
@@ -224,7 +224,7 @@ function KDProcessInput(type: string, data: any): string {
 					KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, KDDebugLink,
 				data.curse, undefined, undefined, data.inventoryVariant);
 			if (success) {
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 				loose = KinkyDungeonInventoryGetLoose(data.name);
 				if (loose) {
 					if (!(loose.quantity > 1)) {
@@ -464,7 +464,7 @@ function KDProcessInput(type: string, data: any): string {
 			KinkyDungeonShopIndex = data.shopIndex;
 			KinkyDungeonPayShrine(data.type);
 			KinkyDungeonAggroAction('shrine', {});
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			break;
 		case "shrineUse": {
 			KDDelayedActionPrune(["Action", "World"]);
@@ -494,13 +494,13 @@ function KDProcessInput(type: string, data: any): string {
 					KinkyDungeonAggroAction('shrine', {x: parseInt(x), y:parseInt(y)});
 					KDGameData.AlreadyOpened.push({x: parseInt(x), y: parseInt(y)});
 					KinkyDungeonUpdateStats(0);
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				} else {
 					if (KinkyDungeonShrineTypeRemove.includes(type))
 						KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), "#ff5555", 1, true);
 					else
 						KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5555", 1, true);
-					if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
+					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
 				}
 				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -588,7 +588,7 @@ function KDProcessInput(type: string, data: any): string {
 			KinkyDungeonChangeMana(KinkyDungeonStatManaMax * 0.5, false, 0, false, true);
 			KDSendStatus('goddess', data.type, 'shrineDrink');
 			KinkyDungeonAggroAction('shrine', {});
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 
 			KinkyDungeonAdvanceTime(1, true);
 
@@ -626,7 +626,7 @@ function KDProcessInput(type: string, data: any): string {
 			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("PotionMana"), 1);
 			KDSendStatus('goddess', data.type, 'shrineBottle');
 			KinkyDungeonAggroAction('shrine', {});
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/PotionDrink.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/PotionDrink.ogg");
 
 			KDMapData.PoolUses += 1;
 			KinkyDungeonSendEvent("afterShrineBottle", {x: data.x, y: data.y, tile: data.tile});
@@ -1043,7 +1043,7 @@ function KDProcessInput(type: string, data: any): string {
 							}
 						}
 						KinkyDungeonSetMaxStats();
-						if (KDToggles.Sound && KinkyDungeonIsPlayer()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+						if (KDSoundEnabled() && KinkyDungeonIsPlayer()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 						KinkyDungeonCurrentPage = KinkyDungeonSpellIndex(spell.name);
 						if (KinkyDungeonStatsChoice.has("Disorganized")) {
 							KinkyDungeonAdvanceTime(1);

@@ -392,7 +392,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				else {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNeedsTighten"), "#ffffff", 2, true, true);
 				}
-				if (KDToggles.Sound)
+				if (KDSoundEnabled())
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 				return true;
 			}, true, x + 5, y + 740, 80, 80,

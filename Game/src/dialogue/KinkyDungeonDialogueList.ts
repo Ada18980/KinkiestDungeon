@@ -1292,7 +1292,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								false,
 								false);
 							KinkyDungeonAddRestraintIfWeaker(rest, KDGetEffLevel(), true);
-							if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
+							if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
 						}
 
 					}

@@ -824,7 +824,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		if (spell) {
 			KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell, undefined, undefined, undefined);
 			KDMapData.TrapsTriggered++;
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 		}
 	}
 	else if (Loot.name == "lost_clothes") {
@@ -1000,7 +1000,7 @@ function KDSpawnLootTrap(x: number, y: number, _trap: any, _mult: number, durati
 
 	}
 	if (spawned > 0) {
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 		KinkyDungeonMakeNoise(12, x, y);
 		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), "#ff8933", 2);
 	}

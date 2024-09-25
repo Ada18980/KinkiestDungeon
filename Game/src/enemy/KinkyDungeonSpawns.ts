@@ -325,6 +325,7 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 				let p = KinkyDungeonGetRandomEnemyPoint(true, true, undefined, 20, 10);
 				KinkyDungeonJailGuard().x = p.x;
 				KinkyDungeonJailGuard().y = p.y;
+				KinkyDungeonJailGuard().path = undefined;
 			}
 			return KinkyDungeonJailGuard();
 		}

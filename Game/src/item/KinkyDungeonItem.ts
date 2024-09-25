@@ -254,7 +254,7 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		KDMapData.KeysHeld++;
 		KinkyDungeonAggroAction('key', {});
 	}
-	if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
+	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg");
 	if (!nomsg) {
 		KinkyDungeonSendActionMessage(priority, TextGet("ItemPickup" + name).replace("XXX", Item.amount).replace("ReplaceValue", replace), color, 1, false, false, undefined, "Items");
 		if (!KDCanSeeDroppedItem(Item))

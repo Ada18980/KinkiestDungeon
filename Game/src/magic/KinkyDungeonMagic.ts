@@ -189,7 +189,7 @@ function KinkyDungeonDisableSpell(Name: string) {
 	for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]] && KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].name == Name) {
 			KinkyDungeonSpellChoicesToggle[i] = false;
-			if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 		}
 	}
 }
@@ -872,7 +872,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		tY = entity.y;
 		miscast = true;
 
-		if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ " + (spell.miscastSfx || "SoftShield") + ".ogg");
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/ " + (spell.miscastSfx || "SoftShield") + ".ogg");
 		KinkyDungeonSendEvent("miscast", data);
 		KinkyDungeonSetFlag("miscast", 1);
 

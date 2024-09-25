@@ -26,7 +26,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 				// We fire the dart
 				let player = KinkyDungeonEnemyAt(x, y) ? KinkyDungeonEnemyAt(x, y) : KinkyDungeonPlayerEntity;
 				KinkyDungeonCastSpell(x, y, spell, { x: startX, y: startY }, player, undefined);
-				if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+				if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 				delete KinkyDungeonTilesGet(x + "," + y).Trap;
 				return {
 					triggered: true,
@@ -37,7 +37,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 				spell = KinkyDungeonFindSpell("SleepGas", true);
 				if (spell) {
 					KinkyDungeonCastSpell(x, y, spell, undefined, undefined, undefined);
-					if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+					if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 					delete KinkyDungeonTilesGet(x + "," + y).Trap;
 					return {
 						triggered: true,
@@ -54,7 +54,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 	BedTrap: (tile, entity, x, y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
-		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		KinkyDungeonMakeNoise(10, x, y);
@@ -66,7 +66,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 	CageTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("CageTrap"), 0, true);
-		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = "Furniture";
 		return {
@@ -77,7 +77,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 	DisplayTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
-		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = "Furniture";
 		return {
@@ -88,7 +88,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 	DisplayStandTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
-		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = "Furniture";
 		return {
@@ -99,7 +99,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 	BarrelTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);
-		if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		tile.Trap = undefined;
 		tile.Type = undefined;
 		return {
@@ -120,7 +120,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 			en.stun = 1;
 		}
 		if (created.length > 0) {
-			if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 		}
 		return {
@@ -148,7 +148,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 			}
 		}
 		if (created.length > 0) {
-			if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 		}
 		return {
@@ -169,7 +169,7 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 				}
 			}
 			KinkyDungeonCastSpell(x + xx, y + yy, spell, undefined, undefined, undefined, "Trap");
-			if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+			if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 			delete KinkyDungeonTilesGet(x + "," + y).Trap;
 			let etiles = Object.values(KDGetEffectTiles(x, y)).filter((etile) => {
 				return etile.tags && etile.tags.includes("runetrap");
@@ -222,7 +222,7 @@ let KDTrapTypesStepOff = {
 				KinkyDungeonMapSet(x, y, 'd');
 				created = KinkyDungeonSummonEnemy(x, y, "DoorLock", 1, 0, false, lifetime).length;
 				if (created > 0) {
-					if (KDToggles.Sound && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+					if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 					KinkyDungeonMakeNoise(12, x, y);
 					delete KinkyDungeonTilesGet(x + "," + y).StepOffTrap;
 					KinkyDungeonMapSet(x, y, 'D');

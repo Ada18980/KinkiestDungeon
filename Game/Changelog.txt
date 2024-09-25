@@ -31,6 +31,10 @@ TODO:
 TODO remove hogtie when released
 
 
+5.3.40
+- Added toggle for Game sound now off when minimized
+-
+
 5.3.39
 - Fix issue with trail warnings disappearing one turn before they are supposed to
 - Fixed heavy wep + kinetic mastery issue

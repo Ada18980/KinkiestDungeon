@@ -572,7 +572,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		let III = 0;
 		let buttonSpacing = 85;
 		if (!KDCollectionTab && KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (_b) => {
-			if (KDToggles.Sound)
+			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
 			//KDSpeakerNPC = null;
 			KinkyDungeonState = "Wardrobe";
@@ -1215,7 +1215,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				}
 			}
 
-			if (KDToggles.Sound)
+			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockHeavy" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
@@ -1274,7 +1274,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					}
 				}
 
-				if (KDToggles.Sound)
+				if (KDSoundEnabled())
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockHeavy" + ".ogg");
 			}
 
@@ -1298,7 +1298,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
 			}
-			if (KDToggles.Sound)
+			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
@@ -1310,7 +1310,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}
 		if (DrawButtonKDEx("returnToCollectionRestrain", (_b) => {
 			KDCurrentRestrainingTarget = 0;
-			if (KDToggles.Sound)
+			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
@@ -1328,7 +1328,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					KDPromote(value);
 
 					KDSortCollection();
-					if (KDToggles.Sound)
+					if (KDSoundEnabled())
 						AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Magic" + ".ogg");
 				}
 			}
@@ -1340,7 +1340,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			value.status = value.oldstatus || "";
 			delete value.Facility;
 			KDSortCollection();
-			if (KDToggles.Sound)
+			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
@@ -1355,7 +1355,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			&& !KDNPCUnavailable(value.id, value.status))
 			if (DrawButtonKDEx("CollectionRestrain", (_b) => {
 				KDCurrentRestrainingTarget = value.id;
-				if (KDToggles.Sound)
+				if (KDSoundEnabled())
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
 				return true;
 			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,

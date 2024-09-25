@@ -178,7 +178,7 @@ KDNewLore(["Enemy", 'grv'], "en.MageZombie", "Mage Z.",
 	"Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/MageZombie.png|EnemiesBound/MageZombie.png", ['grv'], "MageZombie"
 );
-KDNewLore(["Enemy", 'grv'], "en.SamuraiZombie", "Samurai Z.",
+KDNewLore(["Enemy", 'grv'], "en.SamuraiZombie", "Warrior Z.",
 	"Warrior Zombie",
 	"Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/SamuraiZombie.png|EnemiesBound/SamuraiZombie.png", ['grv'], "SamuraiZombie"

@@ -801,6 +801,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		weight: (enemy, aiData, _allied, hostile, _aggressive) => {
 			if (!enemy.Enemy.tags.leashing) return 0;
 			if (KinkyDungeonFlags.get("Released")) return 0;
+			if (KinkyDungeonFlags.get("LeashToPrison")) return 0;
 			if (KDGameData.PrisonerState == 'jail') return 0;
 			if (KDSelfishLeash(enemy)) return 0;
 			if (KinkyDungeonGetRestraintItem("ItemDevices") && KDGameData.PrisonerState != 'chase') return 0;
@@ -897,7 +898,7 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 				false);
 			if (rest) {
 				KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
-				if (KDToggles.Sound) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 				KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
 			}
 			else return false;
