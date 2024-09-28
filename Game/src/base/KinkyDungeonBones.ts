@@ -9,6 +9,13 @@ let KDPatronAdventurers = [
 
 let KDPatronCustomEnemies = new Map([
 	["Wolfgirl", [
+		{name: "Yanen Mian", color: "#63ab3f", prisoner: false, free: true, customPlayLine: "", customIntro: "ei hey!", customSprite: ""},
+		{name: "Naho Kuroneko", color: "#ffac33",
+			prisoner: true, free: true, customPlayLine: "",
+			customIntro: "Oh hello! Do you want to help me try my new collection?", customSprite: ""},
+		{name: "Seika", color: "#00ffff", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Finally...! Something interesting!", customSprite: ""},
+		{name: "Yen", color: "#2b962d", prisoner: true, free: true, customPlayLine: "Yen", customIntro: "Howdy.", customSprite: ""},
 		{name: "Miny", color: "#9c2a70", prisoner: false, free: true, customPlayLine: "", customIntro: "You should join my pack!", customSprite: ""},
 		{name: "Sivasa", color: "#8888ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Alexandra", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -26,6 +33,8 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Moranql", color: "#ff5555", prisoner: true, free: false, customPlayLine: "", customIntro: "0x0", customSprite: ""},
 		{name: "Harumi", color: "#F223D4", prisoner: true, free: true, customPlayLine: "", customIntro: "This is an uncivilized place, I have some things to give you...", customSprite: ""},
 		{name: "Joelle", color: "#4f60b8", prisoner: true, free: false, customPlayLine: "", customIntro: "Bork!", customSprite: ""},
+		{name: "Gery", color: "#63ab3f", prisoner: true, free: true, customPlayLine: "", customIntro: "Heo :3", customSprite: ""},
+		{name: "Gery", color: "#00ff00", prisoner: true, free: true, customPlayLine: "", customIntro: "I'll make you mine!", customSprite: ""},
 	],
 	],
 	["WolfInstructor", [
@@ -35,6 +44,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WolfgirlPet", [
 		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Sayaron", color: "#841ee1", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Arii", color: "#ff88ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Aleiza", color: "#32d8ff", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Dana", color: "#000B77", prisoner: true, free: true, customPlayLine: "", customIntro: "*stands there... MENACINGLY*", customSprite: ""},
@@ -56,6 +66,19 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["ElementalLatex", [
 		{name: "Samsy", color: "#2f847f", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Athena", color: "#7e52cc", prisoner: false, free: true, customPlayLine: "Athena", customIntro: "Hey there cutie", customSprite: ""},
+		{name: "Brunhilda", color: "#44ff44", prisoner: true, free: true,
+			customPlayLine: "Athena", customIntro: "Aren't you lovely, let's make you latex shiny! <3", customSprite: ""},
+	],
+	],
+	["ElementalRubber", [
+		{name: "Amelisia", color: "#ff5500", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "I'd love to hear your moans through your gags.", customSprite: ""},
+		{name: "Athena", color: "#7e52cc", prisoner: false, free: true, customPlayLine: "Athena", customIntro: "Hey there cutie!", customSprite: ""},
+	],
+	],
+	["ElementalLeather", [
+		{name: "Timyang", color: "#2257e9", prisoner: true, free: true, customPlayLine: "", customIntro: "I'm Timyang, do you have anything to do with me?", customSprite: ""},
 	],
 	],
 	["Dragon", [
@@ -70,7 +93,15 @@ let KDPatronCustomEnemies = new Map([
 				]
 			},
 		},
-		{name: "Sariel", color: "#aa88ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
+		{name: "Viola", color: "#8c46e8", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Viola",
+			customStyle: "Viola", customOutfit: "Viola",
+			pets: {
+				"Frog": [
+					{name: "Leff", color: "#88ff88", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
+				]
+			},
+		},
+		{name: "Lucy", color: "#79009d", prisoner: false, free: true, customPlayLine: "", customIntro: "Come here so I can tie you up and cuddle you~", customSprite: "",
 			pets: {
 				"Frog": [
 					{name: "Fred", color: "#88ff88", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
@@ -91,17 +122,24 @@ let KDPatronCustomEnemies = new Map([
 				]
 			},
 		},
-		{name: "Luna", color: "#ffaa88", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
-			pets: {
-				"Frog": [
-					{name: "Fred", color: "#88ff88", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
-				]
-			},
-		},
 	],
 	],
 	["DragonShadow", [
 		{name: "Gwen", color: "#7b43ef", prisoner: false, free: true, customPlayLine: "DragonShadowGwen", customIntro: "", customSprite: ""},
+		{name: "Melody", color: "#d99bff", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Let's summon that beautiful voice, shall we?", customSprite: ""},
+	],
+	],
+	["WolfApprentice", [
+		{name: "The_Goo", color: "#53f124", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "I was a coyote in my past life.", customSprite: ""},
+		{name: "Ayami", color: "#967bb6", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Hey cutie!", customSprite: ""},
+	],
+	],
+	["WolfExecutive", [
+		{name: "Treve", color: "#999999", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Adventurer_Brat_Fighter", [
@@ -110,6 +148,12 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["DragonLeaderDuelist", [
 		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+	["Rat", [
+		{name: "Derek", color: "#ffffff",
+			prisoner: true, free: true, customPlayLine: "",
+			customIntro: "*squeak*", customSprite: ""},
 	],
 	],
 	["NinjaStalker", [
@@ -125,22 +169,51 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["SlimeAdv", [
+		{name: "Garry", color: "#a52a2a", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Rena", color: "#C8C8FF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Rappy The Toy", color: "#C759FF", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Yolana", color: "#92e8c0", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Druppy", color: "#e76bf2", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Robyn", color: "#ba7cfc", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+	["DollsmithDoll", [
+		{name: "Crystal", color: "#e76bf2", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "zjc", color: "#ffffff", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "See you next floor... Mmmmm!", customSprite: ""},
 	],
 	],
 	["SmallSlime", [
+		{name: "Chuangpi", color: "#F0FFFF", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Miaowu~Miaowu~", color: "#f7a1e5", prisoner: false, free: true, customPlayLine: "", customIntro: "miao~", customSprite: ""},
+		{name: "Sand", color: "#ffd270", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Sasheen", color: "#ad2f45", prisoner: false, free: true, customPlayLine: "", customIntro: "Hai!", customSprite: ""},
 		{name: "Ty", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Freya", color: "#c93fab", prisoner: false, free: true, customPlayLine: "", customIntro: "*giggle*", customSprite: ""},
+		{name: "Akanit", color: "#e9225d", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Perfiano", color: "#ffff00", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["WitchRope", [
 		{name: "Kamikaze roper", color: "#ffae70", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Lami", color: "#7d1dff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Mameli", color: "#63ab3f", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+	["Miner", [
+		{name: "Dwarf (but not short)", color: "#e92222", prisoner: true, free: true, customPlayLine: "",
+			customIntro: "ROCK AND STONE!",
+		},
+		{name: "Nova", color: "#3b7d4f", prisoner: false, free: true, customPlayLine: "",
+			customIntro: "We're gonna have a blast~!",
+		},
 	],
 	],
 	["MaidforceStalker", [
 		{name: "Chandra", color: "#340000", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Tromva", color: "#3dccab", prisoner: true, free: true, customPlayLine: "", customIntro: "Wow!", customSprite: ""},
+		{name: "Sanhua", color: "#444444", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["ApprenticeSlime", [
@@ -149,26 +222,70 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["Alchemist", [
 		{name: "Morgan", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "Myth", color: "#22ffff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Daiseng", color: "#ff9900", prisoner: false, free: true, customPlayLine: "", customIntro: "Do I look like a taxi driver to you?", customSprite: ""},
+		{name: "Matt", color: "#ff0000", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Luplus Falmele", color: "#22ffff",
+			prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Latex can last for hundreds of years, so why can't we?", customSprite: ""},
+	],
+	],
+	["AlchemistPet", [
+		{name: "Vixen", color: "#a632ec", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Dressmaker", [
+		{name: "Maelith", color: "#3E6B3A", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "You look bored, love... Let me fix that.", customSprite: ""},
+		{name: "Rayne", color: "#ff9900", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Look at all these cute ribbons and frills!", customSprite: ""},
 		{name: "A Lazy Dressmaker", color: "#fad6ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Melissa", color: "#853cff", prisoner: true, free: true, customPlayLine: "Melissa",
 			customStyle: "Melissa", customOutfit: "Melissa", customOutfitBound: "MelissaBound",
 			customIntro: "My name's Melissa! I know I'm pretty, but try not to stare too much~", customSprite: "Melissa"},
 		{name: "Alice", color: "#ee99ee", prisoner: true, free: true, customPlayLine: "", customIntro: "Hello, I am a dressmaker and the name's Alice! Need a new dress?", customSprite: ""},
+		{name: "Monika", color: "#49dc20", prisoner: true, free: true, customPlayLine: "", customIntro: "Whatcha doing?", customSprite: ""},
+	],
+	],
+	["Demon", [
+		{name: "PumpkinMB", color: "#3ea2c9", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Just because my name is pumpkin doesn't mean my name shouldn't be blue!", customSprite: ""},
 	],
 	],
 	["Maidforce", [
+		{name: "Handcuffed Girl", color: "#ce6cf4", prisoner: true, free: false, customPlayLine: "",
+			customIntro: "It felt as if I was chained for eternity!", customSprite: ""},
+		{name: "Handcuffed Girl", color: "#ffa1fd", prisoner: true, free: false, customPlayLine: "",
+			customIntro: "Would you like to play with me, hun?", customSprite: ""},
+		{name: "Arianna", color: "#3fc968", prisoner: true, free: true, customPlayLine: "",
+			customIntro: "Lets negotiate, you surrender and I let you live!", customSprite: ""},
+		{name: "Terra", color: "#00ff00", prisoner: true, free: true, customPlayLine: "",
+			customIntro: "", customSprite: ""},
+		{name: "Cuffed Girl", color: "#e347f1", prisoner: true, free: true, customPlayLine: "", customIntro: "Would you like to play with me?", customSprite: ""},
+		{name: "Meer", color: "#ff8888", prisoner: true, free: true, customPlayLine: "", customIntro: "Maids!", customSprite: ""},
+		{name: "Taesjha", color: "#ff9ffd", prisoner: true, free: false,
+			customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Robin", color: "#e846c5", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Lillian", color: "#ff77aa", prisoner: false, free: true, customPlayLine: "", customIntro: "Well met, traveler!", customSprite: ""},
+		{name: "Kishi Masami", color: "#9a43b5", prisoner: true, free: true, customPlayLine: "", customIntro: "Lakad Matatag, Normalin Normalin!", customSprite: ""},
+		{name: "Ping", color: "#ff9900", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "I will catch you.", customSprite: ""},
 		{name: "Ester", color: "#97edca", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Rest", color: "#999999", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Zelenes", color: "#2244ff", prisoner: true, free: false, customPlayLine: "", customIntro: "Please help me.", customSprite: ""},
 		{name: "Rika Mercury", color: "#92e8e5", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "April", color: "#4444ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Aika", color: "#be52e6", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Kiera", color: "#310051", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Lam", color: "#ffff22", prisoner: true, free: true, customPlayLine: "", customIntro: "Lam, at your service!", customSprite: ""},
+		{name: "Taesjha", color: "#ff8888", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Weixz", color: "#ff4422", prisoner: false, free: true, customPlayLine: "", customIntro: "Hello.", customSprite: ""},
+		{name: "ping", color: "#dd9922", prisoner: true, free: true, customPlayLine: "", customIntro: "I'm gonna catch you!", customSprite: ""},
+		{name: "Lilly", color: "#b39dfc", prisoner: true, free: true, customPlayLine: "", customIntro: "D-don't mess up the ~ah~ f-floors please. I'm b-being punished ~ugh~ enough by the h-head maid a-already", customSprite: ""},
+		{name: "Akura", color: "#e64539", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Shiroka", color: "#ffffff", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "I didn't wish to become what I am now at first, but the restraints were so captivating...", customSprite: ""},
+		{name: "KCl", color: "#00ffff", prisoner: false, free: true, customPlayLine: "", customIntro: "I don't taste salty~", customSprite: ""},
 	],
 	],
 	["MaidforceHead", [
@@ -188,6 +305,15 @@ let KDPatronCustomEnemies = new Map([
 	["DragonGirlShadow", [
 		{name: "Nara", color: "#5F54FF", prisoner: true, free: true, customPlayLine: "",
 			customStyle: "Nara", customOutfit: "Nara", customSprite: "Nara"
+		},
+		{name: "Krifath", color: "#6633cc", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "I used to be an adventurer like you, then I took an arrow in the knee.",
+		},
+	],
+	],
+	["DragonIce", [
+		{name: "Wynn", color: "#31d4ac", prisoner: false, free: true, customPlayLine: "",
+			customIntro: "Wynn of the Dragonheart Order, Pleased to meet you!",
 		}
 	],
 	],
@@ -197,6 +323,10 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WitchShock", [
 		{name: "Persephone", color: "#ff8888", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+	],
+	],
+	["WitchShibari", [
+		{name: "Jenasine", color: "#Jenasine", prisoner: true, free: false, customPlayLine: "", customIntro: "I'm usually a lot better at this...", customSprite: ""},
 	],
 	],
 	["WitchEarth", [
@@ -211,6 +341,7 @@ let KDPatronCustomEnemies = new Map([
 	],
 	["WitchWater", [
 		{name: "Marine", color: "#4fa4b8", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Ari", color: "#00ffff", prisoner: true, free: true, customPlayLine: "", customIntro: "Have you ever thought about learning Water magic? It's quite fascinating!", customSprite: ""},
 	],
 	],
 	["ElementalEarth", [
@@ -218,23 +349,69 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["BanditPet", [
+		{name: "Lazuli", color: "#a423d6", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Liz", color: "#d480bb", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Jinxy", color: "#7d27a5", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Genna", color: "#42bfe8", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
+	["Bandit", [
+		{name: "Lysannah", color: "#2fefe5", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Well hey there, pretty~", customSprite: ""},
+	],
+	],
+	["BanditChief", [
+		{name: "Betruger", color: "#ba26e7", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Hi! Are you ok?", customSprite: ""},
+	],
+	],
+	["Wizard", [
+		{name: "Draziw", color: "#3adcd4", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "The price of truth is reading between the lies, and lockpicks. Could you spare any?", customSprite: ""},
+		{name: "Draziw", color: "#ff9ffd", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "Hay.... Oh its you again.... What do you want?", customSprite: ""},
+	],
+	],
+	["BanditHunter", [
+		{name: "Luka", color: "#e13b6c", prisoner: true, free: true, customPlayLine: "", customIntro: "Something seems missing... A gag!", customSprite: ""},
+	],
+	],
 	["ElfRanger", [
 		{name: "Valeria", color: "#ebaaf4", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Aello", color: "#ffae70", prisoner: true, free: true,
+			customPlayLine: "ElfSmug", customIntro: "... Can I help you traveler?", customSprite: ""},
 	],
 	],
 	["Elf", [
 		{name: "Ferahla", color: "#44ff44", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Clockheart", color: "#80fc7c", prisoner: true, free: true, customPlayLine: "", customIntro: "I hope no one locks me into a straitjacket~", customSprite: ""},
 	],
 	],
 	["Dollsmith", [
 		{name: "Kiera", color: "#310051", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
+	["Dollmaker", [
+		{name: "Latex Doll Maker", color: "#ffa8f8", prisoner: true, free: false, customPlayLine: "",
+			customIntro: "Thank you. It's been quite a long time, can I follow you?", customSprite: ""},
+	],
+	],
+	["MeleeCleric", [
+		{name: "Odilaria", color: "#ff9900", prisoner: true, free: false,
+			customPlayLine: "", customIntro: "Oh, a pet!", customSprite: ""},
+	],
+	],
+	["Mummy", [
+		{name: "Skarne", color: "#ff0549", prisoner: false, free: true,
+			customPlayLine: "", customIntro: "I've been watching you~", customSprite: ""},
+	],
+	],
+	["MummyPet", [
+		{name: "Béatrice", color: "#db72c4", prisoner: true, free: false,
+			customPlayLine: "", customIntro: "I.. I thought I was being a good girl...", customSprite: ""},
+	],
+	],
+
 ]);
 
 

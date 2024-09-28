@@ -593,7 +593,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				let outfit = value.customOutfit;
 				KDWardrobeRevertCallback = () => {
 					if (outfit)
-						CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit));
+						CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
 					CharacterRefresh(KDSpeakerNPC);
 					KDInitProtectedGroups(KDSpeakerNPC);
 					KDRefreshCharacter.set(KDSpeakerNPC, true);
@@ -1386,6 +1386,9 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 
 	let defaultSpeed = KDIsImprisoned(enemy) || !KinkyDungeonFindID(enemy.id);
 
+	let tooltip = "";
+	let tooltipcolor = "#ffffff";
+	let tooltipAmt = 0;
 	let II = 0;
 	let height = 12;
 	let spacing = height + 2;
@@ -1443,6 +1446,11 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 				if (b.level > i * enemy.Enemy.maxhp) {
 					bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
 					// Struggle bars themselves
+					if (!tooltip && MouseIn(x, y + yy - spacing*II,width, height)) {
+						tooltip = "KDBindType_" + b.name;
+						tooltipcolor = bcolor;
+						tooltipAmt = b.level;
+					}
 					KinkyDungeonBarTo(kdcanvas, x, y + yy - spacing*II,
 						width, height, Math.min(1, (Math.max(0, b.level - i * enemy.Enemy.maxhp)) / enemy.Enemy.maxhp) * 100, bcolor, "none",
 						undefined, undefined, bars ? [0.25, 0.5, 0.75] : undefined, bars ? "#85522c" : undefined, bars ? "#85522c" : undefined, 57.5 + b.pri*0.01);
@@ -1453,6 +1461,9 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 
 		}
 		enemy.Enemy = oldEnemy;
+		if (tooltip) {
+			DrawTextFitKD(TextGet(tooltip) + ` (${Math.round(10 * tooltipAmt)})`, MouseX, MouseY - 25, 250, tooltipcolor, "#000000");
+		}
 		return bindingBars;
 	}
 	enemy.Enemy = oldEnemy;

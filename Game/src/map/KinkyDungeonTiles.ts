@@ -931,3 +931,22 @@ let KDAdvanceAmount: Record<string, (altRoom: any, altRoomNext: any) => number> 
 		return 0;
 	},
 };
+
+type KDTileType = any;
+
+function KDShouldLock(x: number, y: number, tile: KDTileType): boolean {
+	if (tile.OGLock && tile.Jail && KDGameData.PrisonerState == 'parole') {
+		let nearestJail = KinkyDungeonNearestJailPoint(x, y);
+		if (nearestJail) {
+			if (KinkyDungeonPointInCell(KDPlayer().x, KDPlayer().y)) {
+				return false;
+			}
+		}
+	}
+
+	return tile.OGLock != undefined;
+}
+function KDShouldUnLock(x: number, y: number, tile: KDTileType): boolean {
+	return true;
+}
+

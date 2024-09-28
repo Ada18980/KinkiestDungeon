@@ -1048,15 +1048,15 @@ Pies
 Everywhere!
 ¡En todos lados!
 
-### Physical Armor: 
-### Magic Armor: 
+### Physical Armor:
+### Magic Armor:
 In the Shadows: You are harder to see.
 En las sombras: eres más difícil de ver.
 Invisible: You are very difficult to see.
 Invisible: Eres muy difícil de ver.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Rapidez: Tu próximo movimiento es tan rápido que no avanza un turno.
-### All Damage Reduction: 
+### All Damage Reduction:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Recibes PERCENT1 DAMAGETYPE de daño, basado en PERCENT2 DAMAGETYPE resist y PERCENT3 DAMAGECATEGORY modificador.
 You deal PERCENT more DAMAGETYPE damage.
@@ -1303,7 +1303,7 @@ Aún no has encontrado las llaves de este piso.
 Missing key
 llave faltante
 ### You are protected from damage and can't be bound until the shield is broken!
-### Chance for a spell to fizzle: 
+### Chance for a spell to fizzle:
 ### Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 ### Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
 ### Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist and RESBLKPENALTY penalty.
@@ -1441,7 +1441,7 @@ Delete Mod
 Eliminar modo
 Clear Perks
 Borrar ventajas
-### Config 
+### Config
 Cancel
 Cancelar
 Filter
@@ -1545,11 +1545,11 @@ Presione una tecla, luego presione un botón para configurar esa tecla
 Floor FLOORNUMBER: DUNGEONNAME
 Piso FLOORNUMBER: DUNGEONNAME
 
-### Lockpicks: 
-### Keys: 
-### Magic Keys: 
-### Knife: 
-### Mag. Knife: 
+### Lockpicks:
+### Keys:
+### Magic Keys:
+### Knife:
+### Mag. Knife:
 
 ### You climb down the stairs. The passage closes behind you.
 ### You climb back up the stairs.
@@ -1725,7 +1725,7 @@ Encuentras una poción parecida a la nieve que está fría al tacto.
 You find a medley of potions.
 Encuentras una mezcla de pociones.
 
-### Rarity: 
+### Rarity:
 Lesser
 Menor
 Common
@@ -2443,16 +2443,16 @@ Dreamcatcher
 Atrapasueños
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Forjado en pesadillas, tejido en acero. Invoca a un guerrero de sombras en objetivos desprevenidos por un 2 % de energía antigua.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Axe
 Hacha
 Great for cutting trees that happen to be underground.
 Ideal para cortar árboles que están bajo tierra.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 También inflige 20 de daño a los enemigos a tu lado. Inflige daño cortante.
-### Accuracy: 
-### Crit Multiplier: 
-### Bind Crit Multiplier: 
+### Accuracy:
+### Crit Multiplier:
+### Bind Crit Multiplier:
 Find the keys..
 Encuentra las llaves..
 Find the exit!
@@ -2468,8 +2468,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Encontraste una grieta y tal vez podrías clavar un cuchillo o una herramienta en ella para mantenerla quieta.
 You found something sticky and might be able to pull off fabrics.
 Encontraste algo pegajoso y podrías arrancar telas.
-### Evasion: 
-### Visibility: 
+### Evasion:
+### Visibility:
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -2507,10 +2507,10 @@ afilado!
 ### Satisfied. Miscast chance is reduced.
 
 
-### Damage: 
-### Bind: 
-### Crit: 
-### SP Cost: 
+### Damage:
+### Bind:
+### Crit:
+### SP Cost:
 ### Cut PWR: AMNT%
 
 It appears to be a receptacle
@@ -5166,13 +5166,13 @@ Commerce
 Comercio
 Shrine of SHRINETYPE
 Santuario de SHRINETYPE
-### Tablet of 
+### Tablet of
 
-### Goddess: 
-### Goddess Blessing: 
-### Goddess Curse: 
-### Mana Bonus: 
-### Lack of Mana Penalty: 
+### Goddess:
+### Goddess Blessing:
+### Goddess Curse:
+### Mana Bonus:
+### Lack of Mana Penalty:
 ### Your excess mana helps you suppress the enchantment!
 ### Your mana is too weak to fight the magical enchantment...
 
@@ -5189,9 +5189,9 @@ descifrar
 You try to read the runes but cannot understand them.
 Intentas leer las runas pero no puedes entenderlas.
 
-### Allies: 
-### Enemies: 
-### Favorable: 
+### Allies:
+### Enemies:
+### Favorable:
 
 ### None
 Nevermere Trainers
@@ -5657,7 +5657,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find 
+### You find
 
 
 
@@ -7450,7 +7450,7 @@ Un libro de hechizos manipuladores.
 
 ### Verbal
 
-### Components: 
+### Components:
 Arm Movements
 Movimientos de brazos
 Leg Gestures
@@ -9758,19 +9758,19 @@ You need more spell points.
 Necesitas más puntos de hechizo.
 You don't have enough maximum mana to cast this spell!
 ¡No tienes suficiente maná máximo para lanzar este hechizo!
-### School: 
+### School:
 Generic
 Genérico
 ### Upgrade
 ### Special
 Learn Spell
 aprender hechizo
-### Spell Points: 
+### Spell Points:
 
 
-### Level: 
-### Spell Point Cost: 
-### Mana Cost: 
+### Level:
+### Spell Point Cost:
+### Mana Cost:
 
 
 Remove Spell 1
@@ -9801,13 +9801,13 @@ Replace Spell 6
 Reemplazar hechizo 6
 Replace Spell 7
 Reemplazar hechizo 7
-### Current Spell 1: 
-### Current Spell 2: 
-### Current Spell 3: 
-### Current Spell 4: 
-### Current Spell 5: 
-### Current Spell 6: 
-### Current Spell 7: 
+### Current Spell 1:
+### Current Spell 2:
+### Current Spell 3:
+### Current Spell 4:
+### Current Spell 5:
+### Current Spell 6:
+### Current Spell 7:
 
 ### ???
 Unfiled
@@ -9840,7 +9840,7 @@ Fuelle
 (Una página del Libro de los Eones)|Algunos dicen que las 'Catacumbas' son más antiguas que el tiempo mismo. Cuando la Antigua Civilización comenzó a estudiar la inmortalidad, nadie sabía si sería posible traer de vuelta a los que ya habían muerto. Las catacumbas, por lo tanto, se utilizaron para almacenar todos los restos de antiguos humanos, de modo que ellos también pudieran ser revividos cuando el archimago finalmente hiciera su avance.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Una página del Libro de los Eones)|Dicen que el archimago Sariel Vinlaga estudió en esta misma biblioteca. Habiendo reunido todo el conocimiento humano, mágico, espiritual, tecnológico, encargó a sus doce magos menores el trabajo de clasificar y cotejar la riqueza del conocimiento que había adquirido. Nadie sabe por qué lo abandonó de repente, o por qué sigue tan mal en la actualidad.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Una página del Libro de los Eones)|El problema de la Energía ha plagado a la civilización durante milenios. Antes de que se descubrieran las líneas místicas, la humanidad dependía de fuentes naturales de energía como los ríos y la leña. Cuando se descubrieron las Cuevas de Cristal, ocurrió una gran revolución. Al no depender más de las fuentes naturales, las civilizaciones podrían aprovechar las fuentes de energía caótica subterránea para alimentar maquinaria como nunca antes se había visto.
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -10437,10 +10437,10 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 Por 3 repeticiones, la diosa te otorgará deslizamiento, aumentando tu lucha.
 For 3 rep the goddess will grant you a key.
 Por 3 repeticiones la diosa te otorgará una llave.
-### For 3 rep the goddess will grant you 
+### For 3 rep the goddess will grant you
 For 3 rep the goddess
 Por 3 rep la diosa
-### For 3 rep the goddess 
+### For 3 rep the goddess
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 La diosa restaurará completamente tu maná a cambio de AMOUNT rep
@@ -10774,8 +10774,8 @@ Can disarm (chance: DISARMCHANCE%)
 Puede desarmar (oportunidad: DESARMADA%)
 Resistances:
 Resistencias:
-### HP: 
-### Binding: 
+### HP:
+### Binding:
 Ambivalent
 Ambivalente
 Likes you
@@ -11017,7 +11017,7 @@ Modo de distracción:
 ### Hard Mode
 ### Extreme
 ### A supposedly reasonable difficulty curve.
-### Play the game the way it was intended. Cruel and restrictive. 
+### Play the game the way it was intended. Cruel and restrictive.
 ### Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 
 Aroused
@@ -12662,7 +12662,7 @@ Hey~! Let's have a talk.
 ¡Hola~! Tengamos una charla.
 Looks like you need additional training.
 Parece que necesita capacitación adicional.
-### I spy a pretty one!
+### I spy a cute one!
 Bad pet!
 ¡Mala mascota!
 Looks like you're gonna need the extra special treatment~
@@ -15376,7 +15376,7 @@ What? (PERCENT chance to avoid)
 (La SPEAKER se aclara la garganta)|Bueno, ¡en realidad estamos reclutando!|¡Eres libre de unirte a nosotros si aceptas luchar por la justicia!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (El SPEAKER te da un firme apretón de manos)|¡Bienvenida a la hermandad, aventurera!
-### (The SPEAKER tilts her head and shrugs)|Ah well. 
+### (The SPEAKER tilts her head and shrugs)|Ah well.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (El SPEAKER frunce el ceño)|¿Qué pasa?|No eres enemigo de la justicia, ¿verdad?
 (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
@@ -16624,7 +16624,7 @@ Dale un Pergamino de Pureza
 ### W-what does that entail?
 ### (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
 ### Hmmmph? Mmmm! (Act worried and whimper)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders 
+### (The SPEAKER folds her arms)|Mistress Oriel's orders
 ### Not in the 'System'?
 ### (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
 ### Mmmph? (Act confused)
@@ -16823,7 +16823,7 @@ Upcast Level LEVEL
 Nivel mejorado NIVEL
 Prerequisite
 Requisito previo
-### Unlocks: 
+### Unlocks:
 You need to learn REQUIREDSPELL before you can learn this one.
 Necesitas aprender el HECHIZO REQUERIDO antes de poder aprender este.
 
@@ -16870,7 +16870,7 @@ Iniciando el protocolo de encierro de prisioneros
 ### Your RestraintName suddenly snap together as the EnemyName activates them!
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count: 
+### Turn Count:
 
 The Shopkeeper leashes you!
 ¡El comerciante te ata!
@@ -17244,7 +17244,7 @@ Azul
 
 ### Items on Ground:
 
-### Preloading Character Assets: 
+### Preloading Character Assets:
 
 ### Uniforms
 ### Suits
@@ -19718,7 +19718,7 @@ Cuerda de entrepierna de mitril
 
 ### Rubber Stick
 ### A rubber cylinder without any lewd intentions whatsoever.
-### Deals grope damage. 
+### Deals grope damage.
 ### You pick up a flexible rubber stick.
 
 ### Blade of Ejahl
@@ -20281,8 +20281,8 @@ Ataque a distancia
 ### Cracks begin to form in your RestraintName!
 ### Your RestraintName shatters and falls off!
 
-### Load Hotbar 
-### Save Hotbar 
+### Load Hotbar
+### Save Hotbar
 ### Clear Hotbar
 
 ### Confirm clearing hotbar?
@@ -20986,7 +20986,7 @@ Hogtied!
 
 
 
-### Receive the following restraints: 
+### Receive the following restraints:
 ### You will be bound with some form of restraint.
 
 
@@ -21347,7 +21347,7 @@ Hogtied!
 
 
 ### Select a character to examine
-### Former Faction: 
+### Former Faction:
 
 ### Minigun
 
@@ -21457,7 +21457,7 @@ Hogtied!
 
 ### You crouch and move slowly.
 
-### Owned by: 
+### Owned by:
 
 ### Warden's Belt
 ### You may go on your way, but only as long your freedom is useful to her.
@@ -21854,7 +21854,7 @@ Hogtied!
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took 
+### Took
 
 ### (As you slay the dragon, it begins shapeshifting into human form!)
 
@@ -22405,8 +22405,8 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Fiber
 ### Runes
 
-### Stock: 
-### Inputs: 
+### Stock:
+### Inputs:
 
 ### You slip off the conveyor!
 ### The Summit
@@ -22443,14 +22443,14 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Toe Tie
 ### Heels
 
-### Equipped: 
-### Click to Add 
-### Apply 
-### Raw Material: 
+### Equipped:
+### Click to Add
+### Apply
+### Raw Material:
 
 ### Free Prisoner
 
-### Perk Unlocked: 
+### Perk Unlocked:
 
 ### Latex Solvent
 ### You ready the bottle of Latex Solvent.
@@ -22470,16 +22470,16 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Restraint Palette
 ### Choose Restraint
 
-### Def. Palette: 
+### Def. Palette:
 ### Set All Palette
 
 ### Guests
 
-### Assign to 
-### Remove from 
+### Assign to
+### Remove from
 ### Imprison
 
-### Opinion: 
+### Opinion:
 ### Last Seen on Floor FLR, LOC
 ### Present in current level
 ### Captured by FCTN
@@ -22495,12 +22495,12 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### NPC has managed to loosen her bonds.
 
 ### Any
-### NPC Opinion: 
-### NPC Escape Status: 
-### NPC Binding: 
-### NPC Availability: 
-### Favorited: 
-### Rank: 
+### NPC Opinion:
+### NPC Escape Status:
+### NPC Binding:
+### NPC Availability:
+### Favorited:
+### Rank:
 ### Minor
 ### Elite
 ### Miniboss
@@ -22565,7 +22565,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Select a Binding Slot
 
-### Cost: 
+### Cost:
 
 ### Zoom set to PCNT%
 ### You need free arms to tie others!
@@ -22583,7 +22583,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Reaching Authority
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot 
+### Save Slot
 ### Load Game
 ### Load Code
 ### Load Slot 0
@@ -22622,10 +22622,10 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### Factory Route
 ### Reverse Route
 ### Chaos Route
-### Map Seed: 
+### Map Seed:
 ### Will Overwrite NME!
 
-### Play Slot 
+### Play Slot
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)

@@ -955,6 +955,17 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Melissa",
 		],
 	},
+	Viola: {
+		Bodystyle: [
+			"Viola",
+		],
+		Facestyle: [
+			"Viola",
+		],
+		Hairstyle: [
+			"Viola",
+		],
+	},
 	Nara: {
 		Cosplay: [
 			"Nara",

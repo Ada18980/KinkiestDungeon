@@ -153,7 +153,8 @@ function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): num
 			//sell ? (40 * (-0.5*power-0.6+1.25**(2.38*power)))
 			//: (50 * 1.25**(2.38*power))
 			//))
-			Math.round(((1 + 2 * Math.pow(power, 1.6))))
+			Math.round(((1 - 3.67*power + 3.54*(power**0.5) + 2 * Math.pow(power, 1.6))))
+			//b=((1-3.67\cdot x\ +3.54\cdot\ x^{0.5}+2\cdot x^{1.6}))
 		);
 
 

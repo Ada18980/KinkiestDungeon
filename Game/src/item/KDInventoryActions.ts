@@ -1,6 +1,6 @@
 "use strict";
 
-let KDMarketRateDecay = 0.95;
+let KDMarketRateDecay = 0.98;
 
 let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	"Equip": {
@@ -129,6 +129,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		},
 		valid: (_player, item) => {
 			if ((item?.type == Restraint)) return false;
+			if ((item?.type == Weapon && isUnarmed(KDWeapon(item)))) return false;
 			return true;
 		},
 		click: (_player, item) => {

@@ -1276,15 +1276,15 @@ Feet
 Everywhere!
 どこにでも！
 
-### Physical Armor: 
-### Magic Armor: 
+### Physical Armor:
+### Magic Armor:
 In the Shadows: You are harder to see.
 影の中にいる:見つかりにくい
 Invisible: You are very difficult to see.
 透明：とても見つかりにくい
 Quickness: Your next movement is so fast it doesn't advance a turn.
 加速：次の移動にターンを消費しない
-### All Damage Reduction: 
+### All Damage Reduction:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 耐性と PERCENT3 DAMAGECATEGORY 修正値に基づいて、PERCENT1 DAMAGETYPE ダメージを受ける
 You deal PERCENT more DAMAGETYPE damage.
@@ -1543,7 +1543,7 @@ You haven't found the keys for this floor yet.
 Missing key
 鍵がない
 ### You are protected from damage and can't be bound until the shield is broken!
-### Chance for a spell to fizzle: 
+### Chance for a spell to fizzle:
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 回避率: Percent%。基礎回避率 EVASIONSUM に EVASIONPENALTY% のペナルティを受けている。
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1696,7 +1696,7 @@ Delete Mod
 MODを削除
 Clear Perks
 スキルをリセットする
-### Config 
+### Config
 Cancel
 キャンセル
 Filter
@@ -1823,11 +1823,11 @@ Press a key, then press a button to set that key
 Floor FLOORNUMBER: DUNGEONNAME
 フロア FLOORNUMBER: DUNGEONNAME
 
-### Lockpicks: 
-### Keys: 
-### Magic Keys: 
-### Knife: 
-### Mag. Knife: 
+### Lockpicks:
+### Keys:
+### Magic Keys:
+### Knife:
+### Mag. Knife:
 
 You climb down the stairs. The passage closes behind you.
 階段を下ると、後ろから扉が閉まる音が聞こえた。
@@ -2023,7 +2023,7 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 ポーションのセットを見つけた。
 
-### Rarity: 
+### Rarity:
 Lesser
 レッサー
 Common
@@ -2845,16 +2845,16 @@ Dreamcatcher
 ドリームキャッチャー
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 悪夢の中で鋼と共に鍛えられた武器。2%のエネルギーを消費し、プレイヤーに気づいていないターゲットの周囲にシャドウ ウォリアーを召喚する。
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Axe
 斧
 Great for cutting trees that happen to be underground.
 たまたま地下にある木を切るのに最適。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 斬撃属性。隣の敵にも20ダメージ。
-### Accuracy: 
-### Crit Multiplier: 
-### Bind Crit Multiplier: 
+### Accuracy:
+### Crit Multiplier:
+### Bind Crit Multiplier:
 Find the keys..
 鍵を見つける……
 Find the exit!
@@ -2871,8 +2871,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 ひび割れた場所がある。ナイフや道具を挟めば上手く拘束を切れるかもしれない。
 You found something sticky and might be able to pull off fabrics.
 ねばついた場所がある。上手く使えば拘束を引きはがせるかも。
-### Evasion: 
-### Visibility: 
+### Evasion:
+### Visibility:
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -2915,10 +2915,10 @@ Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
 
-### Damage: 
-### Bind: 
-### Crit: 
-### SP Cost: 
+### Damage:
+### Bind:
+### Crit:
+### SP Cost:
 Cut PWR: AMNT%
 切断力： AMNT%
 
@@ -5737,13 +5737,13 @@ Commerce
 商業
 Shrine of SHRINETYPE
 SHRINETYPE の祠
-### Tablet of 
+### Tablet of
 
-### Goddess: 
-### Goddess Blessing: 
-### Goddess Curse: 
-### Mana Bonus: 
-### Lack of Mana Penalty: 
+### Goddess:
+### Goddess Blessing:
+### Goddess Curse:
+### Mana Bonus:
+### Lack of Mana Penalty:
 Your excess mana helps you suppress the enchantment!
 自身のマナが拘束具の魔法を弱めた！
 Your mana is too weak to fight the magical enchantment...
@@ -5765,9 +5765,9 @@ These runes are meant for someone with less willpower.
 You try to read the runes but cannot understand them.
 ルーン文字を読もうとするも、解読できない。
 
-### Allies: 
-### Enemies: 
-### Favorable: 
+### Allies:
+### Enemies:
+### Favorable:
 
 None
 なし
@@ -6305,7 +6305,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find 
+### You find
 
 
 
@@ -8425,7 +8425,7 @@ A book of manipulative spells
 Verbal
 口
 
-### Components: 
+### Components:
 Arm Movements
 腕
 Leg Gestures
@@ -10963,7 +10963,7 @@ You need more spell points.
 スキルポイントが足りない。
 You don't have enough maximum mana to cast this spell!
 最大マナを超える呪文は覚えられない。
-### School: 
+### School:
 Generic
 パッシブスキル
 ### Upgrade
@@ -10971,12 +10971,12 @@ Special
 スペシャル
 Learn Spell
 呪文を覚える
-### Spell Points: 
+### Spell Points:
 
 
-### Level: 
-### Spell Point Cost: 
-### Mana Cost: 
+### Level:
+### Spell Point Cost:
+### Mana Cost:
 
 
 Remove Spell 1
@@ -11007,13 +11007,13 @@ Replace Spell 6
 スペル6を置き換える
 Replace Spell 7
 スペル7を置き換える
-### Current Spell 1: 
-### Current Spell 2: 
-### Current Spell 3: 
-### Current Spell 4: 
-### Current Spell 5: 
-### Current Spell 6: 
-### Current Spell 7: 
+### Current Spell 1:
+### Current Spell 2:
+### Current Spell 3:
+### Current Spell 4:
+### Current Spell 5:
+### Current Spell 6:
+### Current Spell 7:
 
 ### ???
 Unfiled
@@ -11047,7 +11047,7 @@ Bellows
 アイオーンの書の1ページ|このカタコンベは時間の概念がないと言われている。旧文明が不死の研究を始めたとき、すでに死んだ人々を生き返らせられるかどうかは分からなかった。この場所は、不死の魔術が完成したときに備えて遺体を保存するために作られたと言われている。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 アイオーンの書の1ページ|この大図書館は、大魔術師サリエル・ヴィンラーガの学んだ場所と言われている。人間の知識、魔法、精神、技術のすべてを集めた彼女は、12人の高弟達に司書の仕事を託し、去っていったと言われている。彼女がなぜ去ったのか、なぜ図書館が荒れ果てているのかは、未だ解明されていない。
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。クリスタルの洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -11655,10 +11655,10 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 関係性3を捧げることによって、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 関係性3を捧げることによって、鍵を授かる。
-### For 3 rep the goddess will grant you 
+### For 3 rep the goddess will grant you
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-### For 3 rep the goddess 
+### For 3 rep the goddess
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -12003,8 +12003,8 @@ Can disarm (chance: DISARMCHANCE%)
 武装解除可能 (確率: DISARMCHANCE%)
 Resistances:
 耐性:
-### HP: 
-### Binding: 
+### HP:
+### Binding:
 Ambivalent
 関係
 Likes you
@@ -12310,7 +12310,7 @@ Extreme
 エクストリーム
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-### Play the game the way it was intended. Cruel and restrictive. 
+### Play the game the way it was intended. Cruel and restrictive.
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
 
@@ -14525,7 +14525,7 @@ Hey~! Let's have a talk.
 ちょっとお話しない？
 Looks like you need additional training.
 もっと調教する必要があるみたいだね。
-I spy a pretty one!
+I spy a cute one!
 良いターゲットを発見したよ！
 Bad pet!
 悪い子だね！
@@ -17573,7 +17573,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手を交わした)|ようこそドラゴンハートへ！
-### (The SPEAKER tilts her head and shrugs)|Ah well. 
+### (The SPEAKER tilts her head and shrugs)|Ah well.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER は眉をひそめた)|なんだと？|キミは正義の味方だろう？
 (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
@@ -19036,7 +19036,7 @@ W-what does that entail?
 (SPEAKER は酷薄な笑みを浮かべている)|つまり、あなたを包装して|そのあとどうするかを決める、ということです。
 Hmmmph? Mmmm! (Act worried and whimper)
 んぅぅ？ うぅぅ(不安な素振りを見せる)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders 
+### (The SPEAKER folds her arms)|Mistress Oriel's orders
 Not in the 'System'?
 それは誰の命令なの？
 (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
@@ -19277,7 +19277,7 @@ Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
 前提：
-### Unlocks: 
+### Unlocks:
 You need to learn REQUIREDSPELL before you can learn this one.
 このスキルを学ぶには REQUIREDSPELL を先に習得する必要がある。
 
@@ -19330,7 +19330,7 @@ EnemyName が RestraintName をアクティブにしたようだ！
 Your harness projects energy tethers between your cuffs EnemyName activates it!
 EnemyName がハーネスをコントロールし、枷のエネルギーリンクをアクティブにした！
 
-### Turn Count: 
+### Turn Count:
 
 The Shopkeeper leashes you!
 店主にリードを掴まれた。
@@ -19742,7 +19742,7 @@ Paste
 Items on Ground:
 アイテムが落ちている：
 
-### Preloading Character Assets: 
+### Preloading Character Assets:
 
 Uniforms
 衣装セット
@@ -23011,7 +23011,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-### Deals grope damage. 
+### Deals grope damage.
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
 
@@ -23980,8 +23980,8 @@ RestraintName に亀裂が入り始めた！
 Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
-### Load Hotbar 
-### Save Hotbar 
+### Load Hotbar
+### Save Hotbar
 Clear Hotbar
 ホットバーをクリア
 
@@ -25199,7 +25199,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-### Receive the following restraints: 
+### Receive the following restraints:
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
 
@@ -25814,7 +25814,7 @@ Guest #NUMR/TTL
 
 Select a character to examine
 詳細を見るキャラクターを選択
-### Former Faction: 
+### Former Faction:
 
 Minigun
 ミニガン
@@ -26006,7 +26006,7 @@ Yokes are less favored over other heavy bondage.
 You crouch and move slowly.
 ゆっくりと這いつくばる。
 
-### Owned by: 
+### Owned by:
 
 Warden's Belt
 看守長のベルト
@@ -26700,7 +26700,7 @@ It is said that whomever follows the chaste principles of the Paladins shall rec
 You retrieve an interesting article dubbed 'the Robe of Chastity.
 "貞操の衣"と名付けられた布を見つけた。
 
-### Took 
+### Took
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 (竜を討つと、人の姿に変化した！)
@@ -27614,8 +27614,8 @@ Fiber
 Runes
 ルーン
 
-### Stock: 
-### Inputs: 
+### Stock:
+### Inputs:
 
 You slip off the conveyor!
 コンベアからはじき出された！
@@ -27682,15 +27682,15 @@ Toe Tie
 Heels
 ヒール
 
-### Equipped: 
-### Click to Add 
-### Apply 
-### Raw Material: 
+### Equipped:
+### Click to Add
+### Apply
+### Raw Material:
 
 Free Prisoner
 開放する
 
-### Perk Unlocked: 
+### Perk Unlocked:
 
 Latex Solvent
 ゴム溶剤
@@ -27722,19 +27722,19 @@ Restraint Palette
 Choose Restraint
 拘束を選択
 
-### Def. Palette: 
+### Def. Palette:
 Set All Palette
 全て選択
 
 Guests
 ゲスト
 
-### Assign to 
-### Remove from 
+### Assign to
+### Remove from
 Imprison
 投獄
 
-### Opinion: 
+### Opinion:
 Last Seen on Floor FLR, LOC
 最後に見かけたのは FLR 階層の LOC 。
 Present in current level
@@ -27761,12 +27761,12 @@ NPC は拘束を緩めている。
 
 Any
 全員
-### NPC Opinion: 
-### NPC Escape Status: 
-### NPC Binding: 
-### NPC Availability: 
-### Favorited: 
-### Rank: 
+### NPC Opinion:
+### NPC Escape Status:
+### NPC Binding:
+### NPC Availability:
+### Favorited:
+### Rank:
 Minor
 下っ端
 Elite
@@ -27873,7 +27873,7 @@ Mysterious Statue
 Select a Binding Slot
 スロットを選択
 
-### Cost: 
+### Cost:
 
 Zoom set to PCNT%
 ズーム: PCNT%
@@ -27902,7 +27902,7 @@ Reaching Authority
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 腕を使用できない場合でも、口を使用することによって拘束が可能になる。スキル「ぐるぐるまき！」の射程が2増加し、全てのコマンド系スペルの射程が1増加する。
 
-### Save Slot 
+### Save Slot
 Load Game
 ロード
 Load Code
@@ -27959,10 +27959,10 @@ Reverse Route
 逆さ道ルート
 Chaos Route
 ランダムルート
-### Map Seed: 
+### Map Seed:
 ### Will Overwrite NME!
 
-### Play Slot 
+### Play Slot
 Play (NO SLOT!)
 セーブを選択してください
 

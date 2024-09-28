@@ -66,7 +66,7 @@ function AppearanceItemStringify(Item: any[]): string {
  * @param backup - The serialised appearance to restore
  * @param clothesOnly - The serialised appearance to restore
  */
-function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: boolean = false): void {
+function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: boolean = false, noProtected: boolean = false): void {
 	let parsed = JSON.parse(LZString.decompressFromBase64(backup) || backup);
 	let newAppearance = AppearanceItemParse(parsed?.metadata ? parsed.appearance : backup);
 	if (!clothesOnly) {
@@ -75,15 +75,16 @@ function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: b
 	}
 	let finalAppearance = [];
 	for (let item of newAppearance) {
-		if (!KDModelIsProtected(item.Model)) {
+		if (noProtected || !KDModelIsProtected(item.Model)) {
 			finalAppearance.push(item);
 		}
 	}
-	for (let item of C.Appearance) {
-		if (KDModelIsProtected(item.Model)) {
-			finalAppearance.push(item);
+	if (!noProtected)
+		for (let item of C.Appearance) {
+			if (KDModelIsProtected(item.Model)) {
+				finalAppearance.push(item);
+			}
 		}
-	}
 	C.Appearance = finalAppearance;
 }
 

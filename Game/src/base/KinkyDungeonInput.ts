@@ -1337,20 +1337,28 @@ function KDProcessInputs(ReturnResult?: boolean): string {
 }
 
 function KDInteract(x, y) {
-	if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y))
+	KinkyDungeonSendEvent("beforeInteract", {x:x, y: y});
+	if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 		KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
 	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
 	if (tile?.Type) {
 		if (KDObjectInteract[tile.Type]) {
-			return KDObjectInteract[tile.Type](x, y);
+			let ret = KDObjectInteract[tile.Type](x, y);
+			KinkyDungeonSendEvent("afterInteract", {x:x, y: y, type: "object", objtype: tile.Type});
+			return ret;
 		} else if (KDObjectClick[tile.Type] && KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5) {
-			return KDObjectClick[tile.Type](x, y);
+			let ret = KDObjectClick[tile.Type](x, y);
+			KinkyDungeonSendEvent("afterInteract", {x:x, y: y, type: "objectclick", objtype: tile.Type});
+			return ret;
 		}
 	}
 	let tiletype = KinkyDungeonMapGet(x, y);
 	if (KDTileInteract[tiletype]) {
-		return KDTileInteract[tiletype](x, y);
+		let ret = KDTileInteract[tiletype](x, y);
+		KinkyDungeonSendEvent("afterInteract", {x:x, y: y, type: "tile", objtype: tiletype});
+		return ret;
 
 	}
+	KinkyDungeonSendEvent("afterInteractFail", {x:x, y: y});
 }

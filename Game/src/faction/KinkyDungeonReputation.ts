@@ -213,6 +213,13 @@ function KinkyDungeonRepNameFaction(Amount: number): string {
  * @param Amount
  */
 function KinkyDungeonChangeFactionRep(Rep: string, Amount: number): boolean {
+	let data = {
+		Rep: Rep,
+		Amount: Amount,
+	};
+	KinkyDungeonSendEvent("changeFactionRep", data);
+	Rep = data.Rep;
+	Amount = data.Amount;
 	let last = KDFactionRelation("Player", Rep);
 	KDChangeFactionRelation("Player", Rep, Amount);
 	let curr = KDFactionRelation("Player", Rep);
@@ -231,6 +238,13 @@ function KinkyDungeonChangeFactionRep(Rep: string, Amount: number): boolean {
  * @param Amount
  */
 function KinkyDungeonChangeRep(Rep: string, Amount: number): boolean {
+	let data = {
+		Rep: Rep,
+		Amount: Amount,
+	};
+	KinkyDungeonSendEvent("changeRep", data);
+	Rep = data.Rep;
+	Amount = data.Amount;
 	if (KinkyDungeonGoddessRep[Rep] != undefined) {
 		let last = KinkyDungeonGoddessRep[Rep];
 		let minimum = (Rep == "Ghost" && KinkyDungeonStatsChoice.get("Submissive")) || (Rep == "Prisoner" && KinkyDungeonStatsChoice.get("Wanted")) ? 20: -50;

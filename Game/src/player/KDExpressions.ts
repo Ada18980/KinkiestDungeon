@@ -461,7 +461,7 @@ let KDExpressions: Record<string, KDExpression> = {
 		expression: (C, flags) => {
 			return {
 				EyesPose: (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.25) ? "EyesClosed" : "EyesDazed",
-				Eyes2Pose: "Eyes2Dazed",
+				Eyes2Pose: (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax * 0.25) ? "Eyes2Closed" : "Eyes2Dazed",
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "",

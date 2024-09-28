@@ -2467,7 +2467,8 @@ function KinkyDungeonhandleQuickInv(NoUse?: boolean): boolean {
 function KDDropItemInv(name: string, player?: entity, playerDropped: boolean = true) {
 	let item = KinkyDungeonInventoryGetLoose(name) || KinkyDungeonInventoryGet(name);
 	if (!player) player = KinkyDungeonPlayerEntity;
-	if (item && item.type != Restraint && item.name != KinkyDungeonPlayerWeapon) { // We cant drop equipped items
+	if (item && item.type != Restraint && item.name != KinkyDungeonPlayerWeapon
+		&& (!KDWeapon(item) || !isUnarmed(KDWeapon(item)))) { // We cant drop equipped items
 		// Drop one of them
 		if (item.quantity > 1) {
 			item.quantity -= 1;

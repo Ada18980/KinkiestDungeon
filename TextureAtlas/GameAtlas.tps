@@ -1005,6 +1005,7 @@
             <key type="filename">../Game/Enemies/CustomSprite/Rai2.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Selly.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Viola.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Alisa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice.png</key>
@@ -1015,6 +1016,7 @@
             <key type="filename">../Game/Enemies/CustomSpriteBound/Rai2.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Rook.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Selly.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Viola.png</key>
             <key type="filename">../Game/Enemies/Cyborg.png</key>
             <key type="filename">../Game/Enemies/CyborgBerserker.png</key>
             <key type="filename">../Game/Enemies/CyborgEnforcer.png</key>

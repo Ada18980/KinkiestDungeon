@@ -1344,7 +1344,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
 				let newOut = DecompressB64(NewOutfit);
-				CharacterAppearanceRestore(C, newOut, C != KinkyDungeonPlayer);
+				CharacterAppearanceRestore(C, newOut, C != KinkyDungeonPlayer, true);
 				let newParsed = JSON.parse(newOut);
 				if (newParsed?.metadata) {
 					C.Palette = newParsed.metadata.palette;
@@ -1358,7 +1358,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				CharacterAppearanceRestore(KinkyDungeonPlayer,
 					CharacterAppearanceStringify(DefaultPlayer,
 						KDGetCharMetadata(DefaultPlayer)
-					));
+					), false, true);
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
 				C.Palette = "";
@@ -1524,7 +1524,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					CharacterAppearanceRestore(KinkyDungeonPlayer,
 						CharacterAppearanceStringify(DefaultPlayer,
 							KDGetCharMetadata(KinkyDungeonPlayer)
-						)
+						), false, false
 					);
 					CharacterReleaseTotal(KinkyDungeonPlayer);
 					KinkyDungeonSetDress("Default", "Default", C, true);
@@ -1731,7 +1731,7 @@ function KDSaveCodeOutfit(C: Character, clothesOnly: boolean = false): void {
 		KinkyDungeonReplaceConfirm = 0;
 
 		// Then decompresses
-		CharacterAppearanceRestore(C, decompressed, clothesOnly);
+		CharacterAppearanceRestore(C, decompressed, clothesOnly, !clothesOnly);
 		CharacterRefresh(C);
 		KDInitProtectedGroups(C);
 	}
@@ -1745,7 +1745,7 @@ function KDSaveCodeOutfit(C: Character, clothesOnly: boolean = false): void {
 function KDRestoreOutfit() {
 	// Restore the original outfit
 	if (KDOriginalValue) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue) || KDOriginalValue);
+		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue) || KDOriginalValue, false, true);
 		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();
@@ -1886,7 +1886,7 @@ function KDLoadOutfitDirect(files: File[], Char: Character) {
 						if (decompressed) {
 							let origAppearance = Char.Appearance;
 							try {
-								CharacterAppearanceRestore(Char, decompressed, false);
+								CharacterAppearanceRestore(Char, decompressed, false, true);
 								let newParsed = JSON.parse(decompressed);
 								if (newParsed) {
 									Char.Palette = newParsed.metadata.palette;

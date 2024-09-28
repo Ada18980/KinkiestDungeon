@@ -315,7 +315,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 		}
 		for (let i = 0; i < 10; i++) {
 			// Distance is in pathing units
-			let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, leash.x, leash.y, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
+			let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, leash.x, leash.y, KDIDHasFlag(Entity.id, "blocked"), !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
 			let playerDist = pathToTether?.length;
 			// Fallback
 			if (!pathToTether) playerDist = KDistChebyshev(Entity.x-leash.x, Entity.y-leash.y);
@@ -330,6 +330,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 					slot = pathToTether[0];
 					if (slot && KinkyDungeonEntityAt(slot.x, slot.y) && KDIsImmobile(KinkyDungeonEntityAt(slot.x, slot.y), true)) {
 						slot = null;
+						KDSetIDFlag(Entity.id, "blocked", 3);
 					}
 				}
 

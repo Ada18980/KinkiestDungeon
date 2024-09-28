@@ -406,7 +406,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 	// Refresh the character
 	CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayer,
 		KDGetCharMetadata(KinkyDungeonPlayer)
-	));
+	), false, true);
 	KinkyDungeonDrawState = "Game";
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonDressPlayer();

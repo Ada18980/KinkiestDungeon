@@ -3218,7 +3218,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 				let xx = nearestJail.x;
 				let yy = nearestJail.y;
 				let jaildoor = KDGetJailDoor(xx, yy).tile;
-				if (jaildoor && jaildoor.Type == "Door") {
+				if (jaildoor && jaildoor.Type == "Door" && KDShouldUnLock(xx, yy, jaildoor)) {
 					jaildoor.OGLock = jaildoor.Lock;
 					jaildoor.Lock = undefined;
 				}
@@ -4754,7 +4754,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									}
 								}
 								enemy.path = KinkyDungeonFindPath(enemy.x, enemy.y, player.x, player.y,
-									KDEnemyHasFlag(enemy, "blocked"), KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
+									KDEnemyHasFlag(enemy, "blocked") || KDEnemyHasFlag(enemy, "blockedenemy"), KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
 									AIData.ignoreLocks, AIData.MovableTiles,
 									undefined, undefined, undefined, enemy,
 									!enemy.CurrentAction && enemy != KinkyDungeonJailGuard() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
@@ -4764,10 +4764,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
 									if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 										|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
-										enemy.path = null;
+										if (AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
+											KinkyDungeonSetEnemyFlag(enemy, "blockedenemy", 15);
+										}
 										KDBlockedByPlayer(enemy, dir);
 										KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
-										KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
+										KinkyDungeonSetEnemyFlag(enemy, "blocked", 4);
+
+										enemy.path = null;
 									} else {
 										splice = true;
 									}
@@ -4858,7 +4862,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
 							enemy.path = KinkyDungeonFindPath(
 								enemy.x, enemy.y, enemy.gx, enemy.gy,
-								KDEnemyHasFlag(enemy, "blocked"),
+								KDEnemyHasFlag(enemy, "blocked") || KDEnemyHasFlag(enemy, "blockedenemy") || enemy == KinkyDungeonLeashingEnemy(),
 								KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
 								AIData.ignoreLocks, AIData.MovableTiles,
 								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
@@ -4869,10 +4873,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
 								if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
 									|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
-									enemy.path = null;
+									if (AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
+										KinkyDungeonSetEnemyFlag(enemy, "blockedenemy", 15);
+									}
 									KDBlockedByPlayer(enemy, dir);
 									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
-									KinkyDungeonSetEnemyFlag(enemy, "blocked", 3);
+									KinkyDungeonSetEnemyFlag(enemy, "blocked", 4);
+
+									enemy.path = null;
 								} else {
 									splice = true;
 								}
@@ -5578,7 +5586,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											}
 											if (KinkyDungeonMapGet(enemy.x, enemy.y) == 'D')  {
 												KinkyDungeonMapSet(enemy.x, enemy.y, 'd');
-												if (KinkyDungeonTilesGet(enemy.x + ',' +enemy.y) && KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Type == "Door") {
+												if (KinkyDungeonTilesGet(enemy.x + ',' +enemy.y)
+													&& KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Type == "Door"
+													&& KDShouldUnLock(enemy.x, +enemy.y, KinkyDungeonTilesGet(enemy.x + ',' +enemy.y))) {
 													KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).OGLock = KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Lock;
 													KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Lock = undefined;
 												}
@@ -6298,10 +6308,10 @@ function KinkyDungeonEnemyTryMove (
 			KinkyDungeonMapSet(enemy.x, enemy.y, 'D');
 			if ((KDGameData.PrisonerState == 'jail' || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
 				&& KinkyDungeonTilesGet(enemy.x + "," + enemy.y)
-				&& !KDEntityHasFlag(enemy, "noReLock")
 				&& KDHostile(enemy)
 				&& (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock)
-				&& (!KinkyDungeonFlags.has("nojailbreak") || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)) {
+				&& (!KinkyDungeonFlags.has("nojailbreak") || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
+				&& KDShouldLock(enemy.x, enemy.y, KinkyDungeonTilesGet(enemy.x + ',' +enemy.y))) {
 				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Type = "Door";
 				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Lock =  KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock || "Red";
 				KDUpdateDoorNavMap();
@@ -6343,7 +6353,9 @@ function KinkyDungeonEnemyTryMove (
 
 		if (KinkyDungeonMapGet(x, y) == 'D' && enemy.Enemy && enemy.Enemy.tags.opendoors) {
 			KinkyDungeonMapSet(x, y, 'd');
-			if (KinkyDungeonTilesGet(x + ',' +y) && KinkyDungeonTilesGet(x + ',' +y).Type == "Door") {
+			if (KinkyDungeonTilesGet(x + ',' +y)
+				&& KinkyDungeonTilesGet(x + ',' +y).Type == "Door"
+				&& KDShouldUnLock(x, y, KinkyDungeonTilesGet(x + ',' +y))) {
 				KinkyDungeonTilesGet(x + ',' +y).OGLock = KinkyDungeonTilesGet(x + ',' +y).Lock;
 				KinkyDungeonTilesGet(x + ',' +y).Lock = undefined;
 			}
@@ -8192,6 +8204,7 @@ function KDAddToParty(enemy: entity): boolean {
  * @returns - Returns true if the NPC was added
  */
 function KDAddToCapturedParty(enemy: entity): boolean {
+	if (!KDCapturable(enemy)) return false;
 	if (KDIsInCapturedParty(enemy)) return false;
 	// Add a copy to the party
 	KDGameData.CapturedParty.push(JSON.parse(JSON.stringify(enemy)));
