@@ -1892,6 +1892,8 @@ type KDPerk = {
 
 interface spell {
 
+	/** bind tags for the spell/bullet */
+	bindTags?: string[],
 
 	ignoreshield?: boolean,
 	shield_crit?: boolean, // Crit thru shield

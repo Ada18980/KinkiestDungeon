@@ -213,6 +213,7 @@
         "Data/ModelDresses.ts",
         "Game/src/player/KDWardrobe.ts",
         "Game/src/restraint/KDGenRestraintUniform.ts",
+        "Game/src/restraint/KDBindTypeTagLookupList.ts",
         "Game/src/enemy/KDPathConditions.ts",
         "Game/src/map/KDShop.ts"
     ],

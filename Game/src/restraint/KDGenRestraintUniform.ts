@@ -33,6 +33,22 @@ function KDGetNPCBindingSlotForItem(restraint: restraint, id: number, treatAsEmp
 	return null;
 }
 
+/**
+ *
+ * @param bindType - bind type, used for lookup
+ * @param playerEffect - checks if it has a tag, overrides if true, otherwise uses bindtype
+ * @param merge - merge bindType and playerEffect
+ */
+function KDGetBulletBindingTags(bindType: string, playerEffect: any, merge: boolean): string[] {
+	let ret: string[] = [];
+	if (bindType && KDBindTypeTagLookup[bindType]) ret = [...KDBindTypeTagLookup[bindType]];
+	if (!merge && ret.length > 0) return ret;
+	if (playerEffect?.tag) {
+		ret.push(playerEffect.tag);
+	}
+	return ret;
+}
+
 function KDGetNPCRestraintPower(restraint: NPCRestraint): number {
 	let power = KDRestraint(restraint)?.power || 0;
 	if (restraint.inventoryVariant) {

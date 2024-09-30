@@ -2647,6 +2647,8 @@ function KDBulletHitPlayer(bullet: any, player: entity) {
 	}
 }
 
+
+
 /**
  * @param bullet
  * @param enemy
@@ -2668,6 +2670,21 @@ function KDBulletHitEnemy(bullet: any, enemy: entity, d: number, nomsg: boolean)
 		// Avoid damaging the enemy if its a no direct damage spell
 		if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage) && bullet.bullet.damage.type != "inert")
 			KinkyDungeonDamageEnemy(enemy, bullet.bullet.damage, true, nomsg, bullet.bullet.spell, bullet, undefined, d);
+
+		// Apply whatever it would apply to the player
+		let pf = bullet.bullet.playerEffect ? bullet.bullet.playerEffect : bullet.bullet.spell.playerEffect;
+		if ((bullet.bullet.damage.bindTags || bullet.bullet.spell.bindTags)
+			|| bullet.bullet.damage.bindType || bullet.bullet.spell.bindType || pf)
+		if (pf) {
+			let tags =
+				(bullet.bullet.damage.bindTags || bullet.bullet.spell.bindTags)
+				|| KDGetBulletBindingTags(bullet.bullet.damage.bindType
+					|| bullet.bullet.spell.bindType, pf, false);
+			if (tags) {
+				// TODO apply the restraints themselves
+			}
+			//KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, bullet.bullet.damage.type, pf, bullet.bullet.spell, bullet.bullet.faction, bullet);
+		}
 	}
 }
 
