@@ -93,11 +93,11 @@ AddModel({
 			NoOverride: true,
 		},
 		{ Name: "HeadbandFrill", Layer: "HairFront", Pri: 15.1,
-			NoOverride: true, TieToLayer: "Hairband",
+			NoOverride: true, TieToLayer: "Headband",
 			InheritColor: "Frill",
 		},
 		{ Name: "HeadbandRibbon", Layer: "HairFront", Pri: 15.1,
-			NoOverride: true, TieToLayer: "Hairband",
+			NoOverride: true, TieToLayer: "Headband",
 			InheritColor: "Ribbon",
 		},
 	])

@@ -161,7 +161,7 @@ KinkyDungeonStatCost,"Point Cost: AMOUNT"
 KinkyDungeonStatPoints,"Points Available: AMOUNT"
 
 KinkyDungeonStatResilientFoes,"Resilient Foes"
-KinkyDungeonStatDescResilientFoes,"Enemies have 40% more hp."
+KinkyDungeonStatDescResilientFoes,"Enemies have 30% more hp."
 
 KinkyDungeonStat0,"Strong"
 KinkyDungeonStatDesc0,"Boosts the Struggle option when escaping."
@@ -12433,6 +12433,71 @@ rGenericAllyFlirtRobot,"(The SPEAKER beeps)|This unit does not know how to respo
 rGenericAllyFlirtGagged,"(The SPEAKER moans)|Mmmmmph~"
 rGenericAllyFlirtNoBrain,"(The SPEAKER appears too busy to discuss with you)"
 
+
+KDDialogue_CuddleStart_,
+KDDialogue_CuddleStart_Gagged,
+KDDialogue_CuddleStart_Robot,
+KDDialogue_CuddleStart_Dom,
+KDDialogue_CuddleStart_Brat,
+KDDialogue_CuddleStart_Sub,
+
+KDDialogue_CuddleEnd_,
+KDDialogue_CuddleEnd_Gagged,
+KDDialogue_CuddleEnd_Robot,
+KDDialogue_CuddleEnd_Dom,
+KDDialogue_CuddleEnd_Brat,*slaps your butt*
+KDDialogue_CuddleEnd_Sub,
+
+KDDialogue_CuddleRunAway_,
+KDDialogue_CuddleRunAway_Gagged,
+KDDialogue_CuddleRunAway_Robot,
+KDDialogue_CuddleRunAway_Dom,
+KDDialogue_CuddleRunAway_Brat,
+KDDialogue_CuddleRunAway_Sub,
+
+KDDialogue_CuddleChastity_,"Got yourself locked up, huh? Better go be good now~"
+KDDialogue_CuddleChastity_Gagged,"*she bumps up against your chastity and sighs*"
+KDDialogue_CuddleChastity_Robot,"Pleasure controls detected."
+KDDialogue_CuddleChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
+KDDialogue_CuddleChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
+KDDialogue_CuddleChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
+
+
+KDDialogue_ToyPlayStart_,
+KDDialogue_ToyPlayStart_Gagged,
+KDDialogue_ToyPlayStart_Robot,
+KDDialogue_ToyPlayStart_Dom,
+KDDialogue_ToyPlayStart_Brat,
+KDDialogue_ToyPlayStart_Sub,
+
+KDDialogue_ToyPlayEnd_,
+KDDialogue_ToyPlayEnd_Gagged,
+KDDialogue_ToyPlayEnd_Robot,
+KDDialogue_ToyPlayEnd_Dom,
+KDDialogue_ToyPlayEnd_Brat,*slaps your butt*
+KDDialogue_ToyPlayEnd_Sub,
+
+KDDialogue_ToyPlayRunAway_,
+KDDialogue_ToyPlayRunAway_Gagged,
+KDDialogue_ToyPlayRunAway_Robot,
+KDDialogue_ToyPlayRunAway_Dom,
+KDDialogue_ToyPlayRunAway_Brat,
+KDDialogue_ToyPlayRunAway_Sub,
+
+KDDialogue_ToyPlayChastity_,"Got yourself locked up, huh? Better go be good now~"
+KDDialogue_ToyPlayChastity_Gagged,"*she bumps up against your chastity and sighs*"
+KDDialogue_ToyPlayChastity_Robot,"Pleasure controls detected."
+KDDialogue_ToyPlayChastity_Dom,"You've been a bad girl, haven't you? *taps on your chastity gear*"
+KDDialogue_ToyPlayChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
+KDDialogue_ToyPlayChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
+
+dGenericAllyFlirt_Cuddle,"Don't I look quite cuddly?"
+dGenericAllyFlirt_CuddleGag,"(Move closer, attempting to cuddle)"
+rGenericAllyFlirt_Cuddle,"(The SPEAKER smiles)|You do, in fact!|(She inches closer)"
+rGenericAllyFlirt_CuddleDom,"(The SPEAKER smiles gently)|Aren't you precious~"
+rGenericAllyFlirt_CuddleSub,"(The SPEAKER looks flustered)|Well, it's been a long day...|I could use a hug..."
+rGenericAllyFlirt_CuddleBrat,"(The SPEAKER smirks and reaches for your body)"
+rGenericAllyFlirt_CuddleRobot,"(The SPEAKER makes a beeping noise)|Loading cuddle module..."
 
 
 dGenericAllyFlirt_BondageOffer,"Got something for me?"
@@ -24707,9 +24772,9 @@ KDBindNPCSlot_InnerHead,Blindfold / Earplugs
 KDBindNPCSlot_InterHead,Blindfold
 KDBindNPCSlot_OuterHead,Blindfold
 KDBindNPCSlot_Hood,Mask/Hood
-KDBindNPCSlot_InnerGag,Gag
+KDBindNPCSlot_InnerGag,Gag / Stuffing
 KDBindNPCSlot_InterGag,Gag
-KDBindNPCSlot_OuterGag,Gag / Stuffing
+KDBindNPCSlot_OuterGag,Flat Gag
 KDBindNPCSlot_Muzzle,Muzzle
 KDBindNPCSlot_Wrists,Wrists
 KDBindNPCSlot_HeavyBondage,Bondage

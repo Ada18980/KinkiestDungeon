@@ -981,7 +981,14 @@ function KDNPCDoStruggle(id: number, slot: string, restraint: NPCRestraint): str
 		return "Unlock";
 	} else if (restraint) {
 		restraint.lock = "";
-		KDSetNPCRestraint(id, slot, undefined);
+		let item = KDSetNPCRestraint(id, slot, undefined);
+		if (item) {
+			let entity = KDGetGlobalEntity(id);
+			if (entity) {
+				if (!entity.items) entity.items = [];
+				entity.items.push(item.name);
+			}
+		}
 		KDUpdatePersistentNPC(id);
 		return "Remove";
 	}

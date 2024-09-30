@@ -1563,12 +1563,12 @@ const KinkyDungeonRestraints: restraint[] = [
 			Straps: {color: "LightNeutral", override: true},
 			Ball: {color: "Highlight", override: false},
 		},
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		maxwill: 0.8, enemyTags: {"latexRestraints" : 3, "latexGag" : 10, "latexgagSpell": 10, "jailRestraints": 1}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, maxLevel: 5, allFloors: true, shrine: ["BallGags", "Latex" , "Gags"]},
 	{inventory: true, name: "LatexBallGagLarge", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#4EA1FF", "Default"], Type: "Tight", Group: "ItemMouth", power: 7, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
 		Model: "SmoothLargeBallGag",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		Filters: {
 			Ball: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":1.3333333333333333,"blue":2.8499999999999996,"alpha":1},
 		},
@@ -1791,7 +1791,7 @@ const KinkyDungeonRestraints: restraint[] = [
 				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		factionFilters: {
 			Strap: {color: "DarkNeutral", override: false},
 			Ball: {color: "Highlight", override: false},
@@ -2881,7 +2881,7 @@ const KinkyDungeonRestraints: restraint[] = [
 				playerTagsMult: {"ItemMouthFull": 0.1},
 			},
 		},
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		factionFilters: {
 			Ball: {color: "Highlight", override: false},
 		},
@@ -2891,7 +2891,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, trappable: true, name: "TrapGagLarge", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "BallGag",
 		Model: "LargeBallGag",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3286,7 +3286,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "MagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], gag: 0.35,
 		Model: "BallGag",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3301,7 +3301,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "MagicGagLarge", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], gag: 0.35,
 		Model: "LargeBallGag",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3317,7 +3317,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "MagicGag2", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]],
 		Model: "LargeBallGag",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
-		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}],
+		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		ApplyVariants: {
 			"AntiMagic": {
 				weightMod: -1,
@@ -3339,7 +3339,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.3, "Cut": 0.04, "Remove": 0.45, "Pick": 0.15},
 		events: [
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 8, power: 0.4},
-			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"}
+			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}
 		],
 		//"ballGagRestraintsMagic" : 2, "antiMagic": 6
 		enemyTags: {}, playerTags: {}, minLevel: 3, maxLevel: 7, allFloors: true, shrine: ["Illusion", "BallGags", "Leather" , "Gags", "Conjure"]},
@@ -3352,7 +3352,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		gag: 0.45, Type: "Tight", Color: ["Default", "#92e8c0"], Group: "ItemMouth", DefaultLock: "Purple", magic: true, power: 7, weight: 2,
 		escapeChance: {"Struggle": -0.4, "Cut": -0.02, "Remove": 0.4, "Pick": 0.12},
 		events: [
-			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], power: 1, msg: "KDGagNecklaceOn"},
+			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"},
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 30, power: 0.4},
 		],
 		//"ballGagRestraintsMagic" : 0.3, "antiMagic": 2

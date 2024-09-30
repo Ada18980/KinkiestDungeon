@@ -2783,6 +2783,10 @@ let KDNoOverrideTags = [
 	"NoPet",
 	"NoKigu",
 	"NoBlindfolds",
+	"arousalMode",
+	"arousalModePlug",
+	"arousalModePlugNoFront",
+	"arousalModePiercing",
 	...KDHeavyRestraintPrefs,
 ];
 

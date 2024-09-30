@@ -30,6 +30,8 @@ TODO:
 
 TODO remove hogtie when released
 
+5.3.41
+- Added Cuddle play type
 
 5.3.40
 - Added in a LOT of new patron NPCs, thank you for your support

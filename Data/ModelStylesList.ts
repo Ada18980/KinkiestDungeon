@@ -957,7 +957,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 	},
 	Viola: {
 		Bodystyle: [
-			"Viola",
+			"Default",
 		],
 		Facestyle: [
 			"Viola",

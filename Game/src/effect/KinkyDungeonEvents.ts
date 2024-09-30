@@ -1523,7 +1523,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				for (let restraint of e.list) {
 					if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(restraint),
 					e.power, true,
-					e.lock, data.keep, undefined, undefined, item.faction)) {
+					e.keepLock ? item.lock : e.lock, data.keep, undefined, undefined, item.faction)) {
 						added = true;
 					}
 				}
@@ -9773,11 +9773,13 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 			let boss = ["Hardmode_Boss"];
 			let reg = ["Hardmode_Reg"];
+			let hpmod = 1.0;
 
 			if (KinkyDungeonStatsChoice.get("extremeMode")) {
 				chance = 0.1 + 0.9 * multiplier;
 				bosschance = 0.4;
 				bosshpchance = 1.0;
+				hpmod = 2.0;
 				boss.push("ExtremeBoss", "Extreme");
 				reg.push("ExtremeReg", "Extreme");
 			}
@@ -9787,6 +9789,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				if (!KDIsHumanoid(e)) continue;
 				if (KDEnemyHasFlag(e, "HMrep")) continue;
 				KinkyDungeonSetEnemyFlag(e, "HMrep", -1);
+
 				if (KDRandom() < chance && !KDEntityHasBuff(e, "HighValue")) {
 					let Enemy = null;
 					if (KDHardModeReplace[e.Enemy.name] && KDRandom() < 0.5) Enemy = KinkyDungeonGetEnemyByName(KDHardModeReplace[e.Enemy.name]);
@@ -9819,9 +9822,14 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						if (KDRandom() < bosshpchance) {
 							e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
 							e.Enemy.power *= 1.5;
-							e.Enemy.maxhp = e.Enemy.maxhp*2;
+							e.Enemy.maxhp = Math.max(e.Enemy.maxhp*2, e.Enemy.maxhp + hpmod*1.5 * KDEnemyRank(e));
 							e.modified = true;
 						}
+					} else {
+						// Boring enemies have more hp
+						e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+						e.Enemy.maxhp = e.Enemy.maxhp + hpmod*1.0 * KDEnemyRank(e);
+						e.modified = true;
 					}
 					if (!bossBuff || KinkyDungeonStatsChoice.get("extremeMode") || e.Enemy.tags.stageBoss) {
 						let buff = KDGetByWeight(KDGetSpecialBuffList(e, reg));
