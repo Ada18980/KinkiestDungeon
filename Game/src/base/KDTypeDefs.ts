@@ -152,6 +152,8 @@ interface KDRestraintPropsBase {
 	Filters?: Record<string, LayerFilter>,
 	/** Used in standalone to replace Properties */
 	Properties?: Record<string, LayerProperties>,
+	/** Forces this restraint to always be conjured when applied to NPCs*/
+	forceConjure?: boolean,
 	/** TODO Used in standalone to indicate which faction colors map to which filter
 	 * color is the faction color type
 	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter. Currently unused

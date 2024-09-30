@@ -12,7 +12,12 @@ interface EligibleRestraintEntry {
 	restraint: restraint,
 	applyVariant: ApplyVariant,
 	lock: string,
-	forceConjure: string,
+	forceConjure: boolean,
+
+	/** eligible row */
+	row: NPCBindingGroup,
+	/** Eligible slot */
+	slot: NPCBindingSubgroup,
 }
 
 function KDGetNPCBindingSlotForItem(restraint: restraint, id: number, treatAsEmpty: boolean = false, power?: number): {row: NPCBindingGroup, sgroup: NPCBindingSubgroup} {
@@ -35,7 +40,7 @@ function KDGetNPCRestraintPower(restraint: NPCRestraint): number {
 			power += KinkyDungeonRestraintVariants[restraint.inventoryVariant]?.power;
 	} else if (restraint.powerbonus) power += restraint.powerbonus;
 
-	return 0;
+	return power;
 }
 
 function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options: {
@@ -44,6 +49,10 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 	allowedRestraintNames?: string[],
 	noOverride?: boolean,
 	allowVariants?: boolean,
+	forceLock?: string, // If it does have defaultlock it forces this still
+	fallbackLock?: string, // If it doesnt have defaultLock
+	forceCurse?: string,
+	forceConjure?: boolean,
 }): EligibleRestraintEntry[] {
 	let ret: EligibleRestraintEntry[] = [];
 	let effLevel = (options?.forceEffLevel != undefined ? options.forceEffLevel : undefined) || KDGetEffLevel();
@@ -73,7 +82,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
 				let weight = restraint.weight;
-				for (let t of tags.keys()) {
+				for (let t of tags) {
 					if (restraint.enemyTags[t] != undefined) {
 						weight += restraint.enemyTags[t];
 						enabled = true;
@@ -81,7 +90,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 				}
 
 				if (restraint.enemyTagsMult)
-					for (let t of tags.keys()) {
+					for (let t of tags) {
 						if (restraint.enemyTagsMult[t] != undefined) {
 							weight *= restraint.enemyTagsMult[t];
 						}
@@ -144,6 +153,19 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			}
 
 		}
+	}
+
+	for (let cp of cachePossible) {
+		ret.push({
+			applyVariant: cp.v,
+			forceConjure: cp.r.forceConjure || options?.forceConjure,
+			lock: KinkyDungeonIsLockable(cp.r) ?
+				(options?.forceLock != undefined ? options.forceLock : cp.r.DefaultLock) || options?.fallbackLock
+				: undefined,
+			restraint: cp.r,
+			row: cp.row,
+			slot: cp.sgroup
+		});
 	}
 
 

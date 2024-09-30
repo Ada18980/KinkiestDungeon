@@ -508,17 +508,19 @@ function KDNPCRestraintValidLayers(restraint: restraint,
 	let group = restraint.Group;
 	let tags = restraint.shrine;
 	let ret = [...row.layers, row.encaseGroup].filter((sg) => {
-		return sg.id == sgroup.id ||
-			(	(!restraints // no restraints array given => general case
-				|| !restraints[sg.id] // Slot is empty
-				|| (allowSameID && restraints[sg.id].id == allowSameID) // allows same ID as current item
-				|| (power != undefined && power > KDGetNPCRestraintPower(restraints[sg.id])) // power given, check if power is higher
-			)
-				&& sg.allowedGroups.includes(group)
+		return (!restraints // no restraints array given => general case
+			|| !restraints[sg.id] // Slot is empty
+			|| (allowSameID && restraints[sg.id].id == allowSameID) // allows same ID as current item
+			|| (power != undefined && power > KDGetNPCRestraintPower(restraints[sg.id])) // power given, check if power is higher
+		) && (
+			sg.id == sgroup.id
+			|| (
+				sg.allowedGroups.includes(group)
 				&& tags.some((tag) => {
 					return sg.allowedTags.includes(tag);
 				})
 			)
+		);
 	});
 
 	if (ret.length > 0) {
@@ -552,7 +554,7 @@ function KDRowItemIsValid(restraint: restraint,
 		})) {
 			if (treatAsEmpty) return true;
 			let size = KDNPCRestraintSize(restraint, sgroup, row);
-			if (size == 1 ||
+			if ((power === undefined && size == 1) ||
 				(
 					size <=
 						KDNPCRestraintValidLayers(restraint, sgroup, row, restraints, undefined, power).length
@@ -982,11 +984,11 @@ function KDNPCDoStruggle(id: number, slot: string, restraint: NPCRestraint): str
 	} else if (restraint) {
 		restraint.lock = "";
 		let item = KDSetNPCRestraint(id, slot, undefined);
-		if (item) {
+		if (item && KDRestraint(item)?.inventory) {
 			let entity = KDGetGlobalEntity(id);
 			if (entity) {
 				if (!entity.items) entity.items = [];
-				entity.items.push(item.name);
+				entity.items.push(KDRestraint(item)?.inventoryAs || item.name);
 			}
 		}
 		KDUpdatePersistentNPC(id);
