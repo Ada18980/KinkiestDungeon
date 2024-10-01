@@ -31,6 +31,12 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.42
+- Spells now apply bindings to enemies!
+- Bindings will be conjured, so you cannot spam them to pick them up
+- Also applies to handheld weapons like ropes.
+- New spell: Conjure Anti-Magic gag
+
 5.3.41
 - Fix bug where runes hit twice
 - Fix bug where magic keys are consumed even if unlocked by different means

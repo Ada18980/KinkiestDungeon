@@ -165,7 +165,7 @@ let KinkyDungeonLearnableSpells = [
 		// Verbal
 		["TelekineticSlash", "KineticLance", "CommandWord", "CommandWordGreater", "CommandDisenchant", "CommandRelease", "CommandCapture", "CommandBind", "CommandVibrate", "CommandOrgasm", "ZoneOfExcitement", "Lockdown", "Chastity", "ZoneOfPurity", "Blink", "TransportationPortal", "BanishPortal", "Bomb", "RopeBoltLaunch", "RopeBoltLaunchMany", "EnchantRope", "RopeStrike", "Leap", "Leap2", "Leap3", "CommandSlime", "Spread", "Awaken", "Animate", "AnimateLarge", "AnimatePuppet", "Coalesce", "FireElemental", "AirMote"],
 		// Arms
-		["RecoverObject", "RecoverObject2", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonLatexGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLatexArmbinder", "SummonLegbinder", "SummonLatexLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
+		["RecoverObject", "RecoverObject2", "TickleCloud", "FeatherCloud", "Swap", "ChainBolt", "SteelRainPlug", "SteelRainBurst", "DisplayStand", "SummonGag", "SummonAMGag", "SummonLatexGag", "SummonBlindfold", "SummonCuffs", "SummonLeatherCuffs", "SummonArmbinder", "SummonStraitjacket", "SummonLatexArmbinder", "SummonLegbinder", "SummonLatexLegbinder", "SummonHarness", "Petsuit", "SlimeBall", "ElasticGrip", "WaterMote"],
 		// Legs
 		["NegateRune", "Sagitta", "Snare", "Wall", "Quickness", "Quickness2", "Quickness3", "Quickness4", "Quickness5", "SlimeSplash", "Slime", "SlimeEruption", "SlimeWall", "SlimeWallVert", "LatexWallVert", "SlimeWallHoriz", "LatexWallHoriz", "LatexWall", "SlimeToLatex", "LiquidMetal", "LiquidMetalBurst", "Ally", "NatureSpirit", "StormCrystal", "EarthMote", "Golem"],
 		// Passive
@@ -1176,6 +1176,11 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			sfx: "MagicSlash", school: "Conjure", manacost: 1.5, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe",
 			time: 0, delay: 1, power: 2, range: 12, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "GagBolt", target: "target", directional:true, randomDirectionFallback: true, alwaysRandomBuff: "LeatherBurst", aimAtTarget: true, noTargetMoveDir: true, offset: false}},
+		{name: "SummonAMGag", prerequisite: "SummonGag", tags: ["leather", "bolt", "binding", "burst", "gag", "utility", "offense"], components: ["Arms"], noise: 1,
+			upcastFrom: "SummonGag", upcastLevel: 1,
+			sfx: "MagicSlash", school: "Conjure", manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe",
+			time: 0, delay: 1, power: 5, range: 12, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert",
+			spellcast: {spell: "AMGagBolt", target: "target", directional:true, randomDirectionFallback: true, alwaysRandomBuff: "LeatherBurst", aimAtTarget: true, noTargetMoveDir: true, offset: false}},
 		{name: "SummonArmbinder", prerequisite: "SummonLeatherCuffs", tags: ["leather", "bolt", "binding", "burst", "armbinder", "utility", "offense"], components: ["Arms"], noise: 1,
 			upcastFrom: "SummonLeatherCuffs", upcastLevel: 1,
 			sfx: "MagicSlash", school: "Conjure", manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe",
@@ -1781,6 +1786,16 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		projectileTargeting:true, onhit:"", time: 0,  power: 2.0, delay: 0, range: 15, damage: "chain", speed: 5, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "gagSpell"},
 		events: [
 			{type: "ElementalIfNotSilenced", trigger: "bulletHitEnemy", damage: "chain", power: 0, bind: 4},
+			{type: "SilenceHumanoid", trigger: "bulletHitEnemy", time: 8},
+		], effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
+			name: "Belts",
+			duration: 20,
+		},
+	},
+	{name: "AMGagBolt", tags: ["binding", "leather", "bolt", "offense", "antimagic"], minRange: 1.5, sfx: "MagicSlash", hitsfx: "LightSwing", school: "Conjure", manacost: 3, components: ["Arms"], level:1, type:"bolt",
+		bindType: "Magic",
+		projectileTargeting:true, onhit:"", time: 0,  power: 5, delay: 0, range: 15, damage: "arcane", speed: 5, bulletLifetime: 5, playerEffect: {name: "Bind", damage: "arcane", power: 2, tags: ["gagSpell", "antiMagic", "forceAntiMagic"]},
+		events: [
 			{type: "SilenceHumanoid", trigger: "bulletHitEnemy", time: 15},
 		], effectTileDurationMod: 10, effectTileAoE: 0.5, effectTile: {
 			name: "Belts",

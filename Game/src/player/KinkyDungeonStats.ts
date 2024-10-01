@@ -451,6 +451,8 @@ type damageInfo = {
 	bindcrit?:  number;
 	bindType?:  string;
 	distract?:  number;
+
+	addBind?: boolean;
 }
 
 function KinkyDungeonDealDamage(Damage: damageInfo, bullet?: any, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {

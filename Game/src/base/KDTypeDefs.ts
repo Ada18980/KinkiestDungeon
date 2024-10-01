@@ -1393,6 +1393,8 @@ interface weapon {
 	chance: number;
 	type: string;
 	bind?: number;
+	/** Will add conjured bindings */
+	addBind?: boolean;
 	/** For rendering on player portrait */
 	angle?: number,
 	crit?: number;
@@ -1531,6 +1533,7 @@ interface KinkyDungeonEvent {
 	melee?: boolean,
 	time?: number;
 	bindType?: string;
+	addBind?: boolean,
 	chance?: number;
 	buff?: any;
 	lock?: string;
@@ -1608,6 +1611,8 @@ interface String {
 interface entity {
 	refreshSprite?: boolean,
 	FacilityAction?: string,
+
+	strugglePoints?: number,
 
 	/** Optional leash data, used for both NPC and player */
 	leash?: KDLeashData,

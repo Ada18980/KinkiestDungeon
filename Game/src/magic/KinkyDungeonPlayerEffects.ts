@@ -770,7 +770,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			let restraintAdd = KinkyDungeonGetRestraint({tags: playerEffect.tags || [playerEffect.tag]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
-				KDPlayerEffectRestrain(spell, 1, [playerEffect.tag], faction);
+				KDPlayerEffectRestrain(spell, 1, playerEffect.tags || [playerEffect.tag], faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSpell" + spell.name + "Bind").KDReplaceOrAddDmg( dmg.string), "#ff5277", 2);
 				effect = true;

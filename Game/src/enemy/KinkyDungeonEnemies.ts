@@ -3145,7 +3145,34 @@ function KinkyDungeonIsSlowed(enemy: entity): boolean {
  * @param enemy
  */
 function KinkyDungeonCanCastSpells(enemy: entity): boolean {
-	return enemy && !(KinkyDungeonIsDisabled(enemy) || enemy.silence > 0);
+	return enemy && !(KinkyDungeonIsDisabled(enemy) || KDGetEnemyMiscast(enemy) >= 1.0);
+}
+
+
+interface KDMiscastEventData {
+	enemy: entity,
+	miscast: number,
+	distractionbonus: number,
+	silencebonus: number,
+}
+
+/**
+ * @param enemy
+ */
+function KDGetEnemyMiscast(enemy: entity): number {
+	if (enemy) {
+		let data: KDMiscastEventData = {
+			enemy: enemy,
+			miscast: KDEntityBuffedStat(enemy, "Miscast"),
+			distractionbonus: enemy.distraction > 0 ? enemy.distraction / enemy.Enemy.maxhp * 0.8 : 0,
+			silencebonus: Math.max(0, Math.min((enemy.silence || 0) * 0.1)),
+		};
+		KinkyDungeonSendEvent("calcEnemyMiscast", data);
+		data.miscast += data.distractionbonus;
+		data.miscast += data.silencebonus;
+		return data.miscast;
+	}
+	return 0;
 }
 
 /** Can the enemy be bound in principle */
@@ -3575,6 +3602,17 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 				let idle = true;
 				//let bindLevel = KDBoundEffects(enemy);
 
+				KinkyDungeonSendEvent("beforeEnemyLoop", {
+					enemy: enemy,
+					Wornitems: KDGameData.NPCRestraints[enemy.id] ?
+						Object.values(KDGameData.NPCRestraints[enemy.id])
+							.filter((rest) => {return rest.events})
+							.map((rest) => {return rest.id;})
+						: [],
+					NPCRestraintEvents:
+						KDGameData.NPCRestraints[enemy.id]
+				});
+
 				if (!(
 					KinkyDungeonIsDisabled(enemy)
 					|| KDHelpless(enemy)
@@ -3964,6 +4002,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	if (!enemy.Enemy.maxhp) {
 		enemy.Enemy = KinkyDungeonGetEnemyByName(enemy.Enemy.name);
 	}
+
+
 
 	//let allied = KDAllied(enemy);
 	//let hostile = KDHostile(enemy);
@@ -5920,7 +5960,6 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& !KDEnemyHasFlag(enemy, "nocast")
 		&& (!enemy.Enemy.enemyCountSpellLimit || KDMapData.Entities.length < enemy.Enemy.enemyCountSpellLimit)
 		&& ((!player.player || (AIData.aggressive || (KDGameData.PrisonerState == 'parole' && enemy.Enemy.spellWhileParole))))
-		&& (!enemy.silence || enemy.silence < 0.01)
 		&& (!enemy.blind || enemy.blind < 0.01 || AIData.playerDist < 2.99)
 		&& (!enemy.Enemy.noSpellDuringAttack || enemy.attackPoints < 1)
 		&& (!enemy.Enemy.noSpellsWhenHarmless || !AIData.harmless)
@@ -6000,7 +6039,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;
 				if (spell) break;
 			}
-			if (spell && enemy.distraction && !enemy.Enemy.noMiscast && KDRandom() < enemy.distraction / enemy.Enemy.maxhp * 0.8) {
+			if (spell && !enemy.Enemy.noMiscast && KDRandom() < KDGetEnemyMiscast(enemy)) {
 				if (player == KinkyDungeonPlayerEntity) KinkyDungeonSendTextMessage(4,
 					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff88ff", 2,
 					false, false, undefined, "Combat");
@@ -8869,7 +8908,20 @@ function KDEnemyStruggleTurn(enemy: entity, delta: number, allowStruggleAlwaysTh
 	/** Do NPC restraint struggling */
 	let struggleNPCTarget = KDNPCStruggleTick(enemy.id, delta);
 	if (struggleNPCTarget) {
-		KDNPCDoStruggle(enemy.id, struggleNPCTarget.slot, struggleNPCTarget.inv);
+		let result = KDNPCDoStruggle(enemy.id,
+			struggleNPCTarget.slot,
+			struggleNPCTarget.inv,
+			KDEntityHasFlag(enemy, "bound") ? 0 :
+				-0.1 * struggleNPCTarget.target + 0.1 * (enemy.strugglePoints || 0) +
+				(1 + struggleNPCTarget.points) / (3 + struggleNPCTarget.target + struggleNPCTarget.points)
+		);
+		if (result == "Struggle") {
+			if (!enemy.strugglePoints) enemy.strugglePoints = 0;
+			enemy.strugglePoints += delta;
+		} else delete enemy.strugglePoints;
+	} else {
+		if (enemy.strugglePoints > 0) enemy.strugglePoints -= delta;
+		else delete enemy.strugglePoints
 	}
 }
 

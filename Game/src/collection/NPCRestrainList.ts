@@ -97,7 +97,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			{id: "InterGag", encasedBy: ["Hood", "Muzzle", "OuterGag"], allowedGroups: ["ItemMouth"],
 				allowedTags: ["FlatGags", "PlugGags", "BallGags", "Tape"]},
 			{id: "InnerGag", encasedBy: ["Hood", "Muzzle", "InterGag", "OuterGag"], allowedGroups: ["ItemMouth"],
-				allowedTags: ["FlatGags", "PlugGags", "BallGags", "Stuffing"]},
+				allowedTags: ["PlugGags", "Stuffing"]},
 		]},
 	{id: "Arms", encaseGroup:
 		{id: "ArmEncase", encasedBy: [], allowedGroups: ["ItemArms"],

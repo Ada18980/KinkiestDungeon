@@ -714,6 +714,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, No
 	}
 
 	let predata = {
+		allowConjuredRestraint: !!Damage.addBind,
 		shieldBlocked: false,
 		aggro: false,
 		faction: "Enemy",
@@ -1199,8 +1200,10 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, No
 					// Do the deed
 					KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg, predata.faction == "Player", Delay);
 
-					if (predata.bindType)
-						KDBindEnemyWithTags(Enemy.id, predata.bindType, predata.dmg);
+					if (predata.bindType && predata.allowConjuredRestraint)
+						KDBindEnemyWithTags(Enemy.id, KDGetBulletBindingTags(predata.bindType, undefined, false,),
+					0,
+					amt, true, undefined, false, false);
 
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
@@ -2683,7 +2686,7 @@ function KDBulletHitEnemy(bullet: any, enemy: entity, d: number, nomsg: boolean)
 				|| KDGetBulletBindingTags(bullet.bullet.damage.bindType
 					|| bullet.bullet.spell.bindType, pf, false);
 			if (tags) {
-				KDBindEnemyWithTags(enemy.id, tags, (bullet.bullet.spell?.power || 0));
+				KDBindEnemyWithTags(enemy.id, tags, bullet.bullet.damage.bind || bullet.bullet.damage.power, (bullet.bullet.spell?.power || 0), true, undefined, true, true);
 			}
 		}
 	}
@@ -3170,15 +3173,71 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 	}
 }
 
-function KDBindEnemyWithTags(id: number, tags: string[], power: number = 0) {
-	let restraintsEligible = KDGetNPCEligibleRestraints_fromTags(
-		id,
-		tags,
-		{
-			forceEffLevel: KDGetEffLevel() + power,
-			allowVariants: false,
-			noOverride: true,
+function KDBindEnemyWithTags(id: number, tags: string[], amount: number = 0, power: number = 0, forceConjure: boolean = true, maxTries: number = 100, allowOverride: boolean = false, allowVariants: boolean = true) {
+	let entity = KDGetGlobalEntity(id);
+	if (entity) {
+		let maxBinding = entity.boundLevel + amount;
+		let expected = KDGetExpectedBondageAmountTotal(id, entity);
+		let regenEligible = () => {
+			restraintsEligible = KDGetNPCEligibleRestraints_fromTags(
+				id,
+				tags,
+				{
+					forceEffLevel: KDGetEffLevel() + power,
+					allowVariants: allowVariants,
+					noOverride: !allowOverride,
+					forceConjure: forceConjure,
+				}
+			);
 		}
-	);
-	// TODO add restraints such that binding is maximized but less than total binding
+		let restraintsEligible: EligibleRestraintEntry[] = [];
+		regenEligible();
+		let iterations = 0;
+		let added = 0;
+
+		while (expected < maxBinding && iterations++ < maxTries && restraintsEligible.length > 0) {
+			let restraintTry = restraintsEligible[Math.floor(KDRandom() * restraintsEligible.length)];
+			let bondageStats = KDGetRestraintBondageStats(restraintTry.restraint, entity);
+			if ((expected + bondageStats.amount < maxBinding || (iterations > maxTries/2 &&
+				(!KDGetNPCRestraints(id) || !KDGetNPCRestraints(id)[restraintTry.slot.id])
+			)) && (!amount || added < amount)) {
+				// Apply the restraint
+				let variant: item = null;
+				if (restraintTry.applyVariant) {
+					let restraintVariant = KDApplyVarToInvVar(
+						restraintTry.restraint,
+						restraintTry.applyVariant);
+
+					variant = KDGetInventoryVariant(
+						restraintVariant,
+						restraintTry.applyVariant.prefix,
+						restraintTry.applyVariant.curse,
+						undefined,
+						undefined,
+						restraintTry.applyVariant.suffix,
+						restraintTry.faction || KDDefaultNPCBindPalette,
+						restraintTry.applyVariant.powerBonus
+					);
+				}
+
+
+				KinkyDungeonSetEnemyFlag(entity, "bound", 1);
+				KDSetNPCRestraint(id, restraintTry.slot.id, {
+					name: variant?.name || restraintTry.restraint.name,
+					inventoryVariant: variant?.name,
+					id: variant?.id || KinkyDungeonGetItemID(),
+					lock: variant?.lock || restraintTry.lock,
+					conjured: restraintTry.forceConjure,
+					faction: restraintTry.faction || KDDefaultNPCBindPalette,
+					events: variant?.events || undefined,
+				});
+				added += bondageStats.amount;
+				// Refresh the stats
+				expected = KDGetExpectedBondageAmountTotal(id, entity);
+
+				regenEligible();
+			}
+		}
+	}
+
 }

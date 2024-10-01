@@ -1446,7 +1446,7 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 				if (b.level > i * enemy.Enemy.maxhp) {
 					bcolor = KDSpecialBondage[b.name] ? KDSpecialBondage[b.name].color : "#ffae70";
 					// Struggle bars themselves
-					if (!tooltip && MouseIn(x, y + yy - spacing*II,width, height)) {
+					if (MouseIn(x, y + yy - spacing*II,width, height)) {
 						tooltip = "KDBindType_" + b.name;
 						tooltipcolor = bcolor;
 						tooltipAmt = b.level;

@@ -1310,11 +1310,11 @@ KinkyDungeonInventoryItemAncientPowerSourceSpentDesc2,"A mysterious device used 
 
 KinkyDungeonInventoryItemGold,Gold
 KinkyDungeonInventoryItemRedKey,Key
-KinkyDungeonInventoryItemRedKeyDesc,"A key with traces of magic that fades with one use."
-KinkyDungeonInventoryItemRedKeyDesc2,"Can be used to unlock a red-locked restraint, door, or chest."
+KinkyDungeonInventoryItemRedKeyDesc,"A key. You wonder who it's for?"
+KinkyDungeonInventoryItemRedKeyDesc2,"Can be used to unlock one simple or standard-locked restraint, door, or chest."
 KinkyDungeonInventoryItemBlueKey,Magic Key
 KinkyDungeonInventoryItemBlueKeyDesc,"A glowing key enchanted with magic that fades with one use."
-KinkyDungeonInventoryItemBlueKeyDesc2,"Can be used to unlock a blue lock."
+KinkyDungeonInventoryItemBlueKeyDesc2,"Can be used to unlock a runic lock."
 KinkyDungeonInventoryItemMagicKey,Magic Key
 KinkyDungeonInventoryItemMagicKeyDesc,"A magical key with the power to open blue locks."
 KinkyDungeonInventoryItemMagicKeyDesc2,"Blue locks can't be otherwise picked."
@@ -6375,9 +6375,19 @@ KinkyDungeonSpellSummonGag,Conjure Gag
 KinkyDungeonSpellGagBolt,Conjured Gag
 KinkyDungeonSpellGagBoltBind,The gag forces itself into your mouth and buckles tightly!
 KinkyDungeonSpellGagBoltDamage,The gag hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonGag,"Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced."
+KinkyDungeonSpellDescriptionSummonGag,"Summons a gag which deals DamageDealt chain damage and silences for 8 turns. +40 binding if target is not silenced."
 KinkyDungeonSpellCastSummonGag,You conjure a gag!
 KinkyDungeonSpellTargetSummonGag,The gag will appear next to you and fly toward the target point.
+
+
+KinkyDungeonSpellSummonAMGag,Conjure Anti-Magic Gag
+KinkyDungeonSpellAMGagBolt,Conjured Anti-Magic Gag
+KinkyDungeonSpellAMGagBoltBind,The anti-magic gag forces itself into your mouth and buckles tightly!
+KinkyDungeonSpellAMGagBoltDamage,The anti-magic gag hits you! (DamageDealt)
+KinkyDungeonSpellDescriptionSummonAMGag,"Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%."
+KinkyDungeonSpellCastSummonAMGag,You conjure an anti-magic gag!
+KinkyDungeonSpellTargetSummonAMGag,The gag will appear next to you and fly toward the target point.
+
 
 KinkyDungeonSpellSummonArmbinder,Conjure Armbinder
 KinkyDungeonSpellArmbinderBolt,Conjured Armbinder
@@ -12443,7 +12453,7 @@ KDDialogue_CuddleStart_Sub,""
 
 KDDialogue_CuddleEnd_,""
 KDDialogue_CuddleEnd_Gagged,""
-KDDialogue_CuddleEnd_Robot,End program.
+KDDialogue_CuddleEnd_Robot,End of line.
 KDDialogue_CuddleEnd_Dom,""
 KDDialogue_CuddleEnd_Brat,*slaps your butt*
 KDDialogue_CuddleEnd_Sub,""
@@ -12471,7 +12481,7 @@ KDDialogue_ToyPlayStart_Sub,""
 
 KDDialogue_ToyPlayEnd_,""
 KDDialogue_ToyPlayEnd_Gagged,""
-KDDialogue_ToyPlayEnd_Robot,End program.
+KDDialogue_ToyPlayEnd_Robot,End of line.
 KDDialogue_ToyPlayEnd_Dom,Had fun?~
 KDDialogue_ToyPlayEnd_Brat,*turns the toy off and giggles*
 KDDialogue_ToyPlayEnd_Sub,""

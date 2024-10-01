@@ -574,6 +574,14 @@ function KinkyDungeonInventoryGetSafe(Name: string): item | null {
 function KinkyDungeonInventoryGetLoose(Name: string): item | null {
 	return KinkyDungeonInventory.get(LooseRestraint).get(Name);
 }
+/**
+ * @param Name
+ */
+function KinkyDungeonInventoryGetWorn(Name: string): item | null {
+	return KinkyDungeonInventory.get(Restraint).get(Name);
+}
+
+
 
 /**
  * @param Name
@@ -1799,6 +1807,43 @@ function KinkyDungeonSendInventoryEvent(Event: string, data: any) {
 	}
 }
 
+
+function KDSendNPCRestraintEvent(Event: string, data: any) {
+	let iteration = 0;
+	let stack = true;
+	KDGetItemEventCache();
+	while ((stack) && iteration < 100) {
+		stack = false;
+		for (let item of Object.values(data.NPCRestraintEvents as Record<string, NPCRestraint>)) {
+			let curse = KDGetCurse(item);
+
+			if (item.events) {
+				for (let e of item.events) {
+					if (e.trigger === Event && (!e.curse || curse)) {
+						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+							KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+						} else {
+							stack = true;
+						}
+					}
+				}
+			}
+			if (curse && KDCurses[curse]?.events) {
+				for (let e of KDCurses[curse].events) {
+					if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
+							KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+						} else {
+							stack = true;
+						}
+					}
+				}
+			}
+		}
+		iteration += 1;
+	}
+}
+
 function KinkyDungeonSendInventorySelectedEvent(Event: string, data: any) {
 	if (!KDMapHasEvent(KDEventMapInventorySelected, Event)) return;
 	let item = data.SelectedItem;
@@ -2761,6 +2806,9 @@ function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, l
 				if (restraint?.name) {
 					found[restraint.name] = true;
 				}
+				if (restraint?.inventoryVariant) {
+					found[restraint.inventoryVariant] = true;
+				}
 			}
 		}
 	}
@@ -2891,6 +2939,38 @@ function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = ""
 	let q = quantity;
 	if (KinkyDungeonInventoryGet(newname)) q = KinkyDungeonInventoryGet(newname).quantity + quantity;
 	KinkyDungeonInventoryAdd({faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,});
+}
+
+
+/**
+ * Adds an inventory variant to the player's inventory
+ * @param variant
+ * @param [prefix]
+ * @param [curse]
+ * @param [ID]
+ * @param [forceName]
+ * @param [suffix]
+ * @param [faction]
+ * @param [powerBonus]
+ * @param [quantity]
+ */
+function KDGetInventoryVariant(variant: KDRestraintVariant, prefix: string = "", curse: string = undefined, ID: string = "", forceName?: string, suffix: string = "", faction: string = "", powerBonus?: number, quantity: number = 1): item {
+	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+	let newname = forceName ? forceName : (prefix + variant.template + (ID || (KinkyDungeonGetItemID() + "")) + (curse ? curse : ""));
+	if (prefix) variant.prefix = prefix;
+	if (suffix) variant.suffix = suffix;
+	if (curse) {
+		variant = JSON.parse(JSON.stringify(variant));
+		variant.curse = curse;
+	}
+	if (powerBonus) variant.power = powerBonus;
+	if (!KinkyDungeonRestraintVariants[newname])
+		KinkyDungeonRestraintVariants[newname] = variant;
+	if (variant.events)
+		Object.assign(events, variant.events);
+	let q = quantity;
+	return {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 }
 /**
  * Adds an inventory variant to the player's inventory

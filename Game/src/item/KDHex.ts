@@ -44,6 +44,7 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			return 10;
 		},
 		events: (_data) => [
+			{trigger: "beforeEnemyLoop", type: "AntiMagicEnemyDebuff"},
 			{trigger: "tick", type: "AntiMagicGag", inheritLinked: true, count: 8, power: 0.4, mult: 0.1},
 			{trigger: "apply", type: "FilterLayer", inheritLinked: true, kind: "Ball", filter:
 				{"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":3.016666666666667,"blue":3.95,"alpha":1},

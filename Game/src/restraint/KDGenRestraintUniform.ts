@@ -18,6 +18,7 @@ interface EligibleRestraintEntry {
 	row: NPCBindingGroup,
 	/** Eligible slot */
 	slot: NPCBindingSubgroup,
+	faction?: string,
 }
 
 function KDGetNPCBindingSlotForItem(restraint: restraint, id: number, treatAsEmpty: boolean = false, power?: number): {row: NPCBindingGroup, sgroup: NPCBindingSubgroup} {
@@ -45,6 +46,9 @@ function KDGetBulletBindingTags(bindType: string, playerEffect: any, merge: bool
 	if (!merge && ret.length > 0) return ret;
 	if (playerEffect?.tag) {
 		ret.push(playerEffect.tag);
+	}
+	if (playerEffect?.tags) {
+		ret.push(...playerEffect.tags);
 	}
 	return ret;
 }
@@ -111,8 +115,38 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 							weight *= restraint.enemyTagsMult[t];
 						}
 					}
-				if (enabled) {
+				if (enabled && weight > 0) {
 					cache.push({r: restraint, w:weight});
+				}
+
+
+				if (enabled && options?.allowVariants && restraint.ApplyVariants) {
+					for (let variant of Object.entries(restraint.ApplyVariants)) {
+
+						if (effLevel >= KDApplyVariants[variant[0]].minfloor && !(effLevel >= KDApplyVariants[variant[0]].maxfloor)
+							&& (!variant[1].enemyTags || Object.keys(variant[1].enemyTags).some(
+						(tag) => {return tags.includes(tag);}))) {
+
+							let w = weight * (variant[1].weightMult || 1) + (variant[1].weightMod || 0);
+
+							if (variant[1].enemyTags)
+								for (let tag in variant[1].enemyTags)
+									if (tags[tag]) w += variant[1].enemyTags[tag];
+
+							if (variant[1].enemyTagsMult)
+								for (let tag in variant[1].enemyTagsMult)
+									if (tags[tag]) w *= variant[1].enemyTagsMult[tag];
+
+
+							if (w) {
+								cache.push({
+									r: restraint,
+									v: KDApplyVariants[variant[0]],
+									w: w,
+								});
+							}
+						}
+					}
 				}
 			}
 		}
@@ -124,8 +158,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 	if (options?.noOverride) {
 		// Simple function
 		for (let c of cache) {
-			let variants: ApplyVariant[] = [undefined];
-			if (c.r.ApplyVariants) {
+			/*if (c.r.ApplyVariants) {
 				for (let variant of Object.entries(c.r.ApplyVariants)) {
 					if (effLevel >= KDApplyVariants[variant[0]].minfloor && !(effLevel >= KDApplyVariants[variant[0]].maxfloor)
 						&& (!variant[1].enemyTags || Object.keys(variant[1].enemyTags).some((tag) => {
@@ -134,17 +167,17 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 							variants.push(KDApplyVariants[variant[0]]);
 					}
 				}
-			}
-			for (let v of variants) {
-				let slot = KDGetNPCBindingSlotForItem(c.r, id, false);
-				if (slot) cachePossible.push({r: c.r, w: c.w, v: v, row: slot.row, sgroup: slot.sgroup});
-			}
+			}*/
+			//for (let v of variants) {
+			let slot = KDGetNPCBindingSlotForItem(c.r, id, false);
+			if (slot) cachePossible.push({r: c.r, w: c.w, v: c.v, row: slot.row, sgroup: slot.sgroup});
+			//}
 		}
 	} else {
 		// Complex function
 		// We dont do variants atm, TODO
 		for (let c of cache) {
-			let variants: ApplyVariant[] = [undefined];
+			/*let variants: ApplyVariant[] = [undefined];
 			if (c.r.ApplyVariants) {
 				for (let variant of Object.entries(c.r.ApplyVariants)) {
 					if (effLevel >= KDApplyVariants[variant[0]].minfloor && !(effLevel >= KDApplyVariants[variant[0]].maxfloor)
@@ -154,19 +187,19 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 							variants.push(KDApplyVariants[variant[0]]);
 					}
 				}
-			}
-			for (let v of variants) {
-				let power = KDGetNPCRestraintPower(
-					{
-						name: c.r.name,
-						powerbonus: v?.powerBonus,
-						id: -1,
-						lock: "",
-					}
-				);
-				let slot = KDGetNPCBindingSlotForItem(c.r, id, false, power);
-				if (slot) cachePossible.push({r: c.r, w: c.w, v: v, row: slot.row, sgroup: slot.sgroup});
-			}
+			}*/
+			//for (let v of variants) {
+			let power = KDGetNPCRestraintPower(
+				{
+					name: c.r.name,
+					powerbonus: c.v?.powerBonus,
+					id: -1,
+					lock: "",
+				}
+			);
+			let slot = KDGetNPCBindingSlotForItem(c.r, id, false, power);
+			if (slot) cachePossible.push({r: c.r, w: c.w, v: c.v, row: slot.row, sgroup: slot.sgroup});
+			//}
 
 		}
 	}

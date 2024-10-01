@@ -200,6 +200,14 @@ function KinkyDungeonDressPlayer (
 			updateExpression: false,
 			Character: Character,
 			extraForceDress: undefined,
+			Wornitems: KDGetCharacterID(Character) && KDGameData.NPCRestraints[KDGetCharacterID(Character)] ?
+				Object.values(KDGameData.NPCRestraints[KDGetCharacterID(Character)])
+					.filter((rest) => {return rest.events})
+					.map((rest) => {return rest.id;})
+			: [],
+			NPCRestraintEvents: KDGetCharacterID(Character) ?
+				KDGameData.NPCRestraints[KDGetCharacterID(Character)]
+				: undefined,
 		};
 
 		if (KinkyDungeonCheckClothesLoss) KDRefreshCharacter.set(Character, true);
@@ -867,6 +875,15 @@ function KDApplyItem(C: Character, inv: any, tags: any, customFaction: string = 
 			Filters: filters,
 			Properties: Properties,
 			faction: faction,
+			Character: C,
+			Wornitems: KDGetCharacterID(C) && KDGameData.NPCRestraints[KDGetCharacterID(C)] ?
+				Object.values(KDGameData.NPCRestraints[KDGetCharacterID(C)])
+					.filter((rest) => {return rest.events})
+					.map((rest) => {return rest.id;})
+				: [],
+			NPCRestraintEvents: KDGetCharacterID(C) ?
+				KDGameData.NPCRestraints[KDGetCharacterID(C)]
+				: undefined,
 		};
 		KinkyDungeonSendEvent("apply", data);
 

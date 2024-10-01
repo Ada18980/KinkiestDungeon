@@ -113,10 +113,10 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	"Sword": {name: "Sword", dmg: 3, chance: 1.5, staminacost: 2.4, type: "slash", unarmed: false, rarity: 2, shop: false, cutBonus: 0.01,
 		tags: ["sword"],
 		sfx: "LightSwing"},
-	"ChainSword": {name: "ChainSword", dmg: 2.5, bind: 1.0, bindType: "Metal", chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01,
+	"ChainSword": {name: "ChainSword", dmg: 2.5, bind: 1.0, bindType: "Metal", addBind: true, chance: 1.6, staminacost: 2.4, type: "slash", unarmed: false, rarity: 3, shop: true, cutBonus: 0.01,
 		tags: ["sword", "bondage"],
 		sfx: "Chain"},
-	"SlimeSword": {name: "SlimeSword", dmg: 2.4, bind: 2.5, bindEff: 0, bindType: "Slime", chance: 1.3, staminacost: 2.6, type: "glue", unarmed: false, rarity: 3, shop: true,
+	"SlimeSword": {name: "SlimeSword", dmg: 2.4, bind: 2.5, bindEff: 0, bindType: "Slime", addBind: true, chance: 1.3, staminacost: 2.6, type: "glue", unarmed: false, rarity: 3, shop: true,
 		tags: ["sword", "bondage"],
 		sfx: "RubberBolt"},
 	"Katana": {name: "Katana", dmg: 3, chance: 1.5, staminacost: 3.0, type: "slash", unarmed: false, rarity: 4, shop: true, cutBonus: 0.01, sfx: "LightSwing",
@@ -216,11 +216,11 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		events: [{type: "Pierce", trigger: "playerAttack", power: 4.0, damage: "pierce", dist: 2}]},
 
 	// Specialty Weapons
-	"StaffTape": {name: "StaffTape", dmg: 1, bindEff: 2.0, bindType: "Tape", chance: 1.0, staminacost: 1.5, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Tape", magic: false,
+	"StaffTape": {name: "StaffTape", dmg: 1, bindEff: 2.0, bindType: "Tape", addBind: true, chance: 1.0, staminacost: 1.5, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Tape", magic: false,
 		tags: ["bondage"], noDamagePenalty: true,
 		events: [
 			{type: "ApplyTaped", trigger: "playerAttack", power: -0.15, duration: 12},
-			{type: "DealDamageToTaped", trigger: "playerMove", power: 1.0, dist: 1.5, damage: "chain", bindType: "Tape", bindEff: 2.0, sfx: "TapeStruggle"},
+			{type: "DealDamageToTaped", trigger: "playerMove", power: 1.0, dist: 1.5, damage: "chain", addBind: true, bindType: "Tape", bindEff: 2.0, sfx: "TapeStruggle"},
 		]
 	},
 
@@ -230,12 +230,12 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		crit: 1.1,
 		events: [{type: "Buff", kind: "Staff", trigger: "tick", power: 0.15, buffType: "fireDamageBuff", offhand: true}],
 		special: {type: "ignite"},},
-	"StaffChain": {name: "StaffChain", dmg: 3, bindEff: 1.25, bindType: "Metal", chance: 1.1, staminacost: 3.0, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Chain", magic: true,
+	"StaffChain": {name: "StaffChain", dmg: 3, bindEff: 1.25, bindType: "Metal", addBind: true, chance: 1.1, staminacost: 3.0, type: "chain", unarmed: false, rarity: 4, shop: true, sfx: "Chain", magic: true,
 		tags: ["staff", "bondage"], noDamagePenalty: true,
 		crit: 1.1,
 		events: [{type: "Buff", kind: "Staff", trigger: "tick", power: 0.1, buffType: "chainDamageBuff", offhand: true},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "chain", time: 2}]},
-	"StaffGlue": {name: "StaffGlue", dmg: 3, bindEff: 1.5, bindType: "Slime", chance: 1.0, staminacost: 4.0, type: "glue", unarmed: false, rarity: 4, shop: true, sfx: "MagicSlash", magic: true,
+	"StaffGlue": {name: "StaffGlue", dmg: 3, bindEff: 1.5, bindType: "Slime", addBind: true, chance: 1.0, staminacost: 4.0, type: "glue", unarmed: false, rarity: 4, shop: true, sfx: "MagicSlash", magic: true,
 		tags: ["staff", "bondage"], noDamagePenalty: true,
 		crit: 1.1,
 		events: [{type: "Buff", kind: "Staff", trigger: "tick", power: 0.1, buffType: "glueDamageBuff", offhand: true}]},
@@ -252,7 +252,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 			{type: "MultiplyTime", trigger: "beforeDamageEnemy", power: 1.5, damage: "ice"}]},
 
 	// Tier 2 Staves
-	"StaffBind": {name: "StaffBind", dmg: 2.3, bindEff: 1, bindType: "Metal", chance: 1.0, staminacost: 3.0, type: "chain", unarmed: false, rarity: 5, shop: true, sfx: "Chain", magic: true,
+	"StaffBind": {name: "StaffBind", dmg: 2.3, bindEff: 1, bindType: "Metal", addBind: true, chance: 1.0, staminacost: 3.0, type: "chain", unarmed: false, rarity: 5, shop: true, sfx: "Chain", magic: true,
 		tags: ["staff", "bondage"], noDamagePenalty: true,
 		crit: 1.1,
 		events: [
@@ -306,7 +306,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		type: "chain", unarmed: false, novulnerable: true, magic: true, rarity: 3, shop: true, sfx: "Chain",
 		nocrit: true,
 		angle: 0,
-		bindType: "Magic", bindEff: 1.5, bindcrit: 2.0,
+		bindType: "Magic", bindEff: 1.5, bindcrit: 2.0, addBind: true,
 		special: {type: "spell", selfCast: true, spell: "TomeBondage", prereq: "HasWill"},
 		events: [
 			{type: "Buff", kind: "Book", trigger: "tick", power: 0.1, buffType: "BindAmp", offhand: true},
@@ -380,11 +380,11 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	},
 	"Rope": {name: "Rope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain",
 		tags: ["bondage"],
-		crit: 1.1, unarmed: false, rarity: 1, shop: true, sfx: "Struggle", bindType: "Rope"},
+		crit: 1.1, unarmed: false, rarity: 1, shop: true, sfx: "Struggle", addBind: true, bindType: "Rope"},
 	"MagicRope": {name: "MagicRope", dmg: 1.0, bind: 5, chance: 1.0, staminacost: 1.0, type: "chain", unarmed: false, rarity: 4, magic: true, shop: true, sfx: "TapeStruggle", bindType: "Rope",
-		tags: ["illum", "bondage"], noDamagePenalty: true,
+		tags: ["illum", "bondage"], noDamagePenalty: true, addBind: true,
 		events: [
-			{type: "MagicRope", trigger: "playerAttack", power: 0, cost: 1, bindType: "Magic", bind: 5},
+			{type: "MagicRope", trigger: "playerAttack", power: 0, addBind: true, cost: 1, bindType: "Magic", bind: 5},
 			{type: "WeaponLight", trigger: "getLights", offhand: true, power: 3, color: "#92e8c0"}
 		],
 	},
@@ -523,7 +523,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		events: [{type: "CastSpell", spell: "BeltStrike", trigger: "playerAttack", requireEnergy: true, energyCost: 0.008}],
 		special: {type: "hitorspell", spell: "BeltStrike", requiresEnergy: true, energyCost: 0.0075, range: 2.99}},
 	"Arbiter": {name: "Arbiter", crit: 1.1, bindcrit: 2.0, dmg: 3.5, bindEff: 1.25, chance: 2.0, bindType: "Metal", staminacost: 3, type: "chain", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "HeavySwing",
-		tags: ["sword", "divine"],
+		tags: ["sword", "divine"], addBind: true,
 		events: [
 			{type: "BuffMulti", trigger: "tick", power: 0.25, buffTypes: [
 				"glueDamageBuff",
@@ -541,7 +541,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		],
 		special: {type: "spell", spell: "BondageBust", requiresEnergy: true, energyCost: 0.005, range: 4}},
 	"TheEncaser": {name: "TheEncaser", dmg: 4, chance: 1.0, bindType: "Slime", staminacost: 3.0, type: "glue", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "MagicSlash", crit: 1.25,
-		tags: ["staff", "divine"], noDamagePenalty: true,
+		tags: ["staff", "divine"], noDamagePenalty: true, addBind: true,
 		events: [{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "glue", time: 2, offhand: true,}],
 		special: {type: "spell", selfCast: true, spell: "SlimeForm", requiresEnergy: true, energyCost: 0.025}},
 	"FourSeasons": {name: "FourSeasons", dmg: 4, chance: 1.0, staminacost: 4.0, type: "cold", unarmed: false, rarity: 10, shop: false, magic: true, sfx: "Fwoosh", crit: 1.25,

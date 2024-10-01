@@ -5680,10 +5680,10 @@ let KDRestraintDebugLog = [];
  * The name of an item, includes TextGet call
  * @param item
  */
-function KDGetItemName(item: item): string {
+function KDGetItemName(item: item, type?: string): string {
 	let base = TextGet("KinkyDungeonInventoryItem" + item.name);
 	let variant = null;
-	switch(item.type) {
+	switch(type || item.type) {
 		case Restraint:
 		case LooseRestraint:
 			base = TextGet("Restraint" + KDRestraint(item).name);
