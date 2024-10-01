@@ -358,7 +358,7 @@ function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) 
 					}
 					if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 					KinkyDungeonSendEvent("AfterAdvance", data);
-					let saveData = KinkyDungeonSaveGame(true);
+					let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
 					if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1 && MiniGameKinkyDungeonLevel == KDGameData.HighestLevelCurrent) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
 						if ((!KinkyDungeonStatsChoice.get("saveMode")) && !suppressCheckPoint) {
 							KinkyDungeonState = "Save";

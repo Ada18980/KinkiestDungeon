@@ -1708,7 +1708,7 @@ function KinkyDungeonHandleHUD() {
 				return true;
 			}
 			if (MouseIn(1500, 320, 300, 64)) {
-				let saveData = KinkyDungeonSaveGame(true);
+				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
 				KinkyDungeonState = "Save";
 				ElementCreateTextArea("saveDataField");
 				ElementValue("saveDataField", saveData);

@@ -5610,23 +5610,32 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	return save;
 }
 
-function KinkyDungeonSaveGame(ToString: boolean = false) {
+function KinkyDungeonSaveGame(ToString: boolean = false): KinkyDungeonSave {
 	let save = KinkyDungeonGenerateSaveData();
 
-	let data = KinkyDungeonCompressSave(save);
 	if (!ToString) {
-		//Player.KinkyDungeonSave = saveData.KinkyDungeonSave;
-		//ServerAccountUpdate.QueueData(saveData);
-		localStorage.setItem('KinkyDungeonSave', data);
-		if (KDSaveSlot != undefined) {
-			KinkyDungeonDBSave(KDSaveSlot);
-		}
+		KinkyDungeonCompressSave(save).then(
+		(data) => {
+				//Player.KinkyDungeonSave = saveData.KinkyDungeonSave;
+				//ServerAccountUpdate.QueueData(saveData);
+				localStorage.setItem('KinkyDungeonSave', data);
+				if (KDSaveSlot != undefined) {
+					KinkyDungeonDBSave(KDSaveSlot);
+				}
+			}
+		);
 	}
-	return data;
+
+	return save;
 }
 
-function KinkyDungeonCompressSave(save: any) {
-	return LZString.compressToBase64(JSON.stringify(save));
+let KDBusySaving = false;
+
+async function KinkyDungeonCompressSave(save: any) {
+	KDBusySaving = true;
+	let ret = LZString.compressToBase64(JSON.stringify(save));
+	KDBusySaving = false;
+	return ret;
 }
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=

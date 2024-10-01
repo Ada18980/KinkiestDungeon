@@ -39,6 +39,8 @@ TODO Add Cuddle play type
 - Bindings will be conjured, so you cannot spam them to pick them up
 - Also applies to handheld weapons like ropes.
 - New spell: Conjure Anti-Magic gag
+- Revised enemy struggle function to help normalize the amount of time it takes to escape
+
 
 5.3.41
 - Fix bug where runes hit twice
