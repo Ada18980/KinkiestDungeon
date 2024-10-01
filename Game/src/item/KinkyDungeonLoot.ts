@@ -103,7 +103,7 @@ function KinkyDungeonLoot(
 				if (prereqs && loot.prerequisites.includes("vibe") && KinkyDungeonPlayerTags.get("NoVibes")) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("alreadyBelted") && KinkyDungeonChastityMult() < 0.9) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("lowlevel")) maxlevel = 2;
-				if (prereqs && loot.prerequisites.includes("fewpick") && KinkyDungeonLockpicks > 3) prereqs = false;
+				if (prereqs && loot.prerequisites.includes("fewpick") && KinkyDungeonItemCount("Pick") >3) prereqs = false;
 				if (prereqs && loot.prerequisites.includes("lowpotions") && (
 					KinkyDungeonItemCount("PotionFrigid") + KinkyDungeonItemCount("PotionMana") + KinkyDungeonItemCount("PotionStamina") > 10
 				)) prereqs = false;
@@ -530,13 +530,13 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		KinkyDungeonInventoryAddWeapon("EnchKnife");
 	}
 	else if (Loot.name == "pick") {
-		KinkyDungeonLockpicks += 1;
+		KDAddConsumable("Pick", 1);
 	}
 	else if (Loot.name == "redkey") {
-		KinkyDungeonRedKeys += 1;
+		KDAddConsumable("RedKey", 1);
 	}
 	else if (Loot.name == "bluekey") {
-		KinkyDungeonBlueKeys += 1;
+		KDAddConsumable("BlueKey", 1);
 	}
 	else if (Loot.name == "grinder") {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EnchantedGrinder, 1);

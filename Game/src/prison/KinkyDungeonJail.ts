@@ -1127,7 +1127,7 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 
 	KDApplyLivingCollars();
 
-	KinkyDungeonStripInventory(false);
+	KinkyDungeonStripInventory();
 
 	if (KinkyDungeonCurrentDress == "Default")
 		KinkyDungeonSetDress("Bikini", "Bikini");
@@ -1389,7 +1389,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 	KinkyDungeonSetDress(defeat_outfit, "JailUniform");
-	KinkyDungeonStripInventory(true);
+	KinkyDungeonStripInventory();
 
 	if (defeat_outfit != params.defeat_outfit) {
 		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});
@@ -1680,11 +1680,7 @@ function KDKickEnemyLocal(e: entity) {
 	}
 }
 
-function KinkyDungeonStripInventory(KeepPicks: boolean) {
-	KinkyDungeonRedKeys = 0;
-	KinkyDungeonBlueKeys = 0;
-	KinkyDungeonLockpicks = KeepPicks ? (Math.min(Math.max(0, Math.round(3 * (1 - (KDGetEffSecurityLevel(undefined, true) + 50)/100))), KinkyDungeonLockpicks)) : 0;
-
+function KinkyDungeonStripInventory() {
 	let newInv = KinkyDungeonInventory.get(Restraint);
 	let HasBound = false;
 	let boundWeapons = [];

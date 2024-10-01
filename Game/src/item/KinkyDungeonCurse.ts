@@ -182,11 +182,11 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return 3;
 		},
 		condition: (_item) => {
-			return KinkyDungeonRedKeys >= 5;
+			return KinkyDungeonItemCount("RedKey") >= 5;
 		},
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
-				KinkyDungeonRedKeys -= 5;
+				KDAddConsumable("RedKey", -5);
 		}
 	},
 	"Key" : {
@@ -197,11 +197,11 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return 10;
 		},
 		condition: (_item) => {
-			return KinkyDungeonRedKeys >= 1;
+			return KinkyDungeonItemCount("RedKey") >= 1;
 		},
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
-				KinkyDungeonRedKeys -= 1;
+				KDAddConsumable("RedKey", -1);
 		}
 	},
 	"BlueLock" : {
@@ -212,11 +212,11 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return 10;
 		},
 		condition: (_item) => {
-			return KinkyDungeonBlueKeys >= 1;
+			return KinkyDungeonItemCount("BlueKey") >= 1;
 		},
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
-				KinkyDungeonBlueKeys -= 1;
+				KDAddConsumable("BlueKey", -1);
 		}
 	},
 	"TakeDamageFire" : {

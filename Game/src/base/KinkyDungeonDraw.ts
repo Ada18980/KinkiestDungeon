@@ -1935,9 +1935,9 @@ function KinkyDungeonDrawGame() {
 					DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", "#ffffff", "");
 
 					DrawButtonKDEx("debugAddKey", (_bdata) => {
-						KinkyDungeonRedKeys += 1;
-						KinkyDungeonBlueKeys += 1;
-						KinkyDungeonLockpicks += 1;
+						KDAddConsumable("Pick", 10);
+						KDAddConsumable("RedKey", 10);
+						KDAddConsumable("BlueKey", 10);
 						return true;
 					}, true, 600, 160, 300, 64, "Add keys and lockpicks", "#ffffff", "");
 					DrawButtonKDEx("debugAddVision", (_bdata) => {

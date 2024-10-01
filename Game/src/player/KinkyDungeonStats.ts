@@ -126,14 +126,6 @@ let KinkyDungeonSleepinessMax = 10;
 
 // Other stats
 let KinkyDungeonGold = 0;
-let KinkyDungeonLockpicks = 0;
-// 3 types of keys, for 4 different types of padlocks. The last type of padlock requires all 3 types of keys to unlock
-// The red keys are one-use only as the lock traps the key
-// The green keys are multi-use, but jam often
-// The blue keys cannot be picked or cut.
-// Monsters are not dextrous enough to steal keys from your satchel, although they may spill your satchel on a nearby tile
-let KinkyDungeonRedKeys = 0;
-let KinkyDungeonBlueKeys = 0;
 
 let KinkyDungeonHasCrotchRope = false;
 
@@ -183,9 +175,6 @@ function KinkyDungeonDefaultStats(_Load?: any) {
 	KDGameData.KinkyDungeonSpawnJailers = 0;
 	KDGameData.KinkyDungeonSpawnJailersMax = 0;
 	KinkyDungeonGold = 0;
-	KinkyDungeonLockpicks = 0;
-	KinkyDungeonRedKeys = 0;
-	KinkyDungeonBlueKeys = 0;
 
 	KDGameData.Balance = 1;
 

@@ -4302,7 +4302,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.unarmed) {
 			AIData.playChance += 0.25;
 		}
-		if (playerItems?.length > 0 || KinkyDungeonRedKeys > 0) {
+		if (playerItems?.length > 0 || KinkyDungeonItemCount("RedKey") > 0) {
 			AIData.playChance += 0.2;
 			if (playerItems.length > 6) {
 				AIData.playChance += 0.5;

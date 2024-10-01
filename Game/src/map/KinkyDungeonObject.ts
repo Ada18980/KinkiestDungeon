@@ -125,7 +125,7 @@ function KinkyDungeonDrawDoor() {
 		KDModalArea_y = 700;
 		//}
 		DrawButtonKDEx("ModalDoorPick", () => {
-			if (KinkyDungeonLockpicks > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
+			if (KinkyDungeonItemCount("Pick") > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
 				// Done, converted to input
 				KDSendInput("pick", {targetTile: KinkyDungeonTargetTileLocation});
 				return true;
@@ -186,7 +186,7 @@ function KinkyDungeonDrawLock() {
 			action = true;
 			KDModalArea = true;
 			DrawButtonKDEx("ModelLockPick", () => {
-				if (KinkyDungeonLockpicks > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
+				if (KinkyDungeonItemCount("Pick") > 0 && (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}))) {
 					// Done, converted to input
 					KDSendInput("pick", {targetTile: KinkyDungeonTargetTileLocation});
 					return true;

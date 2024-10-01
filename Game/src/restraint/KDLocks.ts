@@ -169,7 +169,7 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
+			return KinkyDungeonItemCount("RedKey") > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
 		},
 		doUnlock: (data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25) {
@@ -180,13 +180,13 @@ let KDLocks: Record<string, KDLockType> = {
 			return true;
 		},
 		removeKeys: (data) => {
-			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonRedKeys > 0) {
-				KinkyDungeonRedKeys -= 1;
+			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonItemCount("RedKey") > 0) {
+				KDAddConsumable("RedKey", -1);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), "lightgreen", 2);
 				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), 1);
 			} else if (!data?.unlock) {
-				if (KinkyDungeonRedKeys > 0) {
-					KinkyDungeonRedKeys -= 1;
+				if (KinkyDungeonItemCount("RedKey") > 0) {
+					KDAddConsumable("RedKey", -1);
 					KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 				} else if (KinkyDungeonInventoryGet("CuffKeys")) {
 					KinkyDungeonDropItem({name: "CuffKeys"}, KinkyDungeonPlayerEntity, true, true);
@@ -471,19 +471,19 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
+			return KinkyDungeonItemCount("RedKey") > 0 || KinkyDungeonInventoryGet("CuffKeys") != undefined;
 		},
 		doUnlock: (_data) => {
 			return true;
 		},
 		removeKeys: (data) => {
-			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonRedKeys > 0) {
-				KinkyDungeonRedKeys -= 1;
+			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonItemCount("RedKey") > 0) {
+				KDAddConsumable("RedKey", -1);
 				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), "lightgreen", 2);
 				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), 1);
 			} else if (!data?.unlock) {
-				if (KinkyDungeonRedKeys > 0) {
-					KinkyDungeonRedKeys -= 1;
+				if (KinkyDungeonItemCount("RedKey") > 0) {
+					KDAddConsumable("RedKey", -1);
 					KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 				} else if (KinkyDungeonInventoryGet("CuffKeys")) {
 					KinkyDungeonDropItem({name: "CuffKeys"}, KinkyDungeonPlayerEntity, true, true);
@@ -545,14 +545,14 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0;
+			return KinkyDungeonItemCount("RedKey") > 0;
 		},
 		doUnlock: (_data) => {
 
 			return true;
 		},
 		removeKeys: (data) => {
-			KinkyDungeonRedKeys -= 1;
+			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
@@ -612,14 +612,14 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0;
+			return KinkyDungeonItemCount("RedKey") > 0;
 		},
 		doUnlock: (_data) => {
 
 			return true;
 		},
 		removeKeys: (data) => {
-			KinkyDungeonRedKeys -= 1;
+			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
@@ -679,14 +679,14 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0;
+			return KinkyDungeonItemCount("RedKey") > 0;
 		},
 		doUnlock: (_data) => {
 
 			return true;
 		},
 		removeKeys: (data) => {
-			KinkyDungeonRedKeys -= 1;
+			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
@@ -746,14 +746,14 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0;
+			return KinkyDungeonItemCount("RedKey") > 0;
 		},
 		doUnlock: (_data) => {
 
 			return true;
 		},
 		removeKeys: (data) => {
-			KinkyDungeonRedKeys -= 1;
+			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
@@ -815,14 +815,14 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Red",
 		canUnlock: (_data) => {
-			return KinkyDungeonRedKeys > 0;
+			return KinkyDungeonItemCount("RedKey") > 0;
 		},
 		doUnlock: (_data) => {
 
 			return true;
 		},
 		removeKeys: (data) => {
-			KinkyDungeonRedKeys -= 1;
+			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
@@ -886,13 +886,13 @@ let KDLocks: Record<string, KDLockType> = {
 		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
 		key: "Blue",
 		canUnlock: (_data) => {
-			return KinkyDungeonBlueKeys > 0;
+			return KinkyDungeonItemCount("BlueKey") > 0;
 		},
 		doUnlock: (_data) => {
 			return true;
 		},
 		removeKeys: (data) => {
-			KinkyDungeonBlueKeys -= 1;
+			KDAddConsumable("BlueKey", -1);
 			if (!data?.unlock) {
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}

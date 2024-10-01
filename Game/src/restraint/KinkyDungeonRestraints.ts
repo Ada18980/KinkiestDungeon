@@ -1453,12 +1453,12 @@ function KinkyDungeonPickAttempt(): boolean {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
 	} else if (KDLocks[lock] && KDLocks[lock].breakChance({})) { // Blue locks cannot be picked or cut!
 		Pass = "Break";
-		KinkyDungeonLockpicks -= 1;
+		KDAddConsumable("Pick", -1);
 		KinkyDungeonPickBreakProgress = 0;
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/PickBreak.ogg");
 	} else if (!KinkyDungeonStatsChoice.get("Psychic") && (handsBound || (armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
 		KinkyDungeonDropItem({name: "Pick"}, KinkyDungeonPlayerEntity, true);
-		KinkyDungeonLockpicks -= 1;
+		KDAddConsumable("Pick", -1);
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 	} else {
 		KinkyDungeonTargetTile.pickProgress += escapeChance;
@@ -1801,7 +1801,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	// Bonus for using lockpick or knife
 	if (data.struggleType == "Remove" &&
-		(!data.handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonLockpicks > 0)
+		(!data.handsBound && (KinkyDungeonWeaponCanCut(true) || KinkyDungeonItemCount("Pick"))
 		|| (data.struggleGroup == "ItemHands" && KinkyDungeonCanTalk() && !armsBound))) {
 		data.escapeChance = Math.max(data.escapeChance, Math.min(1, data.escapeChance + 0.15*toolMult));
 		data.origEscapeChance = Math.max(data.origEscapeChance, Math.min(1, data.origEscapeChance + 0.15*toolMult));
@@ -2553,7 +2553,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 							if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).PickBreak) ? KDGetEscapeSFX(restraint).PickBreak : "PickBreak")
 								+ ".ogg");
-							KinkyDungeonLockpicks -= 1;
+							KDAddConsumable("Pick", -1);
 							KinkyDungeonPickBreakProgress = 0;
 						} else if (!KinkyDungeonStatsChoice.get("Psychic") && (data.handsBound || (data.armsBound && KDRandom() < KinkyDungeonItemDropChanceArmsBound))) {
 							if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
@@ -2561,7 +2561,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 								+ ".ogg");
 							Pass = "Drop";
 							KinkyDungeonDropItem({name: "Pick"}, KinkyDungeonPlayerEntity, true);
-							KinkyDungeonLockpicks -= 1;
+							KDAddConsumable("Pick", -1);
 						} else {
 							if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).Pick) ? KDGetEscapeSFX(restraint).Pick : "Pick")

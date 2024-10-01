@@ -1258,7 +1258,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 							&& KDRandom() < (KDPersonalitySpread(125, 85, 25) - KinkyDungeonGoddessRep.Ghost + KDGetModifiedOpinion(enemy) + (KinkyDungeonStatsChoice.get("Dominant") ? 25 : 0))/100 * (KDPersonalitySpread(0.0, -0.25, -0.5) + (KDAllied(enemy) ? 2.0 : 1.0))
 						) {
 							KinkyDungeonChangeRep("Ghost", 3);
-							KinkyDungeonRedKeys += 1;
+							KDAddConsumable("RedKey", 1);
 							if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 							enemy.items.splice(enemy.items.indexOf("RedKey"), 1);
 						} else {
@@ -2448,7 +2448,7 @@ function KDItemSubThreshold(item: string, nomult?: boolean): number {
 		else if (KinkyDungeonStatsChoice.get("Dominant")) mult = 5;
 	}
 	if (item == "RedKey") return mult*0.4;
-	if (item == "Lockpick") return mult*0.75;
+	if (item == "Pick") return mult*0.75;
 	if (item == "BlueKey") return mult*0.1;
 	if (KinkyDungeonFindConsumable(item)?.sub) return Math.max(0, 1 - mult*KinkyDungeonFindConsumable(item).rarity * KinkyDungeonFindConsumable(item).sub);
 	if (KinkyDungeonFindWeapon(item)?.cutBonus) return Math.max(0, 1 - mult*KinkyDungeonFindWeapon(item)?.cutBonus*3);

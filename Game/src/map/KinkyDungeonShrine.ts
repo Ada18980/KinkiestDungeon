@@ -236,15 +236,15 @@ function KinkyDungeonShrineCost(type: string): number {
 
 function KDAddBasic(item: item | shopItem) {
 	if (item.name == "RedKey") {
-		KinkyDungeonRedKeys += 1;
+		KDAddConsumable("RedKey", 1);
 	} else if (item.name == "BlueKey") {
-		KinkyDungeonBlueKeys += 1;
+		KDAddConsumable("BlueKey", 1);
 	} else if (item.name == "Lockpick") {
-		KinkyDungeonLockpicks += 1;
+		KDAddConsumable("Pick", 1);
 	} else if (item.name == "2Lockpick") {
-		KinkyDungeonLockpicks += 2;
+		KDAddConsumable("Pick", 2);
 	} else if (item.name == "4Lockpick") {
-		KinkyDungeonLockpicks += 4;
+		KDAddConsumable("Pick", 4);
 	} else if (item.name == "MaidUniform") {
 		KinkyDungeonInventoryAddOutfit("Maid");
 	} if (KinkyDungneonBasic[item.name]?.outfit) {

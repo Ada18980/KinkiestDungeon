@@ -127,6 +127,27 @@ function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number):
 	return false;
 }
 
+/**
+ * @param name
+ * @param Quantity
+ */
+function KDAddConsumable(name: string, Quantity: number): boolean {
+	let item = KinkyDungeonInventoryGetConsumable(name);
+	if (item) {
+		item.quantity += Quantity;
+		if (item.quantity <= 0) {
+			KinkyDungeonInventoryRemove(item);
+		}
+		return true;
+	}
+
+	if (Quantity > 0) {
+		KinkyDungeonInventoryAdd({name: name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
+	}
+
+	return false;
+}
+
 function KinkyDungeonConsumableEffect(Consumable: consumable, type?: string) {
 	if (!type) type = Consumable.type;
 

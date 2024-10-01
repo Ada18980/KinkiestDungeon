@@ -5594,9 +5594,9 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	save.KDDeletedIDs = JSON.stringify(KDDeletedIDs);
 
 
-	save.picks = KinkyDungeonLockpicks;
-	save.rkeys = KinkyDungeonRedKeys;
-	save.bkeys = KinkyDungeonBlueKeys;
+	save.picks = KinkyDungeonItemCount("Pick");
+	save.rkeys = KinkyDungeonItemCount("RedKey");
+	save.bkeys = KinkyDungeonItemCount("BlueKey");
 	save.mana = KinkyDungeonStatMana;
 	save.manapool = KinkyDungeonStatManaPool;
 	save.stamina = KinkyDungeonStatStamina;
@@ -5687,31 +5687,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			if (saveData.rescued != undefined) KinkyDungeonRescued = saveData.rescued;
 			if (saveData.aid != undefined) KinkyDungeonAid = saveData.aid;
 			if (saveData.KDCurrentWorldSlot) KDCurrentWorldSlot = saveData.KDCurrentWorldSlot;
-			if (saveData.stats) {
-				if (saveData.stats.picks != undefined) KinkyDungeonLockpicks = saveData.stats.picks;
-				if (saveData.stats.keys != undefined) KinkyDungeonRedKeys = saveData.stats.keys;
-				if (saveData.stats.bkeys != undefined) KinkyDungeonBlueKeys = saveData.stats.bkeys;
-				if (saveData.stats.mana != undefined) KinkyDungeonStatMana = saveData.stats.mana;
-				if (saveData.stats.manapool != undefined) KinkyDungeonStatManaPool = saveData.stats.manapool;
-				if (saveData.stats.stamina != undefined) KinkyDungeonStatStamina = saveData.stats.stamina;
-				if (saveData.stats.willpower != undefined) KinkyDungeonStatWill = saveData.stats.willpower;
-				if (saveData.stats.distraction != undefined) KinkyDungeonStatDistraction = saveData.stats.distraction;
-				if (saveData.stats.distractionlower != undefined) KinkyDungeonStatDistractionLower = saveData.stats.distractionlower;
-				if (saveData.stats.wep != undefined) KDSetWeapon(saveData.stats.wep);
-				if (saveData.stats.npp != undefined) KinkyDungeonNewGame = saveData.stats.npp;
-			} else {
-				if (saveData.picks != undefined) KinkyDungeonLockpicks = saveData.picks;
-				if (saveData.rkeys != undefined) KinkyDungeonRedKeys = saveData.rkeys;
-				if (saveData.bkeys != undefined) KinkyDungeonBlueKeys = saveData.bkeys;
-				if (saveData.mana != undefined) KinkyDungeonStatMana = saveData.mana;
-				if (saveData.manapool != undefined) KinkyDungeonStatManaPool = saveData.manapool;
-				if (saveData.stamina != undefined) KinkyDungeonStatStamina = saveData.stamina;
-				if (saveData.willpower != undefined) KinkyDungeonStatWill = saveData.willpower;
-				if (saveData.distraction != undefined) KinkyDungeonStatDistraction = saveData.distraction;
-				if (saveData.distractionlower != undefined) KinkyDungeonStatDistractionLower = saveData.distractionlower;
-				if (saveData.wep != undefined) KDSetWeapon(saveData.wep);
-				if (saveData.npp != undefined) KinkyDungeonNewGame = saveData.npp;
-			}
+
 			KDOrigStamina = KinkyDungeonStatStamina*10;
 			KDOrigWill = KinkyDungeonStatWill*10;
 			KDOrigMana = KinkyDungeonStatMana*10;
@@ -5756,7 +5732,26 @@ function KinkyDungeonLoadGame(String: string = "") {
 					UpdateModels(KinkyDungeonPlayer);
 				}
 			}
+			if (saveData.stats) {
+				if (saveData.stats.mana != undefined) KinkyDungeonStatMana = saveData.stats.mana;
+				if (saveData.stats.manapool != undefined) KinkyDungeonStatManaPool = saveData.stats.manapool;
+				if (saveData.stats.stamina != undefined) KinkyDungeonStatStamina = saveData.stats.stamina;
+				if (saveData.stats.willpower != undefined) KinkyDungeonStatWill = saveData.stats.willpower;
+				if (saveData.stats.distraction != undefined) KinkyDungeonStatDistraction = saveData.stats.distraction;
+				if (saveData.stats.distractionlower != undefined) KinkyDungeonStatDistractionLower = saveData.stats.distractionlower;
+				if (saveData.stats.wep != undefined) KDSetWeapon(saveData.stats.wep);
+				if (saveData.stats.npp != undefined) KinkyDungeonNewGame = saveData.stats.npp;
+			} else {
 
+				if (saveData.mana != undefined) KinkyDungeonStatMana = saveData.mana;
+				if (saveData.manapool != undefined) KinkyDungeonStatManaPool = saveData.manapool;
+				if (saveData.stamina != undefined) KinkyDungeonStatStamina = saveData.stamina;
+				if (saveData.willpower != undefined) KinkyDungeonStatWill = saveData.willpower;
+				if (saveData.distraction != undefined) KinkyDungeonStatDistraction = saveData.distraction;
+				if (saveData.distractionlower != undefined) KinkyDungeonStatDistractionLower = saveData.distractionlower;
+				if (saveData.wep != undefined) KDSetWeapon(saveData.wep);
+				if (saveData.npp != undefined) KinkyDungeonNewGame = saveData.npp;
+			}
 
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;
 			KDInitFactions();
@@ -5803,6 +5798,23 @@ function KinkyDungeonLoadGame(String: string = "") {
 						KinkyDungeonInventoryAdd(item);
 				}
 				KDUpdateItemEventCache = true;
+			}
+
+			if (saveData.stats) {
+				if (saveData.stats.picks != undefined && !KinkyDungeonItemCount("Pick"))
+					KDAddConsumable("Pick", saveData.stats.picks);
+				if (saveData.stats.keys != undefined && !KinkyDungeonItemCount("RedKey"))
+					KDAddConsumable("RedKey", saveData.stats.keys);
+				if (saveData.stats.bkeys != undefined && !KinkyDungeonItemCount("BlueKey"))
+					KDAddConsumable("BlueKey", saveData.stats.bkeys);
+			} else {
+
+				if (saveData.picks != undefined && !KinkyDungeonItemCount("Pick"))
+					KDAddConsumable("Pick", saveData.picks);
+				if (saveData.rkeys != undefined && !KinkyDungeonItemCount("RedKey"))
+					KDAddConsumable("RedKey", saveData.rkeys);
+				if (saveData.bkeys != undefined && !KinkyDungeonItemCount("BlueKey"))
+					KDAddConsumable("BlueKey", saveData.bkeys);
 			}
 
 			KinkyDungeonSpells = [];

@@ -25,8 +25,8 @@ let KDClassStart: Record<string, () => void> = {
 		KDGameData.StatMaxBonus.WP += 5;
 		KDPushSpell(KinkyDungeonFindSpell("IronWill"));
 		KinkyDungeonSpellPoints = 3;
-		KinkyDungeonRedKeys = 1;
-		KinkyDungeonLockpicks = 1;
+		KDAddConsumable("RedKey", 1);
+		KDAddConsumable("Pick", 2);
 		KinkyDungeonGold = 100;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
@@ -49,7 +49,7 @@ let KDClassStart: Record<string, () => void> = {
 		KDGameData.StatMaxBonus.SP += 5;
 		KDPushSpell(KinkyDungeonFindSpell("Sneaky"));
 		KinkyDungeonSpellPoints = 3;
-		KinkyDungeonLockpicks = 2;
+		KDAddConsumable("Pick", 3);
 		KinkyDungeonGold = 100;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
@@ -75,7 +75,7 @@ let KDClassStart: Record<string, () => void> = {
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KDGameData.StatMaxBonus.MP += 5;
 		KinkyDungeonSpellPoints = 3;
-		KinkyDungeonRedKeys = 1;
+		KDAddConsumable("RedKey", 2);
 		KinkyDungeonGold = 100;
 
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3);

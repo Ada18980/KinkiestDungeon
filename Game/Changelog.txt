@@ -31,7 +31,10 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+
+
 5.3.42
+- MODDERS: KinkyDungeonRedKeys, BlueKeys, and Lockpicks are now inventory items instead of hardcoded variables!
 - Spells now apply bindings to enemies!
 - Bindings will be conjured, so you cannot spam them to pick them up
 - Also applies to handheld weapons like ropes.

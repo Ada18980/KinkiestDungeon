@@ -149,7 +149,7 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 	} else if (Item.name == "Pick") {
 		priority = 2;
 		color = "lightgreen";
-		KinkyDungeonLockpicks += 1;
+		KDAddConsumable("Pick", 1);
 	} else if (Item.name == "MagicSword") {
 		priority = 8;
 		color = "orange";
@@ -183,11 +183,11 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 	} else if (Item.name == "RedKey") {
 		priority = 2;
 		color = "lightgreen";
-		KinkyDungeonRedKeys += 1;
+		KDAddConsumable("RedKey", 1);
 	} else if (Item.name == "BlueKey") {
 		priority = 2;
 		color = "lightgreen";
-		KinkyDungeonBlueKeys += 1;
+		KDAddConsumable("BlueKey", 1);
 	} else if (KDConsumable(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
 			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined, Item.name, undefined, Item.amount);

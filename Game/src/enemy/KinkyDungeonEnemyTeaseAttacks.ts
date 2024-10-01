@@ -584,9 +584,9 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 							&& KinkyDungeonIsArmsBound())
 					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && aiData.playerItems.length > 0 && aiData.playerItems.length > 0
 						&& KinkyDungeonIsArmsBound() && (KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.05))
-					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonLockpicks > 0)
-					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonRedKeys > 0)
-					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonBlueKeys > 0)
+					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonItemCount("Pick") > 0)
+					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonItemCount("RedKey") > 0)
+					|| (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonItemCount("BlueKey") > 0)
 				)
 				&& KDHasArms(enemy)
 				&& !KDIsDisarmed(enemy)) {
@@ -628,20 +628,20 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStealItem").replace("ITEMSTOLEN", KDGetItemName(item)), "yellow", 2);
 						picked = true;
 					}
-				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonLockpicks > 0 && KDRandom() < 0.5) {
-					KinkyDungeonLockpicks -= 1;
+				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonItemCount("Pick") > 0 && KDRandom() < 0.5) {
+					KDAddConsumable("Pick", -1);
 					KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealPick"), "yellow", 2);
 					if (!enemy.items) enemy.items = ["Pick"];
 					enemy.items.push("Pick");
 					picked = true;
-				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonRedKeys > 0) {
-					KinkyDungeonRedKeys -= 1;
+				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonItemCount("RedKey") > 0) {
+					KDAddConsumable("RedKey", -1);
 					KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealRedKey"), "yellow", 2);
 					if (!enemy.items) enemy.items = ["RedKey"];
 					enemy.items.push("RedKey");
 					picked = true;
-				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonBlueKeys > 0) {
-					KinkyDungeonBlueKeys -= 1;
+				} else if (KDGameData.KinkyDungeonLeashedPlayer < 1 && KinkyDungeonItemCount("BlueKey") > 0) {
+					KDAddConsumable("BlueKey", -1);
 					KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonStealBlueKey"), "yellow", 2);
 					if (!enemy.items) enemy.items = ["BlueKey"];
 					enemy.items.push("BlueKey");

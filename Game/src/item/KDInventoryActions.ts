@@ -245,7 +245,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		valid: (_player, item) => {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
-			return KinkyDungeonLockpicks > 0 && !sg.blocked;
+			return KinkyDungeonItemCount("Pick") > 0 && !sg.blocked;
 		},
 		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);

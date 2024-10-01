@@ -1336,6 +1336,9 @@ KinkyDungeonInventoryItemKnife,Knife
 KinkyDungeonInventoryItemLockpick,Lockpick
 KinkyDungeonInventoryItemLockpickDesc,"A tool used to pick locks."
 KinkyDungeonInventoryItemLockpickDesc2,"Doesn't last forever, but can help in a pinch."
+KinkyDungeonInventoryItemPick,Lockpick
+KinkyDungeonInventoryItemPickDesc,"A tool used to pick locks."
+KinkyDungeonInventoryItemPickDesc2,"Doesn't last forever, but can help in a pinch."
 KinkyDungeonInventoryItem2Lockpick,lockpick x2
 KinkyDungeonInventoryItem4Lockpick,lockpicks x4
 KinkyDungeonInventoryItem3Bola,Bola x3
@@ -21969,6 +21972,10 @@ KinkyDungeonInventoryItemCuffKeys,Simple Keys
 KinkyDungeonInventoryItemCuffKeysUse,"You twirl the keys around your finger."
 KinkyDungeonInventoryItemCuffKeysDesc,"A handy key for getting out of common handcuffs and shackles."
 KinkyDungeonInventoryItemCuffKeysDesc2,"It's not sophisticated enough to work on higher-quality locks, but can be used many times."
+
+KinkyDungeonInventoryItemRedKeyUse,"You twirl a key around your finger."
+KinkyDungeonInventoryItemBlueKeyUse,"You twirl a magic key around your finger. Careful not to lose it!"
+KinkyDungeonInventoryItemPickUse,"You fidget with a lockpick."
 
 
 ItemPickupDiscPick,"You pick up a tool for picking disc detainer locks."
