@@ -1530,7 +1530,7 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 				10, true, false)) {
 				atLeastOneAware = true;
 			} else e.aware = false;
-			if (!ignoreAware || !e.aware)
+			if (!e.leash && (!ignoreAware || !e.aware))
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags?.prisoner && !e.Enemy.tags?.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0)) {
 						e.x = e.spawnX;
@@ -1552,7 +1552,7 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 			} else e.aware = false;
 			if (!ignoreAware || !e.aware)
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
-					if (!KDIsImmobile(e))
+					if (!e.leash && !KDIsImmobile(e))
 						if (!already.get(e) && (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0))) {
 							let p = KinkyDungeonGetRandomEnemyPoint(true);
 							if (p) {

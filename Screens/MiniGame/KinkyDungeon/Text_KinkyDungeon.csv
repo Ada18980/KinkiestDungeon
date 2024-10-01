@@ -12434,26 +12434,26 @@ rGenericAllyFlirtGagged,"(The SPEAKER moans)|Mmmmmph~"
 rGenericAllyFlirtNoBrain,"(The SPEAKER appears too busy to discuss with you)"
 
 
-KDDialogue_CuddleStart_,
-KDDialogue_CuddleStart_Gagged,
-KDDialogue_CuddleStart_Robot,
-KDDialogue_CuddleStart_Dom,
-KDDialogue_CuddleStart_Brat,
-KDDialogue_CuddleStart_Sub,
+KDDialogue_CuddleStart_,""
+KDDialogue_CuddleStart_Gagged,""
+KDDialogue_CuddleStart_Robot,""
+KDDialogue_CuddleStart_Dom,""
+KDDialogue_CuddleStart_Brat,""
+KDDialogue_CuddleStart_Sub,""
 
-KDDialogue_CuddleEnd_,
-KDDialogue_CuddleEnd_Gagged,
-KDDialogue_CuddleEnd_Robot,
-KDDialogue_CuddleEnd_Dom,
+KDDialogue_CuddleEnd_,""
+KDDialogue_CuddleEnd_Gagged,""
+KDDialogue_CuddleEnd_Robot,End program.
+KDDialogue_CuddleEnd_Dom,""
 KDDialogue_CuddleEnd_Brat,*slaps your butt*
-KDDialogue_CuddleEnd_Sub,
+KDDialogue_CuddleEnd_Sub,""
 
-KDDialogue_CuddleRunAway_,
-KDDialogue_CuddleRunAway_Gagged,
-KDDialogue_CuddleRunAway_Robot,
-KDDialogue_CuddleRunAway_Dom,
-KDDialogue_CuddleRunAway_Brat,
-KDDialogue_CuddleRunAway_Sub,
+KDDialogue_CuddleRunAway_,""
+KDDialogue_CuddleRunAway_Gagged,""
+KDDialogue_CuddleRunAway_Robot,Error. Subject not complying?
+KDDialogue_CuddleRunAway_Dom,""
+KDDialogue_CuddleRunAway_Brat,""
+KDDialogue_CuddleRunAway_Sub,""
 
 KDDialogue_CuddleChastity_,"Got yourself locked up, huh? Better go be good now~"
 KDDialogue_CuddleChastity_Gagged,"*she bumps up against your chastity and sighs*"
@@ -12462,27 +12462,26 @@ KDDialogue_CuddleChastity_Dom,"You've been a bad girl, haven't you? *taps on you
 KDDialogue_CuddleChastity_Brat,"Such a naughty girl, getting yourself all locked up like that!"
 KDDialogue_CuddleChastity_Sub,"I-I know you want release, but you're in this gear for a reason~"
 
+KDDialogue_ToyPlayStart_,""
+KDDialogue_ToyPlayStart_Gagged,""
+KDDialogue_ToyPlayStart_Robot,""
+KDDialogue_ToyPlayStart_Dom,""
+KDDialogue_ToyPlayStart_Brat,""
+KDDialogue_ToyPlayStart_Sub,""
 
-KDDialogue_ToyPlayStart_,
-KDDialogue_ToyPlayStart_Gagged,
-KDDialogue_ToyPlayStart_Robot,
-KDDialogue_ToyPlayStart_Dom,
-KDDialogue_ToyPlayStart_Brat,
-KDDialogue_ToyPlayStart_Sub,
+KDDialogue_ToyPlayEnd_,""
+KDDialogue_ToyPlayEnd_Gagged,""
+KDDialogue_ToyPlayEnd_Robot,End program.
+KDDialogue_ToyPlayEnd_Dom,Had fun?~
+KDDialogue_ToyPlayEnd_Brat,*turns the toy off and giggles*
+KDDialogue_ToyPlayEnd_Sub,""
 
-KDDialogue_ToyPlayEnd_,
-KDDialogue_ToyPlayEnd_Gagged,
-KDDialogue_ToyPlayEnd_Robot,
-KDDialogue_ToyPlayEnd_Dom,
-KDDialogue_ToyPlayEnd_Brat,*slaps your butt*
-KDDialogue_ToyPlayEnd_Sub,
-
-KDDialogue_ToyPlayRunAway_,
-KDDialogue_ToyPlayRunAway_Gagged,
-KDDialogue_ToyPlayRunAway_Robot,
-KDDialogue_ToyPlayRunAway_Dom,
-KDDialogue_ToyPlayRunAway_Brat,
-KDDialogue_ToyPlayRunAway_Sub,
+KDDialogue_ToyPlayRunAway_,""
+KDDialogue_ToyPlayRunAway_Gagged,""
+KDDialogue_ToyPlayRunAway_Robot,Error. Subject not complying?
+KDDialogue_ToyPlayRunAway_Dom,""
+KDDialogue_ToyPlayRunAway_Brat,""
+KDDialogue_ToyPlayRunAway_Sub,""
 
 KDDialogue_ToyPlayChastity_,"Got yourself locked up, huh? Better go be good now~"
 KDDialogue_ToyPlayChastity_Gagged,"*she bumps up against your chastity and sighs*"
