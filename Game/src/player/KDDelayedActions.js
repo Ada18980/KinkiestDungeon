@@ -52,6 +52,7 @@ let KDDelayedActionCommit = {
 		let restraint = dynamic.restraint;
 		let host = dynamic.host;
 		if (restraint) {
+			KinkyDungeonSetFlag(action.data.escapeData.struggleType, 1);
 			KinkyDungeonSetFlag("escaping", 2);
 			let lockType = restraint.lock && KDLocks[restraint.lock] ? KDLocks[restraint.lock] : null;
 			let struggleType = action.data.escapeData.struggleType;

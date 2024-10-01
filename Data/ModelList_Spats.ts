@@ -11,7 +11,7 @@ AddModel({
 	Folder: "Spats",
 	Parent: "Spats",
 	TopLevel: true,
-	Categories: ["Spats"],
+	Categories: ["Pants"],
 	AddPose: ["Spats"],
 	Layers: ToLayerMap([
 		{ Name: "Spats", Layer: "Shorts", Pri: 4,

@@ -4,6 +4,23 @@
 let KDConfirmType = "";
 let KinkyDungeonReplaceConfirm = 0;
 
+let KDCanRevertFlag = false;
+
+let ColorPickerFilterCode = "";
+let ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+	brightness: 1,
+	saturation: 1,
+	gamma: 1,
+	alpha: 1,
+	red: 1,
+	blue: 1,
+	green: 1,
+	contrast: 1,
+});
+
+let KDCurrentColorFilterCode = {};
+let KDCurrentColorFilter = {};
+
 let KDCurrentOutfit = 0;
 let KDMaxOutfits = 99;
 let KDMaxOutfitsDisplay = 10;
@@ -17,6 +34,8 @@ let FilterUpdateInterval = 90;
 
 let KDModelListMax = 14;
 let KDModelListViewSkip = 7;
+
+let KDShowCharacterPalette = false;
 
 
 let KDModelList_Categories_index = 0;
@@ -156,9 +175,42 @@ function KDDrawSavedColors(X, y, max, C) {
 			i -= KDSavedColorPerRow;
 			Y += vspacing;
 		}
+		if (KDSavedColors[ii]) {
+			if (KDCurrentColorFilterCode[ii] != JSON.stringify(KDSavedColors[ii])) {
+				KDCurrentColorFilterCode[ii] = JSON.stringify(KDSavedColors[ii]);
+				if (KDCurrentColorFilter[ii])
+					KDCurrentColorFilter[ii].destroy();
+				KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]);
+			}
+		} else if (KDCurrentColorFilterCode[ii] != undefined) {
+			KDCurrentColorFilterCode[ii] = undefined;
+			if (KDCurrentColorFilter[ii])
+				KDCurrentColorFilter[ii].destroy();
+			KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter({
+				brightness: 1,
+				saturation: 1,
+				gamma: 1,
+				alpha: 1,
+				red: 1,
+				blue: 1,
+				green: 1,
+				contrast: 1,
+			});
+		}
+		if (!KDCurrentColorFilter[ii]) KDCurrentColorFilter[ii] = new PIXI.filters.AdjustmentFilter({
+			brightness: 1,
+			saturation: 1,
+			gamma: 1,
+			alpha: 1,
+			red: 1,
+			blue: 1,
+			green: 1,
+			contrast: 1,
+		});
+
 		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + ii, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
 			filters: [
-				new PIXI.filters.AdjustmentFilter(KDSavedColors[ii]),
+				KDCurrentColorFilter[ii],
 			]
 		});
 		DrawButtonKDEx("SavedColorCopy" + ii, (bdata) => {
@@ -268,6 +320,9 @@ function KDDrawColorSliders(X, Y, C, Model) {
 							Model.Properties[KDCurrentLayer].XPivot = parsed.XPivot;
 							Model.Properties[KDCurrentLayer].YPivot = parsed.YPivot;
 							Model.Properties[KDCurrentLayer].XScale = parsed.XScale;
+							Model.Properties[KDCurrentLayer].Protected = parsed.Protected;
+							Model.Properties[KDCurrentLayer].NoOverride = parsed.NoOverride;
+							Model.Properties[KDCurrentLayer].HideOverridden = parsed.HideOverridden;
 							Model.Properties[KDCurrentLayer].YScale = parsed.YScale;
 							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
 							KDRefreshProps = true;
@@ -294,6 +349,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			"YScale": "1",
 			"Rotation": "0",
 			"LayerBonus": "0",
+			"Protected": "0",
 			"SuppressDynamic": "0",
 			"HideOverridden": "0",
 			"NoOverride": "0",
@@ -308,7 +364,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			YY += 400;
 		} else {
 			let YYold = YY;
-			YY -= 25;
+			YY -= 24;
 			for (let field0 of Object.entries(fields)) {
 
 				let field = field0[0];
@@ -332,11 +388,12 @@ function KDDrawColorSliders(X, Y, C, Model) {
 							let parsed = value;
 							if (deff == "") {
 								// Nothing!
+								parsed = "";
 							} else if (deff.includes(',')) {
 								parsed = parsed.split(',').filter((str) => {
 									return str != "";
 								});
-							} else parsed = parseFloat(value) || value;
+							} else parsed = parseFloat(value) || parseFloat(value + "0") || value;
 							if (value) {
 								KDChangeWardrobe(C);
 								if (!Model.Properties) Model.Properties = {};
@@ -488,7 +545,6 @@ function KDDrawColorSliders(X, Y, C, Model) {
 			}
 
 			let radius = 150;
-			KDDraw(kdcanvas, kdpixisprites, "colorpicker", KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300);
 			if (ElementValue("KDSelectedColor") && Model?.Filters && Model.Filters[KDCurrentLayer]) {
 				let hsl = rgbToHsl(
 					Math.max(0, Math.min(1, Model.Filters[KDCurrentLayer].red/5 || 0)),
@@ -498,13 +554,54 @@ function KDDrawColorSliders(X, Y, C, Model) {
 				let x = radius * hsl[1] * Math.cos(hsl[0] * 2*Math.PI);
 				let y = radius * hsl[1] * Math.sin(hsl[0] * 2*Math.PI);
 
-				let value = ElementValue("KDSelectedColor");
-				let RegExp = /^#[0-9A-F]{6}$/i;
 
-				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0, {
-					tint: RegExp.test(value) ? KDhexToRGB(ElementValue("KDSelectedColor")) : 0xffffff,
-				});
+				if (ColorPickerFilterCode != (1 - hsl[2]) + "," + hsl[2]) {
+					ColorPickerFilterCode = (1 - hsl[2]) + "," + hsl[2];
+					ColorPickerFilter.destroy();
+					let lumi =
+						Math.min(1, 5 * hsl[2]);
+					ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+						brightness: 1,
+						saturation: Math.max(0, Math.min(1, 1.5 - 1.5*hsl[2])),
+						gamma: 1,
+						alpha: 1,
+						red: lumi,
+						blue: lumi,
+						green: lumi,
+						contrast: 1,
+					});
+				}
+
+				let value = ElementValue("KDSelectedColor");
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
+
+				KDDraw(kdcanvas, kdpixisprites, "colorpickercolor", KinkyDungeonRootDirectory + "Color.png", X - 12 + x + radius, YY - 12 + y + radius, 23, 23, 0,
+					{
+						tint: RegExp.test(value) ?
+							new PIXI.Color(ElementValue("KDSelectedColor")).toNumber() : 0xffffff,
+					});
+			} else {
+				if (ColorPickerFilterCode) {
+					ColorPickerFilterCode = "";
+					ColorPickerFilter.destroy();
+					ColorPickerFilter = new PIXI.filters.AdjustmentFilter({
+						brightness: 1,
+						saturation: 1,
+						gamma: 1,
+						alpha: 1,
+						red: 1,
+						blue: 1,
+						green: 1,
+						contrast: 1,
+					});
+				}
 			}
+
+			KDDraw(kdcanvas, kdpixisprites, "colorpicker",
+				KinkyDungeonRootDirectory + "ColorPicker.png", X, YY, 300, 300,
+				undefined, {
+					filters: [ColorPickerFilter],
+				});
 
 
 			let dist = KDistEuclidean(MouseX - (X + radius), MouseY - (YY + radius));
@@ -602,7 +699,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 		if (TF.Created) {
 			TF.Element.oninput = (event) => {
 				let value = ElementValue("KDSelectedColor");
-				let RegExp = /^#[0-9A-F]{6}$/i;
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
 
 				if (RegExp.test(value)) {
 					let hex = KDhexToRGB(value);
@@ -760,7 +857,7 @@ function KDDrawPoseButtons(C, X = 960, Y = 750, allowRemove = false, dress = fal
 			}
 			if (dress) {
 
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C);
 			}
 
@@ -888,7 +985,7 @@ function KDChangeWardrobe(C) {
 	if (C == KinkyDungeonPlayer)
 		try {
 			if (!KDOriginalValue)
-				KDOriginalValue = LZString.compressToBase64(CharacterAppearanceStringify(C));
+				KDOriginalValue = AppearanceItemStringify(C.Appearance);
 		} catch (e) {
 			// Fail
 		}
@@ -1148,7 +1245,14 @@ function KDDrawWardrobe(screen, Character) {
 	if (!ElementValue("KDOutfitName")) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
 	}
-	KDDrawModelList(720, C);
+	if (KDShowCharacterPalette) {
+		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.Palette || "", (pal) => {
+			C.Palette = pal;
+
+		}, "KDSetCharacterPalette");
+	} else {
+		KDDrawModelList(720, C);
+	}
 
 	DrawBoxKD(1025, 710, 950, 285, KDButtonColor, false, 0.5, -10);
 	if (KDPlayerSetPose) {
@@ -1163,44 +1267,112 @@ function KDDrawWardrobe(screen, Character) {
 		KDPlayerSetPose = !KDPlayerSetPose;
 		KDModalArea = false;
 		return true;
-	}, true, 750, 720, 200, 60, TextGet("KDChangePose"), "#ffffff", KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false, KDPlayerSetPose ? KDTextGray3 : KDButtonColor, undefined, true);
+	}, true, 715, 765, 240, 50, TextGet("KDChangePose"), "#ffffff",
+	KinkyDungeonRootDirectory + "Poses/SetPose.png", "", false, false,
+		KDPlayerSetPose ? KDTextGray3 : KDButtonColor, undefined, true);
 
 
-	if (KDSelectedModel) {
-		KDDrawColorSliders(1625, 100, C, KDSelectedModel);
-	} else {
-		KDCurrentLayer = "";
-		KDRefreshProps = true;
+	DrawButtonKDEx("ToggleXray", (bdata) => {
+		KDToggleXRay += 1;
+		if (KDToggleXRay > (StandalonePatched ? 2 : 1)) KDToggleXRay = 0;
+
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+		KinkyDungeonDressPlayer(KinkyDungeonPlayer, false, true);
+		return true;
+	}, true, 715, 820, 240, 50, TextGet("KDXRay"), "#ffffff",
+	KinkyDungeonRootDirectory + "UI/XRay" + KDToggleXRay + ".png", "", false, false,
+		KDToggleXRay ? KDTextGray3 : KDButtonColor, undefined, true);
+
+
+
+	let palette = C.Palette;
+	let o = {
+	};
+
+	if (palette && KinkyDungeonFactionFilters[palette]) {
+		o.filters = [
+			new PIXI.filters.AdjustmentFilter(KinkyDungeonFactionFilters[palette].Highlight),
+		];
 	}
+
+
+	DrawButtonKDEx("SetPalette", (bdata) => {
+		KDShowCharacterPalette = !KDShowCharacterPalette;
+		return true;
+	}, true, 715, 875, 240, 50, TextGet("KDSetPalette"), "#ffffff",
+	KinkyDungeonRootDirectory + "UI/SetPalette.png", "", false, false,
+	undefined, undefined, true, o);
+
+
+	DrawButtonKDEx("BackupOutfit", (bdata) => {
+		downloadFile((ElementValue("savename") || KDOutfitInfo[KDCurrentOutfit] || "Outfit") + KDOUTFITBACKUP,
+			LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
+				KDGetCharMetadata(C || KinkyDungeonPlayer)
+			)));
+		return true;
+	}, true, 715, 930, 115, 50, TextGet("KDBackupOutfits"), "#ffffff",
+	KinkyDungeonRootDirectory + "UI/Safe.png", "", false, false,
+	undefined, undefined, true);
+
+	DrawButtonKDEx("RestoreOutfit", (bdata) => {
+		getFileInput(KDLoadOutfitDirect, C);
+		return true;
+	}, true, 835, 930, 115, 50, TextGet("KDLoadOutfits"), "#ffffff",
+	KinkyDungeonRootDirectory + "UI/Restore.png", "", false, false,
+	undefined, undefined, true);
+
+	if (KDShowCharacterPalette) {
+		// nyet
+	} else {
+		if (KDSelectedModel) {
+			KDDrawColorSliders(1625, 100, C, KDSelectedModel);
+		} else {
+			KDCurrentLayer = "";
+			KDRefreshProps = true;
+		}
+	}
+
 	// Return anon function anonymously
 	let clickButton = (index) => {
 		return (bdata) => {
 			if (C == KinkyDungeonPlayer) {
-				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
+				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
+					KDGetCharMetadata(C || KinkyDungeonPlayer)
+				));
 				KDOutfitOriginalStore[KDCurrentOutfit] = KDOriginalValue;
 				ElementValue("KDOutfitName", "");
-				localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 			}
 			KDCurrentOutfit = index;
+			if (C == KinkyDungeonPlayer)
+				localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 
 			let NewOutfit = KDOutfitStore[KDCurrentOutfit] || localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
 
 			if (NewOutfit) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
 				KinkyDungeonSetDress("None", "None", C, true);
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
-				CharacterAppearanceRestore(C, DecompressB64(NewOutfit), C != KinkyDungeonPlayer);
+				let newOut = DecompressB64(NewOutfit);
+				CharacterAppearanceRestore(C, newOut, C != KinkyDungeonPlayer);
+				let newParsed = JSON.parse(newOut);
+				if (newParsed?.metadata) {
+					C.Palette = newParsed.metadata.palette;
+				} else C.Palette = "";
 				CharacterRefresh(C);
 				KDInitProtectedGroups(C);
-				KinkyDungeonCheckClothesLoss = true;
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true);
 			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
-				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
+				CharacterAppearanceRestore(KinkyDungeonPlayer,
+					CharacterAppearanceStringify(DefaultPlayer,
+						KDGetCharMetadata(DefaultPlayer)
+					));
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
-				KinkyDungeonCheckClothesLoss = true;
+				C.Palette = "";
+				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups(KinkyDungeonPlayer);
 			}
@@ -1251,80 +1423,24 @@ function KDDrawWardrobe(screen, Character) {
 				index == KDCurrentOutfit ? "#ffffff" : "#888888", "", undefined, undefined, index != KDCurrentOutfit);
 
 	}
-	DrawBoxKD(450, 55, 250, 56 + (2+KDMaxOutfitsDisplay) * 50, KDButtonColor, false, 0.5, -10);
+	DrawBoxKD(450, 55, 250, 56 + (2+KDMaxOutfitsDisplay) * 50, KDButtonColor,
+		false, 0.5, -10);
 
 
-	DrawTextFitKD(TextGet("KDManageOutfits"), 575, 735, 260, "#ffffff", KDTextGray0);
+	DrawTextFitKD(TextGet("KDManageOutfits"), 445 + 520/2, 740, 260, "#ffffff", KDTextGray0);
 	DrawBoxKD(450, 710, 520, 285, KDButtonColor, false, 0.5, -10);
 
-	DrawButtonKDEx("ResetOutfit", (bdata) => {
-		if (KDConfirmType == "reset" && KinkyDungeonReplaceConfirm > 0) {
-			if (C == KinkyDungeonPlayer) {
-				KDChangeWardrobe(C);
-				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
-				CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonSetDress("Default", "Default", C, true);
-				KinkyDungeonDressPlayer();
-				KDInitProtectedGroups(KinkyDungeonPlayer);
-				UpdateModels(KinkyDungeonPlayer);
-				KinkyDungeonConfigAppearance = true;
-				KinkyDungeonReplaceConfirm = 0;
-			} else if (C == KDSpeakerNPC) {
-				let value = KDNPCStyle.get(KDSpeakerNPC);
-				if (!value) return false;
-				KDSpeakerNPC.Appearance = [];
-				delete value.customOutfit;
 
-				let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
-				if (!value.bodystyle || !value.facestyle || !value.hairstyle || value.cosplaystyle == undefined) {
-					if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
-						if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
-							let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
-							if (!value.bodystyle && style.Bodystyle) {
-								value.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
-							}
-							if (!value.hairstyle && style.Hairstyle) {
-								value.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
-							}
-							if (!value.facestyle && style.Facestyle) {
-								value.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
-							}
-							if (!value.cosplaystyle && style.Cosplay) {
-								value.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
-							}
 
-						}
-					}
-				}
-				if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
-					KinkyDungeonSetDress(enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
-				}
-				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer(KDSpeakerNPC, true);
-			}
-			return true;
-		} else {
-			KDConfirmType = "reset";
-			KinkyDungeonReplaceConfirm = 2;
-			return true;
-		}
-	}, true, 475, 860, 220, 60,
-	TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'reset') ?
-			"KinkyDungeonConfirm" :
-			"KinkyDungeonDressPlayerReset"),
-	"#ffffff", "");
 	DrawButtonKDEx("StripOutfit", (bdata) => {
 		if (KDConfirmType == "strip" && KinkyDungeonReplaceConfirm > 0) {
 			KDChangeWardrobe(C);
-			//if (C == KinkyDungeonPlayer)
-			//CharacterAppearanceRestore(KinkyDungeonPlayer, CharacterAppearanceStringify(KinkyDungeonPlayerCharacter ? KinkyDungeonPlayerCharacter : Player));
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
-			KinkyDungeonCheckClothesLoss = true;
-			if (KinkyDungeonCurrentDress != "Bikini")
+			KDRefreshCharacter.set(C, true);
+			if (KDCharacterDress.get(C) != "Bikini") {
 				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
-			else
+			} else
 				KinkyDungeonSetDress("None", "None", C, true);
 			KinkyDungeonDressPlayer(C, true);
 			if (C == KinkyDungeonPlayer) {
@@ -1339,128 +1455,25 @@ function KDDrawWardrobe(screen, Character) {
 			KinkyDungeonReplaceConfirm = 2;
 			return true;
 		}
-	}, true, 475, 790, 220, 60,
+	}, true, 465, 765, 240, 50,
 	TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'strip') ?
 			"KDConfirmStrip" :
 			"KDDressStrip"),
-	"#ffffff", "");
+	"#ffffff", KinkyDungeonRootDirectory + "UI/X.png", undefined, undefined, undefined,
+	undefined, undefined, true);
 	DrawButtonKDEx("LoadFromCode", (bdata) => {
 		KinkyDungeonState = "LoadOutfit";
 
 
-		//LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer));
 		CharacterReleaseTotal(C || KinkyDungeonPlayer);
 		ElementCreateTextArea("saveInputField");
-		ElementValue("saveInputField", LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer)));
+		ElementValue("saveInputField", LZString.compressToBase64(
+			AppearanceItemStringify((C || KinkyDungeonPlayer).Appearance)
+		));
 		return true;
-	}, true,475, 930, 220, 60, TextGet("KinkyDungeonDressPlayerImport"),
-	"#ffffff", "");
-
-
-	if (TestMode && !KDClipboardDisabled && C == KinkyDungeonPlayer) {
-		DrawButtonKDEx("KDCreateOutfit", (bdata) => {
-			let exportData = [];
-			if (C?.Appearance)
-				for (let a of C.Appearance) {
-					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
-						exportData.push({
-							Item: a.Model.Name,
-							Group: a.Model.Group || a.Model.Name,
-							Color: "#ffffff",
-							Lost: false,
-							Filters: a.Model.Filters,
-							Properties: a.Model.Properties,
-						},);
-					}
-				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
-			return true;
-		}, true, 725, 790, 100, 60,
-		TextGet("KDCreateOutfit"), "#99ff99", "");
-		DrawButtonKDEx("KDCreateAlwaysDress", (bdata) => {
-			/** @type {alwaysDressModel[]} */
-			let exportData = [];
-			if (C?.Appearance)
-				for (let a of C.Appearance) {
-					if (a.Model && !a.Model.Protected && !a.Model.Restraint && !a.Model.Cosplay) {
-						exportData.push({
-							Model: a.Model.Name,
-							Group: a.Model.Group || a.Model.Name,
-							override: true,
-							Filters: a.Model.Filters,
-							Properties: a.Model.Properties,
-							factionFilters: {},
-							inheritFilters: false,
-						},);
-					}
-				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
-			return true;
-		}, true, 725, 730, 100, 60,
-		TextGet("KDCreateAlwaysDress"), "#99ff99", "");
-
-
-		DrawButtonKDEx("KDCreateFace", (bdata) => {
-			let exportData = [];
-			if (C?.Appearance)
-				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Face") && !a.Model.Categories?.includes("Hair") && !a.Model.Categories?.includes("Cosplay"))) {
-						exportData.push({
-							Item: a.Model.Name,
-							Group: a.Model.Group || a.Model.Name,
-							Color: "#ffffff",
-							Lost: false,
-							Filters: a.Model.Filters,
-							Properties: a.Model.Properties,
-						},);
-					}
-				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
-			return true;
-		}, true, 945, 730, 100, 60,
-		TextGet("KDCreateFace"), "#99ff99", "");
-		DrawButtonKDEx("KDCreateHair", (bdata) => {
-			let exportData = [];
-			if (C?.Appearance)
-				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Hairstyles") && !a.Model.Categories?.includes("Cosplay"))) {
-						exportData.push({
-							Item: a.Model.Name,
-							Group: a.Model.Group || a.Model.Name,
-							Color: "#ffffff",
-							Lost: false,
-							Filters: a.Model.Filters,
-							Properties: a.Model.Properties,
-						},);
-					}
-				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
-			return true;
-		}, true, 845, 790, 100, 60,
-		TextGet("KDCreateHair"), "#99ff99", "");
-		DrawButtonKDEx("KDCreateCosplay", (bdata) => {
-			let exportData = [];
-			if (C?.Appearance)
-				for (let a of C.Appearance) {
-					if (a.Model && a.Model.Protected && (a.Model.Categories?.includes("Cosplay"))) {
-						exportData.push({
-							Item: a.Model.Name,
-							Group: a.Model.Group || a.Model.Name,
-							Color: "#ffffff",
-							Lost: false,
-							Filters: a.Model.Filters,
-							Properties: a.Model.Properties,
-						},);
-					}
-				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
-			return true;
-		}, true, 945, 790, 100, 60,
-		TextGet("KDCreateCosplay"), "#99ff99", "");
-	}
-
-
-
+	}, true,465, 875, 240, 50, TextGet("KinkyDungeonDressPlayerImport"),
+	"#ffffff", KinkyDungeonRootDirectory + "UI/Load.png", undefined, undefined, undefined,
+	undefined, undefined, true);
 
 	DrawButtonKDEx("KDWardrobeCancel", (bdata) => {
 		if (KDConfirmType == "revert" && KinkyDungeonReplaceConfirm > 0) {
@@ -1476,10 +1489,12 @@ function KDDrawWardrobe(screen, Character) {
 			KinkyDungeonReplaceConfirm = 2;
 			return true;
 		}
-	}, true, 725, 860, 220, 60,
+	}, true, 465, 820, 240, 50,
 	TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'revert') ?
 		"KDWardrobeCancelConfirm" :
-		"KDWardrobeCancel"), KDOriginalValue ? "#ffffff" : "#888888", "");
+		"KDWardrobeCancel"), ((C == KinkyDungeonPlayer && KDOriginalValue) || (KDCanRevertFlag)) ? "#ffffff" : "#888888",
+		KinkyDungeonRootDirectory + "UI/Revert.png", undefined, undefined, undefined,
+		undefined, undefined, true);
 	if (C == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDWardrobeSaveOutfit", (bdata) => {
 			if (KDConfirmType == "save" && KinkyDungeonReplaceConfirm > 0) {
@@ -1488,7 +1503,13 @@ function KDDrawWardrobe(screen, Character) {
 					KDSaveOutfitInfo();
 				}
 				KinkyDungeonReplaceConfirm = 0;
-				localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, LZString.compressToBase64(CharacterAppearanceStringify(KinkyDungeonPlayer)));
+				localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit,
+					LZString.compressToBase64(
+						CharacterAppearanceStringify(C || KinkyDungeonPlayer,
+							KDGetCharMetadata(C || KinkyDungeonPlayer)
+						)
+					));
+				//localStorage.setItem("kdcurrentoutfit", KDCurrentOutfit + "");
 				KinkyDungeonDressSet();
 				KDOriginalValue = "";
 				KDRefreshOutfitInfo();
@@ -1498,10 +1519,78 @@ function KDDrawWardrobe(screen, Character) {
 				KinkyDungeonReplaceConfirm = 2;
 				return true;
 			}
-		}, true, 725, 930, 220, 60,
+		}, true, 465, 930, 240, 50,
 		TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'save') ?
 			"KDWardrobeSaveOutfitConfirm" :
-			"KDWardrobeSaveOutfit"), KDOriginalValue ? "#ffffff" : "#888888", "");
+			"KDWardrobeSaveOutfit"), KDOriginalValue ? "#ffffff" : "#888888",
+			KinkyDungeonRootDirectory + "UI/Floppy.png", undefined, undefined, undefined,
+			undefined, undefined, true);
+	} else {
+		DrawButtonKDEx("ResetOutfit", (bdata) => {
+			if (KDConfirmType == "reset" && KinkyDungeonReplaceConfirm > 0) {
+				if (C == KinkyDungeonPlayer) {
+					KDChangeWardrobe(C);
+					KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
+					CharacterAppearanceRestore(KinkyDungeonPlayer,
+						CharacterAppearanceStringify(DefaultPlayer,
+							KDGetCharMetadata(KinkyDungeonPlayer)
+						)
+					);
+					CharacterReleaseTotal(KinkyDungeonPlayer);
+					KinkyDungeonSetDress("Default", "Default", C, true);
+					KinkyDungeonDressPlayer();
+					KDInitProtectedGroups(KinkyDungeonPlayer);
+					UpdateModels(KinkyDungeonPlayer);
+					KinkyDungeonConfigAppearance = true;
+					KinkyDungeonReplaceConfirm = 0;
+				} else if (C == KDSpeakerNPC) {
+					let value = KDNPCStyle.get(KDSpeakerNPC);
+					if (!value) return false;
+					KDSpeakerNPC.Appearance = [];
+					delete value.customOutfit;
+
+					let enemyType = value.Enemy || KinkyDungeonGetEnemyByName(value.type);
+					if (!value.bodystyle && !value.facestyle && !value.hairstyle) {
+						if (enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style) {
+							if (KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style]) {
+								let style = KDModelStyles[enemyType?.style || KinkyDungeonGetEnemyByName(value.type)?.style];
+								if (!value.bodystyle && style.Bodystyle) {
+									value.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
+								}
+								if (!value.hairstyle && style.Hairstyle) {
+									value.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
+								}
+								if (!value.facestyle && style.Facestyle) {
+									value.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
+								}
+								if (!value.cosplaystyle && style.Cosplay) {
+									value.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
+								}
+
+							}
+						}
+					}
+					if (enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit) {
+						KinkyDungeonSetDress(
+							value.outfit || enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit,
+							value.outfit || enemyType?.outfit || KinkyDungeonGetEnemyByName(value.type)?.outfit, KDSpeakerNPC, true);
+					}
+					KDRefreshCharacter.set(KDSpeakerNPC, true);
+					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+				}
+				return true;
+			} else {
+				KDConfirmType = "reset";
+				KinkyDungeonReplaceConfirm = 2;
+				return true;
+			}
+		}, true, 465, 930, 240, 50,
+		TextGet((KinkyDungeonReplaceConfirm > 0 && KDConfirmType == 'reset') ?
+				"KinkyDungeonConfirm" :
+				"KinkyDungeonDressPlayerReset"),
+		"#ffffff",
+		KinkyDungeonRootDirectory + "UI/Reset.png", undefined, undefined, undefined,
+		undefined, undefined, true);
 	}
 
 	if (!Character || Character == KinkyDungeonPlayer) {
@@ -1510,7 +1599,7 @@ function KDDrawWardrobe(screen, Character) {
 			KDPlayerSetPose = false;
 			KinkyDungeonDressSet();
 			return true;
-		}, true, 20, 942, 380, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
+		}, true, 20, 940, 400, 50, TextGet("KDWardrobeSave"), "#ffffff", "");
 	} else {
 		DrawButtonKDEx("KDBackToGame", (bdata) => {
 			KinkyDungeonState = "Game";
@@ -1519,9 +1608,113 @@ function KDDrawWardrobe(screen, Character) {
 			if (KDWardrobeCallback) KDWardrobeCallback();
 			//KinkyDungeonDressSet(Character);
 			return true;
-		}, true, 20, 942, 380, 50, TextGet("KDBackToGame"), "#ffffff", "");
+		}, true, 20, 942, 400, 50, TextGet("KDBackToGame"), "#ffffff", "");
 
 	}
+
+
+	if (TestMode && !KDClipboardDisabled && C == KinkyDungeonPlayer) {
+		DrawButtonKDEx("KDCreateOutfit", (bdata) => {
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && !(KDModelIsProtected(a.model)) && !a.Model.Restraint && !a.Model.Cosplay) {
+						exportData.push({
+							Item: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							Color: "#ffffff",
+							Lost: false,
+							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 945, 950, 100, 60,
+		TextGet("KDCreateOutfit"), "#99ff99", "");
+		DrawButtonKDEx("KDCreateAlwaysDress", (bdata) => {
+			/** @type {alwaysDressModel[]} */
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && !KDModelIsProtected(a.Model) && !a.Model.Restraint && !a.Model.Cosplay) {
+						exportData.push({
+							Model: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							override: true,
+							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
+							factionFilters: {},
+							inheritFilters: false,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 945, 890, 100, 60,
+		TextGet("KDCreateAlwaysDress"), "#99ff99", "");
+
+
+		DrawButtonKDEx("KDCreateFace", (bdata) => {
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Face") && !a.Model.Categories?.includes("Hair") && !a.Model.Categories?.includes("Cosplay"))) {
+						exportData.push({
+							Item: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							Color: "#ffffff",
+							Lost: false,
+							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 945, 710, 100, 60,
+		TextGet("KDCreateFace"), "#99ff99", "");
+		DrawButtonKDEx("KDCreateHair", (bdata) => {
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Hairstyles") && !a.Model.Categories?.includes("Cosplay"))) {
+						exportData.push({
+							Item: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							Color: "#ffffff",
+							Lost: false,
+							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 945, 830, 100, 60,
+		TextGet("KDCreateHair"), "#99ff99", "");
+		DrawButtonKDEx("KDCreateCosplay", (bdata) => {
+			let exportData = [];
+			if (C?.Appearance)
+				for (let a of C.Appearance) {
+					if (a.Model && KDModelIsProtected(a.Model) && (a.Model.Categories?.includes("Cosplay"))) {
+						exportData.push({
+							Item: a.Model.Name,
+							Group: a.Model.Group || a.Model.Name,
+							Color: "#ffffff",
+							Lost: false,
+							Filters: a.Model.Filters,
+							Properties: a.Model.Properties,
+						},);
+					}
+				}
+			navigator.clipboard.writeText(JSON.stringify(exportData));
+			return true;
+		}, true, 945, 770, 100, 60,
+		TextGet("KDCreateCosplay"), "#99ff99", "");
+	}
+
 }
 
 let KDWardrobeCallback = null;
@@ -1539,7 +1732,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 		KDChangeWardrobe(C);
 		CharacterReleaseTotal(C);
 		CharacterNaked(C);
-		KinkyDungeonCheckClothesLoss = true;
+		KDRefreshCharacter.set(C, true);
 		KinkyDungeonSetDress("None", "None", C, true);
 		KinkyDungeonDressPlayer(C, true);
 		KDInitProtectedGroups(C);
@@ -1552,13 +1745,8 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 		KDInitProtectedGroups(C);
 	}
 
-	KinkyDungeonCheckClothesLoss = true;
+	KDRefreshCharacter.set(C, true);
 	KinkyDungeonDressPlayer(C, true);
-	/*if (stringified) {
-		localStorage.setItem("kinkydungeonappearance" + KDCurrentOutfit, stringified);
-		KDSaveOutfitInfo();
-		KDRefreshOutfitInfo();
-	}*/
 
 	//KinkyDungeonNewDress = true;
 }
@@ -1566,7 +1754,7 @@ function KDSaveCodeOutfit(C, clothesOnly = false) {
 function KDRestoreOutfit() {
 	// Restore the original outfit
 	if (KDOriginalValue) {
-		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue));
+		CharacterAppearanceRestore(KinkyDungeonPlayer, DecompressB64(KDOriginalValue) || KDOriginalValue);
 		CharacterRefresh(KinkyDungeonPlayer);
 		KDInitProtectedGroups(KinkyDungeonPlayer);
 		KinkyDungeonDressPlayer();
@@ -1666,3 +1854,82 @@ function rgbToHsl(r, g, b) {
 }
 
 let KDVisualBrightness = 0.5;
+
+
+
+function KDLoadOutfit(files) {
+	for (let f of files) {
+		if (f && f.name) {
+			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith(KDOUTFITBACKUP) || f.name.endsWith('.txt')) {
+				let str = "";
+				KDSaveName = f.name;
+				try {
+					const reader = new FileReader();
+					reader.addEventListener('load', (event) => {
+						str = event.target.result.toString();
+						ElementValue("saveInputField",
+							str
+						);
+					});
+					reader.readAsText(f);
+				} catch (err) {
+					console.log (err);
+				}
+				return;
+			}
+		}
+	}
+}
+function KDLoadOutfitDirect(files, Char) {
+	for (let f of files) {
+		if (f && f.name) {
+			if (f.name.endsWith(KDOUTFITEXTENSION) || f.name.endsWith(KDOUTFITBACKUP) || f.name.endsWith('.txt')) {
+				let str = "";
+				KDSaveName = f.name;
+				try {
+					const reader = new FileReader();
+					reader.addEventListener('load', (event) => {
+						str = event.target.result.toString();
+
+						let decompressed = DecompressB64(str);
+						if (decompressed) {
+							let origAppearance = Char.Appearance;
+							try {
+								CharacterAppearanceRestore(Char, decompressed, false);
+								let newParsed = JSON.parse(decompressed);
+								if (newParsed) {
+									Char.Palette = newParsed.metadata.palette;
+								}
+								CharacterRefresh(Char);
+								KDOldValue = str;
+								KDInitProtectedGroups(Char);
+								KinkyDungeonDressPlayer(Char, true);
+
+								if (Char.Appearance.length == 0)
+									throw new DOMException();
+							} catch (e) {
+								Char.Appearance = origAppearance;
+							}
+						}
+					});
+					reader.readAsText(f);
+				} catch (err) {
+					console.log (err);
+				}
+				return;
+			}
+		}
+	}
+}
+
+/**
+ *
+ * @param {Character} C
+ * @returns {KDOutfitMetadata}
+ */
+function KDGetCharMetadata(C) {
+	return {
+		name: C.Name,
+		palette: C.Palette,
+	};
+}

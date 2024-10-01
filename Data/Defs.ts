@@ -1246,6 +1246,15 @@ let LayerGroups = {
 		"SuitChest",
 		"BraChest",
 		"BindChestLower",
+		"Option_BindChestLower",
+	]),
+
+	"MaidArmPoofRight": ToMap([
+		"TorsoUpper",
+		"Torso",
+		"SleeveRight",
+		"ArmRight",
+		"GloveRight",
 	]),
 
 	"RibbonThighs": ToMap([
@@ -1507,6 +1516,8 @@ let LayerGroups = {
 
 	// This slot is for things like breastplates and things that go over
 	"WrappingChest",
+
+	"UpperArmStraps",
 
 	"Jacket",
 	"ChestDeco",

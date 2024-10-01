@@ -5,10 +5,14 @@ let KDSelectedGenericBindItem = "";
 
 interface NPCRestraint extends Named {
 	name: string,
+	variant?: string,
+	events?: KinkyDungeonEvent[],
+	powerbonus?: number,
 	lock: string,
 	id: number,
 	faction?: string,
 	conjured?: boolean,
+	inventoryVariant?: string,
 }
 
 function KDNPCRestraintSlotOrder(): string[] {
@@ -76,6 +80,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							npc: npcID,
 							faction: undefined,
 							time: KinkyDungeonFindID(npcID) ? 1 : 0,
+							player: KDPlayer().id,
 						});
 					}
 					return true;
@@ -156,7 +161,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						r.faction = currentItem.faction;
 					}
 					KDSetNPCRestraints(npcID, restraints);
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(npcID))
+						KDRefreshCharacter.set(KDNPCChar.get(npcID), true);
 				}
 
 				return true;
@@ -174,14 +180,16 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						slt.faction = palette;
 					})
 					KDSetNPCRestraints(npcID, restraints);
-					KinkyDungeonCheckClothesLoss = true;
+					if (KDNPCChar.get(npcID))
+						KDRefreshCharacter.set(KDNPCChar.get(npcID), true);
 				}
 
 			}, "KDSetRestraintPaletteSelect");
 
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
-			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250, currentItem, slot, (currentItem, restraint, slt, item, count) => {
+			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250,
+			currentItem, slot, npcID, KDGetNPCRestraints(npcID), (currentItem, restraint, slt, item, count, itemtype) => {
 				if (currentItem) {
 					// Remove current
 					if (restraints[slot.id]?.name == currentItem.name) {
@@ -194,25 +202,61 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							npc: npcID,
 							faction: undefined,
 							time: KinkyDungeonFindID(npcID) ? 1 : 0,
+							player: KDPlayer().id,
 						});
 					}
 				} else {
 					// Add new one
-					KDSendInput("addNPCRestraint", {
-						slot: slot.id,
-						id: KinkyDungeonGetItemID(),
-						restraint: restraint.name,
-						restraintid: -1,
-						lock: "White",
-						npc: npcID,
-						faction: KDDefaultNPCBindPalette,
-						time: KinkyDungeonFindID(npcID) ? 1 : 0,
-					});
-					if (item) {
-						item.quantity -= count;
-					}
+					if (!KinkyDungeonFindID(npcID) || KDCanApplyBondage(KinkyDungeonFindID(npcID), KDPlayer(),
+						restraint.quickBindCondition ?
+							(t, p) => (KDQuickBindConditions[restraint.quickBindCondition](
+								t, p,
+								restraint,
+								null)) :
+							false)) {
+
+								let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
+									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+									: "";
+								if (condition) {
+									KinkyDungeonSendTextMessage(8,
+										TextGet("KDBondageCondition_" + condition),
+										"#ff5555", 1, true);
+								} else {
+									KDSendInput("addNPCRestraint", {
+										slot: slot.id,
+										id: KinkyDungeonGetItemID(),
+										restraint: restraint.name,
+										restraintid: -1,
+										lock: "",
+										variant: itemtype.variant,
+										events: itemtype.events,
+										powerbonus: itemtype.powerbonus,
+										inventoryVariant: itemtype.inventoryVariant,
+										npc: npcID,
+										faction: KDDefaultNPCBindPalette,
+										time: KinkyDungeonFindID(npcID) ? 1 : 0,
+										player: KDPlayer().id,
+									});
+									if (item) {
+										item.quantity -= count;
+									}
+								}
+							} else {
+								let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
+									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+									: "";
+								if (condition) {
+									KinkyDungeonSendTextMessage(8,
+										TextGet("KDBondageCondition_" + condition),
+										"#ff5555", 1, true);
+								} else {
+									KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5555", 1, true);
+								}
+							}
+
 				}
-			});
+			}, );
 
 		} else {
 			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
@@ -236,24 +280,67 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						npc: npcID,
 						faction: undefined,
 						time: KinkyDungeonFindID(npcID) ? 1 : 0,
+						player: KDPlayer().id,
 					});
 				} else {
-					KDSendInput("addNPCRestraint", {
-						slot: slot.id,
-						id: inv.item.id,
-						restraint: inv.item.name,
-						restraintid: inv.item.id,
-						lock: "White",
-						npc: npcID,
-						faction: KDDefaultNPCBindPalette || inv.item.faction,
-						time: KinkyDungeonFindID(npcID) ? 1 : 0,
-					});
+
+					let restraint = KDRestraint(inv.item);
+					// Add new one
+					if (!KinkyDungeonFindID(npcID) || KDCanApplyBondage(KinkyDungeonFindID(npcID), KDPlayer(),
+					restraint.quickBindCondition ?
+						(t, p) => (KDQuickBindConditions[restraint.quickBindCondition](
+							t, p,
+							restraint,
+							null)) :
+						false)) {
+
+						let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
+							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+							: "";
+						if (condition) {
+							KinkyDungeonSendTextMessage(8,
+								TextGet("KDBondageCondition_" + condition),
+								"#ff5555", 1, true);
+						} else {
+							KDSendInput("addNPCRestraint", {
+								slot: slot.id,
+								id: inv.item.id,
+								restraint: inv.item.name,
+								restraintid: inv.item.id,
+								lock: "",
+								npc: npcID,
+								faction: KDDefaultNPCBindPalette || inv.item.faction,
+								time: KinkyDungeonFindID(npcID) ? 1 : 0,
+								player: KDPlayer().id,
+							});
+						}
+					} else {
+						let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
+							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+							: "";
+						if (condition) {
+							KinkyDungeonSendTextMessage(8,
+								TextGet("KDBondageCondition_" + condition),
+								"#ff5555", 1, true);
+						} else {
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5555", 1, true);
+						}
+					}
+
 				}
-			}, (inv) => {
-				if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, restraints))
-					return KDTextGray1;
-				return "#e64539"
-			});
+			}, KDCustomDrawInvColorFilter[KinkyDungeonDrawState] ?
+			KDCustomDrawInvColorFilter[KinkyDungeonDrawState]({
+				restraints: restraints,
+				id: npcID,
+				entity: KinkyDungeonFindID(npcID),
+				player: KDPlayer(),
+				force: !KinkyDungeonFindID(npcID),
+			})
+			: (inv) => {
+			if (KDRowItemIsValid(KDRestraint(inv.item), KDNPCBindingSelectedSlot, KDNPCBindingSelectedRow, restraints))
+				return KDTextGray1;
+			return "#e64539";
+		});
 		}
 
 
@@ -294,11 +381,13 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 	}
 
 	if (!currentBottomTab) {
-		if (KDGetGlobalEntity(npcID)?.boundLevel < KDGetExpectedBondageAmountTotal(npcID)) {
+		let enemy = KDGetGlobalEntity(npcID);
+		if (enemy?.boundLevel < KDGetExpectedBondageAmountTotal(npcID, enemy)) {
 			if (DrawButtonKDEx("TightenBinds", (b) => {
 				if (!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect)
 					KDSendInput("tightenNPCRestraint", {
 						npc: npcID,
+						player: KDPlayer().id,
 					});
 				else {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNeedsTighten"), "#ffffff", 2, true, true);
@@ -410,12 +499,21 @@ function KDGetRestraintsForID(id: number): (item | NPCRestraint)[] {
 	return [];
 }
 
-function KDNPCRestraintValidLayers(restraint: restraint, sgroup: NPCBindingSubgroup, row: NPCBindingGroup, restraints?: Record<string, NPCRestraint>, allowSameID?: number): NPCBindingSubgroup[] {
+function KDNPCRestraintValidLayers(restraint: restraint,
+		sgroup: NPCBindingSubgroup,
+		row: NPCBindingGroup,
+		restraints?: Record<string, NPCRestraint>,
+		allowSameID?: number,
+		power?: number): NPCBindingSubgroup[] {
 	let group = restraint.Group;
 	let tags = restraint.shrine;
 	let ret = [...row.layers, row.encaseGroup].filter((sg) => {
 		return sg.id == sgroup.id ||
-			(	(!restraints || !restraints[sg.id] || (allowSameID && restraints[sg.id].id == allowSameID))
+			(	(!restraints // no restraints array given => general case
+				|| !restraints[sg.id] // Slot is empty
+				|| (allowSameID && restraints[sg.id].id == allowSameID) // allows same ID as current item
+				|| (power != undefined && power > KDGetNPCRestraintPower(restraints[sg.id])) // power given, check if power is higher
+			)
 				&& sg.allowedGroups.includes(group)
 				&& tags.some((tag) => {
 					return sg.allowedTags.includes(tag);
@@ -441,7 +539,8 @@ function KDRowItemIsValid(restraint: restraint,
 		sgroup: NPCBindingSubgroup,
 		row: NPCBindingGroup,
 		restraints: Record<string, NPCRestraint>,
-		allowEmpty: boolean = false): boolean {
+		treatAsEmpty: boolean = false,
+		power?: number): boolean {
 	let group = restraint.Group;
 
 	if (
@@ -451,12 +550,12 @@ function KDRowItemIsValid(restraint: restraint,
 		if (tags.some((tag) => {
 			return sgroup.allowedTags.includes(tag);
 		})) {
-			if (allowEmpty) return true;
+			if (treatAsEmpty) return true;
 			let size = KDNPCRestraintSize(restraint, sgroup, row);
 			if (size == 1 ||
 				(
 					size <=
-						KDNPCRestraintValidLayers(restraint, sgroup, row, restraints).length
+						KDNPCRestraintValidLayers(restraint, sgroup, row, restraints, undefined, power).length
 				)
 			) {
 				return true;
@@ -489,7 +588,7 @@ function KDGetEncaseGroupSlot(id): NPCBindingSubgroup {
 	return null;
 }
 
-function KDNPCRefreshBondage(id: number) {
+function KDNPCRefreshBondage(id: number, player: number, force?: boolean) {
 	let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDGetNPCRestraints(id)));
 
 	if (restraints) {
@@ -503,7 +602,9 @@ function KDNPCRefreshBondage(id: number) {
 					restraint: "",
 					restraintid: -1,
 					lock: "",
-					npc: id
+					npc: id,
+					player: player,
+					force: true,
 				});
 
 			}
@@ -516,11 +617,18 @@ function KDNPCRefreshBondage(id: number) {
 				KDInputSetNPCRestraint({
 					slot: inv[0],
 					id: inv[1].id,
+
 					faction: inv[1].faction,
 					restraint: inv[1].name,
 					restraintid: -1,
 					lock: inv[1].lock,
-					npc: id
+					variant: inv[1].variant,
+					events: inv[1].events,
+					powerbonus: inv[1].powerbonus,
+
+					npc: id,
+					player: player,
+					force: true,
 				});
 			}
 		}
@@ -531,7 +639,7 @@ function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number =
 	let enemy = KDGetGlobalEntity(id);
 	if (enemy) {
 
-		let stats = KDGetRestraintBondageStats(restraint);
+		let stats = KDGetRestraintBondageStats(restraint, enemy);
 		KDTieUpEnemy(enemy, stats.amount * mult, stats.type, {}, false, 0);
 
 		KDUpdatePersistentNPC(id);
@@ -541,14 +649,14 @@ function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number =
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
 
-function KDCanEquipItemOnNPC(r: restraint, id: number): string {
+function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean): string {
 	let enemy = KDGetGlobalEntity(id);
 	// TODO make this function work on player too
 	if (enemy) {
-		let stats = KDGetRestraintBondageStats(r);
+		let stats = KDGetRestraintBondageStats(r, enemy);
 		if (stats.conditions) {
 			for (let condition of stats.conditions) {
-				if (!KDBondageConditions[condition](r, id)) {
+				if (!KDBondageConditions[condition](r, id, willing)) {
 					return condition;
 				}
 			}
@@ -559,7 +667,7 @@ function KDCanEquipItemOnNPC(r: restraint, id: number): string {
 	return "Null";
 }
 
-function KDFreeNPCRestraints(id: number) {
+function KDFreeNPCRestraints(id: number, player: number) {
 	if (KDGameData.NPCRestraints) {
 
 		let restraints = KDGameData.NPCRestraints[id + ''];
@@ -571,7 +679,8 @@ function KDFreeNPCRestraints(id: number) {
 					restraint: "",
 					restraintid: -1,
 					lock: "",
-					npc: id
+					npc: id,
+					player: player,
 				});
 			}
 		}
@@ -583,6 +692,7 @@ function KDInputSetNPCRestraint(data): boolean {
 	let slot = KDGetEncaseGroupSlot(data.slot);
 	let item: item = null;
 	if (!slot) return false;
+	let willing = data.force || false;
 	if (KDGameData.Collection[data.npc + ""]) {
 		if (!KDGetGlobalEntity(data.npc)) {// We have to create it
 			let Enemy = KinkyDungeonGetEnemyByName(KDGameData.Collection[data.npc + ""].type);
@@ -592,13 +702,21 @@ function KDInputSetNPCRestraint(data): boolean {
 				movePoints: 0, attackPoints: 0}); // Make them persistent
 			npc.collect = true; // They are in collection
 		}
+		willing = willing || KDGetPersistentNPC(data.npc)?.collect;
 	}
+
+	let globalEntity = KDGetGlobalEntity(data.npc);
+	let packed = globalEntity ? KDUnPackEnemy(globalEntity) : false;
+
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
 		let restraint = KDRestraint({name: data.restraint});
 
+
 		if (restraint) {
-			let condition = KDCanEquipItemOnNPC(restraint, data.npc);
+			// Willing: true because they cant resist
+			let condition = KDCanEquipItemOnNPC(restraint, data.npc, willing || KDWillingBondage(KDGetGlobalEntity(data.npc),
+			data.player ? KDLookupID(data.player) : undefined));
 			if (condition) {
 				KinkyDungeonSendTextMessage(8,
 					TextGet("KDBondageCondition_" + condition),
@@ -614,22 +732,38 @@ function KDInputSetNPCRestraint(data): boolean {
 				restraint: "",
 				restraintid: -1,
 				lock: "",
-				npc: data.npc
+				npc: data.npc,
+				player: data.player,
 			});
 		}
 		if (KDRowItemIsValid(restraint, slot, row, rests)) {
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			let size = KDNPCRestraintSize(restraint, slot, row);
 			let id = data.restraintid > 0 ? data.restraintid : KinkyDungeonGetItemID();
 			let slotsToFill = KDNPCRestraintValidLayers(restraint, slot, row, rests, id);
 
 			if (slotsToFill.length >= size) {
-				let rrr = {
+				let rrr: NPCRestraint = {
 					lock: data.lock,
 					name: data.restraint,
 					id: id,
 					faction: data.faction,
+
+					variant: data.variant,
+					powerbonus: data.inventoryVariant ? KinkyDungeonRestraintVariants[data.inventoryVariant]?.power : data.powerbonus,
+					inventoryVariant: data.inventoryVariant,
 				};
+
+				if (data.inventoryVariant) {
+					rrr.events = KDGetEventsForRestraint(data.restraint);
+					if (rrr.events && KinkyDungeonRestraintVariants[data.inventoryVariant]?.events)
+						Object.assign(rrr.events,
+							JSON.parse(JSON.stringify(KinkyDungeonRestraintVariants[data.inventoryVariant]?.events)));
+				} else if (data.events) {
+					rrr.events = JSON.parse(JSON.stringify(data.events));
+				}
+
 				for (let i = 0; i < size; i++) {
 					item = KDSetNPCRestraint(data.npc, slotsToFill[i].id, rrr);
 				}
@@ -641,6 +775,7 @@ function KDInputSetNPCRestraint(data): boolean {
 						name: item.name,
 						id: item.id,
 						faction: item.faction,
+						inventoryVariant: item.inventoryVariant,
 					}, -1);
 				KDNPCRestraintTieUp(data.npc, rrr, 1);
 			} else return;
@@ -654,12 +789,15 @@ function KDInputSetNPCRestraint(data): boolean {
 				}
 			}
 		}
+
+		if (packed) KDPackEnemy(globalEntity);
 	} else {
 
 		let rests = KDGetNPCRestraints(data.npc);
 		if (rests) {
 			let restraint = rests[slot.id];
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(data.npc))
+				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 			if (restraint) {
 				// Add the tieup value
 				KDNPCRestraintTieUp(data.npc, restraint, -1);
@@ -694,6 +832,8 @@ function KDInputSetNPCRestraint(data): boolean {
 	if (npcSprite) {
 		NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.npc, 0));
 	}
+
+	if (packed) KDPackEnemy(globalEntity);
 
 	return true;
 }
@@ -730,10 +870,10 @@ function KDReturnNPCItem(item: item) {
 		}
 }
 
-function KDGetRestraintBondageStats(item: Named): KDBondageStats {
+function KDGetRestraintBondageStats(item: Named, target: entity): KDBondageStats {
 	let level = Math.max(KDRestraint(item).power || 0, 1);
 	let type = KDRestraintBondageType(item) || "Leather";
-	let mult = KDRestraintBondageMult(item) || 0;
+	let mult = KDRestraintBondageMult(item, target) || 0;
 	let conditions = KDRestraintBondageConditions(item);
 
 	return {
@@ -746,29 +886,33 @@ function KDGetRestraintBondageStats(item: Named): KDBondageStats {
 }
 
 /** Gets the expected total bondage amounts */
-function KDGetExpectedBondageAmount(id: number): Record<string, number> {
+function KDGetExpectedBondageAmount(id: number, target: entity): Record<string, number> {
 	if (!KDGameData.NPCRestraints) return {};
 	let result : Record<string, number> = {};
 	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
 	let already = {};
 	for (let item of restraints) {
 		if (!already[item.id]) {
-			let stats = KDGetRestraintBondageStats(item)
-			already[item.id] = true;
-			result[stats.type] = (result[stats.type] || 0) + stats.amount;
+			if (KDRestraint(item)) {
+				let stats = KDGetRestraintBondageStats(item, target)
+				already[item.id] = true;
+				result[stats.type] = (result[stats.type] || 0) + stats.amount;
+			} else if (item) {
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
+			}
 		}
 	}
 	return result;
 }
 /** Gets the expected total bondage amounts */
-function KDGetExpectedBondageAmountTotal(id: number): number {
+function KDGetExpectedBondageAmountTotal(id: number, target: entity): number {
 	if (!KDGameData.NPCRestraints) return 0;
 	let result = 0;
 	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
 	let already = {};
 	for (let item of restraints) {
-		if (!already[item.id]) {
-			let stats = KDGetRestraintBondageStats(item)
+		if (!already[item.id] && KDRestraint(item)) {
+			let stats = KDGetRestraintBondageStats(item, target)
 			already[item.id] = true;
 			result +=  stats.amount;
 		}
@@ -778,8 +922,9 @@ function KDGetExpectedBondageAmountTotal(id: number): number {
 
 function KDGetNPCStrugglePoints(id: number): Record<string, number> {
 	let result : Record<string, number> = {};
-	let expected = KDGetExpectedBondageAmount(id);
-	let actual = KDGetGlobalEntity(id)?.specialBoundLevel;
+	let enemy = KDGetGlobalEntity(id);
+	let actual = enemy?.specialBoundLevel;
+	let expected = KDGetExpectedBondageAmount(id, enemy);
 	if (expected) {
 		for (let entry of Object.entries(expected)) {
 			result[entry[0]] = entry[1] - (actual ? actual[entry[0]] || 0 : 0);
@@ -789,17 +934,22 @@ function KDGetNPCStrugglePoints(id: number): Record<string, number> {
 	return result;
 }
 
-function KDGetNPCEscapableRestraints(id: number): {slot: string, inv: NPCRestraint}[] {
+function KDGetNPCEscapableRestraints(id: number, target: entity): {slot: string, inv: NPCRestraint}[] {
 	let restraints = KDGetNPCRestraints(id);
 	let retval: {slot: string, inv: NPCRestraint}[] = [];
 	if (restraints) {
 		let entries = Object.entries(restraints);
 		let strugglePoints = KDGetNPCStrugglePoints(id);
 		for (let entry of entries) {
-			let stats = KDGetRestraintBondageStats(entry[1]);
-			if (strugglePoints[stats.type] >= stats.amount) {
-				retval.push({slot: entry[0], inv: entry[1]});
+			if (KDRestraint(entry[1])) {
+				let stats = KDGetRestraintBondageStats(entry[1], target);
+				if (strugglePoints[stats.type] >= stats.amount) {
+					retval.push({slot: entry[0], inv: entry[1]});
+				}
+			} else if (entry[1]) {
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
 			}
+
 		}
 	}
 	return retval;
@@ -809,7 +959,7 @@ function KDGetNPCEscapableRestraints(id: number): {slot: string, inv: NPCRestrai
 function KDNPCStruggleTick(id: number, delta: number): {slot: string, inv: NPCRestraint} {
 	if (delta > 0) {
 		for (let i = 0; i < delta; i++) {
-			let escapable = KDGetNPCEscapableRestraints(id);
+			let escapable = KDGetNPCEscapableRestraints(id, KDGetGlobalEntity(id));
 			if (escapable.length > 0) {
 				return escapable[Math.floor(KDRandom() * escapable.length)];
 			}
@@ -843,7 +993,9 @@ function KDWantsToEscape(value: KDCollectionEntry): boolean {
 	return !value.status // Is prisoner
 		&& (!value.Opinion || value.Opinion < 0) // Doesn't like you
 		&& (!KDGetGlobalEntity(value.id) // has no entity or is unimprisoned
-			|| !KDIsImprisoned(KDGetGlobalEntity(value.id)));
+			|| (!KDIsImprisoned(KDGetGlobalEntity(value.id))
+		))
+		&& !KDIsInPartyID(value.id);
 }
 function KDIsOKWithRestraining(value: KDCollectionEntry): boolean {
 	return (value.Opinion > 0)
@@ -936,7 +1088,7 @@ function KDNPCStruggleThreshMultType(enemy: enemy) {
 
 function KDTriggerNPCEscape(maxNPC: number = 10) {
 	let eligibleNPCs = Object.values(KDGameData.Collection).filter((value) => {
-		return value.escaped;
+		return value.escaped && KDWantsToEscape(value);
 	});
 
 	let count = 0;
@@ -982,8 +1134,8 @@ let KDGenericBindsPerRow = 3;
 let KDGenericBindSpacing = 75;
 
 function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, y: number,
-		currentItem: NPCRestraint, slot: NPCBindingSubgroup,
-		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup, item: item, count: number) => void) {
+		currentItem: NPCRestraint, slot: NPCBindingSubgroup, id: number, restraints: Record<string, NPCRestraint>,
+		callback: (currentItem: NPCRestraint, restraint: restraint, slot: NPCBindingSubgroup, item: item, count: number, itemtype: RestraintGenericTypeSlot) => void) {
 	let XX = 0;
 	let secondXX = KDGenericBindSpacing * (KDGenericMatsPerRow + 0.5);
 	let YY = 0;
@@ -1083,11 +1235,16 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			}
 		);
 		let ii = 0;
+
+		let npc = KinkyDungeonFindID(id);
+
 		for (let item of items) {
 
-			let img = KDGetRestraintPreviewImage(KDRestraint({name: item.restraint}));
+			let rst = KDRestraint({name: item.restraint});
 
-			let grp = KDGetGroupPreviewImage(KDRestraint({name: item.restraint}).Group);
+			let img = KDGetRestraintPreviewImage(rst);
+
+			let grp = KDGetGroupPreviewImage(rst.Group);
 
 			if (!KDSelectedGenericBindItem) KDSelectedGenericBindItem = item.restraint;
 
@@ -1126,14 +1283,23 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 						KDSelectedGenericBindItem = item.restraint;
 					else if (quantity >= item.count) {
 						callback(currentItem, KDRestraint({name: item.restraint}), KDNPCBindingSelectedSlot,
-						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count);
+						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count, item);
 					}
 					return true;
 				}, true,
 
 				x + XX + 32, y + YY, 72, 72, "",
 				"#ffffff", img,
-				undefined, false, !selected, KDButtonColor, undefined, true,
+				undefined, false, !selected,
+				npc ?
+				(KDCanApplyBondage(npc, KDPlayer(),
+						rst?.quickBindCondition ?
+						(t, p) => (KDQuickBindConditions[rst?.quickBindCondition](
+							t, p,
+							rst,
+							null)) : undefined) ? "#63ab3f" : "#f0b541")
+				: KDButtonColor,
+				undefined, true,
 				{
 					scaleImage: true,
 					centered: true,

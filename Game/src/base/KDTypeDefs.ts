@@ -8,12 +8,18 @@ interface NamedAndTyped extends Named {
 	type?: string,
 }
 
+interface KDOutfitMetadata {
+	name: string,
+	palette: string,
+}
+
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
 	/** Which NPC its on */
 	onEntity?: number,
 	/** Is magically conjured. Cannot be added back to inventory */
 	conjured?: boolean,
+	/* ID of the item */
 	id: number,
 	/** Used in order to boost performance */
 	linkCache?: string[],
@@ -140,6 +146,8 @@ interface KDRestraintProps extends KDRestraintPropsBase {
 }
 
 interface KDRestraintPropsBase {
+	/** Type of gag this turns into when used to gag the player */
+	necklaceGagType?: string,
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
 	/** Used in standalone to replace Properties */
@@ -375,6 +383,7 @@ interface KDRestraintPropsBase {
 		KnifeDrop?: string,
 		KeyDrop?: string,
 		PickDrop?: string,
+		Blocked?: string,
 	},
 	sfxFinishEscape?: {
 		Struggle?: string,
@@ -433,6 +442,10 @@ interface KDRestraintPropsBase {
 	forceRemovePrison?: boolean,
 	/** Changes the dialogue text when you fail to remove the item */
 	failSuffix?: Record<string, string>,
+	/** Custom equip message */
+	customEquip?: string,
+	/** Custom success message */
+	customEscapeSucc?: string,
 	/** Changes the dialogue text when you try to struggle completely */
 	specStruggleTypes?: string[],
 	/** List of Groups removed */
@@ -545,6 +558,8 @@ interface restraint extends KDRestraintProps {
 	preview?: string,
 	/** Special condition for quick binding! */
 	quickBindCondition?: string,
+	/** Multiplier to bondage strength if target isn't disabled */
+	quickBindMult?: number,
 	/** Base weight of the restraint, required */
 	weight: number,
 	minLevel: number,
@@ -685,6 +700,7 @@ interface floorParams {
 	max_width : number,
 	min_height : number,
 	max_height : number,
+	deadend? : number,
 
 	ShopExclusives? : string[],
 	ShopExclusivesArousal? : string[],
@@ -885,6 +901,9 @@ interface enemy extends KDHasTags {
 	allied?: boolean,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
+	/** lookup condition in KDPathConditions,
+	 * basically allows enemies to path through an immobile enemy under certain circumstances */
+	pathcondition?: string,
 	/** Generates token chance = 1 - 1 / (1 + evasion) */
 	evasion?: number,
 	/** Generates token chance = 1 - 1 / (1 + block) */
@@ -1214,6 +1233,7 @@ interface enemy extends KDHasTags {
 	blockVisionWhileStationary?: boolean,
 	/** */
 	squeeze?: boolean,
+	earthmove?: boolean,
 	/** Enemy will not chase player for being unrestrained. Use on enemies like drones who have lines but dont bind readily */
 	noChaseUnrestrained?: boolean,
 	/** */
@@ -1388,6 +1408,9 @@ interface weapon {
 	rarity: number;
 	staminacost?: number;
 	magic?: boolean;
+	/** Determines if the weapon is a gun/staff type (does damage regardless of binding)
+	 * or a whack type that needs force to be effective*/
+	noDamagePenalty?: boolean,
 	cutBonus?: number;
 	playSelfBonus?: number;
 	playSelfMsg?: string;
@@ -1406,6 +1429,7 @@ interface weapon {
 	/** Slows player after attacking */
 	channelslow?: boolean;
 	novulnerable?: boolean;
+	nocrit?: boolean;
 	tags?: string[];
 	special?: {
 		type: string,
@@ -1476,6 +1500,7 @@ interface KinkyDungeonEvent {
 	always?: boolean,
 	bindEff?: number,
 	type: string;
+	requireFlag?: string;
 	trigger: string;
 	threshold?: number,
 	restraint?: string;
@@ -1604,6 +1629,12 @@ interface entity {
 
 	// Custom play line
 	playLine?: string,
+	// Custom outfit
+	outfit?: string,
+	// Custom outfit when captured
+	outfitBound?: string,
+	// Custom style
+	style?: string,
 	// Custom intro
 	intro?: string,
 
@@ -1622,7 +1653,7 @@ interface entity {
 	/** Determines if an enemy can be dommed or not */
 	domVariance?: number,
 	hideTimer?: boolean,
-	Enemy: enemy,
+	Enemy?: enemy,
 
 	/** Amount of sound the entity is currently producing */
 	sound?: number,
@@ -1658,7 +1689,7 @@ interface entity {
 	specialdialogue?: string,
 	aggro?: number,
 	id?: number,
-	hp: number,
+	hp?: number,
 	mana?: number,
 	AI?: string,
 	moved?: boolean,
@@ -1738,6 +1769,8 @@ interface entity {
 	NextJailLeashTourWaypointX?: number,
 	NextJailLeashTourWaypointY?: number,
 	KinkyDungeonJailTourInfractions?: number,
+	/**  Used by guards.  */
+	CurrentRestraintSwapGroup?: string,
 }
 
 type KinkyDungeonDress = {
@@ -1873,6 +1906,8 @@ interface spell {
 	miscastSfx?: string,
 	/** This spell doesnt hurt the target upon directly hitting, only the AoE */
 	noDirectDamage?: true,
+	/** This spell doesnt apply the hit effect on collision*/
+	noDirectHit?: true,
 	/** This spell does not leave a warning to the player */
 	hideWarnings?: boolean,
 	/** This spell does leave a warning to the player */
@@ -2197,8 +2232,10 @@ interface spell {
 	noTargetEnemies?: boolean;
 	/** Exception list for NoTargetEnemies */
 	exceptionFactions?: string[];
-	/** noTargetAllies */
+	/**  */
 	noTargetAllies?: boolean;
+	/** Can only target the player */
+	targetPlayerOnly?: boolean;
 	/** Sets the enemy's specialCD shared between others */
 	specialCD?: number;
 	/** AI wont choose this as first choice */
@@ -2225,10 +2262,10 @@ interface KDQuest {
 	npc: string;
 	visible: boolean;
 	nocancel?: boolean,
-	tick?: (delta) => void;
+	tick?: (delta: number) => void;
 	worldgenstart?: () => void;
 	accept?: () => void;
-	weight: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => number;
+	weight: (RoomType: any, MapMod: any, data: any, currentQuestList?: any) => number;
 	prerequisite: (RoomType: any, MapMod: any, data: any, currentQuestList: any) => boolean;
 	tags?: string[],
 };
@@ -2241,6 +2278,8 @@ interface KinkyDialogue {
 	data?: Record<string, string>;
 	/** Tags for filtering */
 	tags?: string[];
+	singletag?: string[];
+	excludeTags?: string[];
 	/** Shows the quick inventory */
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
@@ -2286,6 +2325,9 @@ interface KinkyDialogue {
 	options?: Record<string, KinkyDialogue>;
 	/** Name of a dialogue to get extra options from. Merges them, preferring this dialogue's options if the name is the same */
 	extraOptions?: string;
+
+	outfit?: string;
+	chance?: number;
 }
 
 interface KinkyVibration {
@@ -2405,6 +2447,8 @@ interface KDStruggleData {
 	extraLim: number,
 	extraLimPenalty: number,
 	extraLimThreshold: number,
+
+	upfrontWill?: boolean,
 }
 
 interface KDFilteredInventoryItem {
@@ -2434,6 +2478,29 @@ interface KDInventoryActionDef {
 }
 
 interface KinkyDungeonSave {
+	/** Metadata */
+	saveStat: {
+		appearance: any[],
+		default: string,
+		poses: Record<string, boolean>,
+		Palette: string,
+
+
+		outfit: string,
+		name: string,
+		level: number,
+		sp: string,
+		mp: string,
+		wp: string,
+		dp: string,
+	}
+
+	KinkyDungeonCurrentTick: number,
+
+	errorloading: boolean,
+	modsmissing: boolean,
+
+
 	version: string,
 	KinkyDungeonPlayerEntity: any;
 	level: number;
@@ -2486,20 +2553,52 @@ interface KinkyDungeonSave {
 	flags: [string, number][];
 	uniqueHits: [string, boolean][];
 	KDCommanderRoles: [number, string][];
-	stats: {
-		picks: number;
-		keys: number;
-		bkeys: number;
-		mana: number;
-		manapool: number;
-		stamina: number;
-		willpower: number;
-		distraction: number;
-		distractionlower: number;
-		wep: any;
-		npp: number;
-		diff: number;
+	picks: number;
+	rkeys: number;
+	bkeys: number;
+	mana: number;
+	manapool: number;
+	stamina: number;
+	willpower: number;
+	distraction: number;
+	distractionlower: number;
+	wep: any;
+	npp: number;
+	diff: number;
+
+
+	// These are used only for preview purposes?
+	// TODO make this cleaner
+	inventoryarray?: {
+		consumable: item[],
+		restraint: item[],
+		looserestraint: item[],
+		weapon: item[],
+		outfit: item[]
 	};
+	potions?: {
+		stamina: number,
+		mana: number,
+		will: number,
+		dist: number,
+	},
+	journey?: string,
+	mistresskey?: number,
+	outfitForPreview?: string[],
+	arousalMode?: boolean,
+	itemMode?: number,
+	plug?: boolean,
+	plugFront?: boolean,
+	piercing?: boolean,
+	random?: boolean,
+	savemode?: boolean,
+	hardmode?: boolean,
+	extrememode?: boolean,
+	//KinkyDungeonPerksMode = KinkyDungeonStatsChoice.get("perksMode");
+	perksmode?: number,
+	easymode?: number,
+	progressionmode?: string,
+
 	faction: Record<string, Record<string, number>>;
 }
 
@@ -2530,7 +2629,17 @@ interface KDLabel {
 	assigned: number,
 }
 
+interface RepopQueueData {
+	x: number,
+	y: number,
+	time: number,
+	entity: entity,
+	/** Allow placing the object at a slightly different location */
+	loose?: boolean,
+}
+
 interface KDMapDataType {
+	RepopulateQueue: RepopQueueData[],
 	Checkpoint: string,
 	Title: string,
 	PrisonState: string,
@@ -2540,7 +2649,9 @@ interface KDMapDataType {
 	Labels: Record<string, KDLabel[]>,
 
 	flags?: string[],
-	data: any,
+	data: Record<string, any>,
+
+	Regiments: Record<string, number>,
 
 
 	GroundItems: {x: number, y: number, name: string, amount?: number} [];
@@ -2953,6 +3064,7 @@ type KDBondageStatus = {
 	slow: number,
 	blind: number,
 	disarm: number,
+	reduceaccuracy: number,
 	toy: number,
 	plug: number,
 	belt: number,
@@ -3259,7 +3371,7 @@ interface KDPrisonType {
 	default_state: string,
 
 	/** Each turn this function runs. If a state is returned it sets the state*/
-	update: (delta: number) => string,
+	update: (delta: number) => string | void;
 }
 
 interface KDPresetLoadout {
@@ -3315,6 +3427,7 @@ interface KDSFXGroup {
 		KnifeDrop?: string,
 		KeyDrop?: string,
 		PickDrop?: string,
+		Blocked?: string,
 	},
 	sfxFinishEscape?: {
 		Struggle?: string,
@@ -3336,6 +3449,7 @@ interface KDEnemyAction {
 	/** Enemy will sprint during this action */
 	sprint?: boolean;
 	end?: (enemy) => void;
+	filter?: (enemy) => boolean;
 	maintain: (enemy, delta) => boolean;
 }
 
@@ -3392,7 +3506,7 @@ interface KDEnchantmentType {
 	level: number,
 	filter: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => boolean,
 	weight: (item: string, allEnchant: string[], data: KDHexEnchantWeightData) => number,
-	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data: KDHexEnchantEventsData) => KinkyDungeonEvent[]
+	events: (item: string, Loot: any, curse: string, primaryEnchantment: string, enchantments: string[], data?: KDHexEnchantEventsData) => KinkyDungeonEvent[]
 }
 
 interface KDHexEnchantEventsData {
@@ -3487,6 +3601,9 @@ interface KDCollectionEntry {
 	escapegrace?: boolean,
 	personality: string,
 
+	/** Optional NPC palette */
+	Palette?: string,
+
 	spawned?: boolean,
 
 	id: number,
@@ -3521,7 +3638,7 @@ interface KDFactionProps {
 	/** Honor toward specific factions */
 	honor_specific: Record<string, number>,
 	/** Weight to have them show up in a given floor type and floor count (and in future floor X and floor Y) */
-	weight: (Floor: number, Checkpoint: string, tags: string[], X: number, Y: number) => number,
+	weight: (Floor: number, Checkpoint: string, tags: string[], bonustags: Record<string, {bonus: number, mult: number}>, X: number, Y: number) => number,
 	/** Executes once when starting high sec dialogue */
 	customHiSecDialogue?: (guard: entity) => string,
 	/** Custom defeat to use */

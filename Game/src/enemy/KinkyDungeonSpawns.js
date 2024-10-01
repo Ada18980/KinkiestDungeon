@@ -201,7 +201,7 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, allian
 					overrideFloor = true;
 					weightMulti *= 1.25;
 				}
-			} else {
+			} else if (noOverride.includes(t)) {
 				// We DO override if the enemy has outOfBoxWeightMult, otherwise we apply a penalty.
 				if (enemy.outOfBoxWeightMult) {
 					weightMulti *= 1.25;
@@ -265,15 +265,6 @@ function KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, allian
 	// Mild recursion
 	if (minWeight > 0 && minWeightFallback) return KinkyDungeonGetEnemy(enemytags, Level, Index, Tile, requireTags, alliances, bonusTags, filterTags, requireSingleTag, 0, false);
 	return undefined;
-}
-
-/**
- *
- * @param {string | enemy} name
- * @returns {enemy}
- */
-function KinkyDungeonGetEnemyByName(name) {
-	return typeof name == "string" ? KinkyDungeonEnemies.find(element => element.name == name) : name;
 }
 
 /**

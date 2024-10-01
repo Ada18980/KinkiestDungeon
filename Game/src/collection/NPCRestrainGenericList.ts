@@ -10,11 +10,16 @@ interface RestraintGenericTypeSlot {
 	count: number,
 	restraint: string,
 	icon?: string,
+	variant?: string,
+	events?: KinkyDungeonEvent[],
+	powerbonus?: number,
+	inventoryVariant?: string,
 }
 
 
 
-let KDRestraintGenericTypes = {
+
+let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 	"HempRope": {
 		raw: "RopeSnakeRaw",
 		items: [

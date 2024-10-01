@@ -1,11 +1,13 @@
 let KDCollectionReleaseSelection: Record<string, boolean> = {};
 
+// @ts-ignore: squelch error: block-scoped variable used before declaration.
 KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	let tooltip = false;
 	if (DrawButtonKDEx("KDReleaseRelease", (b) => {
 
 		KDSendInput("releaseNPC", {
 			selection: KDCollectionReleaseSelection,
+			player: KDPlayer().id,
 		});
 
 		if (KDToggles.Sound)
@@ -40,6 +42,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 		if (ransomValue > 0)
 			KDSendInput("ransomNPC", {
 				selection: KDCollectionReleaseSelection,
+				player: KDPlayer().id,
 			});
 
 		if (KDToggles.Sound)
@@ -138,6 +141,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	return III;
 };
 
+// @ts-ignore: squelch error: block-scoped variable used before declaration.
 KDCollectionTabScreen.Release = (x, xOffset) => {
 	KDDrawCollectionInventory(x + xOffset, 150, (value, x, y) => {
 		if (KDCollectionReleaseSelection[value.id])
@@ -155,7 +159,7 @@ KDCollectionTabScreen.Release = (x, xOffset) => {
 
 function KDCanRelease(id: number) {
 	let v = KDGameData.Collection[id + ""];
-	return v && !v.status && !v.Facility; // Prisoners only
+	return v && !v.status && !v.Facility && (!v.escaped || !KinkyDungeonFindID(v.id)); // Prisoners only, not in same room
 }
 function KDCanRansom(id: number) {
 	let v = KDGameData.Collection[id + ""];

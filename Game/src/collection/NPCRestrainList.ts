@@ -23,6 +23,18 @@ let NPCBindingRestraintSize = {
 	Spreaderbars: 2,
 	Petsuits: 2,
 }
+let NPCBindingMouthSlots = [
+	"Muzzle",
+	"OuterGag",
+	"InterGag",
+	"InnerGag",
+]
+let NPCBindingNeckSlots = [
+	"Collar",
+	"ModulePunish",
+	"ModuleUtility",
+	"CollarTag",
+]
 
 interface KDBondageStats {
 	level: number,
@@ -179,14 +191,16 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 
 
 
-let KDBondageConditions: Record<string, (r: restraint, id: number) => boolean> = {
-	HeavyBondage: (r, id) => {
+let KDBondageConditions: Record<string, (r: restraint, id: number, willing: boolean) => boolean> = {
+	HeavyBondage: (r, id, willing) => {
+		if (willing) return true;
+		if (r.quickBindCondition) return true;
 		if (r.quickBindCondition) return true;
 		let enemy = KDGetGlobalEntity(id);
 		if (!enemy) return false; // Must create an entity
 		return enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3;
 	},
-	Extra: (r, id) => {
+	Extra: (r, id, willing) => {
 		if (r.quickBindCondition) return true;
 		let NPC = KDGetGlobalEntity(id);
 		if (NPC) {
@@ -240,5 +254,8 @@ let KDQuickBindConditions: Record<string, (target: entity, player: entity, restr
 	},
 	TapeBlindfold: (target, player, restraint, item) => {
 		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0;
+	},
+	BallGag: (target, player, restraint, item) => {
+		return KinkyDungeonIsDisabled(target) || target.vulnerable > 0 || KDEntityHasFlag(target, "verbalcast");
 	},
 };

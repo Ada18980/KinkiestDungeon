@@ -318,22 +318,25 @@ function ModelGetPoseMods(Poses: {[_: string]: boolean}): {[_: string]: PoseMod[
 	return mods;
 }
 
-function CheckPoseOrTags(C: Character, tag: string, tags: Map<string, boolean> = null) {
+function CheckPoseOrTags(C: Character, tag: string, tags: Map<string, boolean> = null, tagsOnly: boolean = false) {
 	if (C == KinkyDungeonPlayer || tags) {
 		if (tags ? tags.get(tag) : KinkyDungeonPlayerTags.get(tag)) return true;
 	} else if (NPCTags.get(C)) {
 		if (NPCTags.get(C).get(tag)) return true;
 	}
-	if (KDCurrentModels.get(C)?.Poses[tag]) {
-		return true;
+	if (!tagsOnly) {
+		if (KDCurrentModels.get(C)?.Poses[tag]) {
+			return true;
+		}
+		if (KDCurrentModels.get(C)?.TempPoses && KDCurrentModels.get(C)?.TempPoses[tag]) {
+			return true;
+		}
 	}
-	if (KDCurrentModels.get(C)?.TempPoses && KDCurrentModels.get(C)?.TempPoses[tag]) {
-		return true;
-	}
+
 	return false;
 }
 
-function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null): string[] {
+function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null, tagsOnly: boolean = false): string[] {
 	let poses: Record<string, boolean> = {};
 	for (let p of LEGPOSES) {
 		poses[p] = true;
@@ -342,26 +345,26 @@ function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null
 	let closed = false;
 	let spread = false;
 	// Logic for the player
-	if (["FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"].some((tag) => {return CheckPoseOrTags(C, tag, tags);})) {
+	if (["FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"].some((tag) => {return CheckPoseOrTags(C, tag, tags, tagsOnly);})) {
 		delete poses.Spread;
 		delete poses.Kneel;
 		closed = true;
-	} else if (CheckPoseOrTags(C, "ForceKneel", tags)) {
+	} else if (CheckPoseOrTags(C, "ForceKneel", tags, tagsOnly)) {
 		delete poses.Spread;
 		delete poses.Closed;
 	}
-	if (!closed && CheckPoseOrTags(C, "FeetSpreader", tags)) {
+	if (!closed && CheckPoseOrTags(C, "FeetSpreader", tags, tagsOnly)) {
 		delete poses.Closed;
 		spread = true;
 	}
-	if (CheckPoseOrTags(C, "Hogties", tags) || CheckPoseOrTags(C, "ForceHogtie", tags)) {
+	if (CheckPoseOrTags(C, "Hogties", tags, tagsOnly) || CheckPoseOrTags(C, "ForceHogtie", tags, tagsOnly)) {
 		for (let p of STANDPOSES) {
 			delete poses[p];
 		}
 		for (let p of KNEELPOSES) {
 			delete poses[p];
 		}
-	} else if (CheckPoseOrTags(C, "ForceKneel", tags)) {
+	} else if (CheckPoseOrTags(C, "ForceKneel", tags, tagsOnly)) {
 		for (let p of STANDPOSES) {
 			delete poses[p];
 		}
@@ -377,27 +380,27 @@ function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null
 		}
 	}
 
-	if (CheckPoseOrTags(C, "BlockHogtie", tags)) {
+	if (CheckPoseOrTags(C, "BlockHogtie", tags, tagsOnly)) {
 		for (let p of HOGTIEPOSES) {
 			delete poses[p];
 		}
 	}
-	if (CheckPoseOrTags(C, "BlockKneel", tags)) {
+	if (CheckPoseOrTags(C, "BlockKneel", tags, tagsOnly)) {
 		for (let p of KNEELPOSES) {
 			delete poses[p];
 		}
 	}
-	if (CheckPoseOrTags(C, "DiscourageHogtie", tags) && Object.keys(poses).length > Object.keys(HOGTIEPOSES).length) {
+	if (CheckPoseOrTags(C, "DiscourageHogtie", tags, tagsOnly) && Object.keys(poses).length > Object.keys(HOGTIEPOSES).length) {
 		for (let p of HOGTIEPOSES) {
 			delete poses[p];
 		}
 	}
-	if (CheckPoseOrTags(C, "DiscourageKneel", tags) && Object.keys(poses).length > Object.keys(KNEELPOSES).length) {
+	if (CheckPoseOrTags(C, "DiscourageKneel", tags, tagsOnly) && Object.keys(poses).length > Object.keys(KNEELPOSES).length) {
 		for (let p of KNEELPOSES) {
 			delete poses[p];
 		}
 	}
-	if (CheckPoseOrTags(C, "DiscourageStand", tags) && Object.keys(poses).length > Object.keys(STANDPOSES).length) {
+	if (CheckPoseOrTags(C, "DiscourageStand", tags, tagsOnly) && Object.keys(poses).length > Object.keys(STANDPOSES).length) {
 		for (let p of STANDPOSES) {
 			delete poses[p];
 		}
@@ -405,9 +408,9 @@ function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null
 
 
 	if (Object.keys(poses).length == 0) {
-		if (CheckPoseOrTags(C, "DefaultStand", tags)) {
+		if (CheckPoseOrTags(C, "DefaultStand", tags, tagsOnly)) {
 			poses = {Closed: true};
-		} else if (CheckPoseOrTags(C, "DefaultKneel", tags)) {
+		} else if (CheckPoseOrTags(C, "DefaultKneel", tags, tagsOnly)) {
 			poses = {Kneel: true};
 		} else {
 			poses = {Hogtie: true};
@@ -541,11 +544,11 @@ function RefreshTempPoses(Character: Character, Restraints: boolean, Buffs: bool
 
 	if (Restraints) {
 		for (let inv of KDGetRestraintsForID(KDGetCharacterID(Character))) {
-			if (KDRestraint(inv).addPose)
+			if (KDRestraint(inv)?.addPose)
 				for (let tag of KDRestraint(inv).addPose) {
 					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
 				}
-			if (KDRestraint(inv).addPoseIfTopLevel && KinkyDungeonGetRestraintItem(KDRestraint(inv).Group) == inv)
+			if (KDRestraint(inv)?.addPoseIfTopLevel && KinkyDungeonGetRestraintItem(KDRestraint(inv).Group) == inv)
 				for (let tag of KDRestraint(inv).addPoseIfTopLevel) {
 					if (!KDCurrentModels.get(Character).TempPoses[tag]) KDCurrentModels.get(Character).TempPoses[tag] = true;
 				}

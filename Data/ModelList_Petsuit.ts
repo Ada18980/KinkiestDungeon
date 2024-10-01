@@ -13,7 +13,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints", "Cosplay"],
 	Restraint: true,
-	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel", "Petsuit"],
 	HideLayerGroups: ["PetsuitArms"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "BindForeArms", Pri: -30,
@@ -63,7 +63,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints", "Cosplay"],
 	Restraint: true,
-	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel", "Petsuit"],
 	HideLayerGroups: ["PetsuitArms"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "BindForeArms", Pri: -41,
@@ -93,7 +93,7 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Restraints", "Cosplay"],
 	Restraint: true,
-	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel", "Petsuit"],
 	HideLayerGroups: ["PetsuitArms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("LatexPetsuit"),
@@ -135,7 +135,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints", "Cosplay"],
 	Restraint: true,
-	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel", "Petsuit"],
 	HideLayerGroups: ["PetsuitArms"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "BindForeArms", Pri: -15,
@@ -230,7 +230,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints", "Cosplay"],
 	Restraint: true,
-	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel"],
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "ForceKneel", "Petsuit"],
 	HideLayerGroups: ["PetsuitArms"],
 	Filters: {
 		Display: {"gamma":1,"saturation":1,"contrast":1.6500000000000001,"brightness":0.8,"red":1,"green":1,"blue":1,"alpha":1},

@@ -30,59 +30,51 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		if (KDAutoBindRestraints) {
 			let restraints = KDAutoBindRestraints;
 			if (restraints) {
-				/*for (let inv of Object.entries(restraints)) {
-					KDInputSetNPCRestraint({
-						slot: inv[0],
-						id: -1,
-						restraint: "",
-						restraintid: -1,
-						lock: "",
-						npc: value.id
-					});
-				}*/
 				// Readd
 				for (let i = 0; i < 2; i++) // To bruteforce conditions
-				for (let inv of Object.entries(restraints)) {
-					if (
-						(KinkyDungeonInventoryGetSafe(inv[1].name)
-							&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)
-						|| (KDGenericRestraintRawCache[inv[1].name]
-							&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
-								> KDGenericRestraintRawCache[inv[1].name].count
-						)
-					) {
-						if (!(KinkyDungeonInventoryGetSafe(inv[1].name)
-							&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)) {
-								if ((KDGenericRestraintRawCache[inv[1].name]
-									&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
-										> KDGenericRestraintRawCache[inv[1].name].count
-								)) {
-									if (KDInputSetNPCRestraint({
-										slot: inv[0],
-										id: undefined,
-										faction: inv[1].faction,
-										restraint: inv[1].name,
-										restraintid: inv[1].id,
-										lock: inv[1].lock,
-										npc: value.id
-									})) {
-										KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
-										-= KDGenericRestraintRawCache[inv[1].name].count;
-										if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
-											<= 0) {
-												KinkyDungeonInventoryRemoveSafe(
-													KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)
-												);
-											}
-									}
-								}
-						}
+					for (let inv of Object.entries(restraints)) {
+						let hasInv = (KinkyDungeonInventoryGetSafe(inv[1].name)
+							&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0);
+						if (
+							hasInv
+							|| (KDGenericRestraintRawCache[inv[1].name]
+								&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
+									> KDGenericRestraintRawCache[inv[1].name].count
+							)
+						) {
+							if (KDInputSetNPCRestraint({
+								slot: inv[0],
+								id: undefined,
+								faction: inv[1].faction,
+								restraint: inv[1].name,
+								restraintid: inv[1].id,
+								lock: inv[1].lock,
+								variant: inv[1].variant,
+								events: inv[1].events,
+								powerbonus: inv[1].powerbonus,
+								inventoryVariant: inv[1].inventoryVariant,
 
+								npc: value.id,
+								player: KDPlayer().id,
+							})) {
+								if (!hasInv) {
+									KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
+									-= KDGenericRestraintRawCache[inv[1].name].count;
+									if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
+										<= 0) {
+											KinkyDungeonInventoryRemoveSafe(
+												KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)
+											);
+										}
+								}
+							}
+
+						}
 					}
-				}
 				KDValidateEscapeGrace(value);
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(value.id))
+				KDRefreshCharacter.set(KDNPCChar.get(value.id), true);
 		}
 
 		if (KDToggles.Sound)
@@ -118,6 +110,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 		if (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect)
 			KDSendInput("freeNPCRestraint", {
 				npc: value.id,
+				player: KDPlayer().id,
 			});
 		else {
 			KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
@@ -149,48 +142,49 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDAutoBindRestraints));
 				if (restraints) {
 					for (let i = 0; i < 2; i++) // To bruteforce conditions
-					for (let inv of Object.entries(restraints)) {
-						if (
-							(KinkyDungeonInventoryGetSafe(inv[1].name)
-								&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)
-							|| (KDGenericRestraintRawCache[inv[1].name]
-								&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
-									> KDGenericRestraintRawCache[inv[1].name].count
-							)
-						) {
-							if (!(KinkyDungeonInventoryGetSafe(inv[1].name)
-								&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0)) {
-									if ((KDGenericRestraintRawCache[inv[1].name]
-										&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
-											> KDGenericRestraintRawCache[inv[1].name].count
-									)) {
-										if (KDInputSetNPCRestraint({
-											slot: inv[0],
-											id: undefined,
-											faction: inv[1].faction,
-											restraint: inv[1].name,
-											restraintid: inv[1].id,
-											lock: inv[1].lock,
-											npc: value.id
-										})) {
-											KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
-											-= KDGenericRestraintRawCache[inv[1].name].count;
-											if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
-												<= 0) {
-													KinkyDungeonInventoryRemoveSafe(
-														KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)
-													);
-												}
-										}
-									}
-							}
+						for (let inv of Object.entries(restraints)) {
+							let hasInv = (KinkyDungeonInventoryGetSafe(inv[1].name)
+								&& KinkyDungeonInventoryGetSafe(inv[1].name).quantity != 0);
+							if (
+								hasInv
+								|| (KDGenericRestraintRawCache[inv[1].name]
+									&& KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)?.quantity
+										> KDGenericRestraintRawCache[inv[1].name].count
+								)
+							) {
+								if (KDInputSetNPCRestraint({
+									slot: inv[0],
+									id: undefined,
+									faction: inv[1].faction,
+									restraint: inv[1].name,
+									restraintid: inv[1].id,
+									lock: inv[1].lock,
+									variant: inv[1].variant,
+									events: inv[1].events,
+									powerbonus: inv[1].powerbonus,
+									inventoryVariant: inv[1].inventoryVariant,
 
+									npc: value.id,
+									player: KDPlayer().id,
+								})) {
+									if (!hasInv) {
+										KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
+										-= KDGenericRestraintRawCache[inv[1].name].count;
+										if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
+											<= 0) {
+												KinkyDungeonInventoryRemoveSafe(
+													KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)
+												);
+											}
+									}
+								}
+							}
 						}
-					}
 					KDValidateEscapeGrace(v);
 				}
 			}
-			KinkyDungeonCheckClothesLoss = true;
+			if (KDNPCChar.get(value.id))
+				KDRefreshCharacter.set(KDNPCChar.get(value.id), true);
 
 		}
 

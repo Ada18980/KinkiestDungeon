@@ -38,9 +38,8 @@ let KDPRISONGROUPS = [
 ];
 
 /**
- * @type {Record<string, KDPrisonType>}
  */
-let KDPrisonTypes = {
+let KDPrisonTypes: Record<string, KDPrisonType> = {
 	Summit: {
 		name: "Summit",
 		default_state: "BusinessAsUsual",

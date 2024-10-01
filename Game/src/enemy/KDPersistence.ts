@@ -23,6 +23,7 @@ interface KDPersistentNPC {
 	bodystyle?: string,
 	facestyle?: string,
 	cosplaystyle?: string,
+	Palette?: string,
 }
 
 interface WorldCoord {
@@ -105,7 +106,7 @@ function KDGetPersistentNPC(id: number, entity?: entity): KDPersistentNPC {
 		let enemy = entity || KinkyDungeonFindID(id);
 		if (enemy) {
 			let entry = {
-				Name: enemy.CustomName || KDGetEnemyName(enemy),
+				Name: enemy.CustomName || KDGenEnemyName(enemy),
 				id: enemy.id,
 				entity: enemy,
 				mapX: KDCurrentWorldSlot.x,
