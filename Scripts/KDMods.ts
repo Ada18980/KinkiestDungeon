@@ -321,6 +321,179 @@ async function KDExecuteMods() {
 	}
 
 	try {
+		let modpromise = KDModLoadOrder.reduce((prev, current) => {
+			return prev.then((chainresult) => {
+				return new Promise(async (res) => {
+					// Get the files for this zip file now! 
+					console.log(`Loading ${current.name}`)
+					let evalpromises = [];
+					let entries = await model.getEntries(current.mod, {});
+					console.log(KDAllModFiles);
+					console.log(entries);
+
+					for (let entry of entries) {
+						const controller = new AbortController();
+						const signal = controller.signal;
+						const blobURL = await model.getURL(entry, {
+							password: undefined,
+							onprogress: (index, max) => {
+								console.log(`Loading progress: ${index},${max}`);
+							},
+							signal
+						});
+						console.log(blobURL);
+						let blob = await fetch(blobURL).then(r => r.blob());
+						console.log(blob);
+
+						if (entry.filename.startsWith('.')) {
+							// none
+						} else if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
+							// none
+						} else {
+							KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
+							KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
+			
+							if (entry.filename?.startsWith("Data/")
+								|| entry.filename?.startsWith("DisplacementMaps/")
+								|| entry.filename?.startsWith("Models/")
+								|| entry.filename?.startsWith("TextureAtlas/")
+								|| entry.filename?.startsWith("Music/")) {
+									KDModFiles[entry.filename] = URL.createObjectURL(blob);
+									KDModFiles[PIXI.utils.path.toAbsolute(entry.filename)] = URL.createObjectURL(blob);
+								}
+						}
+					}
+
+					for (let entry of entries) {
+						console.log(entry);
+						const controller = new AbortController();
+						const signal = controller.signal;
+						const blobURL = await model.getURL(entry, {
+							password: undefined,
+							onprogress: (index, max) => {
+								console.log(`Loading progress: ${index},${max}`);
+							},
+							signal
+						});
+						console.log(blobURL);
+						let blob = await fetch(blobURL).then(r => r.blob());
+						console.log(blob);
+						let reader = new FileReader();
+			
+						if (entry.filename.startsWith('.')) {
+							// none
+						} else if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
+							let file = new File([blob], entry.filename);
+							// Eval js files. eval() is dangerous. Don't load untrusted mods.
+							reader.onload = function(event) {
+								console.log("EXECUTING MOD FILE " + file.name);
+								if (typeof event.target.result === "string") {
+									//@ts-ignore
+									let res = event.target.result;
+									if (KDToggles.ModCompat) {
+										for (let compat of Object.entries(KDModCompat)) {
+											res = event.target.result.replace(compat[0],
+												compat[1]
+											);
+										}
+									}
+									evalpromises.push(new Promise((resolve,reject) => {
+										eval(res);
+										resolve(file.name);
+									}));
+								}
+							};
+							reader.readAsText(file);
+						} 
+						else {
+							// none
+						}			
+					}
+
+					for (let entry of entries) {
+						console.log(entry);
+						const controller = new AbortController();
+						const signal = controller.signal;
+						const blobURL = await model.getURL(entry, {
+							password: undefined,
+							onprogress: (index, max) => {
+								console.log(`Loading progress: ${index},${max}`);
+							},
+							signal
+						});
+						console.log(blobURL);
+						let blob = await fetch(blobURL).then(r => r.blob());
+						console.log(blob);
+						let reader = new FileReader();
+
+						if (entry.filename.endsWith('EN.csv')) {
+							let file = new File([blob], entry.filename);
+							reader.onload = function(event) {
+								console.log(`READING TRANSLATIONS FILE ${file.name} FROM ${current.name}`);
+								if (typeof event.target.result === "string") {
+									//@ts-ignore
+									let res = event.target.result;
+									KDLoadTranslations(res);
+								}
+							};
+							reader.readAsText(file);
+						}
+					}
+
+					// Try to load a translation if it exists
+					if (TranslationLanguage !== '') {
+						for (let entry of entries) {
+							console.log(entry);
+							const controller = new AbortController();
+							const signal = controller.signal;
+							const blobURL = await model.getURL(entry, {
+								password: undefined,
+								onprogress: (index, max) => {
+									console.log(`Loading progress: ${index},${max}`);
+								},
+								signal
+							});
+							console.log(blobURL);
+							let blob = await fetch(blobURL).then(r => r.blob());
+							console.log(blob);
+							let reader = new FileReader();
+	
+							if (entry.filename.endsWith(`${TranslationLanguage}.csv`)) {
+								let file = new File([blob], entry.filename);
+								reader.onload = function(event) {
+									console.log(`READING TRANSLATIONS FILE ${file.name} FROM ${current.name}`);
+									if (typeof event.target.result === "string") {
+										//@ts-ignore
+										let res = event.target.result;
+										KDLoadTranslations(res);
+									}
+								};
+								reader.readAsText(file);
+							}
+						}
+					}
+					
+
+					if (evalpromises.length > 0) {
+						// Only complete the promise once all .ks and .js files are loaded. These are the most critical to load in the right order. 
+						Promise.all(evalpromises).then(() => {
+							res(current.name);
+						})
+					}
+					else {
+						res(current.name);
+					}
+				})
+			})
+		}, Promise.resolve(null))
+
+		modpromise.finally(() => {
+			console.log("Finished loading mod files");
+			KDLoadModSettings();
+		})
+	}
+
+	/*try {
 
 		for (let entry of KDAllModFiles) {
 			console.log(entry);
@@ -393,15 +566,28 @@ async function KDExecuteMods() {
 					}
 				};
 				reader.readAsText(file);
-			} else {
+			// Find the translation file for English first
+			} else if (entry.filename.endsWith('EN.csv')) {
+				let file1 = fs.loadFile()
+				let modtranslationnamearr = entry.filename.split("/");
+				let modtranslationname = modtranslationnamearr[modtranslationnamearr.length - 1].slice(0, -6) // Should return the mod file's name 
+				if (TranslationLanguage !== '') {
+					let translation = KDAllModFiles.find((file) => { (file.filename.endsWith(`${TranslationLanguage}.csv`) && file.filename.contains(modtranslationname))})
+					if (translation) {
+						let file2 = new File([blob], translation.filename);
+
+					}
+				}
+			}
+			else {
 				// none
 			}
 
 		}
 
-		KDLoadModSettings()
+		
 
-	} catch (e) {
+	}*/ catch (e) {
 		console.log(e);
 	}
 
@@ -484,7 +670,7 @@ function KDDrawModConfigs() {
                 DrawCheckboxKDEx(modbutton.refvar, (bdata) => {
                     KDModSettings[KDModToggleTab][modbutton.refvar] = !KDModSettings[KDModToggleTab][modbutton.refvar]
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, TextGet(modbutton.name), KDModSettings[KDModToggleTab][modbutton.refvar], false, blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, TextGet(`KDModButton${modbutton.refvar}`), KDModSettings[KDModToggleTab][modbutton.refvar], false, blocking ? "#888888" : "#ffffff");
                 YY += YYd;
             }
             // variable is a range that cycles by stepcount between rangelow and rangehigh.
@@ -502,7 +688,7 @@ function KDDrawModConfigs() {
                     return true;
                 }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
                 // Label for the button
-                DrawTextFitKD(`${modbutton.name}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
                 // Right to increment
                 DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
                     if (KDModSettings[KDModToggleTab][modbutton.refvar] < modbutton.rangehigh) {
@@ -523,7 +709,7 @@ function KDDrawModConfigs() {
             // variable is a spacer - Only print text here.
             else if (modbutton.type == "text") {
                 var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
-                DrawTextFitKD(`${modbutton.name}`, CombarXX + modtoggleoffset + 64 + 190, YY + 32, 480, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}`, CombarXX + modtoggleoffset + 64 + 190, YY + 32, 480, blocking ? "#888888" : "#ffffff", undefined, 30);
                 YY += YYd;
             }
 			// variable is a string value - Put an input box here.
@@ -547,7 +733,7 @@ function KDDrawModConfigs() {
                     return true;
                 }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
                 // Label for the button
-                DrawTextFitKD(`${modbutton.name}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
                 // Right to increment
                 DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
                     let newindex = ((modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])+1) == modbutton.options.length) ? (0) : (modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])+1);
