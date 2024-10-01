@@ -25118,3 +25118,6 @@ KDBindType_Furniture,Furniture
 
 KDSaving,Saving...
 KDSaved,Game Saved
+
+KDNPCEscapeRemove,ENMY escapes from the ITMN!
+KDNPCEscapeUnlock,ENMY unlocks the ITMN!
