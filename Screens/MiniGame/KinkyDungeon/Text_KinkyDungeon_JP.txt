@@ -46,6 +46,8 @@ Always use character palette
 Use character palette for default outfit
 ﾃﾞﾌｫﾙﾄ衣装にﾊﾟﾚｯﾄで設定した色を使用
 
+Mute when Minimized
+最小化時にミュート
 Show Background Art
 背景の絵を表示
 Show DP instead of %
@@ -411,8 +413,8 @@ NPCとのダイアログで拘束される時、抵抗できなくなる
 
 Frantic Struggle
 めちゃくちゃにもがく
-Your struggling is 3 times as fast, but less efficient in terms of stamina.
-「もがく」選択時に3倍のボーナスを得るが、スタミナをより多く消費する
+Your escaping is 3 times as fast, but less efficient in terms of stamina.
+拘束から抜け出すスピードが３倍になるが、スタミナの消費量が増える
 
 Escape Artist
 縄抜け
@@ -1475,7 +1477,7 @@ Stormbreaker: You have the Power.
 Game Setup:
 ゲームのセットアップ:
 Beginner: Get a save code every 3 levels, autosave after each floor
-初級：3レベルごとにセーブコードを取得、各フロアごとにオートセーブ
+初級：3レベルごとにセーブコードが表示され、各フロアごとにオートセーブ
 Roguelike: No save codes, only autosave
 ローグライク: セーブ コードなし、自動保存のみ
 Exciting: Orbs give random spells
@@ -1628,13 +1630,13 @@ Interact
 Sprint/Hop
 走る/跳ぶ
 
-Ahh!
+~ah~
 んっ……
-Mmm...
+~mmm~
 うぅ……
-Nnngh...
+~ngh~
 んん……
-Ooooh...
+~oh~
 うっ……
 (Breaths heavily)
 (大きく息を吐く)
@@ -1667,13 +1669,13 @@ Ooooh...
 んんっ……
 
 
-Mmmph...
+~mm~
 んん……
-Mmmph~
+~mmph~
 むうぅ……
-Nnngh...
+~nnn~
 んぅぅ……
-Mmmmmmmm...
+~mmmmm~
 ん”ん”っ……
 
 
@@ -3071,6 +3073,8 @@ Angel: MMMMMPHH!!!
 天使：んむぅぅ！
 (The angel looks puzzled and unlocks your divine restraints)
 （天使は困惑しながら聖なる拘束具から解放してくれた）
+There was a bug removing your ArmorName. Please report!
+ArmorName の不具合です。報告をお願いします。
 Your ArmorName blocks the EnemyName's attack, falling off in the process.
 ArmorName は EnemyName の攻撃で弾かれ、地面に落ちた。
 The EnemyName pulls away your ArmorName!!!
@@ -3081,6 +3085,8 @@ The EnemyName attacks you, but you block the attack!
 EnemyName の攻撃はブロックされた！
 Blocked!
 ブロック！
+Resist!
+レジスト！
 Mystic Lock
 神秘的な錠
 The mystic lock fades, allowing you to pass once more.
@@ -4622,23 +4628,23 @@ Crystal Bolt
 クリスタルボルト
 Tailor
 仕立て屋
-You murder the tailor!
+You rob the tailor!
 仕立て屋を仕立ててしまった！
 Student
 見習い魔女
-You murder the student!
+You rob the student!
 見習い魔女を落第にしてしまった！
 Tactician
 策士
-You murder the tactician!
+You rob the tactician!
 策士を倒してしまった！
 Informant
 情報屋
-You murder the informant!
+You rob the informant!
 情報屋を倒してしまった！
 Thug
 ごろつき
-You murder the thug!
+You rob the thug!
 ごろつきを刑務所送りにしてしまった！
 
 Antique Merchant
@@ -4647,11 +4653,11 @@ You smash the antique merchant!
 古物商を壊してしまった！
 Blacksmith
 鍛冶屋
-You murder the blacksmith!
+You rob the blacksmith!
 鍛冶屋を鍛え直してしまった！
 Bowyer
 バイヤー
-You murder the bowyer!
+You rob the bowyer!
 バイヤーを倒してしまった！
 
 Not a Kidnapper
@@ -15776,7 +15782,7 @@ Nice find. I'll take it.
 私がもらっておくよ。
 This place is off-limits for you.
 あなたはここにいちゃだめだよ！
-I spy a pretty one!
+I spy a cute one!
 良いターゲットを発見したよ！
 Bad pet!
 悪い子だね！
@@ -15853,6 +15859,40 @@ Let's make this fun~
 楽しくやろうよ～？
 What's that about backup?
 バックアップは？
+
+
+I double dare you.
+二重の意味でスゴいね。
+Catch me. If you can, that is.
+ほら、捕まえてみなよ～。
+Weren't you chasing me?
+私を追いかけてたんじゃないの？
+I've got somethin nice for ya.
+いいものがあるよ。
+Be a good girl for me, will ya?
+いい子にしてるんだよ、わかった？
+You need to show some restraint.
+少しは自制してね。
+Stay where you belong, you naughty girl.
+そこでしばらく大人しくしてるんだよ。
+Let's go somewhere more private.
+ちょっと人目につかないところに行こうよ。
+Ready or not, here I come.
+とにかく来たよ。
+Those sticky fingers belong in a pair of mittens.
+悪い手にはミトンを被せちゃうぞ。
+All units. Apprehend convict with extreme prejudice.
+各員、脱獄犯を確保！
+You're going nowhere.
+どこにも行かせないよ。
+Come on. This wasn't your only weapon, was it?
+ねえ、もっと持ってるんでしょ？
+A tank, huh.
+硬いね。
+Mine now.
+いいもの持ってるじゃん！
+Just keeping you safe from yourself.
+これは君自身のためにやってるんだよ。
 
 An outsider!
 よそ者め！
@@ -15957,6 +15997,9 @@ You leave me no choice.
 選択肢はないみたいですね。
 I stand firm.
 全力で抗います。
+
+You look cute in that, you should lose the rest though!
+もがく姿はとても可愛らしいですが、大人しくしていたほうがいいですよ。
 
 I don't like the way you're looking at me!
 そんな目で見ないで！
@@ -16161,6 +16204,119 @@ Defend!
 
 Rawr!
 生意気な！
+
+
+You will loose me or burn eternal!!!
+解放しないと永遠に焼いてやるぞ！！！
+... This shame is unbearable! Oh sister!!!
+なんと耐え難い恥辱……！
+Oh! Mytrice is caught! My ambitions laid to ruin!
+このMytrice様が捕まってしまうなんて！私の野望もこれまでか！
+The winds of retribution carry me elsewhere...
+因果の風がどこへなりとも運んでくれるだろう……
+Myrtrice will come for you shortly! Consider yourself fortunate...
+幸運に思え、Mytrice様がすぐに駆けつけてやるからな！
+I will retreat into darkness...
+一度暗闇に逃げなければ……
+My sins are a multitude! I will submit to your judgements...
+裁きは受けるつもりなのだ、私の犯した罪は重いからな……
+I do not ask for mercy for I have shown none!
+慈悲を乞うつもりはないぞ！
+You must punish me! I can't face my sister Myrtle until my debts are paid...
+私を罰して欲しいのだ……このままでは妹のMyrtleに合わせる顔がない……。
+Your chest quivers... Do you fear me?
+震えているぞ、私が怖いのか？
+Is it that another moth has become enthralled to my fires bright?
+炎に惹かれた蛾が一匹増えたようだな。
+Myrtrice entreats you! Remain still and let my adoring embers kiss your lips tender...
+黙って私の炎にキスをするんだ、このMytrice様の命令だぞ……。
+To struggle is to invite searing coals upon your head!
+これ以上もがくと頭に灼熱の炭を置くぞ！
+I will drag you into the dark and you will witness my projects!
+貴様を暗闇の底へ招待してやる。そこで我が計画を見るがいい。
+To escape is only to delay! My fires consume ALL!
+逃げたところで何も変わらない、いずれは我が炎がすべてを焼き尽くすぞ！
+Dusty trinkets... Your scrapping around is an insolence!
+ゴミがこんなに……散らかしおって！
+You would scorn the memory of my sister with escape?!
+妹の思いを軽んじて逃げるのか！？
+Careless of you to appear before Myrtrice like this!
+このMyrtrice様の前に姿を現すとは、愚かなのだ！
+Your attempts are trivial!
+無駄なあがきだ！
+You invite wrath!!!
+もう怒ったぞ！
+Pathetic!!!
+愚かな！
+Such hapless casting scorns the memory of my sister!
+出来損ないの魔法で妹の思いを愚弄するな！
+Your magics will be swallowed up by hellfire!!!
+地獄の業火で魔法ごと飲み込んでやる！
+Myrtrice is subject to no magic!!!
+このMytrice様には魔法なぞ効かないのだ！
+Items? How exceptionally talentless...
+道具に頼るのか？なんと浅はかな……
+That shrine scorns the memory of my sister! I hate it!
+その祭壇は妹の思いを蔑ろにするものなのだ、許せないのだ！
+True power doesn't come from old rickety crates...
+そんな古ぼけた箱からは真の力は得られないぞ……
+Orbs? What a gruesome display of weakness! True power comes from the self!
+オーブに頼るなんて、まさに軟弱者の証。真の強者が頼るのは己の力のみなのだ！
+YOU SCORN THE MEMORY OF MY LATE SISTER!!!
+妹の思いを蔑ろにしたな！
+This is where you will remain until Myrtrice wills otherwise!
+このMytrice様が命令するまでここにいるのだ！
+This is what you were gripping so tightly in your hands?
+どうしたのだ？貴様が両手でしっかり握っていた武器はここにあるぞ？
+WHAT ABBORANCE! You will pay for that...
+なんてことをするのだ！この対価は支払ってもらうぞ！
+SEAR ETERNAL!
+永遠に焼かれていろ！
+I, Myrtrice, missed?!
+このMytrice様がミスを……！？
+No one resists Myrtrice! How irritating!!!
+このMytrice様に抵抗なぞ無意味だというのに、苛立たしい！
+Your failures do not surprise Myrtrice!
+稚拙なミスだけど、驚きはしないのだ。
+Your pathetic attempts scorn the memory of my sister!
+その幼稚な行動で妹を侮辱するのはやめるのだ！
+The curtains of my revenge are drawn! You will follow me...
+これで終わったのだ、付いてこい……
+You will come with Myrtrice!!!
+Mytrice様に従うのだ！
+Be dazed by the radiant brilliance of my hellfires!
+我が地獄の業火に魅せられたか！
+I will repay the theif with brutal reprisal...
+盗人よ、残酷な結末を覚悟するのだ……。
+Your fate is sealed! ... Myrtle this is for you, sister!
+貴様の運命は決まったのだ！　……Myrtle、この娘をあなたに捧げる……
+All creatures are subject to Myrtrice! It is the price of their insolence...
+全ての怪物はこのMytrice様にひれ伏すのだ！　これが横暴の代価なのだ……
+You make a grave mistake ignoring me!!!
+私を無視した代償は大きいのだ！
+Your eyes belong here! With Myrtrice!!!
+Mytrice様を見るのだ！
+The ones who turn their backs on Myrtrice SEAR IN HELLFIRE!
+このMytrice様に背く者は地獄の業火に焼き尽くしてやるのだ！
+What a hideous display!!! Where is your honor?
+一体何をしているのだ、名誉はどこにやったのだ！？
+It is this kind of petulant insolence that tarnishes the memory of my sister!
+名誉無き行動は我が妹の思いを愚弄すると知るのだ！
+You are a blight! My sister Myrtle would never stand for this!!!
+なんて醜悪な！　Myrtleはこんなことしない！
+THE CURTAINS OF MY REVENGE DRAW OPEN WIDE!
+復讐劇の始まりだ！
+What an excellent oppertunity to expand my alters in the dark!
+我が世界を拡大する絶好の機会だ！
+I see a chalice before me... it drips with shadow and overflows with darkness!
+見えているぞ……聖杯から溢れる闇で世界が満ちていく……。
+My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*
+Myrtleは私よりも守護に長けていた……妹に会いたいのだ……。
+THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
+我が報復の道は硫黄と地獄の業火で舗装されているのだ！　燃えるがいい！
+I, Myrtrice, will resist their insolent fusilades!
+我、Mytriceが降りかかる火の粉を払ってやろう！
+
 
 So this is what it's like...
 こんな感じなのか……
@@ -16401,7 +16557,7 @@ I will take you back home~
 You'd look great in my palace.
 私の住処に連れて行ってやろうか。
 Are we having fun?
-楽しんでいるようだな？
+楽しんでる？
 Get over here!
 それをよこせ！
 Humans like you make great toys.
@@ -16487,6 +16643,50 @@ I shall take you for myself~
 私が連れて行く。
 Where do you think you're going?
 どこに行くつもり？
+
+
+You won't get me!
+捕まるものか！
+My grandma is tougher than you!
+私のお婆ちゃんの方がまだタフだな！
+Restrain me.
+縛ってくれ……。
+Play with me.
+ちょっと遊ばないか？
+Lock me up.
+拘束してほしい……。
+This won't work.
+これじゃあダメだ。
+I don't play with young ones.
+若い子とは遊ばないようにしているんだ。
+Are we having fun?
+楽しんでいるか？
+Oh, a lost toy!
+ああ、玩具が来た！
+I am stronger than that!
+その程度か！
+That hurts!
+今のは痛かったぞ！
+Nice party trick!
+面白い手品だ！
+Oh, shiny!
+うおっまぶし！
+*sighs*
+はぁ……
+You can't get away!
+逃さないぞ！
+You are helpless now!
+勝ち目はないぞ！
+Give up!
+降参しろ！
+Are you hiding?!
+それで防いだつもり！？
+You are my pet now!
+お前は私のペットだ！
+Yoink!
+
+You can't get out now!
+これで逃げられないぞ！
 
 I will be free... even if it takes me a thousand years!
 例え1000年かかろうとも自由になってみせる……！
@@ -21143,6 +21343,13 @@ An enemy found you while you were busy!
 (Stand over it and place your feet in the footrests)
 (上に立ってみる)
 
+(Drop off a prisoner from your collection)
+(コレクションからディスプレイに閉じ込める)
+(Put NME on the stand) (PRCNT% Chance)
+(NME をディスプレイに閉じ込める)(PRCNT% で成功)
+(Put NME on the stand)
+(NME をディスプレイに閉じ込める)
+
 (This is a piece of bondage furniture)
 (拘束用のインテリアがある)
 (You lock yourself in the furniture!)
@@ -25282,8 +25489,8 @@ Equip to hotbar and cast to designate an Offhand weapon to gain passive effects 
 
 Arcane Tome
 アーケインの書
-Contains advanced formulas and thrilling tales of thirsty wizards.
-高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。
+Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
+高度な魔法の技術と、知識に飢えた魔法使いのスリリングな物語を収録。クリティカルが発動しない。
 +5% magic damage. Offhand: Applies passive bonus.
 魔法ダメージ+5%。　サブウェポン時：魔法ダメージ+5%。
 You find a magical tome.
@@ -25293,8 +25500,8 @@ Open the book. What can go wrong?
 
 Tome of Bondage
 緊縛の書
-Contains a malevolent spirit that wishes only to tie up damsels.
-少女を縛るのが大好きな悪鬼が封印されている。
+Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
+少女を縛るのが大好きな悪鬼が封印されている。クリティカルが発動しない。
 +10% binding effectiveness. Offhand: Applies passive bonus.
 拘束力+10%。　サブウェポン時：拘束力+10%。
 You find a magical tome with a sealed padlock on it.
@@ -25740,7 +25947,7 @@ Unique
 Unlock using magic
 魔法を使って解錠
 
-Include Weapons,
+Include Weapons
 武器を含む
 Merge Armor
 鎧を統合
@@ -27645,6 +27852,10 @@ The ENMY sticks a stuffing into your open mouth! (DMGDLT)
 ENMY が口に詰め物を詰め込んできた！ (DMGDLT)
 The ENMY reaches for your mouth and fails!
 ENMY が口に詰め物を詰め込もうとしてきたが、失敗した！
+The ENMY takes advantage of the gag around your neck~ (DMGDLT)
+ENMY に猿轡を着けられた！ (DMGDLT)
+The ENMY reaches for the gag around your neck!
+ENMY が猿轡に手を伸ばしてきた！
 The ENMY pulls your hands together and sticks a clip between them! (DMGDLT)
 ENMY に腕を掴まれ、拘束されてしまった！ (DMGDLT)
 The ENMY grabs your wrists but you pull away!
@@ -29689,6 +29900,8 @@ Editing Restraints
 拘束具をセット中
 Imprison in Furniture
 拘束用インテリアで拘束中
+Dropoff Prisoner
+囚人を降ろす
 
 Module (Utility)
 モジュール(その他)
@@ -29923,10 +30136,10 @@ OVERWRITE All!
 Need Positive Opinion to Promote
 昇格させるには好感度が足りない
 
-Servant Enjoyment: AMNT
-使用人の幸福度: AMNT
-Prisoner Enjoyment: AMNT
-囚人の幸福度: AMNT
+Servant Cuddle Points: AMNT (+OPN opinion/cycle)
+使用人の幸福度: AMNT (+OPN 追加ポイント/サイクル)
+Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
+囚人の幸福度: AMNT (+OPN 追加ポイント/サイクル)
 Submissive prisoners and dominant servants add different amounts of opinion per cycle
 マゾの囚人とサドの使用人では、追加される好感度の上昇が異なる
 
@@ -30164,17 +30377,97 @@ You'll need an ancient key to unlock the ancient-made collar.
 古代の拘束具を外すには古代の鍵が必要だ。
 
 Ancient Worshipper
-古代文明の信徒
+古代文明の崇拝者
 The ancient worshipper repents of her ways.
-古代文明の信徒は改心した。
+古代文明の崇拝者は改心した。
 The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
-古代文明の信徒の拘束具が伝播した！ (+RestraintAdded)
-Crystals start to grow on your locks! (DamageTaken)
+古代文明の崇拝者の拘束具が伝播した！ (+RestraintAdded)
+Crystals start to grow on one of your restraints! (DamageTaken)
 クリスタルが成長し、錠を形成した！ (DamageTaken)
 The ancient worshipper mumbles at you for assistance! (DamageTaken)
-古代文明の信徒が助けを求め縋ってきた！ (DamageTaken)
+古代文明の崇拝者が救いを求め縋ってきた！ (DamageTaken)
+
+Ancient Congregant
+古代文明の信徒
+The ancient congregant repents of her ways.
+古代文明の信徒は改心した。
+The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
+古代文明の信徒の拘束具が伝播した (+RestraintAdded)
+Crystals start to grow on your restraints! (DamageTaken)
+クリスタルが成長し、錠を形成した！ (DamageTaken)
+The ancient congregant mumbles at you for assistance! (DamageTaken)
+古代文明の信徒が救いを求め縋ってきた！ (DamageTaken)
+
+Ancient Hierophant
+古代文明の教皇
+The ancient hierophant repents of her ways.
+古代文明の教皇は改心した。
+The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
+古代文明の教皇の拘束具が伝播した (+RestraintAdded)
+Crystals start to grow on your restraints! (DamageTaken)
+クリスタルが成長し、錠を形成した！ (DamageTaken)
+The ancient hierophant mumbles at you for assistance! (DamageTaken)
+古代文明の教皇が救いを求め縋ってきた！ (DamageTaken)
 
 The crystals break off, revealing a keyhole and weakening the item.
 結晶が割れ、拘束具の鍵穴が露出した。
 Your distraction causes the crystals to grow back, encasing the lock again!
 性欲を浴びてクリスタルが成長し、錠を再び覆ってしまった。
+
+After popping the gag out of your mouth, it hangs loose around your neck.
+猿轡を外し、首にぶら下げた。
+The gag is now in your mouth.
+猿轡を咥えた。
+
+ERROR: Restraint does not exist. Did you forget to load mods?
+エラー：存在しない拘束具を確認。MODの読み込みを忘れていませんか？
+
+Gag Necklace
+猿轡のネックレス
+A cute accessory for those who wish to (not) make a statement.
+無口な人(あるいは真逆)の人のためのアクセサリー。
+Functions as a collar.
+首輪としても機能する。
+
+No mod info!
+MODの詳細情報なし
+Wrong patch
+誤ったMODです
+VERY Outdated!
+非常に古いMODです
+Outdated!
+古いMODです
+Check dependencies!
+依存先を確認
+Check compatibility!
+互換性を確認
+Misc Error
+その他のエラー
+Magical disenchantment suspends your living collar for AMNT turns
+魔法によって、 AMNT ターンの間生きている首輪を欺く。
+Hardlight
+エネルギー
+Magic
+魔法
+Leather
+革
+Knocked Out
+気絶
+Latex
+ラテックス
+Rope
+縄
+Magic Rope
+魔法の縄
+Metal
+金属
+Slime
+スライム
+Tape
+テープ
+Vine
+蔓
+Ice
+氷
+Furniture
+家具
