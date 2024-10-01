@@ -3608,6 +3608,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		struggleRate: 1.5,
 		powerStruggleBoost: 1.0,
 		healthStruggleBoost: 1.0,
+		mageStruggleBoost: 1.4,
 		enemyBondageMult: 2.0,
 	},
 	"Metal": {
@@ -3625,6 +3626,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 0.75,
 		enemyBondageMult: 1.75,
+		mageStruggleBoost: 0.3,
 		latex: true,
 	},
 	"Tape": {
@@ -3641,6 +3643,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		struggleRate: 1.25,
 		powerStruggleBoost: 2.0,
 		healthStruggleBoost: 1.0,
+		mageStruggleBoost: 0.1,
 		enemyBondageMult: 1.5,
 	},
 	"Ice": {
@@ -3649,6 +3652,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		struggleRate: 0.6,
 		powerStruggleBoost: 3.0,
 		healthStruggleBoost: 0.7,
+		mageStruggleBoost: 0.7,
 		enemyBondageMult: 0.5,
 	},
 	"Furniture": {

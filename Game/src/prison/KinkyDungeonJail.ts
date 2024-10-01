@@ -1422,7 +1422,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	}
 
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
-	KDFixPlayerClothes(outfit?.palette || KDGetMainFaction() || "Jail");
+	KDFixPlayerClothes(outfit?.palette || KinkyDungeonPlayer.Palette || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
 
 	KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);

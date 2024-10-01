@@ -1148,16 +1148,11 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, No
 					if (!Enemy.boundLevel) Enemy.boundLevel = 0;
 
 					let effmult = 1;
-					if (resistStun == -2) {
-						predata.bindEff *= 2;
-					} else if (resistStun == -1) {
-						predata.bindEff *= 1.5;
-					}
-					if (resistDamage == 1 || resistStun == 1) {
+					if (resistDamage == 1) {
 						predata.bindEff *= 0.75;
 						effmult *= 0.75;
 					}
-					if (resistDamage == 2 || resistStun == 2) {
+					if (resistDamage == 2) {
 						predata.bindEff *= 0.5;
 						effmult *= 0.5;
 					}
@@ -1203,6 +1198,9 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, No
 					}
 					// Do the deed
 					KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg, predata.faction == "Player", Delay);
+
+					if (predata.bindType)
+						KDBindEnemyWithTags(Enemy.id, predata.bindType, predata.dmg);
 
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
@@ -2681,9 +2679,8 @@ function KDBulletHitEnemy(bullet: any, enemy: entity, d: number, nomsg: boolean)
 				|| KDGetBulletBindingTags(bullet.bullet.damage.bindType
 					|| bullet.bullet.spell.bindType, pf, false);
 			if (tags) {
-				// TODO apply the restraints themselves
+				KDBindEnemyWithTags(enemy.id, tags, (bullet.bullet.spell?.power || 0));
 			}
-			//KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, bullet.bullet.damage.type, pf, bullet.bullet.spell, bullet.bullet.faction, bullet);
 		}
 	}
 }
@@ -3167,4 +3164,17 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 
 		KinkyDungeonSendEvent("crackTile", data);
 	}
+}
+
+function KDBindEnemyWithTags(id: number, tags: string[], power: number = 0) {
+	let restraintsEligible = KDGetNPCEligibleRestraints_fromTags(
+		id,
+		tags,
+		{
+			forceEffLevel: KDGetEffLevel() + power,
+			allowVariants: false,
+			noOverride: true,
+		}
+	);
+	// TODO add restraints such that binding is maximized but less than total binding
 }

@@ -2964,12 +2964,10 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 					let color = {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1};
 					let palette = "";
 					let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
-					for (let inv of KDGetRestraintsForEntity(entity)) {
-
-						if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette)
-							&& (KDToggles.ApplyPaletteTransform && (!KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
-							palette = outfit?.palette || KDDefaultPalette;
-						}
+					if ((KDToggles.ForcePalette || outfit?.palette || KinkyDungeonPlayer.Palette)
+						&& (KDToggles.ApplyPaletteTransform
+						&& (outfit?.palette || KinkyDungeonPlayer.Palette || !KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
+							palette = outfit?.palette || KinkyDungeonPlayer.Palette || KDDefaultPalette;
 					}
 					let efd: alwaysDressModel = {
 						Model: "Catsuit",

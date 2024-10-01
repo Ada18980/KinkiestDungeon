@@ -1,5 +1,7 @@
 "use strict";
 
+let KDEnemyStruggleHPExp = 0.8;
+
 let KDOpinionThreshold = 12;
 
 let KDDebugOverlay2 = false;
@@ -1376,7 +1378,8 @@ function KDGetEnemyStruggleMod(enemy: entity, force: boolean, defaultSpeed: bool
 			? 1.0
 			: 0.15;
 	}
-	if (!defaultSpeed && enemy.hp >= enemy.Enemy.maxhp) mult *= 1.5;
+	if (!defaultSpeed && enemy.boundLevel >= enemy.Enemy.maxhp) mult *= 1.0 + (enemy.boundLevel/enemy.Enemy.maxhp - 1) * 0.5;
+	if (!defaultSpeed && enemy.hp > 0.52) mult *= 0.5 + enemy.hp / enemy.Enemy.maxhp;
 	if (!defaultSpeed && mult > 0) {
 		if (KinkyDungeonGetBuffedStat(enemy.buffs, "Lockdown")) mult *= KinkyDungeonGetBuffedStat(enemy.buffs, "Lockdown");
 	}
@@ -6818,7 +6821,7 @@ function KDPredictStruggle(enemy: entity, struggleMod: number, delta: number, al
 
 	if (Object.keys(data.specialBoundLevel).length < 1) {
 		// Simple math, reduce bound level, dont have to worry.
-		data.struggleMod *= (10 + Math.pow(Math.max(0.01, enemy.hp), 0.75));
+		data.struggleMod *= (10 + Math.pow(Math.max(0.01, enemy.hp ** KDEnemyStruggleHPExp), 0.75));
 		data.boundLevel = Math.max(Math.min(Math.max(0, data.boundLevel), minLevel), data.boundLevel - data.delta * data.struggleMod);
 	} else {
 		// We go layer by layer
@@ -6847,7 +6850,7 @@ function KDPredictStruggle(enemy: entity, struggleMod: number, delta: number, al
 			// Otherwise
 			let totalCost = layer[1] / sr;
 			if (enemy.hp > 1)
-				totalCost *= 10/(10 + hBoost * Math.pow(enemy.hp, 0.75));
+				totalCost *= 10/(10 + hBoost * Math.pow(enemy.hp, 0.9));
 			totalCost *= 3/(3 + (pBoost * enemy.Enemy.power || 0));
 			totalCost *= 2/(2 + (mBoost * enemy.Enemy.unlockCommandLevel || 0));
 

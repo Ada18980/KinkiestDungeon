@@ -46,8 +46,8 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
 
-KDToggleApplyPaletteRestraint,Apply palette to Restraints
-KDToggleApplyPaletteTransform,Apply palette to transforms
+KDToggleApplyPaletteRestraint,Apply palettes to Restraints
+KDToggleApplyPaletteTransform,Apply palettes to transforms
 
 KDToggleIgnoreApplyCharPalette,Don't use character palette
 KDToggleAlwaysApplyCharPalette,Always use character palette
@@ -122,7 +122,7 @@ KDToggleNipples,Enable Nipples
 KDToggleNippleToysOption,Show Nipple Toys Over Bras
 KDToggleNippleToysHide,Hide Nipple Clamps
 KDToggleNipplePiercingsHide,Hide Nipple Piercings
-KDToggleForcePalette,Force restraints to use outfit palette
+KDToggleForcePalette,Use default palette when no outfit is worn
 KDToggleFlipPlayer,Flip Player Display
 KDToggleGreyscaleBlindness,Grayscale when Blind
 KDToggleFastFloaters,Faster Floater Fade
@@ -23497,7 +23497,7 @@ KDPaletteMaidforce,Maid
 KDPaletteElemental,Elemental
 KDPaletteElemental2,Royal
 
-KDSelectPalette,Choose default restraint palette:
+KDSelectPalette,Choose default outfit palette:
 
 KDAutoLoadMods,Auto Load Mods
 KDModVirus,SUSPICIOUS MOD DETECTED
