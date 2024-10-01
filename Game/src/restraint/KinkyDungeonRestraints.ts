@@ -2796,6 +2796,9 @@ type eligibleRestraintOptions = {
 	dontPreferVariant?:  boolean;
 	allowLowPower?:      boolean;
 	ForceDeep?:          boolean;
+	/** Only use with KDGetRestraintWithVariants */
+	extraOptions?:       string[];
+	inventoryWeight?: 	 number;
 }
 
 /**
@@ -2805,6 +2808,7 @@ type eligibleRestraintItem = {
 	restraint:  restraint;
 	variant?:   ApplyVariant;
 	weight:     number;
+	inventoryVariant?: string,
 }
 
 /**
@@ -2889,7 +2893,7 @@ function KDGetRestraintsEligible (
 	}
 
 	let arousalMode = KinkyDungeonStatsChoice.get("arousalMode");
-	let cache: { r : restraint; w : number }[] = [];
+	let cache: { r : restraint; w : number, inventory?: boolean, name?: string}[] = [];
 	for (let restraint of KinkyDungeonRestraints) {
 
 		if ((
@@ -2930,11 +2934,17 @@ function KDGetRestraintsEligible (
 		}
 	}
 
+	if (options?.extraOptions) {
+		for (let opt of options.extraOptions) {
+			cache.push({r: KDRestraint({name: opt}), w:options?.inventoryWeight || 100, name: opt, inventory: true})
+		}
+	}
+
 	let add = false;
 	let addedVar = false;
 	for (let r of cache) {
 		let restraint = r.r;
-		if (filter) {
+		if (filter && !r.inventory) {
 			if (filter.allowedGroups && !filter.allowedGroups.includes(r.r.Group)) continue;
 			if (filter.maxPower && r.r.power > filter.maxPower && (!filter.looseLimit || !r.r.unlimited)) continue;
 			if (filter.minPower && r.r.power < filter.minPower && (!filter.looseLimit || !r.r.limited) && !r.r.unlimited) continue;
@@ -2951,7 +2961,6 @@ function KDGetRestraintsEligible (
 			add = false;
 			addedVar = false;
 			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, options?.ForceDeep || KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory)) {
-
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
@@ -2977,7 +2986,7 @@ function KDGetRestraintsEligible (
 				}
 			}
 
-			if (options?.ApplyVariants && restraint.ApplyVariants) {
+			if (options?.ApplyVariants && restraint.ApplyVariants && !r.inventory) {
 				for (let variant of Object.entries(restraint.ApplyVariants)) {
 					if (Level >= KDApplyVariants[variant[0]].minfloor && !(Level >= KDApplyVariants[variant[0]].maxfloor)
 						&& (!variant[1].enemyTags || Object.keys(variant[1].enemyTags).some((tag) => {return tags.get(tag) != undefined;}))
@@ -3023,6 +3032,7 @@ function KDGetRestraintsEligible (
 				RestraintsList.push({
 					restraint: restraint,
 					weight: r.w,
+					inventoryVariant: (r.name && KinkyDungeonRestraintVariants[r.name]) ? r.name : undefined,
 				});
 			}
 		}
@@ -3108,7 +3118,7 @@ function KinkyDungeonGetRestraint (
 	for (let rest of Restraints) {
 		let restraint = rest.restraint;
 		let weight = rest.weight;
-		restraintWeights.push({restraint: restraint, weight: restraintWeightTotal});
+		restraintWeights.push({restraint: restraint, weight: restraintWeightTotal, inventoryVariant: rest.inventoryVariant});
 		weight += rest.weight;
 		restraintWeightTotal += Math.max(0, weight);
 	}
@@ -3144,6 +3154,7 @@ function KinkyDungeonGetRestraint (
  * @param [options.dontPreferVariant]
  * @param [options.allowLowPower]
  * @param [options.ForceDeep]
+ * @param [options.extraOptions]
  * @returns {{r: restraint, v: ApplyVariant}}
  */
 function KDGetRestraintWithVariants (
@@ -3163,7 +3174,7 @@ function KDGetRestraintWithVariants (
 	useAugmented?:        boolean,
 	augmentedInventory?:  string[],
 	options?:             eligibleRestraintOptions
-): {r: restraint, v: ApplyVariant}
+): {r: restraint, v: ApplyVariant, iv: string}
 {
 	let restraintWeightTotal = 0;
 	let restraintWeights = [];
@@ -3175,7 +3186,7 @@ function KDGetRestraintWithVariants (
 	for (let rest of Restraints) {
 		let restraint = rest.restraint;
 		let weight = rest.weight;
-		restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal});
+		restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal, inventoryVariant: rest.inventoryVariant});
 		weight += rest.weight;
 		restraintWeightTotal += Math.max(0, weight);
 	}
@@ -3184,7 +3195,7 @@ function KDGetRestraintWithVariants (
 
 	for (let L = restraintWeights.length - 1; L >= 0; L--) {
 		if (selection > restraintWeights[L].weight) {
-			return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant};
+			return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant, iv: restraintWeights[L].inventoryVariant};
 		}
 	}
 }
@@ -5045,10 +5056,10 @@ function KDChooseRestraintFromListGroupPri(RestraintList: {restraint: restraint,
  * @param [skip]
  */
 function KDChooseRestraintFromListGroupPriWithVariants (
-	RestraintList: {restraint: restraint, variant?: ApplyVariant, weight: number}[],
+	RestraintList: eligibleRestraintItem[],
 	GroupOrder: string[],
 	skip: boolean = true
-): { r: restraint, v: ApplyVariant }
+): { r: restraint, v: ApplyVariant, iv: string}
 {
 	let cycled = false;
 	for (let i = 0; i < GroupOrder.length; i++) {
@@ -5069,7 +5080,7 @@ function KDChooseRestraintFromListGroupPriWithVariants (
 			for (let rest of Restraints) {
 				let restraint = rest.restraint;
 				let weight = rest.weight;
-				restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal});
+				restraintWeights.push({restraint: restraint, variant: rest.variant, weight: restraintWeightTotal, iv: rest.inventoryVariant});
 				weight += restraint.weight;
 				restraintWeightTotal += Math.max(0, weight);
 			}
@@ -5078,7 +5089,7 @@ function KDChooseRestraintFromListGroupPriWithVariants (
 
 			for (let L = restraintWeights.length - 1; L >= 0; L--) {
 				if (selection > restraintWeights[L].weight) {
-					return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant};
+					return {r: restraintWeights[L].restraint, v: restraintWeights[L].variant, iv: restraintWeights[L].iv};
 				}
 			}
 		}

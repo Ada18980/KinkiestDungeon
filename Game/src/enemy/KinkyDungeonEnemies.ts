@@ -2346,7 +2346,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 
 		for (let i = 0; i < 6 && i < enemy.items.length; i++) {
 			TooltipList.push({
-				str: TextGet(KinkyDungeonGetRestraintByName(enemy.items[i]) ? "Restraint" + enemy.items[i] : "KinkyDungeonInventoryItem" + enemy.items[i]),
+				str: KDGetItemNameString(enemy.items[i]),
 				fg: "#ffffff",
 				bg: "#000000",
 				size: 18,
@@ -5415,7 +5415,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					if (KDRandom() < actionDialogueChanceIntense && !enemy.playWithPlayer)
 						KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "HitPlayer").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 3, 5);
 					let replace = [];
-					let restraintAdd: {r: restraint, v: ApplyVariant}[] = [];
+					let restraintAdd: {r: restraint, v: ApplyVariant, iv: string}[] = [];
 					let restraintFromInventory = [];
 					let willpowerDamage = 0;
 					let staminaDamage = 0;
@@ -5535,7 +5535,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											false,
 											false);
 										replace.push({keyword:"RestraintAdded", value: KDGetRestraintName(rest.r, rest.v)});
-										restraintAdd.push({r: rest.r, v: rest.v});
+										restraintAdd.push({r: rest.r, v: rest.v, iv: rest.iv});
 										addedRestraint = true;
 									}
 								} else {
@@ -5561,7 +5561,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												looseLimit: true,
 												require: enemy.Enemy.RestraintFilter?.unlimitedRestraints ? undefined : enemy.items,
 											}, enemy, undefined, true, undefined, {
-												allowLowPower: KDRandom() < 0.5
+												allowLowPower: KDRandom() < 0.5,
+												extraOptions: enemy.items,
 											});
 
 										if (!rest) {
@@ -5581,14 +5582,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 													onlyUnlimited: true,
 													ignore: [...(enemy.items || []), ...restraintAdd.map((rst) => {return rst.r.name;})],
 												}, enemy, undefined, true, undefined, {
-													allowLowPower: KDRandom() < 0.5
+													allowLowPower: KDRandom() < 0.5,
 												});
 										} else {
-											restraintFromInventory.push(rest.r.name);
+											restraintFromInventory.push(rest.iv || rest.r.name);
 										}
 										if (rest) {
 											replace.push({keyword:"RestraintAdded", value: KDGetRestraintName(rest.r, rest.v)});
-											restraintAdd.push({r: rest.r, v: rest.v});
+											restraintAdd.push({r: rest.r, v: rest.v, iv: rest.iv});
 											addedRestraint = true;
 										}
 									}
@@ -7522,13 +7523,13 @@ function KDGetExtraTags(enemy: entity, useSpecial: boolean): Record<string, numb
 function KDRunBondageResist (
 	enemy:                    entity,
 	faction:                  string,
-	restraintsToAdd:          {r: restraint, v: ApplyVariant}[],
+	restraintsToAdd:          {r: restraint, v: ApplyVariant, iv: string}[],
 	blockFunction:            (r?: any) => void,
 	restraintFromInventory?:  string[],
 	spell?:                   spell,
 	Lock?:                    string,
 	Keep?:                    boolean
-): { r:restraint, v: ApplyVariant }[]
+): { r:restraint, v: ApplyVariant, iv: string}[]
 {
 	let restraintblock = KDCalcRestraintBlock();
 	let restraintpower = 0;
@@ -7536,7 +7537,7 @@ function KDRunBondageResist (
 		if (r)
 			restraintpower += Math.max(1, r.r.power);
 	}
-	let added = [];
+	let added: { r:restraint, v: ApplyVariant, iv: string}[] = [];
 	let name = enemy ? TextGet("Name" + enemy.Enemy.name) : (spell ? TextGet("KinkyDungeonSpell" + spell.name) : "");
 	if (enemy && ((enemy.Enemy.power * 0.5) || 0) < KDGameData.Shield) {
 		restraintblock = -1;
@@ -7597,10 +7598,20 @@ function KDRunBondageResist (
 			for (let r of restraintsToAdd) {
 				let bb = 0;
 				if (count >= protection) {
-					bb = KinkyDungeonAddRestraintIfWeaker(r.r, ((enemy ? enemy.Enemy.power + KDEnemyRank(enemy) : 0) || spell?.power || 0),
+					if (r.iv && KinkyDungeonRestraintVariants[r.iv]) {
+						bb =  KDEquipInventoryVariant(KinkyDungeonRestraintVariants[r.iv], "",
+							((enemy ? enemy.Enemy.power + KDEnemyRank(enemy) : 0) || spell?.power || 0),
 						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, (enemy?.Enemy.useLock ? enemy.Enemy.useLock : (r.r.DefaultLock || Lock)),
-						Keep, undefined, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+						Keep, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+						undefined, enemy, true, undefined, undefined, undefined) * 2;
+					} else {
+						bb = KinkyDungeonAddRestraintIfWeaker(r.r, ((enemy ? enemy.Enemy.power + KDEnemyRank(enemy) : 0) || spell?.power || 0),
+						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, (enemy?.Enemy.useLock ? enemy.Enemy.useLock : (r.r.DefaultLock || Lock)),
+						Keep, undefined, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction,
+						KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 						undefined, enemy, true, undefined, undefined, undefined, r.v) * 2;
+
+					}
 					if (bb) {
 						if (KDGroupBlocked(r.r.Group) && !enemy?.Enemy.bypass) {
 							KinkyDungeonSendTextMessage(
@@ -7610,14 +7621,13 @@ function KDRunBondageResist (
 								"#f0dc41", 1,
 								false, false, undefined, "Combat");
 						}
-						if (restraintFromInventory && enemy && restraintFromInventory.includes(r.r.name)) {
-							restraintFromInventory.splice(restraintFromInventory.indexOf(r.r.name), 1);
-							if (enemy.items?.includes(r.r.name)) {
-								enemy.items.splice(enemy.items.indexOf(r.r.name), 1);
+						if (restraintFromInventory && enemy && restraintFromInventory.includes(r.iv || r.r.name)) {
+							restraintFromInventory.splice(restraintFromInventory.indexOf(r.iv || r.r.name), 1);
+							if (enemy.items?.includes(r.iv || r.r.name)) {
+								enemy.items.splice(enemy.items.indexOf(r.iv || r.r.name), 1);
 							}
 						}
 						added.push(r);
-						KDSendStatus('bound', r.r.name, "enemy_" + name);
 						count += 1;
 					}
 					count += 0;

@@ -128,6 +128,7 @@ KDToggleGreyscaleBlindness,Grayscale when Blind
 KDToggleFastFloaters,Faster Floater Fade
 KDToggleNoDmgFloaters,No Damage Floaters
 KDToggleDynamicArmor,Dynamic Armor (must hide armor)
+KDToggleHideFloatingWeapon,Hide floating weapon display
 
 KDHelpless,Helpless!
 KDMissed,Evaded!
@@ -22217,6 +22218,7 @@ KinkyDungeonSpellOffhand,"Dual Wield"
 KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)"
 
 KDInventoryActionOffhand,"Equip Offhand"
+KDInventoryActionRemoveOffhand,"Remove Offhand"
 
 KinkyDungeonSpecialSpear,Make a ranged attack with the spear.
 KinkyDungeonSpecialMagicSpear,Make a ranged attack with the spear.

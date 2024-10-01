@@ -2099,7 +2099,7 @@ function KDPlayerEffectRestrain (
 	allowBondageResist:  boolean = true,
 	Lock?:               string,
 	options?:            any
-): { r: restraint, v: ApplyVariant }[]
+): { r: restraint, v: ApplyVariant, iv: string}[]
 {
 	let restraintsToAdd = [];
 	let player = KinkyDungeonPlayerEntity;

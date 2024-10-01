@@ -5182,7 +5182,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 		"FloatingWeapon": (_e, _spell, _data) => {
-			if (KinkyDungeonPlayerWeapon //  && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon})
+			if (KinkyDungeonPlayerWeapon && !KDToggles.HideFloatingWeapon //  && !KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon})
 				&& (!KDWeapon({name: KinkyDungeonPlayerWeapon})?.noHands || KDWeapon({name: KinkyDungeonPlayerWeapon}).telekinetic)
 				&& !KDWeapon({name: KinkyDungeonPlayerWeapon})?.unarmed) {
 				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
@@ -6134,7 +6134,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 	},
 	"draw": {
 		"Float": (_e, _weapon, _data) => {
-			if (KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))) {
+			if (!KDToggles.HideFloatingWeapon && KinkyDungeonCanUseWeapon(true, undefined, KDWeapon({name: KinkyDungeonPlayerWeapon}))) {
 				KDDraw(kdcanvas, kdpixisprites, "kdfloatingwep", KinkyDungeonRootDirectory + `Items/${KDWeapon({name: KinkyDungeonPlayerWeapon})?.name}.png`,
 					400, 300 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),//50,
 					//400 + 50 * Math.sin(2 * Math.PI * (CommonTime() % 3000)/3000),

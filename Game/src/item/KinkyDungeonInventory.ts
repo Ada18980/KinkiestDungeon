@@ -55,6 +55,10 @@ let KDInventoryActionsDefault: Record<string, (item: item) => string[]> = {
 		ret.push("QuickSlot2");
 		ret.push("QuickSlot3");
 		ret.push("QuickSlot4");
+		if (KDGameData.Offhand == _item.name)
+			ret.push("RemoveOffhand");
+		else if (KDGameData.InventoryAction != "Offhand")
+			ret.push("Offhand");
 		ret.push("Hotbar");
 		return ret;
 	},

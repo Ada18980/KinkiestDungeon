@@ -196,6 +196,7 @@ let KDToggles = {
 	RetroAnim: false,
 	DrawArmor: true,
 	DynamicArmor: false,
+	HideFloatingWeapon: false,
 	CrotchRopeOption: false,
 	ChastityOption: false,
 	ChastityOption2: false,
@@ -311,6 +312,7 @@ let KDToggleCategories = {
 	GreyscaleBlindness: "GFX",
 	DynamicArmor: "Clothes",
 	OnlySelfQuickInv: "UI",
+	HideFloatingWeapon: "Clothes",
 
 	ApplyPaletteRestraint: "none",
 	//ApplyPaletteOutfit: "none",
