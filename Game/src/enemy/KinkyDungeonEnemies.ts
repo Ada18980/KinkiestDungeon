@@ -8982,6 +8982,7 @@ function KDEnemyStruggleTurn(enemy: entity, delta: number, allowStruggleAlwaysTh
 			if (!enemy.strugglePoints) enemy.strugglePoints = 0;
 			enemy.strugglePoints += delta;
 		} else if (result != "Struggle") {
+			if (struggleNPCTarget.inv.conjured && result == "Remove") result = "ConjuredRemove";
 			KinkyDungeonSendTextMessage(3, TextGet("KDNPCEscape" + result)
 				.replace("ENMY", KDEnemyName(enemy))
 				.replace("ITMN", KDGetItemName(struggleNPCTarget.inv, Restraint)),

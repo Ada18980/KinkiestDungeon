@@ -25123,4 +25123,6 @@ KDSaving,Saving...
 KDSaved,Game Saved
 
 KDNPCEscapeRemove,ENMY escapes from the ITMN!
+KDNPCEscapeConjuredRemove,"ENMY escapes from the ITMN and the item vanishes."
 KDNPCEscapeUnlock,ENMY unlocks the ITMN!
+KDConjuredItemVanish,The conjured ITMN vanishes as it comes off.

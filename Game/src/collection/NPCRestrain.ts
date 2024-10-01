@@ -1011,7 +1011,7 @@ function KDNPCDoStruggle(id: number, slot: string, restraint: NPCRestraint, chan
 	} else if (restraint) {
 		restraint.lock = "";
 		let item = KDSetNPCRestraint(id, slot, undefined);
-		if (item && KDRestraint(item)?.inventory) {
+		if (item && KDRestraint(item)?.inventory && !item.conjured) {
 			let entity = KDGetGlobalEntity(id);
 			if (entity) {
 				if (!entity.items) entity.items = [];

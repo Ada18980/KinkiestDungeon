@@ -4472,7 +4472,7 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 			if (!KinkyDungeonCancelFlag) {
 				InventoryRemove(KinkyDungeonPlayer, AssetGroup);
 
-				let removed = [];
+				let removed: item[] = [];
 				for (let _item of KinkyDungeonInventory.get(Restraint).values()) {
 					if (_item && KDRestraint(_item).Group == Group) {
 						KDRestraintDebugLog.push("Deleting " + _item.name);
@@ -4496,7 +4496,11 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 						rem.push(JSON.parse(JSON.stringify(invitem)));
 						// @ts-ignore
 						let inventoryAs = invitem.inventoryVariant || invitem.inventoryAs || (Remover?.player ? invrest.inventoryAsSelf : invrest.inventoryAs);
-						if (invrest.inventory && !ForceRemove
+						if (invitem.conjured) {
+							KinkyDungeonSendTextMessage(1, TextGet("KDConjuredItemVanish")
+								.replace("ITMN", KDGetItemName(invitem)), "#ffffff", 1);
+						}
+						if (invrest.inventory && !ForceRemove && !invitem.conjured
 							&& (Keep
 								|| ((
 									invrest.enchanted
@@ -4612,7 +4616,11 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem: item, Keep?: boolean, NoEv
 		if (!KinkyDungeonCancelFlag) {
 			// @ts-ignore
 			let inventoryAs = item.inventoryVariant || item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
-			if (rest.inventory && !ForceRemove
+			if (item.conjured) {
+				KinkyDungeonSendTextMessage(1, TextGet("KDConjuredItemVanish")
+					.replace("ITMN", KDGetItemName(item)), "#ffffff", 1);
+			}
+			if (rest.inventory && !ForceRemove && !item.conjured
 				&& (Keep
 					|| rest.enchanted
 					|| rest.armor
