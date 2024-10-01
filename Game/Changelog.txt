@@ -29,9 +29,11 @@ TODO:
 - Aggro level
 
 TODO remove hogtie when released
+TODO Add Cuddle play type
 
 5.3.41
-- Added Cuddle play type
+- Fix bug where runes hit twice
+- Fix bug where magic keys are consumed even if unlocked by different means
 
 5.3.40
 - Added in a LOT of new patron NPCs, thank you for your support

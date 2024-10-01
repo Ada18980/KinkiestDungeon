@@ -3253,7 +3253,7 @@ interface KDCursedDef {
 	customInfo?: (item: item, Curse?: string) => void,
 	onApply?: (item: item, host?: item) => void,
 	condition: (item: item) => boolean,
-	remove: (item: item, host: item) => void, events?: KinkyDungeonEvent[]
+	remove: (item: item, host: item, specialMethod: boolean) => void, events?: KinkyDungeonEvent[]
 }
 
 type KDRestraintVariant = {

@@ -543,7 +543,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			if (KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel)) {
 				if (KDHasRemovableCurse(item, KDGameData.CurseLevel)) {
 					if (item.curse && KDCurses[item.curse]) {
-						KDCurses[item.curse].remove(item, KDGetRestraintHost(item));
+						KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
 					}
 
 					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);

@@ -55,8 +55,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonItemCount("Ectoplasm") >= 25;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
 		}
 	},
 	"DollLock" : {
@@ -69,8 +70,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonItemCount("DollID") >= 4;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -4);
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -4);
 		}
 	},
 	"SpellLock1" : {
@@ -83,8 +85,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonSpellPoints > 0;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonSpellPoints -= 1;
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonSpellPoints -= 1;
 		}
 	},
 	"SpellLock8" : {
@@ -98,9 +101,11 @@ let KDCurses: Record<string, KDCursedDef> = {
 			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
 			return KinkyDungeonSpellPoints >= amount;
 		},
-		remove: (_item, _host) => {
-			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
-			KinkyDungeonSpellPoints -= amount;
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod) {
+				let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
+				KinkyDungeonSpellPoints -= amount;
+			}
 		},
 		customInfo: (item, Curse) => {
 			let amount = KinkyDungeonStatsChoice.get("randomMode") ? 3 : 8;
@@ -165,8 +170,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonItemCount("MistressKey") > 0;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
 		}
 	},
 	"5Keys" : {
@@ -178,8 +184,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonRedKeys >= 5;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonRedKeys -= 5;
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonRedKeys -= 5;
 		}
 	},
 	"Key" : {
@@ -192,8 +199,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonRedKeys >= 1;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonRedKeys -= 1;
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonRedKeys -= 1;
 		}
 	},
 	"BlueLock" : {
@@ -206,8 +214,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonBlueKeys >= 1;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonBlueKeys -= 1;
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonBlueKeys -= 1;
 		}
 	},
 	"TakeDamageFire" : {
@@ -323,8 +332,9 @@ let KDCurses: Record<string, KDCursedDef> = {
 		condition: (_item) => {
 			return KinkyDungeonStatMana + KinkyDungeonStatManaPool >= 20;
 		},
-		remove: (_item, _host) => {
-			KinkyDungeonChangeMana(-20, false, 0, true, true);
+		remove: (_item, _host, _specialMethod) => {
+			if (!_specialMethod)
+				KinkyDungeonChangeMana(-20, false, 0, true, true);
 		}
 	},
 	"ShrineWill" : {
@@ -549,7 +559,7 @@ function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
 	}
 
 	if (KDCurses[Curse]) {
-		KDCurses[Curse].remove(restraint, host);
+		KDCurses[Curse].remove(restraint, host, false);
 	}
 
 	if (unlock) {

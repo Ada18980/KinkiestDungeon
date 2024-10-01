@@ -1338,7 +1338,7 @@ function KDProcessInputs(ReturnResult?: boolean): string {
 
 function KDInteract(x, y) {
 	KinkyDungeonSendEvent("beforeInteract", {x:x, y: y});
-	if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
+	if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5 && !KinkyDungeonEntityAt(x, y, false, undefined, undefined, false))
 		KinkyDungeonItemCheck(x, y, MiniGameKinkyDungeonLevel, true);
 	KDInteracting = false;
 	let tile = KinkyDungeonTilesGet(x + ',' + y);
@@ -1359,6 +1359,21 @@ function KDInteract(x, y) {
 		KinkyDungeonSendEvent("afterInteract", {x:x, y: y, type: "tile", objtype: tiletype});
 		return ret;
 
+	}
+	let Enemy = KinkyDungeonEntityAt(x, y, false, undefined, undefined, false);
+	if (Enemy) {
+		if ((KDIsImprisoned(Enemy)
+			|| ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy))
+			&& !(Enemy.playWithPlayer && KDCanDom(Enemy))))) {
+			let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
+			if (Enemy.specialdialogue) d = Enemy.specialdialogue; // Special dialogue override
+			if (d || ((!Enemy.lifetime || Enemy.lifetime > 9000) && !Enemy.Enemy.tags.notalk)) { // KDAllied(Enemy)
+
+				KDStartDialog(d, Enemy.Enemy.name, true, Enemy.personality, Enemy);
+				KinkyDungeonSendEvent("afterInteract", {x:x, y: y, type: "talk", entity: Enemy});
+				return;
+			}
+		}
 	}
 	KinkyDungeonSendEvent("afterInteractFail", {x:x, y: y});
 }

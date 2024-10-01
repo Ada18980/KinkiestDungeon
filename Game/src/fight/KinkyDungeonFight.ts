@@ -1898,7 +1898,7 @@ function KinkyDungeonUpdateBulletsCollisions(delta: number, Catchup?: boolean) {
 			// This is a bit of a brute force way of forcing the bullet to only check for collisions when time has passed, i.e. when delta = 1
 			// However the collision check still happens if the bullet was born in between turns, e.g the player uses Leather Package
 
-			if (b.collisionUpdate == undefined || delta > 0)
+			if (b.collisionUpdate == undefined || delta > 0) {
 				if (!KinkyDungeonBulletsCheckCollision(b, b.time >= 0, undefined, undefined, !(b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)), delta)) { // (b.bullet.faction == "Player" || (!b.vx && !b.vy) || b.bullet.aoe || (KDistEuclidean(b.vx, b.vy) < 0.9)) &&
 					if (!(b.bullet.spell && (b.bullet.spell.piercing || (b.bullet.spell.pierceEnemies && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(b.x, b.y)))))) {
 						KDMapData.Bullets.splice(E, 1);
@@ -1909,6 +1909,10 @@ function KinkyDungeonUpdateBulletsCollisions(delta: number, Catchup?: boolean) {
 					}
 					KinkyDungeonBulletHit(b, 0);
 				}
+				if (delta > 0 && !b.collisionUpdate) {
+					b.born = 0;
+				}
+			}
 			b.collisionUpdate = true;
 		}
 	}
