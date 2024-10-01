@@ -136,7 +136,7 @@ let KinkyDungeonMasochistDamageTypes = ["crush", "pain", "unarmed", "electric", 
 // Weapons
 let KinkyDungeonPlayerWeapon = "";
 let KinkyDungeonPlayerWeaponLastEquipped = "";
-let KinkyDungeonPlayerDamageDefault: weapon = {name: "", dmg: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, sfx: "Unarmed"};
+let KinkyDungeonPlayerDamageDefault: weapon = {name: "", damage: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, sfx: "Unarmed"};
 let KinkyDungeonPlayerDamage: weapon = KinkyDungeonPlayerDamageDefault;
 
 let KinkyDungeonDamageTypes = {
@@ -280,7 +280,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree?: boolean, NoOverride?: boo
 
 
 	if (KinkyDungeonStatsChoice.get("Brawler") && isUnarmed(KinkyDungeonPlayerDamage)) {
-		KinkyDungeonPlayerDamage.dmg += KDBrawlerAmount;
+		KinkyDungeonPlayerDamage.damage += KDBrawlerAmount;
 	}
 
 
@@ -291,7 +291,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree?: boolean, NoOverride?: boo
 			: Math.max(0.5, Math.min(1.0, 1.25 - 0.25 * KinkyDungeonSlowLevel));
 
 		if ((!data.brawler || !weapon?.unarmed) && !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
-			KinkyDungeonPlayerDamage.dmg *= KDIsHogtied() ? 0.01 : 0.5;
+			KinkyDungeonPlayerDamage.damage *= KDIsHogtied() ? 0.01 : 0.5;
 	}
 
 	if (data.legBondage || !data.brawler || !isUnarmed(KinkyDungeonPlayerDamage)) {
@@ -300,22 +300,22 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree?: boolean, NoOverride?: boo
 			KinkyDungeonPlayerDamage.chance *= KDIsHogtied(KinkyDungeonPlayer) ? 0.1 : 0.5;
 			if ((!data.brawler || !isUnarmed(KinkyDungeonPlayerDamage))
 				&& !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
-				KinkyDungeonPlayerDamage.dmg /= 2;
+				KinkyDungeonPlayerDamage.damage /= 2;
 		} else if (data.handBondage && (flags.KDDamageHands || isUnarmed(KinkyDungeonPlayerDamage))
 			&& (!weapon || !weapon.noHands || (!data.brawler && isUnarmed(KinkyDungeonPlayerDamage)))) {
 			KinkyDungeonPlayerDamage.chance *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
 			if ((!data.brawler || !isUnarmed(KinkyDungeonPlayerDamage))
 				&& !KDWeaponNoDamagePenalty(KinkyDungeonPlayerDamage))
-				KinkyDungeonPlayerDamage.dmg *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
+				KinkyDungeonPlayerDamage.damage *= 0.5 + Math.max(0, 0.5 * Math.min(1, data.handBondage));
 		}
 		if (KinkyDungeonSlowLevel > 1) {
 			if (!data.brawler && !isUnarmed(KinkyDungeonPlayerDamage))
-				KinkyDungeonPlayerDamage.dmg *= Math.max(0.5, Math.min(1.0, 1.25 - 0.25 * KinkyDungeonSlowLevel));
+				KinkyDungeonPlayerDamage.damage *= Math.max(0.5, Math.min(1.0, 1.25 - 0.25 * KinkyDungeonSlowLevel));
 		}
 	}
 
 	KinkyDungeonPlayerDamage.chance *= data.accuracyMult;
-	KinkyDungeonPlayerDamage.dmg *= data.damageMult;
+	KinkyDungeonPlayerDamage.damage *= data.damageMult;
 	return KinkyDungeonPlayerDamage;
 }
 /**
@@ -332,7 +332,7 @@ let KinkyDungeonEvasionPityModifierIncrementPercentage = 0.5; // Percent of the 
 let KDDefaultCrit = 1.3;
 let KDDefaultBindCrit = 1.5;
 
-function KinkyDungeonGetCrit(accuracy?: number, Damage?: weapon, Enemy?: entity) {
+function KinkyDungeonGetCrit(accuracy?: number, Damage?: damageInfo, Enemy?: entity) {
 	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
 	let data = {
 		Damage: Damage,
@@ -346,7 +346,7 @@ function KinkyDungeonGetCrit(accuracy?: number, Damage?: weapon, Enemy?: entity)
 
 	return (data.basecrit + data.critboost) * data.critmult;
 }
-function KinkyDungeonGetBindCrit(accuracy?: number, Damage?: weapon, Enemy?: entity) {
+function KinkyDungeonGetBindCrit(accuracy?: number, Damage?: damageInfo, Enemy?: entity) {
 	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
 	let data = {
 		Damage: Damage,
@@ -705,7 +705,7 @@ function KDArmorFormula(DamageAmount: number, Armor: number): number {
  * @param [Critical]
  * @param [Attack]
  */
-function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, NoMsg: boolean, Spell?: any, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
+function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: any, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
@@ -725,12 +725,12 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: any, Ranged: boolean, No
 		nocrit: Spell?.nocrit || Enemy?.Enemy.tags?.nocrit || Damage?.nocrit,
 		crit: KDDefaultCrit,
 		bindcrit: KDDefaultBindCrit,
-		type: (Damage) ? Damage.type : 0,
+		type: (Damage) ? Damage.type : "stun",
 		bufftype: (Damage) ? Damage.type : 0,
 		time: (Damage) ? Damage.time : 0,
 		dmg: (Damage) ? Damage.damage : 0,
 		bind: (Damage) ? Damage.bind : 0,
-		bindType: (Damage) ? Damage.bindType : 0,
+		bindType: (Damage) ? Damage.bindType : "Leather",
 		flags: (Damage) ? Damage.flags : undefined,
 		boundBonus: (Damage) ? Damage.boundBonus : 0,
 		bindEff: (Damage) ? (Damage.bindEff || 1) : 1,
@@ -1472,7 +1472,7 @@ function KinkyDungeonDisarm(Enemy: entity, suff?: string): boolean {
  * @param [chance]
  * @param [bullet]
  */
-function KinkyDungeonAttackEnemy(Enemy: entity, Damage: any, chance?: number, bullet?: any): boolean {
+function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: number, bullet?: any): boolean {
 	let disarm = false;
 	if ((Damage && !Damage.nodisarm) && Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;

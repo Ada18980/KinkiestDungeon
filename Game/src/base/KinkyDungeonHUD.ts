@@ -2534,7 +2534,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				Damage: KinkyDungeonPlayerDamage,
 			};
 			KinkyDungeonSendEvent("calcDisplayDamage", data);
-			let meleeDamage = (KinkyDungeonPlayerDamage.dmg) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") + data.buffdmg;
+			let meleeDamage = (KinkyDungeonPlayerDamage.damage) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") + data.buffdmg;
 			statsDraw.meleeDamage = {
 				text: TextGet("KinkyDungeonPlayerDamage")
 					.replace("DAMAGEDEALT", "" + Math.round(meleeDamage*10))

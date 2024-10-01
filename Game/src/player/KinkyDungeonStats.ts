@@ -430,21 +430,59 @@ function KDBulletAlreadyHit(bullet: any, entity: entity, suppressAdd?: boolean):
 }
 
 
-type damageInfo = {
+interface damageInfoMinor {
 	damage:     number;
 	type:       string;
+	time?: number,
+	flags?: string[],
+
+	distract?: number,
+
+	crit?: number,
+	addBind?: boolean,
+	bindcrit?: number,
+	bind?: number,
+	bindType?: string,
+}
+
+
+interface damageInfo extends damageInfoMinor {
 	flags?:     string[];
 	time?:      number;
 	bind?:      number;
+	bindEff?: number,
+	sfx?: string,
 	crit?:      number;
 	bindcrit?:  number;
 	bindType?:  string;
 	distract?:  number;
-
+	distractEff?: number,
+	desireMult?: number,
 	addBind?: boolean;
+
+	nodisarm?: boolean,
+	nocrit?: boolean,
+	noblock?: boolean,
+	evadeable?: boolean,
+	nokill?: boolean,
+
+	ignoreshield?: boolean,
+
+	boundBonus?: number,
+	novulnerable?: boolean,
+	tease?: boolean,
+
+	shield_crit?: boolean, // Crit thru shield
+	shield_stun?: boolean, // stun thru shield
+	shield_freeze?: boolean, // freeze thru shield
+	shield_bind?: boolean, // bind thru shield
+	shield_snare?: boolean, // snare thru shield
+	shield_slow?: boolean, // slow thru shield
+	shield_distract?: boolean, // Distract thru shield
+	shield_vuln?: boolean, // Vuln thru shield
 }
 
-function KinkyDungeonDealDamage(Damage: damageInfo, bullet?: any, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
+function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}

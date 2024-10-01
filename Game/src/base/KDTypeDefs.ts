@@ -1375,7 +1375,7 @@ interface shopItem {
 	name: any;
 }
 
-interface weapon {
+interface weapon extends damageInfo {
 	ignoreshield?: boolean,
 	shield_crit?: boolean, // Crit thru shield
 	shield_stun?: boolean, // stun thru shield
@@ -1389,10 +1389,15 @@ interface weapon {
 	/** Modifies the cost by changing the rarity for cost purposes only */
 	costMod?: number,
 	name: string;
-	dmg: number;
+	damage: number;
 	chance: number;
 	type: string;
+
+
+	evadeable?: boolean,
+	nokill?: boolean,
 	bind?: number;
+	nodisarm?: boolean,
 	/** Will add conjured bindings */
 	addBind?: boolean;
 	/** For rendering on player portrait */
@@ -1411,6 +1416,7 @@ interface weapon {
 	tease?: boolean;
 	rarity: number;
 	staminacost?: number;
+	time?: number,
 	magic?: boolean;
 	/** Determines if the weapon is a gun/staff type (does damage regardless of binding)
 	 * or a whack type that needs force to be effective*/
@@ -1434,6 +1440,7 @@ interface weapon {
 	channelslow?: boolean;
 	novulnerable?: boolean;
 	nocrit?: boolean;
+	noblock?: boolean,
 	tags?: string[];
 	special?: {
 		type: string,

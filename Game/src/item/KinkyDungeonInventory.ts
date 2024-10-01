@@ -1205,7 +1205,7 @@ function KinkyDungeonDrawInventorySelected (
 			let off = (bindEff || bind) ? 75 : 0;
 			let offCost = (weapon.cutBonus) ? 75 : 0;
 
-			DrawTextKD(TextGet("KinkyDungeonWeaponDamage") + Math.round(weapon.dmg * 10), xOffset - off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, KDBookText, KDTextTan, 24, undefined, 130);
+			DrawTextKD(TextGet("KinkyDungeonWeaponDamage") + Math.round(weapon.damage * 10), xOffset - off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, KDBookText, KDTextTan, 24, undefined, 130);
 			if (off) DrawTextKD(TextGet("KinkyDungeonWeaponDamageBind") + (bind ? Math.round(bind * 10) : (bindEff ? Math.round(bindEff * 100) + "%" : "")), xOffset + off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, KDBookText, KDTextTan, 24, undefined, 130);
 
 			DrawTextKD(TextGet("KinkyDungeonWeaponCrit") + Math.round((weapon.crit || KDDefaultCrit) * 100) + "%", xOffset - off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, KDBookText, KDTextTan, 24, undefined, 130);

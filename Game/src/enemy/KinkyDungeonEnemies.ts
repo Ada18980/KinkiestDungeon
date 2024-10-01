@@ -3429,6 +3429,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 					KinkyDungeonDamageEnemy(enemy, {
 						damage: DD,
 						type: "charm",
+						nocrit: true,
 						flags: ["BurningDamage"],
 					}, true, true);
 				}
@@ -4087,7 +4088,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		}
 	}
 	AIData.ignoreLocks = enemy.Enemy.keys || enemy.keys || enemy == KinkyDungeonLeashingEnemy() || enemy == KinkyDungeonJailGuard() || (KDEnemyHasFlag(enemy, "keys"));
-	AIData.harmless = (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1))
+	AIData.harmless = (KinkyDungeonPlayerDamage.damage <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1))
 		&& !KinkyDungeonFlags.has("PlayerCombat")
 		&& !KinkyDungeonCanTalk()
 		&& (!KinkyDungeonCanUseWeapon() || KinkyDungeonPlayerDamage?.unarmed)
@@ -4126,7 +4127,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				&& !KinkyDungeonCanTalk()
 				&& (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 			if (enemy.Enemy.tags.ignoreboundhands && (!enemy.warningTiles || enemy.warningTiles.length == 0) && enemy.lifetime == undefined
-				&& (KinkyDungeonPlayerDamage.dmg <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonCanUseWeapon()
+				&& (KinkyDungeonPlayerDamage.damage <= enemy.Enemy.armor || !KinkyDungeonHasWill(0.1)) && !KinkyDungeonCanUseWeapon()
 				&& (!enemy.Enemy.ignorechance || KDRandom() < enemy.Enemy.ignorechance || !KinkyDungeonHasWill(0.1))) AIData.ignore = true;
 		}
 		if (enemy.Enemy.ignoreflag) {

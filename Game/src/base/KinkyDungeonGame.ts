@@ -4701,33 +4701,47 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 
 		} else {
 			if (!capture) {
+				let damageInfo: damageInfo = {
+					damage: KinkyDungeonPlayerDamage.damage,
+					type: KinkyDungeonPlayerDamage.type,
+					distract: KinkyDungeonPlayerDamage.distract,
+					distractEff: KinkyDungeonPlayerDamage.distractEff,
+					desireMult: KinkyDungeonPlayerDamage.desireMult,
+					bind: KinkyDungeonPlayerDamage.bind,
+					bindType: KinkyDungeonPlayerDamage.bindType,
+					bindEff: KinkyDungeonPlayerDamage.bindEff,
+
+					nodisarm: KinkyDungeonPlayerDamage.nodisarm,
+					nocrit: KinkyDungeonPlayerDamage.nocrit,
+					noblock: KinkyDungeonPlayerDamage.noblock,
+					nokill: KinkyDungeonPlayerDamage.nokill,
+					evadeable: false,
+
+					addBind: KinkyDungeonPlayerDamage.addBind,
+					bindcrit: KinkyDungeonPlayerDamage.bindcrit,
+					crit: KinkyDungeonPlayerDamage.crit,
+					sfx: KinkyDungeonPlayerDamage.sfx,
+					time: KinkyDungeonPlayerDamage.time,
+
+					ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
+					shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
+					shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
+					shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
+					shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
+					shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
+					shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
+					shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
+					shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
+					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
+					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
+					tease: KinkyDungeonPlayerDamage.tease};
 				let data = {
 					orighp: Enemy.hp,
 					origbinding: Enemy.boundLevel,
 					target: Enemy,
 					attackCost: attackCost,
 					skipTurn: false,
-					attackData: {
-						damage: KinkyDungeonPlayerDamage.dmg,
-						type: KinkyDungeonPlayerDamage.type,
-						distract: KinkyDungeonPlayerDamage.distract,
-						distractEff: KinkyDungeonPlayerDamage.distractEff,
-						desireMult: KinkyDungeonPlayerDamage.desireMult,
-						bind: KinkyDungeonPlayerDamage.bind,
-						bindType: KinkyDungeonPlayerDamage.bindType,
-						bindEff: KinkyDungeonPlayerDamage.bindEff,
-						ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
-						shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
-						shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
-						shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
-						shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
-						shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
-						shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
-						shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
-						shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
-						boundBonus: KinkyDungeonPlayerDamage.boundBonus,
-						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-						tease: KinkyDungeonPlayerDamage.tease}
+					attackData: damageInfo
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 				if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {

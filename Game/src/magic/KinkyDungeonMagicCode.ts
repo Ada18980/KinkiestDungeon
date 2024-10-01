@@ -1058,7 +1058,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					spellAttack: true,
 					attackData: {
 						nodisarm: true,
-						damage: spell.power + mod + KinkyDungeonPlayerDamage.dmg * scaling,
+						damage: spell.power + mod + KinkyDungeonPlayerDamage.damage * scaling,
 						type: KinkyDungeonPlayerDamage.type,
 						distract: KinkyDungeonPlayerDamage.distract,
 						distractEff: KinkyDungeonPlayerDamage.distractEff,
