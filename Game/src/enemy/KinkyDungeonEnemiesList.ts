@@ -2251,8 +2251,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 15, weight: 24}, {name: "Rope", weight: 3.5, ignoreInInventory: true},]},
 	{name: "BanditChief", nameList: "italian", style: "Earth", outfit: "BanditChief", faction: "Bandit", clusterWith: "bandit", playLine: "Bandit", bound: "BanditChief",
 		tags: KDMapInit(["opendoors",
-			"bulwark", "cacheguard", "antiMagic", "closedoors", "leashing", "bandit", "miniboss", "banditleader", "melee", "unflinching", "ballGagRestraints", "handcuffer", "leatherRestraints", "leatherRestraintsHeavy", "clothRestraints", "chainweakness", "glueweakness", "jail", "jailer", "hunter"]),
-		cohesion: 0.9, armor: 2.0, followRange: 1, AI: "hunt",
+			"bulwark", "cacheguard", "closedoors", "leashing", "bandit", "miniboss", "banditleader", "melee", "unflinching", "ballGagRestraints", "handcuffer", "leatherRestraints", "leatherRestraintsHeavy", "clothRestraints", "chainweakness", "glueweakness", "jail", "jailer", "hunter"]),
+		cohesion: 0.9, armor: 0, followRange: 1, AI: "hunt",
 		maxblock: 4,
 		summon: [
 			{enemy: "BanditPet", range: 3, count: 1, chance: 1.0, strict: true},],

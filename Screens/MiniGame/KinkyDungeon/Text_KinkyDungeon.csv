@@ -25115,3 +25115,6 @@ KDBindType_Tape,Tape
 KDBindType_Vine,Vine
 KDBindType_Ice,Ice
 KDBindType_Furniture,Furniture
+
+KDSaving,Saving...
+KDSaved,Game Saved

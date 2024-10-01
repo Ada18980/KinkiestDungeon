@@ -22,9 +22,9 @@ let KDMusicYMax = 50;
 let KDMusicYSpeed = 0.15;
 let KDMusicToast = "";
 
-function KDSendMusicToast(song: string): void {
+function KDSendMusicToast(song: string, extraLen = 0): void {
 	KDMusicToast = song;
-	KDMusicUpdateTime = CommonTime();
+	KDMusicUpdateTime = CommonTime() + extraLen;
 }
 
 function KDDrawMusic(delta: number): void {

@@ -1318,7 +1318,25 @@ function KDCloseFullscreen() {
 	}
 }
 
+
 function KinkyDungeonRun() {
+	if (KDSaveQueue.length > 0 && !KDSaveBusy) {
+		KDSaveBusy = true;
+		let ss = KDSaveSlot;
+		KDSendMusicToast(TextGet("KDSaving"));
+		KinkyDungeonCompressSave(KDSaveQueue.splice(0, 1)[0]).then(
+			(data) => {
+					localStorage.setItem('KinkyDungeonSave', data);
+					if (ss != undefined) {
+						KinkyDungeonDBSave(ss, data);
+					}
+				}
+			).finally(() => {
+				KDSaveBusy = false;
+				KDSendMusicToast(TextGet("KDSaved"), -4000);
+			});
+	}
+
 	if (VersionMajor < 0) {
 		let parseString = TextGet("KDVersionStr");
 		if (parseString && parseString != "KDVersionStr") {
@@ -3965,15 +3983,14 @@ function KinkyDungeonDBOpen(): Promise<IDBDatabase> {
  * Save a game to the database.
  */
 function KinkyDungeonDBSave(saveslot: number, gamecode?: string) {
-	let save;
+	let save: string = undefined;
 	if (saveslot == undefined) {
 		console.error("Save slot is not defined");
 		return; // This is an invalid call or the save slot has not been set.
 	}
 	if (gamecode == undefined) {
 		// We are going to use the current game state as a save code.
-		save = KinkyDungeonGenerateSaveData();
-		save = KinkyDungeonCompressSave(save);
+		save = LZString.compressToBase64(JSON.stringify(KinkyDungeonGenerateSaveData()));
 	}
 	else {
 		save = gamecode;
@@ -5610,21 +5627,15 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	return save;
 }
 
+let KDSaveQueue: KinkyDungeonSave[] = [];
+let KDSaveBusy = false;
+
 function KinkyDungeonSaveGame(ToString: boolean = false): KinkyDungeonSave {
-	let save = KinkyDungeonGenerateSaveData();
+	// Make a deep copy
+	let save = JSON.parse(JSON.stringify(KinkyDungeonGenerateSaveData()));
 
 	if (!ToString) {
-		KinkyDungeonCompressSave(save).then(
-		(data) => {
-
-				//Player.KinkyDungeonSave = saveData.KinkyDungeonSave;
-				//ServerAccountUpdate.QueueData(saveData);
-				localStorage.setItem('KinkyDungeonSave', data);
-				if (KDSaveSlot != undefined) {
-					KinkyDungeonDBSave(KDSaveSlot);
-				}
-			}
-		);
+		KDSaveQueue.push(save);
 	}
 
 	return save;
