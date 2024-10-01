@@ -174,6 +174,8 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">../Game/Aura.png</key>
+            <key type="filename">../Game/Bullets/AMGagBolt.png</key>
+            <key type="filename">../Game/Bullets/AMGagBoltHit.png</key>
             <key type="filename">../Game/Bullets/AllyCrackle.png</key>
             <key type="filename">../Game/Bullets/AllyCrackleHit.png</key>
             <key type="filename">../Game/Bullets/AllyCrackleTrail.png</key>
@@ -592,6 +594,8 @@
             <key type="filename">../Game/Bullets/StraitjacketBolt.png</key>
             <key type="filename">../Game/Bullets/StraitjacketBoltHit.png</key>
             <key type="filename">../Game/Bullets/Summon.png</key>
+            <key type="filename">../Game/Bullets/SummonAMGag.png</key>
+            <key type="filename">../Game/Bullets/SummonAMGagHit.png</key>
             <key type="filename">../Game/Bullets/SummonArmbinder.png</key>
             <key type="filename">../Game/Bullets/SummonArmbinderHit.png</key>
             <key type="filename">../Game/Bullets/SummonBlindfold.png</key>
@@ -2082,6 +2086,7 @@
             <key type="filename">../Game/InventoryAction/RecycleBulk.png</key>
             <key type="filename">../Game/InventoryAction/RecycleExcess.png</key>
             <key type="filename">../Game/InventoryAction/Remove.png</key>
+            <key type="filename">../Game/InventoryAction/RemoveOffhand.png</key>
             <key type="filename">../Game/InventoryAction/Sell.png</key>
             <key type="filename">../Game/InventoryAction/SellBulk.png</key>
             <key type="filename">../Game/InventoryAction/SellExcess.png</key>
@@ -2491,6 +2496,7 @@
             <key type="filename">../Game/Spells/StoneSkin.png</key>
             <key type="filename">../Game/Spells/StormCrystal.png</key>
             <key type="filename">../Game/Spells/Strength.png</key>
+            <key type="filename">../Game/Spells/SummonAMGag.png</key>
             <key type="filename">../Game/Spells/SummonArmbinder.png</key>
             <key type="filename">../Game/Spells/SummonBlindfold.png</key>
             <key type="filename">../Game/Spells/SummonCuffs.png</key>
@@ -4177,6 +4183,34 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/UI/Conjured.png</key>
+            <key type="filename">../Game/UI/Hands.png</key>
+            <key type="filename">../Game/UI/accuracy.png</key>
+            <key type="filename">../Game/UI/escaped.png</key>
+            <key type="filename">../Game/UI/escapegrace.png</key>
+            <key type="filename">../Game/UI/evasion.png</key>
+            <key type="filename">../Game/UI/jail.png</key>
+            <key type="filename">../Game/UI/key.png</key>
+            <key type="filename">../Game/UI/miscast.png</key>
+            <key type="filename">../Game/UI/restraint_key.png</key>
+            <key type="filename">../Game/UI/restraint_key_2.png</key>
+            <key type="filename">../Game/UI/restraint_nokey.png</key>
+            <key type="filename">../Game/UI/speed.png</key>
+            <key type="filename">../Game/UI/vision.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,9,18,18</rect>
+                <key>scale9Paddings</key>
+                <rect>9,9,18,18</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/UI/Disperse.png</key>
             <key type="filename">../Game/UI/Move.png</key>
             <key type="filename">../Game/UI/Recall.png</key>
@@ -4209,33 +4243,6 @@
                 <rect>22,22,43,43</rect>
                 <key>scale9Paddings</key>
                 <rect>22,22,43,43</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/UI/Hands.png</key>
-            <key type="filename">../Game/UI/accuracy.png</key>
-            <key type="filename">../Game/UI/escaped.png</key>
-            <key type="filename">../Game/UI/escapegrace.png</key>
-            <key type="filename">../Game/UI/evasion.png</key>
-            <key type="filename">../Game/UI/jail.png</key>
-            <key type="filename">../Game/UI/key.png</key>
-            <key type="filename">../Game/UI/miscast.png</key>
-            <key type="filename">../Game/UI/restraint_key.png</key>
-            <key type="filename">../Game/UI/restraint_key_2.png</key>
-            <key type="filename">../Game/UI/restraint_nokey.png</key>
-            <key type="filename">../Game/UI/speed.png</key>
-            <key type="filename">../Game/UI/vision.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>9,9,18,18</rect>
-                <key>scale9Paddings</key>
-                <rect>9,9,18,18</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

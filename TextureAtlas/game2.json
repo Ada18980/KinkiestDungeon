@@ -632,14 +632,6 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":216,"h":216},
 	"sourceSize": {"w":216,"h":216}
 },
-"Game/Bullets/RubberMissile.png":
-{
-	"frame": {"x":1249,"y":2018,"w":55,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":25,"w":55,"h":22},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/RubberMissileExplosionHit.png":
 {
 	"frame": {"x":219,"y":1527,"w":216,"h":216},
@@ -1106,7 +1098,7 @@
 },
 "Game/Enemies/AnimBlindfold.png":
 {
-	"frame": {"x":1924,"y":1452,"w":55,"h":27},
+	"frame": {"x":1981,"y":1452,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
@@ -1146,7 +1138,7 @@
 },
 "Game/Enemies/Gag.png":
 {
-	"frame": {"x":1981,"y":1452,"w":55,"h":27},
+	"frame": {"x":1192,"y":2018,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":22,"w":55,"h":27},
@@ -1170,7 +1162,7 @@
 },
 "Game/Enemies/PlayerGag.png":
 {
-	"frame": {"x":1192,"y":2018,"w":55,"h":27},
+	"frame": {"x":1249,"y":2018,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
@@ -1394,7 +1386,7 @@
 },
 "Game/Items/Restraint/BallGags.png":
 {
-	"frame": {"x":1981,"y":1452,"w":55,"h":27},
+	"frame": {"x":1192,"y":2018,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":22,"w":55,"h":27},
@@ -1410,7 +1402,7 @@
 },
 "Game/Items/Restraint/Blindfolds.png":
 {
-	"frame": {"x":1924,"y":1452,"w":55,"h":27},
+	"frame": {"x":1981,"y":1452,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
@@ -1458,7 +1450,7 @@
 },
 "Game/Items/Restraint/Gags.png":
 {
-	"frame": {"x":1981,"y":1452,"w":55,"h":27},
+	"frame": {"x":1192,"y":2018,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":22,"w":55,"h":27},
@@ -1672,9 +1664,17 @@
 	"spriteSourceSize": {"x":1,"y":21,"w":71,"h":35},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Spells/SummonAMGag.png":
+{
+	"frame": {"x":1924,"y":1452,"w":55,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":28},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Spells/SummonBlindfold.png":
 {
-	"frame": {"x":1924,"y":1452,"w":55,"h":27},
+	"frame": {"x":1981,"y":1452,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
@@ -1682,7 +1682,7 @@
 },
 "Game/Spells/SummonGag.png":
 {
-	"frame": {"x":1192,"y":2018,"w":55,"h":27},
+	"frame": {"x":1249,"y":2018,"w":55,"h":27},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
@@ -1752,6 +1752,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:0aaf58350c0ce3897a1fa5981fce0a2f:fc3d624091c4b25177cb9989780995dd:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:abeb6d44357535d87d0c3a5c20cef547:ad58cd48c409e4130c238d56ce98c865:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
