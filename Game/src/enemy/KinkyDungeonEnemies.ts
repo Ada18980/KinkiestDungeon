@@ -2281,6 +2281,55 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		}
 	}
 
+	if (KDGameData.NPCRestraints[enemy.id]) {
+		let renderedID = {};
+		let items = Object.values(KDGameData.NPCRestraints[enemy.id]).filter((item) => {
+			let ret = !renderedID[item.id];
+			renderedID[item.id] = true;
+			return ret;
+		});
+		if (items.length > 0) {
+			TooltipList.push({
+				str: "",
+				fg: "#ffaa55",
+				bg: "#000000",
+				size: 8,
+			});
+			TooltipList.push({
+				str: TextGet("KDTooltipInventoryWorn"),
+				fg: "#ffffff",
+				bg: "#000000",
+				size: 20,
+			});
+
+			for (let i = 0; i < 6 && i < items.length; i++) {
+				TooltipList.push({
+					str: TextGet(KDGetItemName(items[i], Restraint)),
+					fg: "#ffffff",
+					bg: "#000000",
+					size: 18,
+				});
+			}
+			if (enemy.items.length > 6) {
+				TooltipList.push({
+					str: TextGet("KDTooltipInventoryFull").replace("NUMBER", "" + (items.length - 6)),
+					fg: "#ffffff",
+					bg: "#000000",
+					size: 18,
+				});
+			}
+
+
+			TooltipList.push({
+				str: "",
+				fg: "#ffaa55",
+				bg: "#000000",
+				size: 8,
+			});
+		}
+
+	}
+
 	if (enemy.items && enemy.items.length > 0) {
 		TooltipList.push({
 			str: "",
@@ -8787,7 +8836,7 @@ function KDAcceptsLeash(enemy: entity, _leash: KDLeashData): boolean {
 function KDEnemyAccuracy(enemy: entity, player: entity): number {
 	let accuracy = enemy.Enemy.accuracy ? enemy.Enemy.accuracy : 1.0;
 	if (enemy.distraction) accuracy = accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
-	if (enemy.boundLevel) accuracy = accuracy / (1 + 0.5 * enemy.boundLevel);
+	if (enemy.boundLevel) accuracy = accuracy / (1 + 0.5 * enemy.boundLevel / enemy.Enemy.maxhp);
 	if (enemy.blind > 0) accuracy = AIData.playerDist > 1.5 ? 0 : accuracy * 0.5;
 
 	if (player?.player) {
@@ -8921,7 +8970,7 @@ function KDEnemyStruggleTurn(enemy: entity, delta: number, allowStruggleAlwaysTh
 		} else if (result != "Struggle") {
 			KinkyDungeonSendTextMessage(3, TextGet("KDNPCEscape" + result)
 				.replace("ENMY", KDEnemyName(enemy))
-				.replace("ITMN", KDGetItemName(struggleNPCTarget.inv)),
+				.replace("ITMN", KDGetItemName(struggleNPCTarget.inv, Restraint)),
 			"#ffffff", 2);
 			delete enemy.strugglePoints;
 		}
