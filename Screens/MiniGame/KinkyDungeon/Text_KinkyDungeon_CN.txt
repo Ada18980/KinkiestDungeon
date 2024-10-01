@@ -25567,7 +25567,7 @@ It's a defunct elevator, likely from the Old Civilization.
 这是一部废弃的电梯，可能来自旧文明。
 
 (The elevator beeps and roars to life)|(Its control panel displays a list of options)
-( 电梯发出嘟嘟声和轰鸣声 ) | ( 其控制面板显示选项列表 )
+(电梯发出嘟嘟声和轰鸣声) | (其控制面板显示选项列表)
 (Go to floor 0)
 ( 前往第 0 层 )
 (Go to floor 1)
@@ -25837,7 +25837,6 @@ Goddess shrines do not remove non-binding restraints such as harnesses and cuffs
 ### Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
 
 
-
 After casting a DMG spell:
 施展 DMG 法术后:
 Gain AMNT% DMG Damage for DRTN turns
@@ -25931,12 +25930,17 @@ You can use it to unlock certain doors.
 你可以用它来解锁某些门。
 Your keycard blinks red as the facility remotely locks it!
 当设备远程锁定时，你的钥匙卡会闪烁红色！
-### Your keycard blinks red as the facility remotely locks it! System Security: 100%
-### Unauthorized removal detected. System Security: AMNT%
-### Security breach. Initiating remote lockout. System Security: AMNT%
+Your keycard blinks red as the facility remotely locks it! System Security: 100%
+当设施远程锁定时，你的钥匙卡会闪烁红光！系统安全性：100%
+Unauthorized removal detected. System Security: AMNT%
+检测到未经授权的删除。系统安全性：AMNT%
+Security breach. Initiating remote lockout. System Security: AMNT%
+安全漏洞。启动远程锁定。系统安全性：AMNT%
 
-### You pick up a flash bomb.
-### You pick up a flashbang grenade.
+You pick up a flash bomb.
+你拿起了一颗闪光弹。
+You pick up a flashbang grenade.
+你拿起了一颗闪光震爆弹。
 
 Actions
 行动
@@ -25958,7 +25962,7 @@ ENMY calls for help!
 ENMY 请求帮助！
 
 (Go to The Summit)
-( 前往巅峰设施 )
+(前往巅峰设施)
 
 The Summit is a safe area. Items can be left here without fear of losing them.
 巅峰设施是一个安全地区。物品可以放在这里，不用担心丢失。
@@ -26018,11 +26022,13 @@ You are holding too many leashes!
 你的皮带太多了！
 
 You feel a corrupting influence... (+AMNT Corruption)
-你感觉到了一种堕性的影响... ( +AMNT 堕落 )
+你感觉到了一种堕性的影响... (+AMNT 堕落)
 You feel a restoring influence! (-AMNT Corruption)
-你感觉到了一种恢复性的影响！ ( -AMNT 堕落 )
-### Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
-### The latex starts to detach from your skin... (-AMNT Latex Integration)
+你感觉到了一种恢复性的影响！ (-AMNT 堕落)
+Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
+粘稠的乳胶会与你的皮肤融合！ (+AMNT 乳胶融合)
+The latex starts to detach from your skin... (-AMNT Latex Integration)
+乳胶开始从你的皮肤上脱落... (-AMNT 乳胶融合)
 
 While you have an evasion penalty, even clumsy enemies...
 虽然你有逃避惩罚，但即使是笨拙的敌人......
@@ -26055,7 +26061,8 @@ Layer Bonus
 ### Require Pose (e.g. ChestArmor)
 ### Hide Prefix (e.g Encase)
 ### Hide Suffix (e.g TorsoUpper)
-### Protected
+Protected
+受保护的
 
 Load from File
 从文件载入
@@ -26104,14 +26111,16 @@ Bondage Dojo
 ### Assign servants to perfect the art of walking in heels,wearing tight corsets,|communicating while gagged, and overall flexibility.
 Rescue Operations
 救援行动
-### Assign servants to train squads of rescue maids, which you can call in times of need.
+Assign servants to train squads of rescue maids, which you can call in times of need.
+指派仆人训练救援女仆小队，以便在需要时可以呼叫她们。
 Alchemy Lab
 炼金实验室
 Assign servants to produce potions from base ingredients you acquire in your adventures.
 指派仆人使用你在冒险中获得的基本材料制作药水。
 Recycler
 回收者
-### Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
+Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
+将低等级的限制转化为原材料，输出更高质量的限制。|添加更多仆人可以增加转化速度。
 Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve servant and prisoner opinion.
@@ -26129,11 +26138,15 @@ Recycle all but one
 
 You recycle a ITM
 你回收了 ITM
-### You recycle #x ITM
+You recycle #x ITM
+你回收了 #x ITM
 
-### You disassemble #x ITM into $x PRD
-### Disassemble all but one
-### Disassemble one
+You disassemble #x ITM into $x PRD
+你将 #x ITM 拆解为 $x PRD
+Disassemble all but one
+拆除所有但留下一个
+Disassemble one
+拆开一个
 
 You're blocking me.
 你挡住我了。
@@ -26200,8 +26213,10 @@ Owned: AMNT
 所属: AMNT
 
 
-### Fiber
-### Runes
+Fiber
+纤维
+Runes
+符文
 
 ### Stock:
 ### Inputs:
@@ -26271,14 +26286,20 @@ Toe Tie
 Heels
 高跟鞋
 
-### Equipped:
-### Click to Add
-### Apply
-### Raw Material:
+Equipped:
+已装备的:
+Click to Add
+点击添加
+Apply
+应用
+Raw Material:
+原料:
 
-### Free Prisoner
+Free Prisoner
+释放囚犯
 
-### Perk Unlocked:
+Perk Unlocked:
+解锁的技能:
 
 Latex Solvent
 乳胶溶剂
@@ -26445,8 +26466,10 @@ Combat Maneuver: Your next move is instant.
 
 Appointing managers increases the efficiency of other facilities.
 任命管理人员可以提高其他设施的效率。
-### Total Efficiency Boost: AMNT%
-### idle
+Total Efficiency Boost: AMNT%
+总效率提升：AMNT%
+idle
+闲置
 
 ### (As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!
 
@@ -26467,7 +26490,8 @@ Appointing managers increases the efficiency of other facilities.
 
 ### The conjured RSTN vanishes as you remove it.
 
-### No free slots to bind in
+No free slots to bind in
+没有空闲槽位可以绑定
 
 Reaching Authority
 语威延伸
@@ -26488,11 +26512,12 @@ Save From Code
 
 Delete?
 删除？
-### Import to Slot
-### Invalid Data
+Import to Slot
+导入到槽位
+Invalid Data
+无效的数据
 No Data
 无数据
-
 
 This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 这是地牢的正常入口|教程在大厅的开头。
@@ -26509,11 +26534,13 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 你在废墟中迷失了方向。|图块顺序颠倒了！
 
 
-###  (Hard)
-###  (Extreme)
+ (Hard)
+ (困难)
+ (Extreme)
+ (极限)
 
 Choose Save Slot:
-选择存档槽位 :
+选择保存到的槽位:
 
 Standard Route
 标准路线 ‎
@@ -26529,18 +26556,23 @@ Reverse Route
 颠倒路线 ‎
 Chaos Route
 混沌路线 ‎
-### Map Seed:
-### Will Overwrite NME!
+Map Seed:
+地图种子:
+Will Overwrite NME!
+这会覆盖 NME!
 
-### Play Slot
+Play Slot
+加载存档
 Play (NO SLOT!)
-加载 ( 未选择存档 )
+加载 (未选择存档!)
 
 Looks like you might be stuck. Try calling for help (bottom right of UI)
 看来你可能被卡住了，尝试呼叫帮助（界面右下角）
 
-### Backup
-### Restore
+Backup
+备份
+Restore
+恢复
 ### Set Palette
 
 
@@ -26568,18 +26600,21 @@ Looks like you might be stuck. Try calling for help (bottom right of UI)
 
 ### Set Character Palette
 
-### Reset all Keybindings
+Reset all Keybindings
+重置所有按键绑定
 
-### That item is blocked! You can't remove it.
+That item is blocked! You can't remove it.
+那个物品被挡住了! 你不能移除它。
 
 ###  min.
 ###  max.
 ###  bonus
 ###  penalty
 
-### You put it on, why would you want to take it off?~
-### You'll need an ancient key to unlock the ancient-made collar.
-
+You put it on, why would you want to take it off?~
+你戴上它了，干嘛要摘下来呢?~
+You'll need an ancient key to unlock the ancient-made collar.
+你需要一把古老的钥匙来解开古老的项圈。
 
 ### Ancient Worshipper
 ### The ancient worshipper repents of her ways.
@@ -26604,8 +26639,43 @@ Looks like you might be stuck. Try calling for help (bottom right of UI)
 ### After popping the gag out of your mouth, it hangs loose around your neck.
 ### The gag is now in your mouth.
 
-### ERROR: Restraint does not exist. Did you forget to load mods?
+ERROR: Restraint does not exist. Did you forget to load mods?
+错误: 束缚具不存在。你是否忘记了加载模组？
 
-### Gag Necklace
-### A cute accessory for those who wish to (not) make a statement.
-### Functions as a collar.
+Gag Necklace
+口塞项链
+A cute accessory for those who wish to (not) make a statement.
+对于那些(不)想发表任何言论的人来说，这是一个可爱的配饰。
+Functions as a collar.
+用作项圈。
+
+No mod info!
+无模组信息!
+Wrong patch
+错误的路径
+VERY Outdated!
+太旧了!
+Outdated!
+旧!
+Check dependencies!
+请检查依赖!
+Check compatibility!
+请检查兼容性!
+Misc Error
+其他错误
+
+Magical disenchantment suspends your living collar for AMNT turns
+魔法解除魔咒会在 AMNT 回合内让你的生命项圈无效化
+
+Hardlight
+硬光
+
+Saving...
+保存中...
+Game Saved
+游戏已保存
+
+ENMY escapes from the ITMN!
+ENMY 从 ITMN 逃脱!
+ENMY unlocks the ITMN!
+ENMY 解开了 ITMN 的锁!
