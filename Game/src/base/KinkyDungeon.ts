@@ -2336,11 +2336,24 @@ function KinkyDungeonRun() {
 			}
 			return true;
 		}, true, 875, 650, 750, 64, TextGet("KinkyDungeonStartGameQuick"), "#ffffff", "");
+		DrawButtonKDEx("startGameKinky", () => {
+			KinkyDungeonStatsChoice = new Map();
+			for (let kink of KDKinkyPerks) {
+				KinkyDungeonStatsChoice.set(kink, true);
+			}
+			KDUpdatePlugSettings(true);
+			KDLose = false;
+			KinkyDungeonStartNewGame();
+			if (!KDToggles.SkipTutorial) {
+				KDStartDialog("Tutorial");
+			}
+			return true;
+		}, true, 875, 720, 750, 64, TextGet("KinkyDungeonStartGameKinky"), "#ffffff", "");
 		DrawButtonKDEx("startGame", () => {
 			KinkyDungeonState = "Stats";
 			KDUpdatePlugSettings(true);
 			return true;
-		}, true, 875, 720, 750, 64, TextGet("KinkyDungeonStartGameAdv"), "#ffffff", "");
+		}, true, 875, 790, 750, 64, TextGet("KinkyDungeonStartGameAdv"), "#ffffff", "");
 
 
 

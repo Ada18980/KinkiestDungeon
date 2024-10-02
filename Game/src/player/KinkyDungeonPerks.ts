@@ -35,6 +35,30 @@ let KDCategoriesStart = [
 	{name: "Boss", buffs: [], debuffs: [],},
 ];
 
+let KDKinkyPerks = [
+	"Doorknobs",
+	"Grounded",
+	"CantTouchThat",
+	"Nowhere",
+	"TightRestraints",
+	"MagicHands",
+	"HighSecurity",
+	"MoreKinkyFurniture",
+	"NoHelp",
+	"ExclusionsApply",
+	"Blackout",
+	"SelfBondage",
+	"Rigger",
+	"NovicePet",
+	"EnemyResist",
+	"CommonToyPleasure",
+	"CommonToyEdge",
+	"CommonToyDeny",
+	"CommonToyTease",
+	"BondageLover",
+	"Flexible",
+];
+
 let KDPerkIcons = {
 	"Pacifist" : () => {return true;},
 	"BerserkerRage" : () => {return true;},

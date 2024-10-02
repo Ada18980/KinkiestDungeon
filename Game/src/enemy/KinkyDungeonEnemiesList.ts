@@ -5676,7 +5676,7 @@ let KDSpecialConditions: Record<string, SpecialCondition> = {
 					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 					false,
 					!(KinkyDungeonStatsChoice.has("TightRestraints") || enemy.Enemy.tags.miniboss || enemy.Enemy.tags.boss),
-					KDGetExtraTags(enemy, true),
+					KDGetExtraTags(enemy, true, true),
 					false,
 					{
 						maxPower: rThresh + 0.01,

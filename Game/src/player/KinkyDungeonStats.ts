@@ -459,6 +459,7 @@ interface damageInfo extends damageInfoMinor {
 	distractEff?: number,
 	desireMult?: number,
 	addBind?: boolean;
+	realBind?: boolean,
 
 	nodisarm?: boolean,
 	nocrit?: boolean,

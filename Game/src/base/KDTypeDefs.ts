@@ -2014,6 +2014,7 @@ interface spell {
 	customCost?: string,
 	/** Spell does not advance time */
 	quick?: boolean;
+	addBind?: boolean,
 	/** spell required to unlock this one */
 	prerequisite?: string | string[];
 	/** blocked if you have this spell */

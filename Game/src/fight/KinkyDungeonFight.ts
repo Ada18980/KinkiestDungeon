@@ -714,7 +714,8 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 	}
 
 	let predata = {
-		allowConjuredRestraint: !!Damage.addBind,
+		allowConjuredRestraint: !!Damage?.addBind,
+		useRealRestraint: Damage?.realBind,
 		shieldBlocked: false,
 		aggro: false,
 		faction: "Enemy",
@@ -849,7 +850,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
 		if (predata.faction == "Player") {
-			if (KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !Enemy.Enemy.nonHumanoid && !KinkyDungeonPacifistDamageTypes.includes(predata.type)) {
+			if (!predata.tease && KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !Enemy.Enemy.nonHumanoid && !KinkyDungeonPacifistDamageTypes.includes(predata.type)) {
 				predata.dmg *= KDPacifistReduction;
 			}
 			if (KinkyDungeonStatsChoice.get("EnemyArmor")) {
@@ -1201,9 +1202,9 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 					KDTieUpEnemy(Enemy, amt, predata.bindType, predata.dmg, predata.faction == "Player", Delay);
 
 					if (predata.bindType && predata.allowConjuredRestraint)
-						KDBindEnemyWithTags(Enemy.id, KDGetBulletBindingTags(predata.bindType, undefined, false,),
+						KDBindEnemyWithTags(Enemy.id, KDGetBulletBindingTags(predata.bindType, undefined, false),
 					0,
-					amt, true, undefined, false, false);
+					amt, !predata.useRealRestraint, undefined, false, false);
 
 					if (!NoMsg && predata.faction == "Player") {
 						KinkyDungeonSendTextMessage(4, TextGet(effmult == 1 ? "KDIsBound" : (effmult > 1 ? "KDDisabledBonus" : "KDUnflinchingPenalty"))
@@ -2071,6 +2072,7 @@ function KinkyDungeonBulletHit(b: any, born: number, outOfTime?: boolean, outOfR
 					shield_distract: b.bullet.spell?.shield_distract, // Distract thru shield
 					shield_vuln: b.bullet.spell?.shield_vuln, // Vuln thru shield
 					tease: b.bullet.spell?.tease,
+					addBind: b.bullet.spell?.addBind,
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, desireMult: b.bullet.spell.desireMult, bindEff: b.bullet.spell.bindEff,
 					bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
 		KDMapData.Bullets.push(newB);
@@ -2144,6 +2146,7 @@ function KinkyDungeonBulletHit(b: any, born: number, outOfTime?: boolean, outOfR
 								shield_distract: b.bullet.spell?.shield_distract, // Distract thru shield
 								shield_vuln: b.bullet.spell?.shield_vuln, // Vuln thru shield
 								tease: b.bullet.spell?.tease,
+								addBind: b.bullet.spell?.addBind,
 								damage:b.bullet.spell.power, type:b.bullet.spell.damage, bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time,
 								distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, desireMult: b.bullet.spell.desireMult, bindEff: b.bullet.spell.bindEff,
 							}, lifetime: b.bullet.spell.lifetime + LifetimeBonus, name:b.bullet.name+"Hit", width:1, height:1}};
@@ -2175,6 +2178,7 @@ function KinkyDungeonBulletHit(b: any, born: number, outOfTime?: boolean, outOfR
 					shield_distract: b.bullet.spell?.shield_distract, // Distract thru shield
 					shield_vuln: b.bullet.spell?.shield_vuln, // Vuln thru shield
 					tease: b.bullet.spell?.tease,
+					addBind: b.bullet.spell?.addBind,
 					distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, desireMult: b.bullet.spell.desireMult, bindEff: b.bullet.spell.bindEff,
 					bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time
 				}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height}};
@@ -2256,6 +2260,7 @@ function KinkyDungeonBulletHit(b: any, born: number, outOfTime?: boolean, outOfR
 						shield_distract: b.bullet.spell?.shield_distract, // Distract thru shield
 						shield_vuln: b.bullet.spell?.shield_vuln, // Vuln thru shield
 						tease: b.bullet.spell?.tease,
+						addBind: b.bullet.spell?.addBind,
 						distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, desireMult: b.bullet.spell.desireMult, bindEff: b.bullet.spell.bindEff,
 						bind: b.bullet.spell.bind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.time}, aoe: b.bullet.spell.aoe, lifetime: b.bullet.spell.lifetime, passthrough:true, name:b.bullet.name+"Hit", width:b.bullet.width, height:b.bullet.height
 				}};
@@ -2501,6 +2506,7 @@ function KinkyDungeonBulletTrail(b: any): boolean {
 									shield_distract: b.bullet.spell?.shield_distract, // Distract thru shield
 									shield_vuln: b.bullet.spell?.shield_vuln, // Vuln thru shield
 									tease: b.bullet.spell?.tease,
+									addBind: b.bullet.spell?.addBind,
 									distract: b.bullet.spell.distract, distractEff: b.bullet.spell.distractEff, desireMult: b.bullet.spell.desireMult, bindEff: b.bullet.spell.bindEff,
 									bind: b.bullet.spell.trailBind, crit: b.bullet.spell.crit, bindcrit: b.bullet.spell.bindcrit, bindType: b.bullet.spell.bindType, time:b.bullet.spell.trailTime}, lifetime: b.bullet.spell.trailLifetime, name:b.bullet.name+"Trail", width:1, height:1}};
 						KDMapData.Bullets.push(newB);
@@ -2680,15 +2686,19 @@ function KDBulletHitEnemy(bullet: any, enemy: entity, d: number, nomsg: boolean)
 		let pf = bullet.bullet.playerEffect ? bullet.bullet.playerEffect : bullet.bullet.spell.playerEffect;
 		if ((bullet.bullet.damage.bindTags || bullet.bullet.spell.bindTags)
 			|| bullet.bullet.damage.bindType || bullet.bullet.spell.bindType || pf)
-		if (pf) {
-			let tags =
-				(bullet.bullet.damage.bindTags || bullet.bullet.spell.bindTags)
-				|| KDGetBulletBindingTags(bullet.bullet.damage.bindType
-					|| bullet.bullet.spell.bindType, pf, false);
-			if (tags) {
-				KDBindEnemyWithTags(enemy.id, tags, bullet.bullet.damage.bind || bullet.bullet.damage.power, (bullet.bullet.spell?.power || 0), true, undefined, true, true);
+			if (pf) {
+				let tags =
+					(bullet.bullet.damage.bindTags
+						|| bullet.bullet.spell.bindTags
+						|| (pf?.tag ? [pf.tag] : undefined)
+						|| pf?.tags
+					)
+					|| KDGetBulletBindingTags(bullet.bullet.damage.bindType
+						|| bullet.bullet.spell.bindType, pf, false);
+				if (tags) {
+					KDBindEnemyWithTags(enemy.id, tags, bullet.bullet.damage.bind || bullet.bullet.damage.power, (bullet.bullet.spell?.power || 0), !pf?.realBind, undefined, true, true, pf?.count);
+				}
 			}
-		}
 	}
 }
 
@@ -3173,7 +3183,8 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 	}
 }
 
-function KDBindEnemyWithTags(id: number, tags: string[], amount: number = 0, power: number = 0, forceConjure: boolean = true, maxTries: number = 100, allowOverride: boolean = false, allowVariants: boolean = true) {
+function KDBindEnemyWithTags(id: number, tags: string[], amount: number = 0, power: number = 0, forceConjure: boolean = true, maxTries: number = 100, allowOverride: boolean = false,
+	allowVariants: boolean = true, maxAdded: number = 10) {
 	let entity = KDGetGlobalEntity(id);
 	if (entity) {
 		let maxBinding = entity.boundLevel + amount;
@@ -3195,7 +3206,7 @@ function KDBindEnemyWithTags(id: number, tags: string[], amount: number = 0, pow
 		let iterations = 0;
 		let added = 0;
 
-		while (expected < maxBinding && iterations++ < maxTries && restraintsEligible.length > 0) {
+		while (added < maxAdded && expected < maxBinding && iterations++ < maxTries && restraintsEligible.length > 0) {
 			let restraintTry = restraintsEligible[Math.floor(KDRandom() * restraintsEligible.length)];
 			let bondageStats = KDGetRestraintBondageStats(restraintTry.restraint, entity);
 			if ((expected + bondageStats.amount < maxBinding || (iterations > maxTries/2 &&

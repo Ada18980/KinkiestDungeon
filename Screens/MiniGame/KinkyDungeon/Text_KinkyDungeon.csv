@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.41"
+KDVersionStr,"5.3.42"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -156,6 +156,7 @@ KinkyDungeonStats,"Select perks to start with."
 KinkyDungeonStats2,"Having 10+ spare points will trigger Hard Mode, granting unique loot."
 KDHardMode," (HARD MODE ENABLED)"
 KinkyDungeonStartGameAdv,"Advanced start (choose perks)"
+KinkyDungeonStartGameKinky,"Kinky start (stricter, more bondage focused)"
 KinkyDungeonStartGameQuick,"Confirm and start playing!"
 
 KinkyDungeonStatCost,"Point Cost: AMOUNT"
@@ -432,7 +433,7 @@ KinkyDungeonStatDescMapAbsurd,"(Experimental) Make the maps really really big. P
 KinkyDungeonStat24,"Rigger"
 KinkyDungeonStatDesc24,"Binding on enemies is 30% stronger."
 KinkyDungeonStat25,"Pacifist"
-KinkyDungeonStatDesc25,"All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue."
+KinkyDungeonStatDesc25,"All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue."
 KinkyDungeonStatCurseSeeker,"Curse Seeker"
 KinkyDungeonStatDescCurseSeeker,"When you pick up cursed armor or restraints from chests, they equip automatically if able."
 
@@ -6388,7 +6389,7 @@ KinkyDungeonSpellSummonAMGag,Conjure Anti-Magic Gag
 KinkyDungeonSpellAMGagBolt,Conjured Anti-Magic Gag
 KinkyDungeonSpellAMGagBoltBind,The anti-magic gag forces itself into your mouth and buckles tightly!
 KinkyDungeonSpellAMGagBoltDamage,The anti-magic gag hits you! (DamageDealt)
-KinkyDungeonSpellDescriptionSummonAMGag,"Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%."
+KinkyDungeonSpellDescriptionSummonAMGag,"Summons a magic-absorbing gag which deals DamageDealt teasing arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%."
 KinkyDungeonSpellCastSummonAMGag,You conjure an anti-magic gag!
 KinkyDungeonSpellTargetSummonAMGag,The gag will appear next to you and fly toward the target point.
 

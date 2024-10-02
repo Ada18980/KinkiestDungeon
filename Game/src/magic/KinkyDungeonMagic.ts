@@ -1084,6 +1084,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 						shield_distract: spell?.shield_distract, // Distract thru shield
 						shield_vuln: spell?.shield_vuln, // Vuln thru shield
 						tease: spell?.tease,
+						addBind: spell?.addBind,
 						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}, miscast,
 				entity.x, entity.y);
 			b.visual_x = entity.x;
@@ -1128,7 +1129,8 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 						shield_distract: spell?.shield_distract, // Distract thru shield
 						shield_vuln: spell?.shield_vuln, // Vuln thru shield
 						tease: spell?.tease,
-						bindEff: spell.bindEff,
+						bindEff: spell?.bindEff,
+						addBind: spell?.addBind,
 						bind: spell.bind, crit: spell.crit, bindcrit: spell.bindcrit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell
 				}, miscast,
 				entity.x, entity.y);
@@ -1167,6 +1169,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 						shield_distract: spell?.shield_distract, // Distract thru shield
 						shield_vuln: spell?.shield_vuln, // Vuln thru shield
 						tease: spell?.tease,
+						addBind: spell?.addBind,
 						bind: spell.bind, bindcrit: spell.bindcrit, crit: spell.crit, bindType: spell.bindType, boundBonus: spell.boundBonus, time:spell.time, flags:spell.damageFlags}, spell: spell}};
 			KinkyDungeonBulletHit(b, 1);
 			data.bulletfired = b;

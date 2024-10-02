@@ -32,6 +32,7 @@ let KDWeaponLootList: Record<string, Record<string, number>> = {
 let KinkyDungeonWeapons: Record<string, weapon> = {
 	"Unarmed": {name: "Unarmed", damage: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, noequip: true, sfx: "Unarmed",
 		tags: ["unarmed"],
+		tease: true,
 		events: [
 			{type: "ElementalEffectOnDisarm", trigger: "playerAttack", power: 0, damage: "stun", time: 3, chance: 0.5, sfx: "Slap"}
 		],

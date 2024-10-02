@@ -240,7 +240,7 @@ function KDPleaseSpeaker(Amount: number) {
 		let faction = KDGetFactionOriginal(enemy);
 		if (!KinkyDungeonHiddenFactions.has(faction)) {
 			if (!KDEntityHasFlag(enemy, "PleasedRep")) {
-				KinkyDungeonChangeFactionRep(faction, 1);
+				KinkyDungeonChangeFactionRep(faction, 0.01);
 				KDSetIDFlag(enemy.id, "PleasedRep", -1);
 			}
 		}

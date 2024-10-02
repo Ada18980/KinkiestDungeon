@@ -32,6 +32,7 @@ TODO remove hogtie when released
 TODO Add Cuddle play type
 
 
+5.3.43
 
 5.3.42
 - MODDERS: KinkyDungeonRedKeys, BlueKeys, and Lockpicks are now inventory items instead of hardcoded variables!

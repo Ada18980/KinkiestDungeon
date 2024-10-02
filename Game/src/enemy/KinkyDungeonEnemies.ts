@@ -2052,7 +2052,6 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 	if (KDEntityBuffedStat(enemy, "Vibration")) statuses.push({name: "Vibed", count: undefined});
 	if (enemy.stun > 0) statuses.push({name: "Stunned", count:  Math.round(enemy.stun)});
 	if (enemy.bind > 0) statuses.push({name: "Bind", count:  Math.round(enemy.bind)});
-	if (enemy.slow > 0) statuses.push({name: "Slow", count:  Math.round(enemy.slow)});
 	if (enemy.silence > 0) statuses.push({name: "Silence", count:  Math.round(enemy.silence)});
 	if (enemy.disarm > 0) statuses.push({name: "Disarm", count:  Math.round(enemy.disarm)});
 	if (enemy.blind > 0) statuses.push({name: "Blind", count:  Math.round(enemy.blind)});
@@ -2310,7 +2309,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 					size: 18,
 				});
 			}
-			if (enemy.items.length > 6) {
+			if (items.length > 6) {
 				TooltipList.push({
 					str: TextGet("KDTooltipInventoryFull").replace("NUMBER", "" + (items.length - 6)),
 					fg: "#ffffff",
@@ -4786,7 +4785,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 					!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
 					!KinkyDungeonStatsChoice.has("TightRestraints"),
-					KDGetExtraTags(enemy, enemy.usingSpecial),
+					KDGetExtraTags(enemy, enemy.usingSpecial, true),
 					false,
 					{
 						maxPower: rThresh + 0.01,
@@ -5552,7 +5551,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 											!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
 											!KinkyDungeonStatsChoice.has("TightRestraints"),
-											KDGetExtraTags(enemy, enemy.usingSpecial),
+											KDGetExtraTags(enemy, enemy.usingSpecial, true),
 											false,
 											{
 												//minPower: rThresh,
@@ -5574,7 +5573,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
 												!AIData.addMoreRestraints && !enemy.usingSpecial && AIData.addLeash,
 												!KinkyDungeonStatsChoice.has("TightRestraints"),
-												KDGetExtraTags(enemy, enemy.usingSpecial),
+												KDGetExtraTags(enemy, enemy.usingSpecial, true),
 												false,
 												{
 													maxPower: rThresh + 0.01,
@@ -7296,7 +7295,10 @@ function KDStockRestraints(enemy: entity, restMult: number, count?: number) {
 			false,
 			false,
 			false,
-			KDGetExtraTags(enemy, true),
+			KDGetExtraTags(enemy, true, i < 3 && (
+				KDEnemyIsTemporary(enemy) ? enemy.tempitems?.length < 3
+				: enemy.items?.length < 3
+			)),
 			true,
 			{
 				minPower: rThresh,
@@ -7484,8 +7486,8 @@ function KDGetTags(enemy: entity, removeSpecial: boolean): Record<string, boolea
  * @param enemy
  * @param useSpecial
  */
-function KDGetExtraTags(enemy: entity, useSpecial: boolean): Record<string, number> {
-	let addOn: Record<string, number> = enemy.Enemy.bound ? Object.assign({}, KDExtraEnemyTags) : undefined;
+function KDGetExtraTags(enemy: entity, useSpecial: boolean, useGlobalExtra: boolean): Record<string, number> {
+	let addOn: Record<string, number> = enemy.Enemy.bound ? Object.assign({}, useGlobalExtra ? KDExtraEnemyTags : {}) : undefined;
 	if (addOn) {
 		/*let effLevel = KDGetEffLevel();
 

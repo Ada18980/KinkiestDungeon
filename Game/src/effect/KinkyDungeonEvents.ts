@@ -9914,11 +9914,6 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 							e.Enemy.maxhp = Math.max(e.Enemy.maxhp*2, e.Enemy.maxhp + hpmod*1.0 * (1 + KDEnemyRank(e)));
 							e.modified = true;
 						}
-					} else {
-						// Boring enemies have more hp
-						e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
-						e.Enemy.maxhp = e.Enemy.maxhp + hpmod*1.0 * (1 + KDEnemyRank(e));
-						e.modified = true;
 					}
 					if (!bossBuff || KinkyDungeonStatsChoice.get("extremeMode") || e.Enemy.tags.stageBoss) {
 						let buff = KDGetByWeight(KDGetSpecialBuffList(e, reg));
@@ -9926,6 +9921,13 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 							KDSpecialBuffs[buff].apply(e, reg);
 						}
 					}
+					e.hp = e.Enemy.maxhp;
+				} else {
+					// Boring enemies have more hp
+					e.Enemy = JSON.parse(JSON.stringify(e.Enemy));
+					e.Enemy.maxhp = e.Enemy.maxhp + hpmod*1.0 * (1 + KDEnemyRank(e));
+					e.modified = true;
+
 					e.hp = e.Enemy.maxhp;
 				}
 

@@ -2936,7 +2936,8 @@ function KDGetRestraintsEligible (
 
 	if (options?.extraOptions) {
 		for (let opt of options.extraOptions) {
-			cache.push({r: KDRestraint({name: opt}), w:options?.inventoryWeight || 100, name: opt, inventory: true})
+			if (KDRestraint({name: opt}))
+				cache.push({r: KDRestraint({name: opt}), w:options?.inventoryWeight || 100, name: opt, inventory: true})
 		}
 	}
 
