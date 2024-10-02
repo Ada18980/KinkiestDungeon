@@ -1913,7 +1913,7 @@ function KinkyDungeonUpdateBulletsCollisions(delta: number, Catchup?: boolean) {
 					}
 					KinkyDungeonBulletHit(b, 0);
 				}
-				if (delta > 0 && !b.collisionUpdate) {
+				if (delta > 0 && !b.collisionUpdate && b.bullet.damage) {
 					b.born = 0;
 				}
 			}
