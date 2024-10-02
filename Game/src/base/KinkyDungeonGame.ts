@@ -5094,7 +5094,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 	KinkyDungeonLastMoveDirection = moveDirection;
 
 	if (moved) {
-		KinkyDungeonSetFlag("moved", 5);
+		KinkyDungeonSetFlag("moved", 2);
 	}
 
 	return moved;
@@ -5177,6 +5177,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 
 
 				if (!data.cancelSprint) {
+					KinkyDungeonSetFlag("sprinted", 2);
 					KinkyDungeonChangeStamina(data.sprintCost, false, 1);
 					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
 					KDChangeBalance(-KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
@@ -5236,8 +5237,8 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		for (let source of Object.values(KDPlayerNoiseSources)) {
 			loudest = Math.max(loudest, source.calc(KDPlayer()));
 		}
-
-		KDPlayer().sound = Math.max(Math.max(0, (KDPlayer().sound || 0) - delta), loudest);
+		// Player gets quieter faster
+		KDPlayer().sound = Math.max(Math.max(0, (KDPlayer().sound || 0)*0.75 - 2*delta), loudest);
 	}
 
 	KDUpdateFog = true;

@@ -46,7 +46,7 @@ let KDPlayerNoiseSources = {
 	},
 	Sprint: {
 		calc: (_player: entity) => {
-			return KinkyDungeonFlags.get("moved") ? (
+			return KinkyDungeonFlags.get("sprinted") ? (
 				9
 			) : 0;
 		}
@@ -6048,7 +6048,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 				spell = KinkyDungeonFindSpell(spellchoice, true);
 				if (spell?.targetPlayerOnly && !player.player) spell = null;
-				if (spell && (enemy.blind > 0 && (spell.projectileTargeting))) spell = null;
+				if (spell && (enemy.blind > 0 && (spell.projectileTargeting)) && !KDCanHearEnemy(enemy, player, 1.2)) spell = null;
 				if (spell && ((!spell.castRange && AIData.playerDist > KDGetSpellRange(spell)) || (spell.castRange && AIData.playerDist > spell.castRange))) spell = null;
 				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;
 				if (spell && enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) spell = null;
