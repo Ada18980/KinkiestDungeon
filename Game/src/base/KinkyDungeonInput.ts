@@ -1208,7 +1208,7 @@ function KDProcessInput(type: string, data: any): string {
 		case "recycle":
 			break;
 		case "tightenNPCRestraint":
-			KDNPCRefreshBondage(data.npc, data.player);
+			KDNPCRefreshBondage(data.npc, data.player, false, false);
 			break;
 		case "releaseNPC":
 			if (data?.selection) {

@@ -123,7 +123,7 @@ function KinkyDungeonGenerateShop(Level: number): any[] {
 }
 
 /**
- * @param item
+ * @param item - needs to be an item or a shopItem
  * @param [noScale]
  * @param [sell]
  */

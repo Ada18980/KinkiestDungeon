@@ -156,8 +156,8 @@ KinkyDungeonStats,"Select perks to start with."
 KinkyDungeonStats2,"Having 10+ spare points will trigger Hard Mode, granting unique loot."
 KDHardMode," (HARD MODE ENABLED)"
 KinkyDungeonStartGameAdv,"Advanced start (choose perks)"
-KinkyDungeonStartGameKinky,"Kinky start (stricter, more bondage focused)"
-KinkyDungeonStartGameQuick,"Confirm and start playing!"
+KinkyDungeonStartGameKinky,"Kinky start"
+KinkyDungeonStartGameQuick,"Normal start"
 
 KinkyDungeonStatCost,"Point Cost: AMOUNT"
 KinkyDungeonStatPoints,"Points Available: AMOUNT"
@@ -8020,6 +8020,7 @@ KinkyDungeonEasyModeDesc2,"If you get captured, you are totally on your own."
 
 KinkyDungeonStartGame,Start Playing
 KinkyDungeonStartGameDesc,"Lock your settings in, nice and tight."
+KinkyDungeonStartGameDescKinky,"Start with some perks that increase strictness and immersion."
 KinkyDungeonStartGameDescAdc,"Choose some perks to spice up your run."
 
 KinkyDungeonConsent,"This game engages in safe and consensual analytics."
@@ -24876,7 +24877,7 @@ KDLastNPCLocationCapturedNone,"Captured by enemies"
 
 KDCantFree,Use 'Truss'em'Up' to edit restraints on this NPC
 KDNeedsTighten,"The NPC needs tightening, but is unavailable right now"
-KDTightenRestraint,Tighten loose restraints
+KDTightenRestraint,Tighten non-conjured restraints
 
 
 KDNPCEscaped,NPC has escaped!

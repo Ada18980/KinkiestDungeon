@@ -58,7 +58,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
-		}
+		},
 	},
 	"DollLock" : {
 		powerMult: 4,
@@ -523,7 +523,9 @@ function KinkyDungeonCurseStruggle(item: item, Curse: string) {
 		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse + item.name), "White", 2);
 	} else if (KDCurses[Curse].customStruggle) {
 		KDCurses[Curse].customStruggle(item, Curse);
-	} else KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse), "White", 2);
+	} else {
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse), "White", 2);
+	}
 }
 
 function KinkyDungeonCurseAvailable(item: item, Curse: string) {

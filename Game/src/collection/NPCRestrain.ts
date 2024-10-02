@@ -400,7 +400,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 	if (!currentBottomTab) {
 		let enemy = KDGetGlobalEntity(npcID);
-		if (enemy?.boundLevel < KDGetExpectedBondageAmountTotal(npcID, enemy)) {
+		if (enemy?.boundLevel < KDGetExpectedBondageAmountTotal(npcID, enemy, false)) {
 			if (DrawButtonKDEx("TightenBinds", (b) => {
 				if (!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect)
 					KDSendInput("tightenNPCRestraint", {
@@ -613,13 +613,13 @@ function KDGetEncaseGroupSlot(id): NPCBindingSubgroup {
 	return null;
 }
 
-function KDNPCRefreshBondage(id: number, player: number, force?: boolean) {
+function KDNPCRefreshBondage(id: number, player: number, force: boolean = false, allowConjured: boolean = true) {
 	let restraints: Record<string, NPCRestraint> = JSON.parse(JSON.stringify(KDGetNPCRestraints(id)));
 
 	if (restraints) {
 		let already = {};
 		for (let inv of Object.entries(restraints)) {
-			if (!already[inv[1].id]) {
+			if (!already[inv[1].id] && (allowConjured || !inv[1].conjured)) {
 				already[inv[1].id] = true;
 				KDInputSetNPCRestraint({
 					slot: inv[0],
@@ -637,7 +637,7 @@ function KDNPCRefreshBondage(id: number, player: number, force?: boolean) {
 		// Readd
 		already = {};
 		for (let inv of Object.entries(restraints)) {
-			if (!already[inv[1].id]) {
+			if (!already[inv[1].id] && (allowConjured || !inv[1].conjured)) {
 				already[inv[1].id] = true;
 				KDInputSetNPCRestraint({
 					slot: inv[0],
@@ -650,6 +650,7 @@ function KDNPCRefreshBondage(id: number, player: number, force?: boolean) {
 					inventoryVariant: inv[1].inventoryVariant,
 					events: inv[1].events,
 					powerbonus: inv[1].powerbonus,
+					conjured: inv[1].conjured,
 
 					npc: id,
 					player: player,
@@ -930,13 +931,13 @@ function KDGetExpectedBondageAmount(id: number, target: entity): Record<string, 
 	return result;
 }
 /** Gets the expected total bondage amounts */
-function KDGetExpectedBondageAmountTotal(id: number, target: entity): number {
+function KDGetExpectedBondageAmountTotal(id: number, target: entity, allowConjured: boolean = true): number {
 	if (!KDGameData.NPCRestraints) return 0;
 	let result = 0;
 	let restraints = Object.values(KDGameData.NPCRestraints[id + ""] || {});
 	let already = {};
 	for (let item of restraints) {
-		if (!already[item.id] && KDRestraint(item)) {
+		if (!already[item.id] && KDRestraint(item) && (allowConjured || !item.conjured)) {
 			let stats = KDGetRestraintBondageStats(item, target)
 			already[item.id] = true;
 			result +=  stats.amount;

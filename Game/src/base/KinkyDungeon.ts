@@ -2359,8 +2359,9 @@ function KinkyDungeonRun() {
 
 		if (MouseIn(875, 650, 750, 64)) {
 			DrawTextFitKD(TextGet("KinkyDungeonStartGameDesc"), 1250, 120, 1000, "#ffffff", KDTextGray0);
-		}
-		if (MouseIn(875, 720, 750, 64)) {
+		} else if (MouseIn(875, 720, 750, 64)) {
+			DrawTextFitKD(TextGet("KinkyDungeonStartGameDescKinky"), 1250, 120, 1000, "#ffffff", KDTextGray0);
+		} else if (MouseIn(875, 790, 750, 64)) {
 			DrawTextFitKD(TextGet("KinkyDungeonStartGameDescAdc"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
 
