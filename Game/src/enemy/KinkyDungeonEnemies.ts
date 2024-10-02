@@ -3080,7 +3080,7 @@ function KinkyDungeonGetRandomEnemyPointCriteria (
  * @param [allowNearPlayer]
  * @param [Enemy]
  * @param [Adjacent]
- * @param [ignoreOL]
+ * @param [ignoreOL] allow using offlimits spaces
  * @param [callback]
  */
 function KinkyDungeonGetNearbyPoint (
@@ -3090,13 +3090,15 @@ function KinkyDungeonGetNearbyPoint (
 	Enemy?:           entity,
 	Adjacent?:        boolean,
 	ignoreOL?:        boolean,
-	callback?:        (x: number, y: number) => boolean
+	callback?:        (x: number, y: number) => boolean,
+	allowOrigin?: 	  boolean,
+	allowInsideEnemy?:boolean,
 ): KDPoint
 {
 	let slots = [];
 	for (let X = -Math.ceil(1); X <= Math.ceil(1); X++)
 		for (let Y = -Math.ceil(1); Y <= Math.ceil(1); Y++) {
-			if ((X != 0 || Y != 0) && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(x + X, y + Y))) {
+			if ((X != 0 || Y != 0 || allowOrigin) && KinkyDungeonTransparentObjects.includes(KinkyDungeonMapGet(x + X, y + Y))) {
 				// We add the slot and those around it
 				slots.push({x:x + X, y:y + Y});
 				slots.push({x:x + X, y:y + Y});
@@ -3121,7 +3123,7 @@ function KinkyDungeonGetNearbyPoint (
 	let foundslot = undefined;
 	for (let C = 0; C < 100; C++) {
 		let slot = slots[Math.floor(KDRandom() * slots.length)];
-		if (slot && KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy) && (ignoreOL || KDPointWanderable(slot.x, slot.y))
+		if (slot && (allowInsideEnemy || KinkyDungeonNoEnemyExceptSub(slot.x, slot.y, false, Enemy)) && (ignoreOL || KDPointWanderable(slot.x, slot.y))
 			&& (allowNearPlayer || Math.max(Math.abs(KinkyDungeonPlayerEntity.x - slot.x), Math.abs(KinkyDungeonPlayerEntity.y - slot.y)) > 1.5)
 			&& KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(slot.x, slot.y))
 			&& (!callback || callback(slot.x, slot.y))) {
@@ -6097,7 +6099,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					TextGet(enemy.Enemy.miscastmsg || "KDEnemyMiscast").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), "#ff88ff", 2,
 					false, false, undefined, "Combat");
 				if (spell?.components?.includes("Verbal")) KinkyDungeonSetEnemyFlag(enemy, "verbalcast", 2);
-				KinkyDungeonCastSpell(enemy.x, enemy.y, KinkyDungeonFindSpell("EnemyMiscast", true), enemy, player);
+
+				KinkyDungeonCastSpell(enemy.x, enemy.y,
+				KinkyDungeonFindSpell("EnemyMiscast", true), enemy, player);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + (enemy.Enemy.miscastsfx || "SoftShield") + ".ogg", enemy);
 				KinkyDungeonSendEvent("enemyMiscast", {spell: spell, enemy: enemy, player: player, AIData: AIData});
 
@@ -6113,6 +6117,16 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 				let xx = player.x;
 				let yy = player.y;
+				if (AIData.playerDist > 1.5 && enemy.blind > 0) {
+					let pp = KinkyDungeonGetNearbyPoint(xx, yy, true, undefined, true,
+						true, undefined, true, true
+					);
+					if (pp) {
+						xx = pp.x;
+						yy = pp.y;
+					}
+				}
+
 				if (spelltarget) {
 					xx = spelltarget.x;
 					yy = spelltarget.y;
