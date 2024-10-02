@@ -1259,20 +1259,23 @@ function KDCyberUnlock(data: any, base: number = 20): boolean {
 
 function KDCyberActions(_data: any, player: entity, base: number) {
 	DrawButtonKDEx("ModalDoorSwipe", () => {
-		KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation, base: base});
+		if (KinkyDungeonTargetTile)
+			KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation, base: base});
 		return true;
 	}, true, KDModalArea_x + 175, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonSwipeDoor"),
 	(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5555", "", "");
 
 	DrawButtonKDEx("ModalDoorScan", () => {
-		KDSendInput("scan", {targetTile: KinkyDungeonTargetTileLocation, base: base});
+		if (KinkyDungeonTargetTile)
+			KDSendInput("scan", {targetTile: KinkyDungeonTargetTileLocation, base: base});
 		return true;
 	}, true, KDModalArea_x + 450, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
 	!KDIsBlindfolded(player)
 		? "#ffffff" : "#ff5555", "", "");
 
 	DrawButtonKDEx("ModalDoorHack", () => {
-		KDSendInput("hack", {targetTile: KinkyDungeonTargetTileLocation, base: base});
+		if (KinkyDungeonTargetTile)
+			KDSendInput("hack", {targetTile: KinkyDungeonTargetTileLocation, base: base});
 		return true;
 	}, true, KDModalArea_x + 725, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
 	KDCanHack(player)

@@ -1333,12 +1333,27 @@ function KDMaxEnemyViewDist(enemy: entity) {
 	else return Math.max(KinkyDungeonStatsChoice.get("TotalBlackout") ? 0.5 : 1.5, KDGameData.MaxVisionDist - KinkyDungeonBlindLevel * data.blindMult);
 }
 
+function KDEnemyHasHelp(enemy: entity): boolean {
+	return (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
+		return en != enemy
+			&& en.Enemy.bound
+			&& !KDHelpless(en)
+			&& KDBoundEffects(en) < 4
+			&& !KDEnemyHasFlag(en, "imprisoned")
+			&& !KinkyDungeonIsDisabled(en)
+			&& KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en))
+				>= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
+	}) || (
+		KDAllied(enemy)
+		&& !!KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)));
+}
+
 /**
  * @param enemy
  * @param force
  * @param defaultSpeed
  */
-function KDGetEnemyStruggleMod(enemy: entity, force: boolean, defaultSpeed: boolean): number {
+function KDGetEnemyStruggleMod(enemy: entity, force: boolean, defaultSpeed: boolean, hasHelp?: boolean): number {
 	let level = KDBoundEffects(enemy);
 	let mult = (force || enemy.hp > 0.51) ? 0.1 : 0;
 
@@ -1360,18 +1375,10 @@ function KDGetEnemyStruggleMod(enemy: entity, force: boolean, defaultSpeed: bool
 		mult *= 3; // Default Speed is 3x unbound level
 	}
 
-	if (!defaultSpeed && enemy.hp > 0.51 && (KDNearbyEnemies(enemy.x, enemy.y, 1.5).some((en) => {
-		return en != enemy
-			&& en.Enemy.bound
-			&& !KDHelpless(enemy)
-			&& KDBoundEffects(en) < 4
-			&& !KDEnemyHasFlag(en, "imprisoned")
-			&& !KinkyDungeonIsDisabled(en)
-			&& KDFactionRelation(KDGetFaction(enemy), KDGetFaction(en))
-				>= Math.max(0.1, KDFactionRelation("Player", KDGetFaction(en)));
-	}) || (
-		KDAllied(enemy)
-		&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)))) {
+	if (hasHelp == undefined) {
+		hasHelp = KDEnemyHasHelp(enemy);;
+	}
+	if (!defaultSpeed && enemy.hp > 0.51 && hasHelp) {
 		mult += KDAllied(enemy)
 			&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y)
 			&& !KinkyDungeonIsHandsBound(true, true)
@@ -1583,8 +1590,9 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 							if (!helpless) {
 								let visualbond = bindAmpMod * enemy.visual_boundlevel;
 								let bindingBars = Math.ceil( visualbond / enemy.Enemy.maxhp);
-								let SM = KDGetEnemyStruggleMod(enemy, false, false);
-								let futureBound = KDPredictStruggle(enemy, SM, 1, maxbars);
+								let hasHelp = KDEnemyHasHelp(enemy);
+								let SM = KDGetEnemyStruggleMod(enemy, false, false, hasHelp);
+								let futureBound = KDPredictStruggle(enemy, SM, 1, hasHelp ? 0 : maxbars);
 								for (let i = 0; i < bindingBars && i < maxbars; i++) {
 									if (i > 0) II++;
 									let mod = visualbond - bindAmpMod * futureBound.boundLevel;
@@ -8946,8 +8954,9 @@ function KDBlockedByPlayer(enemy: entity, dir: { x: number, y: number, delta: nu
  */
 function KDEnemyStruggleTurn(enemy: entity, delta: number, allowStruggleAlwaysThresh?: number, force: boolean = false, defaultSpeed: boolean = false) {
 	if (enemy.boundLevel > 0) {
-		let SM = KDGetEnemyStruggleMod(enemy, force, defaultSpeed);
-		let newBound = KDPredictStruggle(enemy, SM, delta, allowStruggleAlwaysThresh);
+		let hasHelp = KDEnemyHasHelp(enemy);
+		let SM = KDGetEnemyStruggleMod(enemy, force, defaultSpeed, hasHelp);
+		let newBound = KDPredictStruggle(enemy, SM, delta, hasHelp ? 0 : allowStruggleAlwaysThresh);
 		enemy.boundLevel = newBound.boundLevel;
 		enemy.specialBoundLevel = newBound.specialBoundLevel;
 

@@ -1400,7 +1400,7 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 	if (enemy.boundLevel != undefined && enemy.boundLevel > 0) {
 		let visualbond = bindAmpMod * enemy.visual_boundlevel;
 		let bindingBars = maxBars;//Math.ceil( visualbond / enemy.Enemy.maxhp);
-		let SM = KDGetEnemyStruggleMod(enemy, true, defaultSpeed);
+		let SM = KDGetEnemyStruggleMod(enemy, true, defaultSpeed, false);
 		let futureBound: Record<string, number> = KDPredictStruggle(enemy, SM, 1);
 		yy += Math.min(maxBars, bindingBars) * spacing - 10;
 		for (let i = 0; i < bindingBars && i < maxBars; i++) {

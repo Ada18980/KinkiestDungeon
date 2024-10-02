@@ -1398,7 +1398,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 				{type: "HandsFree", trigger: "calcDamage"},
 				{type: "ArmsFree", trigger: "calcDamage"},
 			]},*/
-		{name: "Lockdown", prerequisite: "ApprenticeMetal", tags: ["metal", "lock", "binding", "utility", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], mustTarget: true, level:1,
+		{name: "Lockdown", prerequisite: "ApprenticeMetal", tags: ["metal", "lock", "binding", "utility", "command", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 4.5, components: ["Verbal"], mustTarget: true, level:1,
 			/*buffs: [
 				{id: "Lockdown", aura: "#a96ef5", type: "Locked", duration: 8, power: 1.0, player: true, enemies: true, tags: ["lock", "debuff"]},
 				{id: "Lockdown2", type: "MoveSpeed", duration: 8, power: -1.0, player: false, enemies: true, noAlly: true, tags: ["slow", "debuff"]},
@@ -1455,7 +1455,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			type:"special", special: "NegateRune",
 			onhit:"", time:0, power: 3.0, range: 1.5, size: 1, aoe: 0.5, damage: "inert"},
 
-		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["command", "slime", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
+		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["slime", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
 			type:"special", special: "CommandSlime",
 			onhit:"", time:0, power: 9.9, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 

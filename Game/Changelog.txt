@@ -33,6 +33,13 @@ TODO Add Cuddle play type
 
 
 5.3.43
+- Fix offhand bug
+- Fix instand trap explosions bug
+- Enemies can fire spells on you (innacurately) while blind
+- Conjured restraints cannot be tightened
+- Fix a crash when picking a lock on a map object
+- Fix CMD: Lock not being a command spell and Remove Slime being one
+- Fix enemies helping each other out of bondage
 
 5.3.42
 - MODDERS: KinkyDungeonRedKeys, BlueKeys, and Lockpicks are now inventory items instead of hardcoded variables!
