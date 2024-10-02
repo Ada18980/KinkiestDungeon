@@ -242,7 +242,6 @@ async function KDUpdateModInfo() {
 								let json = KDLoadModJSON(res);
 								if (json) {
 									KDModInfo[mod[0]] = json;
-									console.log(json);
 									if (json.priority) {
 										priority = json.priority;
 									}
