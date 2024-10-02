@@ -3802,17 +3802,23 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 	},
 	"canOffhand": {
 		"RogueOffhand": (_e, _spell, data) => {
-			if (data.canOffhand && KDHasSpell("RogueOffhand") && !KDHasSpell("BattleRhythm")) {
-				if (KDWeapon(data.item)?.clumsy || KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive) {
-					data.canOffhand = false;
+			if (!data.canOffhand && KDHasSpell("RogueOffhand")) {
+				if (!(KDWeapon(data.item)?.clumsy || KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive)
+					|| KDWeapon(data.item)?.tags?.includes("illum")) {
+					data.canOffhand = true;
 				}
 			}
 		},
 		"WizardOffhand": (_e, _spell, data) => {
-			if (data.canOffhand && KDHasSpell("WizardOffhand") && !KDHasSpell("BattleRhythm")) {
-				if (!KDWeaponIsMagic(data.item)) {
-					data.canOffhand = false;
+			if (!data.canOffhand && KDHasSpell("WizardOffhand")) {
+				if (KDWeaponIsMagic(data.item) || KDWeapon(data.item)?.tags?.includes("illum")) {
+					data.canOffhand = true;
 				}
+			}
+		},
+		"FighterOffhand": (_e, _spell, data) => {
+			if (!data.canOffhand) {
+				data.canOffhand = true;
 			}
 		},
 	},
@@ -4403,7 +4409,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 		"WizardOffhand": (_e, _spell, _data) => {
-			if (!KDHasSpell("BattleRhythm")) {
+			if (!KDHasSpell("FighterOffhand")) {
 				if (KDGameData.Offhand && KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
 					let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
 					if (weapon?.clumsy || weapon?.heavy || weapon?.massive)

@@ -24,6 +24,7 @@ let KDClassStart: Record<string, () => void> = {
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KDGameData.StatMaxBonus.WP += 5;
 		KDPushSpell(KinkyDungeonFindSpell("IronWill"));
+		KDPushSpell(KinkyDungeonFindSpell("FighterOffhand"));
 		KinkyDungeonSpellPoints = 3;
 		KDAddConsumable("RedKey", 1);
 		KDAddConsumable("Pick", 2);

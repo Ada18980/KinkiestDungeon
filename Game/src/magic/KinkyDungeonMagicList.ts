@@ -434,18 +434,27 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 
 
-		{name: "RogueOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
-			hideLearned: true, hideWith: "Offhand",
+		{name: "FighterOffhand", tags: ["utility", "defense", "offense"], school: "Special",
+			prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm",
+			hideLearned: true, hideWith: "FighterOffhand",
 			events: [
-				{trigger: "canOffhand", type: "RogueOffhand"},
+				{trigger: "canOffhand", type: "FighterOffhand"},
+			],
+			manacost: 0, components: [], level:1, spellPointCost: 1, type:"", passive: true, autoLearn: ["Offhand"],
+			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
+		{name: "RogueOffhand", tags: ["utility", "defense", "offense"], school: "Special",
+			prerequisite: "RogueTargets", classSpecific: "Rogue", hideWithout: "RogueTargets",
+			hideLearned: true, hideWith: "FighterOffhand",
+			events: [
+				{trigger: "canOffhand", type: "RogueOffhand", delayedOrder: 1},
 			],
 			manacost: 0, components: [], level:1, spellPointCost: 1, type:"", passive: true, autoLearn: ["Offhand"],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 		{name: "WizardOffhand", tags: ["utility", "defense", "offense"], school: "Special", prerequisite: "ManaRegen", classSpecific: "Mage", hideWithout: "ManaRegen",
-			hideLearned: true, hideWith: "Offhand",
+			hideLearned: true, hideWith: "FighterOffhand",
 			events: [
-				{trigger: "canOffhand", type: "WizardOffhand"},
-				{trigger: "tick", type: "WizardOffhand"},
+				{trigger: "canOffhand", type: "WizardOffhand", delayedOrder: 1},
+				{trigger: "tick", type: "WizardOffhand", delayedOrder: 1},
 			],
 			manacost: 0, components: [], level:1, spellPointCost: 1, type:"", passive: true, autoLearn: ["Offhand"],
 			onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},

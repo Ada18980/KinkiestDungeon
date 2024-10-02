@@ -866,6 +866,7 @@ let KDPerkStart = {
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KDPushSpell(KinkyDungeonFindSpell("Offhand"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		KDPushSpell(KinkyDungeonFindSpell("FighterOffhand"));
 
 	},
 };

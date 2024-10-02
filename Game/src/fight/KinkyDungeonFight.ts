@@ -3117,14 +3117,15 @@ function KDCanOffhand(item: item): boolean {
 		item: item,
 		is2handed: KDWeapon(item)?.clumsy,
 		is2handedPrimary: KinkyDungeonPlayerDamage?.clumsy,
-		canOffhand: !KinkyDungeonPlayerDamage?.clumsy && KDWeapon(item)?.events?.some((e) => {
+		allowedOffhand: !KinkyDungeonPlayerDamage?.clumsy && KDWeapon(item)?.events?.some((e) => {
 			return e.offhand;
 		}),
+		canOffhand: false,
 	};
 
 	KinkyDungeonSendEvent("canOffhand", data);
 
-	return data.item && data.canOffhand;
+	return data.item && data.canOffhand && data.allowedOffhand;
 }
 
 /**
