@@ -79,7 +79,7 @@ interface item extends NamedAndTyped {
 	showInQuickInv?: boolean,
 }
 
-interface consumable {
+interface consumable extends NamedAndTyped {
 	name: string,
 	/** 1 - (Rarity * sub value) = sub threshold */
 	sub?: number,
@@ -1375,7 +1375,7 @@ interface shopItem {
 	name: any;
 }
 
-interface weapon extends damageInfo {
+interface weapon extends damageInfo, NamedAndTyped {
 	ignoreshield?: boolean,
 	shield_crit?: boolean, // Crit thru shield
 	shield_stun?: boolean, // stun thru shield

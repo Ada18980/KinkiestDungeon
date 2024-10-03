@@ -91,65 +91,62 @@ function KDDrawContainer(name: string, xOffset = -125) {
 		ContainerInv.selected
 		: YourInv.selected;
 
-	if (selectedItem) {
-		let item = KDGetItemPreview(selectedItem);
+	if (selectedItem?.item) {
 
-		if (item) {
-			let XX = 800;
-			let YY = 100;
+		let item = selectedItem.item;
+		let XX = 1400;
+		let YY = -200;
 
-			let data = {
-				extraLines: [],
-				extraLineColor: [],
-				extraLineColorBG: [],
-				extraLinesPre: [],
-				extraLineColorPre: [],
-				extraLineColorBGPre: [],
-				SelectedItem: item?.item,
-				item: item?.item,
-			};
-			KinkyDungeonSendEvent("inventoryTooltip", data);
-			let mult = KDGetFontMult();
-			let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name + "Desc"),
-				15*mult, 40*mult).split('\n');
-			let textSplit2 = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name +  "Desc2"),
-				15*mult, 40*mult).split('\n');
-			let i = 0;
-			let descSpacing = 20;
-			let fSize = 16;
-			const encoder = new TextEncoder();
-			DrawTextFitKD(`${KDGetItemName(item.item)} - ${TextGet("KinkyDungeonRarity" +
-				(KDRestraint(item.item) ? Math.max(0, Math.min(Math.floor(
-					KDRestraint(item.item).displayPower || KDRestraint(item.item).power
-				),10))
-				: (KDConsumable(item.item)?.rarity || KDWeapon(item.item)?.rarity || 0))
-			)}`,
-				XX, YY + 200 + i * descSpacing, 500, "#ffffff", undefined, fSize + 4, undefined, 70);
+		let data = {
+			extraLines: [],
+			extraLineColor: [],
+			extraLineColorBG: [],
+			extraLinesPre: [],
+			extraLineColorPre: [],
+			extraLineColorBGPre: [],
+			SelectedItem: item,
+			item: item,
+		};
+		KinkyDungeonSendEvent("inventoryTooltip", data);
+		let mult = KDGetFontMult();
+		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name + "Desc"),
+			15*mult, 40*mult).split('\n');
+		let textSplit2 = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name +  "Desc2"),
+			15*mult, 40*mult).split('\n');
+		let i = 0;
+		let descSpacing = 20;
+		let fSize = 16;
+		const encoder = new TextEncoder();
+		DrawTextFitKD(`${KDGetItemName(item)} - ${TextGet("KinkyDungeonRarity" +
+			(KDRestraint(item) ? Math.max(0, Math.min(Math.floor(
+				KDRestraint(item).displayPower || KDRestraint(item).power
+			),10))
+			: (KDConsumable(item)?.rarity || KDWeapon(item)?.rarity || 0))
+		)}`,
+			XX, YY + 200 + i * descSpacing, 500, "#ffffff", undefined, fSize + 4, undefined, 70);
+		i++;
+		i++;
+		for (let N = 0; N < textSplit.length; N++) {
+			DrawTextFitKD(textSplit[N],
+				XX, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit[N]).length / 40), "#ffffff", undefined, fSize, undefined, 70);
 			i++;
-			i++;
-			for (let N = 0; N < textSplit.length; N++) {
-				DrawTextFitKD(textSplit[N],
-					XX, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit[N]).length / 40), "#ffffff", undefined, fSize, undefined, 70);
-				i++;
-			}
-			i = 0;
-			for (let N = 0; N < data.extraLinesPre.length; N++) {
-				DrawTextFitKD(data.extraLinesPre[N],
-					XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLinesPre[N]).length / 40), data.extraLineColorPre[N], data.extraLineColorBGPre[N], fSize, undefined, 70);
-				i++;
-			}
-			for (let N = 0; N < textSplit2.length; N++) {
-				DrawTextFitKD(textSplit2[N],
-					XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit2[N]).length / 40), "#ffffff", undefined, fSize, undefined, 70);
-				i++;
-			}
-			for (let N = 0; N < data.extraLines.length; N++) {
-				DrawTextFitKD(data.extraLines[N],
-					XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLines[N]).length / 40), data.extraLineColor[N], data.extraLineColorBG[N], fSize, undefined, 70);
-				i++;
-			}
 		}
-
+		i = 0;
+		for (let N = 0; N < data.extraLinesPre.length; N++) {
+			DrawTextFitKD(data.extraLinesPre[N],
+				XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLinesPre[N]).length / 40), data.extraLineColorPre[N], data.extraLineColorBGPre[N], fSize, undefined, 70);
+			i++;
+		}
+		for (let N = 0; N < textSplit2.length; N++) {
+			DrawTextFitKD(textSplit2[N],
+				XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit2[N]).length / 40), "#ffffff", undefined, fSize, undefined, 70);
+			i++;
+		}
+		for (let N = 0; N < data.extraLines.length; N++) {
+			DrawTextFitKD(data.extraLines[N],
+				XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLines[N]).length / 40), data.extraLineColor[N], data.extraLineColorBG[N], fSize, undefined, 70);
+			i++;
+		}
 	}
 
 	DrawButtonKDEx(
