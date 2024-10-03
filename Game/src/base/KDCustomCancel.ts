@@ -16,6 +16,18 @@ let KDCustomCancels = [
 		},
 	},
 	{
+		// Container
+		condition: () => {
+			return KinkyDungeonDrawState == "Container";
+		},
+		cancel: () => {
+			KinkyDungeonDrawState = KDUI_ContainerBackScreen || "Game";
+			KinkyDungeonGameKey.keyPressed[9] = false;
+			KinkyDungeonKeybindingCurrentKey = '';
+		},
+	},
+
+	{
 		// Recycle
 		condition: () => {
 			return KinkyDungeonTargetingSpell && KinkyDungeonDrawState == "Game";

@@ -198,8 +198,8 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 
 
 		} else {
-			yy += 180;
-			DrawTextFitKD(TextGet("KDFacilityLocal"), x + 560, y + 240, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
+			yy += 240;
+			DrawTextFitKD(TextGet("KDFacilityLocal"), x + 560, y + 280, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
 		}
 
 	}

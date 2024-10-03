@@ -1596,7 +1596,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			KDPlayerSetPose = false;
 			ForceRefreshModelsAsync(C);
 			if (KDWardrobeCallback) KDWardrobeCallback();
-			//KinkyDungeonDressSet(Character);
+			KinkyDungeonDressSet(C);
 			return true;
 		}, true, 20, 942, 400, 50, TextGet("KDBackToGame"), "#ffffff", "");
 

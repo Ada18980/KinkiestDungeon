@@ -949,7 +949,7 @@ function KDProcessInput(type: string, data: any): string {
 		}
 		case "select": {
 			if (data.enemy && KDAllied(data.enemy)) {
-				if (data.enemy.buffs?.AllySelect?.duration > 0) data.enemy.buffs.AllySelect.duration = 0;
+				if (data.enemy.buffs?.AllySelect?.duration > 0) KinkyDungeonExpireBuff(data.enemy, "AllySelect")
 				else KinkyDungeonApplyBuffToEntity(data.enemy, {
 					id: "AllySelect",
 					aura: "#ffffff",
@@ -963,7 +963,7 @@ function KDProcessInput(type: string, data: any): string {
 		}
 		case "selectOnly": {
 			for (let e of KDMapData.Entities) {
-				if (e.id != data.enemy?.id && e.buffs?.AllySelect) e.buffs.AllySelect.duration = 0;
+				if (e.id != data.enemy?.id && e.buffs?.AllySelect) KinkyDungeonExpireBuff(e, "AllySelect")
 				else if (e.id == data.enemy?.id) KinkyDungeonApplyBuffToEntity(e, {
 					id: "AllySelect",
 					aura: "#ffffff",
@@ -982,7 +982,7 @@ function KDProcessInput(type: string, data: any): string {
 				let enemy = KinkyDungeonFindID(data.enemy.id);
 				if (!enemy && KDGameData.Party) enemy = KDGameData.Party.find((entity) => {return entity.id == data.enemy.id;});
 				if (enemy) {
-					if (enemy.buffs?.AllySelect) enemy.buffs.AllySelect.duration = 0;
+					if (enemy.buffs?.AllySelect) KinkyDungeonExpireBuff(enemy, "AllySelect")
 					KinkyDungeonSetEnemyFlag(enemy, "NoFollow", -1);
 					KDRemoveFromParty(enemy, false);
 					KinkyDungeonSendTextMessage(10, TextGet("KDOrderRemove").replace("ENMY", TextGet("Name" + enemy.Enemy.name)), "#ffffff", 1);

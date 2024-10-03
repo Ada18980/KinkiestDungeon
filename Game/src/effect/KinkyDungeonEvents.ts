@@ -5802,7 +5802,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				});
 				for (let en of list)
 					if (en) {
-						if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
+						if (en.buffs?.AllySelect) KinkyDungeonExpireBuff(en, "AllySelect")
 					}
 			}
 		},

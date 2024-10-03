@@ -624,12 +624,14 @@ interface KDGameDataBase {
 	InteractTargetX:		number,
 	InteractTargetY:		number,
 	RegimentID:			number,
+	Containers: Record<string, KDContainer>,
 	FacilitiesData:			FacilitiesData,
 	Regiments:			Record<string, KDRegiment>,
 	QuickLoadouts:			Record<string, string[]>,
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	Containers: {},
 	PersistentItems: {},
 	Regiments: {},
 	FacilitiesData: null,
@@ -3466,6 +3468,7 @@ function KDMouseWheel (event: WheelEvent): void {
 	if (KDFunctionOptionsScroll(event.deltaY)) return;
 	if (KDFunctionCollectionScroll(event.deltaY)) return;
 	if (KDFunctionFacilitiesScroll(event.deltaY)) return;
+	if (KDFunctionContainerScroll(event.deltaY)) return;
 	if (KDFunctionDialogueScroll(event.deltaY)) return;
 	if (KDFunctionPerksScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionQuestScroll(event.deltaY || event.deltaX)) return;
@@ -3533,6 +3536,17 @@ function KDFunctionFacilitiesScroll(amount: number): boolean {
 			KDClickButton("facDown");
 		} else {
 			KDClickButton("facUp");
+		}
+		return true;
+	}
+	return false;
+}
+function KDFunctionContainerScroll(amount: number): boolean {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Container") {
+		if (amount > 0) {
+			KDClickButton("conDown");
+		} else {
+			KDClickButton("conUp");
 		}
 		return true;
 	}
@@ -5727,6 +5741,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
 
+			if (!KDGameData.Containers) KDGameData.Containers = {};
 
 			InitFacilities();
 

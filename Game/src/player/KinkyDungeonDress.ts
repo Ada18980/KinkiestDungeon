@@ -364,9 +364,9 @@ function KinkyDungeonDressPlayer (
 					if (clothes.Group == "Panties" && !clothes.NoLose) {
 						if (KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = true;
 					}
-					if (clothes.Group == "ClothLower" && clothes.Skirt) {
-						if (KDGroupBlocked("ItemLegs")) clothes.Lost = true;
-						if (KDGroupBlocked("ClothLower")) clothes.Lost = true;
+					if (ModelDefs[clothes.Item]?.Categories?.includes("Skirts")
+						&& !ModelDefs[clothes.Item]?.Categories?.includes("NanoSkirts")) {
+						if (CheckPoseOrTags(Character, "Petsuits")) clothes.Lost = true;
 					}
 					if (clothes.Group == "Shoes" || (
 						StandalonePatched && ModelDefs[clothes.Item]?.Categories?.includes("Shoes")

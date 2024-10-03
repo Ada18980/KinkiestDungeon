@@ -136,6 +136,44 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 		// If its not the same it is changed
 		onChangeFacility: (value, entity, fromFacility, toFacility) => {return toFacility == "Management" ? toFacility : "Return";},
 	},
+	Warden: {
+		spawnRoom: "Summit",
+		spawnCondition: (value) => {
+			// if they are already spawned they appear in a random place
+			let entity = KinkyDungeonFindID(value.id);
+			if (value.spawned && !entity) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined);
+				if (point) {
+					let e = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true);
+					if (e) {
+						KDSetServantSpawnTemplate(e);
+						e.FacilityAction = "Warden";
+					}
+				}
+			} else {
+				let point = KDMapData.Labels?.ServantEntrance ? KDMapData.Labels.ServantEntrance[0] : {x: 1, y: 3};
+				let e = DialogueCreateEnemy(point.x, point.y, value.type, value.id, true);
+				if (e) {
+					KDSetServantSpawnTemplate(e);
+					e.FacilityAction = "Warden";
+				}
+			}
+			return null;
+		},
+		// Set to spawned, dont need to do anything special
+		spawnConditionRemote: (value) => {
+			value.spawned = true;
+			return null;
+		},
+
+		// Maintenance condition
+		maintain: (value, entity, delta) => {
+			// They just kinda chill man
+		},
+
+		// If its not the same it is changed
+		onChangeFacility: (value, entity, fromFacility, toFacility) => {return toFacility == "Warden" ? toFacility : "Return";},
+	},
 
 
 	CuddleLounge: {

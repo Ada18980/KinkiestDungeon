@@ -1767,7 +1767,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"AllyToggle": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && KDAllied(en)) {
-			if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
+			if (en.buffs?.AllySelect) KinkyDungeonExpireBuff(en, "AllySelect");
 			else KinkyDungeonApplyBuffToEntity(en, {
 				id: "AllySelect",
 				aura: "#ffffff",
@@ -1802,7 +1802,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		let succeed = false;
 		for (let en of list)
 			if (en && KDAllied(en)) {
-				if (en.buffs?.AllySelect) en.buffs.AllySelect.duration = 0;
+				if (en.buffs?.AllySelect) KinkyDungeonExpireBuff(en, "AllySelect")
 				succeed = true;
 			}
 		if (succeed) return "Cast";

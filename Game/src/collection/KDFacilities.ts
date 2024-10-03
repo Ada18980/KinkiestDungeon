@@ -17,6 +17,8 @@ interface FacilitiesData {
 	Servants_CuddleLounge: number[],
 	Prisoners_CuddleLounge: number[],
 	Servants_Management: number[],
+	Servants_Warden: number[],
+	Warden_TightenedCount: number,
 };
 
 let FacilitiesDataBase : FacilitiesData = {
@@ -31,11 +33,14 @@ let FacilitiesDataBase : FacilitiesData = {
 	RecyclerInput_Leather: 0,
 	RecyclerInput_Rune: 0,
 
+	Warden_TightenedCount: 0,
+
 	Servants_Recycler: [],
 	Prisoners_Recycler: [],
 	Servants_CuddleLounge: [],
 	Prisoners_CuddleLounge: [],
 	Servants_Management: [],
+	Servants_Warden: [],
 };
 
 function InitFacilities() {
@@ -66,6 +71,9 @@ function KDValidateAllFacilities() {
 				}
 		}
 	}
+
+	// Create the warden chest if it's not there
+	KDGetContainer("WardenChest", undefined, undefined, true);
 
 }
 

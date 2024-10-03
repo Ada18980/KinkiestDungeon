@@ -1867,6 +1867,12 @@ function KinkyDungeonDrawGame() {
 				DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 			}
 			KinkyDungeonDrawFacilities();
+		} else if (KinkyDungeonDrawState == "Container" && KDUI_CurrentContainer) {
+			KDDrawNavBar(1);
+			if (KDGameData.PlayerName) {
+				DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
+			}
+			KDDrawContainer(KDUI_CurrentContainer);
 		}
 
 

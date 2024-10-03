@@ -31,6 +31,9 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.44
+- Added Warden facility (WIP)
+- Fix bug where command spells (for controlling allies) would not deselect properly
 
 5.3.43
 - Fix offhand bug

@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.43"
+KDVersionStr,"5.3.44"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -24701,6 +24701,8 @@ KDFacility_Recycler,Recycler
 KDFacilityDesc_Recycler,"Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed."
 KDFacility_CuddleLounge,Cuddle Lounge
 KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve servant and prisoner opinion."
+KDFacility_Warden,Warden
+KDFacilityDesc_Warden,"Appoint a warden to keep prisoners in check and automatically bind using restraints from storage."
 
 KDRecycleButton,Recycle Restraints
 
@@ -25129,3 +25131,11 @@ KDNPCEscapeConjuredRemove,"ENMY escapes from the ITMN and the item vanishes."
 KDNPCEscapeUnlock,ENMY unlocks the ITMN!
 KDConjuredItemVanish,The conjured ITMN vanishes as it comes off.
 
+KDWardenTightened,AMNT restraints tightened since last tick~
+KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
+
+KDContainerBack_Facilities,Back to Facilities
+
+KDContainerType_Self,Your Inventory
+KDContainerType_,Chest
+KDContainerType_WardenChest,Warden's Storage

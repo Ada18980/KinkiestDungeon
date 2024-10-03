@@ -105,6 +105,7 @@ let LAYERS_BASE = [
 
 	// This slot is for things like breastplates and things that go over
 	"WrappingChest",
+	"UpperArmStraps",
 
 	"WrapArms",
 
