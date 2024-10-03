@@ -1573,15 +1573,16 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 	let ret = [];
 	for (let layer of Object.values(Model.Layers)) {
 		if ((!layer.NoColorize || Properties) && !layer.InheritColor) {
-			if (Properties && (layer.Poses || layer.MorphPoses)) {
+			if (Properties && (layer.Poses || layer.MorphPoses || layer.GlobalDefaultOverride)) {
 				let poses: Record<string, boolean> = {};
 				if (layer.Poses)
 					for (let pose of Object.keys(layer.Poses)) {
 						poses[pose] = true;
 					}
 				if (layer.MorphPoses)
-					for (let pose of Object.values(layer.MorphPoses)) {
-						poses[pose] = true;
+					for (let pose of Object.entries(layer.MorphPoses)) {
+						poses[pose[0]] = true;
+						poses[pose[1]] = true;
 					}
 				for (let key of Object.keys(poses)) {
 					ret.push(layer.Name + key);
@@ -1589,15 +1590,16 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 			}
 			ret.push(layer.Name);
 		} else if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
-			if (Properties && (layer.Poses || layer.MorphPoses)) {
+			if (Properties && (layer.Poses || layer.MorphPoses || layer.GlobalDefaultOverride)) {
 				let poses: Record<string, boolean> = {};
 				if (layer.Poses)
 					for (let pose of Object.keys(layer.Poses)) {
 						poses[pose] = true;
 					}
 				if (layer.MorphPoses)
-					for (let pose of Object.values(layer.MorphPoses)) {
-						poses[pose] = true;
+					for (let pose of Object.entries(layer.MorphPoses)) {
+						poses[pose[0]] = true;
+						poses[pose[1]] = true;
 					}
 				for (let key of Object.keys(poses)) {
 					ret.push(layer.InheritColor + key);
