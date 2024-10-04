@@ -42,7 +42,7 @@ Mods Loaded.
 
 ### Version
 ### Kinky Dungeon
-### 5.3.41
+### 5.3.44
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 당신은 마법의 고대 지하 도시로 내려가는 모험가입니다.
@@ -144,6 +144,7 @@ High Quality Animations
 ### Faster Floater Fade
 ### No Damage Floaters
 ### Dynamic Armor (must hide armor)
+### Hide floating weapon display
 
 Helpless!
 무력화!
@@ -184,8 +185,8 @@ Having 10+ spare points will trigger Hard Mode, granting unique loot.
 ###  (HARD MODE ENABLED)
 Advanced start (choose perks)
 고급 시작(특전 선택)
-Confirm and start playing!
-확인하고 게임을 시작하세요!
+### Kinky start
+### Normal start
 
 Point Cost: AMOUNT
 포인트 비용: AMOUNT
@@ -597,7 +598,7 @@ Rigger
 ### Binding on enemies is 30% stronger.
 Pacifist
 평화주의자
-### All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
+### All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue.
 ### Curse Seeker
 ### When you pick up cursed armor or restraints from chests, they equip automatically if able.
 
@@ -8136,7 +8137,7 @@ The gag will appear next to you and fly toward the target point.
 ### Conjured Anti-Magic Gag
 ### The anti-magic gag forces itself into your mouth and buckles tightly!
 ### The anti-magic gag hits you! (DamageDealt)
-### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### Summons a magic-absorbing gag which deals DamageDealt teasing arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
 ### You conjure an anti-magic gag!
 
 
@@ -10550,6 +10551,7 @@ Start Playing
 시작
 Lock your settings in, nice and tight.
 설정을 단단히 고정하세요.
+### Start with some perks that increase strictness and immersion.
 Choose some perks to spice up your run.
 진행에 활기를 불어넣을 몇 가지 특전을 선택하세요.
 
@@ -19625,6 +19627,7 @@ Mithril Crotch Rope
 ### Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
 
 ### Equip Offhand
+### Remove Offhand
 
 ### Make a ranged attack with the spear.
 ### Make a ranged attack with the pike.
@@ -21765,6 +21768,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
 ### Cuddle Lounge
 ### Assign prisoners to the lounge in order to improve servant and prisoner opinion.
+### Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
 
 ### Recycle Restraints
 
@@ -21907,7 +21911,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Use 'Truss'em'Up' to edit restraints on this NPC
 ### The NPC needs tightening, but is unavailable right now
-### Tighten loose restraints
+### Tighten non-conjured restraints
 
 
 ### NPC has escaped!
@@ -22139,4 +22143,14 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Game Saved
 
 ### ENMY escapes from the ITMN!
+### ENMY escapes from the ITMN and the item vanishes.
 ### ENMY unlocks the ITMN!
+### The conjured ITMN vanishes as it comes off.
+
+### AMNT restraints tightened since last tick~
+### You have no restraints in storage. Go to the Summit to deposit restraints.
+
+### Back to Facilities
+
+### Your Inventory
+### Warden's Storage
