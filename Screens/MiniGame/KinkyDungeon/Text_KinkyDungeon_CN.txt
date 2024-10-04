@@ -99,7 +99,7 @@ Save Outfits within Save Files
 Show free characters on map
 在地图上显示自由的角色
 Detailed jailed NPCs (experimental)
-被监禁的 NPC 细节 (实验性)
+被监禁的 NPC 细节 ( 实验性 )
 Show Struggle Bars
 显示挣扎条
 Allow Suspicious Mods
@@ -245,7 +245,7 @@ You bump into a wall.
 Game Resolution:
 游戏分辨率 :‎
 Resolution (needs reload):
-分辨率 (需要重载) :‎
+分辨率 ( 需要重载 ) :‎
 Toy Volume:
 玩具音量 :‎
 Music Volume:
@@ -1226,9 +1226,9 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 
 
 Copy (clipboard)
-复制 (到剪贴板)
+复制 ( 到剪贴板 )
 Paste (clipboard)
-粘贴 (从剪贴板)
+粘贴 ( 从剪贴板 )
 
 
 DAMAGEDEALT electric damage conducts to you!!!
@@ -5887,7 +5887,7 @@ The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
 下一个交易
 Buy (press right)
-购买 (获取想要的东西)
+购买 ( 获取想要的东西 )
 Cost: ItemCostgp
 花费 : ‎ItemCostgp
 
@@ -9310,7 +9310,7 @@ An earthen monolith rises from the ground!
 一块巨石拔地而起！
 
 Earthshape (Ring)
-地型转变 (环形)
+地型转变 ( 环形 )
 Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创造以环形分布的巨石。巨石具有 50HP 和 25 点护甲。
 You stomp your foot and monoliths emerge in a ring around you!
@@ -9319,7 +9319,7 @@ Choose ring origin
 选择环形区域
 
 Earthshape (Mound)
-地型转变 (方形)
+地型转变 ( 方形 )
 Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创造以 3x3 方形分布的巨石。巨石具有 50HP 和 25 点护甲。
 You stomp your foot and monoliths emerge from the ground!
@@ -9328,7 +9328,7 @@ Choose mound origin
 选择方形区域
 
 Earthshape (Line)
-地型转变 (直线形)
+地型转变 ( 直线形 )
 Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创造以 4 格线形分布的巨石。巨石具有 50HP 和 25 点护甲。
 
@@ -9921,7 +9921,7 @@ You say a command word, resulting in a surge of energy entering your targets!
 CMD: Release
 指令 : ‎解放
 Target bound (but unlocked) targets in a 3x3 area, reducing binding by 100. Removes unlocked restraints on player that are removable.
-以 3x3 区域内被束缚(但未解锁)的单位为目标，减少 100 点束缚。移除可移除并已解锁的束缚。
+以 3x3 区域内被束缚 ( 但未解锁 ) 的单位为目标，减少 100 点束缚。移除可移除并已解锁的束缚。
 You say a command word, causing restraints to loosen!
 你念出咒语，身上的束缚解除了！
 You say a command word, but your restraints remain tight!
@@ -15542,7 +15542,7 @@ That gag is far too big! (PERCENT chance to avoid)
 (The SPEAKER locks it in place quickly)|There, all set for battle now!|(The SPEAKER giggles, cheekily winking at you)
 ( SPEAKER 迅速将其锁定到位 ) |好了，现在一切准备就绪！| ( SPEAKER 咯咯地笑，厚着脸皮地向你眨眼 )
 (The SPEAKER tightly fastens the muzzle on)|Safe and secure~|(You whimper as the SPEAKER spanks you goodbye)
-(SPEAKER 紧紧地固定你的口套)|安全又可靠~|(当 SPEAKER 打你屁股告别时，你呜咽着)
+(SPEAKER 紧紧地固定你的口套)|安全又可靠~| ( 当 SPEAKER 打你屁股告别时，你呜咽着 )
 
 Extra defense can't hurt...
 额外的防御不会造成伤害...
@@ -16896,7 +16896,7 @@ This is unethical! I refuse! (PERCENT chance to avoid)
 (Attack the SPEAKER?)
 ( 攻击 SPEAKER？ )
 (Buy ITM# for IC# gp)
-(以 IC# 金币购买 ITM#)
+( 以 IC# 金币购买 ITM#)
 (The SPEAKER sells you the item)
 ( SPEAKER 向你出售该物品 )
 (The SPEAKER shakes her head)|I think you'd be better off without that~
@@ -17874,7 +17874,7 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 亲爱的，很抱歉，我这里不卖商品。|谁会在地牢里开设商店呢？那太疯狂了！|不过，你们冒险者们总是带来稳定的战利品，|所以如果你有什么东西要卖，我可以帮你处理掉~|你也可以和我的客人交谈，也许他们有你需要的东西。
 
 (Return)
-(返回)
+( 返回 )
 
 
 (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
@@ -17946,9 +17946,9 @@ Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens
 Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 太美妙了。我期待着看到你被释放，呃，回来的时候，|手中有很多宝藏！| ( 她将 RESTRAINTNAME 戴在你身上，封印直接激活了。没有锁孔。 )
 Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
-好吧！站稳点~|(她把你的头发撩开，扣上项圈)|现在出去给我找点宝物吧~
+好吧！站稳点~|( 她把你的头发撩开，扣上项圈 )|现在出去给我找点宝物吧~
 You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
-你一定会喜欢的，我保证~|(她从抽屉里拿出紧身衣，掸去灰尘，然后帮你穿上)|(没有拉链或扣件，只有一个非常有弹性的颈孔)|(一旦戴上并正确贴合，你会感觉颈部不再那么松弛...... ) | ( ......并且将橡胶从皮肤上拉开根本不可能 ) |真美。我该就放你走了。|我相信你的新面貌会吸引很多顾客的！
+你一定会喜欢的，我保证~|( 她从抽屉里拿出紧身衣，掸去灰尘，然后帮你穿上 )|( 没有拉链或扣件，只有一个非常有弹性的颈孔 )|( 一旦戴上并正确贴合，你会感觉颈部不再那么松弛...... ) | ( ......并且将橡胶从皮肤上拉开根本不可能 ) |真美。我该就放你走了。|我相信你的新面貌会吸引很多顾客的！
 
 No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
 不？没关系。|我确信我会找到其他人来测试这些的，呵呵呵。
@@ -18179,7 +18179,7 @@ Give her a Scroll of Purity
 (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 ( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
 (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
-( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|(她在你给她解开堵嘴时摇头...)
+( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( 她在你给她解开堵嘴时摇头... )
 (You don't have enough mana for a command word)
 ( 你没有足够的魔力来写命令词。 )
 (Try as you might, your mouth is sealed tight)
@@ -18187,7 +18187,7 @@ Give her a Scroll of Purity
 (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 ( 你发出命令释放 SPEAKER ) |非常感谢|走吧！
 (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
-( 你发出命令释放 SPEAKER ) |呜呜呜！|(她把堵嘴又锁上了...)
+( 你发出命令释放 SPEAKER ) |呜呜呜！|( 她把堵嘴又锁上了... )
 (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
 ( SPEAKER 戴着高安全性的手铐。|安全护盾已被触发，无法帮助她。 )
 
@@ -18247,7 +18247,7 @@ An enemy found you while you were busy!
 ( SPEAKER 把你叫醒 ) |我们是来救你的。来吧！
 
 (The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)
-(床看起来舒服又诱人)|(在这里小憩可以恢复你一半的意志力和 100% 的最大魔力)|(每层楼只能睡一次，除非入狱)
+( 床看起来舒服又诱人 )|( 在这里小憩可以恢复你一半的意志力和 100% 的最大魔力 )|( 每层楼只能睡一次，除非入狱 )
 (You lay in the bed and doze off...)
 ( 你躺在床上打瞌睡… )
 (Lie down and sleep)
@@ -18284,7 +18284,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 (You steal the food, hoping nobody will notice...)
 ( 你偷食物，希望没人会注意到...... )
 (Eat it to restore AMOUNT% WP)
-(吃掉它可以恢复 AMOUNT% WP)
+( 吃掉它可以恢复 AMOUNT% WP )
 (Take it!)
 ( 拿走！ )
 
@@ -22772,13 +22772,13 @@ Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
 (You don't have the required material)
 ( 你没有所需的材料 )
 (Use 1 Gunpowder to make a Smoke Bomb)
-(使用 1 个火药制作烟雾弹)
+( 使用 1 个火药制作烟雾弹 )
 (Use 1 Gunpowder and one Ancient Crystal to make 3 Flash Bombs)
-(使用 1 个火药和 1 个远古水晶制作 3 个闪光弹)
+( 使用 1 个火药和 1 个远古水晶制作 3 个闪光弹 )
 (Use 2 Gunpowder to make a Bomb)
-(使用 2 个火药制作炸弹)
+( 使用 2 个火药制作炸弹 )
 (Use 3 Ectoplasm to make an Invisibility Potion)
-使用 3 个灵质制作隐形药水)
+( 使用 3 个灵质制作隐形药水 )
 
 Gunpowder
 火药
@@ -25754,7 +25754,7 @@ It's a defunct elevator, likely from the Old Civilization.
 这是一部废弃的电梯，可能来自旧文明。
 
 (The elevator beeps and roars to life)|(Its control panel displays a list of options)
-(电梯发出嘟嘟声和轰鸣声) | (其控制面板显示选项列表)
+( 电梯发出嘟嘟声和轰鸣声 ) | ( 其控制面板显示选项列表 )
 (Go to floor 0)
 ( 前往第 0 层 )
 (Go to floor 1)
@@ -26149,7 +26149,7 @@ ENMY calls for help!
 ENMY 请求帮助！
 
 (Go to The Summit)
-(前往巅峰设施)
+( 前往巅峰设施 )
 
 The Summit is a safe area. Items can be left here without fear of losing them.
 巅峰设施是一个安全地区。物品可以放在这里，不用担心丢失。
@@ -26425,9 +26425,9 @@ Imprison in Furniture
 ### Dropoff Prisoner
 
 Module (Utility)
-模块 (实用程序)
+模块 ( 实用程序 )
 Module (Punishment)
-模块 (惩罚)
+模块 ( 惩罚 )
 ~~~ Collar ~~~
 ~~~ 项圈 ~~~
 Blindfold / Earplugs
@@ -26723,9 +26723,9 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 
  (Hard)
- (困难)
+ ( 困难 )
  (Extreme)
- (极限)
+ ( 极限 )
 
 Choose Save Slot:
 选择保存到的槽位:
@@ -26752,7 +26752,7 @@ Will Overwrite NME!
 Play Slot
 加载存档
 Play (NO SLOT!)
-加载 (未选择存档!)
+加载 ( 未选择存档! )
 
 Looks like you might be stuck. Try calling for help (bottom right of UI)
 看来你可能被卡住了，尝试呼叫帮助（界面右下角）
