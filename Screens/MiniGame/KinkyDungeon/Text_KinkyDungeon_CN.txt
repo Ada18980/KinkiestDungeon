@@ -24358,12 +24358,13 @@ The rubber elemental forms rubber locks around all your restraints! (DamageTaken
 橡胶精灵在你的所有束缚具周围形成橡胶锁！ ( DamageTaken )
 
 Your ropes are enchanted with a lesser spell!
-你的绳索被一个较小的咒语所附魔！
+你的绳索被附上了一些魔力！
 Your ropes are enchanted with a magic spell!
-你的绳索被施了魔法！
-### Your ropes are enchanted with a powerful spell!
-### Your ropes are enchanted with a peerless spell!
-
+你的绳索被附上了魔力！
+Your ropes are enchanted with a powerful spell!
+你的绳索被附上了强大的魔力！
+Your ropes are enchanted with a peerless spell!
+你的绳索被附上了超乎想象的魔力！
 
 Shibari Witch
 绑缚女巫
@@ -26315,7 +26316,8 @@ Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve servant and prisoner opinion.
 将囚犯分配到休息室以提高仆人和囚犯对你的看法。
-### Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
+Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
+任命一名狱卒来维持囚犯的秩序，并可自动使用约束装置将他们捆绑起来。
 
 Recycle Restraints
 回收限制
@@ -26486,7 +26488,8 @@ Heels
 Free Prisoner
 释放囚犯
 
-### Perk Unlocked: 
+Perk Unlocked: 
+技能点解锁 : 
 
 Latex Solvent
 乳胶溶剂
@@ -26511,25 +26514,30 @@ You can't use solvents on targets other than yourself while bound.
 
 Choose Palette
 选择调色板
-### Use Raw Material
+Use Raw Material
+使用原料
 Restraint Palette
-限制调色板
+束缚调色板
 Choose Restraint
-选择限制
+选择束缚
 
-### Def. Palette: 
+Def. Palette: 
+默认设置
 Set All Palette
 设置所有调色板
 
 Guests
 客人
 
-### Assign to 
-### Remove from 
+Assign to 
+分配给
+Remove from 
+移除自
 Imprison
 监禁
 
-### Opinion: 
+Opinion: 
+评价 :
 Last Seen on Floor FLR, LOC
 最后出现在楼层 FLR 的 LOC 位置
 Present in current level
@@ -26543,7 +26551,8 @@ Use 'Truss'em'Up' to edit restraints on this NPC
 使用 '把他们捆起来！' 修改此 NPC 的束缚
 The NPC needs tightening, but is unavailable right now
 NPC 需要收紧束缚，但目前无法做到
-### Tighten non-conjured restraints
+Tighten non-conjured restraints
+加强非魔法约束
 
 
 NPC has escaped!
@@ -26555,12 +26564,18 @@ NPC 已成功解开她的束缚。
 
 Any
 全员
-### NPC Opinion: 
-### NPC Escape Status: 
-### NPC Binding: 
-### NPC Availability: 
-### Favorited: 
-### Rank: 
+NPC Opinion: 
+NPC 评价 : 
+NPC Escape Status: 
+NPC 逃脱状态 : 
+NPC Binding: 
+NPC 束缚 : 
+NPC Availability: 
+NPC 可用性 : 
+Favorited: 
+收藏 : 
+Rank: 
+等级 : 
 Minor
 低级
 Elite
@@ -26598,7 +26613,8 @@ Copy Restraints
 复制束缚
 Paste Restraints from NME
 从 NME 粘贴束缚
-### No restraints left in inventory
+No restraints left in inventory
+背包中没有任何束缚
 Paste to All!
 粘贴到全部！
 OVERWRITE All!
@@ -26684,7 +26700,8 @@ Reaching Authority
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
 
-### Save Slot 
+Save Slot 
+存档槽
 Load Game
 加载游戏
 Load Code
@@ -26708,7 +26725,8 @@ No Data
 
 This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 这是地牢的正常入口|教程在大厅的开头。
-### This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
+This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
+这是通往古墓的另一个入口|比一般的入口难。
 This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
 地牢的这一部分被混沌女神改变了|你要经过的区域顺序完全是随机的。
 Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
@@ -26721,8 +26739,10 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 你在废墟中迷失了方向。|图块顺序颠倒了！
 
 
-###  (Hard)
-###  (Extreme)
+ (Hard)
+ ( 困难 )
+ (Extreme)
+ ( 极端 )
 
 Choose Save Slot:
 选择保存到的槽位:
@@ -26741,11 +26761,13 @@ Reverse Route
 颠倒路线 ‎
 Chaos Route
 混沌路线 ‎
-### Map Seed: 
+Map Seed: 
+地图种子 : 
 Will Overwrite NME!
 这会覆盖 NME!
 
-### Play Slot 
+Play Slot 
+加载存档 
 Play (NO SLOT!)
 加载 ( 未选择存档! )
 
@@ -26756,8 +26778,8 @@ Backup
 备份
 Restore
 恢复
-### Set Palette
-
+Set Palette
+设置面板
 
 ### FLR-DGN
 ###  (NG+AMNT)
