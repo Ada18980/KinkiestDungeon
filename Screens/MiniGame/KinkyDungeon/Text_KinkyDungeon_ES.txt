@@ -45,7 +45,7 @@ Restart required!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.41
+### 5.3.44
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 Eres un aventurero que desciende a una antigua ciudad subterránea de magia.
@@ -155,6 +155,7 @@ Animaciones de alta calidad
 ### Faster Floater Fade
 ### No Damage Floaters
 ### Dynamic Armor (must hide armor)
+### Hide floating weapon display
 
 Helpless!
 ¡Indefenso!
@@ -197,8 +198,8 @@ Tener más de 10 puntos de repuesto activará el modo difícil, otorgando un bot
 ###  (HARD MODE ENABLED)
 Advanced start (choose perks)
 Comienzo avanzado (elija ventajas)
-Confirm and start playing!
-¡Confirma y empieza a jugar!
+### Kinky start
+### Normal start
 
 Point Cost: AMOUNT
 Costo de puntos: AMOUNT
@@ -619,7 +620,7 @@ Aparejador
 ### Binding on enemies is 30% stronger.
 Pacifist
 Pacifista
-### All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
+### All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue.
 ### Curse Seeker
 ### When you pick up cursed armor or restraints from chests, they equip automatically if able.
 
@@ -8591,7 +8592,7 @@ La mordaza aparecerá a tu lado y volará hacia el punto objetivo.
 ### Conjured Anti-Magic Gag
 ### The anti-magic gag forces itself into your mouth and buckles tightly!
 ### The anti-magic gag hits you! (DamageDealt)
-### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### Summons a magic-absorbing gag which deals DamageDealt teasing arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
 ### You conjure an anti-magic gag!
 
 
@@ -11093,6 +11094,7 @@ Start Playing
 Empezar a jugar
 Lock your settings in, nice and tight.
 Bloquee su configuración, agradable y firme.
+### Start with some perks that increase strictness and immersion.
 Choose some perks to spice up your run.
 Elige algunas ventajas para animar tu carrera.
 
@@ -20418,6 +20420,7 @@ Cuerda de entrepierna de mitril
 ### Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
 
 ### Equip Offhand
+### Remove Offhand
 
 ### Make a ranged attack with the spear.
 ### Make a ranged attack with the pike.
@@ -22558,6 +22561,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
 ### Cuddle Lounge
 ### Assign prisoners to the lounge in order to improve servant and prisoner opinion.
+### Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
 
 ### Recycle Restraints
 
@@ -22700,7 +22704,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Use 'Truss'em'Up' to edit restraints on this NPC
 ### The NPC needs tightening, but is unavailable right now
-### Tighten loose restraints
+### Tighten non-conjured restraints
 
 
 ### NPC has escaped!
@@ -22933,4 +22937,14 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### Game Saved
 
 ### ENMY escapes from the ITMN!
+### ENMY escapes from the ITMN and the item vanishes.
 ### ENMY unlocks the ITMN!
+### The conjured ITMN vanishes as it comes off.
+
+### AMNT restraints tightened since last tick~
+### You have no restraints in storage. Go to the Summit to deposit restraints.
+
+### Back to Facilities
+
+### Your Inventory
+### Warden's Storage

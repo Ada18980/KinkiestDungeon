@@ -51,7 +51,7 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-### 5.3.41
+### 5.3.44
 By Ada18980
 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
@@ -229,6 +229,7 @@ No Damage Floaters
 无伤漂浮物
 Dynamic Armor (must hide armor)
 动态盔甲 ( 必须隐藏盔甲 )
+### Hide floating weapon display
 
 Helpless!
 无助！
@@ -277,8 +278,8 @@ Having 10+ spare points will trigger Hard Mode, granting unique loot.
 ###  (HARD MODE ENABLED)
 Advanced start (choose perks)
 高级启动 ( 选择额外技能 )
-Confirm and start playing!
-确认并开始游戏！
+### Kinky start
+### Normal start
 
 Point Cost: AMOUNT
 积分成本 : ‎AMOUNT
@@ -763,8 +764,7 @@ Binding on enemies is 30% stronger.
 对敌人的拘束力提高 30%。
 Pacifist
 和平主义者
-All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
-除疼痛、抚摸、挠痒、妩媚、精神、锁链或胶水外，对人形敌人造成的所有伤害均减少 90%。
+### All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue.
 Curse Seeker
 诅咒探索者
 When you pick up cursed armor or restraints from chests, they equip automatically if able.
@@ -9633,7 +9633,7 @@ The gag will appear next to you and fly toward the target point.
 ### Conjured Anti-Magic Gag
 ### The anti-magic gag forces itself into your mouth and buckles tightly!
 ### The anti-magic gag hits you! (DamageDealt)
-### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### Summons a magic-absorbing gag which deals DamageDealt teasing arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
 ### You conjure an anti-magic gag!
 
 
@@ -12287,6 +12287,7 @@ Start Playing
 开始游玩
 Lock your settings in, nice and tight.
 锁定你的设置，享受紧缚
+### Start with some perks that increase strictness and immersion.
 Choose some perks to spice up your run.
 选择一些额外技能，为你的游玩增添趣味
 
@@ -22711,6 +22712,7 @@ Designate an Offhand weapon to gain passive effects such as a light source, armo
 
 Equip Offhand
 装备副手
+### Remove Offhand
 
 Make a ranged attack with the spear.
 用矛进行远程攻击。
@@ -26024,6 +26026,7 @@ Goddess shrines do not remove non-binding restraints such as harnesses and cuffs
 ### Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
 
 
+
 After casting a DMG spell:
 施展 DMG 法术后:
 Gain AMNT% DMG Damage for DRTN turns
@@ -26312,6 +26315,7 @@ Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve servant and prisoner opinion.
 将囚犯分配到休息室以提高仆人和囚犯对你的看法。
+### Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
 
 Recycle Restraints
 回收限制
@@ -26474,20 +26478,15 @@ Toe Tie
 Heels
 高跟鞋
 
-Equipped:
-已装备的:
-Click to Add
-点击添加
-Apply
-应用
-Raw Material:
-原料:
+### Equipped: 
+### Click to Add 
+### Apply 
+### Raw Material: 
 
 Free Prisoner
 释放囚犯
 
-Perk Unlocked:
-解锁的技能:
+### Perk Unlocked: 
 
 Latex Solvent
 乳胶溶剂
@@ -26544,8 +26543,7 @@ Use 'Truss'em'Up' to edit restraints on this NPC
 使用 '把他们捆起来！' 修改此 NPC 的束缚
 The NPC needs tightening, but is unavailable right now
 NPC 需要收紧束缚，但目前无法做到
-Tighten loose restraints
-收紧宽松的束缚
+### Tighten non-conjured restraints
 
 
 NPC has escaped!
@@ -26707,6 +26705,7 @@ Invalid Data
 No Data
 无数据
 
+
 This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 这是地牢的正常入口|教程在大厅的开头。
 ### This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
@@ -26722,10 +26721,8 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 你在废墟中迷失了方向。|图块顺序颠倒了！
 
 
- (Hard)
- ( 困难 )
- (Extreme)
- ( 极限 )
+###  (Hard)
+###  (Extreme)
 
 Choose Save Slot:
 选择保存到的槽位:
@@ -26744,13 +26741,11 @@ Reverse Route
 颠倒路线 ‎
 Chaos Route
 混沌路线 ‎
-Map Seed:
-地图种子:
+### Map Seed: 
 Will Overwrite NME!
 这会覆盖 NME!
 
-Play Slot
-加载存档
+### Play Slot 
 Play (NO SLOT!)
 加载 ( 未选择存档! )
 
@@ -26804,6 +26799,7 @@ You put it on, why would you want to take it off?~
 You'll need an ancient key to unlock the ancient-made collar.
 你需要一把古老的钥匙来解开古老的项圈。
 
+
 ### Ancient Worshipper
 ### The ancient worshipper repents of her ways.
 ### The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
@@ -26851,12 +26847,15 @@ Check compatibility!
 请检查兼容性!
 Misc Error
 其他错误
+###  v
 
 Magical disenchantment suspends your living collar for AMNT turns
 魔法解除魔咒会在 AMNT 回合内让你的生命项圈无效化
 
 Hardlight
 硬光
+### Knocked Out
+### Vine
 
 Saving...
 保存中...
@@ -26865,5 +26864,15 @@ Game Saved
 
 ENMY escapes from the ITMN!
 ENMY 从 ITMN 逃脱!
+### ENMY escapes from the ITMN and the item vanishes.
 ENMY unlocks the ITMN!
 ENMY 解开了 ITMN 的锁!
+### The conjured ITMN vanishes as it comes off.
+
+### AMNT restraints tightened since last tick~
+### You have no restraints in storage. Go to the Summit to deposit restraints.
+
+### Back to Facilities
+
+### Your Inventory
+### Warden's Storage
