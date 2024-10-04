@@ -77,8 +77,10 @@ Keybindings
 按键绑定
 
 
-### Apply palettes to Restraints
-### Apply palettes to transforms
+Apply palettes to Restraints
+将调色应用于束缚
+Apply palettes to transforms
+将调色应用于变形
 
 ### Don't use character palette
 ### Always use character palette
@@ -87,7 +89,8 @@ Keybindings
 Show Background Art
 显示背景
 
-### Mute when Minimized
+Mute when Minimized
+最小化时静音
 Show DP instead of %
 显示具体的分心值
 Quick Inv only equips to self
@@ -218,7 +221,8 @@ Hide Nipple Clamps
 隐藏乳头夹
 Hide Nipple Piercings
 隐藏乳头穿孔
-### Use default palette when no outfit is worn
+Use default palette when no outfit is worn
+当未穿着衣物时使用默认调色
 Flip Player Display
 翻转玩家显示
 Grayscale when Blind
@@ -229,7 +233,8 @@ No Damage Floaters
 无伤漂浮物
 Dynamic Armor (must hide armor)
 动态盔甲 ( 必须隐藏盔甲 )
-### Hide floating weapon display
+Hide floating weapon display
+隐藏浮动武器显示
 
 Helpless!
 无助！
@@ -275,11 +280,14 @@ Select perks to start with.
 选择初始技能
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 可用积分大于10将进入困难模式，可获得独特的战利品
-###  (HARD MODE ENABLED)
+ (HARD MODE ENABLED)
+ ( 困难模式启用 )
 Advanced start (choose perks)
 高级启动 ( 选择额外技能 )
-### Kinky start
-### Normal start
+Kinky start
+变态启动
+Normal start
+正常启动
 
 Point Cost: AMOUNT
 积分成本 : ‎AMOUNT
@@ -1299,8 +1307,10 @@ Feet
 Everywhere!
 任何位置！
 
-### Physical Armor: 
-### Magic Armor: 
+Physical Armor: 
+物理护甲 : 
+Magic Armor: 
+魔法护甲 : 
 In the Shadows: You are harder to see.
 处在阴影中 : ‎你更难被敌人察觉。
 Invisible: You are very difficult to see.
@@ -1577,7 +1587,8 @@ Missing key
 未找到钥匙
 You are protected from damage and can't be bound until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
-### Chance for a spell to fizzle: 
+Chance for a spell to fizzle: 
+释放法术失败概率 : ‎
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 闪避率 : ‎Percent% [基于 EVASIONSUM 点闪避值和 EVASIONPENALTY% 闪避值惩罚]
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1733,7 +1744,8 @@ Delete Mod
 移除模组
 Clear Perks
 清除词条
-### Config 
+Config 
+配置 
 Cancel
 取消
 Filter
@@ -2895,9 +2907,12 @@ Great for cutting trees that happen to be underground.
 对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
-### Accuracy: 
-### Crit Multiplier: 
-### Bind Crit Multiplier: 
+Accuracy: 
+命中率 : ‎
+Crit Multiplier: 
+暴击倍率 : ‎
+Bind Crit Multiplier: 
+束缚暴击倍率 : ‎
 Find the keys..
 寻找钥匙...
 Find the exit!
@@ -2915,7 +2930,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 You found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
 ### Evasion: 
-### Visibility: 
+Visibility: 
+可见度 : ‎
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -5741,9 +5757,12 @@ Shrine of SHRINETYPE
 SHRINETYPE 神泉
 ### Tablet of 
 
-### Goddess: 
-### Goddess Blessing: 
-### Goddess Curse: 
+Goddess: 
+女神 : ‎
+Goddess Blessing: 
+女神祝福 : ‎
+Goddess Curse: 
+女神诅咒 : ‎
 ### Mana Bonus: 
 ### Lack of Mana Penalty: 
 Your excess mana helps you suppress the enchantment!
@@ -6748,7 +6767,7 @@ Heavy Yoke
 A series of armor-grade plates cut with precision machining, sandwiched into an unbreakable layer that clasps firmly in place around your neck and wrists.
 一系列经过精密加工切割的装甲级板材，夹在牢不可破的层中，可以牢牢地固定在你的颈部和手腕上。
 Steel Fiddle
-钢提琴
+颈手枷
 A steel fixture keeping your hands in an awkward and submissive position.
 钢制固定装置使你的手处于尴尬且顺从的姿势。
 The awkward position prevents you from easily reaching the lock.
@@ -12287,7 +12306,8 @@ Start Playing
 开始游玩
 Lock your settings in, nice and tight.
 锁定你的设置，享受紧缚
-### Start with some perks that increase strictness and immersion.
+Start with some perks that increase strictness and immersion.
+从一些增加严格性和沉浸感的奖励开始
 Choose some perks to spice up your run.
 选择一些额外技能，为你的游玩增添趣味
 
@@ -24695,7 +24715,8 @@ Fungal
 ### Elemental
 ### Royal
 
-### Choose default outfit palette:
+Choose default outfit palette:
+选择装备默认调色: 
 
 Auto Load Mods
 自动加载模组
@@ -25514,7 +25535,8 @@ You find a ceremonial leotard.
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took 
+Took 
+受到 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 ( 当你杀死龙时，它开始变身为人形！ )
@@ -26681,7 +26703,8 @@ idle
 
 ### Cost: 
 
-### Zoom set to PCNT%
+Zoom set to PCNT%
+缩放设置为 PCNT%
 ### You need free arms to tie others!
 ### You can use the quick inventory to bind yourself or others
 ### Error. Please screenshot and report.
@@ -26762,7 +26785,7 @@ Reverse Route
 Chaos Route
 混沌路线 ‎
 Map Seed: 
-地图种子 : 
+地图种子 : ‎
 Will Overwrite NME!
 这会覆盖 NME!
 
