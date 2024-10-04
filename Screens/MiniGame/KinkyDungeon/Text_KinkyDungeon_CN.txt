@@ -41,8 +41,7 @@ Mods Loaded.
 
 Restart required!
 需要重启！
-需要重启！
-Domit
+### 需要重启！
 ### 재시작 필요！
 ### Restart please!
 ### ¡Reinicio!
@@ -52,7 +51,7 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-### 5.3.38-RC6
+### 5.3.41
 By Ada18980
 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
@@ -78,8 +77,8 @@ Keybindings
 按键绑定
 
 
-### Apply palette to Restraints
-### Apply palette to transforms
+### Apply palettes to Restraints
+### Apply palettes to transforms
 
 ### Don't use character palette
 ### Always use character palette
@@ -88,6 +87,7 @@ Keybindings
 Show Background Art
 显示背景
 
+### Mute when Minimized
 Show DP instead of %
 显示具体的分心值
 Quick Inv only equips to self
@@ -218,8 +218,7 @@ Hide Nipple Clamps
 隐藏乳头夹
 Hide Nipple Piercings
 隐藏乳头穿孔
-Force restraints to use outfit palette
-强制束缚具使用衣物主色调
+### Use default palette when no outfit is worn
 Flip Player Display
 翻转玩家显示
 Grayscale when Blind
@@ -275,8 +274,7 @@ Select perks to start with.
 选择初始技能
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 可用积分大于10将进入困难模式，可获得独特的战利品
- (HARD MODE ENABLED)
- (困难模式已启用)
+###  (HARD MODE ENABLED)
 Advanced start (choose perks)
 高级启动 ( 选择额外技能 )
 Confirm and start playing!
@@ -289,8 +287,7 @@ Points Available: AMOUNT
 
 Resilient Foes
 顽强之敌
-Enemies have 40% more hp.
-敌人的生命值增加 40%。
+### Enemies have 30% more hp.
 
 Strong
 强健
@@ -1302,18 +1299,15 @@ Feet
 Everywhere!
 任何位置！
 
-Physical Armor:
-物理护甲:
-Magic Armor:
-魔法护甲:
+### Physical Armor: 
+### Magic Armor: 
 In the Shadows: You are harder to see.
 处在阴影中 : ‎你更难被敌人察觉。
 Invisible: You are very difficult to see.
 隐形 : ‎你非常难以被敌人察觉。
 Quickness: Your next movement is so fast it doesn't advance a turn.
 迅捷 : ‎你的下一个动作极其迅速，不消耗回合时间。
-All Damage Reduction:
-所有伤害减免:
+### All Damage Reduction: 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 你受到的DAMAGETYPE伤害COUNTPERCENT [基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正]
 You deal PERCENT more DAMAGETYPE damage.
@@ -1583,8 +1577,7 @@ Missing key
 未找到钥匙
 You are protected from damage and can't be bound until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
-Chance for a spell to fizzle:
-咒语失效的概率:
+### Chance for a spell to fizzle: 
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 闪避率 : ‎Percent% [基于 EVASIONSUM 点闪避值和 EVASIONPENALTY% 闪避值惩罚]
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1662,10 +1655,10 @@ Sprint/Hop
 Crouch
 蹲伏
 
-### Ahh!
-### Mmm...
-### Nnngh...
-### Ooooh...
+### ~ah~
+### ~mmm~
+### ~ngh~
+### ~oh~
 (Heavy breathing)
 ( 沉重喘息 )
 (Soft moaning)
@@ -1682,9 +1675,10 @@ Crouch
 ( 淫荡的声音 )
 
 
-### Mmmph...
-### Mmmph~
-### Mmmmmmmm...
+### ~mm~
+### ~mmph~
+### ~nnn~
+### ~mmmmm~
 
 You wait.
 等待。
@@ -1739,8 +1733,7 @@ Delete Mod
 移除模组
 Clear Perks
 清除词条
-Config
-配置
+### Config 
 Cancel
 取消
 Filter
@@ -1868,16 +1861,11 @@ Press a key, then press a button to set that key
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER : DUNGEONNAME
 
-Lockpicks:
-撬锁器:
-Keys:
-钥匙:
-Magic Keys:
-魔法钥匙:
-Knife:
-小刀:
-Mag. Knife:
-魔法小刀:
+### Lockpicks: 
+### Keys: 
+### Magic Keys: 
+### Knife: 
+### Mag. Knife: 
 
 You climb down the stairs. The passage closes behind you.
 你进入了下一层。通道在你的身后关闭。
@@ -2076,8 +2064,7 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 你会发现一堆药水。
 
-Rarity:
-品质:
+### Rarity: 
 Lesser
 无价值的
 Common
@@ -2291,16 +2278,13 @@ Gold
 金币
 Key
 钥匙
-A key with traces of magic that fades with one use.
-一把含有些许魔力的普通钥匙，一次使用就会消失。
-Can be used to unlock a red-locked restraint, door, or chest.
-可用于打开红色锁的束缚、门或箱子。
+### A key. You wonder who it's for?
+### Can be used to unlock one simple or standard-locked restraint, door, or chest.
 Magic Key
 魔法钥匙
 A glowing key enchanted with magic that fades with one use.
 一把充盈着发光魔力的魔法钥匙，使用一次就会消失。
-Can be used to unlock a blue lock.
-可用于解锁蓝色锁。
+### Can be used to unlock a runic lock.
 A magical key with the power to open blue locks.
 一把能打开蓝色锁的魔法钥匙。
 Blue locks can't be otherwise picked.
@@ -2524,6 +2508,7 @@ The secret to elven cosmetics and blemish-free skin.
 精灵化妆和无瑕肌肤的秘密。
 Makes you slippery for 100 turns, boosting all forms of struggling.
 让你在 100 回合内变得很光滑，增强各种形式的挣扎。
+
 
 Enchanted Grinder
 魔法切割机
@@ -2903,20 +2888,16 @@ Dreamcatcher
 梦网
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
-造成暗影伤害。对未察觉（100%）或脆弱（50%）的目标造成最多 30 点额外精神伤害。
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 Axe
 斧头
 Great for cutting trees that happen to be underground.
 对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
-Accuracy:
-精准度:
-Crit Multiplier:
-暴击倍率:
-Bind Crit Multiplier:
-束缚暴击倍率:
+### Accuracy: 
+### Crit Multiplier: 
+### Bind Crit Multiplier: 
 Find the keys..
 寻找钥匙...
 Find the exit!
@@ -2933,10 +2914,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
 You found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
-Evasion:
-逃避:
-Visibility:
-可见度:
+### Evasion: 
+### Visibility: 
+
 
 Submissive: Enemies won't attack you, but they will try to play with you.
 顺从者 : ‎敌人不会尝试攻击你，但他们会尝试对你做一些奇妙的互动。
@@ -2978,14 +2958,10 @@ Satisfied. Miscast chance is reduced.
 满足。减少失误的概率
 
 
-Damage:
-伤害:
-Bind:
-束缚:
-Crit:
-暴击:
-SP Cost:
-SP 点数:
+### Damage: 
+### Bind: 
+### Crit: 
+### SP Cost: 
 Cut PWR: AMNT%
 力量削减 : ‎AMNT%
 
@@ -5763,13 +5739,13 @@ Commerce
 商业
 Shrine of SHRINETYPE
 SHRINETYPE 神泉
-### Tablet of
+### Tablet of 
 
-### Goddess:
-### Goddess Blessing:
-### Goddess Curse:
-### Mana Bonus:
-### Lack of Mana Penalty:
+### Goddess: 
+### Goddess Blessing: 
+### Goddess Curse: 
+### Mana Bonus: 
+### Lack of Mana Penalty: 
 Your excess mana helps you suppress the enchantment!
 你多余的魔力可以帮助你抵抗附魔！
 Your mana is too weak to fight the magical enchantment...
@@ -5791,9 +5767,9 @@ These runes are meant for someone with less willpower.
 You try to read the runes but cannot understand them.
 你尝试阅读符文，但无法理解它们。
 
-### Allies:
-### Enemies:
-### Favorable:
+### Allies: 
+### Enemies: 
+### Favorable: 
 
 None
 无
@@ -6330,7 +6306,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find
+### You find 
 
 
 
@@ -8384,7 +8360,7 @@ A book of manipulative spells
 Verbal
 口头
 
-### Components:
+### Components: 
 Arm Movements
 手臂动作
 Leg Gestures
@@ -9646,12 +9622,20 @@ The gag forces itself into your mouth and buckles tightly!
 口塞自动塞入你的嘴巴并紧紧扣住！
 The gag hits you! (DamageDealt)
 口塞击中了你！ ( 造成 DamageDealt 点伤害 )
-Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
-召唤一个造成 DamageDealt 点锁链伤害并沉默 15 回合的口塞。对沉默个体增加 40 点束缚。
+### Summons a gag which deals DamageDealt chain damage and silences for 8 turns. +40 binding if target is not silenced.
 You conjure a gag!
 你召唤出口塞！
 The gag will appear next to you and fly toward the target point.
 口塞出现在你旁边并飞向目标点。
+
+
+### Conjure Anti-Magic Gag
+### Conjured Anti-Magic Gag
+### The anti-magic gag forces itself into your mouth and buckles tightly!
+### The anti-magic gag hits you! (DamageDealt)
+### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### You conjure an anti-magic gag!
+
 
 Conjure Armbinder
 召唤单手套
@@ -10623,10 +10607,12 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 You climb into the grate
 你爬进隔间
 
+### Mmmph...
 ### Mmmmmmmmm...
 ### Hhmmpphh...
 ### Gghhhh!!!
 ### Mmmmmphh!!!
+### Mmm...
 ### MMM!!!
 ### Mmmmmm.
 
@@ -10885,7 +10871,7 @@ You need a higher level in SCHOOL magic to learn this spell.
 You need more spell points.
 你需要更多的法术点数。
 ### You don't have enough maximum mana to cast this spell!
-### School:
+### School: 
 Generic
 通用
 Upgrade
@@ -10894,12 +10880,12 @@ Special
 特别
 Learn Spell
 学习法术
-### Spell Points:
+### Spell Points: 
 
 
-### Level:
-### Spell Point Cost:
-### Mana Cost:
+### Level: 
+### Spell Point Cost: 
+### Mana Cost: 
 
 
 Remove Spell 1
@@ -10926,13 +10912,13 @@ Replace Spell 5
 替换法术 5
 ### Replace Spell 6
 ### Replace Spell 7
-### Current Spell 1:
-### Current Spell 2:
-### Current Spell 3:
-### Current Spell 4:
-### Current Spell 5:
-### Current Spell 6:
-### Current Spell 7:
+### Current Spell 1: 
+### Current Spell 2: 
+### Current Spell 3: 
+### Current Spell 4: 
+### Current Spell 5: 
+### Current Spell 6: 
+### Current Spell 7: 
 
 ### ???
 Unfiled
@@ -10966,7 +10952,7 @@ Bellows
 ( 《万古之书》中的一页 ) |有人说 '地下墓穴' 比时间本身还要古老。当旧文明开始研究永生时，没有人知道是否有可能让那些已经死去的人复活。因此，地下墓穴被用来储存前人类的所有遗骸，以便当大法师最终取得突破时，他们也可以复活。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 ( 《万古之书》中的一页 ) |据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识 ( 魔法、精神、技术 ) 后，她指派十二位小魔法师负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 ( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -11575,10 +11561,10 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 消耗 3 声望，女神将促进你的挣扎。
 For 3 rep the goddess will grant you a key.
 消耗 3 声望，女神授予你一把钥匙。
-### For 3 rep the goddess will grant you
+### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 消耗 3 声望，女神
-### For 3 rep the goddess
+### For 3 rep the goddess 
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 女神会以 AMOUNT 点声望为代价完全恢复你的魔力
@@ -11924,8 +11910,8 @@ Can disarm (chance: DISARMCHANCE%)
 可以解下 ( 概率 : ‎DISARMCHANCE% )
 Resistances:
 抗性 : ‎
-### HP:
-### Binding:
+### HP: 
+### Binding: 
 Ambivalent
 矛盾
 Likes you
@@ -11958,6 +11944,7 @@ Unaware
 没发现你
 Items carried:
 携带的物品 : ‎
+### Items worn:
 ...and NUMBER more
 ...还有 NUMBER 个
 Takes damage if the caster is stunned
@@ -12230,8 +12217,7 @@ Extreme
 极端模式
 A supposedly reasonable difficulty curve.
 合理的难度曲线
-Play the game the way it was intended. Cruel and restrictive.
-按照游戏的初衷来玩。残酷而有限制性。
+### Play the game the way it was intended. Cruel and restrictive. 
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 你将自食其果，该难度通过双击“困难模式”按钮解锁
 
@@ -12661,6 +12647,7 @@ You'll never escape!
 ### Mmmgh!
 ### Mmmmmm <3
 ### Mmmmmm~
+### Mmmph~
 *looks at you nervously*
 *紧张地看着你*
 *giggles*
@@ -14031,6 +14018,24 @@ I'll take a look.
 ### What's that about backup?
 
 
+### Catch me. If you can, that is.
+### I double dare you.
+### Weren't you chasing me?
+### I've got somethin nice for ya.
+### Be a good girl for me, will ya?
+### You need to show some restraint.
+### Stay where you belong, you naughty girl.
+### Let's go somewhere more private.
+### Ready or not, here I come.
+### Those sticky fingers belong in a pair of mittens.
+### All units. Apprehend convict with extreme prejudice.
+### You're going nowhere.
+### Come on. This wasn't your only weapon, was it?
+### A tank, huh.
+### Mine now.
+### Just keeping you safe from yourself.
+
+
 ### An outsider!
 ### Hide!
 ### I have done nothing worthy of punishment!
@@ -14080,6 +14085,9 @@ I'll take a look.
 ### Truly concerning.
 ### You leave me no choice.
 ### I stand firm.
+
+
+### You look cute in that, you should lose the rest though!
 
 
 ### I don't like the way you're looking at me!
@@ -14145,6 +14153,63 @@ Stop!
 Rawr!
 吼！
 
+
+
+### You will loose me or burn eternal!!!
+### ... This shame is unbearable! Oh sister!!!
+### Oh! Mytrice is caught! My ambitions laid to ruin!
+### The winds of retribution carry me elsewhere...
+### Myrtrice will come for you shortly! Consider yourself fortunate...
+### I will retreat into darkness...
+### My sins are a multitude! I will submit to your judgements...
+### I do not ask for mercy for I have shown none!
+### You must punish me! I can't face my sister Myrtle until my debts are paid...
+### Your chest quivers... Do you fear me?
+### Is it that another moth has become enthralled to my fires bright?
+### Myrtrice entreats you! Remain still and let my adoring embers kiss your lips tender...
+### To struggle is to invite searing coals upon your head!
+### I will drag you into the dark and you will witness my projects!
+### To escape is only to delay! My fires consume ALL!
+### Dusty trinkets... Your scrapping around is an insolence!
+### You would scorn the memory of my sister with escape?!
+### Careless of you to appear before Myrtrice like this!
+### Your attempts are trivial!
+### You invite wrath!!!
+### Pathetic!!!
+### Such hapless casting scorns the memory of my sister!
+### Your magics will be swallowed up by hellfire!!!
+### Myrtrice is subject to no magic!!!
+### Items? How exceptionally talentless...
+### That shrine scorns the memory of my sister! I hate it!
+### True power doesn't come from old rickety crates...
+### Orbs? What a gruesome display of weakness! True power comes from the self!
+### YOU SCORN THE MEMORY OF MY LATE SISTER!!!
+### This is where you will remain until Myrtrice wills otherwise!
+### This is what you were gripping so tightly in your hands?
+### WHAT ABBORANCE! You will pay for that...
+### SEAR ETERNAL!
+### I, Myrtrice, missed?!
+### No one resists Myrtrice! How irritating!!!
+### Your failures do not surprise Myrtrice!
+### Your pathetic attempts scorn the memory of my sister!
+### The curtains of my revenge are drawn! You will follow me...
+### You will come with Myrtrice!!!
+### Be dazed by the radiant brilliance of my hellfires!
+### I will repay the theif with brutal reprisal...
+### Your fate is sealed! ... Myrtle this is for you, sister!
+### All creatures are subject to Myrtrice! It is the price of their insolence...
+### You make a grave mistake ignoring me!!!
+### Your eyes belong here! With Myrtrice!!!
+### The ones who turn their backs on Myrtrice SEAR IN HELLFIRE!
+### What a hideous display!!! Where is your honor?
+### It is this kind of petulant insolence that tarnishes the memory of my sister!
+### You are a blight! My sister Myrtle would never stand for this!!!
+### THE CURTAINS OF MY REVENGE DRAW OPEN WIDE!
+### What an excellent oppertunity to expand my alters in the dark!
+### I see a chalice before me... it drips with shadow and overflows with darkness!
+### My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*
+### THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
+### I, Myrtrice, will resist their insolent fusilades!
 
 
 ### So this is what it's like...
@@ -14340,6 +14405,31 @@ Do not mess with us!
 I shall take you for myself~
 我亲自带你去~
 
+
+### You won't get me!
+### Nice try!
+### My grandma is tougher than you!
+### Restrain me.
+### Play with me.
+### Lock me up.
+### This won't work.
+### I don't play with young ones.
+### Oh, a lost toy!
+### Ouch!
+### I am stronger than that!
+### That hurts!
+### Nice party trick!
+### Oh, shiny!
+### *sighs*
+### You won't get away!
+### You can't get away!
+### You are helpless now!
+### Tis but a scratch!
+### Give up!
+### Are you hiding?!
+### You are my pet now!
+### Yoink!
+### You can't get out now!
 
 
 I will be free... even if it takes me a thousand years!
@@ -16574,7 +16664,7 @@ What? (PERCENT chance to avoid)
 ### (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
 ### (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 ### (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts her head and shrugs)|Ah well. 
 ### (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 ### (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 ### (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
@@ -17185,6 +17275,62 @@ There is no valid space next to you!
 ( SPEAKER 呻吟 ) |嗯嗯呜呜~
 ### (The SPEAKER appears too busy to discuss with you)
 
+
+
+
+
+
+
+
+
+
+
+### End of line.
+
+### *slaps your butt*
+
+
+
+
+### Error. Subject not complying?
+
+
+
+
+### Got yourself locked up, huh? Better go be good now~
+### *she bumps up against your chastity and sighs*
+### Pleasure controls detected.
+### You've been a bad girl, haven't you? *taps on your chastity gear*
+### Such a naughty girl, getting yourself all locked up like that!
+### I-I know you want release, but you're in this gear for a reason~
+
+
+
+
+
+
+
+
+
+
+### Had fun?~
+### *turns the toy off and giggles*
+
+
+
+
+
+
+
+
+
+### Don't I look quite cuddly?
+### (Move closer, attempting to cuddle)
+### (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+### (The SPEAKER smiles gently)|Aren't you precious~
+### (The SPEAKER looks flustered)|Well, it's been a long day...|I could use a hug...
+### (The SPEAKER smirks and reaches for your body)
+### (The SPEAKER makes a beeping noise)|Loading cuddle module...
 
 
 Got something for me?
@@ -17993,7 +18139,7 @@ Give her a Scroll of Purity
 ### W-what does that entail?
 ### (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
 ### Hmmmph? Mmmm! (Act worried and whimper)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds her arms)|Mistress Oriel's orders 
 ### Not in the 'System'?
 ### (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
 ### Mmmph? (Act confused)
@@ -18208,7 +18354,7 @@ Upcast Level LEVEL
 LEVEL 级
 Prerequisite
 前置条件
-### Unlocks:
+### Unlocks: 
 You need to learn REQUIREDSPELL before you can learn this one.
 你需要先学习 REQUIREDSPELL 才能学习这个。
 
@@ -18256,7 +18402,7 @@ Initiating prisoner lockdown protocol
 ### Your RestraintName suddenly snap together as the EnemyName activates them!
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count:
+### Turn Count: 
 
 The Shopkeeper leashes you!
 店主正在牵着你！
@@ -18669,7 +18815,7 @@ Paste
 Items on Ground:
 地面物品 : ‎
 
-### Preloading Character Assets:
+### Preloading Character Assets: 
 
 Uniforms
 制服
@@ -20936,6 +21082,45 @@ Gag
 ### LightMaidKnight_SleeveRight
 ### LightMaidKnight_Sleeves
 
+### LightMaidKnightHairband
+### Headband
+### HeadbandFrill
+### HeadbandRibbon
+### FootBootLeftHogtie
+### FootShoeLeftHogtie
+### GagNecklace
+### GagNecklaceBall
+### FashionGagNecklace
+### BondageBed
+### BedStraps
+### BedStrapsHogtie
+### LightMaidKnight_Apron
+### ApronChest
+### ApronBack
+### LightMaidKnight_Flower
+### Flower
+### LightMaidKnight_SockRight
+### LightMaidKnight_SockLeft
+### LightMaidKnight_Socks
+### LightMaidKnight_GloveLeft
+### LightMaidKnight_GloveRight
+### LightMaidKnight_Gloves
+### LightMaidKnight_GuardLeft
+### GuardLeft
+### GuardCuffLeft
+### GuardCuff2Left
+### LightMaidKnight_GuardRight
+### GuardRight
+### GuardCuffRight
+### GuardCuff2Right
+### LightMaidKnight_Guards
+### LightMaidKnight_Boots
+### LightMaidKnight_Pauldron
+### PauldronLeft
+### PauldronStrap
+### LightMaidKnight
+
+
 
 
 
@@ -21689,7 +21874,7 @@ Rubber Stick
 橡胶棒
 A rubber cylinder without any lewd intentions whatsoever.
 一个没有任何猥亵意图的橡胶圆棒。
-### Deals grope damage.
+### Deals grope damage. 
 You pick up a flexible rubber stick.
 你拿起一根柔软的橡胶棒。
 
@@ -22147,6 +22332,10 @@ A handy key for getting out of common handcuffs and shackles.
 一把摆脱常见手铐和脚镣的简易钥匙。
 It's not sophisticated enough to work on higher-quality locks, but can be used many times.
 它不够复杂，无法用于更高质量的锁，但可以多次使用。
+
+### You twirl a key around your finger.
+### You twirl a magic key around your finger. Careful not to lose it!
+### You fidget with a lockpick.
 
 
 You pick up a tool for picking disc detainer locks.
@@ -22649,8 +22838,8 @@ Cracks begin to form in your RestraintName!
 Your RestraintName shatters and falls off!
 你的 RestraintName 破碎并掉落！
 
-### Load Hotbar
-### Save Hotbar
+### Load Hotbar 
+### Save Hotbar 
 Clear Hotbar
 清空快捷栏
 
@@ -23866,7 +24055,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-### Receive the following restraints:
+### Receive the following restraints: 
 You will be bound with some form of restraint.
 你将受到某种形式的束缚。
 
@@ -24479,7 +24668,7 @@ Guest #NUMR/TTL
 
 Select a character to examine
 选择要检查的角色
-### Former Faction:
+### Former Faction: 
 
 Minigun
 机枪
@@ -24503,8 +24692,7 @@ Fungal
 ### Elemental
 ### Royal
 
-Choose default restraint palette:
-选择默认束缚主色调:
+### Choose default outfit palette:
 
 Auto Load Mods
 自动加载模组
@@ -24663,7 +24851,7 @@ Yokes are less favored over other heavy bondage.
 You crouch and move slowly.
 你蹲下并缓慢移动。
 
-### Owned by:
+### Owned by: 
 
 Warden's Belt
 典狱长的贞操带
@@ -25323,8 +25511,7 @@ You find a ceremonial leotard.
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-Took
-受到
+### Took 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 ( 当你杀死龙时，它开始变身为人形！ )
@@ -26218,8 +26405,8 @@ Fiber
 Runes
 符文
 
-### Stock:
-### Inputs:
+### Stock: 
+### Inputs: 
 
 You slip off the conveyor!
 你从传送带上滑下来了！
@@ -26249,6 +26436,7 @@ Mask/Hood
 面罩/头套
 Gag / Stuffing
 口塞 / 填充
+### Flat Gag
 Wrists
 腕部
 Encasement
@@ -26330,19 +26518,19 @@ Restraint Palette
 Choose Restraint
 选择限制
 
-### Def. Palette:
+### Def. Palette: 
 Set All Palette
 设置所有调色板
 
 Guests
 客人
 
-### Assign to
-### Remove from
+### Assign to 
+### Remove from 
 Imprison
 监禁
 
-### Opinion:
+### Opinion: 
 Last Seen on Floor FLR, LOC
 最后出现在楼层 FLR 的 LOC 位置
 Present in current level
@@ -26369,12 +26557,12 @@ NPC 已成功解开她的束缚。
 
 Any
 全员
-### NPC Opinion:
-### NPC Escape Status:
-### NPC Binding:
-### NPC Availability:
-### Favorited:
-### Rank:
+### NPC Opinion: 
+### NPC Escape Status: 
+### NPC Binding: 
+### NPC Availability: 
+### Favorited: 
+### Rank: 
 Minor
 低级
 Elite
@@ -26477,7 +26665,7 @@ idle
 
 ### Select a Binding Slot
 
-### Cost:
+### Cost: 
 
 ### Zoom set to PCNT%
 ### You need free arms to tie others!
@@ -26498,7 +26686,7 @@ Reaching Authority
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
 
-### Save Slot
+### Save Slot 
 Load Game
 加载游戏
 Load Code

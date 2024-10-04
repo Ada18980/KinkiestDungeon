@@ -46,7 +46,7 @@ Mods Loaded.
 Version
 Версия перевода 5.2.24, версия игры
 ### Kinky Dungeon
-### 5.3.38-RC6
+### 5.3.41
 By Ada18980
 От Ada18980
 You are an adventurer descending into an ancient underground city of magic.
@@ -71,8 +71,8 @@ Keybindings
 Управление
 
 
-### Apply palette to Restraints
-### Apply palette to transforms
+### Apply palettes to Restraints
+### Apply palettes to transforms
 
 ### Don't use character palette
 ### Always use character palette
@@ -80,7 +80,7 @@ Keybindings
 
 ### Show Background Art
 
-
+### Mute when Minimized
 ### Show DP instead of %
 ### Quick Inv only equips to self
 ### Override Outfit when Loading Save
@@ -195,7 +195,7 @@ Hide Nipple Clamps
 Скрыть зажимы на сосках
 Hide Nipple Piercings
 Скрыть пирсинг сосков
-### Force restraints to use outfit palette
+### Use default palette when no outfit is worn
 Flip Player Display
 Отзеркалить отображение игрока
 Grayscale when Blind
@@ -259,8 +259,7 @@ Points Available: AMOUNT
 
 Resilient Foes
 Выносливые противники
-Enemies have 40% more hp.
-У врагов на 40% больше здоровья.
+### Enemies have 30% more hp.
 
 Strong
 Сильная
@@ -1248,15 +1247,15 @@ Feet
 Everywhere!
 Везде!
 
-### Physical Armor:
-### Magic Armor:
+### Physical Armor: 
+### Magic Armor: 
 In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
 Invisible: You are very difficult to see.
 Невидимость: Вас очень трудно увидеть.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-### All Damage Reduction:
+### All Damage Reduction: 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
 You deal PERCENT more DAMAGETYPE damage.
@@ -1515,7 +1514,7 @@ Missing key
 Отсутствует ключ
 You are protected from damage and can't be bound until the shield is broken!
 Вы защищены от урона и не можете быть связаны до тех пор, пока щит не будет сломан!
-### Chance for a spell to fizzle:
+### Chance for a spell to fizzle: 
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1586,14 +1585,10 @@ Sprint/Hop
 Crouch
 Присесть
 
-Ahh!
-Аах!
-Mmm...
-Ммм...
-Nnngh...
-Мгхх...
-Ooooh...
-Оооох...
+### ~ah~
+### ~mmm~
+### ~ngh~
+### ~oh~
 (Heavy breathing)
 (Тяжелое дыхание)
 (Soft moaning)
@@ -1610,12 +1605,10 @@ Ooooh...
 (Похотливые звуки)
 
 
-Mmmph...
-Ммффх...
-Mmmph~
-Мммфх~
-Mmmmmmmm...
-Мммммммм...
+### ~mm~
+### ~mmph~
+### ~nnn~
+### ~mmmmm~
 
 You wait.
 Вы ждёте.
@@ -1669,7 +1662,7 @@ Delete Mod
 Удалить модификацию
 Clear Perks
 Очистить перки
-### Config
+### Config 
 Cancel
 Отмена
 Filter
@@ -1795,11 +1788,11 @@ Press a key, then press a button to set that key
 Floor FLOORNUMBER: DUNGEONNAME
 Этаж FLOORNUMBER: DUNGEONNAME
 
-### Lockpicks:
-### Keys:
-### Magic Keys:
-### Knife:
-### Mag. Knife:
+### Lockpicks: 
+### Keys: 
+### Magic Keys: 
+### Knife: 
+### Mag. Knife: 
 
 You climb down the stairs. The passage closes behind you.
 Вы спускаетесь по лестнице, а проход закрывается за вами.
@@ -1996,7 +1989,7 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 Вы находите смесь зелий.
 
-### Rarity:
+### Rarity: 
 Lesser
 Мусор
 Common
@@ -2207,16 +2200,13 @@ Gold
 Золото
 Key
 Ключ
-A key with traces of magic that fades with one use.
-Ключ со следами магии, который исчезает при использовании.
-Can be used to unlock a red-locked restraint, door, or chest.
-Может использоваться для отпирания красного замка на ограничителе, двери или сундуке.
+### A key. You wonder who it's for?
+### Can be used to unlock one simple or standard-locked restraint, door, or chest.
 Magic Key
 Магический ключ
 A glowing key enchanted with magic that fades with one use.
 Зачарованный светящийся ключ, который исчезает при использовании.
-Can be used to unlock a blue lock.
-Может использоваться для отпирания синего замка.
+### Can be used to unlock a runic lock.
 A magical key with the power to open blue locks.
 Волшебный ключ, способный открывать синие замки.
 Blue locks can't be otherwise picked.
@@ -2813,16 +2803,16 @@ Dreamcatcher
 Ловец снов
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 Axe
 Топор
 Great for cutting trees that happen to be underground.
 Отлично подходит для рубки деревьев, которые встречаются в подземелье.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 Наносит рубящий урон. Также наносит 20 единиц урона врагам рядом с вами.
-### Accuracy:
-### Crit Multiplier:
-### Bind Crit Multiplier:
+### Accuracy: 
+### Crit Multiplier: 
+### Bind Crit Multiplier: 
 Find the keys..
 Нужно найти ключи...
 Find the exit!
@@ -2839,8 +2829,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-### Evasion:
-### Visibility:
+### Evasion: 
+### Visibility: 
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -2883,10 +2873,10 @@ Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс осечки в заклинаниях снижен.
 
 
-### Damage:
-### Bind:
-### Crit:
-### SP Cost:
+### Damage: 
+### Bind: 
+### Crit: 
+### SP Cost: 
 Cut PWR: AMNT%
 Эф.Разрез: AMNT%
 
@@ -5706,13 +5696,13 @@ Commerce
 Коммерция
 Shrine of SHRINETYPE
 Святилище: SHRINETYPE
-### Tablet of
+### Tablet of 
 
-### Goddess:
-### Goddess Blessing:
-### Goddess Curse:
-### Mana Bonus:
-### Lack of Mana Penalty:
+### Goddess: 
+### Goddess Blessing: 
+### Goddess Curse: 
+### Mana Bonus: 
+### Lack of Mana Penalty: 
 Your excess mana helps you suppress the enchantment!
 Избыток маны помогает вам подавить магические чары!
 Your mana is too weak to fight the magical enchantment...
@@ -5733,9 +5723,9 @@ These runes are meant for someone with less willpower.
 You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
 
-### Allies:
-### Enemies:
-### Favorable:
+### Allies: 
+### Enemies: 
+### Favorable: 
 
 None
 Нет
@@ -6278,7 +6268,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find
+### You find 
 
 
 
@@ -8329,7 +8319,7 @@ A book of manipulative spells
 Verbal
 Слова
 
-### Components:
+### Components: 
 Arm Movements
 Жесты рук
 Leg Gestures
@@ -9601,12 +9591,20 @@ The gag forces itself into your mouth and buckles tightly!
 Кляп сам залетает вам в рот и плотно застегивается!
 The gag hits you! (DamageDealt)
 В вас попадает кляп! (DamageDealt)
-Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
-Вызывает кляп, который наносит DamageDealt цепного урона, и накладывает неммоту на 15 ходов. Сковывание +40, если цель не находится под немотой.
+### Summons a gag which deals DamageDealt chain damage and silences for 8 turns. +40 binding if target is not silenced.
 You conjure a gag!
 Вы вызываете кляп кляп!
 The gag will appear next to you and fly toward the target point.
 Кляп появится рядом с вами и полетит к намеченной точке.
+
+
+### Conjure Anti-Magic Gag
+### Conjured Anti-Magic Gag
+### The anti-magic gag forces itself into your mouth and buckles tightly!
+### The anti-magic gag hits you! (DamageDealt)
+### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### You conjure an anti-magic gag!
+
 
 Conjure Armbinder
 Сотворение армбиндера
@@ -10605,6 +10603,8 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 You climb into the grate
 Вы пробираетесь через решетку
 
+Mmmph...
+Ммффх...
 Mmmmmmmmm...
 Мммммммм...
 Hhmmpphh...
@@ -10613,6 +10613,8 @@ Gghhhh!!!
 Гфффх!!!
 Mmmmmphh!!!
 Мммммфхх!!!
+Mmm...
+Ммм...
 MMM!!!
 МММ!!!
 Mmmmmm.
@@ -10894,7 +10896,7 @@ You need more spell points.
 Вам нужно больше очков способностей.
 You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-### School:
+### School: 
 Generic
 Общее
 Upgrade
@@ -10903,12 +10905,12 @@ Special
 Особое
 Learn Spell
 Выучить заклинание
-### Spell Points:
+### Spell Points: 
 
 
-### Level:
-### Spell Point Cost:
-### Mana Cost:
+### Level: 
+### Spell Point Cost: 
+### Mana Cost: 
 
 
 Remove Spell 1
@@ -10939,13 +10941,13 @@ Replace Spell 6
 Заменить закл. 6
 Replace Spell 7
 Заменить закл. 7
-### Current Spell 1:
-### Current Spell 2:
-### Current Spell 3:
-### Current Spell 4:
-### Current Spell 5:
-### Current Spell 6:
-### Current Spell 7:
+### Current Spell 1: 
+### Current Spell 2: 
+### Current Spell 3: 
+### Current Spell 4: 
+### Current Spell 5: 
+### Current Spell 6: 
+### Current Spell 7: 
 
 ### ???
 Unfiled
@@ -10979,7 +10981,7 @@ Bellows
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -11598,10 +11600,10 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-### For 3 rep the goddess will grant you
+### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 За 3 репутации богиня
-### For 3 rep the goddess
+### For 3 rep the goddess 
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 Богиня полностью восстановит вашу ману в обмен на AMOUNT репутации
@@ -11943,8 +11945,8 @@ Can disarm (chance: DISARMCHANCE%)
 Может разоружить (шанс: DISARMCHANCE%)
 Resistances:
 Сопротивления:
-### HP:
-### Binding:
+### HP: 
+### Binding: 
 Ambivalent
 Двойственное
 Likes you
@@ -11977,6 +11979,7 @@ Unaware
 Ничего не подозревает
 Items carried:
 Предметы с собой:
+### Items worn:
 ...and NUMBER more
 ...и ещё NUMBER
 Takes damage if the caster is stunned
@@ -12249,7 +12252,7 @@ Extreme
 Экстрим
 A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-### Play the game the way it was intended. Cruel and restrictive.
+### Play the game the way it was intended. Cruel and restrictive. 
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
 
@@ -12737,6 +12740,8 @@ Mmmmmm <3
 Мммммм <3
 Mmmmmm~
 Мммммм~
+Mmmph~
+Мммфх~
 *looks at you nervously*
 *нервозно смотрит на вас*
 *giggles*
@@ -14507,6 +14512,24 @@ What's that about backup?
 Что там насчет подкрепления?
 
 
+### Catch me. If you can, that is.
+### I double dare you.
+### Weren't you chasing me?
+### I've got somethin nice for ya.
+### Be a good girl for me, will ya?
+### You need to show some restraint.
+### Stay where you belong, you naughty girl.
+### Let's go somewhere more private.
+### Ready or not, here I come.
+### Those sticky fingers belong in a pair of mittens.
+### All units. Apprehend convict with extreme prejudice.
+### You're going nowhere.
+### Come on. This wasn't your only weapon, was it?
+### A tank, huh.
+### Mine now.
+### Just keeping you safe from yourself.
+
+
 An outsider!
 Посторонняя!
 Hide!
@@ -14604,6 +14627,9 @@ You leave me no choice.
 Ты не оставляешь мне выбора.
 I stand firm.
 Я выстою.
+
+
+### You look cute in that, you should lose the rest though!
 
 
 I don't like the way you're looking at me!
@@ -14719,6 +14745,63 @@ Protect!
 Rawr!
 Рррр!
 
+
+
+### You will loose me or burn eternal!!!
+### ... This shame is unbearable! Oh sister!!!
+### Oh! Mytrice is caught! My ambitions laid to ruin!
+### The winds of retribution carry me elsewhere...
+### Myrtrice will come for you shortly! Consider yourself fortunate...
+### I will retreat into darkness...
+### My sins are a multitude! I will submit to your judgements...
+### I do not ask for mercy for I have shown none!
+### You must punish me! I can't face my sister Myrtle until my debts are paid...
+### Your chest quivers... Do you fear me?
+### Is it that another moth has become enthralled to my fires bright?
+### Myrtrice entreats you! Remain still and let my adoring embers kiss your lips tender...
+### To struggle is to invite searing coals upon your head!
+### I will drag you into the dark and you will witness my projects!
+### To escape is only to delay! My fires consume ALL!
+### Dusty trinkets... Your scrapping around is an insolence!
+### You would scorn the memory of my sister with escape?!
+### Careless of you to appear before Myrtrice like this!
+### Your attempts are trivial!
+### You invite wrath!!!
+### Pathetic!!!
+### Such hapless casting scorns the memory of my sister!
+### Your magics will be swallowed up by hellfire!!!
+### Myrtrice is subject to no magic!!!
+### Items? How exceptionally talentless...
+### That shrine scorns the memory of my sister! I hate it!
+### True power doesn't come from old rickety crates...
+### Orbs? What a gruesome display of weakness! True power comes from the self!
+### YOU SCORN THE MEMORY OF MY LATE SISTER!!!
+### This is where you will remain until Myrtrice wills otherwise!
+### This is what you were gripping so tightly in your hands?
+### WHAT ABBORANCE! You will pay for that...
+### SEAR ETERNAL!
+### I, Myrtrice, missed?!
+### No one resists Myrtrice! How irritating!!!
+### Your failures do not surprise Myrtrice!
+### Your pathetic attempts scorn the memory of my sister!
+### The curtains of my revenge are drawn! You will follow me...
+### You will come with Myrtrice!!!
+### Be dazed by the radiant brilliance of my hellfires!
+### I will repay the theif with brutal reprisal...
+### Your fate is sealed! ... Myrtle this is for you, sister!
+### All creatures are subject to Myrtrice! It is the price of their insolence...
+### You make a grave mistake ignoring me!!!
+### Your eyes belong here! With Myrtrice!!!
+### The ones who turn their backs on Myrtrice SEAR IN HELLFIRE!
+### What a hideous display!!! Where is your honor?
+### It is this kind of petulant insolence that tarnishes the memory of my sister!
+### You are a blight! My sister Myrtle would never stand for this!!!
+### THE CURTAINS OF MY REVENGE DRAW OPEN WIDE!
+### What an excellent oppertunity to expand my alters in the dark!
+### I see a chalice before me... it drips with shadow and overflows with darkness!
+### My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*
+### THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
+### I, Myrtrice, will resist their insolent fusilades!
 
 
 So this is what it's like...
@@ -15016,6 +15099,31 @@ Do not mess with us!
 I shall take you for myself~
 Я провожу тебя сама~
 
+
+### You won't get me!
+### Nice try!
+### My grandma is tougher than you!
+### Restrain me.
+### Play with me.
+### Lock me up.
+### This won't work.
+### I don't play with young ones.
+### Oh, a lost toy!
+### Ouch!
+### I am stronger than that!
+### That hurts!
+### Nice party trick!
+### Oh, shiny!
+### *sighs*
+### You won't get away!
+### You can't get away!
+### You are helpless now!
+### Tis but a scratch!
+### Give up!
+### Are you hiding?!
+### You are my pet now!
+### Yoink!
+### You can't get out now!
 
 
 I will be free... even if it takes me a thousand years!
@@ -17500,7 +17608,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts her head and shrugs)|Ah well. 
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER хмурится)|Что это?|Ты ведь не враг правосудия, я надеюсь?
 (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
@@ -18159,6 +18267,62 @@ There is no valid space next to you!
 (The SPEAKER appears too busy to discuss with you)
 (SPEAKER похоже, слишком занят, чтобы обсуждать это с вами)
 
+
+
+
+
+
+
+
+
+
+
+### End of line.
+
+### *slaps your butt*
+
+
+
+
+### Error. Subject not complying?
+
+
+
+
+### Got yourself locked up, huh? Better go be good now~
+### *she bumps up against your chastity and sighs*
+### Pleasure controls detected.
+### You've been a bad girl, haven't you? *taps on your chastity gear*
+### Such a naughty girl, getting yourself all locked up like that!
+### I-I know you want release, but you're in this gear for a reason~
+
+
+
+
+
+
+
+
+
+
+### Had fun?~
+### *turns the toy off and giggles*
+
+
+
+
+
+
+
+
+
+### Don't I look quite cuddly?
+### (Move closer, attempting to cuddle)
+### (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+### (The SPEAKER smiles gently)|Aren't you precious~
+### (The SPEAKER looks flustered)|Well, it's been a long day...|I could use a hug...
+### (The SPEAKER smirks and reaches for your body)
+### (The SPEAKER makes a beeping noise)|Loading cuddle module...
 
 
 Got something for me?
@@ -18956,7 +19120,7 @@ Give her a Scroll of Purity
 ### W-what does that entail?
 ### (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
 ### Hmmmph? Mmmm! (Act worried and whimper)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds her arms)|Mistress Oriel's orders 
 ### Not in the 'System'?
 ### (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
 ### Mmmph? (Act confused)
@@ -19167,7 +19331,7 @@ Upcast Level LEVEL
 Уровень усиления LEVEL
 Prerequisite
 Предусловие
-### Unlocks:
+### Unlocks: 
 You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
 
@@ -19214,7 +19378,7 @@ Initiating prisoner lockdown protocol
 ### Your RestraintName suddenly snap together as the EnemyName activates them!
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count:
+### Turn Count: 
 
 The Shopkeeper leashes you!
 Владелица магазина вешает на вас поводок!
@@ -19620,7 +19784,7 @@ Paste
 Items on Ground:
 Предметы на земле:
 
-### Preloading Character Assets:
+### Preloading Character Assets: 
 
 Uniforms
 Униформа
@@ -21649,6 +21813,45 @@ Mage
 ### LightMaidKnight_SleeveRight
 ### LightMaidKnight_Sleeves
 
+### LightMaidKnightHairband
+### Headband
+### HeadbandFrill
+### HeadbandRibbon
+### FootBootLeftHogtie
+### FootShoeLeftHogtie
+### GagNecklace
+### GagNecklaceBall
+### FashionGagNecklace
+### BondageBed
+### BedStraps
+### BedStrapsHogtie
+### LightMaidKnight_Apron
+### ApronChest
+### ApronBack
+### LightMaidKnight_Flower
+### Flower
+### LightMaidKnight_SockRight
+### LightMaidKnight_SockLeft
+### LightMaidKnight_Socks
+### LightMaidKnight_GloveLeft
+### LightMaidKnight_GloveRight
+### LightMaidKnight_Gloves
+### LightMaidKnight_GuardLeft
+### GuardLeft
+### GuardCuffLeft
+### GuardCuff2Left
+### LightMaidKnight_GuardRight
+### GuardRight
+### GuardCuffRight
+### GuardCuff2Right
+### LightMaidKnight_Guards
+### LightMaidKnight_Boots
+### LightMaidKnight_Pauldron
+### PauldronLeft
+### PauldronStrap
+### LightMaidKnight
+
+
 
 
 
@@ -22404,7 +22607,7 @@ Rubber Stick
 Резиновая палка
 A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-### Deals grope damage.
+### Deals grope damage. 
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
 
@@ -22864,6 +23067,10 @@ A handy key for getting out of common handcuffs and shackles.
 Сподручный ключ для снятия обычных наручников и кандалов.
 It's not sophisticated enough to work on higher-quality locks, but can be used many times.
 Он недостаточно сложен для работы с замками более высокого качества, но может использоваться много раз.
+
+### You twirl a key around your finger.
+### You twirl a magic key around your finger. Careful not to lose it!
+### You fidget with a lockpick.
 
 
 You pick up a tool for picking disc detainer locks.
@@ -23370,8 +23577,8 @@ Yf вашем RestraintName начинают образовываться тре
 Your RestraintName shatters and falls off!
 Ваше RestraintName раскалывается на части, которые падают на землю!
 
-### Load Hotbar
-### Save Hotbar
+### Load Hotbar 
+### Save Hotbar 
 Clear Hotbar
 Очистить быструю панель
 
@@ -24591,7 +24798,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-### Receive the following restraints:
+### Receive the following restraints: 
 You will be bound with some form of restraint.
 Вы будете скованы с помощью неизвестных ограничителей.
 
@@ -25211,7 +25418,7 @@ Prisoner #NUMR/TTL
 
 Select a character to examine
 Выберите персонажа для осмотра
-### Former Faction:
+### Former Faction: 
 
 Minigun
 Миниган
@@ -25240,7 +25447,7 @@ Elemental
 Royal
 Знать
 
-### Choose default restraint palette:
+### Choose default outfit palette:
 
 Auto Load Mods
 Автозагрузка модов
@@ -25400,7 +25607,7 @@ Yokes are less favored over other heavy bondage.
 You crouch and move slowly.
 Вы приседаете и двигаетесь медленнее.
 
-### Owned by:
+### Owned by: 
 
 Warden's Belt
 Пояс надзирательницы
@@ -26084,7 +26291,7 @@ You find a ceremonial leotard.
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took
+### Took 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 (Когда вы сражаете дракона, он начинает принимать человеческий облик!)
@@ -26826,8 +27033,8 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### Fiber
 ### Runes
 
-### Stock:
-### Inputs:
+### Stock: 
+### Inputs: 
 
 ### You slip off the conveyor!
 ### The Summit
@@ -26845,6 +27052,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### Blindfold / Earplugs
 ### Mask/Hood
 ### Gag / Stuffing
+### Flat Gag
 ### Wrists
 ### Encasement
 ### Mittens / Tape
@@ -26864,14 +27072,14 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### Toe Tie
 ### Heels
 
-### Equipped:
-### Click to Add
-### Apply
-### Raw Material:
+### Equipped: 
+### Click to Add 
+### Apply 
+### Raw Material: 
 
 ### Free Prisoner
 
-### Perk Unlocked:
+### Perk Unlocked: 
 
 ### Latex Solvent
 ### You ready the bottle of Latex Solvent.
@@ -26891,16 +27099,16 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### Restraint Palette
 ### Choose Restraint
 
-### Def. Palette:
+### Def. Palette: 
 ### Set All Palette
 
 ### Guests
 
-### Assign to
-### Remove from
+### Assign to 
+### Remove from 
 ### Imprison
 
-### Opinion:
+### Opinion: 
 ### Last Seen on Floor FLR, LOC
 ### Present in current level
 ### Captured by FCTN
@@ -26916,12 +27124,12 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### NPC has managed to loosen her bonds.
 
 ### Any
-### NPC Opinion:
-### NPC Escape Status:
-### NPC Binding:
-### NPC Availability:
-### Favorited:
-### Rank:
+### NPC Opinion: 
+### NPC Escape Status: 
+### NPC Binding: 
+### NPC Availability: 
+### Favorited: 
+### Rank: 
 ### Minor
 ### Elite
 ### Miniboss
@@ -26986,7 +27194,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Select a Binding Slot
 
-### Cost:
+### Cost: 
 
 ### Zoom set to PCNT%
 ### You need free arms to tie others!
@@ -27004,7 +27212,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 ### Reaching Authority
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot
+### Save Slot 
 ### Load Game
 ### Load Code
 ### Load Slot 0
@@ -27044,10 +27252,10 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Factory Route
 ### Reverse Route
 ### Chaos Route
-### Map Seed:
+### Map Seed: 
 ### Will Overwrite NME!
 
-### Play Slot
+### Play Slot 
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)
@@ -27122,3 +27330,24 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Gag Necklace
 ### A cute accessory for those who wish to (not) make a statement.
 ### Functions as a collar.
+
+### No mod info!
+### Wrong patch
+### VERY Outdated!
+### Outdated!
+### Check dependencies!
+### Check compatibility!
+### Misc Error
+###  v
+
+### Magical disenchantment suspends your living collar for AMNT turns
+
+### Hardlight
+### Knocked Out
+### Vine
+
+### Saving...
+### Game Saved
+
+### ENMY escapes from the ITMN!
+### ENMY unlocks the ITMN!

@@ -186,8 +186,7 @@ Hide Nipple Clamps
 乳首のオモチャを隠す
 Hide Nipple Piercings
 乳首ピアスを隠す
-Force restraints to use outfit palette
-拘束具と衣装に設定した色を使う
+### Use default palette when no outfit is worn
 Flip Player Display
 キャラを反転
 Grayscale when Blind
@@ -257,8 +256,7 @@ Points Available: AMOUNT
 
 Resilient Foes
 強靭な敵
-Enemies have 40% more hp.
-敵のHPが40%上昇する
+### Enemies have 30% more hp.
 
 Strong
 剛腕
@@ -2263,16 +2261,13 @@ Gold
 ゴールド
 Key
 鍵
-A key with traces of magic that fades with one use.
-一度使うと消える魔法で作られた鍵。
-Can be used to unlock a red-locked restraint, door, or chest.
-拘束具、ドア、またはチェストを解錠するために使用できる。
+### A key. You wonder who it's for?
+### Can be used to unlock one simple or standard-locked restraint, door, or chest.
 Magic Key
 魔法の鍵
 A glowing key enchanted with magic that fades with one use.
 一度使うと消える魔法で作られた光る鍵。
-Can be used to unlock a blue lock.
-青い鍵を解錠するために使用できる。
+### Can be used to unlock a runic lock.
 A magical key with the power to open blue locks.
 一度使うと消える、魔法で作られた光る鍵。
 Blue locks can't be otherwise picked.
@@ -9832,12 +9827,20 @@ The gag forces itself into your mouth and buckles tightly!
 ボールギャグが口の中に飛び込んできた！
 The gag hits you! (DamageDealt)
 ボールギャグがぶつかってきた！ (DamageDealt)
-Summons a gag which deals DamageDealt chain damage and silences for 15 turns. +40 binding if target is not silenced.
-DamageDealt チェーンダメージを与え、15ターンの間沈黙させるボールギャグを召喚する。ターゲットが沈黙していない場合、拘束値が40増加する。
+### Summons a gag which deals DamageDealt chain damage and silences for 8 turns. +40 binding if target is not silenced.
 You conjure a gag!
 ボールギャグを召喚した！
 The gag will appear next to you and fly toward the target point.
 ボールギャグが眼の前に現れ、まっすぐ飛んでいった！
+
+
+### Conjure Anti-Magic Gag
+### Conjured Anti-Magic Gag
+### The anti-magic gag forces itself into your mouth and buckles tightly!
+### The anti-magic gag hits you! (DamageDealt)
+### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### You conjure an anti-magic gag!
+
 
 Conjure Armbinder
 アームバインダー召喚
@@ -10858,6 +10861,8 @@ You wriggle uselessly, tormented by the massive plugs inside of you!
 You climb into the grate
 小さな隙間に入り込んだ。
 
+Mmmph...
+んん……
 Mmmmmmmmm...
 んむぅぅぅ……
 Hhmmpphh...
@@ -10866,6 +10871,8 @@ Gghhhh!!!
 んぐぅっ！
 Mmmmmphh!!!
 うむぅぅ！
+Mmm...
+うぅ……
 MMM!!!
 むぐぅ！
 Mmmmmm.
@@ -12244,6 +12251,7 @@ Unaware
 こちらに気づいていない
 Items carried:
 所持アイテム：
+### Items worn:
 ...and NUMBER more
 他に NUMBER 個のアイテム
 Takes damage if the caster is stunned
@@ -13014,6 +13022,8 @@ Mmmmmm <3
 むぅぅ
 Mmmmmm~
 んぅ～
+Mmmph~
+むうぅ……
 *looks at you nervously*
 (神経質にこちらを見ている)
 *giggles*
@@ -15432,6 +15442,30 @@ I shall take you for myself~
 私が連れて行く。
 
 
+### You won't get me!
+### Nice try!
+### My grandma is tougher than you!
+### Restrain me.
+### Play with me.
+### Lock me up.
+### This won't work.
+### I don't play with young ones.
+### Oh, a lost toy!
+### Ouch!
+### I am stronger than that!
+### That hurts!
+### Nice party trick!
+### Oh, shiny!
+### *sighs*
+### You won't get away!
+### You can't get away!
+### You are helpless now!
+### Tis but a scratch!
+### Give up!
+### Are you hiding?!
+### You are my pet now!
+### Yoink!
+### You can't get out now!
 
 
 You won't get me!
@@ -18649,6 +18683,62 @@ There is no valid space next to you!
 (The SPEAKER appears too busy to discuss with you)
 (SPEAKER は話す余裕がないようだ)
 
+
+
+
+
+
+
+
+
+
+
+### End of line.
+
+### *slaps your butt*
+
+
+
+
+### Error. Subject not complying?
+
+
+
+
+### Got yourself locked up, huh? Better go be good now~
+### *she bumps up against your chastity and sighs*
+### Pleasure controls detected.
+### You've been a bad girl, haven't you? *taps on your chastity gear*
+### Such a naughty girl, getting yourself all locked up like that!
+### I-I know you want release, but you're in this gear for a reason~
+
+
+
+
+
+
+
+
+
+
+### Had fun?~
+### *turns the toy off and giggles*
+
+
+
+
+
+
+
+
+
+### Don't I look quite cuddly?
+### (Move closer, attempting to cuddle)
+### (The SPEAKER smiles)|You do, in fact!|(She inches closer)
+### (The SPEAKER smiles gently)|Aren't you precious~
+### (The SPEAKER looks flustered)|Well, it's been a long day...|I could use a hug...
+### (The SPEAKER smirks and reaches for your body)
+### (The SPEAKER makes a beeping noise)|Loading cuddle module...
 
 
 Got something for me?
@@ -22698,6 +22788,45 @@ Gag
 ### LightMaidKnight_SleeveRight
 ### LightMaidKnight_Sleeves
 
+### LightMaidKnightHairband
+### Headband
+### HeadbandFrill
+### HeadbandRibbon
+### FootBootLeftHogtie
+### FootShoeLeftHogtie
+### GagNecklace
+### GagNecklaceBall
+### FashionGagNecklace
+### BondageBed
+### BedStraps
+### BedStrapsHogtie
+### LightMaidKnight_Apron
+### ApronChest
+### ApronBack
+### LightMaidKnight_Flower
+### Flower
+### LightMaidKnight_SockRight
+### LightMaidKnight_SockLeft
+### LightMaidKnight_Socks
+### LightMaidKnight_GloveLeft
+### LightMaidKnight_GloveRight
+### LightMaidKnight_Gloves
+### LightMaidKnight_GuardLeft
+### GuardLeft
+### GuardCuffLeft
+### GuardCuff2Left
+### LightMaidKnight_GuardRight
+### GuardRight
+### GuardCuffRight
+### GuardCuff2Right
+### LightMaidKnight_Guards
+### LightMaidKnight_Boots
+### LightMaidKnight_Pauldron
+### PauldronLeft
+### PauldronStrap
+### LightMaidKnight
+
+
 
 
 
@@ -23999,6 +24128,10 @@ A handy key for getting out of common handcuffs and shackles.
 普通の手錠や枷に使用できる鍵。
 It's not sophisticated enough to work on higher-quality locks, but can be used many times.
 複雑な錠前には使えないが、何度も使える。
+
+### You twirl a key around your finger.
+### You twirl a magic key around your finger. Careful not to lose it!
+### You fidget with a lockpick.
 
 
 You pick up a tool for picking disc detainer locks.
@@ -26435,8 +26568,7 @@ Elemental
 Royal
 ロイヤル
 
-Choose default restraint palette:
-デフォルトの拘束具の色：
+### Choose default outfit palette:
 
 Auto Load Mods
 MODを自動で読むこむ
@@ -28222,6 +28354,7 @@ Mask/Hood
 マスク/フード
 Gag / Stuffing
 猿轡/詰め物
+### Flat Gag
 Wrists
 腕
 Bondage
@@ -28749,3 +28882,24 @@ Ice
 Furniture
 家具
 
+
+### No mod info!
+### Wrong patch
+### VERY Outdated!
+### Outdated!
+### Check dependencies!
+### Check compatibility!
+### Misc Error
+###  v
+
+### Magical disenchantment suspends your living collar for AMNT turns
+
+### Hardlight
+### Knocked Out
+### Vine
+
+### Saving...
+### Game Saved
+
+### ENMY escapes from the ITMN!
+### ENMY unlocks the ITMN!
