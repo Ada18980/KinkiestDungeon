@@ -323,250 +323,138 @@ async function KDExecuteMods() {
 
 	}
 
-	try {
-		let modloadorder = (KDModLoadOrder);
-		let modpromise = modloadorder.reduce((prevmod, currmod) => {
-			return prevmod.then((chainresult) => {
-				// Wrap in a syncronous promise because I'm lazy and don't want to rework model and it's functions
-				return new Promise((res) => {
-					return new Promise(async (res) => {
-						// Get the files for this zip file now! 
-						console.log(`Loading ${currmod.name}`)
-						let fileloader = Promise.resolve(null);
-						let entries = await model.getEntries(currmod.mod, {});
+	let processMod = async (mod) => {
+		console.log(`Loading ${mod.name}`)
+		let fileloader = Promise.resolve(null);
+		let entries = await model.getEntries(mod.mod, {});
 
-						// Look through each file and add it if it is missing. We will load files in this 
-						// order with any missing files at the end. 
-						for (let entry of entries) {
-							if ((!currmod.fileorder.includes(entry.filename)) && (!entry.filename.endsWith('.csv'))) {
-								currmod.fileorder.push(entry.filename);
-							}
-						}
-						for (let entry of entries) {
-							if (entry.filename.endsWith(`EN.csv`)) {
-								currmod.fileorder.push(entry.filename);
-							}
-						}
-						if (TranslationLanguage !== '') {
-							for (let entry of entries) {
-								if (entry.filename.endsWith(`${TranslationLanguage}.csv`)) {
-									currmod.fileorder.push(entry.filename);
-								}
-							}
-						}
-						console.log(currmod.fileorder);
-	
-						// Load any files specified in fileorder. 
-						if (currmod.fileorder.length > 0) {
-							fileloader = currmod.fileorder.reduce(async (prev, current) => {
-								console.log("loading " + current);
-								try {
-									const entry = entries.find((ent) => ent.filename == current);
-									const controller = new AbortController();
-									const signal = controller.signal;
-									const blobURL = await model.getURL(entry, {
-										password: undefined,
-										onprogress: (index, max) => {
-											console.log(`Loading progress: ${index},${max}`);
-										},
-										signal
-									});
-									console.log(blobURL);
-									let blob = await fetch(blobURL).then(r => r.blob());
-									console.log(blob);
-	
-									// ignore files that start with .
-									if (current.startsWith('.')) {
-										// none
-									// Translation file. As this may overwrite, we should chain this
-									} else if (current.endsWith('EN.csv') || ((current.endsWith(`${TranslationLanguage}.csv`)) && (TranslationLanguage !== ''))) {
-										return prev.then((chainresult) => {
-											new Promise((resolve,reject) => {
-												try {
-													let reader = new FileReader();
-													let file = new File([blob], entry.filename);
-													reader.onload = function(event) {
-														console.log(`READING TRANSLATIONS FILE ${file.name} FROM ${current}`);
-														if (typeof event.target.result === "string") {
-															//@ts-ignore
-															let res = event.target.result;
-															KDLoadTranslations(res);
-															resolve(current);
-														}
-													};
-													reader.readAsText(file);
-												}
-												catch (err) {
-													console.log(`Error while loading ${current} - ${err}`);
-													resolve(current);
-												}
-											})
-										})
-									// create a thenable promise if the file is a js or ks file. 
-									} else if (current.endsWith('.js') || current.endsWith('.ks')) {
-										return prev.then((chainresult) => {
-											new Promise((resolve,reject) => {
-												try {
-													let reader = new FileReader();
-													let file = new File([blob], current);
-													// Eval js files. eval() is dangerous. Don't load untrusted mods.
-													reader.onload = function(event) {
-														console.log("EXECUTING MOD FILE " + file.name);
-														if (typeof event.target.result === "string") {
-															//@ts-ignore
-															let res = event.target.result;
-															if (KDToggles.ModCompat) {
-																for (let compat of Object.entries(KDModCompat)) {
-																	res = event.target.result.replace(compat[0],
-																		compat[1]
-																	);
-																}
-															}
-															eval(res);
-															resolve(file.name);
-														}
-													};
-													reader.readAsText(file);
-												}
-												catch (err) {
-													console.log(`Error while loading ${current} - ${err}`);
-													resolve(current);
-												}
-											})
-										});
-									// asset file - just return the promise after loading with PIXI as the load order here won't be critical. 
-									} else {
-										KDModFiles[KinkyDungeonRootDirectory + current] = URL.createObjectURL(blob);
-										KDModFiles[KinkyDungeonRootDirectory + "" + current] = KDModFiles[KinkyDungeonRootDirectory + current];
-						
-										if (current?.startsWith("Data/")
-											|| current?.startsWith("DisplacementMaps/")
-											|| current?.startsWith("Models/")
-											|| current?.startsWith("TextureAtlas/")
-											|| current?.startsWith("Music/")) {
-												KDModFiles[current] = URL.createObjectURL(blob);
-												KDModFiles[PIXI.utils.path.toAbsolute(current)] = URL.createObjectURL(blob);
-											}
-									}
-								}
-								catch (err) {
-									console.log(`Error while trying to load ${current} in fileorder - ${err}`);
-								}
-							}, Promise.resolve(null))
-						}	
-	
-						fileloader.finally(() => {
-							res(currmod.name);
-						})
-					}).then(() => {
-						res('');
-					})
-				})
-			})
-		}, Promise.resolve(null))
-
-		modpromise.finally(() => {
-			console.log("Finished loading mod files");
-			KDLoadModSettings();
-		})
-	}
-
-	/*try {
-
-		for (let entry of KDAllModFiles) {
-			console.log(entry);
-			const controller = new AbortController();
-			const signal = controller.signal;
-			const blobURL = await model.getURL(entry, {
-				password: undefined,
-				onprogress: (index, max) => {
-					console.log(`Loading progress: ${index},${max}`);
-				},
-				signal
-			});
-			console.log(blobURL);
-			let blob = await fetch(blobURL).then(r => r.blob());
-			console.log(blob);
-
-			if (entry.filename.startsWith('.')) {
-				// none
-			} else if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
-				// none
-			} else {
-				KDModFiles[KinkyDungeonRootDirectory + entry.filename] = URL.createObjectURL(blob);
-				KDModFiles[KinkyDungeonRootDirectory + "" + entry.filename] = KDModFiles[KinkyDungeonRootDirectory + entry.filename];
-
-				if (entry.filename?.startsWith("Data/")
-					|| entry.filename?.startsWith("DisplacementMaps/")
-					|| entry.filename?.startsWith("Models/")
-					|| entry.filename?.startsWith("TextureAtlas/")
-					|| entry.filename?.startsWith("Music/")) {
-						KDModFiles[entry.filename] = URL.createObjectURL(blob);
-						KDModFiles[PIXI.utils.path.toAbsolute(entry.filename)] = URL.createObjectURL(blob);
-					}
+		// Look through each file and add it if it is missing. We will load files in this 
+		// order with any missing files at the end. 
+		for (let entry of entries) {
+			if ((!mod.fileorder.includes(entry.filename)) && (!entry.filename.endsWith('.csv'))) {
+				mod.fileorder.push(entry.filename);
 			}
-
 		}
-		for (let entry of KDAllModFiles) {
-			console.log(entry);
-			const controller = new AbortController();
-			const signal = controller.signal;
-			const blobURL = await model.getURL(entry, {
-				password: undefined,
-				onprogress: (index, max) => {
-					console.log(`Loading progress: ${index},${max}`);
-				},
-				signal
-			});
-			console.log(blobURL);
-			let blob = await fetch(blobURL).then(r => r.blob());
-			console.log(blob);
-			let reader = new FileReader();
-
-			if (entry.filename.startsWith('.')) {
-				// none
-			} else if (entry.filename.endsWith('.js') || entry.filename.endsWith('.ks')) {
-				let file = new File([blob], entry.filename);
-				// Eval js files. eval() is dangerous. Don't load untrusted mods.
-				reader.onload = function(event) {
-					console.log("EXECUTING MOD FILE " + file.name);
-					if (typeof event.target.result === "string") {
-						//@ts-ignore
-						let res = event.target.result;
-						if (KDToggles.ModCompat) {
-							for (let compat of Object.entries(KDModCompat)) {
-								res = event.target.result.replace(compat[0],
-									compat[1]
-								);
-							}
-						}
-						eval(res);
-					}
-				};
-				reader.readAsText(file);
-			// Find the translation file for English first
-			} else if (entry.filename.endsWith('EN.csv')) {
-				let file1 = fs.loadFile()
-				let modtranslationnamearr = entry.filename.split("/");
-				let modtranslationname = modtranslationnamearr[modtranslationnamearr.length - 1].slice(0, -6) // Should return the mod file's name 
-				if (TranslationLanguage !== '') {
-					let translation = KDAllModFiles.find((file) => { (file.filename.endsWith(`${TranslationLanguage}.csv`) && file.filename.contains(modtranslationname))})
-					if (translation) {
-						let file2 = new File([blob], translation.filename);
-
-					}
+		for (let entry of entries) {
+			if (entry.filename.endsWith(`EN.csv`)) {
+				mod.fileorder.push(entry.filename);
+			}
+		}
+		if (TranslationLanguage !== '') {
+			for (let entry of entries) {
+				if (entry.filename.endsWith(`${TranslationLanguage}.csv`)) {
+					mod.fileorder.push(entry.filename);
 				}
 			}
-			else {
-				// none
-			}
-
 		}
+		console.log(mod.fileorder);
 
-		
+		try {
+			await mod.fileorder.reduce(async (promiseChain, currFile) => {
+				await promiseChain;
+				return processFile(currFile, entries); 
+			}, Promise.resolve(null));
+		} catch (err) {
+			console.log(err);
+		}
+	}
 
-	}*/ catch (e) {
-		console.log(e);
+	let processFile = async (file, entries) => {
+		console.log("Loading " + file);
+		try {
+			const entry = entries.find((ent) => ent.filename == file);
+			const controller = new AbortController();
+			const signal = controller.signal;
+			const blobURL = await model.getURL(entry, {
+				password: undefined,
+				onprogress: (index, max) => {
+					console.log(`Loading progress: ${index},${max}`);
+				},
+				signal
+			});
+			console.log(blobURL);
+			let blob = await fetch(blobURL).then(r => r.blob());
+			console.log(blob);
+
+			// ignore files that start with .
+			if (file.startsWith('.')) {
+				// none
+			// Translation file. As this may overwrite, we should chain this
+			} else if (file.endsWith('EN.csv') || ((file.endsWith(`${TranslationLanguage}.csv`)) && (TranslationLanguage !== ''))) {
+				try {
+					let reader = new FileReader();
+					let file = new File([blob], entry.filename);
+					reader.onload = function(event) {
+						console.log(`READING TRANSLATIONS FILE ${file}`);
+						if (typeof event.target.result === "string") {
+							//@ts-ignore
+							let res = event.target.result;
+							KDLoadTranslations(res);
+						}
+					};
+					reader.readAsText(file);
+				}
+				catch (err) {
+					console.log(`Error while loading ${file} - ${err}`);
+				}
+			// create a thenable promise if the file is a js or ks file. 
+			} else if (file.endsWith('.js') || file.endsWith('.ks')) {
+				try {
+					let reader = new FileReader();
+					let readfile = new File([blob], entry.filename);
+					// Eval js files. eval() is dangerous. Don't load untrusted mods.
+					await new Promise((resolve,reject) => {
+						reader.onload = async function(event) {
+							console.log("EXECUTING MOD FILE " + file);
+							if (typeof event.target.result === "string") {
+								//@ts-ignore
+								let res = event.target.result;
+								if (KDToggles.ModCompat) {
+									for (let compat of Object.entries(KDModCompat)) {
+										res = event.target.result.replace(compat[0],
+											compat[1]
+										);
+									}
+								}
+								let evaluated = await eval(res);
+								resolve(evaluated);
+							}
+						};
+						reader.readAsText(readfile);
+					})
+				}
+				catch (err) {
+					console.log(`Error while loading ${file} - ${err}`);
+				}
+			// asset file - just return the promise after loading with PIXI as the load order here won't be critical. 
+			} else {
+				KDModFiles[KinkyDungeonRootDirectory + file] = URL.createObjectURL(blob);
+				KDModFiles[KinkyDungeonRootDirectory + "" + file] = KDModFiles[KinkyDungeonRootDirectory + file];
+
+				if (file?.startsWith("Data/")
+					|| file?.startsWith("DisplacementMaps/")
+					|| file?.startsWith("Models/")
+					|| file?.startsWith("TextureAtlas/")
+					|| file?.startsWith("Music/")) {
+						KDModFiles[file] = URL.createObjectURL(blob);
+						KDModFiles[PIXI.utils.path.toAbsolute(file)] = URL.createObjectURL(blob);
+				}
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	try {
+		await KDModLoadOrder.reduce(async (promiseChain, currMod) => {
+			await promiseChain;
+			return processMod(currMod); 
+		}, Promise.resolve(null));
+		// All mods should be loaded at this point.
+		console.log("Finished Loading Mods");
+		KDLoadModSettings();
+	} catch (err) {
+		console.log(err);
 	}
 
 	for (let [k, v] of Object.entries(KDModFiles) as [string, string][]) {
