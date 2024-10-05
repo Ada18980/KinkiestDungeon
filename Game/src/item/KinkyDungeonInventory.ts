@@ -1287,7 +1287,7 @@ function KDDrawInventoryContainer (
 	filteredInventory:  KDFilteredInventoryItem[],
 	filter:             string,
 	CurrentFilter:      string,
-	itemcallback?:      (item: KDFilteredInventoryItem, x: number, y: number, w: number, h: number) => void,
+	itemcallback?:      (item: KDFilteredInventoryItem, x: number, y: number, w: number, h: number, different: boolean) => void,
 	colorcallback?:     (item: KDFilteredInventoryItem) => string,
 	prefix: string = "",
 	nosearch?: boolean,
@@ -1385,16 +1385,19 @@ function KDDrawInventoryContainer (
 							(KinkyDungeonInventoryOffset) + numRows*Math.sign(amount)*Math.ceil(Math.abs(amount)/b_height/numRows/b_width)));
 						}
 					}, (_bdata) => {
+						let diff = false;
 						if (prefix) {
+							if (KinkyDungeonCurrentPageContainer != index) diff = true;
 							KinkyDungeonCurrentPageContainer = index;
 						} else {
+							if (KinkyDungeonCurrentPageInventory != index) diff = true;
 							KinkyDungeonCurrentPageInventory = index;
 						}
 
 						if (itemcallback) itemcallback(filteredInventory[index],
 							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135,
 							yOffset + canvasOffsetY_ui + 50 + b_height * yy,
-							b_width-padding, b_height-padding,
+							b_width-padding, b_height-padding, diff
 						);
 						return true;
 					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy,
@@ -2591,7 +2594,7 @@ function KDDropItemInv(name: string, player?: entity, playerDropped: boolean = t
 	let item = KinkyDungeonInventoryGetLoose(name) || KinkyDungeonInventoryGet(name);
 	if (!player) player = KinkyDungeonPlayerEntity;
 	if (item && item.type != Restraint && item.name != KinkyDungeonPlayerWeapon
-		&& (!KDWeapon(item) || !isUnarmed(KDWeapon(item)))) { // We cant drop equipped items
+		&& KDCanDrop(item)) { // We cant drop equipped items
 		// Drop one of them
 		if (item.quantity > 1) {
 			item.quantity -= 1;

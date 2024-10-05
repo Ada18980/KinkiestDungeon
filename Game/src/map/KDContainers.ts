@@ -53,22 +53,55 @@ function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, cr
 
 function KDDrawContainer(name: string, xOffset = -125) {
 	let x = 1225 + xOffset;
+	let takeItem = (inv) => {
+		if (container.items[inv?.name]) {
+			let item = KinkyDungeonInventoryGetSafe(inv.name);
+			if (!item) {
+				item = JSON.parse(JSON.stringify(container.items[inv.name]));
+				item.quantity = 1;
+				KinkyDungeonInventoryAdd(item);
+			} else item.quantity += 1;
+			if (container.items[inv.name].quantity > 1) {
+				container.items[inv.name].quantity -= 1;
+			} else {
+				delete container.items[inv.name];
+			}
+		}
+	};
+	let transferItem = (inv) => {
+		let item = KinkyDungeonInventoryGetSafe(inv?.name);
+		if (item && KDCanDrop(item)) {
+			if (!container?.items[inv.name]) {
+				container.items[inv.name] = JSON.parse(JSON.stringify(item));
+				container.items[inv.name].quantity = 0;
+			}
+			container.items[inv.name].quantity += 1;
+			if (item.quantity > 1) {
+				item.quantity -= 1;
+			} else {
+				KinkyDungeonInventoryRemoveSafe(KinkyDungeonInventoryGetSafe(inv.name));
+			}
+		}
+	}
 
 	let filter = KinkyDungeonCurrentFilter;
+	let container = KDGameData.Containers[name];
 
-	KDDrawInventoryFilters(xOffset - 60, 50, [Restraint, Outfit]);
+	KDDrawInventoryFilters(xOffset - 70, 50, [Restraint, Outfit]);
 
 	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
 
-	DrawTextFitKD(TextGet("KDContainerType_" + KDGameData.Containers[name]?.type),
+	DrawTextFitKD(TextGet("KDContainerType_" + container?.type),
 		xOffset + 1600, 270, 500, "#ffffff", undefined, 28, undefined, 70);
 
-	DrawTextFitKD("<->",
-		xOffset + 1300, 750, 200, "#ffffff", undefined, 48, undefined, 70);
+	//DrawTextFitKD("<->",
+	//	xOffset + 1300, 750, 200, "#ffffff", undefined, 48, undefined, 70);
 
 	let YourInv = KDDrawInventoryContainer(-900, 100, filteredInventory, filter, filter,
-	(inv: KDFilteredInventoryItem, x, y, w, h) => {
-		// TODO
+	(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
+		if (!different && !KDUI_Container_LastSelected) {
+			transferItem(inv);
+		}
 		KDUI_Container_LastSelected = "";
 	}, (inv) => {
 		return (inv.item.type == Weapon && inv.item.name == KinkyDungeonPlayerWeapon) ? "#e64539" : KDTextGray1;
@@ -79,8 +112,10 @@ function KDDrawContainer(name: string, xOffset = -125) {
 	);
 
 	let ContainerInv = KDDrawInventoryContainer(-165, 100, filteredInventory2, filter, filter,
-		(inv: KDFilteredInventoryItem, x, y, w, h) => {
-		// TODO
+		(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
+		if (!different && KDUI_Container_LastSelected) {
+			takeItem(inv);
+		}
 		KDUI_Container_LastSelected = "Chest";
 	}, (inv) => {
 		return (KinkyDungeonInventoryGetWeapon(inv.item.name)) ? "#e64539" : KDTextGray1;
@@ -94,8 +129,8 @@ function KDDrawContainer(name: string, xOffset = -125) {
 	if (selectedItem?.item) {
 
 		let item = selectedItem.item;
-		let XX = 1400;
-		let YY = -200;
+		let XX = 1150;
+		let YY = -80;
 
 		let data = {
 			extraLines: [],
@@ -147,6 +182,70 @@ function KDDrawContainer(name: string, xOffset = -125) {
 				XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLines[N]).length / 40), data.extraLineColor[N], data.extraLineColorBG[N], fSize, undefined, 70);
 			i++;
 		}
+
+
+		// Take
+		// Take all
+		// Take 5
+
+		let ii = 0;
+		let spacing = 70;
+		DrawButtonKDEx(
+			"take1", () => {
+				if (KDUI_Container_LastSelected == "Chest") {
+					takeItem(selectedItem);
+				} else transferItem(selectedItem);
+				return true;
+			}, true, 1070, 600 + ii++*spacing, 200, 60,
+			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake1" : "KDAdd1").replace("ITMN", KDGetItemName(item)),
+			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[0]),
+				hotkeyPress: KinkyDungeonKeySpell[0],
+			}
+		);
+		DrawButtonKDEx(
+			"take5", () => {
+				if (KDUI_Container_LastSelected == "Chest") {
+					for (let i = 0; i < 5; i++) takeItem(selectedItem);
+				} else for (let i = 0; i < 5; i++) transferItem(selectedItem);
+				return true;
+			}, true, 1070, 600 + ii++*spacing, 200, 60,
+			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake5" : "KDAdd5").replace("ITMN", KDGetItemName(item)),
+			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[1]),
+				hotkeyPress: KinkyDungeonKeySpell[1],
+			}
+		);
+		DrawButtonKDEx(
+			"takeALL", () => {
+				let q = selectedItem.item.quantity;
+				if (KDUI_Container_LastSelected == "Chest") {
+					for (let i = 0; i < (q || 1); i++) takeItem(selectedItem);
+				} else for (let i = 0; i < (q || 1); i++) transferItem(selectedItem);
+				return true;
+			}, true, 1070, 600 + ii++*spacing, 200, 60,
+			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll" : "KDAddAll").replace("ITMN", KDGetItemName(item)),
+			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[2]),
+				hotkeyPress: KinkyDungeonKeySpell[2],
+			}
+		);
+		DrawButtonKDEx(
+			"takeALL1", () => {
+				let q = selectedItem.item.quantity;
+				if (KDUI_Container_LastSelected == "Chest") {
+					for (let i = 1; i < (q || 1); i++) takeItem(selectedItem);
+				} else for (let i = 1; i < (q || 1); i++) transferItem(selectedItem);
+				return true;
+			}, true, 1070, 600 + ii++*spacing, 200, 60,
+			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll1" : "KDAddAll1").replace("ITMN", KDGetItemName(item)),
+			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[3]),
+				hotkeyPress: KinkyDungeonKeySpell[3],
+			}
+		);
+
+
 	}
 
 	DrawButtonKDEx(
@@ -160,3 +259,8 @@ function KDDrawContainer(name: string, xOffset = -125) {
 	KDDrawInventoryTabs(xOffset);
 }
 
+
+
+function KDCanDrop(item: item) {
+	return (!KDWeapon(item) || !isUnarmed(KDWeapon(item)));
+}

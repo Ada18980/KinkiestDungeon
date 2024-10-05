@@ -25142,3 +25142,12 @@ KDContainerBack_Facilities,Back to Facilities
 KDContainerType_Self,Your Inventory
 KDContainerType_,Chest
 KDContainerType_WardenChest,Warden's Storage
+
+KDAdd1,Store 1 ITMN
+KDTake1,Take 1 ITMN
+KDAdd5,Store 5 ITMN
+KDTake5,Take 5 ITMN
+KDAddAll,Store ALL ITMN
+KDTakeAll,Take ALL ITMN
+KDAddAll1,Store ALL-1 ITMN
+KDTakeAll1,Take ALL-1 ITMN
