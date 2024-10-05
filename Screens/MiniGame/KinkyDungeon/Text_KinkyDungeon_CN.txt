@@ -51,7 +51,7 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-### 5.3.41
+### 5.3.44
 By Ada18980
 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
@@ -77,8 +77,10 @@ Keybindings
 按键绑定
 
 
-### Apply palettes to Restraints
-### Apply palettes to transforms
+Apply palettes to Restraints
+将调色应用于束缚
+Apply palettes to transforms
+将调色应用于变形
 
 ### Don't use character palette
 ### Always use character palette
@@ -87,7 +89,8 @@ Keybindings
 Show Background Art
 显示背景
 
-### Mute when Minimized
+Mute when Minimized
+最小化时静音
 Show DP instead of %
 显示具体的分心值
 Quick Inv only equips to self
@@ -99,7 +102,7 @@ Save Outfits within Save Files
 Show free characters on map
 在地图上显示自由的角色
 Detailed jailed NPCs (experimental)
-被监禁的 NPC 细节 (实验性)
+被监禁的 NPC 细节 ( 实验性 )
 Show Struggle Bars
 显示挣扎条
 Allow Suspicious Mods
@@ -218,7 +221,8 @@ Hide Nipple Clamps
 隐藏乳头夹
 Hide Nipple Piercings
 隐藏乳头穿孔
-### Use default palette when no outfit is worn
+Use default palette when no outfit is worn
+当未穿着衣物时使用默认调色
 Flip Player Display
 翻转玩家显示
 Grayscale when Blind
@@ -229,6 +233,8 @@ No Damage Floaters
 无伤漂浮物
 Dynamic Armor (must hide armor)
 动态盔甲 ( 必须隐藏盔甲 )
+Hide floating weapon display
+隐藏浮动武器显示
 
 Helpless!
 无助！
@@ -245,7 +251,7 @@ You bump into a wall.
 Game Resolution:
 游戏分辨率 :‎
 Resolution (needs reload):
-分辨率 (需要重载) :‎
+分辨率 ( 需要重载 ) :‎
 Toy Volume:
 玩具音量 :‎
 Music Volume:
@@ -274,11 +280,14 @@ Select perks to start with.
 选择初始技能
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 可用积分大于10将进入困难模式，可获得独特的战利品
-###  (HARD MODE ENABLED)
+ (HARD MODE ENABLED)
+ ( 困难模式启用 )
 Advanced start (choose perks)
 高级启动 ( 选择额外技能 )
-Confirm and start playing!
-确认并开始游戏！
+Kinky start
+变态启动
+Normal start
+正常启动
 
 Point Cost: AMOUNT
 积分成本 : ‎AMOUNT
@@ -763,8 +772,7 @@ Binding on enemies is 30% stronger.
 对敌人的拘束力提高 30%。
 Pacifist
 和平主义者
-All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
-除疼痛、抚摸、挠痒、妩媚、精神、锁链或胶水外，对人形敌人造成的所有伤害均减少 90%。
+### All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue.
 Curse Seeker
 诅咒探索者
 When you pick up cursed armor or restraints from chests, they equip automatically if able.
@@ -1226,9 +1234,9 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 
 
 Copy (clipboard)
-复制 (到剪贴板)
+复制 ( 到剪贴板 )
 Paste (clipboard)
-粘贴 (从剪贴板)
+粘贴 ( 从剪贴板 )
 
 
 DAMAGEDEALT electric damage conducts to you!!!
@@ -1299,8 +1307,10 @@ Feet
 Everywhere!
 任何位置！
 
-### Physical Armor: 
-### Magic Armor: 
+Physical Armor: 
+物理护甲 : 
+Magic Armor: 
+魔法护甲 : 
 In the Shadows: You are harder to see.
 处在阴影中 : ‎你更难被敌人察觉。
 Invisible: You are very difficult to see.
@@ -1577,7 +1587,8 @@ Missing key
 未找到钥匙
 You are protected from damage and can't be bound until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
-### Chance for a spell to fizzle: 
+Chance for a spell to fizzle: 
+释放法术失败概率 : ‎
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 闪避率 : ‎Percent% [基于 EVASIONSUM 点闪避值和 EVASIONPENALTY% 闪避值惩罚]
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1733,7 +1744,8 @@ Delete Mod
 移除模组
 Clear Perks
 清除词条
-### Config 
+Config 
+配置 
 Cancel
 取消
 Filter
@@ -2895,9 +2907,12 @@ Great for cutting trees that happen to be underground.
 对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
-### Accuracy: 
-### Crit Multiplier: 
-### Bind Crit Multiplier: 
+Accuracy: 
+命中率 : ‎
+Crit Multiplier: 
+暴击倍率 : ‎
+Bind Crit Multiplier: 
+束缚暴击倍率 : ‎
 Find the keys..
 寻找钥匙...
 Find the exit!
@@ -2915,7 +2930,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 You found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
 ### Evasion: 
-### Visibility: 
+Visibility: 
+可见度 : ‎
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -5741,9 +5757,12 @@ Shrine of SHRINETYPE
 SHRINETYPE 神泉
 ### Tablet of 
 
-### Goddess: 
-### Goddess Blessing: 
-### Goddess Curse: 
+Goddess: 
+女神 : ‎
+Goddess Blessing: 
+女神祝福 : ‎
+Goddess Curse: 
+女神诅咒 : ‎
 ### Mana Bonus: 
 ### Lack of Mana Penalty: 
 Your excess mana helps you suppress the enchantment!
@@ -5887,7 +5906,7 @@ The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
 Next Offer
 下一个交易
 Buy (press right)
-购买 (获取想要的东西)
+购买 ( 获取想要的东西 )
 Cost: ItemCostgp
 花费 : ‎ItemCostgp
 
@@ -6748,7 +6767,7 @@ Heavy Yoke
 A series of armor-grade plates cut with precision machining, sandwiched into an unbreakable layer that clasps firmly in place around your neck and wrists.
 一系列经过精密加工切割的装甲级板材，夹在牢不可破的层中，可以牢牢地固定在你的颈部和手腕上。
 Steel Fiddle
-钢提琴
+颈手枷
 A steel fixture keeping your hands in an awkward and submissive position.
 钢制固定装置使你的手处于尴尬且顺从的姿势。
 The awkward position prevents you from easily reaching the lock.
@@ -9310,7 +9329,7 @@ An earthen monolith rises from the ground!
 一块巨石拔地而起！
 
 Earthshape (Ring)
-地型转变 (环形)
+地型转变 ( 环形 )
 Create a large ring of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创造以环形分布的巨石。巨石具有 50HP 和 25 点护甲。
 You stomp your foot and monoliths emerge in a ring around you!
@@ -9319,7 +9338,7 @@ Choose ring origin
 选择环形区域
 
 Earthshape (Mound)
-地型转变 (方形)
+地型转变 ( 方形 )
 Create a 3x3 field of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创造以 3x3 方形分布的巨石。巨石具有 50HP 和 25 点护甲。
 You stomp your foot and monoliths emerge from the ground!
@@ -9328,7 +9347,7 @@ Choose mound origin
 选择方形区域
 
 Earthshape (Line)
-地型转变 (直线形)
+地型转变 ( 直线形 )
 Create a 4-tile line of Earthen Monoliths. They have 50 hitpoints and 25 armor.
 创造以 4 格线形分布的巨石。巨石具有 50HP 和 25 点护甲。
 
@@ -9633,7 +9652,7 @@ The gag will appear next to you and fly toward the target point.
 ### Conjured Anti-Magic Gag
 ### The anti-magic gag forces itself into your mouth and buckles tightly!
 ### The anti-magic gag hits you! (DamageDealt)
-### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### Summons a magic-absorbing gag which deals DamageDealt teasing arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
 ### You conjure an anti-magic gag!
 
 
@@ -9921,7 +9940,7 @@ You say a command word, resulting in a surge of energy entering your targets!
 CMD: Release
 指令 : ‎解放
 Target bound (but unlocked) targets in a 3x3 area, reducing binding by 100. Removes unlocked restraints on player that are removable.
-以 3x3 区域内被束缚(但未解锁)的单位为目标，减少 100 点束缚。移除可移除并已解锁的束缚。
+以 3x3 区域内被束缚 ( 但未解锁 ) 的单位为目标，减少 100 点束缚。移除可移除并已解锁的束缚。
 You say a command word, causing restraints to loosen!
 你念出咒语，身上的束缚解除了！
 You say a command word, but your restraints remain tight!
@@ -12287,6 +12306,8 @@ Start Playing
 开始游玩
 Lock your settings in, nice and tight.
 锁定你的设置，享受紧缚
+Start with some perks that increase strictness and immersion.
+从一些增加严格性和沉浸感的奖励开始
 Choose some perks to spice up your run.
 选择一些额外技能，为你的游玩增添趣味
 
@@ -15542,7 +15563,7 @@ That gag is far too big! (PERCENT chance to avoid)
 (The SPEAKER locks it in place quickly)|There, all set for battle now!|(The SPEAKER giggles, cheekily winking at you)
 ( SPEAKER 迅速将其锁定到位 ) |好了，现在一切准备就绪！| ( SPEAKER 咯咯地笑，厚着脸皮地向你眨眼 )
 (The SPEAKER tightly fastens the muzzle on)|Safe and secure~|(You whimper as the SPEAKER spanks you goodbye)
-(SPEAKER 紧紧地固定你的口套)|安全又可靠~|(当 SPEAKER 打你屁股告别时，你呜咽着)
+(SPEAKER 紧紧地固定你的口套)|安全又可靠~| ( 当 SPEAKER 打你屁股告别时，你呜咽着 )
 
 Extra defense can't hurt...
 额外的防御不会造成伤害...
@@ -16896,7 +16917,7 @@ This is unethical! I refuse! (PERCENT chance to avoid)
 (Attack the SPEAKER?)
 ( 攻击 SPEAKER？ )
 (Buy ITM# for IC# gp)
-(以 IC# 金币购买 ITM#)
+( 以 IC# 金币购买 ITM#)
 (The SPEAKER sells you the item)
 ( SPEAKER 向你出售该物品 )
 (The SPEAKER shakes her head)|I think you'd be better off without that~
@@ -17874,7 +17895,7 @@ I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside
 亲爱的，很抱歉，我这里不卖商品。|谁会在地牢里开设商店呢？那太疯狂了！|不过，你们冒险者们总是带来稳定的战利品，|所以如果你有什么东西要卖，我可以帮你处理掉~|你也可以和我的客人交谈，也许他们有你需要的东西。
 
 (Return)
-(返回)
+( 返回 )
 
 
 (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
@@ -17946,9 +17967,9 @@ Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens
 Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
 太美妙了。我期待着看到你被释放，呃，回来的时候，|手中有很多宝藏！| ( 她将 RESTRAINTNAME 戴在你身上，封印直接激活了。没有锁孔。 )
 Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
-好吧！站稳点~|(她把你的头发撩开，扣上项圈)|现在出去给我找点宝物吧~
+好吧！站稳点~|( 她把你的头发撩开，扣上项圈 )|现在出去给我找点宝物吧~
 You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
-你一定会喜欢的，我保证~|(她从抽屉里拿出紧身衣，掸去灰尘，然后帮你穿上)|(没有拉链或扣件，只有一个非常有弹性的颈孔)|(一旦戴上并正确贴合，你会感觉颈部不再那么松弛...... ) | ( ......并且将橡胶从皮肤上拉开根本不可能 ) |真美。我该就放你走了。|我相信你的新面貌会吸引很多顾客的！
+你一定会喜欢的，我保证~|( 她从抽屉里拿出紧身衣，掸去灰尘，然后帮你穿上 )|( 没有拉链或扣件，只有一个非常有弹性的颈孔 )|( 一旦戴上并正确贴合，你会感觉颈部不再那么松弛...... ) | ( ......并且将橡胶从皮肤上拉开根本不可能 ) |真美。我该就放你走了。|我相信你的新面貌会吸引很多顾客的！
 
 No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
 不？没关系。|我确信我会找到其他人来测试这些的，呵呵呵。
@@ -18179,7 +18200,7 @@ Give her a Scroll of Purity
 (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 ( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
 (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
-( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|(她在你给她解开堵嘴时摇头...)
+( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( 她在你给她解开堵嘴时摇头... )
 (You don't have enough mana for a command word)
 ( 你没有足够的魔力来写命令词。 )
 (Try as you might, your mouth is sealed tight)
@@ -18187,7 +18208,7 @@ Give her a Scroll of Purity
 (You utter a command word to free the SPEAKER)|Many thanks!|Let's go!
 ( 你发出命令释放 SPEAKER ) |非常感谢|走吧！
 (You utter a command word to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
-( 你发出命令释放 SPEAKER ) |呜呜呜！|(她把堵嘴又锁上了...)
+( 你发出命令释放 SPEAKER ) |呜呜呜！|( 她把堵嘴又锁上了... )
 (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
 ( SPEAKER 戴着高安全性的手铐。|安全护盾已被触发，无法帮助她。 )
 
@@ -18247,7 +18268,7 @@ An enemy found you while you were busy!
 ( SPEAKER 把你叫醒 ) |我们是来救你的。来吧！
 
 (The bed looks comfy and inviting)|(Napping here will restore up to half of your willpower and 100% of your max mana)|(You can only sleep once per floor, unless jailed)
-(床看起来舒服又诱人)|(在这里小憩可以恢复你一半的意志力和 100% 的最大魔力)|(每层楼只能睡一次，除非入狱)
+( 床看起来舒服又诱人 )|( 在这里小憩可以恢复你一半的意志力和 100% 的最大魔力 )|( 每层楼只能睡一次，除非入狱 )
 (You lay in the bed and doze off...)
 ( 你躺在床上打瞌睡… )
 (Lie down and sleep)
@@ -18284,7 +18305,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 (You steal the food, hoping nobody will notice...)
 ( 你偷食物，希望没人会注意到...... )
 (Eat it to restore AMOUNT% WP)
-(吃掉它可以恢复 AMOUNT% WP)
+( 吃掉它可以恢复 AMOUNT% WP )
 (Take it!)
 ( 拿走！ )
 
@@ -22711,6 +22732,7 @@ Designate an Offhand weapon to gain passive effects such as a light source, armo
 
 Equip Offhand
 装备副手
+### Remove Offhand
 
 Make a ranged attack with the spear.
 用矛进行远程攻击。
@@ -22772,13 +22794,13 @@ Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
 (You don't have the required material)
 ( 你没有所需的材料 )
 (Use 1 Gunpowder to make a Smoke Bomb)
-(使用 1 个火药制作烟雾弹)
+( 使用 1 个火药制作烟雾弹 )
 (Use 1 Gunpowder and one Ancient Crystal to make 3 Flash Bombs)
-(使用 1 个火药和 1 个远古水晶制作 3 个闪光弹)
+( 使用 1 个火药和 1 个远古水晶制作 3 个闪光弹 )
 (Use 2 Gunpowder to make a Bomb)
-(使用 2 个火药制作炸弹)
+( 使用 2 个火药制作炸弹 )
 (Use 3 Ectoplasm to make an Invisibility Potion)
-使用 3 个灵质制作隐形药水)
+( 使用 3 个灵质制作隐形药水 )
 
 Gunpowder
 火药
@@ -24356,12 +24378,13 @@ The rubber elemental forms rubber locks around all your restraints! (DamageTaken
 橡胶精灵在你的所有束缚具周围形成橡胶锁！ ( DamageTaken )
 
 Your ropes are enchanted with a lesser spell!
-你的绳索被一个较小的咒语所附魔！
+你的绳索被附上了一些魔力！
 Your ropes are enchanted with a magic spell!
-你的绳索被施了魔法！
-### Your ropes are enchanted with a powerful spell!
-### Your ropes are enchanted with a peerless spell!
-
+你的绳索被附上了魔力！
+Your ropes are enchanted with a powerful spell!
+你的绳索被附上了强大的魔力！
+Your ropes are enchanted with a peerless spell!
+你的绳索被附上了超乎想象的魔力！
 
 Shibari Witch
 绑缚女巫
@@ -24692,7 +24715,8 @@ Fungal
 ### Elemental
 ### Royal
 
-### Choose default outfit palette:
+Choose default outfit palette:
+选择装备默认调色: 
 
 Auto Load Mods
 自动加载模组
@@ -25511,7 +25535,8 @@ You find a ceremonial leotard.
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took 
+Took 
+受到 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 ( 当你杀死龙时，它开始变身为人形！ )
@@ -25754,7 +25779,7 @@ It's a defunct elevator, likely from the Old Civilization.
 这是一部废弃的电梯，可能来自旧文明。
 
 (The elevator beeps and roars to life)|(Its control panel displays a list of options)
-(电梯发出嘟嘟声和轰鸣声) | (其控制面板显示选项列表)
+( 电梯发出嘟嘟声和轰鸣声 ) | ( 其控制面板显示选项列表 )
 (Go to floor 0)
 ( 前往第 0 层 )
 (Go to floor 1)
@@ -26024,6 +26049,7 @@ Goddess shrines do not remove non-binding restraints such as harnesses and cuffs
 ### Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
 
 
+
 After casting a DMG spell:
 施展 DMG 法术后:
 Gain AMNT% DMG Damage for DRTN turns
@@ -26149,7 +26175,7 @@ ENMY calls for help!
 ENMY 请求帮助！
 
 (Go to The Summit)
-(前往巅峰设施)
+( 前往巅峰设施 )
 
 The Summit is a safe area. Items can be left here without fear of losing them.
 巅峰设施是一个安全地区。物品可以放在这里，不用担心丢失。
@@ -26312,6 +26338,8 @@ Cuddle Lounge
 拥抱休息室
 Assign prisoners to the lounge in order to improve servant and prisoner opinion.
 将囚犯分配到休息室以提高仆人和囚犯对你的看法。
+Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
+任命一名狱卒来维持囚犯的秩序，并可自动使用约束装置将他们捆绑起来。
 
 Recycle Restraints
 回收限制
@@ -26425,9 +26453,9 @@ Imprison in Furniture
 ### Dropoff Prisoner
 
 Module (Utility)
-模块 (实用程序)
+模块 ( 实用程序 )
 Module (Punishment)
-模块 (惩罚)
+模块 ( 惩罚 )
 ~~~ Collar ~~~
 ~~~ 项圈 ~~~
 Blindfold / Earplugs
@@ -26474,20 +26502,16 @@ Toe Tie
 Heels
 高跟鞋
 
-Equipped:
-已装备的:
-Click to Add
-点击添加
-Apply
-应用
-Raw Material:
-原料:
+### Equipped: 
+### Click to Add 
+### Apply 
+### Raw Material: 
 
 Free Prisoner
 释放囚犯
 
-Perk Unlocked:
-解锁的技能:
+Perk Unlocked: 
+技能点解锁 : 
 
 Latex Solvent
 乳胶溶剂
@@ -26512,25 +26536,30 @@ You can't use solvents on targets other than yourself while bound.
 
 Choose Palette
 选择调色板
-### Use Raw Material
+Use Raw Material
+使用原料
 Restraint Palette
-限制调色板
+束缚调色板
 Choose Restraint
-选择限制
+选择束缚
 
-### Def. Palette: 
+Def. Palette: 
+默认设置
 Set All Palette
 设置所有调色板
 
 Guests
 客人
 
-### Assign to 
-### Remove from 
+Assign to 
+分配给
+Remove from 
+移除自
 Imprison
 监禁
 
-### Opinion: 
+Opinion: 
+评价 :
 Last Seen on Floor FLR, LOC
 最后出现在楼层 FLR 的 LOC 位置
 Present in current level
@@ -26544,8 +26573,8 @@ Use 'Truss'em'Up' to edit restraints on this NPC
 使用 '把他们捆起来！' 修改此 NPC 的束缚
 The NPC needs tightening, but is unavailable right now
 NPC 需要收紧束缚，但目前无法做到
-Tighten loose restraints
-收紧宽松的束缚
+Tighten non-conjured restraints
+加强非魔法约束
 
 
 NPC has escaped!
@@ -26557,12 +26586,18 @@ NPC 已成功解开她的束缚。
 
 Any
 全员
-### NPC Opinion: 
-### NPC Escape Status: 
-### NPC Binding: 
-### NPC Availability: 
-### Favorited: 
-### Rank: 
+NPC Opinion: 
+NPC 评价 : 
+NPC Escape Status: 
+NPC 逃脱状态 : 
+NPC Binding: 
+NPC 束缚 : 
+NPC Availability: 
+NPC 可用性 : 
+Favorited: 
+收藏 : 
+Rank: 
+等级 : 
 Minor
 低级
 Elite
@@ -26600,7 +26635,8 @@ Copy Restraints
 复制束缚
 Paste Restraints from NME
 从 NME 粘贴束缚
-### No restraints left in inventory
+No restraints left in inventory
+背包中没有任何束缚
 Paste to All!
 粘贴到全部！
 OVERWRITE All!
@@ -26667,7 +26703,8 @@ idle
 
 ### Cost: 
 
-### Zoom set to PCNT%
+Zoom set to PCNT%
+缩放设置为 PCNT%
 ### You need free arms to tie others!
 ### You can use the quick inventory to bind yourself or others
 ### Error. Please screenshot and report.
@@ -26686,7 +26723,8 @@ Reaching Authority
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
 
-### Save Slot 
+Save Slot 
+存档槽
 Load Game
 加载游戏
 Load Code
@@ -26707,9 +26745,11 @@ Invalid Data
 No Data
 无数据
 
+
 This is the normal entrance to the dungeon.|The tutorial is at the beginning of the hall.
 这是地牢的正常入口|教程在大厅的开头。
-### This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
+This is the alternate entrance to the ancient tombs.|It's harder than the normal entrance.
+这是通往古墓的另一个入口|比一般的入口难。
 This part of the dungeon has been altered by the goddess of chaos.|The order of zones you'll go through is totally random.
 地牢的这一部分被混沌女神改变了|你要经过的区域顺序完全是随机的。
 Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
@@ -26723,9 +26763,9 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 
  (Hard)
- (困难)
+ ( 困难 )
  (Extreme)
- (极限)
+ ( 极端 )
 
 Choose Save Slot:
 选择保存到的槽位:
@@ -26744,15 +26784,15 @@ Reverse Route
 颠倒路线 ‎
 Chaos Route
 混沌路线 ‎
-Map Seed:
-地图种子:
+Map Seed: 
+地图种子 : ‎
 Will Overwrite NME!
 这会覆盖 NME!
 
-Play Slot
-加载存档
+Play Slot 
+加载存档 
 Play (NO SLOT!)
-加载 (未选择存档!)
+加载 ( 未选择存档! )
 
 Looks like you might be stuck. Try calling for help (bottom right of UI)
 看来你可能被卡住了，尝试呼叫帮助（界面右下角）
@@ -26761,8 +26801,8 @@ Backup
 备份
 Restore
 恢复
-### Set Palette
-
+Set Palette
+设置面板
 
 ### FLR-DGN
 ###  (NG+AMNT)
@@ -26803,6 +26843,7 @@ You put it on, why would you want to take it off?~
 你戴上它了，干嘛要摘下来呢?~
 You'll need an ancient key to unlock the ancient-made collar.
 你需要一把古老的钥匙来解开古老的项圈。
+
 
 ### Ancient Worshipper
 ### The ancient worshipper repents of her ways.
@@ -26851,12 +26892,15 @@ Check compatibility!
 请检查兼容性!
 Misc Error
 其他错误
+###  v
 
 Magical disenchantment suspends your living collar for AMNT turns
 魔法解除魔咒会在 AMNT 回合内让你的生命项圈无效化
 
 Hardlight
 硬光
+### Knocked Out
+### Vine
 
 Saving...
 保存中...
@@ -26865,5 +26909,15 @@ Game Saved
 
 ENMY escapes from the ITMN!
 ENMY 从 ITMN 逃脱!
+### ENMY escapes from the ITMN and the item vanishes.
 ENMY unlocks the ITMN!
 ENMY 解开了 ITMN 的锁!
+### The conjured ITMN vanishes as it comes off.
+
+### AMNT restraints tightened since last tick~
+### You have no restraints in storage. Go to the Summit to deposit restraints.
+
+### Back to Facilities
+
+### Your Inventory
+### Warden's Storage

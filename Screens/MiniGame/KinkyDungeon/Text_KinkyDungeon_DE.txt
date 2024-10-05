@@ -30,7 +30,7 @@
 
 ### Version
 ### Kinky Dungeon
-### 5.3.41
+### 5.3.44
 ### By Ada18980
 ### You are an adventurer descending into an ancient underground city of magic.
 ### Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -126,6 +126,7 @@
 ### Faster Floater Fade
 ### No Damage Floaters
 ### Dynamic Armor (must hide armor)
+### Hide floating weapon display
 
 ### Helpless!
 ### Evaded!
@@ -153,7 +154,8 @@
 ### Having 10+ spare points will trigger Hard Mode, granting unique loot.
 ###  (HARD MODE ENABLED)
 ### Advanced start (choose perks)
-### Confirm and start playing!
+### Kinky start
+### Normal start
 
 ### Point Cost: AMOUNT
 ### Points Available: AMOUNT
@@ -425,7 +427,7 @@
 ### Rigger
 ### Binding on enemies is 30% stronger.
 ### Pacifist
-### All damage dealt to humanoid enemies is reduced by 90% except pain, grope, tickle, charm, psychic, chain, or glue.
+### All damage dealt to humanoid enemies is reduced by 90% except teasing damage and pain/grope/tickle/charm/psychic/chain/glue.
 ### Curse Seeker
 ### When you pick up cursed armor or restraints from chests, they equip automatically if able.
 
@@ -5469,7 +5471,7 @@
 ### Conjured Anti-Magic Gag
 ### The anti-magic gag forces itself into your mouth and buckles tightly!
 ### The anti-magic gag hits you! (DamageDealt)
-### Summons a magic-absorbing gag which deals DamageDealt arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
+### Summons a magic-absorbing gag which deals DamageDealt teasing arcane damage and silences for 15 turns. Applies a debuff that increases miscast chance by 50%.
 ### You conjure an anti-magic gag!
 
 
@@ -6977,6 +6979,7 @@
 
 ### Start Playing
 ### Lock your settings in, nice and tight.
+### Start with some perks that increase strictness and immersion.
 ### Choose some perks to spice up your run.
 
 ### This game engages in safe and consensual analytics.
@@ -14207,6 +14210,7 @@
 ### Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
 
 ### Equip Offhand
+### Remove Offhand
 
 ### Make a ranged attack with the spear.
 ### Make a ranged attack with the pike.
@@ -16344,6 +16348,7 @@
 ### Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
 ### Cuddle Lounge
 ### Assign prisoners to the lounge in order to improve servant and prisoner opinion.
+### Appoint a warden to keep prisoners in check and automatically bind using restraints from storage.
 
 ### Recycle Restraints
 
@@ -16486,7 +16491,7 @@
 
 ### Use 'Truss'em'Up' to edit restraints on this NPC
 ### The NPC needs tightening, but is unavailable right now
-### Tighten loose restraints
+### Tighten non-conjured restraints
 
 
 ### NPC has escaped!
@@ -16714,4 +16719,14 @@
 ### Game Saved
 
 ### ENMY escapes from the ITMN!
+### ENMY escapes from the ITMN and the item vanishes.
 ### ENMY unlocks the ITMN!
+### The conjured ITMN vanishes as it comes off.
+
+### AMNT restraints tightened since last tick~
+### You have no restraints in storage. Go to the Summit to deposit restraints.
+
+### Back to Facilities
+
+### Your Inventory
+### Warden's Storage
