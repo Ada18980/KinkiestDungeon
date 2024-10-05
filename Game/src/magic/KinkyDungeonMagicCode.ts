@@ -263,12 +263,14 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Bondage": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en?.Enemy) {
-			let fail = KinkyDungeoCheckComponents(spell, entity.x, entity.y, false).length > 0;
+			let cp = KinkyDungeoCheckComponents(spell, entity.x, entity.y, false);
+			let fail = cp.failed.length > 0;
 			if (!fail) {
 				let castdata = {
 					targetX: targetX,
 					targetY: targetY,
 					spell: spell,
+					components: cp.components,
 					flags: {
 						miscastChance: KinkyDungeonMiscastChance,
 					},

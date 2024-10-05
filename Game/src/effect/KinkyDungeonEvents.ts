@@ -3763,7 +3763,36 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 							failedcomp.push(comp);
 						}
 					}
-					if (failedcomp.length > 0) {
+					let castdata = {
+						targetX: data.targetX,
+						targetY: data.targetY,
+						spell: spell,
+						components: data.components,
+						flags: {
+							miscastChance: KinkyDungeonMiscastChance,
+						},
+						gaggedMiscastFlag: false,
+						gaggedMiscastType: "Gagged",
+						query: true,
+					};
+					KDDoGaggedMiscastFlag(castdata);
+					let oldMiscast = castdata.flags.miscastChance;
+
+					castdata = {
+						targetX: data.targetX,
+						targetY: data.targetY,
+						spell: spell,
+						components: ["Verbal"],
+						flags: {
+							miscastChance: KinkyDungeonMiscastChance,
+						},
+						gaggedMiscastFlag: false,
+						gaggedMiscastType: "Gagged",
+						query: true,
+					};
+					KDDoGaggedMiscastFlag(castdata);
+					let newMiscast = castdata.flags.miscastChance;
+					if (failedcomp.length > 0 || oldMiscast > newMiscast) {
 						data.components = ["Verbal"];
 					}
 				}
@@ -4147,7 +4176,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 		},
 		"Psychokinesis": (e, _spell, data) => {
 			if (data.spell && data.spell.tags && data.spell.tags.includes("telekinesis")) {
-				if (KinkyDungeoCheckComponents(data.spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
+				if (KinkyDungeoCheckComponents(data.spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).failed.length > 0) {
 					KinkyDungeonChangeDistraction((data.spell.manacost ? data.spell.manacost : 1) * e.mult);
 				}
 			}
@@ -5579,7 +5608,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
-				if (KinkyDungeoCheckComponents(spell, player.x, player.y).length == 0) {
+				if (KinkyDungeoCheckComponents(spell, player.x, player.y).failed.length == 0) {
 					if (KinkyDungeonHasMana(cost)) {
 
 						KinkyDungeonApplyBuffToEntity(player, {
@@ -5614,7 +5643,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
-				if (KinkyDungeoCheckComponents(spell, player.x, player.y).length == 0) {
+				if (KinkyDungeoCheckComponents(spell, player.x, player.y).failed.length == 0) {
 					if (KinkyDungeonHasMana(cost)) {
 						KinkyDungeonUpdateLightGrid = true;
 						KinkyDungeonApplyBuffToEntity(player, {
@@ -5659,7 +5688,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 
 				let player = KinkyDungeonPlayerEntity;
 				let cost = KinkyDungeonGetManaCost(spell, false, true);
-				if (KinkyDungeoCheckComponents(spell, player.x, player.y).length == 0) {
+				if (KinkyDungeoCheckComponents(spell, player.x, player.y).failed.length == 0) {
 					if (KinkyDungeonHasMana(cost)) {
 						KinkyDungeonUpdateLightGrid = true;
 						if (!KDGameData.RevealedTiles) KDGameData.RevealedTiles = {};

@@ -30,7 +30,7 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		if (entity.player) {
 			return KinkyDungeonPlayerTags.get("Shadow");
 		} else {
-			return KDBoundEffects(entity) > 1;
+			return KDBoundEffects(entity) > 1 && !KDIsImprisoned(entity);
 		}
 	},
 	PlayerLeash: (entity) => {
@@ -46,7 +46,7 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 			)
 			return false;
 		if (KDPlayerIsDisabled() || KinkyDungeonIsHandsBound(true, true, 0.5)) return false;
-		return true;
+		return  !KDIsImprisoned(entity);
 	},
 	Default: (entity) => {
 		if (entity.leash && entity.leash.reason == "Default") {
@@ -60,10 +60,10 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		}
 		if (entity.player) {
 			if (KinkyDungeonPlayerTags.get("Leashable"))
-				return true;
+				return !KDIsImprisoned(entity);
 			else return false;
 		}
-		return true;
+		return !KDIsImprisoned(entity);
 	},
 	WolfgirlLeash: (entity) => {
 		if (entity.leash && entity.leash.reason == "WolfgirlLeash") {

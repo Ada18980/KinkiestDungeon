@@ -1271,7 +1271,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Use": {
 				playertext: "Default", response: "Default",
 				greyoutFunction: (_gagged, _player) => {
-					return KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) != KDPlayer();
+					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+						|| KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == _player;
 				},
 				greyoutTooltip: "KDOccupied",
 				clickFunction: (_gagged, _player) => {
@@ -1291,8 +1292,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								true,
 								false,
 								false);
-							KinkyDungeonAddRestraintIfWeaker(rest, KDGetEffLevel(), true);
-							if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
+							if (rest) {
+								KinkyDungeonAddRestraintIfWeaker(rest, KDGetEffLevel(), true);
+								if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/LockHeavy.ogg");
+							}
 						}
 
 					}
@@ -4425,6 +4428,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("DollmakerMask");
 						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
@@ -4439,6 +4443,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("DollmakerMask");
 						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
@@ -4458,6 +4463,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KinkyDungeonAddGold(1000);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("DollmakerMask");
 						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}
@@ -4476,6 +4482,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					KinkyDungeonChangeRep("Ghost", -5);
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
+						KDUnlockPerk("DollmakerMask");
 						KDUnlockPerk("StartCyberDoll");
 						KDUnlockPerk("CommonCyber");
 					}

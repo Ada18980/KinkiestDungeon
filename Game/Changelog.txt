@@ -34,6 +34,9 @@ TODO Add Cuddle play type
 5.3.44
 - Added Warden facility (WIP)
 - Fix bug where command spells (for controlling allies) would not deselect properly
+- Fix bug where truss em up sometimes wont work even with Reaching Authority
+- Fix bug where cuddle loungegoers would cluster around and gawk at a single cuddlee
+- Fix bug where cuddle loungegoers would take cuddlees out of the cuddle lounge
 
 5.3.43
 - Fix offhand bug

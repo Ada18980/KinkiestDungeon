@@ -538,7 +538,7 @@ function KDDrawSpellChoices() {
 					scaleImage: true,
 				});
 			if (KinkyDungeoCheckComponentsPartial(spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
-				let sp = KinkyDungeoCheckComponents(spell).length > 0 ? "SpellFail" : "SpellFailPartial";
+				let sp = KinkyDungeoCheckComponents(spell).failed.length > 0 ? "SpellFail" : "SpellFailPartial";
 				KDDraw(kdcanvas, kdpixisprites, "spellFail" + "SpellCast" + i, KinkyDungeonRootDirectory + "Spells/" + sp + ".png",
 					buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, undefined, {
 						zIndex: 72,
@@ -663,7 +663,7 @@ function KDDrawSpellChoices() {
 				//Width: buttonDim.wsmall,
 				//Height: buttonDim.hsmall,
 				//});
-				if ((KinkyDungeoCheckComponents(spellPaged).length > 0 || (spellPaged.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0 && !spellPaged.noMiscast))) {
+				if ((KinkyDungeoCheckComponents(spellPaged).failed.length > 0 || (spellPaged.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() > 0 && !spellPaged.noMiscast))) {
 					let sp = "SpellFail";
 					if (spellPaged.components.includes("Verbal") && !KinkyDungeonStatsChoice.get("Incantation") && KinkyDungeonGagTotal() < 1) {
 						sp = "SpellFailPartial";

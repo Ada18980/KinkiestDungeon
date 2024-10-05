@@ -239,11 +239,18 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 							&& !eligibleIDs.includes(e.id)
 							&& !presentIDs.includes(e.id)) {
 								if (!KDIDHasFlag(e.id, "cuddleTime")
-									&& KDistChebyshev(point.x - e.x, point.y - e.y) < 4.5) {
+									&& KDistChebyshev(point.x - e.x, point.y - e.y) > 4.5) {
 										presentIDs.push(e.id);
 										removeIDs.push(e.id);
 								}
 							}
+						else if (KDIsImprisoned(e)
+							&& presentIDs.includes(e.id)) {
+								if (!KDIDHasFlag(e.id, "cuddleTime")
+									&& KDistChebyshev(point.x - e.x, point.y - e.y) > 4.5) {
+										removeIDs.push(e.id);
+								}
+						}
 					}
 				}
 
@@ -251,13 +258,14 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 					// Play with prisoner
 					let prisonerID = removeIDs.length > 0 ?
 						removeIDs[0]
-						: presentIDs[Math.floor(KDRandom() * eligibleIDs.length)];
+						: presentIDs[Math.floor(KDRandom() * presentIDs.length)];
 					let prisoner = KinkyDungeonFindID(prisonerID);
 					if (prisoner) {
 						KDSetIDFlag(entity.id, "overrideMove", 18);
 						if (KDistChebyshev(entity.x - prisoner.x, entity.y - prisoner.y) < 1.5) {
 							// Despawn if not prisoner
-							if (!KDGameData.FacilitiesData["Prisoners_CuddleLounge"].includes(prisoner.id)) {
+							if (!KDGameData.FacilitiesData["Prisoners_CuddleLounge"].includes(prisoner.id)
+								|| prisonerID == removeIDs[0]) {
 								if (!KDIDHasFlag(prisoner.id, "cuddleTime")) {
 									// Despawn
 									KDFreeNPC(prisoner);
@@ -267,13 +275,16 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 									}
 								}
 							} else {
-								KDSetIDFlag(entity.id, "loungeInteract", 30);
-								KDSetIDFlag(entity.id, "wander", 7);
+								KDSetIDFlag(entity.id, "loungeInteract", 50);
+								KDSetIDFlag(entity.id, "wander", 17);
 							}
 							entity.gx = entity.x;
 							entity.gy = entity.y;
 						} else {
 							let pp = KinkyDungeonGetNearbyPoint(prisoner.x, prisoner.y, true, undefined, true);
+							if (!pp) pp = KinkyDungeonGetNearbyPoint(prisoner.x, prisoner.y, true, undefined, undefined);
+							if (!pp) pp = KinkyDungeonGetNearbyPoint(entity.x, entity.y, true, undefined, undefined);
+
 							if (pp) {
 								entity.gx = pp.x;
 								entity.gy = pp.y;
@@ -281,7 +292,15 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 						}
 					}
 				} else if (eligibleIDs.length > 0 && KDRandom() < 0.5) {
-					let furn = KinkyDungeonNearestJailPoint(entity.x, entity.y, ["furniture"], undefined, undefined, true);
+					let furn = KinkyDungeonNearestJailPoint(
+						entity.x - 3 + Math.floor(KDRandom()*3),
+						entity.y - 3 + Math.floor(KDRandom()*3),
+						["furniture"],
+						undefined, undefined, true,
+						(x, y, pp) => {
+							return KDistChebyshev(x - point.x, y - point.y) <= 4.5;
+						}
+					);
 
 					if (furn) {
 						KDSetIDFlag(entity.id, "overrideMove", 18);

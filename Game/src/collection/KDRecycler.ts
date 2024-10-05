@@ -441,7 +441,7 @@ function KDMapToRecycleOutputs(amount: Record<string, number>): RecyclerOutputs 
 }
 
 function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?: string): Record<string, number> {
-	mult *= 1 + Math.max(0, restraint.power * 0.5);
+	mult *= 1 + Math.max(0, restraint.power * 0.1);
 	let res: Record<string, number> = {};
 	if (variant) {
 		// TODO add an actual event

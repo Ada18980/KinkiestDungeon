@@ -77,11 +77,11 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 			KDAutoGenRestraintBlueprint("HighsecMuzzle", "Leather", "", 1.5),
 			KDAutoGenRestraintBlueprint("HighsecLegbinder", "Leather", "", 1.5),
 
-			KDAutoGenRestraintBlueprint("AsylumJacket", "Dress", "", 2,
+			KDAutoGenRestraintBlueprint("AsylumJacket", "Dress", "", 1.5,
 				undefined, {Rope: 3}),
-			KDAutoGenRestraintBlueprint("TransportJacket", "Dress", "", 3,
+			KDAutoGenRestraintBlueprint("TransportJacket", "Dress", "", 1.5,
 				undefined, {Rope: 3}),
-			KDAutoGenRestraintBlueprint("AsylumLegbinder", "Dress", "", 3,
+			KDAutoGenRestraintBlueprint("AsylumLegbinder", "Dress", "", 1.5,
 				undefined, {Rope: 3}),
 
 			KDAutoGenRestraintBlueprint("LeatherArmCuffs", "Leather", ""),

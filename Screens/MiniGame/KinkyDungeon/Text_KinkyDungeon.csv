@@ -383,6 +383,9 @@ KinkyDungeonStatDescDollmakerMask,"You start with the Dollmaker's Mask."
 KinkyDungeonStatStartShadow,"Persisting Desires"
 KinkyDungeonStatDescStartShadow,"Your dark desires are endless."
 
+KinkyDungeonStatSugarRush,"Sugar Rush"
+KinkyDungeonStatDescSugarRush,"Consuming sweets makes you hyperactive, decreasing stamina costs and granting free moves."
+
 KinkyDungeonStatVengeance,"Vengeance"
 KinkyDungeonStatDescVengeance,"Defeating an enemy greatly distracts you."
 KinkyDungeonStatBerserkerRage,"Berserker Rage"

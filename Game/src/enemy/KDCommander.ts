@@ -676,7 +676,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
 				&& KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).some((en) => {
 					return en != enemy && KDBoundEffects(en) > 1 && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
-					&& !KDEnemyHasFlag(en, "imprisoned")
+					&& !KDIsImprisoned(en)
 					&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
 					;
 				})
@@ -699,7 +699,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		maintain: (enemy, _data) => {
 			if (enemy.idle && !KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).some((en) => {
 				return en != enemy && KDBoundEffects(en) > 1 && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
-				&& !KDEnemyHasFlag(en, "imprisoned")
+				&& !KDIsImprisoned(en)
 				&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
 				;
 			})) return false;
@@ -715,13 +715,13 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 			if (!KDEnemyHasFlag(enemy, "tickHS")) {
 				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, undefined, true, enemy).filter((en) => {
 					return en != enemy && KDBoundEffects(en) > 1 && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
-					&& !KDEnemyHasFlag(en, "imprisoned")
+					&& !KDIsImprisoned(en)
 					&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
 					;
 				});
 				if (search.length == 0) search = KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/2 || 1.5, undefined, true, enemy).filter((en) => {
 					return en != enemy && KDBoundEffects(en) > 1 && !KDHostile(enemy, en) && (!KDStruggleAssisters[en.id] || KDStruggleAssisters[en.id] == enemy.id)
-					&& !KDEnemyHasFlag(en, "imprisoned")
+					&& !KDIsImprisoned(en)
 					&& (!KDEntityHasBuffTags(en, "commandword") || enemy.Enemy.unlockCommandLevel > 0)
 					;
 				});

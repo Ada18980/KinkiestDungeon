@@ -358,7 +358,10 @@ function KinkyDungeoCheckComponentsPartial(spell: spell, x: number, y: number, i
 	return data.partial;
 }
 
-function KinkyDungeoCheckComponents(spell: spell, x?: number, y?: number, noOverride?: boolean): string[] {
+function KinkyDungeoCheckComponents(spell: spell, x?: number, y?: number, noOverride?: boolean): {
+	components: string[],
+	failed: string[],
+ } {
 	let failedcomp: string[] = [];
 
 	let data = {
@@ -380,7 +383,10 @@ function KinkyDungeoCheckComponents(spell: spell, x?: number, y?: number, noOver
 
 	if (!noOverride)
 		KinkyDungeonSendEvent("calcComp", data);
-	return data.failed;
+	return {
+		components: data.components,
+		failed: data.failed,
+	};
 }
 
 function KinkyDungeonHandleSpellChoice(SpellChoice: number): spell {
@@ -394,23 +400,21 @@ function KinkyDungeonHandleSpellChoice(SpellChoice: number): spell {
  * @param [x]
  * @param [y]
  */
-function KDSpellIgnoreComp(spell: spell, x?: number, y?: number): boolean {
+function KDSpellIgnoreComp(spell: spell, x?: number, y?: number, components?: string[]): boolean {
 	let ignore = true;
-	if (spell?.components) {
-		for (let c of spell.components) {
+	if (components || spell?.components) {
+		for (let c of components || spell.components) {
 			if (!KDSpellComponentTypes[c]?.ignore || !KDSpellComponentTypes[c].ignore(spell, x, y)) ignore = false;
 		}
 	}
 
-	return ignore
-	|| (KinkyDungeonStatsChoice.get("Slayer") && spell.school == "Elements")
-	|| (KinkyDungeonStatsChoice.get("Conjurer") && spell.school == "Conjure")
-	|| (KinkyDungeonStatsChoice.get("Magician") && spell.school == "Illusion");
+	return ignore;
 }
 
 function KinkyDungeonHandleSpellCast(spell: spell) {
-	if (KinkyDungeoCheckComponents(spell).length == 0 || (
-		KDSpellIgnoreComp(spell)
+	let cp = KinkyDungeoCheckComponents(spell);
+	if (cp.failed.length == 0 || (
+		KDSpellIgnoreComp(spell,undefined,undefined,cp.components)
 	)) {
 		if (KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell))
 			&& (!spell.staminacost || KinkyDungeonHasStamina(spell.staminacost)))
@@ -581,10 +585,6 @@ function KinkyDungeonGetManaCost(Spell: spell, Passive?: boolean, Toggle?: boole
 	KinkyDungeonSendEvent("afterMultMana", data);
 	KinkyDungeonSendEvent("afterCalcMana", data);
 
-	if (KinkyDungeonStatsChoice.get("Slayer") && Spell.school == "Elements" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
-	if (KinkyDungeonStatsChoice.get("Conjurer") && Spell.school == "Conjure" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
-	if (KinkyDungeonStatsChoice.get("Magician") && Spell.school == "Illusion" && KinkyDungeoCheckComponents(Spell).length > 0) data.cost *= 2;
-
 	return data.cost;
 }
 
@@ -741,7 +741,7 @@ function KDDoGaggedMiscastFlag(data: any) {
 
 
 	if (!KDSpellIgnoreComp(data.spell)) {
-		for (let c of data.spell.components) {
+		for (let c of data.components || data.spell.components) {
 			if (KDSpellComponentTypes[c]?.partialMiscastChance && KDSpellComponentTypes[c].check(data.spell, data.targetX, data.targetY)) {
 				let partialMiscastChance = KDSpellComponentTypes[c].partialMiscastChance(data.spell, data.targetX, data.targetY);
 				if (partialMiscastChance > 0) {
@@ -795,10 +795,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		KDTurnToFace(targetX - KinkyDungeonPlayerEntity.x, targetY - KinkyDungeonPlayerEntity.y);
 	}
 
-
-
-
-
+	let cp = KinkyDungeoCheckComponents(spell, targetX, targetY, false);
 
 	let data = Object.assign({...castData}, {
 		spell: spell,
@@ -813,6 +810,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		bullet: bullet,
 		player: player,
 		delta: 1,
+		components: cp.components,
 		gaggedMiscastFlag: false,
 		gaggedMiscastType: "Gagged",
 		channel: spell.channel,
@@ -820,7 +818,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		manacost: (!enemy && !bullet && player) ? KinkyDungeonGetManaCost(spell) : 0,
 	});
 
-	if (!enemy && !bullet && player && spell.components)
+	if (!enemy && !bullet && player && data.components)
 		KDDoGaggedMiscastFlag(data);
 
 

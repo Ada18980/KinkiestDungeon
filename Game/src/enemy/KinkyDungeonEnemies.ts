@@ -122,7 +122,7 @@ function KinkyDungeonGetEnemyByName(Name: string | enemy): enemy {
  * @param [qualified] - Exclude jails where the player doesnt meet conditions
  * @param [unnocupied] - No enemy in the jail
  */
-function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], any?: boolean, qualified?: boolean, unnocupied?: boolean): KDJailPoint {
+function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], any?: boolean, qualified?: boolean, unnocupied?: boolean, criteria?: (x, y, point) => boolean): KDJailPoint {
 	let filt = filter ? filter : ["jail", "dropoff"];
 	let dist = 100000;
 	let point = null;
@@ -133,6 +133,7 @@ function KinkyDungeonNearestJailPoint(x: number, y: number, filter?: string[], a
 		if (qualified && p.requireLeash && !leash) continue;
 		if (qualified && p.requireFurniture && !furniture) continue;
 		if (unnocupied && KinkyDungeonEntityAt(p.x, p.y)) continue;
+		if (criteria && !criteria(p.x, p.y, p)) continue;
 		if (KinkyDungeonEntityAt(p.x, p.y, undefined, undefined, undefined, false)
 			&& KDIsImprisoned(KinkyDungeonEntityAt(p.x, p.y))) continue;
 		let d = Math.max(Math.abs(x - p.x), Math.abs(y - p.y));
@@ -1940,6 +1941,9 @@ function KDSetToExpectedBondage(en: entity, mode: number = 0) {
  * @param en
  */
 function KDFreeNPC(en: entity) {
+	if (en.specialdialogue && KDEnemyHasFlag(en, "imprisoned")) {
+		en.specialdialogue = undefined;
+	}
 	KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
 	if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 	else if (KDGameData.NPCRestraints["" + en.id]?.Device) {
