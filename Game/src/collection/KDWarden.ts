@@ -30,10 +30,11 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 
 /** Updates the warden facility */
 function KDUpdateWarden(delta: number) {
+	if (!delta) return;
 	let facility = "Warden";
 	let wardenPower = 0;
 	let WardenItems = KDGetContainer("WardenChest")?.items || {};
-
+	KDGameData.FacilitiesData.Warden_TightenedCount = 0;
 	if (KDGameData.FacilitiesData["Servants_" + facility])
 		for (let servant of KDGameData.FacilitiesData["Servants_" + facility]) {
 			let value = KDGameData.Collection[servant + ""];
@@ -45,9 +46,47 @@ function KDUpdateWarden(delta: number) {
 		// If we have a warden we continue
 		// Create a list of prisoners at risk of escaping
 
+
+
+		// Another thing the warden does--collects restraints and items
+		for (let value of Object.values(KDGameData.Collection)) {
+			if (!value.status && !KDNPCUnavailable(value.id, value.status)) {
+				let entity = KDGetGlobalEntity(value.id);
+				if (entity.items) {
+					let restraints = entity.items.filter((str) => {
+						return KDRestraint({name: str});
+					});
+					for (let item of restraints) {
+						if (WardenItems[item]) WardenItems[item].quantity += 1;
+						else {
+							if (KinkyDungeonRestraintVariants[item]) {
+								WardenItems[item] = KDGetInventoryVariant(
+									KinkyDungeonRestraintVariants[item], undefined,
+									KinkyDungeonRestraintVariants[item].curse,
+									"", item);
+
+							} else {
+								WardenItems[item] = {
+								name: item,
+								//curse: curse,
+								id: KinkyDungeonGetItemID(),
+								type: LooseRestraint,
+								//events:events,
+								quantity: 1,
+								showInQuickInv: KinkyDungeonRestraintVariants[item] != undefined,};
+							}
+						}
+						// Delete from inv
+						entity.items.splice(entity.items.indexOf(item), 1);
+					}
+				}
+
+			}
+		}
+
 		let entries: KDCollectionEntry[] = [];
 		for (let value of Object.values(KDGameData.Collection)) {
-			if (KDValidateEscapeGrace(value)) {
+			if (!value.status && KDValidateEscapeGrace(value) && !KDNPCUnavailable(value.id, value.status)) {
 				entries.push(value);
 			}
 		}
@@ -71,7 +110,10 @@ function KDUpdateWarden(delta: number) {
 						// Get a random item to test, and remove it from available list
 						let testItem = availableRestraints.splice(
 							Math.floor(KDRandom() * availableRestraints.length), 1)[0];
-						let slot = KDGetNPCBindingSlotForItem(KDRestraint(testItem), value.id, false);
+						let rest = KDRestraint(testItem);
+						if (!rest)
+							continue;
+						let slot = KDGetNPCBindingSlotForItem(rest, value.id, false);
 
 						// Check if its valid
 						if (slot) {
@@ -91,6 +133,7 @@ function KDUpdateWarden(delta: number) {
 								player: -1,
 							}, WardenItems))
 								// If added, refresh
+								KDGameData.FacilitiesData.Warden_TightenedCount += 1;
 								currentBondage = KDGetExpectedBondageAmountTotal(value.id, undefined, false);
 						}
 					}
@@ -99,6 +142,7 @@ function KDUpdateWarden(delta: number) {
 				// In this next part, we apply restraint tightening
 				KDNPCRefreshBondage(value.id, -1, false, false,
 					KDGetContainer("WardenChest", undefined, undefined, true, KDWardenChestFilters).items);
+				KDValidateEscapeGrace(value);
 			}
 		}
 

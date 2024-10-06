@@ -1648,9 +1648,12 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = []) {
 	//	defaultIndex = 1;
 	//}
 
+	let selected = "";
+	let first = "";
 	let II = 0;
 	for (let I = 0; I < KinkyDungeonFilters.length; I++) {
 		if (filters.includes(KinkyDungeonFilters[I])) continue;
+		if (!first) first = KinkyDungeonFilters[I];
 		let col = KDTextGray2;
 		if (KinkyDungeonFilterInventory(KinkyDungeonFilters[I], false, false, true).length > 0) {
 			col = "#888888";
@@ -1671,8 +1674,10 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = []) {
 			TextGet("KinkyDungeonCategoryFilter" + KinkyDungeonFilters[I]),
 				(KinkyDungeonCurrentFilter == KinkyDungeonFilters[I]) ? "White" : col, "", "");
 
+		if (KinkyDungeonCurrentFilter == KinkyDungeonFilters[I]) selected = KinkyDungeonFilters[I];
 		II++;
 	}
+	if (!selected && first) KinkyDungeonCurrentFilter = first;
 }
 
 function KinkyDungeonDrawInventory() {

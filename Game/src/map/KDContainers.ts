@@ -158,7 +158,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		const encoder = new TextEncoder();
 		DrawTextFitKD(`${KDGetItemName(item)} - ${TextGet("KinkyDungeonRarity" +
 			(KDRestraint(item) ? Math.max(0, Math.min(Math.floor(
-				KDRestraint(item).displayPower || KDRestraint(item).power
+				(KDRestraint(item).displayPower || KDRestraint(item).power)/5
 			),10))
 			: (KDConsumable(item)?.rarity || KDWeapon(item)?.rarity || 0))
 		)}`,

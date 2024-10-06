@@ -25134,7 +25134,8 @@ KDNPCEscapeConjuredRemove,"ENMY escapes from the ITMN and the item vanishes."
 KDNPCEscapeUnlock,ENMY unlocks the ITMN!
 KDConjuredItemVanish,The conjured ITMN vanishes as it comes off.
 
-KDWardenTightened,AMNT restraints tightened since last tick~
+KDWardenTightened,AMNT restraints added since last tick~
+KDWardenConfiscate,AMNT restraints confiscated since last tick~
 KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
 
 KDContainerBack_Facilities,Back to Facilities
