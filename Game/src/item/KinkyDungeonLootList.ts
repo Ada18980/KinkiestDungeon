@@ -252,6 +252,8 @@ for (let armor of KDShadowRestraints) {
 	armor.forceEquip = true;
 }
 
+
+
 let KinkyDungeonLootTable = {
 	"rubble": [
 		//{name: "nothing", minLevel: 0, weight:9, message:"LootRubbleFail", messageColor:"#aaaaaa", messageTime: 2, allFloors: true},
@@ -892,6 +894,15 @@ let KinkyDungeonLootTable = {
 			cursechance: 0.25, cursescale: 0.5,
 			enchantlist: "Gold", enchantchance: 1,
 			enchantlevelmin: 0, enchantlevelmax: 20,
+			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
+		{name: "CyberDoll", minLevel: 0, weight: 40,
+			armortags: ["cyberDollRestraints"], armor: "ControlHarness",
+			amtMult: 1.75,
+			maxEnchants: 3,
+			cursesuffix: "",
+			faction: "Curse",
+			enchantlist: "Gold", enchantchance: 1,
+			unlockcurse: ["Divine"], enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 		{name: "ControlHarness", minLevel: 0, weight: 10,
 			armor: "ControlHarness",
