@@ -82,6 +82,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 	Warden: {
 		priority: 0,
 		update: (delta) => {
+			KDUpdateWarden(delta);
 			return false;
 		},
 		draw: (x, y, width) => {

@@ -27,3 +27,47 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 	}
 	return dd;
 }
+
+/** Updates the warden facility */
+function KDUpdateWarden(delta: number) {
+	let facility = "Warden";
+	let wardenPower = 0;
+
+	if (KDGameData.FacilitiesData["Servants_" + facility])
+		for (let servant of KDGameData.FacilitiesData["Servants_" + facility]) {
+			let value = KDGameData.Collection[servant + ""];
+			if (value) {
+				wardenPower += 1 + KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type));
+			}
+		}
+	if (wardenPower) {
+		// If we have a warden we continue
+		// Create a list of prisoners at risk of escaping
+
+		let entries: KDCollectionEntry[] = [];
+		for (let value of Object.values(KDGameData.Collection)) {
+			if (KDValidateEscapeGrace(value)) {
+				entries.push(value);
+			}
+		}
+
+		if (entries.length > 0) {
+			// If we do, then we iterate over all of them
+			for (let value of entries) {
+				// Get current bondage, exclusing conjured
+				let currentBondage = KDGetExpectedBondageAmountTotal(value.id, undefined, false);
+				// Figure out how much is needed to fully bind
+				let enemy = KinkyDungeonGetEnemyByName(value.type);
+				let neededBondage = enemy.maxhp * KDNPCStruggleThreshMultType(enemy);
+				if (currentBondage < neededBondage) {
+					// In this part we add more restraints until current bondage is acceptable
+					// TODO #FixMe
+				}
+				// In this next part, we apply restraint tightening
+				KDNPCRefreshBondage(value.id, -1, false, false,
+					KDGetContainer("WardenChest", undefined, undefined, true).items);
+			}
+		}
+
+	}
+}

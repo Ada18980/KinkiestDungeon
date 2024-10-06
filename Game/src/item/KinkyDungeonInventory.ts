@@ -3024,7 +3024,7 @@ function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = ""
 
 
 /**
- * Adds an inventory variant to the player's inventory
+ * Creates an inventory variant item
  * @param variant
  * @param [prefix]
  * @param [curse]

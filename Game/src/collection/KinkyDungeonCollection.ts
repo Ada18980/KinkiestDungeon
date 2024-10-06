@@ -1104,7 +1104,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 /**
  * @param value
  */
-function KDValidateEscapeGrace(value: KDCollectionEntry) {
+function KDValidateEscapeGrace(value: KDCollectionEntry): boolean {
 	if (KDWantsToEscape(value)) {
 		let entity = KDGetGlobalEntity(value.id);
 		let bondageAmount = Math.min(entity?.boundLevel || 0,
@@ -1114,6 +1114,7 @@ function KDValidateEscapeGrace(value: KDCollectionEntry) {
 			value.escapegrace = true;
 		} else value.escapegrace = undefined;
 	} else value.escapegrace = undefined;
+	return value.escapegrace;
 }
 
 function KDSortCollection() {
