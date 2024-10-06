@@ -32,6 +32,7 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 function KDUpdateWarden(delta: number) {
 	let facility = "Warden";
 	let wardenPower = 0;
+	let WardenItems = KDGetContainer("WardenChest")?.items || {};
 
 	if (KDGameData.FacilitiesData["Servants_" + facility])
 		for (let servant of KDGameData.FacilitiesData["Servants_" + facility]) {
@@ -61,13 +62,46 @@ function KDUpdateWarden(delta: number) {
 				let neededBondage = enemy.maxhp * KDNPCStruggleThreshMultType(enemy);
 				if (currentBondage < neededBondage) {
 					// In this part we add more restraints until current bondage is acceptable
-					// TODO #FixMe
+					let availableRestraints = Object.values(WardenItems);
+					let iterations = 0;
+					let maxIterations = availableRestraints.length;
+					while (availableRestraints.length > 0
+						&& iterations++ < maxIterations
+						&& currentBondage < neededBondage) {
+						// Get a random item to test, and remove it from available list
+						let testItem = availableRestraints.splice(
+							Math.floor(KDRandom() * availableRestraints.length), 1)[0];
+						let slot = KDGetNPCBindingSlotForItem(KDRestraint(testItem), value.id, false);
+
+						// Check if its valid
+						if (slot) {
+							// Add the item
+							if (KDInputSetNPCRestraint({
+								slot: slot.sgroup.id,
+								id: undefined,
+								faction: testItem.faction,
+								restraint: testItem.name,
+								restraintid: testItem.id,
+								lock: "",
+								variant: undefined,
+								events: testItem.events,
+								powerbonus: undefined,
+								inventoryVariant: testItem.inventoryVariant,
+								npc: value.id,
+								player: -1,
+							}, WardenItems))
+								// If added, refresh
+								currentBondage = KDGetExpectedBondageAmountTotal(value.id, undefined, false);
+						}
+					}
+
 				}
 				// In this next part, we apply restraint tightening
 				KDNPCRefreshBondage(value.id, -1, false, false,
-					KDGetContainer("WardenChest", undefined, undefined, true).items);
+					KDGetContainer("WardenChest", undefined, undefined, true, KDWardenChestFilters).items);
 			}
 		}
 
 	}
 }
+let KDWardenChestFilters = [Restraint, Outfit, Consumable, Weapon];

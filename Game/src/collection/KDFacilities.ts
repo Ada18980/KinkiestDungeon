@@ -73,7 +73,7 @@ function KDValidateAllFacilities() {
 	}
 
 	// Create the warden chest if it's not there
-	KDGetContainer("WardenChest", undefined, undefined, true);
+	KDGetContainer("WardenChest", undefined, undefined, true, KDWardenChestFilters);
 
 }
 

@@ -12,16 +12,18 @@ interface KDContainer {
 	items: Record<string, item>,
 	lock: string,
 	type: string,
+	filters?: string[],
 }
 
-function KDAddContainer(name: string, point?: KDPoint, location?: WorldCoord, appendCoords: boolean = true): KDContainer {
-	let container = {
+function KDAddContainer(name: string, point?: KDPoint, location?: WorldCoord, appendCoords: boolean = true, filters?: string[]): KDContainer {
+	let container: KDContainer = {
 		name: name || "",
 		location: location,
 		point: point,
 		items: {},
 		lock: "",
 		type: name || "",
+		filters: filters,
 	};
 	if (appendCoords) {
 		container.name = KDGetContainerName(container.name, point, location);
@@ -41,17 +43,17 @@ function KDGetContainerName(name: string, point?: KDPoint, location?: WorldCoord
 	return name;
 }
 
-function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, create: boolean = false): KDContainer {
+function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, create: boolean = false, filters?: string[]): KDContainer {
 	let id = KDGetContainerName(name, point, location);
 	if (create && !KDGameData.Containers[id]) {
-		KDAddContainer(name, point, location, true);
+		KDAddContainer(name, point, location, true, filters);
 	}
 
 	return KDGameData.Containers[id];
 }
 
 
-function KDDrawContainer(name: string, xOffset = -125) {
+function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit]) {
 	let x = 1225 + xOffset;
 	let takeItem = (inv) => {
 		if (container.items[inv?.name]) {
@@ -87,7 +89,7 @@ function KDDrawContainer(name: string, xOffset = -125) {
 	let filter = KinkyDungeonCurrentFilter;
 	let container = KDGameData.Containers[name];
 
-	KDDrawInventoryFilters(xOffset - 70, 50, [Restraint, Outfit]);
+	KDDrawInventoryFilters(xOffset - 70, 50, filters);
 
 	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
 

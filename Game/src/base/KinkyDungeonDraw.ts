@@ -1872,7 +1872,7 @@ function KinkyDungeonDrawGame() {
 			if (KDGameData.PlayerName) {
 				DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, "#ffffff", KDTextGray0, 32, "center", 20);
 			}
-			KDDrawContainer(KDUI_CurrentContainer);
+			KDDrawContainer(KDUI_CurrentContainer, undefined, KDGameData.Containers[KDUI_CurrentContainer]?.filters);
 		}
 
 
