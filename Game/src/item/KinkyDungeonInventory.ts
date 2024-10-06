@@ -1644,21 +1644,21 @@ function KDDrawInventoryContainer (
 function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = []) {
 
 	let defaultIndex = 0;
-	if (KinkyDungeonFilterInventory(KinkyDungeonFilters[0], undefined, undefined, undefined, undefined, KDInvFilter).length == 0) {
-		defaultIndex = 1;
-	}
+	//if (KinkyDungeonFilterInventory(KinkyDungeonFilters[0], undefined, undefined, undefined, undefined, KDInvFilter).length == 0) {
+	//	defaultIndex = 1;
+	//}
 
 	let II = 0;
 	for (let I = 0; I < KinkyDungeonFilters.length; I++) {
 		if (filters.includes(KinkyDungeonFilters[I])) continue;
 		let col = KDTextGray2;
-		if (KinkyDungeonFilterInventory(KinkyDungeonFilters[I], false, false, true).length > 0 || I == defaultIndex) {
+		if (KinkyDungeonFilterInventory(KinkyDungeonFilters[I], false, false, true).length > 0) {
 			col = "#888888";
 		}
-		else if (KinkyDungeonFilters.indexOf(KinkyDungeonCurrentFilter) == I) {
-			KinkyDungeonCurrentFilter = KinkyDungeonFilters[defaultIndex];
-			KDPreventAccidentalClickTime = CommonTime() + 1200;
-		}
+		//if (KinkyDungeonFilters.indexOf(KinkyDungeonCurrentFilter) == I) {
+		//	KinkyDungeonCurrentFilter = KinkyDungeonFilters[defaultIndex];
+		//	KDPreventAccidentalClickTime = CommonTime() + 1200;
+		//}
 
 		if (!KDConfigHotbar)
 			DrawButtonKDEx("categoryfilter" + I, (_bdata) => {

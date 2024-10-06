@@ -25151,3 +25151,5 @@ KDAddAll,Store ALL ITMN
 KDTakeAll,Take ALL ITMN
 KDAddAll1,Store ALL-1 ITMN
 KDTakeAll1,Take ALL-1 ITMN
+KDTakeEverything,Take Everything
+KDDepositEverything,Deposit All

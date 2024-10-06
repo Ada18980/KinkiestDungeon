@@ -126,6 +126,8 @@ function KDDrawContainer(name: string, xOffset = -125) {
 		ContainerInv.selected
 		: YourInv.selected;
 
+	let ii = 0;
+	let spacing = 70;
 	if (selectedItem?.item) {
 
 		let item = selectedItem.item;
@@ -188,8 +190,6 @@ function KDDrawContainer(name: string, xOffset = -125) {
 		// Take all
 		// Take 5
 
-		let ii = 0;
-		let spacing = 70;
 		DrawButtonKDEx(
 			"take1", () => {
 				if (KDUI_Container_LastSelected == "Chest") {
@@ -244,9 +244,39 @@ function KDDrawContainer(name: string, xOffset = -125) {
 				hotkeyPress: KinkyDungeonKeySpell[3],
 			}
 		);
-
-
 	}
+
+	let InvToTransfer = KDUI_Container_LastSelected == "Chest" ? filteredInventory2 : filteredInventory;
+
+	if (InvToTransfer) {
+		DrawButtonKDEx(
+			"DepositAll", () => {
+				if (KDUI_Container_LastSelected == "Chest") {
+					for (let inv of InvToTransfer) {
+						let q = inv.item.quantity;
+						for (let i = 0; i < (q || 1); i++) takeItem(inv);
+					}
+				} else {
+					for (let inv of InvToTransfer) {
+						if (!(KDGameData.ItemPriority[inv.name] > 9)) {
+							let q = inv.item.quantity;
+							for (let i = 0; i < (q || 1); i++) transferItem(inv);
+						}
+
+					}
+				}
+
+				return true;
+			}, InvToTransfer.length > 0, 1070, 600 + 20 + ii++*spacing, 200, 60,
+			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeEverything" : "KDDepositEverything"),
+			InvToTransfer.length > 0 ? "#ffffff" : "#999999", undefined, undefined, undefined, true,
+			KDButtonColor, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[4]),
+				hotkeyPress: KinkyDungeonKeySpell[4],
+			}
+		);
+	}
+
 
 	DrawButtonKDEx(
 		"backbutton", () => {
