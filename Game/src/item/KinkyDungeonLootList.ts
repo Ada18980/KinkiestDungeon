@@ -1350,6 +1350,7 @@ interface KDMinorLootEntry {
 let KDMinorLootTable = {
 	chest: {
 		rarity: 1,
+		extraQuantity: 0,
 		options: [
 			{name: "Knife", minLevel: 0, weight:5, allFloors: true, message:"", messageColor:""},
 			{name: "Pick", minLevel: 0, weight:5, quantity: 1, extraQuantity: 2, allFloors: true, message:"", messageColor:""},
@@ -1364,5 +1365,5 @@ let KDMinorLootTable = {
 			{name: "PotionFrigid", minLevel: 0, weight:2, quantity: 1, allFloors: true, message:"", messageColor:""},
 			{name: "Gunpowder", minLevel: 0, weight:2, quantity: 1, allFloors: true, message:"", messageColor:""},
 		],
-	}
+	},
 }

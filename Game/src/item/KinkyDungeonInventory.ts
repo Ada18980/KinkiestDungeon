@@ -2801,7 +2801,7 @@ function KDRemoveConsumableVariant(Name: string, _Prefix: string = "KinkyDungeon
  * @param [entities]
  * @param [npcrestraints]
  */
-function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, lost: boolean = true, ground: boolean = true, hotbar: boolean = true, entities: boolean = true, npcrestraints: boolean = true) {
+function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, lost: boolean = true, ground: boolean = true, hotbar: boolean = true, entities: boolean = true, npcrestraints: boolean = true, containers: boolean = true) {
 	let entries = Object.entries(KinkyDungeonRestraintVariants);
 	let entrieswep = Object.entries(KinkyDungeonWeaponVariants);
 	let entriescon = Object.entries(KinkyDungeonConsumableVariants);
@@ -2950,6 +2950,13 @@ function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, l
 				if (restraint?.inventoryVariant) {
 					found[restraint.inventoryVariant] = true;
 				}
+			}
+		}
+	}
+	if (containers && KDGameData.Containers) {
+		for (let con of Object.values(KDGameData.Containers)) {
+			for (let restraint of Object.keys(con.items)) {
+				found[restraint] = true;
 			}
 		}
 	}

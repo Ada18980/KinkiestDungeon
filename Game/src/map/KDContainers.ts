@@ -55,7 +55,7 @@ function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, cr
 
 function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit]) {
 	let x = 1225 + xOffset;
-	let takeItem = (inv) => {
+	let takeItem = (inv: item) => {
 		if (container.items[inv?.name]) {
 			let item = KinkyDungeonInventoryGetSafe(inv.name);
 			if (!item) {
@@ -70,7 +70,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			}
 		}
 	};
-	let transferItem = (inv) => {
+	let transferItem = (inv: item) => {
 		let item = KinkyDungeonInventoryGetSafe(inv?.name);
 		if (item && KDCanDrop(item)) {
 			if (!container?.items[inv.name]) {
@@ -102,7 +102,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let YourInv = KDDrawInventoryContainer(-900, 100, filteredInventory, filter, filter,
 	(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
 		if (!different && !KDUI_Container_LastSelected) {
-			transferItem(inv);
+			transferItem(inv.item);
 		}
 		KDUI_Container_LastSelected = "";
 	}, (inv) => {
@@ -116,7 +116,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let ContainerInv = KDDrawInventoryContainer(-165, 100, filteredInventory2, filter, filter,
 		(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
 		if (!different && KDUI_Container_LastSelected) {
-			takeItem(inv);
+			takeItem(inv.item);
 		}
 		KDUI_Container_LastSelected = "Chest";
 	}, (inv) => {
@@ -197,8 +197,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		DrawButtonKDEx(
 			"take1", () => {
 				if (KDUI_Container_LastSelected == "Chest") {
-					takeItem(selectedItem);
-				} else transferItem(selectedItem);
+					takeItem(selectedItem.item);
+				} else transferItem(selectedItem.item);
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake1" : "KDAdd1").replace("ITMN", KDGetItemName(item)),
@@ -210,8 +210,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		DrawButtonKDEx(
 			"take5", () => {
 				if (KDUI_Container_LastSelected == "Chest") {
-					for (let i = 0; i < 5; i++) takeItem(selectedItem);
-				} else for (let i = 0; i < 5; i++) transferItem(selectedItem);
+					for (let i = 0; i < 5; i++) takeItem(selectedItem.item);
+				} else for (let i = 0; i < 5; i++) transferItem(selectedItem.item);
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake5" : "KDAdd5").replace("ITMN", KDGetItemName(item)),
@@ -224,8 +224,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			"takeALL", () => {
 				let q = selectedItem.item.quantity;
 				if (KDUI_Container_LastSelected == "Chest") {
-					for (let i = 0; i < (q || 1); i++) takeItem(selectedItem);
-				} else for (let i = 0; i < (q || 1); i++) transferItem(selectedItem);
+					for (let i = 0; i < (q || 1); i++) takeItem(selectedItem.item);
+				} else for (let i = 0; i < (q || 1); i++) transferItem(selectedItem.item);
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll" : "KDAddAll").replace("ITMN", KDGetItemName(item)),
@@ -238,8 +238,8 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			"takeALL1", () => {
 				let q = selectedItem.item.quantity;
 				if (KDUI_Container_LastSelected == "Chest") {
-					for (let i = 1; i < (q || 1); i++) takeItem(selectedItem);
-				} else for (let i = 1; i < (q || 1); i++) transferItem(selectedItem);
+					for (let i = 1; i < (q || 1); i++) takeItem(selectedItem.item);
+				} else for (let i = 1; i < (q || 1); i++) transferItem(selectedItem.item);
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll1" : "KDAddAll1").replace("ITMN", KDGetItemName(item)),
@@ -258,13 +258,13 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				if (KDUI_Container_LastSelected == "Chest") {
 					for (let inv of InvToTransfer) {
 						let q = inv.item.quantity;
-						for (let i = 0; i < (q || 1); i++) takeItem(inv);
+						for (let i = 0; i < (q || 1); i++) takeItem(inv.item);
 					}
 				} else {
 					for (let inv of InvToTransfer) {
 						if (!(KDGameData.ItemPriority[inv.name] > 9)) {
 							let q = inv.item.quantity;
-							for (let i = 0; i < (q || 1); i++) transferItem(inv);
+							for (let i = 0; i < (q || 1); i++) transferItem(inv.item);
 						}
 
 					}

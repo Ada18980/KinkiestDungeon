@@ -500,14 +500,39 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 				// Open container
 				KDUI_CurrentContainer = KDGetContainer("Chest", {x: moveX, y: moveY}, KDGetCurrentLocation(),
 					true)?.name;
-				if (KDUI_CurrentContainer) {
-					KDUI_ContainerBackScreen = KinkyDungeonDrawState;
-					KinkyDungeonDrawState = "Container";
-					KinkyDungeonCurrentFilter = "All";
-				}
+
 				KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap, undefined, undefined, KDGameData.Containers[KDUI_CurrentContainer]);
 				if (KDUI_CurrentContainer) {
 					KDGenerateMinorLoot(chestType, KDGetCurrentLocation(), data.tile, moveX, moveY, KDGameData.Containers[KDUI_CurrentContainer]);
+				}
+				if (KDUI_CurrentContainer && KDGameData.Containers[KDUI_CurrentContainer]
+					&& Object.values(KDGameData.Containers[KDUI_CurrentContainer].items).length > 0) {
+					if (KDToggles.Autoloot) {
+						let container = KDGameData.Containers[KDUI_CurrentContainer];
+						for (let inv of Object.values(container.items)) {
+							let q = inv.quantity;
+							for (let i = 0; i < (q || 1); i++) {
+								if (container.items[inv?.name]) {
+									let item = KinkyDungeonInventoryGetSafe(inv.name);
+									if (!item) {
+										item = JSON.parse(JSON.stringify(container.items[inv.name]));
+										item.quantity = 1;
+										KinkyDungeonInventoryAdd(item);
+									} else item.quantity += 1;
+									if (container.items[inv.name].quantity > 1) {
+										container.items[inv.name].quantity -= 1;
+									} else {
+										delete container.items[inv.name];
+									}
+								}
+							}
+						}
+					} else {
+						KDUI_ContainerBackScreen = KinkyDungeonDrawState;
+						KinkyDungeonDrawState = "Container";
+						KinkyDungeonCurrentFilter = "All";
+						KDUI_Container_LastSelected = "Chest";
+					}
 				}
 				if (lootTrap) {
 					KDMapData.TrapsTriggered++;

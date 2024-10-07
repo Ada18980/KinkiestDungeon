@@ -1131,7 +1131,7 @@ function KDSummonCurseTrap(x: number, y: number) {
 function KDGenerateMinorLoot(lootType: string, coord: WorldCoord, tile: any, x: number, y: number, container: KDContainer) {
 	if (KDMinorLootTable[lootType]) {
 		let type = KDMinorLootTable[lootType];
-		let count = 1 + type.rarity;
+		let count = 1 + type.rarity + (type.extraQuantity || 0);
 		let loots: any[] = [];
 		for (let i = 0; i < count; i++) {
 			loots.push(

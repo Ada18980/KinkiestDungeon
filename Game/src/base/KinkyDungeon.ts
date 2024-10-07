@@ -251,6 +251,7 @@ let KDToggles = {
 	IgnoreApplyCharPalette: true,
 	AlwaysApplyCharPalette: true,
 	DefaultApplyCharPalette: false,
+	Autoloot: true,
 };
 
 let KDToggleCategories = {
@@ -321,6 +322,7 @@ let KDToggleCategories = {
 	IgnoreApplyCharPalette: "none",
 	AlwaysApplyCharPalette: "none",
 	DefaultApplyCharPalette: "none",
+	Autoloot: "UI",
 };
 
 let KDDefaultKB = {
@@ -4921,6 +4923,19 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 		KDGameData.RoomType = "JourneyFloor";//KinkyDungeonStatsChoice.get("easyMode") ? "ShopStart" : "JourneyFloor";
 		MiniGameKinkyDungeonLevel = 0;
 		KDInitializeJourney("");
+
+		// Remove all chests and add to lost items
+		let lostItems: item[] = [];
+		for (let entry of Object.entries(KDGameData.Containers)) {
+			if (entry[1].location?.mapY > 0) {
+				lostItems.push(...Object.values(entry[1].items));
+				delete KDGameData.Containers[entry[0]];
+			}
+		}
+		for (let item of lostItems) {
+			KDAddLostItemSingle(item.name, 1);
+		}
+
 		if (KDTileToTest) {
 			KinkyDungeonMapIndex.grv = cp;
 		}

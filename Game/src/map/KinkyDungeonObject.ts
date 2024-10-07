@@ -98,6 +98,7 @@ let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => void
 				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
 				KinkyDungeonDrawState = "Container";
 				KinkyDungeonCurrentFilter = "All";
+				KDUI_Container_LastSelected = "Chest";
 			}
 	},
 };
