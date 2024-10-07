@@ -1649,7 +1649,7 @@ function KinkyDungeonGetAllies(): entity[] {
  * @param enemy
  */
 function KDIsImprisoned(enemy: entity): boolean {
-	return KDEntityHasFlag(enemy, "imprisoned");
+	return enemy && KDEntityHasFlag(enemy, "imprisoned");
 }
 
 

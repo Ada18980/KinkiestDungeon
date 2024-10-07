@@ -113,7 +113,7 @@ function KinkyDungeonGetShopItem(_Level: number, Rarity: number, _Shop: boolean,
 function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, container?: KDContainer): boolean {
 	let item = container ? container.items[consumable.name] : KinkyDungeonInventoryGetConsumable(consumable.name);
 	if (item) {
-		item.quantity += Quantity;
+		item.quantity = (item.quantity || 1) + Quantity;
 		if (item.quantity <= 0) {
 			if (container)
 				delete container.items[consumable.name]
@@ -141,7 +141,7 @@ function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, 
 function KDAddConsumable(name: string, Quantity: number, container?: KDContainer): boolean {
 	let item = container ? container.items[name] : KinkyDungeonInventoryGetConsumable(name);
 	if (item) {
-		item.quantity += Quantity;
+		item.quantity = (item.quantity || 1) + Quantity;
 		if (item.quantity <= 0) {
 			if (container)
 				delete container.items[name]

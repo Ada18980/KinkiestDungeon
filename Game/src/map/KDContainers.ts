@@ -56,13 +56,15 @@ function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, cr
 function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit]) {
 	let x = 1225 + xOffset;
 	let takeItem = (inv: item) => {
-		if (container.items[inv?.name]) {
+		if (container.items[inv?.name]
+			&& (inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))
+		) {
 			let item = KinkyDungeonInventoryGetSafe(inv.name);
 			if (!item) {
 				item = JSON.parse(JSON.stringify(container.items[inv.name]));
 				item.quantity = 1;
 				KinkyDungeonInventoryAdd(item);
-			} else item.quantity += 1;
+			} else item.quantity = (item.quantity || 1) + 1;
 			if (container.items[inv.name].quantity > 1) {
 				container.items[inv.name].quantity -= 1;
 			} else {
@@ -71,13 +73,15 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		}
 	};
 	let transferItem = (inv: item) => {
+		let type = KDGetItemType(inv);
+		if (filters.includes(type)) return; // Cant transfer wrong items
 		let item = KinkyDungeonInventoryGetSafe(inv?.name);
 		if (item && KDCanDrop(item)) {
 			if (!container?.items[inv.name]) {
 				container.items[inv.name] = JSON.parse(JSON.stringify(item));
 				container.items[inv.name].quantity = 0;
 			}
-			container.items[inv.name].quantity += 1;
+			container.items[inv.name].quantity = (container.items[inv.name].quantity || 0) + 1;
 			if (item.quantity > 1) {
 				item.quantity -= 1;
 			} else {
@@ -91,7 +95,9 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 
 	KDDrawInventoryFilters(xOffset - 70, -20, filters, ["All"]);
 
-	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
+	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
+		undefined, filters
+	);
 
 	DrawTextFitKD(TextGet("KDContainerType_" + container?.type),
 		xOffset + 1600, 270, 500, "#ffffff", undefined, 28, undefined, 70);

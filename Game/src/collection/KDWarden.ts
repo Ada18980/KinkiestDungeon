@@ -58,7 +58,7 @@ function KDUpdateWarden(delta: number) {
 						return KDRestraint({name: str});
 					});
 					for (let item of restraints) {
-						if (WardenItems[item]) WardenItems[item].quantity += 1;
+						if (WardenItems[item]) WardenItems[item].quantity = (WardenItems[item].quantity || 1) + 1;
 						else {
 							if (KinkyDungeonRestraintVariants[item]) {
 								WardenItems[item] = KDGetInventoryVariant(

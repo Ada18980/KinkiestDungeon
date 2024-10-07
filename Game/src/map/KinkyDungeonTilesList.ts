@@ -511,21 +511,33 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 						let container = KDGameData.Containers[KDUI_CurrentContainer];
 						for (let inv of Object.values(container.items)) {
 							let q = inv.quantity;
-							for (let i = 0; i < (q || 1); i++) {
-								if (container.items[inv?.name]) {
-									let item = KinkyDungeonInventoryGetSafe(inv.name);
-									if (!item) {
-										item = JSON.parse(JSON.stringify(container.items[inv.name]));
-										item.quantity = 1;
-										KinkyDungeonInventoryAdd(item);
-									} else item.quantity += 1;
-									if (container.items[inv.name].quantity > 1) {
-										container.items[inv.name].quantity -= 1;
-									} else {
-										delete container.items[inv.name];
+							let suff = "";
+							if ((inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))) {
+								for (let i = 0; i < (q || 1); i++) {
+									if (container.items[inv?.name]
+										&& (inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))
+									) {
+										let item = KinkyDungeonInventoryGetSafe(inv.name);
+										if (!item) {
+											item = JSON.parse(JSON.stringify(container.items[inv.name]));
+											item.quantity = 1;
+											KinkyDungeonInventoryAdd(item);
+										} else item.quantity = (item.quantity || 1) + 1;
+										if (container.items[inv.name].quantity > 1) {
+											container.items[inv.name].quantity -= 1;
+										} else {
+											delete container.items[inv.name];
+										}
+
 									}
 								}
+							} else if (inv.type == Weapon && KinkyDungeonInventoryGetWeapon(inv.name)) {
+								suff = TextGet("KDNotPickedUp");
 							}
+
+							KinkyDungeonSendTextMessage(2,
+								TextGet("KDAutoLoot") + `${KDGetItemName(inv)} x${inv.quantity || 1}` + suff,
+								"#88ff88", 2)
 						}
 					} else {
 						KDUI_ContainerBackScreen = KinkyDungeonDrawState;

@@ -895,7 +895,7 @@ function KDReturnNPCItem(item: item, container?: Record<string, item>) {
 					}
 
 				} else {
-					container[item.name].quantity += 1;
+					container[item.name].quantity = (container[item.name].quantity || 1) + 1;
 				}
 			} else {
 				if (!KinkyDungeonInventoryGetSafe(item.name)) {
@@ -916,7 +916,7 @@ function KDReturnNPCItem(item: item, container?: Record<string, item>) {
 
 
 					KDSortInventory(KDPlayer());
-				} else KinkyDungeonInventoryGetSafe(item.name).quantity += 1;
+				} else KinkyDungeonInventoryGetSafe(item.name).quantity = (KinkyDungeonInventoryGetSafe(item.name).quantity || 1) + 1;
 			}
 
 		} else {
