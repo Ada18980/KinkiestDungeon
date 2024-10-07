@@ -50,17 +50,17 @@ let KDObjectClick: Record<string, (x: number, y: number) => void> = {
 /**
  * Script happens when you interact to an object
  */
-let KDObjectInteract: Record<string, (x: number, y: number) => void> = {
-	"DollDropoff": (x, y) => {
-		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
+let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => void> = {
+	"DollDropoff": (x, y, dist) => {
+		if (dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 			//if (!KinkyDungeonGetRestraintItem("ItemDevices")) {
 			KDGameData.InteractTargetX = x;
 			KDGameData.InteractTargetY = y;
 			KDStartDialog("DollDropoff", "", true);
 			//}
 	},
-	"Furniture": (x, y) => {
-		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
+	"Furniture": (x, y, dist) => {
+		if (dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 			//if (!KinkyDungeonGetRestraintItem("ItemDevices")) {
 			KDGameData.InteractTargetX = x;
 			KDGameData.InteractTargetY = y;
@@ -78,13 +78,26 @@ let KDObjectInteract: Record<string, (x: number, y: number) => void> = {
 /**
  * Script happens when you interact to an tile
  */
-let KDTileInteract: Record<string, (x: number, y: number) => void> = {
-	'B': (x, y) => {
-		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
+let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => void> = {
+	'B': (x, y, dist) => {
+		if (dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 			if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
 				KDGameData.InteractTargetX = x;
 				KDGameData.InteractTargetY = y;
 				KDStartDialog("Bed", "", true);
+			}
+	},
+	'c': (x, y, dist) => {
+		if (dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
+			KDGameData.InteractTargetX = x;
+			KDGameData.InteractTargetY = y;
+			// Open container
+			KDUI_CurrentContainer = KDGetContainer("Chest", {x: x, y: y}, KDGetCurrentLocation(),
+				true)?.name;
+			if (KDUI_CurrentContainer) {
+				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
+				KinkyDungeonDrawState = "Container";
+				KinkyDungeonCurrentFilter = "All";
 			}
 	},
 };

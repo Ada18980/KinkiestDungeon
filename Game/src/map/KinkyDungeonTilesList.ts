@@ -497,7 +497,18 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 				noTrap = data.noTrap;
 				lootTrap = data.lootTrap;
 				KDMapData.ChestsOpened++;
-				KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap);
+				// Open container
+				KDUI_CurrentContainer = KDGetContainer("Chest", {x: moveX, y: moveY}, KDGetCurrentLocation(),
+					true)?.name;
+				if (KDUI_CurrentContainer) {
+					KDUI_ContainerBackScreen = KinkyDungeonDrawState;
+					KinkyDungeonDrawState = "Container";
+					KinkyDungeonCurrentFilter = "All";
+				}
+				KinkyDungeonLoot(data.level, data.index, chestType, roll, data.tile, undefined, noTrap, undefined, undefined, KDGameData.Containers[KDUI_CurrentContainer]);
+				if (KDUI_CurrentContainer) {
+					KDGenerateMinorLoot(chestType, KDGetCurrentLocation(), data.tile, moveX, moveY, KDGameData.Containers[KDUI_CurrentContainer]);
+				}
 				if (lootTrap) {
 					KDMapData.TrapsTriggered++;
 					KDTrigPanic(true);

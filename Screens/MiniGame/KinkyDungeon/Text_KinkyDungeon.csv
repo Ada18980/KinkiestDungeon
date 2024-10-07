@@ -3549,6 +3549,7 @@ ClimbDown,"You climb down to the next level"
 
 KinkyDungeonRestraintLevel,Level RestraintLevel (Rarity)
 
+KinkyDungeonCategoryFilterAll,All
 KinkyDungeonCategoryFilterconsumable,Consumable
 KinkyDungeonCategoryFilterrestraint,Worn
 KinkyDungeonCategoryFilterweapon,Weapons
@@ -5529,7 +5530,7 @@ KDTileTooltipO,Orb Altar
 KDTileTooltipo,Empty Altar
 KDTileTooltipC,Chest
 KDTileTooltipC2,Faction Chest
-KDTileTooltipc,Empty Chest
+KDTileTooltipc,Open Chest
 KDTileTooltipR,Shiny Object
 KDTileTooltipY,Shiny Object
 KDTileTooltip4,Cracked Wall
@@ -25139,8 +25140,10 @@ KDWardenConfiscate,AMNT restraints confiscated since last tick~
 KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
 
 KDContainerBack_Facilities,Back to Facilities
+KDContainerBack_Game,Back to Game
 
 KDContainerType_Self,Your Inventory
+KDContainerType_Chest,Chest
 KDContainerType_,Chest
 KDContainerType_WardenChest,Warden's Storage
 

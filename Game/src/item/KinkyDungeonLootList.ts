@@ -1341,3 +1341,28 @@ let KDLootEvents: Record<string, lootEventFunc> = {
 		};
 	},
 };
+
+interface KDMinorLootEntry {
+	rarity: number,
+	options: any[],
+}
+
+let KDMinorLootTable = {
+	chest: {
+		rarity: 1,
+		options: [
+			{name: "Knife", minLevel: 0, weight:5, allFloors: true, message:"", messageColor:""},
+			{name: "Pick", minLevel: 0, weight:5, quantity: 1, extraQuantity: 2, allFloors: true, message:"", messageColor:""},
+			{name: "RedKey", minLevel: 0, weight:3, quantity: 1, extraQuantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "Bomb", minLevel: 0, weight:5, quantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "FlashBomb", minLevel: 0, weight:0.1, quantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "SmokeBomb", minLevel: 0, weight:5, quantity: 2, allFloors: true, message:"", messageColor:""},
+			{name: "Flashbang", minLevel: 0, weight:5, quantity: 2, allFloors: true, message:"", messageColor:""},
+			{name: "PotionMana", minLevel: 0, weight:3, quantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "PotionStamina", minLevel: 0, weight:3, quantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "PotionWill", minLevel: 0, weight:2, quantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "PotionFrigid", minLevel: 0, weight:2, quantity: 1, allFloors: true, message:"", messageColor:""},
+			{name: "Gunpowder", minLevel: 0, weight:2, quantity: 1, allFloors: true, message:"", messageColor:""},
+		],
+	}
+}

@@ -18,6 +18,7 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 			"chestbutton", () => {
 				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
 				KinkyDungeonDrawState = "Container",
+				KinkyDungeonCurrentFilter = "All";
 				KDUI_CurrentContainer = "WardenChest";
 			}, true, x + 900, yy + 60, 80, 80, "", "#ffffff",
 			KinkyDungeonRootDirectory + "UI/Safe.png", undefined, undefined, undefined, undefined, undefined, undefined, {

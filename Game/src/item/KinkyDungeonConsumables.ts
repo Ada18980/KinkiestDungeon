@@ -110,18 +110,25 @@ function KinkyDungeonGetShopItem(_Level: number, Rarity: number, _Shop: boolean,
  * @param consumable
  * @param Quantity
  */
-function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number): boolean {
-	let item = KinkyDungeonInventoryGetConsumable(consumable.name);
+function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, container?: KDContainer): boolean {
+	let item = container ? container.items[consumable.name] : KinkyDungeonInventoryGetConsumable(consumable.name);
 	if (item) {
 		item.quantity += Quantity;
 		if (item.quantity <= 0) {
-			KinkyDungeonInventoryRemove(item);
+			if (container)
+				delete container.items[consumable.name]
+			else
+				KinkyDungeonInventoryRemove(item);
 		}
 		return true;
 	}
 
 	if (Quantity >= 0) {
-		KinkyDungeonInventoryAdd({name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
+		if (container) {
+			container.items[consumable.name] = {name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity};
+		} else {
+			KinkyDungeonInventoryAdd({name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
+		}
 	}
 
 	return false;
@@ -131,18 +138,25 @@ function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number):
  * @param name
  * @param Quantity
  */
-function KDAddConsumable(name: string, Quantity: number): boolean {
-	let item = KinkyDungeonInventoryGetConsumable(name);
+function KDAddConsumable(name: string, Quantity: number, container?: KDContainer): boolean {
+	let item = container ? container.items[name] : KinkyDungeonInventoryGetConsumable(name);
 	if (item) {
 		item.quantity += Quantity;
 		if (item.quantity <= 0) {
-			KinkyDungeonInventoryRemove(item);
+			if (container)
+				delete container.items[name]
+			else
+				KinkyDungeonInventoryRemove(item);
 		}
 		return true;
 	}
 
 	if (Quantity > 0) {
-		KinkyDungeonInventoryAdd({name: name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
+		if (container) {
+			container.items[name] = {name: name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity};
+		} else {
+			KinkyDungeonInventoryAdd({name: name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
+		}
 	}
 
 	return false;

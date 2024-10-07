@@ -89,7 +89,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let filter = KinkyDungeonCurrentFilter;
 	let container = KDGameData.Containers[name];
 
-	KDDrawInventoryFilters(xOffset - 70, 50, filters);
+	KDDrawInventoryFilters(xOffset - 70, -20, filters, ["All"]);
 
 	let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
 
@@ -148,9 +148,11 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		};
 		KinkyDungeonSendEvent("inventoryTooltip", data);
 		let mult = KDGetFontMult();
-		let textSplit = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name + "Desc"),
+		let textSplit = KinkyDungeonWordWrap(TextGet((item.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem")
+			+ selectedItem.name + "Desc"),
 			15*mult, 40*mult).split('\n');
-		let textSplit2 = KinkyDungeonWordWrap(TextGet("KinkyDungeonInventoryItem" + KDMapData.ShopItems[KinkyDungeonShopIndex].name +  "Desc2"),
+		let textSplit2 = KinkyDungeonWordWrap(TextGet((item.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem")
+			+ selectedItem.name +  "Desc2"),
 			15*mult, 40*mult).split('\n');
 		let i = 0;
 		let descSpacing = 20;

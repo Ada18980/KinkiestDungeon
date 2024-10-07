@@ -62,11 +62,12 @@ function KinkyDungeonLoot(
 	returnOnly?: boolean,
 	noTrap?: boolean,
 	minWeight: number = 0.1,
-	minWeightFallback: boolean = true): boolean | any {
+	minWeightFallback: boolean = true,
+	container?: KDContainer, lootType?: any[]): boolean | any {
 	let lootWeightTotal = 0;
 	let lootWeights: { loot: any; weight: number; }[] = [];
 
-	let lootType = KinkyDungeonLootTable[Type];
+	if (!lootType) lootType = KinkyDungeonLootTable[Type];
 	for (let loot of lootType) {
 		let effLevel = Level;
 		if (loot.trap && KinkyDungeonStatsChoice.has("TightRestraints")) {
@@ -231,7 +232,7 @@ function KinkyDungeonLoot(
 		if (selection > lootWeights[L].weight) {
 			if (returnOnly) return lootWeights[L].loot;
 			for (let i = 0; i < (lootWeights[L].loot.count || 1); i++) {
-				let replace = KinkyDungeonLootEvent(lootWeights[L].loot, Level, TextGet(lootWeights[L].loot.message), lootWeights[L].loot.lock);
+				let replace = KinkyDungeonLootEvent(lootWeights[L].loot, Level, TextGet(lootWeights[L].loot.message), lootWeights[L].loot.lock, container);
 
 				if (!KinkyDungeonSendActionMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2))
 					KinkyDungeonSendTextMessage(8, replace, lootWeights[L].loot.messageColor, lootWeights[L].loot.messageTime || 2, true, true);
@@ -242,7 +243,7 @@ function KinkyDungeonLoot(
 		}
 	}
 	// Go with it otherwise
-	if (minWeight > 0 && minWeightFallback) return KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, 0, false);
+	if (minWeight > 0 && minWeightFallback) return KinkyDungeonLoot(Level, Index, Type, roll, tile, returnOnly, noTrap, 0, false, container);
 	return false;
 }
 
@@ -262,7 +263,7 @@ As for why there are so many restraints in general rather than your typical sort
 */
 
 
-function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Lock?: string): string {
+function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Lock?: string, container?: KDContainer): string {
 	let data = {
 		loot: Loot,
 		replacemsg: Replacemsg,
@@ -314,12 +315,12 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 				template: weapon,
 				events: events,
 			};
-			KDGiveWeaponVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+			KDGiveWeaponVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, container);
 
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("WeaponAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("KinkyDungeonInventoryItem" + weapon));
 		} else {
-			KinkyDungeonInventoryAddWeapon(Loot.weapon);
+			KDInvAddWeapon(container, Loot.weapon);
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItem" + weapon));
 		}
@@ -428,7 +429,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 				equipped = KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false, Loot.faction || (unlockcurse ? "Curse" : undefined), true, unlockcurse, undefined, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 			}
 			if (!equipped) {
-				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || (unlockcurse ? "Curse" : undefined));
+				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix, Loot.faction || (unlockcurse ? "Curse" : undefined), undefined, undefined, container);
 			} else {
 				KinkyDungeonSendTextMessage(10, TextGet("KDCursedChestEquip" + (unlockcurse ? "Cursed" : ""))
 					.replace("NEWITM", TextGet("Restraint" + variant.template)),
@@ -438,7 +439,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ArmorAcquired", (enchantVariant ? TextGet("KDVarPrefEnchanted") : "") + ' ' + TextGet("Restraint" + armor));
 		} else {
-			KinkyDungeonInventoryAddLoose(armor, unlockcurse, Loot.faction || (unlockcurse ? "Curse" : undefined));
+			KDInvAddLoose(container, armor, unlockcurse, Loot.faction || (unlockcurse ? "Curse" : undefined));
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ArmorAcquired", TextGet("Restraint" + armor));
 		}
@@ -493,7 +494,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		}
 		let reward = rewardAvailable[Math.floor(KDRandom() * rewardAvailable.length)];
 		if (KinkyDungeonWeapons[reward]) {
-			KinkyDungeonInventoryAddWeapon(reward);
+			KDInvAddWeapon(container, reward);
 			if (Replacemsg)
 				Replacemsg = Replacemsg.replace("ITEMGET", TextGet("KinkyDungeonInventoryItem" + reward));
 		}
@@ -524,136 +525,136 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		value = Math.ceil((25 + 15 * KDRandom()) * (1 + Floor/35));
 	}
 	else if (Loot.name == "knife") {
-		KinkyDungeonInventoryAddWeapon("Knife");
+		KDInvAddWeapon(container, "Knife");
 	}
 	else if (Loot.name == "magicknife") {
-		KinkyDungeonInventoryAddWeapon("EnchKnife");
+		KDInvAddWeapon(container, "EnchKnife");
 	}
 	else if (Loot.name == "pick") {
-		KDAddConsumable("Pick", 1);
+		KDAddConsumable("Pick", 1, container);
 	}
 	else if (Loot.name == "redkey") {
-		KDAddConsumable("RedKey", 1);
+		KDAddConsumable("RedKey", 1, container);
 	}
 	else if (Loot.name == "bluekey") {
-		KDAddConsumable("BlueKey", 1);
+		KDAddConsumable("BlueKey", 1, container);
 	}
 	else if (Loot.name == "grinder") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EnchantedGrinder, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.EnchantedGrinder, 1, container);
 	}
 	else if (Loot.name == "bola") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bola, 2);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bola, 2, container);
 	}
 	else if (Loot.name == "bomb") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bomb, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Bomb, 1, container);
 	}
 	else if (Loot.name == "gunpowder") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Gunpowder, 3 + Math.floor(KDRandom() * 3));
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Gunpowder, 3 + Math.floor(KDRandom() * 3), container);
 	}
 	else if (Loot.name == "MistressKey") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, 1);
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, 1, container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2, container);
 	}
 	else if (Loot.name == "DivineTear") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DivineTear, 1);
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DivineTear, 1, container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2, container);
 	}
 	else if (Loot.name == "Scrolls") {
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 2);
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 2 + Math.floor(KDRandom() * 3));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 2 + Math.floor(KDRandom() * 3));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 2 + Math.floor(KDRandom() * 3));
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 2 + Math.floor(KDRandom() * 3), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 2 + Math.floor(KDRandom() * 3), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 2 + Math.floor(KDRandom() * 3), container);
 	}
 	else if (Loot.name == "scroll_legs") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 1, container);
 	}
 	else if (Loot.name == "scroll_arms") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 1, container);
 	}
 	else if (Loot.name == "scroll_verbal") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 1, container);
 	}
 	else if (Loot.name == "scrolls_basic") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 1 + Math.floor(KDRandom() * 3));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 1 + Math.floor(KDRandom() * 3));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 1 + Math.floor(KDRandom() * 3));
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 1 + Math.floor(KDRandom() * 3), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 1 + Math.floor(KDRandom() * 3), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 1 + Math.floor(KDRandom() * 3), container);
 	}
 	else if (Loot.name == "scrolls_purity") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, 1, container);
 	}
 	else if (Loot.name == "AncientCores") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, Loot.count ? Loot.count : 2);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, Loot.count ? Loot.count : 2, container);
 	}
 	else if (Loot.name == "AncientCoreSingle") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, Loot.count ? Loot.count : 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, Loot.count ? Loot.count : 1, container);
 	}
 	else if (Loot.name == "AncientCoreSingleSpent") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, Loot.count ? Loot.count : 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, Loot.count ? Loot.count : 1, container);
 	}
 	else if (Loot.name == "EnchantedBelt"||Loot.name == "EnchantedBra"||Loot.name == "EnchantedHeels"||Loot.name == "EnchantedAnkleCuffs"||Loot.name == "EnchantedMuzzle"||Loot.name == "EnchantedBlindfold"||Loot.name == "EnchantedMittens"||Loot.name == "EnchantedBallGag"||Loot.name == "EnchantedArmbinder") {
 		let restraint = KinkyDungeonGetRestraintByName(Loot.name);
-		KinkyDungeonInventoryAdd({name: Loot.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: Object.assign([], restraint.events)});
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
+		KDInvAdd(container, {name: Loot.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: Object.assign([], restraint.events)});
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1, container);
 	}
 	else if (Loot.name == "PotionCollar") {
 		let restraint = KinkyDungeonGetRestraintByName("PotionCollar");
-		KinkyDungeonInventoryAdd({name: Loot.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: Object.assign([], restraint.events)});
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
+		KDInvAdd(container, {name: Loot.name, id: KinkyDungeonGetItemID(), type: LooseRestraint, events: Object.assign([], restraint.events)});
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1, container);
 	}
 	else if (Loot.name == "weapon_boltcutters") {
-		KinkyDungeonInventoryAddWeapon("BoltCutters");
+		KDInvAddWeapon(container, "BoltCutters");
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItemBoltCutters"));
 	}
 	else if (Loot.name == "weapon_spear") {
-		KinkyDungeonInventoryAddWeapon("Spear");
+		KDInvAddWeapon(container, "Spear");
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItemSpear"));
 	}
 	else if (Loot.name == "weapon_flail") {
-		KinkyDungeonInventoryAddWeapon("Flail");
+		KDInvAddWeapon(container, "Flail");
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItemFlail"));
 	}
 	else if (Loot.name == "staff_flame") {
-		KinkyDungeonInventoryAddWeapon("StaffFlame");
+		KDInvAddWeapon(container, "StaffFlame");
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItemStaffFlame"));
 	}
 	else if (Loot.name == "staff_bind") {
-		KinkyDungeonInventoryAddWeapon("StaffBind");
+		KDInvAddWeapon(container, "StaffBind");
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("WeaponAcquired", TextGet("KinkyDungeonInventoryItemStaffBind"));
 	}
 	else if (Loot.name == "potions_mana") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3+Math.floor(KDRandom()*2));
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 3+Math.floor(KDRandom()*2), container);
 	}
 	else if (Loot.name == "manaorb") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ManaOrb, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ManaOrb, 1, container);
 	}
 	else if (Loot.name == "manaorbmany") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ManaOrb, 3);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ManaOrb, 3, container);
 	}
 	else if (Loot.name == "potions_will") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 2+Math.floor(KDRandom()*2));
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 2+Math.floor(KDRandom()*2), container);
 	}
 	else if (Loot.name == "potions_many") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 2+Math.floor(KDRandom()*2));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1+Math.floor(KDRandom()*3));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, Math.floor(KDRandom()*3));
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, Math.floor(KDRandom()*3));
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 2+Math.floor(KDRandom()*2), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1+Math.floor(KDRandom()*3), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, Math.floor(KDRandom()*3), container);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, Math.floor(KDRandom()*3), container);
 	}
 	else if (Loot.name == "potion_mana") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionMana, 1, container);
 	}
 	else if (Loot.name == "potion_stamina") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionStamina, 1, container);
 	}
 	else if (Loot.name == "potion_will") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionWill, 1, container);
 	}
 	else if (Loot.name == "potion_frigid") {
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1);
+		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.PotionFrigid, 1, container);
 	}
 	else if (Loot.name == "trap_armbinder") {
 		value = Math.ceil((150 + 50 * KDRandom()) * (1 + Floor/40));
@@ -829,11 +830,11 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 	}
 	else if (Loot.name == "lost_clothes") {
 		let outfit = {name: "Default", id: KinkyDungeonGetItemID(), type: Outfit};
-		if (!KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryAdd(outfit);
+		if (!KinkyDungeonInventoryGet("Default")) KDInvAdd(container, outfit);
 	}
 	else if (Loot.name == "lost_items") {
 		if (!KinkyDungeonInventoryGet("Default")) {
-			KinkyDungeonInventoryAdd({name: "Default", id: KinkyDungeonGetItemID(), type: Outfit});
+			KDInvAdd(container, {name: "Default", id: KinkyDungeonGetItemID(), type: Outfit});
 		}
 		let newLostItems = [];
 		let recovOne = false;
@@ -1122,6 +1123,35 @@ function KDSummonCurseTrap(x: number, y: number) {
 			en.teleportingmax = 4;
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
 			KinkyDungeonSendTextMessage(8, TextGet("KDSummonCurse"), "#9074ab", 5);
+		}
+	}
+}
+
+
+function KDGenerateMinorLoot(lootType: string, coord: WorldCoord, tile: any, x: number, y: number, container: KDContainer) {
+	if (KDMinorLootTable[lootType]) {
+		let type = KDMinorLootTable[lootType];
+		let count = 1 + type.rarity;
+		let loots: any[] = [];
+		for (let i = 0; i < count; i++) {
+			loots.push(
+				KinkyDungeonLoot(coord.mapY,
+					KDGetWorldMapLocation({x: coord.mapX, y: coord.mapY})?.data[coord.room]?.Checkpoint || KDGetCurrentCheckpoint(),
+					lootType, undefined, tile, true, true, undefined, undefined,
+					container, type.options
+				)
+			);
+		}
+		for (let l of loots) {
+			let itemType = KDGetItemType(l);
+			if (itemType == Consumable) {
+				KDAddConsumable(l.name, (l.quantity || 1) + Math.floor(KDRandom() * l.extraQuantity || 0), container);
+			} else if (itemType == Weapon && !container.items[l.name]) {
+				KDInvAddWeapon(container, l.name);
+			} else if (itemType == LooseRestraint) {
+				KDInvAddLoose(container, l.name, undefined, tile.Faction,
+					(l.quantity || 1) + Math.floor(KDRandom() * l.extraQuantity || 0));
+			}
 		}
 	}
 }
