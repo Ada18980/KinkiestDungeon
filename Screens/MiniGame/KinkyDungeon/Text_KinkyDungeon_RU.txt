@@ -27364,3 +27364,5 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Your Inventory
 ### Warden's Storage
+
+### Automatically Flip When Moving

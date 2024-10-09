@@ -25139,3 +25139,5 @@ KDContainerBack_Facilities,Back to Facilities
 KDContainerType_Self,Your Inventory
 KDContainerType_,Chest
 KDContainerType_WardenChest,Warden's Storage
+
+KDToggleFlipPlayerAuto,Automatically Flip When Moving

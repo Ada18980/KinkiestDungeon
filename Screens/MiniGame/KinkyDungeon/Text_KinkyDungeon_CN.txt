@@ -26876,3 +26876,5 @@ ENMY 解开了 ITMN 的锁!
 
 ### Your Inventory
 ### Warden's Storage
+
+### Automatically Flip When Moving

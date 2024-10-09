@@ -22948,3 +22948,5 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Your Inventory
 ### Warden's Storage
+
+### Automatically Flip When Moving
