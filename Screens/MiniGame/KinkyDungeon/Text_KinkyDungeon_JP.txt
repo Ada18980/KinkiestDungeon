@@ -28778,9 +28778,12 @@ Crystals start to grow on your restraints! (DamageTaken)
 クリスタルが成長し、錠を形成した！ (DamageTaken)
 The ancient hierophant mumbles at you for assistance! (DamageTaken)
 古代文明の教皇が救いを求め縋ってきた！ (DamageTaken)
-
 The crystals break off, revealing a keyhole and weakening the item.
 結晶が割れ、拘束具の鍵穴が露出した。
+
+### Automatically Flip When Moving
+Automatically Flip When Moving
+移動時に自動的に反転
 Your distraction causes the crystals to grow back, encasing the lock again!
 性欲を浴びてクリスタルが成長し、錠を再び覆ってしまった。
 
