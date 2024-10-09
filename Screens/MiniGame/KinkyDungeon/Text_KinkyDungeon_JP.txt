@@ -4933,7 +4933,7 @@ The star demon places you under its curse! (DamageTaken)
 The strings of fate glisten and wrap around you!
 運命の糸に絡め取られた！
 Many shining strings surround you!
-光る糸が周囲を取り囲む！
+光る糸が周囲を取り囲んだ！
 Stepping outside of the indicated tiles will result in punishment!
 指定されたマスの外に出るとペナルティを受ける！
 Bindings of Fate
@@ -4961,7 +4961,7 @@ The void demon places you in dark, glassy restraints. (+RestraintAdded)
 The void demon places you under its curse! (DamageTaken)
 悪魔は呪いをかけてきた！ (DamageTaken)
 You are sucked in by a powerful gravitational force!!! (DamageTaken)
-強い力で引き寄せられた！
+強い力で引き寄せられた！ (DamageTaken)
 You are sucked in by a powerful gravitational force!!!
 強い力で引き寄せられた！
 The demon cracks its knuckles as it locks your restraints! (DamageTaken)
@@ -5064,11 +5064,11 @@ The necromancer rubs your body sensually!
 ネクロマンサーが官能的に身体を撫でてきた！
 
 Filthy Rat
-ドブネズミ
+汚いネズミ
 The rat skitters back into a hole in the wall.
-ドブネズミは巣に逃げていった。
+汚いネズミは巣に逃げていった。
 The filthy rat nibbles at you! (DamageTaken)
-ドブネズミにかじられた！(DamageTaken)
+汚いネズミにかじられた！(DamageTaken)
 
 Annoying Bat
 うるさいコウモリ
@@ -5798,7 +5798,7 @@ SCHOOL の女神から、守護と報復の力を授かった！
 You leave the coins on the altar and they transform into a ItemBought!
 祭壇にゴールドを捧げると、アイテムに変化した！
 object
-物体
+対象
 
 It appears to be a receptacle for an ancient crystal.
 パワークリスタルの台座のようだ。
@@ -27876,7 +27876,7 @@ The liquid latex spray slows you down!
 液体ゴムスプレーで動きが遅くなった！
 
 Latex Sprayer
-ラテックススプレータレット
+ラテックス・スプレータレット
 The turret deactivates after taking too much damage!
 タレットはダメージの蓄積により動きを止めた。
 The turret defends itself with a spray of sticky liquid latex! (DamageTaken)
@@ -28112,14 +28112,14 @@ You feel a corrupting influence... (+AMNT Corruption)
 You feel a restoring influence! (-AMNT Corruption)
 魂が浄化されていくのを感じた……(-AMNT 堕落)
 Sticky latex fuses itself to your skin! (+AMNT LatexIntegration)
-ネバネバのゴムが身体に張り付いてくる！(+AMNT ラテックス拘束)
+ネバネバのゴムが身体に張り付いてくる！(+AMNT LatexIntegration)
 The latex starts to detach from your skin... (-AMNT Latex Integration)
-ゴムが身体から剥がれていく……(-AMNT ラテックス拘束)
+ゴムが身体から剥がれていく……(-AMNT LatexIntegration)
 
 While you have an evasion penalty, even clumsy enemies...
 回避ペナルティがある……
 ... will get an accuracy bonus against you in melee range.
-……不器用な敵でも命中ボーナスを得られるだろう。
+……不器用な敵の攻撃でも当たってしまいそうだ。
 
 You are more likely to succumb to curses.
 呪いにかかりやすくなっている。
@@ -28170,7 +28170,7 @@ Assign servants as managers to boost the production of other facilities.|Appoint
 Bondage Dojo
 緊縛道場
 Assign servants to perfect the art of walking in heels,wearing tight corsets,|communicating while gagged, and overall flexibility.
-使用人を鍛える。ヒールを履いて綺麗に歩けるようになり、きついコルセットを着用できるようになり、|猿轡をしていても完璧に意思の疎通ができるようになり、身体の柔軟性が増す。
+使用人を鍛える。ヒールを履いてスムーズに歩けるようになり、よりきついコルセットを着用できるようになり、|猿轡をしていても意思の疎通ができるようになり、身体の柔軟性が増す。
 Rescue Operations
 救助部隊
 Assign servants to train squads of rescue maids, which you can call in times of need.
@@ -28555,7 +28555,7 @@ idle
 待機
 
 (As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!
-(奇妙な像に近づくと、それは音を立てて崩れ落ちていく)|(そしてその中から美しくも憤怒に塗れたキャットガールの像が現れた)|我が眠りを妨げるのは何者か？|侵入者には相応しい罰を与えようぞ！
+(奇妙な像に近づくと、それは音を立てて崩れ落ちていく)|(そしてその中から美しくも憤怒に塗れた表情のキャットガールの像が現れた)|我が眠りを妨げるのは何者か？|侵入者には相応しい罰を与えようぞ！
 
 Mysterious Statue
 奇妙な石像
@@ -28778,12 +28778,9 @@ Crystals start to grow on your restraints! (DamageTaken)
 クリスタルが成長し、錠を形成した！ (DamageTaken)
 The ancient hierophant mumbles at you for assistance! (DamageTaken)
 古代文明の教皇が救いを求め縋ってきた！ (DamageTaken)
+
 The crystals break off, revealing a keyhole and weakening the item.
 結晶が割れ、拘束具の鍵穴が露出した。
-
-### Automatically Flip When Moving
-Automatically Flip When Moving
-移動時に自動的に反転
 Your distraction causes the crystals to grow back, encasing the lock again!
 性欲を浴びてクリスタルが成長し、錠を再び覆ってしまった。
 
@@ -28901,3 +28898,6 @@ Auto-loot found
 取得(自動ルート)
  (not picked up)
 (何も取得しなかった)
+
+Automatically Flip When Moving
+移動時に自動的に反転
