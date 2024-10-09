@@ -28901,3 +28901,194 @@ Auto-loot found
 取得(自動ルート)
  (not picked up)
 (何も取得しなかった)
+
+
+Auto loot all from chests
+自動で宝箱の中身を全て取得
+
+ (HARD MODE ENABLED)
+ (ハードモード)
+
+Sugar Rush
+シュガー・ラッシュ
+Consuming sweets makes you hyperactive, decreasing stamina costs and granting free moves.
+お菓子を食べると元気になる。スタミナの消費量が減少し、ターンを消費せずに移動できる
+
+Physical Armor: 
+物理アーマー:
+Magic Armor: 
+マジックアーマー:
+
+All Damage Reduction: 
+全ダメージ軽減:
+
+Chance for a spell to fizzle: 
+呪文が効力を失う可能性:
+
+Config 
+コンフィグ
+
+Lockpicks: 
+ﾛｯｸﾋﾟｯｸ:
+Keys: 
+鍵:
+Magic Keys: 
+魔法の鍵:
+Knife: 
+ナイフ：
+Mag. Knife: 
+魔法のナイフ:
+
+Rarity: 
+レアリティ:
+
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+影属性。こちらに気付いていない敵に30、弱体化状態の敵に15の精神属性の追加ダメージを与える。
+
+Accuracy: 
+命中:
+Crit Multiplier: 
+会心ダメージ:
+Bind Crit Multiplier: 
+拘束会心ダメージ:
+
+Evasion: 
+回避:
+Visibility: 
+視認性:
+
+Damage: 
+ダメージ:
+Bind: 
+拘束:
+Crit: 
+会心:
+SP Cost: 
+SPコスト:
+
+Tablet of 
+石版の種類:
+Goddess: 
+女神:
+Goddess Blessing: 
+女神の祝福:
+Goddess Curse: 
+女神の呪い:
+Mana Bonus: 
+マナボーナス:
+Lack of Mana Penalty: 
+マナ不足のペナルティ:
+
+Allies: 
+味方:
+Enemies: 
+敵:
+Favorable: 
+お気に入り:
+
+All
+全部
+
+You find 
+発見:
+
+Open Chest
+空いているチェスト
+
+Components: 
+使用部位：
+
+Mmmph...
+んんぉぉ……
+Mmm...
+んん……
+
+Spell Points: 
+スキルポイント:
+
+Level: 
+レベル:
+Spell Point Cost: 
+スキルポイントコスト:
+Mana Cost: 
+マナコスト:
+
+Current Spell 1: 
+現在のスキル 1:
+Current Spell 2: 
+現在のスキル 2:
+Current Spell 3: 
+現在のスキル 3:
+Current Spell 4: 
+現在のスキル 4:
+Current Spell 5: 
+現在のスキル 5:
+Current Spell 6: 
+現在のスキル 6:
+Current Spell 7: 
+現在のスキル 7:
+
+Binding: 
+拘束: 
+
+Play the game the way it was intended. Cruel and restrictive. 
+意図された本来の難易度。適度にもがきたい人向け。
+
+Mmmphh!
+ウゥゥ～！
+Mmmm! Mmmmmmm!
+んぉぉ！んぅぉぉ！
+
+I cast, umm, SPL!
+SPL を唱えるよ！
+I cast Silence! No, wait--
+沈黙の呪文を唱えるよ！あっ間違え……
+
+Rise, my minions!
+目覚めよ我が下僕らよ！
+...Hello? Can anyone hear me?
+誰かいない？
+(The SPEAKER tilts her head and shrugs)|Ah well. 
+(SPEAKER は首を傾げ、肩をすくめている)|あっそ。
+
+(Really attack? You will be justified and won't take an immediate rep penalty)
+(本当に攻撃する？　この攻撃は正当であり、即座に関係性に影響はない)
+
+Unlocks: 
+解放済み:
+
+Turn Count: 
+経過ターン:
+
+Preloading Character Assets: 
+アセットのプリローディング中:
+
+Deals grope damage. 
+愛撫属性。
+
+You twirl a key around your finger.
+鍵を指でくるくる回した。
+
+
+Load Hotbar 
+ホットバーをロード
+Save Hotbar 
+ホットバーをセーブ
+
+Receive the following restraints: 
+次の拘束を受ける:
+
+Former Faction: 
+かつての派閥:
+
+
+  (blocked!)
+  (防御)
+  (dodged!)
+  (回避)
+
+Owned by: 
+所有者:
+
+Took
+　　
