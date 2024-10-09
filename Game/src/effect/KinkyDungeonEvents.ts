@@ -9626,6 +9626,19 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			}
 		},
 	},
+	"beforeMove": {
+		"changeFace": (e, intent) => {
+			if (KDToggles.FlipPlayerAuto) {
+				let movedelta = intent.x - KinkyDungeonPlayerEntity.x;
+				if (movedelta > 0) {
+					KDToggles.FlipPlayer = true;
+				}
+				else if (movedelta < 0) {
+					KDToggles.FlipPlayer = false;
+				}
+			}
+		}
+	},
 	"resetEventVar": {
 		/**
 		 * Helper event to clear out variables that are meant to always be reset every floor
