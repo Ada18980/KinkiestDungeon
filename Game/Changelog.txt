@@ -31,6 +31,11 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.45
+- Summit warden now knows how to use generic bondage like rope
+- Add button to toggle big render of collection character
+- Small bugfixes
+
 5.3.44
 - Added Warden facility
 - Added chest container system

@@ -114,28 +114,72 @@ function KDUpdateWarden(delta: number) {
 						let rest = KDRestraint(testItem);
 						if (!rest)
 							continue;
-						let slot = KDGetNPCBindingSlotForItem(rest, value.id, false);
 
-						// Check if its valid
-						if (slot) {
-							// Add the item
-							if (KDInputSetNPCRestraint({
-								slot: slot.sgroup.id,
-								id: undefined,
-								faction: testItem.faction,
-								restraint: testItem.name,
-								restraintid: testItem.id,
-								lock: "",
-								variant: undefined,
-								events: testItem.events,
-								powerbonus: undefined,
-								inventoryVariant: testItem.inventoryVariant,
-								npc: value.id,
-								player: -1,
-							}, WardenItems))
-								// If added, refresh
-								KDGameData.FacilitiesData.Warden_TightenedCount += 1;
-								currentBondage = KDGetExpectedBondageAmountTotal(value.id, undefined, false);
+						if (KDGenericRestraintRawOriginalCache[rest.name]) {
+							// Generic
+							let q = testItem.quantity || 1;
+							for (let rr of KDGenericRestraintRawOriginalCache[rest.name]) {
+								if (!KDRestraint(rr)) continue;
+								if (rr.count > q) continue;
+								let slot = KDGetNPCBindingSlotForItem(KDRestraint(rr), value.id, false);
+
+								// Check if its valid
+								if (slot) {
+									// Add the item
+									if (KDInputSetNPCRestraint({
+										slot: slot.sgroup.id,
+										id: undefined,
+										faction: testItem.faction,
+										restraint: rr.name,
+										restraintid: KinkyDungeonGetItemID(),
+										lock: "",
+										variant: undefined,
+										events: undefined,
+										powerbonus: undefined,
+										inventoryVariant: undefined,
+										npc: value.id,
+										player: -1,
+										noInventory: true,
+									}, WardenItems))
+										// If added, refresh
+										q -= rr.count;
+										testItem.quantity = q;
+										if (q <= 0) {
+											delete WardenItems[testItem.name];
+											break;
+										}
+										KDGameData.FacilitiesData.Warden_TightenedCount += 1;
+										currentBondage = KDGetExpectedBondageAmountTotal(value.id, undefined, false);
+								}
+							}
+						} else {
+							let slot = KDGetNPCBindingSlotForItem(rest, value.id, false);
+
+							// Check if its valid
+							if (slot) {
+								// Add the item
+								if (KDInputSetNPCRestraint({
+									slot: slot.sgroup.id,
+									id: undefined,
+									faction: testItem.faction,
+									restraint: testItem.name,
+									restraintid: testItem.id,
+									lock: "",
+									variant: undefined,
+									events: testItem.events,
+									powerbonus: undefined,
+									inventoryVariant: testItem.inventoryVariant,
+									npc: value.id,
+									player: -1,
+								}, WardenItems))
+									// If added, refresh
+									KDGameData.FacilitiesData.Warden_TightenedCount += 1;
+									currentBondage = KDGetExpectedBondageAmountTotal(value.id, undefined, false);
+							}
+						}
+
+						if (testItem?.quantity <= 0) {
+							availableRestraints = Object.values(WardenItems);
 						}
 					}
 

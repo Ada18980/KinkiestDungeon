@@ -6245,7 +6245,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "postApply", type: "requireNoGags"},
 		],
-		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars"]},
+		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars", "GagNecklance"]},
 	{inventory: true, name: "SarielPanties", unlimited: true, debris: "Fabric", Asset: "ClothStuffing", LinkableBy: [...KDStuffingLink], Color: "Default", Group: "ItemMouth", power: -1, weight: 0, gag: 0.1,
 		value: 1000,
 		alwaysKeep: true, showInQuickInv: true, good: true,

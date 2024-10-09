@@ -415,6 +415,8 @@ function KDGetCharacterEntity(C: Character): entity {
 	return undefined;
 }
 
+let KDToggleBigView = false;
+
 /**
  * @param value
  * @param x
@@ -428,7 +430,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		Left: x,
 		Top: y,
 		Width: 440,
-		Height: 730,
+		Height: KDToggleBigView ? 830 : 730,
 		Color: "#000000",
 		LineWidth: 1,
 		zIndex: -20,
@@ -438,12 +440,19 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		Left: x,
 		Top: y,
 		Width: 440,
-		Height: 730,
+		Height: KDToggleBigView ? 830 : 730,
 		Color: "#888888",
 		LineWidth: 1,
 		zIndex: -19,
 		alpha: 0.9
 	});
+
+	DrawButtonKDEx("toggleBig", () => {
+		KDToggleBigView = !KDToggleBigView;
+		return true;
+	}, true, x - 50, y, 40, 40, "", "#ffffff",
+		KinkyDungeonRootDirectory + "UI/vision.png", undefined, undefined,
+		!KDToggleBigView, KDButtonColor)
 
 
 	let sp = (value.sprite || value.type);
@@ -475,49 +484,53 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	if (index)
 		DrawTextFitKD(TextGet("KDPrisonerNum_" + KDCollectionTabStatus).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 
-	let II = 0;
-	DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, "#ffffff", KDTextGray05, 24);
+	if (!KDToggleBigView) {
+		let II = 0;
+		DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, "#ffffff", KDTextGray05, 24);
 
-	if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
-		DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
-	else II++;
+		if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
+			DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+		else II++;
 
-	let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
-	let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
-	DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
+		let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
+		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 
-	if (KDIsNPCPersistent(value.id)) {
-		if (KDGetPersistentNPC(value.id)?.captured) {
-			str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
-				.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+		if (KDIsNPCPersistent(value.id)) {
+			if (KDGetPersistentNPC(value.id)?.captured) {
+				str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
+					.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
+				DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+			}
+		}
+
+
+
+		let npcLoc = KDGetNPCLocation(value.id);
+		if (npcLoc) {
+			let currLoc = KDGetCurrentLocation();
+			let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
+			str = TextGet((KinkyDungeonFindID(value.id) && KDCompareLocation(currLoc, npcLoc)) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
+				.replace("FLR", npcLoc.mapY + "")
+				.replace("LOC", TextGet("DungeonName" + dungeon));
 			DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
 		}
+		if (KDDrawNPCBars(value, x + 0, y + 730, 440) > 0)
+			if (KDGameData.Collection[value.id + ""] && value.escapegrace) {
+				let icon = "escapegrace";
+				KDDraw(kdcanvas, kdpixisprites, value.name + "_escp," + value.id,
+					KinkyDungeonRootDirectory + "UI/" + icon + ".png",
+					x - 72,
+					y + 730,
+					72, 72, undefined, {
+						zIndex: 110
+					});
+			}
 	}
 
 
 
-	let npcLoc = KDGetNPCLocation(value.id);
-	if (npcLoc) {
-		let currLoc = KDGetCurrentLocation();
-		let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
-		str = TextGet((KinkyDungeonFindID(value.id) && KDCompareLocation(currLoc, npcLoc)) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
-			.replace("FLR", npcLoc.mapY + "")
-			.replace("LOC", TextGet("DungeonName" + dungeon));
-		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
-	}
 
-
-	if (KDDrawNPCBars(value, x + 0, y + 730, 440) > 0)
-		if (KDGameData.Collection[value.id + ""] && value.escapegrace) {
-			let icon = "escapegrace";
-			KDDraw(kdcanvas, kdpixisprites, value.name + "_escp," + value.id,
-				KinkyDungeonRootDirectory + "UI/" + icon + ".png",
-				x - 72,
-				y + 730,
-				72, 72, undefined, {
-					zIndex: 110
-				});
-		}
 
 	if (!KDNPCChar.get(value.id)) {
 		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC(value.id, value.name, value.Palette));
@@ -565,138 +578,141 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		}
 		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
 		DrawCharacter(KDSpeakerNPC,
-			x + 20 + 100,
-			y + 80,
-			400/1000, true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
+			x + 20 + (KDToggleBigView ? 0 : 100),
+			y + 60,
+			KDToggleBigView ? (800/1000) : (400/1000), true, undefined, PIXI.SCALE_MODES.NEAREST, [], undefined, false);
 
-		let III = 0;
-		let buttonSpacing = 85;
-		if (!KDCollectionTab && KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (_b) => {
-			if (KDSoundEnabled())
-				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
-			//KDSpeakerNPC = null;
-			KinkyDungeonState = "Wardrobe";
-			KDCanRevertFlag = value.customOutfit != undefined;
-			ForceRefreshModels(KDSpeakerNPC);
-			KDOriginalValue = "";
-			CharacterReleaseTotal(KDSpeakerNPC);
-			KDWardrobeCallback = () => {
-				let value2 = value;
-				//if (KDOriginalValue) {
-				value2.customOutfit = LZString.compressToBase64(AppearanceItemStringify(KDSpeakerNPC.Appearance));
-				value2.Palette = KDSpeakerNPC.Palette;
+		if (!KDToggleBigView) {
+			let III = 0;
+			let buttonSpacing = 85;
+			if (!KDCollectionTab && KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", (_b) => {
+				if (KDSoundEnabled())
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
+				//KDSpeakerNPC = null;
+				KinkyDungeonState = "Wardrobe";
+				KDCanRevertFlag = value.customOutfit != undefined;
+				ForceRefreshModels(KDSpeakerNPC);
+				KDOriginalValue = "";
+				CharacterReleaseTotal(KDSpeakerNPC);
+				KDWardrobeCallback = () => {
+					let value2 = value;
+					//if (KDOriginalValue) {
+					value2.customOutfit = LZString.compressToBase64(AppearanceItemStringify(KDSpeakerNPC.Appearance));
+					value2.Palette = KDSpeakerNPC.Palette;
 
-				KDRefreshCharacter.set(KDSpeakerNPC, true);
-				//}
-			};
-			if (value.customOutfit) {
-				let outfit = value.customOutfit;
-				KDWardrobeRevertCallback = () => {
-					if (outfit)
-						CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
-					CharacterRefresh(KDSpeakerNPC);
-					KDInitProtectedGroups(KDSpeakerNPC);
 					KDRefreshCharacter.set(KDSpeakerNPC, true);
-					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+					//}
 				};
-				KDWardrobeResetCallback = () => {
-					delete value.customOutfit;
-				};
-			} else {
-				KDWardrobeRevertCallback = () => {
-					delete value.customOutfit;
-					KDRefreshCharacter.set(KDSpeakerNPC, true);
-					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
-				};
-				KDWardrobeResetCallback = null;
+				if (value.customOutfit) {
+					let outfit = value.customOutfit;
+					KDWardrobeRevertCallback = () => {
+						if (outfit)
+							CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
+						CharacterRefresh(KDSpeakerNPC);
+						KDInitProtectedGroups(KDSpeakerNPC);
+						KDRefreshCharacter.set(KDSpeakerNPC, true);
+						KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+					};
+					KDWardrobeResetCallback = () => {
+						delete value.customOutfit;
+					};
+				} else {
+					KDWardrobeRevertCallback = () => {
+						delete value.customOutfit;
+						KDRefreshCharacter.set(KDSpeakerNPC, true);
+						KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+					};
+					KDWardrobeResetCallback = null;
+				}
+
+				KDPlayerSetPose = false;
+				KDInitCurrentPose(true,KDSpeakerNPC);
+				KinkyDungeonInitializeDresses();
+				KDUpdateModelList();
+				KDRefreshOutfitInfo();
+				let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+				let orig = itt ?
+					JSON.parse(LZString.decompressFromBase64(itt)).appearance
+					|| itt : "";
+				let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
+				if (orig != current) KDOriginalValue = orig;
+				ForceRefreshModelsAsync(KDSpeakerNPC);
+				//KinkyDungeonDressPlayer(KDSpeakerNPC, true, true);
+				return true;
+			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Dress.png")) {
+				DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 			}
 
-			KDPlayerSetPose = false;
-			KDInitCurrentPose(true,KDSpeakerNPC);
-			KinkyDungeonInitializeDresses();
-			KDUpdateModelList();
-			KDRefreshOutfitInfo();
-			let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
-			let orig = itt ?
-				JSON.parse(LZString.decompressFromBase64(itt)).appearance
-				|| itt : "";
-			let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
-			if (orig != current) KDOriginalValue = orig;
-			ForceRefreshModelsAsync(KDSpeakerNPC);
-			//KinkyDungeonDressPlayer(KDSpeakerNPC, true, true);
-			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Dress.png")) {
-			DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
-		}
+			III = KDCollectionTabDraw[tab || "Default"](value, buttonSpacing, III, x, y);
 
-		III = KDCollectionTabDraw[tab || "Default"](value, buttonSpacing, III, x, y);
-
-		let assigned = !(!value.Facility);
-		let valid = KDCurrentFacilityCollectionType.some((type) => {
-			return KDFacilityCollectionDataTypeMap[type] == value.status;
-		}) && KDCurrentFacilityCollectionType.some((type) => {
-			return KDValidateServant(value, KDCurrentFacilityTarget, type);
-		});
+			let assigned = !(!value.Facility);
+			let valid = KDCurrentFacilityCollectionType.some((type) => {
+				return KDFacilityCollectionDataTypeMap[type] == value.status;
+			}) && KDCurrentFacilityCollectionType.some((type) => {
+				return KDValidateServant(value, KDCurrentFacilityTarget, type);
+			});
 
 
-		let collType = valid ? KDCurrentFacilityCollectionType.find((type) => {
-			return KDFacilityCollectionDataTypeMap[type] == value.status;
-		}) : "";
+			let collType = valid ? KDCurrentFacilityCollectionType.find((type) => {
+				return KDFacilityCollectionDataTypeMap[type] == value.status;
+			}) : "";
 
-		if (KDGameData.Collection[value.id + ""] && KDCurrentFacilityTarget) {
-			let dd = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
-			let fac = KDFacilityTypes[KDCurrentFacilityTarget];
-			if (dd && fac
-				&& fac["max" + collType]
-				&& (assigned
-					||  dd.length < fac["max" + collType]()
-				)) {
+			if (KDGameData.Collection[value.id + ""] && KDCurrentFacilityTarget) {
+				let dd = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
+				let fac = KDFacilityTypes[KDCurrentFacilityTarget];
+				if (dd && fac
+					&& fac["max" + collType]
+					&& (assigned
+						||  dd.length < fac["max" + collType]()
+					)) {
 
-				KDDraw(kdcanvas, kdpixisprites, "facilityAssignIcon",
-					KinkyDungeonRootDirectory + `UI/Facility_${(assigned || !valid) ?"X" :
-						collType
-					}.png`,
-					x + 10 + buttonSpacing*III, y + 730 - 10 - 80, 80, 80, undefined, {
-						zIndex: 160,
-					}
-				);
-				if (DrawButtonKDEx("facilityAssign", (_b) => {
-					if (!valid) return false;
-					if (!assigned) {
-						let data = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
-						if (data && (!KDFacilityCollectionCallback || KDFacilityCollectionCallback(value.id))) {
-							data.push(value.id);
-							value.Facility = KDCurrentFacilityTarget;
+					KDDraw(kdcanvas, kdpixisprites, "facilityAssignIcon",
+						KinkyDungeonRootDirectory + `UI/Facility_${(assigned || !valid) ?"X" :
+							collType
+						}.png`,
+						x + 10 + buttonSpacing*III, y + 730 - 10 - 80, 80, 80, undefined, {
+							zIndex: 160,
 						}
-					} else {
-						let listRender = Object.entries(KDFacilityTypes).filter((entry) => {
-							return entry[1].prereq();
-						});
-						for (let f of listRender) {
-							for (let dt of KDFacilityCollectionDataTypes) {
-								let data: number[] = KDGameData.FacilitiesData[dt + "_" + f[0]];
-								if (data?.includes(value.id)) {
-									delete value.Facility;
-									data.splice(data.indexOf(value.id), 1);
-									break;
+					);
+					if (DrawButtonKDEx("facilityAssign", (_b) => {
+						if (!valid) return false;
+						if (!assigned) {
+							let data = KDGameData.FacilitiesData[collType + "_" + KDCurrentFacilityTarget];
+							if (data && (!KDFacilityCollectionCallback || KDFacilityCollectionCallback(value.id))) {
+								data.push(value.id);
+								value.Facility = KDCurrentFacilityTarget;
+							}
+						} else {
+							let listRender = Object.entries(KDFacilityTypes).filter((entry) => {
+								return entry[1].prereq();
+							});
+							for (let f of listRender) {
+								for (let dt of KDFacilityCollectionDataTypes) {
+									let data: number[] = KDGameData.FacilitiesData[dt + "_" + f[0]];
+									if (data?.includes(value.id)) {
+										delete value.Facility;
+										data.splice(data.indexOf(value.id), 1);
+										break;
+									}
 								}
 							}
+							// Failsafe
+							delete value.Facility;
 						}
-						// Failsafe
-						delete value.Facility;
+
+						KDValidateAllFacilities();
+						return true;
+					}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
+					KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
+					undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
+						DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)),
+							x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 					}
-
-					KDValidateAllFacilities();
-					return true;
-				}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
-				KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
-				undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
-					DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)),
-						x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 				}
-			}
 
+			}
 		}
+
 
 	} else {
 		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",

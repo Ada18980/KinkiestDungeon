@@ -1323,18 +1323,18 @@ let KinkyDungeonLootTable = {
 };
 
 
-type lootEventFunc = (Loot: any, Floor: number, Replacemsg: string, Lock: string) => { value: number; Replacemsg: string };
+type lootEventFunc = (Loot: any, Floor: number, Replacemsg: string, Lock: string, container?: KDContainer) => { value: number; Replacemsg: string };
 
 let KDLootEvents: Record<string, lootEventFunc> = {
-	"Armor": (_Loot, _Floor, Replacemsg, _Lock) => {
+	"Armor": (_Loot, _Floor, Replacemsg, _Lock, container) => {
 		return {
 			value: 0,
 			Replacemsg: Replacemsg,
 		};
 	},
-	"archerykit": (_Loot, _Floor, Replacemsg, _Lock) => {
-		KinkyDungeonInventoryAddWeapon("Bow");
-		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSource, 1);
+	"archerykit": (_Loot, _Floor, Replacemsg, _Lock, container) => {
+		KDInvAddWeapon(container, "Bow");
+		KDAddConsumable("AncientPowerSource", 1, container);
 		return {
 			value: 0,
 			Replacemsg: Replacemsg,

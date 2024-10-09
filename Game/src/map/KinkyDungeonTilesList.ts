@@ -510,7 +510,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 					if (KDToggles.Autoloot) {
 						let container = KDGameData.Containers[KDUI_CurrentContainer];
 						for (let inv of Object.values(container.items)) {
-							let q = inv.quantity;
+							let q = inv.quantity || 1;
 							let suff = "";
 							if ((inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))) {
 								for (let i = 0; i < (q || 1); i++) {
@@ -536,7 +536,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 							}
 
 							KinkyDungeonSendTextMessage(2,
-								TextGet("KDAutoLoot") + `${KDGetItemName(inv)} x${inv.quantity || 1}` + suff,
+								TextGet("KDAutoLoot") + `${KDGetItemName(inv)} x${q}` + suff,
 								"#88ff88", 2)
 						}
 					} else {

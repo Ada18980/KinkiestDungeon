@@ -1148,7 +1148,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (!data.delta) return;
 			let healed = false;
 			for (let enemy of KDMapData.Entities) {
-				if (KDAllied(enemy) && KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
+				if (KDAllied(enemy)
+					&& (enemy.hp > 0 || KDHelpless(enemy))
+					&& KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
 					let origHP = enemy.hp;
 					enemy.hp = Math.min(enemy.hp + e.power, enemy.Enemy.maxhp);
 					if (enemy.hp - origHP > 0) {
@@ -9015,7 +9017,9 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 
 		"HolyOrbAura": (e, enemy, data) => {
 			// We heal nearby allies and self
-			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+			if (data.delta && KinkyDungeonCanCastSpells(enemy)
+				&& enemy.hp > 0
+				&& ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
 				if (!e.chance || KDRandom() < e.chance) {
 					let nearby = KDNearbyEnemies(enemy.x, enemy.y, e.dist);
 					for (let en of nearby) {

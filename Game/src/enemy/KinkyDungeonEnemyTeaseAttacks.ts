@@ -276,7 +276,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		},
 	},
 	AddGag: {
-		name: "AddStuffing",
+		name: "AddGag",
 		priority: 4,
 		blockable: true, dodgeable: true,
 		filter: (enemy, player, _aiData) => {
@@ -286,6 +286,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 				&& KDHasArms(enemy)
 				&& (
 					KinkyDungeonFlags.get("verbalspell")
+					&& KinkyDungeonPlayerTags.get("GagNecklance")
 				)) {
 				let gagType = KDGetNecklaceGagType(KDPlayer()) || "TrapGag";
 

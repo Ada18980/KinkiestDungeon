@@ -6117,6 +6117,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + (enemy.Enemy.miscastsfx || "SoftShield") + ".ogg", enemy);
 				KinkyDungeonSendEvent("enemyMiscast", {spell: spell, enemy: enemy, player: player, AIData: AIData});
 
+				if (KDRandom() < actionDialogueChanceIntense)
+					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailMiscast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""))
+						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
+						.replace("SPL", TextGet("KinkyDungeonSpell" + spell.name)), KDGetColor(enemy), 2, 3);
+
 				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.castAmount != undefined ? enemy.Enemy.Sound?.castAmount : KDDefaultEnemyCastSound);
 			} else if (spell) {
 				if (spell.channel && !enemy.Enemy.noChannel) enemy.channel = spell.channel;
@@ -6175,6 +6180,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				}
 
 				KinkyDungeonSendEvent("enemyCast", {spell: spell, spelltarget: spelltarget, enemy: enemy, player: player, AIData: AIData});
+
+				if (KDRandom() < actionDialogueChanceIntense)
+					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailCast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""))
+						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name))
+						.replace("SPL", TextGet("KinkyDungeonSpell" + spell.name)), KDGetColor(enemy), 2, 3);
 
 				KDEnemyAddSound(enemy, enemy.Enemy.Sound?.castAmount != undefined ? enemy.Enemy.Sound?.castAmount : KDDefaultEnemyCastSound);
 

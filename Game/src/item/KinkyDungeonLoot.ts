@@ -903,7 +903,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		KinkyDungeonLostItems = newLostItems;
 	}
 	if (KDLootEvents[Loot.name]) {
-		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock);
+		let ret = KDLootEvents[Loot.name](Loot, Floor, Replacemsg, Lock, container);
 		if (ret.value) value = ret.value;
 		if (ret.Replacemsg) Replacemsg = ret.Replacemsg;
 	}

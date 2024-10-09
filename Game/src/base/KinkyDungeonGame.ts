@@ -334,6 +334,17 @@ function KinkyDungeonNewGamePlus(): void {
 	MiniGameKinkyDungeonLevel = 0;
 
 	KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
+	// Remove all chests and add to lost items
+	let lostItems: item[] = [];
+	for (let entry of Object.entries(KDGameData.Containers)) {
+		if (entry[1].location?.mapY > 0) {
+			lostItems.push(...Object.values(entry[1].items));
+			delete KDGameData.Containers[entry[0]];
+		}
+	}
+	for (let item of lostItems) {
+		KDAddLostItemSingle(item.name, 1);
+	}
 
 	KinkyDungeonSetCheckPoint("grv", true);
 	KDGameData.HighestLevelCurrent = 1;
@@ -6019,7 +6030,24 @@ function KDPruneWorld() {
 	for (let slot of Object.values(KDWorldMap)) {
 		for (let entry of Object.entries(slot.data)) {
 			let alt = KDGetAltType(slot.y, entry[1].MapMod, entry[1].RoomType);
-			if (alt?.prune || alt?.alwaysRegen) delete slot.data[entry[0]];
+			if (alt?.prune || alt?.alwaysRegen) {
+				// Remove all chests and add to lost items
+				let lostItems: item[] = [];
+				for (let entry of Object.entries(KDGameData.Containers)) {
+					if (entry[1].location?.mapY == slot.y
+						&& entry[1].location?.mapX == slot.x
+						&& entry[1].location?.room == entry[0]
+					) {
+						lostItems.push(...Object.values(entry[1].items));
+						delete KDGameData.Containers[entry[0]];
+					}
+				}
+				for (let item of lostItems) {
+					KDAddLostItemSingle(item.name, 1);
+				}
+
+				delete slot.data[entry[0]];
+			}
 		}
 	}
 }

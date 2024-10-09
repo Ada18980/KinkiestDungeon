@@ -167,13 +167,13 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 								})) {
 									if (!hasInv) {
 										KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
-										-= KDGenericRestraintRawCache[inv[1].name].count;
+											-= KDGenericRestraintRawCache[inv[1].name].count;
 										if (KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw).quantity
-											<= 0) {
-												KinkyDungeonInventoryRemoveSafe(
-													KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)
-												);
-											}
+										<= 0) {
+											KinkyDungeonInventoryRemoveSafe(
+												KinkyDungeonInventoryGetSafe(KDGenericRestraintRawCache[inv[1].name].raw)
+											);
+										}
 									}
 								}
 							}

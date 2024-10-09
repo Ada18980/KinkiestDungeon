@@ -127,6 +127,13 @@ function KDPearlRequirement(): boolean {
 					missing = false;
 					break;
 				}
+				for (let c of Object.values(KDGameData.Containers)) {
+					if (c.location?.mapY < 1 && c.items[r]) {
+						missing = false;
+						break;
+					}
+				}
+				if (missing) break;
 			}
 			if (missing && rep[1] > 45) {
 				has = true;

@@ -106,7 +106,7 @@ class ModelContainer {
 		// Hunts down the proper color
 		if (Model?.Layers) {
 			for (let l of Object.values(Model.Layers)) {
-				if (l.ImportColorFromGroup) {
+				if (l.ImportColorFromGroup && !(Model.Filters && Model.Filters[l.Name])) {
 					let copiedFrom = [...this.Models.values()].find((model) => {
 						return model.Group == l.ImportColorFromGroup[0] && model.Filters && model.Filters[l.ImportColorFromGroup[1]]
 					});
@@ -115,7 +115,7 @@ class ModelContainer {
 						Model.Filters[l.InheritColor || l.Name] = JSON.parse(JSON.stringify(copiedFrom.Filters[l.ImportColorFromGroup[1]]));
 					}
 				}
-				if (l.ImportColorFromCategory) {
+				if (l.ImportColorFromCategory && !(Model.Filters && Model.Filters[l.Name])) {
 					let copiedFrom = [...this.Models.values()].find((model) => {
 						return model.Categories.includes(l.ImportColorFromCategory[0]) && model.Filters && model.Filters[l.ImportColorFromCategory[1]]
 					});
