@@ -12473,7 +12473,7 @@ dGenericAllyAttack_Leave,"(Never mind...)"
 rGenericAllyAttack_Leave,"(You decide not to)"
 
 dGenericAllyAttackPlay,"(Retaliate)"
-rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take a rep penalty)|(You will still lose rep if you capture her)"
+rGenericAllyAttackPlay,"(Really attack? You will be justified and won't take an immediate rep penalty)"
 dGenericAllyAttackPlay_Confirm,"(Attack her)"
 dGenericAllyAttackPlay_Leave,"(Never mind...)"
 rGenericAllyAttackPlay_Leave,"(You decide not to)"
