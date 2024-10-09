@@ -25245,3 +25245,5 @@ KDDepositEverything,Deposit All
 
 KDAutoLoot,"Auto-loot found "
 KDNotPickedUp," (not picked up)"
+
+KDToggleFlipPlayerAuto,Automatically Flip When Moving
