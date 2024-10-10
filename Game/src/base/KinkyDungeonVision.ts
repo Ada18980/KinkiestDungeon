@@ -36,7 +36,7 @@ let KinkyDungeonSeeAll = false;
 let KDVisionBlockers = new Map();
 let KDLightBlockers = new Map();
 
-function KinkyDungeonCheckProjectileClearance(xx: number, yy: number, x2: number, y2: number): boolean {
+function KinkyDungeonCheckProjectileClearance(xx: number, yy: number, x2: number, y2: number, playerblock?: boolean): boolean {
 	let tiles = KinkyDungeonTransparentObjects;
 	let moveDirection = KinkyDungeonGetDirection(x2 - xx, y2 - yy);
 	let x1 = xx + moveDirection.x;
@@ -46,6 +46,7 @@ function KinkyDungeonCheckProjectileClearance(xx: number, yy: number, x2: number
 		let mult = d / dist;
 		let xxx = x1 + mult * (x2-x1);
 		let yyy = y1 + mult * (y2-y1);
+		if (!playerblock || KDPlayer().x != Math.round(xxx) || KDPlayer().y != Math.round(yyy))
 		if (!tiles.includes(KinkyDungeonMapGet(Math.round(xxx), Math.round(yyy)))) return false;
 	}
 	return true;

@@ -4326,7 +4326,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					0.01));
 	}
 
-	if ((enemy.Enemy.projectileAttack || enemy.Enemy.projectileTargeting) && (!AIData.canShootPlayer || !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y))) AIData.followRange = 1.5;
+	if ((enemy.Enemy.projectileAttack || enemy.Enemy.projectileTargeting) && (!AIData.canShootPlayer || !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player))) AIData.followRange = 1.5;
 
 	if (!AIData.aggressive && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && AIData.canSeePlayer && player.player && !KDAllied(enemy)
 		&& ((!KinkyDungeonFlags.has("nojailbreak") && !KinkyDungeonPlayerInCell(true, true)) || KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle")) {
@@ -6067,7 +6067,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;
 				if (spell && enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) spell = null;
 				if (spell && spell.noFirstChoice && tries <= 2) spell = null;
-				if (spell && spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y)) spell = null;
+				if (spell && spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player)) spell = null;
 				if (spell && spell.buff) {
 					if (enemy.Enemy.buffallies || spell.buffallies) {
 					// Select a random nearby ally of the enemy
@@ -6525,7 +6525,7 @@ function KinkyDungeonEnemyTryAttack (
 			let ax = enemy.x + Tiles[T].x;
 			let ay = enemy.y + Tiles[T].y;
 
-			if (player.x == ax && player.y == ay && (!enemy.Enemy.strictAttackLOS || KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y))) {
+			if (player.x == ax && player.y == ay && (!enemy.Enemy.strictAttackLOS || KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, false))) {
 				playerIn = true;
 				break;
 			}

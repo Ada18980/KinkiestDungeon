@@ -3762,7 +3762,7 @@ function KDCheckLinkSize(currentRestraint: item, restraint: restraint, bypass?: 
 	)
 		&& ((linkCategories.length > 0 && !restraint.noDupe)
 			|| !KDDynamicLinkList(KinkyDungeonGetRestraintItem(KDRestraint(currentRestraint).Group), true).some((item) => {
-				if (restraint.name == item.name && (!ignoreItem || ignoreItem?.id != item.id)) {
+				if (restraint.name == KDRestraint(item).name && (!ignoreItem || ignoreItem?.id != item.id)) {
 					// Note: return false means succeed
 					// true means interupt
 					//if (restraint.noDupe) return true;
