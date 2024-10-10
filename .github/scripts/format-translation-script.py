@@ -19,6 +19,12 @@ import os
 import csv
 import sys
 
+# Ignore keys
+IGNORE_KEYS = [
+    "RestartNeededEN", "RestartNeededCN", "RestartNeededKR", "RestartNeededJP", "RestartNeededES", "RestartNeededFR", "RestartNeededRU",
+    "KDVersionStr"
+]
+
 # Read the csv file
 def read_csv_with_empty_lines(file_path) -> list:
     with open(file_path, newline='', encoding='utf-8') as csvfile:
@@ -32,6 +38,9 @@ def read_csv_with_empty_lines(file_path) -> list:
                 
             if len(row) != 2:
                 print(f'<ABNORMAL> {row}')
+                continue
+            
+            if row[0] in IGNORE_KEYS:
                 continue
                 
             lines.append(row)
@@ -63,7 +72,7 @@ def write_translated_file(csv_lines : list, translations : list, output_path : s
             # The next line of the original text corresponding to the List is the translation. If the translation is not found,will use "### Original" instead.
             # When the translation is the same as the original text, "### Original" is also used because it is meaningless.
             try:
-                original_index = translations.index(original)
+                original_index = translations.index(original.strip())
                 translation = translations[original_index + 1].strip()
                 if not translation or (original == translation) :
                     raise ValueError
