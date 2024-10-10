@@ -45,7 +45,7 @@ Restart required!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.44
+### 5.3.45
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 Eres un aventurero que desciende a una antigua ciudad subterránea de magia.
@@ -63,6 +63,7 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 Keybindings
 Atajos de teclado
 
+### Auto loot all from chests
 
 ### Apply palettes to Restraints
 ### Apply palettes to transforms
@@ -547,6 +548,9 @@ Empiezas con la visera del fabricante de muñecas.
 ### You start with the Dollmaker's Mask.
 ### Persisting Desires
 ### Your dark desires are endless.
+
+### Sugar Rush
+### Consuming sweets makes you hyperactive, decreasing stamina costs and granting free moves.
 
 Vengeance
 Venganza
@@ -5305,6 +5309,7 @@ Bajas al siguiente nivel
 Level RestraintLevel (Rarity)
 Nivel RestraintLevel (Rarity)
 
+### All
 Consumable
 Consumible
 Worn
@@ -7402,8 +7407,7 @@ Altar Vacío
 Chest
 Pecho
 ### Faction Chest
-Empty Chest
-Cofre Vacío
+### Open Chest
 Shiny Object
 objeto brillante
 Cracked Wall
@@ -11115,6 +11119,9 @@ Your key to the stairs is taken away!
 You found a keyring to the stairs! Now you just need to get there.
 ¡Encontraste un llavero en las escaleras! Ahora solo necesitas llegar allí.
 
+
+### Behold my SPL!
+### Mmmph... SPL...
 ### Oh noes...
 ### Ueeee!
 I don't want to be your slave!
@@ -11203,6 +11210,8 @@ Por qué tú...
 
 
 
+### Activate SPL protocol.
+### What do you mean 'access denied'???
 ### Release me at once.
 ### This is unacceptable!
 ### Guards! Guards... Guards? Well drat.
@@ -11281,6 +11290,8 @@ Tsk Tsk. Me quedaré con las llaves.
 
 
 
+### Hmmph~
+### My mistake~
 ### This wasn't supposed to happen.
 ### The Collector has become the Collected.
 ### Fine, you win!
@@ -11334,12 +11345,16 @@ Found you!
 ### I'll watch~
 
 
+### Submit to my SPL!
+### Hmmmph... SPL--
 ### Fine then! Have it your way.
 ### You'll be sorry you didn't listen to me~
 ### Why must you be so difficult!
 ### They're coming for me!
 ### Do you know of the Dollmaker? I've got a proposal for you and I...
 
+### I cast SPL!
+### That wasn't supposed to happen!
 ### This is too tight...
 ### I can't get free!
 Hey! Where do you think you're going?
@@ -11409,7 +11424,8 @@ Nice and tight!
 ### Come and get me!
 ### You'll never escape!
 
-
+### Mmmphh!
+### Mmmm! Mmmmmmm!
 Mmmmph!!!
 ¡¡¡Mmmmmmm!!!
 ### Mmmmm~
@@ -11474,6 +11490,8 @@ Mmmmmmmm
 
 
 
+### *focuses intently*
+### *appears distracted*
 ### *Mmmmmm~*
 *muffled giggle*
 *risita ahogada*
@@ -11485,6 +11503,8 @@ Mmmmmmmm
 
 
 
+### Watch out for my SPL!
+### Whoops!
 ### You won't get me like this!
 You'll never catch me!
 ¡Nunca me atraparás!
@@ -11563,6 +11583,8 @@ Nada personal.
 ### You're mine.
 ### You can't get away.
 
+### *extends an arm*
+### *miscast*
 ### *wiggles*
 ### *struggles*
 *rattles*
@@ -11626,6 +11648,8 @@ Esto es un error, por favor informe
 
 ### *marches*
 
+### Engaging SPL!
+### A-Access denied!?
 ### This... this unit is doing a good job! I swear!
 ### It's just business as usual, nothing to see here...
 ### It's not like I need reconfiguring or anything...
@@ -11677,6 +11701,8 @@ Esto es un error, por favor informe
 ### Defenses online!
 
 
+### SPL armed.
+### An exception has occurred while trying to run SPL. Retry?
 ### Error in citizen ID registration. Please submit to processing.
 ### Does not compute.
 ### Some kind of miscalculation has occurred.
@@ -11761,6 +11787,8 @@ Aumento del nivel de rigurosidad.
 ### Forming blockade.
 
 
+### SPL();
+### throw new Error(SPL);
 ### query([ID]); >ERROR; transport([UNKNOWN], [DOLL])
 ### Does not compute;
 ### Some kind of miscalculation has occurred;
@@ -11816,6 +11844,8 @@ Aumento del nivel de rigurosidad.
 ### capture([CITIZEN]);
 ### defend([POINT]);
 
+### Hyah, SPL!
+### No! Not like that!
 Looks like I'm up to no good... better stop me!
 Parece que no estoy tramando nada bueno... ¡Mejor detenme!
 Careful where you point that thing!
@@ -11904,6 +11934,8 @@ I won't let you go that easily!
 ### I smell an opportunity!
 ### Do I have to?
 
+### Let me introduce you to SPL~
+### No! My SPL!
 Oh my, looks like I'm in trouble!
 ¡Oh, parece que estoy en problemas!
 What a shame it would be if I got caught~
@@ -11993,6 +12025,8 @@ You won't be getting out of that any time soon!
 
 
 
+### SPL.
+### ...
 No! I don't want to read your magazines!
 ¡No! ¡No quiero leer sus revistas!
 No, I don't want to learn about Shibari!
@@ -12078,6 +12112,8 @@ Keep the damage under control!
 
 
 
+### Deploying SPL!
+### What was I supposed to do again? Oh right!
 No! I didn't do anything wrong...
 ¡No! no hice nada malo...
 Don't punish me! Please!
@@ -12136,6 +12172,8 @@ Ahora a ver, los buenos pacientes deben estar quietos...
 
 
 
+### I'll need another SPL, stat!
+### A p-professional mistake.
 ### I did what the manual said!
 ### I seem to have caught something, won't you help?
 ### It's time for your daily dose of cuddling~
@@ -12158,6 +12196,8 @@ Ahora a ver, los buenos pacientes deben estar quietos...
 
 
 
+### SPL
+### SPL failed
 
 
 
@@ -12216,7 +12256,8 @@ Ahora a ver, los buenos pacientes deben estar quietos...
 
 
 
-
+### SPL!
+### That w-was supposed to be a SPL!
 ### Ooh, a shiny rock…
 ### I wonder what's over here?
 ### I'm bored, bye!
@@ -12262,6 +12303,8 @@ Ahora a ver, los buenos pacientes deben estar quietos...
 
 
 
+### Let me show you how it's done: SPL!
+### You've just narrowly avoided my SPL~
 ### Kya~ I have no mana, I'm so defenseless right now~
 ### I have all this bondage gear on me, I sure hope nobody ties me up with it~!
 ### Oh no, how will I ever find my way out of here~
@@ -12314,6 +12357,7 @@ Ahora a ver, los buenos pacientes deben estar quietos...
 
 
 
+### Behold, my true power! Wait... ack...
 ### I wonder what to do with all these cuffs...
 ### I have made a huge mistake...
 ### I'll just be going...
@@ -12366,6 +12410,8 @@ Ahora a ver, los buenos pacientes deben estar quietos...
 
 
 
+### Face my SPL!
+### SPL-whoops...
 ### Give me another chance!
 ### No! Wait! I can explain...
 ### I'll be right back...
@@ -12421,6 +12467,8 @@ No estoy en problemas, ¿verdad?
 
 
 
+### You can't hope to match my SPL~
+### SPL! No wait, not like that!
 ### Be nice!
 ### No! Be gentle!
 ### Ahhhh!
@@ -12474,6 +12522,8 @@ eres linda~
 
 
 
+### Time for SPL!
+### *tsk*
 ### Let's play all night!
 ### We can take our time.
 ### I bet you won't last long!
@@ -12505,7 +12555,8 @@ eres linda~
 ### Don't balk! Your time was up anyways~
 
 
-
+### Calling in a SPL!
+### A-assistance required!
 You'll have to try harder if you want to discipline me, ma'am.
 Tendrá que esforzarse más si quiere disciplinarme, señora.
 I... don't have time for training right now, ma'am...
@@ -12587,6 +12638,8 @@ El sospechoso está seguro.
 ### Calling in a blockade!
 
 
+### Hidden technique: SPL!
+### I practiced a thousand times... for this!?
 I'm not hiding anything, if you know what I mean...
 No escondo nada, si sabes a lo que me refiero...
 Who are you looking for? Me?
@@ -12670,6 +12723,8 @@ No hay manera de salir.
 ### I'll get you! Eventually...
 
 
+### Let's see how you like my SPL!
+### Wait, wrong button! Aaahh~
 Hey~! Let's have a talk.
 ¡Hola~! Tengamos una charla.
 Looks like you need additional training.
@@ -12721,6 +12776,7 @@ Such speed!
 ### What's that about backup?
 
 
+### Wait no, wrong button!
 ### Catch me. If you can, that is.
 ### I double dare you.
 ### Weren't you chasing me?
@@ -12738,7 +12794,8 @@ Such speed!
 ### Mine now.
 ### Just keeping you safe from yourself.
 
-
+### SPL, sing to me!
+### SPL, listen to me...
 An outsider!
 ¡Un forastero!
 Hide!
@@ -12824,6 +12881,8 @@ Aquí vamos.
 ### I stand firm.
 
 
+### Behold, SPL.
+### Y-your fate has been postponed... briefly.
 ### You look cute in that, you should lose the rest though!
 
 
@@ -12866,7 +12925,6 @@ Wear this!
 ¡Usa esto!
 Come here!
 ¡Ven aquí!
-### ...
 Capture...
 Captura...
 Need tighten!
@@ -12920,7 +12978,8 @@ Secure!
 ### Rawr!
 
 
-
+### SPL! Now my wrath is revealed!
+### Wh-what happened? What weakness has infiltrated Myrtrice?
 ### You will loose me or burn eternal!!!
 ### ... This shame is unbearable! Oh sister!!!
 ### Oh! Mytrice is caught! My ambitions laid to ruin!
@@ -12977,7 +13036,7 @@ Secure!
 ### THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
 ### I, Myrtrice, will resist their insolent fusilades!
 
-
+### This mind is altered...
 So this is what it's like...
 Así es como es...
 I believe I am feeling an emotion called 'fear.'
@@ -13062,7 +13121,7 @@ Tomaré este.
 ### You leave us no choice.
 ### You cannot comprehend our tactics.
 
-
+### Nyah!!! *blushes*
 ### Nyah! This is impossible!
 Meow!!!
 ¡¡¡Maullar!!!
@@ -13146,7 +13205,8 @@ Deja de luchar~
 ### Let's get them!
 ### Let's play cat and mouse~
 
-
+### You cannot resist my SPL.
+### You merely prolong the inevitable!
 ### This... this can't be...
 ### Release me mortal!
 ### How did you do this!?
@@ -13225,7 +13285,8 @@ Try getting out of that!
 ### Do not mess with us!
 ### I shall take you for myself~
 
-
+### You are no match for my SPL!
+### That wasn't supposed to happen.
 ### You won't get me!
 ### Nice try!
 ### My grandma is tougher than you!
@@ -13251,7 +13312,7 @@ Try getting out of that!
 ### Yoink!
 ### You can't get out now!
 
-
+### Ah... my SPL...
 ### I will be free... even if it takes me a thousand years!
 ### Release me you pathetic creature!
 ### I will not be contained!
@@ -13295,7 +13356,8 @@ No tan rápido~
 ### Hehe~
 ### *chuckles*
 
-
+### By the power of SPL!
+### I have failed!
 ### Oh no, it's an adventurer!
 ### They've come for me!
 ### It wasn't my fault!
@@ -13312,6 +13374,8 @@ Tu magia es débil, humano.
 It tickles, hehe!
 Hace cosquillas, jeje!
 
+### Let's see you face my SPL~
+### You won't escape my SPL that easily!
 Not the edging training! Anything but that!
 ¡No el entrenamiento de bordes! ¡Todo menos eso!
 Forgive me!
@@ -13392,7 +13456,7 @@ Dame ese.
 ### You really think you're special, huh?
 ### Combat formation bravo.
 
-
+### Ah! Forgive me!
 I'm sorry! I didn't mean to break that vase!
 ¡Lo lamento! ¡No fue mi intención romper ese jarrón!
 I won't do it again, I swear!
@@ -13470,7 +13534,8 @@ Lo lamento...
 ### Please surrender, miss!
 ### I'll just stay here!
 
-
+### Loading SPL!
+### Blast... this thing always jams.
 ### That thing... it scares me.
 ### Please no! I don't want the pleasure training again!
 ### Say hello to my little friend!
@@ -13490,6 +13555,8 @@ Lo lamento...
 ### Cover me, I'm going in!
 ### Commence overwatch!
 
+### Submit to my SPL.
+### Ack! How inelegant!
 I'll be heading out...
 estaré saliendo...
 Looks like I'll be taking my leave.
@@ -13573,6 +13640,7 @@ Me quedaré con las llaves.
 ### I'll do this myself.
 ### I'll support from the rear.
 
+### Whoops! That wasn't supposed to happen...
 Looks like I've earned some punishment...
 Parece que me he ganado un castigo...
 I'll turn you into a newt! If you don't stop me...
@@ -13653,6 +13721,7 @@ No tengo tiempo para esto.
 ### I'll make you my pet!
 ### Tsk tsk, you won't get away!
 
+### I cast SPL! No, wait...
 ### You're just too cute... let me play with you a bit!
 ### Come, come closer! I'll be gentle~
 ### Ooh, you just HAVE to be mine!
@@ -13677,6 +13746,8 @@ No tengo tiempo para esto.
 ### My, my, you look too cute...
 ### I like you. I'll save you a spot at home~
 
+### I cast, umm, SPL!
+### I cast Silence! No, wait--
 I promise I'll be back later!
 ¡Te prometo que volveré más tarde!
 I didn't do anything wrong!
@@ -13760,6 +13831,8 @@ Lo siento por esto...
 ### That's it! You made me mad!
 ### I'll just... go.
 
+### Rise, my minions!
+### ...Hello? Can anyone hear me?
 Sticks and stones may break my bones... but you'll never catch me!
 Los palos y las piedras pueden romper mis huesos... ¡pero nunca me atraparán!
 Got a bone to pick with me?
@@ -13834,6 +13907,7 @@ Asegúrate de que esté bien ajustado...
 ### Why don't you bend the knee...
 ### Who goes there?
 
+### SPL...
 ### Can't... Move...
 ### Tight...
 ### This... is... fun...
@@ -15971,8 +16045,7 @@ There is no valid space next to you!
 
 (Retaliate)
 (Tomar represalias)
-(Really attack? You will be justified and won't take a rep penalty)|(You will still lose rep if you capture her)
-(¿De verdad atacas? Estarás justificado y no recibirás una penalización de repetición)|(Perderás reputación si la capturas)
+### (Really attack? You will be justified and won't take an immediate rep penalty)
 
 (Sneak Attack)
 (Ataque furtivo)
@@ -22941,10 +23014,27 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### ENMY unlocks the ITMN!
 ### The conjured ITMN vanishes as it comes off.
 
-### AMNT restraints tightened since last tick~
+### AMNT restraints added since last tick~
+### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
 ### Back to Facilities
 
 ### Your Inventory
 ### Warden's Storage
+
+### Store 1 ITMN
+### Take 1 ITMN
+### Store 5 ITMN
+### Take 5 ITMN
+### Store ALL ITMN
+### Take ALL ITMN
+### Store ALL-1 ITMN
+### Take ALL-1 ITMN
+### Take Everything
+### Deposit All
+
+### Auto-loot found 
+###  (not picked up)
+
+### Automatically Flip When Moving

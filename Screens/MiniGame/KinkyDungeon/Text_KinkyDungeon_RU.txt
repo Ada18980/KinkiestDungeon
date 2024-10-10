@@ -46,7 +46,7 @@ Mods Loaded.
 Version
 Версия перевода 5.2.24, версия игры
 ### Kinky Dungeon
-### 5.3.44
+### 5.3.45
 By Ada18980
 От Ada18980
 You are an adventurer descending into an ancient underground city of magic.
@@ -70,6 +70,7 @@ Controls
 Keybindings
 Управление
 
+### Auto loot all from chests
 
 ### Apply palettes to Restraints
 ### Apply palettes to transforms
@@ -642,6 +643,9 @@ Persisting Desires
 Настойчивые желания
 Your dark desires are endless.
 Ваше темное желание бесконечно.
+
+### Sugar Rush
+### Consuming sweets makes you hyperactive, decreasing stamina costs and granting free moves.
 
 Vengeance
 Возмездие
@@ -5861,6 +5865,7 @@ You climb down to the next level
 Level RestraintLevel (Rarity)
 Уровень RestraintLevel (Rarity)
 
+### All
 Consumable
 Расходники
 Worn
@@ -8271,8 +8276,7 @@ Chest
 Сундук
 Faction Chest
 Фракционный сундук
-Empty Chest
-Пустой сундук
+### Open Chest
 Shiny Object
 Блестящий предмет
 Cracked Wall
@@ -12343,6 +12347,9 @@ Your key to the stairs is taken away!
 You found a keyring to the stairs! Now you just need to get there.
 Вы нашли связку ключей от лестницы! Теперь вам просто нужно добраться туда.
 
+
+### Behold my SPL!
+### Mmmph... SPL...
 Oh noes...
 Оу ноу...
 Ueeee!
@@ -12442,6 +12449,8 @@ Hey, stop that!
 
 
 
+### Activate SPL protocol.
+### What do you mean 'access denied'???
 Release me at once.
 Немедленно отпусти меня.
 This is unacceptable!
@@ -12533,6 +12542,8 @@ Know your place!
 
 
 
+### Hmmph~
+### My mistake~
 This wasn't supposed to happen.
 Этого не должно было случиться.
 The Collector has become the Collected.
@@ -12635,6 +12646,8 @@ I'll watch~
 Я наблюдаю~
 
 
+### Submit to my SPL!
+### Hmmmph... SPL--
 Fine then! Have it your way.
 Тогда ладно! Будь по-твоему.
 You'll be sorry you didn't listen to me~
@@ -12645,6 +12658,8 @@ They're coming for me!
 Они идут за мной!
 ### Do you know of the Dollmaker? I've got a proposal for you and I...
 
+### I cast SPL!
+### That wasn't supposed to happen!
 This is too tight...
 Это слишком туго...
 I can't get free!
@@ -12730,7 +12745,8 @@ Come and get me!
 You'll never escape!
 Тебе никогда не сбежать!
 
-
+### Mmmphh!
+### Mmmm! Mmmmmmm!
 Mmmmph!!!
 Мммммфх!!!
 Mmmmm~
@@ -12809,6 +12825,8 @@ MMMMMPH!!!
 
 
 
+### *focuses intently*
+### *appears distracted*
 *Mmmmmm~*
 *Мммммм~*
 *muffled giggle*
@@ -12823,6 +12841,8 @@ Mmmm~
 
 
 
+### Watch out for my SPL!
+### Whoops!
 You won't get me like this!
 Ты меня так не поймаешь!
 You'll never catch me!
@@ -12916,6 +12936,8 @@ You're mine.
 You can't get away.
 Ты не сможешь уйти.
 
+### *extends an arm*
+### *miscast*
 *wiggles*
 *извивается*
 *struggles*
@@ -12984,6 +13006,8 @@ You can't get away.
 *marches*
 *топот*
 
+### Engaging SPL!
+### A-Access denied!?
 This... this unit is doing a good job! I swear!
 Это... этот юнит хорошо справляется со своей работой! Я клянусь!
 It's just business as usual, nothing to see here...
@@ -13082,6 +13106,8 @@ Moving to assist!
 ### Defenses online!
 
 
+### SPL armed.
+### An exception has occurred while trying to run SPL. Retry?
 ### Error in citizen ID registration. Please submit to processing.
 Does not compute.
 Ошибка вычисления.
@@ -13191,6 +13217,8 @@ Forming blockade.
 Формирование блокады.
 
 
+### SPL();
+### throw new Error(SPL);
 ### query([ID]); >ERROR; transport([UNKNOWN], [DOLL])
 ### Does not compute;
 ### Some kind of miscalculation has occurred;
@@ -13246,6 +13274,8 @@ Forming blockade.
 ### capture([CITIZEN]);
 ### defend([POINT]);
 
+### Hyah, SPL!
+### No! Not like that!
 Looks like I'm up to no good... better stop me!
 Похоже, я замышляю что-то нехорошее... Лучше останови меня!
 Careful where you point that thing!
@@ -13349,6 +13379,8 @@ I smell an opportunity!
 Do I have to?
 Должна ли я это делать?
 
+### Let me introduce you to SPL~
+### No! My SPL!
 Oh my, looks like I'm in trouble!
 Ой, похоже, у меня неприятности!
 What a shame it would be if I got caught~
@@ -13450,6 +13482,8 @@ Oooh, that one's mine!
 
 
 
+### SPL.
+### ...
 No! I don't want to read your magazines!
 Нет! Я не хочу читать твои журналы!
 No, I don't want to learn about Shibari!
@@ -13548,6 +13582,8 @@ Get out of my library!
 
 
 
+### Deploying SPL!
+### What was I supposed to do again? Oh right!
 No! I didn't do anything wrong...
 Нет! Я не сделала ничего плохого...
 Don't punish me! Please!
@@ -13617,6 +13653,8 @@ Now now, what do we have here?
 
 
 
+### I'll need another SPL, stat!
+### A p-professional mistake.
 I did what the manual said!
 Я сделал то, что было написано в руководстве!
 I seem to have caught something, won't you help?
@@ -13657,6 +13695,8 @@ I'll take a look.
 
 
 
+### SPL
+### SPL failed
 
 
 
@@ -13715,7 +13755,8 @@ I'll take a look.
 
 
 
-
+### SPL!
+### That w-was supposed to be a SPL!
 Ooh, a shiny rock…
 О, блестящий камень…
 I wonder what's over here?
@@ -13791,6 +13832,8 @@ My name's Melissa! I know I'm pretty, but try not to stare too much~
 
 
 
+### Let me show you how it's done: SPL!
+### You've just narrowly avoided my SPL~
 Kya~ I have no mana, I'm so defenseless right now~
 Кья~ У меня нет маны, прямо сейчас я так беззащитна~
 I have all this bondage gear on me, I sure hope nobody ties me up with it~!
@@ -13890,6 +13933,7 @@ There goes my nice, relaxing day...
 
 
 
+### Behold, my true power! Wait... ack...
 I wonder what to do with all these cuffs...
 Интересно, что делать со всеми этими манжетами?..
 I have made a huge mistake...
@@ -13989,6 +14033,8 @@ Oooh, fun!
 
 
 
+### Face my SPL!
+### SPL-whoops...
 Give me another chance!
 Дай мне еще один шанс!
 No! Wait! I can explain...
@@ -14092,6 +14138,8 @@ The bounty will be mine...
 
 
 
+### You can't hope to match my SPL~
+### SPL! No wait, not like that!
 Be nice!
 Будь милой!
 No! Be gentle!
@@ -14192,6 +14240,8 @@ Can't let you have all the fun, can I?
 
 
 
+### Time for SPL!
+### *tsk*
 Let's play all night!
 Давай играть всю ночь!
 We can take our time.
@@ -14252,7 +14302,8 @@ Don't balk! Your time was up anyways~
 Не упирайся! Твое время все равно вышло~
 
 
-
+### Calling in a SPL!
+### A-assistance required!
 You'll have to try harder if you want to discipline me, ma'am.
 Вам придется больше стараться, если вы хотите приструнить меня, мэм.
 I... don't have time for training right now, ma'am...
@@ -14349,6 +14400,8 @@ Calling in a blockade!
 Начать блокаду!
 
 
+### Hidden technique: SPL!
+### I practiced a thousand times... for this!?
 I'm not hiding anything, if you know what I mean...
 Я ничего не скрываю, если ты понимаешь, что я имею в виду...
 Who are you looking for? Me?
@@ -14447,6 +14500,8 @@ I'll get you! Eventually...
 Я доберусь до тебя! Когда-нибудь...
 
 
+### Let's see how you like my SPL!
+### Wait, wrong button! Aaahh~
 Hey~! Let's have a talk.
 Эй~! Давай поговорим.
 Looks like you need additional training.
@@ -14513,6 +14568,7 @@ What's that about backup?
 Что там насчет подкрепления?
 
 
+### Wait no, wrong button!
 ### Catch me. If you can, that is.
 ### I double dare you.
 ### Weren't you chasing me?
@@ -14530,7 +14586,8 @@ What's that about backup?
 ### Mine now.
 ### Just keeping you safe from yourself.
 
-
+### SPL, sing to me!
+### SPL, listen to me...
 An outsider!
 Посторонняя!
 Hide!
@@ -14630,6 +14687,8 @@ I stand firm.
 Я выстою.
 
 
+### Behold, SPL.
+### Y-your fate has been postponed... briefly.
 ### You look cute in that, you should lose the rest though!
 
 
@@ -14689,7 +14748,6 @@ Wear this!
 Надень это!
 Come here!
 Иди сюда!
-### ...
 Capture...
 Захватили...
 Need tighten!
@@ -14747,7 +14805,8 @@ Rawr!
 Рррр!
 
 
-
+### SPL! Now my wrath is revealed!
+### Wh-what happened? What weakness has infiltrated Myrtrice?
 ### You will loose me or burn eternal!!!
 ### ... This shame is unbearable! Oh sister!!!
 ### Oh! Mytrice is caught! My ambitions laid to ruin!
@@ -14804,7 +14863,7 @@ Rawr!
 ### THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
 ### I, Myrtrice, will resist their insolent fusilades!
 
-
+### This mind is altered...
 So this is what it's like...
 Так вот на что это похоже...
 I believe I am feeling an emotion called 'fear.'
@@ -14904,7 +14963,7 @@ You leave us no choice.
 You cannot comprehend our tactics.
 Тебе не постичь нашу тактику.
 
-
+### Nyah!!! *blushes*
 Nyah! This is impossible!
 Ня! Это невозможно!
 Meow!!!
@@ -15002,7 +15061,8 @@ Let's get them!
 Let's play cat and mouse~
 Давай поиграем в кошки-мышки~
 
-
+### You cannot resist my SPL.
+### You merely prolong the inevitable!
 This... this can't be...
 Этого... этого не может быть...
 Release me mortal!
@@ -15100,7 +15160,8 @@ Do not mess with us!
 I shall take you for myself~
 Я провожу тебя сама~
 
-
+### You are no match for my SPL!
+### That wasn't supposed to happen.
 ### You won't get me!
 ### Nice try!
 ### My grandma is tougher than you!
@@ -15126,7 +15187,7 @@ I shall take you for myself~
 ### Yoink!
 ### You can't get out now!
 
-
+### Ah... my SPL...
 I will be free... even if it takes me a thousand years!
 Я буду свободна... даже если это займет у меня тысячу лет!
 Release me you pathetic creature!
@@ -15210,7 +15271,8 @@ Hehe~
 *chuckles*
 *хихикает*
 
-
+### By the power of SPL!
+### I have failed!
 Oh no, it's an adventurer!
 О нет, это искательница приключений!
 They've come for me!
@@ -15236,6 +15298,8 @@ Your magic is weak, human.
 It tickles, hehe!
 Это щекотно, хе-хе!
 
+### Let's see you face my SPL~
+### You won't escape my SPL that easily!
 Not the edging training! Anything but that!
 Только не тренировка на грани! Что угодно, только не это!
 Forgive me!
@@ -15329,7 +15393,7 @@ You really think you're special, huh?
 Combat formation bravo.
 Боевое построение 'браво'.
 
-
+### Ah! Forgive me!
 I'm sorry! I didn't mean to break that vase!
 Извините! Я не хотела разбивать эту вазу!
 I won't do it again, I swear!
@@ -15421,7 +15485,8 @@ Please surrender, miss!
 I'll just stay here!
 Я буду здесь!
 
-
+### Loading SPL!
+### Blast... this thing always jams.
 ### That thing... it scares me.
 Please no! I don't want the pleasure training again!
 Пожалуйста, нет! Я больше не хочу тренировок удовольствием!
@@ -15458,6 +15523,8 @@ Cover me, I'm going in!
 Commence overwatch!
 Начинаю наблюдение!
 
+### Submit to my SPL.
+### Ack! How inelegant!
 I'll be heading out...
 Я уже ухожу...
 Looks like I'll be taking my leave.
@@ -15555,6 +15622,7 @@ I'll do this myself.
 I'll support from the rear.
 Я буду поддерживать с тыла.
 
+### Whoops! That wasn't supposed to happen...
 Looks like I've earned some punishment...
 Похоже, я заслужила небольшое наказание...
 I'll turn you into a newt! If you don't stop me...
@@ -15652,6 +15720,7 @@ I'll make you my pet!
 Tsk tsk, you won't get away!
 Тск-тск, ты не уйдешь!
 
+### I cast SPL! No, wait...
 You're just too cute... let me play with you a bit!
 Ты уж слишком миля... дай мне немного поиграть с тобой!
 Come, come closer! I'll be gentle~
@@ -15699,6 +15768,8 @@ My, my, you look too cute...
 I like you. I'll save you a spot at home~
 Ты мне нравишься. Я приберегу для тебя местечко в своем доме~
 
+### I cast, umm, SPL!
+### I cast Silence! No, wait--
 I promise I'll be back later!
 Я обещаю, что вернусь позже!
 I didn't do anything wrong!
@@ -15795,6 +15866,8 @@ That's it! You made me mad!
 I'll just... go.
 Я просто... уйду.
 
+### Rise, my minions!
+### ...Hello? Can anyone hear me?
 Sticks and stones may break my bones... but you'll never catch me!
 Палки и камни могут переломать мне кости... но ты никогда меня не поймаешь!
 Got a bone to pick with me?
@@ -15882,6 +15955,7 @@ Why don't you bend the knee...
 Who goes there?
 Кто там?
 
+### SPL...
 Can't... Move...
 Не могу... Двигаться...
 Tight...
@@ -18189,8 +18263,7 @@ There is no valid space next to you!
 
 (Retaliate)
 (Отомстить)
-(Really attack? You will be justified and won't take a rep penalty)|(You will still lose rep if you capture her)
-(Действительно напасть? Вы будете оправданы и не получите штраф в репутации)|(Вы все равно потеряете репутацию, если захватите ее)
+### (Really attack? You will be justified and won't take an immediate rep penalty)
 
 (Sneak Attack)
 (Внезапная атака)
@@ -27357,10 +27430,27 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### ENMY unlocks the ITMN!
 ### The conjured ITMN vanishes as it comes off.
 
-### AMNT restraints tightened since last tick~
+### AMNT restraints added since last tick~
+### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
 ### Back to Facilities
 
 ### Your Inventory
 ### Warden's Storage
+
+### Store 1 ITMN
+### Take 1 ITMN
+### Store 5 ITMN
+### Take 5 ITMN
+### Store ALL ITMN
+### Take ALL ITMN
+### Store ALL-1 ITMN
+### Take ALL-1 ITMN
+### Take Everything
+### Deposit All
+
+### Auto-loot found 
+###  (not picked up)
+
+### Automatically Flip When Moving

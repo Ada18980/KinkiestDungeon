@@ -40,7 +40,7 @@ Restart please!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.44
+### 5.3.45
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 あなたは古代の地下魔法都市に挑む冒険者です。
@@ -63,6 +63,7 @@ Controls
 Keybindings
 キー設定
 
+### Auto loot all from chests
 
 Apply palettes to Restraints
 拘束具にﾊﾟﾚｯﾄで設定した色を使用
@@ -674,6 +675,9 @@ Persisting Desires
 執拗な欲望
 Your dark desires are endless.
 暗い欲望が尽きなくなる
+
+### Sugar Rush
+### Consuming sweets makes you hyperactive, decreasing stamina costs and granting free moves.
 
 Vengeance
 復讐
@@ -5999,6 +6003,7 @@ You climb down to the next level
 Level RestraintLevel (Rarity)
 拘束のレベル： Rarity
 
+### All
 Consumable
 消耗品
 Worn
@@ -8491,7 +8496,7 @@ Chest
 チェスト
 Faction Chest
 他人のチェスト
-### Empty Chest
+### Open Chest
 Shiny Object
 落とし物
 Cracked Wall
@@ -12594,6 +12599,9 @@ Your key to the stairs is taken away!
 You found a keyring to the stairs! Now you just need to get there.
 階段の鍵を見つけた！次のフロアへ移動可能になった。
 
+
+### Behold my SPL!
+### Mmmph... SPL...
 Oh noes...
 あちゃー……
 Ueeee!
@@ -12693,6 +12701,8 @@ Hey, stop that!
 
 
 
+### Activate SPL protocol.
+### What do you mean 'access denied'???
 Release me at once.
 直ちに解放しなさい！
 This is unacceptable!
@@ -12784,6 +12794,8 @@ Know your place!
 
 
 
+### Hmmph~
+### My mistake~
 This wasn't supposed to happen.
 そんな、あり得ない……
 The Collector has become the Collected.
@@ -12886,6 +12898,8 @@ I'll watch~
 見てるわ。
 
 
+### Submit to my SPL!
+### Hmmmph... SPL--
 Fine then! Have it your way.
 いいわ、好きにしなさい！
 You'll be sorry you didn't listen to me~
@@ -12897,6 +12911,8 @@ They're coming for me!
 Do you know of the Dollmaker? I've got a proposal for you and I...
 ドールメイカーって知ってる？ちょっと提案があるんだけど……
 
+### I cast SPL!
+### That wasn't supposed to happen!
 This is too tight...
 きつすぎ……
 I can't get free!
@@ -12982,7 +12998,8 @@ Come and get me!
 You'll never escape!
 逃げられないぞ！
 
-
+### Mmmphh!
+### Mmmm! Mmmmmmm!
 Mmmmph!!!
 むぅぅぅん！
 Mmmmm~
@@ -13060,6 +13077,8 @@ MMMMMPH!!!
 
 
 
+### *focuses intently*
+### *appears distracted*
 *Mmmmmm~*
 …………
 *muffled giggle*
@@ -13074,6 +13093,8 @@ Mmmm~
 
 
 
+### Watch out for my SPL!
+### Whoops!
 You won't get me like this!
 こんなのすぐに逃げ出してやる！
 You'll never catch me!
@@ -13167,6 +13188,8 @@ You're mine.
 You can't get away.
 逃げられないぞ！
 
+### *extends an arm*
+### *miscast*
 *wiggles*
 (身を捩っている)
 *struggles*
@@ -13238,6 +13261,8 @@ This is a bug, please report
 *marches*
 (こちらに向かってきている)
 
+### Engaging SPL!
+### A-Access denied!?
 This... this unit is doing a good job! I swear!
 これは……このユニットは使えそうですね。
 It's just business as usual, nothing to see here...
@@ -13338,6 +13363,8 @@ Defenses online!
 ディフェンスモジュール起動。
 
 
+### SPL armed.
+### An exception has occurred while trying to run SPL. Retry?
 Error in citizen ID registration. Please submit to processing.
 ID登録エラー、処置開始。
 Does not compute.
@@ -13448,6 +13475,8 @@ Forming blockade.
 防衛網形成
 
 
+### SPL();
+### throw new Error(SPL);
 query([ID]); >ERROR; transport([UNKNOWN], [DOLL])
 query([ID]); >ERROR; ([UNKNOWN], [DOLL]) を輸送します。
 Does not compute;
@@ -13556,6 +13585,8 @@ capture([CITIZEN]);
 defend([POINT]);
 警備:([POINT]);
 
+### Hyah, SPL!
+### No! Not like that!
 Looks like I'm up to no good... better stop me!
 良からぬ考えが浮かんできたな……止めるなら今のうちだぞ。
 Careful where you point that thing!
@@ -13659,6 +13690,8 @@ I smell an opportunity!
 Do I have to?
 やらなきゃいけないのか？
 
+### Let me introduce you to SPL~
+### No! My SPL!
 Oh my, looks like I'm in trouble!
 あら、何かトラブルに巻き込まれたようですわね。
 What a shame it would be if I got caught~
@@ -13760,6 +13793,9 @@ Oooh, that one's mine!
 
 
 
+### SPL.
+...
+…………
 No! I don't want to read your magazines!
 ちょっと、そんな漫画読みたくありません！
 No, I don't want to learn about Shibari!
@@ -13858,6 +13894,8 @@ Get out of my library!
 
 
 
+### Deploying SPL!
+### What was I supposed to do again? Oh right!
 No! I didn't do anything wrong...
 わ、私何も悪いことしていませんよ……
 Don't punish me! Please!
@@ -13927,6 +13965,8 @@ Now now, what do we have here?
 
 
 
+### I'll need another SPL, stat!
+### A p-professional mistake.
 I did what the manual said!
 マニュアルに書いてあったことをしただけだ！
 I seem to have caught something, won't you help?
@@ -13967,6 +14007,8 @@ I'll take a look.
 
 
 
+### SPL
+### SPL failed
 
 
 
@@ -14025,7 +14067,8 @@ I'll take a look.
 
 
 
-
+### SPL!
+### That w-was supposed to be a SPL!
 Ooh, a shiny rock…
 おおっと、いい感じの石……
 I wonder what's over here?
@@ -14101,6 +14144,8 @@ My name's Melissa! I know I'm pretty, but try not to stare too much~
 
 
 
+### Let me show you how it's done: SPL!
+### You've just narrowly avoided my SPL~
 Kya~ I have no mana, I'm so defenseless right now~
 きゃあ～っ、今はマナもないし無防備だよ～っ
 I have all this bondage gear on me, I sure hope nobody ties me up with it~!
@@ -14200,6 +14245,7 @@ There goes my nice, relaxing day...
 
 
 
+### Behold, my true power! Wait... ack...
 I wonder what to do with all these cuffs...
 この手錠、どうしたら良いのでしょう……ね？
 I have made a huge mistake...
@@ -14299,6 +14345,8 @@ Oooh, fun!
 
 
 
+### Face my SPL!
+### SPL-whoops...
 Give me another chance!
 もう一度チャンスをくれ！
 No! Wait! I can explain...
@@ -14402,6 +14450,8 @@ The bounty will be mine...
 
 
 
+### You can't hope to match my SPL~
+### SPL! No wait, not like that!
 Be nice!
 いい子にするよ！
 No! Be gentle!
@@ -14502,6 +14552,8 @@ Can't let you have all the fun, can I?
 
 
 
+### Time for SPL!
+### *tsk*
 Let's play all night!
 一晩中やりましょう！
 We can take our time.
@@ -14562,7 +14614,8 @@ Don't balk! Your time was up anyways~
 遠慮しないで、どうせ間に合わないだろうから。
 
 
-
+### Calling in a SPL!
+### A-assistance required!
 You'll have to try harder if you want to discipline me, ma'am.
 私を躾けたいならもっと上手くやってください、ボス。
 I... don't have time for training right now, ma'am...
@@ -14659,6 +14712,8 @@ Calling in a blockade!
 防衛線を！
 
 
+### Hidden technique: SPL!
+### I practiced a thousand times... for this!?
 I'm not hiding anything, if you know what I mean...
 隠し事なんてしていないぞ……
 Who are you looking for? Me?
@@ -14757,6 +14812,8 @@ I'll get you! Eventually...
 捕まえてみせるぞ、いずれは……
 
 
+### Let's see how you like my SPL!
+### Wait, wrong button! Aaahh~
 Hey~! Let's have a talk.
 ちょっとお話しない？
 Looks like you need additional training.
@@ -14823,6 +14880,7 @@ What's that about backup?
 バックアップは？
 
 
+### Wait no, wrong button!
 Catch me. If you can, that is.
 ほら、捕まえてみなよ～。
 I double dare you.
@@ -14856,7 +14914,8 @@ Mine now.
 Just keeping you safe from yourself.
 これは君自身のためにやってるんだよ。
 
-
+### SPL, sing to me!
+### SPL, listen to me...
 An outsider!
 よそ者め！
 Hide!
@@ -14957,6 +15016,8 @@ I stand firm.
 全力で抗います。
 
 
+### Behold, SPL.
+### Y-your fate has been postponed... briefly.
 You look cute in that, you should lose the rest though!
 もがく姿はとても可愛らしいですが、大人しくしていたほうがいいですよ。
 
@@ -15017,8 +15078,6 @@ Wear this!
 着ろ！
 Come here!
 来い！
-...
-…………
 Capture...
 捕まえた……
 Need tighten!
@@ -15076,7 +15135,8 @@ Rawr!
 生意気な！
 
 
-
+### SPL! Now my wrath is revealed!
+### Wh-what happened? What weakness has infiltrated Myrtrice?
 You will loose me or burn eternal!!!
 解放しないと永遠に焼いてやるぞ！！！
 ... This shame is unbearable! Oh sister!!!
@@ -15188,7 +15248,7 @@ THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFI
 I, Myrtrice, will resist their insolent fusilades!
 我、Mytriceが降りかかる火の粉を払ってやろう！
 
-
+### This mind is altered...
 So this is what it's like...
 こんな感じなのか……
 I believe I am feeling an emotion called 'fear.'
@@ -15288,7 +15348,7 @@ You leave us no choice.
 You cannot comprehend our tactics.
 あなたは私達の戦術を理解できない。
 
-
+### Nyah!!! *blushes*
 Nyah! This is impossible!
 にゃっ！なんで！？
 Meow!!!
@@ -15386,7 +15446,8 @@ Let's get them!
 Let's play cat and mouse~
 ネズミみたいに逃げなよ～！
 
-
+### You cannot resist my SPL.
+### You merely prolong the inevitable!
 This... this can't be...
 あ……ありえない……
 Release me mortal!
@@ -15481,7 +15542,8 @@ Do not mess with us!
 I shall take you for myself~
 私が連れて行く。
 
-
+### You are no match for my SPL!
+### That wasn't supposed to happen.
 You won't get me!
 捕まるものか！
 ### Nice try!
@@ -15526,7 +15588,7 @@ You are my pet now!
 You can't get out now!
 これで逃げられないぞ！
 
-
+### Ah... my SPL...
 I will be free... even if it takes me a thousand years!
 例え1000年かかろうとも自由になってみせる……！
 Release me you pathetic creature!
@@ -15610,7 +15672,8 @@ Hehe~
 *chuckles*
 ふふふ……。
 
-
+### By the power of SPL!
+### I have failed!
 Oh no, it's an adventurer!
 冒険者だ！
 They've come for me!
@@ -15636,6 +15699,8 @@ Your magic is weak, human.
 It tickles, hehe!
 くすぐったいぞ。
 
+### Let's see you face my SPL~
+### You won't escape my SPL that easily!
 Not the edging training! Anything but that!
 変なこと以外だったら何でも受け入れますよ！
 Forgive me!
@@ -15729,7 +15794,7 @@ You really think you're special, huh?
 Combat formation bravo.
 コンバットフォーメーションB！
 
-
+### Ah! Forgive me!
 I'm sorry! I didn't mean to break that vase!
 ごめんなさい！花瓶を割るつもりはなかったんです！
 I won't do it again, I swear!
@@ -15821,7 +15886,8 @@ Please surrender, miss!
 I'll just stay here!
 ここで待っていますね……
 
-
+### Loading SPL!
+### Blast... this thing always jams.
 That thing... it scares me.
 あれは……怖いです。
 Please no! I don't want the pleasure training again!
@@ -15859,6 +15925,8 @@ Cover me, I'm going in!
 Commence overwatch!
 監視開始。
 
+### Submit to my SPL.
+### Ack! How inelegant!
 I'll be heading out...
 旅に出ますね……
 Looks like I'll be taking my leave.
@@ -15956,6 +16024,7 @@ I'll do this myself.
 I'll support from the rear.
 サポートしますね。
 
+### Whoops! That wasn't supposed to happen...
 Looks like I've earned some punishment...
 罰が当たったようね……
 I'll turn you into a newt! If you don't stop me...
@@ -16053,6 +16122,7 @@ I'll make you my pet!
 Tsk tsk, you won't get away!
 ふふふ、もう逃げられないわよ！
 
+### I cast SPL! No, wait...
 You're just too cute... let me play with you a bit!
 あら、とっても可愛い……ちょっと遊びましょう？
 Come, come closer! I'll be gentle~
@@ -16100,6 +16170,8 @@ My, my, you look too cute...
 I like you. I'll save you a spot at home~
 アンタのことは好きよ。今度お家に泊まりに来てね？
 
+### I cast, umm, SPL!
+### I cast Silence! No, wait--
 I promise I'll be back later!
 ちゃんと帰ってくるから！
 I didn't do anything wrong!
@@ -16196,6 +16268,8 @@ That's it! You made me mad!
 I'll just... go.
 もう行くね……
 
+### Rise, my minions!
+### ...Hello? Can anyone hear me?
 Sticks and stones may break my bones... but you'll never catch me!
 棒や石で骨は砕けても……私は捕まらないわよ？
 Got a bone to pick with me?
@@ -16283,6 +16357,7 @@ Why don't you bend the knee...
 Who goes there?
 誰が行くの？
 
+### SPL...
 Can't... Move...
 ウゴ……ケナイ……
 Tight...
@@ -18623,8 +18698,7 @@ There is no valid space next to you!
 
 (Retaliate)
 (反撃する)
-(Really attack? You will be justified and won't take a rep penalty)|(You will still lose rep if you capture her)
-(本当に攻撃する？この攻撃は正当化され、関係性が悪化することはない)|(ただし捕獲した場合は関係性が悪化する)
+### (Really attack? You will be justified and won't take an immediate rep penalty)
 
 (Sneak Attack)
 (隠密攻撃)
@@ -28761,12 +28835,9 @@ The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
 古代文明の教皇の拘束具が伝播した (+RestraintAdded)
 The ancient hierophant mumbles at you for assistance! (DamageTaken)
 古代文明の教皇が救いを求め縋ってきた！ (DamageTaken)
+
 The crystals break off, revealing a keyhole and weakening the item.
 結晶が割れ、拘束具の鍵穴が露出した。
-
-### Automatically Flip When Moving
-Automatically Flip When Moving
-移動時に自動的に反転
 Your distraction causes the crystals to grow back, encasing the lock again!
 性欲を浴びてクリスタルが成長し、錠を再び覆ってしまった。
 
@@ -28825,7 +28896,8 @@ ENMY が ITMN を解錠した！
 The conjured ITMN vanishes as it comes off.
 召喚された ITMN は外れると同時に消え去った。
 
-### AMNT restraints tightened since last tick~
+### AMNT restraints added since last tick~
+### AMNT restraints confiscated since last tick~
 You have no restraints in storage. Go to the Summit to deposit restraints.
 倉庫に拘束具がない。セーフゾーンに行って拘束具を預けてこよう。
 
@@ -28836,3 +28908,20 @@ Your Inventory
 自身のインベントリ
 Warden's Storage
 看守長の倉庫
+
+### Store 1 ITMN
+### Take 1 ITMN
+### Store 5 ITMN
+### Take 5 ITMN
+### Store ALL ITMN
+### Take ALL ITMN
+### Store ALL-1 ITMN
+### Take ALL-1 ITMN
+### Take Everything
+### Deposit All
+
+### Auto-loot found 
+###  (not picked up)
+
+Automatically Flip When Moving
+移動時に自動的に反転
