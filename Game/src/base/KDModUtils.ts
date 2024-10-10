@@ -8,11 +8,15 @@ enum KDModifierEnum {
 	consumable,
 };
 
+let PostTranslationRecord: [string, string][] = [];
+
 function addTextKey(Name: string, Text: string) {
 	let ct = 0;
+
 	for (let screen of TextAllScreenCache.entries()) {
 		if (screen[0].includes("KinkyDungeon")) {
 			screen[1].cache[Name] = screen[1].translationcache[Text] || Text;
+			PostTranslationRecord.push([Name, Text]);
 		} else console.log("ERROR LOADING TEXT!!!");
 	}
 	if (ct == 0) KDLoadingTextKeys[Name] = Text;

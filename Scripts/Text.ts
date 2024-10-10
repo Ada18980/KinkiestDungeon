@@ -158,6 +158,10 @@ class TextCache {
 		this.language = TranslationLanguage;
 		const lang = (TranslationLanguage || "").trim().toUpperCase();
 		if (lang !== "RU") {lines.forEach((line) => (this.cache[line[0]] = line[1]));}
+
+		for (let pair of PostTranslationRecord) {
+			this.cache[pair[0]] = this.translationcache[pair[1]] || pair[1];
+		}
 		this.loaded = true;
 	}
 

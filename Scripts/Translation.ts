@@ -124,9 +124,9 @@ function TranslationParseTXT(str: string): string[] {
 		arr[row] += cc;                        // Otherwise, append the current character to the row
 	}
 
-	// Removes any comment rows (starts with ###)
+	// Removes any comment rows (starts with ### or empty)
 	for (let row = arr.length - 1; row >= 0; row--)
-		if (arr[row].indexOf("###") == 0) {
+		if (arr[row].indexOf("###") == 0 || arr[row].length == 0) {
 			arr.splice(row, 1);
 		}
 
@@ -298,7 +298,7 @@ function GetUserPreferredLanguage() {
 /**
  * Loads an array of texts loaded from a .csv file
  * @param text1 - Primary array to load - this will probably be English
- * @param text2 - Secondary array to load - this is probably a translation - This part might not be working? 
+ * @param text2 - Secondary array to load - this is probably a translation - This part might not be working?
  */
 function KDLoadTranslations(text1: string, text2: string = null) {
 	let parsedkeys = {};
@@ -309,7 +309,7 @@ function KDLoadTranslations(text1: string, text2: string = null) {
 			let keyloc = line.indexOf(",");
 			const textkey = line.slice(0,keyloc);
 			let val = line.slice(keyloc+1);
-			// Remove quotes if the value string has commas in it. 
+			// Remove quotes if the value string has commas in it.
 			if ((val.startsWith('"') && (val.endsWith('"'))) || ((val.startsWith("'")) && (val.endsWith("'")))) {
 				val = val.slice(1,-1);
 			}
@@ -331,7 +331,7 @@ function KDLoadTranslations(text1: string, text2: string = null) {
 				let keyloc = line.indexOf(",");
 				const textkey = line.slice(0,keyloc);
 				let val = line.slice(keyloc+1);
-				// Remove quotes if the value string has commas in it. 
+				// Remove quotes if the value string has commas in it.
 				if ((val.startsWith('"') && (val.endsWith('"'))) || ((val.startsWith("'")) && (val.endsWith("'")))) {
 					val = val.slice(1,-1);
 				}
