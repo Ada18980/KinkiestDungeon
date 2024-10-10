@@ -159,9 +159,13 @@ class TextCache {
 		const lang = (TranslationLanguage || "").trim().toUpperCase();
 		if (lang !== "RU") {lines.forEach((line) => (this.cache[line[0]] = line[1]));}
 
+		let newRecord: [string, string][] = [];
 		for (let pair of PostTranslationRecord) {
-			this.cache[pair[0]] = this.translationcache[pair[1]] || pair[1];
+			if (this.translationcache[pair[1]]) {
+				this.cache[pair[0]] = this.translationcache[pair[1]] || pair[1];
+			} else newRecord.push(pair);
 		}
+		PostTranslationRecord = newRecord;
 		this.loaded = true;
 	}
 
