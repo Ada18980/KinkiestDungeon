@@ -158,7 +158,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 	"OfferChastity": {
 		dialogue: "OfferChastity",
 		allowedPrisonStates: ["parole", ""],
-		allowedPersonalities: ["Sub"],
+		allowedPersonalities: ["Dom"],
 		excludeTags: ["zombie", "skeleton", "robot"],
 		playRequired: true,
 		nonHostile: true,
@@ -175,6 +175,43 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& KDRandom() < 0.05
 				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					undefined,
+					{
+						allowLowPower: true
+					}) != undefined);
+		},
+		weight: (_enemy, _dist) => {
+			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
+		},
+	},
+	"OfferCursed": {
+		dialogue: "OfferCursed",
+		allowedPrisonStates: ["parole", ""],
+		allowedPersonalities: ["Sub"],
+		excludeTags: ["zombie", "skeleton", "robot"],
+		playRequired: true,
+		nonHostile: true,
+		noCombat: true,
+		noAlly: true,
+		talk: true,
+		blockDuringPlaytime: true,
+		prerequisite: (_enemy, dist, _AIData) => {
+			return (dist < 1.5
+				&& !KinkyDungeonFlags.get("DangerFlag")
+				&& !KinkyDungeonFlags.get("BondageOffer")
+				&& !KinkyDungeonFlags.get("NoTalk")
+				&& !KinkyDungeonFlags.get("CursedOffer")
+				&& KDRandom() < 0.05
+				&& KinkyDungeonGetRestraint({tags: ["leatherRestraints", "noBelt", "leatherHeels"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined,
 					undefined,
 					undefined,
 					undefined,

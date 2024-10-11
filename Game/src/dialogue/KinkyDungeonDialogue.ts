@@ -2007,7 +2007,8 @@ function KDYesNoBasic (
 	countAngry:     number = 1,
 	Lock:           string = "Red",
 	Ally:           boolean = false,
-	Flags:          { name: string, duration: number, floors?: number }[] = []
+	Flags:          { name: string, duration: number, floors?: number }[] = [],
+	CurseList:      string = "", // Overrides Lock
 ): KinkyDialogue
 {
 	return KDYesNoTemplate(
@@ -2087,12 +2088,27 @@ function KDYesNoBasic (
 				KDPleaseSpeaker(refused ? 0.012 : 0.024); // Less reputation if you refused
 			KinkyDungeonChangeRep(antigoddess[0], refused ? 1 : 2); // Less submission if you refused
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+			let curse: string = undefined;
+			if (CurseList) {
+				curse = KDGetByWeight(
+					KinkyDungeonGetCurseByListWeighted(
+						[CurseList],
+						KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r).name,
+						false,
+						0,
+						1000));
+
+			}
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+				curse);
 			KDAddOffer(1);
 			let num = count;
 			// Apply additional restraints
 			if (num > 1) {
-				let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock,
+				let r = KinkyDungeonGetRestraint({tags: restraint},
+					MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
+					(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined,
+					curse ? undefined : Lock,
 					undefined,
 					undefined,
 					undefined,
@@ -2100,14 +2116,15 @@ function KDYesNoBasic (
 					undefined,
 					undefined,
 					undefined,
-					undefined,
+					curse,
 					undefined,
 					undefined,
 					{
 						allowLowPower: true
 					});
 				if (r)
-					KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+					KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
+				curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, curse);
 			}
 			return false;
 		},(refused) => { // No function. This happens when the user refuses.
@@ -2135,12 +2152,25 @@ function KDYesNoBasic (
 					KDIncreaseOfferFatigue(-20);
 					KDGameData.CurrentDialogMsg = name + "Force_Failure";
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+					let curse: string = undefined;
+					if (CurseList) {
+						curse = KDGetByWeight(
+							KinkyDungeonGetCurseByListWeighted(
+								[CurseList],
+								KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r).name,
+								false,
+								0,
+								1000));
+
+					}
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
+					curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, curse);
 					KDAddOffer(1);
 					let num = refused ? countAngry : count;
 					// Apply additional restraints
 					if (num > 1) {
-						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, Lock,
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined,
+						curse ? undefined : Lock,
 							undefined,
 							undefined,
 							undefined,
@@ -2148,14 +2178,17 @@ function KDYesNoBasic (
 							undefined,
 							undefined,
 							undefined,
-							undefined,
+							curse,
 							undefined,
 							undefined,
 							{
 								allowLowPower: true
 							});
 						if (r)
-							KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
+							KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
+						curse ? undefined : Lock, true, false, undefined,
+						KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+						curse);
 					}
 				} else {
 					KDIncreaseOfferFatigue(10);
