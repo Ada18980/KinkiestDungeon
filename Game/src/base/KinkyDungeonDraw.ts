@@ -1511,6 +1511,10 @@ function KinkyDungeonDrawGame() {
 										(newX - CamX)*KinkyDungeonGridSizeDisplay, (newY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 											zIndex: 99,
 										});
+									DrawTextKD(Math.round(-KDSprintCost()*10) + "sp",
+										(xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
+										(yy - CamY - 0.25)*KinkyDungeonGridSizeDisplay, "#88ff88");
+
 									xx = newX;
 									yy = newY;
 								}

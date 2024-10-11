@@ -5966,7 +5966,7 @@ function KDSprintCost(sprintdata?: any): number {
 	let data = {
 		sprintdata: sprintdata,
 		sprintCostMult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SprintEfficiency")),
-		cost: (-KDSprintCostBase - KDSprintCostSlowLevel[Math.round(KinkyDungeonSlowLevel)]),
+		cost: (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length, Math.round(KinkyDungeonSlowLevel))]),
 		boost: 0,
 	};
 
