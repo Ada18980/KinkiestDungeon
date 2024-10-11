@@ -1086,7 +1086,14 @@ function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 		return KDWantsToEscape(value);
 	});
 
+	let origTick: Record<number, number> = {};
+
+
+
 	for (let value of eligibleNPCs) {
+		if (KDGetGlobalEntity(value.id)) {
+			origTick[value.id] = KDGetGlobalEntity(value.id).boundLevel;
+		}
 		KDRunNPCEscapeTick(value.id, ticks);
 	}
 
@@ -1112,11 +1119,11 @@ function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 				}
 
 			} else {
-				value.escapegrace = false;
-				if (msgcount++ < maxmsg) KinkyDungeonSendTextMessage(10, TextGet("KDNPCStruggle").replace(
+				if ((origTick[value.id] && KDGetGlobalEntity(value.id).boundLevel < origTick[value.id]) && msgcount++ < maxmsg) KinkyDungeonSendTextMessage(10, TextGet("KDNPCStruggle").replace(
 					"NPC",
 					value.name
 				), "#ffa1a1", 1);
+				value.escapegrace = false;
 			}
 
 		}
