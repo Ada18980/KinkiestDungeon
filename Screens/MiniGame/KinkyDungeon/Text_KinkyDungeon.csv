@@ -23656,6 +23656,7 @@ KDToughArmor,"Tough Armor (1/2 crit mult while aware)"
 KDAbsoluteArmor,"Absolute Armor (1/2 crit mult)"
 
 KDDressNPC,Change Outfit
+KDZoomNPC,Enlarged View
 KDBackToGame,Back to Game
 
 KinkyDungeonSpellVineSlimeBall,Slimy Spit
@@ -25037,6 +25038,9 @@ KDCollectionFilterUnavailable,"Unavailable"
 
 KDCollectionTab_AutoBind,Auto Bind Interface
 KDDrawSelectedTab_AutoBind,AutoBind
+
+KDCollectionTab_FacilityQuick,Assign to Facility
+KDDrawSelectedTab_FacilityQuick,Assign to Facility
 
 KDAutoBindCopy,Copy Restraints
 KDAutoBindPaste,Paste Restraints from NME
