@@ -12,6 +12,7 @@ interface KDContainer {
 	items: Record<string, item>,
 	lock: string,
 	type: string,
+	validation?: string,
 	filters?: string[],
 }
 
@@ -53,39 +54,44 @@ function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, cr
 }
 
 
-function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit]) {
+function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit], invMsg?: string) {
 	let x = 1225 + xOffset;
 	let takeItem = (inv: item) => {
-		if (container.items[inv?.name]
-			&& (inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))
-		) {
-			let item = KinkyDungeonInventoryGetSafe(inv.name);
-			if (!item) {
-				item = JSON.parse(JSON.stringify(container.items[inv.name]));
-				item.quantity = 1;
-				KinkyDungeonInventoryAdd(item);
-			} else item.quantity = (item.quantity || 1) + 1;
-			if (container.items[inv.name].quantity > 1) {
-				container.items[inv.name].quantity -= 1;
-			} else {
-				delete container.items[inv.name];
+		if (!invMsg) {
+			if (container.items[inv?.name]
+				&& (inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))
+			) {
+				let item = KinkyDungeonInventoryGetSafe(inv.name);
+				if (!item) {
+					item = JSON.parse(JSON.stringify(container.items[inv.name]));
+					item.quantity = 1;
+					KinkyDungeonInventoryAdd(item);
+				} else item.quantity = (item.quantity || 1) + 1;
+				if (container.items[inv.name].quantity > 1) {
+					container.items[inv.name].quantity -= 1;
+				} else {
+					delete container.items[inv.name];
+				}
 			}
 		}
+
 	};
 	let transferItem = (inv: item) => {
-		let type = KDGetItemType(inv);
-		if (filters.includes(type)) return; // Cant transfer wrong items
-		let item = KinkyDungeonInventoryGetSafe(inv?.name);
-		if (item && KDCanDrop(item)) {
-			if (!container?.items[inv.name]) {
-				container.items[inv.name] = JSON.parse(JSON.stringify(item));
-				container.items[inv.name].quantity = 0;
-			}
-			container.items[inv.name].quantity = (container.items[inv.name].quantity || 0) + 1;
-			if (item.quantity > 1) {
-				item.quantity -= 1;
-			} else {
-				KinkyDungeonInventoryRemoveSafe(KinkyDungeonInventoryGetSafe(inv.name));
+		if (!invMsg) {
+			let type = KDGetItemType(inv);
+			if (filters.includes(type)) return; // Cant transfer wrong items
+			let item = KinkyDungeonInventoryGetSafe(inv?.name);
+			if (item && KDCanDrop(item)) {
+				if (!container?.items[inv.name]) {
+					container.items[inv.name] = JSON.parse(JSON.stringify(item));
+					container.items[inv.name].quantity = 0;
+				}
+				container.items[inv.name].quantity = (container.items[inv.name].quantity || 0) + 1;
+				if (item.quantity > 1) {
+					item.quantity -= 1;
+				} else {
+					KinkyDungeonInventoryRemoveSafe(KinkyDungeonInventoryGetSafe(inv.name));
+				}
 			}
 		}
 	}
@@ -105,7 +111,10 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	//DrawTextFitKD("<->",
 	//	xOffset + 1300, 750, 200, "#ffffff", undefined, 48, undefined, 70);
 
-	let YourInv = KDDrawInventoryContainer(-900, 100, filteredInventory, filter, filter,
+	let YourInv = invMsg ? {
+		selected: null,
+		tooltipItem: null,
+	} : KDDrawInventoryContainer(-900, 100, filteredInventory, filter, filter,
 	(inv: KDFilteredInventoryItem, x, y, w, h, different) => {
 		if (!different && !KDUI_Container_LastSelected) {
 			transferItem(inv.item);
@@ -114,6 +123,12 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	}, (inv) => {
 		return (inv.item.type == Weapon && inv.item.name == KinkyDungeonPlayerWeapon) ? "#e64539" : KDTextGray1;
 	}, "");
+
+	if (invMsg) {
+		DrawTextFitKD(TextGet(invMsg),
+		xOffset + 850, 550, 500, "#ffffff", undefined, 32, undefined, 70);
+
+	}
 
 	let filteredInventory2 = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter,
 		KDGameData.Containers[name]?.items
@@ -304,3 +319,23 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 function KDCanDrop(item: item) {
 	return (!KDWeapon(item) || !isUnarmed(KDWeapon(item)));
 }
+
+function KDValidateContainer(container: KDContainer): string {
+	if (KDSpecialContainers[container.name]) {
+		let val = KDSpecialContainers[container.name](container);
+		if (val) return val;
+	}
+	if (container.validation && KDContainerVal[container.validation]) {
+		let val = KDContainerVal[container.validation](container);
+		if (val) return val;
+	}
+	return "";
+}
+
+let KDSpecialContainers = {
+	WardenChest: (container: KDContainer) => {
+		return KDGameData.RoomType == "Summit" ? "" : "KDWardenNeedSummit";
+	}
+};
+let KDContainerVal = {
+};

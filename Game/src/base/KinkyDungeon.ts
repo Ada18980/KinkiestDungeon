@@ -230,7 +230,7 @@ let KDToggles = {
 	ForcePalette: false,
 	AutoLoadMods: false,
 	FlipPlayer: true,
-	FlipPlayerAuto: true,
+	FlipPlayerAuto: false,
 	Helper: true,
 	FastFloaters: false,
 	NoDmgFloaters: false,

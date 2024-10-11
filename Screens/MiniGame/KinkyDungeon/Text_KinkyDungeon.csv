@@ -25224,6 +25224,8 @@ KDWardenTightened,AMNT restraints added since last tick~
 KDWardenConfiscate,AMNT restraints confiscated since last tick~
 KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
 
+KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
+
 KDContainerBack_Facilities,Back to Facilities
 KDContainerBack_Game,Back to Game
 
@@ -25247,3 +25249,5 @@ KDAutoLoot,"Auto-loot found "
 KDNotPickedUp," (not picked up)"
 
 KDToggleFlipPlayerAuto,Automatically Flip When Moving
+
+KDWardenNeedSummit,Go to the summit to deposit restraints

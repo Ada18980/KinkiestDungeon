@@ -110,7 +110,7 @@ async function KDExportTranslationFile(cull: boolean) {
 	for (let c of Object.values(TextScreenCache.cache)) {
 		if (!cache || !cache[c]) {
 			file = file + '\n' + c;
-			file = file + '\n';
+			file = file + '\n ';
 		}
 
 	}
