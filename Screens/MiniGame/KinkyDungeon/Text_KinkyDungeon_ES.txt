@@ -33,19 +33,9 @@ modificaciones
 Mods Loaded.
 Modos cargados.
 
-Restart required!
-¡Reinicio requerido!
-需要重启！
-¡Necesito reiniciar!
-재시작 필요！
-¡Reinicio requerido!
-### Restart please!
-### ¡Reinicio!
-### Rechargement requis!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.45
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 Eres un aventurero que desciende a una antigua ciudad subterránea de magia.
@@ -10452,7 +10442,8 @@ Por 3 repeticiones la diosa te otorgará una llave.
 ### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 Por 3 rep la diosa
-### For 3 rep the goddess 
+For 3 rep the goddess 
+Por 3 rep la diosa
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 La diosa restaurará completamente tu maná a cambio de AMOUNT rep
@@ -23018,6 +23009,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
+
 ### Back to Facilities
 
 ### Your Inventory
@@ -23038,3 +23030,5 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ###  (not picked up)
 
 ### Automatically Flip When Moving
+
+### Go to the summit to deposit restraints

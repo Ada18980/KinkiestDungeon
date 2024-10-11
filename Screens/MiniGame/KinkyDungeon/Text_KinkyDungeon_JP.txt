@@ -30,17 +30,9 @@ Japanese
 Mods Loaded.
 MODがロードされました。
 
-### Restart required!
-### 需要重启！
-### 재시작 필요！
-Restart please!
-適応には再起動が必要です。
-### ¡Reinicio!
-### Rechargement requis!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.45
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 あなたは古代の地下魔法都市に挑む冒険者です。
@@ -11850,7 +11842,8 @@ For 3 rep the goddess will grant you a key.
 ### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 神に関係性を捧げ、助けてもらう。
-### For 3 rep the goddess 
+For 3 rep the goddess 
+神に関係性を捧げ、助けてもらう。
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -28901,6 +28894,7 @@ The conjured ITMN vanishes as it comes off.
 You have no restraints in storage. Go to the Summit to deposit restraints.
 倉庫に拘束具がない。セーフゾーンに行って拘束具を預けてこよう。
 
+
 Back to Facilities
 施設画面へ
 
@@ -28925,3 +28919,5 @@ Warden's Storage
 
 Automatically Flip When Moving
 移動時に自動的に反転
+
+### Go to the summit to deposit restraints

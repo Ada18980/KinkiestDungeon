@@ -36,17 +36,10 @@ Mods
 Mods Loaded.
 Загруженные моды.
 
-### Restart required!
-### 需要重启！
-### 재시작 필요！
-### Restart please!
-### ¡Reinicio!
-### Rechargement requis!
 
 Version
 Версия перевода 5.2.24, версия игры
 ### Kinky Dungeon
-### 5.3.45
 By Ada18980
 От Ada18980
 You are an adventurer descending into an ancient underground city of magic.
@@ -11607,7 +11600,8 @@ For 3 rep the goddess will grant you a key.
 ### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 За 3 репутации богиня
-### For 3 rep the goddess 
+For 3 rep the goddess 
+За 3 репутации богиня
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 Богиня полностью восстановит вашу ману в обмен на AMOUNT репутации
@@ -27434,6 +27428,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
+
 ### Back to Facilities
 
 ### Your Inventory
@@ -27454,3 +27449,5 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ###  (not picked up)
 
 ### Automatically Flip When Moving
+
+### Go to the summit to deposit restraints

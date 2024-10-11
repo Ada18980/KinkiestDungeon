@@ -21,16 +21,9 @@
 ### Mods
 ### Mods Loaded.
 
-### Restart required!
-### 需要重启！
-### 재시작 필요！
-### Restart please!
-### ¡Reinicio!
-### Rechargement requis!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.45
 ### By Ada18980
 ### You are an adventurer descending into an ancient underground city of magic.
 ### Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -16802,6 +16795,7 @@
 ### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
+
 ### Back to Facilities
 
 ### Your Inventory
@@ -16822,3 +16816,5 @@
 ###  (not picked up)
 
 ### Automatically Flip When Moving
+
+### Go to the summit to deposit restraints

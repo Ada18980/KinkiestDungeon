@@ -39,19 +39,11 @@ Mods
 Mods Loaded.
 模组已载入
 
-Restart required!
-需要重启！
-### 需要重启！
-### 재시작 필요！
-### Restart please!
-### ¡Reinicio!
-### Rechargement requis!
 
 Version
 版本号
 Kinky Dungeon
 淫荡地牢
-### 5.3.45
 By Ada18980
 由 Ada18980 制作
 You are an adventurer descending into an ancient underground city of magic.
@@ -11575,7 +11567,8 @@ For 3 rep the goddess will grant you a key.
 ### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 消耗 3 声望，女神
-### For 3 rep the goddess 
+For 3 rep the goddess 
+消耗 3 声望，女神
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 女神会以 AMOUNT 点声望为代价完全恢复你的魔力
@@ -26964,6 +26957,7 @@ ENMY 解开了 ITMN 的锁!
 ### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
+
 ### Back to Facilities
 
 ### Your Inventory
@@ -26984,3 +26978,5 @@ ENMY 解开了 ITMN 的锁!
 ###  (not picked up)
 
 ### Automatically Flip When Moving
+
+### Go to the summit to deposit restraints

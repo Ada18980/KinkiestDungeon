@@ -33,16 +33,9 @@ Mods
 Mods Loaded.
 모드가 로드되었습니다.
 
-### Restart required!
-### 需要重启！
-### 재시작 필요！
-### Restart please!
-### ¡Reinicio!
-### Rechargement requis!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.45
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 당신은 마법의 고대 지하 도시로 내려가는 모험가입니다.
@@ -9929,7 +9922,8 @@ For 3 rep the goddess will grant you a key.
 ### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 3렙 여신님
-### For 3 rep the goddess 
+For 3 rep the goddess 
+3렙 여신님
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 여신은 AMOUNT 담당자와 교환하여 마나를 완전히 회복시켜 줄 것입니다.
@@ -22225,6 +22219,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
+
 ### Back to Facilities
 
 ### Your Inventory
@@ -22245,3 +22240,5 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ###  (not picked up)
 
 ### Automatically Flip When Moving
+
+### Go to the summit to deposit restraints
