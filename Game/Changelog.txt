@@ -31,12 +31,18 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.47
+- Several weapons now have a special property dealing 50% additional damage when stamina is over 50%:
+- Hammer (and variants)
+- Axe (and variants)
+- Rock
+
 5.3.46
 - Require being in summit to deposit restraints to summit warden
 - Fix misleading message when NPCs try to escape even if they made no progress
 - Show sprint cost when sprint icon shows on map
 - Sprint cost now 20 base, 25 heeled, 15 hop, 20 hop (slowed), 25 hop (super slowed). Overall buff while bound, nerf while free
-
+- Added quick faccility assigning
 
 5.3.45
 - Summit warden now knows how to use generic bondage like rope

@@ -4746,6 +4746,10 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
 					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
 					tease: KinkyDungeonPlayerDamage.tease};
+
+				if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatStamina/KinkyDungeonStatStaminaMax >= 0.50) {
+					damageInfo.damage *= KinkyDungeonPlayerDamage.stam50mult;
+				}
 				let data = {
 					orighp: Enemy.hp,
 					origbinding: Enemy.boundLevel,

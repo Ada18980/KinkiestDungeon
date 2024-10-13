@@ -22,7 +22,14 @@ let KDFacilityCollectionDataTypeMap = {
 let KDCollectionTabButtons = [
 	"AutoBind",
 	"Release",
+	"FacilityQuick",
 ];
+
+let KDCollectionTabButtonFilter = {
+	FacilityQuick: () => {
+		return KinkyDungeonFlags.get("1stSummit");
+	},
+}
 
 let KDCollFilter = "";
 
@@ -120,6 +127,7 @@ function KDDrawCollectionTabOptions(x: number, y: number) {
 	let spacing = 80;
 	let II = 0;
 	for (let tab of KDCollectionTabButtons) {
+		if (!KDCollectionTabButtonFilter[tab] || KDCollectionTabButtonFilter[tab]())
 		if (DrawButtonKDEx("KDCollTabSet" + tab, (_b) => {
 			if (KDCollectionTab) KDCollectionTab = "";
 			else KDCollectionTab = tab;
@@ -513,7 +521,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		return true;
 	}, true, x - 90, y + 90, 80, 80, "", "#ffffff",
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,
-		!KDToggleBigView, KDButtonColorIntense, undefined, undefined, {
+		true, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
 		DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);

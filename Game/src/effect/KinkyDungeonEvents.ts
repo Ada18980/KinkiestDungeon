@@ -9363,6 +9363,22 @@ function KinkyDungeonHandleEnemyEvent(Event: string, e: KinkyDungeonEvent, enemy
 
 
 let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => void>> = {
+	"inventoryTooltip": {
+		"stamdmg": (e, data) => {
+			if (data.item && data.item.type == Weapon && KDWeapon(data.item)?.stam50mult) {
+
+				data.extraLines.push(TextGet("KDStamDmgBonus")
+					.replace("AMNT", KDWeapon(data.item).stam50mult + ""));
+				data.extraLineColor.push(KDBookText); // e.color || "#ffffff"
+				let bg = "#000000";
+				if (!KDToggles.SpellBook) {
+					let col = DrawHexToRGB(bg);
+					bg = `rgba(${col.r/2}, ${col.g/2}, ${col.b/2}, 0.5)`;
+				}
+				data.extraLineColorBG.push(bg);
+			}
+		},
+	},
 	"perkOrb": {
 		"Cursed": (_e, data) => {
 			if (data?.perks?.includes("Cursed")) {

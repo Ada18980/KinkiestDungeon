@@ -1394,6 +1394,9 @@ interface weapon extends damageInfo, NamedAndTyped {
 	type: string;
 
 
+	/** Multiplies the damage when over 50% stamina */
+	stam50mult?: number,
+
 	evadeable?: boolean,
 	nokill?: boolean,
 	bind?: number;

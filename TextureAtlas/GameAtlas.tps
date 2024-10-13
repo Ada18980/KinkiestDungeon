@@ -2560,6 +2560,7 @@
             <key type="filename">../Game/UI/CollectionFilter/Safe.png</key>
             <key type="filename">../Game/UI/CollectionFilter/Unavailable.png</key>
             <key type="filename">../Game/UI/CollectionTab/AutoBind.png</key>
+            <key type="filename">../Game/UI/CollectionTab/FacilityQuick.png</key>
             <key type="filename">../Game/UI/CollectionTab/Release.png</key>
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/Facility/AlchemyLab.png</key>
@@ -2570,6 +2571,7 @@
             <key type="filename">../Game/UI/Facility/Recycler.png</key>
             <key type="filename">../Game/UI/Facility/RescueTeam.png</key>
             <key type="filename">../Game/UI/Facility/TrainingDojo.png</key>
+            <key type="filename">../Game/UI/Facility/Warden.png</key>
             <key type="filename">../Game/UI/ItemAura.png</key>
             <key type="filename">../Game/UI/ItemAuraBG.png</key>
             <key type="filename">../Game/UI/NavMap/basic.png</key>

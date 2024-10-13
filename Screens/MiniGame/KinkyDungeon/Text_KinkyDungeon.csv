@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.45"
+KDVersionStr,"5.3.47"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -24990,6 +24990,7 @@ KDCollectionTabStatusOption_Guest,Guests
 
 KDCollectionAssign,"Assign to "
 KDCollectionRemove,"Remove from "
+KDCollectionCant,"Can't assign to "
 KDImprison,Imprison
 
 KDNPCOpinion,"Opinion: "
@@ -25286,3 +25287,6 @@ KDNotPickedUp," (not picked up)"
 KDToggleFlipPlayerAuto,Automatically Flip When Moving
 
 KDWardenNeedSummit,Go to the summit to deposit restraints
+
+
+KDStamDmgBonus,AMNTx damage when SP is over 50%

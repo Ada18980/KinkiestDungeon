@@ -12,7 +12,8 @@ interface Facility {
 	maxPrisoners: () => number,
 	maxServants: () => number,
 	events?: KinkyDungeonEvent[],
-	defaultData: Record<string, any>
+	defaultData: Record<string, any>,
+	servantPrisonerCallback?: (number) => boolean,
 };
 
 let KDFacilityTypes: Record<string, Facility> = {
@@ -36,6 +37,10 @@ let KDFacilityTypes: Record<string, Facility> = {
 				18, "left", 111
 			);
 		},
+		servantPrisonerCallback: (id) => {
+			KinkyDungeonSetFlag("manageEfficiencyLoss", -1, 1);
+			return true;
+		}
 	},
 
 	CuddleLounge: {

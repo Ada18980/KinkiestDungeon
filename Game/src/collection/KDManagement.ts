@@ -4,10 +4,7 @@ function KDDrawManagement(x: number, y: number, width: number): number {
 		let yy = y;
 
 		yy += KDDrawServantPrisonerList("Management", x + 50, yy + 70, width, 80,
-			(id) => {
-				KinkyDungeonSetFlag("manageEfficiencyLoss", -1, 1);
-				return true;
-		});
+			KDFacilityTypes.Management.servantPrisonerCallback);
 
 		let rate = KDGetManagementEfficiency();
 		let ii = 0;

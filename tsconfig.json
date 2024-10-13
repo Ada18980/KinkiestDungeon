@@ -133,6 +133,7 @@
         "Game/src/collection/KDFacilitiesList.ts",
         "Game/src/collection/NPCRestrain.ts",
         "Game/src/collection/NPCAutoBind.ts",
+        "Game/src/collection/KDFacilityQuick.ts",
         "Game/src/collection/NPCRelease.ts",
         "Game/src/collection/NPCRestrainList.ts",
         "Game/src/collection/NPCRestrainGenericList.ts",

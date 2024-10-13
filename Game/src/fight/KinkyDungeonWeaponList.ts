@@ -39,10 +39,11 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	},
 
 
-	"Rock": {name: "Rock", damage: 3, chance: 0.8, staminacost: 3.8, type: "crush",
+	"Rock": {name: "Rock", damage: 1.5, chance: 0.8, staminacost: 3.8, type: "crush",
 		unarmed: false, rarity: 0, shop: true, heavy: true, sfx: "HeavySwing",
 		crit: 1.5,
 		tags: ["rock"],
+		stam50mult: 2.0,
 		events: [
 			{type: "ElementalEffectCrit", trigger: "playerAttack", power: 0, damage: "stun", time: 6, sfx: "Slap"}
 		],
@@ -162,28 +163,34 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	},
 
 	// Axes
-	"Axe": {name: "Axe", damage: 4, chance: 1.0, staminacost: 4, type: "slash", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
+	"Axe": {name: "Axe", damage: 2.4, chance: 1.0, staminacost: 3, type: "slash", unarmed: false, rarity: 2, shop: false, sfx: "HeavySwing",
 		tags: ["axe"],
+		stam50mult: 1.5,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 2, damage: "slash"}]},
-	"MagicAxe": {name: "MagicAxe", damage: 4, chance: 1.0, staminacost: 4, type: "cold", unarmed: false, rarity: 6, magic: true, shop: false, cutBonus: 0.2, sfx: "HeavySwing",
+	"MagicAxe": {name: "MagicAxe", damage: 2.8, chance: 1.0, staminacost: 3, type: "cold", unarmed: false, rarity: 6, magic: true, shop: false, cutBonus: 0.2, sfx: "HeavySwing",
 		tags: ["axe"],
+		stam50mult: 1.5,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 2, damage: "cold", time: 3}, {type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "cold", time: 3}]},
 
 	// Hammers
-	"Hammer": {name: "Hammer", damage: 5, chance: 1.0, staminacost: 6, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "HeavySwing", cutBonus: 0.01,
+	"Hammer": {name: "Hammer", damage: 2.5, chance: 1.0, staminacost: 4, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "HeavySwing", cutBonus: 0.01,
 		tags: ["hammer"],
 		crit: 1.2,
+		stam50mult: 2,
 		events: [{type: "Knockback", trigger: "playerAttack", dist: 1}]},
-	"MagicHammer": {name: "MagicHammer", damage: 6, chance: 1.0, staminacost: 5.5, type: "crush", unarmed: false, rarity: 7, magic: true, shop: false, cutBonus: 0.01, sfx: "HeavySwing",
+	"MagicHammer": {name: "MagicHammer", damage: 3, chance: 1.0, staminacost: 3.5, type: "crush", unarmed: false, rarity: 7, magic: true, shop: false, cutBonus: 0.01, sfx: "HeavySwing",
 		tags: ["hammer"],
 		crit: 1.2,
+		stam50mult: 2,
 		events: [{type: "Knockback", trigger: "playerAttack", dist: 1}]},
-	"IceBreaker": {name: "IceBreaker", damage: 4.3, chance: 1.2, staminacost: 4, type: "crush", unarmed: false, rarity: 5, magic: true, shop: false, sfx: "HeavySwing",
+	"IceBreaker": {name: "IceBreaker", damage: 2.0, chance: 1.2, staminacost: 2.4, type: "crush", unarmed: false, rarity: 5, magic: true, shop: false, sfx: "HeavySwing",
 		tags: ["hammer"],
+		stam50mult: 2.0,
 		events: [{type: "MultiplyDamageFrozen", trigger: "beforeDamageEnemy", power: 1.5}]},
-	"StormBreaker": {name: "StormBreaker", damage: 4, chance: 1.0, staminacost: 5, type: "crush", unarmed: false, rarity: 5, magic: true, shop: false, sfx: "HeavySwing",
+	"StormBreaker": {name: "StormBreaker", damage: 2.0, chance: 1.0, staminacost: 2.6, type: "crush", unarmed: false, rarity: 5, magic: true, shop: false, sfx: "HeavySwing",
 		tags: ["hammer"],
 		crit: 1.4,
+		stam50mult: 2.0,
 		events: [
 			{type: "StormBreakerDamage", trigger: "playerAttack", power: 4.0, sfx: "Shock", aoe: 1.5, damage: "electric"},
 			{type: "StormBreakerCharge", trigger: "beforePlayerDamage", power: 1.5, damageTrigger: "electric", color: "#3de1ff"},
