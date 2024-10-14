@@ -25290,3 +25290,10 @@ KDWardenNeedSummit,Go to the summit to deposit restraints
 
 
 KDStamDmgBonus,AMNTx damage when SP is over 50%
+
+KinkyDungeonSpellManyOrbs,"Barrage of Barrier Orb"
+KinkyDungeonSpellZombieOrb,"Barrier Orb"
+KinkyDungeonSpellFuukaOrbMulti,"Barrage of Sealing Talisman"
+KinkyDungeonSpellFuukaOrb,"Sealing Talisman"
+KinkyDungeonSpellEnemyCM_self,"Self Unlock"
+KinkyDungeonSpellCrystalBoltMany,"Crystal Storm"

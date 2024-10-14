@@ -3979,7 +3979,15 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "tick", type: "secretToy"},
 		],
-		spells: ["CrystalBolt"],  spellCooldownMult: 1, spellCooldownMod: 5,
+		spells: ["CrystalShockBolt", "CrystalBoltMany"],  spellCooldownMult: 1, spellCooldownMod: 3,
+		Magic: {
+			castCooldownUnique: {
+				CrystalShockBolt: 24,
+			},
+			priority: {
+				CrystalShockBolt: 10,
+			},
+		},
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 5,

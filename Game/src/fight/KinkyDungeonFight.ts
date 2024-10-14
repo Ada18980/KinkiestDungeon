@@ -2617,6 +2617,10 @@ function KDBulletCanHitEntity(bullet: any, enemy: entity, inWarningOnly?: boolea
 		return bullet.bullet.spell && (bullet.bullet.spell.playerEffect || bullet.bullet.playerEffect)
 			&& (!bullet.bullet.noEnemyCollision || (bullet.bullet.spell && bullet.bullet.alwaysCollideTags && bullet.bullet.alwaysCollideTags.includes("PlayerChar")))
 			&& KinkyDungeonPlayerEntity.x == bullet.x && KinkyDungeonPlayerEntity.y == bullet.y
+			&& (!bullet.bullet.spell.noFF || !bullet.bullet.faction
+				|| (!KDFactionFavorable(bullet.bullet.faction, "Player") && (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
+				|| (!KDFactionHostile(bullet.bullet.faction, "Player") && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
+			)
 			&& (!inWarningOnly || (bullet.warnings && bullet.warnings.includes(KinkyDungeonPlayerEntity.lastx + "," + KinkyDungeonPlayerEntity.lasty)))
 			&& (!bullet.bullet.spell || !bullet.bullet.spell.noUniqueHits || !KDUniqueBulletHits.get(KDBulletID(bullet, KinkyDungeonPlayerEntity)));
 	} else {

@@ -2484,12 +2484,15 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{name: "ManyOrbs", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "ZombieOrbMini", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 2.5, offset: false}, channel: 3},
-	{enemySpell: true, name: "ZombieOrbMini", sfx: "MagicSlash", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 1.5, delay: 0, range: 50, damage: "chain", speed: 1,
+	{enemySpell: true, name: "ZombieOrbMini", sfx: "MagicSlash",
+		noFF: true, manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 1.5, delay: 0, range: 50, damage: "chain", speed: 1,
 		playerEffect: {name: "MysticShock", time: 3}},
 
-	{enemySpell: true, name: "ZombieOrb", sfx: "MagicSlash", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 50, damage: "chain", speed: 1,
+	{enemySpell: true, name: "ZombieOrb", sfx: "MagicSlash", manacost: 5,
+		noFF: true, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2, delay: 0, range: 50, damage: "chain", speed: 1,
 		playerEffect: {name: "CharmWraps", power: 2, damage: "ice", time: 1}},
-	{enemySpell: true, name: "ZombieOrbIce", color: "#00ffff", specialCD: 12, sfx: "MagicSlash", hitsfx: "Freeze", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, time: 3, onhit:"", power: 3, delay: 0, range: 50, damage: "ice", speed: 1,
+	{enemySpell: true, name: "ZombieOrbIce", color: "#00ffff",
+		noFF: true, specialCD: 12, sfx: "MagicSlash", hitsfx: "Freeze", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, time: 3, onhit:"", power: 3, delay: 0, range: 50, damage: "ice", speed: 1,
 		playerEffect: {name: "Freeze", power: 4, damage: "ice", time: 4}},
 
 	{enemySpell: true, name: "SarcoEngulf", castCondition: "sarcoEngulf", color: "#ff2200", sfx: "Fwoosh", effectTileDurationMod: 10, effectTileDensity: 0.33, effectTile: {
@@ -2706,6 +2709,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "FuukaOrb",  bindType: "Magic", color: "#aaaaaa", sfx: "Evil",
 		//hideWarnings: true,
 		minRange: 0,
+		noFF: true,
 		hitSpin: 0.25,
 		noDirectionOffset: true,
 		manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
@@ -2716,6 +2720,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		//hideWarnings: true,
 		shotgunCount: 3, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, shotgunFan: true,
 		minRange: 0,
+		noFF: true,
 		hitSpin: 0.25,
 		noDirectionOffset: true,
 		manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
@@ -3005,8 +3010,14 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 			{trigger: "afterBulletHit", type: "CrystalBolt"},
 		],
 		speed: 2.5, playerEffect: {name: "CrystalBind", time: 1}},
+	{name: "CrystalBoltMany", sfx: "MagicSlash", color: "#ff5277", minRange: 0, manacost: 4, projectileTargeting: true,
+		noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8,
+		meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
+		spellcast: {spell: "CrystalBoltSingle", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 2.5, offset: false}, channel: 3},
+
 	{enemySpell: true, name: "CrystalBoltSingle", color: "#ff5277", sfx: "FireSpell", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 2.5, delay: 0, range: 8, damage: "soul",
 		meleeOrigin: true,
+		noFF: true,
 		events: [
 			{trigger: "afterBulletHit", type: "CrystalBolt"},
 		],
@@ -3088,6 +3099,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{enemySpell: true, name: "MiniSlime", color: "#ff00ff", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 1, level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		time: 2, power: 2, delay: 0, range: 9, damage: "glue", speed: 1, playerEffect: {name: "MiniSlime", time: 2},
+		noFF: true,
 		effectTileDurationMod: 8, effectTile: {
 			name: "Slime",
 			duration: 10,

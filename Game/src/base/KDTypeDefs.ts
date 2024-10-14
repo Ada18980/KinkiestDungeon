@@ -2038,6 +2038,8 @@ interface spell {
 	noAggro?: boolean;
 	/** Whether the spell defaults to the Player faction */
 	allySpell?: boolean;
+	/** This spell wont friendly fire the player */
+	noFF?: boolean;
 	/** Spell overrides the faction */
 	faction?: string;
 	/** Whether the spell defaults to the Enemy faction */
