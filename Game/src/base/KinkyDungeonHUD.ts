@@ -636,16 +636,16 @@ function KDDrawSpellChoices() {
 			if (spellPaged) {
 				if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
 					FillRectKD(kdcanvas, kdpixisprites, page + "pgspell" + i, {
-						Left: buttonDimSmall.x - 2,
-						Top: buttonDimSmall.y - 2,
+						Left: buttonDimSmall.x - 1,
+						Top: buttonDimSmall.y - 1,
 						Width: buttonDim.wsmall+2,
 						Height: buttonDim.hsmall+2,
 						Color: "#dbdbdb",
 						zIndex: 70,
 					});
 					FillRectKD(kdcanvas, kdpixisprites, page + "pgspell2" + i, {
-						Left: buttonDimSmall.x - 1,
-						Top: buttonDimSmall.y - 1,
+						Left: buttonDimSmall.x,
+						Top: buttonDimSmall.y,
 						Width: buttonDim.wsmall,
 						Height: buttonDim.hsmall,
 						Color: "#101010",

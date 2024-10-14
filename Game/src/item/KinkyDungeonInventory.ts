@@ -3529,16 +3529,16 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 			if (spellPaged) {
 				if (spellPaged.type == "passive" && KinkyDungeonSpellChoicesToggle[indexPaged]) {
 					FillRectKD(kdcanvas, kdpixisprites, page + "pgspell" + i, {
-						Left: buttonDimSmall.x - 1,
-						Top: buttonDimSmall.y - 1,
+						Left: buttonDimSmall.x - 1 - 4,
+						Top: buttonDimSmall.y - 1 - 4,
 						Width: buttonDim.wsmall+2,
 						Height: buttonDim.hsmall+2,
 						Color: "#dbdbdb",
 						zIndex: 70,
 					});
 					FillRectKD(kdcanvas, kdpixisprites, page + "pgspell2" + i, {
-						Left: buttonDimSmall.x,
-						Top: buttonDimSmall.y,
+						Left: buttonDimSmall.x - 4,
+						Top: buttonDimSmall.y - 4,
 						Width: buttonDim.wsmall,
 						Height: buttonDim.hsmall,
 						Color: "#101010",
