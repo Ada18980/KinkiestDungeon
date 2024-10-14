@@ -6691,6 +6691,29 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				}
 			}
 		},
+
+		"ElementalEffectOnBarricade": (e, _weapon, data) => {
+			if (data.enemy && !data.miss && !data.disarm && data.enemy.Enemy?.tags?.barricade) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					KinkyDungeonDamageEnemy(data.enemy, {
+						type: e.damage,
+						crit: e.crit,
+						damage: e.power,
+						time: e.time,
+						bind: e.bind,
+						bindEff: e.bindEff,
+						distract: e.distract,
+						desireMult: e.desireMult,
+						distractEff: e.distractEff,
+						bindType: e.bindType,
+						addBind: e.addBind,
+					}, false, e.power < 0.5, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					if (e.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + e.sfx + ".ogg");
+					}
+				}
+			}
+		},
 		"ElementalEffectCrit": (e, _weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm && data.predata?.vulnerable) {
 				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {

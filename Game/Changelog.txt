@@ -38,7 +38,7 @@ TODO Add Cuddle play type
 - Rock
 - Fixed an issue where leashed NPCs didnt follow player properly thru stairs
 - Battle Rhythm now uses the higher of original stamina cost or effective stamina cost
-- New weapon: Maul
+- New weapon: Sledgehammer
 - Telekinesis must now go in the hotbar to be used, but can be toggled
 
 5.3.46

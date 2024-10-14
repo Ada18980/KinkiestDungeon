@@ -271,6 +271,8 @@
             <key type="filename">../Game/Bullets/CrackleTrailHit.png</key>
             <key type="filename">../Game/Bullets/CrystalBolt.png</key>
             <key type="filename">../Game/Bullets/CrystalBoltHit.png</key>
+            <key type="filename">../Game/Bullets/CrystalBoltMany.png</key>
+            <key type="filename">../Game/Bullets/CrystalBoltManyHit.png</key>
             <key type="filename">../Game/Bullets/CrystalBoltSingle.png</key>
             <key type="filename">../Game/Bullets/CrystalBoltSingleHit.png</key>
             <key type="filename">../Game/Bullets/CrystalPuff.png</key>
@@ -2187,6 +2189,7 @@
             <key type="filename">../Game/Items/MagicSpear.png</key>
             <key type="filename">../Game/Items/MagicSword.png</key>
             <key type="filename">../Game/Items/ManaOrb.png</key>
+            <key type="filename">../Game/Items/Maul.png</key>
             <key type="filename">../Game/Items/MessengerOfLove.png</key>
             <key type="filename">../Game/Items/MistressKey.png</key>
             <key type="filename">../Game/Items/MoiraiScissors.png</key>

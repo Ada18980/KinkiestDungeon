@@ -1558,10 +1558,10 @@ KinkyDungeonInventoryItemFoilDesc,"En garde!"
 KinkyDungeonInventoryItemFoilDesc2,"Deals pierce damage. Deals 30 damage instead on vulnerable targets."
 ItemPickupFoil,"You pick up a fencing sword."
 
-KinkyDungeonInventoryItemMaul,Maul
+KinkyDungeonInventoryItemMaul,Sledgehammer
 KinkyDungeonInventoryItemMaulDesc,"Do you have what it takes?"
-KinkyDungeonInventoryItemMaulDesc2,"Deals heavy crush damage and knocks the target back 2 spaces."
-ItemPickupMaul,You pick up a heavy maul.
+KinkyDungeonInventoryItemMaulDesc2,"Deals heavy crush damage and knocks the target back 2 spaces. Deals bonus damage to most solid barricades."
+ItemPickupMaul,You pick up a heavy sledgehammer.
 
 KinkyDungeonInventoryItemHammer,Hammer
 KinkyDungeonInventoryItemHammerDesc,"A crude way of fixing your problems."
