@@ -759,11 +759,11 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
  */
 function KDPlacePlayerBasedOnDirection(direction: number = 0, sideRoomIndex: number = -1) {
 	if (sideRoomIndex >= 0 && KDMapData.ShortcutPositions && KDMapData.ShortcutPositions[sideRoomIndex]) {
-		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, x: KDMapData.ShortcutPositions[sideRoomIndex].x, y:KDMapData.ShortcutPositions[sideRoomIndex].y, player:true};
+		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, id: -1, x: KDMapData.ShortcutPositions[sideRoomIndex].x, y:KDMapData.ShortcutPositions[sideRoomIndex].y, player:true};
 	} else if (direction == 1 && KDMapData.EndPosition) {
-		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, x: KDMapData.EndPosition.x, y:KDMapData.EndPosition.y, player:true};
+		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, id: -1, x: KDMapData.EndPosition.x, y:KDMapData.EndPosition.y, player:true};
 	} else {
-		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
+		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, id: -1, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
 	}
 }
 
@@ -1161,7 +1161,7 @@ function KinkyDungeonCreateMap (
 
 
 		// Place the player!
-		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
+		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, id: -1, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
 
 
 		let traps = [];
@@ -4755,6 +4755,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					origbinding: Enemy.boundLevel,
 					target: Enemy,
 					attackCost: attackCost,
+					attackCostOrig: attackCost ? KinkyDungeonPlayerDamage.staminacost || 1 : 0,
 					skipTurn: false,
 					attackData: damageInfo
 				};

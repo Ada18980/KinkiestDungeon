@@ -36,6 +36,10 @@ TODO Add Cuddle play type
 - Hammer (and variants)
 - Axe (and variants)
 - Rock
+- Fixed an issue where leashed NPCs didnt follow player properly thru stairs
+- Battle Rhythm now uses the higher of original stamina cost or effective stamina cost
+- New weapon: Maul
+- Telekinesis must now go in the hotbar to be used, but can be toggled
 
 5.3.46
 - Require being in summit to deposit restraints to summit warden

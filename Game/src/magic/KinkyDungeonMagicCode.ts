@@ -1056,6 +1056,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				data = {
 					target: en,
 					attackCost: 0.0, // Important
+					attackCostOrig: 0.0,
 					skipTurn: false,
 					spellAttack: true,
 					attackData: {
@@ -1081,6 +1082,9 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
 						tease: KinkyDungeonPlayerDamage.tease}
 				};
+				if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatMana/KinkyDungeonStatManaMax >= 0.50) {
+					data.attackData.damage *= KinkyDungeonPlayerDamage.stam50mult;
+				}
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 
 				KinkyDungeonAttackEnemy(en, data.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, true)));
