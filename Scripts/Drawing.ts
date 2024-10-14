@@ -89,37 +89,6 @@ function DrawLoad(): void {
 	//MainCanvas.textBaseline = "middle";
 }
 
-/**
- * Returns the image file from cache or build it from the source
- * @param Source - URL of the image
- * @returns Image file
- */
-function DrawGetImage(Source: string): HTMLImageElement {
-	// Search in the cache to find the image and make sure this image is valid
-	let Img = DrawCacheImage.get(Source);
-	if (!Img) {
-		Img = new Image;
-		DrawCacheImage.set(Source, Img);
-		// Keep track of image load state
-		const IsAsset = (Source.indexOf("Assets") >= 0);
-		if (IsAsset) {
-			++DrawCacheTotalImages;
-			Img.addEventListener("load", function () {
-				DrawGetImageOnLoad();
-			});
-		}
-
-		Img.addEventListener("error", function () {
-			DrawGetImageOnError(Img, IsAsset);
-		});
-
-		// Start loading
-		Img.src = KDModFiles[Source] || Source;
-	}
-
-	// returns the final image
-	return Img;
-}
 
 /**
  * Reloads all character canvas once all images are loaded

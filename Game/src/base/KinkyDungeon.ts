@@ -1426,9 +1426,7 @@ function KinkyDungeonRun() {
 				if (!MC.ContainersDrawn.has(Container[0]) && Container[1]) {
 					Container[1].Mesh.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
-					Container[1].Mesh.destroy();
-					Container[1].Container.destroy();
-					Container[1].RenderTexture.destroy();
+					KDContainerClear(Container[1]);
 				} else if (refresh && (ent[0] == KinkyDungeonPlayer || ent[0] == KDSpeakerNPC))
 					// We only refresh NPCs that are front and center, for optimization reasons
 					MC.Update.delete(Container[0]);

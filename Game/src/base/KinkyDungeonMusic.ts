@@ -142,6 +142,7 @@ function KDPlayMusic(Sound: string, Volume?: number) {
 	if (KDMusicBusy) return;
 	KDMusicBusy = true;
 	// Start the new sound
+	let addNewListener = !KDCurrentMusicSound;
 	let audio = KDCurrentMusicSound || new Audio();
 	let vol = (typeof Volume != 'undefined' ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
@@ -153,18 +154,19 @@ function KDPlayMusic(Sound: string, Volume?: number) {
 		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	audio.volume = Math.min(vol, 1);
 	audio.loop = false;
-	audio.addEventListener('ended', function () {
-		this.currentTime = 0;
-		this.play();
-		lastKDMusicTick = performance.now() - 100;
-		// Current audio is now stale--chance of not being stale though
-		if (KDRandom() < KDMusicLoopTracksChance[KDCurrentSong]) {
-			KDCurrentLoops += 1;
-		} else {
-			KDCurrentSong = "";
-			KDNewSong = "";
-		}
-	}, false);
+	if (addNewListener)
+		audio.addEventListener('ended', function () {
+			this.currentTime = 0;
+			this.play();
+			lastKDMusicTick = performance.now() - 100;
+			// Current audio is now stale--chance of not being stale though
+			if (KDRandom() < KDMusicLoopTracksChance[KDCurrentSong]) {
+				KDCurrentLoops += 1;
+			} else {
+				KDCurrentSong = "";
+				KDNewSong = "";
+			}
+		}, false);
 	audio.play().then(() => {
 		KDCurrentLoops = 0;
 		//KDCurrentFade = 1;

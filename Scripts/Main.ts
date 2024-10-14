@@ -80,6 +80,15 @@ window.onload = function() {
 		}
 	});
 
+	PIXIapp.stage.interactiveChildren = false;
+
+	(PIXIapp.renderer as PIXIRenderer).gl.canvas.addEventListener('webglcontextlost', () => {
+		console.error('WebGl context lost');
+
+		//load();
+	});
+
+
 	//MainRun(0);
 };
 

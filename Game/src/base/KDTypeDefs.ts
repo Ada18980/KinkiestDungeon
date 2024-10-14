@@ -3771,6 +3771,8 @@ type PIXIFilter = import('pixi.js').Filter;
 
 type PIXIMatrix = import('pixi.js').Matrix;
 type PIXIPoint = import('pixi.js').Point;
+type PIXIRenderer = import('pixi.js').Renderer;
+
 type ISpriteMaskTarget = import('pixi.js').ISpriteMaskTarget;
 
 type PIXICLEAR_MODES = import('pixi.js').CLEAR_MODES;

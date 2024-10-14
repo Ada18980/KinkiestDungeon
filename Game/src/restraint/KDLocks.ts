@@ -258,12 +258,17 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			if (!data.NoEvent)
-				KDCyberUnlock(data, 20);
+			//if (!data.NoEvent)
+			//	KDCyberUnlock(data, 20);
 			return true;
 		},
 		removeKeys: (_data) => {
-
+			if (!_data?.unlock) {
+				KDAddConsumable("KeyCard", -1);
+				KinkyDungeonDropItem({name: "KeyCard"}, KinkyDungeonPlayerEntity, true);
+			} else {
+				KDCyberUnlock(_data, 20);
+			}
 		},
 		failUnlock: (_data) => {
 			return "Fail";
@@ -334,12 +339,17 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			if (!data.NoEvent)
-				KDCyberUnlock(data, 50);
+			//if (!data.NoEvent)
+			//	KDCyberUnlock(data, 50);
 			return true;
 		},
 		removeKeys: (_data) => {
-
+			if (!_data?.unlock) {
+				KDAddConsumable("KeyCard", -1);
+				KinkyDungeonDropItem({name: "KeyCard"}, KinkyDungeonPlayerEntity, true);
+			} else {
+				KDCyberUnlock(_data, 50);
+			}
 		},
 		failUnlock: (_data) => {
 			return "Fail";
@@ -410,12 +420,17 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		unlock_diff: -1.0,
 		doUnlock: (data) => {
-			if (!data.NoEvent)
-				KDCyberUnlock(data, 150);
+			//if (!data.NoEvent)
+			//	KDCyberUnlock(data, 150);
 			return true;
 		},
 		removeKeys: (_data) => {
-
+			if (!_data?.unlock) {
+				KDAddConsumable("KeyCard", -1);
+				KinkyDungeonDropItem({name: "KeyCard"}, KinkyDungeonPlayerEntity, true);
+			} else {
+				KDCyberUnlock(_data, 150);
+			}
 		},
 		failUnlock: (_data) => {
 			return "Fail";
@@ -686,8 +701,8 @@ let KDLocks: Record<string, KDLockType> = {
 			return true;
 		},
 		removeKeys: (data) => {
-			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
+				KDAddConsumable("RedKey", -1);
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},

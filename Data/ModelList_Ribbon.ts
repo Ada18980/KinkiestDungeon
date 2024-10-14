@@ -16,7 +16,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["Crossties"],
 	Layers: ToLayerMap([
-		{ Name: "ArmStrap", Layer: "StrapsUnderbustOver", Pri: 0,
+		{ Name: "ArmStrap", Layer: "StrapsUnderbustOver", Pri: 4,
 			Poses: ToMap(["Crossed"]),
 			MorphPoses: {Crossed:"Crossed"},
 			DisplacementSprite: "ArmStrap",
@@ -36,7 +36,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["Boxties"],
 	Layers: ToLayerMap([
-		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+		{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 4,
 			Poses: ToMap(["Boxtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
@@ -55,12 +55,12 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["Wristties", "Chesttied"],
 	Layers: ToLayerMap([
-		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 0,
+		/*{ Name: "Arm1", Layer: "StrapsUnderbust", Pri: 4,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 		},*/
-		{ Name: "ForeArm1", Layer: "BindArmLeft", Pri: 0,
+		{ Name: "ForeArm1", Layer: "BindArmLeft", Pri: 4,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
@@ -79,21 +79,21 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["RibbonsLower"],
 	Layers: ToLayerMap([
-		/*{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 0,
+		/*{ Name: "Arm1", Layer: "StrapsUnderbustOver", Pri: 4,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm1Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 		},*/
-		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 0,
+		/*{ Name: "Arm1Over", Layer: "StrapsUnderbustOver", Pri: 4,
 			Poses: ToMap(["Boxtie", "Wristtie"]),
 		},*/
-		{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+		{ Name: "Arm2", Layer: "ChestStraps", Pri: 4,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 			InheritColor: "Ribbon",
 		},
-		{ Name: "ForeArm2", Layer: "BindArmLeft", Pri: 0,
+		{ Name: "ForeArm2", Layer: "BindArmLeft", Pri: 4,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
@@ -143,33 +143,33 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["RibbonsUpper"],
 	Layers: ToLayerMap([
-		/*{ Name: "Arm2", Layer: "ChestStraps", Pri: 0,
+		/*{ Name: "Arm2", Layer: "ChestStraps", Pri: 4,
 			Poses: ToMap(["Boxtie", "Wristtie", "Crossed"]),
 			DisplacementSprite: "Arm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 		},
-		{ Name: "ForeArm2", Layer: "LowerArmBondageLeft", Pri: 0,
+		{ Name: "ForeArm2", Layer: "LowerArmBondageLeft", Pri: 4,
 			Poses: ToMap(["Wristtie"]),
 			DisplacementSprite: "ForeArm2Squish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 		},*/
-		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: -1,
+		{ Name: "ArmHarness", Layer: "ChestStraps", Pri: 3,
 			Poses: ToMapSubtract([...ARMPOSES], ["Up"]),
 			DisplacementSprite: "ArmHarnessSquish",
 			DisplaceLayers: ToMap(["Ribbon1"]),
 			Invariant: true,
 			InheritColor: "Ribbon",
 		},
-		{ Name: "ArmHarnessUnderbust", Layer: "StrapsUnderbust", Pri: -2,
+		{ Name: "ArmHarnessUnderbust", Layer: "StrapsUnderbust", Pri: 2,
 			Invariant: true,
 			InheritColor: "Ribbon",
 		},
-		{ Name: "ArmStrap", Layer: "ChestStraps", Pri: -2,
+		{ Name: "ArmStrap", Layer: "ChestStraps", Pri: 2,
 			Poses: ToMap(["Crossed"]),
 			MorphPoses: {Crossed:"Crossed"},
 			InheritColor: "Ribbon",
 		},
-		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: -1,
+		{ Name: "ArmHarnessUp", Sprite: "ArmHarness", Layer: "ChestStraps", Pri: 3,
 			Poses: ToMap([...ARMPOSES]),
 			Invariant: true,
 			InheritColor: "Ribbon",
@@ -187,7 +187,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["Handcuffed"],
 	Layers: ToLayerMap([
-		{ Name: "Cuffs", Layer: "ForeWrists", Pri: 0,
+		{ Name: "Cuffs", Layer: "ForeWrists", Pri: 4,
 			Poses: ToMap(["Front", "Crossed"]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "StrapsUnderbustOver"},
@@ -206,7 +206,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Ribbon"],
 	Layers: ToLayerMap([
-		{ Name: "Belt", Layer: "BeltBondage", Pri: 0,
+		{ Name: "Belt", Layer: "BeltBondage", Pri: 4,
 			Invariant: true,
 			DisplacementSprite: "BeltSquish",
 			DisplaceLayers: ToMap(["RibbonCalf"]),
@@ -224,7 +224,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["CrotchStrap"],
 	Layers: ToLayerMap([
-		{ Name: "Harness", Layer: "HarnessOver", Pri: 0,
+		{ Name: "Harness", Layer: "HarnessOver", Pri: 4,
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			DisplacementInvariant: true,
@@ -232,7 +232,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 			InheritColor: "Ribbon",
 		},
-		{ Name: "HarnessMid", Layer: "HarnessMid", Pri: 0,
+		{ Name: "HarnessMid", Layer: "HarnessMid", Pri: 4,
 			Invariant: true,
 			AppendPose: {FlattenedUnderbust: "Flattened"},
 			DisplacementInvariant: true,
@@ -240,7 +240,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 			InheritColor: "Ribbon",
 		},
-		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 0,
+		{ Name: "HarnessLower", Layer: "HarnessMid", Pri: 4,
 			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
@@ -249,7 +249,7 @@ AddModel({
 			//DisplacementSprite: "HarnessSquish",
 			//DisplaceLayers: ToMap(["RibbonTorso"]),
 		},
-		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: 0,
+		{ Name: "HarnessLowerStrap", Layer: "HarnessMid", Pri: 4,
 			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
 			Invariant: true,
 			InheritColor: "Ribbon",
@@ -270,7 +270,7 @@ AddModel({
 		//ChastityBelt: ["OptionCrotchRope"],
 	},
 	Layers: ToLayerMap([
-		{ Name: "Crotch", Layer: "HarnessMid", Pri: -105,
+		{ Name: "Crotch", Layer: "HarnessMid", Pri: -95,
 			//MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			SwapLayerPose: {OptionCrotchRope: "CrotchRope"},
 			Invariant: true,
@@ -280,7 +280,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RibbonTorso"]),
 
 		},
-		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: -105.1,
+		{ Name: "CrotchStrap", Layer: "HarnessMid", Pri: -95.1,
 			SwapLayerPose: {OptionCrotchRope: "CrotchRope"},
 			Invariant: true,
 			InheritColor: "Ribbon",
@@ -297,7 +297,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["FeetLinked"],
 	Layers: ToLayerMap([
-		{ Name: "Toe", Layer: "OverShoes", Pri: 10,
+		{ Name: "Toe", Layer: "OverShoes", Pri: 14,
 			Poses: ToMap(["Closed"]),
 			CrossHideOverride: true,
 			HideOverrideLayerMulti: ["ToeTie"],
@@ -315,7 +315,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["FeetLinked", "RibbonsAnkle"],
 	Layers: ToLayerMap([
-		{ Name: "Feet", Layer: "OverShoes", Pri: 11,
+		{ Name: "Feet", Layer: "OverShoes", Pri: 15,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			DisplacementSprite: "AnklesSquish",
 			DisplaceAmount: 50,
@@ -339,7 +339,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["FeetLinked", "RibbonsAnkle"],
 	Layers: ToLayerMap([
-		{ Name: "Calf1", Layer: "Ankles1", Pri: 1,
+		{ Name: "Calf1", Layer: "Ankles1", Pri: 5,
 			Poses: ToMap(["Closed", "KneelClosed"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementSprite: "Calf1Squish",
@@ -351,7 +351,7 @@ AddModel({
 });
 
 AddModel(GetModelWithExtraLayers("RibbonAnkles2", "RibbonAnkles1", [
-	{ Name: "Calf2", Layer: "Ankles2", Pri: 1,
+	{ Name: "Calf2", Layer: "Ankles2", Pri: 5,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 		DisplacementSprite: "Calf2Squish",
@@ -363,7 +363,7 @@ AddModel(GetModelWithExtraLayers("RibbonAnkles2", "RibbonAnkles1", [
 
 
 AddModel(GetModelWithExtraLayers("RibbonAnkles3", "RibbonAnkles2", [
-	{ Name: "Calf3", Layer: "Ankles3", Pri: 1,
+	{ Name: "Calf3", Layer: "Ankles3", Pri: 5,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 		DisplacementSprite: "Calf3Squish",
@@ -384,7 +384,7 @@ AddModel({
 	Categories: ["Restraints", "Ribbon"],
 	AddPose: ["FeetLinked"],
 	Layers: ToLayerMap([
-		{ Name: "Thigh1", Layer: "Thighs1", Pri: 1,
+		{ Name: "Thigh1", Layer: "Thighs1", Pri: 5,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			DisplacementMorph: {Hogtie: "Hogtie"},
@@ -393,7 +393,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RibbonThighs"]),
 			InheritColor: "Ribbon",
 		},
-		{ Name: "RightThigh1", Layer: "RightThighs1", Pri: 1,
+		{ Name: "RightThigh1", Layer: "RightThighs1", Pri: 5,
 			Poses: ToMap(["KneelClosed"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Ribbon",
@@ -402,7 +402,7 @@ AddModel({
 });
 
 AddModel(GetModelWithExtraLayers("RibbonLegs2", "RibbonLegs1", [
-	{ Name: "Thigh2", Layer: "Thighs2", Pri: 1,
+	{ Name: "Thigh2", Layer: "Thighs2", Pri: 5,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		DisplacementMorph: {Hogtie: "Hogtie"},
@@ -411,7 +411,7 @@ AddModel(GetModelWithExtraLayers("RibbonLegs2", "RibbonLegs1", [
 		DisplaceLayers: ToMap(["RibbonThighs"]),
 		InheritColor: "Ribbon",
 	},
-	{ Name: "RightThigh2", Layer: "RightThighs2", Pri: 1,
+	{ Name: "RightThigh2", Layer: "RightThighs2", Pri: 5,
 		Poses: ToMap(["KneelClosed"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Ribbon",
@@ -420,7 +420,7 @@ AddModel(GetModelWithExtraLayers("RibbonLegs2", "RibbonLegs1", [
 
 
 AddModel(GetModelWithExtraLayers("RibbonLegs3", "RibbonLegs2", [
-	{ Name: "Thigh3", Layer: "Thighs3", Pri: 1,
+	{ Name: "Thigh3", Layer: "Thighs3", Pri: 5,
 		Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		DisplacementMorph: {Hogtie: "Hogtie"},
@@ -429,7 +429,7 @@ AddModel(GetModelWithExtraLayers("RibbonLegs3", "RibbonLegs2", [
 		DisplaceLayers: ToMap(["RibbonThighs"]),
 		InheritColor: "Ribbon",
 	},
-	{ Name: "RightThigh3", Layer: "RightThighs3", Pri: 1,
+	{ Name: "RightThigh3", Layer: "RightThighs3", Pri: 5,
 		Poses: ToMap(["KneelClosed"]),
 		GlobalDefaultOverride: ToMap(["KneelClosed"]),
 		InheritColor: "Ribbon",

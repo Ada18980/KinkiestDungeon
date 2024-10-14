@@ -1961,3 +1961,9 @@ function KDModelIsProtected(m: Model): boolean {
 
 	return false;
 }
+
+function KDContainerClear(Container: ContainerInfo) {
+	Container.Mesh.destroy();
+	Container.Container.destroy();
+	Container.RenderTexture.destroy();
+}
