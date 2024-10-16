@@ -1307,17 +1307,17 @@ Feet
 Everywhere!
 任何位置！
 
-Physical Armor: 
-物理护甲 : 
-Magic Armor: 
-魔法护甲 : 
+Physical Armor:
+物理护甲 :
+Magic Armor:
+魔法护甲 :
 In the Shadows: You are harder to see.
 处在阴影中 : ‎你更难被敌人察觉。
 Invisible: You are very difficult to see.
 隐形 : ‎你非常难以被敌人察觉。
 Quickness: Your next movement is so fast it doesn't advance a turn.
 迅捷 : ‎你的下一个动作极其迅速，不消耗回合时间。
-### All Damage Reduction: 
+### All Damage Reduction:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 你受到的DAMAGETYPE伤害COUNTPERCENT [基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正]
 You deal PERCENT more DAMAGETYPE damage.
@@ -1587,7 +1587,7 @@ Missing key
 未找到钥匙
 You are protected from damage and can't be bound until the shield is broken!
 你将受到保护，免受伤害，并且在护盾被打破之前无法被束缚！
-Chance for a spell to fizzle: 
+Chance for a spell to fizzle:
 释放法术失败概率 : ‎
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 闪避率 : ‎Percent% [基于 EVASIONSUM 点闪避值和 EVASIONPENALTY% 闪避值惩罚]
@@ -1744,8 +1744,8 @@ Delete Mod
 移除模组
 Clear Perks
 清除词条
-Config 
-配置 
+Config
+配置
 Cancel
 取消
 Filter
@@ -1873,11 +1873,11 @@ Press a key, then press a button to set that key
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER : DUNGEONNAME
 
-### Lockpicks: 
-### Keys: 
-### Magic Keys: 
-### Knife: 
-### Mag. Knife: 
+### Lockpicks:
+### Keys:
+### Magic Keys:
+### Knife:
+### Mag. Knife:
 
 You climb down the stairs. The passage closes behind you.
 你进入了下一层。通道在你的身后关闭。
@@ -2076,7 +2076,7 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 你会发现一堆药水。
 
-Rarity: 
+Rarity:
 稀有度 :
 Lesser
 无价值的
@@ -2901,18 +2901,18 @@ Dreamcatcher
 梦网
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 在噩梦中铸造，用钢铁编织。召唤一个暗影武士，对于未察觉的目标，消耗2%的远古能量。
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Axe
 斧头
 Great for cutting trees that happen to be underground.
 对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
-Accuracy: 
+Accuracy:
 命中率 : ‎
-Crit Multiplier: 
+Crit Multiplier:
 暴击倍率 : ‎
-Bind Crit Multiplier: 
+Bind Crit Multiplier:
 束缚暴击倍率 : ‎
 Find the keys..
 寻找钥匙...
@@ -2930,8 +2930,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
 You found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
-### Evasion: 
-Visibility: 
+### Evasion:
+Visibility:
 可见度 : ‎
 
 
@@ -2975,13 +2975,13 @@ Satisfied. Miscast chance is reduced.
 满足。减少失误的概率
 
 
-Damage: 
+Damage:
 基础伤害 :
-Bind: 
+Bind:
 束缚值 :
-Crit: 
+Crit:
 暴击倍率 :
-SP Cost: 
+SP Cost:
 SP 消耗 :
 Cut PWR: AMNT%
 力量削减 : ‎AMNT%
@@ -5761,16 +5761,16 @@ Commerce
 商业
 Shrine of SHRINETYPE
 SHRINETYPE 神泉
-### Tablet of 
+### Tablet of
 
-Goddess: 
+Goddess:
 女神 : ‎
-Goddess Blessing: 
+Goddess Blessing:
 女神祝福 : ‎
-Goddess Curse: 
+Goddess Curse:
 女神诅咒 : ‎
-### Mana Bonus: 
-### Lack of Mana Penalty: 
+### Mana Bonus:
+### Lack of Mana Penalty:
 Your excess mana helps you suppress the enchantment!
 你多余的魔力可以帮助你抵抗附魔！
 Your mana is too weak to fight the magical enchantment...
@@ -5792,9 +5792,9 @@ These runes are meant for someone with less willpower.
 You try to read the runes but cannot understand them.
 你尝试阅读符文，但无法理解它们。
 
-### Allies: 
-### Enemies: 
-### Favorable: 
+### Allies:
+### Enemies:
+### Favorable:
 
 None
 无
@@ -6331,7 +6331,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find 
+### You find
 
 
 
@@ -8389,7 +8389,7 @@ A book of manipulative spells
 Verbal
 口头
 
-### Components: 
+### Components:
 Arm Movements
 手臂动作
 Leg Gestures
@@ -10900,7 +10900,7 @@ You need a higher level in SCHOOL magic to learn this spell.
 You need more spell points.
 你需要更多的法术点数。
 ### You don't have enough maximum mana to cast this spell!
-### School: 
+### School:
 Generic
 通用
 Upgrade
@@ -10909,12 +10909,12 @@ Special
 特别
 Learn Spell
 学习法术
-### Spell Points: 
+### Spell Points:
 
 
-### Level: 
-### Spell Point Cost: 
-### Mana Cost: 
+### Level:
+### Spell Point Cost:
+### Mana Cost:
 
 
 Remove Spell 1
@@ -10941,13 +10941,13 @@ Replace Spell 5
 替换法术 5
 ### Replace Spell 6
 ### Replace Spell 7
-### Current Spell 1: 
-### Current Spell 2: 
-### Current Spell 3: 
-### Current Spell 4: 
-### Current Spell 5: 
-### Current Spell 6: 
-### Current Spell 7: 
+### Current Spell 1:
+### Current Spell 2:
+### Current Spell 3:
+### Current Spell 4:
+### Current Spell 5:
+### Current Spell 6:
+### Current Spell 7:
 
 ### ???
 Unfiled
@@ -10981,7 +10981,7 @@ Bellows
 ( 《万古之书》中的一页 ) |有人说 '地下墓穴' 比时间本身还要古老。当旧文明开始研究永生时，没有人知道是否有可能让那些已经死去的人复活。因此，地下墓穴被用来储存前人类的所有遗骸，以便当大法师最终取得突破时，他们也可以复活。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 ( 《万古之书》中的一页 ) |据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识 ( 魔法、精神、技术 ) 后，她指派十二位小魔法师负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 ( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -11590,10 +11590,10 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 消耗 3 声望，女神将促进你的挣扎。
 For 3 rep the goddess will grant you a key.
 消耗 3 声望，女神授予你一把钥匙。
-### For 3 rep the goddess will grant you 
+### For 3 rep the goddess will grant you
 For 3 rep the goddess
 消耗 3 声望，女神
-### For 3 rep the goddess 
+### For 3 rep the goddess
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 女神会以 AMOUNT 点声望为代价完全恢复你的魔力
@@ -11939,8 +11939,8 @@ Can disarm (chance: DISARMCHANCE%)
 可以解下 ( 概率 : ‎DISARMCHANCE% )
 Resistances:
 抗性 : ‎
-### HP: 
-### Binding: 
+### HP:
+### Binding:
 Ambivalent
 矛盾
 Likes you
@@ -12246,7 +12246,7 @@ Extreme
 极端模式
 A supposedly reasonable difficulty curve.
 合理的难度曲线
-### Play the game the way it was intended. Cruel and restrictive. 
+### Play the game the way it was intended. Cruel and restrictive.
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 你将自食其果，该难度通过双击“困难模式”按钮解锁
 
@@ -12263,11 +12263,11 @@ Allow Rear Plugs
 Allow Piercings
 允许穿孔
 
-Start with 200 willpower and Iron Will, good at melee and blocking attacks.
+Start with 150 willpower and Iron Will, good at melee and blocking attacks.
 战士擅长近战攻击和防砍，开始游戏时将意志力上限提升到 200 点，并学得钢铁意志技能
-Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
+Start with 150 stamina and Sneaky, good at stealth and evasive gameplay.
 盗贼擅长潜行和躲避，开始游戏时将体力上限提升到 200 点，并学得潜行技能
-Start with 200 mana and Magical Sight, good at casting spells.
+Start with 150 mana and Magical Sight, good at casting spells.
 法师擅长施法，开始游戏时将魔力上限提升到 200 点，并学得魔之眼技能
 Start with nothing to your name. For those who want a challenge.
 适用于那些想要挑战的人，开始游戏时一无所有
@@ -16697,7 +16697,7 @@ What? (PERCENT chance to avoid)
 ### (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
 ### (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 ### (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-### (The SPEAKER tilts her head and shrugs)|Ah well. 
+### (The SPEAKER tilts her head and shrugs)|Ah well.
 ### (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 ### (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 ### (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
@@ -18177,7 +18177,7 @@ Give her a Scroll of Purity
 ### W-what does that entail?
 ### (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
 ### Hmmmph? Mmmm! (Act worried and whimper)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders 
+### (The SPEAKER folds her arms)|Mistress Oriel's orders
 ### Not in the 'System'?
 ### (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
 ### Mmmph? (Act confused)
@@ -18392,7 +18392,7 @@ Upcast Level LEVEL
 LEVEL 级
 Prerequisite
 前置条件
-### Unlocks: 
+### Unlocks:
 You need to learn REQUIREDSPELL before you can learn this one.
 你需要先学习 REQUIREDSPELL 才能学习这个。
 
@@ -18440,7 +18440,7 @@ Initiating prisoner lockdown protocol
 ### Your RestraintName suddenly snap together as the EnemyName activates them!
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count: 
+### Turn Count:
 
 The Shopkeeper leashes you!
 店主正在牵着你！
@@ -18853,7 +18853,7 @@ Paste
 Items on Ground:
 地面物品 : ‎
 
-### Preloading Character Assets: 
+### Preloading Character Assets:
 
 Uniforms
 制服
@@ -21921,7 +21921,7 @@ Rubber Stick
 橡胶棒
 A rubber cylinder without any lewd intentions whatsoever.
 一个没有任何猥亵意图的橡胶圆棒。
-### Deals grope damage. 
+### Deals grope damage.
 You pick up a flexible rubber stick.
 你拿起一根柔软的橡胶棒。
 
@@ -22888,8 +22888,8 @@ Cracks begin to form in your RestraintName!
 Your RestraintName shatters and falls off!
 你的 RestraintName 破碎并掉落！
 
-### Load Hotbar 
-### Save Hotbar 
+### Load Hotbar
+### Save Hotbar
 Clear Hotbar
 清空快捷栏
 
@@ -24105,7 +24105,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-### Receive the following restraints: 
+### Receive the following restraints:
 You will be bound with some form of restraint.
 你将受到某种形式的束缚。
 
@@ -24719,7 +24719,7 @@ Guest #NUMR/TTL
 
 Select a character to examine
 选择要检查的角色
-### Former Faction: 
+### Former Faction:
 
 Minigun
 机枪
@@ -24744,7 +24744,7 @@ Fungal
 ### Royal
 
 Choose default outfit palette:
-选择装备默认调色: 
+选择装备默认调色:
 
 Auto Load Mods
 自动加载模组
@@ -24903,7 +24903,7 @@ Yokes are less favored over other heavy bondage.
 You crouch and move slowly.
 你蹲下并缓慢移动。
 
-### Owned by: 
+### Owned by:
 
 Warden's Belt
 典狱长的贞操带
@@ -25563,8 +25563,8 @@ You find a ceremonial leotard.
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-Took 
-受到 
+Took
+受到
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 ( 当你杀死龙时，它开始变身为人形！ )
@@ -26463,8 +26463,8 @@ Fiber
 Runes
 符文
 
-### Stock: 
-### Inputs: 
+### Stock:
+### Inputs:
 
 You slip off the conveyor!
 你从传送带上滑下来了！
@@ -26532,17 +26532,17 @@ Toe Tie
 Heels
 高跟鞋
 
-### Equipped: 
-Click to Add 
+### Equipped:
+Click to Add
 点击装备
-### Apply 
-### Raw Material: 
+### Apply
+### Raw Material:
 
 Free Prisoner
 释放囚犯
 
-Perk Unlocked: 
-技能点解锁 : 
+Perk Unlocked:
+技能点解锁 :
 
 Latex Solvent
 乳胶溶剂
@@ -26574,7 +26574,7 @@ Restraint Palette
 Choose Restraint
 选择束缚
 
-Def. Palette: 
+Def. Palette:
 默认设置
 Set All Palette
 设置所有调色板
@@ -26582,14 +26582,14 @@ Set All Palette
 Guests
 客人
 
-Assign to 
+Assign to
 分配给
-Remove from 
+Remove from
 移除自
 Imprison
 监禁
 
-Opinion: 
+Opinion:
 观点 :
 Last Seen on Floor FLR, LOC
 最后出现在楼层 FLR 的 LOC 位置
@@ -26617,18 +26617,18 @@ NPC 已成功解开她的束缚。
 
 Any
 全部
-NPC Opinion: 
-NPC 观点 : 
-NPC Escape Status: 
-NPC 逃脱状态 : 
-NPC Binding: 
-NPC 束缚状态 : 
-NPC Availability: 
-NPC 可用性 : 
-Favorited: 
-收藏 : 
-Rank: 
-等级 : 
+NPC Opinion:
+NPC 观点 :
+NPC Escape Status:
+NPC 逃脱状态 :
+NPC Binding:
+NPC 束缚状态 :
+NPC Availability:
+NPC 可用性 :
+Favorited:
+收藏 :
+Rank:
+等级 :
 Minor
 低级
 Elite
@@ -26732,7 +26732,7 @@ idle
 
 ### Select a Binding Slot
 
-### Cost: 
+### Cost:
 
 Zoom set to PCNT%
 缩放设置为 PCNT%
@@ -26754,7 +26754,7 @@ Reaching Authority
 If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
 
-Save Slot 
+Save Slot
 存档槽
 Load Game
 加载游戏
@@ -26815,13 +26815,13 @@ Reverse Route
 颠倒路线 ‎
 Chaos Route
 混沌路线 ‎
-Map Seed: 
+Map Seed:
 地图种子 : ‎
 Will Overwrite NME!
 这会覆盖 NME!
 
-Play Slot 
-加载存档 
+Play Slot
+加载存档
 Play (NO SLOT!)
 加载 ( 未选择存档! )
 

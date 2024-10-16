@@ -1996,7 +1996,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 
 	KDCurrentEnemyTooltip = enemy;
 
-	KDQuickGenNPC(enemy, enemy.CustomName != undefined);
+	KDQuickGenNPC(enemy, enemy.CustomName != undefined || !!enemy.Enemy?.outfit);
 
 	if (KDNPCChar.get(enemy.id)) {
 		if (KDDrewEnemyTooltip && KDDrewEnemyTooltip != "" + enemy.id) {
@@ -6040,9 +6040,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.spell(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.visionRadius, false, true) && enemy.castCooldown <= 0) {
 			AIData.idle = false;
-			let spellchoice = null;
-			let spell = null;
-			let spelltarget = undefined;
+			let spellchoice: string = null;
+			let spell: spell = null;
+			let spelltarget: entity = undefined;
 
 			let spellPriority = [];
 			if (enemy.Enemy.Magic?.priority) {
@@ -6067,7 +6067,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				if (spell && spell.specialCD && enemy.castCooldownSpecial > 0) spell = null;
 				if (spell && enemy.castCooldownUnique && enemy.castCooldownUnique[spell.name] > 0) spell = null;
 				if (spell && spell.noFirstChoice && tries <= 2) spell = null;
-				if (spell && spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player)) spell = null;
+				if (spell && spell.projectileTargeting && !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player && !spell.noFF)) spell = null;
 				if (spell && spell.buff) {
 					if (enemy.Enemy.buffallies || spell.buffallies) {
 					// Select a random nearby ally of the enemy

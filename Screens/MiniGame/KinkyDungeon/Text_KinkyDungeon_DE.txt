@@ -731,12 +731,12 @@
 ### Feet
 ### Everywhere!
 
-### Physical Armor: 
-### Magic Armor: 
+### Physical Armor:
+### Magic Armor:
 ### In the Shadows: You are harder to see.
 ### Invisible: You are very difficult to see.
 ### Quickness: Your next movement is so fast it doesn't advance a turn.
-### All Damage Reduction: 
+### All Damage Reduction:
 ### You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 ### You deal PERCENT more DAMAGETYPE damage.
 ### Your bindings are PERCENT more effective.
@@ -888,7 +888,7 @@
 ### You haven't found the keys for this floor yet.
 ### Missing key
 ### You are protected from damage and can't be bound until the shield is broken!
-### Chance for a spell to fizzle: 
+### Chance for a spell to fizzle:
 ### Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 ### Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
 ### Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist and RESBLKPENALTY penalty.
@@ -975,7 +975,7 @@
 ### Load Mod .zip
 ### Delete Mod
 ### Clear Perks
-### Config 
+### Config
 ### Cancel
 ### Filter
 
@@ -1043,11 +1043,11 @@
 
 ### Floor FLOORNUMBER: DUNGEONNAME
 
-### Lockpicks: 
-### Keys: 
-### Magic Keys: 
-### Knife: 
-### Mag. Knife: 
+### Lockpicks:
+### Keys:
+### Magic Keys:
+### Knife:
+### Mag. Knife:
 
 ### You climb down the stairs. The passage closes behind you.
 ### You climb back up the stairs.
@@ -1156,7 +1156,7 @@
 ### You find a snow-like potion that's cold to the touch.
 ### You find a medley of potions.
 
-### Rarity: 
+### Rarity:
 ### Lesser
 ### Common
 ### Uncommon
@@ -1600,13 +1600,13 @@
 ### Deals crush damage. Deals 3x damage to frozen targets instead of 2x. Triggers Shatter.
 ### Dreamcatcher
 ### Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 ### Axe
 ### Great for cutting trees that happen to be underground.
 ### Also deals 20 damage to enemies next to you. Deals slash damage.
-### Accuracy: 
-### Crit Multiplier: 
-### Bind Crit Multiplier: 
+### Accuracy:
+### Crit Multiplier:
+### Bind Crit Multiplier:
 ### Find the keys..
 ### Find the exit!
 ### You are receiving help from a friendly ally.
@@ -1615,8 +1615,8 @@
 ### You found a corner to help manipulate buckles and snaps with.
 ### You found a crack and could maybe wedge a knife or tool into it to keep it still.
 ### You found something sticky and might be able to pull off fabrics.
-### Evasion: 
-### Visibility: 
+### Evasion:
+### Visibility:
 
 
 ### Submissive: Enemies won't attack you, but they will try to play with you.
@@ -1641,10 +1641,10 @@
 ### Satisfied. Miscast chance is reduced.
 
 
-### Damage: 
-### Bind: 
-### Crit: 
-### SP Cost: 
+### Damage:
+### Bind:
+### Crit:
+### SP Cost:
 ### Cut PWR: AMNT%
 
 ### It appears to be a receptacle
@@ -3230,13 +3230,13 @@
 ### Illusions
 ### Commerce
 ### Shrine of SHRINETYPE
-### Tablet of 
+### Tablet of
 
-### Goddess: 
-### Goddess Blessing: 
-### Goddess Curse: 
-### Mana Bonus: 
-### Lack of Mana Penalty: 
+### Goddess:
+### Goddess Blessing:
+### Goddess Curse:
+### Mana Bonus:
+### Lack of Mana Penalty:
 ### Your excess mana helps you suppress the enchantment!
 ### Your mana is too weak to fight the magical enchantment...
 
@@ -3249,9 +3249,9 @@
 ### These runes are meant for someone with less willpower.
 ### You try to read the runes but cannot understand them.
 
-### Allies: 
-### Enemies: 
-### Favorable: 
+### Allies:
+### Enemies:
+### Favorable:
 
 ### None
 ### Nevermere Trainers
@@ -3563,7 +3563,7 @@
 
 
 
-### You find 
+### You find
 
 
 
@@ -4744,7 +4744,7 @@
 
 ### Verbal
 
-### Components: 
+### Components:
 ### Arm Movements
 ### Leg Gestures
 ### You mumble incoherently trying to cast the spell...
@@ -6189,17 +6189,17 @@
 ### You need a higher level in SCHOOL magic to learn this spell.
 ### You need more spell points.
 ### You don't have enough maximum mana to cast this spell!
-### School: 
+### School:
 ### Generic
 ### Upgrade
 ### Special
 ### Learn Spell
-### Spell Points: 
+### Spell Points:
 
 
-### Level: 
-### Spell Point Cost: 
-### Mana Cost: 
+### Level:
+### Spell Point Cost:
+### Mana Cost:
 
 
 ### Remove Spell 1
@@ -6216,13 +6216,13 @@
 ### Replace Spell 5
 ### Replace Spell 6
 ### Replace Spell 7
-### Current Spell 1: 
-### Current Spell 2: 
-### Current Spell 3: 
-### Current Spell 4: 
-### Current Spell 5: 
-### Current Spell 6: 
-### Current Spell 7: 
+### Current Spell 1:
+### Current Spell 2:
+### Current Spell 3:
+### Current Spell 4:
+### Current Spell 5:
+### Current Spell 6:
+### Current Spell 7:
 
 ### ???
 ### Unfiled
@@ -6242,7 +6242,7 @@
 ### (A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
 ### (A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough.
 ### (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 ### (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 ### (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
 ### (A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
@@ -6582,9 +6582,9 @@
 
 ### For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 ### For 3 rep the goddess will grant you a key.
-### For 3 rep the goddess will grant you 
+### For 3 rep the goddess will grant you
 ### For 3 rep the goddess
-### For 3 rep the goddess 
+### For 3 rep the goddess
 
 ### The goddess will fully restore your mana in exchange for AMOUNT rep
 ### The goddess will enjoy seeing you struggle in her bonds (raises submissiveness)
@@ -6778,8 +6778,8 @@
 ### AMNT% chance to hit you
 ### Can disarm (chance: DISARMCHANCE%)
 ### Resistances:
-### HP: 
-### Binding: 
+### HP:
+### Binding:
 ### Ambivalent
 ### Likes you
 ### Loves you
@@ -6944,7 +6944,7 @@
 ### Hard Mode
 ### Extreme
 ### A supposedly reasonable difficulty curve.
-### Play the game the way it was intended. Cruel and restrictive. 
+### Play the game the way it was intended. Cruel and restrictive.
 ### Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 
 ### Aroused
@@ -6954,9 +6954,9 @@
 ### Allow Rear Plugs
 ### Allow Piercings
 
-### Start with 200 willpower and Iron Will, good at melee and blocking attacks.
-### Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-### Start with 200 mana and Magical Sight, good at casting spells.
+### Start with 150 willpower and Iron Will, good at melee and blocking attacks.
+### Start with 150 stamina and Sneaky, good at stealth and evasive gameplay.
+### Start with 150 mana and Magical Sight, good at casting spells.
 ### Start with nothing to your name. For those who want a challenge.
 ### You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
 
@@ -10025,7 +10025,7 @@
 ### (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
 ### (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 ### (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-### (The SPEAKER tilts her head and shrugs)|Ah well. 
+### (The SPEAKER tilts her head and shrugs)|Ah well.
 ### (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 ### (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
 ### (The SPEAKER frowns and cracks her knuckles)|Looks like my suspicions were right!|Looks like you and I are going to have a little chat...
@@ -10913,7 +10913,7 @@
 ### W-what does that entail?
 ### (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
 ### Hmmmph? Mmmm! (Act worried and whimper)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders 
+### (The SPEAKER folds her arms)|Mistress Oriel's orders
 ### Not in the 'System'?
 ### (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
 ### Mmmph? (Act confused)
@@ -11049,7 +11049,7 @@
 
 ### Upcast Level LEVEL
 ### Prerequisite
-### Unlocks: 
+### Unlocks:
 ### You need to learn REQUIREDSPELL before you can learn this one.
 
 ### You no longer have the will to struggle.
@@ -11080,7 +11080,7 @@
 ### Your RestraintName suddenly snap together as the EnemyName activates them!
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count: 
+### Turn Count:
 
 ### The Shopkeeper leashes you!
 ### You are brought into the Shopkeeper's establishment...
@@ -11313,7 +11313,7 @@
 
 ### Items on Ground:
 
-### Preloading Character Assets: 
+### Preloading Character Assets:
 
 ### Uniforms
 ### Suits
@@ -13793,7 +13793,7 @@
 
 ### Rubber Stick
 ### A rubber cylinder without any lewd intentions whatsoever.
-### Deals grope damage. 
+### Deals grope damage.
 ### You pick up a flexible rubber stick.
 
 ### Blade of Ejahl
@@ -14360,8 +14360,8 @@
 ### Cracks begin to form in your RestraintName!
 ### Your RestraintName shatters and falls off!
 
-### Load Hotbar 
-### Save Hotbar 
+### Load Hotbar
+### Save Hotbar
 ### Clear Hotbar
 
 ### Confirm clearing hotbar?
@@ -15064,7 +15064,7 @@
 
 
 
-### Receive the following restraints: 
+### Receive the following restraints:
 ### You will be bound with some form of restraint.
 
 
@@ -15425,7 +15425,7 @@
 
 
 ### Select a character to examine
-### Former Faction: 
+### Former Faction:
 
 ### Minigun
 
@@ -15535,7 +15535,7 @@
 
 ### You crouch and move slowly.
 
-### Owned by: 
+### Owned by:
 
 ### Warden's Belt
 ### You may go on your way, but only as long your freedom is useful to her.
@@ -15932,7 +15932,7 @@
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took 
+### Took
 
 ### (As you slay the dragon, it begins shapeshifting into human form!)
 
@@ -16483,8 +16483,8 @@
 ### Fiber
 ### Runes
 
-### Stock: 
-### Inputs: 
+### Stock:
+### Inputs:
 
 ### You slip off the conveyor!
 ### The Summit
@@ -16522,14 +16522,14 @@
 ### Toe Tie
 ### Heels
 
-### Equipped: 
-### Click to Add 
-### Apply 
-### Raw Material: 
+### Equipped:
+### Click to Add
+### Apply
+### Raw Material:
 
 ### Free Prisoner
 
-### Perk Unlocked: 
+### Perk Unlocked:
 
 ### Latex Solvent
 ### You ready the bottle of Latex Solvent.
@@ -16549,16 +16549,16 @@
 ### Restraint Palette
 ### Choose Restraint
 
-### Def. Palette: 
+### Def. Palette:
 ### Set All Palette
 
 ### Guests
 
-### Assign to 
-### Remove from 
+### Assign to
+### Remove from
 ### Imprison
 
-### Opinion: 
+### Opinion:
 ### Last Seen on Floor FLR, LOC
 ### Present in current level
 ### Captured by FCTN
@@ -16574,12 +16574,12 @@
 ### NPC has managed to loosen her bonds.
 
 ### Any
-### NPC Opinion: 
-### NPC Escape Status: 
-### NPC Binding: 
-### NPC Availability: 
-### Favorited: 
-### Rank: 
+### NPC Opinion:
+### NPC Escape Status:
+### NPC Binding:
+### NPC Availability:
+### Favorited:
+### Rank:
 ### Minor
 ### Elite
 ### Miniboss
@@ -16644,7 +16644,7 @@
 
 ### Select a Binding Slot
 
-### Cost: 
+### Cost:
 
 ### Zoom set to PCNT%
 ### You need free arms to tie others!
@@ -16662,7 +16662,7 @@
 ### Reaching Authority
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot 
+### Save Slot
 ### Load Game
 ### Load Code
 ### Load Slot 0
@@ -16696,10 +16696,10 @@
 ### Factory Route
 ### Reverse Route
 ### Chaos Route
-### Map Seed: 
+### Map Seed:
 ### Will Overwrite NME!
 
-### Play Slot 
+### Play Slot
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)
@@ -16818,7 +16818,7 @@
 ### Take Everything
 ### Deposit All
 
-### Auto-loot found 
+### Auto-loot found
 ###  (not picked up)
 
 ### Automatically Flip When Moving

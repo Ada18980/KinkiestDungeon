@@ -3351,18 +3351,20 @@ type KDEventData_affinity = {
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean, UnLink: boolean}
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
+interface KDExpressionType {
+	EyesPose: string,
+	Eyes2Pose: string,
+	BrowsPose: string,
+	Brows2Pose: string,
+	BlushPose: string,
+	MouthPose: string,
+}
+
 type KDExpression = {
 	priority: number;
 	stackable?: boolean,
 	criteria: (C: any, flags: Map<string, number>) => boolean;
-	expression: (C: any, flags: Map<string, number>) => {
-		EyesPose: string,
-		Eyes2Pose: string,
-		BrowsPose: string,
-		Brows2Pose: string,
-		BlushPose: string,
-		MouthPose: string,
-	};
+	expression: (C: any, flags: Map<string, number>) => KDExpressionType
 }
 
 interface KDPrisonState {
