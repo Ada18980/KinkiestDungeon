@@ -25,6 +25,19 @@ IGNORE_KEYS = [
     "KDVersionStr"
 ]
 
+class LineCountingWriter:
+    def __init__(self, file, init_count=1):
+        self.file = file
+        self.count_lines = init_count
+        
+    def write(self, content):
+        lines = content.count('\n')
+        self.count_lines += lines
+        self.file.write(content)
+        
+    def line_count(self):
+        return self.count_lines
+
 # Read the csv file
 def read_csv_with_empty_lines(file_path) -> list:
     with open(file_path, newline='', encoding='utf-8') as csvfile:
@@ -57,17 +70,19 @@ def read_translation_file(file_path) -> list:
 def write_translated_file(csv_lines : list, translations : list, output_path : str):
     translated = set()
     with open(output_path, 'w', encoding='utf-8') as file:
+        writer = LineCountingWriter(file)
         for line in csv_lines:
             if not line or not line[1]:
-                file.write('\n')
+                writer.write('\n')
                 continue
             
             key, original, *_ = line
-            
             if original in translated:
                 continue
-                
             translated.add(original)
+            
+            if writer.line_count() % 2 == 0:
+                writer.write('\n')
             
             # The next line of the original text corresponding to the List is the translation. If the translation is not found,will use "### Original" instead.
             # When the translation is the same as the original text, "### Original" is also used because it is meaningless.
@@ -77,10 +92,10 @@ def write_translated_file(csv_lines : list, translations : list, output_path : s
                 if not translation or (original == translation) :
                     raise ValueError
             except (ValueError, IndexError):
-                file.write(f'### {original}\n')
+                writer.write(f'### {original}\n')
                 continue
             
-            file.write(f'{original}\n{translation}\n')
+            writer.write(f'{original}\n{translation}\n')
 
 original_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
 
