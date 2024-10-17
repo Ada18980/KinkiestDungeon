@@ -1401,7 +1401,7 @@ function KDDrawInventoryContainer (
 			DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 				KDConfigHotbar = !KDConfigHotbar;
 				return true;
-			}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185, yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale - 150, 190, 55, TextGet("KDBack"), "#ffffff", "");
+			}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185, yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale - 250, 190, 55, TextGet("KDBack"), "#ffffff", "");
 
 		} else {
 			KDConfigHotbar = false;

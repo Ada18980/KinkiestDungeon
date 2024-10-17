@@ -2307,32 +2307,24 @@ function KinkyDungeonLoadSpellsConfig() {
 		//KinkyDungeonSpellChoices = [];
 		KDClearChoices();
 		let list: string[] = JSON.parse(spellsChoice);
+		let i = 0;
 		for (let spell of list) {
 			if (KDHasSpell(spell)) {
-				KinkyDungeonSpellChoices.push(KinkyDungeonSpells.findIndex((sp) => {
+				KinkyDungeonSpellChoices[i] = KinkyDungeonSpells.findIndex((sp) => {
 					return sp.name == spell;
-				}));
-			} else {
-				KinkyDungeonSpellChoices.push(-1);
+				});
+			}
+			else if (KinkyDungeonInventoryGetConsumable(spell)) {
+				KinkyDungeonConsumableChoices[i] = spell;
+			}
+			else if (KinkyDungeonInventoryGetWeapon(spell)) {
+				KinkyDungeonWeaponChoices[i] = spell;
+			}
+			else if (KinkyDungeonInventoryGet(spell)) {
+				KinkyDungeonArmorChoices[i] = spell;
 			}
 
-			if (KinkyDungeonInventoryGetConsumable(spell)) {
-				KinkyDungeonConsumableChoices.push(spell);
-			} else {
-				KinkyDungeonConsumableChoices.push("");
-			}
-
-			if (KinkyDungeonInventoryGetWeapon(spell)) {
-				KinkyDungeonWeaponChoices.push(spell);
-			} else {
-				KinkyDungeonWeaponChoices.push("");
-			}
-
-			if (KinkyDungeonInventoryGet(spell)) {
-				KinkyDungeonArmorChoices.push(spell);
-			} else {
-				KinkyDungeonArmorChoices.push("");
-			}
+			i++;
 		}
 	}
 }
