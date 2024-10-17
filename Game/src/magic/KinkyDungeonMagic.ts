@@ -2303,12 +2303,16 @@ function KDMatchTags(tags: string[], entity: entity): boolean {
 
 function KinkyDungeonLoadSpellsConfig() {
 	let spellsChoice = localStorage.getItem('KinkyDungeonSpellsChoice' + KinkyDungeonSpellsConfig);
+	let spellsChoiceToggle = localStorage.getItem('KDSpellsChoiceToggle' + KinkyDungeonSpellsConfig);
 	if (spellsChoice) {
 		//KinkyDungeonSpellChoices = [];
 		KDClearChoices();
 		let list: string[] = JSON.parse(spellsChoice);
 		let i = 0;
 		for (let spell of list) {
+			if (spellsChoiceToggle && spellsChoiceToggle[i]) {
+				KinkyDungeonSpellChoicesToggle[i] = true;
+			}
 			if (KDHasSpell(spell)) {
 				KinkyDungeonSpellChoices[i] = KinkyDungeonSpells.findIndex((sp) => {
 					return sp.name == spell;
@@ -2335,7 +2339,9 @@ function KinkyDungeonSaveSpellsConfig() {
 		else if (KinkyDungeonWeaponChoices[i]) list[i] = KinkyDungeonWeaponChoices[i];
 		else if (KinkyDungeonArmorChoices[i]) list[i] = KinkyDungeonArmorChoices[i];
 	}
+	let list2 = KinkyDungeonSpellChoicesToggle.map((index) => {return index ? 1 : 0;});
 	localStorage.setItem('KinkyDungeonSpellsChoice' + KinkyDungeonSpellsConfig, JSON.stringify(list));
+	localStorage.setItem('KDSpellsChoiceToggle' + KinkyDungeonSpellsConfig, JSON.stringify(list2));
 }
 
 function KDDrawHotbar(xLoc: number, _yLoc: number, _name: string, _fn: (I: number) => void) {

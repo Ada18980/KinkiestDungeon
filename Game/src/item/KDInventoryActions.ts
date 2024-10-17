@@ -809,7 +809,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KDGameData.ItemsSold[item.name] = (KDGameData.ItemsSold[item.name] || 0) + 1;
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSell")
-				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
+				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + value)
 			, "#ffffff", 2);
 		},
@@ -882,7 +882,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KinkyDungeonAddGold(value);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSellBulk")
-				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
+				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + value)
 				.replace("#", "" + (itemInv.quantity || 1))
 			, "#ffffff", 2);
@@ -957,7 +957,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KinkyDungeonAddGold(value);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonSendTextMessage(10, TextGet("KDSellExcess")
-				.replace("ITM", TextGet( (itemInv.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem") + item.name))
+				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + value)
 				.replace("#", "" + (quantity || 1))
 			, "#ffffff", 2);
