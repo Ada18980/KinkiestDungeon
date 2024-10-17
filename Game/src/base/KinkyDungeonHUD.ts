@@ -369,7 +369,11 @@ function KDDrawSpellChoices() {
 	let hotBarSpacing = 72;
 	let hotBarX = 790 + hotBarSpacing;
 
-	if (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage) {
+	if (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage
+		|| KinkyDungeonWeaponChoices.length > KinkyDungeonSpellChoiceCountPerPage
+		|| KinkyDungeonConsumableChoices.length > KinkyDungeonSpellChoiceCountPerPage
+		|| KinkyDungeonArmorChoices.length > KinkyDungeonSpellChoiceCountPerPage
+	) {
 		DrawButtonKDEx("CycleSpellButton", () => {
 			KDCycleSpellPage(false, false);
 			return true;
