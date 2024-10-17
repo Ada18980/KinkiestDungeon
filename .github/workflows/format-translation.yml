@@ -9,12 +9,12 @@ on:
     branches:
       - newartwork
     paths:
-      - 'Screens/MiniGame/KinkyDungeon/*'
+      - "Screens/MiniGame/KinkyDungeon/*"
 
 jobs:
   format-translation:
     runs-on: ubuntu-latest
-
+    if: github.repository == 'Ada18980/KinkiestDungeon'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,13 +22,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.x'
-          
+          python-version: "3.x"
+
       - name: 🚀 Run format-translation script
         run: python .github/scripts/format-translation-script.py Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv
-  
-      - name: 📝 Commit changes 
-        id: check_changes 
+
+      - name: 📝 Commit changes
+        id: check_changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "format-translation-action"

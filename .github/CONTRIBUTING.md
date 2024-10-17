@@ -30,11 +30,13 @@ For some nouns, you can refer to the [Noun Explanation](#Noun-Explanation) secti
 ##### Writing rules
 
 One line of original text, then the next line is the translated text。
+
+*(Ensure original text on odd lines, translation on even lines)*
+
 Such as:
 `````
 Original text 1
 Translated text 1
-
 Original text 2
 Translated text 2
 `````
