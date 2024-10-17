@@ -369,7 +369,8 @@ function KDDrawSpellChoices() {
 	let hotBarSpacing = 72;
 	let hotBarX = 790 + hotBarSpacing;
 
-	if (KinkyDungeonSpellChoices.length > KinkyDungeonSpellChoiceCountPerPage) {
+	const max_choices = Math.max (KinkyDungeonSpellChoices.length, KinkyDungeonConsumableChoices.length, KinkyDungeonWeaponChoices.length, KinkyDungeonArmorChoices.length)
+	if (max_choices > KinkyDungeonSpellChoiceCountPerPage) {
 		DrawButtonKDEx("CycleSpellButton", () => {
 			KDCycleSpellPage(false, false);
 			return true;
@@ -386,7 +387,7 @@ function KDDrawSpellChoices() {
 	let KDUpcastLevel = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower");
 
 
-	if (KinkyDungeonSpellChoices.length > 0) {
+	if (max_choices > 0) {
 		let hasUpcast = KDCanUpcast();
 		if (!KDToggles.TransparentUI) {
 			DrawRectKD(
@@ -618,9 +619,9 @@ function KDDrawSpellChoices() {
 		}
 		let icon = 0;
 		// Draw icons for the other pages, if applicable
-		for (let page = 1; page < maxSmallIcons && page <= Math.floor((KinkyDungeonSpellChoices.length - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
+		for (let page = 1; page < maxSmallIcons && page <= Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage); page += 1) {
 			let pg = KDSpellPage + page;
-			if (pg > Math.floor(KinkyDungeonSpellChoices.length / KinkyDungeonSpellChoiceCountPerPage)) pg -= 1 + Math.floor((KinkyDungeonSpellChoices.length - 1) / KinkyDungeonSpellChoiceCountPerPage);
+			if (pg > Math.floor(max_choices / KinkyDungeonSpellChoiceCountPerPage)) pg -= 1 + Math.floor((max_choices - 1) / KinkyDungeonSpellChoiceCountPerPage);
 
 			// Now we have our page...
 			let indexPaged = (i + pg * KinkyDungeonSpellChoiceCountPerPage) % (KinkyDungeonSpellChoiceCount);
@@ -719,20 +720,22 @@ function KDDrawSpellChoices() {
 }
 
 function KDCycleSpellPage(reverse: boolean = false, noWrap: boolean = false, force: boolean = false) {
+	const max_choices = Math.max (KinkyDungeonSpellChoices.length, KinkyDungeonConsumableChoices.length, KinkyDungeonWeaponChoices.length, KinkyDungeonArmorChoices.length)
+
 	if (reverse) {
 		KDSpellPage -= 1;
 	} else KDSpellPage += 1;
 
 	if (KDSpellPage < 0) {
 		if (!noWrap)
-			KDSpellPage = Math.floor((Math.max(0, (force ? KinkyDungeonSpellChoiceCount : KinkyDungeonSpellChoices.length) - 1))/KinkyDungeonSpellChoiceCountPerPage);
+			KDSpellPage = Math.floor((Math.max(0, (force ? KinkyDungeonSpellChoiceCount : max_choices) - 1))/KinkyDungeonSpellChoiceCountPerPage);
 		else KDSpellPage = 0;
 	}
-	if (KDSpellPage * KinkyDungeonSpellChoiceCountPerPage >= (force ? KinkyDungeonSpellChoiceCount : KinkyDungeonSpellChoices.length)) {
+	if (KDSpellPage * KinkyDungeonSpellChoiceCountPerPage >= (force ? KinkyDungeonSpellChoiceCount : max_choices)) {
 		if (!noWrap)
 			KDSpellPage = 0;
 		else {
-			KDSpellPage = Math.floor((Math.max(0, (force ? KinkyDungeonSpellChoiceCount : KinkyDungeonSpellChoices.length) - 1))/KinkyDungeonSpellChoiceCountPerPage);
+			KDSpellPage = Math.floor((Math.max(0, (force ? KinkyDungeonSpellChoiceCount : max_choices) - 1))/KinkyDungeonSpellChoiceCountPerPage);
 		}
 	}
 }
