@@ -387,7 +387,7 @@ function KDDrawSpellChoices() {
 	let KDUpcastLevel = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower");
 
 
-	if (max_choices > 0) {
+	if (KinkyDungeonSpellChoices.length > 0) {
 		let hasUpcast = KDCanUpcast();
 		if (!KDToggles.TransparentUI) {
 			DrawRectKD(
