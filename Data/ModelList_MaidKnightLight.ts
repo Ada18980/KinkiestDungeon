@@ -446,7 +446,6 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
-			AppendPose: ToMapDupe(["RopesAnkle"]),
 
 			DisplacementPosesExclude: ["Hogtie"],
 			ErasePosesExclude: ["Hogtie"],
@@ -465,7 +464,6 @@ AddModel({
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
-			AppendPose: ToMapDupe(["RopesAnkle"]),
 
 			EraseInvariant: true,
 			EraseMorph: {Closed: "Closed"},

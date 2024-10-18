@@ -28,7 +28,7 @@ let SPREADPOSES = ["Spread", "Kneel"];
 let SPREADCLOSEDPOSES = ["Hogtie"];
 /** Expressions */
 
-let EYETYPES = ["Neutral", "Surprised", "Dazed", "Closed", "Angry"];
+let EYETYPES = ["Neutral", "Surprised", "Dazed", "Closed", "Angry", "Sly", "Heart"];
 let EYEPOSES = EYETYPES.map((pose) => {return "Eyes" + pose;});
 let EYE2POSES = EYETYPES.map((pose) => {return "Eyes2" + pose;});
 let BROWTYPES = ["Neutral", "Angry", "Annoyed", "Sad", "Surprised"];
