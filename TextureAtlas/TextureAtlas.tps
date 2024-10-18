@@ -3486,22 +3486,30 @@
             <key type="filename">../Models/FaceDask/Eyes2Angry.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Closed.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Dazed.png</key>
+            <key type="filename">../Models/FaceDask/Eyes2Heart.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Neutral.png</key>
+            <key type="filename">../Models/FaceDask/Eyes2Sly.png</key>
             <key type="filename">../Models/FaceDask/Eyes2Surprised.png</key>
             <key type="filename">../Models/FaceDask/EyesAngry.png</key>
             <key type="filename">../Models/FaceDask/EyesClosed.png</key>
             <key type="filename">../Models/FaceDask/EyesDazed.png</key>
+            <key type="filename">../Models/FaceDask/EyesHeart.png</key>
             <key type="filename">../Models/FaceDask/EyesNeutral.png</key>
+            <key type="filename">../Models/FaceDask/EyesSly.png</key>
             <key type="filename">../Models/FaceDask/EyesSurprised.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyes2Angry.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyes2Closed.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyes2Dazed.png</key>
+            <key type="filename">../Models/FaceDask/WhitesEyes2Heart.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/FaceDask/WhitesEyes2Sly.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyes2Surprised.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyesAngry.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyesClosed.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyesDazed.png</key>
+            <key type="filename">../Models/FaceDask/WhitesEyesHeart.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyesNeutral.png</key>
+            <key type="filename">../Models/FaceDask/WhitesEyesSly.png</key>
             <key type="filename">../Models/FaceDask/WhitesEyesSurprised.png</key>
             <key type="filename">../Models/FaceKjus/BlushExtreme.png</key>
             <key type="filename">../Models/FaceKoi/BlushExtreme.png</key>
@@ -3523,24 +3531,28 @@
             <key type="filename">../Models/FaceKoi/Eyes2Dazed.png</key>
             <key type="filename">../Models/FaceKoi/Eyes2Heart.png</key>
             <key type="filename">../Models/FaceKoi/Eyes2Neutral.png</key>
+            <key type="filename">../Models/FaceKoi/Eyes2Sly.png</key>
             <key type="filename">../Models/FaceKoi/Eyes2Surprised.png</key>
             <key type="filename">../Models/FaceKoi/EyesAngry.png</key>
             <key type="filename">../Models/FaceKoi/EyesClosed.png</key>
             <key type="filename">../Models/FaceKoi/EyesDazed.png</key>
             <key type="filename">../Models/FaceKoi/EyesHeart.png</key>
             <key type="filename">../Models/FaceKoi/EyesNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/EyesSly.png</key>
             <key type="filename">../Models/FaceKoi/EyesSurprised.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyes2Angry.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyes2Closed.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyes2Dazed.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyes2Heart.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyes2Neutral.png</key>
+            <key type="filename">../Models/FaceKoi/HumanEyes2Sly.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyes2Surprised.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyesAngry.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyesClosed.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyesDazed.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyesHeart.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyesNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/HumanEyesSly.png</key>
             <key type="filename">../Models/FaceKoi/HumanEyesSurprised.png</key>
             <key type="filename">../Models/FaceKoi/MouthDazed.png</key>
             <key type="filename">../Models/FaceKoi/MouthDistracted.png</key>
@@ -3555,36 +3567,42 @@
             <key type="filename">../Models/FaceKoi/WhitesEyes2Dazed.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyes2Heart.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyes2Sly.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyes2Surprised.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyesAngry.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyesClosed.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyesDazed.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyesHeart.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyesNeutral.png</key>
+            <key type="filename">../Models/FaceKoi/WhitesEyesSly.png</key>
             <key type="filename">../Models/FaceKoi/WhitesEyesSurprised.png</key>
             <key type="filename">../Models/FaceKoiBlank/Eyes2Angry.png</key>
             <key type="filename">../Models/FaceKoiBlank/Eyes2Closed.png</key>
             <key type="filename">../Models/FaceKoiBlank/Eyes2Dazed.png</key>
             <key type="filename">../Models/FaceKoiBlank/Eyes2Heart.png</key>
             <key type="filename">../Models/FaceKoiBlank/Eyes2Neutral.png</key>
+            <key type="filename">../Models/FaceKoiBlank/Eyes2Sly.png</key>
             <key type="filename">../Models/FaceKoiBlank/Eyes2Surprised.png</key>
             <key type="filename">../Models/FaceKoiBlank/EyesAngry.png</key>
             <key type="filename">../Models/FaceKoiBlank/EyesClosed.png</key>
             <key type="filename">../Models/FaceKoiBlank/EyesDazed.png</key>
             <key type="filename">../Models/FaceKoiBlank/EyesHeart.png</key>
             <key type="filename">../Models/FaceKoiBlank/EyesNeutral.png</key>
+            <key type="filename">../Models/FaceKoiBlank/EyesSly.png</key>
             <key type="filename">../Models/FaceKoiBlank/EyesSurprised.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Angry.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Closed.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Dazed.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Heart.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Neutral.png</key>
+            <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Sly.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyes2Surprised.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyesAngry.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyesClosed.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyesDazed.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyesHeart.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyesNeutral.png</key>
+            <key type="filename">../Models/FaceKoiBlank/WhitesEyesSly.png</key>
             <key type="filename">../Models/FaceKoiBlank/WhitesEyesSurprised.png</key>
             <key type="filename">../Models/GagCloth/Cleave.png</key>
             <key type="filename">../Models/GagCloth/CleaveThick.png</key>
@@ -4221,6 +4239,106 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Models/EyesK2/Eyes2Heart.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Heart.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Heart.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Heart.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Heart.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Heart.png</key>
+            <key type="filename">../Models/FaceKjus/Eyes2Angry.png</key>
+            <key type="filename">../Models/FaceKjus/Eyes2Dazed.png</key>
+            <key type="filename">../Models/FaceKjus/Eyes2Heart.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyes2Angry.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyes2Dazed.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyes2Heart.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>376,207,753,413</rect>
+                <key>scale9Paddings</key>
+                <rect>376,207,753,413</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesK2/Eyes2Sly.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyes2Sly.png</key>
+            <key type="filename">../Models/EyesK3/Eyes2Sly.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyes2Sly.png</key>
+            <key type="filename">../Models/EyesK4/Eyes2Sly.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyes2Sly.png</key>
+            <key type="filename">../Models/FaceKjus/Eyes2Closed.png</key>
+            <key type="filename">../Models/FaceKjus/Eyes2Sly.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyes2Closed.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyes2Sly.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>379,213,759,425</rect>
+                <key>scale9Paddings</key>
+                <rect>379,213,759,425</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesK2/EyesHeart.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesHeart.png</key>
+            <key type="filename">../Models/EyesK3/EyesHeart.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesHeart.png</key>
+            <key type="filename">../Models/EyesK4/EyesHeart.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesHeart.png</key>
+            <key type="filename">../Models/FaceKjus/EyesAngry.png</key>
+            <key type="filename">../Models/FaceKjus/EyesDazed.png</key>
+            <key type="filename">../Models/FaceKjus/EyesHeart.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyesAngry.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyesDazed.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyesHeart.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>362,213,725,425</rect>
+                <key>scale9Paddings</key>
+                <rect>362,213,725,425</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/EyesK2/EyesSly.png</key>
+            <key type="filename">../Models/EyesK2/WhitesEyesSly.png</key>
+            <key type="filename">../Models/EyesK3/EyesSly.png</key>
+            <key type="filename">../Models/EyesK3/WhitesEyesSly.png</key>
+            <key type="filename">../Models/EyesK4/EyesSly.png</key>
+            <key type="filename">../Models/EyesK4/WhitesEyesSly.png</key>
+            <key type="filename">../Models/FaceKjus/EyesClosed.png</key>
+            <key type="filename">../Models/FaceKjus/EyesSly.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyesClosed.png</key>
+            <key type="filename">../Models/FaceKjus/WhitesEyesSly.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>426,262,851,524</rect>
+                <key>scale9Paddings</key>
+                <rect>426,262,851,524</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Models/FaceDask/Brows2Angry.png</key>
             <key type="filename">../Models/FaceDask/Brows2Annoyed.png</key>
             <key type="filename">../Models/FaceDask/Brows2Neutral.png</key>
@@ -4290,40 +4408,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../Models/FaceKjus/Eyes2Angry.png</key>
-            <key type="filename">../Models/FaceKjus/Eyes2Dazed.png</key>
-            <key type="filename">../Models/FaceKjus/WhitesEyes2Angry.png</key>
-            <key type="filename">../Models/FaceKjus/WhitesEyes2Dazed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>376,207,753,413</rect>
-                <key>scale9Paddings</key>
-                <rect>376,207,753,413</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/Eyes2Closed.png</key>
-            <key type="filename">../Models/FaceKjus/WhitesEyes2Closed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>379,213,759,425</rect>
-                <key>scale9Paddings</key>
-                <rect>379,213,759,425</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">../Models/FaceKjus/Eyes2Neutral.png</key>
             <key type="filename">../Models/FaceKjus/WhitesEyes2Neutral.png</key>
             <struct type="IndividualSpriteSettings">
@@ -4355,40 +4439,6 @@
                 <rect>396,250,791,501</rect>
                 <key>scale9Paddings</key>
                 <rect>396,250,791,501</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/EyesAngry.png</key>
-            <key type="filename">../Models/FaceKjus/EyesDazed.png</key>
-            <key type="filename">../Models/FaceKjus/WhitesEyesAngry.png</key>
-            <key type="filename">../Models/FaceKjus/WhitesEyesDazed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>362,213,725,425</rect>
-                <key>scale9Paddings</key>
-                <rect>362,213,725,425</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/EyesClosed.png</key>
-            <key type="filename">../Models/FaceKjus/WhitesEyesClosed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>426,262,851,524</rect>
-                <key>scale9Paddings</key>
-                <rect>426,262,851,524</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
