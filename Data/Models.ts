@@ -1308,7 +1308,7 @@ function ModelLayerHidden(drawLayers: {[_: string]: boolean}, MC: ModelContainer
 }
 
 function ModelLayerString(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}): string {
-	return `Models/${Layer.Folder || Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
+	return `${Poses.Back ? "ModelsBack" : "Models"}/${Layer.Folder || Model.Folder}/${LayerSprite(Layer, Poses)}.png`;
 }
 function ModelLayerStringCustom(Model: Model, Layer: ModelLayer, Poses: {[_: string]: boolean}, Sprite: string, Path: string = "Models", useModelFolder: boolean = true, forceInvariant: boolean = false, forceMorph?: Record<string, string>, noAppend: boolean = false): string {
 	if (useModelFolder)

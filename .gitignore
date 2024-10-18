@@ -13,6 +13,7 @@
 !/Mods/example_enemy/**/*
 !/Data/**/*
 !/Models/**/*
+!/ModelsBack/**/*
 !/TextureAtlas/**/*
 !/DisplacementMaps/**/*
 

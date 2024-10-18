@@ -328,8 +328,8 @@ async function KDExecuteMods() {
 		let fileloader = Promise.resolve(null);
 		let entries = await model.getEntries(mod.mod, {});
 
-		// Look through each file and add it if it is missing. We will load files in this 
-		// order with any missing files at the end. 
+		// Look through each file and add it if it is missing. We will load files in this
+		// order with any missing files at the end.
 		for (let entry of entries) {
 			if ((!mod.fileorder.includes(entry.filename)) && (!entry.filename.endsWith('.csv'))) {
 				mod.fileorder.push(entry.filename);
@@ -352,7 +352,7 @@ async function KDExecuteMods() {
 		try {
 			await mod.fileorder.reduce(async (promiseChain, currFile) => {
 				await promiseChain;
-				return processFile(currFile, entries); 
+				return processFile(currFile, entries);
 			}, Promise.resolve(null));
 		} catch (err) {
 			console.log(err);
@@ -397,7 +397,7 @@ async function KDExecuteMods() {
 				catch (err) {
 					console.log(`Error while loading ${file} - ${err}`);
 				}
-			// create a thenable promise if the file is a js or ks file. 
+			// create a thenable promise if the file is a js or ks file.
 			} else if (file.endsWith('.js') || file.endsWith('.ks')) {
 				try {
 					let reader = new FileReader();
@@ -426,7 +426,7 @@ async function KDExecuteMods() {
 				catch (err) {
 					console.log(`Error while loading ${file} - ${err}`);
 				}
-			// asset file - just return the promise after loading with PIXI as the load order here won't be critical. 
+			// asset file - just return the promise after loading with PIXI as the load order here won't be critical.
 			} else {
 				KDModFiles[KinkyDungeonRootDirectory + file] = URL.createObjectURL(blob);
 				KDModFiles[KinkyDungeonRootDirectory + "" + file] = KDModFiles[KinkyDungeonRootDirectory + file];
@@ -434,6 +434,7 @@ async function KDExecuteMods() {
 				if (file?.startsWith("Data/")
 					|| file?.startsWith("DisplacementMaps/")
 					|| file?.startsWith("Models/")
+					|| file?.startsWith("ModelsBack/")
 					|| file?.startsWith("TextureAtlas/")
 					|| file?.startsWith("Music/")) {
 						KDModFiles[file] = URL.createObjectURL(blob);
@@ -448,7 +449,7 @@ async function KDExecuteMods() {
 	try {
 		await KDModLoadOrder.reduce(async (promiseChain, currMod) => {
 			await promiseChain;
-			return processMod(currMod); 
+			return processMod(currMod);
 		}, Promise.resolve(null));
 		// All mods should be loaded at this point.
 		console.log("Finished Loading Mods");
