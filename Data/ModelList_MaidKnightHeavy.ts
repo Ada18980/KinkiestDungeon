@@ -33,7 +33,7 @@ AddModel({
 			InheritColor: "Dress",
 			MorphPoses: {Front: "Boxtie", Crossed: "Boxtie"},
 		},
-		{ Name: "DressSkirt", Layer: "OverSkirt", Pri: 2,
+		{ Name: "DressSkirt", Layer: "SkirtOver", Pri: 2,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
 			HidePoses: ToMap(["EncaseTorsoLower"]),
@@ -107,6 +107,230 @@ AddModel({
 
 
 AddModel({
+	Name: "HeavyMaidKnight_ChestArmor",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "ChestArmor", Layer: "Chestplate", Pri: 35,
+			HideWhenOverridden: true,
+			Invariant: true,
+			NoOverride: true,
+			HidePoseConditional: [
+				["DynamicArmor", "ChestArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
+AddModel({
+	Name: "HeavyMaidKnight_GloveLeft",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: -3,
+			Poses: ToMapSubtract([...ARMPOSES], ["Crossed", "Boxtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Front: "ForeGloveLeft"},
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "HeavyMaidKnight_GloveRight",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: -3,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight", Front: "ForeGloveRight"},
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "HeavyMaidKnight_Gloves",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HeavyMaidKnight_GloveLeft"),
+		...GetModelLayers("HeavyMaidKnight_GloveRight"),
+	])
+});
+
+
+
+
+AddModel({
+	Name: "HeavyMaidKnight_GauntletLeft",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Gauntlets",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GauntletLeft", Layer: "GloveLeft", Pri: 35,
+			Poses: ToMapSubtract([...ARMPOSES], ["Boxtie"]),
+			SwapLayerPose: {Front: "ForeGloveLeft", Crossed: "CrossGloveLeft"},
+			HideWhenOverridden: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HidePoseConditional: [
+				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
+AddModel({
+	Name: "HeavyMaidKnight_GauntletRight",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Gauntlets",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GauntletRight", Layer: "GloveRight", Pri: 35,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			SwapLayerPose: {Front: "ForeGloveRight", Crossed: "CrossGloveRight"},
+			HideWhenOverridden: true,
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HidePoseConditional: [
+				["DynamicArmor", "GlovesArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+AddModel({
+	Name: "HeavyMaidKnight_Gauntlets",
+	Folder: "ArmorPlate",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HeavyMaidKnight_GauntletLeft"),
+		...GetModelLayers("HeavyMaidKnight_GauntletRight"),
+	])
+});
+
+
+
+AddModel({
+	Name: "HeavyMaidKnight_PauldronLeft",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Pauldrons",
+	TopLevel: false,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "PauldronLeft", Layer: "Shoulders", Pri: 150,
+			Invariant: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Up: "Up",
+			},
+			HideWhenOverridden: true,
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "PauldronLeftStraps", Layer: "UpperArmStraps", Pri: -30,
+			Invariant: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Up: "Up",
+			},
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "PauldronLeftHardware", Layer: "Shoulders", Pri: 151,
+			Invariant: true,
+			TieToLayer: "PauldronLeft",
+			NoOverride: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Up: "Up",
+			},
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+AddModel({
+	Name: "HeavyMaidKnight_PauldronRight",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Pauldrons",
+	TopLevel: false,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "PauldronRight", Layer: "Shoulders", Pri: 150,
+			Invariant: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Up: "Up",
+			},
+			HideWhenOverridden: true,
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "PauldronRightStraps", Layer: "UpperArmStrapsBack", Pri: -30,
+			Invariant: true,
+			MorphPoses: {
+				Yoked: "Yoked",
+				Up: "Up",
+			},
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "HeavyMaidKnight_Pauldrons",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HeavyMaidKnight_PauldronLeft"),
+		...GetModelLayers("HeavyMaidKnight_PauldronRight"),
+	])
+});
+
+
+AddModel({
+	Name: "HeavyMaidKnight_SideArmor",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "SideArmor", Layer: "BeltArmor", Pri: 35,
+			HideWhenOverridden: true,
+			Invariant: true,
+			NoOverride: true,
+			HidePoseConditional: [
+				["DynamicArmor", "TorsoArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
+AddModel({
 	Name: "HeavyMaidKnight_Corset",
 	Folder: "MaidKnightHeavy",
 	Parent: "HeavyMaidKnight",
@@ -114,10 +338,10 @@ AddModel({
 	Categories: ["Corsets"],
 	AddPose: ["Corset"],
 	Layers: ToLayerMap([
-		{ Name: "Corset", Layer: "Bustier", Pri: 20,
+		{ Name: "Corset", Layer: "OverCorset", Pri: 20,
 			Invariant: true,
 			InheritColor: "Corset",
-			DisplaceAmount: 250,
+			DisplaceAmount: 150,
 			DisplaceLayers: ToMap(["CorsetTorso"]),
 			DisplacementSprite: "CorsetSquish",
 			DisplacementInvariant: true,
@@ -307,3 +531,23 @@ AddModel({
 	])
 });
 
+
+
+AddModel({
+	Name: "HeavyMaidKnight",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Uniforms"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HeavyMaidKnight_Dress"),
+		...GetModelLayers("HeavyMaidKnight_Sleeves"),
+		...GetModelLayers("HeavyMaidKnight_ApronBottom"),
+		...GetModelLayers("HeavyMaidKnight_ApronTop"),
+		...GetModelLayers("HeavyMaidKnight_Pauldrons"),
+		...GetModelLayers("HeavyMaidKnight_Waist"),
+		...GetModelLayers("HeavyMaidKnight_SideArmor"),
+		...GetModelLayers("HeavyMaidKnight_ChestArmor"),
+		...GetModelLayers("HeavyMaidKnight_Corset"),
+	])
+});

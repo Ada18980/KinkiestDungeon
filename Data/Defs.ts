@@ -120,6 +120,7 @@ let LAYERS_BASE = [
 	"ChestDeco",
 	"ChestStraps",
 
+	"UpperArmStrapsBack",
 
 	// Chest is breasts, should only intersect on bottom and side edges, top is indeterminate
 	"Straps",
@@ -174,6 +175,7 @@ let LAYERS_BASE = [
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
 	"BeltCharmSide",
+	"BeltArmor",
 	"BeltCharm",
 	"BeltDeco",
 	"Belt",
@@ -1530,6 +1532,7 @@ let LayerGroups = {
 	"WrappingChest",
 
 	"UpperArmStraps",
+	"UpperArmStrapsBack",
 
 	"Jacket",
 	"ChestDeco",
@@ -1571,6 +1574,7 @@ let LayerGroups = {
 	"BeltBondage",
 	"BeltCharm",
 	"BeltCharmSide",
+	"BeltArmor",
 	"Belt",
 	"BeltDeco",
 	"BeltUnder",
