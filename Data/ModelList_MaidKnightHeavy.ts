@@ -39,16 +39,82 @@ AddModel({
 			HidePoses: ToMap(["EncaseTorsoLower"]),
 			InheritColor: "Skirt",
 		},
-		{ Name: "DressDeco", Layer: "OverSkirt", Pri: 2.1,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			NoOverride: true,
-			TieToLayer: "DressSkirt",
+	])
+});
+
+AddModel({
+	Name: "HeavyMaidKnight_SleeveLeft",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: false,
+	Categories: ["Sleeves"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "ArmLeft", Layer: "SleeveLeft", Pri: 60,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "SleeveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 		},
-		{ Name: "DressDecoBack", Layer: "OverSkirt", Pri: 2.1,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			NoOverride: true,
-			TieToLayer: "DressSkirt",
+		{ Name: "ForeArmLeft", Layer: "ForeSleeveLeft", Pri: 60,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "SleeveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossSleeveLeft"},
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 		},
+
+	])
+});
+
+AddModel({
+	Name: "HeavyMaidKnight_SleeveRight",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: false,
+	Categories: ["Sleeves"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "ArmRight", Layer: "SleeveRight", Pri: 60,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "SleeveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
+			EraseSprite: "LightMaidRightArmErase",
+			EraseLayers: {MaidArmPoofRight: true},
+			EraseAmount: 100,
+			EraseZBonus: 8600,
+			EraseInvariant: true,
+		},
+		{ Name: "ForeArmRight", Layer: "ForeSleeveRight", Pri: 60,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "SleeveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossSleeveRight"},
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
+		},
+		{ Name: "ShoulderRight", Layer: "UpSleeveRight", Pri: 60,
+			HideWhenOverridden: true,
+			InheritColor: "SleeveRight",
+			Poses: ToMap([...SHOULDERPOSES]),
+		},
+	])
+});
+
+
+AddModel({
+	Name: "HeavyMaidKnight_Sleeves",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Sleeves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HeavyMaidKnight_SleeveLeft"),
+		...GetModelLayers("HeavyMaidKnight_SleeveRight"),
 	])
 });
 
