@@ -178,7 +178,12 @@ let LAYERS_BASE = [
 	"BeltDeco",
 	"Belt",
 
+
+	"OverCorset",
+
 	"BaggyShirt",
+
+	"Apron",
 
 	// Skirts that dont follow shilhouette
 	"OverSkirtDeco",
@@ -486,6 +491,9 @@ let LayerGroups = {
 	BustierPoses: ToMap([
 		"Bustier",
 		"Corset",
+		"OverCorset",
+
+		"Apron",
 		"CorsetLiner",
 		"HarnessLower",
 		"HarnessMid",
@@ -503,6 +511,8 @@ let LayerGroups = {
 	BustierPoses2: ToMap([
 		"Bustier",
 		"Corset",
+		"OverCorset",
+		"Apron",
 		"CorsetLiner",
 		"HarnessLower",
 		"HarnessMid",
@@ -1564,6 +1574,9 @@ let LayerGroups = {
 	"Belt",
 	"BeltDeco",
 	"BeltUnder",
+
+	"OverCorset",
+	"Apron",
 
 	"BaggyShirt",
 

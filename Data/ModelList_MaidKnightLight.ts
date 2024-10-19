@@ -75,7 +75,7 @@ AddModel({
 				Up: "Up",
 			},
 		},
-		{ Name: "Apron", Layer: "BeltDeco", Pri: 15,
+		{ Name: "Apron", Layer: "Apron", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
 			Invariant: true,
@@ -116,7 +116,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Apron", Layer: "BeltDeco", Pri: 30,
+		{ Name: "Apron", Layer: "Apron", Pri: 30,
 			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},

@@ -31,6 +31,10 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.48
+- MODDERS: Added "OverCorset" and "Apron" layer
+- Added heavy maid knight uniform
+
 5.3.47
 - Several weapons now have a special property dealing 50% additional damage when stamina is over 50%:
 - Hammer (and variants)
