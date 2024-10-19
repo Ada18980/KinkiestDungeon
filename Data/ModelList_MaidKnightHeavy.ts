@@ -549,5 +549,6 @@ AddModel({
 		...GetModelLayers("HeavyMaidKnight_SideArmor"),
 		...GetModelLayers("HeavyMaidKnight_ChestArmor"),
 		...GetModelLayers("HeavyMaidKnight_Corset"),
+		...GetModelLayers("HeavyMaidKnightHairband"),
 	])
 });
