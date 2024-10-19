@@ -190,7 +190,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 					}) != undefined);
 		},
 		weight: (_enemy, _dist) => {
-			return 1 + 0.8 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
+			return 0.1 + 0.1 * Math.max(Math.abs(KinkyDungeonGoddessRep.Metal)/100, Math.abs(KinkyDungeonGoddessRep.Elements)/100, Math.abs(KinkyDungeonGoddessRep.Illusion)/100, Math.abs(KinkyDungeonGoddessRep.Ghost)/100);
 		},
 	},
 	"OfferCursed": {

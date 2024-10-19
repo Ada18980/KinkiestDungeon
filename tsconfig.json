@@ -208,6 +208,7 @@
         "Data/ModelList_Spats.ts",
         "Data/ModelList_Gothic.ts",
         "Data/ModelList_MaidKnightLight.ts",
+        "Data/ModelList_MaidKnightHeavy.ts",
         "Data/ModelStylesList.ts",
         "Data/ModelStylesFace.ts",
         "Data/ModelStylesHair.ts",
