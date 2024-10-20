@@ -1328,6 +1328,22 @@
 	"spriteSourceSize": {"x":15,"y":10,"w":13,"h":25},
 	"sourceSize": {"w":46,"h":45}
 },
+"Game/Poses/Eyes2Heart.png":
+{
+	"frame": {"x":639,"y":2034,"w":13,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":15,"w":13,"h":13},
+	"sourceSize": {"w":46,"h":45}
+},
+"Game/Poses/EyesHeart.png":
+{
+	"frame": {"x":639,"y":2034,"w":13,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":15,"w":13,"h":13},
+	"sourceSize": {"w":46,"h":45}
+},
 "Game/Poses/EyesNeutral.png":
 {
 	"frame": {"x":1625,"y":1904,"w":11,"h":15},
@@ -1608,6 +1624,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:80fe894f9bfaa56c6174780273d2a5da:a22b444be3775cda25a7602f10d7d67e:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:14f4fe17880a8db4841c9fa3ac9d2741:a93d954ce9049242be850bad091bb969:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

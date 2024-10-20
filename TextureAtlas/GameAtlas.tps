@@ -1001,6 +1001,7 @@
             <key type="filename">../Game/Enemies/CuffedGirl3.png</key>
             <key type="filename">../Game/Enemies/Cuffs.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Alisa.png</key>
+            <key type="filename">../Game/Enemies/CustomSprite/Hilda.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Myrtrice2.png</key>
@@ -1013,6 +1014,7 @@
             <key type="filename">../Game/Enemies/CustomSprite/Selly.png</key>
             <key type="filename">../Game/Enemies/CustomSprite/Viola.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Alisa.png</key>
+            <key type="filename">../Game/Enemies/CustomSpriteBound/Hilda.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Melissa.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice.png</key>
             <key type="filename">../Game/Enemies/CustomSpriteBound/Myrtrice2.png</key>
@@ -3987,12 +3989,16 @@
             <key type="filename">../Game/Poses/Eyes2Angry.png</key>
             <key type="filename">../Game/Poses/Eyes2Closed.png</key>
             <key type="filename">../Game/Poses/Eyes2Dazed.png</key>
+            <key type="filename">../Game/Poses/Eyes2Heart.png</key>
             <key type="filename">../Game/Poses/Eyes2Neutral.png</key>
+            <key type="filename">../Game/Poses/Eyes2Sly.png</key>
             <key type="filename">../Game/Poses/Eyes2Surprised.png</key>
             <key type="filename">../Game/Poses/EyesAngry.png</key>
             <key type="filename">../Game/Poses/EyesClosed.png</key>
             <key type="filename">../Game/Poses/EyesDazed.png</key>
+            <key type="filename">../Game/Poses/EyesHeart.png</key>
             <key type="filename">../Game/Poses/EyesNeutral.png</key>
+            <key type="filename">../Game/Poses/EyesSly.png</key>
             <key type="filename">../Game/Poses/EyesSurprised.png</key>
             <key type="filename">../Game/Poses/Free.png</key>
             <key type="filename">../Game/Poses/Front.png</key>
