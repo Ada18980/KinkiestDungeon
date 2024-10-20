@@ -32,7 +32,7 @@ TODO remove hogtie when released
 TODO Add Cuddle play type
 
 5.3.48
-- MODDERS: Added "OverCorset", "UpperArmStrapsBack", and "Apron" layer
+- MODDERS: Added "OverCorset", "UpperArmStrapsBack", TightSleeveLeft/Right, and "Apron" layer
 - Added heavy maid knight uniform
 
 5.3.47

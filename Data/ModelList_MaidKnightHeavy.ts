@@ -57,7 +57,7 @@ AddModel({
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 		},
-		{ Name: "ArmLeft", Layer: "ArmLeft", Pri: 50,
+		{ Name: "ArmLeft", Layer: "TightSleeveLeft", Pri: 50,
 			Poses: ToMap([...ARMPOSES]),
 			InheritColor: "ArmLeft",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -96,7 +96,7 @@ AddModel({
 			EraseZBonus: 8600,
 			EraseInvariant: true,
 		},
-		{ Name: "ArmRight", Layer: "ArmRight", Pri: 60,
+		{ Name: "ArmRight", Layer: "TightSleeveRight", Pri: 60,
 			Poses: ToMap([...ARMPOSES]),
 			InheritColor: "ArmRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -549,6 +549,145 @@ AddModel({
 
 
 AddModel({
+	Name: "HeavyMaidKnight_Boots",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 131,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+
+			DisplacementPosesExclude: ["Hogtie"],
+			ErasePosesExclude: ["Hogtie"],
+
+			DisplacementSprite: "Heels2",
+			DisplaceAmount: 80,
+			DisplaceLayers: ToMap(["Heels"]),
+			DisplaceZBonus: 10000,
+			EraseInvariant: true,
+			EraseMorph: {Spread: "Spread", Closed: "Closed"},
+			EraseSprite: "HeelsErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["Heels"]),
+		},
+		{ Name: "BootRight", Layer: "ShoeRight", Pri: 131,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+
+			EraseInvariant: true,
+			EraseMorph: {Closed: "Closed"},
+			EraseSprite: "HeelsRightErase2",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["HeelRight"]),
+			EraseZBonus: 100,
+		},
+		{ Name: "BootRightKneel", Layer: "ShoeRightKneel", Pri: 131,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			InheritColor: "ShoeRight",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			HideWhenOverridden: true,
+		},
+		{ Name: "FootBootLeftHogtie", Layer: "ShoeLeftHogtie", Pri: 131,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			InheritColor: "ShoeLeft",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			HideWhenOverridden: true,
+		},
+
+		{ Name: "BootLegLeft", Layer: "OverShoes", Pri: 131,
+			InheritColor: "Shoe",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+		},
+		{ Name: "BootLegRight", Layer: "ShoeRight", Pri:131,
+			InheritColor: "Shoe",
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "HeavyMaidKnight_PantyhoseShorts",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Pantyhose",
+	Categories: ["Panties"],
+	TopLevel: true,
+	Layers: ToLayerMap([
+		{ Name: "Pantyhose", Layer: "Panties", Pri: -40,
+			Poses: ToMap([...LEGPOSES]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			//MorphPoses: {Hogtie: "Hogtie"},
+		},
+	])
+});
+
+AddModel({
+	Name: "HeavyMaidKnight_SockRight",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Pantyhose",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -40,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+
+		},
+		{ Name: "FootSockLeftHogtie", Layer: "SockLeftHogtie", Pri: -40,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "SockLeft",
+			Invariant: true,
+		},
+	])
+});
+AddModel({
+	Name: "HeavyMaidKnight_SockLeft",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight_Pantyhose",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockRight", Layer: "StockingRight", Pri: 4,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+
+		},
+		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: 4,
+			HidePoses: ToMap(["FeetLinked"]),
+			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
+			Invariant: true,
+		},
+	])
+});
+
+
+
+
+AddModel({
+	Name: "HeavyMaidKnight_Pantyhose",
+	Folder: "MaidKnightHeavy",
+	Parent: "HeavyMaidKnight",
+	Categories: ["Socks", "Panties"],
+	TopLevel: true,
+	Layers: ToLayerMap([
+		...GetModelLayers("HeavyMaidKnight_PantyhoseShorts"),
+		...GetModelLayers("HeavyMaidKnight_SockLeft"),
+		...GetModelLayers("HeavyMaidKnight_SockRight"),
+	])
+});
+
+AddModel({
 	Name: "HeavyMaidKnight",
 	Folder: "MaidKnightHeavy",
 	Parent: "HeavyMaidKnight",
@@ -565,6 +704,8 @@ AddModel({
 		...GetModelLayers("HeavyMaidKnight_SideArmor"),
 		...GetModelLayers("HeavyMaidKnight_ChestArmor"),
 		...GetModelLayers("HeavyMaidKnight_Corset"),
+		...GetModelLayers("HeavyMaidKnight_Boots"),
+		...GetModelLayers("HeavyMaidKnight_Pantyhose"),
 		...GetModelLayers("HeavyMaidKnightHairband"),
 	])
 });
