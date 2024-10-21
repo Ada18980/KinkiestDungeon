@@ -2706,14 +2706,14 @@ Deals pierce damage. Deals 30 damage instead on vulnerable targets.
 You pick up a fencing sword.
 フェンシングの剣を手に入れた。
 
-Maul
-大鎚
+Sledgehammer
+スレッジハンマー
 Do you have what it takes?
 マネできるかい？
-Deals heavy crush damage and knocks the target back 2 spaces.
-打撃属性。大量のダメージを与え、命中した敵を2マスノックバックさせる。
-You pick up a heavy maul.
-重い鎚を拾った。
+Deals heavy crush damage and knocks the target back 2 spaces. Deals bonus damage to most solid barricades.
+打撃属性。大量のダメージを与え、命中した敵を2マスノックバックさせる。物理的なバリケードにダメージを与える際、ボーナスを得る。
+You pick up a heavy sledgehammer.
+重いスレッジハンマーを拾った。
 
 Hammer
 ハンマー
@@ -2771,8 +2771,8 @@ Deals unarmed damage.
 素手属性。
 Sword
 剣
-The blade is strong, its edge sharp.
-強靭さと鋭さを兼ね備えた定番の武器。
+the steel is strong, and the blade true.
+鋼鉄製の頑丈な直剣。
 A fast and accurate weapon that deals slash damage.
 斬撃属性。精確で素早い。
 Flamberge
@@ -12485,7 +12485,7 @@ Random
 Selected
 選択
 You will need to find the key to proceed to the next floor.
-次の階層へ行くには鍵が必要
+次の階層へ行くには鍵が必要。
 Each floor will have a random task to unlock the stairs.
 次の階層へ行くにはランダムな任務が必要。
 You will select your task for each floor before you enter. Requires Perk Progression.
@@ -12588,12 +12588,12 @@ Allow Rear Plugs
 Allow Piercings
 ピアス許可
 
-Start with 200 willpower and Iron Will, good at melee and blocking attacks.
-最大気力200、パーク「鉄の意志」を所持。近接攻撃で戦うクラス。
-Start with 200 stamina and Sneaky, good at stealth and evasive gameplay.
-最大スタミナ200、パーク「隠密」を所持。隠密と回避を主体にするクラス。
-Start with 200 mana and Magical Sight, good at casting spells.
-最大マナ200、魔法「マジカルサイト」を所持。様々な魔法を使うクラス。
+Start with 150 willpower and Iron Will, good at melee and blocking attacks.
+最大気力150、パーク「鉄の意志」を所持。近接攻撃で戦うクラス。
+Start with 150 stamina and Sneaky, good at stealth and evasive gameplay.
+最大スタミナ150、パーク「隠密」を所持。隠密と回避を主体にするクラス。
+Start with 150 mana and Magical Sight, good at casting spells.
+最大マナ150、魔法「マジカルサイト」を所持。様々な魔法を使うクラス。
 Start with nothing to your name. For those who want a challenge.
 名前以外何もない。真の挑戦者用。
 You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
@@ -27697,7 +27697,7 @@ Poison Dragon Girl
 The dragon girl slashes you with her venomous nails! (DamageTaken)
 ポイズン・ドラゴンガールは毒の爪で引っ掻いてきた！ (DamageTaken)
 The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
-ポイズン・ドラゴンガールの召喚する蔦に捕らえられた！ (+RestraintAdded)
+ポイズン・ドラゴンガールの召喚した蔦に捕らえられた！ (+RestraintAdded)
 
 
 
@@ -28748,7 +28748,7 @@ Favorited:
 Rank: 
 ランク:
 Minor
-下っ端
+通常
 Elite
 エリート
 Miniboss
