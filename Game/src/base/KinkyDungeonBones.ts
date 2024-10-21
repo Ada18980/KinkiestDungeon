@@ -42,6 +42,19 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Acapelle", color: "#ad2f45", prisoner: false, free: true, customPlayLine: "", customIntro: "Hi! I'm Acapelle. To what do I owe the pleasure?", customSprite: ""},
 	],
 	],
+	["Necromancer", [
+		{name: "Yuri The Shy Necromancer", color: "#8138FF", prisoner: false, free: true, customPlayLine: "",
+			customOutfit: "Yuri", customStyle: "Yuri",
+			customIntro: "Ple-please rise m-my skeletons", customSprite: ""},
+	],
+	],
+	["ElementalLeather", [
+		{name: "Jaina", color: "#FF00DC", prisoner: true, free: true, customPlayLine: "",
+			customOutfit: "Hilda", customStyle: "Hilda",
+			customIntro: "Let’s have some fun~", customSprite: "Hilda"},
+		{name: "Timyang", color: "#2257e9", prisoner: true, free: true, customPlayLine: "", customIntro: "I'm Timyang, do you have anything to do with me?", customSprite: ""},
+	],
+	],
 	["WolfgirlPet", [
 		{name: "Demetria", color: "#c9d4fd", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Sayaron", color: "#841ee1", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -75,10 +88,6 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Amelisia", color: "#ff5500", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "I'd love to hear your moans through your gags.", customSprite: ""},
 		{name: "Athena", color: "#7e52cc", prisoner: false, free: true, customPlayLine: "Athena", customIntro: "Hey there cutie!", customSprite: ""},
-	],
-	],
-	["ElementalLeather", [
-		{name: "Timyang", color: "#2257e9", prisoner: true, free: true, customPlayLine: "", customIntro: "I'm Timyang, do you have anything to do with me?", customSprite: ""},
 	],
 	],
 	["Dragon", [
@@ -305,6 +314,9 @@ let KDPatronCustomEnemies = new Map([
 	["DragonGirlShadow", [
 		{name: "Nara", color: "#5F54FF", prisoner: true, free: true, customPlayLine: "",
 			customStyle: "Nara", customOutfit: "Nara", customSprite: "Nara"
+		},
+		{name: "Krifath", color: "#6633cc", prisoner: true, free: true,
+			customPlayLine: "", customIntro: "I used to be an adventurer like you, then I took an arrow in the knee.",
 		},
 		{name: "Krifath", color: "#6633cc", prisoner: true, free: true,
 			customPlayLine: "", customIntro: "I used to be an adventurer like you, then I took an arrow in the knee.",

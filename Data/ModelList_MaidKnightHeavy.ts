@@ -658,7 +658,7 @@ AddModel({
 });
 
 AddModel({
-	Name: "HeavyMaidKnight_SockRight",
+	Name: "HeavyMaidKnight_SockLeft",
 	Folder: "MaidKnightHeavy",
 	Parent: "HeavyMaidKnight_Pantyhose",
 	Categories: ["Socks"],
@@ -677,18 +677,18 @@ AddModel({
 	])
 });
 AddModel({
-	Name: "HeavyMaidKnight_SockLeft",
+	Name: "HeavyMaidKnight_SockRight",
 	Folder: "MaidKnightHeavy",
 	Parent: "HeavyMaidKnight_Pantyhose",
 	Categories: ["Socks"],
 	TopLevel: false,
 	Layers: ToLayerMap([
-		{ Name: "SockRight", Layer: "StockingRight", Pri: 4,
+		{ Name: "SockRight", Layer: "StockingRight", Pri: -40,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 
 		},
-		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: 4,
+		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: -40,
 			HidePoses: ToMap(["FeetLinked"]),
 			Poses: ToMap(["Kneel"]),
 			InheritColor: "SockRight",

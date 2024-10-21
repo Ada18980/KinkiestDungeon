@@ -25,6 +25,8 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 		},
 	],
 
+	Hilda: [{"Item":"ElfEarsLong","Group":"ElfEarsLong","Color":"#ffffff","Lost":false},{"Item":"SuccubusHorn","Group":"SuccubusHorn","Color":"#ffffff","Lost":false,"Filters":{"SuccubusHornRight":{"gamma":1,"saturation":0,"contrast":2.48,"brightness":1,"red":0.7647058823529411,"green":0.8235294117647058,"blue":0.8235294117647058,"alpha":1},"SuccubusHornLeft":{"gamma":1,"saturation":0,"contrast":2.48,"brightness":1,"red":0.7647058823529411,"green":0.8235294117647058,"blue":0.8235294117647058,"alpha":1},"SuccubusHornLight":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1.2156862745098038,"green":0.11764705882352941,"blue":1.8823529411764706,"alpha":1}}}],
+
 	"Elf3": [
 		{
 			Item: "ElfEarsLong", Color: "#ffffff", Lost: false
