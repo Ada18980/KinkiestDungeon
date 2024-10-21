@@ -2108,6 +2108,10 @@
             <key type="filename">../Models/MaidKnightHeavy/PantyhoseHogtie.png</key>
             <key type="filename">../Models/MaidKnightHeavy/PantyhoseKneel.png</key>
             <key type="filename">../Models/MaidKnightHeavy/PantyhoseKneelClosed.png</key>
+            <key type="filename">../Models/MaidKnightHeavy/PantyhoseLeftClosed.png</key>
+            <key type="filename">../Models/MaidKnightHeavy/PantyhoseLeftKneel.png</key>
+            <key type="filename">../Models/MaidKnightHeavy/PantyhoseLeftKneelClosed.png</key>
+            <key type="filename">../Models/MaidKnightHeavy/PantyhoseLeftSpread.png</key>
             <key type="filename">../Models/MaidKnightHeavy/PantyhoseSpread.png</key>
             <key type="filename">../Models/MaidKnightHeavy/PauldronLeft.png</key>
             <key type="filename">../Models/MaidKnightHeavy/PauldronLeftHardware.png</key>

@@ -39,6 +39,18 @@ AddModel({
 			HidePoses: ToMap(["EncaseTorsoLower"]),
 			InheritColor: "Skirt",
 		},
+		{ Name: "DressSkirtHem", Layer: "SkirtOver", Pri: 1.9,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
+			InheritColor: "SkirtHem",
+			TieToLayer: "DressSkirt",
+			NoOverride: true,
+		},
+		{ Name: "DressSkirtStripe", Layer: "SkirtOver", Pri: 2.1,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
+			InheritColor: "SkirtStripe",
+			TieToLayer: "DressSkirt",
+			NoOverride: true,
+		},
 	])
 });
 
@@ -56,6 +68,13 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
+		},
+		{ Name: "SleeveLeftStripe", Layer: "SleeveLeft", Pri: 60.1,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "SleeveLeftStripe",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			NoOverride: true,
+			TieToLayer: "SleeveLeft",
 		},
 		{ Name: "ArmLeft", Layer: "TightSleeveLeft", Pri: 50,
 			Poses: ToMap([...ARMPOSES]),
@@ -95,6 +114,13 @@ AddModel({
 			EraseAmount: 100,
 			EraseZBonus: 8600,
 			EraseInvariant: true,
+		},
+		{ Name: "SleeveRightStripe", Layer: "SleeveRight", Pri: 60.1,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "SleeveRightStripe",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			NoOverride: true,
+			TieToLayer: "SleeveRight",
 		},
 		{ Name: "ArmRight", Layer: "TightSleeveRight", Pri: 60,
 			Poses: ToMap([...ARMPOSES]),
@@ -623,7 +649,7 @@ AddModel({
 	Categories: ["Panties"],
 	TopLevel: true,
 	Layers: ToLayerMap([
-		{ Name: "Pantyhose", Layer: "Panties", Pri: -40,
+		{ Name: "Pantyhose", Layer: "OverSocks", Pri: -40,
 			Poses: ToMap([...LEGPOSES]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//MorphPoses: {Hogtie: "Hogtie"},
@@ -675,7 +701,7 @@ AddModel({
 
 
 AddModel({
-	Name: "HeavyMaidKnight_Pantyhose",
+	Name: "Pantyhose",
 	Folder: "MaidKnightHeavy",
 	Parent: "HeavyMaidKnight",
 	Categories: ["Socks", "Panties"],
@@ -705,7 +731,7 @@ AddModel({
 		...GetModelLayers("HeavyMaidKnight_ChestArmor"),
 		...GetModelLayers("HeavyMaidKnight_Corset"),
 		...GetModelLayers("HeavyMaidKnight_Boots"),
-		...GetModelLayers("HeavyMaidKnight_Pantyhose"),
+		...GetModelLayers("Pantyhose"),
 		...GetModelLayers("HeavyMaidKnightHairband"),
 	])
 });
