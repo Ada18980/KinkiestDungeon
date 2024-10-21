@@ -119,7 +119,7 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 	"Curse": {
 		Catsuit: {"gamma":1.8333333333333333,"saturation":0,"contrast":0.7833333333333334,"brightness":0.3833333333333333,"red":2.3000000000000003,"green":1,"blue":4.833333333333333,"alpha":1},
 		DarkNeutral: {"gamma":0.6666666666666666,"saturation":0,"contrast":0.95,"brightness":1,"red":1.5098039215686274,"green":1.8431372549019607,"blue":3.7254901960784315,"alpha":1},
-		LightNeutral: {"gamma":0.43333333333333335,"saturation":0,"contrast":2.3166666666666664,"brightness":0.9666666666666667,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
+		LightNeutral: {"gamma":1.4666666666666668,"saturation":0,"contrast":2.3166666666666664,"brightness":0.9666666666666667,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
 		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.0833333333333335,"red":1.0666666666666667,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
 	},
 	"AncientRobot": {
