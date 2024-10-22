@@ -30,17 +30,9 @@ Japanese
 Mods Loaded.
 個のMODをロード
 
-### Restart required!
-### 需要重启！
-### 재시작 필요！
-Restart please!
-適応には再起動が必要です。
-### ¡Reinicio!
-### Rechargement requis!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.44
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 あなたは古代の地下魔法都市に挑む冒険者です。
@@ -63,6 +55,7 @@ Controls
 Keybindings
 キー設定
 
+### Auto loot all from chests
 
 Apply palettes to Restraints
 拘束具にﾊﾟﾚｯﾄで設定した色を使用
@@ -226,7 +219,6 @@ Dynamic Armor (must hide armor)
 Hide floating weapon display
 浮遊させている武器を非表示
 
-
 Helpless!
 逃げられない！
 Evaded!
@@ -271,8 +263,8 @@ Select perks to start with.
 パークを選択
 Having 10+ spare points will trigger Hard Mode, granting unique loot.
 10以上のスペアポイントがあると、ハードモードがトリガーされ、ユニークな戦利品が付与されます.
-  (HARD MODE ENABLED)
-  (ハードモード)
+ (HARD MODE ENABLED)
+(ハードモード)
 Advanced start (choose perks)
 パークを選択して開始
 Kinky start
@@ -676,6 +668,9 @@ Persisting Desires
 尽きぬ欲望
 Your dark desires are endless.
 暗い欲望が尽きなくなる
+
+### Sugar Rush
+### Consuming sweets makes you hyperactive, decreasing stamina costs and granting free moves.
 
 Vengeance
 報復
@@ -1518,8 +1513,6 @@ Journal
 
 Change Outfit
 着替える
-Enlarged View
-拡大表示
 Reset to Default
 デフォルト衣装に戻す
 Outfit Code
@@ -2932,7 +2925,7 @@ Accuracy:
 Crit Multiplier: 
 会心ダメージ:
 Bind Crit Multiplier: 
-拘束会心ダメージ: 
+拘束会心ダメージ:
 Find the keys..
 鍵を見つける……
 Find the exit!
@@ -6044,6 +6037,7 @@ You climb down to the next level
 Level RestraintLevel (Rarity)
 拘束レベル： RestraintLevel ( Rarity )
 
+### All
 Consumable
 消耗品
 Worn
@@ -8542,8 +8536,7 @@ Chest
 チェスト
 Faction Chest
 他者のチェスト
-Empty Chest
-空のチェスト
+### Open Chest
 Shiny Object
 落とし物
 Cracked Wall
@@ -11185,7 +11178,6 @@ Perks III
 ### <
 Spell Points: SPELLPOINTS
 スキルポイント: SPELLPOINTS
-
 You need a higher level in SCHOOL magic to learn this spell.
 このスキルを習得するには、SCHOOL 分野のより高度な知識が必要。
 You need more spell points.
@@ -11291,7 +11283,7 @@ Ejahl
 アイオーンの書の1ページ|このカタコンベは時間の概念がないと言われている。旧文明が不死の研究を始めたとき、すでに死んだ人々を生き返らせられるかどうかは分からなかった。この場所は、不死の魔術が完成したときに備えて遺体を保存するために作られたと言われている。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 アイオーンの書の1ページ|この大図書館は、大魔術師サリエル・ヴィンラーガの学んだ場所と言われている。人間の知識、魔法、精神、技術のすべてを集めた彼女は、12人の高弟達に司書の仕事を託し、去っていったと言われている。彼女がなぜ去ったのか、なぜ図書館が荒れ果てているのかは、未だ解明されていない。
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。クリスタルの洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -11914,6 +11906,8 @@ For 3 rep the goddess will grant you
 女神に関係性3を捧げ、祝福を授かる。
 For 3 rep the goddess
 女神に関係性3を捧げる。
+For 3 rep the goddess 
+女神に関係性3を捧げる。
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 AMOUNT の関係性と引き換えに、神にマナを補充してもらった。
@@ -12261,7 +12255,7 @@ Resistances:
 耐性:
 ### HP: 
 Binding: 
-拘束: 
+拘束:
 Ambivalent
 関係
 Likes you
@@ -12767,6 +12761,7 @@ Hey, stop that!
 
 
 
+
 Activate SPL protocol.
 SPL発動。
 What do you mean 'access denied'???
@@ -12857,6 +12852,7 @@ Fine, then.
 結構です。
 Know your place!
 立場をわきまえなさい。
+
 
 
 
@@ -12966,6 +12962,7 @@ Show me what you've got~
 I'll watch~
 見てるわ。
 
+
 Submit to my SPL!
 SPLの前に屈しなさい！
 Hmmmph... SPL--
@@ -12980,7 +12977,6 @@ They're coming for me!
 奴らが来る！
 Do you know of the Dollmaker? I've got a proposal for you and I...
 ドールメイカーって知ってる？ちょっと提案があるんだけど……
-
 
 I cast SPL!
 SPLを唱えるよ！
@@ -13151,6 +13147,8 @@ MMMMMPH!!!
 
 
 
+
+
 *focuses intently*
 (集中している)
 *appears distracted*
@@ -13165,6 +13163,7 @@ Mmmm~
 (とても怒っているように見える)
 *Her headpiece says 'PTRN'*
 (額のプレートに PTRN と書かれている)
+
 
 
 
@@ -13264,7 +13263,6 @@ You're mine.
 お前はもうアタシのものだ！
 You can't get away.
 逃げられないぞ！
-
 
 *extends an arm*
 (腕を広げている)
@@ -13559,6 +13557,7 @@ Forming blockade.
 防衛網形成
 
 
+### SPL();
 throw new Error(SPL);
 不明なエラー(SPL);
 query([ID]); >ERROR; transport([UNKNOWN], [DOLL])
@@ -13776,7 +13775,6 @@ I smell an opportunity!
 Do I have to?
 やらなきゃいけないのか？
 
-
 Let me introduce you to SPL~
 SPLを紹介させていただきますわね～。
 No! My SPL!
@@ -13877,6 +13875,7 @@ I'd like to place a bid too~
 私も手伝いますわ～
 Oooh, that one's mine!
 まぁ！この子をいただいてもよろしくて？
+
 
 
 
@@ -13982,6 +13981,7 @@ Get out of my library!
 
 
 
+
 Deploying SPL!
 SPL展開！
 What was I supposed to do again? Oh right!
@@ -14054,6 +14054,7 @@ Now now, what do we have here?
 
 
 
+
 I'll need another SPL, stat!
 もっとSPLが必要だ！
 A p-professional mistake.
@@ -14098,6 +14099,8 @@ I'll take a look.
 
 
 
+### SPL
+### SPL failed
 
 
 
@@ -14234,6 +14237,7 @@ My name's Melissa! I know I'm pretty, but try not to stare too much~
 
 
 
+
 Let me show you how it's done: SPL!
 SPLの真髄を見せてあげるよ！
 You've just narrowly avoided my SPL~
@@ -14336,8 +14340,7 @@ There goes my nice, relaxing day...
 
 
 
-I cast SPL!
-SPLを使う！
+
 Behold, my true power! Wait... ack...
 真の力を見せてあげます！あっ……待って……
 I wonder what to do with all these cuffs...
@@ -14434,6 +14437,7 @@ What kind of trouble are we getting into today?
 今日はどんなトラブルと出会えるのでしょうか？
 Oooh, fun!
 楽しみですね～。
+
 
 
 
@@ -14544,6 +14548,7 @@ The bounty will be mine...
 
 
 
+
 You can't hope to match my SPL~
 SPLの前にひれ伏せ～！
 SPL! No wait, not like that!
@@ -14644,6 +14649,7 @@ I just follow the money, miss~
 お金はちゃんと払ってくれる～？
 Can't let you have all the fun, can I?
 楽しませてあげるよ～？
+
 
 
 
@@ -14810,6 +14816,7 @@ Requesting backup!
 Calling in a blockade!
 防衛線を！
 
+
 Hidden technique: SPL!
 奥義、SPL！
 I practiced a thousand times... for this!?
@@ -14910,6 +14917,7 @@ Time for a test of skill.
 腕試しだ。
 I'll get you! Eventually...
 捕まえてみせるぞ、いずれは……
+
 
 Let's see how you like my SPL!
 私のSPLを見せてあげる！
@@ -15119,6 +15127,7 @@ You leave me no choice.
 I stand firm.
 全力で抗います。
 
+
 Behold, SPL.
 SPLを見よ。
 Y-your fate has been postponed... briefly.
@@ -15127,8 +15136,6 @@ You look cute in that, you should lose the rest though!
 もがく姿はとても可愛らしいですが、大人しくしていたほうがいいですよ。
 
 
-Mmmph!
-んぅーっ！
 I don't like the way you're looking at me!
 そんな目で見ないで！
 Yes, I've got the secrets of nature right here...
@@ -15185,8 +15192,6 @@ Wear this!
 着ろ！
 Come here!
 来い！
-...
-…………
 Capture...
 捕まえた……
 Need tighten!
@@ -15460,8 +15465,6 @@ You leave us no choice.
 You cannot comprehend our tactics.
 あなたは私達の戦術を理解できない。
 
-Face my SPL!
-SPLを見ろ！
 Nyah!!! *blushes*
 にゃあっ！(赤面している……)
 Nyah! This is impossible!
@@ -15926,8 +15929,6 @@ You really think you're special, huh?
 Combat formation bravo.
 コンバットフォーメーションB！
 
-Deploying SPL!
-SPL使用！
 Ah! Forgive me!
 あぁっ、ごめんなさい、許してください！
 I'm sorry! I didn't mean to break that vase!
@@ -16397,6 +16398,7 @@ What's going on!?
 何してるの！？
 I'll save you, Mistress!
 わかったよ、師匠！
+
 Me? Capture her? Okay mistress...
 私が彼女を？わかったよ師匠……
 Okay miss, I'll do that...
@@ -16501,6 +16503,7 @@ Why don't you bend the knee...
 Who goes there?
 誰が行くの？
 
+### SPL...
 Can't... Move...
 ウゴ……ケナイ……
 Tight...
@@ -17789,14 +17792,25 @@ Protection? Certainly!
 どんな防具？
 Nah, I'm good.
 いや、遠慮しとく
+
 I would love to wear it!
 ええ、そういうの大好き！
+(Nod again, excited)
+(興奮しながら頷く)
 ...No thank you.
 ……やっぱりいらない
+(Shake your head, puzzled)
+(必死に顔を横にふる)
+
 Fine. I need the protection anyway.
 まあ、そういうのは欲しかったし
 I refuse. (PERCENT chance to avoid)
 いや！(PERCENT の確率で拒否)
+
+(Look at your belt...)
+(ベルトを見る)
+
+
 
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
 (SPEAKER はおずおずと歩み寄ってきた)|あの……ちょっとよろしいでしょうか？|助けてほしいのですが……
@@ -17818,30 +17832,23 @@ I refuse. (PERCENT chance to avoid)
 (SPEAKER は安堵の表情を浮かべている)|本当にありがとうございます！|この御恩は絶対に忘れません！
 (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|I'm sorry miss! It was my only choice~
 (踵を返すと SPEAKER が突然驚かせてきた)|(驚いている間に、腰辺りで鍵のかかる音がした)|本当にごめんなさい！助かるにはこれしかなかったんです！
-(The lock on the RESTRAINT starts glowing...)
-(RESTRAINT の錠前が輝き出した……)
 
 I would love to help!
 ええ、助けてあげる
 You're asking me to get cursed?
 私に身代わりになれと？
+
 That sounds like a tempting offer.
 とてもそそるね
-(Nod again, excited)
-(興奮しながら頷く)
 ...What? Why would I need to wear it?
 ……え？なんで私がこれを着けなきゃいけないの？
-(Shake your head, puzzled)
-(必死に顔を横にふる)
 
 Fine. I'll do it because you asked.
 まあ、そこまで頼まれたら……
-(Moan and nod slowly)
-(うめきながらゆっくり頷く)
 I won't help you. Wear it yourself. (PERCENT chance to avoid)
 悪いけど自分でなんとかして(PERCENT の確率で拒否)
-(Look at your belt...)
-(ベルトを見る)
+
+
 
 
 (The SPEAKER walks up to you)|We don't get a lot of visitors.|I take it that you enjoy bondage?
@@ -20570,7 +20577,6 @@ Items on Ground:
 Preloading Character Assets: 
 アセットのプリローディング中:
 
-
 Uniforms
 衣装セット
 Suits
@@ -23117,6 +23123,59 @@ Gag
 ### PauldronStrap
 ### LightMaidKnight
 
+### HeavyMaidKnightHairband
+### HeadbandRibbonBack
+### FlowerLeaves
+### HeavyMaidKnight_Dress
+### DressSkirtHem
+### DressSkirtStripe
+### HeavyMaidKnight_SleeveLeft
+### SleeveLeftStripe
+### HeavyMaidKnight_SleeveRight
+### SleeveRightStripe
+### HeavyMaidKnight_ChestArmor
+### ChestArmor
+### HeavyMaidKnight_GloveLeft
+### HeavyMaidKnight_GloveRight
+### HeavyMaidKnight_Gloves
+### HeavyMaidKnight_GauntletLeft
+### HeavyMaidKnight_GauntletRight
+### HeavyMaidKnight_Gauntlets
+### HeavyMaidKnight_PauldronLeft
+### PauldronLeftStraps
+### PauldronLeftHardware
+### HeavyMaidKnight_PauldronRight
+### PauldronRight
+### PauldronRightStraps
+### HeavyMaidKnight_Pauldrons
+### HeavyMaidKnight_SideArmor
+### SideArmor
+### HeavyMaidKnight_Corset
+### HeavyMaidKnight_CorsetRestraint
+### HeavyMaidKnight_Sleeves
+### HeavyMaidKnight_ApronBottom
+### ApronBelt
+### ApronMiniBow
+### ApronCross
+### ApronStripe
+### ApronPattern
+### HeavyMaidKnight_ApronTop
+### ApronChestRuffles
+### ApronChestBelts
+### HeavyMaidKnight_Apron
+### HeavyMaidKnight_WaistBelts
+### BeltsHardware
+### HeavyMaidKnight_WaistPouches
+### Pouches
+### HeavyMaidKnight_Waist
+### HeavyMaidKnight_Boots
+### BootLegLeft
+### BootLegRight
+### HeavyMaidKnight_PantyhoseShorts
+### Pantyhose
+### HeavyMaidKnight_SockRight
+### HeavyMaidKnight_SockLeft
+### HeavyMaidKnight
 
 
 
@@ -25802,6 +25861,8 @@ ENMY の強固なブロックで攻撃を完全に無効化された！
 The ENMY puts up surprising resistance, reducing the damage by PCNT%.
 ENMY は意外な抵抗をみせ、ダメージを PCNT% 軽減された！
 
+### no damage
+
 
 Raise Defenses
 ハイガード
@@ -26810,6 +26871,8 @@ Tough Armor (1/2 crit mult while aware)
 Absolute Armor (1/2 crit mult)
 絶対的な鎧(会心ダメージが半分になる)
 
+Enlarged View
+拡大表示
 Back to Game
 ゲームに戻る
 
@@ -26942,9 +27005,10 @@ Yokes are less favored over other heavy bondage.
 
 
  (blocked!)
- (防御)
+(防御)
  (dodged!)
- (回避)
+(回避)
+
 
 You crouch and move slowly.
 ゆっくりと這いつくばる。
@@ -27652,8 +27716,7 @@ It is said that whomever follows the chaste principles of the Paladins shall rec
 You retrieve an interesting article dubbed 'the Robe of Chastity.
 "貞操の衣"と名付けられた布を見つけた。
 
-Took
-　　
+### Took 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 (竜を討つと、人の姿に変化した！)
@@ -29014,13 +29077,13 @@ Reset all Keybindings
 That item is blocked! You can't remove it.
 取り除けない。
 
-min.
+ min.
 最小
-max.
+ max.
 最大
-bonus
+ bonus
 ﾎﾞｰﾅｽ
-penalty
+ penalty
 ﾍﾟﾅﾙﾃｨ
 
 You put it on, why would you want to take it off?~
@@ -29105,6 +29168,7 @@ Knocked Out
 気絶
 Vine
 蔓
+
 Saving...
 セーブ中・・・
 Game Saved
@@ -29126,10 +29190,9 @@ AMNT restraints confiscated since last tick~
 You have no restraints in storage. Go to the Summit to deposit restraints.
 倉庫に拘束具がない。セーフゾーンに行って拘束具を預けてこよう。
 
+
 Back to Facilities
 施設画面へ
-Back to Game
-ゲームに戻る
 
 Your Inventory
 自身のインベントリ
@@ -29168,6 +29231,7 @@ Automatically Flip When Moving
 Go to the summit to deposit restraints
 セーフゾーンで拘束具を預けよう。
 
+
 AMNTx damage when SP is over 50%
 SPが50%以上の時、ダメージが AMNT 倍になる。
 
@@ -29177,9 +29241,9 @@ Barrier Orb
 バリアオーブ
 Barrage of Sealing Talisman
 封印の御札乱れ撃ち
-Sealing Talisman
-封印の御札
 Self Unlock
 アンロック
 Crystal Storm
 クリスタルストーム
+
+### Shadow Walk

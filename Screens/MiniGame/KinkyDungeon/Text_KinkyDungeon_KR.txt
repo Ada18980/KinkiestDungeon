@@ -33,16 +33,9 @@ Mods
 Mods Loaded.
 모드가 로드되었습니다.
 
-### Restart required!
-### 需要重启！
-### 재시작 필요！
-### Restart please!
-### ¡Reinicio!
-### Rechargement requis!
 
 ### Version
 ### Kinky Dungeon
-### 5.3.45
 ### By Ada18980
 You are an adventurer descending into an ancient underground city of magic.
 당신은 마법의 고대 지하 도시로 내려가는 모험가입니다.
@@ -1015,15 +1008,15 @@ Feet
 Everywhere!
 모든 부위!
 
-### Physical Armor:
-### Magic Armor:
+### Physical Armor: 
+### Magic Armor: 
 In the Shadows: You are harder to see.
 그림자 속에서: 당신은 보기가 더 어렵습니다.
 Invisible: You are very difficult to see.
 보이지 않음: 당신은 보기가 매우 어렵습니다.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 빠름: 다음 이동은 매우 신속해 턴을 소모하지 않습니다.
-### All Damage Reduction:
+### All Damage Reduction: 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 PERCENT1 DAMAGETYPE 피해를 받습니다.
 You deal PERCENT more DAMAGETYPE damage.
@@ -1265,7 +1258,7 @@ You haven't found the keys for this floor yet.
 Missing key
 열쇠 미발견
 ### You are protected from damage and can't be bound until the shield is broken!
-### Chance for a spell to fizzle:
+### Chance for a spell to fizzle: 
 ### Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 ### Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
 ### Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist and RESBLKPENALTY penalty.
@@ -1396,7 +1389,7 @@ Delete Mod
 모드 삭제
 Clear Perks
 클리어 특전
-### Config
+### Config 
 Cancel
 취소
 ### Filter
@@ -1498,11 +1491,11 @@ Press a key, then press a button to set that key
 Floor FLOORNUMBER: DUNGEONNAME
 FLOORNUMBER 층 : DUNGEONNAME
 
-### Lockpicks:
-### Keys:
-### Magic Keys:
-### Knife:
-### Mag. Knife:
+### Lockpicks: 
+### Keys: 
+### Magic Keys: 
+### Knife: 
+### Mag. Knife: 
 
 You climb down the stairs. The passage closes behind you.
 당신은 계단을 내려갔습니다. 뒤의 통로가 닫힙니다.
@@ -1676,7 +1669,7 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 당신은 여러종류의 물약을 찾았습니다.
 
-### Rarity:
+### Rarity: 
 Lesser
 저급
 Common
@@ -2212,6 +2205,11 @@ Deals pierce damage. Deals 30 damage instead on vulnerable targets.
 You pick up a fencing sword.
 펜싱 검을 집으십시오.
 
+### Sledgehammer
+### Do you have what it takes?
+### Deals heavy crush damage and knocks the target back 2 spaces. Deals bonus damage to most solid barricades.
+### You pick up a heavy sledgehammer.
+
 Hammer
 망치
 ### A crude way of fixing your problems.
@@ -2255,8 +2253,7 @@ Deals unarmed damage.
 비무장 피해를 입힙니다.
 Sword
 검
-The blade is strong, its edge sharp.
-검은 강하고 칼날은 날카롭다.
+### the steel is strong, and the blade true.
 A fast and accurate weapon that deals slash damage.
 베기 피해를 주는 빠르고 정확한 무기입니다.
 Flamberge
@@ -2376,16 +2373,16 @@ Dreamcatcher
 드림캐쳐
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 악몽 속에서 벼려지고 강철로 짜여져 있습니다. 모르는 대상에게 그림자 전사를 소환하여 2%의 고대 에너지를 얻습니다.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 Axe
 도끼
 Great for cutting trees that happen to be underground.
 우연히 지하에 있는 나무를 베는 데 좋습니다.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 옆에 있는 적에게도 20의 피해를 줍니다. 참격 피해를 입힙니다.
-### Accuracy:
-### Crit Multiplier:
-### Bind Crit Multiplier:
+### Accuracy: 
+### Crit Multiplier: 
+### Bind Crit Multiplier: 
 Find the keys..
 열쇠를 찾아라..
 Find the exit!
@@ -2401,8 +2398,8 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 균열을 발견하고 칼이나 도구를 쐐기로 고정하여 고정시킬 수 있습니다.
 You found something sticky and might be able to pull off fabrics.
 끈적끈적한 무언가를 찾았고 천을 떼어낼 수 있을지도 모릅니다.
-### Evasion:
-### Visibility:
+### Evasion: 
+### Visibility: 
 
 
 Submissive: Enemies won't attack you, but they will try to play with you.
@@ -2444,10 +2441,10 @@ Edged!
 ### Satisfied. Miscast chance is reduced.
 
 
-### Damage:
-### Bind:
-### Crit:
-### SP Cost:
+### Damage: 
+### Bind: 
+### Crit: 
+### SP Cost: 
 ### Cut PWR: AMNT%
 
 It appears to be a receptacle
@@ -4790,13 +4787,13 @@ Illusions
 Commerce
 상업
 ### Shrine of SHRINETYPE
-### Tablet of
+### Tablet of 
 
-### Goddess:
-### Goddess Blessing:
-### Goddess Curse:
-### Mana Bonus:
-### Lack of Mana Penalty:
+### Goddess: 
+### Goddess Blessing: 
+### Goddess Curse: 
+### Mana Bonus: 
+### Lack of Mana Penalty: 
 ### Your excess mana helps you suppress the enchantment!
 ### Your mana is too weak to fight the magical enchantment...
 
@@ -4813,9 +4810,9 @@ Decypher
 You try to read the runes but cannot understand them.
 당신은 룬을 읽으려고 하지만 이해할 수 없습니다.
 
-### Allies:
-### Enemies:
-### Favorable:
+### Allies: 
+### Enemies: 
+### Favorable: 
 
 ### None
 Nevermere Trainers
@@ -5257,7 +5254,7 @@ They will slow you down, but you can walk on slime without getting stuck!
 
 
 
-### You find
+### You find 
 
 
 
@@ -7019,7 +7016,7 @@ A book of manipulative spells
 Verbal
 언어 적
 
-### Components:
+### Components: 
 Arm Movements
 팔의 움직임
 Leg Gestures
@@ -7198,7 +7195,7 @@ The roaring inferno deals 10 damage to you!
 
 
 ### Battle Rhythm
-### Stores 10% of the stamina spent from attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
+### Stores 10% of the stamina cost of attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking.
 
 ### Limit Surge
 ### Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
@@ -9313,19 +9310,19 @@ You need more spell points.
 주문 포인트가 더 필요합니다.
 You don't have enough maximum mana to cast this spell!
 이 주문을 시전하기에는 최대 마나가 부족합니다!
-### School:
+### School: 
 Generic
 일반적인
 ### Upgrade
 ### Special
 Learn Spell
 마법 배우기
-### Spell Points:
+### Spell Points: 
 
 
-### Level:
-### Spell Point Cost:
-### Mana Cost:
+### Level: 
+### Spell Point Cost: 
+### Mana Cost: 
 
 
 Remove Spell 1
@@ -9356,13 +9353,13 @@ Replace Spell 6
 교체 마법 6
 Replace Spell 7
 교체 마법 7
-### Current Spell 1:
-### Current Spell 2:
-### Current Spell 3:
-### Current Spell 4:
-### Current Spell 5:
-### Current Spell 6:
-### Current Spell 7:
+### Current Spell 1: 
+### Current Spell 2: 
+### Current Spell 3: 
+### Current Spell 4: 
+### Current Spell 5: 
+### Current Spell 6: 
+### Current Spell 7: 
 
 ### ???
 Unfiled
@@ -9388,7 +9385,7 @@ Library
 ### (A page from the Book of Aeons)|Beneath the Graveyard lies a relic of a former age, a network of tombs inhabited by the immortal followers of Bast. Very few were graced with this gift of immortality before the great archmagus, Sariel Vinlaga, stole this power from the gods and granted all humans with the power of immortality. The Bast followers are still set in their ways, hoping for a time when their Goddess will return and rebuild their glorious civilization.
 ### (A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough.
 ### (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 ### (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 ### (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
 ### (A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
@@ -9926,10 +9923,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 3렙 동안 여신이 당신에게 미끄러움을 부여하여 당신의 고군분투를 강화할 것입니다.
 For 3 rep the goddess will grant you a key.
 3렙이면 여신이 당신에게 열쇠를 줄 것입니다.
-### For 3 rep the goddess will grant you
+### For 3 rep the goddess will grant you 
 For 3 rep the goddess
 3렙 여신님
-### For 3 rep the goddess
+For 3 rep the goddess 
+3렙 여신님
 
 The goddess will fully restore your mana in exchange for AMOUNT rep
 여신은 AMOUNT 담당자와 교환하여 마나를 완전히 회복시켜 줄 것입니다.
@@ -10264,8 +10262,8 @@ Can disarm (chance: DISARMCHANCE%)
 무장 해제 가능(확률: DISARMCHANCE%)
 Resistances:
 저항:
-### HP:
-### Binding:
+### HP: 
+### Binding: 
 Ambivalent
 양가적
 Likes you
@@ -10500,7 +10498,7 @@ Many ropes emerge around you, removing weaker ropes from your body and binding e
 ### Hard Mode
 ### Extreme
 ### A supposedly reasonable difficulty curve.
-### Play the game the way it was intended. Cruel and restrictive.
+### Play the game the way it was intended. Cruel and restrictive. 
 ### Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 
 Aroused
@@ -14519,50 +14517,67 @@ Wait, what? (PERCENT chance to avoid)
 
 
 
+### (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
+### (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
+### (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
+### (The SPEAKER smiles)|Enjoy your freedom while it lasts~
+### (The SPEAKER shrugs)|That's okay, just thought I'd ask.
+### (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?
+### (The SPEAKER gives an evil smile)|What if I wasn't asking?
+### (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
+### (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
+### (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
+(The lock on the RESTRAINT starts glowing...)
+(RESTRAINT의 잠금 장치가 빛나기 시작합니다...)
+
+### Protection? Certainly!
+### Nah, I'm good.
+
+### I would love to wear it!
+(Nod again, excited)
+(또 끄덕, 흥분)
+### ...No thank you.
+(Shake your head, puzzled)
+(고개를 저으며 의아해)
+
+### Fine. I need the protection anyway.
+### I refuse. (PERCENT chance to avoid)
+
+(Look at your belt...)
+(벨트 좀 봐...)
+
+
+
 (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
 (SPEAKER 가 초조하게 당신에게 다가갑니다)|실례합니다 아가씨...|도와주실 수 있나요?
-(The SPEAKER blushes deeply)|I managed to unlock my RESTRAINT,|but my mistress expects me to wear it!|Do you mind wearing it instead?
-(SPEAKER 가 깊이 얼굴을 붉힌다)|나는 내 구속장치를 풀 수 있었지만|내 여주인은 내가 그것을 착용하기를 기대합니다!|대신 그것을 착용하시겠습니까?
+### (The SPEAKER blushes deeply)|I found this cursed RESTRAINT and I can't let go of it!|Could you... wear it for me?
 (The SPEAKER smiles)|Thank you so much, miss!
 (SPEAKER 가 웃는다)|정말 고마워요, 아가씨!
-(The SPEAKER frowns)|I'm going to get in trouble...
-(SPEAKER 가 눈살을 찌푸리며)|곤경에 빠지겠다...
+### (The SPEAKER frowns)|...That does seem rather far-fetched of me to ask.
 (The SPEAKER blushes)|Oh... okay.
 (발표자가 얼굴을 붉힌다)|아...알았어.
-(The SPEAKER frowns angrily)|Look, I know you're in trouble around here.|Just do me a favor. Please.|I need you to wear this RESTRAINT.
-(SPEAKER 가 화를 내며 눈살을 찌푸린다)|이봐, 네가 여기서 문제가 있다는 걸 알아.|부탁 하나만 들어줘. 제발.|이 구속 장치를 착용해야 해.
-(The SPEAKER pleads with you)|My mistress is a magician!|She put a spell on it that senses if it's being worn.|Please, you have to hurry!
-(SPEAKER 가 당신에게 간청합니다)|내 여주인은 마술사입니다!|그녀는 착용 여부를 감지하는 주문을 걸었습니다.|제발, 서둘러야 해요!
+### (The SPEAKER frowns angrily)|Look, we all know how much you enjoy being restrained~|Do me a favor and wear the RESTRAINT, okay?
+### (The SPEAKER pleads with you)|...point taken. But still!|I'll end up stuck in it for a really long time...
 (The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)
 (SPEAKER 가 한숨을 쉬며 직접 착용)|(자물쇠가 밝게 빛나기 시작합니다...)
 (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 (SPEAKER 가 안도하는 듯)|고마워요, 아가씨!|잊지 않을게요!
-(As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Hmmph! Serves you right!|
-(뒤돌아보면 SPEAKER 가 당신을 놀라게 합니다.)|(허리 주변에서 딸깍하는 소리가 들립니다.)|흠! 잘 먹겠습니다!|
-(The lock on the RESTRAINT starts glowing...)
-(RESTRAINT의 잠금 장치가 빛나기 시작합니다...)
+### (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|I'm sorry miss! It was my only choice~
 
 I would love to help!
 도와주고 싶어요!
-Go find someone else.
-가서 다른 사람 찾으세요.
+### You're asking me to get cursed?
 
 That sounds like a tempting offer.
 그것은 유혹적인 제안처럼 들립니다.
-(Nod again, excited)
-(또 끄덕, 흥분)
 ...What? Why would I need to wear it?
 ...뭐? 내가 왜 입어야 해?
-(Shake your head, puzzled)
-(고개를 저으며 의아해)
 
 Fine. I'll do it because you asked.
 알았어. 부탁하니까 해줄게.
 I won't help you. Wear it yourself. (PERCENT chance to avoid)
 도와주지 않을게. 직접 입어. (피할 확률이 PERCENT)
 
-(Look at your belt...)
-(벨트 좀 봐...)
 
 
 
@@ -15002,7 +15017,7 @@ What? (PERCENT chance to avoid)
 (화자가 목을 가다듬는다)|음, 우리는 실제로 모집하고 있습니다!|정의를 위해 싸우는 데 동의한다면 우리와 함께 할 수 있습니다!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts her head and shrugs)|Ah well. 
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (화자가 눈살을 찌푸리며)|뭐야?|당신은 정의의 적이 아니지, 그렇지?
 (The SPEAKER frowns)|...If you won't fight for justice, that makes you an enemy of justice.
@@ -16237,7 +16252,7 @@ Give her a Scroll of Purity
 ### W-what does that entail?
 ### (The SPEAKER giggles)|That means we'll get to package you up and|decide what to do with you, silly~
 ### Hmmmph? Mmmm! (Act worried and whimper)
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds her arms)|Mistress Oriel's orders 
 ### Not in the 'System'?
 ### (The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
 ### Mmmph? (Act confused)
@@ -16413,7 +16428,7 @@ Upcast Level LEVEL
 업캐스트 레벨 LEVEL
 Prerequisite
 전제 조건
-### Unlocks:
+### Unlocks: 
 You need to learn REQUIREDSPELL before you can learn this one.
 이것을 배우기 전에 REQUIREDSPELL을 배워야 합니다.
 
@@ -16460,7 +16475,7 @@ Initiating prisoner lockdown protocol
 ### Your RestraintName suddenly snap together as the EnemyName activates them!
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count:
+### Turn Count: 
 
 ### The Shopkeeper leashes you!
 ### You are brought into the Shopkeeper's establishment...
@@ -16696,7 +16711,7 @@ Blue
 
 ### Items on Ground:
 
-### Preloading Character Assets:
+### Preloading Character Assets: 
 
 ### Uniforms
 ### Suits
@@ -18742,6 +18757,59 @@ Mage
 ### PauldronStrap
 ### LightMaidKnight
 
+### HeavyMaidKnightHairband
+### HeadbandRibbonBack
+### FlowerLeaves
+### HeavyMaidKnight_Dress
+### DressSkirtHem
+### DressSkirtStripe
+### HeavyMaidKnight_SleeveLeft
+### SleeveLeftStripe
+### HeavyMaidKnight_SleeveRight
+### SleeveRightStripe
+### HeavyMaidKnight_ChestArmor
+### ChestArmor
+### HeavyMaidKnight_GloveLeft
+### HeavyMaidKnight_GloveRight
+### HeavyMaidKnight_Gloves
+### HeavyMaidKnight_GauntletLeft
+### HeavyMaidKnight_GauntletRight
+### HeavyMaidKnight_Gauntlets
+### HeavyMaidKnight_PauldronLeft
+### PauldronLeftStraps
+### PauldronLeftHardware
+### HeavyMaidKnight_PauldronRight
+### PauldronRight
+### PauldronRightStraps
+### HeavyMaidKnight_Pauldrons
+### HeavyMaidKnight_SideArmor
+### SideArmor
+### HeavyMaidKnight_Corset
+### HeavyMaidKnight_CorsetRestraint
+### HeavyMaidKnight_Sleeves
+### HeavyMaidKnight_ApronBottom
+### ApronBelt
+### ApronMiniBow
+### ApronCross
+### ApronStripe
+### ApronPattern
+### HeavyMaidKnight_ApronTop
+### ApronChestRuffles
+### ApronChestBelts
+### HeavyMaidKnight_Apron
+### HeavyMaidKnight_WaistBelts
+### BeltsHardware
+### HeavyMaidKnight_WaistPouches
+### Pouches
+### HeavyMaidKnight_Waist
+### HeavyMaidKnight_Boots
+### BootLegLeft
+### BootLegRight
+### HeavyMaidKnight_PantyhoseShorts
+### Pantyhose
+### HeavyMaidKnight_SockRight
+### HeavyMaidKnight_SockLeft
+### HeavyMaidKnight
 
 
 
@@ -19209,7 +19277,7 @@ Mithril Crotch Rope
 
 ### Rubber Stick
 ### A rubber cylinder without any lewd intentions whatsoever.
-### Deals grope damage.
+### Deals grope damage. 
 ### You pick up a flexible rubber stick.
 
 ### Blade of Ejahl
@@ -19777,8 +19845,8 @@ Ranged Attack
 ### Cracks begin to form in your RestraintName!
 ### Your RestraintName shatters and falls off!
 
-### Load Hotbar
-### Save Hotbar
+### Load Hotbar 
+### Save Hotbar 
 ### Clear Hotbar
 
 ### Confirm clearing hotbar?
@@ -20482,7 +20550,7 @@ Hogtied!
 
 
 
-### Receive the following restraints:
+### Receive the following restraints: 
 ### You will be bound with some form of restraint.
 
 
@@ -20566,7 +20634,7 @@ Hogtied!
 ### There is nothing to harvest.
 
 ### Telekinesis 101
-### Unlocks telekinetic abilities. Can equip weapons while bound, but at 0% accuracy. Learn Recover Object.
+### Unlocks telekinetic abilities. Toggle on to equip weapons while bound, but at 0% accuracy. Learn Recover Object.
 
 
 ### Recover Object
@@ -20843,7 +20911,7 @@ Hogtied!
 
 
 ### Select a character to examine
-### Former Faction:
+### Former Faction: 
 
 ### Minigun
 
@@ -20877,6 +20945,7 @@ Hogtied!
 ### Tough Armor (1/2 crit mult while aware)
 ### Absolute Armor (1/2 crit mult)
 
+### Enlarged View
 ### Back to Game
 
 ### Slimy Spit
@@ -20953,7 +21022,7 @@ Hogtied!
 
 ### You crouch and move slowly.
 
-### Owned by:
+### Owned by: 
 
 ### Warden's Belt
 ### You may go on your way, but only as long your freedom is useful to her.
@@ -21350,7 +21419,7 @@ Hogtied!
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took
+### Took 
 
 ### (As you slay the dragon, it begins shapeshifting into human form!)
 
@@ -21902,8 +21971,8 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Fiber
 ### Runes
 
-### Stock:
-### Inputs:
+### Stock: 
+### Inputs: 
 
 ### You slip off the conveyor!
 ### The Summit
@@ -21941,14 +22010,14 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Toe Tie
 ### Heels
 
-### Equipped:
-### Click to Add
-### Apply
-### Raw Material:
+### Equipped: 
+### Click to Add 
+### Apply 
+### Raw Material: 
 
 ### Free Prisoner
 
-### Perk Unlocked:
+### Perk Unlocked: 
 
 ### Latex Solvent
 ### You ready the bottle of Latex Solvent.
@@ -21968,16 +22037,17 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Restraint Palette
 ### Choose Restraint
 
-### Def. Palette:
+### Def. Palette: 
 ### Set All Palette
 
 ### Guests
 
-### Assign to
-### Remove from
+### Assign to 
+### Remove from 
+### Can't assign to 
 ### Imprison
 
-### Opinion:
+### Opinion: 
 ### Last Seen on Floor FLR, LOC
 ### Present in current level
 ### Captured by FCTN
@@ -21993,12 +22063,12 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### NPC has managed to loosen her bonds.
 
 ### Any
-### NPC Opinion:
-### NPC Escape Status:
-### NPC Binding:
-### NPC Availability:
-### Favorited:
-### Rank:
+### NPC Opinion: 
+### NPC Escape Status: 
+### NPC Binding: 
+### NPC Availability: 
+### Favorited: 
+### Rank: 
 ### Minor
 ### Elite
 ### Miniboss
@@ -22017,6 +22087,8 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Auto Bind Interface
 ### AutoBind
+
+### Assign to Facility
 
 ### Copy Restraints
 ### Paste Restraints from NME
@@ -22063,7 +22135,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Select a Binding Slot
 
-### Cost:
+### Cost: 
 
 ### Zoom set to PCNT%
 ### You need free arms to tie others!
@@ -22081,7 +22153,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 ### Reaching Authority
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot
+### Save Slot 
 ### Load Game
 ### Load Code
 ### Load Slot 0
@@ -22119,10 +22191,10 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Factory Route
 ### Reverse Route
 ### Chaos Route
-### Map Seed:
+### Map Seed: 
 ### Will Overwrite NME!
 
-### Play Slot
+### Play Slot 
 ### Play (NO SLOT!)
 
 ### Looks like you might be stuck. Try calling for help (bottom right of UI)
@@ -22225,6 +22297,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### AMNT restraints confiscated since last tick~
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
+
 ### Back to Facilities
 
 ### Your Inventory
@@ -22241,7 +22314,20 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Take Everything
 ### Deposit All
 
-### Auto-loot found
+### Auto-loot found 
 ###  (not picked up)
 
 ### Automatically Flip When Moving
+
+### Go to the summit to deposit restraints
+
+
+### AMNTx damage when SP is over 50%
+
+### Barrage of Barrier Orb
+### Barrier Orb
+### Barrage of Sealing Talisman
+### Self Unlock
+### Crystal Storm
+
+### Shadow Walk
