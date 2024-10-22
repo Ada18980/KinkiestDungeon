@@ -447,6 +447,7 @@ interface damageInfoMinor {
 
 
 interface damageInfo extends damageInfoMinor {
+	name?: string;
 	flags?:     string[];
 	time?:      number;
 	bind?:      number;

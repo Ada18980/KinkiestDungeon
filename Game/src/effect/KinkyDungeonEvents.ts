@@ -7330,6 +7330,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				let scaling = e.mult * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
 
 				let attData: damageInfo = {
+					name: KinkyDungeonPlayerDamage.name,
 					nodisarm: true,
 
 					nocrit: KinkyDungeonPlayerDamage.nocrit,
@@ -7388,6 +7389,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
 
 				let attData: damageInfo = {
+					name: KinkyDungeonPlayerDamage.name,
 					nodisarm: true,
 
 					nocrit: KinkyDungeonPlayerDamage.nocrit,

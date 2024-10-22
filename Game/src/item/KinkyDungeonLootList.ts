@@ -317,6 +317,7 @@ let KinkyDungeonLootTable = {
 			//forceEquip: true,
 			cursesuffix: "",
 			prerequisites: ["nopetsuit"],
+			faction: "Bast",
 			hexlist: "Common", enchantlist: "Common", hexchance: 0.25, enchantchance: 1, alwaysenchanthex: true,
 			hexscale: 0.75,
 			unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,

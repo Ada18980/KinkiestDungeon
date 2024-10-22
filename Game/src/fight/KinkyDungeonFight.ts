@@ -2846,8 +2846,7 @@ function KinkyDungeonSendWeaponEvent(Event: string, data: any) {
 					KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
 				}
 			}
-		}
-		for (let e of weapon.events) {
+		} else for (let e of weapon.events) {
 			if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 				KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
 			}

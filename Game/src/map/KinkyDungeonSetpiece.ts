@@ -859,7 +859,7 @@ function KDUnblock(x: number, y: number): boolean {
 	return !blocked;
 }
 
-function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean) {
+function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White") {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
@@ -873,6 +873,19 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean) {
 	let persistentAvailable =
 		KDGameData.CapturedParty?.length > 0
 		|| capturedPersistent.length > 0;
+
+
+	let tile = KinkyDungeonTilesGet(x + ',' + y);
+	let furn = KDFurniture[tile?.Furniture];
+	let rest: restraint = furn ? KinkyDungeonGetRestraint(
+		{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+		(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+		true,
+		"",
+		true,
+		false,
+		false, undefined, true) : null;
+
 	if (!noPersistent && persistentAvailable) {
 		/**
 		 */
@@ -902,7 +915,13 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean) {
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
 		e.items = [];
-		KDImprisonEnemy(e, noJam);
+
+		KDImprisonEnemy(e, noJam, undefined, rest ? {
+			name: rest.name,
+			lock: lock,
+			id: KinkyDungeonGetItemID(),
+			faction: KDGetMainFaction() || "Jail",
+		} : undefined);
 	} else if (!persistentOnly) {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
 			"ropeAnger", "ropeRage",
@@ -919,7 +938,12 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean) {
 			e.boundLevel = e.hp * 11;
 			e.specialdialogue = "PrisonerJail";
 			e.items = [];
-			KDImprisonEnemy(e, noJam);
+			KDImprisonEnemy(e, noJam, undefined, rest ? {
+				name: rest.name,
+				lock: lock,
+				id: KinkyDungeonGetItemID(),
+				faction: KDGetMainFaction() || "Jail",
+			} : undefined);
 		}
 	}
 

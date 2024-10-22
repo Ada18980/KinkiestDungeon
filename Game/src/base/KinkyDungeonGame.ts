@@ -4713,6 +4713,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 		} else {
 			if (!capture) {
 				let damageInfo: damageInfo = {
+					name: KinkyDungeonPlayerDamage.name,
 					damage: KinkyDungeonPlayerDamage.damage,
 					type: KinkyDungeonPlayerDamage.type,
 					distract: KinkyDungeonPlayerDamage.distract,

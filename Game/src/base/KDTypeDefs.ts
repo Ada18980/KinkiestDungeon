@@ -2503,6 +2503,7 @@ interface KDInventoryActionDef {
 interface KinkyDungeonSave {
 	/** Metadata */
 	saveStat: {
+		version: string,
 		appearance: any[],
 		default: string,
 		poses: Record<string, boolean>,

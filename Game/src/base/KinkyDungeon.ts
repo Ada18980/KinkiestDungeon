@@ -4344,6 +4344,10 @@ function KDDrawLoadMenu() {
 		// Save Code Seed
 		DrawTextFitKD(TextGet("KDMapSeed") + `${loadedSaveforPreview.seed}`, CombarXX + 1100, YYstart + 140, 400, "#ffffff", undefined, 40);
 
+		if (loadedSaveforPreview.saveStat?.version && TestMode)
+			DrawTextFitKD(loadedSaveforPreview.saveStat?.version,
+				CombarXX + 1100, YYstart + 170, 400, "#ffffff", undefined, 24);
+
 
 
 		// Draw misc challenge settings
@@ -5604,6 +5608,7 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	save.KinkyDungeonCurrentTick = KinkyDungeonCurrentTick;
 
 	save.saveStat = {
+		version: TextGet("KDVersionStr"),
 		appearance: JSON.parse(JSON.stringify(KinkyDungeonPlayer.Appearance)),
 		default: JSON.parse(JSON.stringify(KDGetDressList().Default)),
 		poses: JSON.parse(JSON.stringify(KDCurrentModels.get(KinkyDungeonPlayer).Poses)),

@@ -4949,6 +4949,8 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 
 	KinkyDungeonSendEvent("afterSuccessRemove", data);
 
+	KDSortInventory(KDPlayer());
+
 	return destroy;
 }
 

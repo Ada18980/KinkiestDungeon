@@ -1053,34 +1053,36 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				hit = true;
 				let mod = (KinkyDungeonFlags.get("KineticMastery") ? 1.5 : 0) + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisBase");
 				let scaling = 0.9 * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "KinesisScale")));
+				let ad : damageInfo = {
+					name: KinkyDungeonPlayerDamage.name,
+					nodisarm: true,
+					damage: spell.power + mod + KinkyDungeonPlayerDamage.damage * scaling,
+					type: KinkyDungeonPlayerDamage.type,
+					distract: KinkyDungeonPlayerDamage.distract,
+					distractEff: KinkyDungeonPlayerDamage.distractEff,
+					desireMult: KinkyDungeonPlayerDamage.desireMult,
+					bind: KinkyDungeonPlayerDamage.bind,
+					bindType: KinkyDungeonPlayerDamage.bindType,
+					bindEff: KinkyDungeonPlayerDamage.bindEff,
+					ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
+					shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
+					shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
+					shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
+					shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
+					shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
+					shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
+					shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
+					shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
+					boundBonus: KinkyDungeonPlayerDamage.boundBonus,
+					novulnerable: KinkyDungeonPlayerDamage.novulnerable,
+					tease: KinkyDungeonPlayerDamage.tease};
 				data = {
 					target: en,
 					attackCost: 0.0, // Important
 					attackCostOrig: 0.0,
 					skipTurn: false,
 					spellAttack: true,
-					attackData: {
-						nodisarm: true,
-						damage: spell.power + mod + KinkyDungeonPlayerDamage.damage * scaling,
-						type: KinkyDungeonPlayerDamage.type,
-						distract: KinkyDungeonPlayerDamage.distract,
-						distractEff: KinkyDungeonPlayerDamage.distractEff,
-						desireMult: KinkyDungeonPlayerDamage.desireMult,
-						bind: KinkyDungeonPlayerDamage.bind,
-						bindType: KinkyDungeonPlayerDamage.bindType,
-						bindEff: KinkyDungeonPlayerDamage.bindEff,
-						ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
-						shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
-						shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
-						shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
-						shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
-						shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
-						shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
-						shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
-						shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
-						boundBonus: KinkyDungeonPlayerDamage.boundBonus,
-						novulnerable: KinkyDungeonPlayerDamage.novulnerable,
-						tease: KinkyDungeonPlayerDamage.tease}
+					attackData: ad
 				};
 				if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatMana/KinkyDungeonStatManaMax >= 0.50) {
 					data.attackData.damage *= KinkyDungeonPlayerDamage.stam50mult;

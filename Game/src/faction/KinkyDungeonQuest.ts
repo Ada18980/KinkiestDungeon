@@ -807,7 +807,7 @@ let KDQuests: Record<string, KDQuest> = {
 			}
 
 		}
-	}, 0.7, ["cyberdollrestraints", "cyberdollheavy", "controlharness"]),
+	}, 0.7, ["cyberdollrestraints", "cyberdollcuffs", "cyberdollheavy", "controlharness", "blacksteelRestraints"]),
 
 	"ConjureQuest": KDGenQuestTemplate("ConjureQuest", "WitchShock", "Conjure", (_goddess, _flag) => {
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
