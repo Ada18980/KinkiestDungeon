@@ -5579,6 +5579,22 @@ function KDChangeItemName(item: item, type: string, name: string) {
 	KDUpdateItemEventCache = true;
 }
 
+
+/**
+ * Changes a restraint item's name
+ * @param item
+ * @param type - Restraint or LooseRestraint
+ * @param name
+ */
+function KDChangeRestraintType(item: item, type: string, name: string) {
+	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) {
+		KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].template = name;
+	}
+	if ((item.inventoryVariant || !KinkyDungeonRestraintVariants[item.inventoryVariant || item.name])
+		&& item.inventoryVariant != item.name)
+		KDChangeItemName(item, type, name);
+}
+
 /**
  * Gets the total curse power rating of the player
  * @param {boolean} activatedOnly

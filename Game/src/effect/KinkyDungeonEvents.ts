@@ -10166,6 +10166,27 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 		}
 	},
 	"tick": {
+		"biggerGags": (_e, _data) => {
+			if (KinkyDungeonStatsChoice.get("BiggerGags") && KDRandom() < 0.2) {
+				let item = KinkyDungeonGetRestraintItem("ItemMouth");
+				if (item) {
+					let gags = KDDynamicLinkList(item, true).filter((inv) => {
+						return !!KDRestraint(inv)?.biggerVersion;
+					});
+					if (gags.length > 0) {
+						let gag = gags[Math.floor(gags.length * KDRandom())];
+						if (gag) {
+							KinkyDungeonSendTextMessage(10, TextGet("KDPerkGagSizeIncrease")
+								.replace("ITMN1", KDGetItemName(gag))
+								.replace("ITMN2", KDGetItemNameString(KDRestraint(gag).biggerVersion)),
+							"#ffff00", 2);
+							KDChangeRestraintType(gag, Restraint, KDRestraint(gag).biggerVersion);
+
+						}
+					}
+				}
+			}
+		},
 		"trainHeels": (_e, _data) => {
 			if (KinkyDungeonLastAction == "Move" && !(KDGameData.KneelTurns > 0)) {
 				let danger = KinkyDungeonInDanger();

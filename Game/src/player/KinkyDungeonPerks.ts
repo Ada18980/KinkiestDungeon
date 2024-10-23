@@ -438,6 +438,8 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 
 
+
+
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout", "NoBlindfolds"]},
 	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful", "NoBlindfolds"]},
 	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
@@ -483,6 +485,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"CommonToyEdge": {category: "Common", id: "CommonToyEdge", cost: 0, requireArousal: true},
 	"CommonToyDeny": {category: "Common", id: "CommonToyDeny", cost: 0, requireArousal: true},
 	"CommonToyTease": {category: "Common", id: "CommonToyTease", cost: 0, requireArousal: true},
+	"BiggerGags":  {category: "Common", id: "BiggerGags", cost: -1, costGroup: "common"},
 
 	"Incantation":  {category: "Restriction", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
 	"SmoothTalker":  {category: "Restriction", id: "SmoothTalker", cost: 2, block: ["Incantation"]},

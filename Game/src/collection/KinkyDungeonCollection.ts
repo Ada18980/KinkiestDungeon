@@ -234,7 +234,7 @@ function KDAddOpinionPersistent(id: number, amount: number): void {
  * @param [allowPerk] Optionally apply perk modifiers
  * @param [allowOnlyPosNegFaction] positive: allows only positive faction rep, negative: allows only negative faction rep
  */
-function KDGetModifiedOpinionID(id: number, allowFaction: boolean = true, allowSub: boolean = true, allowPerk: boolean = true, allowOnlyPosNegFaction: number = 0): number {
+function KDGetModifiedOpinionID(id: number, allowFaction: boolean = true, allowSub: boolean = true, allowPerk: boolean = false, allowOnlyPosNegFaction: number = 0): number {
 	if (KDIsNPCPersistent(id)) {
 		let enemy = KDGetPersistentNPC(id).entity;
 		let op = enemy.opinion || KDGameData.Collection[enemy.id]?.Opinion || 0;

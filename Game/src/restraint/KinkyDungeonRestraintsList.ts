@@ -1548,6 +1548,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 	{inventory: true, name: "LatexBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#4EA1FF", "Default"], Type: "Tight", Group: "ItemMouth", power: 7, weight: 0, escapeChance: {"Struggle": -0.05, "Cut": 0.04, "Remove": 0.4, "Pick": 0.25},
 		Model: "SmoothBallGag",
+		biggerVersion: "LatexBallGagLarge",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		Filters: {
 			Ball: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":1.3333333333333333,"blue":2.8499999999999996,"alpha":1},
@@ -2873,6 +2874,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Latex", "Harnesses"]},
 	{inventory: true, trappable: true, name: "TrapGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], Asset: "BallGag",
 		Model: "BallGag",
+		biggerVersion: "TrapGagLarge",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		ApplyVariants: {
 			"AntiMagic": {
@@ -3286,6 +3288,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	// Generic ball gag thats stronger than the trap one
 	{inventory: true, name: "MagicGag", Asset: "BallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], gag: 0.35,
 		Model: "BallGag",
+		biggerVersion: "MagicGagLarge",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		events: [{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["GagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}],
 		ApplyVariants: {
