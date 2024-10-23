@@ -1153,6 +1153,12 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 		nocancel: true,
 		accept: () => {
 			if (KinkyDungeonStatsChoice.get("BoundCrusader")) {
+				KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
+					Progressive: false,
+					ProgressiveSkip: false,
+					DontPreferWill: false,
+					Keep: true,
+				});
 				for (let i = 0; i < 2; i++) {
 					KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 						Progressive: true,
@@ -1161,12 +1167,6 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 						Keep: true,
 					});
 				}
-				KDPlayerEffectRestrain(undefined, 1, restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
-					Progressive: false,
-					ProgressiveSkip: false,
-					DontPreferWill: false,
-					Keep: true,
-				});
 			}
 			KDSetQuestData(Name, {
 				QuestLocation: KDCurrentWorldSlot,

@@ -1508,6 +1508,7 @@
             <key type="filename">../Models/FutureHarness/StrapsMid.png</key>
             <key type="filename">../Models/GagLatex/NeckCorset.png</key>
             <key type="filename">../Models/GagLatex/NeckCorsetRim.png</key>
+            <key type="filename">../Models/GagLeather/CrystalGagNecklaceBall.png</key>
             <key type="filename">../Models/GagLeather/GagNecklace.png</key>
             <key type="filename">../Models/GagLeather/GagNecklaceBall.png</key>
             <key type="filename">../Models/Gothic/Buttons.png</key>
@@ -2167,6 +2168,7 @@
             <key type="filename">../Models/MaidKnightHeavy/SleeveLeftCrossed.png</key>
             <key type="filename">../Models/MaidKnightHeavy/SleeveLeftFree.png</key>
             <key type="filename">../Models/MaidKnightHeavy/SleeveLeftFront.png</key>
+            <key type="filename">../Models/MaidKnightHeavy/SleeveLeftStripeFree.png</key>
             <key type="filename">../Models/MaidKnightHeavy/SleeveLeftUp.png</key>
             <key type="filename">../Models/MaidKnightHeavy/SleeveLeftWristtie.png</key>
             <key type="filename">../Models/MaidKnightHeavy/SleeveLeftYoked.png</key>
@@ -3801,6 +3803,7 @@
             <key type="filename">../Models/GagLeather/Ball_TeethDeep.png</key>
             <key type="filename">../Models/GagLeather/BigBall.png</key>
             <key type="filename">../Models/GagLeather/BigBallStrap.png</key>
+            <key type="filename">../Models/GagLeather/CrystalBall.png</key>
             <key type="filename">../Models/GagLeather/FabricMuzzle.png</key>
             <key type="filename">../Models/GagLeather/GhostBall.png</key>
             <key type="filename">../Models/GagLeather/GhostBallStrap.png</key>
@@ -4799,6 +4802,21 @@
                 <rect>376,210,751,419</rect>
                 <key>scale9Paddings</key>
                 <rect>376,210,751,419</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/MaidKnightHeavy/SleeveRightStripeFree.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,6,11,11</rect>
+                <key>scale9Paddings</key>
+                <rect>6,6,11,11</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

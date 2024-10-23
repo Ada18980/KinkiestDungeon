@@ -154,7 +154,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Armor"],
 	Layers: ToLayerMap([
-		{ Name: "ChestArmor", Layer: "Chestplate", Pri: 35,
+		{ Name: "ChestArmor", Layer: "ChestplateOver", Pri: 35,
 			HideWhenOverridden: true,
 			Invariant: true,
 			NoOverride: true,

@@ -96,6 +96,7 @@ let LAYERS_BASE = [
 	// Hair mid
 	"HairMid",
 
+	"ChestplateOver",
 
 	// Collar and collar accessories
 	"Collar",
@@ -1557,6 +1558,7 @@ let LayerGroups = {
 	"Jacket",
 	"ChestDeco",
 	"Chestplate",
+	"ChestplateOver",
 	"WrapChest",
 
 	// Bondage
