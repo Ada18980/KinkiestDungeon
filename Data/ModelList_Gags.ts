@@ -172,6 +172,32 @@ AddModel(GetModelWithExtraLayers("LargeBallGagHarnessSecure", "LargeBallGagHarne
 	},
 ], "LargeBallGag", false));
 
+
+AddModel({
+	Name: "CrystalBallGag",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceBigGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: 2,
+			Sprite: "CrystalBall",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 13,
+			Sprite: "BigBallStrap",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
+
+
 AddModel({
 	Name: "PanelGag",
 	Folder: "GagLeather",
@@ -1540,3 +1566,27 @@ AddModel({
 });
 
 AddModel(GetModelFashionVersion("GagNecklace", true));
+
+
+AddModel({
+	Name: "CrystalGagNecklace",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints","Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "CrystalGagNecklaceBall", Layer: "Collar", Pri: 250.1,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "GagNecklace",
+			InheritColor: "Ball",
+		},
+		{ Name: "GagNecklace", Layer: "Collar", Pri: 250,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Strap",
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("CrystalGagNecklace", true));

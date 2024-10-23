@@ -5004,6 +5004,9 @@ RestraintIceArmsDesc2,"There's no way to remove it without breaking it off."
 RestraintIceGag,Ice (Mouth)
 RestraintIceGagDesc,"Frigid restraints made out of ice."
 RestraintIceGagDesc2,"There's no way to remove it without breaking it off."
+RestraintIceBallGag,Ice Ball Gag (Mouth)
+RestraintIceBallGagDesc,"A cold sphere of magic ice lodged firmly in your mouth."
+RestraintIceBallGagDesc2,"The work of a kinky elemental. It will melt! Eventually."
 RestraintIceHarness,Ice (Body)
 RestraintIceHarnessDesc,"Frigid restraints made out of ice."
 RestraintIceHarnessDesc2,"There's no way to remove it without breaking it off."
@@ -24698,6 +24701,16 @@ KDTightnessFade,The RSTRT feels a little looser!
 RestraintCrystalArmbinder,Crystal Armbinder
 RestraintCrystalArmbinderDesc,"A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires."
 RestraintCrystalArmbinderDesc2,"Crystals are tough but not unbreakable."
+
+RestraintCrystalBallGag,Crystal Ball Gag
+RestraintCrystalBallGagDesc,"A growth of crystals inside your mouth. It emits a strange, pleasurable sensation."
+RestraintCrystalBallGagDesc2,"Crystals are tough but not unbreakable."
+
+RestraintCrystalGagNecklace,Crystal Gag Necklace
+RestraintCrystalGagNecklaceDesc,"An arousing accessory made of solid crystal!"
+RestraintCrystalGagNecklaceDesc2,"Simply popping it out of your mouth isn't enough to negate its effects entirely~"
+
+
 
 KinkyDungeonCurseInfoSpellLock1,"The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point."
 KinkyDungeonCurseStruggleSpellLock1,"The restraint won't budge."

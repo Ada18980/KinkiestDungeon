@@ -1683,6 +1683,27 @@ const KinkyDungeonRestraints: restraint[] = [
 
 	//region crystal
 
+	{inventory: true, unlimited: true, name: "CrystalBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: ["#ff5277", "#882222"],
+		Model: "CrystalBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
+		events: [
+			{trigger: "tick", type: "crystalDrain", power: -0.025, inheritLinked: true},
+			{trigger: "struggle", type: "crystalPunish"},
+			{trigger: "postRemoval", type: "replaceItem", requireFlag: "Struggle", list: ["CrystalGagNecklace"], keepLock: true, power: 1, msg: "KDGagNecklaceOn"}
+		],
+		factionFilters: {
+			Ball: {color: "Highlight", override: true},
+		},
+		Group: "ItemMouth", power: 7, weight: 0,
+
+		escapeChance: {"Struggle": 0.15, "Cut": 0.1, "Remove": 0.1, "Pick": 0.35},
+		limitChance: {"Struggle": 0.2, "Cut": 0.12},
+		DefaultLock: "Crystal",
+		maxwill: 0.6, enemyTags: {"crystalRestraints" : 5, crystalGag: 100},
+		playerTags: {"posElements": -1, "elementsAnger": 1, "elementsRage": 1},
+		minLevel: 4, allFloors: true,
+		shrine: ["Crystal", "Elements", "BallGags", "Gags"]},
+
 
 	{inventory: true, name: "CrystalArmbinder", inaccessible: true, factionColor: [[0]], Asset: "SeamlessLatexArmbinder", strictness: 0.1,
 		LinkableBy: [...KDArmbinderLink], Color: ["#499ed6"], Group: "ItemArms", bindarms: true, bindhands: 1.0, power: 7, weight: 0,
@@ -1700,12 +1721,13 @@ const KinkyDungeonRestraints: restraint[] = [
 			Binder: {color: "DarkNeutral", override: true},
 		},
 		events: [
-			{trigger: "tick", type: "crystalDrain", power: -0.01, inheritLinked: true},
+			{trigger: "tick", type: "crystalDrain", power: -0.025, inheritLinked: true},
 			{trigger: "struggle", type: "crystalPunish"},
 		],
 		escapeChance: {"Struggle": 0.15, "Cut": 0.15, "Remove": 0.1, "Pick": 0.35},
 		limitChance: {"Struggle": 0.2, "Cut": 0.1, "Remove": 0.45, "Unlock": 0.2},
-		maxwill: 0.35, enemyTags: {"crystalRestraints" : 5, "crystalBinder": 100}, playerTags: {"posElements": -1, "elementsAnger": 1, "elementsRage": 1},
+		maxwill: 0.35, enemyTags: {"crystalRestraints" : 5, "crystalBinder": 100},
+		playerTags: {"posElements": -1, "elementsAnger": 1, "elementsRage": 1},
 		minLevel: 0, allFloors: true, shrine: ["Crystal", "Leather", "Elements", "Armbinders", "Block_ItemHands"]},
 
 
@@ -4813,6 +4835,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		]
 	},
 
+
+
 	{unlimited: true, removePrison: true, name: "IceArms", debris: "Ice", sfx: "Freeze", Asset: "Ribbons", LinkableBy: ["Armbinders", "Wrapping", "Encase",], Type: "Heavy", Color: "#5DA9E5", Group: "ItemArms", bindarms: true, power: 4, weight: 0, magic: true, escapeChance: {"Struggle": 0.15, "Cut": 0.05, "Remove": 0}, enemyTags: {"iceRestraints":4}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, allFloors: true, shrine: ["Ties", "Ice", "Elements"],
 		Model: "RibbonBoxtie2",
 		Filters: {
@@ -4854,6 +4878,24 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "tick", type: "iceDrain", power: -0.025, inheritLinked: true},
 			{trigger: "tick", type: "iceMelt", power: 0.1, count: 8, inheritLinked: true},
 			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.2, subMult: 0.5, count: 8, inheritLinked: true},
+		]},
+
+	{unlimited: true, removePrison: true, name: "IceBallGag", debris: "Ice", gag: 0.35, sfx: "Freeze", Asset: "Ribbons",
+		LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
+		Color: "#5DA9E5", Group: "ItemMouth", power: 6, weight: 0, magic: true,
+		escapeChance: {"Struggle": -0.05, "Cut": -0.05, "Remove": 0},
+		enemyTags: {"iceRestraints":4}, playerTags: {"ItemMouthFull":-2}, minLevel: 4, allFloors: true,
+		Model: "SmoothLargeBallGag",
+		quickBindCondition: "BallGag", quickBindMult: 0.5,
+		Filters: {
+			Ball: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.7833333333333334,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":0.6833333333333333,"blue":2.8499999999999996,"alpha":1},
+			Strap: {"gamma":1.6666666666666665,"saturation":0.16666666666666666,"contrast":1.7833333333333334,"brightness":3.016666666666667,"red":0.3166666666666667,"green":0.6833333333333333,"blue":2.8499999999999996,"alpha":1},
+		},
+		shrine: ["BallGags", "Elements", "Ice", "Gags"],
+		maxwill: 0.6, events: [
+			{trigger: "tick", type: "iceDrain", power: -0.015, inheritLinked: true},
+			{trigger: "tick", type: "iceMelt", power: 0.1, count: 35, inheritLinked: true},
+			{trigger: "afterPlayerDamage", type: "iceMelt", mult: 1.2, subMult: 0.5, count: 35, inheritLinked: true},
 		]},
 
 	{renderWhenLinked: [...KDBeltsRender], removePrison: true, name: "CableArms", debris: "Chains", sfx: "FutureLock", Asset: "NylonRope", changeRenderType: {"ArmBind": "WristElbowHarnessTie"},
@@ -6248,7 +6290,27 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "postApply", type: "requireNoGags"},
 		],
-		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars", "GagNecklance"]},
+		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars", "GagNecklace"]},
+	{
+		name: "CrystalGagNecklace", accessible: true, harness: true,
+		Group: "ItemNeck",
+		power: 1, weight: 0,
+		escapeChance: {"Struggle": -0.08, "Cut": 0.1, "Remove": 0.2, "Pick": 0.5},
+		limitChance: {"Struggle": 0.1, "Cut": 0.12},
+		Model: "CrystalGagNecklace",
+		necklaceGagType: "CrystalBallGag",
+		value: 20,
+		tightType: "Secure",
+		LinkAll: true, AlwaysLinkable: true, noDupe: true,
+		factionFilters: {
+			Ball: {color: "Highlight", override: false},
+			Strap: {color: "DarkNeutral", override: true},
+		},
+		events: [
+			{trigger: "tick", type: "crystalDrain", power: -0.005, inheritLinked: true},
+			{trigger: "postApply", type: "requireNoGags"},
+		],
+		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars", "GagNecklace"]},
 	{inventory: true, name: "SarielPanties", unlimited: true, debris: "Fabric", Asset: "ClothStuffing", LinkableBy: [...KDStuffingLink], Color: "Default", Group: "ItemMouth", power: -1, weight: 0, gag: 0.1,
 		value: 1000,
 		alwaysKeep: true, showInQuickInv: true, good: true,
@@ -6966,7 +7028,7 @@ KDAddCuffVariants(
 		DefaultLock: "Crystal",
 	},
 	[
-		{trigger: "tick", type: "crystalDrain", power: -0.01, inheritLinked: true},
+		{trigger: "tick", type: "crystalDrain", power: -0.025, inheritLinked: true},
 		{trigger: "struggle", type: "crystalPunish"},
 	],
 	{
