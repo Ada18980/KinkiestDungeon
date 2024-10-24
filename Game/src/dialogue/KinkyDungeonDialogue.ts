@@ -2009,8 +2009,19 @@ function KDYesNoBasic (
 	Ally:           boolean = false,
 	Flags:          { name: string, duration: number, floors?: number }[] = [],
 	CurseList:      string = "", // Overrides Lock
+	HexList:      	string = "",
+	EnchantList:    string = "",
+	hexlevelmin: number = 0,
+	hexlevelmax: number = 10,
+	enchantlevelmin: number = 0,
+	enchantlevelmax: number = 10,
+
+
+
 ): KinkyDialogue
 {
+
+
 	return KDYesNoTemplate(
 		(refused) => { // Setup function. This is run when you click Yes or No in the start of the dialogue
 			for (let f of Flags) {
@@ -2099,7 +2110,16 @@ function KDYesNoBasic (
 						1000));
 
 			}
-			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+			if (HexList || EnchantList) {
+				DialogueAddCursedEnchantedHexed(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r),
+				enemy,
+				curse, HexList, EnchantList,
+				hexlevelmin, hexlevelmax,
+			enchantlevelmin, enchantlevelmax);
+			} else
+				KinkyDungeonAddRestraintIfWeaker(
+					KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r),
+					((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
 				curse);
 			KDAddOffer(1);
 			let num = count;
@@ -2122,9 +2142,18 @@ function KDYesNoBasic (
 					{
 						allowLowPower: true
 					});
-				if (r)
-					KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
-				curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, curse);
+				if (r) {
+					if (HexList || EnchantList) {
+						DialogueAddCursedEnchantedHexed(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r),
+						enemy,
+						curse, HexList, EnchantList,
+						hexlevelmin, hexlevelmax,
+					enchantlevelmin, enchantlevelmax);
+					} else
+						KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
+					curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, curse);
+
+				}
 			}
 			return false;
 		},(refused) => { // No function. This happens when the user refuses.
@@ -2163,6 +2192,13 @@ function KDYesNoBasic (
 								1000));
 
 					}
+					if (HexList || EnchantList) {
+						DialogueAddCursedEnchantedHexed(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r),
+						enemy,
+						curse, HexList, EnchantList,
+						hexlevelmin, hexlevelmax,
+					enchantlevelmin, enchantlevelmax);
+					} else
 					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r), ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
 					curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, curse);
 					KDAddOffer(1);
@@ -2184,11 +2220,19 @@ function KDYesNoBasic (
 							{
 								allowLowPower: true
 							});
-						if (r)
+						if (r) {
+							if (HexList || EnchantList) {
+								DialogueAddCursedEnchantedHexed(KinkyDungeonGetRestraintByName(KDGameData.CurrentDialogMsgData.Data_r),
+								enemy,
+								curse, HexList, EnchantList,
+								hexlevelmin, hexlevelmax,
+							enchantlevelmin, enchantlevelmax);
+							} else
 							KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true,
-						curse ? undefined : Lock, true, false, undefined,
-						KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
-						curse);
+							curse ? undefined : Lock, true, false, undefined,
+							KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+							curse);
+						}
 					}
 				} else {
 					KDIncreaseOfferFatigue(10);
@@ -2497,4 +2541,79 @@ function KDGetShopCost(enemy: entity, sell: boolean): number {
 function KDAggroMapFaction() {
 	if (KDMapData.JailFaction && KDMapData.JailFaction[0])
 		KinkyDungeonAggroFaction(KDMapData.JailFaction[0]);
+}
+
+
+function DialogueAddCursedEnchantedHexed(
+	restraint: restraint,
+	enemy?: entity,
+	Curse?: string,
+	HexList?: string,
+	EnchantList?: string,
+	hexlevelmin: number = 0,
+	hexlevelmax: number = 10,
+	enchantlevelmin: number = 0,
+	enchantlevelmax: number = 10,
+) {
+
+	let unlockcurse = null;
+	let hexVariant = "";
+	let enchantVariant = "";
+	let enchant_extra = [];
+	let hex_extra = [];
+	let enchants = 1;
+	let curses = 1;
+	if (HexList) {
+		while (curses > 0) {
+			let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted(HexList, restraint.name,
+				false, hexlevelmin, hexlevelmax, [hexVariant, ...hex_extra]));
+			if (!hexVariant) {
+				hexVariant = curs;
+			} else {
+				hex_extra.push(curs);
+			}
+			curses -= 1;
+		}
+	}
+	if (EnchantList) {
+		while (enchants > 0) {
+			let ench = KDGetByWeight(
+				KinkyDungeonGetEnchantmentsByListWeighted(EnchantList, ModifierEnum.restraint,
+					restraint.name, false, enchantlevelmin, enchantlevelmax,
+					[enchantVariant, ...enchant_extra])
+			);
+			if (!enchantVariant) {
+				enchantVariant = ench;
+			} else {
+				enchant_extra.push(ench);
+			}
+			enchants -= 1;
+		}
+	}
+	if (Curse) {
+		unlockcurse = Curse;
+	}
+	if (hexVariant || enchantVariant) {
+		let events: KinkyDungeonEvent[] = JSON.parse(JSON.stringify(KDRestraint({name: restraint.name}).events || []));
+		let variant: KDRestraintVariant = {
+			template: restraint.name,
+			events: events,
+		};
+		if (hexVariant) {
+			events.push(...KDEventHexModular[hexVariant].events({variant: variant}));
+		}
+		for (let c of hex_extra) {
+			events.push(...KDEventHexModular[c].events({variant: variant}));
+		}
+		if (enchantVariant) {
+			events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.restraint].events(restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
+		}
+		for (let e of enchant_extra) {
+			events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
+		}
+
+		KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false,
+			(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined), true, unlockcurse, enemy, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+
+	}
 }
