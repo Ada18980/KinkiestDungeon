@@ -4068,6 +4068,7 @@ The Mummy collapses and her body vanishes.
 木乃伊倒下了，她的身体消失了。
 The Mummy conjures a mystic wrapping! (+RestraintAdded)
 木乃伊变出了神秘的包层！  ( +RestraintAdded )
+### The Mummy conjures a magical lock upon you! (DamageTaken)
 The Mummy punishes you with a blow from her staff! (DamageTaken)
 木乃伊用她的法杖惩罚了你！  ( DamageTaken )
 
@@ -7638,6 +7639,9 @@ There's no way to remove it without breaking it off.
 如果不将其打碎，就无法将其移除。
 Ice (Mouth)
 冰 ( 嘴 )
+### Ice Ball Gag (Mouth)
+### A cold sphere of magic ice lodged firmly in your mouth.
+### The work of a kinky elemental. It will melt! Eventually.
 Ice (Body)
 冰 ( 身体 )
 Ice (Legs)
@@ -8635,8 +8639,7 @@ Calling upon chaotic energies, your willpower is assaulted in exchange for power
 
 Way of Pleasure
 快乐之道
-You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
-你选择了绝对快乐的道路。高潮后，你会恢复 25 点魔力，如果你有足够的意志力，则将相同数量的魔力恢复到魔力池中。阻碍纪律之道。
+### You have chosen the path of absolute pleasure. After letting go of yourself, you restore 50 mana, which can refill the mana pool if you have spare willpower. Blocks Way of Discipline.
 
 Intense Power
 强劲动力
@@ -13185,8 +13188,8 @@ Forming blockade.
 ### capture([CITIZEN]);
 ### defend([POINT]);
 
-### Hyah, SPL!
-### No! Not like that!
+### Behold my creation! SPL!
+### No! Not like this!
 Looks like I'm up to no good... better stop me!
 看来我要做坏事了…… 最好阻止我！
 Careful where you point that thing!
@@ -26101,6 +26104,15 @@ A growth of crystals fusing your arms together. Chaotic energies radiate in all 
 Crystals are tough but not unbreakable.
 水晶很坚硬，但并非牢不可破。
 
+### Crystal Ball Gag
+### A growth of crystals inside your mouth. It emits a strange, pleasurable sensation.
+
+### Crystal Gag Necklace
+### An arousing accessory made of solid crystal!
+### Simply popping it out of your mouth isn't enough to negate its effects entirely~
+
+
+
 The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
 这把锁被忏悔封印保护着。若要解锁它，你必须支付 1 法术点。
 The restraint won't budge.
@@ -27129,3 +27141,70 @@ ENMY 解开了 ITMN 的锁!
 ### Crystal Storm
 
 ### Shadow Walk
+
+### Your ITMN1 inflates inside your mouth to become a ITMN2!
+### Bigger Ball Gags
+### Smaller ball gags are replaced by their larger versions.
+### Screen effect when letting go
+### Screen flash when distracted
+
+
+### Essentia Aliquam
+### Aliquam Orbis
+### Potio Requiem
+### Ultimate Glue no. 91
+### Slime Encapsulation
+### Nature Bolt
+### Wind Blast
+### Judgement Bolt
+### Flame Bolt
+### Electrification
+### Dazzle
+### Charming Orb
+### Freezing Orb
+### Hairpin
+### Heavy Ordnance
+### Entangle
+### Crystal Bind
+### Blessed Orb
+### Rubberization Protocol
+### Latex Encapsulation
+### Red Slime Experiment
+### Encasement Protocol
+### Homing Missile
+### Electrical Discharge
+### Gravitation
+### Shadow Teleportation
+### Ice Blast
+### Poison Blast
+### Forbidden Rope
+### Enchanted Arrow
+### Flash
+### Crystal Barrage
+### Shadow Bolt
+### Obsidian Bolt
+### Shadow Grasp
+### Bound by Fate
+### Conjure Lock
+### Magical Rope
+### Hex
+### Rubber Projector
+### Enhance Ropes
+### Enchant Ropes
+### Icebolt
+### Bubble Burst
+### Electric Orb
+### Chain Bolt
+### Skeleton Minion
+### Skeleton Minions
+### Flummoxing Orb
+### Crystallize
+### Capture Device
+### Sedative
+### Poison Dart
+### Bear Trap
+### Charming Orbs
+### Seal of the 5th Era
+### Taunt
+### Magical Missile
+### Cursing Circle

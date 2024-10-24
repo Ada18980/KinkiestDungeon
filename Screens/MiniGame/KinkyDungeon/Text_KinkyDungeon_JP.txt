@@ -4110,6 +4110,7 @@ The Mummy collapses and her body vanishes.
 バスト教の神官は倒れ、消え去った。
 The Mummy conjures a mystic wrapping! (+RestraintAdded)
 バスト教の神官は奇妙な包帯を召喚した！ (+RestraintAdded)
+### The Mummy conjures a magical lock upon you! (DamageTaken)
 The Mummy punishes you with a blow from her staff! (DamageTaken)
 バスト教の神官が杖で叩いてきた！ (DamageTaken)
 
@@ -7808,6 +7809,9 @@ There's no way to remove it without breaking it off.
 抜け出すには壊すしかない。
 Ice (Mouth)
 氷（口）
+### Ice Ball Gag (Mouth)
+### A cold sphere of magic ice lodged firmly in your mouth.
+### The work of a kinky elemental. It will melt! Eventually.
 Ice (Body)
 氷（身体）
 Ice (Legs)
@@ -8843,8 +8847,7 @@ Calling upon chaotic energies, your willpower is assaulted in exchange for power
 
 Way of Pleasure
 快楽の道
-You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
-欲望に素直になった。絶頂後、マナを25回復し、マナプールを気力分回復する。このスキルを習得した場合、「鍛錬の道」を習得することができなくなる。
+### You have chosen the path of absolute pleasure. After letting go of yourself, you restore 50 mana, which can refill the mana pool if you have spare willpower. Blocks Way of Discipline.
 
 Intense Power
 強烈な解放
@@ -13668,10 +13671,8 @@ capture([CITIZEN]);
 defend([POINT]);
 警備:([POINT]);
 
-Hyah, SPL!
-ヒャッハー！SPL！
-No! Not like that!
-あああ！違う違う！
+### Behold my creation! SPL!
+### No! Not like this!
 Looks like I'm up to no good... better stop me!
 良からぬ考えが浮かんできたな……止めるなら今のうちだぞ。
 Careful where you point that thing!
@@ -28115,6 +28116,15 @@ A growth of crystals fusing your arms together. Chaotic energies radiate in all 
 Crystals are tough but not unbreakable.
 クリスタルは硬いが、壊せないほどではない。
 
+### Crystal Ball Gag
+### A growth of crystals inside your mouth. It emits a strange, pleasurable sensation.
+
+### Crystal Gag Necklace
+### An arousing accessory made of solid crystal!
+### Simply popping it out of your mouth isn't enough to negate its effects entirely~
+
+
+
 The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
 錠には悔恨の封印がなされている。1のスキルポイントを捧げなければ封印は解けない。
 The restraint won't budge.
@@ -29247,3 +29257,70 @@ Crystal Storm
 クリスタルストーム
 
 ### Shadow Walk
+
+### Your ITMN1 inflates inside your mouth to become a ITMN2!
+### Bigger Ball Gags
+### Smaller ball gags are replaced by their larger versions.
+### Screen effect when letting go
+### Screen flash when distracted
+
+
+### Essentia Aliquam
+### Aliquam Orbis
+### Potio Requiem
+### Ultimate Glue no. 91
+### Slime Encapsulation
+### Nature Bolt
+### Wind Blast
+### Judgement Bolt
+### Flame Bolt
+### Electrification
+### Dazzle
+### Charming Orb
+### Freezing Orb
+### Hairpin
+### Heavy Ordnance
+### Entangle
+### Crystal Bind
+### Blessed Orb
+### Rubberization Protocol
+### Latex Encapsulation
+### Red Slime Experiment
+### Encasement Protocol
+### Homing Missile
+### Electrical Discharge
+### Gravitation
+### Shadow Teleportation
+### Ice Blast
+### Poison Blast
+### Forbidden Rope
+### Enchanted Arrow
+### Flash
+### Crystal Barrage
+### Shadow Bolt
+### Obsidian Bolt
+### Shadow Grasp
+### Bound by Fate
+### Conjure Lock
+### Magical Rope
+### Hex
+### Rubber Projector
+### Enhance Ropes
+### Enchant Ropes
+### Icebolt
+### Bubble Burst
+### Electric Orb
+### Chain Bolt
+### Skeleton Minion
+### Skeleton Minions
+### Flummoxing Orb
+### Crystallize
+### Capture Device
+### Sedative
+### Poison Dart
+### Bear Trap
+### Charming Orbs
+### Seal of the 5th Era
+### Taunt
+### Magical Missile
+### Cursing Circle

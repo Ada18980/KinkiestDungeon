@@ -3991,6 +3991,7 @@ The Mummy collapses and her body vanishes.
 Мумия падает, и ее тело исчезает.
 The Mummy conjures a mystic wrapping! (+RestraintAdded)
 Мумия создает мистические ленты! (+RestraintAdded)
+### The Mummy conjures a magical lock upon you! (DamageTaken)
 The Mummy punishes you with a blow from her staff! (DamageTaken)
 Мумия наказывает вас ударом своего посоха! (DamageTaken)
 
@@ -7568,6 +7569,9 @@ There's no way to remove it without breaking it off.
 Нет никакого способа снять их, не разломав.
 Ice (Mouth)
 Лёд (Рот)
+### Ice Ball Gag (Mouth)
+### A cold sphere of magic ice lodged firmly in your mouth.
+### The work of a kinky elemental. It will melt! Eventually.
 Ice (Body)
 Лёд (Тело)
 Ice (Legs)
@@ -8575,8 +8579,7 @@ Calling upon chaotic energies, your willpower is assaulted in exchange for power
 
 Way of Pleasure
 Путь удовольствия
-You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
-Вы выбрали путь абсолютного удовольствия. Доводя себя до оргазма, вы восстанавливаете 25 единиц маны, плюс восстанавливаете столько же в резерве маны, если у вас есть запас силы воли. Блокирует Путь Самоконтроля.
+### You have chosen the path of absolute pleasure. After letting go of yourself, you restore 50 mana, which can refill the mana pool if you have spare willpower. Blocks Way of Discipline.
 
 Intense Power
 Насыщение силой
@@ -13271,8 +13274,8 @@ Forming blockade.
 ### capture([CITIZEN]);
 ### defend([POINT]);
 
-### Hyah, SPL!
-### No! Not like that!
+### Behold my creation! SPL!
+### No! Not like this!
 Looks like I'm up to no good... better stop me!
 Похоже, я замышляю что-то нехорошее... Лучше останови меня!
 Careful where you point that thing!
@@ -26842,6 +26845,15 @@ A growth of crystals fusing your arms together. Chaotic energies radiate in all 
 Crystals are tough but not unbreakable.
 Кристаллы прочные, но неразрушимые.
 
+### Crystal Ball Gag
+### A growth of crystals inside your mouth. It emits a strange, pleasurable sensation.
+
+### Crystal Gag Necklace
+### An arousing accessory made of solid crystal!
+### Simply popping it out of your mouth isn't enough to negate its effects entirely~
+
+
+
 The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
 Замок защищен печатью раскаяния. Чтобы разблокировать его, вы должны заплатить 1 очко заклинания.
 The restraint won't budge.
@@ -27538,3 +27550,70 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Crystal Storm
 
 ### Shadow Walk
+
+### Your ITMN1 inflates inside your mouth to become a ITMN2!
+### Bigger Ball Gags
+### Smaller ball gags are replaced by their larger versions.
+### Screen effect when letting go
+### Screen flash when distracted
+
+
+### Essentia Aliquam
+### Aliquam Orbis
+### Potio Requiem
+### Ultimate Glue no. 91
+### Slime Encapsulation
+### Nature Bolt
+### Wind Blast
+### Judgement Bolt
+### Flame Bolt
+### Electrification
+### Dazzle
+### Charming Orb
+### Freezing Orb
+### Hairpin
+### Heavy Ordnance
+### Entangle
+### Crystal Bind
+### Blessed Orb
+### Rubberization Protocol
+### Latex Encapsulation
+### Red Slime Experiment
+### Encasement Protocol
+### Homing Missile
+### Electrical Discharge
+### Gravitation
+### Shadow Teleportation
+### Ice Blast
+### Poison Blast
+### Forbidden Rope
+### Enchanted Arrow
+### Flash
+### Crystal Barrage
+### Shadow Bolt
+### Obsidian Bolt
+### Shadow Grasp
+### Bound by Fate
+### Conjure Lock
+### Magical Rope
+### Hex
+### Rubber Projector
+### Enhance Ropes
+### Enchant Ropes
+### Icebolt
+### Bubble Burst
+### Electric Orb
+### Chain Bolt
+### Skeleton Minion
+### Skeleton Minions
+### Flummoxing Orb
+### Crystallize
+### Capture Device
+### Sedative
+### Poison Dart
+### Bear Trap
+### Charming Orbs
+### Seal of the 5th Era
+### Taunt
+### Magical Missile
+### Cursing Circle

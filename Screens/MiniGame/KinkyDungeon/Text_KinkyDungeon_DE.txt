@@ -2265,6 +2265,7 @@
 ### Mummy
 ### The Mummy collapses and her body vanishes.
 ### The Mummy conjures a mystic wrapping! (+RestraintAdded)
+### The Mummy conjures a magical lock upon you! (DamageTaken)
 ### The Mummy punishes you with a blow from her staff! (DamageTaken)
 
 ### Cursed One
@@ -4321,6 +4322,9 @@
 ### Frigid restraints made out of ice.
 ### There's no way to remove it without breaking it off.
 ### Ice (Mouth)
+### Ice Ball Gag (Mouth)
+### A cold sphere of magic ice lodged firmly in your mouth.
+### The work of a kinky elemental. It will melt! Eventually.
 ### Ice (Body)
 ### Ice (Legs)
 
@@ -4891,7 +4895,7 @@
 ### Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool.
 
 ### Way of Pleasure
-### You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline.
+### You have chosen the path of absolute pleasure. After letting go of yourself, you restore 50 mana, which can refill the mana pool if you have spare willpower. Blocks Way of Discipline.
 
 ### Intense Power
 ### After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied.
@@ -7518,8 +7522,8 @@
 ### capture([CITIZEN]);
 ### defend([POINT]);
 
-### Hyah, SPL!
-### No! Not like that!
+### Behold my creation! SPL!
+### No! Not like this!
 ### Looks like I'm up to no good... better stop me!
 ### Careful where you point that thing!
 ### Containment breach!
@@ -16243,6 +16247,15 @@
 ### A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires.
 ### Crystals are tough but not unbreakable.
 
+### Crystal Ball Gag
+### A growth of crystals inside your mouth. It emits a strange, pleasurable sensation.
+
+### Crystal Gag Necklace
+### An arousing accessory made of solid crystal!
+### Simply popping it out of your mouth isn't enough to negate its effects entirely~
+
+
+
 ### The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
 ### The restraint won't budge.
 ### You perform a ritual to unlock the item!
@@ -16914,3 +16927,70 @@
 ### Crystal Storm
 
 ### Shadow Walk
+
+### Your ITMN1 inflates inside your mouth to become a ITMN2!
+### Bigger Ball Gags
+### Smaller ball gags are replaced by their larger versions.
+### Screen effect when letting go
+### Screen flash when distracted
+
+
+### Essentia Aliquam
+### Aliquam Orbis
+### Potio Requiem
+### Ultimate Glue no. 91
+### Slime Encapsulation
+### Nature Bolt
+### Wind Blast
+### Judgement Bolt
+### Flame Bolt
+### Electrification
+### Dazzle
+### Charming Orb
+### Freezing Orb
+### Hairpin
+### Heavy Ordnance
+### Entangle
+### Crystal Bind
+### Blessed Orb
+### Rubberization Protocol
+### Latex Encapsulation
+### Red Slime Experiment
+### Encasement Protocol
+### Homing Missile
+### Electrical Discharge
+### Gravitation
+### Shadow Teleportation
+### Ice Blast
+### Poison Blast
+### Forbidden Rope
+### Enchanted Arrow
+### Flash
+### Crystal Barrage
+### Shadow Bolt
+### Obsidian Bolt
+### Shadow Grasp
+### Bound by Fate
+### Conjure Lock
+### Magical Rope
+### Hex
+### Rubber Projector
+### Enhance Ropes
+### Enchant Ropes
+### Icebolt
+### Bubble Burst
+### Electric Orb
+### Chain Bolt
+### Skeleton Minion
+### Skeleton Minions
+### Flummoxing Orb
+### Crystallize
+### Capture Device
+### Sedative
+### Poison Dart
+### Bear Trap
+### Charming Orbs
+### Seal of the 5th Era
+### Taunt
+### Magical Missile
+### Cursing Circle
