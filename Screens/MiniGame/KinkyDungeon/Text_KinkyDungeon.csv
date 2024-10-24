@@ -2387,6 +2387,7 @@ AttackBanditGrapplerPull,"The bandit grappler hooks you closer!!!"
 NameMummy,Mummy
 KillMummy,"The Mummy collapses and her body vanishes."
 AttackMummyBind,"The Mummy conjures a mystic wrapping! (+RestraintAdded)"
+AttackMummyLock,"The Mummy conjures a magical lock upon you! (DamageTaken)"
 AttackMummy,"The Mummy punishes you with a blow from her staff! (DamageTaken)"
 
 NameMummyCursed,Cursed One
@@ -25497,6 +25498,7 @@ KDToggleOScreenFilter,Screen effect when letting go
 KDToggleDistractScreenFilter,Screen flash when distracted
 
 
+KinkyDungeonSpellWitchRopeBoltLaunchMany,Ropestorm
 KinkyDungeonSpellAmpuleBlue,Essentia Aliquam
 KinkyDungeonSpellLatexBubble,Aliquam Orbis
 KinkyDungeonSpellAmpuleGreen,Potio Requiem
