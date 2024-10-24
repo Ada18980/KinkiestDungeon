@@ -31,6 +31,11 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.49
+- Cursed item offer from enemies now includes a real curse
+- Added more enemy journal entries
+- Fixed the names of many spells not being defined
+
 5.3.48
 - MODDERS: Added "OverCorset", "UpperArmStrapsBack", TightSleeveLeft/Right, and "Apron" layer
 - Added heavy maid knight uniform
