@@ -4445,8 +4445,7 @@ Greedy Ghast
 Fantasma codicioso
 The ghast vanishes... for now
 El ghast desaparece... por ahora
-The moaning spirit gropes your body!!! (DamageTaken)
-¡¡¡El espíritu gimiente palpa tu cuerpo!!! (Daño Recibido)
+### The moaning spirit runs its hands all across your body!!! (DamageTaken)
 
 
 

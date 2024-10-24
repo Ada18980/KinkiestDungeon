@@ -4970,8 +4970,7 @@ Greedy Ghast
 贪婪的恶魂
 The ghast vanishes... for now
 恶魂消失了……暂时
-The moaning spirit gropes your body!!! (DamageTaken)
-呻吟的灵魂摸索着你的身体！！！ ( DamageTaken )
+### The moaning spirit runs its hands all across your body!!! (DamageTaken)
 
 
 

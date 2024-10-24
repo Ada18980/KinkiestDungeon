@@ -5040,8 +5040,7 @@ Greedy Ghast
 貪欲なガスト
 The ghast vanishes... for now
 貪欲なガストはおそらく成仏した……
-The moaning spirit gropes your body!!! (DamageTaken)
-貪欲なガストが体を弄る!!! (DamageTaken)
+### The moaning spirit runs its hands all across your body!!! (DamageTaken)
 
 
 
