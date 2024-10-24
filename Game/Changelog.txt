@@ -31,6 +31,9 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.3.50
+- More sound effects
+
 5.3.49
 - Cursed item offer from enemies now includes a real curse
 - Added more enemy journal entries

@@ -102,6 +102,15 @@ AddModel({
 			Invariant: true,
 			MorphPoses: {MouthNeutral: "_TeethDeep", MouthSurprised: "_Teeth", MouthPout: "_TeethDeep", MouthDistracted: "_Teeth"},
 		},
+		{ Name: "BallTeeth", Layer: "Gag", Pri: 1.1,
+			Sprite: "Ball",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			TieToLayer: "Ball",
+			Poses: {MouthNeutral: true, MouthSurprised: true, MouthPout: true, MouthDistracted: true},
+			MorphPoses: {MouthNeutral: "_TeethDeep", MouthSurprised: "_Teeth", MouthPout: "_TeethDeep", MouthDistracted: "_Teeth"},
+		},
 		{ Name: "Strap", Layer: "GagStraps", Pri: 15,
 			Sprite: "BallStrap",
 			OffsetX: 942,
@@ -1009,6 +1018,41 @@ AddModel(GetModelFashionVersion("GagMetalRiveted", true));
 
 
 AddModel({
+	Name: "GagMetalRivetedStrap",
+	Folder: "GagMetal",
+	Parent: "GagMetal",
+	TopLevel: false,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Metal"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		...GetModelLayers("GagMetalRiveted"),
+		{ Name: "OTNStrap", Layer: "GagFlat", Pri: 30.1,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Strap",
+			TieToLayer: "OTN",
+			NoOverride: true,
+		},
+		{ Name: "OTNStrapRivets", Layer: "GagFlat", Pri: 30.2,
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "StrapRivets",
+			TieToLayer: "OTN",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("GagMetalRivetedStrap", true));
+
+
+AddModel({
 	Name: "SmoothBallGag",
 	Folder: "GagMetal",
 	TopLevel: true,
@@ -1022,6 +1066,15 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
+			MorphPoses: {MouthNeutral: "_TeethDeep", MouthSurprised: "_Teeth", MouthPout: "_TeethDeep", MouthDistracted: "_Teeth"},
+		},
+		{ Name: "BallTeeth", Layer: "Gag", Pri: 1.1,
+			Sprite: "Ball",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+			TieToLayer: "Ball",
+			Poses: {MouthNeutral: true, MouthSurprised: true, MouthPout: true, MouthDistracted: true},
 			MorphPoses: {MouthNeutral: "_TeethDeep", MouthSurprised: "_Teeth", MouthPout: "_TeethDeep", MouthDistracted: "_Teeth"},
 		},
 		{ Name: "Strap", Layer: "GagStraps", Pri: 15,

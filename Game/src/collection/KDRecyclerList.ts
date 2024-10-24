@@ -185,23 +185,23 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		items: [
 
 
-			KDAutoGenRestraintBlueprint("TrapCuffs", "Leather", "", 1.2),
-			KDAutoGenRestraintBlueprint("ThumbCuffsNew", "Leather", "", 0.8),
-			KDAutoGenRestraintBlueprint("HighsecShackles", "Leather", "", 1.5),
-			KDAutoGenRestraintBlueprint("Irish8Cuffs", "Leather", ""),
-			KDAutoGenRestraintBlueprint("TrapLegirons", "Leather", ""),
-			KDAutoGenRestraintBlueprint("LegShackles", "Leather", ""),
-			KDAutoGenRestraintBlueprint("FeetShackles", "Leather", ""),
-			KDAutoGenRestraintBlueprint("AnkleIrish8Cuffs", "Leather", ""),
-			KDAutoGenRestraintBlueprint("ExpBoots", "Leather", ""),
-			KDAutoGenRestraintBlueprint("SteelArmCuffs", "Leather", ""),
+			KDAutoGenRestraintBlueprint("TrapCuffs", "Metal", "", 1.2),
+			KDAutoGenRestraintBlueprint("ThumbCuffsNew", "Metal", "", 0.8),
+			KDAutoGenRestraintBlueprint("HighsecShackles", "Metal", "", 1.5),
+			KDAutoGenRestraintBlueprint("Irish8Cuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("TrapLegirons", "Metal", ""),
+			KDAutoGenRestraintBlueprint("LegShackles", "Metal", ""),
+			KDAutoGenRestraintBlueprint("FeetShackles", "Metal", ""),
+			KDAutoGenRestraintBlueprint("AnkleIrish8Cuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("ExpBoots", "Metal", ""),
+			KDAutoGenRestraintBlueprint("SteelArmCuffs", "Metal", ""),
 
-			KDAutoGenRestraintBlueprint("MithrilCollar", "Leather", "", 1, {
+			KDAutoGenRestraintBlueprint("MithrilCollar", "Metal", "", 1, {
 				Metal: 10,
 			}),
-			KDAutoGenRestraintBlueprint("MithrilArmCuffs", "Leather", ""),
-			KDAutoGenRestraintBlueprint("MithrilLegCuffs", "Leather", ""),
-			KDAutoGenRestraintBlueprint("MithrilAnkleCuffs", "Leather", ""),
+			KDAutoGenRestraintBlueprint("MithrilArmCuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("MithrilLegCuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("MithrilAnkleCuffs", "Metal", ""),
 
 		]
 	},
@@ -210,23 +210,24 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 		prereq: () => {return true;},
 		items: [
 
-			KDAutoGenRestraintBlueprint("BlacksteelArmCuffs", "Leather", ""),
-			KDAutoGenRestraintBlueprint("BlacksteelLegCuffs", "Leather", ""),
-			KDAutoGenRestraintBlueprint("BlacksteelAnkleCuffs", "Leather", ""),
+			KDAutoGenRestraintBlueprint("BlacksteelArmCuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("BlacksteelLegCuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("BlacksteelAnkleCuffs", "Metal", ""),
+			KDAutoGenRestraintBlueprint("BlacksteelMuzzleGag", "Metal", ""),
 
 
-			KDAutoGenRestraintBlueprint("ObsidianCollar", "Leather", "", 1, undefined,
+			KDAutoGenRestraintBlueprint("ObsidianCollar", "Metal", "", 1, undefined,
 				{Rune: 1}, 10
 			),
-			KDAutoGenRestraintBlueprint("ObsidianArmCuffs", "Leather", "", 1, undefined,
+			KDAutoGenRestraintBlueprint("ObsidianArmCuffs", "Metal", "", 1, undefined,
 				{Rune: 1}, 10),
-			KDAutoGenRestraintBlueprint("ObsidianLegCuffs", "Leather", "", 1, undefined,
+			KDAutoGenRestraintBlueprint("ObsidianLegCuffs", "Metal", "", 1, undefined,
 				{Rune: 1}, 10),
-			KDAutoGenRestraintBlueprint("ObsidianAnkleCuffs", "Leather", "", 1, undefined,
+			KDAutoGenRestraintBlueprint("ObsidianAnkleCuffs", "Metal", "", 1, undefined,
 				{Rune: 1}, 10),
 
 
-			KDAutoGenRestraintBlueprint("SteelMuzzleGag", "Leather", ""),
+			KDAutoGenRestraintBlueprint("SteelMuzzleGag", "Metal", ""),
 		]
 	},
 	Chastity: {
