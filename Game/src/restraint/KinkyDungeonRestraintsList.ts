@@ -4885,10 +4885,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		Color: "#5DA9E5", Group: "ItemMouth", power: 6, weight: 0, magic: true,
 		escapeChance: {"Struggle": -0.05, "Cut": -0.05, "Remove": 0},
 		enemyTags: {"iceRestraints":4}, playerTags: {"ItemMouthFull":-2}, minLevel: 4, allFloors: true,
-		Model: "SmoothLargeBallGag",
+		Model: "CrystalBallGagSmooth",
 		quickBindCondition: "BallGag", quickBindMult: 0.5,
 		Filters: {
-			Ball: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.7833333333333334,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":0.6833333333333333,"blue":2.8499999999999996,"alpha":1},
+			Ball: {"gamma":1,"saturation":0.0,"contrast":1.7833333333333334,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":0.6833333333333333,"blue":2.8499999999999996,"alpha":1},
 			Strap: {"gamma":1.6666666666666665,"saturation":0.16666666666666666,"contrast":1.7833333333333334,"brightness":3.016666666666667,"red":0.3166666666666667,"green":0.6833333333333333,"blue":2.8499999999999996,"alpha":1},
 		},
 		shrine: ["BallGags", "Elements", "Ice", "Gags"],

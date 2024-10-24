@@ -5740,7 +5740,7 @@ KinkyDungeonSpellManaRecharge,Arcane Recharge
 KinkyDungeonSpellDescriptionManaRecharge,"Calling upon chaotic energies, your willpower is assaulted in exchange for power. Deals 80 psychic damage to self and drains 10% of your max Willpower to fully restore mana. Does not refill the mana pool."
 
 KinkyDungeonSpellOrgasmMana1,Way of Pleasure
-KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 25 mana, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Discipline."
+KinkyDungeonSpellDescriptionOrgasmMana1,"You have chosen the path of absolute pleasure. After letting go of yourself, you restore 50 mana, which can refill the mana pool if you have spare willpower. Blocks Way of Discipline."
 
 KinkyDungeonSpellOrgasmBuff,Intense Power
 KinkyDungeonSpellDescriptionOrgasmBuff,"After letting go of yourself, you feel an immense surge of power, increasing magic damage by 40% for 8 turns after you regain control, and by 10% while you remain satisfied."
@@ -8754,8 +8754,8 @@ KinkyDungeonRemindJailChaseRobotProgramCommandDefend,"defend([ALLY]);"
 KinkyDungeonRemindJailChaseRobotProgramCommandAssault,"capture([CITIZEN]);"
 KinkyDungeonRemindJailChaseRobotProgramCommandBlock,"defend([POINT]);"
 
-KinkyDungeonRemindJailCastAlchemist,"Hyah, SPL!"
-KinkyDungeonRemindJailMiscastAlchemist,"No! Not like that!"
+KinkyDungeonRemindJailCastAlchemist,"Behold my creation! SPL!"
+KinkyDungeonRemindJailMiscastAlchemist,"No! Not like this!"
 KinkyDungeonRemindJailPlayHelplessAlchemist0,"This is too tight..."
 KinkyDungeonRemindJailPlayHelplessAlchemist1,"You won't get me like this!"
 KinkyDungeonRemindJailPlayHelplessAlchemist2,"I can't get free!"
@@ -25493,3 +25493,109 @@ KinkyDungeonSpellDarkTele,Shadow Walk
 KDPerkGagSizeIncrease,Your ITMN1 inflates inside your mouth to become a ITMN2!
 KinkyDungeonStatBiggerGags,Bigger Ball Gags
 KinkyDungeonStatDescBiggerGags,Smaller ball gags are replaced by their larger versions.
+KDToggleOScreenFilter,Screen effect when letting go
+KDToggleDistractScreenFilter,Screen flash when distracted
+
+
+KinkyDungeonSpellAmpuleBlue,Essentia Aliquam
+KinkyDungeonSpellLatexBubble,Aliquam Orbis
+KinkyDungeonSpellAmpuleGreen,Potio Requiem
+KinkyDungeonSpellAmpuleYellow,Ultimate Glue no. 91
+KinkyDungeonSpellBubbleBurstSlime,Slime Encapsulation
+KinkyDungeonSpellGlueBomb,Glue Bomb
+KinkyDungeonSpellAllyShadowStrike,Shadow Strike
+KinkyDungeonSpellAllyFirebolt,Firebolt
+KinkyDungeonSpellNatureMoteBolt,Nature Bolt
+KinkyDungeonSpellAllyHolyBolt,Holy Bolt
+KinkyDungeonSpellAllyWindBlast,Wind Blast
+KinkyDungeonSpellAllyCrackle,Crackle
+KinkyDungeonSpellCelestialBolt,Judgement Bolt
+KinkyDungeonSpellHeatBolt,Flame Bolt
+KinkyDungeonSpellWitchElectrify,Electrification
+KinkyDungeonSpellEnemyCorona,Dazzle
+KinkyDungeonSpellZombieOrb,Charming Orb
+KinkyDungeonSpellZombieOrbIce,Freezing Orb
+KinkyDungeonSpellHairpin,Hairpin
+KinkyDungeonSpellMirrorImage,Mirror Image
+KinkyDungeonSpellRubberBullets,Rubber Bullets
+KinkyDungeonSpellMinigun,Heavy Ordnance
+KinkyDungeonSpellRestrainingDevice,Restraining Device
+KinkyDungeonSpellCursedArrow,Cursed Arrow
+KinkyDungeonSpellShadowStrike,Shadow Strike
+KinkyDungeonSpellMagicChain,Magic Chain
+KinkyDungeonSpellMagicRope,Magic Rope
+KinkyDungeonSpellMagicBelt,Magic Belt
+KinkyDungeonSpellEntangle,Entangle
+KinkyDungeonSpellWitchSlimeBall,Slime Ball
+KinkyDungeonSpellWitchSlime,Slime Eruption
+KinkyDungeonSpellSoulCrystalBind,Crystal Bind
+KinkyDungeonSpellMummyBolt,Blessed Orb
+KinkyDungeonSpellVineSlimeBall,Slime Ball
+KinkyDungeonSpellAmpuleRed,Rubberization Protocol
+KinkyDungeonSpellBubbleBurstLatex,Latex Encapsulation
+KinkyDungeonSpellRedSlime,Red Slime Experiment
+KinkyDungeonSpellEncaseBoltDrone,Encasement Protocol
+KinkyDungeonSpellEncaseBolt,Encasement Protocol
+KinkyDungeonSpellRubberMissile,Homing Missile
+KinkyDungeonSpellRobotBolt,Energy Bolt
+KinkyDungeonSpellEnemyBlast,Energy Bolt
+KinkyDungeonSpellWolfCrackle,Electrical Discharge
+KinkyDungeonSpellBanditBola,Bola
+KinkyDungeonSpellMinerBomb,Bomb
+KinkyDungeonSpellGravityPullEarth,Gravitation
+KinkyDungeonSpellSporesHappy,Spores
+KinkyDungeonSpellSporesSick,Spores
+KinkyDungeonSpellPoisonBreath,Poison Breath
+KinkyDungeonSpellCrystalBolt,Crystal Bolt
+KinkyDungeonSpellCrystalSlash,Crystal Slash
+KinkyDungeonSpellCrystalBoltSingle,Crystal Bolt
+KinkyDungeonSpellDarkTele,Shadow Teleportation
+KinkyDungeonSpellDragonIceBolt,Ice Blast
+KinkyDungeonSpellEnemyWinterblast,Winterblast
+KinkyDungeonSpellPoisonDragonBlast,Poison Blast
+KinkyDungeonSpellRopeEngulfWeak,Forbidden Rope
+KinkyDungeonSpellWitchRope,Forbidden Rope
+KinkyDungeonSpellWitchBoulder,Rock
+KinkyDungeonSpellElfArrow,Enchanted Arrow
+KinkyDungeonSpellEnemyFlash,Flash
+KinkyDungeonSpellSleepDart,Sleep Dart
+KinkyDungeonSpellCrystalBoltMany,Crystal Barrage
+KinkyDungeonSpellShadowBolt,Shadow Bolt
+KinkyDungeonSpellObsidianBolt,Obsidian Bolt
+KinkyDungeonSpellGravityPull,Gravitation
+KinkyDungeonSpellShadowGraspMulti,Shadow Grasp
+KinkyDungeonSpellBoundByFate,Bound by Fate
+KinkyDungeonSpellCrushingFate,Crushing Fate
+KinkyDungeonSpellLockBullet,Conjure Lock
+KinkyDungeonSpellRopeEngulf,Magical Rope
+KinkyDungeonSpellSarcoHex,Hex
+KinkyDungeonSpellRubberBolt,Rubber Projector
+KinkyDungeonSpellEnemyEnchantRope,Enhance Ropes
+KinkyDungeonSpellSlimePuddle,Slime Blast
+KinkyDungeonSpellEnemyEnchantRope2,Enchant Ropes
+KinkyDungeonSpellWitchIcebolt,Icebolt
+KinkyDungeonSpellWitchWaterBall,Water Ball
+KinkyDungeonSpellBubbleBurst,Bubble Burst
+KinkyDungeonSpellWitchElectricOrb,Electric Orb
+KinkyDungeonSpellWitchChainBolt,Chain Bolt
+KinkyDungeonSpellSummonSkeleton,Skeleton Minion
+KinkyDungeonSpellSummonSkeletons,Skeleton Minions
+KinkyDungeonSpellHighBolt,Flummoxing Orb
+KinkyDungeonSpellSpores,Spores
+KinkyDungeonSpellCrystalPuff,Crystallize
+KinkyDungeonSpellRibbonBurst,Ribbon Burst
+KinkyDungeonSpellNurseBola,Capture Device
+KinkyDungeonSpellNurseSyringe,Sedative
+KinkyDungeonSpellPoisonDagger,Poison Dart
+KinkyDungeonSpellBearTrap,Bear Trap
+KinkyDungeonSpellLustBomb,Lust Bomb
+KinkyDungeonSpellManyOrbs,Charming Orbs
+KinkyDungeonSpellEnemyCM_self,Unlock
+KinkyDungeonSpellFuukaOrbMulti,Seal of the 5th Era
+KinkyDungeonSpellRestrainingBolt,Restraining Bolt
+KinkyDungeonSpellTaunt,Taunt
+KinkyDungeonSpellMagicMissile,Magical Missile
+KinkyDungeonSpellOneBarMissile,One Bar Missile
+KinkyDungeonSpellEnemySteelRainBurst,Steel Rain
+KinkyDungeonSpellCursingCircle,Cursing Circle
+KinkyDungeonSpellCursingCircle2,Cursing Circle

@@ -37,6 +37,11 @@ let KDIntenseFilter = null;
 
 let KDButtonHovering = false;
 
+let KDDistractionFlashTime = 700;
+let KDDistractionFlashStrengthTime = 200;
+let KDDistractionFlashStrength = 0;
+let KDDistractionFlashLastTime = 0;
+
 
 let KDAnimTick = 0;
 let KDAnimTickInterval = 2000;
@@ -2079,7 +2084,7 @@ function KinkyDungeonDrawGame() {
 				Top: 0,
 				Width: 2000,
 				Height: 1000,
-				Color: "#ff5277",
+				Color: "#B200FF",
 				LineWidth: 1,
 				zIndex: 1,
 				alpha: 0.1,
@@ -2111,9 +2116,9 @@ function KinkyDungeonDrawGame() {
 			KDDrawArousalParticles(KDGameData.OrgasmTurns/KinkyDungeonOrgasmTurnsMax, KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax,
 				(KDGameData.OrgasmStage / KinkyDungeonMaxOrgasmStage)
 			);
-		} else if (KinkyDungeonStatDistraction > 1.0) {
-			KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
 		}
+		KDDrawArousalScreenFilter(0, 1000, 2000, KinkyDungeonStatDistraction * 100 / KinkyDungeonStatDistractionMax);
+
 
 		if (KDToggles.VibeHearts) {
 			KDDrawVibeParticles(KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax);
@@ -2164,33 +2169,42 @@ function KDShouldDrawFloaters() {
  * @param ArousalOverride - Override to the existing arousal value
  */
 function KDDrawArousalScreenFilter(_y1: number, _h: number, _Width: number, _ArousalOverride: number, _Color: string = '255, 100, 176', _AlphaBonus: number = 0): void {
-	/*let Progress = (ArousalOverride) ? ArousalOverride : Player.ArousalSettings.Progress;
-	let amplitude = 0.24 * Math.min(1, 2 - 1.5 * Progress/100); // Amplitude of the oscillation
-	let percent = Progress/100.0;
-	let level = Math.min(0.5, percent) + 0.5 * Math.pow(Math.max(0, percent*2 - 1), 4);
-	let oscillation = Math.sin(CommonTime() / 1000 % Math.PI);
-	let alpha = Math.min(1.0, AlphaBonus + 0.35 * level * (0.99 - amplitude + amplitude * oscillation));
 
-	if (Player.ArousalSettings.VFXFilter == "VFXFilterHeavy") {
-		const Grad = MainCanvas.createLinearGradient(0, y1, 0, h);
-		let alphamin = 0;//Math.max(0, alpha / 2 - 0.05);
-		Grad.addColorStop(0, `rgba(${Color}, ${alpha})`);
-		Grad.addColorStop(0.1 + 0.1*percent * (1.0 + 0.3 * oscillation), `rgba(${Color}, ${alphamin})`);
-		Grad.addColorStop(0.5, `rgba(${Color}, ${alphamin/2})`);
-		Grad.addColorStop(0.9 - 0.1*percent * (1.0 + 0.3 * oscillation), `rgba(${Color}, ${alphamin})`);
-		Grad.addColorStop(1, `rgba(${Color}, ${alpha})`);
-		MainCanvas.fillStyle = Grad;
-		MainCanvas.fillRect(0, y1, Width, h);
+
+	if ((KDToggles.OScreenFilter && (
+		KinkyDungeonFlags.get("OrgAfterglow")
+		|| KinkyDungeonFlags.get("OrgDenied")
+		|| KinkyDungeonFlags.get("OrgEdged")
+
+	)) || (
+		KDToggles.DistractScreenFilter
+		&& KDDistractionFlashStrength
+		&& (CommonTime() - KDDistractionFlashLastTime) < (KDDistractionFlashTime + KDDistractionFlashStrength * KDDistractionFlashStrengthTime)
+	)) {
+		let mag = Math.max(0.0,
+			Math.min(1.0,
+				1 - (CommonTime() - KDDistractionFlashLastTime)
+				/ (KDDistractionFlashTime + KDDistractionFlashStrength * KDDistractionFlashStrengthTime)),
+			Math.min(1.0,
+				(
+					KinkyDungeonFlags.get("OrgAfterglow")
+					|| KinkyDungeonFlags.get("OrgDenied")
+					|| KinkyDungeonFlags.get("OrgEdged")
+				)/KDOrgAfterglowTime || 0));
+		FillRectKD(kdcanvas, kdpixisprites, "OrgAfterglowFilter", {
+			Left: 0,
+			Top: 0,
+			Width: 2000,
+			Height: 1000,
+			Color: "#FF00DC",
+			LineWidth: 1,
+			zIndex: 1,
+			alpha: mag * 0.1,
+		});
 	} else {
-		if (Player.ArousalSettings.VFXFilter != "VFXFilterMedium") {
-			alpha = (Progress >= 91) ? 0.25 : 0;
-		} else alpha /= 2;
-		if (alpha > 0)
-			DrawRect(0, y1, Width, h, `rgba(${Color}, ${alpha})`);
-	}*/
+		KDDistractionFlashStrength = 0;
+	}
 
-	if (StandalonePatched)
-		PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 }
 
 function KDCanAttack() {

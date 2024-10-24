@@ -8,6 +8,8 @@ let KDShadowThreshold = 1.5;
 let KDSleepWillFraction = 0.5;
 let KDSleepWillFractionJail = 0.5;
 
+let KDOrgAfterglowTime = 10;
+
 // Ratio of max shield to willpower max
 let KDShieldRatio = 1;
 
@@ -872,6 +874,12 @@ function KinkyDungeonChangeDistraction(Amount: number, NoFloater?: boolean, lowe
 	}
 
 	if (lowerPerc) {
+		if (Amount * lowerPerc > 0) {
+			KDDistractionFlashLastTime = CommonTime();
+			KDDistractionFlashStrength = Math.max(Amount * lowerPerc * 0.15, KDDistractionFlashStrength);
+		}
+
+
 		KinkyDungeonChangeDesire(Amount * lowerPerc, NoFloater);
 		//KinkyDungeonStatDistractionLower += Amount * lowerPerc;
 		//KinkyDungeonStatDistractionLower = Math.min(Math.max(0, KinkyDungeonStatDistractionLower), KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap);
@@ -1405,6 +1413,10 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	KinkyDungeonDifficulty = KinkyDungeonNewGame * 20;
 	//if (KinkyDungeonStatsChoice.get("hardMode")) KinkyDungeonDifficulty += 10;
 	KinkyDungeonTeaseLevel = Math.max(KinkyDungeonTeaseLevel * (1 - KinkyDungeonChastityMult()) + (delta > 0 ? KinkyDungeonTeaseLevelBypass : 0), 0);
+	if (delta > 0) {
+		KDDistractionFlashLastTime = CommonTime();
+		KDDistractionFlashStrength = Math.max(KinkyDungeonTeaseLevel, KDDistractionFlashStrength);
+	}
 	if (KinkyDungeonVibeLevel > 0 || KinkyDungeonTeaseLevel > 0) {
 		KDGameData.OrgasmNextStageTimer = Math.min(KDOrgasmStageTimerMax, KDGameData.OrgasmNextStageTimer + delta);
 		let data = {
@@ -2099,6 +2111,8 @@ function KinkyDungeonDoTryOrgasm(Bonus?: number, Auto?: number) {
 		KinkyDungeonStatBlind = data.stunTime + 2;
 		//KinkyDungeonOrgasmStunTime = 4;
 		KinkyDungeonSetFlag("OrgSuccess", data.stunTime + 3);
+		KinkyDungeonSetFlag("OrgAfterglow", data.stunTime + 3 + KDOrgAfterglowTime);
+
 		KinkyDungeonSetFlag("PlayerOrgasm", data.stunTime);
 		KinkyDungeonSetFlag("nogasm", data.stunTime + Math.floor(KDRandom() * 3));
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);

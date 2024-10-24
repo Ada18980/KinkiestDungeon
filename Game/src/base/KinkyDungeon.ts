@@ -253,6 +253,9 @@ let KDToggles = {
 	AlwaysApplyCharPalette: true,
 	DefaultApplyCharPalette: false,
 	Autoloot: true,
+
+	OScreenFilter: true,
+	DistractScreenFilter: true,
 };
 
 let KDToggleCategories = {

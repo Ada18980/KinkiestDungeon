@@ -197,6 +197,30 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "CrystalBallGagSmooth",
+	Folder: "GagLeather",
+	TopLevel: true,
+	Group: "Mouth",
+	Restraint: true,
+	Categories: ["Restraints","Gags"],
+	AddPose: ["HideMouth", "FaceBigGag", "StuffMouth"],
+	Layers: ToLayerMap([
+		{ Name: "Ball", Layer: "Gag", Pri: 2,
+			Sprite: "CrystalBall",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+		{ Name: "Strap", Layer: "GagStraps", Pri: 13,
+			Sprite: "BigBallStrap",
+			Folder: "GagMetal",
+			OffsetX: 942,
+			OffsetY: 200,
+			Invariant: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "PanelGag",
