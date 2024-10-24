@@ -2963,7 +2963,7 @@ AttackHugHorrorBind,"The monstrous spirit's chains latch on! (+RestraintAdded)"
 
 NameGreedyGhast,Greedy Ghast
 KillGreedyGhast,"The ghast vanishes... for now"
-AttackGreedyGhast,"The moaning spirit gropes your body!!! (DamageTaken)"
+AttackGreedyGhast,"The moaning spirit runs its hands all across your body!!! (DamageTaken)"
 
 NameTickleHandSlave,Tickle Hand
 KillTickleHandSlave,"The hand vanishes!"

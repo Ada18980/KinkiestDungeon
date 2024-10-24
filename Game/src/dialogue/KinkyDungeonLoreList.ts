@@ -198,13 +198,46 @@ KDNewLore(["Enemy", 'grv'], "en.Poltergeist", "Poltergeist",
 	"Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows",
 	undefined, "Enemies/Poltergeist.png|Enemies/GagGeist.png", ['grv'], "Poltergeist"
 );
+KDNewLore(["Enemy", 'cat'], "en.TickleTerror", "Tickle Terror",
+	"Tickle Terror",
+	"Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/TickleTerror.png", ['cat'], "TickleTerror"
+);
+KDNewLore(["Enemy", 'cat'], "en.GreedyGhast", "Greedy Ghast",
+	"Greedy Ghast",
+	"Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/GreedyGhast.png", ['cat'], "GreedyGhast"
+);
+KDNewLore(["Enemy", 'cat'], "en.HugHorror", "Hug Horror",
+	"Hug Horror",
+	"Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/HugHorror.png", ['cat'], "HugHorror"
+);
 
+
+KDNewLore(["Enemy", 'lib'], "en.Witches", "Witches",
+	"The Witches' Coven",
+	"Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/WitchFlame.png|Enemies/WitchWater.png|Enemies/WitchEarth.png|Enemies/WitchShock.png|Enemies/WitchIce.png|Enemies/WitchSlime.png|Enemies/WitchRope.png|Enemies/WitchChain.png", ['lib'], "WitchFlame"
+);
+
+
+KDNewLore(["Enemy", 'lib'], "en.Conjure", "Conjurer",
+	"Master Conjurer",
+	"Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/Frog.png|Enemies/ConjurerTickler.png|EnemiesBound/ConjurerTickler.png|EnemiesBound/Conjurer.png|Enemies/TickleHand.png|Enemies/Book.png", ['lib'], "HugHorror"
+);
 
 
 KDNewLore(["Enemy", 'tmb'], "en.mummy", "Mummy",
 	"Bast Mummy",
 	"Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows",
-	undefined, "Enemies/mummy.png|EnemiesBound/mummy.png", ['tmb'], "Mummy"
+	undefined, "Enemies/Mummy.png|EnemiesBound/Mummy.png", ['tmb'], "Mummy"
+);
+KDNewLore(["Enemy", 'tmb'], "en.meleecleric", "Mummy",
+	"Bast Clerics",
+	"Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows",
+	undefined, "Enemies/MeleeCleric.png|EnemiesBound/Cleric.png|Enemies/MeleeCleric.png|EnemiesBound/Cleric.png", ['tmb'], "Cleric"
 );
 
 
