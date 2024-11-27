@@ -270,10 +270,10 @@ function KDBuildLairs() {
 
 	// Load up the array if theres any that dont actually exist yet
 	let slot = KDGetWorldMapLocation({x: data.mapX, y: data.mapY});
-	if (!slot.lairsToPlace) {
+	if (slot && !slot.lairsToPlace) {
 		slot.lairsToPlace = {};
 	}
-	if (slot.lairsToPlace && slot.lairsToPlace[KDMapData.RoomType]?.length > 0) {
+	if (slot && slot.lairsToPlace && slot.lairsToPlace[KDMapData.RoomType]?.length > 0) {
 		if (!data.LairsToPlace) {
 			data.LairsToPlace = [];
 		}
