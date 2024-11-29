@@ -6108,6 +6108,25 @@ let KinkyDungeonSeed = (Math.random() * 4294967296).toString();
 let KDRandom = sfc32(xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)(), xmur3(KinkyDungeonSeed)());
 
 /**
+ * Generates a random number with a bias towards lower values.
+ *
+ * @returns {number} - A random number [0,1) biased towards lower values.
+ */
+function KDRandomLow() {
+	return Math.pow(KDRandom(), 1.8);
+}
+
+/**
+ * Determines if a random event occurs based on the given chance.
+ *
+ * @param {number} chance - Probability of the event occurring (0 to 1).
+ * @returns {boolean} - True if the event occurs, false otherwise.
+ */
+function KDChance(chance :number) {
+	return KDRandom() < chance;
+}
+
+/**
  * @param {boolean} Native Decides whether or not to use native KDRandom to randomize
  */
 function KDrandomizeSeed(Native: boolean) {
@@ -6419,4 +6438,42 @@ async function RunGenMapCallback() {
 		(() => {
 			KinkyDungeonState = ff();
 		})();
+}
+
+/**
+ * Unjams all jammed NPCs locks based on a given chance.
+ *
+ * @param {number} chance - Probability (0-1) to unjam a lock.
+ */
+function KDMassUnjam(chance: number ) {
+	KDMapData.Entities.forEach(entity => {
+		if (entity.flags && entity.flags.LockJammed == -1 && KDChance(chance)) {
+			entity.flags.LockJammed = undefined;
+		}
+	});
+}
+
+/**
+ * Actions performed for sweat dreams.
+ */
+function KDSweetDreams() {
+	KDMassUnjam(0.5);
+	let r = KinkyDungeonPlayerGetRestraintsWithLocks(Object.keys(KDLocks), true);
+	r.forEach(r => {
+		if (KDChance(0.2)) {
+			KinkyDungeonLock(r, "")
+		}
+	});
+}
+
+/**
+ * Actions performed for nightmares.
+ */
+function KDNightmares() {
+	for (let i = 0; i < KDRandomLow()*5; i++) {
+		KDPlayerEffectRestrain(undefined, 1, ["shadowHands"], "Ghost", false, true, false, false, false);
+	}
+	if (KinkyDungeonStatsChoice.has("Nowhere")) {
+		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 10, true)
+	}
 }

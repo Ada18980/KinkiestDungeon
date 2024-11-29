@@ -505,6 +505,9 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"MapAbsurd": {category: "Map", id: "MapAbsurd", cost: 0, tags: ["start", "mapsize"], blocktags: ["mapsize"]},
 
 	"TrustFall": {category: "Restriction", id: "TrustFall", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
+
+	"SweetDreams":  {category: "Enemies", id: "SweetDreams", cost: 1, block: ["Nightmares"]},
+	"Nightmares":  {category: "Enemies", id: "Nightmares", cost: -1, block: ["SweetDreams"]},
 };
 
 

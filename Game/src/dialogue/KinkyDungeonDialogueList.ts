@@ -986,6 +986,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
 					KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
 					KDChangeMana("player","sleep", "tick", KinkyDungeonStatManaMax, false, 0, false, true);
+					if (KinkyDungeonStatsChoice.has("SweetDreams")) {
+						KDSweetDreams();
+					}
+					if (KinkyDungeonStatsChoice.has("Nightmares")) {
+						KDNightmares();
+					}
+
 					return false;
 				},
 				options: {
