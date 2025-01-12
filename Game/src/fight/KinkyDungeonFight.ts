@@ -3070,14 +3070,14 @@ let KDPrereqs: Record<string, (enemy: entity, e: KinkyDungeonEvent, data: any) =
 			case "melee": return KinkyDungeonMeleeDamageTypes.includes(data.Damage?.type);
 			case "magic": return !KinkyDungeonMeleeDamageTypes.includes(data.Damage?.type);
 		}
-		return data.Damage?.type == 'e.kind';
+		return data.damage?.type == e.kind;
 	},
 	"wepDamageType": (_enemy, e, data) => {
 		switch (e.kind) {
 			case "melee": return KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage?.type);
 			case "magic": return !KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage?.type);
 		}
-		return data.Damage?.type == 'e.kind';
+		return data.damage?.type == e.kind;
 	},
 	"afterAmbush": (enemy, _e, _data) => {
 		return !enemy?.ambushtrigger;
