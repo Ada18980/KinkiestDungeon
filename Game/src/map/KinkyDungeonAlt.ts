@@ -2384,9 +2384,15 @@ function KinkyDungeonCreateWarden(_POI: any, _VisitedRooms: any[], _width: numbe
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "TheWarden1");
 	KDStageBossGenerated = true;
-	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) - 6, KDMapData.StartPosition.y - 8, "WardenArcher"), "imprisoned", -1);
-	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y - 8, "WardenFighter"), "imprisoned", -1);
-	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) + 6, KDMapData.StartPosition.y - 8, "WardenMage"), "imprisoned", -1);
+	let en = DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) - 6, KDMapData.StartPosition.y - 8, "WardenArcher");
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", -1);
+	en.prisondialogue = "PrisonerJailOther";
+	en = DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y - 8, "WardenFighter");
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", -1);
+	en.prisondialogue = "PrisonerJailOther";
+	en = DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) + 6, KDMapData.StartPosition.y - 8, "WardenMage");
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", -1);
+	en.prisondialogue = "PrisonerJailOther";
 
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x + cavitywidth, y: KDMapData.StartPosition.y};
 

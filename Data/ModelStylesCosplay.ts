@@ -70,6 +70,13 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 		{
 			Item: "WolfEars", Group: "WolfEars", Color: "#ffffff", Lost: false
 		},
+	],"Wolf1b": [
+		{
+			Item: "WolfTail", Group: "WolfTail", Color: "#ffffff", Lost: false
+		},
+		{
+			Item: "WolfEars", Group: "WolfEars", Color: "#ffffff", Lost: false
+		},
 	],
 	"Wolf2": [
 		{
@@ -77,7 +84,17 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 			{"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
 		},
 		{
-			Item: "WolfEars", Group: "WolfEars", Color: "#ffffff", Lost: false, Filters:
+			Item: "WolfEars2", Group: "WolfEars", Color: "#ffffff", Lost: false, Filters:
+			{"Ears":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
+		},
+	],
+	"Wolf2b": [
+		{
+			Item: "WolfTail", Group: "WolfTail", Color: "#ffffff", Lost: false, Filters:
+			{"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
+		},
+		{
+			Item: "WolfEars2", Group: "WolfEars", Color: "#ffffff", Lost: false, Filters:
 			{"Ears":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
 		},
 	],

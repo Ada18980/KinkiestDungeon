@@ -185,6 +185,7 @@ let KinkyDungeonGraphicsQuality = true;
 
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
+// region Toggles
 let KDToggles = {
 	SoundOffWhenMin: true,
 	SpellBook: false,
@@ -351,6 +352,10 @@ let KDToggleCategories = {
 	HideArmorWardrobe: "none",
 };
 
+// endregion
+
+// region Keyboard
+
 let KDDefaultKB = {
 	Down: KinkyDungeonKey[2],
 	DownLeft: KinkyDungeonKey[6],
@@ -427,6 +432,8 @@ let KDDefaultKB = {
 	ZoomIn: KinkyDungeonKeyMap[2],
 };
 
+//endregion
+
 let KDZoomIndex = 4;
 let KDZoomLevels = [6, 4, 2, 0, -1, -2, -3];
 
@@ -471,6 +478,8 @@ let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
 let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 
+
+// region KDGameData
 
 interface KDGameDataBase {
 	SawFlags: Record<string, Record<string, number>>,
@@ -671,10 +680,18 @@ interface KDGameDataBase {
 
 	MaidKnightFloor: number,
 	UseJourneyTarget?: boolean,
+	AutoRelease: {
+		NonNotable: boolean,
+		Escaped: boolean,
+	},
 
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	AutoRelease: {
+		NonNotable: false,
+		Escaped: false,
+	},
 	MaidKnightFloor: 0,
 	SealErasedQuota: 0,
 	SawFlags: {},
@@ -926,6 +943,8 @@ let KDGameDataBase: KDGameDataBase = {
 	IdentifiedObj: {},
 	UseJourneyTarget: false,
 };
+
+// endregion
 
 let KDGameData: KDGameDataBase = Object.assign({}, KDGameDataBase);
 

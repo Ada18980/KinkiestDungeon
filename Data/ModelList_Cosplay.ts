@@ -6,6 +6,75 @@
  */
 
 AddModel({
+	Name: "PointyAntennae",
+	Folder: "Pointy",
+	Parent: "PointyAntennae",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Ears", "Insect", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Insect", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "AnthenaL", Layer: "AnimalEars", Pri: 30,
+			Invariant: true,
+			InheritColor: "Left",
+			OffsetX: 527,
+			OffsetY: 80,
+		},
+		{ Name: "AnthenaR", Layer: "AnimalEars", Pri: 30,
+			Invariant: true,
+			InheritColor: "Right",
+			OffsetX: 527,
+			OffsetY: 80,
+		},
+	])
+});
+AddModel({
+	Name: "PointyHorns",
+	Folder: "Pointy",
+	Parent: "PointyAntennae",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Ears", "Insect", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Insect", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "HornL", Layer: "AnimalEars", Pri: -50,
+			Invariant: true,
+			InheritColor: "Left",
+			NoOverride: true,
+			OffsetX: 527,
+			OffsetY: 80,
+		},
+		{ Name: "HornR", Layer: "AnimalEars", Pri: -50,
+			Invariant: true,
+			InheritColor: "Right",
+			NoOverride: true,
+			OffsetX: 527,
+			OffsetY: 80,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "PointyTail",
+	Folder: "Pointy",
+	Parent: "PointyAntennae",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Tails", "Cosplay"],
+	AddPose: ["Tails", "Insect", "Cosplay"],
+	Layers: ToLayerMap([{
+				Name: "Tail",
+				Layer: "Tail",
+				Pri: 30,
+				Invariant: true,
+				OffsetX: 527,
+				OffsetY: 80,
+			}
+		])
+});
+
+AddModel({
 	Name: "BunnyEars",
 	Folder: "Bunny",
 	Parent: "Bunny",
@@ -52,6 +121,7 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "WolfEars",
 	Folder: "Ears",
@@ -73,6 +143,52 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "WolfEars2",
+	Folder: "Wolfgirl",
+	Parent: "Wolf",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Ears", "Wolf", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Wolf", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "EarLeft", Layer: "AnimalEars", Pri: 9,
+			Invariant: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+		{ Name: "EarRight", Layer: "AnimalEars", Pri: 9,
+			Invariant: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "HairclipDual",
+	Folder: "Wolfgirl",
+	TopLevel: true,
+	Protected: true,
+	Parent: "HairclipDual",
+	Categories: ["Hairstyles", "Accessories", "Hairpins"],
+	Layers: ToLayerMap([
+		{ Name: "HairclipLower", Layer: "HairFront", Pri: 25,
+			NoOverride: true,
+			OffsetX: 942,
+			OffsetY: 50,
+		},
+		{ Name: "HairclipUpper", Layer: "HairFront", Pri: 25,
+			NoOverride: true,
+			OffsetX: 942,
+			OffsetY: 50,
+		},
+	])
+});
+
 AddModel({
 	Name: "FoxEars",
 	Folder: "Ears",

@@ -3784,7 +3784,7 @@ function KDRenderAlternateInventory(selected: KDFilteredInventoryItem, xOffset: 
 			KDConfigRestraintColor = !KDConfigRestraintColor;
 			return true;
 		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185,
-		yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 250, 190, 55, TextGet("KDBack"), "#ffffff", "");
+		yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 0, 190, 55, TextGet("KDBack"), "#ffffff", "");
 		return true;
 	}
 	return false;

@@ -1443,10 +1443,12 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			],
 			manacost: 10, components: ["Verbal"], level:1, type:"inert", power: 0.1, onhit:"", delay: 3, lifetime:1, range: 5.99, damage: "inert"},
 
-		{name: "Wall", prerequisite: "ApprenticePhysics", tags: ["summon", "utility", "defense", "physics"], sfx: "MagicSlash", school: "Conjure",
+		{name: "Wall", prerequisite: "ApprenticePhysics", tags: ["summon", "utility", "defense", "physics"],
+			sfx: "MagicSlash", school: "Conjure",
 			type:"special", special: "Wall",
 			onhit:"", time:8, power: 0, range: 6, size: 1, damage: "",
-			manacost: 3, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, noSprite: true,},
+			manacost: 3, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true,
+			piercing: true, level:1, noSprite: true,},
 		{name: "Quickness", prerequisite: "ApprenticePhysics", tags: ["utility", "offense", "defense", "physics"], sfx: "Teleport", school: "Conjure",
 			manacost: 3, components: ["Legs"], defaultOff: true, level:1, type:"passive", onhit:"", time: 3, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [

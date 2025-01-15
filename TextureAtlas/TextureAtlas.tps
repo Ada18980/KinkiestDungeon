@@ -1808,6 +1808,13 @@
             <key type="filename">../Models/KittyLatex/KittyLatexTail2.png</key>
             <key type="filename">../Models/KittyLatex/KittyLatexTail2Light.png</key>
             <key type="filename">../Models/KittyLatex/KittyLatexTailLight.png</key>
+            <key type="filename">../Models/KittyPet/Blindfold.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldBrow.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldRim.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldSmall.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldSmallStrap.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldStich.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldStrap.png</key>
             <key type="filename">../Models/Labcoat/CapeHogtie.png</key>
             <key type="filename">../Models/Labcoat/CapeKneel.png</key>
             <key type="filename">../Models/Labcoat/CapeSpread.png</key>
@@ -5119,6 +5126,26 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Models/Pointy/Ahoge.png</key>
+            <key type="filename">../Models/Pointy/AnthenaL.png</key>
+            <key type="filename">../Models/Pointy/AnthenaR.png</key>
+            <key type="filename">../Models/Pointy/HornL.png</key>
+            <key type="filename">../Models/Pointy/HornR.png</key>
+            <key type="filename">../Models/Pointy/Tail.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>428,538,855,1075</rect>
+                <key>scale9Paddings</key>
+                <rect>428,538,855,1075</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Models/SMoonlight/BondageHarness.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -5392,6 +5419,27 @@
                 <rect>2,2,5,4</rect>
                 <key>scale9Paddings</key>
                 <rect>2,2,5,4</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Wolfgirl/EarLeft.png</key>
+            <key type="filename">../Models/Wolfgirl/EarRight.png</key>
+            <key type="filename">../Models/Wolfgirl/HairclipLower.png</key>
+            <key type="filename">../Models/Wolfgirl/HairclipUpper.png</key>
+            <key type="filename">../Models/Wolfgirl/MascaraL.png</key>
+            <key type="filename">../Models/Wolfgirl/MascaraR.png</key>
+            <key type="filename">../Models/Wolfgirl/Scar.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>173,220,347,439</rect>
+                <key>scale9Paddings</key>
+                <rect>173,220,347,439</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -3567,6 +3567,25 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 		}
 	},
+	"PrisonerJailOther": { // For boss minions
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			let e = KDDialogueEnemy();
+			if (e) {
+				KDGameData.CurrentDialogMsgData = {};
+				KDGameData.CurrentDialogMsgValue = {};
+			}
+
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+
 	"PrisonerJailOwn": { // For prisoners in the prison level. Doesnt increase rep much, but useful for jailbreak purposes
 		response: "Default",
 		clickFunction: (_gagged, _player) => {

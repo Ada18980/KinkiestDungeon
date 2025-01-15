@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.32"
+KDVersionStr,"5.4.33"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -7866,6 +7866,7 @@ KinkyDungeonTooltipDealsAccuracy,"AMNT% chance to hit you"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
 KDTooltipHP,"HP: "
+KDTooltipShield,"Shield: "
 KDTooltipBinding,"Binding: "
 KDTooltipOpinion0,"Ambivalent"
 KDTooltipOpinion1,"Likes you"
@@ -13302,6 +13303,10 @@ dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
 rPrisonerJailBug,"(The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)"
 dPrisonerJailBug_Unlock,(Unlock her and file a bug report to Ada)
+
+
+rPrisonerJailOther,"(This SPEAKER is a sub, but not YOUR sub!)"
+
 
 rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)"
 rPrisonerJailOwnNoKeys,"(You don't have any keys that work on the lock)"
@@ -26662,3 +26667,9 @@ KDEmpty,Empty Slot
 KDFloor,", Floor AMNT"
 
 KDInventoryActionRecolor,Recolor
+
+KDAutoRelease_NonNotable,"Only collect notable"
+KDAutoRelease_Escaped,"Autorelease escaped"
+
+KDAutoReleased_NonNotable,NME is not notable enough for your collection.
+KDAutoReleased_Escaped,Auto-released NME due to Escape.

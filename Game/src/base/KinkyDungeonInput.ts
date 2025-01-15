@@ -1266,25 +1266,19 @@ function KDProcessInput(type: string, data: any): string {
 		case "tightenNPCRestraint":
 			KDNPCRefreshBondage(data.npc, data.player, false, false);
 			break;
+		case "changeAutorelease":
+			if (!KDGameData.AutoRelease) {
+				KDGameData.AutoRelease = {
+					Escaped: false,
+					NonNotable: false,
+				};
+			}
+			KDGameData.AutoRelease[data.type] = !KDGameData.AutoRelease[data.type];
+			break;
 		case "releaseNPC":
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
-					if (KDCanRelease(parseInt(v))) {
-						KDFreeNPCRestraints(parseInt(v), data.player);
-
-						let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[v + ""].type);
-						let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[v + ""].Faction);
-						if ((KDGetModifiedOpinionID(parseInt(v)) > 0)) rep = -rep; // Positive if they are happy!
-						KinkyDungeonChangeFactionRep(KDGameData.Collection[v + ""].Faction, rep);
-						DisposeEntity(parseInt(v), false, false,
-							KDIsNPCPersistent(parseInt(v))
-							&& KDGetGlobalEntity(parseInt(v))
-							&& (KDGetPersistentNPC(parseInt(v))?.collect && KDIsInPlayerBase(parseInt(v))));
-						let e = KinkyDungeonFindID(parseInt(v));
-						if (e)
-							KDRemoveEntity(e, false, false, true);
-						delete KDCollectionReleaseSelection[v];
-					}
+					KDReleaseNPC(parseInt(v), data.player);
 				}
 			}
 			KDSortCollection();

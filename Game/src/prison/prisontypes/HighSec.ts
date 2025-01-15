@@ -206,7 +206,7 @@ KDPrisonTypes.HighSec = {
 					}
 
 				}
-				KinkyDungeonHandleJailSpawns(delta, true);
+				KinkyDungeonHandleJailSpawns(delta, KDRandom() < 0.9);
 
 
 				let lostTrack = KDLostJailTrackCell(player);

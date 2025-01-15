@@ -19,6 +19,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (KDEnemyHasFlag(enemy, "noHarshPlay")) return 0;
 			if (KDEnemyHasFlag(enemy, "dontChase")) return 0;
 			let mult = hostile ? 3 : 1;
+			if (enemy.Enemy?.Behavior?.leashCondition) {
+				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, _aiData.play))
+					return 0;
+			}
 
 			if (KinkyDungeonFlags.get("LeashToPrison")) mult = hostile ? 0 : 0.1;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true);
@@ -433,6 +437,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		// This is the basic leash to jail mechanic
 		weight: (enemy, _aiData, _allied, hostile, _aggressive) => {
 			//if (KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) return 0;
+			if (enemy.Enemy?.Behavior?.leashCondition) {
+				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, _aiData.play))
+					return 0;
+			}
 			return (hostile
 				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
 				&& ((KinkyDungeonFlags.has("Released"))
@@ -597,6 +605,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		//play: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, aiData, _allied, _hostile, _aggressive) => {
+			if (enemy.Enemy?.Behavior?.leashCondition) {
+				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, aiData.play))
+					return 0;
+			}
 			return (aiData?.playerDist < 6.99
 				&& enemy != KinkyDungeonJailGuard()
 				&& KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")
@@ -1060,6 +1072,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 		forceattack: true,
 		// This is the basic leash to jail mechanic
 		weight: (enemy, _aiData, _allied, hostile, _aggressive) => {
+			if (enemy.Enemy?.Behavior?.leashCondition) {
+				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, _aiData.play))
+					return 0;
+			}
 			return hostile && (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) && (KinkyDungeonFlags.has("Released")
 			&& !KDEnemyHasFlag(enemy, "dontChase") && KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])) ? 200 : 0;
 		},
@@ -1147,6 +1163,10 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (KinkyDungeonGetRestraintItem("ItemDevices")
 				&& KinkyDungeonSlowLevel >= 9 && KDGameData.PrisonerState != 'chase') return 0;
 			if (KDEnemyHasFlag(enemy, "dontChase")) return 0;
+			if (enemy.Enemy?.Behavior?.leashCondition) {
+				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, aiData.play))
+					return 0;
+			}
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true);
 			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) <= 14 ? (hostile ? 120 : (aiData.domMe ? 0 : 40)) : 0;
 		},

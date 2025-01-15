@@ -378,3 +378,20 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "PointyAhoge",
+	Folder: "Pointy",
+	TopLevel: true,
+	Protected: true,
+	Parent: "PointyAntennae",
+	Categories: ["Hairstyles"],
+	Layers: ToLayerMap([
+		{ Name: "Ahoge", Layer: "Ahoge", Pri: 0,
+			HideWhenOverridden: true,
+			HideOverrideLayer: "Hat",
+			OffsetX: 527,
+			OffsetY: 80,
+		},
+	])
+});

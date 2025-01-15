@@ -8,6 +8,8 @@ let KDFocusableTextFields = [
 	"QInvFilter",
 	"MagicFilter",
 	"RenameNPC",
+	"PlayerNameField",
+
 ];
 
 let KDMAXGODDESSQUESTS = 3;
@@ -5167,7 +5169,17 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 				Enemy.hp = 0;
 				KDSetToExpectedBondage(Enemy, 0);
 				KinkyDungeonSetEnemyFlag(Enemy, "cap", noadvance ? 1 : 2);
-				KDAddCollection(Enemy);
+				if (KDDoCollect(Enemy)) {
+					KDAddCollection(Enemy);
+				}
+				else {
+					KDFreeNPCRestraints(Enemy.id, KDPlayer().id);
+					KDReleasePenaltyEntity(Enemy, KDPlayer().id);
+
+					KinkyDungeonSendTextMessage(10, TextGet("KDAutoReleased_NonNotable")
+						.replace("NME", KDGetEnemyTypeName(Enemy)),
+			"#ffffff", 4);
+				}
 				if (KDIsNPCPersistent(Enemy.id)) {
 					KDGetPersistentNPC(Enemy.id).collect = true;
 					KDTPToSummit(Enemy.id);
@@ -5759,7 +5771,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	KinkyDungeonUpdateBullets(delta); //console.log("Bullets Check " + (performance.now() - now));
 	KinkyDungeonUpdateBulletsCollisions(delta, true); //"catchup" phase for explosions!
 
-
+	KinkyDungeonParseExtraWarningTiles(delta); // Add custom warning indicators!
 
 	KDUpdateEffectTiles(delta);
 	KinkyDungeonUpdateTileEffects(delta);

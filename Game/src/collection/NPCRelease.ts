@@ -182,3 +182,37 @@ function KDIsInPlayerBase(id: number) {
 	return (KDIsNPCPersistent(id) && KDGetPersistentNPC(id)?.room == "Summit")
 		|| (KDGameData.Collection[id + ""] && !KDIsNPCPersistent(id));
 }
+
+
+function KDReleasePenalty(id: number, player: number) {
+	let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[id + ""].type);
+	let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[id + ""].Faction);
+	if (rep == 0) return;
+	if ((KDGetModifiedOpinionID(id) > 0)) rep = -rep; // Positive if they are happy!
+	KinkyDungeonChangeFactionRep(KDGameData.Collection[id + ""].Faction, rep);
+}
+
+function KDReleasePenaltyEntity(entity: entity, player: number) {
+	let type = KinkyDungeonGetEnemyByName(entity.Enemy?.name);
+	let rep = -0.05*KDGetEnemyTypeRep(type, KDGetFaction(entity));
+	if (rep == 0) return;
+	if ((KDGetModifiedOpinionID(entity.id) > 0)) rep = -rep; // Positive if they are happy!
+	KinkyDungeonChangeFactionRep(KDGetFaction(entity), rep);
+}
+
+
+function KDReleaseNPC(id: number, player: number) {
+	if (KDCanRelease(id)) {
+		KDFreeNPCRestraints(id, player);
+		KDReleasePenalty(id, player);
+
+		DisposeEntity(id, false, false,
+			KDIsNPCPersistent(id)
+			&& KDGetGlobalEntity(id)
+			&& (KDGetPersistentNPC(id)?.collect && KDIsInPlayerBase(id)));
+		let e = KinkyDungeonFindID(id);
+		if (e)
+			KDRemoveEntity(e, false, false, true);
+		delete KDCollectionReleaseSelection[id];
+	}
+}

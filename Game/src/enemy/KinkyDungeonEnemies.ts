@@ -2248,6 +2248,15 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		});
 	}
 
+	if (enemy.shield > 0) {
+		TooltipList.push({
+			str: TextGet("KDTooltipShield") + Math.round(enemy.shield*10),
+			fg: "#88ffff",
+			bg: "#000000",
+			size: 20,
+			center: true,
+		});
+	}
 	TooltipList.push({
 		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + "/" + Math.round(enemy.Enemy.maxhp * 10),
 		fg: "#ffffff",
@@ -2730,6 +2739,15 @@ function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 		});
 	}
 
+	if (enemy.shield > 0) {
+		TooltipList.push({
+			str: TextGet("KDTooltipShield") + Math.round(enemy.shield*10),
+			fg: "#88ffff",
+			bg: "#000000",
+			size: 24,
+			center: true,
+		});
+	}
 	TooltipList.push({
 		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + "/" + Math.round(enemy.Enemy.maxhp * 10),
 		fg: "#ffffff",

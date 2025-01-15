@@ -21236,6 +21236,12 @@ Apologize profusely!
 
 ### (Unlock her and file a bug report to Ada)
 
+
+
+### (This SPEAKER is a sub, but not YOUR sub!)
+
+
+
 (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
 ( SPEAKER 坐在那里，被你束缚住了。|只有有钥匙的人才能让她出去。)
 
@@ -26112,6 +26118,130 @@ HeavyMaidKnight
 重装女仆骑士
 
 
+### BlondeFront
+
+### BlondeBangs
+
+### BlondeBack
+
+### FangMouth_Double
+
+### HoodCollar
+
+### BigBallTeethFang
+
+### MilitaryJacket_Sleeveless
+
+### MilitaryUniform_SleeveLeft
+
+### MilitaryUniform_SleeveRight
+
+### MilitaryUniform_Sleeves
+
+### MilitaryJacket
+
+### WhiteGloveLeft
+
+### WhiteGloveRight
+
+### WhiteGloves
+
+### UniformShirt_Sleeveless
+
+### UniformShirt_SleeveLeft
+
+### UniformShirt_SleeveRight
+
+### UniformShirt_Sleeves
+
+### UniformShirt
+
+### MilitaryUniform_Hat
+
+### Hat
+
+### HatRim
+
+### HatCap
+
+### HatGloriousInsignia
+
+### HatGloriousInsigniaHS
+
+### MilitaryUniform_Earphones
+
+### Headgear
+
+### HeadgearUnit
+
+### HeadgearEars
+
+### HeadgearEarsInner
+
+### HeadgearBack
+
+### MilitaryUniform_Searchlight
+
+### SearchlightPouch
+
+### Searchlight
+
+### SearchlightBase
+
+### SearchlightLens
+
+### MilitaryUniform_BeltPouch
+
+### BeltPouch
+
+### BeltPouchRim
+
+### MilitaryUniform_Webbing
+
+### Webbing
+
+### WebbingSide
+
+### WebbingHardware
+
+### WebbingName
+
+### WebbingUnderbust
+
+### WebbingUnderbustHardware
+
+### MilitaryUniform_Skirt
+
+### MilitaryUniform_Shoes
+
+### MilitaryUniform_TightsShorts
+
+### MilitaryUniform_SockLeft
+
+### MilitaryUniform_SockRight
+
+### Tights
+
+### MilitaryUniform_Hairpin
+
+### Hairpin
+
+### MilitaryUniform
+
+### ShirtSleeveLeft
+
+### ShirtForeArmLeft
+
+### ShirtSleeveRight
+
+### ShirtForeArmRight
+
+### ShirtShoulderRight
+
+### ShirtDress
+
+### ShirtDressChest
+
 ### RubyNecklace
 
 ### RubyChain
@@ -26191,8 +26321,6 @@ HeavyMaidKnight
 ### FanglessMouth
 
 ### SantaHat
-
-### Hat
 
 ### HatBack
 
@@ -32134,6 +32262,8 @@ Layer Bonus
 图层补偿
 NoDynamicArmor (0 or 1)
 无动态护甲(0或1)
+### AddPose
+
 HideOverridden (0 or 1)
 隐藏覆盖(0或1)
 NoOverride (0 or 1)
@@ -33949,3 +34079,13 @@ Essence Crystal
 ### You cast bondage ASCII glyphs!
 
 ### , Floor AMNT
+
+### Recolor
+
+### Only collect notable
+
+### Autorelease escaped
+
+### NME is not notable enough for your collection.
+
+### Auto-released NME due to Escape.

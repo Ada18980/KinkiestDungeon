@@ -21244,6 +21244,12 @@ Apologize profusely!
 
 ### (Unlock her and file a bug report to Ada)
 
+
+
+### (This SPEAKER is a sub, but not YOUR sub!)
+
+
+
 (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
 (SPEAKER が捕まっている。|拘束を解けば、彼女を連れ出せるだろう。)
 
@@ -26116,6 +26122,130 @@ Gag
 
 ### HeavyMaidKnight
 
+### BlondeFront
+
+### BlondeBangs
+
+### BlondeBack
+
+### FangMouth_Double
+
+### HoodCollar
+
+### BigBallTeethFang
+
+### MilitaryJacket_Sleeveless
+
+### MilitaryUniform_SleeveLeft
+
+### MilitaryUniform_SleeveRight
+
+### MilitaryUniform_Sleeves
+
+### MilitaryJacket
+
+### WhiteGloveLeft
+
+### WhiteGloveRight
+
+### WhiteGloves
+
+### UniformShirt_Sleeveless
+
+### UniformShirt_SleeveLeft
+
+### UniformShirt_SleeveRight
+
+### UniformShirt_Sleeves
+
+### UniformShirt
+
+### MilitaryUniform_Hat
+
+### Hat
+
+### HatRim
+
+### HatCap
+
+### HatGloriousInsignia
+
+### HatGloriousInsigniaHS
+
+### MilitaryUniform_Earphones
+
+### Headgear
+
+### HeadgearUnit
+
+### HeadgearEars
+
+### HeadgearEarsInner
+
+### HeadgearBack
+
+### MilitaryUniform_Searchlight
+
+### SearchlightPouch
+
+### Searchlight
+
+### SearchlightBase
+
+### SearchlightLens
+
+### MilitaryUniform_BeltPouch
+
+### BeltPouch
+
+### BeltPouchRim
+
+### MilitaryUniform_Webbing
+
+### Webbing
+
+### WebbingSide
+
+### WebbingHardware
+
+### WebbingName
+
+### WebbingUnderbust
+
+### WebbingUnderbustHardware
+
+### MilitaryUniform_Skirt
+
+### MilitaryUniform_Shoes
+
+### MilitaryUniform_TightsShorts
+
+### MilitaryUniform_SockLeft
+
+### MilitaryUniform_SockRight
+
+### Tights
+
+### MilitaryUniform_Hairpin
+
+### Hairpin
+
+### MilitaryUniform
+
+### ShirtSleeveLeft
+
+### ShirtForeArmLeft
+
+### ShirtSleeveRight
+
+### ShirtForeArmRight
+
+### ShirtShoulderRight
+
+### ShirtDress
+
+### ShirtDressChest
+
 ### RubyNecklace
 
 ### RubyChain
@@ -26195,8 +26325,6 @@ Gag
 ### FanglessMouth
 
 ### SantaHat
-
-### Hat
 
 ### HatBack
 
@@ -32124,6 +32252,8 @@ You are more likely to succumb to curses.
 
 ### NoDynamicArmor (0 or 1)
 
+### AddPose
+
 ### HideOverridden (0 or 1)
 
 ### NoOverride (0 or 1)
@@ -33923,3 +34053,13 @@ A magical leotard whose power stems directly from the divine. Made from a weave 
 ### You cast bondage ASCII glyphs!
 
 ### , Floor AMNT
+
+### Recolor
+
+### Only collect notable
+
+### Autorelease escaped
+
+### NME is not notable enough for your collection.
+
+### Auto-released NME due to Escape.

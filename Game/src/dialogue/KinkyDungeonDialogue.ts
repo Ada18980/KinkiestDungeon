@@ -1454,7 +1454,8 @@ function KDPrisonerRescue(name: string, faction: string, enemytypes: string[]): 
 				KDRunCreationScript(e, KDGetCurrentLocation());
 				KDGameData.CurrentDialogMsgSpeaker = e.Enemy.name;
 
-				let reinforcementCount = Math.floor(1 + KDRandom() * (KDGameData.PriorJailbreaks ? (Math.min(5, KDGameData.PriorJailbreaks) + 1) : 1));
+				let reinforcementCount = Math.floor((KDRandom() > 0.5 ? 3 : 2)
+					+ KDRandom() * (KDGameData.PriorJailbreaks ? (Math.min(5, KDGameData.PriorJailbreaks) + 1) : 1));
 				KDGameData.PriorJailbreaks += 1;
 				for (let i = 0; i < reinforcementCount; i++) {
 					let pp = KinkyDungeonGetNearbyPoint(door.x, door.y, true, undefined, undefined);

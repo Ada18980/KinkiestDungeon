@@ -5,8 +5,8 @@
 let KDModelStyles: Record<string, Record<string, string[]>> = {
 	Nevermere: {
 		Cosplay: [
-			"Wolf1",
-			"Wolf2",
+			"Wolf1b",
+			"Wolf2b",
 			"Wolf1",
 			"Wolf2",
 			"Wolf1",

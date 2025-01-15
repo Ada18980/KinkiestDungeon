@@ -71,6 +71,13 @@ let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => bo
 		return false;
 			//}
 	},
+	'Portal': (moveX, moveY) => {
+		if (KDTile(moveX, moveY) && KDTile(moveX, moveY).Portal) {
+			KDMovePlayer(moveX, moveY, true, false);
+			KDStartDialog(KDTile(moveX, moveY).Portal, "", true);
+		}
+		return false;
+	},
 	"Furniture": (x, y, dist) => {
 		if ((dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y)) < 1.5) {
 			//if (!KinkyDungeonGetRestraintItem("ItemDevices")) {

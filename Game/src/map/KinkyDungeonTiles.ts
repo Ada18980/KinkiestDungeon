@@ -144,8 +144,11 @@ function KDGetEscapeMethod(_level: number) {
 		return "None";
 	let data = {altType: alt, escapeMethod: KDMapData.EscapeMethod};
 	KinkyDungeonSendEvent("calcEscapeMethod", data);
-	KDMapData.EscapeMethod = data.escapeMethod;
-	return data.escapeMethod;
+
+	if (KinkyDungeonEscapeTypes[data.escapeMethod]) {
+		KDMapData.EscapeMethod = data.escapeMethod;
+		return data.escapeMethod;
+	} else return "None";
 }
 
 function KDGetRandomEscapeMethod(RoomType: string, MapMod: string, Level: number, Faction: string) {
@@ -211,6 +214,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 	// Prune inventory
 	KDPruneInventoryVariants(true, true, true);
 
+	KDTickAutorelease();
 
 	KDExploreStairs(x, y);
 	let toTile = KinkyDungeonMapGet(x, y);

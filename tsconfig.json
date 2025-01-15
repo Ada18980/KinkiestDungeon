@@ -230,6 +230,7 @@
         "Game/src/restraint/KDGenRestraintUniform.ts",
         "Game/src/restraint/KDBindTypeTagLookupList.ts",
         "Game/src/enemy/KDPathConditions.ts",
+        "Game/src/enemy/KDLeashCondition.ts",
         "Game/src/map/KDShop.ts"
     ],
     "compilerOptions": {

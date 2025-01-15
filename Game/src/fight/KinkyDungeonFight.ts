@@ -1950,6 +1950,39 @@ function KinkyDungeonUpdateBulletVisuals(delta: number) {
 		}
 }
 
+let KinkyDungeonExtraWarningTiles = [];
+
+function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = "#ffffff", duration: number = 1, delay: number = 0, x_orig?: number, y_orig?: number) {
+	KinkyDungeonExtraWarningTiles.push({
+		duration: duration,
+		delay: delay,
+		warning: {
+			color: color,
+			scale: 1,
+			x: x,
+			x_orig: (x_orig) ? x_orig : x,
+			y: y,
+			y_orig: (y_orig) ? y_orig : y
+		}
+	})
+}
+
+function KinkyDungeonParseExtraWarningTiles(delta: number) {
+	for (let i = 0; i < KinkyDungeonExtraWarningTiles.length; i++) {
+		if (KinkyDungeonExtraWarningTiles[i].delay > 0) {
+			KinkyDungeonExtraWarningTiles[i].delay -= delta;
+		}
+		else {
+			KDBulletWarnings.push(Object.assign({}, KinkyDungeonExtraWarningTiles[i].warning));
+		}
+		KinkyDungeonExtraWarningTiles[i].duration -= delta;
+		if (KinkyDungeonExtraWarningTiles[i].duration <= 0) {
+			KinkyDungeonExtraWarningTiles.splice(i, 1);
+			i--;
+		}
+	}
+}
+
 let KinkyDungeonCurrentTick = 0;
 
 function KinkyDungeonUpdateBulletsCollisions(delta: number, Catchup?: boolean) {

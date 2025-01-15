@@ -595,6 +595,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"secondhalf":10, "lastthird":14}, floors:KDMapInit(["grv"]), dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}]},
 	{name: "SummonedZombie", bound: "Zombie", style: "Zombie", outfit: "Zombie", playLine: "Zombie", clusterWith: "zombie", tags: KDMapInit(["ignoretiedup", "nocapture", "zombieTrap", "zombie", "melee", "fireweakness", "ribbonRestraints", "meleeweakness", "temporary", "nocapture"]),
 		evasion: -1, ignorechance: 0.33, armor: 1.5, followRange: 1, AI: "hunt", regen: -0.1,
+		Behavior: {
+			leashCondition: "fuukaLeash",
+		},
 		visionRadius: 5, maxhp: 12, minLevel:0, weight:-1000, movePoints: 3, attackPoints: 3, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":10, "zombieTrap": 50, "lastthird":14}, floors:KDMapInit([])},
 	{name: "MageZombie", bound: "MageZombie", style: "Zombie", outfit: "Zombie", playLine: "Zombie", clusterWith: "zombie", tags: KDMapInit(["leashing", "zombie", "ranged", "zombieTrap", "fireweakness", "ribbonRestraints", "meleeweakness", "hunter"]),
@@ -1564,6 +1567,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
+		Behavior: {
+			leashCondition: "dollmakerLeash",
+		},
 		maxblock: 0,
 		maxdodge: 0,
 		stamina: 2,
@@ -1587,6 +1593,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#e7cf1a"},
 		],
+		Behavior: {
+			leashCondition: "dollmakerLeash",
+		},
 		maxblock: 0,
 		maxdodge: 0,
 		stamina: 4,
@@ -5642,6 +5651,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			unlimitedRestraints: true,
 			requiredItems: ["MikoGag", "MikoDress"],
 		},
+		Behavior: {
+			leashCondition: "fuukaLeash",
+		},
 		preferDodge: true,
 		stamina: 4,
 		maxblock: 1,
@@ -5667,6 +5679,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			unlimitedRestraints: true,
 			requiredItems: ["MikoGag", "MikoDress"],
 		},
+		Behavior: {
+			leashCondition: "fuukaLeash",
+		},
+		special: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff7777"},
 			{trigger: "tick", type: "BossAssignFaction", kind: "Fuuka"},
@@ -5741,6 +5757,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		evasion: 0.2, kite: 4.5,
 		faction: "Boss",
 		dontKiteWhenDisabled: true,
+		Behavior: {
+			leashCondition: "wardenLeash",
+		},
 
 		spells: ["RestrainingBolt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
 
@@ -5768,6 +5787,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			"leatherRestraintsHeavy", "painweakness", "iceweakness", "jail", "jailer", "submissive"]), cohesion: 0.9,
 		faction: "Boss",
 		dontKiteWhenDisabled: true,
+		Behavior: {
+			leashCondition: "wardenLeash",
+		},
 
 		spells: ["Taunt"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true, projectileTargeting: true, accuracy: 1.5,
 
@@ -5808,6 +5830,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
 			{trigger: "afterDamageEnemy", type: "FreeWardenPrisoners"},
 		],
+		Behavior: {
+			leashCondition: "wardenLeash",
+		},
 		attackLock: "Purple",
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "PotionMana", weight: 100, amount: 3}]},
@@ -5822,6 +5847,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
+		},
+		Behavior: {
+			leashCondition: "wardenLeash",
 		},
 		preferDodge: true,
 		stamina: 4,
@@ -5844,6 +5872,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		Behavior: {
+			leashCondition: "wardenLeash",
+		},
+		special: true,
 		preferDodge: true,
 		stamina: 4,
 		maxblock: 1,
@@ -5870,6 +5902,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 		RestraintFilter: {
 			unlimitedRestraints: true,
+		},
+		Behavior: {
+			leashCondition: "dollmakerLeash",
 		},
 		maxblock: 3,
 		maxdodge: 1,
@@ -5901,6 +5936,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		Behavior: {
+			leashCondition: "dollmakerLeash",
+		},
 		preferDodge: true,
 		unlockCommandLevel: 3, unlockCommandCD: 14,
 		spells: ["SummonCaptureDrones", "DollConvertMany", "DollBoost", "EnemyCM_self"],
@@ -5927,6 +5965,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		Behavior: {
+			leashCondition: "dollmakerLeash",
+		},
+		special: true,
 		unlockCommandLevel: 3, unlockCommandCD: 14,
 		spells: ["DollConvertMany", "DollBoost", "EnemyCM_self", "ManyCables"],
 		spellCooldownMult: 0.2, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 1.15, noChannel: true,

@@ -39,6 +39,12 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 
 TODO add ability to recolor own restraints via palette
 
+5.4.33
+- Added military uniform
+- Added pointy antennae, ahoge, horns, and tail
+- Added wolfears2
+- Added mascara, scar
+
 5.4.32
 - Add fangmouth, fangmouth_double, and fanglessmouth version
 - Added fang overbite for ball gags

@@ -200,6 +200,47 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "Mascara",
+	Folder: "Wolfgirl",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Makeup","Face"],
+	Layers: ToLayerMap([
+		{ Name: "MascaraL", Layer: "Head", Pri: 5,
+			Invariant: true,
+			HidePoses: ToMap(["EncaseHead"]),
+			NoOverride: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+		{ Name: "MascaraR", Layer: "Head", Pri: 5,
+			Invariant: true,
+			HidePoses: ToMap(["EncaseHead"]),
+			NoOverride: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+	])
+});
+
+AddModel({
+	Name: "Scar",
+	Folder: "Wolfgirl",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Scar","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Scar", Layer: "Head", Pri: 10,
+			Invariant: true,
+			HidePoses: ToMap(["EncaseHead"]),
+			NoOverride: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+	])
+});
+
 
 
 AddModel({

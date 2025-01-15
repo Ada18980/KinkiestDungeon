@@ -633,6 +633,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Wall": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (!en) {
+			if (_miscast) return "Miscast";
 			let tile = KinkyDungeonMapGet(targetX, targetY);
 			let door = (tile == 'D' || tile == 'd');
 			let e = DialogueCreateEnemy(targetX, targetY, "Wall" + (door ? "Door" : ""));
@@ -2221,7 +2222,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (e[0]) {
 					KinkyDungeonDamageEnemy(e[0], debugDamage, false, true, undefined, undefined, KinkyDungeonPlayerEntity, 0.1);
 				}
-			} 
+			}
 		}
 		catch (err) {
 			console.log(err);
@@ -2242,7 +2243,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (e[0]) {
 					KinkyDungeonDamageEnemy(e[0], debugDamage, false, true, undefined, undefined, KinkyDungeonPlayerEntity, 0.1);
 				}
-			} 
+			}
 		}
 		catch (err) {
 			console.log(err);

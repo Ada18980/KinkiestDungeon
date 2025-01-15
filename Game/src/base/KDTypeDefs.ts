@@ -776,6 +776,8 @@ interface alwaysDressModel {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
+	/** Makes them special persistent */
+	special?: boolean,
 	overrideFactionDefeat?: boolean,
 	customDefeat?: string,
 	/** Run when created in some circumstances. NOT when summoned*/
@@ -890,6 +892,8 @@ interface enemy extends KDHasTags {
 
 	/** Behavior tags */
 	Behavior?: {
+		/** Condition for this enemy to try to apply leash */
+		leashCondition?: string,
 		/** This enemy will hold still when near the player */
 		holdStillWhenNear?: boolean,
 		/** If this is true, the intent is that it behaves more as an allied enemy rather than a summon */

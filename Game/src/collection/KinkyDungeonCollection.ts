@@ -998,7 +998,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 	let TF = KDTextField("CollFilter",
 		x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2
-		- 200,
+		,
 		y - KDCollectionSpacing + 20, 400, 45, "text", "", "45");
 	if (TF.Created) {
 		//KDCollFilter = "";
@@ -1008,6 +1008,40 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			KDCollectionIndex = 0;
 		};
 	}
+
+	if (!KDGameData.AutoRelease) {
+		KDGameData.AutoRelease = {
+			Escaped: false,
+			NonNotable: false,
+		};
+	}
+
+	DrawCheckboxKDEx("KDAutoRelease_NonNotable", (_bdata) => {
+		KDSendInput("changeAutorelease", {
+			type: "NonNotable"
+		})
+		return true;
+	}, true,
+	x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 840,
+	y - KDCollectionSpacing + 14, 64, 64,
+	TextGet("KDAutoRelease_NonNotable"), KDGameData.AutoRelease.NonNotable,
+	false, "#ffffff", undefined, {
+		fontSize: 24
+	});
+	DrawCheckboxKDEx("KDAutoRelease_Escaped", (_bdata) => {
+		KDSendInput("changeAutorelease", {
+			type: "Escaped"
+		})
+		return true;
+	}, true,
+	x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 400,
+	y - KDCollectionSpacing + 14, 64, 64,
+	TextGet("KDAutoRelease_Escaped"), KDGameData.AutoRelease.Escaped,
+	false, "#ffffff", undefined, {
+		fontSize: 24
+	});
+
+
 
 	// Collection
 	let guests = [];
@@ -1689,4 +1723,26 @@ function KDPromote(value: KDCollectionEntry) {
 
 function KDIsInSummit() {
 	return KDGameData.RoomType == "Summit";
+}
+
+function KDTickAutorelease() {
+	for (let value of Object.values(KDGameData.Collection)) {
+		if (value.escaped) {
+			KDReleaseNPC(value.id, KDPlayer().id);
+			KinkyDungeonSendTextMessage(10, TextGet("KDAutoReleased_Escaped")
+				.replace("NME", value.name),
+			"#ffffff", 4);
+		}
+	}
+}
+
+function KDDoCollect(entity: entity): boolean {
+	if (KDGameData.AutoRelease?.NonNotable) {
+		let notable = KDIsNPCPersistent(entity.id);
+		if (!notable) {
+			if (KDEnemyRank(entity) >= 4) return true;
+		}
+		return notable;
+	}
+	return true;
 }

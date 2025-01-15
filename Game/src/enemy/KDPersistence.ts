@@ -527,7 +527,7 @@ function KDIsNPCPersistent(id: number): boolean {
 	return KDPersistentNPCs[id] != undefined;
 }
 
-function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, location?: WorldCoord): KDPersistentNPC {
+function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, location?: WorldCoord, special?: boolean): KDPersistentNPC {
 	let addToParty = 0;
 	let addMember: entity = null;
 	if (!KDPersistentNPCs[id] && force) {
@@ -540,7 +540,7 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 				}
 
 			}
-			let entry = {
+			let entry: KDPersistentNPC = {
 				Name: enemy.CustomName || KDGenEnemyName(enemy),
 				id: enemy.id,
 				entity: enemy,
@@ -559,6 +559,7 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 				facestyle: KDGameData.Collection[enemy.id + ""]?.facestyle,
 				cosplaystyle: KDGameData.Collection[enemy.id + ""]?.cosplaystyle,
 			};
+			if (special || enemy.Enemy?.special) entry.special = true;
 			KDPersistentNPCs[enemy.id] = entry;
 			if (addToParty)
 				addMember = enemy;

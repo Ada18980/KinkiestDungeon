@@ -186,7 +186,7 @@ let KDExpressions: Record<string, KDExpression> = {
 		expression: (C, flags) => {
 			return {
 				EyesPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 15) ? "EyesHeart" : "EyesAngry",
-				Eyes2Pose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 15) ? "Eyes2Heart" : "EyesAngry",
+				Eyes2Pose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 15) ? "Eyes2Heart" : "Eyes2Angry",
 				BrowsPose: "BrowsAnnoyed",
 				Brows2Pose: "Brows2Annoyed",
 				BlushPose: "BlushExtreme",

@@ -10468,7 +10468,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				&& KDIsHumanoid(data.target)) {
 				if (!KinkyDungeonIsArmsBound()) {
 					if (KinkyDungeonStatsChoice.get("UnarmedGrope")) { data.attackData.type = "grope"; data.attackData.sfx = "Damage"; }
-					else if (KinkyDungeonStatsChoice.get("UnarmedPain")) data.attackData.type = "pain";
+					else if (KinkyDungeonStatsChoice.get("UnarmedPain")) { data.attackData.type = "pain"; data.attackData.sfx = "Slap" }
 					else if (KinkyDungeonStatsChoice.get("UnarmedTickle")) { data.attackData.type = "tickle"; data.attackData.sfx = "Tickle"; }
 					data.attackData.tease = true;
 				} else KinkyDungeonSendActionMessage(7, TextGet("KDKick"), "#ffaa88", 1, true);
