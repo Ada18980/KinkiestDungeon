@@ -4707,6 +4707,13 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 			if (KinkyDungeonPlayerWeapon != KinkyDungeonPlayerWeaponLastEquipped && KinkyDungeonInventoryGet(KinkyDungeonPlayerWeaponLastEquipped)) {
 				KDSetWeapon(KinkyDungeonPlayerWeaponLastEquipped);
 			}
+			// Reequip offhand if able
+			if (KDGameData.OffhandOld && !KDGameData.Offhand
+				&& KinkyDungeonInventoryGetWeapon(KDGameData.OffhandOld)
+				&& KinkyDungeonCanUseWeapon(false, undefined, KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.OffhandOld)))
+				&& KDCanOffhand(KinkyDungeonInventoryGetWeapon(KDGameData.OffhandOld))) {
+				KDGameData.Offhand = KDGameData.OffhandOld;
+			}
 			return rem;
 		}
 	}
