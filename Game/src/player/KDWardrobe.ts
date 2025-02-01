@@ -2104,7 +2104,9 @@ function KDWardrobeToolsDraw(C: Character) {
 
 	if (KDSelectedModel) {
 		if (!KDSelectedModel.Properties) KDSelectedModel.Properties = {};
-		if (!KDSelectedModel.Properties[KDCurrentLayer])
+		if (!KDSelectedModel.Properties[KDCurrentLayer] &&
+			(KDWToolsDraggingRefresh || KDWToolsPivotAimRefresh)
+		)
 			KDSelectedModel.Properties[KDCurrentLayer] = Object.assign({}, KDProps);
 		let CurrentLayer = KDSelectedModel.Properties[KDCurrentLayer]
 		if (CurrentLayer && KDSelectedModel.Layers[KDCurrentLayerOrig]) {
@@ -2191,6 +2193,8 @@ function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Par
 
 	KDCurrentModels.get(C).Models.set(KDSelectedModel.Name, JSON.parse(JSON.stringify(KDSelectedModel)));
 	KDRefreshProps = true;
+
+	UpdateModels(C);
 	lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 	ForceRefreshModels(C);
 	KDWToolsPivotAimRefresh = false;

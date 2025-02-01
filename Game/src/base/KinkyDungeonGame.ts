@@ -6666,13 +6666,13 @@ function KDPruneEntrances
 		}
 		let pass = false;
 		for (let tile of checkTiles) {
-			let u = (KinkyDungeonIsAccessible(tile.x, tile.y - 1)
+			let u = (KDPointWanderable(tile.x, tile.y - 1)
 				&& !KDEffectTileTags(tile.x, tile.y - 1).nomapgen);
-			let d = (KinkyDungeonIsAccessible(tile.x, tile.y + 1)
+			let d = (KDPointWanderable(tile.x, tile.y + 1)
 				&& !KDEffectTileTags(tile.x, tile.y + 1).nomapgen);
-			let r = (KinkyDungeonIsAccessible(tile.x + 1, tile.y)
+			let r = (KDPointWanderable(tile.x + 1, tile.y)
 				&& !KDEffectTileTags(tile.x + 1, tile.y).nomapgen);
-			let l = (KinkyDungeonIsAccessible(tile.x - 1, tile.y)
+			let l = (KDPointWanderable(tile.x - 1, tile.y)
 				&& !KDEffectTileTags(tile.x - 1, tile.y).nomapgen);
 			if (u || d || r || l) {
 				pass = true;
