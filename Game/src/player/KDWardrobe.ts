@@ -2489,7 +2489,7 @@ function KDWToolsDrawSettingsMenu(X, Y, C, Model, Width) {
 				//console.log("WardrobeTools.ks - KDWToolsToggleScrollMode: " + KDWToolsToggleScrollMode)
 				},
 		zIndex, 0.5);
-	KDWToolsDrawOptionEntry(X+5, Y+5 + 45*II++, Width-10, 40, TextGet("KDWToolsToggleScrollModeText") + KDWToolsToggleScrollMode,
+	KDWToolsDrawOptionEntry(X+5, Y+5 + 45*II++, Width-10, 40, TextGet("KDWToolsLayerAbbrText") + KDWToolsLayerAbbrMode,
 		() => {	KDWToolsLayerAbbrModeIndex = (KDWToolsLayerAbbrModes.length + KDWToolsLayerAbbrModeIndex - 1) % KDWToolsLayerAbbrModes.length;
 				KDWToolsLayerAbbrMode = KDWToolsLayerAbbrModes[KDWToolsLayerAbbrModeIndex];
 				localStorage.setItem("WToolsLayerAbbr", KDWToolsLayerAbbrModeIndex + '');
