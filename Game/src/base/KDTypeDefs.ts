@@ -2135,6 +2135,8 @@ interface spell {
 	allySpell?: boolean;
 	/** This spell wont friendly fire the player */
 	noFF?: boolean;
+	/** This spell will hit anything */
+	friendlyfire?: boolean;
 	/** This spell wont affect the player if belonging to an allied entity */
 	noHitAlliedPlayer?: boolean,
 	/** Spell overrides the faction */

@@ -762,11 +762,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				if (!prop && m.Properties[KDLayerPropName(l, MC.Poses)]) {
 					prop = m.Properties[KDLayerPropName(l, MC.Poses)];
 				} else if (prop) {
-
-					let pp = Object.assign({}, prop);
-					Object.assign(pp, m.Properties[KDLayerPropName(l, MC.Poses)]);
-					prop = pp;
-
+					Object.assign(prop, m.Properties[KDLayerPropName(l, MC.Poses)]);
 				}
 			}
 
@@ -1690,10 +1686,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
 			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
 		} else if (prop) {
-
-			let pp = Object.assign({}, prop);
-			Object.assign(pp, Model.Properties[KDLayerPropName(Layer, Poses)]);
-			prop = pp;
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
 		}
 	}
 
@@ -1725,9 +1718,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
 			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
 		} else if (prop) {
-			let pp = Object.assign({}, prop);
-			Object.assign(pp, Model.Properties[KDLayerPropName(Layer, Poses)]);
-			prop = pp;
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
 		}
 		if (prop && prop.ExtraHidePoses) {
 			for (let p of Object.keys(Poses)) {
@@ -1763,9 +1754,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
 			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
 		} else if (prop) {
-			let pp = Object.assign({}, prop);
-			Object.assign(pp, Model.Properties[KDLayerPropName(Layer, Poses)]);
-			prop = pp;
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
 		}
 		if (prop && prop.ExtraHidePrefixPose) {
 			for (let p of prop.ExtraHidePrefixPose) {

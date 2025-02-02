@@ -2154,12 +2154,12 @@ function KinkyDungeonDrawQuickInv() {
 			DrawCheckboxKDEx("QuickLoadout_Weapon", (_bdata) => {
 				KDGameData.QuickLoadout_Weapon = !KDGameData.QuickLoadout_Weapon;
 				return true;
-			}, true, 510, 110, 64, 64, TextGet("KDQuickLoadout_Weapon"), KDGameData.QuickLoadout_Weapon, false, "#ffffff");
+			}, true, 630, 110, 64, 64, TextGet("KDQuickLoadout_Weapon"), KDGameData.QuickLoadout_Weapon, false, "#ffffff");
 
 			DrawCheckboxKDEx("QuickLoadout_Merge", (_bdata) => {
 				KDGameData.QuickLoadout_Merge = !KDGameData.QuickLoadout_Merge;
 				return true;
-			}, true, 510, 180, 64, 64, TextGet("KDQuickLoadout_Merge"), KDGameData.QuickLoadout_Merge, false, "#ffffff");
+			}, true, 630, 180, 64, 64, TextGet("KDQuickLoadout_Merge"), KDGameData.QuickLoadout_Merge, false, "#ffffff");
 		}
 
 		for (let i = 1; i <= KDNumOfQuickLoadouts; i++) {
@@ -2750,7 +2750,8 @@ function KDSaveQuickLoadout(num: number) {
 	}
 
 
-	for (let item of KinkyDungeonAllRestraint()) {
+	for (let inv of KinkyDungeonAllRestraintDynamic()) {
+		let item = inv.item;
 		if (KDRestraint(item)?.good || KDRestraint(item)?.armor) {
 			loadout.push(item.inventoryVariant || item.name);
 		}

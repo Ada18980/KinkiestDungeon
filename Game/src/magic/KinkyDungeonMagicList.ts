@@ -3185,12 +3185,16 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "ice", playerEffect: {name: "Chill", damage: "ice", power: 3, time: 3}},
 
 	{name: "TomeArcane", school: "Element", manacost: 0, components: [], level:1, type:"hit", onhit:"instant",
-
+		friendlyfire: true,
 		noTerrainHit: true, power: 5, delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "arcane", playerEffect: {name: "HeatBlast", time: 1, damage: "arcane", power: 5}},
 
-	{name: "TomeBondage", school: "Element", manacost: 0, components: [], level:1, type:"hit", onhit:"instant",
-
-		noTerrainHit: true, power: 2.0, bind: 10, bindType: "Magic", delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings",  text: "KinkyDungeonTrapBindingsMagicChainsWeak", tags: ["chainRestraintsMagic"], count: 3, power: 5.0, damage: "chain"}},
+	{name: "TomeBondage", school: "Element", manacost: 0, components: [], level:1, type:"hit",
+		onhit:"instant",
+		friendlyfire: true,
+		noTerrainHit: true, power: 2.0, bind: 10, bindType: "Magic",
+		delay: 1, range: 1.5, size: 3, aoe: 1.5, lifetime: 1, damage: "chain",
+		playerEffect: {name: "TrapBindings",  text: "KinkyDungeonTrapBindingsMagicChainsWeak",
+			tags: ["chainRestraintsMagic"], count: 3, power: 5.0, damage: "chain"}},
 
 	{enemySpell: true, name: "HeatBolt", color: "#e7cf1a", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "fire",
 		speed: 2, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 5}},

@@ -2110,18 +2110,6 @@ function KDWardrobeToolsDraw(C: Character) {
 			KDSelectedModel.Properties[KDCurrentLayer] = Object.assign({}, KDProps);
 		let CurrentLayer = KDSelectedModel.Properties[KDCurrentLayer]
 		if (CurrentLayer && KDSelectedModel.Layers[KDCurrentLayerOrig]) {
-			if (KDWToolsPivotAimRefresh) {
-				let parent = "";
-				let l = LayerLayer(KDCurrentModels.get(C),
-					KDSelectedModel.Layers[KDCurrentLayerOrig],
-					KDSelectedModel,
-					[]);
-				if (LayerProperties[l]) parent = LayerProperties[l].Parent;
-				else parent = "Torso";
-				CenterPivotToMouse(C, CurrentLayer, parent);
-			}
-			if (KDWToolsDraggingRefresh)
-				ApplyDragDisplacement(C, CurrentLayer);
 			let parent = "";
 			let l = LayerLayer(KDCurrentModels.get(C),
 				KDSelectedModel.Layers[KDCurrentLayerOrig],
@@ -2129,6 +2117,13 @@ function KDWardrobeToolsDraw(C: Character) {
 				[]);
 			if (LayerProperties[l]) parent = LayerProperties[l].Parent;
 			else parent = "Torso";
+			if (KDWToolsPivotAimRefresh) {
+
+				CenterPivotToMouse(C, CurrentLayer, parent);
+			}
+			if (KDWToolsDraggingRefresh)
+				ApplyDragDisplacement(C, CurrentLayer, parent);
+
 			KDWToolsDrawPivotPoint(C, CurrentLayer, Zoom, parent);
 			return true;
 		}
@@ -2148,8 +2143,26 @@ let KDWToolsPivotAimRefresh = false;
 function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Parent?: string) {
 	let Zoom = 1;
 	//Translate Mouse coordinates to canvas coordinates
+
+
+	let roundAmt = 100;
+
+	//Round to two decimal places
+	let XScale = Math.round((parseFloat('' + CurrentLayer.XScale) || 1)*roundAmt)/roundAmt;
+	let YScale = Math.round((parseFloat('' + CurrentLayer.YScale) || 1)*roundAmt)/roundAmt;
+	let XOffset = Math.round((parseFloat('' + CurrentLayer.XOffset) || 0)*roundAmt)/roundAmt;
+	let YOffset = Math.round((parseFloat('' + CurrentLayer.YOffset) || 0)*roundAmt)/roundAmt;
+	let XPivot = Math.round((parseFloat('' + CurrentLayer.XPivot) || 0)*roundAmt)/roundAmt;
+	let YPivot = Math.round((parseFloat('' + CurrentLayer.YPivot) || 0)*roundAmt)/roundAmt;
+
+	let Rotation = (Math.PI / 180) *
+		(parseFloat('' + CurrentLayer.Rotation) || 0);
+
 	let X_Pivot = MouseX;
 	let Y_Pivot = MouseY;
+
+	//X_Pivot += pmx * Math.cos(Rotation) - pmy * Math.sin(Rotation);
+	//Y_Pivot += pmy * Math.cos(Rotation) + pmx * Math.sin(Rotation);
 
 	//if (KDToggles.FlipPlayer) X_Pivot = MODELWIDTH - X_Pivot;
 
@@ -2157,14 +2170,20 @@ function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Par
 	/*let {X_Offset, Y_Offset} = ModelGetPoseOffsets(KDCurrentModels.get(C).Poses, KDToggles.FlipPlayer);
 */
 
+
+	// Do some magical transformation of coordinates
+	// Its now offset
+	//X_Pivot = ox + dox * Math.cos(-Rotation) - doy * Math.sin(-Rotation);
+	//Y_Pivot = oy + doy * Math.cos(-Rotation) + dox * Math.sin(-Rotation);
+
 	let {x, y, angle} = GetModelLocInverse(C, 0, 0, Zoom, {
 		Angle: 0,
 		Parent: Parent || "Torso",
 		X: X_Pivot,
 		Y: Y_Pivot,
 	}, KDToggles.FlipPlayer);
-	let XX_Pivot = x;
-	let YY_Pivot = y;
+	let XX_Offset = x;
+	let YY_Offset = y;
 
 	// Rotation mod from poses
 	//let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(KDCurrentModels.get(C).Poses);
@@ -2174,22 +2193,19 @@ function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Par
 	// let YY_Pivot =  Y_OFFSET_POSE * Math.cos(angle) + X_OFFSET_POSE * Math.sin(angle);
 
 
-	//Round to two decimal places
-	let XOffset = Math.round((parseFloat('' + CurrentLayer.XOffset) || 0)*100)/100;
-	let YOffset = Math.round((parseFloat('' + CurrentLayer.YOffset) || 0)*100)/100;
-	let XPivot = Math.round((parseFloat('' + CurrentLayer.XPivot) || 0)*100)/100;
-	let YPivot = Math.round((parseFloat('' + CurrentLayer.YPivot) || 0)*100)/100;
-	let XScale = Math.round((parseFloat('' + CurrentLayer.XScale) || 1)*100)/100;
-	let YScale = Math.round((parseFloat('' + CurrentLayer.YScale) || 1)*100)/100;
-	let Rotation = Math.round((parseFloat('' + CurrentLayer.Rotation) || 0)*100)/100;
-
 	KDChangeWardrobe(C);
 
+	let pdx = XX_Offset-XOffset;
+	let pdy = YY_Offset-YOffset;
 	//Keep relative offsets
-	CurrentLayer.XOffset = Math.round((XOffset + XX_Pivot - XPivot)*100)/100;
-	CurrentLayer.YOffset = Math.round((YOffset + YY_Pivot - YPivot)*100)/100;
-	CurrentLayer.XPivot = Math.round((XX_Pivot)*100)/100;;
-	CurrentLayer.YPivot = Math.round((YY_Pivot)*100)/100;;
+	CurrentLayer.XPivot = Math.round((XPivot +
+		pdx * Math.cos(-Rotation) - pdy * Math.sin(-Rotation)
+	)*roundAmt)/roundAmt;
+	CurrentLayer.YPivot = Math.round((YPivot +
+		pdy * Math.cos(-Rotation) + pdx * Math.sin(-Rotation)
+	)*roundAmt)/roundAmt;
+	CurrentLayer.XOffset = Math.round((XX_Offset)*roundAmt)/roundAmt;;
+	CurrentLayer.YOffset = Math.round((YY_Offset)*roundAmt)/roundAmt;;
 
 	KDCurrentModels.get(C).Models.set(KDSelectedModel.Name, JSON.parse(JSON.stringify(KDSelectedModel)));
 	KDRefreshProps = true;
@@ -2208,6 +2224,12 @@ function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType,
 	let Y_Pivot = CurrentLayer.YPivot || 0;
 	let X_Offset = CurrentLayer.XOffset || 0;
 	let Y_Offset = CurrentLayer.YOffset || 0;
+	let Rotation = (Math.PI / 180) *
+		(parseFloat('' + CurrentLayer.Rotation) || 0);
+
+
+	let pox = 0;//Zoom * MODEL_SCALE * (X_Offset - X_Pivot);
+	let poy = 0;//Zoom * MODEL_SCALE * (Y_Offset - Y_Pivot);
 
 	//if (KDToggles.FlipPlayer) X_Pivot = (MODELWIDTH + MODEL_XOFFSET * 2 - X_Pivot);
 
@@ -2224,8 +2246,8 @@ function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType,
 
 	//let XX_Pivot = X_Pivot + MODELWIDTH * X_Offset * MODEL_SCALE * Zoom;
 	//let YY_Pivot = Y_Pivot + MODELHEIGHT * Y_Offset * MODEL_SCALE * Zoom;
-	let XX_Pivot = x;
-	let YY_Pivot = y;
+	let XX_Pivot = x + pox * Math.cos(0) - poy * Math.sin(0);
+	let YY_Pivot = y + poy * Math.cos(0) + pox * Math.sin(0);
 
 	//console.log("WardrobeTools.ks - X_Offset: " + X_Offset);
 	//console.log("WardrobeTools.ks - Y_Offset: " + Y_Offset);
@@ -2326,7 +2348,7 @@ window.addEventListener('wheel', function(event) {
 let KDWToolsDraggingLazyRefresh = 0;
 
 //Calculations of properties while drag-moving
-function ApplyDragDisplacement(C, CurrentLayer) {
+function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
 	let Zoom = 1;
 	let Flip = KDToggles.FlipPlayer ? -1 : 1;
 	let X_OFFSET = Flip * (KDWToolsDraggingDelta.x / (MODEL_SCALE * Zoom));
@@ -2334,14 +2356,20 @@ function ApplyDragDisplacement(C, CurrentLayer) {
 	//console.log("WardrobeTools.ks - ApplyDragDisplacement");
 
 	//Consider rotation from poses (like hogtie)
-	let {rotation} = ModelGetPoseRotation(KDCurrentModels.get(C).Poses);
-	let angle = -rotation * Math.PI / 180;
+
+	let {x, y, angle} = GetModelLoc(C, 0, 0, Zoom, {
+		Angle: 0,
+		Parent: Parent || "Torso",
+		X: 0,
+		Y: 0,
+	}, KDToggles.FlipPlayer);
+
 	//0  = x=x, y=y
 	//90 = x=-y,y=x
 	//180= x=-x,y=-y
 	//270= x=y, y=-x
-	let XX_OFFSET = X_OFFSET * Math.cos(angle) - Y_OFFSET * Math.sin(angle);
-	let YY_OFFSET = Y_OFFSET * Math.cos(angle) + X_OFFSET * Math.sin(angle);
+	let XX_OFFSET = X_OFFSET * Math.cos(-angle) - Y_OFFSET * Math.sin(-angle);
+	let YY_OFFSET = Y_OFFSET * Math.cos(-angle) + X_OFFSET * Math.sin(-angle);
 
 	//Round to two decimal places
 	let XOffset = Math.round((parseFloat(CurrentLayer.XOffset) || 0)*100)/100;
