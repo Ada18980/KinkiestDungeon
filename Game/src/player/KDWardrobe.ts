@@ -2350,7 +2350,7 @@ let KDWToolsDraggingLazyRefresh = 0;
 //Calculations of properties while drag-moving
 function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
 	let Zoom = 1;
-	let X_OFFSET = (KDWToolsDraggingDelta.x / (MODEL_SCALE * Zoom));
+	let X_OFFSET = (KDToggles.FlipPlayer ? -1 : 1) * (KDWToolsDraggingDelta.x / (MODEL_SCALE * Zoom));
 	let Y_OFFSET = KDWToolsDraggingDelta.y / (MODEL_SCALE * Zoom);
 	//console.log("WardrobeTools.ks - ApplyDragDisplacement");
 
