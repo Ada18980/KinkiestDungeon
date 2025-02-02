@@ -2195,8 +2195,8 @@ function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Par
 
 	KDChangeWardrobe(C);
 
-	let pdx = XX_Offset-XOffset;
-	let pdy = YY_Offset-YOffset;
+	let pdx = 1/XScale * (XX_Offset-XOffset);
+	let pdy = 1/YScale * (YY_Offset-YOffset);
 	//Keep relative offsets
 	CurrentLayer.XPivot = Math.round((XPivot +
 		pdx * Math.cos(-Rotation) - pdy * Math.sin(-Rotation)
