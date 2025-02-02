@@ -2350,7 +2350,6 @@ let KDWToolsDraggingLazyRefresh = 0;
 //Calculations of properties while drag-moving
 function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
 	let Zoom = 1;
-	let Flip = KDToggles.FlipPlayer ? -1 : 1;
 	let X_OFFSET = (KDWToolsDraggingDelta.x / (MODEL_SCALE * Zoom));
 	let Y_OFFSET = KDWToolsDraggingDelta.y / (MODEL_SCALE * Zoom);
 	//console.log("WardrobeTools.ks - ApplyDragDisplacement");
@@ -2362,7 +2361,7 @@ function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
 		Parent: Parent || "Torso",
 		X: 0,
 		Y: 0,
-	}, KDToggles.FlipPlayer);
+	}, false);
 
 	//0  = x=x, y=y
 	//90 = x=-y,y=x
