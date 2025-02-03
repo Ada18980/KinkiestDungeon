@@ -1741,6 +1741,7 @@ function KDDoCollect(entity: entity): boolean {
 		let notable = KDIsNPCPersistent(entity.id);
 		if (!notable) {
 			if (KDEnemyRank(entity) >= 4) return true;
+			if (entity.Enemy?.tags?.special) return true;
 		}
 		return notable;
 	}

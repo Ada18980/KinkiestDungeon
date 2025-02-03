@@ -4143,6 +4143,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Binder: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.01},
 		},
+		Properties: {
+			Binder: {DisplaceAmount: 1},
+		},
 		limitChance: {"Struggle": 0.15, "Cut": 0.1, "Unlock": 0.2},
 		playerTagsMult: {
 			"More_Armbinders": 3.5,
@@ -4156,6 +4159,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Binder: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.01},
 			Laces: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.01},
+		},
+		Properties: {
+			Binder: {DisplaceAmount: 1},
 		},
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
 		struggleMaxSpeed: {Cut: 0.3, Remove: 0.1},
@@ -7684,7 +7690,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	alwaysRender: true,
 	UnderlinkedAlwaysRender: true,
 	debris: "Belts",
-	Model: "Breastplate",
+	Model: "BreastplateRestraint",
 	escapeChance: {
 		"Struggle": 10,
 		"Cut": -0.5,
@@ -7692,6 +7698,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ChestArmor", "MetalArmor", "Heavy"],
 	addPose: ["ChestArmor"],
+	noRenderPose: ["NoChestArmor"],
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7713,7 +7720,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Group: "ItemTorso",
 	Asset: "LeatherCorsetTop1",
 	AssetGroup: "Corset",
-	Model: "WarriorBustier",
+	Model: "WarriorBustierRestraint",
 	debris: "Belts",
 	OverridePriority: 27,
 	showInQuickInv: true, good: true,
@@ -7727,6 +7734,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "Light"],
 	addPose: ["TorsoArmor"],
+	noRenderPose: ["NoTorsoArmor"],
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7748,7 +7756,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Swimsuit",
 	Group: "ItemTorso",
-	Model: "Swimsuit",
+	Model: "SwimsuitRestraint",
 	remove: ["Cloth", "ClothLower", "Tops", "Skirts", "Shirts", "Pants"],
 	debris: "Belts",
 	showInQuickInv: true, good: true,
@@ -7764,6 +7772,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "Cloth", "Swimsuits"],
 	addPose: ["TorsoArmor"],
+	noRenderPose: ["NoSwimsuits"],
+	factionFilters: {
+		Swimsuit: {color: "Highlight", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
@@ -7810,6 +7822,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	DefaultLock: "Divine",
 	shrine: ["Armor", "TorsoArmor", "Cloth"],
 	addPose: ["TorsoArmor"],
+	noRenderPose: ["NoSpecialArmor"],
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
@@ -7832,7 +7845,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "ChainTunic",
 	Group: "ItemTorso",
 	Asset: "Bodice1",
-	Model: "ChainShirt",
+	Model: "ChainShirtRestraint",
 	AssetGroup: "Cloth",
 	Color: ["#808080", "#808080", "#808080"],
 	OverridePriority: 27,
@@ -7853,6 +7866,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	strictness: 0.08,
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 	addPose: ["TorsoArmor"],
+	noRenderPose: ["NoTorsoArmor"],
+	factionFilters: {
+		Shirt: {color: "DarkNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7872,7 +7889,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "ChainBikini",
 	Group: "ItemTorso",
 	Asset: "Bodice1",
-	Model: "ChainBikini",
+	Model: "ChainBikiniRestraint",
 	AssetGroup: "Cloth",
 	Color: ["#808080", "#808080", "#808080"],
 	OverridePriority: 27,
@@ -7893,6 +7910,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	strictness: 0.08,
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Light"],
 	addPose: ["TorsoArmor"],
+	noRenderPose: ["NoTorsoArmor"],
+	factionFilters: {
+		Bikini: {color: "DarkNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	noRecover: true,
@@ -7909,7 +7930,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelArmor",
 	Group: "ItemTorso",
 	Asset: "MistressTop",
-	Model: "ChainShirt",
+	Model: "ChainShirtRestraint",
 	AssetGroup: "Cloth",
 	restriction: 2,
 	Color: ["Default"],
@@ -7924,6 +7945,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 	addPose: ["TorsoArmor"],
+	noRenderPose: ["NoTorsoArmor"],
+	factionFilters: {
+		Shirt: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7945,7 +7970,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "MageArmor",
 	Group: "ItemTorso",
-	Model: "RobeSleeves",
+	Model: "RobeSleevesRestraint",
 	Asset: "GrandMage",
 	AssetGroup: "Cloth",
 	Color: ["#5555ff"],
@@ -7960,6 +7985,11 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "Robe", "Mage"],
 	addPose: ["TorsoRobe"],
+	noRenderPose: ["NoTorsoRobe"],
+	factionFilters: {
+		SleeveLeft: {color: "LightNeutral", override: true},
+		SleeveRight: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7979,7 +8009,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelSkirt2",
 	Group: "ItemLegs",
 	Asset: "LatexSkirt2",
-	Model: "ChainSkirt2",
+	Model: "ChainSkirt2Restraint",
 	AssetGroup: "ClothLower",
 	Color: ["#ffffff"],
 	showInQuickInv: true, good: true,
@@ -7992,6 +8022,13 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.35,
 	},
 	shrine: ["Armor", "PelvisArmor", "MetalArmor", "Heavy"],
+	factionFilters: {
+		SkirtBeltDeco: {color: "Highlight", override: true},
+		SkirtBelt: {color: "DarkNeutral", override: true},
+		Rivets: {color: "LightNeutral", override: true},
+		Skirt2: {color: "DarkNeutral", override: true},
+		Skirt: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7999,6 +8036,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	debris: "Belts",
 	protectionCursed: true,
 	addPose: ["PelvisArmor"],
+	noRenderPose: ["NoPelvisArmor"],
 	inventory: true,
 	displayPower: 5,
 	removePrison: true,
@@ -8013,7 +8051,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelSkirt",
 	Group: "ItemLegs",
 	Asset: "LatexSkirt2",
-	Model: "ChainSkirt",
+	Model: "ChainSkirtRestraint",
 	AssetGroup: "ClothLower",
 	Color: ["#ffffff"],
 	showInQuickInv: true, good: true,
@@ -8027,6 +8065,14 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "PelvisArmor", "MetalArmor", "Heavy"],
 	addPose: ["PelvisArmor"],
+	noRenderPose: ["NoPelvisArmor"],
+	factionFilters: {
+		SkirtBeltDeco: {color: "Highlight", override: true},
+		SkirtBelt: {color: "DarkNeutral", override: true},
+		Rivets: {color: "LightNeutral", override: true},
+		Skirt2: {color: "DarkNeutral", override: true},
+		Skirt: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -8049,7 +8095,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Group: "ItemHands",
 	Asset: "FingerlessGloves",
 	AssetGroup: "Gloves",
-	Model: "Gauntlets",
+	Model: "GauntletsRestraint",
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
@@ -8061,6 +8107,11 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "GlovesArmor", "MetalArmor", "Heavy"],
 	addPose: ["GlovesArmor"],
+	noRenderPose: ["NoGlovesArmor"],
+	factionFilters: {
+		GauntletLeft: {color: "LightNeutral", override: true},
+		GauntletRight: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -8083,7 +8134,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "LeatherGloves",
 	Group: "ItemHands",
-	Model: "LeatherGloves",
+	Model: "LeatherGlovesRestraint",
 	Asset: "BikerGloves",
 	AssetGroup: "Gloves",
 	showInQuickInv: true, good: true,
@@ -8097,6 +8148,15 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "GlovesArmor", "Light"],
 	addPose: ["GlovesArmor"],
+	noRenderPose: ["NoGlovesArmor"],
+	factionFilters: {
+		GloveLeft: {color: "LightNeutral", override: true},
+		RimLeft: {color: "DarkNeutral", override: true},
+		BandLeft: {color: "Highlight", override: true},
+		GloveRight: {color: "LightNeutral", override: true},
+		RimRight: {color: "DarkNeutral", override: true},
+		BandRight: {color: "Highlight", override: true},
+	},
 
 	armor: true, bypass: true,
 	displayPower: 2,
@@ -8116,7 +8176,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Bracers",
 	Group: "ItemArms",
 	Asset: "FurBolero",
-	Model: "Pauldrons",
+	Model: "PauldronsRestraint",
 	AssetGroup: "ClothAccessory",
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
@@ -8129,6 +8189,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ArmArmor", "Heavy"],
 	addPose: ["ArmArmor"],
+	noRenderPose: ["NoArmArmor"],
+	factionFilters: {
+		Pauldrons: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	displayPower: 3,
@@ -8147,7 +8211,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Cape",
 	Group: "ItemArms",
-	Model: "Cape",
+	Model: "CapeRestraint",
 	Filters: {
 		Front: {"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":0.48333333333333334,"red":0.95,"green":1.5333333333333332,"blue":1,"alpha":1},
 		Back: {"gamma":1,"saturation":1,"contrast":1.1833333333333333,"brightness":0.21666666666666667,"red":0.95,"green":1.5333333333333332,"blue":1,"alpha":1},
@@ -8165,6 +8229,11 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ArmArmor", "Light"],
 	addPose: ["ArmArmor"],
+	noRenderPose: ["NoArmArmor"],
+	factionFilters: {
+		Front: {color: "Highlight", override: true},
+		Back: {color: "Highlight", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -8184,7 +8253,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "MagicArmbands",
 	Group: "ItemArms",
 	Asset: "OrnateCuffs",
-	Model: "DragonArmband",
+	Model: "DragonArmbandRestraint",
 	Color: ["#888888", "#9B63C5"],
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
@@ -8197,6 +8266,9 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ArmArmor", "MagicArmor", "Mage"],
 	addPose: ["ArmArmor"],
+	factionFilters: {
+		Armband: {color: "Highlight", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -8216,7 +8288,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelBoots",
 	Group: "ItemBoots",
 	Asset: "Boots1",
-	Model: "PlateBoots",
+	Model: "PlateBootsRestraint",
 	AssetGroup: "Shoes",
 	Color: ["#444444", "#222222"],
 	showInQuickInv: true, good: true,
@@ -8230,6 +8302,11 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "BootsArmor", "MetalArmor", "Heavy"],
 	addPose: ["BootsArmor"],
+	noRenderPose: ["NoBootsArmor"],
+	factionFilters: {
+		ShoeLeft: {color: "LightNeutral", override: true},
+		ShoeRight: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -8254,7 +8331,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	Asset: "WoollyBootsTall",
 	AssetGroup: "Shoes",
 	Color: ["#808080"],
-	Model: "WarriorBoots",
+	Model: "WarriorBootsRestraint",
 	showInQuickInv: true, good: true,
 	alwaysKeep: true,
 	alwaysRender: true,
@@ -8266,6 +8343,12 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "BootsArmor", "Light"],
 	addPose: ["BootsArmor"],
+	noRenderPose: ["NoBootsArmor"],
+
+	factionFilters: {
+		ShoeLeft: {color: "LightNeutral", override: true},
+		ShoeRight: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,

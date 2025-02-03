@@ -4113,7 +4113,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"secondhalf":1, "thirdhalf":1, "willAnger": 4, "willRage": 6, "nature": 3, "temple": 5, "elf": 8}, shrines: ["Will"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 9}, {name: "ElfCrystal", weight: 4}],
 		ondeath: [
-			{type: "summon", enemy: "Bramble", range: 0.5, count: 1, strict: true}
+			{type: "summon", enemy: "Bramble", range: 0.5, count: 1, strict: true, faction: "Plant"}
 		],
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#ffffff"}
@@ -4454,7 +4454,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 
 	{name: "DemonEye", nameList: "cthulu", outfit: "Demon", style: "Demon", clusterWith: "demon", bound: "Demon", faction: "Observer", playLine: "Elemental", color: "#ff5577",
-		tags: KDMapInit(["opendoors", "chaos", "observer", "demon", "holyweakness", "obsAttract", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness"]),
+		tags: KDMapInit(["opendoors", "special", "chaos", "observer", "demon", "holyweakness", "obsAttract", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness"]),
 		armor: 2, spellResist: 2, followRange: 0, AI: "hunt", disarm: 0.33,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#ff5277"},

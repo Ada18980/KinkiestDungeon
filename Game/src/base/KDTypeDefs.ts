@@ -466,6 +466,8 @@ interface KDRestraintPropsBase {
 	slimeLevel?: number,
 	addTag?: string[],
 	addPose?: string[],
+	/** Do not render if this pose is present */
+	noRenderPose?: string[],
 	/** Bigger version of the item, for bigger gags perk */
 	biggerVersion?: string,
 	/** Adds a pose (standalonepatched only) if this is the top level restraint */

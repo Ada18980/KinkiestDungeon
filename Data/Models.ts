@@ -644,10 +644,10 @@ function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : bool
 		return (
 			!entry[2]
 			|| !m.Properties
-			|| (!m.Properties[KDLayerPropName(l, MC.Poses)]
+			|| (!m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]
 				&& !(m.Properties[l.Name] || m.Properties[l.InheritColor]))
-			|| ((!m.Properties[KDLayerPropName(l, MC.Poses)]
-					|| !m.Properties[KDLayerPropName(l, MC.Poses)][entry[2]])
+			|| ((!m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]
+					|| !m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)][entry[2]])
 				&& (!(m.Properties[l.Name] || m.Properties[l.InheritColor])
 					|| !(m.Properties[l.Name] || m.Properties[l.InheritColor])[entry[2]])
 				)
@@ -697,7 +697,7 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
 	let oldProp = lyr;
-	lyr = KDLayerPropName(l, MC.Poses);
+	lyr = KDLayerPropName(l, MC.Poses, m.Properties);
 	if (oldProp != lyr && Properties && Properties[lyr]) {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
 	}
@@ -705,18 +705,26 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 	return temp;
 }
 
-function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>): string {
+function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>, props: Record<string, LayerPropertiesType>): string {
 	if (l.Poses || l.MorphPoses) {
 		if (l.Poses)
 			for (let pose of Object.keys(l.Poses)) {
-				if (Poses[pose]) return (l.InheritColor || l.Name) + pose;
+				if (Poses[pose]) return (l.InheritColor && props && props[l.InheritColor + pose])
+					? l.InheritColor + pose : l.Name + pose;
 			}
-		if (l.MorphPoses)
+		if (l.MorphPoses) {
+			for (let pose of Object.keys(l.MorphPoses)) {
+				if (Poses[pose]) return  (l.InheritColor && props && props[l.InheritColor + pose])
+					? l.InheritColor + pose : l.Name + pose;
+			}
 			for (let pose of Object.values(l.MorphPoses)) {
-				if (Poses[pose]) return (l.InheritColor || l.Name) + pose;
+				if (Poses[pose]) return  (l.InheritColor && props && props[l.InheritColor + pose])
+					? l.InheritColor + pose : l.Name + pose;
 			}
+		}
 	}
-	return l.InheritColor || l.Name;
+	return (l.InheritColor && props && props[l.InheritColor])
+	? l.InheritColor : l.Name;
 }
 
 /**
@@ -759,10 +767,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			let prop: LayerPropertiesType = null;
 			if (m.Properties) {
 				prop = (m.Properties[l.Name] || m.Properties[l.InheritColor]);
-				if (!prop && m.Properties[KDLayerPropName(l, MC.Poses)]) {
-					prop = m.Properties[KDLayerPropName(l, MC.Poses)];
+				if (!prop && m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]) {
+					prop = m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)];
 				} else if (prop) {
-					Object.assign(prop, m.Properties[KDLayerPropName(l, MC.Poses)]);
+					Object.assign(prop, m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]);
 				}
 			}
 
@@ -864,7 +872,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 			}
 
-			let lyr = KDLayerPropName(l, MC.Poses);
+			let lyr = KDLayerPropName(l, MC.Poses, m.Properties);
 			// Apply occlusion
 			/*if (l.OccludeLayers
 				&& (!l.OccludePoses
@@ -1438,7 +1446,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					layer = LayerProperties[layer]?.Parent;
 				}
 
-				let Properties: LayerPropertiesType = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
+				let Properties: LayerPropertiesType = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -1682,11 +1690,11 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 	// Hide if not highest
 	let prop: LayerPropertiesType = null;
 	if (Model.Properties) {
-		prop = Model.Properties[Layer.InheritColor || Layer.Name];
-		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
-			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		prop = (Model.Properties[Layer.Name] || Model.Properties[Layer.InheritColor]);
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)];
 		} else if (prop) {
-			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]);
 		}
 	}
 
@@ -1714,11 +1722,11 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		}
 	}
 	if (Model.Properties) {
-		prop = Model.Properties[Layer.InheritColor || Layer.Name];
-		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
-			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		prop = (Model.Properties[Layer.Name] || Model.Properties[Layer.InheritColor]);
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)];
 		} else if (prop) {
-			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]);
 		}
 		if (prop && prop.ExtraHidePoses) {
 			for (let p of Object.keys(Poses)) {
@@ -1750,11 +1758,11 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		}
 	}
 	if (Model.Properties) {
-		let prop = Model.Properties[Layer.InheritColor || Layer.Name];
-		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {
-			prop = Model.Properties[KDLayerPropName(Layer, Poses)];
+		let prop = (Model.Properties[Layer.Name] || Model.Properties[Layer.InheritColor]);
+		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]) {
+			prop = Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)];
 		} else if (prop) {
-			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses)]);
+			Object.assign(prop, Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]);
 		}
 		if (prop && prop.ExtraHidePrefixPose) {
 			for (let p of prop.ExtraHidePrefixPose) {
@@ -1796,12 +1804,12 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		return (
 			!entry[2]
 			|| !Model.Properties
-			|| (!Model.Properties[KDLayerPropName(Layer, Poses)]
-				&& !Model.Properties[Layer.InheritColor || Layer.Name])
-			|| ((!Model.Properties[KDLayerPropName(Layer, Poses)]
-					|| !Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]])
-				&& (!Model.Properties[Layer.InheritColor || Layer.Name]
-					|| !Model.Properties[Layer.InheritColor || Layer.Name][entry[2]])
+			|| (!Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]
+				&& !(Model.Properties[Layer.Name] || Model.Properties[Layer.InheritColor]))
+			|| ((!Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)]
+					|| !Model.Properties[KDLayerPropName(Layer, Poses, Model.Properties)][entry[2]])
+				&& (!(Model.Properties[Layer.Name] || Model.Properties[Layer.InheritColor])
+					|| !(Model.Properties[Layer.Name] || Model.Properties[Layer.InheritColor])[entry[2]])
 				)
 				)
 			&& (
@@ -2447,11 +2455,20 @@ function GetModelLocInverse(C: Character, X: number, Y: number, ZoomInit: number
 		Angle: 0,
 		Parent: hp.Parent
 	}, Flip);
+
+
+	/*if (Flip) {
+		resultingPosition.x = (0.5 * MODELHEIGHT) * Zoom - resultingPosition.x;
+		resultingPosition.angle = Math.PI - resultingPosition.angle;
+	}*/
 	//let resultingPosition2 = GetModelLoc(C, X, Y, ZoomInit, hp, Flip, true);
 	let differencex = (resultingPosition.x - hp.X)*Zoom;
 	let differencey = (resultingPosition.y - hp.Y)*Zoom;
 	let differencea = Math.PI + resultingPosition.angle; // No idea why this works
-
+	if (Flip) {
+		differencex = -differencex;
+		differencea = - resultingPosition.angle
+	}
 	// I have absolutely no idea why this is working. It seems to work in the usercases that I tested
 	// If you are doing high-level rendering stuff, you may run into issues stemming from the fact
 	// that I have no idea what I am doing

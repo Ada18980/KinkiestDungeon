@@ -238,6 +238,12 @@
             <key type="filename">../Models/ArmorPlate/GauntletRightFree.png</key>
             <key type="filename">../Models/ArmorPlate/GauntletRightFront.png</key>
             <key type="filename">../Models/ArmorPlate/GauntletRightYoked.png</key>
+            <key type="filename">../Models/ArmorPlate/PauldronLeftFree.png</key>
+            <key type="filename">../Models/ArmorPlate/PauldronLeftHogtie.png</key>
+            <key type="filename">../Models/ArmorPlate/PauldronLeftYoked.png</key>
+            <key type="filename">../Models/ArmorPlate/PauldronRightFree.png</key>
+            <key type="filename">../Models/ArmorPlate/PauldronRightHogtie.png</key>
+            <key type="filename">../Models/ArmorPlate/PauldronRightYoked.png</key>
             <key type="filename">../Models/ArmorPlate/PauldronsFree.png</key>
             <key type="filename">../Models/ArmorPlate/PauldronsHogtie.png</key>
             <key type="filename">../Models/ArmorPlate/PauldronsYoked.png</key>
@@ -1972,6 +1978,10 @@
             <key type="filename">../Models/KittyPet/Ears2InnerR.png</key>
             <key type="filename">../Models/KittyPet/Ears2L.png</key>
             <key type="filename">../Models/KittyPet/Ears2R.png</key>
+            <key type="filename">../Models/KittyPet/Ears3InnerL.png</key>
+            <key type="filename">../Models/KittyPet/Ears3InnerR.png</key>
+            <key type="filename">../Models/KittyPet/Ears3L.png</key>
+            <key type="filename">../Models/KittyPet/Ears3R.png</key>
             <key type="filename">../Models/KittyPet/Gag.png</key>
             <key type="filename">../Models/KittyPet/GagCollar.png</key>
             <key type="filename">../Models/KittyPet/GagMouth.png</key>
@@ -1999,6 +2009,8 @@
             <key type="filename">../Models/KittyPet/ShoulderCuffStripeLeft.png</key>
             <key type="filename">../Models/KittyPet/ShoulderCuffStripeRight.png</key>
             <key type="filename">../Models/KittyPet/Tail.png</key>
+            <key type="filename">../Models/KittyPet/Tail2.png</key>
+            <key type="filename">../Models/KittyPet/Tail2Stripe.png</key>
             <key type="filename">../Models/KittyPet/TailStripe.png</key>
             <key type="filename">../Models/KittyPetCuffs/AnkleLeftClosed.png</key>
             <key type="filename">../Models/KittyPetCuffs/AnkleLeftKneel.png</key>
@@ -3891,6 +3903,7 @@
             <key type="filename">../Models/Warrior/BraYoked.png</key>
             <key type="filename">../Models/Warrior/Bustier.png</key>
             <key type="filename">../Models/Warrior/BustierChest.png</key>
+            <key type="filename">../Models/Warrior/BustierChestRim.png</key>
             <key type="filename">../Models/Warrior/Collar.png</key>
             <key type="filename">../Models/Warrior/FootShoeLeftHogtie.png</key>
             <key type="filename">../Models/Warrior/ForeGloveLeftFront.png</key>

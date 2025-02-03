@@ -503,6 +503,8 @@ AddModel({
 });
 
 
+AddModel(GetModelRestraintVersion("Cape", true));
+
 AddModel({
 	Name: "Pauldrons",
 	Folder: "ArmorPlate",
@@ -519,6 +521,44 @@ AddModel({
 		},
 	])
 });
+
+
+AddModel({
+	Name: "PauldronRight",
+	Folder: "ArmorPlate",
+	Parent: "PlateArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "PauldronLeft", Layer: "Shoulders", Pri: 82,
+			Poses: ToMapSubtract([...ARMPOSES], [...HIDEARMPOSES, "Up"], "Hogtie"),
+			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free", Front: "Free", Crossed: "Free"},
+			HideWhenOverridden: true,
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
+AddModel({
+	Name: "PauldronLeft",
+	Folder: "ArmorPlate",
+	Parent: "PlateArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "PauldronRight", Layer: "Shoulders", Pri: 82,
+			Poses: ToMapSubtract([...ARMPOSES], [...HIDEARMPOSES, "Up"], "Hogtie"),
+			MorphPoses: {Yoked: "Yoked", Hogtie: "Hogtie", Wristtie: "Free", Boxtie: "Free", Front: "Free", Crossed: "Free"},
+			HideWhenOverridden: true,
+			HidePoseConditional: [
+				["DynamicArmor", "ArmArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+
 AddModel({
 	Name: "Breastplate",
 	Folder: "ArmorPlate",
@@ -660,6 +700,14 @@ AddModel({
 	])
 });
 
+
+AddModel(GetModelRestraintVersion("Breastplate", true));
+AddModel(GetModelRestraintVersion("Pauldrons", true));
+AddModel(GetModelRestraintVersion("PauldronLeft", true));
+AddModel(GetModelRestraintVersion("PauldronRight", true));
+AddModel(GetModelRestraintVersion("PlateBoots", true));
+AddModel(GetModelRestraintVersion("Gauntlets", true));
+
 AddModel({
 	Name: "ChainShirt",
 	Folder: "ArmorChain",
@@ -707,6 +755,8 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelRestraintVersion("ChainShirt", true));
+AddModel(GetModelRestraintVersion("ChainBikini", true));
 
 
 AddModel({
@@ -756,6 +806,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelRestraintVersion("ChainSkirt2", true));
 
 
 AddModel({
@@ -814,6 +865,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelRestraintVersion("ChainSkirt", true));
 
 AddModel({
 	Name: "ChainPanties",
@@ -839,6 +891,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelRestraintVersion("ChainPanties", true));
 
 
 AddModel({
@@ -874,6 +927,8 @@ AddModel({
 		},
 	])
 });
+
+AddModel(GetModelRestraintVersion("ChainPanties2", true));
 
 AddModel({
 	Name: "ChainArmor",
@@ -1603,6 +1658,8 @@ AddModel({
 	])
 });
 
+AddModel(GetModelRestraintVersion("WarriorBoots", true));
+
 
 AddModel({
 	Name: "SportsBra",
@@ -1637,10 +1694,16 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			HideWhenOverridden: true,
 		},
+		{ Name: "BustierChestRim", Layer: "ShirtChest", Pri: 15.1,
+			Invariant: true,
+			TieToLayer: "BustierChest",
+			NoOverride: true,
+			InheritColor: "Rim",
+		},
 	])
 });
 
-
+AddModel(GetModelRestraintVersion("WarriorBustier", true));
 
 AddModel({
 	Name: "LeatherGloveLeft",
@@ -1756,6 +1819,8 @@ AddModel({
 		...GetModelLayers("LeatherGloveRight"),
 	])
 });
+
+AddModel(GetModelRestraintVersion("LeatherGloves", true));
 
 
 AddModel({
@@ -2154,6 +2219,8 @@ AddModel({
 	])
 });
 
+
+AddModel(GetModelRestraintVersion("RobeSleeves", true));
 
 
 AddModel({

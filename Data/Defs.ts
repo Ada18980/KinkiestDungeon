@@ -555,6 +555,7 @@ let LayerGroups = {
 		"Panties",
 		"CrotchPanelMid",
 		"Bodysuit",
+		"BodysuitLower",
 		//"Skirt",
 		//"WrappingTorsoMid",
 	]),
@@ -574,6 +575,7 @@ let LayerGroups = {
 		"Panties",
 		"CrotchPanelMid",
 		"Bodysuit",
+		"BodysuitLower",
 		"WrappingTorsoMid",
 		"WrappingTorsoLower",
 	]),
@@ -1031,6 +1033,7 @@ let LayerGroups = {
 		"StockingRight",
 
 		"Bodysuit",
+		"BodysuitLower",
 		"Panties",
 		"Torso",
 		"TorsoUpper",
@@ -1062,6 +1065,7 @@ let LayerGroups = {
 		"StockingRight",
 
 		"Bodysuit",
+		"BodysuitLower",
 		"Panties",
 		"Torso",
 		"TorsoUpper",

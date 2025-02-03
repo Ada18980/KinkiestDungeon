@@ -137,10 +137,10 @@ AddModel({
 
 
 AddModel({
-	Name: "KittyPetTail",
+	Name: "KittyPetTailThin",
 	Folder: "KittyPet",
-	Parent: "KittyPet",
-	TopLevel: true,
+	Parent: "KittyPetTail",
+	TopLevel: false,
 	Protected: true,
 	Categories: ["Tails", "Kitty", "Cosplay"],
 	AddPose: ["Tails", "Kitty", "Cosplay"],
@@ -151,6 +151,29 @@ AddModel({
 			NoOverride: true,
 		},
 		{ Name: "TailStripe", Layer: "Tail", Pri: 5.1,
+			Invariant: true,
+			InheritColor: "Stripe",
+			TieToLayer: "Tail",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "KittyPetTail",
+	Folder: "KittyPet",
+	Parent: "KittyPet",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Tails", "Kitty", "Cosplay"],
+	AddPose: ["Tails", "Kitty", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "Tail2", Layer: "Tail", Pri: 5,
+			Invariant: true,
+			InheritColor: "Tail",
+			NoOverride: true,
+		},
+		{ Name: "Tail2Stripe", Layer: "Tail", Pri: 5.1,
 			Invariant: true,
 			InheritColor: "Stripe",
 			TieToLayer: "Tail",
@@ -327,11 +350,11 @@ AddModel({
 			NoOverride: true,
 			Invariant: true,
 		},
-		{ Name: "Ears1R", Layer: "Circlet", Pri: 40.1,
+		{ Name: "Ears1R", Layer: "Circlet", Pri: 40,
 			NoOverride: true,
 			Invariant: true,
 		},
-		{ Name: "Ears1InnerL", Layer: "Circlet", Pri: 40,
+		{ Name: "Ears1InnerL", Layer: "Circlet", Pri: 40.1,
 			TieToLayer: "Ears1L",
 			NoOverride: true,
 			Invariant: true,
@@ -356,17 +379,46 @@ AddModel({
 			NoOverride: true,
 			Invariant: true,
 		},
-		{ Name: "Ears2R", Layer: "Circlet", Pri: 40.1,
+		{ Name: "Ears2R", Layer: "Circlet", Pri: 40,
 			NoOverride: true,
 			Invariant: true,
 		},
-		{ Name: "Ears2InnerL", Layer: "Circlet", Pri: 40,
+		{ Name: "Ears2InnerL", Layer: "Circlet", Pri: 40.1,
 			TieToLayer: "Ears2L",
 			NoOverride: true,
 			Invariant: true,
 		},
 		{ Name: "Ears2InnerR", Layer: "Circlet", Pri: 40.1,
 			TieToLayer: "Ears2R",
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "KittyPetEars3",
+	Folder: "KittyPet",
+	Parent: "KittyPetEarmuffs",
+	TopLevel: false,
+	Categories: ["Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Ears3L", Layer: "Circlet", Pri: 42,
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears3R", Layer: "Circlet", Pri: 42,
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears3InnerL", Layer: "Circlet", Pri: 42.1,
+			TieToLayer: "Ears3L",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears3InnerR", Layer: "Circlet", Pri: 42.1,
+			TieToLayer: "Ears3R",
 			NoOverride: true,
 			Invariant: true,
 		},
@@ -403,6 +455,7 @@ AddModel({
 AddModel(GetModelRestraintVersion("KittyPetEarmuffs", true));
 AddModel(GetModelRestraintVersion("KittyPetEars1", true));
 AddModel(GetModelRestraintVersion("KittyPetEars2", true));
+AddModel(GetModelRestraintVersion("KittyPetEars3", true));
 
 
 AddModel({

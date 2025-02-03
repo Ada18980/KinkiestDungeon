@@ -39,6 +39,10 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 
 TODO add ability to recolor own restraints via palette
 
+5.4.41
+- New expert tool feature/mod tool: You can add pose "NoSwimsuits"/"NoChestArmor"/etc to prevent certain armor items from adding their models
+
+
 5.4.40
 - New hairstyles: "FrontSwept" "CurlyPonytail", "BigBraidBack", "Vents", "BackShort", "FrontStraight2", "BackHime", "Bob", "BackFlat", "TwinDrills"
 - Added RoundHat

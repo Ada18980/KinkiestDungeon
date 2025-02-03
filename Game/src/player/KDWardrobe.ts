@@ -52,22 +52,72 @@ let KDModelListFilter = "";
 
 let KDRefreshProps = false;
 
-let KDCategoryFilterSpecial: Record<string, (C: Character, m: Model, stage: number) => boolean> = {
-	Worn: (C: Character, m: Model, stage: number) => {
+let KDCategoryFilterSpecial: Record<string, (C: Character, m: Model, stage: number, level: number) => boolean> = {
+	Worn: (C: Character, m: Model, stage: number, level) => {
 		return !!KDCurrentModels.get(C)?.Models?.get(m.Name) && (
-			m.TopLevel || stage > 1
+			level == 1
+			? KDModelIsProtected(KDCurrentModels.get(C)?.Models?.get(m.Name))
+			: !KDModelIsProtected(KDCurrentModels.get(C)?.Models?.get(m.Name))
 		);
 	}
 }
 
+let KDCategoryFilterSpecialSubClick: Record<string, (C: Character, en: any, index: number, name: string) => ((_bdata) => boolean)> = {
+
+}
+let KDCategoryFilterSpecialTopClick: Record<string, (C: Character, en: any, index: number, name: string) => ((_bdata) => boolean)> = {
+	Worn: (C, en, index, name) => {
+		return (_bdata: any) => {
+			if (!en) return false;
+
+			let removed = false;
+			for (let appIndex = 0; appIndex < C.Appearance.length; appIndex++) {
+				if (C.Appearance[appIndex]?.Model?.Name == name) {
+					if (KDModelList_Toplevel_index == index) {
+						KDChangeWardrobe(C);
+						C.Appearance.splice(appIndex, 1);
+						KDUpdateChar(C);
+					}
+					removed = true;
+					break;
+				}
+			}
+			if (!removed) {
+				let M = ModelDefs[name];
+				if (M) {
+					KDChangeWardrobe(C);
+					KDAddModel(C, M.Group || M.Name, M, "Default", undefined);
+					KDUpdateChar(C);
+				}
+
+
+			}
+
+
+			KDModelList_Toplevel_index = index;
+			KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			KDCurrentLayerOrig = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			KDRefreshProps = true;
+			KDUpdateModelList(3, C);
+			if (KDCurrentModels.get(C).Models.has(name)) {
+				KDSelectedModel = C.Appearance.find((value) => {
+					return value.Model.Name == name;
+				})?.Model;
+			} else KDSelectedModel = null;
+			return true;
+		};
+	},
+}
+
+
 let KDWardrobeCategories = [
+	"Uniforms",
 	"Worn",
 	"Hairstyles",
-	"Cosplay",
 	"Face",
 	"Eyes",
 	"Mouth",
-	"Uniforms",
+	"Cosplay",
 	"Suits",
 	"Armor",
 	"Bodysuits",
@@ -1022,8 +1072,8 @@ function KDUpdateModelList(level: number = 0, C?: Character): void {
 		KDModelList_Toplevel_index = 0;
 		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].TopLevel && (KDModelListFilter ||
-				(KDCategoryFilterSpecial[category] ? KDCategoryFilterSpecial[category](C, model[1], level)
+			if ((model[1].TopLevel || KDCategoryFilterSpecial[category]) && (KDModelListFilter ||
+				(KDCategoryFilterSpecial[category] ? KDCategoryFilterSpecial[category](C, model[1], level, 1)
 				: model[1].Categories?.includes(category))) && (TestMode || !model[1].Restraint)) {
 				if (!KDModelListFilter
 					|| TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
@@ -1041,36 +1091,39 @@ function KDUpdateModelList(level: number = 0, C?: Character): void {
 		if (toplevel) {
 			let already = {};
 			// Put these at the top of the list
-			for (let model of Object.entries(ModelDefs)) {
-				if (already[model[0]]) continue;
-				if ((model[1].Parent != toplevel
-					&& (!model[1].Parent2 || !model[1].Parent2.some((p) => {
-						return toplevel == p;
-					}))
-				)
-					 && model[0] == toplevel && (TestMode || !model[1].Restraint)) {
-					if (!KDModelListFilter || TextGet(model[1].Parent).toLowerCase().includes(KDModelListFilter.toLowerCase()))
-						{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
-				}
-			}
-			for (let model of Object.entries(ModelDefs)) {
-				if (already[model[0]]) continue;
-				if (((model[1].Parent == toplevel
-					|| (model[1].Parent2 && model[1].Parent2.some((p) => {
-						return toplevel == p;
-					}))) || KDModelListFilter) && (TestMode || !model[1].Restraint)) {
-					if (!KDModelListFilter || TextGet(model[1].Name).toLowerCase().includes(KDModelListFilter.toLowerCase()))
-						{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
-				}
-			}
 			if (KDCategoryFilterSpecial[category]) {
 				for (let model of Object.entries(ModelDefs)) {
 					if (already[model[0]]) continue;
 					if (
-						KDCategoryFilterSpecial[category](C, model[1], level))
+						KDCategoryFilterSpecial[category](C, model[1], level, 2))
 							{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
 				}
+			} else {
+				for (let model of Object.entries(ModelDefs)) {
+					if (already[model[0]]) continue;
+					if ((model[1].Parent != toplevel
+						&& (!model[1].Parent2 || !model[1].Parent2.some((p) => {
+							return toplevel == p;
+						}))
+					)
+						 && model[0] == toplevel && (TestMode || !model[1].Restraint)) {
+						if (!KDModelListFilter || TextGet(model[1].Parent).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+							{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
+					}
+				}
+				for (let model of Object.entries(ModelDefs)) {
+					if (already[model[0]]) continue;
+					if (((model[1].Parent == toplevel
+						|| (model[1].Parent2 && model[1].Parent2.some((p) => {
+							return toplevel == p;
+						}))) || KDModelListFilter) && (TestMode || !model[1].Restraint)) {
+						if (!KDModelListFilter || TextGet(model[1].Name).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+							{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
+					}
+				}
 			}
+
+
 		}
 	}
 }
@@ -1094,7 +1147,7 @@ function KDChangeWardrobe(C: Character) {
 function KDDrawModelList(X: number, C: Character) {
 
 
-	let clickCategory = (en: any, index: number) => {
+	let clickCategory = (en: any, index: number, sublevel: any) => {
 		return (_bdata: any) => {
 			if (!en) return false;
 			KDModelList_Categories_index = index;
@@ -1104,10 +1157,15 @@ function KDDrawModelList(X: number, C: Character) {
 				KDUpdateModelList(2, C);
 			}
 			KDUpdateModelList(1, C);
+			if (sublevel && KDCurrentModels.get(C).Models.has(sublevel)) {
+				KDSelectedModel = C.Appearance.find((value) => {
+					return value.Model.Name == sublevel;
+				})?.Model;
+			} else KDSelectedModel = null;
 			return true;
 		};
 	};
-	let clickToplevel = (en: any, index: number) => {
+	let clickToplevel = (en: any, index: number, sublevel: any) => {
 		return (_bdata: any) => {
 			if (!en) return false;
 			KDModelList_Toplevel_index = index;
@@ -1126,6 +1184,11 @@ function KDDrawModelList(X: number, C: Character) {
 				KDCurrentLayerOrig = "";
 			}
 			KDRefreshProps = true;
+			if (sublevel && KDCurrentModels.get(C).Models.has(sublevel)) {
+				KDSelectedModel = C.Appearance.find((value) => {
+					return value.Model.Name == sublevel;
+				})?.Model;
+			} else KDSelectedModel = null;
 			return true;
 		};
 	};
@@ -1162,6 +1225,11 @@ function KDDrawModelList(X: number, C: Character) {
 			KDCurrentLayerOrig = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
 			KDRefreshProps = true;
 			KDUpdateModelList(3, C);
+			if (KDCurrentModels.get(C).Models.has(name)) {
+				KDSelectedModel = C.Appearance.find((value) => {
+					return value.Model.Name == name;
+				})?.Model;
+			} else KDSelectedModel = null;
 			return true;
 		};
 	};
@@ -1199,15 +1267,17 @@ function KDDrawModelList(X: number, C: Character) {
 	}
 
 	let faded = "#888888";
-	KDSelectedModel = null;
 	// Draw each row
+	let mainCat = KDModelList_Categories[KDModelList_Categories_index];
 	for (let i = 0; i < KDModelListMax; i++) {
 
 		let index_cat = i + KDModelList_Categories_viewindex.index;
 		let category = KDModelList_Categories[index_cat];
+		let index_sub = i + KDModelList_Sublevel_viewindex.index;
+		let sublevel = KDModelList_Sublevel[index_sub];
 		//if (category)
 		DrawButtonKDExScroll("ClickCategory" + i, (amount) => {KDModelList_Categories_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
-			clickCategory(category, index_cat), true, X+0, 100 + buttonSpacing * i, 190, buttonHeight,
+			clickCategory(category, index_cat, sublevel), true, X+0, 100 + buttonSpacing * i, 190, buttonHeight,
 			!category ? "" : TextGet("cat_" + category),
 			hasCategories[category] ? "#ffffff" : faded, "",
 			undefined, undefined, index_cat != KDModelList_Categories_index, KDButtonColor);
@@ -1217,29 +1287,33 @@ function KDDrawModelList(X: number, C: Character) {
 		let toplevel = KDModelList_Toplevel[index_top];
 		//if (toplevel)
 		DrawButtonKDExScroll("ClickToplevel" + i, (amount) => {KDModelList_Toplevel_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
-			clickToplevel(toplevel, index_top), true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
+			KDCategoryFilterSpecialTopClick[mainCat] ?
+					KDCategoryFilterSpecialTopClick[mainCat](C, toplevel, index_top, toplevel)
+					: clickToplevel(toplevel, index_top, sublevel)
+		, true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
 			!toplevel ? "" : TextGet("m_" + toplevel),
 			(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? "#ffffff" : faded, "",
 			undefined, undefined, index_top != KDModelList_Toplevel_index, KDButtonColor);
 
 
 
-		let index_sub = i + KDModelList_Sublevel_viewindex.index;
-		let sublevel = KDModelList_Sublevel[index_sub];
 		//if (sublevel) {
 		DrawButtonKDExScroll("ClickSublevel" + i, (amount) => {KDModelList_Sublevel_viewindex.index += Math.min(5, Math.abs(amount)/buttonHeight) * Math.sign(amount); cullIndex();},
-			clickSublevel(sublevel, index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
+			KDCategoryFilterSpecialSubClick[mainCat] ?
+					KDCategoryFilterSpecialSubClick[mainCat](C, sublevel, index_sub, sublevel)
+					: clickSublevel(sublevel, index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
 			!sublevel ? "" : TextGet("m_" + sublevel),
 			KDCurrentModels.get(C).Models.has(sublevel) ? "#ffffff" : faded, "",
 			undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
-		if (sublevel) {
-			if (index_sub == KDModelList_Sublevel_index && KDCurrentModels.get(C).Models.has(sublevel)) {
+
+
+		if (!KDSelectedModel && sublevel) {
+			if (KDCurrentModels.get(C).Models.has(sublevel)) {
 				KDSelectedModel = C.Appearance.find((value) => {
 					return value.Model.Name == sublevel;
 				})?.Model;
 			}
 		}
-
 		// KDCurrentModels.get(KinkyDungeonPlayer).Models.has(model) ? "#ffffff" : "#888888", "");
 	}
 
@@ -1448,6 +1522,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	// Return anon function anonymously
 	let clickButton = (index: number) => {
 		return (_bdata: any) => {
+			KDSelectedModel = null;
 			if (C == KinkyDungeonPlayer) {
 				KDOutfitStore[KDCurrentOutfit] = LZString.compressToBase64(CharacterAppearanceStringify(C || KinkyDungeonPlayer,
 					KDGetCharMetadata(C || KinkyDungeonPlayer)
@@ -1549,6 +1624,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 	DrawButtonKDEx("StripOutfit", (_bdata) => {
 		if (KDConfirmType == "strip" && KinkyDungeonReplaceConfirm > 0) {
+			KDSelectedModel = null;
 			KDChangeWardrobe(C);
 			CharacterReleaseTotal(C);
 			CharacterNaked(C);
@@ -1578,6 +1654,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	undefined, undefined, true);
 	DrawButtonKDEx("LoadFromCode", (_bdata) => {
 		KinkyDungeonState = "LoadOutfit";
+		KDSelectedModel = null;
 
 
 		CharacterReleaseTotal(C || KinkyDungeonPlayer);
@@ -1592,6 +1669,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 	DrawButtonKDEx("KDWardrobeCancel", (_bdata) => {
 		if (KDConfirmType == "revert" && KinkyDungeonReplaceConfirm > 0) {
+			KDSelectedModel = null;
 			KinkyDungeonReplaceConfirm = 0;
 
 			if (KDWardrobeRevertCallback) KDWardrobeRevertCallback();
@@ -1643,6 +1721,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	} else {
 		DrawButtonKDEx("ResetOutfit", (_bdata) => {
 			if (KDConfirmType == "reset" && KinkyDungeonReplaceConfirm > 0) {
+				KDSelectedModel = null;
 				if (C == KinkyDungeonPlayer) {
 					KDChangeWardrobe(C);
 					KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
@@ -2381,8 +2460,15 @@ function ApplyDragDisplacement(C, CurrentLayer, Parent: string) {
 	let LayerBonus = Math.round((parseFloat(CurrentLayer.LayerBonus) || 0)*100)/100;
 
 	KDChangeWardrobe(C);
-	CurrentLayer.XOffset = Math.round((XOffset + XX_OFFSET)*100)/100;
-	CurrentLayer.YOffset = Math.round((YOffset + YY_OFFSET)*100)/100;
+	if (XX_OFFSET) {
+		CurrentLayer.XOffset = Math.round((XOffset + XX_OFFSET)*100)/100;
+		CurrentLayer.XPivot = XPivot;
+	}
+
+	if (YY_OFFSET) {
+		CurrentLayer.YOffset = Math.round((YOffset + YY_OFFSET)*100)/100;
+		CurrentLayer.YPivot = YPivot;
+	}
 	//CurrentLayer.XPivot = XPivot + X_OFFSET;
 	//CurrentLayer.YPivot = YPivot + Y_OFFSET;
 

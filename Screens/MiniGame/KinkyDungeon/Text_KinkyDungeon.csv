@@ -2091,7 +2091,7 @@ KillStatue,"The statue topples over!"
 NameStatueDart,Statue
 KillStatueDart,"The statue topples over and reveals a mechanism!"
 NameStatueGag,Statue
-KillStatuegGag,"The statue topples over and reveals a mechanism!"
+KillStatueGag,"The statue topples over and reveals a mechanism!"
 AttackStatueGagBind,"The statue shoves a gag into your mouth, which inflates to fill the space! (+RestraintAdded)"
 AttackStatueGag,"The statue kisses your gag! (DamageTaken)"
 

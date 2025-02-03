@@ -1496,7 +1496,7 @@ function KinkyDungeonCreateMap (
 
 
 		if (KDTileToTest || ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
-			&& ((!altType?.genCriteria && KDCheckMainPath()) || altType.genCriteria(iterations)))) iterations = maxIter;
+			&& ((!altType?.genCriteria && KDCheckMainPath()) || altType?.genCriteria(iterations)))) iterations = maxIter;
 		else console.log("This map failed to generate! Please screenshot and send your save code to Ada on deviantart or discord!");
 
 		if (iterations == maxIter) {

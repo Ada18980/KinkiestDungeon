@@ -390,7 +390,7 @@ function KinkyDungeonMakeGhostDecision() {
 
 			let rep = KinkyDungeonGoddessRep.Ghost;
 
-			if (rep > 0) tile.GhostDecision += 1;
+			if (rep > 40) tile.GhostDecision += 1;
 			if (rep != undefined) {
 				let mult = KinkyDungeonStatsChoice.get("Oppression") ? 1.5 : (KinkyDungeonStatsChoice.has("Dominant") ? 0.5 : 1.0);
 				if (KDRandom() * 100 * mult > -rep + 75) tile.GhostDecision += 1;
