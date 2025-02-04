@@ -341,6 +341,7 @@ function KinkyDungeonGhostMessage() {
 	if (restraints.length == 0) {
 		msg = TextGet("KinkyDungeonGhostGreet" + KinkyDungeonTargetTile.GhostDecision);
 	} else {
+		let ghostThresh = KDGetGhostThresh();
 		if (KinkyDungeonTargetTile.GhostDecision <= 1) {
 			msg = TextGet("KinkyDungeonGhostHelpful" + KinkyDungeonTargetTile.GhostDecision);
 		} else {
@@ -390,7 +391,7 @@ function KinkyDungeonMakeGhostDecision() {
 
 			let rep = KinkyDungeonGoddessRep.Ghost;
 
-			if (rep > 40) tile.GhostDecision += 1;
+			if (rep > 0) tile.GhostDecision += 1;
 			if (rep != undefined) {
 				let mult = KinkyDungeonStatsChoice.get("Oppression") ? 1.5 : (KinkyDungeonStatsChoice.has("Dominant") ? 0.5 : 1.0);
 				if (KDRandom() * 100 * mult > -rep + 75) tile.GhostDecision += 1;
@@ -762,4 +763,15 @@ function KDDrawOrb() {
 	}, true,  XX, yPad + KDModalArea_y + spacing * i - 27 + 30, 250, spacing - 8, TextGet("KinkyDungeonSurpriseMe"), "white", undefined, undefined, undefined, false, KDTextGray2);
 	i += 2;
 
+}
+
+function KDGetGhostThresh(): number {
+	let amt = 3;
+	let rep = KinkyDungeonGoddessRep.Ghost;
+
+	if (rep > -25) amt -= 1;
+	if (rep > 0) amt -= 1;
+	if (rep > 40) amt -= 1;
+
+	return Math.max(amt, 0);
 }

@@ -1276,7 +1276,7 @@ La magia te pone en un estado mental claro. Lanzar hechizos con éxito reduce tu
 
 ### Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
 
-### Unknown 
+### Unknown
 
 Copy (clipboard)
 Copiar (portapapeles)
@@ -1356,9 +1356,9 @@ Everywhere!
 ¡En todos lados!
 
 
-### Physical Armor: 
+### Physical Armor:
 
-### Magic Armor: 
+### Magic Armor:
 
 In the Shadows: You are harder to see.
 En las sombras: eres más difícil de ver.
@@ -1366,7 +1366,7 @@ Invisible: You are very difficult to see.
 Invisible: Eres muy difícil de ver.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Rapidez: Tu próximo movimiento es tan rápido que no avanza un turno.
-### All Damage Reduction: 
+### All Damage Reduction:
 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Recibes PERCENT1 DAMAGETYPE de daño, basado en PERCENT2 DAMAGETYPE resist y PERCENT3 DAMAGECATEGORY modificador.
@@ -1658,7 +1658,7 @@ Missing key
 llave faltante
 ### You are protected from damage and can't be bound until the shield is broken!
 
-### Chance for a spell to fizzle: 
+### Chance for a spell to fizzle:
 
 ### Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 
@@ -1826,7 +1826,7 @@ Delete Mod
 Eliminar modo
 Clear Perks
 Borrar ventajas
-### Config 
+### Config
 
 Cancel
 Cancelar
@@ -1958,15 +1958,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 Piso FLOORNUMBER: DUNGEONNAME
 
 
-### Lockpicks: 
+### Lockpicks:
 
-### Keys: 
+### Keys:
 
-### Magic Keys: 
+### Magic Keys:
 
-### Knife: 
+### Knife:
 
-### Mag. Knife: 
+### Mag. Knife:
 
 ### You climb down the stairs. The passage closes behind you.
 
@@ -2178,7 +2178,7 @@ You find a medley of potions.
 Encuentras una mezcla de pociones.
 
 
-### Rarity: 
+### Rarity:
 
 Lesser
 Menor
@@ -3032,7 +3032,7 @@ Dreamcatcher
 Atrapasueños
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Forjado en pesadillas, tejido en acero. Invoca a un guerrero de sombras en objetivos desprevenidos por un 2 % de energía antigua.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 
 Axe
 Hacha
@@ -3040,11 +3040,11 @@ Great for cutting trees that happen to be underground.
 Ideal para cortar árboles que están bajo tierra.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 También inflige 20 de daño a los enemigos a tu lado. Inflige daño cortante.
-### Accuracy: 
+### Accuracy:
 
-### Crit Multiplier: 
+### Crit Multiplier:
 
-### Bind Crit Multiplier: 
+### Bind Crit Multiplier:
 
 Find the keys..
 Encuentra las llaves..
@@ -3062,9 +3062,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Encontraste una grieta y tal vez podrías clavar un cuchillo o una herramienta en ella para mantenerla quieta.
 You found something sticky and might be able to pull off fabrics.
 Encontraste algo pegajoso y podrías arrancar telas.
-### Evasion: 
+### Evasion:
 
-### Visibility: 
+### Visibility:
 
 
 
@@ -3108,13 +3108,13 @@ afilado!
 
 
 
-### Damage: 
+### Damage:
 
-### Bind: 
+### Bind:
 
-### Crit: 
+### Crit:
 
-### SP Cost: 
+### SP Cost:
 
 ### Cut PWR: AMNT%
 
@@ -6142,17 +6142,17 @@ Commerce
 Comercio
 Shrine of SHRINETYPE
 Santuario de SHRINETYPE
-### Tablet of 
+### Tablet of
 
-### Goddess: 
+### Goddess:
 
-### Goddess Blessing: 
+### Goddess Blessing:
 
-### Goddess Curse: 
+### Goddess Curse:
 
-### Mana Bonus: 
+### Mana Bonus:
 
-### Lack of Mana Penalty: 
+### Lack of Mana Penalty:
 
 ### Your excess mana helps you suppress the enchantment!
 
@@ -6176,11 +6176,11 @@ You try to read the runes but cannot understand them.
 Intentas leer las runas pero no puedes entenderlas.
 
 
-### Allies: 
+### Allies:
 
-### Enemies: 
+### Enemies:
 
-### Favorable: 
+### Favorable:
 
 ### None
 
@@ -6756,7 +6756,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find 
+### You find
 
 
 
@@ -8926,7 +8926,7 @@ Un libro de hechizos manipuladores.
 
 ### Vision
 
-### Components: 
+### Components:
 
 Arm Movements
 Movimientos de brazos
@@ -11632,7 +11632,7 @@ You need more spell points.
 Necesitas más puntos de hechizo.
 You don't have enough maximum mana to cast this spell!
 ¡No tienes suficiente maná máximo para lanzar este hechizo!
-### School: 
+### School:
 
 Generic
 Genérico
@@ -11642,15 +11642,15 @@ Genérico
 
 Learn Spell
 aprender hechizo
-### Spell Points: 
+### Spell Points:
 
 
 
-### Level: 
+### Level:
 
-### Spell Point Cost: 
+### Spell Point Cost:
 
-### Mana Cost: 
+### Mana Cost:
 
 
 
@@ -11682,19 +11682,19 @@ Replace Spell 6
 Reemplazar hechizo 6
 Replace Spell 7
 Reemplazar hechizo 7
-### Current Spell 1: 
+### Current Spell 1:
 
-### Current Spell 2: 
+### Current Spell 2:
 
-### Current Spell 3: 
+### Current Spell 3:
 
-### Current Spell 4: 
+### Current Spell 4:
 
-### Current Spell 5: 
+### Current Spell 5:
 
-### Current Spell 6: 
+### Current Spell 6:
 
-### Current Spell 7: 
+### Current Spell 7:
 
 ### ???
 
@@ -11730,7 +11730,7 @@ Fuelle
 (Una página del Libro de los Eones)|Algunos dicen que las 'Catacumbas' son más antiguas que el tiempo mismo. Cuando la Antigua Civilización comenzó a estudiar la inmortalidad, nadie sabía si sería posible traer de vuelta a los que ya habían muerto. Las catacumbas, por lo tanto, se utilizaron para almacenar todos los restos de antiguos humanos, de modo que ellos también pudieran ser revividos cuando el archimago finalmente hiciera su avance.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Una página del Libro de los Eones)|Dicen que el archimago Sariel Vinlaga estudió en esta misma biblioteca. Habiendo reunido todo el conocimiento humano, mágico, espiritual, tecnológico, encargó a sus doce magos menores el trabajo de clasificar y cotejar la riqueza del conocimiento que había adquirido. Nadie sabe por qué lo abandonó de repente, o por qué sigue tan mal en la actualidad.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Una página del Libro de los Eones)|El problema de la Energía ha plagado a la civilización durante milenios. Antes de que se descubrieran las líneas místicas, la humanidad dependía de fuentes naturales de energía como los ríos y la leña. Cuando se descubrieron las Cuevas de Cristal, ocurrió una gran revolución. Al no depender más de las fuentes naturales, las civilizaciones podrían aprovechar las fuentes de energía caótica subterránea para alimentar maquinaria como nunca antes se había visto.
@@ -12390,11 +12390,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 Por 3 repeticiones, la diosa te otorgará deslizamiento, aumentando tu lucha.
 For 3 rep the goddess will grant you a key.
 Por 3 repeticiones la diosa te otorgará una llave.
-### For 3 rep the goddess will grant you 
+### For 3 rep the goddess will grant you
 
 For 3 rep the goddess
 Por 3 rep la diosa
-For 3 rep the goddess 
+For 3 rep the goddess
 Por 3 rep la diosa
 
 
@@ -12766,11 +12766,11 @@ Can disarm (chance: DISARMCHANCE%)
 Puede desarmar (oportunidad: DESARMADA%)
 Resistances:
 Resistencias:
-### HP: 
+### HP:
 
-### Shield: 
+### Shield:
 
-### Binding: 
+### Binding:
 
 Ambivalent
 Ambivalente
@@ -13088,7 +13088,7 @@ Modo de distracción:
 
 ### A supposedly reasonable difficulty curve.
 
-### Play the game the way it was intended. Cruel and restrictive. 
+### Play the game the way it was intended. Cruel and restrictive.
 
 ### Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 
@@ -18908,7 +18908,7 @@ What? (PERCENT chance to avoid)
 (La SPEAKER se aclara la garganta)|Bueno, ¡en realidad estamos reclutando!|¡Eres libre de unirte a nosotros si aceptas luchar por la justicia!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (El SPEAKER te da un firme apretón de manos)|¡Bienvenida a la hermandad, aventurera!
-### (The SPEAKER tilts her head and shrugs)|Ah well. 
+### (The SPEAKER tilts her head and shrugs)|Ah well.
 
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (El SPEAKER frunce el ceño)|¿Qué pasa?|No eres enemigo de la justicia, ¿verdad?
@@ -19964,7 +19964,7 @@ You are in charge, right?
 Usted está a cargo, ¿verdad?
 (Giggle)
 (Risilla)
-Don't mess with me, little girl.
+Don't mess with me, young lady.
 No te metas conmigo, niña.
 Mmpphgh? (Pout at her)
 Mmpphgh? (Ponle puchero a ella)
@@ -20514,7 +20514,7 @@ Dale un Pergamino de Pureza
 
 ### Hmmmph? Mmmm! (Act worried and whimper)
 
-### (The SPEAKER folds her arms)|Mistress Oriel's orders 
+### (The SPEAKER folds her arms)|Mistress Oriel's orders
 
 ### Not in the 'System'?
 
@@ -20772,7 +20772,7 @@ Upcast Level LEVEL
 Nivel mejorado NIVEL
 Prerequisite
 Requisito previo
-### Unlocks: 
+### Unlocks:
 
 You need to learn REQUIREDSPELL before you can learn this one.
 Necesitas aprender el HECHIZO REQUERIDO antes de poder aprender este.
@@ -20828,7 +20828,7 @@ Iniciando el protocolo de encierro de prisioneros
 
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count: 
+### Turn Count:
 
 The Shopkeeper leashes you!
 ¡El comerciante te ata!
@@ -21260,7 +21260,7 @@ Azul
 
 ### Items on Ground:
 
-### Preloading Character Assets: 
+### Preloading Character Assets:
 
 ### Currently Worn
 
@@ -26816,7 +26816,7 @@ Cuerda de entrepierna de mitril
 
 ### A rubber cylinder without any lewd intentions whatsoever.
 
-### Deals grope damage. 
+### Deals grope damage.
 
 ### You pick up a flexible rubber stick.
 
@@ -27702,9 +27702,9 @@ Ataque a distancia
 
 ### Your RestraintName shatters and falls off!
 
-### Load Hotbar 
+### Load Hotbar
 
-### Save Hotbar 
+### Save Hotbar
 
 ### Clear Hotbar
 
@@ -28882,7 +28882,7 @@ Hogtied!
 
 
 
-### Receive the following restraints: 
+### Receive the following restraints:
 
 ### You will be bound with some form of restraint.
 
@@ -29454,7 +29454,7 @@ Hogtied!
 
 ### Select a character to examine
 
-### Former Faction: 
+### Former Faction:
 
 
 
@@ -29648,7 +29648,7 @@ Hogtied!
 
 ### You crouch and move slowly.
 
-### Owned by: 
+### Owned by:
 
 ### Warden's Belt
 
@@ -30308,7 +30308,7 @@ Hogtied!
 
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took 
+### Took
 
 ### (As you slay the dragon, it begins shapeshifting into human form!)
 
@@ -31204,9 +31204,9 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Runes
 
-### Stock: 
+### Stock:
 
-### Inputs: 
+### Inputs:
 
 ### You slip off the conveyor!
 
@@ -31272,17 +31272,17 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Heels
 
-### Equipped: 
+### Equipped:
 
-### Click to Add 
+### Click to Add
 
-### Apply 
+### Apply
 
-### Raw Material: 
+### Raw Material:
 
 ### Free Prisoner
 
-### Perk Unlocked: 
+### Perk Unlocked:
 
 ### Latex Solvent
 
@@ -31312,23 +31312,23 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Choose Restraint
 
-### Def. Palette: 
+### Def. Palette:
 
 ### Set All Palette
 
 ### Guests
 
-### Assign to 
+### Assign to
 
-### Remove from 
+### Remove from
 
-### Can't assign to 
+### Can't assign to
 
-### Remove from party to assign 
+### Remove from party to assign
 
 ### Imprison
 
-### Opinion: 
+### Opinion:
 
 ### Last Seen on Floor FLR, LOC
 
@@ -31354,17 +31354,17 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Any
 
-### NPC Opinion: 
+### NPC Opinion:
 
-### NPC Escape Status: 
+### NPC Escape Status:
 
-### NPC Binding: 
+### NPC Binding:
 
-### NPC Availability: 
+### NPC Availability:
 
-### Favorited: 
+### Favorited:
 
-### Rank: 
+### Rank:
 
 ### Minor
 
@@ -31476,7 +31476,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Select a Binding Slot
 
-### Cost: 
+### Cost:
 
 ### Zoom set to PCNT%
 
@@ -31500,7 +31500,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot 
+### Save Slot
 
 ### Load Game
 
@@ -31558,11 +31558,11 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Chaos Route
 
-### Map Seed: 
+### Map Seed:
 
 ### Will Overwrite NME!
 
-### Play Slot 
+### Play Slot
 
 ### Play (NO SLOT!)
 
@@ -31748,7 +31748,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Deposit All
 
-### Auto-loot found 
+### Auto-loot found
 
 ###  (not picked up)
 
@@ -32728,6 +32728,6 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Settings
 
-### Scroll Controls: 
+### Scroll Controls:
 
-### Layer Text: 
+### Layer Text:

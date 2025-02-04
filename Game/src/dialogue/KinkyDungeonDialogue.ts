@@ -202,9 +202,11 @@ function KDIncreaseOfferFatigue(Amount: number): void {
  * @param enemy
  */
 function KDEnemyHelpfulness(enemy: entity): number {
+	let mult = KDIsInPartyID(enemy.id) ? 1.5 : 1.0;
 	if (!enemy.personality) return 1.0;
-	if (KDStrictPersonalities.includes(enemy.personality)) return 0.33;
-	if (KDLoosePersonalities.includes(enemy.personality)) return 1.75;
+	if (KDStrictPersonalities.includes(enemy.personality)) return mult*0.33;
+	if (KDLoosePersonalities.includes(enemy.personality)) return mult*1.75;
+	return mult*1.0;
 }
 
 function KDGetSpeaker(global?: boolean): entity {
