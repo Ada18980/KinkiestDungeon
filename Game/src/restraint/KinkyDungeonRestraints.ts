@@ -6426,10 +6426,10 @@ function KDDoEquipDelayed(data: any, player: entity): string {
 
 
 function KDResetPreferenceFlags() {
-	KinkyDungeonFlags.set("prefer_armbinder", 0);
-	KinkyDungeonFlags.set("prefer_boxbinder", 0);
-	KinkyDungeonFlags.set("prefer_jacket", 0);
-	KinkyDungeonFlags.set("prefer_yoke", 0);
+	KinkyDungeonSetFlag("prefer_armbinder", 0)
+	KinkyDungeonSetFlag("prefer_boxbinder", 0)
+	KinkyDungeonSetFlag("prefer_jacket", 0)
+	KinkyDungeonSetFlag("prefer_yoke", 0)
 }
 
 function KDGetPreferenceFlags(): string[] {
@@ -6464,6 +6464,6 @@ function KDUpdatePreferenceFlags() {
 
 	let selected = select.length > 0 ? select[Math.floor(KDRandom() * select.length)] : "";
 	if (selected) {
-		KinkyDungeonFlags.set(selected, 0);
+		KinkyDungeonSetFlag(selected, 1)
 	}
 }
