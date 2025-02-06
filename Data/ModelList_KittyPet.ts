@@ -207,8 +207,177 @@ AddModel({
 	])
 });
 
+AddModel(GetModelFashionVersion("KittyPetBlindfold", true));
+
+
+AddModel({
+	Name: "KittyPetBlindfold",
+	Folder: "KittyPet",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+		{ Name: "BlindfoldBrow", Layer: "Blindfold", Pri: 40.2,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Brows",
+		},
+	])
+});
 
 AddModel(GetModelFashionVersion("KittyPetBlindfold", true));
+
+
+AddModel({
+	Name: "KittyPetBlindfoldStitched",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetBlindfold",
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+		{ Name: "BlindfoldBrow", Layer: "Blindfold", Pri: 40.2,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Brows",
+		},
+		{ Name: "BlindfoldStich", Layer: "Blindfold", Pri: 40.3,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Stitches",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "KittyPetBlindfoldPanel",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetBlindfold",
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+		{ Name: "BlindfoldBrow", Layer: "Blindfold", Pri: 40.5,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Brows",
+		},
+		{ Name: "BlindfoldSmall", Layer: "Blindfold", Pri: 40.3,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Panel",
+		},
+		{ Name: "BlindfoldSmallStrap", Layer: "Blindfold", Pri: 40.2,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Strap",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetBlindfoldPanelStitched",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetBlindfold",
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+
+		{ Name: "BlindfoldBrow", Layer: "Blindfold", Pri: 40.5,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Brows",
+		},
+		{ Name: "BlindfoldStich", Layer: "Blindfold", Pri: 40.3,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Stitches",
+		},
+		{ Name: "BlindfoldSmall", Layer: "Blindfold", Pri: 40.3,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Panel",
+		},
+		{ Name: "BlindfoldSmallStrap", Layer: "Blindfold", Pri: 40.2,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Strap",
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("KittyPetBlindfoldPanel", true));
+AddModel(GetModelFashionVersion("KittyPetBlindfoldStitched", true));
+AddModel(GetModelFashionVersion("KittyPetBlindfoldPanelStitched", true));
+
+
+AddModel({
+	Name: "KittyPetBlindfoldStrap",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetBlindfold",
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+		{ Name: "BlindfoldStrap", Layer: "BlindfoldStraps", Pri: 40,
+			Invariant: true,
+			InheritColor: "Strap",
+			NoOverride: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("KittyPetBlindfoldStrap", true));
+
+
 AddModel({
 	Name: "KittyPetHarnessBlindfold",
 	Folder: "KittyPet",
