@@ -5023,9 +5023,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 	}
 	let noadvance = false;
 	if (KinkyDungeonHasStamina(Math.abs(attackCost), true)) {
-		if (!KDGameData.ConfirmAttack && (KDIsImprisoned(Enemy)
-			|| ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy))
-			&& !(Enemy.playWithPlayer && KDCanDom(Enemy))))) {
+		if (KDTalkToEnemy(Enemy)) {
 			let d = Enemy.Enemy.specialdialogue ? Enemy.Enemy.specialdialogue : "GenericAlly";
 			if ((!Enemy.specialdialogue && !Enemy.prisondialogue) && KDIsImprisoned(Enemy)) d = "PrisonerJailBug";
 			else if (Enemy.prisondialogue && KDIsImprisoned(Enemy)) d = Enemy.prisondialogue; // Special dialogue override
@@ -6701,4 +6699,10 @@ function KDDelayedActionStart() {
 	//KinkyDungeonAdvanceTime(1);
 	if (KDAutoWaitDelayed)
 		KinkyDungeonSleepTime = KDNormalWaitTime;
+}
+
+function KDTalkToEnemy(Enemy: entity) {
+	return (KDIsImprisoned(Enemy)
+		|| ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy))
+		&& !(Enemy.playWithPlayer && KDCanDom(Enemy))));
 }

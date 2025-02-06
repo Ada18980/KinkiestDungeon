@@ -312,3 +312,78 @@ AddModel({
 });
 
 AddModel(GetModelRestraintVersion("KittyPetPawsShort", true));
+
+
+
+AddModel({
+	Name: "KittyPetSockShortLeft",
+	Folder: "KittyPetSocksShort",
+	Parent: "KittyPetSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -3,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Long",
+			DisplaceAmount: 10,
+		},
+		{ Name: "SockLeftPaws", Layer: "StockingLeft", Pri: -2.9,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			TieToLayer: "SockLeft",
+			InheritColor: "PawLeft",
+			NoOverride: true,
+		},
+		{ Name: "FootLeftHogtie", Layer: "SockLeftHogtie", Pri: -3.5,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "SockLeft",
+			Invariant: true,
+		},
+		{ Name: "FootLeftHogtiePaws", Layer: "SockLeftHogtie", Pri: -3.4,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "PawLeft",
+			Invariant: true,
+			TieToLayer: "FootLeftHogtie",
+			NoOverride: true,
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetSockShortRight",
+	Folder: "KittyPetSocksShort",
+	Parent: "KittyPetSocks",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockRight", Layer: "StockingRight", Pri: -3,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Long",
+			DisplaceAmount: 10,
+		},
+		{ Name: "FootRightKneel", Layer: "SockRightKneel", Pri: -1.5,
+			HidePoses: ToMap(["FeetLinked"]),
+			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "KittyPetSocksShort",
+	Folder: "KittyPetSocksShort",
+	Parent: "KittyPetSocks",
+	TopLevel: false,
+	Categories: ["Socks", "Cosplay"],
+	Layers: ToLayerMap([
+		...GetModelLayers("KittyPetSockShortRight"),
+		...GetModelLayers("KittyPetSockShortLeft"),
+	])
+});
+
+AddModel(GetModelRestraintVersion("KittyPetSocksShort", true));

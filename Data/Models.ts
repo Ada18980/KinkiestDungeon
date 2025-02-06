@@ -2723,5 +2723,4 @@ function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIX
 		}
 		kdFilterSprites.get(sprite.texture).push(info);
 	}
-
 }

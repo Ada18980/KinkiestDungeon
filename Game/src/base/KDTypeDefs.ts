@@ -3954,6 +3954,7 @@ type PIXIContainer = import('pixi.js').Container;
 type PIXIMesh = import('pixi.js').Mesh;
 type PIXIRenderTexture = import('pixi.js').RenderTexture;
 type PIXITexture = import('pixi.js').Texture;
+type PIXIText = import('pixi.js').Text;
 type PIXISprite = import('pixi.js').Sprite;
 
 

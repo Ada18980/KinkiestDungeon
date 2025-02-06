@@ -3079,7 +3079,7 @@ let KDAllowText = true;
  */
 function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): boolean {
 	if (!KDAllowText) return;
-	let sprite = Map.get(id);
+	let sprite: PIXIText = Map.get(id);
 	let same = true;
 	let par = kdprimitiveparams.get(id);
 	if (sprite && par) {
@@ -3101,7 +3101,9 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 		}
 	}
 	if (!sprite || !same) {
-		if (sprite) sprite.destroy();
+		if (sprite) {
+			sprite.destroy(true);
+		}
 		// Make the prim
 		sprite = new PIXI.Text(Params.Text,
 			{
@@ -3166,7 +3168,10 @@ function DrawRectKD (Container: PIXIContainer, Map: Map<string, any>, id: string
 		}
 	}
 	if (!sprite || !same) {
-		if (sprite) sprite.destroy();
+		if (sprite) {
+			sprite.clear();
+			sprite.destroy(true);
+		}
 		// Make the prim
 		sprite = new PIXI.Graphics();
 		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
@@ -3211,7 +3216,10 @@ function DrawCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
 		}
 	}
 	if (!sprite || !same) {
-		if (sprite) sprite.destroy();
+		if (sprite) {
+			sprite.clear();
+			sprite.destroy(true);
+		}
 		// Make the prim
 		sprite = new PIXI.Graphics();
 		sprite.lineStyle(Params.LineWidth ? Params.LineWidth : 1, string2hex(Params.Color), 1);
@@ -3258,7 +3266,10 @@ function DrawCrossKD(Container: PIXIContainer, Map: Map<string, any>, id: string
 		}
 	}
 	if (!sprite || !same) {
-		if (sprite) sprite.destroy();
+		if (sprite) {
+			sprite.clear();
+			sprite.destroy(true);
+		}
 		// Make the prim
 		let linewidth = Params.LineWidth || 2;
 		sprite = new PIXI.Graphics();
@@ -3301,7 +3312,10 @@ function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
 		}
 	}
 	if (!sprite || !same) {
-		if (sprite) sprite.destroy();
+		if (sprite) {
+			sprite.clear();
+			sprite.destroy(true);
+		}
 		// Make the prim
 		sprite = new PIXI.Graphics();
 		sprite.beginFill(string2hex(Params.Color));
@@ -3345,7 +3359,10 @@ function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string,
 		}
 	}
 	if (!sprite || !same) {
-		if (sprite) sprite.destroy();
+		if (sprite) {
+			sprite.clear();
+			sprite.destroy(true);
+		}
 		// Make the prim
 		sprite = new PIXI.Graphics();
 		sprite.beginFill(string2hex(Params.Color));
@@ -5207,7 +5224,9 @@ function KDGetTargetRetType(x: number, y: number): string {
 		if (KDCanPassEnemy(KinkyDungeonPlayerEntity, enemy) &&
 			(!agg || KDHelpless(enemy))) return "Pass";
 		if (KDHostile(enemy) && agg) return "Attack";
-		if (!KDHostile(enemy) && agg && KDCanDom(enemy)) return "Sub";
+		if (!KDHostile(enemy) && (agg
+			|| (!KDTalkToEnemy(enemy) && (enemy.playWithPlayer && KDCanDom(enemy)))
+		) && KDCanDom(enemy)) return "Sub";
 		return "Talk";
 	}
 
@@ -5329,9 +5348,11 @@ function KDDoGraphicsSanitize(): void {
 
 	KDFilterCacheToDestroy = [];
 	for (let s of KDSpritesToCull) {
-		delete s.filters;
-		if (!s.destroyed)
+		if (!s.destroyed) {
+			KDPurgeSpriteRelatedFilters(s);
+			delete s.filters;
 			s.destroy();
+		}
 	}
 	KDSpritesToCull = [];
 }

@@ -3282,9 +3282,11 @@ function KinkyDungeonRun() {
 
 
 
+
 	KDDrawDelta = performance.now() - lastfps;
 	fpscounter++;
 	if (fpscounter > 10) {
+		KDPurgeFilterSprites();
 		fpscounter = 0;
 		dispfps = Math.round(1000 / Math.max(KDDrawDelta, 1));
 	}
@@ -3376,6 +3378,15 @@ function KDGetCullTime() {
 	return Math.max(1000, KDCULLTIME);
 }
 
+function KDPurgeFilterSprites() {
+	for (let entry of kdFilterSprites.entries()) {
+		//@ts-ignore
+		if (entry[0].destroyed || entry[0].parent === null) {
+			KDPurgeSpriteRelatedFilters(entry[0]);
+		}
+	}
+}
+
 function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 	if (kdFilterSprites.get(sprite)) {
 		for (let f of kdFilterSprites.get(sprite)) {
@@ -3399,8 +3410,11 @@ function KDCullSprites(): void {
 				kdpixisprites.delete(sprite[0]);
 				delete sprite[1].filters;
 				KDPurgeSpriteRelatedFilters(sprite[1]);
-				if (sprite[1].destroy && !sprite[1].destroyed)
+				if (sprite[1].destroy && !sprite[1].destroyed) {
+					if (sprite[1].clear) sprite[1].clear();
 					sprite[1].destroy();
+				}
+
 			} else sprite[1].visible = false;
 		}// else sprite[1].visible = true;
 	}
@@ -3419,8 +3433,11 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				list.delete(sprite[0]);
 				delete sprite[1].filters;
 				KDPurgeSpriteRelatedFilters(sprite[1]);
-				if (sprite[1].destroy && !sprite[1].destroyed)
+				if (sprite[1].destroy && !sprite[1].destroyed) {
+					if (sprite[1].clear) sprite[1].clear();
 					sprite[1].destroy();
+				}
+
 			} else sprite[1].visible = false;
 		}// else sprite[1].visible = true;
 	}
