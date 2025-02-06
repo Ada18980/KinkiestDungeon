@@ -307,6 +307,12 @@
             <key type="filename">../Models/Belts/RightLegs1KneelClosed.png</key>
             <key type="filename">../Models/Belts/RightLegs2Kneel.png</key>
             <key type="filename">../Models/Belts/RightLegs2KneelClosed.png</key>
+            <key type="filename">../Models/Blindfold/HarnessBlindfold.png</key>
+            <key type="filename">../Models/Blindfold/HarnessBlindfoldHarness.png</key>
+            <key type="filename">../Models/Blindfold/HarnessBlindfoldHarnessHardware.png</key>
+            <key type="filename">../Models/Blindfold/HarnessBlindfoldLock.png</key>
+            <key type="filename">../Models/Blindfold/HarnessBlindfoldStrap.png</key>
+            <key type="filename">../Models/Blindfold/HarnessBlindfoldStrapHardware.png</key>
             <key type="filename">../Models/Blindfold/KittyEyes.png</key>
             <key type="filename">../Models/Blindfold/LeatherBase.png</key>
             <key type="filename">../Models/Blindfold/LeatherRim.png</key>
@@ -1959,6 +1965,7 @@
             <key type="filename">../Models/KittyPet/Band.png</key>
             <key type="filename">../Models/KittyPet/Blindfold.png</key>
             <key type="filename">../Models/KittyPet/BlindfoldBrow.png</key>
+            <key type="filename">../Models/KittyPet/BlindfoldHarness.png</key>
             <key type="filename">../Models/KittyPet/BlindfoldRim.png</key>
             <key type="filename">../Models/KittyPet/BlindfoldSmall.png</key>
             <key type="filename">../Models/KittyPet/BlindfoldSmallStrap.png</key>
@@ -1982,6 +1989,9 @@
             <key type="filename">../Models/KittyPet/Ears3InnerR.png</key>
             <key type="filename">../Models/KittyPet/Ears3L.png</key>
             <key type="filename">../Models/KittyPet/Ears3R.png</key>
+            <key type="filename">../Models/KittyPet/FaceHarness.png</key>
+            <key type="filename">../Models/KittyPet/FaceHarnessHardware.png</key>
+            <key type="filename">../Models/KittyPet/FaceHarnessStripe.png</key>
             <key type="filename">../Models/KittyPet/Gag.png</key>
             <key type="filename">../Models/KittyPet/GagCollar.png</key>
             <key type="filename">../Models/KittyPet/GagMouth.png</key>
