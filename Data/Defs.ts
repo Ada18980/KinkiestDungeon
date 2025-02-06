@@ -24,6 +24,7 @@ let LAYERS_BASE = [
 	"HairOver",
 	"Hood", // For Kigu
 	// Head items
+	"BlindfoldStraps",
 	"Blindfold",
 	"GagOver",
 	"GagMuzzleStraps",
@@ -1633,6 +1634,8 @@ let LayerGroups = {
 			"Head",
 		]
 	),
+
+	HairBlockBF: {Blindfold: true},
 	EarsHelmet: ToMap(
 		[
 			"AnimalEars",

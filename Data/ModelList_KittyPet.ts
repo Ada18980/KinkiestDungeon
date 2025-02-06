@@ -209,6 +209,37 @@ AddModel({
 
 
 AddModel(GetModelFashionVersion("KittyPetBlindfold", true));
+AddModel({
+	Name: "KittyPetHarnessBlindfold",
+	Folder: "KittyPet",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "BlindfoldHarness", Layer: "BlindfoldStraps", Pri: 40,
+			Invariant: true,
+			InheritColor: "Harness",
+			HideWhenOverridden: true,
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+		{ Name: "BlindfoldBrow", Layer: "Blindfold", Pri: 40.2,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Brows",
+		},
+	])
+});
+
+
+AddModel(GetModelFashionVersion("KittyPetHarnessBlindfold", true));
 
 
 AddModel({
@@ -458,6 +489,7 @@ AddModel(GetModelRestraintVersion("KittyPetEars2", true));
 AddModel(GetModelRestraintVersion("KittyPetEars3", true));
 
 
+
 AddModel({
 	Name: "KittyPetGag",
 	Folder: "KittyPet",
@@ -525,7 +557,137 @@ AddModel({
 		},
 	])
 });
+
+
+
+AddModel({
+	Name: "KittyPetHarnessGag",
+	Folder: "KittyPet",
+	Parent: "KittyPetGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "Gag", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+		{ Name: "FaceHarness", Layer: "GagMuzzleStraps", Pri: 30,
+			InheritColor: "Harness",
+			HideWhenOverridden: true,
+		},
+		{ Name: "FaceHarnessHardware", Layer: "GagMuzzleStraps", Pri: 30.1,
+			InheritColor: "Hardware",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+		{ Name: "FaceHarnessStripe", Layer: "GagMuzzleStraps", Pri: 30.2,
+			InheritColor: "Stripe",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetHarnessGagSeamless",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetHarnessGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "GagSeamless", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+		{ Name: "FaceHarness", Layer: "GagMuzzleStraps", Pri: 30,
+			InheritColor: "Harness",
+			HideWhenOverridden: true,
+		},
+		{ Name: "FaceHarnessHardware", Layer: "GagMuzzleStraps", Pri: 30.1,
+			InheritColor: "Hardware",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+		{ Name: "FaceHarnessStripe", Layer: "GagMuzzleStraps", Pri: 30.2,
+			InheritColor: "Stripe",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetHarnessGagMouth",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetHarnessGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "GagMouth", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+		{ Name: "FaceHarness", Layer: "GagMuzzleStraps", Pri: 30,
+			InheritColor: "Harness",
+			HideWhenOverridden: true,
+		},
+		{ Name: "FaceHarnessHardware", Layer: "GagMuzzleStraps", Pri: 30.1,
+			InheritColor: "Hardware",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+		{ Name: "FaceHarnessStripe", Layer: "GagMuzzleStraps", Pri: 30.2,
+			InheritColor: "Stripe",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetHarnessGagMouthSeamless",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetHarnessGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "GagMouthSeamless", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+		{ Name: "FaceHarness", Layer: "GagMuzzleStraps", Pri: 30,
+			InheritColor: "Harness",
+			HideWhenOverridden: true,
+		},
+		{ Name: "FaceHarnessHardware", Layer: "GagMuzzleStraps", Pri: 30.1,
+			InheritColor: "Hardware",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+		{ Name: "FaceHarnessStripe", Layer: "GagMuzzleStraps", Pri: 30.2,
+			InheritColor: "Stripe",
+			NoOverride: true,
+			TieToLayer: "FaceHarness",
+		},
+	])
+});
 AddModel(GetModelFashionVersion("KittyPetGag", true));
 AddModel(GetModelFashionVersion("KittyPetGagSeamless", true));
 AddModel(GetModelFashionVersion("KittyPetGagMouth", true));
 AddModel(GetModelFashionVersion("KittyPetGagMouthSeamless", true));
+AddModel(GetModelFashionVersion("KittyPetHarnessGag", true));
+AddModel(GetModelFashionVersion("KittyPetHarnessGagSeamless", true));
+AddModel(GetModelFashionVersion("KittyPetHarnessGagMouth", true));
+AddModel(GetModelFashionVersion("KittyPetHarnessGagMouthSeamless", true));

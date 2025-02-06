@@ -136,3 +136,46 @@ AddModel({
 });
 
 AddModel(GetModelFashionVersion("BlindfoldTape", true));
+
+AddModel({
+	Name: "HarnessBlindfold",
+	Folder: "Blindfold",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "HarnessBlindfold", Layer: "Blindfold", Pri: 20,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Blindfold",
+		},
+		{ Name: "HarnessBlindfoldHarness", Layer: "BlindfoldStraps", Pri: 20,
+			Invariant: true,
+			HideWhenOverridden: true,
+
+			InheritColor: "Harness",
+		},
+		{ Name: "HarnessBlindfoldHarnessHardware", Layer: "BlindfoldStraps", Pri: 20.1,
+			Invariant: true,
+			TieToLayer: "HarnessBlindfoldHarness",
+			NoOverride: true,
+			InheritColor: "Harness",
+		},
+		{ Name: "HarnessBlindfoldStrap", Layer: "Blindfold", Pri: 20.1,
+			Invariant: true,
+			TieToLayer: "HarnessBlindfold",
+			NoOverride: true,
+			InheritColor: "Strap",
+		},
+		{ Name: "HarnessBlindfoldStrapHardware", Layer: "Blindfold", Pri: 20.2,
+			Invariant: true,
+			TieToLayer: "HarnessBlindfold",
+			NoOverride: true,
+			InheritColor: "StrapHardware",
+		},
+	])
+});
+
+
+AddModel(GetModelFashionVersion("HarnessBlindfold", true));

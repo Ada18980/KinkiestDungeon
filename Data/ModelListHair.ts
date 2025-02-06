@@ -139,6 +139,10 @@ AddModel({
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "Braid_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Braid",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 		{ Name: "BraidBack", Layer: "HairBack", Pri: 0,
 		},
@@ -156,6 +160,10 @@ AddModel({
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "BraidCustom_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "BraidCustom",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -243,6 +251,10 @@ AddModel({
 		},
 		{ Name: "Curly_Overstrap", Layer: "HairFront", Pri: 0,
 			InheritColor: "Curly",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -260,6 +272,10 @@ AddModel({
 		},
 		{ Name: "Fuzzy_Overstrap", Layer: "HairFront", Pri: 0,
 			InheritColor: "Fuzzy",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -276,6 +292,10 @@ AddModel({
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "FrontStraight_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "FrontStraight",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -292,6 +312,10 @@ AddModel({
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "BobFront", Layer: "HairFront", Pri: 7,
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -310,6 +334,10 @@ AddModel({
 		{ Name: "FrontStraight2_Front", Layer: "HairFront", Pri: 3,
 			SwapLayerPose: {HoodMask: "HairOver"},
 			InheritColor: "Bangs",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 		{ Name: "FrontStraight2_Overstrap", Layer: "HairFront", Pri: 3,
 			InheritColor: "Bangs",
@@ -328,6 +356,10 @@ AddModel({
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "Straight_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "Straight",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -343,6 +375,10 @@ AddModel({
 			SwapLayerPose: {HoodMask: "HairOver"},
 		},
 		{ Name: "StraightBangs_Overstrap", Layer: "HairFront", Pri: 0, InheritColor: "StraightBangs",
+			DisplacementInvariant: true,
+			DisplaceLayers: {HairBlockBF: true,},
+			DisplacementSprite: "BlindfoldHide",
+			DisplaceAmount: 20,
 		},
 	])
 });

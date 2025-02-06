@@ -1640,7 +1640,7 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 	KinkyDungeonSendEvent("playerAttack", data);
 
 	if (data.slow) {
-		KDGameData.MovePoints = Math.min(KDGameData.MovePoints, -1);
+		KDDoSlow(KDPlayer(), 1);
 	}
 	if (data.channel) {
 		KinkyDungeonSetFlag("channeling", data.channel);

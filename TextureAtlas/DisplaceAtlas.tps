@@ -197,6 +197,7 @@
             <key type="filename">../DisplacementMaps/BeltLegs2SquishClosed.png</key>
             <key type="filename">../DisplacementMaps/BeltLegs2SquishKneelClosed.png</key>
             <key type="filename">../DisplacementMaps/BeltSquish.png</key>
+            <key type="filename">../DisplacementMaps/BlindfoldHide.png</key>
             <key type="filename">../DisplacementMaps/BootsClosed.png</key>
             <key type="filename">../DisplacementMaps/BootsHogtie.png</key>
             <key type="filename">../DisplacementMaps/BootsKneel.png</key>

@@ -1619,7 +1619,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				for (let filter of filters) {
 					KDFilterDrawn.set(filter, true);
 				}
-				if (KDToggles.OptRender) {
+				/*if (KDToggles.OptRender) {
 					KDDrawRT(
 						ContainerContainer.Container,
 						ContainerContainer.SpriteList,
@@ -1640,28 +1640,28 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						ContainerContainer.SpritesDrawn,
 						Zoom, undefined, origFilters
 					);
-				} else {
-					KDDraw(
-						ContainerContainer.Container,
-						ContainerContainer.SpriteList,
-						id,
-						img,
-						ox * Zoom, oy * Zoom, undefined, undefined,
-						rot, {
-							zIndex: zz,
-							anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
-							anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
-							normalizeAnchorX: MODELWIDTH,
-							normalizeAnchorY: MODELHEIGHT,
-							scalex: sx != 1 ? sx : undefined,
-							scaley: sy != 1 ? sy : undefined,
-							filters: filters,
-							cullable: KDCulling,
-						}, false,
-						ContainerContainer.SpritesDrawn,
-						Zoom, undefined
-					);
-				}
+				} else {*/
+				KDDraw(
+					ContainerContainer.Container,
+					ContainerContainer.SpriteList,
+					id,
+					img,
+					ox * Zoom, oy * Zoom, undefined, undefined,
+					rot, {
+						zIndex: zz,
+						anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
+						anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+						normalizeAnchorX: MODELWIDTH,
+						normalizeAnchorY: MODELHEIGHT,
+						scalex: sx != 1 ? sx : undefined,
+						scaley: sy != 1 ? sy : undefined,
+						filters: filters,
+						cullable: KDCulling,
+					}, false,
+					ContainerContainer.SpritesDrawn,
+					Zoom, undefined
+				);
+				//}
 
 			}
 		}

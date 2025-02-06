@@ -27033,6 +27033,7 @@ KDGenMap,Generating Map...
 KinkyDungeonSpellHexWrappingDamage,Mystic wrappings constrict around your body!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
 
+KDTut_Slowed,"You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost."
 KDTut_Cut,You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
 KDTut_CutCrack,"If you can't get your knife into place, try sitting next to a crack on the wall."
 KDTut_CutCrack2,"Your character will automatically try to lodge the knife into the wall."

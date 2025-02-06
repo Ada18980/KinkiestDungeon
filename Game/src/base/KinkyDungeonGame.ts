@@ -5236,7 +5236,8 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 	let nextPosX = moveX*2-KinkyDungeonPlayerEntity.x;
 	let nextPosY = moveY*2-KinkyDungeonPlayerEntity.y;
 	let nextTile = KinkyDungeonMapGet(nextPosX, nextPosY);
-	if (KinkyDungeonMovableTilesEnemy.includes(nextTile) && KinkyDungeonNoEnemy(nextPosX, nextPosY) && KinkyDungeonToggleAutoSprint) {
+	if (KinkyDungeonMovableTilesEnemy.includes(nextTile)
+		&& KinkyDungeonNoEnemy(nextPosX, nextPosY) && KinkyDungeonToggleAutoSprint) {
 		let data = {
 			canSprint: KDCanSprint(),
 			passThru: false,
@@ -5349,7 +5350,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 
 						let willSprint = KinkyDungeonToggleAutoSprint && !SuppressSprint;
 
-						if (KDGameData.MovePoints >= 1) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
+						if (KDGameData.MovePoints >= 1 || (willSprint && KDCanSprint())) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							let xx = KinkyDungeonPlayerEntity.x;
 							let yy = KinkyDungeonPlayerEntity.y;
 
@@ -5453,6 +5454,11 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						KinkyDungeonSleepTime = CommonTime() + 200;
 					} else {
 						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
+					}
+				}
+				if (KDGameData.MovePoints < 0) {
+					if (!KinkyDungeonFlags.get("tut_slo")) {
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Slowed"), KDTutorialColor, 10);
 					}
 				}
 				if (!(KDGameData.KneelTurns > 0))
@@ -5607,7 +5613,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 	}
 	if (!cencelled && willSprint) {
 		if (KDCanSprint()) {
-			let unblocked = KinkyDungeonSlowLevel > 1;
+			let unblocked = KinkyDungeonSlowLevel > 1 || KDGameData.MovePoints < 0;
 			if (!unblocked) {
 				let nextPosX = moveX*2 - xx;
 				let nextPosY = moveY*2 - yy;
@@ -6466,6 +6472,7 @@ function KDSprintCost(sprintdata?: any): number {
 		cost: (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length, Math.round(KinkyDungeonSlowLevel))]),
 		boost: 0,
 	};
+	if (KDGameData.MovePoints < 0) data.cost *= 2;
 
 	KinkyDungeonSendEvent("calcSprint", data);
 

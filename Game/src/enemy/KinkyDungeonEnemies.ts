@@ -6355,6 +6355,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								|| Math.abs(enemy.y - leashPos.y) > 0.5)
 							) {
 								if (!KinkyDungeonHasWill(0.1) && KDRandom() < 0.25) KDGameData.MovePoints = Math.min(-1, KDGameData.MovePoints);
+
 								// Leash pullback
 								if (AIData.playerDist < 1.5) {
 									let path = KinkyDungeonFindPath(enemy.x, enemy.y, leashPos.x, leashPos.y, true, false, true, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined, enemy);
@@ -6516,7 +6517,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 
 						if (AIData.attack.includes("Slow")) {
-							KDGameData.MovePoints = Math.max(KDGameData.MovePoints - 2, -1);
+							KDDoSlow(player, 2);
 							if (enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Slow")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
@@ -10416,5 +10417,17 @@ function KDEnemyDecayBindStun(enemy: entity, delta: number) {
 		if (packed) KDPackEnemy(enemy);
 	} else {
 		delete enemy.bindStun;
+	}
+}
+
+function KDDoSlow(player: entity, amt: number) {
+	if (!player) player = KDPlayer();
+	if (!amt) amt = 1;
+	if (!player.player) return;
+	KDGameData.MovePoints = Math.min(-amt, KDGameData.MovePoints);
+	if (KDGameData.MovePoints < 0) {
+		if (!KinkyDungeonFlags.get("tut_slo")) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Slowed"), KDTutorialColor, 10);
+		}
 	}
 }
