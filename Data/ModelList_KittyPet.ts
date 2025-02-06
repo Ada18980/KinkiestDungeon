@@ -39,7 +39,7 @@ AddModel({
 	Folder: "KittyPet",
 	Parent: "KittyPetLeotard",
 	TopLevel: true,
-	Categories: ["Bodysuits"],
+	Categories: ["Bodysuits", "Uniforms"],
 	Layers: ToLayerMap([
 		{ Name: "Leotard", Layer: "BodysuitOver", Pri: 3,
 			HideWhenOverridden: true,

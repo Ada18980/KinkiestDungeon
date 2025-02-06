@@ -458,7 +458,7 @@ let KinkyDungeonInitTime = 0;
 
 let KinkyDungeonSleepTime = 0;
 let KinkyDungeonFreezeTime = 1000;
-let KinkyDungeonStunTime = 300;
+let KinkyDungeonStunTime = 500;
 let KinkyDungeonPlaySelfTime = 300;
 let KinkyDungeonOrgasmTime = 1000;
 let KinkyDungeonAutoWait = false;
@@ -2976,7 +2976,7 @@ function KinkyDungeonRun() {
 					KDGameData.SlowMoveTurns -= 1;
 					KDGameData.BalancePause = true;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
-					KinkyDungeonSleepTime = CommonTime() + KinkyDungeonStunTime * (0.25 + KDAnimSpeed * 0.75);
+					KinkyDungeonSleepTime = CommonTime() + KinkyDungeonStunTime * (0.35 + KDAnimSpeed * 0.65);
 				}
 			} else if (KinkyDungeonFastMove && KinkyDungeonFastMovePath && KinkyDungeonFastMovePath.length > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
