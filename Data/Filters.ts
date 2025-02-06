@@ -167,10 +167,11 @@ void main(void)
   vec4 map =  texture2D(mapSampler, vFilterCoord);
 
   map.xy -= 0.5;
+  map.xy *= map.a;
   map.xy = scale * inputSize.zw * (rotation * map.xy);
 
   gl_FragColor = texture2D(uSampler,
-    clamp(vec2(vTextureCoord.x + (map.x + 1. - map.a), vTextureCoord.y + (map.y + 1. - map.a)),
+    clamp(vec2(vTextureCoord.x + (map.x), vTextureCoord.y + (map.y)),
         inputClamp.xy,
         inputClamp.zw));
 }
