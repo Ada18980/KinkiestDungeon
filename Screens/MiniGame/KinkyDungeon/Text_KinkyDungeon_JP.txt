@@ -5207,15 +5207,15 @@ The Nurse assures you it's going to be alright~ (DamageTaken)
 
 
 Librarian
-書庫司書
+書庫の司書
 The librarian gets angry and retreats.
-司書書庫司書は怒りながら逃げていった。
+司書は怒りながら逃げていった。
 The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
-書庫司書が拘束具を振り回してきた！ (+RestraintAdded)
+司書が拘束具を振り回してきた！ (+RestraintAdded)
 The librarian snaps her fingers and sends a lock flying at you!
-書庫司書が指をパチンと鳴らし、錠を飛ばしてきた！
+司書が指をパチンと鳴らし、錠を飛ばしてきた！
 The librarian whispers seductively into your ear! (DamageTaken)
-書庫司書が耳元で魅惑的に囁いてきた! (DamageTaken)
+司書が耳元で魅惑的に囁いてきた! (DamageTaken)
 
 
 Stone Door
