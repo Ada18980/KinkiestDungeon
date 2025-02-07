@@ -1143,13 +1143,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						}
 					}
 
-					KinkyDungeonSetFlag("slept", -1);
-					if (KinkyDungeonPlayerInCell(true) && KDGameData.PrisonerState == 'jail') {
-						KinkyDungeonChangeRep("Ghost", KinkyDungeonIsArmsBound() ? 5 : 2);
-					}
-					//KinkyDungeonChangeWill(KinkyDungeonStatWillMax * KDSleepBedPercentage);
-					KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
-					KDChangeMana("player","sleep", "tick", KinkyDungeonStatManaMax, false, 0, false, true);
+					KDSleep();
 					return false;
 				},
 				options: {
@@ -1157,6 +1151,12 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						playertext: "Leave", response: "Default",
 						exitDialogue: true,
 					},
+				},
+				greyoutFunction: (_gagged, _player) => {
+					return KDCanSleep();
+				},
+				greyoutCustomTooltip: (_gagged, _player) => {
+					return KDCanSleepTooltip();
 				}
 			},
 			"Leave": {

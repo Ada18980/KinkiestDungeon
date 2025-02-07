@@ -27598,3 +27598,6 @@ KDContextMenu_Truss,Tie Up
 KDContextMenu_TrussAttempt,Attempt to Tie
 KDContextMenu_TrussOOR,Move Closer to Tie
 KDContextMenu_Sprint,Sprint (AMNT)
+
+KDBedSleptLevel,(Already slept here)
+KDBedWillNotLow,(Will not low enough)
