@@ -3,7 +3,7 @@
 let KDEnemyStruggleHPExp = 0.8;
 
 let KDOpinionThreshold = 12;
-let KDDespawnDistance = 1.5;
+let KDDespawnDistance = 24;
 
 let KDDebugOverlay2 = false;
 
@@ -366,10 +366,10 @@ function KDEnemyCanDespawn(id: number, mapData: KDMapDataType, PMDist?: number):
 	let entity = KinkyDungeonFindID(id);
 	if (!entity) return true;
 	return !KDEnemyHasFlag(entity, "no_pers_wander")
-		&& (mapData != KDMapData ||
-		(KinkyDungeonVisionGet(entity.x, entity.y) < 0.1
+		&& (mapData != KDMapData
+		|| (KinkyDungeonVisionGet(entity.x, entity.y) < 0.1
 		|| KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) >= KDDespawnDistance)
-		|| (PMDist ? PMDist < KDDespawnPartyDist : KDEnemyNearTargetExit(entity, mapData)));
+		|| (PMDist != undefined ? PMDist < KDDespawnPartyDist : KDEnemyNearTargetExit(entity, mapData)));
 }
 
 function KDEnemyNearTargetExit(entity: entity, mapData: KDMapDataType): boolean {
