@@ -349,7 +349,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "CriticalStrike", tags: ["damage", "offense", "buff"], school: "Any", spellPointCost: 2, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			//{trigger: "beforePlayerAttack", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
 			//{trigger: "calcDisplayDamage", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
-			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.5},
+			{trigger: "calcCrit", type: "CritBoost", prereq: "damageType", kind: "melee", power: 0.25},
 		]},
 		{name: "MagicalOverload", tags: ["damage", "offense", "buff"], school: "Special", classSpecific: "Trainee", prerequisite: "DistractionCast", hideWithout: "DistractionCast", spellPointCost: 1, manacost: 0, components: [], level:1, passive: true, type:"", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
 			{trigger: "calcCrit", type: "MagicalOverload", prereq: "damageType", kind: "magic", power: 0.25},
@@ -587,7 +587,8 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "BladeDance", tags: ["stamina", "utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", sfx: "Miss", spellPointCost: 1,
 			events: [
-				{trigger: "afterBulletHit", type: "BladeDance", dist: 1.5, power: 0.5, mult: 0.75, prereq: "wepDamageType", kind: "melee"},
+				{trigger: "afterBulletHit", type: "BladeDance",
+					dist: 1.5, power: 0.2, mult: 0.30, prereq: "wepDamageType", kind: "melee"},
 			],
 			noMiscast: true,
 			staminacost: 6,
@@ -617,7 +618,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "CombatTraining", tags: ["will", "stamina", "utility"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1, type:"", passive: true, onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
 				{type: "CombatTraining", trigger: "attackCost", power: 0.4, mult: 0.01},
-				{type: "CombatTrainingSlowResist", trigger: "tick"},
+				{type: "CombatTrainingSlowResist", trigger: "tick", cost: 0.1},
 				{type: "CombatTrainingSlowRecovery", trigger: "tickAfter"},
 			]},
 
@@ -1101,8 +1102,10 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "StoneSkin", tags: ["earth", "buff", "defense"], prerequisite: "ApprenticeEarth", sfx: "Bones", school: "Elements", manacost: 5.5, components: ["Arms"], mustTarget: true, level:1, type:"buff", buffs: [{id: "StoneSkin", aura: "#FF6A00", type: "Armor", duration: 50, power: 2.0, player: true, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:50, power: 0, range: 2, size: 1, damage: ""},
 		{name: "IronBlood", tags: ["earth", "buff", "offense"], prerequisite: "ApprenticeEarth", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 			buffs: [
-				{id: "IronBlood", aura: "#ff5277", type: "AttackStamina", duration: 99999, cancelOnReapply: true, endSleep: true, power: 1, player: true, enemies: false, tags: ["attack", "stamina"]},
-				{id: "IronBlood2", type: "ManaCostMult", duration: 99999, cancelOnReapply: true, endSleep: true, power: 0.25, player: true, enemies: false, tags: ["manacost"]},
+				{id: "IronBlood", aura: "#ff5277", type: "AttackStamina", duration: 99999, cancelOnReapply: true,
+					endSleep: true, power: 0.43, player: true, enemies: false, tags: ["attack", "stamina"]},
+				{id: "IronBlood2", type: "ManaCostMult", duration: 99999, cancelOnReapply: true, endSleep: true,
+					power: 0.15, player: true, enemies: false, tags: ["manacost"]},
 			], onhit:"", time:30, power: 0, range: 2, size: 1, damage: ""},
 		{name: "FlameBlade", tags: ["fire", "aoe", "offense", "buff"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements", manacost: 3, components: [], level:1, type:"passive", events: [{type: "FlameBlade", trigger: "playerAttack"}]},
 		{name: "Strength", tags: ["earth", "struggle", "buff", "utility", "offense"], prerequisite: "ApprenticeEarth", sfx: "FireSpell", school: "Elements", manacost: 1, components: [], level:1, type:"passive", events: [

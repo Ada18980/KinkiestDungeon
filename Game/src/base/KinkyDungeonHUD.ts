@@ -2384,8 +2384,8 @@ function KDGetStatsWeaponCast() {
 
 	if (KinkyDungeonPlayerDamage) {
 		let accuracy = KinkyDungeonGetEvasion();
-		let crit = KinkyDungeonGetCrit(accuracy, KinkyDungeonPlayerDamage);
-		let bindcrit = KinkyDungeonGetBindCrit(accuracy, KinkyDungeonPlayerDamage);
+		let crit = KinkyDungeonGetCrit(accuracy, KinkyDungeonPlayerDamage, undefined, KinkyDungeonPlayerDamage);
+		let bindcrit = KinkyDungeonGetBindCrit(accuracy, KinkyDungeonPlayerDamage, undefined, KinkyDungeonPlayerDamage);
 		//if (accuracy != 1.0) {
 		let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon] || KinkyDungeonPlayerDamage;
 		statsDraw.accuracy = {
@@ -2414,8 +2414,8 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	let accuracy = KinkyDungeonGetEvasion();
 	if (KDToggleShowAllBuffs || accuracy < 0.89) {
 		if (KinkyDungeonPlayerDamage) {
-			let crit = KinkyDungeonGetCrit(accuracy, KinkyDungeonPlayerDamage);
-			let bindcrit = KinkyDungeonGetBindCrit(accuracy, KinkyDungeonPlayerDamage);
+			let crit = KinkyDungeonGetCrit(accuracy, KinkyDungeonPlayerDamage, undefined, KinkyDungeonPlayerDamage);
+			let bindcrit = KinkyDungeonGetBindCrit(accuracy, KinkyDungeonPlayerDamage, undefined, KinkyDungeonPlayerDamage);
 			//if (accuracy != 1.0) {
 			let weapon = KinkyDungeonWeapons[KinkyDungeonPlayerWeapon] || KinkyDungeonPlayerDamage;
 			statsDraw.accuracy = {

@@ -5128,7 +5128,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 		"CombatTrainingSlowResist": (_e, _spell, _data) => {
-			if (KinkyDungeonStatWill >= 0.1) {
+			if (KDEntityBuffedStat(KDPlayer(), "BattleRhythm") >= _e.cost) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "CombatTraining",
 					type: "SlowLevel",
@@ -5588,7 +5588,9 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 
 		"CritBoost": (e, _spell, data) => {
 			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
-				let power = Math.max(0, Math.max(((data.accuracy || 0) - 1) * e.power));
+				let amt = e.power;
+				if (data.weapon?.light) amt *= 2;
+				let power = Math.max(0, Math.max(((data.accuracy || 0) - 1) * amt));
 				data.critboost = Math.max(0, data.critboost + power);
 			}
 		},
@@ -5975,20 +5977,12 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 					while (enemies.length > 0) {
 						let en = enemies[Math.floor(KDRandom() * enemies.length)];
 						if (KDHostile(en) && KinkyDungeonAggressive(en) && !KDHelpless(en) && en.hp > 0) {
-							let damage = (KinkyDungeonPlayerDamage?.damage || 1) * e.power;
-							KinkyDungeonDamageEnemy(en, {
-								type: KinkyDungeonPlayerDamage?.type || "slash",
-								damage: damage,
-								time: e.time,
-								bind: e.bind,
-								bindType: KinkyDungeonPlayerDamage?.bindType,
-								crit: KinkyDungeonPlayerDamage?.crit || KDDefaultCrit,
-								bindcrit: KinkyDungeonPlayerDamage?.bindcrit || KDDefaultBindCrit,
-							}, false, true, undefined, undefined, player);
+
+
 							if (KDGameData.Offhand && KinkyDungeonInventoryGet(KDGameData.Offhand) && KDCanOffhand(KinkyDungeonInventoryGet(KDGameData.Offhand))) {
 								let weapon = KDWeapon(KinkyDungeonInventoryGet(KDGameData.Offhand));
 								if (weapon?.light) {
-									damage = (weapon?.damage || 1) * e.mult;
+									let damage = e.power;
 									KinkyDungeonDamageEnemy(en, {
 										type: weapon?.type || "slash",
 										damage: damage,
@@ -7038,6 +7032,13 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		},
 
 	},
+	"inertia": {
+		"inertia": (e, weapon, data) => {
+			if (data.player?.player) {
+				data.inertia += e.power;
+			}
+		},
+	},
 	"tick": {
 		"AccuracyBuff": (e, weapon, _data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -7052,6 +7053,9 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		},
 		"slowLevel": (e, weapon, _data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: (e.kind || weapon.name) + "SlowLevel", type: "SlowLevel", power: e.power, duration: 2, });
+		},
+		"inertia": (e, weapon, _data) => {
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: (e.kind || weapon.name) + "SlowLevel", type: "Inertia", power: e.power, duration: 2, });
 		},
 		"spellWardBuff": (e, weapon, _data) => {
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: (e.kind || weapon.name) + "SpellResist", type: "SpellResist", power: e.power, duration: 2, });
@@ -8107,7 +8111,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
 
-				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(2.0, 2 * KinkyDungeonGetEvasion(undefined, false, true, true)));
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(2.0, 2 * KinkyDungeonGetEvasion(undefined, false, true, true)),
+					undefined, KinkyDungeonPlayerDamage);
 			}
 		},
 
@@ -8166,7 +8171,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				};
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
 
-				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(0.8, 0.8 * KinkyDungeonGetEvasion(undefined, false, true, true)), b);
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(0.8, 0.8 * KinkyDungeonGetEvasion(undefined, false, true, true)), b,
+					KinkyDungeonPlayerDamage);
 			}
 		},
 		"Arrow": (e, b, data) => {
@@ -9032,20 +9038,73 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 					while (enemies.length > 0) {
 						let en = enemies[Math.floor(KDRandom() * enemies.length)];
 						if (KDHostile(en) && KinkyDungeonAggressive(en) && !KDHelpless(en) && en.hp > 0) {
-							let damage = (KinkyDungeonPlayerDamage?.damage || 1) * e.power;
-							KinkyDungeonDamageEnemy(en, {
-								type: KinkyDungeonPlayerDamage?.type || "slash",
-								damage: damage,
-								time: e.time,
-								bind: e.bind,
-								bindType: KinkyDungeonPlayerDamage?.bindType,
-								crit: KinkyDungeonPlayerDamage?.crit || KDDefaultCrit,
-								bindcrit: KinkyDungeonPlayerDamage?.bindcrit || KDDefaultBindCrit,
-							}, false, true, undefined, undefined, player);
-							if (KDGameData.Offhand && KinkyDungeonInventoryGet(KDGameData.Offhand) && KDCanOffhand(KinkyDungeonInventoryGet(KDGameData.Offhand))) {
+							let scaling = e.mult;
+							if (KinkyDungeonPlayerDamage.light) scaling *= 2;
+
+							let attData: damageInfo = {
+								name: KinkyDungeonPlayerDamage.name,
+								nodisarm: true,
+
+								nocrit: KinkyDungeonPlayerDamage.nocrit,
+								noblock: KinkyDungeonPlayerDamage.noblock,
+								nokill: KinkyDungeonPlayerDamage.nokill,
+								evadeable: false,
+
+
+								addBind: KinkyDungeonPlayerDamage.addBind,
+								bindcrit: KinkyDungeonPlayerDamage.bindcrit,
+								crit: KinkyDungeonPlayerDamage.crit,
+								sfx: KinkyDungeonPlayerDamage.sfx,
+								time: KinkyDungeonPlayerDamage.time,
+
+								damage: KinkyDungeonPlayerDamage.damage * scaling,
+								type: KinkyDungeonPlayerDamage.type,
+								distract: KinkyDungeonPlayerDamage.distract,
+								distractEff: KinkyDungeonPlayerDamage.distractEff,
+								desireMult: KinkyDungeonPlayerDamage.desireMult,
+								bind: KinkyDungeonPlayerDamage.bind,
+								bindType: KinkyDungeonPlayerDamage.bindType,
+								bindEff: KinkyDungeonPlayerDamage.bindEff,
+								ignoreshield: KinkyDungeonPlayerDamage.ignoreshield,
+								shield_crit: KinkyDungeonPlayerDamage.shield_crit, // Crit thru shield
+								shield_stun: KinkyDungeonPlayerDamage.shield_stun, // stun thru shield
+								shield_freeze: KinkyDungeonPlayerDamage.shield_freeze, // freeze thru shield
+								shield_bind: KinkyDungeonPlayerDamage.shield_bind, // bind thru shield
+								shield_snare: KinkyDungeonPlayerDamage.shield_snare, // snare thru shield
+								shield_slow: KinkyDungeonPlayerDamage.shield_slow, // slow thru shield
+								shield_distract: KinkyDungeonPlayerDamage.shield_distract, // Distract thru shield
+								shield_vuln: KinkyDungeonPlayerDamage.shield_vuln, // Vuln thru shield
+								boundBonus: KinkyDungeonPlayerDamage.boundBonus,
+								novulnerable: KinkyDungeonPlayerDamage.novulnerable,
+								tease: KinkyDungeonPlayerDamage.tease
+							}
+
+							if (KinkyDungeonPlayerDamage.stam50mult && KinkyDungeonStatMana / KinkyDungeonStatManaMax >= 0.50) {
+								attData.damage *= KinkyDungeonPlayerDamage.stam50mult;
+							}
+							let dd = {
+								target: data.enemy,
+								attackCost: 0.0, // Important
+								attackCostOrig: 0.0,
+								skipTurn: false,
+								spellAttack: true,
+								attackData: attData
+							};
+							KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
+
+							KinkyDungeonAttackEnemy(data.enemy, dd.attackData,
+								Math.max(0.8,
+									KinkyDungeonGetEvasion(undefined, false, true, true)),
+								undefined, KinkyDungeonPlayerDamage);
+
+
+
+							if (KDGameData.Offhand
+								&& KinkyDungeonInventoryGet(KDGameData.Offhand)
+								&& KDCanOffhand(KinkyDungeonInventoryGet(KDGameData.Offhand))) {
 								let weapon = KDWeapon(KinkyDungeonInventoryGet(KDGameData.Offhand));
 								if (weapon?.light) {
-									damage = (weapon?.damage || 1) * e.mult;
+									let damage = e.power;
 									KinkyDungeonDamageEnemy(en, {
 										type: weapon?.type || "slash",
 										damage: damage,

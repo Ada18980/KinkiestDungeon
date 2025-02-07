@@ -59,7 +59,7 @@ let KDResilientHPMult = 1.3;
 let KDStealthyEnemyCountMult = 1.7;
 let KDBoundPowerMult = 0.4;
 let KDBerserkerAmp = 0.3;
-let KDUnstableAmp = 0.6;
+let KDUnstableAmp = 0.3;
 
 let KDFightParams = {
 	KDFreezeMeleeMult: 1.5,
@@ -340,9 +340,10 @@ let KinkyDungeonEvasionPityModifierIncrementPercentage = 0.5; // Percent of the 
 let KDDefaultCrit = 1.3;
 let KDDefaultBindCrit = 1.5;
 
-function KinkyDungeonGetCrit(accuracy?: number, Damage?: damageInfo, Enemy?: entity) {
+function KinkyDungeonGetCrit(accuracy?: number, Damage?: damageInfo, Enemy?: entity, weapon?: weapon) {
 	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
 	let data = {
+		weapon: weapon === undefined ? KinkyDungeonPlayerDamage : weapon,
 		Damage: Damage,
 		accuracy: accuracy,
 		enemy: Enemy,
@@ -354,9 +355,10 @@ function KinkyDungeonGetCrit(accuracy?: number, Damage?: damageInfo, Enemy?: ent
 
 	return (data.basecrit + data.critboost) * data.critmult;
 }
-function KinkyDungeonGetBindCrit(accuracy?: number, Damage?: damageInfo, Enemy?: entity) {
+function KinkyDungeonGetBindCrit(accuracy?: number, Damage?: damageInfo, Enemy?: entity, weapon?: weapon) {
 	if (accuracy == undefined) accuracy = KinkyDungeonGetEvasion();
 	let data = {
+		weapon: weapon === undefined ? KinkyDungeonPlayerDamage : weapon,
 		Damage: Damage,
 		accuracy: accuracy,
 		enemy: Enemy,
@@ -759,7 +761,7 @@ function KDArmorFormula(DamageAmount: number, Armor: number): number {
  * @param [Critical]
  * @param [Attack]
  */
-function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: spell, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
+function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: spell, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean, Weapon?: weapon): number {
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
@@ -768,6 +770,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 	}
 
 	let predata = {
+		weapon: Weapon === undefined ? (Attack ? KinkyDungeonPlayerDamage : null) : Weapon,
 		allowConjuredRestraint: !!Damage?.addBind,
 		useRealRestraint: Damage?.realBind,
 		shieldBlocked: false,
@@ -842,7 +845,8 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		if (!Enemy.shield || predata.ignoreshield || predata.shield_crit)
 			if (!predata.nocrit && (predata.faction == "Player" || predata.forceCrit) && predata.type != 'heal') {
 				if ((predata.vulnerable && (predata.dmg > 0.5 || predata.bind > 1)) || predata.forceCrit) {
-					predata.crit = KinkyDungeonGetCrit(KDGetSpellAccuracy(), Damage, Enemy) || KDDefaultCrit;
+					predata.crit = KinkyDungeonGetCrit(
+						KDGetSpellAccuracy(), Damage, Enemy, predata.weapon) || KDDefaultCrit;
 					if (KDToughArmor(Enemy) && predata.crit > 1) predata.crit = 1 + (predata.crit - 1)*0.5; // TOUGH armor
 					predata.bindcrit = KinkyDungeonGetBindCrit(KDGetSpellAccuracy(), Damage, Enemy) || KDDefaultBindCrit;
 
@@ -1533,7 +1537,7 @@ function KinkyDungeonDisarm(Enemy: entity, suff?: string): boolean {
  * @param [chance]
  * @param [bullet]
  */
-function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: number, bullet?: any): boolean {
+function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: number, bullet?: any, weapon?: weapon): boolean {
 	let disarm = false;
 	if ((Damage && !Damage.nodisarm) && Enemy.Enemy && Enemy.Enemy.disarm && Enemy.disarmflag > 0) {
 		if (Enemy.stun > 0 || Enemy.freeze > 0 || Enemy.blind > 0 || Enemy.teleporting > 0 || (Enemy.playWithPlayer && !Enemy.hostile)) Enemy.disarmflag = 0;
@@ -1587,7 +1591,7 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 		if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
 		KDGameData.IdentifiedObj[KinkyDungeonPlayerWeapon] = 2;
 	}
-	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, bullet, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical, true);
+	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, bullet, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical, true, weapon);
 	if (predata.eva && (Damage.sfx || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx))) {
 		if (KDSoundEnabled()) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + (Damage.sfx || KinkyDungeonPlayerDamage.sfx) + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");

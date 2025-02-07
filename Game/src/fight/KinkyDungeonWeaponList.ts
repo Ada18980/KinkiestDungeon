@@ -89,7 +89,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		events: [
 			{type: "armorBuff", trigger: "tick", offhand: true, kind: "Shield", power: 3.0},
 			{type: "blockBuff", trigger: "tick", offhand: true, kind: "Shield", power: 1.2},
-			{type: "slowLevel", trigger: "tick", offhand: true, kind: "Shield", power: 1},
+			{type: "inertia", trigger: "inertia", offhand: true, kind: "Shield", power: 1},
 			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "stun", time: 7}
 		]},
 	"ShieldReinforced": {name: "ShieldReinforced", damage: 3.0, chance: 0.4, staminacost: 5.5,  type: "crush", unarmed: false, rarity: 3, shop: true, sfx: "HeavySwing",

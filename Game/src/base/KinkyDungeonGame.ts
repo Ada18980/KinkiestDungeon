@@ -5113,7 +5113,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					KDChangeBalanceSrc("heels", "debuff", "attack", data.attackCost * KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true);
 
 				let origHP = Enemy.hp;
-				if (KinkyDungeonAttackEnemy(data.target, data.attackData)) {
+				if (KinkyDungeonAttackEnemy(data.target, data.attackData, undefined, undefined, KinkyDungeonPlayerDamage)) {
 					result = "hit";
 				} else {
 					result = "miss";
@@ -5326,12 +5326,12 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						}
 						let inertia = KinkyDungeonPlayerEntity.facing_y*lastFacingY + KinkyDungeonPlayerEntity.facing_x*lastFacingX;
 						if ((KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)
-							&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+							&& (KDGetInertia(KDPlayer()) > 0)) {
 							let D = Math.abs(KinkyDungeonPlayerEntity.facing_y - lastFacingY)**2
 								+ Math.abs(KinkyDungeonPlayerEntity.facing_x - lastFacingX)**2;
 							let dotProd = KinkyDungeonPlayerEntity.facing_y*lastFacingY + KinkyDungeonPlayerEntity.facing_x*lastFacingX;
 
-							if (dotProd < 0 || ((D > 1 && (lastFacingY || lastFacingX)) && KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+							if (dotProd < 0 || ((D > 1 && (lastFacingY || lastFacingX)) && KDGetInertia(KDPlayer()) > 1)) {
 								KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 0);
 								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), "#ffffff", 1);
 								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), "#ffffff", 1);

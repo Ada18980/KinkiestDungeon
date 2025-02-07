@@ -1722,7 +1722,8 @@ function KinkyDungeonDrawGame() {
 						+ (KinkyDungeonGridSizeDisplay/6),
 						zoom);
 
-			if (KDToggles.ShowFacing && (KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)) {
+			if ((KDToggles.ShowFacing || KDGetInertia(KDPlayer()) > 0)
+					&& (KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)) {
 				KDDraw(kdstatusboard, kdpixisprites, "ui_playerfacing", KinkyDungeonRootDirectory + "UI/PlayerFacing.png",
 					(KinkyDungeonPlayerEntity.x + KinkyDungeonPlayerEntity.facing_x - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
 					(KinkyDungeonPlayerEntity.y + KinkyDungeonPlayerEntity.facing_y - CamY + 0.5)*KinkyDungeonGridSizeDisplay,

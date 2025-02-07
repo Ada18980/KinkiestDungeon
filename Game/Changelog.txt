@@ -39,6 +39,13 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 
 TODO add ability to recolor own restraints via palette
 
+5.4.42
+- Tower shield now adds inertia instead of slow level
+- Combat Training only applies at BR > 10
+- Blade Dance reworked to count as an attack. Simply deals bonus damage if holding a light offhand weapon.
+- Unstable magic nerfed to 30%
+- Iron blood nerfed to -30% SP cost and +15% MP cost
+
 5.4.41
 - New expert tool feature/mod tool: You can add pose "NoSwimsuits"/"NoChestArmor"/etc to prevent certain armor items from adding their models
 - Can now sprint while slowed, but stamina cost is doubled

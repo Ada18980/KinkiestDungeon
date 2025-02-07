@@ -115,7 +115,7 @@ KDToggleSimpleColorPicker,Simple Color Picker
 KDToggleCenter,Center Player
 KDToggleBuffSide,Draw Buffs on Side
 KDToggleShowPath,Show Trajectory on Auto-Path
-KDToggleShowFacing,Show Player Facing
+KDToggleShowFacing,Always Show Player Facing
 KDToggleShowSameCatSpells,Show more learnable spells
 KDTogglePlayerAura,Show Player Buff Auras
 KDToggleEnemyAura,Show Enemy Buff Auras
@@ -403,7 +403,7 @@ KinkyDungeonStatDescVengeance,"Defeating an enemy greatly distracts you."
 KinkyDungeonStatBerserkerRage,"Berserker Rage"
 KinkyDungeonStatDescBerserkerRage,"Melee attacks distract you, but melee (including chain) damage increases by up to 30% at max distraction."
 KinkyDungeonStatUnstableMagic,"Unstable Magic"
-KinkyDungeonStatDescUnstableMagic,"Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher."
+KinkyDungeonStatDescUnstableMagic,"Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher."
 KinkyDungeonStatAbsoluteFocus,"Absolute Focus"
 KinkyDungeonStatDescAbsoluteFocus,"Miscast chance is doubled."
 
@@ -6346,7 +6346,7 @@ KinkyDungeonSpellUnarmed3,Martial Arts III
 KinkyDungeonSpellDescriptionUnarmed3,"Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total)."
 
 KinkyDungeonSpellCriticalStrike,Precise Critical
-KinkyDungeonSpellDescriptionCriticalStrike,"When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."
+KinkyDungeonSpellDescriptionCriticalStrike,"When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)"
 KinkyDungeonSpellCriticalStrikeMagic,Precise Magic
 KinkyDungeonSpellDescriptionCriticalStrikeMagic,"When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency."
 KinkyDungeonSpellMagicalOverload,Magical Overload
@@ -6779,7 +6779,7 @@ KinkyDungeonFleetFooted,"You hover with reduced effect from bindings."
 
 KinkyDungeonSpellIronBlood,Iron Blood
 KinkyDungeonSpellTargetIronBlood,Select yourself
-KinkyDungeonSpellDescriptionIronBlood,"Channel 4 turns: Halves SP cost of melee attacks by 50%, but increases MP cost of spells by 25%. Ends on sleep or recast."
+KinkyDungeonSpellDescriptionIronBlood,"Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast."
 KinkyDungeonSpellCastIronBlood,Your skin glows a pale red!
 
 KinkyDungeonSpellStoneSkin,Stone Skin
@@ -22479,7 +22479,7 @@ ItemPickupShield,"You pick up a wooden shield."
 
 KinkyDungeonInventoryItemShieldTower,Tower Shield
 KinkyDungeonInventoryItemShieldTowerDesc,"Now with more leg room."
-KinkyDungeonInventoryItemShieldTowerDesc2,"Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
+KinkyDungeonInventoryItemShieldTowerDesc2,"Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield."
 ItemPickupShieldTower,"You pick up a metal tower shield."
 
 KinkyDungeonInventoryItemShieldReinforced,Reinforced Shield
@@ -23622,7 +23622,7 @@ KinkyDungeonSpellWeaponAttack,Ranged Attack
 
 
 KinkyDungeonSpellCombatTraining,"Combat Training"
-KinkyDungeonSpellDescriptionCombatTraining,"Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist."
+KinkyDungeonSpellDescriptionCombatTraining,"Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 10 Battle Rhythm you gain 1 slow resist."
 
 KDoffhandTooltip,This is your current offhand weapon.
 KDoffhandOldTooltip,You are unable to wield this weapon offhand at the moment.
@@ -24397,7 +24397,7 @@ KinkyDungeonSpellDescriptionBattleCost,"Weapon stamina cost is reduced by a perc
 KinkyDungeonBuffPhaseEvasion,+50 Evasion from using Phase
 
 KinkyDungeonSpellBladeDance,Blade Dance
-KinkyDungeonSpellDescriptionBladeDance,"Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well."
+KinkyDungeonSpellDescriptionBladeDance,"Spend 60 stamina to dash to an adjacent spot. Attacks nearby enemies for 30% damage, or 60% if holding a Light weapon. If holding a Light offhand weapon, deal an extra 20 damage of its type as well."
 KinkyDungeonSpellCastBladeDance,"You spin towards a location, slashing at nearby enemies!"
 KinkyDungeonSpellTargetBladeDance,Choose target location
 

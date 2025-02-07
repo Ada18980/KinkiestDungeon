@@ -2314,3 +2314,21 @@ function KDIsBlindfolded(_player: entity): boolean {
 function KDCanHack(_player: entity): boolean {
 	return (KinkyDungeonPlayerTags.get("Cyberjack"));
 }
+
+
+function KDGetInertia(player: entity): number {
+	let data = {
+		player: player,
+		inertia: KDEntityBuffedStat(player, "Inertia"),
+		base: player.player ? (
+			KinkyDungeonStatsChoice.get("DirectionSlow2") ? 2 : (
+				KinkyDungeonStatsChoice.get("DirectionSlow") ? 1 : 0
+			)
+		) : 0,
+	};
+
+	KinkyDungeonSendEvent("inertia", data);
+
+	data.base += data.inertia
+	return data.base;
+}

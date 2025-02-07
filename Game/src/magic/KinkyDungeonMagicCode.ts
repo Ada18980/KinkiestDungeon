@@ -1185,7 +1185,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 				KinkyDungeonSendEvent("beforePlayerLaunchAttack", data);
 
-				KinkyDungeonAttackEnemy(en, data.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, true)));
+				KinkyDungeonAttackEnemy(en, data.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, true)),
+					undefined, KinkyDungeonPlayerDamage);
 			}
 		}
 		if (hit) {
