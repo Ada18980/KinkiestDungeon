@@ -445,11 +445,11 @@ Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distracti
 
 
 Focused Strikes
-
+しっかり狙う
 90% less accuracy penalty on swung weapons due to distraction.
 武器攻撃時の興奮値による命中率の低下を90%低減する
 Focused Power
-
+こらえる
 90% less stamina cost penalty on staves and similar weapons distraction.
 武器攻撃時の興奮値による使用スタミナ量の増加を90%低減する
 Pristine
