@@ -5207,7 +5207,7 @@ The Nurse assures you it's going to be alright~ (DamageTaken)
 
 
 Librarian
-書庫の司書
+司書
 The librarian gets angry and retreats.
 司書は怒りながら逃げていった。
 The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
