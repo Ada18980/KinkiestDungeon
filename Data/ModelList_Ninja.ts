@@ -25,7 +25,7 @@ AddModel({
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ClothCollar"),
-		{ Name: "CollarTag", Layer: "Collar", Pri: 10.1,
+		{ Name: "CollarTag", Layer: "CollarAcc", Pri: 10.1,
 			Invariant: true,
 			NoOverride: true, TieToLayer: "Collar",
 		},
@@ -211,6 +211,7 @@ AddModel({
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
+			HidePoses: {"SkimpyLower": true},
 		},
 		{ Name: "SkirtBand", Layer: "Skirt", Pri: 15.1,
 			TieToLayer: "Skirt",
@@ -257,8 +258,11 @@ AddModel({
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 2,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
-			SwapLayerPose: {Hogtie: "SockLeftHogtie", KneelClosed: "StockingLeftKneel"},
+			SwapLayerPose: {KneelClosed: "StockingLeftKneel"},
 			NoOverride: true,
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Short",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -274,6 +278,9 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			SwapLayerPose: {Kneel: "SockRightKneel"},
 			NoOverride: true,
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Short",
+			DisplaceAmount: 20,
 		},
 
 	])

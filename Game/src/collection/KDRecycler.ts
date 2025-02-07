@@ -177,7 +177,7 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			rID++;
 		}
 
-		if (KDMapData.RoomType == "Summit") {
+		if (KDMapData.RoomType == "Summit" || KDMapData.RoomType == "PerkRoom") {
 			DrawButtonKDEx(
 				"recycleButton",
 				() => {
@@ -195,11 +195,9 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			//yy += 150;
 			yy += 180;
 			KDDrawRecyclerBlueprints(cats, x, yy, width);
-
-
 		} else {
 			yy += 240;
-			DrawTextFitKD(TextGet("KDFacilityLocal"), x + 560, y + 280, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
+			DrawTextFitKD(TextGet("KDFacilityLocal2"), x + 560, y + 280, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
 		}
 
 	}
@@ -448,9 +446,15 @@ function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?:
 		res.Rune = (res.Rune || 0) + Math.ceil(RecyclerResources.Rune.Yield * mult);
 	}
 
-	for (let shrine of restraint.shrine) {
-		if (RecyclerResources[shrine]) {
-			res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+	if (restraint.recycleresource) {
+		for (let resource of Object.entries(restraint.recycleresource)) {
+			res[resource[0]] = (res[resource[0]] || 0) + Math.ceil(resource[1]);
+		}
+	} else {
+		for (let shrine of restraint.shrine) {
+			if (RecyclerResources[shrine]) {
+				res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+			}
 		}
 	}
 	return res;

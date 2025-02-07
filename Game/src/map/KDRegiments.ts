@@ -56,6 +56,7 @@ function KDTickMaps(delta: number,
 	if (KinkyDungeonFlags.get("KDMapTick")) return false;
 	KinkyDungeonSetFlag("KDMapTick", KDMapTickTime);
 	let mapsToUpdate: WorldCoord[] = [];
+	let mapsWithUpdateNPCs: WorldCoord[] = [];
 
 	for (let y = minFloor; y <= maxFloor; y++) {
 		let mapSlot = KDWorldMap[0 + ',' + y];
@@ -66,6 +67,47 @@ function KDTickMaps(delta: number,
 					mapY: y,
 					room: data.RoomType,
 				})
+			}
+		}
+	}
+
+	for (let y = 0; y <= KDGameData.HighestLevelCurrent; y++) {
+		let mapSlot = KDWorldMap[0 + ',' + y];
+		if (mapSlot) {
+			let visitedRooms: Record<string, boolean> = {};
+			for (let data of Object.values(mapSlot.data)) {
+				if (KDGetPersistentNPCCache({
+					mapX: 0,
+					mapY: y,
+					room: data.RoomType,
+				})?.length > 0) {
+					mapsWithUpdateNPCs.push({
+						mapX: 0,
+						mapY: y,
+						room: data.RoomType,
+					})
+					visitedRooms[data.RoomType] = true;
+				}
+			}
+
+			let journeySlot =  KDGameData.JourneyMap[(mapSlot.jx != undefined ? mapSlot.jx : 0) + ',' + (mapSlot.jy != undefined ? mapSlot.jy : y)];
+			if (journeySlot?.SideRooms) {
+				for (let r of journeySlot.SideRooms) {
+					if (KDSideRooms[r]?.altRoom && !visitedRooms[KDSideRooms[r].altRoom]) {
+						if (KDGetPersistentNPCCache({
+							mapX: 0,
+							mapY: y,
+							room: KDSideRooms[r].altRoom,
+						})?.length > 0) {
+							mapsWithUpdateNPCs.push({
+								mapX: 0,
+								mapY: y,
+								room: KDSideRooms[r].altRoom,
+							})
+							visitedRooms[KDSideRooms[r].altRoom] = true;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -85,6 +127,24 @@ function KDTickMaps(delta: number,
 		if (updateChests)
 			KDRefillChests(data);
 	}
+
+	for (let coords of mapsWithUpdateNPCs) {
+		let loc = KDGetWorldMapLocation({x: coords.mapX, y: coords.mapY});
+		if (!loc) continue;
+
+		let data = loc.data[coords.room]
+
+		if (data) {
+
+		}
+		KDSpawnPersistentNPCs(coords, data == KDMapData);
+		KDWanderPersistentNPCs(coords, data == KDMapData);
+		KDRunPersistentNPCScripts(coords, data == KDMapData);
+
+	}
+
+
+
 
 	return true;
 }

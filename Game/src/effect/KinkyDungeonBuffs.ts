@@ -45,10 +45,10 @@ function KinkyDungeonTickBuffs(entity: entity, delta: number, endFloor: boolean)
 			else if (value.endSleep && KDGameData.SleepTurns > 1) KinkyDungeonExpireBuff(entity, key);
 			else if (!value.duration || value.duration < 0) KinkyDungeonExpireBuff(entity, key);
 			else {
-				if (value.type == "restore_mp") KinkyDungeonChangeMana(value.power);
-				else if (value.type == "restore_wp") KinkyDungeonChangeWill(value.power);
-				else if (value.type == "restore_sp") KinkyDungeonChangeStamina(value.power);
-				else if (value.type == "restore_ap") KinkyDungeonChangeDistraction(value.power, true);
+				if (value.type == "restore_mp") KDChangeMana(value.id, "buff", "tick", value.power);
+				else if (value.type == "restore_wp") KDChangeWill(value.id, "buff", "tick", value.power);
+				else if (value.type == "restore_sp") KDChangeStamina(value.id, "buff", "tick", value.power);
+				else if (value.type == "restore_ap") KDChangeDistraction(value.id, "buff", "tick", value.power, true);
 
 				else if (value.type == "SpellCastConstant" && value.spell && entity) {
 					KinkyDungeonCastSpell(entity.x, entity.y, KinkyDungeonFindSpell(value.spell, true), undefined, undefined, undefined);
@@ -87,6 +87,7 @@ function KinkyDungeonTickBuffTag(entity: entity, tag: string, Amount: number = 1
 					if (!value.currentCount) value.currentCount = 0;
 					value.currentCount += Amount;
 					if (value.currentCount >= value.maxCount) KinkyDungeonExpireBuff(entity, key);
+					KDUpdateBuffStatMemo(list, value.type);
 				}
 			}
 		}
@@ -149,6 +150,10 @@ function KinkyDungeonRemoveBuffsWithTag(entity: entity, tags: string[]) {
 
 // Updates buffs for all creatures
 function KinkyDungeonUpdateBuffs(delta: number, endFloor: boolean) {
+	if (delta > 0) {
+		KDBuffedStatTypeMemo = new Map();
+		KDBuffedStatTypeMemoUpdate = new Map();
+	}
 	// Tick down buffs the buffs
 	KinkyDungeonSendEvent("tickBuffs", {delta: delta});
 	KinkyDungeonTickBuffs(KinkyDungeonPlayerEntity, delta, endFloor);
@@ -225,15 +230,60 @@ function KDBuffEnabled(list: Record<string, any>, buff: any, onlyPositiveDuratio
 		}));
 }
 
-function KinkyDungeonGetBuffedStat(list: Record<string, any>, Stat: any, onlyPositiveDuration?: boolean): number {
-	let stat = 0;
-	if (list)
+let KDBuffedStatTypeMemo: Map<Record<string, any>, Record<string, any[]>> = new Map();
+let KDBuffedStatTypeMemoUpdate: Map<Record<string, any>, string[]> = new Map();
+
+function KDUpdateBuffedStatTypeMemo(list: Record<string, any>) {
+	let obj = KDBuffedStatTypeMemo.get(list) || {};
+	let updateList = KDBuffedStatTypeMemoUpdate.get(list);
+	if (!KDBuffedStatTypeMemo.get(list) || !updateList) {
+		obj = {};
+		KDBuffedStatTypeMemo.set(list, obj);
 		for (let buff of Object.values(list)) {
-			if (buff && buff.type == Stat
-				&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
-				stat += buff.power;
+			if (buff) {
+				if (!obj[buff.type]) obj[buff.type] = [];
+				obj[buff.type].push(buff);
 			}
 		}
+	} else {
+		for (let stat of updateList) {
+			obj[stat] = []
+			for (let buff of Object.values(list)) {
+				if (buff && buff.type == stat) {
+					obj[stat].push(buff);
+				}
+			}
+		}
+	}
+
+	KDBuffedStatTypeMemoUpdate.delete(list);
+}
+
+function KinkyDungeonGetBuffedStat(list: Record<string, any>, Stat: string, onlyPositiveDuration?: boolean): number {
+	let stat = 0;
+	if (list) {
+		if (KDBuffedStatTypeMemoUpdate.get(list)?.length > 0
+			|| !KDBuffedStatTypeMemo.get(list)) {
+			KDUpdateBuffedStatTypeMemo(list);
+		}
+		if (KDBuffedStatTypeMemo.get(list)) {
+			if (KDBuffedStatTypeMemo.get(list) && KDBuffedStatTypeMemo.get(list)[Stat])
+				for (let buff of KDBuffedStatTypeMemo.get(list)[Stat]) {
+					if (buff && buff.type == Stat
+						&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
+						stat += buff.power;
+					}
+				}
+		} else {
+			for (let buff of Object.values(list)) {
+				if (buff && buff.type == Stat
+					&& KDBuffEnabled(list, buff, onlyPositiveDuration)) {
+					stat += buff.power;
+				}
+			}
+		}
+
+	}
 	return stat;
 }
 function KinkyDungeonGetMaxBuffedStat(list: Record<string, any>, Stat: any, onlyPositiveDuration: boolean): number {
@@ -261,8 +311,19 @@ function KinkyDungeonExpireBuff(entity: entity, key: string): void {
 			entity: entity,
 			buff: list[key],
 		};
+		let tt = list[key].type;
 		KinkyDungeonSendEvent("expireBuff", data);
+		KDUpdateBuffStatMemo(list, tt);
 		delete list[key];
+	}
+}
+
+function KDUpdateBuffStatMemo(list: Record<string, any>, stat: string) {
+	if (!KDBuffedStatTypeMemoUpdate.get(list)) {
+		KDBuffedStatTypeMemoUpdate.set(list, []);
+	}
+	if (!KDBuffedStatTypeMemoUpdate.get(list).includes(stat)) {
+		KDBuffedStatTypeMemoUpdate.get(list).push(stat);
 	}
 }
 
@@ -281,6 +342,10 @@ function KinkyDungeonApplyBuffToEntity(entity: entity, origbuff: any, changes?: 
 	return null;
 }
 
+/**
+ * @param origbuff
+ * @param [changes]
+ */
 function KDApplyBuff(list: Record<string, any>, origbuff: any, changes: any, entity: entity): any {
 	if (!origbuff) return null;
 	let buff: any = {};
@@ -294,9 +359,15 @@ function KDApplyBuff(list: Record<string, any>, origbuff: any, changes: any, ent
 		return null;
 	} else {
 		if (!list[id] && buff.sfxApply) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + buff.sfxApply + ".ogg");
-		if (!list[id] || (list[id].power >= 0 && buff.power >= list[id].power) || (list[id].power < 0 && ((buff.power > 0 && buff.power >= list[id].power) || buff.power <= list[id].power))) list[id] = buff;
-		if ((list[id].power && buff.power == list[id].power && buff.duration >= list[id].duration)) list[id].duration = buff.duration;
-
+		if (!list[id]
+			|| (list[id].power >= 0 && buff.power >= list[id].power)
+			|| (list[id].power < 0
+				&& ((buff.power > 0 && buff.power >= list[id].power)
+					|| buff.power <= list[id].power)))
+			list[id] = buff;
+		if ((list[id].power && buff.power == list[id].power && buff.duration >= list[id].duration))
+			list[id].duration = buff.duration;
+		KDUpdateBuffStatMemo(list, buff.type);
 		if (buff.tags)
 			for (let tag of buff.tags) {
 				if (tag == "darkness" && list == KinkyDungeonPlayerBuffs) {

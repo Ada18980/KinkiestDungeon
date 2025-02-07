@@ -73,6 +73,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 	fallbackLock?: string, // If it doesnt have defaultLock
 	forceCurse?: string,
 	forceConjure?: boolean,
+	currentWill?: number,
 }): EligibleRestraintEntry[] {
 	let ret: EligibleRestraintEntry[] = [];
 	let effLevel = 4 + (options?.forceEffLevel != undefined ? options.forceEffLevel : undefined) || KDGetEffLevel();
@@ -98,7 +99,11 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 				|| restraint.floors[KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint]
 				|| (restraint.ignoreFloorTags?.some((t) => {return tags.includes(t);}))
 
+
 		)) {
+			if (options?.currentWill != undefined
+				&& (restraint.maxwill != undefined || restraint.maxwillEnemy)
+				&& (restraint.maxwillEnemy != undefined ? restraint.maxwillEnemy : restraint.maxwill) < options.currentWill) continue;
 			if (KDCanEquipItemOnNPC(restraint, id, false)) continue;
 
 			if (!restraint.arousalMode || arousalMode) {

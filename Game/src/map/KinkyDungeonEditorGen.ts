@@ -4,7 +4,7 @@
 let KD_GENWEIGHTCUTOFF = 100000;
 
 
-function KDAddLabel(label: any) {
+function KDAddLabel(label: KDLabel) {
 	if (!KDMapData.Labels) KDMapData.Labels = {};
 	if (!KDMapData.Labels[label.type]) KDMapData.Labels[label.type] = [];
 	KDMapData.Labels[label.type].push(label);
@@ -863,6 +863,7 @@ let KDTileGen = {
 				if (en && tileGenerator.faction) {
 					en.faction = tileGenerator.faction;
 				}
+				KDRunCreationScript(en, KDGetCurrentLocation());
 			}
 		}
 		KinkyDungeonMapSet(x, y, '0');

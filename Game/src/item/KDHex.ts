@@ -1,13 +1,29 @@
 'use strict';
 
 
+let KDBaseCursedVars = [
+	"Mimic",
+	"Common",
+	"MimicHoly",
+];
 /**
  * Contains a list of curse variant types
  * Can be modified dynamically so mods can add basic curses
  */
 let KDHexVariantList = {
-	"Base": [
-		"Common",
+	"Base": [...KDBaseCursedVars],
+	"BaseWithSkimpy": [
+		...KDBaseCursedVars,
+		"Skimpy",
+	],
+	"BaseWithShibari": [
+		...KDBaseCursedVars,
+		"Shibari",
+	],
+	"BaseWithSkimpyShibari": [
+		...KDBaseCursedVars,
+		"Skimpy",
+		"Shibari",
 	],
 	"Common": [
 		"Tickle",
@@ -19,6 +35,13 @@ let KDHexVariantList = {
 		"Breathlessness",
 		"Futility",
 		"Sensitivity",
+	],
+	"Dragon": [
+		"Punish",
+		"Submission",
+		"Distraction",
+		"Breathlessness",
+		"Futility",
 	],
 	"CursedCollar": [
 		"CursedHeal",
@@ -63,8 +86,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Light"},
 			{type: "ItemLight", trigger: "getLights", prereq: "noCorruption", power: 3.5, color: "#ffff55", inheritLinked: true, curse: true, original: "Light"},
 			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true, curse: true, original: "Light"},
-			{trigger: "drawSGTooltip", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5555", inheritLinked: true, original: "Light"},
-			{trigger: "drawBuffIcons", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5555", inheritLinked: true, original: "Light"},
+			{trigger: "drawSGTooltip", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5277", inheritLinked: true, original: "Light"},
+			{trigger: "drawBuffIcons", type: "curseInfo", prereq: "noCorruption", msg: "Illumination", color: "#ff5277", inheritLinked: true, original: "Light"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Attraction": {level: 4,
@@ -75,8 +98,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Attraction"},
 			{type: "CurseAttraction", trigger: "calcPlayChance", power: 0.5, inheritLinked: true, curse: true, original: "Attraction"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true, original: "Attraction"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Attraction", color: "#ff5555", inheritLinked: true, original: "Attraction"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Attraction", color: "#ff5277", inheritLinked: true, original: "Attraction"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Attraction", color: "#ff5277", inheritLinked: true, original: "Attraction"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Sensitivity": {level: 1,
@@ -87,8 +110,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Sensitivity"},
 			{type: "CurseSensitivity", trigger: "calcOrgThresh", power: 0.5, inheritLinked: true, curse: true, original: "Sensitivity"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true, original: "Sensitivity"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Sensitivity", color: "#ff5555", inheritLinked: true, original: "Sensitivity"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Sensitivity", color: "#ff5277", inheritLinked: true, original: "Sensitivity"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Sensitivity", color: "#ff5277", inheritLinked: true, original: "Sensitivity"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Submission": {level: 1,
@@ -99,8 +122,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Submission"},
 			{type: "CurseSubmission", trigger: "orgasm", power: 10, inheritLinked: true, curse: true, original: "Submission"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true, original: "Submission"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Submission", color: "#ff5555", inheritLinked: true, original: "Submission"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Submission", color: "#ff5277", inheritLinked: true, original: "Submission"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Submission", color: "#ff5277", inheritLinked: true, original: "Submission"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Distraction": {level: 1,
@@ -111,8 +134,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Distraction"},
 			{type: "multDistractionPos", trigger: "changeDistraction", power: 1.5, inheritLinked: true, curse: true, original: "Distraction"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true, original: "Distraction"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Distraction", color: "#ff5555", inheritLinked: true, original: "Distraction"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Distraction", color: "#ff5277", inheritLinked: true, original: "Distraction"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Distraction", color: "#ff5277", inheritLinked: true, original: "Distraction"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Breathlessness": {level: 1,
@@ -123,8 +146,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Breathlessness"},
 			{type: "multStaminaPos", trigger: "changeStamina", power: 0.75, inheritLinked: true, curse: true, original: "Breathlessness"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true, original: "Breathlessness"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Breathlessness", color: "#ff5555", inheritLinked: true, original: "Breathlessness"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Breathlessness", color: "#ff5277", inheritLinked: true, original: "Breathlessness"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Breathlessness", color: "#ff5277", inheritLinked: true, original: "Breathlessness"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Futility": {level: 1,
@@ -135,8 +158,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Futility"},
 			{type: "multWillPos", trigger: "changeWill", power: 0.5, inheritLinked: true, curse: true, original: "Futility"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true, original: "Futility"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Futile", color: "#ff5555", inheritLinked: true, original: "Futility"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Futile", color: "#ff5277", inheritLinked: true, original: "Futility"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Futile", color: "#ff5277", inheritLinked: true, original: "Futility"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Tickle": {level: 1,
@@ -147,8 +170,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			// All hexes have this
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Tickle"},
 			{trigger: "tick", type: "tickleDrain", power: -0.1, inheritLinked: true, curse: true, original: "Tickle"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true, original: "Tickle"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Tickle", color: "#ff5555", inheritLinked: true, original: "Tickle"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Tickle", color: "#ff5277", inheritLinked: true, original: "Tickle"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Tickle", color: "#ff5277", inheritLinked: true, original: "Tickle"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 	"Punish": {level: 2,
@@ -160,8 +183,8 @@ let KDEventHexModular: Record<string, {level: number, weight: (item: string, all
 			{trigger: "CurseTransform", type: "transform", chance: 0.05, inheritLinked: true, kind: "transform", original: "Punish"},
 			{trigger: "playerAttack", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true, original: "Punish"},
 			{trigger: "playerCast", type: "cursePunish", chance: 1, damage: "souldrain", power: 1, sfx: "SoftShield", msg: "KinkyDungeonPunishPlayerCurse", inheritLinked: true, curse: true, original: "Punish"},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Punish", color: "#ff5555", inheritLinked: true, original: "Punish"},
-			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Punish", color: "#ff5555", inheritLinked: true, original: "Punish"},
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Punish", color: "#ff5277", inheritLinked: true, original: "Punish"},
+			{trigger: "drawBuffIcons", type: "curseInfo", msg: "Punish", color: "#ff5277", inheritLinked: true, original: "Punish"},
 			{trigger: "postApply", inheritLinked: true, type: "cursePrefix"},
 		]},
 

@@ -53,7 +53,7 @@ function KDUpdateWarden(delta: number) {
 		for (let value of Object.values(KDGameData.Collection)) {
 			if (!value.status && !KDNPCUnavailable(value.id, value.status)) {
 				let entity = KDGetGlobalEntity(value.id);
-				if (entity.items) {
+				if (entity?.items) {
 					let restraints = entity.items.filter((str) => {
 						return KDRestraint({name: str});
 					});

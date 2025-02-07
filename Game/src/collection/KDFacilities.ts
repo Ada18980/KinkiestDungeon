@@ -286,6 +286,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 						KDRefreshCharacter.set(KDNPCChar.get(servant), true);
 					KDCollectionTab = "";
 					KDCollectionSelected = servant;
+					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;
 					return true;
 				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(servant),
@@ -310,6 +311,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 						KDRefreshCharacter.set(KDNPCChar.get(prisoner), true);
 					KDCollectionTab = "";
 					KDCollectionSelected = prisoner;
+					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;
 					return true;
 				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(prisoner),

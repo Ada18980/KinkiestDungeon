@@ -1,6 +1,17 @@
 "use strict";
 
-let KinkyDungeonEscapeTypes = {
+interface KinkyDungeonEscapeType {
+	selectValid: boolean,
+	requireMaxQuests?: boolean,
+	filterRandom?: (roomType: string, mapMod: string, level: number, faction: string) => number,
+	//filter?: (roomType: string, mapMod: string, level: number, faction: string) => number,
+	check: ()=>boolean,
+	minimaptext: ()=>string,
+	doortext: ()=>string,
+	worldgenstart?: ()=>void,
+}
+
+let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"None": {
 		selectValid: false,
 		check: () => {
@@ -48,8 +59,12 @@ let KinkyDungeonEscapeTypes = {
 	},
 	"Kill": {
 		selectValid: true,
+		filterRandom: (r, m, l, f) => {
+			return l > 2 ? 1 : 0;
+		},
 		worldgenstart: () => {
-			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0');
+			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+				undefined, undefined, undefined, ["nokillescape"]);
 			let enemynumber = 3;
 			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
 			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
@@ -63,6 +78,7 @@ let KinkyDungeonEscapeTypes = {
 				if (point) {
 					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
 					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
+					KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
 				}
 			}
 		},
@@ -88,6 +104,188 @@ let KinkyDungeonEscapeTypes = {
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_Kill");
+		},
+	},
+	"WolfServer": {
+		selectValid: true,
+
+		filterRandom: (roomType, mapMod, level, faction) => {
+			return (level > 2 && faction == "Nevermere") ? 10 : 0;
+		},
+
+		worldgenstart: () => {
+			let enemytype = KinkyDungeonGetEnemy(["wolfServer"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+				["wolfServer"], undefined, {"server": {mult: 4, bonus: 10}}, ["nokillescape"]);
+			let enemynumber = 3;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
+
+			let data = {enemy: enemytype.name, number: enemynumber};
+			KinkyDungeonSendEvent("calcEscapeWolfServerTarget", data);
+			KDMapData.KillTarget = data.enemy;
+			KDMapData.KillQuota = data.number;
+
+			let maxBoringness = Math.max(...KDMapExtraData.Boringness);
+			for (let i = 0; i < data.number; i++) {
+				let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+					return KinkyDungeonBoringGet(x, y) > 0.3 * maxBoringness;
+				}, true, false);
+				if (!point) point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+					return KinkyDungeonBoringGet(x, y) > 0;
+				}, true, false);
+					if (!point) point = KinkyDungeonGetRandomEnemyPoint(true)
+				if (point) {
+					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
+					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
+					KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
+					ens[0].faction = "Nevermere";
+
+					// Summon some permanent guards
+
+					for (let i = 0; i < 2; i++) {
+						let point = KinkyDungeonGetNearbyPoint(ens[0].x, ens[0].y, true);
+
+						if (point) {
+							let e = KinkyDungeonGetEnemy(["nevermere"],
+								MiniGameKinkyDungeonLevel + 2,
+								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+							["nevermere"], undefined,
+							{"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+							if (e) {
+								let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+								if (ee) {
+									ee.faction = "Nevermere";
+									ee.AI = "looseguard";
+									KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
+									KDRunCreationScript(ee, KDGetCurrentLocation());
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		check: () => {
+			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
+				KinkyDungeonEscapeTypes.Kill.worldgenstart();
+
+			if (KDFactionAllied("Player", "Nevermere")) return true;
+
+			var count = 0;
+			for (let enemy of KDMapData.Entities) {
+				if (KDEnemyHasFlag(enemy, "killtarget")) {
+					count++;
+				}
+			}
+			KDMapData.KillQuota = count;
+			return KDMapData.KillQuota <= 0;
+		},
+		minimaptext: () => {
+			let escape = KinkyDungeonEscapeTypes.Kill.check();
+			if (escape)
+				return TextGet(KDFactionAllied("Player", "Nevermere") ? "KDEscapeMinimap_Bypass_WolfServer" : "KDEscapeMinimap_Pass_WolfServer");
+			else
+				return TextGet("KDEscapeMinimap_Fail_WolfServer").replace("NUMBER", KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_WolfServer");
+		},
+	},
+	"DroneNode": {
+		selectValid: true,
+
+		filterRandom: (roomType, mapMod, level, faction) => {
+			if (level < 5) return 0;
+			return (faction == "AncientRobot" || faction == "Dollsmith" || faction == "Virus") ? 10 : 0;
+		},
+
+		worldgenstart: () => {
+			let faction = KDGetMainFaction();
+			let robot = (faction == "AncientRobot" || faction == "Virus") ? "robot" : "oldrobot";
+			let filter = (faction == "AncientRobot" || faction == "Virus") ? ["oldrobot"] : [];
+			let enemytype = KinkyDungeonGetEnemy(["robotServer", robot], KDGetEffLevel(),
+				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+				["robotServer", "drone", robot], undefined,
+				{"server": {mult: 4, bonus: 10}}, ["nokillescape", ...filter]);
+			let enemynumber = 3;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
+
+			let data = {enemy: enemytype.name, number: enemynumber};
+			KinkyDungeonSendEvent("calcEscapeDroneNodeTarget", data);
+			KDMapData.KillTarget = data.enemy;
+			KDMapData.KillQuota = data.number;
+
+			let maxBoringness = Math.max(...KDMapExtraData.Boringness);
+			for (let i = 0; i < data.number; i++) {
+				let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+					return KinkyDungeonBoringGet(x, y) > 0.3 * maxBoringness;
+				}, true, false);
+				if (!point) point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+					return KinkyDungeonBoringGet(x, y) > 0;
+				}, true, false);
+					if (!point) point = KinkyDungeonGetRandomEnemyPoint(true)
+				if (point) {
+					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
+					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
+					KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
+					ens[0].faction = faction;
+
+					// Summon some permanent guards
+
+					for (let i = 0; i < 2; i++) {
+						let point = KinkyDungeonGetNearbyPoint(ens[0].x, ens[0].y, true);
+
+						if (point) {
+							let e = KinkyDungeonGetEnemy(["drone", robot],
+								MiniGameKinkyDungeonLevel + 2,
+								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+								'0',
+							["drone", robot], undefined,
+							{"drone": {mult: 4, bonus: 10}, [robot]: {mult: 4, bonus: 1}},
+							["miniboss", "boss", ...filter]);
+							if (e) {
+								let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+								if (ee) {
+									ee.faction = faction;
+									ee.AI = "looseguard";
+									KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
+									KinkyDungeonSetEnemyFlag(ens[0], "led", -1);
+									KDRunCreationScript(ee, KDGetCurrentLocation());
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		check: () => {
+			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
+				KinkyDungeonEscapeTypes.Kill.worldgenstart();
+
+			if (KDFactionAllied("Player", "AncientRobot")) return true;
+
+			var count = 0;
+			for (let enemy of KDMapData.Entities) {
+				if (KDEnemyHasFlag(enemy, "killtarget")) {
+					count++;
+				}
+			}
+			KDMapData.KillQuota = count;
+			return KDMapData.KillQuota <= 0;
+		},
+		minimaptext: () => {
+			let escape = KinkyDungeonEscapeTypes.Kill.check();
+			if (escape)
+				return TextGet(KDFactionAllied("Player", "Nevermere") ?
+				"KDEscapeMinimap_Bypass_DroneNode"
+				: "KDEscapeMinimap_Pass_DroneNode");
+			else
+				return TextGet("KDEscapeMinimap_Fail_DroneNode").replace("NUMBER",
+			KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_DroneNode");
 		},
 	},
 	"Miniboss": {
@@ -269,6 +467,58 @@ let KinkyDungeonEscapeTypes = {
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_Boss");
+		},
+	},
+	"SealSigil": {
+		selectValid: false,
+		check: () => {
+			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
+		},
+		minimaptext: () => {
+			let escape = KinkyDungeonEscapeTypes.SealSigil.check();
+			if (escape)
+				return TextGet(KDGameData.DragonCaptured ? "KDEscapeMinimap_PassKill_SealSigil"
+					: "KDEscapeMinimap_Pass_SealSigil");
+			else
+				return TextGet("KDEscapeMinimap_Fail_SealSigil").replace("NUMBER",
+				"" + Math.round(KDGameData.SealErasedQuota - KDGameData.SigilsErased)
+			);
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_SealSigil");
+		},
+		worldgenstart: () => {
+			let quota = 1;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) {
+				quota = 3;
+			}
+			else if (KinkyDungeonStatsChoice.get("hardMode")){
+				quota = 2;
+			}
+			let data = {number: quota};
+
+			KinkyDungeonSendEvent("calcEscapeSealSigilQuota", data);
+			KDGameData.SealErasedQuota = data.number;
+			KDGameData.SigilsErased = 0;
+			KDGameData.DragonCaptured = true;
+
+			// Gets all lairs, and if one of them is a persistent dragon we assign it, otherwise fail
+			for (let outpost of Object.keys(KDGetWorldMapLocation(
+				KDCoordToPoint(
+					KDGetCurrentLocation()))?.lairs)) {
+				if (KDPersonalAlt[outpost]?.OwnerNPC) {
+
+					let NPC = KDGetPersistentNPC(KDPersonalAlt[outpost]?.OwnerNPC);
+					if (NPC && (NPC.trueEntity || NPC.entity)) {
+						let enemy = KinkyDungeonGetEnemyByName((NPC.trueEntity || NPC.entity).Enemy);
+						if (enemy?.tags?.dragongirl || enemy?.tags?.dragonqueen) {
+							KDGameData.DragonTarget = KDPersonalAlt[outpost].OwnerNPC;
+							KDGameData.DragonCaptured = false;
+							return;
+						}
+					}
+				}
+			}
 		},
 	},
 };

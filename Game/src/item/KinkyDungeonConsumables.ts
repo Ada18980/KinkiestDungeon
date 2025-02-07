@@ -177,7 +177,7 @@ function KinkyDungeonConsumableEffect(Consumable: consumable, type?: string) {
 		KinkyDungeonTargetingSpellItem = Consumable;
 		KinkyDungeonTargetingSpellWeapon = null;
 	} else if (type == "charge") {
-		KinkyDungeonChangeCharge(Consumable.amount);
+		KDChangeCharge(Consumable.name, type, "consumable", Consumable.amount);
 		//KDGameData.AncientEnergyLevel = Math.min(Math.max(0, KDGameData.AncientEnergyLevel + Consumable.amount), 1.0);
 		if (!KinkyDungeonStatsChoice.get("LostTechnology"))
 			KinkyDungeonChangeConsumable(KinkyDungeonConsumables.AncientPowerSourceSpent, 1);
@@ -330,32 +330,45 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number): boolean {
 		if (KDConsumablePrereq[KDConsumable(item.item).postreq](item.item, Quantity)) {
 			KDDelayedActionPrune(["Action", "Consume"]);
 			if (KDConsumable(item.item).delay || (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste"))) {
-				KDAddDelayedAction({
-					commit: "Consumable",
-					data: {
-						Name: Name,
-						Quantity: Quantity,
-					},
-					time: KDConsumable(item.item).delay || 2,
-					tags: ["Action", "Remove", "Restrain"],
-				});
-				KDStunTurns(KDConsumable(item.item).delay || 2, true);
+				let maxtime = KDConsumable(item.item).delay || 2;
+				for (let i = 1; i <= maxtime; i++)
+					KDAddDelayedAction({
+						commit: i == maxtime ? "Consumable" : undefined,
+						update: i < maxtime ? "Consumable" : undefined,
+						data: {
+							Name: Name,
+							Quantity: Quantity,
+						},
+						time: i,
+						tick: i - 1,
+						maxtime: maxtime,
+						tags: ["Action", "Remove", "Restrain"],
+					});
+				KDDelayedActionStart();
+				//KDStunTurns(KDConsumable(item.item).delay || 2, true);
 			} else KinkyDungeonUseConsumable(Name, Quantity);
 			return true;
 		} else return false;
 	}
 	KDDelayedActionPrune(["Action", "Consume"]);
 	if (KDConsumable(item.item).delay || (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste"))) {
-		KDAddDelayedAction({
-			commit: "Consumable",
-			data: {
-				Name: Name,
-				Quantity: Quantity,
-			},
-			time: KDConsumable(item.item).delay || 2,
-			tags: ["Action", "Remove", "Restrain"],
-		});
-		KDStunTurns(KDConsumable(item.item).delay || 2, true);
+		let maxtime = KDConsumable(item.item).delay || 2;
+		for (let i = 1; i <= maxtime; i++)
+			KDAddDelayedAction({
+				commit: i == maxtime ? "Consumable" : undefined,
+				update: i < maxtime ? "Consumable" : undefined,
+				data: {
+					Name: Name,
+					Quantity: Quantity,
+				},
+				time: i,
+				tick: i - 1,
+				maxtime: maxtime,
+				tags: ["Action", "Remove", "Restrain"],
+			});
+
+		KDDelayedActionStart();
+		//KDStunTurns(KDConsumable(item.item).delay || 2, true);
 	} else KinkyDungeonUseConsumable(Name, Quantity);
 	return true;
 }
@@ -375,9 +388,28 @@ function KinkyDungeonUseConsumable(Name: string, Quantity: number): boolean {
 	if (!KDConsumable(item.item).noConsumeOnUse)
 		KinkyDungeonChangeConsumable(KDConsumable(item.item), -(KDConsumable(item.item).useQuantity ? KDConsumable(item.item).useQuantity : 1) * Quantity);
 
+	if (KinkyDungeonConsumableVariants[item.item.inventoryVariant || item.item.name]) {
+		if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
+		KDGameData.IdentifiedObj[item.item.inventoryVariant || item.item.name] = 2;
+	}
 	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonInventoryItem" + Name + "Use"), "#88FF88", 1);
 	if (KDConsumable(item.item).sfx) {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KDConsumable(item.item).sfx + ".ogg");
 	}
 	return true;
+}
+
+
+function KDGetCheapestLatexSolvent(tag: string = "latexsolvent"): string {
+	let cheapest = "";
+	let cheapestcost = -1000;
+	for (let c of KinkyDungeonAllConsumable()) {
+		if (KDConsumable(c) && KDConsumable(c)[tag]
+			&& (cheapestcost == -1000 || KDConsumable(c)[tag] < cheapestcost)) {
+				cheapest = c.inventoryVariant || c.name;
+				cheapestcost = KDConsumable(c)[tag]
+		}
+	}
+
+	return cheapest;
 }

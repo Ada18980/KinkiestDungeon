@@ -5,41 +5,107 @@ let KDJourneyMapMod = {
 };
 
 
-let KDDragonList = [
-	{
-		enemy: "DragonQueenCrystal",
-		obstacles: {
-			ChaoticCrystal: 1.0,
-			ChaoticCrystalActive: 0.25,
-			SoulCrystal: 0.05,
-			SoulCrystalActive: 0.01,
-			CuffedGirl: 0.1,
-		},
-	},
-	{
-		enemy: "DragonQueenPoison",
-		obstacles: {
-			BarricadeVine: 1.0,
-			GiantMushroom: 0.25,
-			VinePlant: 0.1,
-		},
-	},
-	{
-		enemy: "DragonQueenIce",
-		obstacles: {
-			BarricadeIce: 1.0,
-		},
-	},
-	{
-		enemy: "DragonQueenShadow",
-		obstacles: {
-			ShadowHand: 0.1,
-			BarricadeShadow: 1.0,
-			BarricadeShadowMetal: 0.25,
-		},
-	},
+interface KDMapEnemyList {
+	/** The boss */
+	enemy: string,
+	faction?: string,
+	minfloor?: number,
+	maxfloor?: number,
+	/** Scenery */
+	furniture?: Record<string, number>,
+	/** Scenery */
+	obstacles: Record<string, number>,
+	/** Weighted average for close party */
+	party?: Record<string, number>,
+	/** Uses all as tags in enemy selection */
+	partytags?: string[],
+	/** Chooses one to be filtertag */
+	partyrequiretags?: string[],
+	/** Multiplier for weighted average party */
+	weightedpartymult?: number
+	/** Multiplier for randomly generated party */
+	randompartymult?: number
+}
 
-
+let KDElevatorHallEnemies : KDMapEnemyList[] = [
+	{
+		enemy: "EnforcerBot",
+		faction: "Virus",
+		minfloor: 0,
+		maxfloor: 4,
+		obstacles: {
+			"": 1,
+			OldDrone: 0.5,
+			RubberTurret: 0.07,
+		},
+	},
+	{ // With missile silos
+		enemy: "BotMissile",
+		faction: "Virus",
+		minfloor: 4,
+		obstacles: {
+			"": 0.4,
+			OldDrone: 0.3,
+			OldTapeDrone: 0.5,
+			RubberTurret: 0.1,
+			RubberSilo: 0.05,
+		},
+	},
+	{ // Bandit earlygame
+		enemy: "BanditChief",
+		faction: "Bandit",
+		maxfloor: 8,
+		obstacles: {
+			"": 1.5,
+			Bandit: 0.4,
+			BanditPet: 0.3,
+			BanditHunter: 0.2,
+		},
+	},
+	{ // Bandit later
+		enemy: "BanditMerchant",
+		faction: "Bandit",
+		minfloor: 6,
+		obstacles: {
+			"": 1.0,
+			BanditGuard: 0.5,
+			BanditPet: 1.0,
+			BanditGrappler: 0.3,
+		},
+	},
+	{ // Dollmaker earlygame
+		enemy: "Dollmaker",
+		faction: "Dollsmith",
+		maxfloor: 4,
+		obstacles: {
+			"DollsmithDoll": 1.5,
+			"": 0.4,
+			OldDrone: .25,
+		},
+	},
+	{ // Dollmaker mid
+		enemy: "Dollmaker",
+		faction: "Dollsmith",
+		minfloor: 4,
+		maxfloor: 9,
+		obstacles: {
+			"DollsmithDoll": 1.0,
+			Dollsmith: 0.1,
+			OldDrone: 0.25,
+			OldTapeDrone: 0.1,
+		},
+	},
+	{ // Dollmaker late
+		enemy: "Dollmaker",
+		faction: "Dollsmith",
+		minfloor: 8,
+		obstacles: {
+			"DollsmithDoll": 0.75,
+			Dollsmith: 0.25,
+			Dollmaker: 0.15,
+			OldTapeDrone: 0.5,
+		},
+	},
 ];
 
 let KDDefaultMaxFlags = {
@@ -76,8 +142,196 @@ let KDDefaultMaxFlags = {
 	robotspawn: 3,
 };
 
-let alts = {
+interface AltType {
+	name: string,
+	/** Room title for display */
+	Title?: string,
+	bossroom?: boolean,
+	width: number,
+	height: number,
+	genType: string,
+	skiptunnel?: boolean,
+	spawns: boolean,
+	chests: boolean,
+	shrines: boolean,
+	orbs?: number,
+	setpieces: Record<string, number>,
+	chargers: boolean,
+	notorches?: boolean,
+	heart: boolean,
+	specialtiles: boolean,
+	shortcut: boolean,
+	enemies: boolean,
+	nojail: boolean,
+	nolore?: boolean,
+	nokeys: boolean,
+	faction?: string,
+	nostairs?: boolean,
+	notraps?: boolean,
+	/** You're not supposed to be here */
+	restricted?: boolean,
+	/** Forces the tileset */
+	forceCheckpoint?: string,
+	/** You cant backtrack until you meet the escape condition */
+	noLeave?: boolean,
+	/** Jail never releases player in sub mode */
+	noRelease?: boolean,
+	/** If noRelease is true, will always release player instantly if security is low instead of waiting*/
+	releaseOnLowSec?: boolean,
+	noClutter?: boolean,
+	noShrineTypes?: string[],
+	/** Ticks flags with a floor component. Reserved for perk room generally */
+	tickFlags?: boolean,
+	noMusic?: boolean,
+	/** ???, probably deprecated */
+	keepMainPath?: boolean,
+	/** Uses music from this tileset */
+	musicParams?: string,
+	/** Room is persistent */
+	persist?: boolean,
+	/** Room is NOT persistent and never so */
+	alwaysRegen?: boolean,
+	/** Remove when pruning world map */
+	prune?: boolean,
+	/** Dont lose items */
+	keepItems?: boolean,
+	/** Unused */
+	constantX?: boolean,
+	/** Type of Prison state machine */
+	prisonType?: string,
+	/** Runs BEFORE the gencriteria */
+	beforeWorldGenScript?: (coord: WorldCoord) => void,
+	/** Runs AFTER the worldgenscript */
+	worldGenScript?: (coord: WorldCoord) => void,
+	/** Faction that owns the Jail*/
+	jailType?: string,
+	/** Faction that guards the Jail*/
+	guardType?: string,
+	/** Visual skin */
+	skin?: string,
+	/** Does not use the skin music */
+	useDefaultMusic?: boolean,
+	/** Increased number of enemies */
+	enemyMult?: number,
+	/** Use different gen params for map gen */
+	useGenParams?: string,
+	/** Use different gen params for map gen */
+	lightParams?: string,
+	/** Use different gen params for map gen */
+	bonusTags?: Record<string, {bonus: number, mult: number}>,
+	/** Always increases level by 1 */
+	alwaysAdvance?: boolean,
+	/** Dont advance when going to this floor. Not very useful atm */
+	noAdvance?: boolean,
+	/** Rebels go back to collection. Unused I think*/
+	keepRebels?: boolean,
+	/** Defeated NPCs go directly to collection*/
+	keepPrisoners?: boolean,
+	/** Do not run the 'wear' algorithm. Note: No caves will be possible!!! */
+	noWear?: boolean,
+
+	/** Allows highsec in here */
+	placeJailEntrances?: boolean,
+
+	/** Creates the jail entrances but doesnt let them be used unless this is a destination */
+	allowJailEntrances?: boolean,
+
+	nopatrols?: boolean,
+	/** Dont remove items from floor */
+	private?: boolean,
+
+	/** Prevents jailers from taking you out of jail in order to put you into jail */
+	isPrison?: boolean,
+
+	/** Even if there are no start stairs (nostartstairs) you still get placed at the start position when you enter the room (e.g. if you have a custom tile instead of stairs)*/
+	startatstartpos?: boolean,
+	/** Does not create the starting stairs. Still defines a start position */
+	nostartstairs?: boolean,
+	/** Does not generate brickwork */
+	nobrick?: boolean,
+	/** Dont generate the boringness matrix */
+	noboring?: boolean,
+
+	/** generate torches */
+	torches?: boolean,
+
+	/** Wander tags for persistent NPC */
+	wanderTags?: Record<string, number>,
+
+	/** Unlike other alttypes, this one does get bigger with labyrinthine halls, etc */
+	sizeBonus?: boolean,
+	/** Which tileset to get lore notes from */
+	loreCheckpoint?: string,
+
+	/** Ambient brightness override */
+	brightness?: number,
+	/** Automatically place extra doors according to door placement algorithm */
+	placeDoors?: boolean,
+	/** places no setpieces */
+	noSetpiece?: boolean,
+	/** This is considered a "main" room, e.g. quests will generate, elemental hunters will follow, etc. **/
+	makeMain?: boolean,
+
+	/** Attempting to exit brings up journey target screen */
+	requireJourneyTarget?: boolean,
+
+	/** Dont make quests even if this is a main. */
+	noQuests?: boolean,
+
+	/** Confusingly, this signals that the room is not safe for NPCs to remain in even if persistent, so all NPCs (including persistent and non allies) will be removed upon leaving */
+	removePartyMembers?: boolean,
+
+	/** Custom escape */
+	escapeMethod?: string,
+	/** REQUIRES that spawned npcs be the main faction */
+	factionSpawnsRequired?: boolean,
+	/** Replaces torches of the map with a custom type */
+	torchreplace?: {
+		sprite: string,
+		unlitsprite: string,
+		brightness: number,
+	},
+	/** Doesnt generate random bits of furniture */
+	noFurniture?: boolean,
+	/** Doesnt turn tables to food */
+	noFood?: string,
+	/** Archaic code */
+	doorPlaceMode?: number,
+	/** Doesnt spawn prisoners in cages on load */
+	noPersistentPrisoners?: boolean,
+	/** Doesnt spawn persistent NPCs on load */
+	noPersistentSpawn?: boolean,
+	/** NPCs do not restock gear here */
+	norestock?: boolean,
+
+
+
+	events?: KinkyDungeonEvent[],
+
+	data?: any,
+	/** Condition to approve the map */
+	genCriteria?: (iteration: number) => boolean,
+	/** Condition to unlock the elevator */
+	elevatorCondition?: (x: number, y: number) => boolean,
+	/** runs when you exit */
+	onExit?: (data: any) => void,
+	/** runs every frame*/
+	drawscript?:  (_delta, CamX: number, CamY: number, CamX_offsetVis: number, CamY_offsetVis: number) => void,
+	/** runs AFTER you exit and the new map has been created */
+	afterExit?: (data: any) => void,
+	/** runs when the map is loaded or created. Return true to repopulate the map, or false to not.*/
+	loadscript?: (firsttime: boolean) => boolean,
+	/** runs every turn.*/
+	updatescript?: (delta: number) => void,
+
+
+
+
+}
+
+let alts: Record<string, AltType> = {
 	"Tunnel": {
+		// DEPRECATED DO NOT USE
 		name: "Tunnel",
 		bossroom: false,
 		width: 8,
@@ -120,8 +374,10 @@ let alts = {
 		persist: true,
 		prune: true,
 		skiptunnel: true, // Increments the floor counter
+		alwaysAdvance: true,
 
 		keepRebels: true, // NPCs cant run away to collection if they get beaten here
+		removePartyMembers: true, // Removes party members when you leave
 
 		requireJourneyTarget: true, // Requires a journey target to exit
 
@@ -173,11 +429,14 @@ let alts = {
 	},
 	"Jail": {
 		name: "Jail",
+		persist: true,
 		bossroom: false,
 		width: 15,
 		height: 15,
 		enemyMult: 0.6,
-		alwaysRegen: true, // Always regenerate this room
+
+		allowJailEntrances: true,
+		//alwaysRegen: false, // Always regenerate this room
 		setpieces: {
 			"GuaranteedCell": 100,
 			"ExtraCell": 20,
@@ -188,6 +447,30 @@ let alts = {
 		bonusTags: {
 			"construct": {bonus: 0, mult: 0},
 		},
+		loadscript: (_firsttime) => {
+			if (_firsttime) {
+				for (let en of KDMapData.Entities) {
+					if (!KDIsImprisoned(en)) {
+						KDAddLabel({
+							assigned: en.id,
+							name: "Deploy",
+							type: "Deploy",
+							x: en.x,
+							y: en.y,
+						});
+					}
+				}
+			}
+			return true;
+		},
+		genCriteria: (iteration) => {
+			if (KinkyDungeonNearestJailPoint(10, 10, ["furniture"])) {
+				return KDCheckMainPath();
+			}
+			return false;
+		},
+		prisonType: "HighSec",
+		isPrison: true,
 		factionSpawnsRequired: true,
 		genType: "NarrowMaze",
 		spawns: false,
@@ -203,6 +486,7 @@ let alts = {
 		nojail: false,
 		nokeys: true,
 		nostairs: false,
+		nostartstairs: true,
 		notraps: false,
 		noRelease: true,
 		releaseOnLowSec: true,
@@ -253,6 +537,7 @@ let alts = {
 		nopatrols: true,
 		alwaysRegen: true, // Always regenerate this room
 		prisonType: "DollStorage",
+		isPrison: true,
 		setpieces: {
 		},
 		data: {
@@ -395,15 +680,7 @@ let alts = {
 		height: 15,
 		nopatrols: false,
 		onExit: (data: any) => {
-			// Return to the normal map
-			data.overrideRoomType = true;
-			let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
-			if (journeySlot) {
-				KDGameData.RoomType = journeySlot.RoomType;
-			} else {
-				KDGameData.RoomType = "";
-			}
-			data.AdvanceAmount = 0;
+			// replaced by altType.noAdvance and altType.alwaysAdvance
 		},
 		afterExit: (_data) => {
 			// Dump the player in a random place on top of a demon portal
@@ -469,6 +746,7 @@ let alts = {
 		data: {
 			BanditFort: true,
 		},
+		placeJailEntrances: true,
 		genType: "Maze",
 		skin: "shoppe",
 		musicParams: "bandit",
@@ -786,9 +1064,11 @@ let alts = {
 		prune: true,
 		width: 12,
 		height: 8,
+		brightness: 5,
 		nostartstairs: true,
 		skin: "shrine", useDefaultMusic: true,
 		lightParams: "ore",
+		removePartyMembers: true, // Removes party members when you leave
 
 		keepRebels: true, // NPCs cant run away to collection if they get beaten here
 
@@ -871,6 +1151,7 @@ let alts = {
 		height: 7,
 		setpieces: {
 		},
+		brightness: 5,
 		genType: "Tutorial",
 		spawns: false,
 		chests: false,
@@ -901,14 +1182,22 @@ let KDJourneyListSkin = {
 };
 if (param_test) KDJourneyList.push("Test");
 
-function KinkyDungeonAltFloor(Type: string) {
+function KinkyDungeonAltFloor(Type: string): AltType {
 	if (KDPersonalAlt[Type])
 		return alts[KDPersonalAlt[Type].RoomType];
 	return alts[Type];
 }
 
 
-let KinkyDungeonCreateMapGenType = {
+let KinkyDungeonCreateMapGenType: Record<string, (
+	POI: any[],
+	VisitedRooms: any[],
+	width: number,
+	height: number,
+	openness: number,
+	density: number,
+	hallopenness: number,
+	data: any) => void> = {
 	"Room": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreateRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
@@ -916,6 +1205,8 @@ let KinkyDungeonCreateMapGenType = {
 		KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"ShopStart": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		let slot = KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation()));
+		if (slot?.jx) slot.jx = 0; // Fix for old savegames!!!!!
 		KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"ElevatorRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
@@ -1174,7 +1465,7 @@ function KinkyDungeonCreateMaze(POI: any[], VisitedRooms: any[], width: number, 
 		}
 }
 
-function KinkyDungeonCreateCaldera(POI: any[], VisitedRooms: GridEntry, width: number, height: number, openness: number, density: number, _hallopenness: number, data: any) {
+function KinkyDungeonCreateCaldera(POI: any[], VisitedRooms: any, width: number, height: number, openness: number, density: number, _hallopenness: number, data: any) {
 	// Variable setup
 
 	let Walls: GridEntry = {};
@@ -1630,15 +1921,15 @@ function KinkyDungeonCreateTileMaze(_POI: any[], VisitedRooms: any[], width: num
 
 	KDMapData.StartPosition = {x: 1 + (startx) * KDTE_Scale, y: 4 + (starty) * KDTE_Scale};
 	KDMapData.EndPosition = {x: 7 + (endx) * KDTE_Scale, y: 4 + (endy) * KDTE_Scale};
-	KDMapData.ShortcutPositions = [];
+	KDMapData.ShortcutPositions = {};
 
 	// Reverse the order 50% of the time
 	if (KDRandom() < 0.5) {
-		KDMapData.ShortcutPositions.push({x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale});
-		KDMapData.ShortcutPositions.push({x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale});
+		KDMapData.ShortcutPositions['0'] = {x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale};
+		KDMapData.ShortcutPositions['1'] = {x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale};
 	} else {
-		KDMapData.ShortcutPositions.push({x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale});
-		KDMapData.ShortcutPositions.push({x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale});
+		KDMapData.ShortcutPositions['0'] = {x: 4 + (topx) * KDTE_Scale, y: 1 + (topy) * KDTE_Scale};
+		KDMapData.ShortcutPositions['1'] = {x: 4 + (botx) * KDTE_Scale, y: 7 + (boty) * KDTE_Scale};
 	}
 
 
@@ -1768,7 +2059,6 @@ function KinkyDungeonCreateSummit(_POI: any, VisitedRooms: any[], _width: number
 		Type: "Elevator",
 		Overlay: "Elevator",
 	});
-
 }
 
 function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
@@ -2015,6 +2305,8 @@ function KinkyDungeonCreateDollmaker(_POI: any, _VisitedRooms: any[], _width: nu
 	// Variable setup
 	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
 
+	KDPlayMusic("UntitledRobot.ogg", undefined, true);
+
 	// Now we STRETCH the map
 	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
 	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
@@ -2093,9 +2385,15 @@ function KinkyDungeonCreateWarden(_POI: any, _VisitedRooms: any[], _width: numbe
 
 	DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y, "TheWarden1");
 	KDStageBossGenerated = true;
-	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) - 6, KDMapData.StartPosition.y - 8, "WardenArcher"), "imprisoned", -1);
-	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y - 8, "WardenFighter"), "imprisoned", -1);
-	KinkyDungeonSetEnemyFlag(DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) + 6, KDMapData.StartPosition.y - 8, "WardenMage"), "imprisoned", -1);
+	let en = DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) - 6, KDMapData.StartPosition.y - 8, "WardenArcher");
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", -1);
+	en.prisondialogue = "PrisonerJailOther";
+	en = DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2), KDMapData.StartPosition.y - 8, "WardenFighter");
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", -1);
+	en.prisondialogue = "PrisonerJailOther";
+	en = DialogueCreateEnemy(KDMapData.StartPosition.x + Math.floor(cavityheight/2) + 6, KDMapData.StartPosition.y - 8, "WardenMage");
+	KinkyDungeonSetEnemyFlag(en, "imprisoned", -1);
+	en.prisondialogue = "PrisonerJailOther";
 
 	KDMapData.EndPosition = {x: KDMapData.StartPosition.x + cavitywidth, y: KDMapData.StartPosition.y};
 
@@ -2275,7 +2573,10 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 
 			if (newperks.length > 0) {
 				KinkyDungeonMapSet(p1x + i * 2, py, 'P');
-				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks, Bondage: bondage, Method: method});
+				KinkyDungeonTilesSet("" + (p1x + i * 2) + "," + (py), {Perks: newperks,
+					Light: 5,
+					lightColor: 0xffff88,
+					Bondage: bondage, Method: method});
 				perksplaced += 1;
 				for (let p of newperks) {
 					perks[p] = true;
@@ -2290,6 +2591,17 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 		KDChest(VisitedRooms[0].x*2 + 0, VisitedRooms[0].y*2 - 2, "lost_items");
 	else if (!KinkyDungeonInventoryGet("Default")) {
 		KDChest(VisitedRooms[0].x*2 + 0, VisitedRooms[0].y*2 - 2, "lost_clothes");
+	}
+
+	if (KinkyDungeonFlags.get("1stSummit") && KDFacilityTypes.Warden.prereq()
+		&& KDGameData.FacilitiesData["Servants_Warden"]?.length > 0) {
+		KinkyDungeonMapSet(VisitedRooms[0].x*2 - 1, VisitedRooms[0].y*2 - 1, '7');
+		KinkyDungeonTilesSet((VisitedRooms[0].x*2 - 1) + ',' + (VisitedRooms[0].y*2 - 1), {
+			Type: "WardenCourier",
+			Overlay: "TiedCourier",
+			Light: 2,
+			lightColor: 0xffffff,
+		});
 	}
 
 	// Place the exit stairs
@@ -2348,7 +2660,7 @@ function KinkyDungeonCreateJourneyFloor(_POI: any, VisitedRooms: any[], width: n
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2, 's');
 	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2 + 1, 'G');
-	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: undefined});
+	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: ""});
 	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "JourneyNone"});
 	KDCreateEffectTile(b1*2 + 2, VisitedRooms[0].y*2, {
 		name: "Portals/Portal",
@@ -2356,9 +2668,9 @@ function KinkyDungeonCreateJourneyFloor(_POI: any, VisitedRooms: any[], width: n
 	}, 0);
 
 	// Tutorial end stairs
-	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 's');
+	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 'H');
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 1, 'G');
-	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Journey: undefined, Skin: "TabletSpent"});
+	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Journey: "", Skin: "TabletSpent"});
 	KDCreateEffectTile(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, {
 		name: "Portals/Portal",
 		duration: 9999, infinite: true,
@@ -2531,11 +2843,21 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 	KD_PasteTile(KDMapTilesList.ElevatorRoom, KDMapData.StartPosition.x - 7 - 3, KDMapData.StartPosition.y - 7 * 4, data);
 	KDGenerateBaseTraffic(KDMapData.GridWidth, KDMapData.GridHeight);
 
-	let def = KDDragonList[Math.floor(KDRandom() * KDDragonList.length)];
+	let dlist = KDElevatorHallEnemies.filter((dragon) => {
+		return (!dragon.minfloor || MiniGameKinkyDungeonLevel >= dragon.minfloor) && (!dragon.maxfloor || MiniGameKinkyDungeonLevel <= dragon.maxfloor);
+	});
+	let def = dlist[Math.floor(KDRandom() * dlist.length)];
 	let obstacles: Record<string, number> = {}
 	if (def) {
-		DialogueCreateEnemy(15,2 + 7 + 2,def.enemy);
-		obstacles = def.obstacles;
+		if (!def.enemy) def.enemy = "DragonGirlCrystal";
+		let en = DialogueCreateEnemy(15,2 + 7,def.enemy);
+		if (def.obstacles)
+			obstacles = def.obstacles;
+		if (en) {
+			if (def.faction) en.faction = def.faction;
+			KinkyDungeonSetEnemyFlag(en, "leader", -1);
+			KDRunCreationScript(en, KDGetCurrentLocation());
+		}
 	}
 
 
@@ -2581,8 +2903,14 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 		let slot = obsSlots[index];
 		obsSlots.splice(index, 1);
 		if (!KinkyDungeonEnemyAt(slot.x, slot.y)) {
-			let en = DialogueCreateEnemy(slot.x, slot.y, KDGetByWeight(obstacles));
-			en.faction = "DragonQueen";
+			let o = KDGetByWeight(obstacles);
+			if (o) {
+				let en = DialogueCreateEnemy(slot.x, slot.y, o);
+
+				if (def.faction) en.faction = def.faction;
+				KDRunCreationScript(en, KDGetCurrentLocation());
+			}
+
 		}
 	}
 
@@ -2612,6 +2940,10 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 		Type: "Elevator",
 		Overlay: "ElevatorDisabled",
 	});
+	if (!KinkyDungeonFlags.get("tut_elevator")) {
+		KinkyDungeonSetFlag("tut_elevator", -1);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), KDTutorialColor, 10);
+	}
 }
 
 
@@ -2648,6 +2980,10 @@ function KinkyDungeonCreateElevatorEgyptian(_POI: any, VisitedRooms: any[], _wid
 		Type: "Elevator",
 		Overlay: "ElevatorDisabled",
 	});
+	if (!KinkyDungeonFlags.get("tut_elevator")) {
+		KinkyDungeonSetFlag("tut_elevator", -1);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), KDTutorialColor, 10);
+	}
 }
 
 
@@ -2684,6 +3020,10 @@ function KinkyDungeonCreateElevatorEgyptian2(_POI: any, VisitedRooms: any[], _wi
 		Type: "Elevator",
 		Overlay: "ElevatorDisabled",
 	});
+	if (!KinkyDungeonFlags.get("tut_elevator")) {
+		KinkyDungeonSetFlag("tut_elevator", -1);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), KDTutorialColor, 10);
+	}
 }
 
 function KinkyDungeonCreateTestTile(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {

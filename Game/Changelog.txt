@@ -31,8 +31,249 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
-5.3.51
-- Mental resistance no longer prevents all orgasm if teased by an enemy or damage
+- TODO extend modding framework for witnessing components to include:
+- Mana cost of spells
+- decay per faction
+
+Note to Modders: if your mod alters the function KDFreeNPC you will have to reimplement some new functionality added, to avoid bugs!
+
+TODO add ability to recolor own restraints via palette
+
+5.4.40
+- New hairstyles: "FrontSwept" "CurlyPonytail", "BigBraidBack", "Vents", "BackShort", "FrontStraight2", "BackHime", "Bob", "BackFlat", "TwinDrills"
+- Added RoundHat
+- Added FrillyHeadband and BowHeadband
+- Added TopHatSmall
+- Added functionality from Ilyasnow's Wardrobe Tools mod
+- Reorganized hairs
+- Added 'Currently Worn' category in wardrobe
+
+5.4.39
+- New Experimental Rendering (unsstable) option
+- Added kitty pet leotard
+- Added kitty pet uniform collar
+- Added kitty pet tail
+- Added kitty pet paws, gloves, and socks
+- Added kitty pet headgear and gag (fashion only atm)
+- Hopefully increased variety in restraint types (armbinder, boxbinder, jacket) in jail
+- Optimized RAM usage for displacement maps (hopefully).
+
+TODO
+- Middle mouse button to toggle sprint option
+- middle mouse to toggle passthrough?
+- middle mouse to interact
+- middle mouse to shoot
+- middle mouse to truss
+- middle mouse to cast spell 0/9
+- mouse shortcut menu?
+- pinch self
+- banish horny thoughts
+- tabs for playself
+- Glow around layer affected by current expert tools selection
+
+5.4.38
+- Additional optimizations to rendering
+- hopefully fixed a memory leak
+
+5.4.37
+- Added shibari cursed armor -- adds cosmetic rope when worn, mostly torso chest armor atm
+- Added skimpy cursed armor -- turns into a skimpier version, mostly just chain skirt atm
+- Fixed some bugs
+
+5.4.36
+- Damaging enemies will now slow their struggling temporarily.
+- Damaging enemy shield will pause its regen for 3 turns
+
+5.4.35
+- Some delayed actions like putting on armor can now be interrupted by clicking
+- Cursed armors are now Mimics
+- >they will turn into a restraint if given the chance, while cursed
+- >You have 10 turns before they can transform
+- Putting restraints or armor on can now be interrupted by being attacked
+- Putting on restraints or armor to yourself takes longer while bound
+- Fixed bug involving item duplication (e.g. when ancient ankle cuffs detach/attach)
+- Fixed ancient heels not providing slow reduction always
+
+5.4.34
+- Had to make some tweaks to the military uniform, sorry for inconvenience
+- Added some additional music for the bosses
+
+5.4.33
+- Added military uniform
+- Added pointy antennae, ahoge, horns, and tail
+- Added wolfears2
+- Added mascara, scar
+- various bugfixes
+
+5.4.32
+- Add fangmouth, fangmouth_double, and fanglessmouth version
+- Added fang overbite for ball gags
+- New character option: Use palette regardless of outfit
+- New inventory action for restraints: set palette
+- Added option in wardrobe to render with/without armor
+- Added more expressions for prisoners in the collection
+- Fixed some bugs with armor pieces hidden by dynamic armor rules still overriding shoes and boots underneath.
+
+5.4.31
+- Just bugfixes
+
+5.4.30
+- Fixed crash when an enemy should be deleted but the game tries to place them somewhere when they despawn
+- Fixed bug where shrines still remove favorite restraints
+- Reduced the number of unique faction prisons when starting with a bunch of bondage start scenarios
+
+5.4.29
+- Strip search now triggers when thrown in jail on regular floors
+- Many bug fixes
+- Added wandering maid knight & squire
+- added the Sweeper and the Persuader
+- maid knights rescue each other if they defeat you
+- added rename NPC
+- Added santa hat, festive harness fashion restraint
+
+5.4.28
+- Fixed a few bugs
+- Added strip search dialogue
+
+5.4.27
+- Interacting now turns to face if it doesnt interact with anything, or if a turn passed when you interacted
+- Prisoners that spawn in levels now come with restraints!
+- Added rare Latex Doll Stand item
+
+5.4.26
+- Added new map escape objectives: Nevermere servers, Dollsmith/Ancient Robot server drones, Draconic Seals
+- Pickaxe now can be used quickly by clicking on the wall (thanks Enraa)
+- New perk: Unidentified Wear (thanks Enraa!)
+- Did some optimizations to help performance. Please report any issues specifically with buffs not having an effect (on player or enemy).
+
+5.4.25
+- Added 'furniture' zones for the player and dragon prisoners in the dragon lairs
+- Reduced perk point multiplier to 2x
+
+5.4.24
+- Made minimap more readable and added toggleable filters
+- Fix viewing future journey
+- Fixed cursed plugs being removable through belts
+- Fixed high guilt causing negative security gain when chased
+- Fixed too long autosave interval
+- Added compat to help old saves not be broken by new journey organization
+- Fix issues with minimap labels
+
+5.4.23
+- Added minimap labels (option in UI)
+- Minimap moves with inspection
+- Allow viewing journey map in journal
+
+5.4.22
+- Various bugfixes
+- Added modding framework for enemies witnessing spell components and applying prison restraints accordingly
+
+5.4.21
+- Dragon lairs are here
+- When created in map gen, dragons create a lair.
+- Dragons will wander on the map, but go back to check their lairs periodically
+- "Elemental Energy" mapmod replaced with "Dragon Sighting"
+- Perk point costs multiplied by 5 for readability
+- Rebalanced many perk costs in general
+- Removed Unfocused perk, added Focused Strikes and Focused Power
+- Being distracted now decreases accuracy of most weapons
+- Being distracted now raises the stamina cost of staves
+- Fix bug with retro animations hiding most effect tiles
+
+5.4.20
+- Various quality of life changes
+
+5.4.19
+- Fixed prison wandering behavior from guards in highsec
+- New enemy: Witch's Apprentice
+
+5.4.18
+- Changed persistent NPC wandering to support different NPC AI wandering types with different priorities/interests
+- Early elevator halls may have dragon girls instead of dragons
+
+5.4.17
+- More immersive experience being brought to jail
+- Capture option from menu now places in highsec jail if being dragged there
+- Enemies leashing the player to highsec jail should directly leash to highsec instead of always stopping by furniture
+
+5.4.16
+- Bugfixes due to issues in 5.4.15
+- Unstoppable foes can now be moved on conveyors if disabled. Unflinching can if slowed.
+
+5.4.15
+- Enemies helping each other fixed
+- Enemies will now pull each other off of latex pools and other dangerous terrain
+- Enemies will now transfer from cage to cell in highsec jail
+- Fixed jail doors not getting locked properly (or more accurately, lock info being lost forever)
+- HighSecJail now puts you in a cage to set your uniform
+- Fixed bug where enemies wouldnt spawn in high sec jail when the enemies arent aware of you
+
+
+5.4.14
+- Highsec prisons are now persistent
+- Shrines dont remove favorited restraints
+- Crystal shockwaves from heirophant allies should no longer hit the player
+- Fixed issues where party members didnt get properly spawned on the map to rescue
+
+5.4.13
+- Added Essence Necklace
+- Made yokes and fiddles more common in the enchanted restraints loot table
+- Added Mana Burst back as an upgrade
+
+5.4.12
+- Replaced Trainee's Mana Burst with Essence Motes (active spell)
+- Reworked Trainee's Desire Burst to use motes
+- New Trainee spells: Conjure Essence Mote, Shock Collar, Psychic Link
+- Removed Mental Fortitude for now
+
+5.4.11
+- Reworked Mental Fortitude. Added Mental Defiance
+- Changed all "ChangeX" stat change functions to have an src field
+- Added mod compat setting for above, changed names of functions
+
+5.4.10
+- Defeating enemies now restores WP
+- Vengeance now gives 10% of the DP from before
+- Limit surge is now 40 WP instead of 50
+
+
+5.4.9
+- Added wait speed options
+- Made settings for toggles appear after hovering over the buttons for a bit
+- Mental Resistance now always works if you are shielded
+- Removed Second Wind from the perk selection
+- New Trainee upgrade: "Mental Fortitude: While WP >75%, regenerate to full"
+
+
+5.4.7 & 5.4.8
+- Lots of small bugfixes
+
+5.4.6
+- Clear restraints from outfit when loading into wardrobe from title screen
+- Fix save game code missing in non roguelike mode
+- Changed layer of pantyhose to go under socks/stockings
+
+5.4.5
+- Show owned items in NPC shop interface
+- Add option to untie NPC
+
+5.4.4
+- Universal solvent now rescues Encased Adventurers (if you choose to use it for such)
+- Universal solvent now removes encased debuffs from NPCs and grants glue resist to NPC/player for 30 turns
+- Being hit by an Observer's beam now attracts the Shadow to your position
+- The shadow now properly applies a cursed item when she catches you
+- Calling a guard should now pick an eligible character on the map instead of spawning one
+- Enchant Rope now affects NPC restraints properly
+- Fixed a bug where entities other than player would benefit from rogue super crit/surprise bondage
+- fixed missing nurse bound sprite
+- Can no longer backtrack in boss rooms until you defeat the boss / are defeated
+
+5.4.3
+- No longer need to pass room escape method to backtrack
+- dragon girls and dragon queens can no longer spawn as bounties for the Bounty escape method
+
+5.4.2
+- Added 'spike' trap
 
 5.3.50
 - More sound effects
@@ -63,7 +304,7 @@ TODO Add Cuddle play type
 - Fix misleading message when NPCs try to escape even if they made no progress
 - Show sprint cost when sprint icon shows on map
 - Sprint cost now 20 base, 25 heeled, 15 hop, 20 hop (slowed), 25 hop (super slowed). Overall buff while bound, nerf while free
-- Added quick faccility assigning
+- Added quick facility assigning
 
 5.3.45
 - Summit warden now knows how to use generic bondage like rope
@@ -946,7 +1187,7 @@ Release F
 - Added explosive barrels to levels. Beat them down without igniting them to take their gunpowder.
 - Blink split into 3 spells for 1 spell point, each adding +1 range
 - Changed Secure Defense to give more block at 0 willpower but half at max willpower
-- New spells: Shield of (un)Clarity (Trainee only), Desire Burst (Trainee only), Liquid Metal, Raise Defense (Fighter only), Evasive Maneuvers (Rogue only), Break Free (Fighter only), Phase Dance, Double/Triple/Quadro/Total Accel, Spatial swap
+- New spells: Shield of (un)Clarity (Trainee only), Desire Burst (Trainee only), Liquid Metal, Raise Defense (Fighter only), Evasive Maneuvers (Rogue only), Break Free (Fighter only), Phase Dance, Double/Triple/Quad/Total Accel, Spatial swap
 - Inner power now applies before multipliers
 - Slime ball trail does 20 damage instead of 40
 - Added divine locks for enforcing Bound Crusaders!

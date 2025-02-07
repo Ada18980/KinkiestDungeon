@@ -1,0 +1,157 @@
+{"frames": {
+
+"DisplacementMaps/Arm1SquishWristtie.png":
+{
+	"frame": {"x":975,"y":407,"w":482,"h":357},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":357},
+	"sourceSize": {"w":482,"h":357}
+},
+"DisplacementMaps/BinderLeftBoxtie.png":
+{
+	"frame": {"x":953,"y":3,"w":482,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":400},
+	"sourceSize": {"w":482,"h":400}
+},
+"DisplacementMaps/BinderRightBoxtie.png":
+{
+	"frame": {"x":493,"y":861,"w":482,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":400},
+	"sourceSize": {"w":482,"h":400}
+},
+"DisplacementMaps/Breastplate.png":
+{
+	"frame": {"x":1463,"y":1620,"w":449,"h":376},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":449,"h":376},
+	"sourceSize": {"w":449,"h":376}
+},
+"DisplacementMaps/CuffsSquishCrossed.png":
+{
+	"frame": {"x":3,"y":1319,"w":345,"h":433},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":345,"h":433},
+	"sourceSize": {"w":345,"h":433}
+},
+"DisplacementMaps/ElbowCuffLeftFree.png":
+{
+	"frame": {"x":463,"y":3,"w":486,"h":405},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":486,"h":405},
+	"sourceSize": {"w":486,"h":405}
+},
+"DisplacementMaps/ElbowCuffRightCrossed.png":
+{
+	"frame": {"x":3,"y":869,"w":352,"h":446},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":352,"h":446},
+	"sourceSize": {"w":352,"h":446}
+},
+"DisplacementMaps/JacketArmsBoxtie.png":
+{
+	"frame": {"x":1439,"y":3,"w":467,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":467,"h":399},
+	"sourceSize": {"w":467,"h":399}
+},
+"DisplacementMaps/JacketArmsCrossed.png":
+{
+	"frame": {"x":979,"y":1215,"w":480,"h":409},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":409},
+	"sourceSize": {"w":480,"h":409}
+},
+"DisplacementMaps/JacketBoxtie.png":
+{
+	"frame": {"x":1421,"y":768,"w":478,"h":409},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":478,"h":409},
+	"sourceSize": {"w":478,"h":409}
+},
+"DisplacementMaps/JacketWristtie.png":
+{
+	"frame": {"x":3,"y":3,"w":456,"h":446},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":446},
+	"sourceSize": {"w":456,"h":446}
+},
+"DisplacementMaps/LightMaidRightArmErase.png":
+{
+	"frame": {"x":359,"y":1265,"w":445,"h":439},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":445,"h":439},
+	"sourceSize": {"w":445,"h":439}
+},
+"DisplacementMaps/ReversePrayer.png":
+{
+	"frame": {"x":3,"y":453,"w":486,"h":412},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":486,"h":412},
+	"sourceSize": {"w":486,"h":412}
+},
+"DisplacementMaps/TapeFullRightBoxtie.png":
+{
+	"frame": {"x":1461,"y":406,"w":281,"h":351},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":281,"h":351},
+	"sourceSize": {"w":281,"h":351}
+},
+"DisplacementMaps/TapeHeavyLeftWristtie.png":
+{
+	"frame": {"x":1463,"y":1181,"w":458,"h":435},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":435},
+	"sourceSize": {"w":458,"h":435}
+},
+"DisplacementMaps/TapeHeavyRightCrossed.png":
+{
+	"frame": {"x":979,"y":768,"w":438,"h":443},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":438,"h":443},
+	"sourceSize": {"w":438,"h":443}
+},
+"DisplacementMaps/TapeLightLeftCrossed.png":
+{
+	"frame": {"x":493,"y":412,"w":478,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":478,"h":445},
+	"sourceSize": {"w":478,"h":445}
+},
+"DisplacementMaps/XrayBra.png":
+{
+	"frame": {"x":808,"y":1628,"w":431,"h":379},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":431,"h":379},
+	"sourceSize": {"w":431,"h":379}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "displace23.webp",
+	"format": "RGBA8888",
+	"size": {"w":1924,"h":2010},
+	"scale": "0.25",
+	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace19.json", "displace20.json", "displace21.json", "displace22.json", "displace24.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:e8080ca31b63ef791246ea5ac6739043:1482d83a5ac2196d10e8c8a53055230a:44b3d303d8b4a8e896115ea1e938285b$"
+}
+}

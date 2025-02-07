@@ -70,6 +70,8 @@ interface Model extends Namable {
     TopLevel?: boolean,
     /** Optional, this appears under a top level item*/
     Parent?: string,
+    /** Optional, this appears under a top level item*/
+    Parent2?: string[],
     /** Adds these as tempposes*/
     AddPose?: string[],
 	/** Conditional add pose. They are only added if the specified pose is NOT present */
@@ -85,7 +87,7 @@ interface Model extends Namable {
 	/** Color definition */
 	Filters?: Record<string, LayerFilter>,
 	/** Color definition */
-	Properties?: Record<string, LayerProperties>,
+	Properties?: Record<string, LayerPropertiesType>,
 	/** Hardcoded Lock Type */
 	LockType?: string,
 	/** Hardcoded body filters */
@@ -132,6 +134,14 @@ interface ModelLayer extends Namable {
 	/** Prevents displacement maps from applying to this item */
 	NoDisplace?: boolean,
 
+	OccludePoses?: string[],
+	/** No displacement map in these poses */
+	OccludePosesExclude?: string[],
+	/** Which layers to apply displacement to */
+	OccludeLayers?: Record<string, boolean>,
+	/** Amount of displacement */
+	OccludeAmount?: number,
+
 
 	/** [Group, Color] */
 	ImportColorFromGroup?: string[],
@@ -174,6 +184,8 @@ interface ModelLayer extends Namable {
 	NoAppendErase?: boolean,
 	/** When this pose is present it appends it to the name. Only one can be appended this way */
 	AppendPose?: Record<string, string>,
+	/** When this pose is present it appends it to the name. Same as appendpose but appends all that are available*/
+	AppendPoseMulti?: Record<string, string>,
 	/** Lists the poses that can be affected by AppendPose*/
 	AppendPoseRequire?: Record<string, boolean>,
 	/** Hides when this pose plus the layer name is present. E.g. HidePrefixPose: ["Encase"] will hide EncaseShoeLeft if the layer is on ShoeLeft */
@@ -231,7 +243,7 @@ type LayerFilter = {
     alpha: number;
 }
 
-type LayerProperties = {
+type LayerPropertiesType = {
     LayerBonus?: number,
     XOffset?: number,
     YOffset?: number,
@@ -248,6 +260,9 @@ type LayerProperties = {
     ExtraRequirePoses?: string[],
     ExtraHidePrefixPose?: string[],
     ExtraHidePrefixPoseSuffix?: string[],
+	AddPose?: string[],
+	DisplaceAmount?: number,
+	EraseAmount?: number,
 }
 
 interface Namable {

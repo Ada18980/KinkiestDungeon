@@ -203,7 +203,6 @@ AddModel({
 	Name: "Belt",
 	Folder: "Belts",
 	TopLevel: true,
-	Restraint: true,
 	Categories: ["Restraints", "Leather"],
 	Layers: ToLayerMap([
 		{ Name: "Belt", Layer: "HarnessMid", Pri: 50,

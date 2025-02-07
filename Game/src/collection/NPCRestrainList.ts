@@ -104,7 +104,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Wrapping", "Encase"]},
 		layers: [
 			{id: "Secure", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
-				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "ChestHarnesses", "Belts", "ElbowLink"]},
+				allowedTags: ["Petsuits", "Yokes", "Fiddles", "Straitjackets", "ChestHarnesses", "Tape", "Belts", "ElbowLink"]},
 			{id: "HeavyBondage", encasedBy: ["ArmEncase"], allowedGroups: ["ItemArms"],
 				allowedTags: ["Petsuits", "BindingDress", "Yokes", "Fiddles", "Armbinders", "Boxbinders", "Straitjackets", "Boxties", "Wristties", "Cuffs", "WristLink"]},
 			{id: "Wrists", encasedBy: ["ArmEncase", "HeavyBondage"], allowedGroups: ["ItemArms"],
@@ -159,7 +159,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Wrapping", "Encase"]},
 		layers: [
 			{id: "Legbinder", encasedBy: ["LegEncase"], allowedGroups: ["ItemLegs"],
-				allowedTags: ["Legbinders", "RopeLegs3", "Belts", "SpreaderBars"]},
+				allowedTags: ["Legbinders", "RopeLegs3", "Belts", "SpreaderBars", "Tape"]},
 			{id: "ThighBinds", encasedBy: ["LegEncase", "Legbinder"], allowedGroups: ["ItemLegs"],
 				allowedTags: ["RopeLegs2", "Belts", "Cuffs", "SpreaderBars", "ThighLink"]},
 			{id: "ThighCuffs", encasedBy: ["LegEncase", "Legbinder"], allowedGroups: ["ItemLegs"],
@@ -170,7 +170,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 			allowedTags: ["Wrapping", "Encase"]},
 		layers: [
 			{id: "Knees", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
-				allowedTags: ["RopeFeet3", "Belts", "SpreaderBars"]},
+				allowedTags: ["RopeFeet3", "Belts", "SpreaderBars", "Tape"]},
 			{id: "Shins", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
 				allowedTags: ["RopeFeet2", "Belts", "SpreaderBars", "Cuffs", "Hogties", "AnkleLink"]},
 			{id: "AnkleCuffs", encasedBy: ["FeetEncase"], allowedGroups: ["ItemFeet"],
@@ -178,7 +178,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 		]},
 	{id: "Boots", encaseGroup:
 		{id: "BootsEncase", encasedBy: [], allowedGroups: ["ItemBoots"],
-			allowedTags: ["Wrapping", "Encase"]},
+			allowedTags: ["Wrapping", "Encase", "Tape"]},
 		layers: [
 			{id: "Heels", encasedBy: ["FeetEncase"], allowedGroups: ["ItemBoots"],
 				allowedTags: ["Heels"]},

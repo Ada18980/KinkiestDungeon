@@ -334,7 +334,7 @@ function KDValidateContainer(container: KDContainer): string {
 
 let KDSpecialContainers = {
 	WardenChest: (container: KDContainer) => {
-		return KDGameData.RoomType == "Summit" ? "" : "KDWardenNeedSummit";
+		return (KDGameData.RoomType == "Summit" || KDGameData.RoomType == "PerkRoom") ? "" : "KDWardenNeedSummit";
 	}
 };
 let KDContainerVal = {

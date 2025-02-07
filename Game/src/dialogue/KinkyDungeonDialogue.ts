@@ -130,7 +130,10 @@ function KDDrawDialogue(delta: number): void {
 								}
 								return true;
 							}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
-							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
+							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
+								entries[i][1].greyoutCustomTooltip
+								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())
+								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
 							undefined, undefined, undefined,
 							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
 								zIndex: 122,
@@ -204,8 +207,9 @@ function KDEnemyHelpfulness(enemy: entity): number {
 	if (KDLoosePersonalities.includes(enemy.personality)) return 1.75;
 }
 
-function KDGetSpeaker(): entity {
-	let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+function KDGetSpeaker(global?: boolean): entity {
+	let enemy = global ? KDGetGlobalEntity(KDGameData.CurrentDialogMsgID)
+		: KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 		return enemy;
 	}
@@ -416,6 +420,7 @@ function KDDoDialogue(data: any) {
 			KDGameData.CurrentDialog = "";
 			KDGameData.CurrentDialogStage = "";
 		} else {
+			let currentStage = KDGameData.CurrentDialogStage;
 			let modded = false;
 			if (dialogue.leadsTo != undefined) {
 				KDGameData.CurrentDialog = dialogue.leadsTo;
@@ -425,6 +430,10 @@ function KDDoDialogue(data: any) {
 			if (dialogue.leadsToStage != undefined) {
 				KDGameData.CurrentDialogStage = dialogue.leadsToStage;
 				modded = true;
+			}
+			let Dialogue2 = KDGetDialogue();
+			if (Dialogue2?.enterFunction) {
+				Dialogue2.enterFunction(gagged, KinkyDungeonPlayerEntity, currentStage);
 			}
 			if (modded && !dialogue.dontTouchText) {
 				dialogue = KDGetDialogue();
@@ -496,12 +505,31 @@ function DialogueCreateEnemy(x: number, y: number, Name: string, persistentid?: 
 	return KDAddEntity(e, persistentid != undefined, undefined, noLoadout);
 }
 
+function KDRunCreationScript(entity: entity, coord: WorldCoord) {
+	if (entity?.Enemy?.creationScript && !entity.created) {
+		let script = KDCreationScripts[entity.Enemy.creationScript];
+		if (script && script(entity, coord)) entity.created = true;
+	}
+}
+
 
 function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: string[], excludeTags: string[], weight: number): KinkyDialogue {
 	/**
 		 */
 	let dialog: KinkyDialogue = {
 		response: "Default",
+		clickFunction: () => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KDGameData.CurrentDialogMsgValue.BINDAMNT = KDGetPlayerUntieBindAmt(enemy);
+				KDGameData.CurrentDialogMsgData.BINDAMNT = `${Math.round(KDGameData.CurrentDialogMsgValue.BINDAMNT*10)}`;
+			}
+			let delta = KinkyDungeonFlags.get("recentlyUntied") ? 3 : 1;
+			KDGameData.CurrentDialogMsgData.UNTIETURNS = TextGet(delta != 1 ? "KDXTurns" : "KDXTurn").replace("AMNT",
+				"" + delta
+			);
+			return false;
+		},
 		options: {},
 	};
 
@@ -694,6 +722,54 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		}
 	};
 
+	dialog.options.Untie = {playertext: name + "Untie", response: "Default",
+		/*greyoutFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return enemy.hp > 0.52;
+			}
+			return false;
+		},
+		greyoutTooltip: "KDMustHaveHP",*/
+		prerequisiteFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return KDGameData.CurrentDialogMsgValue.BINDAMNT > 0;
+			}
+			return false;
+		},
+		clickFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				let amtOld = enemy.boundLevel;
+				KDUntieEnemy(enemy, KDGameData.CurrentDialogMsgValue.BINDAMNT, false, true);
+
+				let amtNew = enemy.boundLevel;
+
+				KDGameData.CurrentDialogMsgValue.BINDANTPREV = Math.max(0, amtOld - amtNew);
+				KDGameData.CurrentDialogMsgData.BINDANTPREV = `${Math.round(KDGameData.CurrentDialogMsgValue.BINDANTPREV*10)}`;
+
+				KDGameData.CurrentDialogMsgValue.BINDAMNT = KDGetPlayerUntieBindAmt(enemy);
+				KDGameData.CurrentDialogMsgData.BINDAMNT = `${Math.round(KDGameData.CurrentDialogMsgValue.BINDAMNT*10)}`;
+
+				let delta = KinkyDungeonFlags.get("recentlyUntied") ? 3 : 1;
+				KDGameData.CurrentDialogMsgData.UNTIETURNS = TextGet(delta != 1 ? "KDXTurns" : "KDXTurn").replace("AMNT",
+					"" + delta
+				);
+
+				KinkyDungeonSetFlag("recentlyUntied", 40);
+
+				KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns || 0, delta);
+				if (KinkyDungeonInDanger()) {
+					KDGameData.CurrentDialog = "";
+					KDGameData.CurrentDialogStage = "";
+				}
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
+
 	dialog.options.Food = {playertext: name + "Food", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
@@ -716,6 +792,34 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 		},
 		leadsToStage: "", dontTouchText: true,
 	};
+
+	dialog.options.JoinParty = {playertext: name + "JoinParty", response: "Default",
+		prerequisiteFunction: (_gagged, _player) => {
+			if (KDGameData.Party?.length >= KDGameData.MaxParty) return false;
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				return KDAllied(enemy)
+					&& !KDIsInParty(enemy)
+					&& !KDEnemyHasFlag(enemy, "shop")
+					&& !enemy.Enemy.tags?.peaceful
+					&& !enemy.maxlifetime
+					&& KDCapturable(enemy)
+					&& !enemy.Enemy.allied;
+				// No shopkeepers, noncombatants, or summons...
+			}
+			return false;
+		},
+		clickFunction: (_gagged, _player) => {
+			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
+				KDAddToParty(enemy);
+			}
+			return false;
+		},
+		leadsToStage: "", dontTouchText: true,
+	};
+
 	dialog.options.Flirt = {playertext: name + "Flirt", response: "Default",
 		clickFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
@@ -1302,32 +1406,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			},
 		}
 	};
-	dialog.options.JoinParty = {playertext: name + "JoinParty", response: "Default",
-		prerequisiteFunction: (_gagged, _player) => {
-			if (KDGameData.Party?.length >= KDGameData.MaxParty) return false;
-			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				return KDAllied(enemy)
-					&& !KDIsInParty(enemy)
-					&& !KDEnemyHasFlag(enemy, "shop")
-					&& !enemy.Enemy.tags?.peaceful
-					&& !enemy.maxlifetime
-					&& KDCapturable(enemy)
-					&& !enemy.Enemy.allied;
-				// No shopkeepers, noncombatants, or summons...
-			}
-			return false;
-		},
-		clickFunction: (_gagged, _player) => {
-			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-				KinkyDungeonSetEnemyFlag(enemy, "NoFollow", 0);
-				KDAddToParty(enemy);
-			}
-			return false;
-		},
-		leadsToStage: "", dontTouchText: true,
-	};
+
 	dialog.options.RemoveParty = {playertext: name + "RemoveParty", response: "Default",
 		prerequisiteFunction: (_gagged, _player) => {
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
@@ -1366,18 +1445,22 @@ function KDPrisonerRescue(name: string, faction: string, enemytypes: string[]): 
 			KinkyDungeonInterruptSleep();
 			let door = KDGetJailDoor(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (door) {
-				if (door.tile) {
+				if (door.tile?.Lock) {
 					door.tile.OGLock = door.tile.Lock;
 					door.tile.Lock = undefined;
+					door.tile.LockSeen = undefined;
 					KDUpdateDoorNavMap();
 				}
 				KinkyDungeonMapSet(door.x, door.y, 'd');
 				let e = DialogueCreateEnemy(door.x, door.y, enemytypes[0]);
 				e.allied = 9999;
 				e.faction = "Player";
+
+				KDRunCreationScript(e, KDGetCurrentLocation());
 				KDGameData.CurrentDialogMsgSpeaker = e.Enemy.name;
 
-				let reinforcementCount = Math.floor(1 + KDRandom() * (KDGameData.PriorJailbreaks ? (Math.min(5, KDGameData.PriorJailbreaks) + 1) : 1));
+				let reinforcementCount = Math.floor((KDRandom() > 0.5 ? 3 : 2)
+					+ KDRandom() * (KDGameData.PriorJailbreaks ? (Math.min(5, KDGameData.PriorJailbreaks) + 1) : 1));
 				KDGameData.PriorJailbreaks += 1;
 				for (let i = 0; i < reinforcementCount; i++) {
 					let pp = KinkyDungeonGetNearbyPoint(door.x, door.y, true, undefined, undefined);
@@ -1576,6 +1659,9 @@ function KDShopDialogue(name: string, items: string[], requireTags: string[], re
 				KDGameData.CurrentDialogMsgData["Item"+i] = KDGetItemNameString(item);
 				KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(Math.min(bonus, 3.0) * KinkyDungeonItemCost(KDItem({name: item}), true, true));
 				KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
+				KDGameData.CurrentDialogMsgData["AMNT"+i] = "" + (
+					KinkyDungeonInventoryGetSafe(item) ?
+					(KinkyDungeonInventoryGetSafe(item).quantity || 1) : 0);
 			}
 			return false;
 		},
@@ -1655,6 +1741,13 @@ function KDShopDialogue(name: string, items: string[], requireTags: string[], re
 					if (!enemy.items) enemy.items = [];
 					enemy.items.push(itemInv.name);
 				}
+
+				for (let i = 0; i < items.length; i++) {
+					let item = items[i];
+					KDGameData.CurrentDialogMsgData["AMNT"+i] = "" + (
+						KinkyDungeonInventoryGetSafe(item) ?
+						(KinkyDungeonInventoryGetSafe(item).quantity || 1) : 0);
+				}
 				KinkyDungeonAddGold(KDGameData.CurrentDialogMsgValue["ItemCost"+i]);
 				KDPleaseSpeaker(0.05 * (KDGameData.CurrentDialogMsgValue["ItemCost"+i]/100));
 				enemy.gold = enemy.gold ? Math.max(0, enemy.gold - KDGameData.CurrentDialogMsgValue["ItemCost"+i]) : 0;
@@ -1667,7 +1760,7 @@ function KDShopDialogue(name: string, items: string[], requireTags: string[], re
 	return shop;
 }
 
-// The dialogue for allies sellin g you their inventory
+// The dialogue for npc selling you their inventory
 function KDShopBuyDialogue(name: string): KinkyDialogue {
 	let shop: KinkyDialogue = {
 		inventory: true,
@@ -1686,7 +1779,10 @@ function KDShopBuyDialogue(name: string): KinkyDialogue {
 				KDGameData.CurrentDialogMsgData["ITM_"+i+"_"] = KDGetItemNameString(item);
 				KDGameData.CurrentDialogMsgValue["IC_"+i+"_"] = Math.round(itemMult *
 					KinkyDungeonItemCost(KDItem({name: item})));
-				KDGameData.CurrentDialogMsgData["IC_"+i+"_"] = "" + KDGameData.CurrentDialogMsgValue["IC_"+i+"_"];
+					KDGameData.CurrentDialogMsgData["IC_"+i+"_"] = "" + KDGameData.CurrentDialogMsgValue["IC_"+i+"_"];
+				KDGameData.CurrentDialogMsgData["AMNT_"+i+"_"] = "" + (
+					KinkyDungeonInventoryGetSafe(item) ?
+					(KinkyDungeonInventoryGetSafe(item).quantity || 1) : 0);
 				//}
 			}
 			return false;
@@ -1751,6 +1847,7 @@ function KDShopBuyDialogue(name: string): KinkyDialogue {
 			addTextKey("dShopBuyItem" + i, TextGet("dShopBuy")
 				.replace("#", "_"+i+"_")
 				.replace("#", "_"+i+"_")
+				.replace("#", "_"+i+"_")
 			);
 		}
 		_KDModsAfterLoad();
@@ -1765,6 +1862,9 @@ function KDShopBuyDialogue(name: string): KinkyDialogue {
 				}
 				if (items.length > i) {
 					let item = items[i];
+					if (KDSellCriteria[item]) {
+						if (!KDSellCriteria[item](enemy)) return false;
+					}
 
 					// Don't sell what we want to buy
 					let shops = Object.values(KDShops).filter((shp) => {return KDEnemyHasFlag(enemy, shp.name);});
@@ -1808,6 +1908,10 @@ function KDShopBuyDialogue(name: string): KinkyDialogue {
 						KDGameData.CurrentDialogMsgValue["IC_"+ii+"_"] = Math.round(itemMult *
 							KinkyDungeonItemCost(KDItem({name: item})));
 						KDGameData.CurrentDialogMsgData["IC_"+ii+"_"] = "" + KDGameData.CurrentDialogMsgValue["IC_"+ii+"_"];
+
+						KDGameData.CurrentDialogMsgData["AMNT_"+ii+"_"] = "" + (
+							KinkyDungeonInventoryGetSafe(item) ?
+							(KinkyDungeonInventoryGetSafe(item).quantity || 1) : 0);
 						//}
 					}
 				} else {
@@ -2288,6 +2392,9 @@ function KDSaleShop(name: string, items: string[], requireTags: string[], requir
 				KDGameData.CurrentDialogMsgData["Item"+i] = KDGetItemNameString(item);
 				KDGameData.CurrentDialogMsgValue["ItemCost"+i] = Math.round(KinkyDungeonItemCost(KDItem({name: item})) * markup);
 				KDGameData.CurrentDialogMsgData["ItemCost"+i] = "" + KDGameData.CurrentDialogMsgValue["ItemCost"+i];
+				KDGameData.CurrentDialogMsgData["AMNT"+i] = "" + (
+					KinkyDungeonInventoryGetSafe(item) ?
+					(KinkyDungeonInventoryGetSafe(item).quantity || 1) : 0);
 			}
 			return false;
 		},
@@ -2374,6 +2481,12 @@ function KDSaleShop(name: string, items: string[], requireTags: string[], requir
 						if (!KinkyDungeonHiddenFactions.has(faction)) {
 							KinkyDungeonChangeFactionRep(faction, Math.max(0.0001, KDGameData.CurrentDialogMsgValue["ItemCost"+i] * 0.00025));
 						}
+					}
+					for (let i = 0; i < items.length; i++) {
+						let item = items[i];
+						KDGameData.CurrentDialogMsgData["AMNT"+i] = "" + (
+							KinkyDungeonInventoryGetSafe(item) ?
+							(KinkyDungeonInventoryGetSafe(item).quantity || 1) : 0);
 					}
 				}
 				return false;
@@ -2505,9 +2618,11 @@ function KDRunChefChance(player: entity) {
 				KinkyDungeonSetFlag("SpawnedChef", -1, 1);
 				let e = DialogueCreateEnemy(point.x, point.y, "Chef");
 				if (e) {
+
 					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), "#ff5277", 1);
 					e.aware = true;
 					e.faction = "Ambush";
+					KDRunCreationScript(e, KDGetCurrentLocation());
 				}
 			}
 		}
@@ -2554,7 +2669,10 @@ function DialogueAddCursedEnchantedHexed(
 	hexlevelmax: number = 10,
 	enchantlevelmin: number = 0,
 	enchantlevelmax: number = 10,
-) {
+	returnOnly: boolean = false,
+	inventory: boolean = false,
+	Lock?: string,
+): item {
 
 	let unlockcurse = null;
 	let hexVariant = "";
@@ -2599,6 +2717,7 @@ function DialogueAddCursedEnchantedHexed(
 			template: restraint.name,
 			events: events,
 		};
+		if (!!(unlockcurse ? undefined : Lock)) variant.lock = Lock;
 		if (hexVariant) {
 			events.push(...KDEventHexModular[hexVariant].events({variant: variant}));
 		}
@@ -2612,8 +2731,68 @@ function DialogueAddCursedEnchantedHexed(
 			events.push(...KDEventEnchantmentModular[e].types[KDModifierEnum.restraint].events(restraint.name, undefined, hexVariant, enchantVariant, enchant_extra, {variant: variant}));
 		}
 
-		KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false,
-			(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined), true, unlockcurse, enemy, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+		if (returnOnly) {
+			return KDReturnInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix,
+				(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined),
+				undefined, 1);
+		} else {
+			if (inventory) {
+				KDGiveInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, unlockcurse, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix,
+					(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined),
+					undefined, 1);
 
+			} else {
+				KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, unlockcurse ? undefined : Lock, true, false,
+					(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined), true, unlockcurse, enemy, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
+
+			}
+		}
+
+	}
+	return null;
+}
+
+/** Returns 10% of current binding or 10, whichever is more, but not including protected bondage */
+function KDGetPlayerUntieBindAmt(enemy: entity): number {
+	let baseAmnt = Math.max(10, (enemy.boundLevel || 0) * 0.1);
+	if (!enemy.boundLevel || baseAmnt > enemy.boundLevel) baseAmnt = enemy.boundLevel;
+	let minimumBondage = KDGetExpectedBondageAmountTotal(enemy.id, enemy, false, true);
+	if (enemy.specialBoundLevel)
+		for (let sbt of Object.entries(enemy.specialBoundLevel)) {
+			if (KDSpecialBondage[sbt[0]]?.helpImmune) {
+				minimumBondage += sbt[1];
+			}
+	}
+	baseAmnt -= minimumBondage;
+	return Math.max(baseAmnt, 0);
+}
+
+function KDUntieEnemy(enemy: entity, amount: number, includeConjured: boolean = false, includeUnlocked: boolean = false) {
+	let expected = KDGetExpectedBondageAmount(enemy.id, enemy, includeConjured, includeUnlocked);
+	let entries = Object.entries(enemy.specialBoundLevel || {}).sort((entry, entry2) => {
+		return (KDSpecialBondage[entry[0]]?.priority || 0) - (KDSpecialBondage[entry2[0]]?.priority || 0)
+	});
+	for (let i = 0; i < entries.length && amount > 0; i++) {
+		let entry = entries[i];
+		let amtOld = entry[1];
+		entry[1] -= amount;
+		if (expected[entry[0]] && entry[1] < expected[entry[0]]) {
+			entry[1] = expected[entry[0]];
+		}
+		if (entry[1] < 0) entry[1] = 0;
+		let amtNew = entry[1];
+		let amntRemoved = amtOld - amtNew;
+		if (!enemy.specialBoundLevel) enemy.specialBoundLevel = {};
+		if (entry[1] > 0) enemy.specialBoundLevel[entry[0]] = entry[1];
+		else delete enemy.specialBoundLevel[entry[0]];
+		amount -= amntRemoved;
+		if (!enemy.boundLevel) enemy.boundLevel = 0;
+		enemy.boundLevel -= amntRemoved;
+	}
+	if (amount > 0 && enemy.boundLevel > 0) {
+		enemy.boundLevel -= amount;
+	}
+	if (enemy.boundLevel < 0) {
+		enemy.boundLevel = 0;
 	}
 }

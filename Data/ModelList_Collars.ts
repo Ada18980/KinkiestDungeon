@@ -17,7 +17,7 @@ AddModel({
 	Restraint: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "Collar", Layer: "Collar", Pri: 20,
+		{ Name: "Collar", Layer: "Collar", Pri: 10,
 			Invariant: true,
 			HideWhenOverridden: true,
 		},
@@ -33,6 +33,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints"],
+	AddPose: ["Leash"],
 	Layers: ToLayerMap([
 		{ Name: "Leash", Layer: "Leash", Pri: 0,
 			Invariant: true,
@@ -40,6 +41,17 @@ AddModel({
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie", HandsBound: "", Pulled: "", HandsBehind: "",
 				Free: "Free", Crossed: "Crossed", Front: "Front"},
 			AppendPose: {Pulled: "Pulled"},
+		},
+		{ Name: "LeashCollar", Layer: "Collar", Pri: -400,
+			Invariant: true,
+			HideWhenOverridden: true,
+			InheritColor: "Leash",
+		},
+		{ Name: "LeashCollarHardware", Layer: "Collar", Pri: -399.9,
+			Invariant: true,
+			TieToLayer: "LeashCollar",
+			InheritColor: "Hardware",
+			NoOverride: true,
 		},
 	])
 });

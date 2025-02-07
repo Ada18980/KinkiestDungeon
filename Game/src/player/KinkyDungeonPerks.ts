@@ -5,6 +5,8 @@ let KDDoorKnobChanceArms = 0.5; // Chance to open door with mitts but no arm bin
 let KDDoorAttractChance = 0.25; // Chance to attract someone by banging
 let KDDoorAttractChanceArms = 0.1; // Chance to attract someone by rattling
 
+let KDPERKCOSTMULT = 2;
+
 /** These weapons can get removed if you start the game with them*/
 let kdStartWeapons = ["Knife", "Dirk", "Sword", "Shield"];
 
@@ -265,14 +267,16 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Less_Yokes":  {category: "Toggles", id: "Less_Yokes", cost: 0, block: ["More_Yokes"], debuff: true,},
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
-	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -2},
+	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -1.5},
 	"Fortify_Trap":  {category: "Enemies", id: "Fortify_Trap", cost: -1},
 	"CurseSeeker":  {category: "Major", id: "CurseSeeker", cost: -3},
-	"DirectionVision":  {category: "Major", id: "DirectionVision", cost: -2},
+	"DirectionVision":  {category: "Major", id: "DirectionVision", cost: -1.5},
 	"DirectionSlow":  {category: "Major", id: "DirectionSlow", cost: -1, block: ["DirectionSlow2"]},
-	"DirectionSlow2":  {category: "Major", id: "DirectionSlow2", cost: -2, block: ["DirectionSlow"]},
+	"DirectionSlow2":  {category: "Major", id: "DirectionSlow2", cost: -2.5, block: ["DirectionSlow"]},
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
-	"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
+
+	"Forgetful": {category: "Major", id: "Forgetful", cost: -2},
+	//"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
 
 	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["Bandit", "WrongNeighborhood"], tags: ["start"]},
 	"Bandit": {startPriority: 1000, category: "Enemies", id: "Bandit", cost: 0, block: ["Stranger", "WrongNeighborhood"], tags: ["start"]},
@@ -280,34 +284,35 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 	"Strong": {category: "Restraints", id: 0, cost: 2, block: ["Weak"]},
 	"Weak": {category: "Restraints", id: 1, cost: -1, block: ["Strong"]},
-	"Flexible": {category: "Restraints", id: 2, cost: 2, block: ["Inflexible"]},
+	"Flexible": {category: "Restraints", id: 2, cost: 1.5, block: ["Inflexible"]},
 	"Inflexible": {category: "Restraints", id: 3, cost: -1, block: ["Flexible"]},
 	"Locksmith": {category: "Restraints", id: 4, cost: 2, block: ["Clueless"]},
 	"Clueless": {category: "Restraints", id: 5, cost: -1, block: ["Locksmith"]},
 	"HighSecurity": {category: "Restraints", id: 48, cost: -1},
 	//"SearchParty": {category: "Enemies", id: 51, cost: -1},
 	"NoWayOut": {category: "Restraints", id: 52, cost: -1},
-	"TightRestraints": {category: "Restraints", id: 54, cost: -1},
-	"KinkyPrison":  {category: "Restraints", id: "KinkyPrison", cost: -1},
-	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1},
+	"TightRestraints": {category: "Restraints", id: 54, cost: -0.5},
+	"KinkyPrison":  {category: "Restraints", id: "KinkyPrison", cost: -0.5},
+	"MagicHands": {category: "Restraints", id: "MagicHands", cost: -1.5},
 	"KeepOutfit":  {category: "Restraints", id: "KeepOutfit", cost: 0},
-	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1},
-	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1},
-	"Unchained": {category: "Kinky", id: 26, cost: 2, block: ["Damsel"]},
+	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1.5},
+	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1.5},
+	"UnidentifiedWear": {category: "Restraints", id: "UnidentifiedWear", cost: -1.5},
+	"Unchained": {category: "Kinky", id: 26, cost: 2.5, block: ["Damsel"]},
 	"Damsel": {category: "Kinky", id: 27, cost: -1, block: ["Unchained"]},
-	"Artist": {category: "Kinky", id: 28, cost: 2, block: ["Bunny"]},
+	"Artist": {category: "Kinky", id: 28, cost: 2.5, block: ["Bunny"]},
 	"Bunny": {category: "Kinky", id: 29, cost: -1, block: ["Artist"]},
-	"Slippery": {category: "Kinky", id: 30, cost: 2, block: ["Doll"]},
+	"Slippery": {category: "Kinky", id: 30, cost: 2.5, block: ["Doll"]},
 	"Doll": {category: "Kinky", id: 31, cost: -1, block: ["Slippery"]},
-	"Escapee": {category: "Kinky", id: 32, cost: 2, block: ["Dragon"]},
+	"Escapee": {category: "Kinky", id: 32, cost: 2.5, block: ["Dragon"]},
 	"Dragon": {category: "Kinky", id: 33, cost: -1, block: ["Escapee"]},
-	"Dodge": {category: "Combat", id: 18, cost: 3, block: ["Distracted"]},
-	"Distracted": {category: "Combat", id: 19, cost: -1, block: ["Dodge"]},
+	"Dodge": {category: "Combat", id: 18, cost: 2.5, block: ["Distracted"]},
+	"Distracted": {category: "Combat", id: 19, cost: -1.5, block: ["Dodge"]},
 	"Submissive": {startPriority: 0, category: "Kinky", id: 10, cost: 0},
-	"Wanted": {category: "Kinky", id: 11, cost: -1},
-	"QuickDraw": {category: "Combat", id: 55, cost: 1, block: ["Disorganized"]},
+	"Wanted": {category: "Kinky", id: 11, cost: -0.5},
+	"QuickDraw": {category: "Combat", id: 55, cost: 2.5, block: ["Disorganized"]},
 	"Disorganized": {category: "Combat", id: 57, cost: -2, block: ["QuickDraw", "QuickScribe"]},
-	"Brawler": {category: "Combat", id: 20, cost: 1, block: ["UnarmedSuck"]},
+	"Brawler": {category: "Combat", id: 20, cost: 1.5, block: ["UnarmedSuck"]},
 	"UnarmedSuck": {category: "Combat", id: "UnarmedSuck", cost: -1, block: ["Brawler"]},
 	"UnarmedGrope": {category: "Combat", id: "UnarmedGrope", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
 	"UnarmedPain": {category: "Combat", id: "UnarmedPain", cost: 0, tags: ["unarmedreplace"], blocktags: ["unarmedreplace"]},
@@ -318,33 +323,34 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	//"Magician": {category: "Magic", id: 36, cost: 3},
 	//"Conjurer": {category: "Magic", id: 35, cost: 3},
 
-	"Unfocused": {category: "Combat", id: "Unfocused", cost: -2},
+	"Focused": {category: "Combat", id: "Focused", cost: 2},
+	"FocusedStaff": {category: "Combat", id: "FocusedStaff", cost: 1},
 	"BondageLover": {category: "Kinky", id: 15, cost: -1},
 	"Undeniable": {category: "Kinky", id: "Undeniable", cost: -1},
 	"Needs": {category: "Kinky", id: "Needs", cost: -1},
 	"BoundPower": {category: "Combat", id: 40, cost: 3},
 	"SavourTheTaste": {category: "Combat", id: "SavourTheTaste", cost: -1},
 	"ResilientFoes": {category: "Enemies", id: "ResilientFoes", cost: -1},
-	"KillSquad": {category: "Major", id: 41, cost: -3, block: ["Conspicuous"]},
+	"KillSquad": {category: "Major", id: 41, cost: -3.5, block: ["Conspicuous"]},
 	"Stealthy": {category: "Major", id: 38, cost: 0},
-	"HighProfile": {category: "Major", id: "HighProfile", cost: 0},
+	"HighProfile": {category: "Major", id: "HighProfile", cost: 0.5},
 	"Conspicuous": {category: "Enemies", id: 39, cost: -1, block: ["KillSquad"]},
-	"Dominant": {category: "Map", id: "Dominant", cost: 2, block: ["Oppression"]},
-	"Oppression": {category: "Map", id: 50, cost: -1, block: ["Dominant"]},
-	"Supermarket": {category: "Map", id: 42, cost: 1},
+	"Dominant": {category: "Map", id: "Dominant", cost: 1.5, block: ["Oppression"]},
+	"Oppression": {category: "Map", id: 50, cost: -1.5, block: ["Dominant"]},
+	"Supermarket": {category: "Map", id: 42, cost: 1.5},
 	"PriceGouging": {category: "Map", id: 43, cost: -2},
 	"Psychic": {category: "Restraints", id: 6, cost: 4},
 
 	"Pristine": {category: "Map", id: 22, cost: -1},
-	"LostTechnology": {category: "Major", buff: true, id: 23, cost: -1},
+	"LostTechnology": {category: "Major", buff: true, id: 23, cost: -0.5},
 	//"Blessed": {category: "Map", id: 8, cost: 1},
-	"Cursed": {category: "Major", id: 9, cost: -3},
+	"Cursed": {category: "Major", id: 9, cost: -3.5},
 	"Studious": {category: "Magic", id: 12, cost: 2, tags: ["start"]},
 	//"Novice": {category: "Magic", id: 7, cost: -1},
 	//"Meditation": {category: "Magic", id: 13, cost: 2},
 	//"DistractionCast":  {category: "Magic", id: "DistractionCast", cost: 2},
 	"Clearheaded":  {category: "Magic", id: "Clearheaded", cost: 1, block: ["ArousingMagic"]},
-	"ArousingMagic":  {category: "Magic", id: "ArousingMagic", cost: -1, block: ["Clearheaded"]},
+	"ArousingMagic":  {category: "Magic", id: "ArousingMagic", cost: -1.5, block: ["Clearheaded"]},
 	//"QuickScribe": {category: "Magic", id: 56, cost: 1, block: ["Disorganized"]},
 	"BerserkerRage": {category: "Combat", id: "BerserkerRage", cost: 3},
 	"UnstableMagic": {category: "Magic", id: "UnstableMagic", cost: 2},
@@ -359,17 +365,17 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"PoorBalance": {category: "Combat", id: "PoorBalance", cost: -1, tags: ["heels"], block: ["ClassicHeels"]},
 	"HeadStartHeels": {category: "Training", id: "HeadStartHeels", cost: 1, tags: ["start", "heels"], block: ["ClassicHeels"]},
 
-	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -1, tags: ["start"]},
-	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2, outfit: "Obsidian", tags: ["start"]},
-	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2, outfit: "Wolfgirl", tags: ["start"]},
-	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2, outfit: "Maid", tags: ["start"]},
-	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -2, tags: ["start"]},
-	"StartShadow": {startPriority: 1, category: "Start", id: "StartShadow", cost: -1, tags: ["start"]},
+	"Hogtied": {startPriority: 50, category: "Start", id: "Hogtied", cost: -0.5, tags: ["start"]},
+	"StartObsidian": {startPriority: 5, category: "Start", id: "StartObsidian", cost: -2.0, outfit: "Obsidian", tags: ["start"]},
+	"StartWolfgirl": {startPriority: 10, category: "Start", id: "StartWolfgirl", cost: -2.0, outfit: "Wolfgirl", tags: ["start"]},
+	"StartMaid": {startPriority: 20, category: "Start", id: "StartMaid", cost: -2.0, outfit: "Maid", tags: ["start"]},
+	"StartLatex": {startPriority: 15, category: "Start", id: "StartLatex", cost: -1.5, tags: ["start"]},
+	"StartShadow": {startPriority: 1, category: "Start", id: "StartShadow", cost: -1.5, tags: ["start"]},
 
-	"StartLatexIntegration": {startPriority: 1000, category: "Boss", id: "StartLatexIntegration", cost: -1, locked: true, buff: true, tags: ["start"]},
+	"StartLatexIntegration": {startPriority: 1000, category: "Boss", id: "StartLatexIntegration", cost: -0.5, locked: true, buff: true, tags: ["start"]},
 
-	"StartCyberDollStorage": {startPriority: 1000, category: "Boss", id: "StartCyberDollStorage", cost: -1, locked: true, buff: true, tags: ["start"]},
-	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2, locked: true, tags: ["start"]},
+	"StartCyberDollStorage": {startPriority: 1000, category: "Boss", id: "StartCyberDollStorage", cost: -0.5, locked: true, buff: true, tags: ["start"]},
+	"StartCyberDoll": {startPriority: 7, category: "Boss", id: "StartCyberDoll", cost: -2.5, locked: true, tags: ["start"]},
 
 	"DollmakerVisor": {startPriority: 31, category: "Boss", id: "DollmakerVisor", cost: -1, block: ["DollmakerMask"], locked: true, tags: ["start"]},
 	"DollmakerMask": {startPriority: 31, category: "Boss", id: "DollmakerMask", cost: -1, block: ["DollmakerVisor"], locked: true, tags: ["start"]},
@@ -388,14 +394,14 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 
 	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
-	"LivingCollars": {category: "Enemies", id: "LivingCollars", cost: -2},
-	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2},
+	"LivingCollars": {category: "Enemies", id: "LivingCollars", cost: -2.5},
+	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2.5},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
 
 	"Panic": {category: "Map", id: "Panic", cost: -1},
 	"Panic2": {category: "Map", id: "Panic2", cost: -1},
 
-	"Rusted": {category: "Map", id: "Rusted", cost: 1},
+	"Rusted": {category: "Map", id: "Rusted", cost: 0.5},
 
 
 	"OnlyBrats": {category: "Toggles", id: "OnlyBrats", cost: 0, tags: ["start"], block: ["NoBrats"]},
@@ -426,14 +432,14 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
-	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1},
-	"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1, block: ["FreeBoob2"], requireArousal: true},
-	"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 2, block: ["FreeBoob1"], requireArousal: true},
+	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1.5},
+	"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1.0, block: ["FreeBoob2"], requireArousal: true},
+	"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 1.5, block: ["FreeBoob1"], requireArousal: true},
 
-	"Trespasser": {category: "Map", id: "Trespasser", cost: -2},
+	"Trespasser": {category: "Map", id: "Trespasser", cost: -1.5},
 
 
-	"Butterfingers":  {category: "Restriction", id: "Butterfingers", cost: -1},
+	"Butterfingers":  {category: "Restriction", id: "Butterfingers", cost: -1.5},
 	"WeakGrip":  {category: "Restriction", id: "WeakGrip", cost: -1},
 
 
@@ -441,37 +447,36 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout", "NoBlindfolds"]},
-	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2, block: ["Blackout", "Forgetful", "NoBlindfolds"]},
-	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
+	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2.5, block: ["Blackout", "NoBlindfolds"]},
 	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness", "MutualDarkness"]},
 	//"MutualDarkness": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness", "NightOwl"]},
 	"Stalker": {category: "Senses", id: "Stalker", cost: 2,},
 	"NightBlindness": {category: "Senses", id: "NightBlindness", cost: -1, block: ["NightOwl", "MutualDarkness"]},
-	"Nearsighted": {category: "Senses", id: "Nearsighted", cost: -1, block: ["ArchersEye"]},
+	"Nearsighted": {category: "Senses", id: "Nearsighted", cost: -1.5, block: ["ArchersEye"]},
 	"KeenHearing": {category: "Senses", id: "KeenHearing", cost: 1},
 	"ArchersEye": {category: "Senses", id: "ArchersEye", cost: 1, block: ["Nearsighted"]},
 
-	"Stoic":  {category: "Damage", id: "Stoic", cost: 1, block: ["Ticklish"]},
-	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -1, block: ["Stoic"]},
-	"Unperturbed":  {category: "Damage", id: "Unperturbed", cost: 1, block: ["Lascivious"]},
-	"Lascivious":  {category: "Damage", id: "Lascivious", cost: -1, block: ["Unperturbed"]},
-	"Masochist":  {category: "Damage", id: "Masochist", cost: -1},
-	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 1},
+	"Stoic":  {category: "Damage", id: "Stoic", cost: 0.5, block: ["Ticklish"]},
+	"Ticklish":  {category: "Damage", id: "Ticklish", cost: -0.5, block: ["Stoic"]},
+	"Unperturbed":  {category: "Damage", id: "Unperturbed", cost: 0.5, block: ["Lascivious"]},
+	"Lascivious":  {category: "Damage", id: "Lascivious", cost: -0.5, block: ["Unperturbed"]},
+	"Masochist":  {category: "Damage", id: "Masochist", cost: -0.5},
+	"PainTolerance":  {category: "Damage", id: "PainTolerance", cost: 0.5},
 
 	"Rigger": {category: "Damage", id: 24, cost: 2},
 	"ExclusionsApply": {category: "Major", id: "ExclusionsApply", cost: -3, buff: true,},
-	"Pacifist": {category: "Major", buff: true, id: 25, cost: -2},
+	"Pacifist": {category: "Major", buff: true, id: 25, cost: -2.5},
 	"EnemyResist": {category: "Enemies", id: "EnemyResist", cost: 0},
-	"EnemyArmor": {category: "Enemies", id: "EnemyArmor", cost: -1},
+	"EnemyArmor": {category: "Enemies", id: "EnemyArmor", cost: -1.5},
 	"EnemyDamage": {category: "Enemies", id: "EnemyDamage", cost: -1},
 	"BurningDesire":  {category: "Damage", id: "BurningDesire", cost: 1},
 	"FrigidPersonality":  {category: "Damage", id: "FrigidPersonality", cost: 2},
-	"GroundedInReality":  {category: "Damage", id: "GroundedInReality", cost: 2},
-	"LikeTheWind":  {category: "Damage", id: "LikeTheWind", cost: 1},
-	"ImmovableObject":  {category: "Damage", id: "ImmovableObject", cost: 2},
+	"GroundedInReality":  {category: "Damage", id: "GroundedInReality", cost: 1.5},
+	"LikeTheWind":  {category: "Damage", id: "LikeTheWind", cost: 1.5},
+	"ImmovableObject":  {category: "Damage", id: "ImmovableObject", cost: 1.5},
 	"LeastResistance":  {category: "Damage", id: "LeastResistance", cost: 1},
 
-	"Sticky":  {category: "Damage", id: "Sticky", cost: -1},
+	"Sticky":  {category: "Damage", id: "Sticky", cost: -0.5},
 	"Breathless":  {category: "Damage", id: "Breathless", cost: -1},
 
 	"CommonMaid": {category: "Common", id: "CommonMaid", cost: -1, costGroup: "common"},
@@ -485,17 +490,17 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"CommonToyEdge": {category: "Common", id: "CommonToyEdge", cost: 0, requireArousal: true},
 	"CommonToyDeny": {category: "Common", id: "CommonToyDeny", cost: 0, requireArousal: true},
 	"CommonToyTease": {category: "Common", id: "CommonToyTease", cost: 0, requireArousal: true},
-	"BiggerGags":  {category: "Common", id: "BiggerGags", cost: -1, costGroup: "common"},
+	"BiggerGags":  {category: "Common", id: "BiggerGags", cost: -0.5},
 
 	"Incantation":  {category: "Restriction", id: "Incantation", cost: -1, block: ["SmoothTalker"]},
 	"SmoothTalker":  {category: "Restriction", id: "SmoothTalker", cost: 2, block: ["Incantation"]},
 	"SomaticPlus": {category: "Restriction", id: "SomaticPlus", cost: 2, block: ["SomaticMinus"]},
 	"SomaticMinus": {category: "Restriction", id: "SomaticMinus", cost: -1, block: ["SomaticPlus"]},
-	"HeelWalker": {category: "Restriction", id: 53, cost: 2, block: ["PoorForm"]},
-	"PoorForm": {category: "Restriction", id: "PoorForm", cost: -1, block: ["HeelWalker"]},
+	"HeelWalker": {category: "Restriction", id: 53, cost: 2.5, block: ["PoorForm"]},
+	"PoorForm": {category: "Restriction", id: "PoorForm", cost: -1.5, block: ["HeelWalker"]},
 
-	"Doorknobs":  {category: "Restriction", id: "Doorknobs", cost: -1},
-	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -2},
+	"Doorknobs":  {category: "Restriction", id: "Doorknobs", cost: -1.5},
+	"CantTouchThat":  {category: "Restriction", id: "CantTouchThat", cost: -2.5},
 	"Grounded":  {category: "Restriction", id: "Grounded", cost: -1},
 
 
@@ -985,7 +990,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 						}
 						return true;
 					}, !NonSelectable && (KinkyDungeonState == "Stats" || (KinkyDungeonDrawState == "Perks2" && KDDebugPerks)), XX, YY, KDPerksButtonWidth, KDPerksButtonHeight,
-					TextGet("KinkyDungeonStat" + (stat[1].id)) + ` (${KDGetPerkCost(stat[1])})`,
+					TextGet("KinkyDungeonStat" + (stat[1].id)) + ` (${Math.round(KDPERKCOSTMULT*KDGetPerkCost(stat[1]))})`,
 						(!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) ? colorAvailable : (KinkyDungeonStatsChoice.get(stat[0]) ? colorSelected : (NonSelectable ? colorAvailable : colorExpensive)),
 						KinkyDungeonStatsChoice.get(stat[0]) ? (KinkyDungeonRootDirectory + "UI/TickPerk.png") : "",
 						undefined, false, true,
@@ -996,7 +1001,8 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
 						DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1);
-						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT", KDGetPerkCost(stat[1]) + ""), 1000, 190, 1400, KDTextWhite, KDTextGray1);
+						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT",
+							Math.round(KDPERKCOSTMULT*KDGetPerkCost(stat[1])) + ""), 1000, 190, 1400, KDTextWhite, KDTextGray1);
 						tooltip = true;
 					}
 				}
@@ -1119,7 +1125,7 @@ function drawHorizList(list: any[], x: number, y: number, w: number, h: number, 
  * @param existing
  * @param [debuff]
  */
-function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean): string[] {
+function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean, threshold: number = 1.6): string[] {
 	let poscandidate = null;
 	let poscandidates = [];
 	let singlepointcandidates = [];
@@ -1131,7 +1137,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean): 
 					if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
 						if (KDGetPerkCost(p[1]) > 0) {
 							poscandidates.push(p);
-							if (KDGetPerkCost(p[1]) == 1)
+							if (KDGetPerkCost(p[1]) <= 1)
 								singlepointcandidates.push(p);
 						} else if (KDGetPerkCost(p[1]) < 0) {
 							negcandidates.push(p);
@@ -1160,7 +1166,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean): 
 
 	let netcost = debuff ? 0 : KDGetPerkCost(poscandidate[1]);
 	let perks = poscandidate ? [poscandidate[0]] : [];
-	if (debuff || KDGetPerkCost(poscandidate[1]) > 1) {
+	if (debuff || KDGetPerkCost(poscandidate[1]) > threshold) {
 		negcandidates = negcandidates.filter((p) => {
 			return (KinkyDungeonCanPickStat(p[0], 999))
 				&& (debuff || !KDPerkBlocked(p[0], poscandidate[0]))

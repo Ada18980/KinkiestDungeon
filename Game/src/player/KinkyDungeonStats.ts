@@ -2,6 +2,7 @@
 /** Player entity */
 let KinkyDungeonPlayerEntity: any = {id: -1, Enemy: undefined, hp: 10, x: 0, y:0, player:true}; // The current player entity
 
+
 let KDBaseBalanceDmgLevel = 5; // Decides how much heels affect balance loss from attacks. higher = less loss
 let KDShadowThreshold = 1.5;
 
@@ -148,7 +149,7 @@ function KDInitInventory() {
 }
 
 let KinkyDungeonPlayerTags = new Map();
-let NPCTags = new Map();
+let NPCTags: Map<Character, Map<string, boolean>> = new Map();
 
 let KinkyDungeonCurrentDress = "Default";
 let KinkyDungeonUndress = 0; // Level of undressedness
@@ -361,7 +362,8 @@ function KinkyDungeonGetHearingRadius(entity?: entity): {radius: number, mult: n
  * Returns if the player is automatically doing stuff
  */
 function KDIsAutoAction(): boolean {
-	return KinkyDungeonAutoWait || KinkyDungeonAutoWaitStruggle;
+	return KinkyDungeonAutoWait || KinkyDungeonAutoWaitStruggle || KDAutoWaitDelayed
+		|| (KDGameData.SlowMoveTurns && KDGameData.DelayedActions?.length > 0);
 }
 
 /**
@@ -370,13 +372,17 @@ function KDIsAutoAction(): boolean {
 function KDDisableAutoWait() {
 	KinkyDungeonAutoWait = false;
 	KinkyDungeonAutoWaitStruggle = false;
+	KDAutoWaitDelayed = false;
+	KDSendInput("autoprune", {force: true});
 }
 
 function KinkyDungeonInterruptSleep() {
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
-	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance"))
+	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance")) {
+		KDAutoWaitDelayed = false;
 		KinkyDungeonAutoWait = false;
+	}
 	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;
 }
 
@@ -438,6 +444,10 @@ interface damageInfoMinor {
 	time?: number,
 	flags?: string[],
 
+	src?: string,
+	srctype?: string,
+	srctrig?: string,
+
 	distract?: number,
 
 	crit?: number,
@@ -492,6 +502,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlready
 	}
 
 	let data = {
+		dmgOrig: Damage.damage,
 		dmg: Damage.damage,
 		type: Damage.type,
 		flags: Damage.flags,
@@ -623,10 +634,10 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlready
 	)) {
 		if ((KDGameData.HeelPower > 0 || data.type == "plush") && data.knockbackTypes.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true);
+			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true);
 		} else if (data.knockbackTypesStrong.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true);
+			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true);
 		}
 	}
 
@@ -668,57 +679,57 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlready
 			let amt = data.dmg/2 * data.arouseMod;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}dp`;
-			KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
+			KDChangeDistraction(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true, data.arouseAmount);
 		}
 		if (data.distractionTypesWeakNeg.includes(data.type)) {
 			let amt = -data.dmg/2 * data.arouseMod;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}dp`;
-			KinkyDungeonChangeDistraction(amt, true);
+			KDChangeDistraction(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
 		}
 		if (data.distractionTypesStrong.includes(data.type)) {
 			let amt = data.dmg * data.arouseMod;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}dp`;
-			KinkyDungeonChangeDistraction(amt, true, data.arouseAmount);
+			KDChangeDistraction(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true, data.arouseAmount);
 		}
 		if (data.staminaTypesStrong.includes(data.type)) {
 			let amt = -data.dmg;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}sp`;
-			KinkyDungeonChangeStamina(amt, false, 0, false, KDGetStamDamageThresh());
+			KDChangeStamina(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, false, 0, false, KDGetStamDamageThresh());
 		} else if (data.staminaTypesWeak.includes(data.type)) {
 			let amt = -data.dmg/2;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}sp`;
-			KinkyDungeonChangeStamina(amt, false, 0, false, KDGetStamDamageThresh());
+			KDChangeStamina(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, false, 0, false, KDGetStamDamageThresh());
 		}
 		if (data.manaTypesStrong.includes(data.type)) {
 			let amt = -data.dmg;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}mp`;
-			KinkyDungeonChangeMana(amt);
+			KDChangeMana(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt);
 		} else if (data.manaTypesWeak.includes(data.type)) {
 			let amt = -data.dmg/2;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}mp`;
-			KinkyDungeonChangeMana(amt);
+			KDChangeMana(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt);
 		}
 		if (data.willTypesStrong.includes(data.type)) {
 			let amt = -data.dmg;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}wp`;
-			KinkyDungeonChangeWill(amt, true);
+			KDChangeWill(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
 		} else if (data.willTypesWeak.includes(data.type)) {
 			let amt = -data.dmg/2;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}wp`;
-			KinkyDungeonChangeWill(amt, true);
+			KDChangeWill(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
 		} else if (data.willTypesVeryWeak.includes(data.type)) {
 			let amt = -data.dmg/4;
 			if (str) str = str + ", ";
 			str = str + `${Math.round(amt*10)}wp`;
-			KinkyDungeonChangeWill(amt, true);
+			KDChangeWill(data.type, data.arouseAmount > 0 ? "tease" : "dmg", "playerDmg", amt, true);
 		}
 		if (!noInterrupt)
 			KinkyDungeonInterruptSleep();
@@ -730,7 +741,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlready
 		}
 
 		if (KinkyDungeonStatFreeze > 0 && KinkyDungeonMeleeDamageTypes.includes(data.type)) {
-			KinkyDungeonChangeWill(-data.dmg, true);
+			KDChangeWill(data.type, "freeze", "playerDmg", -data.dmg, true);
 			KinkyDungeonStatFreeze = 0;
 		}
 		KDOrigWill = Math.floor(KinkyDungeonStatWill * 10);
@@ -826,23 +837,28 @@ let KDOrigBalance = 100;
 let KDOrigDistraction = 0;
 let KDOrigDesire = 0;
 
-function KinkyDungeonChangeDistraction(Amount: number, NoFloater?: boolean, lowerPerc?: number, minimum: number = 0): number {
+function KDChangeDistraction(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, lowerPerc?: number, minimum: number = 0, noEvent?: boolean): number {
 
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		Amount: Amount,
 		NoFloater: NoFloater,
 		lowerPerc: lowerPerc,
 		minimum: minimum,
+		amountChanged: 0,
 		mult: Math.max(0,
 			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainDistraction"))
 			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossDistraction"))
 		),
 	};
-	KinkyDungeonSendEvent("changeDistraction", data);
+	if (!noEvent)
+		KinkyDungeonSendEvent("changeDistraction", data);
 	Amount = data.Amount * data.mult;
 	lowerPerc = data.lowerPerc;
 	minimum = data.minimum;
@@ -855,6 +871,9 @@ function KinkyDungeonChangeDistraction(Amount: number, NoFloater?: boolean, lowe
 	if (Amount > 0) {
 		KDNoRegenFlag = true;
 	}
+
+	if (!noEvent)
+		KinkyDungeonSendEvent("duringChangeDistraction", data);
 	let amountChanged = KinkyDungeonStatDistraction;
 	KinkyDungeonStatDistraction += Amount;
 	KinkyDungeonStatDistraction = Math.min(Math.max(minLevel, KinkyDungeonStatDistraction), KinkyDungeonStatDistractionMax);
@@ -880,7 +899,7 @@ function KinkyDungeonChangeDistraction(Amount: number, NoFloater?: boolean, lowe
 		}
 
 
-		KinkyDungeonChangeDesire(Amount * lowerPerc, NoFloater);
+		KDChangeDesire(src, type, trig, Amount * lowerPerc, NoFloater);
 		//KinkyDungeonStatDistractionLower += Amount * lowerPerc;
 		//KinkyDungeonStatDistractionLower = Math.min(Math.max(0, KinkyDungeonStatDistractionLower), KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap);
 	}
@@ -901,18 +920,25 @@ function KinkyDungeonChangeDistraction(Amount: number, NoFloater?: boolean, lowe
 		KinkyDungeonStatDistraction = 0;
 	}
 
+	data.amountChanged = amountChanged;
+	if (!noEvent)
+		KinkyDungeonSendEvent("afterChangeDistraction", data);
+
 	return amountChanged;
 }
 
 
 
-function KinkyDungeonChangeDesire(Amount: number, NoFloater: boolean): number {
+function KDChangeDesire(src: string, type: string, trig: string, Amount: number, NoFloater: boolean): number {
 
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		Amount: Amount,
 		NoFloater: NoFloater,
 		mult: Math.max(0,
@@ -962,7 +988,7 @@ function KinkyDungeonChangeDesire(Amount: number, NoFloater: boolean): number {
 	return amountChanged;
 }
 
-function KinkyDungeonChangeStamina(Amount: number, NoFloater?: boolean, Pause?: number, NoSlow?: boolean, minimum: number = 0, slowFloor: number = 5, Regen: boolean = false) {
+function KDChangeStamina(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, Pause?: number, NoSlow?: boolean, minimum: number = 0, slowFloor: number = 5, Regen: boolean = false) {
 
 	if (isNaN(Amount)) {
 		console.trace();
@@ -970,6 +996,9 @@ function KinkyDungeonChangeStamina(Amount: number, NoFloater?: boolean, Pause?: 
 	}
 
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		NoFloater: NoFloater,
 		Amount: Amount,
 		NoSlow: NoSlow,
@@ -1004,7 +1033,8 @@ function KinkyDungeonChangeStamina(Amount: number, NoFloater?: boolean, Pause?: 
 		Math.max(minLevel, KinkyDungeonStatStamina),
 		Amount > 0 ? Math.max(stamPre, data.Cap) : KinkyDungeonStatStamina);
 	if (!NoFloater && Math.abs(KDOrigStamina - Math.floor(KinkyDungeonStatStamina * 10)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatStamina * 10) - KDOrigStamina, "#44ff66", undefined, undefined, " sp");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatStamina * 10) - KDOrigStamina,
+		"#44ff66", undefined, undefined, " sp", undefined, Amount > 0 ? "+" : undefined);
 		KDOrigStamina = Math.floor(KinkyDungeonStatStamina * 10);
 	}
 	if (Pause) {
@@ -1026,7 +1056,7 @@ function KinkyDungeonChangeStamina(Amount: number, NoFloater?: boolean, Pause?: 
  * @param [Pause]
  * @param [spill]
  */
-function KinkyDungeonChangeMana(Amount: number, NoFloater?: boolean, PoolAmount?: number, Pause?: boolean, spill?: boolean, minimum: number = 0) {
+function KDChangeMana(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, PoolAmount?: number, Pause?: boolean, spill?: boolean, minimum: number = 0) {
 
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1034,6 +1064,9 @@ function KinkyDungeonChangeMana(Amount: number, NoFloater?: boolean, PoolAmount?
 	}
 
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		NoFloater: NoFloater,
 		Amount: Amount,
 		PoolAmount: PoolAmount,
@@ -1070,7 +1103,8 @@ function KinkyDungeonChangeMana(Amount: number, NoFloater?: boolean, PoolAmount?
 		KinkyDungeonStatManaPool = Math.min(Math.max(0, KinkyDungeonStatManaPool), KinkyDungeonStatManaPoolMax);
 	}
 	if (!NoFloater && Math.abs(KDOrigMana - Math.floor(KinkyDungeonStatMana * 10)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatMana * 10) - KDOrigMana, "#4499ff", undefined, undefined, " mp");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatMana * 10) - KDOrigMana,
+		"#4499ff", undefined, undefined, " mp", undefined, Amount > 0 ? "+" : undefined);
 		KDOrigMana = Math.floor(KinkyDungeonStatMana * 10);
 	}
 	if (Pause) {
@@ -1083,7 +1117,7 @@ function KinkyDungeonChangeMana(Amount: number, NoFloater?: boolean, PoolAmount?
 		KinkyDungeonStatMana = 0;
 	}
 }
-function KinkyDungeonChangeWill(Amount: number, NoFloater?: boolean, minimum: number = 0): number {
+function KDChangeWill(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, minimum: number = 0): number {
 
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1091,6 +1125,9 @@ function KinkyDungeonChangeWill(Amount: number, NoFloater?: boolean, minimum: nu
 	}
 
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		NoFloater: NoFloater,
 		Amount: Amount,
 		minimum: minimum,
@@ -1098,6 +1135,7 @@ function KinkyDungeonChangeWill(Amount: number, NoFloater?: boolean, minimum: nu
 			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainWill"))
 			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossWill"))
 		),
+		amountChanged: 0,
 	};
 	let amountChanged = KinkyDungeonStatWill;
 	KinkyDungeonSendEvent("changeWill", data);
@@ -1113,7 +1151,8 @@ function KinkyDungeonChangeWill(Amount: number, NoFloater?: boolean, minimum: nu
 	KinkyDungeonStatWill += Amount;
 	KinkyDungeonStatWill = Math.min(Math.max(minLevel, KinkyDungeonStatWill), KinkyDungeonStatWillMax);
 	if (!NoFloater && Math.abs(KDOrigWill - Math.floor(KinkyDungeonStatWill * 10)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatWill * 10) - KDOrigWill, "#ff4444", undefined, undefined, " wp");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatWill * 10) - KDOrigWill,
+		"#ff4444", Amount > 0 ? 5 : undefined, undefined, " wp", undefined, Amount > 0 ? "+" : undefined);
 		KDOrigWill = Math.floor(KinkyDungeonStatWill * 10);
 	}
 
@@ -1123,11 +1162,14 @@ function KinkyDungeonChangeWill(Amount: number, NoFloater?: boolean, minimum: nu
 	}
 
 	amountChanged = KinkyDungeonStatWill - amountChanged;
+
+	data.amountChanged = amountChanged;
+	KinkyDungeonSendEvent("afterChangeWill", data);
 	return amountChanged;
 }
 
 
-function KDChangeBalance(Amount: number, NoFloater: boolean) {
+function KDChangeBalanceSrc(src: string, type: string, trig: string, Amount: number, NoFloater: boolean) {
 	if (KinkyDungeonStatsChoice.get("ClassicHeels")) return 0;
 	if (isNaN(Amount)) {
 		console.trace();
@@ -1135,13 +1177,16 @@ function KDChangeBalance(Amount: number, NoFloater: boolean) {
 	}
 
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		NoFloater: NoFloater,
 		Amount: Amount,
 		mult: Math.max(0,
 			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainBalance"))
 			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossBalance"))
 		),
-		change: undefined,
+		amountChanged: 0,
 	};
 	KinkyDungeonSendEvent("changeBalance", data);
 	NoFloater = data.NoFloater;
@@ -1152,10 +1197,11 @@ function KDChangeBalance(Amount: number, NoFloater: boolean) {
 	KDGameData.Balance = Math.min(1, Math.max(0, KDGameData.Balance + Amount));
 	if (Amount < 0) KDGameData.BalancePause = true;
 
-	data.change = KDGameData.Balance - orig;
+	data.amountChanged = KDGameData.Balance - orig;
 	KinkyDungeonSendEvent("afterChangeBalance", data);
 	if (!NoFloater && Math.abs(KDOrigBalance - Math.floor(KDGameData.Balance * 100)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.Balance * 100) - KDOrigBalance, "#ffff44", undefined, undefined, " balance");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.Balance * 100) - KDOrigBalance,
+		"#ffff44", undefined, undefined, " balance", undefined, Amount > 0 ? "+" : undefined);
 		KDOrigBalance = Math.floor(KDGameData.Balance * 100);
 	}
 
@@ -1166,20 +1212,23 @@ function KDChangeBalance(Amount: number, NoFloater: boolean) {
 	}
 }
 
-function KinkyDungeonChangeCharge(Amount: number, NoFloater?: boolean) {
+function KDChangeCharge(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean) {
 	if (isNaN(Amount)) {
 		console.trace();
 		Amount = 0;
 	}
 
 	let data = {
+		src: src,
+		type: type,
+		trig: type,
 		NoFloater: NoFloater,
 		Amount: Amount,
 		mult: Math.max(0,
 			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainCharge"))
 			: (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatLossCharge"))
 		),
-		change: undefined,
+		amountChanged: undefined,
 	};
 	KinkyDungeonSendEvent("changeCharge", data);
 	NoFloater = data.NoFloater;
@@ -1189,10 +1238,11 @@ function KinkyDungeonChangeCharge(Amount: number, NoFloater?: boolean) {
 	let orig = KDGameData.AncientEnergyLevel;
 	KDGameData.AncientEnergyLevel = Math.min(1, Math.max(0, KDGameData.AncientEnergyLevel + Amount));
 
-	data.change = KDGameData.AncientEnergyLevel - orig;
+	data.amountChanged = KDGameData.AncientEnergyLevel - orig;
 	KinkyDungeonSendEvent("afterChangeCharge", data);
 	if (!NoFloater && Math.abs(KDOrigCharge - Math.floor(KDGameData.AncientEnergyLevel * 1000)) >= 0.99) {
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000) - KDOrigCharge, "#ffff44", undefined, undefined, " charge");
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KDGameData.AncientEnergyLevel * 1000) - KDOrigCharge,
+		"#ffff44", undefined, undefined, " charge", undefined, Amount > 0 ? "+" : undefined);
 		KDOrigCharge = Math.floor(KDGameData.AncientEnergyLevel * 1000);
 	}
 
@@ -1338,7 +1388,9 @@ function KDGetDistractionRate(delta: number): number {
 	} else if (KDGameData.PlaySelfTurns < 1) distractionRate += distractionBonus;
 
 	if (distractionRate < 0 && KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionLower && KinkyDungeonStatDistraction + distractionRate < KinkyDungeonStatDistractionLower) {
-		distractionRate = Math.max(distractionRate, KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction);
+		distractionRate = Math.max(distractionRate, (KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction) * (
+			KinkyDungeonStatDistractionLower > 0 ? 0.25 : 1
+		));
 	}
 
 	if (KDGameData.OrgasmStamina > 0 && delta > 0) {
@@ -1350,7 +1402,7 @@ function KDGetDistractionRate(delta: number): number {
 	if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionLower) {
 		distractionRate +=
 		Math.min(
-			Math.max(0, KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction),
+			Math.max(0, 0.1*(KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction)),
 			KDGetDistractionDesireRate());
 	}
 	if (!KDGameData.DistractionCooldown) KDGameData.DistractionCooldown = 0;
@@ -1527,6 +1579,14 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		stamRegen *= 2;
 	}
 
+	if (KDGameData.AncientEnergyLevel > 0.01) {
+		if (!KinkyDungeonFlags.get("tut_charge")) {
+			KinkyDungeonSetFlag("tut_charge", -1);
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge2"), KDTutorialColor, 10);
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge"), KDTutorialColor, 10);
+		}
+	}
+
 	KinkyDungeonStaminaRate = KDGameData.SleepTurns > 0 && KDGameData.SleepTurns < KinkyDungeonSleepTurnsMax - 1? sleepRegen : stamRegen;
 
 	let statData = {
@@ -1591,14 +1651,14 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if ((!sleepRate || sleepRate <= 0) && KinkyDungeonSleepiness > 0) KinkyDungeonSleepiness = Math.max(0, KinkyDungeonSleepiness - delta);
 
 	// Cap off the values between 0 and maximum
-	KinkyDungeonChangeDistraction(distractionRate*delta, true, distractionRate > 0 ? arousalPercent: 0);
+	KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, distractionRate > 0 ? arousalPercent: 0);
 	if (sleepRegenDistraction > 0 && KDGameData.SleepTurns > 0) {
 		KinkyDungeonStatDistractionLower -= sleepRegenDistraction*delta;
 	} else {
 		//KinkyDungeonStatDistractionLower += distractionRate*delta * arousalPercent;
 	}
 
-	KinkyDungeonChangeStamina(KinkyDungeonStaminaRate*delta, true, undefined, true, undefined, undefined, true);
+	KDChangeStamina("player", "regen", "tick", KinkyDungeonStaminaRate*delta, true, undefined, true, undefined, undefined, true);
 	KDGameData.Wait = Math.max(0, KDGameData.Wait);
 
 	KinkyDungeonStatMana += KinkyDungeonStatManaRate;
@@ -1610,7 +1670,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			edgeDrain: KinkyDungeonStatDistractionLower < KinkyDungeonStatDistractionLowerCap ? KinkyDungeonOrgasmExhaustionAmountWillful : KinkyDungeonOrgasmExhaustionAmount,
 		};
 		KinkyDungeonSendEvent("calcEdgeDrain", data);
-		KinkyDungeonChangeWill(data.edgeDrain);
+		KDChangeWill("player", "edge", "tick", data.edgeDrain);
 		let vibe = KinkyDungeonVibeLevel > 0 ? "Vibe" : "";
 		let suff = KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage ? (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage / 2 ? "0" : "1") : "2";
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff5277", 2, true);
@@ -1622,7 +1682,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			id: "NoWP",
 			duration: 1,
 			buffSprite: true,
-			aura: "#ff5555",
+			aura: "#ff5277",
 			aurasprite: "NoWP",
 			type: "EvasionPenalty",
 			power: 1,
@@ -1647,7 +1707,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 
 	if (delta > 0) {
 		if (!KDGameData.BalancePause)
-			KDChangeBalance((KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
+			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
 		KDGameData.BalancePause = false;
 	}
 
@@ -1745,6 +1805,7 @@ function KinkyDungeonCalculateMiscastChance() {
 		flags.miscastChance = Math.min(flags.miscastChance * 2, 1);
 	}
 	if (KinkyDungeonStatsChoice.get("Distracted")) flags.miscastChance += KDDistractedAmount;
+	if (KDEntityBuffedStat(KDPlayer(), "MiscastChance")) flags.miscastChance += KDEntityBuffedStat(KDPlayer(), "MiscastChance");
 	KinkyDungeonSendEvent("calcMiscast", flags);
 	if (flags.satisfiedAmount && KDGameData.OrgasmStamina > 0.5) flags.miscastChance = Math.max(0, flags.miscastChance - flags.satisfiedAmount);
 	KinkyDungeonMiscastChance = Math.max(0, flags.miscastChance || 0);
@@ -1889,6 +1950,14 @@ function KinkyDungeonGagTotal(AllowFlags?: boolean, gagMult: number = 1): number
 	}
 	return total;
 }
+/**
+ * Returns the total level of gagging, 1.0 or higher meaning "fully gagged" and 0.0 being able to speak.
+ * @param   [AllowFlags] - Whether or not flags such as allowPotions and blockPotions should override the final result
+ * @return  - The gag level, sum of all gag properties of worn restraints
+ */
+function KDIsGaggedFast(): boolean {
+	return !!KinkyDungeonPlayerTags.get("Gagged");
+}
 
 function KinkyDungeonCanTalk(Loose?: boolean): boolean {
 	for (let inv of KinkyDungeonAllRestraint()) {
@@ -1967,16 +2036,18 @@ function KinkyDungeonDoPlayWithSelf(tease?: number): number {
 		affinity: affinity,
 		OrigAmount: OrigAmount,
 		power: power,
-		alertRadius: 3,
+		alertRadius: 4.5 - 4*Math.min(1, KinkyDungeonGagTotal()),
 		distractionCooldown: Math.max(KDGameData.DistractionCooldown, 13),
 	};
 
 	KinkyDungeonSendEvent("playSelf", data);
 
-	KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
+	//KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 
-	KinkyDungeonChangeDistraction(Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.12);
-	KinkyDungeonChangeStamina(data.cost, true, 3);
+	KinkyDungeonMakeNoise(data.alertRadius, KDPlayer().x, KDPlayer().y);
+
+	KDChangeDistraction("player", "playSelf", "playSelf", Math.sqrt(Math.max(0, data.amount * KinkyDungeonPlayWithSelfMult)) * KinkyDungeonStatDistractionMax/KDMaxStatStart, false, 0.12);
+	KDChangeStamina("player", "playSelf", "playSelf", data.cost, true, 3);
 	if (data.playSound) {
 		if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.playSelfSound) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.playSelfSound + ".ogg");
 	}
@@ -2117,17 +2188,17 @@ function KinkyDungeonDoTryOrgasm(Bonus?: number, Auto?: number) {
 		KinkyDungeonSetFlag("nogasm", data.stunTime + Math.floor(KDRandom() * 3));
 		KinkyDungeonSetFlag("PlayerOrgasmFilter", data.stunTime + 1);
 		KDGameData.OrgasmStamina = data.satisfaction;
-		KinkyDungeonChangeStamina(data.spcost);
-		KinkyDungeonChangeWill(data.wpcost);
+		KDChangeStamina(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", data.spcost);
+		KDChangeWill(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", data.wpcost);
 		KinkyDungeonStatDistractionLower = data.lowerFloorTo;
 		KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 		KDGameData.PlaySelfTurns = data.stunTime;
 		// Balance
-		KDChangeBalance((KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true);
+		KDChangeBalanceSrc(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true);
 		KinkyDungeonSendEvent("orgasm", data);
 	} else {
-		KinkyDungeonChangeStamina(data.edgespcost);
-		KinkyDungeonChangeWill(data.edgewpcost);
+		KDChangeStamina(data.auto ? "auto" : "player", "edge", "tryOrgasm", data.edgespcost);
+		KDChangeWill(data.auto ? "auto" : "player", "edge", "tryOrgasm", data.edgewpcost);
 		// You close your eyes and breath rapidly in anticipation...
 		// You feel frustrated as the stimulation isn't quite enough...
 		// You groan with pleasure as you keep close to the edge...
@@ -2150,7 +2221,7 @@ function KinkyDungeonDoTryOrgasm(Bonus?: number, Auto?: number) {
 		if (denied && KinkyDungeonVibeLevel > 0) {
 			msg = "KinkyDungeonDeny";
 			KinkyDungeonSetFlag("OrgDenied", KDGameData.PlaySelfTurns + 3);
-			KinkyDungeonChangeDistraction(-KinkyDungeonStatDistraction);
+			KDChangeDistraction(data.auto ? "auto" : "player", "deny", "tryOrgasm", -KinkyDungeonStatDistraction);
 			KinkyDungeonSendEvent("deny", data);
 		} else {
 			msg = "KinkyDungeonEdge";

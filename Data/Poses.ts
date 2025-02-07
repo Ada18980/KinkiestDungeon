@@ -36,6 +36,7 @@ let BROWPOSES = BROWTYPES.map((pose) => {return "Brows" + pose;});
 let BROW2POSES = BROWTYPES.map((pose) => {return "Brows2" + pose;});
 let MOUTHPOSES = ["MouthNeutral", "MouthDazed", "MouthDistracted", "MouthEmbarrassed", "MouthFrown", "MouthSmile", "MouthSurprised", "MouthPout"];
 let BLUSHPOSES = ["BlushLow", "BlushMedium", "BlushHigh", "BlushExtreme"];
+let FEARPOSES = ["NoFearPose", "FearPose"];
 /** Standard GlobalDefaultOverrides, this should be for any pose that's meant to use mostly normal assets */
 let STANDARD_DEFAULTS = ["Hogtie"];
 
@@ -595,14 +596,38 @@ function KDRefreshPoseOptions(Character: Character) {
 		KDCurrentModels.get(Character).TempPoses.NippleToysOption = true;
 		KDCurrentModels.get(Character).Poses.NippleToysOption = true;
 	}
-	if (KDToggles.DynamicArmor && KinkyDungeonState == "Game") {
+	if (Character == KinkyDungeonPlayer && ((KDToggles.DynamicArmor
+		&& (KinkyDungeonState == "Game" || KinkyDungeonState == "GenMap" || KinkyDungeonState == "JourneyMap"))
+	)) {
 		KDCurrentModels.get(Character).TempPoses.DynamicArmor = true;
 		KDCurrentModels.get(Character).Poses.DynamicArmor = true;
 	}
 
+	if (KinkyDungeonState == "Wardrobe") {
+		KDCurrentModels.get(Character).Poses.DynamicArmor = true;
+		if (!KDToggles.HideArmorWardrobe) {
+			for (let ap of KDArmorPoses) {
+				KDCurrentModels.get(Character).Poses[ap] = true;
+			}
+		}
+	}
+
+
 	if (KDToggles.ChastityBraOption) {
 		KDCurrentModels.get(Character).TempPoses.ChastityBraOption = true;
 		KDCurrentModels.get(Character).Poses.ChastityBraOption = true;
+	}
+
+	if (Character == KinkyDungeonPlayer) {
+		let restraints = KinkyDungeonAllRestraintDynamic();
+		for (let inv of restraints) {
+			KDCurrentModels.get(Character).Poses[inv.item.name + "Worn"] = true;
+		}
+	} else if (KDNPCChar_ID.get(Character)) {
+		let restraints = KDGetNPCRestraints(KDNPCChar_ID.get(Character));
+		for (let inv of Object.values(restraints)) {
+			KDCurrentModels.get(Character).Poses[inv.name + "Worn"] = true;
+		}
 	}
 }
 
@@ -628,10 +653,46 @@ function KDRefreshPoseOptionsMC(MC: ModelContainer) {
 	if (KDToggles.NippleToysOption) {
 		MC.Poses.NippleToysOption = true;
 	}
-	if (KDToggles.DynamicArmor && KinkyDungeonState == "Game") {
+	if (MC.Character == KinkyDungeonPlayer && ((KDToggles.DynamicArmor
+		&& (KinkyDungeonState == "Game" || KinkyDungeonState == "GenMap" || KinkyDungeonState == "JourneyMap"))
+	)) {
 		MC.Poses.DynamicArmor = true;
 	}
+
+	if (KinkyDungeonState == "Wardrobe") {
+		MC.Poses.DynamicArmor = true;
+		if (!KDToggles.HideArmorWardrobe) {
+			for (let ap of KDArmorPoses) {
+				MC.Poses[ap] = true;
+			}
+		}
+	}
+
 	if (KDToggles.ChastityBraOption) {
 		MC.Poses.ChastityBraOption = true;
 	}
+
+	if (MC.Character == KinkyDungeonPlayer) {
+		let restraints = KinkyDungeonAllRestraintDynamic();
+		for (let inv of restraints) {
+			MC.Poses[inv.item.name + "Worn"] = true;
+		}
+	} else if (KDNPCChar_ID.get(MC.Character)) {
+		let restraints = KDGetNPCRestraints(KDNPCChar_ID.get(MC.Character));
+		for (let inv of Object.values(restraints)) {
+			MC.Poses[inv.name + "Worn"] = true;
+		}
+	}
+
 }
+
+let KDArmorPoses = [
+	"ChestArmor",
+	"ArmArmor",
+	"GlovesArmor",
+	"LegsArmor",
+	"ChestArmor",
+	"PelvisArmor",
+	"TorsoArmor",
+	"BootsArmor",
+]

@@ -27,10 +27,10 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Yami", color: "#88ff88", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Animi", color: "#ff9999", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Ladica", color: "#44ff44", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "FlameTail", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "FlameTail", color: "#ff5277", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Nobu", color: "#00FFFF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "NobIngridu", color: "#4EB85D", prisoner: false, free: true, customPlayLine: "", customIntro: "Hey hey people, it's ya girl, Ingrid!", customSprite: ""},
-		{name: "Moranql", color: "#ff5555", prisoner: true, free: false, customPlayLine: "", customIntro: "0x0", customSprite: ""},
+		{name: "Moranql", color: "#ff5277", prisoner: true, free: false, customPlayLine: "", customIntro: "0x0", customSprite: ""},
 		{name: "Harumi", color: "#F223D4", prisoner: true, free: true, customPlayLine: "", customIntro: "This is an uncivilized place, I have some things to give you...", customSprite: ""},
 		{name: "Joelle", color: "#4f60b8", prisoner: true, free: false, customPlayLine: "", customIntro: "Bork!", customSprite: ""},
 		{name: "Gery", color: "#63ab3f", prisoner: true, free: true, customPlayLine: "", customIntro: "Heo :3", customSprite: ""},
@@ -152,11 +152,11 @@ let KDPatronCustomEnemies = new Map([
 	],
 	],
 	["Adventurer_Brat_Fighter", [
-		{name: "Rook", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook"},
+		{name: "Rook", color: "#ff5277", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rook"},
 	],
 	],
 	["DragonLeaderDuelist", [
-		{name: "Kaitlyn", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Kaitlyn", color: "#ff5277", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 	],
 	],
 	["Rat", [
@@ -173,8 +173,8 @@ let KDPatronCustomEnemies = new Map([
 	["Ninja", [
 		{name: "Rai", color: "#5D6396", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Rai2"},
 		{name: "Alisa", color: "#575699", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
-		{name: "Rizo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
-		{name: "Rizo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "Another day, another hunt.", customSprite: "Alisa"},
+		{name: "Rizo", color: "#ff5277", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: "Alisa"},
+		{name: "Rizo", color: "#ff5277", prisoner: true, free: true, customPlayLine: "", customIntro: "Another day, another hunt.", customSprite: "Alisa"},
 	],
 	],
 	["SlimeAdv", [
@@ -198,7 +198,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Miaowu~Miaowu~", color: "#f7a1e5", prisoner: false, free: true, customPlayLine: "", customIntro: "miao~", customSprite: ""},
 		{name: "Sand", color: "#ffd270", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Sasheen", color: "#ad2f45", prisoner: false, free: true, customPlayLine: "", customIntro: "Hai!", customSprite: ""},
-		{name: "Ty", color: "#ff5555", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Ty", color: "#ff5277", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Freya", color: "#c93fab", prisoner: false, free: true, customPlayLine: "", customIntro: "*giggle*", customSprite: ""},
 		{name: "Akanit", color: "#e9225d", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Perfiano", color: "#ffff00", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -282,7 +282,7 @@ let KDPatronCustomEnemies = new Map([
 		{name: "Rest", color: "#999999", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Zelenes", color: "#2244ff", prisoner: true, free: false, customPlayLine: "", customIntro: "Please help me.", customSprite: ""},
 		{name: "Rika Mercury", color: "#92e8e5", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
-		{name: "Maidlinmo", color: "#ff5555", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Maidlinmo", color: "#ff5277", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "April", color: "#4444ff", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Aika", color: "#be52e6", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Kiera", color: "#310051", prisoner: true, free: false, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -1243,11 +1243,13 @@ let KDPatrons = [
  * @param e
  * @param chanceBoost
  */
-function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number): any {
+function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number, makePersistent: boolean): any {
 	let chance = 0.05 + (chanceBoost || 0); // Lower chance if 'subordinate'
 	if (!e.CustomName && KDPatronCustomEnemies.get(Enemy.name) && KDRandom() < chance) {
 		let customs: any[] = KDPatronCustomEnemies.get(Enemy.name).filter((element) => {
-			return (element.prisoner && KDEnemyHasFlag(e, "imprisoned")) || (element.free && !KDEnemyHasFlag(e, "imprisoned"));
+			return !KDGameData.NamesGenerated[element.name]
+			&& (element.prisoner && KDEnemyHasFlag(e, "imprisoned"))
+				|| (element.free && !KDEnemyHasFlag(e, "imprisoned"));
 		});
 		if (customs.length > 0) {
 			let custom = customs[Math.floor(customs.length * KDRandom())];
@@ -1268,6 +1270,9 @@ function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number): an
 			}
 			if (custom.customIntro) {
 				e.intro = custom.customIntro;
+			}
+			if (makePersistent) {
+				KDMakePersistent(e, custom);
 			}
 			return custom;
 		}

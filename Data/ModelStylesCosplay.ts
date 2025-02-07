@@ -15,6 +15,12 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 		{
 			Item: "ElfEarrings", Color: "#ffffff", Lost: false		},
 	],
+	"Glasses": [
+		{
+			Item: "Glasses", Color: "#ffffff", Lost: false, Filters: {"Lens":{"gamma":1,"saturation":0.16666666666666666,"contrast":1.02,"brightness":1,"red":1.0196078431372548,"green":1.0196078431372548,"blue":1.0196078431372548,"alpha":0.4}},
+		},
+	],
+
 	"Elf2": [
 		{
 			Item: "ElfEarsLong", Color: "#ffffff", Lost: false
@@ -24,6 +30,9 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 			{"EarringRight":{"gamma":1,"saturation":1,"contrast":1,"brightness":1.3,"red":1,"green":1,"blue":1,"alpha":1},"EarringLeft":{"gamma":1,"saturation":1,"contrast":0.65,"brightness":1.7000000000000002,"red":0.55,"green":0.55,"blue":2.033333333333333,"alpha":1.75}}
 		},
 	],
+
+	MaidKnightLight: [{"Item":"FoxEars","Group":"FoxEars","Color":"#ffffff","Lost":false,"Filters":{"Ears":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.27450980392156865,"green":0.27450980392156865,"blue":0.27450980392156865,"alpha":1}}},{"Item":"WolfTail","Group":"WolfTail","Color":"#ffffff","Lost":false,"Filters":{"Wolf":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.2,"red":1,"green":1,"blue":1,"alpha":1},"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.2,"red":1,"green":1,"blue":1,"alpha":1}}}],
+	MaidKnightHeavy: [{"Item":"FoxEars","Group":"FoxEars","Color":"#ffffff","Lost":false,"Filters":{"Ears":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.27450980392156865,"green":0.27450980392156865,"blue":0.27450980392156865,"alpha":1}}},{"Item":"WolfTail","Group":"WolfTail","Color":"#ffffff","Lost":false,"Filters":{"Wolf":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.2,"red":1,"green":1,"blue":1,"alpha":1},"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.2,"red":1,"green":1,"blue":1,"alpha":1}}}],
 
 	Hilda: [{"Item":"ElfEarsLong","Group":"ElfEarsLong","Color":"#ffffff","Lost":false},{"Item":"SuccubusHorn","Group":"SuccubusHorn","Color":"#ffffff","Lost":false,"Filters":{"SuccubusHornRight":{"gamma":1,"saturation":0,"contrast":2.48,"brightness":1,"red":0.7647058823529411,"green":0.8235294117647058,"blue":0.8235294117647058,"alpha":1},"SuccubusHornLeft":{"gamma":1,"saturation":0,"contrast":2.48,"brightness":1,"red":0.7647058823529411,"green":0.8235294117647058,"blue":0.8235294117647058,"alpha":1},"SuccubusHornLight":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1.2156862745098038,"green":0.11764705882352941,"blue":1.8823529411764706,"alpha":1}}}],
 
@@ -61,6 +70,13 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 		{
 			Item: "WolfEars", Group: "WolfEars", Color: "#ffffff", Lost: false
 		},
+	],"Wolf1b": [
+		{
+			Item: "WolfTail", Group: "WolfTail", Color: "#ffffff", Lost: false
+		},
+		{
+			Item: "WolfEars", Group: "WolfEars", Color: "#ffffff", Lost: false
+		},
 	],
 	"Wolf2": [
 		{
@@ -68,7 +84,17 @@ let KDModelCosplay: {[_: string]: KinkyDungeonDress} = {
 			{"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
 		},
 		{
-			Item: "WolfEars", Group: "WolfEars", Color: "#ffffff", Lost: false, Filters:
+			Item: "WolfEars2", Group: "WolfEars", Color: "#ffffff", Lost: false, Filters:
+			{"Ears":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
+		},
+	],
+	"Wolf2b": [
+		{
+			Item: "WolfTail", Group: "WolfTail", Color: "#ffffff", Lost: false, Filters:
+			{"Tail":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
+		},
+		{
+			Item: "WolfEars2", Group: "WolfEars", Color: "#ffffff", Lost: false, Filters:
 			{"Ears":{"gamma":1,"saturation":1,"contrast":1,"brightness":0.8999999999999999,"red":1,"green":1.0833333333333335,"blue":1.2833333333333332,"alpha":1}}
 		},
 	],

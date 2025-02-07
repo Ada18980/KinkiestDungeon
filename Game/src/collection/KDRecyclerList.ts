@@ -337,7 +337,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				recyclecategory: "Rope",
 				recyclecost: {
 					Rope: 25,
-					Rune: 3,
+					Rune: 1,
 				},
 				count: 30,
 				prereq: () => {return true;},
@@ -381,7 +381,32 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				},
 				prereq: () => {return true;},
 			},
+			{
+				name: "CaptureFoamRaw",
+				item: "CaptureFoamRaw",
+				type: Restraint,
+				count: 20,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 50,
+					Leather: 5,
+				},
+				prereq: () => {return true;},
+			},
+			{
+				name: "HardCaptureFoamRaw",
+				item: "HardCaptureFoamRaw",
+				type: Restraint,
+				count: 20,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 50,
+					Leather: 5,
+				},
+				prereq: () => {return true;},
+			},
 			KDAutoGenRestraintBlueprint("KiguMask", "Latex", ""),
+			KDAutoGenRestraintBlueprint("KiguMaskSmile", "Latex", ""),
 			KDAutoGenRestraintBlueprint("LatexStraitjacket", "Latex", ""),
 			KDAutoGenRestraintBlueprint("LatexTransportJacket", "Latex", ""),
 			KDAutoGenRestraintBlueprint("LatexArmbinder", "Latex", ""),
@@ -470,7 +495,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "MysticDuctTapeRaw",
 				item: "MysticDuctTapeRaw",
 				type: Restraint,
-				count: 25,
+				count: 30,
 				recyclecategory: "Rope",
 				recyclecost: {
 					Rope: 50,
@@ -486,7 +511,6 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				recyclecategory: "Rope",
 				recyclecost: {
 					Rope: 30,
-					Rune: 1,
 				},
 				prereq: () => {return true;},
 			},
@@ -500,7 +524,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapVibe",
 				item: "TrapVibe",
 				type: Restraint,
-				count: 10,
+				count: 15,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -512,7 +536,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapVibeProto",
 				item: "TrapVibeProto",
 				type: Restraint,
-				count: 4,
+				count: 8,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -524,7 +548,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "MaidVibe",
 				item: "MaidVibe",
 				type: Restraint,
-				count: 8,
+				count: 12,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 12,
@@ -536,7 +560,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapPlug",
 				item: "TrapPlug",
 				type: Restraint,
-				count: 10,
+				count: 15,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -548,7 +572,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapPlug2",
 				item: "TrapPlug2",
 				type: Restraint,
-				count: 8,
+				count: 12,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -560,7 +584,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapPlug3",
 				item: "TrapPlug3",
 				type: Restraint,
-				count: 7,
+				count: 10,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -572,7 +596,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapPlug4",
 				item: "TrapPlug4",
 				type: Restraint,
-				count: 4,
+				count: 5,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -584,7 +608,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "TrapPlug5",
 				item: "TrapPlug5",
 				type: Restraint,
-				count: 3,
+				count: 5,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -596,7 +620,7 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "RearVibe1",
 				item: "RearVibe1",
 				type: Restraint,
-				count: 10,
+				count: 15,
 				recyclecategory: "Toys",
 				recyclecost: {
 					Latex: 10,
@@ -608,10 +632,10 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "SteelPlugF",
 				item: "SteelPlugF",
 				type: Restraint,
-				count: 1,
+				count: 5,
 				recyclecategory: "Toys",
 				recyclecost: {
-					Metal: 4,
+					Metal: 15,
 				},
 				prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode") && !KinkyDungeonStatsChoice.get("arousalModePlugNoFront");},
 			},
@@ -619,10 +643,10 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				name: "SteelPlugR",
 				item: "SteelPlugR",
 				type: Restraint,
-				count: 1,
+				count: 5,
 				recyclecategory: "Toys",
 				recyclecost: {
-					Metal: 4,
+					Metal: 15,
 				},
 				prereq: () => {return KinkyDungeonStatsChoice.get("arousalModePlug");},
 			},

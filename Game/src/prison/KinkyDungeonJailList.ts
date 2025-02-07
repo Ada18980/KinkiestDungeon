@@ -1,5 +1,7 @@
 "use strict";
 
+let KDBaseJailTickSub = 0.5;
+
 let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => number, trigger: (guard: any, xx: any, yy: any) => void}> = {
 	"spawnGuard": {
 		// Determines the weight
@@ -11,7 +13,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			// Allow the player to sleep 150 turns after the guard shows up
 			if (KinkyDungeonFlags.get("slept") == -1) {
 				KinkyDungeonSetFlag("slept", 0);
-				KinkyDungeonSetFlag("slept", 150);
+				KinkyDungeonSetFlag("slept", 50);
 			}
 			let mainFaction = KDGetMainFaction();
 			// Jail tag
@@ -24,8 +26,9 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"]);
 				}
 			}
-			let guard = {
+			let guard: entity = {
 				summoned: true,
+				temporary: true,
 				Enemy: Enemy,
 				id: KinkyDungeonGetEnemyID(),
 				x:xx,
@@ -48,15 +51,66 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 				KDStartDialog("PrisonRepeat", guard.Enemy.name, true, "");
 			}
 
-			if (KinkyDungeonTilesGet((xx-1) + "," + yy) && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
+			if (KinkyDungeonPlayerInCell(true))
+				KinkyDungeonChangeRep("Ghost", KDBaseJailTickSub + KDGameData.KinkyDungeonPrisonExtraGhostRep);
+			KDGameData.KinkyDungeonPrisonExtraGhostRep = 0;
+
+			if (KinkyDungeonTilesGet((xx-1) + "," + yy)?.Lock && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
+
 				KinkyDungeonTilesGet((xx-1) + "," + yy).OGLock = KinkyDungeonTilesGet((xx-1) + "," + yy).Lock;
 				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}
 			KDGameData.JailGuard = guard.id;
 			if (KinkyDungeonEnemyAt(guard.x, guard.y)) KDKickEnemy(KinkyDungeonEnemyAt(guard.x, guard.y));
-			KDAddEntity(guard);
+			guard = KDAddEntity(guard);
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
+			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+		},
+	},
+	"useCurrentGuard": {
+		// Determines the weight
+		weight: (_guard, _xx, _yy) => {
+			return !!_guard ? 70 : 0;
+		},
+		// Occurs when the jail event triggers
+		trigger: (guard, xx, yy) => {
+			if (KinkyDungeonPlayerInCell()) {
+				// Allow the player to sleep 150 turns after the guard shows up
+				if (KinkyDungeonFlags.get("slept") == -1) {
+					KinkyDungeonSetFlag("slept", 0);
+					KinkyDungeonSetFlag("slept", 50);
+				}
+
+				if (!KinkyDungeonFlags.get("JailIntro")) {
+					KinkyDungeonSetFlag("JailIntro", -1);
+					KDStartDialog("PrisonIntro", guard.Enemy.name, true, "");
+				} else if (KinkyDungeonFlags.get("JailRepeat")) {
+					KinkyDungeonSetFlag("JailRepeat",  0);
+					KDStartDialog("PrisonRepeat", guard.Enemy.name, true, "");
+				}
+
+				if (KinkyDungeonTilesGet((xx-1) + "," + yy)?.Lock && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
+					KinkyDungeonTilesGet((xx-1) + "," + yy).OGLock = KinkyDungeonTilesGet((xx-1) + "," + yy).Lock;
+					KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
+				}
+
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardApproach").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
+
+				if (KinkyDungeonPlayerInCell(true))
+					KinkyDungeonChangeRep("Ghost", KDBaseJailTickSub + KDGameData.KinkyDungeonPrisonExtraGhostRep);
+				KDGameData.KinkyDungeonPrisonExtraGhostRep = 0;
+
+
+			}
+
+			KDGameData.JailGuard = guard.id;
+
+
+			guard.CurrentAction = "jailWander";
+
+			//if (KinkyDungeonVisionGet(guard.x, guard.y))
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
 			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 		},
@@ -78,7 +132,7 @@ for (let rescue of Object.entries(KDPrisonRescues)) {
 	KDJailEvents[rescue[0]] = {
 		// Determines the weight
 		weight: (guard: entity, _xx: number, _yy: number) => {
-			if (guard) return 0;
+			if (guard?.CurrentAction) return 0;
 			if (KinkyDungeonStatsChoice.get("norescueMode")) return 0;
 			if (KDGameData.JailTurns <= 70 || KDFactionRelation("Player", rescue[1].faction) < 0.09) return 0;
 			return 100 * Math.min(0.05, Math.max(0.1, 0.35 * KDFactionRelation("Player", rescue[1].faction)) - 0.005 * (KDGameData.PriorJailbreaks ? (KDGameData.PriorJailbreaks - (KDGameData.PriorJailbreaksDecay || 0)) : 0));
@@ -122,15 +176,17 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 		},
 		handle: (guard, xx, yy) => {
 			// Random meandering about the cell, sometimes stopping near the player
-			if (KDRandom() < 0.2) {
+			if (KDRandom() < 0.2 && guard.idle) {
 				guard.gx = xx - 2;
 				if (KDRandom() < 0.5) {
 					guard.gx = xx;
-					guard.gy = yy + Math.round(KDRandom() * KinkyDungeonJailLeashY * 2 - KinkyDungeonJailLeashY);
+					guard.gy = yy + Math.round(KDRandom() * 2 - 1);
 				} else
 					guard.gy = KinkyDungeonPlayerEntity.y;
 			}
 			KDGameData.GuardApplyTime = 0;
+			KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+			KinkyDungeonSetEnemyFlag(guard, "wander", 10);
 		},
 	},
 	"release": {
@@ -140,7 +196,10 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 		},
 		assign: (guard, _xx, _yy) => {
 			KinkyDungeonInterruptSleep();
-			if (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec && KDGameData.RoomType != "Jail" && (!(KDMapData.JailFaction?.length > 0) || KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
+			if (KDGetEffSecurityLevel() >= KDSecurityLevelHiSec
+				&& !(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
+				&& (!(KDMapData.JailFaction?.length > 0)
+				|| KDFactionRelation("Player", KDMapData.JailFaction[0]) < 0.4)) {
 				let dd = KDGetHiSecDialogue(guard);
 				if (dd)
 					KDStartDialog(dd, guard.Enemy.name, true, "", guard);
@@ -175,7 +234,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			guard.CurrentAction = "jailTease";
 		},
 		handle: (guard, xx, yy, _delta) => {
-			let playerHasVibrator = Array.from(KinkyDungeonAllRestraint()).some(i => KDRestraint(i).allowRemote);
+			let playerHasVibrator = !KDGameData.CurrentVibration &&
+				Array.from(KinkyDungeonAllRestraint()).some(i => KDRestraint(i).allowRemote);
 			guard.gx = xx - 2;
 			guard.gy = yy;
 			if (playerHasVibrator) {
@@ -184,6 +244,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			} else {
 				let touchesPlayer = KinkyDungeonCheckLOS(KinkyDungeonJailGuard(), KinkyDungeonPlayerEntity, KDistChebyshev(guard.x - KinkyDungeonPlayerEntity.x, guard.y - KinkyDungeonPlayerEntity.y), 1.5, false, false);
 				if (touchesPlayer) {
+					KDEnemyTurnToFace(guard, KDPlayer().x, KDPlayer().y);
 					KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer - 5, 0);
 					let dmg = KinkyDungeonDealDamage({damage: guard.Enemy.power * 1, type: guard.Enemy.dmgType}, undefined, undefined, true);
 					if (dmg && dmg.string)
@@ -192,6 +253,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gx = KinkyDungeonPlayerEntity.x;
 					guard.gy = KinkyDungeonPlayerEntity.y;
 				}
+
 			}
 			if (KDRandom() < 0.02 || (KinkyDungeonStatStamina < 10 && KDRandom() < 0.1))
 				guard.CurrentAction = "jailWander";
@@ -280,6 +342,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 						let msg = TextGet("KinkyDungeonRemoveRestraints")
 							.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 						//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
+						KinkyDungeonSetFlag("suspendJailTick", 2);
 						if (oldRestraintItem) msg = msg.replace("OldRestraintName", TextGet("Restraint"+oldRestraintItem.name));
 						KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 					}
@@ -288,6 +351,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
+					KinkyDungeonSetFlag("suspendJailTick", 2);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartRemoving")
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
 						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2, true);
@@ -325,6 +389,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				let newRestraint = jrest.restraint;
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (newRestraint) {
+						KinkyDungeonSetFlag("suspendJailTick", 2);
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, Math.floor(KDGetEffLevel() * 0.5),
 							true, undefined, undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
@@ -343,6 +408,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (newRestraint) {
+					KinkyDungeonSetFlag("suspendJailTick", 2);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
 						.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name)),
@@ -379,6 +445,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
 						let lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(),false, undefined, {enemy: KinkyDungeonJailGuard()});
 						KinkyDungeonLock(oldRestraintItem, lock);
+						KinkyDungeonSetFlag("suspendJailTick", 2);
 						let msg = TextGet("KinkyDungeonJailerFinishLocking")
 							.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
 							.replace("RestraintName", TextGet("Restraint"+oldRestraintItem.name))
@@ -390,6 +457,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
+					KinkyDungeonSetFlag("suspendJailTick", 2);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartLocking")
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
 						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2, true);
@@ -668,7 +736,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "LatexOTNGagHeavy", Level: 60},
 			{Name: "LatexCorset", Level: 65},
 			{Name: "LatexLegbinder", Level: 80},
-			{Name: "KiguMask", Level: 100, Condition: "NoKigu"},
+			{Name: "KiguMaskSmile", Level: 100, Condition: "NoKigu"},
 			{Name: "ExpCollar", Level: 120},
 			{Name: "LatexTransportJacket", Level: 120, Condition: "LessJackets", Priority: "MoreJackets"},
 		],
@@ -837,7 +905,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "DressCorset", Level: 60},
 			{Name: "DressMuzzle", Level: 60},
 			{Name: "MagicBelt", Level: 80},
-			{Name: "KiguMask", Level: 100, Condition: "NoKigu"},
+			{Name: "KiguMaskSmile", Level: 100, Condition: "NoKigu"},
 		],
 	},
 };
@@ -922,15 +990,15 @@ let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 			&& KinkyDungeonStatsChoice.get("Less_Armbinders"));
 	},
 	MoreArmbinders: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Armbinders");
+		return KinkyDungeonStatsChoice.get("More_Armbinders") || KinkyDungeonFlags.get("prefer_armbinder");
 	},
 	MoreYokes: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Yokes");
+		return KinkyDungeonStatsChoice.get("More_Yokes") || KinkyDungeonFlags.get("prefer_yoke");
 	},
 	MoreBoxbinders: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Boxbinders");
+		return KinkyDungeonStatsChoice.get("More_Boxbinders") || KinkyDungeonFlags.get("prefer_boxbinder");
 	},
 	MoreJackets: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Jackets");
+		return KinkyDungeonStatsChoice.get("More_Jackets") || KinkyDungeonFlags.get("prefer_jacket");
 	},
 };

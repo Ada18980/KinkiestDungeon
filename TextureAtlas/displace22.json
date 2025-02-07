@@ -1,0 +1,189 @@
+{"frames": {
+
+"DisplacementMaps/ArmStrapCrossed.png":
+{
+	"frame": {"x":512,"y":389,"w":381,"h":452},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":452},
+	"sourceSize": {"w":381,"h":452}
+},
+"DisplacementMaps/BeltLegs1SquishKneelClosed.png":
+{
+	"frame": {"x":3,"y":857,"w":257,"h":477},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":477},
+	"sourceSize": {"w":257,"h":477}
+},
+"DisplacementMaps/BinderRightWristtie.png":
+{
+	"frame": {"x":3,"y":460,"w":505,"h":393},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":505,"h":393},
+	"sourceSize": {"w":505,"h":393}
+},
+"DisplacementMaps/CuffRightYoked.png":
+{
+	"frame": {"x":1426,"y":1730,"w":264,"h":268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":268},
+	"sourceSize": {"w":264,"h":268}
+},
+"DisplacementMaps/ElbowCuffLeftBoxtie.png":
+{
+	"frame": {"x":469,"y":3,"w":498,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":498,"h":382},
+	"sourceSize": {"w":498,"h":382}
+},
+"DisplacementMaps/ElbowCuffLeftCrossed.png":
+{
+	"frame": {"x":1395,"y":449,"w":487,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":487,"h":385},
+	"sourceSize": {"w":487,"h":385}
+},
+"DisplacementMaps/ElbowCuffLeftFront.png":
+{
+	"frame": {"x":897,"y":449,"w":494,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":385},
+	"sourceSize": {"w":494,"h":385}
+},
+"DisplacementMaps/ElbowCuffLeftWristtie.png":
+{
+	"frame": {"x":931,"y":1300,"w":491,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":491,"h":442},
+	"sourceSize": {"w":491,"h":442}
+},
+"DisplacementMaps/ElbowCuffRightYoked.png":
+{
+	"frame": {"x":264,"y":1167,"w":378,"h":450},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":378,"h":450},
+	"sourceSize": {"w":378,"h":450}
+},
+"DisplacementMaps/ForeArm1SquishWristtie.png":
+{
+	"frame": {"x":1469,"y":3,"w":487,"h":437},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":487,"h":437},
+	"sourceSize": {"w":487,"h":437}
+},
+"DisplacementMaps/GuardRightYoked.png":
+{
+	"frame": {"x":3,"y":1338,"w":229,"h":339},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":229,"h":339},
+	"sourceSize": {"w":229,"h":339}
+},
+"DisplacementMaps/HideBoxtieHand.png":
+{
+	"frame": {"x":236,"y":1621,"w":395,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":395,"h":392},
+	"sourceSize": {"w":395,"h":392}
+},
+"DisplacementMaps/MittLFront.png":
+{
+	"frame": {"x":1694,"y":1730,"w":236,"h":251},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":107,"y":45,"w":236,"h":251},
+	"sourceSize": {"w":400,"h":348}
+},
+"DisplacementMaps/TapeFullLeftBoxtie.png":
+{
+	"frame": {"x":512,"y":845,"w":498,"h":318},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":498,"h":318},
+	"sourceSize": {"w":498,"h":318}
+},
+"DisplacementMaps/TapeHeavyLeftBoxtie.png":
+{
+	"frame": {"x":1325,"y":838,"w":488,"h":438},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":488,"h":438},
+	"sourceSize": {"w":488,"h":438}
+},
+"DisplacementMaps/TapeHeavyLeftCrossed.png":
+{
+	"frame": {"x":971,"y":3,"w":494,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":442},
+	"sourceSize": {"w":494,"h":442}
+},
+"DisplacementMaps/TapeHeavyRightBoxtie.png":
+{
+	"frame": {"x":635,"y":1638,"w":280,"h":395},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":280,"h":395},
+	"sourceSize": {"w":280,"h":395}
+},
+"DisplacementMaps/TapeHeavyRightWristtie.png":
+{
+	"frame": {"x":646,"y":1167,"w":281,"h":467},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":281,"h":467},
+	"sourceSize": {"w":281,"h":467}
+},
+"DisplacementMaps/TapeLightLeftWristtie.png":
+{
+	"frame": {"x":3,"y":3,"w":462,"h":453},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":462,"h":453},
+	"sourceSize": {"w":462,"h":453}
+},
+"DisplacementMaps/TapeMedRightWristtie.png":
+{
+	"frame": {"x":1014,"y":838,"w":307,"h":458},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":307,"h":458},
+	"sourceSize": {"w":307,"h":458}
+},
+"DisplacementMaps/Template_Hogtie.png":
+{
+	"frame": {"x":264,"y":857,"w":240,"h":257},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":181,"y":358,"w":240,"h":257},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/TightBelt.png":
+{
+	"frame": {"x":1426,"y":1280,"w":460,"h":446},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":446},
+	"sourceSize": {"w":460,"h":446}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "displace22.webp",
+	"format": "RGBA8888",
+	"size": {"w":1959,"h":2036},
+	"scale": "0.25",
+	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace19.json", "displace20.json", "displace21.json", "displace23.json", "displace24.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:e8080ca31b63ef791246ea5ac6739043:1482d83a5ac2196d10e8c8a53055230a:44b3d303d8b4a8e896115ea1e938285b$"
+}
+}

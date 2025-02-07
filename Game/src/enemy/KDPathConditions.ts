@@ -1,3 +1,5 @@
+// Pathconditions are conditions for enemies to be able to pass through an npc
+// It is added on the npc being pathed
 
 interface PathCondition {
 	/** Returns true if the attemptingNPC can path through thisNPC. No side effects. */

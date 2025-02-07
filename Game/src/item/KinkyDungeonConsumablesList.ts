@@ -31,19 +31,20 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 	"ScrollArms" : {name: "ScrollArms", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoArmsComp", duration: 12, power: 1, aura: "#aaffaa", sfx: "FireSpell"},
 	"ScrollVerbal" : {name: "ScrollVerbal", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoVerbalComp", duration: 12, power: 1, aura: "#aaaaff", sfx: "FireSpell"},
 	"ScrollLegs" : {name: "ScrollLegs", sub: 0.25, noHands: true, rarity: 2, costMod: 1, shop: true, type: "buff", buff: "NoLegsComp", duration: 12, power: 1, aura: "#ffaaaa", sfx: "FireSpell"},
-	"ScrollPurity" : {name: "ScrollPurity", sub: 0.20, noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
+	"ScrollPurity" : {name: "ScrollPurity", isSubby: true, sub: 0.20, noHands: true, rarity: 4, shop: true, type: "shrineRemove", shrine: "Vibes", sfx: "FireSpell"},
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"KeyCard" : {name: "KeyCard", rarity: 1, shop: false, type: "KeyCard", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
-	"Pick" : {name: "Pick", rarity: 0, sub: 0.25, shop: false, type: "Lockpick", noConsumeOnUse: true},
-	"RedKey" : {name: "RedKey", rarity: 1, sub: 0.25, shop: false, type: "RedKey", noConsumeOnUse: true},
+	"Pick" : {name: "Pick", sneakChance: 0.15, rarity: 0, sub: 0.25, shop: false, type: "Lockpick", noConsumeOnUse: true},
+	"RedKey" : {name: "RedKey", sneakChance: 0.1, rarity: 1, sub: 0.25, shop: false, type: "RedKey", noConsumeOnUse: true},
 	"BlueKey" : {name: "BlueKey", rarity: 2, costMod: 2, shop: false, type: "BlueKey", noConsumeOnUse: true},
 	"Snuffer" : {name: "Snuffer", rarity: 3, costMod: -1, shop: true, type: "Snuffer", noConsumeOnUse: true},
 	"SackOfSacks" : {name: "SackOfSacks", rarity: 3, costMod: -2, shop: true, type: "SackOfSacks", noConsumeOnUse: true},
 	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true, uniqueTags: ["pick"]},
 
-	"UniversalSolvent" : {name: "UniversalSolvent", rarity: 5, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "UniversalSolvent", sfx: "PotionDrink"},
+	"UniversalSolvent" : {name: "UniversalSolvent", rarity: 5,
+		latexsolvent: 10, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "UniversalSolvent", sfx: "PotionDrink"},
 
 	"DivineTear" : {name: "DivineTear", rarity: 6, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };
@@ -53,7 +54,7 @@ let KDCookies: Record<string, consumable> = {
 	"Cookie" : {name: "Cookie", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
 	"Brownies" : {name: "Brownies", rarity: 1, shop: true, type: "restore", wp_instant: 3.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 4, gagMax: 0.59, duration: 0, sfx: "Cookie"},
 	"Donut" : {name: "Donut", rarity: 0, shop: true, type: "restore", wp_instant: 1.0, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true, delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie"},
-	"CookieJailer" : {name: "CookieJailer", rarity: 0, shop: true,
+	"CookieJailer" : {name: "CookieJailer", isSubby: true, rarity: 0, shop: true,
 		type: "restore", wp_instant: 1.5, wp_gradual: 0, scaleWithMaxWP: true, needMouth: true,
 		delay: 3, gagMax: 0.59, duration: 0, sfx: "Cookie",
 		sideEffects: ["subAdd"],
@@ -68,13 +69,18 @@ Object.assign(KinkyDungeonConsumables, KDCookies);
 
 let KDRechargeCost = 100;
 
+/** Criteria that must be true for an enemy to sell you an item */
+let KDSellCriteria = {
+	Keyring: (seller: entity) => {
+		return KDMapData.EscapeMethod == "Key";
+	},
+}
+
 let KinkyDungneonBasic = {
 	"Key" : {name: "Key", rarity: 0, shop: false},
 	"Keyring" : {name: "Key", rarity: 0, shop: false},
 	"RedKey" : {name: "RedKey", rarity: 0, shop: true},
 	"BlueKey" : {name: "BlueKey", rarity: 2, costMod: 2, shop: true},
-	"Lockpick" : {name: "Lockpick", rarity: 0, shop: true},
-	"Pick" : {name: "Lockpick", rarity: 0, shop: true},
 	//"4Lockpick" : {name: "4Lockpick", rarity: 1, shop: true},
 	"3Bola" : {name: "3Bola", consumable: "Bola", quantity: 3, rarity: 0, shop: true},
 	"3Bomb" : {name: "3Bomb", consumable: "Bomb", quantity: 3, rarity: 1, shop: true},
@@ -122,7 +128,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 				return;
 			}
 		}
-		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5555", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5277", 3);
 	},
 	"SackOfSacks": (_Consumable, entity) => {
 		let tiles = KDGetEffectTiles(entity.x, entity.y);
@@ -130,7 +136,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			if (tile?.tags?.includes("unsackable")) {
 				tile.duration = 0;
 				KinkyDungeonAdvanceTime(1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), "#ff5555", 3);
+				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), "#ff5277", 3);
 				return;
 			}
 			if (tile?.tags?.includes("sackable")) {
@@ -142,7 +148,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 				return;
 			}
 		}
-		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), "#ff5555", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), "#ff5277", 3);
 	},
 	"RemoveCurseOrHex": (Consumable, entity) => {
 		if (!entity?.player) return;
@@ -152,9 +158,9 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			KDGameData.UsingConsumable = Consumable.name;
 			KinkyDungeonDrawState = "Inventory";
 			KinkyDungeonCurrentFilter = Restraint;
-			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), "#ff5277", 1, true);
 		} else {
-			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), "#ff5277", 1, true);
 		}
 	},
 	"subAdd": (Consumable, entity) => {
@@ -195,11 +201,11 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			}
 			if (Consumable.mp_instant != undefined) {
 				//let manaAmt = Math.min(KinkyDungeonStatManaMax, KinkyDungeonStatMana + Consumable.mp_instant * Manamulti * gagMult) - KinkyDungeonStatMana;
-				KinkyDungeonChangeMana(Consumable.mp_instant * Manamulti * gagMult, false, Consumable.mpool_instant * Manamulti * gagMult, false, true);
+				KDChangeMana(Consumable.name, "restore", "consumable", Consumable.mp_instant * Manamulti * gagMult, false, Consumable.mpool_instant * Manamulti * gagMult, false, true);
 			}
-			if (Consumable.wp_instant) KinkyDungeonChangeWill(Consumable.wp_instant * Willmulti * gagMult);
-			if (Consumable.sp_instant) KinkyDungeonChangeStamina(Consumable.sp_instant * multi * gagMult);
-			if (Consumable.ap_instant) KinkyDungeonChangeDistraction(Consumable.ap_instant * Distmulti * gagMult, false, Consumable.arousalRatio ? Consumable.arousalRatio : 0);
+			if (Consumable.wp_instant) KDChangeWill(Consumable.name, "restore", "consumable", Consumable.wp_instant * Willmulti * gagMult);
+			if (Consumable.sp_instant) KDChangeStamina(Consumable.name, "restore", "consumable", Consumable.sp_instant * multi * gagMult);
+			if (Consumable.ap_instant) KDChangeDistraction(Consumable.name, "restore", "consumable", Consumable.ap_instant * Distmulti * gagMult, false, Consumable.arousalRatio ? Consumable.arousalRatio : 0);
 
 			KinkyDungeonCalculateMiscastChance();
 			if (Consumable.mp_gradual) KinkyDungeonApplyBuffToEntity(entity, {id: "PotionMana", type: "restore_mp", power: Consumable.mp_gradual/Consumable.duration * gagMult * Manamulti, duration: Consumable.duration});

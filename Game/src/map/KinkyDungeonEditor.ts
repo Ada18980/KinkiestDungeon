@@ -110,8 +110,10 @@ let KDTilePalette = {
 	'LatexPipe': {type: "tile", tile: '1', special: {Type: "Skin", Skin: "LatexPipe"}},
 	'LatexThin':  {type: "effect", effectTile: "LatexThin"},
 	'LatexThinBlue':  {type: "effect", effectTile: "LatexThinBlue"},
+	'LatexThinGreen':  {type: "effect", effectTile: "LatexThinGreen"},
 	'Latex':  {type: "effect", effectTile: "Latex"},
 	'LatexBlue':  {type: "effect", effectTile: "LatexBlue"},
+	'LatexGreen':  {type: "effect", effectTile: "LatexGreen"},
 	'WallHook': {type: "tile", tile: ','},
 	'CeilingHook': {type: "tile", tile: '?'},
 	'----Deco----': {type: "none"},
@@ -150,7 +152,12 @@ let KDTilePalette = {
 	'FutureBox': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", }, jail: {type: "furniture", radius: 1}},
 	'FutureBoxStorage': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", jail: {type: "storage", radius: 1}}, jail: {type: "storage", radius: 1}},
 	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
+	'LatexDisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "LatexDisplayStand"}, jail: {type: "furniture", radius: 1}},
 	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
+	'IceBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "IceBase"}, jail: {type: "furniture", radius: 1}},
+	'CrystalBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "CrystalBase"}, jail: {type: "furniture", radius: 1}},
+	'VineBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "VineBase"}, jail: {type: "furniture", radius: 1}},
+	'ShadowBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "ShadowBase"}, jail: {type: "furniture", radius: 1}},
 	'Sarco': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "Sarcophagus"}, jail: {type: "furniture", radius: 1}},
 	'----Chests----': {type: "none"},
 	'Chest': {type: "tile", tile: 'C', special: {Type: "Chest"}},
@@ -175,6 +182,7 @@ let KDTilePalette = {
 	'Shrine': {type: "tile", tile: 'A', special: {Type: "Shrine", Name: "Metal"}},
 	'HighPriorityShrine': {type: "tile", tile: 'A', special: {Type: "Shrine", Name: "Will", Priority: true}},
 	'----Hazards----': {type: "none"},
+	'SpikeTrap':  {type: "effect", effectTile: "SpikeTrap"},
 	'Trap': {type: "tile", tile: 'T', special: {Type: "Trap", Always: true,}},
 	'PotentialTrap': {type: "tile", tile: 'T', special: {Type: "Trap"}},
 	'----Conveyors----': {type: "none"},
@@ -305,6 +313,7 @@ function KDDrawTileEditor() {
 				sprite[1].parent.removeChild(sprite[1]);
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				kdpixisprites.delete(sprite[0]);
+				delete sprite[1].filters;
 				sprite[1].destroy();
 			}
 		}
@@ -1161,7 +1170,7 @@ function KDTE_UpdateUI(Load: boolean): void {
 	ElementPosition("MapTileWeight", 1000 + 550, 70, 200);
 
 	if (KDTE_Inaccessible)
-		DrawTextFitKD("Some entrances are inaccessible. This tile will occur more rarely in worldgen", 1000, 800, 1000, "#ff5555");
+		DrawTextFitKD("Some entrances are inaccessible. This tile will occur more rarely in worldgen", 1000, 800, 1000, "#ff5277");
 }
 
 function KDTESetIndexToTile(propTile: string): void {

@@ -117,10 +117,10 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 			KinkyDungeonSetFlag("spank", 4);
 			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*1.5, type: "grope"});
 			if (!(blocked || evaded))
-				KinkyDungeonChangeDistraction(1*damagemod, false, 0.25);
+				KDChangeDistraction("enemy" + enemy.id, "spank", "tease", 1*damagemod, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Slap.ogg");
 			if (!(blocked || evaded))
-				KDChangeBalance(damagemod * (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 1.5*KDFitnessMult(), true);
+				KDChangeBalanceSrc("enemy" + enemy.id, "spank", "tease", damagemod * (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 1.5*KDFitnessMult(), true);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_SpankButt" + ( (KDPlayerFacingAway(player, enemy) && KinkyDungeonFlags.get("sprint")) ? "Sprint" : ""))
@@ -344,7 +344,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 			KinkyDungeonSetFlag("globalteaseAtkCD", 2);
 			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*0.5, type: "grope"});
 			if (!(blocked || evaded))
-				KinkyDungeonChangeDistraction(1*damagemod, false, 0.25);
+				KDChangeDistraction("enemy" + enemy.id, "squeeze", "tease", 1*damagemod, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			KinkyDungeonSetFlag("grope", 4);
 			if (dmg.happened) {
@@ -424,7 +424,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 			let dmg = (blocked || evaded) ? {string: "", happened: 0} :  KinkyDungeonDealDamage({damage: damagemod*(2 - 1.9*(KinkyDungeonGoddessRep.Ghost + 50)/100), type: "plush"});
 			if ((KinkyDungeonGoddessRep.Ghost + 50)/100 > 0)
 				if (!(blocked || evaded))
-					KinkyDungeonChangeDistraction((KinkyDungeonGoddessRep.Ghost + 50)/100 * 2*damagemod, false, 0.5);
+					KDChangeDistraction("enemy" + enemy.id, "headpat", "tease", (KinkyDungeonGoddessRep.Ghost + 50)/100 * 2*damagemod, false, 0.5);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg");
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,

@@ -112,7 +112,7 @@ AddModel({
 	TopLevel: false,
 	Categories: ["Bras"],
 	Layers: ToLayerMap([
-		{ Name: "Straps", Layer: "BraChest", Pri: 18,
+		{ Name: "Straps", Layer: "BraChest", Pri: -35,
 			Invariant: true,
 			MorphPoses: {Boxtie: "Tied", Crossed: "Tied", Front: "Tied", Wristtie: "Tied", Up: "Up"},
 		},

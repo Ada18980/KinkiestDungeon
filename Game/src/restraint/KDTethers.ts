@@ -301,7 +301,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 				if (Entity.player) {
 					if (KinkyDungeonCanStand() && !KDForcedToGround()) {
 						KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, KDLeashPullKneelTime + KDGameData.SlowMoveTurns);
-						KinkyDungeonChangeWill(-KDLeashPullCost, false);
+						KDChangeWill("leashtug", "restraint", "move", -KDLeashPullCost, false);
 					}
 				} else {
 					Entity.stun = Math.max(Entity.stun || 0, 2);

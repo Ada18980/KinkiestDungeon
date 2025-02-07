@@ -240,9 +240,9 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
 			KinkyDungeonDrawState = "Game";
-			KinkyDungeonChangeStamina(10);
-			KinkyDungeonChangeMana(5);
-			KinkyDungeonChangeWill(5.0);
+			KDChangeStamina("tablet", "restore", "interact", 10);
+			KDChangeMana("tablet", "restore", "interact", 5);
+			KDChangeWill("tablet", "restore", "interact", 5.0);
 			KDGameData.HeartTaken = true;
 		} else if (KinkyDungeonIsPlayer()) {
 			KinkyDungeonDrawState = "Heart";
@@ -340,7 +340,7 @@ function KinkyDungeonDrawItems(_canvasOffsetX: number, _canvasOffsetY: number, C
 		//if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
 			let scale = 0.5;
-			if (KDRestraint({name: item.name}) && !KDRestraint({name: item.name}).armor) {
+			if (KDRestraint({name: item.name}) && KDRestraintSpecial({name: item.name})) {
 				sprite = KinkyDungeonRootDirectory + "Items/Restraint.png";
 				scale = 1;
 			}

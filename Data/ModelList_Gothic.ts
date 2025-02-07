@@ -22,6 +22,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
+			HidePoses: {"SkimpyLower": true},
 		},
 		{ Name: "WaistbandClips", Layer: "Skirt", Pri: 45.1,
 			TieToLayer: "Skirt",

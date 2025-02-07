@@ -51,6 +51,9 @@ type SpawnEntry = {
 	force?:    boolean;
 	keys?:     boolean;
 	priority?: boolean;
+	noPlay?: boolean;
+	levelBoost?: number;
+	forceIndex?: string;
 }
 
 function KinkyDungeonPlaceSetPieces(POI: any, trapLocations: { x: number, y: number }[], chestlist: ChestEntry[], shrinelist: ShrineEntry[], chargerlist: any[], spawnPoints: SpawnEntry[], InJail: boolean, width: number, height: number) {
@@ -448,28 +451,30 @@ function KinkyDungeonGenerateSetpiece (
 				KinkyDungeonMapSet(cornerX+4, cornerY+1, 'b');
 
 				KinkyDungeonMapSet(cornerX+2, cornerY+2, 'B');
-				if (KDRandom() < 0.0 + (KDGameData.RoomType == "Jail" ? 1.0 : 0)) {
+				if (KDRandom() < 0.0 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 1.0 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+1);
 				}
-				if (KDRandom() < 0.5 + (KDGameData.RoomType == "Jail" ? 0.25 : 0)) {
+				if (KDRandom() < 0.5 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.25 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+2);
 				}
-				if (KDRandom() < 0.5 + (KDGameData.RoomType == "Jail" ? 0.25 : 0)) {
+				if (KDRandom() < 0.5 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.25 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+3);
 				}
 				KDMapData.JailPoints.push({x: cornerX+2, y: cornerY+2, type: "jail", radius: 1});
 				let t = [];
 				let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]] : "jailer";
 				t.push(jt);
-				spawnPoints.push({x:cornerX+5, y:cornerY + 1, required: ["jail", ...t], tags: t, AI: "guard", force: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
-				spawnPoints.push({x:cornerX+5, y:cornerY + 3, required: ["jail", ...t], tags: t, AI: "guard", force: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
+				spawnPoints.push({x:cornerX+5, y:cornerY + 1, required: ["jail", ...t], tags: t, AI: "guard", force: true, noPlay: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
+				spawnPoints.push({x:cornerX+5, y:cornerY + 3, required: ["jail", ...t], tags: t, AI: "guard", force: true, noPlay: true, keys: true, faction: KDGetMainFaction() || "Enemy"});
 				KDTorch(cornerX + 2, cornerY, altType, MapParams);
 				break;
 			}
 			case "ExtraCell": {
 				KinkyDungeonCreateRectangle(cornerX, cornerY, radius, radius, true, false, 1, true, true);
 				KinkyDungeonMapSet(cornerX+3, cornerY+1, 'D');
-				KinkyDungeonTilesSet("" + (cornerX+3) + "," + (cornerY+1), {Type: "Door", NoTrap: true, Jail: true, ReLock: true, OL: true});
+				KinkyDungeonTilesSet("" + (cornerX+3) + "," + (cornerY+1), {Type: "Door", NoTrap: true, Jail: true,
+					Lock: "Red",
+					ReLock: true, OL: true});
 
 
 				let t = [];
@@ -493,7 +498,7 @@ function KinkyDungeonGenerateSetpiece (
 					KinkyDungeonMapSet(cornerX+2, cornerY+3, 'b');
 				}
 
-				if (KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
+				if (KDRandom() < 0.6 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.35 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+1, cornerY+2);
 				}
 
@@ -655,35 +660,36 @@ function KinkyDungeonGenerateSetpiece (
 						});
 				}
 
-				let l = KinkyDungeonMapGet(cornerX+1, cornerY+2) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+1, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true, Lock: l});
-				if (l && KDRandom() < 0.5)
+				let closed = KinkyDungeonMapGet(cornerX+1, cornerY+2) == 'D';
+				let l = "Red";
+				KinkyDungeonMapSet(cornerX+1, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true, ReLock: true, Lock: closed ? l : undefined, OGLock: closed ? undefined : l});
+				if (closed && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 2, y:cornerY + 1, required: ["human"], AI: "guard"});
-				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
+				else if (closed && KDRandom() < 0.6 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.35 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+2, cornerY+1);
 				}
 
-				l = KinkyDungeonMapGet(cornerX+5, cornerY+2) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+5, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true, Lock: l});
-				if (l && KDRandom() < 0.5)
+				closed = KinkyDungeonMapGet(cornerX+5, cornerY+2) == 'D';
+				KinkyDungeonMapSet(cornerX+5, cornerY+2, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 2), {Type: "Door", NoTrap: true, OL: true, ReLock: true, Lock: closed ? l : undefined, OGLock: closed ? undefined : l});
+				if (closed && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 4, y:cornerY + 1, required: ["human"], AI: "guard"});
-				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
+				else if (closed && KDRandom() < 0.6 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.35 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+4, cornerY+1);
 				}
 
-				l = KinkyDungeonMapGet(cornerX+1, cornerY+4) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+1, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OL: true, Lock: l});
-				if (l && KDRandom() < 0.5)
+				closed = KinkyDungeonMapGet(cornerX+1, cornerY+4) == 'D';
+				KinkyDungeonMapSet(cornerX+1, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+1) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OL: true, ReLock: true, Lock: closed ? l : undefined, OGLock: closed ? undefined : l});
+				if (closed && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 2, y:cornerY + 5, required: ["human"], AI: "guard"});
-				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
+				else if (closed && KDRandom() < 0.6 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.35 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+2, cornerY+5);
 				}
 
-				l = KinkyDungeonMapGet(cornerX+5, cornerY+4) == 'D' ? "Red" : undefined;
-				KinkyDungeonMapSet(cornerX+5, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OL: true, Lock: l});
-				if (l && KDRandom() < 0.5)
+				closed = KinkyDungeonMapGet(cornerX+5, cornerY+4) == 'D';
+				KinkyDungeonMapSet(cornerX+5, cornerY+4, KDRandom() < 0.75 ? 'D' : 'd'); KinkyDungeonTilesSet("" + (cornerX+5) + "," + (cornerY + 4), {Type: "Door", NoTrap: true, OL: true, ReLock: true, Lock: closed ? l : undefined, OGLock: closed ? undefined : l});
+				if (closed && KDRandom() < 0.5)
 					spawnPoints.push({x:cornerX + 4, y:cornerY + 5, required: ["human"], AI: "guard"});
-				else if (l && KDRandom() < 0.6 + (KDGameData.RoomType == "Jail" ? 0.35 : 0)) {
+				else if (closed && KDRandom() < 0.6 + ((KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) ? 0.35 : 0)) {
 					SetpieceSpawnPrisoner(cornerX+4, cornerY+5);
 				}
 
@@ -768,8 +774,9 @@ function KinkyDungeonGenerateSetpiece (
 			}
 		}
 
+	if (!KDMapData.SpecialAreas) KDMapData.SpecialAreas = [];
 	if (!skip)
-		KinkyDungeonSpecialAreas.push({x: cornerX + Math.floor(radius/2), y: cornerY + Math.floor(radius/2), radius: Math.ceil(radius/2)});
+		KDMapData.SpecialAreas.push({x: cornerX + Math.floor(radius/2), y: cornerY + Math.floor(radius/2), radius: Math.ceil(radius/2)});
 	else if (favoringPOI)
 		favoringPOI.used = false;
 
@@ -859,7 +866,7 @@ function KDUnblock(x: number, y: number): boolean {
 	return !blocked;
 }
 
-function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White") {
+function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string) {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
@@ -869,7 +876,11 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		MiniGameKinkyDungeonLevel,
 		KDGameData.RoomType,
 		KDGameData.MapMod,
-		KDMapData.MapFaction);
+		KDMapData.MapFaction).filter(
+			(en) => {
+				return !en.entity?.Enemy?.tags?.noPrisoner;
+			}
+		);
 	let persistentAvailable =
 		KDGameData.CapturedParty?.length > 0
 		|| capturedPersistent.length > 0;
@@ -900,7 +911,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 			let index = Math.floor(KDRandom() * capturedPersistent.length);
 			let npc = capturedPersistent[index];
 			e = npc.entity;
-			KDSetNPCLocation(npc.id, KDGetCurrentLocation());
+			KDMovePersistentNPC(npc.id, KDGetCurrentLocation());
 			if (!altRoom || (!altRoom?.alwaysRegen && (altRoom?.makeMain || altRoom?.persist))) {
 				npc.jailed = true;
 			}
@@ -910,18 +921,19 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		noJam = true;
 		e.x = x;
 		e.y = y;
-		KDAddEntity(e);
+		e = KDAddEntity(e);
 
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
 		e.items = [];
 
-		KDImprisonEnemy(e, noJam, undefined, rest ? {
+		KDImprisonEnemy(e, noJam, "auto", rest ? {
 			name: rest.name,
 			lock: lock,
 			id: KinkyDungeonGetItemID(),
 			faction: KDGetMainFaction() || "Jail",
-		} : undefined);
+		} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction());
+
 	} else if (!persistentOnly) {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
 			"ropeAnger", "ropeRage",
@@ -934,16 +946,23 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), KinkyDungeonMapGet(x, y), ["imprisonable"]);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(x, y, Enemy.name);
-			e.faction = "Prisoner";
-			e.boundLevel = e.hp * 11;
-			e.specialdialogue = "PrisonerJail";
-			e.items = [];
-			KDImprisonEnemy(e, noJam, undefined, rest ? {
+			if (
+			KDImprisonEnemy(e, noJam, "auto", rest ? {
 				name: rest.name,
 				lock: lock,
 				id: KinkyDungeonGetItemID(),
 				faction: KDGetMainFaction() || "Jail",
-			} : undefined);
+			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true)) {
+				e.faction = "Prisoner";
+				e.boundLevel = e.hp * 11;
+				//e.prisondialogue = "PrisonerJail";
+				e.items = [];
+			} else {
+				// Just spawn them with no items
+				e.playerdmg = undefined;
+				if (e.hp <= 0.5) e.hp = 0.51;
+				e.items = [];
+			}
 		}
 	}
 
@@ -1127,16 +1146,37 @@ function KDAddPipes(pipechance: number, pipelatexchance: number, thinlatexchance
 		}
 }
 
+function KDGetNPCRestraintJailDialogueType(restraint: NPCRestraint) {
+	let r = KDRestraint(restraint);
+	if (r.shrine?.includes("Latex")) {
+		return "PrisonerLatex";
+	}
+	return "PrisonerJail";
+}
+
 /**
  * @param e
  * @param noJam
  * @param [dialogue]
  * @param [restraint]
  */
-function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "PrisonerJail", restraint?: NPCRestraint): void {
+function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
+	restraint?: NPCRestraint, restraintSet?: Record<string, number>, faction: string = "", force?: boolean): boolean {
+	if (!e || (!force && !KDCapturable(e))) return false;
+	if (dialogue == 'auto') {
+		if (restraint) {
+			dialogue = KDGetNPCRestraintJailDialogueType(restraint);
+		} else if (KDGetNPCRestraints(e.id)?.Device) {
+			dialogue = KDGetNPCRestraintJailDialogueType(KDGetNPCRestraints(e.id).Device);
+		} else if (KDGetNPCRestraints(e.id)?.ArmEncase) {
+			dialogue = KDGetNPCRestraintJailDialogueType(KDGetNPCRestraints(e.id).ArmEncase);
+		} else if (KDGetNPCRestraints(e.id)?.HeavyBondage) {
+			dialogue = KDGetNPCRestraintJailDialogueType(KDGetNPCRestraints(e.id).HeavyBondage);
+		} else dialogue = "PrisonerJail";
+	}
 	if (noJam)
 		KinkyDungeonSetEnemyFlag(e, "nojam", -1);
-	e.specialdialogue = dialogue;
+	e.prisondialogue = dialogue;
 	KinkyDungeonSetEnemyFlag(e, "noswap", -1);
 	KinkyDungeonSetEnemyFlag(e, "imprisoned", -1);
 	if (restraint) {
@@ -1144,7 +1184,12 @@ function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "Prisoner
 		// Add the tieup value
 		KDNPCRestraintTieUp(e.id, restraint, 1);
 	}
+	if (restraintSet) {
+		KDAddFurnitureRestraintSet(e, restraintSet, faction);
+	}
 	e.playerdmg = undefined;
 	if (e.hp <= 0.5) e.hp = 0.51;
 	KDSetToExpectedBondage(e, 1);
+	if (KDIsNPCPersistent(e.id)) KDUpdatePersistentNPC(e.id);
+	return true;
 }

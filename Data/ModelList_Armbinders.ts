@@ -8,6 +8,47 @@
 
 
 AddModel({
+	Name: "FestiveArmbinder",
+	Folder: "Festive",
+	Restraint: true,
+	TopLevel: true,
+	Parent: "SantaHat",
+	AddPose: ["HideHands"],
+	Categories: ["Restraints", "Latex", "Binders"],
+	Layers: ToLayerMap([
+		{ Name: "BinderLeft", Layer: "BindArmLeft", Pri: 32.1,
+			HideWhenOverridden: true,
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			InheritColor: "Binder",
+			DisplacementSprite: "BinderLeft",
+			DisplaceLayers: ToMap(["Arms"]),
+			DisplaceAmount: 100,
+		},
+		{ Name: "BinderRight", Layer: "BindArmRight", Pri: 32.1,
+			HideWhenOverridden: true,
+			Poses: ToMap(["Boxtie", "Wristtie"]),
+			InheritColor: "Binder",
+			DisplacementSprite: "BinderRight",
+			DisplaceLayers: ToMap(["Arms"]),
+			DisplaceAmount: 100,
+		},
+		{ Name: "BinderStrapLeft", Layer: "BindArmLeft", Pri: 32,
+			NoOverride: true,
+			TieToLayer: "BinderLeft",
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			InheritColor: "Strap",
+		},
+		{ Name: "BinderFluffLeft", Layer: "BindArmLeft", Pri: 32,
+			NoOverride: true,
+			TieToLayer: "BinderLeft",
+			Poses: ToMap(["Wristtie", "Boxtie"]),
+			InheritColor: "Fluff",
+		},
+	])
+});
+
+
+AddModel({
 	Name: "SmoothArmbinder",
 	Folder: "Armbinder",
 	Restraint: true,

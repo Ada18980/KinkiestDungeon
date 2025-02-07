@@ -100,7 +100,7 @@ KDCollectionTabDraw.FacilityQuick = (value, buttonSpacing, III, x, y) => {
 			scaleImage: true,
 			centered: true,
 		})) {
-			DrawTextFitKD(TextGet(`KDCollection${(!allowed) ? "Cant" : (assigned ? "Remove" : "Assign")}`) + TextGet("KDFacility_" + (assigned ? value.Facility : fac[0])),
+			DrawTextFitKD(TextGet(`KDCollection${(!allowed) ? (KDIsInPartyID(value.id) ? "CantParty" : "Cant") : (assigned ? "Remove" : "Assign")}`) + TextGet("KDFacility_" + (assigned ? value.Facility : fac[0])),
 				x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 		}
 		ii++;

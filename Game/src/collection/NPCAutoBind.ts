@@ -18,7 +18,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindCopy.png",
 	undefined, undefined, entity != undefined,
-	(!KDGetNPCRestraints(value.id) || Object.values(KDGetNPCRestraints(value.id)).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(!KDGetNPCRestraints(value.id) || Object.values(KDGetNPCRestraints(value.id)).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 		hotkeyPress: KinkyDungeonKeyUpcast[0],
 	})) {
@@ -82,7 +82,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindPaste.png",
 	undefined, undefined, entity != undefined,
-	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
 		hotkeyPress: KinkyDungeonKeyEnter[0],
 	})) {
@@ -120,7 +120,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
 	undefined, undefined, false, (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect) ?
-	KDButtonColor : "#ff5555", undefined, undefined, {
+	KDButtonColor : "#ff5277", undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
 	})) {
@@ -192,7 +192,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindPasteAllOver.png",
 	undefined, undefined, entity != undefined,
-	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? "#ff5555" : KDButtonColor)) {
+	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? "#ff5277" : KDButtonColor)) {
 		let missingAll = KDAutoBindRestraints ? Object.values(KDAutoBindRestraints).length > 0 : false;
 		if (KDAutoBindRestraints)
 			for (let inv of Object.entries(KDAutoBindRestraints)) {

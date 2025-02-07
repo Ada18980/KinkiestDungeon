@@ -1,7 +1,13 @@
 "use strict";
 
-let bosses = {
+interface AltTypeBoss extends AltType {
+	boss: string,
+	bossroom: true,
+}
+
+let bosses: Record<string, AltTypeBoss> = {
 	"Fuuka": {
+		name: "Fuuka",
 		boss: "Fuuka",
 		bossroom: true,
 		width: 13,
@@ -26,9 +32,11 @@ let bosses = {
 		noQuests: true,
 		escapeMethod: "Boss",
 		forceCheckpoint: "grv",
+		noLeave: true,
 	},
 
 	"Dollmaker": {
+		name: "Dollmaker",
 		boss: "Dollmaker",
 		bossroom: true,
 		jailType: "Dollsmith",
@@ -62,8 +70,10 @@ let bosses = {
 		noQuests: true,
 		escapeMethod: "Boss",
 		forceCheckpoint: "bel",
+		noLeave: true,
 	},
 	"TheWarden": {
+		name: "TheWarden",
 		boss: "TheWarden",
 		bossroom: true,
 		jailType: "Warden",
@@ -96,10 +106,11 @@ let bosses = {
 		noQuests: true,
 		escapeMethod: "Boss",
 		forceCheckpoint: "cat",
+		noLeave: true,
 	},
 };
 
-function KinkyDungeonBossFloor(Floor: number): any {
+function KinkyDungeonBossFloor(Floor: number): AltTypeBoss {
 	if (Floor == 4) return bosses.Fuuka;
 	if (Floor == 8) return bosses.TheWarden;
 	//if (Floor == 12) return bosses.SilverWitch;

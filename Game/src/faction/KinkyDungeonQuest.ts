@@ -148,6 +148,7 @@ let KDQuests: Record<string, KDQuest> = {
 									if (KDCanOverrideAI(ee))
 										ee.AI = "looseguard";
 									else ee.AI = KDGetAIOverride(ee, 'looseguard');
+									KDRunCreationScript(ee, KDGetCurrentLocation());
 								}
 							}
 						}
@@ -163,6 +164,7 @@ let KDQuests: Record<string, KDQuest> = {
 									if (KDCanOverrideAI(ee))
 										ee.AI = "looseguard";
 									else ee.AI = KDGetAIOverride(ee, 'looseguard');
+									KDRunCreationScript(ee, KDGetCurrentLocation());
 								}
 							}
 						}
@@ -202,18 +204,21 @@ let KDQuests: Record<string, KDQuest> = {
 							if (ee) {
 								ee.faction = "Wolfhunter";
 								ee.AI = "patrol";
+								KDRunCreationScript(ee, KDGetCurrentLocation());
 							}
 						}
 					}
 					let count = 3 + KDRandom() * Math.min(4, KinkyDungeonDifficulty / 20);
 					for (let i = 0; i < count; i++) {
-						e = KinkyDungeonGetEnemy(["nevermere"], MiniGameKinkyDungeonLevel + 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["nevermere"], undefined, {"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+						e = KinkyDungeonGetEnemy(["nevermere"], MiniGameKinkyDungeonLevel + 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+						["nevermere"], undefined, {"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 						let epoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, false);
 						if (e && epoint) {
 							let ee = DialogueCreateEnemy(epoint.x, epoint.y, e.name);
 							if (ee) {
 								ee.faction = "Wolfhunter";
 								ee.AI = "patrol";
+								KDRunCreationScript(ee, KDGetCurrentLocation());
 							}
 						}
 					}
@@ -245,6 +250,7 @@ let KDQuests: Record<string, KDQuest> = {
 							if (ee) {
 								ee.faction = "DollShoppe";
 								ee.AI = "patrol";
+								KDRunCreationScript(ee, KDGetCurrentLocation());
 							}
 						}
 					}
@@ -257,6 +263,7 @@ let KDQuests: Record<string, KDQuest> = {
 							if (ee) {
 								ee.faction = "DollShoppe";
 								ee.AI = "patrol";
+								KDRunCreationScript(ee, KDGetCurrentLocation());
 							}
 						}
 					}
@@ -302,6 +309,7 @@ let KDQuests: Record<string, KDQuest> = {
 									else ee.AI = KDGetAIOverride(ee, 'patrol');
 									ee.gx = KinkyDungeonPlayerEntity.x;
 									ee.gy = KinkyDungeonPlayerEntity.y;
+									KDRunCreationScript(ee, KDGetCurrentLocation());
 								}
 							}
 						}
@@ -318,6 +326,7 @@ let KDQuests: Record<string, KDQuest> = {
 									else ee.AI = KDGetAIOverride(ee, 'patrol');
 									ee.gx = KinkyDungeonPlayerEntity.x;
 									ee.gy = KinkyDungeonPlayerEntity.y;
+									KDRunCreationScript(ee, KDGetCurrentLocation());
 								}
 							}
 						}
@@ -604,6 +613,8 @@ let KDQuests: Record<string, KDQuest> = {
 							ee.gyy = point.y;
 							ee.spawnX = point.x;
 							ee.spawnY = point.y;
+							ee.homeCoord = KDGetCurrentLocation();
+							KDRunCreationScript(ee, KDGetCurrentLocation());
 						}
 					}
 				}
@@ -626,6 +637,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -654,6 +667,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -675,6 +690,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -694,6 +711,7 @@ let KDQuests: Record<string, KDQuest> = {
 				enemy.spawnX = point.x;
 				enemy.spawnY = point.y;
 				enemy.AI = "looseguard";
+				enemy.homeCoord = KDGetCurrentLocation();
 			}
 		}
 	}, 2, ["dressRestraints", "leatherRestraints", "leatherRestraintsHeavy"]),
@@ -728,6 +746,8 @@ let KDQuests: Record<string, KDQuest> = {
 							ee.gyy = point.y;
 							ee.spawnX = point.x;
 							ee.spawnY = point.y;
+							ee.homeCoord = KDGetCurrentLocation();
+							KDRunCreationScript(ee, KDGetCurrentLocation());
 						}
 					}
 				}
@@ -750,6 +770,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -779,6 +801,8 @@ let KDQuests: Record<string, KDQuest> = {
 							ee.gyy = point.y;
 							ee.spawnX = point.x;
 							ee.spawnY = point.y;
+							ee.homeCoord = KDGetCurrentLocation();
+							KDRunCreationScript(ee, KDGetCurrentLocation());
 						}
 					}
 				}
@@ -802,6 +826,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -831,6 +857,8 @@ let KDQuests: Record<string, KDQuest> = {
 							ee.gyy = point.y;
 							ee.spawnX = point.x;
 							ee.spawnY = point.y;
+							ee.homeCoord = KDGetCurrentLocation();
+							KDRunCreationScript(ee, KDGetCurrentLocation());
 						}
 					}
 				}
@@ -854,6 +882,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -883,6 +913,8 @@ let KDQuests: Record<string, KDQuest> = {
 							ee.gyy = point.y;
 							ee.spawnX = point.x;
 							ee.spawnY = point.y;
+							ee.homeCoord = KDGetCurrentLocation();
+							KDRunCreationScript(ee, KDGetCurrentLocation());
 						}
 					}
 				}
@@ -906,6 +938,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}
@@ -935,6 +969,8 @@ let KDQuests: Record<string, KDQuest> = {
 							ee.gyy = point.y;
 							ee.spawnX = point.x;
 							ee.spawnY = point.y;
+							ee.homeCoord = KDGetCurrentLocation();
+							KDRunCreationScript(ee, KDGetCurrentLocation());
 						}
 					}
 				}
@@ -957,6 +993,8 @@ let KDQuests: Record<string, KDQuest> = {
 						ee.gyy = point.y;
 						ee.spawnX = point.x;
 						ee.spawnY = point.y;
+						ee.homeCoord = KDGetCurrentLocation();
+						KDRunCreationScript(ee, KDGetCurrentLocation());
 					}
 				}
 			}

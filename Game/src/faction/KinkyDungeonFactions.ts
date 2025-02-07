@@ -43,11 +43,13 @@ function KDHostile(enemy: entity, enemy2?: entity): boolean {
 			!(!enemy2 && enemy.ceasefire > 0)
 			&& !(enemy2 && enemy2.ceasefire > 0)
 			&& (
-				(!enemy2
-					&& (KDFactionHostile("Player", enemy, KDOpinionRepMod(enemy, enemy2 || KDPlayer()))
-					|| enemy.hostile > 0)
-					|| (enemy2 && ((KDGetFaction(enemy2) == "Player" && enemy.hostile > 0)
-					|| KDFactionHostile(KDGetFaction(enemy), enemy2, KDOpinionRepMod(enemy, enemy2 || KDPlayer())))))));
+				((!enemy2
+					&& (enemy.hostile > 0
+						|| KDFactionHostile("Player", enemy, KDOpinionRepMod(enemy, enemy2 || KDPlayer()))
+					))
+					|| (enemy2 && ((KDGetFaction(enemy2) == "Player" && enemy.hostile > 0)))
+					|| (enemy2 && KDFactionHostile(KDGetFaction(enemy), enemy2,
+						KDOpinionRepMod(enemy, enemy2))))));
 }
 
 /**

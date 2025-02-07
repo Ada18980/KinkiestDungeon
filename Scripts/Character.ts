@@ -26,8 +26,6 @@ function CharacterReset(CharacterID: number): Character {
 		CharacterAppearanceSetDefault(NewCharacter);
 	}
 
-	// Load the character image
-	CharacterLoadCanvas(NewCharacter);
 
 	return NewCharacter;
 }
@@ -67,20 +65,6 @@ function CharacterDoItemsSetPose(C: Character, pose: string, excludeClothes: boo
 	return false;
 }
 
-
-/**
- * Loads a character's canvas by sorting its appearance and drawing it.
- * @param C - Character to load the canvas for
- */
-function CharacterLoadCanvas(C: Character): void {
-
-}
-
-/**
- * Reloads all character canvases in need of being redrawn.
- */
-function CharacterLoadCanvasAll(): void {
-}
 
 
 

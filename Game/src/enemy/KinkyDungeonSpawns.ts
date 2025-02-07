@@ -280,6 +280,17 @@ function KinkyDungeonGetEnemy (
 	return undefined;
 }
 
+function KDEntityCanBeGuard(en: entity, faction: string, requireTags: string[]): boolean {
+	if (KDGetFaction(en) == faction) {
+		return !en.hostile && !KDIsImprisoned(en) && KDBoundEffects(en) <= 2
+			&& !en.action
+			&& !KDEntityHasFlag(en, "overrideMove")
+			&& !KinkyDungeonIsDisabled(en)
+			&& en.Enemy?.tags && requireTags.every((tag) => {return !!en.Enemy.tags[tag];});
+	}
+	return false;
+}
+
 /**
  * @param x
  * @param y
@@ -293,6 +304,23 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true, true);
 	if (!point) point = KinkyDungeonGetRandomEnemyPoint(true);
 	if (point) {
+
+		if (!KinkyDungeonJailGuard()) {
+			let mainFaction = KDGetMainFaction();
+
+			let entities = KDNearbyEnemies(x, y, 20).filter((en) => {
+				return KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"]);
+			});
+			if (entities.length == 0) {
+				entities = KDMapData.Entities.filter((en) => {return KDEntityCanBeGuard(en, mainFaction, requireTags || ["jail"]);});
+			}
+			if (entities.length > 0) {
+				let en = entities[Math.floor(KDRandom() * entities.length)];
+				KDGameData.JailGuard = en.id;
+				en.gx = point.x;
+				en.gy = point.y;
+			}
+		}
 		if (!KinkyDungeonJailGuard()) {
 			// Jail tag
 			let mainFaction = KDGetMainFaction();
@@ -307,14 +335,15 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 					Enemy = KinkyDungeonGetEnemy(["Guard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jail"], undefined);
 				}
 			}
-			let guard = {summoned: true, noDrop: !normalDrops, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
+			let guard: entity = {summoned: true, temporary: true, noDrop: !normalDrops, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
 				x:KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, gx: point.x, gy: point.y,
 				hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 
-			if (mainFaction) guard['faction'] = mainFaction;
+			if (mainFaction) guard.faction = mainFaction;
+			if (mainFaction == "Player") guard.faction = "Enemy";
 			KinkyDungeonSetEnemyFlag(guard, "norep", -1);
 			KDGameData.JailGuard = guard.id;
-			KDAddEntity(guard);
+			guard = KDAddEntity(guard);
 			return guard;
 		} else {
 			KinkyDungeonJailGuard().gx = point.x;
@@ -323,9 +352,18 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 			KinkyDungeonJailGuard().gyy = point.y;
 			if (KinkyDungeonFindPath(KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, false, true, KinkyDungeonMovableTilesSmartEnemy)?.length < 15) {
 				let p = KinkyDungeonGetRandomEnemyPoint(true, true, undefined, 20, 10);
-				KinkyDungeonJailGuard().x = p.x;
-				KinkyDungeonJailGuard().y = p.y;
-				KinkyDungeonJailGuard().path = undefined;
+				if (p) {
+					KinkyDungeonJailGuard().x = p.x;
+					KinkyDungeonJailGuard().y = p.y;
+					KinkyDungeonJailGuard().path = undefined;
+				} else {
+					let p = KinkyDungeonGetRandomEnemyPoint(true, true, undefined, 20, 5);
+					if (p) {
+						KinkyDungeonJailGuard().x = p.x;
+						KinkyDungeonJailGuard().y = p.y;
+						KinkyDungeonJailGuard().path = undefined;
+					}
+				}
 			}
 			return KinkyDungeonJailGuard();
 		}
@@ -362,9 +400,9 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 	let baseChance = ((KDGameData.SleepTurns > 0 && (KinkyDungeonStatStamina > KinkyDungeonStatStaminaMax - 10 * KinkyDungeonStatStaminaRegenSleep || KDGameData.SleepTurns < 11)) ? 0.05 : 0.0005) * Math.sqrt(Math.max(1, effLevel)) * (1 + KinkyDungeonTotalSleepTurns / sleepTurnsSpeedMult);
 
 	let Queue = [];
-	if (KDGameData.RespawnQueue && KDGameData.RespawnQueue.length > 0) {
-		let firstEnemy = KDGameData.RespawnQueue[Math.floor(KDRandom() * KDGameData.RespawnQueue.length)];
-		for (let e of KDGameData.RespawnQueue) {
+	if (KDMapData.RespawnQueue && KDMapData.RespawnQueue.length > 0) {
+		let firstEnemy = KDMapData.RespawnQueue[Math.floor(KDRandom() * KDMapData.RespawnQueue.length)];
+		for (let e of KDMapData.RespawnQueue) {
 			if (KDFactionRelation(e.faction, firstEnemy.faction) >= 0.1) {
 				Queue.push(e);
 			}
@@ -423,8 +461,8 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 						let X = point.x;
 						let Y = point.y;
 						EnemiesSummoned.push(Enemy.name);
-						let e = {tracking: true, summoned: true, faction: qq ? qq.faction : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-						KDAddEntity(e);
+						let e: entity = {tracking: true, summoned: true, faction: qq ? qq.faction : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
+						e = KDAddEntity(e);
 						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
 						let shop = KinkyDungeonGetShopForEnemy(e);
 						if (shop) {
@@ -444,8 +482,9 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 							miniboss = true; // Adds miniboss as a tag
 						}
 
-
-						KDGameData.RespawnQueue.splice(KDGameData.RespawnQueue.indexOf(qq), 1);
+						let ii = KDMapData.RespawnQueue ? KDMapData.RespawnQueue.indexOf(qq) : -1;
+						if (ii >= 0)
+							KDMapData.RespawnQueue.splice(ii, 1);
 						Queue.splice(Queue.indexOf(qq), 1);
 
 						if (Enemy.summon) {
@@ -503,7 +542,7 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 					if (point) {
 						e.x = point.x;
 						e.y = point.y;
-						KDAddEntity(e);
+						e = KDAddEntity(e);
 						KDGameData.Hunters.push(e.id);
 					}
 				}

@@ -105,7 +105,7 @@ let KDLocks: Record<string, KDLockType> = {
 		doUnlock: (data) => {
 			KinkyDungeonSendTextMessage(10, TextGet("KDCrystalUnlock"), "#ffff00", 2);
 			KinkyDungeonLock(data.item, "ExCrystal");
-			KinkyDungeonChangeDistraction(-1);
+			KDChangeDistraction("crystal", "lock", "unlock", -1);
 			return false;
 		},
 		removeKeys: (_data) => {
@@ -701,8 +701,8 @@ let KDLocks: Record<string, KDLockType> = {
 			return true;
 		},
 		removeKeys: (data) => {
+			KDAddConsumable("RedKey", -1);
 			if (!data?.unlock) {
-				KDAddConsumable("RedKey", -1);
 				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
 			}
 		},
@@ -1278,7 +1278,7 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 			KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation, base: base});
 		return true;
 	}, true, KDModalArea_x + 175, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonSwipeDoor"),
-	(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5555", "", "");
+	(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5277", "", "");
 
 	DrawButtonKDEx("ModalDoorScan", () => {
 		if (KinkyDungeonTargetTile)
@@ -1286,7 +1286,7 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 		return true;
 	}, true, KDModalArea_x + 450, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
 	!KDIsBlindfolded(player)
-		? "#ffffff" : "#ff5555", "", "");
+		? "#ffffff" : "#ff5277", "", "");
 
 	DrawButtonKDEx("ModalDoorHack", () => {
 		if (KinkyDungeonTargetTile)
@@ -1294,5 +1294,5 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 		return true;
 	}, true, KDModalArea_x + 725, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
 	KDCanHack(player)
-		? "#ffffff" : "#ff5555", "", "");
+		? "#ffffff" : "#ff5277", "", "");
 }

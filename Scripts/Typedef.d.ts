@@ -79,7 +79,7 @@ interface Item {
 	Model?: Model;
 	Color?: ItemColor;
 	Filters?: Record<string, LayerFilter>;
-	Properties?: Record<string, LayerProperties>;
+	Properties?: Record<string, LayerPropertiesType>;
 	Difficulty?: number;
 	Property?: any;
 }

@@ -163,6 +163,7 @@ AddModel({
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
+			HidePoses: {"SkimpyLower": true},
 		},
 		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 9,
 			Poses: ToMap([...KNEELPOSES]),

@@ -10,7 +10,7 @@ function KDGetHeelTraining(): number {
 }
 
 function KDTrip(delta: number) {
-	KinkyDungeonSendTextMessage(10, TextGet("KDTrip"), "#ff5555", 5);
+	KinkyDungeonSendTextMessage(10, TextGet("KDTrip"), "#ff5277", 5);
 	KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns + delta, delta + KDTripDuration());
 	KDGameData.Balance = KDGetRecoverBalance();
 	KinkyDungeonMakeNoise(4, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);

@@ -94,9 +94,11 @@ let KDClassStart: Record<string, () => void> = {
 	"Trainee": () => { // Trainee
 		KDPushSpell(KinkyDungeonFindSpell("Bondage"));
 		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
+		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
 		KinkyDungeonSpellPoints = 3;
 		KinkyDungeonGold = 100;
-		KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
+		//KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
 		KDGameData.StatMaxBonus.AP += 2.5;
 		KDGameData.StatMaxBonus.MP += 2.5;
 		KinkyDungeonInventoryAddWeapon("Knife");

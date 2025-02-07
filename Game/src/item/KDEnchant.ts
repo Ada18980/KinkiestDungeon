@@ -48,6 +48,22 @@ let KDEnchantVariantList = {
 		"ManaCost",
 		"ManaCostSpecific",
 	],
+	"Dragon": [
+		"Evasion",
+		"Sneak",
+		"Accuracy",
+		"SpellWard",
+		"CommonPair",
+		"ElementalEcho",
+		"ElementalDmg",
+		"BaseDamageBuffMelee",
+		"BaseDamageBuffMagic",
+		"DamageResist",
+		"DamageBuff",
+		"ManaRegenOnKill",
+		"ManaCost",
+		"ManaCostSpecific",
+	],
 	"CommonWeapon": [
 		"Accuracy",
 		"SpellWard",
@@ -359,7 +375,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 4);
 					let amt = 14 + Math.round((0.4 + 0.6*KDRandom()) * 11 * Math.pow(power, 0.75));
-					let types = ['fire', 'ice', 'acid', 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
+					let types = ['fire', 'ice', 'soap', "acid", 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
@@ -380,7 +396,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 4);
 					let amt = 10 + Math.round((0.4 + 0.6*KDRandom()) * 10 * Math.pow(power, 0.75));
-					let types = ['fire', 'ice', 'acid', 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
+					let types = ['fire', 'ice', "soap" ,'acid', 'glue', 'chain', 'grope', 'crush', 'cold', 'electric', 'poison', 'soul', 'tickle'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
@@ -408,7 +424,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 2);
 					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.75));
-					let types = ['fire', 'ice', 'acid', 'slash', 'pierce', 'unarmed', 'pain', 'cold', 'glue', 'chain', 'tickle', 'crush', 'electric', 'soul', 'charm'];
+					let types = ['fire', 'ice', 'soap', 'slash', 'pierce', 'unarmed', 'pain', 'cold', 'glue', 'chain', 'tickle', 'crush', 'electric', 'soul', 'charm'];
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -528,7 +544,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 2 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.5));
-					let types = ['fire', 'ice', 'acid', 'cold', 'electric', 'stun', 'soul'];
+					let types = ['fire', 'ice', 'soap', 'acid', 'cold', 'electric', 'stun', 'soul'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -556,7 +572,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemRarity(item), 1);
 					let amt = 3 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.7));
-					let types = ['fire', 'ice', 'acid', 'cold', 'electric', 'stun', 'soul'];
+					let types = ['fire', 'ice', "soap", 'acid', 'cold', 'electric', 'stun', 'soul'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
@@ -578,7 +594,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
 					let power = Math.max(KDGetItemPower(item), 1);
 					let amt = 0.8 + Math.round((0.4 + 0.6*KDRandom()) * 2.8 * Math.pow(power, 0.4));
-					let types = ['fire', 'ice', 'acid', 'cold', 'electric', 'stun', 'soul'];
+					let types = ['fire', 'ice', "soap", 'acid', 'cold', 'electric', 'stun', 'soul'];
 
 					let type = KDEnchantDetermineKind(item, Loot, curse, primaryEnchantment, enchantments, data, types);
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);

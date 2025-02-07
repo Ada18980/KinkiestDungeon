@@ -29,12 +29,12 @@ class LineCountingWriter:
     def __init__(self, file, init_count=1):
         self.file = file
         self.count_lines = init_count
-        
+
     def write(self, content):
         lines = content.count('\n')
         self.count_lines += lines
         self.file.write(content)
-        
+
     def line_count(self):
         return self.count_lines
 
@@ -48,17 +48,17 @@ def read_csv_with_empty_lines(file_path) -> list:
             if not row:
                 lines.append(None)
                 continue
-                
+
             if len(row) != 2:
                 print(f'<ABNORMAL> {row}')
                 continue
-            
+
             if row[0] in IGNORE_KEYS:
                 continue
-                
+
             lines.append(row)
         return lines
-    
+
 
 # Read the translation file
 def read_translation_file(file_path) -> list:
@@ -75,15 +75,15 @@ def write_translated_file(csv_lines : list, translations : list, output_path : s
             if not line or not line[1]:
                 writer.write('\n')
                 continue
-            
+
             key, original, *_ = line
             if original in translated:
                 continue
             translated.add(original)
-            
+
             if writer.line_count() % 2 == 0:
                 writer.write('\n')
-            
+
             # The next line of the original text corresponding to the List is the translation. If the translation is not found,will use "### Original" instead.
             # When the translation is the same as the original text, "### Original" is also used because it is meaningless.
             try:
@@ -94,7 +94,7 @@ def write_translated_file(csv_lines : list, translations : list, output_path : s
             except (ValueError, IndexError):
                 writer.write(f'### {original}\n')
                 continue
-            
+
             writer.write(f'{original}\n{translation}\n')
 
 original_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
@@ -126,7 +126,7 @@ for file in modified_files:
     if not os.path.exists(file):
         print(f'File not found: {file}')
         continue
-    
+
     print(f'Processing : {file}')
     translations = read_translation_file(file)
     write_translated_file(csv_lines, translations, file)

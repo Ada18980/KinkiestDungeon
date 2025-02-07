@@ -190,6 +190,11 @@ let KinkyDungeonDresses: Record<string,KinkyDungeonDress> = {
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#404973", Lost: false},
 		{Item: "Catsuit", Group: "Gloves", Color: "#404973", Lost: false},
 	],
+	"CaptureFoamSuit" : [
+		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#404973", Lost: false},
+		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#404973", Lost: false},
+		{Item: "Catsuit", Group: "Gloves", Color: "#404973", Lost: false},
+	],
 	"BlueSuit" : [
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#3873C3", Lost: false},
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#3873C3", Lost: false},

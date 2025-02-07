@@ -21,6 +21,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			if (!en.buffs || !en.buffs.Analyze) {
+				if (_miscast) return "Miscast";
 				if (!en.buffs) en.buffs = {};
 				KinkyDungeonApplyBuffToEntity(en, {id: "Analyze", aura: "#ffffff", type: "DamageAmp", duration: 99999, power: 0.3, player: false, enemies: true, maxCount: 3, tags: ["defense", "damageTaken"]},);
 				KinkyDungeonApplyBuffToEntity(en, {id: "Analyze2", type: "Info", duration: 99999, power: 1.0, player: false, enemies: true, tags: ["info"]},);
@@ -29,6 +30,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			let tile = KinkyDungeonTilesGet(targetX + "," + targetY);
 			if (tile) {
 				if (tile.Loot && tile.Roll) {
+					if (_miscast) return "Miscast";
 					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), tile.Loot, tile.Roll, tile, true);
 					if (event.trap || tile.lootTrap) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipTrap"), "#ff5277", 2);
 					else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipNoTrap"), "lightgreen", 2);
@@ -79,6 +81,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
 			if (en.Enemy.tags.summonedRock) {
+				if (miscast) return "Miscast";
 				en.hp = 0;
 				en.faction = "Player";
 				en.rage = 0;
@@ -128,11 +131,13 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		}
 		if (rocks.length == 0) return "Fail";
 		for (let rock of rocks) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonApplyBuffToEntity(rock, KDVolcanism);
 			rock.hostile = 9999;
 		}
 	},
 	"dress": (spell, _data, _targetX, _targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+		if (_miscast) return "Miscast";
 		KinkyDungeonSetDress(spell.outfit);
 	},
 	"MoiraiScissors": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -142,12 +147,14 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			let succeed = false;
 			for (let en of enList) {
 				if (KDAllied(en) && en.boundLevel > 0) {
+					if (_miscast) return "Miscast";
 					succeed = true;
 					// Free allies
 					en.boundLevel = 0;
 					en.specialBoundLevel = {};
 				}
 				if (KDHostile(en) && KDIsHumanoid(en)) {
+					if (_miscast) return "Miscast";
 					succeed = true;
 					// Disrobe enemies
 					KinkyDungeonApplyBuffToEntity(en, {
@@ -175,18 +182,18 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (succeed) {
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-				KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
+				KDChangeCharge("divine", "weapon", "wepSpecial", -KinkyDungeonGetChargeCost(spell));
 				return "Cast";
 			}
 
-			KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
+			KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5277", 2);
 			return "Fail";
 		}
-		KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
+		KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5277", 2);
 		return "Fail";
 	},
 	"Charge": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
-		let cost = KDAttackCost() + KDSprintCost();
+		let cost = KDAttackCost().attackCost + KDSprintCost();
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		let space = false;
 		let dash_x = targetX;
@@ -215,6 +222,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					}
 				}
 				if (space) {
+					if (_miscast) return "Miscast";
 					let origHP = en.hp;
 					let result = KinkyDungeonLaunchAttack(en, 1);
 					if (en.hp <= origHP * 0.8 + 0.01) powerful = true;
@@ -226,6 +234,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							let yy = en.y;
 							KDMoveEntity(en, push_x, push_y, false);
 							KDMovePlayer(xx, yy, true, true);
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+							KinkyDungeonRemoveBuffsWithTag(KDPlayer(), ["displaceend"]);
 							failPush = false;
 						} else if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
 							KDMovePlayer(dash_x, dash_y, true, true);
@@ -239,23 +249,23 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							}, false, false, spell, undefined, entity);
 						}
 						KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSpellCastCharge"), "#e7cf1a", 1, false);
-						KinkyDungeonChangeStamina(KDSprintCost());
+						KDChangeStamina(spell.name, "spell", "cast", KDSprintCost());
 					} else if (result == "miss") {
 						if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
 							KDMovePlayer(dash_x, dash_y, true, true);
 						}
-						KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_AttackMiss"), "#ff5555", 1, true);
+						KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_AttackMiss"), "#ff5277", 1, true);
 					}
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 					return "Cast";
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoSpace"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoSpace"), "#ff5277", 1, true);
 				}
 			} else {
-				KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoStamina"), "#ff5555", 1, true);
+				KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoStamina"), "#ff5277", 1, true);
 			}
 		} else {
-			KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoTarget"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoTarget"), "#ff5277", 1, true);
 		}
 		return "Fail";
 	},
@@ -277,7 +287,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					gaggedMiscastFlag: false,
 					gaggedMiscastType: "Gagged",
 				};
-				KDDoGaggedMiscastFlag(castdata);
+				let cpp = KinkyDungeoCheckComponentsPartial(spell,
+					entity.x,
+					entity.y,
+					false,
+					false,
+				);
+
+				if (cpp.length > 0)
+					KDDoGaggedMiscastFlag(castdata, cpp);
 
 				if (castdata.gaggedMiscastFlag) fail = true;
 			}
@@ -296,7 +314,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						) : undefined);
 					if (!canApply) {
 						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"
-							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), "#ff5555", 1, true);
+							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), "#ff5277", 1, true);
 					}
 
 					if (KinkyDungeonTargetingSpellItem) {
@@ -331,7 +349,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 									if (condition) {
 										KinkyDungeonSendTextMessage(8,
 											TextGet("KDBondageCondition_" + condition),
-											"#ff5555", 1, true);
+											"#ff5277", 1, true);
 
 										KDCurrentRestrainingTarget = en.id;
 										KinkyDungeonDrawState = "Bondage";
@@ -376,7 +394,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							} else {
 								KinkyDungeonSendTextMessage(8,
 									TextGet("KDAlreadyBound"),
-									"#ff5555", 1, true);
+									"#ff5277", 1, true);
 
 								KDCurrentRestrainingTarget = en.id;
 								KinkyDungeonDrawState = "Bondage";
@@ -401,17 +419,17 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						// Select wrists
 						KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
 
-						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5277", 1, true);
 						return "Fail";
 					}
 
 					//KinkyDungeonCurrentFilter = LooseRestraint;
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5277", 1, true);
 					return "Fail";
 				}
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), "#ff5277", 1, true);
 			return "Fail";
 
 		} else if (en == entity) {
@@ -438,21 +456,21 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							events: Object.assign([], KinkyDungeonTargetingSpellItem.events)}, undefined, undefined, true)) {
 							return "Cast";
 						} else {
-							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5277", 1, true);
 						}
 					} else {
-						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), "#ff5555", 1, true);
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), "#ff5277", 1, true);
 					}
 
 
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5277", 1, true);
 				}
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), "#ff5277", 1, true);
 			return "Fail";
 		}
-		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5277", 1, true);
 		return "Fail";
 	},
 	"Pickaxe": (_spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -479,7 +497,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				let tileOppY = targetY + Math.sign(targetY - entity.y);
 				let oppTile = KinkyDungeonMapGet(tileOppX, tileOppY);
 				if (KDCrackableTiles.includes(oppTile) || KinkyDungeonMovableTiles.includes(oppTile)) {
-					KinkyDungeonChangeStamina(-3, false, 1);
+					if (_miscast) return "Miscast";
+					KDChangeStamina(KinkyDungeonPlayerDamage?.name || "Pickaxe", "weapon", "wepSpecial", -3, false, 1);
 					KDCrackTile(targetX, targetY, undefined, {});
 					KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeSucceed"), "#88ff88", 1, false);
 					return "Cast";
@@ -487,15 +506,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoOpen"), "#ffffff", 1, true);
 				return "Fail";
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5277", 1, true);
 			return "Fail";
 		}
-		KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoTarget"), "#ff5555", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoTarget"), "#ff5277", 1, true);
 		return "Fail";
 	},
 	"CommandWord": (spell, data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KDSpellIgnoreComp(spell) && (data.gaggedMiscastFlag && KinkyDungeonGagTotal() >= 0.25)) {
-			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5555", 1);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5277", 1);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
 			return "Miscast";
 		}
@@ -503,6 +522,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (en) {
 			let cc = false;
 			if (en.boundLevel > 0) {
+				if (_miscast) return "Miscast";
 				if (KDHostile(en) && en.hp <= en.Enemy.maxhp * 0.1) {
 					en.ceasefire = 50;
 				} else if (!KDHostile(en) && en.hp <= en.Enemy.maxhp * 0.1) {
@@ -518,7 +538,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							b.duration = 0;
 						}
 					}
-				en.boundLevel = Math.max(0, en.boundLevel - 2*spell.power);
+				KDUntieEnemy(en, 2*spell.power, false, false);
 
 				cc = true;
 
@@ -528,11 +548,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			}
 
 			if (KDRescueEnemy("Unlock", en, true) || cc) {
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				if (_miscast) return "Miscast";
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoEnemy"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoEnemy"), "#ff5277", 1, true);
 			return "Fail";
 		} else if (targetX == KinkyDungeonPlayerEntity.x && targetY == KinkyDungeonPlayerEntity.y) {
 			if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
@@ -541,7 +562,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						KinkyDungeonLock(r, "");
 					}
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#e7cf1a", 2);
-					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				} else {
 					KDGameData.InventoryAction = "RemoveMagicLock";
@@ -551,26 +572,29 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 				return "Cast";
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoLocks"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoLocks"), "#ff5277", 1, true);
 			return "Fail";
 		} else if (KinkyDungeonTilesGet(targetX + "," + targetY) && KinkyDungeonTilesGet(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove) {
 			KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove = false;
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonPurpleLockRemoveCharger"), "#e7cf1a", 2);
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
 		}
-		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5555", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5277", 1, true);
 		return "Fail";
 	},
 	"Windup": (spell, _data, _targetX, _targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KDEnemyHasFlag(entity, "winding")) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonSetEnemyFlag(entity, "winding", spell.time);
 			KinkyDungeonSetEnemyFlag(entity, "winding2", spell.time - 1);
 		} else if (!KDEnemyHasFlag(entity, "winding2")) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonSetEnemyFlag(entity, "windup", 9);
 			KinkyDungeonApplyBuffToEntity(entity, {id: "ExtraSight", type: "Vision", duration:9, power: 7});
 		}
+		if (_miscast) return "Miscast";
 		KinkyDungeonPlaySound(spell.sfx, entity);
 
 		KinkyDungeonSendTextMessage(4, TextGet("KDWindup"), "#888888", 2);
@@ -579,22 +603,24 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Lockdown": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && !en.player && en.boundLevel > 0) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonApplyBuffToEntity(en, {
 				id: "Lockdown", aura: "#a96ef5", type: "MinBoundLevel", duration: 9000, power: Math.min(en.Enemy.maxhp + 0.01, en.boundLevel), maxCount: 1, tags: ["lock", "debuff", "commandword", "CM1"]
 			});
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
 		} else if (en && en.player) {
 			let lockable = KinkyDungeonPlayerGetLockableRestraints();
 			if (lockable.length > 0) {
+				if (_miscast) return "Miscast";
 				for (let item of lockable) {
 					KinkyDungeonLock(item, "Purple");
 				}
 				KinkyDungeonSendTextMessage(4, TextGet("KDSelfLock"), "#8888ff", 2);
 				KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
@@ -607,15 +633,17 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Wall": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (!en) {
+			if (_miscast) return "Miscast";
 			let tile = KinkyDungeonMapGet(targetX, targetY);
 			let door = (tile == 'D' || tile == 'd');
 			let e = DialogueCreateEnemy(targetX, targetY, "Wall" + (door ? "Door" : ""));
 			if (e) {
+				if (_miscast) return "Miscast";
 				if (door) {
 					KinkyDungeonMapSet(targetX, targetY, 'D');
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
 				}
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
@@ -624,6 +652,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Enemy_CM1": (_spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonTickBuffTag(en, "CM1", 1);
 			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyCM" + (entity?.Enemy?.unlockCommandLevel || 1), true), undefined, undefined, undefined);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
@@ -631,7 +660,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				KinkyDungeonSetEnemyFlag(entity, "commandword", entity.Enemy.unlockCommandCD || 90);
 				KinkyDungeonSendActionMessage(7,
 					TextGet("KDCastCM1").replace("EnemyName", TextGet("Name" + entity.Enemy.name)).replace("TargetName", TextGet("Name" + en.Enemy.name)),
-					"#ff5555", 4);
+					"#ff5277", 4);
 			}
 			return "Cast";
 		}
@@ -640,14 +669,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Chastity": (spell, _data, targetX, targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en && en.Enemy.bound && KinkyDungeonIsDisabled(en) && !en.Enemy.nonHumanoid) {
+			if (_miscast) return "Miscast";
 			KDTieUpEnemy(en, spell.power, "Metal");
 			if (KDBindEnemyWithTags(en.id,
 				["magicBeltForced"], 50,
 				MiniGameKinkyDungeonLevel + 10,
 				true, undefined, false, false).length > 0) {
-					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				} else {
-					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell)/2);
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/2);
 				}
 			return "Cast";
 		} else {
@@ -667,6 +697,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						allowLowPower: true
 					});
 				if (restraintAdd) {
+					if (_miscast) return "Miscast";
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -681,6 +712,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (en && en.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
+				if (_miscast) return "Miscast";
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -689,10 +721,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 
 		} else if (en && KDCanBind(en) && KDHelpless(en) && !en.Enemy.nonHumanoid) {
-			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			// Summon a pet
 			let Enemy = KinkyDungeonGetEnemyByName("PetDisplay");
 			if (Enemy) {
+				if (_miscast) return "Miscast";
+				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+
 				// Deal 0 damage to aggro
 				KinkyDungeonDamageEnemy(en, {
 					type: "chain",
@@ -701,6 +735,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					bind: 0,
 				}, false, true, undefined, undefined, entity);
 				en.hp = 0;
+				KinkyDungeonSetEnemyFlag(en, "cap", 2);
 
 				let doll = {
 					summoned: true,
@@ -715,8 +750,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				};
 				KDAddEntity(doll);
 
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-				KinkyDungeonChangeCharge(0.05);
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
+				KDChangeCharge(spell.name, "spell", "cast", 0.05);
 				return "Cast";
 			}
 			return "Fail";
@@ -727,6 +762,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (en && en.player) {
 			let restraintAdd = KinkyDungeonGetRestraint({tags: ["petsuitSpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 			if (restraintAdd) {
+				if (_miscast) return "Miscast";
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -739,6 +775,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			// Summon a pet
 			let Enemy = KinkyDungeonGetEnemyByName("Pet");
 			if (Enemy) {
+				if (_miscast) return "Miscast";
 				// Deal 0 damage to aggro
 				KinkyDungeonDamageEnemy(en, {
 					type: "chain",
@@ -747,6 +784,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					bind: 0,
 				}, false, true, undefined, undefined, entity);
 				en.hp = 0;
+				KinkyDungeonSetEnemyFlag(en, "cap", 2);
 
 				let doll = {
 					summoned: true,
@@ -761,7 +799,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				};
 				KDAddEntity(doll);
 
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				return "Cast";
 			}
 			return "Fail";
@@ -783,6 +821,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 									for (let t of tile.tags) {
 										// Run the special feature per restraint type
 										if (KDCommandCaptureBindings[t]) {
+											if (miscast) return "Miscast";
 											bindTypes.push(t);
 											if (!bindCounts[t]) bindCounts[t] = 0;
 											bindCounts[t] += 1;
@@ -795,7 +834,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					}
 				}
 			if (bindTypes.length > 0) {
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				if (miscast) return "Miscast";
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				if (!en.player)
 					KinkyDungeonDamageEnemy(en, {
 						type: "chain",
@@ -827,8 +867,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			let cost = KinkyDungeonGetManaCost(spell) / 3;
 			for (let s of enemies) {
 				if (n < maxCount) {
-					KinkyDungeonChangeMana(-cost);
+					if (_miscast) return "Miscast";
+					KDChangeMana(spell.name, "spell", "cast", -cost);
 					s.hp = 0;
+					KinkyDungeonSetEnemyFlag(s, "cap", 2);
 					let Enemy = KinkyDungeonGetEnemyByName("AllyDoll");
 					let doll = {
 						summoned: true,
@@ -869,11 +911,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 			}
 		if (slots.length > 0) {
+			if (_miscast) return "Miscast";
 			let n = 0;
 			let cost = KinkyDungeonGetManaCost(spell) / 3;
 			for (let s of slots) {
 				if (n < maxCount) {
-					KinkyDungeonChangeMana(-cost);
+					KDChangeMana(spell.name, "spell", "cast", -cost);
 					KinkyDungeonSummonEnemy(s.x, s.y, "SmallSlime", 1, 0.5, undefined, 50, undefined, undefined, "Player");
 					n += 1;
 				}
@@ -905,9 +948,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 			}
 		if (slimeCount > 0 && slots.length > 0) {
+			if (_miscast) return "Miscast";
 			let cost = KinkyDungeonGetManaCost(spell) / 3;
 			let s = slots[Math.floor(KDRandom() * slots.length)];
-			KinkyDungeonChangeMana(-cost);
+			KDChangeMana(spell.name, "spell", "cast", -cost);
 			KinkyDungeonSummonEnemy(s.x, s.y, "BigSlime", 1, 0.5, undefined, 90, undefined, undefined, "Player");
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			return "Cast";
@@ -915,12 +959,13 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	},
 	"ElasticGrip": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5277", 1);
 			return "Fail";
 		}
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && !en.player) {
 			if (!KDIsImmobile(en)) {
+				if (_miscast) return "Miscast";
 				if (!en.player)
 					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 				let dist = Math.min(KDistEuclidean(en.x - entity.x, en.y - entity.y),
@@ -944,12 +989,14 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								KDCreateParticle(en.x, en.y, "ElasticGripHit");
 							}
 							KinkyDungeonSetEnemyFlag(en, "takeFF", 2);
+
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
 						}
 					} else break;
 				}
 
 
-				KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				KDCreateParticle(en.x, en.y, "ElasticGripHit");
 
 				if (!en.player)
@@ -965,7 +1012,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	},
 	"RecoverObject": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!spell.aoe && !KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailObstacle"+spell.name), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailObstacle"+spell.name), "#ff5277", 1);
 			return "Fail";
 		}
 		let tilesToCheck = [{x:targetX, y:targetY}];
@@ -987,6 +1034,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			let tile = KinkyDungeonMapGet(tt.x, tt.y);
 			let allowedTiles = "CYR";
 			if (items.length > 0 || allowedTiles.includes(tile)) {
+				if (_miscast) return "Miscast";
 				let dist = KDistEuclidean(tt.x - entity.x, tt.y - entity.y);
 				let pullToX = entity.x;
 				let pullToY = entity.y;
@@ -1014,6 +1062,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (allowedTiles.includes(tile)) {
 					if (KDMoveObjectFunctions[tile]) {
 						if (!KinkyDungeonTilesGet(tt.x + ',' + tt.y)?.Lock) {
+							if (_miscast) return "Miscast";
 							if (spell.aoe) KinkyDungeonChestConfirm = true;
 							success = KDMoveObjectFunctions[tile](tt.x, tt.y);
 							KinkyDungeonChestConfirm = false;
@@ -1025,6 +1074,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 
 				if (success) {
+					if (_miscast) return "Miscast";
 					if (tile == 'C') chest = true;
 					KDCreateParticle(tt.x, tt.y, "RecoverObjectHit");
 					grabbed = true;
@@ -1032,12 +1082,50 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				found = true;
 			}
 		}
-		if (locked) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailLock"+spell.name), "#ff5555", 1);
+		if (locked) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailLock"+spell.name), "#ff5277", 1);
 		if (grabbed) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell) * (chest ? 1.0 : 0.25));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell) * (chest ? 1.0 : 0.25));
 			return "Cast";
-		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5277", 1);
+		return "Fail";
+	},
+	"Aim_MaidKnightLight": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+		// Spell that can ONLY be cast by NPCs
+		let aimBuff = KDEntityGetBuff(entity, "Aim");
+		if (aimBuff) {
+			let aimMode = KDEntityBuffedStat(entity, "Aim");
+			if (aimMode > 1.5) {
+				// FIRE!!!
+				KinkyDungeonCastSpell(
+					aimBuff.x,
+					aimBuff.y,
+					KinkyDungeonFindSpell("RubberSniper",
+						true),
+						entity, undefined, undefined);
+
+				KinkyDungeonExpireBuff(entity, "Aim");
+				KinkyDungeonExpireBuff(entity, "Aim2");
+			} else {
+				// Do nothing. Aim buff handles the subroutine just fine
+				KinkyDungeonApplyBuffToEntity(entity, KDAim, {
+						x: aimBuff.x, y: aimBuff.y,
+						vx: aimBuff.vx,
+						vy: aimBuff.vy,
+				});
+			}
+			return "Cast";
+		} else {
+			// Start aiming
+			KinkyDungeonApplyBuffToEntity(entity, KDAim, {
+				x: entity.x, y: entity.y,
+				vx: entity.x, vy: entity.y,
+				delay: 1
+			});
+			return "Cast";
+		}
+
 		return "Fail";
 	},
 	"TelekineticSlash": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -1053,8 +1141,9 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		for (let tile of tilesHit) {
 			let en = KinkyDungeonEnemyAt(tile.x, tile.y);
 			if (en && !KDAllied(en) && !KDHelpless(en) && en.hp > 0) {
+				if (_miscast) return "Miscast";
 				if (!hit) {
-					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				}
 				KDTriggerSpell(spell, data, false, false);
 				hit = true;
@@ -1101,7 +1190,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		}
 		if (hit) {
 			if (KinkyDungeonStatsChoice.has("BerserkerRage")) {
-				KinkyDungeonChangeDistraction(0.7 + 0.5 * KinkyDungeonGetManaCost(spell), false, 0.33);
+				KDChangeDistraction(spell.name, "spell", "cast", 0.7 + 0.5 * KinkyDungeonGetManaCost(spell), false, 0.33);
 			}
 			if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
 			KDEventData.shockwaves.push({
@@ -1120,13 +1209,14 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 	"Swap": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5277", 1);
 			return "Fail";
 		}
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && !en.player) {
 			if (!KDIsImmobile(en)) {
 
+				if (_miscast) return "Miscast";
 
 				let newX = entity.x;
 				let newY = entity.y;
@@ -1150,16 +1240,20 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					KDMovePlayer(en.x, en.y, true, false, false, true);
 					KDMoveEntity(en, newX, newY, false, false, KDHostile(en));
 
+					KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+					KinkyDungeonRemoveBuffsWithTag(KDPlayer(), ["displaceend"]);
+
+
 					KinkyDungeonSetEnemyFlag(en, "takeFF", 3);
 					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-					KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				} else {
 					let point = KinkyDungeonGetNearbyPoint(en.x, en.y, true, undefined, true, true);
 					if (point) {
 						KDMovePlayer(point.x, point.y, true, false, false, true);
 
 						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastPartial"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-						KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+						KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 					} else {
 						KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 					}
@@ -1172,11 +1266,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 	"UniversalSolvent": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (KDistChebyshev(entity.x - targetX, entity.y - targetY) && KinkyDungeonIsArmsBound(true, true)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KDUniversalSolventFail"), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KDUniversalSolventFail"), "#ff5277", 1);
 			return "Fail";
 		}
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && !en.player) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonDamageEnemy(en, {
 				type: spell.damage,
 				damage: spell.power,
@@ -1199,6 +1294,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if ((KDRescueEnemy("Slime", en, true) || repgain) && !KDHelpless(en)) {
 				KDRescueRepGain(en);
 			}
+
+			KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
+			KDRescueSlime(en, entity);
+
+			KinkyDungeonApplyBuffToEntity(en, KDGlueResist, {duration: 30});
+
 			KinkyDungeonSendActionMessage(3, TextGet("KDUniversalSolventSucceedEnemy")
 				.replace("ENMY", KDGenEnemyName(en)),
 			"#88FFAA", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -1206,6 +1307,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 			return "Cast";
 		} else if (en?.player) {
+			if (_miscast) return "Miscast";
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 
 			KDAddSpecialStat("LatexIntegration", KDPlayer(), -25, true);
@@ -1247,6 +1349,9 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 			}
 
+			KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
+			KinkyDungeonApplyBuffToEntity(en, KDGlueResist, {duration: 30});
+
 			KinkyDungeonSendActionMessage(3, TextGet("KDUniversalSolventSucceedSelf")
 				.KDReplaceOrAddDmg( dmg.string),
 			"#88FFAA", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -1267,6 +1372,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								//for (let t of tile.tags) {
 								// Run the special feature per restraint type
 								count += 1;
+								if (_miscast) return "Miscast";
 								KinkyDungeonCastSpell(tX + X, tY + Y, KinkyDungeonFindSpell("AwakenStrike", true), undefined, undefined, undefined, "Player");
 								//}
 							}
@@ -1276,7 +1382,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			}
 		if (count > 0) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1296,6 +1402,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 			}
 		if (slots.length > 0) {
+			if (_miscast) return "Miscast";
 			for (let s of slots) {
 				for (let xx = -1; xx <= 1; xx++)
 					for (let yy = -1; yy <= 1; yy++) {
@@ -1308,7 +1415,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 			}
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1324,6 +1431,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								for (let t of tile.tags) {
 									// Run the special feature per restraint type
 									if (KDCommandCaptureBindings[t]) {
+										if (miscast) return "Miscast";
 										count += 1;
 										KDCommandBindBindings[t](spell, tX + X, tY + Y, faction, bullet, miscast, entity);
 									}
@@ -1335,7 +1443,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			}
 		if (count > 0) {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1351,6 +1459,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					if (KinkyDungeonEffectTilesGet(loc)) {
 						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("slime")) {
+								if (_miscast) return "Miscast";
 								count += 1;
 								if (tile.duration > finalTileDuration) finalTileDuration = tile.duration;
 								if (tile.priority > finalTilePri) {
@@ -1386,13 +1495,18 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					}, false, true, undefined, undefined, entity);
 					// Get a point near the target point
 					let point = KinkyDungeonEntityAt(tX, tY) ? KinkyDungeonGetNearbyPoint(tX, tY, true, undefined, true) : {x:tX, y:tY};
-					if (point) KDMoveEntity(en, point.x, point.y, false, true);
+					if (point) {
+						KDMoveEntity(en, point.x, point.y, false, true);
+
+						KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+						KinkyDungeonRemoveBuffsWithTag(KDPlayer(), ["displaceend"]);
+					}
 				}
 			}
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell)/2);
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/2);
 		}
 
-		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell)/2);
+		KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/2);
 		return "Cast";
 	},
 	"SlimeToLatex": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -1404,6 +1518,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					if (KinkyDungeonEffectTilesGet(loc)) {
 						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("slime")) {
+								if (_miscast) return "Miscast";
 								count += 1;
 								tile.duration = 0;
 								tile.pauseDuration = 0;
@@ -1418,7 +1533,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (count == 0) return "Fail";
 
 		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+		KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
 	"LiquidMetal": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -1431,6 +1546,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
 							if (tile.tags && tile.tags.includes("latex")) {
 								count += 1;
+								if (_miscast) return "Miscast";
 								tile.duration = 0;
 								tile.pauseDuration = 0;
 								KDCreateEffectTile(tX + X, tY + Y, {
@@ -1444,7 +1560,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (count == 0) return "Fail";
 
 		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-		KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+		KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 		return "Cast";
 	},
 
@@ -1455,6 +1571,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			for (let en of enList) {
 				if (en.Enemy.tags.construct && (!en.buffs || !en.buffs.Disenchant1)) {
+					if (_miscast) return "Miscast";
 					KinkyDungeonApplyBuffToEntity(en, KDDisenchant1);
 					KinkyDungeonApplyBuffToEntity(en, KDDisenchant2);
 					KinkyDungeonDamageEnemy(en, {
@@ -1469,11 +1586,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		}
 
 		if (AOECondition(tX, tY, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, spell.aoe, KinkyDungeonTargetingSpell.aoetype || "")) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, KDDisenchantSelf);
 			cast = true;
 		}
 		if (cast) {
-			KinkyDungeonChangeMana(-(1 - 0.5 * Math.min(1, (enList.length-1) / 2)) * (KinkyDungeonGetManaCost(spell)));
+			KDChangeMana(spell.name, "spell", "cast", -(1 - 0.5 * Math.min(1, (enList.length-1) / 2)) * (KinkyDungeonGetManaCost(spell)));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1490,11 +1608,13 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			});
 
 		} else {
+			if (_miscast) return "Miscast";
 			cast = true;
 		}
 
 		let refund = false;
 		if (bList.length > 0) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			for (let b of bList) {
 				b.time = 0;
@@ -1508,10 +1628,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (cast) {
 			if (refund) {
 				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneEnemy"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-				KinkyDungeonChangeMana(1, false, 0, undefined, true);
+				KDChangeMana(spell.name, "spell", "cast", 1, false, 0, undefined, true);
 			} else if (bList.length == 0) {
 				KinkyDungeonSendActionMessage(6, TextGet("KDNegateRuneFail"), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-				KinkyDungeonChangeMana(-0.5, false, 0, undefined, true);
+				KDChangeMana(spell.name, "spell", "cast", -0.5, false, 0, undefined, true);
 			}
 			return "Cast";
 		} else return "Fail";
@@ -1524,6 +1644,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			let seen = 0;
 			for (let en of enList) {
 				if (!KDHelpless(en) && en.Enemy.tags?.dollmakerconvert) {
+					if (_miscast) return "Miscast";
 					en.hp = 0;
 					let e = DialogueCreateEnemy(en.x, en.y, "DollsmithDoll");
 					if (entity)
@@ -1539,6 +1660,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (count >= 3) break;
 			}
 			if (count > 0) {
+				if (_miscast) return "Miscast";
 				if (KinkyDungeonVisionGet(entity?.x||0, entity?.y||0) > 0 || seen > 0)
 					KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonSpellCast"+spell.name).replace("ENEMYNAME", TextGet("Name" + entity?.Enemy?.name)), "#ff4488", 2);
 
@@ -1562,6 +1684,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipples");
 
 			if (vibes.length > 0) {
+				if (_miscast) return "Miscast";
 				if (!KDGameData.CurrentVibration) {
 					KinkyDungeonStartVibration(
 						KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name,
@@ -1580,13 +1703,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		}
 		cast = KDCastSpellToEnemies((en) => {
 			if (en.Enemy.bound && KDEnemyCanBeVibed(en)) {
+				if (_miscast) return true;
 				KDApplyGenBuffs(en, "Vibrate1", spell.time);
 				return true;
 			}
 		}, tX, tY, spell) || cast;
 		if (cast) {
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
+			if (_miscast) return "Miscast";
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
+			KDChangeCharge(spell.name, "spell", "cast", -KinkyDungeonGetChargeCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1602,19 +1727,23 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
 			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipplesP");
+
+			if (vibes.length > 0 && _miscast) return "Miscast";
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 2.0, 15, undefined, undefined, undefined, undefined, false);
 
 			cast = true;
 		}
 		cast = cast || KDCastSpellToEnemies((en) => {
 			if (en.Enemy.bound && KDEnemyCanBeVibed(en)) {
+				if (_miscast) return true;
 				KDApplyGenBuffs(en, "Vibrate2", spell.time);
 				return true;
 			}
 		}, tX, tY, spell);
 		if (cast) {
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
+			if (_miscast) return "Miscast";
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
+			KDChangeCharge(spell.name, "spell", "cast", -KinkyDungeonGetChargeCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1630,19 +1759,23 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
 			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipplesP");
+
+			if (vibes.length > 0 && _miscast) return "Miscast";
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, false);
 
 			cast = true;
 		}
 		cast = KDCastSpellToEnemies((en) => {
 			if (en.Enemy.bound && KDEntityBuffedStat(en, "Plug") > 0) {
+				if (_miscast) return true;
 				KDApplyGenBuffs(en, "Vibrate3", spell.time);
 				return true;
 			}
 		}, tX, tY, spell) || cast;
 		if (cast) {
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
-			KinkyDungeonChangeCharge(-KinkyDungeonGetChargeCost(spell));
+			if (_miscast) return "Miscast";
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
+			KDChangeCharge(spell.name, "spell", "cast", -KinkyDungeonGetChargeCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1654,25 +1787,31 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
+			if (vibes.length > 0 && _miscast) return "Miscast";
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, true);
 			KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell("OrgasmStrike", true), undefined, undefined, undefined, "Player");
 			cast = true;
 		}
 		cast = KDCastSpellToEnemies((en) => {
 			if (en.Enemy.bound && en.distraction > 0) {
+				if (_miscast) return true;
 				let dist = en.distraction / en.Enemy.maxhp;
 				if (dist >= 0.9) dist *= 2;
 				KinkyDungeonDamageEnemy(en, {
 					type: "charm",
 					damage: spell.power * Math.max(0.1, dist),
 				}, true, false, spell);
+				if (KDIsDistracted(en)) {
+					KDEnemyRelease(en);
+				}
 				KinkyDungeonCastSpell(en.x, en.y, KinkyDungeonFindSpell("OrgasmStrike", true), undefined, undefined, undefined, "Player");
 				en.distraction = 0;
 				return true;
 			}
 		}, tX, tY, spell) || cast;
 		if (cast) {
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			if (_miscast) return "Miscast";
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else return "Fail";
 	},
@@ -1683,29 +1822,17 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (enList.length > 0) {
 			count += enList.length;
 			for (let en of enList) {
+				if (_miscast) return "Miscast";
 				let repgain = false;
 				if (en.boundLevel) {
 					repgain = true;
-					en.boundLevel = Math.max(0, en.boundLevel - 5);
+					KDUntieEnemy(en, 5, false, false);
 				}
 				if ((KDRescueEnemy("Slime", en, true) || repgain) && !KDHelpless(en)) {
 					KDRescueRepGain(en);
 				}
 				KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
-				if (en.Enemy.tags?.rescueslime && !KDEnemyIsTemporary(en)) {
-					// Replace with a random adventurer. We do NOT refresh the health
-					let newType = KDRandom() < 0.25 ? "Adventurer_Sub_Fighter"
-						: (KDRandom() < 0.25 ? "Adventurer_Brat_Fighter"
-							: KDRandom() < 0.25 ? "Adventurer_Switch_Fighter"
-								: "Adventurer_Dom_Fighter");
-					let enemyType = KinkyDungeonGetEnemyByName(newType);
-					if (enemyType) {
-						en.Enemy = JSON.parse(JSON.stringify(enemyType));
-					}
-					en.hp = Math.min(en.Enemy.maxhp, en.hp);
-					en.hostile = 0;
-					en.faction = "Player";
-				}
+				KDRescueSlime(en, _entity);
 
 				KinkyDungeonApplyBuffToEntity(en, KDGlueResist, {duration: 10});
 			}
@@ -1718,6 +1845,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			let restraints = KinkyDungeonAllRestraint();
 			for (let r of restraints) {
 				if (KDRestraint(r).shrine && KDRestraint(r).shrine.includes("Slime")) {
+					if (_miscast) return "Miscast";
 					KinkyDungeonRemoveRestraint(KDRestraint(r).Group);
 					active = true;
 					tried = true;
@@ -1725,12 +1853,14 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					tried = true;
 				}
 			}
+
 			if (active) count += 1;
 		}
 
 		if (count > 0) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else {
 			if (tried && playerInRange) {
@@ -1739,6 +1869,200 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			return "Fail";
 		}
 	},
+	"EssenceMote": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+		let mote: effectTile = null;
+		let moteDist = 0;
+		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
+			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
+				let dd = KDistEuclidean(X, Y);
+				if (dd <= spell.aoe) {
+					let loc = (tX + X) + "," + (tY + Y);
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
+							if (tile.tags && tile.tags.includes("distractionmote")) {
+								if (!mote || moteDist > dd) {
+									moteDist = dd;
+									mote = tile;
+								}
+							}
+						}
+					}
+				}
+			}
+
+		if (mote) {
+			if (_miscast) return "Miscast";
+			mote.duration = 0;
+			if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+			KDEventData.shockwaves.push({
+				x: mote.x,
+				y: mote.y,// - .167,
+				radius: 1,
+				sprite: "Particles/PinkGlow.png",
+			});
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/PowerMagic.ogg");
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "DistractionCast", type: "MiscastChance", power: -1, duration: KDEssenceMoteDuration(),
+				aura: "#ff8888", aurasprite: "Heart", buffsprite: true,
+				events: [{type: "EssenceMote", trigger: "tick", mult: -1/KDEssenceMoteDuration()}],
+			});
+			KDAddEssenceMoteDP();
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+
+			return "Cast";
+		}
+		return "Fail";
+
+	},
+	"MakeEssenceMote": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+
+		let loc = (_targetX) + "," + (_targetY);
+		if (KinkyDungeonEffectTilesGet(loc)) {
+			for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
+				if (tile.tags && tile.tags.includes("mote")) {
+					KinkyDungeonSendActionMessage(3,
+						TextGet("KinkyDungeonSpellTarget"+spell.name), "#ff5277", 2 + (spell.channel ? spell.channel - 1 : 0));
+
+					return "Fail";
+				}
+			}
+		}
+
+		if (KinkyDungeonStatDistraction == KinkyDungeonStatDistractionMax) {
+			KinkyDungeonSendActionMessage(3,
+				TextGet("KinkyDungeonSpellTooDistracted"+spell.name), "#ff5277", 2 + (spell.channel ? spell.channel - 1 : 0));
+
+			return "Fail";
+		}
+
+		if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(_targetX, _targetY))) {
+			if (KinkyDungeonStatDistraction >= spell.power) {
+				KDChangeDistraction(spell.name, "spell", "cast", -spell.power, undefined,
+					0
+				);
+				let cost = KinkyDungeonGetManaCost(spell, false, false);
+
+				KDCreateEffectTile(_targetX, _targetY, {
+					name: "DistractionMote"
+				}, 0);
+				if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+				KDEventData.shockwaves.push({
+					x: _targetX,
+					y: _targetY,// - .167,
+					radius: 1.5,
+					sprite: "Particles/PinkGlow.png",
+				});
+
+				if (cost > 0)
+					KDChangeMana(spell.name, "spell", "cast", -cost, false, 0, false, true);
+				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSpellCast"+spell.name), "#ff44ff", 2);
+				KinkyDungeonAdvanceTime(1);
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
+
+				return "Cast";
+			}
+
+			KinkyDungeonSendActionMessage(3,
+				TextGet("KinkyDungeonSpellFail"+spell.name), "#ff5277", 2 + (spell.channel ? spell.channel - 1 : 0));
+			return "Fail";
+
+		} else {
+			KinkyDungeonSendActionMessage(3,
+				TextGet("KinkyDungeonSpellNoRoom"+spell.name), "#ff5277", 2 + (spell.channel ? spell.channel - 1 : 0));
+			return "Fail";
+		}
+		return "Fail";
+
+	},
+	"DistractionBurst": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+		if (KinkyDungeonStatDistractionLower < KinkyDungeonStatDistractionMax * 0.1) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDDistractionBurst_No"), "#ff8888", 2, true);
+			return "Fail";
+		}
+		let player = _entity;
+		let aoe = 2.5;
+
+		let motes: effectTile[] = []
+		for (let X = -Math.ceil(spell.aoe); X <= Math.ceil(spell.aoe); X++)
+			for (let Y = -Math.ceil(spell.aoe); Y <= Math.ceil(spell.aoe); Y++) {
+				let dd = KDistEuclidean(X, Y);
+				if (dd <= spell.aoe) {
+					let loc = (tX + X) + "," + (tY + Y);
+					if (KinkyDungeonEffectTilesGet(loc)) {
+						for (let tile of Object.values(KinkyDungeonEffectTilesGet(loc))) {
+							if (tile.tags && tile.tags.includes("distractionmote")) {
+								motes.push(tile);
+							}
+						}
+					}
+				}
+			}
+
+
+		if (motes.length > 0) {
+			let cost = KinkyDungeonGetManaCost(spell, false, true);
+
+			if (KinkyDungeonHasMana(cost)) {
+				if (KinkyDungeonStatDistractionLower >= 1) {
+					let frac = motes.length * 0.1;
+					let dmgMult = 0.2;
+					let amount = Math.min(KinkyDungeonStatDistractionLower, KinkyDungeonStatDistractionMax*frac);
+					let desire = Math.max(0.01, -KDChangeDesire(spell.name, "spell", "cast", -amount, false));
+					if (desire > 0) {
+						if (_miscast) return "Miscast";
+
+						for (let mote of motes) {
+							mote.duration = 0;
+							if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+							KDEventData.shockwaves.push({
+								x: mote.x,
+								y: mote.y,
+								radius: 3,
+								sprite: "Particles/ShockwaveDesire.png",
+							});
+							let nearby = KDNearbyEntities(mote.x, mote.y, aoe);
+							for (let enemy of nearby) {
+								if (enemy.player) {
+									let dmg = KinkyDungeonDealDamage({damage: spell.power + dmgMult * (desire/frac), type: spell.damage,});
+									KinkyDungeonSendTextMessage(5, TextGet("KDDistractionBurstEffect").KDReplaceOrAddDmg( dmg.string), "#ff5277", 2);
+								} else {
+									if (enemy.hp > 0 && KDHostile(enemy) && !KDHelpless(enemy)) {
+										KinkyDungeonDamageEnemy(enemy, {
+											type: spell.damage,
+											damage: spell.power + dmgMult * (desire/frac),
+										}, true, false, spell, undefined, player);
+
+										let sp = KinkyDungeonFindSpell("DistractionBurstBullet", true);
+										if (sp) {
+											KinkyDungeonCastSpell(enemy.x, enemy.y, sp, undefined, undefined, undefined);
+										}
+
+									}
+								}
+
+							}
+						}
+						if (cost > 0)
+							KDChangeMana(spell.name, "spell", "cast", -cost, false, 0, false, true);
+						KinkyDungeonSendActionMessage(10, TextGet("KDDistractionBurst_Yes"), "#ff44ff", 2);
+						KinkyDungeonAdvanceTime(1);
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/PowerMagic.ogg");
+
+						return "Cast";
+					}
+				}
+				KinkyDungeonSendTextMessage(10, TextGet("KDDistractionBurst_No"), "#ff8888", 2, true);
+			} else {
+				KinkyDungeonSendTextMessage(10, TextGet("KDDistractionBurst_NoMana"), "#ff8888", 2, true);
+			}
+
+		}
+		KinkyDungeonSendTextMessage(10, TextGet("KDDistractionBurst_NoMote"), "#ff8888", 2, true);
+		return "Fail";
+
+	},
+
+
 	"CommandRelease": (spell, _data, _targetX, _targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let enList = KDNearbyEnemies(tX, tY, spell.aoe);
 		let count = 0;
@@ -1746,10 +2070,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		if (enList.length > 0) {
 			count += enList.length;
 			for (let en of enList) {
+				if (_miscast) return "Miscast";
 				let repgain = false;
 				if (en.boundLevel) {
 					repgain = true;
-					en.boundLevel = Math.max(0, en.boundLevel - spell.power);
+
+					KDUntieEnemy(en, spell.power, false, false);
 
 				}
 
@@ -1768,6 +2094,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (restraints.length > 0) tried = true;
 			for (let r of restraints) {
 				if (!r.lock && !KDGetCurse(r) && KDGetEscapeChance(r, "Remove", undefined, undefined, false, false).escapeChance > 0 && !KDGroupBlocked(KDRestraint(r).Group)) {
+					if (_miscast) return "Miscast";
 					KinkyDungeonRemoveRestraint(KDRestraint(r).Group);
 					active = true;
 				}
@@ -1776,8 +2103,9 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		}
 
 		if (count > 0) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
-			KinkyDungeonChangeMana(-KinkyDungeonGetManaCost(spell));
+			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 			return "Cast";
 		} else {
 			if (tried && playerInRange) {
@@ -1848,6 +2176,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Disarm": (spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
+			if (_miscast) return "Miscast";
 			let time = Math.max(1, spell.time
 				- (en.Enemy.disarm ? en.Enemy.disarm : 0)
 				- (en.Enemy.tags.elite ? 1 : 0)
@@ -1861,6 +2190,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonLaunchAttack(en, 1);
 			return "Cast";
 		} else return "Fail";
@@ -1869,10 +2199,54 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
 		if (en) {
+			if (_miscast) return "Miscast";
 			KinkyDungeonLaunchAttack(en, 1);
 			return "Cast";
 		} else {
+			if (_miscast) return "Miscast";
 			return KinkyDungeonActivateWeaponSpell(true) ? "Cast" : "Fail";
+		}
+	},
+	"debugBind": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		try {
+			let e = KDNearbyEnemies(tX, tY, 1)
+			let debugDamage = {
+				type: "chain",
+				damage: 999.9,
+				time: 0,
+				bind: 1000,
+				distract: 0,
+			}
+			if (e) {
+				console.log(e);
+				if (e[0]) {
+					KinkyDungeonDamageEnemy(e[0], debugDamage, false, true, undefined, undefined, KinkyDungeonPlayerEntity, 0.1);
+				}
+			}
+		}
+		catch (err) {
+			console.log(err);
+		}
+	},
+	"debugDefeat": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		try {
+			let e = KDNearbyEnemies(tX, tY, 1)
+			let debugDamage = {
+				type: "pain",
+				damage: 999.9,
+				time: 0,
+				bind: 0,
+				distract: 0,
+			}
+			if (e) {
+				console.log(e);
+				if (e[0]) {
+					KinkyDungeonDamageEnemy(e[0], debugDamage, false, true, undefined, undefined, KinkyDungeonPlayerEntity, 0.1);
+				}
+			}
+		}
+		catch (err) {
+			console.log(err);
 		}
 	}
 };
@@ -1998,7 +2372,10 @@ let KDCommandBindBindings: Record<string, (spell: spell, x: number, y: number, f
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
 	},
 	"fabric": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
-		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindRope", true), undefined, undefined, undefined, "Player");
+		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindFabric", true), undefined, undefined, undefined, "Player");
+	},
+	"wrapping": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
+		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindWrapping", true), undefined, undefined, undefined, "Player");
 	},
 	"chain": (_spell, x, y, _faction, _bullet, _miscast, _attacker, _counter) => {
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindChain", true), undefined, undefined, undefined, "Player");
@@ -2007,3 +2384,28 @@ let KDCommandBindBindings: Record<string, (spell: spell, x: number, y: number, f
 		KinkyDungeonCastSpell(x, y, KinkyDungeonFindSpell("BindBelt", true), undefined, undefined, undefined, "Player");
 	},
 };
+
+
+function KDRescueSlime(en: entity, rescuer: entity) {
+	if (en.Enemy.tags?.rescueslime && !KDEnemyIsTemporary(en)) {
+		// Replace with a random adventurer. We do NOT refresh the health
+		let newType = KDRandom() < 0.25 ? "Adventurer_Sub_Fighter"
+			: (KDRandom() < 0.25 ? "Adventurer_Brat_Fighter"
+				: KDRandom() < 0.25 ? "Adventurer_Switch_Fighter"
+					: "Adventurer_Dom_Fighter");
+		let enemyType = KinkyDungeonGetEnemyByName(newType);
+		if (enemyType) {
+			en.Enemy = JSON.parse(JSON.stringify(enemyType));
+		}
+		en.hp = Math.min(en.Enemy.maxhp, en.hp);
+		en.faction = KDGetFaction(rescuer);
+		en.hostile = 0;
+	}
+}
+
+function KDEssenceMoteDuration() {
+	return 10;
+}
+function KDAddEssenceMoteDP() {
+	KDChangeDistraction("EssenceMote", "mote", "mote", 1, false, 0.1);
+}

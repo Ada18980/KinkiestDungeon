@@ -36,6 +36,13 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 		LightNeutral: {"gamma":1,"saturation":0.0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		Highlight: {"gamma":0.7333333333333334,"saturation":0,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
 	},
+	"Bandit": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,
+			"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":0.6333333333333334,"saturation":1,"contrast":0.6833333333333333,"brightness":0.6,"red":1.7999999999999998,"green":1.2333333333333334,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.6833333333333333,"saturation":0,"contrast":2.55,"brightness":0.41666666666666663,"red":2.5333333333333337,"green":0.7666666666666666,"blue":0.8500000000000001,"alpha":1},
+	},
 	"Warden": {
 		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
@@ -316,7 +323,25 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
 			let w = 5;
 			if (tags.includes("apprentice")) w += 40;
-			if (tags.includes("witch")) w += 25;
+			if (tags.includes("witch")) w += 5;
+			if (tags.includes("library")) w += 20;
+			if (tags.includes("magical")) w += 20;
+			if (tags.includes("book")) w += 15;
+			return w;
+		},
+		jailOutfit: "Lingerie",
+	},
+	Witch: {
+		honor: 1,
+		jailBackupFaction: "Apprentice",
+		honor_specific: {
+			Apprentice: 0,
+			Wizard: -1,
+		},
+		weight: (_Floor, _Checkpoint, tags, _bonustags, _X, _Y) => {
+			let w = 5;
+			if (tags.includes("apprentice")) w += 10;
+			if (tags.includes("witch")) w += 35;
 			if (tags.includes("library")) w += 20;
 			if (tags.includes("magical")) w += 20;
 			if (tags.includes("book")) w += 15;
@@ -408,6 +433,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		jailAlliedFaction: "Elemental",
 		jailBackupFaction: "Witch",
 		honor: 1,
+		jailFaction: "Elemental",
 		honor_specific: {
 		},
 		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
@@ -419,6 +445,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "WolfgirlHunters",
 		jailAlliedFaction: "Nevermere",
 		jailBackupFaction: "Bandit",
+		jailFaction: "Bandit",
 		honor: 1,
 		honor_specific: {
 		},
@@ -431,6 +458,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "MaidSweeper",
 		jailAlliedFaction: "Maidforce",
 		jailBackupFaction: "Bountyhunter",
+		jailFaction: "Maidforce",
 		honor: 1,
 		honor_specific: {
 		},
@@ -451,10 +479,23 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		},
 		jailOutfit: "Bikini",
 	},
+	Adventurer: {
+		customDefeat: "Adventurer",
+		jailAlliedFaction: "Bountyhunter",
+		jailBackupFaction: "Dragonheart",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
+			return 0;
+		},
+		jailOutfit: "Bikini",
+	},
 	DollShoppe: {
 		customDefeat: "DollShoppe",
 		jailAlliedFaction: "Dressmaker",
 		jailBackupFaction: "Apprentice",
+		jailFaction: "Dressmaker",
 		honor: -1,
 		honor_specific: {
 		},
@@ -612,7 +653,36 @@ let KinkyDungeonFactionTag = {
 	RopeDojo: "apprentice",
 	Dressmaker: "dressmaker",
 	DollShoppe: "dressmaker",
-	//Witch: "witch",
+	Witch: "witch",
+	Elemental: "elemental",
+	Owners: "elemental",
+	Dragon: "dragon",
+	Maidforce: "maid",
+	Delinquent: "maid",
+	Bast: "mummy",
+	Elf: "elf",
+	//Mushy: "mushy",
+	AncientRobot: "robot",
+	ShadowClan: "shadow",
+	Debate: "elf",
+	Wolfhunter: "nevermere",
+	Extraplanar: "demon",
+	DubiousWitch: "mage",
+	Virus: "robot",
+	Dollsmith: "dollsmith",
+	Warden: "warden",
+};
+/** Tag for these factions, these also can have increased chances to appear on a map */
+let KinkyDungeonFactionJailTag = {
+	Bountyhunter: "bountyhunter",
+	Bandit: "bandit",
+	Alchemist: "alchemist",
+	Nevermere: "nevermere",
+	Apprentice: "apprentice",
+	RopeDojo: "apprentice",
+	Dressmaker: "dressmaker",
+	DollShoppe: "dressmaker",
+	Witch: "apprentice",
 	Elemental: "elemental",
 	Owners: "elemental",
 	Dragon: "dragon",

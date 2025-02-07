@@ -35,7 +35,7 @@ function KDGetNearestFactionGuard(x: number, y: number): entity {
 /**
  * @param player
  */
-function KDPrisonCommonGuard(player: entity, _call: boolean = false): entity {
+function KDPrisonCommonGuard(player: entity, _call: boolean = false, suppressCall: boolean = true): entity {
 	// Suppress standard guard call behavior
 	KinkyDungeonSetFlag("SuppressGuardCall", 10);
 	let guard = KDGetNearestFactionGuard(player.x, player.y);
@@ -179,4 +179,90 @@ function KDSetPrisonState(_player: entity, state: string): string {
  */
 function KDCurrentPrisonState(_player: entity): string {
 	return KDMapData.PrisonState;
+}
+
+
+function KDDoUniformRemove(player: entity, guard: entity, jailGroups: string[], lockType: string, power: number) {
+	let uniformCheck = KDPrisonGetGroups(player, undefined, lockType, power);
+	if (uniformCheck.groupsToStrip.length == 0) {
+		return KDPopSubstate(player);
+	}
+	// if we have a future crate we use its own features
+	if (KinkyDungeonPlayerTags.get("SpecialDress"))
+		KinkyDungeonSetFlag("specialDressRemove", 2);
+	else {
+		let succeedAny = false;
+		for (let grp of uniformCheck.groupsToStrip) {
+			if (succeedAny) break;
+			let rr = KinkyDungeonGetRestraintItem(grp);
+			if (rr) {
+				let restraintStack = KDDynamicLinkList(rr, true);
+				if (restraintStack.length > 0) {
+					let succeed = false;
+					for (let r of restraintStack) {
+						if (!uniformCheck.itemsToKeep[KDRestraint(r)?.name] && KinkyDungeonRestraintPower(r, true) < power) {
+							succeed = KinkyDungeonRemoveRestraintSpecific(r, false, false, false).length > 0;
+							if (succeed) {
+								let msg = TextGet("KinkyDungeonRemoveRestraints")
+									.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
+								//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
+								if (r) msg = msg.replace("OldRestraintName", KDGetItemName(r));
+								KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
+								break;
+							}
+						}
+					}
+
+					// If we only fail...
+					if (!succeed) {
+						// nothing yet
+					} else {
+						succeedAny = true;
+						break;
+					}
+				}
+			}
+		}
+
+		// If we REALLY only fail...
+		if (!succeedAny) {
+			KinkyDungeonSetFlag("failStrip", 100);
+			return KDPopSubstate(player);
+		}
+	}
+	// Stay in the current state
+	return KDCurrentPrisonState(player);
+}
+
+function KDDoUniformApply(player: entity, guard: entity, jailGroups: string[], lockType: string, power: number) {
+	// Add one per turn
+	let uniformCheck = KDPrisonGetGroups(player, jailGroups, lockType, power);
+	if (uniformCheck.itemsToApply.length == 0) {
+		return KDPopSubstate(player);
+	}
+	// if we have a future crate we use its own features
+	if (KinkyDungeonPlayerTags.get("SpecialDress"))
+		KinkyDungeonSetFlag("specialDressAdd", 2);
+	else {
+		let restraint = uniformCheck.itemsToApply[0];
+		if (restraint) {
+			if (KinkyDungeonAddRestraintIfWeaker(
+				KinkyDungeonGetRestraintByName(restraint.item),
+				2, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+				lockType, false, false, undefined, KDGetMainFaction(),
+				KinkyDungeonStatsChoice.has("TightRestraints") ? true : undefined,
+				undefined, KinkyDungeonJailGuard(),
+				false, undefined, undefined, undefined,
+				restraint.variant ? KDApplyVariants[restraint.variant] : undefined,
+			)) {
+				let msg = TextGet("KinkyDungeonAddRestraints")
+					.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
+				//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
+				msg = msg.replace("NewRestraintName", KDGetItemNameString(restraint.item));
+				KinkyDungeonSendTextMessage(9, msg, "yellow", 1);
+			}
+		}
+	}
+	// Stay in the current state
+	return KDCurrentPrisonState(player);
 }

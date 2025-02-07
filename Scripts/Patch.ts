@@ -51,7 +51,3 @@ function DrawImage(Image: string, X: number, Y: number, Invert: boolean = false)
 // These two are declared with `let` as they are explicitly and intentionally assignable, for performance optimization in BC
 let CharacterAppearanceBuildCanvas = (C: Character): void => {}
 let CharacterRefresh = (C: Character, push: boolean = false): void => {}
-
-function suppressCanvasUpdate<T>(f: () => T): T {
-	return f();
-}

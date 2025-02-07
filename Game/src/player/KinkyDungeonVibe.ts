@@ -65,6 +65,13 @@ let KDGamma = 1;
 let KDGammaListIndex = 0;
 let KDGammaList = [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, .6, .7, .8, .9];
 
+let KDWToolsToggleScrollModes = ["Layer Bonus", "Rotation", "Scale"];
+let KDWToolsToggleScrollMode = "Layer Bonus";
+let KDWToolsToggleScrollModeIndex = 0;
+let KDWToolsLayerAbbrModes = ["Short", "Full"];
+let KDWToolsLayerAbbrMode = "Short";
+let KDWToolsLayerAbbrModeIndex = 0;
+
 function KDStopAllVibeSounds(Exceptions?: string[]) {
 	let EE = [];
 	if (Exceptions)

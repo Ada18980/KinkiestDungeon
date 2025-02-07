@@ -287,7 +287,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "BaseMetal",
 		},
-		{ Name: "CollarHardware", Layer: "Collar", Pri: 20,
+		{ Name: "CollarHardware", Layer: "CollarRing", Pri: 10.1,
 			Invariant: true,
 			InheritColor: "Hardware",
 		},
@@ -306,6 +306,10 @@ AddModel({
 			Invariant: true,
 			InheritColor: "BaseMetal",
 		},
+		{ Name: "CollarHardware", Layer: "CollarRing", Pri: 25,
+			Invariant: true,
+			InheritColor: "Hardware",
+		},
 	])
 });
 
@@ -323,6 +327,11 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "SteelCollar",
 			InheritColor: "Runes",
+		},
+		{ Name: "CollarHardware", Layer: "CollarRing", Pri: 25.1,
+			Invariant: true,
+			InheritColor: "Hardware",
+			RequirePoses: {Leash: true},
 		},
 	])
 });

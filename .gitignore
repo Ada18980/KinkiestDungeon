@@ -16,6 +16,7 @@
 !/ModelsBack/**/*
 !/TextureAtlas/**/*
 !/DisplacementMaps/**/*
+!/out/saveworker.js
 
 !/.github/workflows/*.yml
 !/.editorconfig

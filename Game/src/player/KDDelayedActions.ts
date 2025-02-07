@@ -11,6 +11,7 @@ function KDDelayedActionPrune(tags: string[]) {
 		}
 		return true;
 	}) : [];
+
 }
 
 /**
@@ -18,6 +19,7 @@ function KDDelayedActionPrune(tags: string[]) {
  * @param action
  */
 function KDAddDelayedAction(action: KDDelayedAction) {
+	if (!action.maxtime) action.maxtime = action.time;
 	KDGameData.DelayedActions.push(Object.assign({}, action));
 }
 
@@ -41,6 +43,10 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 	"Armor": (action) => {
 		if (KinkyDungeonGetInventoryItem(action.data.Name))
 			KinkyDungeonUseConsumable(action.data.Name, action.data.Quantity);
+	},
+	"EquipRestraint": (action) => {
+		KDDoEquipDelayed(action.data,
+			action.data.player ? KDGetGlobalEntity(action.data.player) : KDPlayer())
 	},
 	"Struggle": (action) => {
 		/**

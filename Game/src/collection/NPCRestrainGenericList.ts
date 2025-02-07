@@ -173,6 +173,30 @@ let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 			{count: 1, restraint: "HardProtoSlimeBoots"},
 		],
 	},
+	"CaptureFoam": {
+		raw: "CaptureFoamRaw",
+		items: [
+			{count: 1, restraint: "CaptureFoamHead"},
+			{count: 1, restraint: "CaptureFoamMouth"},
+			{count: 2, restraint: "CaptureFoamArms"},
+			{count: 1, restraint: "CaptureFoamHands"},
+			{count: 1, restraint: "CaptureFoamLegs"},
+			{count: 1, restraint: "CaptureFoamFeet"},
+			{count: 1, restraint: "CaptureFoamBoots"},
+		],
+	},
+	"HardCaptureFoam": {
+		raw: "HardCaptureFoamRaw",
+		items: [
+			{count: 1, restraint: "HardCaptureFoamHead"},
+			{count: 1, restraint: "HardCaptureFoamMouth"},
+			{count: 2, restraint: "HardCaptureFoamArms"},
+			{count: 1, restraint: "HardCaptureFoamHands"},
+			{count: 1, restraint: "HardCaptureFoamLegs"},
+			{count: 1, restraint: "HardCaptureFoamFeet"},
+			{count: 1, restraint: "HardCaptureFoamBoots"},
+		],
+	},
 	"DuctTape": {
 		raw: "DuctTapeRaw",
 		items: [

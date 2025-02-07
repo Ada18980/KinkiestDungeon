@@ -200,6 +200,47 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "Mascara",
+	Folder: "Wolfgirl",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Makeup","Face"],
+	Layers: ToLayerMap([
+		{ Name: "MascaraL", Layer: "Head", Pri: 5,
+			Invariant: true,
+			HidePoses: ToMap(["EncaseHead"]),
+			NoOverride: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+		{ Name: "MascaraR", Layer: "Head", Pri: 5,
+			Invariant: true,
+			HidePoses: ToMap(["EncaseHead"]),
+			NoOverride: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+	])
+});
+
+AddModel({
+	Name: "Scar",
+	Folder: "Wolfgirl",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Scar","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Scar", Layer: "Head", Pri: 10,
+			Invariant: true,
+			HidePoses: ToMap(["EncaseHead"]),
+			NoOverride: true,
+			OffsetX: 920,
+			OffsetY: 50,
+		},
+	])
+});
+
 
 
 AddModel({
@@ -232,6 +273,21 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Poses: ToMap(BLUSHPOSES),
+		},
+	])
+});
+
+AddModel({
+	Name: "Fear",
+	Folder: "Expressions",
+	TopLevel: true,
+	Protected: true,
+	//Group: "Blush",
+	Categories: ["Face"],
+	Layers: ToLayerMap([
+		{ Name: "Fear", Layer: "Fear", Pri: 0,
+			Invariant: true,
+			RequirePoses: {FearPose: true},
 		},
 	])
 });
@@ -380,6 +436,57 @@ AddModel({
 AddModel({
 	Name: "KjusMouth",
 	Folder: "FaceKjus",
+	TopLevel: true,
+	Protected: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "FangMouth",
+	Folder: "FaceFang",
+	TopLevel: true,
+	Protected: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	AddPose: ["Fang"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+		},
+	])
+});
+
+
+AddModel({
+	Name: "FangMouth_Double",
+	Folder: "FaceFang2",
+	TopLevel: true,
+	Protected: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	AddPose: ["2Fang"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "FanglessMouth",
+	Folder: "FaceFangless",
 	TopLevel: true,
 	Protected: true,
 	Group: "Mouth",

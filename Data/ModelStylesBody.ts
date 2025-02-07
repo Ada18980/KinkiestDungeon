@@ -90,6 +90,15 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 	],
 
 
+
+	"Maid": [
+		{Item: "Body", Group: "Body", Color: "#ffffff", Lost: false, Filters: {
+			Head:{"gamma":0.44999999999999996,"saturation":1.5,"contrast":0.8333333333333333,"brightness":0.8833333333333333,"red":1.2,"green":1.2,"blue":1.1,"alpha":1},
+			Torso:{"gamma":0.44999999999999996,"saturation":1.5,"contrast":0.8333333333333333,"brightness":0.8833333333333333,"red":1.2,"green":1.2,"blue":1.1,"alpha":1},
+			Nipples: {"gamma":1,"saturation":1.6,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.8},
+		}},
+	],
+
 	"Mid": [
 		{Item: "Body", Group: "Body", Color: "#ffffff", Lost: false, Filters: {
 			Head: {"gamma":1,"saturation":2.4333333333333336,"contrast":1,"brightness":0.9333333333333333,"red":1,"green":1,"blue":1,"alpha":1},

@@ -8,7 +8,7 @@ const KDFRIENDLY = 35;
 let KDStatRep = ["Ghost", "Prisoner", "Passion", "Frustration"];
 
 let KDRepColor = {
-	Passion: "#ff5555",
+	Passion: "#ff5277",
 	Frustration: "#ff9999",
 };
 let KDRepNameColor = {
@@ -337,7 +337,7 @@ function KinkyDungeonDrawReputation() {
 			if (tooltip) {
 				goddessColor = "#888888";
 				if (KDFactionGoddess[rep] && KDFactionGoddess[rep][tooltip] != 0) {
-					goddessColor = KDFactionGoddess[rep][tooltip] > 0 ? "#ffffff" : (KDFactionGoddess[rep][tooltip] < 0 ? "#ff5555" : "#999999");
+					goddessColor = KDFactionGoddess[rep][tooltip] > 0 ? "#ffffff" : (KDFactionGoddess[rep][tooltip] < 0 ? "#ff5277" : "#999999");
 					if (KDFactionGoddess[rep][tooltip] >= 0.006) goddessSuff = "+++";
 					else if (KDFactionGoddess[rep][tooltip] >= 0.003) goddessSuff = "++";
 					else if (KDFactionGoddess[rep][tooltip] >= 0.00001) goddessSuff = "+";
@@ -352,6 +352,17 @@ function KinkyDungeonDrawReputation() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + 275 + XX + 240, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
+			// Draw between the % and bar and suffix if debug mode is active.
+            if (KDDebugMode) {
+                DrawButtonKDEx("minusrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeRep(rep, -5)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + 275 + XX - 30, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "-", "#ffffff");
+                DrawButtonKDEx("plusrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeRep(rep, 5)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + 275 + XX + 203, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "+", "#ffffff");
+            }
 			DrawProgressBar(canvasOffsetX_ui + xOffset + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 +
 				(rep == "Prisoner" ? KDGetEffSecurityLevel(undefined, true) :
 				value), color, KDTextGray2);
@@ -560,6 +571,17 @@ function KinkyDungeonDrawFactionRep() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
+			// Draw between the % and bar and suffix if debug mode is active.
+            if (KDDebugMode) {
+                DrawButtonKDEx("minusfactionrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeFactionRep(rep, -0.1)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + barSpacing + XX - 30, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "-", "#ffffff");
+                DrawButtonKDEx("plusfactionrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeFactionRep(rep, 0.1)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + barSpacing + XX + 203, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "+", "#ffffff");
+            }
 			DrawProgressBar(canvasOffsetX_ui + xOffset + barSpacing + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value * 50, color, KDTextGray2);
 
 			DrawTextKD(" " + (Math.round(value * 50)+50) + " ", canvasOffsetX_ui + xOffset + barSpacing + XX + 100,  1+yPad + canvasOffsetY_ui + spacing * i, "white", "black");
@@ -661,30 +683,15 @@ function KinkyDungeonUpdateAngel(_delta: number): void {
 				let x = parseInt(t[0].split(',')[0]);
 				let y = parseInt(t[0].split(',')[1]);
 				if (x && y) {
-					if (t[0] == KinkyDungeonTargetTile) {
+					if (t[0] == KinkyDungeonTargetTileLocation) {
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
+						KDModalArea = false;
 					}
 					KinkyDungeonTilesDelete(t[0]);
 					KinkyDungeonMapSet(x, y, '0');
 				}
 			}
 		}
-	}
-}
-
-/**
- * @param x
- * @param y
- */
-function KinkyDungeonCreateAngel(x: number, y: number) {
-	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true);
-	if (point) {
-		let Enemy = KinkyDungeonGetEnemyByName("Angel");
-		let angel = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
-			x:point.x, y:point.y, gx: point.x, gy: point.y,
-			hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-		KDGameData.KinkyDungeonAngel = angel.id;
-		KDAddEntity(angel);
 	}
 }

@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.3.50"
+KDVersionStr,"5.4.40"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -45,7 +45,12 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+KDToggleBindPercent,Show Enemy Binding as %
+KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
+
+KDToggleMMLabels,Show Minimap Labels
 KDToggle,Auto loot all from chests
+KDToggleNoOutfitPalette,Use Palette regardless of Outfit
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
@@ -55,6 +60,7 @@ KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
 KDToggleBackgrounds,Show Background Art
+KDToggleOptRender,Experimental Rendering (unstable)
 
 KDToggleSoundOffWhenMin,Mute when Minimized
 KDToggleBackgrounds,Show Background Art
@@ -130,7 +136,7 @@ KDToggleFastFloaters,Faster Floater Fade
 KDToggleNoDmgFloaters,No Damage Floaters
 KDToggleDynamicArmor,Dynamic Armor (must hide armor)
 KDToggleHideFloatingWeapon,Hide floating weapon display
-
+KDToggleAutoLoot,Automatically Take All from Chests
 KDHelpless,Helpless!
 KDMissed,Evaded!
 KDBlocked,Blocked!
@@ -147,7 +153,7 @@ KDAnimSpeed,Animation Time:
 KDGamma,Map Brightness:
 KDSelectedFont,Game Font:
 KDButtonFont,Button Font:
-
+KinkyDungeonJourneyMap,Journey
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
 KinkyDungeonJourney0,"Standard: The intended experience"
 KinkyDungeonJourney1,"Random: A chaotic journey"
@@ -231,6 +237,11 @@ KinkyDungeonStatDesc21,"0.7x base accuracy"
 KinkyDungeonStatUnfocused,"Unfocused"
 KinkyDungeonStatDescUnfocused,"Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction."
 
+KinkyDungeonStatFocused,"Focused Strikes"
+KinkyDungeonStatDescFocused,"90% less accuracy penalty on swung weapons due to distraction."
+KinkyDungeonStatFocusedStaff,"Focused Power"
+KinkyDungeonStatDescFocusedStaff,"90% less stamina cost penalty on staves and similar weapons distraction."
+
 KinkyDungeonStat22,"Pristine"
 KinkyDungeonStatDesc22,"There are significantly less shiny loot objects in the dungeon."
 KinkyDungeonStat23,"Lost Technology"
@@ -243,7 +254,7 @@ KinkyDungeonStat27,"Damsel in Chains"
 KinkyDungeonStatDesc27,"Metal restraints are harder to escape from."
 
 KinkyDungeonStatForgetful,"Forgetful"
-KinkyDungeonStatDescForgetful,"You don't remember where you've been in the level."
+KinkyDungeonStatDescForgetful,"You don't remember where you've been in the level. 30 turn timer."
 
 KinkyDungeonStatCursedLocks,"Cursed Locks"
 KinkyDungeonStatDescCursedLocks,"Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle."
@@ -510,6 +521,11 @@ KinkyDungeonSpellSecondWind0,Second Wind Perk
 KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are unimpaired, up to 10% of max WP. Unimpaired means no arm, hand, leg, blindfold, or gag bondage, and no slows."
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
+KinkyDungeonSpellFirstWind,Mental Defiance
+KinkyDungeonSpellDescriptionFirstWind,"Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP."
+KinkyDungeonSpellFirstWindHigher,Mental Fortitude
+KinkyDungeonSpellDescriptionFirstWindHigher,"Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance."
+
 
 KinkyDungeonStatLockedUp,"Locked Up"
 KinkyDungeonStatDescLockedUp,"While wearing a chastity belt, your Desire lowers when you perform actions such as defeating enemies, opening chests, and breaking orbs. (Upgrades available in spell tree)"
@@ -575,7 +591,7 @@ KinkyDungeonStatNoBlindfolds,"No Blindfolds"
 KinkyDungeonStatDescNoBlindfolds,"In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily."
 
 KinkyDungeonStatTotalBlackout,"Total Blackout"
-KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing and you can't see explored areas while blindfolded."
+KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing."
 KinkyDungeonStatNearsighted,"Poor Vision"
 KinkyDungeonStatDescNearsighted,"Vision radius is significantly reduced."
 KinkyDungeonStatKeenHearing,"Keen Hearing"
@@ -697,6 +713,9 @@ KinkyDungeonStatDescArousingMagic,"Your magic is powered by otherworldly distrac
 KinkyDungeonStatClearheaded,"Clearheaded"
 KinkyDungeonStatDescClearheaded,"Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction."
 
+KinkyDungeonStatUnidentifiedWear,"Unidentified Wear"
+KinkyDungeonStatDescUnidentifiedWear,"Enchanted (and cursed) wearables and weapons are unidentified until the item is used."
+KDUnidentified,"Unknown "
 
 KinkyDungeonCopyPerks,Copy (clipboard)
 KinkyDungeonPastePerks,Paste (clipboard)
@@ -838,7 +857,10 @@ KinkyDungeonBuffDisenchantSelf,"Your restraints are disenchanted, treating them 
 KinkyDungeonBuffLeatherBurst,"You can launch another leather restraint instantly!"
 KinkyDungeonBuffSagittaAssault,"You can launch another Sagitta instantly!"
 
-KinkyDungeonBuffDistractionCast,Your motivation is powerful enough your spells cannot be stopped!
+KinkyDungeonBuffTraineeWP,You have stored willpower.
+KinkyDungeonBuffDistractionCast,"You have consumed a mote of essence, granting miscast chance reduction."
+KinkyDungeonSpellCastDistractionCast,You recapture an essence mote and concentrate on its essence!
+KinkyDungeonSpellTargetDistractionCast,Choose an essence mote to absorb.
 
 KinkyDungeonBuffStraitjacketBolt,"Locked Down: Struggling power is greatly reduced."
 KinkyDungeonBuffLockdown,"Locked Down: Struggling power is greatly reduced."
@@ -984,7 +1006,7 @@ GameStart,Start New Game
 KinkyDungeonNewGamePlus,New Game+
 GameContinue,Continue Last Save
 LoadGame,Load Saved Game
-LoadOutfit,Save Outfit (overwrites!)
+LoadOutfit,Save Outfit (overwrite!)
 LoadOutfitClothes,Save Outfit (Clothes Only!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes
@@ -1060,6 +1082,7 @@ KinkyDungeonKeyBulletTransparency,Hide Bullets
 KinkyDungeonKeyQInventory,Quick Inventory
 KinkyDungeonKeyInventory,Inventory
 KinkyDungeonKeyReputation,Reputation
+KinkyDungeonKeyJourneyMap,Journey Map
 KinkyDungeonKeyQuest,Quests
 KinkyDungeonKeyMagic,Spell List
 KinkyDungeonKeyLog,Journal
@@ -1101,6 +1124,7 @@ DungeonNamemis,The Mansion
 DungeonNametmb,Ancient Tombs
 DungeonNamelib,Magic Library
 DungeonNamecry,Crystal Cave
+DungeonNamecav,Cavern
 DungeonNameore,Orrery
 DungeonNametrn,Training Center
 DungeonNamerub,Rubber Facility
@@ -1126,6 +1150,7 @@ DungeonNameTempleEarth,Temple of Earth
 DungeonNameDemonTransition,The Edge of Reality
 DungeonNameDemonEscape,The Edge of Reality
 DungeonNameDemonPrison,Dark Dimension
+DungeonNameDragonLair,Lair
 
 LootRubbleFail,You search through the debris but find nothing of note
 LootRubbleSmallGold,You find some gold coins in a corner (+XXX gold)
@@ -1171,6 +1196,7 @@ LootDusterGag,"You find a special gag with a feather duster."
 LootGasMask,"You find a gas mask suitable for filtering gases."
 LootPearlChest,The pearly chest contains a divine gift! (+ITEMGET)
 KDSmokePuff,Smoke fills the air around you!
+LootEssenceNecklace,"You find a magical necklace that seems to concentrate magic."
 
 
 
@@ -1543,7 +1569,7 @@ ItemPickupDarkKatana,"You pick up Shadow's Edge."
 
 KinkyDungeonInventoryItemStormBreaker,Stormbreaker
 KinkyDungeonInventoryItemStormBreakerDesc,"I have the power! Taking electric damage charges you (1 turn/10dmg)."
-KinkyDungeonInventoryItemStormBreakerDesc2,"Deals crush damage. Deals bonus electric damage in an area when charged, up to +40."
+KinkyDungeonInventoryItemStormBreakerDesc2,"Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)"
 ItemPickupStormBreaker,"You pick up Stormbreaker."
 
 
@@ -1589,7 +1615,7 @@ KinkyDungeonInventoryItemTorch,Torch
 KinkyDungeonInventoryItemTorchDesc,"Second only to the mighty towel in usefulness."
 KinkyDungeonInventoryItemTorchDesc2,"Deals fire damage. Provides light."
 KinkyDungeonInventoryItemUnarmed,Unarmed
-KinkyDungeonInventoryItemUnarmedDesc,"Fight with your hands and feet. 50% chance to stun target if the target is disarmed."
+KinkyDungeonInventoryItemUnarmedDesc,"Fight with your hands and feet. Counts as teasing if arms are free. 50% chance to stun target if the target is disarmed."
 KinkyDungeonInventoryItemUnarmedDesc2,"Deals unarmed damage."
 KinkyDungeonInventoryItemSword,Sword
 KinkyDungeonInventoryItemSwordDesc,"the steel is strong, and the blade true."
@@ -1648,13 +1674,13 @@ KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to sp
 KinkyDungeonInventoryItemSlimethrowerDesc2,"Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies."
 KinkyDungeonInventoryItemMagicAxe,Magic Axe
 KinkyDungeonInventoryItemMagicAxeDesc,"Sick and vile, like the hearts of your enemies."
-KinkyDungeonInventoryItemMagicAxeDesc2,"Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns."
+KinkyDungeonInventoryItemMagicAxeDesc2,"Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you."
 KinkyDungeonInventoryItemPickaxe,Pickaxe
 KinkyDungeonInventoryItemPickaxeDesc,"Used for drilling holes in rock and armor."
 KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 15 for 6 turns."
 KinkyDungeonInventoryItemMagicFlail,Magic Flail
 KinkyDungeonInventoryItemMagicFlailDesc,"A blessed censer that distributes pain equally."
-KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target."
+KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target."
 KinkyDungeonInventoryItemMagicSpear,Magic Spear
 KinkyDungeonInventoryItemMagicSpearDesc,"Seeks and pierces hearts with ease."
 KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack."
@@ -1722,7 +1748,7 @@ KinkyDungeonChargerPlaceCrystal,Place live crystal
 KinkyDungeonChargerRemoveCrystal,Take the crystal
 KinkyDungeonChargerPlace,You place the crystal into the receptacle and it lights up!
 KinkyDungeonChargerRemove,You take the crystal from the receptacle and all goes dark.
-KinkyDungeonChargerNoRemove,You try to take the crystal but the cage around it is secured with a purple lock.
+KinkyDungeonChargerNoRemove,You try to take the crystal but the cage around it is secured with a magic purple lock.
 KinkyDungeonChargerCharge,Place spent crystal
 KinkyDungeonChargerChargeSuccess,VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
 KinkyDungeonChargerChargeFailure,Nothing seems to happen
@@ -2369,7 +2395,8 @@ AttackBanditChiefLock,"The bandit chuckles and applies a lock! (DamageTaken)"
 NameBanditPet,Bandit Pet
 KillBanditPet,"The bandit blushes and runs away."
 AttackBanditPetBind,"The girl nervously restrains you! (+RestraintAdded)"
-AttackBanditPet,"The bandit tickes you nervously! (DamageTaken)"
+AttackBanditPet,"The bandit tickles you nervously! (DamageTaken)"
+AttackBanditPetLock,"The bandit pet applies a lock! (DamageTaken)"
 
 NameBanditHunter,Bandit Hunter
 KillBanditHunter,"The bandit hunter retreats."
@@ -2410,6 +2437,15 @@ KillMeleeCleric,"The Bast Warrior collapses and meows loudly."
 AttackMeleeClericBind,"The Bast Warrior restrains you! (+RestraintAdded)"
 AttackMeleeCleric,"The Bast Warrior tickles you with her claws! (DamageTaken)"
 AttackMeleeClericLock,"The Bast Warrior pulls out a lock and slips it on! (DamageTaken)"
+
+
+
+NameClericHigh,Bast High Cleric
+KillClericHigh,"The Bast High Cleric vanishes into a puff of ribbons."
+AttackClericHigh,"A ray of light shoots out and paralyzes you! (DamageTaken)"
+AttackClericHighBind,"The Bast Cleric conjures wrappings upon you! (+RestraintAdded)"
+AttackClericHighStun,"A ray of light shoots out and paralyzes you! (DamageTaken)"
+AttackClericHighLock,"The Bast Cleric conjures a lock and slips it onto you! (DamageTaken)"
 
 
 NameCleric,Bast Cleric
@@ -2706,7 +2742,7 @@ AttackWitchMagnetBind,"The witch's restraints fly out and attach themselves to y
 AttackWitchMagnetLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchMagnet,"The witch's lightning causes your body to tingle! (DamageTaken)"
 
-NameApprentice,Witch's Apprentice
+NameApprentice,Mage's Apprentice
 KillApprentice,"The apprentice runs off and cries in a corner."
 AttackApprenticeBind,"The apprentice animates restraints to wrap around you! (+RestraintAdded)"
 AttackApprenticeLock,"The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)"
@@ -2717,6 +2753,12 @@ KillApprentice2,"The apprentice runs off and cries in a corner."
 AttackApprentice2Bind,"The apprentice summons a restraint onto you! (+RestraintAdded)"
 AttackApprentice2Lock,"The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)"
 AttackApprentice2,"The apprentice tickles you playfully! (DamageTaken)"
+
+NameWitchApprentice,Witch's Apprentice
+KillWitchApprentice,"The witch's apprentice confidently admits defeat."
+AttackWitchApprenticeBind,"The witch's apprentice conjures magic bindings on you! (+RestraintAdded)"
+AttackWitchApprenticeLock,"The witch's apprentice smiles and summons a lock onto you! (DamageTaken)"
+AttackWitchApprentice,"The witch's apprentice smiles as she squeezes your chest! (DamageTaken)"
 
 NameApprenticeSlime,Latex Apprentice
 KillApprenticeSlime,"The apprentice runs off and cries in a corner."
@@ -3373,7 +3415,7 @@ KinkyDivine2Lock,"Divine Lock"
 KinkyCrystalLock,"Crystal Lock"
 KinkyWhiteLock,"Simple Lock"
 KinkyBlueLock,"Runic Lock"
-KinkyPurpleLock,"Purple Lock"
+KinkyPurpleLock,"Magic Lock"
 KinkyCyberLock,"Cyber Lock"
 KinkyCyber2Lock,"Integrated Cyber Lock"
 KinkyCyber3Lock,"Advanced Cyber Lock"
@@ -3386,6 +3428,7 @@ KinkyDungeonDropKnife,"You drop your knife due to your bound hands!"
 KinkyDungeonDropEnchKnife,"You drop the precious knife due to your bound hands!"
 KinkyDungeonDropRedKey,"You drop the key due to your bound hands!"
 KinkyDungeonDropBlueKey,"You drop the magic key due to your bound hands!"
+KinkyDungeonDropKeyCard,"You insert the card the wrong way and the reader ejects it onto the floor!"
 
 KinkyDungeonLogbook,Journal
 KinkyDungeonLogbookN,Journal (N)
@@ -3436,7 +3479,7 @@ KinkyDungeonObject,"object"
 KinkyDungeonObjectCharger,"It appears to be a receptacle for an ancient crystal."
 KinkyDungeonObjectChargerDestroyed,"It's a pile of slag emitting a strange magic smoke..."
 KinkyDungeonObjectLock,"That object is locked with a LKTP."
-KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE. A pool of mana glimmers below."
+KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
@@ -3549,6 +3592,7 @@ KinkyDungeonCommerceBuy,"The goddess offers a ItemTraded for ItemCost (NumCurren
 KinkyDungeonCommerceNext,"Next Offer"
 KinkyDungeonCommercePurchase,"Buy (press right)"
 KinkyDungeonCommerceCost,"Cost: ItemCostgp"
+KinkyDungeonCommerceOwned,"Owned: AMNT"
 
 ClimbDown,"You climb down to the next level"
 
@@ -3620,6 +3664,10 @@ RestraintDollStandDesc2,"As long as it's... inserted, you won't be going anywher
 RestraintOneBar,One Bar Prison
 RestraintOneBarDesc,"A devious way to immobilize people."
 RestraintOneBarDesc2,"As long as it's... inserted, you won't be going anywhere!"
+
+RestraintOneBarStand,Metal Stand
+RestraintOneBarStandDesc,"A devious way to immobilize people."
+RestraintOneBarStandDesc2,"As long as it's locked around you, you won't be going anywhere!"
 
 
 RestraintDollStandSFW,Doll Stand
@@ -4292,10 +4340,10 @@ RestraintMaidVibe,Maid Egg
 RestraintMaidVibeDesc,"An energetic little friend that likes to tease you and takes orders from the head maid."
 RestraintMaidVibeDesc2,"It is charged by residual magic from your spells. Type: Teasing, Edging"
 
-RestraintSteelPlugF,Stainless Plug
+RestraintSteelPlugF,Stainless Plug (F)
 RestraintSteelPlugFDesc,"A weighty plug that doesn't vibrate, but you'll certainly notice it walking around..."
 RestraintSteelPlugFDesc2,"This one goes in the front."
-RestraintSteelPlugR,Stainless Plug
+RestraintSteelPlugR,Stainless Plug (R)
 RestraintSteelPlugRDesc,"A weighty plug that doesn't vibrate, but you'll certainly notice it walking around..."
 RestraintSteelPlugRDesc2,"This one goes in the back."
 
@@ -4698,9 +4746,12 @@ RestraintMaidMuzzleDesc,"A muzzle with a long, mouth-filling plug that muffles s
 RestraintMaidMuzzleDesc2,"Reinforced and secured with a disc lock to ensure unruly maids don't skip their duty."
 
 RestraintKiguMask,Suspicious Mask
-LootChestKiguMask,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintKiguMaskDesc2,"A well-fitted mask, covering your entire head neatly and locking in place."
 RestraintKiguMaskDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
+
+RestraintKiguMaskSmile,Happy Face
+RestraintKiguMaskSmileDesc2,"Just put on a happy face and enjoy it."
+RestraintKiguMaskSmileDesc,"It has eyeholes for you to somewhat see out of, but blocks access to the face."
 
 RestraintLeatherHood,Sensory Hood
 RestraintLeatherHoodDesc2,"A well-fitted hood that covers your head and muffles sounds."
@@ -5473,6 +5524,10 @@ KDEffectTileTooltipLatexBlue,Liquid Latex
 KDEffectTileTooltipLatexBlueDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexThinBlue,Liquid Latex
 KDEffectTileTooltipLatexThinBlueDesc,"Engulfs creatures"
+KDEffectTileTooltipLatexGreen,Liquid Latex
+KDEffectTileTooltipLatexGreenDesc,"Engulfs pets (like you)"
+KDEffectTileTooltipLatexThinGreen,Liquid Latex
+KDEffectTileTooltipLatexThinGreeneDesc,"Engulfs pets (like you)"
 KDEffectTileTooltipSlime,Slime
 KDEffectTileTooltipSlimeDesc,"Slows creatures"
 KDEffectTileTooltipGlue,Glue
@@ -5556,6 +5611,9 @@ KDTileTooltipv,Safety Conveyor
 KDTileTooltipt,Doll Terminal
 KDTileTooltipu,Doll Supply
 KDTileTooltipN,Bondage Machine
+KDTileTooltip+,Empty Fixture
+KDTileTooltip=,Filled Fixture
+KDTileTooltipM,Tablet
 
 
 
@@ -5571,14 +5629,17 @@ KinkyDungeonBookIllusionDescription,A book of manipulative spells
 KDShortCompVerbal,"Verbal"
 KDShortCompArms,"Arms"
 KDShortCompLegs,"Legs"
+KDShortCompVision,"Vision"
 
 KinkyDungeonComponents,"Components: "
 KinkyDungeonComponentsVerbal,"Verbal"
 KinkyDungeonComponentsArms,"Arm Movements"
 KinkyDungeonComponentsLegs,"Leg Gestures"
+KinkyDungeonComponentsVision,"Vision"
 KinkyDungeonComponentsFailVerbal,"You mumble incoherently trying to cast the spell..."
 KinkyDungeonComponentsFailArms,"You wiggle uselessly trying to cast the spell..."
 KinkyDungeonComponentsFailLegs,"Your feet are too clumsy to perform the magic gesture..."
+KinkyDungeonComponentsFailVision,"You are unable to see, so you can't target this spell..."
 
 KinkyDungeonBookNextPage,Next Page
 KinkyDungeonBookLastPage,Last Page
@@ -5662,6 +5723,7 @@ KDSpellUpcastsFrom,"Upcast from SPELL"
 KinkyDungeonSpellMiscast,You fail to concentrate on the spell and it fizzles!
 KinkyDungeonSpellMiscastGagged,Your gag causes you to mispronounce the magic words!
 KinkyDungeonSpellMiscastPoorForm,You are too clumsy to perform the leg movements!
+KinkyDungeonSpellMiscastVision,You can't get a good look at the target!
 KinkyDungeonSpellMiscastLegs,You trip up while casting the spell!
 KinkyDungeonSpellMiscastBug,You miscast the spell because of a bug. Please report.
 KinkyDungeonSpellMiscastArms,You wave your arms around and make the wrong symbol with your hands!
@@ -5704,7 +5766,7 @@ KinkyDungeonSpellBattleRhythm,"Battle Rhythm"
 KinkyDungeonSpellDescriptionBattleRhythm,"Stores 10% of the stamina cost of attacks as Rhythm, up to a total of 40. While you have over 10 Rhythm, you gain +10 Block and Evasion. Enemy base accuracy against you is decreased by a % equal to your Rhythm. If an attack misses or is blocked because of this, reduce Rhythm by 25% of the enemy attack power. Decays when not attacking."
 
 KinkyDungeonSpellLimitSurge,"Limit Surge"
-KinkyDungeonSpellDescriptionLimitSurge,"Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
+KinkyDungeonSpellDescriptionLimitSurge,"Spend 40 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns."
 
 KinkyDungeonSpellBattleTrance,"Battle Trance"
 KinkyDungeonSpellDescriptionBattleTrance,"While at 40 Battle Rhythm, you attack twice per turn."
@@ -5723,8 +5785,8 @@ KinkyDungeonSpellDescriptionRogueTraps,"Trap-type spells and consumables no long
 
 
 
-KinkyDungeonSpellDistractionCast,Mana Burst
-KinkyDungeonSpellDescriptionDistractionCast,"As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus..."
+KinkyDungeonSpellDistractionCast,Essence Motes
+KinkyDungeonSpellDescriptionDistractionCast,"When you miscast a spell, you gain an Essence Mote which appears in a random space next to you. You can consume this mote to gain -100% miscast chance decaying over 10 turns. Walking over the mote also consumes it."
 
 KinkyDungeonSpellManaRegen,Inner Power
 KinkyDungeonSpellDescriptionManaRegen,"As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown."
@@ -5750,9 +5812,9 @@ KinkyDungeonSpellOrgasmFrequency2,Pleasure Training II
 KinkyDungeonSpellDescriptionOrgasmFrequency2,"You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total) and 50% less willpower."
 
 KinkyDungeonSpellOrgasmResist,Mental Resistance
-KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is 0 or are teased directly by an enemy or damage (click the buff to toggle), and willpower drains 70% slower while edged."
-KinkyDungeonBuffe_OrgasmResist,"Mental Resistance: You cannot orgasm except by choice, or being forced by an enemy. Click to toggle."
-KinkyDungeonBuffd_OrgasmResist,"Mental Resistance: You are allowing yourself to let go if forced to. Click to toggle."
+KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)"
+KinkyDungeonBuffe_OrgasmResist,"Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle."
+KinkyDungeonBuffd_OrgasmResist,"Mental Resistance: You are allowing yourself to let go. Click to toggle."
 
 
 KinkyDungeonSpellEdgeMana1,Way of Discipline
@@ -6113,6 +6175,7 @@ KinkyDungeonSpellEnemyCorona,Binding Light
 KinkyDungeonSpellEnemyCoronaBeam,Binding Light
 KinkyDungeonSpellMonolithBeamBeam,Chaos Beam
 KinkyDungeonSpellClericBeamBeam,Mystic Beam
+KinkyDungeonSpellClericBeamMulti,Mystic Barrage
 KinkyDungeonSpellDescriptionCorona,A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
 KinkyDungeonSpellCastCorona,You charge a powerful beam attack!!!
 KinkyDungeonSpellTargetCorona,Choose line direction
@@ -6731,6 +6794,8 @@ KinkyDungeonSpellCastNevermereBoost,"The EnemyName activates the vibrators of ne
 KinkyDungeonSpellCastDollBoost,"The EnemyName activates the vibrators of nearby dolls, greatly motivating them!"
 KinkyDungeonSpellCastEarthfield,The EnemyName creates a zone of increased defense!
 KinkyDungeonSpellCastParasolBuff,"EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!"
+KinkyDungeonSpellCastShieldTheWitch,"EnemyName supports a witch with a magical shield!"
+KinkyDungeonSpellShieldTheWitch,Shield the Witch!
 KinkyDungeonSpellCastZombieBuff,"EnemyName uses a glowing talisman to buff an undead's physical armor and speed!"
 KinkyDungeonSpellCastEarthrune,You create a zone of increased defense!
 KinkyDungeonSpellCastWaterRune,You create a protective zone!
@@ -6840,12 +6905,12 @@ KinkyDungeonSpellTargetSlimeSplash,Select where the slime will appear
 
 
 KinkyDungeonSpellWaterBall,Water Ball
-KinkyDungeonSpellDescriptionWaterBall,"Fast projectile. Deals DamageDealt acid damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage."
+KinkyDungeonSpellDescriptionWaterBall,"Fast projectile. Deals DamageDealt soap damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage."
 KinkyDungeonSpellCastWaterBall,You hurl a ball of water!
 KinkyDungeonSpellTargetWaterBall,Choose aim direction
 
 KinkyDungeonSpellTidalBall,Tidal Sphere
-KinkyDungeonSpellDescriptionTidalBall,"Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru. Leaves a large amount of water in its wake."
+KinkyDungeonSpellDescriptionTidalBall,"Slow moving projectile, deals DamageDealt soap damage to enemies it passes thru. Leaves a large amount of water in its wake."
 KinkyDungeonSpellCastTidalBall,You raise a huge mass of water!
 KinkyDungeonSpellTargetTidalBall,Choose aim direction
 
@@ -7082,6 +7147,8 @@ KinkyDungeonSpellElfArrow,Elven Arrow
 KinkyDungeonEnchantedArrow,"The elven arrow flashes and wraps you in mithril ropes!"
 KinkyDungeonRopeEngulf,"Ropes wrap themselves around your body from all sides!"
 KinkyDungeonSarcoEngulf,"Wrappings appear and wrap you head to toe!"
+KinkyDungeonHexLatex,A spell transforms your wrappings into hexed latex!
+KinkyDungeonHexLatexFail,A spell engulfs you in wrappings!
 KinkyDungeonRopeEngulfWeak,"Ropes wrap themselves around your body from all sides!"
 KinkyDungeonVineEngulf,"Vines sprout around you and grab hold of your limbs!"
 KinkyDungeonRopeEngulfDress,"Your clothes are stripped and replaced!"
@@ -7134,6 +7201,7 @@ KinkyDungeonSpellCastTrapLatexBall,"A rubber ball starts forming around you!"
 KinkyDungeonSpellCastTrapLustCloud,"You hear the sound of glass breaking, and a cloud of pink gas rises around you!"
 KinkyDungeonSpellCastTrapSCloud,"You hear the sound of glass breaking, and a cloud of green gas rises around you!"
 KinkyDungeonTrapBindingsCharmWeak,"The charms stick themselves all over your body!"
+KinkyDungeonTrapBindingsOneBar,"A metal pole catches you from below!"
 KinkyDungeonTrapBindingsRibbons,"The ribbons tie themselves tightly around your body and won't let go!"
 KinkyDungeonTrapBindingsShackleWeak,"Shackles close themselves over your limbs!"
 KinkyDungeonTrapBindingsMummyWeak,"The wrappings close in over your body!"
@@ -7154,6 +7222,7 @@ KinkyDungeonTrapBindingsDress,"Your clothes are getting ripped away!"
 KinkyDungeonTrapSleepDart,"You feel a prick as a small dart hits you, and you start feeling drowsy..."
 KinkyDungeonTrapLustCloud,"You breathe in the gas, and a wave of pleasure hits your whole body."
 KinkyDungeonTrapSPCloud,"You breathe in the gas, and feel lethargic..."
+KinkyDungeonTrapSpikeTrap,"You hear a mechanism trip..."
 
 KinkyDungeonInventory,"Items"
 KinkyDungeonReputation,"Rep"
@@ -7163,6 +7232,7 @@ KinkyDungeonMagicSpellsQuick,"Click a spell to replace SPELLNAME with."
 KinkyDungeonSpellNone,"Empty Slot"
 KinkyDungeonMagicSpellsBack,"Back to Spellbook"
 KinkyDungeonGame,"Return to Game"
+KinkyDungeonMenu,"Return to Game"
 
 KinkyDungeonSpellsPageAll,"Known Abilities"
 KinkyDungeonSpellsPageUpgrade,"Spell Tree"
@@ -7571,6 +7641,7 @@ KinkyDungeonJailerSubMistake,"Oh! Looks like I've made a mistake..."
 KinkyDungeonJailerRobotMistake,"404 prisoner not found. Releasing tether."
 
 
+KinkyDungeonGuardApproach,A EnemyName approaches you in your cell.
 KinkyDungeonGuardAppear,A EnemyName appears to check on you.
 KinkyDungeonGuardDisappear,The EnemyName leaves and locks the cell behind her.
 
@@ -7682,7 +7753,7 @@ KinkyDungeonPunishPlayerEstim,Your RestraintName stimulates you to hinder your e
 KinkyDungeonPunishPlayerEstimHarsh,Your RestraintName stimulates you and beeps loudly!
 
 KinkyDungeonGoldLockRemove,A golden lock fades into a blue lock on one of your restraints!
-KinkyDungeonPurpleLockRemove,Your command word is heard and the purple lock(s) click and fall off!
+KinkyDungeonPurpleLockRemove,Your command word is heard and the magic lock(s) click and fall off!
 KinkyDungeonPurpleLockRemoveCharger,Your command word is heard and the charger unlocks!
 
 KDGameData.ConfirmAttack,Are you sure you want to attack?
@@ -7718,7 +7789,7 @@ RestraintEnchantedHeelsDesc,"'Shoes of the graceful'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedHeels,"You can barely stand in these heels. They are rigid, metallic, and unbreakable, yet padded on the inside."
 
 RestraintEnchantedBlindfold,Ancient Blindfold
-LootChestEnchantedBlindfold,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
+LootChestEnchantedBlindfold,"You find a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintEnchantedBlindfoldDesc2,"A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10."
 RestraintEnchantedBlindfoldDesc,"'Mask of the Warrior'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedBlindfold,"You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!"
@@ -7798,6 +7869,7 @@ KinkyDungeonTooltipDealsAccuracy,"AMNT% chance to hit you"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
 KDTooltipHP,"HP: "
+KDTooltipShield,"Shield: "
 KDTooltipBinding,"Binding: "
 KDTooltipOpinion0,"Ambivalent"
 KDTooltipOpinion1,"Likes you"
@@ -7854,6 +7926,7 @@ KinkyDungeonDamageTypefrost,"Ice"
 KinkyDungeonDamageTypeice,"Ice"
 KinkyDungeonDamageTypefire,"Fire"
 KinkyDungeonDamageTypepoison,"Poison"
+KinkyDungeonDamageTypepoisongas,"Poison Gas"
 KinkyDungeonDamageTypecharm,"Charm"
 KinkyDungeonDamageTypetickle,"Tickle"
 KinkyDungeonDamageTypegrope,"Grope"
@@ -7866,6 +7939,7 @@ KinkyDungeonDamageTypesouldrain,"Spirit Draining"
 KinkyDungeonDamageTypesoul,"Psychic"
 KinkyDungeonDamageTypedrain,"Mana Draining"
 KinkyDungeonDamageTypeelectric,"Electric"
+KinkyDungeonDamageTypeestim,"E-Stim"
 KinkyDungeonDamageTypeshock,"Shock"
 KinkyDungeonDamageTypeplush,"Plush"
 KinkyDungeonDamageTypestun,"Blast"
@@ -7941,9 +8015,9 @@ KinkyDungeonPerksMode1,Extra
 KinkyDungeonPerksMode2,Less
 KinkyDungeonPerksMode3,Much Less
 KinkyDungeonPerksModeDesc0,"No pain, no gain."
-KinkyDungeonPerksModeDesc1,"Gain 10 extra perks, to give you a false sense of security."
-KinkyDungeonPerksModeDesc2,"Lose 10 perk points, just to keep things interesting."
-KinkyDungeonPerksModeDesc3,"Lose 25 perk points, making things very interesting."
+KinkyDungeonPerksModeDesc1,"Gain 20 extra perk points, to give you a false sense of security."
+KinkyDungeonPerksModeDesc2,"Lose 20 perk points, just to keep things interesting."
+KinkyDungeonPerksModeDesc3,"Lose 50 perk points, making things very interesting."
 
 
 KDPerkProgressionMode,"Perk Progression Mode:"
@@ -7974,10 +8048,10 @@ KinkyDungeonPerkBondageVisModeDesc0,"You do not know if a perk shrine will apply
 KinkyDungeonPerkBondageVisModeDesc1,"You know that a perk shrine will apply bondage, but not what kind."
 KinkyDungeonPerkBondageVisModeDesc2,"You know the exact restraints a perk shrine will apply."
 
-KDHardMode,"Hard Mode:"
+KDHardMode,"Difficulty:"
 KinkyDungeonHardMode0,Normal Mode
 KinkyDungeonHardMode1,Hard Mode
-KinkyDungeonExtremeMode,Extreme
+KinkyDungeonExtremeMode,Extreme Mode
 KinkyDungeonHardModeDesc0,"A supposedly reasonable difficulty curve."
 KinkyDungeonHardModeDesc1,"Play the game the way it was intended. Cruel and restrictive. "
 KinkyDungeonExtremeModeDesc,"Play at your own peril. Unlocked by double-clicking the Hard Mode button."
@@ -7990,16 +8064,16 @@ KinkyDungeonSexyPlugsFront,Allow Front Plugs
 KinkyDungeonSexyPlugs,Allow Rear Plugs
 KinkyDungeonSexyPiercings,Allow Piercings
 
-KinkyDungeonClassMode0,Fighter
-KinkyDungeonClassModeDesc0,"Start with 150 willpower and Iron Will, good at melee and blocking attacks."
-KinkyDungeonClassMode1,Rogue
-KinkyDungeonClassModeDesc1,"Start with 150 stamina and Sneaky, good at stealth and evasive gameplay."
-KinkyDungeonClassMode2,Wizard
-KinkyDungeonClassModeDesc2,"Start with 150 mana and Magical Sight, good at casting spells."
-KinkyDungeonClassMode3,Peasant
-KinkyDungeonClassModeDesc3,"Start with nothing to your name. For those who want a challenge."
-KinkyDungeonClassMode4,Trainee
-KinkyDungeonClassModeDesc4,"You are a mage, but haven't finished your formal 'training'. Requires Aroused mode."
+KinkyDungeonClassModeFighter,Fighter
+KinkyDungeonClassModeDescFighter,"Start with 150 willpower and Iron Will, good at melee and blocking attacks."
+KinkyDungeonClassModeRogue,Rogue
+KinkyDungeonClassModeDescRogue,"Start with 150 stamina and Sneaky, good at stealth and evasive gameplay."
+KinkyDungeonClassModeMage,Wizard
+KinkyDungeonClassModeDescMage,"Start with 150 mana and Magical Sight, good at casting spells."
+KinkyDungeonClassModePeasant,Peasant
+KinkyDungeonClassModeDescPeasant,"Start with nothing to your name. For those who want a challenge."
+KinkyDungeonClassModeTrainee,Trainee
+KinkyDungeonClassModeDescTrainee,"You are a mage, but haven't finished your formal 'training'. Requires Aroused mode."
 
 KDRandomMode,"Spell Choice:"
 
@@ -8094,7 +8168,7 @@ KinkyDungeonRemindJailChaseFuukaDefendHonor2,"You can't do that!"
 KinkyDungeonRemindJailChaseFuukaHonor0,"Leave them alone!"
 KinkyDungeonRemindJailChaseFuukaHonor1,"You can't do that!"
 KinkyDungeonRemindJailChaseFuukaHonor2,"Hey, stop that!"
-KinkyDungeonRemindJailChaseFuukaCommandDefend,""
+KinkyDungeonRemindJailChaseFuukaCommandDefend,"Why do I hire these people..."
 KinkyDungeonRemindJailChaseFuukaCommandAssault,""
 KinkyDungeonRemindJailChaseFuukaCommandBlock,""
 
@@ -8153,13 +8227,13 @@ KinkyDungeonRemindJailChaseDollmakerDefendHonor2,"You've had your chance."
 KinkyDungeonRemindJailChaseDollmakerHonor0,"Fine, then."
 KinkyDungeonRemindJailChaseDollmakerHonor1,"Know your place!"
 KinkyDungeonRemindJailChaseDollmakerHonor2,"You've had your chance."
-KinkyDungeonRemindJailChaseDollmakerCommandDefend,""
+KinkyDungeonRemindJailChaseDollmakerCommandDefend,"*sighs*"
 KinkyDungeonRemindJailChaseDollmakerCommandAssault,""
 KinkyDungeonRemindJailChaseDollmakerCommandBlock,""
 
 
-KinkyDungeonRemindJailCastWarden,"Hmmph~"
-KinkyDungeonRemindJailMiscastWarden,"My mistake~"
+KinkyDungeonRemindJailCastTheWarden,"Hmmph~"
+KinkyDungeonRemindJailMiscastTheWarden,"My mistake~"
 KinkyDungeonRemindJailPlayHelplessTheWarden0,"This wasn't supposed to happen."
 KinkyDungeonRemindJailPlayHelplessTheWarden1,"The Collector has become the Collected."
 KinkyDungeonRemindJailPlayHelplessTheWarden2,"Fine, you win!"
@@ -9342,7 +9416,7 @@ KinkyDungeonRemindJailPlayHelplessAdventurer_Dom_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter0,"Be nice!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter1,"No! Be gentle!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter2,"Ahhhh!"
-KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter0,"Heatpats please..."
+KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter0,"Headpats please..."
 KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter1,"*purrs*"
 KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter2,"Nyah, I've been a bad kitty..."
 KinkyDungeonRemindJailPlayAdventurer_Dom_Fighter0,"You're a cute one~"
@@ -9973,7 +10047,7 @@ KinkyDungeonRemindJailChaseMyrtriceHonor0,"THE CURTAINS OF MY REVENGE DRAW OPEN 
 KinkyDungeonRemindJailChaseMyrtriceHonor1,"What an excellent oppertunity to expand my alters in the dark!"
 KinkyDungeonRemindJailChaseMyrtriceHonor2,"I see a chalice before me... it drips with shadow and overflows with darkness!"
 KinkyDungeonRemindJailChaseMyrtriceCommandDefend,"My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*"
-KinkyDungeonRemindJailChaseMyrtriceCommandAssault,"THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!"
+KinkyDungeonRemindJailChaseMyrtriceCommandAssault,"THE PATH OF MY RETRIBUTION IS PAVED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!"
 KinkyDungeonRemindJailChaseMyrtriceCommandBlock,"I, Myrtrice, will resist their insolent fusilades!"
 
 KinkyDungeonRemindJailCastFungal,"SPL."
@@ -10586,7 +10660,7 @@ KinkyDungeonRemindJailChaseWitchSpellItem,"Put that toy away~"
 KinkyDungeonRemindJailChaseWitchShrine,"You'll be praying for freedom soon, my dear~"
 KinkyDungeonRemindJailChaseWitchChest,"Oh, breaking into my collection, are you?"
 KinkyDungeonRemindJailChaseWitchOrb,"Even I wouldn't do such a thing!"
-KinkyDungeonRemindJailChaseWitchJailbreak,"Witch way to the jail cell, you say?"
+KinkyDungeonRemindJailChaseWitchJailbreak,"Witch way to the jail, you say?"
 KinkyDungeonRemindJailWitchGrab,"Hold still~"
 KinkyDungeonRemindJailWitchDisarm,"Try that again!"
 KinkyDungeonRemindJailWitchHit,"Hands off!"
@@ -10907,11 +10981,15 @@ rGoodGirlRobot,"(The SPEAKER beeps)|Thank you for complying."
 rPunishment,"(The SPEAKER frowns)|Looks like you'll need to be punished. Get her!"
 rPunishmentSub,"(The SPEAKER looks Embarrassed)|Then... then... uh... someone stop her!"
 rPunishmentDom,"(The SPEAKER grins)|Then allow me to personally show you the rules."
+rPunishmentBrat,"(The SPEAKER cracks her knuckles)|Finally, I get to have some fun~"
 rPunishmentRobot,"(The SPEAKER beeps)|Subject is resisting. Begin capture protocol."
 
 
 rWeaponFound,"(The SPEAKER calls at you)|You're not supposed to be carrying a weapon.|Hand it over."
 rWeaponFoundRobot,"(The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply."
+rWeaponFoundSub,"(The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?"
+rWeaponFoundDom,"(The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?"
+rWeaponFoundBrat,"(The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?"
 dWeaponFoundAccept,"Yes, miss... (Currently held weapon will be lost)"
 dWeaponFoundAcceptGag,"Mmph... (Nod politely) (Currently held weapon will be lost)"
 dWeaponFoundDeny,"No, I refuse!"
@@ -11350,7 +11428,7 @@ dOfferMithrilForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 rOfferMithrilRope,"(A SPEAKER plays with silvery rope)|Hmm, I need to get better with this.|Can I practice on you?"
 rOfferMithrilRopeYes,"(The SPEAKER grins happily)|Thank you girl~|I'll tie with RESTRAINT then~"
-rOfferMithrilRopeYes_Yes,"(The SPEAKER binds you tightly)|(The rope is tight, and she's clearly and expert.)|Mmm, not too bad~"
+rOfferMithrilRopeYes_Yes,"(The SPEAKER binds you tightly)|(The rope is tight, and she's clearly an expert.)|Mmm, not too bad~"
 rOfferMithrilRopeYes_No,"(The SPEAKER pouts indignantly)|Why say yes then?!|(The SPEAKER walks off grumbling)"
 rOfferMithrilRopeNo,"(The SPEAKER sighs)|Very well then~"
 rOfferMithrilRopeForce,"(The SPEAKER pouts indignantly)|Oh no, you don't get out that easy.|You said you'd help!"
@@ -12323,7 +12401,7 @@ rAntiqueShopRope,"(The SPEAKER giggles)|I had all sorts of use for this back on 
 
 rShopBuy,"(Select an item to buy from the SPEAKER)"
 rShopBuyAttack,"(Attack the SPEAKER?)"
-dShopBuy,(Buy ITM# for IC# gp)
+dShopBuy,(Buy ITM# for IC# gp) (Owned: AMNT#)
 rShopBuyItem,"(The SPEAKER sells you the item)"
 rShopBuy_Fail,"(The SPEAKER shakes her head)|I think you'd be better off without that~"
 rShopBuy_FailSub,"(The SPEAKER looks embarassed)|I can't sell you that, miss..."
@@ -12459,27 +12537,27 @@ dItemShopAttack,You're giving me everything you have.
 dItemShopAttackGag,(Flail threateningly at her)
 dItemShopAttack_Confirm,(Do it)
 dItemShopAttack_Leave,(Back off)
-dItemShop0,(Sell Item0 for ItemCost0 gp)
-dItemShop1,(Sell Item1 for ItemCost1 gp)
-dItemShop2,(Sell Item2 for ItemCost2 gp)
-dItemShop3,(Sell Item3 for ItemCost3 gp)
-dItemShop4,(Sell Item4 for ItemCost4 gp)
-dItemShop5,(Sell Item5 for ItemCost5 gp)
-dItemShop6,(Sell Item6 for ItemCost6 gp)
-dItemShop7,(Sell Item7 for ItemCost7 gp)
-dItemShop8,(Sell Item8 for ItemCost8 gp)
-dItemShop9,(Sell Item9 for ItemCost9 gp)
+dItemShop0,(Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
+dItemShop1,(Sell Item1 for ItemCost1 gp) (Owned: AMNT1)
+dItemShop2,(Sell Item2 for ItemCost2 gp) (Owned: AMNT2)
+dItemShop3,(Sell Item3 for ItemCost3 gp) (Owned: AMNT3)
+dItemShop4,(Sell Item4 for ItemCost4 gp) (Owned: AMNT4)
+dItemShop5,(Sell Item5 for ItemCost5 gp) (Owned: AMNT5)
+dItemShop6,(Sell Item6 for ItemCost6 gp) (Owned: AMNT6)
+dItemShop7,(Sell Item7 for ItemCost7 gp) (Owned: AMNT7)
+dItemShop8,(Sell Item8 for ItemCost8 gp) (Owned: AMNT8)
+dItemShop9,(Sell Item9 for ItemCost9 gp) (Owned: AMNT9)
 
-dItemShopBuy0,(Buy Item0 for ItemCost0 gp)
-dItemShopBuy1,(Buy Item1 for ItemCost1 gp)
-dItemShopBuy2,(Buy Item2 for ItemCost2 gp)
-dItemShopBuy3,(Buy Item3 for ItemCost3 gp)
-dItemShopBuy4,(Buy Item4 for ItemCost4 gp)
-dItemShopBuy5,(Buy Item5 for ItemCost5 gp)
-dItemShopBuy6,(Buy Item6 for ItemCost6 gp)
-dItemShopBuy7,(Buy Item7 for ItemCost7 gp)
-dItemShopBuy8,(Buy Item8 for ItemCost8 gp)
-dItemShopBuy9,(Buy Item9 for ItemCost9 gp)
+dItemShopBuy0,(Buy Item0 for ItemCost0 gp) (Owned: AMNT0)
+dItemShopBuy1,(Buy Item1 for ItemCost1 gp) (Owned: AMNT1)
+dItemShopBuy2,(Buy Item2 for ItemCost2 gp) (Owned: AMNT2)
+dItemShopBuy3,(Buy Item3 for ItemCost3 gp) (Owned: AMNT3)
+dItemShopBuy4,(Buy Item4 for ItemCost4 gp) (Owned: AMNT4)
+dItemShopBuy5,(Buy Item5 for ItemCost5 gp) (Owned: AMNT5)
+dItemShopBuy6,(Buy Item6 for ItemCost6 gp) (Owned: AMNT6)
+dItemShopBuy7,(Buy Item7 for ItemCost7 gp) (Owned: AMNT7)
+dItemShopBuy8,(Buy Item8 for ItemCost8 gp) (Owned: AMNT8)
+dItemShopBuy9,(Buy Item9 for ItemCost9 gp) (Owned: AMNT9)
 
 rAngelHelp,"(The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)"
 rAngelHelpKnife,"(The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?"
@@ -12530,10 +12608,14 @@ rGenericAllyStopFollowingMe,"(Confirm? You will have to find the SPEAKER again.)
 rGenericAllyStopFollowingMe_Leave,"(You decide you still need the help)"
 rGenericAllyStopFollowingMe_Fail,"(The SPEAKER refuses to follow your orders)"
 
+
+dGenericAllyUntie,"(Remove BINDAMNT binding from her) UNTIETURNS"
+rGenericAllyUntie,"(You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)"
 dGenericAllyFood,"(Give her a restoration item)"
 rGenericAllyFood,"(The SPEAKER appreciates the thought!)"
-
-
+KDMustHaveHP,Must have HP to untie.
+KDXTurns,(AMNT turns)
+KDXTurn,(AMNT turn)
 
 dGenericAllyFollowMe,"(Follow me)"
 dGenericAllyFollowMe_Confirm,"(Follow me)"
@@ -13219,10 +13301,14 @@ rPrisonerJailJammed,"(The SPEAKER is locked in high-security manacles.|The safet
 
 dPrisonerJail_Unlock,Use a key to unlock her
 dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
-dPrisonerJail_Word,Use a command word
+dPrisonerJail_Word,Use CMD: Unlock
 dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
+rPrisonerJailBug,"(The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)"
+dPrisonerJailBug_Unlock,(Unlock her and file a bug report to Ada)
 
+
+rPrisonerJailOther,"(This SPEAKER is a sub, but not YOUR sub!)"
 
 
 rPrisonerJailOwn,"(The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)"
@@ -13286,10 +13372,12 @@ rFurnitureUse,"(You lock yourself in the furniture!)"
 rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
+dFurniture_Talk,(Check the occupant)
 
 dFurniture_Enemy,(Try to lock NME into the furniture) (PRCNT% Chance)
 rFurnitureEnemy,"(You close the furniture around your unfortunate victim!)"
 KDFurnEnemyDisabled,"Stun or disable her first."
+KDFurnNotClear,"Area isn't clear."
 dFurniture_EnemyHelpless,(Secure NME into the furniture)
 rFurnitureEnemyHelpless,"(You lock her into the furniture so that she stays in place)"
 
@@ -13631,6 +13719,7 @@ KDTooltipItems,Items on Ground:
 
 KDLoading,"Preloading Character Assets: "
 
+cat_Worn,"Currently Worn"
 cat_Uniforms,"Uniforms"
 cat_Suits,"Suits"
 cat_Armor,"Armor"
@@ -13930,10 +14019,10 @@ l_FrontStraight_FrontStraight_Overstrap,FrontStraight_Overstrap
 m_Straight,Straight
 l_Straight_Straight,Straight
 l_Straight_Straight_Overstrap,Straight_Overstrap
-m_StraightBangs,StraightBangs
+m_StraightBangs,Long Straight
 l_StraightBangs_StraightBangs,StraightBangs
 l_StraightBangs_StraightBangs_Overstrap,StraightBangs_Overstrap
-m_MessyBack,MessyBack
+m_MessyBack,Curly Back
 l_MessyBack_Messy,Messy
 m_ShortMessyBack,MessyBackShort
 l_ShortMessyBack_BackShortMessy,"Short Messy"
@@ -21317,9 +21406,1010 @@ m_HeavyMaidKnight_l_HeadbandFrill,HeadbandFrill
 m_HeavyMaidKnight_l_HeadbandRibbon,HeadbandRibbon
 m_HeavyMaidKnight_l_HeadbandRibbonBack,HeadbandRibbonBack
 
+m_BlondeFront,BlondeFront
+m_BlondeFront_l_BlondeFront,BlondeFront
+m_BlondeFront_l_BlondeBangs,BlondeBangs
+m_BlondeBack,BlondeBack
+m_BlondeBack_l_BlondeBack,BlondeBack
+m_FangMouth_Double,FangMouth_Double
+m_FangMouth_Double_l_Mouth,Mouth
+m_LeatherMask_l_HoodCollar,HoodCollar
+m_FashionLeatherMask_l_HoodCollar,HoodCollar
+m_LeatherHood_l_HoodCollar,HoodCollar
+m_FashionLeatherHood_l_HoodCollar,HoodCollar
+m_LargeBallGag_l_BigBallTeethFang,BigBallTeethFang
+m_LargeBallGagHarness_l_BigBallTeethFang,BigBallTeethFang
+m_LargeBallGagHarnessSecure_l_BigBallTeethFang,BigBallTeethFang
+m_SmoothLargeBallGag_l_BigBallTeethFang,BigBallTeethFang
+m_SmoothLargeBallGagHarness_l_BigBallTeethFang,BigBallTeethFang
+m_SmoothLargeBallGagHarnessSecure_l_BigBallTeethFang,BigBallTeethFang
+m_MilitaryJacket_Sleeveless,MilitaryJacket_Sleeveless
+m_MilitaryJacket_Sleeveless_l_Dress,Dress
+m_MilitaryJacket_Sleeveless_l_DressChest,DressChest
+m_MilitaryJacket_Sleeveless_l_DressSkirt,DressSkirt
+m_MilitaryUniform_SleeveLeft,MilitaryUniform_SleeveLeft
+m_MilitaryUniform_SleeveLeft_l_SleeveLeft,SleeveLeft
+m_MilitaryUniform_SleeveLeft_l_ArmLeft,ArmLeft
+m_MilitaryUniform_SleeveLeft_l_ForeArmLeft,ForeArmLeft
+m_MilitaryUniform_SleeveRight,MilitaryUniform_SleeveRight
+m_MilitaryUniform_SleeveRight_l_SleeveRight,SleeveRight
+m_MilitaryUniform_SleeveRight_l_ArmRight,ArmRight
+m_MilitaryUniform_SleeveRight_l_ForeArmRight,ForeArmRight
+m_MilitaryUniform_SleeveRight_l_ShoulderRight,ShoulderRight
+m_MilitaryUniform_Sleeves,MilitaryUniform_Sleeves
+m_MilitaryUniform_Sleeves_l_SleeveLeft,SleeveLeft
+m_MilitaryUniform_Sleeves_l_ArmLeft,ArmLeft
+m_MilitaryUniform_Sleeves_l_ForeArmLeft,ForeArmLeft
+m_MilitaryUniform_Sleeves_l_SleeveRight,SleeveRight
+m_MilitaryUniform_Sleeves_l_ArmRight,ArmRight
+m_MilitaryUniform_Sleeves_l_ForeArmRight,ForeArmRight
+m_MilitaryUniform_Sleeves_l_ShoulderRight,ShoulderRight
+m_MilitaryJacket,MilitaryJacket
+m_MilitaryJacket_l_SleeveLeft,SleeveLeft
+m_MilitaryJacket_l_ArmLeft,ArmLeft
+m_MilitaryJacket_l_ForeArmLeft,ForeArmLeft
+m_MilitaryJacket_l_SleeveRight,SleeveRight
+m_MilitaryJacket_l_ArmRight,ArmRight
+m_MilitaryJacket_l_ForeArmRight,ForeArmRight
+m_MilitaryJacket_l_ShoulderRight,ShoulderRight
+m_MilitaryJacket_l_Dress,Dress
+m_MilitaryJacket_l_DressChest,DressChest
+m_MilitaryJacket_l_DressSkirt,DressSkirt
+m_WhiteGloveLeft,WhiteGloveLeft
+m_WhiteGloveLeft_l_GloveLeft,GloveLeft
+m_WhiteGloveLeft_l_ForeGloveLeft,ForeGloveLeft
+m_WhiteGloveRight,WhiteGloveRight
+m_WhiteGloveRight_l_GloveRight,GloveRight
+m_WhiteGloveRight_l_ForeGloveRight,ForeGloveRight
+m_WhiteGloves,WhiteGloves
+m_WhiteGloves_l_GloveLeft,GloveLeft
+m_WhiteGloves_l_ForeGloveLeft,ForeGloveLeft
+m_WhiteGloves_l_GloveRight,GloveRight
+m_WhiteGloves_l_ForeGloveRight,ForeGloveRight
+m_UniformShirt_Sleeveless,UniformShirt_Sleeveless
+m_UniformShirt_Sleeveless_l_Dress,Dress
+m_UniformShirt_Sleeveless_l_DressChest,DressChest
+m_UniformShirt_SleeveLeft,UniformShirt_SleeveLeft
+m_UniformShirt_SleeveLeft_l_SleeveLeft,SleeveLeft
+m_UniformShirt_SleeveLeft_l_ForeArmLeft,ForeArmLeft
+m_UniformShirt_SleeveRight,UniformShirt_SleeveRight
+m_UniformShirt_SleeveRight_l_SleeveRight,SleeveRight
+m_UniformShirt_SleeveRight_l_ForeArmRight,ForeArmRight
+m_UniformShirt_SleeveRight_l_ShoulderRight,ShoulderRight
+m_UniformShirt_Sleeves,UniformShirt_Sleeves
+m_UniformShirt_Sleeves_l_SleeveLeft,SleeveLeft
+m_UniformShirt_Sleeves_l_ForeArmLeft,ForeArmLeft
+m_UniformShirt_Sleeves_l_SleeveRight,SleeveRight
+m_UniformShirt_Sleeves_l_ForeArmRight,ForeArmRight
+m_UniformShirt_Sleeves_l_ShoulderRight,ShoulderRight
+m_UniformShirt,UniformShirt
+m_UniformShirt_l_SleeveLeft,SleeveLeft
+m_UniformShirt_l_ForeArmLeft,ForeArmLeft
+m_UniformShirt_l_SleeveRight,SleeveRight
+m_UniformShirt_l_ForeArmRight,ForeArmRight
+m_UniformShirt_l_ShoulderRight,ShoulderRight
+m_UniformShirt_l_Dress,Dress
+m_UniformShirt_l_DressChest,DressChest
+m_MilitaryUniform_Hat,MilitaryUniform_Hat
+m_MilitaryUniform_Hat_l_Hat,Hat
+m_MilitaryUniform_Hat_l_HatRim,HatRim
+m_MilitaryUniform_Hat_l_HatCap,HatCap
+m_MilitaryUniform_Hat_l_HatGloriousInsignia,HatGloriousInsignia
+m_MilitaryUniform_Hat_l_HatGloriousInsigniaHS,HatGloriousInsigniaHS
+m_MilitaryUniform_Earphones,MilitaryUniform_Earphones
+m_MilitaryUniform_Earphones_l_Headgear,Headgear
+m_MilitaryUniform_Earphones_l_HeadgearUnit,HeadgearUnit
+m_MilitaryUniform_Earphones_l_HeadgearEars,HeadgearEars
+m_MilitaryUniform_Earphones_l_HeadgearEarsInner,HeadgearEarsInner
+m_MilitaryUniform_Earphones_l_HeadgearBack,HeadgearBack
+m_MilitaryUniform_Searchlight,MilitaryUniform_Searchlight
+m_MilitaryUniform_Searchlight_l_SearchlightPouch,SearchlightPouch
+m_MilitaryUniform_Searchlight_l_Searchlight,Searchlight
+m_MilitaryUniform_Searchlight_l_SearchlightBase,SearchlightBase
+m_MilitaryUniform_Searchlight_l_SearchlightLens,SearchlightLens
+m_MilitaryUniform_BeltPouch,MilitaryUniform_BeltPouch
+m_MilitaryUniform_BeltPouch_l_BeltPouch,BeltPouch
+m_MilitaryUniform_BeltPouch_l_BeltPouchRim,BeltPouchRim
+m_MilitaryUniform_Webbing,MilitaryUniform_Webbing
+m_MilitaryUniform_Webbing_l_Webbing,Webbing
+m_MilitaryUniform_Webbing_l_WebbingSide,WebbingSide
+m_MilitaryUniform_Webbing_l_WebbingHardware,WebbingHardware
+m_MilitaryUniform_Webbing_l_WebbingName,WebbingName
+m_MilitaryUniform_Webbing_l_WebbingUnderbust,WebbingUnderbust
+m_MilitaryUniform_Webbing_l_WebbingUnderbustHardware,WebbingUnderbustHardware
+m_MilitaryUniform_Skirt,MilitaryUniform_Skirt
+m_MilitaryUniform_Skirt_l_Skirt,Skirt
+m_MilitaryUniform_Skirt_l_SkirtBand,SkirtBand
+m_MilitaryUniform_Shoes,MilitaryUniform_Shoes
+m_MilitaryUniform_Shoes_l_ShoeLeft,ShoeLeft
+m_MilitaryUniform_Shoes_l_ShoeRight,ShoeRight
+m_MilitaryUniform_Shoes_l_ShoeRightKneel,ShoeRightKneel
+m_MilitaryUniform_Shoes_l_ShoeLeftHogtie,ShoeLeftHogtie
+m_MilitaryUniform_TightsShorts,MilitaryUniform_TightsShorts
+m_MilitaryUniform_TightsShorts_l_Pantyhose,Pantyhose
+m_MilitaryUniform_SockLeft,MilitaryUniform_SockLeft
+m_MilitaryUniform_SockLeft_l_SockLeft,SockLeft
+m_MilitaryUniform_SockLeft_l_FootSockLeftHogtie,FootSockLeftHogtie
+m_MilitaryUniform_SockRight,MilitaryUniform_SockRight
+m_MilitaryUniform_SockRight_l_SockRight,SockRight
+m_MilitaryUniform_SockRight_l_FootSockRightKneel,FootSockRightKneel
+m_Tights,Tights
+m_Tights_l_Pantyhose,Pantyhose
+m_Tights_l_SockLeft,SockLeft
+m_Tights_l_FootSockLeftHogtie,FootSockLeftHogtie
+m_Tights_l_SockRight,SockRight
+m_Tights_l_FootSockRightKneel,FootSockRightKneel
+m_MilitaryUniform_Hairpin,MilitaryUniform_Hairpin
+m_MilitaryUniform_Hairpin_l_Hairpin,Hairpin
+m_MilitaryUniform,MilitaryUniform
+m_MilitaryUniform_l_SleeveLeft,SleeveLeft
+m_MilitaryUniform_l_ArmLeft,ArmLeft
+m_MilitaryUniform_l_ForeArmLeft,ForeArmLeft
+m_MilitaryUniform_l_SleeveRight,SleeveRight
+m_MilitaryUniform_l_ArmRight,ArmRight
+m_MilitaryUniform_l_ForeArmRight,ForeArmRight
+m_MilitaryUniform_l_ShoulderRight,ShoulderRight
+m_MilitaryUniform_l_Dress,Dress
+m_MilitaryUniform_l_DressChest,DressChest
+m_MilitaryUniform_l_DressSkirt,DressSkirt
+m_MilitaryUniform_l_ShirtSleeveLeft,ShirtSleeveLeft
+m_MilitaryUniform_l_ShirtForeArmLeft,ShirtForeArmLeft
+m_MilitaryUniform_l_ShirtSleeveRight,ShirtSleeveRight
+m_MilitaryUniform_l_ShirtForeArmRight,ShirtForeArmRight
+m_MilitaryUniform_l_ShirtShoulderRight,ShirtShoulderRight
+m_MilitaryUniform_l_ShirtDress,ShirtDress
+m_MilitaryUniform_l_ShirtDressChest,ShirtDressChest
+m_MilitaryUniform_l_GloveLeft,GloveLeft
+m_MilitaryUniform_l_ForeGloveLeft,ForeGloveLeft
+m_MilitaryUniform_l_GloveRight,GloveRight
+m_MilitaryUniform_l_ForeGloveRight,ForeGloveRight
+m_MilitaryUniform_l_Pantyhose,Pantyhose
+m_MilitaryUniform_l_SockLeft,SockLeft
+m_MilitaryUniform_l_FootSockLeftHogtie,FootSockLeftHogtie
+m_MilitaryUniform_l_SockRight,SockRight
+m_MilitaryUniform_l_FootSockRightKneel,FootSockRightKneel
+m_MilitaryUniform_l_ShoeLeft,ShoeLeft
+m_MilitaryUniform_l_ShoeRight,ShoeRight
+m_MilitaryUniform_l_ShoeRightKneel,ShoeRightKneel
+m_MilitaryUniform_l_ShoeLeftHogtie,ShoeLeftHogtie
+m_MilitaryUniform_l_Skirt,Skirt
+m_MilitaryUniform_l_SkirtBand,SkirtBand
+m_MilitaryUniform_l_Hairpin,Hairpin
+m_MilitaryUniform_l_SearchlightPouch,SearchlightPouch
+m_MilitaryUniform_l_Searchlight,Searchlight
+m_MilitaryUniform_l_SearchlightBase,SearchlightBase
+m_MilitaryUniform_l_SearchlightLens,SearchlightLens
+m_MilitaryUniform_l_BeltPouch,BeltPouch
+m_MilitaryUniform_l_BeltPouchRim,BeltPouchRim
+m_MilitaryUniform_l_Hat,Hat
+m_MilitaryUniform_l_HatRim,HatRim
+m_MilitaryUniform_l_HatCap,HatCap
+m_MilitaryUniform_l_HatGloriousInsignia,HatGloriousInsignia
+m_MilitaryUniform_l_HatGloriousInsigniaHS,HatGloriousInsigniaHS
+m_MilitaryUniform_l_Headgear,Headgear
+m_MilitaryUniform_l_HeadgearUnit,HeadgearUnit
+m_MilitaryUniform_l_HeadgearEars,HeadgearEars
+m_MilitaryUniform_l_HeadgearEarsInner,HeadgearEarsInner
+m_MilitaryUniform_l_HeadgearBack,HeadgearBack
+m_MilitaryUniform_l_Webbing,Webbing
+m_MilitaryUniform_l_WebbingSide,WebbingSide
+m_MilitaryUniform_l_WebbingHardware,WebbingHardware
+m_MilitaryUniform_l_WebbingName,WebbingName
+m_MilitaryUniform_l_WebbingUnderbust,WebbingUnderbust
+m_MilitaryUniform_l_WebbingUnderbustHardware,WebbingUnderbustHardware
+
+m_RubyNecklace,RubyNecklace
+m_RubyNecklace_l_RubyChain,RubyChain
+m_RubyNecklace_l_RubyRing,RubyRing
+m_RubyNecklace_l_RubyGem,RubyGem
+m_RubyNecklaceRestraint,RubyNecklaceRestraint
+m_RubyNecklaceRestraint_l_RubyChain,RubyChain
+m_RubyNecklaceRestraint_l_RubyRing,RubyRing
+m_RubyNecklaceRestraint_l_RubyGem,RubyGem
+m_SigilNecklace,SigilNecklace
+m_SigilNecklace_l_SigilChain,SigilChain
+m_SigilNecklace_l_SigilDisc,SigilDisc
+m_SigilNecklaceRestraint,SigilNecklaceRestraint
+m_SigilNecklaceRestraint_l_SigilChain,SigilChain
+m_SigilNecklaceRestraint_l_SigilDisc,SigilDisc
+m_MetalNecklace,MetalNecklace
+m_MetalNecklace_l_MetalChain,MetalChain
+m_MetalNecklace_l_MetalDisc,MetalDisc
+m_MetalNecklaceRestraint,MetalNecklaceRestraint
+m_MetalNecklaceRestraint_l_MetalChain,MetalChain
+m_MetalNecklaceRestraint_l_MetalDisc,MetalDisc
+m_DragonNecklace_l_NecklaceCharm,NecklaceCharm
+m_DragonNecklaceRestraint,DragonNecklaceRestraint
+m_DragonNecklaceRestraint_l_Necklace,Necklace
+m_DragonNecklaceRestraint_l_NecklaceCharm,NecklaceCharm
+m_Dragonheart_l_NecklaceCharm,NecklaceCharm
+m_ElfCollar_l_CollarHardware,CollarHardware
+m_Elf_l_CollarHardware,CollarHardware
+m_SteelCollar_l_CollarHardware,CollarHardware
+m_SteelCollarRunes_l_CollarHardware,CollarHardware
+m_FashionSteelCollarRunes_l_CollarHardware,CollarHardware
+m_FashionSteelCollar_l_CollarHardware,CollarHardware
+m_BallGag_l_BallTeeth,BallTeeth
+m_BallGagHarness_l_BallTeeth,BallTeeth
+m_BallGagHarnessSecure_l_BallTeeth,BallTeeth
+m_FashionBallGag_l_BallTeeth,BallTeeth
+m_FashionBallGagHarness_l_BallTeeth,BallTeeth
+m_FashionBallGagHarnessSecure_l_BallTeeth,BallTeeth
+m_CrystalBallGag,CrystalBallGag
+m_CrystalBallGag_l_Ball,Ball
+m_CrystalBallGag_l_Strap,Strap
+m_CrystalBallGagSmooth,CrystalBallGagSmooth
+m_CrystalBallGagSmooth_l_Ball,Ball
+m_CrystalBallGagSmooth_l_Strap,Strap
+m_GagMetalRivetedStrap,GagMetalRivetedStrap
+m_GagMetalRivetedStrap_l_OTN,OTN
+m_GagMetalRivetedStrap_l_OTNRivets,OTNRivets
+m_GagMetalRivetedStrap_l_OTNStrap,OTNStrap
+m_GagMetalRivetedStrap_l_OTNStrapRivets,OTNStrapRivets
+m_FashionGagMetalRivetedStrap,FashionGagMetalRivetedStrap
+m_FashionGagMetalRivetedStrap_l_OTN,OTN
+m_FashionGagMetalRivetedStrap_l_OTNRivets,OTNRivets
+m_FashionGagMetalRivetedStrap_l_OTNStrap,OTNStrap
+m_FashionGagMetalRivetedStrap_l_OTNStrapRivets,OTNStrapRivets
+m_SmoothBallGag_l_BallTeeth,BallTeeth
+m_SmoothBallGagHarness_l_BallTeeth,BallTeeth
+m_SmoothBallGagHarnessSecure_l_BallTeeth,BallTeeth
+m_FashionSmoothBallGag_l_BallTeeth,BallTeeth
+m_CrystalGagNecklace,CrystalGagNecklace
+m_CrystalGagNecklace_l_CrystalGagNecklaceBall,CrystalGagNecklaceBall
+m_CrystalGagNecklace_l_GagNecklace,GagNecklace
+m_FashionCrystalGagNecklace,FashionCrystalGagNecklace
+m_FashionCrystalGagNecklace_l_CrystalGagNecklaceBall,CrystalGagNecklaceBall
+m_FashionCrystalGagNecklace_l_GagNecklace,GagNecklace
+m_Leash_l_LeashCollar,LeashCollar
+m_Leash_l_LeashCollarHardware,LeashCollarHardware
+m_FashionLeash_l_LeashCollar,LeashCollar
+m_FashionLeash_l_LeashCollarHardware,LeashCollarHardware
+m_HeavyMaidKnight_Boots_l_BootShoeLeft,BootShoeLeft
+m_HeavyMaidKnight_Boots_l_BootShoeRight,BootShoeRight
+m_HeavyMaidKnight_SockLeft_l_SockLeft,SockLeft
+m_HeavyMaidKnight_SockLeft_l_FootSockLeftHogtie,FootSockLeftHogtie
+m_HeavyMaidKnight_SockRight_l_SockRight,SockRight
+m_HeavyMaidKnight_SockRight_l_FootSockRightKneel,FootSockRightKneel
+m_HeavyMaidKnight_l_BootShoeLeft,BootShoeLeft
+m_HeavyMaidKnight_l_BootShoeRight,BootShoeRight
+
+m_Fear,Fear
+m_Fear_l_Fear,Fear
+m_RubyNecklace_l_RubyHardware,RubyHardware
+m_RubyNecklaceRestraint_l_RubyHardware,RubyHardware
+m_KiguMaskSmile,KiguMaskSmile
+m_KiguMaskSmile_l_Mask,Mask
+m_KiguMaskSmile_l_Eyes,Eyes
+m_KiguMaskSmile_l_Eyes2,Eyes2
+m_KiguMaskSmile_l_Lock,Lock
+m_KiguMaskSmile_l_EyesWhites,EyesWhites
+m_KiguMaskSmile_l_MouthSmile,MouthSmile
+m_FashionKiguMaskSmile,FashionKiguMaskSmile
+m_FashionKiguMaskSmile_l_Mask,Mask
+m_FashionKiguMaskSmile_l_Eyes,Eyes
+m_FashionKiguMaskSmile_l_Eyes2,Eyes2
+m_FashionKiguMaskSmile_l_Lock,Lock
+m_FashionKiguMaskSmile_l_EyesWhites,EyesWhites
+m_FashionKiguMaskSmile_l_MouthSmile,MouthSmile
+
+m_OneBarPrison_l_OneBarTop,OneBarTop
+m_OneBarPrisonLatex,OneBarPrisonLatex
+m_OneBarPrisonLatex_l_OneBarTop,OneBarTop
+m_OneBarPrisonLatex_l_OneBarFront,OneBarFront
+m_OneBarPrisonLatex_l_OneBarBack,OneBarBack
 
 
+m_FangMouth,FangMouth
+m_FangMouth_l_Mouth,Mouth
+m_FanglessMouth,FanglessMouth
+m_FanglessMouth_l_Mouth,Mouth
+m_SantaHat,SantaHat
+m_SantaHat_l_Hat,Hat
+m_SantaHat_l_HatBack,HatBack
+m_SantaHat_l_Fluff,Fluff
+m_SantaHat_l_Orb,Orb
+m_FestiveArmbinder,FestiveArmbinder
+m_FestiveArmbinder_l_BinderLeft,BinderLeft
+m_FestiveArmbinder_l_BinderRight,BinderRight
+m_FestiveArmbinder_l_BinderStrapLeft,BinderStrapLeft
+m_FestiveArmbinder_l_BinderFluffLeft,BinderFluffLeft
+m_FestiveHarnessTop,FestiveHarnessTop
+m_FestiveHarnessTop_l_StrapTop,StrapTop
+m_FestiveHarnessTop_l_ButtonsTop,ButtonsTop
+m_FestiveHarnessTop_l_FuzzTop,FuzzTop
+m_FestiveHarnessMid,FestiveHarnessMid
+m_FestiveHarnessMid_l_StrapMid,StrapMid
+m_FestiveHarnessMid_l_ButtonsMid,ButtonsMid
+m_FestiveHarnessMid_l_FuzzMid,FuzzMid
+m_FestiveHarnessStrap,FestiveHarnessStrap
+m_FestiveHarnessStrap_l_StrapBot,StrapBot
+m_FestiveHarnessStrap_l_ButtonsBot,ButtonsBot
+m_FestiveHarnessStrap_l_FuzzBot,FuzzBot
+m_FestiveHarness,FestiveHarness
+m_FestiveHarness_l_StrapTop,StrapTop
+m_FestiveHarness_l_ButtonsTop,ButtonsTop
+m_FestiveHarness_l_FuzzTop,FuzzTop
+m_FestiveHarness_l_StrapOverbust,StrapOverbust
+m_FestiveHarness_l_StrapUnderbust,StrapUnderbust
+m_FestiveHarness_l_ButtonsUnderbustOver,ButtonsUnderbustOver
+m_FestiveHarness_l_ButtonsUnderbust,ButtonsUnderbust
+m_FestiveHarness_l_FuzzUnderbustOver,FuzzUnderbustOver
+m_FestiveHarness_l_FuzzUnderbust,FuzzUnderbust
+m_FestiveHarness_l_StrapMid,StrapMid
+m_FestiveHarness_l_ButtonsMid,ButtonsMid
+m_FestiveHarness_l_FuzzMid,FuzzMid
+m_FestiveHarness_l_StrapBot,StrapBot
+m_FestiveHarness_l_ButtonsBot,ButtonsBot
+m_FestiveHarness_l_FuzzBot,FuzzBot
+m_FashionFestiveHarnessTop,FashionFestiveHarnessTop
+m_FashionFestiveHarnessTop_l_StrapTop,StrapTop
+m_FashionFestiveHarnessTop_l_ButtonsTop,ButtonsTop
+m_FashionFestiveHarnessTop_l_FuzzTop,FuzzTop
+m_FashionFestiveHarnessMid,FashionFestiveHarnessMid
+m_FashionFestiveHarnessMid_l_StrapMid,StrapMid
+m_FashionFestiveHarnessMid_l_ButtonsMid,ButtonsMid
+m_FashionFestiveHarnessMid_l_FuzzMid,FuzzMid
+m_FashionFestiveHarnessStrap,FashionFestiveHarnessStrap
+m_FashionFestiveHarnessStrap_l_StrapBot,StrapBot
+m_FashionFestiveHarnessStrap_l_ButtonsBot,ButtonsBot
+m_FashionFestiveHarnessStrap_l_FuzzBot,FuzzBot
+m_FashionFestiveHarness,FashionFestiveHarness
+m_FashionFestiveHarness_l_StrapTop,StrapTop
+m_FashionFestiveHarness_l_ButtonsTop,ButtonsTop
+m_FashionFestiveHarness_l_FuzzTop,FuzzTop
+m_FashionFestiveHarness_l_StrapOverbust,StrapOverbust
+m_FashionFestiveHarness_l_StrapUnderbust,StrapUnderbust
+m_FashionFestiveHarness_l_ButtonsUnderbustOver,ButtonsUnderbustOver
+m_FashionFestiveHarness_l_ButtonsUnderbust,ButtonsUnderbust
+m_FashionFestiveHarness_l_FuzzUnderbustOver,FuzzUnderbustOver
+m_FashionFestiveHarness_l_FuzzUnderbust,FuzzUnderbust
+m_FashionFestiveHarness_l_StrapMid,StrapMid
+m_FashionFestiveHarness_l_ButtonsMid,ButtonsMid
+m_FashionFestiveHarness_l_FuzzMid,FuzzMid
+m_FashionFestiveHarness_l_StrapBot,StrapBot
+m_FashionFestiveHarness_l_ButtonsBot,ButtonsBot
+m_FashionFestiveHarness_l_FuzzBot,FuzzBot
 
+m_FrillyHeadband,FrillyHeadband
+m_FrillyHeadband_l_Headband,Headband
+m_FrillyHeadband_l_HeadbandFrill,HeadbandFrill
+m_FrillyHeadband_l_HeadbandBand,HeadbandBand
+m_FrillyHeadband_l_HeadbandBow,HeadbandBow
+m_BowHeadband,BowHeadband
+m_BowHeadband_l_BowHeadband,BowHeadband
+m_BowHeadband_l_BowHeadbandFrill,BowHeadbandFrill
+m_BackHime,BackHime
+m_BackHime_l_HimeBack,HimeBack
+m_BackShort,BackShort
+m_BackShort_l_BackShort,BackShort
+m_BackFlat,BackFlat
+m_BackFlat_l_BackFlat,BackFlat
+m_Bob,Bob
+m_Bob_l_Bob,Bob
+m_Bob_l_BobFront,BobFront
+m_FrontStraight2,FrontStraight2
+m_FrontStraight2_l_FrontStraight2,FrontStraight2
+m_FrontStraight2_l_FrontStraight2_Front,FrontStraight2_Front
+m_FrontStraight2_l_FrontStraight2_Overstrap,FrontStraight2_Overstrap
+m_FrontSwept,FrontSwept
+m_FrontSwept_l_FrontSwept,FrontSwept
+m_FrontSwept_l_FrontSweptSide,FrontSweptSide
+m_Vents,Vents
+m_Vents_l_VentL,VentL
+m_Vents_l_VentR,VentR
+m_Vents_l_VentsInnerR,VentsInnerR
+m_Vents_l_VentsInnerL,VentsInnerL
+m_Vents_l_VentsFront,VentsFront
+m_BigBraidBack,BigBraidBack
+m_BigBraidBack_l_BigBraidBack,BigBraidBack
+m_CurlyPonytail,CurlyPonytail
+m_CurlyPonytail_l_CurlyPonytail,CurlyPonytail
+m_DrillLeft,DrillLeft
+m_DrillLeft_l_DrillLeft,DrillLeft
+m_DrillRight,DrillRight
+m_DrillRight_l_DrillRight,DrillRight
+m_Twindrills,Twindrills
+m_Twintails,Twintails
+m_Twindrills_l_DrillLeft,DrillLeft
+m_Twindrills_l_DrillRight,DrillRight
+m_PointyAhoge,PointyAhoge
+m_PointyAhoge_l_Ahoge,Ahoge
+m_RoundHat,RoundHat
+m_RoundHat_l_Hat,Hat
+m_RoundHat_l_HatTop,HatTop
+m_RoundHat_l_Ribbon,Ribbon
+m_RoundHat_l_HatBack,HatBack
+m_TopHatSmall,TopHatSmall
+m_TopHatSmall_l_TopHatSmall,TopHatSmall
+m_TopHatSmall_l_TopHatSmallBow,TopHatSmallBow
+m_BlondeFront_l_BlondeFrontM,BlondeFrontM
+m_BlondeFront_l_BlondeBangsM,BlondeBangsM
+m_BlondeFront_l_Hairpin,Hairpin
+m_BlondeBack_l_BlondeBackM,BlondeBackM
+m_Mascara,Mascara
+m_Mascara_l_MascaraL,MascaraL
+m_Mascara_l_MascaraR,MascaraR
+m_Scar,Scar
+m_Scar_l_Scar,Scar
+m_PointyAntennae,PointyAntennae
+m_PointyAntennae_l_AnthenaL,AnthenaL
+m_PointyAntennae_l_AnthenaR,AnthenaR
+m_PointyHorns,PointyHorns
+m_PointyHorns_l_HornL,HornL
+m_PointyHorns_l_HornR,HornR
+m_PointyTail,PointyTail
+m_PointyTail_l_Tail,Tail
+m_WolfEars2,WolfEars2
+m_WolfEars2_l_EarLeft,EarLeft
+m_WolfEars2_l_EarRight,EarRight
+m_HairclipDual,HairclipDual
+m_HairclipDual_l_HairclipLower,HairclipLower
+m_HairclipDual_l_HairclipUpper,HairclipUpper
+m_ChainPanties,ChainPanties
+m_ChainPanties_l_Panties,Panties
+m_ChainPanties_l_PantiesChain,PantiesChain
+m_ChainPanties2,ChainPanties2
+m_ChainPanties2_l_Panties,Panties
+m_ChainPanties2_l_PantiesChain,PantiesChain
+m_ChainPanties2_l_Skirt,Skirt
+m_CyberArmLeft_l_LongMittenLeft,LongMittenLeft
+m_CyberArmRight_l_LongMittenRight,LongMittenRight
+m_CyberArms_l_LongMittenLeft,LongMittenLeft
+m_CyberArms_l_LongMittenRight,LongMittenRight
+m_KittyPetCuffsWristLeft,KittyPetCuffsWristLeft
+m_KittyPetCuffsWristLeft_l_WristLeft,WristLeft
+m_KittyPetCuffsWristLeft_l_BandWristLeft,BandWristLeft
+m_KittyPetCuffsWristRight,KittyPetCuffsWristRight
+m_KittyPetCuffsWristRight_l_WristRight,WristRight
+m_KittyPetCuffsWristRight_l_BandWristRight,BandWristRight
+m_KittyPetCuffsWrists,KittyPetCuffsWrists
+m_KittyPetCuffsWrists_l_WristLeft,WristLeft
+m_KittyPetCuffsWrists_l_BandWristLeft,BandWristLeft
+m_KittyPetCuffsWrists_l_WristRight,WristRight
+m_KittyPetCuffsWrists_l_BandWristRight,BandWristRight
+m_KittyPetCuffsElbowLeft,KittyPetCuffsElbowLeft
+m_KittyPetCuffsElbowLeft_l_ElbowLeft,ElbowLeft
+m_KittyPetCuffsElbowLeft_l_BandElbowLeft,BandElbowLeft
+m_KittyPetCuffsElbowRight,KittyPetCuffsElbowRight
+m_KittyPetCuffsElbowRight_l_ElbowRight,ElbowRight
+m_KittyPetCuffsElbowRight_l_BandElbowRight,BandElbowRight
+m_KittyPetCuffsElbows,KittyPetCuffsElbows
+m_KittyPetCuffsElbows_l_ElbowLeft,ElbowLeft
+m_KittyPetCuffsElbows_l_BandElbowLeft,BandElbowLeft
+m_KittyPetCuffsElbows_l_ElbowRight,ElbowRight
+m_KittyPetCuffsElbows_l_BandElbowRight,BandElbowRight
+m_KittyPetCuffsArms,KittyPetCuffsArms
+m_KittyPetCuffsArms_l_WristLeft,WristLeft
+m_KittyPetCuffsArms_l_BandWristLeft,BandWristLeft
+m_KittyPetCuffsArms_l_WristRight,WristRight
+m_KittyPetCuffsArms_l_BandWristRight,BandWristRight
+m_KittyPetCuffsArms_l_ElbowLeft,ElbowLeft
+m_KittyPetCuffsArms_l_BandElbowLeft,BandElbowLeft
+m_KittyPetCuffsArms_l_ElbowRight,ElbowRight
+m_KittyPetCuffsArms_l_BandElbowRight,BandElbowRight
+m_KittyPetCuffsAnklesLeft,KittyPetCuffsAnklesLeft
+m_KittyPetCuffsAnklesLeft_l_AnkleLeft,AnkleLeft
+m_KittyPetCuffsAnklesLeft_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPetCuffsAnklesRight,KittyPetCuffsAnklesRight
+m_KittyPetCuffsAnklesRight_l_AnkleRight,AnkleRight
+m_KittyPetCuffsAnklesRight_l_BandAnkleRight,BandAnkleRight
+m_KittyPetCuffsAnkles,KittyPetCuffsAnkles
+m_KittyPetCuffsAnkles_l_AnkleRight,AnkleRight
+m_KittyPetCuffsAnkles_l_BandAnkleRight,BandAnkleRight
+m_KittyPetCuffsAnkles_l_AnkleLeft,AnkleLeft
+m_KittyPetCuffsAnkles_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPetCuffsThighLeft,KittyPetCuffsThighLeft
+m_KittyPetCuffsThighLeft_l_ThighLeft,ThighLeft
+m_KittyPetCuffsThighLeft_l_BandThighLeft,BandThighLeft
+m_KittyPetCuffsThighRight,KittyPetCuffsThighRight
+m_KittyPetCuffsThighRight_l_ThighRight,ThighRight
+m_KittyPetCuffsThighRight_l_BandThighRight,BandThighRight
+m_KittyPetCuffsThigh,KittyPetCuffsThigh
+m_KittyPetCuffsThigh_l_ThighRight,ThighRight
+m_KittyPetCuffsThigh_l_BandThighRight,BandThighRight
+m_KittyPetCuffsThigh_l_ThighLeft,ThighLeft
+m_KittyPetCuffsThigh_l_BandThighLeft,BandThighLeft
+m_KittyPetCuffsCollar,KittyPetCuffsCollar
+m_KittyPetCuffsCollar_l_Collar,Collar
+m_KittyPetCuffsCollar_l_BandCollar,BandCollar
+m_FashionKittyPetCuffsCollar,FashionKittyPetCuffsCollar
+m_FashionKittyPetCuffsCollar_l_Collar,Collar
+m_FashionKittyPetCuffsCollar_l_BandCollar,BandCollar
+m_FashionKittyPetCuffsWristLeft,FashionKittyPetCuffsWristLeft
+m_FashionKittyPetCuffsWristLeft_l_WristLeft,WristLeft
+m_FashionKittyPetCuffsWristLeft_l_BandWristLeft,BandWristLeft
+m_FashionKittyPetCuffsWristRight,FashionKittyPetCuffsWristRight
+m_FashionKittyPetCuffsWristRight_l_WristRight,WristRight
+m_FashionKittyPetCuffsWristRight_l_BandWristRight,BandWristRight
+m_FashionKittyPetCuffsWrists,FashionKittyPetCuffsWrists
+m_FashionKittyPetCuffsWrists_l_WristLeft,WristLeft
+m_FashionKittyPetCuffsWrists_l_BandWristLeft,BandWristLeft
+m_FashionKittyPetCuffsWrists_l_WristRight,WristRight
+m_FashionKittyPetCuffsWrists_l_BandWristRight,BandWristRight
+m_FashionKittyPetCuffsElbowLeft,FashionKittyPetCuffsElbowLeft
+m_FashionKittyPetCuffsElbowLeft_l_ElbowLeft,ElbowLeft
+m_FashionKittyPetCuffsElbowLeft_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPetCuffsElbowRight,FashionKittyPetCuffsElbowRight
+m_FashionKittyPetCuffsElbowRight_l_ElbowRight,ElbowRight
+m_FashionKittyPetCuffsElbowRight_l_BandElbowRight,BandElbowRight
+m_FashionKittyPetCuffsElbows,FashionKittyPetCuffsElbows
+m_FashionKittyPetCuffsElbows_l_ElbowLeft,ElbowLeft
+m_FashionKittyPetCuffsElbows_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPetCuffsElbows_l_ElbowRight,ElbowRight
+m_FashionKittyPetCuffsElbows_l_BandElbowRight,BandElbowRight
+m_FashionKittyPetCuffsArms,FashionKittyPetCuffsArms
+m_FashionKittyPetCuffsArms_l_WristLeft,WristLeft
+m_FashionKittyPetCuffsArms_l_BandWristLeft,BandWristLeft
+m_FashionKittyPetCuffsArms_l_WristRight,WristRight
+m_FashionKittyPetCuffsArms_l_BandWristRight,BandWristRight
+m_FashionKittyPetCuffsArms_l_ElbowLeft,ElbowLeft
+m_FashionKittyPetCuffsArms_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPetCuffsArms_l_ElbowRight,ElbowRight
+m_FashionKittyPetCuffsArms_l_BandElbowRight,BandElbowRight
+m_FashionKittyPetCuffsAnklesLeft,FashionKittyPetCuffsAnklesLeft
+m_FashionKittyPetCuffsAnklesLeft_l_AnkleLeft,AnkleLeft
+m_FashionKittyPetCuffsAnklesLeft_l_BandAnkleLeft,BandAnkleLeft
+m_FashionKittyPetCuffsAnklesRight,FashionKittyPetCuffsAnklesRight
+m_FashionKittyPetCuffsAnklesRight_l_AnkleRight,AnkleRight
+m_FashionKittyPetCuffsAnklesRight_l_BandAnkleRight,BandAnkleRight
+m_FashionKittyPetCuffsAnkles,FashionKittyPetCuffsAnkles
+m_FashionKittyPetCuffsAnkles_l_AnkleRight,AnkleRight
+m_FashionKittyPetCuffsAnkles_l_BandAnkleRight,BandAnkleRight
+m_FashionKittyPetCuffsAnkles_l_AnkleLeft,AnkleLeft
+m_FashionKittyPetCuffsAnkles_l_BandAnkleLeft,BandAnkleLeft
+m_FashionKittyPetCuffsThighLeft,FashionKittyPetCuffsThighLeft
+m_FashionKittyPetCuffsThighLeft_l_ThighLeft,ThighLeft
+m_FashionKittyPetCuffsThighLeft_l_BandThighLeft,BandThighLeft
+m_FashionKittyPetCuffsThighRight,FashionKittyPetCuffsThighRight
+m_FashionKittyPetCuffsThighRight_l_ThighRight,ThighRight
+m_FashionKittyPetCuffsThighRight_l_BandThighRight,BandThighRight
+m_FashionKittyPetCuffsThigh,FashionKittyPetCuffsThigh
+m_FashionKittyPetCuffsThigh_l_ThighRight,ThighRight
+m_FashionKittyPetCuffsThigh_l_BandThighRight,BandThighRight
+m_FashionKittyPetCuffsThigh_l_ThighLeft,ThighLeft
+m_FashionKittyPetCuffsThigh_l_BandThighLeft,BandThighLeft
+m_KittyPawCuffsWristLeft,KittyPawCuffsWristLeft
+m_KittyPawCuffsWristLeft_l_WristLeft,WristLeft
+m_KittyPawCuffsWristLeft_l_BandWristLeft,BandWristLeft
+m_KittyPawCuffsWristLeft_l_LockWristLeft,LockWristLeft
+m_KittyPawCuffsWristRight,KittyPawCuffsWristRight
+m_KittyPawCuffsWristRight_l_WristRight,WristRight
+m_KittyPawCuffsWristRight_l_BandWristRight,BandWristRight
+m_KittyPawCuffsWristRight_l_LockWristRight,LockWristRight
+m_KittyPawCuffsWrists,KittyPawCuffsWrists
+m_KittyPawCuffsWrists_l_WristLeft,WristLeft
+m_KittyPawCuffsWrists_l_BandWristLeft,BandWristLeft
+m_KittyPawCuffsWrists_l_LockWristLeft,LockWristLeft
+m_KittyPawCuffsWrists_l_WristRight,WristRight
+m_KittyPawCuffsWrists_l_BandWristRight,BandWristRight
+m_KittyPawCuffsWrists_l_LockWristRight,LockWristRight
+m_KittyPawCuffsElbowLeft,KittyPawCuffsElbowLeft
+m_KittyPawCuffsElbowLeft_l_ElbowLeft,ElbowLeft
+m_KittyPawCuffsElbowLeft_l_BandElbowLeft,BandElbowLeft
+m_KittyPawCuffsElbowLeft_l_LockElbowLeft,LockElbowLeft
+m_KittyPawCuffsElbowRight,KittyPawCuffsElbowRight
+m_KittyPawCuffsElbowRight_l_ElbowRight,ElbowRight
+m_KittyPawCuffsElbowRight_l_BandElbowRight,BandElbowRight
+m_KittyPawCuffsElbowRight_l_LockElbowRight,LockElbowRight
+m_KittyPawCuffsElbows,KittyPawCuffsElbows
+m_KittyPawCuffsElbows_l_ElbowLeft,ElbowLeft
+m_KittyPawCuffsElbows_l_BandElbowLeft,BandElbowLeft
+m_KittyPawCuffsElbows_l_LockElbowLeft,LockElbowLeft
+m_KittyPawCuffsElbows_l_ElbowRight,ElbowRight
+m_KittyPawCuffsElbows_l_BandElbowRight,BandElbowRight
+m_KittyPawCuffsElbows_l_LockElbowRight,LockElbowRight
+m_KittyPawCuffsArms,KittyPawCuffsArms
+m_KittyPawCuffsArms_l_WristLeft,WristLeft
+m_KittyPawCuffsArms_l_BandWristLeft,BandWristLeft
+m_KittyPawCuffsArms_l_LockWristLeft,LockWristLeft
+m_KittyPawCuffsArms_l_WristRight,WristRight
+m_KittyPawCuffsArms_l_BandWristRight,BandWristRight
+m_KittyPawCuffsArms_l_LockWristRight,LockWristRight
+m_KittyPawCuffsArms_l_ElbowLeft,ElbowLeft
+m_KittyPawCuffsArms_l_BandElbowLeft,BandElbowLeft
+m_KittyPawCuffsArms_l_LockElbowLeft,LockElbowLeft
+m_KittyPawCuffsArms_l_ElbowRight,ElbowRight
+m_KittyPawCuffsArms_l_BandElbowRight,BandElbowRight
+m_KittyPawCuffsArms_l_LockElbowRight,LockElbowRight
+m_KittyPawCuffsAnklesLeft,KittyPawCuffsAnklesLeft
+m_KittyPawCuffsAnklesLeft_l_AnkleLeft,AnkleLeft
+m_KittyPawCuffsAnklesLeft_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPawCuffsAnklesLeft_l_LockAnkleLeft,LockAnkleLeft
+m_KittyPawCuffsAnklesRight,KittyPawCuffsAnklesRight
+m_KittyPawCuffsAnklesRight_l_AnkleRight,AnkleRight
+m_KittyPawCuffsAnklesRight_l_BandAnkleRight,BandAnkleRight
+m_KittyPawCuffsAnklesRight_l_LockAnkleRight,LockAnkleRight
+m_KittyPawCuffsAnkles,KittyPawCuffsAnkles
+m_KittyPawCuffsAnkles_l_AnkleRight,AnkleRight
+m_KittyPawCuffsAnkles_l_BandAnkleRight,BandAnkleRight
+m_KittyPawCuffsAnkles_l_LockAnkleRight,LockAnkleRight
+m_KittyPawCuffsAnkles_l_AnkleLeft,AnkleLeft
+m_KittyPawCuffsAnkles_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPawCuffsAnkles_l_LockAnkleLeft,LockAnkleLeft
+m_KittyPawCuffsThighLeft,KittyPawCuffsThighLeft
+m_KittyPawCuffsThighLeft_l_ThighLeft,ThighLeft
+m_KittyPawCuffsThighLeft_l_BandThighLeft,BandThighLeft
+m_KittyPawCuffsThighLeft_l_LockThighLeft,LockThighLeft
+m_KittyPawCuffsThighRight,KittyPawCuffsThighRight
+m_KittyPawCuffsThighRight_l_ThighRight,ThighRight
+m_KittyPawCuffsThighRight_l_BandThighRight,BandThighRight
+m_KittyPawCuffsThighRight_l_LockThighRight,LockThighRight
+m_KittyPawCuffsThigh,KittyPawCuffsThigh
+m_KittyPawCuffsThigh_l_ThighRight,ThighRight
+m_KittyPawCuffsThigh_l_BandThighRight,BandThighRight
+m_KittyPawCuffsThigh_l_LockThighRight,LockThighRight
+m_KittyPawCuffsThigh_l_ThighLeft,ThighLeft
+m_KittyPawCuffsThigh_l_BandThighLeft,BandThighLeft
+m_KittyPawCuffsThigh_l_LockThighLeft,LockThighLeft
+m_FashionKittyPawCuffsWristLeft,FashionKittyPawCuffsWristLeft
+m_FashionKittyPawCuffsWristLeft_l_WristLeft,WristLeft
+m_FashionKittyPawCuffsWristLeft_l_BandWristLeft,BandWristLeft
+m_FashionKittyPawCuffsWristLeft_l_LockWristLeft,LockWristLeft
+m_FashionKittyPawCuffsWristRight,FashionKittyPawCuffsWristRight
+m_FashionKittyPawCuffsWristRight_l_WristRight,WristRight
+m_FashionKittyPawCuffsWristRight_l_BandWristRight,BandWristRight
+m_FashionKittyPawCuffsWristRight_l_LockWristRight,LockWristRight
+m_FashionKittyPawCuffsWrists,FashionKittyPawCuffsWrists
+m_FashionKittyPawCuffsWrists_l_WristLeft,WristLeft
+m_FashionKittyPawCuffsWrists_l_BandWristLeft,BandWristLeft
+m_FashionKittyPawCuffsWrists_l_LockWristLeft,LockWristLeft
+m_FashionKittyPawCuffsWrists_l_WristRight,WristRight
+m_FashionKittyPawCuffsWrists_l_BandWristRight,BandWristRight
+m_FashionKittyPawCuffsWrists_l_LockWristRight,LockWristRight
+m_FashionKittyPawCuffsElbowLeft,FashionKittyPawCuffsElbowLeft
+m_FashionKittyPawCuffsElbowLeft_l_ElbowLeft,ElbowLeft
+m_FashionKittyPawCuffsElbowLeft_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPawCuffsElbowLeft_l_LockElbowLeft,LockElbowLeft
+m_FashionKittyPawCuffsElbowRight,FashionKittyPawCuffsElbowRight
+m_FashionKittyPawCuffsElbowRight_l_ElbowRight,ElbowRight
+m_FashionKittyPawCuffsElbowRight_l_BandElbowRight,BandElbowRight
+m_FashionKittyPawCuffsElbowRight_l_LockElbowRight,LockElbowRight
+m_FashionKittyPawCuffsElbows,FashionKittyPawCuffsElbows
+m_FashionKittyPawCuffsElbows_l_ElbowLeft,ElbowLeft
+m_FashionKittyPawCuffsElbows_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPawCuffsElbows_l_LockElbowLeft,LockElbowLeft
+m_FashionKittyPawCuffsElbows_l_ElbowRight,ElbowRight
+m_FashionKittyPawCuffsElbows_l_BandElbowRight,BandElbowRight
+m_FashionKittyPawCuffsElbows_l_LockElbowRight,LockElbowRight
+m_FashionKittyPawCuffsArms,FashionKittyPawCuffsArms
+m_FashionKittyPawCuffsArms_l_WristLeft,WristLeft
+m_FashionKittyPawCuffsArms_l_BandWristLeft,BandWristLeft
+m_FashionKittyPawCuffsArms_l_LockWristLeft,LockWristLeft
+m_FashionKittyPawCuffsArms_l_WristRight,WristRight
+m_FashionKittyPawCuffsArms_l_BandWristRight,BandWristRight
+m_FashionKittyPawCuffsArms_l_LockWristRight,LockWristRight
+m_FashionKittyPawCuffsArms_l_ElbowLeft,ElbowLeft
+m_FashionKittyPawCuffsArms_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPawCuffsArms_l_LockElbowLeft,LockElbowLeft
+m_FashionKittyPawCuffsArms_l_ElbowRight,ElbowRight
+m_FashionKittyPawCuffsArms_l_BandElbowRight,BandElbowRight
+m_FashionKittyPawCuffsArms_l_LockElbowRight,LockElbowRight
+m_FashionKittyPawCuffsAnklesLeft,FashionKittyPawCuffsAnklesLeft
+m_FashionKittyPawCuffsAnklesLeft_l_AnkleLeft,AnkleLeft
+m_FashionKittyPawCuffsAnklesLeft_l_BandAnkleLeft,BandAnkleLeft
+m_FashionKittyPawCuffsAnklesLeft_l_LockAnkleLeft,LockAnkleLeft
+m_FashionKittyPawCuffsAnklesRight,FashionKittyPawCuffsAnklesRight
+m_FashionKittyPawCuffsAnklesRight_l_AnkleRight,AnkleRight
+m_FashionKittyPawCuffsAnklesRight_l_BandAnkleRight,BandAnkleRight
+m_FashionKittyPawCuffsAnklesRight_l_LockAnkleRight,LockAnkleRight
+m_FashionKittyPawCuffsAnkles,FashionKittyPawCuffsAnkles
+m_FashionKittyPawCuffsAnkles_l_AnkleRight,AnkleRight
+m_FashionKittyPawCuffsAnkles_l_BandAnkleRight,BandAnkleRight
+m_FashionKittyPawCuffsAnkles_l_LockAnkleRight,LockAnkleRight
+m_FashionKittyPawCuffsAnkles_l_AnkleLeft,AnkleLeft
+m_FashionKittyPawCuffsAnkles_l_BandAnkleLeft,BandAnkleLeft
+m_FashionKittyPawCuffsAnkles_l_LockAnkleLeft,LockAnkleLeft
+m_FashionKittyPawCuffsThighLeft,FashionKittyPawCuffsThighLeft
+m_FashionKittyPawCuffsThighLeft_l_ThighLeft,ThighLeft
+m_FashionKittyPawCuffsThighLeft_l_BandThighLeft,BandThighLeft
+m_FashionKittyPawCuffsThighLeft_l_LockThighLeft,LockThighLeft
+m_FashionKittyPawCuffsThighRight,FashionKittyPawCuffsThighRight
+m_FashionKittyPawCuffsThighRight_l_ThighRight,ThighRight
+m_FashionKittyPawCuffsThighRight_l_BandThighRight,BandThighRight
+m_FashionKittyPawCuffsThighRight_l_LockThighRight,LockThighRight
+m_FashionKittyPawCuffsThigh,FashionKittyPawCuffsThigh
+m_FashionKittyPawCuffsThigh_l_ThighRight,ThighRight
+m_FashionKittyPawCuffsThigh_l_BandThighRight,BandThighRight
+m_FashionKittyPawCuffsThigh_l_LockThighRight,LockThighRight
+m_FashionKittyPawCuffsThigh_l_ThighLeft,ThighLeft
+m_FashionKittyPawCuffsThigh_l_BandThighLeft,BandThighLeft
+m_FashionKittyPawCuffsThigh_l_LockThighLeft,LockThighLeft
+m_KittyPetLeotardUnder,KittyPetLeotardUnder
+m_KittyPetLeotardUnder_l_Leotard,Leotard
+m_KittyPetLeotardUnder_l_LeotardStripes,LeotardStripes
+m_KittyPetLeotardUnder_l_LeotardChest,LeotardChest
+m_KittyPetLeotardUnder_l_LeotardChestStripes,LeotardChestStripes
+m_KittyPetLeotard,KittyPetLeotard
+m_KittyPetLeotard_l_Leotard,Leotard
+m_KittyPetLeotard_l_LeotardStripes,LeotardStripes
+m_KittyPetLeotard_l_LeotardChest,LeotardChest
+m_KittyPetLeotard_l_LeotardChestStripes,LeotardChestStripes
+m_KittyPetLeotardRestraint,KittyPetLeotardRestraint
+m_KittyPetLeotardRestraint_l_Leotard,Leotard
+m_KittyPetLeotardRestraint_l_LeotardStripes,LeotardStripes
+m_KittyPetLeotardRestraint_l_LeotardChest,LeotardChest
+m_KittyPetLeotardRestraint_l_LeotardChestStripes,LeotardChestStripes
+m_KittyPetUniformCollar,KittyPetUniformCollar
+m_KittyPetUniformCollar_l_LeotardChestCollar,LeotardChestCollar
+m_KittyPetUniformCollar_l_LeotardChestCollarLeft,LeotardChestCollarLeft
+m_KittyPetUniformCollar_l_LeotardChestCollarStripes,LeotardChestCollarStripes
+m_KittyPetUniformCollar_l_LeotardChestCollarStripesLeft,LeotardChestCollarStripesLeft
+m_KittyPetUniformCollar_l_CollarDeco,CollarDeco
+m_KittyPetUniformCollar_l_CollarDecoSymbol,CollarDecoSymbol
+m_KittyPetUniformCollar_l_ShoulderCuffLeft,ShoulderCuffLeft
+m_KittyPetUniformCollar_l_ShoulderCuffStripeLeft,ShoulderCuffStripeLeft
+m_KittyPetUniformCollar_l_ShoulderCuffRight,ShoulderCuffRight
+m_KittyPetUniformCollar_l_ShoulderCuffStripeRight,ShoulderCuffStripeRight
+m_KittyPetTail,KittyPetTail
+m_KittyPetTail_l_Tail,Tail
+m_KittyPetTail_l_TailStripe,TailStripe
+m_KittyPetBlindfold,KittyPetBlindfold
+m_KittyPetBlindfold_l_BlindfoldRim,BlindfoldRim
+m_KittyPetBlindfold_l_Blindfold,Blindfold
+m_KittyPetBlindfold_l_BlindfoldBrow,BlindfoldBrow
+m_FashionKittyPetBlindfold,FashionKittyPetBlindfold
+m_FashionKittyPetBlindfold_l_BlindfoldRim,BlindfoldRim
+m_FashionKittyPetBlindfold_l_Blindfold,Blindfold
+m_FashionKittyPetBlindfold_l_BlindfoldBrow,BlindfoldBrow
+m_KittyPetSteelCollar,KittyPetSteelCollar
+m_KittyPetSteelCollar_l_Collar,Collar
+m_KittyPetSteelCollar_l_CollarStripe,CollarStripe
+m_FashionKittyPetSteelCollar,FashionKittyPetSteelCollar
+m_FashionKittyPetSteelCollar_l_Collar,Collar
+m_FashionKittyPetSteelCollar_l_CollarStripe,CollarStripe
+m_KittyPetMittenLeft,KittyPetMittenLeft
+m_KittyPetMittenLeft_l_GloveLeft,GloveLeft
+m_KittyPetMittenLeft_l_GloveLeftPaw,GloveLeftPaw
+m_KittyPetMittenLeft_l_ForeGloveLeft,ForeGloveLeft
+m_KittyPetMittenLeft_l_ForeGloveLeftPaw,ForeGloveLeftPaw
+m_KittyPetMittenLeft_l_WristLeft,WristLeft
+m_KittyPetMittenLeft_l_BandWristLeft,BandWristLeft
+m_KittyPetMittenLeft_l_LockWristLeft,LockWristLeft
+m_KittyPetMittenLeft_l_ElbowLeft,ElbowLeft
+m_KittyPetMittenLeft_l_BandElbowLeft,BandElbowLeft
+m_KittyPetMittenLeft_l_LockElbowLeft,LockElbowLeft
+m_KittyPetMittenRight,KittyPetMittenRight
+m_KittyPetMittenRight_l_GloveRight,GloveRight
+m_KittyPetMittenRight_l_GloveRightPaw,GloveRightPaw
+m_KittyPetMittenRight_l_ForeGloveRight,ForeGloveRight
+m_KittyPetMittenRight_l_ForeGloveRightPaw,ForeGloveRightPaw
+m_KittyPetMittenRight_l_WristRight,WristRight
+m_KittyPetMittenRight_l_BandWristRight,BandWristRight
+m_KittyPetMittenRight_l_LockWristRight,LockWristRight
+m_KittyPetMittenRight_l_ElbowRight,ElbowRight
+m_KittyPetMittenRight_l_BandElbowRight,BandElbowRight
+m_KittyPetMittenRight_l_LockElbowRight,LockElbowRight
+m_KittyPetMittens,KittyPetMittens
+m_KittyPetMittens_l_GloveLeft,GloveLeft
+m_KittyPetMittens_l_GloveLeftPaw,GloveLeftPaw
+m_KittyPetMittens_l_ForeGloveLeft,ForeGloveLeft
+m_KittyPetMittens_l_ForeGloveLeftPaw,ForeGloveLeftPaw
+m_KittyPetMittens_l_WristLeft,WristLeft
+m_KittyPetMittens_l_BandWristLeft,BandWristLeft
+m_KittyPetMittens_l_LockWristLeft,LockWristLeft
+m_KittyPetMittens_l_ElbowLeft,ElbowLeft
+m_KittyPetMittens_l_BandElbowLeft,BandElbowLeft
+m_KittyPetMittens_l_LockElbowLeft,LockElbowLeft
+m_KittyPetMittens_l_GloveRight,GloveRight
+m_KittyPetMittens_l_GloveRightPaw,GloveRightPaw
+m_KittyPetMittens_l_ForeGloveRight,ForeGloveRight
+m_KittyPetMittens_l_ForeGloveRightPaw,ForeGloveRightPaw
+m_KittyPetMittens_l_WristRight,WristRight
+m_KittyPetMittens_l_BandWristRight,BandWristRight
+m_KittyPetMittens_l_LockWristRight,LockWristRight
+m_KittyPetMittens_l_ElbowRight,ElbowRight
+m_KittyPetMittens_l_BandElbowRight,BandElbowRight
+m_KittyPetMittens_l_LockElbowRight,LockElbowRight
+m_FashionKittyPetMittenLeft,FashionKittyPetMittenLeft
+m_FashionKittyPetMittenLeft_l_GloveLeft,GloveLeft
+m_FashionKittyPetMittenLeft_l_GloveLeftPaw,GloveLeftPaw
+m_FashionKittyPetMittenLeft_l_ForeGloveLeft,ForeGloveLeft
+m_FashionKittyPetMittenLeft_l_ForeGloveLeftPaw,ForeGloveLeftPaw
+m_FashionKittyPetMittenLeft_l_WristLeft,WristLeft
+m_FashionKittyPetMittenLeft_l_BandWristLeft,BandWristLeft
+m_FashionKittyPetMittenLeft_l_LockWristLeft,LockWristLeft
+m_FashionKittyPetMittenLeft_l_ElbowLeft,ElbowLeft
+m_FashionKittyPetMittenLeft_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPetMittenLeft_l_LockElbowLeft,LockElbowLeft
+m_FashionKittyPetMittenRight,FashionKittyPetMittenRight
+m_FashionKittyPetMittenRight_l_GloveRight,GloveRight
+m_FashionKittyPetMittenRight_l_GloveRightPaw,GloveRightPaw
+m_FashionKittyPetMittenRight_l_ForeGloveRight,ForeGloveRight
+m_FashionKittyPetMittenRight_l_ForeGloveRightPaw,ForeGloveRightPaw
+m_FashionKittyPetMittenRight_l_WristRight,WristRight
+m_FashionKittyPetMittenRight_l_BandWristRight,BandWristRight
+m_FashionKittyPetMittenRight_l_LockWristRight,LockWristRight
+m_FashionKittyPetMittenRight_l_ElbowRight,ElbowRight
+m_FashionKittyPetMittenRight_l_BandElbowRight,BandElbowRight
+m_FashionKittyPetMittenRight_l_LockElbowRight,LockElbowRight
+m_FashionKittyPetMittens,FashionKittyPetMittens
+m_FashionKittyPetMittens_l_GloveLeft,GloveLeft
+m_FashionKittyPetMittens_l_GloveLeftPaw,GloveLeftPaw
+m_FashionKittyPetMittens_l_ForeGloveLeft,ForeGloveLeft
+m_FashionKittyPetMittens_l_ForeGloveLeftPaw,ForeGloveLeftPaw
+m_FashionKittyPetMittens_l_WristLeft,WristLeft
+m_FashionKittyPetMittens_l_BandWristLeft,BandWristLeft
+m_FashionKittyPetMittens_l_LockWristLeft,LockWristLeft
+m_FashionKittyPetMittens_l_ElbowLeft,ElbowLeft
+m_FashionKittyPetMittens_l_BandElbowLeft,BandElbowLeft
+m_FashionKittyPetMittens_l_LockElbowLeft,LockElbowLeft
+m_FashionKittyPetMittens_l_GloveRight,GloveRight
+m_FashionKittyPetMittens_l_GloveRightPaw,GloveRightPaw
+m_FashionKittyPetMittens_l_ForeGloveRight,ForeGloveRight
+m_FashionKittyPetMittens_l_ForeGloveRightPaw,ForeGloveRightPaw
+m_FashionKittyPetMittens_l_WristRight,WristRight
+m_FashionKittyPetMittens_l_BandWristRight,BandWristRight
+m_FashionKittyPetMittens_l_LockWristRight,LockWristRight
+m_FashionKittyPetMittens_l_ElbowRight,ElbowRight
+m_FashionKittyPetMittens_l_BandElbowRight,BandElbowRight
+m_FashionKittyPetMittens_l_LockElbowRight,LockElbowRight
+m_KittyPetEars1,KittyPetEars1
+m_KittyPetEars1_l_Ears1L,Ears1L
+m_KittyPetEars1_l_Ears1R,Ears1R
+m_KittyPetEars1_l_Ears1InnerL,Ears1InnerL
+m_KittyPetEars1_l_Ears1InnerR,Ears1InnerR
+m_KittyPetEars2,KittyPetEars2
+m_KittyPetEars2_l_Ears2L,Ears2L
+m_KittyPetEars2_l_Ears2R,Ears2R
+m_KittyPetEars2_l_Ears2InnerL,Ears2InnerL
+m_KittyPetEars2_l_Ears2InnerR,Ears2InnerR
+m_KittyPetEarmuffs,KittyPetEarmuffs
+m_KittyPetEarmuffs_l_Band,Band
+m_KittyPetEarmuffs_l_EarmuffersL,EarmuffersL
+m_KittyPetEarmuffs_l_EarmuffersR,EarmuffersR
+m_KittyPetEarmuffsRestraint,KittyPetEarmuffsRestraint
+m_KittyPetEarmuffsRestraint_l_Band,Band
+m_KittyPetEarmuffsRestraint_l_EarmuffersL,EarmuffersL
+m_KittyPetEarmuffsRestraint_l_EarmuffersR,EarmuffersR
+m_KittyPetEars1Restraint,KittyPetEars1Restraint
+m_KittyPetEars1Restraint_l_Ears1L,Ears1L
+m_KittyPetEars1Restraint_l_Ears1R,Ears1R
+m_KittyPetEars1Restraint_l_Ears1InnerL,Ears1InnerL
+m_KittyPetEars1Restraint_l_Ears1InnerR,Ears1InnerR
+m_KittyPetEars2Restraint,KittyPetEars2Restraint
+m_KittyPetEars2Restraint_l_Ears2L,Ears2L
+m_KittyPetEars2Restraint_l_Ears2R,Ears2R
+m_KittyPetEars2Restraint_l_Ears2InnerL,Ears2InnerL
+m_KittyPetEars2Restraint_l_Ears2InnerR,Ears2InnerR
+m_KittyPetGag,KittyPetGag
+m_KittyPetGag_l_Gag,Gag
+m_KittyPetGag_l_GagCollar,GagCollar
+m_KittyPetGagSeamless,KittyPetGagSeamless
+m_KittyPetGagSeamless_l_GagSeamless,GagSeamless
+m_KittyPetGagSeamless_l_GagCollar,GagCollar
+m_KittyPetGagMouth,KittyPetGagMouth
+m_KittyPetGagMouth_l_GagMouth,GagMouth
+m_KittyPetGagMouth_l_GagCollar,GagCollar
+m_KittyPetGagMouthSeamless,KittyPetGagMouthSeamless
+m_KittyPetGagMouthSeamless_l_GagMouthSeamless,GagMouthSeamless
+m_KittyPetGagMouthSeamless_l_GagCollar,GagCollar
+m_FashionKittyPetGag,FashionKittyPetGag
+m_FashionKittyPetGag_l_Gag,Gag
+m_FashionKittyPetGag_l_GagCollar,GagCollar
+m_FashionKittyPetGagSeamless,FashionKittyPetGagSeamless
+m_FashionKittyPetGagSeamless_l_GagSeamless,GagSeamless
+m_FashionKittyPetGagSeamless_l_GagCollar,GagCollar
+m_FashionKittyPetGagMouth,FashionKittyPetGagMouth
+m_FashionKittyPetGagMouth_l_GagMouth,GagMouth
+m_FashionKittyPetGagMouth_l_GagCollar,GagCollar
+m_FashionKittyPetGagMouthSeamless,FashionKittyPetGagMouthSeamless
+m_FashionKittyPetGagMouthSeamless_l_GagMouthSeamless,GagMouthSeamless
+m_FashionKittyPetGagMouthSeamless_l_GagCollar,GagCollar
+m_KittyPetsuit,KittyPetsuit
+m_KittyPetsuit_l_Arms,Arms
+m_KittyPetsuit_l_ArmsPaws,ArmsPaws
+m_KittyPetsuit_l_Legs,Legs
+m_KittyPetsuit_l_LeftLegs,LeftLegs
+m_KittyPetsuit_l_LeftLegsPaws,LeftLegsPaws
+m_KittyPetsuit_l_FootRightKneel,FootRightKneel
+m_KittyPetsuit_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetsuit_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetsuit_l_Leotard,Leotard
+m_KittyPetsuit_l_LeotardChest,LeotardChest
+m_KittyPetsuit_l_Collar,Collar
+m_KittyPetSockLeft,KittyPetSockLeft
+m_KittyPetSockLeft_l_SockLeft,SockLeft
+m_KittyPetSockLeft_l_SockLeftPaws,SockLeftPaws
+m_KittyPetSockLeft_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetSockLeft_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetSockRight,KittyPetSockRight
+m_KittyPetSockRight_l_SockRight,SockRight
+m_KittyPetSockRight_l_FootRightKneel,FootRightKneel
+m_KittyPetSocks,KittyPetSocks
+m_KittyPetSocks_l_SockRight,SockRight
+m_KittyPetSocks_l_FootRightKneel,FootRightKneel
+m_KittyPetSocks_l_SockLeft,SockLeft
+m_KittyPetSocks_l_SockLeftPaws,SockLeftPaws
+m_KittyPetSocks_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetSocks_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetSocksRestraint,KittyPetSocksRestraint
+m_KittyPetSocksRestraint_l_SockRight,SockRight
+m_KittyPetSocksRestraint_l_FootRightKneel,FootRightKneel
+m_KittyPetSocksRestraint_l_SockLeft,SockLeft
+m_KittyPetSocksRestraint_l_SockLeftPaws,SockLeftPaws
+m_KittyPetSocksRestraint_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetSocksRestraint_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetPawLeft,KittyPetPawLeft
+m_KittyPetPawLeft_l_SockLeft,SockLeft
+m_KittyPetPawLeft_l_SockLeftPaws,SockLeftPaws
+m_KittyPetPawLeft_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetPawLeft_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetPawLeft_l_ThighLeft,ThighLeft
+m_KittyPetPawLeft_l_BandThighLeft,BandThighLeft
+m_KittyPetPawLeft_l_LockThighLeft,LockThighLeft
+m_KittyPetPawLeft_l_AnkleLeft,AnkleLeft
+m_KittyPetPawLeft_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPetPawLeft_l_LockAnkleLeft,LockAnkleLeft
+m_KittyPetPawRight,KittyPetPawRight
+m_KittyPetPawRight_l_SockRight,SockRight
+m_KittyPetPawRight_l_FootRightKneel,FootRightKneel
+m_KittyPetPawRight_l_ThighRight,ThighRight
+m_KittyPetPawRight_l_BandThighRight,BandThighRight
+m_KittyPetPawRight_l_LockThighRight,LockThighRight
+m_KittyPetPawRight_l_AnkleRight,AnkleRight
+m_KittyPetPawRight_l_BandAnkleRight,BandAnkleRight
+m_KittyPetPawRight_l_LockAnkleRight,LockAnkleRight
+m_KittyPetPaws,KittyPetPaws
+m_KittyPetPaws_l_SockRight,SockRight
+m_KittyPetPaws_l_FootRightKneel,FootRightKneel
+m_KittyPetPaws_l_ThighRight,ThighRight
+m_KittyPetPaws_l_BandThighRight,BandThighRight
+m_KittyPetPaws_l_LockThighRight,LockThighRight
+m_KittyPetPaws_l_AnkleRight,AnkleRight
+m_KittyPetPaws_l_BandAnkleRight,BandAnkleRight
+m_KittyPetPaws_l_LockAnkleRight,LockAnkleRight
+m_KittyPetPaws_l_SockLeft,SockLeft
+m_KittyPetPaws_l_SockLeftPaws,SockLeftPaws
+m_KittyPetPaws_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetPaws_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetPaws_l_ThighLeft,ThighLeft
+m_KittyPetPaws_l_BandThighLeft,BandThighLeft
+m_KittyPetPaws_l_LockThighLeft,LockThighLeft
+m_KittyPetPaws_l_AnkleLeft,AnkleLeft
+m_KittyPetPaws_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPetPaws_l_LockAnkleLeft,LockAnkleLeft
+m_KittyPetPawsRestraint,KittyPetPawsRestraint
+m_KittyPetPawsRestraint_l_SockRight,SockRight
+m_KittyPetPawsRestraint_l_FootRightKneel,FootRightKneel
+m_KittyPetPawsRestraint_l_ThighRight,ThighRight
+m_KittyPetPawsRestraint_l_BandThighRight,BandThighRight
+m_KittyPetPawsRestraint_l_LockThighRight,LockThighRight
+m_KittyPetPawsRestraint_l_AnkleRight,AnkleRight
+m_KittyPetPawsRestraint_l_BandAnkleRight,BandAnkleRight
+m_KittyPetPawsRestraint_l_LockAnkleRight,LockAnkleRight
+m_KittyPetPawsRestraint_l_SockLeft,SockLeft
+m_KittyPetPawsRestraint_l_SockLeftPaws,SockLeftPaws
+m_KittyPetPawsRestraint_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetPawsRestraint_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetPawsRestraint_l_ThighLeft,ThighLeft
+m_KittyPetPawsRestraint_l_BandThighLeft,BandThighLeft
+m_KittyPetPawsRestraint_l_LockThighLeft,LockThighLeft
+m_KittyPetPawsRestraint_l_AnkleLeft,AnkleLeft
+m_KittyPetPawsRestraint_l_BandAnkleLeft,BandAnkleLeft
+m_KittyPetPawsRestraint_l_LockAnkleLeft,LockAnkleLeft
+m_KittyPetPawShortLeft,KittyPetPawShortLeft
+m_KittyPetPawShortLeft_l_SockLeft,SockLeft
+m_KittyPetPawShortLeft_l_SockLeftPaws,SockLeftPaws
+m_KittyPetPawShortLeft_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetPawShortLeft_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetPawShortRight,KittyPetPawShortRight
+m_KittyPetPawShortRight_l_SockRight,SockRight
+m_KittyPetPawShortRight_l_FootRightKneel,FootRightKneel
+m_KittyPetPawsShort,KittyPetPawsShort
+m_KittyPetPawsShort_l_SockRight,SockRight
+m_KittyPetPawsShort_l_FootRightKneel,FootRightKneel
+m_KittyPetPawsShort_l_SockLeft,SockLeft
+m_KittyPetPawsShort_l_SockLeftPaws,SockLeftPaws
+m_KittyPetPawsShort_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetPawsShort_l_FootLeftHogtiePaws,FootLeftHogtiePaws
+m_KittyPetPawsShortRestraint,KittyPetPawsShortRestraint
+m_KittyPetPawsShortRestraint_l_SockRight,SockRight
+m_KittyPetPawsShortRestraint_l_FootRightKneel,FootRightKneel
+m_KittyPetPawsShortRestraint_l_SockLeft,SockLeft
+m_KittyPetPawsShortRestraint_l_SockLeftPaws,SockLeftPaws
+m_KittyPetPawsShortRestraint_l_FootLeftHogtie,FootLeftHogtie
+m_KittyPetPawsShortRestraint_l_FootLeftHogtiePaws,FootLeftHogtiePaws
 
 KDHideItems,Hide Items
 KDSortItems,Sort Items
@@ -21452,7 +22542,7 @@ AttackChefLock,"The chef makes sure you'll never steal again! (DamageTaken)"
 AttackChefBind,"The chef makes sure you'll never steal again! (+RestraintAdded)"
 AttackChef,"The chef spanks you with her frying pan! (DamageTaken)"
 
-KDSpawnChef,"As you finish, you look up and notice that someone is not very happy with you."
+KDSpawnChef,"As you eat, you look up and notice that someone is not very happy with you."
 
 ItemPickupBrownies,"You find some delicious brownies!"
 KinkyDungeonInventoryItemBrownies,Double Fudge Brownie
@@ -21882,6 +22972,13 @@ RestraintMithrilRopeCollarDesc2,"It will occasionally cause mithril ropes to app
 KDEffectTileTooltipPortals/DarkPortal,Dark Portal
 KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
 
+KDEffectTileTooltipDistractionMote,Essence Mote
+KDEffectTileTooltipDistractionMoteDesc,"A trainee can use this to focus."
+KDEffectTileTooltipDistractionMoteContact,Essence Mote
+KDEffectTileTooltipDistractionMoteContactDesc,"Pick this up to gain decaying miscast reduction."
+KDEffectTileTooltipSealSigil,Seal Sigil
+KDEffectTileTooltipSealSigilDesc,"Walk over it to erase it and unlock the next floor."
+
 NameDemonEye,The Shadow
 KillDemonEye,"The Shadow is exorcised... for now."
 AttackDemonEyeBind,"The Shadow overwhelms you with its power... (+RestraintAdded)"
@@ -22283,6 +23380,7 @@ KinkyDungeonInventoryItemDiscPickDesc2,"Features a replaceable head in case an u
 
 
 KDRep,Rep
+KDJourneyMap,Journey
 
 KDMagicWeapon,Magical Weapon
 
@@ -22345,7 +23443,7 @@ KDAkashicConflux_No,"You don't have enough Arcane Energy. You need AMNT."
 
 
 KinkyDungeonSpellChaoticOverflow,Chaotic Overflow
-KinkyDungeonSpellDescriptionChaoticOverflow,"Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences..."
+KinkyDungeonSpellDescriptionChaoticOverflow,"Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences..."
 KDChaoticOverflow_Yes,"Chaotic energy flows through you!!!"
 KDChaoticOverflow_NoBind,"You try to call forth the chaotic energy, but it isn't interested in you anymore..."
 KDChaoticOverflow_No,"You don't have enough Willpower. You need at least 25%."
@@ -22359,7 +23457,7 @@ ItemPickupDivineTear,"You find a shimmering macaron."
 KinkyDungeonInventoryItemDivineTear,Heavenly Crunch Macaron
 KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic permanently."
 KinkyDungeonInventoryItemDivineTearDesc,"Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful."
-KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a cursed item and/or removes all curses from one currently worn item of your choice."
+KinkyDungeonInventoryItemDivineTearDesc2,"Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice."
 
 rCommercePortal,"Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)"
 rCommercePortalGo,"(You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~"
@@ -22495,6 +23593,8 @@ KDWeaponTag_offhand,Offhand
 KDWeaponTagD_offhand,"Offhand: This weapon can be dual-wielded by some classes."
 KDWeaponTag_clumsy,2 Handed
 KDWeaponTagD_clumsy,"2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied."
+KDWeaponTag_stamPenType_Staff,Magical Focus
+KDWeaponTagD_stamPenType_Staff,"Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted."
 KDWeaponTag_precision,Precision
 KDWeaponTagD_precision,"Precision: Your arms need to be free to use this weapon."
 KDWeaponTag_noHands,Hands-Free
@@ -22565,7 +23665,7 @@ ItemPickupGunpowder,"You pick up a sack of gunpowder."
 KinkyDungeonSpellCastGunpowder,You toss some gunpowder on the floor!
 
 KinkyDungeonSpellRogueOffhand,"Dual Wield (Rogue)"
-KinkyDungeonSpellDescriptionRogueOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)"
+KinkyDungeonSpellDescriptionRogueOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)"
 
 KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
 KinkyDungeonSpellDescriptionWizardOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)"
@@ -22697,6 +23797,11 @@ KDFocusControlsAutoPassSpecial,"Pass thru special NPCs"
 KDFocusControlsAutoPathSuppressBeforeCombat,"Stop when enemies are first sighted"
 KDFocusControlsAutoPathSuppressDuringCombat,"Suppress during combat"
 KDFocusControlsAutoPathStepDuringCombat,"Step during combat"
+
+KDFocusControlsAutoWaitFast,"0.1s/turn"
+KDFocusControlsAutoWaitSlow,"1.5s/turn"
+KDFocusControlsAutoWaitNormal,"0.5s/turn"
+KDFocusControlsAutoWaitVeryFast,"0.01s/turn"
 
 KinkyDungeonSpellShadowGrasp,Shadowy Grasp
 
@@ -22908,7 +24013,7 @@ KDBulletTransparency,Make Bullets Transparent
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
-KDToggleModCompat,Mod Compatibility Mode
+KDToggleModCompat,Mod Compat Mode (requires reload)
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)
@@ -22992,7 +24097,7 @@ KDQuest_LatexQuest,Rescue some alchemists from their own experiment.
 KDQuestFail_LatexQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_LatexQuest,You have pleased the Goddess.
 KDQuestSucceedSub_LatexQuest,The Goddess calls you a good girl.
-KDQuest_LeatherQuest,Stop a rebels from making a pact with primordial beings.
+KDQuest_LeatherQuest,Stop rebels from making a pact with primordial beings.
 KDQuestFail_LeatherQuest,You did not do your quest! The Goddess has decided to punish you.
 KDQuestSucceed_LeatherQuest,You have pleased the Goddess.
 KDQuestSucceedSub_LeatherQuest,You have pleased the Goddess.
@@ -23090,6 +24195,36 @@ KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report 
 KDEscapeMethod_,None
 KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
+
+KDEscapeMinimap_Fail_SealSigil,Exit sealed!|Find the lair!
+KDEscapeMinimap_Pass_SealSigil,Sigils erased!
+KDEscapeMinimap_PassKill_SealSigil,Dragon defeated!
+KDEscapeMethod_SealSigil,Draconic Seal
+KDEscapeMethodDesc_SealSigil,"A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair."
+KDEscapeDoor_SealSigil,"A draconic spell keeps the door sealed. You will have to confront its owner."
+
+
+KDEscapeMinimap_Fail_WolfServer,Exits locked!|Destroy NUMBER Servers!
+KDEscapeMinimap_Pass_WolfServer,Security System Compromised!
+KDEscapeMinimap_Bypass_WolfServer,Clearance Granted!
+KDEscapeMethod_WolfServer,Destroy Nevermere Servers
+KDEscapeMethodDesc_WolfServer,Destroy Nevermere servers to unlock the door.
+KDEscapeDoor_WolfServer,Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
+NameWolfServer,Nevermere Server
+KillWolfServer,Server smashed!
+
+KDEscapeMinimap_Fail_DroneNode,Exits locked!|Destroy NUMBER Servers!
+KDEscapeMinimap_Pass_DroneNode,Security System Compromised!
+KDEscapeMinimap_Bypass_DroneNode,Clearance Granted!
+KDEscapeMethod_DroneNode,Destroy Drone Servers
+KDEscapeMethodDesc_DroneNode,Destroy Drone Node Servers to unlock the door.
+KDEscapeDoor_DroneNode,The path forward is controlled by several ancient Drone Servers. Destroy them.
+NameDroneNode,Drone Server Node
+KillDroneNode,Drone node destroyed!
+NameOldDroneNode,Rusty Server Node
+KillOldDroneNode,Drone node destroyed!
+KDAmbSound_NodeHum,loud beeping...
+
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)
 KDVarPrefPurified,(Purified)
@@ -23106,6 +24241,9 @@ KDVarPrefManaCostSpecific,Entuned
 KDVarPrefManaRegenOnKill,Draining
 KDVarSuffElementalEcho,of Echoes
 KDVarPrefElementalDmg,Infused
+KDVarPrefElementalDmg_stun,Explosive
+KDVarPrefElementalDmg_fire,Flaming
+KDVarPrefElementalDmg_cold,Shadow
 KDVarPrefManaRegen,Focusing
 KDVarSuffBaseDamageBuffMelee,of Empowerment
 KDVarSuffBaseDamageBuffMagic,of Destruction
@@ -23121,7 +24259,7 @@ KinkyDungeonBuffQuickness2,"Time is slowed by 2x"
 KinkyDungeonSpellQuickness3,Triple Accel
 KinkyDungeonSpellDescriptionQuickness3,"Slow down time by 1/3 for 10 turns (world time). Stamina regens 75% slower."
 KinkyDungeonBuffQuickness3,"Time is slowed by 3x"
-KinkyDungeonSpellQuickness4,Quadro Accel
+KinkyDungeonSpellQuickness4,Quad Accel
 KinkyDungeonSpellDescriptionQuickness4,"Slow down time by 1/4 for 10 turns (world time). Stamina does not regen."
 KinkyDungeonBuffQuickness5,"Time is slowed by 4x"
 KinkyDungeonSpellQuickness5,Total Accel
@@ -23133,7 +24271,7 @@ KDQuickness2_Floater,"Double Accel!"
 KDQuickness3_Yes,"Time slows down by 3x!"
 KDQuickness3_Floater,"Triple Accel!"
 KDQuickness4_Yes,"Time slows down by 4x!"
-KDQuickness4_Floater,"Quadro Accel!"
+KDQuickness4_Floater,"Quad Accel!"
 KDQuickness5_Yes,"Time has ceased to pass."
 KDQuickness5_Floater,"Total Accel!"
 
@@ -23431,9 +24569,9 @@ KinkyDungeonTrapSpawnCuffs,A set of shackles opens wide and starts going for you
 KinkyDungeonTrapSpawnMummyCursed,You hear moaning as the statues start to move...
 KinkyDungeonTrapSpawnBookBondage,Devious tomes emerge from the bookshelves!
 KinkyDungeonTrapSpawnMushy,Armed mushrooms emerge from the ground to defend their home!
-KinkyDungeonTrapPoltergeist,"Playful ghosts slip through the walls, giggling to themselves!"
-KinkyDungeonTrapOldDrones,"Ancient drones drop from the ceiling and come to life!"
-KinkyDungeonTrapObserver,"You were always being watched..."
+KinkyDungeonTrapSpawnPoltergeist,"Playful ghosts slip through the walls, giggling to themselves!"
+KinkyDungeonTrapSpawnOldDrones,"Ancient drones drop from the ceiling and come to life!"
+KinkyDungeonTrapSpawnObserver,"You were always being watched..."
 
 LootChestGunpowder,You find a store of gunpowder!
 
@@ -23463,9 +24601,11 @@ KinkyDungeonBuffDistractionShield,"You have formed a mental barrier..."
 
 
 KinkyDungeonSpellDistractionBurst,Desire Burst
-KinkyDungeonSpellDescriptionDistractionBurst,"Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
-KDDistractionBurst_Yes,"You channel your distraction into a powerful explosion!"
+KinkyDungeonSpellDescriptionDistractionBurst,"Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)"
+KDDistractionBurst_Yes,"You channel your distraction into the mote, overloading it!"
+KDDistractionBurst_YesP,"You channel your distraction into the motes, overloading them!"
 KDDistractionBurst_No,"You don't have enough of a desire to do that."
+KDDistractionBurst_NoMote,"You must target at least one Essence Mote."
 KDDistractionBurst_NoMana,"You have the desire but not the mana!"
 
 
@@ -23799,6 +24939,7 @@ KDPaletteCurse,Curse
 KDPaletteAncientRobot,Old Guardians
 KDPaletteMushy,Fungal
 KDPaletteBast,Bast
+KDPaletteBandit,Bandit
 KDPaletteElf,Elven
 KDPaletteGoddess,Divine
 KDPaletteMaidforce,Maid
@@ -23823,6 +24964,8 @@ KDToughArmor,"Tough Armor (1/2 crit mult while aware)"
 KDAbsoluteArmor,"Absolute Armor (1/2 crit mult)"
 
 KDDressNPC,Change Outfit
+KDRenameNPC,Rename
+KDRenameOrigNPC,Reset to NME
 KDZoomNPC,Enlarged View
 KDBackToGame,Back to Game
 
@@ -23832,6 +24975,8 @@ KDPrisoners,Prisoners
 
 KDPromoteNPC,Promote to Servant
 KDDemoteNPC,Demote
+KDKickOutGuest,Delete Guest
+KDKickOutGuestConfirm,Really Delete Guest?
 
 KDTeaseAttackResist_LeashGrab,The ENMY tries to grab you!
 
@@ -24239,6 +25384,11 @@ KDEffectTileTooltipManaFullDesc,"It's giving off a strange energy!"
 KDEffectTileTooltipMotionLamp,"Glass Plate"
 KDEffectTileTooltipMotionLampDesc,"Looks like it has lighting elements inside."
 
+KDEffectTileTooltipSpikeTrap,"???"
+KDEffectTileTooltipSpikeTrapDesc,"???"
+KDEffectTileTooltipSpikeTrapSeen,"???"
+KDEffectTileTooltipSpikeTrapSeenDesc,"???"
+
 KinkyDungeonSpellOneBarMissileBind,Many bars come out of the ground and restrain you!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
 KinkyDungeonSpellRestrainingBolt,Restraining Bolt
@@ -24353,13 +25503,14 @@ KDSideRoom_DemonShrine,"Dark Altar"
 KDSideRoom_BanditFort,"Bandit Hideout"
 KDSideRoom_DemonTransition,"Dimensional Rift"
 KDSideRoom_DragonCave,"Hoard"
+KDSideRoom_DragonLair,"Dragon's Lair"
 
 KDMapMod_,"None"
 KDMapMod_None,"None"
 KDMapMod_Witch,"Witch's Lair"
 KDMapMod_Mold,"Mold Infestation"
 KDMapMod_Bandit,"Bandit Raid"
-KDMapMod_Dragon,"Elemental Energy"
+KDMapMod_Dragon,"Dragon Sighting"
 KDMapMod_Plant,"Overgrown"
 KDMapMod_Slime,"Slime Infestation"
 KDMapMod_Wolf,"Wolfgirl Training"
@@ -24370,6 +25521,8 @@ KDRoomType_ShopStart,"Shop"
 KDRoomType_Chamber,"Chamber"
 KDRoomType_Warden,"Prison"
 KDRoomType_Dollmaker,"Sorting Room"
+KDRoomType_Jail,"Prison"
+KDRoomType_DragonLair,"Lair"
 
 KDHotbarTutorial,"Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs."
 
@@ -24419,10 +25572,10 @@ LootEjahlLeotard,"You find a ceremonial leotard."
 
 
 RestraintRobeOfChastity,The Robe of Chastity
-RestraintRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+RestraintRobeOfChastityDesc,"A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
 RestraintRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
 KinkyDungeonInventoryItemRobeOfChastity,The Robe of Chastity
-KinkyDungeonInventoryItemRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+KinkyDungeonInventoryItemRobeOfChastityDesc,"A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
 KinkyDungeonInventoryItemRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
 LootRobeOfChastity,"You retrieve an interesting article dubbed 'the Robe of Chastity."
 
@@ -24443,6 +25596,7 @@ NameDragonGirlCrystal,Crystal Dragon Girl
 KillDragonGirlCrystal,The dragon girl submits to you!
 AttackDragonGirlCrystal,The dragon girl slams you with several hurled crystals! (DamageTaken)
 AttackDragonGirlCrystalBind,"The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)"
+AttackDragonGirlCrystalLock,"The dragon girl conjures crystalline locks on you! (+RestraintAdded)"
 
 
 NameDragonQueenPoison,Poison Dragon Queen
@@ -24455,6 +25609,7 @@ NameDragonGirlPoison,Poison Dragon Girl
 KillDragonGirlPoison,The dragon girl submits to you!
 AttackDragonGirlPoison,The dragon girl slashes you with her venomous nails! (DamageTaken)
 AttackDragonGirlPoisonBind,"The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)"
+AttackDragonGirlPoisonLock,"The dragon girl holds you in place and locks your restraints! (+RestraintAdded)"
 
 
 
@@ -24466,6 +25621,7 @@ NameDragonGirlIce,Ice Dragon Girl
 KillDragonGirlIce,The dragon girl submits to you!
 AttackDragonGirlIce,The dragon girl slams you with several chunks of ice! (DamageTaken)
 AttackDragonGirlIceBind,"The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)"
+AttackDragonGirlIceLock,"The dragon girl conjures magical locks on you! (+RestraintAdded)"
 
 
 
@@ -24477,12 +25633,14 @@ NameDragonGirlShadow,Shadow Dragon Girl
 KillDragonGirlShadow,The dragon girl submits to you!
 AttackDragonGirlShadow,The dragon girl stares into your eyes! (DamageTaken)
 AttackDragonGirlShadowBind,"The dragon girl reaches out with a shadowy grip! (+RestraintAdded)"
+AttackDragonGirlShadowLock,"The dragon girl reaches out and locks your restraints! (+RestraintAdded)"
 
 
 
 KDCageDrop,A cage falls from the ceiling on top of you!
 KDCrystalEncase,Crystals grow across your body and encase you!
 KDIceEncase,You are encased in a solid block of ice!
+KDShadowEncase,A shadowy sphere rises from the ground and wraps over you tightly!
 KDShadowBall,Shadows coalesce themselves around you in spherical form!
 
 RestraintCrystal,Crystal Encasement
@@ -24549,6 +25707,7 @@ RestraintVineSuspensionDesc2,"You are left dangling! Maybe if you swing hard eno
 
 slimy_science_1.ogg,Darkstar Studios - Slimy Science
 GENERIC-DOLLRACK.ogg,Kocaeli - Doll Storage
+factory_ambient.ogg,Kocaeli - Factory
 AAA.ogg,Kocaeli - AAA
 DD.ogg,Kocaeli - DD
 Ada18980_PlayingWithFire.ogg,Ada18980 - Playing with fire
@@ -24556,7 +25715,10 @@ Ada18980_SmokingIsBadForYou.ogg,Ada18980 - Smoking is bad for you
 AREA1-GRAVEYARD.ogg,Kocaeli - Graveyard
 AREA2-ANCIENTTOMBS.ogg,Kocaeli - Ancient Tombs
 AREA4-MAGICLIBRARY.ogg,Kocaeli - Magic Library
+black_cat.ogg,Kocaeli - Black Cat
+black_cat_angry.ogg,Kocaeli - Black Cat 2
 AREA5-UNDERGROUNDJUNGLE.ogg,Kocaeli - Underground Jungle
+UntitledRobot.ogg,Kocaeli - Untitled
 AREA7-LOSTTEMPLE.ogg,Kocaeli - Lost Temple
 AREA8-ORRERY.ogg,Kocaeli - Orrery
 AREA9-BELLOWS.ogg,Kocaeli - Bellows
@@ -24954,14 +26116,17 @@ KDPropField_XPivot,X Pivot
 KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
-KDPropField_SuppressDynamic,NoDynamicArmor (0 or 1)
-KDPropField_HideOverridden,HideOverridden (0 or 1)
-KDPropField_NoOverride,NoOverride (0 or 1)
+KDPropField_SuppressDynamic,NoDynamicArmor (0/1)
+KDPropField_AddPose,AddPose
+KDPropField_HideOverridden,HideOverridden (0/1)
+KDPropField_NoOverride,NoOverride (0/1)
 KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
 KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
 KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
 KDPropField_Protected,Protected
+KDPropField_DisplaceAmount,Displace Amount
+KDPropField_EraseAmount,Erase Amount
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File
@@ -24979,6 +26144,7 @@ KinkyDungeonStatDescFreeBoob2,"Chastity bras are much rarer."
 
 KDFacilitiesLocked,Find an elevator to the Summit in order to access facilities.
 KDFacilityLocal,Visit the Summit to allow additional interactions with this facility.
+KDFacilityLocal2,Must visit the Summit or be in a perk shrine to recycle restraints.
 
 KDFacilityInfo_Training,"+AMNT% Training/Tick"
 KDFacilityInfo_Opinion,"+AMNT% Opinion/Tick"
@@ -25167,6 +26333,7 @@ KDCollectionTabStatusOption_Guest,Guests
 KDCollectionAssign,"Assign to "
 KDCollectionRemove,"Remove from "
 KDCollectionCant,"Can't assign to "
+KDCollectionCantParty,"Remove from party to assign "
 KDImprison,Imprison
 
 KDNPCOpinion,"Opinion: "
@@ -25235,6 +26402,12 @@ KDCuddleLoungeInfo,Submissive prisoners and dominant servants add different amou
 
 KDCollectionTab_Release,Release Prisoners
 KDDrawSelectedTab_Release,Release
+
+KDSummonServant,Summon
+KDSummonServantAlreadyPresent,Already present in summit
+KDSummonServantUnavailable,NPC is unavailable
+KDSummonServantSummit,Only available in the Summit
+
 
 KDReleaseMark,Mark
 KDReleaseUnmark,Unmark
@@ -25327,12 +26500,13 @@ KDCallForHelpHint,"Looks like you might be stuck. Try calling for help (bottom r
 
 KDBackupOutfits,Backup
 KDLoadOutfits,Restore
-KDSetPalette,Set Palette
+KDSetPalette,Extra Options
+KDVisualOpt_HideArmorWardrobe,Preview without Armor
 
 KinkyDungeonStatMC_Mage,"Wizard"
 
 KDSlotLocFormat,"FLR-DGN"
-KDSlotLocNG+," (NG+AMNT)"
+KDSlotLocNG," (NG+AMNT)"
 
 
 KDBondageFailInvalidTargetHandcuffs,Target must be vulnerable.
@@ -25350,6 +26524,7 @@ KDPickaxeFailNoTarget,"Must select a cracked wall."
 KDPickaxeFailNoComp,"Your arms aren't free to swing the axe!"
 KDPickaxeFailNoOpen,"You strike the earth, but it is nothing but solid wall on the other side."
 KDPickaxeSucceed,"You strike the earth! It crumbles before you!"
+KDWallAttemptToMine,"Click again to automatically mine the wall with your pickaxe."
 
 KDTeleportPlateReact,The planar focus resonates with the teleportation magic!
 KDTeleportPlateManaReact,"The planar focusing crystal activates! Mana is drained, and turns into bindings!"
@@ -25411,6 +26586,7 @@ KDModVer," v"
 
 KDLivingCollarSuspendDisenchant,Magical disenchantment suspends your living collar for AMNT turns
 
+KDBindingAdd,"(will add AMNT TPE binding)"
 KDBindType_Energy,Hardlight
 KDBindType_Magic,Magic
 KDBindType_Leather,Leather
@@ -25424,6 +26600,7 @@ KDBindType_Tape,Tape
 KDBindType_Vine,Vine
 KDBindType_Ice,Ice
 KDBindType_Furniture,Furniture
+KDBindType_Wrapping,Wrapping
 
 KDSaving,Saving...
 KDSaved,Game Saved
@@ -25435,8 +26612,6 @@ KDConjuredItemVanish,The conjured ITMN vanishes as it comes off.
 
 KDWardenTightened,AMNT restraints added since last tick~
 KDWardenConfiscate,AMNT restraints confiscated since last tick~
-KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
-
 KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to deposit restraints.
 
 KDContainerBack_Facilities,Back to Facilities
@@ -25529,6 +26704,7 @@ KinkyDungeonSpellZombieBuff,Undead Frenzy
 KinkyDungeonSpellEnemyCM1,Command Word
 KinkyDungeonSpellRopeAttack,Rope Ambush
 KinkyDungeonSpellParasolBuff,Defensive Charm
+KinkyDungeonSpellShieldTheWitch,Shield the Witch
 KinkyDungeonSpellEnemyFlashBomb,Flashbang
 KinkyDungeonSpellMinigunWindup,Tracer Rounds
 KinkyDungeonSpellGhostAttack,The Spookening
@@ -25613,3 +26789,567 @@ dTheWardenFuuka_AggressiveF,"Fuuka, take her down."
 dTheWardenFuuka_AggressiveFGag,"(Send Fuuka to fight her)"
 dTheWardenFuuka_Aggressive,"That is none of your business. Now kneel."
 dTheWardenFuuka_AggressiveGag,"(Fight without listening.)"
+
+
+KinkyDungeonSpellHexWrapping,Blessed Hex
+KinkyDungeonSpellHexOrb,Hexing Orb
+KinkyDungeonSpellHexLatexExplosion,Hexed Latex Engulf
+KinkyDungeonSpellHexWrappingBind,Hex Binding
+
+KDLoreTextCover,"Here you will find various scraps of documents and lore you've recovered throughout your adventures."
+KDLoreTitleCover,"Your Journal"
+KDLoreLabelCover,"Cover"
+KDLoreTextCath0,"I am writing this journal in the off chance that I do not come return from the Agarthan ruins. If you find this, please make an effort to deliver it back to the surface for the good of all the women lured in by its secrets."
+KDLoreTitleCath0,"Catherine Willows' Journal (preface)"
+KDLoreLabelCath0,"Willows 0"
+KDLoreTextCathGrv1,"As I scaled the mountain, I came across a massive graveyard above the treeline, a grand memorial to those who died before the Great Work. This graveyard extends into the mouth of the cave, and the guards told me not to deface any of the graves, or else the ghosts will come and get me. It would be easier to follow their instructions if there weren't so much treasure still hidden here! After all, most of us are deep in the red after sailing all this way."
+KDLoreTitleCathGrv1,"Catherine Willows' Journal (pg. 7)"
+KDLoreLabelCathGrv1,"Willows 7"
+KDLoreTextCathGrv2,"It's hard to imagine I'm in a cave. Everything is so decorated and well-preserved, it's almost as if decades of adventurers never found their way to this island. In the distant future when every last piece of treasure has been hauled out of here, I imagine they'll set this place up as a tourist attraction."
+KDLoreTitleCathGrv2,"Catherine Willows' Journal (pg. 8)"
+KDLoreLabelCathGrv2,"Willows 8"
+KDLoreTextCathGrv3,"I spoke with a few locals while resupplying at the port. Apparently the village up here is far older than the twenty-some years the Adventurer's Guild has been on the island. The locals call the mountain 'Ejahl,' but the consensus is that this is the site of the legendary city Agartha where the Archmagus herself made her discovery.|(The page is dated about fifty years ago)"
+KDLoreTitleCathGrv3,"Catherine Willows' Journal (pg. 14)"
+KDLoreLabelCathGrv3,"Willows 14"
+KDLoreTextCathCat1,"I made it to a deeper floor today, and was greeted by a skeleton trying to tie me up. Great.|I've looked into the local name for this mountain, 'Ejahl,' and found a footnote in the history books talking about some petty kingdom that laid siege to Agartha. There's no record of them actually winning the siege, though. I've heard there's a massive library somewhere down here, maybe I'll find answers there."
+KDLoreTitleCathCat1,"Catherine Willows' Journal (pg. 17)"
+KDLoreLabelCathCat1,"Willows 17"
+KDLoreTextCathCat2,"There was a warrior in the catacombs today. She appears to have mastered the art of witty comebacks, as I truly could not come up with anything to say that did not further humiliate myself. Fortunately her insults came at her companions' expense, and they allowed me to defeat her in a solitary duel."
+KDLoreTitleCathCat2,"Catherine Willows' Journal (pg. 20)"
+KDLoreLabelCathCat2,"Willows 20"
+KDLoreTextCathCat3,"I almost found myself the recipient of a powerful binding arrow enchanted with force runes. Had I been hit, I would have been knocked back against the walls with my arms pinned by glowing conjured cuffs. Fortunately, this projectile hit a skeleton that was attacking me instead, and I was able to retreat."
+KDLoreTitleCathCat3,"Catherine Willows' Journal (pg. 21)"
+KDLoreLabelCathCat3,"Willows 21"
+KDLoreTextCathTmb,"In my travels I encountered a curious tomb filled with the scent of incense and herbs. Strange statues lined the halls on stone pedestals, standing as an intimidating reminder of what happens to those who disturb the locals...|I encountered resistance from the locals, who seemed to regard outsiders as 'cursed' and sought to capture me in an effort to give me a 'blessing.' I highly doubt that anyone has been truly blessed by their efforts, well-intentioned or not."
+KDLoreTitleCathTmb,"Catherine Willows' Journal (pg. 24)"
+KDLoreLabelCathTmb,"Willows 24"
+KDLoreTextCathTmb2,"This 'blessing' of theirs appears to be an old ritual for immortality. I believe these peoples are older than the Great Work, based on the ancient dialect they speak and the outdated script they use.|Whatever the case may be, their method seems inexact and prone to failure, as demonstrated by their near maniacal devotion to 'bless' every adventurer they come across."
+KDLoreTitleCathTmb2,"Catherine Willows' Journal (pg. 25)"
+KDLoreLabelCathTmb2,"Willows 25"
+KDLoreTextCathTmb3,"There are two 'castes' in the Bast cult. The first are the 'blessed,' and the second are their watchful guardians. The unintuitive bit is that the 'blessed' are the ones wrapped up and sealed away inside statues, sarcophagi, and anything else the guardians can stick a person into. The free ones wandering around grabbing people? They're the ones who weren't 'blessed' apparently."
+KDLoreTitleCathTmb3,"Catherine Willows' Journal (pg. 26)"
+KDLoreLabelCathTmb3,"Willows 26"
+KDLoreTextCathLib1,"I've found it! The Archmagus' library! Much to my chagrin, however, the place has been ransacked by witches and a curious group of mages in search of inspiration from ancient fashion choices."
+KDLoreTitleCathLib1,"Catherine Willows' Journal (pg. 30)"
+KDLoreLabelCathLib1,"Willows 30"
+KDLoreTextCathLib2,"It appears someone got to the Archmagus' writings before I could. Nonetheless, I will continue my search for Vinlaga's personal study. Perhaps her research materials and drafts might shed some light on my condition."
+KDLoreTitleCathLib2,"Catherine Willows' Journal (pg. 31)"
+KDLoreLabelCathLib2,"Willows 31"
+KDLoreTextCathLib3,"I have learned of an ancient artifact, called the Mistress' Staff. Its history and owner are hotly debated, with some attributing it to the Archmagus herself, while others say it was developed by the magical warlords that followed. Most all sources agree that its signature feature is the ability to reverse the effects of the Great Work on any person."
+KDLoreTitleCathLib3,"Catherine Willows' Journal (pg. 36)"
+KDLoreLabelCathLib3,"Willows 33"
+KDLoreTextCathLib4,"There is a treasure trove of ancient history here that the blasted Dressmakers had no use for. I found a map from the 'Kingdom of Ejahl,' with sketches of many islands including this one. Like most of the warlord states, they failed to make a lasting impact on the architecture of the island, but it appears the island was uninhabited for some time between the fall of Agartha and its resettlement by Ejahl."
+KDLoreTitleCathLib4,"Catherine Willows' Journal (pg. 41)"
+KDLoreLabelCathLib4,"Willows 41"
+KDLoreTextCathLib5,"...I must find it.|They are looking for it.|They CANNOT be allowed to have it."
+KDLoreTitleCathLib5,"Catherine Willows' Journal (pg. 47)"
+KDLoreLabelCathLib5,"Willows 37"
+KDLoreTextCathJng1,"I saw my reflection in a pool of water today. My hair looked much more silver than I remember it. I hope this isn't a side effect of all the magic I'd used to make it to this point."
+KDLoreTitleCathJng1,"Catherine Willows' Journal (pg. 50)"
+KDLoreLabelCathJng1,"Willows 50"
+KDLoreTextCathJng2,"I heard the bandits are looking for the Mistress' Staff. I'm not too worried--they wouldn't know what to do with it. It's that damned witch I'm worried about.|If my astute reader has come this far, you should beware the Silver Witch. She is working with forces that cannot be trusted."
+KDLoreTitleCathJng2,"Catherine Willows' Journal (pg. 51)"
+KDLoreLabelCathJng2,"Willows 51"
+KDLoreTextSW10,"It seems I am not alone in my search for the Staff. To whom it may concern: the Great Work is a lie, and it will doom us all. If you care for your soul, you need to break the cycle, and for that we need a key: the Mistress' Staff."
+KDLoreTitleSW10,"Silver Witch's Notes #10"
+KDLoreLabelSW10,"Silver 10"
+KDLoreTextSW2,"I met an adventurer who managed to erase weeks of golem research in the blink of an eye. This is why we Summoners have to scatter our works far and wide... if only they knew what we are working towards."
+KDLoreTitleSW2,"Silver Witch's Notes #2"
+KDLoreLabelSW2,"Silver 2"
+KDLoreTextSW3,"The dimensional rift is especially active today. I spoke with some of the voices the other night, they offered me immortality in exchange for material wealth. They must have called the wrong universe or something..."
+KDLoreTitleSW3,"Silver Witch's Notes #3"
+KDLoreLabelSW3,"Silver 3"
+KDLoreTextSW18,"My new golem project did not go as expected. I'd expected the primordial one to answer once I'd opened the gate, but there was nothing but a horde of star demons which I quickly dispatched. Could this mean the source of primordial latex is not outside this universe, as I had thought, but inside? I must investigate further."
+KDLoreTitleSW18,"Silver Witch's Notes #18"
+KDLoreLabelSW18,"Silver 18"
+KDLoreTextSW15,"She did it again. Barged in on my work and called me a 'purveyor of evil magics,' whatever that means. Magic isn't evil, it was given to us directly by the gods! At least I hid my new golem in a different study of mine..."
+KDLoreTitleSW15,"Silver Witch's Notes #15"
+KDLoreLabelSW15,"Silver 15"
+KDLoreTextSW4,"Throughout my studies I have chased after the existence of a being I call 'the Primordial One.' My theories stem from the following observations:|1)Slimes were not present in ancient history, and appeared during my lifetime as a force of nature.|2)Slime can be transmuted into almost any known material, like a Prima Materia of sorts.|3) A fragment of Sariel's notes, one of my most guarded possessions, discusses the existence of slimes long before they were first observed in the world.|Based on this, I believe the world must have been created through the influence of some primordial being who then left, but must be returning somehow.|I'm sure this being holds the key to repairing our bodies."
+KDLoreTitleSW4,"Silver Witch's Notes on the Primordial One"
+KDLoreLabelSW4,"Silver 4"
+KDLoreTextSW7,"Blast. An adventurer stole one of my notebooks, and now I'm encountering various cultists and weirdos trying to summon the Primordial One themselves. This is why I never bother to publish my works..."
+KDLoreTitleSW7,"Silver Witch's Notes #7"
+KDLoreLabelSW7,"Silver 7"
+KDLoreTextSW106,"I haven't heard of that adventurer in decades. Perhaps her nosiness finally caught up to her?"
+KDLoreTitleSW106,"Silver Witch's Notes #106"
+KDLoreLabelSW106,"Silver 106"
+KDLoreTextSW117,"There is a new presence in the mountain. An opportunist that calls herself 'the Dollmaker.' Claims to be the lost heir to the Kingdom of Ejahl. Please~.|I've seen those hackjobs and reprogrammed wrecks. If there even was a Kingdom of Ejahl, surely their army would consist of more than just scrapped combat drones?"
+KDLoreTitleSW117,"Silver Witch's Notes #117"
+KDLoreLabelSW117,"Silver 117"
+KDLoreTextEJ1,"The Kingdom of Ejahl appeared in Agartha 170 years after the death of Sariel Vinlaga. It had three* rulers who vied for the throne at different times:|Diana, Princess of Machinery|Emer, the Warsage|And the Dollmaker, High General of the Kingdom||*Some manuscripts read 'two'"
+KDLoreTitleEJ1,"The Chronicles of Ejahl"
+KDLoreLabelEJ1,"Ejahl 1"
+KDLoreTextEJ2,"The Kingdom of Ejahl ruled the island of Agartha for 30 years before its collapse. During the last war, an unknown figure captured the majority of its army and the majority of the population fled by boat. No one was left on the island."
+KDLoreTitleEJ2,"The Fall of Ejahl"
+KDLoreLabelEJ2,"Ejahl 2"
+KDLoreTexten.BlindZombie,"Danger Level: Nearly Harmless|A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.BlindZombie,"Zombie"
+KDLoreLabelen.BlindZombie,"Zombie"
+KDLoreTexten.FastZombie,"Danger Level: Normal|These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.FastZombie,"Angry Zombie"
+KDLoreLabelen.FastZombie,"Fast Z."
+KDLoreTexten.MageZombie,"Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.MageZombie,"Mage Zombie"
+KDLoreLabelen.MageZombie,"Mage Z."
+KDLoreTexten.SamuraiZombie,"Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.SamuraiZombie,"Warrior Zombie"
+KDLoreLabelen.SamuraiZombie,"Warrior Z."
+KDLoreTexten.TalismanZombie,"Danger Level: High|A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.TalismanZombie,"Talisman Zombie"
+KDLoreLabelen.TalismanZombie,"Talisman Z."
+KDLoreTexten.Ghost,"Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.Ghost,"Ghost"
+KDLoreLabelen.Ghost,"Ghost"
+KDLoreTexten.Poltergeist,"Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.Poltergeist,"Poltergeist"
+KDLoreLabelen.Poltergeist,"Poltergeist"
+KDLoreTexten.TickleTerror,"Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.TickleTerror,"Tickle Terror"
+KDLoreLabelen.TickleTerror,"Tickle Terror"
+KDLoreTexten.GreedyGhast,"Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.GreedyGhast,"Greedy Ghast"
+KDLoreLabelen.GreedyGhast,"Greedy Ghast"
+KDLoreTexten.HugHorror,"Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.HugHorror,"Hug Horror"
+KDLoreLabelen.HugHorror,"Hug Horror"
+KDLoreTexten.Witches,"Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.Witches,"The Witches' Coven"
+KDLoreLabelen.Witches,"Witches"
+KDLoreTexten.Conjure,"Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.Conjure,"Master Conjurer"
+KDLoreLabelen.Conjure,"Conjurer"
+KDLoreTexten.mummy,"Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.mummy,"Bast Mummy"
+KDLoreLabelen.mummy,"Mummy"
+KDLoreTexten.meleecleric,"Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows"
+KDLoreTitleen.meleecleric,"Bast Clerics"
+KDLoreLabelen.meleecleric,"Mummy"
+RestraintBreastplate,"Breastplate"
+RestraintBreastplateDesc,"Rock-solid and form-fitting."
+RestraintBreastplateDesc2,"Provides minor protection against enemy attacks. Decreases stealth."
+RestraintBreastplateCommon,"Breastplate"
+RestraintBreastplateCommonDesc,"Rock-solid and form-fitting."
+RestraintBreastplateCommonDesc2,"Provides minor protection against enemy attacks. Decreases stealth."
+RestraintBustier,"Adventuring Corset"
+RestraintBustierDesc,"Protects your organs and your sense of style."
+RestraintBustierDesc2,"Provides minor protection against enemy attacks at the cost of flexibility."
+RestraintBustierCommon,"Adventuring Corset"
+RestraintBustierCommonDesc,"Protects your organs and your sense of style."
+RestraintBustierCommonDesc2,"Provides minor protection against enemy attacks at the cost of flexibility."
+RestraintSwimsuit,"Swimsuit"
+RestraintSwimsuitDesc,"The best uniform. Has a (lockable) zipper in the back for convenience!"
+RestraintSwimsuitDesc2,"Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist, and being drenched dries faster."
+RestraintSwimsuitCommon,"Swimsuit"
+RestraintSwimsuitCommonDesc,"The best uniform. Has a (lockable) zipper in the back for convenience!"
+RestraintSwimsuitCommonDesc2,"Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist, and being drenched dries faster."
+RestraintRobeOfChastity,"Robe of Chastity"
+RestraintRobeOfChastityDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+RestraintRobeOfChastityDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
+RestraintRobeOfChastityCommon,"Robe of Chastity"
+RestraintRobeOfChastityCommonDesc,"A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it."
+RestraintRobeOfChastityCommonDesc2,"It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire."
+RestraintChainTunic,"Chainmail Tank Top"
+RestraintChainTunicDesc,"Cumbersome, but effective!"
+RestraintChainTunicDesc2,"Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder."
+RestraintChainTunicCommon,"Chainmail Tank Top"
+RestraintChainTunicCommonDesc,"Cumbersome, but effective!"
+RestraintChainTunicCommonDesc2,"Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder."
+RestraintChainBikini,"Chainmail Bikini"
+RestraintChainBikiniDesc,"Covers the important bits, anyway."
+RestraintChainBikiniDesc2,"+20 Bondage Resist. Conducts electricity."
+RestraintChainBikiniCommon,"Chainmail Bikini"
+RestraintChainBikiniCommonDesc,"Covers the important bits, anyway."
+RestraintChainBikiniCommonDesc2,"+20 Bondage Resist. Conducts electricity."
+RestraintSteelArmor,"Light Plate Armor"
+RestraintSteelArmorDesc,"Knight in shining rest-err, armor!"
+RestraintSteelArmorDesc2,"Provides +5 armor and high protection. No impact to stealth or evasion"
+RestraintSteelArmorCommon,"Light Plate Armor"
+RestraintSteelArmorCommonDesc,"Knight in shining rest-err, armor!"
+RestraintSteelArmorCommonDesc2,"Provides +5 armor and high protection. No impact to stealth or evasion"
+RestraintMageArmor,"Wizard's Robe"
+RestraintMageArmorDesc,"I have the power!"
+RestraintMageArmorDesc2,"+30% spell damage and +10 spell ward"
+RestraintMageArmorCommon,"Wizard's Robe"
+RestraintMageArmorCommonDesc,"I have the power!"
+RestraintMageArmorCommonDesc2,"+30% spell damage and +10 spell ward"
+RestraintSteelSkirt2,"Chain Skirt"
+RestraintSteelSkirt2Desc,"A defensive garment providing optimal coverage to the lower torso."
+RestraintSteelSkirt2Desc2,"Provides medium protection. No impact to stealth or evasion"
+RestraintSteelSkirt2Common,"Chain Skirt"
+RestraintSteelSkirt2CommonDesc,"A defensive garment providing optimal coverage to the lower torso."
+RestraintSteelSkirt2CommonDesc2,"Provides medium protection. No impact to stealth or evasion"
+RestraintSteelSkirt,"Armored Skirt"
+RestraintSteelSkirtDesc,"Knight in shining rest-err, armor!"
+RestraintSteelSkirtDesc2,"Provides +5 armor and high protection. No impact to stealth or evasion"
+RestraintSteelSkirtCommon,"Armored Skirt"
+RestraintSteelSkirtCommonDesc,"Knight in shining rest-err, armor!"
+RestraintSteelSkirtCommonDesc2,"Provides +5 armor and high protection. No impact to stealth or evasion"
+RestraintGauntlets,"Gauntlets"
+RestraintGauntletsDesc,"Gloves with an iron grip."
+RestraintGauntletsDesc2,"Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking."
+RestraintGauntletsCommon,"Gauntlets"
+RestraintGauntletsCommonDesc,"Gloves with an iron grip."
+RestraintGauntletsCommonDesc2,"Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking."
+RestraintLeatherGloves,"Leather Gloves"
+RestraintLeatherGlovesDesc,"Protecting you in style."
+RestraintLeatherGlovesDesc2,"Provides minor protection against enemy attacks."
+RestraintLeatherGlovesCommon,"Leather Gloves"
+RestraintLeatherGlovesCommonDesc,"Protecting you in style."
+RestraintLeatherGlovesCommonDesc2,"Provides minor protection against enemy attacks."
+RestraintBracers,"Steel Pauldrons"
+RestraintBracersDesc,"Dependable protection for the average adventurer."
+RestraintBracersDesc2,"Provides minor protection against enemy attacks."
+RestraintBracersCommon,"Steel Pauldrons"
+RestraintBracersCommonDesc,"Dependable protection for the average adventurer."
+RestraintBracersCommonDesc2,"Provides minor protection against enemy attacks."
+RestraintCape,"Ranger's Cape"
+RestraintCapeDesc,"Inbued with the powers of moss and ferns and stuff."
+RestraintCapeDesc2,"+25 Evasion. Increases stealth slightly."
+RestraintCapeCommon,"Ranger's Cape"
+RestraintCapeCommonDesc,"Inbued with the powers of moss and ferns and stuff."
+RestraintCapeCommonDesc2,"+25 Evasion. Increases stealth slightly."
+RestraintMagicArmbands,"Oracle's Armbands"
+RestraintMagicArmbandsDesc,"Armbands made of a slightly magical material."
+RestraintMagicArmbandsDesc2,"+5% spell damage. +5 Magic Armor."
+RestraintMagicArmbandsCommon,"Oracle's Armbands"
+RestraintMagicArmbandsCommonDesc,"Armbands made of a slightly magical material."
+RestraintMagicArmbandsCommonDesc2,"+5% spell damage. +5 Magic Armor."
+RestraintSteelBoots,"Armored Boots"
+RestraintSteelBootsDesc,"Noisy, but fashionable!"
+RestraintSteelBootsDesc2,"Provides +5 armor and protection against enemy attacks. Decreases stealth."
+RestraintSteelBootsCommon,"Armored Boots"
+RestraintSteelBootsCommonDesc,"Noisy, but fashionable!"
+RestraintSteelBootsCommonDesc2,"Provides +5 armor and protection against enemy attacks. Decreases stealth."
+RestraintLeatherBoots,"Hide Boots"
+RestraintLeatherBootsDesc,"For stepping into all kinds of trouble!"
+RestraintLeatherBootsDesc2,"Provides minor protection against enemy attacks."
+RestraintLeatherBootsCommon,"Hide Boots"
+RestraintLeatherBootsCommonDesc,"For stepping into all kinds of trouble!"
+RestraintLeatherBootsCommonDesc2,"Provides minor protection against enemy attacks."
+
+KDGenMap,Generating Map...
+
+KinkyDungeonSpellHexWrappingDamage,Mystic wrappings constrict around your body!
+KinkyDungeonSpellOneBarMissile,One Bar Missile
+
+KDTut_Cut,You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
+KDTut_CutCrack,"If you can't get your knife into place, try sitting next to a crack on the wall."
+KDTut_CutCrack2,"Your character will automatically try to lodge the knife into the wall."
+KDTut_CutMagic,"You'll need to find a cutting weapon with the magic tag to cut magic items."
+KDTut_CutMagicHas,"You need to equip your magic cutting weapon to cut magic items."
+KDTut_Surr,You can surrender in the menu if you want to be treated more gently.
+
+KDTut_HelpGhost,That ghost looks less aggressive than the others. Maybe she can help?
+KDTut_HelpAlly,Need help? Try asking a neutral NPC for assistance!
+
+KDTut_TeleCrit,You flanked the enemy! Now attack its weak point for massive damage!
+KDTut_Vulnerable2,Enemies that miss an attack become vulnerable for a turn.
+KDTut_Vulnerable,Attack them for a guaranteed critical hit!
+KDTut_Dodge,before the attack lands! You can tell the difference by the border of the tiles.
+KDTut_Dodge2,"Enemy attacks take time to hit. Make sure to step out of the warning tiles,"
+KDTut_Projec,You can dodge out of the way of most projectiles. Avoid the marked tiles.
+KDTut_Charge,'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
+KDTut_Charge2,"Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold."
+KDTut_Elevator,"There is an elevator in this room, but it won't function until you defeat major enemies on this level."
+KDTut_Bondage,"If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess."
+
+KDTut_WPOnKill2,Defeating enemies recovers some willpower.
+KDTut_WPOnKill,"Temporary enemies and summons don't restore anything, however."
+KDTut_Capture2,"Attacking a helpless enemy captures her and sends her to your Collection."
+KDTut_Capture,"You can access the Collection in the Items screen, 2nd tab."
+
+KinkyDungeonSpellMakeEssenceMote,Conjure Essence Mote
+KinkyDungeonSpellDescriptionMakeEssenceMote,Spend 50 DP to conjure a mote of pure spell essence. The mana cost of this spell is decreased based on your maximum DP.|Can only be cast while you have less than 100% DP.
+KinkyDungeonSpellCastMakeEssenceMote,You channel your distraction into a tangible orb!
+KinkyDungeonSpellFailMakeEssenceMote,You don't have enough distraction!
+KinkyDungeonSpellNoRoomMakeEssenceMote,Choose an open space.
+KinkyDungeonSpellTargetMakeEssenceMote,Choose a tile with no existing mote.
+KinkyDungeonSpellTooDistractedMakeEssenceMote,You're too distracted to concentrate your distraction!
+
+KDDistractionBurstEffect,The burst of desire overwhelms you!
+
+KinkyDungeonSpellPsychicLink,Psychic Link
+KinkyDungeonSpellDescriptionPsychicLink,"Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other."
+KinkyDungeonSpellTargetPsychicLink,Target a non-blinded enemy.
+KinkyDungeonSpellCastPsychicLink,"You briefly lock eyes with the target, forming a psychic link!"
+KDPsychicLinkBreak,"The psychic link ends between you and the ENMY."
+
+KinkyDungeonSpellShockCollar,Shock Collar
+KinkyDungeonSpellDescriptionShockCollar,"Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP."
+KDShockCollarNotLeashed,You must be leashed by someone to use this.
+KDShockCollarNoDistraction,You don't have enough distraction.
+KDShockCollarHit,You zap your leasher!
+
+KinkyDungeonBuffPsychicLink,You are psychically connected!
+KinkyDungeonBuffShockCollarCD,You've used Shock Collar recently and it costs more DP.
+
+
+RestraintEssenceNecklace,Essence Crystal
+RestraintEssenceNecklaceDesc,"When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
+RestraintEssenceNecklaceDesc2,"A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast."
+KinkyDungeonInventoryItemEssenceNecklace,Potion Absorber
+KinkyDungeonInventoryItemEssenceNecklaceDesc,"When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
+KinkyDungeonInventoryItemEssenceNecklaceDesc2,"A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast."
+
+KDSealSigilContact,You erase the seal sigil.
+KDEssenceMoteContact,"You absorb the mote, granting miscast reduction."
+KDEssenceNecklaceCreate,Your necklace emits a mote as a result of miscasting.
+
+KDManaBurstActivate,"Your distraction reaches a critical point! -100% miscast chance."
+KinkyDungeonSpellManaBurst,"Mana Burst"
+KinkyDungeonSpellDescriptionManaBurst,"While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge."
+KinkyDungeonBuffManaBurst,"-100% miscast chance, but casting spells can send you over the edge."
+KDOrgasmPsychicLinkAttempt,"The psychic link conducts away some of the intensity..."
+KDOrgasmPsychicLinkEnemy,"Your linked target lets go of herself, transmitting a wave of pleasure to yourself..."
+
+KDOutpostName,FCTN RMTPE
+KDLairName,PTRN's RMTPE
+
+KDLeadsTo,Leads to PLCE
+KDUnknown,???
+
+rWardenCourier,"(You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'"
+
+KinkyDungeonDragonLairDefeat1,It becomes hard to resist the dragon's fury...
+KinkyDungeonDragonLairDefeat2,The dragon overwhelms you with sheer force...
+KinkyDungeonDragonLairDefeat3,Your strength begins to fade...
+
+KDMinimapLabel_Ghost,Ghost
+KDMinimapLabel_Orb,Orb
+KDMinimapLabel_S,>Entrance
+KDMinimapLabel_s,>Exit
+KDMinimapLabel_H,>Stairs
+KDMinimapLabel_ShrineQuest,Quest(GDSNM)
+KDMinimapLabel_Shrine,[GDSNM]
+KDMinimapLabel_+,""
+KDMinimapLabel_=,""
+KDMinimapLabel_Bed,Bed!
+KDMinimapLabel_BedFail,Bed
+KDMinimapLabel_Tablet,Tablet
+KDMinimapLabel_C_undefined,Chest
+KDMinimapLabel_C_chest,Chest
+KDMinimapLabel_C_silver,Silver
+KDMinimapLabel_C_gold,Gold
+KDMinimapLabel_C_lessergold,Gold
+KDMinimapLabel_C_shadow,Shadow
+KDMinimapLabel_C_lessershadow,Shadow
+KDMinimapLabel_C_kitty,Kitty
+KDMinimapLabel_C_wizard,Chest
+KDMinimapLabel_C_robot,Mecha
+KDMinimapLabel_C_pearl,Holy
+KDMinimapLabel_C_storage,Chest
+KDMinimapLabel_C_blue,Blue
+KDMinimapLabel_C_tutorial1,chest
+KDMinimapLabel_C_magicWeapon,Chest
+KDMinimapLabel_C_pair,Chest
+KDMinimapLabel_C_lost_items,Lost Items
+KDMinimapLabel_C_cache,Cache
+KDMinimapLabel_C_magicrestraint,Chest
+KDMinimapLabel_C_,Chest
+KDMinimapLabel_C_kinky,Toy Chest
+KDMMLocked,"(L)"
+
+
+rPrisonerLatex,"(The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)"
+rPrisonerLatexNoKeys,"(You don't have any solvents that work on latex)"
+rPrisonerLatexUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
+rPrisonerLatexUnlockSlow,"(You dissolve her restraints, fumbling around for a while with your bound hands)"
+rPrisonerLatexUnlock,"(You rescue the SPEAKER)|Thank you!|Let's get out of here!"
+rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
+rPrisonerLatexNoCut,"(You are not holding a cutting tool)"
+rPrisonerLatexCutHandsBound,"(You can't pick the lock with your hands bound)"
+rPrisonerLatexCutSlow,"(You cut her restraints, fumbling around for a while with your bound hands)"
+rPrisonerLatexCut,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
+rPrisonerLatexCutGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
+rPrisonerLatexWordNoMana,"(You don't have enough mana for Remove Slime)"
+rPrisonerLatexWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
+rPrisonerLatexWord,"(You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!"
+rPrisonerLatexWordGagged,"(You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
+
+dPrisonerLatex_Unlock,Dissolve the latex with a SLVNT
+dPrisonerLatex_Cut,Cut her out with a sharp tool
+dPrisonerLatex_Word,Use Remove Slime to unlock her
+
+KDLocalSaves,Local Saves
+KDCloudSaves,Cloud Saves
+
+KDLatexSolvent,solvent
+
+RestraintLatexDollStand,Latex Doll Stand
+RestraintLatexDollStandDesc,"A stand for your latex dolls, coated in a smooth rubber coating."
+RestraintLatexDollStandDesc2,"Has a flange for propping up even dolls wearing chastity belts."
+
+
+rStripSearch,"(The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~"
+rStripSearchSub,"(The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now."
+rStripSearchDom,"(The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?"
+rStripSearchBrat,"(The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)"
+rStripSearchRobot,"(The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal."
+dStripSearch_Accept,"Yes, miss... (Begin search and confiscation)"
+dStripSearch_AcceptGag,"Mmph... (Nod politely) (Begin search and confiscation)"
+dStripSearchDeny,"No, I refuse! (Fight)"
+dStripSearchDenyGag,"Mmph! (Shake your head and fight)"
+
+KDTextGrayNeedWP,Option not available at 0 WP
+
+rStripSearchAccept_1,"(The SPEAKER starts by removing most of your clothes...)"
+rStripSearchAccept_1_2,"(Next, the SPEAKER looks through your weapons)"
+rStripSearchAccept_1_2_3,"(Finally, the SPEAKER opens the rest of your bag)"
+rStripSearchAccept_1_2_3_End,"(The search is complete)|There! Now let's get you situated~"
+rStripSearchAccept_1_2_3_EndSub,"(The search is complete)|Alright miss, please behave, okay?"
+
+
+
+KDItemConfiscated,Confiscated AMNTx ITMN!
+KDItemNotConfiscated,Kept AMNTx ITMN.
+KDItemNotConfiscatedSneak,Sneaked in AMNTx ITMN!
+
+KinkyDungeonSpellAim_MaidKnightLight,GUN
+KinkyDungeonSpellCastAim_MaidKnightLight,The room echoes with the sound of a rubber bullet being fired!
+
+KinkyDungeonSpellRubberSniper,Tactical Rubber Bullet
+KinkyDungeonRubberSniper,A powerful rubber bullet bounces you to the ground!
+KinkyDungeonRubberSniperAttach,The powerful rubber bullet knocks you down and congeals into Capture Foam!
+
+
+
+RestraintCaptureFoamBoots,Capture Foam (Feet)
+RestraintCaptureFoamBootsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamBootsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamFeet,Capture Foam (Ankles)
+RestraintCaptureFoamFeetDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamFeetDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamLegs,Capture Foam (Legs)
+RestraintCaptureFoamLegsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamLegsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamArms,Capture Foam (Arms)
+RestraintCaptureFoamArmsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamArmsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamHands,Capture Foam (Hands)
+RestraintCaptureFoamHandsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamHandsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamMouth,Capture Foam (Mouth)
+RestraintCaptureFoamMouthDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamMouthDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamHead,Capture Foam (Head)
+RestraintCaptureFoamHeadDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamHeadDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamCollar,Capture Foam Dispenser
+RestraintCaptureFoamCollarDesc,"This collar is designed to make sure its wearer does not escape at all costs."
+RestraintCaptureFoamCollarDesc2,"It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you."
+
+
+RestraintHardCaptureFoamRaw,Tactical Rubber
+RestraintHardCaptureFoamRawDesc,"An alchemical substance made to be stretchy and more resilient than natural rubber."
+RestraintHardCaptureFoamRawDesc2,"Developed by kinky alchemists and marketed to PMCs across the islands."
+
+RestraintCaptureFoamRaw,Capture Foam
+RestraintCaptureFoamRawDesc,"A restraining weapon used to apprehend difficult targets."
+RestraintCaptureFoamRawDesc2,"Developed by kinky alchemists and marketed to PMCs across the islands."
+
+RestraintHardCaptureFoamBoots,Tactical Rubber (Feet)
+RestraintHardCaptureFoamBootsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamFeet,Tactical Rubber (Ankles)
+RestraintHardCaptureFoamFeetDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamLegs,Tactical Rubber (Legs)
+RestraintHardCaptureFoamLegsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamArms,Tactical Rubber (Arms)
+RestraintHardCaptureFoamArmsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamHands,Tactical Rubber (Hands)
+RestraintHardCaptureFoamHandsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamMouth,Tactical Rubber (Mouth)
+RestraintHardCaptureFoamMouthDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamHead,Tactical Rubber (Head)
+RestraintHardCaptureFoamHeadDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamCollar,Tactical Rubber Collar
+RestraintHardCaptureFoamCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
+RestraintHardCaptureFoamCollarDesc2,"It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
+
+
+KinkyDungeonSpellHeavySlash,Sweeping Strike
+KinkyDungeonSpellSelfCharge,Headlong Rush
+
+
+NameMaidKnightLight,Maid Squire
+NameMaidKnightHeavy,Maid Knight
+KillMaidKnightLight,You humiliate the Maid Squire!
+KillMaidKnightHeavy,You defeat the Maid Knight! For now... she swears revenge.
+AttackMaidKnightLightBind,The Squire zips you up in comfy leather gear!
+AttackMaidKnightHeavyBind,The Maid Knight places you in strict bondage!
+AttackMaidKnightLightLock,The Squire secures your restraints!
+AttackMaidKnightHeavyLock,The Maid Knight secures your restraints!
+AttackMaidKnightLight,The Squire dusts you with her duster plug.
+AttackMaidKnightHeavy,The Maid Knight sweeps you with her cleaning halberd!
+
+KDMaidKnightRetreat,The EnemyName retreats!
+KDMaidKnightRetreatBound,The EnemyName manages to squirm out of sight!
+
+
+KDAmbSound_ServerHum,servers humming...
+KDAmbSound_Slime,bouncy noises
+KDAmbSound_SlimeLarge,goopy noises
+KDAmbSound_SlimeLarge2,bubbling noise
+KDAmbSound_Rubber,rubber squeaking
+KDAmbSound_ServerAlarm,blaring siren
+
+ItemPickupSweeper,"You claim the Sweeper."
+KinkyDungeonInventoryItemSweeper,The Sweeper
+KinkyDungeonInventoryItemSweeperDesc,"Foe of the unclean. Bringer of neat and tidy workspaces."
+KinkyDungeonInventoryItemSweeperDesc2,"Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack."
+KinkyDungeonSpecialSweeper,Make a ranged attack with the Sweeper.
+
+ItemPickupPersuader,"You claim the Persuader."
+KinkyDungeonInventoryItemPersuader,The Persuader
+KinkyDungeonInventoryItemPersuaderDesc,"Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard."
+KinkyDungeonInventoryItemPersuaderDesc2,"Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload."
+KinkyDungeonSpecialPersuader,Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
+
+KinkyDungeonSpellPlayerRubberSniper,Persuader Round
+KinkyDungeonSpellCastPlayerRubberSniper,You fire the Persuader!
+
+KDUnknown,???
+KDSaveBusy,Wait for current save to finish...
+
+KDSaveBusyMenu,"Please wait for save to finish..."
+
+KinkyDungeonSpelldebugDefeat,"Debug Defeat"
+KinkyDungeonSpellCastdebugDefeat,"You cast devastating ASCII glyphs!"
+KinkyDungeonSpelldebugBind,"Debug Bind"
+KinkyDungeonSpellCastdebugBind,"You cast bondage ASCII glyphs!"
+
+KDEmpty,Empty Slot
+KDFloor,", Floor AMNT"
+
+KDInventoryActionRecolor,Recolor
+
+KDAutoRelease_NonNotable,"Only collect notable"
+KDAutoRelease_Escaped,"Autorelease escaped"
+
+KDAutoReleased_NonNotable,NME is not notable enough for your collection.
+KDAutoReleased_Escaped,Auto-released NME due to Escape.
+
+KDMimicCurseTransform,Your ITMN1 was cursed and transforms into a ITMN2!
+
+KDDelayedAction_EquipRestraint,Equipping Restraint...
+KDDelayedAction_Armor,Equipping Armor...
+KDDelayedAction_Consumable,Using Consumable...
+KDDelayedAction_Struggle,Struggling...
+
+KDMimicCleanse,The ITMN1 is purified and returns to being a ITMN2!
+KDInvTooltip_MimicHolyGlow,Reverts if purified with item.
+KDInvTooltip_SkimpyCurse,...smaller than expected.
+KDInvTooltip_ShibariCurse,Comes with an artistic flair.
+
+KDWToolsButton1,Set Pivot
+KDWToolsButton2,"Toggle click & drag"
+KDWToolsButton3,Settings
+KDWToolsToggleScrollModeText,"Scroll Controls: "
+KDWToolsLayerAbbrText,"Layer Text: "

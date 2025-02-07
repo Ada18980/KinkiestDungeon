@@ -5,8 +5,8 @@
 let KDModelStyles: Record<string, Record<string, string[]>> = {
 	Nevermere: {
 		Cosplay: [
-			"Wolf1",
-			"Wolf2",
+			"Wolf1b",
+			"Wolf2b",
 			"Wolf1",
 			"Wolf2",
 			"Wolf1",
@@ -100,6 +100,34 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Amber3",
 		],
 	},
+	MaidKnightLight: {
+		Hairstyle: [
+			"MaidKnightLight",
+		],
+		Bodystyle: [
+			"Maid",
+		],
+		Facestyle: [
+			"MaidKnightLight",
+		],
+		Cosplay: [
+			"MaidKnightLight",
+		],
+	},
+	MaidKnightHeavy: {
+		Hairstyle: [
+			"MaidKnightHeavy",
+		],
+		Bodystyle: [
+			"Maid",
+		],
+		Facestyle: [
+			"MaidKnightHeavy",
+		],
+		Cosplay: [
+			"MaidKnightHeavy",
+		],
+	},
 	DarkElf: {
 		Cosplay: [
 			"Elf1",
@@ -116,6 +144,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"PurpleBraid",
 			"LavenderTwintails",
 			"DarkPurpleSideBangs",
+			"PurpleLong",
+			"PurpleNecro",
 		],
 		Bodystyle: [
 			"Pale",
@@ -474,6 +504,8 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"SlateTwintails",
 			"DarkPurpleSideBangs",
 			"PurpleBraid",
+			"PurpleNecro",
+			"PurpleLong",
 		],
 		Bodystyle: [
 			"Pale",
@@ -510,6 +542,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"DarkPurpleSideBangs",
 			"PurpleBraid",
 			"PurpleTwintails",
+			"PurpleLong",
 		],
 		Bodystyle: [
 			"Pale",
@@ -684,6 +717,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"LightBlueShort",
 			"BlueBraid",
 			"BlueTwintail",
+			"PurpleLong",
 		],
 		Bodystyle: [
 			"Default",
@@ -813,6 +847,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"PurpleBraid",
 			"LavenderTwintails",
 			"DarkPurpleSideBangs",
+			"PurpleLong",
 		],
 		Bodystyle: [
 			"Default",
@@ -903,6 +938,7 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"LavenderTwintails",
 			"BlueMessy",
 			"BlueLong1",
+			"PurpleLong",
 		],
 		Bodystyle: [
 			"Demon",
@@ -974,7 +1010,10 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Yuri",
 		],
 		Hairstyle: [
-			"PurpleLong",
+			"PurpleNecro",
+		],
+		Cosplay: [
+			"Glasses",
 		],
 	},
 	Hilda: {

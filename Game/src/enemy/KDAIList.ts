@@ -37,6 +37,10 @@ let KDAIType: Record<string, AIType> = {
 		wanderDelay_long: (_enemy, _aiData) => {return 35 + Math.floor(KDRandom() * 35);},
 		wanderDelay_short: (_enemy, _aiData) => {return 10 + Math.floor(KDRandom() * 25);},
 		wanderfar_func: (enemy, _player, _aiData) => {
+			if (enemy.partyLeader) {
+				if (KDWanderFarEnemyParty(enemy))
+					return true;
+			}
 			let newPoint = (KDRandom() < 0.4 && (enemy.spawnX || enemy.spawnY)) ? KinkyDungeonGetNearbyPoint(enemy.spawnX, enemy.spawnY, true, undefined, false, false) : KinkyDungeonGetRandomEnemyPoint(false, false);
 			if (!newPoint) newPoint = KinkyDungeonGetRandomEnemyPoint(false, false);
 			if (newPoint) {
@@ -102,6 +106,10 @@ let KDAIType: Record<string, AIType> = {
 			return false;
 		},
 		wanderfar_func: (enemy, _player, _aiData) => {
+			if (enemy.partyLeader) {
+				if (KDWanderFarEnemyParty(enemy))
+					return true;
+			}
 			let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((x: number, y: number) => {
 				return KinkyDungeonBrightnessGet(x, y) < 4;
 			}, false, enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
@@ -233,7 +241,7 @@ let KDAIType: Record<string, AIType> = {
 		ambushtile: 'X',
 		init: (_enemy, _player, _aiData) => {},
 		beforemove: (enemy, _player, aiData) => {
-			if (aiData.playerDist < 1.5) enemy.ambushtrigger = true;
+			if (aiData.playerDist < (enemy.Enemy?.ambushRadius || 1.5)) enemy.ambushtrigger = true;
 			return false;
 		},
 		chase: (enemy, _player, _aiData) => {return enemy.ambushtrigger;},

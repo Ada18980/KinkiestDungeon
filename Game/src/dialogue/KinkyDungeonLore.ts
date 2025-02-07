@@ -478,7 +478,7 @@ function KinkyDungeonDrawLore() {
 	KDDrawLoreRepTabs(xOffset);
 }
 
-function KDDrawLoreRepTabs(xOffset: number) {
+function KDDrawLoreRepTabs(xOffset: number = -125) {
 	FillRectKD(kdcanvas, kdpixisprites, "mainlorebg", {
 		Left: canvasOffsetX_ui + xOffset,
 		Top: canvasOffsetY_ui - 150,
@@ -503,7 +503,8 @@ function KDDrawLoreRepTabs(xOffset: number) {
 		switch (KinkyDungeonDrawState) {
 			case  "Logbook": KinkyDungeonDrawState = amount < 0 ? "Quest"  : "Reputation"; break;
 			case  "Reputation": KinkyDungeonDrawState = amount < 0 ? "Logbook"  : "Quest"; break;
-			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Logbook"; break;
+			case  "Quest": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "JourneyMap"; break;
+			case  "JourneyMap": KinkyDungeonDrawState = amount < 0 ? "Quest"  : "Logbook"; break;
 			//case  "Collection": KinkyDungeonDrawState = amount < 0 ? "Reputation"  : "Facilities"; break;
 			//case  "Facilities": KinkyDungeonDrawState = amount < 0 ? "Collection"  : "Logbook"; break;
 		}
@@ -528,6 +529,11 @@ function KDDrawLoreRepTabs(xOffset: number) {
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
+	DrawButtonKDExScroll("TabJourneyMap", scrollFunc, (_b) => {
+		KinkyDungeonDrawState = "JourneyMap";
+		return true;
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonJourneyMap"), "#ffffff", undefined, undefined, undefined,
+	KinkyDungeonDrawState != "JourneyMap", KDButtonColor); II++;
 	/*DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;

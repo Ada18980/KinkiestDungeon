@@ -1,5 +1,20 @@
 "use strict";
 
+let KDAim = {
+	id: "Aim", replaceSpriteSuff: "_Aim", replacePower: 0.5,
+	type: "Aim", power: 1, duration: 3, events: [
+		{type: "EnemyAim", trigger: "tickAfter", dist: 2},
+		{type: "EnemyAim", sprite: "UI/Crosshair", trigger: "draw"},
+	]};
+let KDEquip = {
+	id: "Equip", replaceSpriteSuff: "_Equip", replacePower: 0.25,
+	type: "Equip", power: 1, duration: 3};
+let KDAim2 = {
+	id: "Aim2",
+	type: "MoveSpeed", power: -2, duration: 1};
+let KDAim3 = {
+	id: "Aim3",
+	type: "AttackSlow", power: 2, duration: 1};
 
 let KDConduction = {id: "Conduction", type: "event", aura: "#ffff88", noAuraColor: true, aurasprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
 	{type: "RemoveConduction", duration: 1, trigger: "tick"},
@@ -65,6 +80,13 @@ let KDTaunted = {id: "Taunted", type: "Taunt", power: 1, player: true, duration:
 	{type: "Taunted", count: 2, trigger: "tick", power: 3, damage: "soul"},
 ]};
 
+let KDPoisonSleep = {
+	id: "poisonSleep", type: "Event", power: 0.1, duration: 10, events: [
+		{type: "poisonSleep", trigger: "tick"},
+		{type: "poisonSleep", trigger: "expireBuff"},
+	]
+}
+
 let KDEager = {
 	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [
 		{type: "ApplyVuln", duration: 1, trigger: "tick"},
@@ -88,7 +110,7 @@ let KDSlimed = {
 	]
 };
 let KDEncased = {
-	id: "Encased", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replaceSprite: "EncasedDoll", tags: ["encased"], events: [
+	id: "Encased", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replacePower: 2.5, replaceSprite: "EncasedDoll", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick"},
 		{type: "ApplySlowed", duration: 1, power: -2.0, trigger: "tick"},
@@ -174,7 +196,7 @@ let KDDoublePlugged = {
 };
 
 let KDTaped = {
-	id: "Taped", type: "chainDamageResist", power: -0.15, duration: 1, replaceSpriteBound: "TapedDoll", tags: ["taped"], aura: "#4fa4b8", replacePower: 1.0,
+	id: "Taped", type: "chainDamageResist", power: -0.15, duration: 1, replaceSpriteBound: "TapedDoll", tags: ["taped"], aura: "#4fa4b8", replacePower: 2.0,
 	events: [
 		{type: "ExtendDisabledOrHelpless", trigger: "tick"},
 		{type: "RemoveAuraHelpless", trigger: "tick"},
@@ -222,7 +244,7 @@ function KDChillWalk(entity: entity) {
 	return KDEntityHasBuff(entity, "ChillWalk") || KDEntityHasBuff(entity, "ChillWalk2");
 }
 
-let KDRestraintDisarmLight = {id: "RestDisarmLight", aura: "#ff5555", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
+let KDRestraintDisarmLight = {id: "RestDisarmLight", aura: "#ff5277", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
 	{type: "RemoveRestraint", trigger: "tick"},
 	{type: "ApplyDisarm", trigger: "playerAttack"},
 ]};

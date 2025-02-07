@@ -2,6 +2,16 @@
 let KDCustomExp : Record<number, KDExpressionType>= {
 };
 
+let KDExpressionPoses = [
+	"EyesPose",
+	"Eyes2Pose",
+	"BrowsPose",
+	"Brows2Pose",
+	"BlushPose",
+	"MouthPose",
+	"FearPose",
+];
+
 let KDExpressions: Record<string, KDExpression> = {
 	"Custom": {
 		priority: 10000,
@@ -22,6 +32,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				Brows2Pose: "",
 				BlushPose: "",
 				MouthPose: "",
+				FearPose: "",
 			};
 		},
 	},
@@ -44,6 +55,47 @@ let KDExpressions: Record<string, KDExpression> = {
 			};
 		},
 	},
+	"Collared": {
+		priority: 9,
+		criteria: (C, flags) => {
+			if (flags.get("collared")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > -25) ? "BlushHigh" : "",
+				MouthPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 0) ? "MouthSmile" : "",
+				FearPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 25) ? "" : "FearPose",
+			};
+		},
+	},
+	"Defeat": {
+		priority: 20,
+		criteria: (C, flags) => {
+			if (flags.get("defeat")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > -25) ? "BlushHigh" : "",
+				MouthPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 0) ? "MouthSmile" : "",
+				FearPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 25) ? "" : "FearPose",
+			};
+		},
+	},
+
 	"RestrainedRecent": {
 		priority: 1.5,
 		criteria: (C, flags) => {
@@ -134,7 +186,7 @@ let KDExpressions: Record<string, KDExpression> = {
 		expression: (C, flags) => {
 			return {
 				EyesPose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 15) ? "EyesHeart" : "EyesAngry",
-				Eyes2Pose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 15) ? "Eyes2Heart" : "EyesAngry",
+				Eyes2Pose: (C == KinkyDungeonPlayer && KinkyDungeonGoddessRep.Ghost > 15) ? "Eyes2Heart" : "Eyes2Angry",
 				BrowsPose: "BrowsAnnoyed",
 				Brows2Pose: "Brows2Annoyed",
 				BlushPose: "BlushExtreme",
@@ -763,6 +815,146 @@ let KDExpressions: Record<string, KDExpression> = {
 			};
 		},
 	},
+	"Angis": {
+		stackable: true,
+		priority: 0.2,
+		criteria: (C, flags) => {
+			if (C != KinkyDungeonPlayer) {
+				let id = KDNPCChar_ID.get(C);
+				if (id) {
+					let opinion = KDGetModifiedOpinionID(id);
+					if (opinion >= -45 && opinion < -15)
+						return true;
+				}
+			}
+			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole")
+				&& KinkyDungeonGoddessRep.Ghost >= -45 && KinkyDungeonGoddessRep.Ghost < -25;
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "",
+				MouthPose: "MouthFrown",
+				FearPose: "",
+			};
+		},
+	},
+	"VAngis": {
+		stackable: true,
+		priority: 0.2,
+		criteria: (C, flags) => {
+			if (C != KinkyDungeonPlayer) {
+				let id = KDNPCChar_ID.get(C);
+				if (id) {
+					let opinion = KDGetModifiedOpinionID(id);
+					if (opinion < -45)
+						return true;
+				}
+			}
+			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole")
+				&& KinkyDungeonGoddessRep.Ghost < -45;
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "EyesAngry",
+				Eyes2Pose: "Eyes2Angry",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushLow",
+				MouthPose: "MouthDazed",
+				FearPose: "",
+			};
+		},
+	},
+	"Embar": {
+		stackable: true,
+		priority: 0.2,
+		criteria: (C, flags) => {
+			if (C != KinkyDungeonPlayer) {
+				let id = KDNPCChar_ID.get(C);
+				if (id) {
+					let opinion = KDGetModifiedOpinionID(id);
+					if (opinion >= -15 && opinion <= 15)
+						return true;
+				}
+			}
+			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole"
+				|| KinkyDungeonFlags.get("embarrassed")
+			)
+				&& ((KinkyDungeonGoddessRep.Ghost >= -25 && KinkyDungeonGoddessRep.Ghost < 25)
+					|| !KinkyDungeonHasWill(0.1));
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "BlushMedium",
+				MouthPose: "MouthEmbarrassed",
+				FearPose: "",
+			};
+		},
+	},
+	"Frust": {
+		stackable: true,
+		priority: 0.2,
+		criteria: (C, flags) => {
+			if (C != KinkyDungeonPlayer) {
+				let id = KDNPCChar_ID.get(C);
+				if (id) {
+					let opinion = KDGetModifiedOpinionID(id);
+					if (opinion >= -15 && opinion <= 15)
+						return true;
+				}
+			}
+			return (KinkyDungeonFlags.get("embarrassed")
+			)
+				&& (KinkyDungeonGoddessRep.Ghost < -25
+					&& KinkyDungeonHasWill(0.1));
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "EyesSly",
+				Eyes2Pose: "Eyes2Sly",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushMedium",
+				MouthPose: "",
+				FearPose: "",
+			};
+		},
+	},
+	"Happy": {
+		stackable: true,
+		priority: 0.2,
+		criteria: (C, flags) => {
+			if (C != KinkyDungeonPlayer) {
+				let id = KDNPCChar_ID.get(C);
+				if (id) {
+					let opinion = KDGetModifiedOpinionID(id);
+					if (opinion > 15)
+						return true;
+				}
+			}
+			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole")
+				&& KinkyDungeonGoddessRep.Ghost > 25;
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "EyesNeutral",
+				Eyes2Pose: "Eyes2Neutral",
+				BrowsPose: "BrowsNeutral",
+				Brows2Pose: "Brows2Neutral",
+				BlushPose: "",
+				MouthPose: "MouthSmile",
+				FearPose: "",
+			};
+		},
+	},
 	"Neutral": {
 		stackable: true,
 		priority: 0.1,
@@ -777,6 +969,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				Brows2Pose: "Brows2Neutral",
 				BlushPose: "BlushNone",
 				MouthPose: "MouthNeutral",
+				FearPose: "NoFearPose",
 			};
 		},
 	},

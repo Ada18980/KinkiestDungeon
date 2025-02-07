@@ -95,7 +95,6 @@ function DrawLoad(): void {
  */
 function DrawGetImageOnLoad(): void {
 	++DrawCacheLoadedImages;
-	if (DrawCacheLoadedImages == DrawCacheTotalImages) CharacterLoadCanvasAll();
 }
 
 /**

@@ -123,6 +123,156 @@ AddModel(GetModelFashionVersion("HarnessStrap", true));
 AddModel(GetModelFashionVersion("Harness", true));
 
 
+
+
+AddModel({
+	Name: "FestiveHarnessTop",
+	Folder: "Festive",
+	TopLevel: false,
+	Parent: "Harness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "StrapTop", Layer: "BindChest", Pri: -12,
+			MorphPoses: {"Boxtie": "Tied","Wristtie": "Tied","Crossed": "Tied","Front": "Tied","Up": "Up",},
+			InheritColor: "Straps",
+		},
+		{ Name: "ButtonsTop", Layer: "BindChest", Pri: -12.1,
+			MorphPoses: {"Boxtie": "Tied","Wristtie": "Tied","Crossed": "Tied","Front": "Tied","Up": "Up",},
+			InheritColor: "Hardware",
+			TieToLayer: "StrapTop",
+			NoOverride: true,
+		},
+		{ Name: "FuzzTop", Layer: "BindChest", Pri: -12.1,
+			MorphPoses: {"Boxtie": "Tied","Wristtie": "Tied","Crossed": "Tied","Front": "Tied","Up": "Up",},
+			InheritColor: "Fluff",
+			TieToLayer: "StrapTop",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "FestiveHarnessMid",
+	Folder: "Festive",
+	TopLevel: false,
+	Parent: "Harness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	Layers: ToLayerMap([
+		{ Name: "StrapMid", Layer: "HarnessMid", Pri: 8,
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "ButtonsMid", Layer: "HarnessMid", Pri: 7.9,
+			Invariant: true,
+			InheritColor: "Hardware",
+			TieToLayer: "StrapMid",
+			NoOverride: true,
+		},
+		{ Name: "FuzzMid", Layer: "HarnessMid", Pri: 7.9,
+			Invariant: true,
+			InheritColor: "Fluff",
+			TieToLayer: "StrapMid",
+			NoOverride: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "FestiveHarnessStrap",
+	Folder: "Festive",
+	TopLevel: false,
+	Parent: "Harness",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		{ Name: "StrapBot", Layer: "HarnessMid", Pri: 8,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			InheritColor: "Straps",
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+		},
+		{ Name: "ButtonsBot", Layer: "HarnessMid", Pri: 7.9,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			InheritColor: "Hardware",
+			TieToLayer: "StrapBot",
+			NoOverride: true,
+		},
+		{ Name: "FuzzBot", Layer: "HarnessMid", Pri: 7.9,
+			//SwapLayerPose: {Kneel: "HarnessLower", KneelClosed: "HarnessLower"},
+			Invariant: true,
+			InheritColor: "Fluff",
+			TieToLayer: "StrapBot",
+			NoOverride: true,
+		},
+	])
+});
+
+
+
+
+
+AddModel({
+	Name: "FestiveHarness",
+	Folder: "Festive",
+	TopLevel: true,
+	Parent: "SantaHat",
+	Restraint: true,
+	Categories: ["Restraints", "Harness", "Leather"],
+	AddPose: ["CrotchStrap"],
+	Layers: ToLayerMap([
+		...GetModelLayers("FestiveHarnessTop"),
+
+		{ Name: "StrapOverbust", Layer: "BindChest", Pri: -12,
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "StrapUnderbust", Layer: "StrapsUnderbust", Pri: 8,
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "ButtonsUnderbustOver", Layer: "BindChest", Pri: -12.1,
+			Invariant: true,
+			InheritColor: "Hardware",
+			TieToLayer: "StrapOverbust",
+			NoOverride: true,
+		},
+		{ Name: "ButtonsUnderbust", Layer: "StrapsUnderbust", Pri: 7.9,
+			Invariant: true,
+			InheritColor: "Hardware",
+			TieToLayer: "StrapUnderbust",
+			NoOverride: true,
+		},
+		{ Name: "FuzzUnderbustOver", Layer: "BindChest", Pri: -12.1,
+			Invariant: true,
+			InheritColor: "Fluff",
+			TieToLayer: "StrapOverbust",
+			NoOverride: true,
+		},
+		{ Name: "FuzzUnderbust", Layer: "StrapsUnderbust", Pri: 7.9,
+			Invariant: true,
+			InheritColor: "Fluff",
+			TieToLayer: "StrapUnderbust",
+			NoOverride: true,
+		},
+
+		...GetModelLayers("FestiveHarnessMid"),
+		...GetModelLayers("FestiveHarnessStrap"),
+	])
+});
+
+
+
+AddModel(GetModelFashionVersion("FestiveHarnessTop", true));
+AddModel(GetModelFashionVersion("FestiveHarnessMid", true));
+AddModel(GetModelFashionVersion("FestiveHarnessStrap", true));
+AddModel(GetModelFashionVersion("FestiveHarness", true));
+
+
 AddModel({
 	Name: "FutureHarnessChest",
 	Folder: "FutureHarness",

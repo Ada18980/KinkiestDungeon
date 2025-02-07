@@ -18,7 +18,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Release.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 		hotkeyPress: KinkyDungeonKeyUpcast[0],
 	})) {
@@ -53,7 +53,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Ransom.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
 	})) {
@@ -74,7 +74,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/UnmarkAll.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 
 	})) {
 		tooltip = true;
@@ -97,7 +97,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/MarkAll.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length,
-	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 
 	})) {
 		tooltip = true;
@@ -161,6 +161,10 @@ function KDCanRelease(id: number) {
 	let v = KDGameData.Collection[id + ""];
 	return v && !v.status && !v.Facility && (!v.escaped || !KinkyDungeonFindID(v.id)); // Prisoners only, not in same room
 }
+function KDCanRemoveGuest(id: number) {
+	let v = KDGameData.Collection[id + ""];
+	return v && v.status == "Guest" && !v.Facility; // Prisoners only, not in same room
+}
 function KDCanRansom(id: number) {
 	let v = KDGameData.Collection[id + ""];
 	return v && !v.status && !v.escaped && !KinkyDungeonFindID(id) && !KDNPCUnavailable(id, v.status)
@@ -177,4 +181,38 @@ function KDRansomValue(id: number) {
 function KDIsInPlayerBase(id: number) {
 	return (KDIsNPCPersistent(id) && KDGetPersistentNPC(id)?.room == "Summit")
 		|| (KDGameData.Collection[id + ""] && !KDIsNPCPersistent(id));
+}
+
+
+function KDReleasePenalty(id: number, player: number) {
+	let type = KinkyDungeonGetEnemyByName(KDGameData.Collection[id + ""].type);
+	let rep = -0.05*KDGetEnemyTypeRep(type, KDGameData.Collection[id + ""].Faction);
+	if (rep == 0) return;
+	if ((KDGetModifiedOpinionID(id) > 0)) rep = -rep; // Positive if they are happy!
+	KinkyDungeonChangeFactionRep(KDGameData.Collection[id + ""].Faction, rep);
+}
+
+function KDReleasePenaltyEntity(entity: entity, player: number) {
+	let type = KinkyDungeonGetEnemyByName(entity.Enemy?.name);
+	let rep = -0.05*KDGetEnemyTypeRep(type, KDGetFaction(entity));
+	if (rep == 0) return;
+	if ((KDGetModifiedOpinionID(entity.id) > 0)) rep = -rep; // Positive if they are happy!
+	KinkyDungeonChangeFactionRep(KDGetFaction(entity), rep);
+}
+
+
+function KDReleaseNPC(id: number, player: number) {
+	if (KDCanRelease(id)) {
+		KDFreeNPCRestraints(id, player);
+		KDReleasePenalty(id, player);
+
+		DisposeEntity(id, false, false,
+			KDIsNPCPersistent(id)
+			&& KDGetGlobalEntity(id)
+			&& (KDGetPersistentNPC(id)?.collect && KDIsInPlayerBase(id)));
+		let e = KinkyDungeonFindID(id);
+		if (e)
+			KDRemoveEntity(e, false, false, true);
+		delete KDCollectionReleaseSelection[id];
+	}
 }

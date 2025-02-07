@@ -856,7 +856,7 @@ AddModel({
 	Parent: "CyberArms",
 	Categories: ["Gloves", "Sleeves"],
 	Layers: ToLayerMap([
-		{ Name: "ArmLongMittenLeft", Layer: "MittenLeft", Pri: 120,
+		{ Name: "LongMittenLeft", Layer: "MittenLeft", Pri: 120,
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Mitten",
@@ -990,7 +990,7 @@ AddModel({
 	Parent: "CyberArms",
 	Categories: ["Gloves", "Sleeves"],
 	Layers: ToLayerMap([
-		{ Name: "ArmLongMittenRight", Layer: "MittenRight", Pri: 120,
+		{ Name: "LongMittenRight", Layer: "MittenRight", Pri: 120,
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Mitten",
@@ -1129,10 +1129,9 @@ AddModel({
 
 AddModel({
 	Name: "CyberArms",
-	Folder: "CyberMitts",
+	Folder: "CyberArms",
 	TopLevel: true,
-	Categories: ["Gloves", "Mittens"],
-	AddPose: ["Mittens"],
+	Categories: ["Gloves", "Sleeves"],
 	Layers: ToLayerMap([
 		...GetModelLayers("CyberArmLeft"),
 		...GetModelLayers("CyberArmRight"),

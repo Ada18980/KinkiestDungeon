@@ -33,7 +33,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			}
 		}*/
 
-		let slot = {
+		let slot: KDJourneySlot = {
 			type: 'basic',
 			x: x,
 			y: y,
@@ -42,43 +42,66 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			Connections: [], // Temporarily empty
 			protected: false,
 			visited: false,
-			EscapeMethod: KDGetRandomEscapeMethod(),
+			EscapeMethod: "",
 			MapMod: "",
 			RoomType: "",
 			Faction: "",
 			SideRooms: [],
+			HiddenRooms: {},
 		};
 
-		// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
-		// Helps shake things up randomly
-		if (KDMapModRefreshList.length == 0) {
-			KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
-		}
-		let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
-		let MapMod = KDMapModRefreshList[index]?.name;
-		KDMapModRefreshList.splice(index, 1);
+		let MapMod = "";
 
+		if (y > 1 || KinkyDungeonNewGame > 0) {
+			// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
+			// Helps shake things up randomly
+			if (KDMapModRefreshList.length == 0) {
+				KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
+			}
+			let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
+			MapMod = KDMapModRefreshList[index]?.name;
+			KDMapModRefreshList.splice(index, 1);
+		}
+
+
+
+
+		slot.MapMod = MapMod;
+		slot.RoomType = KDMapMods[MapMod]?.roomType || "";
+		slot.Faction = KDMapMods[MapMod]?.faction
+			|| KinkyDungeonAltFloor(KDMapMods[MapMod]?.roomType)?.faction
+			|| CommonRandomItemFromList(
+				undefined,
+				KinkyDungeonMapParams[KinkyDungeonMapIndex[checkpoint]]?.factionList)
+				|| "";
 
 		if (KDMapMods[MapMod]?.escapeMethod)
 			slot.EscapeMethod = KDMapMods[MapMod]?.escapeMethod;
-		slot.MapMod = MapMod;
-		slot.RoomType = KDMapMods[MapMod]?.roomType || "";
-		slot.Faction = KDMapMods[MapMod]?.faction || "";
+		else slot.EscapeMethod = KDGetRandomEscapeMethod(slot.RoomType, slot.MapMod, y, slot.Faction);
 
 		if (y > 1) {
 			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);
 			if (sideTop) {
 				slot.SideRooms.push(sideTop.name);
+				let side = sideTop;
+				if (side.hidden)
+					slot.HiddenRooms[side.name] = true;
 			}
 			let sideBot = KDGetSideRoom(slot, false, slot.SideRooms);
 			if (sideBot) {
 				slot.SideRooms.push(sideBot.name);
+				let side = sideBot;
+				if (side.hidden)
+					slot.HiddenRooms[side.name] = true;
 			}
 		} else if (y == 1) {
 			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms, "elevatorstart");
 			if (!sideTop) sideTop = KDSideRooms.ElevatorEgyptian;
 			if (sideTop) {
 				slot.SideRooms.push(sideTop.name);
+				let side = sideTop;
+				if (side.hidden)
+					slot.HiddenRooms[side.name] = true;
 			}
 		}
 
@@ -101,6 +124,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			protected: true,
 			visited: false,
 			SideRooms: [],
+			HiddenRooms: {},
 		};
 	},
 	boss: (Predecessor, x, y, forceCheckpoint) => {
@@ -123,6 +147,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			protected: true,
 			visited: false,
 			SideRooms: [],
+			HiddenRooms: {},
 		};
 	},
 };
@@ -224,28 +249,43 @@ function KDCullJourneyMap() {
 	console.log(`Culled ${deleted} journey slots`);
 }
 
-function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: number = 7, ScaleX: number = 100, ScaleY: number = 136, xOffset: number = 1500, yOffset: number = 212, spriteSize: number = 72, TextOffset: number = 1925) {
+let KDJourneyIndex = -1;
+
+function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: number = 7, ScaleX: number = 100,
+	ScaleY: number = 136, xOffset: number = 1450, yOffset: number = 212, spriteSize: number = 72,
+	TextOffset: number = 1925, allowScroll: boolean = false, allowChoose: boolean = true) {
 
 
-	DrawButtonKDEx("cancelJourney", (bdata) => {
-		KinkyDungeonState = "Game";
-		KDGameData.JourneyTarget = null;
-		return true;
-	}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
-		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
-		hotkeyPress: KinkyDungeonKeySkip[0],
-	});
+	if (allowScroll) {
+		if (KDJourneyIndex == -1) {
+			KDJourneyIndex = Y;
+		} else {
+			Y = KDJourneyIndex;
+		}
+	}
 
-	if (KDGameData.JourneyTarget && KinkyDungeonStairTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)))
-		DrawButtonKDEx("confirmJourney", (bdata) => {
+	if (allowChoose) {
+		DrawButtonKDEx("cancelJourney", (bdata) => {
 			KinkyDungeonState = "Game";
-			KinkyDungeonConfirmStairs = true;
-			KinkyDungeonMove({x: 0, y: 0}, 1, true);
+			KDGameData.JourneyTarget = null;
 			return true;
-		}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
-			hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
-			hotkeyPress: KinkyDungeonKeyEnter[0],
+		}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
+
+		if (KDGameData.JourneyTarget && KinkyDungeonStairTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)))
+			DrawButtonKDEx("confirmJourney", (bdata) => {
+				KinkyDungeonState = "Game";
+				KinkyDungeonConfirmStairs = true;
+				KinkyDungeonMove({x: 0, y: 0}, 1, true);
+				return true;
+			}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+				hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
+				hotkeyPress: KinkyDungeonKeyEnter[0],
+			});
+	}
+
 
 
 	if (!KDGameBoardAddedJourney) {
@@ -286,7 +326,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				spriteSize * 0.7
 			);
 		}
-		KDDraw(kdcanvas, kdpixisprites, "navmap" + slot.x + ',' + slot.y,
+		KDDraw(kdcanvas, kdpixisprites, "navmap_" + slot.x + ',' + slot.y,
 			KinkyDungeonRootDirectory + sprite + '.png',
 			xOffset + ScaleX*(slot.x - X) - spriteSize/2,
 			yOffset + ScaleY*(slot.y - Y) - spriteSize/2,
@@ -295,19 +335,54 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			}
 		);
 
+		if (slot.MapMod) {
+			let sprite = "UI/MapMod/" + slot.MapMod;
+			KDDraw(kdcanvas, kdpixisprites, "navmapmod_" + slot.x + ',' + slot.y,
+				KinkyDungeonRootDirectory + sprite + '.png',
+				xOffset + ScaleX*(slot.x - X) - spriteSize/2,
+				yOffset + ScaleY*(slot.y - Y) - spriteSize/2,
+				spriteSize, spriteSize, undefined, {
+					//tint: string2hex(slot.color),
+					zIndex: 1,
+				}
+			);
+		}
+		if (slot.SideRooms.length > 0) {
+			let iter = 0;
+			for (let i = 0; i < slot.SideRooms.length; i++) {
+				if (!KDSideRooms[slot.SideRooms[i]]) continue;
+				if (iter >= 4) continue;
+				let sprite = "UI/SideRoom/" + slot.SideRooms[i];
+				if (slot.HiddenRooms && slot.HiddenRooms[KDSideRooms[slot.SideRooms[i]].name]) {
+					sprite = "UI/SideRoom/Unknown";
+				}
+				KDDraw(kdcanvas, kdpixisprites, "navsideroom" + i + "_" + slot.x + ',' + slot.y,
+					KinkyDungeonRootDirectory + sprite + '.png',
+					xOffset + ScaleX*(slot.x - X) - spriteSize/2,
+					yOffset + ScaleY*(slot.y - Y) - spriteSize/2 + iter * spriteSize*0.25,
+					spriteSize*0.25, spriteSize*0.25, undefined, {
+						//tint: string2hex(slot.color),
+						zIndex: 1,
+					}
+				);
+				iter++;
+			}
+
+		}
+
 		if (MouseIn(
 			xOffset + ScaleX*(slot.x - X) - spriteSize/2,
 			yOffset + ScaleY*(slot.y - Y) - spriteSize/2, spriteSize, spriteSize)
 		) {
 			if (!selectedJourney) selectedJourney = slot;
-			if (mouseDown || MouseClicked) {
+			if ((mouseDown || MouseClicked)) {
 				MouseClicked = false;
 				// Check if there is connection
 				let conn = false;
 				let current = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 				if (current && current.Connections.some((c) => {return c.x == slot.x && c.y == slot.y;}))
 					conn = true;
-				if (conn) {
+				if (conn || !allowChoose) {
 					KDGameData.JourneyTarget = {
 						x: slot.x,
 						y: slot.y,
@@ -347,33 +422,35 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 
 	let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
-	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[2]) {
-		// Down
-		if (currentSlot?.Connections && currentSlot.Connections[0]) {
-			KDGameData.JourneyTarget = currentSlot.Connections[0];
-			selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+	if (allowChoose) {
+		if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKeyWait[0]) {
+			// Down
+			if (currentSlot?.Connections && currentSlot.Connections[0]) {
+				KDGameData.JourneyTarget = currentSlot.Connections[0];
+				selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+			}
+		} else
+		if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[7]) {
+			// Down Right
+			if (currentSlot?.Connections && currentSlot.Connections[1]) {
+				KDGameData.JourneyTarget = currentSlot.Connections[1];
+				selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+			}
+		} else
+		if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[6]) {
+			// Down Left
+			if (currentSlot?.Connections && currentSlot.Connections[2]) {
+				KDGameData.JourneyTarget = currentSlot.Connections[2];
+				selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
+			}
 		}
-	} else
-	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[7]) {
-		// Down Right
-		if (currentSlot?.Connections && currentSlot.Connections[1]) {
-			KDGameData.JourneyTarget = currentSlot.Connections[1];
-			selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
-		}
-	} else
-	if (KinkyDungeonKeybindingCurrentKey == KinkyDungeonKey[6]) {
-		// Down Left
-		if (currentSlot?.Connections && currentSlot.Connections[2]) {
-			KDGameData.JourneyTarget = currentSlot.Connections[2];
-			selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y];
-		}
-	} else
+	}
 
 	if (!selectedJourney) {
 		selectedJourney = KDGameData.JourneyMap[KDGameData.JourneyTarget ? (KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y) : (KDGameData.JourneyX + ',' + KDGameData.JourneyY)];
 	}
 
-	if (selectedJourney) {
+	if (selectedJourney && selectedJourney.y >= Y && selectedJourney.y <= KDLevelsPerCheckpoint + Y) {
 		KDJourneyGraphics.lineStyle(1, 0xffffff);
 		KDJourneyGraphics.drawCircle(
 			xOffset + ScaleX*(selectedJourney.x - X),
@@ -429,13 +506,68 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		II+= subspacePercent;
 		if (selectedJourney.SideRooms && selectedJourney.SideRooms.length > 0) {
 			DrawTextFitKD(TextGet("KDNavMap_SideRooms"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
-			for (let sr of selectedJourney.SideRooms)
-				DrawTextFitKD(TextGet("KDSideRoom_" + (sr || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+			for (let sr of selectedJourney.SideRooms) {
+				let str = selectedJourney.HiddenRooms && selectedJourney.HiddenRooms[sr] ? TextGet("KDUnknown")
+					: TextGet("KDSideRoom_" + (sr || ""));
+				if (KDPersonalAlt[sr]) {
+					str = KDGetLairName(sr);
+
+				}
+				DrawTextFitKD(str, x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+
+			}
 			II+= subspacePercent;
 		}
 
 	}
 
+
+	if (allowScroll) {
+		let maxY = Math.floor(Math.max(1, KDGameData.HighestLevelCurrent || 1) / KDLevelsPerCheckpoint)
+			* KDLevelsPerCheckpoint;
+		if (KDJourneyIndex > 0)
+			DrawButtonKDEx("journeyUp", (_b) => {
+				if (KDJourneyIndex > 0) KDJourneyIndex -= KDLevelsPerCheckpoint;
+				if (KDJourneyIndex < 0) KDJourneyIndex = 0;
+				return true;
+			}, true, xOffset - 45, 95, 90, 40, "",
+			KDJourneyIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKey[0]),
+				hotkeyPress: KinkyDungeonKey[0],
+			});
+		if (KDJourneyIndex < maxY)
+			DrawButtonKDEx("journeyDown", (_b) => {
+				KDJourneyIndex += KDLevelsPerCheckpoint;
+				if (KDJourneyIndex > maxY)
+					KDJourneyIndex = maxY;
+				return true;
+			}, true, xOffset - 45, 830, 90, 40, "",
+			KDJourneyIndex < maxY ? "white" : "#888888",
+			KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKey[2]),
+				hotkeyPress: KinkyDungeonKey[2],
+			});
+
+	} else {
+
+	}
+
+}
+
+function KDGetLairName(lair: string) {
+	let str = "";
+	if (KDPersonalAlt[lair].OwnerNPC) {
+		str = TextGet("KDLairName")
+			.replace("PTRN", KDGetPersistentNPC(KDPersonalAlt[lair].OwnerNPC)?.Name)
+			.replace("RMTPE", TextGet("KDRoomType_" + KDPersonalAlt[lair].RoomType));
+	} else if (KDPersonalAlt[lair].OwnerFaction) {
+		str = TextGet("KDOutpostName")
+			.replace("FCTN", TextGet("KinkyDungeonFaction" + KDPersonalAlt[lair].OwnerFaction))
+			.replace("RMTPE", TextGet("KDRoomType_" + KDPersonalAlt[lair].RoomType));
+	} else {
+		str = TextGet("KDRoomType_" + KDPersonalAlt[lair].RoomType);
+	}
+	return str;
 }
 
 function KDInitJourneyMap(Level = 0) {
