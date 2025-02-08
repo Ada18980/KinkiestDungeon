@@ -1512,6 +1512,108 @@ function KinkyDungeonBarTo (
 	}
 }
 
+function KinkyDungeonCircleBar (
+	x:           number,
+	y:           number,
+	r:           number,
+	linewidth:   number,
+	value:       number,
+	rotation:    number,
+	foreground:  string = "#66FF66",
+	background:  string = "#e64539",
+	orig:        number = undefined,
+	origColor:   string = "#ff4444",
+	notches:     number[] = undefined,
+	notchcolor:  string = "#ffffff",
+	notchbg:     string = "#ffffff",
+	zIndex:      number = 55
+)
+{
+	KinkyDungeonCircleBarTo(kdcanvas, x, y, r, linewidth, value, rotation, foreground, background, orig, origColor, notches, notchcolor, notchbg, zIndex);
+}
+
+function KinkyDungeonCircleBarTo (
+	canvas:      PIXIContainer,
+	x:           number,
+	y:           number,
+	r:           number,
+	linewidth:   number,
+	value:       number,
+	rotation:    number,
+	foreground:  string = "#66FF66",
+	background:  string = "#e64539",
+	orig:        number = undefined,
+	origColor:   string = "#ff4444",
+	notches:     number[] = undefined,
+	notchcolor:  string = "#ffffff",
+	notchbg:     string = "#ffffff",
+	zIndex:      number = 55
+)
+{
+	if (value < 0)
+        value = 0;
+    if (value > 100)
+        value = 100;
+    let reverse = r < 0;
+    if (r < 0)
+        r *= -1;
+    let id = "circle-" + x + "," + y + "," + r + "," + linewidth + foreground;
+    let startangle = 0
+    let endangle = ((value / 100) * (2 * Math.PI))
+
+    if (background != "none")
+        FillCircleBarKD(canvas, kdpixisprites, id + '1', {
+            Left: x,
+            Top: y,
+            Radius: r + 1,
+            StartAngle: startangle - 0.04,
+            EndingAngle: endangle + 0.04,
+            Rotation: rotation,
+			CounterClockwise: false,
+            Color: "#000000",
+            LineWidth: linewidth + 2,
+            zIndex: zIndex + 0.0001,
+        });
+    FillCircleBarKD(canvas, kdpixisprites, id + '2', {
+        Left: x + 2,
+        Top: y + 2,
+        Radius: r + 1,
+        StartAngle: startangle - 0.03,
+        EndingAngle: endangle + 0.03,
+        Rotation: rotation,
+		CounterClockwise: false,
+        Color: foreground,
+        LineWidth: linewidth + 1,
+        zIndex: zIndex + .1,
+    });
+    if (background != "none")
+        FillCircleBarKD(canvas, kdpixisprites, id + '3', {
+            Left: x + 2,
+            Top: y + 2,
+            Radius: r + 1,
+            StartAngle: startangle - 0.02,
+            EndingAngle: endangle + 0.02,
+            Rotation: rotation,
+			CounterClockwise: false,
+            Color: background,
+            LineWidth: linewidth + 1,
+            zIndex: zIndex + .2,
+        });
+    if (orig != undefined)
+        FillCircleBarKD(canvas, kdpixisprites, id + '4', {
+            Left: x + 2,
+            Top: y + 2,
+            Radius: r + 1,
+            StartAngle: startangle,
+            EndingAngle: endangle,
+            Rotation: rotation,
+			CounterClockwise: false,
+            Color: origColor,
+            LineWidth: 1,
+            zIndex: zIndex + .3,
+        });
+}
+
 /**
  * @param enemy
  * @param [playerDist]
