@@ -70,16 +70,16 @@ Keybindings
 キー設定
 
 
-### Show Enemy Binding as %
-
-### Auto-wait Through Delayed Actions
-
-### Show Minimap Labels
-
+Show Enemy Binding as %
+敵の拘束値を%表示
+Auto-wait Through Delayed Actions
+複数ﾀｰﾝ使用する行動時に自動で進行
+Show Minimap Labels
+ﾐﾆﾏｯﾌﾟのﾗﾍﾞﾙを表示
 Auto loot all from chests
 宝箱の中身を自動で収集
-### Use Palette regardless of Outfit
-
+Use Palette regardless of Outfit
+衣装に関係なくﾊﾟﾚｯﾄの色を使用
 Apply palettes to Restraints
 拘束具にﾊﾟﾚｯﾄで設定した色を使用
 Apply palettes to transforms
@@ -96,8 +96,8 @@ Use character palette for default outfit
 
 Show Background Art
 背景の絵を表示
-### Experimental Rendering (unstable)
-
+Experimental Rendering (unstable)
+試験的なﾚﾝﾀﾞﾘﾝｸﾞ(不安定)
 Mute when Minimized
 最小化時にミュート
 Show DP instead of %
@@ -244,8 +244,8 @@ Dynamic Armor (must hide armor)
 ダイナミックアーマー(「鎧を描写する」をオフにする必要あり)
 Hide floating weapon display
 浮遊させている武器を非表示
-### Automatically Take All from Chests
-
+Automatically Take All from Chests
+自動でﾁｪｽﾄから全て入手
 Helpless!
 逃げられない！
 Evaded!
@@ -278,8 +278,8 @@ Game Font:
 ゲームのフォント：
 Button Font:
 ボタンのフォント：
-### Journey
-
+Journey
+ルート
 Select a journey. This will determine the ordering of game areas.
 モードを選択してください。エリアの順番が変わります。
 Standard: The intended experience
@@ -444,14 +444,14 @@ Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distracti
 興奮値に応じて、命中率が低下する。興奮値が10%の時には命中率が0.9倍になり、興奮値が90%の時には命中率が0.6倍になる
 
 
-### Focused Strikes
-
-### 90% less accuracy penalty on swung weapons due to distraction.
-
-### Focused Power
-
-### 90% less stamina cost penalty on staves and similar weapons distraction.
-
+Focused Strikes
+しっかり狙う
+90% less accuracy penalty on swung weapons due to distraction.
+武器攻撃時の興奮値による命中率の低下を90%低減する
+Focused Power
+こらえる
+90% less stamina cost penalty on staves and similar weapons distraction.
+武器攻撃時の興奮値による使用スタミナ量の増加を90%低減する
 Pristine
 原始的
 There are significantly less shiny loot objects in the dungeon.
@@ -474,8 +474,8 @@ Metal restraints are harder to escape from.
 
 Forgetful
 忘れっぽい
-### You don't remember where you've been in the level. 30 turn timer.
-
+You don't remember where you've been in the level. 30 turn timer.
+30ターンで現在地を忘れてしまう
 Cursed Locks
 呪われた錠前
 Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle.
@@ -978,14 +978,14 @@ Triumphant Wind
 勝利の風
 Second Wind now regenerates up to 25% of your max WP
 パーク「セカンドウィンド」の回復量が気力最大値の25%までになる
-### Mental Defiance
-
-### Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
-
-### Mental Fortitude
-
-### Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
-
+Mental Defiance
+反骨心
+Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
+パッシブ：性的行動で増加した分の「反骨心」を得る。 アクティブ：WPが25%以下のとき、「反骨心」を消費してWPに変換する。
+Mental Fortitude
+不屈の精神
+Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
+パッシブ：性的行動で増加した分の「反骨心」を得る。 アクティブ：WPが75%以上かつ100%未満のとき、「反骨心」を消費してWPに変換する。
 
 
 Locked Up
@@ -1116,8 +1116,8 @@ In most cases you will not get blindfolded, except for cloth blindfolds which ca
 
 Total Blackout
 完全ブラックアウト
-### Blindfolds are extremely punishing.
-
+Blindfolds are extremely punishing.
+目隠しの効果がより強力になる
 Poor Vision
 目が悪い
 Vision radius is significantly reduced.
@@ -1344,12 +1344,12 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 魔法を唱えた際、興奮値が低下する
 
 
-### Unidentified Wear
-
-### Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
-
-### Unknown
-
+Unidentified Wear
+未識別の装備
+Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
+エンチャント、あるいは呪われた装備の効果が装備するまでわからなくなる
+Unknown
+不明
 Copy (clipboard)
 クリップボードにコピー
 Paste (clipboard)
@@ -1515,7 +1515,7 @@ Let there be light!
 
 
 You're seeing things...
-あなたは物事を見ている...
+何かがある……
 
 
 You've been poisoned!
@@ -1622,14 +1622,14 @@ You can launch another Sagitta instantly!
 「サジッタ」を再度使用可能
 
 
-### You have stored willpower.
-
-### You have consumed a mote of essence, granting miscast chance reduction.
-
-### You recapture an essence mote and concentrate on its essence!
-
-### Choose an essence mote to absorb.
-
+You have stored willpower.
+気力を蓄えている。
+You have consumed a mote of essence, granting miscast chance reduction.
+エッセンスを吸収し、詠唱失敗率を低減した。
+You recapture an essence mote and concentrate on its essence!
+エッセンスを再び戻し、再び集中した。
+Choose an essence mote to absorb.
+エッセンスを抽出するモートを選択
 Locked Down: Struggling power is greatly reduced.
 ロックダウン：「もがく」選択時に大幅なペナルティ
 
@@ -1779,11 +1779,11 @@ Stamina recovers more quickly when you aren't spending it.
 Willpower is restored by food, sleep, and potions. Without willpower, it becomes very difficult to escape.
 気力は、食事、睡眠、ポーションによって回復する。気力がないと、拘束を解くのが難しくなる
 Charge is used to power various magic items and weapons.
-チャージは、さまざまなマジックアイテムや武器に使用できる
+エネルギーは、さまざまなマジックアイテムや武器に使用できる
 ### WP: CURRENT/MAX
 
 Charge: PERCENT
-チャージ: PERCENT
+エネルギー: PERCENT
 Use Potion
 ポーションを使う
 ###  MP
@@ -2026,8 +2026,8 @@ Inventory
 インベントリ
 Reputation
 評判
-### Journey Map
-
+Journey Map
+マップ
 Quests
 クエスト
 Spell List
@@ -2103,11 +2103,11 @@ The Mansion
 Ancient Tombs
 遺跡
 Magic Library
-魔法図書館
+魔法書庫
 Crystal Cave
-水晶の洞窟
-### Cavern
-
+水晶の洞穴
+Cavern
+洞窟
 Orrery
 オーラリー
 Training Center
@@ -2154,8 +2154,8 @@ The Edge of Reality
 果ての境界
 Dark Dimension
 闇の次元
-### Lair
-
+Lair
+隠れ家
 You search through the debris but find nothing of note
 瓦礫をかき分けて役に立ちそうなものを探したが、何も見つからなかった。
 You find some gold coins in a corner (+XXX gold)
@@ -2244,8 +2244,8 @@ The pearly chest contains a divine gift! (+ITEMGET)
 純白の宝箱から神々の贈り物を見つけた (+ITEMGET)
 Smoke fills the air around you!
 煙が辺り一面を取り巻く！
-### You find a magical necklace that seems to concentrate magic.
-
+You find a magical necklace that seems to concentrate magic.
+集中力を高める魔法のネックレスを見つけた！
 
 
 You recover some of your lost items!
@@ -2914,8 +2914,8 @@ Stormbreaker
 ストームブレイカー
 I have the power! Taking electric damage charges you (1 turn/10dmg).
 これが力だ！電気属性のダメージを受けた場合、1ターンに10ダメージ分チャージをする。
-### Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)
-
+Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)
+打撃属性。チャージした際、追加で40電撃属性追加ダメージを与える。装備した際、電撃属性への抵抗率+100。抵抗力の増加はサブウェポンとして装備した際も効果を発揮する。
 You pick up Stormbreaker.
 ストームブレイカーを手に入れた。
 
@@ -3120,8 +3120,8 @@ Magic Axe
 魔法の斧
 Sick and vile, like the hearts of your enemies.
 病的で卑劣な刃。
-### Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
-
+Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
+斬撃属性。攻撃時、周囲の敵に20影属性ダメージを与える。また、命中した敵に3ターンの間、減速と合計60の影属性持続ダメージを受ける状態を付与する。
 Pickaxe
 つるはし
 Used for drilling holes in rock and armor.
@@ -3132,8 +3132,8 @@ Magic Flail
 魔法のフレイル
 A blessed censer that distributes pain equally.
 群がる者共を平等に痛めつけるフレイル。
-### Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target.
-
+Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target.
+打撃属性。対象とその周囲の敵に、20聖属性追加ダメージを与える。
 Magic Spear
 魔法の槍
 Seeks and pierces hearts with ease.
@@ -3256,8 +3256,8 @@ You place the crystal into the receptacle and it lights up!
 クリスタルを設置すると、松明のように辺りを照らし出した！
 You take the crystal from the receptacle and all goes dark.
 クリスタルを取ると、辺りが暗くなっていった。
-### You try to take the crystal but the cage around it is secured with a magic purple lock.
-
+You try to take the crystal but the cage around it is secured with a magic purple lock.
+クリスタルを取るには魔法のかかった紫の錠が邪魔だ。
 Place spent crystal
 使用済みクリスタルを置く
 VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
@@ -3693,7 +3693,7 @@ The zombie's ribbons form magical locks on your body! (DamageTaken)
 
 
 Talisman Zombie
-タリスマンゾンビ
+札付きゾンビ
 The zombie pouts and puts up a shield to let her retreat.
 ゾンビは不機嫌に口をとがらせ、盾を構えながら撤退した。
 The zombie giggles as she wraps you in charms! (+RestraintAdded)
@@ -4363,7 +4363,7 @@ The bandit restrains you! (+RestraintAdded)
 The bandit smiles and applies a lock! (DamageTaken)
 盗賊は笑顔で拘束具をロックしてきた！(DamageTaken)
 The bandit caresses your restrained body! (DamageTaken)
-盗賊に身体を縛られて愛撫された！ (DamageTaken)
+盗賊に愛撫された！ (DamageTaken)
 
 
 Shady Dealer
@@ -4418,8 +4418,8 @@ The girl nervously restrains you! (+RestraintAdded)
 盗賊のペットが慎重に拘束してきた！ (+RestraintAdded)
 The bandit tickles you nervously! (DamageTaken)
 盗賊のペットはくすぐってきた！ (DamageTaken)
-### The bandit pet applies a lock! (DamageTaken)
-
+The bandit pet applies a lock! (DamageTaken)
+盗賊のペットが拘束具をロックしてきた！ (DamageTaken)
 Bandit Hunter
 盗賊のハンター
 The bandit hunter retreats.
@@ -5028,16 +5028,16 @@ The witch's lightning causes your body to tingle! (DamageTaken)
 魔女は電気の力で攻撃してきた！（DamageTaken）
 
 
-### Mage's Apprentice
-
+Mage's Apprentice
+見習い魔法使い
 The apprentice runs off and cries in a corner.
-見習い魔女は走り去り、隅で泣き出した。
+見習い魔法使いは走り去り、隅で泣き出した。
 The apprentice animates restraints to wrap around you! (+RestraintAdded)
-見習い魔女はたどたどしい手つきで拘束してきた！(+RestraintAdded)
+見習い魔法使いはたどたどしい手つきで拘束してきた！(+RestraintAdded)
 The apprentice nervously takes out a lock and makes you wear it! (DamageTaken)
-見習い魔女が初々しく拘束具をロックしてきた！(DamageTaken)
+見習い魔法使いが初々しく拘束具をロックしてきた！(DamageTaken)
 The apprentice slaps you playfully! (DamageTaken)
-見習い魔女が平手打ちしてきた！(DamageTaken)
+見習い魔法使いが平手打ちしてきた！(DamageTaken)
 
 
 Summoner's Apprentice
@@ -5050,14 +5050,14 @@ The apprentice tickles you playfully! (DamageTaken)
 
 Witch's Apprentice
 見習い魔女
-### The witch's apprentice confidently admits defeat.
-
-### The witch's apprentice conjures magic bindings on you! (+RestraintAdded)
-
-### The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
-
-### The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
-
+The witch's apprentice confidently admits defeat.
+見習い魔女は堂々と負けを認めた。
+The witch's apprentice conjures magic bindings on you! (+RestraintAdded)
+見習い魔女が拘束具を召喚してきた！ (+RestraintAdded)
+The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
+見習い魔女が笑顔で拘束具の錠を召喚してきた！ (DamageTaken)
+The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
+見習い魔女は笑顔で脇腹を撫で回してきた！ (DamageTaken)
 Latex Apprentice
 見習いラテックスの魔女
 The apprentice attaches a sticky restraint! (+RestraintAdded)
@@ -5207,15 +5207,15 @@ The Nurse assures you it's going to be alright~ (DamageTaken)
 
 
 Librarian
-図書館司書
+司書
 The librarian gets angry and retreats.
-司書図書館司書は怒りながら逃げていった。
+司書は怒りながら逃げていった。
 The librarian shushes you as she brandishes a restraint! (+RestraintAdded)
-図書館司書が拘束具を振り回してきた！ (+RestraintAdded)
+司書が拘束具を振り回してきた！ (+RestraintAdded)
 The librarian snaps her fingers and sends a lock flying at you!
-図書館司書が指をパチンと鳴らし、錠を飛ばしてきた！
+司書が指をパチンと鳴らし、錠を飛ばしてきた！
 The librarian whispers seductively into your ear! (DamageTaken)
-図書館司書が耳元で魅惑的に囁いてきた! (DamageTaken)
+司書が耳元で魅惑的に囁いてきた! (DamageTaken)
 
 
 Stone Door
@@ -6200,8 +6200,8 @@ Crystal Lock
 クリスタルの錠
 Runic Lock
 ルーンの錠
-### Magic Lock
-
+Magic Lock
+魔法の錠
 Cyber Lock
 電子錠
 Integrated Cyber Lock
@@ -6226,8 +6226,8 @@ You drop the key due to your bound hands!
 縛られた手で持とうとしたら、鍵を落としてしまった！
 You drop the magic key due to your bound hands!
 縛られた手で持とうとしたら、魔法のナイフを落としてしまった！
-### You insert the card the wrong way and the reader ejects it onto the floor!
-
+You insert the card the wrong way and the reader ejects it onto the floor!
+挿れ方を間違えたようで、カードは床に吐き出された！
 Journal (N)
 記録 (N)
 Passing...
@@ -6239,7 +6239,7 @@ Close door
 Sprinting!!!
 スプリント!!!
 Sprint!
-走る！
+ダッシュ！
 Hopping!!!
 ホッピング!!!
 Hop!
@@ -6680,10 +6680,10 @@ A devious way to immobilize people.
 移動を封じる悪辣な装置。
 
 
-### Metal Stand
-
-### As long as it's locked around you, you won't be going anywhere!
-
+Metal Stand
+鋼鉄のスタンド
+As long as it's locked around you, you won't be going anywhere!
+これがある限り、どこにも行けない。
 
 
 As long as it's attached, you won't be going anywhere!
@@ -7684,14 +7684,14 @@ It is charged by residual magic from your spells. Type: Teasing, Edging
 魔法を行使すると、その魔力の残滓で充電する。タイプ：イタズラ、絶頂
 
 
-### Stainless Plug (F)
-
+Stainless Plug (F)
+ステンレスのプラグ(前)
 A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
 振動はしないが重量感がクセになる……
 This one goes in the front.
 前の穴用。
-### Stainless Plug (R)
-
+Stainless Plug (R)
+ステンレスのプラグ(後)
 This one goes in the back.
 後ろの穴用。
 
@@ -8182,10 +8182,10 @@ It has eyeholes for you to somewhat see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
 
 
-### Happy Face
-
-### Just put on a happy face and enjoy it.
-
+Happy Face
+しあわせマスク
+Just put on a happy face and enjoy it.
+笑顔いっぱいで幸せになろうよ！
 Sensory Hood
 感覚遮断フード
 A well-fitted hood that covers your head and muffles sounds.
@@ -9250,12 +9250,12 @@ Doll Supply
 ドール搬入口
 Bondage Machine
 ボンデージマシン
-### Empty Fixture
-
-### Filled Fixture
-
-### Tablet
-
+Empty Fixture
+空の容器
+Filled Fixture
+満たされた容器
+Tablet
+石板
 
 
 
@@ -9276,8 +9276,8 @@ A book of manipulative spells
 
 Verbal
 口
-### Vision
-
+Vision
+視界
 Components:
 使用部位：
 Arm Movements
@@ -9290,8 +9290,8 @@ You wiggle uselessly trying to cast the spell...
 魔法を使おうとしたが、腕の動きを忘れてしまった……
 Your feet are too clumsy to perform the magic gesture...
 足が不器用なため、詠唱の動作に失敗した……
-### You are unable to see, so you can't target this spell...
-
+You are unable to see, so you can't target this spell...
+目視できないため、対象を定められない……
 Next Page
 次のページ
 Last Page
@@ -9414,8 +9414,8 @@ Your gag causes you to mispronounce the magic words!
 猿轡のせいで上手く発音できなかった！
 You are too clumsy to perform the leg movements!
 不器用な足ではうまく魔法の動きが行えない！
-### You can't get a good look at the target!
-
+You can't get a good look at the target!
+よく見えない！
 You trip up while casting the spell!
 魔法のジェスチャー中に転んでしまった！
 You miscast the spell because of a bug. Please report.
@@ -9494,8 +9494,8 @@ Stores 10% of the stamina cost of attacks as Rhythm, up to a total of 40. While 
 
 Limit Surge
 応急処置
-### Spend 40 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
-
+Spend 40 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
+WPを40消費し、スタミナを完全回復し、20ターンの間スタミナ回復量を30%増加させる。この効果でWPが0になった場合、2ターンの間スタンする。
 Battle Trance
 バトルトランス
 While at 40 Battle Rhythm, you attack twice per turn.
@@ -9522,10 +9522,10 @@ Trap-type spells and consumables no longer require you to channel them, but stil
 
 
 
-### Essence Motes
-
-### When you miscast a spell, you gain an Essence Mote which appears in a random space next to you. You can consume this mote to gain -100% miscast chance decaying over 10 turns. Walking over the mote also consumes it.
-
+Essence Motes
+エッセンス・モート
+When you miscast a spell, you gain an Essence Mote which appears in a random space next to you. You can consume this mote to gain -100% miscast chance decaying over 10 turns. Walking over the mote also consumes it.
+詠唱に失敗したとき、周囲にエッセンス・モートを召喚する。エッセンス・モートの位置に移動することで使用し、10ターンかけて詠唱失敗率を合計100%低減する。
 Inner Power
 秘めたる力
 As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown.
@@ -9574,8 +9574,8 @@ You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total
 
 Mental Resistance
 不屈の精神
-### +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
-
++100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
+サイキック、魅了属性への耐性+100。シールド状態及びWPが10%以上のとき、勝手に絶頂しなくなる。また、感じているときのWPの減少量が70%低減する。クリックで切り替え。
 Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
 不屈の精神：気力が25%以上の時、勝手に絶頂しなくなる。クリックで切り替え。
 Mental Resistance: You are allowing yourself to let go. Click to toggle.
@@ -10189,7 +10189,7 @@ Mystic Beam
 Mystic Barrage
 ミスティックバラージュ
 A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
-2ターンの間チャージし、命中したターゲットに DamageDealt 火ダメージを与えるビームを放つ。命中した敵は12ターンの間盲目状態になる。この攻撃の会心ダメージ倍率は150%。
+2ターンかけて発動。命中したターゲットに DamageDealt 聖属性ダメージを与えるビームを放つ。命中した敵は12ターンの間盲目状態になる。この攻撃の会心ダメージ倍率は150%。
 You charge a powerful beam attack!!!
 敵を償却するレーザーを放つ！
 
@@ -10199,7 +10199,7 @@ Icicles
 Icicle
 アイシクル
 Channel 3 turns to fire 3 icicles that deal DamageDealt ice damage and slow for 4 turns, freezing slowed/drenched targets for 3 turns.
-3ターンの間チャージし、命中したターゲットに DamageDealt 氷ダメージを与えるつららを3発放つ。命中した敵は4ターンの間減速し、水濡れまたは既に減速状態である場合、3ターンの間凍結する。
+3ターンかけて発動。命中したターゲットに DamageDealt 氷ダメージを与えるつららを3発放つ。命中した敵は4ターンの間減速し、水濡れまたは既に減速状態である場合、3ターンの間凍結する。
 You raise a hand and icicles fly forward!
 手を振りかざし、つららを飛ばす！
 
@@ -11244,10 +11244,10 @@ The EnemyName creates a zone of increased defense!
 EnemyName は、守護の方陣を生成した！
 EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!
 EnemyName は護符を使用して、マジックアーマーと回避力を強化した！
-### EnemyName supports a witch with a magical shield!
-
-### Shield the Witch!
-
+EnemyName supports a witch with a magical shield!
+EnemyName はシールドを張っている魔女をサポートしている！
+Shield the Witch!
+魔女を守れ！
 EnemyName uses a glowing talisman to buff an undead's physical armor and speed!
 EnemyName は、光る護符を使用して、アンデッドの物理アーマーと速度を強化した!
 You create a zone of increased defense!
@@ -11454,16 +11454,16 @@ You conjure a small amount of slime!
 
 Water Ball
 ウォーターボール
-### Fast projectile. Deals DamageDealt soap damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
-
+Fast projectile. Deals DamageDealt soap damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
+移動速度：速 命中した敵に DamageDealt ソープ属性ダメージを与え、ずぶ濡れにする水弾を放つ。この状態の敵は電撃、氷属性ダメージが35%増加、炎属性ダメージを42%低減、50%分の電荷を帯びる状態にする。
 You hurl a ball of water!
 水弾を発射した！
 
 
 Tidal Sphere
 タイダルスフィア
-### Slow moving projectile, deals DamageDealt soap damage to enemies it passes thru. Leaves a large amount of water in its wake.
-
+Slow moving projectile, deals DamageDealt soap damage to enemies it passes thru. Leaves a large amount of water in its wake.
+移動速度：遅 命中した敵に DamageDealt ソープ属性ダメージを与える貫通弾を放つ。この魔法が通過したマスを水浸しにする。
 You raise a huge mass of water!
 水を魔力で押し固めて発射した！
 
@@ -11990,8 +11990,8 @@ You hear the sound of glass breaking, and a cloud of green gas rises around you!
 ガラスが割れる音が聞こえ、緑色のガスが周囲に立ち込めた！
 The charms stick themselves all over your body!
 リボンが全身に張り付いた！
-### A metal pole catches you from below!
-
+A metal pole catches you from below!
+鋼鉄の杭に捕らえられた！
 The ribbons tie themselves tightly around your body and won't let go!
 リボンが体に密着してきた！
 Shackles close themselves over your limbs!
@@ -12032,8 +12032,8 @@ You breathe in the gas, and a wave of pleasure hits your whole body.
 ガスを吸い込むと、全身が性感帯になったかのように感じた。
 You breathe in the gas, and feel lethargic...
 ガスを吸い込むと、力が抜けていった……
-### You hear a mechanism trip...
-
+You hear a mechanism trip...
+機械の作動音が聞こえた……
 Items
 インベントリ
 Rep
@@ -12167,7 +12167,7 @@ Temple
 Tombs
 遺跡
 Library
-図書館
+書庫
 Bellows
 ふいご
 Coast
@@ -12183,9 +12183,9 @@ Ejahl
 (A page from the Book of Aeons)|Some say the 'Catacombs' are older than time itself. When the Old Civilization began to study immortality, no one knew if it would be possible to bring back those who already died. The Catacombs therefore were used to store all of the remains of former humans, so that they too could be revived when the archmagus would finally make her breakthrough.
 アイオーンの書の1ページ|このカタコンベは時間の概念がないと言われている。旧文明が不死の研究を始めたとき、すでに死んだ人々を生き返らせられるかどうかは分からなかった。この場所は、不死の魔術が完成したときに備えて遺体を保存するために作られたと言われている。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
-アイオーンの書の1ページ|この大図書館は、大魔術師サリエル・ヴィンラーガの学んだ場所と言われている。人間の知識、魔法、精神、技術のすべてを集めた彼女は、12人の高弟達に司書の仕事を託し、去っていったと言われている。彼女がなぜ去ったのか、なぜ図書館が荒れ果てているのかは、未だ解明されていない。
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
-
+アイオーンの書の1ページ|この大書庫は、大魔術師サリエル・ヴィンラーガの学んだ場所と言われている。人間の知識、魔法、精神、技術のすべてを集めた彼女は、12人の高弟達に司書の仕事を託し、去っていったと言われている。彼女がなぜ去ったのか、なぜ書庫が荒れ果てているのかは、未だ解明されていない。
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+アイオーンの書の1ページ|この植物の生い茂る遺跡は未だ謎が多い。陽の光の届かないこの地下で、何故命が育まれているのか。我々人間は体内の魔力によって不死を保っているが、魔力を持たない植物がなぜここで生きていられるのか。敬虔な人間は「再生の女神の神力である」と言っているが、果たしてそうだろうか。旧文明が魔力も日光もなしに植物を育てる術でも発明したのか。
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。クリスタルの洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
 (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
@@ -12279,7 +12279,7 @@ The shadow spirits' touch is cold as ice... I have wondered if this temperature 
 I was being chased by something fast and heavy, and it was about to crush me when I tossed an Ice Shard behind me. It stopped and I didn't care to look back.
 速くて重い何かに追いかけられ、押し潰されそうになったとき、私はアイスシャードを後ろに放った。何かが止まる気配がしたので、私は振り返ろうともしなかった。
 I was walking in the library when I got attacked by a magic book! Fortunately my sword seemed to disapatch it quickly, and I used my spear to stab another one shortly after.
-図書館を歩いていたら、魔法の本に襲われた！幸いなことに、剣が通用してくれたので、その後すぐに槍でもう一冊も刺した。
+書庫を歩いていたら、魔法の本に襲われた！幸いなことに、剣が通用してくれたので、その後すぐに槍でもう一冊も刺した。
 SOMEBODY STABBED MY FROG AND I AM PISSED.
 私のカエルを刺したのは誰！？
 I don't think it's neccessary to tell people that dragons resist fire... right?
@@ -12621,7 +12621,7 @@ You hear sirens as a group of robots closes in!
 You stumble upon a group of mages wanting to play dress-up!
 ドレス押し売り集団だ！
 You step on an open book, only to find a furious librarian staring you down!
-開かれた本を踏み、図書館の司書がブチギレた！
+開かれた本を踏み、書庫の司書がブチギレた！
 You are ambushed by wolfgirls!
 ウルフガールの待ち伏せだ！
 You are ambushed by an alkahestor!
@@ -12805,11 +12805,11 @@ Looks like you're shaping up to be a good girl~
 Oh! Looks like I've made a mistake...
 おっと、間違えた……
 404 prisoner not found. Releasing tether.
-404囚人が見つかりません。解放します。
+404 NOT FOUND。囚人が見つかりません。解放します。
 
 
-### A EnemyName approaches you in your cell.
-
+A EnemyName approaches you in your cell.
+EnemyName が近寄ってきた。
 A EnemyName appears to check on you.
 EnemyName が見回りに来た。
 The EnemyName leaves and locks the cell behind her.
@@ -12973,7 +12973,7 @@ Your instincts are getting the better of you...
 Your body shudders briefly from pleasure...
 快楽に呼吸が早くなる……
 You are unable to control yourself.
-あなたは自分をコントロールすることができない。
+自分をコントロールすることができない。
 You play with yourself using the magic wand...
 魔法の杖を股間にあてがう……
 You would never do such a thing.
@@ -13022,8 +13022,8 @@ RestraintName は突如警報音を出しながら震えだした！
 
 A golden lock fades into a blue lock on one of your restraints!
 拘束具についている金色のロックは、青いロックへと変わった。
-### Your command word is heard and the magic lock(s) click and fall off!
-
+Your command word is heard and the magic lock(s) click and fall off!
+コマンドワードを唱えると、魔法の錠が外れた！
 Your command word is heard and the charger unlocks!
 コマンドワードを唱えると、充電式ロックが外れた。
 
@@ -13088,8 +13088,8 @@ You can barely stand in these heels. They are rigid, metallic, and unbreakable, 
 
 Ancient Blindfold
 古代の目隠し
-### You find a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
-
+You find a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
+パッドの付いた、輝く目隠しを見つけた。隣には奇妙なクリスタルがある。
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
 洗練された古風なデザインの目隠し。エネルギーがある間は、目隠しの命中率低下を受けず、命中率+100%、近接攻撃のダメージ+10
 'Mask of the Warrior'
@@ -13240,8 +13240,8 @@ Resistances:
 耐性:
 ### HP:
 
-### Shield:
-
+Shield:
+シールド:
 Binding:
 拘束:
 Ambivalent
@@ -13338,8 +13338,8 @@ Arcane
 秘術
 Poison
 毒
-### Poison Gas
-
+Poison Gas
+毒ガス
 Charm
 魅了
 Tickle
@@ -13363,7 +13363,6 @@ Mana Draining
 Electric
 電気
 ### E-Stim
-
 Shock
 衝撃
 Plush
@@ -13498,12 +13497,12 @@ Much Less
 とても少ない
 No pain, no gain.
 痛みなくして得るものなし
-### Gain 20 extra perk points, to give you a false sense of security.
-
-### Lose 20 perk points, just to keep things interesting.
-
-### Lose 50 perk points, making things very interesting.
-
+Gain 20 extra perk points, to give you a false sense of security.
+パークポイント+20。偽りの安心感と共に。
+Lose 20 perk points, just to keep things interesting.
+パークポイント-20。こっちのほうが面白いだろう？
+Lose 50 perk points, making things very interesting.
+パークポイント-50。すごく楽しめるよ。
 
 
 Perk Progression Mode:
@@ -13558,14 +13557,14 @@ You know the exact restraints a perk shrine will apply.
 祭壇に拘束される際、種類が全てわかる。
 
 
-### Difficulty:
-
+Difficulty:
+難易度:
 Normal Mode
 ノーマル
 Hard Mode
 ハード
-### Extreme Mode
-
+Extreme Mode
+ｴｸｽﾄﾘｰﾑ
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
 Play the game the way it was intended. Cruel and restrictive.
@@ -13772,8 +13771,8 @@ Leave them alone!
 何処か行って！
 Hey, stop that!
 ねぇ、それはやめて！
-### Why do I hire these people...
-
+Why do I hire these people...
+なんでこんな奴らを雇ったんだろう……
 
 
 
@@ -15001,11 +15000,11 @@ You'll ruin the books!
 Stop making a mess!
 これ以上散らかさないでください！
 You're too dangerous to have around.
-あなたは図書館にいてはいけない人間みたいですね。
+あなたは書庫にいてはいけない人間みたいですね。
 I don't care what happens to you as long as you're out of here.
 あなたさえいなくなれば他はどうなろうと構いません。
 Get out of my library!
-さっさと図書館から出て行ってください！
+さっさと書庫から出て行ってください！
 
 
 
@@ -15130,8 +15129,8 @@ I'll take a look.
 
 ### SPL
 
-### SPL failed
-
+SPL failed
+SPL 失敗
 
 
 
@@ -15596,8 +15595,8 @@ No! Be gentle!
 やめて、優しくして！
 Ahhhh!
 あんっ！
-### Headpats please...
-
+Headpats please...
+頭撫でて……
 *purrs*
 (プルプル)
 Nyah, I've been a bad kitty...
@@ -16398,8 +16397,8 @@ I see a chalice before me... it drips with shadow and overflows with darkness!
 見えているぞ……聖杯から溢れる闇で世界が満ちていく……。
 My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*
 Myrtleは私よりも守護に長けていた……妹に会いたいのだ……。
-### THE PATH OF MY RETRIBUTION IS PAVED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
-
+THE PATH OF MY RETRIBUTION IS PAVED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
+我が報復の旅路は硫黄に満ち、地獄の業火に焼き尽くされよう！　燃えろ！
 I, Myrtrice, will resist their insolent fusilades!
 この私、Mytriceが降りかかる火の粉を払ってやろう！
 
@@ -17764,8 +17763,8 @@ You hand over your weapon reluctantly...
 (SPEAKER は恥ずかしがっている)|えっと……だ、誰か彼女を止めてください！
 (The SPEAKER grins)|Then allow me to personally show you the rules.
 (SPEAKER はニヤリと笑った)|じゃあ私がルールを教えてあげる。
-### (The SPEAKER cracks her knuckles)|Finally, I get to have some fun~
-
+(The SPEAKER cracks her knuckles)|Finally, I get to have some fun~
+(SPEAKER は指を鳴らしている)|なら、せいぜい楽しませてみろよ！
 (The SPEAKER beeps)|Subject is resisting. Begin capture protocol.
 (SPEAKER はビープ音を発した)|対象ノ抵抗ヲ確認。拘束プロトコル発動。
 
@@ -17774,14 +17773,14 @@ You hand over your weapon reluctantly...
 (SPEAKER に呼び止められた)|奴隷が武器を持つのは許可されてないわ。|それを渡しなさい。
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 (SPEAKER が接近してきた)|武器ノ所持ハ認可サレテイマセン。|オ渡シ下サイ。
-### (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
-
-### (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
-
-### (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
-
+(The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
+(SPEAKER は遠慮がちに警告してきた)|すみません、武器を持っていますよね？|そちらをお渡しいただけますか……？
+(The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+(SPEAKER は笑顔で言い放ってきた)|そんなものを持っていたらだめよ？|いい子だからわかるでしょ？
+(The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+(SPEAKER は指を鳴らしながらニヤニヤと笑っている)|喧嘩でもしようとしてるのか？|さっさとそれを渡しな。
 Yes, miss... (Currently held weapon will be lost)
-わかりました、ご主人様……(武器を渡す)
+わかりました……(武器を渡す)
 Mmph... (Nod politely) (Currently held weapon will be lost)
 むぅぅ……(武器を渡す)
 No, I refuse!
@@ -19800,8 +19799,8 @@ This is unethical! I refuse! (PERCENT chance to avoid)
 (SPEAKER から購入するアイテムを選ぶ)
 (Attack the SPEAKER?)
 (SPEAKER を攻撃する？)
-### (Buy ITM# for IC# gp) (Owned: AMNT#)
-
+(Buy ITM# for IC# gp) (Owned: AMNT#)
+(ITM# を IC# gp で買う) (所持数: AMNT#)
 (The SPEAKER sells you the item)
 (SPEAKER からアイテムを買った)
 (The SPEAKER shakes her head)|I think you'd be better off without that~
@@ -20040,46 +20039,46 @@ You're giving me everything you have.
 
 (Look at what she has to sell)
 (買う)
-### (Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
-
-### (Sell Item1 for ItemCost1 gp) (Owned: AMNT1)
-
-### (Sell Item2 for ItemCost2 gp) (Owned: AMNT2)
-
-### (Sell Item3 for ItemCost3 gp) (Owned: AMNT3)
-
-### (Sell Item4 for ItemCost4 gp) (Owned: AMNT4)
-
-### (Sell Item5 for ItemCost5 gp) (Owned: AMNT5)
-
-### (Sell Item6 for ItemCost6 gp) (Owned: AMNT6)
-
-### (Sell Item7 for ItemCost7 gp) (Owned: AMNT7)
-
-### (Sell Item8 for ItemCost8 gp) (Owned: AMNT8)
-
-### (Sell Item9 for ItemCost9 gp) (Owned: AMNT9)
-
-### (Buy Item0 for ItemCost0 gp) (Owned: AMNT0)
-
-### (Buy Item1 for ItemCost1 gp) (Owned: AMNT1)
-
-### (Buy Item2 for ItemCost2 gp) (Owned: AMNT2)
-
-### (Buy Item3 for ItemCost3 gp) (Owned: AMNT3)
-
-### (Buy Item4 for ItemCost4 gp) (Owned: AMNT4)
-
-### (Buy Item5 for ItemCost5 gp) (Owned: AMNT5)
-
-### (Buy Item6 for ItemCost6 gp) (Owned: AMNT6)
-
-### (Buy Item7 for ItemCost7 gp) (Owned: AMNT7)
-
-### (Buy Item8 for ItemCost8 gp) (Owned: AMNT8)
-
-### (Buy Item9 for ItemCost9 gp) (Owned: AMNT9)
-
+(Sell Item0 for ItemCost0 gp) (Owned: AMNT0)
+(ItemCost0 gp で Item0 を売る)(所持数:AMNT0)
+(Sell Item1 for ItemCost1 gp) (Owned: AMNT1)
+(ItemCost1 gp で Item1 を売る)(所持数:AMNT1)
+(Sell Item2 for ItemCost2 gp) (Owned: AMNT2)
+(ItemCost2 gp で Item2 を売る)(所持数:AMNT2)
+(Sell Item3 for ItemCost3 gp) (Owned: AMNT3)
+(ItemCost3 gp で Item3 を売る)(所持数:AMNT3)
+(Sell Item4 for ItemCost4 gp) (Owned: AMNT4)
+(ItemCost4 gp で Item4 を売る)(所持数:AMNT4)
+(Sell Item5 for ItemCost5 gp) (Owned: AMNT5)
+(ItemCost5 gp で Item5 を売る)(所持数:AMNT5)
+(Sell Item6 for ItemCost6 gp) (Owned: AMNT6)
+(ItemCost6 gp で Item6 を売る)(所持数:AMNT6)
+(Sell Item7 for ItemCost7 gp) (Owned: AMNT7)
+(ItemCost7 gp で Item7 を売る)(所持数:AMNT7)
+(Sell Item8 for ItemCost8 gp) (Owned: AMNT8)
+(ItemCost8 gp で Item8 を売る)(所持数:AMNT8)
+(Sell Item9 for ItemCost9 gp) (Owned: AMNT9)
+(ItemCost9 gp で Item9 を売る)(所持数:AMNT9)
+(Buy Item0 for ItemCost0 gp) (Owned: AMNT0)
+(ItemCost0 gp で Item0 を買う)(所持数:AMNT0)
+(Buy Item1 for ItemCost1 gp) (Owned: AMNT1)
+(ItemCost1 gp で Item1 を買う)(所持数:AMNT1)
+(Buy Item2 for ItemCost2 gp) (Owned: AMNT2)
+(ItemCost2 gp で Item2 を買う)(所持数:AMNT2)
+(Buy Item3 for ItemCost3 gp) (Owned: AMNT3)
+(ItemCost3 gp で Item3 を買う)(所持数:AMNT3)
+(Buy Item4 for ItemCost4 gp) (Owned: AMNT4)
+(ItemCost4 gp で Item4 を買う)(所持数:AMNT4)
+(Buy Item5 for ItemCost5 gp) (Owned: AMNT5)
+(ItemCost5 gp で Item5 を買う)(所持数:AMNT5)
+(Buy Item6 for ItemCost6 gp) (Owned: AMNT6)
+(ItemCost6 gp で Item6 を買う)(所持数:AMNT6)
+(Buy Item7 for ItemCost7 gp) (Owned: AMNT7)
+(ItemCost7 gp で Item7 を買う)(所持数:AMNT7)
+(Buy Item8 for ItemCost8 gp) (Owned: AMNT8)
+(ItemCost8 gp で Item8 を買う)(所持数:AMNT8)
+(Buy Item9 for ItemCost9 gp) (Owned: AMNT9)
+(ItemCost9 gp で Item9 を買う)(所持数:AMNT9)
 (The SPEAKER appears in a flash of light)|I come in the name of the Goddess.|I presume you need my aid?|(She will remain and help you with restraints for 50 turns)
 (SPEAKER が光を背に現れた)|神の名のもとに、ただいま参りました。|助けが必要なのでしょう？|(50ターンの間拘束具を外す手伝いをしてくれる)
 (The SPEAKER gives you two knives)|Don't hurt yourself with these, okay?
@@ -20156,20 +20155,20 @@ There is no valid space next to you!
 (SPEAKER は命令に従わなかった)
 
 
-### (Remove BINDAMNT binding from her) UNTIETURNS
-
-### (You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
-
+(Remove BINDAMNT binding from her) UNTIETURNS
+(彼女から BINDAMNT を外す) UNTIETURNS
+(You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
+(SPEAKER から「見た目だけ」 BINDANTPREV を外した)|(実際の拘束を外すにはスキル「ぐるぐる巻き！」を使用する)
 (Give her a restoration item)
 (回復アイテムを渡す)
 (The SPEAKER appreciates the thought!)
 (SPEAKER は感謝している！)
-### Must have HP to untie.
-
-### (AMNT turns)
-
-### (AMNT turn)
-
+Must have HP to untie.
+HPが足りない。
+(AMNT turns)
+(AMNT ターン)
+(AMNT turn)
+(AMNT ターン)
 (Follow me)
 (ついてきて)
 (The SPEAKER starts following you)
@@ -20601,7 +20600,7 @@ Pledge my soul? That changes things...
 (SPEAKER frowns)|Never ask a woman about her age!
 (SPEAKER は口をとがらせる)|なんて失礼な奴！
 I take it you're the hag in charge?
-あなたがここのボスのゾンビババアね？
+あなたがここのボスのゾンビババア？
 You are in charge, right?
 あなたがここのボスね
 (Giggle)
@@ -21121,7 +21120,7 @@ Mmmmm! (Struggle)
 (A SPEAKER clutching her books approaches you)|Miss adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
 (SPEAKER が本を手に近づいてきた)|あの、冒険者さん！|魔法の巻物を分けていただけませんか？|勉強で必要になりまして……
 (The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back...
-(SPEAKER はニッコリと笑う)|ありがとうございます！|魔法図書館が閉鎖されてから、|全然巻物が手に入らなくて……|しかも、巻物を狙う輩まで現れだしたんですよね……
+(SPEAKER はニッコリと笑う)|ありがとうございます！|魔法書庫が閉鎖されてから、|全然巻物が手に入らなくて……|しかも、巻物を狙う輩まで現れだしたんですよね……
 (The SPEAKER is happy)|Thank you so much!
 (SPEAKER は安堵の表情を浮かべている)|ありがとうございます！
 Give her a Scroll of Sauntering
@@ -21240,20 +21239,20 @@ Use a key to unlock her
 鍵を使う
 Try to pick her restraints (JAMPERCENT jam chance)
 ロックピックを使う(JAMPERCENT の確率で失敗)
-### Use CMD: Unlock
-
+Use CMD: Unlock
+ｺﾏﾝﾄﾞﾜｰﾄﾞを使用
 Apologize profusely!
 謝罪する
 
 
-### (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+(The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+(SPEAKER は不具合の力で拘束されているようだ)|(彼女は助けを求めている)
+(Unlock her and file a bug report to Ada)
+(解錠する。不具合の報告も忘れずに)
 
-### (Unlock her and file a bug report to Ada)
 
-
-
-### (This SPEAKER is a sub, but not YOUR sub!)
-
+(This SPEAKER is a sub, but not YOUR sub!)
+(SPEAKER はあなたのものではない)
 
 
 (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
@@ -21340,16 +21339,16 @@ An enemy found you while you were busy!
 (捕虜を閉じ込める)
 (Lock yourself inside)
 (中に入って鍵を閉める)
-### (Check the occupant)
-
+(Check the occupant)
+(中を確認する)
 (Try to lock NME into the furniture) (PRCNT% Chance)
 (NME を拘束用のインテリアに閉じ込める)(PRCNT% で成功)
 (You close the furniture around your unfortunate victim!)
 (無理やり拘束具に押し込めた！)
 Stun or disable her first.
 まずはスタンさせるか武装解除させる必要がある。
-### Area isn't clear.
-
+Area isn't clear.
+安全を確保していない。
 (Secure NME into the furniture)
 (NME を拘束用インテリアに閉じ込めて完全拘束する)
 (You lock her into the furniture so that she stays in place)
@@ -21954,8 +21953,8 @@ Preloading Character Assets:
 アセットのプリローディング中:
 
 
-### Currently Worn
-
+Currently Worn
+着用中
 Uniforms
 衣装セット
 Suits
@@ -26338,8 +26337,8 @@ Gag
 
 ### Fluff
 
-### Orb
-
+Orb
+オーブ
 ### FestiveArmbinder
 
 ### BinderStrapLeft
@@ -27460,16 +27459,16 @@ They are trying to take you somewhere!
 どこかに連れて行かれてしまう！
 
 
-### Essence Mote
-
-### A trainee can use this to focus.
-
-### Pick this up to gain decaying miscast reduction.
-
-### Seal Sigil
-
-### Walk over it to erase it and unlock the next floor.
-
+Essence Mote
+エッセンス・モート
+A trainee can use this to focus.
+見習いはこれを使って集中する。
+Pick this up to gain decaying miscast reduction.
+拾うことで詠唱失敗率を下げることができる。
+Seal Sigil
+封印の紋章
+Walk over it to erase it and unlock the next floor.
+上を歩くことで階段の錠が開く。
 The Shadow
 影の悪魔
 The Shadow is exorcised... for now.
@@ -28274,8 +28273,8 @@ You don't have enough Arcane Energy. You need AMNT.
 
 Chaotic Overflow
 カオス・オーバーフロー
-### Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
-
+Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
+WPを35消費して発動。MPを完全回復し、 Duration ターンの間、使用箇所の拘束を無視して魔法を唱えられる。ただし不安定で、何かが起こるかもしれない……
 Chaotic energy flows through you!!!
 混沌の力が身体を貫いた！
 You try to call forth the chaotic energy, but it isn't interested in you anymore...
@@ -28300,7 +28299,7 @@ You feel holy energy neutralizing the cursed magic permanently.
 聖なる力が呪いの魔法を打ち消した！
 Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 ある人は、このマカロンは天国のパン屋から来たと言う。ある者は、このマカロンが珍しい材料で作られただけで、味は最悪だと言う。
-### Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
+Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
 
 Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
 いつもご愛顧いただきありがとうございます！この度は特典として、最寄りのお店への往復券を1枚サービスさせていただきます！
@@ -28528,10 +28527,10 @@ Offhand: This weapon can be dual-wielded by some classes.
 両手持ち
 2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
 両手持ち：他の武器との二刀流が不可能。腕を縛られている時、この武器は使用できない。
-### Magical Focus
-
-### Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted.
-
+Magical Focus
+マジカルフォーカス
+Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted.
+マジカルフォーカス:DPの増加による命中率の低下を、スタミナ消費量の増加で代替する。
 Precision
 精密
 Precision: Your arms need to be free to use this weapon.
@@ -28660,8 +28659,8 @@ You toss some gunpowder on the floor!
 
 Dual Wield (Rogue)
 二刀流(盗賊)
-### Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)
-
+Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)
+空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り重量のある武器や大きな武器をサブウェポンとして持てない。|(このスキルを使用し、装備する武器を選択する必要がある)
 Dual Wield (Wizard)
 二刀流(魔術師)
 Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)
@@ -28896,14 +28895,14 @@ Step during combat
 戦闘中にステップする
 
 
-### 0.1s/turn
-
-### 1.5s/turn
-
-### 0.5s/turn
-
-### 0.01s/turn
-
+0.1s/turn
+0.1s/ﾀｰﾝ
+1.5s/turn
+1.5s/ﾀｰﾝ
+0.5s/turn
+0.5s/ﾀｰﾝ
+0.01s/turn
+0.01s/ﾀｰﾝ
 Shadowy Grasp
 影の掌握
 
@@ -29436,8 +29435,8 @@ The Goddess calls you a good girl.
 女神にいい娘と褒められた！
 Rescue some alchemists from their own experiment.
 錬金術師を救出する。
-### Stop rebels from making a pact with primordial beings.
-
+Stop rebels from making a pact with primordial beings.
+反乱分子と原生生物の密会を阻止する。
 Decommission some malfunctioning drones.
 故障したドローンを機能停止する。
 
@@ -29574,50 +29573,50 @@ This door failed to load and cannot be opened.  Please report this bug to Ada wi
 不具合によりドアが開かない。セーブコードを記録し、ご報告お願いします。
 
 
-### Exit sealed!|Find the lair!
+Exit sealed!|Find the lair!
+階段は封印されている。|隠れ家を探そう！
+Sigils erased!
+紋章を消した！
+Dragon defeated!
+ドラゴンを討伐した！
+Draconic Seal
+竜の紋章
+A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair.
+竜の封印が施されている。隠れ家で竜を倒すか紋章を消そう。
+A draconic spell keeps the door sealed. You will have to confront its owner.
+竜の紋章により封印されている。どうやら彼女たちと会う必要があるみたいだ。
 
-### Sigils erased!
 
-### Dragon defeated!
-
-### Draconic Seal
-
-### A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair.
-
-### A draconic spell keeps the door sealed. You will have to confront its owner.
-
-
-
-### Exits locked!|Destroy NUMBER Servers!
-
-### Security System Compromised!
-
-### Clearance Granted!
-
-### Destroy Nevermere Servers
-
-### Destroy Nevermere servers to unlock the door.
-
-### Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
-
-### Nevermere Server
-
-### Server smashed!
-
-### Destroy Drone Servers
-
-### Destroy Drone Node Servers to unlock the door.
-
-### The path forward is controlled by several ancient Drone Servers. Destroy them.
-
-### Drone Server Node
-
-### Drone node destroyed!
-
-### Rusty Server Node
-
-### loud beeping...
-
+Exits locked!|Destroy NUMBER Servers!
+階段はロックされている。|NUMBER 個のサーバーを破壊しよう！
+Security System Compromised!
+セキュリティシステム突破！
+Clearance Granted!
+セキュリティ・クリアランスを付与された！
+Destroy Nevermere Servers
+ネバーミアのサーバーを破壊する
+Destroy Nevermere servers to unlock the door.
+ネバーミアのサーバーを破壊して解錠。
+Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
+ネバーミア Inc.がドアをロックした。通るにはサーバーを破壊する必要がある。
+Nevermere Server
+ネバーミアのサーバー
+Server smashed!
+サーバーを叩き壊した！
+Destroy Drone Servers
+ドローンのサーバーを破壊
+Destroy Drone Node Servers to unlock the door.
+ドローンのサーバーを破壊して解錠。
+The path forward is controlled by several ancient Drone Servers. Destroy them.
+解錠システムは古代のドローンのサーバーで管理されているようだ。ぶち壊そう。
+Drone Server Node
+ドローンのサーバーノード
+Drone node destroyed!
+ノードをぶち壊した！
+Rusty Server Node
+錆びついたサーバーノード
+loud beeping...
+大きな機械音を立てている……
 (Cursed)
 (呪われている)
 (Purified)
@@ -29646,10 +29645,10 @@ of Echoes
 (反響)
 Infused
 属性の
-### Explosive
-
-### Flaming
-
+Explosive
+火薬つき
+Flaming
+業火の
 Focusing
 集中の
 of Empowerment
@@ -30234,16 +30233,16 @@ You have formed a mental barrier...
 
 Desire Burst
 デザイアバースト
-### Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
-
-### You channel your distraction into the mote, overloading it!
-
-### You channel your distraction into the motes, overloading them!
-
+Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+最大DPの10%分の欲望値を消費し、エリア内のエッセンス・モートをオーバーロードさせ、起爆する。爆発が敵に命中すると10+最大DPの20%分の魅了属性ダメージを与える。欲望値が足りない場合、威力は減少する。||(欲望値はDPのゲージ上にあるハート型のゲージで、DP上昇時にゆっくりと上昇する)
+You channel your distraction into the mote, overloading it!
+エッセンス・モートに邪な欲望を流し込み、オーバーロードさせた！
+You channel your distraction into the motes, overloading them!
+エッセンス・モートに邪な欲望を流し込み、オーバーロードさせた！
 You don't have enough of a desire to do that.
 欲情値が足りない。
-### You must target at least one Essence Mote.
-
+You must target at least one Essence Mote.
+最低一つのエッセンス・モートを選択する必要がある。
 You have the desire but not the mana!
 欲望は十分だが、マナが足りない。
 
@@ -30856,10 +30855,10 @@ Absolute Armor (1/2 crit mult)
 絶対的な鎧(会心ダメージが半分になる)
 
 
-### Rename
-
-### Reset to NME
-
+Rename
+名前変更
+Reset to NME
+NME に名前をリセット
 Enlarged View
 拡大表示
 Back to Game
@@ -30876,10 +30875,10 @@ Promote to Servant
 昇格
 Demote
 降格
-### Delete Guest
-
-### Really Delete Guest?
-
+Delete Guest
+ゲストを追放
+Really Delete Guest?
+本当に追放する？
 The ENMY tries to grab you!
 ENMY が掴みかかってきた！
 
@@ -31658,16 +31657,16 @@ Dimensional Rift
 次元の裂け目
 Hoard
 宝物庫
-### Dragon's Lair
-
+Dragon's Lair
+竜の隠れ家
 Witch's Lair
 魔女のお茶会
 Mold Infestation
 粘菌の増殖
 Bandit Raid
 盗賊の襲撃
-### Dragon Sighting
-
+Dragon Sighting
+ドラゴン注意報
 Slime Infestation
 スライムの繁殖
 Wolfgirl Training
@@ -31750,18 +31749,18 @@ You find a ceremonial leotard.
 
 The Robe of Chastity
 貞操の衣
-### A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
-
+A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+仮初の神性を帯びた魔法のレオタード。肌につけると性欲を強力なオーラに変換する素材で作られている。
 It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 パラディンの貞節を守っている場合、40ターンの間、ターン毎に欲情値-1%、攻撃を受けたときに2(消費したDPの3%)の聖属性ダメージを相手に与えるオーラを得る。魔力の伝導する生地により、DPの獲得値が50%増加し、消費したマナの8%が欲情値に変換される。
-### A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
-
+A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+仮初の神性を帯びた魔法のレオタード。肌につけると性欲を強力なオーラに変換する素材で作られている。
 You retrieve an interesting article dubbed 'the Robe of Chastity.
 "貞操の衣"と名付けられた布を見つけた。
 
 
 Took
-ﾀﾞﾒｰｼﾞ
+!
 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
@@ -31788,8 +31787,8 @@ The dragon girl slams you with several hurled crystals! (DamageTaken)
 クリスタル・ドラゴンガールはクリスタルで殴打してきた！ (DamageTaken)
 The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)
 クリスタル・ドラゴンガールは凝固するクリスタルを召喚してきた！ (+RestraintAdded)
-### The dragon girl conjures crystalline locks on you! (+RestraintAdded)
-
+The dragon girl conjures crystalline locks on you! (+RestraintAdded)
+クリスタル・ドラゴンガールはクリスタルの錠を拘束具に召喚してきた！ (+RestraintAdded)
 
 
 Poison Dragon Queen
@@ -31810,8 +31809,8 @@ The dragon girl slashes you with her venomous nails! (DamageTaken)
 ポイズン・ドラゴンガールは毒の爪で引っ掻いてきた！ (DamageTaken)
 The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
 ポイズン・ドラゴンガールの召喚した蔦に捕らえられた！ (+RestraintAdded)
-### The dragon girl holds you in place and locks your restraints! (+RestraintAdded)
-
+The dragon girl holds you in place and locks your restraints! (+RestraintAdded)
+ポイズン・ドラゴンガールは拘束具に錠を取り付けてきた！ (+RestraintAdded)
 
 
 Ice Dragon Queen
@@ -31828,8 +31827,8 @@ The dragon girl slams you with several chunks of ice! (DamageTaken)
 アイス・ドラゴンガールに氷の礫で打ちすえられた！ (DamageTaken)
 The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)
 アイス・ドラゴンガールに瞬間冷凍された！ (+RestraintAdded)
-### The dragon girl conjures magical locks on you! (+RestraintAdded)
-
+The dragon girl conjures magical locks on you! (+RestraintAdded)
+アイス・ドラゴンガールは魔法の錠を取り付けてきた！ (+RestraintAdded)
 
 
 Shadow Dragon Queen
@@ -31846,8 +31845,8 @@ The dragon girl stares into your eyes! (DamageTaken)
 シャドウ・ドラゴンガールの眼差しに心を奪われた！ (DamageTaken)
 The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 シャドウ・ドラゴンガールの影の手に捕まった！ (+RestraintAdded)
-### The dragon girl reaches out and locks your restraints! (+RestraintAdded)
-
+The dragon girl reaches out and locks your restraints! (+RestraintAdded)
+シャドウ・ドラゴンガールが触れると、拘束具がロックされた！ (+RestraintAdded)
 
 
 A cage falls from the ceiling on top of you!
@@ -31856,8 +31855,8 @@ Crystals grow across your body and encase you!
 突如体中のクリスタルが成長し、全身を包み込まれてしまった！
 You are encased in a solid block of ice!
 氷の中に閉じ込められた！
-### A shadowy sphere rises from the ground and wraps over you tightly!
-
+A shadowy sphere rises from the ground and wraps over you tightly!
+影の球体が地面から湧き上がり、全身を拘束されてしまった！
 Shadows coalesce themselves around you in spherical form!
 影が全身にまとわりつき、球体に変化した！
 
@@ -32399,7 +32398,7 @@ You deal 20% more damage to enemies further than 2 tiles away, but enemies adjac
 Ranged Weapon Expert
 遠距離戦闘の達人
 Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
-遠距離武器のダメージ+10%、チャージコスト-10%。
+遠距離武器のダメージ+10%、エネルギーコスト-10%。
 
 
 
@@ -32700,8 +32699,8 @@ Find an elevator to the Summit in order to access facilities.
 施設を使うためには、エレベーターでセーフゾーンを訪れる必要がある。まずはエレベーターを探そう。
 Visit the Summit to allow additional interactions with this facility.
 セーフゾーン訪れて施設を見てみよう。
-### Must visit the Summit or be in a perk shrine to recycle restraints.
-
+Must visit the Summit or be in a perk shrine to recycle restraints.
+セーフゾーンを訪れるか、パークの祠で拘束具をリサイクルしよう。
 +AMNT% Training/Tick
 調教度/ティック +AMNT%
 +AMNT% Opinion/Tick
@@ -32986,8 +32985,8 @@ Remove from
 配置をやめる
 Can't assign to
 配置不可
-### Remove from party to assign
-
+Remove from party to assign
+パーティから除外
 Imprison
 投獄
 
@@ -33106,14 +33105,14 @@ Release
 解放
 
 
-### Summon
-
-### Already present in summit
-
-### NPC is unavailable
-
-### Only available in the Summit
-
+Summon
+呼び出す
+Already present in summit
+すでにセーフゾーンにいる
+NPC is unavailable
+呼び出せないようだ
+Only available in the Summit
+セーフゾーン内でのみ有効
 
 
 Mark
@@ -33290,10 +33289,10 @@ Backup
 バックアップ
 Restore
 復元
-### Extra Options
-
-### Preview without Armor
-
+Extra Options
+追加オプション
+Preview without Armor
+アーマーなしで表示
 
 
 ### FLR-DGN
@@ -33326,8 +33325,8 @@ You strike the earth, but it is nothing but solid wall on the other side.
 壁にツルハシを突き立てるも、硬い岩盤に突き当たった。
 You strike the earth! It crumbles before you!
 ツルハシを突き立てると、壁が崩れ去った！
-### Click again to automatically mine the wall with your pickaxe.
-
+Click again to automatically mine the wall with your pickaxe.
+もう一度クリックすると自動で壁を採掘。
 The planar focus resonates with the teleportation magic!
 テレポーターがテレポート魔法と共鳴した！
 The planar focusing crystal activates! Mana is drained, and turns into bindings!
@@ -33442,8 +33441,8 @@ Magical disenchantment suspends your living collar for AMNT turns
 魔法によって、 AMNT ターンの間生きている首輪を欺く。
 
 
-### (will add AMNT TPE binding)
-
+(will add AMNT TPE binding)
+(AMNT の TPE を追加)
 Hardlight
 エネルギー
 Knocked Out
@@ -33630,8 +33629,8 @@ Rope Ambush
 ロープ・アンブッシュ
 Defensive Charm
 守護符
-### Shield the Witch
-
+Shield the Witch
+魔女のシールド
 Tracer Rounds
 トレース弾
 The Spookening
@@ -33776,497 +33775,736 @@ Hex Binding
 ヘックス・バインド
 
 
-### Here you will find various scraps of documents and lore you've recovered throughout your adventures.
-
-### Your Journal
-
-### Cover
-
-### I am writing this journal in the off chance that I do not come return from the Agarthan ruins. If you find this, please make an effort to deliver it back to the surface for the good of all the women lured in by its secrets.
-
-### Catherine Willows' Journal (preface)
-
-### Willows 0
-
-### As I scaled the mountain, I came across a massive graveyard above the treeline, a grand memorial to those who died before the Great Work. This graveyard extends into the mouth of the cave, and the guards told me not to deface any of the graves, or else the ghosts will come and get me. It would be easier to follow their instructions if there weren't so much treasure still hidden here! After all, most of us are deep in the red after sailing all this way.
-
-### Catherine Willows' Journal (pg. 7)
-
-### Willows 7
-
-### It's hard to imagine I'm in a cave. Everything is so decorated and well-preserved, it's almost as if decades of adventurers never found their way to this island. In the distant future when every last piece of treasure has been hauled out of here, I imagine they'll set this place up as a tourist attraction.
-
-### Catherine Willows' Journal (pg. 8)
-
-### Willows 8
-
-### I spoke with a few locals while resupplying at the port. Apparently the village up here is far older than the twenty-some years the Adventurer's Guild has been on the island. The locals call the mountain 'Ejahl,' but the consensus is that this is the site of the legendary city Agartha where the Archmagus herself made her discovery.|(The page is dated about fifty years ago)
-
-### Catherine Willows' Journal (pg. 14)
-
-### Willows 14
-
-### I made it to a deeper floor today, and was greeted by a skeleton trying to tie me up. Great.|I've looked into the local name for this mountain, 'Ejahl,' and found a footnote in the history books talking about some petty kingdom that laid siege to Agartha. There's no record of them actually winning the siege, though. I've heard there's a massive library somewhere down here, maybe I'll find answers there.
-
-### Catherine Willows' Journal (pg. 17)
-
-### Willows 17
-
-### There was a warrior in the catacombs today. She appears to have mastered the art of witty comebacks, as I truly could not come up with anything to say that did not further humiliate myself. Fortunately her insults came at her companions' expense, and they allowed me to defeat her in a solitary duel.
-
-### Catherine Willows' Journal (pg. 20)
-
-### Willows 20
-
-### I almost found myself the recipient of a powerful binding arrow enchanted with force runes. Had I been hit, I would have been knocked back against the walls with my arms pinned by glowing conjured cuffs. Fortunately, this projectile hit a skeleton that was attacking me instead, and I was able to retreat.
-
-### Catherine Willows' Journal (pg. 21)
-
-### Willows 21
-
-### In my travels I encountered a curious tomb filled with the scent of incense and herbs. Strange statues lined the halls on stone pedestals, standing as an intimidating reminder of what happens to those who disturb the locals...|I encountered resistance from the locals, who seemed to regard outsiders as 'cursed' and sought to capture me in an effort to give me a 'blessing.' I highly doubt that anyone has been truly blessed by their efforts, well-intentioned or not.
-
-### Catherine Willows' Journal (pg. 24)
-
-### Willows 24
-
-### This 'blessing' of theirs appears to be an old ritual for immortality. I believe these peoples are older than the Great Work, based on the ancient dialect they speak and the outdated script they use.|Whatever the case may be, their method seems inexact and prone to failure, as demonstrated by their near maniacal devotion to 'bless' every adventurer they come across.
-
-### Catherine Willows' Journal (pg. 25)
-
-### Willows 25
-
-### There are two 'castes' in the Bast cult. The first are the 'blessed,' and the second are their watchful guardians. The unintuitive bit is that the 'blessed' are the ones wrapped up and sealed away inside statues, sarcophagi, and anything else the guardians can stick a person into. The free ones wandering around grabbing people? They're the ones who weren't 'blessed' apparently.
-
-### Catherine Willows' Journal (pg. 26)
-
-### Willows 26
-
-### I've found it! The Archmagus' library! Much to my chagrin, however, the place has been ransacked by witches and a curious group of mages in search of inspiration from ancient fashion choices.
-
-### Catherine Willows' Journal (pg. 30)
-
-### Willows 30
-
-### It appears someone got to the Archmagus' writings before I could. Nonetheless, I will continue my search for Vinlaga's personal study. Perhaps her research materials and drafts might shed some light on my condition.
-
-### Catherine Willows' Journal (pg. 31)
-
-### Willows 31
-
-### I have learned of an ancient artifact, called the Mistress' Staff. Its history and owner are hotly debated, with some attributing it to the Archmagus herself, while others say it was developed by the magical warlords that followed. Most all sources agree that its signature feature is the ability to reverse the effects of the Great Work on any person.
-
-### Catherine Willows' Journal (pg. 36)
-
-### Willows 33
-
-### There is a treasure trove of ancient history here that the blasted Dressmakers had no use for. I found a map from the 'Kingdom of Ejahl,' with sketches of many islands including this one. Like most of the warlord states, they failed to make a lasting impact on the architecture of the island, but it appears the island was uninhabited for some time between the fall of Agartha and its resettlement by Ejahl.
-
-### Catherine Willows' Journal (pg. 41)
-
-### Willows 41
-
-### ...I must find it.|They are looking for it.|They CANNOT be allowed to have it.
-
-### Catherine Willows' Journal (pg. 47)
-
-### Willows 37
-
-### I saw my reflection in a pool of water today. My hair looked much more silver than I remember it. I hope this isn't a side effect of all the magic I'd used to make it to this point.
-
-### Catherine Willows' Journal (pg. 50)
-
-### Willows 50
-
-### I heard the bandits are looking for the Mistress' Staff. I'm not too worried--they wouldn't know what to do with it. It's that damned witch I'm worried about.|If my astute reader has come this far, you should beware the Silver Witch. She is working with forces that cannot be trusted.
-
-### Catherine Willows' Journal (pg. 51)
-
-### Willows 51
-
-### It seems I am not alone in my search for the Staff. To whom it may concern: the Great Work is a lie, and it will doom us all. If you care for your soul, you need to break the cycle, and for that we need a key: the Mistress' Staff.
-
-### Silver Witch's Notes #10
-
-### Silver 10
-
-### I met an adventurer who managed to erase weeks of golem research in the blink of an eye. This is why we Summoners have to scatter our works far and wide... if only they knew what we are working towards.
-
-### Silver Witch's Notes #2
-
-### Silver 2
-
-### The dimensional rift is especially active today. I spoke with some of the voices the other night, they offered me immortality in exchange for material wealth. They must have called the wrong universe or something...
-
-### Silver Witch's Notes #3
-
-### Silver 3
-
-### My new golem project did not go as expected. I'd expected the primordial one to answer once I'd opened the gate, but there was nothing but a horde of star demons which I quickly dispatched. Could this mean the source of primordial latex is not outside this universe, as I had thought, but inside? I must investigate further.
-
-### Silver Witch's Notes #18
-
-### Silver 18
-
-### She did it again. Barged in on my work and called me a 'purveyor of evil magics,' whatever that means. Magic isn't evil, it was given to us directly by the gods! At least I hid my new golem in a different study of mine...
-
-### Silver Witch's Notes #15
-
-### Silver 15
-
-### Throughout my studies I have chased after the existence of a being I call 'the Primordial One.' My theories stem from the following observations:|1)Slimes were not present in ancient history, and appeared during my lifetime as a force of nature.|2)Slime can be transmuted into almost any known material, like a Prima Materia of sorts.|3) A fragment of Sariel's notes, one of my most guarded possessions, discusses the existence of slimes long before they were first observed in the world.|Based on this, I believe the world must have been created through the influence of some primordial being who then left, but must be returning somehow.|I'm sure this being holds the key to repairing our bodies.
-
-### Silver Witch's Notes on the Primordial One
-
-### Silver 4
-
-### Blast. An adventurer stole one of my notebooks, and now I'm encountering various cultists and weirdos trying to summon the Primordial One themselves. This is why I never bother to publish my works...
-
-### Silver Witch's Notes #7
-
-### Silver 7
-
-### I haven't heard of that adventurer in decades. Perhaps her nosiness finally caught up to her?
-
-### Silver Witch's Notes #106
-
-### Silver 106
-
-### There is a new presence in the mountain. An opportunist that calls herself 'the Dollmaker.' Claims to be the lost heir to the Kingdom of Ejahl. Please~.|I've seen those hackjobs and reprogrammed wrecks. If there even was a Kingdom of Ejahl, surely their army would consist of more than just scrapped combat drones?
-
-### Silver Witch's Notes #117
-
-### Silver 117
-
-### The Kingdom of Ejahl appeared in Agartha 170 years after the death of Sariel Vinlaga. It had three* rulers who vied for the throne at different times:|Diana, Princess of Machinery|Emer, the Warsage|And the Dollmaker, High General of the Kingdom||*Some manuscripts read 'two'
-
-### The Chronicles of Ejahl
-
-### Ejahl 1
-
-### The Kingdom of Ejahl ruled the island of Agartha for 30 years before its collapse. During the last war, an unknown figure captured the majority of its army and the majority of the population fled by boat. No one was left on the island.
-
-### The Fall of Ejahl
-
-### Ejahl 2
-
-### Danger Level: Nearly Harmless|A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: Normal|These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows
-
-### Fast Z.
-
-### Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows
-
-### Mage Z.
-
-### Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows
-
-### Warrior Z.
-
-### Danger Level: High|A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows
-
-### Talisman Z.
-
-### Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
-
-### The Witches' Coven
-
-### Witches
-
-### Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows
-
-### Bast Mummy
-
-### Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
-
-### Bast Clerics
-
-### Rock-solid and form-fitting.
-
-### Provides minor protection against enemy attacks. Decreases stealth.
-
-### Adventuring Corset
-
-### Protects your organs and your sense of style.
-
-### Provides minor protection against enemy attacks at the cost of flexibility.
-
-### The best uniform. Has a (lockable) zipper in the back for convenience!
-
-### Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist, and being drenched dries faster.
-
-### Robe of Chastity
-
+Here you will find various scraps of documents and lore you've recovered throughout your adventures.
+冒険で手に入れた様々な情報を記載している。
+Your Journal
+自身の日記
+Cover
+カバー
+I am writing this journal in the off chance that I do not come return from the Agarthan ruins. If you find this, please make an effort to deliver it back to the surface for the good of all the women lured in by its secrets.
+万が一、私がアガルタン遺跡から戻らなかったときのために記す。これを読んでいる方へ。これ以上犠牲を出さないために、どうかこの日記を地上に持ち帰ってほしい。
+Catherine Willows' Journal (preface)
+キャサリン・ウィローズの日記 序文
+Willows 0
+ウィローズ 0
+As I scaled the mountain, I came across a massive graveyard above the treeline, a grand memorial to those who died before the Great Work. This graveyard extends into the mouth of the cave, and the guards told me not to deface any of the graves, or else the ghosts will come and get me. It would be easier to follow their instructions if there weren't so much treasure still hidden here! After all, most of us are deep in the red after sailing all this way.
+山を登っていくと、森の中に広大な墓地を発見した。墓地の先には洞窟があるようだ。墓守は「墓地を穢すな、さもなくば幽霊が捕まえに来るぞ」と脅してくるが、知ったことではない。ここまで来てお宝の一つや二つ持って帰らないと、とんでもない大赤字だ。
+Catherine Willows' Journal (pg. 7)
+キャサリン・ウィローズの日記 7ページ
+Willows 7
+ウィローズ 7
+It's hard to imagine I'm in a cave. Everything is so decorated and well-preserved, it's almost as if decades of adventurers never found their way to this island. In the distant future when every last piece of treasure has been hauled out of here, I imagine they'll set this place up as a tourist attraction.
+とても洞窟の中にいるとは思えない。洞窟は人工的な装飾が施されているが、極めて保存状態が良く、誰にも荒らされていないようだ。ここの宝が全て運び出された暁には、観光地として整備するのもいいかもしれない。
+Catherine Willows' Journal (pg. 8)
+キャサリン・ウィローズの日記 8ページ
+Willows 8
+ウィローズ 8
+I spoke with a few locals while resupplying at the port. Apparently the village up here is far older than the twenty-some years the Adventurer's Guild has been on the island. The locals call the mountain 'Ejahl,' but the consensus is that this is the site of the legendary city Agartha where the Archmagus herself made her discovery.|(The page is dated about fifty years ago)
+港で物資を補給する際、地元の人々と少し話をした。この島に冒険者ギルドがたどり着いたのは二十数年ほど前だが、この村はそれ以前、はるか昔から存在するようだ。彼女らは島にある大きな山を、昔から「エヤール山」と呼んでいる。おそらくこの山が、かの大魔導師が発見した伝説の都市「アガルタ」の眠る山だろう。|(このページの日付は50年ほど前だ)
+Catherine Willows' Journal (pg. 14)
+キャサリン・ウィローズの日記 14ページ
+Willows 14
+ウィローズ 14
+I made it to a deeper floor today, and was greeted by a skeleton trying to tie me up. Great.|I've looked into the local name for this mountain, 'Ejahl,' and found a footnote in the history books talking about some petty kingdom that laid siege to Agartha. There's no record of them actually winning the siege, though. I've heard there's a massive library somewhere down here, maybe I'll find answers there.
+今日、下の階層を探索中にスケルトンに縛られそうになった。まったく……。|先日聞いた「エヤール山」という名前について調べてみたところ、歴史書の注釈に少しだけ記述されていた。とある小国が「アガルタ」を包囲したという内容だった。勝敗については不明である。この山には巨大な書庫がある、という噂もある。そこで真実が明らかになることを祈ろう。
+Catherine Willows' Journal (pg. 17)
+キャサリン・ウィローズの日記 17ページ
+Willows 17
+ウィローズ 17
+There was a warrior in the catacombs today. She appears to have mastered the art of witty comebacks, as I truly could not come up with anything to say that did not further humiliate myself. Fortunately her insults came at her companions' expense, and they allowed me to defeat her in a solitary duel.
+カタコンベに武装した集団がいた。ウィットに富んだ挑発をしてきて、言い返せなかった。幸いなことに、一対一の決闘となり、一人を辛うじて倒したあとはなんとか逃げおおせることができた。
+Catherine Willows' Journal (pg. 20)
+キャサリン・ウィローズの日記 20ページ
+Willows 20
+ウィローズ 20
+I almost found myself the recipient of a powerful binding arrow enchanted with force runes. Had I been hit, I would have been knocked back against the walls with my arms pinned by glowing conjured cuffs. Fortunately, this projectile hit a skeleton that was attacking me instead, and I was able to retreat.
+危うく拘束矢に当たるところだった。しかも強力なエンチャントが施されていた。当たっていたら、壁に叩きつけられていた上に両手も枷で拘束されていただろう。幸運にも、矢は私に向かってきたスケルトンに命中し、なんとか逃げ帰ることができた。
+Catherine Willows' Journal (pg. 21)
+キャサリン・ウィローズの日記 21ページ
+Willows 21
+ウィローズ 21
+In my travels I encountered a curious tomb filled with the scent of incense and herbs. Strange statues lined the halls on stone pedestals, standing as an intimidating reminder of what happens to those who disturb the locals...|I encountered resistance from the locals, who seemed to regard outsiders as 'cursed' and sought to capture me in an effort to give me a 'blessing.' I highly doubt that anyone has been truly blessed by their efforts, well-intentioned or not.
+ある時、香とハーブの香りに包まれた、奇妙な墓を見つけた。周囲には石造りの台座に載った奇妙な像が立ち並んでいる。まるで侵入者を威嚇してるようだ。|……動き出した彼女らは、侵入者、つまり私を「呪われた者」とみなし、「祝福」を与えるため執拗に追いかけ回してきた。善意による行動であろうが、祝福など存在するのかどうかは甚だ疑問である。
+Catherine Willows' Journal (pg. 24)
+キャサリン・ウィローズの日記 24ページ
+Willows 24
+ウィローズ 24
+This 'blessing' of theirs appears to be an old ritual for immortality. I believe these peoples are older than the Great Work, based on the ancient dialect they speak and the outdated script they use.|Whatever the case may be, their method seems inexact and prone to failure, as demonstrated by their near maniacal devotion to 'bless' every adventurer they come across.
+「祝福」というのは不老不死を得るための儀式のようだ。言葉遣いや文字から察するに、彼女たちは「大いなる御業」よりも前に存在した民族なのだろう。|何にせよ、冒険者を片っ端から「祝福」しようとする、狂信的で理性に欠ける姿を見るに、深い意味のある行動ではないようだ。
+Catherine Willows' Journal (pg. 25)
+キャサリン・ウィローズの日記 25ページ
+Willows 25
+ウィローズ 25
+There are two 'castes' in the Bast cult. The first are the 'blessed,' and the second are their watchful guardians. The unintuitive bit is that the 'blessed' are the ones wrapped up and sealed away inside statues, sarcophagi, and anything else the guardians can stick a person into. The free ones wandering around grabbing people? They're the ones who weren't 'blessed' apparently.
+どうやらバスト教団には二つの階級があるようだ。「祝福」を受けたものと、それらを守護、監視するものだ。「祝福」を施されたものは包帯で巻かれ、像や棺桶、その他押し込められるものになら何にでも詰め込まれている人たちのことらしい。それ以外は「祝福」を受けていない存在として処理されるようだ。
+Catherine Willows' Journal (pg. 26)
+キャサリン・ウィローズの日記 26ページ
+Willows 26
+ウィローズ 26
+I've found it! The Archmagus' library! Much to my chagrin, however, the place has been ransacked by witches and a curious group of mages in search of inspiration from ancient fashion choices.
+ついに見つけた、偉大なる魔術師の書庫だ。だが、残念なことに好奇心旺盛な魔術師や古代のファッションを研究する魔女によって荒らされていた。
+Catherine Willows' Journal (pg. 30)
+キャサリン・ウィローズの日記 30ページ
+Willows 30
+ウィローズ 30
+It appears someone got to the Archmagus' writings before I could. Nonetheless, I will continue my search for Vinlaga's personal study. Perhaps her research materials and drafts might shed some light on my condition.
+私より先に、偉大なる魔術師の遺した書物に辿り着いたものがいるようだ。それでも、私はヴィンラーガの遺した研究を探し続けるつもりだ。彼女の遺したものが、この私の異常を解き明かす手がかりになると信じて。
+Catherine Willows' Journal (pg. 31)
+キャサリン・ウィローズの日記 31ページ
+Willows 31
+ウィローズ 31
+I have learned of an ancient artifact, called the Mistress' Staff. Its history and owner are hotly debated, with some attributing it to the Archmagus herself, while others say it was developed by the magical warlords that followed. Most all sources agree that its signature feature is the ability to reverse the effects of the Great Work on any person.
+女王の杖について知ることができた。杖の歴史や所有者の変遷については様々な説があり、偉大なる魔術師の杖だという説や、後世の魔導将軍によって創り出された、という説もある。だが、どの説においても杖の能力は一貫している。「大いなる御業」の力を逆転させる、というものだ。
+Catherine Willows' Journal (pg. 36)
+キャサリン・ウィローズの日記 36ページ
+Willows 33
+ウィローズ 33
+There is a treasure trove of ancient history here that the blasted Dressmakers had no use for. I found a map from the 'Kingdom of Ejahl,' with sketches of many islands including this one. Like most of the warlord states, they failed to make a lasting impact on the architecture of the island, but it appears the island was uninhabited for some time between the fall of Agartha and its resettlement by Ejahl.
+ドレスメーカーたちには見向きもされなかったようだが、とんでもないお宝を見つけた。「エヤール王国」の地図だ。この島を含む多くの島のスケッチが描かれていた。また、「アガルタ」の滅亡から「エヤール王国」による再定住までの間、島には誰も住んでいなかったということがわかった。
+Catherine Willows' Journal (pg. 41)
+キャサリン・ウィローズの日記 41ページ
+Willows 41
+ウィローズ 41
+...I must find it.|They are looking for it.|They CANNOT be allowed to have it.
+見つけなければ。|奴らの手に渡る前に。|絶対に先を越されてはならない。
+Catherine Willows' Journal (pg. 47)
+キャサリン・ウィローズの日記 47ページ
+Willows 37
+ウィローズ 37
+I saw my reflection in a pool of water today. My hair looked much more silver than I remember it. I hope this isn't a side effect of all the magic I'd used to make it to this point.
+今日、水面に映る自分と目があった。以前見たときより、髪の色が褪せ、銀色に染まりつつある。これまでに使ってきた、魔法の副作用でなければ良いが。
+Catherine Willows' Journal (pg. 50)
+キャサリン・ウィローズの日記 50ページ
+Willows 50
+ウィローズ 50
+I heard the bandits are looking for the Mistress' Staff. I'm not too worried--they wouldn't know what to do with it. It's that damned witch I'm worried about.|If my astute reader has come this far, you should beware the Silver Witch. She is working with forces that cannot be trusted.
+盗賊たちが女王の杖を狙っているようだ。だが、あまり心配はいらないだろう。それよりも、あの忌々しい魔女共だ。|銀の魔女には気をつけろ。彼女の周りには、どうにもきな臭い連中がいる。
+Catherine Willows' Journal (pg. 51)
+キャサリン・ウィローズの日記 51ページ
+Willows 51
+ウィローズ 51
+It seems I am not alone in my search for the Staff. To whom it may concern: the Great Work is a lie, and it will doom us all. If you care for your soul, you need to break the cycle, and for that we need a key: the Mistress' Staff.
+杖を求める全ての人たちへ。「大いなる御業」は全て偽り、破滅の業だ。魂を救うために、この永劫の輪を断ち切るために、女王の杖を探せ。
+Silver Witch's Notes #10
+銀の魔女の手記 10
+Silver 10
+銀の魔女 10
+I met an adventurer who managed to erase weeks of golem research in the blink of an eye. This is why we Summoners have to scatter our works far and wide... if only they knew what we are working towards.
+数週間かけて作り上げたというのに、成果のゴーレムはとある冒険者に一瞬で粉々にされてしまいました。目的のために、もっともっと作品をばらまかなくてはなりませんね。それが私達召喚士の使命でもありますし。
+Silver Witch's Notes #2
+銀の魔女の手記 2
+Silver 2
+銀の魔女 2
+The dimensional rift is especially active today. I spoke with some of the voices the other night, they offered me immortality in exchange for material wealth. They must have called the wrong universe or something...
+今日は次元の裂け目が特に活発な様子。裂け目の先にいる何人かと会話したけれど、皆不老不死をすごく欲しがっていました。求めるなら別の次元のものにすればいいのにね。
+Silver Witch's Notes #3
+銀の魔女の手記 3
+Silver 3
+銀の魔女 3
+My new golem project did not go as expected. I'd expected the primordial one to answer once I'd opened the gate, but there was nothing but a horde of star demons which I quickly dispatched. Could this mean the source of primordial latex is not outside this universe, as I had thought, but inside? I must investigate further.
+新たなゴーレムの製作がうまくいきません。ゲートを開けて原初の存在を捕まえようとしたのだけれど、出てきたのは悪魔ばかり。すぐにお帰りいただきました。原始ラテックスはこの世界の外側にあるものだと思っていたのだけれど、もしかしてこの世界の中にあるのかしら。調査を進めなくちゃ。
+Silver Witch's Notes #18
+銀の魔女の手記 18
+Silver 18
+銀の魔女 18
+She did it again. Barged in on my work and called me a 'purveyor of evil magics,' whatever that means. Magic isn't evil, it was given to us directly by the gods! At least I hid my new golem in a different study of mine...
+また彼女がゴーレムを壊しにやってきました。それも私の工房に入るなり「害悪魔法をバラ撒く外道が」と叫びながら。この力は女神に与えられた力だというのがわからないのかしら。とにかく、ゴーレムを壊されないようにどこか別の場所に隠さないと。
+Silver Witch's Notes #15
+銀の魔女の手記 15
+Silver 15
+銀の魔女 15
+Throughout my studies I have chased after the existence of a being I call 'the Primordial One.' My theories stem from the following observations:|1)Slimes were not present in ancient history, and appeared during my lifetime as a force of nature.|2)Slime can be transmuted into almost any known material, like a Prima Materia of sorts.|3) A fragment of Sariel's notes, one of my most guarded possessions, discusses the existence of slimes long before they were first observed in the world.|Based on this, I believe the world must have been created through the influence of some primordial being who then left, but must be returning somehow.|I'm sure this being holds the key to repairing our bodies.
+私の研究は一貫して「根源」の追求。以下、理論。|1:はるか昔、スライムはこの世界には存在せず、少なくとも私が生きている間に誕生した、と言われている。|2:スライムは所謂純粋な物質であり、ほぼあらゆる物質へと変換できる。|3:サリエルのメモの一部には、世界で初めてスライムが認識される以前から、それらが存在していたということが書かれている。|きっとこのスライムたちが、私達の身体から呪いを消し去る鍵となるでしょう。
+Silver Witch's Notes on the Primordial One
+銀の魔女の手記 4
+Silver 4
+銀の魔女 4
+Blast. An adventurer stole one of my notebooks, and now I'm encountering various cultists and weirdos trying to summon the Primordial One themselves. This is why I never bother to publish my works...
+腹立たしい。冒険者にノートを盗まれてから、原初の存在を呼び出そうとするカルト集団や変人たちが現れ始めました。だから誰にも教えたくなかったのですが……。
+Silver Witch's Notes #7
+銀の魔女の手記 7
+Silver 7
+銀の魔女 7
+I haven't heard of that adventurer in decades. Perhaps her nosiness finally caught up to her?
+もう何十年も、あの冒険者のことを耳にしません。もしかしたら報いを受けているのかもしれませんね。
+Silver Witch's Notes #106
+銀の魔女の手記 106
+Silver 106
+銀の魔女 106
+There is a new presence in the mountain. An opportunist that calls herself 'the Dollmaker.' Claims to be the lost heir to the Kingdom of Ejahl. Please~.|I've seen those hackjobs and reprogrammed wrecks. If there even was a Kingdom of Ejahl, surely their army would consist of more than just scrapped combat drones?
+山に「ドールメーカー」と名乗る存在が現れました。かつてのエヤール王国の後継者を名乗っているよう。勘弁してほしいです。|そういうハッキングや再プログラムされたドローンをいくつも見てきました。彼女もその手合でしょう。もしエヤール王国があるとすれば、ドローン以上の戦闘力を持つ何かが存在するでしょう。
+Silver Witch's Notes #117
+銀の魔女の手記 117
+Silver 117
+銀の魔女 117
+The Kingdom of Ejahl appeared in Agartha 170 years after the death of Sariel Vinlaga. It had three* rulers who vied for the throne at different times:|Diana, Princess of Machinery|Emer, the Warsage|And the Dollmaker, High General of the Kingdom||*Some manuscripts read 'two'
+エヤール王国は、サリエルの死後170年、このアガルタ島で建国されました。3名*の支配者の熾烈な王位継承戦が記録に残っています。|機械姫ディアナ|戦の賢者エマ|そして元帥ドールメーカー||*いくつかの文献では2名
+The Chronicles of Ejahl
+エヤール年代記
+Ejahl 1
+エヤール 1
+The Kingdom of Ejahl ruled the island of Agartha for 30 years before its collapse. During the last war, an unknown figure captured the majority of its army and the majority of the population fled by boat. No one was left on the island.
+エヤール王国は、アガルタ島を30年間支配していた。先の大戦時、謎の人物が軍の大半を制圧し、住人は船で島を出た。その後、島には誰も残らなかった。
+The Fall of Ejahl
+エヤールの落日
+Ejahl 2
+エヤール 2
+Danger Level: Nearly Harmless|A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows
+危険度:ほぼ無害|「大いなる御業」以前に蘇った遺体。会話すらままならず、魂の定着に成功しているのかも疑問。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: Normal|These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows
+危険度:中|やたら気合の入ったゾンビ。より深い階層で見かける、復讐に燃える霊魂らと行動に類似点が見られる。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Fast Z.
+アーティスティックゾンビ
+Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows
+危険度:中|魔法を使うゾンビ。遺跡の外では見られない独特な魔法を使い、中には古代の魔法で使われていたようなタトゥーをしているものも見られる。魔法とは、魂から生み出されるものだ。おそらく憑依した魂の持っていたタトゥーが身体に現れたのだろう。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Mage Z.
+メイジゾンビ
+Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows
+危険度:高|高度な剣の腕を持つゾンビ。これほどスムーズに動く死体を他では見たことがない。持っている武器の劣化具合から推測するに、おそらく彼女らの副葬品だったのだろう。また、彼女らの縄使いは現代のそれとは違い、まるで古い教科書に載っているようなものだ。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Warrior Z.
+ゾンビウォーリア
+Danger Level: High|A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows
+危険度:高|封印の札と癒やしの魔法を使うゾンビ。ゾンビの中には、最近できたであろう縄や猿轡の痕が見て取れる個体も存在する。誰かがゾンビたちを弄んでいるようだ。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Talisman Z.
+札付きゾンビ
+Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows
+危険度:厄介|ダンジョンに棲みつき、冒険者にいたずらを仕掛ける幽霊。物質をすり抜けるため、魔法や魔法の武器で追い払う必要がある。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows
+危険度:とても厄介|幽霊とは「大いなる御業」以前に未練を残して亡くなり、この世に縛り付けられた魂と言われている。が、このクソガキ共にはそのような未練など微塵も見られず、人をコケにすることしか考えていないように思える。詳しく知りたいなら、私のもとに来てほしい。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
+危険度:中|ヤンチャでいたずら好きな幽霊。ゲームと称して霊体の拘束具で縛り上げ、くすぐってくる。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows
+危険度:低|物欲の凝り固まった思念体。得られないというのに、隙を見て人のポケットに手を突っ込んでくる。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
+危険度:高|ネガティブな思考を凝縮した思念体。「彼女が泣き出すと、他の幽霊が集まり、慰めのハグをする。けれども彼女が泣き止まず、慰めるために訪れる幽霊は増え続け……。」島の住民が語った昔話に、このようなものがあった。こいつを見かけたら、逃げる準備をしたほうが身のためだ。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
+危険度:高|通常、魔法に近道はない。何世紀もかけて築き上げていくものだ。しかし、昔ながらの危険な方法で強引に魔法を習得しようとする不届き者がいる。彼女らは異なる世界の存在と契約を交わし、魔女となる。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+The Witches' Coven
+魔女のお茶会
+Witches
+魔女
+Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
+危険度:極高|召喚魔法の才に恵まれた魔女。魔導書や意思を持つ手を操る非常に危険な存在だ。近づけば大したことはないが、囲まれないように注意しよう。|| -「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows
+危険度:高|かつて存在した「バスト教」なる宗教の信徒。遠距離では爆発魔法を操り、近距離では包帯を召喚してくる。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Bast Mummy
+バスト教の信徒
+Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
+危険度:中|猫の女神を信仰する者。侵入者から墓を守るためだけに行動し、対話にはほとんど応じない。身体能力の高いものや、高位の魔法を使うものなど様々なタイプが存在する。||-「ダンジョンの住人たち」- キャサリン・ウィローズ著
+Bast Clerics
+バスト教の神官
+Rock-solid and form-fitting.
+頑丈でよくフィットする。
+Provides minor protection against enemy attacks. Decreases stealth.
+防御力:小 敵に見つかりやすくなる。
+Adventuring Corset
+冒険者のコルセット
+Protects your organs and your sense of style.
+オシャレさと最低限の防御力を備えた装備。
+Provides minor protection against enemy attacks at the cost of flexibility.
+防御力:小 柔軟性が損なわれる。
+The best uniform. Has a (lockable) zipper in the back for convenience!
+冒険者の良きお供。背中にロック可能なジッパー付き。
+Removes excess clothing and adds +10 Evasion. +20 Soap and Glue resist, and being drenched dries faster.
+邪魔な服を捨て去る。回避+10、ソープ、ネバネバ属性耐性+20。乾きやすくなる。
+Robe of Chastity
+貞操のローブ
 A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
 神々から力を授かるためのレオタード。この上に服を着ない限り、着用者の内に秘めた力を引き出す特性を持つ。
-### Chainmail Tank Top
-
-### Cumbersome, but effective!
-
-### Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.
-
-### Chainmail Bikini
-
-### Covers the important bits, anyway.
-
-### +20 Bondage Resist. Conducts electricity.
-
-### Light Plate Armor
-
-### Knight in shining rest-err, armor!
-
-### Provides +5 armor and high protection. No impact to stealth or evasion
-
-### Wizard's Robe
-
-### I have the power!
-
-### +30% spell damage and +10 spell ward
-
-### Chain Skirt
-
-### A defensive garment providing optimal coverage to the lower torso.
-
-### Provides medium protection. No impact to stealth or evasion
-
-### Armored Skirt
-
-### Gloves with an iron grip.
-
-### Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking.
-
-### Leather Gloves
-
-### Protecting you in style.
-
-### Provides minor protection against enemy attacks.
-
-### Steel Pauldrons
-
-### Dependable protection for the average adventurer.
-
-### Ranger's Cape
-
-### Inbued with the powers of moss and ferns and stuff.
-
-### +25 Evasion. Increases stealth slightly.
-
-### Oracle's Armbands
-
-### Armbands made of a slightly magical material.
-
-### +5% spell damage. +5 Magic Armor.
-
-### Armored Boots
-
-### Noisy, but fashionable!
-
-### Provides +5 armor and protection against enemy attacks. Decreases stealth.
-
-### Hide Boots
-
-### For stepping into all kinds of trouble!
-
-### Generating Map...
-
-### Mystic wrappings constrict around your body!
-
-### You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
-
-### If you can't get your knife into place, try sitting next to a crack on the wall.
-
-### Your character will automatically try to lodge the knife into the wall.
-
-### You'll need to find a cutting weapon with the magic tag to cut magic items.
-
-### You need to equip your magic cutting weapon to cut magic items.
-
-### You can surrender in the menu if you want to be treated more gently.
-
-### That ghost looks less aggressive than the others. Maybe she can help?
-
-### Need help? Try asking a neutral NPC for assistance!
-
-### You flanked the enemy! Now attack its weak point for massive damage!
-
-### Enemies that miss an attack become vulnerable for a turn.
-
-### Attack them for a guaranteed critical hit!
-
-### before the attack lands! You can tell the difference by the border of the tiles.
-
-### Enemy attacks take time to hit. Make sure to step out of the warning tiles,
-
-### You can dodge out of the way of most projectiles. Avoid the marked tiles.
-
-### 'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
-
-### Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold.
-
-### There is an elevator in this room, but it won't function until you defeat major enemies on this level.
-
-### If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess.
-
-### Defeating enemies recovers some willpower.
-
-### Temporary enemies and summons don't restore anything, however.
-
-### Attacking a helpless enemy captures her and sends her to your Collection.
-
-### You can access the Collection in the Items screen, 2nd tab.
-
-### Conjure Essence Mote
-
-### Spend 50 DP to conjure a mote of pure spell essence. The mana cost of this spell is decreased based on your maximum DP.|Can only be cast while you have less than 100% DP.
-
-### You channel your distraction into a tangible orb!
-
-### You don't have enough distraction!
-
-### Choose an open space.
-
-### Choose a tile with no existing mote.
-
-### You're too distracted to concentrate your distraction!
-
-### The burst of desire overwhelms you!
-
-### Psychic Link
-
-### Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
-
-### Target a non-blinded enemy.
-
-### You briefly lock eyes with the target, forming a psychic link!
-
-### The psychic link ends between you and the ENMY.
-
-### Shock Collar
-
-### Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP.
-
-### You must be leashed by someone to use this.
-
-### You don't have enough distraction.
-
-### You zap your leasher!
-
-### You are psychically connected!
-
-### You've used Shock Collar recently and it costs more DP.
-
-
-
-### Essence Crystal
-
-### When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
-
-### A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast.
-
-### When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
-
-### You erase the seal sigil.
-
-### You absorb the mote, granting miscast reduction.
-
-### Your necklace emits a mote as a result of miscasting.
-
-### Your distraction reaches a critical point! -100% miscast chance.
-
-### While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
-
-### -100% miscast chance, but casting spells can send you over the edge.
-
-### The psychic link conducts away some of the intensity...
-
-### Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
-
+Chainmail Tank Top
+鎖帷子
+Cumbersome, but effective!
+着るのが面倒だが、防御力は期待できる。
+Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.
+防御力:中 アーマー値+10。隠密性と回避力が低下し、もがく力が弱くなる。
+Chainmail Bikini
+鎖帷子のビキニ
+Covers the important bits, anyway.
+大事なところは隠せているから大丈夫。
++20 Bondage Resist. Conducts electricity.
+拘束耐性+20。電導性。
+Light Plate Armor
+軽プレートアーマー
+Knight in shining rest-err, armor!
+騎士の鎧だ！
+Provides +5 armor and high protection. No impact to stealth or evasion
+防御力:高 アーマー値+5。隠密性に影響しない。
+Wizard's Robe
+魔法使いのローブ
+I have the power!
+力を得たぞ！
++30% spell damage and +10 spell ward
+魔法の威力+30%。
+Chain Skirt
+鎖帷子のスカート
+A defensive garment providing optimal coverage to the lower torso.
+下の大事なところを隠す防具。
+Provides medium protection. No impact to stealth or evasion
+防御力:中 隠密性と回避力に影響しない。
+Armored Skirt
+スカートアーマー
+Gloves with an iron grip.
+鉄が縫い付けられたグローブ。
+Provides +5 armor and minor protection against enemy attacks. Makes noise when attacking.
+防御力:小 アーマー値+5。攻撃時に音を発する。
+Leather Gloves
+レザーグローブ
+Protecting you in style.
+オシャレさに気を配った一品。
+Provides minor protection against enemy attacks.
+防御力:小
+Steel Pauldrons
+鋼鉄の肩甲
+Dependable protection for the average adventurer.
+一般的な冒険者の防具。信頼性が高い。
+Ranger's Cape
+レンジャーのケープ
+Inbued with the powers of moss and ferns and stuff.
+植物の加護を得ているケープ。
++25 Evasion. Increases stealth slightly.
+回避力+25、隠密性が上昇する。
+Oracle's Armbands
+オラクルのアームバンド
+Armbands made of a slightly magical material.
+不思議な素材でできたアームバンド。
++5% spell damage. +5 Magic Armor.
+魔法の威力+5%、マジックアーマー+5。
+Armored Boots
+鋼鉄のブーツ
+Noisy, but fashionable!
+ガシャガシャうるさいが、割とオシャレ。
+Provides +5 armor and protection against enemy attacks. Decreases stealth.
+防御力:小 アーマー値+5。隠密性が低下する。
+Hide Boots
+革のブーツ
+For stepping into all kinds of trouble!
+厄介事に首を突っ込むなら必須。
+Generating Map...
+マップ生成中……
+Mystic wrappings constrict around your body!
+奇妙な包帯が身体を包みこんできた！
+You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
+拘束を切りたいなら、ナイフや尖った地形を探そう。
+If you can't get your knife into place, try sitting next to a crack on the wall.
+ナイフが見つからないなら、ひび割れた壁の隣に座ってみよう。
+Your character will automatically try to lodge the knife into the wall.
+拘束具を切断するとき、ひび割れた壁と隣接しているなら、ナイフを壁に突き立てて効率よく拘束具を切断できる。
+You'll need to find a cutting weapon with the magic tag to cut magic items.
+魔法のタグが付いている武器は、魔法がかかった拘束具を切断できる。
+You need to equip your magic cutting weapon to cut magic items.
+魔法がかかった拘束具を切るには、同じく魔法がかかった武器を装備する必要がある。
+You can surrender in the menu if you want to be treated more gently.
+どうしようもない状況でこれ以上縛られたくないなら、メニュー画面から降参するのも一つの手だ。
+That ghost looks less aggressive than the others. Maybe she can help?
+おとなしい幽霊もいる。助けてくれるかもしれない。
+Need help? Try asking a neutral NPC for assistance!
+助けが必要なら、中立NPCに話しかけてみよう。
+You flanked the enemy! Now attack its weak point for massive damage!
+敵の側面に回り込んで、強力な一撃を叩き込もう！
+Enemies that miss an attack become vulnerable for a turn.
+敵は攻撃をミスするとそのターンの間大ダメージを受けやすくなる。
+Attack them for a guaranteed critical hit!
+攻撃すれば確実に会心の一撃が出る。
+before the attack lands! You can tell the difference by the border of the tiles.
+マスを見れば、敵の攻撃範囲やタイミングがわかる。
+Enemy attacks take time to hit. Make sure to step out of the warning tiles,
+警告が表示されているマスから出れば、
+You can dodge out of the way of most projectiles. Avoid the marked tiles.
+ほとんどの攻撃を回避できる。
+'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
+「エネルギー」は特殊な武器で使用する残弾のようなものだ。パワークリスタルを使用することで補充できる。
+Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold.
+使用済みのクリスタルを照明にセットし、100gp支払うことでリチャージができる。
+There is an elevator in this room, but it won't function until you defeat major enemies on this level.
+エレベーターを稼働させるためには、その部屋に巣食う強力な敵を倒さなければならない。
+If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess.
+どうしても拘束から抜け出せないなら、対応する女神の祠にお布施してみよう。
+Defeating enemies recovers some willpower.
+敵を倒すことで、ある程度の気力を回復することができる。
+Temporary enemies and summons don't restore anything, however.
+ただし、召喚された敵などを倒しても気力は回復しない。
+Attacking a helpless enemy captures her and sends her to your Collection.
+敵を縛り上げたあとで攻撃することで、コレクションに追加できる。
+You can access the Collection in the Items screen, 2nd tab.
+捕まえた敵はインベントリ→コレクションで確認できる。
+Conjure Essence Mote
+エッセンス・モート召喚
+Spend 50 DP to conjure a mote of pure spell essence. The mana cost of this spell is decreased based on your maximum DP.|Can only be cast while you have less than 100% DP.
+DPを50消費し、純魔力のモートを召喚する。この魔法のマナコストは最大DPに応じて減少する。|DPが100%未満のときのみ発動可能。
+You channel your distraction into a tangible orb!
+オーブに快楽を流し込んだ！
+You don't have enough distraction!
+DPが足りない。
+Choose an open space.
+空いているマスを選択
+Choose a tile with no existing mote.
+モートがいないタイルを選択
+You're too distracted to concentrate your distraction!
+感じすぎていて魔法を唱えられない！
+The burst of desire overwhelms you!
+情欲の爆発に圧倒された！
+Psychic Link
+サイキック・リンク
+Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
+20サイキック属性ダメージを与え、50ターンの間快楽を分かち合う。発動には互いに視認できる距離にいる必要がある。
+Target a non-blinded enemy.
+目隠しされていない敵を選択
+You briefly lock eyes with the target, forming a psychic link!
+目から結合の思念を送り込んだ！
+The psychic link ends between you and the ENMY.
+ENMY とのサイキック・リンクが途切れた。
+Shock Collar
+ショック・カラー
+Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP.
+快楽を電撃に変換し、リードを持っている相手に流し込む。DPを30消費し、40E-stim属性ダメージを与える。25%の確率で長時間スタンさせ、75%の確率で短時間スタンさせる。クールタイム中に再度使用した場合、DPコストが倍になる。
+You must be leashed by someone to use this.
+誰かにリードを持たれている必要がある。
+You don't have enough distraction.
+快楽が十分に溜まっていない。
+You zap your leasher!
+リードを持っている相手に電撃を食らわせた！
+You are psychically connected!
+サイキック・リンクで繋がった！
+You've used Shock Collar recently and it costs more DP.
+ショック・カラーを使用したばかりだ。再度使用するには倍のDPが必要。
+
+
+Essence Crystal
+エッセンス・クリスタル
+When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+詠唱失敗時、50%の確率でエッセンス・モートを召喚する。エッセンス・モートの位置に移動して吸収することで、短時間の間詠唱失敗率を大幅に下げる。
+A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast.
+初心者や注意力散漫な魔術師のために作られたネックレス。霧散した魔力を吸収し、とどめておく効果がある。
+When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+詠唱失敗時、エッセンス・モートを召喚する。エッセンス・モートの位置に移動して吸収することで、短時間の間詠唱失敗率を大幅に下げる。
+You erase the seal sigil.
+封印の紋章をかき消した！
+You absorb the mote, granting miscast reduction.
+モートを吸収し、詠唱失敗率が大幅に下がった！
+Your necklace emits a mote as a result of miscasting.
+霧散した魔力を吸い上げ、ネックレスがモートを吐き出した。
+Your distraction reaches a critical point! -100% miscast chance.
+ものすごく集中できない！詠唱失敗率-100%
+While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
+DPが100%のとき、詠唱失敗率-100%。ただし、大量の魔力を使うと限界を超えてしまうかもしれない。
+-100% miscast chance, but casting spells can send you over the edge.
+詠唱失敗率-100%。ただし、大量の魔力を使うと限界を超えてしまうかもしれない。
+The psychic link conducts away some of the intensity...
+サイキック・リンクが、快楽を分け合った。
+Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+リンクしている相手が絶頂したようだ……快楽が流れ込んでくる。
 ### FCTN RMTPE
 
-### PTRN's RMTPE
-
-### Leads to PLCE
-
-### (You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
-
-### It becomes hard to resist the dragon's fury...
-
-### The dragon overwhelms you with sheer force...
-
-### Your strength begins to fade...
-
-### >Entrance
-
-### >Exit
-
-### >Stairs
-
-### Quest(GDSNM)
-
+PTRN's RMTPE
+PTRN の RMTPE
+Leads to PLCE
+PLCE へ
+(You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
+(ピンクのキャットスーツを着て、ストラップで拘束されている少女を見つけた。)|(彼女の背負っているカバンに、何かの書かれた紙が貼ってある。)|「拘束具輸送サービスです」|「「設備」タブから拘束具を預けてみてね！」|「あなたの優秀な看守長より」
+It becomes hard to resist the dragon's fury...
+猛り狂うドラゴンに気圧された……
+The dragon overwhelms you with sheer force...
+ドラゴンに圧倒される……
+Your strength begins to fade...
+力がうまく入らない……
+>Entrance
+>入口
+>Exit
+>出口
+>Stairs
+>階段
+Quest(GDSNM)
+>クエスト(GDSNM)
 ### [GDSNM]
 
 
 
-### Bed!
-
-### Silver
-
-### Mecha
-
-### chest
-
-### Lost Items
-
-### Cache
-
-### Toy Chest
-
+Bed!
+ベッド
+Silver
+銀のチェスト
+Mecha
+メカのチェスト
+chest
+チェスト
+Lost Items
+なくしもの
+Cache
+お金
+Toy Chest
+オモチャ箱
 ### (L)
 
 
 
-### (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+(The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+(鼻上までラバーでぴっちり拘束された SPEAKER がいた。|口元を覆うラバーに凹凸はなく、口の存在を完全に隠滅しているが、|彼女のかすかなうめき声が聞こえる。|何かで固定されているようだ。)
+(You don't have any solvents that work on latex)
+(ゴム用の溶剤を持っていない)
+(You dissolve her restraints, fumbling around for a while with your bound hands)
+(拘束された手でなんとか相手のゴムを剥がした)
+(You rescue the SPEAKER)|Thank you!|Let's get out of here!
+(SPEAKER を助けた)|ありがとう！|ここから逃げよう！
+(You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+(SPEAKER を助けた)|んん、ぅぅうん。|(猿轡を外したくないようだ。)
+(You are not holding a cutting tool)
+(切断できる道具を持っていない)
+(You cut her restraints, fumbling around for a while with your bound hands)
+(拘束された手でなんとか相手のゴムを切断した)
+(You don't have enough mana for Remove Slime)
+(「リムーブスライム」を唱えるだけのマナが足りない)
+(You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
+(魔法を使い SPEAKER を助けた)|ありがとう！|一緒に行こう！
+(You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+(魔法を使い SPEAKER を助けた)|んん、ぅぅうん。|(彼女は再び猿轡をつけ直した。)
+Dissolve the latex with a SLVNT
+SLVNT を使ってゴムを溶かす
+Cut her out with a sharp tool
+道具を使って切断する
+Use Remove Slime to unlock her
+魔法「リムーブスライム」で助ける
+Local Saves
+ローカルでセーブ
+Cloud Saves
+クラウドでセーブ
+solvent
+溶剤
+Latex Doll Stand
+ラテックスのドールスタンド
+A stand for your latex dolls, coated in a smooth rubber coating.
+ラバーコーティングされたドールスタンド。ラテックスドールの保管用。
+Has a flange for propping up even dolls wearing chastity belts.
+貞操帯をつけたドール用の器具もついている。
 
-### (You don't have any solvents that work on latex)
 
-### (You dissolve her restraints, fumbling around for a while with your bound hands)
+(The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
+(SPEAKER が身体を撫で回してきた)|何か危ないものを持っているんじゃない？|何かないかチェックさせてもらうわね。
+(The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+(SPEAKER は手を前に合わせている)|すみません、身体検査をするよう命令されましたので……|今からしても大丈夫でしょうか……？
+(The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
+(SPEAKER は警戒しながらこちらを見ている)|あれだけのことをやって、忍び込めるつもりだったのか？
+(The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)
+(SPEAKER はいやらしい笑みを浮かべている)|さて、戦利品をいただくとしようかな……|(SPEAKER は身体検査をしようとしている)
+(The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
+(SPEAKER は赤外線でスキャンしようとしている)|……禁制品は以上のものになります。|身体検査にご協力ください。
+Yes, miss... (Begin search and confiscation)
+わかった……(身体検査を受ける)
+Mmph... (Nod politely) (Begin search and confiscation)
+むん……(丁寧に頷く)(身体検査を受ける)
+No, I refuse! (Fight)
+嫌だ！(戦闘)
+Mmph! (Shake your head and fight)
+んんぅ！(拒否して戦闘する)
+Option not available at 0 WP
+WPが0のときは選択不可能
+(The SPEAKER starts by removing most of your clothes...)
+(SPEAKER に服を脱がせられた……)
+(Next, the SPEAKER looks through your weapons)
+(SPEAKER は武器がないか確認している)
+(Finally, the SPEAKER opens the rest of your bag)
+(SPEAKER はカバンに何かないか確認している)
+(The search is complete)|There! Now let's get you situated~
+(身体検査が終わった)|よし、おまたせ～。
+(The search is complete)|Alright miss, please behave, okay?
+(身体検査が終わった)|ご協力ありがとうございました、変なことはしないでくださいね……？
 
-### (You rescue the SPEAKER)|Thank you!|Let's get out of here!
 
-### (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+Confiscated AMNTx ITMN!
+ITMN を AMNTx 個没収された！
+Kept AMNTx ITMN.
+ITMN は AMNTx 個のままだ。
+Sneaked in AMNTx ITMN!
+ITMN は AMNTx 個見逃された。
+GUN
+銃
+The room echoes with the sound of a rubber bullet being fired!
+部屋にラバー弾の発射音が響き渡った！
+Tactical Rubber Bullet
+タクティカル・ラバー弾
+A powerful rubber bullet bounces you to the ground!
+強力なラバー弾に弾き飛ばされた！
+The powerful rubber bullet knocks you down and congeals into Capture Foam!
+ラバー弾が命中した箇所から形を変えだした！
 
-### (You are not holding a cutting tool)
 
-### (You cut her restraints, fumbling around for a while with your bound hands)
+Capture Foam (Feet)
+捕獲用ラバー(つま先)
+A sticky foam that spreads quickly and hardens into a tight rubbery layer.
+素早く全身に広がっていく捕獲用のゴム。
+A knife won't cut it, it simply reforms around the cut.
+すぐに再生するため、切断は現実的ではない。
+Capture Foam (Ankles)
+捕獲用ラバー(足)
+Capture Foam (Legs)
+捕獲用ラバー(脚)
+Capture Foam (Arms)
+捕獲用ラバー(腕)
+Capture Foam (Hands)
+捕獲用ラバー(手)
+Capture Foam (Mouth)
+捕獲用ラバー(口)
+Capture Foam (Head)
+捕獲用ラバー(頭)
+Capture Foam Dispenser
+捕獲用ラバー噴出機
+This collar is designed to make sure its wearer does not escape at all costs.
+着用者が絶対に逃げられないよう設計された首輪。
+It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
+捕獲用ラバーを噴出する首輪。所持している捕獲用ラバーの数に応じて効果が増す。
 
-### (You don't have enough mana for Remove Slime)
 
-### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
+Tactical Rubber
+タクティカルラバー
+An alchemical substance made to be stretchy and more resilient than natural rubber.
+既存のゴムを大幅に凌ぐ伸縮性と弾力を誇る、錬金術の賜物。
+Developed by kinky alchemists and marketed to PMCs across the islands.
+変態錬金術師によって開発され、今では島中の傭兵たちに取引されている。
+Capture Foam
+捕獲用ラバー
+A restraining weapon used to apprehend difficult targets.
+強力な対象を拘束するための武器。
+Tactical Rubber (Feet)
+タクティカルラバー(つま先)
+The end result of capture foam. Strict. Sustainable. Affordable.
+捕獲用ラバーが変質したもの。強力で長持ち、それでいて安い。
+Tactical Rubber (Ankles)
+タクティカルラバー(足)
+Tactical Rubber (Legs)
+タクティカルラバー(脚)
+Tactical Rubber (Arms)
+タクティカルラバー(腕)
+Tactical Rubber (Hands)
+タクティカルラバー(手)
+Tactical Rubber (Mouth)
+タクティカルラバー(口)
+Tactical Rubber (Head)
+タクティカルラバー(頭)
+Tactical Rubber Collar
+タクティカルラバーの首輪
+It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
+タクティカルラバーを噴出する首輪。所持しているゴムの数に応じて効果が増す。
 
-### (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
 
-### Dissolve the latex with a SLVNT
+Sweeping Strike
+薙ぎ払い
+Headlong Rush
+がむしゃら
 
-### Cut her out with a sharp tool
 
-### Use Remove Slime to unlock her
+Maid Squire
+メイドの見習い騎士
+Maid Knight
+メイドの騎士
+You humiliate the Maid Squire!
+メイドの見習い騎士を辱めた！
+You defeat the Maid Knight! For now... she swears revenge.
+メイドの騎士を退けた！……どうやら彼女は復讐を誓ったようだ。
+The Squire zips you up in comfy leather gear!
+メイドの見習い騎士に革の拘束具を取り付けられた！
+The Maid Knight places you in strict bondage!
+メイドの騎士が強力な拘束具を取り付けてきた！
+The Squire secures your restraints!
+メイドの見習い騎士に拘束具をロックされた！
+The Maid Knight secures your restraints!
+メイドの騎士に拘束具をロックされた！
+The Squire dusts you with her duster plug.
+メイドの見習い騎士は口の箒で掃いてきた！
+The Maid Knight sweeps you with her cleaning halberd!
+メイドの騎士はお掃除用ハルバードでぶっ叩いてきた！
+The EnemyName retreats!
+EnemyName は撤退した。
+The EnemyName manages to squirm out of sight!
+EnemyName は逃走した。
 
-### Local Saves
 
-### Cloud Saves
+servers humming...
+ガーガガガ……
+bouncy noises
+ポヨン
+goopy noises
+ヌチャ
+bubbling noise
+ブクブク
+rubber squeaking
+ギュウ……
+blaring siren
+ビーッビーッ
+You claim the Sweeper.
+スイーパーを見つけた。
+The Sweeper
+スイーパー
+Foe of the unclean. Bringer of neat and tidy workspaces.
+あらゆる埃と汚れを滅し、世界に清潔をもたらす。
+Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack.
+斬撃属性。範囲内の敵に30くすぐりダメージを与える。遠距離攻撃可能。
+Make a ranged attack with the Sweeper.
+スイーパーで遠距離攻撃
+You claim the Persuader.
+パースエイダーを見つけた。
+The Persuader
+パースエイダー
+Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard.
+「大いなる御業」の後に開発された武器。軍隊によって使用される、高い制圧力を持つ銃。捕獲用ラバーを放ち、ソケットには箒を差し込める。
+Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload.
+くすぐり属性。エネルギーを25消費し、80ネバネバ属性ダメージの弾丸を放つ。3ターンかけてリロード。
+Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
+エネルギーを25消費し、80ネバネバ属性ダメージの弾丸を放つ。
+Persuader Round
+パースエイダーの弾丸
+You fire the Persuader!
+パースエイダーで銃撃した！
+Wait for current save to finish...
+セーブ中……
+Please wait for save to finish...
+セーブ中……
+Debug Defeat
+敗北用デバッグ魔法
+You cast devastating ASCII glyphs!
+この世界のものではない呪文を唱えた！
+Debug Bind
+拘束用デバッグ魔法
+You cast bondage ASCII glyphs!
+この世界のものではない呪文を唱えた！
+, Floor AMNT
+AMNT 階
+Recolor
+塗り替え
+Only collect notable
+珍しい敵のみ
+Autorelease escaped
+逃げた敵を自動で削除
+NME is not notable enough for your collection.
+NME は珍しい敵ではなかった。
+Auto-released NME due to Escape.
+逃げた NME を自動的に削除した。
+Your ITMN1 was cursed and transforms into a ITMN2!
+呪の力で ITMN1 が ITMN2 に変化した！
+Equipping Restraint...
+拘束具着用中……
+Equipping Armor...
+装備中……
+Using Consumable...
+アイテム使用中……
+Struggling...
+もがき中……
+The ITMN1 is purified and returns to being a ITMN2!
+ITMN1 は清められ、 ITMN2 に変化した！
+Reverts if purified with item.
+何らかのアイテムで浄化すれば元に戻る。
+...smaller than expected.
+……予想よりも小さい。
+Comes with an artistic flair.
+芸術性が高い。
+Set Pivot
+ピン設置
+Toggle click & drag
+クリック&ドラッグの設定
+Settings
+設定
+Scroll Controls:
+スクロールの設定:
+Layer Text:
+テキストのレイヤー:
 
 ### solvent
 
