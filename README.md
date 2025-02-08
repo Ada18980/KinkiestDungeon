@@ -30,3 +30,24 @@ e) Use the content in promotional material related to Kinky Dungeon such as vide
 3) You maintain copyright to all contributions you make
 
 If you want to contribute translations, you can read [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+
+## Build
+You need [NodeJS](https://nodejs.org) to compile and run the code.
+
+After installation run `npm i && npm run build` in the root folder of the project where the `package.json` file is.
+
+OR if you have Docker you can use Node's docker image to do the building for you. In the root folder run
+```bash
+docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:20-slim bash -c 'npm install && npm run build'
+```
+
+## Run
+You can start the server with the `npm run serve` command, or with docker:
+```bash
+docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app -p 8080:8080 node:20-slim npm run serve
+```
+
+Afterwards open http://localhost:8080 in your browser of choice. Press ctrl+c in the terminal to stop the server when you are done.
+
+## Test in offline version of the game
+After building, copy files from the `out` folder to `<your KD game directory>/resources/app/out`.
