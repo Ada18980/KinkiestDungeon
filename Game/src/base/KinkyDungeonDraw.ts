@@ -2778,6 +2778,19 @@ type RectParams = {
 	alpha?:     number
 }
 
+type CircParams = {
+	Left:        		number,
+	Top:         		number,
+	Radius:      		number,
+	StartAngle:  		number,
+	EndingAngle: 		number,
+	CounterClockwise: 	boolean,
+	Color:       		string,
+	zIndex:      		number,
+	LineWidth?:  		number,
+	alpha?:      		number
+}
+
 let KDBoxThreshold = 60;
 let KDButtonColor = "rgba(5, 5, 5, 0.5)";
 let KDButtonColorIntense = "rgba(5, 5, 5, 0.8)";
@@ -3291,6 +3304,58 @@ function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string,
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Draws a basic rectangle filled with a given color
+ * @param Container
+ * @param Map
+ * @param Params - rect parameters
+ * @returns - If it worked
+ */
+function FillCircleBarKD(Container: PIXIContainer, Map: Map<string, any>, id: string, Params: CircParams): boolean {
+	let sprite = Map.get(id);
+    let same = true;
+    if (sprite && kdprimitiveparams.has(id)) {
+        for (let p of Object.entries(kdprimitiveparams.get(id))) {
+            if (Params[p[0]] != p[1]) {
+                same = false;
+                break;
+            }
+        }
+    }
+    if (!sprite || !same) {
+        let linethickness = (Params.LineWidth ? Params.LineWidth : 2)
+        let linecolor = (Params.Color ? Params.Color : 0xFF0000)
+        let radius = (Params.Radius ? Params.Radius : 10)
+        let startingangle = (Params.StartAngle ? Params.StartAngle : 0) // Angle is in Rad
+        let endingangle = (Params.EndingAngle ? Params.EndingAngle : Math.PI) // 50% progress
+        let counterclockwise = (Params.CounterClockwise ? Params.CounterClockwise : false); // We probably want to go clockwise
+
+        if (sprite)
+            sprite.destroy(); 
+
+        sprite = new PIXI.Graphics();
+        sprite.lineStyle(linethickness, linecolor);
+        sprite.arc(0, 0, radius, startingangle, endingangle, counterclockwise)
+        Map.set(id, sprite);
+        Container.addChild(sprite);
+        if (!kdprimitiveparams.has(id))
+            kdprimitiveparams.set(id, Params);
+    }
+    if (sprite) { 
+        let rotation = (Params.Rotation ? Params.Rotation : (0 - Math.PI / 2)) // Point upwards
+
+        sprite.name = id;
+        sprite.position.x = Params.Left;
+        sprite.position.y = Params.Top;
+        sprite.rotation = rotation;
+        sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
+        sprite.alpha = Params.alpha ? Params.alpha : 1;
+        kdSpritesDrawn.set(id, true);
+        return true;
+    }
+    return false;
 }
 
 type ButtonOptions = {
