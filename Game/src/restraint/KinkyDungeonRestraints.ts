@@ -2876,6 +2876,7 @@ function KinkyDungeonGetLockMult(Lock: string, item?: item, curse?: string, rest
 }
 
 let KDHeavyRestraintPrefs = [
+	"More_Petsuits",
 	"More_Armbinders",
 	"More_Boxbinders",
 	"More_Jackets",
@@ -6427,6 +6428,7 @@ function KDDoEquipDelayed(data: any, player: entity): string {
 
 function KDResetPreferenceFlags() {
 	KinkyDungeonSetFlag("prefer_armbinder", 0)
+	KinkyDungeonSetFlag("prefer_petsuit", 0)
 	KinkyDungeonSetFlag("prefer_boxbinder", 0)
 	KinkyDungeonSetFlag("prefer_jacket", 0)
 	KinkyDungeonSetFlag("prefer_yoke", 0)
@@ -6435,6 +6437,8 @@ function KDResetPreferenceFlags() {
 function KDGetPreferenceFlags(): string[] {
 	let select: string[] = [];
 	// remove if we have the no perk
+	if (!KinkyDungeonStatsChoice.get("NoPet"))
+		select.push("prefer_petsuit");
 	if (!KinkyDungeonStatsChoice.get("Less_Armbinders"))
 		select.push("prefer_armbinder");
 	if (!KinkyDungeonStatsChoice.get("Less_Boxbinders"))
@@ -6445,6 +6449,8 @@ function KDGetPreferenceFlags(): string[] {
 		select.push("prefer_yoke");
 
 	// Double up if we have the yes perk
+	if (KinkyDungeonStatsChoice.get("More_Petsuits"))
+		select.push("prefer_petsuit");
 	if (KinkyDungeonStatsChoice.get("More_Armbinders"))
 		select.push("prefer_armbinder");
 	if (KinkyDungeonStatsChoice.get("More_Boxbinders"))
@@ -6464,6 +6470,6 @@ function KDUpdatePreferenceFlags() {
 
 	let selected = select.length > 0 ? select[Math.floor(KDRandom() * select.length)] : "";
 	if (selected) {
-		KinkyDungeonSetFlag(selected, 1)
+		KinkyDungeonSetFlag(selected, -1)
 	}
 }

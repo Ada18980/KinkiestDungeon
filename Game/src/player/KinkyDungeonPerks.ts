@@ -260,11 +260,13 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"More_Jackets":  {category: "Toggles", id: "More_Jackets", cost: 0, block: ["Less_Jackets"]},
 	"More_Boxbinders":  {category: "Toggles", id: "More_Boxbinders", cost: 0, block: ["Less_Boxbinders"]},
 	"More_Yokes":  {category: "Toggles", id: "More_Yokes", cost: 0, block: ["Less_Yokes"]},
+	"More_Petsuits":  {category: "Toggles", id: "More_Petsuits", cost: 0, block: ["NoPet"]},
 
 	"Less_Armbinders":  {category: "Toggles", id: "Less_Armbinders", cost: 0, block: ["More_Armbinders"], debuff: true,},
 	"Less_Jackets":  {category: "Toggles", id: "Less_Jackets", cost: 0, block: ["More_Jackets"], debuff: true,},
 	"Less_Boxbinders":  {category: "Toggles", id: "Less_Boxbinders", cost: 0, block: ["More_Boxbinders"], debuff: true,},
 	"Less_Yokes":  {category: "Toggles", id: "Less_Yokes", cost: 0, block: ["More_Yokes"], debuff: true,},
+	"NoPet": {category: "Toggles", id: "Less_Yokes", cost: 0, block: ["More_Petsuits"], debuff: true,},
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -1.5},
@@ -423,10 +425,9 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"NoKigu": {category: "Toggles", id: "NoKigu", cost: 0, tags: ["start"], debuff: true},
 
 	"NoDoll": {category: "Toggles", id: "NoDoll", cost: 0, tags: ["start"], debuff: true},
-	"NoPet": {category: "Toggles", id: "NoPet", cost: 0, tags: ["start"], debuff: true},
 	"NoHelp": {category: "Toggles", id: "NoHelp", cost: 0, tags: ["start"]},
 
-	"Estim": {category: "Toggles", id: "Estim", cost: 0, tags: ["start"]},
+	"Estim": {category: "Toggles", id: "Estim", cost: 0, tags: ["start"], debuff: true},
 
 
 

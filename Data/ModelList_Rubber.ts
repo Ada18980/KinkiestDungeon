@@ -197,6 +197,9 @@ AddModel({
 			AddPriWithPose: {
 				ItemFeetRubberOver: 45,
 			},
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Mid",
+			DisplaceAmount: 10,
 		},
 		{ Name: "AnkleRight", Layer: "WrappingAnklesOver", Pri: 25,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
@@ -206,6 +209,9 @@ AddModel({
 			AddPriWithPose: {
 				ItemFeetRubberOver: 45,
 			},
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Mid",
+			DisplaceAmount: 10,
 		},
 	])
 });

@@ -1416,6 +1416,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 			attackAmount: 2,
 		},
 		nonDirectional: true,
@@ -1432,6 +1433,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 			attackAmount: 1,
 		},
 		tags: KDMapInit(["removeDoorSpawn", "immobile", "blindresist", "nature", "nosignalothers", "plant", "minor", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
@@ -2688,6 +2690,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -2715,6 +2718,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -2742,6 +2746,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -2769,6 +2774,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -2798,6 +2804,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -2826,6 +2833,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -2856,6 +2864,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		tags: KDMapInit(["obstacledoor", "scenery", "barricade", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "harmless", "temporary",
 			"soulimmune", "pierceresist", "electricresist", "crushweakness", "unarmedresist", "glueresist", "acidweakness", "soapweakness", "tickleresist", "groperesist", "painresist", "charmimmune",
@@ -2880,6 +2889,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -2908,6 +2918,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		tags: KDMapInit(["obstacledoor", "shadow", "barricade", "holyweakness", "scenery", "minor", "inactive", "nonvulnerable", "unstoppable", "immobile", "nobrain", "nosignal", "poisonimmune", "temporary",
 			"soulimmune", "meleeresist", "fireweakness", "glueresist", "coldimmune", "tickleresist", "groperesist", "painresist", "charmimmune", "shadowHands", "ghost",
@@ -2930,6 +2941,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 4.5,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -2955,6 +2967,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 3,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -2979,6 +2992,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 1,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -3006,6 +3020,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -3031,6 +3046,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -3056,6 +3072,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
+			alertAmount: 0,
 		},
 		Resistance: {
 			profile: ["construct"],
@@ -3084,6 +3101,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		pathcondition: "stonedoor",
 		Sound: {
 			baseAmount: 0,
+			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -3111,6 +3130,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		Sound: {
 			baseAmount: 0,
+			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -3136,6 +3157,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		Sound: {
 			baseAmount: 0,
+			alertAmount: 0,
+			moveAmount: 0,
 		},
 		GFX: {
 			lighting: true,
@@ -3159,7 +3182,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
 		Sound: {
-			baseAmount: 0.5,
+			baseAmount: 0,
+			moveAmount: 0,
+			alertAmount: 0,
 		},
 		GFX: {
 			lighting: true,

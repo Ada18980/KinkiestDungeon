@@ -758,7 +758,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "WolfPanties", Level: 60},
 			{Name: "ControlHarness", Level: 80},
 			{Name: "WolfStrongArmbinder", Level: 90, Condition: "LessArmbinders", Priority: "MoreArmbinders"},
-			{Name: "WolfPetsuit", Level: 120, Condition: "NoPetsuit"},
+			{Name: "WolfPetsuit", Level: 120, Condition: "NoPetsuit", Priority: "MorePetsuits"},
 		],
 	},
 	"expRestraints": {
@@ -832,7 +832,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "KittyBlindfold", Level: 60, Condition: "NoBlindfolds"},
 			{Name: "KittySuit", Level: 80},
 			{Name: "KittySuit", Level: 100},
-			{Name: "KittyPetSuit", Level: 120, Condition: "NoPetsuit"},
+			{Name: "KittyPetSuit", Level: 120, Condition: "NoPetsuit", Priority: "MorePetsuits"},
 		],
 	},
 	"obsidianRestraints": {
@@ -991,6 +991,9 @@ let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 	},
 	MoreArmbinders: (_r) => {
 		return KinkyDungeonStatsChoice.get("More_Armbinders") || KinkyDungeonFlags.get("prefer_armbinder");
+	},
+	MorePetsuits: (_r) => {
+		return KinkyDungeonStatsChoice.get("More_Petsuits") || KinkyDungeonFlags.get("prefer_petsuit");
 	},
 	MoreYokes: (_r) => {
 		return KinkyDungeonStatsChoice.get("More_Yokes") || KinkyDungeonFlags.get("prefer_yoke");

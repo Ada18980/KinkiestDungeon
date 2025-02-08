@@ -3914,7 +3914,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			let master = KinkyDungeonFindMaster(enemy);
 			if (master.master && enemy.aware) {
 
-				if (!master.master.aware) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+				if (!master.master.aware && KDEnemyCanSignalOthers(master.master)) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
 					undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 				);
 
@@ -3922,7 +3922,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			}
 			if (master.master && master.master.aware) {
 
-				if (!enemy.aware && !enemy.ignore) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+				if (!enemy.aware && !enemy.ignore && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
 					undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 				);
 
@@ -4996,7 +4996,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						4, 5, false, true);
 			}
 
-			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+			if (!enemy.aware && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
 				undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 			);
 
@@ -5388,7 +5388,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
-			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+			if (!enemy.aware && KDEnemyCanSignalOthers(enemy)) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
 				undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 			);
 			let wasAware = enemy.aware;

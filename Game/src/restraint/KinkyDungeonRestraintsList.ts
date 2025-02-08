@@ -3746,6 +3746,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events:[
 			{trigger:"defeat",  type:"Kittify"},
 		],
+		playerTagsMult: {More_Petsuits: 2.5},
 		helpChance: {"Remove": 0.1}, maxwill: 0.15, enemyTags: {"kittyRestraints":3}, playerTags: {"NoPet": -1000}, minLevel: 7, allFloors: true, shrine: ["Petsuits", "Latex", "Will", "HinderFeet"]},
 	{inventory: true, name: "MagicPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", magic: true, Color: "Default", Group: "ItemArms",
 		Model: "Petsuit",
@@ -3769,6 +3770,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.15, "Cut": 0.12, "Remove": -0.05, "Pick": 0.15},
 		helpChance: {"Remove": 0.2}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1},
 		playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true,
+		playerTagsMult: {More_Petsuits: 2.5},
 		shrine: ["Petsuits", "Leather", "Conjure", "HinderFeet"]},
 	{inventory: true, name: "LatexPetsuit", inaccessible: true, debris: "Slime", Color: "Default", Group: "ItemArms",
 		Model: "LatexPetsuit",
@@ -3785,6 +3787,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		playerTagsMult: {
 			"ItemArmsEmpty": 0.005, // Impossible to put on without binding arms first
+			More_Petsuits: 2.5,
 		},
 		Filters: {
 			Legs: {"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":2.2666666666666666,"red":1,"green":1.8333333333333333,"blue":2.7666666666666666,"alpha":1},
@@ -3916,6 +3919,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', kind: "Bast", mult: 0.8, power: 2,},
 		],
+		playerTagsMult: {More_Petsuits: 2.5},
 		helpChance: {"Remove": 0.01}, maxwill: 0.15, enemyTags: {"kittyRestraints":0}, playerTags: {"NoPet": -1000}, minLevel: 7, allFloors: true, shrine: ["Petsuits", "Latex", "Will", "HinderFeet"]},
 	//endregion
 
@@ -4760,6 +4764,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		playerTagsMult: {
 			"ItemArmsEmpty": 0.05,
+			More_Petsuits: 2.5,
 		},
 		alwaysDressModel: [
 			{

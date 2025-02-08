@@ -2811,7 +2811,8 @@ type CircParams = {
 	Color:       		string,
 	zIndex:      		number,
 	LineWidth?:  		number,
-	alpha?:      		number
+	alpha?:      		number,
+	Rotation?: 			number
 }
 
 type CircleParams = {
@@ -3430,7 +3431,7 @@ function FillCircleBarKD(Container: PIXIContainer, Map: Map<string, any>, id: st
         let counterclockwise = (Params.CounterClockwise ? Params.CounterClockwise : false); // We probably want to go clockwise
 
         if (sprite)
-            sprite.destroy(); 
+            sprite.destroy();
 
         sprite = new PIXI.Graphics();
         sprite.lineStyle(linethickness, linecolor);
@@ -3440,7 +3441,7 @@ function FillCircleBarKD(Container: PIXIContainer, Map: Map<string, any>, id: st
         if (!kdprimitiveparams.has(id))
             kdprimitiveparams.set(id, Params);
     }
-    if (sprite) { 
+    if (sprite) {
         let rotation = (Params.Rotation ? Params.Rotation : (0 - Math.PI / 2)) // Point upwards
 
         sprite.name = id;
