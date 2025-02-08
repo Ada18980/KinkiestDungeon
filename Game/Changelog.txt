@@ -45,6 +45,7 @@ TODO add ability to recolor own restraints via palette
 - Blade Dance reworked to count as an attack. Simply deals bonus damage if holding a light offhand weapon.
 - Unstable magic nerfed to 30%
 - Iron blood nerfed to -30% SP cost and +15% MP cost
+- Precise critical now 25% efficiency, except Light weapons which are 50%
 
 5.4.41
 - New expert tool feature/mod tool: You can add pose "NoSwimsuits"/"NoChestArmor"/etc to prevent certain armor items from adding their models

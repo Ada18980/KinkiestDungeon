@@ -4573,6 +4573,9 @@
             <key type="filename">../Game/UI/circleborder.png</key>
             <key type="filename">../Game/UI/clouduploadicon.png</key>
             <key type="filename">../Game/UI/greyColor.png</key>
+            <key type="filename">../Game/UI/greyColorCatsuit.png</key>
+            <key type="filename">../Game/UI/greyColorHighlight.png</key>
+            <key type="filename">../Game/UI/greyColorLight.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

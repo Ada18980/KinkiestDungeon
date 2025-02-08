@@ -558,7 +558,7 @@ async function load() {
 	//KDLoadingMax = 100;
 	await LoadTextureAtlas(nearestList, KDToggles.NearestNeighbor ? PIXI.SCALE_MODES.NEAREST : PIXI.SCALE_MODES.LINEAR);
 	await LoadTextureAtlas(linearList, PIXI.SCALE_MODES.LINEAR);
-	await PreloadDisplacement(displacementList);
+	//await PreloadDisplacement(displacementList);
 	// Load everything twice... for good measure
 
 	setTimeout(() => {

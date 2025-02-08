@@ -9828,6 +9828,7 @@ function KDBasicTeaseAttack(enemy: entity, player: entity, noglobal?: boolean): 
 	    &&  (noglobal || !KinkyDungeonFlags.get("globalteaseAtkCD"))
 	    &&  !KinkyDungeonIsDisabled(enemy)
 	    &&  !(enemy.vulnerable > 0)
+		&&  (player.player ? !KinkyDungeonFlags.get("teleported") : !KDEnemyHasFlag(player, "teleported"))
 	    &&  !KDEnemyHasFlag(enemy, "targetedForAttack");
 }
 
@@ -10428,6 +10429,7 @@ function KDDoSlow(player: entity, amt: number) {
 	if (KDGameData.MovePoints < 0) {
 		if (!KinkyDungeonFlags.get("tut_slo")) {
 			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Slowed"), KDTutorialColor, 10);
+			KinkyDungeonSetFlag("tut_slo", -1);
 		}
 	}
 }

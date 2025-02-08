@@ -588,10 +588,12 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "BladeDance", tags: ["stamina", "utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", sfx: "Miss", spellPointCost: 1,
 			events: [
 				{trigger: "afterBulletHit", type: "BladeDance",
-					dist: 1.5, power: 0.2, mult: 0.30, prereq: "wepDamageType", kind: "melee"},
+					dist: 1.5, power: 2.0, mult: 0.5},
+				{trigger: "calcStamina", type: "BladeDance",
+					mult: 1.0},
 			],
 			noMiscast: true,
-			staminacost: 6,
+			staminacost: 3,
 			manacost: 0, components: ["Legs"], noTargetEnemies: true, level:1, type:"hit", onhit:"teleport", delay: 0, lifetime:1, range: 1.5, damage: ""}, // A quick blink
 
 

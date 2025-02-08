@@ -5236,7 +5236,7 @@ function KDGetTargetRetType(x: number, y: number): string {
 	return "Move";
 }
 
-let KDPIXIPaletteFilters = new Map();
+let KDPIXIPaletteFilters: Map<string, PIXIFilter[]> = new Map();
 
 /**
  * @param x
@@ -5261,12 +5261,42 @@ function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, sel
 	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
 		if (!KDPIXIPaletteFilters.get(value[0]))
 			KDPIXIPaletteFilters.set(value[0],
-				new PIXI.filters.AdjustmentFilter(value[1].Highlight));
-		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0], KinkyDungeonRootDirectory + "UI/greyColor.png",
+				[
+					new PIXI.filters.AdjustmentFilter(value[1].DarkNeutral),
+					new PIXI.filters.AdjustmentFilter(value[1].LightNeutral),
+					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
+					new PIXI.filters.AdjustmentFilter(value[1].Catsuit),
+				]);
+		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0],
+			KinkyDungeonRootDirectory + "UI/greyColor.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
-					KDPIXIPaletteFilters.get(value[0]),
+					KDPIXIPaletteFilters.get(value[0])[0],
 				]
+			});
+		KDDraw(kdcanvas, kdpixisprites, "paletteL" + value[0],
+			KinkyDungeonRootDirectory + "UI/greyColorLight.png",
+			XX, YY, scale, scale, undefined, {
+				filters: [
+					KDPIXIPaletteFilters.get(value[0])[1],
+				],
+				zIndex: 2,
+			});
+		KDDraw(kdcanvas, kdpixisprites, "paletteH" + value[0],
+			KinkyDungeonRootDirectory + "UI/greyColorHighlight.png",
+			XX, YY, scale, scale, undefined, {
+				filters: [
+					KDPIXIPaletteFilters.get(value[0])[2],
+				],
+				zIndex: 3,
+			});
+		KDDraw(kdcanvas, kdpixisprites, "paletteC" + value[0],
+			KinkyDungeonRootDirectory + "UI/greyColorCatsuit.png",
+			XX, YY, scale, scale, undefined, {
+				filters: [
+					KDPIXIPaletteFilters.get(value[0])[3],
+				],
+				zIndex: 4,
 			});
 		DrawButtonKDEx("choosepalette" + value[0], (_b) => {
 			if (callback) callback(value[0]);

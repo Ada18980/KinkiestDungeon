@@ -77,8 +77,9 @@ function KDIsServant(value: KDCollectionEntry): boolean {
  * Gets the faction of the enemy, returning "Player" if its an ally, or "Enemy" if no faction
  * @param enemy
  */
-function KDGetFaction(enemy: entity): string {
+function KDGetFaction(enemy: entity | string): string {
 	if (!enemy) return undefined;
+	if (typeof enemy === "string") return enemy;
 	if (enemy.player) return "Player";
 	if (enemy.rage > 0) return "Rage";
 	if (enemy.faction) return enemy.faction;
@@ -151,7 +152,10 @@ function KDFactionAllied(a: string, b: string | entity, threshold: number = 0.7,
  * @param b - Faction 2
  */
 function KDFactionFavorable(a: string, b: string | entity): boolean {
-	return KDFactionAllied(a, b, 0.099);
+	return KDFactionAllied(a, b, 0.099)
+	&& !(a == "Player" && typeof b !== "string" && KDHostile(b))
+	&& !(a == "Player" && !KDGameData.HostileFactions.includes(KDGetFaction(b)))
+	&& !(b == "Player" && !KDGameData.HostileFactions.includes(a));
 }
 
 

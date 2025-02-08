@@ -1138,6 +1138,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					if (KinkyDungeonMapGet(KDPlayer().x, KDPlayer().y) && KDGameData.InteractTargetX && KDGameData.InteractTargetY) {
 						if (KinkyDungeonMapGet(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == 'B') {
+							KinkyDungeonTrapMoved = true;
 							KDMovePlayer(KDGameData.InteractTargetX, KDGameData.InteractTargetY, true);
 						}
 					}

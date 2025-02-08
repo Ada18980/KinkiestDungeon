@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.41"
+KDVersionStr,"5.4.42"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -24397,7 +24397,7 @@ KinkyDungeonSpellDescriptionBattleCost,"Weapon stamina cost is reduced by a perc
 KinkyDungeonBuffPhaseEvasion,+50 Evasion from using Phase
 
 KinkyDungeonSpellBladeDance,Blade Dance
-KinkyDungeonSpellDescriptionBladeDance,"Spend 60 stamina to dash to an adjacent spot. Attacks nearby enemies for 30% damage, or 60% if holding a Light weapon. If holding a Light offhand weapon, deal an extra 20 damage of its type as well."
+KinkyDungeonSpellDescriptionBladeDance,"Spend 30 + weapon SP cost to dash to an adjacent spot. Attacks nearby enemies for 50% damage, or 100% if holding a Light weapon. If holding a Light offhand weapon, attack with that one for another 50% damage."
 KinkyDungeonSpellCastBladeDance,"You spin towards a location, slashing at nearby enemies!"
 KinkyDungeonSpellTargetBladeDance,Choose target location
 

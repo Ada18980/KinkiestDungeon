@@ -306,7 +306,8 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		stamPenType: "Staff",
 		events: [
 			{type: "Buff", kind: "Staff", trigger: "tick", power: 0.2, buffType: "electricDamageBuff", offhand: true},
-			{type: "EchoDamage", trigger: "beforeDamageEnemy", aoe: 2.99, power: 1.5, damage: "electric"}]},
+			{type: "StaffStormAura", kind: "Staff", trigger: "tick"},
+			]},
 	"StaffDoll": {name: "StaffDoll", damage: 3.0, chance: 1.0, staminacost: 4.0, type: "soul", unarmed: false, rarity: 6, shop: true, sfx: "MagicSlash", magic: true,
 		tags: ["staff", "bondage"], noDamagePenalty: true,
 		crit: 1.1,

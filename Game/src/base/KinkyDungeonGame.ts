@@ -5457,6 +5457,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				if (KDGameData.MovePoints < 0) {
 					if (!KinkyDungeonFlags.get("tut_slo")) {
 						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Slowed"), KDTutorialColor, 10);
+						KinkyDungeonSetFlag("tut_slo", -1);
 					}
 				}
 				if (!(KDGameData.KneelTurns > 0))
@@ -5653,6 +5654,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 	}
 	if (cencelled || (xx == KinkyDungeonPlayerEntity.x && yy == KinkyDungeonPlayerEntity.y)) {
 		KDGameData.MovePoints = 0;
+		KDSetIDFlag(KDPlayer().id, "negativeSlowLevel", 0);
 		return 0;
 	}
 	KDGameData.MovePoints = 0;
