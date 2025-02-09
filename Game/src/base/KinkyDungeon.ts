@@ -1092,6 +1092,7 @@ let KDContextStage = "";
 
 
 function KDGetGameContextActionsVanilla(
+	draw: boolean,
 	options: string[],
 	optionImages: Record<string, string>,
 	optionActions: Record<string, (mouseX: number, mouseY: number) => void>,
@@ -1126,6 +1127,13 @@ function KDGetGameContextActionsVanilla(
 			optionGrey.Truss = !KDCanApplyBondage(entity, KDPlayer(),
 				undefined)
 				|| KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) > rng;
+			if (KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) > rng) {
+				optionText.Truss = TextGet("KDContextMenu_TrussOOR");
+				optionImages.Truss = "TrussX";
+			} else if (optionGrey.Truss) {
+				optionText.Truss = TextGet("KDContextMenu_TrussAttempt");
+				optionImages.Truss = "TrussA";
+			}
 			optionActions.Truss = () => {
 				if (KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) <= rng)
 					KDSendInput("tryCastSpell", {tx: entity.x, ty: entity.y,
@@ -1211,17 +1219,20 @@ function KDGetGameContextActionsVanilla(
 				let tile = KinkyDungeonMapGet(newX, newY);
 				if (KinkyDungeonMovableTilesEnemy.includes(tile)
 					&& KinkyDungeonNoEnemy(newX, newY)) {
-					KDDraw(kdstatusboard, kdpixisprites, "context_movesprint",
-						KinkyDungeonRootDirectory + "Sprint.png",
-						(newX - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay,
-						(newY - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
-							zIndex: 99,
-						});
-					let sprintcost = KDSprintCost();
-					optionText.Sprint = TextGet("KDContextMenu_Sprint").replace("AMNT", Math.round(-sprintcost*10) + "sp");
-					DrawTextKD(Math.round(-sprintcost*10) + "sp",
-						(newX - KinkyDungeonCamX + 0.5)*KinkyDungeonGridSizeDisplay,
-						(newY - KinkyDungeonCamY - 0.25)*KinkyDungeonGridSizeDisplay, "#88ff88");
+					if (draw) {
+						KDDraw(kdstatusboard, kdpixisprites, "context_movesprint",
+							KinkyDungeonRootDirectory + "Sprint.png",
+							(newX - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay,
+							(newY - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
+								zIndex: 99,
+							});
+						let sprintcost = KDSprintCost();
+						optionText.Sprint = TextGet("KDContextMenu_Sprint").replace("AMNT", Math.round(-sprintcost*10) + "sp");
+						DrawTextKD(Math.round(-sprintcost*10) + "sp",
+							(newX - KinkyDungeonCamX + 0.5)*KinkyDungeonGridSizeDisplay,
+							(newY - KinkyDungeonCamY - 0.25)*KinkyDungeonGridSizeDisplay, "#88ff88");
+					}
+
 					options.push("Sprint");
 					optionImages.Sprint = "Sprint";
 					optionActions.Sprint = () => {
@@ -1244,9 +1255,9 @@ function KDGetGameContextActionsVanilla(
 	}
 }
 
-/** @type {Record<string, (mouseX: number, mouseY: number) => {options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>}>} */
+/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number) => {options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>}>} */
 let KDGetContextActions = {
-	Game: (mouseX, mouseY) => {
+	Game: (draw, mouseX, mouseY) => {
 		let options: string[] = [];
 		let optionImages: Record<string, string> = {};
 		let optionActions: Record<string, (mouseX: number, mouseY: number) => void> = {};
@@ -1255,7 +1266,7 @@ let KDGetContextActions = {
 
 		KinkyDungeonSetTargetLocation(false, KDContextX, KDContextY);
 
-		KDGetGameContextActionsVanilla(options, optionImages, optionActions, optionGrey, optionText);
+		KDGetGameContextActionsVanilla(draw, options, optionImages, optionActions, optionGrey, optionText);
 
 		if (options.length==0){
 			options = ["None"];
@@ -1278,7 +1289,7 @@ let KDDrawGameContextMenu = {
 
 		let {
 			options, optionImages, optionActions, optionGrey, optionText
-		} = KDGetContextActions.Game(mouseX, mouseY);
+		} = KDGetContextActions.Game(draw, mouseX, mouseY);
 
 		KDDrawContextMenu(draw, mouseX, mouseY, options,
 			optionImages, optionActions, optionGrey, optionText);

@@ -27366,4 +27366,6 @@ KDContextMenu_Stairs,Take Stairs
 KDContextMenu_Wait,Wait
 KDContextMenu_Pass,Allow Passing
 KDContextMenu_Truss,Tie Up
+KDContextMenu_TrussAttempt,Attempt to Tie
+KDContextMenu_TrussOOR,Move Closer to Tie
 KDContextMenu_Sprint,Sprint (AMNT)
