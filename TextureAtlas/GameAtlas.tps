@@ -543,6 +543,7 @@
             <key type="filename">../Game/Bullets/RubberSlimeHit.png</key>
             <key type="filename">../Game/Bullets/RubberSniper.png</key>
             <key type="filename">../Game/Bullets/RubberSniperHit.png</key>
+            <key type="filename">../Game/Bullets/Sagitta.png</key>
             <key type="filename">../Game/Bullets/SagittaBolt.png</key>
             <key type="filename">../Game/Bullets/SagittaBoltHit.png</key>
             <key type="filename">../Game/Bullets/SealingBolt.png</key>
@@ -3448,6 +3449,8 @@
                 <false/>
             </struct>
             <key type="filename">../Game/ChangeSpell.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Stairs.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Wait.png</key>
             <key type="filename">../Game/UI/Expand.png</key>
             <key type="filename">../Game/UI/Labels.png</key>
             <key type="filename">../Game/UI/LabelsChest.png</key>
@@ -3536,6 +3539,7 @@
             <key type="filename">../Game/UI/AutoWait/Slow.png</key>
             <key type="filename">../Game/UI/AutoWait/VeryFast.png</key>
             <key type="filename">../Game/UI/Checked.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Sprint.png</key>
             <key type="filename">../Game/UI/CrouchOff.png</key>
             <key type="filename">../Game/UI/CrouchOn.png</key>
             <key type="filename">../Game/UI/Door.png</key>
@@ -4095,6 +4099,7 @@
             </struct>
             <key type="filename">../Game/Particles/mmm.png</key>
             <key type="filename">../Game/Particles/nnn.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Truss.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -4371,6 +4376,40 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/UI/ContextMenu/Interact.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Talk.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,11,21,23</rect>
+                <key>scale9Paddings</key>
+                <rect>11,11,21,23</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/UI/ContextMenu/MoveTo.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Pass.png</key>
+            <key type="filename">../Game/UI/LogDown.png</key>
+            <key type="filename">../Game/UI/LogUp.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,10,21,21</rect>
+                <key>scale9Paddings</key>
+                <rect>10,10,21,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/UI/Disperse.png</key>
             <key type="filename">../Game/UI/Move.png</key>
             <key type="filename">../Game/UI/Recall.png</key>
@@ -4403,22 +4442,6 @@
                 <rect>22,22,43,43</rect>
                 <key>scale9Paddings</key>
                 <rect>22,22,43,43</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/UI/LogDown.png</key>
-            <key type="filename">../Game/UI/LogUp.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>10,10,21,21</rect>
-                <key>scale9Paddings</key>
-                <rect>10,10,21,21</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

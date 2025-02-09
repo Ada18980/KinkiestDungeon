@@ -4407,7 +4407,7 @@ function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any
 }
 
 // Click function for the game portion
-function KinkyDungeonClickGame(_Level?: number) {
+function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
 	let _CharacterRefresh = CharacterRefresh;
 	let _CharacterAppearanceBuildCanvas = CharacterAppearanceBuildCanvas;
 	CharacterRefresh = () => {KDRefresh = true;};
@@ -4513,22 +4513,10 @@ function KinkyDungeonClickGame(_Level?: number) {
 				} else if (KinkyDungeonIsPlayer() && KDMouseInPlayableArea()) {
 					let fastMove = KinkyDungeonFastMove && !KinkyDungeonToggleAutoSprint;
 					if (fastMove && KDistChebyshev(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x, KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y) > 0.5
-						&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
-							|| KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
-							|| KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
-						let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
-						let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
-							true, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
-							undefined, false, undefined, false, true);
-						if (path) {
-							KDSetFocusControl("");
-							KinkyDungeonFastMovePath = path;
-							KinkyDungeonSleepTime = 100;
-							KinkyDungeonSetFlag("startPath", 1);
-						} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5) {
-							KDSetFocusControl("");
-							KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
-						}
+					&& (KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
+						|| KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0
+						|| KDistChebyshev(KinkyDungeonPlayerEntity.x - KinkyDungeonTargetX, KinkyDungeonPlayerEntity.y - KinkyDungeonTargetY) < 1.5)) {
+						return !!KDFastMoveTo(KinkyDungeonTargetX, KinkyDungeonTargetY);
 					} else if (!fastMove || Math.max(Math.abs(KinkyDungeonTargetX - KinkyDungeonPlayerEntity.x), Math.abs(KinkyDungeonTargetY - KinkyDungeonPlayerEntity.y)) <= 1) {
 						KDSetFocusControl("");
 						KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
@@ -5225,7 +5213,7 @@ function KDPlayerCanMove(player, x, y) {
 	return KinkyDungeonGetMovable().includes(KinkyDungeonMapGet(x, y));
 }
 
-function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number, AllowInteract: boolean, SuppressSprint?: boolean): boolean {
+function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number, AllowInteract: boolean, SuppressSprint?: boolean, forceSprint?: boolean): boolean {
 	let moveX = moveDirection.x + KinkyDungeonPlayerEntity.x;
 	let moveY = moveDirection.y + KinkyDungeonPlayerEntity.y;
 	let moved = false;
@@ -5234,8 +5222,9 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 	let nextPosX = moveX*2-KinkyDungeonPlayerEntity.x;
 	let nextPosY = moveY*2-KinkyDungeonPlayerEntity.y;
 	let nextTile = KinkyDungeonMapGet(nextPosX, nextPosY);
+	if (forceSprint) SuppressSprint = false;
 	if (KinkyDungeonMovableTilesEnemy.includes(nextTile)
-		&& KinkyDungeonNoEnemy(nextPosX, nextPosY) && KinkyDungeonToggleAutoSprint) {
+		&& KinkyDungeonNoEnemy(nextPosX, nextPosY) && (forceSprint || KinkyDungeonToggleAutoSprint)) {
 		let data = {
 			canSprint: KDCanSprint(),
 			passThru: false,
@@ -5250,6 +5239,10 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 
 	let allowPass: boolean = Enemy
 		&& KDCanPassEnemy(KinkyDungeonPlayerEntity, Enemy);
+	if (Enemy && KDEnemyHasFlag(Enemy, "forcetalk") && KinkyDungeonFastMove) {
+		allowPass = false;
+		KinkyDungeonSetEnemyFlag(Enemy, "forcetalk", 0);
+	}
 	if (Enemy && !allowPass && !passThroughSprint) {
 		if (AllowInteract) {
 			KDDelayedActionPrune(["Action", "Attack"]);
@@ -5346,7 +5339,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						if (KinkyDungeonStatBind) KDGameData.MovePoints = Math.min(0, KDGameData.MovePoints);
 						//let MovePoints = KDGameData.MovePoints;
 
-						let willSprint = KinkyDungeonToggleAutoSprint && !SuppressSprint;
+						let willSprint = (forceSprint || KinkyDungeonToggleAutoSprint) && !SuppressSprint;
 
 						if (KDGameData.MovePoints >= 1 || (willSprint && KDCanSprint())) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							let xx = KinkyDungeonPlayerEntity.x;
@@ -6051,11 +6044,11 @@ let KDAllowDialogue = true;
 
 let lastFloaterRefresh = 0;
 
-function KinkyDungeonTargetTileMsg() {
+function KinkyDungeonTargetTileMsg(): boolean {
 	if (KDObjectMessages[KinkyDungeonTargetTile.Type]) {
-		KDObjectMessages[KinkyDungeonTargetTile.Type]();
-	} else if (KinkyDungeonTargetTile.Lock) {
+		return KDObjectMessages[KinkyDungeonTargetTile.Type]();
 
+	} else if (KinkyDungeonTargetTile.Lock) {
 		KinkyDungeonTargetTile.LockSeen =
 			KinkyDungeonTargetTile.Lock;
 		if (KinkyDungeonTargetTile.Faction)
@@ -6066,6 +6059,7 @@ function KinkyDungeonTargetTileMsg() {
 			.replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name))
 			.replace("LKTP", TextGet(`Kinky${KinkyDungeonTargetTile.Lock}Lock`))
 		, "#ffffff", 1, true);
+		return true;
 	} else {
 
 		KinkyDungeonTargetTile.LockSeen = undefined;
@@ -6075,6 +6069,8 @@ function KinkyDungeonTargetTileMsg() {
 				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff5277", 2, true);
 		if (KinkyDungeonTargetTile.Name == "Commerce") suff = "Commerce";
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObject" + KinkyDungeonTargetTile.Type + suff).replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), "#ffffff", 1, true);
+
+		return true;
 	}
 }
 
@@ -6431,7 +6427,7 @@ function KDGetAltType(Floor: number, MapMod?: string, RoomType?: string): AltTyp
  * @param player
  * @param Enemy
  */
-function KDCanPassEnemy(_player: entity, Enemy: entity, force?: boolean): boolean {
+function KDCanPassEnemy(_player: entity, Enemy: entity, force?: boolean, ignoreIfAlready?: boolean): boolean {
 	return !KDIsImmobile(Enemy)
 	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
 	&& ((force || (KinkyDungeonToggleAutoPass
@@ -6446,10 +6442,19 @@ function KDCanPassEnemy(_player: entity, Enemy: entity, force?: boolean): boolea
 					(Enemy.prisondialogue && KDIsImprisoned(Enemy)) || Enemy.Enemy.specialdialogue)) &&
 				(KDGameData.FocusControlToggle.AutoPassSummons || !(Enemy.Enemy.allied))
 			)
-		)))
-		|| KDEnemyHasFlag(Enemy, "passthrough")
-		|| (KinkyDungeonFlags.has("Passthrough"))
-		|| Enemy.Enemy.noblockplayer);
+		))) || (
+			!ignoreIfAlready && (
+				KDEnemyHasFlag(Enemy, "passthrough")
+				|| (KinkyDungeonFlags.has("Passthrough"))
+				|| Enemy.Enemy.noblockplayer)
+		) || (
+			ignoreIfAlready && !(
+				KDEnemyHasFlag(Enemy, "passthrough")
+				|| (KinkyDungeonFlags.has("Passthrough"))
+				|| Enemy.Enemy.noblockplayer)
+			)
+		)
+
 }
 
 
@@ -6707,4 +6712,28 @@ function KDTalkToEnemy(Enemy: entity) {
 	return (KDIsImprisoned(Enemy)
 		|| ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy))
 		&& !(Enemy.playWithPlayer && KDCanDom(Enemy))));
+}
+
+function KDFastMoveTo(xx: number, yy: number): number {
+	if (KDistChebyshev(xx - KinkyDungeonPlayerEntity.x, yy - KinkyDungeonPlayerEntity.y) > 0.5
+		&& (KinkyDungeonVisionGet(xx, yy) > 0
+			|| KinkyDungeonFogGet(xx, yy) > 0
+			|| KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5)) {
+		let requireLight = KinkyDungeonVisionGet(xx, yy) > 0;
+		let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, xx, yy,
+			true, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
+			undefined, false, undefined, false, true);
+		if (path) {
+			KDSetFocusControl("");
+			KinkyDungeonFastMovePath = path;
+			KinkyDungeonSleepTime = 100;
+			KinkyDungeonSetFlag("startPath", 1);
+			return path.length;
+		} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5) {
+			KDSetFocusControl("");
+			KDSendInput("move", {dir: KinkyDungeonMoveDirection, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint});
+			return 1;
+		}
+	}
+	return 0;
 }

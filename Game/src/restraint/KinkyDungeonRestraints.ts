@@ -34,6 +34,9 @@ let StruggleTypeHandThresh = {
 };
 
 
+/** Ignores these tags when determining if inv filter finds the item */
+let InvFilterShrineBlacklist = ["Cursed"];
+
 let KDRestraintArchetypes = ["Rope", "Latex", "Ribbon", "Leather", "Cyber", "Metal", "Armbinders", "Boxbinders", "Straitjackets", "Legbinders"];
 
 

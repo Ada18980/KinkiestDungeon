@@ -1689,9 +1689,11 @@ function KDUpdateBulletEffects(b: any, d: number) {
 }
 
 function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
+	let CancelUpdates = new Map();
 	if (delta > 0) {
 
 		if (Allied) KDUniqueBulletHits = new Map();
+
 
 		for (let b of KDMapData.Bullets) {
 			if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player"))
@@ -1712,10 +1714,19 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 						b.lifetime = 0;
 					}
 				}
+				let dd: BulletTickData = {bullet: b, delta: delta, allied: Allied, cancelCast: false, cancelMove: false};
+				KinkyDungeonSendEvent("bulletTick", dd);
 
-				KinkyDungeonSendEvent("bulletTick", {bullet: b, delta: delta, allied: Allied});
+				if (dd.cancelMove) {
+					CancelUpdates.set(b, true);
+				}
+
 				if (b.bullet && b.bullet.dot) {
 					KinkyDungeonBulletDoT(b);
+				}
+
+				if (dd.cancelCast) {
+					continue;
 				}
 				if (b.bullet.cast && b.bullet.spell && b.bullet.spell.castDuringDelay && (!b.bullet.cast.chance || KDRandom() < b.bullet.cast.chance) && b.time > 1) {
 					let xx = b.bullet.cast.tx;
@@ -1769,6 +1780,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 	}
 	for (let E = 0; E < KDMapData.Bullets.length; E++) {
 		let b = KDMapData.Bullets[E];
+		if (CancelUpdates.get(b)) continue;
 
 		if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")))) {
 			let d = delta;

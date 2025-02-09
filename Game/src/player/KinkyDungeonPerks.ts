@@ -256,17 +256,17 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
 
-	"More_Armbinders":  {category: "Toggles", id: "More_Armbinders", cost: 0, block: ["Less_Armbinders"]},
-	"More_Jackets":  {category: "Toggles", id: "More_Jackets", cost: 0, block: ["Less_Jackets"]},
-	"More_Boxbinders":  {category: "Toggles", id: "More_Boxbinders", cost: 0, block: ["Less_Boxbinders"]},
-	"More_Yokes":  {category: "Toggles", id: "More_Yokes", cost: 0, block: ["Less_Yokes"]},
-	"More_Petsuits":  {category: "Toggles", id: "More_Petsuits", cost: 0, block: ["NoPet"]},
+	"More_Armbinders":  {category: "Toggles2", id: "More_Armbinders", cost: 0, block: ["Less_Armbinders"]},
+	"More_Jackets":  {category: "Toggles2", id: "More_Jackets", cost: 0, block: ["Less_Jackets"]},
+	"More_Boxbinders":  {category: "Toggles2", id: "More_Boxbinders", cost: 0, block: ["Less_Boxbinders"]},
+	"More_Yokes":  {category: "Toggles2", id: "More_Yokes", cost: 0, block: ["Less_Yokes"]},
+	"More_Petsuits":  {category: "Toggles2", id: "More_Petsuits", cost: 0, block: ["NoPet"]},
 
-	"Less_Armbinders":  {category: "Toggles", id: "Less_Armbinders", cost: 0, block: ["More_Armbinders"], debuff: true,},
-	"Less_Jackets":  {category: "Toggles", id: "Less_Jackets", cost: 0, block: ["More_Jackets"], debuff: true,},
-	"Less_Boxbinders":  {category: "Toggles", id: "Less_Boxbinders", cost: 0, block: ["More_Boxbinders"], debuff: true,},
-	"Less_Yokes":  {category: "Toggles", id: "Less_Yokes", cost: 0, block: ["More_Yokes"], debuff: true,},
-	"NoPet": {category: "Toggles", id: "Less_Yokes", cost: 0, block: ["More_Petsuits"], debuff: true,},
+	"Less_Armbinders":  {category: "Toggles2", id: "Less_Armbinders", cost: 0, block: ["More_Armbinders"], debuff: true,},
+	"Less_Jackets":  {category: "Toggles2", id: "Less_Jackets", cost: 0, block: ["More_Jackets"], debuff: true,},
+	"Less_Boxbinders":  {category: "Toggles2", id: "Less_Boxbinders", cost: 0, block: ["More_Boxbinders"], debuff: true,},
+	"Less_Yokes":  {category: "Toggles2", id: "Less_Yokes", cost: 0, block: ["More_Yokes"], debuff: true,},
+	"NoPet": {category: "Toggles2", id: "NoPet", cost: 0, block: ["More_Petsuits"], debuff: true,},
 
 	"NovicePet":  {category: "Major", id: "NovicePet", cost: 1},
 	"Fortify_Barricade":  {category: "Major", id: "Fortify_Barricade", cost: -1.5},

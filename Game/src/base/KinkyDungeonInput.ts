@@ -19,6 +19,15 @@ function KDProcessInput(type: string, data: any): string {
 			KinkyDungeonToggleAutoPass = data.AutoPass;
 			KinkyDungeonToggleAutoSprint = data.sprint;
 			KinkyDungeonSuppressSprint = data.SuppressSprint;
+			return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract,
+				 data.SuppressSprint, data.forceSprint) ? "move" : "nomove";
+			//break;
+		case "movestairs":
+			KDInteracting = false;
+			KinkyDungeonToggleAutoPass = data.AutoPass;
+			KinkyDungeonToggleAutoSprint = data.sprint;
+			KinkyDungeonSuppressSprint = data.SuppressSprint;
+			KinkyDungeonConfirmStairs = true;
 			return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract, data.SuppressSprint) ? "move" : "nomove";
 			//break;
 		case "setMoveDirection":
@@ -1251,6 +1260,26 @@ function KDProcessInput(type: string, data: any): string {
 			}
 			KDGameData.AutoRelease[data.type] = !KDGameData.AutoRelease[data.type];
 			break;
+		case "talk": {
+			let Enemy = KinkyDungeonFindID(data.id);
+			if (Enemy) {
+				if (data.moveTo) {
+					if (KDistChebyshev(Enemy.x - KDPlayer().x, Enemy.y - KDPlayer().y) > 1.5) {
+						let turns = KDFastMoveTo(Enemy.x, Enemy.y);
+						if (turns) {
+							KinkyDungeonSetEnemyFlag(Enemy, "forcetalk", turns + 5);
+						}
+						return "move";
+					}
+				}
+				KDStartDialog(data.d,
+					Enemy.Enemy.name,
+					true,
+					Enemy.personality, Enemy);
+			}
+
+			break;
+		}
 		case "releaseNPC":
 			if (data?.selection) {
 				for (let v of Object.keys(data.selection)) {
@@ -1418,6 +1447,11 @@ function KDInteract(x: number, y: number, dist?: number): boolean {
 				return true;
 			}
 		}
+	}
+	if (tile?.Type && KinkyDungeonMovableTiles.includes(tiletype)) {
+		KinkyDungeonTargetTile = tile;
+		KinkyDungeonTargetTileLocation = x + "," + y;
+		KinkyDungeonTargetTileMsg();
 	}
 	KinkyDungeonSendEvent("afterInteractFail", {x:x, y: y});
 	return false;

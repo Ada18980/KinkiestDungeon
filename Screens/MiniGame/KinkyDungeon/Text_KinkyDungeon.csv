@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.42"
+KDVersionStr,"5.4.43"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -44,6 +44,7 @@ KDToggleTabMain,Main
 KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
+KDToggleTabMouseShortcuts,Mouse Shortcuts
 
 KDToggleBindPercent,Show Enemy Binding as %
 KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
@@ -27356,3 +27357,13 @@ KDWToolsButton2,"Toggle click & drag"
 KDWToolsButton3,Settings
 KDWToolsToggleScrollModeText,"Scroll Controls: "
 KDWToolsLayerAbbrText,"Layer Text: "
+
+KDContextMenu_None,No Actions Available
+KDContextMenu_Interact,Interact
+KDContextMenu_Talk,Talk
+KDContextMenu_MoveTo,Move To
+KDContextMenu_Stairs,Take Stairs
+KDContextMenu_Wait,Wait
+KDContextMenu_Pass,Allow Passing
+KDContextMenu_Truss,Tie Up
+KDContextMenu_Sprint,Sprint (AMNT)

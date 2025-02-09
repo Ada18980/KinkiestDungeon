@@ -4466,6 +4466,11 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				data.mult *= 1 - amount;
 			}
 		},
+		"BattleCost": (e, _spell, data) => {
+			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
+				data.mult *= Math.max(0, 1 - (e.mult * 100 * KDEntityBuffedStat(KinkyDungeonPlayerEntity, "BattleRhythm")));
+			}
+		},
 	},
 	"affinity": {
 		"RogueEscape": (e, _spell, data: KDEventData_affinity) => {
@@ -5687,11 +5692,6 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 		},
 	},
 	"beforePlayerLaunchAttack": {
-		"BattleCost": (e, _spell, data) => {
-			if (!e.prereq || KDCheckPrereq(null, e.prereq, e, data)) {
-				data.attackCost *= Math.max(0, 1 - (e.mult * 100 * KDEntityBuffedStat(KinkyDungeonPlayerEntity, "BattleRhythm")));
-			}
-		},
 		"BattleRhythmStore": (_e, _spell, data) => {
 			let atkCost = Math.min(data.attackCost, data.attackCostOrig);
 			if (data.target && -atkCost > 0 && !KinkyDungeonFlags.get("BRStore" + data.target.id)) {
@@ -8663,21 +8663,21 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 			}
 		},
 	},
-	"bulletTick": {
 
-		"EndChance": (e, b, _data) => {
+	"bulletTick": {
+		"EndChance": (e, b, _data: BulletTickData) => {
 			if (b.time < e.count)
 				if (KDRandom() < e.chance) {
 					b.time = 0;
 				}
 		},
-		"CreateSmoke": (e, b, _data) => {
+		"CreateSmoke": (e, b, _data: BulletTickData) => {
 			KDCreateAoEEffectTiles(b.x, b.y, {
 				name: e.kind || "Smoke",
 				duration: e.time || 10,
 			}, 3, e.aoe || 1.5, undefined, e.chance || 0.5);
 		},
-		"MagicMissileChannel": (_e, b, _data) => {
+		"MagicMissileChannel": (_e, b, _data: BulletTickData) => {
 			if (b.bullet?.source) {
 				let enemy = KinkyDungeonFindID(b.bullet.source);
 				if (enemy) {
@@ -8699,7 +8699,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 			KinkyDungeonUpdateSingleBulletVisual(b, true, 0);
 			KinkyDungeonSendEvent("bulletDestroy", { bullet: b, target: undefined, outOfRange: false, outOfTime: false });
 		},
-		"FlashPortal": (e, _b, _data) => {
+		"FlashPortal": (e, _b, _data: BulletTickData) => {
 			let player = KinkyDungeonPlayerEntity;
 			if (player) {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
@@ -8718,7 +8718,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				}
 			}
 		},
-		"TransportationPortal": (e, _b, _data) => {
+		"TransportationPortal": (e, _b, _data: BulletTickData) => {
 			let player = KinkyDungeonPlayerEntity;
 			if (player) {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
@@ -8737,7 +8737,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				}
 			}
 		},
-		"BanishPortal": (e, _b, _data) => {
+		"BanishPortal": (e, _b, _data: BulletTickData) => {
 			let player = KinkyDungeonPlayerEntity;
 			if (player) {
 				let enemies = KDNearbyEnemies(player.x, player.y, e.dist);
@@ -8756,7 +8756,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				}
 			}
 		},
-		"ZoneOfPurity": (e, b, _data) => {
+		"ZoneOfPurity": (e, b, _data: BulletTickData) => {
 			let enemies = KDNearbyEnemies(b.x, b.y, e.aoe);
 			if (enemies.length > 0) {
 				for (let en of enemies) {
@@ -8776,7 +8776,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				}
 			}
 		},
-		"ZoneOfExcitement": (e, b, _data) => {
+		"ZoneOfExcitement": (e, b, _data: BulletTickData) => {
 			let enemies = KDNearbyEnemies(b.x, b.y, e.aoe);
 			if (enemies.length > 0) {
 				for (let en of enemies) {
@@ -8797,7 +8797,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				}
 			}
 		},
-		"CastSpellNearbyEnemy": (e, b, data) => {
+		"CastSpellNearbyEnemy": (e, b, data: BulletTickData) => {
 			if (data.delta > 0) {
 				let source = b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : null;
 				let born = b.born ? 0 : 1;
@@ -10763,6 +10763,20 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 		},
 	},
 
+	"attackCost": {
+		"ReplacePerks": (_e: string, data: { attackData: damageInfo, attackCost: number, target: entity }) => {
+			if ((!KinkyDungeonPlayerDamage.name || KinkyDungeonPlayerDamage.name == "Unarmed")
+				&& KinkyDungeonPlayerDamage.unarmed) {
+				if (KinkyDungeonStatsChoice.get("UnarmedSuck")) {
+					data.attackData.damage *= 0.5;
+					data.attackCost *= 2;
+				}
+			}
+		},
+
+
+	},
+
 	"beforePlayerLaunchAttack": {
 		"ReplacePerks": (_e: string, data: { attackData: damageInfo, attackCost: number, target: entity }) => {
 			if ((!KinkyDungeonPlayerDamage.name || KinkyDungeonPlayerDamage.name == "Unarmed")
@@ -10776,10 +10790,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				} else KinkyDungeonSendActionMessage(7, TextGet("KDKick"), "#ffaa88", 1, true);
 
 
-				if (KinkyDungeonStatsChoice.get("UnarmedSuck")) {
-					data.attackData.damage *= 0.5;
-					data.attackCost *= 2;
-				}
+
 			}
 		},
 	},

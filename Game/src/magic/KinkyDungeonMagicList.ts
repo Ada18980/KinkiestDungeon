@@ -631,7 +631,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "BattleCost", tags: ["will", "stamina", "offense"], prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", school: "Special", manacost: 0, components: [], level:1, type:"", passive: true, onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert",
 			events: [
-				{trigger: "beforePlayerLaunchAttack", type: "BattleCost", mult: 0.01},
+				{trigger: "attackCost", type: "BattleCost", mult: 0.01},
 			]},
 
 
@@ -1236,12 +1236,19 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		},
 
 		{name: "Sagitta", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "kinetic", "offense", "sagitta"], sfx: "FireSpell", school: "Conjure",
-			meleeOrigin: true, noTargetPlayer: true, noEnemyCollision: true, CastInWalls: true, lifetime: 1,
+			meleeOrigin: true, noTargetPlayer: true, CastInWalls: true, lifetime: 1,
 			events: [
 				{trigger: "calcMana", type: "HeavyKinetic", power: 0.5},
 			],
-			manacost: 1.5, components: ["Legs"], level:1, type:"hit", projectileTargeting:true, onhit:"aoe", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
-			spellcast: {spell: "SagittaBolt", target: "target", directional:true, randomDirectionFallback: true, alwaysRandomBuff: "SagittaAssault", aimAtTarget: true, noTargetMoveDir: true, offset: false},
+			hideWarnings: true,
+			manacost: 1.5, components: ["Legs"], level:1,
+			type:"inert", projectileTargeting:true,
+			onhit:"aoe",
+			power: 0.0,
+			delay: 1, time: 1, range: 4.99, size: 1, damage: "inert",
+			spellcast: {spell: "SagittaBolt", target: "target", directional:true,
+				randomDirectionFallback: true, alwaysRandomBuff: "SagittaAssault",
+				aimAtTarget: true, noTargetMoveDir: true, offset: false},
 
 		},
 		{name: "SagittaAssault", prerequisite: "Sagitta", tags: ["buff", "offense", "telekinesis"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
@@ -1896,7 +1903,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 
 	{name: "SagittaBolt", castCondition: "FloatingWeapon", prerequisite: "TelekineticSlash", tags: ["telekinesis", "offense"], sfx: "Lightning", school: "Conjure",
-		manacost: 1.5, components: ["Legs"], level:1, type:"bolt", slowStart: true, projectileTargeting:true, onhit:"", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
+		manacost: 1.5, components: ["Legs"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 0.0, delay: 0, time: 1, range: 4.99, speed: 5, size: 1, damage: "pierce",
 		bulletLifetime: 5,
 		events: [
 			{trigger: "bulletHitEnemy", type: "Sagitta", mult: 0.4, power: 1},

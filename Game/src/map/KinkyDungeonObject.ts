@@ -3,7 +3,7 @@
 /**
  * Script happens when you display an object message
  */
-let KDObjectMessages: Record<string, () => void> = {
+let KDObjectMessages: Record<string, () => boolean> = {
 	"Ghost": () => KinkyDungeonGhostMessage(),
 	"Angel": () => KinkyDungeonAngelMessage(),
 	"Food": () => KinkyDungeonFoodMessage(),
@@ -317,24 +317,25 @@ function KinkyDungeonDrawAngel() {
 	DrawTextKD(TextGet("KinkyDungeonDrawAngelHelpful"), KDModalArea_x + 200, KDModalArea_y + 50, "white", KDTextGray2);
 }
 
-function KinkyDungeonElevatorMessage() {
+function KinkyDungeonElevatorMessage(): boolean {
 	KinkyDungeonSendActionMessage(10, TextGet("KDElevatorBroken"), "white", 3);
+	return true;
 }
 
-function KinkyDungeonGhostMessage() {
+function KinkyDungeonGhostMessage(): boolean {
 
 	if (KinkyDungeonTargetTile.Dialogue) {
 		KDStartDialog(KinkyDungeonTargetTile.Dialogue, "Ghost", true, "", undefined);
 		if (KinkyDungeonTargetTile.Msg && KDGameData.CurrentDialog) {
 			KDGameData.CurrentDialogMsg = KinkyDungeonTargetTile.Msg;
 		}
-		return;
+		return true;
 	} else if (KinkyDungeonTargetTile.Msg) {
 		KDStartDialog("GhostInfo", "Ghost", true, "", undefined);
 		if (KDGameData.CurrentDialog) {
 			KDGameData.CurrentDialogMsg = KinkyDungeonTargetTile.Msg;
 		}
-		return;
+		return true;
 	}
 	let restraints = KinkyDungeonAllRestraint();
 	let msg = "";
@@ -357,9 +358,10 @@ function KinkyDungeonGhostMessage() {
 	if (msg) {
 		KinkyDungeonSendActionMessage(3, msg, "white", 3);
 	}
+	return true;
 }
 
-function KinkyDungeonAngelMessage() {
+function KinkyDungeonAngelMessage(): boolean {
 	let restraints = KinkyDungeonAllRestraint();
 	let msg = "";
 	if (restraints.length == 0) {
@@ -370,9 +372,10 @@ function KinkyDungeonAngelMessage() {
 	if (msg) {
 		KinkyDungeonSendActionMessage(3, msg, "#ffffff", 1, true);
 	}
+	return true;
 }
 
-function KinkyDungeonFoodMessage(Tile?: any) {
+function KinkyDungeonFoodMessage(Tile?: any): boolean {
 	let tile = Tile || KinkyDungeonTargetTile;
 	if (tile) {
 		let msg = TextGet("KinkyDungeonFood" + (tile.Food ? tile.Food : ""));
@@ -380,7 +383,9 @@ function KinkyDungeonFoodMessage(Tile?: any) {
 		if (msg) {
 			KinkyDungeonSendActionMessage(3, msg, "#ffffff", 1, true);
 		}
+		return true;
 	}
+	return false;
 
 }
 

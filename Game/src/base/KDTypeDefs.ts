@@ -1999,6 +1999,57 @@ type KDPerk = {
 	requireArousal?: boolean,
 }
 
+interface SubCastInfo {
+	/** do not define */
+	target?: string,
+	/** do not define */
+	tx?: number,
+	/** do not define */
+	ty?: number,
+	/** do not define */
+	mx?: number,
+	/** do not define */
+	my?: number,
+	/** do not define */
+	targetID?: number,
+	/** Spell does NOT cast in direction of target, instead appears on caster tile */
+	noTargetMoveDir?: boolean,
+	/** Spell cast in direction based on target */
+	directional?: boolean,
+	/** Appears in a random position nearby */
+	randomDirection?: boolean
+	/** like randomDirection but only in the 180 degrees facing the target */
+	randomDirectionPartial?: boolean,
+	/** randomDirection, but only if the main direction is occupied */
+	randomDirectionFallback?: boolean,
+	/** If the target has this buff its in a random direction, e.g. sagitta */
+	alwaysRandomBuff?: string
+	/** Tracking behavior like leather spells or ropestorm */
+	aimAtTarget?: boolean,
+	/** Spell to cast */
+	spell: string,
+	/** chance to happen each turn */
+	chance?: number,
+	/** number of times to do the subcast */
+	countPerCast?: number,
+	/** ??? */
+	offset?: boolean
+	/** shotgun */
+	spread?: number
+	/** sfx */
+	sfx?: string
+	/** for summon, strict condition  */
+	strict?: boolean,
+}
+
+interface BulletTickData {
+	bullet: any,
+	delta: number,
+	allied: boolean,
+	cancelCast: boolean,
+	cancelMove: boolean,
+}
+
 interface spell {
 	nocrit?: boolean,
 
@@ -2297,11 +2348,11 @@ interface spell {
 	/** Casts a spellcast during the delay */
 	castDuringDelay?: boolean;
 	/** Casts spell */
-	spellcast?: any;
+	spellcast?: SubCastInfo;
 	/** Casts spell on cast */
-	extraCast?: any;
+	extraCast?: SubCastInfo[];
 	/** spell cast on hit */
-	spellcasthit?: any;
+	spellcasthit?: SubCastInfo;
 	/** List of buffs applied by the spell */
 	buffs?: any[];
 	/** Whether the spell is off by default */

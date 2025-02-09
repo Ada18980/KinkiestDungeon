@@ -3,6 +3,7 @@ interface CustomCancel {
 	condition: () => boolean,
 }
 
+/** true = cancels context menu */
 let KDCustomCancels = [
 	{
 		// Recycle
@@ -13,6 +14,7 @@ let KDCustomCancels = [
 			KinkyDungeonDrawState = "Facilities";
 			KinkyDungeonGameKey.keyPressed[9] = false;
 			KinkyDungeonKeybindingCurrentKey = '';
+			return true;
 		},
 	},
 	{
@@ -24,6 +26,7 @@ let KDCustomCancels = [
 			KinkyDungeonDrawState = KDUI_ContainerBackScreen || "Game";
 			KinkyDungeonGameKey.keyPressed[9] = false;
 			KinkyDungeonKeybindingCurrentKey = '';
+			return true;
 		},
 	},
 
@@ -37,6 +40,7 @@ let KDCustomCancels = [
 			KinkyDungeonTargetingSpell = null;
 			KinkyDungeonTargetingSpellItem = null;
 			KinkyDungeonTargetingSpellWeapon = null;
+			return true;
 		},
 	}
 ];

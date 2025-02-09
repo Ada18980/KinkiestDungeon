@@ -1059,13 +1059,16 @@ function KinkyDungeonDrawGame() {
 				}
 			}
 			if (cancelType) {
-				cancelType();
+				if (cancelType()) {
+					KDContextMenu = false;
+				}
 			} else if (KinkyDungeonDrawState == "Magic") {
 				KinkyDungeonDrawState = "MagicSpells";
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
+				KDContextMenu = false;
 			} else if ((KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage")
 					&& (KDCollectionTab || KDCurrentRestrainingTarget || KDCurrentFacilityTarget)) {
 				KDCollectionTab = "";
@@ -1079,12 +1082,14 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
+				KDContextMenu = false;
 			} else if (KDAlternateInventoryRender()) {
 				KDResetAlternateInventoryRender();
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
+				KDContextMenu = false;
 			} else {
 				KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 				KDPlayerSetPose = false;
@@ -1113,23 +1118,10 @@ function KinkyDungeonDrawGame() {
 
 	KinkyDungeonCapStats();
 
-	if (ChatRoomChatLog.length > 0) {
-		let LastChatObject = ChatRoomChatLog[ChatRoomChatLog.length - 1];
-		let LastChat = LastChatObject.Garbled;
-		let LastChatTime = LastChatObject.Time;
-		let LastChatSender = (LastChatObject.SenderName) ? LastChatObject.SenderName + ": " : ">";
-		let LastChatMaxLength = 60;
 
-		if (LastChat)  {
-			LastChat = (LastChatSender + LastChat).substr(0, LastChatMaxLength);
-			if (LastChat.length == LastChatMaxLength) LastChat = LastChat + "...";
-			if (LastChatTime && CommonTime() < LastChatTime + KinkyDungeonLastChatTimeout)
-				if (!KinkyDungeonSendTextMessage(0, LastChat, "#ffffff", 1) && LastChat != KinkyDungeonActionMessage)
-					if (!KinkyDungeonSendActionMessage(0, LastChat, "#ffffff", 1) && LastChat != KinkyDungeonTextMessage)
-						KinkyDungeonSendTextMessage(1, LastChat, "#ffffff", 1);
-		}
+	if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]) {
+		KDDrawGameContextMenu[KinkyDungeonDrawState](true, MouseX, MouseY);
 	}
-
 
 	KinkyDungeonDrawDelta = Math.min(CommonTime() - KinkyDungeonLastDraw, KinkyDungeonLastDraw - KinkyDungeonLastDraw2);
 	KinkyDungeonLastDraw2 = KinkyDungeonLastDraw;
@@ -1392,6 +1384,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonSuppressSprint = false;
 
 
+
 				// Draw targeting reticule
 				if (!KinkyDungeonMessageToggle && !KDIsAutoAction() && !(KinkyDungeonShowInventory && !KinkyDungeonTargetingSpell) && KinkyDungeonIsPlayer()
 					&& KDMouseInPlayableArea()) {
@@ -1570,14 +1563,15 @@ function KinkyDungeonDrawGame() {
 								let newX = KinkyDungeonMoveDirection.x * (KinkyDungeonSlowLevel < 2 ? 2 : 1) + KinkyDungeonPlayerEntity.x;
 								let newY = KinkyDungeonMoveDirection.y * (KinkyDungeonSlowLevel < 2 ? 2 : 1) + KinkyDungeonPlayerEntity.y;
 								let tile = KinkyDungeonMapGet(newX, newY);
-								if (KinkyDungeonMovableTilesEnemy.includes(tile) && KinkyDungeonNoEnemy(newX, newY)) {
+								if (KinkyDungeonMovableTilesEnemy.includes(tile)
+									&& KinkyDungeonNoEnemy(newX, newY)) {
 									KDDraw(kdstatusboard, kdpixisprites, "ui_movesprint", KinkyDungeonRootDirectory + "Sprint.png",
 										(newX - CamX)*KinkyDungeonGridSizeDisplay, (newY - CamY)*KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 											zIndex: 99,
 										});
 									DrawTextKD(Math.round(-KDSprintCost()*10) + "sp",
-										(xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
-										(yy - CamY - 0.25)*KinkyDungeonGridSizeDisplay, "#88ff88");
+										(newX - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
+										(newY - CamY - 0.25)*KinkyDungeonGridSizeDisplay, "#88ff88");
 
 									xx = newX;
 									yy = newY;
@@ -2737,19 +2731,21 @@ function KinkyDungeonUpdateVisualPosition(Entity: any /*entity | KDBulletVisual*
 /**
  * Sets the target location based on MOUSE location
  */
-function KinkyDungeonSetTargetLocation(helper: boolean = true) {
+function KinkyDungeonSetTargetLocation(helper: boolean = true, mx?: number, my?: number) {
+	if (mx == undefined) mx = MouseX;
+	if (my == undefined) my = MouseY;
 	//let OX = KDInspectCamera.x - (KinkyDungeonPlayerEntity.x||0);
 	//let OY = KDInspectCamera.y - (KinkyDungeonPlayerEntity.y||0);
-	KinkyDungeonTargetX = Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamX);
-	KinkyDungeonTargetY = Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamY);
+	KinkyDungeonTargetX = Math.round((mx - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamX);
+	KinkyDungeonTargetY = Math.round((my - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) + (KinkyDungeonCamY);
 
 	if (helper) {
 		// The helper helps snap away from walls to make moving around less frustrating
 		if (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY))
 			&& !(KinkyDungeonTilesGet(KinkyDungeonTargetX + "," + KinkyDungeonTargetY)?.Type)
 		) {
-			let remainderX = (MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay - Math.round((MouseX - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay);
-			let remainderY = ((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) - Math.round((MouseY - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay);
+			let remainderX = (mx - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay - Math.round((mx - KinkyDungeonGridSizeDisplay/2 - canvasOffsetX)/KinkyDungeonGridSizeDisplay);
+			let remainderY = ((my - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay) - Math.round((my - KinkyDungeonGridSizeDisplay/2 - canvasOffsetY)/KinkyDungeonGridSizeDisplay);
 			let aimThresh = 0.1;
 			let aimed = false;
 			if (remainderX > aimThresh) {
@@ -5267,6 +5263,7 @@ function KDMouseInModalArea(): boolean {
 
 
 function KDMouseInPlayableArea(): boolean {
+	if (KDContextMenu && MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) return false;
 	return MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
 		&& !MouseIn(0, 0, 500, 1000)
 		&& !MouseIn(1940, 0, 70, 1000)
@@ -5517,4 +5514,23 @@ function KDDrawChibi(Character: Character, x: number, y: number, zoom: number) {
 
 function MouseOverChar() {
 	return MouseIn(0, 0, 500, 1000);
+}
+
+
+
+/** Shifts a box so its on screen, getting an offset */
+function KDGetBoxShiftOffset(x: number, y: number, w: number, h: number, xpad: number = 5, ypad: number = 5): KDPoint {
+	let xOff = 0;
+	let yOff = 0;
+	if (x < xpad) {
+		xOff = x - xpad;
+	} else if (x + w > PIXIWidth - xpad) {
+		xOff = (PIXIWidth - xpad) - (x + w);
+	}
+	if (y < ypad) {
+		yOff = y - ypad;
+	} else if (y + h > PIXIHeight - ypad) {
+		yOff = (PIXIHeight - ypad) - (y + h);
+	}
+	return {x: xOff, y: yOff};
 }

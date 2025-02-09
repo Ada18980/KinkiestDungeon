@@ -2795,7 +2795,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		helpChance: {"Remove": 0.8, "Pick": 0.35, "Unlock": 0.8},
 		//removeShrine: ["Hogties"],
 		events: [{trigger: "tick", type: "callGuardFurniture", time: 300, inheritLinked: true}],
-		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {"arousalMode": -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "FeetLinked", "BlockKneel", "DiscourageHogtie", "Dollstand"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"dollstandSpell":100, "dollstand": 100}, playerTags: {"arousalMode": -1000},
+		minLevel: 0, allFloors: true,
+		shrine: ["Furniture", "FeetLinked", "BlockKneel", "DiscourageHogtie", "Dollstand"],
+		ignoreSpells: true, removeOnLeash: true,
 	},
 	// Bed trap, always possible to struggle out but takes time
 	{removePrison: true, name: "BedTrap", debris: "Belts", Asset: "Bed", Color: ["#523629", "#4c6885", "#808284"], Group: "ItemDevices", power: 2, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -2811,7 +2814,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			{Item: "BedStraps", Group: "ItemAddon", Color: ['Default'], override: false},
 		],
 		addTag: ["HandsBehind"],
-		enemyTags: {"bed":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Furniture", "HandsBehind"], ignoreSpells: true, removeOnLeash: true,
+		enemyTags: {"bed":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]),
+		shrine: ["Furniture", "HandsBehind", "BlockKneel", "DiscourageHogtie", "LieDown"], ignoreSpells: true, removeOnLeash: true,
 		events: [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true}
