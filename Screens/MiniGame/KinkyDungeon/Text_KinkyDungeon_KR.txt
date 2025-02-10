@@ -66,6 +66,8 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 
 ### Keybindings
 
+### Mouse Shortcuts
+
 ### Show Enemy Binding as %
 
 ### Auto-wait Through Delayed Actions
@@ -194,7 +196,7 @@ High Quality Animations
 
 ### Show Trajectory on Auto-Path
 
-### Show Player Facing
+### Always Show Player Facing
 
 ### Show more learnable spells
 
@@ -718,8 +720,8 @@ Melee attacks distract you, but melee (including chain) damage increases by up t
 근접 공격은 주의를 분산시키지만 근접(체인 포함) 피해는 최대 분산 시 최대 30%까지 증가합니다.
 Unstable Magic
 불안정한 마법
-Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
-주의 산만 또는 잘못 시전 확률 중 높은 쪽을 기준으로 주문이 최대 60%의 추가 피해를 입힙니다.
+### Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
+
 Absolute Focus
 완벽한 집중
 Miscast chance is doubled.
@@ -1268,7 +1270,7 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 
 ### Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
 
-### Unknown
+### Unknown 
 
 Copy (clipboard)
 복사(클립보드)
@@ -1348,9 +1350,9 @@ Everywhere!
 모든 부위!
 
 
-### Physical Armor:
+### Physical Armor: 
 
-### Magic Armor:
+### Magic Armor: 
 
 In the Shadows: You are harder to see.
 그림자 속에서: 당신은 보기가 더 어렵습니다.
@@ -1358,7 +1360,7 @@ Invisible: You are very difficult to see.
 보이지 않음: 당신은 보기가 매우 어렵습니다.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 빠름: 다음 이동은 매우 신속해 턴을 소모하지 않습니다.
-### All Damage Reduction:
+### All Damage Reduction: 
 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 저항과 PERCENT3 DAMAGECATEGORY 수정자를 기준으로 PERCENT1 DAMAGETYPE 피해를 받습니다.
@@ -1646,7 +1648,7 @@ Missing key
 열쇠 미발견
 ### You are protected from damage and can't be bound until the shield is broken!
 
-### Chance for a spell to fizzle:
+### Chance for a spell to fizzle: 
 
 ### Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 
@@ -1812,7 +1814,7 @@ Delete Mod
 모드 삭제
 Clear Perks
 클리어 특전
-### Config
+### Config 
 
 Cancel
 취소
@@ -1942,15 +1944,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 FLOORNUMBER 층 : DUNGEONNAME
 
 
-### Lockpicks:
+### Lockpicks: 
 
-### Keys:
+### Keys: 
 
-### Magic Keys:
+### Magic Keys: 
 
-### Knife:
+### Knife: 
 
-### Mag. Knife:
+### Mag. Knife: 
 
 You climb down the stairs. The passage closes behind you.
 당신은 계단을 내려갔습니다. 뒤의 통로가 닫힙니다.
@@ -2162,7 +2164,7 @@ You find a medley of potions.
 당신은 여러종류의 물약을 찾았습니다.
 
 
-### Rarity:
+### Rarity: 
 
 Lesser
 저급
@@ -3008,7 +3010,7 @@ Dreamcatcher
 드림캐쳐
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 악몽 속에서 벼려지고 강철로 짜여져 있습니다. 모르는 대상에게 그림자 전사를 소환하여 2%의 고대 에너지를 얻습니다.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 
 Axe
 도끼
@@ -3016,11 +3018,11 @@ Great for cutting trees that happen to be underground.
 우연히 지하에 있는 나무를 베는 데 좋습니다.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 옆에 있는 적에게도 20의 피해를 줍니다. 참격 피해를 입힙니다.
-### Accuracy:
+### Accuracy: 
 
-### Crit Multiplier:
+### Crit Multiplier: 
 
-### Bind Crit Multiplier:
+### Bind Crit Multiplier: 
 
 Find the keys..
 열쇠를 찾아라..
@@ -3038,9 +3040,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 균열을 발견하고 칼이나 도구를 쐐기로 고정하여 고정시킬 수 있습니다.
 You found something sticky and might be able to pull off fabrics.
 끈적끈적한 무언가를 찾았고 천을 떼어낼 수 있을지도 모릅니다.
-### Evasion:
+### Evasion: 
 
-### Visibility:
+### Visibility: 
 
 
 
@@ -3086,13 +3088,13 @@ Edged!
 
 
 
-### Damage:
+### Damage: 
 
-### Bind:
+### Bind: 
 
-### Crit:
+### Crit: 
 
-### SP Cost:
+### SP Cost: 
 
 ### Cut PWR: AMNT%
 
@@ -5992,17 +5994,17 @@ Commerce
 상업
 ### Shrine of SHRINETYPE
 
-### Tablet of
+### Tablet of 
 
-### Goddess:
+### Goddess: 
 
-### Goddess Blessing:
+### Goddess Blessing: 
 
-### Goddess Curse:
+### Goddess Curse: 
 
-### Mana Bonus:
+### Mana Bonus: 
 
-### Lack of Mana Penalty:
+### Lack of Mana Penalty: 
 
 ### Your excess mana helps you suppress the enchantment!
 
@@ -6026,11 +6028,11 @@ You try to read the runes but cannot understand them.
 당신은 룬을 읽으려고 하지만 이해할 수 없습니다.
 
 
-### Allies:
+### Allies: 
 
-### Enemies:
+### Enemies: 
 
-### Favorable:
+### Favorable: 
 
 ### None
 
@@ -6588,7 +6590,7 @@ They will slow you down, but you can walk on slime without getting stuck!
 
 
 
-### You find
+### You find 
 
 
 
@@ -8748,7 +8750,7 @@ Verbal
 언어 적
 ### Vision
 
-### Components:
+### Components: 
 
 Arm Movements
 팔의 움직임
@@ -9890,7 +9892,7 @@ Dodge III
 
 ### Precise Critical
 
-### When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
+### When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
 
 ### Precise Magic
 
@@ -10594,8 +10596,8 @@ You hover with reduced effect from bindings.
 
 Iron Blood
 철혈
-Channel 4 turns: Halves SP cost of melee attacks by 50%, but increases MP cost of spells by 25%. Ends on sleep or recast.
-채널 4턴 : 근접 공격의 SP 소모량을 50%로 반감하지만 주문의 MP 소모량을 25% 증가시킨다. 수면 또는 재시전 시 종료된다.
+### Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast.
+
 Your skin glows a pale red!
 피부가 옅은 붉은색으로 빛납니다!
 
@@ -11452,7 +11454,7 @@ You need more spell points.
 주문 포인트가 더 필요합니다.
 You don't have enough maximum mana to cast this spell!
 이 주문을 시전하기에는 최대 마나가 부족합니다!
-### School:
+### School: 
 
 Generic
 일반적인
@@ -11462,15 +11464,15 @@ Generic
 
 Learn Spell
 마법 배우기
-### Spell Points:
+### Spell Points: 
 
 
 
-### Level:
+### Level: 
 
-### Spell Point Cost:
+### Spell Point Cost: 
 
-### Mana Cost:
+### Mana Cost: 
 
 
 
@@ -11502,19 +11504,19 @@ Replace Spell 6
 교체 마법 6
 Replace Spell 7
 교체 마법 7
-### Current Spell 1:
+### Current Spell 1: 
 
-### Current Spell 2:
+### Current Spell 2: 
 
-### Current Spell 3:
+### Current Spell 3: 
 
-### Current Spell 4:
+### Current Spell 4: 
 
-### Current Spell 5:
+### Current Spell 5: 
 
-### Current Spell 6:
+### Current Spell 6: 
 
-### Current Spell 7:
+### Current Spell 7: 
 
 ### ???
 
@@ -11550,7 +11552,7 @@ Library
 
 ### (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 
 ### (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 
@@ -12194,11 +12196,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 3렙 동안 여신이 당신에게 미끄러움을 부여하여 당신의 고군분투를 강화할 것입니다.
 For 3 rep the goddess will grant you a key.
 3렙이면 여신이 당신에게 열쇠를 줄 것입니다.
-### For 3 rep the goddess will grant you
+### For 3 rep the goddess will grant you 
 
 For 3 rep the goddess
 3렙 여신님
-For 3 rep the goddess
+For 3 rep the goddess 
 3렙 여신님
 
 
@@ -12572,11 +12574,11 @@ Can disarm (chance: DISARMCHANCE%)
 무장 해제 가능(확률: DISARMCHANCE%)
 Resistances:
 저항:
-### HP:
+### HP: 
 
-### Shield:
+### Shield: 
 
-### Binding:
+### Binding: 
 
 Ambivalent
 양가적
@@ -12888,7 +12890,7 @@ Many ropes emerge around you, removing weaker ropes from your body and binding e
 
 ### A supposedly reasonable difficulty curve.
 
-### Play the game the way it was intended. Cruel and restrictive.
+### Play the game the way it was intended. Cruel and restrictive. 
 
 ### Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 
@@ -18696,7 +18698,7 @@ What? (PERCENT chance to avoid)
 (화자가 목을 가다듬는다)|음, 우리는 실제로 모집하고 있습니다!|정의를 위해 싸우는 데 동의한다면 우리와 함께 할 수 있습니다!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER 가 힘차게 악수를 건넸다)|자매 관계에 오신 것을 환영합니다, 모험가님!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts her head and shrugs)|Ah well. 
 
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (화자가 눈살을 찌푸리며)|뭐야?|당신은 정의의 적이 아니지, 그렇지?
@@ -19746,8 +19748,8 @@ You are in charge, right?
 담당자 맞죠?
 (Giggle)
 (킬킬 웃음)
-Don't mess with me, young lady.
-나랑 장난치지마, 꼬마야.
+### Don't mess with me, little girl.
+
 Mmpphgh? (Pout at her)
 음? (그녀에게 삐죽)
 (She smirks)|So you're that kind of visitor, huh?
@@ -20264,7 +20266,7 @@ Give her a Scroll of Purity
 
 ### Hmmmph? Mmmm! (Act worried and whimper)
 
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds her arms)|Mistress Oriel's orders 
 
 ### Not in the 'System'?
 
@@ -20518,7 +20520,7 @@ Upcast Level LEVEL
 업캐스트 레벨 LEVEL
 Prerequisite
 전제 조건
-### Unlocks:
+### Unlocks: 
 
 You need to learn REQUIREDSPELL before you can learn this one.
 이것을 배우기 전에 REQUIREDSPELL을 배워야 합니다.
@@ -20574,7 +20576,7 @@ Initiating prisoner lockdown protocol
 
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count:
+### Turn Count: 
 
 ### The Shopkeeper leashes you!
 
@@ -20958,7 +20960,7 @@ Blue
 
 ### Items on Ground:
 
-### Preloading Character Assets:
+### Preloading Character Assets: 
 
 ### Currently Worn
 
@@ -25862,7 +25864,7 @@ Mage
 
 ### Now with more leg room.
 
-### Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+### Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
 
 ### You pick up a metal tower shield.
 
@@ -26514,7 +26516,7 @@ Mithril Crotch Rope
 
 ### A rubber cylinder without any lewd intentions whatsoever.
 
-### Deals grope damage.
+### Deals grope damage. 
 
 ### You pick up a flexible rubber stick.
 
@@ -27298,7 +27300,7 @@ Ranged Attack
 
 ### Combat Training
 
-### Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
+### Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 10 Battle Rhythm you gain 1 slow resist.
 
 ### This is your current offhand weapon.
 
@@ -27400,9 +27402,9 @@ Ranged Attack
 
 ### Your RestraintName shatters and falls off!
 
-### Load Hotbar
+### Load Hotbar 
 
-### Save Hotbar
+### Save Hotbar 
 
 ### Clear Hotbar
 
@@ -28432,7 +28434,7 @@ Ranged Attack
 
 ### Blade Dance
 
-### Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
+### Spend 30 + weapon SP cost to dash to an adjacent spot. Attacks nearby enemies for 50% damage, or 100% if holding a Light weapon. If holding a Light offhand weapon, attack with that one for another 50% damage.
 
 ### You spin towards a location, slashing at nearby enemies!
 
@@ -28580,7 +28582,7 @@ Hogtied!
 
 
 
-### Receive the following restraints:
+### Receive the following restraints: 
 
 ### You will be bound with some form of restraint.
 
@@ -29152,7 +29154,7 @@ Hogtied!
 
 ### Select a character to examine
 
-### Former Faction:
+### Former Faction: 
 
 
 
@@ -29304,6 +29306,10 @@ Hogtied!
 
 
 
+### More Petsuits
+
+### Petsuits are favored over other heavy bondage.
+
 ### More Armbinders
 
 ### Armbinders are favored over other heavy bondage.
@@ -29346,7 +29352,7 @@ Hogtied!
 
 ### You crouch and move slowly.
 
-### Owned by:
+### Owned by: 
 
 ### Warden's Belt
 
@@ -30006,7 +30012,7 @@ Hogtied!
 
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took
+### Took 
 
 ### (As you slay the dragon, it begins shapeshifting into human form!)
 
@@ -30588,7 +30594,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Negate Rune
 
-### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead.
+### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
 
 ### You scribe a negation rune!
 
@@ -30902,9 +30908,9 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Runes
 
-### Stock:
+### Stock: 
 
-### Inputs:
+### Inputs: 
 
 ### You slip off the conveyor!
 
@@ -30970,17 +30976,17 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Heels
 
-### Equipped:
+### Equipped: 
 
-### Click to Add
+### Click to Add 
 
-### Apply
+### Apply 
 
-### Raw Material:
+### Raw Material: 
 
 ### Free Prisoner
 
-### Perk Unlocked:
+### Perk Unlocked: 
 
 ### Latex Solvent
 
@@ -31010,23 +31016,23 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Choose Restraint
 
-### Def. Palette:
+### Def. Palette: 
 
 ### Set All Palette
 
 ### Guests
 
-### Assign to
+### Assign to 
 
-### Remove from
+### Remove from 
 
-### Can't assign to
+### Can't assign to 
 
-### Remove from party to assign
+### Remove from party to assign 
 
 ### Imprison
 
-### Opinion:
+### Opinion: 
 
 ### Last Seen on Floor FLR, LOC
 
@@ -31052,17 +31058,17 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Any
 
-### NPC Opinion:
+### NPC Opinion: 
 
-### NPC Escape Status:
+### NPC Escape Status: 
 
-### NPC Binding:
+### NPC Binding: 
 
-### NPC Availability:
+### NPC Availability: 
 
-### Favorited:
+### Favorited: 
 
-### Rank:
+### Rank: 
 
 ### Minor
 
@@ -31174,7 +31180,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Select a Binding Slot
 
-### Cost:
+### Cost: 
 
 ### Zoom set to PCNT%
 
@@ -31198,7 +31204,7 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot
+### Save Slot 
 
 ### Load Game
 
@@ -31256,11 +31262,11 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Chaos Route
 
-### Map Seed:
+### Map Seed: 
 
 ### Will Overwrite NME!
 
-### Play Slot
+### Play Slot 
 
 ### Play (NO SLOT!)
 
@@ -31446,7 +31452,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Deposit All
 
-### Auto-loot found
+### Auto-loot found 
 
 ###  (not picked up)
 
@@ -32008,6 +32014,8 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Mystic wrappings constrict around your body!
 
+### You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
+
 ### You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
 
 ### If you can't get your knife into place, try sitting next to a crack on the wall.
@@ -32426,6 +32434,24 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Settings
 
-### Scroll Controls:
+### Scroll Controls: 
 
-### Layer Text:
+### Layer Text: 
+
+### No Actions Available
+
+### Talk
+
+### Move To
+
+### Take Stairs
+
+### Allow Passing
+
+### Tie Up
+
+### Attempt to Tie
+
+### Move Closer to Tie
+
+### Sprint (AMNT)
