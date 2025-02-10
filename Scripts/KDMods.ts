@@ -19,6 +19,7 @@ let KDModCompat = {
 	"KinkyDungeonChangeMana(": "KDChangeMana('','','',",
 	"KDChangeBalance(": "KDChangeBalanceSrc('','','',",
 	"KinkyDungeonChangeDistraction(": "KDChangeDistraction('','','',",
+	"KinkyDungeonCanPickStat(": "KDCanPickPerk(",
 };
 
 /** For mod compat */

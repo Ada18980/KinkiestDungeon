@@ -553,22 +553,22 @@ function KinkyDungeonGetStatPoints(Stats: Map<any, any>): number {
 
 /**
  * Determine if a perk can be picked with a certain number of points remaining
- * @param Stat
+ * @param Perk
  * @param [points]
  */
-function KinkyDungeonCanPickStat(Stat: string, points?: number): boolean {
-	let stat = KinkyDungeonStatsPresets[Stat];
-	if (!stat) return false;
-	if (KDGetPerkCost(stat) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(stat)) return false;
-	if (!KDValidatePerk(stat)) return false;
+function KDCanPickPerk(Perk: string, points?: number): boolean {
+	let perkdef = KinkyDungeonStatsPresets[Perk];
+	if (!perkdef) return false;
+	if (KDGetPerkCost(perkdef) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(perkdef)) return false;
+	if (!KDValidatePerk(perkdef)) return false;
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
-			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Stat)) {
+			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Perk)) {
 				return false;
 			}
-			if (KinkyDungeonStatsPresets[k] && stat.tags && KinkyDungeonStatsPresets[k].blocktags) {
+			if (KinkyDungeonStatsPresets[k] && perkdef.tags && KinkyDungeonStatsPresets[k].blocktags) {
 				for (let t of KinkyDungeonStatsPresets[k].blocktags)
-					if (stat.tags.includes(t)) return false;
+					if (perkdef.tags.includes(t)) return false;
 			}
 		}
 	}
@@ -975,7 +975,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 
 					//perksdrawn++;x
 					DrawButtonKDExTo(kdUItext, stat[0], (_bdata) => {
-						if (!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) {
+						if (!KinkyDungeonStatsChoice.get(stat[0]) && KDCanPickPerk(stat[0])) {
 							KinkyDungeonStatsChoice.set(stat[0], true);
 							localStorage.setItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig, JSON.stringify(Array.from(KinkyDungeonStatsChoice.keys())));
 						} else if (KinkyDungeonStatsChoice.get(stat[0])) {
@@ -992,7 +992,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 						return true;
 					}, !NonSelectable && (KinkyDungeonState == "Stats" || (KinkyDungeonDrawState == "Perks2" && KDDebugPerks)), XX, YY, KDPerksButtonWidth, KDPerksButtonHeight,
 					TextGet("KinkyDungeonStat" + (stat[1].id)) + ` (${Math.round(KDPERKCOSTMULT*KDGetPerkCost(stat[1]))})`,
-						(!KinkyDungeonStatsChoice.get(stat[0]) && KinkyDungeonCanPickStat(stat[0])) ? colorAvailable : (KinkyDungeonStatsChoice.get(stat[0]) ? colorSelected : (NonSelectable ? colorAvailable : colorExpensive)),
+						(!KinkyDungeonStatsChoice.get(stat[0]) && KDCanPickPerk(stat[0])) ? colorAvailable : (KinkyDungeonStatsChoice.get(stat[0]) ? colorSelected : (NonSelectable ? colorAvailable : colorExpensive)),
 						KinkyDungeonStatsChoice.get(stat[0]) ? (KinkyDungeonRootDirectory + "UI/TickPerk.png") : "",
 						undefined, false, true,
 						KinkyDungeonStatsChoice.get(stat[0]) ? "rgba(140, 140, 140, 0.5)" : KDButtonColor,
@@ -1133,7 +1133,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean, t
 	let negcandidates = [];
 	if (!debuff) {
 		for (let p of Object.entries(KinkyDungeonStatsPresets)) {
-			if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KinkyDungeonCanPickStat(p[0], 999)) { // No dupes
+			if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KDCanPickPerk(p[0], 999)) { // No dupes
 				if ((!p[1].tags || !p[1].tags.includes("start"))) {
 					if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
 						if (KDGetPerkCost(p[1]) > 0) {
@@ -1152,7 +1152,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean, t
 		if (!poscandidate) return [];
 	} else {
 		for (let p of Object.entries(KinkyDungeonStatsPresets)) {
-			if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KinkyDungeonCanPickStat(p[0], 999)) { // No dupes
+			if (!existing[p[0]] && !KinkyDungeonStatsChoice.get(p[0]) && KDCanPickPerk(p[0], 999)) { // No dupes
 				if ((!p[1].tags || !p[1].tags.includes("start"))) {
 					if (!p[1].locked || KDUnlockedPerks.includes(p[0])) {
 						if (KDGetPerkCost(p[1]) < 0) {
@@ -1169,7 +1169,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean, t
 	let perks = poscandidate ? [poscandidate[0]] : [];
 	if (debuff || KDGetPerkCost(poscandidate[1]) > threshold) {
 		negcandidates = negcandidates.filter((p) => {
-			return (KinkyDungeonCanPickStat(p[0], 999))
+			return (KDCanPickPerk(p[0], 999))
 				&& (debuff || !KDPerkBlocked(p[0], poscandidate[0]))
 				&& (-KDGetPerkCost(p[1]) >= (debuff ? 0 : (KDGetPerkCost(poscandidate[1]) - 1)));
 		});
@@ -1182,7 +1182,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean, t
 
 		if (!debuff && netcost < 0 && negperk) {
 			singlepointcandidates = negcandidates.filter((p) => {
-				return (KinkyDungeonCanPickStat(p[0], 999)
+				return (KDCanPickPerk(p[0], 999)
 				&& p[0] != poscandidate[0]
 				&& p[0] != negperk[0]
 				&& !KDPerkBlocked(p[0], poscandidate[0])
