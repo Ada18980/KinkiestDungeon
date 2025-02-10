@@ -34011,47 +34011,47 @@ The Fall of Ejahl
 Ejahl 2
 埃亚尔 2
 Danger Level: Nearly Harmless|A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows
-危险等级: 几乎无害|一具伟大工程之前复活的尸体。我无法判断这具躯体中是否还居住着最初的灵魂，因为它几乎不会说话，更不用说解释自己的身份了。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级: 几乎无害|一具伟大工程之前复活的尸体。我无法判断这具躯体中是否还居住着最初的灵魂，因为它几乎不会说话，更不用说解释自己的身份了。||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: Normal|These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows
-危险等级 :  正常|这些僵尸比其他僵尸更有动机。它们的行为类似于我在深渊中遇到的复仇之灵。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  正常|这些僵尸比其他僵尸更有动机。它们的行为类似于我在深渊中遇到的复仇之灵。||《地下城居民》————凯瑟琳·韦罗斯 著
 Fast Z.
 愤怒僵尸 Z
 Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows
-危险等级 :  普通|会使用魔法的僵尸。它看起来不像我在废墟外见过的任何魔法，这让我觉得它是被教会使用魔法的。有些僵尸身上的纹身与旧时代的魔法有关。因为魔法来自灵魂，所以我认为他们身上还残留着一些原始灵魂的影子。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  普通|会使用魔法的僵尸。它看起来不像我在废墟外见过的任何魔法，这让我觉得它是被教会使用魔法的。有些僵尸身上的纹身与旧时代的魔法有关。因为魔法来自灵魂，所以我认为他们身上还残留着一些原始灵魂的影子。||《地下城居民》————凯瑟琳·韦罗斯 著
 Mage Z.
 魔法僵尸 Z
 Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高|一个有着高超剑术的僵尸。我从没见过一个亡灵能把剑用得如此顺手。可能是他们的武器和装备被埋没了，因为大部分都已经老化。甚至他们的捆绑技术也很像教科书上的，而不是现代的绳索。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高 | 一个有着高超剑术的僵尸。我从没见过一个亡灵能把剑用得如此顺手。可能是他们的武器和装备被埋没了，因为大部分都已经老化。甚至他们的捆绑技术也很像教科书上的，而不是现代的绳索。||《地下城居民》————凯瑟琳·韦罗斯 著
 Warrior Z.
 战士僵尸 Z
 Danger Level: High|A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高|使用封印符咒和治疗魔法的僵尸。除了讽刺之外，我还见过这些僵尸的皮肤和脸上有绳子和塞口带的痕迹。好像有人在玩弄他们。会是谁呢？||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高 | 使用封印符咒和治疗魔法的僵尸。除了讽刺之外，我还见过这些僵尸的皮肤和脸上有绳子和塞口带的痕迹。好像有人在玩弄他们。会是谁呢？||《地下城居民》————凯瑟琳·韦罗斯 著
 Talisman Z.
 护符僵尸 Z
 Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows
-危险等级 :  令人讨厌|居住在地牢中的嬉戏精灵，会利用遇到的冒险者。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  令人讨厌 | 居住在地牢中的嬉戏精灵，会利用遇到的冒险者。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows
-危险等级 :  非常令人讨厌|据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  非常令人讨厌 | 据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 中 | 喜欢捉弄人的调皮鬼魂，尤其喜欢骚弄被绑住的女孩子们。它们往往在“游戏”中使用自带的透明束缚物。|| —《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 中 | 喜欢捉弄人的调皮鬼魂，尤其喜欢骚弄被绑住的女孩子们。它们往往在“游戏”中使用自带的透明束缚物。||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 低｜一个人生前所渴望财富的情感，虽然他无法获得任何实际的财物，但是他依然会翻找你的口袋。||——《地牢里的居民》 凯瑟琳·威洛斯 著
+危险等级 : 低｜一个人生前所渴望财富的情感，虽然他无法获得任何实际的财物，但是他依然会翻找你的口袋。||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高 | 一团压迫感强烈的负面思维。根据当地的传说，其他幽灵试图通过拥抱来安慰它，但它的哀号最终会将它们吸引到你的身边。准备好击败它，否则你可能会成为来自异界存在的玩物。 ||《地牢中的居民》凯瑟琳·威洛斯 著
+危险等级 : 高 | 一团压迫感强烈的负面思维。根据当地的传说，其他幽灵试图通过拥抱来安慰它，但它的哀号最终会将它们吸引到你的身边。准备好击败它，否则你可能会成为来自异界存在的玩物。 ||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高｜虽然大多数魔法师会用数个世纪的时间来练习，精通自己的魔法技术，但也有一些人缺乏耐心，不去按传统方式学习魔法。为了追求力量，这些人会与其他世界的存在签订契约，成为女巫。||-《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 高｜虽然大多数魔法师会用数个世纪的时间来练习，精通自己的魔法技术，但也有一些人缺乏耐心，不去按传统方式学习魔法。为了追求力量，这些人会与其他世界的存在签订契约，成为女巫。||《地下城居民》————凯瑟琳·韦罗斯 著
 The Witches' Coven
 女巫集会
 Witches
 女巫
 Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 极高 | 一位擅长召唤术的女巫。她有一支由影之手和魔法书组成的军队，如此类型的女巫极其危险。她的近战攻击动作缓慢且笨拙，但要小心不要被包围。||——《地牢中的居民》凯瑟琳·威洛斯 著
+危险等级 : 极高 | 一位擅长召唤术的女巫。她有一支由影之手和魔法书组成的军队，如此类型的女巫极其危险。她的近战攻击动作缓慢且笨拙，但要小心不要被包围。||《地下城居民》————凯瑟琳·韦罗斯 著
 Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||《地下城居民》————凯瑟琳·韦罗斯 著
 Bast Mummy
 猫女神木乃伊
 Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 中 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||《地下城居民》————凯瑟琳·韦罗斯 著
 Bast Clerics
 猫女神祭司
 Rock-solid and form-fitting.
