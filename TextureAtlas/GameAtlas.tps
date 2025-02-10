@@ -4100,6 +4100,8 @@
             <key type="filename">../Game/Particles/mmm.png</key>
             <key type="filename">../Game/Particles/nnn.png</key>
             <key type="filename">../Game/UI/ContextMenu/Truss.png</key>
+            <key type="filename">../Game/UI/ContextMenu/TrussA.png</key>
+            <key type="filename">../Game/UI/ContextMenu/TrussX.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

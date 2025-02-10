@@ -26019,7 +26019,7 @@ KinkyDungeonObjectOrbBreak,"You break the orb and gain its secrets."
 KDStunResist,Stun Resistance!
 
 KinkyDungeonSpellNegateRune,Negate Rune
-KinkyDungeonSpellDescriptionNegateRune,"Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead."
+KinkyDungeonSpellDescriptionNegateRune,"Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile."
 KinkyDungeonSpellCastNegateRune,You scribe a negation rune!
 KinkyDungeonSpellTargetNegateRune,"Target a single rune, or yourself to negate all your runes."
 KDNegateRuneNoMana,You don't have enough mana

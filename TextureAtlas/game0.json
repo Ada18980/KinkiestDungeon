@@ -88,6 +88,14 @@
 	"spriteSourceSize": {"x":76,"y":63,"w":82,"h":76},
 	"sourceSize": {"w":216,"h":216}
 },
+"Game/Bullets/Hairpin.png":
+{
+	"frame": {"x":738,"y":2037,"w":39,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":34,"w":39,"h":7},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Bullets/HealHit.png":
 {
 	"frame": {"x":1747,"y":1270,"w":292,"h":303},
@@ -577,6 +585,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:89864a482728e6f498a35f42dd13f2a9:b12b7bd270a124527b362d2f2d122123:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1dc65b8beaeff721861f1dbaa428f9b2:dc463efd91a3ed3d46f770fd9c59a14c:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
