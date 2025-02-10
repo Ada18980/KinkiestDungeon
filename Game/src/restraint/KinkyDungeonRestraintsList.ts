@@ -6603,7 +6603,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		alwaysRender: true,
 		alwaysStruggleable: true,
 		events: [
-			{trigger:"playSelf",  type: "QuakeCollar"},
+			{trigger:"playSelf",  type: "QuakeCollar", inheritLinked: true},
 		],
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars", "HighCollars"]},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true,

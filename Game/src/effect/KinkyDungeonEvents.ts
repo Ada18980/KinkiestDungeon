@@ -2247,8 +2247,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 	},
 	"struggle": {
 		"crotchrope": (_e, _item, data) => {
-			if (data.restraint && data.restraint.type === Restraint && KDRestraint(data.restraint).crotchrope && data.struggleType === "Struggle" && data.struggleType === "Remove") {
-				KDChangeDistraction("player", "crotchrope", "struggle", 1, false, 0.5);
+			if (data.restraint && KDRestraint(data.restraint)?.crotchrope
+				&& (data.struggleType === "Struggle" || data.struggleType === "Remove")) {
+				KDChangeDistraction("player", "crotchrope", "struggle", 0.5, false, 0.2);
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCrotchRope").replace("RestraintName", TextGet("Restraint" + data.restraint.name)), "pink", 3);
 			}
 		},
