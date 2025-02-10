@@ -10766,10 +10766,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 	"attackCost": {
 		"ReplacePerks": (_e: string, data: { attackData: damageInfo, attackCost: number, target: entity }) => {
-			if ((!KinkyDungeonPlayerDamage.name || KinkyDungeonPlayerDamage.name == "Unarmed")
-				&& KinkyDungeonPlayerDamage.unarmed) {
+			if (isUnarmed(KinkyDungeonPlayerDamage)) {
 				if (KinkyDungeonStatsChoice.get("UnarmedSuck")) {
-					data.attackData.damage *= 0.5;
 					data.attackCost *= 2;
 				}
 			}
@@ -10792,6 +10790,11 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 
 
+			}
+			if (isUnarmed(KinkyDungeonPlayerDamage)) {
+				if (KinkyDungeonStatsChoice.get("UnarmedSuck")) {
+					data.attackData.damage *= 0.5;
+				}
 			}
 		},
 	},

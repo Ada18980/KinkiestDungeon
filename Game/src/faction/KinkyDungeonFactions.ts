@@ -154,8 +154,8 @@ function KDFactionAllied(a: string, b: string | entity, threshold: number = 0.7,
 function KDFactionFavorable(a: string, b: string | entity): boolean {
 	return KDFactionAllied(a, b, 0.099)
 	&& !(a == "Player" && typeof b !== "string" && KDHostile(b))
-	&& !(a == "Player" && !KDGameData.HostileFactions.includes(KDGetFaction(b)))
-	&& !(b == "Player" && !KDGameData.HostileFactions.includes(a));
+	&& !(a == "Player" && KDGameData.HostileFactions.includes(KDGetFaction(b)))
+	&& !(b == "Player" && KDGameData.HostileFactions.includes(a));
 }
 
 
