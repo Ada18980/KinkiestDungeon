@@ -39,7 +39,7 @@ def process_csv(input_file, output_file):
         writer = csv.writer(outfile)
         writer.writerows(processed_rows)
         
-async def paratranUpdate():
+async def paratran_update():
     async with paratranz_client.ApiClient(configuration) as api_client:
         api_instance = paratranz_client.FilesApi(api_client)
         project_id = 13239 # int | 项目ID 13239 12190
@@ -63,4 +63,4 @@ output_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv'
 process_csv(input_csv, output_csv)
 
 print(f"处理后的CSV文件已保存为 {output_csv}")
-asyncio.run(main())
+asyncio.run(paratran_update())
