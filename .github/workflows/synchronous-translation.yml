@@ -25,6 +25,8 @@ jobs:
           pip install requests
 
       - name: 🚀 Run format-translation script
+        env:
+          PARATRANZ_TOKEN: ${{ secrets.PARATRANZ_TOKEN }}
         run: python .github/scripts/synchronous-translation-script.py
 
       #- name: 📝 Commit changes
