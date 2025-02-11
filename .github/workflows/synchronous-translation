@@ -1,0 +1,37 @@
+name: Synchronous Translation
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  format-translation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+          
+      - name: Install dependencies
+        run: 
+          python -m pip install --upgrade pip
+          pip install git+https://github.com/MuXiu1997/ParaTranz-SDK-python.git
+          pip install requests
+
+      - name: 🚀 Run format-translation script
+        run: python .github/scripts/synchronous-translation-script.py
+
+      #- name: 📝 Commit changes
+    #    id: check_changes
+     #   run: |
+    #      git config --local user.email "action@github.com"
+   #       git config --local user.name "format-translation-action"
+     #     git add . 
+   #       git diff-index --quiet HEAD || git commit -m "Format translation files"
+  #        git push
