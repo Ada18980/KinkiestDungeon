@@ -3,25 +3,29 @@ from collections import defaultdict
 
 def process_csv(input_file, output_file):
     # 读取CSV文件并存储数据
-    with open(input_file, mode='r', newline='', encoding='utf-8') as infile:
-        reader = csv.reader(infile)
-        rows = [row for row in reader]
-
-    # 用于记录每个第一列值出现的次数
-    count_dict = defaultdict(int)
-    # 用于存储处理后的行
+    key_counts = {}
     processed_rows = []
 
-    for row in rows:
-        first_col = row[0]
-        count_dict[first_col] += 1
-        if count_dict[first_col] > 1:
-            # 如果第一列的值重复，则添加序号
-            row[0] = f"{first_col}_{count_dict[first_col] - 1}"
-        processed_rows.append(row)
+    # 读取输入文件
+    with open(input_file, 'r', newline='', encoding='utf-8') as infile:
+        reader = csv.reader(infile)
+        for row in reader:
+            if not row:  # 跳过空行
+                continue
+            
+            original_key = row[0]
+            
+            # 更新计数器并生成新键名
+            count = key_counts.get(original_key, 0) + 1
+            key_counts[original_key] = count
+            
+            new_key = f"{original_key}_{count-1}" if count > 1 else original_key
+            
+            # 创建新行并添加到结果列表
+            processed_rows.append([new_key] + row[1:])
 
-    # 将处理后的数据写入新的CSV文件
-    with open(output_file, mode='w', newline='', encoding='utf-8') as outfile:
+    # 写入输出文件
+    with open(output_file, 'w', newline='', encoding='utf-8') as outfile:
         writer = csv.writer(outfile)
         writer.writerows(processed_rows)
 
