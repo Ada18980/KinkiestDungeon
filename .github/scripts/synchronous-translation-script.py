@@ -1,5 +1,15 @@
 import csv
 from collections import defaultdict
+import time
+import os
+import paratranz_client
+from paratranz_client.models.file import File
+from paratranz_client.rest import ApiException
+from pprint import pprint
+import asyncio
+
+configuration = paratranz_client.Configuration(host = "https://paratranz.cn/api")
+configuration.api_key['Token'] = os.environ.get('PARATRANZ_TOKEN')
 
 def process_csv(input_file, output_file):
     # 读取CSV文件并存储数据
@@ -28,6 +38,22 @@ def process_csv(input_file, output_file):
     with open(output_file, 'w', newline='', encoding='utf-8') as outfile:
         writer = csv.writer(outfile)
         writer.writerows(processed_rows)
+        
+async def paratranUpdate():
+    async with paratranz_client.ApiClient(configuration) as api_client:
+        api_instance = paratranz_client.FilesApi(api_client)
+        project_id = 13239 # int | 项目ID 13239 12190
+        file_id = 1834057 # int | 文件ID 1834057 1638395
+        file = "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv" # bytearray | 文件数据，格式需与创建时的文件保持一致，也可上传标准JSON格式（文件名需为原文件名加.json） (optional)
+
+        try:
+            # 更新文件
+            api_response = await api_instance.update_file(project_id, file_id, file=file)
+            print("The response of FilesApi->update_file:\n")
+            pprint(api_response)
+        except Exception as e:
+            print("Exception when calling FilesApi->update_file: %s\n" % e)
+
 
 # 输入文件和输出文件的路径
 input_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
@@ -37,3 +63,4 @@ output_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv'
 process_csv(input_csv, output_csv)
 
 print(f"处理后的CSV文件已保存为 {output_csv}")
+asyncio.run(main())
