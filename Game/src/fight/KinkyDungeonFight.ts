@@ -2725,9 +2725,12 @@ function KDBulletAoECanHitEntity(bullet: any, enemy: entity): boolean {
 	if (enemy.player) {
 		return (bullet.bullet.spell && (bullet.bullet.spell.playerEffect || bullet.bullet.playerEffect)
 			&& (!bullet.bullet.spell?.noHitAlliedPlayer
-				|| !bullet.bullet.faction
+				|| !KDFactionFavorable(bullet.bullet.faction, "Player")
+			)
+			&& (!bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| !KDFactionFavorable(bullet.bullet.faction, "Player"))
+				|| (!KDFactionFavorable(bullet.bullet.faction, "Player")
+					|| !(bullet.bullet.spell.allySpell || bullet.bullet.spell.enemySpell)))
 			&& AOECondition(bullet.x, bullet.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, bullet.bullet.aoe || 0.5, KDBulletAoEMod(bullet)))
 			&& (!bullet.bullet.spell || !bullet.bullet.spell.noUniqueHits || !KDUniqueBulletHits.get(KDBulletID(bullet, KinkyDungeonPlayerEntity)));
 	} else {
@@ -2748,13 +2751,20 @@ function KDBulletCanHitEntity(bullet: any, enemy: entity, inWarningOnly?: boolea
 			&& (!bullet.bullet.noEnemyCollision ||
 				(bullet.bullet.spell && bullet.bullet.alwaysCollideTags && bullet.bullet.alwaysCollideTags.includes("PlayerChar")))
 			&& KinkyDungeonPlayerEntity.x == bullet.x && KinkyDungeonPlayerEntity.y == bullet.y
+			&& (!bullet.bullet.spell?.noHitAlliedPlayer
+				|| !KDFactionFavorable(bullet.bullet.faction, "Player")
+			)
 			&& !(bullet.bullet.faction
 				&& bullet.bullet.spell.noFF
 				&& !KDFactionHostile(bullet.bullet.faction, "Player"))
 			&& (!bullet.bullet.spell || !bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| (!KDFactionFavorable(bullet.bullet.faction, "Player") && (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
-				|| (!KDFactionHostile(bullet.bullet.faction, "Player") && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
+				|| !bullet.bullet.spell?.noHitAlliedPlayer
+				|| ((!KDFactionFavorable(bullet.bullet.faction, "Player")
+					|| !(bullet.bullet.spell.allySpell || bullet.bullet.spell.enemySpell))
+					&& (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
+				|| (!KDFactionHostile(bullet.bullet.faction, "Player")
+					&& (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
 			)
 			&& (!inWarningOnly || (bullet.warnings && bullet.warnings.includes(KinkyDungeonPlayerEntity.lastx + "," + KinkyDungeonPlayerEntity.lasty)))
 			&& (!bullet.bullet.spell || !bullet.bullet.spell.noUniqueHits || !KDUniqueBulletHits.get(KDBulletID(bullet, KinkyDungeonPlayerEntity)));
