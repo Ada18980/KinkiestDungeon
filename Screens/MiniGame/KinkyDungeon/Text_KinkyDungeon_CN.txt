@@ -26802,6 +26802,134 @@ HeavyMaidKnight
 
 ### KittyPetPawsShortRestraint
 
+### CapeRestraint
+
+### BreastplateRestraint
+
+### PauldronsRestraint
+
+### PauldronLeftRestraint
+
+### PauldronRightRestraint
+
+### PlateBootsRestraint
+
+### GauntletsRestraint
+
+### ChainShirtRestraint
+
+### ChainBikiniRestraint
+
+### ChainSkirt2Restraint
+
+### ChainSkirtRestraint
+
+### ChainPantiesRestraint
+
+### ChainPanties2Restraint
+
+### WarriorBootsRestraint
+
+### BustierChestRim
+
+### WarriorBustierRestraint
+
+### LeatherGlovesRestraint
+
+### RobeSleevesRestraint
+
+### KittyPetTailThin
+
+### Tail2
+
+### Tail2Stripe
+
+### KittyPetBlindfoldStitched
+
+### BlindfoldStich
+
+### KittyPetBlindfoldPanel
+
+### BlindfoldSmall
+
+### BlindfoldSmallStrap
+
+### KittyPetBlindfoldPanelStitched
+
+### FashionKittyPetBlindfoldPanel
+
+### FashionKittyPetBlindfoldStitched
+
+### FashionKittyPetBlindfoldPanelStitched
+
+### KittyPetBlindfoldStrap
+
+### BlindfoldStrap
+
+### FashionKittyPetBlindfoldStrap
+
+### KittyPetHarnessBlindfold
+
+### BlindfoldHarness
+
+### FashionKittyPetHarnessBlindfold
+
+### KittyPetEars3
+
+### Ears3L
+
+### Ears3R
+
+### Ears3InnerL
+
+### Ears3InnerR
+
+### KittyPetEars3Restraint
+
+### KittyPetHarnessGag
+
+### FaceHarness
+
+### FaceHarnessHardware
+
+### FaceHarnessStripe
+
+### KittyPetHarnessGagSeamless
+
+### KittyPetHarnessGagMouth
+
+### KittyPetHarnessGagMouthSeamless
+
+### FashionKittyPetHarnessGag
+
+### FashionKittyPetHarnessGagSeamless
+
+### FashionKittyPetHarnessGagMouth
+
+### FashionKittyPetHarnessGagMouthSeamless
+
+### KittyPetSockShortLeft
+
+### KittyPetSockShortRight
+
+### KittyPetSocksShort
+
+### KittyPetSocksShortRestraint
+
+### HarnessBlindfold
+
+### HarnessBlindfoldHarness
+
+### HarnessBlindfoldHarnessHardware
+
+### HarnessBlindfoldStrap
+
+### HarnessBlindfoldStrapHardware
+
+### FashionHarnessBlindfold
+
+
+
 Hide Items
 隐藏项目
 Sort Items
@@ -30379,7 +30507,6 @@ After casting Sagitta, you can recast it up to three more times without advancin
 Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
-### 你可以无视施法部位来施放念动法术，但由于精神过载，以这种方式施法时，法术会让你产生性奋值 ( 基于法力消耗 ) 。无法在 100% 性奋值 时使用。
 你可以无视施法部位来施放念动法术，以这种方式施法会让你产生基于法力消耗的性奋值 ( 由于精神过载 ) 。无法在 100% 性奋值 时使用。
 
 
