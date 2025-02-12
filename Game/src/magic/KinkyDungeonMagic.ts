@@ -2773,11 +2773,14 @@ function KinkyDungeonSpellToggledOn(spellobject: spell | string) {
     if (!spelllist.includes(sp)) {
         return undefined;
     }
-    let activated = false;
-    for (let i = 0; i < KinkyDungeonSpellChoices.length; i++) {
-        if (spelllist[i] == (sp)) {
-            activated = KinkyDungeonSpellChoicesToggle[i];
+    for (let i = 0; i < spelllist.length; i++) {
+        if (spelllist[i] == sp) {
+            for (let v = 0; v < KinkyDungeonSpellChoices.length; v++) {
+                if (i == KinkyDungeonSpellChoices[v]) {
+                    return KinkyDungeonSpellChoicesToggle[v];
+                }
+            }
         }
     }
-    return activated
+    return false
 }
