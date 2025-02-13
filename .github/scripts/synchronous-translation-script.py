@@ -68,6 +68,9 @@ async def paratran_download():
         json_object.sort(key=lambda x: x['id'])
         output_content = []
 
+        output_content.append('前往 https://paratranz.cn/projects/12190 参加KD汉化')
+        output_content.append('')
+
         for item in json_object:
             if item['translation']:  # 如果translation不为空
                 output_content.append(item['original'])
