@@ -83,8 +83,7 @@ output_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv'
 output_txt = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt'
 
 # 处理CSV文件
-#process_csv(input_csv, output_csv)
-
-#print(f"处理后的CSV文件已保存为 {output_csv}")
-#asyncio.run(paratran_update())
+process_csv(input_csv, output_csv)
+print(f"save to {output_csv}")
+asyncio.run(paratran_update())
 asyncio.run(paratran_download())
