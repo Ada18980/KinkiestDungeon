@@ -2,6 +2,7 @@ import csv
 from collections import defaultdict
 import time
 import os
+import json
 import paratranz_client
 from paratranz_client.models.file import File
 from paratranz_client.rest import ApiException
