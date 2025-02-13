@@ -54,13 +54,36 @@ async def paratran_update():
         except Exception as e:
             print("Exception when calling FilesApi->update_file: %s\n" % e)
 
+async def paratran_download():
+    async with paratranz_client.ApiClient(configuration) as api_client:
+        api_instance = paratranz_client.FilesApi(api_client)
+        project_id = 12190 # int | 项目ID
+        file_id = 1638395 # int | 文件ID
+
+
+            # 文件翻译
+        data_raw = await api_instance.get_file_translation_with_http_info(project_id, file_id)
+        json_object = json.loads(data_raw.raw_data.decode())
+        json_object.sort(key=lambda x: x['id'])
+        output_content = []
+
+        for item in json_object:
+            if item['translation']:  # 如果translation不为空
+                output_content.append(item['original'])
+                output_content.append(item['translation'])
+
+        with open('output.txt', 'w', encoding='utf-8') as file:
+            for line in output_content:
+                file.write(line + '\n')
 
 # 输入文件和输出文件的路径
 input_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
 output_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv'
+output_txt = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt'
 
 # 处理CSV文件
-process_csv(input_csv, output_csv)
+#process_csv(input_csv, output_csv)
 
-print(f"处理后的CSV文件已保存为 {output_csv}")
-asyncio.run(paratran_update())
+#print(f"处理后的CSV文件已保存为 {output_csv}")
+#asyncio.run(paratran_update())
+asyncio.run(paratran_download())
