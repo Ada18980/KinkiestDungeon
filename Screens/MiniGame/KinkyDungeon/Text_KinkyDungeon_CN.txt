@@ -210,8 +210,8 @@ Draw Buffs on Side
 在屏幕一侧绘制增益效果
 Show Trajectory on Auto-Path
 预览自动路径轨迹
-### Always Show Player Facing
-
+Always Show Player Facing
+显示玩家面向
 Show more learnable spells
 显示更多可学习的法术
 Show Player Buff Auras
@@ -3489,7 +3489,7 @@ The zombie caresses your body! (DamageTaken)
 
 
 Maidforce Recruit
-女仆招募
+女仆新兵
 The maid does a fumbled retreat.
 女仆手忙脚乱地撤退。
 The maid uses a fast-binding technique! (+RestraintAdded)
@@ -6451,7 +6451,7 @@ Elementals
 Dragonheart Order
 龙心教团
 MaidForce
-女仆势力
+女仆兵团
 Fungal Kingdom
 真菌王国
 Nature
@@ -8169,7 +8169,7 @@ It's made of a very tough reinforced leather. It will take some time to cut.
 Maid Cuffs
 女仆铐
 A pair of steel cuffs used by the Maidforce.
-女仆势力使用的一对钢铐。
+女仆兵团使用的一对钢铐。
 They are made of solid steel.
 它们由实心钢制成。
 Maid Cuff Link
@@ -8179,7 +8179,7 @@ Maid Cuff Link
 Maid Collar
 女仆项圈
 A collar for operatives of the Maidforce, a group of covert saboteurs.
-女仆势力特工的项圈，一群隐蔽的破坏者。
+女仆兵团特工使用的项圈，一群隐蔽的破坏者。
 It's reinforced with metal and guarded with an expert-level lock.
 它采用金属加固，并配有专家级锁。
 Maid Gag
@@ -9276,8 +9276,8 @@ Empty Fixture
 空置装置
 Filled Fixture
 填充装置
-### Tablet
-
+Tablet
+石碑
 
 
 
@@ -17059,7 +17059,7 @@ I need to take this...
 I'm sorry...
 我很抱歉...
 *Salutes* PTRN reporting for service!
-*致敬* PTRN 报告服务！
+*敬礼！* PTRN 归队！
 I'll help!
 我会帮忙的！
 Stop her!
@@ -17109,13 +17109,13 @@ Didn't think this through, did you?
 Grenade!!!
 手榴弹！！！
 What's this 'melee' you speak of?
-你所说的 '混战' 是什么？
+你所说的 '近战' 是什么意思？
 What terrible aim!
 多么可怕的目标啊！
 I am bulletproof!
 我是防弹的！
 Marksman PTRN reporting for service!
-射手 PTRN 报告服务！
+射手 PTRN 归队！
 Opening fire!
 开火！
 I'll cover you!
@@ -26370,8 +26370,8 @@ HeavyMaidKnight
 
 ### Fluff
 
-### Orb
-
+Orb
+宝珠
 ### FestiveArmbinder
 
 ### BinderStrapLeft
@@ -27913,7 +27913,7 @@ AMNT TYPE Mana Efficiency
 AMNT% regen from mana pool
 来自法力池 AMNT% 的回复
 AMNT mana pool on capture
-AMNT 捕获时的法力池
+AMNT 法力值在抓捕敌人时
 AMNT% Visibility Reduction
 AMNT% 可见度降低
 AMNT Distraction Decay
@@ -32909,7 +32909,7 @@ Assign servants to perfect the art of walking in heels,wearing tight corsets,|co
 Rescue Operations
 救援行动
 Assign servants to train squads of rescue maids, which you can call in times of need.
-指派仆人训练救援女仆小队，以便在需要时可以呼叫她们。
+指派仆人训练女仆救援小队，以便在需要时可以呼叫她们。
 Alchemy Lab
 炼金实验室
 Assign servants to produce potions from base ingredients you acquire in your adventures.
@@ -34681,15 +34681,15 @@ blaring siren
 
 
 You claim the Sweeper.
-你获得了扫帚。
+你获得了清理者。
 The Sweeper
-扫帚
+清理者
 Foe of the unclean. Bringer of neat and tidy workspaces.
-不洁之物的敌人。带来整洁工作空间的使者。
+不洁之敌。带来整洁的工作空间。
 Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack.
 造成斩击伤害。同时在一个区域内造成30点搔痒伤害。拥有远程攻击。
 Make a ranged attack with the Sweeper.
-用扫帚进行远程攻击。
+用清理者进行远程攻击。
 
 
 You claim the Persuader.
@@ -34726,12 +34726,12 @@ You fire the Persuader!
 
 ### Recolor
 
-### Only collect notable
-
-### Autorelease escaped
-
-### NME is not notable enough for your collection.
-
+Only collect notable
+只收集出名的
+Autorelease escaped
+自动释放逃脱者
+NME is not notable enough for your collection.
+NME 在你的收藏里并不够出名
 ### Auto-released NME due to Escape.
 
 Your ITMN1 was cursed and transforms into a ITMN2!
