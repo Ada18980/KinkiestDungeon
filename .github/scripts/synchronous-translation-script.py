@@ -43,8 +43,8 @@ def process_csv(input_file, output_file):
 async def paratran_update():
     async with paratranz_client.ApiClient(configuration) as api_client:
         api_instance = paratranz_client.FilesApi(api_client)
-        project_id = 13239 # int | 项目ID 13239 12190
-        file_id = 1834057 # int | 文件ID 1834057 1638395
+        project_id = 12190 # int | 项目ID 13239 12190
+        file_id = 1638395 # int | 文件ID 1834057 1638395
         file = "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv" # bytearray | 文件数据，格式需与创建时的文件保持一致，也可上传标准JSON格式（文件名需为原文件名加.json） (optional)
 
         try:
