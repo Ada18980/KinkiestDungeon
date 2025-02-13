@@ -5,10 +5,13 @@ permissions:
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'
 
 jobs:
-  format-translation:
+  synchronous-translation:
     runs-on: ubuntu-latest
+    if: github.repository == 'Ada18980/KinkiestDungeon'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
