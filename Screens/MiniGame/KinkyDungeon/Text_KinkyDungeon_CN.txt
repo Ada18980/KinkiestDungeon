@@ -1,4 +1,6 @@
-By Strait-Lace Games
+前往 https://paratranz.cn/projects/12190 参加KD汉化
+
+By Strait-Laced Games
 由 Strait-Laced Games 呈现
 Credits
 贡献者
@@ -42,7 +44,7 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-5.4.33
+5.4.43
 5.4.33
 You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
@@ -184,7 +186,7 @@ Draw Buffs on Side
 在屏幕一侧绘制增益效果
 Show Trajectory on Auto-Path
 预览自动路径轨迹
-Show Player Facing
+Always Show Player Facing
 显示玩家朝向
 Show more learnable spells
 显示更多可学习的法术
@@ -642,7 +644,7 @@ Melee attacks distract you, but melee (including chain) damage increases by up t
 近战攻击会提高你的性奋值，且性奋值达到最大时，近战 ( 包括锁链 ) 伤害可增加 30%。
 Unstable Magic
 混沌魔法
-Spells do up to 60% additional damage based on distraction or miscast chance, whichever is higher.
+Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
 根据性奋值或施法失败的几率，法术最多可造成 60% 的额外伤害，以最高者为准。
 Absolute Focus
 绝对专注
@@ -3236,8 +3238,6 @@ Statue
 雕像
 The statue topples over!
 雕像倒塌！
-The statue topples over and reveals a mechanism!
-雕像倒塌，露出一个机械装置！
 The statue shoves a gag into your mouth, which inflates to fill the space! (+RestraintAdded)
 雕像将一个口球塞进你的嘴里，口球膨胀并塞满了你的嘴！  ( +RestraintAdded )
 The statue kisses your gag! (DamageTaken)
@@ -8676,7 +8676,7 @@ Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total).
 徒手攻击提高 25% 命中率 ( 总计 60% ) 并且 -25% 的体力消耗 ( 总计 50% ) 。
 Precise Critical
 精准暴击
-When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
+When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
 当造成物理伤害的暴击时，超过 100% 的命中率将以 50% 的效率转化为额外暴击倍数。
 Precise Magic
 精准魔法
@@ -9266,7 +9266,7 @@ You hover with reduced effect from bindings.
 您悬停时捆绑的效果会减弱。
 Iron Blood
 铁血
-Channel 4 turns: Halves SP cost of melee attacks by 50%, but increases MP cost of spells by 25%. Ends on sleep or recast.
+Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast.
 引导4回合 : 近战攻击体力消耗 -50%，但释放法术时法力消耗 +25%，睡眠或再次使用时停止。
 Your skin glows a pale red!
 你的皮肤发出淡红色的光芒！
@@ -18642,7 +18642,7 @@ Straight
 直发
 StraightBangs
 直刘海
-MessyBack
+Curly Back
 凌乱(后)
 Messy
 凌乱
@@ -19800,7 +19800,7 @@ Tower Shield
 塔盾
 Now with more leg room.
 在腿部空间更大。
-Slows you down by 1 level. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
 +120 格挡，+30 物理护甲。减速等级提高 1 级。造成碾压伤害并眩晕 7 回合。副手 : ‎提供相同的格挡和护甲加成。盾牌的副手奖励不会与当前装备的盾牌叠加。
 You pick up a metal tower shield.
 你拿起一个金属塔盾。
@@ -20946,7 +20946,7 @@ You feel holy energy neutralizing the cursed magic permanently.
 你感觉到神圣的能量永久地中和了被诅咒的魔法。
 Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 有人说它来自天堂的面包店。其他人则说它只是由实验室材料制成，实际上味道很糟糕。
-Unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
+Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
 解锁一件被诅咒的物品 和/或 选择你当前佩戴的一件物品，移除其的所有诅咒。
 Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
 恭喜！ 你的持续惠顾为您赢得了|一 ( 1 ) 次往返最近的附属商店的机会！|只需进入传送门即可继续...| ( 女神对与使用此传送门有关的任何事故或欺诈概不负责 )
@@ -21158,7 +21158,7 @@ Ranged Attack
 远程攻击
 Combat Training
 战斗训练
-Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 0 WP you gain 1 slow resist.
+Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 10 Battle Rhythm you gain 1 slow resist.
 你的训练给予了许多加成 : ‎|-每 10 点当前意志力，武器消耗体力减少 1%，最多 40%。|-减速效果消失得更快。|-当你的意志力高于 0 时，你将获得 1 点减速抵抗力。
 This is your current offhand weapon.
 这是你当前副手的武器。
@@ -22190,7 +22190,7 @@ Weapon stamina cost is reduced by a percentage equal to your Battle Rhythm.
 使用相位时 +50 闪避
 Blade Dance
 剑舞
-Costs 60 stamina to dash to an adjacent spot. If you are holding a physical weapon, deals cleave damage to nearby enemies equal to 50% weapon damage. If you have a Light offhand weapon, deal 75% of its damage as well.
+Spend 30 + weapon SP cost to dash to an adjacent spot. Attacks nearby enemies for 50% damage, or 100% if holding a Light weapon. If holding a Light offhand weapon, attack with that one for another 50% damage.
 冲向邻近地点并消耗 60 点体力。如果你持有物理武器，会对附近的敌人造成相当于 50% 武器伤害的劈砍伤害。如果你有一把轻型副手武器，也会造成 75% 的伤害。
 You spin towards a location, slashing at nearby enemies!
 你冲向一个位置，猛击附近的敌人！
@@ -24152,7 +24152,7 @@ Stun Resistance!
 眩晕抗性！
 Negate Rune
 否定符文
-Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead.
+Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
 移除目标方块上的符文。如果对自己施放，则改为移除你创建的所有符文。如果对敌方符文施放，则改为恢复 10 点法力。
 You scribe a negation rune!
 你写下了一个否定符文！
@@ -24292,11 +24292,11 @@ Rotation
 旋转
 Layer Bonus
 图层补偿
-NoDynamicArmor (0 or 1)
+NoDynamicArmor (0/1)
 无动态护甲(0或1)
-HideOverridden (0 or 1)
+HideOverridden (0/1)
 隐藏覆盖(0或1)
-NoOverride (0 or 1)
+NoOverride (0/1)
 无覆盖(0或1）
 Hide Pose (e.g. Xray)
 造型隐藏(例如X射线)
@@ -31048,7 +31048,7 @@ Straight
 直发
 Straight
 直发
-StraightBangs
+Long Straight
 直刘海
 StraightBangs
 直刘海
