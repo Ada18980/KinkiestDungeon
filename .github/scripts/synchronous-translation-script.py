@@ -73,7 +73,7 @@ async def paratran_download():
                 output_content.append(item['original'])
                 output_content.append(item['translation'])
 
-        with open('output.txt', 'w', encoding='utf-8') as file:
+        with open(output_txt, 'w', encoding='utf-8') as file:
             for line in output_content:
                 file.write(line + '\n')
 
