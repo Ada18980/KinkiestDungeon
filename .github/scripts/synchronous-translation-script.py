@@ -45,7 +45,7 @@ async def paratran_update():
         api_instance = paratranz_client.FilesApi(api_client)
         project_id = 12190 # int | 项目ID 13239 12190
         file_id = 1638395 # int | 文件ID 1834057 1638395
-        file = "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv" # bytearray | 文件数据，格式需与创建时的文件保持一致，也可上传标准JSON格式（文件名需为原文件名加.json） (optional)
+        file = output_csv # bytearray | 文件数据，格式需与创建时的文件保持一致，也可上传标准JSON格式（文件名需为原文件名加.json） (optional)
 
         try:
             # 更新文件
@@ -79,7 +79,7 @@ async def paratran_download():
 
 # 输入文件和输出文件的路径
 input_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
-output_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_Temp.csv'
+output_csv = 'Text_KinkyDungeon_Temp.csv'
 output_txt = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt'
 
 # 处理CSV文件
