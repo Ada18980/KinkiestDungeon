@@ -6,10 +6,12 @@ permissions:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * *'
   push:
     branches:
       - '5.4'
+    paths:
+      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
 
 jobs:
   synchronous-translation:
