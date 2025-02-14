@@ -19712,6 +19712,651 @@ HeavyMaidKnight_SockLeft
 重装女仆骑士_左袜
 HeavyMaidKnight
 重装女仆骑士
+<<<<<<< Updated upstream
+=======
+
+
+### BlondeFront
+
+### BlondeBangs
+
+### BlondeBack
+
+### FangMouth_Double
+
+### HoodCollar
+
+### BigBallTeethFang
+
+### MilitaryJacket_Sleeveless
+
+### MilitaryUniform_SleeveLeft
+
+### MilitaryUniform_SleeveRight
+
+### MilitaryUniform_Sleeves
+
+### MilitaryJacket
+
+### WhiteGloveLeft
+
+### WhiteGloveRight
+
+### WhiteGloves
+
+### UniformShirt_Sleeveless
+
+### UniformShirt_SleeveLeft
+
+### UniformShirt_SleeveRight
+
+### UniformShirt_Sleeves
+
+### UniformShirt
+
+### MilitaryUniform_Hat
+
+### Hat
+
+### HatRim
+
+### HatCap
+
+### HatGloriousInsignia
+
+### HatGloriousInsigniaHS
+
+### MilitaryUniform_Earphones
+
+### Headgear
+
+### HeadgearUnit
+
+### HeadgearEars
+
+### HeadgearEarsInner
+
+### HeadgearBack
+
+### MilitaryUniform_Searchlight
+
+### SearchlightPouch
+
+### Searchlight
+
+### SearchlightBase
+
+### SearchlightLens
+
+### MilitaryUniform_BeltPouch
+
+### BeltPouch
+
+### BeltPouchRim
+
+### MilitaryUniform_Webbing
+
+### Webbing
+
+### WebbingSide
+
+### WebbingHardware
+
+### WebbingName
+
+### WebbingUnderbust
+
+### WebbingUnderbustHardware
+
+### MilitaryUniform_Skirt
+
+### MilitaryUniform_Shoes
+
+### MilitaryUniform_TightsShorts
+
+### MilitaryUniform_SockLeft
+
+### MilitaryUniform_SockRight
+
+### Tights
+
+### MilitaryUniform_Hairpin
+
+### Hairpin
+
+### MilitaryUniform
+
+### ShirtSleeveLeft
+
+### ShirtForeArmLeft
+
+### ShirtSleeveRight
+
+### ShirtForeArmRight
+
+### ShirtShoulderRight
+
+### ShirtDress
+
+### ShirtDressChest
+
+### RubyNecklace
+
+### RubyChain
+
+### RubyRing
+
+### RubyGem
+
+### RubyNecklaceRestraint
+
+### SigilNecklace
+
+### SigilChain
+
+### SigilDisc
+
+### SigilNecklaceRestraint
+
+### MetalNecklace
+
+### MetalChain
+
+### MetalDisc
+
+### MetalNecklaceRestraint
+
+### NecklaceCharm
+
+### DragonNecklaceRestraint
+
+### BallTeeth
+
+### CrystalBallGag
+
+### CrystalBallGagSmooth
+
+### GagMetalRivetedStrap
+
+### OTNStrap
+
+### OTNStrapRivets
+
+### FashionGagMetalRivetedStrap
+
+### CrystalGagNecklace
+
+### CrystalGagNecklaceBall
+
+### FashionCrystalGagNecklace
+
+### LeashCollar
+
+### LeashCollarHardware
+
+### BootShoeLeft
+
+### BootShoeRight
+
+### Fear
+
+### RubyHardware
+
+### KiguMaskSmile
+
+### MouthSmile
+
+### FashionKiguMaskSmile
+
+### OneBarTop
+
+### OneBarPrisonLatex
+
+
+
+### FangMouth
+
+### FanglessMouth
+
+### SantaHat
+
+### HatBack
+
+### Fluff
+
+### Orb
+
+### FestiveArmbinder
+
+### BinderStrapLeft
+
+### BinderFluffLeft
+
+### FestiveHarnessTop
+
+### StrapTop
+
+### ButtonsTop
+
+### FuzzTop
+
+### FestiveHarnessMid
+
+### StrapMid
+
+### ButtonsMid
+
+### FuzzMid
+
+### FestiveHarnessStrap
+
+### StrapBot
+
+### ButtonsBot
+
+### FuzzBot
+
+### FestiveHarness
+
+### StrapOverbust
+
+### StrapUnderbust
+
+### ButtonsUnderbustOver
+
+### ButtonsUnderbust
+
+### FuzzUnderbustOver
+
+### FuzzUnderbust
+
+### FashionFestiveHarnessTop
+
+### FashionFestiveHarnessMid
+
+### FashionFestiveHarnessStrap
+
+### FashionFestiveHarness
+
+### FrillyHeadband
+
+### HeadbandBand
+
+### HeadbandBow
+
+### BowHeadband
+
+### BowHeadbandFrill
+
+### BackHime
+
+### HimeBack
+
+### BackShort
+
+### BackFlat
+
+### Bob
+
+### BobFront
+
+### FrontStraight2
+
+### FrontStraight2_Front
+
+### FrontStraight2_Overstrap
+
+### FrontSwept
+
+### FrontSweptSide
+
+### Vents
+
+### VentL
+
+### VentR
+
+### VentsInnerR
+
+### VentsInnerL
+
+### VentsFront
+
+### BigBraidBack
+
+### CurlyPonytail
+
+### DrillLeft
+
+### DrillRight
+
+### Twindrills
+
+### Twintails
+
+### PointyAhoge
+
+### RoundHat
+
+### HatTop
+
+### TopHatSmall
+
+### TopHatSmallBow
+
+### BlondeFrontM
+
+### BlondeBangsM
+
+### BlondeBackM
+
+### Mascara
+
+### MascaraL
+
+### MascaraR
+
+### Scar
+
+### PointyAntennae
+
+### AnthenaL
+
+### AnthenaR
+
+### PointyHorns
+
+### HornL
+
+### HornR
+
+### PointyTail
+
+### Tail
+
+### WolfEars2
+
+### EarLeft
+
+### EarRight
+
+### HairclipDual
+
+### HairclipLower
+
+### HairclipUpper
+
+### ChainPanties
+
+### PantiesChain
+
+### ChainPanties2
+
+### KittyPetCuffsWristLeft
+
+### KittyPetCuffsWristRight
+
+### KittyPetCuffsWrists
+
+### KittyPetCuffsElbowLeft
+
+### KittyPetCuffsElbowRight
+
+### KittyPetCuffsElbows
+
+### KittyPetCuffsArms
+
+### KittyPetCuffsAnklesLeft
+
+### KittyPetCuffsAnklesRight
+
+### KittyPetCuffsAnkles
+
+### KittyPetCuffsThighLeft
+
+### KittyPetCuffsThighRight
+
+### KittyPetCuffsThigh
+
+### KittyPetCuffsCollar
+
+### FashionKittyPetCuffsCollar
+
+### FashionKittyPetCuffsWristLeft
+
+### FashionKittyPetCuffsWristRight
+
+### FashionKittyPetCuffsWrists
+
+### FashionKittyPetCuffsElbowLeft
+
+### FashionKittyPetCuffsElbowRight
+
+### FashionKittyPetCuffsElbows
+
+### FashionKittyPetCuffsArms
+
+### FashionKittyPetCuffsAnklesLeft
+
+### FashionKittyPetCuffsAnklesRight
+
+### FashionKittyPetCuffsAnkles
+
+### FashionKittyPetCuffsThighLeft
+
+### FashionKittyPetCuffsThighRight
+
+### FashionKittyPetCuffsThigh
+
+### KittyPawCuffsWristLeft
+
+### KittyPawCuffsWristRight
+
+### KittyPawCuffsWrists
+
+### KittyPawCuffsElbowLeft
+
+### KittyPawCuffsElbowRight
+
+### KittyPawCuffsElbows
+
+### KittyPawCuffsArms
+
+### KittyPawCuffsAnklesLeft
+
+### KittyPawCuffsAnklesRight
+
+### KittyPawCuffsAnkles
+
+### KittyPawCuffsThighLeft
+
+### KittyPawCuffsThighRight
+
+### KittyPawCuffsThigh
+
+### FashionKittyPawCuffsWristLeft
+
+### FashionKittyPawCuffsWristRight
+
+### FashionKittyPawCuffsWrists
+
+### FashionKittyPawCuffsElbowLeft
+
+### FashionKittyPawCuffsElbowRight
+
+### FashionKittyPawCuffsElbows
+
+### FashionKittyPawCuffsArms
+
+### FashionKittyPawCuffsAnklesLeft
+
+### FashionKittyPawCuffsAnklesRight
+
+### FashionKittyPawCuffsAnkles
+
+### FashionKittyPawCuffsThighLeft
+
+### FashionKittyPawCuffsThighRight
+
+### FashionKittyPawCuffsThigh
+
+### KittyPetLeotardUnder
+
+### LeotardStripes
+
+### LeotardChestStripes
+
+### KittyPetLeotard
+
+### KittyPetLeotardRestraint
+
+### KittyPetUniformCollar
+
+### LeotardChestCollar
+
+### LeotardChestCollarLeft
+
+### LeotardChestCollarStripes
+
+### LeotardChestCollarStripesLeft
+
+### CollarDecoSymbol
+
+### ShoulderCuffLeft
+
+### ShoulderCuffStripeLeft
+
+### ShoulderCuffRight
+
+### ShoulderCuffStripeRight
+
+### KittyPetTail
+
+### TailStripe
+
+### KittyPetBlindfold
+
+### BlindfoldRim
+
+### BlindfoldBrow
+
+### FashionKittyPetBlindfold
+
+### KittyPetSteelCollar
+
+### FashionKittyPetSteelCollar
+
+### KittyPetMittenLeft
+
+### GloveLeftPaw
+
+### ForeGloveLeftPaw
+
+### KittyPetMittenRight
+
+### GloveRightPaw
+
+### ForeGloveRightPaw
+
+### KittyPetMittens
+
+### FashionKittyPetMittenLeft
+
+### FashionKittyPetMittenRight
+
+### FashionKittyPetMittens
+
+### KittyPetEars1
+
+### Ears1L
+
+### Ears1R
+
+### Ears1InnerL
+
+### Ears1InnerR
+
+### KittyPetEars2
+
+### Ears2L
+
+### Ears2R
+
+### Ears2InnerL
+
+### Ears2InnerR
+
+### KittyPetEarmuffs
+
+### EarmuffersL
+
+### EarmuffersR
+
+### KittyPetEarmuffsRestraint
+
+### KittyPetEars1Restraint
+
+### KittyPetEars2Restraint
+
+### KittyPetGag
+
+### GagCollar
+
+### KittyPetGagSeamless
+
+### GagSeamless
+
+### KittyPetGagMouth
+
+### GagMouth
+
+### KittyPetGagMouthSeamless
+
+### GagMouthSeamless
+
+### FashionKittyPetGag
+
+### FashionKittyPetGagSeamless
+
+### FashionKittyPetGagMouth
+
+### FashionKittyPetGagMouthSeamless
+
+### KittyPetsuit
+
+### ArmsPaws
+
+### LeftLegsPaws
+
+### FootLeftHogtiePaws
+
+### KittyPetSockLeft
+
+### SockLeftPaws
+
+### KittyPetSockRight
+
+### KittyPetSocks
+
+### KittyPetSocksRestraint
+
+### KittyPetPawLeft
+
+### KittyPetPawRight
+
+### KittyPetPaws
+
+### KittyPetPawsRestraint
+
+### KittyPetPawShortLeft
+
+### KittyPetPawShortRight
+
+### KittyPetPawsShort
+
+### KittyPetPawsShortRestraint
+
+>>>>>>> Stashed changes
 Hide Items
 隐藏项目
 Sort Items
@@ -22480,6 +23125,11 @@ Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
 你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神过载，法术会让你产生性奋 ( 基于法力消耗 ) 。无法在 100% 性奋值 下使用。
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 Kinetic Mastery
 灵能大师
 Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
@@ -24152,8 +24802,13 @@ Stun Resistance!
 眩晕抗性！
 Negate Rune
 否定符文
+<<<<<<< Updated upstream
 Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
 移除目标方块上的符文。如果对自己施放，则改为移除你创建的所有符文。如果对敌方符文施放，则改为恢复 10 点法力。
+=======
+### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
+
+>>>>>>> Stashed changes
 You scribe a negation rune!
 你写下了一个否定符文！
 Target a single rune, or yourself to negate all your runes.
@@ -24166,6 +24821,11 @@ You pour negation magic into the ground, but nothing happens.
 你把否定魔法灌注到地面，但什么也没有发生。
 All of your runes have been removed.
 你的所有符文都已被移除。
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 E-Stimulation
 刺激电流
 Replaces most instances of painful electric shocks with stimulating effects instead.
