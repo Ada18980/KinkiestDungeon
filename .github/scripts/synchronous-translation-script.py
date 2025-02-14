@@ -72,6 +72,8 @@ async def paratran_download():
 
         # Process each item in the JSON object
         for item in json_object:
+            if item['original'] == item['translation']:  # Skip items where original equals translation
+                continue
             if item['translation']:  # If translation is not empty
                 output_content.append(item['original'])
                 output_content.append(item['translation'])
