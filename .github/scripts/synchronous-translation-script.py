@@ -9,6 +9,7 @@ from paratranz_client.rest import ApiException
 from pprint import pprint
 import asyncio
 
+# Configuration for ParaTranz API
 configuration = paratranz_client.Configuration(host = "https://paratranz.cn/api")
 configuration.api_key['Token'] = os.environ.get('PARATRANZ_TOKEN')
 
@@ -21,7 +22,7 @@ def process_csv(input_file, output_file):
     with open(input_file, 'r', newline='', encoding='utf-8') as infile:
         reader = csv.reader(infile)
         for row in reader:
-            if not row:  # Skip empty lines
+            if not row:  
                 continue
             
             original_key = row[0]
@@ -29,13 +30,11 @@ def process_csv(input_file, output_file):
             # Update the counter and generate a new key name
             count = key_counts.get(original_key, 0) + 1
             key_counts[original_key] = count
-            
             new_key = f"{original_key}_{count-1}" if count > 1 else original_key
             
             # Create a new row and add it to the results list
             processed_rows.append([new_key] + row[1:])
 
-    # Write to the output file
     with open(output_file, 'w', newline='', encoding='utf-8') as outfile:
         writer = csv.writer(outfile)
         writer.writerows(processed_rows)
@@ -43,9 +42,9 @@ def process_csv(input_file, output_file):
 async def paratran_update():
     async with paratranz_client.ApiClient(configuration) as api_client:
         api_instance = paratranz_client.FilesApi(api_client)
-        project_id = 12190 
-        file_id = 1638395 
-        file = output_csv 
+        project_id = 12190
+        file_id = 1638395
+        file = output_csv
 
         try:
             # Update file
@@ -58,8 +57,8 @@ async def paratran_update():
 async def paratran_download():
     async with paratranz_client.ApiClient(configuration) as api_client:
         api_instance = paratranz_client.FilesApi(api_client)
-        project_id = 12190 # int | Project ID
-        file_id = 1638395 # int | File ID
+        project_id = 12190
+        file_id = 1638395
 
         # File translation
         data_raw = await api_instance.get_file_translation_with_http_info(project_id, file_id)
@@ -71,6 +70,7 @@ async def paratran_download():
         output_content.append('前往 https://paratranz.cn/projects/12190 参加KD汉化')
         output_content.append('')
 
+        # Process each item in the JSON object
         for item in json_object:
             if item['translation']:  # If translation is not empty
                 output_content.append(item['original'])
