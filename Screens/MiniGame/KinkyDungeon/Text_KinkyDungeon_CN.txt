@@ -8943,7 +8943,7 @@ You shout an incendiary retort!
 Choose AoE location
 选择施放位置
 Feather Burst
-羽翼破乱
+羽毛爆
 After a brief delay, a small cloud of feathers tickles enemies for DamageDealt damage and +60 distraction for 3 turns.
 短暂延迟后，一小团羽毛将使敌人发痒，给敌人造成 DamageDealt 点挠痒伤害和 60 点性奋值。
 You conjure a burst of frenetic feathers!
@@ -20356,7 +20356,138 @@ HeavyMaidKnight
 
 ### KittyPetPawsShortRestraint
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+### CapeRestraint
+
+### BreastplateRestraint
+
+### PauldronsRestraint
+
+### PauldronLeftRestraint
+
+### PauldronRightRestraint
+
+### PlateBootsRestraint
+
+### GauntletsRestraint
+
+### ChainShirtRestraint
+
+### ChainBikiniRestraint
+
+### ChainSkirt2Restraint
+
+### ChainSkirtRestraint
+
+### ChainPantiesRestraint
+
+### ChainPanties2Restraint
+
+### WarriorBootsRestraint
+
+### BustierChestRim
+
+### WarriorBustierRestraint
+
+### LeatherGlovesRestraint
+
+### RobeSleevesRestraint
+
+### KittyPetTailThin
+
+### Tail2
+
+### Tail2Stripe
+
+### KittyPetBlindfoldStitched
+
+### BlindfoldStich
+
+### KittyPetBlindfoldPanel
+
+### BlindfoldSmall
+
+### BlindfoldSmallStrap
+
+### KittyPetBlindfoldPanelStitched
+
+### FashionKittyPetBlindfoldPanel
+
+### FashionKittyPetBlindfoldStitched
+
+### FashionKittyPetBlindfoldPanelStitched
+
+### KittyPetBlindfoldStrap
+
+### BlindfoldStrap
+
+### FashionKittyPetBlindfoldStrap
+
+### KittyPetHarnessBlindfold
+
+### BlindfoldHarness
+
+### FashionKittyPetHarnessBlindfold
+
+### KittyPetEars3
+
+### Ears3L
+
+### Ears3R
+
+### Ears3InnerL
+
+### Ears3InnerR
+
+### KittyPetEars3Restraint
+
+### KittyPetHarnessGag
+
+### FaceHarness
+
+### FaceHarnessHardware
+
+### FaceHarnessStripe
+
+### KittyPetHarnessGagSeamless
+
+### KittyPetHarnessGagMouth
+
+### KittyPetHarnessGagMouthSeamless
+
+### FashionKittyPetHarnessGag
+
+### FashionKittyPetHarnessGagSeamless
+
+### FashionKittyPetHarnessGagMouth
+
+### FashionKittyPetHarnessGagMouthSeamless
+
+### KittyPetSockShortLeft
+
+### KittyPetSockShortRight
+
+### KittyPetSocksShort
+
+### KittyPetSocksShortRestraint
+
+### HarnessBlindfold
+
+### HarnessBlindfoldHarness
+
+### HarnessBlindfoldHarnessHardware
+
+### HarnessBlindfoldStrap
+
+### HarnessBlindfoldStrapHardware
+
+### FashionHarnessBlindfold
+
+
+
+>>>>>>> upstream/5.4
 Hide Items
 隐藏项目
 Sort Items
@@ -23124,9 +23255,13 @@ After casting Sagitta, you can recast it up to three more times without advancin
 Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
+<<<<<<< HEAD
 你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神过载，法术会让你产生性奋 ( 基于法力消耗 ) 。无法在 100% 性奋值 下使用。
 <<<<<<< Updated upstream
 =======
+=======
+你可以无视施法部位来施放念动法术，以这种方式施法会让你产生基于法力消耗的性奋值 ( 由于精神过载 ) 。无法在 100% 性奋值 时使用。
+>>>>>>> upstream/5.4
 
 
 >>>>>>> Stashed changes
@@ -24801,6 +24936,7 @@ You break the orb and gain its secrets.
 Stun Resistance!
 眩晕抗性！
 Negate Rune
+<<<<<<< HEAD
 否定符文
 <<<<<<< Updated upstream
 Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
@@ -24809,20 +24945,29 @@ Removes a rune on the target tile. If cast on self, removes all runes you've cre
 ### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
 
 >>>>>>> Stashed changes
+=======
+否决符文
+Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
+移除目标地板上的一个符文。如果对自己施放，则会移除自己创建的所有符文。对敌方符文施放会恢复 10 法力值。如果对无符文的地板施放，则会消耗 5 法力值。
+>>>>>>> upstream/5.4
 You scribe a negation rune!
-你写下了一个否定符文！
+你写下了一个否决符文！
 Target a single rune, or yourself to negate all your runes.
-瞄准单个符文或自己来否定所有符文。
+瞄准单个符文或自己来否决所有符文。
 You don't have enough mana
 你没有足够的法力
 The enemy rune is wiped clean.
 敌方符文已被清除干净。
 You pour negation magic into the ground, but nothing happens.
-你把否定魔法灌注到地面，但什么也没有发生。
+你将否决魔法注入地面，但什么也没有发生。
 All of your runes have been removed.
+<<<<<<< HEAD
 你的所有符文都已被移除。
 <<<<<<< Updated upstream
 =======
+=======
+你创建的所有符文都已被移除。
+>>>>>>> upstream/5.4
 
 
 >>>>>>> Stashed changes

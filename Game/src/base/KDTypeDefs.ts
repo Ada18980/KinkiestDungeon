@@ -2242,6 +2242,7 @@ interface spell {
 	learnFlags?: string[],
 	/** Increases the more you do */
 	increasingCost?: boolean,
+	hideLearnableChildren?: boolean,
 	decreaseCost?: boolean,
 	/** Specific to a class */
 	classSpecific?: string;

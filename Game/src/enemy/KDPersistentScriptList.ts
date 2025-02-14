@@ -6,7 +6,7 @@ interface PersistentNPCScript {
 	/** Chance of wandering this CD cycle */
 	chance: (id: number, mapData: KDMapDataType) => number,
 	/** Actually perform the wander activity */
-	doScript: (id: number, mapData: KDMapDataType, entity: entity) => boolean,
+	doScript: (id: number, mapData: KDMapDataType, entity: entity) => number,
 }
 
 
@@ -23,7 +23,7 @@ let KDPersistentScriptList: Record<string, PersistentNPCScript> = {
 		},
 		doScript: (id, mapData, entity) => {
 			// Chill and be well
-			return true;
+			return -1;
 		},
 	},
 	/** n/a */
@@ -55,7 +55,7 @@ let KDPersistentScriptList: Record<string, PersistentNPCScript> = {
 				npc.data.wanderTarget = KDGetCurrentLocation();
 				// TODO make it so they look for clues to the player
 			}
-			return true;
+			return -1;
 		},
 	},
 };

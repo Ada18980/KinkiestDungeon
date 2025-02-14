@@ -5,8 +5,8 @@ interface PersistentSpawnAI {
 	filter: (id: number, mapData: KDMapDataType) => boolean,
 	/** Chance of wandering this CD cycle */
 	chance: (id: number, mapData: KDMapDataType) => number,
-	/** Actually perform the wander activity. True = go on cooldown*/
-	doSpawn: (id: number, mapData: KDMapDataType, entity?: entity) => boolean,
+	/** Actually perform the wander activity. negative = go on cooldown, positive = override timer*/
+	doSpawn: (id: number, mapData: KDMapDataType, entity?: entity) => number,
 }
 
 let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
@@ -25,7 +25,7 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 				return ent.id == id;
 			})) {
 				let npc = KDGetPersistentNPC(id);
-				if (!npc.entity) return false;
+				if (!npc.entity) return 0;
 				let ent = KDAddEntity(npc.entity,
 					false, false, true, mapData);
 
@@ -36,7 +36,7 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 					ent.x = mapData.StartPosition.x;
 					ent.y = mapData.StartPosition.y;
 					ent.runSpawnAI = true;
-					return true;
+					return -1;
 				}
 			}
 			if (entity && entity.runSpawnAI) {
@@ -52,23 +52,23 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 					mapData.mapX, mapData.mapY,
 					point.x, point.y, mapData, true);
 				}
-				if (point) {
+				if (point && !KinkyDungeonEntityAt(point.x, point.y)) {
 					KDMoveEntity(entity, point.x, point.y,
 						false, false, false, false,
 						true, mapData);
 					entity.runSpawnAI = false;
 					delete npc.fromIndex;
 					delete npc.fromType;
-					return true;
+					return -1;
 				} else {
 					// Wait till next spawn cycle
 					KDRemoveEntity(entity, false, false,
 						true, undefined, mapData);
-					return true;
+					return 1;
 				}
 			}
 
-			return false;
+			return 0;
 		},
 	},
 	/** Dragon spawn AI: spawns the NPC at a random point on the map, same as default atm*/
@@ -87,7 +87,7 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 				return ent.id == id;
 			})) {
 				let npc = KDGetPersistentNPC(id);
-				if (!npc.entity) return false;
+				if (!npc.entity) return 0;
 				let ent = KDAddEntity(npc.entity,
 					false, false, true, mapData);
 
@@ -98,7 +98,7 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 					ent.x = mapData.StartPosition.x;
 					ent.y = mapData.StartPosition.y;
 					ent.runSpawnAI = true;
-					return true;
+					return -1;
 				}
 			}
 			if (entity && entity.runSpawnAI) {
@@ -122,23 +122,23 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 						point = KinkyDungeonGetNearbyPoint(pp.x, pp.y, true);
 					}
 				}
-				if (point) {
+				if (point && !KinkyDungeonEntityAt(point.x, point.y)) {
 					KDMoveEntity(entity, point.x, point.y,
 						false, false, false, false,
 						true, mapData);
 					entity.runSpawnAI = false;
 					delete npc.fromIndex;
 					delete npc.fromType;
-					return true;
+					return -1;
 				} else {
 					// Wait till next spawn cycle
 					KDRemoveEntity(entity, false, false,
 						true, undefined, mapData);
-					return true;
+					return 1;
 				}
 			}
 
-			return false;
+			return 0;
 		},
 	},
 };
