@@ -4393,7 +4393,12 @@ function KinkyDungeonGetDirectionRandom(dx: number, dy: number) {
 let KinkyDungeonAutoWaitSuppress = false;
 
 function KinkyDungeonControlsEnabled() {
-	return !KinkyDungeonInspect && KDGameData.SlowMoveTurns < 1 && KinkyDungeonStatFreeze < 1 && KDGameData.SleepTurns < 1 && !KDGameData.CurrentDialog && !KinkyDungeonMessageToggle;
+	return !KinkyDungeonInspect
+		&& KDGameData.SlowMoveTurns < 1
+		&& KinkyDungeonStatFreeze < 1
+		&& KDGameData.SleepTurns < 1
+		&& !KDGameData.CurrentDialog
+		&& !KinkyDungeonMessageToggle;
 }
 
 function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any, player: any, bullet: any, data: any) {

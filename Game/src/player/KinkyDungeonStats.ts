@@ -419,12 +419,17 @@ function KDIsAutoAction(): boolean {
 		|| (KDGameData.SlowMoveTurns && KDGameData.DelayedActions?.length > 0);
 }
 
+/** Only stops AutoWait */
+function KDCancelAutoWait() {
+	KinkyDungeonAutoWait = false;
+	KinkyDungeonAutoWaitStruggle = false;
+}
+
 /**
  * Disables all automatic actions
  */
 function KDDisableAutoWait() {
-	KinkyDungeonAutoWait = false;
-	KinkyDungeonAutoWaitStruggle = false;
+	KDCancelAutoWait();
 	KDAutoWaitDelayed = false;
 	KDSendInput("autoprune", {force: true});
 }
