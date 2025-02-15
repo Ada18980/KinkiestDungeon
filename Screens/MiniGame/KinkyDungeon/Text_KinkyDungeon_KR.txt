@@ -32836,6 +32836,8 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Sprint (AMNT)
 
+### Stop Waiting
+
 ### (Already slept here)
 
 ### (Will not low enough)

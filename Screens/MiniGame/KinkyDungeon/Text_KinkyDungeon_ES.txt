@@ -33136,6 +33136,8 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 
 ### Sprint (AMNT)
 
+### Stop Waiting
+
 ### (Already slept here)
 
 ### (Will not low enough)

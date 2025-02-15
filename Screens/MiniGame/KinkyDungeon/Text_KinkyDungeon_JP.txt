@@ -35064,6 +35064,8 @@ Layer Text:
 
 ### Sprint (AMNT)
 
+### Stop Waiting
+
 ### (Already slept here)
 
 ### (Will not low enough)
