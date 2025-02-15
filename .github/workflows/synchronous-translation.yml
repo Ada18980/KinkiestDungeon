@@ -5,10 +5,18 @@ permissions:
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - '5.4'
+    paths:
+      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
 
 jobs:
-  format-translation:
+  synchronous-translation:
     runs-on: ubuntu-latest
+    if: github.repository == 'Ada18980/KinkiestDungeon'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,16 +32,16 @@ jobs:
           pip install git+https://github.com/MuXiu1997/ParaTranz-SDK-python.git
           pip install requests
 
-      - name: 🚀 Run format-translation script
+      - name: 🚀 Run synchronous-translation script
         env:
           PARATRANZ_TOKEN: ${{ secrets.PARATRANZ_TOKEN }}
         run: python .github/scripts/synchronous-translation-script.py
 
-      #- name: 📝 Commit changes
-    #    id: check_changes
-     #   run: |
-    #      git config --local user.email "action@github.com"
-   #       git config --local user.name "format-translation-action"
-     #     git add . 
-   #       git diff-index --quiet HEAD || git commit -m "Format translation files"
-  #        git push
+      - name: 📝 Commit changes
+        id: check_changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "synchronous-translation-action"
+          git add . 
+          git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
+          git push
