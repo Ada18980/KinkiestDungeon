@@ -1101,6 +1101,16 @@ function KDGetGameContextActionsVanilla(
 ) {
 	let tileType = KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY);
 	let entity = KinkyDungeonEntityAt(KinkyDungeonTargetX, KinkyDungeonTargetY);
+	let tile = KinkyDungeonTilesGet(KinkyDungeonTargetX + ',' + KinkyDungeonTargetY);
+	if (!KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY)) {
+		entity = null;
+		tile = null;
+		if (!KinkyDungeonFogGet(KinkyDungeonTargetX, KinkyDungeonTargetY))
+			tileType = '1';
+	}
+	if (entity && !KDCanSeeEnemy(entity)) {
+		entity = null;
+	}
 	if (entity && !entity.player) {
 		if (KDTalkToEnemy(entity)) {
 			options.push("Talk");
@@ -1158,7 +1168,8 @@ function KDGetGameContextActionsVanilla(
 
 
 
-	} else if (entity == KDPlayer() && !KinkyDungeonStairTiles.includes(tileType)) {
+	} else if ((entity == KDPlayer() || !entity
+		|| (KinkyDungeonAutoWait || KDAutoWaitDelayed)) && !KinkyDungeonStairTiles.includes(tileType)) {
 		// Player options e.g. wait
 		options.push("Wait");
 		optionImages.Wait = (KinkyDungeonAutoWait || KDAutoWaitDelayed) ? "Stop" : "Wait";
@@ -1182,7 +1193,6 @@ function KDGetGameContextActionsVanilla(
 			}
 		}
 	}
-	let tile = KinkyDungeonTilesGet(KinkyDungeonTargetX + ',' + KinkyDungeonTargetY);
 	if (tile?.Type) {
 		// Interact
 		options.push("Interact");

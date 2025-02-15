@@ -31262,3 +31262,5 @@ KDContextMenu_Stop,Stop Waiting
 
 KDBedSleptLevel,(Already slept here)
 KDBedWillNotLow,(Will not low enough)
+
+KDMoveCloser,Move closer to interact
