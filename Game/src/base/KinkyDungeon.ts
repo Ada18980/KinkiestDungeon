@@ -1714,6 +1714,8 @@ function KDCloseFullscreen() {
 let saveError = false;
 
 function KinkyDungeonRun() {
+
+
 	if (KDSaveQueue.length > 0 && !KDSaveBusy) {
 		KDSaveBusy = true;
 		let ss = KDSaveSlot;
@@ -3294,8 +3296,6 @@ function KinkyDungeonRun() {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					let lastStamina = KinkyDungeonStatStamina;
 					let wt = KDNormalWaitTime;
-					KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
-
 					if (KinkyDungeonAutoWait) {
 						if (KinkyDungeonFastStruggle && KinkyDungeonStatStamina == KinkyDungeonStatStaminaMax && lastStamina < KinkyDungeonStatStamina) {
 							if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonInDanger())
@@ -3305,7 +3305,12 @@ function KinkyDungeonRun() {
 						else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = KDNormalWaitTime;
 						else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = KDFastWaitTime;
 						else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = KDVeryFastWaitTime;
+					} else {
+						wt = (KinkyDungeonInDanger() ? 250 : 0) + 250 * (0.25 + KDAnimSpeed * 0.75)
 					}
+					KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+
+
 					KinkyDungeonSleepTime = CommonTime() + (wt);
 				}
 			} else if (KinkyDungeonAutoWaitStruggle) {
@@ -3670,7 +3675,7 @@ function KDGetCullTime() {
 function KDPurgeFilterSprites() {
 	for (let entry of kdFilterSprites.entries()) {
 		//@ts-ignore
-		if (entry[0].destroyed || entry[0].parent === null) {
+		if (entry[0].destroyed || entry[0].parent === null || !entry[0].baseTexture) {
 			KDPurgeSpriteRelatedFilters(entry[0]);
 		}
 	}

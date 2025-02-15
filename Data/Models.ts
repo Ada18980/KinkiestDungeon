@@ -2707,9 +2707,12 @@ function KDModelIsProtected(m: Model): boolean {
 }
 
 function KDContainerClear(Container: ContainerInfo) {
-	Container.Mesh.destroy();
+	Container.Mesh.destroy({
+		texture: true,
+		baseTexture: true,
+	});
 	Container.Container.destroy();
-	Container.RenderTexture.destroy();
+	Container.RenderTexture.destroy(true);
 }
 
 function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIXISprite) {
