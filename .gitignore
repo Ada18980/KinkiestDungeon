@@ -10,7 +10,9 @@
 !/Scripts/**/*
 !/Screens/**/*
 !/Mods/example_enemy.zip
+!/Mods/example_unlimitedbed.zip
 !/Mods/example_enemy/**/*
+!/Mods/example_unlimitedbed/**/*
 !/Data/**/*
 !/Models/**/*
 !/ModelsBack/**/*

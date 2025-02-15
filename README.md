@@ -50,4 +50,9 @@ docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app -p 8080:
 Afterwards open http://localhost:8080 in your browser of choice. Press ctrl+c in the terminal to stop the server when you are done.
 
 ## Test in offline version of the game
-After building, copy files from the `out` folder to `<your KD game directory>/resources/app/out`.
+After building, copy files from the `out` folder to `<your KD game directory>/resources/app/out`. If you have added other files (music, assets etc) then make sure to copy those as well!
+
+## Mod support
+Check out tutorials: https://itch.io/board/3693437/tutorials
+
+See example mods in `Mods` folder
