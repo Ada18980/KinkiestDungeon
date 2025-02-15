@@ -1,28 +1,28 @@
 "use strict";
 
-let KDAim = {
+const KDAim: KDBuff = {
 	id: "Aim", replaceSpriteSuff: "_Aim", replacePower: 0.5,
 	type: "Aim", power: 1, duration: 3, events: [
 		{type: "EnemyAim", trigger: "tickAfter", dist: 2},
 		{type: "EnemyAim", sprite: "UI/Crosshair", trigger: "draw"},
 	]};
-let KDEquip = {
+const KDEquip: KDBuff = {
 	id: "Equip", replaceSpriteSuff: "_Equip", replacePower: 0.25,
 	type: "Equip", power: 1, duration: 3};
-let KDAim2 = {
+const KDAim2: KDBuff = {
 	id: "Aim2",
 	type: "MoveSpeed", power: -2, duration: 1};
-let KDAim3 = {
+const KDAim3: KDBuff = {
 	id: "Aim3",
 	type: "AttackSlow", power: 2, duration: 1};
 
-let KDConduction = {id: "Conduction", type: "event", aura: "#ffff88", noAuraColor: true, aurasprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
+const KDConduction: KDBuff = {id: "Conduction", type: "event", aura: "#ffff88", noAuraColor: true, auraSprite: "Conduction", power: 7.0, player: true, duration: 5, enemies: true, range: 2.99, events: [
 	{type: "RemoveConduction", duration: 1, trigger: "tick"},
 	{type: "Conduction", power: 0.5, duration: 5, damage: "electric", aoe: 3.99, trigger: "playerTakeDamage"},
 	{type: "Conduction", power: 0.5, duration: 5, damage: "electric", aoe: 3.99, trigger: "beforeDamageEnemy"},
 ]};
 
-let KDDrenched = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", aurasprite: "Drenched", power: 0.425, player: true, duration: 20, enemies: true, events: [
+const KDDrenched: KDBuff = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", auraSprite: "Drenched", power: 0.425, player: true, duration: 20, enemies: true, events: [
 	{type: "RemoveDrench", duration: 1, trigger: "tick"},
 	{type: "Evaporate", mult: 1, trigger: "tick"},
 	{type: "ApplyConduction", duration: 1, trigger: "tick", kind: "invis"},
@@ -30,76 +30,77 @@ let KDDrenched = {id: "Drenched", type: "fireDamageResist", aura: "#59a0d1", aur
 ]};
 
 
-let KDAdrenaline = {
+const KDAdrenaline: KDBuff = {
 	// Is a hell of a drug
 	id: "Adrenaline", type: "VisionRad", power: 0.5, duration: 2, tags: ["adren"],
 };
 
-let KDAdrenaline2 = {
+const KDAdrenaline2: KDBuff = {
 	// Is a hell of a drug
 	id: "Adrenaline2", type: "VisionRad", power: 2, duration: 2,
 };
 
-let KDBurning = {id: "Burning", type: "event", aura: "#ff8933", aurasprite: "Flaming", noAuraColor: true, power: 0.5, player: true, duration: 6, enemies: true, events: [
+const KDBurning: KDBuff = {id: "Burning", type: "event", aura: "#ff8933", auraSprite: "Flaming", noAuraColor: true, power: 0.5, player: true, duration: 6, enemies: true, events: [
 	{type: "RemoveBurning", trigger: "tick"},
 	{type: "ElementalEffect", power: 0.5, damage: "fire", trigger: "tick"},
 	{type: "EchoDamage", power: 1.0, damage: "fire", damageTrigger: "stun", trigger: "beforeDamageEnemy"},
 	{type: "EchoDamage", power: 1.0, damage: "fire", damageTrigger: "stun", trigger: "playerTakeDamage"},
 ]};
 
-let KDTrainingUnit = {id: "TrainingUnit", type: "TrainingUnit", aura: "#00ff00", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true,
+const KDTrainingUnit: KDBuff = {id: "TrainingUnit", type: "TrainingUnit", aura: "#00ff00", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true,
 	events: [
 		{type: "TrainingUnit", trigger: "tick"},
 		{type: "TrainingUnitReveal", trigger: "tick"},
 	],
 };
 
-let KDDisenchant1 = {id: "Disenchant1", type: "MoveSpeed", aura: "#440088", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true};
-let KDDisenchant2 = {id: "Disenchant2", type: "AttackSlow", aura: "#440088", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true};
+const KDDisenchant1: KDBuff = {id: "Disenchant1", type: "MoveSpeed", aura: "#440088", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true};
+const KDDisenchant2: KDBuff = {id: "Disenchant2", type: "AttackSlow", aura: "#440088", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true};
 
-let KDVolcanism = {id: "Volcanism", type: "event", aura: "#ff5277", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true, events: [
+const KDVolcanism: KDBuff = {id: "Volcanism", type: "event", aura: "#ff5277", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true, events: [
 	{type: "Volcanism", power: 4.0, damage: "fire", trigger: "beforeDamageEnemy"},
 ]};
 
-let KDDrenched2 = {id: "Drenched2", type: "electricDamageResist", power: -0.2, player: true, duration: 20, enemies: true,
+const KDDrenched2: KDBuff = {id: "Drenched2", type: "electricDamageResist", power: -0.2, player: true, duration: 20, enemies: true,
 	events: [
 		{type: "Evaporate", mult: 1, trigger: "tick"},
 	],
 };
-let KDDrenched3 = {id: "Drenched3", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true,
+const KDDrenched3: KDBuff = {id: "Drenched3", type: "iceDamageResist", power: -0.35, player: true, duration: 20, enemies: true,
 	events: [
 		{type: "Evaporate", mult: 1, trigger: "tick"},
 	],
 };
 
-let KDBoundByFate = {id: "BoundByFate", type: "Fate", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
+const KDBoundByFate: KDBuff = {id: "BoundByFate", type: "Fate", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
 	{type: "BoundByFate", kind: "mithrilRope", count: 2, trigger: "tick", power: 1, damage: "cold"},
 ]};
 
-let KDTaunted = {id: "Taunted", type: "Taunt", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
+const KDTaunted: KDBuff = {id: "Taunted", type: "Taunt", power: 1, player: true, duration: 3, enemies: false, aura: "#dddddd", events: [
 	{type: "Taunted", count: 2, trigger: "tick", power: 3, damage: "soul"},
 ]};
 
-let KDPoisonSleep = {
+const KDPoisonSleep: KDBuff = {
 	id: "poisonSleep", type: "Event", power: 0.1, duration: 10, events: [
 		{type: "poisonSleep", trigger: "tick"},
 		{type: "poisonSleep", trigger: "expireBuff"},
 	]
 }
 
-let KDEager = {
+const KDEager: KDBuff = {
 	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [
 		{type: "ApplyVuln", duration: 1, trigger: "tick"},
 		{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
 	]
 };
-let KDMasochist = {
+const KDMasochist: KDBuff = {
 	id: "Masochist", type: "DamageAmp", power: -1, duration: 1
 };
 
-let KDChilled = {id: "Chilled", aura: "#73efe8", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 2,};
-let KDSlimed = {
-	id: "Slimed", aura: "#dc16bc", aurasprite: "Slimed", noAuraColor: true, type: "SlimeProgress", power: 1.0, player: true, enemies: true, duration: 3, range: 0.5, hideHelpless: true, tags: ["slimed"], events: [
+const KDChilled: KDBuff = {id: "Chilled", aura: "#73efe8", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 2,};
+const KDSlimed: KDBuff = {
+	// hideHelpless doesn't seem to be used anymore
+	id: "Slimed", aura: "#dc16bc", auraSprite: "Slimed", noAuraColor: true, type: "SlimeProgress", power: 1.0, player: true, enemies: true, duration: 3, range: 0.5, /* hideHelpless: true, */ tags: ["slimed"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "Flammable", trigger: "beforeDamageEnemy"},
 		{type: "Flammable", trigger: "beforePlayerDamage"},
@@ -109,7 +110,7 @@ let KDSlimed = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.3, trigger: "tickAfter"},
 	]
 };
-let KDEncased = {
+const KDEncased: KDBuff = {
 	id: "Encased", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replacePower: 2.5, replaceSprite: "EncasedDoll", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick"},
@@ -123,7 +124,7 @@ let KDEncased = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
 	]
 };
-let KDEncasedMetal = {
+const KDEncasedMetal: KDBuff = {
 	id: "Encased", type: "SlimeProgress", power: 2.5, player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, replaceSpriteBound: "EncasedFactoryDollMetal", replaceSprite: "EncasedDollMetal", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick"},
@@ -139,7 +140,7 @@ let KDEncasedMetal = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
 	]
 };
-let KDEncasedDoll = {
+const KDEncasedDoll: KDBuff = {
 	id: "EncasedDoll", type: "SlimeProgress", power: 2.0, player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, replaceSpriteBound: "EncasedFactoryDoll", replaceSprite: "EncasedFactoryDoll", tags: ["encased"], events: [
 		{type: "RemoveSlimeWalk", duration: 1, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick"},
@@ -153,49 +154,49 @@ let KDEncasedDoll = {
 		{type: "ApplyGlueVuln", duration: 1, power: -0.5, trigger: "tickAfter"},
 	]
 };
-let KDChastity = {
-	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", aurasprite: "Chastity", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["chastity"], events: [
+const KDChastity: KDBuff = {
+	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", auraSprite: "Chastity", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["chastity"], events: [
 		{type: "Distract", power: 0.01, trigger: "tick", prereq: "bound"},
 	]
 };
-let KDVibrate1 = {
+const KDVibrate1: KDBuff = {
 	id: "Vibrate", type: "Vibration", power: 1.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
 		{type: "RemoveNoPlug", trigger: "tick"},
 	]
 };
-let KDVibrate2 = {
+const KDVibrate2: KDBuff = {
 	id: "Vibrate2", type: "Vibration", power: 2.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
 		{type: "RemoveNoPlug", trigger: "tick"},
 	]
 };
-let KDVibrate3 = {
+const KDVibrate3: KDBuff = {
 	id: "Vibrate3", type: "Vibration", power: 3.0, aura: "#ffaaaa", duration: 3, tags: ["plugged"], events: [
 		{type: "RemoveNoPlug", trigger: "tick"},
 	]
 };
-let KDToySecret = {
+const KDToySecret: KDBuff = {
 	id: "Toy", type: "Plug", power: 0.1, duration: 9999, infinite: true, range: 0.5, tags: ["toy"],
 };
-let KDToy = {
-	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", aurasprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"],
+const KDToy: KDBuff = {
+	id: "Toy", type: "Plug", power: 0.1, aura: "#dddddd", auraSprite: "Toy", player: false, enemies: true, duration: 30, range: 0.5, tags: ["toy"],
 	events: [
 		{type: "ExtendDisabledOrHelplessOrChastity", trigger: "tick"},
 	]
 };
-let KDPlugged = {
-	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", aurasprite: "Plugged", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["plugged"], events: [
+const KDPlugged: KDBuff = {
+	id: "Plugged", type: "Plug", power: 1.0, aura: "#dddddd", auraSprite: "Plugged", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["plugged"], events: [
 		{type: "Distract", power: 0.2, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
-let KDDoublePlugged = {
-	id: "DoublePlugged", type: "Plug", power: 2.0, aura: "#dddddd", aurasprite: "DoublePlugged", player: false, enemies: true, duration: 9998, range: 0.5, tags: ["plugged"], events: [
+const KDDoublePlugged: KDBuff = {
+	id: "DoublePlugged", type: "Plug", power: 2.0, aura: "#dddddd", auraSprite: "DoublePlugged", player: false, enemies: true, duration: 9998, range: 0.5, tags: ["plugged"], events: [
 		{type: "Distract", power: 0.5, trigger: "tick"},
 		{type: "RemoveFree", trigger: "tick", prereq: "NoChastity"},
 	]
 };
 
-let KDTaped = {
+const KDTaped: KDBuff = {
 	id: "Taped", type: "chainDamageResist", power: -0.15, duration: 1, replaceSpriteBound: "TapedDoll", tags: ["taped"], aura: "#4fa4b8", replacePower: 2.0,
 	events: [
 		{type: "ExtendDisabledOrHelpless", trigger: "tick"},
@@ -203,53 +204,53 @@ let KDTaped = {
 	]
 };
 
-let KDGlueVulnLow = {
+const KDGlueVulnLow: KDBuff = {
 	id: "GlueVuln", type: "glueDamageResist", power: -0.3, player: true, enemies: true, duration: 1
 };
-let KDGlueResist = {
+const KDGlueResist: KDBuff = {
 	id: "GlueVuln", type: "glueDamageResist", power: 0.5, player: false, enemies: true, duration: 1
 };
-let KDDollDebuff = {
+const KDDollDebuff: KDBuff = {
 	id: "DollDebuff", type: "soulDamageResist", power: -0.5, player: false, enemies: true, duration: 2, aura: "#ff8888",
 };
-let KDDollDebuff2 = {
+const KDDollDebuff2: KDBuff = {
 	id: "DollDebuff2", type: "charmDamageResist", power: -0.5, player: false, enemies: true, duration: 2
 };
-let KDSlowed = {
+const KDSlowed: KDBuff = {
 	id: "Slowed", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1
 };
-let KDSlowedSlightly = {
+const KDSlowedSlightly: KDBuff = {
 	id: "Slowed", type: "MoveSpeed", power: -.5, player: true, enemies: true, duration: 1
 };
-let KDKnockbackable = {
+const KDKnockbackable: KDBuff = {
 	id: "Knockbackable", type: "Knockback", power: 2.0, player: true, enemies: true, duration: 1
 };
-let KDAttackSlow = {
+const KDAttackSlow: KDBuff = {
 	id: "AttackSlow", type: "AttackSlow", power: 0.5, player: true, enemies: true, duration: 1
 };
 
 
-let KDAntiMagicMiscast = {id: "AntiMagicMiscast", aura: "#00ffff", type: "Miscast", power: 0.5, player: false, enemies: true,
+const KDAntiMagicMiscast: KDBuff = {id: "AntiMagicMiscast", aura: "#00ffff", type: "Miscast", power: 0.5, player: false, enemies: true,
 	duration: 2,};
 
-let KDUnsteady = {id: "Unsteady", aura: "#aa8888", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
-let KDUnsteady2 = {id: "Unsteady2", aura: "#aa8888", type: "HeelPower", power: 2.5, player: true, enemies: false, duration: 3,};
-let KDUnsteady3 = {id: "Unsteady3", type: "Evasion", power: -0.5, player: true, enemies: false, duration: 3,};
+const KDUnsteady: KDBuff = {id: "Unsteady", aura: "#aa8888", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
+const KDUnsteady2: KDBuff = {id: "Unsteady2", aura: "#aa8888", type: "HeelPower", power: 2.5, player: true, enemies: false, duration: 3,};
+const KDUnsteady3: KDBuff = {id: "Unsteady3", type: "Evasion", power: -0.5, player: true, enemies: false, duration: 3,};
 
-let KDWaterSlow = {id: "WaterSlow", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
+const KDWaterSlow: KDBuff = {id: "WaterSlow", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
 
-let KDNoChill = {id: "ChillWalk", aura: "#73efe8", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
-let KDNoChillNoAura = {id: "ChillWalk2", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
+const KDNoChill: KDBuff = {id: "ChillWalk", aura: "#73efe8", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
+const KDNoChillNoAura: KDBuff = {id: "ChillWalk2", type: "ChillWalk", power: -1.0, player: true, enemies: true, duration: 2,};
 function KDChillWalk(entity: entity) {
 	return KDEntityHasBuff(entity, "ChillWalk") || KDEntityHasBuff(entity, "ChillWalk2");
 }
 
-let KDRestraintDisarmLight = {id: "RestDisarmLight", aura: "#ff5277", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
+const KDRestraintDisarmLight: KDBuff = {id: "RestDisarmLight", aura: "#ff5277", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
 	{type: "RemoveRestraint", trigger: "tick"},
 	{type: "ApplyDisarm", trigger: "playerAttack"},
 ]};
 
-let KDRestraintReduceAccuracy = {id: "RestraintAccPen", type: "AccuracyPenalty", power: 0, duration: 2,};
+const KDRestraintReduceAccuracy: KDBuff = {id: "RestraintAccPen", type: "AccuracyPenalty", power: 0, duration: 2,};
 
 let KDBuffReference = {
 	"RestraintDisarmLight": [KDRestraintDisarmLight],
@@ -262,14 +263,14 @@ let KDBuffReference = {
 	"Vibrate3": [KDVibrate3],
 };
 
-let KDDisenchantSelf = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
+const KDDisenchantSelf: KDBuff = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
 
-let KDCustomBuff: Record<string, (entity: entity, buff: any) => void> = {
+let KDCustomBuff: Record<string, (entity: entity, buff: KDBuff) => void> = {
 };
 
 /**
  */
-let KDBuffClick: Record<string, (buff: any, entity: entity) => void> = {
+let KDBuffClick: Record<string, (buff: KDBuff, entity: entity) => void> = {
 	"SlimeMimic": (_buff, entity) => {
 		// Toggle SlimeMimic on/off
 		let b = KinkyDungeonPlayerBuffs.d_SlimeMimic;
@@ -277,7 +278,7 @@ let KDBuffClick: Record<string, (buff: any, entity: entity) => void> = {
 			b.duration = 0;
 		} else {
 			KinkyDungeonApplyBuffToEntity(entity,
-				{id: "d_SlimeMimic", click: "SlimeMimic", type: "d_SlimeMimic", aura: "#ffffff", aurasprite: "Null", duration: 9999, infinite: true, power: 1}
+				{id: "d_SlimeMimic", click: "SlimeMimic", type: "d_SlimeMimic", aura: "#ffffff", auraSprite: "Null", duration: 9999, infinite: true, power: 1}
 			);
 		}
 	},
@@ -287,11 +288,11 @@ let KDBuffClick: Record<string, (buff: any, entity: entity) => void> = {
 		if (b && b.duration > 0) {
 			b.duration = 0;
 			KinkyDungeonApplyBuffToEntity(entity,
-				{id: "e_OrgasmResist", click: "OrgasmResist", type: "e_OrgasmResist", buffSprite: true, aura: "#ffffff", aurasprite: "Null", duration: 9999, infinite: true, power: 1}
+				{id: "e_OrgasmResist", click: "OrgasmResist", type: "e_OrgasmResist", buffSprite: true, aura: "#ffffff", auraSprite: "Null", duration: 9999, infinite: true, power: 1}
 			);
 		} else {
 			KinkyDungeonApplyBuffToEntity(entity,
-				{id: "d_OrgasmResist", click: "OrgasmResist", type: "d_OrgasmResist", buffSprite: true, aura: "#ffffff", aurasprite: "Null", duration: 9999, infinite: true, power: 1}
+				{id: "d_OrgasmResist", click: "OrgasmResist", type: "d_OrgasmResist", buffSprite: true, aura: "#ffffff", auraSprite: "Null", duration: 9999, infinite: true, power: 1}
 			);
 			if (KinkyDungeonPlayerBuffs.e_OrgasmResist) KinkyDungeonPlayerBuffs.e_OrgasmResist.duration = 0;
 		}

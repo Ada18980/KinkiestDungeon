@@ -6933,6 +6933,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			}
 			KinkyDungeonFloaters = [];
 			KDFixNeeds();
+			KDUpdateBuffsOnLoad();
 			KDSortCollection();
 			KinkyDungeonAdvanceTime(0, true, true);
 			KinkyDungeonSendEvent("afterLoadGame", {});

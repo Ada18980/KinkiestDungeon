@@ -157,7 +157,7 @@ let KinkyDungeonUndress = 0; // Level of undressedness
 /** Current list of spells */
 let KinkyDungeonSpells: spell[] = [];
 // FIXME: This object should be formally specified as some point.
-let KinkyDungeonPlayerBuffs: Record<string, any> = {};
+let KinkyDungeonPlayerBuffs: Record<string, KDBuff> = {};
 
 // Temp - for multiplayer in future
 let KinkyDungeonPlayers = [];
@@ -1636,7 +1636,16 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		if (KinkyDungeonSleepiness > 2.99) {
 			KinkyDungeonSlowLevel = Math.max(KinkyDungeonSlowLevel, 2);
 			//KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness/2), 5);
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Sleepy", aura: "#222222", type: "AttackStamina", duration: 3, power: -1, player: true, enemies: false, tags: ["attack", "stamina"]});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "Sleepy",
+				aura: "#222222",
+				type: "AttackStamina",
+				duration: 3,
+				power: -1,
+				player: true,
+				enemies: false,
+				tags: ["attack", "stamina"]
+			});
 		}
 		if (KinkyDungeonSleepiness > 0) {
 			KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness*0.5), Math.min(Math.round(KinkyDungeonSleepiness*0.7), 6));
@@ -1683,7 +1692,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			duration: 1,
 			buffSprite: true,
 			aura: "#ff5277",
-			aurasprite: "NoWP",
+			auraSprite: "NoWP",
 			type: "EvasionPenalty",
 			power: 1,
 		});

@@ -178,7 +178,7 @@ interface KDRestraintPropsBase {
 	allFloors?: boolean,
 	cloneTag?: string,
 
-	escapeChance?: any,
+	escapeChance?: KDEscapeChanceList,
 
 	events?: KinkyDungeonEvent[],
 	enemyTags?: Record<string, number>,
@@ -586,7 +586,7 @@ interface restraint extends KDRestraintProps {
 	/** Descriptor for tightness, e.g. Secure, Thick */
 	tightType?: string,
 
-	escapeChance: any,
+	escapeChance: KDEscapeChanceList,
 
 	enemyTags: Record<string, number>,
 	/** Multiplies the weight AFTER, useful for minimizing things */
@@ -607,11 +607,19 @@ interface restraint extends KDRestraintProps {
 	ApplyVariants?: Record<string, {weightMod: number, weightMult: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
 }
 
+/**
+ * Used to define the chance of getting out of restraints
+ */
 interface KDEscapeChanceList {
+	/** Struggle inside the restraint */
 	Struggle?: number,
+	/** Cut the restraint */
 	Cut?: number,
+	/** Removing the restraint */
 	Remove?: number,
+	/** Picking the lock */
 	Pick?: number,
+	/** Removing an opened lock */
 	Unlock?: number,
 }
 
@@ -1677,6 +1685,54 @@ interface String {
     KDReplaceOrAddDmg(dmg: string, replaceString?: string): string;
 }
 
+/**
+ * Holds all the information required to handle buffs
+ * TODO: Check which fields are required and document their use
+ */
+interface KDBuff {
+	id: string,
+	power?: number,
+	type?: string,
+	duration?: number,
+	infinite?: boolean,
+	aura?: string,
+	range?: number,
+	currentCount?: number,
+	maxCount?: number,
+	tags?: Array<string>,
+	data?: Record<string, any>,
+	mushroom?: boolean,
+	cancelOnReapply?: boolean,
+
+	player?: boolean,
+	enemies?: boolean,
+	events?: Array<any>,
+	endFloor?: boolean,
+	endSleep?: boolean,
+	spell?: any,
+	auraSprite?: any,
+	noAuraColor?: boolean,
+	showHelpless?: boolean,
+	replaceSprite?: any,
+	replaceSpriteBound?: any,
+	replaceSpriteSuff?: any,
+	replaceSpriteSuffBound?: any,
+	replacePower?: any,
+	labelcolor?: string,
+	hide?: boolean,
+	text?: any,
+	desc?: string,
+	buffTextReplace?: Record<string, any>,
+	buffSprite?: boolean,
+	pose?: any,
+	buffSpriteSpecific?: string,
+	click?: string,
+	disableTypes?: Array<string>,
+	sfxApply?: string,
+	onlyAlly?: boolean,
+	noAlly?: boolean,
+}
+
 interface entity {
 	/** Tick of last move */
 	lastmove?: number,
@@ -1862,7 +1918,7 @@ interface entity {
 	stun?: number,
 	silence?: number,
 	vulnerable?: number,
-	buffs?: Record<string, any>,
+	buffs?: Record<string, KDBuff>,
 	warningTiles?: any,
 	visual_x?: number,
 	visual_y?: number,
@@ -2354,7 +2410,7 @@ interface spell {
 	/** spell cast on hit */
 	spellcasthit?: SubCastInfo;
 	/** List of buffs applied by the spell */
-	buffs?: any[];
+	buffs?: KDBuff[];
 	/** Whether the spell is off by default */
 	defaultOff?: boolean;
 	/** List of events  applied by the spell */

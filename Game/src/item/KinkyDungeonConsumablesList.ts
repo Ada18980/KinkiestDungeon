@@ -169,10 +169,12 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			KinkyDungeonChangeRep("Ghost", amount);
 		} else {
 			let power =
-			KinkyDungeonApplyBuffToEntity(entity, {id: Consumable.name,
-				type: "submissiveness", power: Math.max(0,
-					(Consumable.data.subPower as number) + (KDRandom() * (Consumable.data.subPowerVar as number))
-				), duration: Consumable.data.subDuration});
+			KinkyDungeonApplyBuffToEntity(entity, {
+				id: Consumable.name,
+				type: "submissiveness",
+				power: Math.max(0, (Consumable.data.subPower as number) + (KDRandom() * (Consumable.data.subPowerVar as number))),
+				duration: Consumable.data.subDuration as number,
+			});
 		}
 
 	},

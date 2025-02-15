@@ -3530,7 +3530,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		buffs: [
 			{
 				id: "ShieldTheWitch",
-				aura: "#bd80f4", aurasprite: "EnergyShield",
+				aura: "#bd80f4", auraSprite: "EnergyShield",
 				type: "MaxShield",
 				duration: 6, power: 8,
 				player: false, enemies: true, tags: ["defense", "shield"]

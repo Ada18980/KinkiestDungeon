@@ -994,7 +994,7 @@ function KDProcessInput(type: string, data: any): string {
 				else KinkyDungeonApplyBuffToEntity(data.enemy, {
 					id: "AllySelect",
 					aura: "#ffffff",
-					aurasprite: "Select",
+					auraSprite: "Select",
 					duration: 9999, infinite: true,
 					type: "Sel",
 					power: 1,
@@ -1008,7 +1008,7 @@ function KDProcessInput(type: string, data: any): string {
 				else if (e.id == data.enemy?.id) KinkyDungeonApplyBuffToEntity(e, {
 					id: "AllySelect",
 					aura: "#ffffff",
-					aurasprite: "Select",
+					auraSprite: "Select",
 					duration: 9999, infinite: true,
 					type: "Sel",
 					power: 1,

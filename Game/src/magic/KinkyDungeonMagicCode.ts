@@ -23,8 +23,18 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (!en.buffs || !en.buffs.Analyze) {
 				if (_miscast) return "Miscast";
 				if (!en.buffs) en.buffs = {};
-				KinkyDungeonApplyBuffToEntity(en, {id: "Analyze", aura: "#ffffff", type: "DamageAmp", duration: 99999, power: 0.3, player: false, enemies: true, maxCount: 3, tags: ["defense", "damageTaken"]},);
-				KinkyDungeonApplyBuffToEntity(en, {id: "Analyze2", type: "Info", duration: 99999, power: 1.0, player: false, enemies: true, tags: ["info"]},);
+				KinkyDungeonApplyBuffToEntity(en, {
+					id: "Analyze",
+					aura: "#ffffff",
+					type: "DamageAmp",
+					duration: 99999,
+					power: 0.3,
+					player: false,
+					enemies: true,
+					maxCount: 3,
+					tags: ["defense", "damageTaken"],
+				});
+				KinkyDungeonApplyBuffToEntity(en, {id: "Analyze2", type: "Info", duration: 99999, power: 1.0, player: false, enemies: true, tags: ["info"]});
 			} else return "Fail";
 		} else {
 			let tile = KinkyDungeonTilesGet(targetX + "," + targetY);
@@ -159,8 +169,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					// Disrobe enemies
 					KinkyDungeonApplyBuffToEntity(en, {
 						id: "MoiraiDisrobe",
-						aura: "#ff88ff",
-						aurasprite: "Disrobe",
+						aura: "#ff88ff", auraSprite: "Disrobe",
 						duration: spell.time,
 						power: spell.power,
 						type: "charmDamageResist",
@@ -1094,13 +1103,13 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Aim_MaidKnightLight": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		// Spell that can ONLY be cast by NPCs
 		let aimBuff = KDEntityGetBuff(entity, "Aim");
-		if (aimBuff) {
+		if (aimBuff && aimBuff.data) {
 			let aimMode = KDEntityBuffedStat(entity, "Aim");
 			if (aimMode > 1.5) {
 				// FIRE!!!
 				KinkyDungeonCastSpell(
-					aimBuff.x,
-					aimBuff.y,
+					aimBuff.data.x,
+					aimBuff.data.y,
 					KinkyDungeonFindSpell("RubberSniper",
 						true),
 						entity, undefined, undefined);
@@ -1110,19 +1119,24 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			} else {
 				// Do nothing. Aim buff handles the subroutine just fine
 				KinkyDungeonApplyBuffToEntity(entity, KDAim, {
-						x: aimBuff.x, y: aimBuff.y,
-						vx: aimBuff.vx,
-						vy: aimBuff.vy,
-				});
+					data: {
+						x: aimBuff.data.x,
+						y: aimBuff.data.y,
+						vx: aimBuff.data.vx,
+						vy: aimBuff.data.vy,
+				}});
 			}
 			return "Cast";
 		} else {
 			// Start aiming
 			KinkyDungeonApplyBuffToEntity(entity, KDAim, {
-				x: entity.x, y: entity.y,
-				vx: entity.x, vy: entity.y,
-				delay: 1
-			});
+				data: {
+					x: entity.x,
+					y: entity.y,
+					vx: entity.x,
+					vy: entity.y,
+					delay: 1,
+			}});
 			return "Cast";
 		}
 
@@ -1903,9 +1917,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			});
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/PowerMagic.ogg");
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
-				id: "DistractionCast", type: "MiscastChance", power: -1, duration: KDEssenceMoteDuration(),
-				aura: "#ff8888", aurasprite: "Heart", buffsprite: true,
-				events: [{type: "EssenceMote", trigger: "tick", mult: -1/KDEssenceMoteDuration()}],
+				id: "DistractionCast",
+				type: "MiscastChance",
+				power: -1,
+				duration: KDEssenceMoteDuration(),
+				aura: "#ff8888", auraSprite: "Heart",
+				buffSprite: true,
+				events: [
+					{type: "EssenceMote", trigger: "tick", mult: -1/KDEssenceMoteDuration()}
+				],
 			});
 			KDAddEssenceMoteDP();
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -2121,8 +2141,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (en.buffs?.AllySelect) KinkyDungeonExpireBuff(en, "AllySelect");
 			else KinkyDungeonApplyBuffToEntity(en, {
 				id: "AllySelect",
-				aura: "#ffffff",
-				aurasprite: "Select",
+				aura: "#ffffff", auraSprite: "Select",
 				duration: 9999, infinite: true,
 				type: "Sel",
 				power: 1,
@@ -2137,8 +2156,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (en && KDAllied(en)) {
 				KinkyDungeonApplyBuffToEntity(en, {
 					id: "AllySelect",
-					aura: "#ffffff",
-					aurasprite: "Select",
+					aura: "#ffffff", auraSprite: "Select",
 					duration: 9999, infinite: true,
 					type: "Sel",
 					power: 1,
