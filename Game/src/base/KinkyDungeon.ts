@@ -1990,7 +1990,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonVis(1870, 930, 110, 64, TextGet("KinkyDungeonBack"), "#ffffff", "");
 		DrawButtonKDEx("patronnext", (_bdata) => {
-			if (KinkyDungeonPatronPos * maxPatron < credits.length - maxPatron * maxPatron) KinkyDungeonPatronPos += 1;
+			if (KinkyDungeonPatronPos * maxPatron < credits.length - maxPatron) KinkyDungeonPatronPos += 1;
 			else KinkyDungeonPatronPos = 0;
 			return true;
 		}, true, 1730, 930, 110, 64, TextGet("KinkyDungeonNext"), "#ffffff", "");
