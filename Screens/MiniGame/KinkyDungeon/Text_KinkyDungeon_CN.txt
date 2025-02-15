@@ -1,9 +1,5 @@
-前往 https://paratranz.cn/projects/12190 参加KD汉化
-
 By Strait-Laced Games
 由 Strait-Laced Games 呈现
-
-
 Credits
 贡献者
 Patrons
@@ -34610,8 +34606,6 @@ You fire the Persuader!
 
 Your ITMN1 was cursed and transforms into a ITMN2!
 您的ITMN1被诅咒并转变为ITMN2！
-
-
 Equipping Restraint...
 装备束缚...
 Equipping Armor...
@@ -34620,8 +34614,6 @@ Using Consumable...
 使用消耗品...
 Struggling...
 挣扎中...
-
-
 The ITMN1 is purified and returns to being a ITMN2!
 ITMN1被净化，恢复为ITMN2！
 Reverts if purified with item.
@@ -34630,32 +34622,3 @@ Reverts if purified with item.
 意料之中的。
 Comes with an artistic flair.
 具有艺术气息。
-
-
-### Set Pivot
-
-### Toggle click & drag
-
-### Settings
-
-### Scroll Controls:
-
-### Layer Text:
-
-### No Actions Available
-
-### Talk
-
-### Move To
-
-### Take Stairs
-
-### Allow Passing
-
-### Tie Up
-
-### Attempt to Tie
-
-### Move Closer to Tie
-
-### Sprint (AMNT)
