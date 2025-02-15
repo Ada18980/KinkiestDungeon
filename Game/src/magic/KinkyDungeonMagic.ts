@@ -1890,13 +1890,9 @@ let KDMagicFilter = "";
  */
 function KDFilterSpell(spell: spell): boolean {
 	let prereq = spell ? KinkyDungeonCheckSpellPrerequisite(spell) : false;
-	let prq = (spell && !prereq)
-			? (spell.upcastFrom ? KinkyDungeonFindSpell(spell.upcastFrom) :
-				((KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && spell.prerequisite != "Null")
-					? KinkyDungeonFindSpell(spell.prerequisite) : null)) : null;
 	let prereqHost = spell ? prereq ||
-		(spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(prq)) ||
-		(KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && spell.prerequisite != "Null" && !prq?.increasingCost && !prq?.hideLearnableChildren && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.prerequisite)))
+		(spell.upcastFrom && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.upcastFrom))) ||
+		(KDToggles.ShowSameCatSpells && typeof spell.prerequisite == "string" && spell.prerequisite && spell.prerequisite != "Null" && !KinkyDungeonFindSpell(spell.prerequisite)?.increasingCost && KinkyDungeonCheckSpellPrerequisite(KinkyDungeonFindSpell(spell.prerequisite)))
 		: false;
 	let learned = spell ? KinkyDungeonSpellIndex(spell.name) >= 0 : false;
 	// Youve learned the spell tree
@@ -2759,32 +2755,4 @@ function KinkyDungeonSpellRemove(spellobject: spell | string) {
 
 function KDShockCollarCost() {
 	return 3*(2**Math.max(0, KDEntityBuffedStat(KDPlayer(), "ShockCollarCD", true)));
-}
-
-// Returns true or false if a spell is toggled on, or undefined if the spell doesn't exist.
-function KinkyDungeonSpellToggledOn(spellobject: spell | string) {
-    // Determine if the spell passed to us is a string or not
-	let sp: string;
-	if (typeof spellobject == "string") {
-		sp = spellobject;
-	}
-	else {
-		// This is a spell object - take the .name property
-		sp = spellobject.name;
-	}
-    let spelllist = KinkyDungeonSpells.map((spell) => spell.name);
-    // Return undefined if the spell isnt in the spellbook.
-    if (!spelllist.includes(sp)) {
-        return undefined;
-    }
-    for (let i = 0; i < spelllist.length; i++) {
-        if (spelllist[i] == sp) {
-            for (let v = 0; v < KinkyDungeonSpellChoices.length; v++) {
-                if (i == KinkyDungeonSpellChoices[v]) {
-                    return KinkyDungeonSpellChoicesToggle[v];
-                }
-            }
-        }
-    }
-    return false
 }

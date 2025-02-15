@@ -456,8 +456,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"Boss": {
 		selectValid: false,
 		check: () => {
-			return MiniGameKinkyDungeonLevel < KDGameData.HighestLevelCurrent
-				|| KinkyDungeonFlags.has("BossUnlocked") || (KDMapData.Entities.length == 0 || KDMapData.Entities.filter((en) => {return en.Enemy?.tags?.stageBoss;}).length == 0);
+			return KinkyDungeonFlags.has("BossUnlocked") || (KDMapData.Entities.length == 0 || KDMapData.Entities.filter((en) => {return en.Enemy?.tags?.stageBoss;}).length == 0);
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.Boss.check();
@@ -473,8 +472,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"SealSigil": {
 		selectValid: false,
 		check: () => {
-			return MiniGameKinkyDungeonLevel < KDGameData.HighestLevelCurrent
-				|| KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
+			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.SealSigil.check();
