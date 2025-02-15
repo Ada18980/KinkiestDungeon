@@ -26074,6 +26074,390 @@ cuerdas de brazo
 
 ### KittyPetPawsShortRestraint
 
+### CapeRestraint
+
+### BreastplateRestraint
+
+### PauldronsRestraint
+
+### PauldronLeftRestraint
+
+### PauldronRightRestraint
+
+### PlateBootsRestraint
+
+### GauntletsRestraint
+
+### ChainShirtRestraint
+
+### ChainBikiniRestraint
+
+### ChainSkirt2Restraint
+
+### ChainSkirtRestraint
+
+### ChainPantiesRestraint
+
+### ChainPanties2Restraint
+
+### WarriorBootsRestraint
+
+### BustierChestRim
+
+### WarriorBustierRestraint
+
+### LeatherGlovesRestraint
+
+### RobeSleevesRestraint
+
+### KittyPetTailThin
+
+### Tail2
+
+### Tail2Stripe
+
+### KittyPetBlindfoldStitched
+
+### BlindfoldStich
+
+### KittyPetBlindfoldPanel
+
+### BlindfoldSmall
+
+### BlindfoldSmallStrap
+
+### KittyPetBlindfoldPanelStitched
+
+### FashionKittyPetBlindfoldPanel
+
+### FashionKittyPetBlindfoldStitched
+
+### FashionKittyPetBlindfoldPanelStitched
+
+### KittyPetBlindfoldStrap
+
+### BlindfoldStrap
+
+### FashionKittyPetBlindfoldStrap
+
+### KittyPetHarnessBlindfold
+
+### BlindfoldHarness
+
+### FashionKittyPetHarnessBlindfold
+
+### KittyPetEars3
+
+### Ears3L
+
+### Ears3R
+
+### Ears3InnerL
+
+### Ears3InnerR
+
+### KittyPetEars3Restraint
+
+### KittyPetHarnessGag
+
+### FaceHarness
+
+### FaceHarnessHardware
+
+### FaceHarnessStripe
+
+### KittyPetHarnessGagSeamless
+
+### KittyPetHarnessGagMouth
+
+### KittyPetHarnessGagMouthSeamless
+
+### FashionKittyPetHarnessGag
+
+### FashionKittyPetHarnessGagSeamless
+
+### FashionKittyPetHarnessGagMouth
+
+### FashionKittyPetHarnessGagMouthSeamless
+
+### KittyPetSockShortLeft
+
+### KittyPetSockShortRight
+
+### KittyPetSocksShort
+
+### KittyPetSocksShortRestraint
+
+### HarnessBlindfold
+
+### HarnessBlindfoldHarness
+
+### HarnessBlindfoldHarnessHardware
+
+### HarnessBlindfoldStrap
+
+### HarnessBlindfoldStrapHardware
+
+### FashionHarnessBlindfold
+
+### SideBang
+
+### Sides
+
+### Hair
+
+### Bang
+
+### LeftSideBang
+
+### RightSideBang
+
+### LeftPuff
+
+### RightPuff
+
+### Under
+
+### Highlight
+
+### FrontLeft
+
+### HighlightLeft
+
+### HighlightRight
+
+### EarringLeft
+
+### EarringRight
+
+### Cups
+
+### Seams
+
+### InnerEars
+
+### Tail1
+
+### Bikini
+
+### Insignia
+
+### Rivets
+
+### Ruffle
+
+### RimLeft
+
+### RimRight
+
+### Hardware
+
+### SleeveHems
+
+### BraBase
+
+### BraStripes
+
+### DecoBase
+
+### DecoCrystal
+
+### DecoHardware
+
+### CorsetBust
+
+### RuffleBust
+
+### Trim
+
+### Lace
+
+### Lens
+
+### LensLeft
+
+### LensRight
+
+### BaseMetal
+
+### Tie
+
+### Inner
+
+### LeftButton
+
+### RightButton
+
+### Waistband
+
+### WaistbandBelts
+
+### Mitten
+
+### Paw
+
+### Zipper
+
+### Cap
+
+### Cuff
+
+### Glow
+
+### UpperCuff
+
+### UpperDisplay
+
+### UpperLock
+
+### UpperGlow
+
+### Pins
+
+### Locks
+
+### Shackles
+
+### Runes
+
+### Buckles
+
+### Underskirt
+
+### Lining
+
+### Tag
+
+### Pads
+
+### Bell
+
+### LockPlate
+
+### LockBand
+
+### Shield
+
+### Pin
+
+### LockShackle
+
+### LockHighlight
+
+### Screen
+
+### Tether
+
+### LeotardUpper
+
+### StripesUpper
+
+### CollarRight
+
+### CollarLeft
+
+### StripesRight
+
+### StripesLeft
+
+### Symbol
+
+### LeftShoulder
+
+### LeftShoulderStripe
+
+### RightShoulder
+
+### RightShoulderStripe
+
+### Stitches
+
+### EarmuffL
+
+### EarmuffR
+
+### FeetPaws
+
+### LowerBody
+
+### UpperBody
+
+### Hem
+
+### LockPin
+
+### Binder
+
+### BinderStraps
+
+### BeltsLower
+
+### Lower
+
+### StrapHardware
+
+### Shoe
+
+### Sole
+
+### StrapRivets
+
+### Clips
+
+### Suit
+
+### Loop
+
+### InnerEarsLight
+
+### SkirtHem
+
+### SkirtStripe
+
+### TopRuffles
+
+### TopBelts
+
+### KneepadLeft
+
+### KneepadRight
+
+### JacketBottom
+
+### JacketSleeveLeft
+
+### JacketSleeveRight
+
+### ShirtBottom
+
+### Circle
+
+### Secret
+
+### Unit
+
+### Secret_UnderbustStrap
+
+### Secret_UnderbustHardware
+
+### Secret_Strap
+
+### Secret_Side
+
+### Secret_Hardware
+
+### Name
+
+### Secret_Pouch
+
+### Secret_Light
+
+### Secret_Base
+
+### Secret_Lens
+
+
+
 ### Hide Items
 
 ### Sort Items
@@ -26486,7 +26870,7 @@ cuerdas de tobillo
 
 
 
-### Lower
+
 
 ### Spellbound Rope
 
@@ -27567,8 +27951,6 @@ Cuerda de entrepierna de mitril
 ### Hands-Free
 
 ### Hands-Free: Weapon can be used without free hands.
-
-### Shield
 
 ### Shield: This weapon is intended for defensive use.
 
@@ -31206,8 +31588,6 @@ You found a magical amulet! Choose one of the following to determine its benefit
 
 ### Fiber
 
-### Runes
-
 ### Stock: 
 
 ### Inputs: 
@@ -32755,3 +33135,11 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### Move Closer to Tie
 
 ### Sprint (AMNT)
+
+### Stop Waiting
+
+### (Already slept here)
+
+### (Will not low enough)
+
+### Move closer to interact

@@ -3450,6 +3450,7 @@
             </struct>
             <key type="filename">../Game/ChangeSpell.png</key>
             <key type="filename">../Game/UI/ContextMenu/Stairs.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Stop.png</key>
             <key type="filename">../Game/UI/ContextMenu/Wait.png</key>
             <key type="filename">../Game/UI/Expand.png</key>
             <key type="filename">../Game/UI/Labels.png</key>

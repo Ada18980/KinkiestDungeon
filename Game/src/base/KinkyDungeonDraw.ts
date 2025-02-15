@@ -3334,7 +3334,7 @@ function FillCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
-		if (!kdprimitiveparams.has(id))
+		if (!kdprimitiveparams.has(id) || !same)
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
@@ -3381,7 +3381,7 @@ function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string,
 		// Add it to the container
 		Map.set(id, sprite);
 		Container.addChild(sprite);
-		if (!kdprimitiveparams.has(id))
+		if (!kdprimitiveparams.has(id) || !same)
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
@@ -3420,21 +3420,23 @@ function FillCircleBarKD(Container: PIXIContainer, Map: Map<string, any>, id: st
     }
     if (!sprite || !same) {
         let linethickness = (Params.LineWidth ? Params.LineWidth : 2)
-        let linecolor = (Params.Color ? Params.Color : 0xFF0000)
+        let linecolor = (Params.Color ? string2hex(Params.Color) : 0xFF0000)
         let radius = (Params.Radius ? Params.Radius : 10)
         let startingangle = (Params.StartAngle ? Params.StartAngle : 0) // Angle is in Rad
         let endingangle = (Params.EndingAngle ? Params.EndingAngle : Math.PI) // 50% progress
         let counterclockwise = (Params.CounterClockwise ? Params.CounterClockwise : false); // We probably want to go clockwise
 
-        if (sprite)
-            sprite.destroy();
+		if (sprite) {
+			sprite.clear();
+			sprite.destroy(true);
+		}
 
         sprite = new PIXI.Graphics();
         sprite.lineStyle(linethickness, linecolor);
         sprite.arc(0, 0, radius, startingangle, endingangle, counterclockwise)
         Map.set(id, sprite);
         Container.addChild(sprite);
-        if (!kdprimitiveparams.has(id))
+        if (!kdprimitiveparams.has(id) || !same)
             kdprimitiveparams.set(id, Params);
     }
     if (sprite) {

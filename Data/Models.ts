@@ -2132,10 +2132,12 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): {name: string,
 	let dupe: Record<string, boolean> = {};
 	for (let layer of Object.values(Model.Layers)) {
 		if (layer.InheritColor && !ret.some((ee) => {return ee.name == layer.InheritColor;})) {
-		   if (!dupe[layer.InheritColor]) {
-			   dupe[layer.InheritColor] = true;
-			   ret.push({layer: layer.Name, name: layer.InheritColor});
-		   }
+			if (!Properties || Model.Properties[layer.InheritColor]) {
+				if (!dupe[layer.InheritColor]) {
+					dupe[layer.InheritColor] = true;
+					ret.push({layer: layer.Name, name: layer.InheritColor});
+				}
+			}
 
 	   }
 
@@ -2176,11 +2178,13 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): {name: string,
 						poses[pose[1]] = true;
 					}
 				for (let key of Object.keys(poses)) {
-
-					if (!dupe[layer.InheritColor + key]) {
-						dupe[layer.InheritColor + key] = true;
-						ret.push({layer: layer.Name, name: layer.InheritColor + key});
+					if (Model.Properties[layer.InheritColor + key]) {
+						if (!dupe[layer.InheritColor + key]) {
+							dupe[layer.InheritColor + key] = true;
+							ret.push({layer: layer.Name, name: layer.InheritColor + key});
+						}
 					}
+
 				}
 			}
 		}
@@ -2707,9 +2711,12 @@ function KDModelIsProtected(m: Model): boolean {
 }
 
 function KDContainerClear(Container: ContainerInfo) {
-	Container.Mesh.destroy();
+	Container.Mesh.destroy({
+		texture: true,
+		baseTexture: true,
+	});
 	Container.Container.destroy();
-	Container.RenderTexture.destroy();
+	Container.RenderTexture.destroy(true);
 }
 
 function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIXISprite) {

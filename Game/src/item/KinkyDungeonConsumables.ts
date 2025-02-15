@@ -208,8 +208,8 @@ function KinkyDungeonConsumableEffectNPC(Consumable: consumable, entity: entity,
 
 
 function KinkyDungeonPotionCollar() {
-	for (let r of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(r).potionCollar) return true;
+	for (let r of KinkyDungeonAllRestraintDynamic()) {
+		if (KDRestraint(r.item).potionCollar) return true;
 	}
 	return false;
 }

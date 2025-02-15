@@ -474,7 +474,7 @@ let KDTileUpdateFunctions: Record<string, (delta: number) => boolean> = {
  */
 let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => boolean> = {
 	'B': (_moveX, _moveY) => {
-		/*if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
+		/*if (KDCanSleep()) {
 			KDGameData.InteractTargetX = moveX;
 			KDGameData.InteractTargetY = moveY;
 			KDStartDialog("Bed", "", true);
