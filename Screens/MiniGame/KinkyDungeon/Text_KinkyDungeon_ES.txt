@@ -33141,3 +33141,5 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### (Already slept here)
 
 ### (Will not low enough)
+
+### Move closer to interact
