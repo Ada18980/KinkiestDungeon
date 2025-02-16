@@ -1,0 +1,11 @@
+{
+	"modname": "Unlimited Bed",
+	"moddesc": "You can use the bed any time and will restore all Willpower and Mana to make the game easier",
+	"author": "Your name here",
+	"modbuild": 1,
+	"gamemajor": 5,
+	"gameminor": 4,
+	"gamepatch_min": 43,
+	"gamepatch_max": -1,
+	"priority": 0
+}
