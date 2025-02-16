@@ -179,6 +179,27 @@ function KDChangeConsumable(src: string, type: string, trig: string,
  */
 function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, container?: KDContainer): boolean {
 	let item = container ? container.items[consumable.name] : KinkyDungeonInventoryGetConsumable(consumable.name);
+
+	let data: KDChangeConsumableData = {
+		src: "",
+		type: "",
+		trig: "",
+		item: item,
+		consumable: consumable,
+		Quantity: Quantity,
+		container: container,
+		cancel: false,
+	}
+
+	KinkyDungeonSendEvent("changeconsumable", data);
+
+	if (data.cancel) return false;
+
+	consumable = data.consumable;
+	Quantity = data.Quantity;
+	container = data.container;
+	item = data.item;
+
 	if (item) {
 		item.quantity = (item.quantity || 1) + Quantity;
 		if (item.quantity <= 0) {
