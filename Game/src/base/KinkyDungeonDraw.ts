@@ -982,7 +982,7 @@ function KDDoModalX(_bdata) {
 function KDGetSpellRange(spell: spell): number {
 	let data = {
 		spell: spell,
-		range: spell.range || 0,
+		range: spell?.range || 0,
 	};
 	KinkyDungeonSendEvent("calcSpellRange", data);
 	return data.range;

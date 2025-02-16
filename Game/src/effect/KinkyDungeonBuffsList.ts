@@ -252,7 +252,7 @@ const KDRestraintDisarmLight: KDBuff = {id: "RestDisarmLight", aura: "#ff5277", 
 
 const KDRestraintReduceAccuracy: KDBuff = {id: "RestraintAccPen", type: "AccuracyPenalty", power: 0, duration: 2,};
 
-let KDBuffReference = {
+const KDBuffReference: Record<string, KDBuff[]> = {
 	"RestraintDisarmLight": [KDRestraintDisarmLight],
 	"Unsteady": [KDUnsteady, KDUnsteady2, KDUnsteady3],
 	"Plugged": [KDPlugged],

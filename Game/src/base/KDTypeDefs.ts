@@ -1699,14 +1699,15 @@ interface KDBuff {
 	range?: number,
 	currentCount?: number,
 	maxCount?: number,
-	tags?: Array<string>,
+	tags?: string[],
+	/** Holds additional data used by specific buffs. */
 	data?: Record<string, any>,
 	mushroom?: boolean,
 	cancelOnReapply?: boolean,
 
 	player?: boolean,
 	enemies?: boolean,
-	events?: Array<any>,
+	events?: KinkyDungeonEvent[],
 	endFloor?: boolean,
 	endSleep?: boolean,
 	spell?: any,
@@ -1727,7 +1728,7 @@ interface KDBuff {
 	pose?: any,
 	buffSpriteSpecific?: string,
 	click?: string,
-	disableTypes?: Array<string>,
+	disableTypes?: string[],
 	sfxApply?: string,
 	onlyAlly?: boolean,
 	noAlly?: boolean,
@@ -2099,7 +2100,7 @@ interface SubCastInfo {
 }
 
 interface BulletTickData {
-	bullet: any,
+	bullet: KDBullet,
 	delta: number,
 	allied: boolean,
 	cancelCast: boolean,
@@ -2350,7 +2351,7 @@ interface spell {
 	/** trailEvadeable */
 	trailEvadeable?: boolean;
 	/** trailNoblock */
-	trailNoblock?: boolean;
+	trailNoBlock?: boolean;
 	/** trailPower */
 	trailPower?: number;
 	/** trailHit */
@@ -2435,6 +2436,7 @@ interface spell {
 	piercingTrail?: boolean;
 	/** nonVolatile */
 	nonVolatile?: boolean;
+	nonVolatileTrail?: boolean;
 	/** likely to cause chain reactions */
 	volatile?: boolean;
 	/** likely to cause chain reactions */
@@ -2487,7 +2489,7 @@ interface spell {
 	secret?: boolean;
 	/** Enemies summoned by this spell will have their default faction and not the caster's faction */
 	defaultFaction?: boolean;
-
+	trailBind?: number,
 }
 
 interface KDQuest {
@@ -2900,6 +2902,91 @@ interface RepopQueueData {
 	loose?: boolean,
 }
 
+interface KDBullet {
+	type?: string,
+	born: number,
+	time?: number,
+	lifetime?: number,
+	reflected?: boolean,
+	y: number,
+	x: number,
+	vx: number,
+	vy: number,
+	xx?: number
+	yy?: number,
+	ox?: number
+	oy?: number,
+	visual_x?: number,
+	visual_y?: number,
+	spriteID?: string,
+	bullet: KDBulletData,
+	trail?: string,
+	trailEffectTile?: effectTileRef,
+	shadowBuff?: boolean,
+	/** TODO: Check if needed */
+	source?: number,
+	delay?: number,
+	warnings?: string[],
+	alreadyHit?: string[],
+	secondary?: boolean
+	collisionUpdate?: boolean,
+	faction?: string,
+}
+interface KDBulletData {
+	name: string,
+	width: number,
+	height: number,
+	bulletColor?: number,
+	bulletLight?: number,
+	faction: string,
+	spell?: spell,
+	damage?: damageInfo,
+	lifetime: number,
+	passthrough?: boolean,
+	noSprite?: boolean,
+	hit?: string,
+	trail?: boolean,
+	source?: number,
+	bulletSpin?: number,
+	hitevents?: KinkyDungeonEvent[],
+	effectTile?: effectTileRef,
+	effectTileDurationMod?: number,
+	playerEffect?: any;
+	summon?: Record<string, any>,
+	blockType?: string[],
+	followPlayer?: boolean,
+	followCaster?: number,
+	cancelCaster?: number,
+	dot?: boolean,
+	cast?: Record<string, any>,
+	events?: KinkyDungeonEvent[],
+	block?: number,
+	volatile?: boolean,
+	volatilehit?: boolean,
+	targetX?: number,
+	targetY?: number,
+	effectTileTrail?: effectTileRef,
+	effectTileDurationModTrail?: number,
+	effectTileTrailAoE?: number,
+	noEnemyCollision?: boolean,
+	alwaysCollideTags?: string[],
+	nonVolatile?: boolean,
+	noDoubleHit?: boolean,
+	pierceEnemies?: boolean,
+	piercing?: boolean,
+	origin?: Record<string, number>,
+	range?: number,
+	NoMsg?: boolean,
+	aoe?: number,
+	noise?: number,
+	blockhit?: number,
+	blockTypehit?: string[],
+	effectTileLinger?: effectTileRef,
+	effectTileDurationModLinger?: number,
+	aoetype?: string,
+}
+
+
 interface KDMapDataType {
 	RespawnQueue: {faction: string, enemy: string}[],
 	SpecialAreas: {x: number, y: number, radius: number}[],
@@ -2946,7 +3033,7 @@ interface KDMapDataType {
 	EffectTiles: Record<string, Record<string, effectTile>>;
 	RandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
 	Entities: entity[];
-	Bullets: any[];
+	Bullets: KDBullet[];
 	StartPosition: {x: number, y: number};
 	EndPosition: {x: number, y: number};
 	ShortcutPositions: Record<string, {x: number, y: number}>;

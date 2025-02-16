@@ -803,7 +803,7 @@ function KDDoGaggedMiscastFlag(data: any, components: string[]) {
  * @param [forceFaction]
  * @param [castData]
  */
-function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, enemy: entity, player: any, bullet?: any, forceFaction?: string, castData?: any): {result: string, data: any} {
+function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, enemy: entity, player: any, bullet?: KDBullet, forceFaction?: string, castData?: any): {result: string, data: any} {
 	let entity = KinkyDungeonPlayerEntity;
 	let moveDirection = KinkyDungeonMoveDirection;
 	let flags = {
@@ -928,7 +928,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 	let spellRange = KDGetSpellRange(spell);
 
 	if (spell.type != "bolt" && spell.effectTilePre) {
-		KDCreateAoEEffectTiles(tX,tY, spell.effectTilePre, spell.effectTileDurationModPre, (spell.aoe) ? spell.aoe : 0.5);
+		KDCreateAoEEffectTiles(tX, tY, spell.effectTilePre, spell.effectTileDurationModPre, spell.aoe || 0.5);
 	}
 
 	let originaltX = tX;
@@ -1089,7 +1089,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 			//noiseX = entity.x;
 			//noiseY = entity.y;
 			if (!spell.noDirectionOffset) {
-				if (!bullet || (bullet.spell && bullet.spell.cast && bullet.spell.cast.offset)) {
+				if (!bullet || (bullet.bullet.spell && bullet.bullet.cast?.offset)) {
 					xx += moveDirection.x;
 					yy += moveDirection.y;
 				}

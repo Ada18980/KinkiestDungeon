@@ -4401,7 +4401,7 @@ function KinkyDungeonControlsEnabled() {
 		&& !KinkyDungeonMessageToggle;
 }
 
-function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any, player: any, bullet: any, data: any) {
+function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any, player: any, bullet: KDBullet, data: any) {
 	let spell = KinkyDungeonFindSpell(SpellToCast.name, true);
 	let spellname = undefined;
 	if (spell) {

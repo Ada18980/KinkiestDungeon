@@ -3174,9 +3174,26 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							let ang = KDRandom() * Math.PI*2;
 							let xx = enemy.x + 0.3 * Math.cos(ang);
 							let yy = enemy.y + 0.3 * Math.sin(ang);
-							let newB = {
-								born: 0, time: 1 + Math.round(KDRandom() * 1), x: Math.round(xx), y: Math.round(yy), vx: 0, vy: 0, xx: xx, yy: yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
-								bullet: { faction: "Rage", spell: undefined, damage: undefined, lifetime: 2, passthrough: true, name: "ElectricEffect", width: 1, height: 1 }
+							let newB: KDBullet = {
+								born: 0,
+								time: 1 + Math.round(KDRandom() * 1),
+								x: Math.round(xx),
+								y: Math.round(yy),
+								vx: 0,
+								vy: 0,
+								xx: xx,
+								yy: yy,
+								spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
+								bullet: {
+									faction: "Rage",
+									spell: undefined,
+									damage: undefined,
+									lifetime: 2,
+									passthrough: true,
+									name: "ElectricEffect",
+									width: 1,
+									height: 1,
+								}
 							};
 							KDMapData.Bullets.push(newB);
 							KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -3208,9 +3225,22 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 								for (let d = dist / 2.99; d < dist; d += dist / 2.99) {
 									let xx = entity.x + d * (tx - entity.x);
 									let yy = entity.y + d * (ty - entity.y);
-									let newB = {
-										born: 0, time: 1 + Math.round(KDRandom() * 1), x: Math.round(xx), y: Math.round(yy), vx: 0, vy: 0, xx: xx, yy: yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
-										bullet: { faction: "Rage", spell: undefined, damage: undefined, lifetime: 2, passthrough: true, name: "ElectricEffect", width: 1, height: 1 }
+									let newB: KDBullet = {
+										born: 0,
+										time: 1 + Math.round(KDRandom() * 1),
+										x: Math.round(xx), y: Math.round(yy),
+										vx: 0, vy: 0,
+										xx: xx, yy: yy,
+										spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
+										bullet: {
+											faction: "Rage",
+											spell: undefined,
+											damage: undefined,
+											lifetime: 2,
+											passthrough: true,
+											name: "ElectricEffect",
+											width: 1, height: 1
+										}
 									};
 									KDMapData.Bullets.push(newB);
 									KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -3234,9 +3264,22 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							for (let d = dist / 2.99; d < dist; d += dist / 2.99) {
 								let xx = entity.x + d * (tx - entity.x);
 								let yy = entity.y + d * (ty - entity.y);
-								let newB = {
-									born: 0, time: 1 + Math.round(KDRandom() * 1), x: Math.round(xx), y: Math.round(yy), vx: 0, vy: 0, xx: xx, yy: yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
-									bullet: { faction: "Rage", spell: undefined, damage: undefined, lifetime: 2, passthrough: true, name: "ElectricEffect", width: 1, height: 1 }
+								let newB: KDBullet = {
+									born: 0,
+									time: 1 + Math.round(KDRandom() * 1),
+									x: Math.round(xx), y: Math.round(yy),
+									vx: 0, vy: 0,
+									xx: xx, yy: yy,
+									spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
+									bullet: {
+										faction: "Rage",
+										spell: undefined,
+										damage: undefined,
+										lifetime: 2,
+										passthrough: true,
+										name: "ElectricEffect",
+										width: 1, height: 1
+									}
 								};
 								KDMapData.Bullets.push(newB);
 								KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -3289,9 +3332,22 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 								for (let d = 0; d <= dist; d += dist / 3.01) {
 									let xx = entity.x + d * (tx - entity.x);
 									let yy = entity.y + d * (ty - entity.y);
-									let newB = {
-										born: 0, time: 1 + Math.round(KDRandom() * 1), x: Math.round(xx), y: Math.round(yy), vx: 0, vy: 0, xx: xx, yy: yy, spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
-										bullet: { faction: "Rage", spell: undefined, damage: undefined, lifetime: 2, passthrough: true, name: "ElectricEffect", width: 1, height: 1 }
+									let newB: KDBullet = {
+										born: 0,
+										time: 1 + Math.round(KDRandom() * 1),
+										x: Math.round(xx), y: Math.round(yy),
+										vx: 0, vy: 0,
+										xx: xx, yy: yy,
+										spriteID: KinkyDungeonGetEnemyID() + "ElectricEffect" + CommonTime(),
+										bullet: {
+											faction: "Rage",
+											spell: undefined,
+											damage: undefined,
+											lifetime: 2,
+											passthrough: true,
+											name: "ElectricEffect",
+											width: 1, height: 1
+										}
 									};
 									KDMapData.Bullets.push(newB);
 									KinkyDungeonUpdateSingleBulletVisual(newB, false);
@@ -3960,20 +4016,44 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							let b = KinkyDungeonLaunchBullet(origin.x, origin.y,
 								player.x, player.y,
 								0.5, {
-									noSprite: spell.noSprite, faction: KDGetFaction(enemy), name: spell.name, block: spell.block, volatile: spell.volatile, blockType: spell.blockType,
-								volatilehit: spell.volatilehit,
-								width: spell.size, height: spell.size, summon: spell.summon,
-								targetX: player.x, targetY: player.y, cast: Object.assign({}, spell.spellcast),
-								source: enemy.id, dot: spell.dot,
-								bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
-								bulletSpin: spell.bulletSpin,
-								effectTile: spell.effectTile, effectTileDurationMod: spell.effectTileDurationMod,
-								effectTileTrail: spell.effectTileTrail, effectTileDurationModTrail: spell.effectTileDurationModTrail, effectTileTrailAoE: spell.effectTileTrailAoE,
-								passthrough: spell.noTerrainHit, noEnemyCollision: spell.noEnemyCollision, alwaysCollideTags: spell.alwaysCollideTags, nonVolatile: spell.nonVolatile, noDoubleHit: spell.noDoubleHit,
-								pierceEnemies: spell.pierceEnemies, piercing: spell.piercing, events: spell.events,
-								lifetime: (spell.bulletLifetime ? spell.bulletLifetime : 1000), origin: { x: origin.x, y: origin.y }, range: KDGetSpellRange(spell), hit: spell.onhit,
+									noSprite: spell?.noSprite,
+									faction: KDGetFaction(enemy),
+									name: spell?.name,
+									block: spell?.block,
+									volatile: spell?.volatile,
+									blockType: spell?.blockType,
+									volatilehit: spell?.volatilehit,
+									width: spell?.size,
+									height: spell?.size,
+									summon: spell?.summon,
+									targetX: player.x,
+									targetY: player.y,
+									cast: Object.assign({}, spell?.spellcast),
+									source: enemy.id,
+									dot: spell?.dot,
+									bulletColor: spell?.bulletColor,
+									bulletLight: spell?.bulletLight,
+									bulletSpin: spell?.bulletSpin,
+									effectTile: spell?.effectTile,
+									effectTileDurationMod: spell?.effectTileDurationMod,
+									effectTileTrail: spell?.effectTileTrail,
+									effectTileDurationModTrail: spell?.effectTileDurationModTrail,
+									effectTileTrailAoE: spell?.effectTileTrailAoE,
+									passthrough: spell?.noTerrainHit,
+									noEnemyCollision: spell?.noEnemyCollision,
+									alwaysCollideTags: spell?.alwaysCollideTags,
+									nonVolatile: spell?.nonVolatile,
+									noDoubleHit: spell?.noDoubleHit,
+									pierceEnemies: spell?.pierceEnemies,
+									piercing: spell?.piercing,
+									events: spell?.events,
+									lifetime: spell?.bulletLifetime || 1000,
+									origin: { x: origin.x, y: origin.y },
+									range: KDGetSpellRange(spell),
+									hit: spell?.onhit,
 								damage: {
-									evadeable: spell.evadeable, noblock: spell.noblock,
+										evadeable: spell?.evadeable,
+										noblock: spell?.noblock,
 									ignoreshield: spell?.ignoreshield,
 									shield_crit: spell?.shield_crit, // Crit thru shield
 									shield_stun: spell?.shield_stun, // stun thru shield
@@ -3984,10 +4064,21 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 									shield_distract: spell?.shield_distract, // Distract thru shield
 									shield_vuln: spell?.shield_vuln, // Vuln thru shield
 
-									damage: e.power || spell.power, type: spell.damage, distract: spell.distract, distractEff: spell.distractEff, desireMult: spell.desireMult, bindEff: spell.bindEff,
-									bind: spell.bind, bindType: spell.bindType, boundBonus: spell.boundBonus, time: spell.time, flags: spell.damageFlags
-								}, spell: spell
-							}, false, enemy.x, enemy.y);
+										damage: e.power || spell?.power,
+										type: spell?.damage,
+										distract: spell?.distract,
+										distractEff: spell?.distractEff,
+										desireMult: spell?.desireMult,
+										bindEff: spell?.bindEff,
+										bind: spell?.bind,
+										bindType: spell?.bindType,
+										boundBonus: spell?.boundBonus,
+										time: spell?.time,
+										flags: spell?.damageFlags
+									},
+									spell: spell
+								}, false, enemy.x, enemy.y
+							);
 							b.visual_x = origin.x;
 							b.visual_y = origin.y;
 							let dist = KDistEuclidean(player.x - origin.x, player.y - origin.y);
@@ -7999,7 +8090,7 @@ function KinkyDungeonHandleWeaponEvent(Event: string, e: KinkyDungeonEvent, weap
 }
 
 
-let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: any, data: any) => void>> = {
+let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KDBullet, data: any) => void>> = {
 	"countRune": {
 		"rune": (_e, b, data: KDRuneCountData) => {
 			if (!b.bullet.source || !KinkyDungeonFindID(b.bullet.source)) {

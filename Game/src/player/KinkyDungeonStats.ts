@@ -336,11 +336,11 @@ function KinkyDungeonGetVisionRadius() {
 function KDEntitySenses(entity: entity): {radius: number, mult: number, vision: number, visionmult: number, blindsight: number} {
 	let data = {
 		noise: 0,
-		base: entity.Enemy.Awareness?.hearingRadius ? entity.Enemy.Awareness.hearingRadius : entity.Enemy.visionRadius,
+		base: entity.Enemy.Awareness?.hearingRadius || entity.Enemy.visionRadius,
 		deaflevel: 0,
-		hearingMult: entity.Enemy.Awareness?.hearingMult ? entity.Enemy.Awareness.hearingMult : 1.0,
+		hearingMult: entity.Enemy.Awareness?.hearingMult || 1.0,
 		vision: entity.Enemy.visionRadius,
-		visionMult: entity.Enemy.Awareness?.vision ? entity.Enemy.Awareness.vision : 1.0,
+		visionMult: entity.Enemy.Awareness?.vision || 1.0,
 		blindsight: entity.Enemy.blindSight,
 	};
 	KinkyDungeonSendEvent("calcEntityHearing", data);
@@ -483,9 +483,9 @@ function KDGetStamDamageThresh() {
  * @param entity
  * @param [suppressAdd]
  */
-function KDBulletAlreadyHit(bullet: any, entity: entity, suppressAdd?: boolean): boolean {
+function KDBulletAlreadyHit(bullet: KDBullet, entity: entity, suppressAdd?: boolean): boolean {
 	if (bullet) {
-		let name = entity.player ? "player" : entity.id;
+		let name = entity.player ? "player" : String(entity.id);
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
 		if (bullet.alreadyHit.includes(name)) return true;
@@ -554,7 +554,7 @@ interface damageInfo extends damageInfoMinor {
 	shield_vuln?: boolean, // Vuln thru shield
 }
 
-function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
+function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}

@@ -187,7 +187,7 @@ function KinkyDungeonRemoveBuffsWithTag(entity: entity, tags: string[]): void {
 	} else if (entity?.buffs) list = entity.buffs;
 	if (list)
 		for (const [key, value] of Object.entries(list)) {
-			const buff: KDBuff = value as KDBuff;
+			const buff = value;
 			if (buff) {
 				for (let t of tags)
 					if (buff.tags && buff.tags.includes(t)) {
@@ -245,7 +245,7 @@ function KDUpdatePlayerShield(PlayerBuffs?: Record<string, KDBuff>): void {
 	KDGameData.Shield = 0;
 
 	for (const bb of buffs) {
-		const b: any = bb;
+		const b = bb;
 		if (b.type == "Shield" && b.power > 0)
 			KDGameData.Shield += b.power;
 	}
@@ -254,8 +254,8 @@ function KDUpdatePlayerShield(PlayerBuffs?: Record<string, KDBuff>): void {
 
 function KDDamagePlayerShield(Amount: number, Player: entity): void {
 	if (!Player) Player = KinkyDungeonPlayerEntity;
-	let PlayerBuffs: Record<string, KDBuff> = KinkyDungeonPlayerBuffs;
-	let buffs: Array<KDBuff> = Object.values(PlayerBuffs).filter((b: KDBuff) => {return b.type == "Shield";}).sort((a: KDBuff, b: KDBuff) => {return (a.power || 0) - (b.power || 0);});
+	let PlayerBuffs = KinkyDungeonPlayerBuffs;
+	let buffs = Object.values(PlayerBuffs).filter((b) => {return b.type == "Shield";}).sort((a, b) => {return (a.power || 0) - (b.power || 0);});
 
 	KDGameData.ShieldDamage = (KDGameData.ShieldDamage || 0) + Amount;
 
@@ -396,7 +396,7 @@ function KinkyDungeonApplyBuffToEntity(entity: entity, origbuff: KDBuff, changes
  * 
  * @param {Record<string, KDBuff>} list 
  * @param {KDBuff} origbuff The base buff to apply
- * @param {Record<string, any>} changes Additional changes to the base buff
+ * @param {Record<string, any>} changes Overwrites certain fields
  * @param {entity} entity Target entity to add the buff to
  * @returns {KDBuff} The newly added KDBuff 
  */
