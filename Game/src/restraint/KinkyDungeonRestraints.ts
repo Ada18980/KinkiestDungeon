@@ -2800,6 +2800,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			}
 
 			KinkyDungeonAdvanceTime(1);
+			if (KDGameData.DelayedActions?.length > 0)
+				KinkyDungeonSleepTime = CommonTime() + KDWaitTimeDelayedAction();
+
 			if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
 			return Pass;
 		}
@@ -5143,7 +5146,10 @@ function KDAddDelayedStruggle(amount: number, time: number, _StruggleType: strin
 			maxtime: time,
 			tags: ["Action", "Remove", "Restrain", "Hit", "Auto"],
 		});
+
 	}
+	if (time > 1)
+		KDDelayedActionStart();
 }
 
 /**

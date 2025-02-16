@@ -680,16 +680,7 @@ function KDCurseMult(curse: string): number {
 type KDSkimpyReplacer = (ret, restraint: restraint, newRestraintName: string) => any
 
 let KDSkimpyModelReplace: Record<string, KDSkimpyReplacer> = {
-	ChainSkirt: (ret, restraint, newRestraintName) => {
-		ret.enemyTags = {skimpyCurse: 10};
-		ret.Model = "ChainPanties2";
-		ret.remove = ["ClothLower", "Skirts", "Pants"];
-		if (restraint.addPose) {
-			ret.addPose = [...restraint.addPose, "SkimpyLower"];
-		} else ret.addPose = ["SkimpyLower"];
-		return ret;
-	},
-	ChainSkirt2: (ret, restraint, newRestraintName) => {
+	ChainSkirtRestraint: (ret, restraint, newRestraintName) => {
 		ret.enemyTags = {skimpyCurse: 10};
 		ret.Model = "ChainPanties";
 		ret.remove = ["ClothLower", "Skirts", "Pants"];
@@ -698,7 +689,16 @@ let KDSkimpyModelReplace: Record<string, KDSkimpyReplacer> = {
 		} else ret.addPose = ["SkimpyLower"];
 		return ret;
 	},
-	ChainTunic: (ret, restraint, newRestraintName) => {
+	ChainSkirt2Restraint: (ret, restraint, newRestraintName) => {
+		ret.enemyTags = {skimpyCurse: 10};
+		ret.Model = "ChainPanties2";
+		ret.remove = ["ClothLower", "Skirts", "Pants"];
+		if (restraint.addPose) {
+			ret.addPose = [...restraint.addPose, "SkimpyLower"];
+		} else ret.addPose = ["SkimpyLower"];
+		return ret;
+	},
+	ChainTunicRestraint: (ret, restraint, newRestraintName) => {
 		ret.enemyTags = {skimpyCurse: 10};
 		ret.Model = "ChainBikini";
 		ret.remove = ["Cloth", "Shirts"];

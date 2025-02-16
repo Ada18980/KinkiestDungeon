@@ -3324,7 +3324,8 @@ function KinkyDungeonRun() {
 							else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = KDFastWaitTime;
 							else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = KDVeryFastWaitTime;
 						} else {
-							wt = (KinkyDungeonInDanger() ? 250 : 0) + 250 * (0.25 + KDAnimSpeed * 0.75)
+							wt = KDWaitTimeDelayedAction();
+							//(KinkyDungeonInDanger() ? 250 : 0) + 250 * (0.25 + KDAnimSpeed * 0.75)
 						}
 						KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 
