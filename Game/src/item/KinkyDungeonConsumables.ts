@@ -106,7 +106,74 @@ function KinkyDungeonGetShopItem(_Level: number, Rarity: number, _Shop: boolean,
 }
 
 
+interface KDChangeConsumableData {
+	src: string,
+	type: string,
+	trig: string,
+	item: item,
+	consumable: consumable,
+	Quantity: number,
+	container?: KDContainer,
+	cancel: boolean,
+}
+
 /**
+ * @param consumable
+ * @param Quantity
+ */
+function KDChangeConsumable(src: string, type: string, trig: string,
+	consumable: consumable, Quantity: number, container?: KDContainer): boolean {
+	let item = container ? container.items[consumable.name] : KinkyDungeonInventoryGetConsumable(consumable.name);
+
+	let data: KDChangeConsumableData = {
+		src: src,
+		type: type,
+		trig: trig,
+		item: item,
+		consumable: consumable,
+		Quantity: Quantity,
+		container: container,
+		cancel: false,
+	}
+
+	KinkyDungeonSendEvent("changeconsumable", data);
+
+	if (data.cancel) return false;
+
+	consumable = data.consumable;
+	Quantity = data.Quantity;
+	container = data.container;
+	src = data.src;
+	type = data.type;
+	trig = data.trig;
+	item = data.item;
+
+	if (item) {
+		item.quantity = (item.quantity || 1) + Quantity;
+		if (item.quantity <= 0) {
+			if (container)
+				delete container.items[consumable.name]
+			else
+				KinkyDungeonInventoryRemove(item);
+		}
+		return true;
+	}
+
+	if (Quantity >= 0) {
+		if (container) {
+			container.items[consumable.name] = {name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity};
+		} else {
+			KinkyDungeonInventoryAdd({name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
+		}
+		return true;
+	}
+
+	return false;
+}
+
+
+/**
+ * @deprecated
  * @param consumable
  * @param Quantity
  */
