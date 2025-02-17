@@ -9,6 +9,7 @@ let KDDialogueParams = {
 	ShopkeeperFeePerLevel: 100,
 	ShopkeeperFeePunishThresh: 2500,
 	ChefChance: 0.1,
+	KDTableFlipWP: 1,
 };
 
 /**
@@ -1971,6 +1972,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KinkyDungeonMapSet(parseInt(x), parseInt(y), "5");
 						tile.Overlay = "TableFlipped";
 						tile.Tooltip = "FlippedTable";
+						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+						KDChangeWill(KinkyDungeonTargetTileLocation, "environment",
+							"interact", KDDialogueParams.KDTableFlipWP * Willmulti, false);
+
 
 						// Remove the food
 						delete tile.Food;
@@ -2004,7 +2009,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							// Perform the deed
 							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
 							let amount = tile.Amount ? tile.Amount : 1.0;
-							KDChangeWill(tile.Food, "food", "consumable", amount * Willmulti);
+							KDChangeWill(tile.Food, "food", "consumable",
+								amount * Willmulti);
 
 							// Send the message and advance time
 							KinkyDungeonAdvanceTime(1);
@@ -2115,6 +2121,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KinkyDungeonMapSet(parseInt(x), parseInt(y), "5");
 						tile.Overlay = "TableFlipped";
 						tile.Tooltip = "FlippedTable";
+						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+						KDChangeWill(KinkyDungeonTargetTileLocation, "environment",
+							"interact", KDDialogueParams.KDTableFlipWP * Willmulti, false);
 
 						// Remove the food
 						delete tile.Food;

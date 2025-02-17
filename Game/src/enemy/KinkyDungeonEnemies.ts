@@ -3053,6 +3053,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 					if (!noRepHit && !KDEnemyHasFlag(enemy, "norep")) {
 						let will = KDGetEnemyWillReward(enemy);
 						if (will > 0) {
+							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+							will *= Willmulti;
 							if (!KinkyDungeonFlags.get("tut_kill")) {
 								KinkyDungeonSetFlag("tut_kill", -1);
 								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill"), KDTutorialColor, 10);
