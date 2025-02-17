@@ -39,6 +39,7 @@ jobs:
 
       - name: 📂 Merge translations
         run: |
+          printf "\n\n" >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
           cat Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN_paratranz.txt >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
           python .github/scripts/format-translation-script.py "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
 
