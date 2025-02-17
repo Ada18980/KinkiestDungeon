@@ -53,8 +53,6 @@ Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 (This game does not contain spiders)
 ( 本游戏中没有蜘蛛 )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 GFX
 图像特效
 Character
@@ -20522,9 +20520,9 @@ Infuse weapon AMNT% TYPE
 AMNT TYPE on attack
 AMNT TYPE 在攻击时
 AMNT Mana Efficiency
-+AMNT 法力效率
+AMNT 法力效率
 AMNT TYPE Mana Efficiency
-+AMNT TYPE 法力效率
+AMNT TYPE 法力效率
 AMNT% regen from mana pool
 来自法力池 AMNT% 的回复
 AMNT mana pool on capture
@@ -25457,8 +25455,6 @@ Back
 后退
 Restart required!
 请重启！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Keybindings
 按键绑定
 Show Enemy Binding as %
@@ -25509,10 +25505,6 @@ Price Gouging
 敲竹杠
 Items are 5x as expensive in the shop.
 商店里的商品价格是原来的 5 倍。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Mental Defiance
 精神反抗
 Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
@@ -25569,20 +25561,8 @@ Journal
 日志
 Change Outfit
 换装
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Menu
 菜单
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Normal
 正常
 Slowed
@@ -25633,24 +25613,16 @@ Journal
 日志
 Facilities
 设施
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Graveyard
 墓地
 Catacombs
 地下墓穴
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Crystal Cave
 结晶洞
 Cavern
 洞窟
 Orrery
 天文钟
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Bandit Hideout
 盗贼藏身处
 Ancient Vault
@@ -26259,18 +26231,6 @@ A respirator designed to protect the wearer from noxious fumes.
 旨在保护佩戴者免受有毒烟雾侵害的呼吸器。
 +50 Poison resist. Protects against dizziness caused by sleep gas. Affects speech.
 +50 毒素抗性。防止睡眠气体引起的头晕。影响言语。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Collar
 项圈
 Allows fitting of a leash.
@@ -27461,10 +27421,6 @@ Unequip
 取消装备
 Equip
 装备
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Can be lit
 可以点亮
 Provides light
@@ -27801,8 +27757,6 @@ Choose a helpless target
 选择一个完全束缚的目标
 Smoke Bomb
 烟雾弹
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 You charge up a bright flash!
 你发出一道闪光！
 Select where to center the flash (SpellArea radius)
@@ -27923,8 +27877,6 @@ Return to Game
 返回游戏
 Special
 特别
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Overgrown
 杂草丛生
 You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
@@ -27933,12 +27885,6 @@ You pray to the Goddess and the sigil vanishes! Perhaps you returned what was ri
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
 You pray to the Goddess and the sigil vanishes! Perhaps you returned what was rightfully hers?
 你向女神祈祷，印记就会消失！也许你归还了本该属于她的东西？
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 You are ambushed by dragonhearts!
 你被龙之心伏击了！
 You have stumbled upon a conjurer's study!
@@ -28053,10 +27999,6 @@ Why you...
 为什么你...
 You can't do that!
 你不能那样做！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Catch me if you can!
 如果可以的话来抓我吧！
 You'll never get away with this!
@@ -28081,10 +28023,6 @@ You've had your chance.
 你有机会了。
 *sighs*
 *叹气*
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 My mistake~
 我的错~
 Cover me you brats!
@@ -28257,10 +28195,6 @@ Mmmph!
 *咯咯地笑*
 Mmmmph.
 嗯。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 *muffled giggle*
 *低沉的笑声*
 Mmmmph...
@@ -28277,10 +28211,6 @@ Mmmph!
 *低沉的笑声*
 Mmmmph.
 嗯。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28339,10 +28269,6 @@ This is a bug, please report
 ！
 !!!
 ！！！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28413,12 +28339,6 @@ A gift? Thank you so much!
 一份礼物？太感谢了！
 You won't be getting out of that any time soon!
 你短期内无法摆脱这种困境！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28433,12 +28353,6 @@ Why you...
 为什么你...
 Come along.
 一起来。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Deploying SPL!
 部署 SPL !
 This is too tight...
@@ -28509,12 +28423,6 @@ You won't be getting out of that any time soon!
 你短期内无法摆脱这种困境！
 Code Gray!
 格雷码！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28525,120 +28433,6 @@ Tsk tsk. You can do better, dear~
 啧啧。亲爱的，你可以做得更好~
 Must I do everything myself...
 一切都必须我自己做吗...
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28655,40 +28449,12 @@ Hey I called dibs on that!
 嘿，那是我的！
 No fair!
 不公平！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Hey I called dibs on that!
 嘿，那是我的！
 Hey I called dibs on that!
 嘿，那是我的！
 C'mon, c'mon, I wanna show you a fun place~
 来，来，我想带你去一个有趣的地方~
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28697,12 +28463,6 @@ I can't get free!
 我无法获得自由！
 *giggles*
 *咯咯地笑*
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 I cast SPL!
 我释放 SPL！
 This is too tight...
@@ -28715,12 +28475,6 @@ You won't need that.
 你不需要那个。
 Yes, now hit me back!
 是的，现在回击我！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28731,12 +28485,6 @@ I'm not in trouble, am I?
 我没有麻烦，是吗？
 Is that all?
 就这？
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -28749,12 +28497,6 @@ Come here you~
 过来~
 I'll get you next time!
 下次我会抓住你！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -29183,12 +28925,8 @@ Defend!
 防守！
 Fight!
 战斗！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Rawr!
 吼！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 This is too tight...
 这太紧了...
 You won't get me like this!
@@ -29605,8 +29343,6 @@ Hey, no fair!
 嘿，不公平！
 Close one!
 关闭一个！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 You're bad to the bone...
 你坏到骨子里了……
 Hold still you bonehead!
@@ -30351,40 +30087,10 @@ You're giving me everything you have.
 ( 不要留在这里 )
 (Never mind...)
 ( 算了... )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 End of line.
 行尾。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Error. Subject not complying?
 错误。受试者不遵守？
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Got yourself locked up, huh? Better go be good now~
 把自己关起来了，是吗？最好现在就去好好表现~
 *she bumps up against your chastity and sighs*
@@ -30397,34 +30103,6 @@ Such a naughty girl, getting yourself all locked up like that!
 这么淘气的女孩，把自己关起来了！
 I-I know you want release, but you're in this gear for a reason~
 我知道你想要解脱，但你穿这种衣服是有原因的~
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 (The SPEAKER smiles)|Am I thinking what you're thinking?
 ( SPEAKER 微笑 ) |咱俩想的一样吗？
 (The SPEAKER grins)|Why yes, I have just the thing~
@@ -34403,12 +34081,8 @@ You lose focus and the seal on your RESTRAINTNAME strengthens!
 你失去了注意力，你的 RESTRAINTNAME 上的封印加强了！
 The item refuses to budge as you try to take it off.
 当你尝试将其取下时，该物品不愿意移动。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 The item bears a seal of dark pleasure. You can suppress it by edging yourself.
 该物品带有黑暗愉悦的印记。你可以通过让自己处与高潮边缘来抑制它。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Free
 免费
 You did not do your quest! The Goddess has decided to punish you.
@@ -34461,8 +34135,6 @@ Quota Reached!
 已达到要求！
 Quota Reached!
 已达到要求！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 None
 无
 This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
@@ -34597,10 +34269,6 @@ The items float to you!
 物品飘向了你！
 There's nothing to pick up.
 没有什么能捡到的。
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Favorite
 喜欢
 Collection
@@ -34633,8 +34301,6 @@ The ENMY tries to tickle you!
 ENMY 试图挠你痒痒！
 The ENMY reaches for her VTY!
 ENMY 伸手去拿她的振动玩具！
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 You teach the warden's servant a lesson.
 你给监狱长的仆人一个教训。
 You teach the warden's servant a lesson.
@@ -35183,10 +34849,6 @@ Orb
 >楼梯
 Quest(GDSNM)
 任务( GDSNM )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-
-龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 Bed!
 床！
 Bed
@@ -35529,6 +35191,22 @@ NME is not notable enough for your collection.
 NME 对你的收藏来说还不够引人注目。
 Auto-released NME due to Escape.
 由于 Escape 自动释放 NME。
+Difficulty:
+难度：
+Face my SPL!
+尝尝我的 SPL！
+Nyah!!! *blushes*
+喵！！！ *脸红*
+Not in the 'System'?
+不在“系统”中？
+(The SPEAKER giggles)|Don't worry, we'll get you sorted out soon.|After all, everyone has a place in the System.
+( SPEAKER 咯咯地笑了起来)|别担心，我们很快就会解决你的问题|毕竟，每个人在系统中都有一席之地。
+Mmmph? (Act confused)
+Mmmph? (行为混乱)
+(Check the occupant)
+检查里面的NPC
+Currently Worn
+已穿戴
 Robe of Chastity
 贞洁长袍
 A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
