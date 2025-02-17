@@ -1114,7 +1114,8 @@ function KDChangeStamina(src: string, type: string, trig: string, Amount: number
  * @param [Pause]
  * @param [spill]
  */
-function KDChangeMana(src: string, type: string, trig: string, Amount: number, NoFloater?: boolean, PoolAmount?: number, Pause?: boolean, spill?: boolean, minimum: number = 0) {
+function KDChangeMana(src: string, type: string, trig: string, Amount: number,
+	NoFloater?: boolean, PoolAmount?: number, Pause?: boolean, spill?: boolean, minimum: number = 0) {
 
 	if (isNaN(Amount)) {
 		console.trace();

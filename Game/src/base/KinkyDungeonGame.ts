@@ -4005,9 +4005,10 @@ let KDFood = {
 	},
 };
 
-function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: any) {
+function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: AltType) {
 
 	if (altType && altType.noClutter) return;
+	if (altType && altType.noTables) return;
 
 	let foodPoints = new Map();
 	let foodList = [];

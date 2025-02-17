@@ -5497,6 +5497,9 @@ KinkyDungeonEquipped,"Equipped"
 KDEffectTileTooltipT,
 KDEffectTileTooltipTDesc,""
 
+KDTileTooltipFlippedTable,Flipped Table
+KDEffectTileTooltipFlippedTableDesc,"Relieved some stress."
+
 KDEffectTileTooltipTorchUnlit,Unlit Torch
 KDEffectTileTooltipTorchUnlitDesc,"Can be lit"
 KDEffectTileTooltipTorch,Torch
@@ -5580,6 +5583,7 @@ KDTileTooltip0,Floor
 KDTileTooltip1,Wall
 KDTileTooltip5,Object
 KDTileTooltip6,Object
+KDTileTooltip7,Object
 KDTileTooltip2,Brickwork
 KDTileTooltipX,Doodad
 KDTileTooltipL,Furniture
@@ -13394,6 +13398,10 @@ KinkyDungeonFoodCookies,"(Someone left their cookies unattended)"
 KinkyDungeonFoodPizza,"(You smell delicious pizza)"
 KDFoodNameCookie,Cookie
 KDFoodNamePizza,Pizza
+
+rTableFlip,"(The table looks remarkably flippable)"
+rTableFlipFlip,"(You knock over the table!)"
+dTableFlip_Flip,(Flip the table)
 
 rButton,"(There is a button on a control panel here.)"
 rButtonPress,"(You touch the button and it glows, releasing a pulse of energy!)"
@@ -31264,3 +31272,7 @@ KDBedSleptLevel,(Already slept here)
 KDBedWillNotLow,(Will not low enough)
 
 KDMoveCloser,Move closer to interact
+
+KinkyDungeonSpellCastSPikeTrap,Several poles rise up out of the ground...
+
+KinkyDungeonInventoryItemScrolls,Various Scrolls

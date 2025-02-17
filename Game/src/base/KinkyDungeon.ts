@@ -1733,6 +1733,10 @@ let saveError = false;
 
 function KinkyDungeonRun() {
 
+	if (KDSaveQueue.length > 8) {
+		// uh...
+		KDSaveQueue = [KDSaveQueue[KDSaveQueue.length-1]];
+	}
 
 	if (KDSaveQueue.length > 0 && !KDSaveBusy) {
 		KDSaveBusy = true;

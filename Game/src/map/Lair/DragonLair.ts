@@ -38,6 +38,7 @@ alts.DragonLair = {
 	nolore: true,
 	noboring: false,
 	noSetpiece: true,
+	noTables: true,
 
 	/** hehe */
 	keepItems: true,

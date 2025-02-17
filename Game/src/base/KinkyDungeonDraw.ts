@@ -4543,8 +4543,6 @@ function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _Ca
 
 let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, text: string, desc?: string, noInspect?: boolean}> = {
 	'1': () => {return {color: "#aaaaaa", text: "1"};},
-	'5': () => {return {color: "#aaaaaa", text: "5"};},
-	'6': () => {return {color: "#aaaaaa", text: "6"};},
 	'0': () => {return {color: "#444444", text: "0"};},
 	'2': () => {return {color: "#444444", text: "2"};},
 	'R': () => {return {color: "#ffffff", noInspect: true, text: "R"};},
@@ -4569,6 +4567,18 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	'S': () => {return {color: "#6a8eb3", noInspect: true, text: "S"};},
 	's': () => {return {color: "#96caff", noInspect: true, text: "s"};},
+	'5': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffffff", noInspect: true, text: tile?.Tooltip ? tile.Tooltip : "5",
+			desc: tile?.Tooltip ? TextGet("KDEffectTileTooltip" + tile.Tooltip + "Desc") : undefined};},
+	'6': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffffff", noInspect: true, text: tile?.Tooltip ? tile.Tooltip : "6",
+			desc: tile?.Tooltip ? TextGet("KDEffectTileTooltip" + tile.Tooltip + "Desc") : undefined};},
+	'7': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffffff", noInspect: true, text: tile?.Tooltip ? tile.Tooltip : "7",
+			desc: tile?.Tooltip ? TextGet("KDEffectTileTooltip" + tile.Tooltip + "Desc") : undefined};},
 	'H': (x, y) => {
 		let tile = KinkyDungeonTilesGet(x + ',' + y);
 		return {color: "#96caff", noInspect: true, text: "H", desc:

@@ -22,8 +22,12 @@ let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 			KinkyDungeonTargetTile = tile;
 			KDStartDialog("TableFood", "", true, "");
 			return true;
-		} else
+		} else {
+			KinkyDungeonTargetTileLocation = x + "," + y;
+			KinkyDungeonTargetTile = tile;
+			KDStartDialog("TableFlip", "", true, "");
 			KinkyDungeonFoodMessage(tile);
+		}
 		return false;
 	},
 	"Elevator": (x, y) => {
