@@ -9,7 +9,7 @@ on:
     - cron: '0 0 * * *'
   push:
     branches:
-      - '5.4'
+      - 'newartwork'
     paths:
       - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
 
@@ -36,6 +36,12 @@ jobs:
         env:
           PARATRANZ_TOKEN: ${{ secrets.PARATRANZ_TOKEN }}
         run: python .github/scripts/synchronous-translation-script.py
+
+      - name: 📂 Merge translations
+        run: |
+          cat Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN_paratranz.txt >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
+          python .github/scripts/format-translation-script.py "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+
 
       - name: 📝 Commit changes
         id: check_changes
