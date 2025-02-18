@@ -2322,11 +2322,7 @@ function KDDrawArousalScreenFilter(_y1: number, _h: number, _Width: number, _Aro
 }
 
 function KDCanAttack() {
-	let attackCost = KinkyDungeonStatStaminaCostAttack;
-	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.staminacost) attackCost = -KinkyDungeonPlayerDamage.staminacost;
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")) {
-		attackCost = Math.min(0, attackCost * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")));
-	}
+	let attackCost = KDAttackCost().attackCost;
 	return KinkyDungeonHasStamina(Math.abs(attackCost), true);
 }
 
