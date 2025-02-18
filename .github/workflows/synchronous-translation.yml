@@ -16,7 +16,7 @@ on:
 jobs:
   synchronous-translation:
     runs-on: ubuntu-latest
-    if: github.repository == 'Ada18980/KinkiestDungeon'
+    if: github.repository == 'Ada18980/KinkiestDungeon' && github.ref == 'refs/heads/newartwork'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
