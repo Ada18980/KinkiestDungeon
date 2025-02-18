@@ -84,17 +84,17 @@ window.onload = function() {
 
 	(PIXIapp.renderer as PIXIRenderer).gl.canvas.addEventListener('webglcontextlost', () => {
 		console.error('WebGl context lost');
-		ContextLostAlready = true;
 		KDForceAllCull = true;
 
 		if (!ContextLostAlready)
 			setTimeout(() => {
 				if (!ContextLostAlready) {
+					ContextLostAlready = true;
 					//@ts-ignore
 					PIXIapp.renderer.context.gl.getExtension('WEBGL_lose_context')?.loseContext();
 				}
-				ContextLostAlready = false;
 			}, 2000);
+		else ContextLostAlready = false;
 
 
 		//load();

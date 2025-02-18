@@ -1957,45 +1957,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			return false;
 		},
 		options: {
-			"Flip": {
-				playertext: "Default", response: "Default",
-				clickFunction: (_gagged, _player) => {
-					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
-					if (tile && tile.Type == "Food") {
-						// Send the message and advance time
-						KinkyDungeonAdvanceTime(1);
-
-						tile.Type = undefined;
-
-						let x = KinkyDungeonTargetTileLocation.split(',')[0];
-						let y = KinkyDungeonTargetTileLocation.split(',')[1];
-						KinkyDungeonMapSet(parseInt(x), parseInt(y), "5");
-						tile.Overlay = "TableFlipped";
-						tile.Tooltip = "FlippedTable";
-						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
-						KDChangeWill(KinkyDungeonTargetTileLocation, "environment",
-							"interact", KDDialogueParams.KDTableFlipWP * Willmulti, false);
-
-
-						// Remove the food
-						delete tile.Food;
-						delete tile.Eaten;
-					}
-					return false;
-				},
-				options: {
-					"Leave": {
-						clickFunction: (_gagged, _player) => {
-							KinkyDungeonTargetTile = null;
-							KinkyDungeonTargetTileLocation = "";
-							KDModalArea = false;
-							return false;
-						},
-						playertext: "Leave", response: "Default",
-						exitDialogue: true,
-					},
-				}
-			},
 			"Eat": {
 				playertext: "Default", response: "Default",
 				clickFunction: (_gagged, _player) => {
@@ -2077,6 +2038,49 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				}
 			},
+			"Flip": {
+				playertext: "Default", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					if (tile && tile.Type == "Food") {
+						// Send the message and advance time
+						KinkyDungeonAdvanceTime(1);
+
+						if (tile.Food && KDFood[tile.Food]?.Theft) {
+							KDRunChefChance(_player, true);
+						}
+
+						tile.Type = undefined;
+
+						let x = KinkyDungeonTargetTileLocation.split(',')[0];
+						let y = KinkyDungeonTargetTileLocation.split(',')[1];
+						KinkyDungeonMapSet(parseInt(x), parseInt(y), "5");
+						tile.Overlay = "TableFlipped";
+						tile.Tooltip = "FlippedTable";
+						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+						KDChangeWill(KinkyDungeonTargetTileLocation, "environment",
+							"interact", KDDialogueParams.KDTableFlipWP * Willmulti, false);
+
+
+						// Remove the food
+						delete tile.Food;
+						delete tile.Eaten;
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						clickFunction: (_gagged, _player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Leave": {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonTargetTile = null;
@@ -2113,6 +2117,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (tile && tile.Type == "Food") {
 						// Send the message and advance time
 						KinkyDungeonAdvanceTime(1);
+
+						if (tile.Food && KDFood[tile.Food]?.Theft) {
+							KDRunChefChance(_player, true);
+						}
 
 						tile.Type = undefined;
 

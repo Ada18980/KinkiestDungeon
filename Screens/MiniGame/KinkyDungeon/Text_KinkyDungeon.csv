@@ -13402,6 +13402,8 @@ KDFoodNamePizza,Pizza
 rTableFlip,"(The table looks remarkably flippable)"
 rTableFlipFlip,"(You knock over the table!)"
 dTableFlip_Flip,(Flip the table)
+rTableFoodFlip,"(You knock over the table!)"
+dTableFood_Flip,(Flip the table)
 
 rButton,"(There is a button on a control panel here.)"
 rButtonPress,"(You touch the button and it glows, releasing a pulse of energy!)"
