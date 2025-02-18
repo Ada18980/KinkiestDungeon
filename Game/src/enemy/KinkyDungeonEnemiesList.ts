@@ -6289,7 +6289,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "EnergyShield2",
 				duration: 9999, infinite: true,
-				power: 0.5,
+				power: 0.1,
 				type: "ShieldRegenBG",
 			});
 		},

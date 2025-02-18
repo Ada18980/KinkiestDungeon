@@ -1,0 +1,11 @@
+{
+	"modname": "Example Enemy",
+	"moddesc": "An example mod to add a new enemy to the game",
+	"author": "Your name here",
+	"modbuild": 1,
+	"gamemajor": 5,
+	"gameminor": 4,
+	"gamepatch_min": 43,
+	"gamepatch_max": -1,
+	"priority": 0
+}

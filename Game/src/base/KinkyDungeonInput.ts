@@ -37,7 +37,9 @@ function KDProcessInput(type: string, data: any): string {
 			if (data.sleep == 10 && (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') && KinkyDungeonPlayerInCell()) {
 				KDKickEnemies(KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y), false, MiniGameKinkyDungeonLevel, true);
 			}
-			if (data.sleep && KinkyDungeonStatWill < KinkyDungeonStatWillMax * KDGetSleepWillFraction()) KDChangeWill("player","wait", "tick", KinkyDungeonStatWillMax/KDMaxStatStart * KDSleepRegenWill, false);
+			if(data.sleep) {
+				KDSleepTick();
+			}
 			KinkyDungeonAdvanceTime(data.delta, data.NoUpdate, data.NoMsgTick);
 			break;
 		case "tryCastSpell": {
@@ -1432,7 +1434,7 @@ function KDInteract(x: number, y: number, dist?: number): boolean {
 
 	}
 	let Enemy = KinkyDungeonEntityAt(x, y, false, undefined, undefined, false);
-	if (Enemy) {
+	if (Enemy && dist < 1.5) {
 		if ((KDIsImprisoned(Enemy)
 			|| ((!KinkyDungeonAggressive(Enemy) || KDAllied(Enemy))
 			&& !(Enemy.playWithPlayer && KDCanDom(Enemy))))) {
@@ -1449,9 +1451,13 @@ function KDInteract(x: number, y: number, dist?: number): boolean {
 		}
 	}
 	if (tile?.Type && KinkyDungeonMovableTiles.includes(tiletype)) {
-		KinkyDungeonTargetTile = tile;
-		KinkyDungeonTargetTileLocation = x + "," + y;
-		KinkyDungeonTargetTileMsg();
+		if (dist < 1.5) {
+			KinkyDungeonTargetTile = tile;
+			KinkyDungeonTargetTileLocation = x + "," + y;
+			KinkyDungeonTargetTileMsg();
+		} else {
+			KinkyDungeonSendActionMessage(10, TextGet("KDMoveCloser"), "#ffffff", 2, true);
+		}
 	}
 	KinkyDungeonSendEvent("afterInteractFail", {x:x, y: y});
 	return false;

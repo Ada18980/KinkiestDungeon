@@ -5,13 +5,12 @@ permissions:
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
   push:
     branches:
-      - '5.4'
+      - 'newartwork'
     paths:
       - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
+      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
 
 jobs:
   synchronous-translation:
@@ -37,11 +36,17 @@ jobs:
           PARATRANZ_TOKEN: ${{ secrets.PARATRANZ_TOKEN }}
         run: python .github/scripts/synchronous-translation-script.py
 
+      - name: 📂 Merge translations
+        run: |
+          printf "\n\n" >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
+          cat Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN_paratranz.txt >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
+          python .github/scripts/format-translation-script.py "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+
       - name: 📝 Commit changes
         id: check_changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "synchronous-translation-action"
-          git add . 
+          git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
           git push

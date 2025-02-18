@@ -7088,8 +7088,8 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		},
 
 		"StaffStormAura": (e, wep, data) => {
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: "StaffStormAura", type: "Event", power: e.power, duration: 2, events: [
-				{type: "StaffStormEcho", trigger: "beforeDamageEnemy", wepname: wep.name, aoe: 2.99, power: 1.5, damage: "electric"}
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: "StaffStormAura", type: "Event", wepname: wep.name, power: e.power, duration: 2, events: [
+				{type: "StaffStormEcho", trigger: "beforeDamageEnemy", aoe: 2.99, power: 1.5, damage: "electric"}
 			]});
 		},
 		"blockBuff": (e, weapon, _data) => {

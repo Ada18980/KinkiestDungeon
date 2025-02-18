@@ -836,10 +836,10 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 			let str = "";
 			if (l) {
 				if (!KDPropsSlider || KDWToolsLayerAbbrMode == "Full") {
-					str = TextGet(`l_${Model.Name}_${l}`);
+					str = TextGet(`m_${Model.Name}_l_${l}`);
 				} else {
-					str = TextGet(`l_${Model.Name}_${l}`) == `l_${Model.Name}_${l}` ? KDAbbreviate(l)
-					: KDAbbreviate(TextGet(`l_${Model.Name}_${l}`));
+					str = TextGet(`l_${Model.Name}_${l}`) == `m_${Model.Name}_l_${l}` ? KDAbbreviate(l)
+					: KDAbbreviate(TextGet(`m_${Model.Name}_l_${l}`));
 				}
 			}
 

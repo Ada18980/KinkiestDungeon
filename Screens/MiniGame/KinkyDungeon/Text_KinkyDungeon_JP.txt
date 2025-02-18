@@ -26940,6 +26940,262 @@ Orb
 
 ### FashionHarnessBlindfold
 
+### SideBang
+
+### Sides
+
+### Hair
+
+### Bang
+
+### LeftSideBang
+
+### RightSideBang
+
+### LeftPuff
+
+### RightPuff
+
+### Under
+
+### Highlight
+
+### FrontLeft
+
+### HighlightLeft
+
+### HighlightRight
+
+### EarringLeft
+
+### EarringRight
+
+### Cups
+
+### Seams
+
+### InnerEars
+
+### Tail1
+
+### Bikini
+
+### Insignia
+
+### Rivets
+
+### Ruffle
+
+### RimLeft
+
+### RimRight
+
+### Hardware
+
+### SleeveHems
+
+### BraBase
+
+### BraStripes
+
+### DecoBase
+
+### DecoCrystal
+
+### DecoHardware
+
+### CorsetBust
+
+### RuffleBust
+
+### Trim
+
+### Lace
+
+### Lens
+
+### LensLeft
+
+### LensRight
+
+### BaseMetal
+
+### Tie
+
+### Inner
+
+### LeftButton
+
+### RightButton
+
+### Waistband
+
+### WaistbandBelts
+
+### Mitten
+
+### Paw
+
+### Zipper
+
+### Cap
+
+### Cuff
+
+### Glow
+
+### UpperCuff
+
+### UpperDisplay
+
+### UpperLock
+
+### UpperGlow
+
+### Pins
+
+### Locks
+
+### Shackles
+
+Runes
+ルーン
+### Buckles
+
+### Underskirt
+
+### Lining
+
+### Tag
+
+### Pads
+
+### Bell
+
+### LockPlate
+
+### LockBand
+
+Shield
+盾
+### Pin
+
+### LockShackle
+
+### LockHighlight
+
+### Screen
+
+### Tether
+
+### LeotardUpper
+
+### StripesUpper
+
+### CollarRight
+
+### CollarLeft
+
+### StripesRight
+
+### StripesLeft
+
+### Symbol
+
+### LeftShoulder
+
+### LeftShoulderStripe
+
+### RightShoulder
+
+### RightShoulderStripe
+
+### Stitches
+
+### EarmuffL
+
+### EarmuffR
+
+### FeetPaws
+
+### LowerBody
+
+### UpperBody
+
+### Hem
+
+### LockPin
+
+### Binder
+
+### BinderStraps
+
+### BeltsLower
+
+Lower
+脚
+### StrapHardware
+
+### Shoe
+
+### Sole
+
+### StrapRivets
+
+### Clips
+
+### Suit
+
+### Loop
+
+### InnerEarsLight
+
+### SkirtHem
+
+### SkirtStripe
+
+### TopRuffles
+
+### TopBelts
+
+### KneepadLeft
+
+### KneepadRight
+
+### JacketBottom
+
+### JacketSleeveLeft
+
+### JacketSleeveRight
+
+### ShirtBottom
+
+### Circle
+
+### Secret
+
+### Unit
+
+### Secret_UnderbustStrap
+
+### Secret_UnderbustHardware
+
+### Secret_Strap
+
+### Secret_Side
+
+### Secret_Hardware
+
+### Name
+
+### Secret_Pouch
+
+### Secret_Light
+
+### Secret_Base
+
+### Secret_Lens
+
 
 
 Hide Items
@@ -27414,10 +27670,6 @@ Quick-Bind
 
 
 
-
-
-Lower
-脚
 
 
 Spellbound Rope
@@ -28714,8 +28966,6 @@ Hands-Free
 ハンズフリー
 Hands-Free: Weapon can be used without free hands.
 ハンズフリー：手を使わずに使用可能。
-Shield
-盾
 Shield: This weapon is intended for defensive use.
 盾：敵の攻撃を防御できる。
 Heavy: This weapon takes +1 turns to switch to. Cannot be reduced to 0 by perks or upgrades.
@@ -33034,8 +33284,6 @@ You don't have the willpower left to struggle...
 
 Fiber
 繊維
-Runes
-ルーン
 
 
 Stock: 
@@ -34815,3 +35063,11 @@ Layer Text:
 ### Move Closer to Tie
 
 ### Sprint (AMNT)
+
+### Stop Waiting
+
+### (Already slept here)
+
+### (Will not low enough)
+
+### Move closer to interact

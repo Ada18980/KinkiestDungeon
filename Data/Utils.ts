@@ -59,7 +59,12 @@ function GenPlaceholderModelNames() {
 			ret = ret + ("m_" + model.Name + "," + model.Name) + "\n";
 		}
 		for (let layer of Object.values(model.Layers)) {
-			if (TextGet("m_" + model.Name + "_l_" + layer.Name) == "m_" + model.Name + "_l_" + layer.Name) {
+			if (layer.InheritColor) {
+				if (TextGet("m_" + model.Name + "_l_" + layer.InheritColor) ==
+					"m_" + model.Name + "_l_" + layer.InheritColor) {
+					ret = ret + ("m_" + model.Name + "_l_" + layer.InheritColor + "," + layer.InheritColor) + "\n";
+				}
+			} else if (TextGet("m_" + model.Name + "_l_" + layer.Name) == "m_" + model.Name + "_l_" + layer.Name) {
 				ret = ret + ("m_" + model.Name + "_l_" + layer.Name + "," + layer.Name) + "\n";
 			}
 		}

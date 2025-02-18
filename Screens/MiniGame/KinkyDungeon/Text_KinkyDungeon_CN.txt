@@ -1,3 +1,4 @@
+Go to https://paratranz.cn/projects/12190 to participate in KD localization
 前往 https://paratranz.cn/projects/12190 参加KD汉化
 
 By Strait-Laced Games
@@ -44,8 +45,6 @@ Version
 版本号
 Kinky Dungeon
 淫荡地牢
-5.4.43
-5.4.33
 You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
 Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -187,7 +186,7 @@ Draw Buffs on Side
 Show Trajectory on Auto-Path
 预览自动路径轨迹
 Always Show Player Facing
-显示玩家朝向
+总是显示玩家朝向
 Show more learnable spells
 显示更多可学习的法术
 Show Player Buff Auras
@@ -645,7 +644,7 @@ Melee attacks distract you, but melee (including chain) damage increases by up t
 Unstable Magic
 混沌魔法
 Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
-根据性奋值或施法失败的几率，法术最多可造成 60% 的额外伤害，以最高者为准。
+根据性奋值或施法失败的几率，法术最多可造成 30% 的额外伤害，以最高者为准。
 Absolute Focus
 绝对专注
 Miscast chance is doubled.
@@ -8677,7 +8676,7 @@ Unarmed strikes gain 25% accuracy (60% total) and -25% stamina cost (50% total).
 Precise Critical
 精准暴击
 When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
-当造成物理伤害的暴击时，超过 100% 的命中率将以 50% 的效率转化为额外暴击倍数。
+当造成物理伤害的暴击时，超过 100% 的命中率将以 25% 的效率转化为额外暴击倍数 ( 轻型武器为 50% 的效率 )
 Precise Magic
 精准魔法
 When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
@@ -8943,7 +8942,7 @@ You shout an incendiary retort!
 Choose AoE location
 选择施放位置
 Feather Burst
-羽毛爆
+羽翼破乱
 After a brief delay, a small cloud of feathers tickles enemies for DamageDealt damage and +60 distraction for 3 turns.
 短暂延迟后，一小团羽毛将使敌人发痒，给敌人造成 DamageDealt 点挠痒伤害和 60 点性奋值。
 You conjure a burst of frenetic feathers!
@@ -9267,7 +9266,7 @@ You hover with reduced effect from bindings.
 Iron Blood
 铁血
 Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast.
-引导4回合 : 近战攻击体力消耗 -50%，但释放法术时法力消耗 +25%，睡眠或再次使用时停止。
+吟唱4回合后 : 近战攻击体力消耗 -30%，但释放法术时法力消耗 +15%，再次使用时停止。
 Your skin glows a pale red!
 你的皮肤发出淡红色的光芒！
 Stone Skin
@@ -19712,782 +19711,6 @@ HeavyMaidKnight_SockLeft
 重装女仆骑士_左袜
 HeavyMaidKnight
 重装女仆骑士
-<<<<<<< Updated upstream
-=======
-
-
-### BlondeFront
-
-### BlondeBangs
-
-### BlondeBack
-
-### FangMouth_Double
-
-### HoodCollar
-
-### BigBallTeethFang
-
-### MilitaryJacket_Sleeveless
-
-### MilitaryUniform_SleeveLeft
-
-### MilitaryUniform_SleeveRight
-
-### MilitaryUniform_Sleeves
-
-### MilitaryJacket
-
-### WhiteGloveLeft
-
-### WhiteGloveRight
-
-### WhiteGloves
-
-### UniformShirt_Sleeveless
-
-### UniformShirt_SleeveLeft
-
-### UniformShirt_SleeveRight
-
-### UniformShirt_Sleeves
-
-### UniformShirt
-
-### MilitaryUniform_Hat
-
-### Hat
-
-### HatRim
-
-### HatCap
-
-### HatGloriousInsignia
-
-### HatGloriousInsigniaHS
-
-### MilitaryUniform_Earphones
-
-### Headgear
-
-### HeadgearUnit
-
-### HeadgearEars
-
-### HeadgearEarsInner
-
-### HeadgearBack
-
-### MilitaryUniform_Searchlight
-
-### SearchlightPouch
-
-### Searchlight
-
-### SearchlightBase
-
-### SearchlightLens
-
-### MilitaryUniform_BeltPouch
-
-### BeltPouch
-
-### BeltPouchRim
-
-### MilitaryUniform_Webbing
-
-### Webbing
-
-### WebbingSide
-
-### WebbingHardware
-
-### WebbingName
-
-### WebbingUnderbust
-
-### WebbingUnderbustHardware
-
-### MilitaryUniform_Skirt
-
-### MilitaryUniform_Shoes
-
-### MilitaryUniform_TightsShorts
-
-### MilitaryUniform_SockLeft
-
-### MilitaryUniform_SockRight
-
-### Tights
-
-### MilitaryUniform_Hairpin
-
-### Hairpin
-
-### MilitaryUniform
-
-### ShirtSleeveLeft
-
-### ShirtForeArmLeft
-
-### ShirtSleeveRight
-
-### ShirtForeArmRight
-
-### ShirtShoulderRight
-
-### ShirtDress
-
-### ShirtDressChest
-
-### RubyNecklace
-
-### RubyChain
-
-### RubyRing
-
-### RubyGem
-
-### RubyNecklaceRestraint
-
-### SigilNecklace
-
-### SigilChain
-
-### SigilDisc
-
-### SigilNecklaceRestraint
-
-### MetalNecklace
-
-### MetalChain
-
-### MetalDisc
-
-### MetalNecklaceRestraint
-
-### NecklaceCharm
-
-### DragonNecklaceRestraint
-
-### BallTeeth
-
-### CrystalBallGag
-
-### CrystalBallGagSmooth
-
-### GagMetalRivetedStrap
-
-### OTNStrap
-
-### OTNStrapRivets
-
-### FashionGagMetalRivetedStrap
-
-### CrystalGagNecklace
-
-### CrystalGagNecklaceBall
-
-### FashionCrystalGagNecklace
-
-### LeashCollar
-
-### LeashCollarHardware
-
-### BootShoeLeft
-
-### BootShoeRight
-
-### Fear
-
-### RubyHardware
-
-### KiguMaskSmile
-
-### MouthSmile
-
-### FashionKiguMaskSmile
-
-### OneBarTop
-
-### OneBarPrisonLatex
-
-
-
-### FangMouth
-
-### FanglessMouth
-
-### SantaHat
-
-### HatBack
-
-### Fluff
-
-### Orb
-
-### FestiveArmbinder
-
-### BinderStrapLeft
-
-### BinderFluffLeft
-
-### FestiveHarnessTop
-
-### StrapTop
-
-### ButtonsTop
-
-### FuzzTop
-
-### FestiveHarnessMid
-
-### StrapMid
-
-### ButtonsMid
-
-### FuzzMid
-
-### FestiveHarnessStrap
-
-### StrapBot
-
-### ButtonsBot
-
-### FuzzBot
-
-### FestiveHarness
-
-### StrapOverbust
-
-### StrapUnderbust
-
-### ButtonsUnderbustOver
-
-### ButtonsUnderbust
-
-### FuzzUnderbustOver
-
-### FuzzUnderbust
-
-### FashionFestiveHarnessTop
-
-### FashionFestiveHarnessMid
-
-### FashionFestiveHarnessStrap
-
-### FashionFestiveHarness
-
-### FrillyHeadband
-
-### HeadbandBand
-
-### HeadbandBow
-
-### BowHeadband
-
-### BowHeadbandFrill
-
-### BackHime
-
-### HimeBack
-
-### BackShort
-
-### BackFlat
-
-### Bob
-
-### BobFront
-
-### FrontStraight2
-
-### FrontStraight2_Front
-
-### FrontStraight2_Overstrap
-
-### FrontSwept
-
-### FrontSweptSide
-
-### Vents
-
-### VentL
-
-### VentR
-
-### VentsInnerR
-
-### VentsInnerL
-
-### VentsFront
-
-### BigBraidBack
-
-### CurlyPonytail
-
-### DrillLeft
-
-### DrillRight
-
-### Twindrills
-
-### Twintails
-
-### PointyAhoge
-
-### RoundHat
-
-### HatTop
-
-### TopHatSmall
-
-### TopHatSmallBow
-
-### BlondeFrontM
-
-### BlondeBangsM
-
-### BlondeBackM
-
-### Mascara
-
-### MascaraL
-
-### MascaraR
-
-### Scar
-
-### PointyAntennae
-
-### AnthenaL
-
-### AnthenaR
-
-### PointyHorns
-
-### HornL
-
-### HornR
-
-### PointyTail
-
-### Tail
-
-### WolfEars2
-
-### EarLeft
-
-### EarRight
-
-### HairclipDual
-
-### HairclipLower
-
-### HairclipUpper
-
-### ChainPanties
-
-### PantiesChain
-
-### ChainPanties2
-
-### KittyPetCuffsWristLeft
-
-### KittyPetCuffsWristRight
-
-### KittyPetCuffsWrists
-
-### KittyPetCuffsElbowLeft
-
-### KittyPetCuffsElbowRight
-
-### KittyPetCuffsElbows
-
-### KittyPetCuffsArms
-
-### KittyPetCuffsAnklesLeft
-
-### KittyPetCuffsAnklesRight
-
-### KittyPetCuffsAnkles
-
-### KittyPetCuffsThighLeft
-
-### KittyPetCuffsThighRight
-
-### KittyPetCuffsThigh
-
-### KittyPetCuffsCollar
-
-### FashionKittyPetCuffsCollar
-
-### FashionKittyPetCuffsWristLeft
-
-### FashionKittyPetCuffsWristRight
-
-### FashionKittyPetCuffsWrists
-
-### FashionKittyPetCuffsElbowLeft
-
-### FashionKittyPetCuffsElbowRight
-
-### FashionKittyPetCuffsElbows
-
-### FashionKittyPetCuffsArms
-
-### FashionKittyPetCuffsAnklesLeft
-
-### FashionKittyPetCuffsAnklesRight
-
-### FashionKittyPetCuffsAnkles
-
-### FashionKittyPetCuffsThighLeft
-
-### FashionKittyPetCuffsThighRight
-
-### FashionKittyPetCuffsThigh
-
-### KittyPawCuffsWristLeft
-
-### KittyPawCuffsWristRight
-
-### KittyPawCuffsWrists
-
-### KittyPawCuffsElbowLeft
-
-### KittyPawCuffsElbowRight
-
-### KittyPawCuffsElbows
-
-### KittyPawCuffsArms
-
-### KittyPawCuffsAnklesLeft
-
-### KittyPawCuffsAnklesRight
-
-### KittyPawCuffsAnkles
-
-### KittyPawCuffsThighLeft
-
-### KittyPawCuffsThighRight
-
-### KittyPawCuffsThigh
-
-### FashionKittyPawCuffsWristLeft
-
-### FashionKittyPawCuffsWristRight
-
-### FashionKittyPawCuffsWrists
-
-### FashionKittyPawCuffsElbowLeft
-
-### FashionKittyPawCuffsElbowRight
-
-### FashionKittyPawCuffsElbows
-
-### FashionKittyPawCuffsArms
-
-### FashionKittyPawCuffsAnklesLeft
-
-### FashionKittyPawCuffsAnklesRight
-
-### FashionKittyPawCuffsAnkles
-
-### FashionKittyPawCuffsThighLeft
-
-### FashionKittyPawCuffsThighRight
-
-### FashionKittyPawCuffsThigh
-
-### KittyPetLeotardUnder
-
-### LeotardStripes
-
-### LeotardChestStripes
-
-### KittyPetLeotard
-
-### KittyPetLeotardRestraint
-
-### KittyPetUniformCollar
-
-### LeotardChestCollar
-
-### LeotardChestCollarLeft
-
-### LeotardChestCollarStripes
-
-### LeotardChestCollarStripesLeft
-
-### CollarDecoSymbol
-
-### ShoulderCuffLeft
-
-### ShoulderCuffStripeLeft
-
-### ShoulderCuffRight
-
-### ShoulderCuffStripeRight
-
-### KittyPetTail
-
-### TailStripe
-
-### KittyPetBlindfold
-
-### BlindfoldRim
-
-### BlindfoldBrow
-
-### FashionKittyPetBlindfold
-
-### KittyPetSteelCollar
-
-### FashionKittyPetSteelCollar
-
-### KittyPetMittenLeft
-
-### GloveLeftPaw
-
-### ForeGloveLeftPaw
-
-### KittyPetMittenRight
-
-### GloveRightPaw
-
-### ForeGloveRightPaw
-
-### KittyPetMittens
-
-### FashionKittyPetMittenLeft
-
-### FashionKittyPetMittenRight
-
-### FashionKittyPetMittens
-
-### KittyPetEars1
-
-### Ears1L
-
-### Ears1R
-
-### Ears1InnerL
-
-### Ears1InnerR
-
-### KittyPetEars2
-
-### Ears2L
-
-### Ears2R
-
-### Ears2InnerL
-
-### Ears2InnerR
-
-### KittyPetEarmuffs
-
-### EarmuffersL
-
-### EarmuffersR
-
-### KittyPetEarmuffsRestraint
-
-### KittyPetEars1Restraint
-
-### KittyPetEars2Restraint
-
-### KittyPetGag
-
-### GagCollar
-
-### KittyPetGagSeamless
-
-### GagSeamless
-
-### KittyPetGagMouth
-
-### GagMouth
-
-### KittyPetGagMouthSeamless
-
-### GagMouthSeamless
-
-### FashionKittyPetGag
-
-### FashionKittyPetGagSeamless
-
-### FashionKittyPetGagMouth
-
-### FashionKittyPetGagMouthSeamless
-
-### KittyPetsuit
-
-### ArmsPaws
-
-### LeftLegsPaws
-
-### FootLeftHogtiePaws
-
-### KittyPetSockLeft
-
-### SockLeftPaws
-
-### KittyPetSockRight
-
-### KittyPetSocks
-
-### KittyPetSocksRestraint
-
-### KittyPetPawLeft
-
-### KittyPetPawRight
-
-### KittyPetPaws
-
-### KittyPetPawsRestraint
-
-### KittyPetPawShortLeft
-
-### KittyPetPawShortRight
-
-### KittyPetPawsShort
-
-### KittyPetPawsShortRestraint
-
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
-### CapeRestraint
-
-### BreastplateRestraint
-
-### PauldronsRestraint
-
-### PauldronLeftRestraint
-
-### PauldronRightRestraint
-
-### PlateBootsRestraint
-
-### GauntletsRestraint
-
-### ChainShirtRestraint
-
-### ChainBikiniRestraint
-
-### ChainSkirt2Restraint
-
-### ChainSkirtRestraint
-
-### ChainPantiesRestraint
-
-### ChainPanties2Restraint
-
-### WarriorBootsRestraint
-
-### BustierChestRim
-
-### WarriorBustierRestraint
-
-### LeatherGlovesRestraint
-
-### RobeSleevesRestraint
-
-### KittyPetTailThin
-
-### Tail2
-
-### Tail2Stripe
-
-### KittyPetBlindfoldStitched
-
-### BlindfoldStich
-
-### KittyPetBlindfoldPanel
-
-### BlindfoldSmall
-
-### BlindfoldSmallStrap
-
-### KittyPetBlindfoldPanelStitched
-
-### FashionKittyPetBlindfoldPanel
-
-### FashionKittyPetBlindfoldStitched
-
-### FashionKittyPetBlindfoldPanelStitched
-
-### KittyPetBlindfoldStrap
-
-### BlindfoldStrap
-
-### FashionKittyPetBlindfoldStrap
-
-### KittyPetHarnessBlindfold
-
-### BlindfoldHarness
-
-### FashionKittyPetHarnessBlindfold
-
-### KittyPetEars3
-
-### Ears3L
-
-### Ears3R
-
-### Ears3InnerL
-
-### Ears3InnerR
-
-### KittyPetEars3Restraint
-
-### KittyPetHarnessGag
-
-### FaceHarness
-
-### FaceHarnessHardware
-
-### FaceHarnessStripe
-
-### KittyPetHarnessGagSeamless
-
-### KittyPetHarnessGagMouth
-
-### KittyPetHarnessGagMouthSeamless
-
-### FashionKittyPetHarnessGag
-
-### FashionKittyPetHarnessGagSeamless
-
-### FashionKittyPetHarnessGagMouth
-
-### FashionKittyPetHarnessGagMouthSeamless
-
-### KittyPetSockShortLeft
-
-### KittyPetSockShortRight
-
-### KittyPetSocksShort
-
-### KittyPetSocksShortRestraint
-
-### HarnessBlindfold
-
-### HarnessBlindfoldHarness
-
-### HarnessBlindfoldHarnessHardware
-
-### HarnessBlindfoldStrap
-
-### HarnessBlindfoldStrapHardware
-
-### FashionHarnessBlindfold
-
-
-
->>>>>>> upstream/5.4
 Hide Items
 隐藏项目
 Sort Items
@@ -23255,16 +22478,7 @@ After casting Sagitta, you can recast it up to three more times without advancin
 Psychokinesis
 念力
 You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
-<<<<<<< HEAD
 你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神过载，法术会让你产生性奋 ( 基于法力消耗 ) 。无法在 100% 性奋值 下使用。
-<<<<<<< Updated upstream
-=======
-=======
-你可以无视施法部位来施放念动法术，以这种方式施法会让你产生基于法力消耗的性奋值 ( 由于精神过载 ) 。无法在 100% 性奋值 时使用。
->>>>>>> upstream/5.4
-
-
->>>>>>> Stashed changes
 Kinetic Mastery
 灵能大师
 Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
@@ -24915,8 +24129,6 @@ Increase max willpower by AMNT.
 意志力上限增加 AMNT 点。
 Gain +AMNT SP regen/turn.
 每回合恢复 +AMNT 点体力。
-AMNT1 -> AMNT2
-AMNT1 -> AMNT2
 AMNT1 (max)
 AMNT1 (最大)
 You found a magical amulet! Choose one of the following to determine its benefits:
@@ -24936,41 +24148,21 @@ You break the orb and gain its secrets.
 Stun Resistance!
 眩晕抗性！
 Negate Rune
-<<<<<<< HEAD
 否定符文
-<<<<<<< Updated upstream
 Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
 移除目标方块上的符文。如果对自己施放，则改为移除你创建的所有符文。如果对敌方符文施放，则改为恢复 10 点法力。
-=======
-### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
-
->>>>>>> Stashed changes
-=======
-否决符文
-Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
-移除目标地板上的一个符文。如果对自己施放，则会移除自己创建的所有符文。对敌方符文施放会恢复 10 法力值。如果对无符文的地板施放，则会消耗 5 法力值。
->>>>>>> upstream/5.4
 You scribe a negation rune!
-你写下了一个否决符文！
+你写下了一个否定符文！
 Target a single rune, or yourself to negate all your runes.
-瞄准单个符文或自己来否决所有符文。
+瞄准单个符文或自己来否定所有符文。
 You don't have enough mana
 你没有足够的法力
 The enemy rune is wiped clean.
 敌方符文已被清除干净。
 You pour negation magic into the ground, but nothing happens.
-你将否决魔法注入地面，但什么也没有发生。
+你把否定魔法灌注到地面，但什么也没有发生。
 All of your runes have been removed.
-<<<<<<< HEAD
 你的所有符文都已被移除。
-<<<<<<< Updated upstream
-=======
-=======
-你创建的所有符文都已被移除。
->>>>>>> upstream/5.4
-
-
->>>>>>> Stashed changes
 E-Stimulation
 刺激电流
 Replaces most instances of painful electric shocks with stimulating effects instead.
@@ -25591,10 +24783,6 @@ Restore
 恢复
 Extra Options
 更多选项
-FLR-DGN
-FLR-DGN
- (NG+AMNT)
- (NG+AMNT)
 Target must be vulnerable.
 目标必须是脆弱的。
 Target must be vulnerable or have casted a verbal spell.
@@ -30447,8 +29635,6 @@ Combat
 战斗
 Magic
 魔法
-(...)
-(...)
 (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
 (SPEAKER 脸红了)|嗯，小姐，我看见你那里有武器，|你能把它交出来吗？
 (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
@@ -31139,8 +30325,6 @@ You're giving me everything you have.
 ( 算了... )
 (Never mind...)
 ( 算了... )
-(...)
-(...)
 (Stop following me)
 ( 停止跟着我 )
 (Never mind...)
@@ -31161,8 +30345,6 @@ You're giving me everything you have.
 ( 静止不动 )
 (Never mind...)
 ( 算了... )
-(...)
-(...)
 (The SPEAKER refuses to follow your orders)
 ( SPEAKER 拒绝听从你的命令 )
 (Don't stay here)
@@ -31291,44 +30473,20 @@ Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
 风香(Fuuka)打了个响指，你所有的拘束具都被锁定了！ ( DamageTaken )
 (Growl at her)
 ( 对她咆哮 )
-(...)
-(...)
-(...)
-(...)
 I am an adventurer.
 我是冒险家。
 Mmmmph.
 嗯。
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
 Mmmmm... (Blush)
 嗯嗯…… ( 脸红 )
-(...)
-(...)
-(...)
-(...)
 Mmmmph.
 嗯。
-(...)
-(...)
 (Giggle)
 ( 傻笑 )
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
 (Shake your head)
 ( 摇头 )
 (Giggle)
 ( 傻笑 )
-(...)
-(...)
 Who are you anyway?
 你到底是谁？
 We'll see about that.
@@ -31337,12 +30495,8 @@ Hmmph. (Scoff into your gag)
 呜嗯。 ( 隔着你的口塞嘲笑 )
 (Giggle)
 ( 傻笑 )
-(...)
-(...)
 Mmmpphh~ (Moan and wiggle seductively)
 Mmmpphh~ ( 呻吟和诱惑地扭动 )
-(...)
-(...)
 (Give her a puzzled look and shake your head)
 ( 给她一个疑惑的眼神，然后摇头 )
 (Shake your head)
@@ -35301,8 +34455,6 @@ The Goddess calls you a good girl.
 女神夸你是个好女孩。
 Exits unlocked!
 出口已解锁！
-Boss
-Boss
 Quota Reached!
 已达到要求！
 Quota Reached!
@@ -35491,42 +34643,12 @@ The Warden
 典狱长
 The Warden forces you to kneel, and presents you with a restraint! (+RestraintAdded)
 典狱长强迫你跪下，并向你施以束缚！ ( +RestraintAdded )
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
 Mmmmph.
 嗯。
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
 (Shake your head)
 ( 摇头 )
 (Giggle)
 ( 傻笑 )
-(...)
-(...)
-(...)
-(...)
-(...)
-(...)
 (The SPEAKER smiles)|Why sure, sweetie, I can help you with that~
 (SPEAKER微笑)|当然，甜心，我可以帮你~
 (The SPEAKER grins)|What a good girl!
@@ -36035,8 +35157,6 @@ The psychic link conducts away some of the intensity...
 心灵链接传导走了高潮的一些强度...
 Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
 你链接的目标高潮了，传来了一阵阵快感...
-FCTN RMTPE
-FCTN RMTPE
 PTRN's RMTPE
 PTRN 的 RMTPE
 Leads to PLCE
@@ -36063,8 +35183,6 @@ Orb
 >楼梯
 Quest(GDSNM)
 任务( GDSNM )
-[GDSNM]
-[GDSNM]
 
 龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
 
@@ -36411,3 +35529,53 @@ NME is not notable enough for your collection.
 NME 对你的收藏来说还不够引人注目。
 Auto-released NME due to Escape.
 由于 Escape 自动释放 NME。
+Robe of Chastity
+贞洁长袍
+A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+一件神奇的紧身衣，它的力量直接源自神性。它由一种编织物制成，只要不穿衣服，就能将穿着者的深层能量转化为强大的能量。
+It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
+据说，凡是遵循圣骑士贞洁原则的人都将获得 -1%的欲望程度衰减/40回合  和2（+3%已损失性奋值）神圣伤害/回合   的光环。光环仅影响进入近战范围的敌人。此外，魔力传导布料具有相当的刺激性，可使所有来源的性奋值增益提高 50%，并将消耗的法力值的 8% 转化为欲望。
+You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
+你被减速了！移动需要多消耗一回合，但是你可以消耗两倍 SP 来冲刺。
+That ghost looks less aggressive than the others. Maybe she can help?
+那个幽灵看上去比其他人温和，也许她可以提供帮助？
+Need help? Try asking a neutral NPC for assistance!
+需要帮助？试试向中立的 NPC 求助！
+Your ITMN1 was cursed and transforms into a ITMN2!
+你的 ITMN1 被诅咒变成了 ITMN2！
+Equipping Restraint...
+装备拘束中...
+Equipping Armor...
+装备护甲中...
+Using Consumable...
+使用中...
+Struggling...
+挣扎中...
+The ITMN1 is purified and returns to being a ITMN2!
+被净化的 ITMN1 恢复为 ITMN2！
+Reverts if purified with item.
+净化后恢复原状
+...smaller than expected.
+...有点小
+Comes with an artistic flair.
+具有艺术气息
+No Actions Available
+没有可用的行动
+Interact
+交互
+Talk
+交谈
+Move To
+移动
+Wait
+等待
+Allow Passing
+绕过NPC
+Tie Up
+捆绑
+Attempt to Tie
+尝试捆绑
+Move Closer to Tie
+接近并捆绑
+Sprint (AMNT)
+冲刺 (AMNT)

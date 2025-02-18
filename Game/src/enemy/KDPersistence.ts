@@ -651,9 +651,8 @@ function KDSpawnPersistentNPCs(coord: WorldCoord, searchEntities: boolean): numb
 				let AI = KDPersistentSpawnAIList[spawnAI];
 				if (AI && AI.filter(id, data)) {
 					if (AI.chance(id, data) > KDRandom()) {
-						let sp = AI.doSpawn(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined)
-						if (sp != 0) {
-							PNPC.nextSpawnTick = (sp < 0 ? AI.cooldown : sp) + KinkyDungeonCurrentTick;
+						if (AI.doSpawn(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined)) {
+							PNPC.nextSpawnTick = AI.cooldown + KinkyDungeonCurrentTick;
 						}
 					}
 				}
@@ -683,9 +682,8 @@ function KDRunPersistentNPCScripts(coord: WorldCoord, searchEntities: boolean): 
 				let AI = KDPersistentScriptList[specialScript];
 				if (AI && AI.filter(id, data)) {
 					if (AI.chance(id, data) > KDRandom()) {
-						let sp = AI.doScript(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined)
-						if (sp != 0) {
-							PNPC.nextScriptTick = (sp < 0 ? AI.cooldown : sp) + KinkyDungeonCurrentTick;
+						if (AI.doScript(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined)) {
+							PNPC.nextScriptTick = AI.cooldown + KinkyDungeonCurrentTick;
 						}
 					}
 				}
@@ -717,9 +715,8 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 				let AI = KDPersistentWanderAIList[wanderAI];
 				if (AI && AI.filter(id, data)) {
 					if (AI.chance(id, data) > KDRandom()) {
-						let sp = AI.doWander(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined);
-						if (sp != 0) {
-							PNPC.nextWanderTick = (sp < 0 ? AI.cooldown : sp) + KinkyDungeonCurrentTick;
+						if (AI.doWander(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined)) {
+							PNPC.nextWanderTick = AI.cooldown + KinkyDungeonCurrentTick;
 						}
 					}
 				}

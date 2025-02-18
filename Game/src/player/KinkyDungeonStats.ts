@@ -6,18 +6,73 @@ let KinkyDungeonPlayerEntity: any = {id: -1, Enemy: undefined, hp: 10, x: 0, y:0
 let KDBaseBalanceDmgLevel = 5; // Decides how much heels affect balance loss from attacks. higher = less loss
 let KDShadowThreshold = 1.5;
 
-let KDSleepWillFraction = 0.5;
-let KDSleepWillFractionJail = 0.5;
+/** Sleep */
+let KDSleepWillFraction = 0.5;     // Will restored to this percentage when sleeping
+let KDSleepWillFractionJail = 0.5; // Will restored to this percentage when sleeping in Jail
+
+/**
+ * @returns health to regenerate to during sleep
+ */
+function KDGetSleepWillRegenHealthTo() {
+	return Math.ceil(KinkyDungeonStatWillMax * (KDGameData.PrisonerState == 'jail' ? KDSleepWillFractionJail : KDSleepWillFraction));
+}
+
+/**
+ * Can the player sleep in a bed?
+ */
+function KDCanSleep() {
+	let willUnderTreshold = KinkyDungeonStatWill < KDGetSleepWillRegenHealthTo();
+	let jailedOrNotSleptOnLevel = KinkyDungeonPlayerInCell() || !KinkyDungeonFlags.get('slept');
+	return willUnderTreshold && jailedOrNotSleptOnLevel;
+}
+
+/**
+ * @returns Tooltip why player is unable to sleep at bed
+ */
+function KDCanSleepTooltip() {
+	if(KinkyDungeonFlags.get('slept') && !KinkyDungeonPlayerInCell()) {
+		return "KDBedSleptLevel";
+	}
+	if(KinkyDungeonStatWill >= KDGetSleepWillRegenHealthTo()) {
+		return "KDBedWillNotLow";
+	}
+
+	console.error("KDCanSleepTooltip should not reach this point")
+	return "KDBedWillNotLow";
+}
+
+/**
+ * Set state required for player to sleep
+ */
+function KDSleep() {
+	KinkyDungeonSetFlag("slept", -1); // prevent sleeping again on this floor
+	if (KinkyDungeonPlayerInCell(true) && KDGameData.PrisonerState == 'jail') {
+		KinkyDungeonChangeRep("Ghost", KinkyDungeonIsArmsBound() ? 5 : 2);
+	}
+	KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax; // sleep for this number of turns
+	KDChangeMana("player","sleep", "tick", KinkyDungeonStatManaMax, false, 0, false, true); // restore full mana instantly
+}
+
+/**
+ * Apply healing when player sleeps each turn
+ */
+function KDSleepTick() {
+	let regenToWill = KDGetSleepWillRegenHealthTo(); // regenerate to this health by the time sleep is done
+	let healingPerTurn = regenToWill / KinkyDungeonSleepTurnsMax; // regenerate this much will per turn
+	if (KinkyDungeonStatWill < regenToWill) {
+		let willBefore = KinkyDungeonStatWill;
+		KDChangeWill("player","wait", "tick", healingPerTurn, false);
+		// if we've overshot the target percentage then clamp to it
+		if(willBefore <= regenToWill && KinkyDungeonStatWill > regenToWill) {
+			KinkyDungeonStatWill = regenToWill;
+		}
+	}
+}
 
 let KDOrgAfterglowTime = 10;
 
 // Ratio of max shield to willpower max
 let KDShieldRatio = 1;
-
-function KDGetSleepWillFraction() {
-	if (KDGameData.PrisonerState == 'jail') return KDSleepWillFractionJail;
-	return KDSleepWillFraction;
-}
 
 // Distraction -- It lowers your stamina regen
 let KDMaxStat = 40; // Maximum any stat can get boosted to
@@ -26,8 +81,6 @@ let KDMaxStatStartPool = 40; // Start of stats
 
 let KDStamDamageThresh = 0.3;
 let KDStamDamageThreshBonus = 0.01;
-
-let KDSleepRegenWill = KDSleepWillFractionJail * KDMaxStatStart/40;
 
 let KinkyDungeonStatDistractionMax = KDMaxStatStart;
 let KDDistractionLowerPercMult = 0.1;
@@ -366,12 +419,17 @@ function KDIsAutoAction(): boolean {
 		|| (KDGameData.SlowMoveTurns && KDGameData.DelayedActions?.length > 0);
 }
 
+/** Only stops AutoWait */
+function KDCancelAutoWait() {
+	KinkyDungeonAutoWait = false;
+	KinkyDungeonAutoWaitStruggle = false;
+}
+
 /**
  * Disables all automatic actions
  */
 function KDDisableAutoWait() {
-	KinkyDungeonAutoWait = false;
-	KinkyDungeonAutoWaitStruggle = false;
+	KDCancelAutoWait();
 	KDAutoWaitDelayed = false;
 	KDSendInput("autoprune", {force: true});
 }

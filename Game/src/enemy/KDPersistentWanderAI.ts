@@ -6,7 +6,7 @@ interface PersistentWanderAI {
 	/** Chance of wandering this CD cycle */
 	chance: (id: number, mapData: KDMapDataType) => number,
 	/** Actually perform the wander activity */
-	doWander: (id: number, mapData: KDMapDataType, entity: entity) => number,
+	doWander: (id: number, mapData: KDMapDataType, entity: entity) => boolean,
 }
 
 
@@ -71,7 +71,7 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 						halt = true;
 					}
 				}
-				if (halt) return -1;
+				if (halt) return true;
 
 				// Move the entity
 				if (KDMovePersistentNPC(id, targetPosition)) {
@@ -79,14 +79,14 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 					npc.fromType = fromType;
 					npc.fromIndex = fromIndex;
 				}
-				return -1;
+				return true;
 			} else {
 				let npc = KDGetPersistentNPC(id);
 				npc.fromType = -1;
 				delete npc.fromIndex;
 			}
 
-			return 0;
+			return false;
 		},
 	},
 	/** normal wander AI: choose to visit one of the journey slots on a tile, or move. */
@@ -183,7 +183,7 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 	},
 };
 
-function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AITagFunc: () => Record<string, number>): number {
+function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AITagFunc: () => Record<string, number>): boolean {
 	let currentWorldPosition = KDGetNPCLocation(id);
 	let targetPosition = KDGetNPCLocation(id);
 	let worldSlot = KDGetWorldMapLocation({x: currentWorldPosition.mapX, y: currentWorldPosition.mapY});
@@ -267,21 +267,21 @@ function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AI
 				halt = true;
 			}
 		}
-		if (halt) return -1;
+		if (halt) return true;
 		// Move the entity
 		if (KDMovePersistentNPC(id, targetPosition)) {
 			let npc = KDGetPersistentNPC(id);
 			npc.fromType = fromType;
 			npc.fromIndex = fromIndex;
 		}
-		return -1;
+		return true;
 	}
 
-	return 0;
+	return false;
 }
 
 
-function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity, modeAlternate: boolean, duration: number, AITagFunc: () => Record<string, number>): number {
+function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity, modeAlternate: boolean, duration: number, AITagFunc: () => Record<string, number>): boolean {
 	let currentWorldPosition = KDGetNPCLocation(id);
 	let targetPosition = KDGetNPCLocation(id);
 	let worldSlot = KDGetWorldMapLocation({x: currentWorldPosition.mapX, y: currentWorldPosition.mapY});
@@ -405,7 +405,7 @@ function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity
 				halt = true;
 			}
 		}
-		if (halt) return -1;
+		if (halt) return true;
 
 		// Move the entity
 		if (KDMovePersistentNPC(id, targetPosition)) {
@@ -413,14 +413,14 @@ function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity
 			npc.fromType = fromType;
 			npc.fromIndex = fromIndex;
 		}
-		return -1;
+		return true;
 	}
 
-	return 0;
+	return false;
 }
 
 /** If modeAlternate, tries to wander toward target */
-function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: entity, modeAlternate: boolean, target: WorldCoord, AITagFunc: () => Record<string, number>): number {
+function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: entity, modeAlternate: boolean, target: WorldCoord, AITagFunc: () => Record<string, number>): boolean {
 	let currentWorldPosition = KDGetNPCLocation(id);
 	let targetPosition = KDGetNPCLocation(id);
 	let worldSlot = KDGetWorldMapLocation({x: currentWorldPosition.mapX, y: currentWorldPosition.mapY});
@@ -535,7 +535,7 @@ function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: en
 				halt = true;
 			}
 		}
-		if (halt) return -1;
+		if (halt) return true;
 
 		// Move the entity
 		if (KDMovePersistentNPC(id, targetPosition)) {
@@ -543,8 +543,8 @@ function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: en
 			npc.fromType = fromType;
 			npc.fromIndex = fromIndex;
 		}
-		return -1;
+		return true;
 	}
 
-	return 0;
+	return false;
 }

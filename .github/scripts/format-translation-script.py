@@ -101,6 +101,7 @@ original_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
 
 # Enable the translation files to be reordered
 translation_files = [
+    'Text_KinkyDungeon_CN.txt',
     'Text_KinkyDungeon_DE.txt',
     'Text_KinkyDungeon_KR.txt',
     'Text_KinkyDungeon_RU.txt',

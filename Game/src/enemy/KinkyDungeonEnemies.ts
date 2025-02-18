@@ -9545,7 +9545,6 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 
 	delete enemy.despawnX;
 	delete enemy.despawnY;
-	delete enemy.goToDespawn;
 
 	if (!KDIsNPCPersistent(enemy.id) && !KDIsInEnemyParty(enemy)) {
 
