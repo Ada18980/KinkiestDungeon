@@ -1868,11 +1868,17 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 				KinkyDungeonUpdateSingleBulletVisual(b, end);
 
 				let show =
-					(!KDFactionFavorable("Player", b.bullet.faction)
+					((!KDFactionFavorable("Player", b.bullet.faction)
+						|| !(b.bullet.spell?.enemySpell || b.bullet.spell?.allySpell))
+						|| b.bullet.spell?.friendlyfire
 						|| (((b.bullet.spell && b.bullet.spell.playerEffect)
 							|| b.bullet.playerEffect)
-							&& !b.bullet.spell?.noHitAlliedPlayer)
+							&& !b.bullet.spell?.noHitAlliedPlayer
+							&& !(b.bullet.spell?.allySpell || b.bullet.spell?.enemySpell))
 						|| (b.bullet.spell && b.bullet.spell.alwaysWarn))
+					&& !(b.bullet.faction
+						&& b.bullet.spell?.noFF
+						&& !KDFactionHostile(b.bullet.faction, "Player"))
 					&& !(b.bullet.spell && b.bullet.spell.hideWarnings)
 					&& ((b.bullet.spell && b.bullet.spell.alwaysWarn)
 						|| b.bullet.hit == "lingering"
@@ -2932,7 +2938,11 @@ function KDBulletAoECanHitEntity(bullet: KDBullet, enemy: entity): boolean {
 			&& (!bullet.bullet.spell?.noHitAlliedPlayer
 				|| !bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| !KDFactionFavorable(bullet.bullet.faction, "Player"))
+				|| (KDFactionFavorable(bullet.bullet.faction, "Player")
+					|| !(bullet.bullet.spell.enemySpell || bullet.bullet.spell.allySpell)))
+			&& !(bullet.bullet.faction
+				&& bullet.bullet.spell.noFF
+				&& !KDFactionHostile(bullet.bullet.faction, "Player"))
 			&& AOECondition(bullet.x, bullet.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, bullet.bullet.aoe || 0.5, KDBulletAoEMod(bullet)))
 			&& (!bullet.bullet.spell || !bullet.bullet.spell.noUniqueHits || !KDUniqueBulletHits.get(KDBulletID(bullet, KinkyDungeonPlayerEntity)));
 	} else {
@@ -2940,7 +2950,8 @@ function KDBulletAoECanHitEntity(bullet: KDBullet, enemy: entity): boolean {
 			|| KDEntityHasFlag(enemy, "takeFF")
 			|| (!bullet.bullet.spell || !bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| (!KDFactionFavorable(bullet.bullet.faction, enemy) && (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
+				|| (!KDFactionFavorable(bullet.bullet.faction, enemy)
+					&& (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
 				|| (!KDFactionHostile(bullet.bullet.faction, enemy) && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
 			))
 				&& AOECondition(bullet.x, bullet.y, enemy.x, enemy.y, bullet.bullet.aoe || 0.5, KDBulletAoEMod(bullet))
@@ -2958,7 +2969,9 @@ function KDBulletCanHitEntity(bullet: KDBullet, enemy: entity, inWarningOnly?: b
 				&& !KDFactionHostile(bullet.bullet.faction, "Player"))
 			&& (!bullet.bullet.spell || !bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| (!KDFactionFavorable(bullet.bullet.faction, "Player") && (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
+				|| ((!KDFactionFavorable(bullet.bullet.faction, "Player")
+					|| !(bullet.bullet.spell.enemySpell || bullet.bullet.spell.allySpell))
+					&& (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
 				|| (!KDFactionHostile(bullet.bullet.faction, "Player") && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
 			)
 			&& (!inWarningOnly || (bullet.warnings && bullet.warnings.includes(KinkyDungeonPlayerEntity.lastx + "," + KinkyDungeonPlayerEntity.lasty)))
@@ -2968,7 +2981,8 @@ function KDBulletCanHitEntity(bullet: KDBullet, enemy: entity, inWarningOnly?: b
 			|| KDEntityHasFlag(enemy, "takeFF")
 			|| (!bullet.bullet.spell || !bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| (!KDFactionFavorable(bullet.bullet.faction, enemy) && (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
+				|| (!KDFactionFavorable(bullet.bullet.faction, enemy)
+					&& (!bullet.bullet.damage || bullet.bullet.damage.type != "heal"))
 				|| (!KDFactionHostile(bullet.bullet.faction, enemy) && (bullet.bullet.damage && bullet.bullet.damage.type == "heal"))
 			))
 				&& (!bullet.bullet.noEnemyCollision || overrideCollide)

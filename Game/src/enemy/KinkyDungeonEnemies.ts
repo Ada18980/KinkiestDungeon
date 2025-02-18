@@ -1106,7 +1106,7 @@ function KDEnemyHasFlag(enemy: entity, flag: string): boolean {
  */
 function KDIDHasFlag(id: number, flag: string): boolean {
 	if (id == -1) {
-		return KinkyDungeonFlags.get(flag) > 0;
+		return !!KinkyDungeonFlags.get(flag);
 	}
 	let enemy = KDGetGlobalEntity(id);
 	if (enemy)
@@ -3053,6 +3053,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 					if (!noRepHit && !KDEnemyHasFlag(enemy, "norep")) {
 						let will = KDGetEnemyWillReward(enemy);
 						if (will > 0) {
+							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+							//will *= Willmulti;
 							if (!KinkyDungeonFlags.get("tut_kill")) {
 								KinkyDungeonSetFlag("tut_kill", -1);
 								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill"), KDTutorialColor, 10);
@@ -9568,6 +9570,7 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 		}
 
 	}
+	let id = enemy.id;
 
 	if (moveThruExit != undefined && (KDIsNPCPersistent(enemy.id) || enemy.homeCoord)) {
 		let failPlaceThru = true;
@@ -9606,16 +9609,17 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 			}
 		}
 
-		if (KDIsNPCPersistent(enemy.id)) {
-			KDMovePersistentNPC(enemy.id, {
+		if (KDIsNPCPersistent(id)) {
+			KDMovePersistentNPC(id, {
 				mapX: moveToX || mapData.mapX,
 				mapY: moveToY || mapData.mapY,
 				room: moveThruExit,
 			})
 		}
 		if (failPlaceThru) {
-			KDClearStolenItems(enemy);
-			DisposeEntity(enemy.id);
+			if (enemy)
+				KDClearStolenItems(enemy);
+			DisposeEntity(id);
 		}
 	}
 

@@ -2322,11 +2322,7 @@ function KDDrawArousalScreenFilter(_y1: number, _h: number, _Width: number, _Aro
 }
 
 function KDCanAttack() {
-	let attackCost = KinkyDungeonStatStaminaCostAttack;
-	if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.staminacost) attackCost = -KinkyDungeonPlayerDamage.staminacost;
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")) {
-		attackCost = Math.min(0, attackCost * KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")));
-	}
+	let attackCost = KDAttackCost().attackCost;
 	return KinkyDungeonHasStamina(Math.abs(attackCost), true);
 }
 
@@ -2368,6 +2364,8 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
 
 	let KDFloaterYCache = {};
+	let KDFloaterXCache = {};
+	let XCacheRes = 10; // How many sections the screen is split into
 	let max = 40;
 	let i = 0;
 	let floatermult = 1.5; // Global tweak value
@@ -2387,20 +2385,22 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 			let overlap = false;
 			let overlapAmount = 9;
 			for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
-				if (KDFloaterYCache[Math.round(y + iii)]) {
+				if (KDFloaterYCache[Math.round(y + iii)]
+					&& KDFloaterXCache[Math.round(XCacheRes * x / PIXIWidth)]) {
 					overlap = true;
 				}
 			}
 			let ii = 0;
 			let direction = -1;
-			while ( overlap && ii < 60) {
+			while ( overlap && ii < 7) {
 				floater.y -= (floater.override ? 4 : 4/KinkyDungeonGridSizeDisplay) * direction;
 				//floater.x += -20 + Math.random() * 40;
 				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
 				y = (floater.override ? floater.y : canvasOffsetY + (floater.y - CamY)*KinkyDungeonGridSizeDisplay);
 				overlap = false;
 				for (let iii = -overlapAmount; iii < overlapAmount; iii += 2) {
-					if (KDFloaterYCache[Math.round(y + iii)]) {
+					if (KDFloaterYCache[Math.round(y + iii)]
+					&& KDFloaterXCache[Math.round(XCacheRes * x / PIXIWidth)]) {
 						overlap = true;
 					}
 				}
@@ -2408,6 +2408,7 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 			}
 			for (let iii = -overlapAmount; iii < overlapAmount; iii++) {
 				KDFloaterYCache[Math.round(y + iii)] = true;
+				KDFloaterXCache[Math.round(XCacheRes * x / PIXIWidth)] = true;
 			}
 
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
@@ -4543,8 +4544,6 @@ function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _Ca
 
 let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, text: string, desc?: string, noInspect?: boolean}> = {
 	'1': () => {return {color: "#aaaaaa", text: "1"};},
-	'5': () => {return {color: "#aaaaaa", text: "5"};},
-	'6': () => {return {color: "#aaaaaa", text: "6"};},
 	'0': () => {return {color: "#444444", text: "0"};},
 	'2': () => {return {color: "#444444", text: "2"};},
 	'R': () => {return {color: "#ffffff", noInspect: true, text: "R"};},
@@ -4569,6 +4568,18 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	'S': () => {return {color: "#6a8eb3", noInspect: true, text: "S"};},
 	's': () => {return {color: "#96caff", noInspect: true, text: "s"};},
+	'5': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffffff", noInspect: true, text: tile?.Tooltip ? tile.Tooltip : "5",
+			desc: tile?.Tooltip ? TextGet("KDEffectTileTooltip" + tile.Tooltip + "Desc") : undefined};},
+	'6': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffffff", noInspect: true, text: tile?.Tooltip ? tile.Tooltip : "6",
+			desc: tile?.Tooltip ? TextGet("KDEffectTileTooltip" + tile.Tooltip + "Desc") : undefined};},
+	'7': (x, y) => {
+		let tile = KinkyDungeonTilesGet(x + ',' + y);
+		return {color: "#ffffff", noInspect: true, text: tile?.Tooltip ? tile.Tooltip : "7",
+			desc: tile?.Tooltip ? TextGet("KDEffectTileTooltip" + tile.Tooltip + "Desc") : undefined};},
 	'H': (x, y) => {
 		let tile = KinkyDungeonTilesGet(x + ',' + y);
 		return {color: "#96caff", noInspect: true, text: "H", desc:
@@ -5405,6 +5416,7 @@ function KDClearOutlineFilterCache(): void {
 	KDOutlineFilterCache = new Map();
 }
 
+let KDForceAllCull = false;
 let KDLastFilterSpritesSanitize = 0;
 
 function KDDoGraphicsSanitize(): void {

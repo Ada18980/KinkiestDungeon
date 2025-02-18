@@ -179,6 +179,7 @@ interface AltType {
 	/** If noRelease is true, will always release player instantly if security is low instead of waiting*/
 	releaseOnLowSec?: boolean,
 	noClutter?: boolean,
+	noTables?: boolean,
 	noShrineTypes?: string[],
 	/** Ticks flags with a floor component. Reserved for perk room generally */
 	tickFlags?: boolean,

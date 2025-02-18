@@ -1733,6 +1733,10 @@ let saveError = false;
 
 function KinkyDungeonRun() {
 
+	if (KDSaveQueue.length > 8) {
+		// uh...
+		KDSaveQueue = [KDSaveQueue[KDSaveQueue.length-1]];
+	}
 
 	if (KDSaveQueue.length > 0 && !KDSaveBusy) {
 		KDSaveBusy = true;
@@ -3324,7 +3328,8 @@ function KinkyDungeonRun() {
 							else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = KDFastWaitTime;
 							else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = KDVeryFastWaitTime;
 						} else {
-							wt = (KinkyDungeonInDanger() ? 250 : 0) + 250 * (0.25 + KDAnimSpeed * 0.75)
+							wt = KDWaitTimeDelayedAction();
+							//(KinkyDungeonInDanger() ? 250 : 0) + 250 * (0.25 + KDAnimSpeed * 0.75)
 						}
 						KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
 
@@ -3598,7 +3603,6 @@ function KinkyDungeonRun() {
 
 
 
-
 	KDDrawDelta = performance.now() - lastfps;
 	fpscounter++;
 	if (fpscounter > 10) {
@@ -3679,6 +3683,9 @@ function KinkyDungeonRun() {
 	}
 
 	KDDoGraphicsSanitize();
+
+
+	KDForceAllCull = false;
 }
 
 let KDDrawDelta = 0;
@@ -3717,7 +3724,7 @@ function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
 	for (let sprite of kdpixisprites.entries()) {
-		if (!kdSpritesDrawn.has(sprite[0])) {
+		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
 			if (cull) {
 				if (sprite[1].parent) {
 					sprite[1].parent.removeChild(sprite[1]);
@@ -3742,7 +3749,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
 	let cull = CommonTime() > ((KDlastCull.get(list) || 0) + KDGetCullTime());
 	for (let sprite of list.entries()) {
-		if (!kdSpritesDrawn.has(sprite[0])) {
+		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
 			if (cull) {
 				sprite[1].parent.removeChild(sprite[1]);
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);

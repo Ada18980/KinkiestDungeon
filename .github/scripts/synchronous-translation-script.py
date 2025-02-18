@@ -85,7 +85,7 @@ async def paratran_download():
 # Input file and output file paths
 input_csv = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
 output_csv = 'Text_KinkyDungeon_Temp.csv'
-output_txt = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt'
+output_txt = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN_paratranz.txt'
 
 process_csv(input_csv, output_csv)
 print(f"save to {output_csv}")

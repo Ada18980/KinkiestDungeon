@@ -4005,9 +4005,10 @@ let KDFood = {
 	},
 };
 
-function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: any) {
+function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: AltType) {
 
 	if (altType && altType.noClutter) return;
+	if (altType && altType.noTables) return;
 
 	let foodPoints = new Map();
 	let foodList = [];
@@ -6705,12 +6706,19 @@ function KDPruneEntrances
 
 }
 
+function KDWaitTimeDelayedAction(forceDanger?: boolean) {
+	return ((forceDanger != undefined ? forceDanger : KinkyDungeonInDanger()) ? 250 : 0)
+		+ 250 * (0.25 + KDAnimSpeed * 0.75)
+}
+
 function KDDelayedActionStart() {
 	if (KDToggles.AutoWaitDelayed)
 		KDAutoWaitDelayed = true;
 	//KinkyDungeonAdvanceTime(1);
-	if (KDAutoWaitDelayed)
-		KinkyDungeonSleepTime = KDNormalWaitTime;
+	if (KDAutoWaitDelayed) {
+		let wt = KDWaitTimeDelayedAction();
+		KinkyDungeonSleepTime = wt;
+	}
 }
 
 function KDTalkToEnemy(Enemy: entity) {

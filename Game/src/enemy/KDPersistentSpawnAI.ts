@@ -52,6 +52,13 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 					mapData.mapX, mapData.mapY,
 					point.x, point.y, mapData, true);
 				}
+				if (point && KinkyDungeonEntityAt(point.x, point.y)) {
+					let pp = point;
+					point = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, true);
+					if (!point) {
+						point = KinkyDungeonGetNearbyPoint(pp.x, pp.y, true);
+					}
+				}
 				if (point) {
 					KDMoveEntity(entity, point.x, point.y,
 						false, false, false, false,

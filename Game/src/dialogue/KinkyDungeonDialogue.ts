@@ -2610,11 +2610,11 @@ function KDGetOfferLevelMod(): number {
 /**
  * @param player
  */
-function KDRunChefChance(player: entity) {
+function KDRunChefChance(player: entity, force: boolean = false) {
 	if (!KinkyDungeonFlags.get("SpawnedChef")) {
 		let x = player.x;
 		let y = player.y;
-		if (KDRandom() < KDDialogueParams.ChefChance && KinkyDungeonGagTotal() == 0) {
+		if ((force || KDRandom() < KDDialogueParams.ChefChance) && KinkyDungeonGagTotal() == 0) {
 			let point = KinkyDungeonGetNearbyPoint(x, y, true);
 			if (point) {
 				KinkyDungeonSetFlag("SpawnedChef", -1, 1);

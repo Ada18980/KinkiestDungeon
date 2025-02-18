@@ -73,7 +73,7 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 					KinkyDungeonSetFlag("escaped", 2);
 					KDSuccessRemove(struggleType, restraint, lockType, action.data.index, action.data.escapeData, host);
 				} else if (action.data?.delta > 0) {
-					KDStunTurns(action.data?.delta, true);
+					//KDStunTurns(action.data?.delta, true);
 				}
 
 			} else if (struggleType == "Unlock") {
@@ -84,7 +84,7 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 					KinkyDungeonRemoveKeysUnlock(restraint.lock);
 					KinkyDungeonLock(restraint, "");
 				} else if (action.data?.delta > 0) {
-					KDStunTurns(action.data?.delta, true);
+					//KDStunTurns(action.data?.delta, true);
 				}
 			} else if (struggleType == "Pick") {
 				KinkyDungeonSetFlag("picking", 2);
@@ -93,7 +93,7 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 					KinkyDungeonSetFlag("escaped", 2);
 					KinkyDungeonLock(restraint, "");
 				} else if (action.data?.delta > 0) {
-					KDStunTurns(action.data?.delta, true);
+					//KDStunTurns(action.data?.delta, true);
 				}
 			}
 		}

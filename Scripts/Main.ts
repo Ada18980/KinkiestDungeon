@@ -84,6 +84,18 @@ window.onload = function() {
 
 	(PIXIapp.renderer as PIXIRenderer).gl.canvas.addEventListener('webglcontextlost', () => {
 		console.error('WebGl context lost');
+		KDForceAllCull = true;
+
+		if (!ContextLostAlready)
+			setTimeout(() => {
+				if (!ContextLostAlready) {
+					ContextLostAlready = true;
+					//@ts-ignore
+					PIXIapp.renderer.context.gl.getExtension('WEBGL_lose_context')?.loseContext();
+				}
+			}, 2000);
+		else ContextLostAlready = false;
+
 
 		//load();
 	});
@@ -91,6 +103,8 @@ window.onload = function() {
 
 	//MainRun(0);
 };
+
+let ContextLostAlready = false;
 
 let TimerRunInterval: number = 0;
 let TimerLastTime: number = 0;
