@@ -552,6 +552,8 @@ interface damageInfo extends damageInfoMinor {
 	shield_slow?: boolean, // slow thru shield
 	shield_distract?: boolean, // Distract thru shield
 	shield_vuln?: boolean, // Vuln thru shield
+	bindTags?: string[],
+	power?: number;
 }
 
 function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {

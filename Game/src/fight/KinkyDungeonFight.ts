@@ -768,8 +768,8 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
-		if (bullet.alreadyHit.includes(Enemy.id)) return 0;
-		bullet.alreadyHit.push(Enemy.id);
+		if (bullet.alreadyHit.includes(String(Enemy.id))) return 0;
+		bullet.alreadyHit.push(String(Enemy.id));
 	}
 
 	let predata = {
