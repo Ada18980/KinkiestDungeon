@@ -2173,7 +2173,7 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 							xxx,
 							yyy, 120 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 30,
 							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
-								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ? 0.25 : undefined);
+								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ? KDFloaterGridWipedOutAlpha : undefined);
 					} else {
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
@@ -2190,7 +2190,7 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 							xxx,
 							yyy, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 30,
 							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
-								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ? 0.25 : undefined);
+								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ? KDFloaterGridWipedOutAlpha : undefined);
 					}
 				}
 			}

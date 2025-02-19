@@ -1835,7 +1835,7 @@ function KinkyDungeonDrawGame() {
 					yy,
 					700, KinkyDungeonPlayerEntity.dialogueColor, KDTextGray0, 24, undefined, undefined,
 				(KDFloaterGridCache[Math.round(KDFloaterGridRes * xx / PIXIWidth)
-					+ "," + Math.round(KDFloaterGridRes * yy / PIXIHeight)]) ? 0.1 : undefined);
+					+ "," + Math.round(KDFloaterGridRes * yy / PIXIHeight)]) ? KDFloaterGridWipedOutAlpha : undefined);
 			}
 
 
@@ -2369,6 +2369,7 @@ function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color:
 
 let KDFloaterGridRes = 10; // How many sections the screen is split into
 let KDFloaterGridCache = {};
+let KDFloaterGridWipedOutAlpha = 0.4;
 
 function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean = false) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
