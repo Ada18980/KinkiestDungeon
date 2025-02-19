@@ -495,7 +495,7 @@ function KDHandleDialogue() {
  * @param [noLoadout]
  */
 function DialogueCreateEnemy(x: number, y: number, Name: string, persistentid?: number, noLoadout?: boolean): entity {
-	if (KinkyDungeonEnemyAt(x, y)) KDKickEnemy(KinkyDungeonEnemyAt(x, y));
+	if (KinkyDungeonEnemyAt(x, y)) KDKickEnemy(KinkyDungeonEnemyAt(x, y), undefined, true);
 	let Enemy = KinkyDungeonGetEnemyByName(Name);
 	let e = {summoned: true, Enemy: Enemy, id: persistentid || KinkyDungeonGetEnemyID(),
 		x:x, y:y,
