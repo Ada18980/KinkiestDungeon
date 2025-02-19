@@ -38,8 +38,15 @@ jobs:
 
       - name: 📂 Merge translations
         run: |
-          printf "\n\n" >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
-          cat Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN_paratranz.txt >> Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
+          PATH_PARATRANZ="Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN_paratranz.txt"
+          PATH_ORIGIN="Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+          PATH_TEMP=$(mktemp)
+          
+          cat "$PATH_PARATRANZ" > "$PATH_TEMP"
+          printf "\n\n" >> "$PATH_TEMP"
+          cat "$PATH_ORIGIN" >> "$PATH_TEMP"
+          mv "$PATH_TEMP" "$PATH_ORIGIN"
+          
           python .github/scripts/format-translation-script.py "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
 
       - name: 📝 Commit changes
