@@ -2166,10 +2166,14 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 					KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset] = true;
 
 					let dialougelenth = 30;
+					let xxx = canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
+					let yyy = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - dialogueOffset;
 					if (CJKcheck(enemy.dialogue,2)){
 						DrawTextFitKDTo(kdenemydialoguecanvas, enemy.dialogue,
-							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-							yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - dialogueOffset, 120 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 30);
+							xxx,
+							yyy, 120 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 30,
+							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
+								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ? 0.25 : undefined);
 					} else {
 						let dialougeCJKcheck1 = CJKcheck(enemy.dialogue,1);
 						let dialougeCJKcheck2 = CJKcheck(enemy.dialogue);
@@ -2180,9 +2184,13 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						if (dialougeCJKcheck2  &&  typeof (dialougeCJKcheck2) != 'boolean'){
 							for (const i in dialougeCJKcheck2){dialougelenth += dialougeCJKcheck2[i].length * 16;}
 						}
+						xxx = canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
+						yyy = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset;
 						DrawTextFitKDTo(kdenemystatusboard, enemy.dialogue,
-							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-							yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 30);
+							xxx,
+							yyy, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 30,
+							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
+								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ? 0.25 : undefined);
 					}
 				}
 			}
@@ -4603,7 +4611,18 @@ function KDRunDefeatForEnemy() {
 	if (CD && KDCustomDefeats[CD]) KDCustomDefeats[CD](CDE);
 	else if (!KinkyDungeonFlags.get("CustomDefeat")) {
 		if (KDRunRegularJailDefeatAttempt(CDE)) {
-			KinkyDungeonDefeat(KinkyDungeonFlags.has("LeashToPrison"), CDE);
+			let putInJail = KinkyDungeonFlags.has("LeashToPrison");
+
+			if (CDE?.IntentLeashPoint) {
+				let exit = KDGetNearestExit(CDE.x, CDE.y, KDMapData, true);
+				if (exit && (exit.x != CDE.IntentLeashPoint.x || exit.y != CDE.IntentLeashPoint.y))
+					putInJail = false;
+			}
+
+			// TODO made it so that NPC does NOT take you to a different room if target location is not an exit
+			// Gotta test
+
+			KinkyDungeonDefeat(putInJail, CDE);
 		}
 	}
 }
@@ -4635,6 +4654,7 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 		true
 	);
 	if (KDHasEntranceToJailRoom(outpost || jailroom, KDGetCurrentLocation(), allowMain)) {
+
 		return true;
 	}
 
