@@ -8552,6 +8552,10 @@ Equipped
 
 
 
+### Flipped Table
+
+### Relieved some stress.
+
 Unlit Torch
 꺼진 횃불
 Can be lit
@@ -20463,6 +20467,12 @@ An enemy found you while you were busy!
 ### Cookie
 
 ### Pizza
+
+### (The table looks remarkably flippable)
+
+### (You knock over the table!)
+
+### (Flip the table)
 
 ### (There is a button on a control panel here.)
 
@@ -32843,3 +32853,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### (Will not low enough)
 
 ### Move closer to interact
+
+### Several poles rise up out of the ground...
+
+### Various Scrolls

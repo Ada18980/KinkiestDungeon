@@ -8728,6 +8728,10 @@ Equipado
 
 
 
+### Flipped Table
+
+### Relieved some stress.
+
 Unlit Torch
 Antorcha apagada
 Can be lit
@@ -20713,6 +20717,12 @@ FOODMSG|(Te invita a participar de sus delicias culinarias)
 Cookie
 Galleta
 ### Pizza
+
+### (The table looks remarkably flippable)
+
+### (You knock over the table!)
+
+### (Flip the table)
 
 (There is a button on a control panel here.)
 (Hay un botón en un panel de control aquí.)
@@ -33143,3 +33153,7 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### (Will not low enough)
 
 ### Move closer to interact
+
+### Several poles rise up out of the ground...
+
+### Various Scrolls

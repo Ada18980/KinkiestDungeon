@@ -9100,6 +9100,10 @@ Equipped
 
 
 
+### Flipped Table
+
+### Relieved some stress.
+
 Unlit Torch
 Незажженный факел
 Can be lit
@@ -21417,6 +21421,12 @@ Cookie
 Pizza
 Пицца
 
+
+### (The table looks remarkably flippable)
+
+### (You knock over the table!)
+
+### (Flip the table)
 
 (There is a button on a control panel here.)
 (Здесь есть кнопка на панели управления.)
@@ -35075,3 +35085,7 @@ Comes with an artistic flair.
 ### (Will not low enough)
 
 ### Move closer to interact
+
+### Several poles rise up out of the ground...
+
+### Various Scrolls

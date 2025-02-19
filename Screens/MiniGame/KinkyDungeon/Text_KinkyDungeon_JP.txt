@@ -9104,6 +9104,10 @@ Equipped
 
 
 
+### Flipped Table
+
+### Relieved some stress.
+
 Unlit Torch
 消えている松明
 Can be lit
@@ -21423,6 +21427,12 @@ Cookie
 Pizza
 ピザ
 
+
+### (The table looks remarkably flippable)
+
+### (You knock over the table!)
+
+### (Flip the table)
 
 (There is a button on a control panel here.)
 (端末にボタンが付いている)
@@ -35071,3 +35081,7 @@ Layer Text:
 ### (Will not low enough)
 
 ### Move closer to interact
+
+### Several poles rise up out of the ground...
+
+### Various Scrolls
