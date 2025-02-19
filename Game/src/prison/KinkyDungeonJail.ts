@@ -1177,7 +1177,7 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 
 	KDApplyLivingCollars();
 
-	KinkyDungeonStripInventory();
+	KinkyDungeonStripInventory(true, KinkyDungeonStatsChoice.has("KeepOutfit"));
 
 	if (KinkyDungeonCurrentDress == "Default")
 		KinkyDungeonSetDress("Bikini", "Bikini");
@@ -1266,7 +1266,7 @@ function KDEnterDemonTransition() {
 	KDDefeatedPlayerTick();
 	//KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod
-	KDGameData.CurrentDialog = "";
+	KDResetDialogue()
 	let params = KinkyDungeonMapParams.DemonTransition;
 	KinkyDungeonCreateMap(params, "DemonTransition", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "", );
 
@@ -1365,7 +1365,7 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 	KDDefeatedPlayerTick();
 	//KDGameData.RoomType = "DemonTransition"; // We do a tunnel every other room
 	//KDGameData.MapMod = ""; // Reset the map mod
-	KDGameData.CurrentDialog = "";
+	KDResetDialogue()
 
 
 
@@ -1417,7 +1417,7 @@ function KDEnterDollTerminal(willing: boolean, cancelDialogue: boolean = true, f
 
 	KDDefeatedPlayerTick(!willing);
 	KDGameData.PrisonerState = 'jail';
-	if (cancelDialogue) KDGameData.CurrentDialog = "";
+	if (cancelDialogue) KDResetDialogue();
 	let faction = KDGetMainFaction() == "Dollsmith" ? "Dollsmith" : "AncientRobot";
 	let params = KinkyDungeonMapParams[alts.DollStorage?.genType || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.DollRoomCount = 0;
@@ -1517,6 +1517,11 @@ function KDRemovePrisonRestraints() {
 	}
 }
 
+function KDResetDialogue() {
+	KDGameData.CurrentDialog = "";
+	KDGameData.CurrentDialogStage = "";
+}
+
 function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KDCustomDefeat = "";
 	KDCustomDefeatEnemy = null;
@@ -1549,8 +1554,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		KDDisableAutoWait();
 
 	KDBreakTether(KinkyDungeonPlayerEntity);
-	KDGameData.CurrentDialog = "";
-	KDGameData.CurrentDialogStage = "";
+	KDResetDialogue();
 	KDGameData.KinkyDungeonLeashedPlayer = 0;
 	if (!PutInJail) {
 		KDDefeatedPlayerTick();
@@ -2035,17 +2039,23 @@ function KDKickEnemyLocal(e: entity) {
 	}
 }
 
-function KinkyDungeonStripInventory(KeepPicks?: boolean) {
+function KinkyDungeonStripInventory(KeepPicks?: boolean, KeepOutfit?: boolean) {
 	let oldPicks = KinkyDungeonItemCount("Pick");
 	let newInv = KinkyDungeonInventory.get(Restraint);
+	let outfits = KinkyDungeonInventory.get(Outfit);
 	let HasBound = false;
 	let boundWeapons = [];
 	if (HasBound) {
 		// TODO add bound weapons here
 	}
-	KinkyDungeonAddLostItems(KinkyDungeonFullInventory(), HasBound);
+	KinkyDungeonAddLostItems(
+		KeepOutfit ? KinkyDungeonFullLooseInventoryKeepOutfit() :
+		KinkyDungeonFullLooseInventory(), HasBound);
 	KDInitInventory();
 	KinkyDungeonInventory.set(Restraint, newInv);
+	if (KeepOutfit) {
+		KinkyDungeonInventory.set(Outfit, outfits);
+	}
 	KinkyDungeonInventoryAddWeapon("Unarmed");
 	KDSetWeapon(null, true);
 	for (let b of boundWeapons) {
@@ -2452,7 +2462,7 @@ function KDApplyJailOutfit() {
 	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 	KinkyDungeonSetDress(defeat_outfit, "JailUniform");
-	KinkyDungeonStripInventory(true);
+	KinkyDungeonStripInventory(true, KinkyDungeonStatsChoice.has("KeepOutfit"));
 
 	if (defeat_outfit != params.defeat_outfit) {
 		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});

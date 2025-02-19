@@ -1869,9 +1869,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 					KDSetWorldSlot(0, 0);
 
+					let dialogue = KDGameData.CurrentDialog;
+					let dialoguestage = KDGameData.CurrentDialogStage;
 					KinkyDungeonCreateMap(params, "ShopStart", "",
 						MiniGameKinkyDungeonLevel, undefined, undefined,
 						undefined, {x: 0, y: 0}, false, undefined);
+					KDGameData.CurrentDialog = dialogue;
+					KDGameData.CurrentDialogStage = dialoguestage
 
 					// Place return portal
 					KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ';');
@@ -1915,9 +1919,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[KDGameData.TeleportLocations.commerce.checkpoint]];
 
 
-
+					let dialogue = KDGameData.CurrentDialog;
+					let dialoguestage = KDGameData.CurrentDialogStage;
 					KinkyDungeonCreateMap(params, KDGameData.TeleportLocations.commerce.type, "", KDGameData.TeleportLocations.commerce.level,
 						undefined, undefined, undefined, {x: KDGameData.TeleportLocations.commerce.x, y: KDGameData.TeleportLocations.commerce.y}, true, undefined);
+
+					KDGameData.CurrentDialog = dialogue;
+					KDGameData.CurrentDialogStage = dialoguestage
 
 					if (KDGameData.TeleportLocations.commerce.portalpos_x && KDGameData.TeleportLocations.commerce.portalpos_y) {
 						KDMovePlayer(KDGameData.TeleportLocations.commerce.portalpos_x,

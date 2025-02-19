@@ -6631,8 +6631,8 @@ function KinkyDungeonSaveGame(ToString: boolean = false): KinkyDungeonSave {
 let KDSaveTimeout = 600000; // 10 minutes
 async function KinkyDungeonCompressSave(save: string): Promise<string> {
 	if (window.Worker) {
+		const myWorker = new Worker("out/saveworker.js");
 		let pp = new Promise<string>(function (resolve, reject) {
-			const myWorker = new Worker("out/saveworker.js");
 			myWorker.onmessage = function(e) {
 				console.log('Compressed data received from worker');
 				resolve(e.data);
@@ -6644,9 +6644,11 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 		return Promise.resolve(pp)
 			.then((v) => {
 				console.log('Yay');
+				myWorker.terminate();
 				return v;})
 			.catch((v) => {
 				console.log('Nay');
+				myWorker.terminate();
 				return LZString.compressToBase64(save);});
 	} else {
 		console.log('Your browser doesn\'t support web workers.');

@@ -960,6 +960,7 @@ function KinkyDungeonCreateMap (
 {
 	// every time a map is created or moved the preference flags are updated
 	KDUpdatePreferenceFlags();
+	KDResetDialogue();
 
 	KDTileModes = {};
 	KDUpdateOptionGame();

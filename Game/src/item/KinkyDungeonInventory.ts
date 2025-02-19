@@ -543,6 +543,31 @@ function KinkyDungeonFullInventory() {
 	}
 	return ret;
 }
+function KinkyDungeonFullLooseInventory() {
+	let ret = [];
+	for (let ent of KinkyDungeonInventory.entries()) {
+		let m = ent[1];
+		if (ent[0] == Restraint) continue;
+		for (let item of m.values()) {
+			ret.push(item);
+		}
+	}
+	return ret;
+}
+function KinkyDungeonFullLooseInventoryKeepOutfit() {
+	let ret = [];
+	for (let ent of KinkyDungeonInventory.entries()) {
+		let m = ent[1];
+		if (ent[0] == Restraint) continue;
+		if (ent[0] == Outfit) continue;
+		for (let item of m.values()) {
+			ret.push(item);
+		}
+	}
+	return ret;
+}
+
+
 
 function KinkyDungeonInventoryLength() {
 	let size = 0;

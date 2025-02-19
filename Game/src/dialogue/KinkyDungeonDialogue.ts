@@ -55,7 +55,7 @@ function KDGetDialogue(): KinkyDialogue {
 			else {
 				// Break the dialogue
 				console.log("Error in dialogue " + KDGameData.CurrentDialog + ", stage = " + KDGameData.CurrentDialogStage);
-				KDGameData.CurrentDialog = "";
+				KDResetDialogue();
 				break;
 			}
 		}
@@ -395,8 +395,7 @@ function KDDoDialogue(data: any) {
 
 	let dialogue = KDGetDialogue();
 	if (!dialogue) {// Means we exited {
-		KDGameData.CurrentDialog = "";
-		KDGameData.CurrentDialogStage = "";
+		KDResetDialogue();
 		return;
 	}
 	let ggagged = KDDialogueGagged();
@@ -419,8 +418,7 @@ function KDDoDialogue(data: any) {
 	if (!abort) {
 		let gagged = KDDialogueGagged();
 		if (dialogue.exitDialogue) {
-			KDGameData.CurrentDialog = "";
-			KDGameData.CurrentDialogStage = "";
+			KDResetDialogue();
 		} else {
 			let currentStage = KDGameData.CurrentDialogStage;
 			let modded = false;
@@ -763,8 +761,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 
 				KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns || 0, delta);
 				if (KinkyDungeonInDanger()) {
-					KDGameData.CurrentDialog = "";
-					KDGameData.CurrentDialogStage = "";
+					KDResetDialogue();
 				}
 			}
 			return false;
@@ -1109,8 +1106,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				if (KinkyDungeonFlags.has("LetMePass")) {
 					KinkyDungeonSetEnemyFlag(enemy, "passthrough", 8);
-					KDGameData.CurrentDialog = "";
-					KDGameData.CurrentDialogStage = "";
+					KDResetDialogue();
 					KinkyDungeonSetFlag("LetMePass", 30);
 				}
 			}
@@ -1123,8 +1119,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetEnemyFlag(enemy, "passthrough", 8);
 						if (KinkyDungeonFlags.has("LetMePass")) {
-							KDGameData.CurrentDialog = "";
-							KDGameData.CurrentDialogStage = "";
+							KDResetDialogue();
 						}
 						KinkyDungeonSetFlag("LetMePass", 30);
 					}

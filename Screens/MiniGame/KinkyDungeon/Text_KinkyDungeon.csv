@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.44"
+KDVersionStr,"5.4.45"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -31275,6 +31275,6 @@ KDBedWillNotLow,(Will not low enough)
 
 KDMoveCloser,Move closer to interact
 
-KinkyDungeonSpellCastSPikeTrap,Several poles rise up out of the ground...
+KinkyDungeonSpellCastSpikeTrap,Several poles rise up out of the ground...
 
 KinkyDungeonInventoryItemScrolls,Various Scrolls
