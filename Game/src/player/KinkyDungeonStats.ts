@@ -210,7 +210,7 @@ let KinkyDungeonUndress = 0; // Level of undressedness
 /** Current list of spells */
 let KinkyDungeonSpells: spell[] = [];
 // FIXME: This object should be formally specified as some point.
-let KinkyDungeonPlayerBuffs: Record<string, any> = {};
+let KinkyDungeonPlayerBuffs: Record<string, KDBuff> = {};
 
 // Temp - for multiplayer in future
 let KinkyDungeonPlayers = [];
@@ -336,11 +336,11 @@ function KinkyDungeonGetVisionRadius() {
 function KDEntitySenses(entity: entity): {radius: number, mult: number, vision: number, visionmult: number, blindsight: number} {
 	let data = {
 		noise: 0,
-		base: entity.Enemy.Awareness?.hearingRadius ? entity.Enemy.Awareness.hearingRadius : entity.Enemy.visionRadius,
+		base: entity.Enemy.Awareness?.hearingRadius || entity.Enemy.visionRadius,
 		deaflevel: 0,
-		hearingMult: entity.Enemy.Awareness?.hearingMult ? entity.Enemy.Awareness.hearingMult : 1.0,
+		hearingMult: entity.Enemy.Awareness?.hearingMult || 1.0,
 		vision: entity.Enemy.visionRadius,
-		visionMult: entity.Enemy.Awareness?.vision ? entity.Enemy.Awareness.vision : 1.0,
+		visionMult: entity.Enemy.Awareness?.vision || 1.0,
 		blindsight: entity.Enemy.blindSight,
 	};
 	KinkyDungeonSendEvent("calcEntityHearing", data);
@@ -483,9 +483,9 @@ function KDGetStamDamageThresh() {
  * @param entity
  * @param [suppressAdd]
  */
-function KDBulletAlreadyHit(bullet: any, entity: entity, suppressAdd?: boolean): boolean {
+function KDBulletAlreadyHit(bullet: KDBullet, entity: entity, suppressAdd?: boolean): boolean {
 	if (bullet) {
-		let name = entity.player ? "player" : entity.id;
+		let name = entity.player ? "player" : String(entity.id);
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
 		if (bullet.alreadyHit.includes(name)) return true;
@@ -552,9 +552,11 @@ interface damageInfo extends damageInfoMinor {
 	shield_slow?: boolean, // slow thru shield
 	shield_distract?: boolean, // Distract thru shield
 	shield_vuln?: boolean, // Vuln thru shield
+	bindTags?: string[],
+	power?: number;
 }
 
-function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
+function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
 	}
@@ -1695,7 +1697,16 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		if (KinkyDungeonSleepiness > 2.99) {
 			KinkyDungeonSlowLevel = Math.max(KinkyDungeonSlowLevel, 2);
 			//KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness/2), 5);
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Sleepy", aura: "#222222", type: "AttackStamina", duration: 3, power: -1, player: true, enemies: false, tags: ["attack", "stamina"]});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "Sleepy",
+				aura: "#222222",
+				type: "AttackStamina",
+				duration: 3,
+				power: -1,
+				player: true,
+				enemies: false,
+				tags: ["attack", "stamina"]
+			});
 		}
 		if (KinkyDungeonSleepiness > 0) {
 			KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness*0.5), Math.min(Math.round(KinkyDungeonSleepiness*0.7), 6));
@@ -1742,7 +1753,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			duration: 1,
 			buffSprite: true,
 			aura: "#ff5277",
-			aurasprite: "NoWP",
+			auraSprite: "NoWP",
 			type: "EvasionPenalty",
 			power: 1,
 		});

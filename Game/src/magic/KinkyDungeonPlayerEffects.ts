@@ -59,9 +59,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				events: [
 					{type: "Haunting", trigger: "tick", dist: 4.5, count: 1},
 				],
-				aura: "#ffffff",
-				aurasprite: "Null",
-				duration: 9999, infinite: true,});
+				aura: "#ffffff", auraSprite: "Null",
+				duration: 9999, infinite: true,
+			});
 		return {sfx: "Evil", effect: true};
 	},
 	"ObserverBeam": (target, _damage, _playerEffect, spell, _faction, bullet, _entity) => {
@@ -97,9 +97,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 						events: [
 							{type: "Cursed", trigger: "tick", count: 1},
 						],
-						aura: "#4488ff",
-						aurasprite: "Null",
-						duration: 9999, infinite: true,});
+						aura: "#4488ff", auraSprite: "Null",
+						duration: 9999, infinite: true,
+					});
 
 				KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").KDReplaceOrAddDmg(dmg.string), "#ff5277", 1);
 				return {sfx: "Evil", effect: true};
@@ -421,8 +421,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "LatexBubble",
-				aura: "#2789cd",
-				aurasprite: "LatexBubble",
+				aura: "#2789cd", auraSprite: "LatexBubble",
 				noAuraColor: true,
 				buffSprite: true,
 				type: "meleeDamageBuff",
@@ -460,8 +459,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "LatexBubble",
-				aura: "#2789cd",
-				aurasprite: "LatexBubble",
+				aura: "#2789cd", auraSprite: "LatexBubble",
 				noAuraColor: true,
 				buffSprite: true,
 				type: "meleeDamageBuff",
@@ -665,9 +663,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 					tags: ["removeNewMap", "removeDefeat"],
 					power: 1,
 					type: "SlowLevel",
-					aura: "#ff6767",
+					aura: "#ff6767", auraSprite: "AuraSeal",
 					buffSprite: true,
-					aurasprite: "AuraSeal",
 				});
 			}
 		}, (tt) => {
@@ -677,9 +674,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				tags: ["removeNewMap", "removeDefeat"],
 				power: 3,
 				type: "SlowLevel",
-				aura: "#ff6767",
+				aura: "#ff6767", auraSprite: "AuraSeal",
 				buffSprite: true,
-				aurasprite: "AuraSeal",
 			});
 		},  (tt) => {
 
@@ -689,9 +685,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				tags: ["removeNewMap", "removeDefeat"],
 				power: 100,
 				type: "SlowLevel",
-				aura: "#ff6767",
+				aura: "#ff6767", auraSprite: "AuraSeal",
 				buffSprite: true,
-				aurasprite: "AuraSeal",
 			});
 		}, );
 		return {sfx: "Evil", effect: true};
@@ -703,9 +698,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			tags: ["removeNewMap", "removeDefeat"],
 			power: 100,
 			type: "SlowLevel",
-			aura: "#ff6767",
+			aura: "#ff6767", auraSprite: "AuraSeal",
 			buffSprite: true,
-			aurasprite: "AuraSeal",
 		});
 		KinkyDungeonMakeNoise(10, target.x, target.y);
 		KinkyDungeonSendTextMessage(8, TextGet("KDShadowSeal"), "#aa55ff", 4);
@@ -1454,7 +1448,15 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "Flummox", type: "Flummox", duration: 5, power: 1.0, player: true, mushroom: true, tags: ["overlay", "darkness"]});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "Flummox",
+				type: "Flummox",
+				duration: 5,
+				power: 1.0,
+				player: true,
+				mushroom: true,
+				tags: ["overlay", "darkness"],
+			});
 			KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonFlummox").KDReplaceOrAddDmg( dmg.string), "#a583ff", 2);
 			effect = true;
 			return {sfx: "MagicSlash", effect: effect};
@@ -1478,7 +1480,17 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonSendTextMessage(6, TextGet("KDPoisonDagger").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 			// TODO make this get more intense over time
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonDagger", aura: "#22ff44", type: "SleepinessPoison", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "PoisonDagger",
+				aura: "#22ff44",
+				type: "SleepinessPoison",
+				power: 1,
+				duration: playerEffect.time,
+				player: true,
+				enemies: false,
+				tags: ["sleep"],
+				range: 1.5
+			});
 			effect = true;
 			return {sfx: "Damage", effect: effect};
 		}
@@ -1502,9 +1514,17 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonBreath").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 		// TODO make this get more intense over time
 		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonBreath", aura: "#22ff44", type: "SleepinessPoison", power: currentPoison + playerEffect.amount,
-			duration: playerEffect.time, player: true, enemies: false, tags: ["sleep", "poison"], range: 1.5});
-
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			id: "PoisonBreath",
+			aura: "#22ff44",
+			type: "SleepinessPoison",
+			power: currentPoison + playerEffect.amount,
+			duration: playerEffect.time,
+			player: true,
+			enemies: false,
+			tags: ["sleep", "poison"],
+			range: 1.5,
+		});
 		return {sfx: "Damage", effect: effect};
 	},
 
@@ -1515,8 +1535,17 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		KinkyDungeonSendTextMessage(6, TextGet("KDDragonFlowerSpores").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 		// TODO make this get more intense over time
 		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonBreath", aura: "#22ff44", type: "SleepinessPoison", power: currentPoison + playerEffect.amount,
-			duration: playerEffect.time, player: true, enemies: false, tags: ["sleep", "poison"], range: 1.5});
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			id: "PoisonBreath",
+			aura: "#22ff44",
+			type: "SleepinessPoison",
+			power: currentPoison + playerEffect.amount,
+			duration: playerEffect.time,
+			player: true,
+			enemies: false,
+			tags: ["sleep", "poison"],
+			range: 1.5,
+		});
 
 		return {sfx: "Damage", effect: effect};
 	},
@@ -1528,8 +1557,17 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		KinkyDungeonSendTextMessage(6, TextGet("KDPoisonSlash").KDReplaceOrAddDmg( dmg.string), "#33ff00", 2);
 		// TODO make this get more intense over time
 		let currentPoison = KinkyDungeonPlayerBuffs?.PoisonBreath?.power || 0;
-		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "PoisonBreath", aura: "#22ff44", type: "SleepinessPoison", power: currentPoison + playerEffect.amount,
-			duration: playerEffect.time, player: true, enemies: false, tags: ["sleep", "poison"], range: 1.5});
+		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+			id: "PoisonBreath",
+			aura: "#22ff44",
+			type: "SleepinessPoison",
+			power: currentPoison + playerEffect.amount,
+			duration: playerEffect.time,
+			player: true,
+			enemies: false,
+			tags: ["sleep", "poison"],
+			range: 1.5,
+		});
 
 		return {sfx: "Damage", effect: effect};
 	},
@@ -1976,7 +2014,17 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNurseSyringe").KDReplaceOrAddDmg( dmg.string), "#ff5277", 8);
-			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {id: "NurseSyringe", aura: "#22ff44", type: "SleepinessPoison", power: 1, duration: playerEffect.time, player: true, enemies: false, tags: ["sleep"], range: 1.5});
+			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+				id: "NurseSyringe",
+				aura: "#22ff44",
+				type: "SleepinessPoison",
+				power: 1,
+				duration: playerEffect.time,
+				player: true,
+				enemies: false,
+				tags: ["sleep"],
+				range: 1.5,
+			});
 			effect = true;
 			return {sfx: "Damage", effect: effect};
 		}
@@ -2470,8 +2518,7 @@ if (!String.prototype.KDReplaceOrAddDmg) {
 function KDApplyBubble(entity: entity, time: number, damage: number = 0) {
 	KinkyDungeonApplyBuffToEntity(entity, {
 		id: "WaterBubble",
-		aura: "#2789cd",
-		aurasprite: "WaterBubble",
+		aura: "#2789cd", auraSprite: "WaterBubble",
 		noAuraColor: true,
 		buffSprite: true,
 		type: "Accuracy",
