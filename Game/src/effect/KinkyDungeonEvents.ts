@@ -5888,7 +5888,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 					id: "ManaRegenSuspend",
 					type: "ManaRegenSuspend",
-					power: 1, 
+					power: 1,
 					duration: Math.ceil(time),
 					aura: "#ff5277",
 					buffSprite: true, auraSprite: "AuraX",
@@ -7989,14 +7989,31 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		},
 		"Knockback": (e, _weapon, data) => {
 			if (e.dist && data.enemy && data.targetX && data.targetY && !data.miss && !data.disarm && !KDHelpless(data.enemy)) {
-				if (data.enemy.Enemy && !data.enemy.Enemy.tags.unflinching && !data.enemy.Enemy.tags.stunresist && !data.enemy.Enemy.tags.unstoppable && !data.enemy.Enemy.tags.noknockback && !KDIsImmobile(data.enemy)) {
-					let newX = data.targetX + Math.round(e.dist * (data.targetX - KinkyDungeonPlayerEntity.x));
-					let newY = data.targetY + Math.round(e.dist * (data.targetY - KinkyDungeonPlayerEntity.y));
-					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
-						&& (e.dist == 1 || KinkyDungeonCheckProjectileClearance(data.enemy.x, data.enemy.y, newX, newY, false))) {
-						KDMoveEntity(data.enemy, newX, newY, false);
-						KinkyDungeonSetEnemyFlag(data.enemy, "takeFF", 1);
-						KinkyDungeonRemoveBuffsWithTag(data.enemy, ["displaceend"]);
+				if (data.enemy.Enemy
+					&& !data.enemy.Enemy.tags.noknockback
+					&& !KDIsImmobile(data.enemy)) {
+
+					let dist = e.dist;
+					if (data.enemy.Enemy.tags.unflinching || data.enemy.Enemy.tags.stunresist) {
+						dist -= 1;
+					}
+					if (data.enemy.Enemy.tags.unstoppable) {
+						dist -= 1;
+					}
+
+					for (let i = 0; i < dist; i++) {
+						let newX = Math.round(data.enemy.x + (data.enemy.x - KinkyDungeonPlayerEntity.x)
+							/ KDistEuclidean(data.enemy.y - KinkyDungeonPlayerEntity.y, data.enemy.x - KinkyDungeonPlayerEntity.x)
+						);
+						let newY = Math.round(data.enemy.y + (data.enemy.y - KinkyDungeonPlayerEntity.y)
+							/ KDistEuclidean(data.enemy.y - KinkyDungeonPlayerEntity.y, data.enemy.x - KinkyDungeonPlayerEntity.x)
+							);
+						if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY))
+							&& KinkyDungeonNoEnemy(newX, newY, true)) {
+							KDMoveEntity(data.enemy, newX, newY, false);
+							KinkyDungeonSetEnemyFlag(data.enemy, "takeFF", 1);
+							KinkyDungeonRemoveBuffsWithTag(data.enemy, ["displaceend"]);
+						}
 					}
 				}
 			}
@@ -8449,8 +8466,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 					for (let i = 0; i < dist; i++) {
 						let newX = data.enemy.x + Math.round(1 * Math.sign(b.vx));
 						let newY = data.enemy.y + Math.round(1 * Math.sign(b.vy));
-						if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
-							&& (e.dist == 1 || KinkyDungeonCheckProjectileClearance(data.enemy.x, data.enemy.y, newX, newY, false))) {
+						if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY))
+							&& KinkyDungeonNoEnemy(newX, newY, true)) {
 							KDMoveEntity(data.enemy, newX, newY, false);
 							KinkyDungeonSetEnemyFlag(data.enemy, "takeFF", 1);
 							KinkyDungeonRemoveBuffsWithTag(data.enemy, ["displaceend"]);

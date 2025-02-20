@@ -40,6 +40,8 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 5.4.44, 5.4.55
 - Fixed some memory leaks
+- Added text fading to make it more readable when there are floaters in the way
+- Fixed some bugs with text floaters being erratic
 
 5.4.43
 - Sagitta now tracks the target similar to other delayed spells
