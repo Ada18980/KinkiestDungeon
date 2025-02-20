@@ -2403,7 +2403,7 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 			}
 			let ii = 0;
 			let direction = -1;
-			while ( overlap && ii < 7) {
+			while ( overlap && ii < 24) {
 				floater.y -= (floater.override ? 4 : 4/KinkyDungeonGridSizeDisplay) * direction;
 				//floater.x += -20 + Math.random() * 40;
 				x = floater.override ? floater.x : canvasOffsetX + (floater.x - CamX)*KinkyDungeonGridSizeDisplay;
