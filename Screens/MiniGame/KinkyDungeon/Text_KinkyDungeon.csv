@@ -7622,6 +7622,13 @@ KinkyDungeonRemindJailRelease1,"You've been a good girl. I hope you don't make t
 KinkyDungeonRemindJailRelease2,"That's a good girl. Now behave yourself, okay? You're free to go."
 KinkyDungeonRemindJailRelease3,"Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!"
 
+rJailRelease0,"I hope you learned your lesson.|Now get your butt out of here."
+rJailRelease1,"You've been a good girl. I hope you don't make the same mistake again.|You can leave."
+rJailRelease2,"That's a good girl. Now behave yourself, okay?|You're free to go."
+rJailRelease3,"Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!"
+rJailRelease,"Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!"
+
+
 KinkyDungeonJailerGoodGirl0,"Good girl."
 KinkyDungeonJailerGoodGirl1,"You'll be making others happy in no time."
 KinkyDungeonJailerGoodGirl2,"You're shaping up to be a good slave."

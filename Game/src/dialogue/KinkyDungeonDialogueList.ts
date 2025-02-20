@@ -110,6 +110,15 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			//"Brash" : {gag: true, playertext: "Default", exitDialogue: true},
 		},
 	},
+	"JailRelease": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KDGameData.CurrentDialogMsg = "JailRelease" + KinkyDungeonCheckRelease();
+			return false;
+		},
+		options: {"Leave": {playertext: "Leave", exitDialogue: true}}
+	},
+
 	"WeaponFound": {
 		response: "WeaponFound",
 		personalities: ["Robot", "Brat", "Sub", "Dom"],
