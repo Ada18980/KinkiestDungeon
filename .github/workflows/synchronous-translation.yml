@@ -55,6 +55,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "synchronous-translation-action"
           git pull
+          git checkout --ours "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
-          git push --force
+          git push
