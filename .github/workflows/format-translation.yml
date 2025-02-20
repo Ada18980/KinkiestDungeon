@@ -7,9 +7,13 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - newartwork
+      - 'newartwork'
     paths:
       - "Screens/MiniGame/KinkyDungeon/*"
+
+concurrency:
+  group: tranlation-handel-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   format-translation:
