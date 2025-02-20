@@ -58,4 +58,5 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
           git pull --rebase --tags origin 5.4
           git checkout --ours "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+          git rebase --continue
           git push
