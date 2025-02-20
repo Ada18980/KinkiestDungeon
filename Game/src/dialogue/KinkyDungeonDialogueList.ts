@@ -9,6 +9,7 @@ let KDDialogueParams = {
 	ShopkeeperFeePerLevel: 100,
 	ShopkeeperFeePunishThresh: 2500,
 	ChefChance: 0.1,
+	KDTableFlipWP: 1,
 };
 
 /**
@@ -109,6 +110,15 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			//"Brash" : {gag: true, playertext: "Default", exitDialogue: true},
 		},
 	},
+	"JailRelease": {
+		response: "Default",
+		clickFunction: (gagged, player) => {
+			KDGameData.CurrentDialogMsg = "JailRelease" + KinkyDungeonCheckRelease();
+			return false;
+		},
+		options: {"Leave": {playertext: "Leave", exitDialogue: true}}
+	},
+
 	"WeaponFound": {
 		response: "WeaponFound",
 		personalities: ["Robot", "Brat", "Sub", "Dom"],
@@ -1868,9 +1878,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 					KDSetWorldSlot(0, 0);
 
+					let dialogue = KDGameData.CurrentDialog;
+					let dialoguestage = KDGameData.CurrentDialogStage;
 					KinkyDungeonCreateMap(params, "ShopStart", "",
 						MiniGameKinkyDungeonLevel, undefined, undefined,
 						undefined, {x: 0, y: 0}, false, undefined);
+					KDGameData.CurrentDialog = dialogue;
+					KDGameData.CurrentDialogStage = dialoguestage
 
 					// Place return portal
 					KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ';');
@@ -1914,9 +1928,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[KDGameData.TeleportLocations.commerce.checkpoint]];
 
 
-
+					let dialogue = KDGameData.CurrentDialog;
+					let dialoguestage = KDGameData.CurrentDialogStage;
 					KinkyDungeonCreateMap(params, KDGameData.TeleportLocations.commerce.type, "", KDGameData.TeleportLocations.commerce.level,
 						undefined, undefined, undefined, {x: KDGameData.TeleportLocations.commerce.x, y: KDGameData.TeleportLocations.commerce.y}, true, undefined);
+
+					KDGameData.CurrentDialog = dialogue;
+					KDGameData.CurrentDialogStage = dialoguestage
 
 					if (KDGameData.TeleportLocations.commerce.portalpos_x && KDGameData.TeleportLocations.commerce.portalpos_y) {
 						KDMovePlayer(KDGameData.TeleportLocations.commerce.portalpos_x,
@@ -1969,7 +1987,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							// Perform the deed
 							let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
 							let amount = tile.Amount ? tile.Amount : 1.0;
-							KDChangeWill(tile.Food, "food", "consumable", amount * Willmulti);
+							KDChangeWill(tile.Food, "food", "consumable",
+								amount * Willmulti);
 
 							// Send the message and advance time
 							KinkyDungeonAdvanceTime(1);
@@ -2020,6 +2039,120 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						// Remove the food
 						tile.Food = "Plate";
 						tile.Eaten = true;
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						clickFunction: (_gagged, _player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Flip": {
+				playertext: "Default", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					if (tile && tile.Type == "Food") {
+						// Send the message and advance time
+						KinkyDungeonAdvanceTime(1);
+
+						if (tile.Food && KDFood[tile.Food]?.Theft) {
+							KDRunChefChance(_player, true);
+						}
+
+						tile.Type = undefined;
+
+						let x = KinkyDungeonTargetTileLocation.split(',')[0];
+						let y = KinkyDungeonTargetTileLocation.split(',')[1];
+						KinkyDungeonMapSet(parseInt(x), parseInt(y), "5");
+						tile.Overlay = "TableFlipped";
+						tile.Tooltip = "FlippedTable";
+						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+						KDChangeWill(KinkyDungeonTargetTileLocation, "environment",
+							"interact", KDDialogueParams.KDTableFlipWP * Willmulti, false);
+
+
+						// Remove the food
+						delete tile.Food;
+						delete tile.Eaten;
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						clickFunction: (_gagged, _player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				clickFunction: (_gagged, _player) => {
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
+					return false;
+				},
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"TableFlip": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			if (KinkyDungeonTargetTile) {
+				let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+				if (tile) {
+					KDGameData.CurrentDialogMsgData = {
+						AMOUNT: "" + 10 * (tile.Amount || 1),
+						ARTICLE: "a",
+						FOODNAME: TextGet(KinkyDungeonTargetTile.Food),
+						FOODMSG: TextGet("KinkyDungeonFood" + KinkyDungeonTargetTile.Food),
+					};
+				}
+			}
+			return false;
+		},
+		options: {
+			"Flip": {
+				playertext: "Default", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					if (tile && tile.Type == "Food") {
+						// Send the message and advance time
+						KinkyDungeonAdvanceTime(1);
+
+						if (tile.Food && KDFood[tile.Food]?.Theft) {
+							KDRunChefChance(_player, true);
+						}
+
+						tile.Type = undefined;
+
+						let x = KinkyDungeonTargetTileLocation.split(',')[0];
+						let y = KinkyDungeonTargetTileLocation.split(',')[1];
+						KinkyDungeonMapSet(parseInt(x), parseInt(y), "5");
+						tile.Overlay = "TableFlipped";
+						tile.Tooltip = "FlippedTable";
+						let Willmulti = Math.max(KinkyDungeonStatWillMax / KDMaxStatStart);
+						KDChangeWill(KinkyDungeonTargetTileLocation, "environment",
+							"interact", KDDialogueParams.KDTableFlipWP * Willmulti, false);
+
+						// Remove the food
+						delete tile.Food;
+						delete tile.Eaten;
 					}
 					return false;
 				},

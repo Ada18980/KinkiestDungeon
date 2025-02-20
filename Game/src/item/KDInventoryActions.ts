@@ -1229,13 +1229,13 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 							.replace("AMNT", "" + Math.round(100 * enemy.boundLevel / enemy.Enemy.maxhp)),
 						"#ffffff", 1);
 					if (status.belt) {
-						KinkyDungeonApplyBuffToEntity(enemy, KDChastity, {});
+						KinkyDungeonApplyBuffToEntity(enemy, KDChastity);
 					}
 					if (status.toy) {
-						KinkyDungeonApplyBuffToEntity(enemy, KDToy, {});
+						KinkyDungeonApplyBuffToEntity(enemy, KDToy);
 					}
 					if (status.plug) {
-						KinkyDungeonApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged, {});
+						KinkyDungeonApplyBuffToEntity(enemy, KDEntityBuffedStat(enemy, "Plug") > 0 ? KDDoublePlugged : KDPlugged);
 					}
 					if (status.blind) {
 						enemy.blind = Math.max(enemy.blind || 0, status.blind);

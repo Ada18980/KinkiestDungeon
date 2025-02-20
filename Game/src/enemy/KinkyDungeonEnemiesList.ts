@@ -5547,7 +5547,9 @@ let KinkyDungeonEnemies: enemy[] = [
 
 
 	{name: "Mummy", nameList: "bast", outfit: "Mummy", style: "Mummy", clusterWith: "mummy", bound: "Mummy", faction: "Bast", color: "#55ff55", tags: KDMapInit(["leashing", "religious", "antiMagic", "darkvision", "opendoors", "closedoors", "jail", "jailer", "mummy", "melee", "elite", "mummyRestraints", "fireweakness", "soapweakness", "hunter"]), followLeashedOnly: true, followRange: 1,
-		spells: ["MummyBolt", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, specialCD: 3, specialAttack: "BindLock", playLine: "Mummy", spellCooldownMult: 1, spellCooldownMod: 5, specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
+		spells: ["MummyBolt", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, specialCD: 3,
+		specialAttack: "BindLock", playLine: "Mummy", spellCooldownMult: 1, spellCooldownMod: 5,
+		specialAttackPoints: 2, specialWidth: 3, spellRdy: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#4fd658"},
 		],
@@ -5558,7 +5560,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			profile: ["catgirl"],
 		},
 		attackLock: "Purple",
-		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8, minLevel:3, weight:18, movePoints: 2, attackPoints: 1, attack: "SpellMeleeWill", attackWidth: 1, attackRange: 1, power: 2, fullBoundBonus: 1, dmgType: "crush",
+		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 8,
+		minLevel:3, weight:18, movePoints: 2, attackPoints: 2, attack: "SpellMeleeWill",
+		attackWidth: 1, attackRange: 1, power: 4, fullBoundBonus: 2, dmgType: "crush",
 		terrainTags: {"secondhalf":2, "lastthird":4, "open": 2, "increasingWeight":1, "mummy": 4},
 		floors:KDMapInit(["tmb"]), shrines: ["Will"],
 		dropTable: [{name: "Gold", amountMin: 15, amountMax: 20, weight: 10}, {name: "MysticDuctTapeRaw", amount: 15, weight: 4}]},
@@ -6214,8 +6218,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Armored",
-				aura: "#ffffff",
-				aurasprite: "Armored",
+				aura: "#ffffff", auraSprite: "Armored",
 				noAuraColor: true,
 				duration: 9999, infinite: true,
 				power: 3,
@@ -6234,8 +6237,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Fast",
-				aura: "#ffffff",
-				aurasprite: "Fast",
+				aura: "#ffffff", auraSprite: "Fast",
 				noAuraColor: true,
 				duration: 9999, infinite: true,
 				power: 0.5,
@@ -6254,8 +6256,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "Muscle",
-				aura: "#ffffff",
-				aurasprite: "Muscle",
+				aura: "#ffffff", auraSprite: "Muscle",
 				noAuraColor: true,
 				duration: 9999, infinite: true,
 				power: Math.min(5, enemy.Enemy.power*2),
@@ -6279,8 +6280,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "EnergyShield",
-				aura: "#ffffff",
-				aurasprite: "EnergyShield",
+				aura: "#ffffff", auraSprite: "EnergyShield",
 				duration: 9999, infinite: true,
 				noAuraColor: true,
 				power: enemy.Enemy.maxhp * 0.25,
@@ -6305,8 +6305,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 		apply: (enemy, _types) => {
 			KinkyDungeonApplyBuffToEntity(enemy, {
 				id: "HealingAuraSBuff",
-				aura: "#ffffff",
-				aurasprite: "HealingAura",
+				aura: "#ffffff", auraSprite: "HealingAura",
 				duration: 9999, infinite: true,
 				noAuraColor: true,
 				power: 1,
@@ -6332,8 +6331,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 				id: "Missiles",
 				duration: 9999, infinite: true,
 				power: count,
-				aura: "#ffffff",
-				aurasprite: "Missiles4",
+				aura: "#ffffff", auraSprite: "Missiles4",
 				noAuraColor: true,
 				events: [
 					{trigger: "afterEnemyTick", count: count, type: "Missiles", power: 1.5,
@@ -6355,8 +6353,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 				id: "Airbender",
 				duration: 9999, infinite: true,
 				power: count,
-				aura: "#ffffff",
-				aurasprite: "Airbender1",
+				aura: "#ffffff", auraSprite: "Airbender1",
 				noAuraColor: true,
 				events: [
 					{trigger: "afterEnemyTick", count: count, type: "Airbender", time: 4 + ((enemy.Enemy.tags?.minor) ? 4 : (enemy.Enemy.tags?.elite || enemy.Enemy.tags?.miniboss || enemy.Enemy.tags?.boss) ? 0 : 2), spell: "EnemyWindBlast"},

@@ -204,7 +204,9 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				if (dd)
 					KDStartDialog(dd, guard.Enemy.name, true, "", guard);
 			} else {
-				KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 8);
+				//KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonRemindJailRelease" + KinkyDungeonCheckRelease()).replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 8);
+
+				KDStartDialog("JailRelease", guard.Enemy.name, true, KDGetPersonality(guard), guard);
 				KDGameData.PrisonerState = 'parole';
 				guard.CurrentAction = "jailWander";
 				KinkyDungeonSetEnemyFlag(guard, "noReLock", 10);

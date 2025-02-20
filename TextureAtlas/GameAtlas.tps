@@ -1648,6 +1648,7 @@
             <key type="filename">../Game/FloorGeneric/SummitTeleporter.png</key>
             <key type="filename">../Game/FloorGeneric/Table.png</key>
             <key type="filename">../Game/FloorGeneric/TableCookies.png</key>
+            <key type="filename">../Game/FloorGeneric/TableFlipped.png</key>
             <key type="filename">../Game/FloorGeneric/TablePizza.png</key>
             <key type="filename">../Game/FloorGeneric/TablePlate.png</key>
             <key type="filename">../Game/FloorGeneric/Tablet.png</key>

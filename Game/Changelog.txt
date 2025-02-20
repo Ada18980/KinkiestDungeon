@@ -38,6 +38,11 @@ TODO Add Cuddle play type
 TODO add custom palette
 TODO also I might need to maybe fade out or hide slots that the player doesnt have any equippable restraints in
 
+5.4.44, 5.4.55
+- Fixed some memory leaks
+- Added text fading to make it more readable when there are floaters in the way
+- Fixed some bugs with text floaters being erratic
+
 5.4.43
 - Sagitta now tracks the target similar to other delayed spells
 - Added crotch rope versions of military skirt, maid knight heavy, maid knight light dresses and aprons

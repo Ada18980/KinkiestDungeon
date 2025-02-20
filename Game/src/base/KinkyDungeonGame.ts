@@ -960,6 +960,7 @@ function KinkyDungeonCreateMap (
 {
 	// every time a map is created or moved the preference flags are updated
 	KDUpdatePreferenceFlags();
+	KDResetDialogue();
 
 	KDTileModes = {};
 	KDUpdateOptionGame();
@@ -4005,9 +4006,10 @@ let KDFood = {
 	},
 };
 
-function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: any) {
+function KinkyDungeonPlaceFood(foodChance: number, width: number, height: number, altType: AltType) {
 
 	if (altType && altType.noClutter) return;
+	if (altType && altType.noTables) return;
 
 	let foodPoints = new Map();
 	let foodList = [];
@@ -4401,7 +4403,7 @@ function KinkyDungeonControlsEnabled() {
 		&& !KinkyDungeonMessageToggle;
 }
 
-function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any, player: any, bullet: any, data: any) {
+function KDStartSpellcast(tx: number, ty: number, SpellToCast: spell, enemy: any, player: any, bullet: KDBullet, data: any) {
 	let spell = KinkyDungeonFindSpell(SpellToCast.name, true);
 	let spellname = undefined;
 	if (spell) {

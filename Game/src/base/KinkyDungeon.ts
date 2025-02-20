@@ -1733,6 +1733,10 @@ let saveError = false;
 
 function KinkyDungeonRun() {
 
+	if (KDSaveQueue.length > 8) {
+		// uh...
+		KDSaveQueue = [KDSaveQueue[KDSaveQueue.length-1]];
+	}
 
 	if (KDSaveQueue.length > 0 && !KDSaveBusy) {
 		KDSaveBusy = true;
@@ -3599,7 +3603,6 @@ function KinkyDungeonRun() {
 
 
 
-
 	KDDrawDelta = performance.now() - lastfps;
 	fpscounter++;
 	if (fpscounter > 10) {
@@ -3680,6 +3683,9 @@ function KinkyDungeonRun() {
 	}
 
 	KDDoGraphicsSanitize();
+
+
+	KDForceAllCull = false;
 }
 
 let KDDrawDelta = 0;
@@ -3718,7 +3724,7 @@ function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
 	for (let sprite of kdpixisprites.entries()) {
-		if (!kdSpritesDrawn.has(sprite[0])) {
+		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
 			if (cull) {
 				if (sprite[1].parent) {
 					sprite[1].parent.removeChild(sprite[1]);
@@ -3743,7 +3749,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
 	let cull = CommonTime() > ((KDlastCull.get(list) || 0) + KDGetCullTime());
 	for (let sprite of list.entries()) {
-		if (!kdSpritesDrawn.has(sprite[0])) {
+		if (!kdSpritesDrawn.has(sprite[0]) || KDForceAllCull) {
 			if (cull) {
 				sprite[1].parent.removeChild(sprite[1]);
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
@@ -6625,8 +6631,8 @@ function KinkyDungeonSaveGame(ToString: boolean = false): KinkyDungeonSave {
 let KDSaveTimeout = 600000; // 10 minutes
 async function KinkyDungeonCompressSave(save: string): Promise<string> {
 	if (window.Worker) {
+		const myWorker = new Worker("out/saveworker.js");
 		let pp = new Promise<string>(function (resolve, reject) {
-			const myWorker = new Worker("out/saveworker.js");
 			myWorker.onmessage = function(e) {
 				console.log('Compressed data received from worker');
 				resolve(e.data);
@@ -6638,9 +6644,11 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 		return Promise.resolve(pp)
 			.then((v) => {
 				console.log('Yay');
+				myWorker.terminate();
 				return v;})
 			.catch((v) => {
 				console.log('Nay');
+				myWorker.terminate();
 				return LZString.compressToBase64(save);});
 	} else {
 		console.log('Your browser doesn\'t support web workers.');
@@ -6961,6 +6969,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			}
 			KinkyDungeonFloaters = [];
 			KDFixNeeds();
+			KDUpdateBuffsOnLoad();
 			KDSortCollection();
 			KinkyDungeonAdvanceTime(0, true, true);
 			KinkyDungeonSendEvent("afterLoadGame", {});

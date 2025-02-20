@@ -178,7 +178,7 @@ interface KDRestraintPropsBase {
 	allFloors?: boolean,
 	cloneTag?: string,
 
-	escapeChance?: any,
+	escapeChance?: KDEscapeChanceList,
 
 	events?: KinkyDungeonEvent[],
 	enemyTags?: Record<string, number>,
@@ -586,7 +586,7 @@ interface restraint extends KDRestraintProps {
 	/** Descriptor for tightness, e.g. Secure, Thick */
 	tightType?: string,
 
-	escapeChance: any,
+	escapeChance: KDEscapeChanceList,
 
 	enemyTags: Record<string, number>,
 	/** Multiplies the weight AFTER, useful for minimizing things */
@@ -607,11 +607,19 @@ interface restraint extends KDRestraintProps {
 	ApplyVariants?: Record<string, {weightMod: number, weightMult: number, playerTags?: Record<string, number>, playerTagsMult?: Record<string, number>, playerTagsMissing?: Record<string, number>, playerTagsMissingMult?: Record<string, number>, enemyTags: Record<string, number>, enemyTagsMult?: Record<string, number>}>,
 }
 
+/**
+ * Used to define the chance of getting out of restraints
+ */
 interface KDEscapeChanceList {
+	/** Struggle inside the restraint */
 	Struggle?: number,
+	/** Cut the restraint */
 	Cut?: number,
+	/** Removing the restraint */
 	Remove?: number,
+	/** Picking the lock */
 	Pick?: number,
+	/** Removing an opened lock */
 	Unlock?: number,
 }
 
@@ -1677,6 +1685,55 @@ interface String {
     KDReplaceOrAddDmg(dmg: string, replaceString?: string): string;
 }
 
+/**
+ * Holds all the information required to handle buffs
+ * TODO: Check which fields are required and document their use
+ */
+interface KDBuff {
+	id: string,
+	power?: number,
+	type?: string,
+	duration?: number,
+	infinite?: boolean,
+	aura?: string,
+	range?: number,
+	currentCount?: number,
+	maxCount?: number,
+	tags?: string[],
+	/** Holds additional data used by specific buffs. */
+	data?: Record<string, any>,
+	mushroom?: boolean,
+	cancelOnReapply?: boolean,
+
+	player?: boolean,
+	enemies?: boolean,
+	events?: KinkyDungeonEvent[],
+	endFloor?: boolean,
+	endSleep?: boolean,
+	spell?: any,
+	auraSprite?: any,
+	noAuraColor?: boolean,
+	showHelpless?: boolean,
+	replaceSprite?: any,
+	replaceSpriteBound?: any,
+	replaceSpriteSuff?: any,
+	replaceSpriteSuffBound?: any,
+	replacePower?: any,
+	labelcolor?: string,
+	hide?: boolean,
+	text?: any,
+	desc?: string,
+	buffTextReplace?: Record<string, any>,
+	buffSprite?: boolean,
+	pose?: any,
+	buffSpriteSpecific?: string,
+	click?: string,
+	disableTypes?: string[],
+	sfxApply?: string,
+	onlyAlly?: boolean,
+	noAlly?: boolean,
+}
+
 interface entity {
 	/** Tick of last move */
 	lastmove?: number,
@@ -1862,7 +1919,7 @@ interface entity {
 	stun?: number,
 	silence?: number,
 	vulnerable?: number,
-	buffs?: Record<string, any>,
+	buffs?: Record<string, KDBuff>,
 	warningTiles?: any,
 	visual_x?: number,
 	visual_y?: number,
@@ -2043,7 +2100,7 @@ interface SubCastInfo {
 }
 
 interface BulletTickData {
-	bullet: any,
+	bullet: KDBullet,
 	delta: number,
 	allied: boolean,
 	cancelCast: boolean,
@@ -2294,7 +2351,7 @@ interface spell {
 	/** trailEvadeable */
 	trailEvadeable?: boolean;
 	/** trailNoblock */
-	trailNoblock?: boolean;
+	trailNoBlock?: boolean;
 	/** trailPower */
 	trailPower?: number;
 	/** trailHit */
@@ -2354,7 +2411,7 @@ interface spell {
 	/** spell cast on hit */
 	spellcasthit?: SubCastInfo;
 	/** List of buffs applied by the spell */
-	buffs?: any[];
+	buffs?: KDBuff[];
 	/** Whether the spell is off by default */
 	defaultOff?: boolean;
 	/** List of events  applied by the spell */
@@ -2379,6 +2436,7 @@ interface spell {
 	piercingTrail?: boolean;
 	/** nonVolatile */
 	nonVolatile?: boolean;
+	nonVolatileTrail?: boolean;
 	/** likely to cause chain reactions */
 	volatile?: boolean;
 	/** likely to cause chain reactions */
@@ -2431,7 +2489,7 @@ interface spell {
 	secret?: boolean;
 	/** Enemies summoned by this spell will have their default faction and not the caster's faction */
 	defaultFaction?: boolean;
-
+	trailBind?: number,
 }
 
 interface KDQuest {
@@ -2844,6 +2902,91 @@ interface RepopQueueData {
 	loose?: boolean,
 }
 
+interface KDBullet {
+	type?: string,
+	born: number,
+	time?: number,
+	lifetime?: number,
+	reflected?: boolean,
+	y: number,
+	x: number,
+	vx: number,
+	vy: number,
+	xx?: number
+	yy?: number,
+	ox?: number
+	oy?: number,
+	visual_x?: number,
+	visual_y?: number,
+	spriteID?: string,
+	bullet: KDBulletData,
+	trail?: string,
+	trailEffectTile?: effectTileRef,
+	shadowBuff?: boolean,
+	/** TODO: Check if needed */
+	source?: number,
+	delay?: number,
+	warnings?: string[],
+	alreadyHit?: string[],
+	secondary?: boolean
+	collisionUpdate?: boolean,
+	faction?: string,
+}
+interface KDBulletData {
+	name: string,
+	width: number,
+	height: number,
+	bulletColor?: number,
+	bulletLight?: number,
+	faction: string,
+	spell?: spell,
+	damage?: damageInfo,
+	lifetime: number,
+	passthrough?: boolean,
+	noSprite?: boolean,
+	hit?: string,
+	trail?: boolean,
+	source?: number,
+	bulletSpin?: number,
+	hitevents?: KinkyDungeonEvent[],
+	effectTile?: effectTileRef,
+	effectTileDurationMod?: number,
+	playerEffect?: any;
+	summon?: Record<string, any>,
+	blockType?: string[],
+	followPlayer?: boolean,
+	followCaster?: number,
+	cancelCaster?: number,
+	dot?: boolean,
+	cast?: Record<string, any>,
+	events?: KinkyDungeonEvent[],
+	block?: number,
+	volatile?: boolean,
+	volatilehit?: boolean,
+	targetX?: number,
+	targetY?: number,
+	effectTileTrail?: effectTileRef,
+	effectTileDurationModTrail?: number,
+	effectTileTrailAoE?: number,
+	noEnemyCollision?: boolean,
+	alwaysCollideTags?: string[],
+	nonVolatile?: boolean,
+	noDoubleHit?: boolean,
+	pierceEnemies?: boolean,
+	piercing?: boolean,
+	origin?: Record<string, number>,
+	range?: number,
+	NoMsg?: boolean,
+	aoe?: number,
+	noise?: number,
+	blockhit?: number,
+	blockTypehit?: string[],
+	effectTileLinger?: effectTileRef,
+	effectTileDurationModLinger?: number,
+	aoetype?: string,
+}
+
+
 interface KDMapDataType {
 	RespawnQueue: {faction: string, enemy: string}[],
 	SpecialAreas: {x: number, y: number, radius: number}[],
@@ -2890,7 +3033,7 @@ interface KDMapDataType {
 	EffectTiles: Record<string, Record<string, effectTile>>;
 	RandomPathablePoints: Record<string, {x: number, y: number, tags?:string[]}>;
 	Entities: entity[];
-	Bullets: any[];
+	Bullets: KDBullet[];
 	StartPosition: {x: number, y: number};
 	EndPosition: {x: number, y: number};
 	ShortcutPositions: Record<string, {x: number, y: number}>;
