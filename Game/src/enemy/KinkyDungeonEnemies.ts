@@ -2165,13 +2165,18 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 					}
 					KDDialogueSlots[yboost + canvasOffsetY + (yy - CamY - CamYoffset)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset] = true;
 
+					let color = enemy.dialogueColor || "#ffffff";
+					let rgbcolor = KDAvgColor(string2hex(color), 0xffffff, 0.5, 0.5);
+					color = PIXI.utils.hex2string(rgbcolor);
+					let bgcolor = "#202020";
+
 					let dialougelenth = 30;
 					let xxx = canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
 					let yyy = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - dialogueOffset;
 					if (CJKcheck(enemy.dialogue,2)){
 						DrawTextFitKDTo(kdenemydialoguecanvas, enemy.dialogue,
 							xxx,
-							yyy, 120 + enemy.dialogue.length * 8, enemy.dialogueColor, "#000000", 18, undefined, 30,
+							yyy, 120 + enemy.dialogue.length * 8, color, bgcolor, 18, undefined, 30,
 							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
 								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ?
 								Math.max(KDFloaterGridWipedOutAlpha, (1 - (KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
@@ -2190,7 +2195,7 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						yyy = yboost + canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/1.5 - dialogueOffset;
 						DrawTextFitKDTo(kdenemystatusboard, enemy.dialogue,
 							xxx,
-							yyy, dialougelenth, enemy.dialogueColor, "#000000", 18, undefined, 30,
+							yyy, dialougelenth, color, bgcolor, 18, undefined, 30,
 							(KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)
 								+ "," + Math.round(KDFloaterGridRes * yyy / PIXIHeight)]) ?
 								Math.max(KDFloaterGridWipedOutAlpha, (1 - (KDFloaterGridCache[Math.round(KDFloaterGridRes * xxx / PIXIWidth)

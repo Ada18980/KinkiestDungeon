@@ -2369,7 +2369,7 @@ function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color:
 
 let KDFloaterGridRes = 10; // How many sections the screen is split into
 let KDFloaterGridCache: Record<string, number> = {};
-let KDFloaterGridWipedOutAlpha = 0.2;
+let KDFloaterGridWipedOutAlpha = 0.25;
 
 function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean = false) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
