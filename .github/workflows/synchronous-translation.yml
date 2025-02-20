@@ -15,7 +15,7 @@ on:
 jobs:
   synchronous-translation:
     runs-on: ubuntu-latest
-    #if: github.repository == 'Ada18980/KinkiestDungeon'
+    if: github.repository == 'Ada18980/KinkiestDungeon'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
           export GIT_MERGE_AUTOEDIT=no
-          git pull --tags --rebase -Xours origin 5.4
+          git pull --tags --rebase -Xours origin newartwork
           git checkout --ours "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git rebase --continue
