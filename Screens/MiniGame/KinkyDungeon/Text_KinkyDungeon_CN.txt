@@ -241,9 +241,9 @@ Flip Player Display
 Grayscale when Blind
 失明时视野变成黑白
 Faster Floater Fade
-漂浮物更快消散
+漂浮文字更快消散
 No Damage Floaters
-无伤漂浮物
+不显示伤害数字
 Dynamic Armor (must hide armor)
 动态盔甲 ( 必须隐藏盔甲 )
 Hide floating weapon display
@@ -9084,9 +9084,11 @@ Equipped
 
 
 
-### Flipped Table
+Flipped Table
+翻倒的桌子
+Relieved some stress.
+发泄了一些压力
 
-### Relieved some stress.
 
 Unlit Torch
 熄灭火把
@@ -12765,6 +12767,16 @@ You've been a good girl. I hope you don't make the same mistake again. You can l
 That's a good girl. Now behave yourself, okay? You're free to go.
 做得很好。现在规矩点，好吗？你可以走了。
 ### Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
+
+### I hope you learned your lesson.|Now get your butt out of here.
+
+### You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+
+### That's a good girl. Now behave yourself, okay?|You're free to go.
+
+### Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
+
+
 
 ### I hope you learned your lesson.|Now get your butt out of here.
 
@@ -21396,11 +21408,13 @@ Pizza
 披萨
 
 
-### (The table looks remarkably flippable)
+(The table looks remarkably flippable)
+(桌子看上去很容易掀翻)
+(You knock over the table!)
+(你掀翻了桌子!)
+(Flip the table)
+(掀翻桌子)
 
-### (You knock over the table!)
-
-### (Flip the table)
 
 (There is a button on a control panel here.)
 ( 这里的控制面板上有一个按钮。 )
@@ -25698,8 +25712,8 @@ BraInvertedRose
 反色玫瑰
 ### InvertedRose
 
-### Straps
-
+Straps
+绑带
 ### Base
 
 ### Lines
@@ -30653,9 +30667,9 @@ You have formed a mental barrier...
 Desire Burst
 欲望爆发
 Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
-将你的欲望值最多减少性奋值上限的 30%，并将其转化为强大的爆炸，对附近的敌人造成（30 + 25% 性奋值上限 ）魅惑伤害（200% 暴击倍率）。如果你没有至少 50% 的欲望值，伤害会根据数量减少。||(欲望值是性奋值下方的心形仪表，通过性奋缓慢获得）。
+使范围内的精华微粒过载，每个微粒消耗相当于性奋值上限的 10%的欲望值。它们将会爆炸，对击中的敌人造成（10 + 20% 性奋值上限 ）魅惑伤害。如果你没有足够的欲望值，伤害会相应地减少。||(欲望值是性奋值下方的心形仪表，通过性奋缓慢获得）。
 You channel your distraction into the mote, overloading it!
-你可以将你的性奋转化为强大的爆炸！
+你将性奋集中到微粒上，使它过载了！
 You channel your distraction into the motes, overloading them!
 你将性奋集中到微粒上，使它们过载了！
 You don't have enough of a desire to do that.
@@ -31397,7 +31411,7 @@ Armbinders are less favored over other heavy bondage.
 More Boxbinders
 更多盒式单手套
 Boxbinders are favored over other heavy bondage.
-与其他重型束缚相比，盒式单手套更不受欢迎。
+与其他重型束缚相比，盒式单手套更受欢迎。
 Less Boxbinders
 减少盒式单手套
 Boxbinders are less favored over other heavy bondage.
@@ -35052,14 +35066,23 @@ Move Closer to Tie
 接近并捆绑
 Sprint (AMNT)
 冲刺 (AMNT)
-### Stop Waiting
+Stop Waiting
+停止等待
 
-### (Already slept here)
 
-### (Will not low enough)
+(Already slept here)
+(已经睡过一次了)
+(Will not low enough)
+(低意志力时可用)
 
-### Move closer to interact
 
-### Several poles rise up out of the ground...
+Move closer to interact
+接近并交互
 
-### Various Scrolls
+
+Several poles rise up out of the ground...
+几根柱子破土而出...
+
+
+Various Scrolls
+各种卷轴
