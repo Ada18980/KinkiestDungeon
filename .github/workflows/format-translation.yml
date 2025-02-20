@@ -12,7 +12,7 @@ on:
       - "Screens/MiniGame/KinkyDungeon/*"
 
 concurrency:
-  group: tranlation-handel-${{ github.ref }}
+  group: tranlation-handle-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
