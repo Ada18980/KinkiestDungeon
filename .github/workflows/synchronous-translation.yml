@@ -60,5 +60,4 @@ jobs:
           git pull --tags --rebase -Xours origin newartwork
           git checkout --ours "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
-          git rebase --continue
           git push
