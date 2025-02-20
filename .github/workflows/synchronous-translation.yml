@@ -56,6 +56,6 @@ jobs:
           git config --local user.name "synchronous-translation-action"
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
-          git pull --tags origin 5.4
+          git pull --rebase --tags origin 5.4
           git checkout --ours "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git push
