@@ -57,7 +57,7 @@ jobs:
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git diff-index --quiet HEAD || git commit -m "Synchronous translation files"
           export GIT_MERGE_AUTOEDIT=no
-          git pull --tags --rebase -Xours origin newartwork
+          git pull --rebase -Xours
           git checkout --ours "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git add "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
           git push
