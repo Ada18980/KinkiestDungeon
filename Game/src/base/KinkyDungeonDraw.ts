@@ -2368,8 +2368,8 @@ function KinkyDungeonSendFloater(Entity: entity, Amount: number | string, Color:
 }
 
 let KDFloaterGridRes = 10; // How many sections the screen is split into
-let KDFloaterGridCache = {};
-let KDFloaterGridWipedOutAlpha = 0.4;
+let KDFloaterGridCache: Record<string, number> = {};
+let KDFloaterGridWipedOutAlpha = 0.2;
 
 function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean = false) {
 	let delta = CommonTime() - KinkyDungeonLastFloaterTime;
@@ -2423,21 +2423,37 @@ function KinkyDungeonDrawFloaters(CamX: number, CamY: number, onlyAbs: boolean =
 					KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)] = {};
 				KDFloaterYCache[Math.round(XCacheRes * x / PIXIWidth)][Math.round(y + iii)] = true;
 			}
+			let alpha = KDEase(floater.t / floater.lifetime);
 
 			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)] = true;
-				KDFloaterGridCache[(Math.round(KDFloaterGridRes * x / PIXIWidth) + 1)
-					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)] = true;
-					KDFloaterGridCache[(Math.round(KDFloaterGridRes * x / PIXIWidth) - 1)
-						+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)] = true;
-						KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-							+ "," + (1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))] = true;
-							KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
-								+ "," + (-1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))] = true;
+				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
+				 = Math.max(KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
+					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
+					|| 0, alpha);
+			KDFloaterGridCache[(Math.round(KDFloaterGridRes * x / PIXIWidth) + 1)
+				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
+				= Math.max(KDFloaterGridCache[(1 + Math.round(KDFloaterGridRes * x / PIXIWidth))
+					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
+					|| 0, 0.7*alpha);
+			KDFloaterGridCache[(Math.round(KDFloaterGridRes * x / PIXIWidth) - 1)
+				+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
+				= Math.max(KDFloaterGridCache[(-1 + Math.round(KDFloaterGridRes * x / PIXIWidth))
+					+ "," + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight)]
+					|| 0, 0.7*alpha);
+			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
+				+ "," + (1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
+				= Math.max(KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
+					+ "," + (1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
+					|| 0, 0.7*alpha);
+			KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
+				+ "," + (-1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
+				= Math.max(KDFloaterGridCache[Math.round(KDFloaterGridRes * x / PIXIWidth)
+					+ "," + (-1 + Math.round(KDFloaterGridRes * (y - floater.speed*floater.t/floatermult) / PIXIHeight))]
+					|| 0, 0.7*alpha);
 			DrawTextFitKDTo(kdfloatercanvas, floater.text,
 				x, y - floater.speed*floater.t/floatermult,
 				1000, floater.color, KDTextGray1, floater.size || 20, undefined,
-				undefined, KDEase(floater.t / floater.lifetime));
+				undefined, alpha);
 		}
 		if (floater.t < floater.lifetime) {
 			newFloaters.push(floater);
