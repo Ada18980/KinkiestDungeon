@@ -12,6 +12,10 @@ on:
       - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
       - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
 
+concurrency:
+  group: tranlation-handel-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   synchronous-translation:
     runs-on: ubuntu-latest
