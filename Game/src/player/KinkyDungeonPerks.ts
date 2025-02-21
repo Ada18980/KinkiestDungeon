@@ -1081,7 +1081,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 		};
 	}, "KDCategory");
 
-	if ((catsdrawn < 3 || perksdrawn == 0) && KDPerksIndex > 0) KDPerksIndex -= 1;
+	if ((catsdrawn < 2 || perksdrawn == 0) && KDPerksIndex > 0) KDPerksIndex -= 1;
 
 
 	return tooltip;

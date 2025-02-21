@@ -457,20 +457,19 @@ let LAYERS_BASE = [
 	"BeltFarBack",
 	"Coat",
 
+	"Tail",
+	"Wings",
+	"Cape",
 	// Hair and hat back
 	"HairBack",
 	"HairPonytail",
 	"HatBack",
 
-	"Tail",
-	"Wings",
-	"Cape",
 
 	"FurnitureBackLinked",
 	"FurnitureBack",
 	"BG",
 ];
-
 
 interface metaLayerBound {
 	id: string,

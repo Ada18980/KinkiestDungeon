@@ -9,6 +9,7 @@ let KDFormFitting = ["Socks", "Gloves"];
 let KDHarnessLink = ["Wrapping", "Encase", "HeavyCorsets", "Corsets", "ArmbinderHarness", "Ties", "Hogties", "Link", "Belts", "Belt", "Harnesses"];
 let KDCorsetLink = ["Wrapping", "Encase", "Harnesses", "ArmbinderHarness", "Ties", "Link", "Belts", "Belt"];
 let KDBindable = ["Wrapping", "Encase", "Harnesses", "Belts", "Belt", "Tape", "Ties", "Hogties", "Link", "Cuffs", "Boxties", "Wristties", "Crossties"]; // Things that can be wrapped in various restraints
+let KDBindableWrist = ["Wrapping", "Encase", "Harnesses", "Belts", "Belt", "Tape", "Hogties", "Link", "Cuffs", "Wristties"]; // Things that can be wrapped in various restraints
 let KDBindableMinusCuffs = KDBindable.filter((b) => {return b != "Cuffs";});
 let KDDevices = ["Armbinders", "Straitjackets", "Legbinders", "BindingDress", "Boxbinders", "Petsuits"]; // More complex devices
 let KDElbowBind = ["Armbinders", "BindingDress", "Hogties"]; // More complex devices
@@ -27,7 +28,7 @@ let KDLegRopesRender = ["Belts", "Ties", "Link", "HeavyCorsets", "Corsets", "Leg
 let KDArmRopesRender = ["Armbinders", "Boxbinders", "Straitjackets", "Belts", "Ties", "Link", "Cuffs"];
 let KDBeltsBind = ["Wrapping", "Encase", "Ties", "Hogties", "Link", "Legbinders", "Hobbleskirts", "HeavyCorsets", "Corsets"];
 let KDBeltsRender = ["Ties", "Link", "Legbinders", "Hobbleskirts", "HeavyCorsets", "Corsets"]; // "Wrapping", "Encase",
-let KDTapeLink = ["Wrapping", "Encase", "Belts", "Masks", "Mittens", "FlatGags"]; // Standard link for tape style items
+let KDTapeLink = ["Wrapping", "Encase", "Belts", "Masks", "Mittens", "FlatGags", "MuzzleGags"]; // Standard link for tape style items
 let KDTapeRender = ["Wrapping", "Encase", "Tape", "Belts", "Masks", "Mittens", "FlatGags", "Ties", "Hogties", "Link", "Harnesses", "Corsets"]; // Standard link for tape style items
 let KDRubberLink = ["Wrapping", "Encase", "Tape", "Belts", "Masks", "Mittens"]; // Standard link for rubber style items
 let KDBlindfoldLink = ["Wrapping", "Encase", "Masks", "Tape"];
@@ -35,9 +36,10 @@ let KDVisorLink = ["Wrapping", "Encase", "Masks", "Tape"];
 let KDWrappingLink = ["Masks", "Wrapping", "Encase",];
 let KDMaskLink = [];
 let KDStuffingLink = ["BallGags", "FlatGags", "Stuffing", "Tape", "Wrapping", "Encase",];
-let KDBallGagLink = ["FlatGags", "Tape", "Wrapping", "Encase",];
-let KDFlatGagLink = ["FlatGags", "Tape", "Wrapping", "Encase",];
-let KDPlugGagLink = ["FlatGags", "Tape", "Wrapping", "Encase",];
+let KDBallGagLink = ["FlatGags", "MuzzleGags", "Tape", "Wrapping", "Encase",];
+let KDFlatGagLink = ["FlatGags", "MuzzleGags", "Tape", "Wrapping", "Encase",];
+let KDMuzzleGagLink = ["MuzzleGags", "Tape", "Wrapping", "Encase",];
+let KDPlugGagLink = ["FlatGags", "MuzzleGags", "Tape", "Wrapping", "Encase",];
 let KDCollarLink = ["HighCollars", "Collars", "Modules"];
 let KDCollarRender = ["Modules"];
 let KDHighCollarRender = ["Collars", "Modules"];
@@ -1357,7 +1359,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"cyberdollrestraints" : 10},
 		playerTags: {}, minLevel: 15, allFloors: true, shrine: ["PlugGags", "Gags", "Cyber", "Metal", ]},
 
-	{inventory: true, name: "CyberMuzzle", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
+	{inventory: true, name: "CyberMuzzle", debris: "Belts", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink],
 		sfx: "FutureLock",
 		sfxRemove: "SciFiConfigure",
 		Model: "AdvancedSciFiMuzzle2",
@@ -1385,7 +1387,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"cyberdollheavy": 1}, events: [
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 		],
-		playerTags: {}, minLevel: 9, allFloors: true, shrine: ["FlatGags", "Gags", "Cyber", "Metal", "ControlHMouth"]},
+		playerTags: {}, minLevel: 9, allFloors: true, shrine: ["MuzzleGags", "Gags", "Cyber", "Metal", "ControlHMouth"]},
 
 	{inventory: true,  name: "CyberDollJacket", inaccessible: true, remove: ["Bra", "Tops"], Asset: "FuturisticStraitjacket",
 		sfx: "FutureLock",
@@ -1724,7 +1726,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Latex: {color: "Highlight", override: true},
 		},
 		maxwill: 0.5, enemyTags: {"latexRestraints":6, "latexgagSpell": 10}, playerTags: {"ItemMouthFull": 6}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Latex", "Gags"]},
-	{inventory: true, name: "LatexOTNGagHeavy", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], factionColor: [[0], [0], [0]],
+	{inventory: true, name: "LatexOTNGagHeavy", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], factionColor: [[0], [0], [0]],
 		Asset: "KittyGag", gag: 0.5, Color: ["#4EA1FF", "#4EA1FF", "#4EA1FF"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 6, weight: -6,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.04, "Remove": 0.1, Pick: 0.0},
 		Model: "ShinyLatexMuzzle", //Model: "GagLatexMute",
@@ -1737,7 +1739,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Gag: {color: "LightNeutral", override: false},
 			Rim: {color: "Highlight", override: true},
 		},
-		maxwill: 0.5, enemyTags: {"latexRestraints":6, "latexgagSpell": 10}, playerTags: {"ItemMouthFull": 6}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Latex", "Gags"]},
+		maxwill: 0.5, enemyTags: {"latexRestraints":6, "latexgagSpell": 10}, playerTags: {"ItemMouthFull": 6}, minLevel: 0, allFloors: true, shrine: ["MuzzleGags", "Latex", "Gags"]},
 
 	{inventory: true, unlimited: true, name: "LatexMittens",
 		Model: "LatexMittens",
@@ -2919,7 +2921,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		strictness: 0.2, gag: 0.65, Type: "Tight", Color: ["Default", "Default"], Group: "ItemMouth", power: 8, weight: 2,
 		escapeChance: {"Struggle": -0.25, "Cut": -0.05, "Remove": 0.18, "Pick": 0.25}, enemyTags: {"highsecRestraints": 10, forceAntiMagic: -100, "ballGagRestraints" : 4, "gagSpell": 100}, playerTags: {}, minLevel: 5, allFloors: true, shrine: ["BallGags", "Leather", "Gags"]},
-	{inventory: true, name: "HighsecMuzzle", debris: "Belts", inaccessible: true, LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], factionColor: [[], [0]], Asset: "MuzzleGag",
+	{inventory: true, name: "HighsecMuzzle", debris: "Belts", inaccessible: true,
+		LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], factionColor: [[], [0]], Asset: "MuzzleGag",
 		Model: "MuzzleGagHarnessSecure",
 		sfxGroup: "Leather",
 		events: [
@@ -2935,7 +2938,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			},
 		},
 		strictness: 0.2, gag: 0.6, Color: ["Default", "Default"], Group: "ItemMouth", power: 8, weight: 2,
-		escapeChance: {"Struggle": -0.35, "Cut": -0.1, "Remove": 0.22, "Pick": 0.2}, enemyTags: {"highsecRestraints": 1, forceAntiMagic: -100, "leatherRestraintsHeavy" : 4}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["FlatGags", "Leather", "Gags"]},
+		escapeChance: {"Struggle": -0.35, "Cut": -0.1, "Remove": 0.22, "Pick": 0.2}, enemyTags: {"highsecRestraints": 1, forceAntiMagic: -100, "leatherRestraintsHeavy" : 4}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["MuzzleGags", "Leather", "Gags"]},
 
 	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "HighsecLegbinder", debris: "Belts", Asset: "LegBinder", inaccessible: true,
 		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
@@ -3686,11 +3689,11 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "ClothKnot",
 		sfxGroup: "Ropes",
 		maxwill: 0.35, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 3, allFloors: true, shrine: ["ClothGag", "Rope", "BallGags", "Gags"]},
-	{inventory: true, name: "ClothGagOver", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], Asset: "ClothGag", gag: 0.35, Type: "OTN", Color: "#959595", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
+	{inventory: true, name: "ClothGagOver", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], Asset: "ClothGag", gag: 0.35, Type: "OTN", Color: "#959595", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothOTN",
 		sfxGroup: "Ropes",
 		removePrison: true,
-		maxwill: 0.75, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, debris: "Fabric", playerTags: {"ItemMouthEmpty": -4, "ItemMouth2Empty": -4}, minLevel: 0, allFloors: true, shrine: ["ClothGag", "FlatGags", "Rope", "Gags"]},
+		maxwill: 0.75, enemyTags: {"clothRestraints":4, "ropeAuxiliary": 1}, debris: "Fabric", playerTags: {"ItemMouthEmpty": -4, "ItemMouth2Empty": -4}, minLevel: 0, allFloors: true, shrine: ["ClothGag", "MuzzleGags", "Rope", "Gags"]},
 	{inventory: true, name: "ClothBlindfold", Asset: "ClothBlindfold", debris: "Fabric", Color: "#959595", LinkableBy: [...KDTapeLink], renderWhenLinked: [...KDTapeRender], Group: "ItemHead", power: 0.1, weight: 2, escapeChance: {"Struggle": 0.5, "Cut": 1.0, "Remove": 0.8},
 		Model: "ClothBlindfold",
 		removePrison: true,
@@ -3699,7 +3702,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.85, blindfold: 2, enemyTags: {"clothRestraints":8, "ropeAuxiliary": 1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["ClothBlindfold", "Rope", "Blindfolds"]},
 
 	//region Baast warriors only apply two things so its okay that these have a high maxwill
-	{inventory: true, name: "KittyGag", Asset: "KittyHarnessPanelGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.6,
+	{inventory: true, name: "KittyGag", Asset: "KittyHarnessPanelGag", debris: "Belts",
+		LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.6,
 		Model: "KittyHarnessPanelGag",
 		sfxGroup: "Leather",
 		events: [
@@ -3711,7 +3715,9 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "KittyMuzzle", debris: "Belts", Asset: "KittyGag", gag: 0.4, Color: ["#FFFFFF", "#000000", "#E496E7"], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 7, weight: -6, escapeChance: {"Struggle": -0.04, "Cut": 0.04, "Remove": 0.4, "Pick": 0.2},
 		Model: "KittyMuzzle",
 		sfxGroup: "Leather",
-		maxwill: 0.9, enemyTags: {"kittyRestraints":6}, playerTags: {"ItemMouth2Full": 4, "ItemMouthFull": 4}, minLevel: 3, allFloors: true, shrine: ["FlatGags", "Leather", "Gags", "Will"]},
+
+		LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink],
+		maxwill: 0.9, enemyTags: {"kittyRestraints":6}, playerTags: {"ItemMouth2Full": 4, "ItemMouthFull": 4}, minLevel: 3, allFloors: true, shrine: ["MuzzleGags", "Leather", "Gags", "Will"]},
 	{inventory: true, name: "KittyBlindfold", debris: "Belts", Asset: "KittyBlindfold", blindfold: 3,
 		Model: "KittyBlindfold",
 		sfxGroup: "Leather",
@@ -4022,7 +4028,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
-		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemArms",
+		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBindableWrist], Group: "ItemArms",
 		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
 		bindhands: 0.4,
 		events: [
@@ -4595,16 +4601,18 @@ const KinkyDungeonRestraints: restraint[] = [
 		Asset: "MuzzleGag", Color: "Default", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 8, weight: 0,
 		limitChance: {"Struggle": 0.12},
 		escapeChance: {"Struggle": -0.18, "Cut": 0.05, "Remove": 0.33, "Pick": 0.15},
-		maxwill: 0.75, enemyTags: {"maidRestraints":7, "maidRestraintsNonChastity": 10, }, playerTags: {}, minLevel: 4, allFloors: true, shrine: ["FlatGags", "Leather", "Gags", "Illusion"]},
-	{inventory: true, name: "MaidMuzzle", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.75,
+		maxwill: 0.75, enemyTags: {"maidRestraints":7, "maidRestraintsNonChastity": 10, }, playerTags: {}, minLevel: 4,
+		    allFloors: true, shrine: ["FlatGags", "Leather", "Gags", "Illusion"]},
+	{inventory: true, name: "MaidMuzzle", debris: "Belts", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], gag: 0.75,
 		inaccessible: true,
 		Model: "PlugMuzzleGag",
 		Asset: "MuzzleGag", Color: "Default", Group: "ItemMouth", AssetGroup: "ItemMouth2", power: 9, weight: 0,
 		limitChance: {"Struggle": 0.18},
 		escapeChance: {"Struggle": -0.18, "Cut": -0.03, "Remove": 0.5, "Pick": -0.1}, DefaultLock: "Disc",
-		maxwill: 0.5, enemyTags: {"maidRestraints":4, "maidRestraintsHeavy":14, "maidRestraintsNonChastity": 6, }, playerTags: {"ItemMouthEmpty": -30}, minLevel: 7, allFloors: true, shrine: ["FlatGags", "Leather", "Gags", "Illusion"]},
+		maxwill: 0.5, enemyTags: {"maidRestraints":4, "maidRestraintsHeavy":14, "maidRestraintsNonChastity": 6, },
+		playerTags: {"ItemMouthEmpty": -30}, minLevel: 7, allFloors: true, shrine: ["MuzzleGags", "Leather", "Gags", "Illusion"]},
 
-	{inventory: true, name: "DusterGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 1.0,
+	{inventory: true, name: "DusterGag", debris: "Belts", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], gag: 1.0,
 		Model: "DusterGag",
 		Filters: {
 			Straps: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -4620,7 +4628,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		limitChance: {"Struggle": 0.15},
 		escapeChance: {"Struggle": -0.18, "Cut": 0.05, "Remove": 0.33, "Pick": 0.1},
 		good: true, alwaysKeep: true, showInQuickInv: true,
-		maxwill: 0, enemyTags: {}, playerTags: {"dustergag": 100}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Gags"]},
+		maxwill: 0, enemyTags: {}, playerTags: {"dustergag": 100}, minLevel: 0, allFloors: true, shrine: ["MuzzleGags", "Gags"]},
 	// Maid chastity.
 	{inventory: true, arousalMode: true, name: "MaidCBelt", Asset: "PolishedChastityBelt", OverridePriority: 26, Color: "Default", Group: "ItemPelvis", chastity: true, power: 9, weight: 0,
 		Security: {
@@ -4712,7 +4720,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		strictness: 0.3, Color: ['#680000', '#680000', '#680000', '#680000', '#680000'], Group: "ItemMouth", power: 7, weight: 0,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.05, "Remove": 0.1, "Pick": 0.25},
 		maxwill: 0.6, enemyTags: {"dragonRestraints":6, forceAntiMagic: -100}, playerTags: {"ItemFeetFull":-2}, minLevel: 7, allFloors: true, shrine: ["BallGags", "Leather", "Latex" , "Gags"]},
-	{inventory: true, name: "DragonMuzzleGag", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.3, Asset: "StitchedMuzzleGag", Color: "#9B1818", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 7, weight: -6,
+	{inventory: true, name: "DragonMuzzleGag", debris: "Belts", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], gag: 0.3, Asset: "StitchedMuzzleGag", Color: "#9B1818", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 7, weight: -6,
 		Model: "ShinyLatexMuzzle",
 		Filters: {
 			Gag: {"gamma":1,"saturation":1,"contrast":1.4166666666666665,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -4723,7 +4731,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Rim: {color: "Highlight", override: true},
 		},
 		escapeChance: {"Struggle": 0.05, "Cut": 0.0, "Remove": 0.1},
-		maxwill: 0.75, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemMouthFull":4, "ItemMouth2Full":4}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Leather", "Gags"]},
+		maxwill: 0.75, enemyTags: {"dragonRestraints":6}, playerTags: {"ItemMouthFull":4, "ItemMouth2Full":4}, minLevel: 0, allFloors: true, shrine: ["MuzzleGags", "Leather", "Gags"]},
 	{inventory: true, name: "DragonCollar", debris: "Belts", Asset: "LatexCollar2", Color: "#9B1818", Group: "ItemNeck", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDCollarRender],power: 9, weight: 4,
 		Model: "StardustCollar",
 		Filters: {
@@ -6526,12 +6534,12 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "DivineCuffsAnkles",
 		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
 	{removePrison: true, divine: true, name: "DivineGag", accessible: true, gag: 0.9, Asset: "FuturisticMuzzle",
-		Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
+		Modules: [0, 1, 1], LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink],
 		Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Divine2", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
 		Model: "DivineGag", Link: "DivineMuzzle",
 		specStruggleTypes: ["Struggle"], escapeChance: {"Struggle": -99, "Cut": -99, "Remove": 1, Pick: -100}, enemyTags: {"divineRestraints":2}, playerTags: {"ItemPelvisFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Metal", "Latex", "Leather"]},
 	{removePrison: true, divine: true, name: "DivineMuzzle", accessible: true, gag: 0.6, Asset: "FuturisticMuzzle",
-		Modules: [0, 1, 1], LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink],
+		Modules: [0, 1, 1], LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink],
 		Color: ['#AE915C', '#AE915C', '#CAA562', '#5FBEE8'], DefaultLock: "Divine2", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 30, weight: 0,
 		Model: "DivineMuzzle",
 		Filters: {"Muzzle":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":0.7333333333333334,"red":2.283333333333333,"green":1.7333333333333334,"blue":1,"alpha":2.8000000000000003},"Harness":{"gamma":1,"saturation":1,"contrast":0.8999999999999999,"brightness":3.233333333333333,"red":1,"green":1,"blue":1,"alpha":1},"Collar":{"gamma":1,"saturation":1,"contrast":0.8166666666666667,"brightness":2.8666666666666667,"red":1,"green":1,"blue":1,"alpha":1},"Rim":{"gamma":1.8666666666666667,"saturation":1,"contrast":1,"brightness":3.1666666666666665,"red":1,"green":1,"blue":1,"alpha":1}},
@@ -6950,7 +6958,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		]},
 	{curse: "MistressKey", enchantedDrain: 0.00001, inventory: true, enchanted: true, name: "EnchantedMuzzle", gag: 1.0, Asset: "FuturisticMuzzle", Modules: [1, 1, 2], Color: ['#AE915C', '#AE915C', '#CAA562', '#000000'],
 		Group: "ItemMouth", power: 44, weight: 0,
-		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["AncientMuzzle", "FlatGags"],
+		escapeChance: {"Struggle": -100, "Cut": -100, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["AncientMuzzle", "MuzzleGags"],
 		Model: "PlugMuzzleGag",
 		Filters: {
 			Muzzle: {"gamma":0.8999999999999999,"saturation":0.2,"contrast":1.25,"brightness":0.7666666666666666,"red":2.816666666666667,"green":1.9333333333333333,"blue":1,"alpha":1},

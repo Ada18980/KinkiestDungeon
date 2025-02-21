@@ -4268,47 +4268,127 @@ function KinkyDungeonIsLinkable(data: any): boolean {
  * Checks if all the items linked under allow this item
  * @param oldRestraint
  * @param newRestraint
- * @param [ignoreItem]
+ * @param linkUnderHost - The item on the body that is going to host the oldRestraint -- only for link under cases
  */
-function KDCheckLinkTotal(oldRestraint: item, newRestraint: restraint, ignoreItem?: item, _lock: string = "", _curse: string = "", _useAugmentedPower: boolean = false, _augmentedInventory: any = undefined): boolean {
+function KDCheckLinkTotal(oldRestraint: item, newRestraint: restraint, linkUnderHost?: item, _lock: string = "", _curse: string = "", _useAugmentedPower: boolean = false, _augmentedInventory: any = undefined): boolean {
 	if (KDRestraint(oldRestraint).Link && KDRestraint(oldRestraint).Link == newRestraint.name) {
 		return true;
 	}
 	if (newRestraint.UnLink && oldRestraint.name == newRestraint.UnLink) {
 		return true;
 	}
-	let link = oldRestraint;
-	if (oldRestraint.linkCache) {
-		for (let s of newRestraint.shrine) {
-			if (oldRestraint.linkCache.includes(s)) return true;
-		}
-	}
-	while (link) {
-		let pass = false;
-		let r = KDRestraint(link);
-		if (link != ignoreItem) {
-			if (r.LinkAll
-			// 5.2.5: Added ability to override weaker items when linking under
-			//|| KinkyDungeonRestraintPower(link, true, newRestraint, link.lock, KDGetCurse(link))
-			//< -0.01 + (curse ? (KDCursePower(curse)) : 0) + newRestraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, newRestraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(lock, undefined, curse)
-			) {
-				pass = true;
-			} else if (newRestraint.AlwaysLinkable) {
-				pass = true;
-			} else if (r.LinkableBy && newRestraint.shrine) {
-				for (let l of r.LinkableBy) {
-					if (!pass)
-						for (let s of newRestraint.shrine) {
-							if (l == s) {
-								pass = true;
+	/** Item on the body that will be linked to */
+	let host: item = linkUnderHost || oldRestraint;
+	/** Target is the item under consideration */
+	let target: restraint = linkUnderHost ? KDRestraint(oldRestraint) : newRestraint;
+
+	if (linkUnderHost) {
+		// For linking under, we assemble a virtual tree and check each individually.
+		// This is an expensive operation so we only do it for link under
+		// We stop at the linkunderhost
+
+		let RestraintTree: restraint[] = []
+		let topLevel = KinkyDungeonGetRestraintItem(newRestraint.Group);
+		if (topLevel) {
+			let link = topLevel;
+			RestraintTree.push(KDRestraint(link));
+			while (link.dynamicLink && link != linkUnderHost) {
+				link = link.dynamicLink;
+				RestraintTree.push(KDRestraint(link));
+			}
+			// Now that we have the fake tree we go from the top and make sure the target item
+			// can have r linked over it
+			if (!target.LinkAll) {
+				for (let r of RestraintTree) {
+					if (!r.AlwaysLinkable) {
+						let pass = false;
+						if (target.LinkableBy && r.shrine) {
+							for (let l of target.LinkableBy) {
+								if (!pass)
+									for (let s of r.shrine) {
+										if (l == s) {
+											pass = true;
+										}
+									}
 							}
 						}
+						if (!pass) return false;
+					}
 				}
 			}
-			if (!pass) return false;
+
+
+			// Now we just make sure that we can link over the remaining items from below
+			if (link.linkCache) {
+				for (let s of target.shrine) {
+					if (link.linkCache.includes(s)) return true;
+				}
+			}
+
+			// For linking over, we only need check stuff under the new item
+			if (link) link = link.dynamicLink;
+			while (link) {
+				let pass = false;
+				let r = KDRestraint(link);
+				if (r.LinkAll) {
+					pass = true;
+				} else if (target.AlwaysLinkable) {
+					pass = true;
+				} else if (r.LinkableBy && target.shrine) {
+					for (let l of r.LinkableBy) {
+						if (!pass)
+							for (let s of target.shrine) {
+								if (l == s) {
+									pass = true;
+								}
+							}
+					}
+				}
+				if (!pass) return false;
+				link = link.dynamicLink;
+			}
+
+
+		} else {
+			// No linking can occur!!!!
+			return false;
 		}
-		link = link.dynamicLink;
+	} else {
+		if (host.linkCache) {
+			for (let s of target.shrine) {
+				if (host.linkCache.includes(s)) return true;
+			}
+		}
+		// For linking over, we only need check stuff under the new item
+		let link = oldRestraint;
+		while (link) {
+			let pass = false;
+			let r = KDRestraint(link);
+			if (link != linkUnderHost) {
+				if (r.LinkAll
+				// 5.2.5: Added ability to override weaker items when linking under
+				//|| KinkyDungeonRestraintPower(link, true, newRestraint, link.lock, KDGetCurse(link))
+				//< -0.01 + (curse ? (KDCursePower(curse)) : 0) + newRestraint.power * (useAugmentedPower ? KDRestraintPowerMult(KinkyDungeonPlayerEntity, newRestraint, augmentedInventory) : 1) * KinkyDungeonGetLockMult(lock, undefined, curse)
+				) {
+					pass = true;
+				} else if (newRestraint.AlwaysLinkable) {
+					pass = true;
+				} else if (r.LinkableBy && newRestraint.shrine) {
+					for (let l of r.LinkableBy) {
+						if (!pass)
+							for (let s of newRestraint.shrine) {
+								if (l == s) {
+									pass = true;
+								}
+							}
+					}
+				}
+				if (!pass) return false;
+			}
+			link = link.dynamicLink;
+		}
 	}
+
 	return true;
 }
 
@@ -6027,7 +6107,7 @@ function KDGetEventsForRestraint(name: string): KinkyDungeonEvent[] {
  */
 function KDDynamicLinkList(item: item, includeItem?: boolean): item[] {
 	let ret = [];
-	if (includeItem) ret.push(item);
+	if (includeItem && item) ret.push(item);
 	if (item && item.dynamicLink) {
 		let link = item.dynamicLink;
 		while (link) {

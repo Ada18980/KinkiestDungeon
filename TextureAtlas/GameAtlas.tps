@@ -2307,6 +2307,7 @@
             <key type="filename">../Game/Items/Restraint/Legbinders.png</key>
             <key type="filename">../Game/Items/Restraint/MagicBelts.png</key>
             <key type="filename">../Game/Items/Restraint/MithrilRope.png</key>
+            <key type="filename">../Game/Items/Restraint/MuzzleGags.png</key>
             <key type="filename">../Game/Items/Restraint/MysticDuctTape.png</key>
             <key type="filename">../Game/Items/Restraint/Obsidian.png</key>
             <key type="filename">../Game/Items/Restraint/PanelGags.png</key>

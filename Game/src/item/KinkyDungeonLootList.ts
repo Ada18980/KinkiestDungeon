@@ -281,6 +281,7 @@ for (let armor of KDSilverArmor) {
 	armor.enchantscale = (armor.enchantscale || 0) * 2;
 }
 
+
 let KDEnchantedRestraints = [
 	{name: "TrapRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*2,
 		armortags: ["trap"], armor: "TrapGag", // Backup to a gag
