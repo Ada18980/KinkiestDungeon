@@ -1268,7 +1268,7 @@ function KDEnterDemonTransition() {
 	//KDGameData.MapMod = ""; // Reset the map mod
 	KDResetDialogue()
 	let params = KinkyDungeonMapParams.DemonTransition;
-	KinkyDungeonCreateMap(params, "DemonTransition", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, undefined, "", );
+	KinkyDungeonCreateMap(params, "DemonTransition", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, false, "", );
 
 	KDRemovePrisonRestraints();
 
@@ -1421,7 +1421,7 @@ function KDEnterDollTerminal(willing: boolean, cancelDialogue: boolean = true, f
 	let faction = KDGetMainFaction() == "Dollsmith" ? "Dollsmith" : "AncientRobot";
 	let params = KinkyDungeonMapParams[alts.DollStorage?.genType || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.DollRoomCount = 0;
-	KinkyDungeonCreateMap(params, "DollStorage", "", MiniGameKinkyDungeonLevel, undefined, undefined, faction, undefined, undefined, "");
+	KinkyDungeonCreateMap(params, "DollStorage", "", MiniGameKinkyDungeonLevel, undefined, undefined, faction, undefined, false, "");
 
 	KDRemovePrisonRestraints();
 

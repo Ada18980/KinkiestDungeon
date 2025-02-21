@@ -952,7 +952,7 @@ function KinkyDungeonCreateMap (
 	seed?:           boolean,
 	forceFaction?:   string,
 	worldLocation?:  { x: number, y: number },
-	useExisting?:    boolean,
+	useExisting:    boolean = true,
 	origMapType:     string = "",
 	direction:       number = 0,
 	forceEscape?:    string
