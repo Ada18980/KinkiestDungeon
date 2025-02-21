@@ -222,20 +222,21 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 	let tile = KinkyDungeonTilesGet(x + "," + y);
 	let altRoom = KDGameData.RoomType ? KinkyDungeonAltFloor(KDGameData.RoomType) : KinkyDungeonBossFloor(MiniGameKinkyDungeonLevel);
 	let altRoomTarget = (tile && tile.RoomType) ? KinkyDungeonAltFloor(tile.RoomType) : null;
-	let currentAdvanceAmount = KDAdvanceAmount[toTile](altRoom, null);
-	let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
-		: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + (KDGameData.JourneyY + currentAdvanceAmount)];
+	let Advance = KDAdvanceAmount[toTile](altRoom, null, tile);
+	let AdvanceAmount = Advance.AdvanceAmount;
 
+	let journeyTile = KDGameData.JourneyTarget ? KDGameData.JourneyMap[KDGameData.JourneyTarget.x + ',' + KDGameData.JourneyTarget.y]
+		: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + (KDGameData.JourneyY + AdvanceAmount)];
+	let originalRoom = KDGameData.RoomType;
 
 	if (!altRoomTarget && !(tile && tile.RoomType)) {
 		altRoomTarget = (KinkyDungeonAltFloor(journeyTile?.RoomType));
 	}
-	let roomType = "";
-	//let currCheckpoint = MiniGameKinkyDungeonCheckpoint;
-	let originalRoom = KDGameData.RoomType;
-	let AdvanceAmount = KDAdvanceAmount[toTile](altRoom, altRoomTarget);
+	Advance = KDAdvanceAmount[toTile](altRoom, altRoomTarget, tile);
+	AdvanceAmount = Advance.AdvanceAmount;
 
 	let data = {
+		roomType: "",
 		CurrentJourneyTile: KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY],
 		JourneyTile: journeyTile,
 		altRoom: altRoom,
@@ -257,6 +258,9 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		force: force,
 		willing: willing,
 	};
+	if (Advance.dataOverride) {
+		Object.assign(data, Advance.dataOverride);
+	}
 	KinkyDungeonSendEvent("beforeStairCancelFilter", data);
 	if (data.cancelfilter) {
 		if (data.cancelfilter && KDCancelFilters[data.cancelfilter]) {
@@ -276,39 +280,6 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 		let location = KDWorldMap[newLocation.x + "," + newLocation.y];
 
 		KDGenMapCallback = () => {
-			if (data.toTile == 's') {
-				if (!altRoom?.noAdvance
-					&& !tile?.RoomType
-					&& (
-						// By default only the main advances
-						!KDGameData.RoomType // '' is always advance, just for save compat
-						|| data.CurrentJourneyTile?.RoomType == (originalRoom || "")
-						|| altRoom?.alwaysAdvance)) {
-					// advance by default
-					if (MiniGameKinkyDungeonLevel == KDGameData.HighestLevelCurrent
-						&& data.AdvanceAmount == 0
-					) {
-						data.overrideRoomType = true;
-						KDGameData.RoomType = "PerkRoom";
-						data.mapMod = "";
-					} else data.AdvanceAmount = 1;
-					//data.AdvanceAmount = 0;
-				} else {
-					// Return to the normal map
-					if (!tile?.RoomType) {
-						data.overrideRoomType = true;
-						let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
-						if (journeySlot) {
-							KDGameData.RoomType = journeySlot.RoomType;
-						} else {
-							KDGameData.RoomType = "";
-						}
-					}
-
-					data.AdvanceAmount = 0;
-				}
-			}
-
 
 			if (altRoom?.onExit) altRoom.onExit(data); // Handle any special contitions
 			KinkyDungeonSendEvent("beforeHandleStairs", data);
@@ -362,28 +333,24 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					}
 				}
 				if (!data.overrideRoomType) {
-					roomType = "";
+					data.roomType = "";
 				}
-			} else {
+			} else if (!data.overrideRoomType) {
 				if (tile?.RoomType != undefined) {
-					roomType = tile.RoomType;
+					data.roomType = tile.RoomType;
 					KDGameData.MapMod = ""; // Reset the map mod
-				} else if (!data.overrideRoomType) {
+				} else {
 					// If its an exit stair in the main, we override to the main of next floor
 					// The player can never backtrack to old perk rooms
 
-					roomType = data.JourneyTile?.RoomType || "";
-					altRoomTarget = KinkyDungeonAltFloor(roomType);
+					data.roomType = data.JourneyTile?.RoomType || "";
+					altRoomTarget = KinkyDungeonAltFloor(data.roomType);
 					KDGameData.MapMod = ""; // Reset the map mod
 				}
 			}
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
 			KDGameData.HighestLevel = Math.max(KDGameData.HighestLevel || 1, MiniGameKinkyDungeonLevel);
 
-
-			if (!data.overrideRoomType) {
-				KDGameData.RoomType = roomType;
-			}
 			//if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
 			let MapMod = data.mapMod;
 			if (MapMod) {
@@ -407,10 +374,11 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				let RoomType = KinkyDungeonTilesGet(x + "," + y)?.RoomType
 					|| data.JourneyTile?.RoomType;
 				if (RoomType) {
-					KDGameData.RoomType = RoomType;
+					data.roomType = RoomType;
 				}
 			}
-			//}
+
+			KDGameData.RoomType = data.roomType;
 
 
 			KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), "#ffffff", 1);
@@ -426,7 +394,8 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				});
 				KDGameData.HeartTaken = false;
 
-				KinkyDungeonCreateMap(KinkyDungeonMapParams[altRoomTarget?.useGenParams ? altRoomTarget.useGenParams : (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv')], KDGameData.RoomType, KDGameData.MapMod, MiniGameKinkyDungeonLevel, undefined, undefined,
+				KinkyDungeonCreateMap(KinkyDungeonMapParams[altRoomTarget?.useGenParams ? altRoomTarget.useGenParams : (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv')],
+					KDGameData.RoomType, KDGameData.MapMod, MiniGameKinkyDungeonLevel, undefined, undefined,
 					data.faction, newLocation,
 					!altRoomTarget || !altRoomTarget.alwaysRegen,
 					// If this is a sideroom, its actually the main that is the upstairs
@@ -1095,17 +1064,104 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 	};
 }
 
+interface KDAdvanceEventData {
+	toTile: string,
+	altRoom: AltType,
+	altRoomNext: AltType,
+	AdvanceAmount: number,
+	dataOverride: object,
+}
 
+let KDAdvanceAmount: Record<string, (altRoom: AltType, altRoomNext: AltType, tile: any) => {
+	AdvanceAmount: number,
+	dataOverride: object,
+}> = {
+	'S': (altRoom, altRoomNext, tile) => { // Stairs up
+		let data: KDAdvanceEventData = {
+			toTile: 'S',
+			altRoom: altRoom,
+			altRoomNext: altRoomNext,
+			AdvanceAmount: (altRoomNext?.skiptunnel ? -1 : 0),
+			dataOverride: null,
+		}
 
-let KDAdvanceAmount: Record<string, (altRoom: AltType, altRoomNext: AltType) => number> = {
-	'S': (_altRoom, altRoomNext) => { // Stairs up
-		return (altRoomNext?.skiptunnel ? -1 : 0);
+		KinkyDungeonSendEvent("floorAdvanceAmount", data)
+		return {
+			AdvanceAmount: data.AdvanceAmount,
+			dataOverride: data.dataOverride,
+		};
 	},
-	's': (altRoom, altRoomNext) => { // Stairs down
-		return (altRoom?.skiptunnel ? 1 : 0);
+	's': (altRoom, altRoomNext, tile) => { // Stairs down
+		let data: KDAdvanceEventData = {
+			toTile: 's',
+			altRoom: altRoom,
+			altRoomNext: altRoomNext,
+			AdvanceAmount: (altRoom?.skiptunnel ? 1 : 0),
+			dataOverride: null,
+		}
+
+		let CurrentJourneyTile = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+
+		if (!altRoom?.noAdvance
+			&& !tile?.RoomType
+			&& (
+				// By default only the main advances
+				!KDGameData.RoomType // '' is always advance, just for save compat
+				|| CurrentJourneyTile?.RoomType == (KDGameData.RoomType || "")
+				|| altRoom?.alwaysAdvance)) {
+			// advance by default
+			if (MiniGameKinkyDungeonLevel == KDGameData.HighestLevelCurrent
+				&& data.AdvanceAmount == 0
+			) {
+				data.dataOverride = {
+					overrideRoomType: true,
+					roomType: "PerkRoom",
+					mapMod: "",
+				}
+			} else data.AdvanceAmount = 1;
+			//data.AdvanceAmount = 0;
+		} else {
+			// Return to the normal map
+			if (!tile?.RoomType) {
+				let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+				if (journeySlot) {
+					data.dataOverride = {
+						overrideRoomType: true,
+						roomType: journeySlot.RoomType || "",
+						mapMod: journeySlot.MapMod || "",
+					}
+				} else {
+					data.dataOverride = {
+						overrideRoomType: true,
+						roomType: "",
+						mapMod: "",
+					}
+				}
+			}
+
+			data.AdvanceAmount = 0;
+		}
+
+		KinkyDungeonSendEvent("floorAdvanceAmount", data)
+		return {
+			AdvanceAmount: data.AdvanceAmount,
+			dataOverride: data.dataOverride,
+		};
 	},
-	'H': (_altRoom, altRoomNext) => { // Stairs down
-		return 0;
+	'H': (altRoom, altRoomNext, tile) => { // Stairs down
+		let data: KDAdvanceEventData = {
+			toTile: 'H',
+			altRoom: altRoom,
+			altRoomNext: altRoomNext,
+			AdvanceAmount: 0,
+			dataOverride: null,
+		}
+
+		KinkyDungeonSendEvent("floorAdvanceAmount", data)
+		return {
+			AdvanceAmount: data.AdvanceAmount,
+			dataOverride: data.dataOverride,
+		};
 	},
 };
 

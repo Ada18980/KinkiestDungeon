@@ -2130,6 +2130,8 @@ function KDGetJailRestraints(overrideTags?: string[], requireJail?: boolean, req
 function KDSetWorldSlot(x: number, y: number) {
 	MiniGameKinkyDungeonLevel = y;
 	KDCurrentWorldSlot = {x: x, y: y};
+	KDGameData.JourneyX = x;
+	KDGameData.JourneyY = y;
 }
 
 /**
@@ -2145,8 +2147,8 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 		KDRemoveEntity(enemy);
 		KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
 		KDSetWorldSlot(0, 0);
-		let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
-		KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel,
+		//let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
+		KinkyDungeonCreateMap(KinkyDungeonMapParams.shoppe, "ShopStart", "", MiniGameKinkyDungeonLevel,
 			undefined, undefined, undefined, {x: 0, y: 0},
 			 false, undefined);
 		KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);

@@ -1870,7 +1870,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Go": {
 				playertext: "Default", response: "Default",
 				clickFunction: (_gagged, _player) => {
-					let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
+					let params = KinkyDungeonMapParams.shoppe;
 
 					if (KDTile() && KDTile().Portal == "CommercePortal") {
 						KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '0');

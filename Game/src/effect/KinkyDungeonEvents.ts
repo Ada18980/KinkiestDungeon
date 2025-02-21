@@ -11083,10 +11083,10 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						data.overrideRoomType = true;
 						let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 						if (journeySlot) {
-							KDGameData.RoomType = journeySlot.RoomType;
+							data.roomType = journeySlot.RoomType;
 							data.mapMod = journeySlot.MapMod;
 						} else {
-							KDGameData.RoomType = "";
+							data.roomType = "";
 							data.mapMod = "";
 						}
 					}
@@ -11094,7 +11094,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					data.overrideRoomType = true;
 					data.overrideProgression = true;
 					data.mapMod = "";
-					KDGameData.RoomType = "DollRoom";
+					data.roomType = "DollRoom";
 				}
 
 			}
@@ -11105,9 +11105,11 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				data.overrideRoomType = true;
 				let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 				if (journeySlot) {
-					KDGameData.RoomType = journeySlot.RoomType;
+					data.roomType = journeySlot.RoomType;
+					data.mapMod = journeySlot.MapMod;
 				} else {
-					KDGameData.RoomType = "";
+					data.roomType = "";
+					data.mapMod = "";
 				}
 			}
 		},
