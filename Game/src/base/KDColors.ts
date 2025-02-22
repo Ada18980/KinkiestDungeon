@@ -44,7 +44,7 @@ let KDBaseBlue = "#0247fe"; // blue
 // #1c1cf0 // bluebonnet
 // #273be2 // palatinate blue
 // #0247fe // blue
-let KDBaseBaby = "##0088ff";
+let KDBaseBaby = "#0088ff";
 let KDBaseWhite = "#fffafa" // snow
 // #fffafa snow
 let KDBaseBlack = "#010203"; // rich black

@@ -200,11 +200,11 @@ function KinkyDungeonRepName(Amount: number): string {
 
 function KDBarColor(value: number) {
 	let color = KDBaseYellow;
-	if (value <= 0) {
-		if (value < -45) color = KDBasePurple;
-		else if (value < KDRAGE) color = KDBaseRed;
-		else if (value < KDANGER) color = KDBaseOrange;
-		else color = KDBaseYellow;
+	if (value < 0) {
+		if (value < -45) color = KDBaseRed;
+		else if (value < KDRAGE) color = KDBaseOrange;
+		else if (value < KDANGER) color = KDBaseYellow;
+		else color = KDBaseYellowGreen;
 	} else {
 		if (value >= 45) color = KDBaseCyan;
 		else if (value >= KDFRIENDLY) color = KDBaseElectricBlue;
@@ -242,11 +242,11 @@ function KinkyDungeonRepNameFaction(Amount: number): string {
 
 function KDRepBarColor(value: number) {
 	let color = KDBaseYellow;
-	if (value <= 0) {
-		if (value < KDREPWANTED) color = KDBasePurple;
-		else if (value < KDREPHOSTILE) color = KDBaseRed;
-		else if (value < KDREPANNOYED) color = KDBaseOrange;
-		else color = KDBaseYellow;
+	if (value < 0) {
+		if (value < KDREPWANTED) color = KDBaseRed;
+		else if (value < KDREPHOSTILE) color = KDBaseOrange;
+		else if (value < KDREPANNOYED) color = KDBaseYellow;
+		else color = KDBaseYellowGreen;
 	} else {
 		if (value >= KDREPALLIED) color = KDBaseElectricBlue;
 		else if (value >= KDREPFRIENDLY) color = KDBaseGreal;
