@@ -1525,8 +1525,10 @@ function KinkyDungeonDrawGame() {
 								//let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY, false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false);
 								let requireLight = KinkyDungeonVisionGet(KinkyDungeonTargetX, KinkyDungeonTargetY) > 0;
 								let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonTargetX, KinkyDungeonTargetY,
-									true, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
-									undefined, false, undefined, false, true);
+									true, false, false,
+									KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
+									requireLight, false, true,
+									undefined, false, undefined, false, true, KDToggles.FastMovePassable);
 								if (path?.length > 1) {
 									dist *= path.length;
 								}

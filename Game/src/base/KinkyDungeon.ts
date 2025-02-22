@@ -281,9 +281,13 @@ let KDToggles = {
 	BindPercent: true,
 
 	AutoWaitDelayed: true,
+	FastMovePassable: true,
+	FastMoveDoors: true,
 };
 
 let KDToggleCategories = {
+	FastMovePassable: "UI",
+	FastMoveDoors: "UI",
 	MMLabels: "UI",
 	RawDP: "UI",
 	Backgrounds: "GFX",

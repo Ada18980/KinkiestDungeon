@@ -90,7 +90,8 @@ function KinkyDungeonFindPath (
 	trimLongDistance?:   boolean,
 	heuristicOverride?:  (x: number, y: number, xx: number, yy: number) => number,
 	taxicab?:            boolean,
-	ignoreTrafficLaws?:  boolean
+	ignoreTrafficLaws?:  boolean,
+	allowPassable?:  	 boolean
 ): KDPoint[]
 {
 	let tileShort = Tiles;
@@ -220,7 +221,8 @@ function KinkyDungeonFindPath (
 						// Give up and add to the test array
 						else if (TilesTemp.includes(tile) && (!RequireLight || KinkyDungeonVisionGet(xx, yy) > 0)
 							&& (ignoreLocks || !MapTile || !MapTile.Lock || (Enemy && KDLocks[MapTile.Lock].canNPCPass(xx, yy, MapTile, Enemy)))
-							&& (!blockEnemy || KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy))
+							&& (!blockEnemy || KinkyDungeonNoEnemyExceptSub(xx, yy, false, Enemy)
+								|| (allowPassable && KDCanPassEnemy(KDPlayer(), KinkyDungeonEnemyAt(xx, yy))))
 							&& (!blockPlayer || KinkyDungeonPlayerEntity.x != xx || KinkyDungeonPlayerEntity.y != yy)
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;

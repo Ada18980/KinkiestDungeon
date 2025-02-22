@@ -46,6 +46,9 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 KDToggleTabMouseShortcuts,Mouse Shortcuts
 
+KDToggleFastMovePassable,Auto-path through NPCs
+KDToggleFastMoveDoors,Auto-path through Doors
+
 KDToggleBindPercent,Show Enemy Binding as %
 KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
 
@@ -3962,6 +3965,9 @@ RestraintKittyGagDesc2,"The harness is comprehensive and it's locked in place."
 RestraintKittyMuzzle,Bast Muzzle
 RestraintKittyMuzzleDesc,"A muzzle used to keep a Bast gag secure."
 RestraintKittyMuzzleDesc2,"The leather panel is tough and tight."
+RestraintKittyMuzzleHeavy,Blessed Muzzle
+RestraintKittyMuzzleHeavyDesc,"A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably."
+RestraintKittyMuzzleHeavyDesc2,"Made of an ancient and exotic form of latex."
 RestraintKittyBlindfold,Bast Blindfold
 RestraintKittyBlindfoldDesc,"A blindfold used to aid in meditation."
 RestraintKittyBlindfoldDesc2,"It is padded but still lets some light through."

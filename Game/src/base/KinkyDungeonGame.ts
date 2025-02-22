@@ -6735,8 +6735,10 @@ function KDFastMoveTo(xx: number, yy: number): number {
 			|| KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5)) {
 		let requireLight = KinkyDungeonVisionGet(xx, yy) > 0;
 		let path = KinkyDungeonFindPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, xx, yy,
-			true, false, false, KinkyDungeonMovableTilesEnemy, requireLight, false, true,
-			undefined, false, undefined, false, true);
+			true, false, false,
+			KDToggles.FastMoveDoors ? KinkyDungeonMovableTilesSmartEnemy : KinkyDungeonMovableTilesEnemy,
+			requireLight, false, true,
+			undefined, false, undefined, false, true, KDToggles.FastMovePassable);
 		if (path) {
 			KDSetFocusControl("");
 			KinkyDungeonFastMovePath = path;

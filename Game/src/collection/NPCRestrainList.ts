@@ -90,10 +90,10 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 		]},
 	{id: "Gag", encaseGroup:
 		{id: "Muzzle", encasedBy: ["Hood"], allowedGroups: ["ItemMouth"],
-			allowedTags: ["Muzzles", "Wrapping", "Encase"]},
+			allowedTags: ["Muzzles", "MuzzleGags", "Wrapping", "Encase"]},
 		layers: [
 			{id: "OuterGag", encasedBy: ["Hood", "Muzzle"], allowedGroups: ["ItemMouth"],
-				allowedTags: ["FlatGags"]},
+				allowedTags: ["FlatGags", "MuzzleGags"]},
 			{id: "InterGag", encasedBy: ["Hood", "Muzzle", "OuterGag"], allowedGroups: ["ItemMouth"],
 				allowedTags: ["FlatGags", "PlugGags", "BallGags", "Tape"]},
 			{id: "InnerGag", encasedBy: ["Hood", "Muzzle", "InterGag", "OuterGag"], allowedGroups: ["ItemMouth"],
