@@ -12,7 +12,7 @@ AddModel({
 	Parent: "PostureCollarBasic",
 	TopLevel: false,
 	Restraint: true,
-	Categories: ["Accessories"],
+	Categories: ["Accessories", "Collars"],
 	Layers: ToLayerMap([
 		{ Name: "PostureCollar", Layer: "Collar", Pri: -5.1,
 			Invariant: true,
@@ -32,7 +32,7 @@ AddModel({
 	Parent: "PostureCollar",
 	TopLevel: true,
 	Restraint: true,
-	Categories: ["Accessories"],
+	Categories: ["Accessories", "Collars"],
 	Layers: ToLayerMap([
 		...GetModelLayers("PostureCollarBasic"),
 		{ Name: "PostureCollarLoop", Layer: "Collar", Pri: -5,

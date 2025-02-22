@@ -17,6 +17,12 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Blindfold",
 		},
+		{ Name: "BlindfoldStrap", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			InheritColor: "Strap",
+			TieToLayer: "Blindfold",
+			NoOverride: true,
+		},
 		{ Name: "BlindfoldHarnessUpper", Layer: "BlindfoldStraps", Pri: 40,
 			Invariant: true,
 			InheritColor: "Harness",
@@ -55,4 +61,60 @@ AddModel({
 
 
 AddModel(GetModelFashionVersion("HighSecBlindfold", true));
+
+
+AddModel({
+	Name: "HighSecCollar",
+	Folder: "HighSec",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Accessories", "Collars"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "NeckCorset", Pri: -25,
+			Invariant: true,
+			InheritColor: "Band",
+			MorphPoses: {UprightHogtie: "", SuspendedHogtie: "", Hogtie: "Hogtie"},
+		},
+		{ Name: "CollarChest", Layer: "NeckCorset", Pri: -25,
+			Invariant: true,
+			InheritColor: "Collar",
+			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",
+				Hogtie: "Hogtie"},
+		},
+		{ Name: "CollarChestRim", Layer: "NeckCorset", Pri: -24.9,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Rim",
+			TieToLayer: "CollarChest",
+			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",
+				Hogtie: "Hogtie"},
+		},
+		{ Name: "CollarChestHardware", Layer: "NeckCorset", Pri: -24.8,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Ring",
+			TieToLayer: "CollarChest",
+		},
+		{ Name: "CollarChestStraps", Layer: "NeckCorset", Pri: -24.8,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "Straps",
+			TieToLayer: "CollarChest",
+			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",
+				Hogtie: "Hogtie"},
+		},
+		{ Name: "CollarChestStrapsHardware", Layer: "NeckCorset", Pri: -24.7,
+			Invariant: true,
+			NoOverride: true,
+			InheritColor: "StrapsHardware",
+			TieToLayer: "CollarChest",
+			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",
+				Hogtie: "Hogtie"},
+		},
+	])
+});
+
+
+AddModel(GetModelFashionVersion("HighSecCollar", true));
+
 
