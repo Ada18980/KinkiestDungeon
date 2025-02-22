@@ -17,7 +17,11 @@ let KDBasePink = "#ff66cc"; // rose pink
 let KDBaseLime = "#c1f9a2"; // menthol
 // #39ff14; // neon green
 // #00ff00 // lime
-let KDBaseYellowGreen = "#c1f9a2"; // menthol
+let KDBaseYellowGreen = "#e3f988"
+// #e3f988 // mindaro
+// #e8f48c // key lime
+// #b2ec5d // inchworm
+// # #c1f9a2; // menthol
 let KDBasePurple = "#5946b2"; // plum
 // #8800ff; // original purple
 // #360ccc // interdimensional blue
@@ -31,6 +35,7 @@ let KDBaseMint = "#98ff98"; // mint green
 // #88ff88
 let KDBaseLightGreen = "#98ff98"; // mint green
 // #88ff88
+let KDBaseElectricBlue = "#7df9ff";
 let KDBaseCyan = "#15f2fd"; // lotion blue
 // #7df9ff; // electric blue
 // #00ffff // cyan

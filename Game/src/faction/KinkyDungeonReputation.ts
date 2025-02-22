@@ -323,13 +323,7 @@ function KinkyDungeonDrawReputation() {
 			let goddessSuff = "";
 			if (KDRepColor[rep]) color = KDRepColor[rep];
 			else {
-				if (value < -10) {
-					if (value < -30) color = KDBaseRed;
-					else color = KDBaseOrange;
-				} else if (value >= 10) {
-					if (value >= 30) color = KDBaseMint;
-					else color = KDBaseYellowGreen;
-				}
+				color = KDBarColor(value);
 			}
 
 
@@ -487,14 +481,7 @@ function KinkyDungeonDrawFactionRep() {
 			if (index > KDFactionRepIndex * KDMaxFactionsPerBar + KDMaxFactionsPerBar) continue;
 
 			let value = KinkyDungeonFactionRelations.Player[rep];
-			let color = "#e7cf1a";
-			if (value <= -0.1) {
-				if (value <= -0.5) color = KDBaseRed;
-				else color = "#ff8933";
-			} else if (value >= 0.1) {
-				if (value >= 0.5) color = "#4fd658";
-				else color = "#9bd45d";
-			}
+			let color = KDBarColor(value * 50);
 			let suff = KinkyDungeonRepNameFaction(value);
 			let tcolor = KDBaseWhite;
 			switch (rep) {

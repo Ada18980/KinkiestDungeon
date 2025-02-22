@@ -688,6 +688,21 @@ function KDDrawHeartTablet() {
 
 }
 
+function KDBarColor(value: number) {
+	let color = KDBaseYellow;
+	if (value < 0) {
+		if (value < KDRAGE) color = KDBaseRed;
+		else if (value < KDANGER) color = KDBaseOrange;
+		else color = KDBaseYellow;
+	} else {
+		if (value >= KDFRIENDLY) color = KDBaseElectricBlue;
+		else if (value >= KDPLEASED) color = KDBaseGreal;
+		else color = KDBaseYellowGreen;
+	}
+
+	return color;
+}
+
 
 function KDDrawOrb() {
 	KDModalArea = true;
@@ -743,14 +758,7 @@ function KDDrawOrb() {
 		let value = KinkyDungeonGoddessRep[shrine];
 
 		if (value != undefined) {
-			let color = "#e7cf1a";
-			if (value < -10) {
-				if (value < -30) color = KDBaseRed;
-				else color = "#ff8933";
-			} else if (value > 10) {
-				if (value > 30) color = "#4fd658";
-				else color = "#9bd45d";
-			}
+			let color = KDBarColor(value);
 			DrawButtonKDEx("orbspell" + shrine, (_b) => {
 				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 				return true;
