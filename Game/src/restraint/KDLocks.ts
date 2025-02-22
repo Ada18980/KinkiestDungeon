@@ -103,7 +103,7 @@ let KDLocks: Record<string, KDLockType> = {
 			return KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.25;
 		},
 		doUnlock: (data) => {
-			KinkyDungeonSendTextMessage(10, TextGet("KDCrystalUnlock"), "#ffff00", 2);
+			KinkyDungeonSendTextMessage(10, TextGet("KDCrystalUnlock"), KDBaseYellow, 2);
 			KinkyDungeonLock(data.item, "ExCrystal");
 			KDChangeDistraction("crystal", "lock", "unlock", -2.5);
 			return false;
@@ -173,7 +173,7 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		doUnlock: (data) => {
 			if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.25) {
-				KinkyDungeonSendTextMessage(10, TextGet("KDCrystalLock"), "#ffff00", 2);
+				KinkyDungeonSendTextMessage(10, TextGet("KDCrystalLock"), KDBaseYellow, 2);
 				KinkyDungeonLock(data.item, "Crystal");
 				return false;
 			}
@@ -182,7 +182,7 @@ let KDLocks: Record<string, KDLockType> = {
 		removeKeys: (data) => {
 			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonItemCount("RedKey") > 0) {
 				KDAddConsumable("RedKey", -1);
-				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), KDBaseLightGreen, 2);
 				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), 1);
 			} else if (!data?.unlock) {
 				if (KinkyDungeonItemCount("RedKey") > 0) {
@@ -451,7 +451,7 @@ let KDLocks: Record<string, KDLockType> = {
 		loot_special: false,
 		loot_locked: false,
 	},
-	"White": {
+	KDBaseWhite: {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 0;
 		},
@@ -494,7 +494,7 @@ let KDLocks: Record<string, KDLockType> = {
 		removeKeys: (data) => {
 			if (data?.unlock && !KinkyDungeonInventoryGet("CuffKeys") && KinkyDungeonItemCount("RedKey") > 0) {
 				KDAddConsumable("RedKey", -1);
-				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), "lightgreen", 2);
+				KinkyDungeonSendTextMessage(4, TextGet("KDConvertToHandcuffsKey"), KDBaseLightGreen, 2);
 				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("CuffKeys"), 1);
 			} else if (!data?.unlock) {
 				if (KinkyDungeonItemCount("RedKey") > 0) {
@@ -813,7 +813,7 @@ let KDLocks: Record<string, KDLockType> = {
 
 		canPick: (_data) => {
 			let pick = KinkyDungeonInventoryGet("DiscPick");
-			//if (!data.noMsg) KinkyDungeonSendTextMessage(10, TextGet("KDNeedDiscPick"), "#ffffff", 2, true);
+			//if (!data.noMsg) KinkyDungeonSendTextMessage(10, TextGet("KDNeedDiscPick"), KDBaseWhite, 2, true);
 			return pick != undefined;
 		},
 		doPick: (_data) => {
@@ -1262,12 +1262,12 @@ function KDCyberUnlock(data: any, base: number = 20): boolean {
 		KinkyDungeonSendEvent("beforelockout", data);
 		if (data.lockout) {
 			KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable("KeyCard"), -1);
-			KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTickEnd").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), "#ff5277", 2);
-			KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), "#ff5277", 2);
+			KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTickEnd").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), KDBaseRed, 2);
+			KinkyDungeonSendTextMessage(10, TextGet("KDLockout"), KDBaseRed, 2);
 			KinkyDungeonSendEvent("lockout", data);
 		}
 	} else {
-		KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTick").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), "#ff5277", 2);
+		KinkyDungeonSendTextMessage(10, TextGet("KDLockoutTick").replace("AMNT", "" + Math.round(KDGameData.LockoutChance * 100)), KDBaseRed, 2);
 	}
 	return true;
 }
@@ -1278,7 +1278,7 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 			KDSendInput("swipe", {targetTile: KinkyDungeonTargetTileLocation, base: base});
 		return true;
 	}, true, KDModalArea_x + 175, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonSwipeDoor"),
-	(KinkyDungeonInventoryGet("KeyCard")) ? "#ffffff" : "#ff5277", "", "");
+	(KinkyDungeonInventoryGet("KeyCard")) ? KDBaseWhite : KDBaseRed, "", "");
 
 	DrawButtonKDEx("ModalDoorScan", () => {
 		if (KinkyDungeonTargetTile)
@@ -1286,7 +1286,7 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 		return true;
 	}, true, KDModalArea_x + 450, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonScanDoor"),
 	!KDIsBlindfolded(player)
-		? "#ffffff" : "#ff5277", "", "");
+		? KDBaseWhite : KDBaseRed, "", "");
 
 	DrawButtonKDEx("ModalDoorHack", () => {
 		if (KinkyDungeonTargetTile)
@@ -1294,5 +1294,5 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 		return true;
 	}, true, KDModalArea_x + 725, KDModalArea_y + 25, 250, 60, TextGet("KinkyDungeonHackDoor"),
 	KDCanHack(player)
-		? "#ffffff" : "#ff5277", "", "");
+		? KDBaseWhite : KDBaseRed, "", "");
 }

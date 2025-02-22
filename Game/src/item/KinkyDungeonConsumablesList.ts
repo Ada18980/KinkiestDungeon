@@ -128,7 +128,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 				return;
 			}
 		}
-		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5277", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), KDBaseRed, 3);
 	},
 	"SackOfSacks": (_Consumable, entity) => {
 		let tiles = KDGetEffectTiles(entity.x, entity.y);
@@ -136,7 +136,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			if (tile?.tags?.includes("unsackable")) {
 				tile.duration = 0;
 				KinkyDungeonAdvanceTime(1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), "#ff5277", 3);
+				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), KDBaseRed, 3);
 				return;
 			}
 			if (tile?.tags?.includes("sackable")) {
@@ -148,7 +148,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 				return;
 			}
 		}
-		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), "#ff5277", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), KDBaseRed, 3);
 	},
 	"RemoveCurseOrHex": (Consumable, entity) => {
 		if (!entity?.player) return;
@@ -158,9 +158,9 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			KDGameData.UsingConsumable = Consumable.name;
 			KinkyDungeonDrawState = "Inventory";
 			KinkyDungeonCurrentFilter = Restraint;
-			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), "#ff5277", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), KDBaseRed, 1, true);
 		} else {
-			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), "#ff5277", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), KDBaseRed, 1, true);
 		}
 	},
 	"subAdd": (Consumable, entity) => {
@@ -199,7 +199,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			let gagFloor = Consumable.gagFloor ? Consumable.gagFloor : 0;
 			let gagMult = (Consumable.potion && gagFloor != 1.0) ? Math.max(0, gagFloor + (1 - gagFloor) * (1 - Math.max(0, Math.min(1.0, KinkyDungeonGagTotal(true))))) : 1.0;
 			if (gagMult < 0.999) {
-				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), "#ff5277", 2);
+				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), KDBaseRed, 2);
 			}
 			if (Consumable.mp_instant != undefined) {
 				//let manaAmt = Math.min(KinkyDungeonStatManaMax, KinkyDungeonStatMana + Consumable.mp_instant * Manamulti * gagMult) - KinkyDungeonStatMana;

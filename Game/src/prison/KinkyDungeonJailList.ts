@@ -64,7 +64,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			if (KinkyDungeonEnemyAt(guard.x, guard.y)) KDKickEnemy(KinkyDungeonEnemyAt(guard.x, guard.y));
 			guard = KDAddEntity(guard);
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), KDBaseWhite, 6);
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
 			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
 		},
@@ -96,7 +96,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 					KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 				}
 
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardApproach").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "white", 6);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardApproach").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), KDBaseWhite, 6);
 
 				if (KinkyDungeonPlayerInCell(true))
 					KinkyDungeonChangeRep("Ghost", KDBaseJailTickSub + KDGameData.KinkyDungeonPrisonExtraGhostRep);

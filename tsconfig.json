@@ -1,5 +1,6 @@
 {
     "files": [
+        "Game/src/base/KDColors.ts",
         // Library .d.ts files
         "Scripts/lib/LZString.d.ts",
 

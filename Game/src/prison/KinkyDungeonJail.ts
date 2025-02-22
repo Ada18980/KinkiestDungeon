@@ -56,7 +56,7 @@ function KinkyDungeonLoseJailKeys(Taken?: boolean, boss?: boolean, enemy?: entit
 	if (KinkyDungeonFlags.has("BossUnlocked")) return;
 	if (KDMapData.KeysHeld > 0) {
 		if (Taken) {
-			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), "#ff5277", 3);
+			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonRemoveJailKey"), KDBaseRed, 3);
 			if (enemy) {
 				if (!enemy.items) enemy.items = [];
 				if (!enemy.items.includes("Keyring"))
@@ -709,7 +709,7 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 							KinkyDungeonTilesGet((xx-doorOff) + "," + yy).Lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(), false, "Door", {x: (xx-doorOff), y: yy, tile: KinkyDungeonTilesGet((xx-doorOff) + "," + yy)});
 						}
 						if (KDGameData.PrisonerState == 'jail' && KinkyDungeonVisionGet(g.x, g.y))
-							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardDisappear").replace("EnemyName", TextGet("Name" + g.Enemy.name)), "#ff5277", 6);
+							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardDisappear").replace("EnemyName", TextGet("Name" + g.Enemy.name)), KDBaseRed, 6);
 
 					}
 				} else {
@@ -914,7 +914,7 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonJailerReleaseGoodGirlMsg")
 					.replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name))
 					.replace("ItemName", KDGetItemNameString(item)),
-				"#88ff88", 1);
+				KDBaseMint, 1);
 				KinkyDungeonChangeConsumable(KinkyDungeonFindConsumable(item), 1);
 			}
 
@@ -1187,9 +1187,9 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 	KDChangeMana("", "passout", "defeat", -100);
 	KDChangeDistraction("", "passout", "defeat", -100);
 
-	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPassOut"), "#ff5277", 5);
+	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPassOut"), KDBaseRed, 5);
 	if (!noteleport)
-		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPassOut2"), "#ff5277", 5);
+		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonPassOut2"), KDBaseRed, 5);
 
 
 	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
@@ -1599,10 +1599,10 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 	KinkyDungeonStatBlind = 3;
 
-	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed"), "#ff5277", 3);
+	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed"), KDBaseRed, 3);
 	if (!KinkyDungeonJailedOnce) {
 		KinkyDungeonJailedOnce = true;
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed2"), "#ff5277", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed2"), KDBaseRed, 3);
 	}
 	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.KinkyDungeonSpawnJailers = KDGameData.KinkyDungeonSpawnJailersMax;
@@ -2145,7 +2145,7 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 	},
 	"ShopkeeperRescue": (enemy) => {
 		KDRemoveEntity(enemy);
-		KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
+		KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), KDBaseWhite, 4);
 		KDSetWorldSlot(0, 0);
 		//let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 		KinkyDungeonCreateMap(KinkyDungeonMapParams.shoppe, "ShopStart", "", MiniGameKinkyDungeonLevel,

@@ -52,13 +52,13 @@ let KinkyDungeonTextMessagePriority = 0;
 let KinkyDungeonTextMessage = "";
 let KinkyDungeonTextMessageNoPush = false;
 let KinkyDungeonTextMessageTime = 0;
-let KinkyDungeonTextMessageColor = "white";
+let KinkyDungeonTextMessageColor = KDBaseWhite;
 
 let KinkyDungeonActionMessagePriority = 0;
 let KinkyDungeonActionMessage = "";
 let KinkyDungeonActionMessageNoPush = false;
 let KinkyDungeonActionMessageTime = 0;
-let KinkyDungeonActionMessageColor = "white";
+let KinkyDungeonActionMessageColor = KDBaseWhite;
 
 let KinkyDungeonSpriteSize = 72;
 
@@ -632,7 +632,7 @@ function KDCreateWorldLocation(x: number, y: number, jx: number, jy: number, _ma
 		jy: jy,
 		main: "",
 		name: "Tile" + x + ',' + y,
-		color: "#ffffff",
+		color: KDBaseWhite,
 		outposts: {},
 		lairs: {},
 		lairsToPlace: {},
@@ -801,7 +801,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 	if (ignoreAware && aware) {
 		//KinkyDungeonLoseJailKeys();
 		KinkyDungeonSetFlag("stairslocked", 10);
-		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), "#ff5277", 3);
+		KinkyDungeonSendActionMessage(10, TextGet("KDClimbUpTrapped"), KDBaseRed, 3);
 	}
 
 	for (let e of allies) {
@@ -1578,7 +1578,7 @@ function KinkyDungeonCreateMap (
 				let mm = KDGetEscapeMethod(Floor);
 				if (mm && mm != "None")
 					KinkyDungeonSendActionMessage(10, TextGet("KDEscapeMethodDesc_" + mm),
-					"#ffffff", 10);
+					KDBaseWhite, 10);
 				KDEscapeWorldgenStart(mm);
 			}
 			KinkyDungeonSendEvent("postQuest", {altType: altType});
@@ -5038,13 +5038,13 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					}
 				}
 				if (!KDGameData.CurrentDialog) {
-					KinkyDungeonSendActionMessage(10, TextGet("KDGameData.ConfirmAttack"), "#ff5277", 1);
+					KinkyDungeonSendActionMessage(10, TextGet("KDGameData.ConfirmAttack"), KDBaseRed, 1);
 					KDGameData.ConfirmAttack = true;
 					noadvance = true;
 				}
 			}*/
 			else {
-				KinkyDungeonSendActionMessage(10, TextGet("KDGameData.ConfirmAttack"), "#ff5277", 1);
+				KinkyDungeonSendActionMessage(10, TextGet("KDGameData.ConfirmAttack"), KDBaseRed, 1);
 				KDGameData.ConfirmAttack = true;
 				noadvance = true;
 				result = "confirm";
@@ -5132,11 +5132,11 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 							.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name))
 							.replace("DamageDealt", "" + Math.round(dmgTotal * 10))
 							.replace("BondageDealt", "" + Math.round(bondageTotal * 10)),
-						"#ffffff", 2, undefined, undefined, undefined, "Action");
+						KDBaseWhite, 2, undefined, undefined, undefined, "Action");
 				} else {
 					KinkyDungeonSendActionMessage(3.5,
 						TextGet("KDAttackMiss").replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("DamageDealt", "" + Math.round(dmgTotal * 10)),
-						"#ffffff", 2, undefined, undefined, undefined, "Action", "Combat");
+						KDBaseWhite, 2, undefined, undefined, undefined, "Action", "Combat");
 				}
 
 				if (data.skipTurn) skip = 1;
@@ -5188,7 +5188,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 
 					KinkyDungeonSendTextMessage(10, TextGet("KDAutoReleased_NonNotable")
 						.replace("NME", KDGetEnemyTypeName(Enemy)),
-			"#ffffff", 4);
+			KDBaseWhite, 4);
 				}
 				if (KDIsNPCPersistent(Enemy.id)) {
 					KDGetPersistentNPC(Enemy.id).collect = true;
@@ -5333,8 +5333,8 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 
 							if (dotProd < 0 || ((D > 1 && (lastFacingY || lastFacingX)) && KDGetInertia(KDPlayer()) > 1)) {
 								KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 0);
-								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), "#ffffff", 1);
-								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), "#ffffff", 1);
+								if (D > 2) KinkyDungeonSendTextMessage(10, TextGet("KDTurn2"), KDBaseWhite, 1);
+								else KinkyDungeonSendTextMessage(9, TextGet("KDTurn1"), KDBaseWhite, 1);
 							}
 						}
 
@@ -5373,7 +5373,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 								}
 
 								if (moveObject == 'g') {
-									KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonGrateEnter"), "white", 3);
+									KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonGrateEnter"), KDBaseWhite, 3);
 									//KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 1);
 									KDStunTurns(1, true);
 									//KDGameData.KneelTurns = CommonTime() + 250;
@@ -5388,9 +5388,9 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						if (KinkyDungeonSlowLevel == 0 && KinkyDungeonPlugCount > 0) KinkyDungeonSendTextMessage(0, TextGet("KinkyDungeonPlugWalk" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
 						if (KinkyDungeonSlowLevel == 1 && !KinkyDungeonStatsChoice.has("HeelWalker")) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonSlowed" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "yellow", 2, true);
 						else if (KinkyDungeonSlowLevel == 2) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHopping" + (KDGameData.Crouch ? "Crouch" : "") + plugLevel).replace("plugs", dict).replace("(s)", dicts), "orange", 2, true);
-						else if (KinkyDungeonSlowLevel == 3) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonInching" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff5277", 2, true);
-						else if (KinkyDungeonSlowLevel > 3 && KinkyDungeonSlowLevel < 10) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrawling" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff5277", 2, true);
-						else if (KinkyDungeonSlowLevel >= 10) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonCantMove" + plugLevel).replace("plugs", dict).replace("(s)", dicts), "#ff5277", 2, true);
+						else if (KinkyDungeonSlowLevel == 3) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonInching" + plugLevel).replace("plugs", dict).replace("(s)", dicts), KDBaseRed, 2, true);
+						else if (KinkyDungeonSlowLevel > 3 && KinkyDungeonSlowLevel < 10) KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrawling" + plugLevel).replace("plugs", dict).replace("(s)", dicts), KDBaseRed, 2, true);
+						else if (KinkyDungeonSlowLevel >= 10) KinkyDungeonSendActionMessage(1, TextGet("KinkyDungeonCantMove" + plugLevel).replace("plugs", dict).replace("(s)", dicts), KDBaseRed, 2, true);
 
 						let moveMult = Math.max(1, KinkyDungeonSlowLevel);
 
@@ -5508,7 +5508,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 					KDSwitchWeapon(wpn.inventoryVariant || wpn.name);
 				}
 			} else if (KinkyDungeonPlayerDamage.digSpell) {
-                KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), "white", 2);
+                KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), KDBaseWhite, 2);
                 KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
                     id: "TryingToMine",
                     type: "confirm",
@@ -5519,7 +5519,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				return KDWeapon(item)?.digSpell && KinkyDungeonCanUseWeapon(false, undefined,
 					KDWeapon(item));
 			})) {
-                KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), "white", 2);
+                KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), KDBaseWhite, 2);
                 KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
                     id: "TryingToMine",
                     type: "confirm",
@@ -5536,7 +5536,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 		} else { // If we are blind we can bump into walls!
 			if (KinkyDungeonVisionGet(moveX, moveY) <= 1) {
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Footstep.ogg");
-				KinkyDungeonSendActionMessage(2, TextGet("KDWallBump"), "white", 2);
+				KinkyDungeonSendActionMessage(2, TextGet("KDWallBump"), KDBaseWhite, 2);
 				KinkyDungeonInterruptSleep();
 				// Due to rendering system
 				if (moveDirection.y <= 0)
@@ -5638,7 +5638,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 				if (!data.cancelSprint) {
 					KinkyDungeonSetFlag("sprinted", 2);
 					KDChangeStamina("sprint", "move", "sprint", data.sprintCost, false, 1);
-					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), "lightgreen", 2);
+					KinkyDungeonSendActionMessage(5, TextGet("KDSprinting" + (KinkyDungeonSlowLevel > 1 ? "Hop" : "")), KDBaseLightGreen, 2);
 					KDChangeBalanceSrc("sprint", "move", "sprint", -KDGetBalanceCost() * (0.5 + 1 * KDRandom()) * KDBalanceSprintMult*10*KDFitnessMult(), true);
 					KinkyDungeonSetFlag("sprint", 2);
 					if (KinkyDungeonSlowLevel < 2) {
@@ -5878,7 +5878,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 
 		msg = msg + gagMsg;
 
-		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 2, 0);
+		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 2, 0);
 
 		if (KDToggles.GagParticles) {
 			KDSendGagParticles(KDPlayer());
@@ -6060,12 +6060,12 @@ function KinkyDungeonTargetTileMsg(): boolean {
 			KinkyDungeonTargetTile.Lock;
 		if (KinkyDungeonTargetTile.Faction)
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
-				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff5277", 2, true);
+				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), KDBaseRed, 2, true);
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Locked.ogg");
 		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObjectLock")
 			.replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name))
 			.replace("LKTP", TextGet(`Kinky${KinkyDungeonTargetTile.Lock}Lock`))
-		, "#ffffff", 1, true);
+		, KDBaseWhite, 1, true);
 		return true;
 	} else {
 
@@ -6073,9 +6073,9 @@ function KinkyDungeonTargetTileMsg(): boolean {
 		let suff = "";
 		if (KinkyDungeonTargetTile.Faction)
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
-				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff5277", 2, true);
+				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), KDBaseRed, 2, true);
 		if (KinkyDungeonTargetTile.Name == "Commerce") suff = "Commerce";
-		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObject" + KinkyDungeonTargetTile.Type + suff).replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), "#ffffff", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObject" + KinkyDungeonTargetTile.Type + suff).replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), KDBaseWhite, 1, true);
 
 		return true;
 	}
@@ -6186,7 +6186,7 @@ function KDAddModel (
 
 function KinkyDungeonCloseDoor(x: number, y: number) {
 	if (KinkyDungeonStatsChoice.get("Doorknobs") && KinkyDungeonIsArmsBound(true) && KinkyDungeonIsHandsBound(true, true, 0.5))
-		KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), "#ff8933", 2);
+		KinkyDungeonSendTextMessage(8, TextGet("KDCantCloseDoor"), KDBaseOrange, 2);
 	else {
 		KinkyDungeonTargetTileLocation = x + ',' + y;
 		KinkyDungeonTargetTile = null;
@@ -6194,7 +6194,7 @@ function KinkyDungeonCloseDoor(x: number, y: number) {
 		KinkyDungeonTargetTileLocation = "";
 		KDModalArea = false;
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
-		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonCloseDoorDone"), "white", 2);
+		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonCloseDoorDone"), KDBaseWhite, 2);
 		KinkyDungeonAdvanceTime(1, true);
 	}
 }

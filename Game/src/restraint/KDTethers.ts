@@ -295,7 +295,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 			if (playerDist > tether && KDistEuclidean(xTo-leash.x, yTo-leash.y) > KDistEuclidean(Entity.x-leash.x, Entity.y-leash.y)) {
 				if (Msg && leash.restraintID) {
 					if (restraint) {
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", KDGetItemName(restraint.item)), "#ff5277", 2, true);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonTetherTooShort").replace("TETHER", KDGetItemName(restraint.item)), KDBaseRed, 2, true);
 					}
 				}
 				if (Entity.player) {
@@ -401,7 +401,7 @@ function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yT
 						if (KinkyDungeonLeashingEnemy()) {
 							KinkyDungeonSetEnemyFlag(KinkyDungeonLeashingEnemy(), "harshpull", 5);
 						}
-						if (Msg && restraint) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", KDGetItemName(restraint.item)), "#ff5277", 2, true);
+						if (Msg && restraint) KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonTetherPull").replace("TETHER", KDGetItemName(restraint.item)), KDBaseRed, 2, true);
 
 					}
 				}

@@ -1,0 +1,46 @@
+let KDBaseRed = "#E30022";
+// #E30022; // cadmium red
+// #ff5277; // pinkish
+let KDBaseOrange = "#ff4e20";
+// #ED872D; // cadmium orange
+// #ff8933; // peachy
+// #ff4e20; // ochre
+let KDBaseYellow = "#FFF600";
+// #FFF600 cadmium yellow
+// #FFFf00  yellow
+let KDBasePink = "#ff66cc"; // rose pink
+// ##ffb3de; // light hotpink
+// #e25098; // raspaberry
+// #ff66cc // rose pink
+// #cc2f7b; // slime pink
+// #ff8888 // Bondage Club pink
+let KDBaseLime = "#c1f9a2"; // menthol
+// #39ff14; // neon green
+// #00ff00 // lime
+let KDBaseYellowGreen = "#c1f9a2"; // menthol
+let KDBasePurple = "#5946b2"; // plum
+// #8800ff; // original purple
+// #360ccc // interdimensional blue
+// #5218fa // plum purple
+// #5946b2 // han purple
+let KDBaseGreal = "#00ff88";
+// #00ff88 // greenish teal
+let KDBaseNeon = "#5cff67"; // lemon lime
+// #55ff55
+let KDBaseMint = "#98ff98"; // mint green
+// #88ff88
+let KDBaseLightGreen = "#98ff98"; // mint green
+// #88ff88
+let KDBaseCyan = "#15f2fd"; // lotion blue
+// #7df9ff; // electric blue
+// #00ffff // cyan
+let KDBaseBlue = "#0247fe"; // blue
+// #0000ff; // navy
+// #1c1cf0 // bluebonnet
+// #273be2 // palatinate blue
+// #0247fe // blue
+let KDBaseBaby = "##0088ff";
+let KDBaseWhite = "#fffafa" // snow
+// #fffafa snow
+let KDBaseBlack = "#010203"; // rich black
+// #000000

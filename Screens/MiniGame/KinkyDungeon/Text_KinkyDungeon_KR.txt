@@ -26280,7 +26280,7 @@ Mage
 
 ### Vanish
 
-### Make the targeted creature invisible, making you totally invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see.
+### Make the targeted creature invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see.
 
 ### The slime dissolves your clothing, leaving nothing but rubber against your skin...
 

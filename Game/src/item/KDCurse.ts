@@ -118,7 +118,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", "" + (amount)),
-			"#ffffff", 2);
+			KDBaseWhite, 2);
 		},
 	},
 	"CursedCollar": {
@@ -159,7 +159,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", "" + (Math.round(10 * ((KDItemDataQuery(item, "cursedDamageHP") || 0) - (KDItemDataQuery(item, "cursedDamage") || 0))) || "???")),
-			"#ffffff", 2);
+			KDBaseWhite, 2);
 		},
 		events: [
 			{type: "cursedDamage", trigger: "afterPlayerDamage", mult: 1.0, power: 20, limit: 40},
@@ -464,7 +464,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
 					removeOnUncurse: true},
 				{original: "MimicHoly", trigger: "inventoryTooltip",
-					type: "invtooltipworn", msg: "SkimpyCurse", color: "#000044", bgcolor: "#ffffff",
+					type: "invtooltipworn", msg: "SkimpyCurse", color: "#000044", bgcolor: KDBaseWhite,
 					removeOnUncurse: true},
 			], 4, restraint.DefaultLock || "", {});
 			if (KDSkimpyModelReplace[restraint.Model]) {
@@ -511,7 +511,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
 					removeOnUncurse: true},
 				{original: "MimicHoly", trigger: "inventoryTooltip",
-					type: "invtooltipworn", msg: "ShibariCurse", color: "#000044", bgcolor: "#ffffff",
+					type: "invtooltipworn", msg: "ShibariCurse", color: "#000044", bgcolor: KDBaseWhite,
 					removeOnUncurse: true},
 			], 8, restraint.DefaultLock || "", {shibariCurse: 10});
 			let mapGroup = KDRopeMapByGroup;
@@ -590,21 +590,21 @@ function KDAddEventVariant(restraint: restraint, newRestraintName: string, ev: K
 
 function KinkyDungeonCurseInfo(item: item, Curse: string) {
 	if (Curse == "MistressKey" && KinkyDungeonItemCount("MistressKey")) {
-		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfoMistressKeyHave").replace("KeyAmount", "" + KinkyDungeonItemCount("MistressKey")), "White", 2);
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfoMistressKeyHave").replace("KeyAmount", "" + KinkyDungeonItemCount("MistressKey")), KDBaseWhite, 2);
 	} else if (KDCurses[Curse].customInfo) {
 		KDCurses[Curse].customInfo(item, Curse);
 	} else {
-		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse), "White", 2);
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse), KDBaseWhite, 2);
 	}
 }
 
 function KinkyDungeonCurseStruggle(item: item, Curse: string) {
 	if (Curse == "MistressKey") {
-		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse + item.name), "White", 2);
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse + item.name), KDBaseWhite, 2);
 	} else if (KDCurses[Curse].customStruggle) {
 		KDCurses[Curse].customStruggle(item, Curse);
 	} else {
-		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse), "White", 2);
+		KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseStruggle" + Curse), KDBaseWhite, 2);
 	}
 }
 

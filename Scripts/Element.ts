@@ -2,7 +2,7 @@ let KDTextBoxStyle = {
 	backgroundColor: "#000000a0",
 	fontFamily: "'Courier New', 'Arial', sans-serif",
 	fontSize: "14px",
-	color: "#ffffff",
+	color: KDBaseWhite,
 	lineHeight: 1.6,
 };
 

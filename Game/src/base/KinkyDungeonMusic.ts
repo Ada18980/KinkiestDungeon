@@ -51,12 +51,12 @@ function KDDrawMusic(delta: number): void {
 				Top: KDMusicY - KDMusicYMax,
 				Width: 1000,
 				Height: KDMusicYMax,
-				Color: "#000000",
+				Color: KDBaseBlack,
 				alpha: 0.8,
 				zIndex: 209.9,
 			}
 		);
-		DrawTextFitKD(KDMusicToast, 1000, KDMusicY - KDMusicYMax/2, 1000, "#ffffff", "#000000", 32, "center", 210);
+		DrawTextFitKD(KDMusicToast, 1000, KDMusicY - KDMusicYMax/2, 1000, KDBaseWhite, KDBaseBlack, 32, "center", 210);
 	}
 }
 

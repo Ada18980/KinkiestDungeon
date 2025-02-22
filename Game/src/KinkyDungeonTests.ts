@@ -126,8 +126,8 @@ function KDAddTestVariant(name: string): void {
 		events:[
 			{type: "ItemLight", trigger: "getLights", power: 3.5, color: "#ffff55", inheritLinked: true},
 			{trigger: "tick", type: "sneakBuff", power: -1.0, inheritLinked: true},
-			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: "#ff5277", inheritLinked: true},
-			{trigger: "inventoryTooltip", type: "varModifier", msg: "Evasion", power: 50, color: "#88ff88", bgcolor: "#004400"}
+			{trigger: "drawSGTooltip", type: "curseInfo", msg: "Illumination", color: KDBaseRed, inheritLinked: true},
+			{trigger: "inventoryTooltip", type: "varModifier", msg: "Evasion", power: 50, color: KDBaseMint, bgcolor: "#004400"}
 		]};
 	KDEquipInventoryVariant(variant);
 }

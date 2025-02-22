@@ -85,7 +85,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 					return true;
 				}, true,
 				XX, YY,
-				wid, wid, "", "#ffffff",
+				wid, wid, "", KDBaseWhite,
 				preview, undefined, undefined,
 				KDNPCBindingSelectedSlot?.id != sgroup.id,
 				KDButtonColor, undefined, undefined, {
@@ -145,7 +145,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		if (tooltip)
 			DrawTextFitKD(TextGet("KDBindNPCSlot_" + tooltip),
-				x + paddingFirstCol + 25, YY - 12, 400, "#ffffff", KDTextGray1,
+				x + paddingFirstCol + 25, YY - 12, 400, KDBaseWhite, KDTextGray1,
 				18, "center"
 			);
 
@@ -172,7 +172,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				return true;
 			}, currentItem?.faction != undefined, 1100, 920, 250, 64,
 			TextGet("KDSetDefaultNPCPalette") + TextGet("KDPalette" + (KDDefaultNPCBindPalette || "")),
-			"#ffffff"
+			KDBaseWhite
 			);
 			DrawButtonKDEx("npcpaletteSetAll", () => {
 				if (currentItem) {
@@ -187,7 +187,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				return true;
 			}, currentItem?.faction != undefined, 800, 920, 250, 64,
 			TextGet("KDSetNPCPaletteAll"),
-			"#ffffff"
+			KDBaseWhite
 			);
 
 			KDDrawPalettes(1300, 250, KDPaletteWidth, 72, currentItem?.faction || "", (palette) => {
@@ -240,7 +240,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								if (condition) {
 									KinkyDungeonSendTextMessage(8,
 										TextGet("KDBondageCondition_" + condition),
-										"#ff5277", 1, true);
+										KDBaseRed, 1, true);
 								} else {
 									KDSendInput("addNPCRestraint", {
 										slot: slot.id,
@@ -267,9 +267,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								if (condition) {
 									KinkyDungeonSendTextMessage(8,
 										TextGet("KDBondageCondition_" + condition),
-										"#ff5277", 1, true);
+										KDBaseRed, 1, true);
 								} else {
-									KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5277", 1, true);
+									KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), KDBaseRed, 1, true);
 								}
 							}
 
@@ -318,7 +318,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						if (condition) {
 							KinkyDungeonSendTextMessage(8,
 								TextGet("KDBondageCondition_" + condition),
-								"#ff5277", 1, true);
+								KDBaseRed, 1, true);
 						} else {
 							KDSendInput("addNPCRestraint", {
 								slot: slot.id,
@@ -339,9 +339,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						if (condition) {
 							KinkyDungeonSendTextMessage(8,
 								TextGet("KDBondageCondition_" + condition),
-								"#ff5277", 1, true);
+								KDBaseRed, 1, true);
 						} else {
-							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5277", 1, true);
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), KDBaseRed, 1, true);
 						}
 					}
 
@@ -366,14 +366,14 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		if (currentItem) {
 			DrawTextFitKD(TextGet("KDCurrentItem") + KDGetItemNameString(currentItem.name),
-			x + 570, 130, 500, "#ffffff", KDTextGray1,
+			x + 570, 130, 500, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 		}
 
 		if (ss?.tooltipitem) {
 			DrawTextFitKD(TextGet("KDCurrentItem2") + KDGetItemName(ss.tooltipitem.item),
-			x + 570, 180, 500, "#ffffff", KDTextGray1,
+			x + 570, 180, 500, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 		}
@@ -384,7 +384,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			return true;
 		}, true, 1400, 920, 250, 64,
 		TextGet(currentBottomTab ? "KDSetRestraintPaletteReturn" : "KDSetRestraintPalette"),
-		"#ffffff"
+		KDBaseWhite
 		);
 		if (!currentBottomTab)
 			DrawButtonKDEx("genericrestraint", () => {
@@ -393,7 +393,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 				return true;
 			}, true, 1100, 920, 250, 64,
 			TextGet("KDSetRestraintGeneric"),
-			"#ffffff"
+			KDBaseWhite
 			);
 		// TODO add properties
 	}
@@ -408,17 +408,17 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						player: KDPlayer().id,
 					});
 				else {
-					KinkyDungeonSendTextMessage(10, TextGet("KDNeedsTighten"), "#ffffff", 2, true, true);
+					KinkyDungeonSendTextMessage(10, TextGet("KDNeedsTighten"), KDBaseWhite, 2, true, true);
 				}
 				if (KDSoundEnabled())
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 				return true;
 			}, true, x + 5, y + 740, 80, 80,
-			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Tighten.png",
+			"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Tighten.png",
 			undefined, undefined, false,
 			(!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect) ?
-				KDButtonColor : "#ff5277")) {
-					DrawTextFitKD(TextGet("KDTightenRestraint"), x + 0, y + 720, 500, "#ffffff",
+				KDButtonColor : KDBaseRed)) {
+					DrawTextFitKD(TextGet("KDTightenRestraint"), x + 0, y + 720, 500, KDBaseWhite,
 					KDTextGray0, 18, "left");
 
 				}
@@ -746,7 +746,7 @@ function KDInputSetNPCRestraint(data, container?: Record<string, item>): boolean
 			if (condition) {
 				KinkyDungeonSendTextMessage(8,
 					TextGet("KDBondageCondition_" + condition),
-					"#ff5277", 1, true);
+					KDBaseRed, 1, true);
 				return false;
 			}
 		}
@@ -956,7 +956,7 @@ function KDGetExpectedBondageAmount(id: number, target: entity, allowConjured: b
 				already[item.id] = true;
 				result[stats.type] = (result[stats.type] || 0) + stats.amount;
 			} else if (item) {
-				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5277", 2, true);
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), KDBaseRed, 2, true);
 			}
 		}
 	}
@@ -1013,7 +1013,7 @@ function KDGetNPCEscapableRestraints(id: number, target: entity, bypass: boolean
 					retval.push({slot: entry[0], inv: entry[1], points: strugglePoints[stats.type], target: stats.amount});
 				}
 			} else if (entry[1]) {
-				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5277", 2, true);
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), KDBaseRed, 2, true);
 			}
 
 		}
@@ -1115,14 +1115,14 @@ function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscaped").replace(
 						"NPC",
 						value.name
-					), "#ff5277", 1);
+					), KDBaseRed, 1);
 				} else {
 					KDSetCollFlag(value.id, "escapegrace", -1);
 					value.escapegrace = true;
 					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscapeGrace").replace(
 						"NPC",
 						value.name
-					), "#ff5277", 1);
+					), KDBaseRed, 1);
 				}
 
 			} else {
@@ -1245,7 +1245,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			: KinkyDungeonRootDirectory + "Items/" + cat.consumableRaw + ".png";
 		let inventoryItem = KinkyDungeonInventoryGetSafe(cat.raw || cat.consumableRaw);
 		DrawTextFitKD("" + (inventoryItem?.quantity || 0),
-		x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+		x + XX + 32, y + YY + 60, 72, KDBaseWhite, KDTextGray0, 18, "left", 160);
 		if (KDSelectedGenericRestraintType == (cat.raw || cat.consumableRaw)) iin = index;
 		if (DrawButtonKDExScroll(
 			"res_gen_list" + (cat.raw || cat.consumableRaw),
@@ -1269,7 +1269,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			}, true,
 
 			x + XX + 32, y + YY, 72, 72, "",
-			"#ffffff", preview,
+			KDBaseWhite, preview,
 			undefined, false, !selected, KDButtonColor, undefined, true,
 			{
 				scaleImage: true,
@@ -1280,7 +1280,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 		)) {
 			DrawTextFitKD(TextGet("KDCurrentItemRaw")
 				+ KDGetItemNameString(cat.raw || cat.consumableRaw),
-			x + secondXX + KDGenericBindSpacing, 180, 500, "#ffffff", KDTextGray1,
+			x + secondXX + KDGenericBindSpacing, 180, 500, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 			highlightedItem = "Null";
@@ -1307,7 +1307,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			x + secondXX,
 			y + 200,
 			2 * secondXX,
-			"#ffffff", KDTextGray0
+			KDBaseWhite, KDTextGray0
 		);
 	} else if (selectedcat) {
 		let quantity = KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw)?.quantity;
@@ -1347,7 +1347,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			//let inventoryItem = KinkyDungeonInventoryGetSafe(item.restraint);
 			//if (inventoryItem)
 			DrawTextFitKD(TextGet("KDCost") + (item.count),
-			x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+			x + XX + 32, y + YY + 60, 72, KDBaseWhite, KDTextGray0, 18, "left", 160);
 			if (KDSelectedGenericBindItem == item.restraint) ii = index;
 			if (DrawButtonKDExScroll(
 				"gen_bind_list" + item.restraint,
@@ -1373,7 +1373,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 				}, true,
 
 				x + XX + 32, y + YY, 72, 72, "",
-				"#ffffff", img,
+				KDBaseWhite, img,
 				undefined, false,
 				((quantity || 0) < item.count) || !selected,
 				((quantity || 0) < item.count) ? "#b74539" : (npc ?
@@ -1395,7 +1395,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 				if (!highlightedItem) {
 					DrawTextFitKD(TextGet(KDSelectedGenericBindItem == item.restraint ? "KDCurrentItem2" : "KDCurrentItem3")
 					+ KDGetItemNameString(item.restraint),
-					x + secondXX + KDGenericBindSpacing, 180, 500, "#ffffff", KDTextGray1,
+					x + secondXX + KDGenericBindSpacing, 180, 500, KDBaseWhite, KDTextGray1,
 					36, "center"
 					);
 					highlightedItem = item.restraint;

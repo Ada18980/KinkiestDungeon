@@ -3967,7 +3967,7 @@ RestraintKittyMuzzleDesc,"A muzzle used to keep a Bast gag secure."
 RestraintKittyMuzzleDesc2,"The leather panel is tough and tight."
 RestraintKittyMuzzleHeavy,Blessed Muzzle
 RestraintKittyMuzzleHeavyDesc,"A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably."
-RestraintKittyMuzzleHeavyDesc2,"Made of an ancient and exotic form of latex."
+RestraintKittyMuzzleHeavyDesc2,"Made of an ancient and exotic form of leather."
 RestraintKittyBlindfold,Bast Blindfold
 RestraintKittyBlindfoldDesc,"A blindfold used to aid in meditation."
 RestraintKittyBlindfoldDesc2,"It is padded but still lets some light through."
@@ -26407,7 +26407,7 @@ ItemPickupShieldMagic,"You pick up a runic shield."
 
 KinkyDungeonSpellGreaterInvisibility,Vanish
 KinkyDungeonSpellTargetGreaterInvisibility,Select which creature to buff
-KinkyDungeonSpellDescriptionGreaterInvisibility,"Make the targeted creature invisible, making you totally invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see."
+KinkyDungeonSpellDescriptionGreaterInvisibility,"Make the targeted creature invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see."
 KinkyDungeonSpellCastGreaterInvisibility,You snap your fingers!
 
 KinkyDungeonSlimeSpreadSuit,"The slime dissolves your clothing, leaving nothing but rubber against your skin..."

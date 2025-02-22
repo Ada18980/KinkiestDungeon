@@ -106,10 +106,10 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	);
 
 	DrawTextFitKD(TextGet("KDContainerType_" + container?.type),
-		xOffset + 1600, 270, 500, "#ffffff", undefined, 28, undefined, 70);
+		xOffset + 1600, 270, 500, KDBaseWhite, undefined, 28, undefined, 70);
 
 	//DrawTextFitKD("<->",
-	//	xOffset + 1300, 750, 200, "#ffffff", undefined, 48, undefined, 70);
+	//	xOffset + 1300, 750, 200, KDBaseWhite, undefined, 48, undefined, 70);
 
 	let YourInv = invMsg ? {
 		selected: null,
@@ -126,7 +126,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 
 	if (invMsg) {
 		DrawTextFitKD(TextGet(invMsg),
-		xOffset + 850, 550, 500, "#ffffff", undefined, 32, undefined, 70);
+		xOffset + 850, 550, 500, KDBaseWhite, undefined, 32, undefined, 70);
 
 	}
 
@@ -185,12 +185,12 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			),10))
 			: (KDConsumable(item)?.rarity || KDWeapon(item)?.rarity || 0))
 		)}`,
-			XX, YY + 200 + i * descSpacing, 500, "#ffffff", undefined, fSize + 4, undefined, 70);
+			XX, YY + 200 + i * descSpacing, 500, KDBaseWhite, undefined, fSize + 4, undefined, 70);
 		i++;
 		i++;
 		for (let N = 0; N < textSplit.length; N++) {
 			DrawTextFitKD(textSplit[N],
-				XX, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit[N]).length / 40), "#ffffff", undefined, fSize, undefined, 70);
+				XX, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit[N]).length / 40), KDBaseWhite, undefined, fSize, undefined, 70);
 			i++;
 		}
 		i = 0;
@@ -201,7 +201,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		}
 		for (let N = 0; N < textSplit2.length; N++) {
 			DrawTextFitKD(textSplit2[N],
-				XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit2[N]).length / 40), "#ffffff", undefined, fSize, undefined, 70);
+				XX + 400, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit2[N]).length / 40), KDBaseWhite, undefined, fSize, undefined, 70);
 			i++;
 		}
 		for (let N = 0; N < data.extraLines.length; N++) {
@@ -223,7 +223,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake1" : "KDAdd1").replace("ITMN", KDGetItemName(item)),
-			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[0]),
 				hotkeyPress: KinkyDungeonKeySpell[0],
 			}
@@ -236,7 +236,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTake5" : "KDAdd5").replace("ITMN", KDGetItemName(item)),
-			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[1]),
 				hotkeyPress: KinkyDungeonKeySpell[1],
 			}
@@ -250,7 +250,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll" : "KDAddAll").replace("ITMN", KDGetItemName(item)),
-			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[2]),
 				hotkeyPress: KinkyDungeonKeySpell[2],
 			}
@@ -264,7 +264,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, true, 1070, 600 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeAll1" : "KDAddAll1").replace("ITMN", KDGetItemName(item)),
-			"#ffffff", undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
+			KDBaseWhite, undefined, undefined, undefined, true, KDButtonColor, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[3]),
 				hotkeyPress: KinkyDungeonKeySpell[3],
 			}
@@ -294,7 +294,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				return true;
 			}, InvToTransfer.length > 0, 1070, 600 + 20 + ii++*spacing, 200, 60,
 			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDTakeEverything" : "KDDepositEverything"),
-			InvToTransfer.length > 0 ? "#ffffff" : "#999999", undefined, undefined, undefined, true,
+			InvToTransfer.length > 0 ? KDBaseWhite : "#999999", undefined, undefined, undefined, true,
 			KDButtonColor, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[4]),
 				hotkeyPress: KinkyDungeonKeySpell[4],
@@ -308,7 +308,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			KinkyDungeonDrawState = KDUI_ContainerBackScreen ? KDUI_ContainerBackScreen : "Game";
 			return true;
 		}, true, 1300, 900, 350, 64, TextGet("KDContainerBack_" + KDUI_ContainerBackScreen),
-		"#ffffff", undefined
+		KDBaseWhite, undefined
 	)
 
 	KDDrawInventoryTabs(xOffset);

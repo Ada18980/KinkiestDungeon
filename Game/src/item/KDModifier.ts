@@ -60,7 +60,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 
 					return [
 						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: "spellDamageBuff", time: time, power: 0.01*amt, desc: "SpellDamageBuff", buffSprite: "SpellDamageUp", },
-						{original: "SpellDamageBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "SpellDamageBuff", power: amt, duration: time, color: "#000000", bgcolor: "#8888ff"},
+						{original: "SpellDamageBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "SpellDamageBuff", power: amt, duration: time, color: KDBaseBlack, bgcolor: "#8888ff"},
 						{original: "SpellDamageBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: "#ff8933"},
 					];
 				},
@@ -98,7 +98,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 
 					return [
 						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: type + "DamageBuff", time: time, power: 0.01*amt, desc: "ElementalBuff", damage: data.element, buffSprite: "SpellDamageUp",},
-						{original: "ElementalBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "ElementalBuff", damage: data.element, power: amt, duration: time, color: "#000000",
+						{original: "ElementalBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "ElementalBuff", damage: data.element, power: amt, duration: time, color: KDBaseBlack,
 							bgcolor: KinkyDungeonDamageTypes[type].color},
 						{original: "ElementalBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: KinkyDungeonDamageTypes[type].color},
 					];
@@ -137,7 +137,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 
 					return [
 						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: type + "DamageResist", time: time, power: 0.01*amt, desc: "ElementalResist", damage: data.element, buffSprite: "SpellDamageUp",},
-						{original: "ElementalResist", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "ElementalResist", damage: data.element, power: amt, duration: time, color: "#000000",
+						{original: "ElementalResist", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "ElementalResist", damage: data.element, power: amt, duration: time, color: KDBaseBlack,
 							bgcolor: KinkyDungeonDamageTypes[type].color},
 						{original: "ElementalResist", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, bgcolor: KinkyDungeonDamageTypes[type].color},
 					];
@@ -176,7 +176,7 @@ let KDModifierConditions: Record<string, KDModifierCondition> = {
 						}
 					}
 					return [
-						{original: "OnTease", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnTease", color: "#000000", bgcolor: "#ffffff"},
+						{original: "OnTease", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnTease", color: KDBaseBlack, bgcolor: KDBaseWhite},
 						...effects];
 				},
 			},
@@ -212,7 +212,7 @@ let KDModifierConditions: Record<string, KDModifierCondition> = {
 						}
 					}
 					return [
-						{original: "OnElementalSpell", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnElementalCast", damage: data.element, color: "#000000", bgcolor: "#ffffff"},
+						{original: "OnElementalSpell", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnElementalCast", damage: data.element, color: KDBaseBlack, bgcolor: KDBaseWhite},
 						...effects];
 				},
 			},

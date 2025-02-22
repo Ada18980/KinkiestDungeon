@@ -117,7 +117,7 @@ function KinkyDungeonDropItem(Item: any, Origin: any, PreferOrigin: boolean, noM
 
 		KDMapData.GroundItems.push(dropped);
 		if (!noMsg)
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDrop" + Item.name), "#ff5277", 2);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonDrop" + Item.name), KDBaseRed, 2);
 
 		return true;
 	}
@@ -126,7 +126,7 @@ function KinkyDungeonDropItem(Item: any, Origin: any, PreferOrigin: boolean, noM
 }
 
 function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
-	let color = "white";
+	let color = KDBaseWhite;
 	let priority = 1;
 	let sfx = "Coins";
 	let name = Item.name;
@@ -148,7 +148,7 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		return KinkyDungeonNewLore();
 	} else if (Item.name == "Pick") {
 		priority = 2;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KDAddConsumable("Pick", 1);
 	} else if (Item.name == "MagicSword") {
 		priority = 8;
@@ -156,17 +156,17 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		KinkyDungeonInventoryAddWeapon("MagicSword");
 	} else if (Item.name == "Scrolls") {
 		priority = 4;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, 1);
 		KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, 1);
 	} else if (Item.name == "Knife") {
 		priority = 2;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KinkyDungeonInventoryAddWeapon("Knife");
 	} else if (Item.name == "Knives") {
 		priority = 3;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KinkyDungeonInventoryAddWeapon("Knife");
 		if (!KinkyDungeonPlayerDamage || KinkyDungeonPlayerDamage.unarmed) {
 			KDSetWeapon("Knife");
@@ -174,7 +174,7 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		}
 	} else if (Item.name == "EnchKnife") {
 		priority = 2;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KinkyDungeonInventoryAddWeapon("EnchKnife");
 		if (!KinkyDungeonPlayerDamage || KinkyDungeonPlayerDamage.unarmed) {
 			KDSetWeapon("EnchKnife");
@@ -182,11 +182,11 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		}
 	} else if (Item.name == "RedKey") {
 		priority = 2;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KDAddConsumable("RedKey", 1);
 	} else if (Item.name == "BlueKey") {
 		priority = 2;
-		color = "lightgreen";
+		color = KDBaseLightGreen;
 		KDAddConsumable("BlueKey", 1);
 	} else if (KDConsumable(Item)) {
 		if (KinkyDungeonWeaponVariants[Item.name]) {
@@ -198,7 +198,7 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 			let item = KinkyDungeonFindConsumable(Item.name);
 			priority = item.rarity;
 			if (item.potion) sfx = "PotionDrink";
-			color = "white";
+			color = KDBaseWhite;
 			KinkyDungeonChangeConsumable(item, Item.amount || 1);
 		}
 	} else if (KDWeapon(Item)) {
@@ -228,14 +228,14 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 				if (!KinkyDungeonInventoryGetLoose(Item.name).quantity) KinkyDungeonInventoryGetLoose(Item.name).quantity = 0;
 				KinkyDungeonInventoryGetLoose(Item.name).quantity += Item.amount || 1;
 			}
-			color = "#ffffff";
+			color = KDBaseWhite;
 			name = "Generic";
 			replace = TextGet("Restraint" + Item.name);
 		}
 
 	} else if (KDOutfit(Item)) {
 		priority = 1;
-		color = "white";
+		color = KDBaseWhite;
 		KinkyDungeonInventoryAddOutfit(Item.name);
 	} else if (Item.name == "Heart") {
 		if (KinkyDungeonStatDistractionMax >= KDMaxStat && KinkyDungeonStatStaminaMax >= KDMaxStat && KinkyDungeonStatManaMax >= KDMaxStat && KinkyDungeonStatWillMax >= KDMaxStat) {
@@ -312,7 +312,7 @@ function KinkyDungeonItemCheck(x: number, y: number, _Index: number, autoEquip?:
 		}
 	}
 	if (msg) {
-		KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), "#ff8933",1, false, true);
+		KinkyDungeonSendTextMessage(6, TextGet("KDCantTouchThat"), KDBaseOrange,1, false, true);
 	}
 }
 
@@ -363,29 +363,29 @@ function KinkyDungeonDrawItems(_canvasOffsetX: number, _canvasOffsetY: number, C
 
 function KinkyDungeonDrawHeart() {
 
-	DrawTextKD(TextGet("KinkyDungeonHeartIntro"), 1250, 200, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonHeartIntro1"), 1250, 300, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonHeartIntro2"), 1250, 350, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonHeartIntro3"), 1250, 400, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("KinkyDungeonHeartIntro4"), 1250, 450, "#ffffff", KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonHeartIntro"), 1250, 200, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonHeartIntro1"), 1250, 300, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonHeartIntro2"), 1250, 350, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonHeartIntro3"), 1250, 400, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("KinkyDungeonHeartIntro4"), 1250, 450, KDBaseWhite, KDTextGray2);
 
-	DrawTextKD(TextGet("StatDistraction").replace("PERCENT", "" + Math.round(100*KinkyDungeonStatDistractionMax / KDMaxStatStart)), 650 + 250/2, 650, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("StatStamina").replace("CURRENT/MAX", "" + KinkyDungeonStatStaminaMax * KDMaxStatStart), 950 + 250/2, 650, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("StatMana").replace("CURRENT/MAX", "" + KinkyDungeonStatManaMax * KDMaxStatStart), 1250 + 250/2, 650, "#ffffff", KDTextGray2);
-	DrawTextKD(TextGet("StatWill").replace("CURRENT/MAX", "" + KinkyDungeonStatWillMax * KDMaxStatStart), 1550 + 250/2, 650, "#ffffff", KDTextGray2);
+	DrawTextKD(TextGet("StatDistraction").replace("PERCENT", "" + Math.round(100*KinkyDungeonStatDistractionMax / KDMaxStatStart)), 650 + 250/2, 650, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("StatStamina").replace("CURRENT/MAX", "" + KinkyDungeonStatStaminaMax * KDMaxStatStart), 950 + 250/2, 650, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("StatMana").replace("CURRENT/MAX", "" + KinkyDungeonStatManaMax * KDMaxStatStart), 1250 + 250/2, 650, KDBaseWhite, KDTextGray2);
+	DrawTextKD(TextGet("StatWill").replace("CURRENT/MAX", "" + KinkyDungeonStatWillMax * KDMaxStatStart), 1550 + 250/2, 650, KDBaseWhite, KDTextGray2);
 
 	// Fix softlock
 	//if ((KinkyDungeonStatDistractionMax > KDMaxStat && KinkyDungeonStatStaminaMax > KDMaxStat && KinkyDungeonStatManaMax > KDMaxStat && KinkyDungeonStatWillMax > KDMaxStat)) KinkyDungeonDrawState = "Game";
 
-	DrawButtonVis(650, 700, 250, 60, TextGet("KinkyDungeonHeartDistraction"), KinkyDungeonStatDistractionMax < KDMaxStat ? "#ffffff" : "#999999");
-	DrawButtonVis(950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), KinkyDungeonStatStaminaMax < KDMaxStat ? "#ffffff" : "#999999");
-	DrawButtonVis(1250, 700, 250, 60, TextGet("KinkyDungeonHeartMana"), KinkyDungeonStatManaMax < KDMaxStat ? "#ffffff" : "#999999");
-	DrawButtonVis(1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
+	DrawButtonVis(650, 700, 250, 60, TextGet("KinkyDungeonHeartDistraction"), KinkyDungeonStatDistractionMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonVis(950, 700, 250, 60, TextGet("KinkyDungeonHeartStamina"), KinkyDungeonStatStaminaMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonVis(1250, 700, 250, 60, TextGet("KinkyDungeonHeartMana"), KinkyDungeonStatManaMax < KDMaxStat ? KDBaseWhite : "#999999");
+	DrawButtonVis(1550, 700, 250, 60, TextGet("KinkyDungeonHeartWill"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
 
 	DrawButtonKDEx("discardheart", (_bdata) => {
 		KinkyDungeonDrawState = "Game";
 		return true;
-	}, CommonTime() > KinkyDungeonDialogueTimer, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? "#ffffff" : "#999999");
+	}, CommonTime() > KinkyDungeonDialogueTimer, 1000, 850, 450, 60, TextGet("KinkyDungeonHeartDiscard"), KinkyDungeonStatWillMax < KDMaxStat ? KDBaseWhite : "#999999");
 }
 
 function KinkyDungeonHandleHeart() {
@@ -429,8 +429,8 @@ function KDDrawItemsTooltip(items: any[], offset: number): number {
 	let TooltipList = [];
 	TooltipList.push({
 		str: TextGet("KDTooltipItems"),
-		fg: "#ffffff",
-		bg: "#000000",
+		fg: KDBaseWhite,
+		bg: KDBaseBlack,
 		size: 24,
 		center: true,
 	});
@@ -447,7 +447,7 @@ function KDDrawItemsTooltip(items: any[], offset: number): number {
 		TooltipList.push({
 			str: (i == imax ? line.substring(0, line.length - 1) + "..." : line),
 			fg: "#dddddd",
-			bg: "#000000",
+			bg: KDBaseBlack,
 			size: 18,
 			center: true,
 		});

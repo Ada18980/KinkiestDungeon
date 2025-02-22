@@ -16,13 +16,13 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindCopy.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/AutoBindCopy.png",
 	undefined, undefined, entity != undefined,
-	(!KDGetNPCRestraints(value.id) || Object.values(KDGetNPCRestraints(value.id)).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+	(!KDGetNPCRestraints(value.id) || Object.values(KDGetNPCRestraints(value.id)).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 		hotkeyPress: KinkyDungeonKeyUpcast[0],
 	})) {
-		DrawTextFitKD(TextGet("KDAutoBindCopy"), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDAutoBindCopy"), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 	if (DrawButtonKDEx("NPCPasteBondage", (b) => {
@@ -80,9 +80,9 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindPaste.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/AutoBindPaste.png",
 	undefined, undefined, entity != undefined,
-	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
 		hotkeyPress: KinkyDungeonKeyEnter[0],
 	})) {
@@ -102,7 +102,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				}
 			}
 
-		DrawTextFitKD(TextGet(missingAll ? "KDAutoBindPasteNone" : "KDAutoBindPaste").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet(missingAll ? "KDAutoBindPasteNone" : "KDAutoBindPaste").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("RestrainFree", (b) => {
@@ -112,19 +112,19 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 				player: KDPlayer().id,
 			});
 		else {
-			KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
+			KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), KDBaseWhite, 2, true, true);
 		}
 		if (KDSoundEnabled())
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/RestrainFree.png",
 	undefined, undefined, false, (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect) ?
-	KDButtonColor : "#ff5277", undefined, undefined, {
+	KDButtonColor : KDBaseRed, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
 	})) {
-		DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 
@@ -190,9 +190,9 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/AutoBindPasteAllOver.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/AutoBindPasteAllOver.png",
 	undefined, undefined, entity != undefined,
-	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? "#ff5277" : KDButtonColor)) {
+	(!KDAutoBindRestraints || KDNPCUnavailable(value.id, value.status)) ? KDBaseRed : KDButtonColor)) {
 		let missingAll = KDAutoBindRestraints ? Object.values(KDAutoBindRestraints).length > 0 : false;
 		if (KDAutoBindRestraints)
 			for (let inv of Object.entries(KDAutoBindRestraints)) {
@@ -208,7 +208,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 					break;
 				}
 			}
-		DrawTextFitKD(TextGet(missingAll ? "KDAutoBindPasteNone" : "KDAutoBindPasteAll").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet(missingAll ? "KDAutoBindPasteNone" : "KDAutoBindPasteAll").replace("NME", KDAutoBindRestraintsName), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 

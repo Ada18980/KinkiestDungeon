@@ -47,7 +47,7 @@ const KDBurning: KDBuff = {id: "Burning", type: "event", aura: "#ff8933", auraSp
 	{type: "EchoDamage", power: 1.0, damage: "fire", damageTrigger: "stun", trigger: "playerTakeDamage"},
 ]};
 
-const KDTrainingUnit: KDBuff = {id: "TrainingUnit", type: "TrainingUnit", aura: "#00ff00", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true,
+const KDTrainingUnit: KDBuff = {id: "TrainingUnit", type: "TrainingUnit", aura: KDBaseLime, power: -0.5, player: false, duration: 9999, infinite: true, enemies: true,
 	events: [
 		{type: "TrainingUnit", trigger: "tick"},
 		{type: "TrainingUnitReveal", trigger: "tick"},
@@ -57,7 +57,7 @@ const KDTrainingUnit: KDBuff = {id: "TrainingUnit", type: "TrainingUnit", aura: 
 const KDDisenchant1: KDBuff = {id: "Disenchant1", type: "MoveSpeed", aura: "#440088", power: -0.5, player: false, duration: 9999, infinite: true, enemies: true};
 const KDDisenchant2: KDBuff = {id: "Disenchant2", type: "AttackSlow", aura: "#440088", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true};
 
-const KDVolcanism: KDBuff = {id: "Volcanism", type: "event", aura: "#ff5277", power: 0.5, player: false, duration: 9999, infinite: true, enemies: true, events: [
+const KDVolcanism: KDBuff = {id: "Volcanism", type: "event", aura: KDBaseRed, power: 0.5, player: false, duration: 9999, infinite: true, enemies: true, events: [
 	{type: "Volcanism", power: 4.0, damage: "fire", trigger: "beforeDamageEnemy"},
 ]};
 
@@ -211,7 +211,7 @@ const KDGlueResist: KDBuff = {
 	id: "GlueVuln", type: "glueDamageResist", power: 0.5, player: false, enemies: true, duration: 1
 };
 const KDDollDebuff: KDBuff = {
-	id: "DollDebuff", type: "soulDamageResist", power: -0.5, player: false, enemies: true, duration: 2, aura: "#ff8888",
+	id: "DollDebuff", type: "soulDamageResist", power: -0.5, player: false, enemies: true, duration: 2, aura: KDBasePink,
 };
 const KDDollDebuff2: KDBuff = {
 	id: "DollDebuff2", type: "charmDamageResist", power: -0.5, player: false, enemies: true, duration: 2
@@ -230,7 +230,7 @@ const KDAttackSlow: KDBuff = {
 };
 
 
-const KDAntiMagicMiscast: KDBuff = {id: "AntiMagicMiscast", aura: "#00ffff", type: "Miscast", power: 0.5, player: false, enemies: true,
+const KDAntiMagicMiscast: KDBuff = {id: "AntiMagicMiscast", aura: KDBaseCyan, type: "Miscast", power: 0.5, player: false, enemies: true,
 	duration: 2,};
 
 const KDUnsteady: KDBuff = {id: "Unsteady", aura: "#aa8888", type: "MoveSpeed", power: -1.0, player: true, enemies: true, duration: 1,};
@@ -245,7 +245,7 @@ function KDChillWalk(entity: entity) {
 	return KDEntityHasBuff(entity, "ChillWalk") || KDEntityHasBuff(entity, "ChillWalk2");
 }
 
-const KDRestraintDisarmLight: KDBuff = {id: "RestDisarmLight", aura: "#ff5277", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
+const KDRestraintDisarmLight: KDBuff = {id: "RestDisarmLight", aura: KDBaseRed, type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
 	{type: "RemoveRestraint", trigger: "tick"},
 	{type: "ApplyDisarm", trigger: "playerAttack"},
 ]};
@@ -278,7 +278,7 @@ let KDBuffClick: Record<string, (buff: KDBuff, entity: entity) => void> = {
 			b.duration = 0;
 		} else {
 			KinkyDungeonApplyBuffToEntity(entity,
-				{id: "d_SlimeMimic", click: "SlimeMimic", type: "d_SlimeMimic", aura: "#ffffff", auraSprite: "Null", duration: 9999, infinite: true, power: 1}
+				{id: "d_SlimeMimic", click: "SlimeMimic", type: "d_SlimeMimic", aura: KDBaseWhite, auraSprite: "Null", duration: 9999, infinite: true, power: 1}
 			);
 		}
 	},
@@ -288,11 +288,11 @@ let KDBuffClick: Record<string, (buff: KDBuff, entity: entity) => void> = {
 		if (b && b.duration > 0) {
 			b.duration = 0;
 			KinkyDungeonApplyBuffToEntity(entity,
-				{id: "e_OrgasmResist", click: "OrgasmResist", type: "e_OrgasmResist", buffSprite: true, aura: "#ffffff", auraSprite: "Null", duration: 9999, infinite: true, power: 1}
+				{id: "e_OrgasmResist", click: "OrgasmResist", type: "e_OrgasmResist", buffSprite: true, aura: KDBaseWhite, auraSprite: "Null", duration: 9999, infinite: true, power: 1}
 			);
 		} else {
 			KinkyDungeonApplyBuffToEntity(entity,
-				{id: "d_OrgasmResist", click: "OrgasmResist", type: "d_OrgasmResist", buffSprite: true, aura: "#ffffff", auraSprite: "Null", duration: 9999, infinite: true, power: 1}
+				{id: "d_OrgasmResist", click: "OrgasmResist", type: "d_OrgasmResist", buffSprite: true, aura: KDBaseWhite, auraSprite: "Null", duration: 9999, infinite: true, power: 1}
 			);
 			if (KinkyDungeonPlayerBuffs.e_OrgasmResist) KinkyDungeonPlayerBuffs.e_OrgasmResist.duration = 0;
 		}

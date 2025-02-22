@@ -64,7 +64,7 @@ let KDFurniture = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), "lightgreen", 1, true);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -127,7 +127,7 @@ let KDFurniture = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), "lightgreen", 1, true);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -192,7 +192,7 @@ let KDFurniture = {
 						tags: ["Sneak", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), "lightgreen", 1, true);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},
@@ -331,7 +331,7 @@ let KDFurniture = {
 						tags: ["Sneak", "darkness", "move", "cast"],
 					});
 				}
-				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), "lightgreen", 1, true);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonCage" + power), KDBaseLightGreen, 1, true);
 			}
 		}
 	},

@@ -1147,7 +1147,7 @@ function KinkyDungeonDrawInventorySelected (
 
 	let i = 2;
 	if (showpreview) {
-		//DrawPreviewBox(canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 100, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 45, item.preview, "", {Background: "#00000000"});
+		//DrawPreviewBox(canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 100, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 45, item.preview, "", {Background: KDBaseBlack00"});
 		//if (!treatAsHover) {
 		KDDraw(kdcanvas, kdpixisprites, "preview",
 			item.preview, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35 - 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 40, 100, 100, undefined, {
@@ -1212,7 +1212,7 @@ function KinkyDungeonDrawInventorySelected (
 			let tags = [];
 			if (magic) {
 				tags.push("magic");
-				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, "#000000", "#8888ff", 18, undefined, 129);
+				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, KDBaseBlack, "#8888ff", 18, undefined, 129);
 			}
 			if (weapon?.noHands) {
 				tags.push("noHands");
@@ -1234,7 +1234,7 @@ function KinkyDungeonDrawInventorySelected (
 					tags.push("offhand");
 				}
 
-				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, "#000000", "#8888ff", 18, undefined, 129);
+				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, KDBaseBlack, "#8888ff", 18, undefined, 129);
 			}
 
 			if (weapon?.stamPenType) {
@@ -1397,7 +1397,7 @@ function KDDrawInventoryContainer (
 		DrawTextFitKD(
 			TextGet("KDInvFilter")
 				.replace("ITMNS", TextGet("KinkyDungeonCategoryFilter" + CurrentFilter)),
-			1460 + xOffset + 350/2, yOffset + 150 - 20, 200, "#ffffff", KDTextGray0, 18, "center");
+			1460 + xOffset + 350/2, yOffset + 150 - 20, 200, KDBaseWhite, KDTextGray0, 18, "center");
 		let TF = KDTextField(prefix + "InvFilter", 1460 + xOffset, yOffset + 150, 350, 54, "text", "", "45");
 		if (TF.Created) {
 			KDInvFilter = "";
@@ -1480,7 +1480,7 @@ function KDDrawInventoryContainer (
 					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy,
 					b_width-padding, b_height-padding,
 					useIcons ? ("") : (text + suff),
-					"#ffffff",//useIcons ? "#ffffff" : index == KinkyDungeonCurrentPageInventory ? "#ffffff" : "#888888",
+					KDBaseWhite,//useIcons ? KDBaseWhite : index == KinkyDungeonCurrentPageInventory ? KDBaseWhite : "#888888",
 					useIcons ? filteredInventory[index].preview || "" : "",
 					undefined, undefined, index !=
 						(prefix ? KinkyDungeonCurrentPageContainer : KinkyDungeonCurrentPageInventory),
@@ -1531,7 +1531,7 @@ function KDDrawInventoryContainer (
 							});
 					}
 					if (filteredInventory[index].item.quantity != undefined) {
-						DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + canvasOffsetY_ui + 50 + b_height * yy + 18, "#ffffff", undefined, 18, "left");
+						DrawTextKD("" + filteredInventory[index].item.quantity, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + canvasOffsetY_ui + 50 + b_height * yy + 18, KDBaseWhite, undefined, 18, "left");
 					}
 
 					if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.itemlabel
@@ -1539,7 +1539,7 @@ function KDDrawInventoryContainer (
 						&& (!KDInventoryAction[KDGameData.InventoryAction].valid || KDInventoryAction[KDGameData.InventoryAction].valid(KDPlayer(), filteredInventory[index].item))
 					)
 						DrawTextFitKD(KDInventoryAction[KDGameData.InventoryAction].itemlabel(KinkyDungeonPlayerEntity, filteredInventory[index].item),
-							36 + canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + canvasOffsetY_ui + 50 + b_height * yy + (useIcons ? 72 : 36) - 9,  72, KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor ? KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor(KinkyDungeonPlayerEntity, filteredInventory[index].item) : "#ffffff",
+							36 + canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 140, yOffset + canvasOffsetY_ui + 50 + b_height * yy + (useIcons ? 72 : 36) - 9,  72, KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor ? KDInventoryAction[KDGameData.InventoryAction].itemlabelcolor(KinkyDungeonPlayerEntity, filteredInventory[index].item) : KDBaseWhite,
 							KDTextGray0, 18, "center");
 				} else {
 					if (i + (prefix ? KinkyDungeonContainerOffset : KinkyDungeonInventoryOffset) > filteredInventory.length + numRows*3) {
@@ -1564,7 +1564,7 @@ function KDDrawInventoryContainer (
 						return true;
 					}, true, canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, b_width-padding, b_height-padding,
 					"",
-					"#ffffff",
+					KDBaseWhite,
 					"",
 					undefined, undefined,
 					index != (prefix ? KinkyDungeonCurrentPageContainer : KinkyDungeonCurrentPageInventory),
@@ -1599,7 +1599,7 @@ function KDDrawInventoryContainer (
 				}
 				return true;
 			}, true,
-			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, yOffset + canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
+			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, yOffset + canvasOffsetY_ui, 90, 44, "", KinkyDungeonInventoryOffset > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png",
 			undefined, undefined, undefined, undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KDInventoryDrawContainerHotkeys[prefix] ?
 					KDInventoryDrawContainerHotkeys[prefix].up() : KinkyDungeonKey[4]),
@@ -1618,7 +1618,7 @@ function KDDrawInventoryContainer (
 				}
 				return true;
 			}, true,
-			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, yOffset + 480*KinkyDungeonBookScale + canvasOffsetY_ui - 4, 90, 44, "", ((prefix ? KinkyDungeonContainerOffset : KinkyDungeonInventoryOffset) + 24 < filteredInventory.length) ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
+			canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 526, yOffset + 480*KinkyDungeonBookScale + canvasOffsetY_ui - 4, 90, 44, "", ((prefix ? KinkyDungeonContainerOffset : KinkyDungeonInventoryOffset) + 24 < filteredInventory.length) ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Down.png",
 			undefined, undefined, undefined, undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KDInventoryDrawContainerHotkeys[prefix] ?
 					KDInventoryDrawContainerHotkeys[prefix].down() : KinkyDungeonKey[6]),
@@ -1663,7 +1663,7 @@ function KDDrawInventoryContainer (
 					KDFilterIndex[CurrentFilter] = scroll(-1);
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
-				"", "#ffffff", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, !activeUp,
+				"", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png", undefined, undefined, !activeUp,
 				KDTextGray1, 20, undefined, {
 					centered: true,
 					scaleImage: false,
@@ -1680,7 +1680,7 @@ function KDDrawInventoryContainer (
 					KDFilterIndex[CurrentFilter] = scroll(1);
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
-				"", "#ffffff", KinkyDungeonRootDirectory + "Down.png", undefined, undefined, !activeDown,
+				"", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png", undefined, undefined, !activeDown,
 				KDTextGray1, 20, undefined, {
 					centered: true,
 					scaleImage: false,
@@ -1708,7 +1708,7 @@ function KDDrawInventoryContainer (
 					}
 					return true;
 				}, true, canvasOffsetX_ui + xOffset + xx * 200 + 640*KinkyDungeonBookScale + 132, yOffset + canvasOffsetY_ui + 50 + 40 * yy, 159, 36,
-				show ? TextGet("KDFilterFilters" + filters[i][0]) : "", (show && filters[i][1]) ? "#ffffff" : "#aaaaaa", undefined, undefined, undefined, (!show || !filters[i][1]),
+				show ? TextGet("KDFilterFilters" + filters[i][0]) : "", (show && filters[i][1]) ? KDBaseWhite : "#aaaaaa", undefined, undefined, undefined, (!show || !filters[i][1]),
 				KDTextGray1, 20);
 			}
 
@@ -1751,7 +1751,7 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 				return true;
 			}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55, yOffset + canvasOffsetY_ui + 115 + II*65, 180, 60,
 			TextGet("KinkyDungeonCategoryFilter" + KDFilters[I]),
-				(KinkyDungeonCurrentFilter == KDFilters[I]) ? "White" : col, "", "");
+				(KinkyDungeonCurrentFilter == KDFilters[I]) ? KDBaseWhite : col, "", "");
 
 		if (KinkyDungeonCurrentFilter == KDFilters[I]) selected = KDFilters[I];
 		II++;
@@ -1804,7 +1804,7 @@ function KinkyDungeonDrawInventory() {
 							&& (!KDInventoryAction[action].valid || KDInventoryAction[action].valid(KDPlayer(), filteredInventory[KinkyDungeonCurrentPageInventory].item))
 						)
 							DrawTextFitKD(KDInventoryAction[action].label(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item),
-								XX + II*KDInventoryActionSpacing + 34, YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : "#ffffff",
+								XX + II*KDInventoryActionSpacing + 34, YY + 72 - 9, 72, KDInventoryAction[action].labelcolor ? KDInventoryAction[action].labelcolor(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : KDBaseWhite,
 								KDTextGray0, 18, "center");
 						if (DrawButtonKDEx("invAction" + action, (_bdata) => {
 							KDSendInput("inventoryAction", {action: action, player: KinkyDungeonPlayerEntity, item: filteredInventory[KinkyDungeonCurrentPageInventory].item});
@@ -1823,7 +1823,7 @@ function KinkyDungeonDrawInventory() {
 							DrawTextFitKD(KDInventoryAction[action].text ?
 								KDInventoryAction[action].text(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)
 								: TextGet("KDInventoryAction" + action),
-							XX, YYTooltip, KDInventoryActionSpacing*6, "#ffffff", KDTextGray0, 24, "left");
+							XX, YYTooltip, KDInventoryActionSpacing*6, KDBaseWhite, KDTextGray0, 24, "left");
 						}
 					}
 
@@ -1848,7 +1848,7 @@ function KinkyDungeonDrawInventory() {
 					}
 					return true;
 				}, itemIndex >= 0 && KDCanStruggle(item), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 275, 55, TextGet("KinkyDungeonStruggle"),
-				(itemIndex >= 0 && KDCanRemove(item)) ? "#ffffff" : "#888888", "", "");
+				(itemIndex >= 0 && KDCanRemove(item)) ? KDBaseWhite : "#888888", "", "");
 				DrawButtonKDEx("removeItem", (_bdata) => {
 					if (itemIndex >= 0 && KDCanRemove(item)) {
 						let r = KDRestraint(item);
@@ -1857,7 +1857,7 @@ function KinkyDungeonDrawInventory() {
 					}
 					return true;
 				}, itemIndex >= 0 && KDCanRemove(item), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 25, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 275, 55, TextGet("KinkyDungeon" + ((item.lock) ? "Unlock" : "Remove")),
-				(itemIndex >= 0 && KDCanRemove(item)) ? "#ffffff" : "#888888", "", "");
+				(itemIndex >= 0 && KDCanRemove(item)) ? KDBaseWhite : "#888888", "", "");
 
 				if (KDGameData.InventoryAction) {
 					DrawButtonKDEx("inventoryAction", (_bdata) => {
@@ -1866,7 +1866,7 @@ function KinkyDungeonDrawInventory() {
 					}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 325, canvasOffsetY_ui + 483*KinkyDungeonBookScale + 60, 275, 55,
 						KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].text ? KDInventoryAction[KDGameData.InventoryAction].text(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item) : TextGet("KDInventoryAction" + KDGameData.InventoryAction),
 						KDInventoryAction[KDGameData.InventoryAction] && KDInventoryAction[KDGameData.InventoryAction].valid(KinkyDungeonPlayerEntity, filteredInventory[KinkyDungeonCurrentPageInventory].item)
-						? "#ffffff" : "#888888",
+						? KDBaseWhite : "#888888",
 						"", "", undefined, undefined, undefined, undefined, undefined, {
 							hotkey: KDInventoryAction[KDGameData.InventoryAction].hotkey ? KDInventoryAction[KDGameData.InventoryAction].hotkey() : undefined,
 							hotkeyPress: KDInventoryAction[KDGameData.InventoryAction].hotkeyPress ? KDInventoryAction[KDGameData.InventoryAction].hotkeyPress() : undefined,
@@ -1885,7 +1885,7 @@ function KinkyDungeonDrawInventory() {
 				return true;
 			}
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookLastPage"), "White", "", "", undefined, true, KDButtonColor,
+		}, true, canvasOffsetX_ui + xOffset + 100 + 50, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookLastPage"), KDBaseWhite, "", "", undefined, true, KDButtonColor,
 		undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKey[1]),
 			hotkeyPress: KinkyDungeonKey[1],
@@ -1898,7 +1898,7 @@ function KinkyDungeonDrawInventory() {
 				return true;
 			}
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookNextPage"), "White", "", "", undefined, true, KDButtonColor,
+		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 375, canvasOffsetY_ui + 483*KinkyDungeonBookScale, 250, 50, TextGet("KinkyDungeonBookNextPage"), KDBaseWhite, "", "", undefined, true, KDButtonColor,
 		undefined, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKey[3]),
 			hotkeyPress: KinkyDungeonKey[3],
@@ -2088,7 +2088,7 @@ function KinkyDungeonDrawQuickInv() {
 
 	DrawTextFitKD(
 		TextGet("KDInvFilterQ"),
-		75 + 340/2, 350 - 20, 200, "#ffffff", KDTextGray0, 18, "center");
+		75 + 340/2, 350 - 20, 200, KDBaseWhite, KDTextGray0, 18, "center");
 	let TF = KDTextField("QInvFilter", 75, 350, 340, 54, "text", "", "45");
 	if (TF.Created) {
 		KDInvFilter = "";
@@ -2102,16 +2102,16 @@ function KinkyDungeonDrawQuickInv() {
 	KDScrollOffset.Weapon = Math.max(0, Math.min(Math.ceil((fW.length - KDItemsPerScreen.Weapon)/KDScrollAmount) * KDScrollAmount, KDScrollOffset.Weapon));
 
 	if (fC.length > KDItemsPerScreen.Consumable) {
-		DrawButtonVis(510, 105, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
-		DrawButtonVis(510, 150, 90, 40, "", "white", KinkyDungeonRootDirectory + "Down.png");
+		DrawButtonVis(510, 105, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
+		DrawButtonVis(510, 150, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
 	}
 	if (fW.length > KDItemsPerScreen.Weapon) {
-		DrawButtonVis(510, 705, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
-		DrawButtonVis(510, 750, 90, 40, "", "white", KinkyDungeonRootDirectory + "Down.png");
+		DrawButtonVis(510, 705, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
+		DrawButtonVis(510, 750, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
 	}
 	if (fR.length > KDItemsPerScreen.Restraint) {
-		DrawButtonVis(510, 455, 90, 40, "", "white", KinkyDungeonRootDirectory + "Up.png");
-		DrawButtonVis(510, 500, 90, 40, "", "white", KinkyDungeonRootDirectory + "Down.png");
+		DrawButtonVis(510, 455, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
+		DrawButtonVis(510, 500, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
 	}
 
 	FillRectKD(kdcanvas, kdpixisprites, "quickinvbg", {
@@ -2119,7 +2119,7 @@ function KinkyDungeonDrawQuickInv() {
 		Top: 5,
 		Width: 490,
 		Height: 990,
-		Color: "#000000",
+		Color: KDBaseBlack,
 		LineWidth: 1,
 		zIndex: 59,
 		alpha: 0.9
@@ -2179,12 +2179,12 @@ function KinkyDungeonDrawQuickInv() {
 			DrawCheckboxKDEx("QuickLoadout_Weapon", (_bdata) => {
 				KDGameData.QuickLoadout_Weapon = !KDGameData.QuickLoadout_Weapon;
 				return true;
-			}, true, 630, 110, 64, 64, TextGet("KDQuickLoadout_Weapon"), KDGameData.QuickLoadout_Weapon, false, "#ffffff");
+			}, true, 630, 110, 64, 64, TextGet("KDQuickLoadout_Weapon"), KDGameData.QuickLoadout_Weapon, false, KDBaseWhite);
 
 			DrawCheckboxKDEx("QuickLoadout_Merge", (_bdata) => {
 				KDGameData.QuickLoadout_Merge = !KDGameData.QuickLoadout_Merge;
 				return true;
-			}, true, 630, 180, 64, 64, TextGet("KDQuickLoadout_Merge"), KDGameData.QuickLoadout_Merge, false, "#ffffff");
+			}, true, 630, 180, 64, 64, TextGet("KDQuickLoadout_Merge"), KDGameData.QuickLoadout_Merge, false, KDBaseWhite);
 		}
 
 		for (let i = 1; i <= KDNumOfQuickLoadouts; i++) {
@@ -2212,7 +2212,7 @@ function KinkyDungeonDrawQuickInv() {
 				for (let ii = 0; ii < 20 && ii < (KDGameData.QuickLoadouts ? (KDGameData.QuickLoadouts[i+""] ? KDGameData.QuickLoadouts[i+""].length : 0) : 0); ii++) {
 					let item = KDGameData.QuickLoadouts[i+""][ii];
 					let str = KDGetItemNameString(item);
-					DrawTextKD(str, 770, QL_y + ii * 25, KinkyDungeonInventoryGet(item) ? "#ffffff" : "#ff5277", undefined, 22, "left");
+					DrawTextKD(str, 770, QL_y + ii * 25, KinkyDungeonInventoryGet(item) ? KDBaseWhite : KDBaseRed, undefined, 22, "left");
 				}
 			}
 		}
@@ -2221,7 +2221,7 @@ function KinkyDungeonDrawQuickInv() {
 		DrawButtonKDEx("quickinvbg2_button", (_bdata) => {
 			return true;
 		}, true, 620, 250, 140, 520, "", KDButtonColor, undefined, undefined, false, true,
-		"#000000", undefined, undefined, {zIndex: -1, alpha: 0.9});
+		KDBaseBlack, undefined, undefined, {zIndex: -1, alpha: 0.9});
 
 
 	}
@@ -2277,7 +2277,7 @@ function KinkyDungeonDrawQuickInv() {
 					return true;
 				}, true,
 				point.x, point.y + 30, 80, 80,
-				"", "#ffffff", item.preview, undefined, undefined, true, undefined, undefined, undefined,
+				"", KDBaseWhite, item.preview, undefined, undefined, true, undefined, undefined, undefined,
 				{
 					zIndex: 109,
 					scaleImage: true,
@@ -2322,7 +2322,7 @@ function KinkyDungeonDrawQuickInv() {
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, point.y + 30, 80, 80, undefined, {
 						zIndex: 111,
 					});
-				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.item?.name|| item.name] || 0 : 0), point.x + 40, point.y + 30 + 20, "#ffffff", undefined, 30,);
+				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.item?.name|| item.name] || 0 : 0), point.x + 40, point.y + 30 + 20, KDBaseWhite, undefined, 30,);
 			} else if (MouseIn(point.x, point.y + 30, 80, 80) || KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] > 0) {
 				DrawButtonKDEx("consumablesiconfav" + c + (KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] ? "b" : "a"), (_bdata) => {
 					if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
@@ -2330,7 +2330,7 @@ function KinkyDungeonDrawQuickInv() {
 					else KDGameData.ItemPriority[item.item?.name|| item.name] = 0;
 					KDSortInventory(KinkyDungeonPlayerEntity);
 					return true;
-				},true, point.x + 80 - 32, point.y + 30, 32, 32, "", "#ffffff", KinkyDungeonRootDirectory +
+				},true, point.x + 80 - 32, point.y + 30, 32, 32, "", KDBaseWhite, KinkyDungeonRootDirectory +
 					(KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] > 0 ? "UI/Star.png" : "UI/StarOff.png"),
 				"", false, true, undefined, undefined, undefined, {
 					zIndex: 111,
@@ -2338,7 +2338,7 @@ function KinkyDungeonDrawQuickInv() {
 			}
 			//DrawImageEx(item.preview, point.x, point.y + 30, {Width: 80, Height: 80});
 
-			DrawTextKD("" + item.item.quantity, point.x, point.y + 30, "#ffffff", undefined, 18, "left");
+			DrawTextKD("" + item.item.quantity, point.x, point.y + 30, KDBaseWhite, undefined, 18, "left");
 		}
 	}
 
@@ -2395,7 +2395,7 @@ function KinkyDungeonDrawQuickInv() {
 					return true;
 				}, true,
 				point.x, 1000 - V - Wheight + point.y, 80, 80,
-				"", "#ffffff", item.preview, undefined, undefined, true, undefined, undefined, undefined,
+				"", KDBaseWhite, item.preview, undefined, undefined, true, undefined, undefined, undefined,
 				{
 					zIndex: 109,
 					scaleImage: true,
@@ -2438,7 +2438,7 @@ function KinkyDungeonDrawQuickInv() {
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, 1000 - V - Wheight + point.y, 80, 80, undefined, {
 						zIndex: 110,
 					});
-				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.item?.name|| item.name] || 0 : 0), point.x + 40, 1000 - V - Wheight + point.y + 20, "#ffffff", undefined, 30,);
+				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.item?.name|| item.name] || 0 : 0), point.x + 40, 1000 - V - Wheight + point.y + 20, KDBaseWhite, undefined, 30,);
 			} else if (MouseIn(point.x, 1000 - V - Wheight + point.y, 80, 80) || KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] > 0) {
 				DrawButtonKDEx("weaponsiconfavOfffav" + w + (KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] ? "b" : "a"), (_bdata) => {
 					if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
@@ -2446,7 +2446,7 @@ function KinkyDungeonDrawQuickInv() {
 					else KDGameData.ItemPriority[item.item?.name|| item.name] = 0;
 					KDSortInventory(KinkyDungeonPlayerEntity);
 					return true;
-				},true, point.x + 80 - 32, 1000 - V - Wheight + point.y, 32, 32, "", "#ffffff", KinkyDungeonRootDirectory +
+				},true, point.x + 80 - 32, 1000 - V - Wheight + point.y, 32, 32, "", KDBaseWhite, KinkyDungeonRootDirectory +
 					(KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] > 0 ? "UI/Star.png" : "UI/StarOff.png"),
 				"", false, true, undefined, undefined, undefined, {
 					zIndex: 111,
@@ -2541,7 +2541,7 @@ function KinkyDungeonDrawQuickInv() {
 					return true;
 				}, true,
 				point.x, 1000 - V - Rheight + point.y, 80, 80,
-				"", "#ffffff", item.preview, undefined, undefined, true, undefined, undefined, undefined,
+				"", KDBaseWhite, item.preview, undefined, undefined, true, undefined, undefined, undefined,
 				{
 					zIndex: 109,
 					scaleImage: true,
@@ -2590,7 +2590,7 @@ function KinkyDungeonDrawQuickInv() {
 					KinkyDungeonRootDirectory + "InvItemSort.png", point.x, 1000 - V - Rheight + point.y, 80, 80, undefined, {
 						zIndex: 109,
 					});
-				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.item?.name|| item.name] || 0 : 0), point.x + 40, 1000 - V - Rheight + point.y + 20, "#ffffff", undefined, 30,);
+				DrawTextKD("" + (KDGameData.ItemPriority? KDGameData.ItemPriority[item.item?.name|| item.name] || 0 : 0), point.x + 40, 1000 - V - Rheight + point.y + 20, KDBaseWhite, undefined, 30,);
 			} else if (MouseIn(point.x, 1000 - V - Rheight + point.y, 80, 80) || KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] > 0) {
 				DrawButtonKDEx("restraintsiconfav" + w + (KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] ? "b" : "a"), (_bdata) => {
 					if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
@@ -2598,13 +2598,13 @@ function KinkyDungeonDrawQuickInv() {
 					else KDGameData.ItemPriority[item.item?.name|| item.name] = 0;
 					KDSortInventory(KinkyDungeonPlayerEntity);
 					return true;
-				},true, point.x + 80 - 32, 1000 - V - Rheight + point.y, 32, 32, "", "#ffffff", KinkyDungeonRootDirectory +
+				},true, point.x + 80 - 32, 1000 - V - Rheight + point.y, 32, 32, "", KDBaseWhite, KinkyDungeonRootDirectory +
 					(KDGameData.ItemPriority && KDGameData.ItemPriority[item.item?.name|| item.name] > 0 ? "UI/Star.png" : "UI/StarOff.png"),
 				"", false, true, undefined, undefined, undefined, {
 					zIndex: 111,
 				});
 			}
-			DrawTextKD("" + (item.item.quantity || 1), point.x, 1000 - V - Rheight + point.y, "#ffffff", undefined, 18, "left");
+			DrawTextKD("" + (item.item.quantity || 1), point.x, 1000 - V - Rheight + point.y, KDBaseWhite, undefined, 18, "left");
 
 		}
 	}
@@ -3339,7 +3339,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 	DrawButtonKDEx("CycleSpellButton", () => {
 		KDCycleSpellPage(false, false, true);
 		return true;
-	}, true, hotBarX + 713, HotbarStart, 72, 72, `${KDSpellPage + 1}`, "#ffffff",
+	}, true, hotBarX + 713, HotbarStart, 72, 72, `${KDSpellPage + 1}`, KDBaseWhite,
 	KinkyDungeonRootDirectory + "UI/Cycle.png", undefined, undefined, true, undefined, 28, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeySpellPage[0]),
 		hotkeyPress: KinkyDungeonKeySpellPage[0],
@@ -3475,11 +3475,11 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 
 			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
 				DrawTextFitKD(TextGet("KinkyDungeonSpell"+ spell.name),
-				buttonDim.x, buttonDim.y - 140, 300, "#ffffff", "#333333", undefined, "center",
+				buttonDim.x, buttonDim.y - 140, 300, KDBaseWhite, "#333333", undefined, "center",
 				200);
 			}
 			// Render number
-			//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 101);
+			//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
 
 
 			//let cost = KinkyDungeonGetManaCost(spell) + TextGet("KinkyDungeonManaCost") + comp;
@@ -3527,18 +3527,18 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 				if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
 					DrawTextFitKD(TextGet((arm ? "Restraint" : ("KinkyDungeonInventoryItem")) + name),
 						buttonDim.x, buttonDim.y - 140, 300,
-						"#ffffff", "#333333", undefined, "center",
+						KDBaseWhite, "#333333", undefined, "center",
 						200);
 				}
 				// Render number
-				//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, "#ffffff", KDTextGray0, 18, undefined, 101);
+				//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
 				if (consumable) {
 					let con = KinkyDungeonInventoryGetConsumable(consumable);
 					if (con) {
 						DrawTextFitKD((con.quantity || 0) + 'x',
 							buttonDim.x + buttonDim.w-1,
 							buttonDim.y + buttonDim.h - 9,
-							buttonDim.hsmall, "#ffffff", KDTextGray0, 18, "right");
+							buttonDim.hsmall, KDBaseWhite, KDTextGray0, 18, "right");
 					}
 				}
 			}
@@ -3700,7 +3700,7 @@ function KDDrawHotbarBottom(selected: KDFilteredInventoryItem, spells: boolean, 
 					let con = KinkyDungeonInventoryGetConsumable(consumable);
 					//if (con) {
 					DrawTextFitKD((con?.quantity || 0) + "x", buttonDimSmall.x + buttonDim.hsmall - 1, buttonDimSmall.y + buttonDim.hsmall - 6, 50,
-						"#ffffff", KDTextGray0, 12, "right");
+						KDBaseWhite, KDTextGray0, 12, "right");
 					//}
 				}
 
@@ -3790,7 +3790,7 @@ function KDRenderAlternateInventory(selected: KDFilteredInventoryItem, xOffset: 
 		DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 			KDConfigHotbar = !KDConfigHotbar;
 			return true;
-		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185, yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale - 250, 190, 55, TextGet("KDBack"), "#ffffff", "");
+		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185, yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale - 250, 190, 55, TextGet("KDBack"), KDBaseWhite, "");
 		return true;
 	} else if (selected && KDConfigRestraintColor) {
 		let currentItem: item = selected.item;
@@ -3815,7 +3815,7 @@ function KDRenderAlternateInventory(selected: KDFilteredInventoryItem, xOffset: 
 			KDConfigRestraintColor = !KDConfigRestraintColor;
 			return true;
 		}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 185,
-		yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 0, 190, 55, TextGet("KDBack"), "#ffffff", "");
+		yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 0, 190, 55, TextGet("KDBack"), KDBaseWhite, "");
 		return true;
 	}
 	return false;

@@ -332,7 +332,7 @@ let KDQuests: Record<string, KDQuest> = {
 						}
 					}
 					KinkyDungeonChangeFactionRep("Maidforce", -0.2);
-					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), "#ff8933", 4);
+					KinkyDungeonSendTextMessage(10, TextGet("KDNotEnoughDirtPiles"), KDBaseOrange, 4);
 				}
 
 
@@ -1072,7 +1072,7 @@ function KDAddQuest(quest: string) {
 			KDQuests[quest].accept();
 		}
 		KDGameData.Quests.push(quest);
-		KinkyDungeonSendTextMessage(10, TextGet("KDNewQuest"), "#ffffff", 2);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNewQuest"), KDBaseWhite, 2);
 	}
 }
 
@@ -1105,7 +1105,7 @@ function KinkyDungeonDrawQuest() {
 						Top: yStart + (II-KDQuestsIndex)*spacing - 40,
 						Width: width,
 						Height: 80,
-						Color: "#000000",
+						Color: KDBaseBlack,
 						LineWidth: 1,
 						zIndex: -18,
 						alpha: 0.3
@@ -1115,13 +1115,13 @@ function KinkyDungeonDrawQuest() {
 						Top: yStart + (II-KDQuestsIndex)*spacing - 40,
 						Width: width,
 						Height: 80,
-						Color: "#000000",
+						Color: KDBaseBlack,
 						LineWidth: 1,
 						zIndex: -18,
 						alpha: 0.9
 					});
 
-					DrawTextFitKD(TextGet("KDQuest_" + q), xStart + xOffset + 200, yStart + (II-KDQuestsIndex)*spacing, 850, "#ffffff", KDTextGray0, 28, "left");
+					DrawTextFitKD(TextGet("KDQuest_" + q), xStart + xOffset + 200, yStart + (II-KDQuestsIndex)*spacing, 850, KDBaseWhite, KDTextGray0, 28, "left");
 					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + KDQuests[q]?.npc + ".png",
 						xStart + xOffset + 100, yStart + (II-KDQuestsIndex)*spacing - 36, 72, 72);
 					if (DrawButtonKDEx("kdquestquit" + q, (_b) => {
@@ -1129,10 +1129,10 @@ function KinkyDungeonDrawQuest() {
 							KDRemoveQuest(q);
 						return true;
 					}, true, xStart + xOffset + 1200, yStart + (II-KDQuestsIndex)*spacing - 36, 220, 72,
-					TextGet("KDQuestListCancel"), KDQuests[q]?.nocancel ? KDTextGray3 : "#ffffff",
+					TextGet("KDQuestListCancel"), KDQuests[q]?.nocancel ? KDTextGray3 : KDBaseWhite,
 					KinkyDungeonRootDirectory + "UI/X.png", "", false, true, KDButtonColor, undefined, true))
 						DrawTextFitKD(TextGet(KDQuests[q]?.nocancel ? "KDQuestListDescCancelFail" : "KDQuestListDescCancel"),
-							xStart + xOffset + 625, ytt, 1000, "#ffffff", KDTextGray0, 20, "center", 70);
+							xStart + xOffset + 625, ytt, 1000, KDBaseWhite, KDTextGray0, 20, "center", 70);
 				}
 
 				II++;
@@ -1145,20 +1145,20 @@ function KinkyDungeonDrawQuest() {
 	if (KDQuestsVisible == 0) {
 		let x = 1225 + xOffset;
 
-		DrawTextFitKD(TextGet("KDNoQuests"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
+		DrawTextFitKD(TextGet("KDNoQuests"), x, 300, 1050, KDBaseWhite, KDTextGray0, 24);
 		//DrawTextFitKD(TextGet("KDNoQuests"),
-		//xStart + xOffset + 625, ytt, 1000, "#ffffff", KDTextGray0, 20, "center", 70);
+		//xStart + xOffset + 625, ytt, 1000, KDBaseWhite, KDTextGray0, 20, "center", 70);
 	}
 
 	if (KDQuestsVisible > KDMaxQuests) {
 		DrawButtonKDEx("questUp", (_b) => {
 			KDQuestsIndex -= 2;
 			return true;
-		}, true, xStart, yStart - spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
+		}, true, xStart, yStart - spacing, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
 		DrawButtonKDEx("questDown", (_b) => {
 			KDQuestsIndex += 2;
 			return true;
-		}, true, xStart, yStart + KDMaxQuests*spacing, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
+		}, true, xStart, yStart + KDMaxQuests*spacing, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
 
 
 		KDQuestsIndex = Math.max(0, Math.min(KDQuestsIndex, KDQuestsVisible - Math.round(KDMaxQuests/2)));
@@ -1228,7 +1228,7 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 			if (KDMapData.RoomType == "PerkRoom") {
 				KDRemoveQuest(Name);
 				KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
-				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), "#ffffff", 1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), KDBaseWhite, 1);
 				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
 					Progressive: true,
 					DontPreferWill: true,
@@ -1253,7 +1253,7 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 
 				KinkyDungeonChangeRep(Goddess, (!KinkyDungeonFlags.get("QuestFirstRep")) ? 2.5 + Rep : Rep);
 				KinkyDungeonSetFlag("QuestFirstRep", -1, 1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed" + (KinkyDungeonGoddessRep.Ghost > 1 ? "Sub" : "") + "_" + Name), "#ffffff", 1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed" + (KinkyDungeonGoddessRep.Ghost > 1 ? "Sub" : "") + "_" + Name), KDBaseWhite, 1);
 				KDRemoveQuest(Name);
 				for (let inv of KinkyDungeonAllRestraintDynamic()) {
 					if (inv.item.lock == "Divine") KinkyDungeonLock(inv.item, "");

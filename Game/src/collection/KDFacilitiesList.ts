@@ -33,7 +33,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 		ping: (XXQuik: number, YYQuik: number, quikCurrentCol: number, quikSpacing: number, quikSize: number) => {
 			let facility = "Management";
 			DrawTextFitKD((KDGameData.FacilitiesData["Servants_" + facility]?.length || 0) + "",
-				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, "#ffffff", KDTextGray0,
+				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, KDBaseWhite, KDTextGray0,
 				18, "left", 111
 			);
 		},
@@ -70,7 +70,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 				(KDGameData.FacilitiesData["Servants_" + facility]?.length || 0)
 				+ " + "
 				+ (KDGameData.FacilitiesData["Prisoners_" + facility]?.length || 0),
-				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, "#ffffff", KDTextGray0,
+				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, KDBaseWhite, KDTextGray0,
 				18, "left", 111
 			);
 		},
@@ -101,7 +101,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 		ping: (XXQuik: number, YYQuik: number, quikCurrentCol: number, quikSpacing: number, quikSize: number) => {
 			let facility = "Warden";
 			DrawTextFitKD((KDGameData.FacilitiesData["Servants_" + facility]?.length || 0) + "",
-				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, "#ffffff", KDTextGray0,
+				XXQuik + quikCurrentCol * quikSpacing, YYQuik + 9, quikSize * 0.8, KDBaseWhite, KDTextGray0,
 				18, "left", 111
 			);
 		},
@@ -132,7 +132,7 @@ let KDFacilityTypes: Record<string, Facility> = {
 			if (!notIdle) {
 				DrawTextFitKD(
 					TextGet("Idle"),
-					XXQuik + quikCurrentCol * quikSpacing, YYQuik + 6, quikSize, "#ffffff", KDTextGray0,
+					XXQuik + quikCurrentCol * quikSpacing, YYQuik + 6, quikSize, KDBaseWhite, KDTextGray0,
 					12, "left", 111
 				);
 			}

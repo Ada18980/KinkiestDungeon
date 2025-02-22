@@ -89,7 +89,7 @@ KDPrisonTypes.DollStorage = {
 							KinkyDungeonSetEnemyFlag(gg, "idlegselect", 2);
 							KinkyDungeonSetEnemyFlag(gg, "overrideMove", 10);
 							KinkyDungeonSetEnemyFlag(gg, "leashPrisoner", 3);
-							KinkyDungeonAttachTetherToEntity(1.5, gg, doll, "DollLeash", "#00ffff", 6);
+							KinkyDungeonAttachTetherToEntity(1.5, gg, doll, "DollLeash", KDBaseCyan, 6);
 							gg.gx = storage.x;
 							gg.gy = storage.y;
 							if (dist > 1.5) {

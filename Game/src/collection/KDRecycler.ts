@@ -171,9 +171,9 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 				x + 560 - spacing*0.5*res.length + (spacing * rID), yy + 60, 72, 72
 			);
 			DrawTextFitKD(Math.floor(KDGameData.FacilitiesData["Recycler_" + resource] || 0) + "",
-				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 86, spacing - 80, "#ffffff", KDTextGray0, 32, "left");
+				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 86, spacing - 80, KDBaseWhite, KDTextGray0, 32, "left");
 			DrawTextFitKD("+" + rates[resource] + ` (${Math.floor(KDGameData.FacilitiesData["RecyclerInput_" + resource] || 0)})`,
-				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 86 + 32, spacing - 80, rates[resource] > 0 ? "#ffffff" : "#aaaaaa", KDTextGray0, 18, "left");
+				x + 560 + 70 - spacing*0.5*res.length + (spacing * rID), yy + 86 + 32, spacing - 80, rates[resource] > 0 ? KDBaseWhite : "#aaaaaa", KDTextGray0, 18, "left");
 			rID++;
 		}
 
@@ -181,15 +181,15 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			DrawButtonKDEx(
 				"recycleButton",
 				() => {
-					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "RecyclerInput_"), "#ffffff", 2);
-					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "Recycler_"), "#ffffff", 2);
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "RecyclerInput_"), KDBaseWhite, 2);
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "Recycler_"), KDBaseWhite, 2);
 					KDGameData.InventoryAction = "Recycle";
 					KinkyDungeonDrawState = "Inventory";
 					KinkyDungeonCurrentFilter = LooseRestraint;
 					return true;
 				}, KDMapData.RoomType == "Summit",
 				x + width/2 + 150, y + 62, 300, 80, TextGet("KDRecycleButton"),
-				"#ffffff", KinkyDungeonRootDirectory + 'InventoryAction/Recycle.png',
+				KDBaseWhite, KinkyDungeonRootDirectory + 'InventoryAction/Recycle.png',
 				undefined, false, true, KDButtonColor, undefined, true
 			);
 			//yy += 150;
@@ -197,7 +197,7 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			KDDrawRecyclerBlueprints(cats, x, yy, width);
 		} else {
 			yy += 240;
-			DrawTextFitKD(TextGet("KDFacilityLocal2"), x + 560, y + 280, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
+			DrawTextFitKD(TextGet("KDFacilityLocal2"), x + 560, y + 280, 1050 - 160, KDBaseWhite, KDTextGray0, 32, "center");
 		}
 
 	}
@@ -246,7 +246,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			}, KDMapData.RoomType == "Summit",
 
 			x + XX + 32, y + YY, 72, 72, "",
-			"#ffffff", KinkyDungeonRootDirectory + "UI/Recycler/" + cat.name + ".png",
+			KDBaseWhite, KinkyDungeonRootDirectory + "UI/Recycler/" + cat.name + ".png",
 			undefined, false, !selected, KDButtonColor, undefined, true,
 			{
 				scaleImage: true,
@@ -299,7 +299,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			let inventoryItem = KinkyDungeonInventoryGetSafe(item.name);
 			if (inventoryItem)
 				DrawTextFitKD("" + (inventoryItem.quantity || 1),
-			x + XX + 32, y + YY + 60, 72, "#ffffff", KDTextGray0, 18, "left", 160);
+			x + XX + 32, y + YY + 60, 72, KDBaseWhite, KDTextGray0, 18, "left", 160);
 			if (KDSelectedRecyclerItem == item.name) ii = index;
 			DrawButtonKDExScroll(
 				"rec_item_list" + item.name,
@@ -322,7 +322,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				}, KDMapData.RoomType == "Summit",
 
 				x + XX + 32, y + YY, 72, 72, "",
-				"#ffffff", img,
+				KDBaseWhite, img,
 				undefined, false, !selected, KDButtonColor, undefined, true,
 				{
 					scaleImage: true,
@@ -364,7 +364,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		let canAfford = KDHasRecyclerResources(KDMapToRecycleOutputs(selectedItem.recyclecost));
 		let inventoryItem = KinkyDungeonInventoryGetSafe(selectedItem.name);
 		DrawTextFitKD(TextGet("KDOwned").replace("AMNT", "" + (inventoryItem ? (inventoryItem.quantity || 1) : 0)),
-		x + XX + 32 + 100, y + YY + 180, 200, "#ffffff", KDTextGray0, 18, "center", 160);
+		x + XX + 32 + 100, y + YY + 180, 200, KDBaseWhite, KDTextGray0, 18, "center", 160);
 		DrawButtonKDEx(
 			"rec_item_build" + selectedItem.name,
 			() => {
@@ -375,7 +375,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 			}, KDMapData.RoomType == "Summit",
 
 			x + XX + 32, y + YY, 200, 200, "",
-			"#ffffff", img,
+			KDBaseWhite, img,
 			undefined, false, !canAfford, KDButtonColor, undefined, true,
 			{
 				scaleImage: true,
@@ -395,10 +395,10 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				xxx, y + YY + 212, 36, 36
 			);
 			DrawTextFitKD(Math.ceil(res[i][1]) + "",
-			xxx + 3, y + YY + 212 + 18, 80, "#ffffff", KDTextGray0, 18, "right");
+			xxx + 3, y + YY + 212 + 18, 80, KDBaseWhite, KDTextGray0, 18, "right");
 		}
 		DrawTextFitKD(KDGetItemNameString(selectedItem.item) + (selectedItem.count ? " x" + selectedItem.count : ""),
-		x + XX + 32 + 100, y + YY + 272, 200, "#ffffff", KDTextGray0, 24, "center");
+		x + XX + 32 + 100, y + YY + 272, 200, KDBaseWhite, KDTextGray0, 24, "center");
 		let item = KDItemNoRestraint({name: selectedItem.name});
 		let restraint = KDRestraint({name: selectedItem.name});
 		if (restraint) {
@@ -408,13 +408,13 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 				TextGet("KinkyDungeonRestraintLevel")
 				.replace("RestraintLevel", "" + Math.max(1, restraint.displayPower != undefined ? restraint.displayPower : restraint.power))
 				.replace("Rarity", TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor(pp),10)))),
-			x + XX + 32 + 100, y + YY + 300, 200, "#ffffff", KDTextGray0, 18, "center");
+			x + XX + 32 + 100, y + YY + 300, 200, KDBaseWhite, KDTextGray0, 18, "center");
 		} else if (item)
 			DrawTextFitKD(
 				TextGet("KinkyDungeonRestraintLevel")
 				.replace("RestraintLevel", "" + Math.max(1, item.rarity))
 				.replace("Rarity", TextGet("KinkyDungeonRarity" + Math.max(0, Math.min(Math.floor(item.rarity),10)))),
-			x + XX + 32 + 100, y + YY + 300, 200, "#ffffff", KDTextGray0, 18, "center");
+			x + XX + 32 + 100, y + YY + 300, 200, KDBaseWhite, KDTextGray0, 18, "center");
 	}
 }
 

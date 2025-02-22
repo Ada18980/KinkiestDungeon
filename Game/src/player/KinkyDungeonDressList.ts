@@ -167,9 +167,9 @@ let KinkyDungeonDresses: Record<string,KinkyDungeonDress> = {
 	],
 	"Bast" : [
 		{Item: "Sarashi1", Group: "Bra", Color: "Default", Lost: false},
-		{Item: "Panties7", Group: "Panties", Color: "#ffffff", Lost: false},
+		{Item: "Panties7", Group: "Panties", Color: KDBaseWhite, Lost: false},
 		{Item: "Sandals", Group: "Shoes", Color: "Default", Lost: false},
-		{Item: "FaceVeil", Group: "Mask", Color: "#ffffff", Lost: false},
+		{Item: "FaceVeil", Group: "Mask", Color: KDBaseWhite, Lost: false},
 		{Item: "HaremPants", Group: "ClothLower", Color: "Default", OverridePriority: 28, Lost: false},
 	],
 	"Dragon" : [
@@ -214,7 +214,7 @@ let KinkyDungeonDresses: Record<string,KinkyDungeonDress> = {
 		{Item: "SeamlessCatsuit", Group: "Suit", Color: "#3873C3", Lost: false},
 		{Item: "SeamlessCatsuit", Group: "SuitLower", Color: "#3873C3", Lost: false},
 		{Item: "Catsuit", Group: "Gloves", Color: "#3873C3", Lost: false},
-		{Item: "FaceVeil", Group: "Mask", Color: "#ffffff", Lost: false},
+		{Item: "FaceVeil", Group: "Mask", Color: KDBaseWhite, Lost: false},
 	],
 	"Wolfgirl" : [
 		{Item: "PilotSuit", Group: "Suit", Color: ['#828FA2', '#323332', '#223525', '#383838', 'Default'], Lost: false},
@@ -242,7 +242,7 @@ let KinkyDungeonDresses: Record<string,KinkyDungeonDress> = {
 	"Elven" : [
 		{Item: "Swimsuit1", Group: "Bra", Color: ['#E2E2E2'], Lost: false, NoLose: true},
 		{Item: "Corset4", Group: "Corset", Color: ['#FFFFFF'], Lost: false},
-		{Item: "Stockings4", Group: "Socks", Color: "#000000", Lost: false},
+		{Item: "Stockings4", Group: "Socks", Color: KDBaseBlack, Lost: false},
 		{Item: "FaceVeil", Group: "Mask", Color: "Default", Lost: false},
 		{Item: "HairFlower1", Group: "HairAccessory3", Color: 'Default', Lost: false},
 		{Item: "NecklaceKey", Group: "Necklace", Color: "Default", Lost: false},
@@ -264,6 +264,6 @@ let KinkyDungeonDresses: Record<string,KinkyDungeonDress> = {
 
 
 if (StandalonePatched) {
-	KinkyDungeonDefaultDefaultDress = [{"Item":"BanditBoots","Group":"BanditBoots","Color":"#ffffff","Lost":false,"Filters":{"ShoeLeft":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},"ShoeRight":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"WitchBlouse","Group":"WitchBlouse","Color":"#ffffff","Lost":false},{"Item":"WitchCorset","Group":"WitchCorset","Color":"#ffffff","Lost":false,"Filters":{"Corset":{"gamma":1.45,"saturation":0.4666666666666667,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"MaidSkirt","Group":"MaidSkirt","Color":"#ffffff","Lost":false,"Filters":{"Skirt":{"gamma":1,"saturation":0.23333333333333334,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.55,"alpha":1.0166666666666666}}},{"Item":"MaidSocks","Group":"MaidSocks","Color":"#ffffff","Lost":false,"Filters":{"SockRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"SockLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"StrappyBikini","Group":"StrappyBikini","Color":"#ffffff","Lost":false},{"Item":"LatexBra","Group":"LatexBra","Color":"#ffffff","Lost":false}];
+	KinkyDungeonDefaultDefaultDress = [{"Item":"BanditBoots","Group":"BanditBoots","Color":KDBaseWhite,"Lost":false,"Filters":{"ShoeLeft":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1},"ShoeRight":{"gamma":1.4000000000000001,"saturation":0.03333333333333333,"contrast":1.5833333333333333,"brightness":1.6833333333333333,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"WitchBlouse","Group":"WitchBlouse","Color":KDBaseWhite,"Lost":false},{"Item":"WitchCorset","Group":"WitchCorset","Color":KDBaseWhite,"Lost":false,"Filters":{"Corset":{"gamma":1.45,"saturation":0.4666666666666667,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"MaidSkirt","Group":"MaidSkirt","Color":KDBaseWhite,"Lost":false,"Filters":{"Skirt":{"gamma":1,"saturation":0.23333333333333334,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.55,"alpha":1.0166666666666666}}},{"Item":"MaidSocks","Group":"MaidSocks","Color":KDBaseWhite,"Lost":false,"Filters":{"SockRight":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"SockLeft":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}},{"Item":"StrappyBikini","Group":"StrappyBikini","Color":KDBaseWhite,"Lost":false},{"Item":"LatexBra","Group":"LatexBra","Color":KDBaseWhite,"Lost":false}];
 
 }

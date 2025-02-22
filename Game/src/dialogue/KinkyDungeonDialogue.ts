@@ -98,7 +98,7 @@ function KDDrawDialogue(delta: number): void {
 					}
 				}
 				DrawTextFitKD(tt.replace("SPEAKER", TextGet("Name" + KDGameData.CurrentDialogMsgSpeaker)),
-					1000, 300 + 50 * i - 25 * text.length, 900, "white", "black", undefined, undefined, 115);
+					1000, 300 + 50 * i - 25 * text.length, 900, KDBaseWhite, "black", undefined, undefined, 115);
 			}
 
 			// Draw the options
@@ -133,7 +133,7 @@ function KDDrawDialogue(delta: number): void {
 							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
 								entries[i][1].greyoutCustomTooltip
 								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())
-								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
+								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? KDBaseWhite : "#888888", undefined,
 							undefined, undefined, undefined,
 							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
 								zIndex: 122,
@@ -153,7 +153,7 @@ function KDDrawDialogue(delta: number): void {
 								//KDDialogueData.CurrentDialogueIndex -= 1;
 							}
 							return true;
-						}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png",
+						}, KDOptionOffset > 0, 1350, 450, 90, 40, "", KDOptionOffset > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png",
 						undefined, undefined, undefined, undefined, undefined, undefined, {
 							zIndex: 122,
 						});
@@ -164,7 +164,7 @@ function KDDrawDialogue(delta: number): void {
 								//KDDialogueData.CurrentDialogueIndex += 1;
 							}
 							return true;
-						}, II >= KDMaxDialogue, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", II >= KDMaxDialogue ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png",
+						}, II >= KDMaxDialogue, 1350, 450 + (KDMaxDialogue - 1) * 60 + 10, 90, 40, "", II >= KDMaxDialogue ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Down.png",
 						undefined, undefined, undefined, undefined, undefined, undefined, {
 							zIndex: 122,
 						});
@@ -784,7 +784,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				KDGameData.FoodTarget = enemy.id;
 				KinkyDungeonDrawState = "Inventory";
 				KinkyDungeonCurrentFilter = Consumable;
-				KinkyDungeonSendTextMessage(8, TextGet("KDFoodTarget"), "#ffffff", 1, true);
+				KinkyDungeonSendTextMessage(8, TextGet("KDFoodTarget"), KDBaseWhite, 1, true);
 
 			}
 			return false;
@@ -2523,7 +2523,7 @@ function DialogueBringNearbyEnemy(x: number, y: number, radius: number, unaware?
 			&& (!unaware || !e.aware)) {
 			let point = KinkyDungeonNoEnemy(x, y, true) ? {x:x, y:y} : KinkyDungeonGetNearbyPoint(x, y, true);
 			if (point) {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonDiscovered"), "#ff5277", 1);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonDiscovered"), KDBaseRed, 1);
 				KDMoveEntity(e, point.x, point.y, true);
 				return e;
 			}
@@ -2616,7 +2616,7 @@ function KDRunChefChance(player: entity, force: boolean = false) {
 				let e = DialogueCreateEnemy(point.x, point.y, "Chef");
 				if (e) {
 
-					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), "#ff5277", 1);
+					KinkyDungeonSendTextMessage(10, TextGet("KDSpawnChef"), KDBaseRed, 1);
 					e.aware = true;
 					e.faction = "Ambush";
 					KDRunCreationScript(e, KDGetCurrentLocation());

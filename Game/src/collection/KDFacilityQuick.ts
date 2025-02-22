@@ -92,7 +92,7 @@ KDCollectionTabDraw.FacilityQuick = (value, buttonSpacing, III, x, y) => {
 
 			return true;
 		}, true, x + 10 + quikSpacing*XX++, y + 730 - 10 + quikSpacing * (quickStartingCol + YY), quikSize, quikSize,
-		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Facility/" + fac[0] + ".png",
+		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Facility/" + fac[0] + ".png",
 		undefined, undefined, !allowed,
 		KDButtonColor, undefined, undefined, {
 			hotkey: ii < KinkyDungeonKeySpell.length ? KDHotkeyToText(KinkyDungeonKeySpell[ii]) : undefined,
@@ -101,7 +101,7 @@ KDCollectionTabDraw.FacilityQuick = (value, buttonSpacing, III, x, y) => {
 			centered: true,
 		})) {
 			DrawTextFitKD(TextGet(`KDCollection${(!allowed) ? (KDIsInPartyID(value.id) ? "CantParty" : "Cant") : (assigned ? "Remove" : "Assign")}`) + TextGet("KDFacility_" + (assigned ? value.Facility : fac[0])),
-				x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+				x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 		}
 		ii++;
 

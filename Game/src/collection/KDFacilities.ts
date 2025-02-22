@@ -92,7 +92,7 @@ function KinkyDungeonDrawFacilities(xOffset = -125) {
 	let x = 1225 + xOffset;
 
 	if (!KinkyDungeonFlags.get("1stSummit")) {
-		DrawTextFitKD(TextGet("KDFacilitiesLocked"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
+		DrawTextFitKD(TextGet("KDFacilitiesLocked"), x, 300, 1050, KDBaseWhite, KDTextGray0, 24);
 	} else {
 		KDDrawFacilitiesList(xOffset);
 	}
@@ -150,7 +150,7 @@ function KDDrawFacilitiesList(xOffset) {
 				})
 				return true;
 			},
-			true, XXQuik + quikCurrentCol * quikSpacing, YYQuik, quikSize, quikSize, "", "#ffffff",
+			true, XXQuik + quikCurrentCol * quikSpacing, YYQuik, quikSize, quikSize, "", KDBaseWhite,
 			KinkyDungeonRootDirectory + "UI/Facility/" + facility[0] + ".png", undefined, false, false,
 			undefined, undefined, undefined, {
 				centered: true,
@@ -195,7 +195,7 @@ function KDDrawFacilitiesList(xOffset) {
 			Top: YY,
 			Width: width,
 			Height: dist,
-			Color: "#000000",
+			Color: KDBaseBlack,
 			LineWidth: 1,
 			zIndex: -18,
 			alpha: 0.3
@@ -205,7 +205,7 @@ function KDDrawFacilitiesList(xOffset) {
 			Top: YY,
 			Width: width,
 			Height: dist,
-			Color: "#000000",
+			Color: KDBaseBlack,
 			LineWidth: 1,
 			zIndex: -18,
 			alpha: 0.9
@@ -215,10 +215,10 @@ function KDDrawFacilitiesList(xOffset) {
 			KinkyDungeonRootDirectory + "UI/Facility/" + facility[0] + ".png",
 			XX + 1, YY - 76, 72, 72
 		);
-		DrawTextFitKD(TextGet("KDFacility_" + facility[0]), XX + 80, YY - 40, width - 160, "#ffffff", KDTextGray0, 32, "left");
+		DrawTextFitKD(TextGet("KDFacility_" + facility[0]), XX + 80, YY - 40, width - 160, KDBaseWhite, KDTextGray0, 32, "left");
 		let yyy = 0;
 		for (let str of TextGet("KDFacilityDesc_" + facility[0]).split('|'))
-			DrawTextFitKD(str, XX + 25, YY + 16 + 22*(yyy++), width - 50, "#ffffff", KDTextGray0, 18, "left");
+			DrawTextFitKD(str, XX + 25, YY + 16 + 22*(yyy++), width - 50, KDBaseWhite, KDTextGray0, 18, "left");
 
 
 		YY += dist + padding;
@@ -229,7 +229,7 @@ function KDDrawFacilitiesList(xOffset) {
 		DrawButtonKDEx("facUp", (b) => {
 			FacilitiesIndex -= 1;
 			return true;
-		}, FacilitiesIndex > 0, 1650, 110, 150, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png",
+		}, FacilitiesIndex > 0, 1650, 110, 150, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png",
 		undefined, undefined, !(FacilitiesIndex > 0), KDButtonColor, undefined, undefined, {
 			centered: true,
 			hotkey: KDHotkeyToText(KinkyDungeonKey[0]),
@@ -238,7 +238,7 @@ function KDDrawFacilitiesList(xOffset) {
 			DrawButtonKDEx("facDown", (b) => {
 				FacilitiesIndex += 1;
 				return true;
-			}, broken, 1650, 850, 150, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png",
+			}, broken, 1650, 850, 150, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png",
 		undefined, undefined, !broken, KDButtonColor, undefined, undefined, {
 			centered: true,
 			hotkey: KDHotkeyToText(KinkyDungeonKey[2]),
@@ -274,7 +274,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 		let w = 72;
 		if (ms > 0) {
 			DrawTextFitKD(TextGet("KDServants") + ": ", x + width/2 - (spacing * (ms - 1) + w)/2 - 5, y + yy + 36,
-			500, "#ffffff", KDTextGray0, 24, "right");
+			500, KDBaseWhite, KDTextGray0, 24, "right");
 			let servants = KDGameData.FacilitiesData["Servants_" + facility];
 			for (let i = 0; i < ms; i++) {
 				let servant = servants[i];
@@ -289,7 +289,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;
 					return true;
-				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(servant),
+				}, true, x + width/2 - (spacing * (ms - 1) + w)/2 + i * spacing, y + yy, w, w, "", KDBaseWhite, KDCollectionImage(servant),
 				undefined, undefined, !servant, KDButtonColor, undefined, undefined, {
 					centered: true,
 				});
@@ -299,7 +299,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 		}
 		if (mp > 0) {
 			DrawTextFitKD(TextGet("KDPrisoners") + ": ", x + width/2 - (spacing * (mp - 1) + w)/2 - 5, y + yy + 36,
-			500, "#ffffff", KDTextGray0, 24, "right");
+			500, KDBaseWhite, KDTextGray0, 24, "right");
 			let prisoners = KDGameData.FacilitiesData["Prisoners_" + facility];
 			for (let i = 0; i < mp; i++) {
 				let prisoner = prisoners[i];
@@ -314,7 +314,7 @@ function KDDrawServantPrisonerList(facility: string, x: number, y: number, width
 					KDResetCollectionUI();
 					KDFacilityCollectionCallback = setCallback;
 					return true;
-				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", "#ffffff", KDCollectionImage(prisoner),
+				}, true, x + width/2 - (spacing * (mp - 1) + w)/2 + i * spacing, y + yy, w, w, "", KDBaseWhite, KDCollectionImage(prisoner),
 				undefined, undefined, !prisoner, KDButtonColor, undefined, undefined, {
 					centered: true,
 				});

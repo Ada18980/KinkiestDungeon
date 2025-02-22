@@ -186,7 +186,7 @@ function KinkyDungeonDressPlayer (
 				DressList.push({
 					Item: a.Model.Name || a.Model,
 					Group: a.Model.Group || a.Model.Name || a.Model,
-					Color: "#ffffff",
+					Color: KDBaseWhite,
 					Lost: false,
 					Filters: a.Model.Filters || a.Filters,
 					Properties: a.Model.Properties || a.Properties,

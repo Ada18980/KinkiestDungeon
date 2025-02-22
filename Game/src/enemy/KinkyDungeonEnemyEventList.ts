@@ -1303,7 +1303,7 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 			if (!instant && (!KDEnemyHasFlag(enemy, "applyItem"))) {
 				enemy.targetingX = player.x;
 				enemy.targetingY = player.y;
-				KinkyDungeonCreateWarningTile(player.x, player.y, enemy.Enemy.color || "#ff5277",
+				KinkyDungeonCreateWarningTile(player.x, player.y, enemy.Enemy.color || KDBaseRed,
 					1 + delta, 2
 				);
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem", 2 + delta);
@@ -1312,7 +1312,7 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				"yellow", 2, true);
 			} else if (!instant && !KDEnemyHasFlag(enemy, "applyItem2")) {
-				KinkyDungeonCreateWarningTile(player.x, player.y, enemy.Enemy.color || "#ff5277",
+				KinkyDungeonCreateWarningTile(player.x, player.y, enemy.Enemy.color || KDBaseRed,
 					1 + delta,
 				);
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 1 + delta);

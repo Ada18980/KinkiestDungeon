@@ -253,7 +253,7 @@ function KinkyDungeonHandleStepOffTraps(entity: entity, x: number, y: number, mo
 		if (!tile.StepOffTiles || tile.StepOffTiles.includes(moveX + "," + moveY)) {
 			KinkyDungeonSendEvent("beforeStepOffTrap", {x:x, y:y, tile: tile, flags: flags});
 			let msg = "";
-			let color = "#ff5277";
+			let color = KDBaseRed;
 			let trap = tile.StepOffTrap;
 
 			if (KDTrapTypesStepOff[tile.StepOffTrap]) {
@@ -287,7 +287,7 @@ function KinkyDungeonHandleTraps(entity: entity, x: number, y: number, Moved: bo
 		if (flags.AllowTraps && Moved) {
 			let msg = "";
 			let triggered = false;
-			let color = "#ff5277";
+			let color = KDBaseRed;
 			let trap = tile.Trap;
 
 			if (entity == KinkyDungeonPlayerEntity && KinkyDungeonStatsChoice.has("Rusted") && KDRandom() < 0.25) {
@@ -319,7 +319,7 @@ function KinkyDungeonHandleTraps(entity: entity, x: number, y: number, Moved: bo
 
 function KDTrigPanic(chest?: boolean) {
 	if ((!chest && KinkyDungeonStatsChoice.has("Panic2")) || (chest && KinkyDungeonStatsChoice.has("Panic"))) {
-		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), "#ff5277", 4);
+		KinkyDungeonSendActionMessage(10, TextGet("KDPanic"), KDBaseRed, 4);
 		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, 2);
 	}
 }
@@ -456,7 +456,7 @@ function KinkyDungeonGetTrap(trapTypes: any[], Level: number, tags: string[]) {
 
 function KDSmokePuff(x: number, y: number, radius: number, density: number, nomsg?: boolean) {
 	if (!nomsg)
-		KinkyDungeonSendTextMessage(2, TextGet("KDSmokePuff"), "white", 2);
+		KinkyDungeonSendTextMessage(2, TextGet("KDSmokePuff"), KDBaseWhite, 2);
 	for (let X = x - Math.floor(radius); X <= x + Math.floor(radius); X++)
 		for (let Y = y - Math.floor(radius); Y <= y + Math.floor(radius); Y++) {
 			if ((!density || KDRandom() < density || (X == x && Y == Y)) && KDistEuclidean(X - x, Y - y) <= radius) {
@@ -470,7 +470,7 @@ function KDSmokePuff(x: number, y: number, radius: number, density: number, noms
 
 function KDSteamPuff(x: number, y: number, radius: number, density: number, nomsg?: boolean) {
 	if (!nomsg)
-		KinkyDungeonSendTextMessage(2, TextGet("KDSteamPuff"), "white", 2);
+		KinkyDungeonSendTextMessage(2, TextGet("KDSteamPuff"), KDBaseWhite, 2);
 	for (let X = x - Math.floor(radius); X <= x + Math.floor(radius); X++)
 		for (let Y = y - Math.floor(radius); Y <= y + Math.floor(radius); Y++) {
 			if ((!density || KDRandom() < density || (X == x && Y == Y)) && KDistEuclidean(X - x, Y - y) <= radius) {

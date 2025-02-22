@@ -140,21 +140,21 @@ function KDDrawMods() {
 		let name = keys[i];
 		let ver = 0;
 		if (KDModInfo[keys[i]]) {
-			color = "#ffffff";
+			color = KDBaseWhite;
 			info = "";
 			try {
 				name = KDModInfo[keys[i]].modname || name; // if blank, ignore modname
 				if (KDModInfo[keys[i]].gamemajor >= 0 && VersionMajor != KDModInfo[keys[i]].gamemajor) {
-					color = "#ff5277";
+					color = KDBaseRed;
 					info = "KDModOutdated2";
 				} else if (KDModInfo[keys[i]].gameminor >= 0 && VersionMinor != KDModInfo[keys[i]].gameminor) {
-					color = "#ff8800";
+					color = KDBaseOrange;
 					info = "KDModOutdated3";
 				} else if (KDModInfo[keys[i]].gamepatch_min >= 0 && VersionPatch < KDModInfo[keys[i]].gamepatch_min) {
-					color = "#ffff00";
+					color = KDBaseYellow;
 					info = "KDModOutdated";
 				} else if (KDModInfo[keys[i]].gamepatch_max >= 0 && VersionPatch > KDModInfo[keys[i]].gamepatch_max) {
-					color = "#ffff00";
+					color = KDBaseYellow;
 					info = "KDModOutdated";
 				}
 
@@ -172,7 +172,7 @@ function KDDrawMods() {
 				delete KDModInfo[keys[i]];
 				KDUpdateModInfo();
 				return true;
-			}, true, 1275, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), "#ffffff", "");
+			}, true, 1275, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), KDBaseWhite, "");
 		count++;
 	}
 }
@@ -509,7 +509,7 @@ function KDDrawModConfigs() {
     let CombarXX = 550;
     let modrows = 8; // Number of mods or config options
     // Draw text as a title for mod configuration
-    DrawTextFitKD(`Mod Configuration - ${TextGet("KDModButton" + (KDModToggleTab))}`, 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
+    DrawTextFitKD(`Mod Configuration - ${TextGet("KDModButton" + (KDModToggleTab))}`, 1250, YYstart - 70, 1000, KDBaseWhite, undefined, 40);
     let loadedmods = Object.keys(KDModConfigs);
     loadedmods = loadedmods.splice((KDModListPage) * modrows, modrows); // Select only the page of mods for which we are on
     loadedmods.forEach((loadedmod) => {
@@ -518,7 +518,7 @@ function KDDrawModConfigs() {
             KDModPage = 0;
             KDModToggleTab = loadedmod;
 			return true;
-        }, true, CombarXX, YY, 300, 64, TextGet("KDModButton" + (loadedmod)), "#ffffff", "");
+        }, true, CombarXX, YY, 300, 64, TextGet("KDModButton" + (loadedmod)), KDBaseWhite, "");
         YY += YYd;
     })
     if (Object.keys(KDModConfigs).length > modrows) {
@@ -526,13 +526,13 @@ function KDDrawModConfigs() {
             DrawButtonKDEx("KDModConfigListUp", (b) => {
                 KDModListPage -= 1;
                 return true;
-            }, true, CombarXX + 105, YYstart, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
+            }, true, CombarXX + 105, YYstart, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
         }
         if (KDModListPage < (((Object.keys(KDModConfigs).length % modrows) == 0) ? (Object.keys(KDModConfigs).length / modrows - 1) : Math.floor(Object.keys(KDModConfigs).length / modrows))) {
             DrawButtonKDEx("KDModConfigListDown", (b) => {
                 KDModListPage += 1;
                 return true;
-            }, true, CombarXX + 105, YYstart + ((YYd) * modrows) + 50, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
+            }, true, CombarXX + 105, YYstart + ((YYd) * modrows) + 50, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
         }
     }
     YY = YYstart + 50;
@@ -551,7 +551,7 @@ function KDDrawModConfigs() {
                 DrawCheckboxKDEx(modbutton.refvar, (bdata) => {
                     KDModSettings[KDModToggleTab][modbutton.refvar] = !KDModSettings[KDModToggleTab][modbutton.refvar]
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, TextGet(`KDModButton${modbutton.refvar}`), KDModSettings[KDModToggleTab][modbutton.refvar], false, blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, TextGet(`KDModButton${modbutton.refvar}`), KDModSettings[KDModToggleTab][modbutton.refvar], false, blocking ? "#888888" : KDBaseWhite);
                 YY += YYd;
             }
             // variable is a range that cycles by stepcount between rangelow and rangehigh.
@@ -567,16 +567,16 @@ function KDDrawModConfigs() {
                         KDModSettings[KDModToggleTab][modbutton.refvar] = parseFloat((KDModSettings[KDModToggleTab][modbutton.refvar] - modbutton.stepcount).toFixed(decimalPlacesInBase))
                     }
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : KDBaseWhite);
                 // Label for the button
-                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : KDBaseWhite, undefined, 30);
                 // Right to increment
                 DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
                     if (KDModSettings[KDModToggleTab][modbutton.refvar] < modbutton.rangehigh) {
                         KDModSettings[KDModToggleTab][modbutton.refvar] = parseFloat((KDModSettings[KDModToggleTab][modbutton.refvar] + modbutton.stepcount).toFixed(decimalPlacesInBase))
                     }
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : KDBaseWhite);
                 YY += YYd;
             }
             // variable has custom code that wants to run when clicking a button.
@@ -585,13 +585,13 @@ function KDDrawModConfigs() {
                 if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { KDModSettings[KDModToggleTab][modbutton.refvar] = (modbutton.default != undefined) ? modbutton.default : false};
                 var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
 
-                DrawButtonKDEx(modbutton.name, modbutton.click, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 370, 64, (TextGet(`KDModButton${modbutton.refvar}`) != `KDModButton${modbutton.refvar}`) ? TextGet(`KDModButton${modbutton.refvar}`) : modbutton.name, blocking ? "#888888" : "#ffffff", "");
+                DrawButtonKDEx(modbutton.name, modbutton.click, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 370, 64, (TextGet(`KDModButton${modbutton.refvar}`) != `KDModButton${modbutton.refvar}`) ? TextGet(`KDModButton${modbutton.refvar}`) : modbutton.name, blocking ? "#888888" : KDBaseWhite, "");
                 YY += YYd;
             }
             // variable is a spacer - Only print text here.
             else if (modbutton.type == "text") {
                 var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
-                DrawTextFitKD(`${(modbutton.refvar != undefined) ? TextGet(`KDModButton${modbutton.refvar}`) : ""}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 480, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${(modbutton.refvar != undefined) ? TextGet(`KDModButton${modbutton.refvar}`) : ""}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 480, blocking ? "#888888" : KDBaseWhite, undefined, 30);
                 YY += YYd;
             }
 			// variable is a string value - Put an input box here.
@@ -613,15 +613,15 @@ function KDDrawModConfigs() {
 					let newindex = ((modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])-1) == -1) ? (modbutton.options.length-1) : (modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])-1);
                     KDModSettings[KDModToggleTab][modbutton.refvar] = modbutton.options[newindex];
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 64, 64, '<', blocking ? "#888888" : KDBaseWhite);
                 // Label for the button
-                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : "#ffffff", undefined, 30);
+                DrawTextFitKD(`${TextGet(`KDModButton${modbutton.refvar}`)}: ${KDModSettings[KDModToggleTab][modbutton.refvar]}`, CombarXX + modtoggleoffset + 64 + 190 + modsecondrowoffset, YY + 32, 360, blocking ? "#888888" : KDBaseWhite, undefined, 30);
                 // Right to increment
                 DrawButtonKDEx(`ModRangeButtonR${modbutton.name}`, (bdata) => {
                     let newindex = ((modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])+1) == modbutton.options.length) ? (0) : (modbutton.options.indexOf(KDModSettings[KDModToggleTab][modbutton.refvar])+1);
                     KDModSettings[KDModToggleTab][modbutton.refvar] = modbutton.options[newindex];
                     return true;
-                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : "#ffffff");
+                }, blocking ? false : true, CombarXX + modtoggleoffset + 64 + 360 + 20 + modsecondrowoffset, YY, 64, 64, '>', blocking ? "#888888" : KDBaseWhite);
                 YY += YYd;
             }
             modtogglecount++;
@@ -635,13 +635,13 @@ function KDDrawModConfigs() {
                 DrawButtonKDEx("KDModToggleListUp", (b) => {
                     KDModPage -= 1;
                     return true;
-                }, true, CombarXX + 105 + modtoggleoffset * 2, YYstart, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png");
+                }, true, CombarXX + 105 + modtoggleoffset * 2, YYstart, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png");
             }
             if (KDModPage < (((KDModConfigs[KDModToggleTab].length % (modrows * 2)) == 0) ? (KDModConfigs[KDModToggleTab].length / (modrows * 2) - 1) : Math.floor(KDModConfigs[KDModToggleTab].length / (modrows * 2)))) {
                 DrawButtonKDEx("KDModToggleListDown", (b) => {
                     KDModPage += 1;
                     return true;
-                }, true, CombarXX + 105 + modtoggleoffset * 2, YYstart + ((YYd) * modrows) + 50, 90, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png");
+                }, true, CombarXX + 105 + modtoggleoffset * 2, YYstart + ((YYd) * modrows) + 50, 90, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png");
             }
         }
     }
@@ -656,7 +656,7 @@ function KDDrawModConfigs() {
         }
         KinkyDungeonSendEvent("afterModConfig", {}); // Mods can register events with this handle in generic events, to do stuff after leaving the mod config window.
         return true;
-    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), "#ffffff", "");
+    }, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), KDBaseWhite, "");
 }
 
 function KDLoadModSettings() {

@@ -9,10 +9,10 @@ function KDDrawManagement(x: number, y: number, width: number): number {
 		let rate = KDGetManagementEfficiency();
 		let ii = 0;
 		//DrawTextFitKD(TextGet("KDManagement1"),
-		//	x + 50, yy + 80 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+		//	x + 50, yy + 80 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 		DrawTextFitKD(TextGet("KDManagement2")
 			.replace("AMNT", (rate > 0 ? "+" : "") + Math.round((rate - 1)*100) + ""),
-			x + 50, yy + 80 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 80 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 
 
 	}

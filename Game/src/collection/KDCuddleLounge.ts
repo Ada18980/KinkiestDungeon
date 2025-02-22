@@ -11,14 +11,14 @@ function KDDrawCuddleLounge(x: number, y: number, width: number): number {
 			.replace("AMNT", Math.round(rate.servantPoints*10) + "")
 			.replace("OPN", Math.round(rate.servants*10)/10 + "")
 			,
-			x + 50, yy + 70 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 70 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 		DrawTextFitKD(TextGet("KDCuddleLounge2")
 			.replace("AMNT", Math.round(rate.prisonerPoints*10) + "")
 			.replace("OPN", Math.round(rate.prisoners*10)/10 + "")
 			,
-			x + 50, yy + 70 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 70 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 		DrawTextFitKD(TextGet("KDCuddleLoungeInfo"),
-			x + 50, yy + 70 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+			x + 50, yy + 70 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 
 	}
 	return dd;

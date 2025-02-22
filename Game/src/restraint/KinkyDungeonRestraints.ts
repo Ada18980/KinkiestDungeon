@@ -49,7 +49,7 @@ let KDCustomAffinity: Record<string, (data : KDEventData_affinity) => boolean> =
 	HookOrFoot: (data) => {
 		if (KinkyDungeonCanUseFeetLoose(false)) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), KDBaseLightGreen, 2,
 					false, false, undefined, "Struggle");
 			}
 			return true;
@@ -59,7 +59,7 @@ let KDCustomAffinity: Record<string, (data : KDEventData_affinity) => boolean> =
 	Tug: (data) => {
 		if (KinkyDungeonFlags.get("leashtug")) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2,
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), KDBaseLightGreen, 2,
 					false, false, undefined, "Struggle");
 			}
 			return true;
@@ -70,7 +70,7 @@ let KDCustomAffinity: Record<string, (data : KDEventData_affinity) => boolean> =
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
 		if (KinkyDungeonCanUseFeetLoose(false)) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), "lightgreen", 2,
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseFootAffinity"), KDBaseLightGreen, 2,
 					false, false, undefined, "Struggle");
 			}
 			return true;
@@ -81,7 +81,7 @@ let KDCustomAffinity: Record<string, (data : KDEventData_affinity) => boolean> =
 		if (!KinkyDungeonGetAffinity(data.Message, "Sharp", data.group)) return false;
 		if (KinkyDungeonFlags.get("leashtug")) {
 			if (data.Message) {
-				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), "lightgreen", 2,
+				KinkyDungeonSendTextMessage(7, TextGet("KDUseTugAffinity"), KDBaseLightGreen, 2,
 					false, false, undefined, "Struggle");
 			}
 			return true;
@@ -1034,7 +1034,7 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 			else if (data.canStand && data.groupIsHigh && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) return true;
 			else if (Message && !data.msgedstand && (!data.canStand || !data.groupIsHigh) && t.affinitiesStanding && t.affinitiesStanding.includes(affinity)) {
 				data.msgedstand = true;
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 			}
 		}
@@ -1044,7 +1044,7 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '?') {
 			if (data.canStand && data.groupIsHigh) return true;
-			else if (!data.msgedstand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), "#ff5277", 2,
+			else if (!data.msgedstand && Message) KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonHookHighFail"), KDBaseRed, 2,
 				false, false, undefined, "Struggle");
 		} else if (KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - 1) == ',') return true;
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
@@ -1055,7 +1055,7 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 				if (KDCornerTiles[tile]) {
 					return true;
 				} else if (tile == 'C' && Message) {
-					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), "#ff5277", 2, true,
+					KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedOpenChest"), KDBaseRed, 2, true,
 						false, undefined, "Struggle");
 				}
 			}
@@ -1069,7 +1069,7 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '/') {
 			if (Message)
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapUse"), "lightgreen", 2,
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapUse"), KDBaseLightGreen, 2,
 					false, false, undefined, "Struggle");
 			return true;
 		}
@@ -1079,7 +1079,7 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 				if (tile2 == '-'
 					|| tile == 'a') {
 					if (Message)
-						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapObjectUse"), "lightgreen", 2,
+						KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonScrapObjectUse"), KDBaseLightGreen, 2,
 							false, false, undefined, "Struggle");
 					return true;
 				}
@@ -1105,13 +1105,13 @@ function KinkyDungeonWallCrackAndKnife(Message: boolean): boolean {
 					if (!KinkyDungeonIsArmsBound(true) || (KinkyDungeonCanStand() && !KDForcedToGround())) {
 						if (Message) {
 							if (!KinkyDungeonIsArmsBound(true))
-								KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrack"), "lightgreen", 2, true);
-							else KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrackLegs"), "lightgreen", 2, true);
+								KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrack"), KDBaseLightGreen, 2, true);
+							else KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonUseCrackLegs"), KDBaseLightGreen, 2, true);
 						}
 						return true;
 					} else {
 						if (Message) {
-							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedCrack"), "#ff5277", 2, true);
+							KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedCrack"), KDBaseRed, 2, true);
 						}
 						return false;
 					}
@@ -1504,7 +1504,7 @@ function KinkyDungeonPickAttempt(): boolean {
 	let chargecosts = true;
 	if (wcost > 0 && !KinkyDungeonHasWill(-wcost, false)) {
 		chargecosts = false;
-		KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle"), "#ff5277", 2, true);
+		KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle"), KDBaseRed, 2, true);
 	} else if (!KinkyDungeonHasStamina(-cost, true)) {
 		chargecosts = false;
 		KinkyDungeonWaitMessage(true, 0);
@@ -1524,7 +1524,7 @@ function KinkyDungeonPickAttempt(): boolean {
 		KinkyDungeonTargetTile.pickProgress += escapeChance;
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Pick.ogg");
 	}
-	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonAttemptPick" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject")), (Pass == "Success") ? "lightgreen" : "#ff5277", 1);
+	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonAttemptPick" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject")), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 1);
 	if (chargecosts) {
 		KDChangeStamina(KinkyDungeonTargetTileLocation, "map", "pick", cost, true);
 		KDChangeWill(KinkyDungeonTargetTileLocation, "map", "pick", wcost);
@@ -1553,7 +1553,7 @@ function KinkyDungeonUnlockAttempt(lock: string): boolean {
 	if (KinkyDungeonStatsChoice.get("Psychic")) escapeChance = Math.max(escapeChance, 0.33);
 	if (KDRandom() < escapeChance)
 		Pass = "Success";
-	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStruggleUnlock" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject")), (Pass == "Success") ? "lightgreen" : "#ff5277", 1);
+	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonStruggleUnlock" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject")), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 1);
 	if (Pass == "Success") {
 		KinkyDungeonRemoveKeysUnlock(lock);
 		if (KDLocks[lock] && KDLocks[lock].loot_special && KinkyDungeonTargetTile && KinkyDungeonTargetTile.Loot == "normal") KinkyDungeonSpecialLoot = true;
@@ -1790,7 +1790,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				+ ".ogg");
 			KinkyDungeonSendActionMessage(10, TextGet("KDStruggleBlocked")
 				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)),
-			"#ff5277", 2, true);
+			KDBaseRed, 2, true);
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: data.restraint,
@@ -1952,7 +1952,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonBuffLockdownTry")
-			.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 1);
+			.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 1);
 		data.escapeChance -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Lockdown") * 0.1;
 	}
 
@@ -1979,7 +1979,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).NoWill) ? KDGetEscapeSFX(data.restraint).NoWill : "Struggle")
 					+ ".ogg");
 				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
-					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 				KinkyDungeonLastAction = "Struggle";
 				KinkyDungeonSendEvent("struggle", {
 					restraint: data.restraint,
@@ -2005,7 +2005,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 			if (data.affinity && !KinkyDungeonGetAffinity(false, data.affinity, data.struggleGroup)) typesuff = "Wrong" + data.affinity;
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "NeedEdge" + typesuff)
-				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: data.restraint,
@@ -2044,10 +2044,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				if (typesuff == "" && data.failSuffix) typesuff = data.failSuffix;
 				if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "Impossible" + typesuff)
-					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 				if (EC.escapeChanceData.GoddessBonus < 0 && EC.escapeChanceData.escapeChance < 0 && EC.escapeChance - EC.escapeChanceData.GoddessBonus > 0) {
 					KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonStruggle" + data.struggleType + "ImpossibleGoddess")
-						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+						.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 				}
 
 				if (KinkyDungeonHasStamina(-data.cost)) {
@@ -2106,7 +2106,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 			if (data.affinity && !KinkyDungeonGetAffinity(false, data.affinity, data.struggleGroup)) typesuff = "Wrong" + data.affinity;
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "NeedEdge" + typesuff)
-				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: data.restraint,
@@ -2133,7 +2133,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				+ ".ogg");
 			if (typesuff == "" && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) typesuff = typesuff + "Aroused";
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "Strict" + typesuff)
-				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+				.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 			KinkyDungeonLastAction = "Struggle";
 			KinkyDungeonSendEvent("struggle", {
 				restraint: data.restraint,
@@ -2165,7 +2165,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				data.escapeChance *= 0.5;
 				data.limitChance *= 0.6; // Compensate by reducing limit chance a little
 			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), "#ff5277", 2, true);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNeedGrip"), KDBaseRed, 2, true);
 				data.escapeChance *= 0.0;
 			}
 		} else if (data.hasAffinity) data.escapeChance *= 0.5;
@@ -2217,7 +2217,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				if (suff == "" && data.failSuffix) suff = data.failSuffix;
 				if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggle" + data.struggleType + "ImpossibleBound" + suff)
-					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 
 
 				if (KinkyDungeonHasStamina(-data.cost)) {
@@ -2263,7 +2263,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					+ ((KDGetEscapeSFX(data.restraint) && KDGetEscapeSFX(data.restraint).NoWill) ? KDGetEscapeSFX(data.restraint).NoWill : "Struggle")
 					+ ".ogg");
 				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
-					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), "#ff5277", 2, true);
+					.replace("TargetRestraint", TextGet("Restraint" + data.restraint.name)), KDBaseRed, 2, true);
 				KinkyDungeonLastAction = "Struggle";
 				KinkyDungeonSendEvent("struggle", {
 					restraint: data.restraint,
@@ -2321,7 +2321,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 		msg = msg + gagMsg;
 
-		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
+		KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 5, 3);
 	}
 
 	if (!query)
@@ -2460,7 +2460,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 					+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint).NoWill) ? KDGetEscapeSFX(restraint).NoWill : "Struggle")
 					+ ".ogg");
 				KinkyDungeonSendActionMessage(10, TextGet("KDWillStruggle")
-					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2, true);
+					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
 				KinkyDungeonLastAction = "Struggle";
 				KinkyDungeonSendEvent("struggle", {
 					restraint: restraint,
@@ -2541,7 +2541,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
 								+ ".ogg");
 							KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
-								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2, true);
+								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
 							KinkyDungeonLastAction = "Struggle";
 							KinkyDungeonSendEvent("struggle", {
 								restraint: restraint,
@@ -2559,7 +2559,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 								+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
 								+ ".ogg");
 							KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Limit")
-								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2, true);
+								.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
 							KinkyDungeonLastAction = "Struggle";
 							KinkyDungeonSendEvent("struggle", {
 								restraint: restraint,
@@ -2579,7 +2579,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						+ ".ogg");
 					// Replace with frustrated moan later~
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeon" + StruggleType + "Barely")
-						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2, true);
+						.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2, true);
 					KinkyDungeonLastAction = "Struggle";
 					KinkyDungeonSendEvent("struggle", {
 						restraint: restraint,
@@ -2761,7 +2761,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			if ((suff == "" || (Pass == "Fail" && suff == failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
 
 			if (Pass != "Success")
-				KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? "lightgreen" : "#ff5277", 2);
+				KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 2);
 
 			if (KinkyDungeonHasStamina(-data.cost)) {
 				KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
@@ -4108,7 +4108,7 @@ function KDLinkUnder (
 				}
 				if (!end) {
 					console.log("There was an error! Duplicated restraint");
-					KinkyDungeonSendTextMessage(10, `Error adding ${lk.name}, ${lk.curse}. Please report.`, "#ffffff", 12);
+					KinkyDungeonSendTextMessage(10, `Error adding ${lk.name}, ${lk.curse}. Please report.`, KDBaseWhite, 12);
 				}
 			}
 
@@ -4219,7 +4219,7 @@ function KinkyDungeonAddRestraintIfWeaker (
 
 			msg = msg + gagMsg;
 
-			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), "#ffffff", 5, 3);
+			KinkyDungeonSendDialogue(KinkyDungeonPlayerEntity, TextGet(msg), KDBaseWhite, 5, 3);
 			KDSendGagParticles(KDPlayer());
 		}
 		return ret;
@@ -4741,7 +4741,7 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 						let inventoryAs = invitem.inventoryVariant || invitem.inventoryAs || (Remover?.player ? invrest.inventoryAsSelf : invrest.inventoryAs);
 						if (invitem.conjured) {
 							KinkyDungeonSendTextMessage(1, TextGet("KDConjuredItemVanish")
-								.replace("ITMN", KDGetItemName(invitem)), "#ffffff", 1);
+								.replace("ITMN", KDGetItemName(invitem)), KDBaseWhite, 1);
 						}
 						if (invrest.inventory && !ForceRemove && !invitem.conjured
 							&& (Keep
@@ -4868,7 +4868,7 @@ function KinkyDungeonRemoveDynamicRestraint(hostItem: item, Keep?: boolean, NoEv
 			let inventoryAs = item.inventoryVariant || item.inventoryAs || (Remover?.player ? rest.inventoryAsSelf : rest.inventoryAs);
 			if (item.conjured) {
 				KinkyDungeonSendTextMessage(1, TextGet("KDConjuredItemVanish")
-					.replace("ITMN", KDGetItemName(item)), "#ffffff", 1);
+					.replace("ITMN", KDGetItemName(item)), KDBaseWhite, 1);
 			}
 			if (rest.inventory && !ForceRemove && !item.conjured
 				&& (Keep
@@ -5022,7 +5022,7 @@ function KinkyDungeonLinkItem (
 			KDUpdateItemEventCache = true;
 			KDUpdateLinkCaches(newItem);
 			if (autoMessage && KDRestraint(oldItem).Link)
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), "#ff5277", 2,
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonLink" + oldItem.name), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 
 
@@ -5059,10 +5059,10 @@ function KinkyDungeonUnLinkItem(item: item, Keep: boolean, _dynamic?: any, Force
 
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer});
 				if (KDRestraint(item).UnLink) {
-					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink" + item.name), "lightgreen", 2,
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink" + item.name), KDBaseLightGreen, 2,
 						false, false, undefined, "Struggle");
 				} else
-					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), "lightgreen", 2,
+					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonUnLink"), KDBaseLightGreen, 2,
 						false, false, undefined, "Struggle");
 				return [item];
 			}
@@ -5161,10 +5161,10 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 		}
 		if (KDRandom() < data.destroyChance) {
 			if (KDAlwaysKeep({name: restraint.name, id: 0}, KinkyDungeonPlayerEntity)) {
-				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2,
+				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroyFail").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 			} else {
-				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "#ff5277", 2,
+				KinkyDungeonSendTextMessage(9, TextGet("KinkyDungeonStruggleCutDestroy").replace("TargetRestraint", TextGet("Restraint" + restraint.name)), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 			}
 			destroy = true;
@@ -5189,7 +5189,7 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 		if (trap) {
 			let summon = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, trap, 1, 2.5).length;
 			if (summon) {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonSummonTrapMonster"), "#ff5277", 2,
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonSummonTrapMonster"), KDBaseRed, 2,
 					false, false, undefined, "Struggle");
 			}
 		}
@@ -5197,7 +5197,7 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 	let suff = "";
 	if (KDRestraint(restraint)?.customEscapeSucc) suff = KDRestraint(restraint)?.customEscapeSucc;
 	else if (KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = "Aroused";
-	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + "Success" + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), "lightgreen", 2);
+	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + "Success" + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), KDBaseLightGreen, 2);
 
 	KinkyDungeonSendEvent("afterSuccessRemove", data);
 

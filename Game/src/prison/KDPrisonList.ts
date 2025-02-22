@@ -51,7 +51,7 @@ let KDPrisonTypes: Record<string, KDPrisonType> = {
 
 			if (player.x == 18 && player.y == 20 && KinkyDungeonGetRestraintItem("ItemDevices")) {
 				if (KDRandom() < 0.2 && !KinkyDungeonEntityAt(18, 21)) {
-					KinkyDungeonSendTextMessage(10, TextGet("KDSummitSafeguard"), "#88ff88", 10);
+					KinkyDungeonSendTextMessage(10, TextGet("KDSummitSafeguard"), KDBaseMint, 10);
 					KDMovePlayer(18, 21, false);
 				}
 			}

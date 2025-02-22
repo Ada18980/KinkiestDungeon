@@ -851,7 +851,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 								if (!existingitem.item.quantity) existingitem.item.quantity = lostitem.quantity;
 								else existingitem.item.quantity += lostitem.quantity;
 								KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-									`+${lostitem.quantity} ${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 5);
+									`+${lostitem.quantity} ${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, KDBaseWhite, 5);
 							} else
 								KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMistressKeysTakenAway"), "orange", 2);
 						}
@@ -859,22 +859,22 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 						if (lostitem.type == Consumable && KDConsumable(lostitem)) {
 							if (lostitem.name != "MistressKey")
 								KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-									`+${lostitem.quantity} ${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 4);
+									`+${lostitem.quantity} ${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, KDBaseWhite, 4);
 							else
 								KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonMistressKeysTakenAway"), "orange", 2);
 							remove = true;
 						} if (lostitem.type == Weapon && KDWeapon(lostitem) && !KinkyDungeonInventoryGet(lostitem.name)) {
 							//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-							//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 6);
+							//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, KDBaseWhite, 6);
 							remove = true;
 						} else if (lostitem.type == Outfit && KDOutfit(lostitem) && !KinkyDungeonInventoryGet(lostitem.name)) {
 							//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-							//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, "white", 7);
+							//`+${TextGet("KinkyDungeonInventoryItem" + lostitem.name)}`, KDBaseWhite, 7);
 							remove = true;
 						} else if (lostitem.type == LooseRestraint && KDRestraint(lostitem) && !KinkyDungeonInventoryGet(lostitem.name)) {
 							//if (KinkyDungeonGetRestraintByName(lostitem.name).armor || KinkyDungeonRestraintVariants[lostitem.name] != undefined)
 							//KinkyDungeonSendFloater({x: KinkyDungeonPlayerEntity.x - 1 + 2 * KDRandom(), y: KinkyDungeonPlayerEntity.y - 1 + 2 * KDRandom()},
-							//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, "white", 5);
+							//`+ (loose) ${TextGet("Restraint" + lostitem.name)}`, KDBaseWhite, 5);
 							remove = true;
 						}
 					}
@@ -930,8 +930,8 @@ function KinkyDungeonAddGold(value: number) {
 		KinkyDungeonGold += value;
 		//if (ArcadeDeviousChallenge && KinkyDungeonDeviousDungeonAvailable()) CharacterChangeMoney(Player, Math.round(value/10));
 		let pre = value >= 0 ? "+" : "";
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, pre + `${value} GP`, "white", 3.5);
-	} else KinkyDungeonSendActionMessage(10, "Error, the thing you just did would have set your gold to infinity. Please report.", "white", 4);
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, pre + `${value} GP`, KDBaseWhite, 3.5);
+	} else KinkyDungeonSendActionMessage(10, "Error, the thing you just did would have set your gold to infinity. Please report.", KDBaseWhite, 4);
 
 }
 
@@ -1003,7 +1003,7 @@ function KDSpawnLootTrap(x: number, y: number, _trap: any, _mult: number, durati
 	if (spawned > 0) {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/MagicSlash.ogg");
 		KinkyDungeonMakeNoise(12, x, y);
-		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), "#ff8933", 2);
+		KinkyDungeonSendTextMessage(10, TextGet("LootChestTrap"), KDBaseOrange, 2);
 	}
 }
 

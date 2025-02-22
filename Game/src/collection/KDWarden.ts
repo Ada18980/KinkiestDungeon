@@ -9,10 +9,10 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 		let ii = 0;
 		DrawTextFitKD(TextGet("KDWardenTightened")
 			.replace("AMNT", "" + KDGameData.FacilitiesData.Warden_TightenedCount),
-				x + 50, yy + 80 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+				x + 50, yy + 80 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 		if (!KDGetContainer("WardenChest") || Object.values(KDGetContainer("WardenChest").items).length == 0)
 			DrawTextFitKD(TextGet("KDWardenNoRestraints"),
-				x + 50, yy + 80 + 30*ii++, width-100, "#ffffff", KDTextGray0, 18, "left");
+				x + 50, yy + 80 + 30*ii++, width-100, KDBaseWhite, KDTextGray0, 18, "left");
 
 		DrawButtonKDEx(
 			"chestbutton", () => {
@@ -20,7 +20,7 @@ function KDDrawWarden(x: number, y: number, width: number): number {
 				KinkyDungeonDrawState = "Container",
 				KinkyDungeonCurrentFilter = "All";
 				KDUI_CurrentContainer = "WardenChest";
-			}, true, x + 900, yy + 60, 80, 80, "", "#ffffff",
+			}, true, x + 900, yy + 60, 80, 80, "", KDBaseWhite,
 			KinkyDungeonRootDirectory + "UI/Safe.png", undefined, undefined, undefined, undefined, undefined, undefined, {
 				centered: true,
 			}

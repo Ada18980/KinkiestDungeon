@@ -121,7 +121,7 @@ function KinkyDungeonMakeBrightnessMap(_width: number, _height: number, mapBrigh
 	let params = altType?.lightParams ? KinkyDungeonMapParams[altType.lightParams] : KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 
 	let ShadowColor = params.shadowColor != undefined ? params.shadowColor : 0x00001f;
-	let LightColor = params.lightColor != undefined ? params.lightColor : 0x000000;
+	let LightColor = params.lightColor != undefined ? params.lightColor : 0x010203;
 
 	KinkyDungeonBlindLevelBase = 0; // Set to 0 when consumed. We only redraw lightmap once so this is safe.
 	let oldLevels = {
@@ -191,7 +191,7 @@ function KinkyDungeonMakeBrightnessMap(_width: number, _height: number, mapBrigh
 			maxPass = Math.max(maxPass, light.brightness);
 			if (light.brightness > KinkyDungeonBrightnessGet(light.x, light.y)) {
 				if (light.color) KinkyDungeonColorSet(light.x, light.y, light.color);
-				else KinkyDungeonColorSet(light.x, light.y, 0xffffff);
+				else KinkyDungeonColorSet(light.x, light.y, 0xfffafa);
 			}
 			KinkyDungeonBrightnessSet(light.x, light.y, light.brightness, true);
 
@@ -297,7 +297,7 @@ function KinkyDungeonMakeBrightnessMap(_width: number, _height: number, mapBrigh
 	for (let X = 0; X < KDMapData.GridWidth; X++) {
 		for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
 			let brightness = KinkyDungeonBrightnessGet(X, Y);
-			KinkyDungeonShadowSet(X, Y, KDAvgColor(ShadowColor, 0x000000, 1, Math.max(0, brightness - baseBrightness)));
+			KinkyDungeonShadowSet(X, Y, KDAvgColor(ShadowColor, 0x010203, 1, Math.max(0, brightness - baseBrightness)));
 		}
 	}
 
@@ -310,11 +310,11 @@ function KinkyDungeonMakeBrightnessMap(_width: number, _height: number, mapBrigh
  * @param {number} w2 - Weight of color2
  */
 function KDAvgColor(color1: number, color2: number, w1: number, w2: number): number {
-	let r = (color1 & 0xFF0000) >> 16;
+	let r = (color1 & 0xE30022) >> 16;
 	let g = (color1 & 0x00FF00) >> 8;
 	let b = (color1 & 0x0000FF);
 
-	r = Math.floor((r * w1 + w2*((color2 & 0xFF0000) >> 16))/(w1 + w2));
+	r = Math.floor((r * w1 + w2*((color2 & 0xE30022) >> 16))/(w1 + w2));
 	g = Math.floor((g * w1 + w2*((color2 & 0x00FF00) >> 8))/(w1 + w2));
 	b = Math.floor((b * w1 + w2*((color2 & 0x0000FF)))/(w1 + w2));
 	return (r << 16) + (g << 8) + b;
@@ -455,7 +455,7 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 				) {
 					KDGameData.visionBlind = amnt;
 					if (KDGameData.visionBlind > 0.04)
-						KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), "#ffffff", 1, false, true, undefined, "Ambient");
+						KinkyDungeonSendTextMessage(4, TextGet("KDVisionBlind"), KDBaseWhite, 1, false, true, undefined, "Ambient");
 				}
 
 
@@ -669,13 +669,13 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 								(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
 								KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2,
 								undefined, {
-									tint: (!allFog && light > 0) ? shadowColor : 0x000000,
+									tint: (!allFog && light > 0) ? shadowColor : 0x010203,
 									alpha: (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] > 0) ? (0.5*l*l) : l,
 									//blendMode: PIXI.BLEND_MODES.DARKEN,
 								},
 							);
 						} else {
-							kdgamefog.beginFill(light > 0 ? shadowColor : 0x000000, (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] > 0) ? (0.5*l*l) : l);
+							kdgamefog.beginFill(light > 0 ? shadowColor : 0x010203, (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] > 0) ? (0.5*l*l) : l);
 							pad = light > 0 ? 0 : 1;
 							kdgamefog.drawRect((-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad, KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2);
 							kdgamefog.endFill();
@@ -696,7 +696,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 						);
 					}
 					if (visible) {
-						/*kdgamefogmask.beginFill(0xffffff);
+						/*kdgamefogmask.beginFill(0xfffafa);
 						pad = 1;
 						kdgamefogmask.drawRect((-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad, (-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad, KinkyDungeonGridSizeDisplay + pad*2, KinkyDungeonGridSizeDisplay + pad*2);
 						kdgamefogmask.endFill();*/
@@ -715,7 +715,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 
 								pad = 1;
 								if (!v_tl) {
-									kdgamefog.beginFill(0x000000, 1.0);
+									kdgamefog.beginFill(0x010203, 1.0);
 									kdgamefog.drawRect(
 										(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
@@ -724,7 +724,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 									kdgamefog.endFill();
 								}
 								if (!v_tr) {
-									kdgamefog.beginFill(0x000000, 1.0);
+									kdgamefog.beginFill(0x010203, 1.0);
 									kdgamefog.drawRect(
 										(-CamX_offset + X + 0.5)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
@@ -733,7 +733,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 									kdgamefog.endFill();
 								}
 								if (!v_tu && !v_tdl && !v_tdr) {
-									kdgamefog.beginFill(0x000000, 1.0);
+									kdgamefog.beginFill(0x010203, 1.0);
 									kdgamefog.drawRect(
 										(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R)*KinkyDungeonGridSizeDisplay - pad,
@@ -742,7 +742,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 									kdgamefog.endFill();
 								}
 								if (!v_td) {
-									kdgamefog.beginFill(0x000000, 1.0);
+									kdgamefog.beginFill(0x010203, 1.0);
 									kdgamefog.drawRect(
 										(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R + 0.5)*KinkyDungeonGridSizeDisplay - pad,
@@ -751,7 +751,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 									kdgamefog.endFill();
 								}
 								if (v_td && v_tl && !v_tdl) {
-									kdgamefog.beginFill(0x000000, 1.0);
+									kdgamefog.beginFill(0x010203, 1.0);
 									kdgamefog.drawRect(
 										(-CamX_offset + X)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R + 0.5)*KinkyDungeonGridSizeDisplay - pad,
@@ -760,7 +760,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 									kdgamefog.endFill();
 								}
 								if (v_td && v_tr && !v_tdr) {
-									kdgamefog.beginFill(0x000000, 1.0);
+									kdgamefog.beginFill(0x010203, 1.0);
 									kdgamefog.drawRect(
 										(-CamX_offset + X + 0.5)*KinkyDungeonGridSizeDisplay - pad,
 										(-CamY_offset + R + 0.5)*KinkyDungeonGridSizeDisplay - pad,
@@ -796,7 +796,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 			// fog map
 			//allFog = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "TimeSlow");
 			if (allFog) {
-				kdlightmapGFX.beginFill(0xffffff, 1.);
+				kdlightmapGFX.beginFill(0xfffafa, 1.);
 				kdlightmapGFX.drawRect(
 					0,0,
 					KinkyDungeonGridWidthDisplay*KinkyDungeonGridSizeDisplay,
@@ -809,7 +809,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 						RX = X+CamX;
 
 						if (KDMapExtraData.VisionGrid[RX + RY*KDMapData.GridWidth] == 0) {
-							kdlightmapGFX.beginFill(0xffffff, 1.);
+							kdlightmapGFX.beginFill(0xfffafa, 1.);
 							kdlightmapGFX.drawRect(
 								xMult*(X - CamX_offset)*KinkyDungeonGridSizeDisplay - pad,
 								yMult*(R - CamY_offset)*KinkyDungeonGridSizeDisplay - pad,
@@ -818,7 +818,7 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 							kdlightmapGFX.endFill();
 						}
 
-						/*kdlightmapGFX.beginFill(0xffffff, 0.5);
+						/*kdlightmapGFX.beginFill(0xfffafa, 0.5);
 					kdlightmapGFX.drawRect(
 						xMult*(X - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
 						yMult*(R - CamY_offsetVis)*KinkyDungeonGridSizeDisplay,
@@ -971,7 +971,7 @@ let KDMMBoostExp = 2;
 function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: number, alpha: number, gridborders: boolean, blackMap: boolean): void {
 	kdminimap.clear();
 	kdminimap.lineStyle(1, 0xaaaaaa);
-	kdminimap.beginFill(0x000000, alpha);
+	kdminimap.beginFill(0x010203, alpha);
 	kdminimap.drawRect(
 		0,
 		0,
@@ -1060,7 +1060,7 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 			DrawTextFitKDTo2(kdminimap, kdminimapsprites, d.label,
 				 (d.xx + 0.5)*scale,
 				  (d.yy-0.5)*scale + fs * (0 - KDMMReadabilityBoost * ((yBoost[(x+d.xx) + "," + (d.curr)] || 0))),
-				scale * 32, KDGetTileColor(x + d.xx, y + d.yy) || "#ffffff", "#111111",
+				scale * 32, KDGetTileColor(x + d.xx, y + d.yy) || KDBaseWhite, "#111111",
 				fs, "center",
 				20, 1.0, Math.max(2,  1 + Math.ceil(h * 0.05))
 			);
@@ -1069,7 +1069,7 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 		KinkyDungeonSendEvent("drawminimap", {update: KDDrawUpdate, x:x, y:y, w:w, h:h, scale:scale});
 		// Player circle
 		kdminimap.lineStyle(4, 0);
-		kdminimap.beginFill(0xffffff, 1.);
+		kdminimap.beginFill(0xfffafa, 1.);
 		kdminimap.drawCircle(
 			w/2*scale+scale/2 + (KinkyDungeonPlayerEntity.x - KDInspectCamera.x)*scale,
 			h/2*scale+scale/2 + (KinkyDungeonPlayerEntity.y - KDInspectCamera.y)*scale,
@@ -1081,7 +1081,7 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 			let ypre = h/2*scale - scale*KinkyDungeonGridHeightDisplay + scale*(KDInspectCamera.y - KinkyDungeonPlayerEntity.y);
 			let xx = Math.max(0, xpre);
 			let yy = Math.max(0, ypre);
-			kdminimap.lineStyle(2, 0xffffff);
+			kdminimap.lineStyle(2, 0xfffafa);
 			kdminimap.drawRect(
 				xx,
 				yy,

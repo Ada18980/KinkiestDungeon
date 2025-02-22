@@ -866,7 +866,7 @@ function KDUnblock(x: number, y: number): boolean {
 	return !blocked;
 }
 
-function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string) {
+function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = KDBaseWhite, faction?: string) {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;

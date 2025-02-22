@@ -129,7 +129,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KinkyDungeonSetFlag("jailStripSearched", 0);
 					}
 
-					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff5277", 2);
+					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), KDBaseRed, 2);
 					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
 						KinkyDungeonChangeRep("Ghost", 3);
 						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
@@ -240,7 +240,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 					KDRemovePrisonRestraints();
 
-					//KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff5277", 2);
+					//KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), KDBaseRed, 2);
 					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
 						KinkyDungeonChangeRep("Ghost", 3);
 						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
@@ -279,7 +279,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
 												.replace("ITMN", KDGetItemName(w))
 												.replace("AMNT", "1")
-												, "#ff5277", 2);
+												, KDBaseRed, 2);
 											KDAddLostItemSingle(w.inventoryVariant || w.name, 1);
 											KinkyDungeonInventoryRemoveSafe(w);
 										}
@@ -319,7 +319,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 													KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
 													.replace("ITMN", KDGetItemName(c))
 													.replace("AMNT", confiscated + "")
-													, "#ff5277", 2);
+													, KDBaseRed, 2);
 													if (KDConsumable(c)) {
 														KDAddConsumable(c.inventoryVariant || c.name, -confiscated);
 														KDAddLostItemSingle(c.inventoryVariant || c.name, confiscated);
@@ -339,7 +339,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 													KinkyDungeonSendTextMessage(10, TextGet("KDItemNotConfiscatedSneak")
 													.replace("ITMN", KDGetItemName(c))
 													.replace("AMNT", (quantity - confiscated) + "")
-													, "#88ff88", 2);
+													, KDBaseMint, 2);
 												}
 
 											}
@@ -991,7 +991,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				playertext: "Default", response: "Default",
 				drawFunction: (_gagged, _player, _delta) => {
 					// Portrait
-					DrawBoxKD(5, 5, 490, 990, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+					DrawBoxKD(5, 5, 490, 990, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 					return false;
 				},
 				options: {
@@ -999,7 +999,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						playertext: "Continue", response: "Default",
 						drawFunction: (_gagged, _player, _delta) => {
 							// Portrait
-							DrawBoxKD(5, 5, 490, 990, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+							DrawBoxKD(5, 5, 490, 990, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 							return false;
 						},
 						options: {
@@ -1007,7 +1007,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								playertext: "Continue", response: "Default",
 								drawFunction: (_gagged, _player, _delta) => {
 									// Pose and restraint display
-									DrawBoxKD(500, 900, 250, 95, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+									DrawBoxKD(500, 900, 250, 95, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 									return false;
 								},
 								options: {
@@ -1015,7 +1015,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										playertext: "Continue", response: "Default",
 										drawFunction: (_gagged, _player, _delta) => {
 											// Buff bar
-											DrawBoxKD(740, 750, 800, 175, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+											DrawBoxKD(740, 750, 800, 175, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 											return false;
 										},
 										options: {
@@ -1023,7 +1023,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 												playertext: "Continue", response: "Default",
 												drawFunction: (_gagged, _player, _delta) => {
 													// Action Bar
-													DrawBoxKD(1620, 820, 440, 175, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+													DrawBoxKD(1620, 820, 440, 175, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 													return false;
 												},
 												options: {
@@ -1031,7 +1031,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 														playertext: "Continue", response: "Default",
 														drawFunction: (_gagged, _player, _delta) => {
 															// Submenus
-															DrawBoxKD(1845, 450, 150, 320, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+															DrawBoxKD(1845, 450, 150, 320, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 															return false;
 														},
 														options: {
@@ -1039,7 +1039,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 																// Status Bar
 																playertext: "Continue", response: "Default",
 																drawFunction: (_gagged, _player, _delta) => {
-																	DrawBoxKD(1700, 280, 320, 180, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																	DrawBoxKD(1700, 280, 320, 180, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																	return false;
 																},
 																options: {
@@ -1047,14 +1047,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 																		playertext: "Continue", response: "Default",
 																		drawFunction: (_gagged, _player, _delta) => {
 																			// Hotbar
-																			DrawBoxKD(780, 920, 900, 75, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																			DrawBoxKD(780, 920, 900, 75, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																			return false;
 																		},
 																		options: {
 																			"Continue": {
 																				playertext: "Continue", response: "Default",
 																				drawFunction: (_gagged, _player, _delta) => {
-																					DrawBoxKD(550, 100, 1000, 200, "#ffffff", false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
+																					DrawBoxKD(550, 100, 1000, 200, KDBaseWhite, false, 0.1 + 0.05 * Math.sin(CommonTime()/200), 100);
 																					return false;
 																				},
 																				options: {
@@ -1312,14 +1312,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								if (restraint) {
 									KDSetNPCRestraint(en.id, "Device", {
 										name: restraint.name,
-										lock: "White",
+										lock: KDBaseWhite,
 										id: KinkyDungeonGetItemID(),
 										faction: KDDefaultNPCBindPalette,
 									});
 									// Add the tieup value
 									KDNPCRestraintTieUp(en.id, {
 										name: restraint.name,
-										lock: "White",
+										lock: KDBaseWhite,
 										id: KinkyDungeonGetItemID(),
 										faction: KDDefaultNPCBindPalette,
 									}, 1);
@@ -1537,7 +1537,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							false, undefined, true);
 						KDImprisonEnemy(en, true, "PrisonerJailOwn", {
 							name: rest.name,
-							lock: "White",
+							lock: KDBaseWhite,
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						});
@@ -1981,7 +1981,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (tile && tile.Type == "Food") {
 						let gagTotal = KinkyDungeonGagTotal();
 						if (gagTotal > 0) {
-							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), "#ff8933", 1);
+							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEatenGag"), KDBaseOrange, 1);
 							KDGameData.CurrentDialogMsg = "TableFoodEatFail";
 						} else {
 							// Perform the deed
@@ -1994,7 +1994,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							KinkyDungeonAdvanceTime(1);
 
 							KDRunChefChance(KinkyDungeonPlayerEntity);
-							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), "lightgreen", 1);
+							//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), KDBaseLightGreen, 1);
 
 							// Remove the food
 							tile.Food = "Plate";
@@ -2032,7 +2032,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 						// Send the message and advance time
 						KinkyDungeonAdvanceTime(1);
-						//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), "lightgreen", 1);
+						//KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonFoodEaten"), KDBaseLightGreen, 1);
 
 						KDRunChefChance(KinkyDungeonPlayerEntity);
 

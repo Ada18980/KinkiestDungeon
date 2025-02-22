@@ -113,13 +113,13 @@ function KDDrawCollectionFilters(x: number, y: number) {
 				filter[1].Current = 0;
 			}
 			return true;
-		}, true, x - spacing * II++, y, 72, 72, "", "#ffffff",
+		}, true, x - spacing * II++, y, 72, 72, "", KDBaseWhite,
 		KinkyDungeonRootDirectory
 			+ "UI/CollectionFilter/" + (filter[1].Options[filter[1].Current] || filter[1].Options[1]) + ".png", undefined, undefined,
 		!filter[1].Current, KDButtonColor)) {
 			DrawTextFitKD(TextGet("KDCollectionFilter" + filter[0])
 				+ TextGet("KDCollectionFilter" + filter[1].Options[filter[1].Current]),
-			x - spacing * II + spacing + 36, y - 20, 500, "#ffffff", KDTextGray0,);
+			x - spacing * II + spacing + 36, y - 20, 500, KDBaseWhite, KDTextGray0,);
 		}
 	}
 }
@@ -133,14 +133,14 @@ function KDDrawCollectionTabOptions(x: number, y: number) {
 			if (KDCollectionTab) KDCollectionTab = "";
 			else KDCollectionTab = tab;
 			return true;
-		}, true, x + spacing * II++, y, 72, 72, "", "#ffffff",
+		}, true, x + spacing * II++, y, 72, 72, "", KDBaseWhite,
 		KinkyDungeonRootDirectory
 			+ "UI/CollectionTab/" + tab + ".png", undefined, undefined,
 		KDCollectionTab != tab, KDButtonColor, undefined, undefined, {
 			centered: true,
 		})) {
 			DrawTextFitKD(TextGet("KDCollectionTab_" + tab),
-				x + spacing * II + spacing + 36, y - 20, 500, "#ffffff", KDTextGray0,);
+				x + spacing * II + spacing + 36, y - 20, 500, KDBaseWhite, KDTextGray0,);
 		}
 	}
 }
@@ -154,7 +154,7 @@ function KinkyDungeonDrawCollection(xOffset: number = -125) {
 		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
 	} else {
 		if (Object.entries(KDGameData.Collection).length == 0) {
-			DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 1050, "#ffffff", KDTextGray0, 24);
+			DrawTextFitKD(TextGet("KDCollectionEmpty"), x, 300, 1050, KDBaseWhite, KDTextGray0, 24);
 		} else {
 			if (KDCollectionTabScreen[KDCollectionTab]) {
 				KDCollectionTabScreen[KDCollectionTab](x, xOffset);
@@ -315,7 +315,7 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 			// @ts-ignore
 			customSprite: (enemy.CustomSprite),
-			color: enemy.CustomNameColor || "#ffffff",
+			color: enemy.CustomNameColor || KDBaseWhite,
 			Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
 			class: servantclass || "prisoner",
 			Training: -(10 + 10 * KDRandom()) * KDEnemyRank(enemy) - 25,
@@ -457,7 +457,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		Top: y,
 		Width: 440,
 		Height: KDToggleBigView ? 830 : 730,
-		Color: "#000000",
+		Color: KDBaseBlack,
 		LineWidth: 1,
 		zIndex: -20,
 		alpha: 0.5
@@ -476,13 +476,13 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	if (DrawButtonKDEx("toggleBig", () => {
 		KDToggleBigView = !KDToggleBigView;
 		return true;
-	}, true, x - 90, y, 80, 80, "", "#ffffff",
+	}, true, x - 90, y, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/vision.png", undefined, undefined,
 		!KDToggleBigView, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
 
-		DrawTextFitKD(TextGet("KDZoomNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		DrawTextFitKD(TextGet("KDZoomNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 	}
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", () => {
 		if (KDSoundEnabled())
@@ -537,12 +537,12 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		if (orig != current) KDOriginalValue = orig;
 		ForceRefreshModelsAsync(KDSpeakerNPC);
 		return true;
-	}, true, x - 90, y + 90, 80, 80, "", "#ffffff",
+	}, true, x - 90, y + 90, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,
 		true, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
-		DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 	}
 
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("renameNPC", () => {
@@ -550,12 +550,12 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Unlock" + ".ogg");
 		KDRenameNPC = !KDRenameNPC;
 		return true;
-	}, true, x - 90, y + 180, 80, 80, "", "#ffffff",
+	}, true, x - 90, y + 180, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Rename.png", undefined, undefined,
 		!KDRenameNPC, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
-		DrawTextFitKD(TextGet("KDRenameNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		DrawTextFitKD(TextGet("KDRenameNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 	}
 
 
@@ -581,10 +581,10 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	}
 
 	if (tab) {
-		DrawTextFitKD(TextGet("KDDrawSelectedTab_" + tab).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+		DrawTextFitKD(TextGet("KDDrawSelectedTab_" + tab).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, KDBaseWhite, KDTextGray05, 18);
 	} else
 	if (index)
-		DrawTextFitKD(TextGet("KDPrisonerNum_" + KDCollectionTabStatus).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+		DrawTextFitKD(TextGet("KDPrisonerNum_" + KDCollectionTabStatus).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, KDBaseWhite, KDTextGray05, 18);
 
 
 	if (KDRenameNPC) {
@@ -607,31 +607,31 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				});
 				return true;
 			}, true, x + 220 - 130, y + 50 + 18, 260, 24, TextGet("KDRenameOrigNPC")
-				.replace("NME", value.origname), "#ffffff");
+				.replace("NME", value.origname), KDBaseWhite);
 	}
 	else DrawTextFitKD(value.name, x + 220, y + 50 + ((tab || index) ? 0 : -12), 500,
-		"#ffffff",
-		(value.color && value.color != "#ffffff") ? value.color : KDTextGray05,
+		KDBaseWhite,
+		(value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05,
 		36);
 
 
 	if (!KDToggleBigView) {
 		let II = 0;
-		DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, "#ffffff", KDTextGray05, 24);
+		DrawTextFitKD(TextGet("Name" + enemyType.name), x + 220, y + 500 - 25 + 20*II++, 500, KDBaseWhite, KDTextGray05, 24);
 
 		if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
-			DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+			DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 		else II++;
 
 		let opinion = Math.max(-3, Math.min(3, Math.round(KDGetModifiedOpinionID(value.id)/KDOpinionThreshold)));
 		let str = TextGet("KDNPCOpinion") + TextGet("KDTooltipOpinion"+opinion) + ` (${Math.round(KDGetModifiedOpinionID(value.id))})`;
-		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+		DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 
 		if (KDIsNPCPersistent(value.id)) {
 			if (KDGetPersistentNPC(value.id)?.captured) {
 				str = TextGet((KDGetPersistentNPC(value.id)?.captureFaction) ? "KDLastNPCLocationCaptured" : "KDLastNPCLocationCapturedNone")
 					.replace("FCTN", TextGet("KinkyDungeonFaction" + KDGetPersistentNPC(value.id)?.captureFaction));
-				DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+				DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 			}
 		}
 
@@ -646,7 +646,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				.replace("LOC", KDPersonalAlt[npcLoc.room]
 					? KDGetLairName(npcLoc.room)
 					: TextGet("DungeonName" + dungeon));
-			DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, "#ffffff", KDTextGray05, 18, "left");
+			DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 		}
 		if (KDDrawNPCBars(value, x + 0, y + 730, 440) > 0)
 			if (KDGameData.Collection[value.id + ""] && value.escapegrace) {
@@ -792,11 +792,11 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 						KDValidateAllFacilities();
 						return true;
-					}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
+					}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite,
 					KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
-					undefined, undefined, !valid, (!valid) ? "#ff5277" : undefined)) {
+					undefined, undefined, !valid, (!valid) ? KDBaseRed : undefined)) {
 						DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)),
-							x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+							x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 					}
 				}
 
@@ -845,7 +845,7 @@ function KDGetVirtualCollectionEntry(id: number): KDCollectionEntry {
 		sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 		// @ts-ignore
 		customSprite: (enemy.CustomSprite),
-		color: enemy.CustomNameColor || "#ffffff",
+		color: enemy.CustomNameColor || KDBaseWhite,
 		Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
 		class: "stranger",
 		Training: -100,
@@ -954,7 +954,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 					Math.floor(KDGameData.CollectionSorted.length / KDCollectionColumns) * KDCollectionColumns));
 			return true;
 		},true,
-		1700, 870, 125, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Down.png",
+		1700, 870, 125, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Down.png",
 		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
 		);
 	}
@@ -967,7 +967,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 					Math.floor(KDGameData.CollectionSorted.length / KDCollectionColumns) * KDCollectionColumns));
 			return true;
 		},true,
-		1700, 100, 125, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png",
+		1700, 100, 125, 40, "", KDBaseWhite, KinkyDungeonRootDirectory + "Up.png",
 		"", false, false, KDButtonColor, undefined,
 		undefined, {centered: true}
 		);
@@ -990,7 +990,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		},true,
 		x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 400 + i * ww/KDCollectionTabStatusOptions.length,
 		y - KDCollectionSpacing + 12 + (1+ KDCollectionGuestRows)*KDCollectionSpacing,
-		ww/KDCollectionTabStatusOptions.length - xpad, 50, TextGet("KDCollectionTabStatusOption_" + option), "#ffffff", "",
+		ww/KDCollectionTabStatusOptions.length - xpad, 50, TextGet("KDCollectionTabStatusOption_" + option), KDBaseWhite, "",
 		"", false, KDCollectionTabStatus != option, KDButtonColor, undefined, undefined, {centered: true}
 		);
 	}
@@ -1025,7 +1025,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 840,
 	y - KDCollectionSpacing + 14, 64, 64,
 	TextGet("KDAutoRelease_NonNotable"), KDGameData.AutoRelease.NonNotable,
-	false, "#ffffff", undefined, {
+	false, KDBaseWhite, undefined, {
 		fontSize: 24
 	});
 	DrawCheckboxKDEx("KDAutoRelease_Escaped", (_bdata) => {
@@ -1037,7 +1037,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	x + xpad/2 + KDCollectionColumns * KDCollectionSpacing/2 - 400,
 	y - KDCollectionSpacing + 14, 64, 64,
 	TextGet("KDAutoRelease_Escaped"), KDGameData.AutoRelease.Escaped,
-	false, "#ffffff", undefined, {
+	false, KDBaseWhite, undefined, {
 		fontSize: 24
 	});
 
@@ -1106,10 +1106,10 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		}, true,
 		XX,
 		YY,
-		79, 79, "", "#ffffff", KinkyDungeonRootDirectory + dir + sp + ".png",
+		79, 79, "", KDBaseWhite, KinkyDungeonRootDirectory + dir + sp + ".png",
 		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 		)) {
-			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
+			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, KDBaseWhite, (value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05, 24);
 		}
 
 		if (drawCallback) drawCallback(value, XX, YY);
@@ -1188,10 +1188,10 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			}, true,
 			XX,
 			YY,
-			79, 79, "", "#ffffff", KinkyDungeonRootDirectory + dir + sp + ".png",
+			79, 79, "", KDBaseWhite, KinkyDungeonRootDirectory + dir + sp + ".png",
 			"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 			)) {
-				DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
+				DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, KDBaseWhite, (value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05, 24);
 			}
 
 			if (drawCallback) drawCallback(value, XX, YY);
@@ -1234,7 +1234,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 				Top: YY,
 				Width: 79,
 				Height: 79,
-				Color: "#000000",
+				Color: KDBaseBlack,
 				LineWidth: 1,
 				zIndex: -20,
 				alpha: 0.5
@@ -1252,7 +1252,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 	if (KDCollectionSelected && KDGameData.Collection[KDCollectionSelected]) {
 		KDDrawSelectedCollectionMember(KDGameData.Collection[KDCollectionSelected], x - 460, 150, selectedIndex, KDCollectionTab);
-	} else DrawTextFitKD(TextGet("KDCollectionSelect"), x - 240, 500, 500, "#ffffff", KDTextGray0, 24);
+	} else DrawTextFitKD(TextGet("KDCollectionSelect"), x - 240, 500, 500, KDBaseWhite, KDTextGray0, 24);
 
 
 	KDDrawnCollectionInventory = rendered;
@@ -1359,7 +1359,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				if (en) {
 					KDImprisonEnemy(en, true, "PrisonerJailOwn", {
 						name: rest.name,
-						lock: "White",
+						lock: KDBaseWhite,
 						id: KinkyDungeonGetItemID(),
 						faction: KDDefaultNPCBindPalette,
 					});
@@ -1377,12 +1377,12 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockHeavy" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
+		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Imprison.png",
 		undefined, undefined, entity != undefined,
-			KDNPCUnavailable(value.id, value.status) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+			KDNPCUnavailable(value.id, value.status) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 				centered: true,
 			})) {
-			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
+			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, KDBaseWhite,
 				KDTextGray0);
 		}
 		return III;
@@ -1414,13 +1414,13 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 							KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
 						KDSetNPCRestraint(en.id, "Device", {
 							name: rest.name,
-							lock: "White",
+							lock: KDBaseWhite,
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						});
 						KDNPCRestraintTieUp(en.id, {
 							name: rest.name,
-							lock: "White",
+							lock: KDBaseWhite,
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						}, 1);
@@ -1440,12 +1440,12 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
+		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Imprison.png",
 		undefined, undefined, entity != undefined,
-			KDNPCUnavailable(value.id, value.status) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+			KDNPCUnavailable(value.id, value.status) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 				centered: true,
 			})) {
-			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
+			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, KDBaseWhite,
 				KDTextGray0);
 		}
 		return III;
@@ -1458,16 +1458,16 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					player: KDPlayer().id,
 				});
 			else {
-				KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), "#ffffff", 2, true, true);
+				KinkyDungeonSendTextMessage(10, TextGet("KDCantFree"), KDBaseWhite, 2, true, true);
 			}
 			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Struggle" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-		"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
+		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/RestrainFree.png",
 		undefined, undefined, false, (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect) ?
-		KDButtonColor : "#ff5277")) {
-			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
+		KDButtonColor : KDBaseRed)) {
+			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, KDBaseWhite,
 				KDTextGray0);
 		}
 		if (DrawButtonKDEx("returnToCollectionRestrain", (_b) => {
@@ -1476,9 +1476,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-		"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainBack.png",
+		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/RestrainBack.png",
 		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDRestrainNPCBack"), x + 220, y + 750, 500, "#ffffff",
+			DrawTextFitKD(TextGet("KDRestrainNPCBack"), x + 220, y + 750, 500, KDBaseWhite,
 				KDTextGray0);
 		}
 		return III;
@@ -1500,11 +1500,11 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				}
 			}
 			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
-		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? "#ff5277" : "")) {
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Promote.png",
+		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? KDBaseRed : "")) {
 			DrawTextFitKD(TextGet(KDCanPromote(value) ? "KDPromoteNPC" :
 			(KDIsInPartyID(value.id) ? "KDPromoteRemoveFromParty" : "KDPromoteNotEnough")
-		), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+		), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 		} else if (value.status == "Servant" && DrawButtonKDEx("demoteNPC", (_b) => {
 			value.status = value.oldstatus || "";
 			delete value.Facility;
@@ -1512,9 +1512,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
 			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Demote.png",
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Demote.png",
 		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+			DrawTextFitKD(TextGet("KDDemoteNPC"), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 		}
 
 		if ((!value.status
@@ -1527,9 +1527,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Chain" + ".ogg");
 				return true;
 			}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Restrain.png",
+			"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Restrain.png",
 			undefined, undefined, false)) {
-				DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, "#ffffff",
+				DrawTextFitKD(TextGet("KDRestrainNPC"), x + 220, y + 750, 500, KDBaseWhite,
 					KDTextGray0);
 			}
 
@@ -1547,10 +1547,10 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
 			return true;
-		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
+		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Buttons/RemoveGuest" + (KDConfirmOverInventoryAction ? "Confirm" : "") + ".png",
 		undefined, undefined, false)) {
-			DrawTextFitKD(TextGet("KDKickOutGuest" + (KDConfirmOverInventoryAction ? "Confirm" : "")), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+			DrawTextFitKD(TextGet("KDKickOutGuest" + (KDConfirmOverInventoryAction ? "Confirm" : "")), x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 		}
 
 		if (KDSummonableStatus.includes(value.status)
@@ -1578,21 +1578,21 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 					}
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80,
-		80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Summon.png",
+		80, 80, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Buttons/Summon.png",
 		undefined, undefined, false,
 		(
 			KDNPCUnavailable(value.id, value.status)
 			|| !KDIsInSummit()
 			|| KinkyDungeonFindID(value.id)
 		)
-		? "#ff5277" : "")) {
+		? KDBaseRed : "")) {
 			let tt = "KDSummonServant";
 			if (KDNPCUnavailable(value.id, value.status)) tt = "KDSummonServantUnavailable";
 			else if (!KDIsInSummit()) tt = "KDSummonServantSummit";
 			else if (KinkyDungeonFindID(value.id)) tt = "KDSummonServantAlreadyPresent";
 
 			DrawTextFitKD(TextGet(tt),
-				x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+				x + 220, y + 750, 500, KDBaseWhite, KDTextGray0);
 		}
 
 		return III;
@@ -1618,7 +1618,7 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 	let defaultSpeed = KDIsImprisoned(enemy) || !KinkyDungeonFindID(enemy.id);
 
 	let tooltip = "";
-	let tooltipcolor = "#ffffff";
+	let tooltipcolor = KDBaseWhite;
 	let tooltipAmt = 0;
 	let II = 0;
 	let height = 12;
@@ -1639,7 +1639,7 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 			let mod = visualbond - bindAmpMod * futureBound.boundLevel;
 			// Part that will be struggled out of
 			KinkyDungeonBarTo(kdcanvas, x, y + yy - spacing*II,
-				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#ffffff", "#222222");
+				width, height, Math.min(1, (visualbond - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, KDBaseWhite, "#222222");
 			// Separator between part that will be struggled and not
 			KinkyDungeonBarTo(kdcanvas, 1 + x, y + yy - spacing*II,
 				width, height, Math.min(1, (visualbond - mod - i * enemy.Enemy.maxhp) / enemy.Enemy.maxhp) * 100, "#444444", "none");
@@ -1693,7 +1693,7 @@ function KDDrawNPCBars(value: KDCollectionEntry, x: number, y: number, width: nu
 		}
 		enemy.Enemy = oldEnemy;
 		if (tooltip) {
-			DrawTextFitKD(TextGet(tooltip) + ` (${Math.round(10 * tooltipAmt)})`, MouseX, MouseY - 25, 250, tooltipcolor, "#000000");
+			DrawTextFitKD(TextGet(tooltip) + ` (${Math.round(10 * tooltipAmt)})`, MouseX, MouseY - 25, 250, tooltipcolor, KDBaseBlack);
 		}
 		return bindingBars;
 	}
@@ -1731,7 +1731,7 @@ function KDTickAutorelease() {
 			KDReleaseNPC(value.id, KDPlayer().id);
 			KinkyDungeonSendTextMessage(10, TextGet("KDAutoReleased_Escaped")
 				.replace("NME", value.name),
-			"#ffffff", 4);
+			KDBaseWhite, 4);
 		}
 	}
 }

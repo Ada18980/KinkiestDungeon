@@ -76,10 +76,10 @@ function KDPeripheralTileEffects(_delta: number) {
 	let tileD = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y + 1);
 	if (tileUp == ",") {
 		// Low hook
-		KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHookLow"), "lightgreen", 1, true);
+		KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonHookLow"), KDBaseLightGreen, 1, true);
 	} else if (tileUp == "4" || tileL == '4' || tileR == '4' || tileD == '4') {
 		// Crack
-		KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrack"), "lightgreen", 1, true);
+		KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrack"), KDBaseLightGreen, 1, true);
 	}
 }
 
@@ -119,7 +119,7 @@ function KinkyDungeonHandleMoveToTile(toTile: string): void {
 		} else if (!(KDGameData.SleepTurns > 0)) {
 			if (KinkyDungeonLastAction == "Move" || KinkyDungeonLastAction == "Wait")
 				KinkyDungeonConfirmStairs = true;
-			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonConfirmStairs"), "white", 1, true);
+			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonConfirmStairs"), KDBaseWhite, 1, true);
 		}
 	}
 }
@@ -191,11 +191,11 @@ function KDEffectTileTags(x: number, y: number, mapData?: KDMapDataType): Record
 
 function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) {
 	if (KinkyDungeonFlags.get("stairslocked")) {
-		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), "#ffffff", 1);
+		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), KDBaseWhite, 1);
 	} else
 
 	if ((toTile == 's' || (toTile == 'S' && KDGetAltType(MiniGameKinkyDungeonLevel)?.noLeave)) && !KDCanEscape(KDGetEscapeMethod(MiniGameKinkyDungeonLevel))) {
-		KinkyDungeonSendActionMessage(10, KDGetEscapeDoorText(KDGetEscapeMethod(MiniGameKinkyDungeonLevel)), "#ffffff", 1);
+		KinkyDungeonSendActionMessage(10, KDGetEscapeDoorText(KDGetEscapeMethod(MiniGameKinkyDungeonLevel)), KDBaseWhite, 1);
 	}
 	else if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction) {
 		KDStairsAltAction[KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction](toTile, suppressCheckPoint);
@@ -204,7 +204,7 @@ function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) 
 		if (!KDPlayer().leash) {
 			KDGoThruTile(KDPlayer().x, KDPlayer().y, suppressCheckPoint, false, true);
 		} else {
-			KinkyDungeonSendActionMessage(10, TextGet("ClimbDownFail"), "#ffffff", 1);
+			KinkyDungeonSendActionMessage(10, TextGet("ClimbDownFail"), KDBaseWhite, 1);
 		}
 	}
 }
@@ -381,7 +381,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			KDGameData.RoomType = data.roomType;
 
 
-			KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), "#ffffff", 1);
+			KinkyDungeonSendActionMessage(10, TextGet("ClimbDown" + toTile), KDBaseWhite, 1);
 			if (toTile == 's') {
 				KinkyDungeonSetCheckPoint((KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Checkpoint || 'grv'), true, suppressCheckPoint);
 			}

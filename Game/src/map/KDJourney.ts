@@ -38,7 +38,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			x: x,
 			y: y,
 			Checkpoint: checkpoint,
-			color: KinkyDungeonMapParams[checkpoint]?.color || "#ffffff",
+			color: KinkyDungeonMapParams[checkpoint]?.color || KDBaseWhite,
 			Connections: [], // Temporarily empty
 			protected: false,
 			visited: false,
@@ -115,7 +115,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			x: x,
 			y: y,
 			Checkpoint: 'shoppe',
-			color: "#ffffff",
+			color: KDBaseWhite,
 			Connections: [],
 			EscapeMethod: "",
 			MapMod: "",
@@ -138,7 +138,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			x: x,
 			y: y,
 			Checkpoint: checkpoint,
-			color: KinkyDungeonMapParams[checkpoint]?.color || "#ffffff",
+			color: KinkyDungeonMapParams[checkpoint]?.color || KDBaseWhite,
 			Connections: [],
 			EscapeMethod: "Boss",
 			MapMod: "",
@@ -269,7 +269,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			KinkyDungeonState = "Game";
 			KDGameData.JourneyTarget = null;
 			return true;
-		}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+		}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
 			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
 			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
@@ -280,7 +280,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				KinkyDungeonConfirmStairs = true;
 				KinkyDungeonMove({x: 0, y: 0}, 1, true);
 				return true;
-			}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+			}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), KDBaseWhite, undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
 				hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
 				hotkeyPress: KinkyDungeonKeyEnter[0],
 			});
@@ -319,7 +319,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		let sprite = "UI/NavMap/" + slot.type;
 		if (slot.x == KDGameData.JourneyX && slot.y == KDGameData.JourneyY) {
 
-			KDJourneyGraphics.lineStyle(3, 0xffffff);
+			KDJourneyGraphics.lineStyle(3, 0xfffafa);
 			KDJourneyGraphics.drawCircle(
 				xOffset + ScaleX*(slot.x - X),
 				yOffset + ScaleY*(slot.y - Y),
@@ -396,8 +396,8 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		if (!heights["" + slot.y]) {
 			heights["" + slot.y] = true;
 			DrawTextFitKD(TextGet("KDNavMap_Floor").replace("NMB", "" + slot.y), TextOffset, yOffset + ScaleY*(slot.y - Y),
-				200, "#ffffff", KDTextGray0, 24);
-			KDJourneyGraphicsLower.lineStyle(spriteSize*2, 0x000000, 0.2);
+				200, KDBaseWhite, KDTextGray0, 24);
+			KDJourneyGraphicsLower.lineStyle(spriteSize*2, 0x010203, 0.2);
 			KDJourneyGraphicsLower.moveTo(xOffset - ScaleX*Width + 150, yOffset + ScaleY*(slot.y - Y));
 			KDJourneyGraphicsLower.lineTo(xOffset + ScaleX*Width - 150, yOffset + ScaleY*(slot.y - Y));
 		}
@@ -414,7 +414,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 					yOffset + ScaleY*(slot.y - Y) + spriteSize/4,
 					xOffset + ScaleX*(c.x - X),
 					yOffset + ScaleY*(c.y - Y) - spriteSize/4,
-					(highlight) ? 0xffffff : 0x888888,
+					(highlight) ? 0xfffafa : 0x888888,
 					highlight ? KDJourneyGraphicsUpper : undefined
 				)
 			}
@@ -451,7 +451,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 	}
 
 	if (selectedJourney && selectedJourney.y >= Y && selectedJourney.y <= KDLevelsPerCheckpoint + Y) {
-		KDJourneyGraphics.lineStyle(1, 0xffffff);
+		KDJourneyGraphics.lineStyle(1, 0xfffafa);
 		KDJourneyGraphics.drawCircle(
 			xOffset + ScaleX*(selectedJourney.x - X),
 			yOffset + ScaleY*(selectedJourney.y - Y),
@@ -465,7 +465,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 			Top: y,
 			Width: 440,
 			Height: 730,
-			Color: "#000000",
+			Color: KDBaseBlack,
 			LineWidth: 1,
 			zIndex: -20,
 			alpha: 0.5
@@ -482,9 +482,9 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		});
 
 
-		DrawTextFitKD(TextGet("DungeonName" + selectedJourney.Checkpoint), x + 220, y + 50, 500, "#ffffff",
-			(selectedJourney.color && selectedJourney.color != "#ffffff") ? selectedJourney.color : KDTextGray05, 36);
-		DrawTextFitKD(TextGet("KDNavMap_Floor").replace("NMB", "" + selectedJourney.y), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+		DrawTextFitKD(TextGet("DungeonName" + selectedJourney.Checkpoint), x + 220, y + 50, 500, KDBaseWhite,
+			(selectedJourney.color && selectedJourney.color != KDBaseWhite) ? selectedJourney.color : KDTextGray05, 36);
+		DrawTextFitKD(TextGet("KDNavMap_Floor").replace("NMB", "" + selectedJourney.y), x + 220, y + 15, 500, KDBaseWhite, KDTextGray05, 18);
 
 		let II = 0;
 		let spacing = 32;
@@ -492,20 +492,20 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		let fontsize = 20;
 		let fontsize2 = 24;
 		let subspacePercent = 0.35;
-		DrawTextFitKD(TextGet("KDNavMap_Faction"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
-		DrawTextFitKD(TextGet("KinkyDungeonFaction" + (selectedJourney.Faction || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+		DrawTextFitKD(TextGet("KDNavMap_Faction"), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize);
+		DrawTextFitKD(TextGet("KinkyDungeonFaction" + (selectedJourney.Faction || "")), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize2);
 		II+= subspacePercent;
-		DrawTextFitKD(TextGet("KDNavMap_RoomType"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
-		DrawTextFitKD(TextGet("KDRoomType_" + (selectedJourney.RoomType || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+		DrawTextFitKD(TextGet("KDNavMap_RoomType"), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize);
+		DrawTextFitKD(TextGet("KDRoomType_" + (selectedJourney.RoomType || "")), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize2);
 		II+= subspacePercent;
-		DrawTextFitKD(TextGet("KDNavMap_MapMod"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
-		DrawTextFitKD(TextGet("KDMapMod_" + (selectedJourney.MapMod || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+		DrawTextFitKD(TextGet("KDNavMap_MapMod"), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize);
+		DrawTextFitKD(TextGet("KDMapMod_" + (selectedJourney.MapMod || "")), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize2);
 		II+= subspacePercent;
-		DrawTextFitKD(TextGet("KDNavMap_EscapeMethod"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
-		DrawTextFitKD(TextGet("KDEscapeMethod_" + (selectedJourney.EscapeMethod || "")), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+		DrawTextFitKD(TextGet("KDNavMap_EscapeMethod"), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize);
+		DrawTextFitKD(TextGet("KDEscapeMethod_" + (selectedJourney.EscapeMethod || "")), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize2);
 		II+= subspacePercent;
 		if (selectedJourney.SideRooms && selectedJourney.SideRooms.length > 0) {
-			DrawTextFitKD(TextGet("KDNavMap_SideRooms"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
+			DrawTextFitKD(TextGet("KDNavMap_SideRooms"), x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize);
 			for (let sr of selectedJourney.SideRooms) {
 				let str = selectedJourney.HiddenRooms && selectedJourney.HiddenRooms[sr] ? TextGet("KDUnknown")
 					: TextGet("KDSideRoom_" + (sr || ""));
@@ -513,7 +513,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 					str = KDGetLairName(sr);
 
 				}
-				DrawTextFitKD(str, x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize2);
+				DrawTextFitKD(str, x + 220, y + off + spacing*II++, 500, KDBaseWhite, KDTextGray05, fontsize2);
 
 			}
 			II+= subspacePercent;
@@ -531,7 +531,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				if (KDJourneyIndex < 0) KDJourneyIndex = 0;
 				return true;
 			}, true, xOffset - 45, 95, 90, 40, "",
-			KDJourneyIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined, undefined, undefined, {
+			KDJourneyIndex > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKey[0]),
 				hotkeyPress: KinkyDungeonKey[0],
 			});
@@ -542,7 +542,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 					KDJourneyIndex = maxY;
 				return true;
 			}, true, xOffset - 45, 830, 90, 40, "",
-			KDJourneyIndex < maxY ? "white" : "#888888",
+			KDJourneyIndex < maxY ? KDBaseWhite : "#888888",
 			KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKey[2]),
 				hotkeyPress: KinkyDungeonKey[2],

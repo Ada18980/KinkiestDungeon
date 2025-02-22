@@ -56,7 +56,7 @@ function KinkyDungeonNewLore() {
 		KinkyDungeonCurrentLore = availableLore[Math.floor(Math.random() * availableLore.length)];
 		if (!exploredLore[KinkyDungeonCurrentLore]) {
 
-			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2, false, false, undefined, "Items");
+			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), KDBaseWhite, 2, false, false, undefined, "Items");
 			exploredLore[KinkyDungeonCurrentLore] = 1;
 			newLore.push(KinkyDungeonCurrentLore);
 
@@ -76,7 +76,7 @@ function KinkyDungeonNewLore() {
 		KinkyDungeonCurrentLore = CommonRandomItemFromList("", Object.keys(KDLore.Default));
 		if (!exploredLore[KinkyDungeonCurrentLore]) {
 
-			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), "white", 2, false, false, undefined, "Items");
+			KinkyDungeonSendActionMessage(5, TextGet("ItemPickupLore"), KDBaseWhite, 2, false, false, undefined, "Items");
 			exploredLore[KinkyDungeonCurrentLore] = 1;
 			newLore.push(KinkyDungeonCurrentLore);
 
@@ -189,7 +189,7 @@ function KinkyDungeonDrawLore() {
 			);
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
+				fg: KDBaseWhite,
 				bg: KDTextGray0,
 				size: 20,
 			});
@@ -199,7 +199,7 @@ function KinkyDungeonDrawLore() {
 			);
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
+				fg: KDBaseWhite,
 				bg: KDTextGray0,
 				size: 20,
 			});
@@ -208,7 +208,7 @@ function KinkyDungeonDrawLore() {
 			let st = TextGet("KinkyDungeonTooltipArmor").replace("AMOUNT", "" + Math.round(10* armor) + (block_phys ? `(+${Math.round(10* block_phys)})` : ""));
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
+				fg: KDBaseWhite,
 				bg: KDTextGray0,
 				size: 20,
 			});
@@ -217,7 +217,7 @@ function KinkyDungeonDrawLore() {
 			let st = TextGet("KinkyDungeonTooltipSpellResist").replace("AMOUNT", "" + Math.round(10* spellResist) + (block_magic ? `(+${Math.round(10* block_magic)})` : ""));
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
+				fg: KDBaseWhite,
 				bg: KDTextGray0,
 				size: 20,
 			});
@@ -226,24 +226,24 @@ function KinkyDungeonDrawLore() {
 			let st = TextGet("KDunstoppable");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		} else if (enemy.tags.unflinching) {
 			let st = TextGet("KDunflinching");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		} else if (enemy.tags.relentless) {
 			let st = TextGet("KDrelentless");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		}
@@ -251,8 +251,8 @@ function KinkyDungeonDrawLore() {
 			let st = TextGet("KDBulwark");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		}
@@ -260,16 +260,16 @@ function KinkyDungeonDrawLore() {
 			let st = TextGet("KDAbsoluteArmor");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		} else if (enemy.Resistance?.toughArmor) {
 			let st = TextGet("KDToughArmor");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		}
@@ -281,7 +281,7 @@ function KinkyDungeonDrawLore() {
 				TooltipList.push({
 					str: st,
 					fg: "#ffaa55",
-					bg: "#000000",
+					bg: KDBaseBlack,
 					size: 20,
 				});
 			}
@@ -303,8 +303,8 @@ function KinkyDungeonDrawLore() {
 			let st = TextGet("KDBlindsight");
 			TooltipList.push({
 				str: st,
-				fg: "#ffffff",
-				bg: "#000000",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
 				size: 20,
 			});
 		}
@@ -343,14 +343,14 @@ function KinkyDungeonDrawLore() {
 				if (!repeats.DR) {
 					TooltipList.push({
 						str: "",
-						fg: "#ffffff",
-						bg: "#000000",
+						fg: KDBaseWhite,
+						bg: KDBaseBlack,
 						size: 10,
 					});
 					TooltipList.push({
 						str: TextGet("KDTooltipDamageResists"),
-						fg: "#ffffff",
-						bg: "#000000",
+						fg: KDBaseWhite,
+						bg: KDBaseBlack,
 						size: 20,
 					});
 					repeats.DR = true;
@@ -413,7 +413,7 @@ function KinkyDungeonDrawLore() {
 					KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {});
 					return true;
 				}, true, x + 300, 142 + i * 42, 230, 40, TextGet("KinkyDungeonCheckpointLore-1"),
-				"" == KinkyDungeonCurrentLoreTab ? "#ffffff" : (newLore ? "#88ff88" : "#ffffff"), undefined, undefined, undefined, KinkyDungeonCurrentLoreTab != "", KDButtonColor);
+				"" == KinkyDungeonCurrentLoreTab ? KDBaseWhite : (newLore ? KDBaseMint : KDBaseWhite), undefined, undefined, undefined, KinkyDungeonCurrentLoreTab != "", KDButtonColor);
 			} else {
 				let index = i;
 				DrawButtonKDEx("loretab" + i, (_b) => {
@@ -425,7 +425,7 @@ function KinkyDungeonDrawLore() {
 				}, true, x + 300, 142 + i * 42, 230, 40, KinkyDungeonCurrentLoreTabs.includes(tabNames[i + KinkyDungeonCurrentLoreTabOffset]) ?
 					TextGet("KinkyDungeonCheckpointLore" + tabNames[i + KinkyDungeonCurrentLoreTabOffset]) :
 					TextGet("KinkyDungeonCheckpointLoreUnknown"),
-					tabNames[i + KinkyDungeonCurrentLoreTabOffset] == KinkyDungeonCurrentLoreTab ? "#ffffff" : (newLore ? "#88ff88" :"#ffffff"),
+					tabNames[i + KinkyDungeonCurrentLoreTabOffset] == KinkyDungeonCurrentLoreTab ? KDBaseWhite : (newLore ? KDBaseMint :KDBaseWhite),
 					undefined, undefined, undefined, tabNames[i + KinkyDungeonCurrentLoreTabOffset] != KinkyDungeonCurrentLoreTab, KDButtonColor);
 			}
 
@@ -439,11 +439,11 @@ function KinkyDungeonDrawLore() {
 		DrawButtonKDEx("loreUp", (_b) => {
 			if (KinkyDungeonCurrentLoreTabOffset > 0) KinkyDungeonCurrentLoreTabOffset -= 3;
 			return true;
-		}, true, x + 370, 30, 90, 40, "", KinkyDungeonCurrentLoreTabOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+		}, true, x + 370, 30, 90, 40, "", KinkyDungeonCurrentLoreTabOffset > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png");
 		DrawButtonKDEx("loreDown", (_b) => {
 			if (numTabs + KinkyDungeonCurrentLoreTabOffset < KinkyDungeonCurrentLoreTabs.length) KinkyDungeonCurrentLoreTabOffset += 3;
 			return true;
-		}, true, x + 370, 930, 90, 40, "", numTabs + KinkyDungeonCurrentLoreTabOffset < KinkyDungeonCurrentLoreTabs.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
+		}, true, x + 370, 930, 90, 40, "", numTabs + KinkyDungeonCurrentLoreTabOffset < KinkyDungeonCurrentLoreTabs.length ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Down.png");
 	}
 
 	let numNotes = 57;
@@ -452,11 +452,11 @@ function KinkyDungeonDrawLore() {
 	DrawButtonKDEx("loreCurrentUp", (_b) => {
 		if (KinkyDungeonCurrentLoreItemOffset > 0) KinkyDungeonCurrentLoreItemOffset -= 3;
 		return true;
-	}, true, x + 100, 80, 90, 40, "", KinkyDungeonCurrentLoreItemOffset > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png");
+	}, true, x + 100, 80, 90, 40, "", KinkyDungeonCurrentLoreItemOffset > 0 ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Up.png");
 	DrawButtonKDEx("loreCurrentDown", (_b) => {
 		if (numNotes + KinkyDungeonCurrentLoreItemOffset < KinkyDungeonCurrentLoreItems.length) KinkyDungeonCurrentLoreItemOffset += 3;
 		return true;
-	}, true, x + 100, 860, 90, 40, "", numNotes + KinkyDungeonCurrentLoreItemOffset < KinkyDungeonCurrentLoreItems.length ? "white" : "#888888", KinkyDungeonRootDirectory + "Down.png");
+	}, true, x + 100, 860, 90, 40, "", numNotes + KinkyDungeonCurrentLoreItemOffset < KinkyDungeonCurrentLoreItems.length ? KDBaseWhite : "#888888", KinkyDungeonRootDirectory + "Down.png");
 	for (i = 0; i < numNotes; i++) {
 		let ii = Math.floor(i / 2);
 		let xx = i % 2;
@@ -466,7 +466,7 @@ function KinkyDungeonDrawLore() {
 				KinkyDungeonCurrentLore = loreNum;
 				return true;
 			}, true, x + 150 * xx, 142 + (ii) * 42, 145, 40, TextGet("KDLoreLabel" + loreNum),
-			loreNum == KinkyDungeonCurrentLore ? "#ffffff" : (KinkyDungeonNewLoreList.includes(loreNum) ? "#88ff88": "#ffffff"),
+			loreNum == KinkyDungeonCurrentLore ? KDBaseWhite : (KinkyDungeonNewLoreList.includes(loreNum) ? KDBaseMint: KDBaseWhite),
 			undefined, undefined, undefined, loreNum != KinkyDungeonCurrentLore, KDButtonColor);
 		} else {
 			if (i + KinkyDungeonCurrentLoreItemOffset > KinkyDungeonCurrentLoreItems.length + 3)
@@ -517,32 +517,32 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	DrawButtonKDExScroll("TabLore", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Logbook";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonLog"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonLog"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Logbook", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabRep", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Reputation";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonReputation"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonReputation"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Reputation", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabQuest", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Quest";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabJourneyMap", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "JourneyMap";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonJourneyMap"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonJourneyMap"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "JourneyMap", KDButtonColor); II++;
 	/*DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Facilities";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Facilities", KDButtonColor); II++;
 */
 
@@ -568,7 +568,7 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 			Top: canvasOffsetY_ui - 150,
 			Width: 1965 - (canvasOffsetX_ui),
 			Height: 1000 - (canvasOffsetY_ui - 150),
-			Color: "#000000",
+			Color: KDBaseBlack,
 			LineWidth: 1,
 			zIndex: -19,
 			alpha: 0.9
@@ -589,7 +589,7 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 	DrawButtonKDExScroll("TabLore", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Inventory";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonInventory"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonInventory"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Inventory", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabCollection", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Collection";
@@ -598,12 +598,12 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 		KDCurrentFacilityTarget = "";
 		KDFacilityCollectionCallback = null;
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonCollection"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Collection", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabFacilities", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Facilities";
 		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), "#ffffff", undefined, undefined, undefined,
+	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonFacilities"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Facilities", KDButtonColor); II++;
 
 

@@ -242,7 +242,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			if (itemIndex >= 0 && !sg.blocked) {
-				KDSendInput("lock", {group: sg.group, index: itemIndex, type: "White"});
+				KDSendInput("lock", {group: sg.group, index: itemIndex, type: KDBaseWhite});
 			}
 		},
 		cancel: (_player, _delta) => {
@@ -600,7 +600,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				});
 
 				if (KDGameData.UsingConsumable) {
-					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), "#ff5277", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), KDBaseRed, 1, true);
 					let con = KinkyDungeonInventoryGetConsumable(KDGameData.UsingConsumable);
 					if (con) {
 						if (con.quantity > 1) con.quantity -= 1;
@@ -828,7 +828,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KinkyDungeonSendTextMessage(10, TextGet("KDSell")
 				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + value)
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 		},
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
@@ -902,7 +902,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + value)
 				.replace("#", "" + (itemInv.quantity || 1))
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 		},
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
@@ -977,7 +977,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + value)
 				.replace("#", "" + (quantity || 1))
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 		},
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
@@ -1005,7 +1005,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		itemlabel:  (_player, item) => {
 			return KDRecycleString(item, 1);
 		},
-		itemlabelcolor: (_player, _item) => {return "#ffffff";},
+		itemlabelcolor: (_player, _item) => {return KDBaseWhite;},
 		text:  (_player, _item) => {
 			let value = Math.round(100);
 			return TextGet("KDInventoryActionRecycle").replace("VLU", value + "");
@@ -1020,11 +1020,11 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		click: (_player, item) => {
 			KDChangeRecyclerInput(KDRecycleItem(item, 1));
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
-			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), KDBaseWhite, 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycle")
 				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + 100)
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 
 		},
 		/** Return true to cancel it */
@@ -1067,12 +1067,12 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity || 1));
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
-			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), KDBaseWhite, 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleBulk")
 				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + 100)
 				.replace("#", "" + quant)
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 		},
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
@@ -1117,12 +1117,12 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 			KDChangeRecyclerInput(KDRecycleItem(item, itemInv.quantity - 1));
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Recycle.ogg");
-			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), "#ffffff", 2);
+			KinkyDungeonSendTextMessage(10, KDRecycleResourceString(false, "RecyclerInput_"), KDBaseWhite, 2);
 			KinkyDungeonSendTextMessage(10, TextGet("KDRecycleExcess")
 				.replace("ITM", KDGetItemName(item))
 				.replace("VLU", "" + 100)
 				.replace("#", "" + quant)
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 		},
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
@@ -1144,7 +1144,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		show: (_player, item) => {
 			return item?.type == LooseRestraint && KDRestraint(item)?.disassembleAs != undefined;
 		},
-		itemlabelcolor: (_player, _item) => {return "#ffffff";},
+		itemlabelcolor: (_player, _item) => {return KDBaseWhite;},
 		text:  (_player, item) => {
 			let one = (item.quantity || 1) == 1 ? "One" : "";
 			return TextGet("KDInventoryActionDisassemble" + one);
@@ -1180,7 +1180,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				.replace("PRD", TextGet("Restraint" + product))
 				.replace("#", "" + quant)
 				.replace("$", "" + quant*mult)
-			, "#ffffff", 2);
+			, KDBaseWhite, 2);
 
 		},
 		/** Return true to cancel it */
@@ -1227,7 +1227,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 							.replace("RSTR", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item)?.name))
 							.replace("ENNME", TextGet("Name" + enemy.Enemy.name))
 							.replace("AMNT", "" + Math.round(100 * enemy.boundLevel / enemy.Enemy.maxhp)),
-						"#ffffff", 1);
+						KDBaseWhite, 1);
 					if (status.belt) {
 						KinkyDungeonApplyBuffToEntity(enemy, KDChastity);
 					}
@@ -1328,7 +1328,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 							.replace("ENNME", TextGet("Name" + enemy.Enemy.name))
 							.replace("AMNT1", "" + Math.round(10 * enemy.hp))
 							.replace("AMNT2", "" + Math.round(10 * enemy.Enemy.maxhp)),
-						"#ffffff", 1);
+						KDBaseWhite, 1);
 
 
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Cookie.ogg");

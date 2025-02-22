@@ -27310,7 +27310,7 @@ You pick up a runic shield.
 
 Vanish
 消失
-Make the targeted creature invisible, making you totally invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see.
+Make the targeted creature invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see.
 使目标生物隐形，使你在持续时间内完全隐形。攻击和施法会暴露你的存在，但你仍然更难被发现。
 
 

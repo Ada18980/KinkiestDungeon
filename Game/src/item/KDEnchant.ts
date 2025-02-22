@@ -156,8 +156,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "Evasion", trigger: "tick", type: "evasionBuff", power: amt/100, inheritLinked: true},
-						{original: "Evasion", trigger: "inventoryTooltip", type: "varModifier", msg: "Evasion", power: amt, color: "#004400", bgcolor: "#88ff88"},
-						{original: "Evasion", trigger: "icon", type: "tintIcon", power: 1, color: "#88ff88"},
+						{original: "Evasion", trigger: "inventoryTooltip", type: "varModifier", msg: "Evasion", power: amt, color: "#004400", bgcolor: KDBaseMint},
+						{original: "Evasion", trigger: "icon", type: "tintIcon", power: 1, color: KDBaseMint},
 					];}},
 		}},
 	"Accuracy": {
@@ -183,7 +183,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 						{original: "Accuracy", trigger: "calcEvasion", type: "IsMagic"},
 						{original: "Accuracy", trigger: "tick", type: "AccuracyBuff", power: amt/100},
 						{original: "Accuracy", trigger: "inventoryTooltip", type: "varModifier", msg: "Accuracy", power: amt, color: "#004400", bgcolor: "#aaffaa"},
-						{original: "Accuracy", trigger: "icon", type: "tintIcon", power: 1, color: "#ffffff"},
+						{original: "Accuracy", trigger: "icon", type: "tintIcon", power: 1, color: KDBaseWhite},
 					];}},
 			0: /*restraint*/{level: 1,
 				filter: (_item, _allEnchant) => {
@@ -203,7 +203,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					return [
 						{original: "Accuracy", trigger: "tick", type: "AccuracyBuff", power: amt/100, inheritLinked: true},
 						{original: "Accuracy", trigger: "inventoryTooltip", type: "varModifier", msg: "Accuracy", power: amt, color: "#004400", bgcolor: "#aaffaa"},
-						{original: "Accuracy", trigger: "icon", type: "tintIcon", power: 1, color: "#ffffff"},
+						{original: "Accuracy", trigger: "icon", type: "tintIcon", power: 1, color: KDBaseWhite},
 					];}},
 		}},
 	"Sneak": {
@@ -460,8 +460,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCost", trigger: "calcEfficientMana", type: "ManaCost", power: amt*0.01, inheritLinked: true},
-						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: amt, color: "#0000ff", bgcolor: "#8888ff"},
-						{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
+						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: amt, color: KDBaseBlue, bgcolor: "#8888ff"},
+						{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseBlue},
 					];}},
 		}},
 	"ManaCostSpecific": {
@@ -494,8 +494,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCostSpecific", trigger: "calcEfficientMana", type: "ManaCost", condition: "spellType", kind: type, power: amt*0.01, inheritLinked: true},
-						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: amt, color: "#0000ff", bgcolor: "#8888ff"},
-						{original: "ManaCostSpecific", trigger: "icon", type: "tintIcon", power: 5, color: "#0000ff"},
+						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: amt, color: KDBaseBlue, bgcolor: "#8888ff"},
+						{original: "ManaCostSpecific", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseBlue},
 					];}},
 		}},
 	"ManaRegenOnKill": {
@@ -519,7 +519,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaRegenOnKill", trigger: "capture", type: "ManaBounty", power: amt * 0.1, inheritLinked: true},
-						{original: "ManaRegenOnKill", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegenOnKill", power: amt, color: "#0000ff", bgcolor: "#8888ff"},
+						{original: "ManaRegenOnKill", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegenOnKill", power: amt, color: KDBaseBlue, bgcolor: "#8888ff"},
 						{original: "ManaRegenOnKill", trigger: "icon", type: "tintIcon", power: 5, color: "#00bbbb"},
 					];}},
 		}},
@@ -601,7 +601,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					return [
 						{original: "ElementalDmg", trigger: "playerAttack", type: "ElementalEffect", power: amt * 0.1, damage: type, inheritLinked: true},
 						{original: "ElementalDmg", trigger: "inventoryTooltip", type: "varModifier", msg: "ElementalDmg", power: amt, kind: TextGet("KinkyDungeonDamageType" + type), bgcolor: KinkyDungeonDamageTypes[type].color, color: KinkyDungeonDamageTypes[type].bg || "#004400"},
-						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: "#ff5277", bgcolor: KinkyDungeonDamageTypes[type].color},
+						{original: "ElementalDmg", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseRed, bgcolor: KinkyDungeonDamageTypes[type].color},
 					];}},
 		}},
 	"ManaRegen": {
@@ -625,7 +625,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaRegen", trigger: "afterCalcManaPool", type: "MultManaPoolRegen", power: 1 + amt*0.01, inheritLinked: true},
-						{original: "ManaRegen", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegen", power: amt, color: "#0088ff", bgcolor: "#88aaff"},
+						{original: "ManaRegen", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegen", power: amt, color: KDBaseBaby, bgcolor: "#88aaff"},
 						{original: "ManaRegen", trigger: "icon", type: "tintIcon", power: 2, color: "#0055aa"},
 					];}},
 		}},
@@ -652,8 +652,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					return [
 						{original: "BaseDamageBuffMelee", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
 						{original: "BaseDamageBuffMelee", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "melee", power: amt*.01, inheritLinked: true},
-						{original: "BaseDamageBuffMelee", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMelee", power: amt, color: "#000000", bgcolor: "#ff5277"},
-						{original: "BaseDamageBuffMelee", trigger: "icon", type: "tintIcon", power: 4, color: "#ff5277"},
+						{original: "BaseDamageBuffMelee", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMelee", power: amt, color: KDBaseBlack, bgcolor: KDBaseRed},
+						{original: "BaseDamageBuffMelee", trigger: "icon", type: "tintIcon", power: 4, color: KDBaseRed},
 					];}},
 		}},
 	"BaseDamageBuffMagic": {
@@ -681,8 +681,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					return [
 						{original: "BaseDamageBuffMagic", trigger: "beforePlayerAttack", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01, inheritLinked: true},
 						{original: "BaseDamageBuffMagic", trigger: "calcDisplayDamage", type: "AmpDamage", prereq: "damageType", kind: "magic", power: amt*.01, inheritLinked: true},
-						{original: "BaseDamageBuffMagic", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMagic", power: amt, color: "#000000", bgcolor: "#8800ff"},
-						{original: "BaseDamageBuffMagic", trigger: "icon", type: "tintIcon", power: 5, color: "#8800ff"},
+						{original: "BaseDamageBuffMagic", trigger: "inventoryTooltip", type: "varModifier", msg: "BaseDamageBuffMagic", power: amt, color: KDBaseBlack, bgcolor: KDBasePurple},
+						{original: "BaseDamageBuffMagic", trigger: "icon", type: "tintIcon", power: 5, color: KDBasePurple},
 					];}},
 		}},
 };

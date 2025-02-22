@@ -300,7 +300,7 @@ function KinkyDungeonErrorModalButton(text: string): HTMLButtonElement {
 		padding: "0.5em 1em",
 		backgroundColor: KDButtonColor,
 		border: `2px solid ${KDBorderColor}`,
-		color: "#ffffff",
+		color: KDBaseWhite,
 		cursor: "pointer",
 	});
 	return button;

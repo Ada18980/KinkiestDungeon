@@ -16,14 +16,14 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 		// DamageWeak
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Release.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Buttons/Release.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 		hotkeyPress: KinkyDungeonKeyUpcast[0],
 	})) {
 		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseRelease"), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDReleaseRelease"), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 
@@ -34,7 +34,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 		}
 	}
 
-	DrawTextFitKD("" + Math.round(ransomValue), x + 10 + buttonSpacing*III + 40, y + 68 + 730 - 10 - 80, 500, "#ffffff",
+	DrawTextFitKD("" + Math.round(ransomValue), x + 10 + buttonSpacing*III + 40, y + 68 + 730 - 10 - 80, 500, KDBaseWhite,
 		KDTextGray0, 18);
 
 	if (DrawButtonKDEx("KDReleaseRansom", (b) => {
@@ -51,14 +51,14 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 		// DamageWeak
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Ransom.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Buttons/Ransom.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
 	})) {
 		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseRansom").replace("GP", "" + Math.round(ransomValue)), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDReleaseRansom").replace("GP", "" + Math.round(ransomValue)), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 
@@ -72,13 +72,13 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/UnmarkAll.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Buttons/UnmarkAll.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == 0) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 
 	})) {
 		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseUnMarkAll"), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDReleaseUnMarkAll"), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 	if (DrawButtonKDEx("KDReleaseMarkAll", (b) => {
@@ -95,13 +95,13 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/MarkAll.png",
+	"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Buttons/MarkAll.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length,
-	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? "#ff5277" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? KDBaseRed : KDButtonColor, undefined, undefined, {
 
 	})) {
 		tooltip = true;
-		DrawTextFitKD(TextGet("KDReleaseMarkAll"), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDReleaseMarkAll"), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 
@@ -117,7 +117,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 
 		return true;
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
-	"", "#ffffff", KinkyDungeonRootDirectory
+	"", KDBaseWhite, KinkyDungeonRootDirectory
 		+ "UI/Buttons/" + (KDCollectionReleaseSelection[value.id] ? "Unmark" : "Mark") + ".png",
 	undefined, undefined, false,
 	KDButtonColor, undefined, undefined, {
@@ -125,16 +125,16 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 		hotkeyPress: KinkyDungeonKeyEnter[0],
 	})) {
 		tooltip = true;
-		DrawTextFitKD(TextGet("KDRelease" + (KDCollectionReleaseSelection[value.id] ? "Unmark" : "Mark")), x + 220, y + 750, 500, "#ffffff",
+		DrawTextFitKD(TextGet("KDRelease" + (KDCollectionReleaseSelection[value.id] ? "Unmark" : "Mark")), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
 
 	if (!tooltip) {
 		DrawTextFitKD(TextGet("KDRansomValue").replace("GP",
-			KDCanRansom(value.id) ? ("" + Math.round(KDRansomValue(value.id))) : TextGet("KDNA")), x + 220, y + 750, 500, "#ffffff",
+			KDCanRansom(value.id) ? ("" + Math.round(KDRansomValue(value.id))) : TextGet("KDNA")), x + 220, y + 750, 500, KDBaseWhite,
 			KDTextGray0);
 	}
-	DrawTextFitKD(TextGet("KDCurrentGold").replace("GP", "" + Math.round(KinkyDungeonGold)), x + 220, y + 785, 500, "#ffffff",
+	DrawTextFitKD(TextGet("KDCurrentGold").replace("GP", "" + Math.round(KinkyDungeonGold)), x + 220, y + 785, 500, KDBaseWhite,
 			KDTextGray0);
 
 

@@ -1030,7 +1030,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 		}
 
 		if (drawn > 0) {
-			DrawTextFitKDTo(kdUItext, TextGet("KDCategory" + c.name), X + KDPerksButtonWidth + KDPerksButtonWidthPad/2, oldY + KDPerksYPad - KDPerksButtonHeight/2 - 5, KDPerksButtonWidth*2, "#ffffff",
+			DrawTextFitKDTo(kdUItext, TextGet("KDCategory" + c.name), X + KDPerksButtonWidth + KDPerksButtonWidthPad/2, oldY + KDPerksYPad - KDPerksButtonHeight/2 - 5, KDPerksButtonWidth*2, KDBaseWhite,
 				undefined, undefined, undefined, undefined, undefined, undefined, true);
 			//MainCanvas.textAlign = "left";
 			//MainCanvas.textAlign = "center";

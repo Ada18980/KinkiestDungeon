@@ -631,7 +631,7 @@ let alts: Record<string, AltType> = {
 
 
 				// No inverse masks in PIXI.js. I crie
-				kdBGMask.beginFill(0x000000, 1.0);
+				kdBGMask.beginFill(0x010203, 1.0);
 
 				kdBGMask.drawRect(
 					(-1 - (CamX + CamX_offsetVis)) * KinkyDungeonGridSizeDisplay,
@@ -2028,7 +2028,7 @@ function KinkyDungeonCreateDollStorage(_POI: any, VisitedRooms: any[], _width: n
 }
 function KinkyDungeonCreateSummit(_POI: any, VisitedRooms: any[], _width: number, _height: number, _openness: number, _density: number, _hallopenness: number, data: any) {
 	if (!KinkyDungeonFlags.get("1stSummit")) {
-		KinkyDungeonSendTextMessage(10, TextGet("KDSummitIntro"), "#ffffff", 12, undefined, undefined, undefined, "");
+		KinkyDungeonSendTextMessage(10, TextGet("KDSummitIntro"), KDBaseWhite, 12, undefined, undefined, undefined, "");
 		KinkyDungeonSetFlag("1stSummit", -1);
 	}
 	KDMapData.StartPosition = {x: 11, y: 20};
@@ -2601,7 +2601,7 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 			Type: "WardenCourier",
 			Overlay: "TiedCourier",
 			Light: 2,
-			lightColor: 0xffffff,
+			lightColor: 0xfffafa,
 		});
 	}
 

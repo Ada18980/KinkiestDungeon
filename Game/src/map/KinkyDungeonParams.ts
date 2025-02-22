@@ -12,7 +12,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			menu: 1.0,
 		},
-		color: "#ffffff",
+		color: KDBaseWhite,
 		music: {
 			"GENERIC-DOLLRACK.ogg": 4,
 		},
@@ -66,7 +66,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			menu: 1.0,
 		},
-		color: "#ffffff",
+		color: KDBaseWhite,
 		music: {
 			"GENERIC-DOLLRACK.ogg": 4,
 			//"Shopping.ogg": 10,
@@ -121,7 +121,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		successorSame: {
 			bandit: 1.0,
 		},
-		color: "#ffffff",
+		color: KDBaseWhite,
 		music: {
 			"Ada18980_SmokingIsBadForYou.ogg": 4,
 		},
@@ -1969,7 +1969,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			DemonTransition: 1.0,
 		},
 		color: "#222222",
-		shadowColor: 0x000000,
+		shadowColor: 0x010203,
 		"background" : "Dungeon",
 		"openness" : 0,
 		"density" : 2,

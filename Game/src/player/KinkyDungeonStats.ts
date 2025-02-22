@@ -1606,24 +1606,24 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			if (minKneel > 0) {
 				minKneel = 0;
 			}
-			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpAlly"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
+			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpAlly"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*kneelRate));
 
 		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Corner", undefined, undefined)) {
 			minKneel = 0;
 			kneelRate = Math.min(baseRate * 1.4, kneelRate + 0.2);
-			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
+			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*kneelRate));
 		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
 			minKneel = 0;
 			kneelRate *= 0.65;
 			//if (KDGameData.KneelTurns <= kneelRate) {
-			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpWall"), "#ffffff",1, !(KDGameData.KneelTurns <= delta*kneelRate));
+			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpWall"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*kneelRate));
 			//}
 		}
 
 		if (minKneel > 0) {
-			KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), "#ff8933",1, true);
+			KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), KDBaseOrange,1, true);
 		} else if (kneelRate < 1) {
-			KinkyDungeonSendTextMessage(4, TextGet("KDKneelSlow"), "#ffffff",1, true);
+			KinkyDungeonSendTextMessage(4, TextGet("KDKneelSlow"), KDBaseWhite,1, true);
 		}
 	}
 
@@ -1712,7 +1712,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness*0.5), Math.min(Math.round(KinkyDungeonSleepiness*0.7), 6));
 		}
 		if (KinkyDungeonSleepiness > 0) {
-			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonSleepy"), "#ff5277", 1, true);
+			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonSleepy"), KDBaseRed, 1, true);
 		}
 		if (KinkyDungeonSleepiness > 4.99) {
 			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, 2);
@@ -1743,7 +1743,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		KDChangeWill("player", "edge", "tick", data.edgeDrain);
 		let vibe = KinkyDungeonVibeLevel > 0 ? "Vibe" : "";
 		let suff = KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage ? (KDGameData.OrgasmStage < KinkyDungeonMaxOrgasmStage / 2 ? "0" : "1") : "2";
-		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), "#ff5277", 2, true);
+		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonOrgasmExhaustion" + vibe + suff), KDBaseRed, 2, true);
 	}
 
 	if (!KinkyDungeonHasWill(0.1)) {
@@ -1752,7 +1752,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			id: "NoWP",
 			duration: 1,
 			buffSprite: true,
-			aura: "#ff5277",
+			aura: KDBaseRed,
 			auraSprite: "NoWP",
 			type: "EvasionPenalty",
 			power: 1,
@@ -1988,7 +1988,7 @@ function KinkyDungeonCalculateSlowLevel(delta?: number) {
 	if (KDGameData.Crouch) {
 		// Force slowness when crouching
 		if (KinkyDungeonSlowLevel < 2 && delta > 0 && KinkyDungeonLastAction == "Move") {
-			KinkyDungeonSendActionMessage(9, TextGet("KDPetsuitCrawl"), "#ffffff", 1, true);
+			KinkyDungeonSendActionMessage(9, TextGet("KDPetsuitCrawl"), KDBaseWhite, 1, true);
 		}
 		KinkyDungeonSlowLevel = Math.max(2, KinkyDungeonSlowLevel);
 	}
