@@ -688,20 +688,6 @@ function KDDrawHeartTablet() {
 
 }
 
-function KDBarColor(value: number) {
-	let color = KDBaseYellow;
-	if (value < 0) {
-		if (value < KDRAGE) color = KDBaseRed;
-		else if (value < KDANGER) color = KDBaseOrange;
-		else color = KDBaseYellow;
-	} else {
-		if (value >= KDFRIENDLY) color = KDBaseElectricBlue;
-		else if (value >= KDPLEASED) color = KDBaseGreal;
-		else color = KDBaseYellowGreen;
-	}
-
-	return color;
-}
 
 
 function KDDrawOrb() {

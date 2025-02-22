@@ -188,8 +188,8 @@ function KinkyDungeonInitReputation() {
 function KinkyDungeonRepName(Amount: number): string {
 	let name = "";
 
-	if (Amount >= 10) name = "Thankful";
-	if (Amount >= 30) name = "Pleased";
+	if (Amount >= KDPLEASED) name = "Thankful";
+	if (Amount >= KDFRIENDLY) name = "Pleased";
 	if (Amount >= 45) name = "Blessed";
 	if (Amount < KDANGER) name = "Angered";
 	if (Amount < KDRAGE) name = "Enraged";
@@ -198,6 +198,30 @@ function KinkyDungeonRepName(Amount: number): string {
 	return TextGet("KinkyDungeonRepName" + name);
 }
 
+function KDBarColor(value: number) {
+	let color = KDBaseYellow;
+	if (value <= 0) {
+		if (value < -45) color = KDBasePurple;
+		else if (value < KDRAGE) color = KDBaseRed;
+		else if (value < KDANGER) color = KDBaseOrange;
+		else color = KDBaseYellow;
+	} else {
+		if (value >= 45) color = KDBaseCyan;
+		else if (value >= KDFRIENDLY) color = KDBaseElectricBlue;
+		else if (value >= KDPLEASED) color = KDBaseGreal;
+		else color = KDBaseYellowGreen;
+	}
+
+	return color;
+}
+
+
+let KDREPALLIED = 0.7;
+let KDREPFRIENDLY = 0.4;
+let KDREPFAVORABLE = 0.2;
+let KDREPANNOYED = -0.1;
+let KDREPHOSTILE = -0.5;
+let KDREPWANTED = -0.9;
 
 /**
  * @param Amount
@@ -205,14 +229,32 @@ function KinkyDungeonRepName(Amount: number): string {
 function KinkyDungeonRepNameFaction(Amount: number): string {
 	let name = "";
 
-	if (Amount > 0.2) name = "Thankful";
-	if (Amount >= 0.4) name = "Pleased";
-	if (Amount > 0.7) name = "Blessed";
-	if (Amount < -0.1) name = "Angered";
-	if (Amount <= -0.5) name = "Enraged";
-	if (Amount < -0.9) name = "Cursed";
+	if (Amount > KDREPFAVORABLE) name = "Thankful";
+	if (Amount >= KDREPFRIENDLY) name = "Pleased";
+	if (Amount > KDREPALLIED) name = "Blessed";
+	if (Amount < KDREPANNOYED) name = "Angered";
+	if (Amount <= KDREPHOSTILE) name = "Enraged";
+	if (Amount < KDREPWANTED) name = "Cursed";
 
 	return TextGet("KinkyDungeonRepNameFaction" + name);
+}
+
+
+function KDRepBarColor(value: number) {
+	let color = KDBaseYellow;
+	if (value <= 0) {
+		if (value < KDREPWANTED) color = KDBasePurple;
+		else if (value < KDREPHOSTILE) color = KDBaseRed;
+		else if (value < KDREPANNOYED) color = KDBaseOrange;
+		else color = KDBaseYellow;
+	} else {
+		if (value >= KDREPALLIED) color = KDBaseElectricBlue;
+		else if (value >= KDREPFRIENDLY) color = KDBaseGreal;
+		else if (value >= KDREPFAVORABLE) color = KDBaseMint;
+		else color = KDBaseYellowGreen;
+	}
+
+	return color;
 }
 
 /**
@@ -323,7 +365,8 @@ function KinkyDungeonDrawReputation() {
 			let goddessSuff = "";
 			if (KDRepColor[rep]) color = KDRepColor[rep];
 			else {
-				color = KDBarColor(value);
+				color = KDBarColor((rep == "Prisoner" ? KDGetEffSecurityLevel(undefined, true) :
+					value));
 			}
 
 
@@ -481,7 +524,7 @@ function KinkyDungeonDrawFactionRep() {
 			if (index > KDFactionRepIndex * KDMaxFactionsPerBar + KDMaxFactionsPerBar) continue;
 
 			let value = KinkyDungeonFactionRelations.Player[rep];
-			let color = KDBarColor(value * 50);
+			let color = KDRepBarColor(value);
 			let suff = KinkyDungeonRepNameFaction(value);
 			let tcolor = KDBaseWhite;
 			switch (rep) {
