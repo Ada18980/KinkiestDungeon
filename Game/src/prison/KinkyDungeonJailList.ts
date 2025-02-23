@@ -581,6 +581,7 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "HighsecStraitjacket", Level: 70, Condition: "LessJackets", Priority: "MoreJackets"},
 			{Name: "TrapPlug4", Level: 75, Condition: "Plug"},
 			{Name: "HighsecLegbinder", Level: 95},
+			{Name: "HighsecBlindfold", Level: 100, Condition: "NoBlindfolds"},
 			{Name: "TrapPlug5", Level: 100, Condition: "Plug"},
 
 			{Name: "WristLink", Level: 0},

@@ -2834,6 +2834,31 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true}
 		]},
 	//region High security prison restraints
+	{inventory: true, name: "HighsecBlindfold", debris: "Belts",
+		Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink],
+		renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
+		power: 7, weight: 1,
+		sfxGroup: "Leather",
+		Model: "HighSecBlindfold",
+		/*Filters: {
+			Blindfold: {"gamma":1,"saturation":1,"contrast":1.8833333333333333,"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":1},
+			Rim: {"gamma":1,"saturation":1,"contrast":0.8333333333333333,"brightness":3.1333333333333337,"red":2.5166666666666666,"green":1.1166666666666667,"blue":1.9666666666666666,"alpha":1},
+		},*/
+		factionFilters: {
+			Blindfold: {color: "DarkNeutral", override: true},
+			BlindfoldStrap: {color: "Highlight", override: true},
+			BlindfoldStrapHardware: {color: "LightNeutral", override: true},
+			Harness: {color: "DarkNeutral", override: true},
+			Rivets: {color: "LightNeutral", override: true},
+			HarnessL: {color: "DarkNeutral", override: true},
+			RivetsL: {color: "LightNeutral", override: true},
+			HarnessR: {color: "DarkNeutral", override: true},
+			RivetsR: {color: "LightNeutral", override: true},
+		},
+		maxwill: 0.35, blindfold: 5, escapeChance: {"Struggle": -0.2, "Cut": 0.07, "Remove": 0.15, "Pick": 0.1},
+		enemyTags: {"highsecRestraints": 10, "leatherRestraintsHeavy":4, "blindfoldSpell": 10},
+		playerTags: {NoBlindfolds: -1000}, minLevel: 10, allFloors: true, shrine: ["Leather", "Blindfolds"]},
+
 	{inventory: true, name: "HighsecArmbinder", debris: "Belts", strictness: 0.1, Asset: "LeatherArmbinder", inaccessible: true, LinkableBy: [...KDArmbinderLink], renderWhenLinked: [...KDArmbinderLink], Type: "Strap", Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
 		limitChance: {"Unlock": 0.2}, power: 7, weight: 2,
 		sfxGroup: "Leather",
@@ -2849,7 +2874,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			"Less_Armbinders": 0.1,
 		},
 		struggleMaxSpeed: {"Remove": 0.5, "Pick": 0.1},
-		escapeChance: {"Struggle": -0.25, "Cut": 0.1, "Remove": 0.15, "Pick": 0.1}, enemyTags: {"highsecRestraints": 10, "leatherRestraintsHeavy":4, "armbinderSpell": 100}, playerTags: {}, minLevel: 8, allFloors: true, shrine: ["Leather", "Armbinders", "Block_ItemHands"]},
+		escapeChance: {"Struggle": -0.25, "Cut": 0.1, "Remove": 0.15, "Pick": 0.1},
+		enemyTags: {"highsecRestraints": 10, "leatherRestraintsHeavy":4, "armbinderSpell": 100},
+		playerTags: {}, minLevel: 8, allFloors: true, shrine: ["Leather", "Armbinders", "Block_ItemHands"]},
 	{inventory: true, name: "HighsecBoxbinder", debris: "Belts", strictness: 0.1, Asset: "BoxTieArmbinder", inaccessible: true, LinkableBy: [...KDBoxbinderLink], renderWhenLinked: [...KDBoxbinderLink], Group: "ItemArms", bindarms: true, bindhands: 1.0, Color: "#333333",
 		Model: "Jacket",
 		sfxGroup: "Leather",

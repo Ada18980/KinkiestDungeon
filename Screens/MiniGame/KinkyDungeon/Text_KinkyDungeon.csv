@@ -4289,6 +4289,13 @@ RestraintTrapBlindfold,Blindfold
 RestraintTrapBlindfoldDesc,"A leather strap secured onto your face and blocking vision."
 RestraintTrapBlindfoldDesc2,"You can still see through the gap around your nose."
 
+
+RestraintHighsecBlindfold,High-Security Blindfold
+RestraintHighsecBlindfoldDesc,"A chin harness stretches this leather blindfold tightly against your face."
+RestraintHighsecBlindfoldDesc2,"Total blackout. The tough leather is reinforced with rivets."
+
+
+
 RestraintMagicBelt,Magic Chastity Belt
 RestraintMagicBeltDesc,"A belt protected by a magic seal."
 RestraintMagicBeltDesc2,"The shields will open up to accept new toys, but won't let them out..."
