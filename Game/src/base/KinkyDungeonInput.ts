@@ -731,7 +731,7 @@ function KDProcessInput(type: string, data: any): string {
 					let restraintAdd = KinkyDungeonGetRestraintByName(tag);
 					if (restraintAdd) {
 						KinkyDungeonAddRestraintIfWeaker(restraintAdd, 10, true, "Gold", false, false, undefined, undefined, true);
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonGoddessCollar").replace("TYPE", TextGet("KinkyDungeonShrine" + data.shrine)).replace("RESTRAINT", TextGet("Restraint" + tag)), "lightblue", 2);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonGoddessCollar").replace("TYPE", TextGet("KinkyDungeonShrine" + data.shrine)).replace("RESTRAINT", TextGet("Restraint" + tag)), KDBaseLightBlue, 2);
 					}
 				}
 
@@ -763,10 +763,10 @@ function KDProcessInput(type: string, data: any): string {
 								KDAddSpellPage(sp, KDSpellColumns[sp] || []);
 							}
 						}
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), "lightblue", 2);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonOrbSpell").replace("SPELL", TextGet("KinkyDungeonSpell" + spell.name)), KDBaseLightBlue, 2);
 					} else {
 						KinkyDungeonSpellPoints += data.Amount;
-						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectOrbBreak"), "lightblue", 2);
+						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectOrbBreak"), KDBaseLightBlue, 2);
 
 
 					}
@@ -868,7 +868,7 @@ function KDProcessInput(type: string, data: any): string {
 			KDDelayedActionPrune(["Action", "World"]);
 			KinkyDungeonChangeRep(data.rep, -KinkyDungeonAidManaCost(data.rep, data.value));
 			KDChangeMana("player", "aid", "pray", KinkyDungeonAidManaAmount(data.rep, data.value));
-			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAidManaMe"), "purple", 2);
+			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonAidManaMe"), KDBasePurple, 2);
 			KDSendStatus('goddess', data.rep, 'helpMana');
 			break;
 		case "rescue":
@@ -890,7 +890,7 @@ function KDProcessInput(type: string, data: any): string {
 				}
 				return "Rescue";
 			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNoRescue"), "purple", 10);
+				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonNoRescue"), KDBasePurple, 10);
 				KDSendStatus('goddess', data.rep, 'helpNoRescue');
 				return "FailRescue";
 			}
@@ -900,7 +900,7 @@ function KDProcessInput(type: string, data: any): string {
 			KDGameData.KDPenanceStage = 0;
 			KDGameData.KDPenanceStageEnd = 0;
 			KDGameData.AngelCurrentRep = data.rep;
-			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPenanceHappen"), "purple", 4);
+			KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonPenanceHappen"), KDBasePurple, 4);
 			KDGameData.KinkyDungeonPenanceCostCurrent = KinkyDungeonPenanceCosts[data.rep] ? KinkyDungeonPenanceCosts[data.rep] : KinkyDungeonPenanceCostDefault;
 			if (KinkyDungeonGold >= KDGameData.KinkyDungeonPenanceCostCurrent) {
 				if (KinkyDungeonPenanceCosts[data.rep]) KinkyDungeonPenanceCosts[data.rep] += KinkyDungeonPenanceCostGrowth;
@@ -1339,7 +1339,7 @@ function KDProcessInput(type: string, data: any): string {
 				slot: slot.id,
 				id: inv.item.id,
 				restraint: inv.item.name,
-				lock: KDBaseWhite,
+				lock: "White",
 				npc: number
 			 */
 

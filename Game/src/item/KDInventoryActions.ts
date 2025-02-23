@@ -242,7 +242,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			let r = KDRestraint(item);
 			let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 			if (itemIndex >= 0 && !sg.blocked) {
-				KDSendInput("lock", {group: sg.group, index: itemIndex, type: KDBaseWhite});
+				KDSendInput("lock", {group: sg.group, index: itemIndex, type: "White"});
 			}
 		},
 		cancel: (_player, _delta) => {

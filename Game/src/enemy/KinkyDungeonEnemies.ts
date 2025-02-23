@@ -4655,7 +4655,7 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 		fromHere ? KDGameData.RoomType : slot.main || "",
 		jailroom,
 		forceFaction || "Jail",
-		false,
+		KDLairTypes[jailroom || "Jail"]?.AlwaysHide,
 		"Jail",
 		fromHere ? slot.main || "" : undefined,
 		fromHere ? "Jail" : undefined,
@@ -8665,7 +8665,7 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 		fromHere ? KDGameData.RoomType : slot.main || "",
 		jailroom,
 		forceFaction || "Jail",
-		false,
+		KDLairTypes[jailroom || "Jail"]?.AlwaysHide,
 		lairType.Entrances[fromHere ? KDGameData.RoomType : slot.main || ""]
 			|| lairType.DefaultEntrance,
 		fromHere ? slot.main || "" : undefined,

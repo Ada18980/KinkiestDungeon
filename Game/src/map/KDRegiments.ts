@@ -200,7 +200,7 @@ let KDRefillTypes = {
 				KinkyDungeonMapDataSet(data, x, y, 'C');
 				tile.Loot = refillTo;
 				tile.Roll = KDRandom();
-				tile.Lock = KDBaseWhite; // After it gets stolen once there is a lock on it :)
+				tile.Lock = "White"; // After it gets stolen once there is a lock on it :)
 			}
 		}
 

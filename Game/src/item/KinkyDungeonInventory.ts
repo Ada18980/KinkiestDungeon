@@ -1212,7 +1212,7 @@ function KinkyDungeonDrawInventorySelected (
 			let tags = [];
 			if (magic) {
 				tags.push("magic");
-				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, KDBaseBlack, "#8888ff", 18, undefined, 129);
+				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, KDBaseBlack, KDBaseLightBlue, 18, undefined, 129);
 			}
 			if (weapon?.noHands) {
 				tags.push("noHands");
@@ -1234,7 +1234,7 @@ function KinkyDungeonDrawInventorySelected (
 					tags.push("offhand");
 				}
 
-				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, KDBaseBlack, "#8888ff", 18, undefined, 129);
+				//DrawTextKD(TextGet("KDMagicWeapon"), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 24, KDBaseBlack, KDBaseLightBlue, 18, undefined, 129);
 			}
 
 			if (weapon?.stamPenType) {

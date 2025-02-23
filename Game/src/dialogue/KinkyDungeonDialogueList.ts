@@ -1312,14 +1312,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								if (restraint) {
 									KDSetNPCRestraint(en.id, "Device", {
 										name: restraint.name,
-										lock: KDBaseWhite,
+										lock: "White",
 										id: KinkyDungeonGetItemID(),
 										faction: KDDefaultNPCBindPalette,
 									});
 									// Add the tieup value
 									KDNPCRestraintTieUp(en.id, {
 										name: restraint.name,
-										lock: KDBaseWhite,
+										lock: "White",
 										id: KinkyDungeonGetItemID(),
 										faction: KDDefaultNPCBindPalette,
 									}, 1);
@@ -1537,7 +1537,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							false, undefined, true);
 						KDImprisonEnemy(en, true, "PrisonerJailOwn", {
 							name: rest.name,
-							lock: KDBaseWhite,
+							lock: "White",
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						});

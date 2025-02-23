@@ -3340,17 +3340,17 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	// Fungal spells
 	{enemySpell: true, name: "CrystalPuff", color: "#b37bdc", minRange: 0, landsfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 3, aoe: 0.75, lifetime: 1, damage: "souldrain", playerEffect: {name: "CrystalBind", time: 1}},
-	{enemySpell: true, name: "HighBolt", color: "#8888ff", sfx: "MagicSlash", manacost: 3, specialCD: 7, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+	{enemySpell: true, name: "HighBolt", color: KDBaseLightBlue, sfx: "MagicSlash", manacost: 3, specialCD: 7, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		power: 6, delay: 0, range: 50, damage: "arcane", speed: 1, playerEffect: {name: "Flummox", time: 1, damage: "arcane", power: 6}},
 
 	// Shockwitch spells
-	{enemySpell: true, name: "WitchElectrify", color: "#8888ff", minRange: 0, landsfx: "Shock", manacost: 5,
+	{enemySpell: true, name: "WitchElectrify", color: KDBaseLightBlue, minRange: 0, landsfx: "Shock", manacost: 5,
 		effectTileDurationMod: 2, effectTile: {
 			name: "Sparks",
 			duration: 3,
 		},
 		components: ["Arms"], level:1, type:"inert", onhit:"aoe", power: 3.5, time: 1, delay: 1, range: 4, size: 1, aoe: 0.75, lifetime: 1, damage: "electric", playerEffect: {name: "Shock", time: 1}}, // A series of light shocks incapacitate you
-	{enemySpell: true, name: "WitchElectricOrb", color: "#8888ff", sfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 0, delay: 0, range: 5, damage: "electric", speed: 1, playerEffect: {name: ""},
+	{enemySpell: true, name: "WitchElectricOrb", color: KDBaseLightBlue, sfx: "MagicSlash", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 0, delay: 0, range: 5, damage: "electric", speed: 1, playerEffect: {name: ""},
 		spellcast: {spell: "WitchElectricBurst", target: "onhit", directional:true, offset: false}},
 	{enemySpell: true, name: "WitchElectricBurst", sfx: "Shock", manacost: 4, components: ["Verbal"], level:1, type:"hit",
 		effectTileDurationMod: 2, effectTile: {
@@ -4195,7 +4195,7 @@ let KDCustomCost: Record<string, (data: any) => void> = {
 	},
 	"arcane_blast": (data) => {
 		data.cost = Math.min(KinkyDungeonStatManaMax * 2.5, Math.round(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "ArcaneEnergy") * 10)) + "E";
-		data.color = "#8888ff";
+		data.color = KDBaseLightBlue;
 	},
 	"arcane_akashic": (data) => {
 		data.cost = "100E";
@@ -4211,7 +4211,7 @@ let KDCustomCost: Record<string, (data: any) => void> = {
 	"scaleWithDP": (data) => {
 		let cost = KinkyDungeonGetManaCost(data.spell, false, false);
 		data.cost = Math.round(10 * cost) + "MP";
-		data.color = "#8888ff";
+		data.color = KDBaseLightBlue;
 	},
 	"ShockCollar": (data) => {
 		let cost = KDShockCollarCost();

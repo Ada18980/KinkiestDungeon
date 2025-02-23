@@ -24,7 +24,9 @@ interface lairType {
 	DefaultEntrance: string
 	/** Entrances to the other room from this lair, otherwise DefaultEntranceFrom*/
 	EntrancesFrom?: Record<string, string>,
-	DefaultEntranceFrom: string
+	DefaultEntranceFrom: string,
+
+	AlwaysHide?: boolean,
 }
 
 let KDLairTypes: Record<string, lairType> = {
@@ -39,12 +41,14 @@ let KDLairTypes: Record<string, lairType> = {
 		DefaultEntrance: "Jail",
 		EntrancesFrom: {},
 		DefaultEntranceFrom: "Jail",
+		AlwaysHide: true,
 	},
 	DollStorage: {
 		Entrances: {},
 		DefaultEntrance: "Jail",
 		EntrancesFrom: {},
 		DefaultEntranceFrom: "Jail",
+		AlwaysHide: true,
 	},
 }
 

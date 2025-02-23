@@ -640,7 +640,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (!e.chance || KDRandom() < e.chance) {
 				if (data.enemy && data.enemy.lifetime == undefined && data.enemy.playerdmg && !data.enemy.Enemy.tags.ghost && !data.enemy.Enemy.tags.construct) {
 					KinkyDungeonSummonEnemy(data.enemy.x, data.enemy.y, "MikoGhost", 1, 1.5, true);
-					KinkyDungeonSendTextMessage(5, TextGet("KDMikoCollarSummmon"), "purple", 2);
+					KinkyDungeonSendTextMessage(5, TextGet("KDMikoCollarSummmon"), KDBasePurple, 2);
 				}
 			}
 		},
@@ -648,7 +648,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (!e.chance || KDRandom() < e.chance) {
 				if (data.enemy && data.enemy.lifetime == undefined && data.enemy.playerdmg && !data.enemy.Enemy.tags.ghost && !data.enemy.Enemy.tags.construct) {
 					KinkyDungeonSummonEnemy(data.enemy.x, data.enemy.y, "MikoGhost", 1, 1.5, true, 40, false, false, "Player");
-					KinkyDungeonSendTextMessage(5, TextGet("KDMikoCollarSummmon2"), "purple", 2);
+					KinkyDungeonSendTextMessage(5, TextGet("KDMikoCollarSummmon2"), KDBasePurple, 2);
 				}
 			}
 		},
@@ -1443,7 +1443,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (e.power) {
 				KDChangeMana("ice", "restraint", "tick", e.power);
 				KDChangeStamina("ice", "restraint", "tick", e.power);
-				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonIceDrain"), "lightblue", 2, true);
+				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonIceDrain"), KDBaseLightBlue, 2, true);
 			}
 		},
 		"crystalDrain": (e, _item, data) => {
@@ -1451,7 +1451,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (e.power) {
 				KDChangeMana("crystal", "restraint", "tick", e.power);
 				KDChangeDistraction("crystal", "restraint", "tick", -e.power * KDBuffResist(KinkyDungeonPlayerBuffs, "soul"), false, 0.1);
-				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), "lightblue", 2, true);
+				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonCrystalDrain"), KDBaseLightBlue, 2, true);
 			}
 		},
 		"shadowDrain": (e, _item, data) => {
@@ -1459,7 +1459,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (e.power) {
 				KDChangeMana("shadow", "restraint", "tick", e.power);
 				//KinkyDungeonChangeDistraction(-e.power * 3 * KDBuffResist(KinkyDungeonPlayerBuffs, "soul"), false, 0.1);
-				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonShadowDrain"), "lightblue", 2, true);
+				KinkyDungeonSendTextMessage(1, TextGet("KinkyDungeonShadowDrain"), KDBaseLightBlue, 2, true);
 			}
 		},
 		"tickleDrain": (e, _item, data) => {
@@ -1468,7 +1468,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (e.power) {
 				KinkyDungeonSetFlag("tickleDrain", 3 + Math.floor(KDRandom() * 4));
 				KDChangeDistraction("tickle", "restraint", "tick", -e.power * KDBuffResist(KinkyDungeonPlayerBuffs, "tickle"), false, 0.01);
-				KinkyDungeonSendTextMessage(0.5, TextGet("KinkyDungeonTickleDrain"), "lightblue", 2, true);
+				KinkyDungeonSendTextMessage(0.5, TextGet("KinkyDungeonTickleDrain"), KDBaseLightBlue, 2, true);
 			}
 		},
 		"barrelDebuff": (_e, _item, data) => {
@@ -1631,7 +1631,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			let r = KinkyDungeonGetRestraint({ tags: newtags }, 24, "grv", true, undefined);
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, undefined, false, undefined, undefined, item.faction || e.kind, true);
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), "lightblue", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), KDBaseLightBlue, 2);
 			}
 
 			//Spread accelerates as you get more of that type
@@ -1656,7 +1656,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 
 			if (!r) {
 				frequency = 100;
-				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingDormant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingDormant").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), KDBaseLightBlue, 2);
 			}
 			KDItemDataSet(item, "livingFreq", frequency);
 
@@ -2829,9 +2829,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					KDChangeDistraction(_item.name, "restraint", "playSelf", 1, false, 0.5);
 					if (distractionStart < KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerCap && KinkyDungeonStatDistraction > distractionStart) {
 						KDChangeMana(_item.name, "restraint", "playSelf", amnt, false);
-						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), "#8888ff", 4);
+						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollar"), KDBaseLightBlue, 4);
 					} else {
-						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollarFail"), "#8888ff", 4);
+						KinkyDungeonSendTextMessage(6, TextGet("KDQuakeCollarFail"), KDBaseLightBlue, 4);
 					}
 					if (!KinkyDungeonFlags.get("QuakeUnlocked")) {
 						KDUnlockPerk("QuakeCollar");
@@ -4852,7 +4852,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				data.dmg = Math.max(0, data.dmg - Math.max(0, amount * (e.mult || 1)));
 
 				if (buff) {
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((dmgBefore - data.dmg)*efficiency*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((dmgBefore - data.dmg)*efficiency*10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 					buff.power = Math.max(0, buff.power - (dmgBefore - data.dmg)*efficiency);
 					if (buff.power <= 0) buff.duration = 0;
 					buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
@@ -4975,7 +4975,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 
 					data.bulletfired.bullet.damage.damage = damage;
 					if (buff) {
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency * damage * 10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", KDToggles.FastFloaters ? 0.7 : 1.5);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency * damage * 10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, KDToggles.FastFloaters ? 0.7 : 1.5);
 						buff.power = Math.max(0, buff.power - efficiency * damage);
 						if (buff.power <= 0) buff.duration = 0;
 						buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
@@ -6406,7 +6406,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 						});
 
 						KDChangeMana(spell.name, "spell", "cast", efficiency * e.power, false, 0, false, true);
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency * e.power * 10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round(efficiency * e.power * 10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 						buff.power = Math.max(0, buff.power - efficiency * e.power);
 						if (buff.power <= 0) buff.duration = 0;
 						buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
@@ -10895,7 +10895,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						name: "WireSparks",
 						duration: 2,
 					}, 0);
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportPlateReact"), "#8888ff", 1);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportPlateReact"), KDBaseLightBlue, 1);
 				}
 			}
 
@@ -10934,7 +10934,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						);
 						KDSilenceEnemy(data.entity, 12);
 					}
-					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportPlateManaReact"), "#8888ff", 1);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTeleportPlateManaReact"), KDBaseLightBlue, 1);
 				}
 			}
 
@@ -10954,7 +10954,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					if (tilesFiltered.length > 0) {
 						data.cancel = true;
 						KinkyDungeonSendEvent("blockTeleport", data);
-						KinkyDungeonSendTextMessage(10, TextGet("KDNoTeleportPlateReact"), "#8888ff", 1);
+						KinkyDungeonSendTextMessage(10, TextGet("KDNoTeleportPlateReact"), KDBaseLightBlue, 1);
 					}
 				}
 			}
@@ -12245,13 +12245,13 @@ function KDAddTraineeWP(player: entity, powerAdded: number) {
 				text: Math.round(10 * powerAdded),
 			}
 		);
-		//KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+		//KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded*10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 	} else {
 		//let origPower = buff.power;
 		buff.power += powerAdded;
 		buff.power = Math.min(buff.power, max);
 		buff.text = Math.round(10 * KDEntityBuffedStat(player, "RallyWill"));
-		//KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+		//KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower)*10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 	}
 
 }
@@ -12265,7 +12265,7 @@ function KDAddArcaneEnergy(player: entity, powerAdded: number) {
 			{
 				id: "ArcaneEnergy",
 				type: "ArcaneEnergy",
-				aura: "#8888ff", auraSprite: "Null",
+				aura: KDBaseLightBlue, auraSprite: "Null",
 				buffSprite: true,
 				//buffSprite: true,
 				power: powerAdded,
@@ -12273,13 +12273,13 @@ function KDAddArcaneEnergy(player: entity, powerAdded: number) {
 				text: Math.round(10 * powerAdded),
 			}
 		);
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded * 10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round(powerAdded * 10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 	} else {
 		let origPower = buff.power;
 		buff.power += powerAdded;
 		buff.power = Math.min(buff.power, max);
 		buff.text = Math.round(10 * KDEntityBuffedStat(player, "ArcaneEnergy"));
-		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower) * 10)} ${TextGet("KDArcaneEnergy")}`, "#8888ff", 3);
+		KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `+${Math.round((buff.power - origPower) * 10)} ${TextGet("KDArcaneEnergy")}`, KDBaseLightBlue, 3);
 	}
 
 }

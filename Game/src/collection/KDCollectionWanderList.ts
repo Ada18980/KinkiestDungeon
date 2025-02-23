@@ -324,7 +324,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 									false, undefined, true) : undefined;
 								KDImprisonEnemy(en, true, "PrisonerJailOwn", rest ? {
 									name: rest.name,
-									lock: KDBaseWhite,
+									lock: "White",
 									id: KinkyDungeonGetItemID(),
 									faction: KDDefaultNPCBindPalette,
 								} : undefined);

@@ -64,7 +64,7 @@ let KDSideRooms: Record<string, KDSideRoom> = {
 				"BanditFort",
 				"Jail",
 				"Bandit",
-				false,
+				KDLairTypes.Jail?.AlwaysHide,
 				"Jail",
 				KDGetWorldMapLocation(KDCoordToPoint(coord))?.main || "",
 				"Jail",

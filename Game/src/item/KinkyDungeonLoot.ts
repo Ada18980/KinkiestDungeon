@@ -448,7 +448,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 	else if (Loot.name == "spell_points") {
 		let amount = 1;
 		KinkyDungeonSpellPoints += amount;
-		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `+${amount} Spell Points!!!`, "#8888ff", 5, true);
+		KinkyDungeonSendFloater({x: 1100, y: 800 - KDRecentRepIndex * 40}, `+${amount} Spell Points!!!`, KDBaseLightBlue, 5, true);
 		KDRecentRepIndex += 1;
 		if (Replacemsg)
 			Replacemsg = Replacemsg.replace("AMOUNT", "" + amount);

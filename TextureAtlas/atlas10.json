@@ -24,14 +24,6 @@
 	"spriteSourceSize": {"x":0,"y":41,"w":1232,"h":1269},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Collars/NeckCorset.png":
-{
-	"frame": {"x":1911,"y":1284,"w":134,"h":113},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":560,"y":357,"w":134,"h":113},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Festive/BinderLeftBoxtie.png":
 {
 	"frame": {"x":1944,"y":540,"w":101,"h":201},
@@ -46,14 +38,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":35,"w":701,"h":1397},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/GagLatex/NeckCorset.png":
-{
-	"frame": {"x":1911,"y":1284,"w":134,"h":113},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":560,"y":357,"w":134,"h":113},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Gothic/HemUpper.png":
@@ -112,6 +96,14 @@
 	"spriteSourceSize": {"x":669,"y":351,"w":101,"h":215},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Slime/HandRightFree.png":
+{
+	"frame": {"x":1911,"y":1284,"w":134,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":268,"y":544,"w":134,"h":113},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Spats/SpatsSpread.png":
 {
 	"frame": {"x":1425,"y":1787,"w":318,"h":258},
@@ -167,7 +159,7 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
-	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json", "atlas32.json", "atlas33.json", "atlas34.json", "atlas35.json", "atlas36.json", "atlas37.json", "atlas38.json", "atlas39.json", "atlas40.json", "atlas41.json", "atlas42.json", "atlas43.json", "atlas44.json", "atlas45.json", "atlas46.json", "atlas47.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:e699fb348a38d32fd63a5e6151c50575:2b02e34c908c571385f965e0ec1b7517:8682407d1c09b2fa075a0ee317a91aa2$"
+	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json", "atlas32.json", "atlas33.json", "atlas34.json", "atlas35.json", "atlas36.json", "atlas37.json", "atlas38.json", "atlas39.json", "atlas40.json", "atlas41.json", "atlas42.json", "atlas43.json", "atlas44.json", "atlas45.json", "atlas46.json", "atlas47.json", "atlas48.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:eb9701930e3d9596220ea7fe3133084d:73f762a0191820af01ed4777975b80a8:8ba6c9c2f632f436df8785ef087199fb$"
 }
 }

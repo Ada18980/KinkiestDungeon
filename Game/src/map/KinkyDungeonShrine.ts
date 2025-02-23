@@ -58,14 +58,14 @@ function KinkyDungeonShrineInit() {
  */
 function KDGoddessColor(Name: string): string {
 	let color = KDBaseWhite;
-	if (Name == "Illusion") color = "#8154FF";
-	else if (Name == "Conjure") color = "#D4AAFF";
+	if (Name == "Illusion") color = KDBasePurple;
+	else if (Name == "Conjure") color = KDBaseRibbon;
 	else if (Name == "Elements") color = KDBaseRed;
-	else if (Name == "Latex") color = "#2667FF";
-	else if (Name == "Leather") color = "#442E1E";
-	else if (Name == "Metal") color = "#222222";
+	else if (Name == "Latex") color = KDBaseBaby;
+	else if (Name == "Leather") color = "#677078";
+	else if (Name == "Metal") color = KDBaseBlack;
 	else if (Name == "Rope") color = "#7C4926";
-	else if (Name == "Will") color = "#23FF44";
+	else if (Name == "Will") color = KDBaseMint;
 	return color;
 }
 
@@ -367,7 +367,7 @@ function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 		}
 	}
 
-	if (ShrineMsg) KinkyDungeonSendActionMessage(10, ShrineMsg, "lightblue", 1);
+	if (ShrineMsg) KinkyDungeonSendActionMessage(10, ShrineMsg, KDBaseLightBlue, 1);
 
 	if (KinkyDungeonShrineCosts[type] > 0) KinkyDungeonShrineCosts[type] = KinkyDungeonShrineCosts[type] + 1;
 	else KinkyDungeonShrineCosts[type] = 1;

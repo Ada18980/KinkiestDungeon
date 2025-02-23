@@ -627,7 +627,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				for (let item of lockable) {
 					KinkyDungeonLock(item, "Purple");
 				}
-				KinkyDungeonSendTextMessage(4, TextGet("KDSelfLock"), "#8888ff", 2);
+				KinkyDungeonSendTextMessage(4, TextGet("KDSelfLock"), KDBaseLightBlue, 2);
 				KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell("EffectEnemyLock1", true), undefined, undefined, undefined);
 				KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");

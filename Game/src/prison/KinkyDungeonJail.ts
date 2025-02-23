@@ -1494,13 +1494,13 @@ function KDApplyLivingCollars() {
 	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
 		for (let item of eligible) {
 			if (KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true)) {
-				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), KDBaseLightBlue, 2);
 			}
 		}
 	} else {
 		let item = eligible[Math.floor(KDRandom() * eligible.length)];
 		if (KinkyDungeonAddRestraintIfWeaker(item, 8, true, undefined, false, undefined, undefined, undefined, true)) {
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), "lightblue", 2);
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonLivingAppear").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)), KDBaseLightBlue, 2);
 		}
 	}
 }
@@ -1629,7 +1629,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			fromHere ? KDGameData.RoomType : slot.main || "",
 			jailroom,
 			forceFaction || "Jail",
-			false,
+			KDLairTypes[jailroom || "Jail"]?.AlwaysHide,
 			"Jail",
 			fromHere ? slot.main || "" : undefined,
 			fromHere ? "Jail" : undefined,

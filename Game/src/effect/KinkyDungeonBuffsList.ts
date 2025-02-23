@@ -263,7 +263,7 @@ const KDBuffReference: Record<string, KDBuff[]> = {
 	"Vibrate3": [KDVibrate3],
 };
 
-const KDDisenchantSelf: KDBuff = {id: "DisenchantSelf", aura: "#8888ff", type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
+const KDDisenchantSelf: KDBuff = {id: "DisenchantSelf", aura: KDBaseLightBlue, type: "Disenchant", power: 9.9, player: true, enemies: true, duration: 10,};
 
 let KDCustomBuff: Record<string, (entity: entity, buff: KDBuff) => void> = {
 };

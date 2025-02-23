@@ -528,20 +528,20 @@ function KinkyDungeonDrawFactionRep() {
 			let suff = KinkyDungeonRepNameFaction(value);
 			let tcolor = KDBaseWhite;
 			switch (rep) {
-				case "Bountyhunter": tcolor ="#448844"; break;
-				case "Bandit": tcolor ="orange"; break;
-				case "Alchemist": tcolor =KDBaseLightGreen; break;
-				case "Nevermere": tcolor ="teal"; break;
-				case "Apprentice": tcolor ="lightblue"; break;
-				case "Dressmaker": tcolor ="#ceaaed"; break;
-				case "Witch": tcolor ="purple"; break;
-				case 'Elemental': tcolor ="#f1641f"; break;
-				case 'Dragon': tcolor ="#b9451d"; break;
-				case 'Maidforce': tcolor =KDBaseWhite; break;
-				case "Bast": tcolor =KDBaseRed; break;
-				case "Elf": tcolor ="#42a459"; break;
+				case "Bountyhunter": tcolor = KDBaseForest; break;
+				case "Bandit": tcolor = KDBaseOrange; break;
+				case "Alchemist": tcolor = KDBaseCyan; break;
+				case "Nevermere": tcolor = KDBaseTeal; break;
+				case "Apprentice": tcolor = KDBaseLightBlue; break;
+				case "Dressmaker": tcolor = KDBaseRibbon; break;
+				case "Witch": tcolor = KDBasePurple; break;
+				case 'Elemental': tcolor = KDBaseRed; break;
+				case 'Dragon': tcolor = "#b9451d"; break;
+				case 'Maidforce': tcolor = KDBaseWhite; break;
+				case "Bast": tcolor = KDBaseYellowGreen; break;
+				case "Elf": tcolor = KDBaseMint; break;
 				//case 'Mushy': tcolor ="cyan"; break;
-				case 'AncientRobot': tcolor ="grey"; break;
+				case 'AncientRobot': tcolor = "grey"; break;
 			}
 
 			if (MouseIn(canvasOffsetX_ui + xOffset + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/2, barSpacing + 200, yPad)) {

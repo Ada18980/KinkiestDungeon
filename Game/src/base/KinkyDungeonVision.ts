@@ -310,11 +310,11 @@ function KinkyDungeonMakeBrightnessMap(_width: number, _height: number, mapBrigh
  * @param {number} w2 - Weight of color2
  */
 function KDAvgColor(color1: number, color2: number, w1: number, w2: number): number {
-	let r = (color1 & 0xE30022) >> 16;
+	let r = (color1 & 0xFF0000) >> 16;
 	let g = (color1 & 0x00FF00) >> 8;
 	let b = (color1 & 0x0000FF);
 
-	r = Math.floor((r * w1 + w2*((color2 & 0xE30022) >> 16))/(w1 + w2));
+	r = Math.floor((r * w1 + w2*((color2 & 0xFF0022) >> 16))/(w1 + w2));
 	g = Math.floor((g * w1 + w2*((color2 & 0x00FF00) >> 8))/(w1 + w2));
 	b = Math.floor((b * w1 + w2*((color2 & 0x0000FF)))/(w1 + w2));
 	return (r << 16) + (g << 8) + b;

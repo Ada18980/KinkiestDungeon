@@ -238,6 +238,7 @@ let LAYERS_BASE = [
 
 	// Corsets that go under harness and poofy skirt
 	"Corset",
+	"Garters",
 
 	"Bra",
 
@@ -416,6 +417,7 @@ let LAYERS_BASE = [
 	"Butt",
 	"TorsoLower",
 	"Torso",
+	"BehindTorso",
 
 	// Feet behind the body
 	"AnkleLeftHogtie",

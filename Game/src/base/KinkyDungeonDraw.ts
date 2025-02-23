@@ -1414,7 +1414,7 @@ function KinkyDungeonDrawGame() {
 
 						DrawTextKD(TextGet("KDCasting").replace("SPNME", TextGet("KinkyDungeonSpell" + KinkyDungeonTargetingSpell.name)),
 							(KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY - 0.5)*KinkyDungeonGridSizeDisplay,
-							"#8888ff"
+							KDBaseLightBlue
 						);
 
 						let spellRange = KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
@@ -1763,7 +1763,7 @@ function KinkyDungeonDrawGame() {
 									KinkyDungeonTargetingSpell,
 									!KinkyDungeonTargetingSpell.active && KinkyDungeonTargetingSpell.passive,
 									!KinkyDungeonTargetingSpell.active && KinkyDungeonTargetingSpell.type == "passive"))) ?
-								(KDFlashMana % 500 > 250 ? KDBaseWhite : "#888888") : "#8888ff", (KDFlashMana % 500 > 250 ? "#444444" : KDTextGray0));
+								(KDFlashMana % 500 > 250 ? KDBaseWhite : "#888888") : KDBaseLightBlue, (KDFlashMana % 500 > 250 ? "#444444" : KDTextGray0));
 						barInt += 1;
 					}
 				}
@@ -1977,7 +1977,7 @@ function KinkyDungeonDrawGame() {
 					i = 0;
 					for (let r of Object.values(KinkyDungeonConsumables)) {
 						if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
-							DrawTextFitKD(r.name, 200, 15 + i * dd, 200, "lightblue", KDTextGray0, undefined, "left");
+							DrawTextFitKD(r.name, 200, 15 + i * dd, 200, KDBaseLightBlue, KDTextGray0, undefined, "left");
 							i++;
 						}
 					}
@@ -4940,8 +4940,8 @@ let KDEffectTileTooltips: Record<string, {color: string, code: (tile: effectTile
 		color: "#88ffff",
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#88ffff");}},
 	'Water': {
-		color: "#8888ff",
-		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#8888ff");}},
+		color: KDBaseLightBlue,
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, KDBaseLightBlue);}},
 	'Vines': {
 		color: "#44ff44",
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#44ff44", "KDEffectTileTooltipCMDBindings");}},

@@ -1359,7 +1359,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 				if (en) {
 					KDImprisonEnemy(en, true, "PrisonerJailOwn", {
 						name: rest.name,
-						lock: KDBaseWhite,
+						lock: "White",
 						id: KinkyDungeonGetItemID(),
 						faction: KDDefaultNPCBindPalette,
 					});
@@ -1414,13 +1414,13 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 							KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
 						KDSetNPCRestraint(en.id, "Device", {
 							name: rest.name,
-							lock: KDBaseWhite,
+							lock: "White",
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						});
 						KDNPCRestraintTieUp(en.id, {
 							name: rest.name,
-							lock: KDBaseWhite,
+							lock: "White",
 							id: KinkyDungeonGetItemID(),
 							faction: KDDefaultNPCBindPalette,
 						}, 1);

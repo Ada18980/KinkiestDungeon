@@ -460,7 +460,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCost", trigger: "calcEfficientMana", type: "ManaCost", power: amt*0.01, inheritLinked: true},
-						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: amt, color: KDBaseBlue, bgcolor: "#8888ff"},
+						{original: "ManaCost", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCost", power: amt, color: KDBaseBlue, bgcolor: KDBaseLightBlue},
 						{original: "ManaCost", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseBlue},
 					];}},
 		}},
@@ -494,7 +494,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaCostSpecific", trigger: "calcEfficientMana", type: "ManaCost", condition: "spellType", kind: type, power: amt*0.01, inheritLinked: true},
-						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: amt, color: KDBaseBlue, bgcolor: "#8888ff"},
+						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: amt, color: KDBaseBlue, bgcolor: KDBaseLightBlue},
 						{original: "ManaCostSpecific", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseBlue},
 					];}},
 		}},
@@ -519,7 +519,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					amt = KDGenericMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
 					return [
 						{original: "ManaRegenOnKill", trigger: "capture", type: "ManaBounty", power: amt * 0.1, inheritLinked: true},
-						{original: "ManaRegenOnKill", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegenOnKill", power: amt, color: KDBaseBlue, bgcolor: "#8888ff"},
+						{original: "ManaRegenOnKill", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaRegenOnKill", power: amt, color: KDBaseBlue, bgcolor: KDBaseLightBlue},
 						{original: "ManaRegenOnKill", trigger: "icon", type: "tintIcon", power: 5, color: "#00bbbb"},
 					];}},
 		}},

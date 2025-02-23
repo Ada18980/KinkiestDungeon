@@ -17,7 +17,7 @@ let KDPatronCustomEnemies = new Map([
 			customPlayLine: "", customIntro: "Finally...! Something interesting!", customSprite: ""},
 		{name: "Yen", color: "#2b962d", prisoner: true, free: true, customPlayLine: "Yen", customIntro: "Howdy.", customSprite: ""},
 		{name: "Miny", color: "#9c2a70", prisoner: false, free: true, customPlayLine: "", customIntro: "You should join my pack!", customSprite: ""},
-		{name: "Sivasa", color: "#8888ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
+		{name: "Sivasa", color: KDBaseLightBlue, prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Alexandra", color: "#6241e1", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Nekora", color: "#42a459", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
 		{name: "Emeia", color: "#00A7FF", prisoner: true, free: true, customPlayLine: "", customIntro: "", customSprite: ""},
@@ -117,10 +117,10 @@ let KDPatronCustomEnemies = new Map([
 				]
 			},
 		},
-		{name: "Warren Rabbit", color: "#8888ff", prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
+		{name: "Warren Rabbit", color: KDBaseLightBlue, prisoner: false, free: true, customPlayLine: "", customIntro: "", customSprite: "",
 			pets: {
 				"Frog": [
-					{name: "Fred", color: "#8888ff", prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
+					{name: "Fred", color: KDBaseLightBlue, prisoner: false, free: true, customPlayLine: "", customIntro: "Glorp glorpy glorp.", customSprite: ""},
 				]
 			},
 		},

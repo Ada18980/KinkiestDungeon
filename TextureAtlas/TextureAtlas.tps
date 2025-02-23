@@ -1811,6 +1811,7 @@
             <key type="filename">../Models/HighSec/BlindfoldHarnessRivetsUpper.png</key>
             <key type="filename">../Models/HighSec/BlindfoldHarnessUpper.png</key>
             <key type="filename">../Models/HighSec/BlindfoldStrap.png</key>
+            <key type="filename">../Models/HighSec/BlindfoldStrapHardware.png</key>
             <key type="filename">../Models/HighSec/Collar.png</key>
             <key type="filename">../Models/HighSec/CollarChest.png</key>
             <key type="filename">../Models/HighSec/CollarChestHardware.png</key>
@@ -1828,6 +1829,15 @@
             <key type="filename">../Models/HighSec/CollarChestTied.png</key>
             <key type="filename">../Models/HighSec/CollarChestUp.png</key>
             <key type="filename">../Models/HighSec/CollarHogtie.png</key>
+            <key type="filename">../Models/HighSec/Corset.png</key>
+            <key type="filename">../Models/HighSec/CorsetChest.png</key>
+            <key type="filename">../Models/HighSec/CorsetCrotchStraps.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterLeft.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterLeftBack.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterLeftBackKneel.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterRight.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterRightBack.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterRightKneel.png</key>
             <key type="filename">../Models/HighSec/KDNormal_HighSecurity_Corset.png</key>
             <key type="filename">../Models/HighSec/KDNormal_HighSecurity_CorsetGarter.png</key>
             <key type="filename">../Models/Jacket/ArmsBoxtie.png</key>

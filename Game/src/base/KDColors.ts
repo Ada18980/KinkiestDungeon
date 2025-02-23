@@ -8,6 +8,7 @@ let KDBaseOrange = "#ff4e20";
 let KDBaseYellow = "#FFF600";
 // #FFF600 cadmium yellow
 // #FFFf00  yellow
+let KDBaseRibbon = "#ba55d3"; // mediumorchid
 let KDBasePink = "#ff66cc"; // rose pink
 // ##ffb3de; // light hotpink
 // #e25098; // raspaberry
@@ -35,10 +36,14 @@ let KDBaseMint = "#98ff98"; // mint green
 // #88ff88
 let KDBaseLightGreen = "#98ff98"; // mint green
 // #88ff88
+let KDBaseForest = "#228b22";
+// #448844
 let KDBaseElectricBlue = "#7df9ff";
 let KDBaseCyan = "#15f2fd"; // lotion blue
 // #7df9ff; // electric blue
 // #00ffff // cyan
+let KDBaseTeal = "#0a7e8c"; // metallic seaweed
+let KDBaseLightBlue = "#6495ed"; // cornflowerblue
 let KDBaseBlue = "#0247fe"; // blue
 // #0000ff; // navy
 // #1c1cf0 // bluebonnet
