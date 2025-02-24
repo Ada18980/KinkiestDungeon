@@ -17,7 +17,6 @@
         "Scripts/Mouse.ts",
         "Scripts/Drawing.ts",
         "Scripts/Character.ts",
-        "Scripts/CharacterName.ts",
         "Scripts/Text.ts",
         "Scripts/Inventory.ts",
         "Scripts/Element.ts",
