@@ -186,6 +186,7 @@ let LAYERS_BASE = [
 
 
 	"OverCorset",
+	"OverGarters",
 
 	"BaggyShirt",
 

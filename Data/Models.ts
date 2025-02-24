@@ -1659,7 +1659,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						cullable: KDCulling,
 					}, false,
 					ContainerContainer.SpritesDrawn,
-					Zoom, undefined
+					Zoom, false
 				);
 				//}
 

@@ -41,6 +41,9 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.4.48
+- Added HighSec restraints (and fashion restraints)
+
 5.4.47
 - Made some extensive changes to LinkUnder algorithm; hopefully less anomalous activity
 

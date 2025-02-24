@@ -4145,9 +4145,10 @@ function KDDraw (
 	};
 	if (!sprite) {
 		// Load the texture
-		if (Nearest && StandalonePatched) {
+		if (Nearest) {
 			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
-		}
+		} else
+			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 		let tex = KDTex(Image, Nearest);
 
 		if (tex) {
@@ -4162,7 +4163,7 @@ function KDDraw (
 			// Add it to the container
 			Container.addChild(sprite);
 		}
-		if (Nearest && StandalonePatched) {
+		if (Nearest) {
 			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
 		}
 	}
