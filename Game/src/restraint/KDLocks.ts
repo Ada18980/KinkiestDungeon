@@ -451,7 +451,7 @@ let KDLocks: Record<string, KDLockType> = {
 		loot_special: false,
 		loot_locked: false,
 	},
-	KDBaseWhite: {
+	White: {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 0;
 		},
