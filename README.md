@@ -38,7 +38,7 @@ After installation run `npm i && npm run build` in the root folder of the projec
 
 OR if you have Docker you can use Node's docker image to do the building for you. In the root folder run
 ```bash
-docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:20-slim bash -c 'npm install && npm run build'
+docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:23-slim bash -c 'npm i && npm run build'
 ```
 
 When you are developing the game you might want to run compilation each time you modify a file (so you do not have to switch to the terminal screen to run `npm run build` by hand). The `npm run buildCont` command does this for you. If you want the same with docker use the following:
@@ -51,7 +51,7 @@ docker run --rm -it --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node
 ## Run
 You can start the server with the `npm run serve` command, or with docker:
 ```bash
-docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app -p 8080:8080 node:20-slim npm run serve
+docker run --rm -it --name kdrunner -v "$PWD":/usr/src/app -w /usr/src/app -p 8080:8080 node:23-slim npm run serve
 ```
 
 Afterwards open http://localhost:8080 in your browser of choice. Press ctrl+c in the terminal to stop the server when you are done.

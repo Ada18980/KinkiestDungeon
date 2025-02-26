@@ -33,7 +33,9 @@ let KDVeryFastWaitTime = 10;
 let KDNormalWaitTime = 500;
 let KDSlowWaitTime = 1500;
 
-let maxSaveSlots = 4;
+let saveSlotsPerPage = 4; // number of save slots, we have space for 4 on the UI
+let maxSaveSlotPages = 4; // number of pages of saves we allow
+let currentSavePage = 0; // which page are we on
 
 let KDFullscreen = false;
 let KDExitButton = false;
@@ -1069,7 +1071,7 @@ function KDSaveToggles() {
 
 async function KDMigrateSaveToNewSystem() {
 	// Refresh saves
-	for (var i = 1; i < 5; i++) {
+	for (var i = 1; i <= (maxSaveSlotPages*saveSlotsPerPage); i++) {
 		let num = (i);
 		await KinkyDungeonDBLoad(num).then((code) => {
 			loadedsaveslots[num - 1] = code;
@@ -1560,7 +1562,7 @@ function KinkyDungeonLoad(): void {
 				localStorage.setItem('KDLastSaveSlot', "1");
 				KDMigrateSaveToNewSystem();
 			} else {
-				for (var i = 1; i < 5; i++) {
+				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
@@ -2078,7 +2080,7 @@ function KinkyDungeonRun() {
 				KinkyDungeonState = "Name";
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 4;
 				let emptySlot = undefined;
-				for (var i = 1; i < 5; i++) {
+				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
@@ -2104,7 +2106,7 @@ function KinkyDungeonRun() {
 				KinkyDungeonDBLoad(0).then((code) => {
 					KDSlot0 = code;
 				});
-				for (var i = 1; i < 5; i++) {
+				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
@@ -2980,7 +2982,7 @@ function KinkyDungeonRun() {
 		DrawTextFitKD(`${KDSaveSlot}`, 1430, 385, 360, "#ffffff", undefined, 30);
 		// Right to increment
 		DrawButtonKDEx(`SaveButton4`, (_bdata) => {
-			if (KDSaveSlot < maxSaveSlots) {
+			if (KDSaveSlot < (saveSlotsPerPage*maxSaveSlotPages)) {
 				KDSaveSlot++;
 			}
 			KDConfirmDeleteSave = false;
@@ -4728,7 +4730,7 @@ let LoadMenuCurrentSlot: number;
 let loadedsaveslots: string[] = [];
 let loadedcloudsaveslots: string[] = [];
 let loadedsaveNames: string[] = [];
-for (let i = 0; i < maxSaveSlots; i++) {
+for (let i = 0; i < (saveSlotsPerPage*maxSaveSlotPages); i++) {
 	loadedsaveslots.push(null);
 	loadedsaveNames.push("");
 }
@@ -4760,6 +4762,9 @@ function KDDrawLoadMenu() {
 	YY = YYstart + 50;
 	YYd = 80;
 	let CombarXX = 520;
+	let saveSlotXOffset = 100;
+	let saveSlotWidth = 300;
+	let slotPageBtnWidth = 64;
 	// Save slots buttons
 	DrawTextFitKD(TextGet("PlayGameWithCurrentCode"), 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
 	if (KDENABLEDISCORDSYNC) {
@@ -4778,7 +4783,26 @@ function KDDrawLoadMenu() {
 	}
 
 	if (!KDLoadCloudGames) {
-		for (let i = 1; i < 5; i++) {
+		// Left button to switch to previous page
+		DrawButtonKDEx(`PreviousPage`, (_bdata) => {
+			// when on page 0 and going left, wrap over to last page
+			currentSavePage = (currentSavePage - 1) < 0 ? maxSaveSlotPages - 1 : currentSavePage - 1;
+			return true;
+		}, true, CombarXX + saveSlotXOffset + (saveSlotWidth/2) - slotPageBtnWidth - 35, YYstart - 20, slotPageBtnWidth, slotPageBtnWidth, '<', "#ffffff");
+		// page number / max pages displayed as text
+		DrawTextFitKD(`${currentSavePage + 1}/${maxSaveSlotPages}`,
+			CombarXX + saveSlotXOffset + (saveSlotWidth/2), YYstart+10, 80, "#ffffff", undefined, 35
+		);
+		// Right button to switch to next page
+		DrawButtonKDEx(`NextPage`, (_bdata) => {
+			// when on last page and going right, wrap to 0th page
+			currentSavePage = (currentSavePage + 1) % maxSaveSlotPages;
+			return true;
+		}, true, CombarXX + saveSlotXOffset + (saveSlotWidth/2) + 35, YYstart - 20, slotPageBtnWidth, slotPageBtnWidth, '>', "#ffffff");
+
+		let startSaveSlot = currentSavePage*saveSlotsPerPage + 1;
+		let endSaveSlot = startSaveSlot + saveSlotsPerPage;
+		for (let i = startSaveSlot; i < endSaveSlot; i++) {
 			let num = (i);
 			// Slot button
 			DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
@@ -4801,7 +4825,7 @@ function KDDrawLoadMenu() {
 
 
 				return true;
-			}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
+			}, true, CombarXX + saveSlotXOffset, YY, saveSlotWidth, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
 			// Selected arrow if the currently selected slot matches
 			if (num == LoadMenuCurrentSlot) {
 				DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
