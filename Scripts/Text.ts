@@ -1,13 +1,33 @@
-// Manages paths for localization resource files
-class LocalizationPathManager {
+/**
+ *  Manages the generation of file paths for localization resources.
+ */
+class TextResPathGenerator {
 	static readonly BASE_PATH = "Screens/MiniGame/KinkyDungeon";
+	private file_path: string;
+	private file_prefix: string;
 
-	static getDefTranslationPath(language: string): string {
-		return `${this.BASE_PATH}/Text_KinkyDungeon_${language.toUpperCase()}.txt`;
+	constructor(base_path: string, file_prefix: string) {
+		this.file_path = base_path;
+		this.file_prefix = file_prefix;
 	}
 
-	static getOriginalCSVPath(): string {
-		return `${this.BASE_PATH}/Text_KinkyDungeon.csv`;
+	genOriginalPath() {
+		return `${this.file_path}/${this.file_prefix}.csv`;
+	}
+
+	genTranslationPath(language: string) {
+		return `${this.file_path}/${this.file_prefix
+			}_${language.toUpperCase()}.txt`;
+	}
+
+	genTranslationMap(
+		allowed_languages: LanguageIdentifier[]
+	): Map<LanguageIdentifier, ResourceUrl> {
+		let map = new Map<LanguageIdentifier, ResourceUrl>();
+		allowed_languages.forEach((lang) => {
+			map.set(lang, this.genTranslationPath(lang));
+		});
+		return map;
 	}
 }
 
@@ -116,15 +136,23 @@ ResourceLoader.registerParser("translation-txt", async (r) => {
 	return TranslationTextParser.parseTranslationText(text);
 });
 
+/**
+ * ===== Type Definitions =====
+ */
+const AvaliableLanguages = ["EN", "CN", "DE", "ES", "JP", "KR", "RU"] as const;
+type LanguageIdentifier = (typeof AvaliableLanguages)[number];
+const NormalSupportedLanguages = AvaliableLanguages.filter(
+	(lang) => lang !== "EN"
+);
+
 type TextResKey = string;
 type TextResValue = string;
 
-type OriginalTextMap = Map<TextResKey, TextResValue>;
-type TranslationTextMap = Map<TextResKey, TextResValue>;
+type TextResMap = Map<TextResKey, TextResValue>;
 
 type LocalizationResources = {
-	textTranslationMap: TranslationTextMap;
-	tagTranslationMap: TranslationTextMap;
+	textTranslationMap: TextResMap;
+	tagTranslationMap: TextResMap;
 };
 
 type TextGroupId = string;
@@ -134,13 +162,13 @@ type ResourceUrl = string;
  * Manages groups of source text resources
  */
 class TextGroupManager {
-	private sourceTextGroupMap: Map<TextGroupId, OriginalTextMap> = new Map();
+	private sourceTextGroupMap: Map<TextGroupId, TextResMap> = new Map();
 
 	/**
 	 * Set group (note, this will directly overwrite)
 	 * @param sourceText Original text mapping
 	 */
-	public setGroup(groupId: TextGroupId, sourceText: OriginalTextMap): void {
+	public setGroup(groupId: TextGroupId, sourceText: TextResMap): void {
 		this.sourceTextGroupMap.set(groupId, sourceText);
 	}
 
@@ -148,7 +176,7 @@ class TextGroupManager {
 		this.sourceTextGroupMap.delete(groupId);
 	}
 	// Get group (create if not exists)
-	public getGroup(groupId: TextGroupId): OriginalTextMap {
+	public getGroup(groupId: TextGroupId): TextResMap {
 		let group = this.sourceTextGroupMap.get(groupId);
 		if (!group) {
 			group = new Map();
@@ -164,10 +192,7 @@ class TextGroupManager {
 	 * @param sourceText - The original text map that will be merged into the existing text group.
 	 * @returns void
 	 */
-	public appendTextMap(
-		groupId: TextGroupId,
-		sourceText: OriginalTextMap
-	): void {
+	public appendTextMap(groupId: TextGroupId, sourceText: TextResMap): void {
 		const group = this.getGroup(groupId);
 		this.mergeMaps(group, sourceText);
 	}
@@ -191,8 +216,6 @@ class TextGroupManager {
 		source.forEach((v, k) => target.set(k, v));
 	}
 }
-
-type LanguageIdentifier = 'CN' | 'DE' | 'ES' | 'JP' | 'KR' | 'RU' | 'EN';
 
 // Handles language-specific translation operations
 class LocalizationService {
@@ -297,15 +320,11 @@ type TextResourceConfig = {
 	lazyLoad?: boolean; // no support yet
 };
 
-// 资源加载PromiseMap
-type ResourceLoadPromiseMap = Map<ResourceUrl, Promise<void>>;
-
 type TemplateParams = { [key: string]: string | number | boolean };
-
-// 资源加载器
-// 提供资源加载的状态管理, 缓存, 终止
+// Resource Loader
+// Provides resource loading state management, caching, and termination
 class TextResourceLoader<T> {
-	// 加载器缓存, 如果失败不会缓存
+	// Loader cache, will not cache if failed
 	private resourcePromiseCache: Map<ResourceUrl, Promise<T>> = new Map();
 	private abortController = new AbortController();
 
@@ -373,7 +392,7 @@ class TextProvider {
 	private translationServiceGroup: Map<TextGroupId, LocalizationService> =
 		new Map();
 
-	private originalTextLoader = new TextResourceLoader<OriginalTextMap>();
+	private originalTextLoader = new TextResourceLoader<TextResMap>();
 	private translationTextLoader =
 		new TextResourceLoader<LocalizationResources>();
 
@@ -381,6 +400,49 @@ class TextProvider {
 
 	private constructor() {
 		this.initializeDefaultConfig();
+	}
+
+	/**
+	 * Initializes the default configuration for text resources.
+	 */
+	private initializeDefaultConfig() {
+		const pathGener = new TextResPathGenerator(
+			"Screens/MiniGame/KinkyDungeon",
+			"Text_KinkyDungeon"
+		);
+
+		this.appendTextResource({
+			groupId: this.defaultGroupId,
+			original: pathGener.genOriginalPath(),
+			localizationDictionary: pathGener.genTranslationMap(
+				NormalSupportedLanguages
+			),
+		});
+	}
+
+	public setDebugMode(debug: boolean): void {
+		this._debugMode = debug;
+	}
+
+	public static get instance(): TextProvider {
+		return this._instance;
+	}
+
+	/**
+	 * Retrieves the text associated with the specified tag.
+	 *
+	 * @param tag - The tag identifying the text to retrieve.
+	 * @param params - Optional parameters to format the text.
+	 * @returns The text associated with the specified tag, formatted with the provided parameters if any.
+	 */
+	getText(tag: string, params?: TemplateParams): string {
+		return this.getTextFromGroup(this.defaultGroupId, tag, params);
+	}
+
+	public queryResourceConfig(groupId: TextGroupId): TextResourceConfig[] {
+		return this.textResourceConfig.filter(
+			(config) => config.groupId === groupId
+		);
 	}
 
 	/**
@@ -413,38 +475,6 @@ class TextProvider {
 	}
 
 	/**
-	 * Initializes the default configuration for text resources.
-	 */
-	private initializeDefaultConfig() {
-		this.appendTextResource({
-			groupId: this.defaultGroupId,
-			original: LocalizationPathManager.getOriginalCSVPath(),
-			localizationDictionary: new Map([
-				["CN", LocalizationPathManager.getDefTranslationPath("CN")],
-				["DE", LocalizationPathManager.getDefTranslationPath("DE")],
-				["ES", LocalizationPathManager.getDefTranslationPath("ES")],
-				["JP", LocalizationPathManager.getDefTranslationPath("JP")],
-				["KR", LocalizationPathManager.getDefTranslationPath("KR")],
-				["RU", LocalizationPathManager.getDefTranslationPath("RU")]
-			]),
-		});
-	}
-
-	public setDebugMode(debug: boolean): void {
-		this._debugMode = debug;
-	}
-
-	public queryResourceConfig(groupId: TextGroupId): TextResourceConfig[] {
-		return this.textResourceConfig.filter(
-			(config) => config.groupId === groupId
-		);
-	}
-
-	public static get instance(): TextProvider {
-		return this._instance;
-	}
-
-	/**
 	 * Retrieves a text string from a specified group and tag, optionally applying template parameters.
 	 *
 	 * @param groupId - The identifier of the group from which to retrieve the text.
@@ -472,17 +502,6 @@ class TextProvider {
 		}
 
 		return text || "[NotFound] " + tag;
-	}
-
-	/**
-	 * Retrieves the text associated with the specified tag.
-	 *
-	 * @param tag - The tag identifying the text to retrieve.
-	 * @param params - Optional parameters to format the text.
-	 * @returns The text associated with the specified tag, formatted with the provided parameters if any.
-	 */
-	getText(tag: string, params?: TemplateParams): string {
-		return this.getTextFromGroup(this.defaultGroupId, tag, params);
 	}
 
 	/**
