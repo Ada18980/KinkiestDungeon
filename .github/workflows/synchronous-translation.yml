@@ -4,18 +4,18 @@ permissions:
   contents: write
 
 on:
-  # workflow_dispatch:
-  # push:
-  #   branches:
-  #     - 'newartwork'
-  #   paths:
-  #     - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
-  #     - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+  workflow_dispatch:
+  push:
+    branches:
+      - 'newartwork'
+    paths:
+      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
+      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
 
 jobs:
   synchronous-translation:
     runs-on: ubuntu-latest
-    if: github.repository == 'Ada18980/KinkiestDungeon'
+    if: flase && github.repository == 'Ada18980/KinkiestDungeon'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

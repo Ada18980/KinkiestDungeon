@@ -4,17 +4,17 @@ permissions:
   contents: write
 
 on:
-  # workflow_dispatch:
-  # push:
-  #   branches:
-  #     - newartwork
-  #   paths:
-  #     - "Screens/MiniGame/KinkyDungeon/*"
+  workflow_dispatch:
+  push:
+    branches:
+      - newartwork
+    paths:
+      - "Screens/MiniGame/KinkyDungeon/*"
 
 jobs:
   format-translation:
     runs-on: ubuntu-latest
-    if: github.repository == 'Ada18980/KinkiestDungeon'
+    if: false && github.repository == 'Ada18980/KinkiestDungeon'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
