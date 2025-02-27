@@ -5,17 +5,18 @@ let TranslationCache: Record<string, string[]> = {};
  * Loads the previous translation language from local storage if it exists
  */
 function TranslationLoad(): void {
-  let language =
-    localStorage.getItem("LanguageChange") === "1"
-      ? localStorage.getItem("BondageClubLanguage")
-      : GetUserPreferredLanguage();
+	let language;
+	if (localStorage.getItem("LanguageChange") == "1")
+	{
+		language = localStorage.getItem("BondageClubLanguage");
+	}
+	else
+	{
+		language = GetUserPreferredLanguage();
+		if (language != null) localStorage.setItem("BondageClubLanguage",language);
+	}
 
-  if (language) {
-    localStorage.setItem("BondageClubLanguage", language);
-    TranslationLanguage = language;
-  }
-
-  TranslationLanguage = "EN";
+	if (language != null) TranslationLanguage = language;
 }
 
 function GetUserPreferredLanguage() {
