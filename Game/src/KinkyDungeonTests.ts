@@ -98,25 +98,6 @@ function KDTestjailer(iter: number) {
 	console.log(totals);
 }
 
-async function KDExportTranslationFile(cull: boolean) {
-	await sleep(1000);
-	let file = "";
-	let cache = cull ? {} : undefined;
-	if (cache) {
-		for (let i = 0; i + 1 < Object.values(TranslationCache)[0].length; i++) {
-			cache[Object.values(TranslationCache)[0][i + 1]] = Object.values(TranslationCache)[0][i];
-		}
-	}
-	for (let c of Object.values(TextScreenCache.cache)) {
-		if (!cache || !cache[c]) {
-			file = file + '\n' + c;
-			file = file + '\n ';
-		}
-
-	}
-	navigator.clipboard.writeText(file);
-}
-
 /**
  * Tests the variant item system
  * @param name
