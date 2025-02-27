@@ -4,13 +4,13 @@ permissions:
   contents: write
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - 'newartwork'
-    paths:
-      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
-      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+  # workflow_dispatch:
+  # push:
+  #   branches:
+  #     - 'newartwork'
+  #   paths:
+  #     - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
+  #     - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
 
 jobs:
   synchronous-translation:

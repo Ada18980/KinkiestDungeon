@@ -4,12 +4,12 @@ permissions:
   contents: write
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - newartwork
-    paths:
-      - "Screens/MiniGame/KinkyDungeon/*"
+  # workflow_dispatch:
+  # push:
+  #   branches:
+  #     - newartwork
+  #   paths:
+  #     - "Screens/MiniGame/KinkyDungeon/*"
 
 jobs:
   format-translation:
