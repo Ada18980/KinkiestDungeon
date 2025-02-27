@@ -41,6 +41,13 @@ OR if you have Docker you can use Node's docker image to do the building for you
 docker run --rm --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:20-slim bash -c 'npm install && npm run build'
 ```
 
+When you are developing the game you might want to run compilation each time you modify a file (so you do not have to switch to the terminal screen to run `npm run build` by hand). The `npm run buildCont` command does this for you. If you want the same with docker use the following:
+```bash
+docker run --rm -it --name kdbuilder -v "$PWD":/usr/src/app -w /usr/src/app node:23-slim bash -c 'npm i && npm run buildContWSL'
+```
+
+(Inside WSL the native filesystem watchers don't see what you are doing on the Windows side, that is why `buildContWSL` task uses polling to see if there are changes)
+
 ## Run
 You can start the server with the `npm run serve` command, or with docker:
 ```bash
