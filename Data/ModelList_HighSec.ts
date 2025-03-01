@@ -129,7 +129,7 @@ AddModel({
 	Folder: "HighSec",
 	TopLevel: true,
 	Categories: ["Corsets"],
-	AddPose: ["Corset", "CrotchStrap"],
+	AddPose: ["Corset", "CrotchStrap", "HiSecGarter"],
 	Layers: ToLayerMap([
 		{ Name: "Corset", Layer: "OverCorset", Pri: 25,
 			Invariant: true,
@@ -148,6 +148,7 @@ AddModel({
 			InheritColor: "GarterLeft",
 			TieToLayer: "Corset",
 			NoOverride: true,
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 		},
 		{ Name: "CorsetGarterLeftBack", Layer: "BehindTorso", Pri: -25,
 			Invariant: true,
@@ -161,82 +162,25 @@ AddModel({
 			InheritColor: "GarterRight",
 			TieToLayer: "Corset",
 			NoOverride: true,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel2"},
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 		},
 		{ Name: "CorsetGarterRightBack", Layer: "BehindTorso", Pri: -25,
 			Invariant: true,
 			InheritColor: "GarterRight",
-			//TieToLayer: "Corset",
-			NoOverride: true,
-		},
-		{ Name: "CorsetCrotchStraps", Layer: "Corset", Pri: 24.9,
-			Invariant: true,
-			InheritColor: "CrotchStraps",
-			TieToLayer: "Corset",
-			NoOverride: true,
-		},
-	])
-});
-
-AddModel(GetModelRestraintVersion("HighSecCorset", true));
-
-AddModel({
-	Name: "HighSecCorset",
-	Folder: "HighSec",
-	TopLevel: true,
-	Categories: ["Corsets"],
-	AddPose: ["Corset", "CrotchStrap"],
-	Layers: ToLayerMap([
-		{ Name: "Corset", Layer: "OverCorset", Pri: 25,
-			Invariant: true,
-			InheritColor: "Corset",
-			DisplaceAmount: 150,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "CorsetSquish",
-			DisplacementInvariant: true,
-		},
-		{ Name: "CorsetChest", Layer: "SuitChestOver", Pri: 25.1,
-			Invariant: true,
-			InheritColor: "Corset",
-		},
-		{ Name: "CorsetGarterLeft", Layer: "OverGarters", Pri: 24.9,
-			Invariant: true,
-			InheritColor: "GarterLeft",
-			TieToLayer: "Corset",
-			NoOverride: true,
-		},
-		{ Name: "CorsetGarterLeftBack", Layer: "BehindTorso", Pri: -25,
-			Invariant: true,
-			InheritColor: "GarterLeft",
 			//TieToLayer: "Corset",
 			NoOverride: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 		},
-		{ Name: "CorsetGarterRight", Layer: "OverGarters", Pri: 24.9,
-			Invariant: true,
-			InheritColor: "GarterRight",
-			TieToLayer: "Corset",
-			NoOverride: true,
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel2"},
-		},
-		{ Name: "CorsetGarterRightBack", Layer: "BehindTorso", Pri: -25,
-			Invariant: true,
-			InheritColor: "GarterRight",
-			//TieToLayer: "Corset",
-			NoOverride: true,
-		},
 		{ Name: "CorsetCrotchStraps", Layer: "Corset", Pri: 24.9,
 			Invariant: true,
 			InheritColor: "CrotchStraps",
 			TieToLayer: "Corset",
 			NoOverride: true,
-			HidePoses: {EncaseLower: true},
 		},
 	])
 });
 
 AddModel(GetModelRestraintVersion("HighSecCorset", true));
-
 
 
 AddModel({
@@ -460,3 +404,195 @@ AddModel({
 		},
 	])
 });
+
+
+
+AddModel({
+	Name: "HighSecBalletHeels",
+	Folder: "HighSecBallet",
+	TopLevel: true,
+	Restraint: false,
+	Categories: ["Shoes"],
+	AddPose: ["Heels", "FeetCovered"],
+	RemovePoses: ["TapeBoots"],
+	Layers: ToLayerMap([
+		{ Name: "TallLeft", Layer: "ShoeLeft", Pri: 30,
+			AppendPose: {"HiSecGarter": "Garter"},
+			InheritColor: "Shoe",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap([...LEGPOSES]),
+			SwapLayerPose: {Hogtie: "ShoeLeftHogtie"},
+			DisplacementSprite: "Ballet",
+			DisplaceAmount: 180,
+			DisplaceLayers: ToMap(["Heels"]),
+			DisplaceZBonus: 100,
+			EraseInvariant: true,
+			EraseMorph: {Spread: "Spread"},
+			EraseSprite: "TallBalletErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["Heels"]),
+		},
+		{ Name: "TallRight", Layer: "ShoeRight", Pri: 30,
+			AppendPose: {"HiSecGarter": "Garter"},
+			InheritColor: "Shoe",
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			SwapLayerPose: {Kneel: "ShoeRightKneel"},
+			EraseInvariant: true,
+			EraseMorph: {Closed: "Closed"},
+			EraseSprite: "TallBalletRightErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["HeelRight"]),
+			EraseZBonus: 100,
+		},
+		{ Name: "TallLegLeft", Layer: "OverShoes", Pri: 31,
+			AppendPose: {"HiSecGarter": "Garter"},
+			InheritColor: "Shoe",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+		},
+		{ Name: "TallLegRight", Layer: "ShoeRightUnder", Pri: 31,
+			AppendPose: {"HiSecGarter": "Garter"},
+			InheritColor: "Shoe",
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+		},
+
+
+
+
+		{ Name: "TallStrapsLeft", Layer: "ShoeLeft", Pri: 30.1,
+			InheritColor: "StrapsLeft",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap([...LEGPOSES]),
+			SwapLayerPose: {Hogtie: "ShoeLeftHogtie"},
+
+			Sprite: "TallLeft", Folder: "HighSecBalletStraps",
+			TieToLayer: "TallLeft", NoOverride: true,
+
+		},
+		{ Name: "TallStrapsRight", Layer: "ShoeRight", Pri: 30.1,
+			InheritColor: "StrapsRight",
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+			SwapLayerPose: {Kneel: "ShoeRightKneel"},
+
+			Sprite: "TallRight", Folder: "HighSecBalletStraps",
+			TieToLayer: "TallRight", NoOverride: true,
+		},
+		{ Name: "TallStrapsLegLeft", Layer: "OverShoes", Pri: 31.1,
+			InheritColor: "StrapsLeft",
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+
+			Sprite: "TallLegLeft", Folder: "HighSecBalletStraps",
+			TieToLayer: "TallLegLeft", NoOverride: true,
+		},
+		{ Name: "TallStrapsLegRight", Layer: "ShoeRightUnder", Pri: 31.1,
+			InheritColor: "StrapsRight",
+			Poses: ToMap(["Kneel", "KneelClosed", "Hogtie"]),
+			GlobalDefaultOverride: ToMap(["Hogtie"]),
+
+			Sprite: "TallLegRight", Folder: "HighSecBalletStraps",
+			TieToLayer: "TallLegRight", NoOverride: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "HighSecBalletHeelsRestraint",
+	Folder: "HighSecBallet",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Shoes"],
+	AddPose: ["Heels", "RestrainingShoes"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HighSecBalletHeels"),
+	])
+});
+
+
+
+AddModel({
+	Name: "HighSecGloveLeft",
+	Folder: "HighSecGloves",
+	Parent: "HighSecGloves",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: 8,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveLeft", Layer: "ForeGloveLeft", Pri: 8,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+		{ Name: "StrapsLeft", Layer: "GloveLeft", Pri: 8.1,
+			Sprite: "GloveLeft", Folder: "HighSecGlovesStraps",
+			InheritColor: "StrapsLeft",
+			TieToLayer: "GloveLeft", NoOverride: true,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeStrapsLeft", Layer: "ForeGloveLeft", Pri: 8.1,
+			Sprite: "ForeGloveLeft", Folder: "HighSecGlovesStraps",
+			InheritColor: "StrapsLeft",
+			TieToLayer: "ForeGloveLeft", NoOverride: true,
+			Poses: ToMap([...FOREARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+	])
+});
+
+AddModel({
+	Name: "HighSecGloveRight",
+	Folder: "HighSecGloves",
+	Parent: "HighSecGloves",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: 8,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveRight", Layer: "ForeGloveRight", Pri: 8,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+
+		{ Name: "StrapsRight", Layer: "GloveRight", Pri: 8.1,
+			Sprite: "GloveRight", Folder: "HighSecGlovesStraps",
+			InheritColor: "StrapsRight",
+			TieToLayer: "GloveRight", NoOverride: true,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeStrapsRight", Layer: "ForeGloveRight", Pri: 8.1,
+			Sprite: "ForeGloveRight", Folder: "HighSecGlovesStraps",
+			InheritColor: "StrapsRight",
+			TieToLayer: "ForeGloveRight", NoOverride: true,
+			Poses: ToMap([...FOREARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+	])
+});
+
+AddModel({
+	Name: "HighSecGloves",
+	Folder: "HighSecGloves",
+	Parent: "HighSecGloves",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HighSecGloveLeft"),
+		...GetModelLayers("HighSecGloveRight"),
+	])
+});
+
+AddModel(GetModelRestraintVersion("HighSecGloves", true));

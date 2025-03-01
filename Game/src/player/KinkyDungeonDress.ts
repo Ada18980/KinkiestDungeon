@@ -270,7 +270,7 @@ function KinkyDungeonDressPlayer (
 						if (!(!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor))) {
 							if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 								let Poses = KDCurrentModels.get(Character)?.Poses;
-								if (!KDRestraint(inv)?.noRenderPose?.some((s) => {
+								if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 									return !!Poses[s];
 								})) {
 									KDApplyItem(Character, inv, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
@@ -290,7 +290,7 @@ function KinkyDungeonDressPlayer (
 								if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
 									if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 										let Poses = KDCurrentModels.get(Character)?.Poses;
-										if (!KDRestraint(inv)?.noRenderPose?.some((s) => {
+										if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 											return !!Poses[s];
 										})) {
 											KDApplyItem(Character, link, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
@@ -319,7 +319,7 @@ function KinkyDungeonDressPlayer (
 
 						if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 							let Poses = KDCurrentModels.get(Character)?.Poses;
-							if (!KDRestraint(inv)?.noRenderPose?.some((s) => {
+							if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 								return !!Poses[s];
 							})) {
 								KDApplyItem(Character, inv, NPCTags.get(Character) || new Map(), customFaction);

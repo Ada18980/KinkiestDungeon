@@ -272,6 +272,8 @@
             <key type="filename">../DisplacementMaps/SockRSquish_MidSpread.png</key>
             <key type="filename">../DisplacementMaps/SockRSquish_ShortClosed.png</key>
             <key type="filename">../DisplacementMaps/SockRSquish_ShortSpread.png</key>
+            <key type="filename">../DisplacementMaps/TallBalletEraseSpread.png</key>
+            <key type="filename">../DisplacementMaps/TallBalletRightEraseClosed.png</key>
             <key type="filename">../DisplacementMaps/TapeAnklesSquishClosed.png</key>
             <key type="filename">../DisplacementMaps/TapeArmsBoxtie.png</key>
             <key type="filename">../DisplacementMaps/TapeClosed.png</key>
@@ -488,6 +490,7 @@
             <key type="filename">../DisplacementMaps/BalletRightErase.png</key>
             <key type="filename">../DisplacementMaps/HeelsErase.png</key>
             <key type="filename">../DisplacementMaps/HeelsEraseSpread.png</key>
+            <key type="filename">../DisplacementMaps/TallBalletRightErase.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

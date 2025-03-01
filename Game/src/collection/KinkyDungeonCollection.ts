@@ -315,7 +315,7 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 			// @ts-ignore
 			customSprite: (enemy.CustomSprite),
-			color: enemy.CustomNameColor || KDBaseWhite,
+			color: enemy.CustomNameColor || KDBaseLightGrey,
 			Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
 			class: servantclass || "prisoner",
 			Training: -(10 + 10 * KDRandom()) * KDEnemyRank(enemy) - 25,
@@ -845,7 +845,7 @@ function KDGetVirtualCollectionEntry(id: number): KDCollectionEntry {
 		sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 		// @ts-ignore
 		customSprite: (enemy.CustomSprite),
-		color: enemy.CustomNameColor || KDBaseWhite,
+		color: enemy.CustomNameColor || KDBaseLightGrey,
 		Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
 		class: "stranger",
 		Training: -100,

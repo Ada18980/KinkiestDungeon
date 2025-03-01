@@ -54,3 +54,4 @@ let KDBaseWhite = "#fffafa" // snow
 // #fffafa snow
 let KDBaseBlack = "#010203"; // rich black
 // #000000
+let KDBaseLightGrey = "#80949a";
