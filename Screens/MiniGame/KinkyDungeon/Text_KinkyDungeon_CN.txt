@@ -245,9 +245,9 @@
 - Grayscale when Blind
 失明时视野变成黑白
 - Faster Floater Fade
-漂浮物更快消散
+漂浮文字更快消散
 - No Damage Floaters
-无伤漂浮物
+不显示伤害数字
 - Dynamic Armor (must hide armor)
 动态盔甲 ( 必须隐藏盔甲 )
 - Hide floating weapon display
@@ -9102,7 +9102,10 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 
 
 
-### Flipped Table
+- Flipped Table
+翻倒的桌子
+- Relieved some stress.
+发泄了一些压力
 
 ### Relieved some stress.
 
@@ -21414,11 +21417,13 @@ FOODMSG| ( 它邀请你分享它的美食 )
 披萨
 
 
-### (The table looks remarkably flippable)
+- (The table looks remarkably flippable)
+(桌子看上去很容易掀翻)
+- (You knock over the table!)
+(你掀翻了桌子!)
+- (Flip the table)
+(掀翻桌子)
 
-### (You knock over the table!)
-
-### (Flip the table)
 
 - (There is a button on a control panel here.)
 ( 这里的控制面板上有一个按钮。 )
@@ -25716,7 +25721,8 @@ Aura刘海(右后)
 反色玫瑰
 ### InvertedRose
 
-### Straps
+- Straps
+绑带
 
 ### Base
 
@@ -35070,14 +35076,23 @@ NME 对你的收藏来说还不够引人注目。
 接近并捆绑
 - Sprint (AMNT)
 冲刺 (AMNT)
-### Stop Waiting
+Stop Waiting
+停止等待
 
-### (Already slept here)
 
-### (Will not low enough)
+(Already slept here)
+(已经睡过一次了)
+(Will not low enough)
+(低意志力时可用)
 
-### Move closer to interact
 
-### Several poles rise up out of the ground...
+Move closer to interact
+接近并交互
 
-### Various Scrolls
+
+Several poles rise up out of the ground...
+几根柱子破土而出...
+
+
+Various Scrolls
+各种卷轴
