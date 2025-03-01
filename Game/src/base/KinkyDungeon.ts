@@ -2973,6 +2973,8 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx(`SaveButtonL`, (_bdata) => {
 			if (KDSaveSlot > 1) {
 				KDSaveSlot--;
+			} else {
+				KDSaveSlot = (saveSlotsPerPage*maxSaveSlotPages);
 			}
 			KDConfirmDeleteSave = false;
 			return true;
@@ -2984,6 +2986,8 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx(`SaveButton4`, (_bdata) => {
 			if (KDSaveSlot < (saveSlotsPerPage*maxSaveSlotPages)) {
 				KDSaveSlot++;
+			} else {
+				KDSaveSlot = 1;
 			}
 			KDConfirmDeleteSave = false;
 			return true;
