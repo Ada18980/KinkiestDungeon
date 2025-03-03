@@ -1803,7 +1803,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			}
 		}
 
-	KDKickEnemies(nearestJail, PutInJail, MiniGameKinkyDungeonLevel);
+	KDKickEnemies(nearestJail, PutInJail, MiniGameKinkyDungeonLevel, undefined, leasher ? [leasher] : undefined);
 	KDResetAllAggro();
 
 	KDRepairRubble(true);
@@ -1861,7 +1861,7 @@ function KDEnemyIsTemporary(enemy: entity): boolean {
  * @param Level
  * @param [noCull]
  */
-function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, noCull?: boolean): boolean {
+function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, noCull?: boolean, ignoreEntities?: entity[]): boolean {
 
 	let altRoom = KDMapData.RoomType;
 	let mapMod = KDMapData.MapMod ? KDMapMods[KDMapData.MapMod] : null;
@@ -1881,6 +1881,8 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 					10, true, false)) {
 					atLeastOneAware = true;
 				} else e.aware = false;
+
+				if (ignoreEntities?.some((ent) => {return ent.id == e.id;})) continue;
 				if (!e.leash && (!ignoreAware || !e.aware))
 					if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags?.prisoner && !e.Enemy.tags?.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 						if (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0)) {
@@ -1901,6 +1903,7 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 				10, true, false)) {
 				atLeastOneAware = true;
 			} else if (e.id != KDGameData.JailGuard && e.id != KDGameData.KinkyDungeonLeashingEnemy) e.aware = false;
+			if (ignoreEntities?.some((ent) => {return ent.id == e.id;})) continue;
 			if (!ignoreAware || !e.aware) {
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!e.leash && !KDIsImmobile(e))

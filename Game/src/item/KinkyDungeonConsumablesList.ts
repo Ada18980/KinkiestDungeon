@@ -35,7 +35,7 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"KeyCard" : {name: "KeyCard", rarity: 1, shop: false, type: "KeyCard", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
-	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
+	"CuffKeys" : {name: "CuffKeys", sneakChance: 0.1, rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"Pick" : {name: "Pick", sneakChance: 0.15, rarity: 0, sub: 0.25, shop: false, type: "Lockpick", noConsumeOnUse: true},
 	"RedKey" : {name: "RedKey", sneakChance: 0.1, rarity: 1, sub: 0.25, shop: false, type: "RedKey", noConsumeOnUse: true},
 	"BlueKey" : {name: "BlueKey", rarity: 2, costMod: 2, shop: false, type: "BlueKey", noConsumeOnUse: true},

@@ -82,7 +82,7 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 				if (restraint.unlockProgress > 1) {
 					KinkyDungeonSetFlag("escaped", 2);
 					KinkyDungeonRemoveKeysUnlock(restraint.lock);
-					KinkyDungeonLock(restraint, "");
+					KinkyDungeonLock(restraint, "", false, false, false, true);
 				} else if (action.data?.delta > 0) {
 					//KDStunTurns(action.data?.delta, true);
 				}
@@ -91,7 +91,7 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 				restraint.pickProgress += action.data.amount;
 				if (restraint.pickProgress > 1) {
 					KinkyDungeonSetFlag("escaped", 2);
-					KinkyDungeonLock(restraint, "");
+					KinkyDungeonLock(restraint, "", false, false, true);
 				} else if (action.data?.delta > 0) {
 					//KDStunTurns(action.data?.delta, true);
 				}

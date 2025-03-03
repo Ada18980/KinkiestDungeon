@@ -8933,7 +8933,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 						KDBindEnemyWithTags(en.id,
 							["magicBeltForced"], 50,
 							MiniGameKinkyDungeonLevel + 10,
-							true, undefined, false, false);
+							true, undefined, false, false,
+							undefined, undefined, 0);
 					}
 				}
 			}
@@ -8954,7 +8955,8 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 						KDBindEnemyWithTags(en.id,
 							["genericToys"], 0,
 							MiniGameKinkyDungeonLevel + 10,
-							true, undefined, false, false);
+							true, undefined, false, false,
+							undefined, undefined, 0);
 					}
 				}
 			}

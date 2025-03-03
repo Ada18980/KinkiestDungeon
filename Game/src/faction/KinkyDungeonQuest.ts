@@ -1256,7 +1256,7 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed" + (KinkyDungeonGoddessRep.Ghost > 1 ? "Sub" : "") + "_" + Name), KDBaseWhite, 1);
 				KDRemoveQuest(Name);
 				for (let inv of KinkyDungeonAllRestraintDynamic()) {
-					if (inv.item.lock == "Divine") KinkyDungeonLock(inv.item, "");
+					if (inv.item.lock == "Divine") KinkyDungeonLock(inv.item, "", false, false, false, false);
 				}
 			}
 		},

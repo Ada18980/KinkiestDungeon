@@ -610,7 +610,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					let lockedRestraints = KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2"]);
 					if (KDGetBlessings().length > 0 && lockedRestraints.length > 0) {
 						let luckyItem = lockedRestraints[Math.floor(KDRandom() * lockedRestraints.length)];
-						KinkyDungeonLock(luckyItem, "");
+						KinkyDungeonLock(luckyItem, "", false, false, false, false);
 						KinkyDungeonSetFlag("AngelHelped", 5);
 					} else {
 						if (KinkyDungeonPlayerGetRestraintsWithLocks(["Divine"]).length > 0)

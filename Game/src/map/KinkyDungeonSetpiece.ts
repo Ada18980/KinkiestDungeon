@@ -923,16 +923,20 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		e.y = y;
 		e = KDAddEntity(e);
 
-		e.faction = "Prisoner";
-		e.boundLevel = e.hp * 11;
-		e.items = [];
+		if (e) {
+			e.faction = "Prisoner";
+			e.boundLevel = e.hp * 11;
+			e.items = [];
 
-		KDImprisonEnemy(e, noJam, "auto", rest ? {
-			name: rest.name,
-			lock: lock,
-			id: KinkyDungeonGetItemID(),
-			faction: KDGetMainFaction() || "Jail",
-		} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction());
+			KDImprisonEnemy(e, noJam, "auto", rest ? {
+				name: rest.name,
+				lock: lock,
+				id: KinkyDungeonGetItemID(),
+				faction: KDGetMainFaction() || "Jail",
+			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
+			undefined, furn?.restraintSetLevelBonus);
+		}
+
 
 	} else if (!persistentOnly) {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
@@ -952,7 +956,8 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 				lock: lock,
 				id: KinkyDungeonGetItemID(),
 				faction: KDGetMainFaction() || "Jail",
-			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true)) {
+			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true,
+			furn?.restraintSetLevelBonus)) {
 				e.faction = "Prisoner";
 				e.boundLevel = e.hp * 11;
 				//e.prisondialogue = "PrisonerJail";
@@ -1161,7 +1166,8 @@ function KDGetNPCRestraintJailDialogueType(restraint: NPCRestraint) {
  * @param [restraint]
  */
 function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
-	restraint?: NPCRestraint, restraintSet?: Record<string, number>, faction: string = "", force?: boolean): boolean {
+	restraint?: NPCRestraint, restraintSet?: Record<string, number>, faction: string = "", force?: boolean,
+	LevelBonus?: number): boolean {
 	if (!e || (!force && !KDCapturable(e))) return false;
 	if (dialogue == 'auto') {
 		if (restraint) {
@@ -1185,7 +1191,7 @@ function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
 		KDNPCRestraintTieUp(e.id, restraint, 1);
 	}
 	if (restraintSet) {
-		KDAddFurnitureRestraintSet(e, restraintSet, faction);
+		KDAddFurnitureRestraintSet(e, restraintSet, faction, LevelBonus);
 	}
 	e.playerdmg = undefined;
 	if (e.hp <= 0.5) e.hp = 0.51;

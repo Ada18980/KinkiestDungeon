@@ -2544,7 +2544,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		power: 8, weight: 0, escapeChance: {"Struggle": -0.25, "Cut": 0.0, "Remove": 0.07, "Pick": 0.25},
 		Model: "ShinyBalletHeelsRestraint",
 		heelpower: 1.25,
-		maxwill: 0.9, enemyTags: {"expRestraints" : 6, "latexBoots" : 3, "blacksteelRestraints":10}, playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Heels", "Latex"]},
+		maxwill: 0.9, enemyTags: {"expRestraints" : 6, "latexBoots" : 3, "blacksteelRestraints":10},
+		playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Heels", "Boots", "Latex"]},
 	//endregion
 
 	// TODO AlwaysDebris

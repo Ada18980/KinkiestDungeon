@@ -334,10 +334,12 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				}
 				if (!data.overrideRoomType) {
 					data.roomType = "";
+					data.mapMod = "";
 				}
 			} else if (!data.overrideRoomType) {
 				if (tile?.RoomType != undefined) {
 					data.roomType = tile.RoomType;
+					data.mapMod = tile.MapMod;
 					KDGameData.MapMod = ""; // Reset the map mod
 				} else {
 					// If its an exit stair in the main, we override to the main of next floor
@@ -345,7 +347,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 					data.roomType = data.JourneyTile?.RoomType || "";
 					altRoomTarget = KinkyDungeonAltFloor(data.roomType);
-					KDGameData.MapMod = ""; // Reset the map mod
+					KDGameData.MapMod = data.JourneyTile?.MapMod || "";
 				}
 			}
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);

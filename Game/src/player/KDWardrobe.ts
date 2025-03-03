@@ -111,8 +111,8 @@ let KDCategoryFilterSpecialTopClick: Record<string, (C: Character, en: any, inde
 
 
 let KDWardrobeCategories = [
-	"Uniforms",
 	"Worn",
+	"Uniforms",
 	"Hairstyles",
 	"Face",
 	"Eyes",

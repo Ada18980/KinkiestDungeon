@@ -597,7 +597,7 @@ function KinkyDungeonIsLockable(restraint: restraint): boolean {
  * @param [Link]
  * @param [pick]
  */
-function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Link: boolean = false, pick: boolean = false): void {
+function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Link: boolean = false, pick: boolean = false, normalUnlock?: boolean): void {
 	KDUpdateItemEventCache = true;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
@@ -609,7 +609,7 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 	} else {
 		let cancel = false;
 		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock)
-			cancel = !KDLocks[item.lock].doUnlock({item: item, link: Link, unlock: !pick, pick: pick, NoEvent: NoEvent});
+			cancel = !KDLocks[item.lock].doUnlock({item: item, link: Link, unlock: normalUnlock != undefined ? normalUnlock : !pick, pick: pick, NoEvent: NoEvent});
 		if (!cancel) {
 			item.lock = lock;
 			if (!NoEvent) {
@@ -883,7 +883,7 @@ function KinkyDungeonUnlockRestraintsWithShrine(shrine: string): number {
 	for (let item of KinkyDungeonAllRestraint()) {
 		if (item.lock && !KDRestraint(item).noShrine && (!KDGetCurse(item) || !KDCurses[KDGetCurse(item)].noShrine) && KDRestraint(item).shrine && KDRestraint(item).shrine.includes(shrine) && KDLocks[item.lock] && !KDLocks[item.lock]?.shrineImmune) {
 
-			KinkyDungeonLock(item, "", true);
+			KinkyDungeonLock(item, "", true, false, false, false);
 			count++;
 		}
 	}
@@ -2605,7 +2605,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 					Pass = "Success";
 					if (StruggleType == "Unlock") {
 						KinkyDungeonRemoveKeysUnlock(restraint.lock);
-						KinkyDungeonLock(restraint, "");
+						KinkyDungeonLock(restraint, "", undefined, false, false, true);
 					} else
 						KDSuccessRemove(StruggleType, restraint, data.lockType, index, data, host);
 				} else {
@@ -5139,13 +5139,13 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 					+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Unlock) ? KDGetFinishEscapeSFX(restraint).Unlock : "Unlock")
 					+ ".ogg");
 				KinkyDungeonRemoveKeysUnlock(restraint.lock);
-				KinkyDungeonLock(restraint, "");
+				KinkyDungeonLock(restraint, "", false, false, false, true);
 			}
 		} else {
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 				+ ((KDGetFinishEscapeSFX(restraint) && KDGetFinishEscapeSFX(restraint).Unlock) ? KDGetFinishEscapeSFX(restraint).Unlock : "Unlock")
 				+ ".ogg");
-			KinkyDungeonLock(restraint, "");
+				KinkyDungeonLock(restraint, "", false, false, true);
 		}
 	} else {
 		if (KDSoundEnabled()) {
@@ -6453,8 +6453,12 @@ function KDAddFurnitureRestraintSet(entity: entity, restraintSet: Record<string,
 		}
 	} else {
 		for (let r of Object.entries(restraintSet)) {
-			for (let i = 0; i < r[1]; i++)
-				count += KDBindEnemyWithTags(entity.id, [r[0]], 30, power, true, undefined, undefined, undefined, undefined, faction).length;
+			for (let i = 0; i < r[1]; i++) {
+				count += KDBindEnemyWithTags(entity.id, [r[0]],
+				Math.max(entity.Enemy.maxhp * 3, 30), power, true, undefined, true,
+				undefined, undefined, faction, 0).length;
+				KDSetToExpectedBondage(entity, 1);
+			}
 		}
 	}
 	return count;

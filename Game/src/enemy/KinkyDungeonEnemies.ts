@@ -480,7 +480,7 @@ function KDGetNearestExitTo(roomTo: string, mapX: number, mapY: number, x: numbe
 		possible.unshift(mapData.StartPosition);
 	} else if (mapY == mapData.mapY) {
 		let slot = KDGetWorldMapLocation({x: mapData.mapX, y: mapData.mapY});
-		if (roomTo == slot.main)
+		if (roomTo == (slot?.main || ""))
 			possible.unshift(mapData.EndPosition);
 	}
 	possible = possible.filter((pos) => {
@@ -495,7 +495,7 @@ function KDGetNearestExitTo(roomTo: string, mapX: number, mapY: number, x: numbe
 			possible.unshift(mapData.StartPosition);
 		} else if (mapY == mapData.mapY) {
 			let slot = KDGetWorldMapLocation({x: mapData.mapX, y: mapData.mapY});
-			if (roomTo == slot.main)
+			if (roomTo == (slot?.main || ""))
 				possible.unshift(mapData.EndPosition);
 		}
 
@@ -4644,7 +4644,7 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 	let fromHere = false;
-	if (!((slot.main || "") == KDGameData.RoomType)
+	if (!((slot?.main || "") == KDGameData.RoomType)
 		&& (!altType || altType.placeJailEntrances || slot?.main == KDGameData.RoomType)
 		&& !KDSelfishLeash(CDE))
 		fromHere = true;
@@ -8629,7 +8629,7 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
-	if (((slot.main || "") == KDGameData.RoomType) && (altRoom && altRoom.placeJailEntrances))
+	if (((slot?.main || "") == KDGameData.RoomType) && (altRoom && altRoom.placeJailEntrances))
 		fromHere = false;
 
 	if (KDFactionProperties[KDGetFaction(enemy)]?.lairType

@@ -43,7 +43,16 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 				attackPoints: 0
 			};
 			if (mainFaction) guard['faction'] = mainFaction;
-			if (!KinkyDungeonFlags.get("JailIntro")) {
+			if (KDIsHumanoid(guard) && KDEnemyCanTalk(guard)
+				&& KDShouldStripSearchPlayer(KDPlayer())
+				&& !KDGameData.CurrentDialog) {
+				KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTempTime);
+				KDStartDialog("StripSearch",
+					guard.Enemy.name,
+					true,
+					KDGetPersonality(guard),
+					guard)
+			} else if (!KinkyDungeonFlags.get("JailIntro")) {
 				KinkyDungeonSetFlag("JailIntro", -1);
 				KDStartDialog("PrisonIntro", guard.Enemy.name, true, "");
 			} else if (KinkyDungeonFlags.get("JailRepeat")) {

@@ -568,7 +568,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
 				if (spell.aoe > 0) {
 					for (let r of KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks, true)) {
-						KinkyDungeonLock(r, "");
+						KinkyDungeonLock(r, "", false, false, false, false);
 					}
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonPurpleLockRemove"), "#e7cf1a", 2);
 					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
@@ -683,7 +683,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KDBindEnemyWithTags(en.id,
 				["magicBeltForced"], 50,
 				MiniGameKinkyDungeonLevel + 10,
-				true, undefined, false, false).length > 0) {
+				true, undefined, false, false, undefined,
+				undefined, 0).length > 0) {
 					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				} else {
 					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/2);

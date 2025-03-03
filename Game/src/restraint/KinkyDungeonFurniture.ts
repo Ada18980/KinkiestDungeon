@@ -1,7 +1,18 @@
 'use strict';
 
 
-let KDFurniture = {
+interface KDFurnitureDef {
+	restraintSetLevelBonus?: number,
+	floor: string,
+	sprite: string,
+	restraintTag: string,
+	restraintSetTags?: Record<string, number>,
+	tickFunction: (delta: number) => void,
+	forceFaction?: string,
+
+}
+
+let KDFurniture: Record<string, KDFurnitureDef> = {
 	"Cage": {
 		floor: "Floor",
 		sprite: "Cage",
@@ -136,9 +147,11 @@ let KDFurniture = {
 		sprite: "LatexDisplayStand",
 		restraintTag: "latexdollstand",
 		restraintSetTags: {
-			"latexRestraints": 5,
-			"latexRestraintsHeavy": 2,
+			"latexGag": 3,
+			"latexRestraints": 8,
+			"latexRestraintsHeavy": 7,
 		},
+		restraintSetLevelBonus: 20,
 		forceFaction: "Rubber",
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {

@@ -3587,14 +3587,14 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 function KDBindEnemyWithTags(id: number, tags: string[],
 	amount: number = 0, power: number = 0,
 	forceConjure: boolean = true, maxTries: number = 100, allowOverride: boolean = false,
-	allowVariants: boolean = true, maxAdded: number = 10, faction: string = ""): string[] {
+	allowVariants: boolean = true, maxAdded: number = 10, faction: string = "", overrideWill?: number): string[] {
 	let entity = KDGetGlobalEntity(id);
 	let addedItems: string[] = [];
 	if (entity) {
-		let maxBinding = entity.boundLevel + amount;
+		let maxBinding = (entity.boundLevel || 0) + amount;
 		let expected = KDGetExpectedBondageAmountTotal(id, entity);
 		let regenEligible = () => {
-			let currentWill = Math.min(entity.hp, entity.Enemy.maxhp - (entity.boundLevel || 0) / (1 + KDGetBindEffectMult(entity))) / entity.Enemy.maxhp;
+			let currentWill = overrideWill != undefined ? overrideWill : Math.min(entity.hp, entity.Enemy.maxhp - (entity.boundLevel || 0) / (1 + KDGetBindEffectMult(entity))) / entity.Enemy.maxhp;
 			let delta = 0.25;
 			for (let will = Math.max(0, currentWill); will >= 0; will = (will == 0 ? -1 : Math.max(0, will - delta)))
 				restraintsEligible = KDGetNPCEligibleRestraints_fromTags(
