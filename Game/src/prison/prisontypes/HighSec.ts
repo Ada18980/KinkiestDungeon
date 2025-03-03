@@ -1,4 +1,4 @@
-let KDJailStripSearchTime = 300;
+let KDJailStripSearchTime = 700;
 let KDJailStripSearchTempTime = 50;
 
 function KDShouldStripSearchPlayer(player: entity, allowFlag: boolean = false): boolean {
