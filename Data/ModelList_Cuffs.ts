@@ -241,9 +241,10 @@ AddModel({
 	Categories: ["Restraints","Cuffs", "Links"],
 	AddPose: ["ThighLink"],
 	Layers: ToLayerMap([
-		{ Name: "ThighLink", Layer: "BindChainLinksUnder", Pri: 0,
+		{ Name: "ThighLink", Layer: "BindChainLinksUnderThigh", Pri: 0,
 			Poses: ToMap(["Spread"]),
 			AppendPose: {"HighCuffs": "High"}, // "LowCuffs": "",
+			HideWhenOverridden: true,
 		},
 	])
 });
@@ -258,6 +259,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "AnkleLink", Layer: "BindChainLinksUnder", Pri: 0,
 			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
 		},
 	])
 });

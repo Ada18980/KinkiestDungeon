@@ -130,6 +130,7 @@ AddModel({
 		{ Name: "AnkleLink", Layer: "BindChainLinksUnder", Pri: 2,
 			Poses: ToMap(["Spread"]),
 			RequirePoses: {AnkleLink: true},
+			HideWhenOverridden: true,
 		},
 	])
 });

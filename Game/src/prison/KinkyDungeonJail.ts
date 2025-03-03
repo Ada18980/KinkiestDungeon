@@ -1177,7 +1177,7 @@ function KinkyDungeonPassOut(noteleport?: boolean) {
 
 	KDApplyLivingCollars();
 
-	KinkyDungeonStripInventory(true, KinkyDungeonStatsChoice.has("KeepOutfit"));
+	KinkyDungeonStripInventory(false, KinkyDungeonStatsChoice.has("KeepOutfit"));
 
 	if (KinkyDungeonCurrentDress == "Default")
 		KinkyDungeonSetDress("Bikini", "Bikini");
@@ -2043,6 +2043,7 @@ function KDKickEnemyLocal(e: entity) {
 }
 
 function KinkyDungeonStripInventory(KeepPicks?: boolean, KeepOutfit?: boolean) {
+
 	let oldPicks = KinkyDungeonItemCount("Pick");
 	let newInv = KinkyDungeonInventory.get(Restraint);
 	let outfits = KinkyDungeonInventory.get(Outfit);
@@ -2067,6 +2068,16 @@ function KinkyDungeonStripInventory(KeepPicks?: boolean, KeepOutfit?: boolean) {
 	if (oldPicks > 0) {
 		KDAddConsumable("Pick", 1);
 	}
+}
+
+
+function KinkyDungeonStripOutfits( KeepOutfit?: boolean) {
+	if (KeepOutfit) return;
+
+	let outfits = KinkyDungeonInventory.get(Outfit);
+	KinkyDungeonAddLostItems(
+		KinkyDungeonAllOutfit(), undefined);
+	KinkyDungeonInventory.set(Outfit, new Map());
 }
 
 function KDExpireFlags(enemy: entity) {
@@ -2467,7 +2478,8 @@ function KDApplyJailOutfit() {
 	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
 
 	KinkyDungeonSetDress(defeat_outfit, "JailUniform");
-	KinkyDungeonStripInventory(true, KinkyDungeonStatsChoice.has("KeepOutfit"));
+	//KinkyDungeonStripInventory(true, KinkyDungeonStatsChoice.has("KeepOutfit"));
+	KinkyDungeonStripOutfits(KinkyDungeonStatsChoice.has("KeepOutfit"));
 
 	if (defeat_outfit != params.defeat_outfit) {
 		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});

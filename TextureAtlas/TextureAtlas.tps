@@ -1836,11 +1836,13 @@
             <key type="filename">../Models/HighSec/CorsetGarterLeftBack.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterLeftBackKneel.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterLeftKneel.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterLeftKneelGarter.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterRight.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterRightBack.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterRightBackKneel.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterRightKneel.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterRightKneel2.png</key>
+            <key type="filename">../Models/HighSec/CorsetGarterRightKneelGarter.png</key>
             <key type="filename">../Models/HighSecBallet/TallLeftClosed.png</key>
             <key type="filename">../Models/HighSecBallet/TallLeftClosedGarter.png</key>
             <key type="filename">../Models/HighSecBallet/TallLeftHogtie.png</key>

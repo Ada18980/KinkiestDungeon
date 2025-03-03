@@ -307,9 +307,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 															confiscated--;
 														}
 													}
-													if (confiscated > 1 + Math.floor(quantity * KDConsumable(c)?.sneakChance))
+													if (confiscated > 1 + Math.floor(quantity * (1 - KDConsumable(c)?.sneakChance)))
 														confiscated = 1 + Math.floor(
-															KDConsumable(c)?.sneakChance * quantity
+															(1 - KDConsumable(c)?.sneakChance) * quantity
 													);
 													confiscated = Math.floor(confiscated);
 													if (confiscated > quantity) confiscated = quantity;

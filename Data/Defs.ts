@@ -453,6 +453,7 @@ let LAYERS_BASE = [
 	"ArmRight",
 
 	// Chain links for leg cuffs
+	"BindChainLinksUnderThigh",
 	"BindChainLinksUnder",
 
 	// Clothes that go behind

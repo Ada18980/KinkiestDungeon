@@ -38,7 +38,7 @@ let KDModelListViewSkip = 7;
 let KDShowCharacterPalette = false;
 
 
-let KDModelList_Categories_index = 0;
+let KDModelList_Categories_index = 1;
 let KDModelList_Categories_viewindex = {index: 0};
 let KDModelList_Categories = [];
 let KDModelList_Toplevel_index = 0;
@@ -1059,7 +1059,7 @@ function KDUpdateModelList(level: number = 0, C?: Character): void {
 	if (!C) C = KinkyDungeonPlayer;
 	if (level <= 0) {
 		KDModelList_Categories = [];
-		KDModelList_Categories_index = 0;
+		KDModelList_Categories_index = 1;
 		KDModelList_Categories_viewindex.index = 0;
 		for (let cat of KDWardrobeCategories) {
 			KDModelList_Categories.push(cat);
@@ -1244,7 +1244,9 @@ function KDDrawModelList(X: number, C: Character) {
 	if (MF.Created) {
 		MF.Element.oninput = (_event: any) => {
 			KDModelListFilter = ElementValue("KDModelListFilter");
-
+			if (KDModelList_Categories_index == 0) {
+				KDModelList_Categories_index = 1;
+			}
 			//KDUpdateModelList(1);
 			KDUpdateModelList(2, C);
 			KDUpdateModelList(3, C);
