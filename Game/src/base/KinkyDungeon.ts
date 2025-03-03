@@ -3004,24 +3004,27 @@ function KinkyDungeonRun() {
 			KDConfirmDeleteSave = false;
 		}
 
-		let offsets = [
-			{slot: 1, x: 1250 - 225 - 200, y: 650},
-			{slot: 2, x: 1250 - 225 - 200, y: 720},
-			{slot: 3, x: 1250 + 225 - 200, y: 650},
-			{slot: 4, x: 1250 + 225 - 200, y: 720},
-		]
-		for (let slt of offsets) {
-			let slot = slt.slot;
-			DrawButtonKDEx("slot_" + slot + "prev", () => {
-				KDSaveSlot = slot;
-				return true;
-			}, true,
-			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.x,
-			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.y,
-			400, 50, (loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "")
-				|| (TextGet("KDEmpty")),
-			(danger && (slot == KDSaveSlot)) ? "#ff5277" : "#ffffff", "", undefined, undefined,
-			true, KDButtonColor);
+		// draw 8 slots with names if they're already occupied
+		const xOffsets = [1250 - 225 - 200, 1250 + 225 - 200]; // first and second column pixel offset from left
+		const startY = 550, cols = 2, rows = 4;
+		// if slots 0-8 selected it's +0, then 9-16 it's +8...
+		let pageSlotOffset = Math.floor((KDSaveSlot - 1)/(cols*rows)) * (cols*rows);
+		const dangerColor = "#ff5277", defaultColor = "#ffffff", selectedColor = "#00ff00";
+		for(let col = 0; col < cols; col++) {
+			for(let row = 0; row < rows; row++) {
+				let slot = row*cols + col + pageSlotOffset + 1;
+				let yOffset = startY + row*70;
+				let slotText = slot + ". " + ((loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "") || TextGet("KDEmpty"));
+				let textColor = (danger && (slot == KDSaveSlot)) ? dangerColor : (slot == KDSaveSlot ? selectedColor : defaultColor);
+				DrawButtonKDEx("slot_" + slot + "prev", () => { // on click change save slot
+					KDSaveSlot = slot;
+					return true;
+				}, true,
+				((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + xOffsets[col % 2],
+				((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + yOffset,
+				400, 50, slotText, textColor, "", undefined, undefined,
+				true, KDButtonColor);
+			}
 		}
 
 		DrawButtonKDEx("selectName", () => {
