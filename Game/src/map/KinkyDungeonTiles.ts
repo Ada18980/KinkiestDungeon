@@ -332,11 +332,8 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 						suppressCheckPoint = true;
 					}
 				}
-				if (!data.overrideRoomType) {
-					data.roomType = "";
-					data.mapMod = "";
-				}
-			} else if (!data.overrideRoomType) {
+			}
+			if (!data.overrideRoomType) {
 				if (tile?.RoomType != undefined) {
 					data.roomType = tile.RoomType;
 					data.mapMod = tile.MapMod;

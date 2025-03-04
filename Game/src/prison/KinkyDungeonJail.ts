@@ -1527,6 +1527,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KDCustomDefeatEnemy = null;
 	KinkyDungeonInterruptSleep();
 
+	KinkyDungeonSetFlag("jailStripSearched", 0);
 
 	let forceFaction = KDGetLeashFaction(leashEnemy);
 	let jailroom = KDGetLeashJailRoom(leashEnemy);
@@ -2283,6 +2284,8 @@ let KDCustomDefeatUniforms = {
 
 		//KinkyDungeonAddRestraintIfWeaker("CyberDollJacket", 5, true, "Red", false, undefined, undefined, undefined, true);
 
+		let outfit = {name: "CyberDoll", id: KinkyDungeonGetItemID(), type: Outfit};
+		if (!KinkyDungeonInventoryGet("CyberDoll")) KinkyDungeonInventoryAdd(outfit);
 		KinkyDungeonSetDress("CyberDoll", "CyberDoll");
 	},
 

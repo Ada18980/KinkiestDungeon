@@ -472,7 +472,8 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"SealSigil": {
 		selectValid: false,
 		check: () => {
-			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
+			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] ||
+				KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.SealSigil.check();

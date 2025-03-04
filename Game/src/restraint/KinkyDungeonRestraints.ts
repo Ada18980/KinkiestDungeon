@@ -19,7 +19,7 @@ let KDWillEscapePenaltyEnd = 0.05;
 
 let KDMinEscapeRate = 0.4;
 let KDMinPickRate = 0.2;
-let KDStruggleTime = 3;
+let KDStruggleTime = 4;
 let KDBaseEscapeSpeed = 2.0;
 
 let KDUpfrontWill = true;
@@ -2593,7 +2593,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 				// Pass block
 				let progress = restraint.cutProgress ? restraint.cutProgress : 0;
-				data.struggleTime *= KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 : Math.max(1, KDStruggleTime - KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
+				data.struggleTime *=
+					KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 :
+					Math.max(1,
+						KDStruggleTime
+						- KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
 				if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
 				if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)

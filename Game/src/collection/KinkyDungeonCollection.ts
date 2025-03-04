@@ -611,7 +611,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	}
 	else DrawTextFitKD(value.name, x + 220, y + 50 + ((tab || index) ? 0 : -12), 500,
 		KDBaseWhite,
-		(value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05,
+		(value.color && value.color != "#ffffff") ? value.color : KDTextGray05,
 		36);
 
 

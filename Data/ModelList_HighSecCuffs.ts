@@ -186,7 +186,6 @@ AddModel({
 AddModel(GetModelFashionVersion("HighSecCuffsWristLeft", true));
 AddModel(GetModelFashionVersion("HighSecCuffsWristRight", true));
 AddModel(GetModelFashionVersion("HighSecCuffsWrists", true));
-AddModel(GetModelFashionVersion("HighSecCuffsArms", true));
 AddModel(GetModelFashionVersion("HighSecCuffsAnklesLeft", true));
 AddModel(GetModelFashionVersion("HighSecCuffsAnklesRight", true));
 AddModel(GetModelFashionVersion("HighSecCuffsAnkles", true));

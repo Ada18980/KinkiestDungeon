@@ -152,6 +152,6 @@
 	"size": {"w":2020,"h":2008},
 	"scale": "0.25",
 	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:832b6ab61d5bd9a58a934cab0c7f8f15:f3728ccdcf45dbad4d913df59c98c160:f6b8f416f238aaed27b8b24ed3003e99$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5135479651a14dd3cbd78a19102b3a74:3ec3477b90e1ca27b8551307e2e415f9:f6b8f416f238aaed27b8b24ed3003e99$"
 }
 }

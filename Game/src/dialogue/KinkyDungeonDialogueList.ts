@@ -275,7 +275,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							"2": {playertext: "Continue", response: "Default", gag: false,
 								clickFunction: (_gagged, _player) => {
 									for (let w of KinkyDungeonAllWeapon()) {
-										if (!KDWeapon(w) || isUnarmed(KDWeapon(w))) {
+										if (!KDWeapon(w) || !isUnarmed(KDWeapon(w))) {
 											KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
 												.replace("ITMN", KDGetItemName(w))
 												.replace("AMNT", "1")
