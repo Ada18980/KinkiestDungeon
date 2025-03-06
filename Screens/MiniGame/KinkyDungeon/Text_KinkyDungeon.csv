@@ -4299,6 +4299,27 @@ RestraintHighsecBlindfoldDesc,"A chin harness stretches this leather blindfold t
 RestraintHighsecBlindfoldDesc2,"Total blackout. The tough leather is reinforced with rivets."
 
 
+RestraintMasterworkBlindfold,Masterwork Blindfold
+RestraintMasterworkBlindfoldDesc,"A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout."
+RestraintMasterworkBlindfoldDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
+
+RestraintMasterworkCorset,Masterwork Corset
+RestraintMasterworkCorsetDesc,"A metal-boned corset that hugs your body, with a connection point for other restraints. Its unrelenting squeeze forces you to take shorter breaths."
+RestraintMasterworkCorsetDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
+
+RestraintMasterworkHeels,Masterwork Ballet Heels
+RestraintMasterworkHeelsDesc,"A set of uncompromising ballet heels that force the wearer into a stringent walking position. Only trained submissives can walk in these without falling!"
+RestraintMasterworkHeelsDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
+
+RestraintMasterworkGloves,Masterwork Gloves
+RestraintMasterworkGlovesDesc,"A set of restrictive gloves that somewhat reduce your dexterity. Reduces accuracy by 20%."
+RestraintMasterworkGlovesDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
+
+RestraintMasterworkCollar,Masterwork Collar
+RestraintMasterworkCollarDesc,"A collar hand-crafted and signed by the famous blacksmith Ada Lovelock. The crowning jewel of a five-piece set designed to hold its wearer in an ever-tightening embrace."
+RestraintMasterworkCollarDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
+
+
 
 RestraintMagicBelt,Magic Chastity Belt
 RestraintMagicBeltDesc,"A belt protected by a magic seal."
