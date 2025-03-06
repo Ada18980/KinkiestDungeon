@@ -2578,6 +2578,7 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 	let newCurse = Math.min(max, Math.max(0, currentCurse + amount));
 
 	let buff = KDEntityGetBuff(entity, stat + "Stat");
+	let initial_amt = buff?.power;
 	if (!buff) {
 		buff = KinkyDungeonApplyBuffToEntity(entity, {
 			id: stat + "Stat",
@@ -2601,9 +2602,9 @@ function KDAddSpecialStat(stat: string, entity: entity, amount: number, Msg: boo
 		KinkyDungeonExpireBuff(entity, stat + "Stat");
 
 	if (Msg) {
-		if (amount > 0) {
+		if (amount > 0 && initial_amt < max) {
 			KinkyDungeonSendTextMessage(10, TextGet("KDAdd" + stat).replace("AMNT", "" + amount), color, 2);
-		} else if (amount < 0) {
+		} else if (amount < 0 && initial_amt > 0) {
 			KinkyDungeonSendTextMessage(10, TextGet("KDRemove" + stat).replace("AMNT", "" + -amount), color, 2);
 		}
 	}

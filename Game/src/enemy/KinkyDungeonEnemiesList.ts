@@ -484,7 +484,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Vines", time: 3, power: 2, chance: 0.2, aoe: 1.5},
-			{trigger: "getLights", type: "enemyTorch", power: 2.5, color: "#88ffaa"},
+			{trigger: "getLights", type: "enemyTorch", power: 2.5, color: KDBaseLightGreen},
 			{trigger: "afterEnemyTick", type: "NatureSpiritAura", power: 0.2, mult: 1.5, dist: 4.5},
 		],
 	},

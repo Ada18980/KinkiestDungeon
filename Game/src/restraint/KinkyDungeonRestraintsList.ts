@@ -2835,6 +2835,35 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true}
 		]},
+	// region masterwork
+	{inventory: true, name: "MasterworkBlindfold", debris: "Belts",
+		Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink],
+		renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
+		power: 15, weight: 10,
+		sfxGroup: "Leather",
+		Model: "HighSecBlindfold",
+		factionFilters: {
+			BlindfoldStrap: {color: "LightNeutral", override: true},
+			BlindfoldStrapHardware: {color: "Highlight", override: true},
+			Blindfold: {color: "DarkNeutral", override: true},
+			Harness: {color: "DarkNeutral", override: true},
+			Rivets: {color: "Highlight", override: true},
+			HarnessL: {color: "DarkNeutral", override: true},
+			RivetsL: {color: "Highlight", override: true},
+			HarnessR: {color: "DarkNeutral", override: true},
+			RivetsR: {color: "Highlight", override: true},
+		},
+		DefaultLock: "Masterwork",
+		maxwill: 0.0, blindfold: 5,
+		escapeChance: {"Struggle": -0.2, "Cut": 0.07, "Remove": 0.15, "Pick": 0.1},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {NoBlindfolds: -1000},
+		minLevel: 0, allFloors: true, shrine: ["Masterwork", "Blindfolds"]},
+
+
+	// endregion
+
+
 	//region High security prison restraints
 	{inventory: true, name: "HighsecBlindfold", debris: "Belts",
 		Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink],
@@ -2842,14 +2871,15 @@ const KinkyDungeonRestraints: restraint[] = [
 		power: 7, weight: 1,
 		sfxGroup: "Leather",
 		Model: "HighSecBlindfold",
-		/*Filters: {
-			Blindfold: {"gamma":1,"saturation":1,"contrast":1.8833333333333333,"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":1},
-			Rim: {"gamma":1,"saturation":1,"contrast":0.8333333333333333,"brightness":3.1333333333333337,"red":2.5166666666666666,"green":1.1166666666666667,"blue":1.9666666666666666,"alpha":1},
-		},*/
+		Filters: {
+			// Make it disappear
+			BlindfoldStrap: {"gamma":1,"saturation":1,"contrast":1.8833333333333333,
+				"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":0},
+			BlindfoldStrapHardware: {"gamma":1,"saturation":1,"contrast":1.8833333333333333,
+				"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":0},
+		},
 		factionFilters: {
 			Blindfold: {color: "DarkNeutral", override: true},
-			BlindfoldStrap: {color: "Highlight", override: true},
-			BlindfoldStrapHardware: {color: "LightNeutral", override: true},
 			Harness: {color: "DarkNeutral", override: true},
 			Rivets: {color: "LightNeutral", override: true},
 			HarnessL: {color: "DarkNeutral", override: true},

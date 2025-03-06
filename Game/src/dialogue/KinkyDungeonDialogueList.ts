@@ -10,6 +10,7 @@ let KDDialogueParams = {
 	ShopkeeperFeePunishThresh: 2500,
 	ChefChance: 0.1,
 	KDTableFlipWP: 1,
+	MasterworkCount: 5,
 };
 
 /**

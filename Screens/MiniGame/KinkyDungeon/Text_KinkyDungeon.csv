@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.49"
+KDVersionStr,"5.4.50"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1681,7 +1681,7 @@ KinkyDungeonInventoryItemMagicAxeDesc,"Sick and vile, like the hearts of your en
 KinkyDungeonInventoryItemMagicAxeDesc2,"Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you."
 KinkyDungeonInventoryItemPickaxe,Pickaxe
 KinkyDungeonInventoryItemPickaxeDesc,"Used for drilling holes in rock and armor."
-KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 15 for 6 turns."
+KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 20 for 6 turns."
 KinkyDungeonInventoryItemMagicFlail,Magic Flail
 KinkyDungeonInventoryItemMagicFlailDesc,"A blessed censer that distributes pain equally."
 KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target."
@@ -3121,6 +3121,7 @@ KinkyDungeonStruggleUnlockNoRedKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoRed_HiKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoRed_MedKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoHiSecKey,"The lock can only be opened with a key."
+KinkyDungeonStruggleUnlockNoMasterworkKey,"The lock has a special mechanism that opens when five pieces are connected."
 KinkyDungeonStruggleUnlockNoDiscKey,"The lock requires a key."
 KinkyDungeonStruggleUnlockNoBlueKey,"The magical lock only accepts magical keys and can't be picked."
 KinkyDungeonStruggleUnlockNoGoldKey,"The magical lock is guarded with powerful magic. You'll have to wait for it to wear off..."
@@ -3143,6 +3144,7 @@ KinkyDungeonStruggleCantPickCyberLock,"The lock is technological and does not us
 KinkyDungeonStruggleCantPickCyber2Lock,"The lock is technological and does not use a key."
 KinkyDungeonStruggleCantPickCyber3Lock,"The lock is technological and does not use a key."
 KinkyDungeonStruggleCantPickHiSecLock,"The lock is brimming with security features and is nigh impossible to pick!"
+KinkyDungeonStruggleCantPickMasterworkLock,"The lock has a special mechanism and is impossible to pick!"
 
 KinkyDungeonStruggleCantPickCrystalLock,"The lock is encased in magical crystals that block the keyhole."
 KinkyDungeonStruggleUnlockNoCrystalKey,"Your distraction makes the crystals regrow immediately after breaking them off."
@@ -3395,6 +3397,7 @@ KinkyRedLockType,"Standard"
 KinkyRed_MedLockType,"Standard"
 KinkyRed_HiLockType,"Standard"
 KinkyHiSecLockType,"Secure"
+KinkyMasterworkLockType,"Masterwork"
 KinkyDiscLockType,"Disc"
 KinkyRubberLockType,"Rubber"
 KinkyDivineLockType,"Divine"
@@ -3412,6 +3415,7 @@ KinkyRedLock,"Standard Lock"
 KinkyRed_MedLock,"Standard Lock"
 KinkyRed_HiLock,"Standard Lock"
 KinkyHiSecLock,"Secure Lock"
+KinkyMasterworkLock,"Masterwork Lock"
 KinkyDiscLock,"Disc Lock"
 KinkyRubberLock,"Rubber Lock"
 KinkyDivineLock,"Divine Lock"
@@ -11401,10 +11405,10 @@ rOfferWolfRestraintYes_Yes,"(The SPEAKER puts on the RESTRAINT)|Perfect. Better 
 rOfferWolfRestraintYes_No,"(The SPEAKER rolls her eyes)|You've seen wolfgirls, right?|Ah, whatever, go have fun~"
 rOfferWolfRestraintNo,"(The SPEAKER nods glumly)|Not a fan?|Shame, I am~"
 rOfferWolfRestraintForce,"(The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained..."
-rOfferWolfRestraintForceYes,"(The SPEAKER looks at you deviously)|You're going to wear this RESTRAINT,|if you want to or not~"
-rOfferWolfRestraintForce_No,"(The SPEAKER sulks)|Have it your way then."
-rOfferWolfRestraintForce_Yes,"(The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~"
-rOfferWolfRestraintForce_Failure,"(The SPEAKER pushes you to the ground)|I'll make it extra tight for you~|(The RESTRAINT locks tightly onto you)"
+rOfferWolfRestraintForceYes,"(The SPEAKER looks at you deviously)|A good girl wears her RESTRAINT with enthusiasm~"
+rOfferWolfRestraintForce_No,"(The SPEAKER sulks)|You'd be difficult to train anyway~"
+rOfferWolfRestraintForce_Yes,"(The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~|I'll make it extra tight for you!"
+rOfferWolfRestraintForce_Failure,"(The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!"
 
 dOfferWolfRestraint_Yes,"Maybe a little~"
 dOfferWolfRestraint_YesGag,"(Nod excitedly)"
@@ -11909,11 +11913,11 @@ rOfferWolfgirlYes,"(The SPEAKER grins and hands you a paper)|Nevermere Training 
 rOfferWolfgirlYes_Yes,"(The SPEAKER gets you suited up)|There you go! Now go be a good girl!"
 rOfferWolfgirlYes_No,"(The SPEAKER scoffs)|That's what they all say."
 rOfferWolfgirlNo,"(The SPEAKER frowns)|What a shame."
-rOfferWolfgirlForce,"(The SPEAKER grins and reaches for her baton)|No? Well, I heard you have some debts to pay~"
+rOfferWolfgirlForce,"(The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!"
 rOfferWolfgirlForceYes,"(The SPEAKER grins)|I promise you it's a good deal~"
 rOfferWolfgirlForce_No,"(The SPEAKER frowns)|Fine. I'll look for other candidates."
 rOfferWolfgirlForce_Yes,"(The SPEAKER smiles)|That's right. Your name, please?"
-rOfferWolfgirlForce_Failure,"(The SPEAKER zaps you and places you in restrictive gear)|Hmph. Unruly girls need training!"
+rOfferWolfgirlForce_Failure,"(The SPEAKER zaps you and places you in restrictive gear)|Good girls need training.|Come back when you've learned a thing or two~"
 
 dOfferWolfgirl_Yes,"This sounds like an interesting opportunity."
 dOfferWolfgirl_YesGag,"(Nod excitedly)"
@@ -11940,7 +11944,7 @@ rOfferMaidForce,"(The SPEAKER grins and pulls out a skimpy dress)|Might I remind
 rOfferMaidForceYes,"(The SPEAKER nods proudly)|We are willing to made some changes to our records~"
 rOfferMaidForce_No,"(The SPEAKER frowns)|You won't know what hit you."
 rOfferMaidForce_Yes,"(The SPEAKER smiles)|I'm glad you made the right decision.|Now, your first task will be to clean up this floor.|Good luck."
-rOfferMaidForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+rOfferMaidForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|Consider this a warning from my mistress~"
 
 dOfferMaid_Yes,"This sounds like an interesting opportunity."
 dOfferMaid_YesGag,"(Nod excitedly)"
@@ -11989,15 +11993,15 @@ dOfferWitchForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
 rOfferBast,"(The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?"
-rOfferBastYes,"(The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now."
+rOfferBastYes,"(The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to other kitties.|Also we own you now."
 rOfferBastYes_Yes,"(The SPEAKER jumps happily)|Wonderful! Here's your collar!"
 rOfferBastYes_No,"(The SPEAKER whimpers and looks at you)|How mean!"
 rOfferBastNo,"(The SPEAKER's ears flop)|Aww... we thought you were cute."
 rOfferBastForce,"(The SPEAKER frowns)|Oh? Well, I guess I'll tell the others~"
-rOfferBastForceYes,"(The SPEAKER grins slyly)|You wouldn't hurt the kitties, would you?"
-rOfferBastForce_No,"(The SPEAKER frowns)|Then we'll have to make sure you don't come to harm anyone!"
+rOfferBastForceYes,"(The SPEAKER grins slyly)|You wouldn't DISRESPECT the goddess, would you?"
+rOfferBastForce_No,"(The SPEAKER frowns)|Then we'll have to make sure you don't come back to harm anyone!"
 rOfferBastForce_Yes,"(The SPEAKER smiles proudly)|I knew you would pull through!"
-rOfferBastForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+rOfferBastForce_Failure,"(The SPEAKER forces you down with a burst of speed)|(She stuffs you into pet gear)|There. Punishment for your insolence~"
 
 dOfferBast_Yes,"Yes! I love the blessed kity!"
 dOfferBast_YesGag,"(Nod excitedly)"
@@ -12015,10 +12019,6 @@ dOfferBastForce_No,"Never! (PERCENT chance to avoid)"
 dOfferBastForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
 
 
-
-
-
-
 rOfferDressmaker,"(The SPEAKER does a curtsy)|Why hello there!|You have a wonderful bod-er, book!|Would you like to help me?"
 rOfferDressmakerYes,"(The SPEAKER smiles briefly)|You have an opportunity to model for me!|I need someone to wear all of my wonderful inventions!"
 rOfferDressmakerYes_Yes,"(The SPEAKER laces you up in the tight fabric...)|(You hear the click of a few locks going on...)|Oh my goodness... So pretty!|You'll make a fine assistant!"
@@ -12028,7 +12028,7 @@ rOfferDressmakerForce,"(The SPEAKER grins and pulls out a frilly dress)|Don't kn
 rOfferDressmakerForceYes,"(The SPEAKER furrows her brow)|Watch your tongue there, little lady.|Or I'll have to plug it for you..."
 rOfferDressmakerForce_No,"(The SPEAKER folds her arms as ribbons rise up around her)|Suit yourself, hehe~"
 rOfferDressmakerForce_Yes,"(The SPEAKER smiles)|Yes! Yes! Wonderful!"
-rOfferDressmakerForce_Failure,"(The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|You'll require additional training, I suppose..."
+rOfferDressmakerForce_Failure,"(Magical clothes rise out of the ground without warning and engulf you)|Suit yourself!|(The SPEAKER giggles)"
 
 dOfferDressmaker_Yes,"Sure!"
 dOfferDressmaker_YesGag,"(Nod excitedly)"
@@ -12044,11 +12044,6 @@ dOfferDressmakerForce_Yes,"Fine... sign me up."
 dOfferDressmakerForce_YesGag,"(Moan and nod)"
 dOfferDressmakerForce_No,"Why don't you try it on yourself! (PERCENT chance to avoid)"
 dOfferDressmakerForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
-
-
-
-
-
 
 
 rOfferAlchemist,"(The SPEAKER runs up to you)|Wow! You make a fine specimen-er, I mean...|Nice to meet you!"
@@ -12076,10 +12071,6 @@ dOfferAlchemistForce_Yes,"Fine. I'll be your assistant."
 dOfferAlchemistForce_YesGag,"(Moan and nod)"
 dOfferAlchemistForce_No,"Go find someone else. (PERCENT chance to avoid)"
 dOfferAlchemistForce_NoGag,"(Shake your head and frown) (PERCENT chance to avoid)"
-
-
-
-
 
 
 
@@ -31534,3 +31525,6 @@ KDMoveCloser,Move closer to interact
 KinkyDungeonSpellCastSpikeTrap,Several poles rise up out of the ground...
 
 KinkyDungeonInventoryItemScrolls,Various Scrolls
+
+KDLockMelt,The ${Lock} on your ${Restraint} melts away!
+KDMasterworkLockRemove,Your ${Restraint} clicks and releases at last!

@@ -1312,13 +1312,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			}
 
 			KinkyDungeonRemoveBuffsWithTag(en, ["encased", "slimed"]);
+
+
 			KDRescueSlime(en, entity);
 
 			KinkyDungeonApplyBuffToEntity(en, KDGlueResist, {duration: 30});
 
 			KinkyDungeonSendActionMessage(3, TextGet("KDUniversalSolventSucceedEnemy")
 				.replace("ENMY", KDGenEnemyName(en)),
-			"#88FFAA", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KDBaseLightGreen, 2 + (spell.channel ? spell.channel - 1 : 0));
 
 
 			return "Cast";
@@ -1370,7 +1372,32 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 			KinkyDungeonSendActionMessage(3, TextGet("KDUniversalSolventSucceedSelf")
 				.KDReplaceOrAddDmg( dmg.string),
-			"#88FFAA", 2 + (spell.channel ? spell.channel - 1 : 0));
+				KDBaseLightGreen, 2 + (spell.channel ? spell.channel - 1 : 0));
+
+			let hasLocks = true;
+			while (hasLocks) {
+				hasLocks = false;
+				for (let inv of KinkyDungeonAllRestraintDynamic()) {
+					if (KDIsItemAccessible(inv.item)) {
+						if (inv.item.lock == "Rubber") {
+							// TODO make this more generic for different types of locks
+							let lock = inv.item.lock;
+							KinkyDungeonLock(inv.item, "", false, false, false, false);
+							if (inv.item.lock != lock) {
+								hasLocks = true;
+								KinkyDungeonSendTextMessage(
+									7, TextGet("KDLockMelt")
+										.replace("${Lock}",
+											TextGet("Kinky" + lock + "Lock"))
+										.replace("${Restraint}",
+											KDGetItemName(inv.item))
+									, KDBaseLightGreen, 1);
+							}
+						}
+					}
+				}
+			}
+
 
 			return "Cast";
 		}

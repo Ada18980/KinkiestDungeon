@@ -34,7 +34,7 @@ let KDBaseNeon = "#5cff67"; // lemon lime
 // #55ff55
 let KDBaseMint = "#98ff98"; // mint green
 // #88ff88
-let KDBaseLightGreen = "#98ff98"; // mint green
+let KDBaseLightGreen = "#88FFAA";
 // #88ff88
 let KDBaseForest = "#228b22";
 // #448844

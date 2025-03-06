@@ -792,6 +792,96 @@ let KDLocks: Record<string, KDLockType> = {
 		loot_special: false,
 		loot_locked: true,
 	},
+
+	"Masterwork": {
+		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
+			return true; // not for doors
+		},
+		filter: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
+			return false;
+		},
+		weight: (_Guaranteed, Floor, _AllowGold, _Type, _Data) => {
+			return 0;
+		},
+
+		consume_key: false,
+		lockmult: 5.0,
+		// Picking
+		pickable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		pick_speed: 0.1, // Multiplies the picking rate
+		pick_diff: -10.0, // Added to the item's pick difficulty
+		pick_lim: 10.0, // Added to the item's pick limitchance
+
+		canPick: (_data) => {
+			return true;
+		},
+		doPick: (_data) => {
+			return true;
+		},
+		failPick: (_data) => {
+			return "Fail";
+		},
+		breakChance: (_data) => {
+			return KDRandom() < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		// Key
+		unlockable: true, // rather than calling the function (which could vary) this is for classifying the lock
+		key: "Red",
+		canUnlock: (_data) => {
+			return KinkyDungeonItemCount("RedKey") > 0 && KDHasMasterworkSet(KDPlayer());
+		},
+		doUnlock: (_data) => {
+			if (_data.unlock) {
+				// only if it was a normal unlock
+				let toUnlock = KinkyDungeonAllRestraintDynamic().filter((r) => {
+					return KDRestraint(r.item)?.shrine?.includes("Masterwork");
+				}).map((r) => {return r.item});
+				let max = toUnlock.length;
+				for (let i = 0; i < max; i++) {
+					for (let r of toUnlock) {
+						if (KinkyDungeonRemoveRestraintSpecific(r, true, false, false, false, false, _data.remover).length > 0) {
+							toUnlock.splice(toUnlock.indexOf(r), 1);
+							KinkyDungeonSendTextMessage(
+								10, TextGet("KDMasterworkLockRemove")
+									.replace("${Restraint}",
+										KDGetItemName(r))
+								, KDBaseLightGreen, 1);
+							break;
+						}
+					}
+				}
+			}
+			return true;
+		},
+		removeKeys: (data) => {
+			if (!data?.unlock) {
+				KinkyDungeonDropItem({name: data.keytype+"Key"}, KinkyDungeonPlayerEntity, true);
+			} else {
+				// If you use a key to unlock it it unlocks all the ones you are wearing
+				KDAddConsumable("RedKey", -1);
+			}
+		},
+		failUnlock: (_data) => {
+			return "Fail";
+		},
+
+		// Start of level -- for gold locks
+		levelStart: (_item) => {
+		},
+		shrineImmune: false,
+
+		// Command word
+		commandlevel: 0, // rather than calling the function (which could vary) this is for classifying the lock
+		commandable: false,
+		command_lesser: () => {return 0.0 ;},
+		command_greater: () => {return 0.0;},
+		command_supreme: () => {return 0.0;},
+
+		loot_special: false,
+		loot_locked: true,
+	},
+
 	"Disc": {
 		canNPCPass: (_xx, _yy, _MapTile, Enemy) => {
 			return KDEnemyRank(Enemy) > 2;

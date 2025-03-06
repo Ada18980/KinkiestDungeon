@@ -979,7 +979,7 @@ let KinkyDungeonFactionRelationsBase = {
 	},
 	"Curse": {
 		Player: -1.0,
-		Jail: -0.4,
+		Jail: -1,
 
 		Chase: -1,
 	},

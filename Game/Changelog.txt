@@ -41,10 +41,17 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.4.50
+- Pickaxe buffed to remove 20 armor (and also fixed so it removes armor instead of adding)
+- Rubber locks can now be melted off with latex solvent
+
+
 5.4.49
 - Fixed many bugs
 - Escaping a slow via sprinting now always costs an extra 50 sp instead of 2x
 - Strip search should happen when jailed in more situations
+- Fixed the garters on the hisec corset not connecting to the thighhighs
+- Split corset into hardware layer as well
 
 5.4.48
 - Added HighSec restraints (and fashion restraints)

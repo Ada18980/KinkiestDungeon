@@ -597,7 +597,8 @@ function KinkyDungeonIsLockable(restraint: restraint): boolean {
  * @param [Link]
  * @param [pick]
  */
-function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Link: boolean = false, pick: boolean = false, normalUnlock?: boolean): void {
+function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Link: boolean = false,
+	pick: boolean = false, normalUnlock?: boolean, remover?: entity): void {
 	KDUpdateItemEventCache = true;
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
@@ -609,7 +610,11 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 	} else {
 		let cancel = false;
 		if (KDLocks[item.lock] && KDLocks[item.lock].doUnlock)
-			cancel = !KDLocks[item.lock].doUnlock({item: item, link: Link, unlock: normalUnlock != undefined ? normalUnlock : !pick, pick: pick, NoEvent: NoEvent});
+			cancel = !KDLocks[item.lock].doUnlock({item: item, link: Link,
+				unlock: normalUnlock != undefined ? normalUnlock : !pick,
+				pick: pick, NoEvent: NoEvent,
+				remover: remover != undefined ? remover : KDPlayer()
+			});
 		if (!cancel) {
 			item.lock = lock;
 			if (!NoEvent) {
@@ -1119,6 +1124,26 @@ function KinkyDungeonWallCrackAndKnife(Message: boolean): boolean {
 			}
 		}
 	}
+	return false;
+}
+
+
+
+/**
+ * Determines if the entire dynamic item tree has at least one inaccessable item
+ * @param item
+ */
+function KDIsItemAccessible(item: item): boolean {
+	let base = KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group);
+	if (base) {
+		let link = base;
+		while (link && KDRestraint(link)) {
+			if (link == item || link.id == item.id) return true;
+			if (KDRestraint(link).inaccessible) return false;
+			link = link.dynamicLink;
+		}
+	}
+
 	return false;
 }
 
@@ -6568,5 +6593,25 @@ function KDUpdatePreferenceFlags() {
 	let selected = select.length > 0 ? select[Math.floor(KDRandom() * select.length)] : "";
 	if (selected) {
 		KinkyDungeonSetFlag(selected, -1)
+	}
+}
+
+
+
+function KDHasMasterworkSet(player: entity) {
+	if (player == KDPlayer()) {
+		// Only need 4 if no blindfolds perk
+		let requiredItems = KinkyDungeonStatsChoice.get("NoBlindfolds") ?
+			KDDialogueParams.MasterworkCount - 1
+			: KDDialogueParams.MasterworkCount;
+		let count = 0;
+		for (let r of KinkyDungeonAllRestraintDynamic()) {
+			if (KDRestraint(r.item)?.shrine?.includes("Masterwork")) {
+				count++;
+			}
+			if (count >= requiredItems) break;
+		}
+
+		if (count >= requiredItems) return false;
 	}
 }
