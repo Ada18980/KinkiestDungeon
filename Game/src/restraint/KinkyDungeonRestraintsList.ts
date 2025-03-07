@@ -7809,6 +7809,9 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	shrine: ["Armor", "ChestArmor", "MetalArmor", "Heavy"],
 	addPose: ["ChestArmor"],
 	noRenderPose: ["NoChestArmor"],
+	factionFilters: {
+		Breastplate: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7845,6 +7848,10 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	shrine: ["Armor", "TorsoArmor", "Light"],
 	addPose: ["TorsoArmor"],
 	noRenderPose: ["NoTorsoArmor"],
+	factionFilters: {
+		Bustier: {color: "DarkNeutral", override: true},
+		Rim: {color: "LightNeutral", override: true},
+	},
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
