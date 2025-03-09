@@ -2836,12 +2836,10 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true}
 		]},
 	// region masterwork
-	{inventory: true, name: "MasterworkBlindfold", debris: "Belts",
+	{inventory: true, name: "MasterworkBlindfold",
 		Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink],
 		renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
-		power: 15, weight: 10,
-		sfxGroup: "Leather",
-		Model: "HighSecBlindfold",
+		Model: "HighSecBlindfoldRestraint",
 		factionFilters: {
 			BlindfoldStrap: {color: "LightNeutral", override: true},
 			BlindfoldStrapHardware: {color: "Highlight", override: true},
@@ -2853,12 +2851,119 @@ const KinkyDungeonRestraints: restraint[] = [
 			HarnessR: {color: "DarkNeutral", override: true},
 			RivetsR: {color: "Highlight", override: true},
 		},
-		DefaultLock: "Masterwork",
 		maxwill: 0.0, blindfold: 5,
-		escapeChance: {"Struggle": -0.2, "Cut": 0.07, "Remove": 0.15, "Pick": 0.1},
+
+		// (mostly) Common to Masterwork
+		sfxGroup: "Leather",
+		power: 25, weight: 10, debris: "Belts",
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
 		enemyTags: {"masterworkRestraints": 10},
 		playerTags: {NoBlindfolds: -1000},
 		minLevel: 0, allFloors: true, shrine: ["Masterwork", "Blindfolds"]},
+
+	{alwaysRender: true, inventory: true,
+		name: "MasterworkCorset", linkCategory: "Corset",
+		linkSize: 0.55, inaccessible: true, deepAccessible: true,
+		LinkableBy: KDCorsetLink, strictness: 0.2, Group: "ItemTorso",
+		Model: "HighSecCorsetRestraint",
+		factionFilters: {
+			Corset: {color: "DarkNeutral", override: true},
+			Hardware: {color: "Highlight", override: true},
+			CrotchStraps: {color: "DarkNeutral", override: true},
+			CrotchStrapsHardware: {color: "Highlight", override: true},
+			GarterLeft: {color: "DarkNeutral", override: true},
+			GarterLeftHardware: {color: "Highlight", override: true},
+			GarterRight: {color: "DarkNeutral", override: true},
+			GarterRightHardware: {color: "Highlight", override: true},
+		},
+		restriction: 12,
+		struggleMinSpeed: {"Remove": 0.05}, struggleMaxSpeed: {"Remove": 0.1},
+		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
+		failSuffix: {"Remove": "Corset"},
+
+
+		// (mostly) Common to Masterwork
+		sfxGroup: "Leather",
+		power: 25, weight: 10, debris: "Belts",
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {},
+		minLevel: 0, allFloors: true, shrine: ["Masterwork", "HeavyCorsets", "Corsets"]},
+
+	{inventory: true, name: "MasterworkHeels", inaccessible: true,
+		Group: "ItemBoots",
+		Model: "HighSecBalletHeelsRestraint",
+		heelpower: 1.25,
+
+
+		factionFilters: {
+			Shoe: {color: "DarkNeutral", override: true},
+			StrapsRight: {color: "Highlight", override: true},
+			StrapsLeft: {color: "Highlight", override: true},
+		},
+
+		// (mostly) Common to Masterwork
+		sfxGroup: "Leather",
+		power: 25, weight: 10, debris: "Belts",
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {},
+		minLevel: 0, allFloors: true, shrine: ["Masterwork", "Heels", "Boots"]},
+
+	{inventory: true, name: "MasterworkGloves", inaccessible: true,
+		Group: "ItemHands",
+		Model: "HighSecGlovesRestraint", LinkableBy: [...KDGlovesLink], alwaysRender: true,
+		bindhands: 0.3,
+		events: [
+			{trigger: "tick", type: "AccuracyBuff", power: -0.2, inheritLinked: true},
+		],
+
+		factionFilters: {
+			GloveRight: {color: "DarkNeutral", override: true},
+			GloveLeft: {color: "DarkNeutral", override: true},
+			StrapsLeft: {color: "Highlight", override: true},
+			StrapsRight: {color: "Highlight", override: true},
+		},
+
+		// (mostly) Common to Masterwork
+		sfxGroup: "Leather",
+		power: 25, weight: 10, debris: "Belts",
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {},
+		minLevel: 0, allFloors: true, shrine: ["Masterwork", "Gloves"]},
+
+	{inventory: true, name: "MasterworkCollar", inaccessible: true,
+		Group: "ItemNeck",
+		Model: "HighSecCollarRestraint", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],
+
+		factionFilters: {
+			Collar: {color: "DarkNeutral", override: true},
+			Rim: {color: "LightNeutral", override: true},
+			Band: {color: "DarkNeutral", override: true},
+			Straps: {color: "DarkNeutral", override: true},
+			StrapsHardware: {color: "Highlight", override: true},
+			Ring: {color: "Highlight", override: true},
+		},
+
+		// (mostly) Common to Masterwork
+		sfxGroup: "Leather",
+		power: 25, weight: 10, debris: "Belts",
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {},
+		minLevel: 0, allFloors: true, shrine: ["Masterwork", "HighCollars", "Collars"]},
+
 
 
 	// endregion
@@ -2870,7 +2975,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
 		power: 7, weight: 1,
 		sfxGroup: "Leather",
-		Model: "HighSecBlindfold",
+		Model: "HighSecBlindfoldRestraint",
 		Filters: {
 			// Make it disappear
 			BlindfoldStrap: {"gamma":1,"saturation":1,"contrast":1.8833333333333333,

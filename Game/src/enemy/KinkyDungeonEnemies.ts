@@ -5601,8 +5601,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 			let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 
-			AIData.wantsToLeash = !KinkyDungeonFlags.get("PlayerDommed");
-			AIData.focusOnLeash = (!KinkyDungeonFlags.has("PlayerCombat") && KDEnemyHasFlag(enemy, "focusLeash")) || (
+			AIData.wantsToLeash = !enemy.Enemy.noLeash && !KinkyDungeonFlags.get("PlayerDommed");
+			AIData.focusOnLeash = (enemy.Enemy.noLeash) ? false : (
+			(!KinkyDungeonFlags.has("PlayerCombat") && KDEnemyHasFlag(enemy, "focusLeash")) || (
 				enemy == KinkyDungeonLeashingEnemy()
 				&& !AIData.addLeash && (
 					!AIData.addMoreRestraints
@@ -5623,7 +5624,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						looseLimit: true,
 						onlyUnlimited: true,
 						ignore: enemy.items,
-					}, enemy, undefined, true)));
+					}, enemy, undefined, true))));
 
 			AIData.SlowLeash = !KinkyDungeonAggressive(enemy, player) && KDEntityHasFlag(player, "leashtug");
 			AIData.moveTowardPlayer =
@@ -6657,7 +6658,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							happened += 1;
 						}
 						if (AIData.attack.includes("Effect") && enemy.Enemy.effect) {
-							let affected = KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, enemy.Enemy.effect.damage, enemy.Enemy.effect.effect, enemy.Enemy.effect.spell, KDGetFaction(enemy), undefined, enemy);
+							let affected = KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, enemy.Enemy.effect.damage,
+								enemy.Enemy.effect.effect, enemy.Enemy.effect.spell, KDGetFaction(enemy),
+								undefined, enemy);
 							if (affected && enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Effect")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}

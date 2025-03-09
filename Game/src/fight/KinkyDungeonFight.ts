@@ -2219,7 +2219,9 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			let aoe = b.bullet.spell.aoe || 0.5;
 			if (b.bullet.hit == "buffnoAoE") aoe = 0.5;
 			if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, aoe, KDBulletAoEMod(b))) {
-				KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, (b.bullet.playerEffect || b.bullet.spell.playerEffect), b.bullet.spell, b.bullet.faction, b);
+				KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type,
+					(b.bullet.playerEffect || b.bullet.spell.playerEffect), b.bullet.spell, b.bullet.faction,
+					b, b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : undefined);
 			}
 			for (let enemy of KDMapData.Entities) {
 				if (((enemy.x == b.x && enemy.y == b.y) || (b.bullet.spell && aoe && AOECondition(b.x, b.y, enemy.x, enemy.y, aoe, KDBulletAoEMod(b))))) {
@@ -2469,7 +2471,9 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		}
 
 		if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, b.bullet.spell.aoe, KDBulletAoEMod(b))) {
-			KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction, b);
+			KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type,
+				b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction,
+				b, b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : undefined);
 		}
 		for (let enemy of KDMapData.Entities) {
 			if ((b.reflected
@@ -3013,7 +3017,9 @@ function KDBulletEffectTiles(bullet: KDBullet) {
 function KDBulletHitPlayer(bullet: KDBullet, player: entity) {
 	let pf = bullet.bullet.playerEffect || bullet.bullet.spell?.playerEffect;
 	if (pf) {
-		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, bullet.bullet.damage.type, pf, bullet.bullet.spell, bullet.bullet.faction, bullet);
+		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, bullet.bullet.damage.type, pf,
+			bullet.bullet.spell, bullet.bullet.faction, bullet,
+			bullet.bullet.source ? KinkyDungeonFindID(bullet.bullet.source) : undefined);
 		KDUniqueBulletHits.set(KDBulletID(bullet, player), true);
 	}
 }

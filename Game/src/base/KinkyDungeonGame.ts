@@ -5609,7 +5609,7 @@ function KinkyDungeonMoveTo(moveX: number, moveY: number, willSprint: boolean, _
 	if (xx != moveX || yy != moveY) {
 		KinkyDungeonTrapMoved = true;
 	}
-	let cencelled = !KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity, moveX, moveY) ? KDMovePlayer(moveX, moveY, true, willSprint) : true;
+	let cencelled = !KinkyDungeonUpdateTether(0, true, KinkyDungeonPlayerEntity, moveX, moveY) ? KDMovePlayer(moveX, moveY, true, willSprint) : true;
 
 
 	if (stepOff) KinkyDungeonHandleStepOffTraps(KinkyDungeonPlayerEntity, xx, yy, moveX, moveY);
@@ -5761,11 +5761,11 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	}
 
 	if (KDPlayer().leash)
-		KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+		KinkyDungeonUpdateTether(delta, true, KinkyDungeonPlayerEntity);
 
 	for (let enemy of KDMapData.Entities) {
 		if (enemy.leash)
-			KinkyDungeonUpdateTether(false, enemy);
+			KinkyDungeonUpdateTether(delta, false, enemy);
 	}
 
 	KinkyDungeonResetEventVariablesTick(delta);
@@ -5786,6 +5786,12 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		delta = 0;
 		KinkyDungeonFlags.set("TimeSlowTick", 1);
 	} else pauseTime = false;
+
+	for (let enemy of KDMapData.Entities) {
+		if (enemy.leash)
+			KinkyDungeonUpdateTether(delta, false, enemy);
+	}
+
 	KDGameData.ShieldDamage = 0;
 	KDUpdateCollectionFlags(delta);
 	KDUpdatePersistentNPCFlags(delta);
@@ -5814,11 +5820,11 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		if (KDCheckDespawn(enemy, E, KDMapData)) { E -= 1; continue;}
 	}
 
-	KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+	KinkyDungeonUpdateTether(0, true, KinkyDungeonPlayerEntity);
 
 	for (let enemy of KDMapData.Entities) {
 		if (enemy.leash)
-			KinkyDungeonUpdateTether(false, enemy);
+			KinkyDungeonUpdateTether(0, false, enemy);
 	}
 	KinkyDungeonUpdateJailKeys();
 

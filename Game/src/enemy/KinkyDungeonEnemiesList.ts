@@ -120,7 +120,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {}, floors:KDMapInit([])},
 
 
-	{name: "PinkLabAssistant", faction: "Latex", clusterWith: "alchemist", playLine: "Gagged", bound: "LabAssistant", color: KDBasePink,
+	{name: "PinkLabAssistant", faction: "Latex", clusterWith: "alchemist", playLine: "Gagged",
+		bound: "LabAssistant", color: KDBasePink,
 		tags: KDMapInit(["opendoors", "pink", "nocapture", "leashing", "latexRestraints", "latexpetsuit", "human", "alchemist", "ranged", "silenceimmune", "blindimmune", "minor", "latexGag"]),
 		ignorechance: 0, followRange: 4.5, AI: "hunt",
 		difficulty: 0.3,
@@ -3247,6 +3248,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		castWhileMoving: true,
 
 		dontKiteWhenDisabled: true,
+		noLeash: true,
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
@@ -3317,6 +3319,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
+		noLeash: true,
 		kite: 2.5,
 
 		wanderAISetting: "Dragon",
@@ -3360,6 +3363,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 
 		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
@@ -3433,6 +3437,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
@@ -3466,6 +3471,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -3556,6 +3562,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 3.5, kiteChance: 0.25,
@@ -3586,6 +3593,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
 		preferBlock: true, maxdodge: 0,
@@ -3672,6 +3680,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		ondeath: [{type: "DragonSeal"}],
 		events: [
 			{trigger: "beforeDamage", type: "dragonLairDefeat", power: 0, color: KDBaseRed},
@@ -4837,6 +4846,38 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
+
+
+	{name: "MasterGear", faction: "KinkyConstruct", clusterWith: "construct",
+		playLine: "KinkyConstruct",
+		bound: "MasterGear", color: KDBasePink,
+		tags: KDMapInit(["opendoors", "nocapture", "metalTrap", "leatherTrap", "miniboss",
+			"unflinching",
+			"construct", "nosignal", "poisonimmune", "soulimmune", "melee",
+			"chainresist", "meleeresist", "glueweakness", "iceweakness"]),
+		ignorechance: 0, followRange: 1, AI: "hunt",
+		kite: 1.5, projectileAttack: true,
+		spells: ["LeashBolt"], spellCooldownMult: 1, spellCooldownMod: 1,
+		kiteChance: 0.2,
+		noLeash: true,
+		attackLock: "White",
+		stamina: 5, sprintspeed: 2.0,
+		Resistance: {
+			profile: ["construct"],
+		},
+		effect: {
+			effect: {name: "Masterwork", damage: "plush", power: 10},
+		},
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
+		],
+		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:-1000,
+		movePoints: 2.2, attackPoints: 2, attack: "SpellMeleeEffect",
+		attackWidth: 1, attackRange: 1, power: 4, dmgType: "chain", fullBoundBonus: 1,
+		terrainTags: {pink: 1100}, shrines: ["Leather"], allFloors: true,
+		dropTable: [{name: "RedKey", amount: 1, weight: 10}]},
+
+
 	{name: "Feathers", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ignorenoSP", "construct", "nosignal", "poisonresist", "soulimmune", "melee", "chainRestraints", "minor", "firesevereweakness", "meleeresist", "doortrap", "flying"]), ignorechance: 0.75, armor: -1, followRange: 1, AI: "hunt",  ignoreflag: ["feathers"], failAttackflag: ["feathers"], squeeze: true,
 		visionRadius: 5, visionSummoned: 12, maxhp: 3, minLevel: 0, weight:0.25, movePoints: 2, attackPoints: 2, attack: "MeleeWill",
 		nonDirectional: true,

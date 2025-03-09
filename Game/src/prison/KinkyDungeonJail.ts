@@ -1042,7 +1042,7 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 				if (KinkyDungeonJailGuard()?.KinkyDungeonJailTourInfractions == 3 && KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints > 1) KinkyDungeonJailGuard().RemainingJailLeashTourWaypoints = 1;
 				KinkyDungeonJailGuard().gx = KinkyDungeonPlayerEntity.x;
 				KinkyDungeonJailGuard().gy = KinkyDungeonPlayerEntity.y;
-				KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+				KinkyDungeonUpdateTether(0, true, KinkyDungeonPlayerEntity);
 			} else {
 
 				KDGameData.KinkyDungeonLeashedPlayer = 2;
@@ -1071,7 +1071,7 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 						}
 					}*/
 				} else KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);
-				KinkyDungeonUpdateTether(true, KinkyDungeonPlayerEntity);
+				KinkyDungeonUpdateTether(0, true, KinkyDungeonPlayerEntity);
 			}
 		}
 	}

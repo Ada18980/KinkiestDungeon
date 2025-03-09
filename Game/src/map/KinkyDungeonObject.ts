@@ -528,7 +528,7 @@ let KDElevatorFloorIndex = {
  */
 function KDIsElevatorFloorUnlocked(num: string | number): boolean {
 	return typeof num === "string" ? (KDGameData.ElevatorsUnlocked[num] || KDAlwaysUnlockedElevFloors[num])
-		: num != MiniGameKinkyDungeonLevel && KDGameData.ElevatorsUnlocked[num];
+		: num != MiniGameKinkyDungeonLevel && !!KDGameData.ElevatorsUnlocked[num];
 }
 
 /**

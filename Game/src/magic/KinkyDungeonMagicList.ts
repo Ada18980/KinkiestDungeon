@@ -2815,7 +2815,22 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{name: "ManyChains", sfx: "MagicSlash", minRange: 0, manacost: 3, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "WitchChainBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1, offset: false}, channel: 3},
 
-	{enemySpell: true, name: "WitchChainBolt", color: KDBaseWhite, sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", bind: 12, time: 6,  power: 6, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "SingleChain", time: 1}, effectTileDurationMod: 10, effectTile: {
+
+	{enemySpell: true, name: "LeashBolt", color: KDBaseWhite,
+		castCondition: "LeashBolt",
+		sfx: "FireSpell", manacost: 2, components: ["Arms"], level:1,
+		type:"bolt", projectileTargeting:true, onhit:"",
+		bind: 8, time: 6, power: 6, delay: 0, range: 4.5, damage: "chain", speed: 2,
+		playerEffect: {name: "LeashBolt", time: 1}, effectTileDurationMod: 10, effectTile: {
+		name: "Belts",
+		duration: 20,
+	},}, // Throws a chain which stuns the target for 1 turn
+
+	{enemySpell: true, name: "WitchChainBolt", color: KDBaseWhite, sfx: "FireSpell", manacost: 5,
+		components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+		bind: 6, time: 6,  power: 6, delay: 0, range: 50, damage: "chain", speed: 2,
+		bindType: "Metal",
+		playerEffect: {name: "SingleChain", time: 1}, effectTileDurationMod: 10, effectTile: {
 		name: "Chains",
 		duration: 20,
 	},}, // Throws a chain which stuns the target for 1 turn
@@ -4028,7 +4043,9 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 	"ShieldTheWitch": (_enemy, target) => {
 		return target?.Enemy?.tags?.witch;
 	},
-
+	"LeashBolt": (_enemy, target) => {
+		return !target.leash;
+	},
 
 	"notImmobile": (_enemy, _target) => {
 		if (KinkyDungeonSlowLevel < 10) return true;

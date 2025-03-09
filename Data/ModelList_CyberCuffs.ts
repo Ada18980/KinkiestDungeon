@@ -307,6 +307,7 @@ AddModel({
 			AppendPose: {"HighCuffs": "High"}, // "LowCuffs": "",
 			TieToLayer: "ThighLink",
 			InheritColor: "Glow",
+			NoOverride: true,
 		},
 	])
 });
@@ -328,6 +329,7 @@ AddModel({
 			Poses: ToMap(["Spread"]),
 			TieToLayer: "AnkleLink",
 			InheritColor: "Glow",
+			NoOverride: true,
 		},
 	])
 });

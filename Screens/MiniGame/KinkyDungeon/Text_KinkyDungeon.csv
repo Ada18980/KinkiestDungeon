@@ -7167,6 +7167,8 @@ KinkyDungeonCoronaShock,"Beams of light wrap around your body and feel warm on y
 KinkyDungeonCrystalBind,"Crystals begin to form around your limbs!"
 KinkyDungeonSingleMChain,"A magic chain secures itself around your body!"
 KinkyDungeonSingleChain,"An animated chain secures itself around your body!"
+KinkyDungeonLeashBolt,"Animated leather cords try to leash you!"
+KinkyDungeonLeashedBolt,"A leather cord attaches to your leash and tugs!"
 KinkyDungeonSingleMRope,"A magic rope secures itself around your body!"
 KinkyDungeonSingleMBelt,"A magic belt secures itself around your body!"
 KinkyDungeonSingleRope,"A rope wraps itself around your body!"
@@ -8514,6 +8516,65 @@ KinkyDungeonRemindJailChaseGaggedHonor2,"Mmmmmmmph..."
 KinkyDungeonRemindJailChaseGaggedCommandDefend,""
 KinkyDungeonRemindJailChaseGaggedCommandAssault,"MMMMMPH!!!"
 KinkyDungeonRemindJailChaseGaggedCommandBlock,""
+
+
+KinkyDungeonRemindJailCastKinkyConstruct,""
+KinkyDungeonRemindJailMiscastKinkyConstruct,""
+KinkyDungeonRemindJailPlayHelplessKinkyConstruct0,""
+KinkyDungeonRemindJailPlayHelplessKinkyConstruct1,""
+KinkyDungeonRemindJailPlayHelplessKinkyConstruct2,""
+KinkyDungeonRemindJailPlayBratKinkyConstruct0,""
+KinkyDungeonRemindJailPlayBratKinkyConstruct1,""
+KinkyDungeonRemindJailPlayBratKinkyConstruct2,""
+KinkyDungeonRemindJailPlaySubKinkyConstruct0,""
+KinkyDungeonRemindJailPlaySubKinkyConstruct1,""
+KinkyDungeonRemindJailPlaySubKinkyConstruct2,""
+KinkyDungeonRemindJailPlayKinkyConstructFree,""
+KinkyDungeonRemindJailPlayKinkyConstructStruggle,""
+KinkyDungeonRemindJailPlayKinkyConstructLeash,""
+KinkyDungeonRemindJailPlayKinkyConstructLoot,""
+KinkyDungeonRemindJailPlayKinkyConstructKey,""
+KinkyDungeonRemindJailChaseKinkyConstructAlert,""
+KinkyDungeonRemindJailPlayKinkyConstruct0,""
+KinkyDungeonRemindJailPlayKinkyConstruct1,""
+KinkyDungeonRemindJailPlayKinkyConstruct2,""
+KinkyDungeonRemindJailChaseKinkyConstructAttack0,""
+KinkyDungeonRemindJailChaseKinkyConstructAttack1,""
+KinkyDungeonRemindJailChaseKinkyConstructAttack2,""
+KinkyDungeonRemindJailChaseKinkyConstructSpell0,""
+KinkyDungeonRemindJailChaseKinkyConstructSpell1,""
+KinkyDungeonRemindJailChaseKinkyConstructSpell2,""
+KinkyDungeonRemindJailChaseKinkyConstructSpellItem,""
+KinkyDungeonRemindJailChaseKinkyConstructShrine,""
+KinkyDungeonRemindJailChaseKinkyConstructChest,""
+KinkyDungeonRemindJailChaseKinkyConstructOrb,""
+KinkyDungeonRemindJailChaseKinkyConstructJailbreak,""
+KinkyDungeonRemindJailKinkyConstructGrab,""
+KinkyDungeonRemindJailKinkyConstructDisarm,""
+KinkyDungeonRemindJailKinkyConstructHit,""
+KinkyDungeonRemindJailKinkyConstructHitPlayer,""
+KinkyDungeonRemindJailKinkyConstructMiss,""
+KinkyDungeonRemindJailKinkyConstructBlock,""
+KinkyDungeonRemindJailKinkyConstructMissedMe,""
+KinkyDungeonRemindJailKinkyConstructBlockedMe,""
+KinkyDungeonRemindJailKinkyConstructLeash,""
+KinkyDungeonRemindJailKinkyConstructPull,""
+KinkyDungeonRemindJailKinkyConstructStun,""
+KinkyDungeonRemindJailKinkyConstructPickpocket,""
+KinkyDungeonRemindJailKinkyConstructLock,""
+KinkyDungeonRemindJailKinkyConstructIntro,""
+KinkyDungeonRemindJailChaseKinkyConstructDefend0,""
+KinkyDungeonRemindJailChaseKinkyConstructDefend1,""
+KinkyDungeonRemindJailChaseKinkyConstructDefend2,""
+KinkyDungeonRemindJailChaseKinkyConstructDefendHonor0,""
+KinkyDungeonRemindJailChaseKinkyConstructDefendHonor1,""
+KinkyDungeonRemindJailChaseKinkyConstructDefendHonor2,""
+KinkyDungeonRemindJailChaseKinkyConstructHonor0,""
+KinkyDungeonRemindJailChaseKinkyConstructHonor1,""
+KinkyDungeonRemindJailChaseKinkyConstructHonor2,""
+KinkyDungeonRemindJailChaseKinkyConstructCommandDefend,""
+KinkyDungeonRemindJailChaseKinkyConstructCommandAssault,""
+KinkyDungeonRemindJailChaseKinkyConstructCommandBlock,""
 
 
 
@@ -31549,3 +31610,10 @@ KinkyDungeonInventoryItemScrolls,Various Scrolls
 
 KDLockMelt,The ${Lock} on your ${Restraint} melts away!
 KDMasterworkLockRemove,Your ${Restraint} clicks and releases at last!
+
+KDLeashRatchet,Your leash lets out a click as it ratchets to a shorter length!
+KDApplyMasterworkSucceed,The animated Masterworks overpower you and you find yourself wearing one of them!
+KDApplyMasterworkFail,The animated Masterworks force you to the ground and pat your head gently before floating away!
+
+NameMasterGear,Animated Masterworks
+KillMasterGear,The animated masterwork restraints come apart and flee in all directions.

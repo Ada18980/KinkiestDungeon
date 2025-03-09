@@ -1323,6 +1323,9 @@ interface enemy extends KDHasTags {
 			applyVariant?: string}[],
 	},
 	attackBonus?: number,
+
+	/** Does not leash the player */
+	noLeash?: boolean,
 	/** */
 	cohesion?: number,
 	/** */

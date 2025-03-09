@@ -108,6 +108,43 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: false};
 	},
+	"Masterwork": (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+		let applied = "";
+		let dmg: {
+			happened: number;
+			string: string;
+		} = null;
+
+		for (let i = 0; i < playerEffect.count; i++) {
+			let eligible = KDGetRestraintsEligible({tags: ['masterworkRestraints']}, KDGetEffLevel(), 'grv',
+			true, undefined,
+			undefined, undefined, false, undefined,
+			undefined, undefined, undefined, undefined);
+			if (eligible.length > 0) {
+				let r = eligible[Math.floor(KDRandom() * eligible.length)];
+				let restraint = r.restraint;
+
+				if (restraint && KinkyDungeonAddRestraintIfWeaker(restraint, 0, true, "",
+					true, false, undefined, "Curse", true, undefined, entity, undefined,
+				r.inventoryVariant, undefined, undefined, r.variant)) {
+					applied = restraint.name || applied;
+				}
+			} else {
+				dmg = KinkyDungeonDealDamage({damage: 10, type: "plush"});
+			}
+
+		}
+		let str = TextGet("KDApplyMasterwork" + (applied ? "Succeed" : "Fail")).replace("RNAME",
+			TextGet("Restraint" + applied));
+		if (dmg) str = str.KDReplaceOrAddDmg(dmg.string);
+		KinkyDungeonSendTextMessage(3, str, KDBaseRed, 1);
+
+		if (entity) {
+			KDRemoveEntity(entity, false, false, true);
+		}
+
+		return {sfx: dmg ? "DealDamage" : "LockHeavy", effect: true};
+	},
 	"TheShadowCurse": (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 
@@ -969,6 +1006,33 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		effect = true;
 		return {sfx: undefined, effect: effect};
 	},
+	LeashBolt: (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
+		let effect = false;
+		if (KDTestSpellHits(spell, 0.0, 1.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leashing"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(spell, 1, ["leashing"], faction, false, false, false, false);
+				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLeashBolt").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
+				effect = true;
+			} else {
+				if (_entity && !_target.leash) {
+					let dd = KDistChebyshev(_entity.x - _target.x, _entity.y - _target.y);
+					if (dd < 4.5)
+						KinkyDungeonAttachTetherToEntity(dd, _entity, _target, "LeashBolt", "#a0affe", 3);
+				}
+
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonLeashedBolt").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
+
+			}
+			effect = true;
+			return {sfx: "Chain", effect: effect};
+		}
+		return {sfx: "ArmorHit", effect: effect};
+	},
 
 	"SingleChain": (_target, damage, playerEffect, spell, faction, bullet, _entity) => {
 		let effect = false;
@@ -1069,7 +1133,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: KinkyDungeonStatsChoice.get("Estim") ? "estim" : "electric"}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			if (KinkyDungeonStatsChoice.get("Estim")) {
-				KDChangeDistraction(_entity ? "enemy" + _entity.id : (spell ? spell.name : (bullet ? bullet.spriteID || "bullet" : "")),
+				KDChangeDistraction(spell ? spell.name : (_entity ? "enemy" + _entity.id : (bullet ? bullet.spriteID || "bullet" : "")),
 				_entity ? "enemy" : (spell ? "spell" : (bullet ? "bullet" : "")), "playerEffect", playerEffect?.power || spell?.power, false, 0.3);
 			} else {
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, playerEffect.time);
