@@ -12036,8 +12036,11 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				let en = KDSummonCurseTrap(data.x, data.y);
 				if (en) {
 					let itemLoot = KDGetCursedEpicenterLoot(en);
-					if (itemLoot)
+					if (itemLoot) {
+						if (!en.items)
+							en.items = [];
 						en.items.unshift(itemLoot);
+					}
 				}
 			}
 
