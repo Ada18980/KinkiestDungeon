@@ -3359,6 +3359,60 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		}
 	},
 
+
+	"AdaMasterwork": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			if (KDBoundPowerLevel > 0.4) {
+				KDGameData.CurrentDialogMsg = "AdaMasterworkBound";
+			}
+			return false;
+		},
+		options: {
+			"Masterwork": {
+				gag: true,
+				playertext: "Default",
+				response: "Default",
+				clickFunction: () => {
+					KDGameData.MasterworkIntro = true;
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true
+			},
+			"MasterworkUnlock": {
+				gag: true,
+				playertext: "Default",
+				response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					return KDGameData.MasterworkIntro && KDCountMasterworks(player, true, false) > 0;
+				},
+				clickFunction: (gagged, player) => {
+					let count = KDCountMasterworks(player);
+					let needed = KDGetNeededMasterworkCount();
+
+					if (count < needed) {
+						KDGameData.CurrentDialogMsg = "MasterworkUnlockFail";
+					} else {
+						KDGameData.CurrentDialogMsg = "MasterworkUnlockSuccess";
+						KDRemoveMasterwork(KDGetSpeaker());
+					}
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+
 	"AntiqueShop": KDSaleShop("AntiqueShop", ["Sunglasses", "Snuffer", "SackOfSacks", "Rope"], [], ["blacksmith"], 0.4, 2),
 	"BlacksmithShop": KDSaleShop("BlacksmithShop", ["Pick", "Knife", "Sword", "Hammer", "Axe", "Spear", "TrapCuffs"], [], ["blacksmith"], 0.4, 1.5),
 	"ArmorerShop": KDSaleShop("ArmorerShop", ["Shield", "Breastplate", "Bracers", "Gauntlets", "SteelBoots", "ChainTunic", "ChainBikini", "TrapBelt", "TrapBra"], [], ["blacksmith"], 0.4, 2.0),

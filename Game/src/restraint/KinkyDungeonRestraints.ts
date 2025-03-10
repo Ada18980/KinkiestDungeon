@@ -6605,48 +6605,6 @@ function KDUpdatePreferenceFlags() {
 }
 
 
-function KDCountMasterworks(player: entity) {
-	let count = 0;
-	if (player == KDPlayer()) {
-		for (let r of KinkyDungeonAllRestraintDynamic()) {
-			if (KDRestraint(r.item)?.shrine?.includes("Masterwork")) {
-				count++;
-			}
-		}
-		for (let inv of KinkyDungeonAllLooseRestraint()) {
-			if (KDRestraint(inv)?.shrine?.includes("Masterwork")) {
-				count += inv.quantity || 1;
-			}
-		}
-
-	}
-	return count;
-}
-
-
-function KDGetNeededMasterworkCount() {
-	return KinkyDungeonStatsChoice.get("NoBlindfolds") ?
-		KDDialogueParams.MasterworkCount - 1
-		: KDDialogueParams.MasterworkCount;
-}
-
-
-
-function KDHasMasterworkSet(player: entity) {
-	if (player == KDPlayer()) {
-		// Only need 4 if no blindfolds perk
-		let requiredItems = KDGetNeededMasterworkCount();
-		let count = 0;
-		for (let r of KinkyDungeonAllRestraintDynamic()) {
-			if (KDRestraint(r.item)?.shrine?.includes("Masterwork")) {
-				count++;
-			}
-			if (count >= requiredItems) break;
-		}
-
-		if (count >= requiredItems) return false;
-	}
-}
 
 function KDDefaultItemPalette(name: string, variantName: string) {
 	let variant = KinkyDungeonRestraintVariants[variantName];

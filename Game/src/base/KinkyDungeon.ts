@@ -570,6 +570,7 @@ interface KDGameDataBase {
 	DistractionCooldown:		number,
 	ConfirmAttack:			boolean,
 	CurrentDialogMsg:		string,
+	MasterworkIntro:		boolean,
 	CurrentDialogMsgSpeaker:	string,
 	CurrentDialogMsgPersonality:	string,
 	CurrentDialogMsgID:		number,
@@ -706,6 +707,7 @@ interface KDGameDataBase {
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	MasterworkIntro: false,
 	AutoRelease: {
 		NonNotable: false,
 		Escaped: false,

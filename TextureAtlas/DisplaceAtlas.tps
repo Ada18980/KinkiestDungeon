@@ -237,6 +237,7 @@
             <key type="filename">../DisplacementMaps/HeelsRightErase2Closed.png</key>
             <key type="filename">../DisplacementMaps/HeelsRightEraseClosed.png</key>
             <key type="filename">../DisplacementMaps/HeelsSpread.png</key>
+            <key type="filename">../DisplacementMaps/HiSecStraps.png</key>
             <key type="filename">../DisplacementMaps/LegbinderSquishClosed.png</key>
             <key type="filename">../DisplacementMaps/MittLFree.png</key>
             <key type="filename">../DisplacementMaps/MittRYoked.png</key>

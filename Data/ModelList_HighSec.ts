@@ -66,7 +66,7 @@ AddModel({
 });
 
 
-AddModel(GetModelFashionVersion("HighSecBlindfold", true));
+AddModel(GetModelRestraintVersion("HighSecBlindfold", true));
 
 
 AddModel({
@@ -76,37 +76,41 @@ AddModel({
 	Restraint: true,
 	Categories: ["Accessories", "Collars"],
 	Layers: ToLayerMap([
-		{ Name: "Collar", Layer: "NeckCorset", Pri: -25,
+		{ Name: "Collar", Layer: "NeckCorsetOver", Pri: -25,
 			Invariant: true,
 			InheritColor: "Band",
 			MorphPoses: {UprightHogtie: "", SuspendedHogtie: "", Hogtie: "Hogtie"},
+			DisplacementSprite: "HiSecStraps",
+			DisplacementInvariant: true,
+			DisplaceAmount: 50,
+			DisplaceLayers: {NeckCorsetOverStraps: true},
 		},
-		{ Name: "CollarChest", Layer: "NeckCorset", Pri: -25,
+		{ Name: "CollarChest", Layer: "NeckCorsetOver", Pri: -25,
 			Invariant: true,
 			InheritColor: "Collar",
 			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",},
 		},
-		{ Name: "CollarChestRim", Layer: "NeckCorset", Pri: -24.9,
+		{ Name: "CollarChestRim", Layer: "NeckCorsetOver", Pri: -24.9,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Rim",
 			TieToLayer: "CollarChest",
 			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",},
 		},
-		{ Name: "CollarChestHardware", Layer: "NeckCorset", Pri: -24.8,
+		{ Name: "CollarChestHardware", Layer: "NeckCorsetOver", Pri: -24.8,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Ring",
 			TieToLayer: "CollarChest",
 		},
-		{ Name: "CollarChestStraps", Layer: "NeckCorset", Pri: -24.8,
+		{ Name: "CollarChestStraps", Layer: "NeckCorsetOver", Pri: -24.8,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Straps",
 			TieToLayer: "CollarChest",
 			MorphPoses: {Up: "Up", Boxtie: "Tied", Front: "Tied", Wristtie: "Tied", Crossed: "Tied",},
 		},
-		{ Name: "CollarChestStrapsHardware", Layer: "NeckCorset", Pri: -24.7,
+		{ Name: "CollarChestStrapsHardware", Layer: "NeckCorsetOver", Pri: -24.7,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "StrapsHardware",
@@ -117,7 +121,7 @@ AddModel({
 });
 
 
-AddModel(GetModelFashionVersion("HighSecCollar", true));
+AddModel(GetModelRestraintVersion("HighSecCollar", true));
 
 
 AddModel({
@@ -181,7 +185,7 @@ AddModel({
 			AppendPoseRequire: {"Spread": true, "Closed": true, "Hogtie": true},
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Closed: "Closed", Hogtie: "Closed"},
 		},
-		{ Name: "CorsetCrotchStraps", Layer: "Corset", Pri: 24.9,
+		{ Name: "CorsetCrotchStraps", Layer: "OverCorset", Pri: 24.9,
 			Invariant: true,
 			InheritColor: "CrotchStraps",
 			TieToLayer: "Corset",
@@ -228,7 +232,7 @@ AddModel({
 			AppendPoseRequire: {"Spread": true, "Closed": true, "Hogtie": true},
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Closed: "Closed", Hogtie: "Closed"},
 		},
-		{ Name: "CorsetHardwareCrotchStraps", Layer: "Corset", Pri: 24.95,
+		{ Name: "CorsetHardwareCrotchStraps", Layer: "OverCorset", Pri: 24.95,
 			Invariant: true,
 			InheritColor: "CrotchStrapsHardware",
 			TieToLayer: "CorsetCrotchStraps",

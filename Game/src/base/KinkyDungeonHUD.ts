@@ -1081,12 +1081,33 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 	return hover;
 }
 
+let KDLastKneelTurns = 0;
+
 function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	let str = "";
 	let BalanceOffset = KDToggles.BuffSide ? 850 : 800;
 	let BalanceSpacing = 75;
 	let II = 0;
-	if (KDGameData.Balance < 1 && !KinkyDungeonStatsChoice.get("TrustFall")) {
+	if (KDGameData.KneelTurns > 0 && !KinkyDungeonStatsChoice.get("TrustFall")) {
+		let KneelStats = KDGetKneelStats(1, false);
+
+		KDLastKneelTurns = Math.max(KDGameData.KneelTurns, KDLastKneelTurns);
+
+		if (KneelStats.minKneel == 0 && KneelStats.kneelRate > 0) {
+			DrawTextFitKDTo(kdstatusboard,
+				TextGet("KDBalanceGettingUp")
+				.replace("AMNT", "" + Math.ceil(KDGameData.KneelTurns / KneelStats.kneelRate)),
+				1000, BalanceOffset - BalanceSpacing*(II), 300, KDBaseWhite, KDTextGray2,
+				24, "left", 110, 0.9);
+			KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8 - BalanceSpacing*(II), 500, 12,
+				(KDGameData.KneelTurns / KDLastKneelTurns) * 100,
+				KDBaseRed, "#283540", (KDGameData.KneelTurns / KDLastKneelTurns) * 100, "#ffee83",
+				KDSteps(KDGameData.KneelTurns, KneelStats.kneelRate/KDLastKneelTurns), "#283540", "#4fd658");
+
+			II++;
+		}
+
+	} else if (KDGameData.Balance < 1 && !KinkyDungeonStatsChoice.get("TrustFall")) {
 		DrawTextFitKDTo(kdstatusboard,
 			TextGet(KDBalanceSprint() ? "KDBalance" : "KDBalanceNoSprint")
 			.replace("AMNT", "" + Math.round(KDGameData.Balance * 100)),
@@ -1102,6 +1123,9 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			1500, BalanceOffset - BalanceSpacing*(II), 200, KDBaseWhite, KDTextGray2,
 			10, "right", 111, 0.9);
 		II++;
+	}
+	if (KDGameData.KneelTurns<= 0) {
+		KDLastKneelTurns = 0;
 	}
 	if (KDGameData.DelayedActions?.length > 0) {
 		let action = KDGameData.DelayedActions[0];

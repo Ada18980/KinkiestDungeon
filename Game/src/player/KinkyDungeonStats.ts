@@ -1587,45 +1587,11 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if (delta > 0 && KDGameData.StaminaSlow > 0) KDGameData.StaminaSlow -= delta;
 	if (delta > 0 && KDGameData.ManaSlow > 0) KDGameData.ManaSlow -= delta;
 
-	let baseRate = KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1;
-	let kneelRate = baseRate * (KinkyDungeonIsArmsBound() ? 0.85 : 1);
-	if (KinkyDungeonSlowLevel > 2) kneelRate *= 0.85;
-	let restriction = KDGameData.Restriction || 0;
-	if (restriction) {
-		kneelRate *= 10 / (10 + restriction);
-	}
 
-	let minKneel = 0;
-	if (KinkyDungeonStatsChoice.get("Grounded") && (KinkyDungeonIsArmsBound() && KinkyDungeonLegsBlocked())) {
-		minKneel = 1;
-	}
 
-	if (KDGameData.KneelTurns > 0 && !KDForcedToGround() && !KDGameData.Crouch && (kneelRate < baseRate || minKneel > 0)) {
-		if (KinkyDungeonHasHelp()) {
-			kneelRate = baseRate;
-			if (minKneel > 0) {
-				minKneel = 0;
-			}
-			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpAlly"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*kneelRate));
-
-		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Corner", undefined, undefined)) {
-			minKneel = 0;
-			kneelRate = Math.min(baseRate * 1.4, kneelRate + 0.2);
-			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*kneelRate));
-		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
-			minKneel = 0;
-			kneelRate *= 0.65;
-			//if (KDGameData.KneelTurns <= kneelRate) {
-			KinkyDungeonSendTextMessage(4, TextGet("KDGetUpWall"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*kneelRate));
-			//}
-		}
-
-		if (minKneel > 0) {
-			KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), KDBaseOrange,1, true);
-		} else if (kneelRate < 1) {
-			KinkyDungeonSendTextMessage(4, TextGet("KDKneelSlow"), KDBaseWhite,1, true);
-		}
-	}
+	let KneelStats = KDGetKneelStats(delta, true);
+	let minKneel = KneelStats.minKneel;
+	let kneelRate = KneelStats.kneelRate;
 
 
 	if (delta > 0 && KDGameData.KneelTurns > minKneel) KDGameData.KneelTurns -= delta*kneelRate;
@@ -2401,4 +2367,73 @@ function KDGetInertia(player: entity): number {
 
 	data.base += data.inertia
 	return data.base;
+}
+
+interface KDKneelData {
+	baseRate: number,
+	kneelRate: number,
+	delta: number,
+	msg: boolean,
+	minKneel: number,
+}
+
+function KDGetKneelStats(delta: number, msg: boolean): KDKneelData {
+	let data: KDKneelData = {
+		baseRate: KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1,
+		kneelRate: 1,
+		minKneel: 0,
+		delta: delta,
+		msg: msg,
+	};
+	KinkyDungeonSendEvent("beforeKneelRate", data);
+
+	data.kneelRate = data.baseRate * (KinkyDungeonIsArmsBound() ? 0.85 : 1);
+
+	if (KinkyDungeonSlowLevel > 2) data.kneelRate *= 0.85;
+	let restriction = KDGameData.Restriction || 0;
+	if (restriction) {
+		data.kneelRate *= 10 / (10 + restriction);
+	}
+
+
+	if (KinkyDungeonStatsChoice.get("Grounded") && (KinkyDungeonIsArmsBound() && KinkyDungeonLegsBlocked())) {
+		data.minKneel = 1;
+	}
+
+	if (KDGameData.KneelTurns > 0 && !KDForcedToGround() && !KDGameData.Crouch && (data.kneelRate < data.baseRate || data.minKneel > 0)) {
+		if (KinkyDungeonHasHelp()) {
+			data.kneelRate = data.baseRate;
+			if (data.minKneel > 0) {
+				data.minKneel = 0;
+			}
+			if (msg)
+				KinkyDungeonSendTextMessage(4, TextGet("KDGetUpAlly"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*data.kneelRate));
+
+		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Corner", undefined, undefined)) {
+			data.minKneel = 0;
+			data.kneelRate = Math.min(data.baseRate * 1.4, data.kneelRate + 0.2);
+			if (msg)
+				KinkyDungeonSendTextMessage(4, TextGet("KDGetUpCorner"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*data.kneelRate));
+		} else if (KinkyDungeonStatsChoice.get("Grounded") && KinkyDungeonGetAffinity(false, "Wall", undefined, undefined)) {
+			data.minKneel = 0;
+			data.kneelRate *= 0.65;
+			//if (KDGameData.KneelTurns <= kneelRate) {
+				if (msg)
+					KinkyDungeonSendTextMessage(4, TextGet("KDGetUpWall"), KDBaseWhite,1, !(KDGameData.KneelTurns <= delta*data.kneelRate));
+			//}
+		}
+
+		if (msg) {
+			if (data.minKneel > 0) {
+				KinkyDungeonSendActionMessage(1, TextGet("KDKneelCannot"), KDBaseOrange,1, true);
+			} else if (data.kneelRate < 1) {
+				KinkyDungeonSendTextMessage(4, TextGet("KDKneelSlow"), KDBaseWhite,1, true);
+			}
+		}
+
+	}
+
+	KinkyDungeonSendEvent("afterKneelRate", data);
+
+	return data;
 }

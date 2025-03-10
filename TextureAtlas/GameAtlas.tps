@@ -434,6 +434,8 @@
             <key type="filename">../Game/Bullets/LatexWallVertHit.png</key>
             <key type="filename">../Game/Bullets/Leap.png</key>
             <key type="filename">../Game/Bullets/LeapHit.png</key>
+            <key type="filename">../Game/Bullets/LeashBolt.png</key>
+            <key type="filename">../Game/Bullets/LeashBoltHit.png</key>
             <key type="filename">../Game/Bullets/LeatherCuffsBolt.png</key>
             <key type="filename">../Game/Bullets/LeatherCuffsBoltHit.png</key>
             <key type="filename">../Game/Bullets/LegbinderBolt.png</key>
@@ -849,6 +851,7 @@
             <key type="filename">../Game/EffectTiles/WireSparksAct.png</key>
             <key type="filename">../Game/EffectTiles/WireVert.png</key>
             <key type="filename">../Game/Enemies/AcidBarrel.png</key>
+            <key type="filename">../Game/Enemies/AdaLovelock.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Brat_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Dom_Fighter.png</key>
             <key type="filename">../Game/Enemies/Adventurer_Sub_Fighter.png</key>
@@ -1180,6 +1183,7 @@
             <key type="filename">../Game/Enemies/MaidforceQuest.png</key>
             <key type="filename">../Game/Enemies/MaidforceStalker.png</key>
             <key type="filename">../Game/Enemies/MaidforceStalkerImage.png</key>
+            <key type="filename">../Game/Enemies/MasterGear.png</key>
             <key type="filename">../Game/Enemies/MeleeCleric.png</key>
             <key type="filename">../Game/Enemies/MikoGhost.png</key>
             <key type="filename">../Game/Enemies/Mimic.png</key>
@@ -1473,6 +1477,7 @@
             <key type="filename">../Game/EnemiesBound/MaidforceMini.png</key>
             <key type="filename">../Game/EnemiesBound/MaidforcePara.png</key>
             <key type="filename">../Game/EnemiesBound/MaidforceStalker.png</key>
+            <key type="filename">../Game/EnemiesBound/MasterGear.png</key>
             <key type="filename">../Game/EnemiesBound/MeleeCleric.png</key>
             <key type="filename">../Game/EnemiesBound/Miner.png</key>
             <key type="filename">../Game/EnemiesBound/Mummy.png</key>
@@ -2820,6 +2825,7 @@
             <key type="filename">../Game/Locks/Gold.png</key>
             <key type="filename">../Game/Locks/Grey.png</key>
             <key type="filename">../Game/Locks/HiSec.png</key>
+            <key type="filename">../Game/Locks/Masterwork.png</key>
             <key type="filename">../Game/Locks/Purple.png</key>
             <key type="filename">../Game/Locks/Red.png</key>
             <key type="filename">../Game/Locks/Red_Hi.png</key>
@@ -3727,6 +3733,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/BalletHeels.png</key>
             <key type="filename">../Game/Items/Restraint/BindingDress.png</key>
             <key type="filename">../Game/Items/Restraint/BitGagHarness.png</key>
             <key type="filename">../Game/Items/Restraint/Bracers.png</key>
@@ -3741,6 +3748,7 @@
             <key type="filename">../Game/Items/Restraint/EssenceNecklace.png</key>
             <key type="filename">../Game/Items/Restraint/Gauntlets.png</key>
             <key type="filename">../Game/Items/Restraint/Handcuffs.png</key>
+            <key type="filename">../Game/Items/Restraint/Heels.png</key>
             <key type="filename">../Game/Items/Restraint/HingedCuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Irish8Cuffs.png</key>
             <key type="filename">../Game/Items/Restraint/LatexOTNGag.png</key>
@@ -3965,6 +3973,22 @@
                 <rect>63,63,125,125</rect>
                 <key>scale9Paddings</key>
                 <rect>63,63,125,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/Items/Restraint/TallBalletHeels.png</key>
+            <key type="filename">../Game/Items/Restraint/TallHeels.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,75,150,150</rect>
+                <key>scale9Paddings</key>
+                <rect>75,75,150,150</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

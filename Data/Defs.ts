@@ -135,6 +135,7 @@ let LAYERS_BASE = [
 	"WrapChest",
 	"HarnessOver",
 	"BindChest",
+	"NeckCorsetOver",
 	"BustierCollar",
 	"BustierChest",
 	"ShirtCollar",
@@ -541,6 +542,20 @@ let LayerGroups = {
 		"SleeveDecoRight",
 		"BeltBack",
 		"ShoeLeft",
+	]),
+	NeckCorsetOverStraps: ToMap([
+		"BustierCollar",
+		"BustierChest",
+		"ShirtCollar",
+		"ShirtChest",
+		"Option_BindChestLower",
+		"NeckCorset",
+		"SuitChestOver",
+		"BraChest",
+		"BindChestLower",
+		"SuitChest",
+		"CatsuitChest",
+		"Chest",
 	]),
 	BustierPoses: ToMap([
 		"Bustier",
@@ -1660,6 +1675,7 @@ let LayerGroups = {
 	"OverCrotchStrapMid",
 
 	"NeckCorset",
+	"NeckCorsetOver",
 	// Hair mid
 	"Mask",
 	"BlindfoldWrap",

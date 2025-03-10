@@ -2775,6 +2775,10 @@ function KinkyDungeonCreateShopStart(_POI: any, VisitedRooms: any[], width: numb
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, '2');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 4) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
+
+	KDGenerateShopVisitors();
+
+
 	if (KDRandom() < 0.1 * KDGameData.HighestLevel)
 		SetpieceSpawnPrisoner(KDMapData.StartPosition.x + 9, KDMapData.StartPosition.y);
 
@@ -3242,4 +3246,25 @@ function KinkyDungeonCreateTutorial(_POI: any, VisitedRooms: any[], width: numbe
 
 	KDMapData.EndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
 	KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart"});
+}
+
+
+function KDGenerateShopVisitors() {
+	// TODO expand
+	let options: Record<string, number> =  KDEnumerateShopVisitors();
+
+
+
+	if (Object.values(options).length > 0) {
+		let chosen = KDGetByWeight(options);
+		DialogueCreateEnemy(KDMapData.StartPosition.x + 2, KDMapData.StartPosition.y, chosen);
+	}
+}
+
+function KDEnumerateShopVisitors() {
+	let options: Record<string, number> = {}
+	if (KDCountMasterworks(KDPlayer()) > 0) {
+		options.AdaLovelock = 100;
+	}
+	return options;
 }

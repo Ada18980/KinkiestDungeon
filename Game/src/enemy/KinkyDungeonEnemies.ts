@@ -7697,11 +7697,12 @@ function KDDash(enemy: entity, player: entity, MovableTiles: string): { happened
 	return {happened: happened, Dash: Dash};
 }
 
-function KinkyDungeonSendEnemyEvent(Event: string, data: any) {
-	if (!KDMapHasEvent(KDEventMapEnemy, Event)) return;
+function KinkyDungeonSendEnemyEvent(Event: string, data: any, mapData: KDMapDataType) {
+	if (mapData == undefined) mapData = KDMapData;
+	if (mapData == KDMapData && !KDMapHasEvent(KDEventMapEnemy, Event)) return;
 	KDGetEnemyCache();
-	if (KDEnemyEventCache.get(Event))
-		for (let enemy of KDMapData.Entities) {
+	if (KDEnemyEventCache.get(Event) || mapData != KDMapData)
+		for (let enemy of mapData.Entities) {
 			if (enemy.Enemy.events && KDEnemyEventCache.get(Event)?.get(enemy.id)) {
 				for (let e of enemy.Enemy.events) {
 					if (e.trigger === Event) {
@@ -9514,7 +9515,6 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 			createpersistent = true;
 		}
 	}
-	KinkyDungeonSendEvent("addEntity", data);
 	if (KDMapData == mapData) {
 		KDUnPackEnemy(data.enemy);
 	}
@@ -9533,8 +9533,6 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 			for (let b of buffs)
 				data.enemy.buffs[b.id] = b;
 	}
-	if (mapData == KDMapData)
-		KDUpdateEnemyCache = true;
 
 	// In case it wasnt made already
 	if (createpersistent) KDGetPersistentNPC(data.enemy.id);
@@ -9547,8 +9545,16 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 	if (KDIsNPCPersistent(data.enemy.id)) {
 		KDGetPersistentNPC(data.enemy.id).spawned = true;
 	}
+	if (mapData == KDMapData) {
+		KDUpdateEnemyCache = true;
+		KinkyDungeonSendEvent("addEntity", data);
+	} else {
+		KinkyDungeonSendEvent("addEntity", data, undefined, undefined, mapData);
+	}
+
 	return data.enemy;
 }
+
 
 function KDSpliceIndex(index: number, num: number = 1, mapData?: KDMapDataType) {
 	if (!mapData) mapData = KDMapData;

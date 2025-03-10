@@ -51,7 +51,7 @@ function KDMapHasEvent(map: Record<string, any>, event: string) {
 	return map[event] != undefined;
 }
 
-function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, forceWeapon?: item) {
+function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, forceWeapon?: item, mapData?: KDMapDataType) {
 	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data, forceWeapon);
 	KinkyDungeonSendInventorySelectedEvent(Event, data);
@@ -62,7 +62,7 @@ function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, for
 	KinkyDungeonSendBulletEvent(Event, data.bullet, data);
 	KinkyDungeonSendBuffEvent(Event, data);
 	KinkyDungeonSendOutfitEvent(Event, data);
-	KinkyDungeonSendEnemyEvent(Event, data);
+	KinkyDungeonSendEnemyEvent(Event, data, mapData);
 	KinkyDungeonHandleGenericEvent(Event, data);
 	KinkyDungeonSendAltEvent(Event, data);
 	KinkyDungeonSendFacilityEvent(Event, data);
@@ -9899,6 +9899,21 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 
 					if (!KDGameData.EpicenterLevel) KDGameData.EpicenterLevel = 0;
 					KDGameData.EpicenterLevel += 1;
+
+					enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
+					enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult * (1 / (1 + factor));
+					enemy.Enemy.maxhp = enemy.Enemy.maxhp * factor;
+					enemy.hp = enemy.Enemy.maxhp;
+					enemy.modified = true;
+
+					KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
+				}
+			}
+		},
+		"MasterworkAssignHP": (_e, enemy, data) => {
+			if (enemy == data.enemy) {
+				if (!KDEnemyHasFlag(enemy, "assignedHP")) {
+					let factor = 0.2 + Math.min(0.8, 1.4*KDGetEffLevel() / KinkyDungeonMaxLevel);
 
 					enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
 					enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult * (1 / (1 + factor));

@@ -74,6 +74,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		Behavior: {noPlay: true},
 		ondeath: [{type: "murder", count: 1}],
 		terrainTags: {}, floors:KDMapInit([])},
+	{name: "AdaLovelock", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
+		visionRadius: 0, maxhp: 25, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "AdaMasterwork",
+		Behavior: {noPlay: true},
+		terrainTags: {}, floors:KDMapInit([])},
 	{name: "AntiqueQuest", tags: KDMapInit(["skeleton", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "AntiqueShop", data: {"shop": "AntiqueShop"},
 		Behavior: {noPlay: true},
@@ -4870,6 +4874,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
+			{trigger: "addEntity", type: "MasterworkAssignHP"},
 		],
 		ondeath: [{type: "MasterGear"}],
 		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:-1000,
@@ -6089,7 +6094,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar"]},
-			{trigger: "tickAfter", type: "EpicenterAssignHP"},
+			{trigger: "addEntity", type: "EpicenterAssignHP"},
 		],
 		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
 		dropTable: [{name: "ManaOrb", weight: 1}],
@@ -6204,7 +6209,7 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 	"MasterGear": (enemy, o, mapData) => {
 		if (mapData == KDMapData) {
 			let masterWorkItems = KDGetRestraintsEligible(
-				{tags: ['masterworkGear']}, KDGetEffLevel(), KDCurrIndex(),
+				{tags: ['masterworkRestraints']}, KDGetEffLevel(), KDCurrIndex(),
 				true, undefined, undefined, undefined,
 				undefined, undefined, true
 			);

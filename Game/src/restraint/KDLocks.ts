@@ -833,24 +833,7 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		doUnlock: (_data) => {
 			if (_data.unlock) {
-				// only if it was a normal unlock
-				let toUnlock = KinkyDungeonAllRestraintDynamic().filter((r) => {
-					return KDRestraint(r.item)?.shrine?.includes("Masterwork");
-				}).map((r) => {return r.item});
-				let max = toUnlock.length;
-				for (let i = 0; i < max; i++) {
-					for (let r of toUnlock) {
-						if (KinkyDungeonRemoveRestraintSpecific(r, true, false, false, false, false, _data.remover).length > 0) {
-							toUnlock.splice(toUnlock.indexOf(r), 1);
-							KinkyDungeonSendTextMessage(
-								10, TextGet("KDMasterworkLockRemove")
-									.replace("${Restraint}",
-										KDGetItemName(r))
-								, KDBaseLightGreen, 1);
-							break;
-						}
-					}
-				}
+				KDRemoveMasterwork(_data.remover);
 			}
 			return true;
 		},
@@ -1386,3 +1369,4 @@ function KDCyberActions(_data: any, player: entity, base: number) {
 	KDCanHack(player)
 		? KDBaseWhite : KDBaseRed, "", "");
 }
+
