@@ -12019,7 +12019,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 		},
 		"MasterworkTrap": (_e, data) => {
 			if (!data.selectedChestTrap) {
-				if ((data.chestType == "silver" || (data.chestType == "chest" && KDRandom() < 0.05))) {
+				if (((data.chestType == "silver" && KDRandom() < 0.4) || (data.chestType == "chest" && KDRandom() < 0.05
+					&& !KinkyDungeonFlags.get("openedMasterwork")))) {
 					if (KDCountMasterworks(KDPlayer()) < 5) {
 						data.selectedChestPossibilities["MasterworkTrap"] = 40;
 					}
@@ -12050,6 +12051,9 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				data.selectedChestTrap = "MasterworkTrap";
 				// Shadow chests spawn cursed epicenter
 				let en = KDSummonMasterworkTrap(data.x, data.y);
+				if (en) {
+					KinkyDungeonSetFlag("openedMasterwork", 1000);
+				}
 			}
 
 		},

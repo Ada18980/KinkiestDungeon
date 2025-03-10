@@ -2389,7 +2389,8 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			KinkyDungeonSetFlag("HelpMeFlag", 8);
 		if (helpChance)
 			restraintEscapeChancePre = helpChance;
-		limitChance = 0;
+		if (limitChance > 0)
+			limitChance = Math.max(0, limitChance - 0.05);
 	}
 	if (KinkyDungeonHasAngelHelp()) {
 		restraintEscapeChancePre += 0.1;
