@@ -115,25 +115,23 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			string: string;
 		} = null;
 
-		for (let i = 0; i < playerEffect.count; i++) {
-			let eligible = KDGetRestraintsEligible({tags: ['masterworkRestraints']}, KDGetEffLevel(), 'grv',
-			true, undefined,
-			undefined, undefined, false, undefined,
-			undefined, undefined, undefined, undefined);
-			if (eligible.length > 0) {
-				let r = eligible[Math.floor(KDRandom() * eligible.length)];
-				let restraint = r.restraint;
+		let eligible = KDGetRestraintsEligible({tags: ['masterworkRestraints']}, KDGetEffLevel(), 'grv',
+		true, undefined,
+		false, undefined, false, undefined,
+		undefined, undefined, undefined, undefined);
+		if (eligible.length > 0) {
+			let r = eligible[Math.floor(KDRandom() * eligible.length)];
+			let restraint = r.restraint;
 
-				if (restraint && KinkyDungeonAddRestraintIfWeaker(restraint, 0, true, "",
-					true, false, undefined, "Curse", true, undefined, entity, undefined,
-				r.inventoryVariant, undefined, undefined, r.variant)) {
-					applied = restraint.name || applied;
-				}
-			} else {
-				dmg = KinkyDungeonDealDamage({damage: 10, type: "plush"});
+			if (restraint && KinkyDungeonAddRestraintIfWeaker(restraint, 0, true, "",
+				true, false, undefined, "Curse", true, undefined, entity, undefined,
+			r.inventoryVariant, undefined, undefined, r.variant)) {
+				applied = restraint.name || applied;
 			}
-
+		} else {
+			dmg = KinkyDungeonDealDamage({damage: 10, type: "plush"});
 		}
+
 		let str = TextGet("KDApplyMasterwork" + (applied ? "Succeed" : "Fail")).replace("RNAME",
 			TextGet("Restraint" + applied));
 		if (dmg) str = str.KDReplaceOrAddDmg(dmg.string);
@@ -206,6 +204,11 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 							if (en.Enemy.tags?.epicenterCursed) {
 								en.hp = 0;
 								en.playerdmg = 0;
+								if (en.items?.length > 1) {
+									en.items.splice(0, 1);
+								} else {
+									en.items = [];
+								}
 							}
 						}
 						if (KinkyDungeonPlayerBuffs.CursingCircle)
@@ -891,7 +894,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 			effect = true;
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["latexRestraints"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, undefined,
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["latexRestraints"]}, KDGetEffLevel() + spell.power, KDCurrIndex(), undefined, undefined,
 				undefined,
 				undefined,
 				undefined,
@@ -1231,7 +1234,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 		let rest = KDGetRestraintWithVariants(
 			{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
-			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			KDCurrIndex(),
 			enemy.Enemy.bypass,
 			enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 			false,
@@ -1249,7 +1252,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (!rest) {
 			rest = KDGetRestraintWithVariants(
 				{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				enemy.Enemy.bypass,
 				enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 				false,
@@ -2309,23 +2312,24 @@ function KDPlayerEffectRestrain (
 	for (let i = 0; i < count; i++) {
 		let restraintAdd = options?.Progressive ? (
 			KDChooseRestraintFromListGroupPriWithVariants(
-				KDGetRestraintsEligible({tags: tags}, KDGetEffLevel() + (spell?.power || 0), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), bypass, Lock, !options?.DontPreferWill, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, {
+				KDGetRestraintsEligible({tags: tags}, KDGetEffLevel() + (spell?.power || 0), KDCurrIndex(), bypass, Lock, !options?.DontPreferWill, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, {
 					ApplyVariants: true,
 				}),
 				KDGetProgressiveOrderFun(), options.ProgressiveSkip)
 		) : (
-			KDGetRestraintWithVariants({tags: tags}, KDGetEffLevel() + (spell?.power || 0), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), bypass, Lock, !options?.DontPreferWill)
+			KDGetRestraintWithVariants({tags: tags}, KDGetEffLevel() + (spell?.power || 0), KDCurrIndex(), bypass, Lock, !options?.DontPreferWill)
 		);
 
 		if (!restraintAdd && !options?.RequireWill) {
 			restraintAdd = options?.Progressive ? (
 				KDChooseRestraintFromListGroupPriWithVariants(
-					KDGetRestraintsEligible({tags: tags}, KDGetEffLevel() + (spell?.power || 0), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), bypass, Lock, false, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, {
+					KDGetRestraintsEligible({tags: tags}, KDGetEffLevel() + (spell?.power || 0),
+					KDCurrIndex(), bypass, Lock, false, undefined, false, undefined, undefined, undefined, undefined, undefined, undefined, undefined, true, undefined, {
 						ApplyVariants: true,
 					}),
 					KDGetProgressiveOrderFun(), options.ProgressiveSkip)
 			) : (
-				KDGetRestraintWithVariants({tags: tags}, KDGetEffLevel() + (spell?.power || 0), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), bypass, Lock, false)
+				KDGetRestraintWithVariants({tags: tags}, KDGetEffLevel() + (spell?.power || 0), KDCurrIndex(), bypass, Lock, false)
 			);
 		}
 

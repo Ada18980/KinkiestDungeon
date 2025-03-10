@@ -3811,6 +3811,38 @@ function KDRenderAlternateInventory(selected: KDFilteredInventoryItem, xOffset: 
 
 		}, "KDSetRestraintPaletteSelect");
 
+		if (currentItem) {
+			DrawCheckboxKDEx(
+				"savePrefPal",
+				(d) => {
+					KDPalettePrefs[KDRestraint(currentItem)?.name] = currentItem.forceFaction;
+					KDSaveToggles();
+					return true;
+				}, true,
+				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40,
+				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 70, 50, 50,
+				TextGet("KDSavePaletteRestraint"),
+				(currentItem.forceFaction == undefined && KDPalettePrefs[KDRestraint(currentItem)?.name] == undefined)
+				|| (currentItem.forceFaction != undefined && KDPalettePrefs[KDRestraint(currentItem)?.name] === currentItem.forceFaction),
+				false, KDBaseWhite
+			);
+			DrawCheckboxKDEx(
+				"savePrefPalEnch",
+				(d) => {
+					KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] = currentItem.forceFaction;
+					KDSaveToggles();
+					return true;
+				}, true,
+				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40,
+				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 130, 50, 50,
+				TextGet("KDSavePaletteRestraint"),
+				(currentItem.forceFaction == undefined && KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] == undefined)
+				|| (currentItem.forceFaction != undefined && KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] === currentItem.forceFaction),
+				false, KDBaseWhite
+			);
+		}
+
+
 		DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 			KDConfigRestraintColor = !KDConfigRestraintColor;
 			return true;

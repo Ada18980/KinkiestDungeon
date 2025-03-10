@@ -1835,7 +1835,7 @@ function KDCanBringAlly(e: entity): boolean {
 function KDChooseFactions(factionList: string[], Floor: number, Tags: string[], BonusTags: Record<string, {bonus: number, mult: number}>, Set: boolean): string[] {
 	// Determine factions to spawn
 	let factions = factionList || Object.keys(KinkyDungeonFactionTag);
-	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags));
+	let primaryFaction = KDGetByWeight(KDGetFactionProps(factions, Floor, KDCurrIndex(), Tags, BonusTags));
 	let randomFactions = [
 		primaryFaction
 	];
@@ -1850,8 +1850,8 @@ function KDChooseFactions(factionList: string[], Floor: number, Tags: string[], 
 		if (KDFactionRelation(primaryFaction, f) < -0.2) enemyCandidates.push(f);
 	}
 
-	let factionAllied = allyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(allyCandidates, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags)) : "";
-	let factionEnemy = enemyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(enemyCandidates, Floor, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), Tags, BonusTags)) : "";
+	let factionAllied = allyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(allyCandidates, Floor, KDCurrIndex(), Tags, BonusTags)) : "";
+	let factionEnemy = enemyCandidates.length > 0 ? KDGetByWeight(KDGetFactionProps(enemyCandidates, Floor, KDCurrIndex(), Tags, BonusTags)) : "";
 
 	if (factionAllied && KDRandom() < 0.33) randomFactions.push(factionAllied);
 	if (factionEnemy && KDRandom() < 0.6) randomFactions.push(factionEnemy);
@@ -2153,7 +2153,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 			let Enemy = KinkyDungeonGetEnemy(
 				tags,
 				KDGetEffLevel() + levelBoost,
-				forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				forceIndex || KDCurrIndex(),
 				KinkyDungeonMapGet(X, Y),
 				required,
 				{
@@ -2167,7 +2167,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 				Enemy = KinkyDungeonGetEnemy(
 					tags,
 					KDGetEffLevel() + levelBoost,
-					forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					forceIndex || KDCurrIndex(),
 					KinkyDungeonMapGet(X, Y),
 					required,
 					{
@@ -2770,7 +2770,7 @@ function KinkyDungeonPlaceChests(params: floorParams, chestlist: any[], spawnPoi
 				if (spawned < maxspawn) {
 					let Enemy = KinkyDungeonGetEnemy(
 						tags, KDGetEffLevel(),
-						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+						KDCurrIndex(),
 						'0', requireTags, {requireHostile: "Player"});
 					if (Enemy) {
 						let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, undefined, true, (xx, yy) => {
@@ -6292,6 +6292,56 @@ function KDKneelTurns(turns: number) {
 	KinkyDungeonSetFlag("playerStun", turns + 1);
 	KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, turns);
 }
+
+type KDTNamedAndWeighted = {
+	name: string,
+	weight: number,
+}
+
+
+function ListToRecord<T extends KDTNamedAndWeighted>(list: T[]): Record<string, T> {
+	let obj: Record<string, T> = {};
+
+	for (let o of list) {
+		obj[o.name] = o;
+	}
+
+	return obj;
+}
+
+
+type KDTWeighted = {
+	weight?: number,
+}
+
+/**
+ * Get a random item from a list while making sure not to pick the previous one.
+ * @param ItemPrevious - Previously selected item from the given list
+ * @param ItemList - List for which to pick a random item from
+ * @returns The randomly selected item from the list
+ */
+function GetByWeight<T extends KDTWeighted>(list: Record<string, T>): T {
+	let WeightTotal = 0;
+	let Weights = [];
+	let type: T = null;
+
+	for (let obj of Object.entries(list)) {
+		Weights.push({obj: obj[1], weight: WeightTotal});
+		WeightTotal += obj[1].weight;
+	}
+
+	let selection = KDRandom() * WeightTotal;
+
+	for (let L = Weights.length - 1; L >= 0; L--) {
+		if (selection > Weights[L].weight) {
+			type = Weights[L].obj;
+			break;
+		}
+	}
+	return type;
+}
+
+
 
 /**
  * Picks a string based on weights

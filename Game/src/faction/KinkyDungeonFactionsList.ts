@@ -124,10 +124,12 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 		Highlight: {"gamma":1,"saturation":0,"contrast":2.216666666666667,"brightness":1.35,"red":0.41666666666666663,"green":0.35000000000000003,"blue":0.8666666666666667,"alpha":1},
 	},
 	"Curse": {
-		Catsuit: {"gamma":1.8333333333333333,"saturation":0,"contrast":0.7833333333333334,"brightness":0.3833333333333333,"red":2.3000000000000003,"green":1,"blue":4.833333333333333,"alpha":1},
+		Catsuit: {"gamma":1,"saturation":1,"contrast":0.9166666666666666,"brightness":1.4000000000000001,"red":1.1666666666666667,"green":0.9333333333333333,"blue":2.3833333333333333,"alpha":1},
 		DarkNeutral: {"gamma":0.6666666666666666,"saturation":0,"contrast":0.95,"brightness":1,"red":1.5098039215686274,"green":1.8431372549019607,"blue":3.7254901960784315,"alpha":1},
-		LightNeutral: {"gamma":1.4666666666666668,"saturation":0,"contrast":2.3166666666666664,"brightness":0.9666666666666667,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
-		Highlight: {"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.0833333333333335,"red":1.0666666666666667,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
+		LightNeutral: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+		//{"gamma":1.4666666666666668,"saturation":0,"contrast":1.3166666666666664,"brightness":2.183333333333333,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
+		Highlight: {"gamma":1.4666666666666668,"saturation":0,"contrast":1.3166666666666664,"brightness":2.183333333333333,"red":0.6,"green":0.6833333333333333,"blue":1.5333333333333332,"alpha":1},
+		//{"gamma":1,"saturation":0,"contrast":1.4833333333333334,"brightness":1.0833333333333335,"red":1.0666666666666667,"green":0.6666666666666666,"blue":0.8666666666666667,"alpha":1},
 	},
 	"AncientRobot": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},

@@ -177,7 +177,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonFlags.get("ChastityOffer")
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& KDRandom() < 0.05
-				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined,
+				&& KinkyDungeonGetRestraint({tags: ["genericChastity"]}, MiniGameKinkyDungeonLevel * 2, KDCurrIndex(), false, undefined,
 					undefined,
 					undefined,
 					undefined,
@@ -214,7 +214,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonFlags.get("NoTalk")
 				&& !KinkyDungeonFlags.get("CursedOffer")
 				&& KDRandom() < 0.05
-				&& KinkyDungeonGetRestraint({tags: ["leatherRestraints", "noBelt", "leatherHeels"]}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined,
+				&& KinkyDungeonGetRestraint({tags: ["leatherRestraints", "noBelt", "leatherHeels"]}, MiniGameKinkyDungeonLevel * 2, KDCurrIndex(), false, undefined,
 					undefined,
 					undefined,
 					undefined,
@@ -276,7 +276,7 @@ function KDDefaultPrereqs(enemy: entity, AIData: any, dist: number, maxdist: num
 			&& (!restraintTags || KinkyDungeonGetRestraint(
 				{tags: restraintTags},
 				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				undefined,
 				Lock,
 				undefined,
@@ -390,7 +390,7 @@ function KDBossLose(name: string, enemyName: string[], tags: string[], condition
 				&& enemyName.includes(enemy.Enemy.name)
 				&& !KinkyDungeonFlags.has("BossUnlocked")
 				&& ((!condition && !KinkyDungeonHasWill(0.1)) || (condition && condition()))
-				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint))));
+				&& (!tags || !KinkyDungeonGetRestraint({tags: tags}, MiniGameKinkyDungeonLevel * 2, KDCurrIndex())));
 		},
 		weight: (_enemy, _dist) => {
 			return 100;

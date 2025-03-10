@@ -3803,7 +3803,7 @@ RestraintExpArmbinderHarnessDesc2,"It's tied in the back and reinforced with ste
 RestraintExpCollar,Latex Posture Collar
 RestraintExpCollarDesc,"A strict collar that makes it tougher to escape from other items."
 RestraintExpCollarDesc2,"It has steel boning but could be cut with enough care."
-RestraintExpBoots,Latex Ballet Heels
+RestraintExpBoots,Rubber Ballet Heels
 RestraintExpBootsDesc,"A pair of strict boots for making pets more manageable. A skilled person can still walk in these."
 RestraintExpBootsDesc2,"They are reinforced with top-quality hardened latex."
 
@@ -4553,6 +4553,9 @@ RestraintLatexLegbinderDesc2,"It has too much grip to struggle out of, but is ma
 RestraintLatexBoots,Latex Boots
 RestraintLatexBootsDesc,A tight pair of boots that makes it difficult to walk!
 RestraintLatexBootsDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintLatexBootsBallet,Latex Ballet Boots
+RestraintLatexBootsBalletDesc,A tight pair of boots that makes it extremely difficult to walk!
+RestraintLatexBootsBalletDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
 RestraintLatexCorset,Heavy Latex Corset
 RestraintLatexCorsetDesc,"An excruciatingly tight corset that hugs your body, with straps securing your other restraints."
 RestraintLatexCorsetDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
@@ -31614,6 +31617,12 @@ KDMasterworkLockRemove,Your ${Restraint} clicks and releases at last!
 KDLeashRatchet,Your leash lets out a click as it ratchets to a shorter length!
 KDApplyMasterworkSucceed,The animated Masterworks overpower you and you find yourself wearing one of them!
 KDApplyMasterworkFail,The animated Masterworks force you to the ground and pat your head gently before floating away!
+
+KDSavePaletteRestraint,Save as preferred for this type
+KDSavePaletteRestraintEnch,Save for enchanted versions
+KDSavePaletteRestraintNPC,Save as preferred on NPCs
+
+KDErrorPalettes,Error saving preferred palettes
 
 NameMasterGear,Animated Masterworks
 KillMasterGear,The animated masterwork restraints come apart and flee in all directions.

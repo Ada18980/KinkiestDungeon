@@ -942,7 +942,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: () => {
 							let restraint = KinkyDungeonGetRestraint({tags: ["cyberdollrestraints", "cableGag"]},
 								KDGetEffLevel(),
-								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, "Cyber",
+								KDCurrIndex(), false, "Cyber",
 								undefined, undefined, undefined, undefined, undefined,
 								{
 									allowedGroups: ["ItemMouth"],
@@ -1205,7 +1205,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
 						KDMovePlayer(KDGameData.InteractTargetX + (nearestJail.direction?.x || 0), KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), true);
 						if (nearestJail.restrainttags) {
-							let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
+							let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined);
 							if (restraint)
 								KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 						}
@@ -1302,7 +1302,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
 							if (nearestJail.restrainttags) {
 								let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
-									KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									KDGetEffLevel(),KDCurrIndex(),
 									true,
 									"",
 									true,
@@ -1464,7 +1464,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							KinkyDungeonSetFlag("GuardCalled", 50);
 							let rest = KinkyDungeonGetRestraint(
 								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+								KDCurrIndex(),
 								true,
 								"",
 								true,
@@ -1530,7 +1530,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						let furn = KDFurniture[tile.Furniture];
 						let rest = KinkyDungeonGetRestraint(
 							{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+							KDCurrIndex(),
 							true,
 							"",
 							true,

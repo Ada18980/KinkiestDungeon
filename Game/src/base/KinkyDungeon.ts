@@ -181,6 +181,10 @@ let kdSpecialModePerks = [
 	"arousalModePlugNoFront",
 ];
 
+// Format: restraint model, palette
+let KDPalettePrefs: Record<string, string> = {};
+let KDPalettePrefsNPC: Record<string, string> = {};
+let KDPalettePrefsEnchanted: Record<string, string> = {};
 
 let KinkyDungeonGraphicsQuality = true;
 
@@ -1059,6 +1063,14 @@ function KDistTaxicab(x: number, y: number): number {
 }
 
 function KDLoadToggles() {
+	try {
+		KDPalettePrefs = JSON.parse(localStorage.getItem("KDPalettePrefs") || "{}");
+		KDPalettePrefsNPC = JSON.parse(localStorage.getItem("KDPalettePrefsNPC") || "{}");
+		KDPalettePrefsEnchanted = JSON.parse(localStorage.getItem("KDPalettePrefsEnchanted") || "{}");
+	} catch (e) {
+		KDSendMusicToast(TextGet("KDErrorPalettes"));
+		console.log(e);
+	}
 	KDDefaultPalette = localStorage.getItem("KDDefaultPalette") || "";
 
 	let loaded = localStorage.getItem("KDToggles") ? JSON.parse(localStorage.getItem("KDToggles")) : {};
@@ -1069,6 +1081,14 @@ function KDLoadToggles() {
 }
 function KDSaveToggles() {
 	localStorage.setItem("KDToggles", JSON.stringify(KDToggles));
+
+	try {
+		localStorage.setItem("KDPalettePrefs", JSON.stringify(KDPalettePrefs));
+		localStorage.setItem("KDPalettePrefsEnchanted", JSON.stringify(KDPalettePrefsEnchanted));
+	} catch (e) {
+		console.log(e);
+		KDSendMusicToast(TextGet("KDErrorPalettes"));
+	}
 }
 
 async function KDMigrateSaveToNewSystem() {

@@ -856,7 +856,7 @@ let KDTileGen = {
 		if (!tileGenerator.Chance || KDRandom() < tileGenerator.Chance) {
 			let enemy = KinkyDungeonGetEnemy(tileGenerator.tags,
 				MiniGameKinkyDungeonLevel + (tileGenerator.levelBoost || 0),
-				tileGenerator.forceIndex || (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				tileGenerator.forceIndex || KDCurrIndex(),
 				'0', tileGenerator.required, tileGenerator.requireHostile, tileGenerator.bonusTags, tileGenerator.filterTags, tileGenerator.requireSingleTag);
 			if (enemy) {
 				let en = DialogueCreateEnemy(x, y, enemy.name);

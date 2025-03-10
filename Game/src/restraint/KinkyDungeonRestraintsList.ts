@@ -1642,7 +1642,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
 		maxwill: 0.25, enemyTags: {"latexRestraintsHeavy" : 6, "latexlegbinderSpell": 10, "jailRestraints": 1, "latexStart": 10}, playerTags: {"posLatex": -1, "latexAnger": 1, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Latex", "Legbinders"]},
 	{inventory: true, name: "LatexBoots", inaccessible: true, factionColor: [[0]], Asset: "HighThighBoots", Color: ["#3873C3"], Group: "ItemBoots", power: 6, weight: 0, escapeChance: {"Struggle": -0.15, "Cut": 0.12, "Remove": 0.07, "Pick": 0.25},
-		Model: "TallBalletHeelsRestraint",
+		Model: "TallSmoothHeelsRestraint",
 		sfxGroup: "Rubber",
 		Filters: {
 			Shoe: {"gamma":2.166666666666667,"saturation":1,"contrast":2.45,"brightness":1.4000000000000001,"red":1,"green":1.7000000000000002,"blue":2.8666666666666667,"alpha":1}
@@ -1652,7 +1652,23 @@ const KinkyDungeonRestraints: restraint[] = [
 			Shoe: {color: "LightNeutral", override: false, desaturate: true},
 		},
 		heelpower: 0.5,
-		enemyTags: {"latexRestraints" : 8, "latexBoots" : 3, "jailRestraints": 1, "latexheelSpell": 10, "latexUniform": 12}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["Heels", "Latex", "Boots"]},
+		maxLevel: 0.9,
+		enemyTags: {"latexRestraints" : 8, "latexBoots" : 3, "jailRestraints": 1, "latexheelSpell": 10, "latexUniform": 12},
+		playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, allFloors: true, shrine: ["TallHeels", "Heels", "Latex", "Boots"]},
+	{inventory: true, name: "LatexBootsBallet", inaccessible: true, factionColor: [[0]], Asset: "HighThighBoots", Color: ["#3873C3"],
+		Group: "ItemBoots", power: 7, weight: 0, escapeChance: {"Struggle": -0.18, "Cut": 0.14, "Remove": 0.05, "Pick": 0.2},
+		Model: "TallBalletHeelsRestraint",
+		sfxGroup: "Rubber",
+		Filters: {
+			Shoe: {"gamma":2.166666666666667,"saturation":1,"contrast":2.45,"brightness":1.4000000000000001,"red":1,"green":1.7000000000000002,"blue":2.8666666666666667,"alpha":1}
+			//{"gamma":0.75,"saturation":1,"contrast":0.7333333333333334,"brightness":0.6166666666666667,"red":1,"green":2.0833333333333335,"blue":2.8499999999999996,"alpha":1},
+		},
+		factionFilters: {
+			Shoe: {color: "LightNeutral", override: false, desaturate: true},
+		},
+		heelpower: 0.8,
+		enemyTags: {"latexRestraints" : 8, "latexBoots" : 3, "jailRestraints": 1, "latexheelSpell": 10, "latexUniform": 12},
+		playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 9, allFloors: true, shrine: ["TallBalletHeels", "BalletHeels", "Heels", "Latex", "Boots"]},
 	{alwaysRender: true, inventory: true, name: "LatexCorset", linkCategory: "Corset", linkSize: 0.55, inaccessible: true, deepAccessible: true, factionColor: [[0]],
 		OverridePriority: 25.9, Asset: "HeavyLatexCorset", LinkableBy: KDCorsetLink, strictness: 0.1, Color: ["#5196EF"], Group: "ItemTorso", power: 8, weight: 0,
 		Model: "LatexCorsetCrossRestraint",
@@ -2545,7 +2561,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "ShinyBalletHeelsRestraint",
 		heelpower: 1.25,
 		maxwill: 0.9, enemyTags: {"expRestraints" : 6, "latexBoots" : 3, "blacksteelRestraints":10},
-		playerTags: {}, minLevel: 2, allFloors: true, shrine: ["Heels", "Boots", "Latex"]},
+		playerTags: {}, minLevel: 2, allFloors: true, shrine: ["BalletHeels", "Heels", "Boots", "Latex"]},
 	//endregion
 
 	// TODO AlwaysDebris
@@ -2841,15 +2857,21 @@ const KinkyDungeonRestraints: restraint[] = [
 		renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
 		Model: "HighSecBlindfoldRestraint",
 		factionFilters: {
-			BlindfoldStrap: {color: "LightNeutral", override: true},
-			BlindfoldStrapHardware: {color: "Highlight", override: true},
-			Blindfold: {color: "DarkNeutral", override: true},
-			Harness: {color: "DarkNeutral", override: true},
-			Rivets: {color: "Highlight", override: true},
-			HarnessL: {color: "DarkNeutral", override: true},
-			RivetsL: {color: "Highlight", override: true},
-			HarnessR: {color: "DarkNeutral", override: true},
-			RivetsR: {color: "Highlight", override: true},
+			BlindfoldStrap: {color: "Highlight", override: false},
+			BlindfoldStrapHardware: {color: "LightNeutral", override: false},
+			Blindfold: {color: "Catsuit", override: true},
+			Harness: {color: "Highlight", override: false},
+			Rivets: {color: "LightNeutral", override: false},
+			HarnessL: {color: "Highlight", override: false},
+			RivetsL: {color: "LightNeutral", override: false},
+			HarnessR: {color: "Highlight", override: false},
+			RivetsR: {color: "LightNeutral", override: false},
+		},
+		Filters: {
+			Harness: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			HarnessL: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			HarnessR: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			BlindfoldStrap: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 		maxwill: 0.0, blindfold: 5,
 
@@ -2868,15 +2890,20 @@ const KinkyDungeonRestraints: restraint[] = [
 		linkSize: 0.55, inaccessible: true, deepAccessible: true,
 		LinkableBy: KDCorsetLink, strictness: 0.2, Group: "ItemTorso",
 		Model: "HighSecCorsetRestraint",
+		Filters: {
+			CrotchStraps: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			GarterLeft: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			GarterRight: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+		},
 		factionFilters: {
-			Corset: {color: "DarkNeutral", override: true},
-			Hardware: {color: "Highlight", override: true},
-			CrotchStraps: {color: "DarkNeutral", override: true},
-			CrotchStrapsHardware: {color: "Highlight", override: true},
-			GarterLeft: {color: "DarkNeutral", override: true},
-			GarterLeftHardware: {color: "Highlight", override: true},
-			GarterRight: {color: "DarkNeutral", override: true},
-			GarterRightHardware: {color: "Highlight", override: true},
+			Corset: {color: "Catsuit", override: true},
+			Hardware: {color: "Highlight", override: false},
+			CrotchStraps: {color: "Highlight", override: false},
+			CrotchStrapsHardware: {color: "LightNeutral", override: false},
+			GarterLeft: {color: "Highlight", override: false},
+			GarterLeftHardware: {color: "LightNeutral", override: false},
+			GarterRight: {color: "Highlight", override: false},
+			GarterRightHardware: {color: "LightNeutral", override: false},
 		},
 		restriction: 12,
 		struggleMinSpeed: {"Remove": 0.05}, struggleMaxSpeed: {"Remove": 0.1},
@@ -2899,11 +2926,20 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "HighSecBalletHeelsRestraint",
 		heelpower: 1.25,
 
+		Filters: {
+			StrapsLeft: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			StrapsRight: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+		},
 
 		factionFilters: {
-			Shoe: {color: "DarkNeutral", override: true},
-			StrapsRight: {color: "Highlight", override: true},
-			StrapsLeft: {color: "Highlight", override: true},
+			ShoeRight: {color: "Catsuit", override: true},
+			ShoeLeft: {color: "Catsuit", override: true},
+			SoleLeft: {color: "LightNeutral", override: true},
+			SoleRight: {color: "LightNeutral", override: true},
+			StrapsLeft: {color: "Highlight", override: false},
+			HardwareLeft: {color: "LightNeutral", override: false},
+			StrapsRight: {color: "Highlight", override: false},
+			HardwareRight: {color: "LightNeutral", override: false},
 		},
 
 		// (mostly) Common to Masterwork
@@ -2914,7 +2950,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
 		enemyTags: {"masterworkRestraints": 10},
 		playerTags: {},
-		minLevel: 0, allFloors: true, shrine: ["Masterwork", "Heels", "Boots"]},
+		minLevel: 0, allFloors: true, shrine: ["Masterwork", "TallBalletHeels", "BalletHeels", "Heels", "Boots"]},
 
 	{inventory: true, name: "MasterworkGloves", inaccessible: true,
 		Group: "ItemHands",
@@ -2925,10 +2961,14 @@ const KinkyDungeonRestraints: restraint[] = [
 		],
 
 		factionFilters: {
-			GloveRight: {color: "DarkNeutral", override: true},
-			GloveLeft: {color: "DarkNeutral", override: true},
-			StrapsLeft: {color: "Highlight", override: true},
-			StrapsRight: {color: "Highlight", override: true},
+			GloveRight: {color: "Catsuit", override: true},
+			GloveLeft: {color: "Catsuit", override: true},
+			StrapsLeft: {color: "Highlight", override: false},
+			StrapsRight: {color: "Highlight", override: false},
+		},
+		Filters: {
+			StrapsRight: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+			StrapsLeft: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
 
 		// (mostly) Common to Masterwork
@@ -2946,14 +2986,17 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "HighSecCollarRestraint", LinkableBy: [...KDCollarLink],renderWhenLinked: [...KDHighCollarRender],
 
 		factionFilters: {
-			Collar: {color: "DarkNeutral", override: true},
+			Collar: {color: "Catsuit", override: true},
 			Rim: {color: "LightNeutral", override: true},
-			Band: {color: "DarkNeutral", override: true},
-			Straps: {color: "DarkNeutral", override: true},
-			StrapsHardware: {color: "Highlight", override: true},
+			Band: {color: "Catsuit", override: true},
+			Straps: {color: "Highlight", override: false},
+			StrapsHardware: {color: "LightNeutral", override: false},
 			Ring: {color: "Highlight", override: true},
 		},
 
+		Filters: {
+			StrapsStrapsRight: {"gamma":1.133333333333332,"saturation":1,"contrast":1,"brightness":2.1,"red":1,"green":1,"blue":1,"alpha":1},
+		},
 		// (mostly) Common to Masterwork
 		sfxGroup: "Leather",
 		power: 25, weight: 10, debris: "Belts",
@@ -3347,14 +3390,15 @@ const KinkyDungeonRestraints: restraint[] = [
 		remove: ["Shoes"],
 		sfxGroup: "Leather",
 		Model: "BalletHeelsRestraint",
-		maxwill: 0.9, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.4, "Pick": 0.4}, enemyTags: {"trap":100, "leatherHeels": 8}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Heels", "Leather", "Boots", "Heels"]},
+		maxwill: 0.9, escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.4, "Pick": 0.4}, enemyTags: {"trap":100, "leatherHeels": 8}, playerTags: {},
+		minLevel: 0, allFloors: true, shrine: ["BalletHeels", "Heels", "Leather", "Boots", "Heels"]},
 	{inventory: true, trappable: true, name: "TrainingHeels", debris: "Belts", Asset: "BalletHeels", Color: "Default", Group: "ItemBoots", heelpower: 1, power: 5, weight: 0,
 		alwaysKeep: true,
 		DefaultLock: "HiSec",
 		sfxGroup: "Leather",
 		remove: ["Shoes"],
 		Model: "BalletHeelsRestraint",
-		escapeChance: {"Struggle": -0.5, "Cut": 0.1, "Remove": 10, "Pick": 0.0}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Heels", "Boots"]},
+		escapeChance: {"Struggle": -0.5, "Cut": 0.1, "Remove": 10, "Pick": 0.0}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BalletHeels", "Heels", "Boots"]},
 
 	{inventory: true, trappable: true, name: "TrapLegirons", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
 		power: 4, weight: 2,
@@ -6754,6 +6798,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleBreak: true,
 		linkCategory: "BasicCollar", linkSize: 0.51,
 		tightType: "Secure",
+		factionFilters: {
+			Band: {color: "LightNeutral", override: true},
+			Lining: {color: "Highlight", override: true},
+		},
 		Filters: {
 			Band: {"gamma":1,"saturation":0.05,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			Lining: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.48333333333333334,"red":1,"green":1,"blue":1,"alpha":1},

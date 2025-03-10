@@ -2154,7 +2154,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-3));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;
-		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["doll", "peaceful"]);
+		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], KDGetEffLevel(),KDCurrIndex(), '0', ["doll", "peaceful"]);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
 			if (KDRandom() < 0.33) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Tape");
@@ -2213,7 +2213,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-2));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;
-		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot"], undefined, undefined);
+		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, KDCurrIndex(), '0', ["robot"], undefined, undefined);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
 			e.faction = "Enemy";
@@ -2222,7 +2222,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 	if (KDGameData.DollRoomCount > 1) { // Spawn a group of AIs
 		for (let i = 0; i < 1 + Math.ceil(robotCount * 0.1); i++) {
 			let point = KinkyDungeonGetNearbyPoint(KDMapData.EndPosition.x, KDMapData.EndPosition.y);
-			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot"],
+			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, KDCurrIndex(), '0', ["robot"],
 				undefined, undefined, ["minor", "miniboss", "noguard"]);
 			if (Enemy) {
 				let e = DialogueCreateEnemy(point.x, point.y, Enemy.name);
@@ -2234,7 +2234,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 		}
 	}
 
-	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot", "dollRoomBoss"],
+	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(), '0', ["robot", "dollRoomBoss"],
 		undefined, undefined, ["noguard"]);
 	if (ExitGuard) {
 		let e = DialogueCreateEnemy(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ExitGuard.name);

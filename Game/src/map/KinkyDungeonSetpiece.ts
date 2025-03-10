@@ -890,7 +890,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 	let furn = KDFurniture[tile?.Furniture];
 	let rest: restraint = furn ? KinkyDungeonGetRestraint(
 		{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-		(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+		KDCurrIndex(),
 		true,
 		"",
 		true,
@@ -947,7 +947,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 			"elementsAnger", "elementsRage",
 			"illusionAnger", "illusionRage",
 			"leatherAnger", "leatherRage",
-			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), KinkyDungeonMapGet(x, y), ["imprisonable"]);
+			"willAnger", "willRage"], MiniGameKinkyDungeonLevel * 2, KDCurrIndex(), KinkyDungeonMapGet(x, y), ["imprisonable"]);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(x, y, Enemy.name);
 			if (

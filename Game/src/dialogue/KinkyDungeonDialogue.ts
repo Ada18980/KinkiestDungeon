@@ -1518,7 +1518,7 @@ function KDRecruitDialogue (
 							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 							KinkyDungeonChangeRep("Ghost", 2);
 							for (let i = 0; i < restraintscount; i++) {
-								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KDCurrIndex());
 								if (r) KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, undefined, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 							}
 							let outfit = {name: outfitName, type: Outfit, id: KinkyDungeonGetItemID()};
@@ -1577,7 +1577,7 @@ function KDRecruitDialogue (
 							KinkyDungeonChangeRep("Ghost", 2);
 							let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 							for (let i = 0; i < restraintscount; i++) {
-								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+								let r = KinkyDungeonGetRestraint({tags: restraints}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KDCurrIndex());
 								if (r) KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, undefined, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 							}
 							let outfit = {name: outfitName, type: Outfit, id: KinkyDungeonGetItemID()};
@@ -1604,7 +1604,7 @@ function KDRecruitDialogue (
 								KDGameData.CurrentDialogMsg = name + "Force_Failure";
 								let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 								for (let i = 0; i < restraintscountAngry; i++) {
-									let r = KinkyDungeonGetRestraint({tags: restraintsAngry}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+									let r = KinkyDungeonGetRestraint({tags: restraintsAngry}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KDCurrIndex());
 									if (r) KinkyDungeonAddRestraintIfWeaker(r, ((enemy ? Math.min(10, enemy.Enemy.power) + KDEnemyRank(enemy) : 0) || 0), true, undefined, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined);
 								}
 								let outfit = {name: outfitName, type: Outfit, id: KinkyDungeonGetItemID()};
@@ -2132,7 +2132,7 @@ function KDYesNoBasic (
 			let r = KinkyDungeonGetRestraint(
 				{tags: restraint},
 				KDGetEffLevel() * 1.5 + KDGetOfferLevelMod(),
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				undefined,
 				Lock,
 				undefined,
@@ -2228,7 +2228,7 @@ function KDYesNoBasic (
 			if (num > 1) {
 				let r = KinkyDungeonGetRestraint({tags: restraint},
 					MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
-					(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined,
+					KDCurrIndex(), undefined,
 					curse ? undefined : Lock,
 					undefined,
 					undefined,
@@ -2306,7 +2306,7 @@ function KDYesNoBasic (
 					let num = refused ? countAngry : count;
 					// Apply additional restraints
 					if (num > 1) {
-						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined,
+						let r = KinkyDungeonGetRestraint({tags: restraint}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(), KDCurrIndex(), undefined,
 						curse ? undefined : Lock,
 							undefined,
 							undefined,

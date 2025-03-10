@@ -3380,6 +3380,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 				playerTags.set(group + "Full", true);
 				playerTags.set(inv.item.name + "Worn", true);
+				if (inv.item.inventoryVariant)
+					playerTags.set(inv.item.inventoryVariant + "Worn", true);
 			}
 		}
 		for (let sg of KinkyDungeonStruggleGroupsBase) {
@@ -3477,6 +3479,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 				playerTags.set(group + "Full", true);
 				playerTags.set(inv.name + "Worn", true);
+				if (inv.inventoryVariant)
+					playerTags.set(inv.inventoryVariant + "Worn", true);
 			}
 		}
 		for (let sg of KinkyDungeonStruggleGroupsBase) {
@@ -3536,6 +3540,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 				playerTags.set(group + "Full", true);
 				playerTags.set(inv.name + "Worn", true);
+				if (inv.inventoryVariant)
+					playerTags.set(inv.inventoryVariant + "Worn", true);
 			}
 		}
 		for (let sg of KinkyDungeonStruggleGroupsBase) {
@@ -3676,7 +3682,7 @@ function KDIsEligible(restraint: restraint): boolean {
 }
 
 function KinkyDungeonGenerateRestraintTrap(): string {
-	let enemy = KinkyDungeonGetEnemy(["chestTrap"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["chestTrap"]);
+	let enemy = KinkyDungeonGetEnemy(["chestTrap"], KDGetEffLevel(),KDCurrIndex(), '0', ["chestTrap"]);
 	if (enemy) return enemy.name;
 	return "GreedyGhast";
 }
@@ -4096,7 +4102,9 @@ function KDLinkUnder (
 		let safeLink = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy, undefined, undefined, undefined);
 		linkUnder.dynamicLink = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, events:events ? events : KDGetEventsForRestraint(inventoryAs || restraint.name),
 			data: data,
-			tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
+			tightness: Tightness, curse: Curse,
+			faction: faction != undefined ? faction : KDDefaultItemPalette(restraint.name, inventoryAs),
+			dynamicLink: linkUnder.dynamicLink };
 
 		KDUpdateItemEventCache = true;
 		let lk = linkUnder.dynamicLink;
@@ -4602,7 +4610,7 @@ function KinkyDungeonAddRestraint (
 					events: events ? events : KDGetEventsForRestraint(inventoryAs || restraint.name),
 					tightness: tight,
 					lock: "",
-					faction: faction,
+					faction: faction != undefined ? faction : KDDefaultItemPalette(restraint.name, inventoryAs),
 					dynamicLink: dynamicLink,
 					data: data,
 				};
@@ -5902,7 +5910,7 @@ function KDChangeNPCRestraint(inv: NPCRestraint, newRes: string): NPCRestraint {
 		lock: inv.lock,
 		name: newRes,
 		id: inv.id,
-		faction: inv.faction,
+		faction: inv.faction != undefined ? inv.faction : KDPalettePrefsNPC[newRes],
 
 		inventoryVariant: inv.inventoryVariant,
 		powerbonus: inv.inventoryVariant ? KinkyDungeonRestraintVariants[inv.inventoryVariant]?.power : inv.powerbonus,
@@ -6460,7 +6468,7 @@ function KDAddFurnitureRestraintSet(entity: entity, restraintSet: Record<string,
 				let rest = KDGetRestraintWithVariants(
 					{tags: [r[0]]},
 					KDGetEffLevel() + power,
-					(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					KDCurrIndex(),
 					!!KinkyDungeonStatsChoice.has("MagicHands"),
 					undefined,
 					false,
@@ -6597,13 +6605,37 @@ function KDUpdatePreferenceFlags() {
 }
 
 
+function KDCountMasterworks(player: entity) {
+	let count = 0;
+	if (player == KDPlayer()) {
+		for (let r of KinkyDungeonAllRestraintDynamic()) {
+			if (KDRestraint(r.item)?.shrine?.includes("Masterwork")) {
+				count++;
+			}
+		}
+		for (let inv of KinkyDungeonAllLooseRestraint()) {
+			if (KDRestraint(inv)?.shrine?.includes("Masterwork")) {
+				count += inv.quantity || 1;
+			}
+		}
+
+	}
+	return count;
+}
+
+
+function KDGetNeededMasterworkCount() {
+	return KinkyDungeonStatsChoice.get("NoBlindfolds") ?
+		KDDialogueParams.MasterworkCount - 1
+		: KDDialogueParams.MasterworkCount;
+}
+
+
 
 function KDHasMasterworkSet(player: entity) {
 	if (player == KDPlayer()) {
 		// Only need 4 if no blindfolds perk
-		let requiredItems = KinkyDungeonStatsChoice.get("NoBlindfolds") ?
-			KDDialogueParams.MasterworkCount - 1
-			: KDDialogueParams.MasterworkCount;
+		let requiredItems = KDGetNeededMasterworkCount();
 		let count = 0;
 		for (let r of KinkyDungeonAllRestraintDynamic()) {
 			if (KDRestraint(r.item)?.shrine?.includes("Masterwork")) {
@@ -6614,4 +6646,16 @@ function KDHasMasterworkSet(player: entity) {
 
 		if (count >= requiredItems) return false;
 	}
+}
+
+function KDDefaultItemPalette(name: string, variantName: string) {
+	let variant = KinkyDungeonRestraintVariants[variantName];
+	if (variant) {
+		return KDPalettePrefsEnchanted[name];
+	} else {
+		return KDPalettePrefs[name];
+	}
+}
+function KDDefaultNPCItemPalette(name: string) {
+	return KDPalettePrefsNPC[name];
 }

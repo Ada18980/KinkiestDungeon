@@ -4871,6 +4871,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
+		ondeath: [{type: "MasterGear"}],
 		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:-1000,
 		movePoints: 2.2, attackPoints: 2, attack: "SpellMeleeEffect",
 		attackWidth: 1, attackRange: 1, power: 4, dmgType: "chain", fullBoundBonus: 1,
@@ -6091,7 +6092,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "tickAfter", type: "EpicenterAssignHP"},
 		],
 		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
-		dropTable: [{name: "ManaOrb", weight: 1}, {name: "DarkKatana", weight: 100, ignoreInInventory: true}, {name: "StaffDoll", weight: 100, ignoreInInventory: true}, {name: "StaffBind", weight: 100, ignoreInInventory: true}, {name: "MagicAxe", weight: 100, ignoreInInventory: true}],
+		dropTable: [{name: "ManaOrb", weight: 1}],
 	},
 	{name: "EpicenterCursed2", faction: "Curse", color: "#a4affa",
 		tags: KDMapInit(["opendoors", "epicenterCursed", "epicenter", "curseTrap", "ghost", "cursed", "soulimmune", "melee", "fireweakness", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
@@ -6107,10 +6108,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar2"]},
-			{trigger: "tickAfter", type: "EpicenterAssignHP"},
+			{trigger: "addEntity", type: "EpicenterAssignHP"},
 		],
 		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
-		dropTable: [{name: "ManaOrb", weight: 1}, {name: "StaffStorm", weight: 100, ignoreInInventory: true}, {name: "StaffIncineration", weight: 100, ignoreInInventory: true}, {name: "StaffFrostbite", weight: 100, ignoreInInventory: true}, {name: "MagicSword", weight: 100, ignoreInInventory: true}],
+		dropTable: [{name: "ManaOrb", weight: 1}],
 	},
 	//endregion
 ];
@@ -6200,6 +6201,24 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 			if (spell) KinkyDungeonCastSpell(enemy.x, enemy.y, spell, undefined, undefined, undefined, KDGetFaction(enemy));
 		}
 	},
+	"MasterGear": (enemy, o, mapData) => {
+		if (mapData == KDMapData) {
+			let masterWorkItems = KDGetRestraintsEligible(
+				{tags: ['masterworkGear']}, KDGetEffLevel(), KDCurrIndex(),
+				true, undefined, undefined, undefined,
+				undefined, undefined, true
+			);
+			masterWorkItems = masterWorkItems.filter((m) => {
+				return !KinkyDungeonPlayerTags.get(m.restraint.name + "Worn");
+			})
+			if (masterWorkItems.length > 0) {
+				let chosen = CommonRandomItemFromList(undefined, masterWorkItems);
+				if (chosen) {
+					mapData.GroundItems.push({x:enemy.x, y:enemy.y, name: chosen.restraint.name});
+				}
+			}
+		}
+	},
 	"removeQuest": (_enemy, o) => {
 		KDRemoveQuest(o.quest);
 	},
@@ -6227,7 +6246,7 @@ let KDSpecialConditions: Record<string, SpecialCondition> = {
 				&& KDistChebyshev(enemy.x - AIData.player.x, enemy.y - AIData.player.y) < 3
 				&& KDGetRestraintsEligible(
 				{tags: KDGetTags(enemy, true)}, MiniGameKinkyDungeonLevel,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				enemy.Enemy.bypass,
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),

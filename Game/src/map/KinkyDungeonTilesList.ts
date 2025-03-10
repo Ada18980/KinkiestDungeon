@@ -551,10 +551,16 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 					tile: KinkyDungeonTilesGet(moveX + "," +moveY),
 					noTrap: noTrap,
 					level: MiniGameKinkyDungeonLevel,
-					index: (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					index: KDCurrIndex(),
 					lootTrap: lootTrap,
 					aggro: true,
+					selectedChestTrap: "",
+					selectedChestPossibilities: {},
 				};
+				KinkyDungeonSendEvent("enumerateBeforeChest", data);
+				if (!data.selectedChestTrap && Object.values(data.selectedChestPossibilities).length > 0) {
+					data.selectedChestTrap = KDGetByWeight(data.selectedChestPossibilities);
+				}
 				KinkyDungeonSendEvent("beforeChest", data);
 				if (data.aggro)
 					KinkyDungeonAggroAction('chest', {faction: faction, x: moveX, y: moveY});
@@ -632,7 +638,7 @@ let KDMoveObjectFunctions: Record<string, (moveX: number, moveY: number) => bool
 		let allowManip = KDAllowUseItems(true);
 		if (allowManip) {
 			let chestType = (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint) == "lib" ? "shelf" : "rubble";
-			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), chestType);
+			KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KDCurrIndex(), chestType);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Coins.ogg");
 			KinkyDungeonMapSet(moveX, moveY, 'X');
 			KDGameData.AlreadyOpened.push({x: moveX, y: moveY});

@@ -2756,3 +2756,7 @@ function KinkyDungeonSpellRemove(spellobject: spell | string) {
 function KDShockCollarCost() {
 	return 3*(2**Math.max(0, KDEntityBuffedStat(KDPlayer(), "ShockCollarCD", true)));
 }
+
+function KDCurrIndex() {
+	return (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
+}

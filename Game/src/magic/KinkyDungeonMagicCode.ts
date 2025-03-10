@@ -41,7 +41,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (tile) {
 				if (tile.Loot && tile.Roll) {
 					if (_miscast) return "Miscast";
-					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), tile.Loot, tile.Roll, tile, true);
+					let event = KinkyDungeonLoot(MiniGameKinkyDungeonLevel, KDCurrIndex(), tile.Loot, tile.Roll, tile, true);
 					if (event.trap || tile.lootTrap) KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipTrap"), KDBaseRed, 2);
 					else KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonShrineTooltipNoTrap"), KDBaseLightGreen, 2);
 
@@ -692,7 +692,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			return "Cast";
 		} else {
 			if (KinkyDungeonPlayerEntity.x == tX && KinkyDungeonPlayerEntity.y == tY) {
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined, undefined,
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(), undefined, undefined,
 					undefined,
 					undefined,
 					undefined,
@@ -720,7 +720,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"DisplayStand": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["displaySpell"]}, KDGetEffLevel(),KDCurrIndex());
 			if (restraintAdd) {
 				if (_miscast) return "Miscast";
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -770,7 +770,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	"Petsuit": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		if (en && en.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["petsuitSpell"]}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["petsuitSpell"]}, KDGetEffLevel(),KDCurrIndex());
 			if (restraintAdd) {
 				if (_miscast) return "Miscast";
 				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastSelf"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -2302,7 +2302,7 @@ let KDCommandCaptureBindings: Record<string, (spell: spell, entity: entity, fact
 	"vine": (spell, entity, faction, bullet, _miscast, _attacker, _counter) => {
 		// Vines slow the target down
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["vineRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KDCurrIndex());
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -2319,7 +2319,7 @@ let KDCommandCaptureBindings: Record<string, (spell: spell, entity: entity, fact
 	"rope": (spell, entity, faction, bullet, _miscast, attacker, counter) => {
 		// Ropes slow the target down
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ropeRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KDCurrIndex());
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -2343,7 +2343,7 @@ let KDCommandCaptureBindings: Record<string, (spell: spell, entity: entity, fact
 	"fabric": (spell, entity, faction, bullet, _miscast, attacker, counter) => {
 		// Ropes slow the target down
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ribbonRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["ribbonRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KDCurrIndex());
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -2367,7 +2367,7 @@ let KDCommandCaptureBindings: Record<string, (spell: spell, entity: entity, fact
 	"belt": (spell, entity, faction, bullet, _miscast, attacker, _counter) => {
 		// Belts apply extra binding (10 per spell level)
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leatherRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["leatherRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KDCurrIndex());
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
@@ -2389,7 +2389,7 @@ let KDCommandCaptureBindings: Record<string, (spell: spell, entity: entity, fact
 	"chain": (spell, entity, faction, bullet, _miscast, attacker, _counter) => {
 		// Chains deal crush damage
 		if (entity.player) {
-			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["chainRestraints"]}, MiniGameKinkyDungeonLevel + spell.power, KDCurrIndex());
 			if (restraintAdd) {
 				KinkyDungeonAddRestraintIfWeaker(restraintAdd, spell.power, false, undefined, false, false, undefined, faction);
 				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);

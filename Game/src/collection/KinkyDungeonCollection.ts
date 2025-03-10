@@ -1347,7 +1347,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			let furn = KDFurniture[tile.Furniture];
 			let rest = KinkyDungeonGetRestraint(
 				{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				true,
 				"",
 				true,
@@ -1398,7 +1398,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
 				let rest = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
-					KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					KDGetEffLevel(),KDCurrIndex(),
 					true,
 					"",
 					true,

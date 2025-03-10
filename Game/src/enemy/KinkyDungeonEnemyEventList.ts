@@ -1361,7 +1361,7 @@ function KDApplyFurnitureRestraint(x: number, y: number, player: entity) {
 	if (player == KDPlayer()) {
 		let rest = KinkyDungeonGetRestraint(
 			{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			KDCurrIndex(),
 			true,
 			"",
 			true,

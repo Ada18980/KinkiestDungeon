@@ -3365,7 +3365,7 @@ let KDPrereqs: Record<string, (enemy: entity, e: KinkyDungeonEvent, data: any) =
 		if (KinkyDungeonPlayerTags.get("CursedSet")) return false;
 		if (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
 			MiniGameKinkyDungeonLevel,
-			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "")) return false;
+			KDCurrIndex(), true, "")) return false;
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
 			let item = inv.item;
 			if (item.events.some((event) => {return event.trigger == "CurseTransform" && event.kind == "transform";})) return true;

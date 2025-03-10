@@ -1772,7 +1772,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
 		}
 		if (nearestJail.restrainttags) {
-			let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
+			let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined);
 			if (restraint)
 				KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 		}

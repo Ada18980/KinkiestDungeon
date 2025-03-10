@@ -316,7 +316,7 @@ let KDCollectionWanderTypes: Record<string, CollectionWanderType> = {
 								let ff = tile ? KDFurniture[tile.Furniture] : undefined;
 								let rest = ff ? KinkyDungeonGetRestraint(
 									{tags: [ff.restraintTag]}, MiniGameKinkyDungeonLevel,
-									(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									KDCurrIndex(),
 									true,
 									"",
 									true,

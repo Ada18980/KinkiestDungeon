@@ -5611,7 +5611,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				|| !AIData.wantsToAttack
 				|| !KinkyDungeonGetRestraint(
 					{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0) + (AIData.attack.includes("Suicide") ? 10 : 0),
-					(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					KDCurrIndex(),
 					enemy.Enemy.bypass,
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
@@ -6381,7 +6381,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 									if (furn) {
 										let rest = KDGetRestraintWithVariants(
 											{tags: [furn.restraintTag]}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
-											(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+											KDCurrIndex(),
 											true,
 											"",
 											!KDPlayerIsStunned(),
@@ -6399,7 +6399,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										let rThresh = enemy.Enemy.RestraintFilter?.powerThresh || (KDDefaultRestraintThresh + (Math.max(0, enemy.Enemy.power - 1) || 0));
 										let rest = KDGetRestraintWithVariants(
 											{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
-											(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+											KDCurrIndex(),
 											enemy.Enemy.bypass,
 											enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 											!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
@@ -6421,7 +6421,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 										if (!rest) {
 											rest = KDGetRestraintWithVariants(
 												{tags: KDGetTags(enemy, enemy.usingSpecial)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
-												(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+												KDCurrIndex(),
 												enemy.Enemy.bypass,
 												enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 												!(KDPlayerIsStunned() || enemy.Enemy.ignoreStaminaForBinds || (enemy.usingSpecial && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),
@@ -8257,7 +8257,7 @@ function KDStockRestraints(enemy: entity, restMult: number, count?: number) {
 	for (let i = 0; i < rCount; i++) {
 		let r = KDGetRestraintWithVariants(
 			{tags: KDGetTags(enemy, false)}, KDGetEffLevel() + (enemy.Enemy.RestraintFilter?.levelBonus || enemy.Enemy.power || 0),
-			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			KDCurrIndex(),
 			enemy.Enemy.bypass,
 			enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 			false,

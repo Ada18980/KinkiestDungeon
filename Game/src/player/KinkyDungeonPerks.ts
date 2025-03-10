@@ -1240,7 +1240,7 @@ function KDGetPerkShrineBondage(perks: string[]): string[] {
 				if (restraints.length == 0) {
 					if (i > 0)
 						randTheme();
-					restraints = KDGetRestraintsEligible({tags: [theme, theme+"Heavy", theme+"Chastity"]}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					restraints = KDGetRestraintsEligible({tags: [theme, theme+"Heavy", theme+"Chastity"]}, KDGetEffLevel(), KDCurrIndex(),
 						true, "Gold");
 					restraints = restraints.filter((r) => {
 						return !ret.includes(r.restraint.name);
