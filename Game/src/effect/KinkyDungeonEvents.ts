@@ -9913,11 +9913,10 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		"MasterworkAssignHP": (_e, enemy, data) => {
 			if (enemy == data.enemy) {
 				if (!KDEnemyHasFlag(enemy, "assignedHP")) {
-					let factor = 0.2 + Math.min(0.8, 1.4*KDGetEffLevel() / KinkyDungeonMaxLevel);
+					let factor = 0.2 + Math.min(0.8, Math.max(0, 1.4*(KDGetEffLevel() - 1) / KinkyDungeonMaxLevel));
 
 					enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
-					enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult * (1 / (1 + factor));
-					enemy.Enemy.maxhp = enemy.Enemy.maxhp * factor;
+					enemy.Enemy.maxhp = Math.ceil(enemy.Enemy.maxhp * factor);
 					enemy.hp = enemy.Enemy.maxhp;
 					enemy.modified = true;
 
