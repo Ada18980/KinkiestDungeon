@@ -66,3 +66,23 @@ function KDHasMasterworkSet(player: entity) {
 	}
 	return false;
 }
+
+
+/**
+ * Helper function used to summon cursed epicenters
+ * @param x
+ * @param y
+ */
+function KDSummonMasterworkTrap(x: number, y: number): entity {
+	let enemy = KinkyDungeonGetEnemy(["masterworkTrap"], KDGetEffLevel(),KDCurrIndex(), '0', ["masterwork"]);
+	if (enemy) {
+		let point = {x: x, y: y};//KinkyDungeonGetNearbyPoint(x, y, true);
+		if (point) {
+			let en = DialogueCreateEnemy(point.x, point.y, enemy.name);
+
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
+			KinkyDungeonSendTextMessage(8, TextGet("KDSummonMasterGear"), "#9074ab", 5);
+			return en;
+		}
+	}
+}

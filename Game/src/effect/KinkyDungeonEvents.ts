@@ -12031,7 +12031,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	},
 	"beforeChest": {
 		"shadowChest": (_e, data) => {
-			if (!data.selectedChestTrap || data.selectedChestTrap == "CurseTrap") {
+			if (data.selectedChestTrap == "CurseTrap") {
 				data.selectedChestTrap = "CurseTrap";
 				// Shadow chests spawn cursed epicenter
 				let en = KDSummonCurseTrap(data.x, data.y);
@@ -12040,6 +12040,14 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					if (itemLoot)
 						en.items.unshift(itemLoot);
 				}
+			}
+
+		},
+		"masterworkGear": (_e, data) => {
+			if (data.selectedChestTrap == "MasterworkTrap") {
+				data.selectedChestTrap = "MasterworkTrap";
+				// Shadow chests spawn cursed epicenter
+				let en = KDSummonMasterworkTrap(data.x, data.y);
 			}
 
 		},

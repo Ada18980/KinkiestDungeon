@@ -4855,8 +4855,8 @@ let KinkyDungeonEnemies: enemy[] = [
 	{name: "MasterGear", faction: "KinkyConstruct", clusterWith: "construct",
 		playLine: "KinkyConstruct",
 		bound: "MasterGear", color: KDBasePink,
-		tags: KDMapInit(["opendoors", "nocapture", "metalTrap", "leatherTrap", "miniboss",
-			"unflinching",
+		tags: KDMapInit(["opendoors", "nocapture", "masterworkTrap", "miniboss",
+			"unflinching", "masterwork", "notalk",
 			"construct", "nosignal", "poisonimmune", "soulimmune", "melee",
 			"chainresist", "meleeresist", "glueweakness", "iceweakness"]),
 		ignorechance: 0, followRange: 1, AI: "hunt",
@@ -4877,10 +4877,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "addEntity", type: "MasterworkAssignHP"},
 		],
 		ondeath: [{type: "MasterGear"}],
-		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:-1000,
+		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:0,
 		movePoints: 2.2, attackPoints: 2, attack: "SpellMeleeEffect",
 		attackWidth: 1, attackRange: 1, power: 4, dmgType: "chain", fullBoundBonus: 1,
-		terrainTags: {pink: 1100}, shrines: ["Leather"], allFloors: true,
+		terrainTags: {masterworkTrap: 100}, shrines: ["Leather"], allFloors: true,
 		dropTable: [{name: "RedKey", amount: 1, weight: 10}]},
 
 
