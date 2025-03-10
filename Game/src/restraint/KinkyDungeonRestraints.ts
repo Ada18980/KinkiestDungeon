@@ -10,6 +10,8 @@
 
 // Power is a scale of how powerful the restraint is supposed to be. It should roughly match the difficulty of the item, but can be higher for special items. Power 10 or higher might be totally impossible to struggle out of.
 
+let KDAllyLimitChanceRedMult = 0.5;
+let KDAllyLimitChanceRedFlat = 0.05;
 
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
@@ -2390,7 +2392,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		if (helpChance)
 			restraintEscapeChancePre = helpChance;
 		if (limitChance > 0)
-			limitChance = Math.max(0, limitChance - 0.05);
+			limitChance = Math.max(0, limitChance - KDAllyLimitChanceRedFlat);
+		if (limitChance > 0 && StruggleType != "Cut")
+			limitChance *= KDAllyLimitChanceRedMult;
 	}
 	if (KinkyDungeonHasAngelHelp()) {
 		restraintEscapeChancePre += 0.1;

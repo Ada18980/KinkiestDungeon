@@ -1796,10 +1796,6 @@ const KinkyDungeonRestraints: restraint[] = [
 		restriction: 1,
 		Group: "ItemTorso", power: 6, weight: 0, escapeChance: {"Struggle": -0.8, "Cut": 0.1, "Remove": 0.05},
 		enemyTags: {"latexRestraintsHeavy" : 6, "latexRestraints" : 2, "latexCatsuits": 12, "latexUniform": 12, "latexStart": 10, 'shopCatsuit': 10, "latexcatsuitSpell": 10}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 0, maxLevel: 10, allFloors: true, shrine: ["Catsuits", "Latex", "Suits"],
-		alwaysDress: [
-			{Item: "SeamlessCatsuit", Group: "Suit", Color: ['#3873C3'], override: true, factionColor: [[0]]},
-			{Item: "SeamlessCatsuit", Group: "SuitLower", Color: ['#3873C3'], override: true, factionColor: [[0]]},
-			{Item: "Catsuit", Group: "Gloves", Color: ['#3873C3'], override: true, factionColor: [[0]]}],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "latexDebuff", power: 0.15, inheritLinked: true}
 		]
@@ -1825,10 +1821,6 @@ const KinkyDungeonRestraints: restraint[] = [
 		restriction: 3,
 		Group: "ItemTorso", power: 8.5, weight: 0, escapeChance: {"Struggle": -1.4, "Cut": -0.1, "Remove": 0.025},
 		enemyTags: {"latexRestraintsHeavy" : 1.4, "latexRestraints" : 2, "latexCatsuits": 3, "latexUniform": 3, "latexStart": 10, 'shopCatsuit': 5, "latexcatsuitSpell": 5}, playerTags: {"posLatex": -1, "latexAnger": 2, "latexRage": 2}, minLevel: 7, allFloors: true, shrine: ["Catsuits", "Latex", "Suits"],
-		alwaysDress: [
-			{Item: "SeamlessCatsuit", Group: "Suit", Color: ['#3873C3'], override: true, factionColor: [[0]]},
-			{Item: "SeamlessCatsuit", Group: "SuitLower", Color: ['#3873C3'], override: true, factionColor: [[0]]},
-			{Item: "Catsuit", Group: "Gloves", Color: ['#3873C3'], override: true, factionColor: [[0]]}],
 		events: [
 			{trigger: "beforeStruggleCalc", type: "latexDebuff", power: 0.25, inheritLinked: true}
 		]
@@ -1933,10 +1925,6 @@ const KinkyDungeonRestraints: restraint[] = [
 			Torso: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
 			TorsoLower: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1.9666666666666666,"blue":1,"alpha":0.48333333333333334},
 		},
-		alwaysDress: [
-			{Item: "SeethroughSuit", Group: "Suit", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
-			{Item: "SeethroughSuit", Group: "SuitLower", Color: ['#63ab3f'], override: true, factionColor: [[0]]},
-			{Item: "SeethroughSuit", Group: "Gloves", Color: ['#63ab3f'], override: true, factionColor: [[0]]}],
 		events: [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
@@ -2223,10 +2211,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		LinkableBy: [...KDDressLink], alwaysRender: true, bindarms: true, bindhands: 1.0, power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.075},
 		limitChance: {"Struggle": 0.125, "Cut": 0.125, "Remove": 0.1, "Unlock": 0.5},
-		alwaysDress: [
-			{Item: "PleatedSkirt", Group: "ClothLower", Color: ['#6B48E0'], override: true},
-			{Item: "SleevelessCatsuit", Group: "Suit", Color: ['#473488'], override: true},
-			{Item: "CatsuitPanties", Group: "SuitLower", Color: ['#473488'], override: true}],
+
 		forceOutfit: "Lingerie",
 		forceOutfitPriority: 1,
 		alwaysDressModel: [
@@ -2296,10 +2281,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		LinkableBy: KDCorsetLink, strictness: 0.1, Color: ["#473488"], Group: "ItemTorso", power: 8, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.025}, struggleMinSpeed: {"Remove": 0.05}, struggleMaxSpeed: {"Remove": 0.1},
 		failSuffix: {"Remove": "Corset"}, enemyTags: {"dressRestraints": 1, "dressUniform": 12}, playerTags: {"ItemTorsoFull": -5, "conjureAnger": 2, "conjureRage": 2}, minLevel: 0, allFloors: true, shrine: ["Corsets", "Latex", "HeavyCorsets"],
-		alwaysDress: [
-			{Item: "AsymmetricSkirt", Group: "ClothLower", Color: ['#6B48E0'], override: true},
-			{Item: "SleevelessCatsuit", Group: "Suit", Color: ['#473488'], override: true},
-			{Item: "CatsuitPanties", Group: "SuitLower", Color: ['#F8BD01'], override: true}],
+
 	},
 
 	{inventory: true, name: "DressBra", debris: "Fabric", inaccessible: true, Asset: "FuturisticBra2", Color: ['#6B48E0', '#F8BD01', '#6B48E0', '#6B48E0', '#F8BD01', '#6B48E0'], Group: "ItemBreast", LinkableBy: ["Ornate"], chastitybra: true, power: 8,
@@ -2395,7 +2377,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			Neck: {color: "DarkNeutral", override: true,},
 			Collar: {color: "Highlight", override: true,},
 		},
-		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
+		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100},
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost", inheritLinked: true}],
 	},
@@ -2410,7 +2393,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			Collar: {color: "Highlight", override: true,},
 		},
 		linkSize: 0.99,
-		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
+		escapeChance: {"Struggle": -100, "Cut": -0.8, "Remove": -100},
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["HighCollars", "Collars"],
 		unlimited: true,
 		events: [{trigger: "kill", type: "MikoGhost2", inheritLinked: true}],
 	},
@@ -2489,11 +2473,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.25, "Cut": 0.05, "Remove": -0.2, "Pick": 0.15}, helpChance: {"Struggle": -0.2, "Cut": 0.05, "Remove": 0.125},
 		limitChance: {"Struggle": 0.125, "Cut": 0.125, "Remove": 0.1, "Unlock": 0.5},
 		addPose: ["PreferWristtie"],
-		alwaysDress: [
-			{Item: "PleatedSkirt", Group: "ClothLower", Color: ['#AA2222'], override: true},
-			{Item: "SleevelessCatsuit", Group: "Suit", Color: ['#AA2222'], override: true},
-			{Item: "LatexCorset1", Group: "Corset", Color: ['#ffffff'], override: true},
-			{Item: "CatsuitPanties", Group: "SuitLower", Color: ['#AA2222'], override: true}],
+
 		maxwill: 0.5, enemyTags: {"mikoRestraints" : 10}, playerTagsMult: {"ItemArmsEmpty": 0.05}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BindingDress", "Will", "Rope", "Block_ItemHands", "HandsBehind"]},
 	//endregion
 
@@ -2841,9 +2821,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMinSpeed: {"Struggle": 0.025},
 		struggleMaxSpeed: {"Struggle": 0.2, "Cut": 0.05, "Remove": 0.2}, helpChance: {"Remove": 0.4, "Pick": 0.5, "Unlock": 1.0},
 		limitChance: {"Struggle": 0.01, "Cut": 0, "Remove": 0.01, "Pick": 0, "Unlock": 0},
-		alwaysDress: [
-			{Item: "BedStraps", Group: "ItemAddon", Color: ['Default'], override: false},
-		],
+
 		addTag: ["HandsBehind"],
 		enemyTags: {"bed":100}, playerTags: {}, minLevel: 0, floors: KDMapInit([]),
 		shrine: ["Furniture", "HandsBehind", "BlockKneel", "DiscourageHogtie", "LieDown"], ignoreSpells: true, removeOnLeash: true,
@@ -4156,10 +4134,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"],power: 14, weight: 0,
 		hobble: 2,
 		escapeChance: {"Struggle": -0.3, "Cut": 0.0, "Remove": -0.3, "Pick": 0.15},
-		alwaysDress: [
-			{Item: "KittenEars2", Group: "HairAccessory2", Color: ['Default'], override: false, useHairColor: true,},
-			{Item: "TailStrap", Group: "TailStraps", Color: ['Default'], override: false, useHairColor: true,},
-		],
+
 		events: [
 			{type: "FactionStealth", trigger: 'calcSneak', kind: "Bast", mult: 0.8, power: 2,},
 		],
@@ -4653,18 +4628,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": -0.2, "Pick": 0.15},
 		helpChance: {"Remove": 0.075},
 		limitChance: {"Struggle": 0.12, "Cut": 0.03, "Remove": 0.1, "Unlock": 0.75}, // Hard to escape the arms box by struggling
-		alwaysDress: [
-			{Item: "SleevelessCatsuit", Group: "Suit", Color: "#aaaaaa", override: true},
-			{Item: "MaidApron2", Group: "Cloth", Color: "Default", override: true},
-			{Item: "FullLatexBra2", Group: "Bra", Color: ["#333333", "#aaaaaa"], override: true},
-			{Item: "Pantyhose2", Group: "SuitLower", Color: "#939393", override: true},
-			{Item: "LaceBands", Group: "Bracelet", Color: ['Default', '#151515'], override: true},
-			{Item: "MageSkirt", Group: "ClothLower", Color: ["#676767", "#2E2E2E"], override: true},
-			{Item: "Corset4", Group: "Corset", Color: "#4B4B4B", override: true},
-			{Item: "Band1", Group: "Hat", Color: "#767676", override: true},
-			{Item: "Shoes5", Group: "Shoes", Color: "#575757", override: true},
-			{Item: "Socks6", Group: "Socks", Color: ['#080808', 'Default'], override: true}
-		],
+
 		alwaysDressModel: [
 			{"Model":"MaidShoes","Group":"MaidShoes","override":true,
 				"Filters":{

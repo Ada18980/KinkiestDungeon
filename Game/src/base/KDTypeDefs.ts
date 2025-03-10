@@ -512,8 +512,6 @@ interface KDRestraintPropsBase {
 	/** Outfit to force (priority default = base power) */
 	forceOutfitPriority?: number,
 	/** Clothes for dressing */
-	alwaysDress?: overrideDisplayItem[],
-	/** Clothes for dressing */
 	alwaysDressModel?: alwaysDressModel[],
 	/** The item always bypasses covering items, such as dresses and chastity belts */
 	bypass?: boolean,
