@@ -12019,7 +12019,9 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 		},
 		"MasterworkTrap": (_e, data) => {
 			if (!data.selectedChestTrap) {
-				if (((data.chestType == "silver" && KDRandom() < 0.4) || (data.chestType == "chest" && KDRandom() < 0.05
+				let chancemult = (!!KinkyDungeonPlayerTags.get("Masterwork")) ? 3 : 1;
+				if (((data.chestType == "silver" && KDRandom() < 0.4*chancemult)
+					|| (data.chestType == "chest" && KDRandom() < 0.05*chancemult
 					&& !KinkyDungeonFlags.get("openedMasterwork")))) {
 					if (KDCountMasterworks(KDPlayer()) < 5) {
 						data.selectedChestPossibilities["MasterworkTrap"] = 40;
