@@ -2394,10 +2394,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 	let speedmult = (KDRestraint(restraint).speedMult != undefined && KDRestraint(restraint).speedMult[StruggleType] != undefined) ? KDRestraint(restraint).speedMult[StruggleType] :
 		1;
 
-	// cut has an additional limitchance and compensating escape chance
-	restraintEscapeChancePre += KDCutAdditionalLimitChance;
 
 	if (StruggleType == "Cut") {
+		// cut has an additional limitchance and compensating escape chance
+		restraintEscapeChancePre += KDCutAdditionalLimitChance;
+
 		if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) {
 			restraintLimitChancePre += KDCutAdditionalLimitChance;
 			limitChance += KDCutAdditionalLimitChance;
