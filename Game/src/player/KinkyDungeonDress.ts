@@ -763,7 +763,7 @@ function KinkyDungeonWearForcedClothes(C: Character, restraints?: item[], extraF
 				if (dress.Group && C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
 				let filters =  dress.Filters ? JSON.parse(JSON.stringify(dress.Filters)) : {};
 				let Properties =  dress.Properties ? JSON.parse(JSON.stringify(dress.Properties)) : {};
-				let faction = inv.forceFaction || inv.faction || dress.faction;
+				let faction = inv.forceFaction != undefined ? inv.forceFaction : (inv.faction || dress.faction);
 				if (faction) {
 					if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
 						for (let f of Object.entries(dress.factionFilters)) {
@@ -861,7 +861,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
-		let faction = customFaction ? customFaction : ((inv.forceFaction) ? inv.forceFaction : (inv.faction ? inv.faction : ""));
+		let faction = customFaction ? customFaction : ((inv.forceFaction != undefined) ? inv.forceFaction : (inv.faction ? inv.faction : ""));
 
 		// faction color system
 		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?

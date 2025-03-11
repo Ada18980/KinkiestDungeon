@@ -760,7 +760,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			//{type: "DistractionCast", trigger: "calcMiscast"},
 			//{type: "DistractionCast", trigger: "tick"},
 			//{type: "DistractionCast", trigger: "playerCast"},
-			{type: "EssenceMote", trigger: "miscast", dist: 1.5},
+			{type: "EssenceMote", trigger: "miscast", dist: 1.5, always: true},
 		]},
 		{name: "ManaBurst", tags: ["will", "utility"], school: "Special",
 			passive: true,

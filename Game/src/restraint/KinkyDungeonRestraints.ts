@@ -10,6 +10,7 @@
 
 // Power is a scale of how powerful the restraint is supposed to be. It should roughly match the difficulty of the item, but can be higher for special items. Power 10 or higher might be totally impossible to struggle out of.
 
+let KDCutAdditionalLimitChance = 0.05;
 let KDAllyLimitChanceRedMult = 0.5;
 let KDAllyLimitChanceRedFlat = 0.05;
 
@@ -1914,6 +1915,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 		}
 		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
+
 	}
 	if (data.struggleType == "Cut" && !KDRestraint(data.restraint).magic && KinkyDungeonWeaponCanCut(false, true)) {
 		data.escapeChance += KinkyDungeonEnchantedKnifeBonus*toolMult;
@@ -2381,24 +2383,44 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 	let Pass = "Fail";
 	let restraintEscapeChancePre = KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
 	let restraintLimitChancePre = (KDRestraint(restraint).limitChance && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] : 0.12;
+
+
+
+
 	let helpChance = (KDRestraint(restraint).helpChance != undefined && KDRestraint(restraint).helpChance[StruggleType] != undefined) ? KDRestraint(restraint).helpChance[StruggleType] : 0.0;
 	let limitChance = (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
 		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
+
 	let speedmult = (KDRestraint(restraint).speedMult != undefined && KDRestraint(restraint).speedMult[StruggleType] != undefined) ? KDRestraint(restraint).speedMult[StruggleType] :
 		1;
+
+	// cut has an additional limitchance and compensating escape chance
+	restraintEscapeChancePre += KDCutAdditionalLimitChance;
+
+	if (StruggleType == "Cut") {
+		if (!(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) {
+			restraintLimitChancePre += KDCutAdditionalLimitChance;
+			limitChance += KDCutAdditionalLimitChance;
+		}
+	}
+
+
+
 	if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) {
 		if (!query)
 			KinkyDungeonSetFlag("HelpMeFlag", 8);
 		if (helpChance)
 			restraintEscapeChancePre = helpChance;
-		if (limitChance > 0)
+		if (limitChance > 0 && StruggleType != "Cut") {
 			limitChance = Math.max(0, limitChance - KDAllyLimitChanceRedFlat);
-		if (limitChance > 0 && StruggleType != "Cut")
 			limitChance *= KDAllyLimitChanceRedMult;
+		}
 	}
 	if (KinkyDungeonHasAngelHelp()) {
 		restraintEscapeChancePre += 0.1;
 	}
+
+
 
 	KinkyDungeonInterruptSleep();
 
@@ -2462,6 +2484,8 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 	data.extraLimThreshold = Math.min(1, (data.escapeChance / data.extraLim));
 
 	let result = KDGetStruggleData(data);
+
+
 
 	if (retData)
 		Object.assign(retData, data);
@@ -5168,6 +5192,7 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 		data.destroyChance = restraint.cutProgress / progress;
 	}
 	let destroy = false;
+	let group = KDRestraint(restraint)?.Group;
 
 	KinkyDungeonFastStruggleType = "";
 	KinkyDungeonFastStruggleGroup = "";
@@ -5245,7 +5270,33 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 
 	KDSortInventory(KDPlayer());
 
+	// prune all delayed actions with the same strugglegroup and index
+	KDGameData.DelayedActions = KDPruneSameStruggleActions(KDGameData.DelayedActions, group, index);
+
 	return destroy;
+}
+
+function KDPruneSameStruggleActions(list: KDDelayedAction[], group: string, index: number) : KDDelayedAction[]{
+	let newList: KDDelayedAction[] = [];
+	for (let action of list) {
+		if (action.commit == "Struggle") {
+			if (!(action.data?.index === index && action.data?.group === group)) {
+				newList.push(action);
+			}
+		}
+	}
+
+	let timeAdv = list.length - newList.length;
+	if (timeAdv > 0) {
+		for (let action of newList) {
+			if (action.tick > 0 && action.time > 0) {
+				action.tick -= timeAdv;
+				action.time -= timeAdv;
+			}
+		}
+	}
+
+	return newList;
 }
 
 function KDAddDelayedStruggle(amount: number, time: number, _StruggleType: string, struggleGroup: string, index: number, data: KDStruggleData, progress: number = 0, limit: number = 100): void {
