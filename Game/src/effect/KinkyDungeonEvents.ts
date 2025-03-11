@@ -12012,14 +12012,17 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (!data.selectedChestTrap) {
 				if ((data.chestType == "shadow" || data.chestType == "lessergoldChest" || (data.chestType == "lessershadow" && KDRandom() < 0.2))
 					&& KDCanCurse(["ChestCollar"])) {
-					data.selectedChestPossibilities["CurseTrap"] = 100;
+					data.selectedChestPossibilities["CurseTrap"] = 30;
 				}
 			}
 
 		},
 		"MasterworkTrap": (_e, data) => {
 			if (!data.selectedChestTrap) {
-				let chancemult = (!!KinkyDungeonPlayerTags.get("Masterwork")) ? 3 : 1;
+				let chancemult = (!!KinkyDungeonPlayerTags.get("Masterwork")) ? 8 : 1;
+				let level = Math.max(0, KDGetEffLevel() - 2);
+				chancemult *= Math.min(1, level*0.1); // reaches max commonness at floor 12
+
 				if (((data.chestType == "silver" && KDRandom() < 0.4*chancemult)
 					|| (data.chestType == "chest" && KDRandom() < 0.05*chancemult
 					&& !KinkyDungeonFlags.get("openedMasterwork")))) {

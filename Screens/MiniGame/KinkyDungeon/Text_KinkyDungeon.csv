@@ -31642,5 +31642,5 @@ rAdaMasterworkMasterwork,"(SPEAKER glares at your body)|Ah! My Masterwork set!|I
 
 dAdaMasterwork_MasterworkUnlock,Can you unlock my Masterwork restraints?
 dAdaMasterwork_MasterworkUnlockGag,(Present your masterwork restraints)
-rAdaMasterworkMasterworkUnlockFail,"(SPEAKER giggles)|Ah, but I need all five pieces!|Even if they won't fit with the rest|of the gear on your body, hehe."
-rAdaMasterworkMasterworkUnlockSuccess,"(SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time~"
+rAdaMasterworkMasterworkUnlockFail,"(SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~"
+rAdaMasterworkMasterworkUnlockSuccess,"(SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~"
