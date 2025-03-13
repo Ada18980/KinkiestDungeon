@@ -10214,7 +10214,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		},
 
 	},
-	"hit": {
+	"NPCHitNPC": {
 		"spellReflect": (e, enemy, data) => {
 			if (data.target == enemy && data.attacker && KinkyDungeonCanCastSpells(enemy)) {
 				if (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell)) {
@@ -11044,6 +11044,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			else if (KinkyDungeonStatsChoice.get("SlimeOptout")) data.tags.push("slimeOptout");
 			if (KinkyDungeonStatsChoice.get("BubblePref")) data.tags.push("bubblePref");
 			else if (KinkyDungeonStatsChoice.get("BubbleOptout")) data.tags.push("bubbleOptout");
+			if (KinkyDungeonStatsChoice.get("NovicePet")) data.tags.push("petPref");
+			else if (KinkyDungeonStatsChoice.get("NoPet")) data.tags.push("petOptout");
 		}
 	},
 	"postMapgen": {
@@ -12017,6 +12019,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			}
 
 		},
+
+
 		"MasterworkTrap": (_e, data) => {
 			if (!data.selectedChestTrap) {
 				let chancemult = (!!KinkyDungeonPlayerTags.get("Masterwork")) ? 8 : 1;
@@ -12028,6 +12032,27 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					&& !KinkyDungeonFlags.get("openedMasterwork")))) {
 					if (KDCountMasterworks(KDPlayer()) < 5) {
 						data.selectedChestPossibilities["MasterworkTrap"] = 40;
+					}
+				}
+			}
+
+		},
+		"latexKittyTrap": (_e, data) => {
+			if (!data.selectedChestTrap) {
+				let chancemult = (!!KinkyDungeonPlayerTags.get("HardSlime")) ? 2 : 1;
+				let level = Math.max(0, KDGetEffLevel() - 2);
+				chancemult *= Math.min(1, level*0.1); // reaches max commonness at floor 12
+
+				if (((data.chestType == "rubber" && KDRandom() < 0.4*chancemult)
+					|| (data.chestType == "chest" && KDRandom() < 0.05*chancemult
+					&& !KinkyDungeonFlags.get("openedLatexKitty")))) {
+					if (
+						KDGetRestraintsEligible({tags: ['latexKittyResult']}, KDGetEffLevel(), 'grv',
+					true, "Blue",
+					false, undefined, false, undefined,
+					undefined, undefined, undefined, undefined).length > 0
+					) {
+						data.selectedChestPossibilities["latexKittyTrap"] = 20;
 					}
 				}
 			}
@@ -12058,6 +12083,17 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				let en = KDSummonMasterworkTrap(data.x, data.y);
 				if (en) {
 					KinkyDungeonSetFlag("openedMasterwork", 1000);
+				}
+			}
+
+		},
+		"latexKitty": (_e, data) => {
+			if (data.selectedChestTrap == "latexKittyTrap") {
+				data.selectedChestTrap = "latexKittyTrap";
+				// Shadow chests spawn cursed epicenter
+				let en = KDSummonLatexKittyTrap(data.x, data.y);
+				if (en) {
+					KinkyDungeonSetFlag("openedLatexKitty", 400);
 				}
 			}
 
@@ -12362,6 +12398,7 @@ let KDHardModeReplace = {
 	"SmallSlime": "SlimeAdv",
 	"FastSlime": "LatexCube",
 	"LatexCubeSmall": "LatexCubeMetal",
+	"LatexCube": "LiquidMetalCube",
 	"Dragon": "DragonShield",
 	"DragonShield": "DragonLeader",
 	"ElementalFire": "ElementalWater",

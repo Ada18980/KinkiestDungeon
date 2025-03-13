@@ -6386,7 +6386,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											"",
 											!KDPlayerIsStunned(),
 											false,
-											false);
+											false, undefined, undefined, undefined,
+											enemy, undefined, undefined, undefined,
+											enemy.Enemy.willBonus ? {
+												willBonus: enemy.Enemy.willBonus
+											} : undefined);
 										replace.push({keyword:"RestraintAdded", value: KDGetRestraintName(rest.r, rest.v)});
 										restraintAdd.push({r: rest.r, v: rest.v, iv: rest.iv});
 										addedRestraint = true;
@@ -6416,7 +6420,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											}, enemy, undefined, true, undefined, {
 												allowLowPower: KDRandom() < 0.5,
 												extraOptions: enemy.items,
-											});
+												willBonus: enemy.Enemy.willBonus,
+											}, );
 
 										if (!rest) {
 											rest = KDGetRestraintWithVariants(
@@ -6436,6 +6441,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 													ignore: [...(enemy.items || []), ...restraintAdd.map((rst) => {return rst.r.name;})],
 												}, enemy, undefined, true, undefined, {
 													allowLowPower: KDRandom() < 0.5,
+													willBonus: enemy.Enemy.willBonus,
 												});
 										} else {
 											restraintFromInventory.push(rest.iv || rest.r.name);
@@ -6664,7 +6670,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							if (affected && enemy.usingSpecial && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Effect")) {
 								enemy.specialCD = enemy.Enemy.specialCD;
 							}
-							Effected = true;
+							Effected = affected;
 							happened += 1;
 						}
 						if (AIData.attack.includes("Stun")) {
@@ -6769,6 +6775,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						if (enemy.Enemy.fullBoundBonus) {
 							dmg += enemy.Enemy.fullBoundBonus; // Some enemies deal bonus damage if they cannot put a binding on you
 						}
+						KinkyDungeonSendEvent("beforeNPCDamageNPC", data);
 						let damaged = KinkyDungeonDamageEnemy(player, {type: enemy.Enemy.dmgType, damage: dmg}, false, true, undefined, undefined, enemy);
 						if (!(damaged > 0)) {
 							// Sometimes enemies will flinch for a turn if their attack did nothing
@@ -6839,6 +6846,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							false, false, undefined, "Self");
 						if (!enemy.Enemy.tags.temporary && AIData.attack.includes("Bind") && KDCanPickpocket(enemy))
 							KinkyDungeonLoseJailKeys(true, undefined, enemy);
+					} else {
+
+						KinkyDungeonSendEvent("NPCHitNPC", data);
 					}
 				}
 				KinkyDungeonTickBuffTag(enemy, "damage", 1);
@@ -8580,7 +8590,8 @@ function KDRunBondageResist (
 						KinkyDungeonStatsChoice.has("MagicHands") ? true : enemy?.Enemy.bypass, (enemy?.Enemy.useLock ? enemy.Enemy.useLock : (r.r.DefaultLock || Lock)),
 						Keep, undefined, undefined, enemy?.Enemy.applyFaction || faction || enemy?.Enemy.defaultFaction,
 						KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
-						undefined, enemy, true, undefined, undefined, undefined, r.v) * 2;
+						undefined, enemy, true,
+						undefined, undefined, undefined, r.v) * 2;
 
 					}
 					if (bb) {

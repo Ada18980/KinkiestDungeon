@@ -945,6 +945,8 @@ interface enemy extends KDHasTags {
 	spellResist?: number,
 	/** Whether or not the enemy is friendly to the player and attacks enemies */
 	allied?: boolean,
+	/** Trats player willpower percentage as by this much lower */
+	willBonus?: number,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
 	/** lookup condition in KDPathConditions,

@@ -2473,6 +2473,46 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 
+
+	{name: "LatexKitty", faction: "Slime", clusterWith: "slime", bound: "LatexKitty", playLine: "Gagged", color: "#92dbe8",
+		tags: KDMapInit([
+			"nocapture", "latexTrap", "slime", "disarmresist", "blindimmune", "petsuit",
+			"melee", "latexEncase", "latexEncaseRandom", "electricweakness", "acidresist", "iceweakness",
+			"ticklesevereweakness", "charmweakness",
+			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms", "arcaneweakness",
+			"latexKitty",
+		]),
+		effect: {
+			effect: {name: "LatexKitty", damage: "glue", power: 4},
+		},
+		ignoreflag: ["LatexKittyatk"], failAttackflag: ["LatexKittyatk"], failAttackflagDuration: 4, failAttackflagChance: 0.4,
+		Sound: {
+			baseAmount: 4,
+			moveAmount: 4,
+			idleSoundName: "Rubber",
+		},
+		applyFaction: "Rubber",
+		nopickpocket: true,
+		maxblock: 0,
+		maxdodge: 0,
+		willBonus: 0.4,
+		nonDirectional: true,
+		ignorechance: 0, armor: 1, followRange: 1.5, AI: "hunt",  cohesion: 0.25, sneakThreshold: 1,
+		evasion: -0.25,
+		Attack: {
+			mustBindorFail: true,
+		},
+		master: {type: "ElementalRubber", range: 2, loose: true, aggressive: true},
+		visionRadius: 4.5, blindSight: 2.5, maxhp: 9, minLevel:2, weight:2, movePoints: 2.4,
+		sprintspeed: 2.5, stamina: 5,
+		attackPoints: 2, attack: "MeleeBindLockEffect", attackWidth: 1, attackRange: 1,
+		power: 1, dmgType: "glue", fullBoundBonus: 2,
+		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 3, "slimeBonus": 2, "latex": 5, "slimeOptOut": -4,
+			"petOptout": -15,
+			"petPref": 4,
+
+			"slimePref": 2, revenge: 10}, shrines: ["Latex"], allFloors: true,
+		},
 	{name: "AquaSlime", clusterWith: "water", faction: "Slime", color: "#2277ee",
 		tags: KDMapInit(["ignoretiedup", "disarmimmune", "blindimmune", "elementsTrap", "minor", "water", "melee", "aquaRestraints", "pierceweakness", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, ignorechance: 0.75, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 7, minLevel: 0, weight:8, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicideWill",
@@ -2736,7 +2776,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"obstacle": 2, "obstacletile": 5, "increasingWeight":-0.5,}, allFloors: true, shrines: [],
 		events: [
 			{trigger: "afterPlayerAttack", type: "spellReflect", spell: "Vineexp", time: 2},
-			{trigger: "hit", type: "spellReflect", spell: "Vineexp", time: 2},
+			{trigger: "NPCHitNPC", type: "spellReflect", spell: "Vineexp", time: 2},
 		],
 	},
 
@@ -3014,7 +3054,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "afterEnemyTick", type: "requireNearbyEnemyTag", power: 0.5, dist: 5.5, tags: ["fire"]},
 			{trigger: "afterPlayerAttack", type: "spellReflect", spell: "Fireexp", time: 1},
-			{trigger: "hit", type: "spellReflect", spell: "Fireexp", time: 1},
+			{trigger: "NPCHitNPC", type: "spellReflect", spell: "Fireexp", time: 1},
 		],
 	},
 
@@ -5834,7 +5874,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ondeath: [{type: "summon", enemy: "SummonedZombie", range: 2.5, count: 4, strict: true, lifetime: 50}],
 		events: [
 			{trigger: "afterPlayerAttack", type: "spellReflect", spell: "SealingBolt", time: 1},
-			{trigger: "hit", type: "spellReflect", spell: "SealingBolt", time: 1},
+			{trigger: "NPCHitNPC", type: "spellReflect", spell: "SealingBolt", time: 1},
 			{trigger: "afterDamageEnemy", type: "spellReflect", spell: "SealingBolt", time: 1},
 		],
 	},

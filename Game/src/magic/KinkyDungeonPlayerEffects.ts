@@ -108,6 +108,54 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: false};
 	},
+	LatexKitty: (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+		let applied = "";
+		let dmg: {
+			happened: number;
+			string: string;
+		} = null;
+
+		let eligible = KDGetRestraintsEligible({tags: ['latexEncase', "latexEncaseRandom"]}, KDGetEffLevel(), 'grv',
+		false, undefined,
+		true, undefined, false, undefined,
+		undefined, undefined, entity, undefined, undefined, undefined, true, undefined, {
+			willBonus: entity.Enemy?.willBonus
+		});
+		if (eligible.length == 0) {
+			eligible = KDGetRestraintsEligible({tags: ['latexKittyResult']}, KDGetEffLevel(), 'grv',
+			true, "Blue",
+			false, undefined, false, undefined,
+			undefined, undefined, undefined, undefined);
+			if (eligible.length > 0) {
+				let r = eligible[Math.floor(KDRandom() * eligible.length)];
+				let restraint = r.restraint;
+
+				if (restraint && KinkyDungeonAddRestraintIfWeaker(restraint, 0, true, "Blue",
+					true, false, undefined, "Rubber", true, undefined,
+					entity, undefined,
+				r.inventoryVariant, undefined, undefined, r.variant)) {
+					applied = restraint.name || applied;
+					if (applied) {
+						KDRemovePrisonRestraints();
+						KinkyDungeonSetFlag("LatexKittyatk", 30);
+					}
+				}
+			} else {
+				KinkyDungeonSetFlag("LatexKittyatk", 30);
+			}
+
+		}
+		if (applied) {
+			let str = TextGet("KDApplyLatexKitty" + (applied ? "Succeed" : "Fail")).replace("RNAME",
+				TextGet("Restraint" + applied));
+			if (dmg) str = str.KDReplaceOrAddDmg(dmg.string);
+			KinkyDungeonSendTextMessage(3, str, KDBaseRed, 1);
+		}
+
+
+		return {sfx: (!applied) ? "" : "LockHeavy", effect: !!applied};
+	},
+
 	"Masterwork": (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 		let dmg: {

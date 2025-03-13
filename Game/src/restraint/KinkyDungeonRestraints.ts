@@ -2395,7 +2395,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		1;
 
 
-	if (StruggleType == "Cut") {
+	/*if (StruggleType == "Cut") {
 		// cut has an additional limitchance and compensating escape chance
 		restraintEscapeChancePre += KDCutAdditionalLimitChance;
 
@@ -2403,7 +2403,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			restraintLimitChancePre += KDCutAdditionalLimitChance;
 			limitChance += KDCutAdditionalLimitChance;
 		}
-	}
+	}*/
 
 
 
@@ -2983,6 +2983,8 @@ type eligibleRestraintOptions = {
 	inventoryWeight?: 	 number;
 	/** For optimization purposes */
 	QuitOnFirst?:		 boolean;
+	/** Reduce target willpower by this much */
+	willBonus?: 		 number;
 }
 
 /**
@@ -2993,6 +2995,23 @@ type eligibleRestraintItem = {
 	variant?:   ApplyVariant;
 	weight:     number;
 	inventoryVariant?: string,
+}
+
+function KDGetWillPercent(applier : entity, penalty: number = 0): number {
+	let data = {
+		willPercent: (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
+		/(1 + (KinkyDungeonGoddessRep.Ghost + 50)/100),
+		willMult: (KinkyDungeonSlowLevel > 0) ? (0.6 + 0.4 * Math.min(1, Math.max(0, 1 - KinkyDungeonSlowLevel/3))) : 0,
+		willPenalty: penalty,
+		applier: applier,
+	};
+
+	KinkyDungeonSendEvent("calcWillPercent", data);
+
+	data.willPercent *= data.willMult;
+	data.willPercent = Math.max(0, Math.min(1, data.willPercent - data.willPenalty));
+
+	return data.willPercent;
 }
 
 /**
@@ -3050,10 +3069,8 @@ function KDGetRestraintsEligible (
 	}
 
 	if (KinkyDungeonStatsChoice.has("NoWayOut")) RequireWill = false;
-	let willPercent = (KinkyDungeonStatWill / KinkyDungeonStatWillMax - 0.15 * KinkyDungeonStatDistraction / KinkyDungeonStatDistractionMax)
-		/(1 + (KinkyDungeonGoddessRep.Ghost + 50)/100);
-
-	if (KinkyDungeonSlowLevel > 0) willPercent = willPercent * (0.6 + 0.4 * Math.min(1, Math.max(0, 1 - KinkyDungeonSlowLevel/3)));
+	let willPercent = KDGetWillPercent(securityEnemy, options?.willBonus);
+	//if (options?.willBonus) willPercent = Math.max(0, willPercent - options.willBonus);
 
 	let tags = new Map();
 	if (enemy.tags.length) {

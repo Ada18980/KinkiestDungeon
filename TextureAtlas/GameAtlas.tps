@@ -1160,6 +1160,7 @@
             <key type="filename">../Game/Enemies/LatexCubeMetal.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmall.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmallHidden.png</key>
+            <key type="filename">../Game/Enemies/LatexKitty.png</key>
             <key type="filename">../Game/Enemies/LatexSprayer.png</key>
             <key type="filename">../Game/Enemies/LatexStorageTank.png</key>
             <key type="filename">../Game/Enemies/LearnedRope.png</key>
@@ -1466,6 +1467,7 @@
             <key type="filename">../Game/EnemiesBound/Jailer.png</key>
             <key type="filename">../Game/EnemiesBound/JungleDryad.png</key>
             <key type="filename">../Game/EnemiesBound/LabAssistant.png</key>
+            <key type="filename">../Game/EnemiesBound/LatexKitty.png</key>
             <key type="filename">../Game/EnemiesBound/LesserSkeleton.png</key>
             <key type="filename">../Game/EnemiesBound/Librarian.png</key>
             <key type="filename">../Game/EnemiesBound/MageZombie.png</key>

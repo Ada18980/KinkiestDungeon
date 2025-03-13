@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.51"
+KDVersionStr,"5.4.52"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3994,6 +3994,12 @@ RestraintMagicPetsuitDesc2,"It's warded against cutting by nonmagic blades."
 RestraintLatexPetsuit,Latex Petsuit
 RestraintLatexPetsuitDesc,"A skintight suit that encases you in a tight rubber embrace."
 RestraintLatexPetsuitDesc2,"The thick latex is resistant to even the most determined struggles."
+
+
+RestraintLatexLockdownPetsuit,Latex Lockdown Petsuit
+RestraintLatexLockdownPetsuitDesc,"A rubber encasement that forces your arms and legs into a pet-like position."
+RestraintLatexLockdownPetsuitDesc2,"The rubber is instilled with a curse that feeds off of the host's innate mana. Having a higher mana percentage makes it harder to escape."
+
 
 RestraintMysticDuctTapeHead,Blessed Wrappings (Head)
 RestraintMysticDuctTapeHeadDesc,"A band of magic embalming ribbon wrapped tight around your face."
@@ -26643,7 +26649,55 @@ m_MilitaryUniform_l_Secret_Light,Secret_Light
 m_MilitaryUniform_l_Secret_Base,Secret_Base
 m_MilitaryUniform_l_Secret_Lens,Secret_Lens
 
-
+m_HighSecBlindfoldRestraint,HighSecBlindfoldRestraint
+m_HighSecBlindfoldRestraint_l_Blindfold,Blindfold
+m_HighSecBlindfoldRestraint_l_Strap,Strap
+m_HighSecBlindfoldRestraint_l_StrapHardware,StrapHardware
+m_HighSecBlindfoldRestraint_l_Harness,Harness
+m_HighSecBlindfoldRestraint_l_Rivets,Rivets
+m_HighSecBlindfoldRestraint_l_HarnessL,HarnessL
+m_HighSecBlindfoldRestraint_l_HarnessR,HarnessR
+m_HighSecBlindfoldRestraint_l_RivetsL,RivetsL
+m_HighSecBlindfoldRestraint_l_RivetsR,RivetsR
+m_HighSecCollarRestraint,HighSecCollarRestraint
+m_HighSecCollarRestraint_l_Band,Band
+m_HighSecCollarRestraint_l_Collar,Collar
+m_HighSecCollarRestraint_l_Rim,Rim
+m_HighSecCollarRestraint_l_Ring,Ring
+m_HighSecCollarRestraint_l_Straps,Straps
+m_HighSecCollarRestraint_l_StrapsHardware,StrapsHardware
+m_HighSecCorset_l_Hardware,Hardware
+m_HighSecCorset_l_GarterLeftHardware,GarterLeftHardware
+m_HighSecCorset_l_GarterLeftHardware,GarterLeftHardware
+m_HighSecCorset_l_GarterRightHardware,GarterRightHardware
+m_HighSecCorset_l_GarterRightHardware,GarterRightHardware
+m_HighSecCorset_l_CrotchStrapsHardware,CrotchStrapsHardware
+m_HighSecCorsetRestraint_l_Hardware,Hardware
+m_HighSecCorsetRestraint_l_GarterLeftHardware,GarterLeftHardware
+m_HighSecCorsetRestraint_l_GarterLeftHardware,GarterLeftHardware
+m_HighSecCorsetRestraint_l_GarterRightHardware,GarterRightHardware
+m_HighSecCorsetRestraint_l_GarterRightHardware,GarterRightHardware
+m_HighSecCorsetRestraint_l_CrotchStrapsHardware,CrotchStrapsHardware
+m_HighSecBalletHeels_l_ShoeLeft,ShoeLeft
+m_HighSecBalletHeels_l_ShoeRight,ShoeRight
+m_HighSecBalletHeels_l_SoleLeft,SoleLeft
+m_HighSecBalletHeels_l_SoleRight,SoleRight
+m_HighSecBalletHeels_l_ShoeLeft,ShoeLeft
+m_HighSecBalletHeels_l_ShoeRight,ShoeRight
+m_HighSecBalletHeels_l_HardwareLeft,HardwareLeft
+m_HighSecBalletHeels_l_HardwareRight,HardwareRight
+m_HighSecBalletHeels_l_HardwareLeft,HardwareLeft
+m_HighSecBalletHeels_l_HardwareRight,HardwareRight
+m_HighSecBalletHeelsRestraint_l_ShoeLeft,ShoeLeft
+m_HighSecBalletHeelsRestraint_l_ShoeRight,ShoeRight
+m_HighSecBalletHeelsRestraint_l_SoleLeft,SoleLeft
+m_HighSecBalletHeelsRestraint_l_SoleRight,SoleRight
+m_HighSecBalletHeelsRestraint_l_ShoeLeft,ShoeLeft
+m_HighSecBalletHeelsRestraint_l_ShoeRight,ShoeRight
+m_HighSecBalletHeelsRestraint_l_HardwareLeft,HardwareLeft
+m_HighSecBalletHeelsRestraint_l_HardwareRight,HardwareRight
+m_HighSecBalletHeelsRestraint_l_HardwareLeft,HardwareLeft
+m_HighSecBalletHeelsRestraint_l_HardwareRight,HardwareRight
 
 KDHideItems,Hide Items
 KDSortItems,Sort Items
@@ -31620,6 +31674,10 @@ KDMasterworkLockRemove,Your ${Restraint} clicks and releases at last!
 KDLeashRatchet,Your leash lets out a click as it ratchets to a shorter length!
 KDApplyMasterworkSucceed,The animated Masterworks overpower you and you find yourself wearing one of them!
 KDApplyMasterworkFail,The animated Masterworks force you to the ground and pat your head gently before floating away!
+KDApplyLatexKittySucceed,"The curse of the latex kitty spreads, encasing your limbs in tight rubber!"
+
+
+
 
 KDSavePaletteRestraint,Save as preferred for this type
 KDSavePaletteRestraintEnch,Save for enchanted versions
@@ -31629,7 +31687,7 @@ KDErrorPalettes,Error saving preferred palettes
 
 NameMasterGear,Animated Masterworks
 KillMasterGear,The animated masterwork restraints come apart and flee in all directions.
-
+AttackMasterGear,The animated masterworks grab you!
 
 KDSummonMasterGear,An animated suit of restraints rises out of the chest!
 
@@ -31644,3 +31702,12 @@ dAdaMasterwork_MasterworkUnlock,Can you unlock my Masterwork restraints?
 dAdaMasterwork_MasterworkUnlockGag,(Present your masterwork restraints)
 rAdaMasterworkMasterworkUnlockFail,"(SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~"
 rAdaMasterworkMasterworkUnlockSuccess,"(SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~"
+
+
+KDSummonLatexKitty,The chest contained an angry latex kitty!
+
+NameLatexKitty,Latex Kitty
+KillLatexKitty,The latex kitty
+AttackLatexKitty,The latex kitty rubs against you seductively!
+AttackLatexKittyBind,The latex kitty's rubbery coating spreads to you!
+AttackLatexKittyLock,The latex kitty's rubbery coating casts itself into locks!

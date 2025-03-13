@@ -4030,8 +4030,38 @@ const KinkyDungeonRestraints: restraint[] = [
 		],
 		remove: ["Bras", "Panties", "Skirts", "Socks", "Shirts", "Boots"],
 		escapeChance: {"Struggle": -0.25, "Cut": 0.05, "Remove": -0.2, "Pick": 0.15},
-		helpChance: {"Remove": 0.15}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1, "latexpetsuit": 3},
+		helpChance: {"Remove": 0.15}, maxwill: 0.15, enemyTags: {"petsuitSpell": 1, "latexpetsuit": 3, "latexKittyResult": 10},
 		playerTags: {"NoPet": -1000}, minLevel: 0, allFloors: true, shrine: ["Petsuits", "Latex", "Conjure", "HinderFeet"]},
+
+	{inventory: true, name: "LatexLockdownPetsuit", inaccessible: true, debris: "Slime", Color: "Default", Group: "ItemArms",
+		Model: "KittyPetsuit",
+		sfxGroup: "Leather",
+		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 9, weight: 0,
+		hobble: 2,
+		factionFilters: {
+			Collar: {
+				color: "Highlight", override: false,
+			},
+			FeetPaws: {
+				color: "Highlight", override: false,
+			},
+			ArmsPaws: {
+				color: "Highlight", override: false,
+			},
+		},
+		playerTagsMult: {
+			"ItemArmsEmpty": 0.005, // Impossible to put on without binding arms first
+			More_Petsuits: 2.5,
+		},
+		events: [
+			{trigger: "drawSGTooltip", type: "StruggleManaBonus", inheritLinked: true, power: -0.1, mult: -0.2, threshold: 10},
+			{trigger: "beforeStruggleCalc", type: "StruggleManaBonus", inheritLinked: true, power: -0.1, mult: -0.2, threshold: 10},
+		],
+		remove: ["Bras", "Panties", "Skirts", "Socks", "Shirts", "Boots"],
+		escapeChance: {"Struggle": -0.35, "Cut": -0.15, "Remove": -0.3, "Pick": 0.05},
+		helpChance: {"Struggle": -0.3, "Remove": -0.1},
+		magic: true, maxwill: 0.15, enemyTags: {"latexKittyResult": 200},
+		playerTags: {"NoPet": -1000}, minLevel: 8, allFloors: true, shrine: ["Petsuits", "Latex", "Conjure", "HinderFeet"]},
 	{inventory: true, name: "WolfPetsuit", inaccessible: true, debris: "Belts", Asset: "StrictLeatherPetCrawler", Color: "Default", Group: "ItemArms",
 		DefaultLock: "Blue",
 		sfxGroup: "Rubber",
