@@ -1088,7 +1088,8 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	let BalanceOffset = KDToggles.BuffSide ? 850 : 800;
 	let BalanceSpacing = 75;
 	let II = 0;
-	if (KDGameData.KneelTurns > 0 && !KinkyDungeonStatsChoice.get("TrustFall")) {
+	if (KDGameData.KneelTurns > 0 && !KinkyDungeonStatsChoice.get("TrustFall")
+		&& !KDForcedToGround()) {
 		let KneelStats = KDGetKneelStats(1, false);
 
 		KDLastKneelTurns = Math.max(KDGameData.KneelTurns, KDLastKneelTurns);

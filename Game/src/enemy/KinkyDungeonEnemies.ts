@@ -6646,7 +6646,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						}
 
 						if (restraintAdd && restraintAdd.length == 0 && AIData.attack.includes("Bind")) {
-							if ((!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
+							if (
+								(!KinkyDungeonHasWill(0.1) || (!enemy.Enemy.Attack?.noFailifHasWP))
+								&& (!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
 								if (!enemy.Enemy.failAttackflagChance || KDRandom() < enemy.Enemy.failAttackflagChance)
 									for (let f of enemy.Enemy.failAttackflag) {
 										KinkyDungeonSetFlag(f, enemy.Enemy.failAttackflagDuration || 12);
@@ -6806,7 +6808,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							|| (enemy.Enemy.suicideOnEffect && Effected)
 							|| (!player.player && AIData.attack.includes("Bind") && enemy.Enemy.suicideOnAdd)) {
 							enemy.hp = 0;
-						} else if ((!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
+						} else if (
+							(!KinkyDungeonHasWill(0.1) || (!enemy.Enemy.Attack?.noFailifHasWP))
+								&& (!KinkyDungeonHasWill(0.1) || (enemy.Enemy.Attack?.mustBindorFail)) && enemy.Enemy.failAttackflag) {
 							if (!enemy.Enemy.failAttackflagChance || KDRandom() < enemy.Enemy.failAttackflagChance)
 								for (let f of enemy.Enemy.failAttackflag) {
 									KinkyDungeonSetFlag(f, enemy.Enemy.failAttackflagDuration || 12);

@@ -4036,7 +4036,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "LatexLockdownPetsuit", inaccessible: true, debris: "Slime", Color: "Default", Group: "ItemArms",
 		Model: "KittyPetsuit",
 		sfxGroup: "Leather",
-		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 9, weight: 0,
+		bindarms: true, bindhands: 1.0, addTag: ["ForceKneel"], power: 12, weight: 0,
 		hobble: 2,
 		factionFilters: {
 			Collar: {
@@ -4050,7 +4050,6 @@ const KinkyDungeonRestraints: restraint[] = [
 			},
 		},
 		playerTagsMult: {
-			"ItemArmsEmpty": 0.005, // Impossible to put on without binding arms first
 			More_Petsuits: 2.5,
 		},
 		events: [
@@ -7849,6 +7848,8 @@ KDAddHardSlimeVariants(
 	{
 	}, undefined, undefined, "ProtoSlime"
 );
+
+
 KDAddHardSlimeVariants(
 	"HardSlime",
 	"HardProtoSlime",
@@ -7907,6 +7908,8 @@ KDAddHardSlimeVariants(
 	{
 	}, undefined, undefined, "CaptureFoam"
 );
+
+
 KDAddHardSlimeVariants(
 	"HardSlime",
 	"HardCaptureFoam",
@@ -7931,6 +7934,58 @@ KDAddHardSlimeVariants(
 		Struggle: -0.1,
 		Cut: -.075,
 		Remove: -0.05,
+	},
+	{
+	}
+);
+
+
+
+KDAddHardSlimeVariants(
+	"HardSlime",
+	"HardRedSlime",
+	"",
+	"redLatexEncase",
+	["RedLatex"],
+	[],
+	1,
+	{
+		Filters: {
+			Rubber: {"gamma":0.6333333333333334,"saturation":0.08333333333333333,"contrast":1,"brightness":1,"red":1.75,"green":0.8500000000000001,"blue":0.8500000000000001,"alpha":1},
+		},
+		factionFilters: {
+			Rubber: {color: "DarkNeutral", override: false},
+		},
+	},
+	[
+	],
+	{
+		Cut: -.125,
+	},
+	{
+	}
+);
+
+KDAddHardSlimeVariants(
+	"HardSlime",
+	"HardBlueSlime",
+	"",
+	"blueLatexEncase",
+	["BlueLatex"],
+	[],
+	0.5,
+	{
+		Filters: {
+			Rubber: {"gamma":0.8,"saturation":0.08333333333333333,"contrast":1,"brightness":1,"red":0.8166666666666667,"green":1.1166666666666667,"blue":1.55,"alpha":1},
+		},
+		factionFilters: {
+			Rubber: {color: "DarkNeutral", override: false},
+		},
+	},
+	[
+	],
+	{
+		Struggle: -.075,
 	},
 	{
 	}

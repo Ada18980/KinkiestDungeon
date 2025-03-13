@@ -149,6 +149,30 @@ let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 			{count: 1, restraint: "HardSlimeBoots"},
 		],
 	},
+	"HardBlueSlime": {
+		raw: "HardBlueSlimeRaw",
+		items: [
+			{count: 1, restraint: "HardBlueSlimeHead"},
+			{count: 1, restraint: "HardBlueSlimeMouth"},
+			{count: 2, restraint: "HardBlueSlimeArms"},
+			{count: 1, restraint: "HardBlueSlimeHands"},
+			{count: 1, restraint: "HardBlueSlimeLegs"},
+			{count: 1, restraint: "HardBlueSlimeFeet"},
+			{count: 1, restraint: "HardBlueSlimeBoots"},
+		],
+	},
+	"HardRedSlime": {
+		raw: "HardRedSlimeRaw",
+		items: [
+			{count: 1, restraint: "HardRedSlimeHead"},
+			{count: 1, restraint: "HardRedSlimeMouth"},
+			{count: 2, restraint: "HardRedSlimeArms"},
+			{count: 1, restraint: "HardRedSlimeHands"},
+			{count: 1, restraint: "HardRedSlimeLegs"},
+			{count: 1, restraint: "HardRedSlimeFeet"},
+			{count: 1, restraint: "HardRedSlimeBoots"},
+		],
+	},
 	"ProtoSlime": {
 		raw: "ProtoSlimeRaw",
 		items: [

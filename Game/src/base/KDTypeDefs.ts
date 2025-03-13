@@ -970,6 +970,7 @@ interface enemy extends KDHasTags {
 	hidetimerbar?: boolean,
 	Attack?: {
 		mustBindorFail?: boolean,
+		noFailifHasWP?: boolean,
 	},
 	/** Contains data pertaining to the creature's awareness */
 	Awareness?: {

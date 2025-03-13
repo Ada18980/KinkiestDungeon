@@ -2377,6 +2377,10 @@ interface KDKneelData {
 	minKneel: number,
 }
 
+function KDIsGrounded() {
+	return KinkyDungeonStatsChoice.get("Grounded") && (KinkyDungeonIsArmsBound() && KinkyDungeonLegsBlocked());
+}
+
 function KDGetKneelStats(delta: number, msg: boolean): KDKneelData {
 	let data: KDKneelData = {
 		baseRate: KinkyDungeonStatsChoice.get("PoorBalance") ? 0.5 : 1,
@@ -2396,7 +2400,7 @@ function KDGetKneelStats(delta: number, msg: boolean): KDKneelData {
 	}
 
 
-	if (KinkyDungeonStatsChoice.get("Grounded") && (KinkyDungeonIsArmsBound() && KinkyDungeonLegsBlocked())) {
+	if (KDIsGrounded()) {
 		data.minKneel = 1;
 	}
 

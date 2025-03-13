@@ -12039,7 +12039,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 		},
 		"latexKittyTrap": (_e, data) => {
 			if (!data.selectedChestTrap) {
-				let chancemult = (!!KinkyDungeonPlayerTags.get("HardSlime")) ? 2 : 1;
+				let chancemult = (!!KinkyDungeonPlayerTags.get("BlueLatex")) ? 2 : 1;
 				let level = Math.max(0, KDGetEffLevel() - 2);
 				chancemult *= Math.min(1, level*0.1); // reaches max commonness at floor 12
 

@@ -5154,6 +5154,13 @@ RestraintHardSlimeRaw,Rubber
 RestraintHardSlimeRawDesc,"Made from hardened slime."
 RestraintHardSlimeRawDesc2,"The classic smooth, shiny material for full encasement."
 
+RestraintHardBlueSlimeRaw,Blue Latex
+RestraintHardBlueSlimeRawDesc,"Blue rubber, for blue dolls."
+RestraintHardBlueSlimeRawDesc2,"The classic smooth, shiny material for full encasement."
+RestraintHardRedSlimeRaw,Red Latex
+RestraintHardRedSlimeRawDesc,"Red rubber, for red dolls."
+RestraintHardRedSlimeRawDesc2,"The classic smooth, shiny material for full encasement."
+
 RestraintSlimeRaw,Slime
 RestraintSlimeRawDesc,"A semi-organic substance of alchemical origin."
 RestraintSlimeRawDesc2,"It has a mind of its own, and tends to spread if not properly contained."
@@ -5166,30 +5173,84 @@ RestraintProtoSlimeRaw,Proto Slime
 RestraintProtoSlimeRawDesc,"Alchemical rubber in its simplest form. Amorphous."
 RestraintProtoSlimeRawDesc2,"Often forms strange growths, seeking damsels to encase."
 
+RestraintHardBlueSlimeBoots,Blue Rubber (Feet)
+RestraintHardBlueSlimeBootsDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeFeet,Blue Rubber (Ankles)
+RestraintHardBlueSlimeFeetDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeLegs,Blue Rubber (Legs)
+RestraintHardBlueSlimeLegsDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeArms,Blue Rubber (Arms)
+RestraintHardBlueSlimeArmsDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeHands,Blue Rubber (Hands)
+RestraintHardBlueSlimeHandsDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeMouth,Blue Rubber (Mouth)
+RestraintHardBlueSlimeMouthDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeHead,Blue Rubber (Head)
+RestraintHardBlueSlimeHeadDesc,"Stretchy rubber in a skintight layer. Harder to struggle than normal rubber."
+RestraintHardBlueSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardBlueSlimeCollar,Living Blue Rubber Collar
+RestraintHardBlueSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
+RestraintHardBlueSlimeCollarDesc2,"It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
+
+
 RestraintHardSlimeBoots,Rubber (Feet)
-RestraintHardSlimeBootsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeBootsDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeFeet,Rubber (Ankles)
-RestraintHardSlimeFeetDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeFeetDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeLegs,Rubber (Legs)
-RestraintHardSlimeLegsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeLegsDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeArms,Rubber (Arms)
-RestraintHardSlimeArmsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeArmsDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeHands,Rubber (Hands)
-RestraintHardSlimeHandsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeHandsDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeMouth,Rubber (Mouth)
-RestraintHardSlimeMouthDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeMouthDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeHead,Rubber (Head)
-RestraintHardSlimeHeadDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardSlimeHeadDesc,"Stretchy rubber in a skintight layer. Harder to cut than normal rubber."
 RestraintHardSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
 RestraintHardSlimeCollar,Living Rubber Collar
 RestraintHardSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
 RestraintHardSlimeCollarDesc2,"It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
+
+
+
+
+RestraintHardRedSlimeBoots,Red Rubber (Feet)
+RestraintHardRedSlimeBootsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeFeet,Red Rubber (Ankles)
+RestraintHardRedSlimeFeetDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeLegs,Red Rubber (Legs)
+RestraintHardRedSlimeLegsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeArms,Red Rubber (Arms)
+RestraintHardRedSlimeArmsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeHands,Red Rubber (Hands)
+RestraintHardRedSlimeHandsDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeMouth,Red Rubber (Mouth)
+RestraintHardRedSlimeMouthDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeHead,Red Rubber (Head)
+RestraintHardRedSlimeHeadDesc,"Sticky rubber that has fused itself into a skintight layer."
+RestraintHardRedSlimeHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardRedSlimeCollar,Living Red Rubber Collar
+RestraintHardRedSlimeCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
+RestraintHardRedSlimeCollarDesc2,"It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
 
 
 
@@ -30867,9 +30928,9 @@ RestraintGagNecklaceDesc,A cute accessory for those who wish to (not) make a sta
 RestraintGagNecklaceDesc2,Functions as a collar.
 
 KDNoModJSON,No mod info!
-KDModOutdated,Wrong patch
-KDModOutdated2,VERY Outdated!
-KDModOutdated3,Outdated!
+KDModOutdated,Wrong patch! ${Num1} vs ${Num2}
+KDModOutdated2,VERY Outdated! ${Num1} vs ${Num2}
+KDModOutdated3,Outdated! ${Num1} vs ${Num2}
 KDModDependency,Check dependencies!
 KDModIncompatible,Check compatibility!
 KDModMiscError,Misc Error
