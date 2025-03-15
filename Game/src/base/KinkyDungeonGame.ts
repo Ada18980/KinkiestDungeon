@@ -6811,7 +6811,7 @@ function KDFastMoveTo(xx: number, yy: number): number {
 		if (path) {
 			KDSetFocusControl("");
 			KinkyDungeonFastMovePath = path;
-			KDUpdateWaitTime(100);
+			KDUpdateWaitTime(1);
 			KinkyDungeonSetFlag("startPath", 1);
 			return path.length;
 		} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5) {
@@ -6823,6 +6823,23 @@ function KDFastMoveTo(xx: number, yy: number): number {
 	return 0;
 }
 
-function KDUpdateWaitTime(delay: number) {
-	KinkyDungeonSleepTime = Math.max(KinkyDungeonSleepTime, CommonTime() + delay);
+let KDOverrideWaitTimeThreshold = 950;
+
+function KDUpdateWaitTime(delay: number, force: boolean = false, nooverride: boolean = false) {
+	if (force) KinkyDungeonSleepTime = CommonTime() + delay;
+	else {
+		let ct = CommonTime();
+		if (!nooverride && KinkyDungeonSleepTime > ct) {
+			let diff = KinkyDungeonSleepTime - ct;
+			if (diff < KDOverrideWaitTimeThreshold) {
+				// override since we got a shorter delay thats below the thresh
+				KinkyDungeonSleepTime = CommonTime() + delay;
+				return;
+			}
+		}
+		KinkyDungeonSleepTime = Math.max(KinkyDungeonSleepTime, CommonTime() + delay);
+
+
+	}
+
 }

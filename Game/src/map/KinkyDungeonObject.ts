@@ -93,37 +93,47 @@ let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => bo
 		return false;
 			//}
 	},
-	"Door": (x, y) => {
-		if (KinkyDungeonMapGet(x, y) == 'D') {
+	"Door": (x, y, dist) => {
+		// TODO add door open range for elastic grip and maybe psychic
+		if ((dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y)) < 1.5) {
+			if (KinkyDungeonMapGet(x, y) == 'D') {
 
-			if (KinkyDungeonTilesGet(x + ',' + y)?.Lock) {
+				if (KinkyDungeonTilesGet(x + ',' + y)?.Lock) {
 
-				KinkyDungeonTilesGet(x + ',' + y).LockSeen =
-					KinkyDungeonTilesGet(x + ',' + y).Lock;
+					KinkyDungeonTilesGet(x + ',' + y).LockSeen =
+						KinkyDungeonTilesGet(x + ',' + y).Lock;
 
-				KDDelayedActionPrune(["Action", "World"]);
-				KinkyDungeonTargetTileLocation = "" + x + "," + y;
-				KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
-				KDModalArea = false;
+					KDDelayedActionPrune(["Action", "World"]);
+					KinkyDungeonTargetTileLocation = "" + x + "," + y;
+					KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+					KDModalArea = false;
 
 
-				KinkyDungeonTargetTileMsg();
-				return true;
-			} else {
+					KinkyDungeonTargetTileMsg();
+					return true;
+				} else {
+					if (KinkyDungeonTilesGet(x + ',' + y)) {
+						KinkyDungeonTilesGet(x + ',' + y).LockSeen = undefined;
+					}
+					KDAttemptDoor(x, y);
+					return true;
+				}
+			} else if (!KinkyDungeonEntityAt(x, y, false, undefined, undefined, true)) {
+
 				if (KinkyDungeonTilesGet(x + ',' + y)) {
 					KinkyDungeonTilesGet(x + ',' + y).LockSeen = undefined;
 				}
-				KDAttemptDoor(x, y);
+				KinkyDungeonCloseDoor(x, y);
 				return true;
 			}
-		} else if (!KinkyDungeonEntityAt(x, y, false, undefined, undefined, true)) {
-
-			if (KinkyDungeonTilesGet(x + ',' + y)) {
-				KinkyDungeonTilesGet(x + ',' + y).LockSeen = undefined;
+		} else {
+			if (KinkyDungeonIsArmsBound(false, true)) {
+				KinkyDungeonSendActionMessage(10, TextGet("KDMoveCloserDoorBound"), KDBaseWhite, 2, true);
+			} else {
+				KinkyDungeonSendActionMessage(10, TextGet("KDMoveCloserDoor"), KDBaseWhite, 2, true);
 			}
-			KinkyDungeonCloseDoor(x, y);
-			return true;
 		}
+
 		return false;
 	},
 };

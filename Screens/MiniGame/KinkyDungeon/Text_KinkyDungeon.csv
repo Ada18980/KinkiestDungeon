@@ -31727,6 +31727,8 @@ KDBedSleptLevel,(Already slept here)
 KDBedWillNotLow,(Will not low enough)
 
 KDMoveCloser,Move closer to interact
+KDMoveCloserDoor,Your arms are not long enough.
+KDMoveCloserDoorBound,You can't do that with just your mind.
 
 KinkyDungeonSpellCastSpikeTrap,Several poles rise up out of the ground...
 

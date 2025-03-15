@@ -1517,7 +1517,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			KinkyDungeonAutoWait = true;
 			KinkyDungeonTempWait = true;
 			KinkyDungeonAutoWaitSuppress = true;
-			KDUpdateWaitTime(200);
+			KDUpdateWaitTime(100);
 			KDSetFocusControl("AutoWait");
 		}
 		return true;
