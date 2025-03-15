@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 /**
  * Play is actions enemies do when they are NEUTRAL
  */
@@ -54,6 +56,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.playWithPlayerCD = 30;
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 7);
 			KDResetAllIntents(true);
+			if (KinkyDungeonAutoWait) {
+				KDUpdateWaitTime(KDDelayWaitTime());
+			}
 			return KDSettlePlayerInFurniture(enemy, aiData);
 		},
 		maintain: (enemy, delta, aiData) => {
@@ -146,6 +151,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			KDResetAllIntents();
 			KDBreakTether(KinkyDungeonPlayerEntity);
 
+			if (KinkyDungeonAutoWait) {
+				KDUpdateWaitTime(KDDelayWaitTime());
+			}
 			enemy.gx = KinkyDungeonPlayerEntity.x;
 			enemy.gy = KinkyDungeonPlayerEntity.y;
 			return true;
@@ -298,11 +306,14 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.playWithPlayer = 0;
 			enemy.playWithPlayerCD = 80;
 			KDGameData.PrisonerState = 'jail';
+			if (KinkyDungeonAutoWait) {
+				KDUpdateWaitTime(KDDelayWaitTime());
+			}
 			KDResetAllAggro(KinkyDungeonPlayerEntity);
 			KinkyDungeonSetEnemyFlag(enemy, "playstart", 0);
 			KDResetAllIntents(true);
 			KDGameData.KinkyDungeonPrisonExtraGhostRep -= 1;
-			return KDPutInJail(KinkyDungeonPlayerEntity, enemy, null);;
+			return KDPutInJail(KinkyDungeonPlayerEntity, enemy, null);
 		},
 		maintain: (enemy, delta, aiData) => {
 			let player = KDPlayer();
@@ -461,7 +472,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 			let pos = KDMapData.StartPosition;
-			if (!nj || KinkyDungeonFlags.get("LeashToPrison") || KDSelfishLeash(enemy)) {
+			if (!nj || (KinkyDungeonFlags.get("LeashToPrison")
+				&& !(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
+			) || KDSelfishLeash(enemy)) {
 				nj = null;
 				if (KDGenHighSecCondition(!nj, enemy)) {
 					pos = KDGetHighSecLoc(enemy, !KDSelfishLeash(enemy));
@@ -493,7 +506,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 					let pos = KDMapData.StartPosition;
-					if (!nj || KinkyDungeonFlags.get("LeashToPrison")) {
+					if (!nj || (KinkyDungeonFlags.get("LeashToPrison")
+						&& !(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
+					) || KDSelfishLeash(enemy)) {
 						if (KDGenHighSecCondition(!nj, enemy)) {
 							pos = KDGetHighSecLoc(enemy, !KDSelfishLeash(enemy));
 						}
@@ -526,6 +541,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				KDResetIntent(enemy, aiData);
 				enemy.playWithPlayer = 0;
 				enemy.playWithPlayerCD = 24;
+				if (KinkyDungeonAutoWait) {
+					KDUpdateWaitTime(KDDelayWaitTime());
+				}
 				return true;
 			} else if (KDGameData.PrisonerState == 'jail') {
 				let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
@@ -1092,12 +1110,18 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				if (enemy.IntentLeashPoint)
 					KDMovePlayer(enemy.IntentLeashPoint.x, enemy.IntentLeashPoint.y, false, false);
 				KDResetIntent(enemy, aiData);
+				if (KinkyDungeonAutoWait) {
+					KDUpdateWaitTime(KDDelayWaitTime());
+				}
 				enemy.playWithPlayer = 0;
 				enemy.playWithPlayerCD = 24;
 				return true;
 			}
 			aiData.defeat = true;
 			KDBreakTether(KinkyDungeonPlayerEntity);
+			if (KinkyDungeonAutoWait) {
+				KDUpdateWaitTime(KDDelayWaitTime());
+			}
 			return false;
 		},
 	},
@@ -1144,6 +1168,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			}
 			KDResetIntent(enemy, aiData);
 			KDBreakTether(KinkyDungeonPlayerEntity);
+			if (KinkyDungeonAutoWait) {
+				KDUpdateWaitTime(KDDelayWaitTime());
+			}
 			aiData.defeat = true;
 			KDCustomDefeat = "DemonTransition";
 			KDCustomDefeatEnemy = enemy;
@@ -1186,6 +1213,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentAction = '';
 			enemy.IntentLeashPoint = null;
 			let res = KDSettlePlayerInFurniture(enemy, aiData, ["callGuardJailerOnly"]);
+			if (KinkyDungeonAutoWait) {
+				KDUpdateWaitTime(KDDelayWaitTime());
+			}
 			if (res) {
 				KDResetAllAggro();
 				KDResetAllIntents();
@@ -1239,6 +1269,7 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 	if (enemy.x == nearestfurniture.x && enemy.y == nearestfurniture.y)
 		KDMoveEntity(enemy, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
 			true, undefined, undefined, true);
+
 	KDMovePlayer(nearestfurniture.x, nearestfurniture.y, false);
 	if (KinkyDungeonPlayerEntity.x == nearestfurniture.x && KinkyDungeonPlayerEntity.y == nearestfurniture.y) {
 		let furn = KDFurniture[type];
@@ -1260,6 +1291,9 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 		KDResetAllAggro();
 		KDResetAllIntents();
 		KDBreakTether(KinkyDungeonPlayerEntity);
+		if (KinkyDungeonAutoWait) {
+			KDUpdateWaitTime(KDDelayWaitTime());
+		}
 		return true;
 	}
 	return false;

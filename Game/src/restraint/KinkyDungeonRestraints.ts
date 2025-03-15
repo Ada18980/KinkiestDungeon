@@ -2860,7 +2860,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 			KinkyDungeonAdvanceTime(1);
 			if (KDGameData.DelayedActions?.length > 0)
-				KinkyDungeonSleepTime = CommonTime() + KDWaitTimeDelayedAction();
+				KDUpdateWaitTime(KDWaitTimeDelayedAction());
 
 			if (Pass == "Success") KinkyDungeonCurrentEscapingItem = null;
 			return Pass;
@@ -4718,7 +4718,7 @@ function KinkyDungeonAddRestraint (
 
 		KinkyDungeonDressPlayer();
 		KinkyDungeonMultiplayerInventoryFlag = true; // Signal that we can send the inventory now
-		KinkyDungeonSleepTime = 0;
+		//KDUpdateWaitTime(100);
 		KinkyDungeonUpdateStruggleGroups();
 		if (!KinkyDungeonRestraintAdded) {
 			KinkyDungeonRestraintAdded = true;

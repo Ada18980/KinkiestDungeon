@@ -218,6 +218,9 @@ function KDIsPlayerTetheredToEntity(player: entity, entity: entity) {
 function KDBreakTether(player: entity): boolean {
 	if (player?.leash) {
 		delete player.leash;
+		if (KinkyDungeonAutoWait) {
+			KDUpdateWaitTime(KDDelayWaitTime());
+		}
 		return true;
 	}
 	return false;

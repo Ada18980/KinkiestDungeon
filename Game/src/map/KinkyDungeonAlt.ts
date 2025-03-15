@@ -233,6 +233,8 @@ interface AltType {
 
 	/** Allows highsec in here */
 	placeJailEntrances?: boolean,
+	sameFactionJailOnly?: boolean,
+	friendlyFactionOnly?: boolean,
 
 	/** Creates the jail entrances but doesnt let them be used unless this is a destination */
 	allowJailEntrances?: boolean,
@@ -748,6 +750,7 @@ let alts: Record<string, AltType> = {
 			BanditFort: true,
 		},
 		placeJailEntrances: true,
+		sameFactionJailOnly: true,
 		genType: "Maze",
 		skin: "shoppe",
 		musicParams: "bandit",

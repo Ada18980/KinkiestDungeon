@@ -5453,7 +5453,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				if (newDelta > 1 && newDelta < 10 && !quick) {
 					if (KDToggles.LazyWalk && !KinkyDungeonInDanger()) {
 						KDGameData.SlowMoveTurns = newDelta - 1;
-						KinkyDungeonSleepTime = CommonTime() + 200;
+						KDUpdateWaitTime(200);
 					} else {
 						KDGameData.MovePoints = Math.min(KDGameData.MovePoints, 1-newDelta);
 					}
@@ -6281,7 +6281,7 @@ function KDStunTurns(turns: number, noFlag?: boolean) {
 	if (!noFlag)
 		KinkyDungeonSetFlag("playerStun", turns + 1);
 	KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, turns);
-	KinkyDungeonSleepTime = CommonTime() + 200;
+	KDUpdateWaitTime(200);
 }
 
 /**
@@ -6787,7 +6787,7 @@ function KDDelayedActionStart() {
 	//KinkyDungeonAdvanceTime(1);
 	if (KDAutoWaitDelayed) {
 		let wt = KDWaitTimeDelayedAction();
-		KinkyDungeonSleepTime = wt;
+		KDUpdateWaitTime(wt);
 	}
 }
 
@@ -6811,7 +6811,7 @@ function KDFastMoveTo(xx: number, yy: number): number {
 		if (path) {
 			KDSetFocusControl("");
 			KinkyDungeonFastMovePath = path;
-			KinkyDungeonSleepTime = 100;
+			KDUpdateWaitTime(100);
 			KinkyDungeonSetFlag("startPath", 1);
 			return path.length;
 		} else if (KDistChebyshev(KinkyDungeonPlayerEntity.x - xx, KinkyDungeonPlayerEntity.y - yy) < 1.5) {
@@ -6821,4 +6821,8 @@ function KDFastMoveTo(xx: number, yy: number): number {
 		}
 	}
 	return 0;
+}
+
+function KDUpdateWaitTime(delay: number) {
+	KinkyDungeonSleepTime = Math.max(KinkyDungeonSleepTime, CommonTime() + delay);
 }

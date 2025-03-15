@@ -1517,7 +1517,7 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 			KinkyDungeonAutoWait = true;
 			KinkyDungeonTempWait = true;
 			KinkyDungeonAutoWaitSuppress = true;
-			KinkyDungeonSleepTime = CommonTime() + 100;
+			KDUpdateWaitTime(200);
 			KDSetFocusControl("AutoWait");
 		}
 		return true;
@@ -1594,7 +1594,7 @@ function KDAutoStruggleClick() {
 		KinkyDungeonAutoWaitSuppress = false;
 	} else {
 		KinkyDungeonAutoWaitStruggle = true;
-		KinkyDungeonSleepTime = CommonTime() + 100;
+		KDUpdateWaitTime(200);
 	}
 }
 
@@ -1893,7 +1893,7 @@ function KinkyDungeonHandleHUD() {
 			//KinkyDungeonAutoWait = true;
 			//KinkyDungeonTempWait = false;
 			//KinkyDungeonAutoWaitSuppress = true;
-			//KinkyDungeonSleepTime = CommonTime() + 500;
+			//KDUpdateWaitTime(500);
 			return true;
 		}
 		KDConfirmDeleteSave = false;

@@ -1530,7 +1530,7 @@ function KDRecruitDialogue (
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
 							KDGameData.SlowMoveTurns = 3;
-							KinkyDungeonSleepTime = CommonTime() + 200;
+							KDUpdateWaitTime(200);
 							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
 						},
@@ -1589,7 +1589,7 @@ function KDRecruitDialogue (
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
 							KDGameData.SlowMoveTurns = 3;
-							KinkyDungeonSleepTime = CommonTime() + 200;
+							KDUpdateWaitTime(200);
 							KinkyDungeonSetFlag(name, -1, 1);
 							return false;
 						},
@@ -1612,7 +1612,7 @@ function KDRecruitDialogue (
 								//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 								KinkyDungeonSetDress(outfitName, outfitName);
 								KDGameData.SlowMoveTurns = 3;
-								KinkyDungeonSleepTime = CommonTime() + 200;
+								KDUpdateWaitTime(200);
 							} else {
 								KDIncreaseOfferFatigue(10);
 								let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);

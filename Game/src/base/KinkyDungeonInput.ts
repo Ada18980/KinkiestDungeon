@@ -178,7 +178,7 @@ function KDProcessInput(type: string, data: any): string {
 			KDDelayedActionPrune(["Action", "Dress"]);
 			KinkyDungeonSetDress(data.dress, data.outfit);
 			KDGameData.SlowMoveTurns = 5;
-			KinkyDungeonSleepTime = CommonTime() + 200;
+			KDUpdateWaitTime(200);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 			break;
 		case "drop": {

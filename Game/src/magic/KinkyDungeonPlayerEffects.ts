@@ -2248,7 +2248,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (dmg.happened && (KinkyDungeonPlayerBuffs.Drenched || KinkyDungeonPlayerBuffs.Chilled)) {
 			sfx = "Freeze";
 			KinkyDungeonStatFreeze = Math.max(0, playerEffect.time);
-			KinkyDungeonSleepTime = CommonTime() + KinkyDungeonFreezeTime;
+			KDUpdateWaitTime(KinkyDungeonFreezeTime);
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreeze").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
 		} else {
 			sfx = "Bones";
@@ -2267,7 +2267,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreeze").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
 
 			KinkyDungeonStatFreeze = Math.max(0, playerEffect.time);
-			KinkyDungeonSleepTime = CommonTime() + KinkyDungeonFreezeTime;
+			KDUpdateWaitTime(KinkyDungeonFreezeTime);
 			effect = true;
 			return {sfx: "Freeze", effect: effect};
 		}

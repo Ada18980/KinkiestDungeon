@@ -397,7 +397,7 @@ KDPrisonTypes.HighSec = {
 					return KDGoToSubState(player, "StripRemove");
 				}
 				// Otherwise go to travel state
-				if (KDShouldStripSearchPlayer(player))
+				if (KDShouldStripSearchPlayer(player, true))
 					return KDGoToSubState(player, "StripTravel");
 				if (!KinkyDungeonPlayerInCell()) {
 					return KDGoToSubState(player, "CellTravel");

@@ -6872,7 +6872,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars"]},
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true,
 		name: "EssenceNecklace", accessible: true,
-		Group: "ItemNeck", power: 1, weight: 0, displayPower: 10,
+		Group: "ItemNeck", power: -1, weight: 0, displayPower: 10,
 		escapeChance: {"Struggle": 0.2, "Cut": 0.05, "Remove": 0.8},
 		Model: "RubyNecklaceRestraint",
 		value: 500,

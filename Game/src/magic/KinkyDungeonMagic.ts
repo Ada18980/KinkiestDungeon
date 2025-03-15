@@ -1312,7 +1312,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 						if (data.channel) {
 							KinkyDungeonSetFlag("channeling", data.channel);
 							KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
-							KinkyDungeonSleepTime = CommonTime() + 200;
+							KDUpdateWaitTime(200);
 						}
 						if (spell.components) {
 							for (let comp of spell.components) {
@@ -1422,7 +1422,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		if (data.channel) {
 			KinkyDungeonSetFlag("channeling", data.channel);
 			KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
-			KinkyDungeonSleepTime = CommonTime() + 200;
+			KDUpdateWaitTime(200);
 		}
 		if (spell.components) {
 			for (let comp of spell.components) {

@@ -1653,7 +1653,7 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 	if (data.channel) {
 		KinkyDungeonSetFlag("channeling", data.channel);
 		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
-		KinkyDungeonSleepTime = CommonTime() + 200;
+		KDUpdateWaitTime(200);
 	}
 
 	KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "damage", 1);

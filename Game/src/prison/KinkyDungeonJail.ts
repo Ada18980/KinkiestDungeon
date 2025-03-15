@@ -870,6 +870,9 @@ function KDPutInJail(player: entity, enemy: entity, point: { x: number, y: numbe
 		if (point) {
 			KDBreakTether(player);
 			if (player.player) {
+				if (KinkyDungeonAutoWait) {
+					KDUpdateWaitTime(KDDelayWaitTime());
+				}
 				KDMovePlayer(point.x, point.y, false);
 				if (KinkyDungeonPlayerInCell(true))
 					KinkyDungeonChangeRep("Ghost", 1 + KDGameData.KinkyDungeonPrisonExtraGhostRep);
@@ -1623,7 +1626,13 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 		let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 		let fromHere = true;
-		if (((slot.main || "") == KDGameData.RoomType) && (altRoom && altRoom.placeJailEntrances))
+		if (((slot.main || "") == KDGameData.RoomType) && !(altRoom &&
+			(
+				altRoom.placeJailEntrances
+				&& (!altRoom.sameFactionJailOnly || forceFaction == KDGetMainFaction())
+				&& (!altRoom.friendlyFactionOnly || KDFactionFavorable(KDGetMainFaction(), forceFaction)))
+
+		))
 			fromHere = false;
 		let outpost = KDAddOutpost(
 			slot,

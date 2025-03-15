@@ -44,7 +44,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			};
 			if (mainFaction) guard['faction'] = mainFaction;
 			if (KDIsHumanoid(guard) && KDEnemyCanTalk(guard)
-				&& KDShouldStripSearchPlayer(KDPlayer())
+				&& KDShouldStripSearchPlayer(KDPlayer(), true)
 				&& !KDGameData.CurrentDialog) {
 				KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTime);
 				KDStartDialog("StripSearch",
