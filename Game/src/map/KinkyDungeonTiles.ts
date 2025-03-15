@@ -108,7 +108,7 @@ let KinkyDungeonChestConfirm = false;
 
 function KinkyDungeonHandleMoveToTile(toTile: string): void {
 	if (toTile == 's' || toTile == 'H' || (toTile == 'S' && (
-		MiniGameKinkyDungeonLevel > 0
+		(!KinkyDungeonAltFloor(KDGameData.RoomType)?.noReverse)
 		//|| (MiniGameKinkyDungeonLevel == 1 && KDGameData.RoomType)
 		//|| KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction
 		//|| KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.RoomType
@@ -1080,7 +1080,7 @@ let KDAdvanceAmount: Record<string, (altRoom: AltType, altRoomNext: AltType, til
 			toTile: 'S',
 			altRoom: altRoom,
 			altRoomNext: altRoomNext,
-			AdvanceAmount: (altRoomNext?.skiptunnel ? -1 : 0),
+			AdvanceAmount: ((MiniGameKinkyDungeonLevel > 0 && altRoomNext?.skiptunnel) ? -1 : 0),
 			dataOverride: null,
 		}
 

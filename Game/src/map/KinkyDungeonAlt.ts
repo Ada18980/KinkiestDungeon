@@ -147,6 +147,8 @@ interface AltType {
 	/** Room title for display */
 	Title?: string,
 	bossroom?: boolean,
+	/** No going back thru start stairs */
+	noReverse?: boolean,
 	width: number,
 	height: number,
 	genType: string,
@@ -1062,6 +1064,7 @@ let alts: Record<string, AltType> = {
 		noboring: true, // Skip generating boringness
 	},
 	"JourneyFloor": {
+		noReverse: true,
 		name: "JourneyFloor",
 		Title: "JourneyFloor",
 		bossroom: false,
@@ -1103,6 +1106,7 @@ let alts: Record<string, AltType> = {
 		noClutter: true,
 	},
 	"ShopStart": {
+		noReverse: true,
 		name: "ShopStart",
 		Title: "ShopStart",
 		skiptunnel: true, // Skip the ending tunnel
