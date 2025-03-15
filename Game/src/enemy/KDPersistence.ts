@@ -767,8 +767,8 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 	if (!mapFaction) mapFaction = ""; // Default to no faction
 
 	let capturedPersistent = Object.values(KDPersistentNPCs).filter((npc) => {
-		return npc.captured && !npc.collect && (!npc.jailed || (
-			KDCompareLocation(KDGetNPCLocation(npc.id), KDGetCurrentLocation())
+		return npc.captured && ((!npc.jailed && !npc.collect) || (
+			npc.jailed && KDCompareLocation(KDGetNPCLocation(npc.id), KDGetCurrentLocation())
 			&& !KinkyDungeonFindID(npc.id)
 		));
 	});

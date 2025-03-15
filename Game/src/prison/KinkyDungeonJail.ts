@@ -1530,7 +1530,6 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KDCustomDefeatEnemy = null;
 	KinkyDungeonInterruptSleep();
 
-	KinkyDungeonSetFlag("jailStripSearched", 0);
 
 	let forceFaction = KDGetLeashFaction(leashEnemy);
 	let jailroom = KDGetLeashJailRoom(leashEnemy);
@@ -1626,7 +1625,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
 		let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 		let fromHere = true;
-		if (((slot.main || "") == KDGameData.RoomType) && !(altRoom &&
+		if (!((slot.main || "") == KDGameData.RoomType) && !(altRoom &&
 			(
 				altRoom.placeJailEntrances
 				&& (!altRoom.sameFactionJailOnly || forceFaction == KDGetMainFaction())
@@ -1757,6 +1756,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		//nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 
 	} else {
+		KinkyDungeonSetFlag("jailStripSearched", 0);
 		KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
 
 		if (leasher)
