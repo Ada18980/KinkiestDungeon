@@ -866,7 +866,14 @@ function KDUnblock(x: number, y: number): boolean {
 	return !blocked;
 }
 
-function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string) {
+interface KDSpawnResult {
+	id: number,
+	persistent: boolean,
+	entity: entity,
+	success: boolean,
+}
+
+function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string): KDSpawnResult {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
@@ -935,8 +942,15 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 				faction: KDGetMainFaction() || "Jail",
 			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
 			undefined, furn?.restraintSetLevelBonus);
-		}
 
+
+		}
+		return {
+			entity: e,
+			persistent: true,
+			success: !!e,
+			id: e?.id,
+		};
 
 	} else if (!persistentOnly) {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
@@ -968,9 +982,21 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 				if (e.hp <= 0.5) e.hp = 0.51;
 				e.items = [];
 			}
+
+			return {
+				entity: e,
+				persistent: false,
+				success: !!e,
+				id: e?.id,
+			};
 		}
 	}
-
+	return {
+		entity: null,
+		persistent: false,
+		success: false,
+		id: null,
+	};
 }
 
 

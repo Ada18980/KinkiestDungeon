@@ -705,7 +705,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (item == data.item) {
 				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);
 
-				data.extraLines.push(TextGet("KDMana" + (bonus >= 0 ? "Bonus" : "Penalty")) + Math.round(100 * bonus) + "%");
+				data.extraLines.push(TextGet("KDMana" + (e.mult < 0 ? "Neg" : "") + (bonus >= 0 ? "Bonus" : "Penalty")) + Math.round(100 * bonus) + "%");
 				data.extraLineColor.push("#99aaff");
 			}
 		},

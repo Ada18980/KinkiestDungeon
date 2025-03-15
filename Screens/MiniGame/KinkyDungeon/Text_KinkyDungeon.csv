@@ -3515,6 +3515,8 @@ KDGoddessStat_Bonus,"Goddess Blessing: "
 KDGoddessStat_Penalty,"Goddess Curse: "
 KDManaBonus,"Mana Bonus: "
 KDManaPenalty,"Lack of Mana Penalty: "
+KDManaNegBonus,"Mana Penalty: "
+KDManaNegPenalty,"Lack of Mana Bonus: "
 KDStruggleManaBonus,"Your excess mana helps you suppress the enchantment!"
 KDStruggleManaPenalty,"Your mana is too weak to fight the magical enchantment..."
 
@@ -30690,6 +30692,7 @@ KDImprison,Imprison
 
 KDNPCOpinion,"Opinion: "
 KDLastNPCLocation,"Last Seen on Floor FLR, LOC"
+KDLastNPCLocationNotSpawned,"On current level but not spawned"
 KDLastNPCLocationSame,"Present in current level"
 KDLastNPCLocationCaptured,"Captured by FCTN"
 KDLastNPCLocationCapturedNone,"Captured by enemies"
@@ -31735,7 +31738,7 @@ KDMasterworkLockRemove,Your ${Restraint} clicks and releases at last!
 KDLeashRatchet,Your leash lets out a click as it ratchets to a shorter length!
 KDApplyMasterworkSucceed,The animated Masterworks overpower you and you find yourself wearing one of them!
 KDApplyMasterworkFail,The animated Masterworks force you to the ground and pat your head gently before floating away!
-KDApplyLatexKittySucceed,"The curse of the latex kitty spreads, encasing your limbs in tight rubber!"
+KDApplyLatexKittySucceed,"The kitty's living latex spreads, encasing your limbs in tight rubber!"
 
 
 

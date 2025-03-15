@@ -641,7 +641,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		if (npcLoc) {
 			let currLoc = KDGetCurrentLocation();
 			let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
-			str = TextGet((KinkyDungeonFindID(value.id) && KDCompareLocation(currLoc, npcLoc)) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
+			str = TextGet((KDCompareLocation(currLoc, npcLoc) && KinkyDungeonFindID(value.id)) ? "KDLastNPCLocationSame" :
+			(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationNotSpawned" : "KDLastNPCLocation"))
 				.replace("FLR", npcLoc.mapY + "")
 				.replace("LOC", KDPersonalAlt[npcLoc.room]
 					? KDGetLairName(npcLoc.room)
@@ -1116,9 +1117,12 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 		if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
 			let icon = KDGetPersistentNPC(value.id)?.captured
-				? "Inspect"
+				? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
+				&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
 				: ((value.escaped ? "escaped"
-				: (value.escapegrace ? "escapegrace" : "jail")));
+				: (value.escapegrace ? "escapegrace" :
+					(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
+				)));
 			KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
 				KinkyDungeonRootDirectory + "UI/" + icon + ".png",
 				XX + 36,
@@ -1199,9 +1203,12 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 			if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
 				let icon = KDGetPersistentNPC(value.id)?.captured
-					? "Inspect"
+					? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
+					&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
 					: ((value.escaped ? "escaped"
-					: (value.escapegrace ? "escapegrace" : "jail")));
+					: (value.escapegrace ? "escapegrace" :
+						(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
+					)));
 				KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
 					KinkyDungeonRootDirectory + "UI/" + icon + ".png",
 					XX + 42,

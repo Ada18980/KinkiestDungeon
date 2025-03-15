@@ -620,14 +620,46 @@ function KDRepopulatePersistentNPCs() {
 	}
 
 	let count = 0;
+	let spawned = 0;
+	//let persistentNPCsToMove: number[] = [];
 	let maxCount = jailPoints.length * 0.7;
 	for (let point of jailPoints) {
 		if (KDRandom() < 0.7) {
-			SetpieceSpawnPrisoner(point.x, point.y, true);
+			let result = SetpieceSpawnPrisoner(point.x, point.y, true);
+			if (result.success) spawned++;
 			count++;
 			if (count >= maxCount) break;
 		}
 	}
+	if (jailPoints.length == 0) {
+		let capturedPersistent = KDGetCapturedPersistent(
+			MiniGameKinkyDungeonLevel,
+			KDGameData.RoomType,
+			KDGameData.MapMod,
+			KDMapData.MapFaction).filter(
+				(en) => {
+					return !en.entity?.Enemy?.tags?.noPrisoner;
+				}
+			);
+		let persistentAvailable =
+			KDGameData.CapturedParty?.length > 0
+			|| capturedPersistent.length > 0;
+		let amountToSpawn = Math.min(8,
+			Math.max(capturedPersistent.length || 0,
+				KDGameData.CapturedParty?.length || 0));
+		// If we can't possibly spawn prisoners then we chuck a few of them randomly
+		for (let i = 0; i < amountToSpawn; i++) {
+			let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, undefined, undefined,
+				false, undefined
+			);
+			if (point) {
+				let result = SetpieceSpawnPrisoner(point.x, point.y, true);
+				if (result.success) spawned++;
+			}
+		}
+	}
+
+	console.log("Spawned " + spawned + " npcs")
 }
 
 
@@ -735,7 +767,10 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 	if (!mapFaction) mapFaction = ""; // Default to no faction
 
 	let capturedPersistent = Object.values(KDPersistentNPCs).filter((npc) => {
-		return npc.captured && !npc.jailed && !npc.collect;
+		return npc.captured && !npc.collect && (!npc.jailed || (
+			KDCompareLocation(KDGetNPCLocation(npc.id), KDGetCurrentLocation())
+			&& !KinkyDungeonFindID(npc.id)
+		));
 	});
 	let eligible: KDPersistentNPC[] = [];
 	let eligible_faction: KDPersistentNPC[] = [];
