@@ -3559,6 +3559,7 @@
             <key type="filename">../Game/UI/Help.png</key>
             <key type="filename">../Game/UI/HelpGag.png</key>
             <key type="filename">../Game/UI/Inspect.png</key>
+            <key type="filename">../Game/UI/InspectQuestion.png</key>
             <key type="filename">../Game/UI/Interact.png</key>
             <key type="filename">../Game/UI/LetGo.png</key>
             <key type="filename">../Game/UI/Log/Action.png</key>
@@ -4388,6 +4389,7 @@
             <key type="filename">../Game/UI/jail.png</key>
             <key type="filename">../Game/UI/key.png</key>
             <key type="filename">../Game/UI/miscast.png</key>
+            <key type="filename">../Game/UI/party.png</key>
             <key type="filename">../Game/UI/restraint_key.png</key>
             <key type="filename">../Game/UI/restraint_key_2.png</key>
             <key type="filename">../Game/UI/restraint_nokey.png</key>
