@@ -1,22 +1,86 @@
 {"frames": {
 
-"DisplacementMaps/CorsetSquish.png":
+"DisplacementMaps/BalletEraseSpread.png":
 {
-	"frame": {"x":3,"y":1765,"w":620,"h":220},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":220},
-	"sourceSize": {"w":620,"h":220}
-},
-"DisplacementMaps/Leg1SquishClosed.png":
-{
-	"frame": {"x":1528,"y":1765,"w":511,"h":185},
+	"frame": {"x":1774,"y":884,"w":252,"h":218},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":197,"w":511,"h":185},
-	"sourceSize": {"w":511,"h":382}
+	"spriteSourceSize": {"x":193,"y":659,"w":252,"h":218},
+	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockRSquish_MidHogtie.png":
+"DisplacementMaps/BootsClosed.png":
+{
+	"frame": {"x":1741,"y":1497,"w":264,"h":346},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":150,"y":529,"w":264,"h":346},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/BubbleHead.png":
+{
+	"frame": {"x":3,"y":884,"w":620,"h":657},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":657},
+	"sourceSize": {"w":620,"h":657}
+},
+"DisplacementMaps/Calf3SquishKneelClosed.png":
+{
+	"frame": {"x":1555,"y":1719,"w":179,"h":142},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":187,"y":481,"w":179,"h":142},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/ElbowCuffLeftFree.png":
+{
+	"frame": {"x":1738,"y":1847,"w":228,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":258,"y":228,"w":228,"h":147},
+	"sourceSize": {"w":486,"h":405}
+},
+"DisplacementMaps/Fiddle.png":
+{
+	"frame": {"x":627,"y":884,"w":620,"h":558},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":558},
+	"sourceSize": {"w":620,"h":558}
+},
+"DisplacementMaps/HarnessSquish.png":
+{
+	"frame": {"x":3,"y":1545,"w":620,"h":480},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":480},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/LegbinderSquishClosed.png":
+{
+	"frame": {"x":627,"y":1446,"w":620,"h":524},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":353,"w":620,"h":524},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/MittsFront.png":
+{
+	"frame": {"x":1774,"y":1290,"w":206,"h":149},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":190,"y":167,"w":206,"h":149},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/PetsuitSquish.png":
+{
+	"frame": {"x":1251,"y":884,"w":519,"h":609},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":519,"h":609},
+	"sourceSize": {"w":519,"h":609}
+},
+"DisplacementMaps/SockRSquish_ShortClosed.png":
 {
 	"frame": {"x":3,"y":3,"w":620,"h":877},
 	"rotated": false,
@@ -24,15 +88,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockRSquish_MidKneel.png":
-{
-	"frame": {"x":3,"y":884,"w":620,"h":877},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
-	"sourceSize": {"w":620,"h":877}
-},
-"DisplacementMaps/SockRSquish_MidKneelClosed.png":
+"DisplacementMaps/SockRSquish_ShortSpread.png":
 {
 	"frame": {"x":627,"y":3,"w":620,"h":877},
 	"rotated": false,
@@ -40,7 +96,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockRSquish_MidSpread.png":
+"DisplacementMaps/TallBalletEraseSpread.png":
+{
+	"frame": {"x":1774,"y":884,"w":252,"h":218},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":193,"y":659,"w":252,"h":218},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/TapeAnklesSquishClosed.png":
 {
 	"frame": {"x":1251,"y":3,"w":620,"h":877},
 	"rotated": false,
@@ -48,54 +112,38 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockRSquish_ShortClosed.png":
+"DisplacementMaps/TapeFullRightWristtie.png":
 {
-	"frame": {"x":627,"y":884,"w":620,"h":877},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
-	"sourceSize": {"w":620,"h":877}
-},
-"DisplacementMaps/SockRSquish_ShortSpread.png":
-{
-	"frame": {"x":1251,"y":884,"w":620,"h":877},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
-	"sourceSize": {"w":620,"h":877}
-},
-"DisplacementMaps/TapeMedRightBoxtie.png":
-{
-	"frame": {"x":1117,"y":1765,"w":229,"h":208},
+	"frame": {"x":1774,"y":1106,"w":197,"h":180},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":88,"y":186,"w":229,"h":208},
-	"sourceSize": {"w":317,"h":423}
+	"spriteSourceSize": {"x":96,"y":175,"w":197,"h":180},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/Template_KneelL.png":
+{
+	"frame": {"x":1251,"y":1719,"w":300,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":377,"w":300,"h":182},
+	"sourceSize": {"w":620,"h":877}
 },
 "DisplacementMaps/Thigh2SquishClosed.png":
 {
-	"frame": {"x":627,"y":1765,"w":486,"h":218},
+	"frame": {"x":1251,"y":1497,"w":486,"h":218},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":53,"y":412,"w":486,"h":218},
 	"sourceSize": {"w":620,"h":877}
-},
-"DisplacementMaps/XrayFace.png":
-{
-	"frame": {"x":1350,"y":1765,"w":174,"h":207},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":233,"y":0,"w":174,"h":207},
-	"sourceSize": {"w":407,"h":207}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.1",
 	"image": "displace7.webp",
 	"format": "RGBA8888",
-	"size": {"w":2042,"h":1988},
+	"size": {"w":2029,"h":2028},
 	"scale": "0.25",
-	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace8.json", "displace9.json", "displace10.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:4d8ee01944bc25c9e83004b6a1f5b39f:62fadcd0c1f2dbe24254617b0f81dfe0:d6e4336d654daff06fe6f92714dec5e2$"
+	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace8.json", "displace9.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:8bc1b3aaa80d0a4a5ae0fd039493ab31:9bbf418839d566be6e62ccdc9e992bd5:f6b8f416f238aaed27b8b24ed3003e99$"
 }
 }

@@ -205,6 +205,22 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 			}, "KDSetRestraintPaletteSelect");
 
+			if (currentItem) {
+				DrawCheckboxKDEx(
+					"savePrefPalNPC",
+					(d) => {
+						KDPalettePrefsNPC[KDRestraint(currentItem)?.name] = currentItem.faction;
+						KDSaveToggles();
+						return true;
+					}, true,
+					1340, 8400, 50, 50,
+					TextGet("KDSavePaletteRestraintNPC"),
+					(currentItem.faction == undefined && KDPalettePrefsNPC[KDRestraint(currentItem)?.name] == undefined)
+					|| (currentItem.faction != undefined && KDPalettePrefsNPC[KDRestraint(currentItem)?.name] === currentItem.faction),
+					false
+				);
+			}
+
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
 			KDDrawGenericNPCRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250,

@@ -108,7 +108,7 @@ let KinkyDungeonChestConfirm = false;
 
 function KinkyDungeonHandleMoveToTile(toTile: string): void {
 	if (toTile == 's' || toTile == 'H' || (toTile == 'S' && (
-		MiniGameKinkyDungeonLevel > 0
+		(!KinkyDungeonAltFloor(KDGameData.RoomType)?.noReverse)
 		//|| (MiniGameKinkyDungeonLevel == 1 && KDGameData.RoomType)
 		//|| KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.AltStairAction
 		//|| KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)?.RoomType
@@ -332,12 +332,11 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 						suppressCheckPoint = true;
 					}
 				}
-				if (!data.overrideRoomType) {
-					data.roomType = "";
-				}
-			} else if (!data.overrideRoomType) {
+			}
+			if (!data.overrideRoomType) {
 				if (tile?.RoomType != undefined) {
 					data.roomType = tile.RoomType;
+					data.mapMod = tile.MapMod;
 					KDGameData.MapMod = ""; // Reset the map mod
 				} else {
 					// If its an exit stair in the main, we override to the main of next floor
@@ -345,7 +344,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 					data.roomType = data.JourneyTile?.RoomType || "";
 					altRoomTarget = KinkyDungeonAltFloor(data.roomType);
-					KDGameData.MapMod = ""; // Reset the map mod
+					KDGameData.MapMod = data.JourneyTile?.MapMod || "";
 				}
 			}
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
@@ -1081,7 +1080,7 @@ let KDAdvanceAmount: Record<string, (altRoom: AltType, altRoomNext: AltType, til
 			toTile: 'S',
 			altRoom: altRoom,
 			altRoomNext: altRoomNext,
-			AdvanceAmount: (altRoomNext?.skiptunnel ? -1 : 0),
+			AdvanceAmount: ((MiniGameKinkyDungeonLevel > 0 && altRoomNext?.skiptunnel) ? -1 : 0),
 			dataOverride: null,
 		}
 

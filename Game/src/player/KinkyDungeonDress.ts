@@ -270,7 +270,7 @@ function KinkyDungeonDressPlayer (
 						if (!(!KDRestraint(inv) || (KDRestraint(inv).armor && !KDToggles.DrawArmor))) {
 							if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 								let Poses = KDCurrentModels.get(Character)?.Poses;
-								if (!KDRestraint(inv)?.noRenderPose?.some((s) => {
+								if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 									return !!Poses[s];
 								})) {
 									KDApplyItem(Character, inv, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
@@ -290,7 +290,7 @@ function KinkyDungeonDressPlayer (
 								if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
 									if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 										let Poses = KDCurrentModels.get(Character)?.Poses;
-										if (!KDRestraint(inv)?.noRenderPose?.some((s) => {
+										if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 											return !!Poses[s];
 										})) {
 											KDApplyItem(Character, link, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
@@ -319,7 +319,7 @@ function KinkyDungeonDressPlayer (
 
 						if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 							let Poses = KDCurrentModels.get(Character)?.Poses;
-							if (!KDRestraint(inv)?.noRenderPose?.some((s) => {
+							if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
 								return !!Poses[s];
 							})) {
 								KDApplyItem(Character, inv, NPCTags.get(Character) || new Map(), customFaction);
@@ -763,7 +763,7 @@ function KinkyDungeonWearForcedClothes(C: Character, restraints?: item[], extraF
 				if (dress.Group && C == KinkyDungeonPlayer && KDProtectedCosplay.includes(dress.Group)){return;}
 				let filters =  dress.Filters ? JSON.parse(JSON.stringify(dress.Filters)) : {};
 				let Properties =  dress.Properties ? JSON.parse(JSON.stringify(dress.Properties)) : {};
-				let faction = inv.forceFaction || inv.faction || dress.faction;
+				let faction = inv.forceFaction != undefined ? inv.forceFaction : (inv.faction || dress.faction);
 				if (faction) {
 					if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
 						for (let f of Object.entries(dress.factionFilters)) {
@@ -861,7 +861,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 	if (StandalonePatched) {
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
-		let faction = customFaction ? customFaction : ((inv.forceFaction) ? inv.forceFaction : (inv.faction ? inv.faction : ""));
+		let faction = customFaction ? customFaction : ((inv.forceFaction != undefined) ? inv.forceFaction : (inv.faction ? inv.faction : ""));
 
 		// faction color system
 		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?

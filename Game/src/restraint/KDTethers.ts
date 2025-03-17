@@ -21,6 +21,26 @@ let KDLeashablePersonalities = {
 	},
 };
 
+// true = cancel the leash
+let KDLeashTick : {[_: string]: (delta: number, entity: entity, leasher: entity) => boolean} = {
+	LeashBolt: (delta, entity, leasher) => {
+		return KDLeashTick.Retracting(delta, entity, leasher);
+	},
+	Retracting: (delta, entity, leasher) => {
+		let x = leasher?.x ||  entity.leash.x;
+		let y = leasher?.y ||  entity.leash.y;
+		let currLen = entity.leash.length;
+		let dd = KDistChebyshev(x - entity.x, y - entity.y);
+
+		if (dd < currLen && currLen > 1.9) {
+			entity.leash.length -= 1;
+			KinkyDungeonSendTextMessage(10,TextGet("KDLeashRatchet"), KDBaseRed, 2);
+			KinkyDungeonMakeNoise(1.5, entity.x, entity.y);
+		}
+		return false;
+	},
+}
+
 let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 	ShadowTether: (entity) => {
 		if (!(entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)?.Enemy?.tags?.shadow))
@@ -33,6 +53,14 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 			return KDBoundEffects(entity) > 1 && !KDIsImprisoned(entity);
 		}
 	},
+	LeashBolt: (entity) => {
+		if (!(entity.leash.entity || !KinkyDungeonFindID(entity.leash.entity)))
+			return false;
+		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)
+			&& KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
+		return KDLeashReason.Default(entity);
+	},
+
 	PlayerLeash: (entity) => {
 		//if (!KinkyDungeonInventoryGetConsumable("LeashItem") && !KDHasSpell("LeashSkill")) return false;
 		if (entity
@@ -190,6 +218,9 @@ function KDIsPlayerTetheredToEntity(player: entity, entity: entity) {
 function KDBreakTether(player: entity): boolean {
 	if (player?.leash) {
 		delete player.leash;
+		if (KinkyDungeonAutoWait) {
+			KDUpdateWaitTime(KDDelayWaitTime());
+		}
 		return true;
 	}
 	return false;
@@ -246,12 +277,15 @@ function KDBreakAllLeashedTo(entity: entity, reason?: string) {
 	}
 }
 
-function KinkyDungeonUpdateTether(Msg: boolean, Entity: entity, xTo?: number, yTo?: number): boolean {
+function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, xTo?: number, yTo?: number): boolean {
 
 	if (Entity.player && KinkyDungeonFlags.get("pulled")) return false;
 	else if (KDEnemyHasFlag(Entity, "pulled")) return false;
 
 	KDUpdateLeashCondition(Entity, false);
+	if (Entity.leash && KDLeashTick[Entity.leash.reason]) {
+		KDLeashTick[Entity.leash.reason](delta, Entity, Entity.leash.entity ? KinkyDungeonFindID(Entity.leash.entity) : undefined);
+	}
 
 	if (Entity.leash) {
 		let exceeded = false;

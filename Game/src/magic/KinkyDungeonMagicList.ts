@@ -760,7 +760,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			//{type: "DistractionCast", trigger: "calcMiscast"},
 			//{type: "DistractionCast", trigger: "tick"},
 			//{type: "DistractionCast", trigger: "playerCast"},
-			{type: "EssenceMote", trigger: "miscast", dist: 1.5},
+			{type: "EssenceMote", trigger: "miscast", dist: 1.5, always: true},
 		]},
 		{name: "ManaBurst", tags: ["will", "utility"], school: "Special",
 			passive: true,
@@ -2300,7 +2300,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "ObserverBeam", count: 1}},
 
 
-	{enemySpell: true, name: "HexLatexExplosion", color: "#88ffaa", sfx: "Fwoosh", effectTileDurationMod: 10, effectTileDensity: 0.33, effectTile: {
+	{enemySpell: true, name: "HexLatexExplosion", color: KDBaseLightGreen, sfx: "Fwoosh", effectTileDurationMod: 10, effectTileDensity: 0.33, effectTile: {
 		name: "LatexThinGreen",
 		duration: 20,
 	}, manacost: 3, minRange: 0, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5,
@@ -2338,7 +2338,8 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 
 
-	{name: "Pickaxe", tags: ["pickaxe", "melee"], color: KDBaseMint, sfx: "HeavySwing", manacost: 0, noMiscast: true, components: [], level: 1,
+	{name: "Pickaxe", tags: ["pickaxe", "melee"], color: KDBaseMint, sfx: "HeavySwing",
+		manacost: 0, noMiscast: true, components: [], level: 1,
 		type:"special",
 		special: "Pickaxe",
 		faction: "Player",
@@ -2814,7 +2815,22 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{name: "ManyChains", sfx: "MagicSlash", minRange: 0, manacost: 3, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "WitchChainBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1, offset: false}, channel: 3},
 
-	{enemySpell: true, name: "WitchChainBolt", color: KDBaseWhite, sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", bind: 12, time: 6,  power: 6, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "SingleChain", time: 1}, effectTileDurationMod: 10, effectTile: {
+
+	{enemySpell: true, name: "LeashBolt", color: KDBaseWhite,
+		castCondition: "LeashBolt",
+		sfx: "FireSpell", manacost: 2, components: ["Arms"], level:1,
+		type:"bolt", projectileTargeting:true, onhit:"",
+		bind: 8, time: 6, power: 6, delay: 0, range: 4.5, damage: "chain", speed: 2,
+		playerEffect: {name: "LeashBolt", time: 1}, effectTileDurationMod: 10, effectTile: {
+		name: "Belts",
+		duration: 20,
+	},}, // Throws a chain which stuns the target for 1 turn
+
+	{enemySpell: true, name: "WitchChainBolt", color: KDBaseWhite, sfx: "FireSpell", manacost: 5,
+		components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+		bind: 6, time: 6,  power: 6, delay: 0, range: 50, damage: "chain", speed: 2,
+		bindType: "Metal",
+		playerEffect: {name: "SingleChain", time: 1}, effectTileDurationMod: 10, effectTile: {
 		name: "Chains",
 		duration: 20,
 	},}, // Throws a chain which stuns the target for 1 turn
@@ -4027,7 +4043,9 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 	"ShieldTheWitch": (_enemy, target) => {
 		return target?.Enemy?.tags?.witch;
 	},
-
+	"LeashBolt": (_enemy, target) => {
+		return !target.leash;
+	},
 
 	"notImmobile": (_enemy, _target) => {
 		if (KinkyDungeonSlowLevel < 10) return true;

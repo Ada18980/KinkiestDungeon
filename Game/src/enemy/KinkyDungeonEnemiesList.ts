@@ -74,6 +74,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		Behavior: {noPlay: true},
 		ondeath: [{type: "murder", count: 1}],
 		terrainTags: {}, floors:KDMapInit([])},
+	{name: "AdaLovelock", tags: KDMapInit(["human", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 0.1,
+		visionRadius: 0, maxhp: 25, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "AdaMasterwork",
+		Behavior: {noPlay: true},
+		terrainTags: {}, floors:KDMapInit([])},
 	{name: "AntiqueQuest", tags: KDMapInit(["skeleton", "peaceful", "alwayshelp", "noshop"]), faction: "Prisoner", lowpriority: true, armor: 0, followRange: 100, AI: "hunt", regen: 1,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-1000, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, specialdialogue: "AntiqueShop", data: {"shop": "AntiqueShop"},
 		Behavior: {noPlay: true},
@@ -120,7 +124,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {}, floors:KDMapInit([])},
 
 
-	{name: "PinkLabAssistant", faction: "Latex", clusterWith: "alchemist", playLine: "Gagged", bound: "LabAssistant", color: KDBasePink,
+	{name: "PinkLabAssistant", faction: "Latex", clusterWith: "alchemist", playLine: "Gagged",
+		bound: "LabAssistant", color: KDBasePink,
 		tags: KDMapInit(["opendoors", "pink", "nocapture", "leashing", "latexRestraints", "latexpetsuit", "human", "alchemist", "ranged", "silenceimmune", "blindimmune", "minor", "latexGag"]),
 		ignorechance: 0, followRange: 4.5, AI: "hunt",
 		difficulty: 0.3,
@@ -484,7 +489,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Vines", time: 3, power: 2, chance: 0.2, aoe: 1.5},
-			{trigger: "getLights", type: "enemyTorch", power: 2.5, color: "#88ffaa"},
+			{trigger: "getLights", type: "enemyTorch", power: 2.5, color: KDBaseLightGreen},
 			{trigger: "afterEnemyTick", type: "NatureSpiritAura", power: 0.2, mult: 1.5, dist: 4.5},
 		],
 	},
@@ -2468,6 +2473,47 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
 
+
+	{name: "LatexKitty", faction: "Slime", clusterWith: "slime", bound: "LatexKitty", playLine: "Gagged", color: "#92dbe8",
+		tags: KDMapInit([
+			"nocapture", "latexTrap", "slime", "disarmresist", "blindimmune", "petsuit",
+			"melee", "blueLatexEncase", "blueLatexEncaseRandom", "electricweakness", "acidresist", "iceweakness",
+			"ticklesevereweakness", "charmweakness",
+			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms", "arcaneweakness",
+			"latexKitty",
+		]),
+		effect: {
+			effect: {name: "LatexKitty", damage: "glue", power: 4},
+		},
+		ignoreflag: ["LatexKittyatk"], failAttackflag: ["LatexKittyatk"], failAttackflagDuration: 4, failAttackflagChance: 0.4,
+		Sound: {
+			baseAmount: 4,
+			moveAmount: 4,
+			idleSoundName: "Rubber",
+		},
+		applyFaction: "Rubber",
+		nopickpocket: true,
+		maxblock: 0,
+		maxdodge: 0,
+		willBonus: 0.4,
+		nonDirectional: true,
+		ignorechance: 0, armor: 1, followRange: 1.5, AI: "hunt",  cohesion: 0.25, sneakThreshold: 1,
+		evasion: -0.25,
+		Attack: {
+			mustBindorFail: true,
+			noFailifHasWP: true,
+		},
+		master: {type: "ElementalRubber", range: 2, loose: true, aggressive: true},
+		visionRadius: 4.5, blindSight: 2.5, maxhp: 9, minLevel:2, weight:2, movePoints: 2.4,
+		sprintspeed: 2.5, stamina: 5,
+		attackPoints: 2, attack: "MeleeBindLockEffect", attackWidth: 1, attackRange: 1,
+		power: 1, dmgType: "glue", fullBoundBonus: 2,
+		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 3, "slimeBonus": 2, "latex": 5, "slimeOptOut": -4,
+			"petOptout": -15,
+			"petPref": 4,
+
+			"slimePref": 2, revenge: 10}, shrines: ["Latex"], allFloors: true,
+		},
 	{name: "AquaSlime", clusterWith: "water", faction: "Slime", color: "#2277ee",
 		tags: KDMapInit(["ignoretiedup", "disarmimmune", "blindimmune", "elementsTrap", "minor", "water", "melee", "aquaRestraints", "pierceweakness", "electricweakness", "acidresist", "iceweakness"]), squeeze: true, ignorechance: 0.75, followRange: 1, AI: "hunt",  sneakThreshold: 1,
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 7, minLevel: 0, weight:8, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicideWill",
@@ -2731,7 +2777,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"obstacle": 2, "obstacletile": 5, "increasingWeight":-0.5,}, allFloors: true, shrines: [],
 		events: [
 			{trigger: "afterPlayerAttack", type: "spellReflect", spell: "Vineexp", time: 2},
-			{trigger: "hit", type: "spellReflect", spell: "Vineexp", time: 2},
+			{trigger: "NPCHitNPC", type: "spellReflect", spell: "Vineexp", time: 2},
 		],
 	},
 
@@ -3009,7 +3055,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "afterEnemyTick", type: "requireNearbyEnemyTag", power: 0.5, dist: 5.5, tags: ["fire"]},
 			{trigger: "afterPlayerAttack", type: "spellReflect", spell: "Fireexp", time: 1},
-			{trigger: "hit", type: "spellReflect", spell: "Fireexp", time: 1},
+			{trigger: "NPCHitNPC", type: "spellReflect", spell: "Fireexp", time: 1},
 		],
 	},
 
@@ -3247,6 +3293,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		castWhileMoving: true,
 
 		dontKiteWhenDisabled: true,
+		noLeash: true,
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
@@ -3317,6 +3364,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
+		noLeash: true,
 		kite: 2.5,
 
 		wanderAISetting: "Dragon",
@@ -3360,6 +3408,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 
 		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
@@ -3433,6 +3482,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
@@ -3466,6 +3516,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 
 		RestraintFilter: {
 			unlimitedRestraints: true,
@@ -3556,6 +3607,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 3.5, kiteChance: 0.25,
@@ -3586,6 +3638,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		evasion: -1, disarm: 0.4,
 		stamina: 12, sprintspeed: 2.0,
 		preferBlock: true, maxdodge: 0,
@@ -3672,6 +3725,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		noLeash: true,
 		ondeath: [{type: "DragonSeal"}],
 		events: [
 			{trigger: "beforeDamage", type: "dragonLairDefeat", power: 0, color: KDBaseRed},
@@ -4837,6 +4891,40 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Chains", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
+
+
+	{name: "MasterGear", faction: "KinkyConstruct", clusterWith: "construct",
+		playLine: "KinkyConstruct",
+		bound: "MasterGear", color: KDBasePink,
+		tags: KDMapInit(["opendoors", "nocapture", "masterworkTrap", "miniboss",
+			"unflinching", "masterwork", "notalk",
+			"construct", "nosignal", "poisonimmune", "soulimmune", "melee",
+			"chainresist", "meleeresist", "glueweakness", "iceweakness"]),
+		ignorechance: 0, followRange: 1, AI: "hunt",
+		kite: 1.5, projectileAttack: true,
+		spells: ["LeashBolt"], spellCooldownMult: 1, spellCooldownMod: 1,
+		kiteChance: 0.2,
+		noLeash: true,
+		attackLock: "White",
+		stamina: 5, sprintspeed: 2.0,
+		Resistance: {
+			profile: ["construct"],
+		},
+		effect: {
+			effect: {name: "Masterwork", damage: "plush", power: 10},
+		},
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
+			{trigger: "addEntity", type: "MasterworkAssignHP"},
+		],
+		ondeath: [{type: "MasterGear"}],
+		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:0,
+		movePoints: 2.2, attackPoints: 2, attack: "SpellMeleeEffect",
+		attackWidth: 1, attackRange: 1, power: 4, dmgType: "chain", fullBoundBonus: 1,
+		terrainTags: {masterworkTrap: 100}, shrines: ["Leather"], allFloors: true,
+		dropTable: [{name: "RedKey", amount: 1, weight: 10}]},
+
+
 	{name: "Feathers", faction: "KinkyConstruct", clusterWith: "construct", tags: KDMapInit(["ignorenoSP", "construct", "nosignal", "poisonresist", "soulimmune", "melee", "chainRestraints", "minor", "firesevereweakness", "meleeresist", "doortrap", "flying"]), ignorechance: 0.75, armor: -1, followRange: 1, AI: "hunt",  ignoreflag: ["feathers"], failAttackflag: ["feathers"], squeeze: true,
 		visionRadius: 5, visionSummoned: 12, maxhp: 3, minLevel: 0, weight:0.25, movePoints: 2, attackPoints: 2, attack: "MeleeWill",
 		nonDirectional: true,
@@ -5153,7 +5241,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		applyFaction: "Dollsmith",
 		tags: KDMapInit(["leashing", "dollsmith", "doll", "opendoors", "closedoors", "jail", "antiMagic", "jailer", "ranged", "miniboss", "antiMagic",
 			"imprisonable",
-			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "latexEncase", "teasetoys"]),
+			"glueresist", "electricresist", "crushresist", "iceweakness", "blacksteelchastity", "redlatexEncase", "teasetoys"]),
 		spellResist: 1.5, armor: 0.5,
 		followLeashedOnly: true, followRange: 1.5, dontKiteWhenDisabled: true, kite: 4.5, noKiteWhenHarmless: true,
 		spells: ["RubberBolt", "EncaseBolt", "DollConvert", "DollBoost", "EnemyCM1"],
@@ -5172,7 +5260,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			requiredItems: ["BlacksteelBelt", "BlacksteelBra"],
 		},
 		useLock: "Purple",
-		specialAttack: "WillBind", specialCD: 5, specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelchastity", "latexEncase", "leashing", "teasetoys"],
+		specialAttack: "WillBind", specialCD: 5, specialExtraTags: ["redLatexBasic"], specialRemoveTags: ["blacksteelchastity", "redlatexEncase", "leashing", "teasetoys"],
 		specialAttackPoints: 2, specialWidth: 3, specialMsg: true, specialCondition: "canRestrainWithExtra", specialCDonAttack: true, specialIgnoreStam: true,
 		AI: "hunt", guardChance: 0.6, visionRadius: 7, maxhp: 14, minLevel:5, weight:10, movePoints: 2.4,
 		attackPoints: 3, attack: "SpellMeleeBindWill", attackWidth: 1, attackRange: 1, power: 4, dmgType: "glue",
@@ -5787,7 +5875,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ondeath: [{type: "summon", enemy: "SummonedZombie", range: 2.5, count: 4, strict: true, lifetime: 50}],
 		events: [
 			{trigger: "afterPlayerAttack", type: "spellReflect", spell: "SealingBolt", time: 1},
-			{trigger: "hit", type: "spellReflect", spell: "SealingBolt", time: 1},
+			{trigger: "NPCHitNPC", type: "spellReflect", spell: "SealingBolt", time: 1},
 			{trigger: "afterDamageEnemy", type: "spellReflect", spell: "SealingBolt", time: 1},
 		],
 	},
@@ -6047,10 +6135,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar"]},
-			{trigger: "tickAfter", type: "EpicenterAssignHP"},
+			{trigger: "addEntity", type: "EpicenterAssignHP"},
 		],
 		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
-		dropTable: [{name: "ManaOrb", weight: 1}, {name: "DarkKatana", weight: 100, ignoreInInventory: true}, {name: "StaffDoll", weight: 100, ignoreInInventory: true}, {name: "StaffBind", weight: 100, ignoreInInventory: true}, {name: "MagicAxe", weight: 100, ignoreInInventory: true}],
+		dropTable: [{name: "ManaOrb", weight: 1}],
 	},
 	{name: "EpicenterCursed2", faction: "Curse", color: "#a4affa",
 		tags: KDMapInit(["opendoors", "epicenterCursed", "epicenter", "curseTrap", "ghost", "cursed", "soulimmune", "melee", "fireweakness", "shadowimmune", "glueimmune", "chainimmune", "shadowHands", "poisonimmune", "meleeresist", "flying"]),
@@ -6066,10 +6154,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		events: [
 			{trigger: "tick", type: "DeleteCurse", tags: ["cursedCollar2"]},
-			{trigger: "tickAfter", type: "EpicenterAssignHP"},
+			{trigger: "addEntity", type: "EpicenterAssignHP"},
 		],
 		terrainTags: {"curseTrap": 10}, shrines: [], allFloors: true,
-		dropTable: [{name: "ManaOrb", weight: 1}, {name: "StaffStorm", weight: 100, ignoreInInventory: true}, {name: "StaffIncineration", weight: 100, ignoreInInventory: true}, {name: "StaffFrostbite", weight: 100, ignoreInInventory: true}, {name: "MagicSword", weight: 100, ignoreInInventory: true}],
+		dropTable: [{name: "ManaOrb", weight: 1}],
 	},
 	//endregion
 ];
@@ -6159,6 +6247,24 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 			if (spell) KinkyDungeonCastSpell(enemy.x, enemy.y, spell, undefined, undefined, undefined, KDGetFaction(enemy));
 		}
 	},
+	"MasterGear": (enemy, o, mapData) => {
+		if (mapData == KDMapData) {
+			let masterWorkItems = KDGetRestraintsEligible(
+				{tags: ['masterworkRestraints']}, KDGetEffLevel(), KDCurrIndex(),
+				true, undefined, undefined, undefined,
+				undefined, undefined, true
+			);
+			masterWorkItems = masterWorkItems.filter((m) => {
+				return !KinkyDungeonPlayerTags.get(m.restraint.name + "Worn");
+			})
+			if (masterWorkItems.length > 0) {
+				let chosen = CommonRandomItemFromList(undefined, masterWorkItems);
+				if (chosen) {
+					mapData.GroundItems.push({x:enemy.x, y:enemy.y, name: chosen.restraint.name});
+				}
+			}
+		}
+	},
 	"removeQuest": (_enemy, o) => {
 		KDRemoveQuest(o.quest);
 	},
@@ -6186,7 +6292,7 @@ let KDSpecialConditions: Record<string, SpecialCondition> = {
 				&& KDistChebyshev(enemy.x - AIData.player.x, enemy.y - AIData.player.y) < 3
 				&& KDGetRestraintsEligible(
 				{tags: KDGetTags(enemy, true)}, MiniGameKinkyDungeonLevel,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				enemy.Enemy.bypass,
 					enemy.Enemy.useLock ? enemy.Enemy.useLock : "",
 					!(enemy.Enemy.ignoreStaminaForBinds || (true && enemy.Enemy.specialIgnoreStam)) && !AIData.attack.includes("Suicide"),

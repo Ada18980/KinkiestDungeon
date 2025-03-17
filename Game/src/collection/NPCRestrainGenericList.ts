@@ -149,6 +149,30 @@ let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 			{count: 1, restraint: "HardSlimeBoots"},
 		],
 	},
+	"HardBlueSlime": {
+		raw: "HardBlueSlimeRaw",
+		items: [
+			{count: 1, restraint: "HardBlueSlimeHead"},
+			{count: 1, restraint: "HardBlueSlimeMouth"},
+			{count: 2, restraint: "HardBlueSlimeArms"},
+			{count: 1, restraint: "HardBlueSlimeHands"},
+			{count: 1, restraint: "HardBlueSlimeLegs"},
+			{count: 1, restraint: "HardBlueSlimeFeet"},
+			{count: 1, restraint: "HardBlueSlimeBoots"},
+		],
+	},
+	"HardRedSlime": {
+		raw: "HardRedSlimeRaw",
+		items: [
+			{count: 1, restraint: "HardRedSlimeHead"},
+			{count: 1, restraint: "HardRedSlimeMouth"},
+			{count: 2, restraint: "HardRedSlimeArms"},
+			{count: 1, restraint: "HardRedSlimeHands"},
+			{count: 1, restraint: "HardRedSlimeLegs"},
+			{count: 1, restraint: "HardRedSlimeFeet"},
+			{count: 1, restraint: "HardRedSlimeBoots"},
+		],
+	},
 	"ProtoSlime": {
 		raw: "ProtoSlimeRaw",
 		items: [
@@ -195,6 +219,18 @@ let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 			{count: 1, restraint: "HardCaptureFoamLegs"},
 			{count: 1, restraint: "HardCaptureFoamFeet"},
 			{count: 1, restraint: "HardCaptureFoamBoots"},
+		],
+	},
+	"LiquidMetal": {
+		raw: "LiquidMetalRaw",
+		items: [
+			{count: 1, restraint: "LiquidMetalHead"},
+			{count: 1, restraint: "LiquidMetalMouth"},
+			{count: 2, restraint: "LiquidMetalArms"},
+			{count: 1, restraint: "LiquidMetalHands"},
+			{count: 1, restraint: "LiquidMetalLegs"},
+			{count: 1, restraint: "LiquidMetalFeet"},
+			{count: 1, restraint: "LiquidMetalBoots"},
 		],
 	},
 	"DuctTape": {

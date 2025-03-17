@@ -70,6 +70,8 @@
         "Game/src/map/KinkyDungeonEscapeList.ts",
         "Game/src/item/KDCurse.ts",
         "Game/src/restraint/KinkyDungeonRestraints.ts",
+        "Game/src/restraint/special/Masterwork.ts",
+        "Game/src/restraint/special/LatexKitty.ts",
         "Game/src/restraint/KDTethers.ts",
         "Game/src/magic/KDAoEList.ts",
         "Game/src/fight/KinkyDungeonFight.ts",
@@ -255,5 +257,8 @@
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "lib": ["DOM", "ES2020"],
+    },
+    "watchOptions": {
+        "excludeDirectories": ["**/node_modules", "_build"],
     }
 }

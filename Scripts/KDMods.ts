@@ -139,6 +139,8 @@ function KDDrawMods() {
 		let info = "KDNoModJSON";
 		let name = keys[i];
 		let ver = 0;
+		let num1 = "" + VersionMajor;
+		let num2 = "" + VersionMajor;
 		if (KDModInfo[keys[i]]) {
 			color = KDBaseWhite;
 			info = "";
@@ -147,15 +149,22 @@ function KDDrawMods() {
 				if (KDModInfo[keys[i]].gamemajor >= 0 && VersionMajor != KDModInfo[keys[i]].gamemajor) {
 					color = KDBaseRed;
 					info = "KDModOutdated2";
+					num2 = "" + KDModInfo[keys[i]].gamemajor;
 				} else if (KDModInfo[keys[i]].gameminor >= 0 && VersionMinor != KDModInfo[keys[i]].gameminor) {
 					color = KDBaseOrange;
 					info = "KDModOutdated3";
+					num1 = "" + VersionMinor;
+					num2 ="" +  KDModInfo[keys[i]].gameminor;
 				} else if (KDModInfo[keys[i]].gamepatch_min >= 0 && VersionPatch < KDModInfo[keys[i]].gamepatch_min) {
 					color = KDBaseYellow;
 					info = "KDModOutdated";
+					num1 = "" + VersionPatch;
+					num2 = `>${KDModInfo[keys[i]].gamepatch_min}`;
 				} else if (KDModInfo[keys[i]].gamepatch_max >= 0 && VersionPatch > KDModInfo[keys[i]].gamepatch_max) {
 					color = KDBaseYellow;
 					info = "KDModOutdated";
+					num1 = "" + VersionPatch;
+					num2 = `<${KDModInfo[keys[i]].gamepatch_max}`;
 				}
 
 				ver = KDModInfo[keys[i]].modbuild;
@@ -165,14 +174,17 @@ function KDDrawMods() {
 				info = "KDModMiscError";
 			}
 		}
-		DrawTextKD(name + (info ? ` (${TextGet(info)})` : (TextGet("KDModVer") + ver)), 975, 370 + KDModSpacing * count, color, KDTextGray2);
+		DrawTextKD(name + (info ? ` (${TextGet(info)
+			.replace("${Num1}", num1)
+			.replace("${Num2}", num2)
+		})` : (TextGet("KDModVer") + ver)), 975, 370 + KDModSpacing * count, color, KDTextGray2);
 		if (!KDExecuted)
 			DrawButtonKDEx("moddelete_" + i, (bdata) => {
 				delete KDMods[keys[i]];
 				delete KDModInfo[keys[i]];
 				KDUpdateModInfo();
 				return true;
-			}, true, 1275, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), KDBaseWhite, "");
+			}, true, 1625, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), KDBaseWhite, "");
 		count++;
 	}
 }

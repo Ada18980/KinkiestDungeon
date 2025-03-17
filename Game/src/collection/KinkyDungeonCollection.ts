@@ -315,7 +315,7 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 			sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 			// @ts-ignore
 			customSprite: (enemy.CustomSprite),
-			color: enemy.CustomNameColor || KDBaseWhite,
+			color: enemy.CustomNameColor || KDBaseLightGrey,
 			Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
 			class: servantclass || "prisoner",
 			Training: -(10 + 10 * KDRandom()) * KDEnemyRank(enemy) - 25,
@@ -611,7 +611,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 	}
 	else DrawTextFitKD(value.name, x + 220, y + 50 + ((tab || index) ? 0 : -12), 500,
 		KDBaseWhite,
-		(value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05,
+		(value.color && value.color != "#ffffff") ? value.color : KDTextGray05,
 		36);
 
 
@@ -641,7 +641,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		if (npcLoc) {
 			let currLoc = KDGetCurrentLocation();
 			let dungeon = npcLoc.room || KDGameData.JourneyMap[npcLoc.mapX + ',' + npcLoc.mapY]?.Checkpoint || 'grv';
-			str = TextGet((KinkyDungeonFindID(value.id) && KDCompareLocation(currLoc, npcLoc)) ? "KDLastNPCLocationSame" : "KDLastNPCLocation")
+			str = TextGet((KDCompareLocation(currLoc, npcLoc) && KinkyDungeonFindID(value.id)) ? "KDLastNPCLocationSame" :
+			(KDCompareLocation(currLoc, npcLoc) ? "KDLastNPCLocationNotSpawned" : "KDLastNPCLocation"))
 				.replace("FLR", npcLoc.mapY + "")
 				.replace("LOC", KDPersonalAlt[npcLoc.room]
 					? KDGetLairName(npcLoc.room)
@@ -845,7 +846,7 @@ function KDGetVirtualCollectionEntry(id: number): KDCollectionEntry {
 		sprite: (enemy.CustomSprite) || enemy.Enemy.name,
 		// @ts-ignore
 		customSprite: (enemy.CustomSprite),
-		color: enemy.CustomNameColor || KDBaseWhite,
+		color: enemy.CustomNameColor || KDBaseLightGrey,
 		Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
 		class: "stranger",
 		Training: -100,
@@ -1116,9 +1117,12 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 		if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
 			let icon = KDGetPersistentNPC(value.id)?.captured
-				? "Inspect"
+				? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
+				&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
 				: ((value.escaped ? "escaped"
-				: (value.escapegrace ? "escapegrace" : "jail")));
+				: (value.escapegrace ? "escapegrace" :
+					(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
+				)));
 			KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
 				KinkyDungeonRootDirectory + "UI/" + icon + ".png",
 				XX + 36,
@@ -1199,9 +1203,12 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 			if (KDNPCUnavailable(value.id, value.status) || value.escapegrace) {
 				let icon = KDGetPersistentNPC(value.id)?.captured
-					? "Inspect"
+					? ((KDCompareLocation(KDGetNPCLocation(value.id), KDGetCurrentLocation())
+					&& !KinkyDungeonFindID(value.id)) ? "InspectQuestion" : "Inspect")
 					: ((value.escaped ? "escaped"
-					: (value.escapegrace ? "escapegrace" : "jail")));
+					: (value.escapegrace ? "escapegrace" :
+						(KDIsInPartyID(value.id) ? (!!KinkyDungeonFindID(value.id) ? "party" : "Inspect") : "jail")
+					)));
 				KDDraw(kdcanvas, kdpixisprites, value.name + "_jail," + value.id,
 					KinkyDungeonRootDirectory + "UI/" + icon + ".png",
 					XX + 42,
@@ -1347,7 +1354,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			let furn = KDFurniture[tile.Furniture];
 			let rest = KinkyDungeonGetRestraint(
 				{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				true,
 				"",
 				true,
@@ -1398,7 +1405,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 			if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
 				let rest = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
-					KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					KDGetEffLevel(),KDCurrIndex(),
 					true,
 					"",
 					true,

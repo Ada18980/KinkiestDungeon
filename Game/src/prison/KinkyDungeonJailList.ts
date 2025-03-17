@@ -18,12 +18,12 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			let mainFaction = KDGetMainFaction();
 			// Jail tag
 			let jt = KDMapData.JailFaction?.length > 0 ? KinkyDungeonFactionTag[KDMapData.JailFaction[Math.floor(KDRandom() * KDMapData.JailFaction.length)]] : "jailer";
-			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
+			let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KDCurrIndex(), '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
 			if (!Enemy) {
-				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
+				Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KDCurrIndex(), '0', [jt, "jailer"], undefined, undefined, ["gagged"]);
 				if (!Enemy) {
 					jt = "genericJailer";
-					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [jt, "jailer"]);
+					Enemy = KinkyDungeonGetEnemy(["jailGuard", jt], KDGetEffLevel(),KDCurrIndex(), '0', [jt, "jailer"]);
 				}
 			}
 			let guard: entity = {
@@ -43,7 +43,16 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 				attackPoints: 0
 			};
 			if (mainFaction) guard['faction'] = mainFaction;
-			if (!KinkyDungeonFlags.get("JailIntro")) {
+			if (KDIsHumanoid(guard) && KDEnemyCanTalk(guard)
+				&& KDShouldStripSearchPlayer(KDPlayer(), true)
+				&& !KDGameData.CurrentDialog) {
+				KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTime);
+				KDStartDialog("StripSearch",
+					guard.Enemy.name,
+					true,
+					KDGetPersonality(guard),
+					guard)
+			} else if (!KinkyDungeonFlags.get("JailIntro")) {
 				KinkyDungeonSetFlag("JailIntro", -1);
 				KDStartDialog("PrisonIntro", guard.Enemy.name, true, "");
 			} else if (KinkyDungeonFlags.get("JailRepeat")) {

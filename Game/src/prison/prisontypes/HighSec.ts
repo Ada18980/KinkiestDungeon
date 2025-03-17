@@ -1,4 +1,4 @@
-let KDJailStripSearchTime = 300;
+let KDJailStripSearchTime = -1; // lasts forever till interrupted
 let KDJailStripSearchTempTime = 50;
 
 function KDShouldStripSearchPlayer(player: entity, allowFlag: boolean = false): boolean {
@@ -397,7 +397,7 @@ KDPrisonTypes.HighSec = {
 					return KDGoToSubState(player, "StripRemove");
 				}
 				// Otherwise go to travel state
-				if (KDShouldStripSearchPlayer(player))
+				if (KDShouldStripSearchPlayer(player, true))
 					return KDGoToSubState(player, "StripTravel");
 				if (!KinkyDungeonPlayerInCell()) {
 					return KDGoToSubState(player, "CellTravel");

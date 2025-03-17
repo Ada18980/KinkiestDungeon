@@ -51,7 +51,7 @@ function KDMapHasEvent(map: Record<string, any>, event: string) {
 	return map[event] != undefined;
 }
 
-function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, forceWeapon?: item) {
+function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, forceWeapon?: item, mapData?: KDMapDataType) {
 	KinkyDungeonSendMagicEvent(Event, data, forceSpell);
 	KinkyDungeonSendWeaponEvent(Event, data, forceWeapon);
 	KinkyDungeonSendInventorySelectedEvent(Event, data);
@@ -62,7 +62,7 @@ function KinkyDungeonSendEvent(Event: string, data: any, forceSpell?: spell, for
 	KinkyDungeonSendBulletEvent(Event, data.bullet, data);
 	KinkyDungeonSendBuffEvent(Event, data);
 	KinkyDungeonSendOutfitEvent(Event, data);
-	KinkyDungeonSendEnemyEvent(Event, data);
+	KinkyDungeonSendEnemyEvent(Event, data, mapData);
 	KinkyDungeonHandleGenericEvent(Event, data);
 	KinkyDungeonSendAltEvent(Event, data);
 	KinkyDungeonSendFacilityEvent(Event, data);
@@ -213,7 +213,7 @@ function KinkyDungeonHandleInventorySelectedEvent(Event: string, kinkyDungeonEve
 let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, item: item, data: any) => void>> = {
 	"dynamic": {
 		"wardenPunish": (_e, item, _data) => {
-			let restraintAdd = KinkyDungeonGetRestraint({ tags: ["wardenLink"] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			let restraintAdd = KinkyDungeonGetRestraint({ tags: ["wardenLink"] }, KDGetEffLevel(), KDCurrIndex(),
 				true, "Purple", undefined, undefined, undefined, undefined, undefined, {
 				allowedGroups: [KDRestraint(item)?.Group],
 			});
@@ -705,7 +705,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (item == data.item) {
 				let bonus = KDGetManaBonus(e.mult, e.power, e.threshold, e.threshold, e.threshold);
 
-				data.extraLines.push(TextGet("KDMana" + (bonus >= 0 ? "Bonus" : "Penalty")) + Math.round(100 * bonus) + "%");
+				data.extraLines.push(TextGet("KDMana" + (e.mult < 0 ? "Neg" : "") + (bonus >= 0 ? "Bonus" : "Penalty")) + Math.round(100 * bonus) + "%");
 				data.extraLineColor.push("#99aaff");
 			}
 		},
@@ -898,7 +898,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				if (data.newRestraintTags) {
 					newRestraint = KinkyDungeonGetRestraint({ tags: [...data.newRestraintTags], },
 						KDGetEffLevel(),
-						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "",
+						KDCurrIndex(), true, "",
 						false, false, false, undefined, undefined, {
 						allowedGroups: [KDRestraint(item).Group],
 					}, undefined,
@@ -3139,14 +3139,14 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 		"ChaoticOverflow": (e, buff, _entity, data) => {
 			if (buff == data.buff) {
-				let restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				let restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, KDCurrIndex(),
 					true, "Gold", false, false, false);
 
 				if (restraintToAdd) {
 					KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
 					if (e.count > 1)
 						for (let i = 1; i < (e.count || 1); i++) {
-							restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+							restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, KDCurrIndex(),
 								true, "Gold", false, false, false);
 							if (restraintToAdd) KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
 						}
@@ -3591,7 +3591,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		"Haunting": (e, buff, entity, _data) => {
 			if (buff.power > 0 && entity.player) {
 				let tags = ["comfyRestraints", "trap"];
-				let restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple",
+				let restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), KDCurrIndex(), true, "Purple",
 					undefined,
 					undefined,
 					undefined,
@@ -3616,7 +3616,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 						KinkyDungeonSendTextMessage(5, TextGet("KDHaunting").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), KDBaseRed, 1);
 						if (e.count > 1) {
 							for (let i = 1; i < e.count; i++) {
-								restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple");
+								restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), KDCurrIndex(), true, "Purple");
 								KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(), true, "Purple", true);
 								KinkyDungeonSendTextMessage(5, TextGet("KDHaunting").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), KDBaseRed, 1);
 							}
@@ -3632,12 +3632,12 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			if (buff.power > 0 && entity.player) {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
 					let tags = ["obsidianRestraints", "shadowLatexRestraints", "shadowLatexPetsuit", "shadowLatexRestraintsHeavy"];
-					let restraintAdd = KinkyDungeonGetRestraint({ tags: ["invisRestraints"] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					let restraintAdd = KinkyDungeonGetRestraint({ tags: ["invisRestraints"] }, KDGetEffLevel(), KDCurrIndex(),
 						true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
 						ForceDeep: true,
 						allowLowPower: true,
 					});
-					if (!restraintAdd) restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					if (!restraintAdd) restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), KDCurrIndex(),
 							true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
 							ForceDeep: true,
 							allowLowPower: true,
@@ -3651,8 +3651,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), KDBaseRed, 1);
 							if (e.count > 1) {
 								for (let i = 1; i < e.count; i++) {
-									restraintAdd = KinkyDungeonGetRestraint({ tags: ["invisRestraints"] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple");
-									if (!restraintAdd) restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "Purple");
+									restraintAdd = KinkyDungeonGetRestraint({ tags: ["invisRestraints"] }, KDGetEffLevel(), KDCurrIndex(), true, "Purple");
+									if (!restraintAdd) restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), KDCurrIndex(), true, "Purple");
 
 									KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(), true, "Purple", true, undefined, undefined, "Curse", true);
 									KinkyDungeonSendTextMessage(5, TextGet("KDObserverCursed").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), KDBaseRed, 1);
@@ -6325,7 +6325,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				if (!buff) {
 					let amount = e.power;//KinkyDungeonStatWillMax*e.mult;
 					if (KinkyDungeonStatWill >= amount - 0.01) {
-						if (KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+						if (KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, KDCurrIndex(),
 							true, "Gold", false, false, false) != undefined) {
 							KinkyDungeonApplyBuffToEntity(player, {
 								id: spell.name + "1",
@@ -6743,14 +6743,14 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 						KinkyDungeonSendTextMessage(5, TextGet("KDManaRecharge_Success"), "#9074ab", 10);
 						KDTriggerSpell(spell, data, false, false);
 					} else {
-						let restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints"] }, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+						let restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints"] }, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(),
 							true, "Gold", false, false, false);
 
 						if (restraintToAdd) {
 							KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
 							if (e.count > 1)
 								for (let i = 1; i < (e.count || 1); i++) {
-									restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints"] }, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints"] }, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(),
 										true, "Gold", false, false, false);
 									if (restraintToAdd) KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
 								}
@@ -8933,12 +8933,13 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 						KDBindEnemyWithTags(en.id,
 							["magicBeltForced"], 50,
 							MiniGameKinkyDungeonLevel + 10,
-							true, undefined, false, false);
+							true, undefined, false, false,
+							undefined, undefined, 0);
 					}
 				}
 			}
 			if (KDistEuclidean(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
-				let restraintAdd = KinkyDungeonGetRestraint({ tags: ["magicBeltForced"] }, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+				let restraintAdd = KinkyDungeonGetRestraint({ tags: ["magicBeltForced"] }, MiniGameKinkyDungeonLevel + 10, KDCurrIndex());
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfPuritySelf"), "#88AAFF", 2);
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, "Divine");
@@ -8954,12 +8955,13 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 						KDBindEnemyWithTags(en.id,
 							["genericToys"], 0,
 							MiniGameKinkyDungeonLevel + 10,
-							true, undefined, false, false);
+							true, undefined, false, false,
+							undefined, undefined, 0);
 					}
 				}
 			}
 			if (KDistChebyshev(KinkyDungeonPlayerEntity.x - b.x, KinkyDungeonPlayerEntity.y - b.y) <= e.aoe) {
-				let restraintAdd = KinkyDungeonGetRestraint({ tags: ["genericToys"] }, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+				let restraintAdd = KinkyDungeonGetRestraint({ tags: ["genericToys"] }, MiniGameKinkyDungeonLevel + 10, KDCurrIndex());
 				if (restraintAdd) {
 					KinkyDungeonSendActionMessage(3, TextGet("KDZoneOfExcitementSelf"), "#88AAFF", 2);
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, false, undefined, false, false, undefined, undefined);
@@ -9564,8 +9566,8 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		"HolyOrbPunish": (e, enemy, _data) => {
 			// We heal nearby allies and self
 			if (KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < e.dist) {
-				let restraint = KinkyDungeonGetRestraint({ tags: ["divinebelt"] }, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "");
-				if (!restraint) restraint = KinkyDungeonGetRestraint({ tags: ["divinebra"] }, MiniGameKinkyDungeonLevel, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "");
+				let restraint = KinkyDungeonGetRestraint({ tags: ["divinebelt"] }, MiniGameKinkyDungeonLevel, KDCurrIndex(), true, "");
+				if (!restraint) restraint = KinkyDungeonGetRestraint({ tags: ["divinebra"] }, MiniGameKinkyDungeonLevel, KDCurrIndex(), true, "");
 				if (restraint) {
 					KinkyDungeonAddRestraintIfWeaker(
 						restraint,
@@ -9750,7 +9752,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				if (KinkyDungeonPlayerTags.get("Cursed")
 					|| (e.tags && !KinkyDungeonGetRestraint({ tags: [...e.tags], },
 						MiniGameKinkyDungeonLevel,
-						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, ""))
+						KDCurrIndex(), true, ""))
 				) suff = "Invalid";
 				KinkyDungeonSendTextMessage(5, TextGet("KDEpicenterAbort" + suff + "_" + enemy.Enemy.name), "#9074ab", 10);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Fwoosh.ogg", enemy);
@@ -9887,20 +9889,39 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				KinkyDungeonApplyBuffToEntity(enemy, KDEquip);
 			}
 		},
-		"EpicenterAssignHP": (_e, enemy, _data) => {
-			if (!KDEnemyHasFlag(enemy, "assignedHP")) {
-				let factor = 0.1 + 0.1 * Math.round(19 * (KDGameData.EpicenterLevel || 1) ** 0.75) / (KinkyDungeonMaxLevel - 1);
 
-				if (!KDGameData.EpicenterLevel) KDGameData.EpicenterLevel = 0;
-				KDGameData.EpicenterLevel += 1;
+	},
+	addEntity: {
+		"EpicenterAssignHP": (_e, enemy, data) => {
+			if (enemy == data.enemy) {
+				if (!KDEnemyHasFlag(enemy, "assignedHP")) {
+					let factor = 0.1 + 0.1 * Math.round(19 * (KDGameData.EpicenterLevel || 1) ** 0.75) / (KinkyDungeonMaxLevel - 1);
 
-				enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
-				enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult * (1 / (1 + factor));
-				enemy.Enemy.maxhp = enemy.Enemy.maxhp * factor;
-				enemy.hp = enemy.Enemy.maxhp;
-				enemy.modified = true;
+					if (!KDGameData.EpicenterLevel) KDGameData.EpicenterLevel = 0;
+					KDGameData.EpicenterLevel += 1;
 
-				KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
+					enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
+					enemy.Enemy.spellCooldownMult = enemy.Enemy.spellCooldownMult * (1 / (1 + factor));
+					enemy.Enemy.maxhp = enemy.Enemy.maxhp * factor;
+					enemy.hp = enemy.Enemy.maxhp;
+					enemy.modified = true;
+
+					KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
+				}
+			}
+		},
+		"MasterworkAssignHP": (_e, enemy, data) => {
+			if (enemy == data.enemy) {
+				if (!KDEnemyHasFlag(enemy, "assignedHP")) {
+					let factor = 0.2 + Math.min(0.8, Math.max(0, 1.4*(KDGetEffLevel() - 1) / KinkyDungeonMaxLevel));
+
+					enemy.Enemy = JSON.parse(JSON.stringify(enemy.Enemy));
+					enemy.Enemy.maxhp = Math.ceil(enemy.Enemy.maxhp * factor);
+					enemy.hp = enemy.Enemy.maxhp;
+					enemy.modified = true;
+
+					KinkyDungeonSetEnemyFlag(enemy, "assignedHP", -1);
+				}
 			}
 		},
 	},
@@ -10193,7 +10214,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		},
 
 	},
-	"hit": {
+	"NPCHitNPC": {
 		"spellReflect": (e, enemy, data) => {
 			if (data.target == enemy && data.attacker && KinkyDungeonCanCastSpells(enemy)) {
 				if (!e.time || !KDEnemyHasFlag(enemy, "spellReflect" + e.spell)) {
@@ -10913,7 +10934,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						KDChangeMana(data.x + ',' + data.y, "map", "teleport", -20, false, undefined, true, true);
 						let restraintToAdd = KinkyDungeonGetRestraint({
 							tags: ["ropeMagicStrong"]
-						}, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+						}, KDGetEffLevel() + 10, KDCurrIndex(),
 							true, "Gold", false, false, false);
 
 						if (restraintToAdd) {
@@ -10922,7 +10943,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 								for (let i = 1; i < (count || 1); i++) {
 									restraintToAdd = KinkyDungeonGetRestraint({
 										tags: ["ropeMagicStrong"]
-									}, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									}, KDGetEffLevel() + 10, KDCurrIndex(),
 										true, "Gold", false, false, false);
 									if (restraintToAdd) KinkyDungeonAddRestraintIfWeaker(restraintToAdd, 10, true, "Gold", true, false, undefined, "Observer", true);
 								}
@@ -11023,6 +11044,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			else if (KinkyDungeonStatsChoice.get("SlimeOptout")) data.tags.push("slimeOptout");
 			if (KinkyDungeonStatsChoice.get("BubblePref")) data.tags.push("bubblePref");
 			else if (KinkyDungeonStatsChoice.get("BubbleOptout")) data.tags.push("bubbleOptout");
+			if (KinkyDungeonStatsChoice.get("NovicePet")) data.tags.push("petPref");
+			else if (KinkyDungeonStatsChoice.get("NoPet")) data.tags.push("petOptout");
 		}
 	},
 	"postMapgen": {
@@ -11986,19 +12009,94 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			}
 		},
 	},
+	enumerateBeforeChest: {
+		"CurseTrap": (_e, data) => {
+			if (!data.selectedChestTrap) {
+				if ((data.chestType == "shadow" || data.chestType == "lessergoldChest" || (data.chestType == "lessershadow" && KDRandom() < 0.2))
+					&& KDCanCurse(["ChestCollar"])) {
+					data.selectedChestPossibilities["CurseTrap"] = 30;
+				}
+			}
+
+		},
+
+
+		"MasterworkTrap": (_e, data) => {
+			if (!data.selectedChestTrap) {
+				let chancemult = (!!KinkyDungeonPlayerTags.get("Masterwork")) ? 8 : 1;
+				let level = Math.max(0, KDGetEffLevel() - 2);
+				chancemult *= Math.min(1, level*0.1); // reaches max commonness at floor 12
+
+				if (((data.chestType == "silver" && KDRandom() < 0.4*chancemult)
+					|| (data.chestType == "chest" && KDRandom() < 0.05*chancemult
+					&& !KinkyDungeonFlags.get("openedMasterwork")))) {
+					if (KDCountMasterworks(KDPlayer()) < 5) {
+						data.selectedChestPossibilities["MasterworkTrap"] = 40;
+					}
+				}
+			}
+
+		},
+		"latexKittyTrap": (_e, data) => {
+			if (!data.selectedChestTrap) {
+				let chancemult = (!!KinkyDungeonPlayerTags.get("BlueLatex")) ? 2 : 1;
+				let level = Math.max(0, KDGetEffLevel() - 2);
+				chancemult *= Math.min(1, level*0.1); // reaches max commonness at floor 12
+
+				if (((data.chestType == "rubber" && KDRandom() < 0.4*chancemult)
+					|| (data.chestType == "chest" && KDRandom() < 0.05*chancemult
+					&& !KinkyDungeonFlags.get("openedLatexKitty")))) {
+					if (
+						KDGetRestraintsEligible({tags: ['latexKittyResult']}, KDGetEffLevel(), 'grv',
+					true, "Blue",
+					false, undefined, false, undefined,
+					undefined, undefined, undefined, undefined).length > 0
+					) {
+						data.selectedChestPossibilities["latexKittyTrap"] = 20;
+					}
+				}
+			}
+
+		},
+	},
 	"beforeChest": {
 		"shadowChest": (_e, data) => {
-			if ((data.chestType == "shadow" || data.chestType == "lessershadow") && KDCanCurse(["ChestCollar"])) {
+			if (data.selectedChestTrap == "CurseTrap") {
+				data.selectedChestTrap = "CurseTrap";
 				// Shadow chests spawn cursed epicenter
-				if (data.chestType == "shadow" || KDRandom() < 0.2)
-					KDSummonCurseTrap(data.x, data.y);
+				let en = KDSummonCurseTrap(data.x, data.y);
+				if (en) {
+					let itemLoot = KDGetCursedEpicenterLoot(en);
+					if (itemLoot) {
+						if (!en.items)
+							en.items = [];
+						en.items.unshift(itemLoot);
+					}
+				}
 			}
+
 		},
-		"lessergoldChest": (_e, data) => {
-			if ((data.chestType == "lessergold") && KDCanCurse(["ChestCollar"])) {
+		"masterworkGear": (_e, data) => {
+			if (data.selectedChestTrap == "MasterworkTrap") {
+				data.selectedChestTrap = "MasterworkTrap";
 				// Shadow chests spawn cursed epicenter
-				KDSummonCurseTrap(data.x, data.y);
+				let en = KDSummonMasterworkTrap(data.x, data.y);
+				if (en) {
+					KinkyDungeonSetFlag("openedMasterwork", 1000);
+				}
 			}
+
+		},
+		"latexKitty": (_e, data) => {
+			if (data.selectedChestTrap == "latexKittyTrap") {
+				data.selectedChestTrap = "latexKittyTrap";
+				// Shadow chests spawn cursed epicenter
+				let en = KDSummonLatexKittyTrap(data.x, data.y);
+				if (en) {
+					KinkyDungeonSetFlag("openedLatexKitty", 400);
+				}
+			}
+
 		},
 	},
 	"kill": {
@@ -12300,6 +12398,7 @@ let KDHardModeReplace = {
 	"SmallSlime": "SlimeAdv",
 	"FastSlime": "LatexCube",
 	"LatexCubeSmall": "LatexCubeMetal",
+	"LatexCube": "LiquidMetalCube",
 	"Dragon": "DragonShield",
 	"DragonShield": "DragonLeader",
 	"ElementalFire": "ElementalWater",

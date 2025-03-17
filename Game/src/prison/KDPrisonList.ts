@@ -161,7 +161,7 @@ function KDGetJailEnemy() {
 	] : "jailer";
 	let Enemy = KinkyDungeonGetEnemy(["jailGuard", jt],
 		KDGetEffLevel(),
-		(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+		KDCurrIndex(),
 		'0', [jt, "jailer"], undefined, undefined,
 		["gagged"]);
 	if (!Enemy) {
@@ -171,13 +171,13 @@ function KDGetJailEnemy() {
 		] : "jailer";
 		Enemy = KinkyDungeonGetEnemy(["jailGuard", jt],
 			KDGetEffLevel(),
-			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			KDCurrIndex(),
 			'0', [jt, "jailer"], undefined, undefined,
 			["gagged"]);
 		if (!Enemy) {
 			jt = "genericJailer";
 			Enemy = KinkyDungeonGetEnemy(["jailGuard", jt],
-				KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDGetEffLevel(),KDCurrIndex(),
 				'0', [jt, "jailer"]);
 		}
 	}

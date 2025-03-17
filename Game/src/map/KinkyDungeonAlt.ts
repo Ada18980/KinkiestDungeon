@@ -147,6 +147,8 @@ interface AltType {
 	/** Room title for display */
 	Title?: string,
 	bossroom?: boolean,
+	/** No going back thru start stairs */
+	noReverse?: boolean,
 	width: number,
 	height: number,
 	genType: string,
@@ -233,6 +235,8 @@ interface AltType {
 
 	/** Allows highsec in here */
 	placeJailEntrances?: boolean,
+	sameFactionJailOnly?: boolean,
+	friendlyFactionOnly?: boolean,
 
 	/** Creates the jail entrances but doesnt let them be used unless this is a destination */
 	allowJailEntrances?: boolean,
@@ -748,6 +752,7 @@ let alts: Record<string, AltType> = {
 			BanditFort: true,
 		},
 		placeJailEntrances: true,
+		sameFactionJailOnly: true,
 		genType: "Maze",
 		skin: "shoppe",
 		musicParams: "bandit",
@@ -1059,6 +1064,7 @@ let alts: Record<string, AltType> = {
 		noboring: true, // Skip generating boringness
 	},
 	"JourneyFloor": {
+		noReverse: true,
 		name: "JourneyFloor",
 		Title: "JourneyFloor",
 		bossroom: false,
@@ -1100,6 +1106,7 @@ let alts: Record<string, AltType> = {
 		noClutter: true,
 	},
 	"ShopStart": {
+		noReverse: true,
 		name: "ShopStart",
 		Title: "ShopStart",
 		skiptunnel: true, // Skip the ending tunnel
@@ -2154,7 +2161,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-3));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;
-		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["doll", "peaceful"]);
+		let Enemy = KinkyDungeonGetEnemy(["bellowsDoll"], KDGetEffLevel(),KDCurrIndex(), '0', ["doll", "peaceful"]);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
 			if (KDRandom() < 0.33) KDTieUpEnemy(e, 15 + Math.floor(45 * KDRandom()), "Tape");
@@ -2213,7 +2220,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 		let YY = CellY + 1 + Math.round(KDRandom() * (CellHeight-2));
 		let entity = KinkyDungeonEntityAt(XX, YY);
 		if (entity || (XX == width/2 && YY == height/2)) continue;
-		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot"], undefined, undefined);
+		let Enemy = KinkyDungeonGetEnemy(robotTags, MiniGameKinkyDungeonLevel + 3, KDCurrIndex(), '0', ["robot"], undefined, undefined);
 		if (Enemy) {
 			let e = DialogueCreateEnemy(XX, YY, Enemy.name);
 			e.faction = "Enemy";
@@ -2222,7 +2229,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 	if (KDGameData.DollRoomCount > 1) { // Spawn a group of AIs
 		for (let i = 0; i < 1 + Math.ceil(robotCount * 0.1); i++) {
 			let point = KinkyDungeonGetNearbyPoint(KDMapData.EndPosition.x, KDMapData.EndPosition.y);
-			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot"],
+			let Enemy = KinkyDungeonGetEnemy(eliteTags, MiniGameKinkyDungeonLevel + 4, KDCurrIndex(), '0', ["robot"],
 				undefined, undefined, ["minor", "miniboss", "noguard"]);
 			if (Enemy) {
 				let e = DialogueCreateEnemy(point.x, point.y, Enemy.name);
@@ -2234,7 +2241,7 @@ function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: numb
 		}
 	}
 
-	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["robot", "dollRoomBoss"],
+	let ExitGuard = KinkyDungeonGetEnemy(exitGuardTags, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(), '0', ["robot", "dollRoomBoss"],
 		undefined, undefined, ["noguard"]);
 	if (ExitGuard) {
 		let e = DialogueCreateEnemy(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ExitGuard.name);
@@ -2775,6 +2782,10 @@ function KinkyDungeonCreateShopStart(_POI: any, VisitedRooms: any[], width: numb
 	KinkyDungeonMapSet(KDMapData.StartPosition.x + 4, KDMapData.StartPosition.y - 3, '2');
 	KinkyDungeonTilesSet((KDMapData.StartPosition.x + 4) + ',' + (KDMapData.StartPosition.y - 3), {OL: true});
 
+
+	KDGenerateShopVisitors();
+
+
 	if (KDRandom() < 0.1 * KDGameData.HighestLevel)
 		SetpieceSpawnPrisoner(KDMapData.StartPosition.x + 9, KDMapData.StartPosition.y);
 
@@ -3242,4 +3253,25 @@ function KinkyDungeonCreateTutorial(_POI: any, VisitedRooms: any[], width: numbe
 
 	KDMapData.EndPosition = {x: width*2 - 2, y: VisitedRooms[0].y*2};
 	KinkyDungeonTilesSet("" + (width*2 - 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart"});
+}
+
+
+function KDGenerateShopVisitors() {
+	// TODO expand
+	let options: Record<string, number> =  KDEnumerateShopVisitors();
+
+
+
+	if (Object.values(options).length > 0) {
+		let chosen = KDGetByWeight(options);
+		DialogueCreateEnemy(KDMapData.StartPosition.x + 2, KDMapData.StartPosition.y, chosen);
+	}
+}
+
+function KDEnumerateShopVisitors() {
+	let options: Record<string, number> = {}
+	if (KDCountMasterworks(KDPlayer()) > 0) {
+		options.AdaLovelock = 100;
+	}
+	return options;
 }

@@ -512,8 +512,6 @@ interface KDRestraintPropsBase {
 	/** Outfit to force (priority default = base power) */
 	forceOutfitPriority?: number,
 	/** Clothes for dressing */
-	alwaysDress?: overrideDisplayItem[],
-	/** Clothes for dressing */
 	alwaysDressModel?: alwaysDressModel[],
 	/** The item always bypasses covering items, such as dresses and chastity belts */
 	bypass?: boolean,
@@ -947,6 +945,8 @@ interface enemy extends KDHasTags {
 	spellResist?: number,
 	/** Whether or not the enemy is friendly to the player and attacks enemies */
 	allied?: boolean,
+	/** Trats player willpower percentage as by this much lower */
+	willBonus?: number,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
 	/** lookup condition in KDPathConditions,
@@ -970,6 +970,7 @@ interface enemy extends KDHasTags {
 	hidetimerbar?: boolean,
 	Attack?: {
 		mustBindorFail?: boolean,
+		noFailifHasWP?: boolean,
 	},
 	/** Contains data pertaining to the creature's awareness */
 	Awareness?: {
@@ -1323,6 +1324,9 @@ interface enemy extends KDHasTags {
 			applyVariant?: string}[],
 	},
 	attackBonus?: number,
+
+	/** Does not leash the player */
+	noLeash?: boolean,
 	/** */
 	cohesion?: number,
 	/** */

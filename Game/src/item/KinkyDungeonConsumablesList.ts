@@ -35,7 +35,7 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 
 	"DollID" : {name: "DollID", rarity: 0, shop: false, type: "dollID", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
 	"KeyCard" : {name: "KeyCard", rarity: 1, shop: false, type: "KeyCard", noHands: true, sfx: "FutureLock", noConsumeOnUse: true},
-	"CuffKeys" : {name: "CuffKeys", rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
+	"CuffKeys" : {name: "CuffKeys", sneakChance: 0.1, rarity: 1, sub: 0.25, shop: false, type: "CuffKeys", noConsumeOnUse: true},
 	"Pick" : {name: "Pick", sneakChance: 0.15, rarity: 0, sub: 0.25, shop: false, type: "Lockpick", noConsumeOnUse: true},
 	"RedKey" : {name: "RedKey", sneakChance: 0.1, rarity: 1, sub: 0.25, shop: false, type: "RedKey", noConsumeOnUse: true},
 	"BlueKey" : {name: "BlueKey", rarity: 2, costMod: 2, shop: false, type: "BlueKey", noConsumeOnUse: true},
@@ -44,7 +44,8 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 	"DiscPick" : {name: "DiscPick", rarity: 4, costMod: -1, sub: 0.2, shop: true, type: "DiscPick", noConsumeOnUse: true, uniqueTags: ["pick"]},
 
 	"UniversalSolvent" : {name: "UniversalSolvent", rarity: 5,
-		latexsolvent: 10, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "UniversalSolvent", sfx: "PotionDrink"},
+		latexsolvent: 10, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell",
+		spell: "UniversalSolvent", sfx: "PotionDrink"},
 
 	"DivineTear" : {name: "DivineTear", rarity: 6, sub: 0.05, shop: true, delay: 3, power: 10, noHands: true, duration: 0, sfx: "Cookie", type: "RemoveCurseOrHex", noConsumeOnUse: true},
 };

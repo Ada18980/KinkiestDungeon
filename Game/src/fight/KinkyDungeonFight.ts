@@ -1653,7 +1653,7 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 	if (data.channel) {
 		KinkyDungeonSetFlag("channeling", data.channel);
 		KDGameData.SlowMoveTurns = Math.max(KDGameData.SlowMoveTurns, data.channel);
-		KinkyDungeonSleepTime = CommonTime() + 200;
+		KDUpdateWaitTime(200);
 	}
 
 	KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "damage", 1);
@@ -2219,7 +2219,9 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			let aoe = b.bullet.spell.aoe || 0.5;
 			if (b.bullet.hit == "buffnoAoE") aoe = 0.5;
 			if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, aoe, KDBulletAoEMod(b))) {
-				KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, (b.bullet.playerEffect || b.bullet.spell.playerEffect), b.bullet.spell, b.bullet.faction, b);
+				KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type,
+					(b.bullet.playerEffect || b.bullet.spell.playerEffect), b.bullet.spell, b.bullet.faction,
+					b, b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : undefined);
 			}
 			for (let enemy of KDMapData.Entities) {
 				if (((enemy.x == b.x && enemy.y == b.y) || (b.bullet.spell && aoe && AOECondition(b.x, b.y, enemy.x, enemy.y, aoe, KDBulletAoEMod(b))))) {
@@ -2469,7 +2471,9 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		}
 
 		if (b.bullet.spell && (b.bullet.spell.playerEffect || b.bullet.playerEffect) && AOECondition(b.x, b.y, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, b.bullet.spell.aoe, KDBulletAoEMod(b))) {
-			KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type, b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction, b);
+			KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, b.bullet.damage.type,
+				b.bullet.playerEffect ? b.bullet.playerEffect : b.bullet.spell.playerEffect, b.bullet.spell, b.bullet.faction,
+				b, b.bullet.source ? KinkyDungeonFindID(b.bullet.source) : undefined);
 		}
 		for (let enemy of KDMapData.Entities) {
 			if ((b.reflected
@@ -3013,7 +3017,9 @@ function KDBulletEffectTiles(bullet: KDBullet) {
 function KDBulletHitPlayer(bullet: KDBullet, player: entity) {
 	let pf = bullet.bullet.playerEffect || bullet.bullet.spell?.playerEffect;
 	if (pf) {
-		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, bullet.bullet.damage.type, pf, bullet.bullet.spell, bullet.bullet.faction, bullet);
+		KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, bullet.bullet.damage.type, pf,
+			bullet.bullet.spell, bullet.bullet.faction, bullet,
+			bullet.bullet.source ? KinkyDungeonFindID(bullet.bullet.source) : undefined);
 		KDUniqueBulletHits.set(KDBulletID(bullet, player), true);
 	}
 }
@@ -3359,7 +3365,7 @@ let KDPrereqs: Record<string, (enemy: entity, e: KinkyDungeonEvent, data: any) =
 		if (KinkyDungeonPlayerTags.get("CursedSet")) return false;
 		if (e.tags && !KinkyDungeonGetRestraint({tags: [...e.tags],},
 			MiniGameKinkyDungeonLevel,
-			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "")) return false;
+			KDCurrIndex(), true, "")) return false;
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
 			let item = inv.item;
 			if (item.events.some((event) => {return event.trigger == "CurseTransform" && event.kind == "transform";})) return true;
@@ -3587,14 +3593,14 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 function KDBindEnemyWithTags(id: number, tags: string[],
 	amount: number = 0, power: number = 0,
 	forceConjure: boolean = true, maxTries: number = 100, allowOverride: boolean = false,
-	allowVariants: boolean = true, maxAdded: number = 10, faction: string = ""): string[] {
+	allowVariants: boolean = true, maxAdded: number = 10, faction: string = "", overrideWill?: number): string[] {
 	let entity = KDGetGlobalEntity(id);
 	let addedItems: string[] = [];
 	if (entity) {
-		let maxBinding = entity.boundLevel + amount;
+		let maxBinding = (entity.boundLevel || 0) + amount;
 		let expected = KDGetExpectedBondageAmountTotal(id, entity);
 		let regenEligible = () => {
-			let currentWill = Math.min(entity.hp, entity.Enemy.maxhp - (entity.boundLevel || 0) / (1 + KDGetBindEffectMult(entity))) / entity.Enemy.maxhp;
+			let currentWill = overrideWill != undefined ? overrideWill : Math.min(entity.hp, entity.Enemy.maxhp - (entity.boundLevel || 0) / (1 + KDGetBindEffectMult(entity))) / entity.Enemy.maxhp;
 			let delta = 0.25;
 			for (let will = Math.max(0, currentWill); will >= 0; will = (will == 0 ? -1 : Math.max(0, will - delta)))
 				restraintsEligible = KDGetNPCEligibleRestraints_fromTags(

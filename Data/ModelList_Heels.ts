@@ -505,7 +505,7 @@ AddModel({
 	Categories: ["Shoes"],
 	AddPose: ["Heels", "RestrainingShoes"],
 	Layers: ToLayerMap([
-		...GetModelLayers("TallHeels"),
+		...GetModelLayers("TallBalletHeels"),
 	])
 });
 

@@ -357,10 +357,10 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		let forceequip = Loot.forceEquip || (hexed && (Loot.forceEquipCursed || KinkyDungeonStatsChoice.get("CurseSeeker"))) || (!hexed && (Loot.forceEquipUncursed));
 		if (Loot.noForceEquip) forceequip = false;
 		if (Loot.armortags) {
-			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "",
+			let newarmor = KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KDCurrIndex(), true, "",
 				undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, forceequip);
 			if (!newarmor && forceequip) {
-				KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, "",
+				KinkyDungeonGetRestraint({tags: Loot.armortags}, KDGetEffLevel(), KDCurrIndex(), true, "",
 					undefined, undefined, undefined, undefined, true, undefined, undefined, undefined, false);
 			}
 			if (newarmor) armor = newarmor.name;
@@ -949,7 +949,7 @@ function KDSpawnLootTrap(x: number, y: number, _trap: any, _mult: number, durati
 		if (spawned < maxspawn) {
 			let Enemy = KinkyDungeonGetEnemy(
 				tags, MiniGameKinkyDungeonLevel + KinkyDungeonDifficulty/5,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				'0', requireTags, true);
 			if (Enemy) {
 				let pass = false; //KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 7, true, (duration || Enemy.tags.construct) ? (duration || 40) : undefined, undefined, false, "Ambush", true, 1.5, true, undefined, true, true);
@@ -1107,13 +1107,39 @@ function KDCanCurse(tags: string[]): boolean {
 	return KDCheckPrereq(undefined, "AlreadyCursed", {tags: tags, type: undefined, trigger: undefined}, {});
 }
 
+function KDGetCursedEpicenterLoot(enemy: entity): string {
+	let possible = [
+		{name: "DarkKatana", weight: 100, ignoreInInventory: true, minELevel: 0},
+		{name: "StaffDoll", weight: 100, ignoreInInventory: true, minELevel: 0},
+		{name: "StaffChain", weight: 100, ignoreInInventory: true, minELevel: 1},
+		{name: "StaffBind", weight: 100, ignoreInInventory: true, minELevel: 2},
+		{name: "MagicAxe", weight: 100, ignoreInInventory: true, minELevel: 3},
+		{name: "StaffStorm", weight: 100, ignoreInInventory: true, minELevel: 5},
+		{name: "StaffIncineration", weight: 100, ignoreInInventory: true, minELevel: 3},
+		{name: "StaffFrostbite", weight: 100, ignoreInInventory: true, minELevel: 0},
+		{name: "MagicSword", weight: 100, ignoreInInventory: true, minELevel: 2}
+	];
+
+	let elevel = KDGameData.EpicenterLevel;
+
+	// filter
+	possible = possible.filter((p) => {
+		return elevel >= p.minELevel && (!p.ignoreInInventory || !KinkyDungeonInventoryGet(p.name));
+	})
+
+	if (possible.length > 0) {
+		return GetByWeight(ListToRecord(possible)).name;
+	}
+	return "BlueKey";
+}
+
 /**
  * Helper function used to summon cursed epicenters
  * @param x
  * @param y
  */
-function KDSummonCurseTrap(x: number, y: number) {
-	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', ["epicenter"]);
+function KDSummonCurseTrap(x: number, y: number): entity {
+	let enemy = KinkyDungeonGetEnemy(["curseTrap"], KDGetEffLevel(),KDCurrIndex(), '0', ["epicenter"]);
 	if (enemy) {
 		let point = {x: x, y: y};//KinkyDungeonGetNearbyPoint(x, y, true);
 		if (point) {
@@ -1123,6 +1149,7 @@ function KDSummonCurseTrap(x: number, y: number) {
 			en.teleportingmax = 4;
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
 			KinkyDungeonSendTextMessage(8, TextGet("KDSummonCurse"), "#9074ab", 5);
+			return en;
 		}
 	}
 }

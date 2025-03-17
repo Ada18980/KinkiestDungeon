@@ -960,12 +960,11 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 			if (preview
 				&& (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv))
 				&& (!namefilter
-					|| KDGetItemName(preview.item).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase()))
-					|| (item.type == Weapon && TextGet("KinkyDungeonDamageType" + KDWeapon(item)?.type).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
+					|| KDGetItemName(preview.item).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
+					|| (item.type == Weapon && TextGet("KinkyDungeonDamageType" + KDWeapon(item)?.type).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase()))
 					|| ((item.type == LooseRestraint || item.type == Restraint) && KDRestraint(item)?.shrine?.some((tag) => {
 						return !InvFilterShrineBlacklist.includes(tag) && tag.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase());
-					}
-					))
+					}))
 					|| ((item.type == LooseRestraint || item.type == Restraint) && (item.events || KDRestraint(item)?.events)?.some((e) => {
 						return TextGet("KinkyDungeonDamageType" + (e.damage || e.kind)).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.damage?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
@@ -2080,8 +2079,8 @@ function KinkyDungeonDrawQuickInv() {
 	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter);
 	let weapons = fW.slice(KDScrollOffset.Weapon, KDScrollOffset.Weapon + KDItemsPerScreen.Weapon);
 	let fR = [
-		...KinkyDungeonFilterInventory(LooseRestraint, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter),
-		...KinkyDungeonFilterInventory(Armor, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter)];
+		...KinkyDungeonFilterInventory(LooseRestraint, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter),
+		...KinkyDungeonFilterInventory(Armor, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter)];
 	let restraints = fR.slice(KDScrollOffset.Restraint, KDScrollOffset.Restraint + KDItemsPerScreen.Restraint);
 	let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	let Rheight = 480;
@@ -2620,8 +2619,8 @@ function KinkyDungeonhandleQuickInv(NoUse?: boolean): boolean {
 	let fW = KinkyDungeonFilterInventory(Weapon, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter);
 	//let weapons = fW.slice(KDScrollOffset.Weapon, KDScrollOffset.Weapon + KDItemsPerScreen.Weapon);
 	let fR = [
-		...KinkyDungeonFilterInventory(LooseRestraint, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter),
-		...KinkyDungeonFilterInventory(Armor, true, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter)];
+		...KinkyDungeonFilterInventory(LooseRestraint, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter),
+		...KinkyDungeonFilterInventory(Armor, false, !KDInventoryStatus.HideQuickInv, undefined, undefined, KDInvFilter)];
 	//let restraints = fR.slice(KDScrollOffset.Restraint, KDScrollOffset.Restraint + KDItemsPerScreen.Restraint);
 	//let Wheight = KinkyDungeonQuickGrid(weapons.length-1, H, V, 6).y;
 	//let Rheight = 480;
@@ -3810,6 +3809,38 @@ function KDRenderAlternateInventory(selected: KDFilteredInventoryItem, xOffset: 
 			}
 
 		}, "KDSetRestraintPaletteSelect");
+
+		if (currentItem) {
+			DrawCheckboxKDEx(
+				"savePrefPal",
+				(d) => {
+					KDPalettePrefs[KDRestraint(currentItem)?.name] = currentItem.forceFaction;
+					KDSaveToggles();
+					return true;
+				}, true,
+				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40,
+				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 70, 50, 50,
+				TextGet("KDSavePaletteRestraint"),
+				(currentItem.forceFaction == undefined && KDPalettePrefs[KDRestraint(currentItem)?.name] == undefined)
+				|| (currentItem.forceFaction != undefined && KDPalettePrefs[KDRestraint(currentItem)?.name] === currentItem.forceFaction),
+				false, KDBaseWhite
+			);
+			DrawCheckboxKDEx(
+				"savePrefPalEnch",
+				(d) => {
+					KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] = currentItem.forceFaction;
+					KDSaveToggles();
+					return true;
+				}, true,
+				canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40,
+				yOffset + canvasOffsetY_ui + 483*KinkyDungeonBookScale + 130, 50, 50,
+				TextGet("KDSavePaletteRestraintEnch"),
+				(currentItem.forceFaction == undefined && KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] == undefined)
+				|| (currentItem.forceFaction != undefined && KDPalettePrefsEnchanted[KDRestraint(currentItem)?.name] === currentItem.forceFaction),
+				false, KDBaseWhite
+			);
+		}
+
 
 		DrawButtonKDEx(prefix + "KDBack", (_bdata) => {
 			KDConfigRestraintColor = !KDConfigRestraintColor;

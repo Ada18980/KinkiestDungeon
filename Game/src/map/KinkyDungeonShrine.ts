@@ -707,7 +707,7 @@ function KDSummonRevengeMobs(_x: number, _y: number, Goddess: string, mult: numb
 		if (spawned < maxspawn) {
 			let Enemy = KinkyDungeonGetEnemy(
 				tags, MiniGameKinkyDungeonLevel + LevelBoost,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+				KDCurrIndex(),
 				'0', requireTags, undefined, undefined, filter, requireSingleTag);
 			if (Enemy) {
 				let pass = KinkyDungeonSummonEnemy(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, Enemy.name, 1, 10, false, undefined, i < 24, false, "Ambush", true, 1.5, true, undefined, true, true);

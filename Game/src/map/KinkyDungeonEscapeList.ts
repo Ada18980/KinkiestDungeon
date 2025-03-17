@@ -63,7 +63,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			return l > 2 ? 1 : 0;
 		},
 		worldgenstart: () => {
-			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),KDCurrIndex(), '0',
 				undefined, undefined, undefined, ["nokillescape"]);
 			let enemynumber = 3;
 			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
@@ -114,7 +114,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 		},
 
 		worldgenstart: () => {
-			let enemytype = KinkyDungeonGetEnemy(["wolfServer"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+			let enemytype = KinkyDungeonGetEnemy(["wolfServer"], KDGetEffLevel(),KDCurrIndex(), '0',
 				["wolfServer"], undefined, {"server": {mult: 4, bonus: 10}}, ["nokillescape"]);
 			let enemynumber = 3;
 			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
@@ -148,7 +148,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 						if (point) {
 							let e = KinkyDungeonGetEnemy(["nevermere"],
 								MiniGameKinkyDungeonLevel + 2,
-								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+								KDCurrIndex(), '0',
 							["nevermere"], undefined,
 							{"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
 							if (e) {
@@ -204,7 +204,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			let robot = (faction == "AncientRobot" || faction == "Virus") ? "robot" : "oldrobot";
 			let filter = (faction == "AncientRobot" || faction == "Virus") ? ["oldrobot"] : [];
 			let enemytype = KinkyDungeonGetEnemy(["robotServer", robot], KDGetEffLevel(),
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+				KDCurrIndex(), '0',
 				["robotServer", "drone", robot], undefined,
 				{"server": {mult: 4, bonus: 10}}, ["nokillescape", ...filter]);
 			let enemynumber = 3;
@@ -239,7 +239,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 						if (point) {
 							let e = KinkyDungeonGetEnemy(["drone", robot],
 								MiniGameKinkyDungeonLevel + 2,
-								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+								KDCurrIndex(),
 								'0',
 							["drone", robot], undefined,
 							{"drone": {mult: 4, bonus: 10}, [robot]: {mult: 4, bonus: 1}},
@@ -294,14 +294,14 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			let category = "miniboss";
 			if (KinkyDungeonStatsChoice.get("extremeMode")) category = "boss";
 
-			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',[category]);
+			let enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel(),KDCurrIndex(), '0',[category]);
 			if (!enemytype) { //fallback if it cant find a boss
 				category = "miniboss";
-				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [category]);
+				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,KDCurrIndex(), '0', [category]);
 			}
 			if (!enemytype) { //fallback if it cant find a miniboss
 				category = "witch";
-				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0', [category]);
+				enemytype = KinkyDungeonGetEnemy([category], KDGetEffLevel()+4,KDCurrIndex(), '0', [category]);
 			}
 			let data = {enemy: enemytype.name};
 			KinkyDungeonSendEvent("calcEscapeMinibossTarget", data);
@@ -472,7 +472,8 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"SealSigil": {
 		selectValid: false,
 		check: () => {
-			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
+			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] ||
+				KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.SealSigil.check();

@@ -370,7 +370,7 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 			let tags = ["bindingDress", "latexRestraints", "latexRestraintsHeavy", "kiguRestraints", "trap", "dragonRestraints", "steelbondage"];
 			let restraint = KinkyDungeonGetRestraint({tags: tags},
 				KDGetEffLevel() + 3,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), undefined,
+				KDCurrIndex(), undefined,
 				curse ? undefined : Lock,
 				undefined,
 				undefined,

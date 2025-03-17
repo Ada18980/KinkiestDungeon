@@ -436,7 +436,7 @@ const KDSprites: KDSprites = {
 	},
 	"L": (x, y, _Fog, _noReplace) => {
 		if (KinkyDungeonTilesGet(x + "," + y)) {
-			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";
+			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : undefined;
 			if (furn) {
 				return furn.floor;
 			}
@@ -712,7 +712,7 @@ const KDOverlays: KDSprites = {
 	},
 	"L": (x, y, _Fog, _noReplace) => {
 		if (KinkyDungeonTilesGet(x + "," + y)) {
-			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : "";
+			let furn = KinkyDungeonTilesGet(x + "," + y).Furniture ? KDFurniture[KinkyDungeonTilesGet(x + "," + y).Furniture] : undefined;
 			if (furn) {
 				return furn.sprite;
 			}

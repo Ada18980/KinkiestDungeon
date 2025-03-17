@@ -10,6 +10,7 @@ let KDDialogueParams = {
 	ShopkeeperFeePunishThresh: 2500,
 	ChefChance: 0.1,
 	KDTableFlipWP: 1,
+	MasterworkCount: 5,
 };
 
 /**
@@ -235,7 +236,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Accept": {gag: true, playertext: "Default", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (_gagged, _player) => {
 					if ((KinkyDungeonFlags.get("jailStripSearched") || 0) < KDJailStripSearchTempTime) {
-						KinkyDungeonSetFlag("jailStripSearched", 0);
+						KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTime);
 					}
 
 					KDRemovePrisonRestraints();
@@ -275,7 +276,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							"2": {playertext: "Continue", response: "Default", gag: false,
 								clickFunction: (_gagged, _player) => {
 									for (let w of KinkyDungeonAllWeapon()) {
-										if (!KDWeapon(w) || isUnarmed(KDWeapon(w))) {
+										if (!KDWeapon(w) || !isUnarmed(KDWeapon(w))) {
 											KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
 												.replace("ITMN", KDGetItemName(w))
 												.replace("AMNT", "1")
@@ -307,9 +308,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 															confiscated--;
 														}
 													}
-													if (confiscated > 1 + Math.floor(quantity * KDConsumable(c)?.sneakChance))
+													if (confiscated > 1 + Math.floor(quantity * (1 - KDConsumable(c)?.sneakChance)))
 														confiscated = 1 + Math.floor(
-															KDConsumable(c)?.sneakChance * quantity
+															(1 - KDConsumable(c)?.sneakChance) * quantity
 													);
 													confiscated = Math.floor(confiscated);
 													if (confiscated > quantity) confiscated = quantity;
@@ -610,7 +611,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					let lockedRestraints = KinkyDungeonPlayerGetRestraintsWithLocks(["Divine2"]);
 					if (KDGetBlessings().length > 0 && lockedRestraints.length > 0) {
 						let luckyItem = lockedRestraints[Math.floor(KDRandom() * lockedRestraints.length)];
-						KinkyDungeonLock(luckyItem, "");
+						KinkyDungeonLock(luckyItem, "", false, false, false, false);
 						KinkyDungeonSetFlag("AngelHelped", 5);
 					} else {
 						if (KinkyDungeonPlayerGetRestraintsWithLocks(["Divine"]).length > 0)
@@ -941,7 +942,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: () => {
 							let restraint = KinkyDungeonGetRestraint({tags: ["cyberdollrestraints", "cableGag"]},
 								KDGetEffLevel(),
-								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, "Cyber",
+								KDCurrIndex(), false, "Cyber",
 								undefined, undefined, undefined, undefined, undefined,
 								{
 									allowedGroups: ["ItemMouth"],
@@ -1204,7 +1205,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					if (nearestJail && nearestJail.x == KDGameData.InteractTargetX && nearestJail.y == KDGameData.InteractTargetY) {
 						KDMovePlayer(KDGameData.InteractTargetX + (nearestJail.direction?.x || 0), KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), true);
 						if (nearestJail.restrainttags) {
-							let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
+							let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined);
 							if (restraint)
 								KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 						}
@@ -1301,7 +1302,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								KDGameData.InteractTargetY + (nearestJail.direction?.y || 0), false);
 							if (nearestJail.restrainttags) {
 								let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
-									KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+									KDGetEffLevel(),KDCurrIndex(),
 									true,
 									"",
 									true,
@@ -1463,7 +1464,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							KinkyDungeonSetFlag("GuardCalled", 50);
 							let rest = KinkyDungeonGetRestraint(
 								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+								KDCurrIndex(),
 								true,
 								"",
 								true,
@@ -1529,7 +1530,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						let furn = KDFurniture[tile.Furniture];
 						let rest = KinkyDungeonGetRestraint(
 							{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+							KDCurrIndex(),
 							true,
 							"",
 							true,
@@ -3351,6 +3352,60 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			return false;
 		},
 		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+
+
+	"AdaMasterwork": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			if (KDBoundPowerLevel > 0.4) {
+				KDGameData.CurrentDialogMsg = "AdaMasterworkBound";
+			}
+			return false;
+		},
+		options: {
+			"Masterwork": {
+				gag: true,
+				playertext: "Default",
+				response: "Default",
+				clickFunction: () => {
+					KDGameData.MasterworkIntro = true;
+					return false;
+				},
+				leadsToStage: "", dontTouchText: true
+			},
+			"MasterworkUnlock": {
+				gag: true,
+				playertext: "Default",
+				response: "Default",
+				prerequisiteFunction: (gagged, player) => {
+					return KDGameData.MasterworkIntro && KDCountMasterworks(player, true, false) > 0;
+				},
+				clickFunction: (gagged, player) => {
+					let count = KDCountMasterworks(player);
+					let needed = KDGetNeededMasterworkCount();
+
+					if (count < needed) {
+						KDGameData.CurrentDialogMsg = "MasterworkUnlockFail";
+					} else {
+						KDGameData.CurrentDialogMsg = "MasterworkUnlockSuccess";
+						KDRemoveMasterwork(KDGetSpeaker());
+					}
+
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,

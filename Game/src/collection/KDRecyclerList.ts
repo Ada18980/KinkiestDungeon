@@ -371,6 +371,28 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				prereq: () => {return true;},
 			},
 			{
+				name: "HardRedSlimeRaw",
+				item: "HardRedSlimeRaw",
+				type: Restraint,
+				count: 20,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 50,
+				},
+				prereq: () => {return true;},
+			},
+			{
+				name: "HardBlueSlimeRaw",
+				item: "HardBlueSlimeRaw",
+				type: Restraint,
+				count: 20,
+				recyclecategory: "Latex",
+				recyclecost: {
+					Latex: 50,
+				},
+				prereq: () => {return true;},
+			},
+			{
 				name: "HardProtoSlimeRaw",
 				item: "HardProtoSlimeRaw",
 				type: Restraint,

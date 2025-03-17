@@ -66,7 +66,8 @@ function KDValidateAllFacilities() {
 						facility,
 						tag)) {
 							servants.splice(servants.indexOf(servant), 1);
-							delete KDGameData.Collection[servant + ""].Facility;
+							if (KDGameData.Collection[servant + ""])
+								delete KDGameData.Collection[servant + ""].Facility;
 						}
 				}
 		}
