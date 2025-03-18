@@ -67,6 +67,7 @@ KDToggleBackgrounds,Show Background Art
 KDToggleOptRender,Experimental Rendering (unstable)
 
 KDToggleExtraTooltipHeight,Show (mostly) full tooltips
+KDToggleExtraTooltipCycle,Auto cycle through multipage tooltips
 KDToggleSoundOffWhenMin,Mute when Minimized
 KDToggleBackgrounds,Show Background Art
 KDToggleRawDP,Show DP instead of %

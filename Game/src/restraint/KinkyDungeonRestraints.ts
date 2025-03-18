@@ -13,6 +13,7 @@
 let KDCutAdditionalLimitChance = 0.05;
 let KDAllyLimitChanceRedMult = 0.5;
 let KDAllyLimitChanceRedFlat = 0.05;
+let KDAngelStruggleBonus = 0.1;
 
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
@@ -2429,12 +2430,17 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		if (helpChance)
 			restraintEscapeChancePre = helpChance;
 		if (limitChance > 0 && StruggleType != "Cut") {
-			limitChance = Math.max(0, limitChance - KDAllyLimitChanceRedFlat);
-			limitChance *= KDAllyLimitChanceRedMult;
+			let limchance = limitChance;
+			limchance = Math.max(0, limitChance - KDAllyLimitChanceRedFlat);
+			limchance *= KDAllyLimitChanceRedMult;
+			let diff = limchance - limitChance;
+			if (diff < 0) {
+				restraintEscapeChancePre -= diff;
+			}
 		}
 	}
 	if (KinkyDungeonHasAngelHelp()) {
-		restraintEscapeChancePre += 0.1;
+		restraintEscapeChancePre += KDAngelStruggleBonus;
 	}
 
 
@@ -5222,11 +5228,11 @@ function KDCreateDebris (
 function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLockType, index: number, data: any, host: item): boolean {
 	let progress = restraint.cutProgress ? restraint.cutProgress : 0;
 	data.destroyChance = (StruggleType == "Cut" || restraint.cutProgress) ? 1.0 : 0;
-	if (KDRestraint(restraint)?.struggleBreak && StruggleType == "Struggle") data.destroyChance = 1.0;
 	if (restraint.struggleProgress && restraint.struggleProgress > 0) {
 		progress += restraint.struggleProgress;
 		data.destroyChance = restraint.cutProgress / progress;
 	}
+	if (KDRestraint(restraint)?.struggleBreak && StruggleType == "Struggle") data.destroyChance = 1.0;
 	let destroy = false;
 	let group = KDRestraint(restraint)?.Group;
 

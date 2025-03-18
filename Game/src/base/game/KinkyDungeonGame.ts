@@ -4421,6 +4421,7 @@ function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
 	// Cycle if we are inspecting tooltip and click
 	if (KDShowExtraTooltipMaxCycle > 0 && KinkyDungeonInspect) {
 		KDShowExtraTooltipCycle = (KDShowExtraTooltipCycle + 1) % (KDShowExtraTooltipMaxCycle + 1);
+		lastExtraTooltipCycleTimeAuto = CommonTime() + lastExtraTooltipCycleTimeAuto_ManualDelay;
 	}
 
 	// First we handle buttons
@@ -6879,6 +6880,7 @@ let KDCustomKeyDown = [
 			&& key == KinkyDungeonKeySpellPage[0] && KDShowExtraTooltipMaxCycle > 0
 		) {
 			KDShowExtraTooltipCycle = (KDShowExtraTooltipCycle + 1) % (KDShowExtraTooltipMaxCycle + 1);
+			lastExtraTooltipCycleTimeAuto = CommonTime() + lastExtraTooltipCycleTimeAuto_ManualDelay;
 			return true;
 		}
 		return false;

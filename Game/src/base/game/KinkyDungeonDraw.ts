@@ -1,5 +1,8 @@
 "use strict";
 
+let lastExtraTooltipCycleTimeAuto = 0;
+let lastExtraTooltipCycleTimeAuto_Delay = 1500;
+let lastExtraTooltipCycleTimeAuto_ManualDelay = 30000;
 
 
 interface KDLight {
@@ -1580,6 +1583,11 @@ function KinkyDungeonDrawGame() {
 							KDShowExtraTooltipMaxCycle = 0;
 						} else {
 							tooltips.push((offset: number) => KDDrawEnemyTooltip(enemy, offset, true));
+							if (KDToggles.ExtraTooltipCycle
+								&& CommonTime() > lastExtraTooltipCycleTimeAuto_Delay + lastExtraTooltipCycleTimeAuto) {
+									lastExtraTooltipCycleTimeAuto = CommonTime();
+									KDShowExtraTooltipCycle = (KDShowExtraTooltipCycle + 1) % (KDShowExtraTooltipMaxCycle + 1);
+								}
 						}
 					} else {
 						KDShowExtraTooltipCycle = 0;

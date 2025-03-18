@@ -2840,7 +2840,6 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 	if (showExtra) {
 		if (TooltipList.length + extraList.length >(KDToggles.ExtraTooltipHeight ? KDTooltipListExtraCutoffHigh : KDTooltipListExtraCutoff)  && extraList.length > 0) {
 			KDShowExtraTooltipMaxCycle = Math.ceil(extraList.length / KDTooltipListExtraPage);
-			if (KDShowExtraTooltipCycle == 0) TooltipList.push(...inventoryList);
 			if (KinkyDungeonInspect) {
 
 				TooltipList.push({
@@ -2851,7 +2850,6 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 				});
 				TooltipList.push({
 					str: TextGet("KDTooltipCycleClick"
-						+ (KDShowExtraTooltipCycle == KDShowExtraTooltipMaxCycle ? "Neg" : "")
 					),
 					fg: KDBaseBaby,
 					bg: KDBaseBlack,
@@ -2872,14 +2870,23 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 				});
 				TooltipList.push({
 					str: TextGet("KDTooltipCycleEnter"
-						+ (KDShowExtraTooltipCycle == KDShowExtraTooltipMaxCycle ? "Neg" : "")
 					).replace("${Enter}", KDHotkeyToText(KinkyDungeonKeySpellPage[0]),),
 					fg: KDBaseBaby,
 					bg: KDBaseBlack,
 					size: 18,
 				});
 			}
-			if (KDShowExtraTooltipCycle > 0) {
+
+			if (KDShowExtraTooltipCycle == KDShowExtraTooltipMaxCycle) {
+				TooltipList.push({
+					str: "",
+					fg: KDBaseWhite,
+					bg: KDBaseBlack,
+					size: 8,
+				});
+				TooltipList.push(...inventoryList);
+			}
+			else if (KDShowExtraTooltipCycle < KDShowExtraTooltipMaxCycle) {
 				TooltipList.push(...extraList.splice(
 					KDTooltipListExtraPage * (KDShowExtraTooltipCycle-1),
 					KDTooltipListExtraPage));

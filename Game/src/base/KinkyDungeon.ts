@@ -191,6 +191,13 @@ let KinkyDungeonGraphicsQuality = true;
 let KDToggleGroups = ["Main", "GFX", "UI", "Clothes", "Keybindings"];
 
 // region Toggles
+
+let KDClothesToggles = [
+	{name: "ApplyPaletteRestraint"},
+	{name: "ApplyPaletteTransform"},
+	{name: "NoOutfitPalette"},
+];
+
 let KDToggles = {
 	SoundOffWhenMin: true,
 	SpellBook: false,
@@ -288,10 +295,12 @@ let KDToggles = {
 	FastMovePassable: true,
 	FastMoveDoors: true,
 	ExtraTooltipHeight: false,
+	ExtraTooltipCycle: true,
 };
 
 let KDToggleCategories = {
 	ExtraTooltipHeight: "UI",
+	ExtraTooltipCycle: "UI",
 	FastMovePassable: "UI",
 	FastMoveDoors: "UI",
 	MMLabels: "UI",
@@ -3184,7 +3193,9 @@ function KinkyDungeonRun() {
 			let YYstart = 60;
 			let YYmax = 800;
 			let YY = YYstart;
-			let YYd = 74;
+
+			let YYd = KDCustomOptionsSpacing[KDToggleTab] || 74;
+			let size = KDCustomOptionsSize[KDToggleTab] || 64;
 			let XXd = 450;
 			let toggles = Object.keys(KDToggles);
 			//MainCanvas.textAlign = "left";
@@ -3194,7 +3205,7 @@ function KinkyDungeonRun() {
 					KDToggles[toggle] = !KDToggles[toggle];
 					KDSaveToggles();
 					return true;
-				}, true, XX, YY, 64, 64, TextGet("KDToggle" + toggle), KDToggles[toggle], false, KDBaseWhite, undefined, {
+				}, true, XX, YY, size, size, TextGet("KDToggle" + toggle), KDToggles[toggle], false, KDBaseWhite, undefined, {
 					maxWidth: 350,
 					fontSize: 24,
 					scaleImage: true,
@@ -3285,14 +3296,11 @@ function KinkyDungeonRun() {
 
 				KDDrawPalettes(x, 250, w, scale, undefined, undefined);
 
-				let options = [
-					{name: "ApplyPaletteRestraint"},
-					{name: "ApplyPaletteTransform"},
-					{name: "NoOutfitPalette"},
-				];
+				let options = KDClothesToggles;
 
 				let ii = 0;
-				let spacing = 70;
+				let spacing = KDCustomOptionsSpacing[KDToggleTab] || 70;
+				let size = KDCustomOptionsSize[KDToggleTab] || 64;
 				for (let o of options) {
 					if (o.name) {
 						DrawCheckboxKDEx("toggle" + o.name, () => {
@@ -3303,7 +3311,7 @@ function KinkyDungeonRun() {
 								KDSaveToggles();
 							}
 							return true;
-						}, true, x, 600 + ii * spacing, 64, 64,
+						}, true, x, 600 + ii * spacing, size, size,
 						TextGet("KDToggle" + o.name),
 						KDToggles[o.name], false, KDBaseWhite, undefined, {
 							maxWidth: 350,
@@ -3804,6 +3812,8 @@ function KDMouseWheel (event: WheelEvent): void {
 		// If we fail we dilate the buttons vertically
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
 	} else return;
+
+	if (KDFunctionCycleTabScroll(event.deltaY)) return;
 	if (KDFunctionOptionsScroll(event.deltaY)) return;
 	if (KDFunctionCollectionScroll(event.deltaY)) return;
 	if (KDFunctionFacilitiesScroll(event.deltaY)) return;
@@ -3821,6 +3831,27 @@ function KDMouseWheel (event: WheelEvent): void {
 	if (KDFunctionJourneyMapScroll(event.deltaY || event.deltaX)) return;
 }
 
+
+function KDFunctionCycleTabScroll(amount: number): boolean {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game") {
+		// Cycle if we are inspecting tooltip and click
+		if (KDShowExtraTooltipMaxCycle > 0 && amount) {
+			if (amount > 0) {
+				KDShowExtraTooltipCycle = (KDShowExtraTooltipCycle + 1) % (KDShowExtraTooltipMaxCycle + 1);
+				lastExtraTooltipCycleTimeAuto = CommonTime() + lastExtraTooltipCycleTimeAuto_ManualDelay;
+			} else {
+				KDShowExtraTooltipCycle--;
+				if (KDShowExtraTooltipCycle < 0) {
+					KDShowExtraTooltipCycle = KDShowExtraTooltipMaxCycle;
+				}
+				lastExtraTooltipCycleTimeAuto = CommonTime() + lastExtraTooltipCycleTimeAuto_ManualDelay;
+			}
+			return true;
+		}
+		return false;
+	}
+	return false;
+}
 function KDFunctionOptionsScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Toggles") {
 		let index = KDToggleGroups.indexOf(KDToggleTab);
@@ -7084,3 +7115,10 @@ function KDRefreshSleep() {
 	//KinkyDungeonSleepTime = Math.min(KinkyDungeonSleepTime, CommonTime() + 100000);
 	KDUpdateWaitTime(100);
 }
+
+let KDCustomOptionsSize = {
+	UI: 50,
+};
+let KDCustomOptionsSpacing = {
+	UI: 60,
+};
