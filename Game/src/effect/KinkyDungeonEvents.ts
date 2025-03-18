@@ -4604,7 +4604,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				KinkyDungeonApplyBuffToEntity(data.player, {
 					id: "RogueEscape2",
 					type: "BoostStruggle",
-					power: 0.2 + KDCalcRestraintBlock() * 0.1,
+					power: 0.2 + KDCalcRestraintBlock() * 0.1 * 0.02,
 					duration: e.time,
 				});
 			}
@@ -5979,6 +5979,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			if (data.escapeChance != undefined && (!e.StruggleType || e.StruggleType == data.struggleType)) {
 				let boost = e.power + KDCalcRestraintBlock() * .1 * e.mult;
 				data.toolBonus += boost;
+				data.cutMultBonus += boost;
 				data.buffBonus += boost;
 				data.struggleTime *= 3.0;
 				if (!data.query)
@@ -6907,7 +6908,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 							type: "BreakFree",
 							aura: "#ffaa44",
 							//buffSprite: true,
-							power: e.power + KDCalcRestraintBlock() * 10 * e.mult,
+							power: e.power + KDCalcRestraintBlock() * .1 * e.mult,
 							duration: e.time,
 							events: [
 								{ trigger: "tick", type: "BreakFree" },

@@ -2677,6 +2677,8 @@ interface KDStruggleData {
 	canCut: boolean,
 	canCutMagic: boolean,
 	toolBonus: number,
+	cutMultBonus: number,
+	cutMult: number,
 	toolMult: number,
 	buffBonus: number,
 	buffMult: number,

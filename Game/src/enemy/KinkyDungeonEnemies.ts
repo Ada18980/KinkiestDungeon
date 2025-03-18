@@ -1,5 +1,13 @@
 "use strict";
 
+
+let KDTooltipListExtraCutoff = 17;
+let KDTooltipListExtraCutoffHigh = 30;
+let KDTooltipListExtraPage = 10;
+
+let KDShowExtraTooltipCycle = 0;
+let KDShowExtraTooltipMaxCycle = 0;
+
 let KDEnemyStruggleHPExp = 0.8;
 
 let KDOpinionThreshold = 12;
@@ -2830,7 +2838,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 		//}
 	}
 	if (showExtra) {
-		if (TooltipList.length + extraList.length > KDTooltipListExtraCutoff && extraList.length > 0) {
+		if (TooltipList.length + extraList.length >(KDToggles.ExtraTooltipHeight ? KDTooltipListExtraCutoffHigh : KDTooltipListExtraCutoff)  && extraList.length > 0) {
 			KDShowExtraTooltipMaxCycle = Math.ceil(extraList.length / KDTooltipListExtraPage);
 			if (KDShowExtraTooltipCycle == 0) TooltipList.push(...inventoryList);
 			if (KinkyDungeonInspect) {
@@ -2850,6 +2858,12 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 					size: 18,
 				});
 			} else {
+				if (!KinkyDungeonFlags.get("tut_tt")) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDTut_Tooltip2")
+						.replace("${EnemyName}", TextGet("Name" + enemy.Enemy.name)), KDTutorialColor, 10);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTut_Tooltip"), KDTutorialColor, 10);
+					KinkyDungeonSetFlag("tut_tt", -1);
+				}
 				TooltipList.push({
 					str: "",
 					fg: KDBaseWhite,
@@ -2885,11 +2899,6 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 	return KDDrawTooltip(TooltipList, offset);
 }
 
-let KDTooltipListExtraCutoff = 15;
-let KDTooltipListExtraPage = 10; // for testing
-
-let KDShowExtraTooltipCycle = 0;
-let KDShowExtraTooltipMaxCycle = 0;
 
 /**
  * @param enemy

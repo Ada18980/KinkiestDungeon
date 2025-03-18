@@ -287,9 +287,11 @@ let KDToggles = {
 	AutoWaitDelayed: true,
 	FastMovePassable: true,
 	FastMoveDoors: true,
+	ExtraTooltipHeight: false,
 };
 
 let KDToggleCategories = {
+	ExtraTooltipHeight: "UI",
 	FastMovePassable: "UI",
 	FastMoveDoors: "UI",
 	MMLabels: "UI",

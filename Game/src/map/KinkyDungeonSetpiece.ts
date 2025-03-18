@@ -873,7 +873,7 @@ interface KDSpawnResult {
 	success: boolean,
 }
 
-function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string): KDSpawnResult {
+function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, lock = "White", faction?: string, sameLocation?: boolean): KDSpawnResult {
 	let Enemy = null;
 	let noJam = false;
 	let noPersistent = false;
@@ -883,13 +883,13 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		MiniGameKinkyDungeonLevel,
 		KDGameData.RoomType,
 		KDGameData.MapMod,
-		KDMapData.MapFaction).filter(
+		KDMapData.MapFaction, sameLocation).filter(
 			(en) => {
 				return !en.entity?.Enemy?.tags?.noPrisoner;
 			}
 		);
 	let persistentAvailable =
-		KDGameData.CapturedParty?.length > 0
+		(!sameLocation && KDGameData.CapturedParty?.length > 0)
 		|| capturedPersistent.length > 0;
 
 
@@ -908,7 +908,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		/**
 		 */
 		let e: entity = null;
-		if (KDGameData.CapturedParty?.length > 0) {
+		if (!sameLocation && KDGameData.CapturedParty?.length > 0) {
 			let index = Math.floor(KDRandom() * KDGameData.CapturedParty.length);
 			if (!KDGameData.SpawnedPartyPrisoners) KDGameData.SpawnedPartyPrisoners = {};
 			e = KDGameData.CapturedParty[index];
@@ -942,7 +942,6 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 				faction: KDGetMainFaction() || "Jail",
 			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(),
 			undefined, furn?.restraintSetLevelBonus);
-
 
 		}
 		return {

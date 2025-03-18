@@ -1833,6 +1833,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 
 	let toolMult = Math.max(0, 1 + data.toolBonus) * data.toolMult;
+	let cutMult = Math.max(0, 1 + data.cutMultBonus) * data.cutMult;
 	let buffMult = Math.max(0, 1 + data.buffBonus) * data.buffMult;
 
 
@@ -1861,7 +1862,6 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 
 	if (data.struggleType == "Cut") {
-		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting")) data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting");
 		if (data.hasAffinity) {
 			if (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp() || !KinkyDungeonPlayerDamage) {
 				let maxBonus = 0;
@@ -1870,17 +1870,25 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					if (KDWeapon(inv).cutBonus > maxBonus) maxBonus = KDWeapon(inv).cutBonus;
 					if (KDWeapon(inv).cutBonus != undefined && KDWeaponIsMagic(inv)) data.canCutMagic = true;
 				}
-				data.cutBonus = maxBonus*toolMult;
+				data.cutBonus = maxBonus*cutMult;
 				data.escapeChance += data.cutBonus;
 				data.origEscapeChance += data.cutBonus;
 				//if (maxBonus > 0) cancut = true;
 			} else if (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.cutBonus) {
-				data.cutBonus = KinkyDungeonPlayerDamage.cutBonus*toolMult;
+				data.cutBonus = KinkyDungeonPlayerDamage.cutBonus*cutMult;
 				data.escapeChance += data.cutBonus;
 				data.origEscapeChance += data.cutBonus;
 				//cancut = true;
 			}
 		}
+
+
+		let bc = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCutting");
+		if (bc) {
+			data.cutBonus += bc * (bc > 0 ? cutMult : 1.0);
+			data.escapePenalty -= bc * (bc > 0 ? cutMult : 1.0);
+		}
+
 		if (!data.query && (!data.hasAffinity ||
 			(!data.canCutMagic && KDRestraint(data.restraint)?.magic)
 		)) {
@@ -1914,7 +1922,15 @@ function KDGetStruggleData(data: KDStruggleData): string {
 			}
 
 		}
-		if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum")) data.escapeChance = Math.max(data.escapeChance, KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum"));
+		let bcm = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum");
+		//bcm *= (bcm > 0 ? cutMult : 1.0);
+		if (bcm) {
+			let diff = bcm - data.cutBonus;
+			if (diff > 0) {
+				data.cutBonus = bcm;
+				data.escapePenalty -= bcm;
+			}
+		}
 
 	}
 	if (data.struggleType == "Cut" && !KDRestraint(data.restraint).magic && KinkyDungeonWeaponCanCut(false, true)) {
@@ -2457,7 +2473,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		canCut: KinkyDungeonWeaponCanCut(false, false),
 		canCutMagic: KinkyDungeonWeaponCanCut(false, true),
 		toolBonus: 0.0,
+		cutMultBonus: 0.0,
 		toolMult: 1.0,
+		cutMult: 1.0,
 		buffBonus: 0.0,
 		failSuffix: "",
 		buffMult: 1.0,
@@ -2655,7 +2673,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						- KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
 				if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
-				if (((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
+				if (maxLimit >= 1 && ((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
 						|| (StruggleType == "Pick" && restraint.pickProgress >= 1 - data.escapeChance)
 						|| (StruggleType == "Unlock" && restraint.unlockProgress >= 1 - data.escapeChance)
 						|| (StruggleType == "Remove" && progress >= 1 - data.escapeChance)

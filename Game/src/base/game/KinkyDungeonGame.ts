@@ -788,11 +788,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 	if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
 	KinkyDungeonGenNavMap();
 
-
-	KDCurrentWorldSlot = {
-		x: origx,
-		y: y,
-	};
+	KDSetWorldSlot(origx, y);
 
 	KDBuildLairs();
 	KDPlacePlayerBasedOnDirection(direction, KDGameData.ShortcutIndex);
@@ -1074,7 +1070,7 @@ function KinkyDungeonCreateMap (
 		}
 		/** @type {KDMapData} */
 		KDMapData = KDDefaultMapData(worldLocation?.x || 0, worldLocation?.y || MiniGameKinkyDungeonLevel, KDGameData.RoomType, KDGameData.MapMod);
-		KDCurrentWorldSlot = worldLocation;
+		KDSetWorldSlot(worldLocation.x, worldLocation.y);
 
 		KDInitTempValues(seed);
 		KDMapData.Grid = "";

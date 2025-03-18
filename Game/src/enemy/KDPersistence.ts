@@ -593,9 +593,9 @@ function KDGetNPCLocation(id: number): WorldCoord {
 }
 /** Returns true if they are the same */
 function KDCompareLocation(loc1: WorldCoord, loc2: WorldCoord): boolean {
-	if (loc1.mapX != loc2.mapX) return false;
-	if (loc1.mapY != loc2.mapY) return false;
-	if (loc1.room != loc2.room) return false;
+	if (loc1.mapX !== loc2.mapX) return false;
+	if (loc1.mapY !== loc2.mapY) return false;
+	if (loc1.room !== loc2.room) return false;
 	return true;
 }
 
@@ -631,29 +631,25 @@ function KDRepopulatePersistentNPCs() {
 			if (count >= maxCount) break;
 		}
 	}
+	// If we can't possibly spawn prisoners then we chuck a few of them randomly
 	if (jailPoints.length == 0) {
 		let capturedPersistent = KDGetCapturedPersistent(
 			MiniGameKinkyDungeonLevel,
 			KDGameData.RoomType,
 			KDGameData.MapMod,
-			KDMapData.MapFaction).filter(
+			KDMapData.MapFaction, true).filter(
 				(en) => {
 					return !en.entity?.Enemy?.tags?.noPrisoner;
 				}
 			);
-		let persistentAvailable =
-			KDGameData.CapturedParty?.length > 0
-			|| capturedPersistent.length > 0;
-		let amountToSpawn = Math.min(8,
-			Math.max(capturedPersistent.length || 0,
-				KDGameData.CapturedParty?.length || 0));
+		let amountToSpawn = Math.min(8, capturedPersistent.length || 0);
 		// If we can't possibly spawn prisoners then we chuck a few of them randomly
 		for (let i = 0; i < amountToSpawn; i++) {
 			let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, undefined, undefined,
 				false, undefined
 			);
 			if (point) {
-				let result = SetpieceSpawnPrisoner(point.x, point.y, true);
+				let result = SetpieceSpawnPrisoner(point.x, point.y, true, undefined, undefined, true);
 				if (result.success) spawned++;
 			}
 		}
@@ -760,14 +756,14 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 }
 
 /** Captured by NOT PLAYER */
-function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string, faction: string): KDPersistentNPC[] {
+function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string, faction: string, sameLocation: boolean = false): KDPersistentNPC[] {
 	let altType = KDGetAltType(Level, MapMod, RoomType);
 	let mapFaction = faction || altType?.faction || KDMapMods[MapMod ? MapMod : KDGameData.MapMod]?.faction;
 
 	if (!mapFaction) mapFaction = ""; // Default to no faction
 
 	let capturedPersistent = Object.values(KDPersistentNPCs).filter((npc) => {
-		return npc.captured && ((!npc.jailed && !npc.collect) || (
+		return npc.captured && KDCapturable(npc.entity) && ((!sameLocation && !npc.jailed && !npc.collect) || (
 			npc.jailed && KDCompareLocation(KDGetNPCLocation(npc.id), KDGetCurrentLocation())
 			&& !KinkyDungeonFindID(npc.id)
 		));
