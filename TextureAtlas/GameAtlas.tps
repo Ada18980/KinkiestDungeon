@@ -4129,6 +4129,12 @@
             </struct>
             <key type="filename">../Game/Particles/mmm.png</key>
             <key type="filename">../Game/Particles/nnn.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Aggro.png</key>
+            <key type="filename">../Game/UI/ContextMenu/AggroSneak.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Attack.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Capture.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Retaliate.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Tease.png</key>
             <key type="filename">../Game/UI/ContextMenu/Truss.png</key>
             <key type="filename">../Game/UI/ContextMenu/TrussA.png</key>
             <key type="filename">../Game/UI/ContextMenu/TrussX.png</key>
@@ -4410,6 +4416,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/ContextMenu/Interact.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Special.png</key>
             <key type="filename">../Game/UI/ContextMenu/Talk.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

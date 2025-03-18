@@ -537,14 +537,15 @@ function KinkyDungeonInDanger() {
 		let playerDist = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
 		if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
 			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
-				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy)) || (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
+				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy))
+						|| (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						return true;
+						return KDCanSeeEnemy(enemy) || KDCanHearEnemy(KDPlayer(), enemy);
 					}
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						return true;
+						return KDCanSeeEnemy(enemy) || KDCanHearEnemy(KDPlayer(), enemy);
 					}
 				}
 			}
@@ -2335,7 +2336,7 @@ let KDCurrentEnemyTooltip: entity = null;
  * @param enemy
  * @param offset
  */
-function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
+function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): number {
 	let analyze = KDGameData.Collection[enemy.id + ""] || KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
@@ -2731,14 +2732,16 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 
 	}
 
+	let inventoryList = [];
+
 	if (enemy.items && enemy.items.length > 0) {
-		TooltipList.push({
+		inventoryList.push({
 			str: "",
 			fg: "#ffaa55",
 			bg: KDBaseBlack,
 			size: 8,
 		});
-		TooltipList.push({
+		inventoryList.push({
 			str: TextGet("KDTooltipInventory"),
 			fg: KDBaseWhite,
 			bg: KDBaseBlack,
@@ -2746,7 +2749,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		});
 
 		for (let i = 0; i < 6 && i < enemy.items.length; i++) {
-			TooltipList.push({
+			inventoryList.push({
 				str: KDGetItemNameString(enemy.items[i]),
 				fg: KDBaseWhite,
 				bg: KDBaseBlack,
@@ -2754,7 +2757,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 			});
 		}
 		if (enemy.items.length > 6) {
-			TooltipList.push({
+			inventoryList.push({
 				str: TextGet("KDTooltipInventoryFull").replace("NUMBER", "" + (enemy.items.length - 6)),
 				fg: KDBaseWhite,
 				bg: KDBaseBlack,
@@ -2763,13 +2766,15 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		}
 
 
-		TooltipList.push({
+		/*inventoryList.push({
 			str: "",
 			fg: "#ffaa55",
 			bg: KDBaseBlack,
 			size: 8,
-		});
+		});*/
 	}
+
+	let extraList = [];
 
 	if (analyze) {
 		let map = Object.assign({}, enemy.Enemy.tags);
@@ -2804,13 +2809,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 				let name = TextGet("KinkyDungeonDamageType"+ dt.name);
 
 				if (!repeats['DR']) {
-					TooltipList.push({
-						str: "",
-						fg: KDBaseWhite,
-						bg: KDBaseBlack,
-						size: 10,
-					});
-					TooltipList.push({
+					extraList.push({
 						str: TextGet("KDTooltipDamageResists"),
 						fg: KDBaseWhite,
 						bg: KDBaseBlack,
@@ -2819,7 +2818,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 					repeats['DR'] = true;
 				}
 				if (!repeats[name])
-					TooltipList.push({
+					extraList.push({
 						str: st,
 						fg: dt.color,
 						bg: dt.bg,
@@ -2830,10 +2829,67 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		}
 		//}
 	}
+	if (showExtra) {
+		if (TooltipList.length + extraList.length > KDTooltipListExtraCutoff && extraList.length > 0) {
+			KDShowExtraTooltipMaxCycle = Math.ceil(extraList.length / KDTooltipListExtraPage);
+			if (KDShowExtraTooltipCycle == 0) TooltipList.push(...inventoryList);
+			if (KinkyDungeonInspect) {
+
+				TooltipList.push({
+					str: "",
+					fg: KDBaseWhite,
+					bg: KDBaseBlack,
+					size: 8,
+				});
+				TooltipList.push({
+					str: TextGet("KDTooltipCycleClick"
+						+ (KDShowExtraTooltipCycle == KDShowExtraTooltipMaxCycle ? "Neg" : "")
+					),
+					fg: KDBaseBaby,
+					bg: KDBaseBlack,
+					size: 18,
+				});
+			} else {
+				TooltipList.push({
+					str: "",
+					fg: KDBaseWhite,
+					bg: KDBaseBlack,
+					size: 8,
+				});
+				TooltipList.push({
+					str: TextGet("KDTooltipCycleEnter"
+						+ (KDShowExtraTooltipCycle == KDShowExtraTooltipMaxCycle ? "Neg" : "")
+					).replace("${Enter}", KDHotkeyToText(KinkyDungeonKeySpellPage[0]),),
+					fg: KDBaseBaby,
+					bg: KDBaseBlack,
+					size: 18,
+				});
+			}
+			if (KDShowExtraTooltipCycle > 0) {
+				TooltipList.push(...extraList.splice(
+					KDTooltipListExtraPage * (KDShowExtraTooltipCycle-1),
+					KDTooltipListExtraPage));
+			}
+		} else {
+			extraList.unshift({
+				str: "",
+				fg: KDBaseWhite,
+				bg: KDBaseBlack,
+				size: 10,
+			});
+			TooltipList.push(...inventoryList);
+			TooltipList.push(...extraList);
+		}
+	}
+
 	return KDDrawTooltip(TooltipList, offset);
 }
 
+let KDTooltipListExtraCutoff = 15;
+let KDTooltipListExtraPage = 10; // for testing
 
+let KDShowExtraTooltipCycle = 0;
+let KDShowExtraTooltipMaxCycle = 0;
 
 /**
  * @param enemy

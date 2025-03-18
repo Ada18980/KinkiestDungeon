@@ -9,7 +9,6 @@ AddModel({
 	Name: "HighSecBlindfold",
 	Folder: "HighSec",
 	TopLevel: true,
-	Restraint: true,
 	Categories: ["Restraints", "Blindfolds"],
 	AddPose: ["Blindfolds"],
 	Layers: ToLayerMap([
@@ -73,7 +72,6 @@ AddModel({
 	Name: "HighSecCollar",
 	Folder: "HighSec",
 	TopLevel: true,
-	Restraint: true,
 	Categories: ["Accessories", "Collars"],
 	Layers: ToLayerMap([
 		{ Name: "Collar", Layer: "NeckCorsetOver", Pri: -25,

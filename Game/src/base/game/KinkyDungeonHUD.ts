@@ -405,8 +405,9 @@ function KDDrawSpellChoices() {
 	const max_choices = Math.max (KinkyDungeonSpellChoices.length, KinkyDungeonConsumableChoices.length, KinkyDungeonWeaponChoices.length, KinkyDungeonArmorChoices.length)
 	if (max_choices > KinkyDungeonSpellChoiceCountPerPage) {
 		DrawButtonKDEx("CycleSpellButton", () => {
-			KDCycleSpellPage(false, false);
-			return true;
+			if (KDShowExtraTooltipMaxCycle == 0)
+				KDCycleSpellPage(false, false);
+			return KDShowExtraTooltipMaxCycle == 0;
 		}, true, hotBarX + 713, HotbarStart, 72, 72, `${KDSpellPage + 1}`, KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Cycle.png", undefined, undefined, true, undefined, 28, undefined, {
 			hotkey: KDHotkeyToText(KinkyDungeonKeySpellPage[0]),
@@ -1637,7 +1638,7 @@ function KinkyDungeonActivateWeaponSpell(instant = false) {
 	return false;
 }
 
-function KinkyDungeonRangedAttack() {
+function KinkyDungeonRangedAttack(x?: number, y?: number) {
 	if (!KinkyDungeonPlayerDamage.special) return;
 	if (KinkyDungeonPlayerDamage.special.type) {
 		if (KinkyDungeonPlayerDamage.special.type == "hitorspell") {
@@ -1648,6 +1649,23 @@ function KinkyDungeonRangedAttack() {
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
+
+			if (x || y) {
+				KinkyDungeonSetMoveDirection();
+
+				if (KinkyDungeonTargetingSpell) {
+					if (KDSpellValid(KinkyDungeonTargetX, KinkyDungeonTargetY,
+						KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange")),
+						false
+					)) {
+						KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
+
+						KinkyDungeonTargetingSpell = null;
+						KinkyDungeonTargetingSpellItem = null;
+						KinkyDungeonTargetingSpellWeapon = null;
+					}
+				}
+			}
 			return true;
 		} else if (KinkyDungeonPlayerDamage.special.type == "attack") {
 			KinkyDungeonTargetingSpell = {name: "WeaponAttack", components: [], level:1, type:"special", special: "weaponAttack", noMiscast: true, manacost: 0,
@@ -1658,6 +1676,23 @@ function KinkyDungeonRangedAttack() {
 			KDModalArea = false;
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
+			if (x || y) {
+				// Do it
+				KinkyDungeonSetMoveDirection();
+
+				if (KinkyDungeonTargetingSpell) {
+					if (KDSpellValid(KinkyDungeonTargetX, KinkyDungeonTargetY,
+						KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange")),
+						false
+					)) {
+						KDStartSpellcast(KinkyDungeonTargetX, KinkyDungeonTargetY, KinkyDungeonTargetingSpell, undefined, KinkyDungeonPlayerEntity, undefined, {targetingSpellItem: KinkyDungeonTargetingSpellItem, targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon});
+
+						KinkyDungeonTargetingSpell = null;
+						KinkyDungeonTargetingSpellItem = null;
+						KinkyDungeonTargetingSpellWeapon = null;
+					}
+				}
+			}
 			return true;
 		} else if (KinkyDungeonPlayerDamage.special.type == "ignite") {
 			KDCreateEffectTile(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, {
@@ -1671,7 +1706,7 @@ function KinkyDungeonRangedAttack() {
 			KinkyDungeonTargetingSpellWeapon = KinkyDungeonPlayerDamage;
 			return true;
 		}*/ else {
-			return KinkyDungeonActivateWeaponSpell();
+			return KinkyDungeonActivateWeaponSpell(!!(x || y));
 		}
 
 	}
@@ -2341,7 +2376,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 				}
 
 				if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)) {
-					tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset));
+					tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset, false));
 				}
 
 			} else {
@@ -2375,7 +2410,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 					}
 
 					if (MouseIn(PartyX, PartyY, PartyDy, PartyDy)) {
-						tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset));
+						tooltips.push((offset: number) => KDDrawEnemyTooltip(PM, offset, false));
 					}
 				}
 

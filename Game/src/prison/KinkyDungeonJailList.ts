@@ -175,7 +175,7 @@ type guardActionEntry = {
 let KDGuardActions: Record<string, guardActionEntry> = {
 	"jailWander": {
 		weight: (_guard, _xx, _yy) => {
-			return 100;
+			return KinkyDungeonPlayerInCell() ? 100 : 1;
 		},
 		assignable: (guard, _xx, _yy) => { // Can assign a new behavior on top of this one
 			return KDistChebyshev(guard.gx - guard.x, guard.gy - guard.y) < 1.5;
@@ -238,7 +238,8 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 	},
 	"jailTease": {
 		weight: (_guard, _xx, _yy) => {
-			return 10 + (KinkyDungeonGoddessRep.Ghost + 50);
+
+			return !KinkyDungeonPlayerInCell() ? 0 : (10 + (KinkyDungeonGoddessRep.Ghost + 50));
 		},
 		assign: (guard, _xx, _yy) => {
 			// Always a random chance to tease
@@ -272,6 +273,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 	},
 	"bindings": {
 		weight: (_guard, _xx, _yy) => {
+			if (!KinkyDungeonPlayerInCell()) return 0;
 			let missingJailUniform = KinkyDungeonMissingJailUniform();
 			let tooMuchRestraint = KinkyDungeonTooMuchRestraint();
 			let lockableRestraint = KinkyDungeonLockableItems();
@@ -491,6 +493,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 	},
 	"jailLeashTour": {
 		weight: (_guard, _xx, _yy) => {
+			if (!KinkyDungeonPlayerInCell()) return 0;
 			KDGameData.KinkyDungeonJailTourTimer = 0;
 			return (KDGameData.SleepTurns < 1 && KDGameData.KinkyDungeonJailTourTimer < 1 && KinkyDungeonGoddessRep.Ghost >= -45) ? (5 + Math.max(0, (50 + KinkyDungeonGoddessRep.Ghost)/5)) : 0;
 		},
@@ -515,6 +518,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 	},
 	"jailLeashTransfer": {
 		weight: (_guard, _xx, _yy) => {
+			if (!KinkyDungeonPlayerInCell()) return 0;
 			KDGameData.KinkyDungeonJailTourTimer = 0;
 			return (KDGameData.JailTurns > 30 && KinkyDungeonRandomJailPoint(["jail"], [KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)])) ? 5 : 0;
 		},

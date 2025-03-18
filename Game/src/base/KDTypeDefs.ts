@@ -1510,19 +1510,21 @@ interface weapon extends damageInfo, NamedAndTyped {
 	nocrit?: boolean;
 	noblock?: boolean,
 	tags?: string[];
-	special?: {
-		noSkip?: boolean,
-		type: string,
-		spell?: string,
-		prereq?: string,
-		selfCast?: boolean,
-		requiresEnergy?: boolean,
-		energyCost?: number,
-		range?: number,};
+	special?: KDWeaponSpecial;
 	/** Can be used with Floating weapon even with no hands */
 	telekinetic?: boolean,
 }
 
+interface KDWeaponSpecial {
+    noSkip?: boolean;
+    type: string;
+    spell?: string;
+    prereq?: string;
+    selfCast?: boolean;
+    requiresEnergy?: boolean;
+    energyCost?: number;
+    range?: number;
+}
 
 interface KinkyDungeonEvent {
 	sprite?: string,

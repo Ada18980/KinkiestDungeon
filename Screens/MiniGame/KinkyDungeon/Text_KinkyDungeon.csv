@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.53"
+KDVersionStr,"5.4.54"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -8486,7 +8486,7 @@ KinkyDungeonRemindJailPlayBrat2,"I don't want to be your slave!"
 KinkyDungeonRemindJailPlaySub0,"I've been naughty, looks like I need to be punished..."
 KinkyDungeonRemindJailPlaySub1,"I've been a bad girl, won't you do something about it?"
 KinkyDungeonRemindJailPlaySub2,"Mmmph... maybe I talk too much..."
-KinkyDungeonRemindJailPlayFree,"Hey! Where do you think you're going?"
+KinkyDungeonRemindJailPlayFree,"Hey! Where do you think you're going~"
 KinkyDungeonRemindJailPlayStruggle,"You look like you're having fun!"
 KinkyDungeonRemindJailPlayLeash,"I have somewhere else in mind for you~"
 KinkyDungeonRemindJailPlayLoot,"What do you think you're doing with that?"
@@ -31722,6 +31722,17 @@ KDContextMenu_TrussAttempt,Attempt to Tie
 KDContextMenu_TrussOOR,Move Closer to Tie
 KDContextMenu_Sprint,Sprint (AMNT)
 KDContextMenu_Stop,Stop Waiting
+KDContextMenu_Attack,Attack
+KDContextMenu_Capture,Capture
+KDContextMenu_Tease,Capture
+KDContextMenu_Aggro,Aggress
+KDContextMenu_AggroSneak,Sneak Attack
+KDContextMenu_Retaliate,Retaliate
+KDContextMenu_Shoot,Shoot
+KDContextMenu_Shoothitorspell,Ranged Attack
+KDContextMenu_Shootattack,Ranged Attack
+KDContextMenu_Shootselfcast,Activate on Self
+KDContextMenu_Shootignite,Ignite on Self
 
 KDBedSleptLevel,(Already slept here)
 KDBedWillNotLow,(Will not low enough)
@@ -31777,3 +31788,8 @@ KillLatexKitty,The latex kitty
 AttackLatexKitty,The latex kitty rubs against you seductively!
 AttackLatexKittyBind,The latex kitty's rubbery coating spreads to you!
 AttackLatexKittyLock,The latex kitty's rubbery coating casts itself into locks!
+
+KDTooltipCycleClick,Click to show more info...
+KDTooltipCycleClickNeg,Click to hide info...
+KDTooltipCycleEnter,(${Enter}) to show more...
+KDTooltipCycleEnterNeg,(${Enter}) to hide...

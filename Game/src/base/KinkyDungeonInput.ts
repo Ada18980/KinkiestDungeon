@@ -33,6 +33,36 @@ function KDProcessInput(type: string, data: any): string {
 		case "setMoveDirection":
 			KinkyDungeonMoveDirection = data.dir;
 			break;
+		case "docapture": {
+			let entity = KinkyDungeonEntityAt(data.tx, data.ty);
+			if (entity?.id == data.id) {
+				KDDoCapture(entity, 0, data.noadvance, data.skip);
+				KinkyDungeonLastAction = "Attack";
+				KinkyDungeonAdvanceTime(1);
+			}
+			break;
+		}
+		case "doaggro": {
+			let entity = KinkyDungeonEntityAt(data.tx, data.ty);
+			if (entity?.id == data.id) {
+				KDAggroViaDialogue(entity, data.unaware, data.aggroothers)
+			}
+			break;
+		}
+		case "dospecial": {
+			KinkyDungeonRangedAttack(data.x, data.y);
+			break;
+		}
+		case "doattack": {
+			let entity = KinkyDungeonEntityAt(data.tx, data.ty);
+			if (entity?.id == data.id) {
+				KDDoAttack(entity, data.teasesub, data.attackCost, data.skip);
+				KinkyDungeonLastAction = "Attack";
+				KinkyDungeonAdvanceTime(1);
+			}
+			break;
+		}
+
 		case "tick":
 			if (data.sleep == 10 && (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') && KinkyDungeonPlayerInCell()) {
 				KDKickEnemies(KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y), false, MiniGameKinkyDungeonLevel, true);

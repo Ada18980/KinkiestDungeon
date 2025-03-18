@@ -60,6 +60,9 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 		let restraint = dynamic.restraint;
 		let host = dynamic.host;
 		if (restraint) {
+			KDChangeStamina(action.data.escapeData.struggleGroup, action.data.escapeData.struggleType,
+				"struggle", 0, true, 1);
+
 			KinkyDungeonSetFlag(action.data.escapeData.struggleType, 1);
 			KinkyDungeonSetFlag("escaping", 2);
 			let lockType = restraint.lock && KDLocks[restraint.lock] ? KDLocks[restraint.lock] : null;

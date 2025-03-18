@@ -641,18 +641,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				clickFunction: (_gagged, _player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						if (!enemy.Enemy.allied) {
-							let faction = KDGetFactionOriginal(enemy);
-							if (faction == "Player") {
-								enemy.faction = "Enemy"; // They become an enemy
-							} else if (!KinkyDungeonHiddenFactions.has(faction) && !enemy.Enemy.tags?.scenery) {
-								KinkyDungeonChangeRep("Ghost", -5);
-								KinkyDungeonChangeFactionRep(faction, -0.06);
-							}
-							KDMakeHostile(enemy);
-						} else {
-							enemy.hp = 0;
-						}
+						KDAggroViaDialogue(enemy, false, true);
 					}
 					return false;
 				},
@@ -674,15 +663,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 				clickFunction: (_gagged, _player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						if (!enemy.Enemy.allied) {
-							KDMakeHostile(enemy);
-							let faction = KDGetFactionOriginal(enemy);
-							if (!KinkyDungeonHiddenFactions.has(faction)) {
-								KinkyDungeonChangeRep("Ghost", -5);
-							}
-						} else {
-							enemy.hp = 0;
-						}
+						KDAggroViaDialogue(enemy, false, false);
 					}
 					return false;
 				},
@@ -703,15 +684,11 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			"Confirm": {playertext: name + "AttackUnaware_Confirm", response: "Default",
 				clickFunction: (_gagged, _player) => {
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
-						if (!enemy.Enemy.allied) {
-							KDMakeHostile(enemy);
-							enemy.stun = Math.max(enemy.stun || 0, 1);
-							enemy.vulnerable = Math.max(enemy.vulnerable || 0, 1);
-						} else {
-							enemy.hp = 0;
-						}
+						KDAggroViaDialogue(enemy, true, false);
 					}
+
 					return false;
 				},
 				exitDialogue: true,
@@ -2792,4 +2769,47 @@ function KDUntieEnemy(enemy: entity, amount: number, includeConjured: boolean = 
 	if (enemy.boundLevel < 0) {
 		enemy.boundLevel = 0;
 	}
+}
+
+
+function KDAggroViaDialogue(enemy: entity, unaware: boolean, aggroothers: boolean) {
+	if (unaware) {
+		// sneak attack
+		if (!enemy.Enemy.allied) {
+			KDMakeHostile(enemy);
+			enemy.stun = Math.max(enemy.stun || 0, 1);
+			enemy.vulnerable = Math.max(enemy.vulnerable || 0, 1);
+		} else {
+			enemy.hp = 0;
+		}
+	} else {
+		if (aggroothers) {
+			// attack
+			if (!enemy.Enemy.allied) {
+				let faction = KDGetFactionOriginal(enemy);
+				if (faction == "Player") {
+					enemy.faction = "Enemy"; // They become an enemy
+				} else if (!KinkyDungeonHiddenFactions.has(faction) && !enemy.Enemy.tags?.scenery) {
+					KinkyDungeonChangeRep("Ghost", -5);
+					KinkyDungeonChangeFactionRep(faction, -0.06);
+				}
+				KDMakeHostile(enemy);
+			} else {
+				enemy.hp = 0;
+			}
+		} else {
+			// retaliate
+			if (!enemy.Enemy.allied) {
+				KDMakeHostile(enemy);
+				let faction = KDGetFactionOriginal(enemy);
+				if (!KinkyDungeonHiddenFactions.has(faction)) {
+					KinkyDungeonChangeRep("Ghost", -5);
+				}
+			} else {
+				enemy.hp = 0;
+			}
+		}
+
+	}
+
 }

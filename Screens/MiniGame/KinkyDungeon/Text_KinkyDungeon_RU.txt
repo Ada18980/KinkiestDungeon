@@ -1354,7 +1354,7 @@ Unidentified Wear
 Неопознанная экипировка
 Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
 Зачарованные (и проклятые) предметы экипировки и оружие остаются неопознанными до тех пор, пока они не будут использованы.
-Unknown 
+Unknown
 'Неопознано'
 
 
@@ -1436,9 +1436,9 @@ Everywhere!
 Везде!
 
 
-Physical Armor: 
+Physical Armor:
 Физическая защита:
-Magic Armor: 
+Magic Armor:
 Магическая защита:
 In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
@@ -1446,7 +1446,7 @@ Invisible: You are very difficult to see.
 Невидимость: Вас очень трудно увидеть.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-All Damage Reduction: 
+All Damage Reduction:
 Уменьшение всего урона:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
@@ -1748,7 +1748,7 @@ Missing key
 Отсутствует ключ
 You are protected from damage and can't be bound until the shield is broken!
 Вы защищены от урона и не можете быть связаны до тех пор, пока щит не будет сломан!
-Chance for a spell to fizzle: 
+Chance for a spell to fizzle:
 Шанс провала заклинания:
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
@@ -1920,7 +1920,7 @@ Delete Mod
 Удалить модификацию
 Clear Perks
 Очистить перки
-Config 
+Config
 Пресет
 Cancel
 Отмена
@@ -2058,15 +2058,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 Этаж FLOORNUMBER: DUNGEONNAME
 
 
-Lockpicks: 
+Lockpicks:
 Отмычки:
-Keys: 
+Keys:
 Ключи:
-Magic Keys: 
+Magic Keys:
 Магические ключи:
-Knife: 
+Knife:
 Ножи:
-Mag. Knife: 
+Mag. Knife:
 Маг. ножи:
 
 
@@ -2286,7 +2286,7 @@ You find a medley of potions.
 Вы находите смесь зелий.
 
 
-Rarity: 
+Rarity:
 Редкость:
 Lesser
 Мусор
@@ -3170,7 +3170,7 @@ Dreamcatcher
 Ловец снов
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Наносит урон тьмой. Наносит до 30 дополнительного психического урона не подозревающим (100%) или уязвимым (50%) целям.
 Axe
 Топор
@@ -3178,11 +3178,11 @@ Great for cutting trees that happen to be underground.
 Отлично подходит для рубки деревьев, которые встречаются в подземелье.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 Наносит рубящий урон. Также наносит 20 единиц урона врагам рядом с вами.
-Accuracy: 
+Accuracy:
 Точность:
-Crit Multiplier: 
+Crit Multiplier:
 Множитель Крит. урона:
-Bind Crit Multiplier: 
+Bind Crit Multiplier:
 Множитель Крит. Сковывания:
 Find the keys..
 Нужно найти ключи...
@@ -3200,9 +3200,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-Evasion: 
+Evasion:
 Уклонение:
-Visibility: 
+Visibility:
 Заметность:
 
 
@@ -3248,13 +3248,13 @@ Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс осечки в заклинаниях снижен.
 
 
-Damage: 
+Damage:
 Урон:
-Bind: 
+Bind:
 Сковывание:
-Crit: 
+Crit:
 Крит:
-SP Cost: 
+SP Cost:
 Трата SP:
 Cut PWR: AMNT%
 Эф.Разреза: AMNT%
@@ -6378,19 +6378,19 @@ Commerce
 Коммерция
 Shrine of SHRINETYPE
 Святилище: SHRINETYPE
-Tablet of 
+Tablet of
 Скрижаль:
 
 
-Goddess: 
+Goddess:
 Богиня:
-Goddess Blessing: 
+Goddess Blessing:
 Благословение Богини:
-Goddess Curse: 
+Goddess Curse:
 Проклятие Богини:
-Mana Bonus: 
+Mana Bonus:
 Бонус к мане:
-Lack of Mana Penalty: 
+Lack of Mana Penalty:
 Штраф за недостаток маны:
 Your excess mana helps you suppress the enchantment!
 Избыток маны помогает вам подавить магические чары!
@@ -6416,11 +6416,11 @@ You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
 
 
-Allies: 
+Allies:
 Союзники:
-Enemies: 
+Enemies:
 Враги:
-Favorable: 
+Favorable:
 Партнеры:
 
 
@@ -7030,7 +7030,7 @@ Press RIGHT to confirm buy!
 
 
 
-You find 
+You find
 Вы находите
 
 
@@ -9306,7 +9306,7 @@ Vision
 Взгляд
 
 
-Components: 
+Components:
 Активация:
 Arm Movements
 Жесты рук
@@ -12118,7 +12118,7 @@ You need more spell points.
 Вам нужно больше очков способностей.
 You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-School: 
+School:
 Школа:
 Generic
 Общее
@@ -12128,15 +12128,15 @@ Special
 Особое
 Learn Spell
 Выучить заклинание
-Spell Points: 
+Spell Points:
 Очки способностей:
 
 
-Level: 
+Level:
 Уровень:
-Spell Point Cost: 
+Spell Point Cost:
 Стоимость в очках способн.:
-Mana Cost: 
+Mana Cost:
 Затраты маны:
 
 
@@ -12168,19 +12168,19 @@ Replace Spell 6
 Заменить закл. 6
 Replace Spell 7
 Заменить закл. 7
-Current Spell 1: 
+Current Spell 1:
 Текущее закл. 1:
-Current Spell 2: 
+Current Spell 2:
 Текущее закл. 2:
-Current Spell 3: 
+Current Spell 3:
 Текущее закл. 3:
-Current Spell 4: 
+Current Spell 4:
 Текущее закл. 4:
-Current Spell 5: 
+Current Spell 5:
 Текущее закл. 5:
-Current Spell 6: 
+Current Spell 6:
 Текущее закл. 6:
-Current Spell 7: 
+Current Spell 7:
 Текущее закл. 7:
 
 
@@ -12220,7 +12220,7 @@ Ejahl
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 (Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Жизни, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей?
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
@@ -12898,11 +12898,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-For 3 rep the goddess will grant you 
+For 3 rep the goddess will grant you
 За 3 репутации богиня дарует вам
 For 3 rep the goddess
 За 3 репутации богиня
-For 3 rep the goddess 
+For 3 rep the goddess
 За 3 репутации богиня
 
 
@@ -13282,11 +13282,11 @@ Can disarm (chance: DISARMCHANCE%)
 Может разоружить (шанс: DISARMCHANCE%)
 Resistances:
 Сопротивления:
-### HP: 
+### HP:
 
-Shield: 
+Shield:
 Щит:
-Binding: 
+Binding:
 Сковывание:
 Ambivalent
 Двойственное
@@ -13612,7 +13612,7 @@ Extreme Mode
 Экстрим
 A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-Play the game the way it was intended. Cruel and restrictive. 
+Play the game the way it was intended. Cruel and restrictive.
 Играйте в игру так, как она была задумана. Жестокость и строгость.
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
@@ -14048,7 +14048,7 @@ This is too tight...
 Это слишком туго...
 I can't get free!
 Я не могу освободиться!
-Hey! Where do you think you're going?
+Hey! Where do you think you're going~
 Эй! Куда, по-твоему, ты направляешься?
 You look like you're having fun!
 Ты выглядишь так, словно тебе весело!
@@ -19540,7 +19540,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER наклоняет голову и пожимает плечами)|Ну что ж.
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER хмурится)|Что это?|Ты ведь не враг правосудия, я надеюсь?
@@ -21218,7 +21218,7 @@ W-what does that entail?
 (SPEAKER хихикает)|Это значит, что мы упакуем тебя и|решим, что с тобой делать, глупышка~
 Hmmmph? Mmmm! (Act worried and whimper)
 Хмммф? Мммм! (Изображать беспокойство и хныкать)
-(The SPEAKER folds her arms)|Mistress Oriel's orders 
+(The SPEAKER folds her arms)|Mistress Oriel's orders
 (SPEAKER складывает руки на груди)|Приказы госпожи Ориэль
 Not in the 'System'?
 Не в 'Системе'?
@@ -21496,7 +21496,7 @@ Upcast Level LEVEL
 Уровень усиления LEVEL
 Prerequisite
 Предусловие
-Unlocks: 
+Unlocks:
 Разблокирует:
 You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
@@ -21556,7 +21556,7 @@ Your harness projects energy tethers between your cuffs EnemyName activates it!
 Ваша сбруя пропускает энергетические нити между вашими оковами, когда EnemyName активирует ее!
 
 
-Turn Count: 
+Turn Count:
 Счетчик ходов:
 
 
@@ -22006,7 +22006,7 @@ Items on Ground:
 Предметы на земле:
 
 
-Preloading Character Assets: 
+Preloading Character Assets:
 Предзагрузка ассетов персонажа:
 
 
@@ -28068,7 +28068,7 @@ Rubber Stick
 Резиновая палка
 A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-Deals grope damage. 
+Deals grope damage.
 Наносит урон ощупыванием.
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
@@ -29162,9 +29162,9 @@ Your RestraintName shatters and falls off!
 Ваше RestraintName раскалывается на части, которые падают на землю!
 
 
-Load Hotbar 
+Load Hotbar
 Загруз. быстр. панель
-Save Hotbar 
+Save Hotbar
 Сохр. быстр. панель
 Clear Hotbar
 Очистить быструю панель
@@ -30570,7 +30570,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-Receive the following restraints: 
+Receive the following restraints:
 Вы получите следующие ограничители:
 You will be bound with some form of restraint.
 Вы будете скованы с помощью неизвестных ограничителей.
@@ -31254,7 +31254,7 @@ Guest #NUMR/TTL
 
 Select a character to examine
 Выберите персонажа для осмотра
-Former Faction: 
+Former Faction:
 Бывшая фракция:
 
 
@@ -31472,7 +31472,7 @@ You crouch and move slowly.
 Вы приседаете и двигаетесь медленнее.
 
 
-Owned by: 
+Owned by:
 Принадлежит:
 
 
@@ -32228,7 +32228,7 @@ You retrieve an interesting article dubbed 'the Robe of Chastity.
 Вы находите интересный предмет под названием 'Мантия целомудрия'.
 
 
-Took 
+Took
 Получено:
 
 
@@ -33316,9 +33316,9 @@ Fiber
 Волокно
 
 
-Stock: 
+Stock:
 Запас:
-Inputs: 
+Inputs:
 Поступление:
 
 
@@ -33394,13 +33394,13 @@ Heels
 Каблуки
 
 
-Equipped: 
+Equipped:
 Экипировано:
-Click to Add 
+Click to Add
 Нажм. чтоб добавить
-Apply 
+Apply
 Применить
-Raw Material: 
+Raw Material:
 Исходный материал:
 
 
@@ -33408,7 +33408,7 @@ Free Prisoner
 Осободить заключенную
 
 
-Perk Unlocked: 
+Perk Unlocked:
 Разблок. перк:
 
 
@@ -33444,7 +33444,7 @@ Choose Restraint
 Выберите ограничитель
 
 
-Def. Palette: 
+Def. Palette:
 Обыч. Палитра:
 Set All Palette
 Устан. палитру на все
@@ -33454,19 +33454,19 @@ Guests
 Гости
 
 
-Assign to 
+Assign to
 Назначить:
-Remove from 
+Remove from
 Удалить:
-Can't assign to 
+Can't assign to
 Невозможно назначить:
-Remove from party to assign 
+Remove from party to assign
 Удалите из группы для назначения:
 Imprison
 Посадить в тюрьму
 
 
-Opinion: 
+Opinion:
 Мнение:
 Last Seen on Floor FLR, LOC
 Последний раз была замечена на этаже FLR, LOC
@@ -33496,17 +33496,17 @@ NPC удалось ослабить свои путы.
 
 Any
 Все
-NPC Opinion: 
+NPC Opinion:
 Мнение NPC:
-NPC Escape Status: 
+NPC Escape Status:
 Статус побега NPC:
-NPC Binding: 
+NPC Binding:
 Сковывание NPC:
-NPC Availability: 
+NPC Availability:
 Пригодность NPC:
-Favorited: 
+Favorited:
 Избранное:
-Rank: 
+Rank:
 Ранк:
 Minor
 Низший
@@ -33642,7 +33642,7 @@ Select a Binding Slot
 Выберите Слот Сковывания
 
 
-Cost: 
+Cost:
 Цена:
 
 
@@ -33678,7 +33678,7 @@ If arm components are unavailable, you can now apply bindings with verbal compon
 Если руки недоступны, теперь вы можете накладывать ограничители с помощью слов. Дальность действия 'Связать их' увеличивается на 2, а всех командных заклинаний - на 1
 
 
-Save Slot 
+Save Slot
 Сохранить слот
 Load Game
 Загрузить игру
@@ -33742,13 +33742,13 @@ Reverse Route
 Обратный маршрут
 Chaos Route
 Хаотический маршрут
-Map Seed: 
+Map Seed:
 СИД карты:
 Will Overwrite NME!
 Перезапишет NME!
 
 
-Play Slot 
+Play Slot
 Играть слот:
 Play (NO SLOT!)
 Играть (БЕЗ СЛОТА!)
@@ -33982,7 +33982,7 @@ Deposit All
 Сдать все
 
 
-Auto-loot found 
+Auto-loot found
 Авто-лут нашел:
  (not picked up)
 (не подбирать)
@@ -35064,9 +35064,9 @@ Comes with an artistic flair.
 
 ### Settings
 
-### Scroll Controls: 
+### Scroll Controls:
 
-### Layer Text: 
+### Layer Text:
 
 ### No Actions Available
 
