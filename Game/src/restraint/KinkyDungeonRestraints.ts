@@ -6711,6 +6711,6 @@ function KDDefaultNPCItemPalette(name: string) {
 }
 
 function KDGetBaseLimitChance(StruggleType: string) {
-	if (StruggleType == "Struggle") return 0.12;
+	if (StruggleType == "Struggle") return 0.05;// TODO
 	return 0.05;
 }
