@@ -2405,7 +2405,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 	let helpChance = (KDRestraint(restraint).helpChance != undefined && KDRestraint(restraint).helpChance[StruggleType] != undefined) ? KDRestraint(restraint).helpChance[StruggleType] : 0.0;
 	let limitChance = (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
-		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.05);
+		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : KDGetBaseLimitChance(StruggleType));
 
 	let speedmult = (KDRestraint(restraint).speedMult != undefined && KDRestraint(restraint).speedMult[StruggleType] != undefined) ? KDRestraint(restraint).speedMult[StruggleType] :
 		1;
@@ -2563,9 +2563,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 					switch(StruggleType) {
 						case "Struggle":
-							limitProgress = (KDRestraint(restraint).struggleBreak ? cutStruggleProgress : data.restraint.struggleProgress) ? (
-								(KDRestraint(restraint).struggleBreak ? cutStruggleProgress : data.restraint.struggleProgress) < threshold ?
-									threshold * (KDRestraint(restraint).struggleBreak ? cutStruggleProgress : data.restraint.struggleProgress)
+							limitProgress = (data.restraint.struggleProgress) ? (
+								(data.restraint.struggleProgress) < threshold ?
+									threshold * (data.restraint.struggleProgress)
 									: 1.0)
 								: 0;
 							if (data.limitChance > 0 && data.limitChance > data.escapeChance) {
@@ -2645,8 +2645,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 					}
 				}
 
+				let progress = restraint.cutProgress ? restraint.cutProgress : 0;
 
-				if (data.escapeChance <= 0) {
+				if (data.escapeChance <= 0 || Math.abs(progress - maxLimit) < 0.005) {
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
 						+ ((KDGetEscapeSFX(restraint) && KDGetEscapeSFX(restraint)[data.struggleType]) ? KDGetEscapeSFX(restraint)[data.struggleType] : "Struggle")
 						+ ".ogg");
@@ -2665,7 +2666,6 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 
 				// Pass block
-				let progress = restraint.cutProgress ? restraint.cutProgress : 0;
 				data.struggleTime *=
 					KinkyDungeonStatsChoice.get("FranticStruggle") ? 1 :
 					Math.max(1,
@@ -2821,7 +2821,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						KDAddDelayedStruggle(
 							data.escapeSpeed * mult * Math.max(data.escapeChance > 0 ? data.minSpeed : 0, data.escapeChance) * (0.5 + 0.4 * KDRandom() + 0.3 * Math.max(0, (KinkyDungeonStatStamina)/KinkyDungeonStatStaminaMax)),
 							data.struggleTime, StruggleType, struggleGroup, index, data,
-							KDRestraint(restraint)?.struggleBreak ? restraint.cutProgress : restraint.struggleProgress, maxLimit
+							restraint.struggleProgress, maxLimit
 						);
 					}
 				}
@@ -6708,4 +6708,9 @@ function KDDefaultItemPalette(name: string, variantName: string) {
 }
 function KDDefaultNPCItemPalette(name: string) {
 	return KDPalettePrefsNPC[name];
+}
+
+function KDGetBaseLimitChance(StruggleType: string) {
+	if (StruggleType == "Struggle") return 0.12;
+	return 0.05;
 }

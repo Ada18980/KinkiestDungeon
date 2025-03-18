@@ -7037,8 +7037,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMinSpeed: {
 			Cut: 0.05,
 		},
-		limitChance: {Struggle: 0.2},
-		escapeChance: {"Struggle": -0.1, "Cut": 0.2, "Remove": 0.5, "Pick": 1.25}, enemyTags: {"leashing":1}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":99}, minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
+		limitChance: {Struggle: 0.3},
+		escapeChance: {"Struggle": 0.0, "Cut": 0.2, "Remove": 0.5, "Pick": 1.25}, enemyTags: {"leashing":1}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":99}, minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
 
 	//region Cursed Set - Flames of Desire
 	//endregion
