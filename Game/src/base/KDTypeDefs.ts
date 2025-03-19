@@ -2661,6 +2661,8 @@ interface KDStruggleData {
 	escapeChance: number,
 	cutBonus: number,
 	origEscapeChance: number,
+	/** Gets set to a low value when escapeChance would be clipped to 0, helping player understand how helpless */
+	lowEscapeChance: number,
 	origLimitChance: number,
 	helpChance: number,
 	limitChance: number,

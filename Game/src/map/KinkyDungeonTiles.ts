@@ -13,7 +13,7 @@ let KDCancelFilters = {
 	JourneyChoice: (_x, _y, _tile, data: any) => {
 		// This one is set by event
 		if (data.force) return "";
-		if (!KDGameData.JourneyTarget && data.AdvanceAmount > 0) {
+		if ((!KDGameData.JourneyTarget || !KDGameData.UseJourneyTarget) && data.AdvanceAmount > 0) {
 			if (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Connections.length > 0) {
 				return "JourneyChoice";
 			}
@@ -417,9 +417,9 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				}
 				if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 				KinkyDungeonSendEvent("AfterAdvance", data);
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
 				if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1 && MiniGameKinkyDungeonLevel == KDGameData.HighestLevelCurrent) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
 					if ((!KinkyDungeonStatsChoice.get("saveMode")) && !suppressCheckPoint) {
+						let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
 						KinkyDungeonState = "Save";
 						KDTextArea("saveDataField", 750, 100, 1000, 230);
 						ElementValue("saveDataField", saveData);
@@ -1036,13 +1036,16 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 		let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
 		if (KDGameData.JourneyTarget && KDGameData.UseJourneyTarget) {
+			data.Xdelta = KDGameData.JourneyTarget.x - KDGameData.JourneyX;
 			KDGameData.JourneyX = KDGameData.JourneyTarget.x;
 			KDGameData.JourneyY = KDGameData.JourneyTarget.y;
 			KDGameData.JourneyTarget = null;
 			KDGameData.UseJourneyTarget = false;
 		} else {
 			// TODO When adding open world feature, have this track better...
-			KDGameData.JourneyX = KDGetWorldMapLocation({x: KDCurrentWorldSlot.x, y: MiniGameKinkyDungeonLevel})?.jx || 0;
+			let JourneyTarget = KDGetWorldMapLocation({x: KDCurrentWorldSlot.x, y: MiniGameKinkyDungeonLevel})?.jx || 0;
+			data.Xdelta = JourneyTarget - KDGameData.JourneyX;
+			KDGameData.JourneyX = JourneyTarget;
 			KDGameData.JourneyY = MiniGameKinkyDungeonLevel;
 			KDGameData.JourneyTarget = null;
 		}

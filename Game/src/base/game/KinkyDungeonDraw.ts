@@ -2991,11 +2991,11 @@ function DrawTextFitKDTo (
 	border:     number = undefined,
 	unique:     boolean = undefined,
 	font?:     string
-) {
-	if (!Text) return;
+): number {
+	if (!Text) return 0;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(Container || kdcanvas, kdpixisprites, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	return DrawTextVisKD(Container || kdcanvas, kdpixisprites, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3045,11 +3045,11 @@ function DrawTextFitKDTo2 (
 	border:     number = undefined,
 	unique:     boolean = undefined,
 	font?:     string
-) {
-	if (!Text) return;
+): number {
+	if (!Text) return 0;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(Container || kdcanvas, Map, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	return DrawTextVisKD(Container || kdcanvas, Map, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3088,11 +3088,11 @@ function DrawTextKD (
 	zIndex:     number = 110,
 	alpha:      number = 1.0,
 	border:     number = undefined
-) {
+): number {
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(kdcanvas, kdpixisprites, "text->" + Text + "," + X + "," + Y, {
+	return DrawTextVisKD(kdcanvas, kdpixisprites, "text->" + Text + "," + X + "," + Y, {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3114,8 +3114,8 @@ let KDAllowText = true;
 /**
  * @returns  True if it worked
  */
-function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): boolean {
-	if (!KDAllowText) return;
+function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): number {
+	if (!KDAllowText) return 0;
 	let sprite: PIXIText = Map.get(id);
 	let same = true;
 	let par = kdprimitiveparams.get(id);
@@ -3180,9 +3180,9 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
-		return true;
+		return sprite.width;
 	}
-	return false;
+	return 0;
 }
 
 /**

@@ -1524,7 +1524,9 @@ function KinkyDungeonPickAttempt(): boolean {
 	let armsBound = KinkyDungeonIsArmsBound();
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
-	if (armsBound) escapeChance = Math.max(0.0, escapeChance - 0.25);
+	if (armsBound) {
+		escapeChance = Math.max(0.0, escapeChance - 0.25);
+	}
 	if (handsBound && strict < 0.5) escapeChance = Math.max(0, escapeChance - 0.5);
 	else if (strict) escapeChance = Math.max(0, escapeChance - strict);
 
@@ -1803,9 +1805,12 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	if (!data.restraint.struggleProgress) data.restraint.struggleProgress = 0;
 	if (!data.restraint.unlockProgress) data.restraint.unlockProgress = 0;
 	if (!data.restraint.cutProgress) data.restraint.cutProgress = 0;
+	data.lowEscapeChance = Math.min(data.escapeChance, data.lowEscapeChance);
 	let EC = KDGetEscapeChance(data.restraint, data.struggleType, data.escapeChance, data.limitChance, true, true, !data.query);
 	data.escapeChance = EC.escapeChance;
 	data.limitChance = EC.limitChance;
+
+	data.lowEscapeChance = Math.min(data.escapeChance, data.lowEscapeChance);
 
 	// Experimental ==> all escape chance increased by 1-progress%, all limit chance increased by the same amount
 
@@ -2042,7 +2047,8 @@ function KDGetStruggleData(data: KDStruggleData): string {
 		data.escapeChance -= data.escapePenalty;
 	}
 
-	if ((data.struggleType == "Struggle") && !data.hasAffinity && data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
+	if ((data.struggleType == "Struggle") && !data.hasAffinity
+		&& data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {
 		let typesuff = "";
 		if (!data.query) {
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/"
@@ -2065,7 +2071,9 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	let removeFail = ((data.struggleType == "Unlock" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Pick") && !(KinkyDungeonHasHelp()) && KDGetEscapeChance(data.restraint, "Remove", undefined, undefined, false, false).escapeChance <= 0;
 
-	if (removeFail) data.escapeChance = 0;
+	if (removeFail) {
+		data.escapeChance = 0;
+	}
 
 	if (data.escapeChance <= 0
 		&& (!KDRestraint(data.restraint).alwaysEscapable
@@ -2133,8 +2141,11 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	}
 
 	// Bound arms make escaping more difficult, and impossible if the chance is already slim
-	if (data.struggleType != "Struggle" && armsBound) data.escapeChance = Math.max(minAmount, data.escapeChance - (data.struggleGroup != "ItemArms" ? 0.18 : 0.09));
-	else if (data.struggleType == "Remove" && !armsBound && !data.handsBound) data.escapeChance = Math.max(minAmount, data.escapeChance + 0.07 * (1 - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax));
+	if (data.struggleType != "Struggle" && armsBound) {
+		data.escapeChance = Math.max(minAmount, data.escapeChance - (data.struggleGroup != "ItemArms" ? 0.18 : 0.09));
+	}
+	else if (data.struggleType == "Remove" && !armsBound && !data.handsBound)
+		data.escapeChance = Math.max(minAmount, data.escapeChance + 0.07 * (1 - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax));
 
 	// Covered hands makes it harder to unlock. If you have the right removal type it makes it harder but wont make it go to 0
 	if (((data.struggleType == "Unlock" && !KinkyDungeonStatsChoice.get("Psychic")) || data.struggleType == "Pick" || data.struggleType == "Remove") && data.handsBound)
@@ -2166,8 +2177,9 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	let possible = data.escapeChance > 0;
 	// Strict bindings make it harder to escape unless you have help or are cutting with affinity
-	if (data.strict && data.struggleType == "Struggle")
+	if (data.strict && data.struggleType == "Struggle") {
 		data.escapeChance = Math.max(0, data.escapeChance - data.strict * 0.9);
+	}
 
 	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.2);
 
@@ -2215,7 +2227,9 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				data.escapeChance *= 0.0;
 			}
 		} else if (data.hasAffinity) data.escapeChance *= 0.5;
-		else data.escapeChance = 0;
+		else {
+			data.escapeChance = 0;
+		}
 
 		// 5.2.6 - removed because limitchance already accounts for this
 		//data.escapeChance = Math.max(0, data.escapeChance - 0.05);
@@ -2226,7 +2240,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	// Blue locks make it harder to escape an item
 
-	if (data.lockType && data.lockType.penalty && data.lockType.penalty[data.struggleType]) data.escapeChance = Math.max(0, data.escapeChance - data.lockType.penalty[data.struggleType]);
+	if (data.lockType && data.lockType.penalty && data.lockType.penalty[data.struggleType]) {
+
+		data.escapeChance = Math.max(0, data.escapeChance - data.lockType.penalty[data.struggleType]);
+	}
 
 
 	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic")) data.escapeChance = Math.max(data.escapeChance, 0.15);
@@ -2235,10 +2252,14 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	let bra = null;
 
 	if (data.struggleGroup == "ItemVulva" || data.struggleGroup == "ItemVulvaPiercings" || data.struggleGroup == "ItemButt") belt = KinkyDungeonGetRestraintItem("ItemPelvis");
-	if (belt && KDRestraint(belt) && KDRestraint(belt).chastity) data.escapeChance = 0.0;
+	if (belt && KDRestraint(belt) && KDRestraint(belt).chastity) {
+		data.escapeChance = 0.0;
+	}
 
 	if (data.struggleGroup == "ItemNipples" || data.struggleGroup == "ItemNipplesPiercings") bra = KinkyDungeonGetRestraintItem("ItemBreast");
-	if (bra && KDRestraint(bra) && KDRestraint(bra).chastitybra) data.escapeChance = 0.0;
+	if (bra && KDRestraint(bra) && KDRestraint(bra).chastitybra) {
+		data.escapeChance = 0.0;
+	}
 
 	if (!data.query) {
 		KinkyDungeonSetFlag(data.struggleType, 1);
@@ -2408,6 +2429,8 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 	let limitChance = (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
 		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : KDGetBaseLimitChance(StruggleType));
 
+
+
 	let speedmult = (KDRestraint(restraint).speedMult != undefined && KDRestraint(restraint).speedMult[StruggleType] != undefined) ? KDRestraint(restraint).speedMult[StruggleType] :
 		1;
 
@@ -2462,6 +2485,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		struggleType: StruggleType,
 		struggleGroup: struggleGroup,
 		escapeChance: restraintEscapeChancePre,
+		lowEscapeChance: restraintEscapeChancePre,
 		origEscapeChance: restraintEscapeChancePre,
 		origLimitChance: restraintLimitChancePre,
 		limitChance: limitChance,
@@ -2679,11 +2703,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 						- KinkyDungeonGetBuffedStat(KinkyDungeonPlayerEntity, "FastStruggle"));
 				if (KinkyDungeonStatsChoice.get("FranticStruggle")) data.cost *= 1.5;
 
-				if (maxLimit >= 1 && ((StruggleType == "Cut" && progress >= 1 - data.escapeChance)
-						|| (StruggleType == "Pick" && restraint.pickProgress >= 1 - data.escapeChance)
-						|| (StruggleType == "Unlock" && restraint.unlockProgress >= 1 - data.escapeChance)
-						|| (StruggleType == "Remove" && progress >= 1 - data.escapeChance)
-						|| (progress >= 1 - data.escapeChance))
+				if (maxLimit >= 1 && ((StruggleType == "Cut" && progress >= 1 - data.escapeChance/Math.max(1, data.struggleTime))
+						|| (StruggleType == "Pick" && restraint.pickProgress >= 1 - data.escapeChance/Math.max(1, data.struggleTime))
+						|| (StruggleType == "Unlock" && restraint.unlockProgress >= 1 - data.escapeChance/Math.max(1, data.struggleTime))
+						|| (StruggleType == "Remove" && progress >= 1 - data.escapeChance/Math.max(1, data.struggleTime))
+						|| (progress >= 1 - data.escapeChance/Math.max(1, data.struggleTime)))
 					&& !(StruggleType == "Pick" && data.lockType && !data.lockType.canPick(data))) {
 					Pass = "Success";
 					if (StruggleType == "Unlock") {
@@ -6535,6 +6559,15 @@ function KDMaxCutDepth(threshold: number, cutBonus: number, origEscapeChance: nu
 		2.0 * (0.25 + cutBonus + origEscapeChance -
 			Math.max(0, origLimitChance)
 		))));
+}
+
+
+function KDMaxStrugglePct(threshold: number, escapeChance: number, limitChance: number): number {
+	if (limitChance > escapeChance) {
+		return Math.min(threshold, 0.9*(escapeChance / limitChance));
+	} else if (escapeChance > 0) {
+		return 1.0;
+	} else return 0.0;
 }
 
 

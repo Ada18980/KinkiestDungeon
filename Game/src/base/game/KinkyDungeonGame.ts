@@ -788,7 +788,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 	if (!KDMapData.Traffic || KDMapData.Traffic.length == 0) KDGenerateBaseTraffic();
 	KinkyDungeonGenNavMap();
 
-	KDSetWorldSlot(origx, y);
+	KDSetWorldSlot(x, y);
 
 	KDBuildLairs();
 	KDPlacePlayerBasedOnDirection(direction, KDGameData.ShortcutIndex);

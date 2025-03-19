@@ -1110,7 +1110,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 		79, 79, "", KDBaseWhite, KinkyDungeonRootDirectory + dir + sp + ".png",
 		"", false, KDCollectionSelected != value.id, KDButtonColor, undefined, undefined, {centered: true}
 		)) {
-			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, KDBaseWhite, (value.color && value.color != KDBaseWhite) ? value.color : KDTextGray05, 24);
+			DrawTextFitKD(value.name, MouseX, MouseY - 50, 800, KDBaseWhite,
+				(value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 24);
 		}
 
 		if (drawCallback) drawCallback(value, XX, YY);

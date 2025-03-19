@@ -2143,6 +2143,7 @@ function KDCullSpellChoices() {
 }
 
 let currentDrawnSG = null;
+let currentDrawnSGlayers = [];
 let currentDrawnSGLength = 0;
 
 /**
@@ -3073,6 +3074,7 @@ function KDDrawStruggleGroups() {
 	let i = 0;
 	// Draw the struggle buttons if applicable
 	KinkyDungeonDrawStruggleHover = false;
+	currentDrawnSG = null;
 	if (!KDShowQuickInv() && ((KinkyDungeonDrawStruggle > 0 || MouseIn(0, 0, 500, 1000)) && KinkyDungeonStruggleGroups))
 		for (let sg of KinkyDungeonStruggleGroups) {
 			let ButtonWidth = 48;
@@ -3284,56 +3286,50 @@ function KDDrawStruggleGroups() {
 						O++;
 						//}
 					}
+
 					lastO = O;
 					O = OInit;
 					if (drawn) {
 						DrawTextKD(TextGet("KinkyDungeonItemsUnderneathTotal"), 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150);
 					}
 					O = lastO + 1;
+				} else {
+					if (dynamicList.length == 0) {
+						let d = item;
+						let O = OInit + 0;
+						if ((d.struggleProgress > 0 || d.cutProgress > 0)) {
+							if (d.struggleProgress > 0)
+								FillRectKD(kdcanvas, kdpixisprites, "Hovprogress"+d.id, {
+									Left: 530 + (d.cutProgress ? 5 : 1) + 250*(d.cutProgress || 0),
+									Top: MY + O * lineSize + 1 - 7,
+									Width: Math.max(1, 250 * (d.struggleProgress) - (d.cutProgress ? 4 : 0)),
+									Height: 9,
+									Color: "#aaaaaa",
+									zIndex: 161,
+									alpha: 0.7,
+								});
+							if (d.cutProgress > 0)
+								FillRectKD(kdcanvas, kdpixisprites, "Hovprogresscut"+d.id, {
+									Left: 530 + 1,
+									Top: MY + O * lineSize + 1 - 7,
+									Width: 250 * d.cutProgress,
+									Height: 9,
+									Color: KDBaseRed,
+									zIndex: 162,
+									alpha: 0.7,
+								});
+						}
+					}
 				}
+
 
 				if (!currentDrawnSG) {
 					currentDrawnSG = sg;
+					currentDrawnSGlayers = surfaceItems;
 					currentDrawnSGLength = surfaceItems.length;
 				}
 
-				if (data.extraLines.length > 0) {
-					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
-						DrawTextFitKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, 700,data.extraLineColor[lineIndex] || KDBaseWhite, KDBaseBlack, fontSize, "left", 150);
-						lastO += 1;
-					}
-				}
 
-				if (lastO) lastO += 1;
-				if (item && KDRestraint(item) && KinkyDungeonStrictness(false, KDRestraint(item).Group, item)) {
-					let strictItems = KinkyDungeonGetStrictnessItems(KDRestraint(item).Group, item);
-					let O = lastO + 1;
-					let drawn = false;
-					for (let s of strictItems) {
-						drawn = true;
-						let msg = KDGetItemNameString(s);//TextGet("Restraint" + s);
-						DrawTextKD(msg, 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left");
-						O++;
-					}
-					let lastlastO = O;
-					O = lastO;
-					if (drawn) {
-						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
-					}
-
-					O = lastlastO + 1;
-					lastO = O;
-
-				}
-				if (item.tightness > 0 && !KDGetCurse(item) && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
-					if (!sg.blocked) {
-						let O = lastO;
-						DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
-							TextGet("KDTightness" + (KDRestraint(item)?.tightType || "") + KDTightnessRank(item.tightness))
-						), 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
-					}
-
-				}
 
 				if (!renderedButtons) {
 					renderButtons();
@@ -3365,7 +3361,10 @@ function KDDrawStruggleGroups() {
 						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
 						let a = Math.min(10, Math.max(-10, struggleData.escapeChance
 							- Math.max(0, struggleData.extraLim, struggleData.limitChance)));
-						let b = Math.min(10, Math.max(-10, struggleData.escapeChance));
+						let b = Math.min(10, Math.max(-10,
+							struggleData.escapeChance == 0 ? Math.min(struggleData.lowEscapeChance,
+								struggleData.escapeChance,
+								struggleData.origEscapeChance) : struggleData.escapeChance));
 
 						if (StruggleType == "Cut") {
 							let maxPossible: number;
@@ -3383,6 +3382,25 @@ function KDDrawStruggleGroups() {
 							} else maxPossible = struggleData.escapeChance > 0 ? 1 : 0;
 							a = maxPossible;
 							b = maxPossible;
+						} else if (StruggleType == "Struggle") {
+							let maxPossible: number;
+							let threshold = 0.75;
+							if (struggleData.limitChance > struggleData.escapeChance && struggleData.limitChance > 0) {
+								threshold = Math.min(threshold, 0.9*(struggleData.escapeChance / struggleData.limitChance));
+							} else if (struggleData.limitChance == struggleData.escapeChance || struggleData.limitChance == 0) {
+								threshold = 0;
+							} else threshold = 1;
+
+							if (struggleData.limitChance > 0) {
+								threshold = KDMaxStrugglePct(threshold, struggleData.escapeChance,
+									struggleData.limitChance);
+								// Find the intercept
+								maxPossible = Math.max(0, threshold);
+							} else maxPossible = struggleData.escapeChance > 0 ? 1 : 0;
+							if (threshold > 0) {
+								a = maxPossible;
+								b = maxPossible;
+							}
 						}
 
 						let amnt = (StruggleType != "Struggle") ?
@@ -3401,24 +3419,84 @@ function KDDrawStruggleGroups() {
 							a = Math.max(0, a);
 							if (a == b) {
 								amnt = Math.round(100 * a) + "";
-							} else {
+							} else if (StruggleType == "Struggle") {
 								amnt = Math.round(100 * b)
 									+ " -> "
 									+ Math.round(100 * a);
+							} else {
+								amnt = Math.round(100 * a)
+									+ " -> "
+									+ Math.round(100 * b);
 							}
 
 						} else if (a < 0 && b == 0) {
 							amnt = Math.round(100 * a) + "";
 						}
-						DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
+						let xlen = DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
 							amnt
 						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
-						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
+						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize,
+						"left", 150);
+						if (!KinkyDungeonHasStamina(-struggleData.cost)) {
+							DrawTextKD(TextGet("KDNotEnoughStamStruggle")
+							.replace("${Current}", "" + Math.round(KinkyDungeonStatStamina * 10))
+							.replace("${Need}", "" + Math.round(-struggleData.cost * 10))
+							,
+							570 + xlen, MY + O * lineSize, KDBaseRed, "#333333", fontSize,
+							"left", 150);
+
+						}
+
+						O++;
 
 
 						lastO = O - 1;
 					}
 				}
+
+				if (lastO) lastO += 1;
+
+				if (data.extraLines.length > 0) {
+					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
+						DrawTextFitKD(data.extraLines[lineIndex], 530, MY + lastO * lineSize, 700,data.extraLineColor[lineIndex] || KDBaseWhite, KDBaseBlack, fontSize, "left", 150);
+						lastO += 1;
+					}
+				}
+
+				if (lastO) lastO += 1;
+
+				if (item && KDRestraint(item) && KinkyDungeonStrictness(false, KDRestraint(item).Group, item)) {
+					let strictItems = KinkyDungeonGetStrictnessItems(KDRestraint(item).Group, item);
+					let O = lastO + 1;
+					let drawn = false;
+					for (let s of strictItems) {
+						drawn = true;
+						let msg = KDGetItemNameString(s);//TextGet("Restraint" + s);
+						DrawTextKD(msg, 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left");
+						O++;
+					}
+					let lastlastO = O;
+					O = lastO;
+					if (drawn) {
+						DrawTextKD(TextGet("KinkyDungeonItemsStrictness"), 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
+					}
+
+					O = lastlastO + 1;
+					lastO = O;
+
+				}
+				if (item.tightness > 0 && !KDGetCurse(item) && (KDRestraint(item).escapeChance?.Struggle < 1 || KDRestraint(item).escapeChance?.Remove < 1)) {
+					if (!sg.blocked) {
+						let O = lastO;
+						DrawTextKD(TextGet("KDItemsTightness").replace("TTT",
+							TextGet("KDTightness" + (KDRestraint(item)?.tightType || "") + KDTightnessRank(item.tightness))
+						), 530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
+					}
+
+				}
+
+
+
 
 
 

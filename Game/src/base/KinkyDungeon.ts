@@ -3814,6 +3814,8 @@ function KDMouseWheel (event: WheelEvent): void {
 	} else return;
 
 	if (KDFunctionCycleTabScroll(event.deltaY)) return;
+	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
+
 	if (KDFunctionOptionsScroll(event.deltaY)) return;
 	if (KDFunctionCollectionScroll(event.deltaY)) return;
 	if (KDFunctionFacilitiesScroll(event.deltaY)) return;
@@ -3825,7 +3827,6 @@ function KDMouseWheel (event: WheelEvent): void {
 	if (KDFunctionMagicSpellPageScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionInventoryScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionMsgScroll(event.deltaY)) return;
-	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
 	if (KDFunctionShopScroll(event.deltaY)) return;
 	if (KDFunctionSpellPageScroll(event.deltaY || event.deltaX)) return;
 	if (KDFunctionJourneyMapScroll(event.deltaY || event.deltaX)) return;
@@ -3852,6 +3853,7 @@ function KDFunctionCycleTabScroll(amount: number): boolean {
 	}
 	return false;
 }
+
 function KDFunctionOptionsScroll(amount: number): boolean {
 	if (KinkyDungeonState == "Toggles") {
 		let index = KDToggleGroups.indexOf(KDToggleTab);
@@ -3995,7 +3997,8 @@ function KDFunctionMsgScroll(amount: number): boolean {
 	return false;
 }
 function KDFunctionRestraintIndexScroll(amount: number): boolean {
-	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && KinkyDungeonDrawStruggleHover && currentDrawnSG && currentDrawnSGLength) {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game"
+		&& KinkyDungeonDrawStruggleHover && currentDrawnSG && currentDrawnSGLength) {
 		if (amount > 0) {
 			if ((KDStruggleGroupLinkIndex[currentDrawnSG.group] < currentDrawnSGLength - 1)) KDStruggleGroupLinkIndex[currentDrawnSG.group] += 1;
 		} else {

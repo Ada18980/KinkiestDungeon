@@ -994,6 +994,7 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 								struggleType: "Unlock",
 								struggleGroup: struggleGroup,
 								escapeChance: 0,
+								lowEscapeChance: 0,
 								origEscapeChance: 0,
 								origLimitChance: 0.12,
 								limitChance: 0,

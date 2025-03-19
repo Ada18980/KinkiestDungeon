@@ -30246,10 +30246,10 @@ RestraintWardenWristLinkDesc2,"An intense, albeit temporary punishment for break
 
 
 KDItemDifficulty,ESCP Difficulty: AMNT
-KDItemStruggleStruggle,ESCP Power: AMNT
+KDItemStruggleStruggle,Max ESCP: AMNT%
 KDItemStruggleRemove,ESCP Power: AMNT
-KDItemStrugglePick,ESCP Ability: AMNT
-KDItemStruggleUnlock,ESCP Ability: AMNT
+KDItemStrugglePick,ESCP Power: AMNT
+KDItemStruggleUnlock,ESCP Power: AMNT
 KDItemStruggleCut,Max ESCP Depth: AMNT%
 
 KDEscapeStruggle,Struggle
@@ -31797,3 +31797,5 @@ KDTooltipCycleClick,Click to show more info...
 KDTooltipCycleClickNeg,Click to hide info...
 KDTooltipCycleEnter,(${Enter}) to show more...
 KDTooltipCycleEnterNeg,(${Enter}) to hide...
+
+KDNotEnoughStamStruggle,"(Need ${Need} SP, have ${Current})"
