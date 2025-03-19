@@ -3534,9 +3534,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		Model: "SteelChastityBra_Radial",
 		factionFilters: {
+			Lock: {color: "Highlight", override: true},
 			Display: {color: "Highlight", override: false},
 			Lining: {color: "Highlight", override: true},
-			BaseMetal: {color: "LightNeutral", override: true},
+			BaseMetal: {color: "LightNeutral", override: false},
 			Cups: {color: "DarkNeutral", override: true},
 		},
 		/*Filters: {

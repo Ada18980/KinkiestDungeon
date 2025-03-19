@@ -1588,6 +1588,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if (delta > 0 && KDGameData.ManaSlow > 0) KDGameData.ManaSlow -= delta;
 
 
+	let curTurns = KDGameData.KneelTurns;
 
 	let KneelStats = KDGetKneelStats(delta, true);
 	let minKneel = KneelStats.minKneel;
@@ -1604,6 +1605,10 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		}
 
 		stamRegen *= 2;
+	}
+
+	if (curTurns != KDGameData.KneelTurns && KDGameData.KneelTurns <= 0) {
+		KDCancelAutoWait();
 	}
 
 	if (KDGameData.AncientEnergyLevel > 0.01) {
@@ -2405,6 +2410,7 @@ function KDGetKneelStats(delta: number, msg: boolean): KDKneelData {
 	}
 
 	if (KDGameData.KneelTurns > 0 && !KDForcedToGround() && !KDGameData.Crouch && (data.kneelRate < data.baseRate || data.minKneel > 0)) {
+
 		if (KinkyDungeonHasHelp()) {
 			data.kneelRate = data.baseRate;
 			if (data.minKneel > 0) {

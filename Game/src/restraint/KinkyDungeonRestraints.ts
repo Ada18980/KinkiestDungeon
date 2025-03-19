@@ -17,7 +17,7 @@ let KDAngelStruggleBonus = 0.1;
 
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
-let KDWillEscapePenaltyStart = 0.25;
+let KDWillEscapePenaltyStart = 0.2;
 let KDWillEscapePenaltyStartArms = 0.1;
 let KDWillEscapePenaltyEnd = 0.05;
 
@@ -155,7 +155,8 @@ function KDRestraintPowerMult(player: entity, restraint: restraint, augmentedInv
 }
 
 function KDGetWillPenalty(StruggleType: string): number {
-	let perc = KinkyDungeonStatWill/KinkyDungeonStatWillMax;
+	// Is flat
+	let perc = KinkyDungeonStatWill;///KinkyDungeonStatWillMax;
 	let scale = 0;
 	let scalestart = KDWillEscapePenaltyStart;
 	let max = KDWillEscapePenalty;
@@ -2020,7 +2021,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	if (data.struggleType == "Remove" && !data.hasAffinity) minAmount = 0;
 
 
-	if (data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
+	if (data.upfrontWill && data.willEscapePenalty) {
 		data.escapePenalty += data.willEscapePenalty;
 		if (data.escapeChance - data.escapePenalty + data.willEscapePenalty > 0
 			&& data.escapeChance - data.escapePenalty < 0) {
@@ -2278,7 +2279,9 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	if (data.lockType && data.lockType.penalty && data.lockType.penalty[data.struggleType]) {
 
-		data.escapeChance = Math.max(0, data.escapeChance - data.lockType.penalty[data.struggleType]);
+		data.escapeChance = data.escapeChance > 0 ? Math.max(0,
+			data.escapeChance - data.lockType.penalty[data.struggleType])
+			: (data.escapeChance - data.lockType.penalty[data.struggleType]);
 	}
 
 
@@ -2372,7 +2375,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	}
 
 
-	if (!data.upfrontWill && !KinkyDungeonHasWill(0.01, false)) {
+	if (!data.upfrontWill && data.willEscapePenalty) {
 		data.limitChance += data.willEscapePenalty;
 		if (data.escapeChance - data.limitChance + data.willEscapePenalty > 0
 			&& data.escapeChance - data.limitChance < 0) {

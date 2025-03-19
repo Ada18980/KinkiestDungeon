@@ -3334,6 +3334,7 @@ function KDDrawStruggleGroups() {
 				if (!renderedButtons) {
 					renderButtons();
 				}
+				lastO++;
 
 				if (StruggleType && !sg.blocked) {
 					// @ts-ignore
@@ -3344,21 +3345,28 @@ function KDDrawStruggleGroups() {
 						|| (StruggleType == "Pick" && struggleData.lockType && !struggleData.lockType.canPick(struggleData))) {
 						// Nope
 					} else {
-						let O = lastO + 1;
-						DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
+						let O = lastO;
+						let pentext = DrawTextKD(TextGet("KDItemDifficulty").replace("AMNT",
 							Math.max(0,
 								Math.round(100 *
 									(0.01 * (item.tightness || 0)
 									+ 1
 									- struggleData.origEscapeChance + struggleData.escapePenalty
 									+ Math.max(0, struggleData.extraLim, struggleData.limitChance))))
-								+ "" +
-									((struggleData.escapePenalty) ? ` (${struggleData.escapePenalty > 0 ?
-										Math.round(-100 * struggleData.escapePenalty)
-										: "+" + Math.round(-100 * struggleData.escapePenalty)
-									}${struggleData.escapePenalty > 0 ? TextGet("KDPenalty") : TextGet("KDBonus")})` : "")
+								+ ""
 						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
-						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150); O++;
+						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150);
+
+						if (struggleData.escapeChance) {
+							DrawTextKD("" +
+										((struggleData.escapePenalty) ? ` (${struggleData.escapePenalty > 0 ?
+											Math.round(-100 * struggleData.escapePenalty)
+											: "+" + Math.round(-100 * struggleData.escapePenalty)
+										}${struggleData.escapePenalty > 0 ? TextGet("KDPenalty") : TextGet("KDBonus")})` : "")
+							.replace("ESCP", TextGet("KDEscape" + StruggleType)),
+							560 + pentext, MY + O * lineSize, struggleData.escapePenalty > 0 ? KDBaseRed : KDBaseMint, "#333333", fontSize, "left", 150);
+						}
+						O++;
 						let a = Math.min(10, Math.max(-10, struggleData.escapeChance
 							- Math.max(0, struggleData.extraLim, struggleData.limitChance)));
 						let b = Math.min(10, Math.max(-10,
@@ -3491,11 +3499,11 @@ function KDDrawStruggleGroups() {
 						O++;
 
 
-						lastO = O - 1;
+						lastO = O;
 					}
 				}
 
-				if (lastO) lastO += 1;
+				//if (lastO) lastO += 1;
 
 				if (data.extraLines.length > 0) {
 					for (let lineIndex = 0; lineIndex < data.extraLines.length; lineIndex++) {
