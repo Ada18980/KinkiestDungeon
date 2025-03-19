@@ -3366,6 +3366,9 @@ function KDDrawStruggleGroups() {
 								struggleData.escapeChance,
 								struggleData.origEscapeChance) : struggleData.escapeChance));
 
+						let a2 = a;
+						let b2 = b;
+
 						if (StruggleType == "Cut") {
 							let maxPossible: number;
 							let threshold = 0.75;
@@ -3382,6 +3385,8 @@ function KDDrawStruggleGroups() {
 							} else maxPossible = struggleData.escapeChance > 0 ? 1 : 0;
 							a = maxPossible;
 							b = maxPossible;
+							a2 = maxPossible;
+							b2 = maxPossible;
 						} else if (StruggleType == "Struggle") {
 							let maxPossible: number;
 							let threshold = 0.75;
@@ -3428,13 +3433,46 @@ function KDDrawStruggleGroups() {
 									+ " -> "
 									+ Math.round(100 * b);
 							}
-
 						} else if (a < 0 && b == 0) {
 							amnt = Math.round(100 * a) + "";
 						}
+
+						let amntPerc = "";
+						if (a2 != a || b2 != b) {
+							amntPerc = (StruggleType != "Struggle") ?
+								Math.round(100 * a2)
+								+ " -> "
+								+ Math.round(100 * b2)
+								:
+								Math.round(100 * b2)
+								+ " -> "
+								+ Math.round(100 * a2);
+							if (a2 < 0 && b2 < 0)
+								amntPerc = Math.round(100 * Math.max(a2, b2)) + "";
+							else if (a2 == b2)
+								amntPerc = Math.round(100 * a) + "";
+							else if (a2 < 0 && b2 > 0) {
+								a2 = Math.max(0, a2);
+								if (a2 == b2) {
+									amntPerc = Math.round(100 * a2) + "";
+								} else if (StruggleType == "Struggle") {
+									amntPerc = Math.round(100 * b2)
+										+ " -> "
+										+ Math.round(100 * a2);
+								} else {
+									amntPerc = Math.round(100 * a2)
+										+ " -> "
+										+ Math.round(100 * b2);
+								}
+							} else if (a2 < 0 && b2 == 0) {
+								amntPerc = Math.round(100 * a2) + "";
+							}
+						}
+						let extraInfo = KDToggles.ShowExtraStruggle ? ` (${amntPerc})` : "";
 						let xlen = DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
 							amnt
-						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
+						).replace("ESCP", TextGet("KDEscape" + StruggleType))
+						+ extraInfo,
 						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize,
 						"left", 150);
 						if (!KinkyDungeonHasStamina(-struggleData.cost)) {

@@ -30251,6 +30251,7 @@ KDItemStruggleRemove,ESCP Power: AMNT
 KDItemStrugglePick,ESCP Power: AMNT
 KDItemStruggleUnlock,ESCP Power: AMNT
 KDItemStruggleCut,Max ESCP Depth: AMNT%
+KDToggleShowExtraStruggle,Show extra struggle info
 
 KDEscapeStruggle,Struggle
 KDEscapeRemove,Remove

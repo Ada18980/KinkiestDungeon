@@ -296,9 +296,11 @@ let KDToggles = {
 	FastMoveDoors: true,
 	ExtraTooltipHeight: false,
 	ExtraTooltipCycle: true,
+	ShowExtraStruggle: false,
 };
 
 let KDToggleCategories = {
+	ShowExtraStruggle: "UI",
 	ExtraTooltipHeight: "UI",
 	ExtraTooltipCycle: "UI",
 	FastMovePassable: "UI",
