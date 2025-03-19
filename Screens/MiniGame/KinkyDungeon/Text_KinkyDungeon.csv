@@ -6206,7 +6206,7 @@ KinkyDungeonSpellCastHailstorm,You conjure a flurry of frost!
 KinkyDungeonSpellTargetHailstorm,Choose target AoE location
 
 KinkyDungeonSpellRainstorm,Raincloud
-KinkyDungeonSpellDescriptionRainstorm,"After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt acid damage to enemies within."
+KinkyDungeonSpellDescriptionRainstorm,"After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt soap damage to enemies within."
 KinkyDungeonSpellCastRainstorm,You create a stormy cloud!
 KinkyDungeonSpellTargetRainstorm,Choose target AoE location
 

@@ -2158,10 +2158,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	}
 
 	// Bound arms make escaping more difficult, and impossible if the chance is already slim
-	if (data.struggleType != "Struggle" && armsBound) {
+	if (data.escapeChance > minAmount && data.struggleType != "Struggle" && armsBound) {
 		data.escapeChance = Math.max(minAmount, data.escapeChance - (data.struggleGroup != "ItemArms" ? 0.18 : 0.09));
 	}
-	else if (data.struggleType == "Remove" && !armsBound && !data.handsBound)
+	else if (data.escapeChance > minAmount && data.struggleType == "Remove" && !armsBound && !data.handsBound)
 		data.escapeChance = Math.max(minAmount, data.escapeChance + 0.07 * (1 - KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax));
 
 	// Covered hands makes it harder to unlock. If you have the right removal type it makes it harder but wont make it go to 0
@@ -2203,8 +2203,9 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	let possible = data.escapeChance > 0;
 	// Strict bindings make it harder to escape unless you have help or are cutting with affinity
-	if (data.escapeChance > 0 && data.strict && data.struggleType == "Struggle") {
-		data.escapeChance = Math.max(0, data.escapeChance - data.strict * 0.9);
+	if (data.strict && data.struggleType == "Struggle") {
+		data.escapeChance = data.escapeChance > 0 ? Math.max(0, data.escapeChance - data.strict * 0.9)
+			: data.escapeChance - data.strict * 0.9;
 	}
 
 	if (data.struggleType == "Unlock" && KinkyDungeonStatsChoice.get("Psychic"))
