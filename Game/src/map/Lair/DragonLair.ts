@@ -404,7 +404,7 @@ function KDGetDragonLairFurnitureZones(spacingX: number, spacingY: number, minDi
 	let doF = (x, y) => {
 		if (minDist && KDistEuclidean(x - xCenter, y - yCenter) <= minDist) return;
 		let succ = true;
-		for (let p of [{x: -1, y: 0},{x: 1, y: 0},{x: 0, y: -1},{x: 0, y: 1},]) {
+		for (let p of [{x: 0, y: 0},{x: -1, y: 0},{x: 1, y: 0},{x: 0, y: -1},{x: 0, y: 1},]) {
 			if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x + p.x, y + p.y))
 				|| points[(x + p.x) + ',' + (y + p.y)]) {
 				succ = false;

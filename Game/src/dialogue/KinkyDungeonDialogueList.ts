@@ -3391,9 +3391,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					let needed = KDGetNeededMasterworkCount();
 
 					if (count < needed) {
-						KDGameData.CurrentDialogMsg = "MasterworkUnlockFail";
+						KDGameData.CurrentDialogMsg = "AdaMasterworkUnlockFail";
 					} else {
-						KDGameData.CurrentDialogMsg = "MasterworkUnlockSuccess";
+						KDGameData.CurrentDialogMsg = "AdaMasterworkUnlockSuccess";
 						KDRemoveMasterwork(KDGetSpeaker());
 					}
 

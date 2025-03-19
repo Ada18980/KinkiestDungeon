@@ -3408,35 +3408,7 @@ function KDDrawStruggleGroups() {
 							}
 						}
 
-						let amnt = (StruggleType != "Struggle") ?
-							Math.round(100 * a)
-							+ " -> "
-							+ Math.round(100 * b)
-							:
-							Math.round(100 * b)
-							+ " -> "
-							+ Math.round(100 * a);
-						if (a < 0 && b < 0)
-							amnt = Math.round(100 * Math.max(a, b)) + "";
-						else if (a == b)
-							amnt = Math.round(100 * a) + "";
-						else if (a < 0 && b > 0) {
-							a = Math.max(0, a);
-							if (a == b) {
-								amnt = Math.round(100 * a) + "";
-							} else if (StruggleType == "Struggle") {
-								amnt = Math.round(100 * b)
-									+ " -> "
-									+ Math.round(100 * a);
-							} else {
-								amnt = Math.round(100 * a)
-									+ " -> "
-									+ Math.round(100 * b);
-							}
-						} else if (a < 0 && b == 0) {
-							amnt = Math.round(100 * a) + "";
-						}
-
+						// This is to keep the original numbers option
 						let amntPerc = "";
 						if (a2 != a || b2 != b) {
 							amntPerc = (StruggleType != "Struggle") ?
@@ -3468,7 +3440,38 @@ function KDDrawStruggleGroups() {
 								amntPerc = Math.round(100 * a2) + "";
 							}
 						}
-						let extraInfo = KDToggles.ShowExtraStruggle ? ` (${amntPerc})` : "";
+
+						let amnt = (StruggleType != "Struggle") ?
+							Math.round(100 * a)
+							+ " -> "
+							+ Math.round(100 * b)
+							:
+							Math.round(100 * b)
+							+ " -> "
+							+ Math.round(100 * a);
+						if (a < 0 && b < 0)
+							amnt = Math.round(100 * Math.max(a, b)) + "";
+						else if (a == b)
+							amnt = Math.round(100 * a) + "";
+						else if (a < 0 && b > 0) {
+							a = Math.max(0, a);
+							if (a == b) {
+								amnt = Math.round(100 * a) + "";
+							} else if (StruggleType == "Struggle") {
+								amnt = Math.round(100 * b)
+									+ " -> "
+									+ Math.round(100 * a);
+							} else {
+								amnt = Math.round(100 * a)
+									+ " -> "
+									+ Math.round(100 * b);
+							}
+						} else if (a < 0 && b == 0) {
+							amnt = Math.round(100 * a) + "";
+						}
+
+
+						let extraInfo = KDToggles.ShowExtraStruggle && amntPerc ? ` (${amntPerc})` : "";
 						let xlen = DrawTextKD(TextGet("KDItemStruggle" + (StruggleType)).replace("AMNT",
 							amnt
 						).replace("ESCP", TextGet("KDEscape" + StruggleType))

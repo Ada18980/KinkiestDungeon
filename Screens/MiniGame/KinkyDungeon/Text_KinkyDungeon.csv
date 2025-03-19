@@ -142,7 +142,7 @@ KDToggleFastFloaters,Faster Floater Fade
 KDToggleNoDmgFloaters,No Damage Floaters
 KDToggleDynamicArmor,Dynamic Armor (must hide armor)
 KDToggleHideFloatingWeapon,Hide floating weapon display
-KDToggleAutoLoot,Automatically Take All from Chests
+KDToggleAutoloot,Automatically Take All from Chests
 KDHelpless,Helpless!
 KDMissed,Evaded!
 KDBlocked,Blocked!
@@ -31782,8 +31782,8 @@ rAdaMasterworkMasterwork,"(SPEAKER glares at your body)|Ah! My Masterwork set!|I
 
 dAdaMasterwork_MasterworkUnlock,Can you unlock my Masterwork restraints?
 dAdaMasterwork_MasterworkUnlockGag,(Present your masterwork restraints)
-rAdaMasterworkMasterworkUnlockFail,"(SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~"
-rAdaMasterworkMasterworkUnlockSuccess,"(SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~"
+rAdaMasterworkUnlockFail,"(SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~"
+rAdaMasterworkUnlockSuccess,"(SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~"
 
 
 KDSummonLatexKitty,The chest contained an angry latex kitty!
