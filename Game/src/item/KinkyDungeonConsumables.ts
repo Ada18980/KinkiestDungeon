@@ -359,10 +359,11 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 	if (KDGameData.SleepTurns > 0 || KDGameData.SlowMoveTurns > 0) return false;
 	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
 	if (!item) return false;
+	let itemEffect = KDConsumable(item.item).itemEffect;
 
-	if (KDConsumable(item.item).itemEffect) {
+	if (itemEffect) {
 		// Use new itemEffect API
-		let effect = KDItemEffects[KDConsumable(item.item).itemEffect];
+		let effect = KDItemEffects[itemEffect];
 		if (effect.canAttempt(item.item, Quantity, KDPlayer(), target, tx, ty)) {
 
 			let res = effect.onAttempt(item.item, Quantity, KDPlayer(), target, tx, ty);
@@ -380,6 +381,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 								tX: tx,
 								tY: ty,
 								noAggro: false,
+								itemEffect: itemEffect,
 							},
 							time: i,
 							tick: i - 1,

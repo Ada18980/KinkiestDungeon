@@ -100,6 +100,7 @@
         "Game/src/item/KinkyDungeonConsumables.ts",
         "Game/src/item/KinkyDungeonConsumablesList.ts",
         "Game/src/item/KDPotions.ts",
+        "Game/src/item/KDPotionsList.ts",
         "Game/src/item/KinkyDungeonInventory.ts",
         "Game/src/dialogue/KinkyDungeonLore.ts",
         "Game/src/dialogue/KinkyDungeonLoreList.ts",

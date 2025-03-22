@@ -9,64 +9,25 @@ let KDBasicPotionFields = {
 		return KDAttemptPotion(inv, quantity, user, target, tx, ty);}
 }
 
-let KDPotionEffects: Record<string, ItemEffect> = {
-	PotionStrength: {
-		name: "Strength", ...KDBasicPotionFields,
-		delayedTags: ["Action", "Remove", "Restrain"],
-		components: [], range: 1.5,
-		onUse: function (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number): ItemEffectResult {
-			return KDPotionOnUse(inv, quantity, user, target, tx, ty,
-				(inv, quantity, user, target, tx, ty) => {
-					// buff player strength
-
-					KinkyDungeonSendActionMessage(7, TextGet("KDUseSelf_StrengthPotion"),
-					KDBaseMint, 2);
-
-
-					return { success: true, consumed: quantity, time: 1, componentfailure: "", miscast: false,
-						affected: [target],
-					};
-				},
-				(inv, quantity, user, target, tx, ty) => {
-					// buff NPC strength if possible
-					if (target.Enemy?.attack?.includes("Melee")) {
-
-
-
-						KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_StrengthPotion")
-							.replace("${Target}", KDEnemyName(target)),
-							KDBaseMint, 2);
-						return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
-							affected: [target],
-						};
-					} else {
-						KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_StrengthPotion"),
-						KDBaseOrange, 1);
-						return {success: false, consumed: 0, time: 0, componentfailure: "", miscast: false, affected: []};
-					}
-				}
-			)
-		},
-	}
+interface PotionEffect {
+	playerEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
+	entityEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 }
 
-for (let entry of Object.entries(KDPotionEffects)) {
-	KDItemEffects[entry[0]] = entry[1];
-}
 
-function KDGetPotionRange(item: item) {
+function KDGetPotionRange(item: item, itemEffect: string) {
 	// TODO
-	return KDItemEffects[KDConsumable(item).itemEffect].range;
+	return KDItemEffects[itemEffect].range;
 }
 
-function KDPotionOnUse(inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number,
+function KDPotionOnUse(itemEffect: string, inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number,
 	playerEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 	entityEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 ): ItemEffectResult {
 
 	let item = KDConsumable(inv);
 			if (!target && !tx && !ty && user == KDPlayer()) {
-				return KDTargetConsumable(item, quantity, KDGetPotionRange(inv));
+				return KDTargetConsumable(item, quantity, KDGetPotionRange(inv, itemEffect));
 			} else {
 				if (!target) target = KinkyDungeonEntityAt(tx, ty);
 				if (target?.player) {

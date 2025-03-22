@@ -104,6 +104,8 @@ interface consumable extends NamedAndTyped {
 	data?: Record<string, string|number>,
 	/** Modular system */
 	itemEffect?: string,
+	/** Whats inside the potion??? */
+	contains?: string,
 	/** Requirement that overrides all other requirements */
 	prereq?: string,
 	/** Requirement in addition to all other requirements such as not being gagged for potions, bound, etc */
@@ -2250,6 +2252,8 @@ interface spell {
 	learnPage?: string[],
 	/** This spell wont trigger an aggro action */
 	noAggro?: boolean;
+	/** itemeffect linked to this cast */
+	itemEffect?: string;
 	/** Whether the spell defaults to the Player faction */
 	allySpell?: boolean;
 	/** This spell wont friendly fire the player */

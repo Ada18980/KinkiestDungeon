@@ -2243,7 +2243,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 
 
-		let effect = KDItemEffects[KDConsumable(item).itemEffect];
+		let effect = KDItemEffects[spell.itemEffect];
 		if (effect.canAttempt(item, spell.quantity, KDPlayer(), en, targetX, targetY)) {
 			let res = effect.onAttempt(item, spell.quantity, KDPlayer(), en, targetX, targetY);
 			if (res.success) {
@@ -2259,7 +2259,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								id: en?.id,
 								tX: targetX,
 								tY: targetY,
-								noAggro: spell.noAggro
+								noAggro: spell.noAggro,
+								itemEffect: spell.itemEffect,
 							},
 							time: i,
 							tick: i - 1,

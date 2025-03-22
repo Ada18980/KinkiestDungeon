@@ -42,9 +42,9 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 	"ConsumableEffect": (action) => {
 		let item = KinkyDungeonGetInventoryItem(action.data.Name);
 		let consumable = KDConsumable(item.item);
-		if (consumable?.itemEffect) {
+		if (action.data.itemEffect) {
 			// Use new itemEffect API
-			let effect = KDItemEffects[KDConsumable(item.item).itemEffect];
+			let effect = KDItemEffects[action.data.itemEffect];
 			let entity = action.data.id ? KinkyDungeonFindID(action.data.id) || KDLookupID(action.data.id) : undefined;
 			let result = effect.onUse(item.item, action.data.Quantity, KDPlayer(),
 				entity,

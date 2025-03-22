@@ -13,7 +13,8 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 	"Flashbang" : {name: "Flashbang", noHands: true, rarity: 4, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "Flashbang"},
 	"PotionInvisibility" : {name: "PotionInvisibility", potion: true, rarity: 3, costMod: -1, shop: true, type: "spell", gagFloor: 0.5, spell: "Invisibility", sfx: "PotionDrink"},
 
-	"PotionStrength" : {name: "PotionStrength", potion: true, itemEffect: "PotionStrength",
+	"PotionStrength" : {name: "PotionStrength", potion: true, itemEffect: "PotionDrink",
+		contains: "Strength",
 		rarity: 2, shop: true, type: "target", gagFloor: 0.5, sfx: "PotionDrink"},
 
 
