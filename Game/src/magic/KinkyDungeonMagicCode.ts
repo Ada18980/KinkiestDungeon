@@ -2233,6 +2233,79 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			return "Cast";
 		} else return "Fail";
 	},
+	useConsumable: (spell, _data, targetX, targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+		let item = KinkyDungeonTargetingSpellItem;
+		let comnsumable = KDConsumable(item);
+		KinkyDungeonTargetingSpellItem = null;
+		let en = KinkyDungeonEntityAt(targetX, targetY);
+		if (_miscast) return "Miscast";
+
+
+
+
+		let effect = KDItemEffects[KDConsumable(item).itemEffect];
+		if (effect.canAttempt(item, spell.quantity, KDPlayer(), en, targetX, targetY)) {
+			let res = effect.onAttempt(item, spell.quantity, KDPlayer(), en, targetX, targetY);
+			if (res.success) {
+				if (res.delayed && res.time > 0) {
+					let maxtime = KDConsumable(item).delay || 2;
+					for (let i = 1; i <= maxtime; i++)
+						KDAddDelayedAction({
+							commit: i == maxtime ? "ConsumableEffect" : undefined,
+							update: i < maxtime ? "ConsumableEffect" : undefined,
+							data: {
+								Name: comnsumable.name,
+								Quantity: res.quantity,
+								id: en?.id,
+								tX: targetX,
+								tY: targetY,
+								noAggro: spell.noAggro
+							},
+							time: i,
+							tick: i - 1,
+							maxtime: maxtime,
+							tags: effect.delayedTags || ["Action", "Remove", "Restrain"],
+						});
+					KDDelayedActionStart();
+					//KDStunTurns(KDConsumable(item.item).delay || 2, true);
+					return "Cast";
+				} else {
+					let result = effect.onUse(item, spell.quantity, KDPlayer(), en, targetX, targetY);
+					if (result.miscast) {
+						effect.onMiscast(result, item, spell.quantity, KDPlayer(), en, targetX, targetY);
+						return "Miscast";
+					} else if (!result.success) {
+						effect.onFailure(result, item, spell.quantity, KDPlayer(), en, targetX, targetY);
+						return "Fail";
+					}
+
+					if (result.consumed > 0) {
+						KDChangeConsumable("entity_" + _entity.id,
+							"item", "cast", comnsumable,
+							-result.consumed)
+
+					}
+					if (result.success) {
+						if (!spell.noAggro)
+							KinkyDungeonAggroAction('item', {});
+					}
+
+					if (result.time) {
+						if (result.time == 1) {
+							KinkyDungeonAdvanceTime(1);
+						} else {
+							KDStunTurns(result.time, true);
+						}
+					}
+					return result.success ? "Cast" : "Fail";
+				}
+			}
+		} else return "Fail";
+
+		return "Fail";
+	},
+
+
 	"weaponAttack": (_spell, _data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		KinkyDungeonTargetingSpellWeapon = null;
 		let en = KinkyDungeonEnemyAt(targetX, targetY);

@@ -1488,7 +1488,7 @@ KinkyDungeonConsumableLessEffective,The potion was less effective due to your ga
 KinkyDungeonInventoryItemElfCrystal,Elven Soap
 KinkyDungeonInventoryItemElfCrystalUse,"You feel the restraints become loose on your skin!"
 KinkyDungeonInventoryItemElfCrystalDesc,"The secret to elven cosmetics and blemish-free skin."
-KinkyDungeonInventoryItemElfCrystalDesc2,"Makes you slippery for 100 turns, boosting all forms of struggling."
+KinkyDungeonInventoryItemElfCrystalDesc2,"Makes you slippery for 100 turns, boosting struggling slightly and removal significantly."
 KinkyDungeonSpellCastSlippery,You feel the restraints become loose on your skin!
 
 
@@ -27641,6 +27641,8 @@ AttackAdventurer_Switch_FighterLock,"The fighter puts you in a hold and manages 
 AttackAdventurer_Switch_FighterDash,"The fighter vanishes and ends up behind you!"
 
 KDCasting,"Casting SPNME"
+KDUsing,"Using ${Item}"
+KDAiming,"Aiming ${Item}"
 KDClimbUpTrapped,"The door suddenly locks behind you!"
 
 KDInventoryActionBondage,"Apply To Target"
@@ -31800,3 +31802,7 @@ KDTooltipCycleEnter,(${Enter}) to show more...
 KDTooltipCycleEnterNeg,(${Enter}) to hide...
 
 KDNotEnoughStamStruggle,"(Need ${Need} SP, have ${Current})"
+
+KDInvalidTarget_StrengthPotion,Target must have muscles.
+KDUseTarget_StrengthPotion,${Target} gains immense physical strength!
+KDUseSelf_StrengthPotion,You gain immense physical strength!

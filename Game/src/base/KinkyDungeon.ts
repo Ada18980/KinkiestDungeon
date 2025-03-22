@@ -1162,6 +1162,9 @@ function KinkyDungeonLoad(): void {
 				KDContextX = MouseX;
 				KDContextY = MouseY;
 				KDContextStage = "";
+			} else {
+				// @ts-ignore
+				KDNonContextActions(CommonIsMobile, document.activeElement?.type == "text" || document.activeElement?.type == "textarea");
 			}
 
 		} else {
@@ -1174,24 +1177,32 @@ function KinkyDungeonLoad(): void {
 				} else KDContextMenu = false;
 			} else KDContextMenu = false;
 
+			let cancel = false;
+
 			if (KDContextMenu) {
 				KDContextX = MouseX;
 				KDContextY = MouseY;
 				KDContextStage = "";
+			} else {
+				cancel = KDNonContextActions(false, false);
 			}
 
-			let code = KinkyDungeonKeySkip[0];
-			if (!KinkyDungeonKeybindingCurrentKey) {
-				KinkyDungeonKeybindingCurrentKey = code;
-				KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
-				// We also press it for 100 msec
-				(async function() {
-					KinkyDungeonGameKey.keyPressed[9] = true;
-					KDConfirmDeleteSave = false;
-					await sleep(100);
-					KinkyDungeonGameKey.keyPressed[9] = false;
-				})();
+			if (!cancel) {
+				let code = KinkyDungeonKeySkip[0];
+				if (!KinkyDungeonKeybindingCurrentKey) {
+					KinkyDungeonKeybindingCurrentKey = code;
+					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime() + 100;
+					// We also press it for 100 msec
+					(async function() {
+						KinkyDungeonGameKey.keyPressed[9] = true;
+						KDConfirmDeleteSave = false;
+						await sleep(100);
+						KinkyDungeonGameKey.keyPressed[9] = false;
+					})();
+				}
 			}
+
+
 		}
 	});
 
@@ -7127,3 +7138,11 @@ let KDCustomOptionsSize = {
 let KDCustomOptionsSpacing = {
 	UI: 60,
 };
+
+function KDNonContextActions(mobile: boolean, textArea: boolean): boolean {
+	if (!textArea && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && MouseIn(0, 0, 500, PIXIHeight)) {
+		KinkyDungeonShowInventory = !KinkyDungeonShowInventory;
+		return true;
+	}
+	return false;
+}

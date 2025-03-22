@@ -1416,7 +1416,15 @@ function KinkyDungeonDrawGame() {
 								zIndex: 100,
 							});
 
-						DrawTextKD(TextGet("KDCasting").replace("SPNME", TextGet("KinkyDungeonSpell" + KinkyDungeonTargetingSpell.name)),
+						let str = "";
+						if (KinkyDungeonTargetingSpellItem) {
+							str = TextGet("KDUsing").replace("${Item}", KDGetItemName(KinkyDungeonTargetingSpellItem));
+						} else if (KinkyDungeonTargetingSpellWeapon) {
+							str = TextGet("KDAiming").replace("${Item}", KDGetItemName(KinkyDungeonTargetingSpellItem));
+						} else {
+							str = TextGet("KDCasting").replace("SPNME", TextGet("KinkyDungeonSpell" + KinkyDungeonTargetingSpell.name));
+						}
+						DrawTextKD(str,
 							(KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY - 0.5)*KinkyDungeonGridSizeDisplay,
 							KDBaseLightBlue
 						);

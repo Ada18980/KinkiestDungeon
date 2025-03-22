@@ -36,6 +36,51 @@ let KDDelayedActionUpdate: Record<string, (action: KDDelayedAction) => void> = {
  * This is processed for delayed actions
  */
 let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
+
+
+
+	"ConsumableEffect": (action) => {
+		let item = KinkyDungeonGetInventoryItem(action.data.Name);
+		let consumable = KDConsumable(item.item);
+		if (consumable?.itemEffect) {
+			// Use new itemEffect API
+			let effect = KDItemEffects[KDConsumable(item.item).itemEffect];
+			let entity = action.data.id ? KinkyDungeonFindID(action.data.id) || KDLookupID(action.data.id) : undefined;
+			let result = effect.onUse(item.item, action.data.Quantity, KDPlayer(),
+				entity,
+				action.data.tX, action.data.tY);
+			if (result.miscast) {
+				effect.onMiscast(result, item.item, action.data.Quantity, KDPlayer(),
+					action.data.id ? KinkyDungeonFindID(action.data.id) || KDLookupID(action.data.id) : undefined,
+					action.data.tX, action.data.tY);
+				return;
+			} else if (!result.success) {
+				effect.onFailure(result, item.item, action.data.Quantity, KDPlayer(),
+					action.data.id ? KinkyDungeonFindID(action.data.id) || KDLookupID(action.data.id) : undefined,
+					action.data.tX, action.data.tY);
+				return;
+			}
+
+			if (result.consumed > 0) {
+				KDChangeConsumable("entity_" + entity?.id,
+					"item", "cast", consumable,
+					-(KinkyDungeonTargetingSpellItem.useQuantity != undefined ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
+
+			}
+			if (result.success) {
+				if (!action.data.noAggro)
+					KinkyDungeonAggroAction('item', {});
+			}
+
+			if (result.time) {
+				if (result.time == 1) {
+					KinkyDungeonAdvanceTime(1);
+				} else {
+					KDStunTurns(result.time, true);
+				}
+			}
+		}
+	},
 	"Consumable": (action) => {
 		if (KinkyDungeonGetInventoryItem(action.data.Name))
 			KinkyDungeonUseConsumable(action.data.Name, action.data.Quantity);

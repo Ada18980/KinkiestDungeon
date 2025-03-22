@@ -4800,7 +4800,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		alwaysDressModel: [
 			{Model: "AnkleLink", inheritFilters: true}
 		],
-		Model: "ShacklesAnkles",
+		accessible: true,
+		Model: "HighSecCuffsAnkles",
 		Filters: {
 			BaseMetal: {"gamma":1,"saturation":1,"contrast":1,"brightness":1.9500000000000002,"red":1,"green":1,"blue":1,"alpha":1},
 		},
@@ -7597,7 +7598,8 @@ KDAddCuffVariants(
 	},
 	{
 	}, {
-		Cuff: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.4666666666666667,"red":1.6666666666666665,"green":1.25,"blue":1,"alpha":1},
+		Cuff: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":1.25,"red":1.6666666666666665,"green":1.3333333333333333,"blue":1.0833333333333335,"alpha":1},
+		Band: {"gamma":1.3,"saturation":1,"contrast":1.2166666666666668,"brightness":0.3,"red":1.6666666666666665,"green":1.3333333333333333,"blue":0.6333333333333334,"alpha":1},
 	}, 6, false,
 	{
 		"ArmCuffs": "LeatherCuffs",

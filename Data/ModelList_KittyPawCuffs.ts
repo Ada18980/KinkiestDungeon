@@ -14,9 +14,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesWristLeft", "Lock", "", "Lock", 0.5),
+		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff", 1),
+		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 1.1),
+		...GetModelLayers("ShacklesWristLeft", "Lock", "", "Lock", 1.15),
 	])
 });
 AddModel({
@@ -27,9 +27,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesWristRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesWristRight", "Lock", "", "Lock", 0.5),
+		...GetModelLayers("ShacklesWristRight", "", "", "Cuff", 1),
+		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 1.1),
+		...GetModelLayers("ShacklesWristRight", "Lock", "", "Lock", 1.15),
 	])
 });
 
@@ -56,7 +56,7 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft"],
 	Layers: ToLayerMap([
-		{ Name: "ElbowLeft", Layer: "BindElbowLeft", Pri: 1,
+		{ Name: "ElbowLeft", Layer: "BindElbowLeft", Pri: 2,
 			Poses: ToMap([...ARMPOSES]),
 			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -67,7 +67,7 @@ AddModel({
 			HidePoses: ToMap(["EncaseArmLeft"]),
 		},
 
-		{ Name: "BandElbowLeft", Layer: "BindElbowLeft", Pri: 1.4,
+		{ Name: "BandElbowLeft", Layer: "BindElbowLeft", Pri: 2.4,
 			Poses: ToMap([...ARMPOSES]),
 			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -77,7 +77,7 @@ AddModel({
 			NoOverride: true,
 		},
 
-		{ Name: "LockElbowLeft", Layer: "BindElbowLeft", Pri: 1.5,
+		{ Name: "LockElbowLeft", Layer: "BindElbowLeft", Pri: 2.5,
 			Poses: ToMap([...ARMPOSES]),
 			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -97,7 +97,7 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowRight"],
 	Layers: ToLayerMap([
-		{ Name: "ElbowRight", Layer: "BindElbowRight", Pri: 1,
+		{ Name: "ElbowRight", Layer: "BindElbowRight", Pri: 2,
 			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
 			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -108,7 +108,7 @@ AddModel({
 			HidePoses: ToMap(["EncaseArmRight"]),
 		},
 
-		{ Name: "BandElbowRight", Layer: "BindElbowRight", Pri: 1.4,
+		{ Name: "BandElbowRight", Layer: "BindElbowRight", Pri: 2.4,
 			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
 			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -118,7 +118,7 @@ AddModel({
 			NoOverride: true,
 		},
 
-		{ Name: "LockElbowRight", Layer: "BindElbowRight", Pri: 1.5,
+		{ Name: "LockElbowRight", Layer: "BindElbowRight", Pri: 2.5,
 			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
 			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -165,9 +165,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesAnklesLeft", "Lock", "", "Lock", 0.5),
+		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff", 1),
+		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 1.1),
+		...GetModelLayers("ShacklesAnklesLeft", "Lock", "", "Lock", 1.15),
 	])
 });
 
@@ -179,9 +179,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesAnklesRight", "Lock", "", "Lock", 0.5),
+		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff", 1),
+		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 1.1),
+		...GetModelLayers("ShacklesAnklesRight", "Lock", "", "Lock", 1.15),
 	])
 });
 
@@ -208,9 +208,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesThighLeft", "Lock", "", "Lock", 0.5),
+		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff", 1),
+		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 1.1),
+		...GetModelLayers("ShacklesThighLeft", "Lock", "", "Lock", 1.15),
 	])
 });
 
@@ -222,9 +222,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesThighRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesThighRight", "Lock", "", "Lock", 0.5),
+		...GetModelLayers("ShacklesThighRight", "", "", "Cuff", 1),
+		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 1.1),
+		...GetModelLayers("ShacklesThighRight", "Lock", "", "Lock", 1.15),
 	])
 });
 

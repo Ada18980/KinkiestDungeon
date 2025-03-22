@@ -2263,7 +2263,10 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		}}, // Creates a shroud. Enemies within are hard to hit with melee attacks.
 	{name: "Slippery", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 		buffs: [
-			{id: "Slippery", aura: "#4fd658", type: "BoostStruggle", duration: 100, power: 0.1, player: true, enemies: false, tags: ["struggle"]},
+			{id: "Slippery", aura: "#4fd6a0", type: "BoostStruggle", duration: 100, power: 0.05, player: true, enemies: false, tags: ["struggle"]},
+			{id: "Slippery2", type: "BoostStruggle_Remove", duration: 100, power: 0.2, player: true, enemies: false, tags: ["struggle"]},
+			{id: "Slippery3", type: "BoostStruggle_Unlock", duration: 100, power: 0.05, player: true, enemies: false, tags: ["struggle"]},
+			{id: "Slippery4", type: "BoostStruggle_Pick", duration: 100, power: 0.05, player: true, enemies: false, tags: ["struggle"]},
 		], onhit:"", time:100, power: 0, range: 2, size: 1, damage: ""},
 	{name: "Cutting", sfx: "FireSpell", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, selfTargetOnly: true, level:1, type:"buff", channel: 4,
 		buffs: [
@@ -3270,6 +3273,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{enemySpell: true, name: "CrystalShockBolt", color: KDBaseRed, sfx: "FireSpell", manacost: 3, specialCD: 6, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 8, damage: "soul",
 		size: 3,
+		noHitAlliedPlayer: true,
 		shotgunCount: 1, shotgunDistance: 6, shotgunSpread: 1, shotgunSpeedBonus: 0, meleeOrigin: true,
 		events: [
 			{trigger: "afterBulletHit", type: "CrystalShockBolt", dist: 5},

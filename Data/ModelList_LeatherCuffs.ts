@@ -14,9 +14,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesWristLeft", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesWristLeft", "Hardware", "", "Hardware", 2.1),
 	])
 });
 AddModel({
@@ -27,9 +27,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesWristRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesWristRight", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesWristRight", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesWristRight", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -56,9 +56,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesElbowLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesElbowLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesElbowLeft", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesElbowLeft", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesElbowLeft", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesElbowLeft", "Hardware", "", "Hardware", 2.1),
 	])
 });
 AddModel({
@@ -69,9 +69,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ElbowRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesElbowRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesElbowRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesElbowRight", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesElbowRight", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesElbowRight", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesElbowRight", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -109,9 +109,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesAnklesLeft", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesAnklesLeft", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -123,9 +123,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesAnklesRight", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesAnklesRight", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -152,9 +152,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesThighLeft", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesThighLeft", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -166,9 +166,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesThighRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 0.4),
-		...GetModelLayers("ShacklesThighRight", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("ShacklesThighRight", "", "", "Cuff", 2),
+		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 2.1),
+		...GetModelLayers("ShacklesThighRight", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -193,9 +193,9 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
-		...GetModelLayers("IronCollar", "", "", "Cuff"),
-		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
-		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("IronCollar", "", "", "Cuff", 2),
+		...GetModelLayers("IronCollar", "Band", "", "Band", 2.1),
+		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 2.1),
 	])
 });
 
@@ -207,10 +207,10 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
-		...GetModelLayers("IronCollar", "", "", "Cuff"),
-		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
-		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
-		...GetModelLayers("IronCollar", "Bell", "", "Bell", 0.5, "CollarAcc"),
+		...GetModelLayers("IronCollar", "", "", "Cuff", 2),
+		...GetModelLayers("IronCollar", "Band", "", "Band", 2.1),
+		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 2.1),
+		...GetModelLayers("IronCollar", "Bell", "", "Bell", 2.5, "CollarAcc"),
 	])
 });
 AddModel({
@@ -221,11 +221,11 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
-		...GetModelLayers("IronCollar", "", "", "Cuff"),
-		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
-		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 0.4),
-		...GetModelLayers("IronCollar", "BowBell", "", "Bell", 0.6, "CollarAcc"),
-		...GetModelLayers("IronCollar", "Bow", "", "Bow", 0.5, "CollarAcc"),
+		...GetModelLayers("IronCollar", "", "", "Cuff", 2),
+		...GetModelLayers("IronCollar", "Band", "", "Band", 2.1),
+		...GetModelLayers("IronCollar", "Hardware", "", "Hardware", 2.1),
+		...GetModelLayers("IronCollar", "BowBell", "", "Bell", 2.6, "CollarAcc"),
+		...GetModelLayers("IronCollar", "Bow", "", "Bow", 2.5, "CollarAcc"),
 	])
 });
 
@@ -236,9 +236,9 @@ AddModel({
 	Restraint: true,
 	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
-		...GetModelLayers("IronBelt", "", "", "Cuff"),
-		...GetModelLayers("IronBelt", "Band", "", "Band", 0.4),
-		...GetModelLayers("IronBelt", "Hardware", "", "Hardware", 0.4),
+		...GetModelLayers("IronBelt", "", "", "Cuff", 2),
+		...GetModelLayers("IronBelt", "Band", "", "Band", 2.1),
+		...GetModelLayers("IronBelt", "Hardware", "", "Hardware", 2.1),
 	])
 });
 

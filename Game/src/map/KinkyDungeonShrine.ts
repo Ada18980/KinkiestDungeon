@@ -461,7 +461,7 @@ function KinkyDungeonDrawShrine() {
 			for (let l of KDMapData.ShopItems) {
 				if (KDMapData.ShopItems[ii]) {
 					let index = ii;
-					let itemsmall = KDGetItemPreview({name: KDMapData.ShopItems[ii].name, type: KDMapData.ShopItems[ii].shoptype});
+					let itemsmall = KDGetItemPreview({name: KDMapData.ShopItems[ii].name, id: 0, type: KDMapData.ShopItems[ii].shoptype});
 					if (itemsmall?.preview)
 						KDDraw(kdcanvas, kdpixisprites, "preview" + ii,
 							itemsmall.preview, KDModalArea_x - 25, YY + 40 - ii * 50 - 3, 50, 50, undefined,
@@ -486,7 +486,7 @@ function KinkyDungeonDrawShrine() {
 				)), KDModalArea_x + 300 + 50, YY + 76 - ii * 50, 130, KDMapData.ShopItems[KinkyDungeonShopIndex].name == l.name ? KDBaseWhite : KDTextGray3, KDTextGray2, 14, undefined, 70);
 				ii++;
 			}
-			let item = KDGetItemPreview({name: KDMapData.ShopItems[KinkyDungeonShopIndex].name, type: KDMapData.ShopItems[KinkyDungeonShopIndex].shoptype});
+			let item = KDGetItemPreview({name: KDMapData.ShopItems[KinkyDungeonShopIndex].name, id: 0, type: KDMapData.ShopItems[KinkyDungeonShopIndex].shoptype});
 			if (item?.preview)
 				KDDraw(kdcanvas, kdpixisprites, "preview",
 					item.preview, KDModalArea_x+650 - 50, YY + 80 - shopHeight, 100, 100, undefined,

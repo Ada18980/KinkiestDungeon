@@ -1858,7 +1858,11 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	//let cancut = false;
 
 	// Bonuses go here. Buffs dont get added to orig escape chance, but
-	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle")) data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle"))
+		data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle");
+
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle_" + data.struggleType))
+		data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle_" + data.struggleType);
 
 
 	// Finger extensions will help if your hands are unbound. Some items cant be removed without them!

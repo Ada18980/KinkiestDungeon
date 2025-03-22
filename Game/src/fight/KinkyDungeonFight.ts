@@ -2942,7 +2942,7 @@ function KDBulletAoECanHitEntity(bullet: KDBullet, enemy: entity): boolean {
 			&& (!bullet.bullet.spell?.noHitAlliedPlayer
 				|| !bullet.bullet.faction
 				|| bullet.bullet.spell.friendlyfire
-				|| (KDFactionFavorable(bullet.bullet.faction, "Player")
+				|| (!KDFactionFavorable(bullet.bullet.faction, "Player")
 					|| !(bullet.bullet.spell.enemySpell || bullet.bullet.spell.allySpell)))
 			&& !(bullet.bullet.faction
 				&& bullet.bullet.spell.noFF

@@ -11,7 +11,14 @@ let KinkyDungeonConsumables: Record<string, consumable> = {
 	"SmokeBomb" : {name: "SmokeBomb", noHands: true, rarity: 2, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "SmokeBomb"},
 	"FlashBomb" : {name: "FlashBomb", noHands: true, rarity: 3, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "FlashBomb"},
 	"Flashbang" : {name: "Flashbang", noHands: true, rarity: 4, costMod: -1, shop: false, noConsumeOnUse: true, type: "targetspell", sfx: "FireSpell", spell: "Flashbang"},
-	"PotionInvisibility" : {name: "PotionInvisibility", potion: true, rarity: 3, costMod: -1, shop: true, type: "spell", spell: "Invisibility", sfx: "PotionDrink"},
+	"PotionInvisibility" : {name: "PotionInvisibility", potion: true, rarity: 3, costMod: -1, shop: true, type: "spell", gagFloor: 0.5, spell: "Invisibility", sfx: "PotionDrink"},
+
+	"PotionStrength" : {name: "PotionStrength", potion: true, itemEffect: "PotionStrength",
+		rarity: 2, shop: true, type: "target", gagFloor: 0.5, sfx: "PotionDrink"},
+
+
+
+
 	"Ectoplasm" : {name: "Ectoplasm", noHands: true, rarity: 1, shop: false, type: "spell", spell: "LesserInvisibility", sfx: "Invis"},
 	"Gunpowder" : {name: "Gunpowder", rarity: 1, shop: true, useQuantity: 1, noConsumeOnUse: true, type: "targetspell", spell: "Gunpowder", sfx: "FireSpell"},
 	"EarthRune" : {name: "EarthRune", rarity: 2, costMod: -1, shop: false, type: "spell", spell: "Earthrune", sfx: "HeavySwing"},
@@ -116,6 +123,12 @@ let KinkyDungneonShopRestraints = {
 };
 
 let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity) => void> = {
+	"target": (c, entity) => {
+		KDTargetConsumable(c, 1,
+			(c.itemEffect && KDItemEffects[c.itemEffect].range != undefined)
+			? KDItemEffects[c.itemEffect].range : c.range);
+		return;
+	},
 	"Snuffer": (_Consumable, entity) => {
 		let tiles = KDGetEffectTiles(entity.x, entity.y);
 		for (let tile of Object.values(tiles)) {
@@ -197,13 +210,8 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			if (Consumable.scaleWithMaxAP) {
 				Distmulti = Math.max(KinkyDungeonStatDistractionMax / KDMaxStatStart);
 			}
-			let gagFloor = Consumable.gagFloor ? Consumable.gagFloor : 0;
-			let gagMult = (Consumable.potion && gagFloor != 1.0) ? Math.max(0, gagFloor + (1 - gagFloor) * (1 - Math.max(0, Math.min(1.0, KinkyDungeonGagTotal(true))))) : 1.0;
-			if (gagMult < 0.999) {
-				KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), KDBaseRed, 2);
-			}
+			let {gagFloor, gagMult} = KDGetGagMult(Consumable, entity, true);
 			if (Consumable.mp_instant != undefined) {
-				//let manaAmt = Math.min(KinkyDungeonStatManaMax, KinkyDungeonStatMana + Consumable.mp_instant * Manamulti * gagMult) - KinkyDungeonStatMana;
 				KDChangeMana(Consumable.name, "restore", "consumable", Consumable.mp_instant * Manamulti * gagMult, false, Consumable.mpool_instant * Manamulti * gagMult, false, true);
 			}
 			if (Consumable.wp_instant) KDChangeWill(Consumable.name, "restore", "consumable", Consumable.wp_instant * Willmulti * gagMult);

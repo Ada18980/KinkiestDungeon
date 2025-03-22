@@ -1036,7 +1036,7 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 		let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
 		if (KDGameData.JourneyTarget && KDGameData.UseJourneyTarget) {
-			data.Xdelta = KDGameData.JourneyTarget.x - KDGameData.JourneyX;
+			//data.Xdelta = KDGameData.JourneyTarget.x - KDGameData.JourneyX;
 			KDGameData.JourneyX = KDGameData.JourneyTarget.x;
 			KDGameData.JourneyY = KDGameData.JourneyTarget.y;
 			KDGameData.JourneyTarget = null;
@@ -1044,7 +1044,7 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 		} else {
 			// TODO When adding open world feature, have this track better...
 			let JourneyTarget = KDGetWorldMapLocation({x: KDCurrentWorldSlot.x, y: MiniGameKinkyDungeonLevel})?.jx || 0;
-			data.Xdelta = JourneyTarget - KDGameData.JourneyX;
+			//data.Xdelta = JourneyTarget - KDGameData.JourneyX;
 			KDGameData.JourneyX = JourneyTarget;
 			KDGameData.JourneyY = MiniGameKinkyDungeonLevel;
 			KDGameData.JourneyTarget = null;

@@ -1,5 +1,50 @@
 "use strict";
 
+interface ItemEffect {
+	name: string,
+	range?: number,
+	components: string[],
+	onUse: (item: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
+	onMiscast: (result: ItemEffectResult, item: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
+	onFailure: (result: ItemEffectResult, item: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
+	canAttempt: (item: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => boolean,
+	onAttempt: (item: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemAttemptResult,
+	delayedTags?: string[],
+}
+
+interface ItemEffectResult {
+	/** Whether it succeeded or not */
+	success: boolean,
+	/** Which component failed */
+	componentfailure: string,
+	/** Potions with a 'miscast' effect have a flag that is true if they miscasted */
+	miscast: boolean,
+	/** list of entities affected by the potion */
+	affected: entity[],
+	/** quantity consumed */
+	consumed: number,
+	/** timetodo */
+	time: number,
+}
+
+interface ItemAttemptResult {
+	/** Whether it succeeded or not */
+	success: boolean,
+	/** Which component failed */
+	componentfailure: string,
+	/** Chance of failure */
+	failureChance: number,
+	/** Chance of miscast on a success */
+	miscastChance: number,
+	/** Can force a miscast on an attempt, for example an item might force potions to fail */
+	miscast: boolean,
+	/** timetodo */
+	time: number,
+	/** delayed action */
+	delayed?: boolean,
+	quantity: number,
+}
+
 /**
  * @param item
  */
@@ -310,11 +355,55 @@ function KinkyDungeonCanDrink(byEnemy?: boolean): boolean {
 	return KinkyDungeonCanTalk(true);
 }
 
-function KinkyDungeonAttemptConsumable(Name: any, Quantity: number): boolean {
+function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: entity = null, tx: number = 0, ty: number = 0): boolean {
 	if (KDGameData.SleepTurns > 0 || KDGameData.SlowMoveTurns > 0) return false;
 	let item = KinkyDungeonGetInventoryItem(Name, Consumable);
 	if (!item) return false;
 
+	if (KDConsumable(item.item).itemEffect) {
+		// Use new itemEffect API
+		let effect = KDItemEffects[KDConsumable(item.item).itemEffect];
+		if (effect.canAttempt(item.item, Quantity, KDPlayer(), target, tx, ty)) {
+
+			let res = effect.onAttempt(item.item, Quantity, KDPlayer(), target, tx, ty);
+			if (res.success) {
+				if (res.delayed && res.time > 0) {
+					let maxtime = KDConsumable(item.item).delay || 2;
+					for (let i = 1; i <= maxtime; i++)
+						KDAddDelayedAction({
+							commit: i == maxtime ? "ConsumableEffect" : undefined,
+							update: i < maxtime ? "ConsumableEffect" : undefined,
+							data: {
+								Name: Name,
+								Quantity: Quantity,
+								id: target?.id,
+								tX: tx,
+								tY: ty,
+								noAggro: false,
+							},
+							time: i,
+							tick: i - 1,
+							maxtime: maxtime,
+							tags: effect.delayedTags || ["Action", "Remove", "Restrain"],
+						});
+					KDDelayedActionStart();
+					//KDStunTurns(KDConsumable(item.item).delay || 2, true);
+				} else {
+					let res2 = effect.onUse(item.item, Quantity, KDPlayer(), target, tx, ty);
+					if (res2.miscast) {
+						effect.onMiscast(res2, item.item, Quantity, KDPlayer(), target, tx, ty);
+					} else if (!res2.success) {
+						effect.onFailure(res2, item.item, Quantity, KDPlayer(), target, tx, ty);
+					}
+					return true;
+				}
+				return false;
+			}
+
+
+
+		} else return false;
+	}
 
 	if (KDConsumable(item.item).prereq && KDConsumablePrereq[KDConsumable(item.item).prereq]) {
 		if (KDConsumablePrereq[KDConsumable(item.item).prereq](item.item, Quantity)) {
@@ -500,4 +589,41 @@ function KDGetCheapestLatexSolvent(tag: string = "latexsolvent"): string {
 	}
 
 	return cheapest;
+}
+
+let KDItemEffects: Record<string, ItemEffect> = {
+
+}
+
+function KDGetGagMult(Consumable: consumable, entity: entity, msg: boolean) {
+	if (entity == KDPlayer()) {
+		let gagFloor = Consumable.gagFloor ? Consumable.gagFloor : 0;
+		let gagMult = (Consumable.potion && gagFloor != 1.0) ? Math.max(0, gagFloor + (1 - gagFloor) * (1 - Math.max(0, Math.min(1.0, KinkyDungeonGagTotal(true))))) : 1.0;
+		if (msg && gagMult < 0.999) {
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonConsumableLessEffective"), KDBaseRed, 2);
+		}
+		return {gagFloor, gagMult};
+	}
+
+	return {gagFloor: undefined, gagMult: 0};
+}
+
+function KDTargetConsumable(Consumable: consumable, Quantity: number, range?: number): ItemEffectResult {
+	KDCloseQuickInv();
+	if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
+	KinkyDungeonTargetingSpell =
+		{name: "useConsumable", components: [], level:1, type:"special", special: "useConsumable", noMiscast: true, manacost: 0,
+			quantity: Quantity,
+			noconsume: true, // needed as the ItemEffect code handles this
+			onhit:"", time:25, power: 0, range: range != undefined ? range : Consumable.range, size: 1, damage: ""};;
+	KinkyDungeonTargetingSpellItem = Consumable;
+	KinkyDungeonTargetingSpellWeapon = null;
+	return {
+		success: true,
+		componentfailure: "",
+		miscast: false,
+		affected: [],
+		consumed: 0,
+		time: 0,
+	};
 }

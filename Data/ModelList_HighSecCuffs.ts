@@ -14,9 +14,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff", 2),
-		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 2.4),
-		...GetModelLayers("ShacklesWristLeft", "Hardware", "", "Hardware", 2.4),
+		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff", 4),
+		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 4.1),
+		...GetModelLayers("ShacklesWristLeft", "Hardware", "", "Hardware", 4.1),
 	])
 });
 AddModel({
@@ -27,9 +27,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesWristRight", "", "", "Cuff", 2),
-		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 2.4),
-		...GetModelLayers("ShacklesWristRight", "Hardware", "", "Hardware", 2.4),
+		...GetModelLayers("ShacklesWristRight", "", "", "Cuff", 4),
+		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 4.1),
+		...GetModelLayers("ShacklesWristRight", "Hardware", "", "Hardware", 4.1),
 	])
 });
 
@@ -67,19 +67,19 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff", 2).map(
+		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff", 4).map(
 			(cuff) => {
 				cuff.AppendPose = {AnkleLink: "Chained"}
 				return cuff;
 			}
 		),
-		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 2.4).map(
+		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 4.1).map(
 			(cuff) => {
 				cuff.AppendPose = {AnkleLink: "Chained"}
 				return cuff;
 			}
 		),
-		...GetModelLayers("ShacklesAnklesLeft", "Hardware", "", "Hardware", 2.4).map(
+		...GetModelLayers("ShacklesAnklesLeft", "Hardware", "", "Hardware", 4.1).map(
 			(cuff) => {
 				cuff.AppendPose = {AnkleLink: "Chained"}
 				return cuff;
@@ -96,19 +96,19 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff", 2).map(
+		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff", 4).map(
 			(cuff) => {
 				cuff.AppendPose = {AnkleLink: "Chained"}
 				return cuff;
 			}
 		),
-		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 2.4).map(
+		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 4.1).map(
 			(cuff) => {
 				cuff.AppendPose = {AnkleLink: "Chained"}
 				return cuff;
 			}
 		),
-		...GetModelLayers("ShacklesAnklesRight", "Hardware", "", "Hardware", 2.4).map(
+		...GetModelLayers("ShacklesAnklesRight", "Hardware", "", "Hardware", 4.1).map(
 			(cuff) => {
 				cuff.AppendPose = {AnkleLink: "Chained"}
 				return cuff;
@@ -145,9 +145,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff", 2),
-		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 2.4),
-		...GetModelLayers("ShacklesThighLeft", "Hardware", "", "Hardware", 2.4),
+		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff", 4),
+		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 4.1),
+		...GetModelLayers("ShacklesThighLeft", "Hardware", "", "Hardware", 4.1),
 	])
 });
 
@@ -159,9 +159,9 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["ThighRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesThighRight", "", "", "Cuff", 2),
-		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 2.4),
-		...GetModelLayers("ShacklesThighRight", "Hardware", "", "Hardware", 2.4),
+		...GetModelLayers("ShacklesThighRight", "", "", "Cuff", 4),
+		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 4.1),
+		...GetModelLayers("ShacklesThighRight", "Hardware", "", "Hardware", 4.1),
 	])
 });
 

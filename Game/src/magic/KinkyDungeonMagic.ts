@@ -1267,7 +1267,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 			if (ret) {
 				if (!enemy && !bullet && player) {
 					if (data.targetingSpellItem) {
-						if (ret == "Cast") {
+						if (ret == "Cast" && !spell.noconsume) {
 							KinkyDungeonChangeConsumable(KinkyDungeonTargetingSpellItem, -(KinkyDungeonTargetingSpellItem.useQuantity != undefined ? KinkyDungeonTargetingSpellItem.useQuantity : 1));
 							if (!spell.noAggro)
 								KinkyDungeonAggroAction('item', {});

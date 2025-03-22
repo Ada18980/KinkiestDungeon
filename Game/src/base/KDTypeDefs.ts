@@ -83,6 +83,7 @@ interface item extends NamedAndTyped {
 
 interface consumable extends NamedAndTyped {
 	name: string,
+	range?: number,
 	/** 1 - (Rarity * sub value) = sub threshold */
 	sub?: number,
 	rarity: number,
@@ -101,6 +102,8 @@ interface consumable extends NamedAndTyped {
 	arousalMode?: boolean,
 	/** Data var */
 	data?: Record<string, string|number>,
+	/** Modular system */
+	itemEffect?: string,
 	/** Requirement that overrides all other requirements */
 	prereq?: string,
 	/** Requirement in addition to all other requirements such as not being gagged for potions, bound, etc */
@@ -2324,6 +2327,10 @@ interface spell {
 	costOnToggle?: boolean;
 	/** Type of the spell */
 	type: string;
+	/** Do not consume consumable */
+	noconsume?: boolean,
+	/** quantity of consumables */
+	quantity?: number,
 	/** Type of effect on hit */
 	onhit?: string;
 	/** Duration of the status effect applied */

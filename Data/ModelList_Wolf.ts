@@ -223,8 +223,8 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleLeft"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff"),
-		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff", 4.5),
+		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 4.6),
 	])
 });
 
@@ -236,8 +236,8 @@ AddModel({
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["AnkleRight"],
 	Layers: ToLayerMap([
-		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff"),
-		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff", 4.5),
+		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 4.6),
 	])
 });
 
