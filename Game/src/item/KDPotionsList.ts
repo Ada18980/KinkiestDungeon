@@ -17,17 +17,24 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 
 				// TODO
 
-				KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_StrengthPotion")
+				KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_" + KDConsumable(inv).contains)
 					.replace("${Target}", KDEnemyName(target)),
 					KDBaseMint, 2);
 				return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
 					affected: [target],
 				};
 			} else {
-				KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_StrengthPotion"),
+				KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_" + KDConsumable(inv).contains),
 				KDBaseOrange, 1);
 				return {success: false, consumed: 0, time: 0, componentfailure: "", miscast: false, affected: []};
 			}
+		},
+		tileEffect: (inv, quantity, user, target, tx, ty) => {
+			KinkyDungeonSendActionMessage(7, TextGet("KDUseTile_" + KDConsumable(inv).contains),
+				KDBaseMint, 2);
+			return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
+				affected: [],
+			};
 		}
 	}
 }
@@ -46,6 +53,10 @@ let KDPotionActions: Record<string, ItemEffect> = {
 				(inv, quantity, user, target, tx, ty) => {
 					// do based on potion type
 					return KDPotionTypes[KDConsumable(inv).contains].entityEffect(inv, quantity, user, target, tx, ty);
+				},
+				(inv, quantity, user, target, tx, ty) => {
+					// do based on potion type
+					return KDPotionTypes[KDConsumable(inv).contains].tileEffect(inv, quantity, user, target, tx, ty);
 				}
 			)
 		},

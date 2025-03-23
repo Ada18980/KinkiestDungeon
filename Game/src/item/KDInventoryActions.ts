@@ -1318,7 +1318,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 
 					if (KDConsumable(item)?.sideEffects) {
 						for (let effect of KDConsumable(item).sideEffects) {
-							KinkyDungeonConsumableEffectNPC(KDConsumable(item), enemy, effect);
+							KinkyDungeonConsumableEffectNPC(KDConsumable(item), enemy, effect, item);
 						}
 					}
 

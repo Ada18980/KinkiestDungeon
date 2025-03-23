@@ -31803,6 +31803,7 @@ KDTooltipCycleEnterNeg,(${Enter}) to hide...
 
 KDNotEnoughStamStruggle,"(Need ${Need} SP, have ${Current})"
 
-KDInvalidTarget_StrengthPotion,Target must have muscles.
-KDUseTarget_StrengthPotion,${Target} gains immense physical strength!
-KDUseSelf_StrengthPotion,You gain immense physical strength!
+KDInvalidTarget_Strength,Target must have muscles.
+KDUseTarget_Strength,${Target} gains immense physical strength!
+KDUseSelf_Strength,You gain immense physical strength!
+KDUseTile_Strength,You dump the potion on the ground and nothing happens.

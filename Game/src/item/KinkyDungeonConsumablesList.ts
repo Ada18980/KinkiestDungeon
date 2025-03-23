@@ -123,11 +123,9 @@ let KinkyDungneonShopRestraints = {
 	"Sunglasses2" : {name: "Sunglasses2", rarity: 2, shop: true, uniqueTags: ["shades"]},
 };
 
-let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity) => void> = {
-	"target": (c, entity) => {
-		KDTargetConsumable(c, 1,
-			(c.itemEffect && KDItemEffects[c.itemEffect].range != undefined)
-			? KDItemEffects[c.itemEffect].range : c.range);
+let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity, inv: item) => void> = {
+	"target": (c, entity, inv) => {
+		KDTargetConsumable(inv, 1, c.itemEffect);
 		return;
 	},
 	"Snuffer": (_Consumable, entity) => {

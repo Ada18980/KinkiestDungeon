@@ -295,11 +295,11 @@ function KDAddConsumable(name: string, Quantity: number, container?: KDContainer
 	return false;
 }
 
-function KinkyDungeonConsumableEffect(Consumable: consumable, type?: string) {
+function KinkyDungeonConsumableEffect(Consumable: consumable, type: string, inv: item) {
 	if (!type) type = Consumable.type;
 
 	if (KDConsumableEffects[type]) {
-		KDConsumableEffects[type](Consumable, KDPlayer());
+		KDConsumableEffects[type](Consumable, KDPlayer(), inv);
 	} else if (type == "spell") {
 		KinkyDungeonCastSpell(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KinkyDungeonFindSpell(Consumable.spell, true), undefined, undefined, undefined);
 		KDStunTurns(1, true);
@@ -330,11 +330,11 @@ function KinkyDungeonConsumableEffect(Consumable: consumable, type?: string) {
 	}
 }
 
-function KinkyDungeonConsumableEffectNPC(Consumable: consumable, entity: entity, type?: string) {
+function KinkyDungeonConsumableEffectNPC(Consumable: consumable, entity: entity, type: string, inv: item) {
 	if (!type) type = Consumable.type;
 
 	if (KDConsumableEffects[type]) {
-		KDConsumableEffects[type](Consumable, entity);
+		KDConsumableEffects[type](Consumable, entity, inv);
 	}
 }
 
@@ -557,10 +557,10 @@ function KinkyDungeonUseConsumable(Name: string, Quantity: number): boolean {
 	if (!item || item.item.quantity < Quantity) return false;
 
 	for (let I = 0; I < Quantity; I++) {
-		KinkyDungeonConsumableEffect(KDConsumable(item.item));
+		KinkyDungeonConsumableEffect(KDConsumable(item.item), "", item.item);
 		if (KDConsumable(item.item).sideEffects) {
 			for (let effect of KDConsumable(item.item).sideEffects) {
-				KinkyDungeonConsumableEffect(KDConsumable(item.item), effect);
+				KinkyDungeonConsumableEffect(KDConsumable(item.item), effect, item.item);
 			}
 		}
 	}
@@ -610,12 +610,15 @@ function KDGetGagMult(Consumable: consumable, entity: entity, msg: boolean) {
 	return {gagFloor: undefined, gagMult: 0};
 }
 
-function KDTargetConsumable(Consumable: consumable, Quantity: number, range?: number): ItemEffectResult {
+function KDTargetConsumable(inv: item, Quantity: number, itemEffect?: string): ItemEffectResult {
+	let Consumable = KDConsumable(inv);
+	if (!Consumable) return;
+	let range = KDGetPotionRange(inv, itemEffect);
 	KDCloseQuickInv();
 	if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
 	KinkyDungeonTargetingSpell =
 		{name: "useConsumable", components: [], level:1, type:"special", special: "useConsumable", noMiscast: true, manacost: 0,
-			quantity: Quantity,
+			quantity: Quantity, itemEffect: itemEffect,
 			noconsume: true, // needed as the ItemEffect code handles this
 			onhit:"", time:25, power: 0, range: range != undefined ? range : Consumable.range, size: 1, damage: ""};;
 	KinkyDungeonTargetingSpellItem = Consumable;

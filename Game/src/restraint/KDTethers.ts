@@ -323,7 +323,10 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 		}
 
 		if (xTo || yTo) {// This means we are trying to move
-			let pathToTether = KinkyDungeonFindPath(xTo, yTo, leash.x, leash.y, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
+			let pathToTether = KinkyDungeonFindPath(xTo, yTo, leash.x, leash.y, false, !Entity.player,
+				 false, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined,
+				 undefined, undefined, undefined,
+				 undefined, undefined, undefined, true);
 			let playerDist = Math.max(pathToTether?.length || 0, KDistChebyshev(xTo-leash.x, yTo-leash.y));
 			// Fallback
 			if (playerDist > tether && KDistEuclidean(xTo-leash.x, yTo-leash.y) > KDistEuclidean(Entity.x-leash.x, Entity.y-leash.y)) {
@@ -349,7 +352,11 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 		}
 		for (let i = 0; i < 10; i++) {
 			// Distance is in pathing units
-			let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, leash.x, leash.y, KDIDHasFlag(Entity.id, "blocked"), !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy);
+			let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, leash.x, leash.y,
+				KDIDHasFlag(Entity.id, "blocked"), !Entity.player, false,
+				KinkyDungeonMovableTilesSmartEnemy,undefined, undefined, undefined,
+				undefined, undefined, undefined,
+				undefined, undefined, undefined, true);
 			let playerDist = pathToTether?.length;
 			// Fallback
 			if (!pathToTether) playerDist = KDistChebyshev(Entity.x-leash.x, Entity.y-leash.y);
@@ -359,7 +366,11 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 					&& pathToTether?.length > 0
 					&& (
 						KDistEuclidean(pathToTether[0].x - leash.x, pathToTether[0].y - leash.y) > -0.01 + KDistEuclidean(Entity.x - leash.x, Entity.y - leash.y)
-						|| KinkyDungeonFindPath(pathToTether[0].x, pathToTether[0].y, leash.x, leash.y, false, !Entity.player, false, KinkyDungeonMovableTilesSmartEnemy)?.length < pathToTether.length
+						|| KinkyDungeonFindPath(pathToTether[0].x, pathToTether[0].y, leash.x, leash.y,
+							false, !Entity.player, false,
+							KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined,
+							undefined, undefined, undefined,
+							undefined, undefined, undefined, true)?.length < pathToTether.length
 					) && KDistChebyshev(pathToTether[0].x - Entity.x, pathToTether[0].y - Entity.y) < 1.5) {
 					slot = pathToTether[0];
 					if (slot && KinkyDungeonEntityAt(slot.x, slot.y) && KDIsImmobile(KinkyDungeonEntityAt(slot.x, slot.y), true)) {

@@ -12,6 +12,7 @@ let KDBasicPotionFields = {
 interface PotionEffect {
 	playerEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 	entityEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
+	tileEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 }
 
 
@@ -23,19 +24,23 @@ function KDGetPotionRange(item: item, itemEffect: string) {
 function KDPotionOnUse(itemEffect: string, inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number,
 	playerEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 	entityEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
+	tileEffect: (inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number) => ItemEffectResult,
 ): ItemEffectResult {
 
 	let item = KDConsumable(inv);
-			if (!target && !tx && !ty && user == KDPlayer()) {
-				return KDTargetConsumable(item, quantity, KDGetPotionRange(inv, itemEffect));
-			} else {
-				if (!target) target = KinkyDungeonEntityAt(tx, ty);
-				if (target?.player) {
-					return playerEffect(inv, quantity, user, target, tx, ty);
-				} else if (target) {
-					return entityEffect(inv, quantity, user, target, tx, ty);
-				}
-			}
+	if (!target && !tx && !ty && user == KDPlayer()) {
+		return KDTargetConsumable(inv, quantity, itemEffect);
+	} else {
+		if (!target) target = KinkyDungeonEntityAt(tx, ty);
+		if (target?.player) {
+			return playerEffect(inv, quantity, user, target, tx, ty);
+		} else if (target) {
+			return entityEffect(inv, quantity, user, target, tx, ty);
+		} else {
+			return tileEffect(inv, quantity, user, target, tx, ty);
+		}
+	}
+
 
 }
 

@@ -91,7 +91,8 @@ function KinkyDungeonFindPath (
 	heuristicOverride?:  (x: number, y: number, xx: number, yy: number) => number,
 	taxicab?:            boolean,
 	ignoreTrafficLaws?:  boolean,
-	allowPassable?:  	 boolean
+	allowPassable?:  	 boolean,
+	ignoreAllWeighting?: boolean,
 ): KDPoint[]
 {
 	let tileShort = Tiles;
@@ -239,7 +240,7 @@ function KinkyDungeonFindPath (
 								costBonus = (KDMapData.Traffic?.length > 0 && KDMapData.Traffic[yy])
 									? costBonus + (KDMapData.Traffic[yy][xx] || 0) : costBonus;
 								costBonus = Math.max(0, costBonus);
-							} else {
+							} else if (!ignoreAllWeighting) {
 								if (tile == "V" && !(MapTile?.Sfty)) costBonus = 3;
 								else if (tile == "N") costBonus = 8;
 								else if (tile == "L") costBonus = 2;
