@@ -695,3 +695,44 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 	}
 	return true;
 }
+
+interface KDInventoryMaxData {
+	item: item,
+	max: number,
+	bonus: number,
+	mult: number,
+	entity: entity,
+}
+
+function KDGetItemBaseMax(item: item): number {
+	switch (item?.type) {
+		case Restraint:
+		case LooseRestraint:
+			return KDRestraint(item)?.armor ? 5 : 100;
+
+		case Consumable:
+			return KDConsumable(item)?.maxInventory ? KDConsumable(item).maxInventory : 10;
+
+		case Weapon:
+		case Outfit:
+			return 1;
+		default: return 1000000;
+	}
+}
+
+function KDMaxInventoryStorage(item: item, entity: entity) {
+	if (entity.player) {
+		let data: KDInventoryMaxData = {
+			item: item,
+			max: KDGetItemBaseMax(item),
+			bonus: 0,
+			mult: 1,
+			entity: entity,
+		}
+		KinkyDungeonSendEvent("calcInvMax", data);
+
+		data.max = Math.max(0, data.max + data.bonus) * data.mult;
+		return data.max;
+	}
+	return 1000000;
+}

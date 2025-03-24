@@ -1720,7 +1720,7 @@ function KDDrawInventoryContainer (
 	return {selected: selected, tooltipitem: tooltipitem};
 }
 
-function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters = []) {
+function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters = [], spacing = 65) {
 
 	let defaultIndex = 0;
 	//if (KinkyDungeonFilterInventory(KinkyDungeonFilters[0], undefined, undefined, undefined, undefined, KDInvFilter).length == 0) {
@@ -1751,7 +1751,7 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 				KinkyDungeonCurrentPageInventory = 0;
 				KinkyDungeonCurrentPageContainer = 0;
 				return true;
-			}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55, yOffset + canvasOffsetY_ui + 115 + II*65, 180, 60,
+			}, true, canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 55, yOffset + canvasOffsetY_ui + 115 + II*spacing, 180, spacing - 10,
 			TextGet("KinkyDungeonCategoryFilter" + KDFilters[I]),
 				(KinkyDungeonCurrentFilter == KDFilters[I]) ? KDBaseWhite : col, "", "");
 

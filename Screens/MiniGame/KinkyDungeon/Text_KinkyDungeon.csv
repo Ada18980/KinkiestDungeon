@@ -30140,7 +30140,16 @@ dElevator_18,(Go to floor 18)
 dElevator_19,(Go to floor 19)
 dElevator_20,(Go to floor 20)
 
+dElevator_CheckStorage,(Check the Automated Storage System)
+
 rOriel,"(The viewscreen depicts a face)|Why hello there adventurer! What brings you?"
+
+
+dOriel_StorageGag,"Mmm mmm?"
+rOrielStorageGag,"(The face smiles)|I can't seem to understand what you're staying.|Maybe you should speak more clearly~"
+dOriel_Storage,"How does the Automated Storage System work?"
+rOrielStorage,"(The face glitches for a single frame)|Ah! I know what you're talking about!|The storage system was used for distributing small scale supplies.|It was more of a convenience feature created by s... someone...|...than an actual logistical tool.|The bulk transport network isn't functioning right now."
+
 
 dOriel_WhoAreYouGag,"Hmmmphgm?"
 rOrielWhoAreYouGag,"(The face giggles)|Sadly my language processing systems aren't that good.|Try removing your gag first?"
@@ -30976,6 +30985,7 @@ KDWardenNoRestraints,You have no restraints in storage. Go to the Summit to depo
 
 KDContainerBack_Facilities,Back to Facilities
 KDContainerBack_Game,Back to Game
+KDContainerBack_Restart,Back to Menu
 
 KDContainerType_Self,Your Inventory
 KDContainerType_Chest,Chest
@@ -30991,8 +31001,11 @@ KDAddAll,Store ALL ITMN
 KDTakeAll,Take ALL ITMN
 KDAddAll1,Store ALL-1 ITMN
 KDTakeAll1,Take ALL-1 ITMN
+KDAddAllExcess,Store Excess ITMN
 KDTakeEverything,Take Everything
+KDTakeEverythingExcess,Refill
 KDDepositEverything,Deposit All
+KDDepositEverythingExcess,Deposit Excess
 
 KDAutoLoot,"Auto-loot found "
 KDNotPickedUp," (not picked up)"

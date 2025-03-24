@@ -133,10 +133,13 @@ function KDDrawDialogue(delta: number): void {
 							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
 								entries[i][1].greyoutCustomTooltip
 								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())
-								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? KDBaseWhite : "#888888", undefined,
+								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? KDBaseWhite : "#888888",
+								!!entries[i][1].image ? KinkyDungeonRootDirectory + entries[i][1].image : undefined,
 							undefined, undefined, undefined,
-							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
+							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined,
+							undefined, !!entries[i][1].image, {
 								zIndex: 122,
+								scaleImage: entries[i][1].image ? true : undefined
 							});
 							if (MouseIn(700, 450 + II * 60, 600, 50)) KDDialogueData.CurrentDialogueIndex = II;
 						}

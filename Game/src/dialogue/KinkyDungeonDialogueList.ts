@@ -1649,6 +1649,20 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				exitDialogue: true,
 				skip: true,
 			},
+			"CheckStorage": {
+				playertext: "Default", response: "Default",
+				exitDialogue: true,
+				image: "UI/Safe.png",
+				clickFunction: () => {
+					KinkyDungeonSetFlag("storageChestOpened", -1);
+					KDUI_ContainerBackScreen = KinkyDungeonDrawState;
+					KinkyDungeonDrawState = "Container",
+					KinkyDungeonCurrentFilter = "All";
+					KDUI_CurrentContainer = "PlayerChest";
+					return false;
+				},
+				skip: true,
+			},
 			...Object.fromEntries(["Summit", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
 				(num) => {
 					/**
@@ -1742,6 +1756,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				gag: true, responseGag: true,
 				prerequisiteFunction: (gagged, _player) => {
 					return (KinkyDungeonFlags.get("dOriel_WhoAreYou") == -1) || gagged;
+				},
+				leadsToStage: "", dontTouchText: true,
+			},
+			"Storage": {
+				playertext: "Default", response: "Default",
+				gag: true, responseGag: true,
+				prerequisiteFunction: (gagged, _player) => {
+					return (KinkyDungeonFlags.get("storageChestOpened") == -1) || gagged;
 				},
 				leadsToStage: "", dontTouchText: true,
 			},

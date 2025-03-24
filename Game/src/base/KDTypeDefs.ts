@@ -84,6 +84,7 @@ interface item extends NamedAndTyped {
 interface consumable extends NamedAndTyped {
 	name: string,
 	range?: number,
+	maxInventory?: number,
 	/** 1 - (Rarity * sub value) = sub threshold */
 	sub?: number,
 	rarity: number,
@@ -2526,6 +2527,7 @@ interface KDPoint {x: number, y: number}
 interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
 
 interface KinkyDialogue {
+	image?: string,
 	/** REPLACETEXT -> Replacement */
 	data?: Record<string, string>;
 	/** Tags for filtering */

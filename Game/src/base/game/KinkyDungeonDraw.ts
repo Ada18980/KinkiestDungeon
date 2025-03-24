@@ -2021,7 +2021,7 @@ function KinkyDungeonDrawGame() {
                         KinkyDungeonTargetingSpellWeapon = null;
                         KinkyDungeonDrawState = "Game"
                         return true;
-                    }, true, 600, 96, 145, 48, "Defeat", KDBaseWhite, "");
+                    }, true, 500, 96, 145, 48, "Defeat", KDBaseWhite, "");
                     DrawButtonKDEx("debugBind", (_bdata) => {
                         console.log("Bind Enemy...");
                         KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugBind",
@@ -2039,31 +2039,43 @@ function KinkyDungeonDrawGame() {
                         KinkyDungeonTargetingSpellWeapon = null;
                         KinkyDungeonDrawState = "Game"
                         return true;
-                    }, true, 755, 96, 145, 48, "Bind", KDBaseWhite, "");
+                    }, true, 655, 96, 145, 48, "Bind", KDBaseWhite, "");
 					DrawButtonKDEx("debugAddKey", (_bdata) => {
 						KDAddConsumable("Pick", 10);
 						KDAddConsumable("RedKey", 10);
 						KDAddConsumable("BlueKey", 10);
 						return true;
-					}, true, 600, 160, 300, 64, "Add keys and lockpicks", KDBaseWhite, "");
+					}, true, 500, 160, 300, 64, "Add keys and lockpicks", KDBaseWhite, "");
 					DrawButtonKDEx("debugAddVision", (_bdata) => {
 						KinkyDungeonSeeAll = !KinkyDungeonSeeAll;
 						return true;
-					}, true, 600, 240, 300, 64, "Toggle OmniVision™", KDBaseWhite, "");
+					}, true, 500, 240, 300, 64, "Toggle OmniVision™", KDBaseWhite, "");
 					DrawButtonKDEx("debugAddSP", (_bdata) => {
 						KinkyDungeonSpellPoints += 10;
 						return true;
-					}, true, 600, 320, 300, 64, "Add 10 spell points", KDBaseWhite, "");
+					}, true, 500, 320, 300, 64, "Add 10 spell points", KDBaseWhite, "");
 					DrawButtonKDEx("debugClearQuickInv", (_bdata) => {
 						KinkyDungeonInventory.get('looserestraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
 						return true;
-					}, true, 600, 400, 300, 64, "Clear loose restraints", KDBaseWhite, "");
+					}, true, 500, 400, 300, 64, "Clear loose restraints", KDBaseWhite, "");
 					DrawButtonKDEx("debugClearPlayerInv", (_bdata) => {
 						KinkyDungeonInventory.get('restraint').clear();
 						KinkyDungeonAdvanceTime(0, true);
 						return true;
-					}, true, 600, 480, 300, 64, "Clear worn restraints", KDBaseWhite, "");
+					}, true, 500, 480, 300, 64, "Clear worn restraints", KDBaseWhite, "");
+
+
+					DrawButtonKDEx("debugVisitStorage", (_bdata) => {
+						KinkyDungeonSetFlag("storageChestOpened", -1);
+						KDUI_ContainerBackScreen = KinkyDungeonDrawState;
+						KinkyDungeonDrawState = "Container",
+						KinkyDungeonCurrentFilter = "All";
+						KDUI_CurrentContainer = "PlayerChest";
+						return true;
+					}, true, 710, 560, 200, 64, "Open Storage", KDBaseWhite, "");
+
+
 					DrawButtonKDEx("debugaddallrest", (_bdata) => {
 						// eslint-disable-next-line no-unused-vars
 						for (let r of KinkyDungeonRestraints) {
@@ -2071,7 +2083,7 @@ function KinkyDungeonDrawGame() {
 								KinkyDungeonInventoryAddLoose(r.name);
 						}
 						return true;
-					}, true, 600, 560, 300, 64, "Add all restraints", KDBaseWhite, "");
+					}, true, 500, 560, 200, 64, "Add all restraints", KDBaseWhite, "");
 					DrawButtonKDEx("debugIncFloor", (_bdata) => {
 						MiniGameKinkyDungeonLevel += 1;
 						KDCurrentWorldSlot.y += 1;
@@ -2079,40 +2091,40 @@ function KinkyDungeonDrawGame() {
 						KinkyDungeonSendEvent("tickFlags", {delta: 1});
 						KDTickSpecialStats();
 						return true;
-					}, true, 600, 640, 300, 64, "Increment Floor", KDBaseWhite, "");
+					}, true, 500, 640, 300, 64, "Increment Floor", KDBaseWhite, "");
 					DrawButtonKDEx("RestSP", (_bdata) => {
                         KDChangeStamina("","","",100)
                         return true;
-                    }, true, 600, 720, 145, 48, "Rest SP", KDBaseWhite, "")
+                    }, true, 500, 720, 145, 48, "Rest SP", KDBaseWhite, "")
                     DrawButtonKDEx("+maxSP", (_bdata) => {
                         KDGameData.StatMaxBonus.SP += 10;
                         return true;
-                    }, true, 755, 720, 145, 48, "+Max SP", "#44ff00", "")
+                    }, true, 655, 720, 145, 48, "+Max SP", "#44ff00", "")
                     DrawButtonKDEx("RestMP", (_bdata) => {
                         KDChangeMana("","","",100)
                         return true;
-                    }, true, 600, 780, 145, 48, "Rest MP", KDBaseWhite, "")
+                    }, true, 500, 780, 145, 48, "Rest MP", KDBaseWhite, "")
                     DrawButtonKDEx("+maxMP", (_bdata) => {
                         KDGameData.StatMaxBonus.MP += 10;
                         return true;
-                    }, true, 755, 780, 145, 48, "+Max MP", KDBaseBaby, "")
+                    }, true, 655, 780, 145, 48, "+Max MP", KDBaseBaby, "")
                     DrawButtonKDEx("RestWP", (_bdata) => {
                         KDChangeWill("","","",100)
                         return true;
-                    }, true, 600, 840, 145, 48, "Rest WP", KDBaseWhite, "")
+                    }, true, 500, 840, 145, 48, "Rest WP", KDBaseWhite, "")
                     DrawButtonKDEx("+maxWP", (_bdata) => {
                         KDGameData.StatMaxBonus.WP += 10;
                         return true;
-                    }, true, 755, 840, 145, 48, "+Max WP", KDBaseRed, "")
+                    }, true, 655, 840, 145, 48, "+Max WP", KDBaseRed, "")
                     DrawButtonKDEx("RestDP", (_bdata) => {
                         KDChangeDistraction("","","",-100)
                         KDChangeDesire("","","",-100,true)
                         return true;
-                    }, true, 600, 900, 145, 48, "Rest DP", KDBaseWhite, "")
+                    }, true, 500, 900, 145, 48, "Rest DP", KDBaseWhite, "")
                     DrawButtonKDEx("+maxDP", (_bdata) => {
                         KDGameData.StatMaxBonus.DP += 10;
                         return true;
-                    }, true, 755, 900, 145, 48, "+Max DP", "#ffaaaa", "")
+                    }, true, 655, 900, 145, 48, "+Max DP", "#ffaaaa", "")
 
 
 
