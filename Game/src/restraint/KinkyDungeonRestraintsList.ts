@@ -3559,7 +3559,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Panties: {"gamma":1,"saturation":2.3000000000000003,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		weight: 0, escapeChance: {"Struggle": 0.05, "Cut": 0.3, "Remove": 0.05, "Pick": 0.35}, escapeMult: 3.0, vibeLocation: "ItemVulva",
+		weight: 0,
+		escapeChance: {"Struggle": 0.05, "Cut": 0.3, "Remove": 0.05, "Pick": 0.35},
+		limitChance: {"Struggle": 0.25, "Remove": 0.1},
+		escapeMult: 3.0, vibeLocation: "ItemVulva",
 		linkedVibeTags: ["teaser"], allowRemote: true, events: [
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 20, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 48, edgeOnly: true, cooldown: {"normal": 120, "tease": 20}, chance: 0.02},
