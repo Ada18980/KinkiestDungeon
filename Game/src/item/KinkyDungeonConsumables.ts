@@ -193,6 +193,8 @@ function KDChangeConsumable(src: string, type: string, trig: string,
 	trig = data.trig;
 	item = data.item;
 
+	let before = KinkyDungeonItemCount(consumable.name);
+
 	if (item) {
 		item.quantity = (item.quantity || 1) + Quantity;
 		if (item.quantity <= 0) {
@@ -201,6 +203,26 @@ function KDChangeConsumable(src: string, type: string, trig: string,
 			else
 				KinkyDungeonInventoryRemove(item);
 		}
+
+		if (KDToggles.InvLimit && !container) {
+			let after = KinkyDungeonItemCount(consumable.name);
+			if (after > before) {
+				let max = KDMaxInventoryStorage(KinkyDungeonInventoryGet(consumable.name), KDPlayer());
+				if (after > max) {
+					KinkyDungeonInventoryGet(consumable.name).quantity = max;
+					KDAddConsumable(consumable.name, after - max, KDGetContainer(
+						"PlayerChest", undefined, undefined, true, KDPlayerChestFilters
+					));
+					KinkyDungeonSendTextMessage(8, TextGet("KDMovedToStorage")
+						.replace("${Item}", KDGetItemNameString(consumable.name))
+						.replace("${Count}", "" + (after - max))
+					, KDBaseWhite, 1);
+				}
+			}
+
+		}
+
+
 		return true;
 	}
 
@@ -210,6 +232,26 @@ function KDChangeConsumable(src: string, type: string, trig: string,
 		} else {
 			KinkyDungeonInventoryAdd({name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
 		}
+
+		if (KDToggles.InvLimit && !container) {
+			let after = KinkyDungeonItemCount(consumable.name);
+			if (after > before) {
+				let max = KDMaxInventoryStorage(KinkyDungeonInventoryGet(consumable.name), KDPlayer());
+				if (after > max) {
+					KinkyDungeonInventoryGet(consumable.name).quantity = max;
+					KDAddConsumable(consumable.name, after - max, KDGetContainer(
+						"PlayerChest", undefined, undefined, true, KDPlayerChestFilters
+					));
+					KinkyDungeonSendTextMessage(8, TextGet("KDMovedToStorage")
+						.replace("${Item}", KDGetItemNameString(consumable.name))
+						.replace("${Count}", "" + (after - max))
+					, KDBaseWhite, 1);
+				}
+			}
+
+		}
+
+
 		return true;
 	}
 
@@ -245,6 +287,8 @@ function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, 
 	container = data.container;
 	item = data.item;
 
+	let before = KinkyDungeonItemCount(consumable.name);
+
 	if (item) {
 		item.quantity = (item.quantity || 1) + Quantity;
 		if (item.quantity <= 0) {
@@ -253,8 +297,29 @@ function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, 
 			else
 				KinkyDungeonInventoryRemove(item);
 		}
+
+		if (KDToggles.InvLimit && !container) {
+			let after = KinkyDungeonItemCount(consumable.name);
+			if (after > before) {
+				let max = KDMaxInventoryStorage(KinkyDungeonInventoryGet(consumable.name), KDPlayer());
+				if (after > max) {
+					KinkyDungeonInventoryGet(consumable.name).quantity = max;
+					KDAddConsumable(consumable.name, after - max, KDGetContainer(
+						"PlayerChest", undefined, undefined, true, KDPlayerChestFilters
+					));
+					KinkyDungeonSendTextMessage(8, TextGet("KDMovedToStorage")
+						.replace("${Item}", KDGetItemNameString(consumable.name))
+						.replace("${Count}", "" + (after - max))
+					, KDBaseWhite, 1);
+				}
+			}
+
+		}
+
 		return true;
 	}
+
+
 
 	if (Quantity >= 0) {
 		if (container) {
@@ -262,6 +327,27 @@ function KinkyDungeonChangeConsumable(consumable: consumable, Quantity: number, 
 		} else {
 			KinkyDungeonInventoryAdd({name: consumable.name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
 		}
+
+
+
+		if (KDToggles.InvLimit && !container) {
+			let after = KinkyDungeonItemCount(consumable.name);
+			if (after > before) {
+				let max = KDMaxInventoryStorage(KinkyDungeonInventoryGet(consumable.name), KDPlayer());
+				if (after > max) {
+					KinkyDungeonInventoryGet(consumable.name).quantity = max;
+					KDAddConsumable(consumable.name, after - max, KDGetContainer(
+						"PlayerChest", undefined, undefined, true, KDPlayerChestFilters
+					));
+					KinkyDungeonSendTextMessage(8, TextGet("KDMovedToStorage")
+						.replace("${Item}", KDGetItemNameString(consumable.name))
+						.replace("${Count}", "" + (after - max))
+					, KDBaseWhite, 1);
+				}
+			}
+
+		}
+
 	}
 
 	return false;
@@ -284,12 +370,33 @@ function KDAddConsumable(name: string, Quantity: number, container?: KDContainer
 		return true;
 	}
 
+	let before = KinkyDungeonItemCount(name);
+
 	if (Quantity > 0) {
 		if (container) {
 			container.items[name] = {name: name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity};
 		} else {
 			KinkyDungeonInventoryAdd({name: name, id: KinkyDungeonGetItemID(), type: Consumable, quantity: Quantity});
 		}
+	}
+
+
+	if (KDToggles.InvLimit && !container) {
+		let after = KinkyDungeonItemCount(name);
+		if (after > before) {
+			let max = KDMaxInventoryStorage(KinkyDungeonInventoryGet(name), KDPlayer());
+			if (after > max) {
+				KinkyDungeonInventoryGet(name).quantity = max;
+				KDAddConsumable(name, after - max, KDGetContainer(
+					"PlayerChest", undefined, undefined, true, KDPlayerChestFilters
+				));
+				KinkyDungeonSendTextMessage(8, TextGet("KDMovedToStorage")
+					.replace("${Item}", KDGetItemNameString(name))
+					.replace("${Count}", "" + (after - max))
+				, KDBaseWhite, 1);
+			}
+		}
+
 	}
 
 	return false;

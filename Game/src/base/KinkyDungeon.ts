@@ -297,6 +297,7 @@ let KDToggles = {
 	ExtraTooltipHeight: false,
 	ExtraTooltipCycle: true,
 	ShowExtraStruggle: false,
+	InvLimit: true,
 };
 
 let KDToggleCategories = {

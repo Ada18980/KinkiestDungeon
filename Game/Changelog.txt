@@ -44,6 +44,9 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.56
 - Elven soap now boosts Remove, Unlock, and Pick by a lot and Struggle by less
 - Can now right click character portrait to show quick inv
+- Inventory limits are now in play (most consumables max 10). Can be toggled off in game options.
+- Added storage to elevator and perk room
+- TODO allow selling from shoppe
 
 5.4.55
 - added 'Show (mostly) full tooltips' toggle

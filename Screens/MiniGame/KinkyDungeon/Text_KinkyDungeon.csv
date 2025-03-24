@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.54"
+KDVersionStr,"5.4.56"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -59,6 +59,7 @@ KDToggleNoOutfitPalette,Use Palette regardless of Outfit
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
 
+KDToggleInvLimit,(Test) Enforce Inventory Limits
 KDToggleIgnoreApplyCharPalette,Don't use character palette
 KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
@@ -31832,3 +31833,5 @@ KinkyDungeonInventoryItemPotionStrength,Strength Potion
 KinkyDungeonInventoryItemPotionStrengthUse,Choose who should drink the potion.
 KinkyDungeonInventoryItemPotionStrengthDesc,"The bottle is bursting with pressure. The cap is glued on, but you feel as if it will pop off at the slightest touch."
 KinkyDungeonInventoryItemPotionStrengthDesc2,"For 50 turns, increase the base damage of physical weapons by 20. Also increases struggle power."
+
+KDMovedToStorage,${Count}x${Item} moved to storage

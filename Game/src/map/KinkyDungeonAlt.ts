@@ -2611,6 +2611,15 @@ function KinkyDungeonCreatePerkRoom(POI: any, VisitedRooms: any[], width: number
 			lightColor: 0xfffafa,
 		});
 	}
+	KinkyDungeonMapSet(VisitedRooms[0].x*2 - 1, VisitedRooms[0].y*2 - 2, '7');
+		KinkyDungeonTilesSet((VisitedRooms[0].x*2 - 1) + ',' + (VisitedRooms[0].y*2 - 2), {
+			Type: "Storage",
+			Container: "PlayerChest",
+			ContainerFilters: KDPlayerChestFilters,
+			Overlay: "Chests/Robot",
+			Light: 2,
+			lightColor: 0xbdcfff,
+		});
 
 	// Place the exit stairs
 	if (perksplaced > 0 && KinkyDungeonStatsChoice.get("perksmandatory"))

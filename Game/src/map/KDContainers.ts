@@ -52,6 +52,17 @@ function KDGetContainer(name: string, point?: KDPoint, location?: WorldCoord, cr
 
 	return KDGameData.Containers[id];
 }
+function KDGetContainerFromTile(name: string, tile: any,
+	point?: KDPoint, location?: WorldCoord, create: boolean = false, filters?: string[]): KDContainer {
+	let id = tile?.Container ? tile.Container :
+		KDGetContainerName(name, point, location);
+	if (create && !KDGameData.Containers[id]) {
+		KDAddContainer(tile?.Container ? tile.Container : name, point, location, !tile?.Container,
+			filters || tile?.ContainerFilters);
+	}
+
+	return KDGameData.Containers[id];
+}
 
 
 function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Outfit], invMsg?: string) {

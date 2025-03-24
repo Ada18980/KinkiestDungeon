@@ -58,6 +58,23 @@ let KDLoadouts: Record<string, KDLoadout> = {
 		chance: 0.5,
 		items: ["PotionMana", "FlashBomb"],
 	},
+	"scientist_IV": {
+		name: "scientist_IV",
+		tags: ["alchemist"],
+		singletag: ["alchemist"],
+		forbidtags: ["submissive", "gagged", "minor"],
+		chance: 0.4,
+		items: ["PotionStamina", "PotionStrength"],
+	},
+	"scientist_V": {
+		name: "scientist_V",
+		tags: ["alchemist"],
+		singletag: ["alchemist"],
+		forbidtags: ["submissive", "gagged"],
+		chance: 0.2,
+		items: ["PotionInvis"],
+	},
+
 	"scientist_High": {
 		name: "scientist_High",
 		tags: ["alchemist"],
@@ -303,6 +320,14 @@ let KDLoadouts: Record<string, KDLoadout> = {
 		forbidtags: [],
 		chance: 0.1,
 		items: ["SmokeBomb", "PotionInvisibility", "DiscPick", "FlashBomb"],
+	},
+	"banditchief": {
+		name: "banditchief",
+		tags: ["bandit"],
+		singletag: ["boss", "miniboss"],
+		forbidtags: [],
+		chance: 0.3,
+		items: ["PotionStrength", "DiscPick", "PotionWill"],
 	},
 	"ninja_II": {
 		name: "ninja_II",

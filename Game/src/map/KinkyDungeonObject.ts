@@ -55,6 +55,23 @@ let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 		KDStartDialog("Oriel", "", true, "");
 		return true;
 	},
+	"Storage": (x, y) => {
+		if (KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5) {
+			// Open container
+			let tile = KinkyDungeonTilesGet(x + "," + y);
+			KDUI_CurrentContainer = KDGetContainerFromTile(tile?.container, tile, {x: x, y: y},
+				KDGetCurrentLocation(),
+				true)?.name;
+			if (KDUI_CurrentContainer) {
+				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
+				KinkyDungeonDrawState = "Container";
+				KinkyDungeonCurrentFilter = "All";
+				KDUI_Container_LastSelected = KDUI_CurrentContainer;
+				return true;
+			}
+		}
+		return false;
+	},
 	"WardenCourier": (_x, _y) => {
 		KDStartDialog("WardenCourier", "", true, "");
 		return true;
@@ -156,13 +173,15 @@ let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => bool
 			KDGameData.InteractTargetX = x;
 			KDGameData.InteractTargetY = y;
 			// Open container
-			KDUI_CurrentContainer = KDGetContainer("Chest", {x: x, y: y}, KDGetCurrentLocation(),
+			let tile = KinkyDungeonTilesGet(x + "," + y);
+			KDUI_CurrentContainer = KDGetContainerFromTile(tile?.container, tile, {x: x, y: y},
+				KDGetCurrentLocation(),
 				true)?.name;
 			if (KDUI_CurrentContainer) {
 				KDUI_ContainerBackScreen = KinkyDungeonDrawState;
 				KinkyDungeonDrawState = "Container";
 				KinkyDungeonCurrentFilter = "All";
-				KDUI_Container_LastSelected = "Chest";
+				KDUI_Container_LastSelected = KDUI_CurrentContainer;
 				return true;
 			}
 		return false;
