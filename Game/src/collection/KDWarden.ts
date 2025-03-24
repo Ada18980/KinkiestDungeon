@@ -194,3 +194,4 @@ function KDUpdateWarden(delta: number) {
 	}
 }
 let KDWardenChestFilters = [Restraint, Outfit, Consumable, Weapon];
+let KDPlayerChestFilters = [Restraint];

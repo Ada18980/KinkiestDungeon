@@ -2974,6 +2974,25 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 
+	"beforePlayerAttack": {
+		"BoostDamage": (e, buff, entity, data) => {
+			if ((!data.bullet || e.bullet) && data.eva && !data.miss && !data.disarm
+				&& data.targetX && data.targetY && data.enemy && KDHostile(data.enemy)) {
+				if (KDCheckPrereq(null, e.prereq, e, data)) {
+					data.buffdmg = Math.max(0, data.buffdmg + e.power);
+				}
+			}
+		},
+	},
+	"calcDisplayDamage": {
+		"BoostDamage": (e, buff, entity, data) => {
+			if (KDCheckPrereq(null, e.prereq, e, data)) {
+				data.buffdmg = Math.max(0, data.buffdmg + e.power);
+			}
+		},
+	},
+
+
 	"duringDistractEnemy": {
 		"PsychicLink": (_e, buff, entity, data) => {
 			if (data.enemy != entity) return;
@@ -3103,6 +3122,18 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			if (buff.duration < 100) {
 				delete buff.infinite;
 				buff.duration = 1;
+			}
+		},
+	},
+
+	"calcEscapePenalty": {
+		"StruggleBonusUpTo": (_e, buff, _entity, data) => {
+			if (data.struggleType == _e.StruggleType) {
+				if (data.escapePenalty > -_e.power) {
+					data.escapePenalty = Math.max(- _e.power,
+						data.escapePenalty - _e.power
+					);
+				}
 			}
 		},
 	},

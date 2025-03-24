@@ -6873,7 +6873,7 @@ KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjur
 
 KinkyDungeonSpellStrength,Super Strength
 KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."
-KinkyDungeonSpellStrengthStruggle,Your body glows with magical energy!
+KinkyDungeonSpellStrengthStruggle,Your muscles glow with magical energy!
 
 KinkyDungeonSpellWillpower,Enhance Will
 KinkyDungeonSpellDescriptionWillpower,"When enabled: Miscast chance is halved"
@@ -30981,6 +30981,7 @@ KDContainerType_Self,Your Inventory
 KDContainerType_Chest,Chest
 KDContainerType_,Chest
 KDContainerType_WardenChest,Warden's Storage
+KDContainerType_PlayerChest,Automated Storage Network
 
 KDAdd1,Store 1 ITMN
 KDTake1,Take 1 ITMN
@@ -30999,6 +31000,8 @@ KDNotPickedUp," (not picked up)"
 KDToggleFlipPlayerAuto,Automatically Flip When Moving
 
 KDWardenNeedSummit,Go to the summit to deposit restraints
+KDPlayerChestNeedSummit,Visit a shrine or your own base to access storage
+
 
 
 KDStamDmgBonus,AMNTx damage when SP is over 50%
@@ -31803,7 +31806,16 @@ KDTooltipCycleEnterNeg,(${Enter}) to hide...
 
 KDNotEnoughStamStruggle,"(Need ${Need} SP, have ${Current})"
 
+
+KDUseTargetRefusePotion,${Target} refuses to take the potion.
+
 KDInvalidTarget_Strength,Target must have muscles.
 KDUseTarget_Strength,${Target} gains immense physical strength!
 KDUseSelf_Strength,You gain immense physical strength!
 KDUseTile_Strength,You dump the potion on the ground and nothing happens.
+KinkyDungeonPotionStrength,You are strong!
+
+KinkyDungeonInventoryItemPotionStrength,Strength Potion
+KinkyDungeonInventoryItemPotionStrengthUse,Choose who should drink the potion.
+KinkyDungeonInventoryItemPotionStrengthDesc,"The bottle is bursting with pressure. The cap is glued on, but you feel as if it will pop off at the slightest touch."
+KinkyDungeonInventoryItemPotionStrengthDesc2,"For 50 turns, increase the base damage of physical weapons by 20. Also increases struggle power."

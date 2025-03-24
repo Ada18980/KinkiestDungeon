@@ -73,8 +73,9 @@ function KDValidateAllFacilities() {
 		}
 	}
 
-	// Create the warden chest if it's not there
+	// Create the special chests if it's not there
 	KDGetContainer("WardenChest", undefined, undefined, true, KDWardenChestFilters);
+	KDGetContainer("PlayerChest", undefined, undefined, true, KDPlayerChestFilters);
 
 }
 

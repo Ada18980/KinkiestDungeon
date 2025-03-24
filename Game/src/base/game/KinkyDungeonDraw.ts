@@ -1420,7 +1420,7 @@ function KinkyDungeonDrawGame() {
 						if (KinkyDungeonTargetingSpellItem) {
 							str = TextGet("KDUsing").replace("${Item}", KDGetItemName(KinkyDungeonTargetingSpellItem));
 						} else if (KinkyDungeonTargetingSpellWeapon) {
-							str = TextGet("KDAiming").replace("${Item}", KDGetItemName(KinkyDungeonTargetingSpellItem));
+							str = TextGet("KDAiming").replace("${Item}", KDGetItemName(KinkyDungeonTargetingSpellWeapon));
 						} else {
 							str = TextGet("KDCasting").replace("SPNME", TextGet("KinkyDungeonSpell" + KinkyDungeonTargetingSpell.name));
 						}

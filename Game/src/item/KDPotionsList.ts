@@ -4,8 +4,16 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 		playerEffect: (inv, quantity, user, target, tx, ty) => {
 			KinkyDungeonSendActionMessage(7, TextGet("KDUseSelf_" + KDConsumable(inv).contains),
 			KDBaseMint, 2);
-
-			// TODO
+			KinkyDungeonApplyBuffToEntity(target,
+				{id: "PotionStrength", aura: "#ff8800", type: "BoostStruggle_Struggle", duration: 50, power: 0.05,
+					events: [
+						{trigger: "beforePlayerAttack", type: "BoostDamage", prereq: "damageType", kind: "melee", power: 2},
+						{trigger: "calcDisplayDamage", type: "BoostDamage", prereq: "damageType", kind: "melee", power: 2},
+						{type: "StruggleBonusUpTo", power: 0.15, StruggleType: "Struggle", trigger: "calcEscapePenalty",
+							msg: "KinkyDungeonSpellStrengthStruggle"}
+					],
+					tags: ["struggle"]},
+			);
 
 			return { success: true, consumed: quantity, time: 1, componentfailure: "", miscast: false,
 				affected: [target],
@@ -15,14 +23,36 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 			// buff NPC strength if possible
 			if (target.Enemy?.attack?.includes("Melee")) {
 
-				// TODO
+				if (KDFactionFavorable(KDGetFaction(user), KDGetFaction(target))
+					|| (user == KDPlayer() && KDGetModifiedOpinionID(target.id) > 0)) {
+						KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_" + KDConsumable(inv).contains)
+						.replace("${Target}", KDEnemyName(target)),
+						KDBaseMint, 2);
+						KinkyDungeonApplyBuffToEntity(target,
+							{id: "PotionStrength", aura: "#ff8800",
+								type: "StrugglePower", duration: 50, power: 0.5,
+								tags: ["struggle"]},
+						);
+						if (KinkyDungeonMeleeDamageTypes.includes(target.Enemy.dmgType || "grope")) {
+							KinkyDungeonApplyBuffToEntity(target,
+								{id: "PotionStrength2",
+									type: "AttackDmg", duration: 50, power: 2.0,
+									tags: ["struggle"]},
+							);
+						}
 
-				KinkyDungeonSendActionMessage(7, TextGet("KDUseTarget_" + KDConsumable(inv).contains)
-					.replace("${Target}", KDEnemyName(target)),
-					KDBaseMint, 2);
-				return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
-					affected: [target],
-				};
+					return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
+						affected: [target],
+					};
+				} else {
+					KinkyDungeonSendActionMessage(7, TextGet("KDUseTargetRefusePotion")
+						.replace("${Target}", KDEnemyName(target)),
+						KDBaseMint, 2);
+
+					return {success: false, consumed: 0, time: 0, componentfailure: "", miscast: false,
+						affected: [],
+					};
+				}
 			} else {
 				KinkyDungeonSendActionMessage(7, TextGet("KDInvalidTarget_" + KDConsumable(inv).contains),
 				KDBaseOrange, 1);
@@ -32,6 +62,10 @@ let KDPotionTypes: Record<string, PotionEffect> = {
 		tileEffect: (inv, quantity, user, target, tx, ty) => {
 			KinkyDungeonSendActionMessage(7, TextGet("KDUseTile_" + KDConsumable(inv).contains),
 				KDBaseMint, 2);
+			KDCreateEffectTile(tx, ty, {
+				name: "Water",
+				duration: 50,
+			}, 0);
 			return {success: true, consumed: 1, time: 1, componentfailure: "", miscast: false,
 				affected: [],
 			};

@@ -53,15 +53,28 @@ function KDCanAttemptPotion(inv: item, quantity: number, user: entity, target: e
 function KDAttemptPotion(inv: item, quantity: number, user: entity, target: entity, tx: number, ty: number
 ): ItemAttemptResult {
 	let item = KDConsumable(inv);
+
+	if (KDStandardConsumableHandsCheck(inv, quantity)) {
+		return {
+			success: true,
+			componentfailure: "",
+			failureChance: 0,
+			miscastChance: 0,
+			miscast: false,
+			time: item.delay != undefined ? item.delay : 2,
+			quantity: quantity,
+			delayed: !!item.delay || !!KinkyDungeonStatsChoice.has("SavourTheTaste"),
+		};
+	}
 	return {
-		success: true,
+		success: false,
 		componentfailure: "",
 		failureChance: 0,
 		miscastChance: 0,
 		miscast: false,
-		time: item.delay != undefined ? item.delay : 2,
-		quantity: quantity,
-		delayed: !!item.delay || !!KinkyDungeonStatsChoice.has("SavourTheTaste"),
+		time: 0,
+		quantity: 0,
+		delayed: false,
 	};
 }
 

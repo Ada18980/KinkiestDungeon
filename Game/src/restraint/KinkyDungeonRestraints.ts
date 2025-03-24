@@ -1864,6 +1864,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle_" + data.struggleType))
 		data.escapePenalty -= KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostStruggle_" + data.struggleType);
 
+	KinkyDungeonSendEvent("calcEscapePenalty", data);
 
 	// Finger extensions will help if your hands are unbound. Some items cant be removed without them!
 	// Mouth counts as a finger extension on your hands if your arms aren't tied

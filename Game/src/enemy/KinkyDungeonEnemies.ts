@@ -1733,7 +1733,7 @@ function KDGetEnemyStruggleMod(enemy: entity, force: boolean, defaultSpeed: bool
 		if (KinkyDungeonGetBuffedStat(enemy.buffs, "Lockdown")) mult *= KinkyDungeonGetBuffedStat(enemy.buffs, "Lockdown");
 	}
 
-	return mult;
+	return mult * KinkyDungeonMultiplicativeStat(-KDEntityBuffedStat(enemy, "StrugglePower"));
 }
 
 /**
