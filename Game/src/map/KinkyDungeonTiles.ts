@@ -1063,7 +1063,8 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 	}
 
 	return {
-		x: KDCurrentWorldSlot.x + data.Xdelta,
+		// TODO
+		x: 0,//KDCurrentWorldSlot.x + data.Xdelta,
 		y: KDCurrentWorldSlot.y + data.AdvanceAmount,
 	};
 }

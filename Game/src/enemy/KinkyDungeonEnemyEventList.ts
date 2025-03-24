@@ -635,6 +635,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				&& (KDGameData.PrisonerState != 'jail' || (!KDHostile(enemy) && !KinkyDungeonPlayerInCell(true)))
 				//&& KDStrictPersonalities.includes(KDJailPersonality(enemy))
 				&& KDEnemyCanTalk(enemy)
+				&& !KinkyDungeonInDanger()
 				&& !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) ?
 				((KDStrictPersonalities.includes(KDJailPersonality(enemy)) || KDJailPersonality(enemy) == "Robot") ? 100 : 10)
 				: 0;
