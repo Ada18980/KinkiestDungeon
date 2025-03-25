@@ -1114,7 +1114,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			//{type: "ElementalEffect", power: 2, damage: "crush", trigger: "playerAttack"},
 			{trigger: "beforePlayerAttack", type: "BoostDamage", prereq: "damageType", kind: "melee", power: 2},
 			{trigger: "calcDisplayDamage", type: "BoostDamage", prereq: "damageType", kind: "melee", power: 2},
-			{type: "ModifyStruggle", mult: 1.5, power: 0.2, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellStrengthStruggle"},
+			{type: "ModifyStruggle", mult: 1.5, power: 0.17, StruggleType: "Struggle", trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellStrengthStruggle"},
 		]},
 		{name: "Ignite", tags: ["fire", "aoe", "dot", "buff"], prerequisite: "ApprenticeFire", sfx: "FireSpell", school: "Elements",
 			manacost: 2, spellPointCost: 1, components: ["Legs"], mustTarget: true, noTargetEnemies: true, exceptionFactions: ["Player", "Rock"], level:1, type:"buff",

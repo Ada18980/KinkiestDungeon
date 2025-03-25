@@ -46,12 +46,12 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Can now right click character portrait to show quick inv
 - Inventory limits are now in play (most consumables max 10). Can be toggled off in game options.
 - Added storage to elevator and perk room
-- TODO allow selling from shoppe
+- allow selling stored items from shoppe
 
 5.4.55
 - added 'Show (mostly) full tooltips' toggle
 - added tutorial message about cycling tooltips
-- fixed bug where Frighter's Break Free and rogue's Hard To Catch were much stronger than intended
+- fixed bug where Fighter's Break Free and rogue's Hard To Catch were much stronger than intended
 - Basic Leash made more 'stretchy'
 
 5.4.54

@@ -6873,7 +6873,7 @@ KinkyDungeonSpellLeatherWhip,Leather Whip
 KinkyDungeonSpellDescriptionLeatherWhip,You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
 
 KinkyDungeonSpellStrength,Super Strength
-KinkyDungeonSpellDescriptionStrength,"When enabled: Struggling is more powerful, and your melee attack damage is increased by +20 if your weapon deals physical damage."
+KinkyDungeonSpellDescriptionStrength,"When enabled: +17 struggle bonus, and your melee attack damage is increased by +20 if your weapon deals physical damage."
 KinkyDungeonSpellStrengthStruggle,Your muscles glow with magical energy!
 
 KinkyDungeonSpellWillpower,Enhance Will
@@ -31835,7 +31835,7 @@ KinkyDungeonPotionStrength,You are strong!
 KinkyDungeonInventoryItemPotionStrength,Strength Potion
 KinkyDungeonInventoryItemPotionStrengthUse,Choose who should drink the potion.
 KinkyDungeonInventoryItemPotionStrengthDesc,"The bottle is bursting with pressure. The cap is glued on, but you feel as if it will pop off at the slightest touch."
-KinkyDungeonInventoryItemPotionStrengthDesc2,"For 50 turns, increase the base damage of physical weapons by 20. Also increases struggle power."
+KinkyDungeonInventoryItemPotionStrengthDesc2,"For 50 turns, increase the base damage of physical weapons by 20. Also increases escape power by 5 and gives a bonus to struggle of up to 15, if bonus is below 15."
 
 KDMovedToStorage,${Count}x${Item} moved to storage
 KDNotEnoughInventorySpace,Not Enough Inventory Space

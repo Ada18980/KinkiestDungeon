@@ -5984,10 +5984,10 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 					KDChangeMana(spell.name, "spell", "struggle", -KinkyDungeonGetManaCost(spell, false, true));
 					KDTriggerSpell(spell, data, false, true);
 				}
-				if (e.mult && data.escapeChance > 0)
-					data.escapeChance *= e.mult;
+				//if (e.mult && data.escapeChance > 0)
+				//	data.escapeChance *= e.mult;
 				if (e.power)
-					data.escapeChance += e.power;
+					data.escapePenalty -= e.power;
 
 				if (!data.query)
 					if (e.msg) {
