@@ -13,7 +13,13 @@
 let KDCutAdditionalLimitChance = 0.05;
 let KDAllyLimitChanceRedMult = 0.5;
 let KDAllyLimitChanceRedFlat = 0.05;
-let KDAngelStruggleBonus = 0.1;
+let KDAngelStruggleBonus = {
+	Struggle: 0.1,
+	Cut: 0.15,
+	Remove: 0.20,
+	Unlock: 0.25,
+	Default: 0.1,
+};
 
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
@@ -2530,7 +2536,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		}
 	}
 	if (KinkyDungeonHasAngelHelp()) {
-		restraintEscapeChancePre += KDAngelStruggleBonus;
+		if (KDAngelStruggleBonus[StruggleType] != undefined) {
+			restraintEscapeChancePre += KDAngelStruggleBonus[StruggleType];
+		} else {
+			restraintEscapeChancePre += KDAngelStruggleBonus.Default;
+		}
 	}
 
 

@@ -2187,7 +2187,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "postRemoval", type: "RequireCollar"},
 		],
 		limitChance: {Struggle: 0.2},
-		escapeChance: {"Struggle": -0.14, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9, "wolfLeash": 10}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
+		escapeChance: {"Struggle": -0.11, "Cut": -0.2, "Remove": 0.4, "Pick": 0.35}, enemyTags: {"wolfRestraints":9, "wolfLeash": 10}, playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999}, minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
 
 	//endregion
 
@@ -5247,7 +5247,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		requireAllTagsToEquip: ["Collars"],
 		limitChance: {Struggle: 0.1, Cut: 0.1},
 		DefaultLock: "Purple",
-		escapeChance: {"Struggle": -0.35, "Cut": 0.05, "Remove": 0.4, "Pick": 0.35},
+		escapeChance: {"Struggle": -0.32, "Cut": 0.05, "Remove": 0.4, "Pick": 0.35},
 		enemyTags: {"obsidianLeash":9, "obsidianRestraints": 10},
 		playerTags: {"ItemNeckRestraintsFull":-2, "ItemNeckFull":999},
 		minLevel: 0, allFloors: true, shrine: ["Leashes", "Leashable"]},
@@ -7033,7 +7033,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			{type: "Buff", trigger: "tick", power: 1.5, buffType: "blindResist"},
 		],
 		escapeChance: {"Struggle": 0.25, "Cut": -0.25, "Remove": 10, "Pick": 0.9}, enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: []},
-	{inventory: true, removePrison: true, name: "BasicLeash", tether: 2.9, Asset: "CollarLeash", Color: "Default", Group: "ItemNeckRestraints", leash: true, power: 1, weight: -99, harness: true,
+	{inventory: true, removePrison: true, name: "BasicLeash", tether: 2.9, Asset: "CollarLeash", Color: "Default", Group: "ItemNeckRestraints",
+		leash: true, power: 1, weight: -99, harness: true,
 		Model: "Leash",
 		unlimited: true,
 		sfxGroup: "Ropes",

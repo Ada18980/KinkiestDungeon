@@ -47,6 +47,9 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Inventory limits are now in play (most consumables max 10). Can be toggled off in game options.
 - Added storage to elevator and perk room
 - allow selling stored items from shoppe
+- Angel now boosts cut by 5% more and remove by 10% more
+- Super strength works a bit differently but should be similar in power level
+
 
 5.4.55
 - added 'Show (mostly) full tooltips' toggle
