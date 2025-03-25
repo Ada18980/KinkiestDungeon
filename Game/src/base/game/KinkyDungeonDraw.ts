@@ -2960,8 +2960,8 @@ function DrawTextFitKD (
 	border:     number = undefined,
 	unique:     boolean = undefined,
 	font?:      string
-) {
-	DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font);
+): number {
+	return DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font);
 }
 
 type TextParamsType = {

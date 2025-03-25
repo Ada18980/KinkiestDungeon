@@ -71,7 +71,7 @@ function KDGetRecyclerRate(Servants: number[]): Record<string, number> {
 	return output;
 }
 
-function KDRecycleItem(item: item, count: number = 0) : RecyclerOutputs {
+function KDRecycleItem(item: item, count: number = 0, container: KDContainer) : RecyclerOutputs {
 	let outputs: RecyclerOutputs = KDBaseRecycleOutputs();
 
 	let type = KDRestraint(item);
@@ -84,12 +84,12 @@ function KDRecycleItem(item: item, count: number = 0) : RecyclerOutputs {
 
 	if (count > 0) {
 		for (let i = 0; i < count; i++) {
-			if (KinkyDungeonInventoryGetSafe(item.inventoryVariant || item.name)) {
-				let inv = KinkyDungeonInventoryGetSafe(item.inventoryVariant || item.name);
+			if (KinkyDungeonInventoryGetSafe(item.inventoryVariant || item.name, container)) {
+				let inv = KinkyDungeonInventoryGetSafe(item.inventoryVariant || item.name, container);
 				if (inv.quantity > 1) {
 					inv.quantity -= 1;
 				} else {
-					KinkyDungeonInventoryRemoveSafe(inv);
+					KinkyDungeonInventoryRemoveSafe(inv, container);
 				}
 			}
 		}
@@ -125,9 +125,9 @@ function KDHasRecyclerInput(amount: RecyclerOutputs) {
 	return true;
 }
 
-function KDRecycleString(item: item, quantity: number) : string {
+function KDRecycleString(item: item, quantity: number, container: KDContainer) : string {
 	let temp = "";
-	let outputs = KDRecycleItem(item, 0);
+	let outputs = KDRecycleItem(item, 0, container);
 
 	for (let output of Object.entries(outputs)) {
 		if (output[1] > 0) {

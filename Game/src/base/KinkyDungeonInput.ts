@@ -223,6 +223,8 @@ function KDProcessInput(type: string, data: any): string {
 		}
 		case "inventoryAction": {
 			if (KDInventoryAction[data.action || KDGameData.InventoryAction] && KDInventoryAction[data.action || KDGameData.InventoryAction].valid(data.player, data.item)) {
+				if (data.item.type == Restraint) data.item = KinkyDungeonInventoryGetWorn(data.item.name)
+				else data.item = KinkyDungeonInventoryGetSafe(data.item.name, KDInventoryActionContainer(data.player));
 				KDInventoryAction[data.action || KDGameData.InventoryAction].click(data.player, data.item);
 			}
 			break;

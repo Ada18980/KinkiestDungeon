@@ -6002,6 +6002,11 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 
 	if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction].cancel(KinkyDungeonPlayerEntity, delta)) {
 		KDGameData.InventoryAction = "";
+		KDGameData.InventoryActionContainer = [];
+	}
+
+	if (KDGameData.InventoryActionContainer?.length > 0 && KDGameData.InventoryActionContainer[0] != KDGameData.InventoryAction) {
+		KDGameData.InventoryActionContainer = [];
 	}
 
 

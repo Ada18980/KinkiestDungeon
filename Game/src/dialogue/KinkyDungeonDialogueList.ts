@@ -3246,6 +3246,18 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							return false;
 						},
 					},
+					"SellStorage": {
+						playertext: "Default", response: "Default",
+						exitDialogue: true,
+						clickFunction: (_gagged, _player) => {
+							KDGameData.InventoryAction = "Sell";
+							KDGameData.SellMarkup = 0.7;
+							KinkyDungeonDrawState = "Inventory";
+							KDGameData.InventoryActionContainer = ["Sell", "PlayerChest"];
+							KinkyDungeonCurrentFilter = Consumable;
+							return false;
+						},
+					},
 					/*"SellBulk": {
 						playertext: "Default", response: "Default",
 						exitDialogue: true,

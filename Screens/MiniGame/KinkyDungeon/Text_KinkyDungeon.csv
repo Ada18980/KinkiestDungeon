@@ -13230,6 +13230,7 @@ rShopkeeperStartShop,"Absolutely! I offer the standard market rate for anything.
 rShopkeeperStartShopGag,"Got something you want to show me?"
 dShopkeeperStartShop_Sell,(Sell Items)
 dShopkeeperStartShop_SellBulk,(Sell Whole Stacks of Items)
+dShopkeeperStartShop_SellStorage,(Sell from your storage)
 dShopkeeperStart_Gag,"Mmmph!"
 rShopkeeperStartGag,"Daww! What a cutie!|(She smiles and pats your head gently)"
 
@@ -31003,6 +31004,8 @@ KDTakeAll,Take ALL ITMN
 KDAddAll1,Store ALL-1 ITMN
 KDTakeAll1,Take ALL-1 ITMN
 KDAddAllExcess,Store Excess ITMN
+KDRefill,Refill ITMN
+KDMaxNum,(Max: ${Num})
 KDTakeEverything,Take Everything
 KDTakeEverythingExcess,Refill
 KDDepositEverything,Deposit All
@@ -31835,3 +31838,5 @@ KinkyDungeonInventoryItemPotionStrengthDesc,"The bottle is bursting with pressur
 KinkyDungeonInventoryItemPotionStrengthDesc2,"For 50 turns, increase the base damage of physical weapons by 20. Also increases struggle power."
 
 KDMovedToStorage,${Count}x${Item} moved to storage
+KDNotEnoughInventorySpace,Not Enough Inventory Space
+KDCantDrop,You can't drop that

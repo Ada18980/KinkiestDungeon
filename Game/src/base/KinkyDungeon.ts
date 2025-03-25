@@ -519,6 +519,8 @@ interface KDGameDataBase {
 	JourneyProgression:		string[],
 	AttachedWep:			string,
 	InventoryAction:		string,
+	/** Index 0 : action index 1: chest */
+	InventoryActionContainer: string[],
 	InventoryActionManaCost:	number,
 	SellMarkup:			number,
 	CurseLevel:			number,
@@ -787,6 +789,7 @@ let KDGameDataBase: KDGameDataBase = {
 	UsingConsumable: "",
 	MovePoints: 0,
 	InventoryAction: "",
+	InventoryActionContainer: [],
 	InventoryActionManaCost: 0,
 	SellMarkup: 1,
 	BondageTarget: -1,
@@ -1502,6 +1505,10 @@ function KDCloseFullscreen() {
 
 let saveError = false;
 
+let KDErrorText = "";
+let KDErrorTextTime = 0;
+let KDErrorTextTime_DELAY = 2500;
+
 function KinkyDungeonRun() {
 
 	if (KDSaveQueue.length > 8) {
@@ -1642,6 +1649,22 @@ function KinkyDungeonRun() {
 	KDButtonsCache = {};
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
+
+	if (KDErrorText && KDErrorTextTime + KDErrorTextTime_DELAY > CommonTime()) {
+
+		let txt = KDErrorText.split('\n');
+		let w = 100;
+		let size = 24;
+		let ii = 0;
+		let h = size * txt.length;
+		for (let t of txt) {
+			w = Math.max(w, DrawTextFitKD(
+				t, MouseX, MouseY - 15 - h + size * ii++, 1000, KDBaseYellow, KDBaseBlack, size, "center", 250
+			));
+		}
+
+		DrawBoxKD(MouseX - w/2 - 10, MouseY - 30 - h - 5, w + 20, 15 + h, KDBGColor, false, 0.7, 249)
+	}
 
 	if (!KDPatched)
 		DrawButtonVis(1885, 25, 90, 90, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Exit.png");

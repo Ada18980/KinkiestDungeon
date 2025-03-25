@@ -69,6 +69,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let x = 1225 + xOffset;
 	let takeItem = (inv: item) => {
 		if (!invMsg) {
+
 			if (container.items[inv?.name]
 				&& (inv.type != Weapon || !KinkyDungeonInventoryGetWeapon(inv.name))
 			) {
@@ -76,8 +77,17 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				if (!item) {
 					item = JSON.parse(JSON.stringify(container.items[inv.name]));
 					item.quantity = 1;
+					KDErrorText = "";
 					KinkyDungeonInventoryAdd(item);
-				} else item.quantity = (item.quantity || 1) + 1;
+				} else if ((item.quantity || 0) < KDMaxInventoryStorage(item, KDPlayer())) {
+					item.quantity = (item.quantity || 1) + 1;
+					KDErrorText = "";
+				} else {
+					KDErrorText = TextGet("KDNotEnoughInventorySpace") + '\n' +
+						TextGet("KDMaxNum").replace("${Num}", "" + (KDMaxInventoryStorage(item, KDPlayer()) || 1));
+					KDErrorTextTime = CommonTime();
+					return;
+				}
 				if (container.items[inv.name].quantity > 1) {
 					container.items[inv.name].quantity -= 1;
 				} else {
@@ -92,6 +102,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 			let type = KDGetItemType(inv);
 			if (filters.includes(type)) return; // Cant transfer wrong items
 			let item = KinkyDungeonInventoryGetSafe(inv?.name);
+			KDErrorText = "";
 			if (item && KDCanDrop(item)) {
 				if (!container?.items[inv.name]) {
 					container.items[inv.name] = JSON.parse(JSON.stringify(item));
@@ -103,6 +114,9 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				} else {
 					KinkyDungeonInventoryRemoveSafe(KinkyDungeonInventoryGetSafe(inv.name));
 				}
+			} else {
+				KDErrorText = TextGet("KDCantDrop");
+				KDErrorTextTime = CommonTime();
 			}
 		}
 	}
@@ -263,12 +277,12 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				let q = selectedItem.item.quantity;
 				let maxAmt = KDMaxInventoryStorage(selectedItem.item, KDPlayer());
 				if (KDUI_Container_LastSelected == "Chest") {
-					//for (let i = 1; i < (q || 1); i++) takeItem(selectedItem.item);
-				} else for (let i = 1; i < (q || maxAmt); i++) transferItem(selectedItem.item);
+					for (let i = 1; i < (q || 1) && KinkyDungeonInventoryGet(selectedItem.item.name)?.quantity < maxAmt; i++) takeItem(selectedItem.item);
+				} else for (let i = 1; i < (q || 1) && KinkyDungeonInventoryGet(selectedItem.item.name)?.quantity > maxAmt; i++) transferItem(selectedItem.item);
 				return true;
 			}, true, 1020, 600 + ii++*spacing, 200, spacing - 10,
-			TextGet("KDAddAllExcess").replace("ITMN", KDGetItemName(item)),
-			KDUI_Container_LastSelected == "Chest" ? KDTextGray0 : KDBaseWhite, undefined, undefined, undefined, true,
+			TextGet(KDUI_Container_LastSelected == "Chest" ? "KDRefill" : "KDAddAllExcess").replace("ITMN", KDGetItemName(item)),
+			KDBaseWhite, undefined, undefined, undefined, true,
 			KDButtonColor, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySpell[0]),
 				hotkeyPress: KinkyDungeonKeySpell[0],
