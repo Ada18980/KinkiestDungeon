@@ -2535,7 +2535,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 
 
-	KinkyDungeonInterruptSleep();
+	if (!query) KinkyDungeonInterruptSleep();
 
 	let affinity = KDGetRestraintAffinity(restraint, {StruggleType: StruggleType});
 

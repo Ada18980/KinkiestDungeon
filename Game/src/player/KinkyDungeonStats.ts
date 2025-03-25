@@ -423,6 +423,7 @@ function KDIsAutoAction(): boolean {
 function KDCancelAutoWait() {
 	KinkyDungeonAutoWait = false;
 	KinkyDungeonAutoWaitStruggle = false;
+	KinkyDungeonTempWait = false;
 }
 
 /**

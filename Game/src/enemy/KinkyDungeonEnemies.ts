@@ -544,13 +544,14 @@ function KinkyDungeonInDanger() {
 	for (let enemy of nearby) {
 		let playerDist = KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y);
 		if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
+			if (((enemy.revealed && !enemy.Enemy.noReveal)
+					|| !enemy.Enemy.stealth
+					|| KinkyDungeonSeeAll
+					|| playerDist <= enemy.Enemy.stealth + 0.1)
+				&& !KDEnemyHidden(enemy)
+				&& !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
 				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy))
 						|| (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
-					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
-						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						return KDCanSeeEnemy(enemy) || KDCanHearEnemy(KDPlayer(), enemy);
-					}
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						return KDCanSeeEnemy(enemy) || KDCanHearEnemy(KDPlayer(), enemy);
@@ -5483,8 +5484,15 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					KinkyDungeonSetEnemyFlag(enemy, "wander", Math.floor(4 + 6 * KDRandom()));
 				} else {
 					// Go to the target directly
-					enemy.gx = player.x;
-					enemy.gy = player.y;
+					if (KDistChebyshev(enemy.x - player.x, enemy.y - player.y) > 1.5) {
+
+						enemy.gx = player.x;
+						enemy.gy = player.y;
+					} else {
+
+						enemy.gx = enemy.x;
+						enemy.gy = enemy.y;
+					}
 					KinkyDungeonSetEnemyFlag(enemy, "wander", Math.floor(4 + 6 * KDRandom()));
 				}
 			}
@@ -5984,8 +5992,13 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					enemy.gy = enemy.despawnY;
 				} else if (allyHoming) {
 					// TODO add mechanism for allies finding where you are
-					enemy.gx = KDPlayer().x;
-					enemy.gy = KDPlayer().y;
+					if (KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) > 1.5) {
+						enemy.gx = KDPlayer().x;
+						enemy.gy = KDPlayer().y;
+					} else {
+						enemy.gx = enemy.x;
+						enemy.gy = enemy.y;
+					}
 				} else {
 					let wanderfar = AIType.wander_far(enemy, player, AIData) || KDEnemyHasFlag(enemy, "forceWFar");
 					let wandernear = AIType.wander_near(enemy, player, AIData);

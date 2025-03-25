@@ -1439,6 +1439,12 @@ let KDMaxPatronPerPage = 4;
 let KDMaxPatron = 5;
 let KinkyDungeonPatronPos = 0;
 let KinkyDungeonFastWait = true;
+/** Special wait flag used mainly for situations where player selects to wait specifically,
+ * while autowait might be set by something else?
+ * there used to be an option to autowait without pressing the wait button
+ * thru menu
+ * this has been removed,
+ * but the vars remain */
 let KinkyDungeonTempWait = false;
 let KinkyDungeonSexyMode = false;
 let KinkyDungeonClassMode = "Mage";
