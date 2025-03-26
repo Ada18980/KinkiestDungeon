@@ -2535,13 +2535,6 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			}
 		}
 	}
-	if (KinkyDungeonHasAngelHelp()) {
-		if (KDAngelStruggleBonus[StruggleType] != undefined) {
-			restraintEscapeChancePre += KDAngelStruggleBonus[StruggleType];
-		} else {
-			restraintEscapeChancePre += KDAngelStruggleBonus.Default;
-		}
-	}
 
 
 
@@ -2600,6 +2593,16 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 		upfrontWill: KDUpfrontWill,
 	};
+
+
+	if (KinkyDungeonHasAngelHelp()) {
+		if (KDAngelStruggleBonus[StruggleType] != undefined) {
+			data.escapePenalty -= KDAngelStruggleBonus[StruggleType];
+		} else {
+			data.escapePenalty -= KDAngelStruggleBonus.Default;
+		}
+	}
+
 
 	// Prevent crashes due to weirdness
 	if ((data.struggleType == "Pick" || data.struggleType == "Unlock") && !data.lockType) return "Fail";
@@ -4676,6 +4679,7 @@ function KinkyDungeonAddRestraint (
 	NoEvent:        boolean = false,
 	ForceRemove:	boolean = false,
 	NoActionPrune: boolean = false,
+	flags?: Record<string, number>,
 ): number
 {
 	if (!NoActionPrune)
@@ -4785,6 +4789,7 @@ function KinkyDungeonAddRestraint (
 					faction: faction != undefined ? faction : KDDefaultItemPalette(restraint.name, inventoryAs),
 					dynamicLink: dynamicLink,
 					data: data,
+					flags: flags,
 				};
 				if (inventoryAs) item.inventoryVariant = inventoryAs;
 				KDRestraintDebugLog.push("Adding " + item.name);
@@ -5264,7 +5269,7 @@ function KinkyDungeonUnLinkItem(item: item, Keep: boolean, _dynamic?: any, Force
 			if (newRestraint) {
 
 				KDRestraintDebugLog.push("Adding Unlinked " + newRestraint.name);
-				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink, UnLink.curse, undefined, undefined, UnLink.inventoryVariant, UnLink.data, undefined, undefined, ForceRemove);
+				KinkyDungeonAddRestraint(newRestraint, UnLink.tightness, true, UnLink.lock, Keep, undefined, undefined, UnLink?.events, UnLink.faction, true, UnLink.dynamicLink, UnLink.curse, undefined, undefined, UnLink.inventoryVariant, UnLink.data, undefined, undefined, ForceRemove, undefined, UnLink.flags);
 
 				KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer});
 				if (KDRestraint(item).UnLink) {
@@ -6068,6 +6073,31 @@ function KDItemDataSet(item: item, name: string, value: number | string): void {
 		item.data = {};
 	}
 	item.data[name] = value;
+}
+/**
+ * @param item
+ * @param name
+ */
+function KDItemFlagQuery(item: item, name: string): any {
+	if (item?.flags) {
+		return item.flags[name];
+	}
+	return undefined;
+}
+/**
+ * @param item
+ * @param name
+ * @param value
+ */
+function KDItemFlagSet(item: item, name: string, value: number): void {
+	if (!item.flags) {
+		item.flags = {};
+	}
+	if (value == -1) {
+		item.flags[name] = value;
+	} else if (value > (item.flags[name] || 0)) {
+		item.flags[name] = value;
+	}
 }
 
 /**

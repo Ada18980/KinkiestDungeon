@@ -1405,7 +1405,7 @@ function KinkyDungeonLoad(): void {
 		} else {
 			KinkyDungeonState = "Game";
 			if (!KinkyDungeonGameData) {
-				KDSetWorldSlot(0, 1);
+				KDSetWorldSlot(0, 1, 0, 0);
 				KinkyDungeonInitialize(1);
 			}
 		}
@@ -5682,7 +5682,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	} else {
 		KDSendEvent('newGame');
 		KDGameData.RoomType = "JourneyFloor";//KinkyDungeonStatsChoice.get("easyMode") ? "ShopStart" : "JourneyFloor";
-		KDSetWorldSlot(0, 0);
+		KDSetWorldSlot(0, 0, 0, 0);
 		KDInitializeJourney("");
 
 

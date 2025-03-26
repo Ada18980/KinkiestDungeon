@@ -359,7 +359,7 @@ function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppre
 }
 
 function KinkyDungeonNewGamePlus(): void {
-	KDSetWorldSlot(0, 0);
+	KDSetWorldSlot(0, 0, 0, 0);
 
 	//KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 	// Remove all chests and add to lost items
@@ -501,7 +501,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 
 	KinkyDungeonTextMessage = "";
 	KinkyDungeonActionMessage = "";
-	KDSetWorldSlot(0, Level);
+	KDSetWorldSlot(0, Level, 0, 0);
 	KinkyDungeonSetCheckPoint();
 
 	KDInitCanvas();

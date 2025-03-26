@@ -326,7 +326,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					}
 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
-						KDSetWorldSlot(0, 0);
+						KDSetWorldSlot(0, 0, 0, 0);
 						KinkyDungeonState = "End";
 						MiniGameVictory = true;
 						suppressCheckPoint = true;

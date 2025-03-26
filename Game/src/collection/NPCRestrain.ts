@@ -12,6 +12,7 @@ interface NPCRestraint extends Named {
 	id: number,
 	faction?: string,
 	conjured?: boolean,
+	flags?: Record<string, number>,
 }
 
 function KDNPCRestraintSlotOrder(): string[] {

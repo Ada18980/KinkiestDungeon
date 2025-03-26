@@ -1899,7 +1899,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '0');
 						KDTileDelete();
 					}
-					KDSetWorldSlot(0, 0);
+					KDSetWorldSlot(0, 0, 0, 0);
 
 					let dialogue = KDGameData.CurrentDialog;
 					let dialoguestage = KDGameData.CurrentDialogStage;

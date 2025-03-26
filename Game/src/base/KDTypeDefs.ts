@@ -33,6 +33,8 @@ interface item extends NamedAndTyped {
 	faction?: string,
 	/** Faction of the applied item, impossible to override */
 	forceFaction?: string,
+
+	flags?: Record<string, number>,
 	/** When added to the inventory, is added as a different item instead. Good for cursed items! */
 	inventoryVariant?: string,
 	/** Events associated with the item*/

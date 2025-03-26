@@ -227,10 +227,15 @@ function KinkyDungeonSetFlag(Flag: string, Duration: number, Floors?: number) {
 }
 
 function KinkyDungeonUpdateFlags(delta: number) {
-	for (let f of KinkyDungeonFlags.keys()) {
-		if (KinkyDungeonFlags.get(f) != -1) {
-			if (KinkyDungeonFlags.get(f) > 0) KinkyDungeonFlags.set(f, KinkyDungeonFlags.get(f) - delta);
-			if (KinkyDungeonFlags.get(f) <= 0 && KinkyDungeonFlags.get(f) != -1) KinkyDungeonFlags.delete(f);
+	if (delta > 0) {
+		for (let f of KinkyDungeonFlags.keys()) {
+			if (KinkyDungeonFlags.get(f) != -1) {
+				if (KinkyDungeonFlags.get(f) > 0) KinkyDungeonFlags.set(f, KinkyDungeonFlags.get(f) - delta);
+				if (KinkyDungeonFlags.get(f) <= 0 && KinkyDungeonFlags.get(f) != -1) KinkyDungeonFlags.delete(f);
+			}
+		}
+		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+			KDTickFlagsRestraint(inv.item, delta);
 		}
 	}
 }
@@ -3813,8 +3818,32 @@ function KinkyDungeonTickFlagsEnemy(enemy: entity, delta: number): boolean {
 			}
 		}
 	}
+	if (KDGetNPCRestraints(enemy.id)) {
+		for (let r of Object.values(KDGetNPCRestraints(enemy.id))) {
+			KDTickFlagsRestraint(r, delta);
+		}
+	}
 	return changed;
 }
+
+function KDTickFlagsRestraint(item: item | NPCRestraint, delta: number): boolean {
+	let changed = false;
+	if (item.flags) {
+		for (let f of Object.entries(item.flags)) {
+			if (f[1] == -1) continue;
+			if (f[1] <= delta) {
+				delete item.flags[f[0]];
+				changed = true;
+			}
+			else if (f[1] > 0) {
+				item.flags[f[0]] = f[1] - delta;
+				changed = true;
+			}
+		}
+	}
+	return changed;
+}
+
 
 let KinkyDungeonDamageTaken = false;
 let KinkyDungeonTorsoGrabCD = 0;

@@ -2151,11 +2151,17 @@ function KDGetJailRestraints(overrideTags?: string[], requireJail?: boolean, req
 	return restraints;
 }
 
-function KDSetWorldSlot(x: number, y: number) {
+function KDSetWorldSlot(x: number, y: number, jx?: number, jy?: number) {
 	MiniGameKinkyDungeonLevel = y;
 	KDCurrentWorldSlot = {x: x, y: y};
-	KDGameData.JourneyX = x;
-	KDGameData.JourneyY = y;
+	if (jx != undefined && jy != undefined) {
+		KDGameData.JourneyX = jx;
+		KDGameData.JourneyY = jy;
+	} else if (KDGetWorldMapLocation(KDCurrentWorldSlot)) {
+		KDGameData.JourneyX = KDGetWorldMapLocation(KDCurrentWorldSlot).jx || 0;
+		KDGameData.JourneyY = KDGetWorldMapLocation(KDCurrentWorldSlot).jy || 0;
+	}
+
 }
 
 /**
@@ -2170,7 +2176,7 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 	"ShopkeeperRescue": (enemy) => {
 		KDRemoveEntity(enemy);
 		KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), KDBaseWhite, 4);
-		KDSetWorldSlot(0, 0);
+		KDSetWorldSlot(0, 0, 0, 0);
 		//let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 		KinkyDungeonCreateMap(KinkyDungeonMapParams.shoppe, "ShopStart", "", MiniGameKinkyDungeonLevel,
 			undefined, undefined, undefined, {x: 0, y: 0},
