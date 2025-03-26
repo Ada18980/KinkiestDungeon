@@ -41,6 +41,11 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.4.57
+- Problem solving now gives flat 20% bonus to bonuses
+- Angel now gives +15% bonus to Struggle
+- Fixed bugs with journey map not working properly
+
 5.4.56
 - Elven soap now boosts Remove, Unlock, and Pick by a lot and Struggle by less
 - Can now right click character portrait to show quick inv

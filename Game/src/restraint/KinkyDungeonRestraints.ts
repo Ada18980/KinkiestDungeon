@@ -14,7 +14,7 @@ let KDCutAdditionalLimitChance = 0.05;
 let KDAllyLimitChanceRedMult = 0.5;
 let KDAllyLimitChanceRedFlat = 0.05;
 let KDAngelStruggleBonus = {
-	Struggle: 0.1,
+	Struggle: 0.15,
 	Cut: 0.15,
 	Remove: 0.20,
 	Unlock: 0.25,

@@ -483,7 +483,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "ProblemSolving", tags: ["utility", "defense", "evasion"], school: "Special", manacost: 0, components: [],
 			classSpecific: "Rogue", prerequisite: "RogueTargets", hideWithout: "RogueTargets", level:1,
 			type:"passive", onhit:"", time: 0, delay: 0, range: 0, lifetime: 0, power: 0, damage: "inert", events: [
-				{type: "ProblemSolving", mult: 0.2, power: 0.4, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
+				{type: "ProblemSolving", mult: 0.2, power: 0.25, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
 				//{type: "ProblemSolving", mult: 0.2, power: 0.25, trigger: "beforeStruggleCalc", msg: "KinkyDungeonSpellProblemSolvingMsg"},
 			]},
 		{name: "EvasiveManeuvers", tags: ["utility", "defense", "evasion"], school: "Special", manacost: 0, components: [],

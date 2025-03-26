@@ -6011,7 +6011,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				let boost = e.power + KDCalcRestraintBlock() * .1 * e.mult;
 				data.toolBonus += boost;
 				data.cutMultBonus += boost;
-				data.buffBonus += boost;
+				data.buffBonus += 0.2;
 				data.struggleTime *= 3.0;
 				if (!data.query)
 					if (e.msg)
