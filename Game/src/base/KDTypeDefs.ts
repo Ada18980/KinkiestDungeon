@@ -2665,6 +2665,7 @@ interface VibeMod {
 }
 
 interface KDStruggleData {
+	angelHelp: boolean,
 	minSpeed: number;
 	handBondage: number;
 	armsBound: boolean;

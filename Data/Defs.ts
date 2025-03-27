@@ -131,6 +131,8 @@ let LAYERS_BASE = [
 	"NecklaceCharm",
 	"Necklace",
 
+	"ForeLooseStraps",
+
 
 	"WrapChest",
 	"HarnessOver",
@@ -254,6 +256,9 @@ let LAYERS_BASE = [
 	"PetsuitLegs",
 
 	"WrappingTorsoUnder",// For skintight stuff
+
+
+	"LooseStraps",
 
 	// Left Leg
 	"KneeAccLeft",

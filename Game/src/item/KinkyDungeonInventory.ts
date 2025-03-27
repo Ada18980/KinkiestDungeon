@@ -676,7 +676,17 @@ function KinkyDungeonInventoryGetLoose(Name: string, container?: KDContainer): i
  * @param Name
  */
 function KinkyDungeonInventoryGetWorn(Name: string): item | null {
-	return KinkyDungeonInventory.get(Restraint).get(Name);
+	let r = KinkyDungeonInventory.get(Restraint).get(Name);
+	if (!r) {
+		let group = KDRestraint({name: Name})?.Group;
+		if (KinkyDungeonGetRestraintItem(group)) {
+			let tree = KDDynamicLinkList(KinkyDungeonGetRestraintItem(group))
+			for (let inv of tree) {
+				if (inv.name == Name) return inv;
+			}
+		}
+	}
+	return r;
 }
 
 
@@ -1019,6 +1029,7 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 								handsBound: false,
 								armsBound: false,
 								query: true,
+								angelHelp: KinkyDungeonHasAngelHelp(),
 								cutBonus: 0,
 								restraint: restraint,
 								struggleType: "Unlock",

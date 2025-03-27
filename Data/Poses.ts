@@ -501,6 +501,11 @@ function KDGetAvailablePosesArms(C: Character, tags: Map<string, boolean> = unde
 	if (CheckPoseOrTags(C, "PreferCrossed") && poses.Crossed) {
 		poses = {Crossed: true};
 	}
+
+
+	if (CheckPoseOrTags(C, "DiscourageYoked", tags) && poses.Yoked && Object.keys(poses).length > 1) {
+		delete poses.Yoked;
+	}
 	//} else {
 	// Logic for NPC
 	// ???

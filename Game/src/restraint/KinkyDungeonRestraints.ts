@@ -14,7 +14,7 @@ let KDCutAdditionalLimitChance = 0.05;
 let KDAllyLimitChanceRedMult = 0.5;
 let KDAllyLimitChanceRedFlat = 0.05;
 let KDAngelStruggleBonus = {
-	Struggle: 0.15,
+	Struggle: 0.12,
 	Cut: 0.15,
 	Remove: 0.20,
 	Unlock: 0.25,
@@ -1944,6 +1944,12 @@ function KDGetStruggleData(data: KDStruggleData): string {
 			}
 
 		}
+
+		if (data.angelHelp) {
+			data.cutBonus += KDAngelStruggleBonus.Cut;
+			data.escapePenalty -= KDAngelStruggleBonus.Cut;
+		}
+
 		let bcm = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BoostCuttingMinimum");
 		//bcm *= (bcm > 0 ? cutMult : 1.0);
 		if (bcm) {
@@ -2591,18 +2597,21 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		extraLimPenalty: 0,
 		extraLimThreshold: 0,
 
+		angelHelp: KinkyDungeonHasAngelHelp(),
+
 		upfrontWill: KDUpfrontWill,
 	};
 
 
-	if (KinkyDungeonHasAngelHelp()) {
+
+	if (data.angelHelp) {
 		if (KDAngelStruggleBonus[StruggleType] != undefined) {
+			if (StruggleType != "Cut")
 			data.escapePenalty -= KDAngelStruggleBonus[StruggleType];
 		} else {
 			data.escapePenalty -= KDAngelStruggleBonus.Default;
 		}
 	}
-
 
 	// Prevent crashes due to weirdness
 	if ((data.struggleType == "Pick" || data.struggleType == "Unlock") && !data.lockType) return "Fail";
@@ -2612,7 +2621,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 	data.extraLimPenalty = (data.struggleType == "Pick") ? data.extraLim * data.restraint.pickProgress : 0;
 	data.extraLimThreshold = Math.min(1, (data.escapeChance / data.extraLim));
 
+
+
 	let result = KDGetStruggleData(data);
+
+
 
 
 

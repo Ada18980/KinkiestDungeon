@@ -8,20 +8,36 @@
 	"spriteSourceSize": {"x":679,"y":549,"w":74,"h":192},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/CyberArms/LockLongMittenLeftFront.png":
+"Models/CyberArms/LockLongMittenLeftCrossed.png":
 {
-	"frame": {"x":1801,"y":1739,"w":10,"h":18},
+	"frame": {"x":1801,"y":1739,"w":10,"h":19},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":758,"y":538,"w":10,"h":18},
+	"spriteSourceSize": {"x":759,"y":537,"w":10,"h":19},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/CyberMitts/UpperLockLongMittenLeftFront.png":
+"Models/CyberArms/StrapsForeLongMittenLeftFront.png":
 {
-	"frame": {"x":1801,"y":1739,"w":10,"h":18},
+	"frame": {"x":1971,"y":948,"w":65,"h":137},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":758,"y":538,"w":10,"h":18},
+	"spriteSourceSize": {"x":692,"y":582,"w":65,"h":137},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/CyberMitts/StrapsForeLongMittenLeftFront.png":
+{
+	"frame": {"x":1971,"y":948,"w":65,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":692,"y":582,"w":65,"h":137},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/CyberMitts/UpperLockLongMittenLeftCrossed.png":
+{
+	"frame": {"x":1801,"y":1739,"w":10,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":759,"y":537,"w":10,"h":19},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/CyberPetsuit/LegsKneel.png":
@@ -39,14 +55,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":142,"y":137,"w":50,"h":10},
 	"sourceSize": {"w":321,"h":332}
-},
-"Models/Festive/BinderStrapLeftBoxtie.png":
-{
-	"frame": {"x":1971,"y":1045,"w":74,"h":40},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":693,"y":578,"w":74,"h":40},
-	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Furniture/Bed.png":
 {
@@ -102,14 +110,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":385,"y":410,"w":230,"h":454},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/KittyPet/Ears1L.png":
-{
-	"frame": {"x":1971,"y":948,"w":74,"h":93},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":643,"y":110,"w":74,"h":93},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Mittens/LongMittenLeftWristtie.png":
@@ -192,6 +192,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas11.json", "atlas12.json", "atlas13.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json", "atlas32.json", "atlas33.json", "atlas34.json", "atlas35.json", "atlas36.json", "atlas37.json", "atlas38.json", "atlas39.json", "atlas40.json", "atlas41.json", "atlas42.json", "atlas43.json", "atlas44.json", "atlas45.json", "atlas46.json", "atlas47.json", "atlas48.json", "atlas49.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:72a3af8ee7676a597934643ea69fd76a:090013ffecfe4f3764069b5565c059c7:1598ba71a5bd17263d934e694a9d65cd$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d60e339fd31765b80864d4d61a095655:7d55a483e66c20f0d7ac39b92a573ee2:1598ba71a5bd17263d934e694a9d65cd$"
 }
 }
