@@ -9,6 +9,7 @@ For more information, please refer to [CONTRIBUTING.md](/.github/CONTRIBUTING.md
 
 - Lines starting with `-` indicate source text matching
 - Lines starting with `::` indicate exact tag matching
+- Lines in the format of `# - text` or `# :: key` are provided for convenient translation. You can simply remove the leading `# ` and write your translation on the next line.
 - The **immediately following line** contains the translation (even if empty, though empty translations won't be used)
 
 Non-matching lines are ignored.
