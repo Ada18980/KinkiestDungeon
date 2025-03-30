@@ -1,45 +1,29 @@
-# This script is used to reorder and deduplicate the translation files according to the order of the source text files. Doing so has the following effects:
-# - For merging PRs in the future, the translation content supports insertion at any position, and the script will automatically reorder and retain the first non-repeated translation content.(You can rest assured to cover the content)
-# - If the source text in the source file is modified in the future, the script will not retain the old translation content in the translation file, reducing the generation of obsolete translation content.
-# - Use `### Original` instead of untranslated original text lines to facilitate translators to find and compare untranslated content, and translators do not need to open the source file for copying, improving work efficiency.
-# - Retain the empty lines and order of the original file, so that the translation work can be browsed according to the classification of the original file.
-# - Remove duplicate content in the translation file to avoid repeated translation.
-#
-# Git-Action automation configuration:
-# This script has been configured in Git-Action. When the translation file or source text file changes, the action is automatically triggered to execute the reorder overwrite operation.
-#
-# Operation process:
-# - Read the Text_KinkyDungeon.csv file and retain empty lines and order.
-# - Read the Text_KinkyDungeon_[lang].txt file and store the content in a list.
-# - Reorder the content of the translation file according to the order of the Text_KinkyDungeon.csv file
-#     - If there is no corresponding translation, use `### Original` instead
-#     - If there is duplicate translation, it will not be written
-
-import os
 import csv
-import sys
+import argparse
+from pathlib import Path
+from collections import defaultdict
 
-# Ignore keys
 IGNORE_KEYS = [
     "RestartNeededEN", "RestartNeededCN", "RestartNeededKR", "RestartNeededJP", "RestartNeededES", "RestartNeededFR", "RestartNeededRU",
     "KDVersionStr"
 ]
 
-class LineCountingWriter:
-    def __init__(self, file, init_count=1):
-        self.file = file
-        self.count_lines = init_count
+default_translation_files = [f'Screens/MiniGame/KinkyDungeon/{file}' for file in  [
+    'Text_KinkyDungeon_CN.txt',
+    'Text_KinkyDungeon_DE.txt',
+    'Text_KinkyDungeon_KR.txt',
+    'Text_KinkyDungeon_RU.txt',
+    'Text_KinkyDungeon_JP.txt',
+    'Text_KinkyDungeon_ES.txt',
+]]
+default_origin_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
+default_output_dir = 'Screens/MiniGame/KinkyDungeon/'
 
-    def write(self, content):
-        lines = content.count('\n')
-        self.count_lines += lines
-        self.file.write(content)
+errors_csv_rowcount = []
+text_keys = defaultdict(list)
 
-    def line_count(self):
-        return self.count_lines
-
-# Read the csv file
-def read_csv_with_empty_lines(file_path) -> list:
+# Read the CSV file
+def parse_csv_lines(file_path) -> list:
     with open(file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         lines = []
@@ -48,84 +32,131 @@ def read_csv_with_empty_lines(file_path) -> list:
             if not row:
                 lines.append(None)
                 continue
-
+                
             if len(row) != 2:
-                print(f'<ABNORMAL> {row}')
+                errors_csv_rowcount.append(row)
                 continue
-
+            
             if row[0] in IGNORE_KEYS:
                 continue
-
-            lines.append(row)
+        
+            text_keys[row[1]].append(row[0])
+            lines.append((row[0], row[1]))
         return lines
 
+def parse_translation_file(translation_path):
+    """Parse the translation file and return two mapping dictionaries: one based on keys and one based on original text."""
+    key_based = {}
+    text_based = {}
+    
+    with open(translation_path, 'r', encoding='utf-8') as f:
+        lines = [line.lstrip().rstrip("\n") for line in f.readlines()]
+    
+    i = 0
+    while i < len(lines) - 1:
+        if lines[i].startswith('::'):
+            # Match based on keys
+            key = lines[i][2:].strip()
+            translation = lines[i+1]
+            key_based[key] = translation
+            i += 2
+        elif lines[i].startswith('-'):
+            # Match based on original text
+            original_text = lines[i][1:].strip()
+            translation = lines[i+1]
+            text_based[original_text] = translation
+            i += 2
+        else:
+            # Skip lines that do not match the format
+            i += 1
+    
+    return key_based, text_based
 
-# Read the translation file
-def read_translation_file(file_path) -> list:
-    with open(file_path, 'r', encoding='utf-8') as file:
-        lines = [ line.strip() for line in file.readlines() if not line.lstrip().startswith('###') ]
-    return lines
-
-
-def write_translated_file(csv_lines : list, translations : list, output_path : str):
-    translated = set()
-    with open(output_path, 'w', encoding='utf-8') as file:
-        writer = LineCountingWriter(file)
-        for line in csv_lines:
-            if not line or not line[1]:
-                writer.write('\n')
+def reorder_translations(source_csv, translation_files, output_dir):
+    """Reorder translation files based on the order of the original CSV."""
+    
+    processed_texts = set()
+    
+    # Read the original CSV file
+    source_data = parse_csv_lines(source_csv)
+    
+    # Process each translation file
+    for trans_file in translation_files:
+        trans_path = Path(trans_file)
+        key_based, text_based = parse_translation_file(trans_path)
+        
+        # Build new translation content
+        new_content = []
+        for sd in source_data:
+            if sd is None:
+                new_content.append("")
                 continue
-
-            key, original, *_ = line
-            if original in translated:
+            key, original_text = sd
+            
+            # Skip if the text has already been processed
+            if original_text in processed_texts:
                 continue
-            translated.add(original)
+            
+            # Match based on keys or text
+            # If the key is not unique or explicitly specified, all keys (or placeholder keys) will be displayed
+            # Using strip to ensure translations are not lost due to whitespace changes
+            # This may cause two texts like "text" and "text " to use the same translation, but such cases are considered unreasonable
+            text_translation = text_based.get(original_text.strip(), None)
+            
+            # Text-based matching
+            if text_translation:
+                new_content.append(f"- {original_text}")
+                new_content.append(text_translation)
+            else:
+                new_content.append(f"# - {original_text}")
+                
+            # Key-based matching
+            keys = text_keys.get(original_text, [])
+            keys_len = len(keys)
+            for key in keys:
+                key_translation = key_based.get(key, None)
+                if key_translation:
+                    new_content.append(f":: {key}")
+                    new_content.append(key_translation)
+                # If there is only one key, no need to display a placeholder for the key
+                elif keys_len > 1:
+                    new_content.append(f"# :: {key}")
+            
+            processed_texts.add(original_text)
+        
+        # Write to the output file
+        output_path = Path(output_dir) / trans_path.name
+        with open(output_path, 'w', encoding='utf-8') as f:
+            for line in new_content:
+                f.write(line + '\n')
+        
+        print(f"Processed and saved: {output_path}")
 
-            if writer.line_count() % 2 == 0:
-                writer.write('\n')
+def main():
+    parser = argparse.ArgumentParser(description='Reorder translation files to match the order of the original CSV.')
+    parser.add_argument('--source_csv', help='Path to the original CSV file', default=default_origin_csv_path)
+    parser.add_argument('--translation_files', nargs='+', help='One or more translation file paths', default=default_translation_files)
+    parser.add_argument('--output-dir', help='Output directory', default=default_output_dir)
+    
+    args = parser.parse_args()
+    
+    # Create the output directory
+    Path(args.output_dir).mkdir(exist_ok=True)
+    
+    # Check if files exist
+    hasErrors = False
+    if not Path(args.source_csv).exists():
+        print(f"❌Error: Original CSV file {args.source_csv} does not exist.")
+        hasErrors = True
+    for file in args.translation_files:
+        if not Path(file).exists():
+            print(f"❌Error: Translation file {file} does not exist.")
+            hasErrors = True
+            continue
+    if hasErrors:
+        return
+    
+    reorder_translations(args.source_csv, args.translation_files, args.output_dir)
 
-            # The next line of the original text corresponding to the List is the translation. If the translation is not found,will use "### Original" instead.
-            # When the translation is the same as the original text, "### Original" is also used because it is meaningless.
-            try:
-                original_index = translations.index(original.strip())
-                translation = translations[original_index + 1].strip()
-                if not translation or (original == translation) :
-                    raise ValueError
-            except (ValueError, IndexError):
-                writer.write(f'### {original}\n')
-                continue
-
-            writer.write(f'{original}\n{translation}\n')
-
-original_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
-
-# Enable the translation files to be reordered
-translation_files = [
-    'Text_KinkyDungeon_DE.txt',
-    'Text_KinkyDungeon_KR.txt',
-    'Text_KinkyDungeon_RU.txt',
-    'Text_KinkyDungeon_JP.txt',
-    'Text_KinkyDungeon_ES.txt',
-    ]
-translation_files = [f'Screens/MiniGame/KinkyDungeon/{file}' for file in translation_files]
-
-
-modified_files = sys.argv[1:]
-print(f'Modified Files: {modified_files}')
-
-# if originnal file is modified, then all translation files need to be reformatted
-if any(file.endswith('Text_KinkyDungeon.csv') for file in modified_files):
-    modified_files = translation_files
-
-modified_files = [file for file in modified_files if file.endswith('.txt')]
-
-csv_lines = read_csv_with_empty_lines(original_csv_path)
-
-for file in modified_files:
-    if not os.path.exists(file):
-        print(f'File not found: {file}')
-        continue
-
-    print(f'Processing : {file}')
-    translations = read_translation_file(file)
-    write_translated_file(csv_lines, translations, file)
+if __name__ == '__main__':
+    main()
