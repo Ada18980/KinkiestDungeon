@@ -851,19 +851,17 @@ function KDInputSetNPCRestraint(data, container?: Record<string, item>): boolean
 			if (restraint) {
 				// Add the tieup value
 				KDNPCRestraintTieUp(data.npc, restraint, -1);
-				let slots = restraint.id == -1
-				? Object.entries(rests).filter((slt) => {
-					return slt[1].id == restraint.id;
-				}).map((slt) => {
-					return slt[0];
-				})
-				: Object.entries(rests).filter((slt) => {
-					return slt[1].id == restraint.id;
-				}).map((slt) => {
-					return slt[0];
-				})
-				for (let slt of slots) {
-					let it = KDSetNPCRestraint(data.npc, slt, undefined);
+
+				let slots = Object.keys(rests).filter(slot => rests[slot].id == restraint.id);
+				const slotIndex = slots.indexOf(slot.id);
+				if (slotIndex > 0) {
+					slots.unshift(slots.splice(slotIndex, 1)[0]);
+				}
+
+				const size = KDNPCRestraintSize(KinkyDungeonGetRestraintByName(restraint.name), slot, row);
+
+				for (let i = 0; i < Math.min(size, slots.length); i++) {
+					let it = KDSetNPCRestraint(data.npc, slots[i], undefined);
 					item = item || it;
 				}
 
