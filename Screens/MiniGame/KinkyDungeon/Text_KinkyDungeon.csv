@@ -30021,6 +30021,17 @@ RestraintThighLink,Thigh Chain
 RestraintThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
 RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 
+RestraintNeoAnkleLink,Reinforced Ankle Link
+RestraintNeoAnkleLinkDesc,"Keeps your ankles close. Careful not to walk too fast, or you'll trip!"
+RestraintNeoAnkleLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+RestraintNeoAnkleLinkShort,Reinforced Ankle Link (Short)
+RestraintNeoAnkleLinkShortDesc,"Keeps your ankles connected together. Hard to walk, let alone get up after a fall."
+RestraintNeoAnkleLinkShortDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+
+
+RestraintNeoThighLink,Reinforced Thigh Link
+RestraintNeoThighLinkDesc,"A link connecting your thigh cuffs together. You can still walk, albeit slower than usual."
+RestraintNeoThighLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
 
 RestraintAnkleLink,Ankle Chain
 RestraintAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."
