@@ -167,40 +167,6 @@ function CommonParseCSV(str: string): string[][] {
 }
 
 /**
- *  Read a CSV file from cache, or fetch it from the server
- * @param Array - Name of where the cached text is stored
- * @param Path - Path/Group in which the screen is located
- * @param Screen - Screen for which the file is for
- * @param File - Name of the file to get
- */
-function CommonReadCSV(Array: string, Path: string, Screen: string, File: string): void {
-
-	// Changed from a single path to various arguments and internally concatenate them
-	// This ternary operator is used to keep backward compatibility
-	let FullPath = "Screens/" + Path + "/" + Screen + "/" + File + ".csv";
-	if (CommonCSVCache[FullPath]) {
-		window[Array] = CommonCSVCache[FullPath];
-		return;
-	}
-
-	// Opens the file, parse it and returns the result in an Object
-	CommonGet(FullPath, function () {
-		if (this.status == 200) {
-			CommonCSVCache[FullPath] = CommonParseCSV(this.responseText);
-			window[Array] = CommonCSVCache[FullPath];
-		}
-	});
-
-	// If a translation file is available, we open the txt file and keep it in cache
-	let TranslationPath = FullPath.replace(".csv", "_" + TranslationLanguage + ".txt");
-	if (TranslationAvailable(TranslationPath))
-		CommonGet(TranslationPath, function () {
-			if (this.status == 200) TranslationCache[TranslationPath] = TranslationParseTXT(this.responseText);
-		});
-
-}
-
-/**
  * AJAX utility to get a file and return its content. By default will retry requests 10 times
  * @param Path - Path of the resource to request
  * @param Callback - Callback to execute once the resource is received
