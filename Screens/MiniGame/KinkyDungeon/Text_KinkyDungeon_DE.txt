@@ -68,6 +68,10 @@
 
 ### Mouse Shortcuts
 
+### Auto-path through NPCs
+
+### Auto-path through Doors
+
 ### Show Enemy Binding as %
 
 ### Auto-wait Through Delayed Actions
@@ -6204,6 +6208,12 @@
 
 ### The leather panel is tough and tight.
 
+### Blessed Muzzle
+
+### A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably.
+
+### Made of an ancient and exotic form of leather.
+
 ### Bast Blindfold
 
 ### A blindfold used to aid in meditation.
@@ -6603,6 +6613,16 @@
 ### A leather strap secured onto your face and blocking vision.
 
 ### You can still see through the gap around your nose.
+
+
+
+### High-Security Blindfold
+
+### A chin harness stretches this leather blindfold tightly against your face.
+
+### Total blackout. The tough leather is reinforced with rivets.
+
+
 
 ### Magic Chastity Belt
 
@@ -11090,9 +11110,9 @@
 
 ### Enraged
 
-### Thankful
-
 ### Pleased
+
+### Thankful
 
 ### Neutral
 
