@@ -487,6 +487,23 @@ class TextProvider {
 		tag: string,
 		params?: TemplateParams
 	): string {
+		return this.getTextFromGroupStrict(groupId, tag, params) || "[NotFound] " + tag;
+	}
+
+
+	/**
+	 * Retrieves a text string from a specified group and tag, optionally applying template parameters.
+	 *
+	 * @param groupId - The identifier of the group from which to retrieve the text.
+	 * @param tag - The tag associated with the desired text within the group.
+	 * @param params - Optional template parameters to apply to the text.
+	 * @returns The retrieved text string, with template parameters applied if provided. If the text is not found, returns "[NotFound] " followed by the tag.
+	 */
+	getTextFromGroupStrict(
+		groupId: TextGroupId,
+		tag: string,
+		params?: TemplateParams
+	): string {
 		const source = this.getGroupManager().getGroup(groupId);
 		const translationService = this.getTranslationService(groupId);
 		const sourceText = source.get(tag);
@@ -501,7 +518,7 @@ class TextProvider {
 			text = `${tag}::${text}`;
 		}
 
-		return text || "[NotFound] " + tag;
+		return text;
 	}
 
 	/**
@@ -628,6 +645,11 @@ const textProvider = TextProvider.instance;
 function TextGet(TextTag: string, params?: TemplateParams): string {
 	return textProvider.getText(TextTag, params);
 }
+function HasText(TextTag: string, params?: TemplateParams): string {
+	return textProvider.getText(TextTag, params);
+}
+
+
 
 function TextLoad(): void {
 	textProvider.setLanguage(TranslationLanguage as LanguageIdentifier);

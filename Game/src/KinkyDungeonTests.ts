@@ -171,6 +171,7 @@ function KDCheckForBadModels() {
 }
 
 
+
 function KDGetMissingSpellNames() {
 	let ret = "";
 
@@ -179,7 +180,7 @@ function KDGetMissingSpellNames() {
 	for (let e of KinkyDungeonEnemies) {
 		if (e.spells) {
 			for (let sp of e.spells) {
-				if (!found[sp] && TextGet("KinkyDungeonSpell" + sp) == "KinkyDungeonSpell" + sp) {
+				if (!found[sp] && HasText("KinkyDungeonSpell" + sp)) {
 					ret = ret + "\nKinkyDungeonSpell" + sp + ',' + sp;
 				}
 				found[sp] = true;

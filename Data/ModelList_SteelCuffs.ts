@@ -146,9 +146,65 @@ AddModel({
 
 
 
-AddModel(GetModelFashionVersion("NeoLinkThighLeft", true));
-AddModel(GetModelFashionVersion("NeoLinkThighRight", true));
-AddModel(GetModelFashionVersion("NeoLinkThighs", true));
+
+AddModel({
+	Name: "FashionNeoLinkThighLeft",
+	Folder: "SteelCuffBands",
+	TopLevel: false,
+	Parent: "NeoLinkThighs",
+	Categories: ["FashionRestraints", "Links"],
+	AddPose: ["NeoLinkThighLeft"],
+	Layers: ToLayerMap([
+		{ Name: "ThighLeft", Layer: "OverGarters", Pri: 30,
+			Poses: ToMap(["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"]),
+			InheritColor: "ThighLinkLeft",
+			NoOverride: true,
+		},
+		{ Name: "ThighLeftHardware", Layer: "OverGarters", Pri: 30.1,
+			Poses: ToMap(["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"]),
+			InheritColor: "ThighHardwareLeft",
+			NoOverride: true,
+			TieToLayer: "ThighLeft",
+		},
+	])
+});
+AddModel({
+	Name: "FashionNeoLinkThighRight",
+	Folder: "SteelCuffBands",
+	TopLevel: false,
+	Parent: "NeoLinkThighs",
+	Restraint: true,
+	Categories: ["FashionRestraints","Links"],
+	AddPose: ["NeoLinkThighRight"],
+	Layers: ToLayerMap([
+		{ Name: "ThighRight", Layer: "OverGarters", Pri: 30,
+			Poses: ToMap(["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"]),
+			InheritColor: "ThighLinkRight",
+			NoOverride: true,
+		},
+		{ Name: "ThighRightHardware", Layer: "OverGarters", Pri: 30.1,
+			Poses: ToMap(["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"]),
+			InheritColor: "ThighHardwareRight",
+			NoOverride: true,
+			TieToLayer: "ThighRight",
+		},
+	])
+});
+AddModel({
+	Name: "FashionNeoLinkThighs",
+	Folder: "SteelCuffBands",
+	TopLevel: true,
+	Parent: "NeoLinkThighs",
+	Categories: ["FashionRestraints","Links"],
+	AddPose: ["NeoLinkThighRight", "NeoLinkThighLeft"],
+	Layers: ToLayerMap([
+		...GetModelLayers("FashionNeoLinkThighLeft"),
+		...GetModelLayers("FashionNeoLinkThighRight"),
+	])
+});
+
+
+
 
 
 

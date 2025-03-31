@@ -838,7 +838,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				if (!KDPropsSlider || KDWToolsLayerAbbrMode == "Full") {
 					str = TextGet(`m_${Model.Name}_l_${l}`);
 				} else {
-					str = TextGet(`l_${Model.Name}_${l}`) == `m_${Model.Name}_l_${l}` ? KDAbbreviate(l)
+					str = HasText(`l_${Model.Name}_${l}`) ? KDAbbreviate(l)
 					: KDAbbreviate(TextGet(`m_${Model.Name}_l_${l}`));
 				}
 			}

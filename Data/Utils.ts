@@ -55,16 +55,15 @@ function ToMapDupe(Array: string[], ExtraMap?: Record<string, string>): {[_: str
 function GenPlaceholderModelNames() {
 	let ret = "";
 	for (let model of Object.values(ModelDefs)) {
-		if (TextGet("m_" + model.Name) == "m_" + model.Name) {
+		if (HasText("m_" + model.Name)) {
 			ret = ret + ("m_" + model.Name + "," + model.Name) + "\n";
 		}
 		for (let layer of Object.values(model.Layers)) {
 			if (layer.InheritColor) {
-				if (TextGet("m_" + model.Name + "_l_" + layer.InheritColor) ==
-					"m_" + model.Name + "_l_" + layer.InheritColor) {
+				if (HasText("m_" + model.Name + "_l_" + layer.InheritColor)) {
 					ret = ret + ("m_" + model.Name + "_l_" + layer.InheritColor + "," + layer.InheritColor) + "\n";
 				}
-			} else if (TextGet("m_" + model.Name + "_l_" + layer.Name) == "m_" + model.Name + "_l_" + layer.Name) {
+			} else if (HasText("m_" + model.Name + "_l_" + layer.Name)) {
 				ret = ret + ("m_" + model.Name + "_l_" + layer.Name + "," + layer.Name) + "\n";
 			}
 		}
