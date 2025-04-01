@@ -1003,11 +1003,14 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				&& KDCurses[KDGetCurse(item)]?.activatecurse)) return;
 			if (_e.time) {
 				let addedTick = KDItemDataQuery(item, "mimiccurse") || 0;
-				if (!addedTick)
+				if (!addedTick) {
 					KDItemDataSet(item, "mimiccurse", KinkyDungeonCurrentTick);
-				if (!addedTick || KinkyDungeonCurrentTick - addedTick < _e.time) return;
+					return;
+				}
+				let elapsedTime = KinkyDungeonCurrentTick - addedTick;
+				if (elapsedTime % (_e.time + elapsedTime/4) !== 0) return;
 			}
-			if ((KDRandom() < _e.chance || 0.1)) {
+			if ((KDRandom() < (_e.chance || 0.1))) {
 				if (item) {
 					let tags = _e.tags || KDGetCursedTags(item);
 					let lock = item.lock || "Purple";
