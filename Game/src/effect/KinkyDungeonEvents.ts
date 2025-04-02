@@ -249,8 +249,8 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 	},
 	getArmsBound: {
 		"WaistToWrist": (e, item, data: ArmsBoundData) => {
-			let frp = 8;
-			if (data.group && data.forceResultPower < frp) {
+			let frp = 8 - e.power;
+			if (data.group && data.forceResultPower < frp && (!data.ApplyGhost || !data.hasHelp)) {
 				let heightDiff = KDGetGroupHeight(data.C || KinkyDungeonPlayer, data.group)
 					- KDGetGroupHeight(data.C || KinkyDungeonPlayer, "ItemTorso");
 				let depthDiff = KDGetGroupDepth(data.C || KinkyDungeonPlayer, data.group)
@@ -259,6 +259,63 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				let success = Math.max(Math.abs(heightDiff), Math.abs(depthDiff)) <= e.power;
 				if (!success && !data.query) {
 					KinkyDungeonSendTextMessage(4, TextGet("KDTugWaistRestraints"), KDBaseRed, 1, false, true);
+				}
+
+				if (!success) {
+					data.forceResult = true;
+					data.forceResultPower = frp;
+				}
+			}
+		},
+	},
+	getHandsBound: {
+		"WaistToWrist": (e, item, data: HandsBoundData) => {
+			let frp = 8 - e.power;
+			if (data.group && data.forceResultPower < frp && (!data.ApplyGhost || !data.hasHelp)) {
+				let heightDiff = KDGetGroupHeight(data.C || KinkyDungeonPlayer, data.group)
+					- KDGetGroupHeight(data.C || KinkyDungeonPlayer, "ItemTorso");
+				let depthDiff = KDGetGroupDepth(data.C || KinkyDungeonPlayer, data.group)
+					KDGetGroupDepth(data.C || KinkyDungeonPlayer, "ItemTorso");
+
+				let success = Math.max(Math.abs(heightDiff), Math.abs(depthDiff)) <= e.power;
+				if (!success && !data.query) {
+					KinkyDungeonSendTextMessage(4, TextGet("KDTugWaistRestraints"), KDBaseRed, 1, false, true);
+				}
+
+				if (!success) {
+					data.forceResult = true;
+					data.forceResultPower = frp;
+				}
+			}
+		},
+		"Yoke": (e, item, data: HandsBoundData) => {
+			let frp = 10 + KDRestraint(item)?.power;
+			if (data.group && data.forceResultPower < frp && (!data.ApplyGhost || !data.hasHelp)) {
+
+				let height = KDGetGroupHeight(data.C || KinkyDungeonPlayer, data.group);
+				let depth = KDGetGroupDepth(data.C || KinkyDungeonPlayer, data.group)
+
+				let success = height < 0 && depth >= -1;
+				if (!success && !data.query) {
+					KinkyDungeonSendTextMessage(4, TextGet("KDTugYoke"), KDBaseRed, 1, false, true);
+				}
+
+				if (!success) {
+					data.forceResult = true;
+					data.forceResultPower = frp;
+				}
+			}
+		},
+		"Fiddle": (e, item, data: HandsBoundData) => {
+			let frp = 11 + KDRestraint(item)?.power;
+			if (data.group && data.forceResultPower < frp && (!data.ApplyGhost || !data.hasHelp)) {
+
+				let height = KDGetGroupHeight(data.C || KinkyDungeonPlayer, data.group);
+				let depth = KDGetGroupDepth(data.C || KinkyDungeonPlayer, data.group)
+
+				let success = height <= 0 && depth >= 0;
+				if (!success && !data.query) {
+					KinkyDungeonSendTextMessage(4, TextGet("KDTugYoke"), KDBaseRed, 1, false, true);
 				}
 
 				if (!success) {
@@ -11894,9 +11951,11 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KinkyDungeonStatsChoice.has("NovicePet")) {
 
 				let amount = 0;
-				if (KinkyDungeonFlags.get("NovicePet1")) amount += 1;
-				if (KinkyDungeonFlags.get("NovicePet2")) amount += 1;
-				if (KinkyDungeonFlags.get("NovicePet3")) amount += 1;
+				if (!(KDGameData.KneelTurns >= 1)) {
+					if (KinkyDungeonFlags.get("NovicePet1")) amount += 1;
+					if (KinkyDungeonFlags.get("NovicePet2")) amount += 1;
+					if (KinkyDungeonFlags.get("NovicePet3")) amount += 1;
+				}
 
 				if (KinkyDungeonPlayerTags.get("Petsuits")) {
 					if (amount > 0)
@@ -11908,6 +11967,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 							aura: KDBaseWhite, auraSprite: "Null",
 							buffSprite: true,
 						});
+					else
+						KinkyDungeonExpireBuff(KinkyDungeonPlayerEntity, "NovicePet");
 				} else if (KinkyDungeonFlags.get("NovicePet3")) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "NovicePetBad2",

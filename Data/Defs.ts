@@ -189,7 +189,6 @@ let LAYERS_BASE = [
 
 
 	"OverCorset",
-	"OverGarters",
 
 	"BaggyShirt",
 
@@ -201,6 +200,8 @@ let LAYERS_BASE = [
 	"WrappingLegsOver2",
 	"LegbinderLegsOver2",
 	"Greaves",
+
+	"OverGarters",
 
 	"WrappingTorsoMid", // For stuff that goes over a shirt and clothes but under restraints, e.g. tape
 
@@ -242,7 +243,6 @@ let LAYERS_BASE = [
 
 	// Corsets that go under harness and poofy skirt
 	"Corset",
-	"Garters",
 
 	"Bra",
 
@@ -254,6 +254,8 @@ let LAYERS_BASE = [
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
 	"PetsuitLegs",
+
+	"Garters",
 
 	"WrappingTorsoUnder",// For skintight stuff
 

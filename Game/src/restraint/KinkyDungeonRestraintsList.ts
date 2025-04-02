@@ -3256,6 +3256,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			"More_Yokes": 3.5,
 			"Less_Yokes": 0.1,
 		},
+		events: [
+			{trigger: "getHandsBound", type: "Yoke", inheritLinked: true},
+		],
 		restriction: 10,
 		Color: "Default", bindarms: true, restricthands: 0.85, power: 6, weight: 0, DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
@@ -3266,6 +3269,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			"More_Yokes": 3.5,
 			"Less_Yokes": 0.1,
 		},
+		events: [
+			{trigger: "getHandsBound", type: "Yoke", inheritLinked: true},
+		],
 		restriction: 10,
 		Color: "Default", bindarms: true, restricthands: 0.85, power: 9, weight: 0, DefaultLock: "Disc",
 		escapeChance: {"Struggle": -1, "Cut": -0.8, "Remove": 0.4, "Pick": -0.25, "Unlock": -0.25},
@@ -3276,6 +3282,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			"More_Yokes": 3.5,
 			"Less_Yokes": 0.1,
 		},
+		events: [
+			{trigger: "getHandsBound", type: "Fiddle", inheritLinked: true},
+		],
 		restriction: 10,
 		Color: "Default", bindarms: true, restricthands: 0.75, power: 6, weight: 0, DefaultLock: "Red",
 		escapeChance: {"Struggle": -0.6, "Cut": -0.55, "Remove": 4, "Pick": -0.13, "Unlock": -0.09},
@@ -6030,6 +6039,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "postRemoval", type: "RequireNeoBelt", inheritLinked: true},
 			{trigger: "tick", type: "AccuracyBuff", power: -0.25, inheritLinked: true},
 			{trigger: "getArmsBound", type: "WaistToWrist", inheritLinked: true, power: 1.5},
+			{trigger: "getHandsBound", type: "WaistToWrist", inheritLinked: true, power: 1.5},
 			{trigger: "getWeapon", type: "NoTwoHanded", inheritLinked: true},
 		]},
 

@@ -1095,7 +1095,11 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 
 		KDLastKneelTurns = Math.max(KDGameData.KneelTurns, KDLastKneelTurns);
 
-		if (KneelStats.minKneel == 0 && KneelStats.kneelRate > 0) {
+		let minKneelTarget = 0;
+		if (KDIsGrounded()) {
+			minKneelTarget = 1;
+		}
+		if (KneelStats.minKneel <= minKneelTarget && KneelStats.kneelRate > 0) {
 			DrawTextFitKDTo(kdstatusboard,
 				TextGet("KDBalanceGettingUp")
 				.replace("AMNT", "" + Math.ceil(KDGameData.KneelTurns / KneelStats.kneelRate)),
@@ -3357,7 +3361,7 @@ function KDDrawStruggleGroups() {
 						).replace("ESCP", TextGet("KDEscape" + StruggleType)),
 						530, MY + O * lineSize, KDBaseWhite, "#333333", fontSize, "left", 150);
 
-						if (struggleData.escapeChance) {
+						if (struggleData.escapePenalty) {
 							DrawTextKD("" +
 										((struggleData.escapePenalty) ? ` (${struggleData.escapePenalty > 0 ?
 											Math.round(-100 * struggleData.escapePenalty)
