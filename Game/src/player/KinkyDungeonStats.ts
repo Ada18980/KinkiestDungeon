@@ -1413,13 +1413,15 @@ function KinkyDungeonCanUseWeapon(NoOverride?: boolean, e?: boolean, weapon?: we
 		HandsFree: false,
 		clumsy: weapon?.clumsy,
 		weapon: weapon,
+		treatAsHandsBound: false,
 	};
 	if (!NoOverride)
 		KinkyDungeonSendEvent("getWeapon", {event: e, flags: flags});
 	return flags.HandsFree
 		|| weapon?.noHands
-		|| (!KinkyDungeonIsHandsBound(false, true)
-			&& ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy) || !KinkyDungeonIsArmsBound(false, true)));
+		|| (!(flags.treatAsHandsBound || KinkyDungeonIsHandsBound(false, true))
+			&& ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy)
+			|| !(flags.treatAsHandsBound || KinkyDungeonIsHandsBound(false, true))));
 }
 
 let KDBlindnessCap = 0;
@@ -1750,6 +1752,9 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if (delta > 0) {
 		if (!KDGameData.BalancePause)
 			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 1.5 : 1.0) * KDGetBalanceRate()*delta, true);
+		else {
+			KDChangeBalanceSrc("player", "balance", "tick", (KDGameData.KneelTurns > 0 ? 0.015 : 0.01) * KDGetBalanceRate()*delta, true);
+		}
 		KDGameData.BalancePause = false;
 	}
 

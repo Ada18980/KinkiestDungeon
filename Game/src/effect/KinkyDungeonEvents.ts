@@ -247,6 +247,39 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			}
 		},
 	},
+	getArmsBound: {
+		"WaistToWrist": (e, item, data: ArmsBoundData) => {
+			let frp = 8;
+			if (data.group && data.forceResultPower < frp) {
+				let heightDiff = KDGetGroupHeight(data.C || KinkyDungeonPlayer, data.group)
+					- KDGetGroupHeight(data.C || KinkyDungeonPlayer, "ItemTorso");
+				let depthDiff = KDGetGroupDepth(data.C || KinkyDungeonPlayer, data.group)
+					KDGetGroupDepth(data.C || KinkyDungeonPlayer, "ItemTorso");
+
+				let success = Math.max(Math.abs(heightDiff), Math.abs(depthDiff)) <= e.power;
+				if (!success && !data.query) {
+					KinkyDungeonSendTextMessage(4, TextGet("KDTugWaistRestraints"), KDBaseRed, 1, false, true);
+				}
+
+				if (!success) {
+					data.forceResult = true;
+					data.forceResultPower = frp;
+				}
+			}
+		},
+	},
+	"getWeapon": {
+		"TreatAsBound": (_e, item, data) => {
+			if (data.flags) {
+				data.flags.treatAsHandsBound = true;
+			}
+		},
+		"NoTwoHanded": (_e, item, data) => {
+			if (data.flags && data.flags.weapon?.clumsy) {
+				data.flags.treatAsHandsBound = true;
+			}
+		},
+	},
 	"miscast": {
 		"EssenceMote": (e, item, data) => {
 			//if (KinkyDungeonFlags.get("essMote")) return;
@@ -1853,6 +1886,35 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				if (!upper || !lower) {
 					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveHogtie"), KDBaseLightGreen, 2);
+				}
+			}
+		},
+
+		"RequireNeoBelt": (_e, item, data) => {
+			if (data.Character != KinkyDungeonPlayer) return;
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
+				let cuffsbase = false;
+				for (let inv of KinkyDungeonAllRestraint()) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("NeoBelt"))) {
+						cuffsbase = true;
+						break;
+					} else if (inv.dynamicLink) {
+						let link = inv.dynamicLink;
+						// Recursion thru to make sure we have an armbinder buried in there... somewhere
+						for (let i = 0; i < 20; i++) {
+							if (link && KDRestraint(link).shrine && (KDRestraint(link).shrine.includes(
+								"NeoBelt"))) {
+								cuffsbase = true;
+								break;
+							}
+							if (link.dynamicLink) link = link.dynamicLink;
+							else i = 200;
+						}
+					}
+				}
+				if (!cuffsbase) {
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveBelt"), KDBaseLightGreen, 2);
 				}
 			}
 		},

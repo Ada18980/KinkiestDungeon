@@ -4253,6 +4253,7 @@ KinkyDungeonRemoveCuffsCyberAnkleCuffs,The energy link between your ankle cuffs 
 KinkyDungeonRemoveCuffsCyberWristCuffs,The energy link between your arm cuffs fizzles into nothing.
 KinkyDungeonRemoveCuffsCyberLegCuffs,The energy link between your thigh cuffs fizzles into nothing.
 KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
+KinkyDungeonRemoveBelt,The waist links come off with the belt.
 KinkyDungeonRemoveHogtie,The hogtie link comes off.
 RestraintTrapCuffs,Handcuffs
 RestraintTrapCuffsDesc,"A pair of steel cuffs locked securely around your wrists. Can be applied on vulnerable targets if targeted from inventory or hotbar."
@@ -30017,6 +30018,15 @@ RestraintChainHogtieLinkDesc,"A very strict and tight hogtie, good for subduing 
 RestraintChainHogtieLinkDesc2,"A metal chain holds your back in an arched position."
 
 
+RestraintNeoLinkThighs,Waist Links (Thighs)
+RestraintNeoLinkThighsDesc,"High-security cables connecting your belt to your thigh cuffs. Slightly restricts mobility, increasing Sprint Cost by 10%."
+RestraintNeoLinkThighsDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
+
+RestraintNeoLinkArms,Waist Links (Arms)
+RestraintNeoLinkArmsDesc,"High-security cables connecting your belt to your wrist cuffs. They reduce your desterity, making it harder to reach your neck and mouth, reducing Accuracy by 25%, and preventing the use of two-handed weapons."
+RestraintNeoLinkArmsDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
+
+
 RestraintThighLink,Thigh Chain
 RestraintThighLinkDesc,"A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual."
 RestraintThighLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
@@ -31851,3 +31861,5 @@ KinkyDungeonInventoryItemPotionStrengthDesc2,"For 50 turns, increase the base da
 KDMovedToStorage,${Count}x${Item} moved to storage
 KDNotEnoughInventorySpace,Not Enough Inventory Space
 KDCantDrop,You can't drop that
+
+KDTugWaistRestraints,"You tug against your waist restraints, but your arms can't reach far enough."

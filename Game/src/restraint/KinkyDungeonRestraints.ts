@@ -166,7 +166,7 @@ function KDGetWillPenalty(StruggleType: string): number {
 	let scale = 0;
 	let scalestart = KDWillEscapePenaltyStart;
 	let max = KDWillEscapePenalty;
-	if (!KinkyDungeonIsArmsBound(true)) {
+	if (!KinkyDungeonIsArmsBound(true, undefined, undefined, true)) {
 		scalestart = KDWillEscapePenaltyStartArms;
 		max = KDWillEscapePenaltyArms;
 	}
@@ -1026,7 +1026,7 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 		groupIsHigh: !group || (
 			group.startsWith("ItemM")
 			|| group == "ItemArms"
-			|| (group == "ItemHands" || !KinkyDungeonIsArmsBound())
+			|| (group == "ItemHands" || !KinkyDungeonIsArmsBound(false, true, group, false, !Message))
 			|| group == "ItemEars"
 			|| group == "ItemHood"
 			|| group == "ItemHead"
@@ -1081,7 +1081,9 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	} else if (affinity == "Sharp") {
 		if (((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) || KinkyDungeonWeaponCanCut(false)) return true;
-		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) && (!KinkyDungeonIsArmsBound() || KinkyDungeonStatsChoice.has("Psychic") || KinkyDungeonWallCrackAndKnife(false))) return true;
+		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) && (!KinkyDungeonIsArmsBound(
+			true, false, group
+		) || KinkyDungeonStatsChoice.has("Psychic") || KinkyDungeonWallCrackAndKnife(false))) return true;
 		let tile = KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 		if (tile == '/') {
 			if (Message)
@@ -1293,7 +1295,7 @@ function KinkyDungeonCanUseKey(Other: boolean = true): boolean {
  * @param [Other] - Is this on yourself or another?
  * @param Threshold - Threshold
  */
-function KinkyDungeonIsHandsBound(ApplyGhost?: boolean, Other?: boolean, Threshold: number = 0.99): boolean {
+function KinkyDungeonIsHandsBound(ApplyGhost?: boolean, Other?: boolean, Threshold: number = 0.99, group?: string, NoEvent?: boolean, query: boolean = true): boolean {
 	/*let blocked = InventoryItemHasEffect(InventoryGet(KinkyDungeonPlayer, "ItemHands"), "Block", true) || KDGroupBlocked("ItemHands");
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).bindhands) {
@@ -1301,9 +1303,31 @@ function KinkyDungeonIsHandsBound(ApplyGhost?: boolean, Other?: boolean, Thresho
 			break;
 		}
 	}*/
+
+	if (!NoEvent) {
+		let data: HandsBoundData = {
+			C: KinkyDungeonPlayer,
+			ApplyGhost: ApplyGhost,
+			Other: Other,
+			group: group,
+			forceResult: undefined,
+			forceResultPower: 0,
+			query: query,
+		}
+
+		KinkyDungeonSendEvent("getArmsBound", data);
+		if (data.forceResult != undefined) {
+			return data.forceResult;
+		}
+
+		ApplyGhost = data.ApplyGhost;
+		Other = data.Other;
+		group = data.group;
+	}
+
 	let blocked = KDHandBondageTotal(Other) > Threshold;
 	let help = ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp());
-	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers") && KinkyDungeonIsArmsBound(ApplyGhost, Other)) return true;
+	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers") && KinkyDungeonIsArmsBound(ApplyGhost, Other, group, NoEvent, query)) return true;
 	return (!ApplyGhost || !(help)) &&
 		blocked;
 }
@@ -1313,7 +1337,30 @@ function KinkyDungeonIsHandsBound(ApplyGhost?: boolean, Other?: boolean, Thresho
  * @param [Other] - Is this on yourself or another?
  * @param Threshold - Threshold
  */
-function KinkyDungeonIsHandsBoundFast(ApplyGhost?: boolean, Other?: boolean): boolean {
+function KinkyDungeonIsHandsBoundFast(ApplyGhost?: boolean, Other?: boolean, group?: string, NoEvent?: boolean, query: boolean = true): boolean {
+
+	if (!NoEvent) {
+		let data: HandsBoundData = {
+			C: KinkyDungeonPlayer,
+			ApplyGhost: ApplyGhost,
+			Other: Other,
+			group: group,
+			forceResult: undefined,
+			forceResultPower: 0,
+			fast: true,
+			query: query,
+		}
+
+		KinkyDungeonSendEvent("getArmsBound", data);
+		if (data.forceResult != undefined) {
+			return data.forceResult;
+		}
+
+		ApplyGhost = data.ApplyGhost;
+		Other = data.Other;
+		group = data.group;
+	}
+
 	let blocked = !!KinkyDungeonPlayerTags.get("BoundHands");
 	let help = ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp());
 	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers")
@@ -1339,7 +1386,7 @@ function KDHandBondageTotal(Other: boolean = false): number {
 	return total;
 }
 
-function KinkyDungeonCanUseFeet(bootsPrevent: boolean = true): boolean {
+function KinkyDungeonCanUseFeet(bootsPrevent: boolean = true, group? : string): boolean {
 	return KinkyDungeonStatsChoice.get("Flexible") && KinkyDungeonSlowLevel < 1
 		&& (!bootsPrevent ||
 			(!KinkyDungeonPlayerTags.get("HinderFeet")
@@ -1358,7 +1405,30 @@ function KinkyDungeonCanUseFeetLoose(bootsPrevent: boolean = true): boolean {
  * @param [ApplyGhost]
  * @param [Other] - Is this on yourself or another?
  */
-function KinkyDungeonIsArmsBound(ApplyGhost?: boolean, _Other?: boolean): boolean {
+function KinkyDungeonIsArmsBound(ApplyGhost?: boolean, Other?: boolean, group: string = "", NoEvent: boolean = false, query: boolean = true): boolean {
+
+	if (!NoEvent) {
+		let data: ArmsBoundData = {
+			C: KinkyDungeonPlayer,
+			ApplyGhost: ApplyGhost,
+			Other: Other,
+			group: group,
+			forceResult: undefined,
+			forceResultPower: 0,
+			fast: true,
+			query: query
+		}
+
+		KinkyDungeonSendEvent("getArmsBound", data);
+		if (data.forceResult != undefined) {
+			return data.forceResult;
+		}
+
+		ApplyGhost = data.ApplyGhost;
+		Other = data.Other;
+		group = data.group;
+	}
+
 	let blocked = KDGroupBlocked("ItemArms");
 	if (!blocked)
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
@@ -1374,21 +1444,87 @@ function KinkyDungeonIsArmsBound(ApplyGhost?: boolean, _Other?: boolean): boolea
  * @param [ApplyGhost]
  * @param [Other] - Is this on yourself or another?
  */
-function KinkyDungeonIsArmsBoundFast(ApplyGhost?: boolean, _Other?: boolean): boolean {
+function KinkyDungeonIsArmsBoundFast(ApplyGhost?: boolean, Other?: boolean, group: string = "", NoEvent: boolean = false, query: boolean = true): boolean {
+	if (!NoEvent) {
+		let data: ArmsBoundData = {
+			C: KinkyDungeonPlayer,
+			ApplyGhost: ApplyGhost,
+			Other: Other,
+			group: group,
+			forceResult: undefined,
+			forceResultPower: 0,
+			fast: true,
+			query: query,
+		}
+
+		KinkyDungeonSendEvent("getArmsBound", data);
+		if (data.forceResult != undefined) {
+			return data.forceResult;
+		}
+
+		ApplyGhost = data.ApplyGhost;
+		Other = data.Other;
+		group = data.group;
+	}
+
 	let blocked = KDGroupBlocked("ItemArms");
 	if (!blocked)
 		if (KinkyDungeonPlayerTags.get("BoundArms"))
 	return (!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) &&
 		blocked;
 }
+
+interface ArmsBoundData {
+	query: boolean,
+	C: Character;
+	ApplyGhost: boolean;
+	Other: boolean;
+	group: string;
+	forceResult: any;
+	forceResultPower: number;
+	fast?: boolean,
+}
+interface HandsBoundData {
+	query: boolean,
+	C: Character;
+	ApplyGhost: boolean;
+	Other: boolean;
+	group: string;
+	forceResult: any;
+	forceResultPower: number;
+	fast?: boolean,
+}
 /**
  * @param C
  * @param [ApplyGhost]
  * @param [Other] - Is this on yourself or another?
  */
-function KinkyDungeonIsArmsBoundC(C: Character, ApplyGhost?: boolean, Other?: boolean): boolean {
+function KinkyDungeonIsArmsBoundC(C: Character, ApplyGhost?: boolean, Other?: boolean, group: string = "", NoEvent: boolean = false, query: boolean = true): boolean {
+	if (!NoEvent) {
+		let data: ArmsBoundData = {
+			C: C,
+			ApplyGhost: ApplyGhost,
+			Other: Other,
+			group: group,
+			forceResult: undefined,
+			forceResultPower: 0,
+			query: query,
+		}
+
+		KinkyDungeonSendEvent("getArmsBound", data);
+		if (data.forceResult != undefined) {
+			return data.forceResult;
+		}
+
+		C = data.C;
+		ApplyGhost = data.ApplyGhost;
+		Other = data.Other;
+		group = data.group;
+	}
+
+
 	if (C == KinkyDungeonPlayer) {
-		return KinkyDungeonIsArmsBound(ApplyGhost, Other);
+		return KinkyDungeonIsArmsBound(ApplyGhost, Other, group, NoEvent, query);
 	} else {
 		for (let inv of KDGetRestraintsForCharacter(C)) {
 			if (KDRestraint(inv)?.bindarms) {
@@ -1527,8 +1663,8 @@ function KinkyDungeonPickAttempt(): boolean {
 		Pass = "Fail";
 	}
 
-	let handsBound = KinkyDungeonIsHandsBound(false, true, 0.55) && !KinkyDungeonCanUseFeet();
-	let armsBound = KinkyDungeonIsArmsBound();
+	let handsBound = KinkyDungeonIsHandsBound(false, true, 0.55, undefined, undefined, false) && !KinkyDungeonCanUseFeet();
+	let armsBound = KinkyDungeonIsArmsBound(false, true, undefined, undefined, false);
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
 	if (armsBound) {
@@ -1580,8 +1716,8 @@ function KinkyDungeonUnlockAttempt(lock: string): boolean {
 
 	KinkyDungeonInterruptSleep();
 
-	let handsBound = KinkyDungeonIsHandsBound(false, true, 0.85) && !KinkyDungeonCanUseFeet();
-	let armsBound = KinkyDungeonIsArmsBound();
+	let handsBound = KinkyDungeonIsHandsBound(false, true, 0.85, undefined, undefined, false) && !KinkyDungeonCanUseFeet();
+	let armsBound = KinkyDungeonIsArmsBound(false, true, undefined, undefined, false);
 	let strict = KinkyDungeonStrictness(false, "ItemHands");
 	if (!strict) strict = 0;
 	if (armsBound) escapeChance = Math.max(0.1, escapeChance - 0.25);
@@ -1859,7 +1995,9 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	let increasedAttempts = false;
 
-	data.handsBound = KinkyDungeonIsHandsBound(true, false, StruggleTypeHandThresh[data.struggleType]) && !KinkyDungeonCanUseFeet();
+	data.handsBound = KinkyDungeonIsHandsBound(true, false,
+		StruggleTypeHandThresh[data.struggleType],
+		data.struggleGroup, data.query) && !KinkyDungeonCanUseFeet(undefined, data.struggleGroup);
 	data.handBondage = data.handsBound ? 1.0 : Math.min(1, Math.max(0, KDHandBondageTotal(false)));
 	//let cancut = false;
 
@@ -1874,7 +2012,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 	// Finger extensions will help if your hands are unbound. Some items cant be removed without them!
 	// Mouth counts as a finger extension on your hands if your arms aren't tied
-	let armsBound = KinkyDungeonIsArmsBound(true);
+	let armsBound = KinkyDungeonIsArmsBound(true, false, data.struggleGroup, false, data.query);
 	let armsBoundOverride = false;
 	let handsBoundOverride = false;
 
@@ -2259,12 +2397,13 @@ function KDGetStruggleData(data: KDStruggleData): string {
 	}
 
 	// Reduce cutting power if you dont have hands
-	if (data.escapeChance > 0 && data.struggleType == "Cut" && KinkyDungeonIsHandsBound(true)) {
+	if (data.escapeChance > 0 && data.struggleType == "Cut" && KinkyDungeonIsHandsBound(true, false,
+		undefined, data.struggleGroup, false, data.query)) {
 		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) {
 			if (KinkyDungeonWallCrackAndKnife(true)) {
 				data.escapeChance *= 0.92;
 				data.limitChance *= 0.9; // Compensate by reducing limit chance a little
-			} else if (!KinkyDungeonIsArmsBound(true)) {
+			} else if (!KinkyDungeonIsArmsBound(true, false, data.struggleGroup, false, data.query)) {
 				data.escapeChance *= 0.7;
 				data.limitChance *= 0.8; // Compensate by reducing limit chance a little
 			} else if (KinkyDungeonStatsChoice.get("Psychic")) {
@@ -5742,7 +5881,8 @@ function KDAddCuffVariants (
 	CuffModels:            Record<string, string> = {},
 	noLockBase?:           boolean,
 	noLockLink?:           boolean,
-	Properties?:           Record<string, LayerPropertiesType>
+	Properties?:           Record<string, LayerPropertiesType>,
+	ExtraProps?:           Record<string, KDRestraintPropsBase>,
 )
 {
 	for (let part of Object.entries(KDCuffParts)) {
@@ -5837,7 +5977,13 @@ function KDAddCuffVariants (
 					delete props.escapeChance.Unlock;
 				}
 			}
-			KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart, Object.assign(props, properties));
+			let pp = Object.assign(props, properties);
+			if (ExtraProps && ExtraProps[cuffPart]) {
+				pp = Object.assign(pp, ExtraProps[cuffPart]);
+			}
+			KinkyDungeonCloneRestraint(CopyOf + cuffPart, idSuffix + cuffPart,
+				pp
+			);
 		}
 	}
 }

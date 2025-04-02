@@ -487,7 +487,8 @@ class TextProvider {
 		tag: string,
 		params?: TemplateParams
 	): string {
-		return this.getTextFromGroupStrict(groupId, tag, params) || "[NotFound] " + tag;
+		let src = this.getTextFromGroupStrict(groupId, tag, params);
+		return src != undefined ? src : ("[NotFound] " + tag);
 	}
 
 
