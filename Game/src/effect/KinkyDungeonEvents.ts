@@ -1008,7 +1008,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					return;
 				}
 				let elapsedTime = KinkyDungeonCurrentTick - addedTick;
-				if (elapsedTime % (_e.time + elapsedTime/4) !== 0) return;
+				if (elapsedTime % (_e.time + elapsedTime/11) !== 0) return;
 			}
 			if ((KDRandom() < (_e.chance || 0.1))) {
 				if (item) {
