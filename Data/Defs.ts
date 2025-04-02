@@ -262,6 +262,8 @@ let LAYERS_BASE = [
 
 	"LooseStraps",
 
+	"PetsuitLegsUnder",
+
 	// Left Leg
 	"KneeAccLeft",
 	"ThighsOver",
@@ -717,6 +719,7 @@ let LayerGroups = {
 		"WrappingLegsUnder",
 		"WrappingLegsRight",
 		"PetsuitLegs",
+		"PetsuitLegsUnder",
 	]),
 	"SlimeThighs": ToMap([
 		"AnklesOver",
@@ -737,6 +740,7 @@ let LayerGroups = {
 		"LegbinderLegsOver",
 		"LegbinderAnklesOver",
 		"PetsuitLegs",
+		"PetsuitLegsUnder",
 	]),
 	"Boots": ToMap([
 		"AnklesOver",
@@ -1783,6 +1787,7 @@ let LayerGroups = {
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
 	"PetsuitLegs",
+	"PetsuitLegsUnder",
 	"WrappingAnklesOver",
 	"LegbinderAnklesOver",
 

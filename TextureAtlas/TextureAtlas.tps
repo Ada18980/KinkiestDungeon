@@ -1831,6 +1831,7 @@
             <key type="filename">../Models/HighSec/CollarHogtie.png</key>
             <key type="filename">../Models/HighSec/Corset.png</key>
             <key type="filename">../Models/HighSec/CorsetChest.png</key>
+            <key type="filename">../Models/HighSec/CorsetCrotch.png</key>
             <key type="filename">../Models/HighSec/CorsetCrotchStraps.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterLeft.png</key>
             <key type="filename">../Models/HighSec/CorsetGarterLeftBack.png</key>
@@ -1882,6 +1883,7 @@
             <key type="filename">../Models/HighSec/CorsetHardwareGarterRightKneel.png</key>
             <key type="filename">../Models/HighSec/CorsetHardwareGarterRightKneel2.png</key>
             <key type="filename">../Models/HighSec/CorsetHardwareGarterRightKneelGarter.png</key>
+            <key type="filename">../Models/HighSec/CorsetNoCrotch.png</key>
             <key type="filename">../Models/HighSecBallet/SoleLeftClosed.png</key>
             <key type="filename">../Models/HighSecBallet/SoleLeftHogtie.png</key>
             <key type="filename">../Models/HighSecBallet/SoleLeftKneel.png</key>
@@ -2519,6 +2521,7 @@
             <key type="filename">../Models/Labcoat/ShouldersYoked.png</key>
             <key type="filename">../Models/LatexPetsuit/Arms.png</key>
             <key type="filename">../Models/LatexPetsuit/ArmsBelts.png</key>
+            <key type="filename">../Models/LatexPetsuit/ButtKneel.png</key>
             <key type="filename">../Models/LatexPetsuit/GlowArms.png</key>
             <key type="filename">../Models/LatexPetsuit/GlowLeftLegsKneel.png</key>
             <key type="filename">../Models/LatexPetsuit/GlowLeftLegsKneelClosed.png</key>
