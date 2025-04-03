@@ -30775,7 +30775,8 @@ KDBindNPCSlot_NippleWeight,Weights
 KDBindNPCSlot_NippleVibe,Vibes
 KDBindNPCSlot_ChastityBra,Chastity Bra
 KDBindNPCSlot_Suits,Catsuit / Leotard
-KDBindNPCSlot_HarnessExtra,Harness
+KDBindNPCSlot_HarnessExtra,Harness / Links
+KDBindNPCSlot_HarnessLink,Links
 KDBindNPCSlot_Harness,Harness
 KDBindNPCSlot_Corset,Corset
 KDBindNPCSlot_RearPlug,Rear Plug

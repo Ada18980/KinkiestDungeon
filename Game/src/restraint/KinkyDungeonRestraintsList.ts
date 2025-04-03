@@ -6031,7 +6031,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		linkSize: 0.35, linkCategory: "ThighBeltLink", noDupe: true,
 		Type: "Chained", Color: ['#888888', '#FFFFFF', '#CFBE88', '#000000'],
 		Group: "ItemTorso", power: 5, weight: 0,
-		minLevel: 0, allFloors: true, shrine: ["DualTethers", "Tethers", "RubberCoat", "ThighLink", "Link", "Metal", "Cuffs"],
+		minLevel: 0, allFloors: true, shrine: ["DualTethers", "Tethers", "RubberCoat", "LinkThighs", "Link", "Metal", "Cuffs"],
 		escapeChance: {"Struggle": -0.8, "Cut": -0.33, "Remove": 0.15, "Pick": 0.15},
 		enemyTags: {jailer: 0.1, linkRegular: 40, handcuffer: 40, shackleRestraints: 40, "legLink": 1},
 		playerTags: {},
@@ -6061,7 +6061,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		Group: "ItemTorso", power: 5, weight: 0,
 		escapeChance: {"Struggle": -0.8, "Cut": -0.33, "Remove": 0.15, "Pick": 0.15},
 		enemyTags: {jailer: 0.1, leashing: 0.1, linkRegular: 40, handcuffer: 40, shackleRestraints: 40, "feetLink": 10}, playerTags: {},
-		minLevel: 0, allFloors: true, shrine: ["DualTethers", "Tethers", "RubberCoat", "AnkleLink", "Link", "Metal", "DiscourageYoked", "DiscourageUp"],
+		minLevel: 0, allFloors: true,
+		shrine: ["DualTethers", "Tethers", "RubberCoat", "LinkArms", "Link", "Metal", "DiscourageYoked", "DiscourageUp"],
 		DefaultLock: "Red",
 		unlimited: true,
 		events: [
