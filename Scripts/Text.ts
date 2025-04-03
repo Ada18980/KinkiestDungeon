@@ -438,6 +438,16 @@ class TextProvider {
 	getText(tag: string, params?: TemplateParams): string {
 		return this.getTextFromGroup(this.defaultGroupId, tag, params);
 	}
+	/**
+	 * Retrieves the text associated with the specified tag.
+	 *
+	 * @param tag - The tag identifying the text to retrieve.
+	 * @param params - Optional parameters to format the text.
+	 * @returns The text associated with the specified tag, formatted with the provided parameters if any.
+	 */
+	hasText(tag: string, params?: TemplateParams): boolean {
+		return !!this.getTextFromGroupStrict(this.defaultGroupId, tag, params);
+	}
 
 	public queryResourceConfig(groupId: TextGroupId): TextResourceConfig[] {
 		return this.textResourceConfig.filter(
@@ -646,8 +656,8 @@ const textProvider = TextProvider.instance;
 function TextGet(TextTag: string, params?: TemplateParams): string {
 	return textProvider.getText(TextTag, params);
 }
-function HasText(TextTag: string, params?: TemplateParams): string {
-	return textProvider.getText(TextTag, params);
+function HasText(TextTag: string, params?: TemplateParams): boolean {
+	return textProvider.hasText(TextTag, params);
 }
 
 
