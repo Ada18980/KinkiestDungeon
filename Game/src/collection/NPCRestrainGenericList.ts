@@ -20,6 +20,32 @@ interface RestraintGenericTypeSlot {
 
 
 let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
+	"Chain": {
+		raw: "ChainRaw",
+		items: [
+			{count: 1, restraint: "ChainArms"},
+			{count: 1, restraint: "ChainFeet"},
+			{count: 1, restraint: "ChainLegs"},
+			{count: 1, restraint: "ChainCrotch"},
+			{count: 1, restraint: "AnkleLink"},
+			{count: 1, restraint: "AnkleLinkShort"},
+			{count: 1, restraint: "ThighLink"},
+			{count: 1, restraint: "WristLink"},
+			{count: 1, restraint: "ElbowLink"},
+		],
+	},
+	"NeoLink": {
+		raw: "NeoLink",
+		items: [
+			{count: 1, restraint: "NeoAnkleLink"},
+			{count: 1, restraint: "NeoAnkleLinkShort"},
+			{count: 1, restraint: "NeoThighLink"},
+			{count: 1, restraint: "NeoWristLink"},
+			{count: 1, restraint: "NeoElbowLink"},
+			{count: 1, restraint: "NeoLinkArms"},
+			{count: 1, restraint: "NeoLinkThighs"},
+		],
+	},
 	"HempRope": {
 		raw: "RopeSnakeRaw",
 		items: [

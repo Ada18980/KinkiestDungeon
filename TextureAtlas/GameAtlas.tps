@@ -2165,6 +2165,7 @@
             <key type="filename">../Game/InventoryAction/Drop.png</key>
             <key type="filename">../Game/InventoryAction/Equip.png</key>
             <key type="filename">../Game/InventoryAction/Favorite.png</key>
+            <key type="filename">../Game/InventoryAction/GenericBondage.png</key>
             <key type="filename">../Game/InventoryAction/Hotbar.png</key>
             <key type="filename">../Game/InventoryAction/Lock.png</key>
             <key type="filename">../Game/InventoryAction/Macaron.png</key>
@@ -2289,6 +2290,7 @@
             <key type="filename">../Game/Items/PotionInvisibility.png</key>
             <key type="filename">../Game/Items/PotionMana.png</key>
             <key type="filename">../Game/Items/PotionStamina.png</key>
+            <key type="filename">../Game/Items/PotionStrength.png</key>
             <key type="filename">../Game/Items/PotionWill.png</key>
             <key type="filename">../Game/Items/Rapier.png</key>
             <key type="filename">../Game/Items/RedKey.png</key>
@@ -3747,6 +3749,7 @@
             <key type="filename">../Game/Items/Restraint/ChastityBras.png</key>
             <key type="filename">../Game/Items/Restraint/ClothGag.png</key>
             <key type="filename">../Game/Items/Restraint/ClothGagOver.png</key>
+            <key type="filename">../Game/Items/Restraint/CyberCuffs.png</key>
             <key type="filename">../Game/Items/Restraint/CyberLink.png</key>
             <key type="filename">../Game/Items/Restraint/EssenceNecklace.png</key>
             <key type="filename">../Game/Items/Restraint/Gauntlets.png</key>
@@ -3808,6 +3811,27 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/Items/Restraint/Cables.png</key>
+            <key type="filename">../Game/Items/Restraint/Chains.png</key>
+            <key type="filename">../Game/Items/Restraint/Cuffs.png</key>
+            <key type="filename">../Game/Items/Restraint/Metal.png</key>
+            <key type="filename">../Game/Items/Restraint/Tethers.png</key>
+            <key type="filename">../Game/UI/Recycler/Metal.png</key>
+            <key type="filename">../Game/UI/Recycler/Metal2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>18,18,37,36</rect>
+                <key>scale9Paddings</key>
+                <rect>18,18,37,36</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/Items/Restraint/Catsuits.png</key>
             <key type="filename">../Game/Items/Restraint/Collars.png</key>
             <key type="filename">../Game/Items/Restraint/Corsets.png</key>
@@ -3823,24 +3847,6 @@
                 <rect>61,61,122,122</rect>
                 <key>scale9Paddings</key>
                 <rect>61,61,122,122</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Game/Items/Restraint/Cuffs.png</key>
-            <key type="filename">../Game/Items/Restraint/Metal.png</key>
-            <key type="filename">../Game/UI/Recycler/Metal.png</key>
-            <key type="filename">../Game/UI/Recycler/Metal2.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>18,18,37,36</rect>
-                <key>scale9Paddings</key>
-                <rect>18,18,37,36</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

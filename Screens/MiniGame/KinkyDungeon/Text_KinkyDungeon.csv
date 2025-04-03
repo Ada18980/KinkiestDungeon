@@ -5320,6 +5320,20 @@ RestraintDuctTapeHands,Tape Mittens
 RestraintDuctTapeHandsDesc,"Sticky tape that holds your hands into a fist!"
 RestraintDuctTapeHandsDesc2,"It's tough to get out of without some kind of grip!"
 
+
+RestraintChainRaw,Iron Chain
+RestraintChainRawDesc,"Wrought iron chains made to hold something with a bit of persuasion."
+RestraintChainRawDesc2,"Metal is naturally difficult to cut, but it's easy to unravel if not kept secure with a lock."
+
+RestraintSteelChainRaw,Steel Chain
+RestraintSteelChainRawDesc,"Shiny steel chains intended for difficult prisoners."
+RestraintSteelChainRawDesc2,"Heavy duty, hardened steel, resistant to bolt cutters and utterly futile to struggle against."
+
+RestraintNeoLinkRaw,Reinforced Links
+RestraintNeoLinkRawDesc,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps allow them to link cuffs together."
+RestraintNeoLinkRawDesc2,"Tough, and well-protected from acid."
+
+
 RestraintChainArms,Arm Chains
 RestraintChainArmsDesc,"Heavy chains keeping your arms securely behind your back."
 RestraintChainArmsDesc2,"It doesn't look like a knife is up to the task..."
@@ -30038,6 +30052,15 @@ RestraintNeoAnkleLinkDesc2,"A hardened metal chain coated in a layer of solid ru
 RestraintNeoAnkleLinkShort,Reinforced Ankle Link (Short)
 RestraintNeoAnkleLinkShortDesc,"Keeps your ankles connected together. Hard to walk, let alone get up after a fall."
 RestraintNeoAnkleLinkShortDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+
+
+
+RestraintElbowLink,Reinforced Elbow Link
+RestraintElbowLinkDesc,A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
+RestraintElbowLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+RestraintWristLink,Reinforced Wrist Link
+RestraintWristLinkDesc,A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
+RestraintWristLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
 
 
 RestraintNeoThighLink,Reinforced Thigh Link
