@@ -474,6 +474,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 		KDGetCharMetadata(KinkyDungeonPlayer)
 	), false, true);
 	KinkyDungeonDrawState = "Game";
+	KDResetAlternateInventoryRender();
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 	KinkyDungeonDressPlayer();
 
@@ -4743,6 +4744,7 @@ function KinkyDungeonGameKeyDown() {
 				KinkyDungeonCurrentPageInventory -= 1;
 			} else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+				KDResetAlternateInventoryRender();
 
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 				KinkyDungeonDressPlayer();
@@ -4814,6 +4816,7 @@ function KinkyDungeonGameKeyDown() {
 			}
 			else if (KinkyDungeonKeySkip[0] == KinkyDungeonKeybindingCurrentKey) {
 				KinkyDungeonDrawState = "Game";
+				KDResetAlternateInventoryRender();
 
 
 				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -4845,6 +4848,7 @@ function KinkyDungeonGameKeyDown() {
 		)
 	) {
 		if (KinkyDungeonKeyMenu.includes(KinkyDungeonKeybindingCurrentKey)) {
+			KDResetAlternateInventoryRender();
 			switch (KinkyDungeonKeybindingCurrentKey) {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;

@@ -93,6 +93,10 @@ let KDDelayedActionCommit: Record<string, (action: KDDelayedAction) => void> = {
 		KDDoEquipDelayed(action.data,
 			action.data.player ? KDGetGlobalEntity(action.data.player) : KDPlayer())
 	},
+	"EquipGenericRestraint": (action) => {
+		KDDoEquipGenericDelayed(action.data,
+			action.data.player ? KDGetGlobalEntity(action.data.player) : KDPlayer())
+	},
 	"Struggle": (action) => {
 		/**
 		 * Data format:

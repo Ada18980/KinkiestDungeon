@@ -1444,7 +1444,6 @@ function KinkyDungeonClickSpellChoice(I: number, CurrentSpell: number) {
 	// Set spell choice
 	KDSendInput("spellChoice", {I:I, CurrentSpell: CurrentSpell});
 	//if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
-	//KinkyDungeonDrawState = "Game";
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
 		KinkyDungeonFastMove = false;
 		KinkyDungeonFastMoveSuppress = false;
@@ -1471,6 +1470,7 @@ function KinkyDungeonHandleMagic(): boolean {
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = null;
 			KinkyDungeonDrawState = "Game";
+			KDResetAlternateInventoryRender();
 		}
 	} else if (KinkyDungeonPreviewSpell && MouseIn(canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale + 40, canvasOffsetY_ui + 125, 225, 60)) {
 		if (KinkyDungeonPreviewSpell.hideLearned) KinkyDungeonDrawState = "MagicSpells";
@@ -2120,6 +2120,7 @@ function KinkyDungeonListSpells(Mode: string): spell {
 									if (!KinkyDungeonSpellChoices.includes(ind)) {
 										KinkyDungeonClickSpellChoice(KDSwapSpell, ind);
 										KinkyDungeonDrawState = "Game";
+										KDResetAlternateInventoryRender();
 									}
 								}
 								return true;

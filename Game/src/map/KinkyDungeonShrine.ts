@@ -785,6 +785,7 @@ function KinkyDungeonDrawOrb() {
 			DrawButtonKDEx("orbspell" + shrine, (_b) => {
 				KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 1 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 				KinkyDungeonDrawState = "Game";
+				KDResetAlternateInventoryRender();
 				return true;
 			}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonShrine" + shrine), KDBaseWhite);
 			DrawProgressBar(canvasOffsetX_ui + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value, color, KDTextGray2);
@@ -800,11 +801,13 @@ function KinkyDungeonDrawOrb() {
 		let shrine = Object.keys(KinkyDungeonShrineBaseCosts)[Math.floor(KDRandom() * Object.keys(KinkyDungeonShrineBaseCosts).length)];
 		KDSendInput("orb", {shrine: shrine, Amount: 1, Rep: 0.9 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "DivinePrivilege")), x: KDOrbX, y: KDOrbY});
 		KinkyDungeonDrawState = "Game";
+		KDResetAlternateInventoryRender();
 		return true;
 	}, true, canvasOffsetX_ui + XX - 100, yPad + canvasOffsetY_ui + spacing * i - 27, 250, 55, TextGet("KinkyDungeonSurpriseMe"), KDBaseWhite);
 	i += 2;
 	DrawButtonKDEx("cancelorb", (_bdata) => {
 		KinkyDungeonDrawState = "Game";
+		KDResetAlternateInventoryRender();
 		return true;
 	}, true, canvasOffsetX_ui + 525, yPad + canvasOffsetY_ui + spacing * i, 425, 55, TextGet("KinkyDungeonCancel"), KDBaseWhite);
 
@@ -910,6 +913,7 @@ function KinkyDungeonDrawPerkOrb() {
 
 	DrawButtonKDEx("reject", (_bdata) => {
 		KinkyDungeonDrawState = "Game";
+		KDResetAlternateInventoryRender();
 		return true;
 	}, true, 1250-1300, 850 + 120 - 1000, 2600, 2000, TextGet("KinkyDungeonPerkReject"), KDBaseWhite, undefined, undefined, undefined, true, undefined, undefined, undefined,
 	{
@@ -921,6 +925,7 @@ function KinkyDungeonDrawPerkOrb() {
 		if (KDPerkConfirm) {
 			KDSendInput("perkorb", {shrine: "perk", perks: KDPerkOrbPerks, bondage: KDPerkOrbBondage, method: KDPerkOrbMethod, Amount: 1, x: KDOrbX, y: KDOrbY});
 			KinkyDungeonDrawState = "Game";
+			KDResetAlternateInventoryRender();
 		}
 		KDPerkConfirm = true;
 		return true;

@@ -1905,6 +1905,7 @@ function KinkyDungeonHandleHUD() {
 
 			if (KDConfirmDeleteSave) {
 				KDSendInput("defeat", {});
+				KDResetAlternateInventoryRender();
 				KinkyDungeonDrawState = "Game";
 
 
@@ -1916,6 +1917,7 @@ function KinkyDungeonHandleHUD() {
 			return true;
 		}
 		if (MouseIn(975, 550, 550, 64)) {
+			KDResetAlternateInventoryRender();
 			KinkyDungeonDrawState = "Game";
 
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -2044,6 +2046,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 
 
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goQuit", (_bdata) => {
+		KDResetAlternateInventoryRender();
 		if (skip == 0) {
 			KinkyDungeonDrawState = "Game";
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -2074,6 +2077,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[8]),
 	}); bindex++; bInc();
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goInv", (_bdata) => {
+		KDResetAlternateInventoryRender();
 		if (skip == 1)
 			KinkyDungeonDrawState = "Game";
 		else
@@ -2098,6 +2102,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[2]),
 	}); bindex++; bInc();*/
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goSpells", (_bdata) => {
+		KDResetAlternateInventoryRender();
 		if (skip == 2)
 			KinkyDungeonDrawState = "Game";
 		else
@@ -2115,6 +2120,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", "" + KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
 	if (skip == bindex) logtxt = TextGet("KDNavGame");
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goLog", (_bdata) => {
+		KDResetAlternateInventoryRender();
 		if (skip == 3)
 			KinkyDungeonDrawState = "Game";
 		else {

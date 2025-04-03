@@ -29181,6 +29181,7 @@ KDBalanceTraining,Training Level: AMNT
 
 KDInventoryActionUse,Use One
 KDInventoryActionEquip,Equip
+KDInventoryActionGenericBondage,Equip
 KDInventoryActionUnequip,Unequip
 KDInventoryActionFavorite,Favorite
 KDInventoryActionUnfavorite,Unfavorite

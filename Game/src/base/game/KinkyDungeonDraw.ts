@@ -1102,6 +1102,7 @@ function KinkyDungeonDrawGame() {
 				KDInteracting = false;
 				KinkyDungeonUpdateLightGrid = true;
 				KinkyDungeonDrawState = "Game";
+				KDResetAlternateInventoryRender();
 				KinkyDungeonMessageToggle = false;
 				KinkyDungeonTargetingSpell = null;
 				KinkyDungeonTargetingSpellItem = null;
@@ -2020,6 +2021,7 @@ function KinkyDungeonDrawGame() {
                         KinkyDungeonTargetingSpellItem = null;
                         KinkyDungeonTargetingSpellWeapon = null;
                         KinkyDungeonDrawState = "Game"
+						KDResetAlternateInventoryRender();
                         return true;
                     }, true, 500, 96, 145, 48, "Defeat", KDBaseWhite, "");
                     DrawButtonKDEx("debugBind", (_bdata) => {
@@ -2038,6 +2040,7 @@ function KinkyDungeonDrawGame() {
                         KinkyDungeonTargetingSpellItem = null;
                         KinkyDungeonTargetingSpellWeapon = null;
                         KinkyDungeonDrawState = "Game"
+						KDResetAlternateInventoryRender();
                         return true;
                     }, true, 655, 96, 145, 48, "Bind", KDBaseWhite, "");
 					DrawButtonKDEx("debugAddKey", (_bdata) => {

@@ -559,6 +559,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 		} else {
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonPotionGagged"), KDBaseRed, 1);
 
+			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -577,6 +578,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 			else KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, 2);
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotionsKneel"), "#e7cf1a", 1);
 
+			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 
@@ -589,6 +591,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 			//KinkyDungeonAdvanceTime(1);
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotions"), KDBaseRed, 1);
 
+			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 
@@ -604,6 +607,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 		//KinkyDungeonAdvanceTime(1);
 		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotionsStrict"), KDBaseRed, 1);
 
+		KDResetAlternateInventoryRender();
 		if (KinkyDungeonTextMessageTime > 0)
 			KinkyDungeonDrawState = "Game";
 
@@ -723,7 +727,10 @@ function KDTargetConsumable(inv: item, Quantity: number, itemEffect?: string): I
 	if (!Consumable) return;
 	let range = KDGetPotionRange(inv, itemEffect);
 	KDCloseQuickInv();
-	if (KinkyDungeonDrawState == "Inventory") KinkyDungeonDrawState = "Game";
+	if (KinkyDungeonDrawState == "Inventory") {
+		KinkyDungeonDrawState = "Game";
+		KDResetAlternateInventoryRender();
+	}
 	KinkyDungeonTargetingSpell =
 		{name: "useConsumable", components: [], level:1, type:"special", special: "useConsumable", noMiscast: true, manacost: 0,
 			quantity: Quantity, itemEffect: itemEffect,
@@ -757,6 +764,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 			else KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns, 2);
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotionsKneel"), "#e7cf1a", 1);
 
+			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 
@@ -769,6 +777,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 			//KinkyDungeonAdvanceTime(1);
 			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotions"), KDBaseRed, 1);
 
+			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
 				KinkyDungeonDrawState = "Game";
 
@@ -784,6 +793,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 		//KinkyDungeonAdvanceTime(1);
 		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotionsStrict"), KDBaseRed, 1);
 
+		KDResetAlternateInventoryRender();
 		if (KinkyDungeonTextMessageTime > 0)
 			KinkyDungeonDrawState = "Game";
 

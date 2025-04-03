@@ -311,11 +311,15 @@ let KDRestraintGenericTypes: Record<string, RestraintGenericType> = {
 
 let KDGenericRestraintRawCache: Record<string, {raw: string, count: number}> = {};
 let KDGenericRestraintRawOriginalCache: Record<string, {name: string, count: number}[]> = {};
+let KDGenericRestraintRawInfo: Record<string, string> = {};
 
 function KDRefreshRawCache() {
 	KDGenericRestraintRawCache = {};
-	for (let mat of Object.values(KDRestraintGenericTypes)) {
+	for (let entry of Object.entries(KDRestraintGenericTypes)) {
+		let mat = entry[1];
 		let raw = mat.raw;
+
+		KDGenericRestraintRawInfo[mat.raw] = entry[0];
 		if (!KDGenericRestraintRawOriginalCache[mat.raw] )
 			KDGenericRestraintRawOriginalCache[mat.raw] = [];
 		for (let item of mat.items) {

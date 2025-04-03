@@ -42,6 +42,7 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
 5.4.58
+- Can now do selfbondage with rope, slime, and other generic materials
 - Added reinforced links
 - Yokes now prevent you from using hands on any restraints above the lower body
 - Novice pet no longer protects you from knockdowns while petsuited

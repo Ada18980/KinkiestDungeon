@@ -229,6 +229,59 @@ function KDProcessInput(type: string, data: any): string {
 			}
 			break;
 		}
+		case "equipRestraintGeneric": {
+			let equipped = false;
+			let newItem: restraint = null;
+			let currentItem: item = null;
+			let linkable = null;
+			let name: string = data.name;
+
+			if (name) {
+				newItem = KDRestraint({name: name});
+				if (newItem) {
+					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+					if (!currentItem) equipped = false;
+					else {
+						if (KDDebugLink) {
+							linkable = KDCanAddRestraint(KDRestraint(newItem),
+							true, "", false, currentItem, true, true);
+						} else {
+							linkable = KDCanAddRestraint(KDRestraint(newItem),
+							false, "", false, currentItem, true,
+							true);
+							//KDCurrentItemLinkable(currentItem, newItem);
+						}
+						if (linkable) {
+							equipped = false;
+						} else equipped = true;
+					}
+				}
+			}
+
+			if (equipped) return "";
+
+
+			//KDDelayedActionPrune(["Action", "Equip"]);
+			KinkyDungeonSetFlag("SelfBondage", 1);
+
+			data.player = KDPlayer().id;
+
+			let maxtime = data.duration || KDGetEquipDuration(newItem.name, KDPlayer());
+			for (let i = 1; i <= maxtime; i++)
+				KDAddDelayedAction({
+					data: data,
+					commit: i == maxtime ? "EquipGenericRestraint" : undefined,
+					update: i < maxtime ? "EquipGenericRestraint" : undefined,
+					time: i,
+					tick: i - 1,
+					maxtime: maxtime,
+					tags: ["Action", "Remove", "Restrain", "Hit"],
+				});
+			KDDelayedActionStart();
+
+			break;
+		}
+
 		case "equip": {
 
 			let equipped = false;

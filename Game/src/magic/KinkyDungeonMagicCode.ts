@@ -441,39 +441,52 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), KDBaseRed, 1, true);
 			return "Fail";
 
-		} else if (en == entity) {
+		} else if (en == entity && entity == KDPlayer()) {
 			if (KinkyDungeonTargetingSpellItem) {
-				let r = KDRestraint(KinkyDungeonTargetingSpellItem);
-				if (r) {
+				if (KDIsGeneric(KinkyDungeonTargetingSpellItem)) {
+					KinkyDungeonDrawState = "Inventory";
+					KinkyDungeonCurrentFilter = LooseRestraint;
+					KDCurrentAlternateInventory = "GenericRaw";
 
-					let equippable = false;
-					if (KDDebugLink) {
-						equippable = KDCanAddRestraint(r, true, "", false,
-							KinkyDungeonTargetingSpellItem, true, true);
-					} else {
-						equippable = !KinkyDungeonGetRestraintItem(r.Group)
-							|| KDCurrentItemLinkable(KinkyDungeonGetRestraintItem(r.Group), r);
+					let filteredInventory = KinkyDungeonFilterInventory(KinkyDungeonCurrentFilter, undefined,
+						undefined, undefined, undefined, KDInvFilter,
+						KDInventoryActionContainer(entity)?.items);
+					let index = filteredInventory.findIndex((element) => {return element.item.name == KinkyDungeonTargetingSpellItem.name;});
+					if (index >= 0) {
+						KinkyDungeonCurrentPageInventory = index;
 					}
-					if (equippable) {
-						if (KDSendInput("equip", {name: KinkyDungeonTargetingSpellItem.name,
-							inventoryVariant: KinkyDungeonTargetingSpellItem.name != r.name ?
-								KinkyDungeonTargetingSpellItem.name : undefined,
-							faction: KinkyDungeonTargetingSpellItem.faction,
-							group: r.Group, curse: KinkyDungeonTargetingSpellItem.curse,
-							currentItem: KinkyDungeonGetRestraintItem(r.Group) ?
-								KinkyDungeonGetRestraintItem(r.Group).name : undefined,
-							events: Object.assign([], KinkyDungeonTargetingSpellItem.events)}, undefined, undefined, true)) {
-							return "Cast";
-						} else {
-							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), KDBaseRed, 1, true);
-						}
-					} else {
-						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), KDBaseRed, 1, true);
-					}
-
-
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), KDBaseRed, 1, true);
+					let r = KDRestraint(KinkyDungeonTargetingSpellItem);
+					if (r) {
+						let equippable = false;
+						if (KDDebugLink) {
+							equippable = KDCanAddRestraint(r, true, "", false,
+								KinkyDungeonTargetingSpellItem, true, true);
+						} else {
+							equippable = !KinkyDungeonGetRestraintItem(r.Group)
+								|| KDCurrentItemLinkable(KinkyDungeonGetRestraintItem(r.Group), r);
+						}
+						if (equippable) {
+							if (KDSendInput("equip", {name: KinkyDungeonTargetingSpellItem.name,
+								inventoryVariant: KinkyDungeonTargetingSpellItem.name != r.name ?
+									KinkyDungeonTargetingSpellItem.name : undefined,
+								faction: KinkyDungeonTargetingSpellItem.faction,
+								group: r.Group, curse: KinkyDungeonTargetingSpellItem.curse,
+								currentItem: KinkyDungeonGetRestraintItem(r.Group) ?
+									KinkyDungeonGetRestraintItem(r.Group).name : undefined,
+								events: Object.assign([], KinkyDungeonTargetingSpellItem.events)}, undefined, undefined, true)) {
+								return "Cast";
+							} else {
+								KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), KDBaseRed, 1, true);
+							}
+						} else {
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), KDBaseRed, 1, true);
+						}
+
+
+					} else {
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), KDBaseRed, 1, true);
+					}
 				}
 			}
 			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), KDBaseRed, 1, true);

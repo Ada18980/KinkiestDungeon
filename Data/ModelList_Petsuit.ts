@@ -72,6 +72,7 @@ AddModel({
 		},
 		{ Name: "Butt", Layer: "PetsuitLegsUnder", Pri: -16,
 			Poses: ToMap(["KneelClosed", "Kneel"]),
+			InheritColor: "Legs",
 		},
 		{ Name: "Legs", Layer: "PetsuitLegs", Pri: -16,
 			Poses: ToMap(["KneelClosed", "Kneel", "Hogtie"]),

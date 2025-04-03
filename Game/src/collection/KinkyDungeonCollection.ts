@@ -177,6 +177,7 @@ function KinkyDungeonDrawBondage(xOffset = -125) {
 		KDDrawCollectionRestrain(KDCurrentRestrainingTarget, x + xOffset, 150);
 	} else {
 		KinkyDungeonDrawState = "Game";
+		KDResetAlternateInventoryRender();
 	}
 
 	KinkyDungeonDrawMessages(true, 550, true, 600);

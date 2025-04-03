@@ -74,6 +74,7 @@ function KDDrawDialogue(delta: number): void {
 
 	if (KDGameData.CurrentDialog && !(KDGameData.SlowMoveTurns > 0)) {
 		KinkyDungeonDrawState = "Game";
+		KDResetAlternateInventoryRender();
 
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
@@ -366,6 +367,7 @@ function KDStartDialog(Dialogue: string, Speaker?: string, Click?: boolean, Pers
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
+	KDResetAlternateInventoryRender();
 	KDDialogueData.CurrentDialogueIndex = 0;
 
 
@@ -462,6 +464,7 @@ function KDStartDialogInput(Dialogue: string, Speaker?: string, Click?: boolean,
 	KDOptionOffset = 0;
 	KinkyDungeonFastMovePath = [];
 	KinkyDungeonDrawState = "Game";
+	KDResetAlternateInventoryRender();
 	KDDialogueData.CurrentDialogueIndex = 0;
 	KDSendInput("dialogue", {dialogue: Dialogue, dialogueStage: "", click: Click, speaker: Speaker, personality: Personality, enemy: enemy ? enemy.id : undefined});
 

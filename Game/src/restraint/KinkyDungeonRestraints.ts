@@ -6968,6 +6968,54 @@ function KDDoEquipDelayed(data: any, player: entity): string {
 }
 
 
+
+function KDDoEquipGenericDelayed(data: any, player: entity): string {
+	if (!player?.player) return "";
+	let success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0,
+	true, "",
+	KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),
+		KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, KDDebugLink,
+	data.curse, undefined, undefined, data.inventoryVariant, undefined, undefined,
+		undefined, undefined, true);
+	if (success) {
+		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
+		let loose = KinkyDungeonInventoryGetLoose(data.item.name);
+		if (loose) {
+			if (!(loose.quantity > 1)) {
+				KinkyDungeonInventoryRemove(loose);
+			} else {
+				loose.quantity -= data.quantity;
+			}
+		}
+
+		let customEq = KDRestraint(loose).customEquip || "";
+		let msg = "KinkyDungeonSelfBondage" + customEq;
+		if (!customEq) {
+			if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
+				if (KinkyDungeonIsChaste(false)) {
+					msg = "KinkyDungeonSelfBondagePlug";
+				}
+			} else if (KDRestraint(loose).Group == "Item") {
+				if (KinkyDungeonIsChaste(true)) {
+					msg = "KinkyDungeonSelfBondageNipple";
+				}
+			} else if (KDRestraint(loose).enchanted) {
+				msg = "KinkyDungeonSelfBondageEnchanted";
+			}
+		}
+
+		KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
+
+		return msg;
+	} else {
+		KinkyDungeonSendTextMessage(10, TextGet("KDCantEquip").replace("RestraintName", KDGetItemNameString(data.name)), "yellow", 1);
+
+		return "KDCantEquip";
+	}
+
+}
+
+
 function KDResetPreferenceFlags() {
 	KinkyDungeonSetFlag("prefer_armbinder", 0)
 	KinkyDungeonSetFlag("prefer_petsuit", 0)

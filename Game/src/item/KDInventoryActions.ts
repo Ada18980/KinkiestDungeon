@@ -179,6 +179,22 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return false; // NA for default actions
 		},
 	},
+	"GenericBondage": {
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[0]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[0];},
+		icon: (_player, _item) => {
+			return "InventoryAction/GenericBondage";
+		},
+		valid: (_player, _item) => {
+			return true;
+		},
+		click: (_player, _item) => {
+			KDCurrentAlternateInventory = "GenericRaw";
+		},
+		cancel: (_player, _delta) => {
+			return false; // NA for default actions
+		},
+	},
 	"Remove": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[6]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[6];},
@@ -756,6 +772,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			KinkyDungeonAdvanceTime(1, true, true);
 			KDStunTurns(4, true);
 			KinkyDungeonDrawState = "Game";
+			KDResetAlternateInventoryRender();
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tape.ogg");
