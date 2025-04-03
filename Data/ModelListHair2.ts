@@ -23,6 +23,22 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "Aura_Bang",
+	Folder: "Hair2",
+	TopLevel: false,
+	Parent: "StraightBangs",
+	Parent2: ["AuraHair"],
+	Protected: true,
+	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
+	Layers: ToLayerMap([
+		{ Name: "HairAura_Front2", Layer: "Hair", Pri: 1,
+			SwapLayerPose: {HoodMask: "HairOver"},
+			InheritColor: "Front",
+		},
+	])
+});
 
 
 AddModel({

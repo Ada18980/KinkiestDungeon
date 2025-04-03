@@ -14210,8 +14210,8 @@ l_MessyBack_Messy,Messy
 m_ShortMessyBack,MessyBackShort
 l_ShortMessyBack_BackShortMessy,"Short Messy"
 l_ShortMessyBack_BackShortMessyUnderlight,"Underlight"
-m_ShortCurlyBack,CurlyBack
-l_ShortCurlyBack_BackShortCurly,"Curly Back"
+m_ShortCurlyBack,FrizzyBack
+l_ShortCurlyBack_BackShortCurly,"Frizzy Back"
 l_ShortCurlyBack_BackShortCurlyUnderlight,"Underlight"
 m_Ponytail,Ponytail
 l_Ponytail_Ponytail,Ponytail

@@ -81,7 +81,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 				Object.values(KDRestraintGenericTypes), canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 250,
 				yOffset + canvasOffsetY_ui + 100, undefined, // TODO support currentItem
 				undefined, -1, undefined, currentItem, false, undefined,
-				2, 8, 265,
+				2, 8, 260,
 				(currentItem, restraint, item, count) => {
 					// Add new one
 					if (KDCanAddRestraint(

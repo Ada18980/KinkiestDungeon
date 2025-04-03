@@ -1692,6 +1692,7 @@
             <key type="filename">../Models/Hair2/Hair6_Right.png</key>
             <key type="filename">../Models/Hair2/HairAura.png</key>
             <key type="filename">../Models/Hair2/HairAura_Front.png</key>
+            <key type="filename">../Models/Hair2/HairAura_Front2.png</key>
             <key type="filename">../Models/Hair2/HairAura_Left.png</key>
             <key type="filename">../Models/Hair2/HairAura_LeftB.png</key>
             <key type="filename">../Models/Hair2/HairAura_Right.png</key>

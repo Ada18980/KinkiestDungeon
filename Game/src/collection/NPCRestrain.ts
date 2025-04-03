@@ -1498,7 +1498,9 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 			if (grp) {
 				KDDraw(kdcanvas, kdpixisprites, "gen_bind_list_grp" + item.restraint,
 					grp,
-					x + XX + 32, y + YY, 72, 72,
+					x + XX + 32, y + YY, 72, 72, undefined, {
+						zIndex: 154,
+					}
 				);
 			}
 			colCounter++;
@@ -1663,7 +1665,9 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 				if (grp) {
 					KDDraw(kdcanvas, kdpixisprites, "gen_bind_list_grp" + item.restraint,
 						grp,
-						x + XX + 32, y + YY, 72, 72,
+						x + XX + 32, y + YY - 32, 72, 72, undefined, {
+							zIndex: 80,
+						}
 					);
 				}
 				colCounter++;
