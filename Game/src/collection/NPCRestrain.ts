@@ -224,6 +224,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		} else if (KDNPCBindingGeneric) {
 			currentBottomTab = "Generic";
+			let showAll = KDShowAllGenericCategories;
 			KDDrawGenericCharacterRestrainingUI(Object.values(KDRestraintGenericTypes), 1300, 250,
 			currentItem, slot, npcID, (currentItem, restraint, slt, item, count, itemtype) => {
 				if (currentItem) {
@@ -291,7 +292,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							}
 
 				}
-			}, null, true, true, KDGenericMatsPerRow, KDGenericBindsPerRow);
+			}, null, true, showAll, showAll ? KDGenericMatsPerRowShowAll : KDGenericMatsPerRow, KDGenericBindsPerRow);
 
 		} else {
 			let filteredInventory = KinkyDungeonFilterInventory(filter, undefined, undefined, undefined, undefined, KDInvFilter);
@@ -1229,10 +1230,13 @@ function KDNPCEscape(entity: entity) {
 }
 
 let KDGenericMatsPerRow = 2;
+let KDGenericMatsPerRowShowAll = 3;
+let KDShowAllGenericCategories = false;
 let KDGenericBindsPerRow = 3;
 let KDGenericBindSpacing = 75;
 
 interface KDDrawGenericRestrainCategoriesData {
+	allSlots: boolean,
 	showCategories: boolean,
 	cats: RestraintGenericType[],
 	selectedcat: RestraintGenericType,
@@ -1251,10 +1255,20 @@ interface KDDrawGenericRestrainCategoriesData {
 
 }
 
-function KDDrawGenericRestrainCategories(data: KDDrawGenericRestrainCategoriesData) {
+function KDDrawGenericRestrainCategories(data: KDDrawGenericRestrainCategoriesData, slot: NPCBindingSubgroup) {
 
 	if (data.showCategories) {
 		for (let cat of data.cats) {
+			let items = (data.allSlots || !slot) ? cat.items :
+				cat.items.filter(
+					(item) => {
+						return slot.allowedGroups.includes(KDRestraint({name: item.restraint})?.Group)
+						&& slot.allowedTags.some((tag) => {return KDRestraint({name: item.restraint})?.shrine.includes(tag);});
+					}
+				);
+
+			if (items.length == 0) continue;
+
 			let selected = (cat.raw || cat.consumableRaw) == KDSelectedGenericRestraintType;
 			if (selected) data.selectedcat = cat;
 			let hotkey: string = "";
@@ -1346,7 +1360,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 		matsPerRow: number, bindsPerRow: number,
 		toff: number = 0) {
 	let XX = 0;
-	let secondXX = KDGenericBindSpacing * (KDGenericMatsPerRow + 0.5);
+	let secondXX = KDGenericBindSpacing * (matsPerRow + 0.5);
 	let YY = 0;
 	let colCounter = 0;
 	let index = 0;
@@ -1357,6 +1371,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 	let iin = index;
 
 	let catdata: KDDrawGenericRestrainCategoriesData = {
+		allSlots: showOtherSlots,
 		matsPerRow: matsPerRow,
 		showCategories: showCategories,
 		cats: cats,
@@ -1372,7 +1387,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 		highlightedItem: highlightedItem,
 		colCounter: colCounter
 	}
-	KDDrawGenericRestrainCategories(catdata);
+	KDDrawGenericRestrainCategories(catdata, slot);
 	showCategories = catdata.showCategories;
 	cats = catdata.cats;
 	selectedcat = catdata.selectedcat;
@@ -1544,6 +1559,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 
 
 		let catdata: KDDrawGenericRestrainCategoriesData = {
+			allSlots: showOtherSlots,
 			matsPerRow: matsPerRow,
 			showCategories: showCategories,
 			cats: cats,
@@ -1559,7 +1575,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 			highlightedItem: highlightedItem,
 			colCounter: colCounter
 		}
-		KDDrawGenericRestrainCategories(catdata);
+		KDDrawGenericRestrainCategories(catdata, slot);
 		showCategories = catdata.showCategories;
 		cats = catdata.cats;
 		selectedcat = catdata.selectedcat;
