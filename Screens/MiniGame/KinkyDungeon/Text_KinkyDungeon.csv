@@ -31974,3 +31974,6 @@ KDCantDrop,You can't drop that
 
 KDTugWaistRestraints,"You tug against your waist chains, but your arms can't reach far enough."
 KDTugYoke,"The yoke you are wearing prevents you from reaching that!"
+
+KDClickedHeadpat,"Your headpatting restored your willpower slightly!"
+KDClickedHeadpatNoWill,"Your headpatting feels nice!"

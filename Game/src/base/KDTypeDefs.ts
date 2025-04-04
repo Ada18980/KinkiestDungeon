@@ -3096,6 +3096,7 @@ interface KDMapDataType {
 	JailFaction: string[],
 	GuardFaction: string[],
 	MapFaction: string,
+	clickHeadpatted: boolean
 }
 
 

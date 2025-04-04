@@ -287,6 +287,25 @@ let KDExpressions: Record<string, KDExpression> = {
 			};
 		},
 	},
+	"ClickHeadpat": {
+		priority: 1.5,
+		criteria: (C, flags) => {
+			if (flags.get("clickheadpatted_recently")) {
+				return true;
+			}
+			return false;
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "EyesClosed",
+				Eyes2Pose: "",
+				BrowsPose: "",
+				Brows2Pose: "",
+				BlushPose: "",
+				MouthPose: "MouthSmile",
+			};
+		},
+	},
 	"Spank": {
 		priority: 14,
 		criteria: (C, flags) => {

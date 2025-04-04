@@ -2092,6 +2092,12 @@ let Hardpoints: Record<string, Hardpoint> = {
 		Y: 690,
 		Angle: 0,
 	},
+	HeadpatHead: {
+        Parent: "Head",
+        X: 1220,
+        Y: 360,
+        Angle: 0,
+    },
 	Rear: {
 		Parent: "Torso",
 		X: 1127,
