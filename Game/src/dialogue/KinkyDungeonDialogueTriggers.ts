@@ -148,6 +148,13 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 		["latexRestraints", "latexRestraintsHeavy", "alchemist"], undefined, undefined, ["zombie", "skeleton", "robot"],
 		undefined, undefined),
 
+
+	"OfferNeoLink": KDDialogueTriggerOffer("OfferNeoLink", ["Metal", "Latex"], ["linkArms", "linkThighs"],
+		["parole", "", "chase", "jail"],  ["Dom", "", "Brat"],
+		["linkArms", "linkThighs", "metal", "maid", "bountyhunter", "alchemist", "dragonheart"],
+		undefined, undefined, ["zombie", "skeleton", "robot"],
+		undefined, undefined),
+
 	"OfferRopes": KDDialogueTriggerOffer("OfferRopes", ["Rope"], ["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie"],
 		["parole", "", "chase", "jail"],  ["Dom", ""],
 		["ropeRestraints", "ropeRestraints", "ropeRestraintsWrist", "ropeRestraintsHogtie", "rope"], undefined, undefined, ["zombie", "skeleton", "robot"],

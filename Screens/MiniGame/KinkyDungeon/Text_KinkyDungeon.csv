@@ -11910,6 +11910,33 @@ dOfferChainForce_No,"Ah! Cold! (PERCENT chance to avoid)"
 dOfferChainForce_NoGag,"(Shake your head and moan) (PERCENT chance to avoid)"
 
 
+rOfferNeoLink,"(A SPEAKER approaches)|I think there's something missing here~|You're wearing a belt and cuffs,|So naturally there should be some links between them!"
+rOfferNeoLinkYes,"(The SPEAKER nods happily and presents a RESTRAINT)|I'm glad you think the same way!"
+rOfferNeoLinkYes_Yes,"(The SPEAKER connects chains to your cuffs)|This should do the trick~|(RESTRAINT settles in place)"
+rOfferNeoLinkYes_No,"(The SPEAKER sighs)|I take it you're a person who likes to flail their arms."
+rOfferNeoLinkNo,"(The SPEAKER frowns sadly)|It feels so wrong..."
+rOfferNeoLinkForce,"(The SPEAKER pouts)|But they BELONG together!"
+rOfferNeoLinkForceYes,"(The SPEAKER pouts)|But they BELONG together!"
+rOfferNeoLinkForce_No,"(The SPEAKER sighs)|Maybe another time then."
+rOfferNeoLinkForce_Yes,"(The SPEAKER connects chains to your cuffs)|There! Connected, as all things should be."
+rOfferNeoLinkForce_Failure,"(The SPEAKER grins as she connects chains to your cuffs)|(The RESTRAINT is unyielding as you struggle)|Enjoy, cutie~"
+
+dOfferNeoLink_Yes,"Indeed! (hold out your wrists)"
+dOfferNeoLink_YesGag,"(Nod happily and present your body)"
+dOfferNeoLink_No,"I like my wrists and thighs free, thank you."
+dOfferNeoLink_NoGag,"(Shake your head)"
+
+dOfferNeoLinkYes_Yes,"Absolutely~"
+dOfferNeoLinkYes_YesGag,"(Nod again)"
+dOfferNeoLinkYes_No,"Not really."
+dOfferNeoLinkYes_NoGag,"(Shake your head)"
+
+dOfferNeoLinkForce_Yes,"I-If I have to..."
+dOfferNeoLinkForce_YesGag,"(Moan and squirm)"
+dOfferNeoLinkForce_No,"(Flail your limbs wildly) (PERCENT chance to avoid)"
+dOfferNeoLinkForce_NoGag,"(Flail wildly) (PERCENT chance to avoid)"
+
+
 
 rOfferLatex,"(The SPEAKER nervously walks up to you)|Excuse me miss...|Are you a fan of latex by chance?"
 rOfferLatexYes,"(The SPEAKER blushes deeply)|Then would you like to try on this RESTRAINT?"

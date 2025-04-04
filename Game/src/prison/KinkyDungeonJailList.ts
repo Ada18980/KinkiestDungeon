@@ -597,6 +597,12 @@ let KDJailOutfits: Record<string, {overridelowerpriority: boolean, priority: num
 			{Name: "HighsecBlindfold", Level: 100, Condition: "NoBlindfolds"},
 			{Name: "TrapPlug5", Level: 100, Condition: "Plug"},
 
+			{Name: "NeoWristLink", Level: 0},
+			{Name: "NeoAnkleLink", Level: 35},
+			{Name: "NeoThighLink", Level: 10},
+			{Name: "NeoElbowLink", Level: 60},
+			{Name: "NeoLinkThighs", Level: 30},
+			{Name: "NeoLinkArms", Level: 50},
 			{Name: "WristLink", Level: 0},
 			{Name: "AnkleLink", Level: 35},
 			{Name: "ThighLink", Level: 10},
