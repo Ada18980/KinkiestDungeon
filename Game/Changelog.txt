@@ -46,6 +46,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Added reinforced links
 - Yokes now prevent you from using hands on any restraints above the lower body
 - Novice pet no longer protects you from knockdowns while petsuited
+- Can now increase difficulty when doing NGP
 
 5.4.57
 - Problem solving now gives flat 20% bonus to bonuses

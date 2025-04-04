@@ -2611,37 +2611,10 @@ function KinkyDungeonRun() {
 			DrawTextFitKD(TextGet("KinkyDungeonStartGameDescAdc"), 1250, 120, 1000, KDBaseWhite, KDTextGray0);
 		}
 
-
-		let buttonswidth = 168;
-		let buttonsheight = 50;
-		let buttonspad = 25;
-		let buttonsypad = 10;
-		let buttonsstart = 875;
-		let X = 0;
-		let Y = 0;
-
 		DrawTextFitKD(TextGet("KDClasses"), 875 - 50, 190 + 22, 300, KDBaseWhite, KDTextGray1, undefined, "right");
 
-		let classCount = Object.keys(KDClassStart).length;
-		for (let i = 0; i < classCount; i++) {
-			X = i % 4;
-			Y = Math.floor(i / 4);
 
-			DrawButtonKDEx("Class" + i, (_bdata) => {
-				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
-				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
-				return true;
-			}, (!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]](),
-			buttonsstart + (buttonspad + buttonswidth) * X, 190 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight, TextGet("KinkyDungeonClassMode" + Object.keys(KDClassStart)[i]),
-				((!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]]()) ?
-				(KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? KDBaseWhite : "#888888")
-				: KDBaseRed, "", undefined, undefined, true, KDButtonColor);
-			if (MouseIn(buttonsstart + (buttonspad + buttonswidth) * X, 190 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight)) {
-				DrawTextFitKD(TextGet("KinkyDungeonClassModeDesc" + Object.keys(KDClassStart)[i]), 1250, 120, 1000, KDBaseWhite, KDTextGray0);
-			}
-		}
-
-
+		KDDrawClasses(0, 0);
 
 		DrawTextFitKD(TextGet("KDSexyMode"), 875 - 50, 420 + 22, 300, KDBaseWhite, KDTextGray1, undefined, "right");
 
@@ -3169,11 +3142,87 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "End") {
 		KinkyDungeonGameRunning = false;
 		// Draw temp start screen
-		DrawTextKD(TextGet("EndWin"), 1250, 400, KDBaseWhite, KDTextGray2);
-		DrawTextKD(TextGet("EndWin2"), 1250, 500, KDBaseWhite, KDTextGray2);
+		DrawTextKD(TextGet("EndWin"), 1250, 100, KDBaseWhite, KDTextGray0);
 
-		DrawButtonVis(1075, 650, 350, 64, TextGet("KinkyDungeonNewGamePlus"), KDBaseWhite, "");
-		DrawButtonVis(1075, 750, 350, 64, TextGet("KinkyDungeonMenu"), KDBaseWhite, "");
+		let xoff = 0;
+		let yoff = 200;
+		if (!KDDrawClasses(xoff, yoff,
+			(kurasu) => {
+				return !KDNoMulticlass[kurasu];
+			}, (kurasu) => {
+				if (KinkyDungeonClassMode == kurasu) {
+					return KDBaseGreal;
+				} else if (!(!KDClassReqs[kurasu] || KDClassReqs[kurasu]())) {
+					return KDBaseRed;
+				} else return KinkyDungeonStatsChoice.get("MC_" + (KDClassSynonyms[kurasu] ? KDClassSynonyms[kurasu] : kurasu))
+					? KDBaseGreal
+					: (
+						(KDCanPickPerk("MC_" + (KDClassSynonyms[kurasu] ? KDClassSynonyms[kurasu] : kurasu), 999))
+						? (KinkyDungeonClassModeChoice == kurasu ? KDBaseWhite : "#888888")
+						: KDBaseRed
+					);
+			}, (kurasu) => {
+				return KinkyDungeonClassMode == kurasu ?
+					KinkyDungeonRootDirectory + "UI/Checked.png"
+					: (KinkyDungeonStatsChoice.get("MC_" + (KDClassSynonyms[kurasu] ? KDClassSynonyms[kurasu] : kurasu))
+						? KinkyDungeonRootDirectory + "UI/CheckedHalf.png"
+						: ""
+					);
+			}, (kurasu) => {
+				if (KinkyDungeonClassMode == kurasu) {
+					return false;
+				} else if (!(!KDClassReqs[kurasu] || KDClassReqs[kurasu]())) return false;
+				else if (KinkyDungeonStatsChoice.get("MC_" + (KDClassSynonyms[kurasu] ? KDClassSynonyms[kurasu] : kurasu))) return false;
+				else if ((KDCanPickPerk("MC_" + (KDClassSynonyms[kurasu] ? KDClassSynonyms[kurasu] : kurasu), 999))) {
+					if (KinkyDungeonClassModeChoice == kurasu) {
+						KinkyDungeonClassModeChoice = "";
+					} else {
+						KinkyDungeonClassModeChoice = kurasu;
+					}
+					return true;
+				}
+				return false;
+			}
+		)) {
+			DrawTextFitKD(TextGet("KDMulticlass"),
+			xoff + 1250,
+			yoff + 75, 1000, KDBaseWhite, KDTextGray0);
+			DrawTextFitKD(TextGet("KDMulticlass2"),
+			xoff + 1250,
+			yoff + 125, 1000, KDBaseWhite, KDTextGray0);
+		}
+
+		DrawButtonKDEx("ngp_1", () => {
+			KinkyDungeonState = "Game";
+			if (KinkyDungeonClassModeChoice) {
+				KinkyDungeonStatsChoice.set("MC_" + (KDClassSynonyms[KinkyDungeonClassModeChoice]
+					? KDClassSynonyms[KinkyDungeonClassModeChoice]
+					: KinkyDungeonClassModeChoice), true)
+			}
+			KinkyDungeonNewGamePlus(false);
+			return true;
+		}, true, 1075, 650, 350, 64, TextGet("KinkyDungeonNewGamePlus"), KDBaseWhite, "");
+
+		if (!KinkyDungeonStatsChoice.get("extremeMode")) {
+			DrawButtonKDEx("ngp_2", () => {
+				KinkyDungeonState = "Game";
+				if (KinkyDungeonClassModeChoice) {
+					KinkyDungeonStatsChoice.set("MC_" + (KDClassSynonyms[KinkyDungeonClassModeChoice]
+						? KDClassSynonyms[KinkyDungeonClassModeChoice]
+						: KinkyDungeonClassModeChoice), true)
+				}
+				KinkyDungeonNewGamePlus(true);
+				return true;
+			}, true, 1075, 750, 350, 64, TextGet("KinkyDungeonNewGamePlus"
+				+ (KinkyDungeonStatsChoice.get("hardMode") ? "Extreme" : "Hard")
+			), KDBaseWhite, "");
+
+		}
+		DrawButtonKDEx("ngp_leave", () => {
+			KinkyDungeonState = "Menu";
+			return true;
+		}, true, 1075, 850, 350, 64, TextGet("KinkyDungeonMenu"),
+		KDBaseWhite, "");
 	} else if (KinkyDungeonState == "Toggles") {
 		KDDrawToggleTabs(500);
 
@@ -6034,15 +6083,6 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 		}
 
 
-	} else if (KinkyDungeonState == "End") {
-		if (MouseIn(1075, 650, 350, 64)) {
-			KinkyDungeonState = "Game";
-			KinkyDungeonNewGamePlus();
-			return true;
-		} if (MouseIn(1075, 750, 350, 64)) {
-			KinkyDungeonState = "Menu";
-			return true;
-		}
 	}
 
 

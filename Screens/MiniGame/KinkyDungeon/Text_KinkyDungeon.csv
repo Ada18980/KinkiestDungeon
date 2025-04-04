@@ -1011,6 +1011,8 @@ KinkyDungeonStaminaWarningNone,"You feel like you are going to pass out..."
 
 GameStart,Start New Game
 KinkyDungeonNewGamePlus,New Game+
+KinkyDungeonNewGamePlusHard,New Game+ (Hard Mode)
+KinkyDungeonNewGamePlusExtreme,New Game+ (Extreme Mode)
 GameContinue,Continue Last Save
 LoadGame,Load Saved Game
 LoadOutfit,Save Outfit (overwrite!)
@@ -31974,3 +31976,7 @@ KDCantDrop,You can't drop that
 
 KDTugWaistRestraints,"You tug against your waist chains, but your arms can't reach far enough."
 KDTugYoke,"The yoke you are wearing prevents you from reaching that!"
+
+KDMulticlass,"You may choose an additional class."
+KDMulticlass2,"Class upgrades and skills for additional classes cost 2x as many points."
+

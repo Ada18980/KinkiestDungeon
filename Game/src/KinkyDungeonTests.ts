@@ -59,7 +59,7 @@ function KDTestFullRunthrough(GameLoops: number, Init: boolean, NGP: boolean): b
 
 		if (KinkyDungeonState == "End") {
 			if (NGP)
-				KinkyDungeonNewGamePlus();
+				KinkyDungeonNewGamePlus(false);
 			else {
 				KDSetWorldSlot(0, 0, 0, 0);
 				MiniGameKinkyDungeonCheckpoint = "grv";

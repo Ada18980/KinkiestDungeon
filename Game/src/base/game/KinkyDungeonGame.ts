@@ -358,7 +358,7 @@ function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppre
 		MiniGameKinkyDungeonCheckpoint = KDDefaultJourney[Math.min(KDDefaultJourney.length - 1, Math.floor((MiniGameKinkyDungeonLevel) / KDLevelsPerCheckpoint))];
 }
 
-function KinkyDungeonNewGamePlus(): void {
+function KinkyDungeonNewGamePlus(increaseDiff: boolean): void {
 	KDSetWorldSlot(0, 0, 0, 0);
 
 	//KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
@@ -390,6 +390,16 @@ function KinkyDungeonNewGamePlus(): void {
 			} else V.room = "";
 
 		}
+	}
+
+	if (increaseDiff) {
+		if (KinkyDungeonStatsChoice.get("hardMode")) {
+			KinkyDungeonStatsChoice.set("extremeMode", true);
+		}
+		KinkyDungeonStatsChoice.set("hardMode", true);
+
+		KinkyDungeonHardMode = KinkyDungeonStatsChoice.get("hardMode");
+		KinkyDungeonExtremeMode = KinkyDungeonStatsChoice.get("extremeMode");
 	}
 
 	KDGameData.PersistentNPCCache = {};

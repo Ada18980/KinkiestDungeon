@@ -385,16 +385,10 @@ function KDSendGagParticles(entity: entity): void {
  */
 function KDCreateVibeParticle() {
 	let lifetime = 500 + Math.random() * 250;
-	let x = 250 - (StandalonePatched ? 5 : 0);
-	let Hogtied = KDIsHogtied(KinkyDungeonPlayer);
-	let Kneeling = KDIsKneeling(KinkyDungeonPlayer);
-	let y = 520 + (Hogtied ? 165 : (Kneeling ? 78 : 0));
-	if (StandalonePatched) {
-		// Throw out in favor of new system
-		let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front", KDToggles.FlipPlayer);
-		x = pos.x;
-		y = pos.y;
-	}
+	// Throw out in favor of new system
+	let pos = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "Front", KDToggles.FlipPlayer);
+	let x = pos.x;
+	let y = pos.y;
 
 	let locations = KDSumVibeLocations();
 	let vx = ((Math.random() > 0.5) ? -1 : 1) * (0.1 + Math.random()*0.15);
@@ -407,19 +401,15 @@ function KDCreateVibeParticle() {
 			vy = 0.25 + Math.random()*0.1;
 			vx = -.05 + Math.random() * .1;
 		}
-		else if (breast && !Hogtied && (locations.length == 1 || Math.random() < 0.5)) {
-			if (StandalonePatched) {
-				if (Math.random() > 0.5) forceSide = 1;
-				else forceSide = -1;
-				let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastRight", KDToggles.FlipPlayer) : GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastLeft", KDToggles.FlipPlayer);
-				x = pos.x;
-				y = pos.y;
-				vx = ((Math.random() > 0.5) ? -1 : 1) * (0.05 + Math.random()*0.12);
-				vy = -.1 + Math.random() * .3;
-				if ((forceSide > 0 && vx < 0) || (forceSide < 0 && vx > 0)) vx *= -1;
-			} else {
-				y -= 155;
-			}
+		else if (breast && (locations.length == 1 || Math.random() < 0.5)) {
+			if (Math.random() > 0.5) forceSide = 1;
+			else forceSide = -1;
+			let pos = forceSide > 0 ? GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastRight", KDToggles.FlipPlayer) : GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "BreastLeft", KDToggles.FlipPlayer);
+			x = pos.x;
+			y = pos.y;
+			vx = ((Math.random() > 0.5) ? -1 : 1) * (0.05 + Math.random()*0.12);
+			vy = -.1 + Math.random() * .3;
+			if ((forceSide > 0 && vx < 0) || (forceSide < 0 && vx > 0)) vx *= -1;
 		}
 
 	}

@@ -253,11 +253,11 @@ let KDPerkCount: Record<string, () => string> = {
 };
 
 let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
-	"MC_Fighter":  {category: "Multiclass", id: "MC_Fighter", debuff: true, cost: 2, blockclass: ["Fighter"], tags: ["start", "mc"]},
-	"MC_Rogue":  {category: "Multiclass", id: "MC_Rogue", cost: 2, blockclass: ["Rogue"], tags: ["start", "mc"]},
-	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", debuff: true, cost: 2, blockclass: ["Mage"], tags: ["start", "mc"]},
-	"MC_Peasant":  {category: "Multiclass", id: "MC_Peasant", debuff: true, cost: 1, blockclass: ["Peasant"], tags: ["start", "mc"]},
-	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 2, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
+	"MC_Fighter":  {category: "Multiclass", id: "MC_Fighter", debuff: true, cost: 5, blockclass: ["Fighter"], tags: ["start", "mc"]},
+	"MC_Rogue":  {category: "Multiclass", id: "MC_Rogue", cost: 5, blockclass: ["Rogue"], tags: ["start", "mc"]},
+	"MC_Wizard":  {category: "Multiclass", id: "MC_Wizard", debuff: true, cost: 5, blockclass: ["Mage"], tags: ["start", "mc"]},
+	"MC_Peasant":  {category: "Multiclass", id: "MC_Peasant", debuff: true, cost: 5, blockclass: ["Peasant"], tags: ["start", "mc"]},
+	"MC_Trainee":  {category: "Multiclass", id: "MC_Trainee", cost: 5, requireArousal: true, blockclass: ["Trainee"], tags: ["start", "mc"]},
 
 
 	"More_Armbinders":  {category: "Toggles2", id: "More_Armbinders", cost: 0, block: ["Less_Armbinders"]},

@@ -4,6 +4,16 @@ let KDClassReqs: Record<string, () => boolean> = {
 	"Trainee": () => {return KinkyDungeonSexyMode;}
 };
 
+/** For backwards save compat */
+let KDClassSynonyms = {
+	Mage: "Wizard",
+}
+/** Forbidden for multiclass */
+let KDNoMulticlass = {
+}
+
+
+
 let KDClassStart: Record<string, () => void> = {
 	"Fighter": () => { // Fighter
 		KinkyDungeonInventoryAddWeapon("Shield");
@@ -112,3 +122,58 @@ let KDClassStart: Record<string, () => void> = {
 		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("TrapBelt"), 10, true, "Gold");
 	},
 };
+
+let KinkyDungeonClassModeChoice = "";
+
+function KDDrawClasses(xOffset: number = 0, yOffset: number = 0,
+	filter?: (kurasu: string) => boolean,
+	redout?: (kurasu: string) => string,
+	img?: (kurasu: string) => string,
+	click?: (kurasu: string) => boolean): boolean {
+	let buttonswidth = 168;
+	let buttonsheight = 50;
+	let buttonspad = 25;
+	let buttonsypad = 10;
+	let buttonsstart = 875;
+	let X = 0;
+	let Y = 0;
+	if (!redout) redout = (kurasu) => {
+		return ((!KDClassReqs[kurasu]) || KDClassReqs[kurasu]()) ?
+			(KinkyDungeonClassMode == kurasu ? KDBaseWhite : "#888888")
+			: KDBaseRed;
+	}
+
+	let classCount = Object.keys(KDClassStart).length;
+	let tt = false;
+	for (let i = 0; i < classCount; i++) {
+		let kurasu = Object.keys(KDClassStart)[i];
+		if (!filter || !filter(kurasu)) continue;
+		X = i % 4;
+		Y = Math.floor(i / 4);
+
+		DrawButtonKDEx("Class" + i, (_bdata) => {
+			if (!click) {
+				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
+				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
+			}
+			return click(Object.keys(KDClassStart)[i]);
+		}, (!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]](),
+		xOffset + buttonsstart + (buttonspad + buttonswidth) * X,
+		yOffset + 190 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight,
+		TextGet("KinkyDungeonClassMode" + Object.keys(KDClassStart)[i]),
+			redout(kurasu),
+			img ? img(kurasu) : "", undefined, undefined,
+			true, KDButtonColor, undefined, true, {
+				scaleImage: !!img(kurasu)
+			});
+		if (MouseIn(xOffset + buttonsstart + (buttonspad + buttonswidth) * X,
+		yOffset + 190 + Y*(buttonsheight + buttonsypad),
+		buttonswidth, buttonsheight) && !tt) {
+			DrawTextFitKD(TextGet("KinkyDungeonClassModeDesc" + Object.keys(KDClassStart)[i]),
+			xOffset + 1250,
+			yOffset + 120, 1000, KDBaseWhite, KDTextGray0);
+			tt = true;
+		}
+	}
+	return tt;
+}
