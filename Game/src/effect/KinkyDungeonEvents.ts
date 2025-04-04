@@ -12418,6 +12418,18 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	},
 	"afterModConfig": {
 		// Ran after returning to menu from the mod configuration window.
+	},
+	"afterDress": {
+		"clickHeadPat": (_e, data) => {
+			const id = "kinky-dungeon-headpat-modal";
+			if ((KinkyDungeonState == 'Game') && (KinkyDungeonDrawState == 'Game')) {
+				KinkyDungeonHeadpatModal()
+			}
+			else if (document.querySelector(`#${id}`)) {
+				let el = document.getElementById(id);
+				el.parentNode.removeChild(el);
+			}
+		}
 	}
 };
 

@@ -31980,3 +31980,7 @@ KDTugYoke,"The yoke you are wearing prevents you from reaching that!"
 KDMulticlass,"You may choose an additional class."
 KDMulticlass2,"Class upgrades and skills for additional classes cost 2x as many points."
 
+
+
+KDClickedHeadpat,"Your headpatting restored your willpower slightly!"
+KDClickedHeadpatNoWill,"Your headpatting feels nice!"

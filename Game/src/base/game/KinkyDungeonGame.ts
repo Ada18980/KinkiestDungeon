@@ -251,6 +251,8 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 		QuestsAccepted: 0,
 		KeyQuota: -1,
 		KeysHeld: 0,
+
+		clickHeadpatted: false
 	};
 }
 

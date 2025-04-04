@@ -1045,3 +1045,48 @@ function KDGetFactionFilters(faction: string): Record<string, LayerFilter> {
 		return KinkyDungeonFactionFilters[KDFactionProperties[faction]?.jailAlliedFaction];
 	return undefined;
 }
+
+/**
+ * 
+ */
+function KinkyDungeonHeadpatModal() {
+    const id = "kinky-dungeon-headpat-modal";
+    if (document.querySelector(`#${id}`)) {
+        let el = document.getElementById(id);
+        el.parentNode.removeChild(el);
+    }
+    const backdrop = document.createElement("div");
+    backdrop.id = id;
+    let pxassign = {
+        position: "absolute",
+        width: "200px",
+        height: "100px",
+		top: "0px",
+		left: "0px",
+		transform: "none",
+        //backgroundColor: "#ffffff"
+    }
+    let hardpointlocs = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "HeadpatHead", KDToggles.FlipPlayer)
+    console.log(hardpointlocs)
+    pxassign.top = `${(hardpointlocs.y - (KDIsHogtied() ? 100 : 50))}px`;
+    pxassign.left = `${(hardpointlocs.x - (KDIsHogtied() ? 100 : 100))}px`;
+    pxassign.transform = `rotate(${hardpointlocs.angle}rad)`
+    console.log(pxassign)
+    Object.assign(backdrop.style, pxassign);
+    backdrop.addEventListener("click", () => {
+        console.log("Headpats!")
+        if ((KinkyDungeonState == 'Game') && (KinkyDungeonDrawState == 'Game')) {
+            KinkyDungeonSetFlag("clickheadpatted_recently", 5);
+            if (!KDMapData.clickHeadpatted) {
+                KDMapData.clickHeadpatted = true;
+                KDChangeWill("","","",0.5)
+                KinkyDungeonSendTextMessage(4, TextGet("KDClickedHeadpat"), "#ffffff", 4)
+            }
+            else {
+                KinkyDungeonSendTextMessage(4, TextGet("KDClickedHeadpatNoWill"), "#ffffff", 4)
+            }
+            KinkyDungeonAdvanceTime(1, true, true)
+        }
+    });
+    document.body.appendChild(backdrop);
+}
