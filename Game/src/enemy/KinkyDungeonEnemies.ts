@@ -5870,10 +5870,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				// We can move
 				!KDIsImmobile(enemy)
 				// We want to move
-				&& AIType.move(enemy, player, AIData)
-				// We are not where we want to be
-				&& (Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0))  {
-				if (AIData.focusOnLeash && AIData.moveTowardPlayer && AIData.wantsToLeash) {
+				&& AIType.move(enemy, player, AIData))  {
+				if (AIData.focusOnLeash && AIData.wantsToLeash) {
+
+
 					// Only break awareness if the AI cant chase player
 					if (player.player) {
 						if (!enemy.IntentLeashPoint) {
@@ -5892,99 +5892,109 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						}
 					}
 
-					if (enemy.x == enemy.gx && enemy.y == enemy.gy) {
-						enemy.gx = player.x;
-						enemy.gy = player.y;
+
+					if (AIData.moveTowardPlayer) {
+						if (enemy.x == enemy.gx && enemy.y == enemy.gy) {
+							enemy.gx = player.x;
+							enemy.gy = player.y;
+						}
 					}
+
+
 				} else if (!AIData.canSensePlayer) {
 					if (KDEnemyReallyAware(enemy, player) && KinkyDungeonAggressive(enemy, player)) {
 						enemy.path = null;
 					}
 					enemy.aware = false;
 				}
-				for (let T = 0; T < 8; T++) {
-					let dir = KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection);
-					let splice = false;
-					let pathThresh = (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 3 : 8;
-					if (T > 2 && T < pathThresh) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
-					if (T >= pathThresh || enemy.path || !KinkyDungeonCheckPath(enemy.x, enemy.y, enemy.gx, enemy.gy) || KDEnemyHasFlag(enemy, "forcepath")) {
-						if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
-							enemy.path = KinkyDungeonFindPath(
-								enemy.x, enemy.y, enemy.gx, enemy.gy,
-								!((KDEnemyHasFlag(enemy, "blocked") || KDEnemyHasFlag(enemy, "blockedenemy"))) && enemy != KinkyDungeonLeashingEnemy(),
-								!KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
-								AIData.ignoreLocks, AIData.MovableTiles,
-								undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
-							KinkyDungeonSetEnemyFlag(enemy, "genpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 1 : (KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OL ? 2 + Math.floor(KDRandom() * 4) : 10 + Math.floor(KDRandom() * 30)));
-						}
-						if (enemy.path) {
-							if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
-								dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
-								if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
-									|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
-									if (AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
-										KinkyDungeonSetEnemyFlag(enemy, "blockedenemy", 15);
-									}
-									KDBlockedByPlayer(enemy, dir);
-									KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
-									KinkyDungeonSetEnemyFlag(enemy, "blocked", 4);
+				if (
+					// We are not where we want to be
+					(Math.abs(enemy.x - enemy.gx) > 0 || Math.abs(enemy.y - enemy.gy) > 0)) {
+						for (let T = 0; T < 8; T++) {
+							let dir = KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection);
+							let splice = false;
+							let pathThresh = (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 3 : 8;
+							if (T > 2 && T < pathThresh) dir = KinkyDungeonGetDirectionRandom(dir.x * 10, dir.y * 10); // Fan out a bit
+							if (T >= pathThresh || enemy.path || !KinkyDungeonCheckPath(enemy.x, enemy.y, enemy.gx, enemy.gy) || KDEnemyHasFlag(enemy, "forcepath")) {
+								if (!enemy.path && !KDEnemyHasFlag(enemy, "genpath")) {
+									enemy.path = KinkyDungeonFindPath(
+										enemy.x, enemy.y, enemy.gx, enemy.gy,
+										!((KDEnemyHasFlag(enemy, "blocked") || KDEnemyHasFlag(enemy, "blockedenemy"))) && enemy != KinkyDungeonLeashingEnemy(),
+										!KDEnemyHasFlag(enemy, "blocked") && enemy != KinkyDungeonLeashingEnemy(),
+										AIData.ignoreLocks, AIData.MovableTiles,
+										undefined, undefined, undefined, enemy, enemy != KinkyDungeonJailGuard() && enemy != KinkyDungeonLeashingEnemy() && !KDEnemyHasFlag(enemy, "longPath")); // Give up and pathfind
+									KinkyDungeonSetEnemyFlag(enemy, "genpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 1 : (KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OL ? 2 + Math.floor(KDRandom() * 4) : 10 + Math.floor(KDRandom() * 30)));
+								}
+								if (enemy.path) {
+									if (enemy.path && enemy.path.length > 0 && Math.max(Math.abs(enemy.path[0].x - enemy.x),Math.abs(enemy.path[0].y - enemy.y)) < 1.5) {
+										dir = {x: enemy.path[0].x - enemy.x, y: enemy.path[0].y - enemy.y, delta: KDistChebyshev(enemy.path[0].x - enemy.x, enemy.path[0].y - enemy.y)};
+										if (!KinkyDungeonNoEnemyExceptSub(enemy.x + dir.x, enemy.y + dir.y, false, enemy)
+											|| !AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
+											if (AIData.MovableTiles.includes(KinkyDungeonMapGet(enemy.path[0].x, enemy.path[0].y))) {
+												KinkyDungeonSetEnemyFlag(enemy, "blockedenemy", 15);
+											}
+											KDBlockedByPlayer(enemy, dir);
+											KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
+											KinkyDungeonSetEnemyFlag(enemy, "blocked", 4);
 
-									enemy.path = null;
+											enemy.path = null;
+										} else {
+											splice = true;
+										}
+									} else {
+										KDBlockedByPlayer(enemy, dir);
+										enemy.path = null;
+										KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
+									}
 								} else {
-									splice = true;
+									KinkyDungeonSetEnemyFlag(enemy, "longPath", 24);
 								}
-							} else {
-								KDBlockedByPlayer(enemy, dir);
-								enemy.path = null;
-								KinkyDungeonSetEnemyFlag(enemy, "failpath", (enemy == KinkyDungeonJailGuard() || enemy == KinkyDungeonLeashingEnemy()) ? 2 : 20);
-							}
-						} else {
-							KinkyDungeonSetEnemyFlag(enemy, "longPath", 24);
-						}
 
-					}
-					if (dir.delta > 1.5) {enemy.path = null;}
-					else if (
-						(T > 7 || AIData.moveTowardPlayer || (
-							enemy.x + dir.x == enemy.gx
-							&& enemy.y + dir.y == enemy.gy
-						) || !KDPointWanderable(enemy.gx, enemy.gy) || !KDPointWanderable(enemy.x, enemy.y) || KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y) || KDEnemyHasFlag(enemy, "forcepath"))
-						&& KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
-						if (AIData.SlowLeash) {
-							// Don't tug too hard
-							AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
-							enemy.fx = enemy.x;
-							enemy.fy = enemy.y;
-						} else {
-							if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) AIData.moved = true;
-							if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
-							AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
-							if (AIData.moved) {
-								dir = enemy.movePoints >= 1 ? KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection)
-									: KDGetDir(enemy, {x: enemy.gx, y: enemy.gy});
-								if (KinkyDungeonEnemyCanMove(enemy, dir,
-									AIData.MovableTiles, AIData.AvoidTiles,
-									AIData.ignoreLocks, T)) {
-									if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) {
-										// Use up spare move points
-										enemy.fx = enemy.x + dir.x;
-										enemy.fy = enemy.y + dir.y;
+							}
+							if (dir.delta > 1.5) {enemy.path = null;}
+							else if (
+								(T > 7 || AIData.moveTowardPlayer || (
+									enemy.x + dir.x == enemy.gx
+									&& enemy.y + dir.y == enemy.gy
+								) || !KDPointWanderable(enemy.gx, enemy.gy) || !KDPointWanderable(enemy.x, enemy.y) || KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y) || KDEnemyHasFlag(enemy, "forcepath"))
+								&& KinkyDungeonEnemyCanMove(enemy, dir, AIData.MovableTiles, AIData.AvoidTiles, AIData.ignoreLocks, T)) {
+								if (AIData.SlowLeash) {
+									// Don't tug too hard
+									AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
+									enemy.fx = enemy.x;
+									enemy.fy = enemy.y;
+								} else {
+									if (KinkyDungeonEnemyTryMove(enemy, dir, delta, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) AIData.moved = true;
+									if (AIData.moved && splice && enemy.path) enemy.path.splice(0, 1);
+									AIData.idle = false;// If we moved we will pick a candidate for next turns attempt
+									if (AIData.moved) {
+										dir = enemy.movePoints >= 1 ? KDGetDir(enemy, {x: enemy.gx, y: enemy.gy}, KinkyDungeonGetDirection)
+											: KDGetDir(enemy, {x: enemy.gx, y: enemy.gy});
+										if (KinkyDungeonEnemyCanMove(enemy, dir,
+											AIData.MovableTiles, AIData.AvoidTiles,
+											AIData.ignoreLocks, T)) {
+											if (!KinkyDungeonEnemyTryMove(enemy, dir, 0, enemy.x + dir.x, enemy.y + dir.y, enemy.action && KDEnemyAction[enemy.action]?.sprint)) {
+												// Use up spare move points
+												enemy.fx = enemy.x + dir.x;
+												enemy.fy = enemy.y + dir.y;
+											}
+										}
 									}
 								}
+								break;
+							} else {
+								if (!KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y)) {
+									KinkyDungeonSetEnemyFlag(enemy, "forcepath", 3);
+								}
+
+								KDBlockedByPlayer(enemy, dir);
+								enemy.fx = undefined;
+								enemy.fy = undefined;
+								if (KinkyDungeonPlayerEntity.x == enemy.x + dir.x && KinkyDungeonPlayerEntity.y == enemy.y + dir.y) enemy.path = null;
 							}
 						}
-						break;
-					} else {
-						if (!KDPointWanderable(enemy.x + dir.x, enemy.y + dir.y)) {
-							KinkyDungeonSetEnemyFlag(enemy, "forcepath", 3);
-						}
-
-						KDBlockedByPlayer(enemy, dir);
-						enemy.fx = undefined;
-						enemy.fy = undefined;
-						if (KinkyDungeonPlayerEntity.x == enemy.x + dir.x && KinkyDungeonPlayerEntity.y == enemy.y + dir.y) enemy.path = null;
 					}
-				}
+
 			} else if (!AIData.moveTowardPlayer && (Math.abs(enemy.x - enemy.gx) < 2 || Math.abs(enemy.y - enemy.gy) < 2)) AIData.patrolChange = true;
 
 			if (enemy.leash?.entity && KDAcceptsLeash(enemy, enemy.leash)) {
@@ -8762,7 +8772,7 @@ function KDAssignLeashPoint(enemy: entity): KDJailPoint {
 	let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y);
 	if (!nj || KDGenHighSecCondition(false, enemy)) {
 		let pos = KDGetHighSecLoc(enemy, !KDSelfishLeash(enemy));
-		AIData.nearestJail = {type: "jail", radius: 1, x: pos.x, y: pos.y};
+		AIData.nearestJail = {type: "jail", radius: 1, x: pos.x, y: pos.y, entrance: true};
 	} else AIData.nearestJail = nj;
 	return AIData.nearestJail;
 }
@@ -9604,6 +9614,9 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 		persistent: makepersistent,
 		mapData: mapData,
 	};
+
+	if (data.enemy)
+		KDResetMoveFlags(data.enemy);
 
 
 	if (mapData == KDMapData) {
@@ -10721,4 +10734,10 @@ function KDDoSlow(player: entity, amt: number) {
 			KinkyDungeonSetFlag("tut_slo", -1);
 		}
 	}
+}
+
+function KDResetMoveFlags(enemy: entity) {
+	KinkyDungeonSetEnemyFlag(enemy, "blocked", 0);
+	KinkyDungeonSetEnemyFlag(enemy, "failpath", 0);
+	KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 }

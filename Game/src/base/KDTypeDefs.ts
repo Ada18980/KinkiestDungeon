@@ -1943,7 +1943,7 @@ interface entity {
 	playWithPlayerCD?: number,
 
 	IntentAction?: string,
-	IntentLeashPoint?: {x: number, y: number, type: string, radius: number},
+	IntentLeashPoint?: {x: number, y: number, type: string, radius: number, entrance?: boolean},
 
 	CurrentAction?: string,
 	RemainingJailLeashTourWaypoints?: number,
@@ -2526,7 +2526,7 @@ interface KDQuest {
 };
 
 interface KDPoint {x: number, y: number}
-interface KDJailPoint extends KDPoint {type: string, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
+interface KDJailPoint extends KDPoint {type: string, entrance?: boolean, radius: number, requireLeash?: boolean, requireFurniture?: boolean, direction?:{x: number, y: number}, restraint?:string, restrainttags?:string[]}
 
 interface KinkyDialogue {
 	image?: string,
@@ -3340,7 +3340,7 @@ interface KDAIData extends KDAITriggerData {
 	/** Position to leash/pull the player to */
 	leashPos?: {x: number, y: number},
 	/** nearest jail to take the player to */
-	nearestJail?: {x: number, y: number, type: string, radius: number},
+	nearestJail?: KDJailPoint,
 
 	/** Enemy to follow */
 	master?: entity,

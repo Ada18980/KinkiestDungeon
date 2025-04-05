@@ -147,7 +147,7 @@ function KDDrawClasses(xOffset: number = 0, yOffset: number = 0,
 	let tt = false;
 	for (let i = 0; i < classCount; i++) {
 		let kurasu = Object.keys(KDClassStart)[i];
-		if (!filter || !filter(kurasu)) continue;
+		if (filter && !filter(kurasu)) continue;
 		X = i % 4;
 		Y = Math.floor(i / 4);
 
@@ -164,7 +164,7 @@ function KDDrawClasses(xOffset: number = 0, yOffset: number = 0,
 			redout(kurasu),
 			img ? img(kurasu) : "", undefined, undefined,
 			true, KDButtonColor, undefined, true, {
-				scaleImage: !!img(kurasu)
+				scaleImage: !!(img && img(kurasu))
 			});
 		if (MouseIn(xOffset + buttonsstart + (buttonspad + buttonswidth) * X,
 		yOffset + 190 + Y*(buttonsheight + buttonsypad),

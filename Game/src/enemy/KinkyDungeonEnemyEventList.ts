@@ -481,7 +481,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				}
 				KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 			}
-			enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1 }, pos);
+			enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
 
 		},
 		maintain: (enemy, delta, aiData) => {
@@ -514,7 +514,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 						}
 						KinkyDungeonSetFlag("LeashToPrison", -1, 1);
 					}
-					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1 }, pos);
+					enemy.IntentLeashPoint = nj ? nj : Object.assign({ type: "jail", radius: 1, entrance: true}, pos);
 				}
 
 				enemy.gx = enemy.IntentLeashPoint?.x || KDMapData.StartPosition.y;
@@ -547,16 +547,18 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				return true;
 			} else if (KDGameData.PrisonerState == 'jail') {
 				let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-				KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
+				if (!enemy.IntentLeashPoint || !enemy.IntentLeashPoint.entrance)
+					KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
 				KDResetIntent(enemy, aiData);
-				KDBreakTether(KinkyDungeonPlayerEntity);
+				//KDBreakTether(KinkyDungeonPlayerEntity);
 				if (!nj)
 					aiData.defeat = true;
 			} else {
 				let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-				KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
+				if (!enemy.IntentLeashPoint || !enemy.IntentLeashPoint.entrance)
+					KDPutInJail(KinkyDungeonPlayerEntity, enemy, nj ? nj : KDMapData.StartPosition);
 				KDResetIntent(enemy, aiData);
-				KDBreakTether(KinkyDungeonPlayerEntity);
+				//KDBreakTether(KinkyDungeonPlayerEntity);
 				aiData.defeat = true;
 			}
 			KDResetAllAggro();
@@ -1119,7 +1121,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				return true;
 			}
 			aiData.defeat = true;
-			KDBreakTether(KinkyDungeonPlayerEntity);
+			//KDBreakTether(KinkyDungeonPlayerEntity);
 			if (KinkyDungeonAutoWait) {
 				KDUpdateWaitTime(KDDelayWaitTime());
 			}

@@ -1576,7 +1576,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KDGameData.AlertTimer = 0;
 	let nearestJail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
 	if (!nearestJail) {
-		nearestJail = Object.assign({type: "jail", radius: 1}, KDMapData.StartPosition);
+		nearestJail = Object.assign({type: "jail", radius: 1, entrance: true}, KDMapData.StartPosition);
 	}
 	KDSendStatus('jailed');
 	KDSendEvent('jail');
@@ -1720,6 +1720,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 		if (leasher) KDGameData.JailGuard = leasher.id;
 		if (leasher && KinkyDungeonJailGuard()) {
+			KDResetMoveFlags(leasher);
 			KDAttachLeashOrCollar(KinkyDungeonJailGuard(), KDPlayer(), 1, true);
 			if (!KDPlayer().leash)
 				KinkyDungeonAttachTetherToEntity(
@@ -1740,7 +1741,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		}
 
 
-		let en = KinkyDungeonEntityAt(entrance.x, entrance.y);
+		let en = KinkyDungeonEntityAt(entrance.x, entrance.y, undefined, undefined, undefined, false);
 		if (en) {
 			let pp = KinkyDungeonGetNearbyPoint(
 				en.x, en.y, true
@@ -1913,8 +1914,7 @@ function KDKickEnemies(nearestJail: any, ignoreAware: boolean, Level: number, no
 				10, true, false)) {
 				atLeastOneAware = true;
 			} else if (e.id != KDGameData.JailGuard && e.id != KDGameData.KinkyDungeonLeashingEnemy) e.aware = false;
-			if (ignoreEntities?.some((ent) => {return ent.id == e.id;})) continue;
-			if (!ignoreAware || !e.aware) {
+			if ((!ignoreAware || !e.aware) && !ignoreEntities?.some((ent) => {return ent.id == e.id;})) {
 				if (!nearestJail || (e.x == nearestJail.x && e.y == nearestJail.y) || (!e.Enemy.tags.prisoner && !e.Enemy.tags.peaceful && !KDEnemyHasFlag(e, "imprisoned"))) {
 					if (!e.leash && !KDIsImmobile(e))
 						if (!already.get(e) && (!nearestJail || KDistChebyshev(e.x - nearestJail.x, e.y - nearestJail.y) <= 4 || (e.aware || e.vp > 0.01 || e.aggro > 0))) {
