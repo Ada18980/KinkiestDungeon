@@ -74,7 +74,10 @@ async def paratran_download():
         for item in json_object:
             if item['original'] == item['translation']:  # Skip items where original equals translation
                 continue
-            if item['translation']:  # If translation is not empty
+            if item['translation'].startswith("::"):  #If have ::,force match key
+                output_content.append(':: '+item['key'])
+                output_content.append(item['translation'].removeprefix(":: "))
+            elif item['translation']:  # If translation is not empty
                 output_content.append('- '+item['original'])
                 output_content.append(item['translation'])
 
