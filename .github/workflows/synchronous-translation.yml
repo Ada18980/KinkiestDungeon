@@ -5,6 +5,8 @@ permissions:
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
   push:
     branches:
       - 'newartwork'
@@ -15,7 +17,7 @@ on:
 jobs:
   synchronous-translation:
     runs-on: ubuntu-latest
-    if: github.repository == 'Ada18980/KinkiestDungeon'
+    if: github.repository == 'Ada18980/KinkiestDungeon' || github.repository == 'Mitki-code/KinkiestDungeon'
 
     steps:
       - name: Checkout code
