@@ -11,10 +11,10 @@ let GroupHeights: {[_: string]: number} = {
 	ItemHands: 0,
 	ItemTorso: 0,
 	ItemPelvis: -1,
-	ItemVulva: -1.5,
-	ItemButt: -1.5,
-	ItemVulvaPiercings: -1.5,
-	ItemLegs: -2,
+	ItemVulva: -1.25,
+	ItemButt: -1.25,
+	ItemVulvaPiercings: -1.25,
+	ItemLegs: -1.5,
 	ItemFeet: -2.5,
 	ItemBoots: -3,
 };
@@ -63,7 +63,7 @@ function KDGetGroupHeight(C: Character, group: string) {
 		data.height += KDPoseHeights[pose] || 0;
 
 		if (group != "ItemLegs" && (KNEELPOSES.includes(pose) || HOGTIEPOSES.includes(pose))) {
-			data.height -= HOGTIEPOSES.includes(pose) ? (group == "ItemBoots" ? 2 : 1) : (group == "ItemBoots" ? 3 : 2);
+			data.height += HOGTIEPOSES.includes(pose) ? (group == "ItemBoots" ? 2 : 1) : (group == "ItemBoots" ? 3 : 2);
 		}
 
 	}

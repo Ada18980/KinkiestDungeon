@@ -3552,6 +3552,7 @@
             <key type="filename">../Game/UI/AutoWait/Slow.png</key>
             <key type="filename">../Game/UI/AutoWait/VeryFast.png</key>
             <key type="filename">../Game/UI/Checked.png</key>
+            <key type="filename">../Game/UI/CheckedHalf.png</key>
             <key type="filename">../Game/UI/ContextMenu/Sprint.png</key>
             <key type="filename">../Game/UI/CrouchOff.png</key>
             <key type="filename">../Game/UI/CrouchOn.png</key>
@@ -3814,6 +3815,7 @@
             <key type="filename">../Game/Items/Restraint/Cables.png</key>
             <key type="filename">../Game/Items/Restraint/Chains.png</key>
             <key type="filename">../Game/Items/Restraint/Cuffs.png</key>
+            <key type="filename">../Game/Items/Restraint/DualTethers.png</key>
             <key type="filename">../Game/Items/Restraint/Metal.png</key>
             <key type="filename">../Game/Items/Restraint/Tethers.png</key>
             <key type="filename">../Game/UI/Recycler/Metal.png</key>

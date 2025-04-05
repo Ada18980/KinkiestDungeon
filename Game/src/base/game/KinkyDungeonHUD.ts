@@ -1090,25 +1090,26 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	let BalanceSpacing = 75;
 	let II = 0;
 	if (KDGameData.KneelTurns > 0 && !KinkyDungeonStatsChoice.get("TrustFall")
-		&& !KDForcedToGround()) {
+		&& (!KDForcedToGround() || KDGameData.KneelTurns > 1)) {
 		let KneelStats = KDGetKneelStats(1, false);
 
 		KDLastKneelTurns = Math.max(KDGameData.KneelTurns, KDLastKneelTurns);
 
 		let minKneelTarget = 0;
-		if (KDIsGrounded()) {
+		if (KDForcedToGround()) {
 			minKneelTarget = 1;
 		}
 		if (KneelStats.minKneel <= minKneelTarget && KneelStats.kneelRate > 0) {
+			let kt = Math.max(0, KDGameData.KneelTurns - minKneelTarget);
 			DrawTextFitKDTo(kdstatusboard,
 				TextGet("KDBalanceGettingUp")
-				.replace("AMNT", "" + Math.ceil(KDGameData.KneelTurns / KneelStats.kneelRate)),
+				.replace("AMNT", "" + Math.ceil(kt / KneelStats.kneelRate)),
 				1000, BalanceOffset - BalanceSpacing*(II), 300, KDBaseWhite, KDTextGray2,
 				24, "left", 110, 0.9);
 			KinkyDungeonBarTo(kdstatusboard, 1000, BalanceOffset + 8 - BalanceSpacing*(II), 500, 12,
-				(KDGameData.KneelTurns / KDLastKneelTurns) * 100,
-				KDBaseRed, "#283540", (KDGameData.KneelTurns / KDLastKneelTurns) * 100, "#ffee83",
-				KDSteps(KDGameData.KneelTurns, KneelStats.kneelRate/KDLastKneelTurns), "#283540", "#4fd658");
+				(kt / KDLastKneelTurns) * 100,
+				KDBaseRed, "#283540", (kt / KDLastKneelTurns) * 100, "#ffee83",
+				KDSteps(kt, KneelStats.kneelRate/KDLastKneelTurns), "#283540", "#4fd658");
 
 			II++;
 		}

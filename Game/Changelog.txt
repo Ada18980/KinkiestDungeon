@@ -45,6 +45,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Enabled headpats (thanks Enraa!)
 - Can now do selfbondage with rope, slime, and other generic materials
 - Added reinforced links
+- Added Steel cuffs
 - Yokes now prevent you from using hands on any restraints above the lower body
 - Novice pet no longer protects you from knockdowns while petsuited
 - Can now increase difficulty when doing NGP

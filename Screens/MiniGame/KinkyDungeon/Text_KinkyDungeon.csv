@@ -4346,9 +4346,23 @@ RestraintTrapBeltDesc2,"The shields will open up to accept new toys, but won't l
 RestraintBlacksteelBelt,Blacksteel Belt
 RestraintBlacksteelBeltDesc,"A cruel device used for locking magical vibrators in place."
 RestraintBlacksteelBeltDesc2,"Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut."
+RestraintBlacksteelWBelt,Blacksteel Waist Belt
+RestraintBlacksteelWBeltDesc,"A device that provides an attachment point for linkage. Not restraining on its own, but useful for keeping a prisoner's hands to herself."
+RestraintBlacksteelWBeltDesc2,"Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut."
 RestraintBlacksteelBra,Blacksteel Bra
 RestraintBlacksteelBraDesc,"A cruel device used for locking magical massagers in place."
 RestraintBlacksteelBraDesc2,"Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut."
+
+RestraintSteelBelt,Steel Belt
+RestraintSteelBeltDesc,"A cruel device used for locking magical vibrators in place."
+RestraintSteelBeltDesc2,"Made of steel, solid and secure."
+RestraintSteelWBelt,Steel Waist Belt
+RestraintSteelWBeltDesc,"A device that provides an attachment point for linkage. Not restraining on its own, but useful for keeping a prisoner's hands to herself."
+RestraintSteelWBeltDesc2,"Made of steel, solid and secure."
+RestraintSteelBra,Steel Bra
+RestraintSteelBraDesc,"A cruel device used for locking magical massagers in place."
+RestraintSteelBraDesc2,"Made of steel, solid and secure."
+
 RestraintTrapBeltProto,Prototype Belt
 RestraintTrapBeltProtoDesc,"A strange device built using unknown technology."
 RestraintTrapBeltProtoDesc2,"The lock is extremely advanced, and the ports at the bottom readily accept toys but won't let them out..."
@@ -4634,7 +4648,7 @@ RestraintDragonCollar,Dragon Collar
 RestraintDragonCollarDesc,"A collar owned by the Dragonhearts, an order of dragonslayers."
 RestraintDragonCollarDesc2,"It's made from hard-to-cut dragonscale!!!"
 
-RestraintSteelArmCuffs,Steel Cuffs
+RestraintSteelArmCuffs,Steel Shackles
 RestraintSteelArmCuffsDesc,"A pair of steel cuffs that make it easy to restrain you."
 RestraintSteelArmCuffsDesc2,"They're made of shining steel."
 KinkyDungeonLinkSteelArmCuffs,"The enemy attaches your wrist cuffs together!"
@@ -4722,6 +4736,25 @@ KinkyDungeonUnLinkBlacksteelAnkleCuffs3,"Your ankle cuff chain loosens!"
 
 
 
+
+RestraintSteelLivingCollar,Living Steel Collar
+RestraintSteelLivingCollarDesc,"A collar made of a magically infused steel."
+RestraintSteelLivingCollarDesc2,"It will occasionally cause steel cuffs to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of steel cuffs you have on you."
+
+RestraintSteelArmCuffs,Steel Cuffs
+RestraintSteelArmCuffsDesc,"A pair of cuffs that make it easy to restrain you."
+RestraintSteelArmCuffsDesc2,"They are made of solid steel."
+KinkyDungeonLinkSteelArmCuffs,"The enemy attaches your wrist cuffs together!"
+
+RestraintSteelLegCuffs,Steel Leg Cuffs
+RestraintSteelLegCuffsDesc,"A pair of cuffs on your legs."
+RestraintSteelLegCuffsDesc2,"They are made of solid steel."
+KinkyDungeonLinkSteelLegCuffs,"The enemy attaches your leg cuffs together!"
+
+RestraintSteelAnkleCuffs,Steel Ankle Cuffs
+RestraintSteelAnkleCuffsDesc,"A pair of cuffs on your ankles."
+RestraintSteelAnkleCuffsDesc2,"They are made of solid steel."
+KinkyDungeonLinkSteelAnkleCuffs,"The enemy attaches your ankle cuffs together!"
 
 
 RestraintScaleArmCuffs,Dragonscale Cuffs
@@ -7301,6 +7334,7 @@ KinkyDungeonCharmWrapsDress,"The orb tears off your clothes!"
 KinkyDungeonSpellTrapCharmWeak,Charm Trap
 KinkyDungeonSpellTrapRibbons,Ribbon Trap
 KinkyDungeonSpellTrapShackleWeak,Shackle Trap
+KinkyDungeonSpellTrapLinks,Steel Trap
 KinkyDungeonSpellTrapMummyWeak,Mummy Trap
 KinkyDungeonSpellTrapRopeWeak,Rope Trap
 KinkyDungeonSpellTrapRopeStrong,Rope Trap
@@ -7323,6 +7357,7 @@ KinkyDungeonSpellSleepDart,Sleep Dart
 KinkyDungeonSpellCastTrapCharmWeak,"A talisman on the floor explodes, sending a cloud of charms flying around you!"
 KinkyDungeonSpellCastTrapRibbons,"Magical binding ribbons emerge from the walls!"
 KinkyDungeonSpellCastTrapShackleWeak,"The ceiling opens, letting a lot of shackles fall on you!"
+KinkyDungeonSpellCastTrapCuffs,"Hidden cuffs shoot out and make a dash toward your limbs!"
 KinkyDungeonSpellCastTrapMummyWeak,"Bands of glowing wrappings start flying in from all sides!"
 KinkyDungeonSpellCastTrapRopeWeak,"Ropes slither out towards you from between the bricks!"
 KinkyDungeonSpellCastTrapRopeStrong,"Ropes fall on you from all sides!"
@@ -7343,6 +7378,7 @@ KinkyDungeonTrapBindingsCharmWeak,"The charms stick themselves all over your bod
 KinkyDungeonTrapBindingsOneBar,"A metal pole catches you from below!"
 KinkyDungeonTrapBindingsRibbons,"The ribbons tie themselves tightly around your body and won't let go!"
 KinkyDungeonTrapBindingsShackleWeak,"Shackles close themselves over your limbs!"
+KinkyDungeonTrapBindingsLinks,"You are caught in a set of well-connected steel gear!"
 KinkyDungeonTrapBindingsMummyWeak,"The wrappings close in over your body!"
 KinkyDungeonTrapBindingsRopeWeak,"The ropes wrap themselves around your body!"
 KinkyDungeonTrapBindingsRopeStrong,"The ropes wrap themselves tightly around your body!"
