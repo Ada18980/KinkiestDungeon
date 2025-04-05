@@ -27,7 +27,7 @@
 - Next
 下一页
 - Music: kocaeli, Darkstar Studios|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline, KD CN Localization|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音乐: kocaeli, Darkstar Studios|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli, Darkstar Studios|受缚敌人图像: Song|俄语翻译: Osiris|汉语翻译: Alexthymia, Mitki, Timeline, KD CN Localization|韩语和日语翻译: Phantasm|代码: Ellie, Demopans, Aelie|美术: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 # - Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 
 - Language
@@ -264,8 +264,10 @@
 - Mouse Shortcuts
 鼠标快捷操作
 
-# - Auto-path through NPCs
-# - Auto-path through Doors
+- Auto-path through NPCs
+自动寻路穿过NPC
+- Auto-path through Doors
+自动寻路穿过门
 
 - Show Enemy Binding as %
 以百分比形式显示敌人的拘束
@@ -284,7 +286,8 @@
 - Apply palettes to transforms
 将调色应用于变化
 
-# - (Test) Enforce Inventory Limits
+- (Test) Enforce Inventory Limits
+（测试）背包物品有上限
 - Don't use character palette
 不使用角色调色板
 - Always use character palette
@@ -299,7 +302,8 @@
 - Experimental Rendering (unstable)
 实验性渲染(不稳定)
 
-# - Show (mostly) full tooltips
+- Show (mostly) full tooltips
+显示几乎所有提示信息
 # - Auto cycle through multipage tooltips
 - Mute when Minimized
 最小化时静音
@@ -2125,8 +2129,10 @@ Devious Dungeon Challenge 已启用。
 开始新游戏
 - New Game+
 新游戏+
-# - New Game+ (Hard Mode)
-# - New Game+ (Extreme Mode)
+- New Game+ (Hard Mode)
+新游戏+（困难模式）
+- New Game+ (Extreme Mode)
+新游戏+（极限模式）
 - Continue Last Save
 继续上次游戏
 - Load Saved Game
@@ -2155,7 +2161,7 @@ Devious Dungeon Challenge 已启用。
 - Clear Perks
 清除特质
 - Config 
-设置
+配置
 - Cancel
 取消
 - Filter
@@ -3070,7 +3076,7 @@ Devious Dungeon Challenge 已启用。
 - The secret to elven cosmetics and blemish-free skin.
 精灵化妆和无瑕肌肤的秘密。
 - Makes you slippery for 100 turns, boosting struggling slightly and removal significantly.
-让你在 100 回合内变得很光滑，增强各种形式的挣扎。
+让你在 100 回合内变得很光滑，稍微增强挣扎能力，显著增强移除束缚能力。
 
 
 - Enchanted Grinder
@@ -3531,7 +3537,7 @@ Devious Dungeon Challenge 已启用。
 - Used for drilling holes in rock and armor.
 用于在岩石和盔甲上凿孔。
 - Deals pierce damage. Reduces enemy armor by 20 for 6 turns.
-造成穿刺伤害。减少敌人15点护甲，持续6回合。
+造成穿刺伤害。减少敌人 20 点护甲，持续6回合。
 - Magic Flail
 魔法流星锤
 - A blessed censer that distributes pain equally.
@@ -6205,7 +6211,8 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 # :: KinkyDungeonStruggleUnlockNoDiscKey
 - The lock can only be opened with a key.
 这把锁只能用钥匙打开。
-# - The lock has a special mechanism that unlocks with a key when five pieces are present.
+- The lock has a special mechanism that unlocks with a key when five pieces are present.
+这种锁的构造比较特殊，需要集齐五件才能开锁
 - The magical lock only accepts magical keys and can't be picked.
 魔法锁只接受魔法钥匙，不能被撬开。
 - The magical lock is guarded with powerful magic. You'll have to wait for it to wear off...
@@ -6248,7 +6255,8 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 # :: KinkyDungeonStruggleCantPickCyber3Lock
 - The lock is brimming with security features and is nigh impossible to pick!
 这把锁简直是安防技术大成之作，几乎不可能被撬开！
-# - The lock has a special mechanism and is impossible to pick!
+- The lock has a special mechanism and is impossible to pick!
+这种锁的构造比较特殊，不可能撬开！
 
 - The lock is encased in magical crystals that block the keyhole.
 锁被包裹在魔法结晶中，钥匙孔被挡住了。
@@ -6719,7 +6727,8 @@ TargetRestraint 太结实了，不会破……
 # :: m_ArmbinderSecure_l_Secure
 # :: m_SmoothArmbinderSecure_l_Secure
 # :: KDCollectionFilterSafe
-# - Masterwork
+- Masterwork
+极品
 - Disc
 圆盘
 # :: KinkyDiscLockType
@@ -6813,7 +6822,8 @@ TargetRestraint 太结实了，不会破……
 # :: KinkyRed_HiLock
 - Secure Lock
 安全锁
-# - Masterwork Lock
+- Masterwork Lock
+极品锁
 - Disc Lock
 圆盘锁
 - Rubber Lock
@@ -7628,7 +7638,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - A set of vibrating panties designed to help subdue unruly wolfgirls.
 一套振动内裤，旨在帮助制服不守规矩的狼娘。
 - It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber. Type: Teasing, Pleasure, Denial
-它非常紧，一旦夹上就很难取下，但材料是橡胶。
+它非常紧，一旦夹上就很难取下，但材料是橡胶。类型 : ‎戏弄、快感、拒绝
 
 - You can't equip that.
 你不能装备它。
@@ -8023,7 +8033,8 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 一个用来固定猫女神堵嘴的口套。
 - The leather panel is tough and tight.
 皮革面板坚韧而紧密。
-# - Blessed Muzzle
+- Blessed Muzzle
+祝福口套
 # - A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably.
 # - Made of an ancient and exotic form of leather.
 - Bast Blindfold
@@ -8846,7 +8857,8 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 # - Total blackout. The tough leather is reinforced with rivets.
 
 
-# - Masterwork Blindfold
+- Masterwork Blindfold
+极品眼罩
 # - A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout.
 # - Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection.
 # :: RestraintMasterworkBlindfoldDesc2
@@ -8855,16 +8867,20 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 # :: RestraintMasterworkGlovesDesc2
 # :: RestraintMasterworkCollarDesc2
 
-# - Masterwork Corset
+- Masterwork Corset
+极品束胸
 # - A metal-boned corset that hugs your body, with a connection point for other restraints. Its unrelenting squeeze forces you to take shorter breaths.
 
-# - Masterwork Ballet Heels
+- Masterwork Ballet Heels
+极品芭蕾高跟鞋
 # - A set of uncompromising ballet heels that force the wearer into a stringent walking position. Only trained submissives can walk in these without falling!
 
-# - Masterwork Gloves
+- Masterwork Gloves
+极品手套
 # - A set of restrictive gloves that somewhat reduce your dexterity. Reduces accuracy by 20%.
 
-# - Masterwork Collar
+- Masterwork Collar
+极品项圈
 # - A collar hand-crafted and signed by the famous blacksmith Ada Lovelock. The crowning jewel of a five-piece set designed to hold its wearer in an ever-tightening embrace.
 
 
@@ -9419,7 +9435,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 龙心教团拥有的项圈 ，一个‎屠龙组织。
 
 - Steel Shackles
-钢铐
+钢制镣铐
 - A pair of steel cuffs that make it easy to restrain you.
 一对钢制手铐，可以轻松束缚你。
 - They're made of shining steel.
@@ -11307,7 +11323,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - Empty Altar
 虚空祭坛
 - Chest
-箱子
+胸部
 # :: KDTileTooltipC
 # :: m_Body_l_Chest
 # :: m_CatsuitUpper_l_Chest
@@ -12262,7 +12278,7 @@ SPELL蓄力
 - Raincloud
 雨云
 - After 3 turns, rain falls, creating a 3x3 grid of water and dealing DamageDealt soap damage to enemies within.
-创造一个持续 3 个回合 3x3 的酸雨团，对敌人造成 DamageDealt 点酸蚀伤害，3 回合后形成 3x3 的积水。
+创造一个持续 3 个回合 3x3 的酸雨团，对敌人造成 DamageDealt 点皂化伤害，3 回合后形成 3x3 的积水。
 - You create a stormy cloud!
 你召唤出暴风雨！
 
@@ -13441,9 +13457,9 @@ SPELL蓄力
 - Super Strength
 超级力量
 - When enabled: +15 struggle bonus, and your melee attack damage is increased by +20 if your weapon deals physical damage.
-启用时 : ‎挣扎更加强大，如果你的武器造成物理伤害，你的近战攻击力会提高20。
+启用时：+15 点挣扎加成，+20 点近战武器物理伤害。
 - Your muscles glow with magical energy!
-你的身体散发着神奇的能量！
+你的肌肉散发着神奇的能量！
 
 - Enhance Will
 增强意志
@@ -14984,9 +15000,9 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Enraged
 暴怒
 - Pleased
-感激
+愉快
 - Thankful
-祝福
+感激
 
 - Neutral
 中立
@@ -15714,7 +15730,7 @@ EnemyName 设法带着你的物品撤退！
 - You capture the EnemyName, but the goddess of GODDESS would prefer that you wear some restraints.
 你俘获了 EnemyName，但 GODDESS 的女神更希望你戴上一些束缚。
 - You capture the EnemyName, but have reached the limit for rewards this floor.
-你捕获了敌人，但已达到本层奖励的上限。
+你捕获了 EnemyName，但已达到本层奖励的上限。
 
 - The spirit inside the restraint is vengeful and emerges to wreak havoc on the world!
 禁锢内的灵魂是报复性的，并出现对世界造成严重破坏！
@@ -16508,7 +16524,7 @@ EnemyName 设法带着你的物品撤退！
 # :: KinkyDungeonRemindJailPlayHelplessApprentice2
 # :: KinkyDungeonRemindJailPlayHelplessNecromancer2
 - Hey! Where do you think you're going~
-喂！你以为你能去哪里？
+喂！你以为你能去哪里~
 - You look like you're having fun!
 你看起来很开心！
 - I have somewhere else in mind for you~
@@ -21899,13 +21915,13 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER grabs you quickly)|Oh, it's very strict~|And great for being trained...
 ( SPEAKER 迅速地抓住你 ) |哦，很严格~|而且非常适合接受训练...
 - (The SPEAKER looks at you deviously)|A good girl wears her RESTRAINT with enthusiasm~
-( SPEAKER 阴险地看着你 ) |你要佩戴上这个RESTRAINT，|无论你是否愿意~
+( SPEAKER 阴险地看着你 ) |好女孩应该热情地穿上 RESTRAINT~
 - (The SPEAKER sulks)|You'd be difficult to train anyway~
-( SPEAKER 生闷气 ) |那就随你吧。
+( SPEAKER 生闷气 ) |你可真难调教~
 - (The SPEAKER adds the RESTRAINT)|(You feel her tighten everything before locking it)|Good girl~|I'll make it extra tight for you!
-( SPEAKER 添加了 RESTRAINT ) | ( 你感觉到她在上锁之前收紧了所有束缚 ) |好女孩~
+( SPEAKER 添加了 RESTRAINT ) | ( 你感觉到她在上锁之前收紧了所有束缚 ) |好女孩~|为了你，我会绑的格外紧！
 - (The SPEAKER knocks you down and forces you into the RESTRAINT)|Here, maybe you'll reconsider after wearing it a while!
-(SPEAKER 将你推倒在地)|我会让你更紧~|(RESTRAINT 紧紧地锁住你)
+（SPEAKER 打倒你并强行用 RESTRAINT 束缚你）|也许你戴上这个一会儿后就会重新考虑了！
 
 - Maybe a little~
 或许有一点~
@@ -22703,7 +22719,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER frowns)|What a shame.
 ( SPEAKER皱眉 ) |真可惜。
 - (The SPEAKER sneakily reaches for her baton)|You'll love it if you try it!
-( SPEAKER 咧嘴一笑，伸手接过她的指挥棒 ) |不是吗？嗯，听说你有些欠债了~
+（SPEAKER 偷偷拿出警棍）|你试试就会喜欢的！
 - (The SPEAKER grins)|I promise you it's a good deal~
 ( SPEAKER 咧嘴一笑 ) |我向你保证很划算~
 - (The SPEAKER frowns)|Fine. I'll look for other candidates.
@@ -22711,7 +22727,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER smiles)|That's right. Your name, please?
 ( SPEAKER 微笑 ) |没错。请你告诉我你的名字？
 - (The SPEAKER zaps you and places you in restrictive gear)|Good girls need training.|Come back when you've learned a thing or two~
-( SPEAKER 对你进行电击并将你置于限制性装备中 ) |哼。不守规矩的女孩需要训练！
+（SPEAKER 电击你并将给你穿上拘束）|好女孩需要调教！|等你学乖了再来吧~
 
 - This sounds like an interesting opportunity.
 这听起来像是一个有趣的机会。
@@ -22854,7 +22870,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
 ( SPEAKER 看到你时竖起耳朵)|荣耀归于这只被祝福的可爱小猫|你准备好加入我们了吗？
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to other kitties.|Also we own you now.
-( SPEAKER 高兴地点了点头)|太棒了！你只需要同意对猫好一点.|而现在我们拥有你。
+（SPEAKER 高兴地点了点头）|太棒了！和其他猫娘好好相处。|现在你是我们的了。
 - (The SPEAKER jumps happily)|Wonderful! Here's your collar!
 ( SPEAKER 高兴地跳了起来)|太棒了！这是你的颈圈！
 - (The SPEAKER whimpers and looks at you)|How mean!
@@ -22864,9 +22880,9 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER frowns)|Oh? Well, I guess I'll tell the others~
 ( SPEAKER 皱着眉头)|哦？好吧，我想我会告诉其他人的~
 - (The SPEAKER grins slyly)|You wouldn't DISRESPECT the goddess, would you?
-( SPEAKER 狡黠地笑着)|你不会伤害小猫吧？
+（SPEAKER 狡黠地笑着）|你应该不会对猫女神不敬吧？
 - (The SPEAKER frowns)|Then we'll have to make sure you don't come back to harm anyone!
-( SPEAKER 皱着眉头)|那我们就得确保你不会来伤害任何人！
+( SPEAKER 皱着眉头)|那我们就得确保你不会回来伤害任何人！
 - (The SPEAKER smiles proudly)|I knew you would pull through!
 ( SPEAKER 骄傲地笑了)|我就知道你会挺过去的！
 - (The SPEAKER forces you down with a burst of speed)|(She stuffs you into pet gear)|There. Punishment for your insolence~
@@ -25848,7 +25864,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: cat_Gloves
 # :: KDFilterFiltersGloves
 - 'Cosplay'
-‘角色扮演’
+角色扮演
 
 - Cat Eyes
 猫眼
@@ -26091,7 +26107,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 板甲
 - ChainShirt
 锁链衫
-# - ShirtChest
+- ShirtChest
+衬衫胸部
 # :: l_ChainShirt_ShirtChest
 # :: l_ChainArmor_ShirtChest
 # :: m_ChainShirt_l_ShirtChest
@@ -26832,7 +26849,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - Bunny Suit
 兔女郎
 - Dress
-礼服
+连衣裙
 # :: m_Dress
 # :: m_ChineseDress_l_Dress
 # :: m_LightMaidKnight_Dress_l_Dress
@@ -26936,7 +26953,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 战士腰带
 - DragonNecklace
 龙项链
-# - Necklace
+- Necklace
+项链
 # :: l_DragonNecklace_Necklace
 # :: l_Dragonheart_Necklace
 # :: m_DragonNecklace_l_Necklace
@@ -27711,7 +27729,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_RubberLegs_l_LegRight
 # :: m_Hobbleskirt_l_LegRight
 # :: m_SmoothHeels_l_LegRight
-# - Butt
+- Butt
+屁股
 # :: m_Body_l_Butt
 # :: m_CatsuitLower_l_Butt
 # :: m_Catsuit_l_Butt
@@ -29429,7 +29448,8 @@ V比基尼
 # - CroppedBlouseTorso
 # :: m_DressBlouseBustCropped_l_CroppedBlouseTorso
 # :: m_DressBlouseBustCropped_l_CroppedBlouseTorso
-# - DressBlouseSleeveLeft
+- DressBlouseSleeveLeft
+连衣裙衬衫左袖
 # - BlouseArmLeft
 # :: m_DressBlouseSleeveLeft_l_BlouseArmLeft
 # :: m_DressBlouseSleeves_l_BlouseArmLeft
@@ -29448,7 +29468,8 @@ V比基尼
 # :: m_DressBlouseSleeves_l_BlouseForeArmLeft
 # :: m_DressBlouse_l_BlouseForeArmLeft
 # :: m_Dress_l_BlouseForeArmLeft
-# - DressBlouseSleeveRight
+- DressBlouseSleeveRight
+连衣裙衬衫右袖
 # - BlouseArmRight
 # :: m_DressBlouseSleeveRight_l_BlouseArmRight
 # :: m_DressBlouseSleeves_l_BlouseArmRight
@@ -29467,8 +29488,10 @@ V比基尼
 # :: m_DressBlouseSleeves_l_BlouseForeArmRight
 # :: m_DressBlouse_l_BlouseForeArmRight
 # :: m_Dress_l_BlouseForeArmRight
-# - DressBlouseSleeves
-# - DressBlouse
+- DressBlouseSleeves
+连衣裙衬衫袖子
+- DressBlouse
+连衣裙衬衫
 - Glasses
 眼镜
 # :: m_Glasses
@@ -29779,7 +29802,8 @@ V比基尼
 # :: m_BindingDress_l_SkirtBack
 - ElfSkirt
 精灵裙
-# - SkirtBand
+- SkirtBand
+裙子绑带
 # :: m_ElfSkirt_l_SkirtBand
 # :: m_Elf_l_SkirtBand
 # :: m_ElfSkirt_l_SkirtBand
@@ -31573,7 +31597,7 @@ V比基尼
 # :: m_JacketHeavyLeotard_l_BeltsArms
 # :: m_JacketExtraLeotard_l_BeltsArms
 - Jacket
-拘束衣
+外套
 # :: m_Jacket
 # :: m_MilitaryJacket_Sleeveless_l_Jacket
 # :: m_MilitaryJacket_l_Jacket
@@ -33329,7 +33353,8 @@ V比基尼
 # - GasMaskRestraint
 - Petsuit
 宠物服
-# - LeftLegs
+- LeftLegs
+左腿
 # :: m_Petsuit_l_LeftLegs
 # :: m_Petsuit_l_LeftLegs
 # :: m_ElitePetsuit_l_LeftLegs
@@ -33668,7 +33693,7 @@ Aura刘海(右后)
 # - OperaGloves
 # - OperaGlovesRestraint
 - SailorCollar
-水手领
+水手服领子
 # - CollarStripe
 # :: m_SailorCollar_l_CollarStripe
 # :: m_SailorCollarFull_l_CollarStripe
@@ -33683,17 +33708,21 @@ Aura刘海(右后)
 # :: m_SailorCollarFull_l_BustStripe
 # :: m_Sailor_l_BustStripe
 - SailorBow
-水手结
+水手服领结
 - SailorTop
-水手服(顶)
-# - SailorSleeveLeft
-# - HemLeft
+水手服背心
+- SailorSleeveLeft
+水手服左袖
+- HemLeft
+左袖下摆
 # :: m_SailorSleeveLeft_l_HemLeft
 # :: m_SailorSleeves_l_HemLeft
 # :: m_SailorShirt_l_HemLeft
 # :: m_Sailor_l_HemLeft
-# - SailorSleeveRight
-# - HemRight
+- SailorSleeveRight
+水手服右袖
+- HemRight
+右袖下摆
 # :: m_SailorSleeveRight_l_HemRight
 # :: m_SailorSleeves_l_HemRight
 # :: m_SailorShirt_l_HemRight
@@ -33701,7 +33730,7 @@ Aura刘海(右后)
 - SailorSleeves
 水手服袖
 - SailorShirt
-水手服
+水手服衬衫
 - Sailor
 水手服
 # - DressSkirtSplitNoBelt
@@ -36773,7 +36802,8 @@ Aura刘海(右后)
 # - LaceLower
 # - LaceUpper
 # - LightMaidKnight_Dress
-# - DressChest
+- DressChest
+连衣裙胸部
 # :: m_LightMaidKnight_Dress_l_DressChest
 # :: m_LightMaidKnight_Bra_l_DressChest
 # :: m_LightMaidKnight_Top_l_DressChest
@@ -37146,20 +37176,29 @@ Aura刘海(右后)
 # :: m_SmoothLargeBallGagHarness_l_BigBallTeethFang
 # :: m_SmoothLargeBallGagHarnessSecure_l_BigBallTeethFang
 # - MilitaryJacket_Sleeveless
-# - MilitaryUniform_SleeveLeft
-# - MilitaryUniform_SleeveRight
+- MilitaryUniform_SleeveLeft
+军队制服_左袖
+- MilitaryUniform_SleeveRight
+军队制服_右袖
 # - MilitaryUniform_Sleeves
 # - MilitaryJacket
 # - WhiteGloveLeft
 # - WhiteGloveRight
 # - WhiteGloves
-# - UniformShirt_Sleeveless
-# - UniformShirt_SleeveLeft
-# - UniformShirt_SleeveRight
-# - UniformShirt_Sleeves
-# - UniformShirt
-# - MilitaryUniform_Hat
-# - Hat
+- UniformShirt_Sleeveless
+制服衬衫_无袖
+- UniformShirt_SleeveLeft
+制服衬衫_左袖
+- UniformShirt_SleeveRight
+制服衬衫_右袖
+- UniformShirt_Sleeves
+制服衬衫_袖子
+- UniformShirt
+制服衬衫
+- MilitaryUniform_Hat
+军队制服_帽子
+- Hat
+帽子
 # :: m_MilitaryUniform_Hat_l_Hat
 # :: m_MilitaryUniform_l_Hat
 # :: m_SantaHat_l_Hat
@@ -37237,19 +37276,24 @@ Aura刘海(右后)
 # - MilitaryUniform_SockLeft
 # - MilitaryUniform_SockRight
 # - Tights
-# - MilitaryUniform_Hairpin
-# - Hairpin
+- MilitaryUniform_Hairpin
+军队制服_发髻
+- Hairpin
+发簪
 # :: m_MilitaryUniform_Hairpin_l_Hairpin
 # :: m_MilitaryUniform_l_Hairpin
 # :: m_BlondeFront_l_Hairpin
-# - MilitaryUniform
+- MilitaryUniform
+军队制服
 # - ShirtSleeveLeft
 # - ShirtForeArmLeft
 # - ShirtSleeveRight
 # - ShirtForeArmRight
 # - ShirtShoulderRight
-# - ShirtDress
-# - ShirtDressChest
+- ShirtDress
+裙子连衣裙
+- ShirtDressChest
+裙子连衣裙胸部
 
 # - RubyNecklace
 # - RubyChain
@@ -37507,7 +37551,8 @@ Aura刘海(右后)
 # - Twindrills
 # - Twintails
 # - PointyAhoge
-# - RoundHat
+- RoundHat
+圆顶帽
 # - HatTop
 # - TopHatSmall
 # :: m_TopHatSmall
@@ -38360,7 +38405,8 @@ Aura刘海(右后)
 # :: m_HighSecCorsetNoCrotchRestraint_l_Hardware
 # :: m_HighSecCorset_l_Hardware
 # :: m_HighSecCorsetRestraint_l_Hardware
-# - SleeveHems
+- SleeveHems
+袖子下摆
 # :: m_SailorSleeveLeft_l_SleeveHems
 # :: m_SailorSleeveRight_l_SleeveHems
 # :: m_SailorSleeves_l_SleeveHems
@@ -39863,14 +39909,16 @@ Aura刘海(右后)
 # - KneepadRight
 # :: m_HeavyMaidKnight_Boots_l_KneepadRight
 # :: m_HeavyMaidKnight_l_KneepadRight
-# - JacketBottom
+- JacketBottom
+外套下部
 # :: m_MilitaryJacket_Sleeveless_l_JacketBottom
 # :: m_MilitaryJacket_Sleeveless_l_JacketBottom
 # :: m_MilitaryJacket_l_JacketBottom
 # :: m_MilitaryJacket_l_JacketBottom
 # :: m_MilitaryUniform_l_JacketBottom
 # :: m_MilitaryUniform_l_JacketBottom
-# - JacketSleeveLeft
+- JacketSleeveLeft
+外套左袖
 # :: m_MilitaryUniform_SleeveLeft_l_JacketSleeveLeft
 # :: m_MilitaryUniform_SleeveLeft_l_JacketSleeveLeft
 # :: m_MilitaryUniform_SleeveLeft_l_JacketSleeveLeft
@@ -39883,7 +39931,8 @@ Aura刘海(右后)
 # :: m_MilitaryUniform_l_JacketSleeveLeft
 # :: m_MilitaryUniform_l_JacketSleeveLeft
 # :: m_MilitaryUniform_l_JacketSleeveLeft
-# - JacketSleeveRight
+- JacketSleeveRight
+外套右袖
 # :: m_MilitaryUniform_SleeveRight_l_JacketSleeveRight
 # :: m_MilitaryUniform_SleeveRight_l_JacketSleeveRight
 # :: m_MilitaryUniform_SleeveRight_l_JacketSleeveRight
@@ -39900,7 +39949,8 @@ Aura刘海(右后)
 # :: m_MilitaryUniform_l_JacketSleeveRight
 # :: m_MilitaryUniform_l_JacketSleeveRight
 # :: m_MilitaryUniform_l_JacketSleeveRight
-# - ShirtBottom
+- ShirtBottom
+衬衫下部
 # :: m_UniformShirt_Sleeveless_l_ShirtBottom
 # :: m_UniformShirt_l_ShirtBottom
 # :: m_MilitaryUniform_l_ShirtBottom
@@ -40014,10 +40064,12 @@ Aura刘海(右后)
 # - CrotchStrapsHardware
 # :: m_HighSecCorset_l_CrotchStrapsHardware
 # :: m_HighSecCorsetRestraint_l_CrotchStrapsHardware
-# - SoleLeft
+- SoleLeft
+鞋底（左）
 # :: m_HighSecBalletHeels_l_SoleLeft
 # :: m_HighSecBalletHeelsRestraint_l_SoleLeft
-# - SoleRight
+- SoleRight
+鞋底（右）
 # :: m_HighSecBalletHeels_l_SoleRight
 # :: m_HighSecBalletHeelsRestraint_l_SoleRight
 
@@ -41409,8 +41461,10 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 
 - Casting SPNME
 发射 SPNME
-# - Using ${Item}
-# - Aiming ${Item}
+- Using ${Item}
+使用 ${Item}
+- Aiming ${Item}
+${Item} 瞄准
 - The door suddenly locks behind you!
 门突然在你身后锁上了！
 
@@ -43975,7 +44029,8 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - You take longer to get up and are less skilled at wearing high heels.
 你起身需要更长的时间，并且穿高跟鞋的技巧较差。
 
-# - Getting up in AMNT turns...
+- Getting up in AMNT turns...
+AMNT 回合后起身...
 - Balance: AMNT%
 平衡 : ‎AMNT%
 - Balance: AMNT% (Sprinting Disabled!!!)
@@ -45264,7 +45319,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 金属链将你的背部固定于拱起的位置。
 
 
-# - Waist Links (Thighs)
+- Waist Links (Thighs)
+腰链（大腿）
 # - High-security cables connecting your belt to your thigh cuffs. Slightly restricts mobility, increasing Sprint Cost by 10%.
 - It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 它是钢制的，且用锁固定。解锁后会丢失。
@@ -45276,7 +45332,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: RestraintElbowLinkDesc2
 # :: RestraintWristLinkDesc2
 
-# - Waist Links (Arms)
+- Waist Links (Arms)
+腰链（手臂）
 # - High-security cables connecting your belt to your wrist cuffs. They reduce your desterity, making it harder to reach your neck and mouth, reducing Accuracy by 25%, and preventing the use of two-handed weapons.
 
 
@@ -45285,7 +45342,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: RestraintThighLinkDesc
 # :: RestraintWardenThighLinkDesc
 
-# - Reinforced Ankle Link
+- Reinforced Ankle Link
+强化踝链
 # - Keeps your ankles close. Careful not to walk too fast, or you'll trip!
 - A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints.
 它是钢制的，且用锁固定。解锁后会丢失。
@@ -45294,22 +45352,24 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: RestraintElbowLinkDesc2
 # :: RestraintWristLinkDesc2
 # :: RestraintNeoThighLinkDesc2
-# - Reinforced Ankle Link (Short)
+- Reinforced Ankle Link (Short)
+强化踝链（短）
 # - Keeps your ankles connected together. Hard to walk, let alone get up after a fall.
 
 
 
 - Reinforced Elbow Link
-肘链
+强化肘链
 - A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
 一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。
 - Reinforced Wrist Link
-腕链
+强化腕链
 - A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
 一条非常短的链条，将你的手腕铐连接在一起。
 
 
-# - Reinforced Thigh Link
+- Reinforced Thigh Link
+强化腿链
 # - A link connecting your thigh cuffs together. You can still walk, albeit slower than usual.
 
 - A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
@@ -45527,7 +45587,8 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 - (Go to floor 20)
 ( 前往第 20 层 )
 
-# - (Check the Automated Storage System)
+- (Check the Automated Storage System)
+（检查自动存储系统）
 
 - (The viewscreen depicts a face)|Why hello there adventurer! What brings you?
 ( 屏幕上描绘了一张脸 ) |你好，冒险家！什么风把你吹过来啦？
@@ -45535,7 +45596,8 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 
 # - Mmm mmm?
 # - (The face smiles)|I can't seem to understand what you're staying.|Maybe you should speak more clearly~
-# - How does the Automated Storage System work?
+- How does the Automated Storage System work?
+自动存储系统是怎么运作的？
 # - (The face glitches for a single frame)|Ah! I know what you're talking about!|The storage system was used for distributing small scale supplies.|It was more of a convenience feature created by s... someone...|...than an actual logistical tool.|The bulk transport network isn't functioning right now.
 
 
@@ -45714,7 +45776,8 @@ ESCP 能力: AMNT
 # :: KDItemStruggleUnlock
 - Max ESCP Depth: AMNT%
 最大 ESCP 深度: AMNT%
-# - Show extra struggle info
+- Show extra struggle info
+显示额外的挣扎信息
 
 - Cut
 切
@@ -46840,7 +46903,8 @@ ENMY 解开了 ITMN 的锁!
 你的库存
 - Warden's Storage
 典狱长储藏室
-# - Automated Storage Network
+- Automated Storage Network
+自动存储系统
 
 - Store 1 ITMN
 储存 1 ITMN
@@ -46858,15 +46922,19 @@ ENMY 解开了 ITMN 的锁!
 储存 全部-1 ITMN
 - Take ALL-1 ITMN
 拿取 全部-1 ITMN
-# - Store Excess ITMN
-# - Refill ITMN
+- Store Excess ITMN
+储存多余的 ITMN
+- Refill ITMN
+拿取适量的 ITMN
 # - (Max: ${Num})
 - Take Everything
 拿取全部
-# - Refill
+- Refill
+拿取适量
 - Deposit All
 全部存入
-# - Deposit Excess
+- Deposit Excess
+存入多余物品
 
 - Auto-loot found 
 自动拾取到
@@ -47342,7 +47410,7 @@ ENMY 解开了 ITMN 的锁!
 - Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
 危险等级 : 高 | 一团压迫感强烈的负面思维。根据当地的传说，其他幽灵试图通过拥抱来安慰它，但它的哀号最终会将它们吸引到你的身边。准备好击败它，否则你可能会成为来自异界存在的玩物。 ||《地牢中的居民》凯瑟琳·威洛斯 著
 - Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高｜虽然大多数魔法师会用数个世纪的时间来练习，精通自己的魔法技术，但也有一些人缺乏耐心，不去按传统方式学习魔法。为了追求力量，这些人会与其他世界的存在签订契约，成为女巫。||-《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 高｜虽然大多数魔法师会用数个世纪的时间来练习，精通自己的魔法技术，但也有一些人缺乏耐心，不去按传统方式学习魔法。为了追求力量，这些人会与其他世界的存在签订契约，成为女巫。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - The Witches' Coven
 女巫集会
 - Witches
@@ -47350,11 +47418,11 @@ ENMY 解开了 ITMN 的锁!
 - Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
 危险等级 : 极高 | 一位擅长召唤术的女巫。她有一支由影之手和魔法书组成的军队，如此类型的女巫极其危险。她的近战攻击动作缓慢且笨拙，但要小心不要被包围。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - Bast Mummy
 猫女神木乃伊
 - Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
-危险等级 : 中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - Bast Clerics
 猫女神祭司
 - Rock-solid and form-fitting.
@@ -47698,7 +47766,7 @@ PTRN 的 RMTPE
 任务( GDSNM )
 # - [GDSNM]
 - Bed!
-床！
+床!
 - Silver
 银箱子
 - Mecha
@@ -48052,16 +48120,24 @@ NME 由于不够显要，被自动释放
 冲刺 (AMNT)
 - Stop Waiting
 停止等待
-# - Attack
-# - Capture
+- Attack
+攻击
+- Capture
+捕获
 # :: KDContextMenu_Capture
 # :: KDContextMenu_Tease
-# - Aggress
-# - Sneak Attack
-# - Retaliate
-# - Shoot
-# - Activate on Self
-# - Ignite on Self
+- Aggress
+威胁
+- Sneak Attack
+偷袭
+- Retaliate
+报复
+- Shoot
+射击
+- Activate on Self
+对自己使用
+- Ignite on Self
+对自己使用
 
 - (Already slept here)
 (已经睡过一次了)
@@ -48070,8 +48146,10 @@ NME 由于不够显要，被自动释放
 
 - Move closer to interact
 接近并交互
-# - Your arms are not long enough.
-# - You can't do that with just your mind.
+- Your arms are not long enough.
+你够不到门。
+- You can't do that with just your mind.
+你离门太远了。
 
 - Several poles rise up out of the ground...
 几根柱子破土而出...
@@ -48079,10 +48157,13 @@ NME 由于不够显要，被自动释放
 - Various Scrolls
 各种卷轴
 
-# - The ${Lock} on your ${Restraint} melts away!
-# - Your ${Restraint} clicks and releases at last!
+- The ${Lock} on your ${Restraint} melts away!
+你 ${Restraint} 上的 ${Lock} 融化了！
+- Your ${Restraint} clicks and releases at last!
+你的 ${Restraint} 咔哒一声松开了！
 
-# - Your leash lets out a click as it ratchets to a shorter length!
+- Your leash lets out a click as it ratchets to a shorter length!
+你的牵绳咔哒一声响，缩短了长度！
 # - The animated Masterworks overpower you and you find yourself wearing one of them!
 # - The animated Masterworks force you to the ground and pat your head gently before floating away!
 # - The kitty's living latex spreads, encasing your limbs in tight rubber!
@@ -48096,7 +48177,8 @@ NME 由于不够显要，被自动释放
 
 # - Error saving preferred palettes
 
-# - Animated Masterworks
+- Animated Masterworks
+活化极品束具
 # - The animated masterwork restraints come apart and flee in all directions.
 # - The animated masterworks grab you!
 
@@ -48109,50 +48191,75 @@ NME 由于不够显要，被自动释放
 # - (Struggle in your masterwork restraints)
 # - (SPEAKER glares at your body)|Ah! My Masterwork set!|I remember these, they were quite the treat--|er, tricky to get off!|You'll need to collect all five pieces before it unlocks.
 
-# - Can you unlock my Masterwork restraints?
-# - (Present your masterwork restraints)
+- Can you unlock my Masterwork restraints?
+你能解锁我的极品拘束吗？
+- (Present your masterwork restraints)
+（展示你的极品拘束）
 # - (SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~
 # - (SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~
 
 
 # - The chest contained an angry latex kitty!
 
-# - Latex Kitty
-# - The latex kitty
-# - The latex kitty rubs against you seductively!
-# - The latex kitty's rubbery coating spreads to you!
-# - The latex kitty's rubbery coating casts itself into locks!
+- Latex Kitty
+乳胶猫娘
+- The latex kitty
+乳胶猫娘
+- The latex kitty rubs against you seductively!
+乳胶猫娘诱惑地蹭着你！
+- The latex kitty's rubbery coating spreads to you!
+乳胶猫娘身体表面的胶沾到了你身上！
+- The latex kitty's rubbery coating casts itself into locks!
+乳胶猫娘身体表面的胶变成了锁！
 
 # - Click to show more info...
 # - Click to hide info...
 # - (${Enter}) to show more...
 # - (${Enter}) to hide...
 
-# - (Need ${Need} SP, have ${Current})
+- (Need ${Need} SP, have ${Current})
+（需要 ${Need} 点 SP，你只有 ${Current} 点）
 
 
-# - ${Target} refuses to take the potion.
+- ${Target} refuses to take the potion.
+${Target} 拒绝使用药水。
 
-# - Target must have muscles.
-# - ${Target} gains immense physical strength!
-# - You gain immense physical strength!
-# - You dump the potion on the ground and nothing happens.
-# - You are strong!
+- Target must have muscles.
+目标必须有肌肉。
+- ${Target} gains immense physical strength!
+${Target} 获得了强大的力量！
+- You gain immense physical strength!
+你的肉体获得了强大的力量！
+- You dump the potion on the ground and nothing happens.
+你把药水倒到地上，什么也没有发生。
+- You are strong!
+你感到力大无比！
 
-# - Strength Potion
-# - Choose who should drink the potion.
-# - The bottle is bursting with pressure. The cap is glued on, but you feel as if it will pop off at the slightest touch.
-# - For 50 turns, increase the base damage of physical weapons by 20. Also increases escape power by 5 and gives a bonus to struggle of up to 15, if bonus is below 15.
+- Strength Potion
+力量药水
+- Choose who should drink the potion.
+选择药水的使用对象。
+- The bottle is bursting with pressure. The cap is glued on, but you feel as if it will pop off at the slightest touch.
+瓶子里压力极大，几乎要爆裂了。瓶盖被胶水密封，但你觉得哪怕轻轻碰一下，它都会砰地一下弹开。
+- For 50 turns, increase the base damage of physical weapons by 20. Also increases escape power by 5 and gives a bonus to struggle of up to 15, if bonus is below 15.
+50 回合内，武器物理伤害 +20。提供 5 点脱缚加成。若挣扎加成小于 15 则提供 15 点挣扎加成。
 
-# - ${Count}x${Item} moved to storage
-# - Not Enough Inventory Space
-# - You can't drop that
+- ${Count}x${Item} moved to storage
+${Count}x${Item} 已转移至仓库
+- Not Enough Inventory Space
+背包没有足够的空间
+- You can't drop that
+你无法丢弃它
 
-# - You tug against your waist chains, but your arms can't reach far enough.
-# - The yoke you are wearing prevents you from reaching that!
+- You tug against your waist chains, but your arms can't reach far enough.
+你拉扯着腰部的锁链，发现自己的手臂够不到那么远。
+- The yoke you are wearing prevents you from reaching that!
+枷锁限制了你的行动，你够不到那里！
 
-# - You may choose an additional class.
-# - Class upgrades and skills for additional classes cost 2x as many points.
+- You may choose an additional class.
+你可以选择一个额外职业。
+- Class upgrades and skills for additional classes cost 2x as many points.
+额外职业升级需消耗两倍的技能点。
 
 
 
