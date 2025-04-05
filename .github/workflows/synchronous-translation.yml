@@ -47,7 +47,7 @@ jobs:
           cat "$PATH_ORIGIN" >> "$PATH_TEMP"
           mv "$PATH_TEMP" "$PATH_ORIGIN"
           
-          python .github/scripts/format-translation-script.py "--translation_files Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
+          python .github/scripts/format-translation-script.py --translation_files Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt
 
       - name: 📝 Commit changes
         id: check_changes
