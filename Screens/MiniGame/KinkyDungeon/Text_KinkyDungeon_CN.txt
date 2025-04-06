@@ -1,5 +1,7 @@
 - By Strait-Laced Games
 由 Strait-Laced Games 呈现
+:: KDLogo2
+由 Strait-Laced Games 呈现
 
 - Credits
 贡献者
@@ -57,6 +59,8 @@
 - Kinky Dungeon
 淫荡地牢
 # - By Ada18980
+:: KDLogo2
+由 Strait-Laced Games 呈现
 - You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
 - Beneath its depths lies the Mistress' Staff, an artifact of untold power.
@@ -39719,7 +39723,8 @@ Aura刘海(右后)
 # :: m_HighSecBlindfold_l_StrapHardware
 # :: m_FashionHighSecBlindfold_l_StrapHardware
 # :: m_HighSecBlindfoldRestraint_l_StrapHardware
-# - Shoe
+- Shoe
+鞋
 # :: m_BalletHeels_l_Shoe
 # :: m_BalletHeels_l_Shoe
 # :: m_FlatBalletHeels_l_Shoe
@@ -46849,11 +46854,11 @@ N/A
 - No mod info!
 此模组未提供详细信息
 - Wrong patch! ${Num1} vs ${Num2}
-修订版本号不兼容
+修订版本号不兼容！游戏 ${Num1} vs 模组 ${Num2}
 - VERY Outdated! ${Num1} vs ${Num2}
-主版本号不兼容
+主版本号不兼容！游戏 ${Num1} vs 模组 ${Num2}
 - Outdated! ${Num1} vs ${Num2}
-次版本号不兼容
+次版本号不兼容！游戏 ${Num1} vs 模组 ${Num2}
 - Check dependencies!
 请检查依赖!
 - Check compatibility!
@@ -48097,8 +48102,10 @@ NME 由于不够显要，被自动释放
 切换点击或拖动
 - Settings
 设置
-# - Scroll Controls: 
-# - Layer Text: 
+- Scroll Controls: 
+滚动控制 : 
+- Layer Text: 
+图层文本 : 
 
 - No Actions Available
 没有可用的行动
@@ -48171,11 +48178,14 @@ NME 由于不够显要，被自动释放
 
 
 
-# - Save as preferred for this type
+- Save as preferred for this type
+保存为该类型的首选项
 # - Save for enchanted versions
-# - Save as preferred on NPCs
+- Save as preferred on NPCs
+保存为 NPC 的首选项
 
-# - Error saving preferred palettes
+- Error saving preferred palettes
+保存首选调色板出错
 
 - Animated Masterworks
 活化极品束具
@@ -48196,10 +48206,12 @@ NME 由于不够显要，被自动释放
 - (Present your masterwork restraints)
 （展示你的极品拘束）
 # - (SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~
-# - (SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~
+- (SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~
+( SPEAKER 微笑着用她的钥匙解开了你的束缚 )|我希望你在里面度过了美好的时光~
 
 
-# - The chest contained an angry latex kitty!
+- The chest contained an angry latex kitty!
+箱子里有一只愤怒的乳胶猫猫！
 
 - Latex Kitty
 乳胶猫娘
@@ -48212,10 +48224,14 @@ NME 由于不够显要，被自动释放
 - The latex kitty's rubbery coating casts itself into locks!
 乳胶猫娘身体表面的胶变成了锁！
 
-# - Click to show more info...
-# - Click to hide info...
-# - (${Enter}) to show more...
-# - (${Enter}) to hide...
+- Click to show more info...
+点击显示更多信息...
+- Click to hide info...
+点击隐藏信息..
+- (${Enter}) to show more...
+(${Enter}) 以显示更多...
+- (${Enter}) to hide...
+(${Enter}) 以隐藏...
 
 - (Need ${Need} SP, have ${Current})
 （需要 ${Need} 点 SP，你只有 ${Current} 点）
