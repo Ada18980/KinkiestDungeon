@@ -1770,19 +1770,18 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	let drains = [];
 
 
-	for (let item of KinkyDungeonFullInventory()) {
-		if (item.type == Restraint) {
-			if (KDRestraint(item).difficultyBonus) {
-				KinkyDungeonDifficulty += KDRestraint(item).difficultyBonus;
+	for (let pair of KinkyDungeonAllRestraintDynamic()) {
+		let item = pair.item;
+		if (KDRestraint(item).difficultyBonus) {
+			KinkyDungeonDifficulty += KDRestraint(item).difficultyBonus;
+		}
+		if (KDRestraint(item).crotchrope) KinkyDungeonHasCrotchRope = true;
+		if (KDRestraint(item).enchantedDrain) {
+			if (KDGameData.AncientEnergyLevel > 0) {
+				//maxDrain = Math.max(maxDrain, KDRestraint(item).enchantedDrain);
+				drains.push(KDRestraint(item).enchantedDrain);
 			}
-			if (KDRestraint(item).crotchrope) KinkyDungeonHasCrotchRope = true;
-			if (KDRestraint(item).enchantedDrain) {
-				if (KDGameData.AncientEnergyLevel > 0) {
-					//maxDrain = Math.max(maxDrain, KDRestraint(item).enchantedDrain);
-					drains.push(KDRestraint(item).enchantedDrain);
-				}
-				//KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - KDRestraint(item).enchantedDrain * delta);
-			}
+			//KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - KDRestraint(item).enchantedDrain * delta);
 		}
 	}
 	if (drains.length > 0 && delta > 0) {
