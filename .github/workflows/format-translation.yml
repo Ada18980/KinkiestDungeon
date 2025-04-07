@@ -15,6 +15,7 @@ jobs:
   format-translation:
     runs-on: ubuntu-latest
     if: github.repository == 'Ada18980/KinkiestDungeon'
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
