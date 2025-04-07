@@ -66,16 +66,19 @@ async def paratran_download():
         json_object.sort(key=lambda x: x['id'])
         output_content = []
 
-        output_content.append('Go to https://paratranz.cn/projects/12190 to participate in KD localization')
-        output_content.append('前往 https://paratranz.cn/projects/12190 参加KD汉化')
+        output_content.append('#Go to https://paratranz.cn/projects/12190 to participate in KD localization')
+        output_content.append('#前往 https://paratranz.cn/projects/12190 参加KD汉化')
         output_content.append('')
 
         # Process each item in the JSON object
         for item in json_object:
             if item['original'] == item['translation']:  # Skip items where original equals translation
                 continue
-            if item['translation']:  # If translation is not empty
-                output_content.append(item['original'])
+            if item['translation'].startswith(":: "):  #If have ::,force match key
+                output_content.append(':: '+item['key'])
+                output_content.append(item['translation'].removeprefix(":: "))
+            elif item['translation']:  # If translation is not empty
+                output_content.append('- '+item['original'])
                 output_content.append(item['translation'])
 
         with open(output_txt, 'w', encoding='utf-8') as file:

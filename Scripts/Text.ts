@@ -116,9 +116,9 @@ class TranslationTextParser {
 			const line = lines[i].trimStart();
 
 			if (line.startsWith("-")) {
-				textTranslationMap.set(line.slice(1).trim(), lines[++i].trimStart());
+				textTranslationMap.set(line.slice(1).trimStart(), lines[++i].trimStart());
 			} else if (line.startsWith("::")) {
-				tagTranslationMap.set(line.slice(2).trim(), lines[++i].trimStart());
+				tagTranslationMap.set(line.slice(2).trimStart(), lines[++i].trimStart());
 			}
 		}
 
