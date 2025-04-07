@@ -1047,7 +1047,7 @@ function KDGetFactionFilters(faction: string): Record<string, LayerFilter> {
 }
 
 /**
- * 
+ *
  */
 function KinkyDungeonHeadpatModal() {
     const id = "kinky-dungeon-headpat-modal";
@@ -1067,11 +1067,11 @@ function KinkyDungeonHeadpatModal() {
         //backgroundColor: "#ffffff"
     }
     let hardpointlocs = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "HeadpatHead", KDToggles.FlipPlayer)
-    console.log(hardpointlocs)
+    //console.log(hardpointlocs)
     pxassign.top = `${(hardpointlocs.y - (KDIsHogtied() ? 100 : 50))}px`;
     pxassign.left = `${(hardpointlocs.x - (KDIsHogtied() ? 100 : 100))}px`;
     pxassign.transform = `rotate(${hardpointlocs.angle}rad)`
-    console.log(pxassign)
+    //console.log(pxassign)
     Object.assign(backdrop.style, pxassign);
     backdrop.addEventListener("click", () => {
         console.log("Headpats!")

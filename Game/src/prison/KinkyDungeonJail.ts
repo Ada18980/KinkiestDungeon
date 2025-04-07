@@ -1782,7 +1782,8 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
 		}
 		if (nearestJail.restrainttags) {
-			let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined);
+			let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags},
+				KDGetEffLevel(),KDCurrIndex(), false, undefined);
 			if (restraint)
 				KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 		}
@@ -2240,7 +2241,8 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 let KDCustomDefeatUniforms = {
 	WolfgirlHunters: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints", "linkRegular"])}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints", "linkRegular"])},
+			Math.max(KDGetEffLevel(), 6), "grv", true, "Red");
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red", undefined, undefined, undefined, undefined, true);
 				if (r.Link) {
@@ -2256,7 +2258,8 @@ let KDCustomDefeatUniforms = {
 	},
 	MaidSweeper: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer", "linkRegular"]}, 12, "grv", true, "Purple");
+			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer", "linkRegular"]},
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple");
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
@@ -2268,7 +2271,8 @@ let KDCustomDefeatUniforms = {
 	DollShoppe: () => {
 		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]}, 12, "grv", true, "Purple", false, false, false);
+			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]},
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple", false, false, false);
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
 		}
@@ -2312,7 +2316,9 @@ let KDCustomDefeatUniforms = {
 		if (!KinkyDungeonStatsChoice.get("NoBlindfolds"))
 			KinkyDungeonAddRestraintIfWeaker("TrapBlindfold", 5, true, undefined, false, undefined, undefined, undefined, true);
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist", "tapeRestraints", "genericToys"]}, 24, "grv", true, undefined);
+			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist",
+				"tapeRestraints", "genericToys"]},
+				Math.max(KDGetEffLevel(), 24), "grv", true, undefined);
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
 				let item = r;
@@ -2341,7 +2347,8 @@ let KDCustomDefeatUniforms = {
 
 	ElementalSlave: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys", "linkRegular"]}, 12, "grv", true, "Red");
+			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys", "linkRegular"]},
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Red");
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", false, undefined, undefined, undefined, true);
 				let item = r;

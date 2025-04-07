@@ -3869,7 +3869,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						if (KinkyDungeonCanUseKey() || !KinkyDungeonIsArmsBound()) {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
-								KDFreeNPC(e);
+								KDFreeNPC(e, false);
 								KDDefectIfPossible(e);
 								if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
@@ -3974,7 +3974,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								if (KDDialogueEnemy()) {
 									let e = KDDialogueEnemy();
-									KDFreeNPC(e);
+									KDFreeNPC(e, false);
 									KDDefectIfPossible(e);
 									if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick";

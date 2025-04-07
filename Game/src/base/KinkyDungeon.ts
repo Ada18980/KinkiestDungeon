@@ -1594,6 +1594,17 @@ function KinkyDungeonRun() {
 	KDJourneyGraphicsLower.clear();
 	KDJourneyGraphicsUpper.clear();
 
+
+	if (mouseDown && !LongHoldPinged && HoldMoved && HoldStartTime > 0 && CommonTime() > HoldStartTime + LongHoldThresh) {
+		LongHoldPinged = true;
+		KDAddShockwave(
+			MouseX,
+			MouseY,
+			256, "Particles/Shockwave.png",
+			false
+		);
+	}
+
 	if (StandalonePatched) {
 		if (KDFullscreen && !KDToggles.Fullscreen) {
 			KDCloseFullscreen();
@@ -6198,6 +6209,20 @@ function KinkyDungeonKeyDown(): void {
 let mouseDown = false;
 let MouseClicked = false;
 
+let LastHoldTime = 0;
+let LongHoldThresh = 750;
+let LongHoldPinged = false;
+
+let HoldStartTime = 0;
+let HoldStartPosX = 0;
+let HoldStartPosY = 0;
+let HoldEndPosX = 0;
+let HoldEndPosY = 0;
+
+/** Becomes true if at any point a touch moves more than HoldMoveThresh px from initial point */
+let HoldMoved = false;
+let HoldMoveThresh = 140;
+
 window.addEventListener('click', function(event) {
 	MouseMove(event);
 	if (!CommonIsMobile || !MouseClicked) {
@@ -6208,32 +6233,30 @@ window.addEventListener('click', function(event) {
 	mouseDown = false;
 	//CommonClick(event);
 });
-window.addEventListener('mousedown', function() {
+window.addEventListener('mousedown', function(event) {
 	mouseDown = true;
+	HoldStartTime = CommonTime();
+	HoldMoved = false;
+	LongHoldPinged = false;
+
+	if (PIXICanvas) {
+		HoldStartPosX = Math.round((event.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+		HoldStartPosY = Math.round((event.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+	} else if (MainCanvas) {
+		HoldStartPosX = Math.round((event.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+		HoldStartPosY = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+	}
+
 	if (!CommonIsMobile)
 		MouseClicked = true;
 });
 window.addEventListener('touchstart', function(event) {
 	MouseClicked = true;
-	if (CommonIsMobile) {
-		let touch = event.touches[0];
-		if (PIXICanvas) {
-			MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
-			MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
-		} else if (MainCanvas) {
-			MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
-			MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
-		}
-		//CommonClick(event);
-		CommonTouchList = event.touches;
-		mouseDown = true;
-		MouseClicked = false;
-	}
-});
-
-window.addEventListener('touchmove', function(event) {
+	HoldMoved = false;
+	LongHoldPinged = false;
+	HoldStartTime = CommonTime();
+	//if (CommonIsMobile) {
 	let touch = event.touches[0];
-	let startedInPlayableArea = KDMouseInPlayableArea();
 	if (PIXICanvas) {
 		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
 		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
@@ -6241,20 +6264,116 @@ window.addEventListener('touchmove', function(event) {
 		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
 		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
 	}
+	//CommonClick(event);
+	CommonTouchList = event.touches;
+	mouseDown = true;
+	MouseClicked = false;
+	//}
+});
+
+window.addEventListener('touchmove', function(event) {
+	let touch = event.touches[0];
+	let startedInPlayableArea = KDMouseInPlayableArea();
+
+	if (PIXICanvas) {
+		MouseX = Math.round((touch.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+		MouseY = Math.round((touch.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+	} else if (MainCanvas) {
+		MouseX = Math.round((touch.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+		MouseY = Math.round((touch.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+	}
+
+	if (!HoldMoved) {
+		if (PIXICanvas) {
+			if (KDistEuclidean(MouseX - HoldStartPosX, MouseY - HoldStartPosY) > HoldMoveThresh) {
+				HoldMoved = true;
+			}
+		} else if (MainCanvas) {
+			if (KDistEuclidean(MouseX - HoldStartPosX, MouseY - HoldStartPosY) > HoldMoveThresh) {
+				HoldMoved = true;
+			}
+		}
+	}
+
 	if ((startedInPlayableArea && !KDMouseInPlayableArea() && !KinkyDungeonTargetingSpell) || (!startedInPlayableArea && KDMouseInPlayableArea())) {
 		MouseClicked = true; // To prevent KDClick on end
 	}
 });
-window.addEventListener('touchend', function(_event: TouchEvent) {
-	if (CommonIsMobile && mouseDown && !MouseClicked) {
+window.addEventListener('touchend', function(event: TouchEvent) {
+
+	let touch = event.touches[0];
+	if (PIXICanvas) {
+		HoldEndPosX = MouseX;
+		HoldEndPosY = MouseY;
+	} else if (MainCanvas) {
+		HoldEndPosX = MouseX;
+		HoldEndPosY = MouseY;
+	}
+
+	LastHoldTime = CommonTime() - HoldStartTime;
+
+
+	if (mouseDown && !MouseClicked) {
 		KDClick(undefined);
 		MouseClicked = true;
-	} else MouseClicked = false;
+	} else {
+		if (!HoldMoved && LastHoldTime > LongHoldThresh) {
+			if (KDMouseInPlayableArea()) {
+				if (KDDrawGameContextMenu[KinkyDungeonDrawState]) {
+					if (KDDrawGameContextMenu[KinkyDungeonDrawState](false, MouseX, MouseY).length > 0) {
+						KDContextMenu = !KDContextMenu;
+					}
+				} else KDContextMenu = false;
+				if (KDContextMenu) {
+					KDContextX = MouseX;
+					KDContextY = MouseY;
+					KDContextStage = "";
+				} else {
+					// @ts-ignore
+					KDNonContextActions(CommonIsMobile, document.activeElement?.type == "text" || document.activeElement?.type == "textarea");
+				}
+			}
+		}
+		MouseClicked = false;
+	}
+
+	mouseDown = false;
+
 });
-window.addEventListener('mouseup', function() {
+window.addEventListener('mouseup', function(event) {
 	mouseDown = false;
 	if (!CommonIsMobile)
 		MouseClicked = false;
+
+
+	if (!HoldMoved) {
+		if (PIXICanvas) {
+			let tempx = Math.round((event.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+			let tempy = Math.round((event.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+			if (KDistEuclidean(tempx - HoldStartPosX, tempy - HoldStartPosY) > HoldMoveThresh) {
+				HoldMoved = true;
+			}
+		} else if (MainCanvas) {
+			let tempx = Math.round((event.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+			let tempy = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+			if (KDistEuclidean(tempx - HoldStartPosX, tempy - HoldStartPosY) > HoldMoveThresh) {
+				HoldMoved = true;
+			}
+		}
+	}
+
+
+
+
+	if (PIXICanvas) {
+		HoldEndPosX = Math.round((event.pageX - PIXICanvas.offsetLeft) * 2000 / PIXICanvas.clientWidth);
+		HoldEndPosY = Math.round((event.pageY - PIXICanvas.offsetTop) * 1000 / PIXICanvas.clientHeight);
+	} else if (MainCanvas) {
+		HoldEndPosX = Math.round((event.pageX - MainCanvas.canvas.offsetLeft) * 2000 / MainCanvas.canvas.clientWidth);
+		HoldEndPosY = Math.round((event.pageY - MainCanvas.canvas.offsetTop) * 1000 / MainCanvas.canvas.clientHeight);
+	}
+
+	LastHoldTime = CommonTime() - HoldStartTime;
 });
 window.addEventListener('wheel', function(event) {
 	KDMouseWheel(event);

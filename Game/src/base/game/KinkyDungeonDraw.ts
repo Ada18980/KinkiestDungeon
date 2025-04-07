@@ -1017,6 +1017,7 @@ function KinkyDungeonDrawGame() {
 		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
 	KDButtonHovering = false;
 
+
 	let tooltips = [];
 
 	if (KDPatched && KinkyDungeonDrawState == "Restart") {

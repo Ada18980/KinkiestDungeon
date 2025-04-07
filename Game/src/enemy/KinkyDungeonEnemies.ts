@@ -2308,8 +2308,9 @@ function KDSetToExpectedBondage(en: entity, mode: number = 0) {
 
 /**
  * @param en
+ * @param rescue - whether she should like you afterward
  */
-function KDFreeNPC(en: entity) {
+function KDFreeNPC(en: entity, rescue: boolean = true) {
 	if (en.prisondialogue) {
 		en.prisondialogue = undefined;
 	} else if (en.specialdialogue && KDEnemyHasFlag(en, "imprisoned")) {

@@ -277,8 +277,16 @@ function KDAddOpinion(enemy: entity, Amount: number): number {
 	if (KDGameData.Collection[enemy.id]) KDGameData.Collection[enemy.id].Opinion = enemy.opinion;
 	if (enemy.opinion > 0) {
 		// After being made happier they will reconsider their hostilities
+		if (enemy.hostile > 0) {
+			KDResetIntent(enemy);
+			KinkyDungeonSendDialogue(enemy,
+				TextGet("KDReconsider" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged"))
+				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				KDGetColor(enemy), 14, 11);
+		}
 		enemy.hostile = undefined;
 		enemy.rage = undefined;
+
 	}
 	return enemy.opinion || 0;
 }

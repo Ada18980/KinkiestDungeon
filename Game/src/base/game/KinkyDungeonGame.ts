@@ -5309,7 +5309,9 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 	if (Enemy && !allowPass && !passThroughSprint) {
 		if (AllowInteract) {
 			KDDelayedActionPrune(["Action", "Attack"]);
+			KinkyDungeonInterruptSleep();
 			KinkyDungeonLaunchAttack(Enemy);
+			KinkyDungeonFastMovePath = [];
 		}
 	} else {
 		let MovableTiles = KinkyDungeonGetMovable();
@@ -5343,6 +5345,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						KinkyDungeonTargetTileLocation = "" + moveX + "," + moveY;
 						KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
 
+						KinkyDungeonInterruptSleep();
 
 						KinkyDungeonTargetTileMsg();
 						if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {

@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.58"
+KDVersionStr,"5.4.59"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -7358,6 +7358,7 @@ KinkyDungeonSpellCastTrapCharmWeak,"A talisman on the floor explodes, sending a 
 KinkyDungeonSpellCastTrapRibbons,"Magical binding ribbons emerge from the walls!"
 KinkyDungeonSpellCastTrapShackleWeak,"The ceiling opens, letting a lot of shackles fall on you!"
 KinkyDungeonSpellCastTrapCuffs,"Hidden cuffs shoot out and make a dash toward your limbs!"
+KinkyDungeonSpellCastTrapLinks,"Hidden cuffs and tethers appear and make a dash toward your limbs!"
 KinkyDungeonSpellCastTrapMummyWeak,"Bands of glowing wrappings start flying in from all sides!"
 KinkyDungeonSpellCastTrapRopeWeak,"Ropes slither out towards you from between the bricks!"
 KinkyDungeonSpellCastTrapRopeStrong,"Ropes fall on you from all sides!"
@@ -27134,6 +27135,13 @@ RestraintRopeSnakeCollarDesc2,"It will occasionally cause ropes to appear out of
 
 
 KinkyDungeonInventoryItemLore,"Notebook Page"
+
+KDReconsiderGagged,*warms up to you*
+KDReconsider,Perhaps you're not so bad after all...
+KDReconsiderBrat,*Surrenders* I'll get you next time!
+KDReconsiderDom,This pleases me.
+KDReconsiderSub,Thank you miss! I won't bother you anymore.
+KDReconsiderRobot,--Exception cleared. Awaiting orders.
 
 KinkyDungeonJailerDomLeashTime,"You're going to stay with me for a while~"
 KinkyDungeonJailerDomLeashed,"That's better! Now stay close to me~"

@@ -6024,7 +6024,12 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 	},
 	"playerAttack": {
 		"FlameBlade": (_e, spell, data) => {
-			if (!data.bullet && KinkyDungeonPlayerDamage && ((KinkyDungeonPlayerDamage.name && KinkyDungeonPlayerDamage.name != "Unarmed") || KinkyDungeonStatsChoice.get("Brawler")) && KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true)) && data.targetX && data.targetY && (data.enemy && KDHostile(data.enemy))) {
+			if (!data.bullet
+				&& KinkyDungeonPlayerDamage
+				&& ((KinkyDungeonPlayerDamage.name && KinkyDungeonPlayerDamage.name != "Unarmed")
+					|| KinkyDungeonStatsChoice.get("Brawler"))
+					&& KinkyDungeonHasMana(KinkyDungeonGetManaCost(spell, false, true))
+					&& data.targetX && data.targetY && (data.enemy && KDHostile(data.enemy))) {
 				KDChangeMana(spell.name, "spell", "attack", -KinkyDungeonGetManaCost(spell, false, true));
 				KinkyDungeonCastSpell(data.targetX, data.targetY, KinkyDungeonFindSpell("FlameStrike", true), undefined, undefined, undefined);
 				KDTriggerSpell(spell, data, false, true);

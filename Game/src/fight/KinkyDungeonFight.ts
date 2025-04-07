@@ -487,6 +487,8 @@ function KinkyDungeonGetEvasion(Enemy?: entity, NoOverride?: boolean, IsSpell?: 
 }
 
 
+
+
 function KinkyDungeonAggro(Enemy: entity, Spell: spell, Attacker: entity, Faction?: string) {
 	if (Enemy?.Enemy
 		&& (!Spell || !Spell.enemySpell)
@@ -494,7 +496,7 @@ function KinkyDungeonAggro(Enemy: entity, Spell: spell, Attacker: entity, Factio
 		&& (!Faction || Faction == "Player")
 		&& !(Enemy.rage > 0)
 		&& (Attacker?.player || (!Attacker && (Spell || Faction == "Player")))) {
-		if (Enemy.playWithPlayer && (KDCanDom(Enemy) || !KDHostile(Enemy))) {
+		if (Enemy.playWithPlayer && KDShouldTease(Enemy)) {
 			KDAddThought(Enemy.id, "Embarrassed", 5, 1);
 			Enemy.distraction = (Enemy.distraction || 0) + Enemy.Enemy.maxhp * 0.1;
 			if (KDCanDom(Enemy)) {

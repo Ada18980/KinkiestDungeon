@@ -3664,10 +3664,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		limitChance: {"Struggle": 0.25, "Remove": 0.1},
 		escapeMult: 3.0, vibeLocation: "ItemVulva",
 		linkedVibeTags: ["teaser"], allowRemote: true, events: [
-			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", power: 2, time: 20, edgeOnly: true},
-			{trigger:"tick",  type: "PeriodicTeasing", power: 1, time: 48, edgeOnly: true, cooldown: {"normal": 120, "tease": 20}, chance: 0.02},
-			{trigger:"tick",  type: "PeriodicDenial", power: 2, time: 42, edgeOnly: true, cooldown: {"normal": 100, "tease": 20}, chance: 0.03},
-			{trigger:"tick",  type: "PeriodicTeasing", power: 3, time: 14, edgeOnly: false, cooldown: {"normal": 140, "tease": 20}, chance: 0.01},
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", inheritLinked: true, power: 2, time: 20, edgeOnly: true},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 1, time: 48, edgeOnly: true, cooldown: {"normal": 120, "tease": 20}, chance: 0.02},
+			{trigger:"tick",  type: "PeriodicDenial", inheritLinked: true, power: 2, time: 42, edgeOnly: true, cooldown: {"normal": 100, "tease": 20}, chance: 0.03},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 3, time: 14, edgeOnly: false, cooldown: {"normal": 140, "tease": 20}, chance: 0.01},
 		],
 		maxwill: 0.5, enemyTags: {"wolfRestraints" : 6, "wolfGear":6}, playerTags: {"ItemPelvisFull": -5, "NoVibes": -1000}, minLevel: 0, allFloors: true, shrine: ["Latex", "Panties", "Vibes", "Toys"]},
 
