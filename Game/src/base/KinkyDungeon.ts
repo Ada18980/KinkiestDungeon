@@ -6984,6 +6984,14 @@ function KinkyDungeonLoadGame(String: string = "") {
 			if (saveData.KDMapData || saveData.KinkyDungeonGrid) {
 				KDUpdateVision();
 			}
+
+			// Fix old chastity
+			for (let enemy of KDMapData.Entities) {
+				if (enemy.buffs?.Chastity) {
+					enemy.buffs.Chastity = JSON.parse(JSON.stringify(KDChastity));
+				}
+			}
+
 			KinkyDungeonFloaters = [];
 			KDFixNeeds();
 			KDUpdateBuffsOnLoad();

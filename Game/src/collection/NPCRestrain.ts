@@ -620,7 +620,7 @@ function KDGetEncaseGroupRow(id): NPCBindingGroup {
 	return null;
 }
 /** Gets the specified id */
-function KDGetEncaseGroupSlot(id): NPCBindingSubgroup {
+function KDGetEncaseGroupSlot(id: string): NPCBindingSubgroup {
 	for (let group of NPCBindingGroups) {
 		if (group.encaseGroup.id == id) return group.encaseGroup;
 		for (let layer of group.layers) {
@@ -1009,7 +1009,7 @@ function KDGetNPCStrugglePoints(id: number): Record<string, number> {
 	return result;
 }
 
-function KDGetNPCEscapableRestraints(id: number, target: entity, bypass: boolean = false): {slot: string, inv: NPCRestraint, points: number, target: number}[] {
+function KDGetNPCEscapableRestraints(id: number, target: entity, bypass: boolean = false, helper: entity): {slot: string, inv: NPCRestraint, points: number, target: number}[] {
 	let restraints = KDGetNPCRestraints(id);
 	let retval: {slot: string, inv: NPCRestraint, points: number, target: number}[] = [];
 	if (restraints) {
@@ -1017,17 +1017,16 @@ function KDGetNPCEscapableRestraints(id: number, target: entity, bypass: boolean
 		let strugglePoints = KDGetNPCStrugglePoints(id);
 		for (let entry of entries) {
 			if (KDRestraint(entry[1])) {
-				if (!bypass) {
-					let slot = KDGetEncaseGroupSlot(entry[0]);
-					if (slot?.encasedBy?.length > 0 && slot.encasedBy.some((slt) => {
-						return slt != slot.id && !!restraints[slt];
-					})) continue;
+				if (KDCanNPCRemoveItem(id, entry[1], entry[0], bypass, helper, target)) {
+					let stats = KDGetRestraintBondageStats(entry[1], target);
+					if (strugglePoints[stats.type] >= stats.amount) {
+						retval.push({slot: entry[0], inv: entry[1], points: strugglePoints[stats.type], target: stats.amount});
+					}
 				}
 
-				let stats = KDGetRestraintBondageStats(entry[1], target);
-				if (strugglePoints[stats.type] >= stats.amount) {
-					retval.push({slot: entry[0], inv: entry[1], points: strugglePoints[stats.type], target: stats.amount});
-				}
+
+
+
 			} else if (entry[1]) {
 				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), KDBaseRed, 2, true);
 			}
@@ -1041,7 +1040,7 @@ function KDGetNPCEscapableRestraints(id: number, target: entity, bypass: boolean
 function KDNPCStruggleTick(id: number, delta: number): {slot: string, inv: NPCRestraint, points: number, target: number} {
 	if (delta > 0) {
 		for (let i = 0; i < delta; i++) {
-			let escapable = KDGetNPCEscapableRestraints(id, KDGetGlobalEntity(id));
+			let escapable = KDGetNPCEscapableRestraints(id, KDGetGlobalEntity(id), undefined, undefined);
 			if (escapable.length > 0) {
 				return escapable[Math.floor(KDRandom() * escapable.length)];
 			}
@@ -1341,8 +1340,6 @@ function KDDrawGenericRestrainCategories(data: KDDrawGenericRestrainCategoriesDa
 			if (KDSelectedGenericRestraintType != (cat.raw || cat.consumableRaw)) {
 				KDSelectedGenericRestraintType = (cat.raw || cat.consumableRaw);
 				KDSelectedGenericBindItem = "";
-			} else {
-				KDSelectedGenericRestraintType = "";
 			}
 
 			data.selectedcat = cat;
@@ -1707,4 +1704,41 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 	)
 
 
+}
+
+interface canNPCRemoveData {
+	restraint: NPCRestraint,
+	slot: string,
+	canRemove: boolean,
+	canRemovePower: number,
+	id: number,
+	entity: entity,
+	encased: boolean,
+	helper: entity,
+}
+
+function KDCanNPCRemoveItem(id: number, restraint: NPCRestraint, slot: string, bypass: boolean, helper?: entity, entity?: entity) {
+	let encased = false;
+	if (!bypass) {
+		let restraints = KDGetNPCRestraints(id);
+		let itemslot = KDGetEncaseGroupSlot(slot);
+		if (itemslot?.encasedBy?.length > 0 && itemslot.encasedBy.some((slt) => {
+			return slt != itemslot.id && !!restraints[slt];
+		})) encased = true;
+	}
+
+
+	let data: canNPCRemoveData = {
+		canRemove: !encased,
+		canRemovePower: 0,
+		slot: slot,
+		restraint: restraint,
+		id: id,
+		entity: entity,
+		encased: encased,
+		helper: helper,
+	};
+
+	KinkyDungeonSendEvent("canNPCRemove", data);
+	return data.canRemove;
 }

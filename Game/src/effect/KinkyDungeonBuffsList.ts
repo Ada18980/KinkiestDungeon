@@ -157,6 +157,8 @@ const KDEncasedDoll: KDBuff = {
 const KDChastity: KDBuff = {
 	id: "Chastity", type: "Chastity", power: 1.0, aura: "#dddddd", auraSprite: "Chastity", player: false, enemies: true, duration: 9999, infinite: true, range: 0.5, tags: ["chastity"], events: [
 		{type: "Distract", power: 0.01, trigger: "tick", prereq: "bound"},
+		{type: "RemoveNoBelt", trigger: "tick"},
+		{type: "NoRemoveBelt", trigger: "canNPCRemove", power: 10},
 	]
 };
 const KDVibrate1: KDBuff = {

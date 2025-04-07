@@ -229,6 +229,17 @@ function KDGetGameContextActionsVanilla(
 			}
 		}
 	}
+	if (entity == KDPlayer() && KinkyDungeonDrawState != "Inventory") {
+		// Player options e.g. wait
+		options.push("Inventory");
+		optionImages.Inventory = "Inventory";
+		optionActions.Inventory = () => {
+			KDContextMenu = false;
+			KinkyDungeonDrawState = "Inventory";
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+			KinkyDungeonDressPlayer();
+		}
+	}
 
 	if (KinkyDungeonPlayerDamage?.special)  {
 		options.push("Special");

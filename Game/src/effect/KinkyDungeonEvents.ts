@@ -3691,6 +3691,17 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			}
 		},
 	},
+	"canNPCRemove": {
+		NoRemoveBelt: (e, buff, entity, data: canNPCRemoveData) => {
+			if (data.canRemovePower < e.power) {
+				if (data.restraint && KDRestraint(data.restraint)?.shrine?.includes("ChastityBelts")) {
+					data.canRemove = false;
+					data.canRemovePower = e.power;
+				}
+			}
+
+		},
+	},
 	"tick": {
 		"poisonSleep": (_e, buff, entity, data) => {
 			if (entity.player) {
@@ -3938,6 +3949,17 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 				}
 			}
 		},
+		"RemoveNoBelt": (e, buff, entity, data) => {
+			if (!(KDGetNPCRestraints(entity.id)
+				&& Object.values(KDGetNPCRestraints(entity.id))?.some((r) => {return KDRestraint(r)?.chastity}))) {
+				if (entity.player) {
+					delete KinkyDungeonPlayerBuffs[buff.id];
+				} else {
+					delete entity.buffs[buff.id];
+				}
+			}
+		},
+
 		"ExtendDisabledOrHelpless": (e, buff, entity, data) => {
 			if (!entity.player && (KinkyDungeonIsDisabled(entity) || KDHelpless(entity)) && (!e.prereq || KDCheckPrereq(entity, e.prereq, e, data))) {
 				buff.duration += data.delta;

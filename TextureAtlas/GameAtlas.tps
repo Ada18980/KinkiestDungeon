@@ -3330,6 +3330,8 @@
             <key type="filename">../Game/Bullets/TrapLatexHit.png</key>
             <key type="filename">../Game/Bullets/TrapLeatherWeak.png</key>
             <key type="filename">../Game/Bullets/TrapLeatherWeakHit.png</key>
+            <key type="filename">../Game/Bullets/TrapLinks.png</key>
+            <key type="filename">../Game/Bullets/TrapLinksHit.png</key>
             <key type="filename">../Game/Bullets/TrapLustCloud.png</key>
             <key type="filename">../Game/Bullets/TrapLustCloudHit.png</key>
             <key type="filename">../Game/Bullets/TrapMagicChainsWeak.png</key>
@@ -4141,6 +4143,7 @@
             <key type="filename">../Game/UI/ContextMenu/AggroSneak.png</key>
             <key type="filename">../Game/UI/ContextMenu/Attack.png</key>
             <key type="filename">../Game/UI/ContextMenu/Capture.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Inventory.png</key>
             <key type="filename">../Game/UI/ContextMenu/Retaliate.png</key>
             <key type="filename">../Game/UI/ContextMenu/Tease.png</key>
             <key type="filename">../Game/UI/ContextMenu/Truss.png</key>

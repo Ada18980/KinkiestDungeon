@@ -2721,7 +2721,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 
 			for (let i = 0; i < 6 && i < items.length; i++) {
 				TooltipList.push({
-					str: TextGet(KDGetItemName(items[i], Restraint)),
+					str: KDGetItemName(items[i], Restraint),
 					fg: KDBaseWhite,
 					bg: KDBaseBlack,
 					size: 18,

@@ -44,6 +44,15 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.59
 - Click and hold on mobile now should open the context menu
 - Added some variables to help support click and drag development
+- Bugfix: Auto-move doesnt cancel when attacking
+- Bugfix: Punching hostiles in the face made them like you
+- Bugfix: Unidentified items no longer show stats in containers
+- Bugfix: Fix many missing lines caused by text provider rework
+- Bugfix: Fix flickering flirt dialogue
+- Bugfix: Fix wolf panties events not triggering when worn underneath something else
+- Bugfix: Choosing a multiclass option in NG+ actually works now
+- Bugfix: Starting restraints with certain starting perks now follow level restrictions more closely (with a minimum to keep from being trivial)
+
 
 5.4.58
 - Enabled headpats (thanks Enraa!)

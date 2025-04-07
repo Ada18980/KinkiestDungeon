@@ -690,7 +690,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	},
 	"Chastity": (spell, _data, targetX, targetY, tX, tY, _entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEnemyAt(targetX, targetY);
-		if (en && en.Enemy.bound && KinkyDungeonIsDisabled(en) && !en.Enemy.nonHumanoid) {
+		if (en && en.Enemy.bound && (KinkyDungeonIsDisabled(en) || KDIsInPartyID(en.id) || KDCanDom(en)) && !en.Enemy.nonHumanoid) {
 			if (_miscast) return "Miscast";
 			KDTieUpEnemy(en, spell.power, "Metal");
 			if (KDBindEnemyWithTags(en.id,
@@ -698,13 +698,19 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				MiniGameKinkyDungeonLevel + 10,
 				true, undefined, false, false, undefined,
 				undefined, 0).length > 0) {
+					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+
 					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell));
 				} else {
-					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/2);
+					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastB"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+
+					KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/4);
 				}
 			return "Cast";
 		} else {
-			if (KinkyDungeonPlayerEntity.x == tX && KinkyDungeonPlayerEntity.y == tY) {
+			if (en && !(KinkyDungeonIsDisabled(en) || KDIsInPartyID(en.id) || KDCanDom(en))) {
+				KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
+			} else if (KinkyDungeonPlayerEntity.x == tX && KinkyDungeonPlayerEntity.y == tY) {
 				let restraintAdd = KinkyDungeonGetRestraint({tags: ["magicBeltForced"]}, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(), undefined, undefined,
 					undefined,
 					undefined,
@@ -729,6 +735,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			}
 			return "Fail";
 		}
+		return "Fail";
 	},
 	"DisplayStand": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, faction, _cast, _selfCast) => {
 		let en = KinkyDungeonEntityAt(targetX, targetY);

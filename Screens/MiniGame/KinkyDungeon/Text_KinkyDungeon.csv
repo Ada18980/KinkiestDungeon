@@ -6797,9 +6797,11 @@ KinkyDungeonSpellDescriptionLockdown,"Magically locks down a target, preventing 
 KinkyDungeonSpellCastLockdown,"You say a command word, and magical locks bind your target!"
 
 KinkyDungeonSpellChastity,Chastity
+KinkyDungeonSpellCastFailChastity,"Target must be disabled, submissive, or in your party."
 KinkyDungeonSpellTargetChastity,Select which creature to lock in a belt
 KinkyDungeonSpellDescriptionChastity,"Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly."
 KinkyDungeonSpellCastChastity,"You conjure a chastity belt, which latches onto your target!"
+KinkyDungeonSpellCastBChastity,"You attempt to conjure a chastity belt, but the target is already wearing one!"
 KDZoneOfPuritySelf,"Your own spell locks you in chastity!"
 KDZoneOfExcitementSelf,"Something fun enters your body..."
 
@@ -31954,6 +31956,7 @@ KDContextMenu_Talk,Talk
 KDContextMenu_MoveTo,Move To
 KDContextMenu_Stairs,Take Stairs
 KDContextMenu_Wait,Wait
+KDContextMenu_Inventory,Inventory
 KDContextMenu_Pass,Allow Passing
 KDContextMenu_Truss,Tie Up
 KDContextMenu_TrussAttempt,Attempt to Tie
