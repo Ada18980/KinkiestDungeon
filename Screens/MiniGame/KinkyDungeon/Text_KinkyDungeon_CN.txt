@@ -9641,7 +9641,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - A well-fitted hood that covers your head and muffles sounds.
 一个合身的头罩，可以遮住你的脸并掩盖声音。
 - No eyeholes. Integrated blindfold and gag. Total darkness. Metallic studs make cutting it off more difficult.
-没有任何洞孔。集成眼罩和口塞。完全黑暗
+没有任何洞孔。集成眼罩和口塞。完全黑暗。金属饰钮让它很难切割。
 # :: RestraintLeatherHoodDesc
 # :: RestraintLeatherMaskDesc
 
@@ -10139,7 +10139,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - Rubber (Feet)
 橡胶 ( 脚 )
 - Stretchy rubber in a skintight layer. Harder to cut than normal rubber.
-粘性橡胶已自身融合成一层紧密的外壳。
+一层紧身弹性橡胶。比普通橡胶更难切割。 
 # :: RestraintHardSlimeBootsDesc
 # :: RestraintHardSlimeFeetDesc
 # :: RestraintHardSlimeLegsDesc
@@ -15505,7 +15505,7 @@ DAMAGETYPE : ‎MULTIPLIERx 修正
 - Deals DAMAGETYPE damage
 造成 DAMAGETYPE 伤害
 - AMNT% chance to hit you
-AMNT% 的概率击中你
+AMNT% 的概率命中你
 - Can disarm (chance: DISARMCHANCE%)
 可以解下 ( 概率 : ‎DISARMCHANCE% )
 - Resistances:
@@ -22840,7 +22840,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rOfferWitchForce_Yes
 # :: rOfferTempForce_Yes
 - (The SPEAKER suddenly moves faster than you can react)|(You feel a foot pressing on your back as you are forced down)|(She puts a uniform on you and locks it tight...)|Consider this a warning from my mistress~
-( SPEAKER 突然移动的速度超出了你的反应 ) | ( 当你被压在地上时，你感到一只脚踩在你的背上 ) | ( 她给你穿上制服并锁紧...... ) |你需要额外的训练， 我想...
+( SPEAKER 突然移动的速度超出了你的反应 ) | ( 当你被压在地上时，你感到一只脚踩在你的背上 ) | ( 她给你穿上制服并锁紧...... ) |就把这当作我的女主人给你的一个警告吧~ 
 
 
 - Gladly!
@@ -22890,7 +22890,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER smiles proudly)|I knew you would pull through!
 ( SPEAKER 骄傲地笑了)|我就知道你会挺过去的！
 - (The SPEAKER forces you down with a burst of speed)|(She stuffs you into pet gear)|There. Punishment for your insolence~
-( SPEAKER 突然移动的速度超出了你的反应 ) | ( 当你被压在地上时，你感到一只脚踩在你的背上 ) | ( 她给你穿上制服并锁紧...... ) |你需要额外的训练， 我想...
+（SPEAKER 以一阵迅猛的速度把你按倒在地）|（她把你塞进了宠物服里）|好了。这就是对你无礼行为的惩罚~ 
 
 - Yes! I love the blessed kity!
 是的！我爱被祝福的可爱小猫！
@@ -22932,7 +22932,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER smiles)|Yes! Yes! Wonderful!
 ( SPEAKER 微笑)|是的！是的！漂亮极了！
 - (Magical clothes rise out of the ground without warning and engulf you)|Suit yourself!|(The SPEAKER giggles)
-( SPEAKER 突然移动的速度超出了你的反应 ) | ( 当你被压在地上时，你感到一只脚踩在你的背上 ) | ( 她给你穿上制服并锁紧...... ) |你需要额外的训练， 我想...
+（魔法衣物毫无预兆地从地下冒出来并将你包裹住）|随你吧！|（SPEAKER 咯咯地笑了起来） 
 
 
 - Sign me up!
@@ -40205,7 +40205,7 @@ Aura刘海(右后)
 - Vanish
 消失
 - Make the targeted creature invisible for Duration turns. Attacking and casting spells reveals your presence but you are still harder to see.
-使目标生物隐形，使你在持续时间内完全隐形。攻击和施法会暴露你的存在，但你仍然更难被发现。
+使目标生物隐形在 Duration 回合内隐形。攻击和施法会暴露你的存在，但你仍然更难被发现。
 
 - The slime dissolves your clothing, leaving nothing but rubber against your skin...
 粘液会溶解你的衣服，只留下橡胶贴在你的皮肤上......
@@ -43206,7 +43206,7 @@ ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
 - Problem Solving
 解决问题
 - While active, struggling takes 3x as long, but escape power bonuses from tools and cutting weapons is increased by +(25 + 20% Bondage Resist)%. Additionally, escape bonuses from buffs (such as Strength Potions) is increased by 20%.
-启用时，挣扎需要额外10回合，但来自工具和增益的挣脱能力加成会获得+(25+20%束缚抵抗)%
+启用时，挣扎消耗的时间变为原来的三倍，但来自工具的脱缚加成提高了 (25 + 20% 束缚抵抗)%，来自增益（比如力量药水）的脱缚加成提高了 20%。
 
 
 - You run out of strength to keep dodging...
@@ -45351,7 +45351,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 强化踝链
 # - Keeps your ankles close. Careful not to walk too fast, or you'll trip!
 - A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints.
-它是钢制的，且用锁固定。解锁后会丢失。
+一条坚硬的金属链条，外面包裹着一层结实的橡胶。带弹簧的扣件将它们固定在你身上的拘束的固定点上。
 # :: RestraintNeoAnkleLinkDesc2
 # :: RestraintNeoAnkleLinkShortDesc2
 # :: RestraintElbowLinkDesc2
@@ -45366,11 +45366,11 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Reinforced Elbow Link
 强化肘链
 - A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
-一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。
+一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。一个便捷的扣环使它们相比起普通链条来更容易连接。 
 - Reinforced Wrist Link
 强化腕链
 - A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
-一条非常短的链条，将你的手腕铐连接在一起。
+一条很短的链条，将你的腕铐连接在一起。一个便捷的扣环使它们相比起普通链条来更容易连接。
 
 
 - Reinforced Thigh Link
@@ -45773,9 +45773,9 @@ ENMYNME CHTRNME 的 RMNME
 - ESCP Difficulty: AMNT
 ESCP 难度 : ‎AMNT
 - Max ESCP: AMNT%
-ESCP 力量 : ‎AMNT
+最大 ESCP : ‎AMNT%
 - ESCP Power: AMNT
-ESCP 能力: AMNT
+ESCP 强度 : ‎AMNT
 # :: KDItemStruggleRemove
 # :: KDItemStrugglePick
 # :: KDItemStruggleUnlock
@@ -46365,7 +46365,7 @@ AMNT/MAXX 仆从分配
 - Catsuit / Leotard
 紧身连体衣 / 紧身衣
 - Harness / Links
-束衣
+束衣 / 链接
 # - Links
 - Rear Plug
 肛塞
