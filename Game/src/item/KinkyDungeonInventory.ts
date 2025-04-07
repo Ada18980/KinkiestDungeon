@@ -921,7 +921,7 @@ function KDGetRestraintPreviewImage(restraint: restraint): string {
 			return KDModFiles[KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`] || KinkyDungeonRootDirectory + `Items/Restraint/${tag}.png`;
 	}
 
-	try {
+	/*try {
 		if (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`)?.valid) return KinkyDungeonRootDirectory + `Items/Restraint/${restraint.preview || restraint.name}.png`;
 	} catch (e) {
 		console.log(e);
@@ -933,7 +933,7 @@ function KDGetRestraintPreviewImage(restraint: restraint): string {
 		}
 	} catch (e) {
 		console.log(e);
-	}
+	}*/
 	return KinkyDungeonRootDirectory + `Items/Restraint.png`;
 	/*return StandalonePatched ? (KDTex(KinkyDungeonRootDirectory + `Items/Restraint/${restraint.name}.png`)?.valid ? KinkyDungeonRootDirectory + `Items/Restraint/${restraint.name}.png` : KinkyDungeonRootDirectory + `Items/Restraint.png`) :
 			`Assets/Female3DCG/${restraint.Group}/Preview/${restraint.Asset}.png`*/
@@ -1174,8 +1174,12 @@ function KinkyDungeonDrawInventorySelected (
 	DrawTextFitKD(nameText, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 300, KDBookText, KDTextTan, undefined, undefined, 129);
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 9 : 22;
 	let mult = KDGetFontMult();
-	let textSplit = KinkyDungeonWordWrap((unidentified && prefix == "Restraint") ? TextGet(`${prefix}${KDRestraint(item.item).name}Desc`) : TextGet(prefix + name + "Desc"), 12*mult, 26*mult).split('\n');
-	let textSplit2 = KinkyDungeonWordWrap((unidentified && prefix == "Restraint") ? TextGet(`${prefix}${KDRestraint(item.item).name}Desc2`) : TextGet(prefix + name + "Desc2"), 12*mult, 28*mult).split('\n');
+	let textSplit = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
+		? TextGet(`${prefix}${KDRestraint(item.item).name}Desc`)
+		: TextGet(prefix + name + "Desc"), 12*mult, 26*mult).split('\n');
+	let textSplit2 = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
+		? TextGet(`${prefix}${KDRestraint(item.item).name}Desc2`)
+		: TextGet(prefix + name + "Desc2"), 12*mult, 28*mult).split('\n');
 
 	let data = {
 		extraLines: [],

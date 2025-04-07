@@ -3273,6 +3273,7 @@ type eligibleRestraintOptions = {
 	dontPreferVariant?:  boolean;
 	allowLowPower?:      boolean;
 	ForceDeep?:          boolean;
+	noOverpower?: boolean;
 	/** Only use with KDGetRestraintWithVariants */
 	extraOptions?:       string[];
 	inventoryWeight?: 	 number;
@@ -3466,7 +3467,9 @@ function KDGetRestraintsEligible (
 
 			add = false;
 			addedVar = false;
-			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, options?.ForceDeep || KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory)) {
+			if (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined,
+				options?.ForceDeep || KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+				options?.noOverpower, securityEnemy, useAugmented, curse, augmentedInventory)) {
 				if (restraint.playerTags)
 					for (let tag in restraint.playerTags)
 						if ((!agnostic || KDNoOverrideTags.includes(tag)) && KinkyDungeonPlayerTags.get(tag)) r.w += restraint.playerTags[tag];
@@ -3496,7 +3499,9 @@ function KDGetRestraintsEligible (
 				for (let variant of Object.entries(restraint.ApplyVariants)) {
 					if (Level >= KDApplyVariants[variant[0]].minfloor && !(Level >= KDApplyVariants[variant[0]].maxfloor)
 						&& (!variant[1].enemyTags || Object.keys(variant[1].enemyTags).some((tag) => {return tags.get(tag) != undefined;}))
-						&& (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined, KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, undefined, securityEnemy, useAugmented, curse, augmentedInventory,
+						&& (agnostic || KDCanAddRestraint(restraint, Bypass, Lock, NoStack, undefined,
+							KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined,
+							options?.noOverpower, securityEnemy, useAugmented, curse, augmentedInventory,
 							KDApplyVariants[variant[0]].powerBonus))) {
 
 						let w = r.w * (variant[1].weightMult || 1) + (variant[1].weightMod || 0);
@@ -4060,7 +4065,7 @@ function KDCanAddRestraint (
 	useAugmentedPower?:   boolean,
 	curse?:               string,
 	augmentedInventory?:  string[],
-	powerBonus:           number = 0
+	powerBonus:           number = 0,
 ): boolean
 {
 	if (!restraint) {
@@ -4545,6 +4550,7 @@ function KinkyDungeonAddRestraintIfWeaker (
 	variant?:             ApplyVariant,
 	powerBonus:           number = 0,
 	NoActionPrune: boolean = false,
+	options?:            eligibleRestraintOptions
 ): number
 {
 	let player = KDPlayer();
@@ -4563,7 +4569,8 @@ function KinkyDungeonAddRestraintIfWeaker (
 	}
 
 	if (restraint.bypass) Bypass = true;
-	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep, false, securityEnemy, useAugmentedPower, Curse, augmentedInventory)) {
+	if (KDCanAddRestraint(restraint, Bypass, Lock, false, undefined, Deep,
+		options?.noOverpower, securityEnemy, useAugmentedPower, Curse, augmentedInventory)) {
 		let r = KinkyDungeonGetRestraintItem(restraint.Group);
 		let linkableCurrent = r
 			&& KDRestraint(r)
@@ -6674,7 +6681,8 @@ function KDLinkItemEvent(e: KinkyDungeonEvent, item: item, data: any): void {
 			}
 		}
 	}
-	if (!added && (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined, false, undefined, true, true))) {
+	if (!added && (KDCanAddRestraint(KinkyDungeonGetRestraintByName(KDRestraint(item)?.Link), true, undefined,
+	false, undefined, true, true))) {
 		let subMult = 1;
 		let chance = e.chance ? e.chance : 1.0;
 		if (e.subMult !== undefined) {

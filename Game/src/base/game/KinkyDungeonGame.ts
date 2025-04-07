@@ -935,6 +935,14 @@ function KDUpdateOptionGame(): void {
 	} else if (!KinkyDungeonStatsChoice.get("NoForceGreet") && KDGameData.NoForceGreet) {
 		KDGameData.NoForceGreet = false;
 	}
+
+	// Add missing spells, if missing
+	for (let kurasu of Object.keys(KDClassStart)) {
+		let perkname = "MC_" + (KDClassSynonyms[kurasu] || kurasu);
+		if (!!KinkyDungeonStatsChoice.get(perkname) && KDPerkStart[perkname]) {
+			KDPerkStart[perkname]();
+		}
+	}
 }
 
 /**

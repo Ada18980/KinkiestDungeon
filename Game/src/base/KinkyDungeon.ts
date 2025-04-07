@@ -2818,7 +2818,7 @@ function KinkyDungeonRun() {
 
 			return true;
 		}, true, (KDConfirmDeleteSave ? (Math.random() > 0.5 ? -1 : 1) : 0) + 875, KDConfirmDeleteSave ?
-			(Math.random() > 0.5 ? -1 : 1) + 550 : 450, 750, 64, TextGet(KDConfirmDeleteSave ?
+			(Math.random() > 0.5 ? -1 : 1) + 450 : 450, 750, 64, TextGet(KDConfirmDeleteSave ?
 			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? KDBaseRed : KDBaseWhite, "");
 
 		DrawButtonKDEx("backButton", (_b) => {

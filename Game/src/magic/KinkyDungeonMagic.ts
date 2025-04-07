@@ -1746,11 +1746,12 @@ function KinkyDungeonDrawMagic() {
 		let textSplitDesc = KinkyDungeonWordWrap(TextGet("KinkyDungeonSpellDescription2"+ spell.name).replace(/[|]+/g, "\n").replace("DamageDealt", "" + (spell.power * 10)).replace("Duration", spell.time).replace("LifeTime", spell.lifetime).replace("DelayTime", spell.delay).replace("BlockAmount", "" + (10 * spell.block)),
 			12*mult, 28*mult).split('\n');
 
-		if (TextGet("KinkyDungeonSpellDescription2" + spell.name) != `KinkyDungeonSpellDescription2${spell.name}`) {
+		if (HasText("KinkyDungeonSpellDescription2" + spell.name)) {
 			DrawButtonKDEx("KinkyDungeonDisplayLoreButton", (_bdata) => {
 				KinkyDungeonDisplayLore = !KinkyDungeonDisplayLore;
 				return true;
-			}, true, canvasOffsetX_ui + xOffset + 570 + 102, canvasOffsetY_ui + 420 * KinkyDungeonBookScale, 80, 30, TextGet("Lore"), KDBaseWhite, "", "", false, true, KDButtonColor);
+			}, true, canvasOffsetX_ui + xOffset + 570 + 102, canvasOffsetY_ui + 420 * KinkyDungeonBookScale, 80, 30,
+			TextGet("KDLore"), KDBaseWhite, "", "", false, true, KDButtonColor);
 		}
 
 		let i = 0;

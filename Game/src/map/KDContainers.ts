@@ -179,7 +179,7 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 	let spacing = 60;
 	if (selectedItem?.item) {
 
-		let item = selectedItem.item;
+		let item: item = selectedItem.item;
 		let XX = 950;
 		let YY = -80;
 
@@ -224,12 +224,21 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 		};
 		KinkyDungeonSendEvent("inventoryTooltip", data);
 		let mult = KDGetFontMult();
-		let textSplit = KinkyDungeonWordWrap(TextGet((item.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem")
-			+ selectedItem.name + "Desc"),
-			15*mult, 40*mult).split('\n');
-		let textSplit2 = KinkyDungeonWordWrap(TextGet((item.type == LooseRestraint ? "Restraint" : "KinkyDungeonInventoryItem")
-			+ selectedItem.name +  "Desc2"),
-			15*mult, 40*mult).split('\n');
+
+		let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
+		let prefix = "KinkyDungeonInventoryItem";
+		if (item.type == Restraint || item.type == LooseRestraint) {
+			prefix = "Restraint";
+		}
+
+
+		let textSplit = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
+			? TextGet(`${prefix}${KDRestraint(item).name}Desc`)
+			: TextGet(prefix + item.name + "Desc"), 15*mult, 40*mult).split('\n');
+		let textSplit2 = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
+			? TextGet(`${prefix}${KDRestraint(item).name}Desc2`)
+			: TextGet(prefix + item.name + "Desc2"), 15*mult, 40*mult).split('\n');
+
 		let i = 0;
 		let descSpacing = 20;
 		let fSize = 16;
@@ -259,10 +268,12 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 				XX + 420, YY + 200 + i * descSpacing, 380 * (encoder.encode(textSplit2[N]).length / 40), KDBaseWhite, undefined, fSize, undefined, 70);
 			i++;
 		}
-		for (let N = 0; N < data.extraLines.length; N++) {
-			DrawTextFitKD(data.extraLines[N],
-				XX + 420, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLines[N]).length / 40), data.extraLineColor[N], data.extraLineColorBG[N], fSize, undefined, 70);
-			i++;
+		if ((unidentified && item.type == Restraint) || (!unidentified)) {
+			for (let N = 0; N < data.extraLines.length; N++) {
+				DrawTextFitKD(data.extraLines[N],
+					XX + 420, YY + 200 + i * descSpacing, 380 * (encoder.encode(data.extraLines[N]).length / 40), data.extraLineColor[N], data.extraLineColorBG[N], fSize, undefined, 70);
+				i++;
+			}
 		}
 
 

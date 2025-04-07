@@ -863,24 +863,32 @@ let KDPerkStart = {
 		}
 	},
 	MC_Trainee: () => {
-		KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
+		if (!KDHasSpell("DistractionCast"))
+			KDPushSpell(KinkyDungeonFindSpell("DistractionCast"));
 	},
 	MC_Wizard: () => {
-		KDPushSpell(KinkyDungeonFindSpell("ManaRegen"));
+		if (!KDHasSpell("ManaRegen"))
+			KDPushSpell(KinkyDungeonFindSpell("ManaRegen"));
 	},
 	MC_Rogue: () => {
-		KDPushSpell(KinkyDungeonFindSpell("RogueTargets"));
+		if (!KDHasSpell("RogueTargets"))
+			KDPushSpell(KinkyDungeonFindSpell("RogueTargets"));
 	},
 	MC_Peasant: () => {
-		KDPushSpell(KinkyDungeonFindSpell("Peasant"));
+		if (!KDHasSpell("Peasant"))
+			KDPushSpell(KinkyDungeonFindSpell("Peasant"));
 	},
 	MC_Fighter: () => {
-		KDPushSpell(KinkyDungeonFindSpell("BattleRhythm"));
-		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
-		KDPushSpell(KinkyDungeonFindSpell("Offhand"));
-		KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
-		KDPushSpell(KinkyDungeonFindSpell("FighterOffhand"));
-
+		if (!KDHasSpell("BattleRhythm")) {
+			KDPushSpell(KinkyDungeonFindSpell("BattleRhythm"));
+			KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		}
+		if (!KDHasSpell("Offhand")) {
+			KDPushSpell(KinkyDungeonFindSpell("Offhand"));
+			KinkyDungeonSpellChoices.push(KinkyDungeonSpells.length - 1);
+		}
+		if (!KDHasSpell("FighterOffhand"))
+			KDPushSpell(KinkyDungeonFindSpell("FighterOffhand"));
 	},
 };
 

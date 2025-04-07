@@ -155,6 +155,7 @@ function KDDrawClasses(xOffset: number = 0, yOffset: number = 0,
 			if (!click) {
 				KinkyDungeonClassMode = Object.keys(KDClassStart)[i];
 				localStorage.setItem("KinkyDungeonClassMode", "" + KinkyDungeonClassMode);
+				return true;
 			}
 			return click(Object.keys(KDClassStart)[i]);
 		}, (!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]](),

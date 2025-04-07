@@ -825,7 +825,11 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let r = KinkyDungeonGetRestraint({tags: ["armLink"]}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
-							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, undefined,
+							false, false, false, undefined, false, undefined, undefined, undefined,
+							undefined, undefined, {
+							noOverpower: true
+						});
 
 						if (r && KDCanAddRestraint(r, true, undefined, false, undefined, true, true)) {
 							return true;
@@ -860,10 +864,16 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						let r = KinkyDungeonGetRestraint({tags: ["legLink", "feetLink"]}, MiniGameKinkyDungeonLevel * 2 + KDGetOfferLevelMod(),
-							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+							(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), true, undefined,
+							false, false, false, undefined, false, undefined, undefined, undefined,
+							undefined, undefined, {
+							noOverpower: true
+						});
 
 						if (r && KDCanAddRestraint(r, true, undefined, false, undefined, true, true)) {
 							return true;
+						} else {
+							return false;
 						}
 					}
 					return false;

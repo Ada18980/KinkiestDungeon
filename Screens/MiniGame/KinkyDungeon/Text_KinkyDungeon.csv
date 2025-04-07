@@ -30205,12 +30205,19 @@ RestraintNeoAnkleLinkShortDesc2,"A hardened metal chain coated in a layer of sol
 
 
 
-RestraintElbowLink,Reinforced Elbow Link
+RestraintElbowLink,Elbow Link
 RestraintElbowLinkDesc,A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
-RestraintElbowLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
-RestraintWristLink,Reinforced Wrist Link
+RestraintElbowLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
+RestraintWristLink,Wrist Link
 RestraintWristLinkDesc,A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
-RestraintWristLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+RestraintWristLinkDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
+
+RestraintNeoElbowLink,Reinforced Elbow Link
+RestraintNeoElbowLinkDesc,A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
+RestraintNeoElbowLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+RestraintNeoWristLink,Reinforced Wrist Link
+RestraintNeoWristLinkDesc,A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
+RestraintNeoWristLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
 
 
 RestraintNeoThighLink,Reinforced Thigh Link
@@ -31371,7 +31378,7 @@ KinkyDungeonSpellHexWrapping,Blessed Hex
 KinkyDungeonSpellHexOrb,Hexing Orb
 KinkyDungeonSpellHexLatexExplosion,Hexed Latex Engulf
 KinkyDungeonSpellHexWrappingBind,Hex Binding
-
+KDLore,Lore
 KDLoreTextCover,"Here you will find various scraps of documents and lore you've recovered throughout your adventures."
 KDLoreTitleCover,"Your Journal"
 KDLoreLabelCover,"Cover"
