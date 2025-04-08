@@ -6585,10 +6585,11 @@ const KinkyDungeonRestraints: restraint[] = [
 		]
 	},
 	{inventory: true, name: "WardenBelt2", Asset: "Default", Color: "Default",
-		Model: "IronBelt",
+		Model: "NeoSteelBelt",
 		UnderlinkedAlwaysRender: true,
 		Filters: {
-			BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			//BaseMetal: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
+			Rim: {"gamma":1.2833333333333334,"saturation":1,"contrast":1.45,"brightness":1,"red":2,"green":1.5,"blue":1,"alpha":1},
 		},
 
 		cloneTag: "wardenCuffs",
@@ -6607,7 +6608,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleBreak: true,
 		tightType: "Secure",
 
-		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Belt", "Warden"],
+		enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["NeoBelt", "Belt", "Warden"],
 		events: [
 			{type: "Buff", trigger: "tick", power: 1, buffType: "DivinePrivilege", inheritLinked: true,},
 		],

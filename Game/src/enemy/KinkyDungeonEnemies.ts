@@ -3428,7 +3428,7 @@ function KDNearbyEnemies(x: number, y: number, dist: number, hostileEnemy?: enti
 			}
 		} else {
 			for (let e of KDMapData.Entities) {
-				if (KDistEuclidean(x - e.x, y - e.y) <= dist
+				if (KDistEuclideanSquared(x - e.x, y - e.y) <= dist*dist
 					&& (!hostileEnemy || KDHostile(e, hostileEnemy))
 					&& (!nonhostileEnemy || !KDHostile(e, nonhostileEnemy))) list.push(e);
 			}
@@ -3452,7 +3452,7 @@ function KDNearbyEnemies(x: number, y: number, dist: number, hostileEnemy?: enti
 			for (let X = xmin; X < xmax; X++)
 				for (let Y = ymin; Y < ymax; Y++) {
 					e = cache.get(X + "," + Y);
-					if (e && KDistEuclidean(X - x, Y - y) <= dist && (!hostileEnemy || KDHostile(e, hostileEnemy))
+					if (e && KDistEuclideanSquared(X - x, Y - y) <= dist*dist && (!hostileEnemy || KDHostile(e, hostileEnemy))
 						&& (!nonhostileEnemy || !KDHostile(e, hostileEnemy))) list.push(e);
 				}
 		}

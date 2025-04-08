@@ -9189,7 +9189,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 				let playerDist = 1000;
 				if (KDFactionHostile(b.bullet.faction, "Player")) {
 					playerDist = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
-					if (playerDist <= e.aoe) {
+					if (playerDist <= e.aoe*e.aoe) {
 						entity = KinkyDungeonPlayerEntity;
 						minDist = playerDist;
 					}
@@ -9214,13 +9214,13 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 
 			let bullets = KDMapData.Bullets.filter((bb) => { return bb.bullet?.spell?.name == "ShadowShroud"; });
 			let nearest = null;
-			let nearestDist = 100;
+			let nearestDist = 10000;
 			for (let bb of bullets) {
 				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(bb.x, bb.y))) {
-					let dist = KDistEuclidean(b.x - bb.x, b.y - bb.y);
-					let distplayer = KDistEuclidean(target.x - bb.x, target.y - bb.y);
-					if (dist <= e.aoe && distplayer < nearestDist
-						&& distplayer < KDistEuclidean(target.x - enemy.x, target.y - enemy.y)) {
+					let dist = KDistEuclideanSquared(b.x - bb.x, b.y - bb.y);
+					let distplayer = KDistEuclideanSquared(target.x - bb.x, target.y - bb.y);
+					if (dist <= e.aoe*e.aoe && distplayer < nearestDist
+						&& distplayer < KDistEuclideanSquared(target.x - enemy.x, target.y - enemy.y)) {
 						nearestDist = distplayer;
 						nearest = bb;
 					}
@@ -9257,7 +9257,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 				let playerDist = 1000000;
 				if (KDFactionHostile(b.bullet.faction, "Player")) {
 					playerDist = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
-					if (playerDist <= e.aoe) {
+					if (playerDist <= e.aoe*e.aoe) {
 						entity = KinkyDungeonPlayerEntity;
 						minDist = playerDist;
 					}
