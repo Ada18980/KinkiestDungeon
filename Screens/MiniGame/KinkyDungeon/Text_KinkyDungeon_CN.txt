@@ -308,7 +308,8 @@
 
 - Show (mostly) full tooltips
 显示几乎所有提示信息
-# - Auto cycle through multipage tooltips
+- Auto cycle through multipage tooltips
+多页提示信息自动循环
 - Mute when Minimized
 最小化时静音
 - Show DP instead of %
@@ -2286,6 +2287,8 @@ Devious Dungeon Challenge 已启用。
 快速物品栏
 - Inventory
 背包
+# :: KinkyDungeonKeyInventory
+# :: KDContextMenu_Inventory
 - Reputation
 声望
 - Journey Map
@@ -11328,7 +11331,8 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 虚空祭坛
 - Chest
 胸部
-# :: KDTileTooltipC
+:: KDTileTooltipC
+箱子
 # :: m_Body_l_Chest
 # :: m_CatsuitUpper_l_Chest
 # :: m_Catsuit_l_Chest
@@ -11384,17 +11388,28 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 # :: m_JacketLeotard_l_Chest
 # :: m_JacketHeavyLeotard_l_Chest
 # :: m_JacketExtraLeotard_l_Chest
-# :: KDFilterFiltersChest
-# :: KDContainerType_Chest
-# :: KDContainerType_
-# :: KDMinimapLabel_C_undefined
-# :: KDMinimapLabel_C_chest
-# :: KDMinimapLabel_C_wizard
-# :: KDMinimapLabel_C_storage
-# :: KDMinimapLabel_C_magicWeapon
-# :: KDMinimapLabel_C_pair
-# :: KDMinimapLabel_C_magicrestraint
-# :: KDMinimapLabel_C_
+:: KDFilterFiltersChest
+箱子
+:: KDContainerType_Chest
+箱子
+:: KDContainerType_
+箱子
+:: KDMinimapLabel_C_undefined
+箱子
+:: KDMinimapLabel_C_chest
+箱子
+:: KDMinimapLabel_C_wizard
+箱子
+:: KDMinimapLabel_C_storage
+箱子
+:: KDMinimapLabel_C_magicWeapon
+箱子
+:: KDMinimapLabel_C_pair
+箱子
+:: KDMinimapLabel_C_magicrestraint
+箱子
+:: KDMinimapLabel_C_
+箱子
 - Faction Chest
 派系宝箱
 - Open Chest
@@ -11887,7 +11902,7 @@ SPELL蓄力
 - Arcane Knowledge
 奥术知识
 - Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
-允许学习知识和暴击幻术 解锁对敌人的高级工具提示 并习得幻术 “共析钢”
+允许学习知识和暴击法术。解锁对敌人的高级提示信息，显示敌人的弱点，并习得法术 “共析钢”。
 
 
 - The glue sticks to you and engulfs your legs!
@@ -13238,12 +13253,14 @@ SPELL蓄力
 
 - Chastity
 贞操带
+# - Target must be disabled, submissive, or in your party.
 - Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 - Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
 对完全束缚的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加性奋值。
 - You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
+# - You attempt to conjure a chastity belt, but the target is already wearing one!
 - Your own spell locks you in chastity!
 你念出的咒语将你自己锁在贞操带中！
 - Something fun enters your body...
@@ -14253,6 +14270,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - The ceiling opens, letting a lot of shackles fall on you!
 天花板打开，让很多镣铐落在你身上！
 # - Hidden cuffs shoot out and make a dash toward your limbs!
+# - Hidden cuffs and tethers appear and make a dash toward your limbs!
 - Bands of glowing wrappings start flying in from all sides!
 发光的包装带开始从四面八方飞来！
 - Ropes slither out towards you from between the bricks!
@@ -40462,6 +40480,13 @@ Aura刘海(右后)
 - Notebook Page
 笔记本页
 
+# - *warms up to you*
+# - Perhaps you're not so bad after all...
+# - *Surrenders* I'll get you next time!
+# - This pleases me.
+# - Thank you miss! I won't bother you anymore.
+# - --Exception cleared. Awaiting orders.
+
 - You're going to stay with me for a while~
 你就陪我一段时间吧~
 - That's better! Now stay close to me~
@@ -41695,7 +41720,7 @@ Oblivion, 秘密的守护者
 - Did the Research
 进行研究
 - Unlocks advanced tooltips for enemies showing their weaknesses. Also improves hearing by a small amount.
-解锁高级提示工具，让敌人显示出他们的弱点。听力也能小幅提高。
+解锁高级提示信息，显示敌人的的弱点。听力也能小幅提高。
 
 - Well-Placed Traps
 精心布置的陷阱
@@ -45328,10 +45353,12 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 腰链（大腿）
 # - High-security cables connecting your belt to your thigh cuffs. Slightly restricts mobility, increasing Sprint Cost by 10%.
 - It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
-它是钢制的，且用锁固定。解锁后会丢失。
+一条坚硬的金属链条，外面包裹着一层结实的橡胶。带弹簧的扣件将它们固定在你身上的拘束的固定点上。
 # :: RestraintNeoLinkThighsDesc2
 # :: RestraintNeoLinkArmsDesc2
 # :: RestraintThighLinkDesc2
+# :: RestraintElbowLinkDesc2
+# :: RestraintWristLinkDesc2
 # :: RestraintAnkleLinkDesc2
 # :: RestraintAnkleLinkShortDesc2
 # :: RestraintElbowLinkDesc2
@@ -45354,8 +45381,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 一条坚硬的金属链条，外面包裹着一层结实的橡胶。带弹簧的扣件将它们固定在你身上的拘束的固定点上。
 # :: RestraintNeoAnkleLinkDesc2
 # :: RestraintNeoAnkleLinkShortDesc2
-# :: RestraintElbowLinkDesc2
-# :: RestraintWristLinkDesc2
+# :: RestraintNeoElbowLinkDesc2
+# :: RestraintNeoWristLinkDesc2
 # :: RestraintNeoThighLinkDesc2
 - Reinforced Ankle Link (Short)
 强化踝链（短）
@@ -45363,14 +45390,23 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 
 
-- Reinforced Elbow Link
+- Elbow Link
 强化肘链
 - A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
 一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。一个便捷的扣环使它们相比起普通链条来更容易连接。 
-- Reinforced Wrist Link
+# :: RestraintElbowLinkDesc
+# :: RestraintNeoElbowLinkDesc
+- Wrist Link
 强化腕链
 - A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
 一条很短的链条，将你的腕铐连接在一起。一个便捷的扣环使它们相比起普通链条来更容易连接。
+# :: RestraintWristLinkDesc
+# :: RestraintNeoWristLinkDesc
+
+- Reinforced Elbow Link
+强化肘链
+- Reinforced Wrist Link
+强化腕链
 
 
 - Reinforced Thigh Link
@@ -47211,7 +47247,7 @@ ENMY 解开了 ITMN 的锁!
 妖术乳胶吞噬
 - Hex Binding
 妖术捆绑
-
+# - Lore
 - Here you will find various scraps of documents and lore you've recovered throughout your adventures.
 在这里可以翻阅你在冒险过程中找到的各种碎片化文档和传说。
 - Your Journal
@@ -47618,7 +47654,8 @@ ENMY 解开了 ITMN 的锁!
 神秘的丝带紧紧包裹了你的身体！
 
 # - You can click Inspect then click the enemy to cycle thru pages.
-# - NPC tooltips like the ${EnemyName} are too long to show on one page.
+- NPC tooltips like the ${EnemyName} are too long to show on one page.
+过长的NPC提示信息，比如 ${EnemyName} 的提示信息会分成多页显示。
 - You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
 你被减速了！移动需要多消耗一回合，但是你可以消耗两倍 SP 来冲刺。
 - You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
@@ -47777,6 +47814,8 @@ PTRN 的 RMTPE
 - Mecha
 机械
 - chest
+箱子
+:: KDMinimapLabel_C_tutorial1
 箱子
 - Lost Items
 丢失的物品
