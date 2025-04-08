@@ -9186,7 +9186,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 			if (b.bullet.faction) {
 				let minDist = 1000000;
 				let entity = null;
-				let playerDist = 1000;
+				let playerDist = 1000000;
 				if (KDFactionHostile(b.bullet.faction, "Player")) {
 					playerDist = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
 					if (playerDist <= e.aoe*e.aoe) {
@@ -9252,7 +9252,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 			if (enemy.attackPoints > 0) return;
 			let target = null;
 			if (b.bullet.faction) {
-				let minDist = 1000;
+				let minDist = 1000000;
 				let entity = null;
 				let playerDist = 1000000;
 				if (KDFactionHostile(b.bullet.faction, "Player")) {
@@ -9659,10 +9659,10 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 				if (b.bullet.faction && !(e.kind == "dumb")) {
 					let minDist = 1000000;
 					let entity = null;
-					let playerDist = 1000;
+					let playerDist = 1000000;
 					if (KDFactionHostile(b.bullet.faction, "Player")) {
 						playerDist = KDistEuclideanSquared(KDPlayer().x - b.bullet.targetX, KDPlayer().y - b.bullet.targetY);
-						if (playerDist <= e.dist) {
+						if (playerDist <= e.dist * e.dist) {
 							entity = KDPlayer();
 							minDist = playerDist;
 						}

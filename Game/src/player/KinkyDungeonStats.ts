@@ -431,6 +431,7 @@ function KDCancelAutoWait() {
  */
 function KDDisableAutoWait() {
 	KDCancelAutoWait();
+	KinkyDungeonFastMovePath = [];
 	KDAutoWaitDelayed = false;
 	KDSendInput("autoprune", {force: true});
 }

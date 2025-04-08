@@ -1082,6 +1082,14 @@ function KDistChebyshev(x: number, y: number): number {
 	return Math.max(Math.abs(x), Math.abs(y));
 }
 
+/** Faster function from some math textbook (thanks ewhac) */
+function KDistEuclideanApprox (dx: number, dy: number): number
+{
+    dx = Math.abs (dx);
+    dy = Math.abs (dy);
+
+    return dx + dy - Math.min (dx, dy) / 2.0;
+}
 
 function KDistTaxicab(x: number, y: number): number {
 	return Math.abs(x) + Math.abs(y);

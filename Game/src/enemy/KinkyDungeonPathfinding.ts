@@ -124,7 +124,7 @@ function KinkyDungeonFindPath (
 	}
 
 	function heuristic(xx: number, yy: number, endxx: number, endyy: number) {
-		return ((xx - endxx) * (xx - endxx) + (yy - endyy) * (yy - endyy)) ** 0.5;
+		return 0.1*KDistEuclideanApprox((xx - endxx) * (xx - endxx), (yy - endyy) * (yy - endyy));
 	}
 	let heur = heuristicOverride || heuristic;
 	// g = cost
@@ -150,12 +150,16 @@ function KinkyDungeonFindPath (
 			console.log("Quit pathfinding");
 			return undefined; // Give up
 		}
+		let lowest_old: KDPointCostSource = undefined;
 		let lowest: KDPointCostSource = undefined;
 		let lc = 1000000000;
+		let dx = 0;
+		let dy = 0;
 		// Get the open tile with the lowest weight
 		open.forEach(o => {
 			if (o.f < lc) {
 				lc = o.f;
+				lowest_old = lowest;
 				lowest = o;
 			}
 		});
@@ -245,7 +249,17 @@ function KinkyDungeonFindPath (
 								else if (tile == "N") costBonus = 8;
 								else if (tile == "L") costBonus = 2;
 							}
-							if (x && y) costBonus += 0.25;
+							// when moving diagonally we penalize if we werent moving diagonally before
+							// this is to help avoid weird zigzag patterns when realistically an enemy should walk straight thru a room
+							if (!!x && !!y) {
+								if (lowest_old) {
+									dx = lowest.x-lowest_old.x;
+									dy = lowest.y-lowest_old.y;
+									if (dx != x || dy != y) {
+										costBonus += 0.45;
+									} else costBonus += 0.22;
+								}
+							}
 							succ.set(xx + "," + yy, {x: xx, y: yy,
 								g: moveCost + costBonus + lowest.g,
 								f: moveCost + costBonus + lowest.g + heur(xx, yy, endx, endy),

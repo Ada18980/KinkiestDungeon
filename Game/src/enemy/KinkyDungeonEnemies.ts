@@ -3419,7 +3419,7 @@ function KDNearbyEnemies(x: number, y: number, dist: number, hostileEnemy?: enti
 	let cache = KDGetEnemyCache();
 	let list = [];
 	// We may end up just checking more...
-	if (!cache || (dist*dist > KDMapData.Entities.length)) {
+	if (!cache || (3*dist*dist > KDMapData.Entities.length)) {
 		if (cheb) {
 			for (let e of KDMapData.Entities) {
 				if (KDistChebyshev(x - e.x, y - e.y) <= dist
@@ -6094,8 +6094,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 											} else if (KDRandom() < cohesion) {
 												let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
-												minDist *= minDist;
 												let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
+												minDist *= minDist;
 												for (let e of ent) {
 													if (e == enemy) continue;
 													if (['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy))) continue;
