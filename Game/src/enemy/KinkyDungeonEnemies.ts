@@ -6094,6 +6094,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 												KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 											} else if (KDRandom() < cohesion) {
 												let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
+												minDist *= minDist;
 												let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
 												for (let e of ent) {
 													if (e == enemy) continue;
@@ -6105,7 +6106,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 													)) continue;
 													if (KDGetFaction(e) != KDGetFaction(enemy)) continue;
 													if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL) continue;
-													let dist = KDistEuclidean(e.x - enemy.x, e.y - enemy.y);
+													let dist = KDistEuclideanSquared(e.x - enemy.x, e.y - enemy.y);
 													if (dist < minDist) {
 														minDist = dist;
 														let ePoint = KinkyDungeonGetNearbyPoint(ex, ey, false);

@@ -1074,6 +1074,10 @@ function KDistEuclidean(x: number, y: number): number {
 	return Math.sqrt(x*x + y*y);
 }
 
+function KDistEuclideanSquared(x: number, y: number): number {
+	return x*x + y*y;
+}
+
 function KDistChebyshev(x: number, y: number): number {
 	return Math.max(Math.abs(x), Math.abs(y));
 }
