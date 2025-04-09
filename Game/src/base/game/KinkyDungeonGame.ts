@@ -2226,7 +2226,8 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 					});
 				}
 
-				e = KDAddEntity(e);
+				// we add our loadout after
+				e = KDAddEntity(e, undefined, undefined, true);
 				if (noPlay) {
 					KinkyDungeonSetEnemyFlag(e, "noPlay", -1);
 				}

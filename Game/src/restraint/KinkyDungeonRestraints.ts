@@ -3510,7 +3510,7 @@ function KDGetRestraintsEligible (
 						if ((!agnostic || KDNoOverrideTags.includes(tag)) && !KinkyDungeonPlayerTags.get(tag)) r.w *= restraint.playerTagsMissingMult[tag];
 
 
-				if (!(options?.dontAugmentWeight === false)) {
+				if (!agnostic && !(options?.dontAugmentWeight === false)) {
 					let mult = KDRestraintPowerMult(KinkyDungeonPlayerEntity, restraint, augmentedInventory);
 					if (Math.sign(mult) != Math.sign(r.w)) mult = 1;
 					r.w *= mult;

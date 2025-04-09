@@ -15,6 +15,7 @@ function KDSummonLatexKittyTrap(x: number, y: number): entity {
 
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
 			KinkyDungeonSendTextMessage(8, TextGet("KDSummonLatexKitty"), "#77aaff", 5);
+			KDDisableAutoWait();
 			return en;
 		}
 	}

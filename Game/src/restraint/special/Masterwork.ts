@@ -82,6 +82,7 @@ function KDSummonMasterworkTrap(x: number, y: number): entity {
 
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
 			KinkyDungeonSendTextMessage(8, TextGet("KDSummonMasterGear"), "#9074ab", 5);
+			KDDisableAutoWait();
 			return en;
 		}
 	}

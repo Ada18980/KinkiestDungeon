@@ -995,6 +995,7 @@ function KDSpawnLootTrap(x: number, y: number, _trap: any, _mult: number, durati
 						et.duration = 0;
 					}
 					delete tile.tile.lootTrapEnemy;
+					KDDisableAutoWait();
 				}
 			}
 		}
@@ -1149,6 +1150,7 @@ function KDSummonCurseTrap(x: number, y: number): entity {
 			en.teleportingmax = 4;
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/SummonCurse.ogg");
 			KinkyDungeonSendTextMessage(8, TextGet("KDSummonCurse"), "#9074ab", 5);
+			KDDisableAutoWait();
 			return en;
 		}
 	}
