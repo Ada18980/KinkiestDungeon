@@ -11574,7 +11574,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						KDRemoveEntity(e);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
 						e.modified = true;
-						KDAddEntity(e);
+						KDAddEntity(e, undefined, undefined, true);
 
 						if (!e.CustomName)
 							KDProcessCustomPatron(Enemy, e, 0.2, true);
@@ -11644,7 +11644,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 						KDRemoveEntity(e);
 						e.Enemy = JSON.parse(JSON.stringify(Enemy));
 						e.modified = true;
-						KDAddEntity(e);
+						KDAddEntity(e, undefined, undefined, true);
 
 						if (!e.CustomName)
 							KDProcessCustomPatron(Enemy, e, 0.2, true);
