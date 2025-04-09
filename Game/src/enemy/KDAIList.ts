@@ -76,16 +76,16 @@ let KDAIType: Record<string, AIType> = {
 					ex = aiData.master.x;
 					ey = aiData.master.y;
 				} else if (KDRandom() < cohesion) {
-					let minDist = (enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : aiData.visionRadius);
-					minDist *= minDist; // squared is much faster than KDistEuclidean
+					let minDistSQ = (enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : aiData.visionRadius);
+					minDistSQ *= minDistSQ; // squared is much faster than KDistEuclidean
 					for (let e of KDMapData.Entities) {
 						if (e == enemy) continue;
 						if (['guard', 'ambush'].includes(KDGetAI(enemy))) continue;
 						if (enemy.Enemy.clusterWith && !e.Enemy.tags[enemy.Enemy.clusterWith]) continue;
 						if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL) continue;
-						let dist = KDistEuclideanSquared(e.x - enemy.x, e.y - enemy.y);
-						if (dist < minDist) {
-							minDist = dist;
+						let distSQ = KDistEuclideanSquared(e.x - enemy.x, e.y - enemy.y);
+						if (distSQ < minDistSQ) {
+							minDistSQ = distSQ;
 							let ePoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
 							if (ePoint) {
 								ex = ePoint.x;

@@ -6095,7 +6095,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											} else if (KDRandom() < cohesion) {
 												let minDist = enemy.Enemy.cohesionRange ? enemy.Enemy.cohesionRange : AIData.visionRadius;
 												let ent = KDNearbyEnemies(enemy.x, enemy.y, minDist);
-												minDist *= minDist;
+												let minDistSQ = minDist * minDist;
 												for (let e of ent) {
 													if (e == enemy) continue;
 													if (['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy))) continue;
@@ -6106,9 +6106,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 													)) continue;
 													if (KDGetFaction(e) != KDGetFaction(enemy)) continue;
 													if (KinkyDungeonTilesGet(e.x + "," + e.y) && KinkyDungeonTilesGet(e.x + "," + e.y).OL) continue;
-													let dist = KDistEuclideanSquared(e.x - enemy.x, e.y - enemy.y);
-													if (dist < minDist) {
-														minDist = dist;
+													let distSQ = KDistEuclideanSquared(e.x - enemy.x, e.y - enemy.y);
+													if (distSQ < minDistSQ) {
+														minDistSQ = distSQ;
 														let ePoint = KinkyDungeonGetNearbyPoint(ex, ey, false);
 														if (ePoint) {
 															ex = ePoint.x;

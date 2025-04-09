@@ -9184,24 +9184,24 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 			if (enemy.attackPoints > 0) return;
 			let target = null;
 			if (b.bullet.faction) {
-				let minDist = 1000000;
+				let minDistSQ = 1000*1000;
 				let entity = null;
-				let playerDist = 1000000;
+				let playerDistSQ = 1000*1000;
 				if (KDFactionHostile(b.bullet.faction, "Player")) {
-					playerDist = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
-					if (playerDist <= e.aoe*e.aoe) {
+					playerDistSQ = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
+					if (playerDistSQ <= e.aoe*e.aoe) {
 						entity = KinkyDungeonPlayerEntity;
-						minDist = playerDist;
+						minDistSQ = playerDistSQ;
 					}
 				}
 
 				let enemies = KDNearbyEnemies(b.bullet.targetX, b.bullet.targetY, e.aoe);
 				for (let en of enemies) {
 					if (!KDHelpless(en) && KDFactionHostile(b.bullet.faction, en)) {
-						playerDist = KDistEuclideanSquared(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
-						if (playerDist < minDist) {
+						playerDistSQ = KDistEuclideanSquared(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
+						if (playerDistSQ < minDistSQ) {
 							entity = en;
-							minDist = playerDist;
+							minDistSQ = playerDistSQ;
 						}
 					}
 				}
@@ -9214,14 +9214,15 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 
 			let bullets = KDMapData.Bullets.filter((bb) => { return bb.bullet?.spell?.name == "ShadowShroud"; });
 			let nearest = null;
-			let nearestDist = 10000;
+			let nearestDistSQ = 100*100;
 			for (let bb of bullets) {
 				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(bb.x, bb.y))) {
-					let dist = KDistEuclideanSquared(b.x - bb.x, b.y - bb.y);
-					let distplayer = KDistEuclideanSquared(target.x - bb.x, target.y - bb.y);
-					if (dist <= e.aoe*e.aoe && distplayer < nearestDist
-						&& distplayer < KDistEuclideanSquared(target.x - enemy.x, target.y - enemy.y)) {
-						nearestDist = distplayer;
+					let distSQ = KDistEuclideanSquared(b.x - bb.x, b.y - bb.y);
+					let distplayerSQ = KDistEuclideanSquared(target.x - bb.x, target.y - bb.y);
+					if (distSQ <= e.aoe*e.aoe && distplayerSQ < nearestDistSQ
+						&& distplayerSQ < KDistEuclideanSquared(target.x - enemy.x, target.y - enemy.y))
+					{
+						nearestDistSQ = distplayerSQ;
 						nearest = bb;
 					}
 				}
@@ -9252,24 +9253,24 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 			if (enemy.attackPoints > 0) return;
 			let target = null;
 			if (b.bullet.faction) {
-				let minDist = 1000000;
+				let minDistSQ = 1000*1000;
 				let entity = null;
-				let playerDist = 1000000;
+				let playerDistSQ = 1000*1000;
 				if (KDFactionHostile(b.bullet.faction, "Player")) {
-					playerDist = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
-					if (playerDist <= e.aoe*e.aoe) {
+					playerDistSQ = KDistEuclideanSquared(KinkyDungeonPlayerEntity.x - b.bullet.targetX, KinkyDungeonPlayerEntity.y - b.bullet.targetY);
+					if (playerDistSQ <= e.aoe*e.aoe) {
 						entity = KinkyDungeonPlayerEntity;
-						minDist = playerDist;
+						minDistSQ = playerDistSQ;
 					}
 				}
 
 				let enemies = KDNearbyEnemies(b.bullet.targetX, b.bullet.targetY, e.aoe);
 				for (let en of enemies) {
 					if (!KDHelpless(en) && KDFactionHostile(b.bullet.faction, en)) {
-						playerDist = KDistEuclideanSquared(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
-						if (playerDist < minDist) {
+						playerDistSQ = KDistEuclideanSquared(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
+						if (playerDistSQ < minDistSQ) {
 							entity = en;
-							minDist = playerDist;
+							minDistSQ = playerDistSQ;
 						}
 					}
 				}
@@ -9657,24 +9658,24 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 			if (data.delta > 0 && b.bullet.targetX != undefined && b.bullet.targetY != undefined) {
 				// Scan for targets near the target location
 				if (b.bullet.faction && !(e.kind == "dumb")) {
-					let minDist = 1000000;
+					let minDistSQ = 1000*1000;
 					let entity = null;
-					let playerDist = 1000000;
+					let playerDistSQ = 1000*1000;
 					if (KDFactionHostile(b.bullet.faction, "Player")) {
-						playerDist = KDistEuclideanSquared(KDPlayer().x - b.bullet.targetX, KDPlayer().y - b.bullet.targetY);
-						if (playerDist <= e.dist * e.dist) {
+						playerDistSQ = KDistEuclideanSquared(KDPlayer().x - b.bullet.targetX, KDPlayer().y - b.bullet.targetY);
+						if (playerDistSQ <= e.dist * e.dist) {
 							entity = KDPlayer();
-							minDist = playerDist;
+							minDistSQ = playerDistSQ;
 						}
 					}
 
 					let enemies = KDNearbyEnemies(b.bullet.targetX, b.bullet.targetY, e.dist);
 					for (let en of enemies) {
 						if (!KDHelpless(en) && KDFactionHostile(b.bullet.faction, en)) {
-							playerDist = KDistEuclideanSquared(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
-							if (playerDist < minDist) {
+							playerDistSQ = KDistEuclideanSquared(en.x - b.bullet.targetX, en.y - b.bullet.targetY);
+							if (playerDistSQ < minDistSQ) {
 								entity = en;
-								minDist = playerDist;
+								minDistSQ = playerDistSQ;
 							}
 						}
 					}
