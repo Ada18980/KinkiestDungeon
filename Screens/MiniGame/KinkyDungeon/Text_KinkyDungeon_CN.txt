@@ -3662,7 +3662,7 @@ Devious Dungeon Challenge 已启用。
 - SP Cost: 
 体力消耗：
 - Cut PWR: AMNT%
-切割加成 : ‎AMNT%
+切割加成：‎AMNT%
 
 - It appears to be a receptacle
 看着像是某种容器
@@ -7271,7 +7271,7 @@ Zora的船员
 - Bottle
 装一瓶泉水
 - You have no restraints to 'offer' to the goddess.
-你可以毫无限制地向女神“献祭”。
+你没有可以‘献祭’给女神的拘束具。
 - This shrine's mana pool is empty.
 该神泉的法力池已空。
 - You drink from the pool and and absorb its energies.
@@ -7279,22 +7279,22 @@ Zora的船员
 - You absorb the pool's energies through your face.
 你通过脸部吸收泉水的能量。
 - You collect what mana you can in a bottle.
-你可以在瓶子里收集尽可能多的法力。
+你在瓶子里收集尽可能多的法力。
 - You drink from the pool and your mana is restored.
-你从池子里喝下泉水，你的法力就会恢复。
+你从池子里喝下泉水，你的法力恢复了。
 - You drink again, but you feel as if you are trespassing.
-你再次喝下泉水，但你觉得你好像在冒犯。
+你再次喝下泉水，但你有种亵渎的感觉。
 - You drink again, knowing the risk this may entail...
 你又喝了一次，知道这可能带来风险......
 - You have angered the goddess of TYPE!!!
 你惹怒了TYPE女神！！！
 - The slime washes off in the fountain!!!
-粘液在喷泉中被冲洗掉了！！！
+粘液在泉水中被冲洗掉了！！！
 - The goddess of TYPE is enraged and curses you with a divine punishment! (+RESTRAINT)
-TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
+TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 - The goddess offers a ItemTraded for ItemCost (NumCurrent/NumMax)
-女神提供了一个 ItemTraded for ItemCost (NumCurrent/NumMax)
+女神以 ItemCost 的价格提供 ItemTraded (NumCurrent/NumMax)
 - Next Offer
 下一个交易
 - Buy (press right)
@@ -7348,7 +7348,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 你的胳膊肘被手铐固定在一起，你够不着它们。
 
 - The strict chain on the cuffs keeps you from reaching them easily.
-手铐上的严格链条可防止你轻易触及它们。
+手铐上紧绷的链条使你无法轻易触及它们。
 - The cuffs limit your range of motion, making it harder to remove them.
 手铐限制了你的活动范围，让你更难摘下它们。
 - It's hard to take off the cuffs with your wrists linked together...
@@ -7357,28 +7357,28 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - You feel drained of energy...
 你感觉筋疲力尽...
 - Your collar tingles and suddenly you feel weaker...
-你的项圈一阵刺痛，你突然感觉浑身无力……
+从你的项圈传来一阵刺痛和突然的虚弱感……
 - Your collar drains your energy as you struggle...
-你挣扎时，你的项圈会耗尽你的能量……
+你的项圈会随着挣扎耗尽你的能量……
 
 - The rope between your legs keeps the toy secure...
-你两腿之间的绳子可以保证玩具的安全......
+你两腿之间的绳子可以保证玩具不会脱落......
 - Try as you might, the toy is held in place tight.
-尽管你尽力了，但是玩具还是被紧紧地固定在适当的位置。
+无论你怎么尝试，玩具还是被紧紧地固定在原位。
 - The toy won't wiggle loose. It's kept in place by your restraints.
-玩具不会松动。它被你的束缚固定在适当的位置。
+玩具被你的束缚牢牢固定着，不会晃动。
 
 - Your catsuit adheres to latex, making struggling more difficult!
-你的紧身衣粘在乳胶上，让挣扎变得更加困难！
+你的紧身衣与乳胶粘连，让挣扎变得更加困难！
 - The item sticks to your rubber catsuit, making it harder to pull off...
 这件衣服粘在你的橡胶紧身衣上，很难脱下来...
 - The item hugs your catsuit tightly, adhering firmly!
-这件衣服紧紧地拥抱着你的紧身衣，牢牢地粘在一起！
+这件衣服紧紧地贴合着你的紧身衣，牢牢地粘在一起！
 
 - Your RSTRN holds you securely, making your struggling ineffectual...
 你的 RSTRN 牢牢地束缚着你，使你的挣扎毫无效果……
 - Your RSTRN holds you tight, making it harder to move...
-你的 RSTRN 将你紧紧抱住，让你难以移动……
+你的 RSTRN 将你紧紧固定住，让你难以移动……
 - Your RSTRN keeps you tied tight, making it harder to escape...
 你的 RSTRN 将你紧紧束缚，让你更难逃脱……
 
@@ -7386,7 +7386,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 明亮的光线削弱了影之手！
 
 - You hear an ominous click, but nothing seems to happen. Looks like a misfire!
-你听到不祥的咔哒声，但似乎什么也没发生。好像失效了！
+你听到不祥的咔哒声，但似乎什么也没发生。看来机括失效了！
 
 - Barrel Trap
 桶陷阱
@@ -7404,26 +7404,26 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 # :: RestraintSarcophagus
 # :: m_Sarcophagus
 - A glass-walled chamber sealed with enchanting magic.
-一个用迷人魔法密封的玻璃墙房间。
+一个用附魔玻璃板封住的小隔间。
 - Time feels like it's going by quickly outside...
 外面的时间感觉过得很快……
 
 - Metal Cage
 金属笼
 - A metal cage with rigid bars, too narrow to put your head through.
-一个带有刚性杆的金属笼子，太窄而无法让你的头穿过去。
+一个坚实的金属笼子，其狭窄的缝隙确保你的头无法穿过。
 - Made for a pretty toy like you~
 专为像你这样的漂亮玩具而设计~
 - Display Stand
 展示架
 - A display stand, fit for only the prettiest of trophies!
-展示架，只适合放置最漂亮的奖杯！
+展示架，专用来展示最漂亮的战利品！
 - Your arms are pinned behind your back and you can barely move!
 你的手臂被反扣在背后，几乎无法动弹！
 - You hear a click as the door shuts behind you...
 你听到门在你身后关上的咔哒声...
 - The display stand suddenly locks into place around you!
-展示架突然在你周围锁定！
+展示架突然将你锁在里面！
 
 - Doll Stand
 玩偶架
@@ -7450,30 +7450,30 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 
 
 - As long as it's attached, you won't be going anywhere!
-只要它附在身上，你就哪儿也去不了！
+一旦装上，你就哪儿也去不了！
 
 - You're not fooling anyone...
 你骗不到任何人...
 - You might be able to fool someone like this...
-你也许能像这样骗到某些人...
+你这个样子也许能骗到某些人...
 - You look like you're right at home!
 你看起来就在家里！
 
 - Restraining Bed
 拘束床
 - A bed with a booby trap designed to trap you on top of it!
-带有拘束装置的床，旨在将你困在上面！
+带有触发装置的床，旨在将你困在上面！
 - You have to get out somehow...
 你得想个办法逃脱......
 - Belts emerge from underneath the bed and wrap around you, strapping you down tightly!
-腰带从床底下出来，缠绕在你身上，把你紧紧地绑起来！
+皮带从床底下涌出来缠绕在你身上，把你紧紧地绑起来！
 
 - Binding Dress
 捆绑连衣裙
 - It's a devious dress! I hope your elbows are flexible~
 这是一件不寻常的衣服！希望你的手肘足够柔韧~
 - So many laces! It would take quite a while to put this on normally. That's what magic is for!
-很多系带！正常穿这个要很长的时间。这就是魔法的用途！
+真多系带啊！穿上这件衣服一般要花费很长时间，但这就是魔法派上用场的时候了！
 - Ornamental Corset
 装饰束胸
 - Your figure looks gorgeous in this~
@@ -7492,12 +7492,12 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - A muzzle to keep you from spitting out what's underneath.
 口套可防止你吐出底下的东西。
 - Sorry dear, there's a mystic seal on there to keep it on nice and tight.
-对不起，亲爱的，那里有一个神秘的封印，可以使其保持良好且紧密。
+不好意思呢，这儿的秘印可以让它紧紧地固定在该在的地方。
 
 - Ornamental Dress
 装饰连衣裙
 - A devious dress that forces the arms into an elbows-touching position.
-一种连衣裙，迫使手臂在背后保持胳膊接触的位置。
+一件精心设计的连衣裙，迫使手臂在背后保持胳膊紧贴的姿势。
 - It is extremely strict but it is only fabric. The lacing is intricate and will take a long time to remove.
 它非常严密，但它只是织物。绑带很复杂，需要很长时间才能去除。
 
@@ -7511,7 +7511,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - Panel Plug Gag
 镶嵌堵嘴
 - A gag meant to keep people quiet by forcing a plug into their mouth.
-一种堵嘴装置，旨在通过将塞子塞进人们的嘴里来让人们保持安静。
+一种堵嘴装置，旨在通过将塞子塞进人的嘴里来让人保持安静。
 - It is difficult to pull off and though it is made from supple, heavy duty leather.
 虽然它是由柔软的重型皮革制成，但很难脱下来。
 # :: RestraintPanelPlugGagDesc2
@@ -7538,7 +7538,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - Dress Bustier
 连衣裙紧身胸衣
 - A deceptively cruel device, making it impossible to reach your nipples.
-一种看起来很残酷的装备，让你无法触及你的乳头。
+一种貌不惊人的残酷装置，能让你无法触及你的乳头。
 - Reinforced with steel plates, this will need bolt cutters to take off.
 用钢板加固，这需要断线钳才能取下。
 
@@ -7560,7 +7560,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - A pair of dense weights dangling from your sensitive bits.
 一对沉重的砝码悬挂在你的敏感部位上。
 - They tend to swing around when attacking or casting arm spells.
-他们在攻击或施展手臂法术时往往会左右摇摆。
+在你进行攻击或施展手臂法术时会左右摇晃。
 - Hi-Tech Massagers
 高科技按摩器
 - A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping.
@@ -7569,7 +7569,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - Control Harness
 控制束衣
 - An advanced harness for controlling high-security prisoners.
-一种用于控制高安全性囚犯的先进绑带。
+一种用于管控高警戒性囚犯的先进束衣。
 - It seems to be made of flexible steel plates.
 它似乎是由高延展性钢板制成的。
 
@@ -7594,7 +7594,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 一种看起来像大口球的装备，但内部有一个能填满嘴的橡胶棒。可以以一半的强度应用于虚弱的目标或上一回合施展过口头咒语的人。
 
 - Latex Mask
-乳胶面具
+乳胶口罩
 - A slick layer of blue latex stretched over the mouth.
 一层光滑的蓝色乳胶覆盖在嘴巴上。
 - It's very tight and makes it hard to move your mouth.
@@ -7603,9 +7603,9 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 # :: RestraintLatexOTNGagHeavyDesc2
 
 - Secure Latex Mask
-安全乳胶面具
+安全乳胶口罩
 - A slick layer of blue latex stretched over the mouth. It has a lockable strap which prevents it from being removed.
-一层光滑的蓝色乳胶覆盖在嘴巴上。它有一条可锁定的带子，可防止其被移除。
+一层光滑的蓝色乳胶覆盖在嘴巴上。附有一条可锁定的带子，可防止其被移除。
 
 
 - Rubberized Gloves
@@ -7645,7 +7645,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - A set of vibrating panties designed to help subdue unruly wolfgirls.
 一套振动内裤，旨在帮助制服不守规矩的狼娘。
 - It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber. Type: Teasing, Pleasure, Denial
-它非常紧，一旦夹上就很难取下，但材料是橡胶。类型 : ‎戏弄、快感、拒绝
+非常紧绷，一旦合上就很难取下，但材料是橡胶。类型 : ‎戏弄、快感、拒绝
 
 - You can't equip that.
 你不能装备它。
@@ -7657,23 +7657,23 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - Made from imbued latex, it will be hard to cut but not impossible.
 由灌输乳胶制成，很难切割，但并非不可能。
 - Binder Harness
-包扎带束衣
+束手套束带
 - A tight harness attached to a binder used to ensure restraints will not come off.
-连接到用于确保拘束具不会脱落的紧束带。
+连接到各类束手套上用于确保拘束具不会脱落的紧束带。
 - It's tied in the back and reinforced with steel boning.
-它系在背面，并用钢骨加固。
+在背后系紧，并有钢骨加固。
 - Latex Posture Collar
 乳胶姿势项圈
 - A strict collar that makes it tougher to escape from other items.
 一个严苛的项圈，使从其他物品中逃脱变得更加困难。
 - It has steel boning but could be cut with enough care.
-它有钢骨，但可以小心切割。
+内置钢骨，但是小心操作下仍可以切开。
 - Rubber Ballet Heels
 橡胶芭蕾高跟鞋
 - A pair of strict boots for making pets more manageable. A skilled person can still walk in these.
 一双严格的靴子，让宠物更易于管理。熟练的人仍然可以行走。
 - They are reinforced with top-quality hardened latex.
-它们采用硬化乳胶加固。
+采用顶级硬化乳胶加固。
 
 
 
@@ -7689,13 +7689,13 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 # :: RestraintHighsecTransportJacketDesc2
 # :: RestraintHighsecLegbinderDesc2
 - High-Security Boxbinder
-高安全性盒式单手套
+高安全性盒式束手套
 - A boxbinder enclosing your hands and arms completely, making your hands useless.
-盒式单手套将你的手和手臂完全包住，使你的手变得毫无用处。
+盒式束手套将你的手和手臂完全包住，使你的手变得毫无用处。
 - High-Security Straitjacket
 高安全性拘束衣
 - A straitjacket enclosing your hands and arms completely, making your hands useless.
-紧身衣将你的手和手臂完全包住，使你的手变得毫无用处。
+拘束衣将你的手和手臂完全包住，使你的手变得毫无用处。
 - High-Security Lockdown Jacket
 高安全性锁定拘束衣
 - This jacket made with extra straps can even be used on top of another jacket for extra security.
@@ -7709,7 +7709,7 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - High-Security Shackles
 高安全性脚镣
 - A pair of hardened steel shackles around your feet.
-一对硬化脚镣铐在你的脚上。
+一对硬化钢制脚镣铐在你的脚上。
 - Nearly indestructable, you are at the mercy of its lock.
 几乎坚不可摧，你只能受其锁的支配。
 - High-Security Ball Gag
@@ -7717,13 +7717,13 @@ TYPE女神非常愤怒，用神圣的惩罚诅咒你！( +RESTRAINT )
 - A rubber gag shoved tightly between your lips.
 一个橡胶口球紧紧地塞在你的嘴唇之间。
 - The cable-reinforced straps are nigh-unbreakable, keeping you securely silenced.
-钢索加固后几乎牢不可破，让你安全的保持安静。
+钢索加固束带几乎牢不可破，让你好好地保持安静。
 - High-Security Muzzle
 高安全性口套
 - A secure muzzle made with cable-reinforced straps.
-由钢索加固制成的安全口套。
+一副由钢索加固束带制成的坚固口套
 - It is especially effective at keeping in other gags.
-它对于保持其他堵嘴物尤其有效。
+在保持其它堵嘴物不会脱出这一点上尤其有效。
 
 - Potion Absorber
 药水吸收器
@@ -13253,14 +13253,16 @@ SPELL蓄力
 
 - Chastity
 贞操带
-# - Target must be disabled, submissive, or in your party.
+- Target must be disabled, submissive, or in your party.
+目标必须是无法抵抗的，顺从的，或在你的队伍中。
 - Select which creature to lock in a belt
 选择要锁定在贞操带中的个体
 - Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
 对完全束缚的敌人释放，增加 DamageDealt 点束缚，并装备贞操带以阻止目标移除插入的物体或玩具，并不断增加性奋值。
 - You conjure a chastity belt, which latches onto your target!
 你召唤出贞操带，它将佩戴在你的目标身上！
-# - You attempt to conjure a chastity belt, but the target is already wearing one!
+- You attempt to conjure a chastity belt, but the target is already wearing one!
+你试图变化出一条贞操带，但是目标已经穿戴有了！
 - Your own spell locks you in chastity!
 你念出的咒语将你自己锁在贞操带中！
 - Something fun enters your body...
@@ -14270,7 +14272,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - The ceiling opens, letting a lot of shackles fall on you!
 天花板打开，让很多镣铐落在你身上！
 # - Hidden cuffs shoot out and make a dash toward your limbs!
-# - Hidden cuffs and tethers appear and make a dash toward your limbs!
+- Hidden cuffs and tethers appear and make a dash toward your limbs!
+隐藏的镣铐和钢索现形并冲向你的四肢！
 - Bands of glowing wrappings start flying in from all sides!
 发光的包装带开始从四面八方飞来！
 - Ropes slither out towards you from between the bricks!
@@ -40480,12 +40483,18 @@ Aura刘海(右后)
 - Notebook Page
 笔记本页
 
-# - *warms up to you*
-# - Perhaps you're not so bad after all...
-# - *Surrenders* I'll get you next time!
-# - This pleases me.
-# - Thank you miss! I won't bother you anymore.
-# - --Exception cleared. Awaiting orders.
+- *warms up to you*
+*对你产生好感*
+- Perhaps you're not so bad after all...
+看来你也没那么糟糕…
+- *Surrenders* I'll get you next time!
+*投降* 下次一定要你好看!
+- This pleases me.
+我觉得不错。
+- Thank you miss! I won't bother you anymore.
+谢谢你小姐！我不会再烦扰你了。
+- --Exception cleared. Awaiting orders.
+--错误移除。等待指令。
 
 - You're going to stay with me for a while~
 你就陪我一段时间吧~
@@ -45353,7 +45362,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 腰链（大腿）
 # - High-security cables connecting your belt to your thigh cuffs. Slightly restricts mobility, increasing Sprint Cost by 10%.
 - It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
-一条坚硬的金属链条，外面包裹着一层结实的橡胶。带弹簧的扣件将它们固定在你身上的拘束的固定点上。
+它是钢制的，且用锁固定。解锁后会丢失。
 # :: RestraintNeoLinkThighsDesc2
 # :: RestraintNeoLinkArmsDesc2
 # :: RestraintThighLinkDesc2
@@ -45378,7 +45387,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 强化踝链
 # - Keeps your ankles close. Careful not to walk too fast, or you'll trip!
 - A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints.
-一条坚硬的金属链条，外面包裹着一层结实的橡胶。带弹簧的扣件将它们固定在你身上的拘束的固定点上。
+一条包裹着结实橡胶的硬化金属链。用弹簧扣连接在拘束具的连接点上。
 # :: RestraintNeoAnkleLinkDesc2
 # :: RestraintNeoAnkleLinkShortDesc2
 # :: RestraintNeoElbowLinkDesc2
@@ -45391,13 +45400,13 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 
 - Elbow Link
-强化肘链
+肘链
 - A very short link connecting your elbow cuffs together. It is quite awkward to remove by yourself. A convenient clasp allows these to be connected more easily than a standard chain.
-一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。一个便捷的扣环使它们相比起普通链条来更容易连接。 
+一条很短的链条，将你的肘铐连接在一起。自己取下来很不方便。一个便捷的扣环使它们相比起普通链条来更容易连接。
 # :: RestraintElbowLinkDesc
 # :: RestraintNeoElbowLinkDesc
 - Wrist Link
-强化腕链
+腕链
 - A very short link connecting your wrist cuffs together. A convenient clasp allows these to be connected more easily than a standard chain.
 一条很短的链条，将你的腕铐连接在一起。一个便捷的扣环使它们相比起普通链条来更容易连接。
 # :: RestraintWristLinkDesc
@@ -47247,7 +47256,8 @@ ENMY 解开了 ITMN 的锁!
 妖术乳胶吞噬
 - Hex Binding
 妖术捆绑
-# - Lore
+- Lore
+故事
 - Here you will find various scraps of documents and lore you've recovered throughout your adventures.
 在这里可以翻阅你在冒险过程中找到的各种碎片化文档和传说。
 - Your Journal
@@ -48318,5 +48328,7 @@ ${Count}x${Item} 已转移至仓库
 
 
 
-# - Your headpatting restored your willpower slightly!
-# - Your headpatting feels nice!
+- Your headpatting restored your willpower slightly!
+摸头稍微恢复了你的意志力！
+- Your headpatting feels nice!
+摸头让你感觉良好！
