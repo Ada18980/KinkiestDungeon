@@ -435,8 +435,8 @@ class TextProvider {
 	 * @param params - Optional parameters to format the text.
 	 * @returns The text associated with the specified tag, formatted with the provided parameters if any.
 	 */
-	getText(tag: string, params?: TemplateParams): string {
-		return this.getTextFromGroup(this.defaultGroupId, tag, params);
+	getText(tag: string, params?: TemplateParams, legacy?: boolean): string {
+		return this.getTextFromGroup(this.defaultGroupId, tag, params, legacy);
 	}
 	/**
 	 * Retrieves the text associated with the specified tag.
@@ -490,15 +490,17 @@ class TextProvider {
 	 * @param groupId - The identifier of the group from which to retrieve the text.
 	 * @param tag - The tag associated with the desired text within the group.
 	 * @param params - Optional template parameters to apply to the text.
+	 * @param legacy - legacy mode, does not include [NotFound] tag
 	 * @returns The retrieved text string, with template parameters applied if provided. If the text is not found, returns "[NotFound] " followed by the tag.
 	 */
 	getTextFromGroup(
 		groupId: TextGroupId,
 		tag: string,
-		params?: TemplateParams
+		params?: TemplateParams,
+		legacy?: boolean
 	): string {
 		let src = this.getTextFromGroupStrict(groupId, tag, params);
-		return src != undefined ? src : ("[NotFound] " + tag);
+		return src != undefined ? src : (legacy ? tag : ("[NotFound] " + tag));
 	}
 
 
@@ -654,6 +656,9 @@ const textProvider = TextProvider.instance;
 // === Compatible with old interfaces ===
 
 function TextGet(TextTag: string, params?: TemplateParams): string {
+	if (KDToggles.ModCompat && !params) {
+		return textProvider.getText(TextTag, params, true);
+	}
 	return textProvider.getText(TextTag, params);
 }
 function HasText(TextTag: string, params?: TemplateParams): boolean {
