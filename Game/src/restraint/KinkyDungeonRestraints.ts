@@ -3315,6 +3315,34 @@ let geteligrest_lastIgnoreTags: string[] = null;
 let geteligrest_lastExtraTags: Record<string, number> = null;
 let geteligrest_lastTags: Map<string, boolean> = new Map();
 
+
+function  KDGeteligrest_gettags(effLevel: number, enemy: KDHasTags, ignoreTags: string[], extraTags: Record<string, number>): Map<string, boolean> {
+	let tags = new Map();
+	if (enemy.tags.length) {
+		for (let t of enemy.tags) {
+			tags.set(t, true);
+		}
+	} else {
+		for (let t of Object.keys(enemy.tags)) {
+			tags.set(t, true);
+		}
+	}
+	if (extraTags)
+		for (let t of Object.entries(extraTags)) {
+			if (effLevel >= +t[1])
+				tags.set(t[0], true);
+		}
+
+	if (ignoreTags) {
+		for (let ft of ignoreTags) {
+			tags.delete(ft);
+		}
+	}
+	return tags;
+}
+
+
+
 /**
  * @param enemy
  * @param Level
@@ -3377,29 +3405,11 @@ function KDGetRestraintsEligible (
 		&& geteligrest_lastIgnoreTags == filter?.ignoreTags
 		&& geteligrest_lastExtraTags == extraTags;
 
-
 	let tags: Map<string, boolean> = useMemo ? geteligrest_lastTags : new Map();
 	if (!useMemo) {
-		if (enemy.tags.length) {
-			for (let t of enemy.tags) {
-				tags.set(t, true);
-			}
-		} else {
-			for (let t of Object.keys(enemy.tags)) {
-				tags.set(t, true);
-			}
-		}
-		if (extraTags)
-			for (let t of Object.entries(extraTags)) {
-				if (effLevel >= +t[1])
-					tags.set(t[0], true);
-			}
+		tags = KDGeteligrest_gettags(effLevel, enemy, filter?.ignoreTags, extraTags);
 
-		if (filter?.ignoreTags) {
-			for (let ft of filter.ignoreTags) {
-				tags.delete(ft);
-			}
-		}
+		geteligrest_lastTags = tags;
 		geteligrest_lastTagsEnemy = enemy;
 		geteligrest_lastIgnoreTags = filter?.ignoreTags;
 		geteligrest_lastExtraTags = extraTags;
