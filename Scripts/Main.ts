@@ -5,6 +5,9 @@ const PIXIWidth = 2000;
 const PIXIHeight = 1000;
 
 let resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
+
+KinkyDungeonSetupCrashHandler();
+
 var PIXIapp = new PIXI.Application({
 	//view: document.getElementById("MainCanvas"),
 	antialias: false,

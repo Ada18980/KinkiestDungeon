@@ -5608,6 +5608,7 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 	optionActions: Record<string, (mouseX: number, mouseY: number) => void>,
 	optionGrey: Record<string, boolean>,
 	optionText: Record<string, string>,
+	optionColor: Record<string, string>,
 ) {
 	if (draw && options.length > 0) {
 
@@ -5628,7 +5629,8 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 				} else {KDContextMenu = false;}
 				return true;
 			}, true, XX, YY + II * (bheight + bpad), bwidth, bheight,
-			optionText[o] ? optionText[o] : TextGet("KDContextMenu_" + o), KDBaseWhite,
+			optionText[o] ? optionText[o] : TextGet("KDContextMenu_" + o),
+			(optionGrey[o] && !optionColor[o]) ? KDBaseLightGrey : (optionColor[o] ? optionColor[o] : KDBaseWhite),
 			optionImages[o] ? (optionImages[o].startsWith(KinkyDungeonRootDirectory) ? optionImages[o]
 				: KinkyDungeonRootDirectory + "UI/ContextMenu/" + optionImages[o] + ".png")
 			 : "",

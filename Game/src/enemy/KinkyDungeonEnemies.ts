@@ -8696,6 +8696,10 @@ function KDRunBondageResist (
 						KinkyDungeonRemoveRestraintSpecific(r, false,
 							undefined, undefined, undefined, undefined,
 							undefined, true);
+						if (!KinkyDungeonFlags.get("tut_armor")) {
+							KinkyDungeonSetFlag("tut_armor", -1);
+							KinkyDungeonSendTextMessage(10, TextGet("KDTut_ArmorLoadout"), KDTutorialColor, 4);
+						}
 						KinkyDungeonSendTextMessage(
 							5, TextGet("KDArmorBlock")
 								.replace("ArmorName", KDGetItemName(r))

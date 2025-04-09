@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.59"
+KDVersionStr,"5.4.61"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -31635,6 +31635,7 @@ KDTut_CutCrack2,"Your character will automatically try to lodge the knife into t
 KDTut_CutMagic,"You'll need to find a cutting weapon with the magic tag to cut magic items."
 KDTut_CutMagicHas,"You need to equip your magic cutting weapon to cut magic items."
 KDTut_Surr,You can surrender in the menu if you want to be treated more gently.
+KDTut_ArmorLoadout,To quickly re-equip armor you can right click your character to open the quick inventory.
 
 KDTut_HelpGhost,That ghost looks less aggressive than the others. Maybe she can help?
 KDTut_HelpAlly,Need help? Try asking a neutral NPC for assistance!

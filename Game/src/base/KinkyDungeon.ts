@@ -1160,7 +1160,6 @@ function KinkyDungeonLoad(): void {
 		zIndex: -115,
 	});
 
-	KinkyDungeonSetupCrashHandler();
 
 	KDStartTime = CommonTime();
 
@@ -2759,7 +2758,7 @@ function KinkyDungeonRun() {
 
 			let nameList = KDDefaultNames[Math.floor(Math.random() * KDDefaultNames.length)];
 			if (nameList && KDNameList[nameList]) {
-				name = KDNameList[nameList][Math.floor(Math.random() * KDDefaultNames.length)];
+				name = KDNameList[nameList][Math.floor(Math.random() * KDNameList[nameList].length)];
 			}
 			ElementValue("PlayerNameField", name);
 			return true;

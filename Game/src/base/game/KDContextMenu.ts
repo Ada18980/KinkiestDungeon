@@ -10,7 +10,7 @@ let KDContextStage = "";
 
 
 
-/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number) => {options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>}>} */
+/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number) =>{options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>, optionColor: Record<string, string>}>} */
 let KDGetContextActions = {
 	Game: (draw, mouseX, mouseY) => {
 		let options: string[] = [];
@@ -18,10 +18,11 @@ let KDGetContextActions = {
 		let optionActions: Record<string, (mouseX: number, mouseY: number) => void> = {};
 		let optionGrey: Record<string, boolean> = {};
 		let optionText: Record<string, string> = {};
+		let optionColor: Record<string, string> = {};
 
 		KinkyDungeonSetTargetLocation(false, KDContextX, KDContextY);
 
-		KDGetGameContextActionsVanilla(draw, options, optionImages, optionActions, optionGrey, optionText);
+		KDGetGameContextActionsVanilla(draw, options, optionImages, optionActions, optionGrey, optionText, optionColor);
 
 		if (options.length==0){
 			options = ["None"];
@@ -29,7 +30,7 @@ let KDGetContextActions = {
 		}
 
 		return {
-			options, optionImages, optionActions, optionGrey, optionText
+			options, optionImages, optionActions, optionGrey, optionText, optionColor
 		};
 	}
 }
@@ -43,7 +44,7 @@ let KDDrawGameContextMenu = {
 		}
 
 		let {
-			options, optionImages, optionActions, optionGrey, optionText
+			options, optionImages, optionActions, optionGrey, optionText, optionColor
 		} = KDGetContextActions.Game(draw, mouseX, mouseY);
 
 		KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule",
@@ -55,7 +56,7 @@ let KDDrawGameContextMenu = {
 			});
 
 		KDDrawContextMenu(draw, mouseX, mouseY, options,
-			optionImages, optionActions, optionGrey, optionText);
+			optionImages, optionActions, optionGrey, optionText, optionColor);
 
 		return options;
 	},
@@ -70,6 +71,8 @@ function KDGetGameContextActionsVanilla(
 	optionActions: Record<string, (mouseX: number, mouseY: number) => void>,
 	optionGrey: Record<string, boolean>,
 	optionText: Record<string, string>,
+	optionColor: Record<string, string>,
+
 ) {
 	let tileType = KinkyDungeonMapGet(KinkyDungeonTargetX, KinkyDungeonTargetY);
 	let entity = KinkyDungeonEntityAt(KinkyDungeonTargetX, KinkyDungeonTargetY);
