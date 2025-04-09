@@ -189,7 +189,7 @@ function KinkyDungeonGetEnemy (
 		let weightMulti = 1.0;
 		let weightBonus = 0;
 
-		if (!KinkyDungeonStatsChoice.get("arousalMode") && enemy.arousalMode) weightMulti = 0;
+		if (!KinkyDungeonStatsChoice.get("arousalMode") && enemy.arousalMode) continue;
 
 		if (enemy.shrines) {
 			for (let shrine of enemy.shrines) {
@@ -204,6 +204,8 @@ function KinkyDungeonGetEnemy (
 				}
 			}
 		}
+
+		if (!enemy.terrainTags?.grate && tags.includes("grate")) continue;
 
 		let noOverride = ["boss", "miniboss", "elite", "minor"];
 		let overrideFloor = false;
@@ -223,6 +225,10 @@ function KinkyDungeonGetEnemy (
 				}
 			}
 		}
+
+		if (!(overrideFloor || enemy.allFloors || !enemy.floors || enemy.floors[Index])) {
+			continue;
+		}
 		if (bonusTags)
 			for (let t of Object.entries(bonusTags)) {
 				if (enemy.tags[t[0]]) {
@@ -231,12 +237,13 @@ function KinkyDungeonGetEnemy (
 				}
 			}
 
+		if (weightMulti == 0) continue;
+
 		if (effLevel >= enemy.minLevel && (!enemy.maxLevel || effLevel < enemy.maxLevel)
 			&& (!filterTags || !filterTags.some((tag) => {return enemy.tags[tag];}))
 			&& (!alliances?.requireHostile || (alliances?.requireHostile == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireHostile, enemy.faction) <= -0.5))
 			&& (!alliances?.requireAllied || (alliances?.requireAllied == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireAllied, enemy.faction) > 0.2))
 			&& (!alliances?.requireNonHostile || (alliances?.requireNonHostile == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireNonHostile, enemy.faction) > -0.49))
-			&& (overrideFloor || enemy.allFloors || !enemy.floors || enemy.floors[Index])
 			&& (KinkyDungeonGroundTiles.includes(Tile) || !enemy.tags.spawnFloorsOnly)) {
 			let rt = true;
 			let rst = false;
@@ -250,18 +257,18 @@ function KinkyDungeonGetEnemy (
 				}
 			else rst = true;
 			if (rt && rst) {
-				enemyWeights.push({enemy: enemy, weight: enemyWeightTotal});
 				let weight = enemy.weight + weightBonus;
 				if (enemy.terrainTags.increasingWeight)
 					weight += enemy.terrainTags.increasingWeight * Math.floor(Level/KDLevelsPerCheckpoint);
-				if (!enemy.terrainTags.grate && tags.includes("grate"))
-					weight -= 1000;
 				for (let tag of tags)
 					if (enemy.terrainTags[tag]) weight += enemy.terrainTags[tag];
 
 				if (enemy.weightMult) weightMulti *= enemy.weightMult;
-				if (weight > minWeight)
+
+				if (weight > minWeight) {
+					enemyWeights.push({enemy: enemy, weight: enemyWeightTotal});
 					enemyWeightTotal += Math.max(0, weight*weightMulti);
+				}
 			}
 		}
 	}

@@ -3310,6 +3310,11 @@ function KDGetWillPercent(applier : entity, penalty: number = 0): number {
 	return data.willPercent;
 }
 
+let geteligrest_lastTagsEnemy: KDHasTags = null;
+let geteligrest_lastIgnoreTags: string[] = null;
+let geteligrest_lastExtraTags: Record<string, number> = null;
+let geteligrest_lastTags: Map<string, boolean> = new Map();
+
 /**
  * @param enemy
  * @param Level
@@ -3368,27 +3373,38 @@ function KDGetRestraintsEligible (
 	let willPercent = KDGetWillPercent(securityEnemy, options?.willBonus);
 	//if (options?.willBonus) willPercent = Math.max(0, willPercent - options.willBonus);
 
-	let tags = new Map();
-	if (enemy.tags.length) {
-		for (let t of enemy.tags) {
-			tags.set(t, true);
-		}
-	} else {
-		for (let t of Object.keys(enemy.tags)) {
-			tags.set(t, true);
-		}
-	}
-	if (extraTags)
-		for (let t of Object.entries(extraTags)) {
-			if (effLevel >= +t[1])
-				tags.set(t[0], true);
-		}
+	let useMemo = geteligrest_lastTagsEnemy === enemy
+		&& geteligrest_lastIgnoreTags == filter?.ignoreTags
+		&& geteligrest_lastExtraTags == extraTags;
 
-	if (filter?.ignoreTags) {
-		for (let ft of filter.ignoreTags) {
-			tags.delete(ft);
+
+	let tags: Map<string, boolean> = useMemo ? geteligrest_lastTags : new Map();
+	if (!useMemo) {
+		if (enemy.tags.length) {
+			for (let t of enemy.tags) {
+				tags.set(t, true);
+			}
+		} else {
+			for (let t of Object.keys(enemy.tags)) {
+				tags.set(t, true);
+			}
 		}
+		if (extraTags)
+			for (let t of Object.entries(extraTags)) {
+				if (effLevel >= +t[1])
+					tags.set(t[0], true);
+			}
+
+		if (filter?.ignoreTags) {
+			for (let ft of filter.ignoreTags) {
+				tags.delete(ft);
+			}
+		}
+		geteligrest_lastTagsEnemy = enemy;
+		geteligrest_lastIgnoreTags = filter?.ignoreTags;
+		geteligrest_lastExtraTags = extraTags;
 	}
+
 
 	let arousalMode = KinkyDungeonStatsChoice.get("arousalMode");
 	let cache: { r : restraint; w : number, inventory?: boolean, name?: string}[] = [];
