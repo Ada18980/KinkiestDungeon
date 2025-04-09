@@ -50,10 +50,16 @@ function KinkyDungeonCrashReportStateData(): string {
 		version = "Version unknown";
 	}
 	let modFiles: string;
+	let modBuilds: string;
 	try {
 		modFiles = KDAllModFiles.map(({filename}) => filename).join(",");
 	} catch {
 		modFiles = "Failed to parse mod files";
+	}
+	try {
+		modBuilds = Object.keys(KDModInfo).map((k) => { return `${k}: ${KDModInfo[k].modbuild}` }).join(", ")
+	} catch {
+		modBuilds = "Failed to parse mod builds"
 	}
 	return [
 		"========== Game State Data ==========",
@@ -65,6 +71,7 @@ function KinkyDungeonCrashReportStateData(): string {
 		`Kinky Dungeon draw state: ${KinkyDungeonDrawState}`,
 		`Kinky Dungeon running: ${KinkyDungeonGameRunning}`,
 		`Loaded mod files: [${modFiles}]`,
+		`Loaded mod versions: [${modBuilds}]`,
 		`Targeting Spell: [${KinkyDungeonTargetingSpell}]`,
 		`Targeting Spell (Item): [${KinkyDungeonTargetingSpellItem}]`,
 		`Targeting Spell (Weapon): [${KinkyDungeonTargetingSpellWeapon}]`,
