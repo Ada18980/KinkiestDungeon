@@ -681,11 +681,29 @@ function KDRefreshPoseOptionsMC(MC: ModelContainer) {
 		let restraints = KinkyDungeonAllRestraintDynamic();
 		for (let inv of restraints) {
 			MC.Poses[inv.item.name + "Worn"] = true;
+			if (KDRestraint(inv.item).shrine) {
+				for (let s of KDRestraint(inv.item).shrine) {
+					MC.Poses[s] = true;
+				}
+			}
+		}
+		for (let tag of Object.keys(KinkyDungeonPlayerTags)) {
+			MC.Poses[tag] = true;
 		}
 	} else if (KDNPCChar_ID.get(MC.Character)) {
 		let restraints = KDGetNPCRestraints(KDNPCChar_ID.get(MC.Character));
 		for (let inv of Object.values(restraints)) {
 			MC.Poses[inv.name + "Worn"] = true;
+			if (KDRestraint(inv).shrine) {
+				for (let s of KDRestraint(inv).shrine) {
+					MC.Poses[s] = true;
+				}
+			}
+		}
+		if (NPCTags.get(MC.Character)) {
+			for (let tag of Object.keys(NPCTags.get(MC.Character))) {
+				MC.Poses[tag] = true;
+			}
 		}
 	}
 
