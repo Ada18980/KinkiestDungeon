@@ -265,6 +265,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									ModelDefs[d.Item]?.Categories.includes("Bras")
 									|| ModelDefs[d.Item]?.Categories.includes("Panties")
 								)) continue;
+								if (d.Properties && Object.values(d.Properties).some((p) => {return p.NoLoss;})) continue;
 								d.Lost = true;
 							}
 							KinkyDungeonCheckClothesLoss = true;

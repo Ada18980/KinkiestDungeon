@@ -1249,6 +1249,10 @@ KinkyDungeonInventoryItemBountyhunter,Tactical Catsuit
 KinkyDungeonInventoryItemBountyhunterDesc,"A sleek catsuit worn by stealth operatives. No frills, no nonsense."
 KinkyDungeonInventoryItemBountyhunterDesc2,Increases stealth by 10% in the dark.
 
+KinkyDungeonInventoryItemBindingDress,Shoppe Uniform
+KinkyDungeonInventoryItemBindingDressDesc,"A dress worn by 'employees' of a certain establishment."
+KinkyDungeonInventoryItemBindingDressDesc2,Your outfit from your time at the doll shoppe.
+
 KinkyDungeonInventoryItemJailUniform,Jail Uniform
 KinkyDungeonInventoryItemJailUniformDesc,The prisoners are kept in revealing outfits to keep them from hiding things.
 KinkyDungeonInventoryItemJailUniformDesc2,"Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold."
@@ -30709,6 +30713,8 @@ KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
 KDPropField_Protected,Protected
 KDPropField_DisplaceAmount,Displace Amount
 KDPropField_EraseAmount,Erase Amount
+KDPropField_NoLoss,NoLoss
+KDPropField_HideRestraintTags,HideRestraintTags
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File

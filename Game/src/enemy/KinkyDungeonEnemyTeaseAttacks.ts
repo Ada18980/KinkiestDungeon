@@ -506,6 +506,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 					if (!clothes.Lost && (clothes.Group == "Shoes" || (
 						StandalonePatched && ModelDefs[clothes.Item]?.Categories?.includes("Shoes")
 					))) {
+						if (clothes.Properties && Object.values(clothes.Properties).some((p) => {return p.NoLoss;})) continue;
 						clothes.Lost = true;
 						strip = true;
 					}
