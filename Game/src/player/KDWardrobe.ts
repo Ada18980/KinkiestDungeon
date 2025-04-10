@@ -2631,6 +2631,8 @@ function KDGetLayerPropFields(): Record<keyof LayerPropertiesType, string> {
 		AddPose: ",",
 		DisplaceAmount: "1",
 		EraseAmount: "1",
+		NoLoss: "",
+		HideRestraintsTags: ",",
 	};
 }
 
