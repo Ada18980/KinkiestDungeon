@@ -323,6 +323,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 	let YY = Y;
 	let width = 300;
 	let layers = KDGetColorableLayers(Model, KDPropsSlider);
+	if (!layers[0]) return;
 	if (!KDCurrentLayer) {
 		KDCurrentLayer = layers[0].name || "";
 		KDCurrentLayerOrig = layers[0].layer || "";

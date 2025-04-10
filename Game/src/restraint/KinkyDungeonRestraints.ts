@@ -2223,6 +2223,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 		data.escapeChance -= data.escapePenalty;
 	}
 
+	// todo make edgebonus a bonus
 
 	if ((data.struggleType == "Struggle") && !data.hasAffinity
 		&& data.escapeChance <= 0 && data.escapeChance >= -edgeBonus && (!KDRestraint(data.restraint).alwaysEscapable || !KDRestraint(data.restraint).alwaysEscapable.includes(data.struggleType))) {

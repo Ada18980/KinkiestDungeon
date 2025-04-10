@@ -44,6 +44,10 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.61
 - Unavailable context menu options are now greyed out
 - Added support for colored context menu text
+- Fixed various crashes in wardrobe
+- Added headpats toggle (disabled by default due to bugs)
+- Recolored warden's belt
+- Fixed latex boots never appearing ingame
 
 5.4.60
 - Optimized map generation so map generation is faster

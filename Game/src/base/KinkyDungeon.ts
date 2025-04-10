@@ -300,9 +300,11 @@ let KDToggles = {
 	ExtraTooltipCycle: true,
 	ShowExtraStruggle: false,
 	InvLimit: true,
+	Headpats: false,
 };
 
 let KDToggleCategories = {
+	Headpats: "Clothes",
 	ShowExtraStruggle: "UI",
 	ExtraTooltipHeight: "UI",
 	ExtraTooltipCycle: "UI",

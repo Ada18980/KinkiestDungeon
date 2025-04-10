@@ -704,7 +704,7 @@ function KDDrawHeartTablet() {
 		let amnt2 = KDStat[KDStatChoice].getAmnt2 ? KDStat[KDStatChoice].getAmnt2(amnt) : 0;
 		DrawTextFitKD(TextGet("KDStatBuy" + KDStatChoice + "Desc").replace("AMNT", "" + amnt),
 			KDModalArea_x + 625, KDModalArea_y + 220, 450, KDBaseWhite, undefined, 20,);
-		if (TextGet("KDStatBuy" + KDStatChoice + "Desc2") != "KDStatBuy" + KDStatChoice + "Desc2")
+		if (HasText("KDStatBuy" + KDStatChoice + "Desc2"))
 			DrawTextFitKD(TextGet("KDStatBuy" + KDStatChoice + "Desc2").replace("AMNT", "" + amnt2),
 				KDModalArea_x + 625, KDModalArea_y + 220 + 25, 450, KDBaseWhite, undefined, 20,);
 

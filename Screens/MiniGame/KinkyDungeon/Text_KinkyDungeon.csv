@@ -66,7 +66,7 @@ KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
 KDToggleBackgrounds,Show Background Art
 KDToggleOptRender,Experimental Rendering (unstable)
-
+KDToggleHeadpats,Enable Heatpats
 KDToggleExtraTooltipHeight,Show (mostly) full tooltips
 KDToggleExtraTooltipCycle,Auto cycle through multipage tooltips
 KDToggleSoundOffWhenMin,Mute when Minimized

@@ -36,7 +36,7 @@ interface MODJSON {
 	modname: string,
 	moddesc: string,
 	author: string,
-	modbuild: number,
+	modbuild: string,
 	gamemajor: number,
 	gameminor: number,
 	gamepatch_min: number,
@@ -63,7 +63,7 @@ function KDLoadModJSON(json: string): MODJSON {
 		moddesc: "",
 		author: "",
 
-		modbuild: 0,
+		modbuild: "",
 		gamemajor: 5,
 		gameminor: 3,
 		gamepatch_min: -1,
@@ -138,7 +138,7 @@ function KDDrawMods() {
 		let color = "#222222";
 		let info = "KDNoModJSON";
 		let name = keys[i];
-		let ver = 0;
+		let ver = "0";
 		let num1 = "" + VersionMajor;
 		let num2 = "" + VersionMajor;
 		if (KDModInfo[keys[i]]) {
@@ -597,7 +597,7 @@ function KDDrawModConfigs() {
                 if (KDModSettings[KDModToggleTab][modbutton.refvar] == undefined) { KDModSettings[KDModToggleTab][modbutton.refvar] = (modbutton.default != undefined) ? modbutton.default : false};
                 var blocking = (typeof modbutton.block == "function") ? modbutton.block() : undefined
 
-                DrawButtonKDEx(modbutton.name, modbutton.click, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 370, 64, (TextGet(`KDModButton${modbutton.refvar}`) != `KDModButton${modbutton.refvar}`) ? TextGet(`KDModButton${modbutton.refvar}`) : modbutton.name, blocking ? "#888888" : KDBaseWhite, "");
+                DrawButtonKDEx(modbutton.name, modbutton.click, blocking ? false : true, CombarXX + modtoggleoffset + modsecondrowoffset, YY, 370, 64, (HasText(`KDModButton${modbutton.refvar}`)) ? TextGet(`KDModButton${modbutton.refvar}`) : modbutton.name, blocking ? "#888888" : KDBaseWhite, "");
                 YY += YYd;
             }
             // variable is a spacer - Only print text here.
