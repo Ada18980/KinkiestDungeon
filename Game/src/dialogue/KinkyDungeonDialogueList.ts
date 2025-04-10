@@ -3596,9 +3596,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
 								} else {
-									KDGameData.CurrentDialogMsg = "PrisonerJailUnlock";
+									KDGameData.CurrentDialogMsg = "PrisonerJailUnlock" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
-										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+										KDGameData.CurrentDialogMsg = "PrisonerJailUnlockGagged";
 									}
 								}
 								KDAddToParty(e);
@@ -3651,9 +3651,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											KinkyDungeonChangeFactionRep(faction, 0.015);
 									}
 									KinkyDungeonChangeRep("Prisoner", 0.5);
-									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
+									KDGameData.CurrentDialogMsg = "PrisonerJailPick" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
-										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+										KDGameData.CurrentDialogMsg = "PrisonerJailPickGagged";
 									}
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDAddToParty(e);
@@ -3727,9 +3727,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerLatexUnlockSlow";
 								} else {
-									KDGameData.CurrentDialogMsg = "PrisonerLatexUnlock";
+									KDGameData.CurrentDialogMsg = "PrisonerJailUnlock" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
-										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+										KDGameData.CurrentDialogMsg = "PrisonerJailUnlockGagged";
 									}
 								}
 								KDAddToParty(e);
@@ -3780,9 +3780,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerLatexCutSlow";
 								} else {
-									KDGameData.CurrentDialogMsg = "PrisonerLatexCut";
+									KDGameData.CurrentDialogMsg = "PrisonerLatexCut" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
-										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+										KDGameData.CurrentDialogMsg = "PrisonerLatexCutGagged";
 									}
 								}
 								KDAddToParty(e);
@@ -3877,9 +3877,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
 								} else {
-									KDGameData.CurrentDialogMsg = "PrisonerJailUnlock";
+									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockOwn" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
-										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+										KDGameData.CurrentDialogMsg = "PrisonerJailUnlockOwnGagged";
 									}
 								}
 							}
@@ -3977,9 +3977,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									KDFreeNPC(e, false);
 									KDDefectIfPossible(e);
 									if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
-									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
+									KDGameData.CurrentDialogMsg = "PrisonerJailPick" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {
-										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+										KDGameData.CurrentDialogMsg = "PrisonerJailPickGagged";
 									}
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 								}
