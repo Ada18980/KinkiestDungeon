@@ -1057,21 +1057,20 @@ function KinkyDungeonHeadpatModal() {
     }
     const backdrop = document.createElement("div");
     backdrop.id = id;
+	let windowoffsets = KDGetWindowCanvasOffset();
     let pxassign = {
         position: "absolute",
-        width: "200px",
-        height: "100px",
+        width: `${windowoffsets.canvaswidth * 0.08}px`,
+        height: `${windowoffsets.canvasheight * 0.05}px`,
 		top: "0px",
 		left: "0px",
 		transform: "none",
         //backgroundColor: "#ffffff"
     }
     let hardpointlocs = GetHardpointLoc(KinkyDungeonPlayer, 0, 0, 1, "HeadpatHead", KDToggles.FlipPlayer)
-    //console.log(hardpointlocs)
-    pxassign.top = `${(hardpointlocs.y - (KDIsHogtied() ? 100 : 50))}px`;
-    pxassign.left = `${(hardpointlocs.x - (KDIsHogtied() ? 100 : 100))}px`;
+    pxassign.top = `${(windowoffsets.y + (hardpointlocs.y * windowoffsets.heightscale) - ((windowoffsets.canvasheight * 0.05) / 2))}px`;
+    pxassign.left = `${(windowoffsets.x + (hardpointlocs.x * windowoffsets.widthscale) - ((windowoffsets.canvaswidth * 0.08) / 2))}px`;
     pxassign.transform = `rotate(${hardpointlocs.angle}rad)`
-    //console.log(pxassign)
     Object.assign(backdrop.style, pxassign);
     backdrop.addEventListener("click", () => {
         console.log("Headpats!")
