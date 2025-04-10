@@ -8866,8 +8866,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 - Masterwork Blindfold
 极品眼罩
-# - A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout.
-# - Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection.
+- A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout.
+一条下巴固定带将这条眼罩紧紧地贴合在你的脸上，确保你完全处于黑暗之中。 
+- Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection.
+尽管这种皮革质地柔软，但它用某种强韧的纤维进行了加固，使得大多数切割工具都没用。它的锁扣装置还有另外四个连接点。 
 # :: RestraintMasterworkBlindfoldDesc2
 # :: RestraintMasterworkCorsetDesc2
 # :: RestraintMasterworkHeelsDesc2
@@ -8876,19 +8878,23 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 - Masterwork Corset
 极品束胸
-# - A metal-boned corset that hugs your body, with a connection point for other restraints. Its unrelenting squeeze forces you to take shorter breaths.
+- A metal-boned corset that hugs your body, with a connection point for other restraints. Its unrelenting squeeze forces you to take shorter breaths.
+一件带有金属撑骨的紧身胸衣紧紧贴合你的身体，它还有一个可连接其他拘束具的连接点。它持续不断的挤压让你只能进行更短促的呼吸。 
 
 - Masterwork Ballet Heels
 极品芭蕾高跟鞋
-# - A set of uncompromising ballet heels that force the wearer into a stringent walking position. Only trained submissives can walk in these without falling!
+- A set of uncompromising ballet heels that force the wearer into a stringent walking position. Only trained submissives can walk in these without falling!
+一双无情的芭蕾舞高跟鞋，让你的走姿严格受限。只有经过训练的顺从者才能穿着这双鞋行走而不摔倒！
 
 - Masterwork Gloves
 极品手套
-# - A set of restrictive gloves that somewhat reduce your dexterity. Reduces accuracy by 20%.
+- A set of restrictive gloves that somewhat reduce your dexterity. Reduces accuracy by 20%.
+一副限制性手套，会在一定程度上降低你的灵活性。使精准度降低 20%。 
 
 - Masterwork Collar
 极品项圈
-# - A collar hand-crafted and signed by the famous blacksmith Ada Lovelock. The crowning jewel of a five-piece set designed to hold its wearer in an ever-tightening embrace.
+- A collar hand-crafted and signed by the famous blacksmith Ada Lovelock. The crowning jewel of a five-piece set designed to hold its wearer in an ever-tightening embrace.
+一条由著名铁匠艾达·洛夫洛克亲手打造并签名的项圈。这是极品五件套中的点睛之作，旨在让佩戴者受到越来越紧的束缚。 
 
 
 
@@ -45145,7 +45151,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 
 - Sariel Vinlaga's Panties
-萨里尔·文拉加(Sariel Vinlaga) 的内裤
+萨里尔·文拉加的内裤
 # :: RestraintSarielPanties
 # :: KinkyDungeonInventoryItemSarielPanties
 - Legend has it that these were worn by the legendary archmagus herself.
@@ -48220,8 +48226,10 @@ NME 由于不够显要，被自动释放
 
 - Your leash lets out a click as it ratchets to a shorter length!
 你的牵绳咔哒一声响，缩短了长度！
-# - The animated Masterworks overpower you and you find yourself wearing one of them!
-# - The animated Masterworks force you to the ground and pat your head gently before floating away!
+- The animated Masterworks overpower you and you find yourself wearing one of them!
+活化极品束具控制住你，让你穿上了其中的一件！
+- The animated Masterworks force you to the ground and pat your head gently before floating away!
+活化极品束具把你打倒在地，温柔地拍了拍你的头，然后飘然而去！
 # - The kitty's living latex spreads, encasing your limbs in tight rubber!
 
 
@@ -48238,23 +48246,31 @@ NME 由于不够显要，被自动释放
 
 - Animated Masterworks
 活化极品束具
-# - The animated masterwork restraints come apart and flee in all directions.
-# - The animated masterworks grab you!
+- The animated masterwork restraints come apart and flee in all directions.
+活化极品束具彼此分离，四散而逃。
+- The animated masterworks grab you!
+活化极品束具抓住了你！
 
 # - An animated suit of restraints rises out of the chest!
 
-# - Why hello there!|Found any interesting gear?
-# - Why hullo there!|Looks like you're in a bit of a bind~
+- Why hello there!|Found any interesting gear?
+哎呀，你好呀！|找到了什么有趣的装备吗？
+- Why hullo there!|Looks like you're in a bit of a bind~
+哎呀，你好呀！|看起来你有点陷入困境了~
 
-# - Do you know how I can get out of Masterwork restraints?
-# - (Struggle in your masterwork restraints)
-# - (SPEAKER glares at your body)|Ah! My Masterwork set!|I remember these, they were quite the treat--|er, tricky to get off!|You'll need to collect all five pieces before it unlocks.
+- Do you know how I can get out of Masterwork restraints?
+你知道我怎么才能摆脱极品束具吗？
+- (Struggle in your masterwork restraints)
+（在极品束具中挣扎）
+- (SPEAKER glares at your body)|Ah! My Masterwork set!|I remember these, they were quite the treat--|er, tricky to get off!|You'll need to collect all five pieces before it unlocks.
+（SPEAKER 盯着你的身体）|啊！我的极品套装！|我记得，想把它们脱下来没那么容易！|你需要集齐全部五件才能解锁。
 
 - Can you unlock my Masterwork restraints?
 你能解锁我的极品拘束吗？
 - (Present your masterwork restraints)
 （展示你的极品拘束）
-# - (SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~
+- (SPEAKER giggles)|Ah, but I need all five pieces!|Even if you're not wearing them,|hehe~
+（SPEAKER 咯咯笑）|啊，但是我需要全部的五件！|即使你没穿在身上，|呵呵~
 - (SPEAKER smiles as she unlocks your restraints with her key)|I hope you had a great time in them~
 ( SPEAKER 微笑着用她的钥匙解开了你的束缚 )|我希望你在里面度过了美好的时光~
 
