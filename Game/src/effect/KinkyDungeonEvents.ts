@@ -11978,7 +11978,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KinkyDungeonStatsChoice.has("NovicePet")) {
 
 				let amount = 0;
-				if (!(KDGameData.KneelTurns >= 1)) {
+				if (!(KDGameData.KneelTurns > 1)) {
 					if (KinkyDungeonFlags.get("NovicePet1")) amount += 1;
 					if (KinkyDungeonFlags.get("NovicePet2")) amount += 1;
 					if (KinkyDungeonFlags.get("NovicePet3")) amount += 1;
