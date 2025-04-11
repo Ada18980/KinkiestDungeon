@@ -7,17 +7,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
-  push:
-    branches:
-      - 'newartwork'
-    paths:
-      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv"
-      - "Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon_CN.txt"
-
+    
 jobs:
   synchronous-translation:
     runs-on: ubuntu-latest
-    if: github.repository == 'Ada18980/KinkiestDungeon' || github.repository == 'Mitki-code/KinkiestDungeon'
+    if: github.repository == 'Ada18980/KinkiestDungeon'
 
     steps:
       - name: Checkout code
