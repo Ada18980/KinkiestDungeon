@@ -1234,7 +1234,7 @@ KinkyDungeonRarity8,Mythic
 KinkyDungeonRarity9,Angelic
 KinkyDungeonRarity10,Divine
 
-KinkyDungeonConsumableQuantity,Quantity:
+KinkyDungeonConsumableQuantity,"Qty: "
 KinkyDungeonConsume,Use One
 
 KinkyDungeonInventoryItemnull,way of the fist
@@ -31226,6 +31226,7 @@ KDTakeAll1,Take ALL-1 ITMN
 KDAddAllExcess,Store Excess ITMN
 KDRefill,Refill ITMN
 KDMaxNum,(Max: ${Num})
+KDMaxNumMinimal,(max ${Num})
 KDTakeEverything,Take Everything
 KDTakeEverythingExcess,Refill
 KDDepositEverything,Deposit All
