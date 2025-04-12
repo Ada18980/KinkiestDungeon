@@ -72,7 +72,7 @@ let KDLoadouts: Record<string, KDLoadout> = {
 		singletag: ["alchemist"],
 		forbidtags: ["submissive", "gagged"],
 		chance: 0.2,
-		items: ["PotionInvis"],
+		items: ["PotionInvisibility"],
 	},
 
 	"scientist_High": {
