@@ -1745,7 +1745,7 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 	}
 	if (Layer.HidePrefixPose) {
 		for (let p of Layer.HidePrefixPose) {
-			if (Poses[p]) {
+			if (Poses[p + LayerLayer(MC, Layer, Model)]) {
 				return false;
 			}
 			if (Layer.HidePrefixPoseSuffix) {

@@ -8412,7 +8412,7 @@
 
 ### +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
 
-### Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
+### Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle.
 
 ### Mental Resistance: You are allowing yourself to let go. Click to toggle.
 

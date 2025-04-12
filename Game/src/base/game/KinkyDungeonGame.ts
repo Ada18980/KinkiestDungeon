@@ -6152,7 +6152,21 @@ function KinkyDungeonTargetTileMsg(): boolean {
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
 				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), KDBaseRed, 2, true);
 		if (KinkyDungeonTargetTile.Name == "Commerce") suff = "Commerce";
-		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObject" + KinkyDungeonTargetTile.Type + suff).replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), KDBaseWhite, 1, true);
+		let Type = KinkyDungeonTargetTile.Type;
+		if (Type
+			&& ObjectTypeTooltipOverride[Type]
+			&& KinkyDungeonTargetTile[Type]
+			&& ObjectTypeTooltipOverride[Type][KinkyDungeonTargetTile[Type]]) {
+			Type = ObjectTypeTooltipOverride[Type][KinkyDungeonTargetTile[Type]];
+		}
+		// Allow recursion... once
+		if (Type
+			&& ObjectTypeTooltipOverride[Type]
+			&& KinkyDungeonTargetTile[Type]
+			&& ObjectTypeTooltipOverride[Type][KinkyDungeonTargetTile[Type]]) {
+			Type = ObjectTypeTooltipOverride[Type][KinkyDungeonTargetTile[Type]];
+		}
+		KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonObject" + Type + suff).replace("TYPE", TextGet("KinkyDungeonShrine" + KinkyDungeonTargetTile.Name)), KDBaseWhite, 1, true);
 
 		return true;
 	}
