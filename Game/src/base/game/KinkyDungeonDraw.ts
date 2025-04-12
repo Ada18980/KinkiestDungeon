@@ -5454,6 +5454,12 @@ function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, sel
 			else {
 				KDDefaultPalette = value[0];
 				localStorage.setItem("KDDefaultPalette", value[0]);
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+				KinkyDungeonCheckClothesLoss = true;
+				if (KDFactionRelations.get("Player")) {
+					if (KinkyDungeonPlayerEntity && KDMapData) KinkyDungeonAdvanceTime(0, true, true);
+					KinkyDungeonDressPlayer();
+				}
 			}
 			return true;
 		}, true, XX - 3, YY - 3, scale + 7, scale + 7, "", KDBaseWhite, "", undefined, false,
