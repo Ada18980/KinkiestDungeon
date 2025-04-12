@@ -1437,6 +1437,9 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.Palette || "", (pal) => {
 			C.Palette = pal;
+			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer();
 
 		}, "KDSetCharacterPalette");
 	} else {
