@@ -305,7 +305,7 @@
 # :: KDToggleBackgrounds
 - Experimental Rendering (unstable)
 实验性渲染(不稳定)
-
+# - Enable Heatpats
 - Show (mostly) full tooltips
 显示几乎所有提示信息
 - Auto cycle through multipage tooltips
@@ -457,7 +457,7 @@
 - Hide floating weapon display
 隐藏浮动武器显示
 - Automatically Take All from Chests
-自动从箱子中拾取所有物品
+自动从箱子中拿走所有物品
 - Helpless!
 无助！
 # :: KDHelpless
@@ -2612,6 +2612,10 @@ Devious Dungeon Challenge 已启用。
 一种由秘密特工穿着的时尚紧身衣。简洁无华，毫无累赘。
 - Increases stealth by 10% in the dark.
 处在黑暗中时，隐藏能力增加 10%。
+
+# - Shoppe Uniform
+# - A dress worn by 'employees' of a certain establishment.
+# - Your outfit from your time at the doll shoppe.
 
 - Jail Uniform
 监狱制服
@@ -5662,7 +5666,8 @@ M.F. '女仆长'
 你抢了恶棍！
 
 # - Ada Lovelock
-# - Ada is overcome by desire and falls to the ground~
+- Ada is overcome by desire and falls to the ground~
+Ada 屈服于欲望，跌倒在地~
 - Antique Merchant
 古董商人
 - You smash the antique merchant!
@@ -5680,7 +5685,7 @@ M.F. '女仆长'
 - You rob the bowyer!
 你抢了制弓师！
 - Not a Kidnapper
-不是绑匪
+假•绑匪
 - You bring the kidnapper to justice!
 你把绑匪绳之以法！
 
@@ -7134,8 +7139,10 @@ SHRINETYPE 神泉
 法力充盈奖励：
 - Lack of Mana Penalty: 
 法力过低惩罚：
-# - Mana Penalty: 
-# - Lack of Mana Bonus: 
+- Mana Penalty: 
+法力充盈惩罚：
+- Lack of Mana Bonus: 
+法力过低奖励：
 - Your excess mana helps you suppress the enchantment!
 你充盈的法力可以帮助你抵抗附魔！
 - Your mana is too weak to fight the magical enchantment...
@@ -8042,8 +8049,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 皮革面板坚韧而紧密。
 - Blessed Muzzle
 祝福口套
-# - A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably.
-# - Made of an ancient and exotic form of leather.
+- A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably.
+注入魔法的口套，牢牢封住嘴部，几乎无法逃脱。
+- Made of an ancient and exotic form of leather.
+由一种古老的奇异皮革制成。 
 - Bast Blindfold
 猫女神眼罩
 - A blindfold used to aid in meditation.
@@ -8084,9 +8093,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 厚厚的乳胶能抵御最顽强的挣扎。
 
 
-# - Latex Lockdown Petsuit
-# - A rubber encasement that forces your arms and legs into a pet-like position.
-# - The rubber is instilled with a curse that feeds off of the host's innate mana. Having a higher mana percentage makes it harder to escape.
+- Latex Lockdown Petsuit
+乳胶封锁宠物服
+- A rubber encasement that forces your arms and legs into a pet-like position.
+橡胶包裹着你的手脚，强迫你处于宠物一样的姿势。
+- The rubber is instilled with a curse that feeds off of the host's innate mana. Having a higher mana percentage makes it harder to escape.
+这种橡胶被施加了一种诅咒，它会汲取宿主的魔力。宿主的魔力越高，它就越难挣脱。  
 
 
 - Blessed Wrappings (Head)
@@ -8326,7 +8338,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintWardenAnkleCuffs2Desc2
 # :: RestraintWardenAnkleCuffs3Desc2
 - The enemy attaches your wrist cuffs together!
-敌人连上了你的手腕铐！
+敌人连上了你的腕铐！
 # :: KinkyDungeonLinkMithrilArmCuffs
 # :: KinkyDungeonLinkLeatherArmCuffs
 # :: KinkyDungeonLinkAsylumArmCuffs
@@ -8477,7 +8489,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Mithril Leg Cuffs
 秘银腿铐
 - A pair of cuffs on your legs.
-你的腿上有一对手铐。
+一对在腿上的铐。
 # :: RestraintMithrilLegCuffsDesc
 # :: RestraintLeatherLegCuffsDesc
 # :: RestraintBlacksteelLegCuffsDesc
@@ -8718,7 +8730,8 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 大腿铐之间的能量链接逐渐消失。
 - The cuff chains come off with the cuffs.
 拷绑链条随拷绑一起脱落
-# - The waist links come off with the belt.
+- The waist links come off with the belt.
+腰链随腰带一起脱落。
 - The hogtie link comes off.
 驷马链接脱落
 - Handcuffs
@@ -8859,9 +8872,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintScarfBlindfoldDesc2
 
 
-# - High-Security Blindfold
-# - A chin harness stretches this leather blindfold tightly against your face.
-# - Total blackout. The tough leather is reinforced with rivets.
+- High-Security Blindfold
+高安全性眼罩
+- A chin harness stretches this leather blindfold tightly against your face.
+一条下巴固定带将这条皮革眼罩紧紧地贴合在你的脸上。
+- Total blackout. The tough leather is reinforced with rivets.
+漆黑一片。皮革用铆钉进行了加固，非常结实。 
 
 
 - Masterwork Blindfold
@@ -8921,8 +8937,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintBlacksteelBeltDesc2
 # :: RestraintBlacksteelWBeltDesc2
 # :: RestraintBlacksteelBraDesc2
-# - Blacksteel Waist Belt
-# - A device that provides an attachment point for linkage. Not restraining on its own, but useful for keeping a prisoner's hands to herself.
+- Blacksteel Waist Belt
+黑钢腰带
+- A device that provides an attachment point for linkage. Not restraining on its own, but useful for keeping a prisoner's hands to herself.
+它本身没有束缚性，但可以接上其他链条，使双手牢牢贴在身上。
 # :: RestraintBlacksteelWBeltDesc
 # :: RestraintSteelWBeltDesc
 - Blacksteel Bra
@@ -8934,13 +8952,17 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintTrapBraDesc
 # :: RestraintTrapBra2Desc
 
-# - Steel Belt
-# - Made of steel, solid and secure.
+- Steel Belt
+钢制贞操带
+- Made of steel, solid and secure.
+由钢铁制成，坚固且牢固。
 # :: RestraintSteelBeltDesc2
 # :: RestraintSteelWBeltDesc2
 # :: RestraintSteelBraDesc2
-# - Steel Waist Belt
-# - Steel Bra
+- Steel Waist Belt
+钢腰带
+- Steel Bra
+钢制贞操文胸
 
 - Prototype Belt
 原型贞操带
@@ -9328,8 +9350,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 乳胶靴
 - A tight pair of boots that makes it difficult to walk!
 一双紧脚的靴子，走路都难受！
-# - Latex Ballet Boots
-# - A tight pair of boots that makes it extremely difficult to walk!
+- Latex Ballet Boots
+乳胶芭蕾靴
+- A tight pair of boots that makes it extremely difficult to walk!
+一双紧脚的靴子，走路相当难受！
 - Heavy Latex Corset
 重型乳胶束胸
 - An excruciatingly tight corset that hugs your body, with straps securing your other restraints.
@@ -9534,9 +9558,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 
-# - Living Steel Collar
-# - A collar made of a magically infused steel.
-# - It will occasionally cause steel cuffs to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of steel cuffs you have on you.
+- Living Steel Collar
+活体钢铁项圈
+- A collar made of a magically infused steel.
+一条由注魔钢铁制成的项圈。 
+- It will occasionally cause steel cuffs to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of steel cuffs you have on you.
+它偶尔会使钢铐突然出现并束缚佩戴者。效果会根据身上钢铐的数量而加快。
 
 - Steel Cuffs
 钢铐
@@ -9548,9 +9575,11 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintMaidAnkleCuffsDesc2
 # :: RestraintMaidAnkleCuffs2Desc2
 
-# - Steel Leg Cuffs
+- Steel Leg Cuffs
+钢腿铐
 
-# - Steel Ankle Cuffs
+- Steel Ankle Cuffs
+钢脚铐
 
 
 - Dragonscale Cuffs
@@ -10055,10 +10084,14 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintHardBlueSlimeRawDesc2
 # :: RestraintHardRedSlimeRawDesc2
 
-# - Blue Latex
-# - Blue rubber, for blue dolls.
-# - Red Latex
-# - Red rubber, for red dolls.
+- Blue Latex
+蓝色橡胶
+- Blue rubber, for blue dolls.
+为蓝色玩偶准备的蓝色橡胶。
+- Red Latex
+红色橡胶
+- Red rubber, for red dolls.
+为红色玩偶准备的红色橡胶。
 
 - A semi-organic substance of alchemical origin.
 炼金术起源的半有机物质。
@@ -10079,8 +10112,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Often forms strange growths, seeking damsels to encase.
 经常形成奇怪的赘生物，寻找雌性来包裹。
 
-# - Blue Rubber (Feet)
-# - Stretchy rubber in a skintight layer. Harder to struggle than normal rubber.
+- Blue Rubber (Feet)
+蓝色橡胶（脚）
+- Stretchy rubber in a skintight layer. Harder to struggle than normal rubber.
+一层紧身弹性橡胶。比普通橡胶更难挣脱。  
 # :: RestraintHardBlueSlimeBootsDesc
 # :: RestraintHardBlueSlimeFeetDesc
 # :: RestraintHardBlueSlimeLegsDesc
@@ -10125,13 +10160,20 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintHardCaptureFoamHandsDesc2
 # :: RestraintHardCaptureFoamMouthDesc2
 # :: RestraintHardCaptureFoamHeadDesc2
-# - Blue Rubber (Ankles)
-# - Blue Rubber (Legs)
-# - Blue Rubber (Arms)
-# - Blue Rubber (Hands)
-# - Blue Rubber (Mouth)
-# - Blue Rubber (Head)
-# - Living Blue Rubber Collar
+- Blue Rubber (Ankles)
+蓝色橡胶（脚踝）
+- Blue Rubber (Legs)
+蓝色橡胶（腿）
+- Blue Rubber (Arms)
+蓝色橡胶（手臂）
+- Blue Rubber (Hands)
+蓝色橡胶（手）
+- Blue Rubber (Mouth)
+蓝色橡胶（嘴）
+- Blue Rubber (Head)
+蓝色橡胶（头）
+- Living Blue Rubber Collar
+活体蓝色橡胶项圈
 - This collar is designed to make sure its wearer does not escape their rubber.
 这个项圈的设计是为了确保佩戴者不会脱离橡胶。
 # :: RestraintHardBlueSlimeCollarDesc
@@ -10174,9 +10216,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 
-# - Red Rubber (Feet)
+- Red Rubber (Feet)
+红色橡胶（脚）
 - Sticky rubber that has fused itself into a skintight layer.
-粘性橡胶已自身融合成一层紧密的外壳。
+粘稠的橡胶已经融合成一层紧贴皮肤的外壳。
 # :: RestraintHardRedSlimeBootsDesc
 # :: RestraintHardRedSlimeFeetDesc
 # :: RestraintHardRedSlimeLegsDesc
@@ -10184,13 +10227,20 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintHardRedSlimeHandsDesc
 # :: RestraintHardRedSlimeMouthDesc
 # :: RestraintHardRedSlimeHeadDesc
-# - Red Rubber (Ankles)
-# - Red Rubber (Legs)
-# - Red Rubber (Arms)
-# - Red Rubber (Hands)
-# - Red Rubber (Mouth)
-# - Red Rubber (Head)
-# - Living Red Rubber Collar
+- Red Rubber (Ankles)
+红色橡胶（脚踝）
+- Red Rubber (Legs)
+红色橡胶（腿）
+- Red Rubber (Arms)
+红色橡胶（手臂）
+- Red Rubber (Hands)
+红色橡胶（手）
+- Red Rubber (Mouth)
+红色橡胶（嘴）
+- Red Rubber (Head)
+红色橡胶（头）
+- Living Red Rubber Collar
+活体红色橡胶项圈
 
 
 
@@ -10271,17 +10321,26 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 没有某种摩擦很难摆脱！
 
 
-# - Iron Chain
-# - Wrought iron chains made to hold something with a bit of persuasion.
-# - Metal is naturally difficult to cut, but it's easy to unravel if not kept secure with a lock.
+- Iron Chain
+铁链
+- Wrought iron chains made to hold something with a bit of persuasion.
+专为强力束缚而打造的锻铁链条。
+- Metal is naturally difficult to cut, but it's easy to unravel if not kept secure with a lock.
+金属当然难以切割，但如果不用锁固定，就很容易解开。
 
-# - Steel Chain
-# - Shiny steel chains intended for difficult prisoners.
-# - Heavy duty, hardened steel, resistant to bolt cutters and utterly futile to struggle against.
+- Steel Chain
+钢链
+- Shiny steel chains intended for difficult prisoners.
+闪闪发光的钢链，用于应对难缠的囚犯。
+- Heavy duty, hardened steel, resistant to bolt cutters and utterly futile to struggle against.
+重型硬化钢，能抵御断线钳的切割，怎么挣扎都无济于事。
 
-# - Reinforced Links
-# - A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps allow them to link cuffs together.
-# - Tough, and well-protected from acid.
+- Reinforced Links
+强化链
+- A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps allow them to link cuffs together.
+一条包裹着结实橡胶的硬化金属链。能凭借弹簧扣把铐环连接在一起。
+- Tough, and well-protected from acid.
+坚固耐腐蚀。
 
 
 - Arm Chains
@@ -14159,8 +14218,10 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 一条魔链固定在你的身体上！
 - An animated chain secures itself around your body!
 一条活化链固定在你的身体上！
-# - Animated leather cords try to leash you!
-# - A leather cord attaches to your leash and tugs!
+- Animated leather cords try to leash you!
+活化皮带试图把你拴住！
+- A leather cord attaches to your leash and tugs!
+一段活化皮带把你拴住并拉扯你！
 - A magic rope secures itself around your body!
 一条魔绳固定在你的身体上！
 - A magic belt secures itself around your body!
@@ -14233,7 +14294,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 丝带陷阱
 - Shackle Trap
 镣铐陷阱
-# - Steel Trap
+- Steel Trap
+钢链陷阱
 - Mummy Trap
 木乃伊陷阱
 - Rope Trap
@@ -14277,7 +14339,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 神奇的捆绑丝带从墙上出现！
 - The ceiling opens, letting a lot of shackles fall on you!
 天花板打开，让很多镣铐落在你身上！
-# - Hidden cuffs shoot out and make a dash toward your limbs!
+- Hidden cuffs shoot out and make a dash toward your limbs!
+隐藏的镣铐突然冲向你的四肢！
 - Hidden cuffs and tethers appear and make a dash toward your limbs!
 隐藏的镣铐和钢索现形并冲向你的四肢！
 - Bands of glowing wrappings start flying in from all sides!
@@ -14320,7 +14383,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 丝带紧紧地系在你的身体上，不会松开！
 - Shackles close themselves over your limbs!
 镣铐锁在你的手脚上！
-# - You are caught in a set of well-connected steel gear!
+- You are caught in a set of well-connected steel gear!
+你被困在了一套紧密链接的钢制束具中！
 - The wrappings close in over your body!
 包裹带包在你的身体上！
 - The ropes wrap themselves around your body!
@@ -15068,7 +15132,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 那么你就滚回牢房里吧！
 
 - I hope you learned your lesson. Now get your butt out of here.
-我希望你吸取教训。现在滚出去。
+我希望你吸取了教训，现在滚出去。
 - You've been a good girl. I hope you don't make the same mistake again. You can leave.
 你之前表现得很好。希望你不要再犯同样的错误。你可以走了。
 - That's a good girl. Now behave yourself, okay? You're free to go.
@@ -15076,7 +15140,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
 看起来你绑的很好！  ( 她开戏谑地拍拍你的屁股 ) 去让别人开心吧！
 
-# - I hope you learned your lesson.|Now get your butt out of here.
+- I hope you learned your lesson.|Now get your butt out of here.
+我希望你吸取了教训，|现在滚出去。
 # - You've been a good girl. I hope you don't make the same mistake again.|You can leave.
 # - That's a good girl. Now behave yourself, okay?|You're free to go.
 # - Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
@@ -25049,12 +25114,27 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailOwnUnlockSlow
 - (You unlock the SPEAKER)|Thank you!|Let's get out of here!
 ( 你解开了 SPEAKER ) |谢谢|我们从这里出去吧！
-# :: rPrisonerJailUnlock
+# :: rPrisonerJailUnlockDom
 # :: rPrisonerJailOwnUnlock
+# - (You unlock the SPEAKER)|...thanks.|No, I wasn't enjoying it or anything...
+# - (You unlock the SPEAKER)|Appreciate the rescue!|'twas fun while it lasted...
+# - (You unlock the SPEAKER)|Thank you miss!
+# - (You unlock your SPEAKER)|...at your command.
+# - (You unlock your SPEAKER)|Hmmpf... are you letting me go?
+# - (You unlock your SPEAKER)|Oh? So soon?
+# - (You unlock your SPEAKER)|Time to get to work~!
+# - (You unlock your SPEAKER)|Mmmmph!|(She wants to keep her gag...)
 - (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
 ( 你解开了 SPEAKER ) |呜呜呜！| ( 她想保持自己的堵嘴… )
 # :: rPrisonerJailUnlockGagged
 # :: rPrisonerJailOwnUnlockGagged
+# - (After a while, you free the SPEAKER)|That was quite tight... thanks for the rescue.
+# - (After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!
+# - (After a while, you free the SPEAKER)|Mmph... thank you miss!
+- (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
+( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
+# :: rPrisonerLatexCut
+# :: rPrisonerJailOwnPick
 - (You don't have any lockpicks)
 ( 您没有任何撬锁器。 )
 # :: rPrisonerJailNoPick
@@ -25068,11 +25148,10 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailPickHandsBound
 # :: rPrisonerJailOwnPickHandsBound
 # :: rPrisonerLatexCutHandsBound
-- (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
-( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
-# :: rPrisonerJailPick
-# :: rPrisonerJailOwnPick
-# :: rPrisonerLatexCut
+# - (After a while, you free the SPEAKER)|For a moment there I thought it was too much for you~
+# - (After a while, you free the SPEAKER)|Thank you miss!|Your lockpicking skills are impeccable!
+# - (After a while, you free the SPEAKER)|Mmph, that took forever~
+# - (After a while, you free the SPEAKER)|Are you supposed to be here?|(She giggles)
 - (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
 ( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( 她在你给她解开堵嘴时摇头... )
 # :: rPrisonerJailPickGagged
@@ -45233,7 +45312,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 您检索到一篇题为 “贞洁长袍 ”的有趣文章。
 
 - Took 
-受到了
+受到 
 
 - (As you slay the dragon, it begins shapeshifting into human form!)
 (当你杀死龙时，它开始变形为人形！ )
@@ -45530,6 +45609,7 @@ Kocaeli - 《黑猫》
 Kocaeli - 《黑猫 2》
 - Kocaeli - Underground Jungle
 Kocaeli - 《地下丛林》
+# - Kocaeli - Crystal Cave
 - Kocaeli - Untitled
 Kocaeli - 《无题》
 - Kocaeli - Lost Temple
@@ -46188,6 +46268,8 @@ Y 轴
 位移量
 - Erase Amount
 擦除量
+# - NoLoss
+# - HideRestraintTags
 
 - Load from File
 从文件载入
@@ -46511,7 +46593,8 @@ AMNT/MAXX 仆从分配
 好感度：
 - Last Seen on Floor FLR, LOC
 最后出现在楼层 FLR 的 LOC 位置
-# - On current level but not spawned
+- On current level but not spawned
+在当前楼层，但没有生成
 - Present in current level
 存在于当前层级
 - Captured by FCTN
@@ -46982,7 +47065,8 @@ ENMY 解开了 ITMN 的锁!
 储存多余的 ITMN
 - Refill ITMN
 拿取适量的 ITMN
-# - (Max: ${Num})
+- (Max: ${Num})
+（最大：${Num}）
 - Take Everything
 拿取全部
 - Refill
@@ -47686,6 +47770,7 @@ ENMY 解开了 ITMN 的锁!
 你需要装备魔法切割武器来切割魔法物品。
 - You can surrender in the menu if you want to be treated more gently.
 如果你希望得到更温和的待遇，你可以在菜单中投降。
+# - To quickly re-equip armor you can right click your character to open the quick inventory.
 
 - That ghost looks less aggressive than the others. Maybe she can help?
 那个幽灵看上去比其他人温和，也许她可以提供帮助？
@@ -48237,7 +48322,8 @@ NME 由于不够显要，被自动释放
 
 - Save as preferred for this type
 保存为该类型的首选项
-# - Save for enchanted versions
+- Save for enchanted versions
+对附魔版本保存调色盘
 - Save as preferred on NPCs
 保存为 NPC 的首选项
 
