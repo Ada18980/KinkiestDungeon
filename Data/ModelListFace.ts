@@ -382,9 +382,40 @@ AddModel({
 		},
 	])
 });
+
 AddModel({
 	Name: "KjusEyes4",
 	Folder: "EyesK4",
+	TopLevel: true,
+	Protected: true,
+	//Group: "Eyes",
+	Categories: ["Eyes","Face"],
+	AddPose: ["Eyes"],
+	Layers: ToLayerMap([
+		{ Name: "Eyes", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Eyes2", Layer: "Eyes", Pri: 0,
+			Sprite: "", // Because pose is called EyesNeutral lol
+			Poses: ToMap(EYE2POSES),
+		},
+		{ Name: "Whites", Layer: "Eyes", Pri: -1,
+			NoColorize: true,
+			Poses: ToMap(EYEPOSES),
+		},
+		{ Name: "Whites2", Layer: "Eyes", Pri: -1,
+			Sprite: "Whites",
+			NoColorize: true,
+			Poses: ToMap(EYE2POSES),
+		},
+	])
+});
+
+
+AddModel({
+	Name: "KjusEyes5",
+	Folder: "EyesK5",
 	TopLevel: true,
 	Protected: true,
 	//Group: "Eyes",

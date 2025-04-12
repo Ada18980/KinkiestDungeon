@@ -4592,6 +4592,31 @@ function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _Ca
 	KDVisionUpdate = 0;
 }
 
+function KDObjectTooltip(x: number, y: number, fallback: string): string {
+	let tile = KinkyDungeonTilesGet(x + "," + y);
+	if (tile) {
+		let Type = tile.Type;
+		if (Type
+			&& TileTypeTooltipOverride[Type]
+			&& tile[Type]
+			&& TileTypeTooltipOverride[Type][tile[Type]]) {
+			Type = TileTypeTooltipOverride[Type][tile[Type]];
+		}
+		// Allow recursion... once
+		if (Type
+			&& TileTypeTooltipOverride[Type]
+			&& tile[Type]
+			&& TileTypeTooltipOverride[Type][tile[Type]]) {
+			Type = TileTypeTooltipOverride[Type][tile[Type]];
+		}
+		return Type != undefined ? Type : fallback;
+	}
+
+
+	return fallback;
+
+}
+
 let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, text: string, desc?: string, noInspect?: boolean}> = {
 	'1': () => {return {color: "#aaaaaa", text: "1"};},
 	'0': () => {return {color: "#444444", text: "0"};},
@@ -5429,6 +5454,12 @@ function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, sel
 			else {
 				KDDefaultPalette = value[0];
 				localStorage.setItem("KDDefaultPalette", value[0]);
+				KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+				KinkyDungeonCheckClothesLoss = true;
+				if (KDFactionRelations.get("Player")) {
+					if (KinkyDungeonPlayerEntity && KDMapData) KinkyDungeonAdvanceTime(0, true, true);
+					KinkyDungeonDressPlayer();
+				}
 			}
 			return true;
 		}, true, XX - 3, YY - 3, scale + 7, scale + 7, "", KDBaseWhite, "", undefined, false,

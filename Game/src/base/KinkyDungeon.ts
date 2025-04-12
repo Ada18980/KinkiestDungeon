@@ -7391,10 +7391,10 @@ function KDNonContextActions(mobile: boolean, textArea: boolean): boolean {
 // Get the canvas offset with respect to the game window.
 // x and y are pixel offsets from the edge of the window to the edge of the game canvas.
 // width and height are window.innerWidth and window.innerHeight respectively.
-// widthscale and heightscale are float values as a % of the game canvas size. These will currently always be the same. 
+// widthscale and heightscale are float values as a % of the game canvas size. These will currently always be the same.
 //     -> For example, window width 1500 should return a scale of 0.75 because the base canvas is 2000x1000 at this writing.
-// When referencing something such as hardpoints, use this scale to get actual pixel offsets. 
-// canvaswidth and canvasheight are the current actual width and height of the canvas. 
+// When referencing something such as hardpoints, use this scale to get actual pixel offsets.
+// canvaswidth and canvasheight are the current actual width and height of the canvas.
 // Returns { x, y, width, height, widthscale, heightscale, canvaswidth, canvasheight }
 function KDGetWindowCanvasOffset() {
 	let windowwidth = window.innerWidth;

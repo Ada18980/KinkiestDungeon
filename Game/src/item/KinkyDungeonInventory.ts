@@ -763,6 +763,25 @@ function KinkyDungeonAllRestraintDynamic(): { item: item, host: item }[] {
 }
 
 /**
+ * Returns list of tuples of restraints, including dynamics and their hosts
+ */
+function KDAllRestraintDynamicList(): item[] {
+	let ret = [];
+	for (let inv of KinkyDungeonAllRestraint()) {
+		ret.push(inv);
+		if (inv.dynamicLink) {
+			let link = inv.dynamicLink;
+			let host = inv;
+			while (link) {
+				ret.push(link);
+				link = link.dynamicLink;
+			}
+		}
+	}
+	return ret;
+}
+
+/**
  * Returns list
  */
 function KinkyDungeonAllLooseRestraint(): item[] {
@@ -1255,7 +1274,17 @@ function KinkyDungeonDrawInventorySelected (
 				DrawTextFitKD(TextGet("KDGoddess") + goddesses, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 435, 300, KDBookText, KDTextTan, 22, undefined, 130);
 		} else if (item.item.type == Consumable) {
 			let consumable = KDConsumable(item.item);
-			DrawTextKD(TextGet("KinkyDungeonConsumableQuantity") + item.item.quantity, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 375, KDBookText, KDTextTan, 30, undefined, 130);
+			let maxSuff = "";
+			let maxStorage = KDMaxInventoryStorage(item.item, KDPlayer());
+			if (maxStorage < 100) {
+				maxSuff = "" + TextGet("KDMaxNumMinimal", {Num: maxStorage})
+			}
+			if (maxSuff) {
+				DrawTextKD(
+					maxSuff, 75 + xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, 2 + canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 375, KDBookText, KDTextTan, 28, undefined, 130);
+			}
+			DrawTextKD(
+				TextGet("KinkyDungeonConsumableQuantity") + item.item.quantity, (!!maxSuff ? -75 : 0) + xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 375, KDBookText, KDTextTan, 30, undefined, 130);
 			DrawTextKD(TextGet("KinkyDungeonRarity") + TextGet("KinkyDungeonRarity" + consumable.rarity), xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 410, KDBookText, KDTextTan, 22, undefined, 130);
 		} else if (item.item.type == Weapon) {
 			let weapon = KDWeapon(item.item);
@@ -1568,7 +1597,7 @@ function KDDrawInventoryContainer (
 								alpha: 0.8,
 							});
 					}
-					if (KDGameData.ItemPriority && KDGameData.ItemPriority[filteredInventory[index].item?.name|| filteredInventory[index].item.name] > 0) {
+					if (KDGameData.ItemPriority && KDGameData.ItemPriority[filteredInventory[index].item?.inventoryVariant || filteredInventory[index].item?.name] > 0) {
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_star" + i,
 							KinkyDungeonRootDirectory + "UI/Star.png",
 							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, undefined, undefined,

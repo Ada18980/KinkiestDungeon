@@ -1,5 +1,42 @@
 "use strict";
 
+/** For stuff like traps */
+let TileTypeTooltipOverride = {
+	Trap: {
+		DisplayStandTrap: "Furniture",
+		DisplayTrap: "Furniture",
+		CageTrap: "Furniture",
+		FutureBoxTrap: "Furniture",
+		DisplayEgyptianTrap: "Furniture",
+		BedTrap: "Bed",
+	},
+	Furniture: {
+		LatexDisplayStand: "LatexDisplayStand",
+		DisplayStand: "DisplayStand",
+		DisplayEgyptian: "DisplayStand",
+		Cage: "Cage",
+		Barrel: "Barrel",
+		Bed: "Bed",
+		FutureBox: "FutureBox",
+		Sarcophagus: "Sarcophagus",
+		IceBase: "IceBase",
+		CrystalBase: "CrystalBase",
+		ShadowBase: "ShadowBase",
+		VineBase: "VineBase",
+	},
+}
+/** For stuff like traps */
+let ObjectTypeTooltipOverride = {
+	Trap: {
+		DisplayStandTrap: "Furniture",
+		DisplayTrap: "Furniture",
+		CageTrap: "Furniture",
+		FutureBoxTrap: "Furniture",
+		DisplayEgyptianTrap: "Furniture",
+		BedTrap: "Bed",
+	},
+}
+
 /**
  * Script happens when you display an object message
  */

@@ -1,6 +1,5 @@
 "use strict";
 
-
 let KDTrapTypes: Record<string, KDTrapType> = {
 	CustomSleepDart: (_tile, entity, x, y) => {
 		let spell = KinkyDungeonFindSpell("TrapSleepDart", true);
@@ -96,6 +95,29 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 			msg: TextGet("KDDisplayTrap"),
 		};
 	},
+	DisplayEgyptianTrap: (tile, entity, _x, _y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+		tile.Trap = undefined;
+		tile.Type = "Furniture";
+		return {
+			triggered: true,
+			msg: TextGet("KDDisplayTrap"),
+		};
+	},
+	FutureBoxTrap: (tile, entity, _x, _y) => {
+		if (entity.player)
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("FutureBox"), 0, true, "Cyber");
+		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/FutureLock.ogg");
+		tile.Trap = undefined;
+		tile.Type = "Furniture";
+		return {
+			triggered: true,
+			msg: TextGet("KDFutureBoxTrap"),
+		};
+	},
+
 	BarrelTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BarrelTrap"), 0, true);

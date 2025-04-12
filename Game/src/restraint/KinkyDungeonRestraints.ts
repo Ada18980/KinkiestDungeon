@@ -770,14 +770,20 @@ function KinkyDungeonGetRestraintsWithShrine(shrine: string, ignoreGold?: boolea
 function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: number, recursive?: boolean, noPlayer?: boolean, ignoreGold?: boolean, ignoreShrine?: boolean, Keep?: boolean, forceIgnoreNonBinding?: boolean, forceFavorite?: boolean): number {
 	let count = 0;
 
-	for (let i = 0; i < (maxCount ? maxCount : 100); i++) {
-		let items: item[] = KinkyDungeonAllRestraint().filter((r) => {
-			return (forceFavorite || !(KDGameData.ItemPriority[r.inventoryVariant || r.name] > 9))
+	let condition = (r: item) => {
+		return (forceFavorite || !(KDGameData.ItemPriority[r.inventoryVariant || r.name] > 9))
 				&& KinkyDungeonSingleRestraintMatchesShrine(r, shrine, ignoreGold, ignoreShrine, forceIgnoreNonBinding);
-		});
+	};
+
+	for (let i = 0; i < (maxCount ? maxCount : 100); i++) {
+		let items: item[] = (recursive ?
+			KDAllRestraintDynamicList() : KinkyDungeonAllRestraint()).filter((r) => {
+				return condition(r);
+			});
 		// Get the most powerful item
 		let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
-		if (item) {
+		item = item ? KinkyDungeonGetRestraintItem(KDRestraint(item).Group) : undefined; // get top level
+		if (item && condition(item)) {
 			if (item.curse && KDCurses[item.curse]) {
 				KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
 			}
@@ -791,7 +797,7 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 			count++;
 		}
 
-		if (recursive) {
+		if (recursive && count < (maxCount ? maxCount : 100)) {
 			// Get all items, including dynamically linked ones
 			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true, ignoreShrine, forceIgnoreNonBinding);
 			items = items.filter((r) => {
@@ -6390,13 +6396,16 @@ function KDCurseCount(activatedOnly: boolean): number {
  * @param requireAllTags
  * @param ignoregold
  * @param ignoreShrine
+ * @param forceFavorite if true, counts favorited stuff as well
  * @param [forceIgnoreNonBinding]
  */
-function KDGetTotalRestraintPower(_player: entity, requireSingleTag: string[], requireAllTags: string[], ignoregold: boolean, ignoreShrine: boolean, forceIgnoreNonBinding?: boolean): number {
+function KDGetTotalRestraintPower(_player: entity, requireSingleTag: string[], requireAllTags: string[], ignoregold: boolean,
+	ignoreShrine: boolean, forceIgnoreNonBinding?: boolean, forceFavorite: boolean = false): number {
 	let power = 0;
 	for (let inv of KinkyDungeonAllRestraintDynamic()) {
 		let item = inv.item;
 		let restraint = KDRestraint(item);
+		if (!forceFavorite && !!(KDGameData.ItemPriority[item.inventoryVariant || item.name] > 9)) continue;
 		if (requireSingleTag.length > 0) {
 			if (!restraint.shrine || !requireSingleTag.some((tag) => {return restraint.shrine.includes(tag);})) {
 				continue;

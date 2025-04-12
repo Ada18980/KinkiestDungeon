@@ -263,6 +263,8 @@ type LayerPropertiesType = {
 	AddPose?: string[],
 	DisplaceAmount?: number,
 	EraseAmount?: number,
+	NoLoss?: boolean,
+	HideRestraintsTags?: string[],
 }
 
 interface Namable {

@@ -903,7 +903,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.25, enemyTags: {"livingCollar":10}, playerTags: {"ItemNeckFull":-2}, minLevel: 0, allFloors: true, shrine: ["Collars","Latex","Rubber"],
 		events: [{trigger: "tick", type: "livingRestraints", tags: ["latexEncase"], kind: "Rubber", cloneTags: [], inheritLinked: true, frequencyMax: 60, frequencyMin: 10, frequencyStep: 0.8, count: 4}]
 	},
-	{inventory: true, unlimited: true, removePrison: true, name: "HardSlimeBoots", debris: "Slime", linkCategory: "SlimeBoots", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "ToeTape", Type: "Full", Color: "#9B49BD", Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0,
+	{inventory: true, unlimited: true, removePrison: true, name: "HardSlimeBoots", debris: "Slime",
+		linkCategory: "SlimeBoots", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink],
+		inaccessible: true, Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0,
 		escapeChance: {"Struggle": 0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
 		factionColor: [[], [0]],
@@ -918,7 +920,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		addPoseIfTopLevel: ["ItemBootsRubberOver"],
 		enemyTags: {"latexEncase":100, "latexEncaseRandom":103}, playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Latex", "Encase", "SlimeHard", "Rubber"]},
-	{inventory: true, unlimited: true, removePrison: true, name: "HardSlimeFeet", debris: "Slime", linkCategory: "SlimeFeet", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink], inaccessible: true, Asset: "DuctTape", Type: "CompleteFeet", OverridePriority: 24, Color: "#9B49BD", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],power: 6, weight: -100,
+	{inventory: true, unlimited: true, removePrison: true, name: "HardSlimeFeet", debris: "Slime", linkCategory: "SlimeFeet",
+		linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink],
+		inaccessible: true, Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"], power: 6, weight: -100,
 		escapeChance: {"Struggle": 0.0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
 		factionColor: [[], [0]],
@@ -2693,7 +2697,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	// Future Box
 	{removePrison: true, name: "FutureBox", Asset: "Cage", Color: ['Default', 'Default', '#000000'], Group: "ItemDevices", power: 8, weight: 1,
 		Model: "FutureBox",
-		DefaultLock: "Red",
+		DefaultLock: "Cyber",
 		addTag: ["NoHogtie"],
 		tightType: "Secure",
 		factionFilters: {

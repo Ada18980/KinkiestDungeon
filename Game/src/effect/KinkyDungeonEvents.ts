@@ -5348,9 +5348,10 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 
 
 				if (buff?.power > 0) {
-					let amt = e.power;
-					buff.power = Math.max(0, buff.power - data.delta * amt);
+					let amt = data.delta * e.power;
 					KDChangeWill("trainee", "regen", "tick", Math.min(amt, buff.power), false);
+
+					buff.power = Math.max(0, buff.power - amt);
 					if (buff.power <= 0) buff.duration = 0;
 					buff.text = Math.round(10 * KDEntityBuffedStat(player, "RallyWill"));
 				}
@@ -11978,7 +11979,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KinkyDungeonStatsChoice.has("NovicePet")) {
 
 				let amount = 0;
-				if (!(KDGameData.KneelTurns >= 1)) {
+				if (!(KDGameData.KneelTurns > 1)) {
 					if (KinkyDungeonFlags.get("NovicePet1")) amount += 1;
 					if (KinkyDungeonFlags.get("NovicePet2")) amount += 1;
 					if (KinkyDungeonFlags.get("NovicePet3")) amount += 1;

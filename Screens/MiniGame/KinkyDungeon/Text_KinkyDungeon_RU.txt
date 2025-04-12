@@ -1358,7 +1358,7 @@ Particle FX у Кляпа
 Неопознанная экипировка
 - Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
 Зачарованные (и проклятые) предметы экипировки и оружие остаются неопознанными до тех пор, пока они не будут использованы.
-- Unknown 
+- Unknown
 'Неопознано'
 
 
@@ -1440,9 +1440,9 @@ EnemyName произносит командное слово в сторону T
 Везде!
 
 
-- Physical Armor: 
+- Physical Armor:
 Физическая защита:
-- Magic Armor: 
+- Magic Armor:
 Магическая защита:
 - In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
@@ -1450,7 +1450,7 @@ EnemyName произносит командное слово в сторону T
 Невидимость: Вас очень трудно увидеть.
 - Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-- All Damage Reduction: 
+- All Damage Reduction:
 Уменьшение всего урона:
 - You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
@@ -1752,7 +1752,7 @@ EnemyName произносит командное слово в сторону T
 Отсутствует ключ
 - You are protected from damage and can't be bound until the shield is broken!
 Вы защищены от урона и не можете быть связаны до тех пор, пока щит не будет сломан!
-- Chance for a spell to fizzle: 
+- Chance for a spell to fizzle:
 Шанс провала заклинания:
 - Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
@@ -1924,7 +1924,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 Удалить модификацию
 - Clear Perks
 Очистить перки
-- Config 
+- Config
 Пресет
 - Cancel
 Отмена
@@ -2062,15 +2062,15 @@ DP: CURRENT/MAX (PERCENT% Желание)
 Этаж FLOORNUMBER: DUNGEONNAME
 
 
-- Lockpicks: 
+- Lockpicks:
 Отмычки:
-- Keys: 
+- Keys:
 Ключи:
-- Magic Keys: 
+- Magic Keys:
 Магические ключи:
-- Knife: 
+- Knife:
 Ножи:
-- Mag. Knife: 
+- Mag. Knife:
 Маг. ножи:
 
 
@@ -2290,7 +2290,7 @@ DP: CURRENT/MAX (PERCENT% Желание)
 Вы находите смесь зелий.
 
 
-- Rarity: 
+- Rarity:
 Редкость:
 - Lesser
 Мусор
@@ -3174,7 +3174,7 @@ ID Куклы
 Ловец снов
 - Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-- Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+- Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 Наносит урон тьмой. Наносит до 30 дополнительного психического урона не подозревающим (100%) или уязвимым (50%) целям.
 - Axe
 Топор
@@ -3182,11 +3182,11 @@ ID Куклы
 Отлично подходит для рубки деревьев, которые встречаются в подземелье.
 - Also deals 20 damage to enemies next to you. Deals slash damage.
 Наносит рубящий урон. Также наносит 20 единиц урона врагам рядом с вами.
-- Accuracy: 
+- Accuracy:
 Точность:
-- Crit Multiplier: 
+- Crit Multiplier:
 Множитель Крит. урона:
-- Bind Crit Multiplier: 
+- Bind Crit Multiplier:
 Множитель Крит. Сковывания:
 - Find the keys..
 Нужно найти ключи...
@@ -3204,9 +3204,9 @@ ID Куклы
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 - You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-- Evasion: 
+- Evasion:
 Уклонение:
-- Visibility: 
+- Visibility:
 Заметность:
 
 
@@ -3252,13 +3252,13 @@ ID Куклы
 Удовлетворение. Шанс осечки в заклинаниях снижен.
 
 
-- Damage: 
+- Damage:
 Урон:
-- Bind: 
+- Bind:
 Сковывание:
-- Crit: 
+- Crit:
 Крит:
-- SP Cost: 
+- SP Cost:
 Трата SP:
 - Cut PWR: AMNT%
 Эф.Разреза: AMNT%
@@ -6382,19 +6382,19 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Коммерция
 - Shrine of SHRINETYPE
 Святилище: SHRINETYPE
-- Tablet of 
+- Tablet of
 Скрижаль:
 
 
-- Goddess: 
+- Goddess:
 Богиня:
-- Goddess Blessing: 
+- Goddess Blessing:
 Благословение Богини:
-- Goddess Curse: 
+- Goddess Curse:
 Проклятие Богини:
-- Mana Bonus: 
+- Mana Bonus:
 Бонус к мане:
-- Lack of Mana Penalty: 
+- Lack of Mana Penalty:
 Штраф за недостаток маны:
 - Your excess mana helps you suppress the enchantment!
 Избыток маны помогает вам подавить магические чары!
@@ -6420,11 +6420,11 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Вы пытаетесь прочитать руины, но не можете их понять.
 
 
-- Allies: 
+- Allies:
 Союзники:
-- Enemies: 
+- Enemies:
 Враги:
-- Favorable: 
+- Favorable:
 Партнеры:
 
 
@@ -7034,7 +7034,7 @@ TargetRestraint слишком прочен, все ваши усилия бес
 
 
 
-- You find 
+- You find
 Вы находите
 
 
@@ -9324,7 +9324,7 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Взгляд
 
 
-- Components: 
+- Components:
 Активация:
 - Arm Movements
 Жесты рук
@@ -9628,8 +9628,8 @@ TargetRestraint слишком прочен, все ваши усилия бес
 Ментальное сопротивление
 - +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
 +100 к сопротивлению Психическому урону и урону Очарованием. Вы больше не можете непроизвольно довести себя до оргазма, пока ваше WP выше 10% или у вас есть защита, а сила воли истощается на 70% медленнее, когда вы на грани. (нажмите на бафф для переключения)
-- Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
-Ментальное сопротивление: Вы не можете достичь оргазма иначе, как по собственному выбору или при WP ниже 25%. Нажмите, чтобы переключить.
+- Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle.
+Ментальное сопротивление: Вы не можете достичь оргазма иначе, как по собственному выбору или при WP ниже 10%. Нажмите, чтобы переключить.
 - Mental Resistance: You are allowing yourself to let go. Click to toggle.
 Ментальное сопротивление: Вы позволяете себе достигать оргазма. Нажмите, чтобы переключить.
 
@@ -12136,7 +12136,7 @@ EnemyName дистанционно заставляет ваши игрушки 
 Вам нужно больше очков способностей.
 - You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-- School: 
+- School:
 Школа:
 - Generic
 Общее
@@ -12146,15 +12146,15 @@ EnemyName дистанционно заставляет ваши игрушки 
 Особое
 - Learn Spell
 Выучить заклинание
-- Spell Points: 
+- Spell Points:
 Очки способностей:
 
 
-- Level: 
+- Level:
 Уровень:
-- Spell Point Cost: 
+- Spell Point Cost:
 Стоимость в очках способн.:
-- Mana Cost: 
+- Mana Cost:
 Затраты маны:
 
 
@@ -12186,19 +12186,19 @@ EnemyName дистанционно заставляет ваши игрушки 
 Заменить закл. 6
 - Replace Spell 7
 Заменить закл. 7
-- Current Spell 1: 
+- Current Spell 1:
 Текущее закл. 1:
-- Current Spell 2: 
+- Current Spell 2:
 Текущее закл. 2:
-- Current Spell 3: 
+- Current Spell 3:
 Текущее закл. 3:
-- Current Spell 4: 
+- Current Spell 4:
 Текущее закл. 4:
-- Current Spell 5: 
+- Current Spell 5:
 Текущее закл. 5:
-- Current Spell 6: 
+- Current Spell 6:
 Текущее закл. 6:
-- Current Spell 7: 
+- Current Spell 7:
 Текущее закл. 7:
 
 
@@ -12238,7 +12238,7 @@ EnemyName дистанционно заставляет ваши игрушки 
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 - (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-- (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+- (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 (Страница из Книги Вечности)|Заросшие руины остаются загадкой для ученых. Сквозь щели в потолке почти не проникает свет, и все же джунгли кишат жизнью. Известно, что регенеративные способности, которые удерживают людей от смерти, зависят от собственного запаса маны индивидуума. Так как же растения и звери выживают без маны? Верующие говорят, что джунгли охраняет Богиня Жизни, но может ли быть так, что это Древняя цивилизация разработала средства поддержания жизни под землей?
 - (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
@@ -12916,11 +12916,11 @@ EnemyName уходит и запирает за собой камеру.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 - For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-- For 3 rep the goddess will grant you 
+- For 3 rep the goddess will grant you
 За 3 репутации богиня дарует вам
 - For 3 rep the goddess
 За 3 репутации богиня
-- For 3 rep the goddess 
+- For 3 rep the goddess
 За 3 репутации богиня
 
 
@@ -13302,9 +13302,9 @@ DAMAGETYPE: MULTIPLIERx модификатор
 Сопротивления:
 ### HP:
 
-- Shield: 
+- Shield:
 Щит:
-- Binding: 
+- Binding:
 Сковывание:
 - Ambivalent
 Двойственное
@@ -13630,7 +13630,7 @@ EnemyName умудряется убежать с вашими вещами!
 Экстрим
 - A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-- Play the game the way it was intended. Cruel and restrictive. 
+- Play the game the way it was intended. Cruel and restrictive.
 Играйте в игру так, как она была задумана. Жестокость и строгость.
 - Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
@@ -19558,7 +19558,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 - (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-- (The SPEAKER tilts her head and shrugs)|Ah well. 
+- (The SPEAKER tilts her head and shrugs)|Ah well.
 (SPEAKER наклоняет голову и пожимает плечами)|Ну что ж.
 - (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER хмурится)|Что это?|Ты ведь не враг правосудия, я надеюсь?
@@ -21236,7 +21236,7 @@ SPL! Теперь ты узришь мой гнев!
 (SPEAKER хихикает)|Это значит, что мы упакуем тебя и|решим, что с тобой делать, глупышка~
 - Hmmmph? Mmmm! (Act worried and whimper)
 Хмммф? Мммм! (Изображать беспокойство и хныкать)
-- (The SPEAKER folds her arms)|Mistress Oriel's orders 
+- (The SPEAKER folds her arms)|Mistress Oriel's orders
 (SPEAKER складывает руки на груди)|Приказы госпожи Ориэль
 - Not in the 'System'?
 Не в 'Системе'?
@@ -21514,7 +21514,7 @@ FOODMSG|(Приглашаем вас отведать кулинарные из�
 Уровень усиления LEVEL
 - Prerequisite
 Предусловие
-- Unlocks: 
+- Unlocks:
 Разблокирует:
 - You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
@@ -21574,7 +21574,7 @@ FOODMSG|(Приглашаем вас отведать кулинарные из�
 Ваша сбруя пропускает энергетические нити между вашими оковами, когда EnemyName активирует ее!
 
 
-- Turn Count: 
+- Turn Count:
 Счетчик ходов:
 
 
@@ -22024,7 +22024,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 Предметы на земле:
 
 
-- Preloading Character Assets: 
+- Preloading Character Assets:
 Предзагрузка ассетов персонажа:
 
 
@@ -28086,7 +28086,7 @@ FаshiоnKiguMаskSmilе
 Резиновая палка
 - A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-- Deals grope damage. 
+- Deals grope damage.
 Наносит урон ощупыванием.
 - You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
@@ -29180,9 +29180,9 @@ Yf вашем RestraintName начинают образовываться тре
 Ваше RestraintName раскалывается на части, которые падают на землю!
 
 
-- Load Hotbar 
+- Load Hotbar
 Загруз. быстр. панель
-- Save Hotbar 
+- Save Hotbar
 Сохр. быстр. панель
 - Clear Hotbar
 Очистить быструю панель
@@ -30588,7 +30588,7 @@ ENMY оказывает неожиданное сопротивление, ум�
 
 
 
-- Receive the following restraints: 
+- Receive the following restraints:
 Вы получите следующие ограничители:
 - You will be bound with some form of restraint.
 Вы будете скованы с помощью неизвестных ограничителей.
@@ -31272,7 +31272,7 @@ ENMY отпускает вас, нанося AMNT урона!
 
 - Select a character to examine
 Выберите персонажа для осмотра
-- Former Faction: 
+- Former Faction:
 Бывшая фракция:
 
 
@@ -31490,7 +31490,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 Вы приседаете и двигаетесь медленнее.
 
 
-- Owned by: 
+- Owned by:
 Принадлежит:
 
 
@@ -32246,7 +32246,7 @@ ENMY ослабляет вашу хватку на оружии! Враги мо
 Вы находите интересный предмет под названием 'Мантия целомудрия'.
 
 
-- Took 
+- Took
 Получено:
 
 
@@ -33334,9 +33334,9 @@ AMNT/MAXX Назначено слуг
 Волокно
 
 
-- Stock: 
+- Stock:
 Запас:
-- Inputs: 
+- Inputs:
 Поступление:
 
 
@@ -33412,13 +33412,13 @@ AMNT/MAXX Назначено слуг
 Каблуки
 
 
-- Equipped: 
+- Equipped:
 Экипировано:
-- Click to Add 
+- Click to Add
 Нажм. чтоб добавить
-- Apply 
+- Apply
 Применить
-- Raw Material: 
+- Raw Material:
 Исходный материал:
 
 
@@ -33426,7 +33426,7 @@ AMNT/MAXX Назначено слуг
 Осободить заключенную
 
 
-- Perk Unlocked: 
+- Perk Unlocked:
 Разблок. перк:
 
 
@@ -33462,7 +33462,7 @@ AMNT/MAXX Назначено слуг
 Выберите ограничитель
 
 
-- Def. Palette: 
+- Def. Palette:
 Обыч. Палитра:
 - Set All Palette
 Устан. палитру на все
@@ -33472,19 +33472,19 @@ AMNT/MAXX Назначено слуг
 Гости
 
 
-- Assign to 
+- Assign to
 Назначить:
-- Remove from 
+- Remove from
 Удалить:
-- Can't assign to 
+- Can't assign to
 Невозможно назначить:
-- Remove from party to assign 
+- Remove from party to assign
 Удалите из группы для назначения:
 - Imprison
 Посадить в тюрьму
 
 
-- Opinion: 
+- Opinion:
 Мнение:
 - Last Seen on Floor FLR, LOC
 Последний раз была замечена на этаже FLR, LOC
@@ -33514,17 +33514,17 @@ NPC удалось ослабить свои путы.
 
 - Any
 Все
-- NPC Opinion: 
+- NPC Opinion:
 Мнение NPC:
-- NPC Escape Status: 
+- NPC Escape Status:
 Статус побега NPC:
-- NPC Binding: 
+- NPC Binding:
 Сковывание NPC:
-- NPC Availability: 
+- NPC Availability:
 Пригодность NPC:
-- Favorited: 
+- Favorited:
 Избранное:
-- Rank: 
+- Rank:
 Ранк:
 - Minor
 Низший
@@ -33660,7 +33660,7 @@ NPC недоступен
 Выберите Слот Сковывания
 
 
-- Cost: 
+- Cost:
 Цена:
 
 
@@ -33696,7 +33696,7 @@ NPC недоступен
 Если руки недоступны, теперь вы можете накладывать ограничители с помощью слов. Дальность действия 'Связать их' увеличивается на 2, а всех командных заклинаний - на 1
 
 
-- Save Slot 
+- Save Slot
 Сохранить слот
 - Load Game
 Загрузить игру
@@ -33760,13 +33760,13 @@ NPC недоступен
 Обратный маршрут
 - Chaos Route
 Хаотический маршрут
-- Map Seed: 
+- Map Seed:
 СИД карты:
 - Will Overwrite NME!
 Перезапишет NME!
 
 
-- Play Slot 
+- Play Slot
 Играть слот:
 - Play (NO SLOT!)
 Играть (БЕЗ СЛОТА!)
@@ -34000,7 +34000,7 @@ Store ВСЕ ITMN
 Сдать все
 
 
-- Auto-loot found 
+- Auto-loot found
 Авто-лут нашел:
 -  (not picked up)
 (не подбирать)
