@@ -2269,7 +2269,7 @@ let KDCustomDefeatUniforms = {
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
 	DollShoppe: () => {
-		KinkyDungeonAddRestraintIfWeaker("LatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
+		KinkyDungeonAddRestraintIfWeaker("HeavyLatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]},
 				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple", false, false, false);

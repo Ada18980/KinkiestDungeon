@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.62"
+KDVersionStr,"5.4.63"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3493,7 +3493,18 @@ KinkyDungeonPayShrineBuffElements,"The goddess of SCHOOL grants you destructive 
 KinkyDungeonPayShrineBuffIllusion,"The goddess of SCHOOL grants you invisibility on attacks!"
 KinkyDungeonPayShrineBuffConjure,"The goddess of SCHOOL grants you protection and retaliation!"
 KinkyDungeonPayShrineCommerce,"You leave the coins on the altar and they transform into a ItemBought!"
-KinkyDungeonObject,"object"
+
+
+KDEffectTileTooltipBarrel,Barrel
+KDEffectTileTooltipDisplayStand,Display Stand
+KDEffectTileTooltipCage,Cage
+KDEffectTileTooltipIceBase,Icy Platform
+KDEffectTileTooltipCrystalBase,Crystal Dais
+KDEffectTileTooltipShadowBase,Shadow Rift
+KDEffectTileTooltipVineBase,Vines
+KDEffectTileTooltipFutureBox,Doll Storage Unit
+KDEffectTileTooltipSarcophagus,Sarcophagus
+KDEffectTileTooltipWrapping,Wrapping
 
 KinkyDungeonObjectCharger,"It appears to be a receptacle for an ancient crystal."
 KinkyDungeonObjectChargerDestroyed,"It's a pile of slag emitting a strange magic smoke..."
@@ -3501,6 +3512,12 @@ KinkyDungeonObjectLock,"That object is locked with a LKTP."
 KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
+KinkyDungeonObjectFurniture,"Just a normal piece of furniture."
+KinkyDungeonObjectTrap,"Nothing to see here."
+KinkyDungeonObject,"Nothing to see here."
+
+
+
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
 KinkyDungeonShrinePassion,"Passion"
 KinkyDungeonShrineFrustration,"Frustration"
@@ -3677,6 +3694,8 @@ RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophie
 RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"
 KDCageTrap,"You hear a click as the door shuts behind you..."
 KDDisplayTrap,"The display stand suddenly locks into place around you!"
+KDDisplayEgyptianTrap,"The display stand suddenly locks into place around you!"
+KDFutureBoxTrap,The storage unit beeps and closes behind you!
 
 RestraintDollStand,Doll Stand
 RestraintDollStandDesc,"A mobile display stand for dolls to keep them in place."
@@ -5663,8 +5682,9 @@ KinkyDungeonUnEquip,"Unequip"
 KinkyDungeonEquip,"Equip"
 KinkyDungeonEquipped,"Equipped"
 
-KDEffectTileTooltipT,
+KDEffectTileTooltipT,""
 KDEffectTileTooltipTDesc,""
+
 
 KDTileTooltipFlippedTable,Flipped Table
 KDEffectTileTooltipFlippedTableDesc,"Relieved some stress."
@@ -5987,7 +6007,7 @@ KinkyDungeonSpellDescriptionOrgasmFrequency2,"You are quite difficult to satisfy
 
 KinkyDungeonSpellOrgasmResist,Mental Resistance
 KinkyDungeonSpellDescriptionOrgasmResist,"+100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)"
-KinkyDungeonBuffe_OrgasmResist,"Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle."
+KinkyDungeonBuffe_OrgasmResist,"Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle."
 KinkyDungeonBuffd_OrgasmResist,"Mental Resistance: You are allowing yourself to let go. Click to toggle."
 
 
@@ -30202,7 +30222,7 @@ RestraintNeoLinkThighsDesc,"High-security cables connecting your belt to your th
 RestraintNeoLinkThighsDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 
 RestraintNeoLinkArms,Waist Links (Arms)
-RestraintNeoLinkArmsDesc,"High-security cables connecting your belt to your wrist cuffs. They reduce your desterity, making it harder to reach your neck and mouth, reducing Accuracy by 25%, and preventing the use of two-handed weapons."
+RestraintNeoLinkArmsDesc,"High-security cables connecting your belt to your wrist cuffs. They reduce your dexterity, making it harder to reach your neck and mouth, reducing Accuracy by 25%, and preventing the use of two-handed weapons."
 RestraintNeoLinkArmsDesc2,It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 
 
@@ -31191,7 +31211,6 @@ KDBindType_Tape,Tape
 KDBindType_Vine,Vine
 KDBindType_Ice,Ice
 KDBindType_Furniture,Furniture
-KDBindType_Wrapping,Wrapping
 
 KDSaving,Saving...
 KDSaved,Game Saved

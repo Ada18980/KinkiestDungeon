@@ -63,7 +63,7 @@ function KDGoddessColor(Name: string): string {
 	else if (Name == "Elements") color = KDBaseRed;
 	else if (Name == "Latex") color = KDBaseBaby;
 	else if (Name == "Leather") color = "#677078";
-	else if (Name == "Metal") color = KDBaseBlack;
+	else if (Name == "Metal") color = "#454545";
 	else if (Name == "Rope") color = "#7C4926";
 	else if (Name == "Will") color = KDBaseMint;
 	return color;
@@ -74,7 +74,7 @@ function KinkyDungeonShrineAvailable(type: string): boolean {
 		if (KDMapData.ShopItems.length > 0) return true;
 		else return false;
 	}
-	if (KinkyDungeonShrineTypeRemove.includes(type) && KinkyDungeonGetRestraintsWithShrine(type, undefined, undefined, undefined,
+	if (KinkyDungeonShrineTypeRemove.includes(type) && KinkyDungeonGetRestraintsWithShrine(type, undefined, true, undefined,
 		KinkyDungeonStatsChoice.get("ExclusionsApply")).length > 0) return true;
 	else if ((type == "Elements" || type == "Illusion" || type == "Conjure")) return true;
 	else if (type == "Will" && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonStatWill < KinkyDungeonStatWillMax)) return true;
@@ -210,7 +210,7 @@ function KinkyDungeonShrineCost(type: string): number {
 		let item = KDMapData.ShopItems[KinkyDungeonShopIndex];
 		return Math.round(KinkyDungeonItemCost(item));
 	} else if (KinkyDungeonShrineTypeRemove.includes(type)) {
-		let rest = KinkyDungeonGetRestraintsWithShrine(type, undefined, undefined, undefined,
+		let rest = KinkyDungeonGetRestraintsWithShrine(type, undefined, true, undefined,
 			KinkyDungeonStatsChoice.get("ExclusionsApply"), true);
 		let maxPower = 1;
 		for (let r of rest) {

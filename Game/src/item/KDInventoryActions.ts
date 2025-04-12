@@ -419,18 +419,18 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[1]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[1];},
 		text: (_player, item) => {
-			return TextGet("KDInventoryAction" + (!(KDGameData.ItemPriority[item.name] > 9) ? "Favorite" : "Unfavorite"));
+			return TextGet("KDInventoryAction" + (!(KDGameData.ItemPriority[item.inventoryVariant || item.name] > 9) ? "Favorite" : "Unfavorite"));
 		},
 		icon: (_player, item) => {
-			return !(KDGameData.ItemPriority[item.name] > 9) ? "InventoryAction/Favorite" : "InventoryAction/Unfavorite";
+			return !(KDGameData.ItemPriority[item.inventoryVariant || item.name] > 9) ? "InventoryAction/Favorite" : "InventoryAction/Unfavorite";
 		},
 		valid: (_player, _item) => {
 			return true;
 		},
 		click: (player, item) => {
 			if (!KDGameData.ItemPriority) KDGameData.ItemPriority = {};
-			if (!(KDGameData.ItemPriority[item.name] > 9)) KDGameData.ItemPriority[item.name] = 10;
-			else KDGameData.ItemPriority[item.name] = 0;
+			if (!(KDGameData.ItemPriority[item.inventoryVariant || item.name] > 9)) KDGameData.ItemPriority[item.inventoryVariant || item.name] = 10;
+			else KDGameData.ItemPriority[item.inventoryVariant || item.name] = 0;
 			KDSortInventory(KinkyDungeonPlayerEntity);
 
 

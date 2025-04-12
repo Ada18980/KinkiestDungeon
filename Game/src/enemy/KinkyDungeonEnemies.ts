@@ -8821,7 +8821,7 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 
 		let pos = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
 
-		if (!pos) pos = (altRoom?.nostartstairs && !altRoom?.startatstartpos) ? KDMapData.StartPosition : KDMapData.EndPosition;
+		if (!pos) pos = KDGetFallbackJailPoint(0);
 		return pos;
 	}
 	let lairType = KDLairTypes[jailroom];
@@ -8846,8 +8846,17 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 
 	let pos = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
 
-	if (!pos) pos = (altRoom?.nostartstairs && !altRoom?.startatstartpos) ? KDMapData.StartPosition : KDMapData.EndPosition;
+	if (!pos) pos = KDGetFallbackJailPoint(0);//(altRoom?.nostartstairs && !altRoom?.startatstartpos) ? KDMapData.StartPosition : KDMapData.EndPosition;
 	return pos;
+}
+
+function KDGetFallbackJailPoint(direction: number) {
+	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
+	if (direction > 1) {
+		return (!altRoom?.nostartstairs && altRoom?.startatstartpos) ? KDMapData.StartPosition : KDMapData.EndPosition;
+	} else {
+		return (altRoom?.nostartstairs && !altRoom?.startatstartpos) ? KDMapData.EndPosition : KDMapData.StartPosition;
+	}
 }
 
 /**
@@ -8856,7 +8865,12 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
  */
 function KDSelfishLeash(enemy: entity): boolean {
 	if (enemy.faction == "Ambush") return false;
-	return KDEnemyUnfriendlyToMainFaction(enemy) || KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.2;
+	return KDEnemyUnfriendlyToMainFaction(enemy) || (
+		(KDGetMainFaction() != (
+			KDFactionProperties[KDGetFaction(enemy)]?.jailFaction
+				|| KDGetFaction(enemy)
+		))
+		&& (KDFactionRelation(KDGetFaction(enemy), "Jail") < -0.2));
 }
 
 /**

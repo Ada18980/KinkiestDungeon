@@ -45,7 +45,16 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Added Kjus eyes 5
 
 5.4.63
+- Added names to furniture tooltips
 - Added max inventory storage value to consumable quantity
+- Fixed a bug where wearing a swimsuit that doesn't get drawn still hides other clothes
+- Fixed a bug where having any slime at all removes your clothes
+- Fixed a bug where WP would be lost-in-transit while regenerating with Mental Defiance
+- Fixed a bug where a restraint shrine wouldn't properly remove items if the top level item was unremovable
+- Fixed a bug where selfish leashers would shove you into the wall instead of the exit stairs
+- Fixed an issue where selfish leashers would leash you repeatedly between multiple stairs for funzies
+- Fixed issue where interacting with furniture traps doesn't show what kind of furniture
+- Fixed an issue where favoriting an item you are wearing favorites the mundane version
 
 5.4.62
 - Fixed bug where some player tags for the character didn't get added to the paperdoll model

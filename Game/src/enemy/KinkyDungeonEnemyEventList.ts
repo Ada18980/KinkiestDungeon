@@ -471,7 +471,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 
 			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-			let pos = KDMapData.StartPosition;
+			let pos = KDGetFallbackJailPoint(0);
 			if (!nj || (KinkyDungeonFlags.get("LeashToPrison")
 				&& !(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
 			) || KDSelfishLeash(enemy)) {
@@ -505,7 +505,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 				if (!enemy.IntentLeashPoint) {
 					let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
-					let pos = KDMapData.StartPosition;
+					let pos = KDGetFallbackJailPoint(0);
 					if (!nj || (KinkyDungeonFlags.get("LeashToPrison")
 						&& !(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
 					) || KDSelfishLeash(enemy)) {
@@ -533,7 +533,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			return false;
 		},
 		arrive: (enemy, aiData) => {
-			if (KDGameData.PrisonerState == 'parole') {
+			if (KDGameData.PrisonerState == 'parole' && !KDSelfishLeash(enemy)) {
 				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
 				KDBreakTether(KinkyDungeonPlayerEntity);
 				if (enemy.IntentLeashPoint)
@@ -1107,7 +1107,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.IntentLeashPoint = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"]);
 		},
 		arrive: (enemy, aiData) => {
-			if (KDGameData.PrisonerState == 'parole') {
+			if (KDGameData.PrisonerState == 'parole' && !KDSelfishLeash(enemy)) {
 				KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "Mistake").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy), 6, 8);
 				KDBreakTether(KinkyDungeonPlayerEntity);
 				if (enemy.IntentLeashPoint)

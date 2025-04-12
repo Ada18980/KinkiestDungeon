@@ -763,6 +763,25 @@ function KinkyDungeonAllRestraintDynamic(): { item: item, host: item }[] {
 }
 
 /**
+ * Returns list of tuples of restraints, including dynamics and their hosts
+ */
+function KDAllRestraintDynamicList(): item[] {
+	let ret = [];
+	for (let inv of KinkyDungeonAllRestraint()) {
+		ret.push(inv);
+		if (inv.dynamicLink) {
+			let link = inv.dynamicLink;
+			let host = inv;
+			while (link) {
+				ret.push(link);
+				link = link.dynamicLink;
+			}
+		}
+	}
+	return ret;
+}
+
+/**
  * Returns list
  */
 function KinkyDungeonAllLooseRestraint(): item[] {
@@ -1578,7 +1597,7 @@ function KDDrawInventoryContainer (
 								alpha: 0.8,
 							});
 					}
-					if (KDGameData.ItemPriority && KDGameData.ItemPriority[filteredInventory[index].item?.name|| filteredInventory[index].item.name] > 0) {
+					if (KDGameData.ItemPriority && KDGameData.ItemPriority[filteredInventory[index].item?.inventoryVariant || filteredInventory[index].item?.name] > 0) {
 						KDDraw(kdcanvas, kdpixisprites, prefix + "invchoice_star" + i,
 							KinkyDungeonRootDirectory + "UI/Star.png",
 							canvasOffsetX_ui + xOffset + xx * b_width + 640*KinkyDungeonBookScale + 135, yOffset + canvasOffsetY_ui + 50 + b_height * yy, undefined, undefined,
