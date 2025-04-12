@@ -1,120 +1,72 @@
 {"frames": {
 
-"DisplacementMaps/AnkleCuffRightSpread.png":
+"DisplacementMaps/AnkleCuffLeftClosed.png":
 {
-	"frame": {"x":617,"y":1765,"w":348,"h":240},
+	"frame": {"x":627,"y":1125,"w":219,"h":274},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":637,"w":348,"h":240},
+	"spriteSourceSize": {"x":216,"y":603,"w":219,"h":274},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/Arm1SquishBoxtie.png":
+"DisplacementMaps/AnkleCuffLeftKneel.png":
 {
-	"frame": {"x":1529,"y":1677,"w":510,"h":225},
+	"frame": {"x":627,"y":1403,"w":208,"h":271},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":222,"w":510,"h":225},
-	"sourceSize": {"w":510,"h":447}
-},
-"DisplacementMaps/BalletCuffsSpread.png":
-{
-	"frame": {"x":627,"y":435,"w":337,"h":336},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":139,"y":541,"w":337,"h":336},
+	"spriteSourceSize": {"x":279,"y":389,"w":208,"h":271},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/BalletSpread.png":
+"DisplacementMaps/Arm2SquishWristtie.png":
 {
-	"frame": {"x":1593,"y":3,"w":448,"h":320},
+	"frame": {"x":1496,"y":616,"w":492,"h":178},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":115,"y":557,"w":448,"h":320},
+	"spriteSourceSize": {"x":0,"y":157,"w":492,"h":178},
+	"sourceSize": {"w":492,"h":335}
+},
+"DisplacementMaps/ElbowCuffLeftYoked.png":
+{
+	"frame": {"x":627,"y":548,"w":218,"h":289},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":295,"y":113,"w":218,"h":289},
+	"sourceSize": {"w":537,"h":455}
+},
+"DisplacementMaps/FrogThigh1SquishKneel.png":
+{
+	"frame": {"x":3,"y":1966,"w":168,"h":79},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":158,"y":465,"w":168,"h":79},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/BeltFeet1SquishClosed.png":
+"DisplacementMaps/FrogThigh1SquishKneelClosed.png":
 {
-	"frame": {"x":1529,"y":1906,"w":250,"h":139},
+	"frame": {"x":627,"y":1678,"w":122,"h":80},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":162,"y":605,"w":250,"h":139},
-	"sourceSize": {"w":412,"h":744}
-},
-"DisplacementMaps/BootsKneel.png":
-{
-	"frame": {"x":1251,"y":884,"w":335,"h":167},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":186,"y":428,"w":335,"h":167},
+	"spriteSourceSize": {"x":166,"y":454,"w":122,"h":80},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/Breastplate.png":
+"DisplacementMaps/GuardRightYoked.png":
 {
-	"frame": {"x":969,"y":1765,"w":277,"h":195},
+	"frame": {"x":1939,"y":1588,"w":100,"h":125},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":142,"y":169,"w":277,"h":195},
-	"sourceSize": {"w":449,"h":376}
+	"spriteSourceSize": {"x":96,"y":173,"w":100,"h":125},
+	"sourceSize": {"w":229,"h":339}
 },
-"DisplacementMaps/ButtSleeves.png":
+"DisplacementMaps/HeelsRightErase2Closed.png":
 {
-	"frame": {"x":1590,"y":936,"w":433,"h":548},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":433,"h":548},
-	"sourceSize": {"w":433,"h":548}
-},
-"DisplacementMaps/CrotchropeSquished.png":
-{
-	"frame": {"x":1251,"y":1055,"w":335,"h":140},
+	"frame": {"x":1761,"y":1759,"w":283,"h":259},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":114,"y":292,"w":335,"h":140},
-	"sourceSize": {"w":449,"h":432}
-},
-"DisplacementMaps/ElbowCuffLeftFront.png":
-{
-	"frame": {"x":1783,"y":1906,"w":226,"h":139},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":268,"y":246,"w":226,"h":139},
-	"sourceSize": {"w":494,"h":385}
-},
-"DisplacementMaps/ElbowCuffRightFront.png":
-{
-	"frame": {"x":627,"y":3,"w":337,"h":428},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":428},
-	"sourceSize": {"w":337,"h":428}
-},
-"DisplacementMaps/EraseSkirtSplit.png":
-{
-	"frame": {"x":1593,"y":327,"w":446,"h":605},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":446,"h":605},
-	"sourceSize": {"w":446,"h":605}
-},
-"DisplacementMaps/FrogThigh2SquishKneelClosed.png":
-{
-	"frame": {"x":802,"y":775,"w":142,"h":94},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":185,"y":430,"w":142,"h":94},
-	"sourceSize": {"w":620,"h":877}
-},
-"DisplacementMaps/FrogThigh3SquishKneelClosed.png":
-{
-	"frame": {"x":627,"y":775,"w":171,"h":99},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":199,"y":405,"w":171,"h":99},
+	"spriteSourceSize": {"x":140,"y":613,"w":283,"h":259},
 	"sourceSize": {"w":620,"h":877}
 },
 "DisplacementMaps/JacketCrossed.png":
 {
-	"frame": {"x":243,"y":1765,"w":370,"h":245},
+	"frame": {"x":1387,"y":1765,"w":370,"h":245},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":172,"w":370,"h":245},
@@ -122,21 +74,29 @@
 },
 "DisplacementMaps/Leg1SquishClosed.png":
 {
-	"frame": {"x":1529,"y":1488,"w":511,"h":185},
+	"frame": {"x":872,"y":1765,"w":511,"h":185},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":197,"w":511,"h":185},
 	"sourceSize": {"w":511,"h":382}
 },
-"DisplacementMaps/MittLFront.png":
+"DisplacementMaps/PetsuitSquish.png":
 {
-	"frame": {"x":3,"y":1765,"w":236,"h":251},
+	"frame": {"x":1496,"y":3,"w":519,"h":609},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":45,"w":236,"h":251},
-	"sourceSize": {"w":400,"h":348}
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":519,"h":609},
+	"sourceSize": {"w":519,"h":609}
 },
-"DisplacementMaps/SockLSquish_LongKneelClosed.png":
+"DisplacementMaps/SlimeThighsHogtie.png":
+{
+	"frame": {"x":1478,"y":884,"w":464,"h":700},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":464,"h":700},
+	"sourceSize": {"w":464,"h":700}
+},
+"DisplacementMaps/SockLSquish_LongHogtie.png":
 {
 	"frame": {"x":3,"y":3,"w":620,"h":877},
 	"rotated": false,
@@ -144,7 +104,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockLSquish_LongSpread.png":
+"DisplacementMaps/SockLSquish_LongKneel.png":
 {
 	"frame": {"x":3,"y":884,"w":620,"h":877},
 	"rotated": false,
@@ -152,38 +112,78 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockLSquish_MidClosed.png":
+"DisplacementMaps/SockLSquish_LongKneelClosed.png":
 {
-	"frame": {"x":969,"y":3,"w":620,"h":877},
+	"frame": {"x":872,"y":3,"w":620,"h":877},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/SockLSquish_MidHogtie.png":
+"DisplacementMaps/SockLSquish_LongSpread.png":
 {
-	"frame": {"x":627,"y":884,"w":620,"h":877},
+	"frame": {"x":854,"y":884,"w":620,"h":877},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/Xray.png":
+"DisplacementMaps/TapeHeavyLeftBoxtie.png":
 {
-	"frame": {"x":1251,"y":1199,"w":274,"h":843},
+	"frame": {"x":627,"y":3,"w":241,"h":270},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":152,"y":0,"w":274,"h":843},
-	"sourceSize": {"w":426,"h":843}
+	"spriteSourceSize": {"x":247,"y":168,"w":241,"h":270},
+	"sourceSize": {"w":488,"h":438}
+},
+"DisplacementMaps/TapeHeavyRightCrossed.png":
+{
+	"frame": {"x":501,"y":1765,"w":367,"h":260},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":183,"w":367,"h":260},
+	"sourceSize": {"w":438,"h":443}
+},
+"DisplacementMaps/TapeHeavyRightWristtie.png":
+{
+	"frame": {"x":627,"y":277,"w":240,"h":267},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":200,"w":240,"h":267},
+	"sourceSize": {"w":281,"h":467}
+},
+"DisplacementMaps/TapeMedRightWristtie.png":
+{
+	"frame": {"x":627,"y":841,"w":223,"h":280},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":178,"w":223,"h":280},
+	"sourceSize": {"w":307,"h":458}
+},
+"DisplacementMaps/Thigh1SquishClosed.png":
+{
+	"frame": {"x":1478,"y":1588,"w":457,"h":167},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":466,"w":457,"h":167},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/Thigh3SquishClosed.png":
+{
+	"frame": {"x":3,"y":1765,"w":494,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":377,"w":494,"h":197},
+	"sourceSize": {"w":620,"h":877}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.1",
 	"image": "displace3.webp",
 	"format": "RGBA8888",
-	"size": {"w":2044,"h":2048},
+	"size": {"w":2047,"h":2048},
 	"scale": "0.25",
 	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:8bc1b3aaa80d0a4a5ae0fd039493ab31:9bbf418839d566be6e62ccdc9e992bd5:f6b8f416f238aaed27b8b24ed3003e99$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2ad784541f55f03e6d5bd57124e029f0:473ac361b13f22f92b25b0e7f2617c76:f6b8f416f238aaed27b8b24ed3003e99$"
 }
 }
