@@ -923,11 +923,11 @@
 - Cyber Doll
 赛博玩偶
 - Start in full Cyber restraints.
-开局时穿戴全套赛博束缚。
+开局时穿戴全套赛博拘束具。
 - Fuuka's Pet
 风香（Fuuka）的宠物
 - Start with Fuuka's collar and a few restraints.
-开局时穿戴风香（Fuuka）的项圈和一些别的束缚。
+开局时穿戴风香（Fuuka）的项圈和一些别的拘束具。
 - Fuuka Fan Club
 风香（Fuuka）粉丝俱乐部
 - All humanoids that can bind you also apply Fuuka's special restraints.
@@ -1550,8 +1550,8 @@
 - Unidentified Wear
 身份不明的装备
 - Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
-被附魔（和诅咒）的拘束具和武器在使用之前无法被识别出。
-- Unknown
+只有在使用后，才能辨别出被附魔（和诅咒）的装备和武器。
+- Unknown 
 未知
 
 - Copy (clipboard)
@@ -2494,7 +2494,7 @@ Devious Dungeon Challenge 已启用。
 - You find a weapon! (+WeaponAcquired)
 你找到了一个武器！ ( +WeaponAcquired )
 - You find a wearable item! (+ArmorAcquired)
-你找到了一个拘束具！ ( +ArmorAcquired )
+你找到了一件可穿戴物品！ ( +ArmorAcquired )
 - You find gold and a magic trap! (+RestraintType) (+XXX gold)
 你找到了金币和一个魔法陷阱！(+RestraintType) (+XXX 金币)
 - Swirling belts emerge from the chest and leave you bound! (+RestraintType)
@@ -2512,7 +2512,7 @@ Devious Dungeon Challenge 已启用。
 - You find a special collar that lets you absorb energy from potions.
 你发现一个特殊的项圈，可以让你从药水中直接吸收能量。
 - You find a pair of garish pink high heels with a slippery surface.
-你发现一双华丽的粉红色高跟鞋，表面很光滑。
+你找到了一双华丽的粉红色高跟鞋，表面很光滑。
 - You find a special gag with a feather duster.
 你发现一个带有鸡毛掸子的特殊堵嘴器。
 - You find a gas mask suitable for filtering gases.
@@ -2582,8 +2582,8 @@ Devious Dungeon Challenge 已启用。
 # :: KDFilterFiltersDivine
 # :: KDPaletteGoddess
 
-- Qty:
-数量 : ‎
+- Qty: 
+数量：
 - Use One
 使用一个
 # :: KinkyDungeonConsume
@@ -2613,9 +2613,12 @@ Devious Dungeon Challenge 已启用。
 - Increases stealth by 10% in the dark.
 处在黑暗中时，隐藏能力增加 10%。
 
-# - Shoppe Uniform
-# - A dress worn by 'employees' of a certain establishment.
-# - Your outfit from your time at the doll shoppe.
+- Shoppe Uniform
+玩偶商制服
+- A dress worn by 'employees' of a certain establishment.
+某企业的“员工”的连衣裙。
+- Your outfit from your time at the doll shoppe.
+你在玩偶商那里时穿的衣服。
 
 - Jail Uniform
 监狱制服
@@ -2692,7 +2695,7 @@ Devious Dungeon Challenge 已启用。
 # :: KinkyDungeonInventoryItemDollSuitDesc
 
 - Doll Catsuit
-玩偶连身衣
+玩偶紧身衣
 - Resistant to electricity but does not insulate well.
 耐电但保温性不佳。
 # :: KinkyDungeonInventoryItemDollSuitDesc2
@@ -2801,7 +2804,8 @@ Devious Dungeon Challenge 已启用。
 # :: m_DivineGag_l_Gold
 # :: m_FashionDivineGag_l_Gold
 # :: m_TheRobeOfChastity_l_Gold
-# :: m_TheRobeOfChastityRestraint_l_Gold
+:: m_TheRobeOfChastityRestraint_l_Gold
+金色部分
 # :: KDMinimapLabel_C_gold
 # :: KDMinimapLabel_C_lessergold
 - Key
@@ -6971,7 +6975,8 @@ SCHOOL 女神给予你庇护和反击之力！
 你把硬币留在祭坛上，它们变成了一个 ItemBought！
 
 
-# - Barrel
+- Barrel
+桶
 # :: KDEffectTileTooltipBarrel
 # :: m_Barrel
 # :: m_Barrel_l_Barrel
@@ -6980,24 +6985,29 @@ SCHOOL 女神给予你庇护和反击之力！
 展示架
 # :: KDEffectTileTooltipDisplayStand
 # :: RestraintDisplayTrap
-# - Cage
+- Cage
+笼子
 # :: KDEffectTileTooltipCage
 # :: m_Cage
-# - Icy Platform
-# - Crystal Dais
-# - Shadow Rift
+- Icy Platform
+冰台
+- Crystal Dais
+晶台
+- Shadow Rift
+暗影间隙
 - Vines
 藤蔓
 # :: KDEffectTileTooltipVineBase
 # :: KDEffectTileTooltipVines
-# - Doll Storage Unit
+- Doll Storage Unit
+玩偶存储单元
 - Sarcophagus
 石棺
 # :: KDEffectTileTooltipSarcophagus
 # :: RestraintSarcophagus
 # :: m_Sarcophagus
 - Wrapping
-包裹物
+丝带
 # :: KDEffectTileTooltipWrapping
 # :: KDFilterFiltersWrapping
 
@@ -7013,9 +7023,10 @@ TYPE 女神的神泉。
 # :: KinkyDungeonObjectShrineCommerce
 - That door is open. Do you want to close it?
 那扇门是开着的。你想关闭它吗？
-# - Just a normal piece of furniture.
+- Just a normal piece of furniture.
+只是一件普通家具。
 - Nothing to see here.
-目标
+这里什么也没有。
 # :: KinkyDungeonObjectTrap
 # :: KinkyDungeonObject
 
@@ -7461,10 +7472,11 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You hear a click as the door shuts behind you...
 你听到门在你身后关上的咔哒声...
 - The display stand suddenly locks into place around you!
-展示架突然将你锁在里面！
+展示架突然把你锁在里面！
 # :: KDDisplayTrap
 # :: KDDisplayEgyptianTrap
-# - The storage unit beeps and closes behind you!
+- The storage unit beeps and closes behind you!
+存储单元哔了一声，在你身后关闭！
 
 - Doll Stand
 玩偶架
@@ -7516,7 +7528,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - So many laces! It would take quite a while to put this on normally. That's what magic is for!
 真多系带啊！穿上这件衣服一般要花费很长时间，但这就是魔法派上用场的时候了！
 - Ornamental Corset
-装饰束胸
+装饰束腰
 - Your figure looks gorgeous in this~
 你的身材看起来真漂亮〜
 - It's so tight you won't be able to undo the laces yourself, dear!
@@ -8850,7 +8862,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Ballet Heels
 芭蕾高跟鞋
 - A pair of shoes with heels so tall it forces you on your toes.
-一双鞋跟太高，会迫使你踮起脚尖。
+一双高跟鞋，鞋跟太高，必须踮起脚尖走路。
 - These will take some getting used to.
 这些需要一些时间来适应。
 # :: RestraintTrapBootsDesc2
@@ -8927,7 +8939,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintMasterworkCollarDesc2
 
 - Masterwork Corset
-极品束胸
+极品束腰
 - A metal-boned corset that hugs your body, with a connection point for other restraints. Its unrelenting squeeze forces you to take shorter breaths.
 一件带有金属撑骨的紧身胸衣紧紧贴合你的身体，它还有一个可连接其他拘束具的连接点。它持续不断的挤压让你只能进行更短促的呼吸。
 
@@ -9389,11 +9401,11 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A tight pair of boots that makes it extremely difficult to walk!
 一双紧脚的靴子，走路相当难受！
 - Heavy Latex Corset
-重型乳胶束胸
+重型乳胶束腰
 - An excruciatingly tight corset that hugs your body, with straps securing your other restraints.
-紧紧收缩的束胸，并用带子固定您的其他拘束具。
+紧得难受的束腰，牢牢包裹着你的身体，还配有固定你身上其他拘束具的带子。
 - A skintight suit that's stretched on tight. It adheres to latex restraints making struggling more difficult.
-紧紧收缩的束胸。乳胶拘束的粘附性使挣扎变得更加困难。
+一件绷紧的贴身紧身衣。它会吸附在乳胶拘束具上，使挣扎变得更加困难。
 - Blue latex is silky smooth, very stretchy, and very good at adhering to itself.
 蓝色乳胶丝滑光滑，非常弹性，并且非常擅长粘附。
 - Heavy Latex Catsuit
@@ -10674,7 +10686,8 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: m_FashionKiguMask_l_Head
 # :: m_KiguMaskSmile_l_Head
 # :: m_FashionKiguMaskSmile_l_Head
-# :: KDFilterFiltersHead
+:: KDFilterFiltersHead
+头部
 - Mouth
 嘴
 # :: KinkyDungeonGroupItemMouth
@@ -11692,7 +11705,8 @@ Ars烟火
 光
 # :: KinkyDungeonFilterlight
 # :: KinkyDungeonSpellLight
-# :: KDFilterFiltersLight
+:: KDFilterFiltersLight
+轻甲
 # :: KDWeaponTag_light
 - Shadow
 暗影
@@ -11911,7 +11925,7 @@ SPELL蓄力
 - +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
 +100 精神与魅惑抗性。当你的意志力高于10%或有护盾时，你不会不自觉地高潮（点击效果图标可切换）。在处于寸止状态时，意志力消耗速度减慢70%。
 - Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle.
-坚定意志 : 除非自愿或意志力为25%以下，否则无法高潮。点击以切换。
+坚定意志：除非自愿或意志力小于 10%，否则无法高潮。点击以切换。
 - Mental Resistance: You are allowing yourself to let go. Click to toggle.
 坚定意志 : 你随意允许自己高潮。点击以切换。
 
@@ -15175,9 +15189,12 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 - I hope you learned your lesson.|Now get your butt out of here.
 我希望你吸取了教训，|现在滚出去。
-# - You've been a good girl. I hope you don't make the same mistake again.|You can leave.
-# - That's a good girl. Now behave yourself, okay?|You're free to go.
-# - Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
+- You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+你表现得很好。希望你不会再犯同样的错误。|你可以走了。
+- That's a good girl. Now behave yourself, okay?|You're free to go.
+真是个好女孩。现在要乖乖的，好吗？|你可以走了。
+- Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
+看起来你陷入了捆境！|（她开玩笑地拍拍你的屁股）|你可以走了！
 # :: rJailRelease3
 # :: rJailRelease
 
@@ -16020,13 +16037,13 @@ EnemyName 设法带着你的物品撤退！
 允许穿孔
 
 - Start with 150 willpower and Iron Will, good at melee and blocking attacks.
-战士擅长近战攻击和格挡，开始游戏时将意志力上限提升到 150 点，并学得钢铁意志技能
+战士擅长近战攻击和格挡，开始游戏时将意志力上限提升到 150 点，并学得钢铁意志技能。
 - Start with 150 stamina and Sneaky, good at stealth and evasive gameplay.
-盗贼擅长潜行和躲避，开始游戏时将体力上限提升到 150 点，并学得潜行技能
+盗贼擅长潜行和躲避，开始游戏时将体力上限提升到 150 点，并学得潜行技能。
 - Start with 150 mana and Magical Sight, good at casting spells.
-法师擅长施法，开始游戏时将法力上限提升到 150 点，并学得魔之眼技能
+法师擅长施法，开始游戏时将法力上限提升到 150 点，并学得魔之眼技能。
 - Start with nothing to your name. For those who want a challenge.
-适用于那些想要挑战的人，开始游戏时一无所有
+开始游戏时一无所有。适用于想要挑战之人。
 - You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
 你是一名法师，不过没有完成正式的“训练”。需要以性欲模式游玩
 
@@ -21441,7 +21458,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (Nod enthusiastically)
 ( 热情点头 )
 - (Shake your head)
-( 摇头 )
+（摇头）
 # :: dOfferDress_NoGag
 # :: dOfferDressYes_NoGag
 # :: dOfferKigu_NoGag
@@ -21519,7 +21536,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Of course miss.
 当然，小姐。
 - (Nod again)
-( 再次点头 )
+（再次点头）
 # :: dOfferDressYes_YesGag
 # :: dOfferKiguYes_YesGag
 # :: dOfferSenseDepYes_YesGag
@@ -21912,7 +21929,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dOfferKittyYes_YesGag
 # :: dOfferDragonYes_YesGag
 - Not really.
-并不真。
+并非如此。
 # :: dOfferScarf_No
 # :: dOfferMithrilYes_No
 # :: dOfferChainYes_No
@@ -22083,7 +22100,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - I- Well- O-Okay~
 我- 嗯- 好-好吧~
 - (Moan and squirm)
-( 呻吟和蠕动 )
+（呻吟着扭动身体） 
 # :: dOfferWolfRestraintForce_YesGag
 # :: dOfferMithrilRopeForce_YesGag
 # :: dOfferKittyForce_YesGag
@@ -22554,7 +22571,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER grins)|See how you feel when|you're wearing one!
 ( SPEAKER 笑了 ) |看看当你戴着它时|你的感觉如何！
 - (The SPEAKER sighs)|Maybe another time then.
-( SPEAKER 叹了口气 ) |也许下次吧。
+（SPEAKER 叹气）|也许下次吧。
 # :: rOfferChainForce_No
 # :: rOfferNeoLinkForce_No
 - (The SPEAKER wraps a long chain around you)|(RESTRAINT hugs your body closely)|(You shiver as the cold metal touches you)
@@ -22568,36 +22585,49 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 太多了。
 
 - Absolutely~
-绝对的~
+当然~
 # :: dOfferChainYes_Yes
 # :: dOfferNeoLinkYes_Yes
 
 - I-If I have to...
-如-如果我必须……
+如果我没得选…
 # :: dOfferChainForce_Yes
 # :: dOfferNeoLinkForce_Yes
 - Ah! Cold! (PERCENT chance to avoid)
 啊! 好冷！ ( 有 PERCENT 的机会避开 )
 
 
-# - (A SPEAKER approaches)|I think there's something missing here~|You're wearing a belt and cuffs,|So naturally there should be some links between them!
-# - (The SPEAKER nods happily and presents a RESTRAINT)|I'm glad you think the same way!
-# - (The SPEAKER connects chains to your cuffs)|This should do the trick~|(RESTRAINT settles in place)
-# - (The SPEAKER sighs)|I take it you're a person who likes to flail their arms.
-# - (The SPEAKER frowns sadly)|It feels so wrong...
-# - (The SPEAKER pouts)|But they BELONG together!
+- (A SPEAKER approaches)|I think there's something missing here~|You're wearing a belt and cuffs,|So naturally there should be some links between them!
+（SPEAKER 走近你）|我觉得好像少了点什么～|既然你戴着腰带和手铐，|那么，得有东西把它们链接起来才行！
+- (The SPEAKER nods happily and presents a RESTRAINT)|I'm glad you think the same way!
+（SPEAKER 高兴地点头，并拿出 RESTRAINT）|很高兴你也这么想！
+- (The SPEAKER connects chains to your cuffs)|This should do the trick~|(RESTRAINT settles in place)
+（SPEAKER 给你的铐环连上链条）|这应该能解决问题~|（RESTRAINT 被安上了）
+- (The SPEAKER sighs)|I take it you're a person who likes to flail their arms.
+（SPEAKER 叹气）|我猜你是那种喜欢挥舞手臂的人。
+- (The SPEAKER frowns sadly)|It feels so wrong...
+（SPEAKER 难过地皱起了眉头）|这感觉太不对劲了…
+- (The SPEAKER pouts)|But they BELONG together!
+（SPEAKER 噘嘴）|但它们 就 应 该 连在一起！
 # :: rOfferNeoLinkForce
 # :: rOfferNeoLinkForceYes
-# - (The SPEAKER connects chains to your cuffs)|There! Connected, as all things should be.
-# - (The SPEAKER grins as she connects chains to your cuffs)|(The RESTRAINT is unyielding as you struggle)|Enjoy, cutie~
+- (The SPEAKER connects chains to your cuffs)|There! Connected, as all things should be.
+（SPEAKER 给你的铐环连上链条）|好，连上了，就该这样。
+- (The SPEAKER grins as she connects chains to your cuffs)|(The RESTRAINT is unyielding as you struggle)|Enjoy, cutie~
+（SPEAKER 一边连上你的铐环，一边咧嘴笑着）|（你奋力挣扎，可是对 RESTRAINT 没有效果）|好好享受吧，小可爱~
 
-# - Indeed! (hold out your wrists)
-# - (Nod happily and present your body)
-# - I like my wrists and thighs free, thank you.
+- Indeed! (hold out your wrists)
+的确！（伸出双手）
+- (Nod happily and present your body)
+（高兴地点头并展示你的身体）
+- I like my wrists and thighs free, thank you.
+谢谢，但我喜欢手脚自由伸展的感觉。
 
 
-# - (Flail your limbs wildly) (PERCENT chance to avoid)
-# - (Flail wildly) (PERCENT chance to avoid)
+- (Flail your limbs wildly) (PERCENT chance to avoid)
+（疯狂地挥舞你的四肢）（PERCENT 的概率躲开） 
+- (Flail wildly) (PERCENT chance to avoid)
+（疯狂地挥舞你的四肢）（PERCENT 的概率躲开） 
 
 
 
@@ -24735,7 +24765,8 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 出售物品 )
 - (Sell Whole Stacks of Items)
 ( 出售整堆物品 )
-# - (Sell from your storage)
+- (Sell from your storage)
+（从存储系统出售）
 - Daww! What a cutie!|(She smiles and pats your head gently)
 呜哇！好可爱啊OwO！| ( 微笑着轻轻拍拍你的头 )
 
@@ -25149,22 +25180,32 @@ Mmmph? (行为混乱)
 ( 你解开了 SPEAKER ) |谢谢|我们从这里出去吧！
 # :: rPrisonerJailUnlockDom
 # :: rPrisonerJailOwnUnlock
-# - (You unlock the SPEAKER)|...thanks.|No, I wasn't enjoying it or anything...
+- (You unlock the SPEAKER)|...thanks.|No, I wasn't enjoying it or anything...
+( 你解救了 SPEAKER ) |…谢谢。|不，我可没有在享受…
 - (You unlock the SPEAKER)|Appreciate the rescue!|'twas fun while it lasted...
-( 你解开了 SPEAKER ) |谢谢|我们从这里出去吧！
-# - (You unlock the SPEAKER)|Thank you miss!
-# - (You unlock your SPEAKER)|...at your command.
-# - (You unlock your SPEAKER)|Hmmpf... are you letting me go?
-# - (You unlock your SPEAKER)|Oh? So soon?
-# - (You unlock your SPEAKER)|Time to get to work~!
-# - (You unlock your SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+( 你解救了 SPEAKER ) |谢谢！|虽然被捆着的时候也很舒服…
+- (You unlock the SPEAKER)|Thank you miss!
+( 你解救了 SPEAKER ) |感谢您，女士！
+- (You unlock your SPEAKER)|...at your command.
+( 你解救了你的 SPEAKER ) |…听候您的吩咐。
+- (You unlock your SPEAKER)|Hmmpf... are you letting me go?
+( 你解救了你的 SPEAKER ) |唔…你要放我走？
+- (You unlock your SPEAKER)|Oh? So soon?
+( 你解救了你的 SPEAKER ) |哦？这么快？
+- (You unlock your SPEAKER)|Time to get to work~!
+( 你解救了你的 SPEAKER ) |是时候开始干活了~！
+- (You unlock your SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+( 你解救了你的 SPEAKER ) |呜呜呜！|（她不想摘下堵嘴）
 - (You unlock the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
 ( 你解开了 SPEAKER ) |呜呜呜！| ( 她想保持自己的堵嘴… )
 # :: rPrisonerJailUnlockGagged
 # :: rPrisonerJailOwnUnlockGagged
-# - (After a while, you free the SPEAKER)|That was quite tight... thanks for the rescue.
-# - (After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!
-# - (After a while, you free the SPEAKER)|Mmph... thank you miss!
+- (After a while, you free the SPEAKER)|That was quite tight... thanks for the rescue.
+（过了一会儿，你救出了 SPEAKER）|捆的真紧…谢谢你救了我。
+- (After a while, you free the SPEAKER)|That was fun!|Er--|Thanks, I mean!
+（过了一会儿，你救出了 SPEAKER）|我刚才还享受着呢！|额——|我的意思是，谢谢你！
+- (After a while, you free the SPEAKER)|Mmph... thank you miss!
+（过了一会儿，你救出了 SPEAKER）|唔…感谢您，女士！
 - (After a while, you free the SPEAKER)|Thank you!|Let's get moving!
 ( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
 # :: rPrisonerLatexCut
@@ -25182,11 +25223,14 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailPickHandsBound
 # :: rPrisonerJailOwnPickHandsBound
 # :: rPrisonerLatexCutHandsBound
-# - (After a while, you free the SPEAKER)|For a moment there I thought it was too much for you~
-# - (After a while, you free the SPEAKER)|Thank you miss!|Your lockpicking skills are impeccable!
-# - (After a while, you free the SPEAKER)|Mmph, that took forever~
+- (After a while, you free the SPEAKER)|For a moment there I thought it was too much for you~
+（过了一会儿，你救出了 SPEAKER）|刚才我还以为这对你来说太困难了呢~
+- (After a while, you free the SPEAKER)|Thank you miss!|Your lockpicking skills are impeccable!
+（过了一会儿，你救出了 SPEAKER）|感谢您女士！|真是无可挑剔的撬锁手法！
+- (After a while, you free the SPEAKER)|Mmph, that took forever~
+（过了一会儿，你救出了 SPEAKER）|唔…那可花了老长时间呢~
 - (After a while, you free the SPEAKER)|Are you supposed to be here?|(She giggles)
-( 过了一会儿，你解开了 SPEAKER ) |谢谢|让我们开始行动！
+( 过了一会儿，你解开了 SPEAKER )|你怎么在这？|( 她笑了笑 )
 - (After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)
 ( 过了一会儿，你解开了 SPEAKER)|呜呜呜！|( 她在你给她解开堵嘴时摇头... )
 # :: rPrisonerJailPickGagged
@@ -25594,7 +25638,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - (The Dollmaker nods)|Yes. She is down here.|But this information is irrelevant to your future as a doll.
 ( 玩偶师点头 ) |是的。 她就在这里。|但是这些信息与你作为玩偶的未来无关。
 - The Staff will be mine.
-权杖将是我的。
+这权杖接下来就是我的了。
 - Fair enough. Let's fight!
 很公平。让我们来战斗吧！
 - We'll see about that!
@@ -25964,7 +26008,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_Sailor_l_Sleeves
 # :: m_Sailor_l_Sleeves
 - Corsets
-束胸
+束腰
 # :: cat_Corsets
 # :: KDFilterFiltersCorsets
 - Skirts
@@ -26811,9 +26855,9 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_FashionLeatherCollarBow_l_Bow
 # :: KDWeaponTag_bow
 - MaidCorset
-女仆束胸
+女仆束腰
 - Corset
-束胸
+束腰
 # :: l_MaidCorset_Corset
 # :: l_MaidCorsetFull_Corset
 # :: l_Maid_Corset
@@ -26869,7 +26913,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_HighSecCorsetNoCrotchRestraint_l_Corset
 # :: KDBindNPCSlot_Corset
 - MaidCorsetFull
-女仆束胸(全)
+女仆束腰(全)
 # - CorsetStraps
 # :: l_MaidCorsetFull_CorsetStraps
 # :: l_Maid_CorsetStraps
@@ -27018,7 +27062,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_WitchBlouse_l_BlouseLiner
 # :: m_Witch_l_BlouseLiner
 - WitchCorset
-女巫束胸
+女巫束腰
 - WitchHat
 女巫帽
 # :: m_WitchHat
@@ -27076,7 +27120,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - SportsBra
 运动内衣
 - WarriorBustier
-战士束胸
+战士护胸
 # - BustierChest
 # :: l_WarriorBustier_BustierChest
 # :: l_Dragonheart_BustierChest
@@ -28129,7 +28173,7 @@ Dask眼
 - CatsuitLower
 紧身连衣裤
 - TorsoLower
-下体
+下半身
 # :: m_CatsuitLower_l_TorsoLower
 # :: m_Catsuit_l_TorsoLower
 # :: m_TransparentCatsuit_l_TorsoLower
@@ -28203,7 +28247,7 @@ Dask眼
 - CatsuitUpper
 紧身连衣裤上衣
 - TorsoUpper
-上体
+上半身
 # :: m_CatsuitUpper_l_TorsoUpper
 # :: m_Catsuit_l_TorsoUpper
 # :: m_TransparentCatsuit_l_TorsoUpper
@@ -29166,7 +29210,7 @@ V比基尼
 # :: m_KittyPetLeotardRestraint_l_LeotardChest
 # :: m_KittyPetsuit_l_LeotardChest
 - LaceCorset
-蕾丝束胸
+蕾丝束腰
 # :: m_LaceCorset
 # :: m_LaceCorset_l_LaceCorset
 # :: m_LaceCorsetRestraint_l_LaceCorset
@@ -29334,7 +29378,7 @@ V比基尼
 # :: m_BowCorsetLongOverbustBowRestraint_l_BowCorsetBustRuffle
 # - BowCorsetBustBow
 - BowCorset
-蝴蝶结束胸
+蝴蝶结束腰
 # :: m_BowCorset
 # :: m_BowCorset_l_BowCorset
 # :: m_BowCorsetOverbust_l_BowCorset
@@ -29395,7 +29439,7 @@ V比基尼
 # - BowCorsetLongOverbustRestraint
 # - BowCorsetLongOverbustBowRestraint
 - LatexCorset
-乳胶束胸
+乳胶束腰
 # - HeavyCorset
 # :: m_LatexCorset_l_HeavyCorset
 # :: m_LatexCorsetFull_l_HeavyCorset
@@ -29424,7 +29468,7 @@ V比基尼
 - LatexBra
 乳胶文胸
 - ChestHeavyCorset
-厚重乳胶束胸
+厚重乳胶束腰
 # :: m_LatexBra_l_ChestHeavyCorset
 # :: m_LatexBustier_l_ChestHeavyCorset
 # :: m_LatexCorsetFull_l_ChestHeavyCorset
@@ -29888,7 +29932,8 @@ V比基尼
 # :: m_LongMittens_l_LongLeft
 # :: m_LongMittenLeft_l_LongLeft
 # :: m_LongMittens_l_LongLeft
-# - LongMittenRight
+- LongMittenRight
+长束手套(右)
 # :: m_LongMittenRight
 # :: m_LongMittenRight
 # :: m_LongMittenRight_l_LongMittenRight
@@ -30335,7 +30380,8 @@ V比基尼
 # :: m_RopeAnkles3_l_Calf3
 # :: m_RibbonAnkles3_l_Calf3
 # - RopeLegs1
-# - Thigh1
+- Thigh1
+腿部1
 # :: m_RopeLegs1_l_Thigh1
 # :: m_RopeLegs2_l_Thigh1
 # :: m_RopeLegs3_l_Thigh1
@@ -30362,7 +30408,8 @@ V比基尼
 # :: m_RibbonLegs2_l_RightThigh1
 # :: m_RibbonLegs3_l_RightThigh1
 # - RopeLegs2
-# - Thigh2
+- Thigh2
+腿部2
 # :: m_RopeLegs2_l_Thigh2
 # :: m_RopeLegs3_l_Thigh2
 # :: m_RibbonLegs2_l_Thigh2
@@ -30381,7 +30428,8 @@ V比基尼
 # :: m_RibbonLegs2_l_RightThigh2
 # :: m_RibbonLegs3_l_RightThigh2
 # - RopeLegs3
-# - Thigh3
+- Thigh3
+腿部3
 # :: m_RopeLegs3_l_Thigh3
 # :: m_RibbonLegs3_l_Thigh3
 # :: m_RopeLegs3_l_Thigh3
@@ -30582,7 +30630,8 @@ V比基尼
 # - ShacklesElbows
 # - ShacklesArms
 # - ShacklesAnklesLeft
-# - AnkleLeft
+- AnkleLeft
+左脚踝
 # :: m_ShacklesAnklesLeft_l_AnkleLeft
 # :: m_ShacklesAnkles_l_AnkleLeft
 # :: m_WolfCuffsAnklesLeft_l_AnkleLeft
@@ -30636,7 +30685,8 @@ V比基尼
 # :: m_KittyPetPaws_l_AnkleLeft
 # :: m_KittyPetPawsRestraint_l_AnkleLeft
 # - ShacklesAnklesRight
-# - AnkleRight
+- AnkleRight
+右脚踝
 # :: m_ShacklesAnklesRight_l_AnkleRight
 # :: m_ShacklesAnkles_l_AnkleRight
 # :: m_WolfCuffsAnklesRight_l_AnkleRight
@@ -30691,7 +30741,8 @@ V比基尼
 # :: m_KittyPetPawsRestraint_l_AnkleRight
 # - ShacklesAnkles
 # - ShacklesThighLeft
-# - ThighLeft
+- ThighLeft
+左腿
 # :: m_ShacklesThighLeft_l_ThighLeft
 # :: m_ShacklesThigh_l_ThighLeft
 # :: m_CuffsThighLeft_l_ThighLeft
@@ -30739,7 +30790,8 @@ V比基尼
 # :: m_KittyPetPaws_l_ThighLeft
 # :: m_KittyPetPawsRestraint_l_ThighLeft
 # - ShacklesThighRight
-# - ThighRight
+- ThighRight
+右腿
 # :: m_ShacklesThighRight_l_ThighRight
 # :: m_ShacklesThigh_l_ThighRight
 # :: m_CuffsThighRight_l_ThighRight
@@ -30787,7 +30839,8 @@ V比基尼
 # :: m_KittyPetPaws_l_ThighRight
 # :: m_KittyPetPawsRestraint_l_ThighRight
 # - ShacklesThigh
-# - ThighLink
+- ThighLink
+大腿链
 # :: m_ThighLink
 # :: m_ThighLink_l_ThighLink
 # :: m_ThighLink_l_ThighLink
@@ -30798,7 +30851,8 @@ V比基尼
 # :: m_FashionHighSecCuffsThigh_l_ThighLink
 # :: m_NeoThighLink_l_ThighLink
 # :: m_FashionNeoThighLink_l_ThighLink
-# - AnkleLink
+- AnkleLink
+脚踝链
 # :: m_AnkleLink
 # :: m_AnkleLink_l_AnkleLink
 # :: m_AnkleLink_l_AnkleLink
@@ -30825,9 +30879,9 @@ V比基尼
 # :: m_FashionSteelCollarRunes_l_SteelCollarRunes
 # - IronBelt
 - WolfPanties
-狼内裤
+狼娘内裤
 - WolfCollar
-狼女项圈
+狼娘项圈
 # - CollarBand
 # :: m_WolfCollar_l_CollarBand
 # :: m_WolfCollarTag_l_CollarBand
@@ -30952,7 +31006,7 @@ V比基尼
 # :: m_WolfHarnessBeltRestraint_l_BeltHardwareMid
 # :: m_WolfHarnessRestraint_l_BeltHardwareMid
 - WolfHarnessLower
-狼女束衣（下部）
+狼娘束衣（下部）
 # - HarnessHardwareMid
 # :: m_WolfHarnessLower_l_HarnessHardwareMid
 # :: m_WolfHarness_l_HarnessHardwareMid
@@ -31042,14 +31096,17 @@ V比基尼
 # - WolfHarnessRestraint
 # - WolfGloveLeft
 # - WolfGloveRight
-# - WolfGloves
+- WolfGloves
+狼娘手套
 # - WolfSockLeft
 # - WolfSockRight
-# - WolfSocks
+- WolfSocks
+狼娘袜子
 # - WolfSocksRestraint
 # - WolfTorsoLower
 # - WolfTorsoUpper
-# - WolfHeels
+- WolfHeels
+狼娘高跟鞋
 # - CuffsWristLeft
 # - BandWristLeft
 # :: m_CuffsWristLeft_l_BandWristLeft
@@ -31587,7 +31644,8 @@ V比基尼
 # :: m_CyberBelt_l_CyberLining
 # :: m_CyberBelt_l_CyberLining
 # :: m_FashionCyberBelt_l_CyberLining
-# - CyberDisplay
+- CyberDisplay
+赛博屏幕
 # :: m_CyberBelt_l_CyberDisplay
 # :: m_CyberBelt_l_CyberDisplay
 # :: m_FashionCyberBelt_l_CyberDisplay
@@ -31722,7 +31780,8 @@ V比基尼
 # - SmoothArmbinderGwen
 # - WolfArmbinder
 # - JacketArmbinder
-# - BeltsArms
+- BeltsArms
+手臂绑带
 # :: m_JacketArmbinder_l_BeltsArms
 # :: m_Jacket_l_BeltsArms
 # :: m_JacketHeavy_l_BeltsArms
@@ -31747,7 +31806,8 @@ V比基尼
 # :: m_MilitaryJacket_Sleeveless_l_Jacket
 # :: m_MilitaryJacket_l_Jacket
 # :: m_MilitaryUniform_l_Jacket
-# - BeltsChest
+- BeltsChest
+胸部绑带
 # :: m_Jacket_l_BeltsChest
 # :: m_JacketHeavy_l_BeltsChest
 # :: m_Jacket_l_BeltsChest
@@ -33004,7 +33064,8 @@ V比基尼
 # :: m_FashionAdvancedSciFiPanelGag_l_TopRim
 # :: m_FashionUltimateSciFiPanelGag_l_TopRim
 # :: m_FashionUltimateSciFiPanelGag2_l_TopRim
-# - Display
+- Display
+屏幕
 # :: m_SciFiBallGag_l_Display
 # :: m_EnhancedSciFiBallGag_l_Display
 # :: m_AdvancedSciFiBallGag_l_Display
@@ -33245,7 +33306,8 @@ V比基尼
 # - AdvancedSciFiPlugMuzzle
 # - SimpleSciFiMuzzle2
 # - AdvancedSciFiMuzzle2
-# - BeltsArms1
+- BeltsArms1
+手臂绑带1
 # - Arms1
 # :: m_BeltsArms1_l_Arms1
 # :: m_BeltsArmsAll_l_Arms1
@@ -33265,7 +33327,8 @@ V比基尼
 # :: m_BeltsArmsAll_l_RightArm1
 # :: m_BeltsArms1_l_RightArm1
 # :: m_BeltsArmsAll_l_RightArm1
-# - BeltsArms2
+- BeltsArms2
+手臂绑带2
 # - Arms2
 # :: m_BeltsArms2_l_Arms2
 # :: m_BeltsArmsAll_l_Arms2
@@ -33289,8 +33352,10 @@ V比基尼
 # :: m_BeltsArmsAll_l_RightArm2
 # :: m_BeltsArms2_l_RightArm2
 # :: m_BeltsArmsAll_l_RightArm2
-# - BeltsArmsAll
-# - BeltsLegs1
+- BeltsArmsAll
+手臂绑带(全部)
+- BeltsLegs1
+腿部绑带1
 # - Legs1
 # :: m_BeltsLegs1_l_Legs1
 # :: m_BeltsLegsAll_l_Legs1
@@ -33309,7 +33374,8 @@ V比基尼
 # :: m_BeltsLegsAll_l_RightLegs1
 # :: m_ShadowHandsLegs1_l_RightLegs1
 # :: m_ShadowHandsLegsAll_l_RightLegs1
-# - BeltsLegs2
+- BeltsLegs2
+腿部绑带2
 # - Legs2
 # :: m_BeltsLegs2_l_Legs2
 # :: m_BeltsLegsAll_l_Legs2
@@ -33328,8 +33394,10 @@ V比基尼
 # :: m_BeltsLegsAll_l_RightLegs2
 # :: m_ShadowHandsLegs2_l_RightLegs2
 # :: m_ShadowHandsLegsAll_l_RightLegs2
-# - BeltsLegsAll
-# - BeltsFeet1
+- BeltsLegsAll
+腿部绑带(全部)
+- BeltsFeet1
+足部绑带1
 # - Feet1
 # :: m_BeltsFeet1_l_Feet1
 # :: m_BeltsFeetAll_l_Feet1
@@ -33337,13 +33405,15 @@ V比基尼
 # :: m_BeltsFeet1_l_Feet1
 # :: m_BeltsFeetAll_l_Feet1
 # :: m_ShadowHandsFeet_l_Feet1
-# - BeltsFeet2
+- BeltsFeet2
+足部绑带2
 # - Feet2
 # :: m_BeltsFeet2_l_Feet2
 # :: m_BeltsFeetAll_l_Feet2
 # :: m_BeltsFeet2_l_Feet2
 # :: m_BeltsFeetAll_l_Feet2
-# - BeltsFeetAll
+- BeltsFeetAll
+足部绑带(全部)
 # - ShadowHandsArms1
 # - ShadowHandsArms2
 # - ShadowHandsArmsAll
@@ -33418,19 +33488,24 @@ V比基尼
 # :: m_FutureCollar_l_FutureLock
 # :: m_FutureCollarRestraint_l_FutureLock
 # - FutureCollarRestraint
-# - ShockModule
-# - Module
+- ShockModule
+电击模块
+- Module
+模块
 # :: m_ShockModule_l_Module
 # :: m_ShockModule_l_Module
 # :: m_TrackingModule_l_Module
-# - ModuleDisplay
+- ModuleDisplay
+模块屏幕
 # :: m_ShockModule_l_ModuleDisplay
 # :: m_ShockModule_l_ModuleDisplay
-# - TrackingModule
+- TrackingModule
+追踪模块
 # :: m_TrackingModule
 # :: m_TrackingModule_l_TrackingModule
 # :: m_TrackingModule_l_TrackingModule
-# - TrackingModuleDisplay
+- TrackingModuleDisplay
+追踪模块屏幕
 # :: m_TrackingModule_l_TrackingModuleDisplay
 # :: m_TrackingModule_l_TrackingModuleDisplay
 - Goggles
@@ -34686,12 +34761,14 @@ Aura刘海(右后)
 # - DivineCuffsElbows
 # - DivineCuffsArms
 # - DivineCuffsAnklesLeft
-# - AnkleLeftDeco
+- AnkleLeftDeco
+左脚踝装饰
 # :: m_DivineCuffsAnklesLeft_l_AnkleLeftDeco
 # :: m_DivineCuffsAnkles_l_AnkleLeftDeco
 # :: m_FashionDivineCuffsAnklesLeft_l_AnkleLeftDeco
 # :: m_FashionDivineCuffsAnkles_l_AnkleLeftDeco
-# - AnkleLeftLock
+- AnkleLeftLock
+左脚踝锁
 # :: m_DivineCuffsAnklesLeft_l_AnkleLeftLock
 # :: m_DivineCuffsAnkles_l_AnkleLeftLock
 # :: m_FashionDivineCuffsAnklesLeft_l_AnkleLeftLock
@@ -34700,7 +34777,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanAnkles_l_AnkleLeftLock
 # :: m_FashionDivineCuffsCleanAnklesLeft_l_AnkleLeftLock
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleLeftLock
-# - AnkleLeftLockPlate
+- AnkleLeftLockPlate
+左脚踝锁板
 # :: m_DivineCuffsAnklesLeft_l_AnkleLeftLockPlate
 # :: m_DivineCuffsAnkles_l_AnkleLeftLockPlate
 # :: m_FashionDivineCuffsAnklesLeft_l_AnkleLeftLockPlate
@@ -34709,7 +34787,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanAnkles_l_AnkleLeftLockPlate
 # :: m_FashionDivineCuffsCleanAnklesLeft_l_AnkleLeftLockPlate
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleLeftLockPlate
-# - AnkleLeftLockBand
+- AnkleLeftLockBand
+左脚踝锁带
 # :: m_DivineCuffsAnklesLeft_l_AnkleLeftLockBand
 # :: m_DivineCuffsAnkles_l_AnkleLeftLockBand
 # :: m_FashionDivineCuffsAnklesLeft_l_AnkleLeftLockBand
@@ -34719,12 +34798,14 @@ Aura刘海(右后)
 # :: m_FashionDivineCuffsCleanAnklesLeft_l_AnkleLeftLockBand
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleLeftLockBand
 # - DivineCuffsAnklesRight
-# - AnkleRightDeco
+- AnkleRightDeco
+右脚踝装饰
 # :: m_DivineCuffsAnklesRight_l_AnkleRightDeco
 # :: m_DivineCuffsAnkles_l_AnkleRightDeco
 # :: m_FashionDivineCuffsAnklesRight_l_AnkleRightDeco
 # :: m_FashionDivineCuffsAnkles_l_AnkleRightDeco
-# - AnkleRightLock
+- AnkleRightLock
+右脚踝锁
 # :: m_DivineCuffsAnklesRight_l_AnkleRightLock
 # :: m_DivineCuffsAnkles_l_AnkleRightLock
 # :: m_FashionDivineCuffsAnklesRight_l_AnkleRightLock
@@ -34733,7 +34814,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanAnkles_l_AnkleRightLock
 # :: m_FashionDivineCuffsCleanAnklesRight_l_AnkleRightLock
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleRightLock
-# - AnkleRightLockPlate
+- AnkleRightLockPlate
+右脚踝锁板
 # :: m_DivineCuffsAnklesRight_l_AnkleRightLockPlate
 # :: m_DivineCuffsAnkles_l_AnkleRightLockPlate
 # :: m_FashionDivineCuffsAnklesRight_l_AnkleRightLockPlate
@@ -34742,7 +34824,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanAnkles_l_AnkleRightLockPlate
 # :: m_FashionDivineCuffsCleanAnklesRight_l_AnkleRightLockPlate
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleRightLockPlate
-# - AnkleRightLockBand
+- AnkleRightLockBand
+右脚踝锁带
 # :: m_DivineCuffsAnklesRight_l_AnkleRightLockBand
 # :: m_DivineCuffsAnkles_l_AnkleRightLockBand
 # :: m_FashionDivineCuffsAnklesRight_l_AnkleRightLockBand
@@ -34753,12 +34836,14 @@ Aura刘海(右后)
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleRightLockBand
 # - DivineCuffsAnkles
 # - DivineCuffsThighLeft
-# - ThighLeftDeco
+- ThighLeftDeco
+左腿装饰
 # :: m_DivineCuffsThighLeft_l_ThighLeftDeco
 # :: m_DivineCuffsThigh_l_ThighLeftDeco
 # :: m_FashionDivineCuffsThighLeft_l_ThighLeftDeco
 # :: m_FashionDivineCuffsThigh_l_ThighLeftDeco
-# - ThighLeftLock
+- ThighLeftLock
+左腿锁
 # :: m_DivineCuffsThighLeft_l_ThighLeftLock
 # :: m_DivineCuffsThigh_l_ThighLeftLock
 # :: m_FashionDivineCuffsThighLeft_l_ThighLeftLock
@@ -34767,7 +34852,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanThigh_l_ThighLeftLock
 # :: m_FashionDivineCuffsCleanThighLeft_l_ThighLeftLock
 # :: m_FashionDivineCuffsCleanThigh_l_ThighLeftLock
-# - ThighLeftLockPlate
+- ThighLeftLockPlate
+左腿锁板
 # :: m_DivineCuffsThighLeft_l_ThighLeftLockPlate
 # :: m_DivineCuffsThigh_l_ThighLeftLockPlate
 # :: m_FashionDivineCuffsThighLeft_l_ThighLeftLockPlate
@@ -34776,7 +34862,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanThigh_l_ThighLeftLockPlate
 # :: m_FashionDivineCuffsCleanThighLeft_l_ThighLeftLockPlate
 # :: m_FashionDivineCuffsCleanThigh_l_ThighLeftLockPlate
-# - ThighLeftLockBand
+- ThighLeftLockBand
+左腿锁带
 # :: m_DivineCuffsThighLeft_l_ThighLeftLockBand
 # :: m_DivineCuffsThigh_l_ThighLeftLockBand
 # :: m_FashionDivineCuffsThighLeft_l_ThighLeftLockBand
@@ -34786,12 +34873,14 @@ Aura刘海(右后)
 # :: m_FashionDivineCuffsCleanThighLeft_l_ThighLeftLockBand
 # :: m_FashionDivineCuffsCleanThigh_l_ThighLeftLockBand
 # - DivineCuffsThighRight
-# - ThighRightDeco
+- ThighRightDeco
+右腿装饰
 # :: m_DivineCuffsThighRight_l_ThighRightDeco
 # :: m_DivineCuffsThigh_l_ThighRightDeco
 # :: m_FashionDivineCuffsThighRight_l_ThighRightDeco
 # :: m_FashionDivineCuffsThigh_l_ThighRightDeco
-# - ThighRightLock
+- ThighRightLock
+右腿锁
 # :: m_DivineCuffsThighRight_l_ThighRightLock
 # :: m_DivineCuffsThigh_l_ThighRightLock
 # :: m_FashionDivineCuffsThighRight_l_ThighRightLock
@@ -34800,7 +34889,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanThigh_l_ThighRightLock
 # :: m_FashionDivineCuffsCleanThighRight_l_ThighRightLock
 # :: m_FashionDivineCuffsCleanThigh_l_ThighRightLock
-# - ThighRightLockPlate
+- ThighRightLockPlate
+右腿锁板
 # :: m_DivineCuffsThighRight_l_ThighRightLockPlate
 # :: m_DivineCuffsThigh_l_ThighRightLockPlate
 # :: m_FashionDivineCuffsThighRight_l_ThighRightLockPlate
@@ -34809,7 +34899,8 @@ Aura刘海(右后)
 # :: m_DivineCuffsCleanThigh_l_ThighRightLockPlate
 # :: m_FashionDivineCuffsCleanThighRight_l_ThighRightLockPlate
 # :: m_FashionDivineCuffsCleanThigh_l_ThighRightLockPlate
-# - ThighRightLockBand
+- ThighRightLockBand
+右腿锁带
 # :: m_DivineCuffsThighRight_l_ThighRightLockBand
 # :: m_DivineCuffsThigh_l_ThighRightLockBand
 # :: m_FashionDivineCuffsThighRight_l_ThighRightLockBand
@@ -34942,26 +35033,30 @@ Aura刘海(右后)
 # - DivineCuffsCleanElbows
 # - DivineCuffsCleanArms
 # - DivineCuffsCleanAnklesLeft
-# - AnkleLeftDecoClean
+- AnkleLeftDecoClean
+左脚踝装饰(无印)
 # :: m_DivineCuffsCleanAnklesLeft_l_AnkleLeftDecoClean
 # :: m_DivineCuffsCleanAnkles_l_AnkleLeftDecoClean
 # :: m_FashionDivineCuffsCleanAnklesLeft_l_AnkleLeftDecoClean
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleLeftDecoClean
 # - DivineCuffsCleanAnklesRight
-# - AnkleRightDecoClean
+- AnkleRightDecoClean
+右脚踝装饰(无印)
 # :: m_DivineCuffsCleanAnklesRight_l_AnkleRightDecoClean
 # :: m_DivineCuffsCleanAnkles_l_AnkleRightDecoClean
 # :: m_FashionDivineCuffsCleanAnklesRight_l_AnkleRightDecoClean
 # :: m_FashionDivineCuffsCleanAnkles_l_AnkleRightDecoClean
 # - DivineCuffsCleanAnkles
 # - DivineCuffsCleanThighLeft
-# - ThighLeftDecoClean
+- ThighLeftDecoClean
+左腿装饰(无印)
 # :: m_DivineCuffsCleanThighLeft_l_ThighLeftDecoClean
 # :: m_DivineCuffsCleanThigh_l_ThighLeftDecoClean
 # :: m_FashionDivineCuffsCleanThighLeft_l_ThighLeftDecoClean
 # :: m_FashionDivineCuffsCleanThigh_l_ThighLeftDecoClean
 # - DivineCuffsCleanThighRight
-# - ThighRightDecoClean
+- ThighRightDecoClean
+右腿装饰(无印)
 # :: m_DivineCuffsCleanThighRight_l_ThighRightDecoClean
 # :: m_DivineCuffsCleanThigh_l_ThighRightDecoClean
 # :: m_FashionDivineCuffsCleanThighRight_l_ThighRightDecoClean
@@ -36517,7 +36612,7 @@ Aura刘海(右后)
 - FashionLeatherHood
 装饰性皮革头套
 - CyberLongMittenLeft
-赛博封锁束手套(左)
+赛博长束手套(左)
 # - CapForeLongMittenLeft
 # :: m_CyberLongMittenLeft_l_CapForeLongMittenLeft
 # :: m_CyberLongMittens_l_CapForeLongMittenLeft
@@ -36525,7 +36620,8 @@ Aura刘海(右后)
 # :: m_CyberMittens_l_CapForeLongMittenLeft
 # :: m_FashionCyberLongMittens_l_CapForeLongMittenLeft
 # :: m_FashionCyberMittens_l_CapForeLongMittenLeft
-# - CapLongMittenLeft
+- CapLongMittenLeft
+长束手套(左)盖子
 # :: m_CyberLongMittenLeft_l_CapLongMittenLeft
 # :: m_CyberLongMittens_l_CapLongMittenLeft
 # :: m_CyberMittenLeft_l_CapLongMittenLeft
@@ -36541,7 +36637,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_CuffForeLongMittenLeft
 # :: m_FashionCyberLongMittens_l_CuffForeLongMittenLeft
 # :: m_FashionCyberMittens_l_CuffForeLongMittenLeft
-# - CuffLongMittenLeft
+- CuffLongMittenLeft
+长束手套(左)手腕拷
 # :: m_CyberLongMittenLeft_l_CuffLongMittenLeft
 # :: m_CyberLongMittens_l_CuffLongMittenLeft
 # :: m_CyberMittenLeft_l_CuffLongMittenLeft
@@ -36559,7 +36656,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_DisplayForeLongMittenLeft
 # :: m_FashionCyberLongMittens_l_DisplayForeLongMittenLeft
 # :: m_FashionCyberMittens_l_DisplayForeLongMittenLeft
-# - DisplayLongMittenLeft
+- DisplayLongMittenLeft
+长束手套(左)屏幕
 # :: m_CyberLongMittenLeft_l_DisplayLongMittenLeft
 # :: m_CyberLongMittens_l_DisplayLongMittenLeft
 # :: m_CyberMittenLeft_l_DisplayLongMittenLeft
@@ -36578,7 +36676,7 @@ Aura刘海(右后)
 # :: m_FashionCyberLongMittens_l_LockForeLongMittenLeft
 # :: m_FashionCyberMittens_l_LockForeLongMittenLeft
 - LockLongMittenLeft
-上锁的长束手套(左)
+长束手套(左)锁图标
 # :: m_CyberLongMittenLeft_l_LockLongMittenLeft
 # :: m_CyberLongMittens_l_LockLongMittenLeft
 # :: m_CyberMittenLeft_l_LockLongMittenLeft
@@ -36596,7 +36694,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_GlowForeLongMittenLeft
 # :: m_FashionCyberLongMittens_l_GlowForeLongMittenLeft
 # :: m_FashionCyberMittens_l_GlowForeLongMittenLeft
-# - GlowLongMittenLeft
+- GlowLongMittenLeft
+长束手套(左)发光
 # :: m_CyberLongMittenLeft_l_GlowLongMittenLeft
 # :: m_CyberLongMittens_l_GlowLongMittenLeft
 # :: m_CyberMittenLeft_l_GlowLongMittenLeft
@@ -36611,31 +36710,36 @@ Aura刘海(右后)
 # :: m_CyberArmLeft_l_StrapsForeLongMittenLeft
 # :: m_CyberArms_l_StrapsForeLongMittenLeft
 # :: m_FashionCyberLongMittens_l_StrapsForeLongMittenLeft
-# - StrapsLongMittenLeft
+- StrapsLongMittenLeft
+长束手套(左)绑带
 # :: m_CyberLongMittenLeft_l_StrapsLongMittenLeft
 # :: m_CyberLongMittens_l_StrapsLongMittenLeft
 # :: m_CyberArmLeft_l_StrapsLongMittenLeft
 # :: m_CyberArms_l_StrapsLongMittenLeft
 # :: m_FashionCyberLongMittens_l_StrapsLongMittenLeft
-# - UpperCuffLongMittenLeft
+- UpperCuffLongMittenLeft
+长束手套(左)上臂铐
 # :: m_CyberLongMittenLeft_l_UpperCuffLongMittenLeft
 # :: m_CyberLongMittens_l_UpperCuffLongMittenLeft
 # :: m_CyberArmLeft_l_UpperCuffLongMittenLeft
 # :: m_CyberArms_l_UpperCuffLongMittenLeft
 # :: m_FashionCyberLongMittens_l_UpperCuffLongMittenLeft
-# - UpperDisplayLongMittenLeft
+- UpperDisplayLongMittenLeft
+长束手套(左)上臂铐屏幕
 # :: m_CyberLongMittenLeft_l_UpperDisplayLongMittenLeft
 # :: m_CyberLongMittens_l_UpperDisplayLongMittenLeft
 # :: m_CyberArmLeft_l_UpperDisplayLongMittenLeft
 # :: m_CyberArms_l_UpperDisplayLongMittenLeft
 # :: m_FashionCyberLongMittens_l_UpperDisplayLongMittenLeft
-# - UpperLockLongMittenLeft
+- UpperLockLongMittenLeft
+长束手套(左)上臂锁图标
 # :: m_CyberLongMittenLeft_l_UpperLockLongMittenLeft
 # :: m_CyberLongMittens_l_UpperLockLongMittenLeft
 # :: m_CyberArmLeft_l_UpperLockLongMittenLeft
 # :: m_CyberArms_l_UpperLockLongMittenLeft
 # :: m_FashionCyberLongMittens_l_UpperLockLongMittenLeft
-# - UpperGlowLongMittenLeft
+- UpperGlowLongMittenLeft
+长束手套(左)上臂发光
 # :: m_CyberLongMittenLeft_l_UpperGlowLongMittenLeft
 # :: m_CyberLongMittens_l_UpperGlowLongMittenLeft
 # :: m_CyberArmLeft_l_UpperGlowLongMittenLeft
@@ -36649,7 +36753,8 @@ Aura刘海(右后)
 # :: m_CyberMittens_l_CapForeLongMittenRight
 # :: m_FashionCyberLongMittens_l_CapForeLongMittenRight
 # :: m_FashionCyberMittens_l_CapForeLongMittenRight
-# - CapLongMittenRight
+- CapLongMittenRight
+长束手套(右)盖子
 # :: m_CyberLongMittenRight_l_CapLongMittenRight
 # :: m_CyberLongMittens_l_CapLongMittenRight
 # :: m_CyberMittenRight_l_CapLongMittenRight
@@ -36665,7 +36770,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_CuffForeLongMittenRight
 # :: m_FashionCyberLongMittens_l_CuffForeLongMittenRight
 # :: m_FashionCyberMittens_l_CuffForeLongMittenRight
-# - CuffLongMittenRight
+- CuffLongMittenRight
+长束手套(右)手腕拷
 # :: m_CyberLongMittenRight_l_CuffLongMittenRight
 # :: m_CyberLongMittens_l_CuffLongMittenRight
 # :: m_CyberMittenRight_l_CuffLongMittenRight
@@ -36683,7 +36789,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_DisplayForeLongMittenRight
 # :: m_FashionCyberLongMittens_l_DisplayForeLongMittenRight
 # :: m_FashionCyberMittens_l_DisplayForeLongMittenRight
-# - DisplayLongMittenRight
+- DisplayLongMittenRight
+长束手套(右)屏幕
 # :: m_CyberLongMittenRight_l_DisplayLongMittenRight
 # :: m_CyberLongMittens_l_DisplayLongMittenRight
 # :: m_CyberMittenRight_l_DisplayLongMittenRight
@@ -36701,7 +36808,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_LockForeLongMittenRight
 # :: m_FashionCyberLongMittens_l_LockForeLongMittenRight
 # :: m_FashionCyberMittens_l_LockForeLongMittenRight
-# - LockLongMittenRight
+- LockLongMittenRight
+长束手套(右)锁图标
 # :: m_CyberLongMittenRight_l_LockLongMittenRight
 # :: m_CyberLongMittens_l_LockLongMittenRight
 # :: m_CyberMittenRight_l_LockLongMittenRight
@@ -36719,7 +36827,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_GlowForeLongMittenRight
 # :: m_FashionCyberLongMittens_l_GlowForeLongMittenRight
 # :: m_FashionCyberMittens_l_GlowForeLongMittenRight
-# - GlowLongMittenRight
+- GlowLongMittenRight
+长束手套(右)发光
 # :: m_CyberLongMittenRight_l_GlowLongMittenRight
 # :: m_CyberLongMittens_l_GlowLongMittenRight
 # :: m_CyberMittenRight_l_GlowLongMittenRight
@@ -36734,31 +36843,36 @@ Aura刘海(右后)
 # :: m_CyberArmRight_l_StrapsForeLongMittenRight
 # :: m_CyberArms_l_StrapsForeLongMittenRight
 # :: m_FashionCyberLongMittens_l_StrapsForeLongMittenRight
-# - StrapsLongMittenRight
+- StrapsLongMittenRight
+长束手套(右)绑带
 # :: m_CyberLongMittenRight_l_StrapsLongMittenRight
 # :: m_CyberLongMittens_l_StrapsLongMittenRight
 # :: m_CyberArmRight_l_StrapsLongMittenRight
 # :: m_CyberArms_l_StrapsLongMittenRight
 # :: m_FashionCyberLongMittens_l_StrapsLongMittenRight
-# - UpperCuffLongMittenRight
+- UpperCuffLongMittenRight
+长束手套(右)上臂铐
 # :: m_CyberLongMittenRight_l_UpperCuffLongMittenRight
 # :: m_CyberLongMittens_l_UpperCuffLongMittenRight
 # :: m_CyberArmRight_l_UpperCuffLongMittenRight
 # :: m_CyberArms_l_UpperCuffLongMittenRight
 # :: m_FashionCyberLongMittens_l_UpperCuffLongMittenRight
-# - UpperDisplayLongMittenRight
+- UpperDisplayLongMittenRight
+长束手套(右)上臂铐屏幕
 # :: m_CyberLongMittenRight_l_UpperDisplayLongMittenRight
 # :: m_CyberLongMittens_l_UpperDisplayLongMittenRight
 # :: m_CyberArmRight_l_UpperDisplayLongMittenRight
 # :: m_CyberArms_l_UpperDisplayLongMittenRight
 # :: m_FashionCyberLongMittens_l_UpperDisplayLongMittenRight
-# - UpperLockLongMittenRight
+- UpperLockLongMittenRight
+长束手套(右)上臂锁图标
 # :: m_CyberLongMittenRight_l_UpperLockLongMittenRight
 # :: m_CyberLongMittens_l_UpperLockLongMittenRight
 # :: m_CyberArmRight_l_UpperLockLongMittenRight
 # :: m_CyberArms_l_UpperLockLongMittenRight
 # :: m_FashionCyberLongMittens_l_UpperLockLongMittenRight
-# - UpperGlowLongMittenRight
+- UpperGlowLongMittenRight
+长束手套(右)上臂发光
 # :: m_CyberLongMittenRight_l_UpperGlowLongMittenRight
 # :: m_CyberLongMittens_l_UpperGlowLongMittenRight
 # :: m_CyberArmRight_l_UpperGlowLongMittenRight
@@ -36769,7 +36883,7 @@ Aura刘海(右后)
 - CyberMittenLeft
 赛博束手套(左)
 - MittenLeft
-束手套(左)
+左束手套
 # :: m_CyberMittenLeft_l_MittenLeft
 # :: m_CyberMittens_l_MittenLeft
 # :: m_FashionCyberMittens_l_MittenLeft
@@ -36779,7 +36893,8 @@ Aura刘海(右后)
 # :: m_FashionCyberMittens_l_ForeMittenLeft
 - CyberMittenRight
 赛博束手套(右)
-# - MittenRight
+- MittenRight
+右束手套
 # :: m_CyberMittenRight_l_MittenRight
 # :: m_CyberMittens_l_MittenRight
 # :: m_FashionCyberMittens_l_MittenRight
@@ -37254,7 +37369,7 @@ Aura刘海(右后)
 - HeavyMaidKnight_WaistBelts
 重装女仆骑士_腰带
 - BeltsHardware
-设备腰带
+腰带金属件
 # :: m_HeavyMaidKnight_WaistBelts_l_BeltsHardware
 # :: m_HeavyMaidKnight_Waist_l_BeltsHardware
 # :: m_HeavyMaidKnight_l_BeltsHardware
@@ -37893,7 +38008,8 @@ Aura刘海(右后)
 装饰性猫咪宠物钢项圈
 - KittyPetMittenLeft
 猫咪宠物束手套（左）
-# - GloveLeftPaw
+- GloveLeftPaw
+手套(左)猫爪
 # :: m_KittyPetMittenLeft_l_GloveLeftPaw
 # :: m_KittyPetMittens_l_GloveLeftPaw
 # :: m_FashionKittyPetMittenLeft_l_GloveLeftPaw
@@ -37905,7 +38021,8 @@ Aura刘海(右后)
 # :: m_FashionKittyPetMittens_l_ForeGloveLeftPaw
 - KittyPetMittenRight
 猫咪宠物束手套（右）
-# - GloveRightPaw
+- GloveRightPaw
+手套(右)猫爪
 # :: m_KittyPetMittenRight_l_GloveRightPaw
 # :: m_KittyPetMittens_l_GloveRightPaw
 # :: m_FashionKittyPetMittenRight_l_GloveRightPaw
@@ -38978,7 +39095,8 @@ Aura刘海(右后)
 # :: m_YukataWaistPattern_l_WaistbandBelts
 # :: m_Yukata_l_WaistbandBelts
 # :: m_YukataPattern_l_WaistbandBelts
-# - Mitten
+- Mitten
+束手套
 # :: m_LeatherMittenLeft_l_Mitten
 # :: m_LeatherMittenRight_l_Mitten
 # :: m_LeatherPawMittenLeft_l_Mitten
@@ -39277,7 +39395,8 @@ Aura刘海(右后)
 # :: m_FashionHighSecCuffsThighRight_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
-# - Glow
+- Glow
+发光
 # :: m_CyberLongMittenLeft_l_Glow
 # :: m_CyberLongMittenLeft_l_Glow
 # :: m_CyberLongMittenRight_l_Glow
@@ -39450,7 +39569,8 @@ Aura刘海(右后)
 # :: m_LeatherCollarBow_l_Bell
 # :: m_FashionLeatherCollarBell_l_Bell
 # :: m_FashionLeatherCollarBow_l_Bell
-# - LockPlate
+- LockPlate
+锁板
 # :: m_DivineCuffsWristLeft_l_LockPlate
 # :: m_DivineCuffsWristRight_l_LockPlate
 # :: m_DivineCuffsWrists_l_LockPlate
@@ -39545,7 +39665,8 @@ Aura刘海(右后)
 # :: m_FashionDivineBra_l_LockPlate
 # :: m_DivineBraRunic_l_LockPlate
 # :: m_FashionDivineBraRunic_l_LockPlate
-# - LockBand
+- LockBand
+锁带
 # :: m_DivineCuffsWristLeft_l_LockBand
 # :: m_DivineCuffsWristRight_l_LockBand
 # :: m_DivineCuffsWrists_l_LockBand
@@ -39645,7 +39766,8 @@ Aura刘海(右后)
 # :: m_FashionDivineBelt_l_Pin
 # :: m_DivineBeltRunic_l_Pin
 # :: m_FashionDivineBeltRunic_l_Pin
-# - LockShackle
+- LockShackle
+锁扣头
 # :: m_DivineBelt_l_LockShackle
 # :: m_FashionDivineBelt_l_LockShackle
 # :: m_DivineBeltRunic_l_LockShackle
@@ -39654,7 +39776,8 @@ Aura刘海(右后)
 # :: m_FashionDivineBra_l_LockShackle
 # :: m_DivineBraRunic_l_LockShackle
 # :: m_FashionDivineBraRunic_l_LockShackle
-# - LockHighlight
+- LockHighlight
+锁高亮
 # :: m_DivineBelt_l_LockHighlight
 # :: m_FashionDivineBelt_l_LockHighlight
 # :: m_DivineBeltRunic_l_LockHighlight
@@ -39762,7 +39885,8 @@ Aura刘海(右后)
 # :: m_LatexTopZip_l_Hem
 # :: m_BraProto_l_Hem
 # :: m_FashionBraProto_l_Hem
-# - LockPin
+- LockPin
+锁桩
 # :: m_SteelChastityBelt_Padlock_l_LockPin
 # :: m_FashionSteelChastityBelt_Padlock_l_LockPin
 # :: m_SteelChastityBra_Padlock_l_LockPin
@@ -39852,7 +39976,8 @@ Aura刘海(右后)
 # :: m_JacketHeavyBolero_l_Lower
 # :: m_JacketExtraBolero_l_Lower
 # :: m_JacketExtraBolero_l_Lower
-# :: KDFilterFiltersLegs
+:: KDFilterFiltersLegs
+下身
 # - StrapHardware
 # :: m_HarnessBlindfold_l_StrapHardware
 # :: m_FashionHarnessBlindfold_l_StrapHardware
@@ -40149,23 +40274,27 @@ Aura刘海(右后)
 # - FashionNeoLinkArmRight
 # - FashionNeoLinkArms
 # - NeoLinkThighLeft
-# - ThighLinkLeft
+- ThighLinkLeft
+左腰腿链
 # :: m_NeoLinkThighLeft_l_ThighLinkLeft
 # :: m_NeoLinkThighs_l_ThighLinkLeft
 # :: m_FashionNeoLinkThighLeft_l_ThighLinkLeft
 # :: m_FashionNeoLinkThighs_l_ThighLinkLeft
-# - ThighHardwareLeft
+- ThighHardwareLeft
+左腰腿链连接件
 # :: m_NeoLinkThighLeft_l_ThighHardwareLeft
 # :: m_NeoLinkThighs_l_ThighHardwareLeft
 # :: m_FashionNeoLinkThighLeft_l_ThighHardwareLeft
 # :: m_FashionNeoLinkThighs_l_ThighHardwareLeft
 # - NeoLinkThighRight
-# - ThighLinkRight
+- ThighLinkRight
+右腰腿链
 # :: m_NeoLinkThighRight_l_ThighLinkRight
 # :: m_NeoLinkThighs_l_ThighLinkRight
 # :: m_FashionNeoLinkThighRight_l_ThighLinkRight
 # :: m_FashionNeoLinkThighs_l_ThighLinkRight
-# - ThighHardwareRight
+- ThighHardwareRight
+右腰腿链连接件
 # :: m_NeoLinkThighRight_l_ThighHardwareRight
 # :: m_NeoLinkThighs_l_ThighHardwareRight
 # :: m_FashionNeoLinkThighRight_l_ThighHardwareRight
@@ -40390,7 +40519,7 @@ Aura刘海(右后)
 - Self Bondage Enthusiast
 自缚爱好者
 - Start with a basic self-bondage kit.
-从一个基础自缚套装开始。
+开始时穿戴一套基础自缚套装。
 
 - Apprehended
 逮捕
@@ -40693,7 +40822,8 @@ Aura刘海(右后)
 
 - Heavy
 重
-# :: KDFilterFiltersHeavy
+:: KDFilterFiltersHeavy
+重甲
 # :: KDWeaponTag_heavy
 - Accessory
 配饰
@@ -40701,8 +40831,10 @@ Aura刘海(右后)
 拘束具
 - Enchanted
 附魔的
-# :: KDFilterFiltersEnchanted
-# :: KDFilterFiltersEnchanted
+:: KDFilterFiltersEnchanted
+附魔
+:: KDFilterFiltersEnchanted
+附魔
 # :: KDVarPrefEnchanted
 - Mundane
 平凡
@@ -42003,7 +42135,7 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 一阵强风把你吹走了！！！
 
 - Staff of Ropes
-绳索权杖
+绳索法杖
 - An enchanted rope kept in check by a magical seal. Surely this won't backfire...
 一根被魔法封印控制住的魔法绳子。这肯定不会适得其反...
 - +20% rope bindings applied. Deals chain damage. Active: Spend 25 mana to unleash the ropes in a wide AoE.
@@ -42012,7 +42144,7 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 你拿起一根绳子。 终于找到了遏制其力量的方法！
 
 - Staff of Belts
-皮带权杖
+皮带法杖
 - Belts within belts, a fractal belt pattern buckled into oblivion.
 皮带套着皮带，一种分形的皮带图案被遗忘了。
 - +20% leather bindings applied. Leather spells apply debuffs for 30% longer. Deals chain damage. Active: Pull an enemy toward you and apply a small amount of bondage.
@@ -42372,7 +42504,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Ranged
 远程
 - Staff
-权杖
+法杖
 - Toy
 玩具
 - Teasing
@@ -43557,7 +43689,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 # :: KinkyDungeonInventoryItemDivineBelt2Desc
 
 - You find a heavenly chastity belt. Who could it be for?
-你找到了一条天堂贞操带。可是给谁呢？
+你找到了一条天堂贞操带。这是留给谁的呢？
 # :: KinkyDungeonLootDivineBelt
 # :: KinkyDungeonLootDivineBelt2
 
@@ -43759,7 +43891,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Strangely dressed zombies start approaching you!!
 穿着奇异的僵尸开始向你靠近！！
 - A floating chastity item appears and starts flying toward you!
-一个漂浮的贞洁物品出现并开始朝你飞来！
+一个漂浮的贞操具出现并开始朝你飞来！
 - You hear moaning as the statues start to move...
 当雕像开始移动时，你会听到呻吟声……
 - Devious tomes emerge from the bookshelves!
@@ -44117,19 +44249,19 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Heel Training
 高跟鞋训练
 - Start locked in a pair of heels with no heel training.
-在没有进行高跟鞋训练的情况下开始时穿戴一双锁定的高跟鞋。
+开始时，在没有进行高跟鞋训练的情况下穿戴一双上锁的芭蕾高跟鞋。
 - Gag Training
 堵嘴训练
 - Start locked in a gag with no gag training.
-在没有进行堵嘴训练的情况下开始时佩戴一件锁定的口塞。
+开始时，在没有经过堵嘴训练的情况下佩戴一件上锁的口塞。
 - Corset Training
-束胸训练
+束腰训练
 - Start locked in a corset with no corset training.
-在没有进行束胸训练的情况下开始时穿戴一件锁定的束胸。
+开始时，在没有经过束腰训练的情况下穿戴一件上锁的束腰。
 - Sensory Training
 感官训练
 - Start locked in a blindfold and headphones with no Sensory training.
-在没有进行感官训练的情况下开始时佩戴一件锁定的耳罩和耳机。
+开始时，在没有进行感官训练的情况下佩戴一套锁定的耳罩和耳机。
 
 - Hard to Master: Heels
 难以掌握 : ‎高跟鞋
@@ -44140,9 +44272,9 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Gag training is significantly slower.
 堵嘴训练进度明显变慢。
 - Hard to Master: Corsets
-难以掌握 : ‎束胸
+难以掌握 : ‎束腰
 - Corset training is significantly slower.
-束胸训练进度明显变慢。
+束腰训练进度明显变慢。
 - Hard to Master: Sensory
 难以掌握 : ‎感官
 - Sensory training is significantly slower.
@@ -44157,9 +44289,9 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Start at Gag training level 5.
 开始时堵嘴训练等级为 5 级。
 - Head Start: Corsets
-领先优势 : ‎束胸
+领先优势 : ‎束腰
 - Start at Corset training level 5.
-开始时束胸训练等级为 5 级。
+开始时束腰训练等级为 5 级。
 - Head Start: Sensory
 领先优势 : ‎感官
 - Start at Sensory training level 5.
@@ -44564,7 +44696,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 拥有者：
 
 - Warden's Belt
-典狱长的贞操带
+典狱长的腰带
 - You may go on your way, but only as long your freedom is useful to her.
 你可以继续走你的路，但前提是你的自由对她有用。
 - A golden belt that enforces respect for the Goddesses. Breaking spell orbs results in a punishment.
@@ -44887,9 +45019,9 @@ Mmmph! ( 热切地点头 )
 - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 ( SPEAKER 蹲下 ) |最令人印象深刻...|我很少输给冒险者...|我很想最终得到你~
 - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
-( SPEAKER 看起来很惊讶 ) |我没想到你会如此……顺从。| ( 她打了个响指，扔给你一条发光的贞操带 ) |这是一条特殊的贞操带，专为那些拥有神圣特权的人保留。|你赢得了它。
+( SPEAKER 看起来很惊讶 ) |我没想到你会如此……顺从。| ( 她打了个响指，扔给你一条发光的腰带带 ) |这是一条特殊的腰带带，专为那些拥有神圣特权的人保留。|你赢得了它。
 - (Wear her belt anyway)
-( 无论如何都要戴上她的贞操带 )
+( 无论如何都要穿上她的腰带 )
 - (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
 ( 当你强行想要堵住她的嘴巴时，SPEAKER 摇了摇头 ) |MMMMMPH!
 
@@ -45327,7 +45459,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
 一件神奇的紧身衣，拥有一种类似神性的人造力量。它由一种编织物制成，只要不被其它衣服覆盖，就能将穿着者的深层能量转化为强大的能量。
 - It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
-据说，凡是遵循圣骑士贞洁原则的人，都会获得每 40 回合 1% 的欲望值衰减，和每回合造成 2+3%未满DP 点神圣伤害的光环。光环仅影响进入近战范围的敌人。此外，魔导布料颇具刺激性，可使所有来源的性奋值增加提高 50%，并将消耗的法力值的 8% 转化为欲望值。
+据说，只要遵循圣骑士贞洁原则，便能获得光环, 每 40 回合 -1% 欲望值，并且每回合多造成 2+缺失欲望值的 3% 的神圣伤害。仅影响进入近战范围的敌人。另外，这种魔导面料颇具刺激感，可使所有来源的性奋值增加提高 50%，并将消耗法力值的 8% 转化为欲望值。
 # :: RestraintRobeOfChastityDesc2
 # :: KinkyDungeonInventoryItemRobeOfChastityDesc2
 # :: RestraintRobeOfChastityDesc2
@@ -45335,7 +45467,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
 一件神奇的紧身衣，拥有一种类似神性的人造力量。它由一种编织物制成，只要不被其它衣服覆盖，就能将穿着者的深层能量转化为强大的能量。
 - You retrieve an interesting article dubbed 'the Robe of Chastity.
-您检索到一篇题为 “贞洁长袍 ”的有趣文章。
+您检索到一篇题为“贞洁长袍”的有趣文章。
 
 - Took
 受到
@@ -45471,7 +45603,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Waist Links (Thighs)
 腰链（大腿）
-# - High-security cables connecting your belt to your thigh cuffs. Slightly restricts mobility, increasing Sprint Cost by 10%.
+- High-security cables connecting your belt to your thigh cuffs. Slightly restricts mobility, increasing Sprint Cost by 10%.
+高安全性缆绳把腿铐连在腰带上。稍微妨碍行动，提高 10% 冲刺消耗。
 - It's made of steel and secured with a lock. Unlocking the lock will cause it to fall loose.
 它是钢制的，且用锁固定。解锁后会丢失。
 # :: RestraintNeoLinkThighsDesc2
@@ -45486,7 +45619,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Waist Links (Arms)
 腰链（手臂）
-# - High-security cables connecting your belt to your wrist cuffs. They reduce your dexterity, making it harder to reach your neck and mouth, reducing Accuracy by 25%, and preventing the use of two-handed weapons.
+- High-security cables connecting your belt to your wrist cuffs. They reduce your dexterity, making it harder to reach your neck and mouth, reducing Accuracy by 25%, and preventing the use of two-handed weapons.
+高安全性缆绳把腕铐连在腰带上。灵活性下降，让你够不到脖子和嘴部，降低 25% 命中率，禁用双手武器。
 
 
 - A chain connecting your thigh cuffs together. You can still walk, albeit slower than usual.
@@ -45496,7 +45630,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Reinforced Ankle Link
 强化踝链
-# - Keeps your ankles close. Careful not to walk too fast, or you'll trip!
+- Keeps your ankles close. Careful not to walk too fast, or you'll trip!
+让双脚无法分开太远。别走太快，小心跌倒！
 - A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints.
 一条包裹着结实橡胶的硬化金属链。用弹簧扣连接在拘束具的连接点上。
 # :: RestraintNeoAnkleLinkDesc2
@@ -45506,7 +45641,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: RestraintNeoThighLinkDesc2
 - Reinforced Ankle Link (Short)
 强化踝链（短）
-# - Keeps your ankles connected together. Hard to walk, let alone get up after a fall.
+- Keeps your ankles connected together. Hard to walk, let alone get up after a fall.
+让双脚无法分开。连走路都困难，更不用说跌倒后站起来了。
 
 
 
@@ -45531,7 +45667,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 
 - Reinforced Thigh Link
 强化腿链
-# - A link connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+- A link connecting your thigh cuffs together. You can still walk, albeit slower than usual.
+把你的腿铐连在一起。行走速度变慢。
 
 - A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 一条将脚踝铐连接在一起的链条。它为你提供了足够的走动空间，但是速度比平时慢。
@@ -45635,7 +45772,8 @@ Kocaeli - 《黑猫》
 Kocaeli - 《黑猫 2》
 - Kocaeli - Underground Jungle
 Kocaeli - 《地下丛林》
-# - Kocaeli - Crystal Cave
+- Kocaeli - Crystal Cave
+Kocaeli - 《结晶洞》
 - Kocaeli - Untitled
 Kocaeli - 《无题》
 - Kocaeli - Lost Temple
@@ -45757,10 +45895,12 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 
 
 # - Mmm mmm?
-# - (The face smiles)|I can't seem to understand what you're staying.|Maybe you should speak more clearly~
+- (The face smiles)|I can't seem to understand what you're staying.|Maybe you should speak more clearly~
+（人脸对你微笑）|不知道你在说什么。|也许你应该说清楚些~
 - How does the Automated Storage System work?
 自动存储系统是怎么运作的？
-# - (The face glitches for a single frame)|Ah! I know what you're talking about!|The storage system was used for distributing small scale supplies.|It was more of a convenience feature created by s... someone...|...than an actual logistical tool.|The bulk transport network isn't functioning right now.
+- (The face glitches for a single frame)|Ah! I know what you're talking about!|The storage system was used for distributing small scale supplies.|It was more of a convenience feature created by s... someone...|...than an actual logistical tool.|The bulk transport network isn't functioning right now.
+（人脸故障了一帧）|啊！我知道你在说什么了！|存储系统是用来分发小规模物资的。|它更像是某…某个人创造的便利功能|而不是实际的物流工具。|大型运输网络目前无法正常运行。
 
 
 # - Hmmmphgm?
@@ -46524,8 +46664,9 @@ AMNT/MAXX 仆从分配
 - Catsuit / Leotard
 紧身连体衣 / 紧身衣
 - Harness / Links
-束衣 / 链接
-# - Links
+束衣 / 链
+- Links
+链
 - Rear Plug
 肛塞
 - Front Plug
@@ -47093,7 +47234,8 @@ ENMY 解开了 ITMN 的锁!
 拿取适量的 ITMN
 - (Max: ${Num})
 （最大：${Num}）
-# - (max ${Num})
+- (max ${Num})
+（最大 ${Num}）
 - Take Everything
 拿取全部
 - Refill
@@ -47113,7 +47255,8 @@ ENMY 解开了 ITMN 的锁!
 
 - Go to the summit to deposit restraints
 前往顶部存放拘束具
-# - Visit a shrine or your own base to access storage
+- Visit a shrine or your own base to access storage
+在特质神泉或是你的基地可以访问自动存储系统
 
 
 
@@ -47780,7 +47923,8 @@ ENMY 解开了 ITMN 的锁!
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
 
-# - You can click Inspect then click the enemy to cycle thru pages.
+- You can click Inspect then click the enemy to cycle thru pages.
+你可以点击“检查”按钮然后再点击敌人来翻页。
 - NPC tooltips like the ${EnemyName} are too long to show on one page.
 过长的NPC提示信息，比如 ${EnemyName} 的提示信息会分成多页显示。
 - You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
@@ -47797,7 +47941,8 @@ ENMY 解开了 ITMN 的锁!
 你需要装备魔法切割武器来切割魔法物品。
 - You can surrender in the menu if you want to be treated more gently.
 如果你希望得到更温和的待遇，你可以在菜单中投降。
-# - To quickly re-equip armor you can right click your character to open the quick inventory.
+- To quickly re-equip armor you can right click your character to open the quick inventory.
+要快速重新装备盔甲，你可以右键点击你的角色来打开快捷背包。
 
 - That ghost looks less aggressive than the others. Maybe she can help?
 那个幽灵看上去比其他人温和，也许她可以提供帮助？
@@ -48342,7 +48487,8 @@ NME 由于不够显要，被自动释放
 活化极品束具控制住你，让你穿上了其中的一件！
 - The animated Masterworks force you to the ground and pat your head gently before floating away!
 活化极品束具把你打倒在地，温柔地拍了拍你的头，然后飘然而去！
-# - The kitty's living latex spreads, encasing your limbs in tight rubber!
+- The kitty's living latex spreads, encasing your limbs in tight rubber!
+猫娘的活体乳胶扩散到你的四肢，形成紧致的橡胶！
 
 
 
@@ -48364,7 +48510,8 @@ NME 由于不够显要，被自动释放
 - The animated masterworks grab you!
 活化极品束具抓住了你！
 
-# - An animated suit of restraints rises out of the chest!
+- An animated suit of restraints rises out of the chest!
+一套活体束具从箱子中冒出来！
 
 - Why hello there!|Found any interesting gear?
 哎呀，你好呀！|找到了什么有趣的装备吗？
