@@ -142,9 +142,14 @@ function KDRecycleString(item: item, quantity: number, container: KDContainer) :
 
 
 function KDDrawRecycler(x: number, y: number, width: number): number {
-	let dd = KDMapData.RoomType == "Summit" ? 400 : 300;
+
+	let condition = () => {
+		return KDMapData.RoomType == "Summit" || KDMapData.RoomType == "PerkRoom";
+	}
+
+	let dd = condition() ? 400 : 300;
 	let cats = KDListRecyclerCats();
-	if (KDMapData.RoomType == "Summit") {
+	if (condition()) {
 		dd += 125 + 3 * KDRecyclerCatSpacing;
 	}
 	if (y + dd < 940) {
@@ -177,14 +182,18 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			rID++;
 		}
 
-		if (KDMapData.RoomType == "Summit" || KDMapData.RoomType == "PerkRoom") {
+		let condition = () => {
+			return KDMapData.RoomType == "Summit" || KDMapData.RoomType == "PerkRoom";
+		}
+
+		if (condition()) {
 			DrawButtonKDEx(
 				"recycleButton",
 				() => {
 					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "RecyclerInput_"), KDBaseWhite, 2);
 					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "Recycler_"), KDBaseWhite, 2);
 					KDGameData.InventoryAction = "Recycle";
-					KinkyDungeonDrawState = "Inventory";
+					KDShowInventory(null);
 					KinkyDungeonCurrentFilter = LooseRestraint;
 					return true;
 				}, KDMapData.RoomType == "Summit",
@@ -213,6 +222,11 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 	if (KDSelectedRecyclerCategory == "Null" && cats[0])
 		KDSelectedRecyclerCategory = cats[0].name;
 	let iin = index;
+
+	let condition = () => {
+		return KDMapData.RoomType == "Summit" || KDMapData.RoomType == "PerkRoom";
+	}
+
 	for (let cat of cats) {
 		let selected = cat.name == KDSelectedRecyclerCategory;
 		if (selected) selectedcat = cat;
@@ -243,7 +257,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 					KDSelectedRecyclerItem = cat.items[0].name;
 				} else if (KDSelectedRecyclerCategory == cat.name) KDSelectedRecyclerCategory = "";
 				return true;
-			}, KDMapData.RoomType == "Summit",
+			}, condition(),
 
 			x + XX + 32, y + YY, 72, 72, "",
 			KDBaseWhite, KinkyDungeonRootDirectory + "UI/Recycler/" + cat.name + ".png",
@@ -319,7 +333,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 						KDSelectedRecyclerItem = item.name;
 					else KDSelectedRecyclerItem = "";
 					return true;
-				}, KDMapData.RoomType == "Summit",
+				}, condition(),
 
 				x + XX + 32, y + YY, 72, 72, "",
 				KDBaseWhite, img,

@@ -238,7 +238,7 @@ function KDGetGameContextActionsVanilla(
 		optionImages.Inventory = "Inventory";
 		optionActions.Inventory = () => {
 			KDContextMenu = false;
-			KinkyDungeonDrawState = "Inventory";
+			KDShowInventory(null);
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 		}
@@ -348,4 +348,9 @@ function KDContextMenuWeaponSpecialSuff(special: KDWeaponSpecial) {
 	: ((special.type == "attack") ? "attack"
 	: ((special.type == "ignite") ? "ignite"
 	: ""))));
+}
+
+function KDShowInventory(container: string[]) {
+	KinkyDungeonDrawState = "Inventory";
+	KDGameData.InventoryActionContainer = container || [];
 }

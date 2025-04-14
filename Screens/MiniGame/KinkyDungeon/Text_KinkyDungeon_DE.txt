@@ -19318,7 +19318,7 @@
 
 ### (The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)
 
-### (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)
+### (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 
 ### (SPEAKER looks confused)|What are you... Okay, you can have it...
 

@@ -21006,7 +21006,7 @@ No tengo más remedio que presentar.
 (El fabricante de muñecas se hunde en un charco de baba y emerge cerca)|(¡Brazos robóticos brotan de su espalda mientras se precipita hacia ti!)
 
 
-- (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)
+- (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 (El fabricante de muñecas reconoce la derrota)|Me has derrotado.|Yo... yo... te dejaré pasar.|(La puerta de salida se abre con un clic audible)
 - (SPEAKER looks confused)|What are you... Okay, you can have it...
 (EL SPEAKER se ve confundido)|¿Qué estás... Vale, puedes quedártelo...

@@ -587,7 +587,7 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 	let width = 1100 / num;
 	let II = 0;
 	DrawButtonKDExScroll("TabLore", scrollFunc, (_b) => {
-		KinkyDungeonDrawState = "Inventory";
+		KDShowInventory(null);
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonInventory"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Inventory", KDButtonColor); II++;

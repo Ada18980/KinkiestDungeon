@@ -2053,7 +2053,8 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();
 
-		} else {KinkyDungeonDrawState = "Restart";
+		} else {
+			KinkyDungeonDrawState = "Restart";
 			KDConfirmDeleteSave = false;
 			if (KDDebugMode) {
 				ElementCreateTextArea("DebugEnemy");
@@ -2082,7 +2083,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		if (skip == 1)
 			KinkyDungeonDrawState = "Game";
 		else
-			KinkyDungeonDrawState = "Inventory";
+			KDShowInventory(null);
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 		KinkyDungeonDressPlayer();
 		return true;

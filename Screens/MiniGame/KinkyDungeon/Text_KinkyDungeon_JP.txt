@@ -21726,7 +21726,7 @@ ENEMYNAME が近くの人形を支配下に置いた！
 (ドールメイカーはスライムの海に沈んでいった……)|(が、突然機械の腕を背中に装着した姿で目の前に現れ、突進してきた！)
 
 
-- (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)
+- (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 (ドールメイカーは敗北を認め、膝をついた)|まさか、私が敗れるとは。|……あなたを通しましょう。|(機械音を放ち、次の階層への扉が開いた)
 - (SPEAKER looks confused)|What are you... Okay, you can have it...
 (SPEAKER は混乱しているようだ)|何を……わかりました、あなたがそう言うなら……

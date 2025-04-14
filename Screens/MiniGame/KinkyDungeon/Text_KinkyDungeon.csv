@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.63"
+KDVersionStr,"5.4.64"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -3515,6 +3515,7 @@ KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonObjectFurniture,"Just a normal piece of furniture."
 KinkyDungeonObjectTrap,"Nothing to see here."
 KinkyDungeonObject,"Nothing to see here."
+KinkyDungeonObjectChest,"Chest"
 
 
 
@@ -13851,7 +13852,7 @@ rDollmakerLoseFinish,"(The Dollmaker places her visor over your face)|(With a cl
 rDollmakerStage2,"(The Dollmaker suddenly teleports away)|Hmmph. Looks like I will have to use my heavy firepower."
 rDollmakerStage3,"(The Dollmaker sinks into a puddle of slime and emerges nearby)|(Robotic arms sprout from her back as she storms toward you!)"
 
-rDollmakerWin,"(The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)"
+rDollmakerWin,"(The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)"
 rDollmakerWinAccept,"(SPEAKER looks confused)|What are you... Okay, you can have it..."
 dDollmakerWin_Accept,"(Wear a doll visor)"
 rDollmakerWinAccept2,"(SPEAKER looks confused)|What are you... Okay, you can have it..."
@@ -32069,8 +32070,8 @@ KDSummonLatexKitty,The chest contained an angry latex kitty!
 NameLatexKitty,Latex Kitty
 KillLatexKitty,The latex kitty
 AttackLatexKitty,The latex kitty rubs against you seductively!
-AttackLatexKittyBind,The latex kitty's rubbery coating spreads to you!
-AttackLatexKittyLock,The latex kitty's rubbery coating casts itself into locks!
+AttackLatexKittyBind,"The latex kitty's rubbery coating spreads to you!"
+AttackLatexKittyLock,"The latex kitty's rubbery coating casts itself into locks!"
 
 KDTooltipCycleClick,Click to show more info...
 KDTooltipCycleClickNeg,Click to hide info...

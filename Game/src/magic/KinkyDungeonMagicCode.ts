@@ -444,7 +444,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		} else if (en == entity && entity == KDPlayer()) {
 			if (KinkyDungeonTargetingSpellItem) {
 				if (KDIsGeneric(KinkyDungeonTargetingSpellItem)) {
-					KinkyDungeonDrawState = "Inventory";
+					KDShowInventory(null);
 					KinkyDungeonCurrentFilter = LooseRestraint;
 					KDCurrentAlternateInventory = "GenericRaw";
 
@@ -588,7 +588,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				} else {
 					KDGameData.InventoryAction = "RemoveMagicLock";
-					KinkyDungeonDrawState = "Inventory";
+					KDShowInventory(null);
 					KinkyDungeonCurrentFilter = Restraint;
 					KDGameData.InventoryActionManaCost = KinkyDungeonGetManaCost(spell);
 				}

@@ -127,7 +127,11 @@ function KDDrawDialogue(delta: number): void {
 								if (notGrey) {
 									KDOptionOffset = 0;
 									KDDialogueData.CurrentDialogueIndex = 0;
-									KDSendInput("dialogue", {dialogue: KDGameData.CurrentDialog, dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0], click: true, enemy: KDGetSpeaker()?.id});
+									KDSendInput("dialogue",
+										{dialogue: KDGameData.CurrentDialog,
+											dialogueStage: KDGameData.CurrentDialogStage + ((KDGameData.CurrentDialogStage) ? "_" : "") + entries[i][0],
+											click: true,
+											enemy: KDGetSpeaker()?.id});
 								}
 								return true;
 							}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
@@ -773,7 +777,7 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KDGameData.InventoryAction = "Food";
 				KDGameData.FoodTarget = enemy.id;
-				KinkyDungeonDrawState = "Inventory";
+				KDShowInventory(null);
 				KinkyDungeonCurrentFilter = Consumable;
 				KinkyDungeonSendTextMessage(8, TextGet("KDFoodTarget"), KDBaseWhite, 1, true);
 
@@ -1715,7 +1719,8 @@ function KDShopDialogue(name: string, items: string[], requireTags: string[], re
 		shop.options["Item" + i] = {playertext: "ItemShop" + i, response: name + item,
 			prerequisiteFunction: (_gagged, _player) => {
 				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
-				return KinkyDungeonInventoryGetSafe(item) != undefined && enemy && !KDHelpless(enemy);
+				return KinkyDungeonInventoryGetSafe(item) != undefined
+					&& KinkyDungeonInventoryGetSafe(item).quantity !== 0 && enemy && !KDHelpless(enemy);
 			},
 			greyoutFunction: (_gagged, _player) => {
 				let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
@@ -1727,6 +1732,7 @@ function KDShopDialogue(name: string, items: string[], requireTags: string[], re
 			greyoutTooltip: "KDNotEnoughMoneyVendor",
 			clickFunction: (_gagged, _player) => {
 				let itemInv = KinkyDungeonInventoryGetSafe(item);
+				if (!itemInv) return false;
 				if (itemInv.type == Consumable)
 					KinkyDungeonChangeConsumable(KDConsumable(itemInv), -1);
 				else KinkyDungeonInventoryRemoveSafe(itemInv);

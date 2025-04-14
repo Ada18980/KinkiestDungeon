@@ -6897,7 +6897,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				KDGameData.InventoryAction = "Offhand";
 				KDGameData.Offhand = "";
 				KDGameData.OffhandOld = "";
-				KinkyDungeonDrawState = "Inventory";
+				KDShowInventory(null);
 				KinkyDungeonCurrentFilter = Weapon;
 			}
 		},
@@ -6906,7 +6906,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				KinkyDungeonSpellChoicesToggle[data.index] = false;
 
 				KDGameData.InventoryAction = "Attach";
-				KinkyDungeonDrawState = "Inventory";
+				KDShowInventory(null);
 				KinkyDungeonCurrentFilter = Weapon;
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Tape.ogg");
 			}

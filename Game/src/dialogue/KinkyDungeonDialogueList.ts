@@ -3243,7 +3243,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KDGameData.InventoryAction = "Sell";
 							KDGameData.SellMarkup = 0.7;
-							KinkyDungeonDrawState = "Inventory";
+							KDShowInventory(null);
 							KinkyDungeonCurrentFilter = Weapon;
 							return false;
 						},
@@ -3254,8 +3254,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KDGameData.InventoryAction = "Sell";
 							KDGameData.SellMarkup = 0.7;
-							KinkyDungeonDrawState = "Inventory";
-							KDGameData.InventoryActionContainer = ["Sell", "PlayerChest"];
+							KDShowInventory(["Sell", "PlayerChest"]);
 							KinkyDungeonCurrentFilter = Consumable;
 							return false;
 						},
@@ -3266,7 +3265,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KDGameData.InventoryAction = "SellBulk";
 							KDGameData.SellMarkup = 0.7;
-							KinkyDungeonDrawState = "Inventory";
+							KDShowInventory(null);
 							KinkyDungeonCurrentFilter = Weapon;
 							return false;
 						},

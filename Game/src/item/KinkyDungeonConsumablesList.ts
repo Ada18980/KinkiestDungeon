@@ -187,7 +187,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity,
 			KDGameData.InventoryAction = "RemoveCurseOrHex";
 			KDGameData.CurseLevel = Consumable.power;
 			KDGameData.UsingConsumable = Consumable.name;
-			KinkyDungeonDrawState = "Inventory";
+			KDShowInventory(null);
 			KinkyDungeonCurrentFilter = Restraint;
 			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), KDBaseRed, 1, true);
 		} else {

@@ -21720,7 +21720,7 @@ ENEMYNAME превращает близлежащих кукол в своих �
 (Кукольница погружается в лужу слизи и выныривает неподалеку)|(Роботизированные руки вырастают из ее спины, и она несется к вам!)
 
 
-- (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The door exit door unlocks with an audible click)
+- (The Dollmaker concedes defeat)|You have defeated me.|I... I... will let you pass.|(The exit door unlocks with an audible click)
 (Кукольница признает свое поражение)|Ты победила меня.|Я... я... позволю тебе пройти.|(Выходная дверь со щелчком открывается)
 - (SPEAKER looks confused)|What are you... Okay, you can have it...
 (SPEAKER выглядит удивленной)|Что ты... Ладно, ты можешь забрать это...

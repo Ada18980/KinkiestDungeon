@@ -4856,7 +4856,24 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
 				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
 				case KinkyDungeonKeyMenu[9]: KinkyDungeonDrawState = KinkyDungeonDrawState == "JourneyMap" ? "Game" : "JourneyMap"; break;
-				case KinkyDungeonKeyMenu[8]: KinkyDungeonDrawState = "Restart"; break;
+				case KinkyDungeonKeyMenu[8]: {
+					KinkyDungeonDrawState = "Restart";
+					KDConfirmDeleteSave = false;
+					if (KDDebugMode) {
+						ElementCreateTextArea("DebugEnemy");
+						ElementValue("DebugEnemy", "Maidforce");
+						ElementCreateTextArea("DebugItem");
+						ElementValue("DebugItem", "TrapArmbinder");
+					} else {
+						if (document.getElementById("DebugEnemy")) {
+							ElementRemove("DebugEnemy");
+						}
+						if (document.getElementById("DebugItem")) {
+							ElementRemove("DebugItem");
+						}
+					}
+					break;
+				}
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
@@ -4873,7 +4890,7 @@ function KinkyDungeonGameKeyDown() {
 			switch (KinkyDungeonKeybindingCurrentKey) {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
-				case KinkyDungeonKeyMenu[1]: KinkyDungeonDrawState = "Inventory"; break;
+				case KinkyDungeonKeyMenu[1]: KDShowInventory(null); break;
 				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "Reputation"; break;
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "MagicSpells"; break;
 				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = "Logbook"; break;
