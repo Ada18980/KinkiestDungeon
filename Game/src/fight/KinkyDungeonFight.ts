@@ -3344,7 +3344,9 @@ let KDConditions: Record<string, (e: KinkyDungeonEvent, data: any) => boolean> =
 		return data.damage && data.damage.type == e.damage;
 	},
 	"spellType": (e, data) => {
-		return data.spell?.tags?.includes(e.kind);
+		return (e.kind && data.spell?.tags?.includes(e.kind))
+			|| (e.element && data.spell?.tags?.includes(e.element))
+			|| data.spell?.damage == e.kind;
 	},
 };
 

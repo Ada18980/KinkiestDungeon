@@ -1614,6 +1614,7 @@ interface KinkyDungeonEvent {
 	original?: string;
 	variance?: number;
 	damage?: string;
+	element?: string;
 	buffTypes?: string[];
 	damageTrigger?: string;
 	dist?: number;
@@ -3953,6 +3954,7 @@ interface KDEnchantment {
 
 interface KDModifierConditionData {
 	element?: string,
+	elementdmg?: string,
 	Loot: string,
 	curse: string,
 	primaryEnchantment: string,

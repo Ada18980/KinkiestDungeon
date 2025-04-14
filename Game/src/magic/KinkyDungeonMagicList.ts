@@ -876,7 +876,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			}
 		},
 
-		{name: "Tremor", prerequisite: "ApprenticeEarth", tags: ["earth", "offense", "utility"], sfx: "Telekinesis", school: "Elements", manacost: 2, components: ["Verbal"], level:1,
+		{name: "Tremor", prerequisite: "ApprenticeEarth", tags: ["earth", "offense", "utility", "crush"], sfx: "Telekinesis", school: "Elements", manacost: 2, components: ["Verbal"], level:1,
 			type:"hit", onhit:"instant", evadeable: true, noblock: true, time:8, power: 2, range: 3.99, size: 3, lifetime: 1, aoe: 1.5, damage: "crush",
 			events: [{trigger: "beforeDamageEnemy", type: "MakeVulnerable", time: 2}],
 			effectTileDurationMod: 40, effectTile: {
@@ -885,9 +885,12 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			}, effectTileDensity: 0.5,
 		},
 
-		{name: "Earthquake", prerequisite: "Tremor", landsfx: "Telekinesis", school: "Elements", manacost: 9, components: ["Verbal"], level:1, type:"inert", onhit:"cast",
+		{name: "Earthquake", prerequisite: "Tremor", landsfx: "Telekinesis", school: "Elements", manacost: 9,
+			tags: ["earth", "offense", "utility", "crush"],
+			components: ["Verbal"], level:1, type:"inert", onhit:"cast",
 			upcastFrom: "Tremor", upcastLevel: 2,
-			dot: true, time: 4, delay: 6, range: 2.99, size: 5, aoe: 1.5, lifetime: 1, power: 1, damage: "inert", noEnemyCollision: true, noTerrainHit: true,
+			dot: true, time: 4, delay: 6, range: 2.99, size: 5, aoe: 1.5, lifetime: 1, power: 1, damage: "inert", noEnemyCollision: true,
+			noTerrainHit: true,
 			spellcasthit: {spell: "Tremor", target: "onhit", chance: 1.0, countPerCast: 2, directional:false, offset: false}, channel: 7},
 
 		{name: "Firecracker", prerequisite: "ApprenticeFire", landsfx: "Lightning", tags: ["fire", "aoe", "offense"], noUniqueHits: true, noise: 7, sfx: "FireSpell", school: "Elements", manacost: 4,
