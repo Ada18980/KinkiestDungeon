@@ -454,12 +454,12 @@ function KinkyDungeonPotionCollar() {
 	return false;
 }
 
-function KinkyDungeonCanDrink(byEnemy?: boolean): boolean {
+function KinkyDungeonCanDrink(byEnemy?: boolean, strict?: boolean): boolean {
 	for (let inv of KinkyDungeonAllRestraint()) {
 		if (KDRestraint(inv).allowPotions) return true;
 	}
 	if (KDGroupBlocked("ItemMouth", byEnemy)) return false;
-	return KinkyDungeonCanTalk(true);
+	return KinkyDungeonCanTalk(!strict);
 }
 
 function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: entity = null, tx: number = 0, ty: number = 0): boolean {
@@ -568,9 +568,26 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 			return false;
 		}
 	}
-	if (!(KinkyDungeonHasHelp()) && needArms && !KinkyDungeonStatsChoice.get("Psychic") && !(item.item && KDConsumable(item.item).potion && !KinkyDungeonIsArmsBound() && (!KinkyDungeonStatsChoice.has("WeakGrip") || !KinkyDungeonIsHandsBound(false, false))) && (KinkyDungeonIsHandsBound(false, true) || (KinkyDungeonStatsChoice.has("WeakGrip") && item.item && KDConsumable(item.item).potion)) && !KinkyDungeonCanUseFeet()) {
+	if (!(KinkyDungeonHasHelp())
+		&& needArms
+		&& !KinkyDungeonStatsChoice.get("Psychic")
+		&& !(item.item && KDConsumable(item.item).potion
+			&& !KinkyDungeonIsArmsBound()
+			&& (!KinkyDungeonStatsChoice.has("WeakGrip")
+				|| !KinkyDungeonIsHandsBound(false, false)))
+		&& (KinkyDungeonIsHandsBound(false, true)
+			|| (KinkyDungeonStatsChoice.has("WeakGrip")
+					&& item.item
+					&& KDConsumable(item.item).potion))
+		&& !KinkyDungeonCanUseFeet()) {
 		let allowPotions = KinkyDungeonPotionCollar();
 		let nohands = KinkyDungeonIsHandsBound(false, true);
+		let failmsg = "KinkyDungeonCantUsePotion";
+		if (!nohands && !KinkyDungeonCanDrink(false, true)) {
+			failmsg = "KinkyDungeonCantUsePotionsKneelNoMouth";
+			nohands = true;
+		}
+
 		if (KDConsumable(item.item).potion && allowPotions) {
 			//KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - energyCost);
 		} else if (!nohands && KinkyDungeonCanKneel() && KDGameData.KneelTurns < 1) {
@@ -589,7 +606,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 			return false;
 		} else if (nohands || KDGameData.KneelTurns < 1) {
 			//KinkyDungeonAdvanceTime(1);
-			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotions"), KDBaseRed, 1);
+			KinkyDungeonSendActionMessage(7, TextGet(failmsg), KDBaseRed, 1);
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)
@@ -754,9 +771,26 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 	let maxStrictness = (item && KDConsumable(item) && KDConsumable(item).maxStrictness) ? KDConsumable(item).maxStrictness : 1000;
 
 
-	if (!(KinkyDungeonHasHelp()) && needArms && !KinkyDungeonStatsChoice.get("Psychic") && !(item && KDConsumable(item).potion && !KinkyDungeonIsArmsBound() && (!KinkyDungeonStatsChoice.has("WeakGrip") || !KinkyDungeonIsHandsBound(false, false))) && (KinkyDungeonIsHandsBound(false, true) || (KinkyDungeonStatsChoice.has("WeakGrip") && item && KDConsumable(item).potion)) && !KinkyDungeonCanUseFeet()) {
+	if (!(KinkyDungeonHasHelp())
+		&& needArms
+		&& !KinkyDungeonStatsChoice.get("Psychic")
+		&& !(item && KDConsumable(item).potion
+			&& !KinkyDungeonIsArmsBound()
+			&& (!KinkyDungeonStatsChoice.has("WeakGrip")
+				|| !KinkyDungeonIsHandsBound(false, false)))
+		&& (KinkyDungeonIsHandsBound(false, true)
+			|| (KinkyDungeonStatsChoice.has("WeakGrip")
+			&& item
+			&& KDConsumable(item).potion))
+		&& !KinkyDungeonCanUseFeet()) {
 		let allowPotions = KinkyDungeonPotionCollar();
 		let nohands = KinkyDungeonIsHandsBound(false, true);
+		let failmsg = "KinkyDungeonCantUsePotion";
+		if (!nohands && !KinkyDungeonCanDrink(false, true)) {
+			failmsg = "KinkyDungeonCantUsePotionsKneelNoMouth";
+			nohands = true;
+		}
+
 		if (KDConsumable(item).potion && allowPotions) {
 			//KDGameData.AncientEnergyLevel = Math.max(0, KDGameData.AncientEnergyLevel - energyCost);
 		} else if (!nohands && KinkyDungeonCanKneel() && KDGameData.KneelTurns < 1) {
@@ -775,7 +809,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 			return false;
 		} else if (nohands || KDGameData.KneelTurns < 1) {
 			//KinkyDungeonAdvanceTime(1);
-			KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonCantUsePotions"), KDBaseRed, 1);
+			KinkyDungeonSendActionMessage(7, TextGet(failmsg), KDBaseRed, 1);
 
 			KDResetAlternateInventoryRender();
 			if (KinkyDungeonTextMessageTime > 0)

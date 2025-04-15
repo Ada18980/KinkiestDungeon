@@ -49,6 +49,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Fix inventory stuck in player storage after selling items to shopkeeper
 - Fix recycler not working in perk shrine
 - Fix some expressions not properly showing
+- Fixed bug where weak grip still allowed holding weapons
 TODO
 Allow recycling from storage
 Bug: Floor generation prevents opening exit

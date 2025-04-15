@@ -1415,6 +1415,7 @@ function KinkyDungeonCanUseWeapon(NoOverride?: boolean, e?: boolean, weapon?: we
 		clumsy: weapon?.clumsy,
 		weapon: weapon,
 		treatAsHandsBound: false,
+		treatAsArmsBound: false,
 	};
 	if (!NoOverride)
 		KinkyDungeonSendEvent("getWeapon", {event: e, flags: flags});
@@ -1422,7 +1423,8 @@ function KinkyDungeonCanUseWeapon(NoOverride?: boolean, e?: boolean, weapon?: we
 		|| weapon?.noHands
 		|| (!(flags.treatAsHandsBound || KinkyDungeonIsHandsBound(false, true))
 			&& ((!KinkyDungeonStatsChoice.get("WeakGrip") && !flags.clumsy)
-			|| !(flags.treatAsHandsBound || KinkyDungeonIsHandsBound(false, true))));
+				|| !(flags.treatAsArmsBound
+					|| KinkyDungeonIsArmsBound(false, true))));
 }
 
 let KDBlindnessCap = 0;

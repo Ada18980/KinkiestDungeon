@@ -680,6 +680,7 @@ KinkyDungeonStatWeakGrip,"Weak Grip"
 KinkyDungeonStatDescWeakGrip,"Having arms bound prevents you from holding weapons or potions."
 
 KinkyDungeonCantUsePotionsKneel,You kneel down so you can reach the potion with your mouth...
+KinkyDungeonCantUsePotionsKneelNoMouth,"Without hands, and with your mouth occupied, you cannot drink the potion."
 
 KinkyDungeonStatIncantation,"Can't Hear You!"
 KinkyDungeonStatDescIncantation,"Being gagged blocks you from casting verbal spells regardless of gag power."
