@@ -376,7 +376,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				return true;
 			}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), KDBaseWhite);
 		} else {
-			let CF = KDTextField("KDCopyProperties", X, YY - 50,
+			let CF = KDTextField("KDCopyProperties", X, YY - 70,
 				width, 30, undefined, undefined, "300", 12);
 			if (CF.Created) {
 				CF.Element.oninput = (_event: any) => {
@@ -541,7 +541,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				return true;
 			}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), KDBaseWhite);
 		} else {
-			let CF = KDTextField("KDCopyFilter", X, YY - 50, width, 30, undefined, undefined, "300");
+			let CF = KDTextField("KDCopyFilter", X, YY - 70, width, 30, undefined, undefined, "300");
 			if (CF.Created) {
 				CF.Element.oninput = (_event: any) => {
 					let value = ElementValue("KDCopyFilter");
