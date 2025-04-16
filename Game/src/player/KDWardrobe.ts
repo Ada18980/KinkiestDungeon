@@ -517,17 +517,6 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 
 		if (!KDClipboardDisabled) {
 			if (TestMode)
-				DrawButtonKDEx("ExportAllLayers", (_bdata) => {
-					if (Model.Filters) {
-						navigator.clipboard.writeText(JSON.stringify(Model.Filters));
-					}
-					return true;
-				}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), KDBaseMint);
-
-			DrawButtonKDEx("KDCopyLayer", (_bdata) => {
-				navigator.clipboard.writeText(JSON.stringify(filters));
-				return true;
-			}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), KDBaseWhite);
 			DrawButtonKDEx("KDPasteLayer", (_bdata) => {
 				navigator.clipboard.readText()
 					.then(text => {
@@ -543,6 +532,19 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				return true;
 			}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), KDBaseWhite);
 		} else {
+			if (TestMode) {
+				DrawButtonKDEx("ExportAllLayers", (_bdata) => {
+					if (Model.Filters) {
+						KDExportWardrobeDataToClipboardOrModal(JSON.stringify(Model.Filters), "All Layers Colors");
+					}
+					return true;
+				}, true, X + width/2 + 10, YY - 40, width/2 - 10, 30, TextGet("KDExportAllLayers"), KDBaseMint);
+
+				DrawButtonKDEx("KDCopyLayer", (_bdata) => {
+					KDExportWardrobeDataToClipboardOrModal(JSON.stringify(filters), "Copy Layer Colors");
+					return true;
+				}, true, X, YY, width/2 - 10, 30, TextGet("KDCopyLayer"), KDBaseWhite);
+			}
 			let CF = KDTextField("KDCopyFilter", X, YY - 70, width, 30, undefined, undefined, "300");
 			if (CF.Created) {
 				CF.Element.oninput = (_event: any) => {
