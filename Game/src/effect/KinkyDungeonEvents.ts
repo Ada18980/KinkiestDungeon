@@ -12611,6 +12611,7 @@ let KDHardModeReplace = {
 	"Apprentice2": "Conjurer",
 	"HighWizard": "Fungal",
 	"Dressmaker": "Librarian",
+	"Mummy": "ClericHigh",
 	"Cleric": "Mummy",
 	"BlindZombie": "NawashiZombie",
 	"FastZombie": "SamuraiZombie",

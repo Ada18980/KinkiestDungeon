@@ -3354,7 +3354,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			let e = KDGetSpeaker();
 			if (e) {
 				e.hp = 0;
-				let en = DialogueCreateEnemy(e.x, e.y, "Mummy");
+				let en = DialogueCreateEnemy(e.x, e.y, KDGetEffLevel() > 4 ? "ClericHigh" : "Mummy");
 				en.hostile = 9999;
 				en.faction = "Enemy";
 				en.aware = true;

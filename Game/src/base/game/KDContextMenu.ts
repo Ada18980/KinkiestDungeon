@@ -353,4 +353,6 @@ function KDContextMenuWeaponSpecialSuff(special: KDWeaponSpecial) {
 function KDShowInventory(container: string[]) {
 	KinkyDungeonDrawState = "Inventory";
 	KDGameData.InventoryActionContainer = container || [];
+	if (container?.length > 0)
+		KDGameData.InventoryAction = container[0];
 }

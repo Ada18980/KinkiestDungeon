@@ -3591,7 +3591,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		effectTileDurationMod: 10, effectTile: {
 			name: "Ropes",
 			duration: 20,
-		},
+		},effectTileDensityDoT: 0.25, effectTileDensityFullIfEmpty: true,
 		effectTileDoT: {
 			name: "Ropes",
 			duration: 2,
@@ -3627,7 +3627,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		effectTileDurationMod: 10, effectTile: {
 			name: "Fabric",
 			duration: 20,
-		},
+		},effectTileDensityDoT: 0.25, effectTileDensityFullIfEmpty: true,
 		effectTileDoT: {
 			name: "Fabric",
 			duration: 2,
@@ -3645,7 +3645,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		effectTileDurationMod: 10, effectTile: {
 			name: "Vines",
 			duration: 20,
-		},
+		}, effectTileDensityDoT: 0.25, effectTileDensityFullIfEmpty: true,
 		effectTileDoT: {
 			name: "Vines",
 			duration: 2,

@@ -30770,7 +30770,7 @@ KinkyDungeonStatDescFreeBoob2,"Chastity bras are much rarer."
 
 KDFacilitiesLocked,Find an elevator to the Summit in order to access facilities.
 KDFacilityLocal,Visit the Summit to allow additional interactions with this facility.
-KDFacilityLocal2,Must visit the Summit or be in a perk shrine to recycle restraints.
+KDFacilityLocal2,Must visit the Summit or be in a perk shrine to recycle from inventory.
 
 KDFacilityInfo_Training,"+AMNT% Training/Tick"
 KDFacilityInfo_Opinion,"+AMNT% Opinion/Tick"
@@ -30793,7 +30793,8 @@ KDFacilityDesc_CuddleLounge,"Assign prisoners to the lounge in order to improve 
 KDFacility_Warden,Warden
 KDFacilityDesc_Warden,"Appoint a warden to keep prisoners in check and automatically bind using restraints from storage."
 
-KDRecycleButton,Recycle Restraints
+KDRecycleButton,Recycle Items
+KDRecycleButtonStorage,Recycle (Storage)
 
 KDInventoryActionRecycle,Recycle One
 KDInventoryActionRecycleBulk,Recycle ALL!

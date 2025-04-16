@@ -196,15 +196,53 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 					KDShowInventory(null);
 					KinkyDungeonCurrentFilter = LooseRestraint;
 					return true;
-				}, KDMapData.RoomType == "Summit",
-				x + width/2 + 150, y + 62, 300, 80, TextGet("KDRecycleButton"),
+				}, true,
+				x + width/2 + 25, y + 62, 225, 80, TextGet("KDRecycleButton"),
 				KDBaseWhite, KinkyDungeonRootDirectory + 'InventoryAction/Recycle.png',
+				undefined, false, true, KDButtonColor, undefined, true
+			);
+			DrawButtonKDEx(
+				"recycleButtonStorage",
+				() => {
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "RecyclerInput_"), KDBaseWhite, 2);
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "Recycler_"), KDBaseWhite, 2);
+					//KDGameData.InventoryAction = "Recycle";
+					KDShowInventory(["Recycle", "PlayerChest"]);
+					KinkyDungeonCurrentFilter = LooseRestraint;
+					return true;
+				}, true,
+				x + width/2 + 275, y + 62, 225, 80, TextGet("KDRecycleButtonStorage"),
+				KDBaseWhite, KinkyDungeonRootDirectory + 'Backpack.png',
 				undefined, false, true, KDButtonColor, undefined, true
 			);
 			//yy += 150;
 			yy += 180;
 			KDDrawRecyclerBlueprints(cats, x, yy, width);
 		} else {
+			DrawButtonKDEx(
+				"recycleButton",
+				() => {
+					return true;
+				}, false,
+				x + width/2 + 25, y + 62, 225, 80, TextGet("KDRecycleButton"),
+				KDBaseLightGrey, KinkyDungeonRootDirectory + 'InventoryAction/Recycle.png',
+				undefined, false, true, KDButtonColor, undefined, true
+			);
+			DrawButtonKDEx(
+				"recycleButtonStorage",
+				() => {
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "RecyclerInput_"), KDBaseWhite, 2);
+					KinkyDungeonSendTextMessage(10, KDRecycleResourceString(true, "Recycler_"), KDBaseWhite, 2);
+					//KDGameData.InventoryAction = "Recycle";
+					KDShowInventory(["Recycle", "PlayerChest"]);
+					KinkyDungeonCurrentFilter = LooseRestraint;
+					return true;
+				}, true,
+				x + width/2 + 275, y + 62, 225, 80, TextGet("KDRecycleButtonStorage"),
+				KDBaseWhite, KinkyDungeonRootDirectory + 'Backpack.png',
+				undefined, false, true, KDButtonColor, undefined, true
+			);
+
 			yy += 240;
 			DrawTextFitKD(TextGet("KDFacilityLocal2"), x + 560, y + 280, 1050 - 160, KDBaseWhite, KDTextGray0, 32, "center");
 		}

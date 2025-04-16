@@ -3,7 +3,7 @@
 
 let KDPreventAccidentalClickTime = 0;
 let KDInventoryActionSpacing = 76;
-let KDInventoryActionPerRow = 6;
+let KDInventoryActionPerRow = 7;
 
 
 let KinkyDungeonFilters = [
@@ -1881,8 +1881,8 @@ function KinkyDungeonDrawInventory() {
 		}
 
 		if (inventoryActions.length > 0) {
-			let XX = canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 2;
-			let YY = canvasOffsetY_ui + 483*KinkyDungeonBookScale - 5;
+			let XX = canvasOffsetX_ui + xOffset + 640*KinkyDungeonBookScale - 2 + 18;
+			let YY = canvasOffsetY_ui + 483*KinkyDungeonBookScale - 5 + 52;
 			let YYTooltip = YY - 30;
 			let II = 0;
 			for (let action of inventoryActions) {

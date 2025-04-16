@@ -1078,10 +1078,13 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return KDRecycleString(item, item.quantity || 1, undefined);
 		},
 		text:  (_player, item) => {
-			return KDRecycleString(item, item.quantity || 1, undefined);
+			return TextGet("KDInventoryActionRecycleBulk");
+			//return KDRecycleString(item, item.quantity || 1, undefined);
 		},
 		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name] > 9) return false;
+			if (KDWeapon(item)?.unarmed) return false;
+			if (KDRestraint(item)?.noRecycle != undefined) return false;
 			return item?.type == LooseRestraint;
 		},
 		show: (_player, item) => {
@@ -1132,7 +1135,9 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		},
 		valid: (_player, item) => {
 			if (KDGameData.ItemPriority[item.name] > 9) return false;
-			return (item?.type == LooseRestraint);
+			if (KDWeapon(item)?.unarmed) return false;
+			if (KDRestraint(item)?.noRecycle != undefined) return false;
+			return (item?.type == LooseRestraint && item?.quantity > 1);
 		},
 		show: (_player, item) => {
 			return item?.type == LooseRestraint;

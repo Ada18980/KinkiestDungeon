@@ -2205,6 +2205,8 @@ interface spell {
 	effectTileDistDoT?: number,
 	effectTileDurationModDoT?: number,
 	effectTileDensityDoT?: number,
+	/** DensityDoT is 100% if the tile is empty */
+	effectTileDensityFullIfEmpty?: boolean,
 	effectTileDensity?: number,
 
 	/** Hides this spell in the spell screen */
@@ -3013,6 +3015,12 @@ interface KDBulletData {
 	aoetype?: string,
 }
 
+interface shrineListing {
+	type: string,
+	quest: string,
+	x: number,
+	y: number,
+}
 
 interface KDMapDataType {
 	RespawnQueue: {faction: string, enemy: string}[],
@@ -3027,6 +3035,8 @@ interface KDMapDataType {
 	ExpStair: Record<string, number>,
 	PrisonStateStack: string[],
 	PrisonType: string,
+
+	ShrineList: shrineListing[],
 
 	LairsToPlace: string[],
 	PotentialEntrances: LairEntrance[],

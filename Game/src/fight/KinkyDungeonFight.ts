@@ -2999,13 +2999,17 @@ function KDBulletCanHitEntity(bullet: KDBullet, enemy: entity, inWarningOnly?: b
 
 function KDBulletEffectTiles(bullet: KDBullet) {
 	if (bullet.bullet.spell?.type == "dot") {
+		let density = bullet.bullet.spell.effectTileDensityDoT;
+		if (bullet.bullet.spell.effectTileDensityFullIfEmpty && Object.values(KDGetEffectTiles(bullet.x, bullet.y)).length == 0) {
+			density = 1;
+		}
 		if (bullet.bullet.spell.effectTileDoT) {
 			KDCreateAoEEffectTiles(bullet.x, bullet.y, bullet.bullet.spell.effectTileDoT, bullet.bullet.spell.effectTileDurationModDoT,
-				(bullet.bullet.spell.effectTileDistDoT || bullet.bullet.spell.effectTileAoE || bullet.bullet.spell.aoe || 0.5), undefined, bullet.bullet.spell.effectTileDensityDoT, KDBulletAoEMod(bullet));
+				(bullet.bullet.spell.effectTileDistDoT || bullet.bullet.spell.effectTileAoE || bullet.bullet.spell.aoe || 0.5), undefined, density, KDBulletAoEMod(bullet));
 		}
 		if (bullet.bullet.spell.effectTileDoT2) {
 			KDCreateAoEEffectTiles(bullet.x, bullet.y, bullet.bullet.spell.effectTileDoT2, bullet.bullet.spell.effectTileDurationModDoT,
-				(bullet.bullet.spell.effectTileDistDoT || bullet.bullet.spell.effectTileAoE || bullet.bullet.spell.aoe || 0.5), undefined, bullet.bullet.spell.effectTileDensityDoT, KDBulletAoEMod(bullet));
+				(bullet.bullet.spell.effectTileDistDoT || bullet.bullet.spell.effectTileAoE || bullet.bullet.spell.aoe || 0.5), undefined, density, KDBulletAoEMod(bullet));
 		}
 	}
 

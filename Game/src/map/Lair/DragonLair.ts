@@ -279,6 +279,14 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 				curr.y - KDMapData.GridHeight/2) < pathMaxDist;
 				ii++) {
 					KinkyDungeonMapSet(curr.x, curr.y, '0');
+					if (KDRandom() < 0.01 + 0.015 * openness) {
+						for (let tile of KDNearbyMapTiles(
+							Math.round(curr.x - 1 + 2 * KDRandom()),
+							Math.round(curr.y - 1 + 2 * KDRandom()),
+							Math.round(1.1 + KDRandom() * 1.5))) {
+							if (tile.tile == '1') KinkyDungeonMapSet(tile.x, tile.y, '0');
+						}
+					}
 					last = curr;
 					already[curr.x + ',' + curr.y] = curr;
 					let options = KDNearbyMapTiles(curr.x, curr.y, 1.5).filter((t) => {
@@ -321,6 +329,12 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 				y: potEntrances[i].y,
 				priority: 100,
 			})
+		}
+		for (let tile of KDNearbyMapTiles(
+			Math.round(potEntrances[i].x - 1 + 2 * KDRandom()),
+			Math.round(potEntrances[i].y - 1 + 2 * KDRandom()),
+			Math.round(1.5 + KDRandom() * 1.25))) {
+			if (tile.tile == '1') KinkyDungeonMapSet(tile.x, tile.y, '0');
 		}
 	}
 
