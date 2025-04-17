@@ -302,19 +302,20 @@ let KDBondageMachineFunctions: Record<string, KDBondageMachineFunc> = {
 			return KDBasicRestraintsMachine_Player(['machineChastity', 'cyberdollchastity'], 1, "KDChastityMachine") != 0;
 		},
 		eligible_enemy: (_tile, _x, _y, entity) => {
-			return entity.boundLevel > 0 && !KDEntityGetBuff(entity, "Chastity");
+			return !KDEntityGetBuff(entity, "Chastity");
 		},
 		function_enemy: (_tile, _delta, _x, _y, entity) => {
-			KDTieUpEnemy(entity, 2.0, "Metal", "chain");
-			if (!KDEntityGetBuff(entity, "Chastity")) {
-				KinkyDungeonApplyBuffToEntity(entity, KDChastity);
-				if (KDEntityGetBuff(entity, "Chastity")) {
-					KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
-					KinkyDungeonSetEnemyFlag(entity, "processed", 1);
-					return true;
-				}
+			if (KDBindEnemyWithTags(entity.id,
+				['machineChastity', 'cyberdollchastity'], 100 + entity.Enemy.maxhp,
+				MiniGameKinkyDungeonLevel + 20,
+				true, undefined, true, false, undefined,
+				undefined, 0).length == 0) {
+				return false;
+			} else {
+				KinkyDungeonSetEnemyFlag(entity, "conveyed", 1);
+				KinkyDungeonSetEnemyFlag(entity, "processed", 1);
+				return true;
 			}
-			return false;
 		},
 	},
 };

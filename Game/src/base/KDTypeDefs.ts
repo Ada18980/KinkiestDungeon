@@ -3566,11 +3566,11 @@ interface KDDelayedAction {
 }
 
 interface KDBondageMachineFunc {
-	eligible_player: (tile, x, y, entity) => boolean;
-	eligible_enemy: (tile, x, y, entity) => boolean;
+	eligible_player: (tile, x: number, y: number, entity: entity) => boolean;
+	eligible_enemy: (tile, x: number, y: number, entity: entity) => boolean;
 
-	function_player: (tile, delta, x, y, entity) => boolean;
-	function_enemy: (tile, delta, x, y, entity) => boolean;
+	function_player: (tile, delta: number, x: number, y: number, entity: entity) => boolean;
+	function_enemy: (tile, delta: number, x: number, y: number, entity: entity) => boolean;
 }
 
 interface KDDroppedItemProp {

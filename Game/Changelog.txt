@@ -54,7 +54,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Fixed bug where weak grip still allowed holding weapons
 - Fixed a bug where quest shrines and/or PoI entrances are inaccessible
 - Made infinite burning vine less likely to happen
-
+- Fixed bug with certain machines in the factory getting blocked
 
 
 5.4.63

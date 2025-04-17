@@ -2845,7 +2845,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number, showExtra: boolean): 
 		//}
 	}
 	if (showExtra) {
-		if (TooltipList.length + extraList.length >(KDToggles.ExtraTooltipHeight ? KDTooltipListExtraCutoffHigh : KDTooltipListExtraCutoff)  && extraList.length > 0) {
+		if (TooltipList.length + extraList.length >(KDToggles.ExtraTooltipHeight ? KDTooltipListExtraCutoffHigh : KDTooltipListExtraCutoff) && extraList.length > 0) {
 			KDShowExtraTooltipMaxCycle = Math.ceil(extraList.length / KDTooltipListExtraPage);
 			if (KinkyDungeonInspect) {
 

@@ -424,7 +424,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 					selectedItem: selectedItem,
 				});
 				return true;
-			}, KDMapData.RoomType == "Summit",
+			}, condition(),
 
 			x + XX + 32, y + YY, 200, 200, "",
 			KDBaseWhite, img,
