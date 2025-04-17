@@ -343,15 +343,9 @@ function KDProcessInput(type: string, data: any): string {
 			KinkyDungeonDoPlayWithSelf();
 			break;
 		case "sleep": {
-			let data = {
-				cancelSleep: false,
-			}
-			KinkyDungeonSendEvent("sleep", data);
-			if (!data.cancelSleep)
-				KDGameData.SleepTurns = KinkyDungeonSleepTurnsMax;
+			KDSleep(KDPlayer());
 			break;
 		}
-
 		case "noise": {
 			KDDelayedActionPrune(["Action", "Dialogue"]);
 			let gagTotal = KinkyDungeonGagTotal(true);
