@@ -247,6 +247,8 @@ KDPrisonTypes.HighSec = {
 						if ((uniformCheck.groupsToStrip.length > 0 && !KinkyDungeonFlags.get("failStrip")) || uniformCheck.itemsToApply.length > 0) {
 							return "Uniform";
 						}
+
+						return KDGoToSubState(player, "CellTravel");
 					}
 					return "Cell";
 				}
