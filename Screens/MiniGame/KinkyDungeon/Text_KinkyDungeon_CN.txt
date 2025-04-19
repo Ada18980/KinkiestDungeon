@@ -65,7 +65,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - You are an adventurer descending into an ancient underground city of magic.
 你是一名冒险家，前往了一个古老的地下魔法城市探险。
 - Beneath its depths lies the Mistress' Staff, an artifact of untold power.
-在它的深处隐藏着女主人的法杖，一件拥有无穷力量的神器。
+在它的深处隐藏着女主人之杖，一件拥有无穷力量的神器。
 - Will you prevail against forces unknown, or succumb to its dark secrets?
 你会战胜未知的力量，还是屈服于它的黑暗秘密？
 - (This game does not contain spiders)
@@ -255,7 +255,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - GFX
 图像特效
 - Character
-角色
+角色相关
 - Main
 主要
 - UI
@@ -433,7 +433,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Retro Animations
 复古动画
 - Flip Status Bars
-状态条翻转显示
+翻转状态条显示
 - Reduce Accidental Wall Clicks
 减少意外点击墙壁的次数
 - Enable Nipples
@@ -667,11 +667,11 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Focused Strikes
 专注打击
 - 90% less accuracy penalty on swung weapons due to distraction.
-减少 90% 由于分心而导致挥舞武器的准确度损失。
+使用挥舞型武器时，性奋造成的准确度损失减少 90%。
 - Focused Power
 专注力量
 - 90% less stamina cost penalty on staves and similar weapons distraction.
-减少 90% 法杖和类似武器分心时所消耗的体力惩罚。
+使用法杖和类似武器时，性奋造成的额外体力消耗减少 90%。
 
 - Pristine
 质朴
@@ -947,11 +947,11 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - All humanoids that can bind you also apply Cyber Doll restraints.
 所有可束缚你的人形生物可以使用赛博拘束具。
 - Doll Hunter V
-玩偶猎人 V
+玩偶猎人目镜
 - You start with the Dollmaker's Visor.
 开局时穿戴玩偶师的目镜
 - Doll Hunter M
-玩偶猎人 M
+玩偶猎人面罩
 - You start with the Dollmaker's Mask.
 开局时穿戴玩偶师的面罩
 - Persisting Desires
@@ -1206,7 +1206,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Efficient Denial
 有效拒绝
 - Locked Up is 300% effective. When Locked Up triggers, you gain -30% mana costs and +25% physical damage for 7 turns (35 when opening a chest or breaking orbs). You cannot orgasm unless you are wearing a chastity belt, and slow level is increased by 2.
-“禁锢”技能效率提高至300%。当该技能触发时，你获得-30%法力消耗和+25%的物理伤害的增益，持续7回合 ( 打开箱子或打破宝珠时为35 ) 。在未佩戴贞操带时，你将无法达到高潮，并且减速等级+2
+“禁锢”技能效率提高至 300%。当该技能触发时，你获得 -30% 法力消耗和 +25% 的物理伤害的增益，持续 7 回合 ( 打开箱子或打破宝珠时为 35 ) 。在未佩戴贞操带时，你将无法达到高潮，并且减速等级 +2
 - Recalcitrant
 冥顽不化
 - Relinquish the Locked Up perk. One time only. If you take the perk again, there is no going back.
@@ -1223,15 +1223,15 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Eager Pet
 宠物服训练（初窥门径）
 - +1 slow reduction while wearing a petsuit, but sprint costs are increased by 30% when not wearing a petsuit.
-穿着宠物服时减速等级-1，但不穿着宠物服时冲刺消耗增加 30%。
+穿着宠物服时减速等级 -1，但不穿着宠物服时冲刺消耗增加 30%。
 - Experienced Pet
 宠物服训练（登堂入室）
 - +2 slow reduction total while wearing a petsuit (from +1), but sprint costs are increased by 100% (from 30%) when not wearing a petsuit and slow level is increased by +1.
-穿着宠物套装时，减速等级总计-2 ( 原为-1 ) ，但不穿宠物服时，冲刺消耗增加100% ( 从30%开始 ) ，并且减速等级增加+1。
+穿着宠物套装时，减速等级总计 -2 ( 原为 -1 ) ，但不穿宠物服时，冲刺消耗增加 100% ( 从 30% 开始 ) ，并且减速等级增加 +1。
 - Devoted Pet
 宠物服训练（炉火纯青）
 - +3 slow reduction total while wearing a petsuit (from +2), but you cannot sprint (from +100% cost) when not wearing a petsuit and slow level is increased by +2 (from +1).
-穿着宠物套装时，减速等级总计-3 ( 原为-2 ) ，但不穿宠物服时，你无法冲刺 ( 从+100%开始 ) ，并且减速等级增加+2 ( 原为+1 ) 。
+穿着宠物套装时，减速等级总计 -3 ( 原为 -2 ) ，但不穿宠物服时，你无法冲刺 ( 从 +100% 开始 ) ，并且减速等级增加 +2 ( 原为 +1 ) 。
 - Bad Pet
 坏宠物
 - Relinquish the Novice Pet perk. One time only. If you take the perk again, there is no going back.
@@ -1459,12 +1459,12 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 
 
 - Panic! (Chests)
-惊恐！ ( 箱子 )
+惊恐! ( 箱子 )
 - When you open a trapped chest, you are stunned for 2 turns.
 当你开启陷阱箱时，你会晕眩2回合。
 
 - Panic! (Traps)
-惊恐！ ( 陷阱 )
+惊恐! ( 陷阱 )
 - When you step on a trap, you are stunned for 2 turns.
 当你踩到陷阱时，你会晕眩2回合。
 - Panic sets in! (Stunned 2 turns)
@@ -1691,13 +1691,13 @@ EnemyName对TargetName念出了一个口令！
 - All Damage Reduction: 
 全部伤害减免：
 - You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-你受到的DAMAGETYPE伤害COUNTPERCENT [基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正]
+你受到的 PERCENT1 DAMAGETYPE伤害，基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正。
 - You deal PERCENT more DAMAGETYPE damage.
-你造成的DAMAGETYPE伤害增加了 PERCENT
+你造成的DAMAGETYPE伤害增加了 PERCENT。
 - Your bindings are PERCENT more effective.
 你的束缚效果提高了 PERCENT
 - Your attacks deal a base of DAMAGEDEALT DAMAGETYPE damage, for a stamina cost of STMNA.
-你的基础攻击可花费 STMNA 点体力造成 DAMAGEDEALT 点DAMAGETYPE伤害
+你的基础攻击花费 STMNA 点体力，造成 DAMAGEDEALT 点DAMAGETYPE伤害。
 - Plugged!
 被插入！
 - Plugged up!!!
@@ -1799,10 +1799,10 @@ EnemyName对TargetName念出了一个口令！
 # :: KinkyDungeonBuffUnsteady
 # :: KinkyDungeonBuffUnsteady2
 - Ignore Ice Tiles
-忽略寒冰效果
+忽略寒冰地块
 
 - Ignited: You are dealing fire damage to yourself and nearby enemies!
-燃烧 : ‎你对自己和附近的敌人造成火焰伤害
+燃烧 : ‎你正对自己和附近的敌人造成火焰伤害！
 - You are on fire and taking damage!
 你正在燃烧并受到伤害！
 
@@ -2187,13 +2187,13 @@ Devious Dungeon Challenge 已启用。
 - Down
 下
 - Left
-左
+左　
 # :: KinkyDungeonKeyLeft
 # :: m_SmoothHeels_l_Left
 # :: m_PointyAntennae_l_Left
 # :: m_PointyHorns_l_Left
 - Right
-右
+右　
 # :: KinkyDungeonKeyRight
 # :: m_SmoothHeels_l_Right
 # :: m_PointyAntennae_l_Right
@@ -2241,7 +2241,7 @@ Devious Dungeon Challenge 已启用。
 - Cycle Spell Page
 循环法术页面
 - Upcast Spells
-凝聚法力
+凝聚法力(充能)
 - Cancel Upcast
 停止凝聚
 - Swap Weapon 1
@@ -2269,7 +2269,7 @@ Devious Dungeon Challenge 已启用。
 - Zoom In
 放大
 - Wait till Interrupted
-等待直到中断
+等待至被打断
 - Make Noise
 制造噪音
 - Play with Self
@@ -2372,7 +2372,7 @@ Devious Dungeon Challenge 已启用。
 - Magic Library
 魔法图书馆
 - Crystal Cave
-结晶洞
+水晶洞
 # :: DungeonNamecry
 # :: KinkyDungeonCheckpointLorecry
 - Cavern
@@ -2446,7 +2446,7 @@ Devious Dungeon Challenge 已启用。
 - You find some gold coins in a corner (+XXX gold)
 你在角落里发现了一些金币 ( +XXX 金币 )
 - You find a lockpick in a crack between the tiles
-你在瓷砖之间的裂缝中发现了一个撬锁工具
+你在地块之间的裂缝中发现了一个撬锁工具
 - You find a rusty knife among the rocks
 你在岩石中发现一把生锈的刀
 - You find an ordinary key
@@ -2478,7 +2478,7 @@ Devious Dungeon Challenge 已启用。
 - You find a pack of scrolls used for spellcasting.
 你发现一包用于施法的卷轴。
 - You find a glowing scroll of purity.
-你发现一张纯洁卷轴。
+你发现一张贞洁卷轴。
 
 - The chest contains gold! (+XXX gold)
 箱子内有金币！ (+XXX 金币)
@@ -2742,13 +2742,13 @@ Devious Dungeon Challenge 已启用。
 在 12 回合内，允许你施放法术时无视对手臂的需求。
 
 - Scroll of Purity
-纯洁卷轴
+贞洁卷轴
 - The scroll circles around your body and you feel... empty now.
 卷轴环绕着你的身体，你现在感觉到……空虚。
 - A scroll used to enforce chastity within religious orders.
 宗教组织内部用来强制禁欲的卷轴。
 - Removes all vibrators from your body.
-从你的身体移除所有振动器。
+从你身上移除所有振动器。
 
 - Scroll of Speech
 语言卷轴
@@ -2773,7 +2773,7 @@ Devious Dungeon Challenge 已启用。
 - Perhaps it has something to do with ancient restraints?
 也许这与古代的拘束具有关？
 - An ancient key plated in gold. It doesnt look like it can open anything...
-一把古老的镀金钥匙。好像什么都打不开……
+一把古老的镀金钥匙。看着似乎什么都打不开…
 - You pick up a shining golden key.
 你拿起了一把闪亮的金色钥匙。
 
@@ -2806,13 +2806,18 @@ Devious Dungeon Challenge 已启用。
 - Gold
 金币
 # :: KinkyDungeonInventoryItemGold
-# :: m_DivineGag_l_Gold
-# :: m_FashionDivineGag_l_Gold
-# :: m_TheRobeOfChastity_l_Gold
+:: m_DivineGag_l_Gold
+金色部分
+:: m_FashionDivineGag_l_Gold
+金色部分
+:: m_TheRobeOfChastity_l_Gold
+金色部分
 :: m_TheRobeOfChastityRestraint_l_Gold
 金色部分
-# :: KDMinimapLabel_C_gold
-# :: KDMinimapLabel_C_lessergold
+:: KDMinimapLabel_C_gold
+金箱
+:: KDMinimapLabel_C_lessergold
+金箱
 - Key
 钥匙
 - A key. You wonder who it's for?
@@ -2836,7 +2841,7 @@ Devious Dungeon Challenge 已启用。
 - A magical blade, suitable against ghosts.
 一把适用于对抗幽灵的魔法之刃。
 - Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-造成暗影伤害，可以切断附魔绳索。副手 : ‎所有魔法伤害基础暴击增加20%
+造成暗影伤害。可以切割附魔绳索。副手 : ‎所有魔法伤害基础暴击增加 20%
 - Bola
 流星索
 # :: KinkyDungeonInventoryItemBola
@@ -2893,7 +2898,7 @@ Devious Dungeon Challenge 已启用。
 - Mana Potion
 法力药水
 - You sip the mana potion and feel empowered.
-你啜饮着法力药水，感到充满力量。
+你啜饮着法力药水，感到充满能量。
 - A rare essence used by mages to recover their strength.
 法师用来恢复力量的稀有精华。
 - Restores 50% max MP instantly. Excess mana goes into the mana pool.
@@ -3111,7 +3116,7 @@ Devious Dungeon Challenge 已启用。
 可在短时间内显着提高切割力。
 
 - Dollmaker's Staff
-玩偶师法杖
+玩偶师之杖
 - You remember this being used on someone else.
 你记得这曾被用在别人身上。
 - +15% glue damage. Deals psychic damage. Fully bound enemies captured with this weapon become latex dolls which fight with you.
@@ -3120,9 +3125,9 @@ Devious Dungeon Challenge 已启用。
 你无法控制超过3个玩偶，新的玩偶仍被紧紧束缚，在原地挣扎着。
 
 - Staff of Incineration
-燃烧法杖
+烈焰法杖
 - A magical weapon made for intermediates to use.
-专供老手使用的魔杖。
+适用于进阶用户的魔法武器。
 # :: KinkyDungeonInventoryItemStaffIncinerationDesc
 # :: KinkyDungeonInventoryItemStaffStormDesc
 - +25% fire damage. Deals fire damage. Burning enemies take an additional 5 fire damage per turn. Offhand: Applies %fire damage bonus.
@@ -3142,7 +3147,7 @@ Devious Dungeon Challenge 已启用。
 - A magical weapon made to use on novices.
 适合新手使用的魔法武器。
 - +20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus.
-锁链伤害 +20%。造成锁链伤害，并定身 4 回合。绑缚效率为 150%。副手 : ‎应用锁链伤害加成。
+锁链伤害 +20%。造成锁链伤害，并定身 4 回合。束缚效率为 150%。副手 : ‎应用锁链伤害加成。
 
 - Arcane Orb
 奥术法球
@@ -3155,17 +3160,17 @@ Devious Dungeon Challenge 已启用。
 - Staff of Flame
 火焰法杖
 - A magical weapon made for novices to use.
-供新手使用的魔杖。
+适用于新手的魔法武器。
 # :: KinkyDungeonInventoryItemStaffFlameDesc
 # :: KinkyDungeonInventoryItemStaffElectricDesc
 - +15% fire damage. Deals fire damage. Offhand: Applies passive bonus.
-+15% 火焰伤害，造成火焰伤害。副手 : ‎应用被动伤害加成。
+火焰伤害 +15%。造成火焰伤害。副手 : ‎应用被动伤害加成。
 - Staff of Slime
 粘液法杖
 - A slimy and magical implement..
 一把又黏又神奇的工具。
 - +10% glue damage. Deals glue damage. Offhand: Applies passive bonus.
-+10% 胶体伤害，造成胶体伤害。副手 : ‎应用被动伤害加成。
+胶体伤害 +10%。造成胶体伤害。副手 : ‎应用被动伤害加成。
 - Staff of Shocking
 电击法杖
 - +10% electric damage. Deals electric damage. 10% chance to stun for 3 turns. Offhand: Applies electric damage bonus.
@@ -3181,7 +3186,7 @@ Devious Dungeon Challenge 已启用。
 - A magical weapon made for novices in the art of bondage.
 一把专为束缚艺术的初学者打造的法杖。
 - +10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus.
-锁链伤害 +10%。造成锁链伤害，绑缚效率为 150% 。副手 : ‎应用锁链伤害加成。
+锁链伤害 +10%。造成锁链伤害，束缚效率为 150%。副手 : ‎应用锁链伤害加成。
 - You pick up a staff of chains. You have fond memories...
 你拿起一把锁链法杖。你回想起了美好的记忆...
 # :: ItemPickupStaffChain
@@ -3201,11 +3206,11 @@ Devious Dungeon Challenge 已启用。
 - You pick up a staff of the storm. It tingles.
 你拿起一把电击法杖。手上传来些微刺痛感。
 - You pick up a staff of flames. It feels warm.
-你拿起一根火焰法杖。感觉很温暖。
+你拿起一根火焰法杖。摸着暖暖的。
 - You pick up a staff of slime.
 你拿起一把粘液法杖。
 - You pick up a staff of permafrost. It feels icy to the touch.
-你拿起一把冰冻法杖。触感冰冷。
+你拿起一把冰冻法杖。摸着冰凉冰凉的。
 
 - Crop
 马鞭
@@ -3492,13 +3497,13 @@ Devious Dungeon Challenge 已启用。
 - Activate to reduce the cost of your next fire, water/ice, air/lightning, and earth spell by 50, once per element.
 激活后，你的下一个火/水/风/岩属性法术的消耗降低 50% ，每个元素分别生效一次。
 - Deals shadow damage. +25% fire, ice, soap, crush, electric, blast damage. Offhand: Applies passive bonus.
-造成暗影伤害，+25% 火/冰/皂化/风/雷/岩/碾压/爆炸伤害。副手 : ‎应用被动加成。
+造成暗影伤害。火/冰/皂化/碾压/雷电/爆炸伤害 +25%。副手 : ‎应用被动伤害加成。
 - The Arbiter
 “仲裁者”
 - I have altered the rules. Pray I do not alter them further.
 我已经修改了规则。祈祷我不会再继续修改。
 - Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
-造成锁链伤害，束缚效率提升至 125% 。对召唤物造成 +40 暗影伤害。+25% 胶体和锁链伤害。武器能力 : ‎缴械
+造成束缚效率为 125% 的锁链伤害。对召唤物额外造成 40 点暗影伤害。胶体和锁链伤害 +25%。武器能力 : ‎缴械
 - Bondage Buster EX
 “束缚破坏者 EX”
 # :: KinkyDungeonInventoryItemBondageBuster
@@ -3539,7 +3544,7 @@ Devious Dungeon Challenge 已启用。
 - With a single snip of the magic scissors, everyone's clothes fall off.
 魔法剪刀咔嚓一剪，所有人的衣服纷纷滑落在地。
 - No eligible targets within 4 tiles
-4 个方格内没有符合条件的目标
+4 格内没有符合条件的目标
 - Latex Projector
 乳胶投射器
 - Deals crush damage. Can be used to spray a '+' shaped pool of slime.
@@ -3551,7 +3556,7 @@ Devious Dungeon Challenge 已启用。
 - Sick and vile, like the hearts of your enemies.
 病态且卑劣，恰如敌人的心。
 - Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
-对目标造成斩击伤害。对身边的敌人减速3回合，造成20点暗影伤害和60点暗影伤害的持续流血效果。
+对目标造成斩击伤害，对邻近的敌人造成 20 点暗影伤害。使周围的敌人减速 3 回合，并活得 60 点暗影伤害的持续流血效果。
 - Pickaxe
 镐
 - Used for drilling holes in rock and armor.
@@ -4262,20 +4267,20 @@ M.F. '女仆长'
 - The Dragonheart Initiate squeezes your body! (DamageTaken)
 龙心新手在揉捏你的身体！ ( DamageTaken )
 - The Dragonheart locks your restraint! (DamageTaken)
-龙心新手锁上了你的拘束具！
+龙心新手锁上了你的拘束具！(DamageTaken)
 # :: AttackDragonLock
 # :: AttackDragonShieldLock
 
 - Dragonheart Shield
-龙心之盾
+龙心盾兵
 - The Dragonheart Shield makes a tactical retreat.
-龙心之盾进行战术撤退。
+龙心盾兵进行战术撤退。
 - The Dragonheart Shield apprehends you! (+RestraintAdded)
-龙心之盾逮捕了你！  ( +RestraintAdded )
+龙心盾兵逮捕了你！  ( +RestraintAdded )
 - The Dragonheart Shield bonks you! (DamageTaken)
-龙心之盾在撞击你！ ( DamageTaken )
+龙心盾兵在撞击你！ ( DamageTaken )
 - The Dragonheart Shield squeezes your body! (DamageTaken)
-龙心之盾揉捏你的身体!  ( DamageTaken )
+龙心盾兵揉捏你的身体!  ( DamageTaken )
 
 - Ice Dragonheart
 寒冰龙心
@@ -4302,20 +4307,20 @@ M.F. '女仆长'
 剧毒龙心使用自然魔法锁定了的拘束具！(DamageTaken)
 
 - Crystal Dragonheart
-结晶龙心
+水晶龙心
 - The Crystal Dragonheart screams and falls to the ground dramatically.
-结晶龙心惨叫一声，轰然倒在了地上。
+水晶龙心惨叫一声，轰然倒在了地上。
 - The Crystal Dragonheart apprehends you! (+RestraintAdded)
-结晶龙心逮捕了你！  ( +RestraintAdded )
+水晶龙心逮捕了你！  ( +RestraintAdded )
 - The Crystal Dragonheart squeezes you in a big hug! (DamageTaken)
-结晶龙心紧紧拥抱你！ (DamageTaken)
+水晶龙心紧紧拥抱你！ (DamageTaken)
 - The Dragonheart grows a crystalline lock on your restraints! (DamageTaken)
-结晶龙心在你的拘束具上生长出结晶锁！(DamageTaken)
+水晶龙心在你的拘束具上生长出水晶锁！(DamageTaken)
 
 - Many crystals rise up out of the ground!
-许多结晶从地下升起！
+许多水晶从地下升起！
 - A crystal rises up out of the ground!
-一颗结晶从地底升起！
+一颗水晶从地底升起！
 
 
 
@@ -4336,33 +4341,33 @@ M.F. '女仆长'
 雕像亲吻你的口球！ (DamageTaken)
 
 - Chaotic Crystal
-混沌结晶
+混沌水晶
 - The crystal shatters!
-结晶碎了！
+水晶碎了！
 - The chaotic crystal leeches energy from you! (DamageTaken)
-混沌结晶汲取你的能量！(DamageTaken)
+混沌水晶汲取你的能量！(DamageTaken)
 
 - Grand Chaotic Crystal
-大型混沌结晶
+大型混沌水晶
 - The grand crystal shatters!
-大型结晶碎裂！
+大型水晶碎裂！
 - The grand crystal leeches energy from you! (DamageTaken)
-大型结晶汲取了你的能量！ (DamageTaken)
+大型水晶汲取了你的能量！ (DamageTaken)
 - Crystals erupt from the ground and slowly grow around your limbs! (+RestraintAdded)
-结晶从地下喷涌而出，在你的四肢周围慢慢生长！  ( +RestraintAdded )
+水晶从地下喷涌而出，在你的四肢周围慢慢生长！  ( +RestraintAdded )
 
 - Soul Crystal
-灵魂结晶
+灵魂水晶
 - The crystal shatters into a puff of soul dust!
-结晶碎成一团魂尘！
+水晶碎成一团魂尘！
 # :: KillSoulCrystal
 # :: KillSoulCrystalActive
 - The soul crystal leeches strength from you! (DamageTaken)
-灵魂结晶汲取你的能量！ (DamageTaken)
+灵魂水晶汲取你的能量！ (DamageTaken)
 # :: AttackSoulCrystal
 # :: AttackSoulCrystalActive
 - Active Soul Crystal
-活化灵魂结晶
+活化灵魂水晶
 
 
 - Shadow Dragonheart
@@ -4963,7 +4968,7 @@ M.F. '女仆长'
 - The floating wrappings attach to you! (+RestraintAdded)
 漂浮丝带附着在你身上！ ( +RestraintAdded )
 - The wrappings grip you tightly and squeeze you! (DamageTaken)
-漂浮丝带紧紧缠住并勒紧着你！ ( +RestraintAdded )
+漂浮丝带紧紧缠住并勒紧着你！ ( +DamageTaken)
 
 - Animated Sarcophagus
 活化石棺
@@ -5380,7 +5385,7 @@ M.F. '女仆长'
 - The chastity belt secures itself around your waist! (+RestraintAdded)
 贞操带系在了你的腰上！ ( +RestraintAdded )
 - The chastity belt buzzes against your body alluringly! (DamageTaken)
-贞操带抵着你的身体，发出诱人的嗡鸣声！
+贞操带抵着你的身体，发出诱人的嗡鸣声！(DamageTaken)
 
 - Yammering Yoke
 唠叨的颈手枷
@@ -5642,9 +5647,9 @@ M.F. '女仆长'
 - The fun-gal rubs your chest with her long, slender fingers! (DamageTaken)
 菌女用她修长的手指磨弄你的胸部！  ( DamageTaken )
 - Crystal Slash
-结晶斩击
+水晶斩
 - Crystal Bolt
-结晶箭
+水晶箭
 # :: KinkyDungeonSpellCrystalBolt
 # :: KinkyDungeonSpellCrystalBoltSingle
 
@@ -5716,7 +5721,7 @@ Ada 屈服于欲望，跌倒在地~
 - The Nurse tries to pacify this rowdy patient! (+RestraintAdded)
 护士试图控制这位不安分的病人！(+RestraintAdded)
 - The Nurse adds a lock to keep you from hurting the staff.
-护士加了一把锁，防止你伤害工作人员。
+护士加了一把锁，以防止你伤害工作人员。
 - The Nurse assures you it's going to be alright~ (DamageTaken)
 护士向你保证一切都会好起来的~ (DamageTaken)
 
@@ -5932,7 +5937,7 @@ EnemyName 用 NewRestraintName 拘束你
 - Many shining strings surround you!
 许多闪亮的丝线围绕着你！
 - Stepping outside of the indicated tiles will result in punishment!
-走出指定的方块将会受到惩罚！
+走出指定的地块将会受到惩罚！
 - Bindings of Fate
 命运之缚
 
@@ -6280,14 +6285,14 @@ AttackName 击中 TargetEnemy 造成了 DamageDealt 点 DamageType 伤害, 伤�
 这种锁的构造比较特殊，不可能撬开！
 
 - The lock is encased in magical crystals that block the keyhole.
-锁被包裹在魔法结晶中，钥匙孔被挡住了。
+锁被包裹在魔法水晶中，钥匙孔被挡住了。
 - Your distraction makes the crystals regrow immediately after breaking them off.
 你的性奋使晶体在断裂后立即再生。
 
 - The crystal fragments in the lock make it difficult to pick.
-锁里的结晶碎片使其很难被撬开。
+锁里的水晶碎片使其很难被撬开。
 - You need a key to actually unlock the ex-crystallized lock.
-你需要一把钥匙才能真正解锁结晶联锁
+你需要一把钥匙才能真正解锁水晶联锁
 
 - The key sticks in the lock and jams, mangling the key!
 钥匙在锁里被卡住了，钥匙坏了！
@@ -6808,7 +6813,8 @@ TargetRestraint 太结实了，不会破……
 水晶
 :: m_Mage_l_Crystal
 水晶
-# :: m_BindingDress_l_Crystal
+:: m_BindingDress_l_Crystal
+水晶
 - Runic
 符文
 - Magic
@@ -6833,7 +6839,7 @@ TargetRestraint 太结实了，不会破……
 - Advanced Cyber
 赛博 ( 先进 )
 - Ancient
-古代
+远古
 # :: KinkyGoldLockType
 # :: KDItemFilter_Restraint_Ancient
 # :: KDFilterFiltersAncient
@@ -6859,7 +6865,7 @@ TargetRestraint 太结实了，不会破……
 # :: KinkyDivineLock
 # :: KinkyDivine2Lock
 - Crystal Lock
-结晶锁
+水晶锁
 - Runic Lock
 符文锁
 - Magic Lock
@@ -7000,9 +7006,9 @@ SCHOOL 女神给予你庇护和反击之力！
 # :: KDEffectTileTooltipCage
 # :: m_Cage
 - Icy Platform
-冰台
+寒冰平台
 - Crystal Dais
-晶台
+水晶讲台
 - Shadow Rift
 暗影间隙
 - Vines
@@ -7028,7 +7034,7 @@ SCHOOL 女神给予你庇护和反击之力！
 - That object is locked with a LKTP.
 目标被 LKTP 上锁。
 - A shrine to the goddess of TYPE.
-TYPE 女神的神泉。
+TYPE女神的神泉。
 # :: KinkyDungeonObjectShrine
 # :: KinkyDungeonObjectShrineCommerce
 - That door is open. Do you want to close it?
@@ -7317,8 +7323,9 @@ TYPE 女神的神泉。
 - Commerce
 商业
 - Shrine of SHRINETYPE
-SHRINETYPE 神泉
-# - Tablet of 
+SHRINETYPE神泉
+- Tablet of 
+石碑：
 
 - Goddess: 
 女神：
@@ -7343,7 +7350,7 @@ SHRINETYPE 神泉
 诅咒
 
 - A tablet inscribed with runes of TYPE.
-刻有 TYPE 符文的石碑。
+刻有TYPE符文的石碑。
 - SHRINETYPE Tablet
 SHRINETYPE石碑
 - Decypher
@@ -7584,7 +7591,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 明亮的光线削弱了影之手！
 
 - You hear an ominous click, but nothing seems to happen. Looks like a misfire!
-你听到不祥的咔哒声，但似乎什么也没发生。看来机括失效了！
+你听到不祥的咔哒声，但什么都没发生。看来机关失效了！
 
 - Barrel Trap
 桶陷阱
@@ -7630,12 +7637,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintDollStandDesc
 # :: RestraintDollStandSFWDesc
 - As long as it's... inserted, you won't be going anywhere!
-只要它插入……那里，你就哪儿也去不了！
+只要它插进… 那里，你就哪儿也去不了！
 # :: RestraintDollStandDesc2
 # :: RestraintOneBarDesc2
 
 - One Bar Prison
-罚站架
+罚站桩
 - A devious way to immobilize people.
 一种使人动弹不得的狡猾方法。
 # :: RestraintOneBarDesc
@@ -9106,7 +9113,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Magic Chastity Belt
 魔法贞操带
 - A belt protected by a magic seal.
-被魔法封印保护贞操带。
+被魔法封印保护的贞操带。
 - The shields will open up to accept new toys, but won't let them out...
 会打开并接受新玩具，但不会让它们出来......
 # :: RestraintMagicBeltDesc2
@@ -9978,14 +9985,14 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 - Living Crystal Collar
-活体结晶项圈
+活体水晶项圈
 - A collar made of a glowing, brittle material that adjusts itself to your neck. You feel your energy flowing into it...
 一种由发光的脆性材料制成的项圈，可以根据你的脖子进行调整。你感觉到你的能量流入其中...
 - It will occasionally cause crystal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of crystal you have on you.
-它偶尔会使得结晶突然出现并束缚佩戴者。效果的速度增加取决于你身上的结晶数量。
+它偶尔会使得水晶突然出现并束缚佩戴者。效果的速度增加取决于你身上的水晶数量。
 
 - Crystal Cuffs
-结晶手铐
+水晶手铐
 - It's made of a glowing, brittle material. You feel your energy flowing into it...
 它由发光的易碎材料制成。
 # :: RestraintCrystalArmCuffsDesc2
@@ -10002,10 +10009,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 - Crystal Leg Cuffs
-结晶腿铐
+水晶腿铐
 
 - Crystal Ankle Cuffs
-结晶脚铐
+水晶脚铐
 
 
 - Living Ice Collar
@@ -10230,7 +10237,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintSlimeMouthDesc
 # :: RestraintSlimeHeadDesc
 - It is an organic material that reforms around every cut you make!
-它是一种有机材料，可以对你所做的每一次切割行为进行变化！
+一种有机材料，会随着你对它的每一次切割而变化！
 # :: RestraintSlimeBootsDesc2
 # :: RestraintSlimeFeetDesc2
 # :: RestraintSlimeLegsDesc2
@@ -10299,7 +10306,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Alchemical rubber in its simplest form. Amorphous.
 最简单的炼金术橡胶。无定形。
 - Often forms strange growths, seeking damsels to encase.
-经常形成奇怪的赘生物，寻找雌性来包裹。
+经常形成奇怪的赘生物，一直在寻找和包裹少女。
 
 - Blue Rubber (Feet)
 蓝色橡胶（脚）
@@ -10435,7 +10442,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 - Proto-Slime (Feet)
-黏菌 ( 脚 )
+原始粘液 ( 脚 )
 - It seems to be a precursor to the slimes everyone is familiar with?
 这似乎是每个人都熟悉的粘液团的前身？
 # :: RestraintProtoSlimeBootsDesc
@@ -10446,23 +10453,23 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintProtoSlimeMouthDesc
 # :: RestraintProtoSlimeHeadDesc
 - Proto-Slime (Ankles)
-黏菌 ( 脚踝 )
+原始粘液 ( 脚踝 )
 - Proto-Slime (Legs)
-黏菌 ( 腿 )
+原始粘液 ( 腿 )
 - Proto-Slime (Arms)
-黏菌 ( 手臂 )
+原始粘液 ( 手臂 )
 - Proto-Slime (Hands)
-黏菌 ( 手 )
+原始粘液 ( 手 )
 - Proto-Slime (Mouth)
-黏菌 ( 嘴 )
+原始粘液 ( 嘴 )
 - Proto-Slime (Head)
-黏菌 ( 头 )
+原始粘液 ( 头 )
 - Living Proto-Slime Collar
-活体黏菌项圈
+活体原始粘液项圈
 - This collar is designed to make sure its wearer does not escape the slime.
-这个项圈的设计是为了确保佩戴者不会逃离黏菌。
+这个项圈的设计是为了确保佩戴者不会逃离粘液。
 - It will occasionally cause proto-slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-slime you have on you.
-它偶尔会使得黏菌突然出现并束缚佩戴者。效果增加的速度取决于你身上的黏菌量。
+它偶尔会使得原始粘液突然出现并束缚佩戴者。效果增加的速度取决于你身上的原始粘液量。
 
 
 - Proto-Rubber (Feet)
@@ -10690,9 +10697,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 围巾踝带
 
 - Arm Belts
-手臂绑带
+手臂捆绑带
 - A ludicrous amount of belts secured with a buckle.
-用皮带扣固定的数量惊人的皮带。
+用皮带扣固定的、数量惊人的皮带。
 # :: RestraintSturdyLeatherBeltsArmsDesc
 # :: RestraintSturdyLeatherBeltsLegsDesc
 # :: RestraintSturdyLeatherBeltsFeetDesc
@@ -10705,9 +10712,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintMagicBeltLegsDesc2
 # :: RestraintMagicBeltFeetDesc2
 - Leg Belts
-腿部绑带
+腿部捆绑带
 - Ankle Belts
-脚踝绑带
+脚踝捆绑带
 
 - Iron Cuffs
 铁铐
@@ -11346,7 +11353,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You pick up a Scroll of Sleight.
 你拿起了一个巧手卷轴。
 - You pick up a Scroll of Purity.
-你拿起了一个纯洁卷轴。
+你拿起了一个贞洁卷轴。
 - You pick up a Scroll of Speech.
 你拿起了一个语言卷轴。
 - You pick up a Scroll of Sauntering.
@@ -11378,14 +11385,14 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 - Flipped Table
-翻倒的桌子
+被翻倒的桌子
 - Relieved some stress.
-发泄了一些压力
+释放了一些压力。
 
 - Unlit Torch
-熄灭火把
+熄灭的火把
 - Can be lit
-可以点亮
+可被点亮
 # :: KDEffectTileTooltipTorchUnlitDesc
 # :: KDEffectTileTooltipLanternUnlitDesc
 - Provides light
@@ -11403,19 +11410,19 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: KDEffectTileTooltipOrbLantern
 # :: KDEffectTileTooltipTorchOrb
 - Unlit Lantern
-熄灭灯笼
+熄灭的灯笼
 - Wall Sconce
 壁灯
 - Broken Wall Sconce
 破损的壁灯
 - It is beyond repair.
-它已经无法修理了。
+已经没法修复了。
 - Light Portal
-光门
+光之门
 - Empty Portal
-虚空门
+虚空之门
 - Stare into the void...
-凝视着虚空。。。
+凝视着虚空…
 - Liquid Latex
 液态乳胶
 # :: KDEffectTileTooltipLatex
@@ -11457,9 +11464,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: KDEffectTileTooltipWater
 # :: KinkyDungeonFilterwater
 - A concentration of moisture.
-湿气的浓度。
+一片凝结的湿气。
 - Looking for a new wearer
-寻找新的佩戴者
+正在寻找新的佩戴者
 - Chains
 链条
 # :: KDEffectTileTooltipChains
@@ -11506,7 +11513,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Embers
 余烬
 - Ignition source. Blocks vision.
-着火源。阻挡视线。
+火源。会阻挡视线。
 - Inferno
 地狱
 - Deals DAMAGEDEALT fire damage per turn
@@ -11520,9 +11527,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Smoke
 烟雾
 - Cracked Earth
-裂开的大地
+破碎的地面
 - Makes creatures unsteady
-使生物不稳定
+让走过的生物站不稳
 - Rubble
 瓦砾
 # :: KDEffectTileTooltipRubble
@@ -11530,7 +11537,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You don't think insurance will cover this.
 你不认为保险会涵盖这个。
 - No putting that back together.
-不要再把它放在一起了。
+别再把它们堆在一起了。
 
 - Can be controlled using CMD spells
 可以使用 CMD 法术进行控制
@@ -11541,7 +11548,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Floor
 地板
 - Object
-目标
+物体
 # :: KDTileTooltip5
 # :: KDTileTooltip6
 # :: KDTileTooltip7
@@ -11643,7 +11650,7 @@ Ars烟火
 - A book about conjuration
 一本关于咒术的书
 - A book of manipulative spells
-一本操纵咒语的书
+一本关于幻术的书
 
 
 - Verbal
@@ -11674,7 +11681,7 @@ Ars烟火
 - Next Page
 下一页
 - Last Page
-最后一页
+上一页
 # - >>>
 # :: KinkyDungeonBookNextPageFast
 # :: KinkyDungeonSpellsPageNextFast
@@ -11704,7 +11711,7 @@ Ars烟火
 # :: KinkyDungeonSpellNull
 # :: KinkyDungeonSpellsPageClass
 - Active
-积极
+主动
 - Upgrades
 升级
 # :: KinkyDungeonColumnUpgrades
@@ -11722,7 +11729,7 @@ Ars烟火
 - Passive
 被动
 - Upcast
-进阶
+聚力
 - Buffs
 增益
 - DoT
@@ -11746,7 +11753,7 @@ Ars烟火
 # :: KinkyDungeonFilterfire
 # :: KinkyDungeonDamageTypefire
 - Earth
-岩
+大地
 - Air
 风
 - Lightning
@@ -11822,17 +11829,17 @@ Ars烟火
 
 
 - Empower to upcast spells
-积蓄法力
+充能以释放聚力法术
 - Cancel empowerment
-释放法力
+取消凝聚
 - You channel mana through your body! Empowerment level: LEVEL
-你通过你的身体来积蓄法力！充能级别 : ‎LEVEL
+你汇聚着全身的法力！充能级别 : ‎LEVEL
 - You are already at the maximum empowerment level!
-你已经达到了最高充能级别！
+你已达到最高充能级别！
 - You don't have any upcast spells yet.
-你没有任何可蓄力法术
+你还没有学会任何聚力法术。
 - Upcast from SPELL
-SPELL蓄力
+从 SPELL 聚力
 # :: KDSpellUpcastsFrom
 # :: KDUpcastFrom
 
@@ -11947,19 +11954,19 @@ SPELL蓄力
 当你施法失败时，你会获得一颗精华微粒，它会出现在你旁边的随机位置。你可以消耗这颗微粒来获得-100%的施法失误概率减免，效果在10回合内逐渐衰减。走过这颗微粒也会将其消耗。
 
 - Inner Power
-内在能力
+内在能源
 - As a wizard, you are able to draw upon mystical sources of energy that others can't even see. After 16 turns of not casting a spell or attacking, your next spell's mana cost is reduced by 20% of your max mana BEFORE multipliers. Toggled passive spells apply half the cooldown.
-作为一名法师，你能够利用其他人甚至看不到的神秘能量源。在 16 回合未施展法术或攻击后，你下一个法术的法力消耗将在乘数计算之前减少相当于你最大法力值的 20%。 切换被动法术的冷却时间减半。
+作为一名法师，你能够利用其他人根本看不到的神秘能量源。在 16 回合未施展法术或攻击后，你下一个法术的法力消耗将在乘数计算之前减少你最大法力值的 20%。同时，启用中的被动法术冷却时间减半。
 
 - Battlemage
 战斗法师
 - Inner Power cooldown is no longer reset after attacking.
-攻击后内在能力冷却时间不再重置。
+攻击后，「内在能源」的冷却时间不再重置。
 
 - Relentless Casting
 无情施法
 - While on cooldown, Inner Power cooldown is no longer reset after casting spells.
-在冷却时，施展法术后内在能力冷却时间不再重置。
+施展法术后，「内在能源」的冷却时间不再重置。
 
 - Arcane Recharge
 奥术充能
@@ -12019,7 +12026,7 @@ SPELL蓄力
 - Water Novice
 基础水法术
 - Unlocks water spells. Learn Water Ball.
-允许学习水法术 并习得元素法术“水球”
+解锁水系法术。并习得元素法术 “水球”。
 - Ice Novice
 基础冰法术
 - Unlocks ice spells. Learn Freeze.
@@ -12027,7 +12034,7 @@ SPELL蓄力
 - Earth Novice
 基础岩法术
 - Unlocks earth spells. Learn Stone Skin.
-允许学习岩法术 并习得元素法术“石肤术”
+解锁岩系法术。并习得元素法术 “石肤术”。
 - Air Novice
 基础风法术
 - Unlocks air spells. Learn Wind Blast.
@@ -12069,7 +12076,7 @@ SPELL蓄力
 - Blessing of Obscurity
 隐身祝福
 - Unlocks invisibility spells. Learn Camouflage.
-允许学习隐形幻术 并习得幻术 “拟态”
+解锁隐形幻术。并习得幻术 “拟态”。
 - Projection Magic
 投影魔法
 - Unlocks illusory spells. Learn Summon Decoy.
@@ -12077,7 +12084,7 @@ SPELL蓄力
 - Alteration Magic
 变化魔法
 - Unlocks alteration spells. Learn Confuse.
-解锁变化魔法。并习得幻术“迷惑”。
+解锁变化幻术。并习得幻术 “迷惑”。
 - Arcane Knowledge
 奥术知识
 - Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
@@ -12523,7 +12530,7 @@ SPELL蓄力
 - Lightning erupts from your fingertips!
 闪电从指尖爆发！
 - Choose line direction (max range 4 tiles)
-选择直线区域 ( 最大范围 4 个格 )
+选择直线区域 ( 最大范围 4 格 )
 # :: KinkyDungeonSpellTargetCrackle
 # :: KinkyDungeonSpellTargetFissure
 
@@ -12704,7 +12711,7 @@ SPELL蓄力
 - Solidify
 固化
 - Solidifies slime in the area into Latex. Latex adheres to enemies and slowly binds them, escasing them when they are fully bound.
-将区域内的粘液凝固成乳胶。 乳胶会粘附在敌人身上并慢慢地束缚他们，当他们完全被束缚时彻底转化。
+将整个区域内的粘液凝固成乳胶。乳胶会粘附在敌人身上并慢慢地束缚他们，敌人被完全束缚时，会彻底封住敌人。
 - You inscribe a transmutation circle on the floor.
 你在地板上释放了转化魔法。
 # :: KinkyDungeonSpellCastSlimeToLatex
@@ -12961,7 +12968,7 @@ SPELL蓄力
 - Magical Implements
 魔法武器精通
 - While holding a magical weapon like a staff or magic knife, your mana costs are reduced by 20%.
-手持法杖或魔法刀等魔法武器时，法力消耗降低20%。
+手持法杖或魔法刀等魔法武器时，法力消耗降低 20%。
 - Mage Circuits
 魔法电路
 - Increases the size of the passive mana pool by +400.
@@ -12969,7 +12976,7 @@ SPELL蓄力
 - Archmage
 大魔法师
 - Upcasted spells cost 25% less mana.
-减少进阶法术 25% 法力消耗。
+聚力法术的法力消耗减少 25%。
 
 - Temperature Play
 冰火两重天
@@ -13448,7 +13455,7 @@ SPELL蓄力
 一些有趣的东西进入了你的身体......
 
 - Zone of Purity
-纯洁区
+贞洁领域
 - Select an area
 选择一个区域
 # :: KinkyDungeonSpellTargetZoneOfPurity
@@ -13462,7 +13469,7 @@ SPELL蓄力
 - Creates an area which applies Chastity constantly to any enemy over with any amount of binding that steps inside.
 创建一个区域，对踏入该区域的任何敌人持续装备贞操带。
 - You conjure a realm of absolute purity.
-召唤出一个绝对纯洁的区域。
+你召唤出一片绝对贞洁领域。
 
 - Zone of Excitement
 敏感区
@@ -13687,7 +13694,7 @@ SPELL蓄力
 - Levitate
 漂浮
 - When enabled and above 0 stamina: Drain 5 mana per step to reduce slow level by 1 (if above 1), or 20 mana to ignore a temporary slow effect.
-在体力大于0时激活 : 每走一步消耗5点法力值，可将减速等级降低1级（如果减速等级大于1），或者消耗20点法力值来无视一次临时减速效果。
+已激活且体力大于 0 时 : 每走一步消耗 5 点法力值，将减速等级降低 1 级（如果减速等级大于 1），或者消耗 20 点法力值来无视一次临时减速效果。
 - You levitate over the trap!
 你漂浮在陷阱上！
 - You snag a tripwire while floating!
@@ -13989,7 +13996,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 - You charge up a beam and fire it!
 你充能并发射了一道光束！
 - You swing your weapon and pull away the target's equipment!
-你挥动武器，拖走目标的装备！
+你挥动武器，拖走了目标的装备！
 - You swing Dragonslaver and it lashes out in a whip-like fashion!
 你挥动驯龙者，它像鞭子一样猛烈攻击！
 - The slime from your staff coats your body, granting you strange powers!
@@ -14041,7 +14048,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 - Slime Ball
 粘液球
 - A ball of slime leaves a trail of sticky slime (20 damage when stepped on). It deals DamageDealt glue damage on a hit.
-一团会留下粘液痕迹 （踩到时造成 20 伤害）的粘液。命中时造成 DamageDealt 点胶体伤害。
+一团会留下粘液痕迹（踩到时造成 20 伤害）的粘液。命中时造成 DamageDealt 点胶体伤害。
 - You hurl a ball of slime!
 你扔出一个粘液球！
 
@@ -14159,11 +14166,11 @@ SummonCount 只僵尸从地板上出现！
 - Your restraints squeeze you painfully without mercy!
 你的束缚痛苦且无情地压迫着你！
 - The crystals emit a powerful energy!
-结晶散发出强大的能量！
+水晶散发出强大的能量！
 - You feel your body overflow with energy...
 你感觉你的身体充满了能量......
 - The crystals react to your struggle attempts with a strange energy!
-结晶会以一种奇怪的能量对你的挣扎尝试做出反应！
+水晶会以一种奇怪的能量对你的挣扎尝试做出反应！
 
 - Cast Spell (XXX turn delay)
 施法 ( XXX 回合延迟 )
@@ -14452,13 +14459,13 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Magical binding ribbons emerge from the walls!
 神奇的捆绑丝带从墙上出现！
 - The ceiling opens, letting a lot of shackles fall on you!
-天花板打开，让很多镣铐落在你身上！
+天花板打开，许多镣铐落向你身上！
 - Hidden cuffs shoot out and make a dash toward your limbs!
 隐藏的镣铐突然冲向你的四肢！
 - Hidden cuffs and tethers appear and make a dash toward your limbs!
 隐藏的镣铐和钢索现形并冲向你的四肢！
 - Bands of glowing wrappings start flying in from all sides!
-发光的包装带开始从四面八方飞来！
+发光的丝带开始从四面八方飞来！
 - Ropes slither out towards you from between the bricks!
 绳索从砖块之间滑向你！
 - Ropes fall on you from all sides!
@@ -14468,7 +14475,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Leather restraints start appearing around you!
 皮革拘束具开始出现在你身边！
 - high-tech cables come out from the floor!
-高科技钢缆从地板上出来！
+高科技缆绳从地板上冒了出来！
 - Slimes pours out from the walls and ceiling!
 粘液从墙壁和天花板上倾泻而出！
 - Ethereal chains appear all around you!
@@ -14476,9 +14483,9 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Shadows constrict around you!
 暗影在你周围收缩！
 - An otherworldly sigil appears below you!
-一个超凡脱俗的印记出现在你的下方！
+一个外域印记出现在你的下方！
 - Crystals rise up around you!
-结晶在你周围升起！
+水晶在你周围升起！
 - Something shiny seems to be stretched out over the floor!
 地板上似乎有一些闪亮的东西伸展开来！
 - A rubber bubble starts forming around you!
@@ -14553,7 +14560,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Click a spell to replace SPELLNAME with.
 单击要替换 SPELLNAME 的咒语。
 - Empty Slot
-空槽
+空槽位
 # :: KinkyDungeonSpellNone
 # :: KDEmpty
 - Back to Spellbook
@@ -14579,15 +14586,15 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 特质 III
 
 - pg. NUM/TOTAL
-页. 数/总
+页. NUM/TOTAL
 # - >
 # - <
 - Spell Points: SPELLPOINTS
-技能点 : ‎SPELLPOINTS
+法术点 : ‎SPELLPOINTS
 - You need a higher level in SCHOOL magic to learn this spell.
 你需要更高级别的 SCHOOL 魔法才能学习此法术。
 - You need more spell points.
-你需要更多的法术点。。
+你需要更多法术点。
 - You don't have enough maximum mana to cast this spell!
 您没有足够的最大法力值来施放这个法术！
 - School: 
@@ -14612,7 +14619,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Spell Point Cost: 
 需求法术点：
 - Mana Cost: 
-法力消耗
+法力消耗 : 
 
 - Remove Spell 1
 移除法术 1
@@ -14643,19 +14650,19 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Replace Spell 7
 替换法术 7
 - Current Spell 1: 
-当前法术1
+当前法术 1：
 - Current Spell 2: 
-当前法术2：
+当前法术 2：
 - Current Spell 3: 
-当前法术3：
+当前法术 3：
 - Current Spell 4: 
-当前法术4：
+当前法术 4：
 - Current Spell 5: 
-当前法术5：
+当前法术 5：
 - Current Spell 6: 
-当前法术6：
+当前法术 6：
 - Current Spell 7: 
-当前法术7：
+当前法术 7：
 
 - ???
 ？？？
@@ -14705,7 +14712,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 (《永恒之书》残页 )| 超凡遗迹至今仍是学者们难以破解的谜题。穹顶裂隙间透下的天光稀薄如缕，这片区域却始终生机盎然。众所周知，维系人类不死不灭的再生之力仰赖个体自身的魔力供给。那么没有魔力的动植物又是如何存续？虔信者声称是复苏女神在维系丛林生机，但难道不可能是旧日文明早已掌握了地下维生之术？
 - (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
-( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当结晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
+( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当水晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
 - (A page from the Book of Aeons)|The 'Lost Temple' as they call it, is a subject of great speculation. It seems that its creators worshipped only four creator goddesses, rather than all the Eight. It was perhaps abandoned several hundred years ago when a flood caused great panic, and it seems that this must have occurred before humanity was made immortal by the archmagus, as there are many remains still found inside.
 ( 《万古之书》中的一页 ) |他们所说的 '失落的神殿'，是一个饱受猜测的对象。看来它的创造者只崇拜四位造物主女神，而不是所有的八女神。它可能是几百年前被遗弃的，当时一场洪水引起了巨大的恐慌，这似乎发生在大法师使人类永生之前，因为里面仍然发现了许多遗骸。
 - (A page from the Book of Aeons)|The Stars have been a mystery to scholars since the beginning of time. At one point, humans believed that every star was a god, and they made offerings by throwing sugar into the night, thinking that as the stars were innumerable, so were the grains of sugar that pleased humans so much. Religion has moved past that, but the Orrery remains a relic from a time when humanity worshipped the stars rather than the Eight.
@@ -14714,7 +14721,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 ( 《万古之书》中的一页 ) |'风箱'是旧日文明深埋在地下的原始设施的昵称。虽然其中大部分仍年久失修，但许多旧日文明的继承者都试图使其保持良好的工作状态，因为这项技术非常珍贵，而且不可能用现代方法复制。 似乎这些继承者中的许多人都对其目的产生了一些错觉，因为保留下来的大部分设备除了收集囚犯之外几乎没有什么用处。
 
 - (Preface from the journal of Catherine Willows, well-known explorer who vanished in the dungeon 30 years ago) I am writing this journal in the off chance that I do not come back in my search for the Mistress' staff. If you find this, please make an effort to deliver it back to the surface for the good of all the young women lured by its secrets.
-( 凯瑟琳·韦罗斯 ( Catherine Willows ) 的日记前言，她是 30 年前在地牢中消失的著名探险家 ) 我写这本日记是因为我没有回来寻找女主人的工作人员。如果你发现了这个，为了所有被它的秘密引诱的年轻女性的利益，请努力把它送回地面。
+( 凯瑟琳·韦罗斯 ( Catherine Willows ) 的日记前言，她是 30 年前在地牢中消失的著名探险家 ) 我写这本日记是以防我未能从寻找女主人之杖的旅途中返回。如果你发现了这个，为了所有被它的秘密引诱的年轻女性的利益，请努力把它送回地面。
 - (Pg. 24 from Catherine Willows' journal) Many who trowel the upper levels of the Mistress' tomb often ask rhetorically: 'Why are there weird kinky traps guarding treasure chests? Why not have real, deadly traps if the purpose is to dissuade intruders?'
 ( 凯瑟琳·韦罗斯 ( Catherine Willows ) 日记第 24 页 ) 许多铲平女主人墓上层的人经常反问 : ‎“为什么有奇怪的古怪陷阱守卫着宝箱？如果目的是劝阻入侵者，为什么不设置真正的、致命的陷阱呢？
 - (Pg. 25 from Catherine Willows' journal) ...They make a crucial mistake: The treasure chests aren't trapped. Rather, they are full of gold. And we know that gold is pleasing to the gods: our economy runs on it, and the gods only make interventions in our day-to-day affairs because we give them gold. Lesser gods, known as spirits, also love gold, but unlike the gods we know, these lesser spirits cannot consume gold on an altar in one fell swoop like the gods can. Therefore, they need to physically inhabit the place where the gold sits, slowly draining it of its pleasing essence.
@@ -14798,7 +14805,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - I don't think it's neccessary to tell people that dragons resist fire... right?
 我认为没有必要告诉人们龙抗火……对吧？
 - I've been studying the dragonheart's weaknesses. So far I've found that the ones bearing the powers of ice dragons are actually weak to fire unlike the others, and the ones who summon crystals to block attacks are nonetheless unable to grab a spear to stop it from reaching them.
-我一直在研究龙之心的弱点。到现在我发现，拥有冰龙之力的人，其实跟其他人不一样，他们怕火，而那些召唤结晶来格挡攻击的人却无法抓住长矛来阻止它。
+我一直在研究龙之心的弱点。到现在我发现，拥有冰龙之力的人，其实跟其他人不一样，他们怕火，而那些召唤水晶来格挡攻击的人却无法抓住长矛来阻止它。
 
 - They say a ninja can catch a sword in her hands, but can she stop a spear? Ha, thought not!
 都说忍者能拿剑，但能挡住长矛吗？哈，没想到吧！
@@ -15010,16 +15017,16 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - You're not sure how to use this key.
 你不确定如何使用这个钥匙。
 - As soon as you touch the key, all of your gold locks fade to blue!
-一旦你触摸钥匙，你所有的金锁就会褪成蓝色！
+你一触碰这把钥匙，身上所有的金锁便都褪为了蓝色！
 
 - You realize there is no keyhole on the device, simply a lock-shaped sigil.
 你意识到装备上没有钥匙孔，只是一个锁形的印记。
 - The item loosens and falls off, but you see a red sigil flash and the key suddenly teleports away!
 物品松动脱落，但你看到红色印记闪烁，钥匙突然消失不见了！
 - You have in your possession KeyAmount magical, ornate key(s). You might as well try...
-你拥有 KeyAmount 有魔力的、华丽的钥匙。你也许可以试试...
+你拥有 KeyAmount 个有魔力的、华丽的钥匙。你也许可以试试...
 - You have KeyAmount key(s) for this item.
-你有 KeyAmount 钥匙对此物品使用。
+你有 KeyAmount 个适用于此物品的钥匙。
 
 - The angel helps you struggle and use items
 天使帮你挣扎和使用物品
@@ -15586,7 +15593,7 @@ EnemyName 离开并锁上了她身后的牢房。
 - 'Mask of the Warrior'
 《战士的面罩》
 - You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!
-你用力拉面具，但它就是取不下来。它被塑造得离你的脸很近，没有光线照进来!
+你用力拉扯面具，但它就是取不下来。它十分贴合你的脸，没有任何光线能够进出！
 
 - Ancient Muzzle
 远古口套
@@ -15851,7 +15858,7 @@ AMNT% 的概率命中你
 - Spirit Draining
 精神汲取
 - Mana Draining
-法力消耗
+法力汲取
 - Electric
 电击
 - E-Stim
@@ -15972,7 +15979,7 @@ EnemyName 设法带着你的物品撤退！
 你在角落里摩擦自己……
 
 - Many ropes emerge around you, removing weaker ropes from your body and binding enemies!
-许多绳索出现在你周围，从你的身体上移除较弱的绳索并束缚敌人！
+许多绳索出现在你周围，从你身上移除较弱的绳索并束缚敌人！
 
 - Choose Class:
 选择类别 : ‎
@@ -16307,7 +16314,7 @@ EnemyName 设法带着你的物品撤退！
 - In the name of PTRN, I order you to kneel!
 以 PTRN 的名义，我命令你跪下！
 - You're in my way.
-你挡住了我的路。
+你挡住我了。
 - Step aside, pet.
 靠边站吧，宠物。
 - Get her, my pets!
@@ -23792,7 +23799,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: rScrollSellScrollLegs
 # :: rScrollSellScrollVerbal
 - (The SPEAKER raises a brow)|Thank you! This one is rare!
-( SPEAKER 挑眉 ) |谢谢！这个很难得！
+( SPEAKER 挑眉 )|谢谢！这个很难得！
 
 - (The SPEAKER invites you to a friendly chat)|Back in my day I used to go visit dungeons all the time|But these days I get so lost in my studies...|Say, you don't happen to have some magic supplies on you?
 ( SPEAKER 邀请你有好的进行聊天 ) |以前我经常去地牢|但是这些天我在学习中迷失了...|说，你不碰巧有一些魔法物资在身上吗？
@@ -23815,7 +23822,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER smiles)|Always good to have somebody to talk to.
 ( SPEAKER 微笑着 ) |有人倾诉总是很好的。
 - (The SPEAKER giggles)|Living dangerously, I see~
-( SPEAKER 咯咯笑 ) |生活很危险，我明白了~
+( SPEAKER 咯咯笑 )|生活很危险，我明白了~
 
 - (The SPEAKER approaches you with an offer)|Hey girl~|You seem like the explorer type.|Happen to have any good finds?
 ( SPEAKER 向你提出邀约 ) |嘿姑娘~|你看起来像探险家。|碰巧有什么好发现吗？
@@ -24664,7 +24671,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dTheWarden_Attack
 
 - (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
-( SPEAKER 清了清喉咙 )|我的任务是保持这个墓地的纯洁和神圣。|在这个地方漫步的转世者在我的允许下这样做。|但是你呢？我不记得和你达成过任何协议。|你是来挑战我的吗？
+( SPEAKER 清了清喉咙 )|我的任务是保持这个墓地的纯净与神圣。|在这个地方漫步的转世者在我的允许下这样做。|但是你呢？我不记得和你达成过任何协议。|你是来挑战我的吗？
 - I do what I want.
 我想干什么就干什么。
 - (Glare at her and scoff)
@@ -25155,7 +25162,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - Give her a Scroll of Speech
 给她一卷演讲的卷轴
 - Give her a Scroll of Purity
-给她一张纯洁卷轴
+给她一张贞洁卷轴
 
 - (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
 ( SPEAKER 看起来心烦意乱 ) |很好，冒险家|我们有个问题...
@@ -25471,13 +25478,13 @@ FOODMSG| ( 它邀请你分享它的美食 )
 披萨
 
 - (The table looks remarkably flippable)
-(桌子看上去很容易掀翻)
+( 这桌子看上去很容易掀翻 )
 - (You knock over the table!)
-(你掀翻了桌子!)
+( 你掀翻了桌子! )
 # :: rTableFlipFlip
 # :: rTableFoodFlip
 - (Flip the table)
-(掀翻桌子)
+( 掀翻桌子以恢复意志 )
 # :: dTableFlip_Flip
 # :: dTableFood_Flip
 
@@ -25537,7 +25544,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 ( 补充你的法力池 )
 
 - Upcast Level LEVEL
-LEVEL 级
+聚力(充能)级别 LEVEL
 - Prerequisite
 前置条件
 - Unlocks: 
@@ -25663,15 +25670,15 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - (Nod and continue)
 ( 点头继续 )
 - (Tuck your staff behind your back...)
-( 把你的手杖藏在背后…… )
+( 把你的法杖藏在背后…… )
 # :: dDollmakerAsk_Staff
 # :: dDollmakerAssume_Staff
 - (The Dollmaker points at you)|Is that--?
-( 玩偶师指着你 ) |那是——？
+( 玩偶师指着你 )|那是——？
 # :: rDollmakerAsk_Staff
 # :: rDollmakerAssume_Staff
 - (Panic!)
-( 惊恐！ )
+( 惊恐! )
 # :: dDollmakerAsk_Staff_Proceed
 # :: dDollmakerAssume_Staff_Proceed
 - You must be the Dollmaker.
@@ -25689,9 +25696,9 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - (The Dollmaker folds her arms)|In any case, your journey ends here.|I do not appreciate scoundrels poking around in my domain.|I will personally lead you to your new future as a doll.
 ( 玩偶师抱起双臂 ) |无论如何，你的旅途到此结束。|我不喜欢无赖在我的领域里闲逛。|我将亲自带领你走向作为玩偶的新未来。
 - Do you have the Mistress' Staff?
-你有女主人的法杖吗？
+你有女主人之杖吗？
 - (The Dollmaker chuckles)|That trinket?|So that's what you're after!|As a matter of fact, I do not have it.|It belongs to a certain Archmagus.
-( 玩偶师轻笑 ) |那个小饰品？|这就是你要找的东西！|事实上，我不是它的拥有者。|它属于某位大魔法师。
+( 玩偶师轻笑 ) |那个小饰品？|这就是你在找的东西啊！|事实上，它不属于我。|它属于某位大魔法师。
 - Then you are of no use to me.
 那你对我就没什么用了。
 - (The Dollmaker summons a drone to her side)|Such arrogance! I'll have to teach you some manners!
@@ -26042,7 +26049,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 粘贴
 
 - Items on Ground:
-地面物品 : ‎
+地面物品：
 
 - Preloading Character Assets: 
 正在预加载角色资源：
@@ -27203,7 +27210,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - WitchSkirt
 女巫长裙
 - SkirtBelt
-裙铃
+裙腰带
 # :: l_WitchSkirt_SkirtBelt
 # :: l_Witch_SkirtBelt
 # :: m_WitchSkirt_l_SkirtBelt
@@ -28212,7 +28219,7 @@ Dask眼
 # :: m_LeatherHood_l_KittyEars
 # :: m_FashionLeatherHood_l_KittyEars
 - Kitty
-猫
+猫咪
 # :: l_KittyEars_Ears
 # :: l_KittyTail_Tail
 # :: l_Kitty2Tail_Tail1
@@ -29358,7 +29365,8 @@ V形比基尼
 # :: m_LaceCorsetRestraint_l_LaceCorset
 # :: m_BindingDress_l_LaceCorset
 # :: m_Dress_l_LaceCorset
-# - LaceCorsetHardware
+- LaceCorsetHardware
+蕾丝束腰(金属件)
 # :: m_LaceCorset_l_LaceCorsetHardware
 # :: m_LaceCorsetRestraint_l_LaceCorsetHardware
 # :: m_BindingDress_l_LaceCorsetHardware
@@ -29367,7 +29375,8 @@ V形比基尼
 # :: m_LaceCorsetRestraint_l_LaceCorsetHardware
 # :: m_BindingDress_l_LaceCorsetHardware
 # :: m_Dress_l_LaceCorsetHardware
-# - LaceCorsetStripes
+- LaceCorsetStripes
+蕾丝束腰(条纹)
 # :: m_LaceCorset_l_LaceCorsetStripes
 # :: m_LaceCorsetRestraint_l_LaceCorsetStripes
 # :: m_BindingDress_l_LaceCorsetStripes
@@ -29376,7 +29385,8 @@ V形比基尼
 # :: m_LaceCorsetRestraint_l_LaceCorsetStripes
 # :: m_BindingDress_l_LaceCorsetStripes
 # :: m_Dress_l_LaceCorsetStripes
-# - LaceCorsetCrystal
+- LaceCorsetCrystal
+蕾丝束腰(水晶)
 # :: m_LaceCorset_l_LaceCorsetCrystal
 # :: m_LaceCorsetRestraint_l_LaceCorsetCrystal
 # :: m_BindingDress_l_LaceCorsetCrystal
@@ -29681,7 +29691,7 @@ V形比基尼
 - LacePanties
 蕾丝内裤
 - LaceCrotchPanel
-蕾丝内裤
+蕾丝内裤(外穿)
 # :: m_LacePanties_l_LaceCrotchPanel
 :: m_LaceCrotchPanel
 蕾丝内裤(外穿)
@@ -29695,7 +29705,7 @@ V形比基尼
 # :: m_BindingDress_l_LaceCrotchPanel
 # :: m_Dress_l_LaceCrotchPanel
 - LaceCrotchPanelTrim
-蕾丝内裤(边条)
+蕾丝内裤(外穿)边条
 # :: m_LacePanties_l_LaceCrotchPanelTrim
 :: m_LaceCrotchPanel_l_LaceCrotchPanelTrim
 蕾丝内裤(外穿)边条
@@ -29707,7 +29717,7 @@ V形比基尼
 # :: m_BindingDress_l_LaceCrotchPanelTrim
 # :: m_Dress_l_LaceCrotchPanelTrim
 - LaceCrotchPanelLace
-蕾丝内裤(蕾丝边)
+蕾丝内裤(外穿)蕾丝边
 # :: m_LacePanties_l_LaceCrotchPanelLace
 :: m_LaceCrotchPanel_l_LaceCrotchPanelLace
 蕾丝内裤(外穿)蕾丝边
@@ -30146,17 +30156,27 @@ V形比基尼
 # :: m_Elf_l_Gem
 # :: m_RubyNecklace_l_Gem
 # :: m_RubyNecklaceRestraint_l_Gem
-# - ElfSkirtBack
+- ElfSkirtBack
+精灵短裙(背后)
 # - SkirtBack
-# :: m_ElfSkirtBack_l_SkirtBack
-# :: m_ElfSkirt_l_SkirtBack
-# :: m_Elf_l_SkirtBack
-# :: m_ElfSkirtBack_l_SkirtBack
-# :: m_ElfSkirt_l_SkirtBack
-# :: m_Elf_l_SkirtBack
-# :: m_DressSkirtSplitNoBelt_l_SkirtBack
-# :: m_DressSkirtSplit_l_SkirtBack
-# :: m_BindingDress_l_SkirtBack
+:: m_ElfSkirtBack_l_SkirtBack
+短裙(背后)
+:: m_ElfSkirt_l_SkirtBack
+短裙(背后)
+:: m_Elf_l_SkirtBack
+短裙(背后)
+:: m_ElfSkirtBack_l_SkirtBack
+短裙(背后)
+:: m_ElfSkirt_l_SkirtBack
+短裙(背后)
+:: m_Elf_l_SkirtBack
+短裙(背后)
+:: m_DressSkirtSplitNoBelt_l_SkirtBack
+裙子(背后)
+:: m_DressSkirtSplit_l_SkirtBack
+裙子(背后)
+:: m_BindingDress_l_SkirtBack
+裙子(背后)
 - ElfSkirt
 精灵裙
 - SkirtBand
@@ -33735,7 +33755,8 @@ V形比基尼
 # - DisplayFront
 # :: m_DisplayStand_l_DisplayFront
 # :: m_DisplayStand_l_DisplayFront
-# - OneBarPrison
+- OneBarPrison
+罚站桩
 # - OneBarFront
 # :: m_OneBarPrison_l_OneBarFront
 # :: m_OneBarPrison_l_OneBarFront
@@ -34155,13 +34176,15 @@ Aura刘海(右后)
 透明胶衣高腰三角裤
 # - ChainBikini
 # - ChainSkirt2
-# - SkirtBeltDeco
+- SkirtBeltDeco
+裙腰带装饰
 # :: m_ChainSkirt2_l_SkirtBeltDeco
 # :: m_ChainSkirt_l_SkirtBeltDeco
 # :: m_ChainArmor_l_SkirtBeltDeco
 # :: m_ChainSkirt2Restraint_l_SkirtBeltDeco
 # :: m_ChainSkirtRestraint_l_SkirtBeltDeco
-# - SkirtBeltRivets
+- SkirtBeltRivets
+裙腰带铆钉
 # :: m_ChainSkirt2_l_SkirtBeltRivets
 # :: m_ChainSkirt_l_SkirtBeltRivets
 # :: m_ChainArmor_l_SkirtBeltRivets
@@ -34274,7 +34297,8 @@ Aura刘海(右后)
 - Sailor
 水手服
 # - DressSkirtSplitNoBelt
-# - SkirtSplit
+- SkirtSplit
+裙子(开叉)
 # :: m_DressSkirtSplitNoBelt_l_SkirtSplit
 # :: m_DressSkirtSplit_l_SkirtSplit
 # :: m_BindingDress_l_SkirtSplit
@@ -34284,7 +34308,8 @@ Aura刘海(右后)
 # :: m_BindingDress_l_SkirtSplitOver
 - DressSkirtSplit
 礼服裙(开叉)
-# - SkirtSplitBelt
+- SkirtSplitBelt
+裙子(开叉)裙腰带
 # :: m_DressSkirtSplit_l_SkirtSplitBelt
 # :: m_BindingDress_l_SkirtSplitBelt
 - BlouseSkirtLone
@@ -39659,9 +39684,12 @@ Aura刘海(右后)
 # :: m_Thumbcuffs_l_BaseMetal
 - Tie
 领结
-# :: m_MageCollar2_l_Tie
-# :: m_Mage_l_Tie
-# :: m_BindingDress_l_Tie
+:: m_MageCollar2_l_Tie
+领结
+:: m_Mage_l_Tie
+领结
+:: m_BindingDress_l_Tie
+蝴蝶结
 # - Inner
 # :: m_SlayerCape_l_Inner
 # :: m_MilitaryUniform_l_Inner
@@ -41099,7 +41127,7 @@ Aura刘海(右后)
 - The gigantic slime fizzles as its body becomes unstable!
 巨型史莱姆随着身体变得不稳定而嘶嘶作响！
 - The gigantic slime stretches a pseudopod and engulfs you! (+RestraintAdded)
-巨型史莱姆伸出触手，将你吞没！ ( +添加拘束 )
+巨型史莱姆伸出触手，将你吞没！ ( +RestraintAdded )
 - The gigantic slime slowly engulfs you! (DamageTaken)
 巨型史莱姆正在慢慢吞没你！ ( DamageTaken )
 - A group of slimes jump out!
@@ -41913,7 +41941,7 @@ Aura刘海(右后)
 - Seal Sigil
 封印符印
 - Walk over it to erase it and unlock the next floor.
-走过它以擦除它，并解锁下一层。
+走过它即可将它擦除，并解锁下一层。
 
 - The Shadow
 暗影
@@ -42017,7 +42045,7 @@ Aura刘海(右后)
 - A non-magical tape wand used for creating tight little packages.
 一种非魔法胶带杖，用于创建紧密的小包装。
 - Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving.
-造成锁链伤害。200% 束缚效率。击中敌人会施加胶带减益效果，持续 12 回合，使其受到的锁链伤害提高 15%。移动时对相邻的被胶带缠住的敌人造成 10 点锁链伤害。
+造成锁链伤害。束缚效率为 200%。击中敌人会施加胶带减益效果，持续 12 回合，使其受到的锁链伤害提高 15%。移动时对相邻的被胶带缠住的敌人造成 10 点锁链伤害。
 
 
 - Bag of Goodies
@@ -42348,7 +42376,7 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 - Submission: At 0 WP, you are restrained if you leave the presence of a hostile.
 屈服 : ‎在 0 意志力时，如果你离开敌方存在，你就会受到束缚。
 - Dark Voice: Kneel before your mistress.
-黑暗之声 : ‎跪在你的女主人面前。
+黑暗之声 : 在你的女主人面前跪下。
 - You must submit! Moving away from an enemy at 0 WP will bind you!
 你必须屈服！0 意志力时逃离敌人将会束缚你！
 
@@ -42644,7 +42672,7 @@ Oblivion, 秘密的守护者
 - Arcane Blast
 奥术冲击
 - When you spend mana by casting spells, you store up 40% of it as Arcane Energy, up to 100% Max Mana. Casting this spell consumes it to deal up 25% Max Mana as Arcane damage. Pierces enemies and walls.
-当你通过施法消耗法力时，将法力转化储存为 40% 奥术能量，奥术能量上限为 100% 法力值上限。施放此法术会消耗奥术能量，它可造成最多 25% 法力值上限的奥术伤害，能穿透敌人和墙壁。
+当你通过施法消耗法力时，将 40% 的法力转化储存为奥术能量，奥术能量上限为法力值上限的 100%。施放此法术会消耗奥术能量，可造成最高为法力值上限的 25% 的奥术伤害，能穿透敌人和墙壁。
 - Your eyes glow as energy surges from within!
 当能量从内部涌动时，你的眼睛会发光！
 
@@ -42766,12 +42794,12 @@ Oblivion, 秘密的守护者
 - Fast Recharge I
 快速充能 I
 - Inner power now recharges after 10 turns instead of 16.
-现在内在能力会在 10 回合 ( 而不是 16 回合 ) 后恢复。
+「内在能源」会在 10 回合 ( 而不是 16 回合 ) 后冷却完毕。
 
 - Fast Recharge II
 快速充能 II
 - Inner power now recharges after 6 turns instead of 16.
-现在内在能力会在 6 回合 ( 而不是 16 回合 ) 后恢复。
+「内在能源」会在 6 回合 ( 而不是 16 或 10 回合 ) 后冷却完毕。
 
 
 - Precise Targeting
@@ -42782,7 +42810,7 @@ Oblivion, 秘密的守护者
 - Surprise Bondage
 突袭束缚
 - Binding from critical hits is 40% stronger
-束缚的暴击强度提高40%
+束缚的暴击强度提高 40%
 
 - High Profile
 高调
@@ -42854,14 +42882,14 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 - Staff of Belts
 皮带法杖
 - Belts within belts, a fractal belt pattern buckled into oblivion.
-皮带套着皮带，一种分形的皮带图案被遗忘了。
+皮带套着皮带，无限分形的皮带层层扣入遗忘空间。
 - +20% leather bindings applied. Leather spells apply debuffs for 30% longer. Deals chain damage. Active: Pull an enemy toward you and apply a small amount of bondage.
-+20% 皮革束缚添加。皮革法术施加减益效果的时间延长 30%。造成连锁伤害。主动 : ‎将敌人拉向你并施加少量束缚。
+应用的皮革束缚 +20%。皮革法术施加减益效果的时间延长 30%。造成连锁伤害。主动 : ‎将敌人拉向你并施加少量束缚。
 - You pick up a staff of belts wrapped tightly in leather.
 你拿起一根用皮革紧紧包裹的皮带。
 
 - Binding Lock
-拘束具锁
+拘束锁
 - A LKTYP lock clasps on to one of your restraints!
 LKTYP 锁锁在了你的一个拘束具上！
 - You are caught in a constricting field! (Dmgdlt)
@@ -43049,7 +43077,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 没有冲刺的余地！
 
 - Tools of the Trade
-专业工具
+内行工具
 - Allows you to craft bombs, smoke bombs, flash bombs, and invisibility potions.
 允许你制作炸弹、烟雾弹、闪光弹和隐形药水。
 
@@ -43104,7 +43132,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Contains advanced formulas and thrilling tales of thirsty wizards. Can not critically strike.
 包含高级咒语和饥渴魔法师的惊险故事。普通攻击无法暴击。
 - +5% magic damage. Offhand: Applies passive bonus.
-+5% 魔法伤害。副手 : ‎应用被动伤害加成。
+魔法伤害 +5%。副手 : ‎应用被动伤害加成。
 - You find a magical tome.
 你找到了一本魔法书。
 - Open the book. What can go wrong?
@@ -43115,12 +43143,12 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Contains a malevolent spirit that wishes only to tie up damsels. Can not critically strike.
 蕴含着只想捆绑少女的恶灵。无法暴击。
 - +10% binding effectiveness. Offhand: Applies passive bonus.
-+10% 束缚效率。副手 : ‎应用被动伤害加成。
+束缚效率 +10%。副手 : ‎应用被动效率加成。
 - You find a magical tome with a sealed padlock on it.
 你发现一本魔法书，上面有一把密封的挂锁。
 
 - You know the location of ancient leylines and can draw upon 100 additional mana.
-你知道远古地脉的位置，并且可以额外利用 100 点法力。
+你知道了远古地脉的位置，可以借此额外存储 100 点法力。
 
 - You don't want to open the book... (need willpower)
 你不想打开这本书... ( 需要意志力 )
@@ -43268,7 +43296,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Demon Girl
 恶魔少女
 - You are related to eldritch entities, granting +50% shadow damage and the ability to teleport between shadows. You are weak to holy restraints and bright light.
-你与可怕的实体有联系，给予 +50% 的暗影伤害和在暗影之间传送的能力。你对神圣的束缚和明亮的光芒无能为力。
+你与可怕的实体有联系，给予 +50% 的暗影伤害和在暗影之间传送的能力。你对神圣拘束具和明亮的光芒无能为力。
 - You are a minor angel sent to perform a specific task. You are forced to wear a full set of divine restraints, but gain an infinite mana pool, +20 Magic Armor, and +25% magic damage.
 你是一位小天使，被派去执行特定任务。你被迫穿戴全套神圣束缚，但获得无限法力池、+20 魔法防御和 +25% 魔法伤害。
 - Elven Ancestry
@@ -43515,7 +43543,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Deselects all selected units.
 取消选择所有选定的队伍。
 - On Me!
-跟我！
+跟我走！
 - All selected units start following you
 所有选定的队伍开始跟随你
 - Disperse
@@ -43898,17 +43926,17 @@ UI 就是这样。|如果您想要更多的实践教程，请进入右上角的�
 专家工具
 
 - Exits locked!|Find NUMBER keys!
-出口锁上了|找到 NUMBER 把钥匙！
+出口被上锁!|找到 NUMBER 把钥匙!
 - Got the keys!
-拿到钥匙了！
+已拿到钥匙!
 - Find the keys hidden in the level. Enemies can steal the keys if you aren't careful.
 找到隐藏在关卡中的钥匙。敌人可能会在你不注意的时候偷走钥匙。
 - There seems to be a locked high-security door. Looks like you need keys to open it.
 似乎有一扇被锁住的高安全门。看来你需要钥匙才能打开它。
 - Exits locked!|Find a lever!
-出口锁上了|找到一个拉杆！
+出口被锁定!|找到拉杆!
 - Exits unlocked!
-出口已解锁！
+出口已解锁!
 # :: KDEscapeMinimap_Pass_Lever
 # :: KDEscapeMinimap_Pass_Panel
 - Lever Hunt
@@ -43918,7 +43946,7 @@ UI 就是这样。|如果您想要更多的实践教程，请进入右上角的�
 - There seems to be a locked high-security door. Looks like you need to pull a lever to open it.
 似乎有一扇被锁住的高安全门。看起来你需要拉动拉杆才能打开它。
 - Exits locked!|Find control panel!
-出口锁上了|找到控制面板！
+出口被锁定!|找到控制面板!
 - Panel Hunt
 逃生方法 : ‎寻找面板
 - Find the control panel hidden in the level to unlock the door.
@@ -43938,9 +43966,9 @@ BOSS 房已清空！
 - There seems to be a locked high-security door. Looks like you need to defeat the boss to open it.
 似乎有一扇被锁住的高安全门。看来你需要击败Boss才能打开。
 - Exits locked!|Defeat NUMBER TYPE!
-出口已锁定！|需击败 NUMBER 名 TYPE!
+出口被锁定!|需击败 NUMBER 名TYPE!
 - Quota Reached!
-已达到要求！
+已达成要求!
 # :: KDEscapeMinimap_Pass_Kill
 # :: KDEscapeMinimap_Pass_Chest
 # :: KDEscapeMinimap_Pass_Quest
@@ -43952,9 +43980,9 @@ BOSS 房已清空！
 - There seems to be a locked high-security door. Looks like you need to defeat the targetted enemies to open it.
 似乎有一扇被锁住的高安全门。看来你需要击败目标敌人才能打开它。
 - Exits locked!|Defeat TYPE!
-出口已锁定！|需击败 TYPE!
+出口被锁定!|需击败TYPE!
 - Miniboss defeated!
-小型boss已击败！
+已击败小型 Boss！
 - Dangerous Bounty
 危险的赏金
 - Defeat the specified strong enemy to unlock the door.
@@ -43962,7 +43990,7 @@ BOSS 房已清空！
 - There seems to be a locked high-security door. Looks like you need to defeat the miniboss to open it.
 似乎有一扇被锁住的高安全门。看来你需要击败小型Boss才能打开它。
 - Exits locked!|Open NUMBER Chests!
-出口已锁定！|需要打开 NUMBER 个宝箱！
+出口被锁定!|需打开 NUMBER 个宝箱!
 - Chest Hunt
 寻找宝藏
 - Unlock the specified number of chests to unlock the door.
@@ -43970,7 +43998,7 @@ BOSS 房已清空！
 - There seems to be a locked high-security door. Looks like you need to open more chests to open it.
 似乎有一扇被锁住的高安全门。看来你需要打开更多的箱子才能打开它。
 - Exits locked!|Accept NUMBER Quests!
-出口已锁定！|需要接受 NUMBER 个任务！
+出口被锁定!|需接受 NUMBER 个任务!
 - Quest Hunt
 寻找任务
 - Accept the specified number of goddess quests to unlock the door.
@@ -43978,7 +44006,7 @@ BOSS 房已清空！
 - There seems to be a locked high-security door. Looks like you need to accept more quests to open it.
 似乎有一扇被锁住的高安全门。看来你需要接受更多的任务才能打开它。
 - Exits locked!|Trigger NUMBER Traps!
-出口已锁定！|需要触发 NUMBER 个陷阱！
+出口被锁定!|需触发 NUMBER 个陷阱！
 - Trap Hunt
 寻找陷阱
 - Trigger the specified number of traps to unlock the door.
@@ -43994,7 +44022,7 @@ BOSS 房已清空！
 
 
 - Exit sealed!|Find the lair!
-出口封闭！|寻找巢穴！
+出口被封印!|寻找巢穴!
 - Sigils erased!
 符印已擦除！
 - Dragon defeated!
@@ -44008,15 +44036,15 @@ BOSS 房已清空！
 
 
 - Exits locked!|Destroy NUMBER Servers!
-|出口已锁定！|需要摧毁 NUMBER 个服务器！
+出口被锁定!|需摧毁 NUMBER 台服务器!
 # :: KDEscapeMinimap_Fail_WolfServer
 # :: KDEscapeMinimap_Fail_DroneNode
 - Security System Compromised!
-安全系统已摧毁！
+安全系统已被破坏！
 # :: KDEscapeMinimap_Pass_WolfServer
 # :: KDEscapeMinimap_Pass_DroneNode
 - Clearance Granted!
-通行许可已获取！
+已取得通行许可！
 # :: KDEscapeMinimap_Bypass_WolfServer
 # :: KDEscapeMinimap_Bypass_DroneNode
 - Destroy Nevermere Servers
@@ -44092,7 +44120,7 @@ BOSS 房已清空！
 - Phase Dance
 相位之舞
 - For 4 turns, your movement does not advance time. Attacking or casting counts as one move and passes time as normal.
-在 4 回合内，你的移动不会使时间提前。攻击或施法算作一招，并正常流逝时间。
+在 4 回合内，你的移动不会使时间流动。攻击或施法仍算作一回合，时间也会正常流动。
 - You are F A S T
 你 超 越 了 光 速
 
@@ -44151,7 +44179,7 @@ BOSS 房已清空！
 - Swap
 交换
 - Choose a target with a clear line of sight to you and switch places with them.
-选择一个视野清晰的目标并与他交换位置。
+选择一个能直接看见的目标，并与他交换位置。
 - You point at the target and swap places with them!
 你指向目标并与他交换位置！
 - You point at the target and try tp swap places, but they resist!
@@ -44179,7 +44207,7 @@ ENMY表现出惊人的抵抗力，将伤害减少了 PCNT%。
 - Raise Defenses
 提高防御
 - Spend 90 stamina to shield yourself from damage equal to your Block. Lasts 10 turns or until you attack.
-花费 90 点体力来保护自己免受等同于格挡的伤害。持续10回合或直到你攻击为止。
+花费 90 点体力来保护自己免受等同于格挡值的伤害。持续 10 回合或直到你攻击为止。
 - Evasive Maneuvers
 机动躲避
 - While active, you evade almost all attacks, but your stamina is drained by 50 per turn plus 10 per slow level. The base stamina cost is reduced by your Evasion.
@@ -44455,16 +44483,16 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 
 
 - Magic Arm Belts
-手臂束带 ( 附魔 )
+附魔手臂捆绑带
 - Highly secure belts enchanted with magic.
-高度安全的束带，带有魔法。
+高度安全的捆绑带，并且带有魔法。
 # :: RestraintMagicBeltArmsDesc
 # :: RestraintMagicBeltLegsDesc
 # :: RestraintMagicBeltFeetDesc
 - Magic Leg Belts
-腿部束带 ( 附魔 )
+附魔腿部捆绑带
 - Magic Ankle Belts
-脚踝束带 ( 附魔 )
+附魔脚踝捆绑带
 - The Liquid Metal starts engulfing you!
 液态金属开始吞噬你！
 - The Liquid Metal explodes and covers you!
@@ -44476,7 +44504,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Silver Burst
 金属爆发
 - Select a liquid metal tile
-选择液态金属块
+选择液态金属地块
 - Target a liquid metal tile. After 3 turns, it erupts, spreading more liquid metal and engulfing any nearby creatures. Deals DamageDealt crush damage and applies 80 points of metallic binding.
 对液体金属生物释放，3 回合后它将爆发，扩散出更多液态金属并吞噬附近的任何生物。造成 DamageDealt 点碾压伤害并增加 80 点金属拘束。
 - A powerful explosion simmers beneath the surface...'
@@ -44710,15 +44738,15 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 # :: KinkyDungeonSpellCastFailRecoverObject
 # :: KinkyDungeonSpellCastFailRecoverObject2
 - The chest is locked.
-箱子是锁住的。
+这个箱子被锁着。
 - Select a tile with items
-选择包含物品的位置
+选择包含物品的地块
 
 
 - Enhanced Recovery
 强化取物
 - Upcast to increase range and recover objects in an area.
-增加施法范围并获得较大范围内的物体。
+凝聚法力以增加施法距离，并从更大范围内获得物体。
 - That container is locked!
 那个容器已被锁定！
 - Select an area with items
@@ -45113,7 +45141,7 @@ AMNT 回合后起身...
 +AMNT 金币
 
 - ENMY lets go of herself for AMNT damage!
-ENMY 因 AMNT 伤害而放弃了自己！
+ENMY 高潮了，收到了 AMNT 伤害！
 
 - Sonar
 声纳
@@ -45887,7 +45915,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Living Shadow
 活体阴影
 - Engulfs the tile in darkness.
-瓷砖陷入黑暗。
+用黑暗吞噬地块。
 
 - Planar Focus
 平面焦点
@@ -45926,7 +45954,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Many bars come out of the ground and restrain you!
 许多笼子从地上冒出来束缚你！
 - One Bar Missile
-罚站架导弹
+罚站桩导弹
 # :: KinkyDungeonSpellOneBarMissile
 # :: KinkyDungeonSpellOneBarMissile
 - Restraining Bolt
@@ -46002,7 +46030,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Your buttons have been pushed, and not in a pleasant way!
 你的按钮已经被按下了，而且是以一种不愉快的方式！
 - Defeat all taunting enemies or stay within the tiles to avoid shame!
-击败所有嘲讽的敌人或留在方格内以避免被羞辱！
+击败所有嘲讽的敌人，或留在方格内以避免被羞辱！
 - Degradating Taunts
 侮辱性嘲讽
 - You failed to come up with a proper comeback!
@@ -46188,19 +46216,19 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: rDragonQueenShadow
 
 - Crystal Dragon Queen
-结晶龙女皇
+水晶龙女皇
 - The crystal dragon shapeshifts back to human form!
-结晶龙变回人形！
+水晶龙变回人形！
 - The crystal dragon strikes you with its claws! (DamageTaken)
-结晶龙用爪子攻击你！ ( DamageTaken )
+水晶龙用爪子攻击你！ ( DamageTaken )
 - The crystal dragon breaths a sparkling dust, which hardens into crystal! (+RestraintAdded)
-结晶龙喷出闪闪发光的粉末，粉末凝固后便变成了水晶！ ( +RestraintAdded )
+水晶龙喷出闪闪发光的粉末，粉末凝固后便变成了水晶！ ( +RestraintAdded )
 - The crystal dragon takes flight and swoops toward you!
-结晶龙飞起来并向你俯冲过来！
+水晶龙飞起来并向你俯冲过来！
 - The crystal dragon takes flight and slams into you! (Stunned!)
-结晶龙飞起来撞向你！ ( Stunned! )
+水晶龙飞起来撞向你！ ( Stunned! )
 - Crystal Dragon Girl
-结晶龙娘
+水晶龙娘
 - The dragon girl submits to you!
 龙娘向你臣服！
 # :: KillDragonGirlCrystal
@@ -46208,11 +46236,11 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 # :: KillDragonGirlIce
 # :: KillDragonGirlShadow
 - The dragon girl slams you with several hurled crystals! (DamageTaken)
-龙娘向你投掷数颗结晶！ ( DamageTaken )
+龙娘向你投掷数颗水晶！ ( DamageTaken )
 - The dragon girl conjures a cloud of crystals that solidify! (+RestraintAdded)
-龙娘召唤出一团凝固的结晶云！ ( +RestraintAdded )
+龙娘召唤出一团凝固的水晶云！ ( +RestraintAdded )
 - The dragon girl conjures crystalline locks on you! (+RestraintAdded)
-龙娘对你施展结晶锁！(+RestraintAdded)
+龙娘对你施展水晶锁！(+RestraintAdded)
 
 
 - Poison Dragon Queen
@@ -46279,7 +46307,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - A cage falls from the ceiling on top of you!
 一个笼子从天花板上掉下来砸中了你！
 - Crystals grow across your body and encase you!
-结晶在你的身体上生长并包裹住你！
+水晶在你的身体上生长并包裹住你！
 - You are encased in a solid block of ice!
 你被包裹在一块坚固的冰块里！
 - A shadowy sphere rises from the ground and wraps over you tightly!
@@ -46288,9 +46316,9 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 阴影以球的形式在你周围聚结！
 
 - Crystal Encasement
-结晶封印
+水晶封印
 - An overgrowth of magical crystals. Their chaotic energies flood into your mind and displace your thoughts!
-魔法结晶过度生长。它们的混乱能量涌入你的脑海，扰乱你的思维！
+魔法水晶过度生长。它们的混乱能量涌入你的脑海，扰乱你的思维！
 - Being brittle, it will eventually crack and fail. Just keep wiggling...
 由于易碎，它最终会破裂并失效。只需继续扭动即可……
 - Ice Encasement
@@ -46481,7 +46509,7 @@ Kocaeli - 《黑猫 2》
 - Kocaeli - Underground Jungle
 Kocaeli - 《地下丛林》
 - Kocaeli - Crystal Cave
-Kocaeli - 《结晶洞》
+Kocaeli - 《水晶洞》
 - Kocaeli - Untitled
 Kocaeli - 《无题》
 - Kocaeli - Lost Temple
@@ -46714,23 +46742,23 @@ ENMYNME CHTRNME 的 RMNME
 你感到 RSTRT 有点松！
 
 - Crystal Armbinder
-结晶单手套
+水晶单手套
 - A growth of crystals fusing your arms together. Chaotic energies radiate in all directions, causing you to slowly lose control over your desires.
-生长的结晶将你的手臂融合在一起。混乱的能量向各个方向辐射，导致你慢慢失去对欲望的控制。
+生长的水晶将你的手臂融合在一起。混乱的能量向各个方向辐射，导致你慢慢失去对欲望的控制。
 - Crystals are tough but not unbreakable.
-结晶很坚硬，但并非牢不可破。
+水晶很坚硬，但并非牢不可破。
 # :: RestraintCrystalArmbinderDesc2
 # :: RestraintCrystalBallGagDesc2
 
 - Crystal Ball Gag
-结晶口球
+水晶口球
 - A growth of crystals inside your mouth. It emits a strange, pleasurable sensation.
-你嘴里长出了结晶。它散发出一种奇怪的、愉悦的感觉。
+你嘴里长出了水晶。它散发出一种奇怪的、愉悦的感觉。
 
 - Crystal Gag Necklace
-结晶口球项链
+水晶口球项链
 - An arousing accessory made of solid crystal!
-一个由固体结晶制成的令人兴奋的配件！
+一个由固体水晶制成的令人兴奋的配件！
 - Simply popping it out of your mouth isn't enough to negate its effects entirely~
 简单地把它从嘴里拿出来并不足以完全消除它的影响~
 
@@ -46883,7 +46911,7 @@ ESCP 强度 : ‎AMNT
 - Ranged Specialization
 远程专精
 - You deal 20% more damage to enemies further than 2 tiles away, but enemies adjacent to you take 60% reduced damage.
-你对距离超过2个格子的敌人造成的伤害增加20%，但与你相邻的敌人受到的伤害减少60%。
+你对距离超过 2 个格子的敌人造成的伤害增加 20%，但与你相邻的敌人受到的伤害减少 60%。
 - Ranged Weapon Expert
 远程武器专家
 - Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
@@ -46914,7 +46942,7 @@ DRTN 回合获得 AMNT DMG 抗性
 - Increase max distraction by AMNT%.
 性奋值上限增加 AMNT%。
 - DP decays faster and more SP is safe from damage.
-性奋值衰减得更快，更多的体力值免受损害。
+性奋值衰减得更快，体力值损失更少。
 - Increase max stamina by AMNT.
 体力值上限增加 AMNT 点。
 - Increase max mana by AMNT.
@@ -47245,7 +47273,7 @@ AMNT/MAXX 仆从分配
 - You're blocking me.
 你挡住我了。
 - You're in my way!
-你挡住我的路了！
+你挡住我了！
 - Miss, you're blocking me...
 小姐，你挡住我了……
 - Step aside~
@@ -47514,7 +47542,7 @@ NPC可用性：
 - Elite
 精英
 - Miniboss
-小型Boss
+小型 Boss
 
 
 - Bound
@@ -47609,14 +47637,14 @@ N/A
 [经验 : AMNT/LMT][进入下一层 +NXT 经验] 高跟鞋训练可以提高你的平衡能力，防止你摔倒
 
 - Phase Dance active. Your next move is instant.
-相位之舞激活。你的下一步行动是即时的。
+相位之舞激活。你的下一步行动不消耗回合。
 - Combat Maneuver active. Your next move is instant.
-战斗机动激活。你的下一步行动是即时的。
+战斗机动激活。你的下一步行动不消耗回合。
 
 - The furniture space is occupied
 家具空间被占用
 - Combat Maneuver: Your next move is instant.
-战斗机动: 你的下一步行动是即时的。
+战斗机动: 你的下一步行动不消耗回合。
 
 
 - Appointing managers increases the efficiency of other facilities.
@@ -47697,11 +47725,11 @@ N/A
 - Legend has it there is a secret temple within a vast jungle.|Put on your fedora and find some treasure!
 传说在广阔的丛林中有一座神殿。戴好你的装备，去寻找宝藏吧！
 - You've gotten lost in an ancient doll processing facility.|This journey features mostly lategame tilesets.
-你在一个古老的玩偶工厂迷路了|这段旅程主要包含游戏后期的图块集。
+你在一个古老的玩偶工厂中迷路了。|这段旅程主要包含游戏后期的板块。
 - You've gotten lost inside an ancient temple to a kinky goddess.|Will you find your way out, or will you find yourself trapped even deeper?
 你在一座古老的神殿里迷失了方向，被一位变态的女神所迷失。|你会找到出路，还是会发现自己被困得更深？
 - You've gotten yourself lost wandering in the ruins.|The order of tilesets is reversed!
-你在废墟中迷失了方向。|图块顺序颠倒了！
+你在废墟中迷失了方向。|板块顺序颠倒了！
 
 -  (Hard)
 （困难）
@@ -47805,9 +47833,9 @@ N/A
 削弱
 
 - You put it on, why would you want to take it off?~
-你戴上它了，干嘛要摘下来呢?~
+既然你戴上它了，干嘛要摘下来呢?~
 - You'll need an ancient key to unlock the ancient-made collar.
-你需要一把古老的钥匙来解开古老的项圈。
+你需要一把远古钥匙来解锁这个古代制造的项圈。
 
 
 - Ancient Worshipper
@@ -47815,38 +47843,38 @@ N/A
 - The ancient worshipper repents of her ways.
 古代追随者对自己的行为悔恨不已。
 - The ancient worshipper's crystal restraints spread to you! (+RestraintAdded)
-古代追随者的水晶束缚扩散到你身上！（+束缚已添加）
+古代追随者的水晶束缚扩散到你身上！（+RestraintAdded）
 - Crystals start to grow on one of your restraints! (DamageTaken)
-结晶开始在你的一拘束具上上生长！（受到伤害）
+水晶开始在你的一拘束具上上生长！（DamageTaken）
 - The ancient worshipper mumbles at you for assistance! (DamageTaken)
-古代追随者喃喃地向你求助！（受到伤害）
+古代追随者喃喃地向你求助！（(DamageTaken)）
 
 - Ancient Congregant
 古代教徒
 - The ancient congregant repents of her ways.
 古代教徒悔悟了
 - The ancient congregant's crystal restraints spread to you! (+RestraintAdded)
-古代教徒的结晶束缚扩散到你身上！（+束缚增加）
+古代教徒的水晶束缚扩散到你身上！（+RestraintAdded）
 - Crystals start to grow on your restraints! (DamageTaken)
-结晶开始在你的一拘束具上上生长！（受到伤害）
+水晶开始在你的一拘束具上上生长！（DamageTaken）
 # :: AttackCuffedGirl2Lock
 # :: AttackCuffedGirl3Lock
 - The ancient congregant mumbles at you for assistance! (DamageTaken)
-古代教徒喃喃地向你求助！（受到伤害）
+古代教徒喃喃地向你求助！（(DamageTaken)）
 
 - Ancient Hierophant
 古代祭司
 - The ancient hierophant repents of her ways.
 古代祭司悔悟了
 - The ancient hierophant's crystal restraints spread to you! (+RestraintAdded)
-古代祭司的结晶束缚扩散到你身上！（+束缚增加）
+古代祭司的水晶束缚扩散到你身上！（+RestraintAdded）
 - The ancient hierophant mumbles at you for assistance! (DamageTaken)
-古代祭司喃喃地向你求助！（受到伤害）
+古代祭司喃喃地向你求助！（(DamageTaken)）
 
 - The crystals break off, revealing a keyhole and weakening the item.
-结晶断裂，露出一个钥匙孔，削弱了锁的强度。
+水晶断裂，露出一个钥匙孔，削弱了锁的强度。
 - Your distraction causes the crystals to grow back, encasing the lock again!
-你的性奋让结晶重新长出，再次把锁包住！
+你的性奋让水晶重新长出，再次把锁包住！
 
 - After popping the gag out of your mouth, it hangs loose around your neck.
 从你嘴里取出塞子后，它松松垮垮地挂在你脖子上。
@@ -47983,7 +48011,7 @@ ENMY 解开了 ITMN 的锁!
 - Self Unlock
 自我解锁
 - Crystal Storm
-结晶风暴
+水晶风暴
 
 - Shadow Walk
 阴影步
@@ -48308,7 +48336,7 @@ ENMY 解开了 ITMN 的锁!
 - Willows 31
 条 31
 - I have learned of an ancient artifact, called the Mistress' Staff. Its history and owner are hotly debated, with some attributing it to the Archmagus herself, while others say it was developed by the magical warlords that followed. Most all sources agree that its signature feature is the ability to reverse the effects of the Great Work on any person.
-我了解到有一件古老的神器叫做女魔杖。它的历史和拥有者众说纷纭，有人说是大魔导师本人所为，也有人说是由后来的魔法军阀研制的。大多数消息来源都认为，它的标志性特征是能够逆转伟大成就对任何人的影响。
+我了解到一件古老的神器，叫做女主人之杖。它的历史和拥有者众说纷纭，有人说是大魔导师本人所为，也有人说是由后来的魔法军阀研制的。大多数消息来源都认为，它的标志性特征是能够逆转伟大成就对任何人的影响。
 - Catherine Willows' Journal (pg. 36)
 凯瑟琳·韦罗斯的日记（第 36 页）
 - Willows 33
@@ -48332,13 +48360,13 @@ ENMY 解开了 ITMN 的锁!
 - Willows 50
 条 50
 - I heard the bandits are looking for the Mistress' Staff. I'm not too worried--they wouldn't know what to do with it. It's that damned witch I'm worried about.|If my astute reader has come this far, you should beware the Silver Witch. She is working with forces that cannot be trusted.
-我听说强盗们在找女主人的法杖。我不太担心--她们不知道该怎么使用它。我担心的是那个该死的魔女。|如果读着这段文字的聪明人走到这一步，你更应该小心银发魔女。她在与不可信任的力量合作。
+我听说强盗们在寻找女主人之杖。我不太担心——她们不知道该怎么使用它。我担心的是那个该死的魔女。|如果读着这段文字的聪明人走到这一步，你更应该小心银发魔女。她在与不可信任的力量合作。
 - Catherine Willows' Journal (pg. 51)
 凯瑟琳·韦罗斯的日记（第 51 页）
 - Willows 51
 条 51
 - It seems I am not alone in my search for the Staff. To whom it may concern: the Great Work is a lie, and it will doom us all. If you care for your soul, you need to break the cycle, and for that we need a key: the Mistress' Staff.
-看来，我不是一个人在寻找这把法杖。伟大成就是一个谎言，它将毁灭我们所有人。如果你关心自己的灵魂，就必须打破这个循环，为此我们需要一把钥匙 : 女魔杖。
+看来，我不是一个人在寻找这把法杖。伟大成就是一个谎言，它将毁灭我们所有人。如果你关心自己的灵魂，就必须打破这个循环，为此我们需要一把钥匙 : 女主人之杖。
 - Silver Witch's Notes #10
 银发魔女的笔记 #10
 - Silver 10
@@ -48675,7 +48703,7 @@ ENMY 解开了 ITMN 的锁!
 - 'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
 "充能"是一种通用的弹药，可以被所有武器使用。用远古水晶充能。
 - Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold.
-耗尽的水晶可以嵌入一些灯具，从而为它们充能，但是这需要100金币。
+耗尽的水晶可以嵌入一些灯具，从而为它们充能，但是这需要 100 金币。
 - There is an elevator in this room, but it won't function until you defeat major enemies on this level.
 这个房间中有一个电梯，但是只有你消灭了这一层中的主要敌人后，它才会开始工作。
 - If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess.
@@ -48701,7 +48729,7 @@ ENMY 解开了 ITMN 的锁!
 - Choose an open space.
 选择一处开阔的空间。
 - Choose a tile with no existing mote.
-选择没有微粒的地方。
+选择没有微粒的地块。
 - You're too distracted to concentrate your distraction!
 你太分心了，无法集中注意力！
 
@@ -48711,7 +48739,7 @@ ENMY 解开了 ITMN 的锁!
 - Psychic Link
 心灵链接
 - Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
-造成20灵能伤害，然后在你和一个目标间创造一个心灵链接，持续50回合，使性奋增长在你们二人间均分。你和目标必须能够看见对方。
+造成 20 点灵能伤害，并在你与一个目标间创建心灵链接，持续 50 回合，使性奋增长在你们二人间均分。你和目标必须能够看见对方。
 - Target a non-blinded enemy.
 瞄准未失明的敌人。
 - You briefly lock eyes with the target, forming a psychic link!
@@ -48770,7 +48798,7 @@ ENMY 解开了 ITMN 的锁!
 PTRN 的 RMTPE
 
 - Leads to PLCE
-通向 PLCE
+通向PLCE
 
 - (You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
 (你发现了一个穿着粉色紧身衣，被拘束着的女孩。)|(她正穿着一个背包，有一个笔记粘在上面)|“我在这里的宠物可以为你捡起拘束具，并将它们送回给你~”|“试着打开设施界面，并存储拘束具！”|"署名：你忠诚的仆人"
@@ -48794,7 +48822,7 @@ PTRN 的 RMTPE
 - Bed!
 床!
 - Silver
-银箱子
+银箱
 - Mecha
 机械
 - chest
@@ -48808,7 +48836,7 @@ PTRN 的 RMTPE
 - Toy Chest
 玩具箱
 - (L)
-(锁住的)
+(锁)
 
 
 - (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
@@ -49052,7 +49080,7 @@ EnemyName 设法蠕动着离开了视野！
 使用清扫者远程攻击
 
 - You claim the Persuader.
-你拿起了说服者
+你拿起了说服者。
 - The Persuader
 说服者
 - Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard.
@@ -49065,7 +49093,7 @@ EnemyName 设法蠕动着离开了视野！
 - Persuader Round
 说服者子弹
 - You fire the Persuader!
-你用说服者开枪！
+你发射了说服者！
 
 - Wait for current save to finish...
 等待当前保存完成...
@@ -49076,11 +49104,11 @@ EnemyName 设法蠕动着离开了视野！
 - Debug Defeat
 作弊攻击
 - You cast devastating ASCII glyphs!
-你施放了毁灭性的ASCII码
+你施放了毁灭性的 ASCII 字符！
 - Debug Bind
 作弊束缚攻击
 - You cast bondage ASCII glyphs!
-你施放了束缚ASCII码
+你施放了束缚性的 ASCII 字符！
 
 - , Floor AMNT
 ，AMNT 层
@@ -49167,7 +49195,7 @@ NME 由于不够显要，被自动释放
 - Activate on Self
 对自己使用
 - Ignite on Self
-对自己使用
+点燃自己所在区块
 
 - (Already slept here)
 (已经睡过一次了)
