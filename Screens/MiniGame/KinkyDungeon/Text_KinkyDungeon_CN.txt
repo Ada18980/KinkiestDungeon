@@ -564,7 +564,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Novice
 初学者
 - All spells above 1st level cost 2x as many spell points.
-所有 1 级以上的法术花费 2 倍的法术点数。
+所有 1 级以上的法术花费 2 倍的技能点。
 
 - Blessed
 祝福
@@ -599,7 +599,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Studious
 学识渊博
 - You start the game with +1 spell point. Your first two spell categories are free.
-开局后法术点+1。可以不消耗法术点学习额外两个法术类别。
+开局多一个技能点。可以不消耗技能点学习额外两个法术类别。
 - Meditation
 冥想
 - You slowly regenerate mana, up to a maximum of 50.
@@ -927,13 +927,13 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Start in full Cyber restraints.
 开局时穿戴全套赛博拘束具。
 - Fuuka's Pet
-风香（Fuuka）的宠物
+风香的宠物
 - Start with Fuuka's collar and a few restraints.
-开局时穿戴风香（Fuuka）的项圈和一些别的拘束具。
+开局时穿戴风香的项圈和一些别的拘束具。
 - Fuuka Fan Club
-风香（Fuuka）粉丝俱乐部
+风香粉丝俱乐部
 - All humanoids that can bind you also apply Fuuka's special restraints.
-所有可束缚你的人形生物可以使用风香（Fuuka）特制的拘束具。
+所有可束缚你的人形生物可以使用风香特制的拘束具。
 - Collected
 搜集
 - Start with The Warden's special belt which punishes you for defiling spell orbs.
@@ -5113,7 +5113,7 @@ M.F. '女仆长'
 - A revenant appears!
 一个亡魂出现了！
 - Fuuka uses a talisman to call forth the spirits of her pets!
-风香（Fuuka）使用护符召唤她宠物的灵魂！
+风香使用护符召唤她宠物的灵魂！
 
 - A pool of latex bubbles and a twisted elemental appears!
 一池乳胶冒出气泡，一个扭曲的元素精灵出现了！
@@ -7432,7 +7432,7 @@ Zora的船员
 - Doll Shoppe
 玩偶商店
 - Fuuka's Shrine
-风香(Fuuka)的神龛
+风香的神龛
 - The Collectors
 收藏家
 - Dollmaker Inc.
@@ -7721,7 +7721,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintPanelPlugGagHarnessDesc2
 
 - Fuuka's Collar
-风香(Fuuka)的项圈
+风香的项圈
 - A collar enchanted with ghastly energy.
 被赋予了可怕能量的项圈。
 - It seems to react with a pulse of energy whenever a nearby enemy is defeated.
@@ -7732,7 +7732,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 你的项圈跳动，一个亡魂出现，为你击败的敌人报仇！
 
 - Fuuka's Pet Collar
-风香(Fuuka)的宠物项圈
+风香的宠物项圈
 - A collar enchanted with beneficial ghastly energy.
 被赋予了有益的可怕能量的项圈。
 - Your collar pulses, and a revenant appears to assist you!
@@ -11898,7 +11898,7 @@ Ars烟火
 - Magically Iliterate
 魔法盲
 - You've never read a magic book. Elemental, Conjuration, and Illusion spells cost 3x as many spell points.
-你从来没有读过魔法书籍。元素、咒术和幻术消耗 3 倍的法术点。
+你从来没有读过魔法书籍。元素、咒术和幻术消耗 3 倍的技能点。
 
 - Magical Spark
 魔法火花
@@ -14590,11 +14590,11 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 # - >
 # - <
 - Spell Points: SPELLPOINTS
-法术点 : ‎SPELLPOINTS
+技能点：‎SPELLPOINTS
 - You need a higher level in SCHOOL magic to learn this spell.
 你需要更高级别的 SCHOOL 魔法才能学习此法术。
 - You need more spell points.
-你需要更多法术点。
+你需要更多技能点。
 - You don't have enough maximum mana to cast this spell!
 您没有足够的最大法力值来施放这个法术！
 - School: 
@@ -14611,13 +14611,13 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Learn Spell
 学习法术
 - Spell Points: 
-法术点
+技能点：
 
 
 - Level: 
 等级：
 - Spell Point Cost: 
-需求法术点：
+消耗技能点：
 - Mana Cost: 
 法力消耗 : 
 
@@ -15161,7 +15161,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 一根藤蔓从地上爬了出来，已经缠住了你的脚！
 
 - You find a magic orb, containing a Spell Point. However, a Goddess owns this artifact..
-你发现了一个宝珠，里面有一个技能点。然而，女神拥有这件神器。
+你发现了一个宝珠，里面有一个技能点。然而，它属于女神。
 - You find a magic orb, containing the SHCL spell 'SPLNME' and angering a goddess.
 你发现了一个宝珠，里面有一个SHCL咒语“SPLNME”，激怒了一位女神。
 - You find a magic orb, containing a random spell and angering a goddess.
@@ -24417,26 +24417,26 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 玩偶师命令你跪下！ ( DamageTaken )
 
 - Fuuka
-风香(Fuuka)
+风香
 # :: NameFuuka1
 # :: NameFuuka2
 - Fuuka surrounds herself in defensive talismans!
-风香(Fuuka)将自己包围在防御丝带中！
+风香将自己包围在防御丝带中！
 - Fuuka wraps you tightly in restraints! (+RestraintAdded)
-风香(Fuuka)将你紧紧包裹在束缚中！ ( +RestraintAdded )
+风香将你紧紧包裹在束缚中！ ( +RestraintAdded )
 - Fuuka squeezes your breasts and smiles! (DamageTaken)
-风香(Fuuka)一边捏着你的胸一边微笑！ ( DamageTaken )
+风香一边捏着你的胸一边微笑！ ( DamageTaken )
 - Fuuka snaps her fingers and all your restraints are locked! (DamageTaken)
-风香(Fuuka)打了个响指，你所有的拘束具都被锁定了！ ( DamageTaken )
+风香打了个响指，你所有的拘束具都被锁定了！ ( DamageTaken )
 # :: AttackFuuka1Lock
 # :: AttackFuuka2Lock
 
 - Fuuka surrounds herself in defensive talismans one more time!
-风香(Fuuka)再一次用防御丝带包围自己！
+风香再一次用防御丝带包围自己！
 - Fuuka wraps you furiously in restraints! (+RestraintAdded)
-风香(Fuuka)狂怒地将你包裹起来！ ( +RestraintAdded )
+风香狂怒地将你包裹起来！ ( +RestraintAdded )
 - Fuuka pouts as she tickles you relentlessly! (DamageTaken)
-风香(Fuuka) 一边噘嘴一边无情地给你挠痒痒！ ( DamageTaken )
+风香一边噘嘴一边无情地给你挠痒痒！ ( DamageTaken )
 
 - (You find a girl wearing an ornate dress)|(She glances at you)|And who might you be?
 ( 你发现一个穿着华丽衣服的女孩 ) | ( 她瞥了你一眼 ) |你是谁？
@@ -43606,13 +43606,13 @@ AMNT 暗影流血 ( 10 回合 )
 # :: KinkyDungeonSpellFuukaOrb
 # :: KinkyDungeonSpellFuukaOrb
 - You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!
-你被 风香（Fuuka）的一枚护身符击中了。 风香（Fuuka）的魔法开始封印你的力量！
+你被风香的一枚护身符击中了。 风香的魔法开始封印你的力量！
 - You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!
-你被 风香（Fuuka）的一枚护身符击中了。Fuuka 的魔法让你变得迟钝！！
+你被风香的一枚护身符击中了。风香的魔法让你变得迟钝！！
 - You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
-你被 风香（Fuuka） 的一枚护身符击中了。 风香（Fuuka） 的魔法让你束手无策！！！
+你被风香的一枚护身符击中了。 风香的魔法让你束手无策！！！
 - You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
-你被  风香（Fuuka） 的一枚护身符射中了。 风香（Fuuka） 的魔法束缚了你！
+你被风香的一枚护身符射中了。 风香的魔法束缚了你！
 
 - Sealing Shadows
 封印暗影
@@ -43900,7 +43900,7 @@ UI 就是这样。|如果您想要更多的实践教程，请进入右上角的�
 - The Goddess grants you knowledge of SpellLearned!
 女神授予你法术学习知识！
 - You Goddess grants you +AMOUNT spell points!
-你女神授赐予你 +AMOUNT 法术点！
+你女神授赐予你 +AMOUNT 技能点！
 - The Goddess bestows a WeaponAcquired on you!
 女神赐予你一件 WeaponAcquired！
 - The Goddess grants you a ArmorAcquired!
@@ -44557,7 +44557,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - The Dollmaker does not take no for an answer.
 玩偶师不会接受 '不' 的回答。
 - Fuuka's shrine maidens would like to have a word with you.
-风香（Fuuka）的巫女们想和你说句话。
+风香的巫女们想和你说句话。
 - Your instructor will meet with you at regular intervals for further training.
 你的导师将定期与你会面以进行进一步训练。
 
@@ -45514,7 +45514,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - (SPEAKER grins)|I look forward to testing those claims~
 ( 发言人笑了 ) |我期待着验证这些说法~
 - I defeated Fuuka. Now you're next!
-我打败了风香（Fuuka）。现在轮到你了！
+我打败了风香。现在轮到你了！
 - (SPEAKER shrugs)|You beat that zombie girl?|She's the weakest of the paladins.|She loves to boast about how she's special,|But she's really just a spoiled brat.
 ( SPEAKER 耸耸肩 ) |你打败了那个僵尸女孩？|她是最弱的圣骑士。|她喜欢吹嘘自己的特别之处，|但她实际上只是一个被宠坏的孩子。
 - ...Zombie girl?
@@ -46765,7 +46765,7 @@ ENMYNME CHTRNME 的 RMNME
 
 
 - The lock is protected by a seal of repentance. To unlock it you must pay 1 spell point.
-这把锁被忏悔封印保护着。若要解锁它，你必须支付 1 法术点。
+这把锁被忏悔封印保护着。若要解锁它，你必须支付 1 技能点。
 - The restraint won't budge.
 束缚不会动摇。
 # :: KinkyDungeonCurseStruggleSpellLock1
@@ -46775,7 +46775,7 @@ ENMYNME CHTRNME 的 RMNME
 
 
 - The lock is protected by a seal of repentance. To unlock it you must pay AMNT spell points!
-这把锁被忏悔封印保护着。若要解锁它，你必须支付 AMNT 法术点！
+这把锁被忏悔封印保护着。若要解锁它，你必须支付 AMNT 技能点！
 - You perform a grand ritual to unlock the item!
 你执行一个盛大的仪式来解锁该物品！
 
@@ -48236,11 +48236,11 @@ ENMY 解开了 ITMN 的锁!
 
 
 - (The Warden perks an eyebrow at the sight of you,|before a wide grin overtakes her face)|Ahhh Fuuka. Chosen by the Goddess?|How does it feel to once again be under a leash?
-（监狱长一看到你就扬起眉毛，|然后咧嘴一笑）|啊，风香（Fuuka）。被女神选中?|再次被束缚的感觉如何？
+（监狱长一看到你就扬起眉毛，|然后咧嘴一笑）|啊，风香。被女神选中?|再次被束缚的感觉如何？
 - Fuuka, take her down.
-风香(Fuuka)，带她下来。
+风香，带她下来。
 - (Send Fuuka to fight her)
-（派风香(Fuuka)和她战斗）
+（派风香和她战斗）
 - That is none of your business. Now kneel.
 那不关你的事，现在跪下。
 - (Fight without listening.)
