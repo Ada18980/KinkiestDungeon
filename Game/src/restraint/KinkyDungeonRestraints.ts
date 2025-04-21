@@ -799,7 +799,8 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 
 		if (recursive && count < (maxCount ? maxCount : 100)) {
 			// Get all items, including dynamically linked ones
-			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true, ignoreShrine, forceIgnoreNonBinding);
+			items = KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, true,
+				ignoreShrine, forceIgnoreNonBinding);
 			items = items.filter((r) => {
 				return (forceFavorite || !(KDGameData.ItemPriority[r.inventoryVariant || r.name] > 9));
 			});

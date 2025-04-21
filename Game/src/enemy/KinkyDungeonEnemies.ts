@@ -5095,7 +5095,15 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	AIData.range = (enemy.Enemy.attackRange == 1 ? 1.5 : enemy.Enemy.attackRange) + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackRange");
 	AIData.width = enemy.Enemy.attackWidth + KinkyDungeonGetBuffedStat(enemy.buffs, "AttackWidth");
 	AIData.bindLevel = KDBoundEffects(enemy);
-	AIData.accuracy = KDEnemyAccuracy(enemy, player);
+	let accData = {
+		accuracy: KDEnemyAccuracy(enemy, KDPlayer()),
+		attacker: enemy,
+		target: KDPlayer(),
+		origAccuracy: 0,
+	}
+	accData.origAccuracy = accData.accuracy;
+	KinkyDungeonSendEvent("calcEnemyAccuracy", accData);
+	AIData.accuracy = accData.accuracy;
 
 	AIData.vibe = false;
 	AIData.damage = enemy.Enemy.dmgType;
@@ -10284,7 +10292,7 @@ function KDEnemyAccuracy(enemy: entity, player: entity): number {
 	let accuracy = enemy.Enemy.accuracy ? enemy.Enemy.accuracy : 1.0;
 	if (enemy.distraction) accuracy = accuracy / (1 + 1.5 * enemy.distraction / enemy.Enemy.maxhp);
 	if (enemy.boundLevel) accuracy = accuracy / (1 + 0.5 * enemy.boundLevel / enemy.Enemy.maxhp);
-	if (enemy.blind > 0) accuracy = AIData.playerDist > 1.5 ? 0 : accuracy * 0.5;
+	if (enemy.blind > 0) accuracy = KDistChebyshev(enemy.x-player.x, enemy.y-player.y) > 1.5 ? 0 : accuracy * 0.5;
 
 	if (player?.player) {
 		if (accuracy < 1 && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5) {

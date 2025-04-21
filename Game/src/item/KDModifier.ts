@@ -111,7 +111,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 					if (!data.element)
 						data.element = CommonRandomItemFromList("", KDSPELLELEMENTS);
 					if (!data.elementdmg)
-						data.elementdmg = KDELEMENTSMAP[data.element];
+						data.elementdmg = KDSPELLELEMENTSMAP[data.element];
 				},
 				events: (item, _positive, data) => {
 					let type = data.elementdmg;
@@ -126,7 +126,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: type + "DamageBuff", time: time, power: 0.01*amt, desc: "ElementalBuff", damage: data.elementdmg, buffSprite: "SpellDamageUp",},
 						{original: "ElementalBuff", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "ElementalBuff", damage: data.elementdmg, power: amt, duration: time, color: KDBaseBlack,
 							bgcolor: KinkyDungeonDamageTypes[type].color},
-						{original: "ElementalBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: KinkyDungeonDamageTypes[data.element].color},
+						{original: "ElementalBuff", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, color: KinkyDungeonDamageTypes[type].color},
 					];
 				},
 			},
@@ -152,7 +152,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 					if (!data.element)
 						data.element = CommonRandomItemFromList("", KDSPELLELEMENTS);
 					if (!data.elementdmg)
-						data.elementdmg = KDELEMENTSMAP[data.element];
+						data.elementdmg = KDSPELLELEMENTSMAP[data.element];
 
 				},
 				events: (item, _positive, data) => {
@@ -168,7 +168,7 @@ let KDModifierEffects: Record<string, KDModifierEffect> = {
 						{trigger: "CONDITION", inheritLinked: true, type: "BuffSelf", buffType: type + "DamageResist", time: time, power: 0.01*amt, desc: "ElementalResist", damage: data.elementdmg, buffSprite: "SpellDamageUp",},
 						{original: "ElementalResist", inheritLinked: true, trigger: "inventoryTooltip", type: "effectModifier", msg: "ElementalResist", damage: data.elementdmg, power: amt, duration: time, color: KDBaseBlack,
 							bgcolor: KinkyDungeonDamageTypes[type].color},
-						{original: "ElementalResist", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, bgcolor: KinkyDungeonDamageTypes[data.element].color},
+						{original: "ElementalResist", inheritLinked: true, trigger: "icon", type: "tintIcon", power: 4, bgcolor: KinkyDungeonDamageTypes[type].color},
 					];
 				},
 			},
@@ -205,7 +205,8 @@ let KDModifierConditions: Record<string, KDModifierCondition> = {
 						}
 					}
 					return [
-						{original: "OnTease", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnTease", color: KDBaseBlack, bgcolor: KDBaseWhite},
+						{original: "OnTease", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier",
+							msg: "OnTease", color: KDBaseBlack, bgcolor: KDBaseWhite},
 						...effects];
 				},
 			},
@@ -242,7 +243,8 @@ let KDModifierConditions: Record<string, KDModifierCondition> = {
 						}
 					}
 					return [
-						{original: "OnElementalSpell", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier", msg: "OnElementalCast", element: data.element, damage: data.elementdmg, color: KDBaseBlack, bgcolor: KDBaseWhite},
+						{original: "OnElementalSpell", inheritLinked: true, trigger: "inventoryTooltip", type: "conditionModifier",
+							msg: "OnElementalCast", element: data.element, damage: data.elementdmg, color: KDBaseBlack, bgcolor: KDBaseWhite},
 						...effects];
 				},
 			},

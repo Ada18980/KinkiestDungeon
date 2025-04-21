@@ -94,7 +94,7 @@ KDCollectionTabDraw.FacilityQuick = (value, buttonSpacing, III, x, y) => {
 		}, true, x + 10 + quikSpacing*XX++, y + 730 - 10 + quikSpacing * (quickStartingCol + YY), quikSize, quikSize,
 		"", KDBaseWhite, KinkyDungeonRootDirectory + "UI/Facility/" + fac[0] + ".png",
 		undefined, undefined, !allowed,
-		KDButtonColor, undefined, undefined, {
+		allowed ? KDButtonColor : KDBaseRed, undefined, undefined, {
 			hotkey: ii < KinkyDungeonKeySpell.length ? KDHotkeyToText(KinkyDungeonKeySpell[ii]) : undefined,
 			hotkeyPress: ii < KinkyDungeonKeySpell.length ? KinkyDungeonKeySpell[ii] : undefined,
 			scaleImage: true,
