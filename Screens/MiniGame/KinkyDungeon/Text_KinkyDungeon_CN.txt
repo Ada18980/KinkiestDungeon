@@ -11540,9 +11540,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 别再把它们堆在一起了。
 
 - Can be controlled using CMD spells
-可以使用 CMD 法术进行控制
+可以使用指令法术进行控制
 - Can be controlled using Rubbermancy
-可以使用 Rubbermancy 控制
+可以使用乳胶法术控制
 
 
 - Floor
@@ -12958,7 +12958,7 @@ Ars烟火
 - One With Slime
 粘液一体
 - While standing on slime/latex, you can cast rubber spells without components.
-当你站在黏液/乳胶上时，你可以在施法部位被限制时释放橡胶法术。
+当你站在粘液/乳胶上时，你可以在施法部位被限制时释放橡胶法术。
 
 - Convincing Disguise
 令人信服的伪装
@@ -30258,7 +30258,8 @@ V形比基尼
 # :: m_RopeWristtie3_l_Arm1
 # :: m_RibbonBoxtie1_l_Arm1
 # :: m_RibbonBoxtie2_l_Arm1
-# - ForeArm1
+- ForeArm1
+前臂1
 # :: m_RopeCrosstie1_l_ForeArm1
 # :: m_RopeBoxtie1_l_ForeArm1
 # :: m_RopeWristtie1_l_ForeArm1
@@ -30298,7 +30299,8 @@ V形比基尼
 # :: m_RibbonChestStraps1_l_Arm2
 # :: m_RibbonBoxtie2_l_Arm2
 # :: m_RibbonWristtie2_l_Arm2
-# - ForeArm2
+- ForeArm2
+前臂2
 # :: m_RopeChestStraps1_l_ForeArm2
 # :: m_RopeBoxtie2_l_ForeArm2
 # :: m_RopeWristtie2_l_ForeArm2
@@ -33622,12 +33624,14 @@ V形比基尼
 # :: m_BeltsArmsAll_l_Arms1
 # :: m_ShadowHandsArms1_l_Arms1
 # :: m_ShadowHandsArmsAll_l_Arms1
-# - LeftArm1
+- LeftArm1
+左手臂1
 # :: m_BeltsArms1_l_LeftArm1
 # :: m_BeltsArmsAll_l_LeftArm1
 # :: m_BeltsArms1_l_LeftArm1
 # :: m_BeltsArmsAll_l_LeftArm1
-# - RightArm1
+- RightArm1
+右手臂1
 # :: m_BeltsArms1_l_RightArm1
 # :: m_BeltsArmsAll_l_RightArm1
 # :: m_BeltsArms1_l_RightArm1
@@ -33643,7 +33647,8 @@ V形比基尼
 # :: m_BeltsArmsAll_l_Arms2
 # :: m_ShadowHandsArms2_l_Arms2
 # :: m_ShadowHandsArmsAll_l_Arms2
-# - LeftArm2
+- LeftArm2
+左手臂2
 # :: m_BeltsArms2_l_LeftArm2
 # :: m_BeltsArmsAll_l_LeftArm2
 # :: m_ShadowHandsArms2_l_LeftArm2
@@ -33652,7 +33657,8 @@ V形比基尼
 # :: m_BeltsArmsAll_l_LeftArm2
 # :: m_ShadowHandsArms2_l_LeftArm2
 # :: m_ShadowHandsArmsAll_l_LeftArm2
-# - RightArm2
+- RightArm2
+右手臂2
 # :: m_BeltsArms2_l_RightArm2
 # :: m_BeltsArmsAll_l_RightArm2
 # :: m_BeltsArms2_l_RightArm2
@@ -37064,7 +37070,8 @@ Aura刘海(右后)
 # :: m_VibePiercings_l_Base
 # :: m_VibePiercingsRestraint_l_Base
 # :: m_VibePiercingsRestraint_l_Base
-# - Lines
+- Lines
+线条
 # :: m_Panties_l_Lines
 # :: m_PantiesStriped_l_Lines
 # :: m_PantiesInvertedRose_l_Lines
@@ -38220,7 +38227,8 @@ Aura刘海(右后)
 # - HatBack
 # :: m_SantaHat_l_HatBack
 # :: m_RoundHat_l_HatBack
-# - Fluff
+- Fluff
+绒毛
 # :: m_SantaHat_l_Fluff
 # :: m_FestiveArmbinder_l_Fluff
 # :: m_FestiveHarnessTop_l_Fluff
@@ -39787,7 +39795,8 @@ Aura刘海(右后)
 # :: m_LatexMittens_l_Zipper
 # :: m_FashionLatexMittens_l_Zipper
 # :: m_FashionLatexMittens_l_Zipper
-# - Cap
+- Cap
+末端
 # :: m_CyberLongMittenLeft_l_Cap
 # :: m_CyberLongMittenLeft_l_Cap
 # :: m_CyberLongMittenRight_l_Cap
@@ -40119,7 +40128,8 @@ Aura刘海(右后)
 # - Underskirt
 # :: m_StripedSkirt_l_Underskirt
 # :: m_StripedSkirt_l_Underskirt
-# - Lining
+- Lining
+衬里
 # :: m_WolfCollar_l_Lining
 # :: m_WolfCollarTag_l_Lining
 # :: m_WolfCollarSmall_l_Lining
@@ -42231,7 +42241,7 @@ TYPE法力效率 AMNT
 - AMNT mana pool on capture
 捕获敌人时的法力池回复 AMNT
 - AMNT% Visibility Reduction
-AMNT% 可见度降低
+隐蔽性 AMNT%
 - AMNT Distraction Decay
 AMNT 性奋衰减
 - AMNT Distraction Per Turn
