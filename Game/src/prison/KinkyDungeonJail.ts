@@ -1545,7 +1545,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 		// Cancel if we are already in a prison
 	}
 
-	let leasher = KinkyDungeonLeashingEnemy();
+	let leasher = leashEnemy || KinkyDungeonLeashingEnemy();
 	let oldLeash: KDLeashData = null;
 	if (leasher && KDPlayer().leash) {
 		oldLeash = KDPlayer().leash;

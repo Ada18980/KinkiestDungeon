@@ -531,6 +531,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabJourneyMap", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "JourneyMap";
+		KDGameData.UseJourneyTarget = false;
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonJourneyMap"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "JourneyMap", KDButtonColor); II++;

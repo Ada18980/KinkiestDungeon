@@ -1049,7 +1049,6 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 			KDGameData.JourneyX = JourneyTarget;
 			KDGameData.JourneyY = MiniGameKinkyDungeonLevel;
 			KDGameData.JourneyTarget = null;
-
 			KDGameData.UseJourneyTarget = false;
 		}
 		if (currentSlot && closeConnections) {

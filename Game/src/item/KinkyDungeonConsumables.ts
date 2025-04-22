@@ -582,7 +582,7 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number, target: enti
 		&& !KinkyDungeonCanUseFeet()) {
 		let allowPotions = KinkyDungeonPotionCollar();
 		let nohands = KinkyDungeonIsHandsBound(false, true);
-		let failmsg = "KinkyDungeonCantUsePotion";
+		let failmsg = "KinkyDungeonCantUsePotions";
 		if (!nohands && !KinkyDungeonCanDrink(false, true)) {
 			failmsg = "KinkyDungeonCantUsePotionsKneelNoMouth";
 			nohands = true;
@@ -785,7 +785,7 @@ function KDStandardConsumableHandsCheck(item: item, Quantity: number): boolean {
 		&& !KinkyDungeonCanUseFeet()) {
 		let allowPotions = KinkyDungeonPotionCollar();
 		let nohands = KinkyDungeonIsHandsBound(false, true);
-		let failmsg = "KinkyDungeonCantUsePotion";
+		let failmsg = "KinkyDungeonCantUsePotions";
 		if (!nohands && !KinkyDungeonCanDrink(false, true)) {
 			failmsg = "KinkyDungeonCantUsePotionsKneelNoMouth";
 			nohands = true;

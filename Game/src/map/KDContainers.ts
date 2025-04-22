@@ -234,10 +234,10 @@ function KDDrawContainer(name: string, xOffset = -125, filters = [Restraint, Out
 
 		let textSplit = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
 			? TextGet(`${prefix}${KDRestraint(item).name}Desc`)
-			: TextGet(prefix + item.name + "Desc"), 15*mult, 40*mult).split('\n');
+			: TextGet(prefix + KDItem(item)?.name + "Desc"), 15*mult, 40*mult).split('\n');
 		let textSplit2 = KinkyDungeonWordWrap((unidentified && prefix == "Restraint")
 			? TextGet(`${prefix}${KDRestraint(item).name}Desc2`)
-			: TextGet(prefix + item.name + "Desc2"), 15*mult, 40*mult).split('\n');
+			: TextGet(prefix + KDItem(item)?.name + "Desc2"), 15*mult, 40*mult).split('\n');
 
 		let i = 0;
 		let descSpacing = 20;

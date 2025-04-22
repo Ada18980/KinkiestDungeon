@@ -244,7 +244,9 @@ function KinkyDungeonGetEnemy (
 			&& (!alliances?.requireHostile || (alliances?.requireHostile == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireHostile, enemy.faction) <= -0.5))
 			&& (!alliances?.requireAllied || (alliances?.requireAllied == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireAllied, enemy.faction) > 0.2))
 			&& (!alliances?.requireNonHostile || (alliances?.requireNonHostile == "Player" && !enemy.faction) || (enemy.faction && KDFactionRelation(alliances?.requireNonHostile, enemy.faction) > -0.49))
-			&& (KinkyDungeonGroundTiles.includes(Tile) || !enemy.tags.spawnFloorsOnly)) {
+			&& (KinkyDungeonGroundTiles.includes(Tile) || !enemy.tags.spawnFloorsOnly)
+			// Dont spawn on conveyors or bad tiles
+			&& !KDDefaultAvoidTiles.includes(Tile)) {
 			let rt = true;
 			let rst = false;
 			if (requireTags)

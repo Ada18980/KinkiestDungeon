@@ -4926,10 +4926,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "addEntity", type: "MasterworkAssignHP"},
 		],
 		ondeath: [{type: "MasterGear"}],
-		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:0,
+		visionRadius: 7, blindSight: 4.5, maxhp: 50, minLevel:0, weight:-100,
 		movePoints: 2.2, attackPoints: 2, attack: "SpellMeleeEffect",
 		attackWidth: 1, attackRange: 1, power: 4, dmgType: "chain", fullBoundBonus: 1,
-		terrainTags: {masterworkTrap: 100}, shrines: ["Leather"], allFloors: true,
+		terrainTags: {masterworkTrap: 200}, shrines: ["Leather"], allFloors: true,
 		dropTable: [{name: "RedKey", amount: 1, weight: 10}]},
 
 
