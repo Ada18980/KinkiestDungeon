@@ -45,7 +45,14 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Added Kjus eyes 5
 
 5.5.67
-- Fix wrong name when viewing enchanted items in containers
+- Reduced the incidence of the "distracted" mouth, especially when highly distracted
+- Bugfix: Fix wrong name when viewing enchanted items in containers
+- Bugfix: Fix issue where rarely wrong jail faction assigned when jailed via dialogue
+- Bugfix: Fix servers and other enemies spawning on conveyors and bondage machines
+- Bugfix: Missing descriptions
+- Bugfix: Right clicking on bed didnt show interaction option
+- Bugfix: Cant use bed if already on it
+- Bugfix: Animated masterworks appearing as regular spawns
 
 5.5.66
 - Fixed a crash when opening some chests

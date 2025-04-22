@@ -260,7 +260,7 @@ function KDGetGameContextActionsVanilla(
 		}
 	}
 
-	if (tile?.Type) {
+	if (tile?.Type || KDTileInteract[tileType]) {
 		// Interact
 		options.push("Interact");
 		optionImages.Interact = "Interact";
