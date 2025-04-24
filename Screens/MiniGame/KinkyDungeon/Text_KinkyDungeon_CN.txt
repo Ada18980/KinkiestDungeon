@@ -560,7 +560,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonStat6
 # :: KinkyDungeonDamageTypesoul
 - You no longer drop keys and picks, can unlock yourself with bound hands, and don't need hands for items/potions.
-你身上的钥匙和撬锁工具将不会掉落，可以用被束缚的手解锁自己，并且不需要手来使用物品/药水。
+你身上的钥匙和撬锁工具将不会掉落，不用手也可以打开身上拘束具的锁，并且不需要手来使用物品/药水。
 - Novice
 初学者
 - All spells above 1st level cost 2x as many spell points.
@@ -13486,7 +13486,7 @@ Ars烟火
 - Select which creature to bind
 选择要束缚的个体
 - Commands nearby restraints to bind a target, dealing DamageDealt chain damage, +50 binding. Ropes snare 3 turns/rope, belts +20 binding/belt, chains deal +15 crush dmg/chain.
-命令附近的拘束具束缚一个目标，造成 25 点锁链伤害并增加 50 点束缚。每个绳索束缚 3 回合，每个皮带增加 20 点束缚，每个链条增加 30 点碾压伤害。
+命令附近的拘束具束缚一个目标，造成 DamageDealt 点锁链伤害并增加 50 点束缚。每个绳索施加 3 回合定身，每个皮带增加 20 点束缚，每个链条造成 30 点碾压伤害。
 - You say a command word, and the bindings on the ground do your bidding!
 你念出咒语，地面上的拘束具开始按照你的指令行动！
 # :: KinkyDungeonSpellCastCommandCapture
@@ -13579,7 +13579,7 @@ Ars烟火
 - Select area to bind
 选择施放位置
 - Commands nearby restraints to bind targets standing on them. Rope: 30 chain dmg/5 turn snare. Chain: 30 crush dmg/8 turn disarm. Belts: 50 binding/3 turns vulnerability.
-命令附近的拘束具束缚站在其上的目标。绳索 : 造成 30 锁链伤害并束缚 5 回合，皮带 : 增加 50 点束缚并施加 3 回合虚弱，锁链 : 增加 30 点碾压伤害并缴械 8 回合。
+命令附近的拘束具束缚站在其上的目标。绳索：造成 30 锁链伤害并定身 5 回合，皮带：增加 50 点束缚并施加 3 回合虚弱，锁链：增加 30 点碾压伤害并缴械 8 回合。
 
 - CMD: Unlock
 指令 : ‎解锁
@@ -45372,12 +45372,12 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Psychokinesis
 念力
 - You can ignore components for telekinetic spells, however spells generate distraction (based on mana cost) when cast this way due to the mental strain. Unable to use at 100% DP.
-你可以忽略心灵感应需要的法术的成分，但是当以这种方式施放法术时，由于精神过载，法术会让你产生性奋 ( 基于法力消耗 ) 。无法在 100% 性奋值 下使用。
+你可以无视身体部位施放灵能法术，但是当以这种方式施法时，你会因精神紧张而增加性奋值（数额基于法力消耗）。无法在 100% 性奋值时使用。
 
 - Kinetic Mastery
 灵能大师
 - Negates the penalty for 2-handed weapons. Also gain the following effects:|-Kinetic spells and Sagitta cost 30% less while wielding a Light weapon.|-Kinetic spells and Sagitta gain +15 base damage when wielding a Heavy weapon.
-取消对双手武器的惩罚。还获得以下效果 : ‎|-挥舞轻型武器时，念动法术和天剑消耗降低 30%。-挥舞重型武器时，|念动法术和天剑获得 +15 基础伤害。
+取消对双手武器的惩罚。还获得以下效果：‎|-挥舞轻型武器时，念动法术和天剑消耗降低 30%。|-挥舞重型武器时，念动法术和天剑获得 +15 基础伤害。
 
 - Grasp
 抓握
@@ -45837,12 +45837,12 @@ ENMY 高潮了，收到了 AMNT 伤害！
 - Unconventional Warfare
 非常规作战
 - Select a weapon to attach it to your body. You can have one attached weapon at a time. Attaching it takes 5 turns.|An attached weapon can be equipped without hands and maintains 60% accuracy as long as you have arms or legs unbound.
-选择一件武器，将其附在身上。你同时只能拥有一件附加武器。需要 5 个回合来装备。|附加武器可以不用手来装备，只要你的手臂或腿没有被束缚，就能保持 60% 的准确度。
+选择至多一件武器，花费 5 个回合将其粘附在身上。|即使你的手指被束缚而无法握住武器，只要你的手臂或腿没有被束缚，就能以 60% 的准确度使用粘附武器。
 
 - Guerilla Fighting
 游击战
 - Light weapons can be wielded if you have your mouth free, at 75% accuracy.
-如果你的嘴巴可以自由活动，就可以使用轻型武器，命中率为 75%。
+如果嘴没被堵住，你就可以叼住轻型武器来战斗，命中率为 75%。
 
 
 - Tough Armor (1/2 crit mult while aware)
@@ -48272,7 +48272,7 @@ N/A
 - Reaching Authority
 语威延伸
 - If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
-在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
+“束缚术”可以通过口头施法，且施法距离增加 2 格。所有“指令”法术的施法距离增加 1 格。
 
 - Save Slot 
 存档槽
