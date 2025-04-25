@@ -633,7 +633,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Brawler
 格斗大师
 - Unarmed attacks deal +10 damage and being bound does not decrease unarmed damage.
-徒手攻击额外造成10伤害并且被束缚不会减少徒手伤害。
+徒手伤害 +10，被束缚不会减少徒手伤害。
 
 - Way of the Squish
 轻抚之手
