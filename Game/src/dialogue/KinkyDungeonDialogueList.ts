@@ -4,7 +4,7 @@ let KDDialogueParams = {
 	ShopkeeperHelpFee: 230,
 	ShopkeeperHelpFeePerLevel: 70,
 	ShopkeeperHelpFeePerPower: 10,
-	ShopkeeperHelpFeeFreebiePower: 20,
+	ShopkeeperHelpFeeFreebiePower: 50,
 	ShopkeeperFee: 900,
 	ShopkeeperFeePerLevel: 100,
 	ShopkeeperFeePunishThresh: 2500,

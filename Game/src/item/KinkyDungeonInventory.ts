@@ -3111,33 +3111,76 @@ function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, l
  * @param [prefix]
  * @param [curse]
  */
-function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, prefix: string = "", curse?: string) {
-	let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
-	let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
-	let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
-	if (prefix) variant.prefix = prefix;
-	if (curse) {
-		variant = JSON.parse(JSON.stringify(variant));
-		variant.curse = curse;
-	}
-	if (!KinkyDungeonRestraintVariants[newname])
-		KinkyDungeonRestraintVariants[newname] = variant;
-	if (variant.events)
-		events.push(...variant.events);
-	KDUpdateItemEventCache = true;
-	KDChangeItemName(item, item.type, variant.template);
-	if (item.type == LooseRestraint) {
-		item.name = newname;
-		item.curse = curse;
-		item.events = events;
-		item.showInQuickInv = true;
+function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, prefix: string = "", curse?: string, forceMorph?: boolean) {
+	if (forceMorph || !(KinkyDungeonGetRestraintItem(KDRestraint(item)?.Group)?.dynamicLink) || item.type == LooseRestraint) {
+		// original: just change restraint in-place
+		let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+		let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+		let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+		if (prefix) variant.prefix = prefix;
+		if (curse) {
+			variant = JSON.parse(JSON.stringify(variant));
+			variant.curse = curse;
+		}
+		if (!KinkyDungeonRestraintVariants[newname])
+			KinkyDungeonRestraintVariants[newname] = variant;
+		if (variant.events)
+			events.push(...variant.events);
+		KDUpdateItemEventCache = true;
+		KDChangeItemName(item, item.type, variant.template);
+		if (item.type == LooseRestraint) {
+			item.name = newname;
+			item.curse = curse;
+			item.events = events;
+			item.showInQuickInv = true;
+		} else {
+			item.name = variant.template;
+			item.curse = curse;
+			item.events = events;
+			item.inventoryVariant = newname;
+		}
+		KDUpdateItemEventCache = true;
 	} else {
-		item.name = variant.template;
-		item.curse = curse;
-		item.events = events;
-		item.inventoryVariant = newname;
+		// here we remove the current item and then add the new one
+
+		let origRestraint = KinkyDungeonGetRestraintByName(variant.template);
+		let events = origRestraint.events ? JSON.parse(JSON.stringify(origRestraint.events)) : [];
+		let newname = prefix + variant.template + KinkyDungeonGetItemID() + (curse ? curse : "");
+		if (prefix) variant.prefix = prefix;
+		if (curse) {
+			variant = JSON.parse(JSON.stringify(variant));
+			variant.curse = curse;
+		}
+		if (!KinkyDungeonRestraintVariants[newname])
+			KinkyDungeonRestraintVariants[newname] = variant;
+		if (variant.events)
+			events.push(...variant.events);
+
+		let lock = item.lock;
+
+		KinkyDungeonRemoveRestraintSpecific(item, false, true, true, false, false, undefined, true);
+
+		KDEquipInventoryVariant(
+			variant,
+			prefix,
+			item.tightness,
+			true,
+			lock,
+			true, false,
+			item.faction,
+			true,
+			curse,
+			undefined, false,
+			newname,
+			"" + item.id,
+			variant.suffix,
+			undefined,
+			true
+		);
+
+		KDUpdateItemEventCache = true;
 	}
-	KDUpdateItemEventCache = true;
+	
 }
 
 /**
