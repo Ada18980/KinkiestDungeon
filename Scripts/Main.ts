@@ -1,8 +1,32 @@
 //import * as PIXI from "pixi.js"
 //import { Viewport } from "../node_modules/pixi-viewport/dist/Viewport";
 
+declare const OGVCompat: any
+declare const OGVPlayer: any
+
 const PIXIWidth = 2000;
 const PIXIHeight = 1000;
+let isSafari = (navigator.userAgent.indexOf('Safari') != -1
+	&& navigator.userAgent.indexOf('Chrome') == -1);
+let OGVSupported = false;
+(() => {
+	if (isSafari) {
+		var head = document.getElementsByTagName('head')[0];
+		var script = document.createElement('script');
+	
+		script.type = 'text/javascript';
+	
+		script.src = "Scripts/lib/ogvjs-1.9.0/ogv.js";
+	
+		head.appendChild(script).onload = () => {
+			
+			OGVSupported = OGVCompat.supported('OGVPlayer');
+		};
+	
+	}
+	
+})();
+
 
 let resolution = KDResolutionList[parseFloat(localStorage.getItem("KDResolution")) || 0];
 
@@ -88,6 +112,15 @@ window.onload = function() {
 	(PIXIapp.renderer as PIXIRenderer).gl.canvas.addEventListener('webglcontextlost', () => {
 		console.error('WebGl context lost');
 		KDForceAllCull = true;
+		setTimeout(() => {
+			//@ts-ignore
+			if (PIXIapp.renderer.gl) {
+				//@ts-ignore
+				PIXIapp.renderer.gl.getExtension('WEBGL_lose_context').restoreContext();
+			}
+		}, 2000);
+
+		/*
 
 		if (!ContextLostAlready)
 			setTimeout(() => {
@@ -98,6 +131,7 @@ window.onload = function() {
 				}
 			}, 2000);
 		else ContextLostAlready = false;
+		*/
 
 
 		//load();
@@ -108,6 +142,7 @@ window.onload = function() {
 };
 
 let ContextLostAlready = false;
+let ContextLostFixedAlready = false;
 
 let TimerRunInterval: number = 0;
 let TimerLastTime: number = 0;

@@ -32110,3 +32110,5 @@ KDMulticlass2,"Class upgrades and skills for additional classes cost 2x as many 
 
 KDClickedHeadpat,"Your headpatting restored your willpower slightly!"
 KDClickedHeadpatNoWill,"Your headpatting feels nice!"
+
+KDIsImmune,${EnemyName} is immune to ${Type}!

@@ -185,7 +185,7 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 
 	// Start the new sound
 	let addNewListener = !KDCurrentMusicSound;
-	let audio = KDCurrentMusicSound || new Audio();
+	let audio = KDCurrentMusicSound || GetNewAudio();
 	let vol = (typeof Volume != 'undefined' ? Volume : 1.0);
 	KDCurrentMusicSound = audio;
 	KDCurrentMusicSoundUpdate = true;
@@ -217,27 +217,54 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 				KDNewSong = "";
 			}
 		}, false);
-	audio.play().then(() => {
-		KDCurrentLoops = 0;
-		//KDCurrentFade = 1;
 
-		KDLastSong = Sound;
-		KDCurrentSong = Sound;
-		KDSendMusicToast(TextGet(Sound));
-		KDNewSong = "";
-		KDMusicBusy = false;
-	}).catch((error) => {
-		if (error.name === 'NotAllowedError') {
-			// Music will try to play again after a user gesture (onclick event)
-			console.log('Autoplay is blocked by browser policy.');
-			allowMusic = false;
+	if (OGVSupported) {
+		audio.play();
+		try {
+			KDCurrentLoops = 0;
+			//KDCurrentFade = 1;
+	
+			KDLastSong = Sound;
+			KDCurrentSong = Sound;
+			KDSendMusicToast(TextGet(Sound));
+			KDNewSong = "";
 			KDMusicBusy = false;
-		} else {
-			console.log('An error occurred while trying to play ' + Sound + " -- ", error.message);
-			KDSendMusicToast("Error playing " + Sound + ": " + error.message); // This shouldn't happen, but now you'll get a bug report.
-			KDMusicBusy = false;
+		} catch(error) {
+			if (error.name === 'NotAllowedError') {
+				// Music will try to play again after a user gesture (onclick event)
+				console.log('Autoplay is blocked by browser policy.');
+				allowMusic = false;
+				KDMusicBusy = false;
+			} else {
+				console.log('An error occurred while trying to play ' + Sound + " -- ", error.message);
+				KDSendMusicToast("Error playing " + Sound + ": " + error.message); // This shouldn't happen, but now you'll get a bug report.
+				KDMusicBusy = false;
+			}
 		}
-	});
+	} else {
+		audio.play().then(() => {
+			KDCurrentLoops = 0;
+			//KDCurrentFade = 1;
+	
+			KDLastSong = Sound;
+			KDCurrentSong = Sound;
+			KDSendMusicToast(TextGet(Sound));
+			KDNewSong = "";
+			KDMusicBusy = false;
+		}).catch((error) => {
+			if (error.name === 'NotAllowedError') {
+				// Music will try to play again after a user gesture (onclick event)
+				console.log('Autoplay is blocked by browser policy.');
+				allowMusic = false;
+				KDMusicBusy = false;
+			} else {
+				console.log('An error occurred while trying to play ' + Sound + " -- ", error.message);
+				KDSendMusicToast("Error playing " + Sound + ": " + error.message); // This shouldn't happen, but now you'll get a bug report.
+				KDMusicBusy = false;
+			}
+		});
+	}
+	
 }
 
 function KDEndMusic() {

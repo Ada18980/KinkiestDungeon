@@ -1,0 +1,33 @@
+
+var OGVDecoderAudioVorbisW = (() => {
+  var _scriptDir = typeof document != 'undefined' ? document.currentScript?.src : undefined;
+  if (typeof __filename != 'undefined') _scriptDir ||= __filename;
+  return (
+function(moduleArg = {}) {
+
+var b=moduleArg,g,k,readyPromise=new Promise((a,c)=>{g=a;k=c}),m=Object.assign({},b),n=(a,c)=>{throw c;},p="object"==typeof window,q="function"==typeof importScripts,r="object"==typeof process&&"object"==typeof process.versions&&"string"==typeof process.versions.node,t="",u,v,w;
+if(r){var fs=require("fs"),x=require("path");t=q?x.dirname(t)+"/":__dirname+"/";u=(a,c)=>{a=y(a)?new URL(a):x.normalize(a);return fs.readFileSync(a,c?void 0:"utf8")};w=a=>{a=u(a,!0);a.buffer||(a=new Uint8Array(a));return a};v=(a,c,e,d=!0)=>{a=y(a)?new URL(a):x.normalize(a);fs.readFile(a,d?void 0:"utf8",(f,l)=>{f?e(f):c(d?l.buffer:l)})};process.argv.slice(2);n=(a,c)=>{process.exitCode=a;throw c;}}else if(p||q)q?t=self.location.href:"undefined"!=typeof document&&document.currentScript&&(t=document.currentScript.src),
+_scriptDir&&(t=_scriptDir),t.startsWith("blob:")?t="":t=t.substr(0,t.replace(/[?#].*/,"").lastIndexOf("/")+1),u=a=>{var c=new XMLHttpRequest;c.open("GET",a,!1);c.send(null);return c.responseText},q&&(w=a=>{var c=new XMLHttpRequest;c.open("GET",a,!1);c.responseType="arraybuffer";c.send(null);return new Uint8Array(c.response)}),v=(a,c,e)=>{var d=new XMLHttpRequest;d.open("GET",a,!0);d.responseType="arraybuffer";d.onload=()=>{200==d.status||0==d.status&&d.response?c(d.response):e()};d.onerror=e;d.send(null)};
+b.print||console.log.bind(console);var z=b.printErr||console.error.bind(console);Object.assign(b,m);m=null;b.quit&&(n=b.quit);var A;b.wasmBinary&&(A=b.wasmBinary);var B,C=!1,D;function E(){var a=B.buffer;b.HEAP8=new Int8Array(a);b.HEAP16=new Int16Array(a);b.HEAPU8=D=new Uint8Array(a);b.HEAPU16=new Uint16Array(a);b.HEAP32=new Int32Array(a);b.HEAPU32=new Uint32Array(a);b.HEAPF32=new Float32Array(a);b.HEAPF64=new Float64Array(a)}var F=[],G=[],H=[];function I(){var a=b.preRun.shift();F.unshift(a)}
+var J=0,K=null,L=null,M=a=>a.startsWith("data:application/octet-stream;base64,"),y=a=>a.startsWith("file://"),N;N="ogv-decoder-audio-vorbis-wasm.wasm";if(!M(N)){var O=N;N=b.locateFile?b.locateFile(O,t):t+O}function P(a){if(a==N&&A)return new Uint8Array(A);if(w)return w(a);throw"both async and sync fetching of the wasm failed";}
+function aa(a){if(!A&&(p||q)){if("function"==typeof fetch&&!y(a))return fetch(a,{credentials:"same-origin"}).then(c=>{if(!c.ok)throw`failed to load wasm binary file at '${a}'`;return c.arrayBuffer()}).catch(()=>P(a));if(v)return new Promise((c,e)=>{v(a,d=>c(new Uint8Array(d)),e)})}return Promise.resolve().then(()=>P(a))}
+function Q(a,c,e){return aa(a).then(d=>WebAssembly.instantiate(d,c)).then(e,d=>{z(`failed to asynchronously prepare wasm: ${d}`);b.onAbort?.(d);d="Aborted("+d+")";z(d);C=!0;d=new WebAssembly.RuntimeError(d+". Build with -sASSERTIONS for more info.");k(d);throw d;})}
+function ba(a,c){var e=N;return A||"function"!=typeof WebAssembly.instantiateStreaming||M(e)||y(e)||r||"function"!=typeof fetch?Q(e,a,c):fetch(e,{credentials:"same-origin"}).then(d=>WebAssembly.instantiateStreaming(d,a).then(c,function(f){z(`wasm streaming compile failed: ${f}`);z("falling back to ArrayBuffer instantiation");return Q(e,a,c)}))}function ca(a){this.name="ExitStatus";this.message=`Program terminated with exit(${a})`;this.status=a}
+var R=a=>{for(;0<a.length;)a.shift()(b)},da=b.noExitRuntime||!0,ea={b:(a,c,e)=>D.copyWithin(a,c,c+e),a:a=>{var c=D.length;a>>>=0;if(2147483648<a)return!1;for(var e=1;4>=e;e*=2){var d=c*(1+.2/e);d=Math.min(d,a+100663296);var f=Math;d=Math.max(a,d);a:{f=(f.min.call(f,2147483648,d+(65536-d%65536)%65536)-B.buffer.byteLength+65535)/65536;try{B.grow(f);E();var l=1;break a}catch(h){}l=void 0}if(l)return!0}return!1},c:a=>{da||(b.onExit?.(a),C=!0);n(a,new ca(a))},d:function(a,c,e){var d=B.buffer,f=new Uint32Array(d,
+a,c),l=[];if(0!==a)for(a=0;a<c;a++){var h=f[a];d.slice?(h=d.slice(h,h+4*e),h=new Float32Array(h)):(h=new Float32Array(d,h,e),h=new Float32Array(h));l.push(h)}b.audioBuffer=l},e:function(a,c){b.audioFormat={channels:a,rate:c};b.loadedMetadata=!0}},S=function(){function a(e){S=e.exports;B=S.f;E();G.unshift(S.g);J--;b.monitorRunDependencies?.(J);0==J&&(null!==K&&(clearInterval(K),K=null),L&&(e=L,L=null,e()));return S}var c={a:ea};J++;b.monitorRunDependencies?.(J);if(b.instantiateWasm)try{return b.instantiateWasm(c,
+a)}catch(e){z(`Module.instantiateWasm callback failed with error: ${e}`),k(e)}ba(c,function(e){a(e.instance)}).catch(k);return{}}();b._ogv_audio_decoder_init=()=>(b._ogv_audio_decoder_init=S.h)();b._ogv_audio_decoder_process_header=(a,c)=>(b._ogv_audio_decoder_process_header=S.i)(a,c);b._ogv_audio_decoder_process_audio=(a,c)=>(b._ogv_audio_decoder_process_audio=S.j)(a,c);b._ogv_audio_decoder_destroy=()=>(b._ogv_audio_decoder_destroy=S.k)();b._malloc=a=>(b._malloc=S.l)(a);b._free=a=>(b._free=S.m)(a);
+var T;L=function fa(){T||U();T||(L=fa)};
+function U(){function a(){if(!T&&(T=!0,b.calledRun=!0,!C)){R(G);g(b);if(b.onRuntimeInitialized)b.onRuntimeInitialized();if(b.postRun)for("function"==typeof b.postRun&&(b.postRun=[b.postRun]);b.postRun.length;){var c=b.postRun.shift();H.unshift(c)}R(H)}}if(!(0<J)){if(b.preRun)for("function"==typeof b.preRun&&(b.preRun=[b.preRun]);b.preRun.length;)I();R(F);0<J||(b.setStatus?(b.setStatus("Running..."),setTimeout(function(){setTimeout(function(){b.setStatus("")},1);a()},1)):a())}}
+if(b.preInit)for("function"==typeof b.preInit&&(b.preInit=[b.preInit]);0<b.preInit.length;)b.preInit.pop()();U();var V,W;function X(a){if(V&&W>=a)return V;V&&b._free(V);W=a;return V=b._malloc(W)}var Y;Y="undefined"===typeof performance||"undefined"===typeof performance.now?Date.now:performance.now.bind(performance);function Z(a){var c=Y();a=a();b.cpuTime+=Y()-c;return a}b.loadedMetadata=!!b.audioFormat;b.audioFormat=b.audioFormat||null;b.audioBuffer=null;b.cpuTime=0;
+Object.defineProperty(b,"processing",{get:function(){return!1}});b.init=function(a){Z(function(){b._ogv_audio_decoder_init()});a()};b.processHeader=function(a,c){var e=Z(function(){var d=a.byteLength,f=X(d);(new Uint8Array(B.buffer,f,d)).set(new Uint8Array(a));return b._ogv_audio_decoder_process_header(f,d)});c(e)};b.processAudio=function(a,c){var e=Z(function(){var d=a.byteLength,f=X(d);(new Uint8Array(B.buffer,f,d)).set(new Uint8Array(a));return b._ogv_audio_decoder_process_audio(f,d)});c(e)};
+b.close=function(){};
+
+
+  return readyPromise
+}
+);
+})();
+if (typeof exports === 'object' && typeof module === 'object')
+  module.exports = OGVDecoderAudioVorbisW;
+else if (typeof define === 'function' && define['amd'])
+  define([], () => OGVDecoderAudioVorbisW);
