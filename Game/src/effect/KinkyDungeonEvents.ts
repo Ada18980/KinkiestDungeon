@@ -1022,7 +1022,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						KDBaseWhite, 2);
 				}
 				KDUpdateItemEventCache = true;
-				KDMorphToInventoryVariant(item, newvariant, "", curse);
+				KDMorphToInventoryVariant(item, newvariant, "", curse, !newRestraint);
 
 			}
 		},

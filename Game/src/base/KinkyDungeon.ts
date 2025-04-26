@@ -7085,12 +7085,20 @@ function sfc32(a: number, b: number, c: number, d: number) {
 
 let kdSoundCache: Map<string, HTMLAudioElement> = new Map();
 
+function GetNewAudio() {
+	if (OGVSupported) {
+		return new OGVPlayer();
+	} else {
+		return new Audio();
+	}
+}
+
 function AudioPlayInstantSoundKD(Path: string, volume?: number) {
 	if (!KDSoundEnabled()) return false;
 	const vol = KDSfxVolume * (typeof volume != 'undefined' ? volume : 1);
 	if (vol > 0) {
 		let src = KDModFiles[Path] || Path;
-		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : new Audio();
+		let audio = kdSoundCache.has(src) ? kdSoundCache.get(src) : GetNewAudio();
 		if (!kdSoundCache.has(src))  {
 			audio.src = src;
 			kdSoundCache.set(src, audio);

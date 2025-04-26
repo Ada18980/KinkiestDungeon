@@ -1150,6 +1150,14 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				Enemy.hp = 0;
 			}
 			if (predata.dmgDealt > 0) Enemy.revealed = true;
+		} else {
+			if (!KinkyDungeonFlags.get("dmgImmune_" + Enemy.id + "_" + predata.type)) {
+				KinkyDungeonSetFlag("dmgImmune_" + Enemy.id + "_" + predata.type, 10);
+				KinkyDungeonSendTextMessage(10, TextGet("KDIsImmune", {
+					EnemyName: KDGetEnemyTypeName(Enemy),
+					Type: TextGet("KinkyDungeonDamageType" + predata.type)
+				}), KDBaseRed);
+			}
 		}
 
 

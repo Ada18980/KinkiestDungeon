@@ -239,6 +239,7 @@ let LAYERS_BASE = [
 
 
 
+	"PetsuitOver",
 
 
 	// Corsets that go under harness and poofy skirt
@@ -719,6 +720,7 @@ let LayerGroups = {
 		"WrappingLegsUnder",
 		"WrappingLegsRight",
 		"PetsuitLegs",
+		"PetsuitOver",
 		"PetsuitLegsUnder",
 	]),
 	"SlimeThighs": ToMap([
@@ -740,6 +742,7 @@ let LayerGroups = {
 		"LegbinderLegsOver",
 		"LegbinderAnklesOver",
 		"PetsuitLegs",
+		"PetsuitOver",
 		"PetsuitLegsUnder",
 	]),
 	"Boots": ToMap([
@@ -1787,6 +1790,7 @@ let LayerGroups = {
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
 	"PetsuitLegs",
+	"PetsuitOver",
 	"PetsuitLegsUnder",
 	"WrappingAnklesOver",
 	"LegbinderAnklesOver",

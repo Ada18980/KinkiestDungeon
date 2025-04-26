@@ -151,7 +151,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				Brows2Pose: "",
 				BlushPose: "BlushHigh",
 				MouthPose: C == KinkyDungeonPlayer ?
-					(KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > 25 ? "MouthSmile" : (KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -25 ? "MouthEmbarrassed" : "MouthPout"))
+					(KinkyDungeonStatStamina > 5 ? "MouthDazed" : (KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > 25 ? "MouthSmile" : (KinkyDungeonGoddessRep.Passion - KinkyDungeonGoddessRep.Frustration > -25 ? "MouthEmbarrassed" : "MouthPout")))
 					: "MouthEmbarrassed",
 			};
 		},
@@ -171,7 +171,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				BrowsPose: "BrowsSurprised",
 				Brows2Pose: "Brows2Surprised",
 				BlushPose: "BlushExtreme",
-				MouthPose: "MouthDazed",
+				MouthPose: "MouthDistracted",
 			};
 		},
 	},
@@ -190,7 +190,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				BrowsPose: "BrowsAnnoyed",
 				Brows2Pose: "Brows2Annoyed",
 				BlushPose: "BlushExtreme",
-				MouthPose: "MouthDazed",
+				MouthPose: "MouthDistracted",
 			};
 		},
 	},
@@ -814,7 +814,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "BlushHigh",
-				MouthPose: "MouthDistracted",
+				MouthPose: "",
 			};
 		},
 	},
@@ -831,7 +831,7 @@ let KDExpressions: Record<string, KDExpression> = {
 				BrowsPose: "",
 				Brows2Pose: "",
 				BlushPose: "BlushExtreme",
-				MouthPose: "MouthDistracted",
+				MouthPose: "",
 			};
 		},
 	},
