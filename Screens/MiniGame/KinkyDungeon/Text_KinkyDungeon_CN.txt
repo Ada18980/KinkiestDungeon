@@ -49928,3 +49928,5 @@ ${Count}x${Item} 已转移至仓库
 摸头稍微恢复了你的意志力！
 - Your headpatting feels nice!
 摸头让你感觉良好！
+
+# - ${EnemyName} is immune to ${Type}!
