@@ -659,6 +659,10 @@ function KinkyDungeonEvasion(Enemy: entity, IsSpell?: boolean, IsMagic?: boolean
 
 
 		if (dodged) {
+			KinkyDungeonSendTextMessage(10, TextGet("KDDodgedToken",{
+				EnemyName: KDGetEnemyTypeName(Enemy),
+			}),
+			KDBaseLightGrey, 2, undefined, undefined, undefined, "Combat");
 			let point = KinkyDungeonGetNearbyPoint(Enemy.x, Enemy.y, true, undefined, true, true, (x, y) => {return x != Enemy.x && y != Enemy.y;});
 			if (point) {
 				KDMoveEntity(Enemy, point.x, point.y, true, true, true, false);
@@ -1045,6 +1049,15 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				let amount = KDGetBlockAmount(Enemy);
 				let orig = predata.dmgDealt;
 				predata.dmgDealt -= Math.max(0, amount);
+				if (Math.max(0, amount) > 0) {
+					KinkyDungeonSendTextMessage(10, TextGet("KDBlocked",{
+						EnemyName: KDGetEnemyTypeName(Enemy),
+						Amount: Math.round(10*Math.max(0, amount)),
+						Type: TextGet("KinkyDungeonDamageType" + predata.type)
+					}), KDBaseLightGrey, 1, false, false, Enemy, "Combat");
+				}
+				
+				
 
 				while (predata.dmgDealt > 0 && Enemy.blocks >= 1 && (predata.dmgDealt > Enemy.hp * 0.1 || predata.dmgDealt > Enemy.Enemy.maxhp*0.5)) {
 					blockCount += 1;
@@ -1150,7 +1163,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				Enemy.hp = 0;
 			}
 			if (predata.dmgDealt > 0) Enemy.revealed = true;
-		} else {
+		} else if (!NoMsg) {
 			if (!KinkyDungeonFlags.get("dmgImmune_" + Enemy.id + "_" + predata.type)) {
 				KinkyDungeonSetFlag("dmgImmune_" + Enemy.id + "_" + predata.type, 10);
 				KinkyDungeonSendTextMessage(10, TextGet("KDIsImmune", {
@@ -1421,10 +1434,33 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		Enemy.playerdmg += predata.dmgDealt;
 	}
 
-	if (!NoMsg && (!predata.blocked) && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) {KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
-		TextGet((Ranged) ? "PlayerRanged" + mod : "PlayerAttack" + mod)?.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("AttackName", atkname).replace("DamageDealt", "" + Math.round(predata.dmgDealt * 10)).replace("DamageType", ("" + damageName).toLowerCase())
-		: TextGet("PlayerMiss" + ((Damage && !miss) ? (predata.shieldBlocked ? "Shield" : "Armor") : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
-			(Damage && (predata.dmg > 0 || effect)) ? "orange" : KDBaseRed, 2, undefined, undefined, Enemy, "Combat", predata.dmgDealt == 0 ? "Action" : undefined);
+	if (!NoMsg) {
+		if ((!predata.blocked) && (predata.dmgDealt > 0 || !Spell || effect) && (!Damage || Damage.damage > 0)) {KinkyDungeonSendActionMessage(4 + predata.dmgDealt * 0.01, (Damage && predata.dmgDealt > 0) ?
+			TextGet((Ranged) ? "PlayerRanged" + mod : "PlayerAttack" + mod)?.replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)).replace("AttackName", atkname).replace("DamageDealt", "" + Math.round(predata.dmgDealt * 10)).replace("DamageType", ("" + damageName).toLowerCase())
+			: TextGet("PlayerMiss" + ((Damage && !miss) ? (predata.shieldBlocked ? "Shield" : "Armor") : "")).replace("TargetEnemy", TextGet("Name" + Enemy.Enemy.name)),
+				(Damage && (predata.dmg > 0 || effect)) ? "orange" : KDBaseRed, 2, undefined, undefined, Enemy, "Combat", predata.dmgDealt == 0 ? "Action" : undefined);
+		}
+	}
+	else if (predata.dmgDealt > 0 && !miss) {
+		KinkyDungeonSendTextMessage(1, TextGet(
+			"KDTookDamage",
+			{
+				EnemyName: KDGetEnemyTypeName(Enemy),
+				Amount: Math.round(10 * predata.dmgDealt),
+				Type: TextGet("KinkyDungeonDamageType" + predata.type)
+			}
+		), KDBaseYellow, 1, false, false, Enemy,
+		"Combat");
+	} else if (Damage && Damage.damage > 0) {
+		KinkyDungeonSendTextMessage(1, TextGet(
+			"KDTookDamageMissed",
+			{
+				EnemyName: KDGetEnemyTypeName(Enemy),
+				Amount: Math.round(10 * predata.dmg),
+				Type: TextGet("KinkyDungeonDamageType" + predata.type)
+			}
+		), KDBaseLightGrey, 1, false, false, Enemy,
+		"Combat");
 	}
 
 	if (Enemy && Enemy.Enemy && KDAmbushAI(Enemy) && Spell) {
@@ -1609,7 +1645,15 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 	if (predata.eva && (Damage.sfx || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx))) {
 		if (KDSoundEnabled()) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + (Damage.sfx || KinkyDungeonPlayerDamage.sfx) + ".ogg"});
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");
-	} else if (!predata.eva) if (KDSoundEnabled()) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/Miss.ogg"});
+	} else if (!predata.eva) {
+		if (KDSoundEnabled()) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/Miss.ogg"});
+		KinkyDungeonSendTextMessage(10, TextGet("KDDodged",{
+			EnemyName: KDGetEnemyTypeName(Enemy),
+			Amount: Math.round(10*Math.max(0, dmg.damage)),
+			Type: TextGet("KinkyDungeonDamageType" + dmg.type)
+		}),
+		KDBaseLightGrey, 2, undefined, undefined, undefined, "Combat");
+	}
 	//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 	if (disarm) {
 		//KinkyDungeonDisarm(Enemy);

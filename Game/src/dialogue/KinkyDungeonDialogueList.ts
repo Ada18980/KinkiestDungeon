@@ -3395,6 +3395,46 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 	},
 
 
+	"ResistanceDrone": {
+		response: "Default",
+		options: {
+			"Neutral": {
+				gag: true,
+				playertext: "Default",
+				response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Negative": {
+				gag: true,
+				playertext: "Default",
+				response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Steal": {
+				gag: false,
+				playertext: "Default",
+				response: "Default",
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+
+
 	"AdaMasterwork": {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {

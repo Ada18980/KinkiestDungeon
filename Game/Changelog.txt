@@ -48,6 +48,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - fix missing sock when kneeling in kitty pet suit
 - Increased threshold for "curse testing" at shopkeeper
 - Added big red message when a target is immune to your attack
+- Made spell cast message happen before the spell is cast chronologically
 
 5.5.67
 - Added Kjus eyes 5

@@ -6135,7 +6135,7 @@ KinkyDungeonSpellCastIceOrb,You a hurl a frigid orb!
 KinkyDungeonSpellTargetIceOrb,Choose aim direction
 
 KinkyDungeonSpellFreeze,Freeze
-KinkyDungeonSpellDescriptionFreeze,Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched.
+KinkyDungeonSpellDescriptionFreeze,Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched. Can be dodged by enemies as if it were an attack.
 KinkyDungeonSpellCastFreeze,You utter dark words of ice-cold truths.
 KinkyDungeonSpellTargetFreeze,Choose a target to freeze
 
@@ -27774,6 +27774,7 @@ KinkyDungeonCurseInfoCursedDamage,"Take AMNT damage to weaken the curse. Exclude
 KinkyDungeonCurseStruggleCursedDamage,"You struggle uselessly, sealed in your fate."
 KDcurseDamageDamage,"You feel your restraints starting to weaken..."
 
+
 KinkyDungeonCurseUnlockCursedCollar,"The cursed collar falls off, awaiting its next victim..."
 KinkyDungeonCurseInfoCursedCollar,"You must remove all other Star Cursed items before removing the collar."
 KinkyDungeonCurseStruggleCursedCollar,"You struggle uselessly, sealed in your fate."
@@ -32070,7 +32071,7 @@ rAdaMasterworkUnlockSuccess,"(SPEAKER smiles as she unlocks your restraints with
 KDSummonLatexKitty,The chest contained an angry latex kitty!
 
 NameLatexKitty,Latex Kitty
-KillLatexKitty,The latex kitty
+KillLatexKitty,The latex kitty lies down and meows.
 AttackLatexKitty,The latex kitty rubs against you seductively!
 AttackLatexKittyBind,"The latex kitty's rubbery coating spreads to you!"
 AttackLatexKittyLock,"The latex kitty's rubbery coating casts itself into locks!"
@@ -32112,3 +32113,41 @@ KDClickedHeadpat,"Your headpatting restored your willpower slightly!"
 KDClickedHeadpatNoWill,"Your headpatting feels nice!"
 
 KDIsImmune,${EnemyName} is immune to ${Type}!
+
+NameResistanceDrone,Hoverbot
+KillResistanceDrone,The hoverbot emits a loud 'failsafe engaged' and explodes.
+rResistanceRobot,(The EnemyName scans a beam across your body and beeps sharply)| |//CONTACT UNKNOWN|>explain intent
+dResistanceRobotNeutral,Just wandering around.
+dResistanceRobotNeutralGag,(Tilt your head)
+rResistanceRobotNeutral,(The EnemyName sounds a klaxon)| |>leave no witness
+dResistanceRobotNegative,None of your business.
+dResistanceRobotNegativeGag,(Shake your head)
+rResistanceRobotNegative,(The EnemyName sounds a klaxon)| |>hostility detected
+dResistanceRobotSteal,"To find some loot, of course!"
+rResistanceRobotSteal,(The EnemyName sounds a klaxon)| |>AGARTHA will be free
+dResistanceRobotSecret,"To bring down Sariel Vinlaga and her empire."
+rResistanceRobotSecret,(The EnemyName emits a pleasant chime)| |//CONTACT FRIENDLY|>you may proceed
+ 
+KDResistanceRobotAngered,Angered the resistance...?
+KDResistanceRobotPleased,Pleased the resistance...?
+
+KDTookDamage,${EnemyName} took ${Amount} ${Type} damage.
+KDTookDamageMissed,${EnemyName} avoided ${Amount} ${Type} damage.
+KDDodged,${EnemyName} dodged.
+KDDodgedToken,${EnemyName} spent a token to dodge.
+KDBlocked,${EnemyName} spent a token to block ${Amount} ${Type} damage.
+
+
+
+KDSummonLatexKittyCursed,The chest contained a cursed latex kitty!
+
+NameLatexKittyCursed,Cursed Latex Kitty
+KillLatexKittyCursed,The cursed latex kitty lies down and relaxes.
+AttackLatexKittyCursed,The cursed latex kitty rubs against you seductively!
+AttackLatexKittyCursedBind,"The cursed latex kitty's rubbery curse spreads to you!"
+AttackLatexKittyCursedLock,"The cursed latex kitty's rubbery coating casts itself into locks!"
+
+KinkyDungeonCurseUnlockLatexKittyCurse,"The Latex Kitty curse on the RestraintName relaxes and releases you."
+KinkyDungeonCurseInfoLatexKittyCurse,"Deal glue damage to enemies to weaken the curse."
+KinkyDungeonCurseStruggleLatexKittyCurse,"The Curse of the Latex Kitty keeps this tightly wrapped around you."
+KDLatexKittyCurseEffect,"You transfer some of your curse to the ${Target}."

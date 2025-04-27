@@ -921,6 +921,10 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 
 			return {result: "Miscast", data: data};
 		}
+	} else if (!enemy && !bullet && player) {
+		if (!spell.noCastMsg)
+			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (data.channel ? data.channel - 1 : 0));
+
 	}
 
 
@@ -1397,10 +1401,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 				KinkyDungeonAggroAction('magic', {});
 			if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 		}
-		if (!spell.noCastMsg)
-			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (data.channel ? data.channel - 1 : 0));
-		KDSendSpellCast(spell.name);
-
+		
 		KinkyDungeonSendEvent("playerCast", data);
 		if (KDGameData.HeelPower > 0) {
 			if (spell.components?.includes("Arms"))
