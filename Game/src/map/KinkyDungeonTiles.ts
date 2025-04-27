@@ -309,6 +309,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					if (KDGameData.PriorJailbreaks > 0) KDGameData.PriorJailbreaksDecay = (KDGameData.PriorJailbreaksDecay + 1) || 1;
 
 					if (MiniGameKinkyDungeonLevel > 1) {
+						
 						KDAdvanceTraining();
 						// Reduce security level when entering a new area
 						KinkyDungeonChangeRep("Prisoner", -5);
@@ -323,6 +324,8 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 							KinkyDungeonChangeRep("Conjure", -1);
 							KinkyDungeonChangeRep("Illusion", -1);
 						}
+						
+						if (KDGameData.PrisonerState == "jail") KDGameData.PrisonerState = "";
 					}
 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
@@ -350,6 +353,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			}
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
 			KDGameData.HighestLevel = Math.max(KDGameData.HighestLevel || 1, MiniGameKinkyDungeonLevel);
+			
 
 			//if (KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y)) {
 			let MapMod = data.mapMod;
