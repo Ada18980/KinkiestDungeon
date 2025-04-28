@@ -310,28 +310,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 					if (MiniGameKinkyDungeonLevel > 1) {
 						
-						KDAdvanceTraining();
-
-						if (KinkyDungeonStatsChoice.get("Trespasser")) {
-							KinkyDungeonChangeRep("Rope", -1);
-							KinkyDungeonChangeRep("Metal", -1);
-							KinkyDungeonChangeRep("Leather", -1);
-							KinkyDungeonChangeRep("Latex", -1);
-							KinkyDungeonChangeRep("Will", -1);
-							KinkyDungeonChangeRep("Elements", -1);
-							KinkyDungeonChangeRep("Conjure", -1);
-							KinkyDungeonChangeRep("Illusion", -1);
-						}
-						
-						if (KDGameData.PrisonerState == "jail") {
-							KDGameData.PrisonerState = "";
-							// Reduce security level when entering a new area
-							KinkyDungeonChangeRep("Prisoner", 10);
-						} else {
-							// Reduce security level when entering a new area
-							KinkyDungeonChangeRep("Prisoner", -5);
-
-						}
+						KDAdvanceOneFloor();
 					}
 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
@@ -1242,4 +1221,29 @@ let KDPotentialDangers: Record<string, (entity: entity, x: number, y: number, ma
 	rune: (entity, x, y, mapData, tags) => {
 		return false; // TODO
 	},
+}
+
+function KDAdvanceOneFloor() {
+	KDAdvanceTraining();
+
+	if (KinkyDungeonStatsChoice.get("Trespasser")) {
+		KinkyDungeonChangeRep("Rope", -1);
+		KinkyDungeonChangeRep("Metal", -1);
+		KinkyDungeonChangeRep("Leather", -1);
+		KinkyDungeonChangeRep("Latex", -1);
+		KinkyDungeonChangeRep("Will", -1);
+		KinkyDungeonChangeRep("Elements", -1);
+		KinkyDungeonChangeRep("Conjure", -1);
+		KinkyDungeonChangeRep("Illusion", -1);
+	}
+	
+	if (KDGameData.PrisonerState == "jail") {
+		KDGameData.PrisonerState = "";
+		// Increase security if escaping jail
+		KinkyDungeonChangeRep("Prisoner", 5);
+	} else {
+		// Reduce security level when entering a new area
+		KinkyDungeonChangeRep("Prisoner", -5);
+
+	}
 }
