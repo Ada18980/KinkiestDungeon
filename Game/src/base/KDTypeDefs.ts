@@ -2962,6 +2962,8 @@ interface KDBullet {
 	faction?: string,
 }
 interface KDBulletData {
+	inheritedflags?: any,
+	flags?: any,
 	name: string,
 	width: number,
 	height: number,
@@ -2976,6 +2978,10 @@ interface KDBulletData {
 	hit?: string,
 	trail?: boolean,
 	source?: number,
+	/** multiplies dmg after creation */
+	dmgMult?: number,
+	/** adds dmg after creation before mult */
+	dmgBoost?: number,
 	bulletSpin?: number,
 	hitevents?: KinkyDungeonEvent[],
 	effectTile?: effectTileRef,

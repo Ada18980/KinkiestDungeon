@@ -108,6 +108,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					tX-entity.x,tY - entity.y,
 					spell2.speed, {noSprite: spell2.noSprite, faction: faction, name:spell2.name, block: spell2.block, volatile: spell2.volatile, blockType: spell2.blockType,
 						volatilehit: spell2.volatilehit,
+						source: entity?.id,
 						width:size, height:size, summon:spell2.summon, cast: cast, dot: spell2.dot,
 						bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 						effectTile: spell2.effectTile, effectTileDurationMod: spell2.effectTileDurationMod,

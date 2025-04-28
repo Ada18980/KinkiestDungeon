@@ -3126,6 +3126,10 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 			KinkyDungeonRestraintVariants[newname] = variant;
 		if (variant.events)
 			events.push(...variant.events);
+
+		KDSwapEvents(variant.events, 
+			KinkyDungeonGetRestraintByName(item.name), 
+			KinkyDungeonGetRestraintByName(variant.template));
 		KDUpdateItemEventCache = true;
 		KDChangeItemName(item, item.type, variant.template);
 		if (item.type == LooseRestraint) {

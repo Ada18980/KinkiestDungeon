@@ -42,6 +42,9 @@ let KDCurseUnlockList = {
 	"CursedCollar2": [
 		"CursedDamage",
 	],
+	"LatexKittyCurse": [
+		"LatexKittyCurse",
+	]
 };
 
 /**
@@ -120,6 +123,32 @@ let KDCurses: Record<string, KDCursedDef> = {
 				.replace("AMNT", "" + (amount)),
 			KDBaseWhite, 2);
 		},
+	},
+	
+	LatexKittyCurse: {
+		powerMult: 3.8,
+		lock: true,
+		noShrine: true,
+		activatecurse: true,
+		level: 5,
+		customIcon_hud: "LatexKittyCurse",
+		weight: (_item) => {
+			return 1;
+		},
+		condition: (_item) => {
+			return false;
+		}, 
+		remove: (_item, _host) => {},
+		customInfo: (item, Curse) => {
+			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
+				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
+				.replace("AMNT", 
+					"" + (Math.round(10 * ((KDItemDataQuery(item, "LatexKittyCurseHP") || 0))) || "???")),
+			KDBaseWhite, 2);
+		},
+		events: [
+			{type: "LatexKittyCurse", power: 1.5, addBind: true, damage: "glue", bindType: "Latex", bindEff: 1.5, trigger: "playerAttack"},
+		],
 	},
 	"CursedCollar": {
 		powerMult: 10,

@@ -980,6 +980,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 				let selection = KDGetByWeight(KinkyDungeonGetHexByListWeighted(data.hexlist || listname, KDRestraint(item).name, false, data.hexlevelmin || 0, data.hexlevelmax || 10));
 				let curse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted([data.curselist || listname], KDRestraint(item).name, false, 0, 1000));
+				let oldRestraint = KDRestraint(data.item);
 
 				// Load the current inventory variant
 				let newvariant: KDRestraintVariant = JSON.parse(JSON.stringify(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] || {}));
@@ -1001,6 +1002,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 				newvariant.events = [...(newvariant.events || [])];
 				// Trim off the transformation...
+				//newvariant.events = KDSwapEvents(newvariant, oldRestraint, newRestraint);
 				if (!data.trimTrigger)
 					newvariant.events = newvariant.events.filter((event) => { return event.trigger != "CurseTransform"; });
 				newvariant.events = [...newvariant.events, ...KDEventHexModular[selection].events({ variant: newvariant })];
@@ -1037,6 +1039,36 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 			}
 			KinkyDungeonSendEvent("CurseTransform", { curseditem: item, newRestraintTags: e.tags, forceItems: [itemsEligible[Math.floor(KDRandom() * itemsEligible.length)]], trimTrigger: e.trim, msg: e.msg, ...data });
+		},
+	},
+	"launchBullet": {
+		ProjectileDamageBoost:  (_e, item, data: LaunchBulletData) => {
+			let id = "ev_" + _e.type + _e.original + item.id;
+			if (data.bullet
+				&& (data.b.vx || data.b.vy) // only moving projectiles
+				&& data.bullet.source == -1 && (!_e.original || !KDBulletHasFlag(data.b, id))) {
+				KDSetBulletInheritedFlag(data.b, id, true);
+				if (data.bullet.damage) {
+					data.b.bullet.damage.damage *= 1 + _e.power; // multiplies damage
+				} else {
+					if (data.b.bullet.dmgMult == undefined) data.b.bullet.dmgMult = 1;
+					data.b.bullet.dmgMult *= 1 + _e.power; // multiplies damage
+				}
+			}
+		},
+		StaticDamageBoost:  (_e, item, data: LaunchBulletData) => {
+			let id = "ev_" + _e.type + _e.original + item.id;
+			if (data.bullet
+				&& (!data.b.vx && !data.b.vy) // only static projectiles
+				&& data.bullet.source == -1 && (!_e.original || !KDBulletHasFlag(data.b, id))) {
+				KDSetBulletInheritedFlag(data.b, id, true);
+				if (data.bullet.damage) {
+					data.b.bullet.damage.damage *= 1 + _e.power; // multiplies damage
+				} else {
+					if (data.b.bullet.dmgMult == undefined) data.b.bullet.dmgMult = 1;
+					data.b.bullet.dmgMult *= 1 + _e.power; // multiplies damage
+				}
+			}
 		},
 	},
 	"cleanse": {
@@ -1102,6 +1134,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					let tags = _e.tags || KDGetCursedTags(item);
 					let lock = item.lock || "Purple";
 					let curse = item.curse;
+					let oldRestraint = KDRestraint(item);
 					let restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] },
 						KDGetEffLevel(),
 						(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint]
@@ -1158,9 +1191,12 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 								KDBaseYellow, 2);
 						let variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
 						if (variant) {
+							// remove the original restraints
+							KDSwapEvents(variant.events, 
+								oldRestraint, restraintAdd);
 							variant.events = variant.events.filter((e) => {
 								return e.type != _e.type || e.trigger != _e.trigger;
-							})
+							});
 							variant.template = restraintAdd.name;
 							KDEquipInventoryVariant(variant,
 								variant.prefix,
@@ -2615,6 +2651,23 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 	},
 	"playerAttack": {
+		LatexKittyCurse: (e, _item, data) => {
+			if (data.enemy && !data.miss && !data.disarm) {
+				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
+						KinkyDungeonDamageEnemy(data.enemy, {
+							type: e.damage,
+							damage: e.power,
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							addBind: e.addBind,
+							bindType: e.bindType,
+						}, false, e.power <= 0.1, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					}
+				}
+			}
+		},
 
 		"DestroyDirt": (e, _item, data) => {
 			if (data.enemy && !data.miss && !data.disarm && data.enemy.Enemy?.tags?.dirt) {

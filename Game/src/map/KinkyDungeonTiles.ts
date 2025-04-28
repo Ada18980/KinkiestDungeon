@@ -311,8 +311,6 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					if (MiniGameKinkyDungeonLevel > 1) {
 						
 						KDAdvanceTraining();
-						// Reduce security level when entering a new area
-						KinkyDungeonChangeRep("Prisoner", -5);
 
 						if (KinkyDungeonStatsChoice.get("Trespasser")) {
 							KinkyDungeonChangeRep("Rope", -1);
@@ -325,7 +323,15 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 							KinkyDungeonChangeRep("Illusion", -1);
 						}
 						
-						if (KDGameData.PrisonerState == "jail") KDGameData.PrisonerState = "";
+						if (KDGameData.PrisonerState == "jail") {
+							KDGameData.PrisonerState = "";
+							// Reduce security level when entering a new area
+							KinkyDungeonChangeRep("Prisoner", 10);
+						} else {
+							// Reduce security level when entering a new area
+							KinkyDungeonChangeRep("Prisoner", -5);
+
+						}
 					}
 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {

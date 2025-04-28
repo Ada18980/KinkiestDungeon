@@ -43,6 +43,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 
 5.5.68
+- Added Projectile Damage, Static AoE damage enchantments
+- Fix issue with transforming restraints not getting their effects changed
 - Added .ogg sound support for safari browser; should not affect anything other than safari
 - Fixed some parts of the cyber petsuit not showing over some corsets
 - fix missing sock when kneeling in kitty pet suit

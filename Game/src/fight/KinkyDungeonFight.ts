@@ -2229,6 +2229,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				passthrough: true,
 				name: b.bullet.name + "Hit",
 				width: b.bullet.width, height: b.bullet.height,
+				inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 			}
 		};
 		if (data.noise) {
@@ -2261,6 +2262,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					name: b.bullet.name + "Hit",
 					width: b.bullet.width,
 					height: b.bullet.height,
+					inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 				}
 			};
 			KDMapData.Bullets.push(newB);
@@ -2314,7 +2316,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				damage: {
 					evadeable: false,
 					noblock: (b.bullet.spell?.lifetime > 1.9),
-					damage: b.bullet.spell?.aoedamage || b.bullet.spell?.power,
+					damage: !(b.bullet.spell?.aoedamage || b.bullet.spell?.power) ? undefined
+						: ((b.bullet.spell?.aoedamage || b.bullet.spell?.power) + (b.bullet.dmgBoost || 0)) * (b.bullet.dmgMult != undefined ? b.bullet.dmgMult : 1),
 					type:b.bullet.spell?.damage,
 					ignoreshield: b.bullet.spell?.ignoreshield,
 					shield_crit: b.bullet.spell?.shield_crit, // Crit thru shield
@@ -2343,6 +2346,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				name: b.bullet.name + "Hit",
 				width: b.bullet.width,
 				height: b.bullet.height,
+				inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 			}
 		};
 		KDMapData.Bullets.push(newB);
@@ -2388,6 +2392,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				passthrough: true,
 				name: b.bullet.name + "Hit",
 				width: b.bullet.width, height: b.bullet.height,
+				inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 			}
 		};
 		KDMapData.Bullets.push(newB);
@@ -2443,7 +2448,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 								shield_vuln: b.bullet.spell?.shield_vuln, // Vuln thru shield
 								tease: b.bullet.spell?.tease,
 								addBind: b.bullet.spell?.addBind,
-								damage:b.bullet.spell?.power,
+								damage: !(b.bullet.spell?.power) ? undefined
+									: (b.bullet.spell?.power + (b.bullet.dmgBoost || 0)) * (b.bullet.dmgMult != undefined ? b.bullet.dmgMult : 1),
 								type: b.bullet.spell?.damage,
 								bind: b.bullet.spell?.bind,
 								crit: b.bullet.spell?.crit,
@@ -2458,6 +2464,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 							lifetime: b.bullet.spell?.lifetime + LifetimeBonus,
 							name: b.bullet.name + "Hit",
 							width: 1, height: 1,
+							inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 						}
 					};
 					KDMapData.Bullets.push(newB);
@@ -2487,7 +2494,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				hitevents: b.bullet.spell?.hitevents,
 				source: b.bullet.source,
 				damage: {
-					damage: b.bullet.spell?.aoedamage || b.bullet.spell?.power,
+					damage: !(b.bullet.spell?.aoedamage || b.bullet.spell?.power) ? undefined
+						: ((b.bullet.spell?.aoedamage || b.bullet.spell?.power) + (b.bullet.dmgBoost || 0)) * (b.bullet.dmgMult != undefined ? b.bullet.dmgMult : 1),
 					type: b.bullet.spell?.damage,
 					ignoreshield: b.bullet.spell?.ignoreshield,
 					shield_crit: b.bullet.spell?.shield_crit, // Crit thru shield
@@ -2515,6 +2523,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				passthrough: true,
 				name: b.bullet.name + "Hit",
 				width: b.bullet.width, height: b.bullet.height,
+				inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 			}
 		};
 		KDMapData.Bullets.push(newB);
@@ -2596,7 +2605,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					bulletSpin: b.bullet.spell?.hitSpin,
 					hitevents: b.bullet.spell?.hitevents,
 					damage: {
-						damage: b.bullet.spell?.aoedamage || b.bullet.spell?.power,
+						damage: !(b.bullet.spell?.aoedamage || b.bullet.spell?.power) ? undefined
+							: ((b.bullet.spell?.aoedamage || b.bullet.spell?.power) + (b.bullet.dmgBoost || 0)) * (b.bullet.dmgMult != undefined ? b.bullet.dmgMult : 1),
 						type:b.bullet.spell?.damage,
 						boundBonus: b.bullet.spell?.boundBonus,
 						ignoreshield: b.bullet.spell?.ignoreshield,
@@ -2625,6 +2635,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					passthrough: true,
 					name: b.bullet.name + "Hit",
 					width: b.bullet.width, height: b.bullet.height,
+					inheritedflags: b.bullet.inheritedflags ? Object.assign({}, b.bullet.inheritedflags) : undefined,
 				}
 			};
 			KDMapData.Bullets.push(newB);
@@ -2873,7 +2884,9 @@ function KinkyDungeonBulletTrail(b: KDBullet): boolean {
 								damage: {
 									evadeable: b.bullet.spell?.trailEvadeable,
 									noblock: b.bullet.spell?.trailNoBlock,
-									damage: b.bullet.spell?.trailPower,
+									damage: !(b.bullet.spell?.trailPower) ? undefined
+										: ((b.bullet.spell?.trailPower) + (((b.bullet.spell?.trailPower && b.bullet.spell?.power > 0) ? 
+											(b.bullet.spell?.trailPower / b.bullet.spell.power) * b.bullet.dmgBoost || 0 : 0))) * (b.bullet.dmgMult != undefined ? b.bullet.dmgMult : 1),
 									type: b.bullet.spell?.trailDamage,
 									boundBonus: b.bullet.spell?.boundBonus,
 									ignoreshield: b.bullet.spell?.ignoreshield,
@@ -3082,6 +3095,36 @@ function KDBulletHitPlayer(bullet: KDBullet, player: entity) {
 	}
 }
 
+interface HealData {
+    enemy: entity;
+    amount: number;
+    source: number;
+    bullet: KDBullet;
+}
+
+function KDHealNPC(enemy: entity, amount: number, source: number, bullet?: KDBullet) {
+	let data: HealData = {
+		enemy: enemy,
+		amount: amount,
+		source: source, 
+		bullet: bullet,
+	}
+	KinkyDungeonSendEvent("heal", data);
+	amount = data.amount;
+	source = data.source;
+	enemy = data.enemy;
+	bullet = data.bullet;
+	if (amount == 0) return;
+	
+	let origHP = enemy.hp;
+	enemy.hp = Math.min(enemy.hp + amount, enemy.Enemy.maxhp);
+
+	if (!bullet) return;
+	if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
+		KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", KDToggles.FastFloaters ? 1 : 3);
+	if (bullet.bullet.faction == "Player")
+		KDHealRepChange(enemy, enemy.hp - origHP);
+}
 
 
 /**
@@ -3094,12 +3137,7 @@ function KDBulletHitEnemy(bullet: KDBullet, enemy: entity, d: number, nomsg: boo
 	KinkyDungeonSendEvent("bulletHitEnemy", {bullet: bullet, enemy: enemy});
 	KDUniqueBulletHits.set(KDBulletID(bullet, enemy), true);
 	if (bullet.bullet.damage.type == "heal") {
-		let origHP = enemy.hp;
-		enemy.hp = Math.min(enemy.hp + bullet.bullet.spell.power, enemy.Enemy.maxhp);
-		if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
-			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", KDToggles.FastFloaters ? 1 : 3);
-		if (bullet.bullet.faction == "Player")
-			KDHealRepChange(enemy, enemy.hp - origHP);
+		KDHealNPC(enemy, bullet.bullet.spell.power, bullet.source, bullet);
 	} else //if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
 	{
 		// Avoid damaging the enemy if its a no direct damage spell
@@ -3137,6 +3175,33 @@ function KDBulletID(bullet: KDBullet, enemy: entity): string {
 	return (bullet.bullet.name) + (bullet.bullet.spell?.name || "") + "_" + (enemy.id);
 }
 
+function KDSetBulletFlag(bullet: KDBullet, flag: string, value: boolean) {
+	if (bullet) {
+		if (bullet.bullet) {
+			if (!bullet.bullet.flags) {
+				bullet.bullet.flags = {};
+			}
+			bullet.bullet.flags[flag] = value;
+		}
+	}
+}
+function KDSetBulletInheritedFlag(bullet: KDBullet, flag: string, value: boolean) {
+	if (bullet) {
+		if (bullet.bullet) {
+			if (!bullet.bullet.inheritedflags) {
+				bullet.bullet.inheritedflags = {};
+			}
+			bullet.bullet.inheritedflags[flag] = value;
+		}
+	}
+}
+
+function KDBulletHasFlag(bullet: KDBullet, flag: string) {
+	if (bullet?.bullet?.inheritedflags && bullet.bullet.inheritedflags[flag]) return true;
+	if (bullet?.bullet?.flags && bullet.bullet.flags[flag]) return true;
+	return false;
+}
+
 
 function KinkyDungeonLaunchBullet(x: number, y: number, targetx: number, targety: number, speed: number, bullet: KDBulletData, miscast: boolean, ox: number, oy: number): KDBullet {
 	let direction = (!targetx && !targety) ? 0 : Math.atan2(targety, targetx);
@@ -3160,9 +3225,26 @@ function KinkyDungeonLaunchBullet(x: number, y: number, targetx: number, targety
 		trail: bullet.spell.trail,
 		trailEffectTile: bullet.spell.effectTileTrail,
 	};
-	KDMapData.Bullets.push(b);
-	KinkyDungeonUpdateSingleBulletVisual(b, false);
+	let data: LaunchBulletData = {
+		b: b,
+		bullet: b.bullet,
+		miscast: miscast,
+		cancel: false,
+	}
+	KinkyDungeonSendEvent("launchBullet", data);
+	if (!data.cancel) {
+
+		KDMapData.Bullets.push(b);
+		KinkyDungeonUpdateSingleBulletVisual(b, false);
+	}
 	return b;
+}
+
+interface LaunchBulletData {
+    b: KDBullet;
+    bullet: KDBulletData;
+    miscast: boolean;
+    cancel: boolean;
 }
 
 let KDLastFightDelta = 0;

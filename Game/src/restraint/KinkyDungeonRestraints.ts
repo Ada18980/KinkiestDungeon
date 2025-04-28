@@ -852,6 +852,8 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 	}
 
 
+	KinkyDungeonSendEvent("postRemoval", {item: null, keep: Keep, shrine: false, Link: false, dynamic: true, Character: KinkyDungeonPlayer});
+				
 	return count;
 }
 
@@ -7126,4 +7128,29 @@ function KDDefaultNPCItemPalette(name: string) {
 function KDGetBaseLimitChance(StruggleType: string) {
 	if (StruggleType == "Struggle") return 0.05;// TODO
 	return 0.05;
+}
+
+/** mutates and returns a reference to the events */
+function KDSwapEvents(events: KinkyDungeonEvent[], oldRestraint: restraint, newRestraint: restraint) {
+	if (!events) return undefined;
+
+
+	for (let ee of (KDRestraint(oldRestraint)?.events || [])) {
+		let str = JSON.stringify(ee);
+		let index = events.findIndex((eee) => {
+			return str == JSON.stringify(eee);
+		});
+		if (index >= 0) {
+			events.splice(index, 1);
+		}
+	}
+
+	
+	if (KDRestraint(newRestraint)?.events) {
+		for (let i = KDRestraint(newRestraint).events.length - 1; i >= 0; i--) {
+			events.unshift(KDRestraint(newRestraint).events[i]);
+		}
+	}
+	
+	return events;
 }

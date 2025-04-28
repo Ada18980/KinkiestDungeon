@@ -5861,6 +5861,7 @@ KinkyDungeonColumnUnique,"Unique"
 KinkyDungeonColumnActive,"Active"
 KinkyDungeonColumnUpgrades,"Upgrades"
 
+
 KinkyDungeonFilterlearnable,Learnable
 KinkyDungeonFilterunlearned,Unlearned
 KinkyDungeonFilterlearned,Learned
@@ -5907,6 +5908,7 @@ KinkyDungeonFilterstamina,Stamina
 KinkyDungeonFiltermana,Magic
 KinkyDungeonFilterdamage,Damage
 KinkyDungeonFilterdistract,Distraction
+KinkyDungeonFilterranged,Ranged
 
 
 KDSpellEmpower,Empower to upcast spells
@@ -27712,6 +27714,8 @@ KDVariableModifier_ElementalEcho,"Infuse weapon AMNT% TYPE"
 KDVariableModifier_ElementalDmg,"AMNT TYPE on attack"
 KDVariableModifier_ManaCost,"AMNT Mana Efficiency"
 KDVariableModifier_ManaCostSpecific,"AMNT TYPE Mana Efficiency"
+KDVariableModifier_ProjectileDamage,"AMNT% Projectile Damage"
+KDVariableModifier_StaticDamage,"AMNT% Static AoE Damage"
 KDVariableModifier_ManaRegen,"AMNT% regen from mana pool"
 KDVariableModifier_ManaRegenOnKill,"AMNT mana pool on capture"
 KDVariableModifier_Sneak,"AMNT% Visibility Reduction"
@@ -28812,6 +28816,8 @@ KDVarSuffDamageResist,of Resistance
 KDVarSuffDamageBuff,of Power
 KDVarPrefManaCost,Arcane
 KDVarPrefManaCostSpecific,Entuned
+KDVarPrefProjectileDamage,Deadeye
+KDVarPrefStaticDamage,Blasting
 KDVarPrefManaRegenOnKill,Draining
 KDVarSuffElementalEcho,of Echoes
 KDVarPrefElementalDmg,Infused
@@ -32148,6 +32154,6 @@ AttackLatexKittyCursedBind,"The cursed latex kitty's rubbery curse spreads to yo
 AttackLatexKittyCursedLock,"The cursed latex kitty's rubbery coating casts itself into locks!"
 
 KinkyDungeonCurseUnlockLatexKittyCurse,"The Latex Kitty curse on the RestraintName relaxes and releases you."
-KinkyDungeonCurseInfoLatexKittyCurse,"Deal glue damage to enemies to weaken the curse."
+KinkyDungeonCurseInfoLatexKittyCurse,"The curse's strength is AMNT. Deal glue damage via unarmed attacks to weaken the curse."
 KinkyDungeonCurseStruggleLatexKittyCurse,"The Curse of the Latex Kitty keeps this tightly wrapped around you."
 KDLatexKittyCurseEffect,"You transfer some of your curse to the ${Target}."

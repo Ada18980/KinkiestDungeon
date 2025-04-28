@@ -19,6 +19,8 @@ let KDEnchantVariantList = {
 		"ManaRegen",
 		"BaseDamageBuffMelee",
 		"CommonPair",
+		"StaticDamage",
+		"ProjectileDamage",
 		//"DPDecay",
 		//"DPGain",
 		//"DPGainWhenAttacked",
@@ -26,6 +28,11 @@ let KDEnchantVariantList = {
 	"Pair": [
 		"CommonPair",
 	],
+	"GenDmg": [
+		"StaticDamage",
+		"ProjectileDamage",
+	],
+	
 	"Mana": [
 		"ManaRegenOnKill",
 		"ManaCost",
@@ -37,6 +44,8 @@ let KDEnchantVariantList = {
 		"DamageBuff",
 		"ElementalEcho",
 		"ElementalDmg",
+		"StaticDamage",
+		"ProjectileDamage",
 	],
 	"Gold": [
 		"ElementalEcho",
@@ -63,6 +72,8 @@ let KDEnchantVariantList = {
 		"ManaRegenOnKill",
 		"ManaCost",
 		"ManaCostSpecific",
+		"StaticDamage",
+		"ProjectileDamage",
 	],
 	"CommonWeapon": [
 		"Accuracy",
@@ -496,6 +507,68 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 						{original: "ManaCostSpecific", trigger: "calcEfficientMana", type: "ManaCost", condition: "spellType", kind: type, power: amt*0.01, inheritLinked: true},
 						{original: "ManaCostSpecific", trigger: "inventoryTooltip", type: "varModifier", msg: "ManaCostSpecific", kind: TextGet("KinkyDungeonFilter" + type), power: amt, color: KDBaseBlue, bgcolor: KDBaseLightBlue},
 						{original: "ManaCostSpecific", trigger: "icon", type: "tintIcon", power: 5, color: KDBaseBlue},
+					];}},
+		}},
+	"StaticDamage": {
+			tags: ["magic", "ranged", "offensive", "passive"],
+			prefix: "StaticDamage",
+			types: {
+				2: null, //consumable
+				1: null, //weapon
+				0: /*restraint*/{level: 6,
+					filter: (_item, _allEnchant) => {
+						return true;
+					},
+					weight: (item, allEnchant) => {
+						if (allEnchant.includes("StaticDamage")) return 0;
+						if (allEnchant.includes("StaticDamage")) return 0;
+						if (KDRestraint({name: item})?.gag) return 11;
+						if (KDRestraint({name: item})?.heelpower) return 20;
+						if (KDRestraint({name: item})?.hobble) return 5;
+						if (KDRestraint({name: item})?.armor && KDRestraint({name: item}).Group == "ItemBoots") return 20;
+						return 0;
+					},
+					events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+						let power = Math.max(KDGetItemPower(item), 3);
+						let amt = 1.4 + Math.round((0.4 + 0.6*KDRandom()) * 3 * Math.pow(power, 0.65));
+	
+						amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+						return [
+							{original: "StaticDamage", trigger: "launchBullet", type: "StaticDamageBoost", kind: "ranged", power: amt*0.01, inheritLinked: true},
+							{original: "StaticDamage", trigger: "inventoryTooltip", type: "varModifier", msg: "StaticDamage", kind: TextGet("KinkyDungeonFilteraoe"),
+								power: amt, color: KDBaseRed, bgcolor: KDBaseBlue},
+							{original: "StaticDamage", trigger: "icon", type: "tintIcon", power: 6, color: KDBaseRed},
+						];}},
+			}},
+	"ProjectileDamage": {
+		tags: ["magic", "ranged", "offensive", "passive"],
+		prefix: "ProjectileDamage",
+		types: {
+			2: null, //consumable
+			1: null, //weapon
+			0: /*restraint*/{level: 6,
+				filter: (_item, _allEnchant) => {
+					return true;
+				},
+				weight: (item, allEnchant) => {
+					if (allEnchant.includes("ProjectileDamage")) return 0;
+					if (allEnchant.includes("ProjectileDamage")) return 0;
+					if (KDRestraint({name: item})?.blindfold) return 11;
+					if (KDRestraint({name: item})?.bindarms) return 9;
+					if (KDRestraint({name: item})?.bindhands) return 20;
+					if (KDRestraint({name: item})?.armor && KDRestraint({name: item}).Group == "ItemHands") return 20;
+					return 0;
+				},
+				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
+					let power = Math.max(KDGetItemPower(item), 3);
+					let amt = 1.8 + Math.round((0.4 + 0.6*KDRandom()) * 4 * Math.pow(power, 0.65));
+
+					amt = KDNormalizedMultEnchantmentAmount(amt, item, Loot, curse, primaryEnchantment);
+					return [
+						{original: "ProjectileDamage", trigger: "launchBullet", type: "ProjectileDamageBoost", kind: "ranged", power: amt*0.01, inheritLinked: true},
+						{original: "ProjectileDamage", trigger: "inventoryTooltip", type: "varModifier", msg: "ProjectileDamage", kind: TextGet("KinkyDungeonFilterranged"),
+							power: amt, color: KDBaseYellow, bgcolor: KDBaseBlue},
+						{original: "ProjectileDamage", trigger: "icon", type: "tintIcon", power: 6, color: KDBaseYellow},
 					];}},
 		}},
 	"ManaRegenOnKill": {

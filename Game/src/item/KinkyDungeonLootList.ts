@@ -525,6 +525,17 @@ let KinkyDungeonLootTable = {
 			enchantlevelmin: 0, enchantlevelmax: 20,
 			message:"KDGoddessQuestReward_Armor", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
 	],
+	"gendmgtest": [
+		{name: "TrapRestraints", minLevel: 0, weight: KDEnchantedRestraintsWeight*2,
+			armortags: ["trap"], armor: "TrapGag", // Backup to a gag
+			cursesuffix: "",
+			maxEnchants: 2,
+			faction: "Curse",
+			hexlist: "Common", enchantlist: "GenDmg", hexchance: KD_hexchance_EnchantedRestraints, enchantchance: 1, alwaysenchanthex: true,
+			hexscale: KD_hexscale_EnchantedRestraints,
+			unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,
+			message:"LootChestArmor", messageColor:KDBaseLightBlue, messageTime: 3, allFloors: true},
+	],
 	// TODO make it so that it wont try to give you a non enchanted weapon you already have
 	/*"weapon": [
 		{name: "CommonWeapon", weaponlist: "CommonWeapon", enchantlist: "CommonWeapon", enchantchance: KD_enchantchance_Default, enchantscale: KD_enchantscale_Default,
