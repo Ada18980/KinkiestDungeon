@@ -12228,7 +12228,7 @@ Ars烟火
 
 - Freeze
 冻结
-- Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched.
+- Chill an adjacent target for DamageDealt ice damage and slows for Duration turns. Freezes if already slowed or drenched. Can be dodged by enemies as if it were an attack.
 使身边的一个目标变得冰冷，造成 DamageDealt 寒冰伤害，并减速 Duration 回合。如果该目标已被淋湿或减速，使其冻结
 - You utter dark words of ice-cold truths.
 你说出冰封的黑暗咒语。
@@ -21611,6 +21611,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 # :: dShopkeeperOfferHelpDebt_NoGag
 # :: dTheWardenBrat_ProceedGag_Proceed
 # :: dTheWardenSub_Brat_ProceedGag
+# :: dResistanceRobotNegativeGag
 
 - Of course miss.
 当然，小姐。
@@ -25666,6 +25667,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 请问你是谁呢？
 - (Tilt your head)
 ( 歪着头 )
+# :: dDollmaker_AskGag
+# :: dResistanceRobotNeutralGag
 - (The woman's mask reflects the harsh industrial light)|You don't know who I am?|Hmmph, and I suppose my servants haven't told you...|They call me the Dollmaker.
 ( 女人的面具反射着刺眼的工业光 ) |你不知道我是谁？|嗯，看来我的仆人还没有告诉你……|他们叫我玩偶师。
 - So you're the one they talked about.
@@ -42920,6 +42923,7 @@ RestraintName 上的诅咒印记消失在短暂的星尘面纱中。
 - You feel your restraints starting to weaken...
 你感觉你的束缚开始减弱......
 
+
 - The cursed collar falls off, awaiting its next victim...
 被诅咒的项圈脱落，等待着下一位受害者……
 - You must remove all other Star Cursed items before removing the collar.
@@ -49860,7 +49864,7 @@ NME 由于不够显要，被自动释放
 
 - Latex Kitty
 乳胶猫娘
-- The latex kitty
+- The latex kitty lies down and meows.
 乳胶猫娘
 - The latex kitty rubs against you seductively!
 乳胶猫娘诱惑地蹭着你！
@@ -49929,4 +49933,40 @@ ${Count}x${Item} 已转移至仓库
 - Your headpatting feels nice!
 摸头让你感觉良好！
 
-# - ${EnemyName} is immune to ${Type}!
+- ${EnemyName} is immune to ${Type}!
+${EnemyName}免疫${Type}！
+
+# - Hoverbot
+# - The hoverbot emits a loud 'failsafe engaged' and explodes.
+# - (The EnemyName scans a beam across your body and beeps sharply)| |//CONTACT UNKNOWN|>explain intent
+# - Just wandering around.
+# - (The EnemyName sounds a klaxon)| |>leave no witness
+# - None of your business.
+# - (The EnemyName sounds a klaxon)| |>hostility detected
+# - To find some loot, of course!
+# - (The EnemyName sounds a klaxon)| |>AGARTHA will be free
+# - To bring down Sariel Vinlaga and her empire.
+# - (The EnemyName emits a pleasant chime)| |//CONTACT FRIENDLY|>you may proceed
+# - Angered the resistance...?
+# - Pleased the resistance...?
+
+# - ${EnemyName} took ${Amount} ${Type} damage.
+# - ${EnemyName} avoided ${Amount} ${Type} damage.
+# - ${EnemyName} dodged.
+# - ${EnemyName} spent a token to dodge.
+# - ${EnemyName} spent a token to block ${Amount} ${Type} damage.
+
+
+
+# - The chest contained a cursed latex kitty!
+
+# - Cursed Latex Kitty
+# - The cursed latex kitty lies down and relaxes.
+# - The cursed latex kitty rubs against you seductively!
+# - The cursed latex kitty's rubbery curse spreads to you!
+# - The cursed latex kitty's rubbery coating casts itself into locks!
+
+# - The Latex Kitty curse on the RestraintName relaxes and releases you.
+# - Deal glue damage to enemies to weaken the curse.
+# - The Curse of the Latex Kitty keeps this tightly wrapped around you.
+# - You transfer some of your curse to the ${Target}.
