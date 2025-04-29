@@ -2528,7 +2528,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"latexKitty",
 		]),
 		effect: {
-			effect: {name: "LatexKittyCursed", damage: "glue", power: 4},
+			effect: {name: "LatexKittyCursed", damage: "glue", power: 4, curse: "LatexKittyCurse"},
 		},
 		ignoreflag: ["LatexKittyatk"], failAttackflag: ["LatexKittyatk"], failAttackflagDuration: 4, failAttackflagChance: 0.4,
 		Sound: {
@@ -2553,7 +2553,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		master: {type: "ElementalRubber", range: 2, loose: true, aggressive: true},
 		visionRadius: 4.5, blindSight: 2.5, maxhp: 18, minLevel:8, weight:2, movePoints: 2.4,
 		sprintspeed: 2.5, stamina: 5,
-		attackPoints: 2, attack: "SpellMeleeBindLockEffect", attackWidth: 1, attackRange: 1,
+		attackPoints: 2, attack: "SpellMeleeBindLockAllEffect", attackWidth: 1, attackRange: 1,
 		power: 1, dmgType: "glue", fullBoundBonus: 2,
 		terrainTags: {"latexAnger": 3, "latexRage": 3, "alchemist": 3, "slimeBonus": 2, "latex": 5, "slimeOptOut": -4,
 			"petOptout": -15,

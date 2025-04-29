@@ -28100,6 +28100,8 @@ KinkyDungeonSpellManaHarvesting,Mana Harvesting
 KinkyDungeonSpellDescriptionManaHarvesting,"Defeating or capturing a spellcaster-type enemy recovers 10 arcane energy, reduced to 1 for other humanoids."
 
 KDEnemyWindBlast,A powerful wind pushes you away!!!
+KDRubberKittyEncaseGetPulled,You are pulled toward your attacker and encased in rubber!
+KDGetPulled,You are pulled toward your attacker!
 
 KinkyDungeonInventoryItemStaffRope,Staff of Ropes
 KinkyDungeonInventoryItemStaffRopeDesc,"An enchanted rope kept in check by a magical seal. Surely this won't backfire..."
@@ -32160,4 +32162,6 @@ KDLatexKittyCurseAdded,The curse of the Latex Kitty takes hold on your ${Item}
 KinkyDungeonCurseUnlockLatexKittyCurse,"The Latex Kitty curse on the RestraintName relaxes and releases you."
 KinkyDungeonCurseInfoLatexKittyCurse,"The curse's strength is AMNT. Deal glue damage via unarmed attacks to weaken the curse."
 KinkyDungeonCurseStruggleLatexKittyCurse,"The Curse of the Latex Kitty keeps this tightly wrapped around you."
-KDLatexKittyCurseEffect,"You transfer some of your curse to the ${Target}."
+KDLatexKittyCurseEffect,"You transfer some of your ${Item}'s curse to ${Target}."
+KDLatexKittyCurseEffectFull,"You transfer the remainder of your ${Item}'s curse to ${Target}."
+KDLatexKittyCurseEffectFull2,"The curse will deal 25% damage as residual curse transfers."

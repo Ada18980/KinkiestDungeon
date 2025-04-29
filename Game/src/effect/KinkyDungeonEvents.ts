@@ -2651,19 +2651,46 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 	},
 	"playerAttack": {
-		LatexKittyCurse: (e, _item, data) => {
+		LatexKittyCurse: (e, item, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
 				if ((!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
-					if (!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) {
-						KinkyDungeonDamageEnemy(data.enemy, {
-							type: e.damage,
-							damage: e.power,
-							time: e.time,
-							bind: e.bind,
-							distract: e.distract,
-							addBind: e.addBind,
-							bindType: e.bindType,
-						}, false, e.power <= 0.1, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed);
+					if ((!e.prereq || KDCheckPrereq(data.enemy, e.prereq)) && (KDItemDataQuery(item, "LatexKittyCurseHP") || 0) > 0) {
+						let dmgDealt = Math.max(e.power,
+							KinkyDungeonDamageEnemy(data.enemy, {
+								type: e.damage,
+								damage: e.power,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								addBind: e.addBind,
+								bindType: e.bindType,
+							}, false, e.power <= 0.1, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed));
+						KDItemDataSet(item, "LatexKittyCurseHP", 
+							Math.max(0, KDItemDataQuery(item, "LatexKittyCurseHP") - dmgDealt));
+						let msg = "KDLatexKittyCurseEffect";
+						let full = (KDItemDataQuery(item, "LatexKittyCurseHP") || 0) <= 0;
+						if (full) {
+							msg = "KDLatexKittyCurseEffectFull";
+							KinkyDungeonSendTextMessage(7, TextGet(
+								"KDLatexKittyCurseEffectFull2"
+							), KDBaseBaby, 1);
+						}
+						KinkyDungeonSendTextMessage(full ? 7 : 3, TextGet(msg, {
+							Item: KDGetItemName(item),
+							Target: KDGetEnemyTypeName(data.enemy)
+						}), KDBaseBaby, 1, !full);
+
+					} else {
+						Math.max(e.power,
+							KinkyDungeonDamageEnemy(data.enemy, {
+								type: e.damage,
+								damage: e.power * 0.25,
+								time: e.time,
+								bind: e.bind,
+								distract: e.distract,
+								addBind: e.addBind,
+								bindType: e.bindType,
+							}, false, true, undefined, undefined, KinkyDungeonPlayerEntity, undefined, undefined, data.vulnConsumed));
 					}
 				}
 			}

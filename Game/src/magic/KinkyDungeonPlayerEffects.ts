@@ -108,6 +108,35 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 		return {sfx: "Shield", effect: false};
 	},
+	
+	"RubberPull": (target, damage, playerEffect, spell, _faction, bullet, entity) => {
+		if (KDTestSpellHits(spell, 1.0, 1.0)) {
+			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			if (!dmg.happened) return{sfx: "Shield", effect: false};
+			if (dmg.happened) {
+				let added = KDPlayerEffectRestrain(spell, playerEffect.count || 1, ['blueLatexEncase', "blueLatexEncaseRandom"], 
+					"Rubber", false, false, false, false);
+
+				
+				if (!entity) return  {sfx: "RubberHit", effect: true};
+
+				let dist = playerEffect.dist;
+				for (let i = 0; i < dist; i++) {
+					let newX = target.x + Math.round(1 * Math.sign(entity.x - target.x));
+					let newY = target.y + Math.round(1 * Math.sign(entity.y - target.y));
+					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
+					&& (dist == 1 || KinkyDungeonCheckProjectileClearance(target.x, target.y, newX, newY))) {
+						KDMovePlayer(newX, newY, false);
+					}
+				}
+				let msg = added.length == 0 ? "KDGetPulled" : "KDRubberKittyEncaseGetPulled";
+				KinkyDungeonSendTextMessage(4, TextGet(msg).KDReplaceOrAddDmg( dmg.string), 
+				"#e7cf1a", 1);
+			}
+
+		}
+		return {sfx: "RubberHit", effect: true};
+	},
 	LatexKitty: (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 		let dmg: {
@@ -131,13 +160,20 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				let restraint = r.restraint;
 
 				if (restraint && KinkyDungeonAddRestraintIfWeaker(restraint, 0, true, "Blue",
-					true, false, undefined, "Rubber", true, undefined,
+					true, false, undefined, "Rubber", true, playerEffect.curse,
 					entity, undefined,
 				r.inventoryVariant, undefined, undefined, r.variant)) {
 					applied = restraint.name || applied;
 					if (applied) {
 						KDRemovePrisonRestraints();
 						KinkyDungeonSetFlag("LatexKittyatk", 30);
+						for (let inv of KinkyDungeonAllRestraintDynamic()) {
+							if (!inv.item.curse && !inv.item.lock && (KDRestraint(inv.item).shrine?.includes("BlueLatex"))
+								&& !KDRestraint(inv.item).shrine?.includes("Petsuits")
+								&& KDRestraint(inv.item).escapeChance.Pick == undefined) {
+								KinkyDungeonRemoveRestraintSpecific(inv.item, true);
+							}
+						}
 					}
 				}
 			} else {
@@ -160,7 +196,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let applied = false;
 		// check if theres an item we can curse
 		let eligibleCurseRestraints = KDAllRestraintDynamicList().filter((item) => {
-
+			return !item.curse && (item.lock == "Rubber" || KDRestraint(item)?.escapeChance.Pick == undefined)
+				&& KDRestraint(item)?.shrine?.includes("Latex")
 		});
 		
 		let canCurse = eligibleCurseRestraints.length > 0;
@@ -169,10 +206,18 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			let cooldown = 3; // 3 turn cooldown between cursings, however 
 			if (!KDEntityHasFlag(entity, latex_kitty_flag)) {
 				let item = eligibleCurseRestraints[Math.floor(KDRandom() * eligibleCurseRestraints.length)]
-				KDSetCurse(item, "LatexKittyCurse");
-
-				applied = true;
-				KDSetIDFlag(entity.id, latex_kitty_flag, cooldown)
+				if (KDSetCurse(item, "LatexKittyCurse")) {
+					KinkyDungeonSendTextMessage(3, TextGet("KDLatexKittyCurseAdded", {
+						Item: KDGetItemName(item)
+					}), KDBaseBaby, 1);
+					
+					KDSetIDFlag(entity.id, latex_kitty_flag, cooldown)
+					applied = true;
+				} else {
+					canCurse = false;
+				}
+				
+				
 			}
 		}
 
@@ -482,8 +527,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			if (dmg.happened) {
 				let dist = playerEffect.dist;
 				for (let i = 0; i < dist; i++) {
-					let newX = target.x + Math.round(1 * Math.sign(entity.x));
-					let newY = target.y + Math.round(1 * Math.sign(entity.y));
+					let newX = target.x + Math.round(1 * Math.sign(target.x - entity.x));
+					let newY = target.y + Math.round(1 * Math.sign(target.y - entity.y));
 					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
 					&& (dist == 1 || KinkyDungeonCheckProjectileClearance(target.x, target.y, newX, newY))) {
 						KDMovePlayer(newX, newY, false);

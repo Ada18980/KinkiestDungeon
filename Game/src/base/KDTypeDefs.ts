@@ -2104,7 +2104,7 @@ interface SubCastInfo {
 	chance?: number,
 	/** number of times to do the subcast */
 	countPerCast?: number,
-	/** ??? */
+	/** prevents the projectile from appearing offset from original space */
 	offset?: boolean
 	/** shotgun */
 	spread?: number
@@ -2427,6 +2427,8 @@ interface spell {
 	noCastOnHit?: boolean;
 	/** Casts a spellcast during the delay */
 	castDuringDelay?: boolean;
+	/** Casts the spell immediately upon being created */
+	instantCast?: boolean,
 	/** Casts spell */
 	spellcast?: SubCastInfo;
 	/** Casts spell on cast */
@@ -2993,7 +2995,7 @@ interface KDBulletData {
 	followCaster?: number,
 	cancelCaster?: number,
 	dot?: boolean,
-	cast?: Record<string, any>,
+	cast?: SubCastInfo,
 	events?: KinkyDungeonEvent[],
 	block?: number,
 	volatile?: boolean,

@@ -764,27 +764,13 @@ function KDArmorFormula(DamageAmount: number, Armor: number): number {
 	return DamageAmount / (DamageAmount + Armor);
 }
 
-
-/**
- * @param Enemy
- * @param Damage
- * @param Ranged
- * @param NoMsg
- * @param [Spell]
- * @param [bullet]
- * @param [attacker]
- * @param [Delay]
- * @param [noAlreadyHit]
- * @param [noVuln]
- * @param [Critical]
- * @param [Attack]
- */
-function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: spell, bullet?: KDBullet, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean, Weapon?: weapon, forceWeapon?: item): number {
+function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: spell, bullet?: KDBullet, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean, Weapon?: weapon, forceWeapon?: item) {
+	let ret = false;
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
-		if (bullet.alreadyHit.includes(String(Enemy.id))) return 0;
-		bullet.alreadyHit.push(String(Enemy.id));
+		if (bullet.alreadyHit.includes(String(Enemy.id))) ret = true;
+		else bullet.alreadyHit.push(String(Enemy.id));
 	}
 
 	let predata = {
@@ -854,6 +840,10 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		if (Spell.faction) predata.faction = Spell.faction
 		else if (Spell.enemySpell) predata.faction = "Enemy";
 		else predata.faction = "Player";
+	}
+	
+	if (ret) {
+		return predata;
 	}
 
 	KinkyDungeonSendEvent("beforeCrit", predata, undefined, predata.forceWeapon);
@@ -1528,7 +1518,28 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		KinkyDungeonSetEnemyFlag(Enemy, "failpath", 0);
 	}
 
-	return predata.dmgDealt + predata.dmgShieldDealt;
+	return predata;
+}
+
+
+/**
+ * @param Enemy
+ * @param Damage
+ * @param Ranged
+ * @param NoMsg
+ * @param [Spell]
+ * @param [bullet]
+ * @param [attacker]
+ * @param [Delay]
+ * @param [noAlreadyHit]
+ * @param [noVuln]
+ * @param [Critical]
+ * @param [Attack]
+ */
+function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: spell, bullet?: KDBullet, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean, Weapon?: weapon, forceWeapon?: item): number {
+	let result = KDDamageEnemy(Enemy, Damage, Ranged, NoMsg, Spell, bullet, attacker, Delay, noAlreadyHit, noVuln, Critical, Attack, Weapon, forceWeapon)
+
+	return result.dmgDealt + result.dmgShieldDealt;
 }
 
 function KinkyDungeonDisarm(Enemy: entity, suff?: string): boolean {
@@ -1758,7 +1769,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 		if (Allied) KDUniqueBulletHits = new Map();
 
 
-		for (let b of KDMapData.Bullets) {
+		for (let bi = 0; bi < KDMapData.Bullets.length; bi++) {
+			let b = KDMapData.Bullets[bi];
 			if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player"))
 				|| (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")))) {
 				if (b.bullet.followPlayer) {
@@ -1791,7 +1803,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 				if (dd.cancelCast) {
 					continue;
 				}
-				if (b.bullet.cast && b.bullet.spell && b.bullet.spell.castDuringDelay && (!b.bullet.cast.chance || KDRandom() < b.bullet.cast.chance) && b.time > 1) {
+				if (b.bullet.cast && b.bullet.spell && b.bullet.spell.castDuringDelay && (!b.bullet.cast.chance || KDRandom() < b.bullet.cast.chance) && (b.time > 1 || b.bullet.spell.instantCast)) {
 					let xx = b.bullet.cast.tx;
 					let yy = b.bullet.cast.ty;
 					if (b.bullet.cast.targetID) {
@@ -1832,7 +1844,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 						}
 					}
 
-					KinkyDungeonCastSpell(xx, yy, castingSpell, undefined, undefined, b);
+					let res = KinkyDungeonCastSpell(xx, yy, castingSpell, undefined, undefined, b);
+					if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 					if (b.bullet.cast.sfx) KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + b.bullet.cast.sfx + ".ogg");
 				}
 			}
@@ -1899,6 +1912,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 				end = false;
 				let checkCollision = (b.bullet.faction == "Player" && (b.x != KinkyDungeonPlayerEntity.x || b.y != KinkyDungeonPlayerEntity.y))
 					|| justBorn || (b.x != startx || b.y != starty) || (!b.vx && !b.vy) || (KDistEuclidean(b.vx, b.vy) < 0.9); // Check collision for bullets only once they leave their square or if they are slower than one
+				
 				if ((checkCollision && !KinkyDungeonBulletsCheckCollision(b, undefined, undefined, delta - d, false)) || outOfTime || outOfRange) {
 					if (!(b.bullet.spell
 						&& (
@@ -2215,7 +2229,9 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		}
 		if (!xx) xx = b.x;
 		if (!yy) yy = b.y;
-		KinkyDungeonCastSpell(xx, yy, KinkyDungeonFindSpell(b.bullet.cast.spell, true), undefined, undefined, b);
+		let res = KinkyDungeonCastSpell(xx, yy, KinkyDungeonFindSpell(b.bullet.cast.spell, true), undefined, undefined, b);
+	
+		if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 	}
 
 	if (b.bullet.hit == "") {
@@ -2578,7 +2594,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 				let spell = KinkyDungeonFindSpell(cast.spell, true);
 				let xx = b.x + Math.round(rad * (1 - 2*KDRandom()));
 				let yy = b.y + Math.round(rad * (1 - 2*KDRandom()));
-				KinkyDungeonCastSpell(xx, yy, spell, undefined, undefined, b);
+				let res = KinkyDungeonCastSpell(xx, yy, spell, undefined, undefined, b);
+				if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 			}
 		} else {
 			for (let X = -Math.ceil(rad); X <= Math.ceil(rad); X++)
@@ -2587,7 +2604,8 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 						let spell = KinkyDungeonFindSpell(cast.spell, true);
 						let xx = b.x + X;
 						let yy = b.y + Y;
-						KinkyDungeonCastSpell(xx, yy, spell, undefined, undefined, b);
+						let res = KinkyDungeonCastSpell(xx, yy, spell, undefined, undefined, b);
+						if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 					}
 				}
 		}
@@ -2841,7 +2859,8 @@ function KinkyDungeonSummonEnemy (
 				if (!noBullet) {
 					let spell = KinkyDungeonFindSpell("Summon", true);
 					if (spell) {
-						KinkyDungeonCastSpell(e.x, e.y, spell, undefined, undefined, undefined);
+						let res = KinkyDungeonCastSpell(e.x, e.y, spell, undefined, undefined, undefined);
+						if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 					}
 				}
 				if (startAware) {
@@ -2938,7 +2957,8 @@ function KinkyDungeonBulletTrail(b: KDBullet): boolean {
 						let cast = b.bullet.spell.trailcast;
 						let spell = KinkyDungeonFindSpell(cast.spell, true);
 						if (spell) {
-							KinkyDungeonCastSpell(b.x + X, b.y + Y, spell, undefined, undefined, b);
+							let res = KinkyDungeonCastSpell(b.x + X, b.y + Y, spell, undefined, undefined, b);
+							if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 						}
 					}
 				}
@@ -2990,7 +3010,8 @@ function KinkyDungeonBulletsCheckCollision(bullet: KDBullet, AoE: boolean, force
 	if (!bullet.bullet.aoe && hitEnemy) return false;
 
 	if (!(bullet.bullet.block > 0) && (bullet.vx != 0 || bullet.vy != 0 || bullet.bullet.volatile)) {
-		for (let b2 of KDMapData.Bullets) {
+		for (let bi = 0; bi < KDMapData.Bullets.length; bi++) {
+			let b2 = KDMapData.Bullets[bi];
 			if (b2 != bullet && b2.bullet.block > 0 && b2.x == bullet.x && b2.y == bullet.y) {
 				if (!b2.bullet.blockType || b2.bullet.blockType.includes(bullet.bullet.damage?.type)) {
 					b2.bullet.block -= bullet.bullet.damage.damage;
@@ -3403,7 +3424,8 @@ function KinkyDungeonSendBulletEvent(Event: string, b: KDBullet, data: any) {
 			}
 		}
 	} else {
-		for (let bb of KDMapData.Bullets) {
+		for (let bi = 0; bi < KDMapData.Bullets.length; bi++) {
+			let bb = KDMapData.Bullets[bi];
 			if (bb.bullet?.events)
 				for (let e of bb.bullet.events) {
 					if (e.trigger == Event) {

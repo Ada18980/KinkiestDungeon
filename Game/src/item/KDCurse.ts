@@ -135,19 +135,22 @@ let KDCurses: Record<string, KDCursedDef> = {
 		weight: (_item) => {
 			return 1;
 		},
-		condition: (_item) => {
-			return false;
+		condition: (item) => {
+			return (KDItemDataQuery(item, "LatexKittyCurseHP") || 0) <= 0;
 		}, 
+		onApply: (item, _host) => {
+			KDItemDataSet(item, "LatexKittyCurseHP", 9 + Math.max(1, KDRandom() * KDGetEffLevel())**0.7)
+		},
 		remove: (_item, _host) => {},
 		customInfo: (item, Curse) => {
 			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonCurseInfo" + Curse)
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", 
-					"" + (Math.round(10 * ((KDItemDataQuery(item, "LatexKittyCurseHP") || 0))) || "???")),
+					"" + (Math.round(10 * ((KDItemDataQuery(item, "LatexKittyCurseHP") || 0))) || 0)),
 			KDBaseWhite, 2);
 		},
 		events: [
-			{type: "LatexKittyCurse", power: 1.5, addBind: true, damage: "glue", bindType: "Latex", bindEff: 1.5, trigger: "playerAttack"},
+			{type: "LatexKittyCurse", power: 20, addBind: true, damage: "glue", bindType: "Latex", bindEff: 2.0, trigger: "playerAttack"},
 		],
 	},
 	"CursedCollar": {
@@ -619,8 +622,9 @@ function KDSetCurse(item: item, curse: string, force: boolean = false): boolean 
 				item: item,
 			});
 		}
+		return true;
 	}
-	return false
+	return false;
 }
 
 /**

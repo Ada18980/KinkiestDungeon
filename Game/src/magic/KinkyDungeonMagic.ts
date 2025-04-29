@@ -1077,7 +1077,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 				}
 
 			}
-			if (cast.aimAtTarget && KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.x == targetY) {
+			if (cast.aimAtTarget && KinkyDungeonPlayerEntity.x == targetX && KinkyDungeonPlayerEntity.y == targetY) {
 				cast.targetID = -1;
 			}
 			else if (cast.aimAtTarget && KinkyDungeonEnemyAt(targetX, targetY) && KDCanSeeEnemy(KinkyDungeonEnemyAt(targetX, targetY), KDistEuclidean(entity.x - targetX, entity.y - targetY))) {
