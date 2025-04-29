@@ -740,7 +740,8 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 			// Only wander if the party leader isnt on the floor
 			if (PNPC && (!PNPC.partyLeader || !cache.includes(PNPC.partyLeader))) { //  && !PNPC.spawned
 				let wanderAI = PNPC.wanderAI || "GoToMain";
-				let AI = KDPersistentWanderAIList[wanderAI];
+				let AI = KDIsInPartyID(PNPC.id) ? KDPersistentWanderAIList.PartyMember
+					: KDPersistentWanderAIList[wanderAI];
 				if (AI && AI.filter(id, data)) {
 					if (AI.chance(id, data) > KDRandom()) {
 						if (AI.doWander(id, data, searchEntities ? KinkyDungeonFindID(id, data) : undefined)) {

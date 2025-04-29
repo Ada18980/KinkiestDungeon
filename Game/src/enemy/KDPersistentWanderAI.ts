@@ -181,6 +181,42 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 			});
 		},
 	},
+	/** regular wander unless targeted*/
+	PartyMember: {
+		cooldown: 90,
+		filter: (id, mapData) => {
+			let npc = KDGetPersistentNPC(id);
+			return KinkyDungeonCurrentTick > (npc.nextWanderTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
+		},
+		chance: (id, mapData) => {
+			let mapDataTarget = KDGetMapData(KDGetCurrentLocation());
+			if (mapDataTarget && (!KDRoomUnwanderable(mapDataTarget.RoomType)
+				|| KDGetWorldMapLocation(
+				KDCoordToPoint(KDGetCurrentLocation())
+			).main == mapDataTarget.RoomType)) return 1;
+			
+			return 0;
+		},
+		doWander: (id, mapData, entity) => {
+			let forceTarget = true;
+			// always wander to player
+			return KDStandardTargetedWander(id, mapData, entity, forceTarget, 
+				KDGetCurrentLocation(), () => {
+				let NPC = KDGetPersistentNPC(id);
+				let AITags = {
+					generic: 1.0,
+				};
+				AITags["owner_" + id] = 1;
+				if (NPC?.partyLeader) {
+					AITags["owner_" + id] = 0.5;
+				}
+				if (NPC?.entity) {
+					AITags["faction_" + KDGetFaction(NPC.entity)] = 1;
+				}
+				return AITags;
+			});
+		},
+	},
 };
 
 function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AITagFunc: () => Record<string, number>): boolean {

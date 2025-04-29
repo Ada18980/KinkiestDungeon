@@ -1247,3 +1247,13 @@ function KDAdvanceOneFloor() {
 
 	}
 }
+
+function KDRoomUnwanderable(altType: string) {
+	let altRoom = KinkyDungeonAltFloor(altType);
+	if (altRoom?.alwaysRegen
+		|| altRoom?.removePartyMembers
+		|| (altRoom && !(altRoom?.makeMain || altRoom?.persist))) {
+			return true;
+		}
+	return !altRoom; // bc is main
+}

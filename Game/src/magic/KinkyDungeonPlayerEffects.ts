@@ -156,6 +156,34 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: (!applied) ? "" : "LockHeavy", effect: !!applied};
 	},
 
+	LatexKittyCursed: (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
+		let applied = false;
+		// check if theres an item we can curse
+		let eligibleCurseRestraints = KDAllRestraintDynamicList().filter((item) => {
+
+		});
+		
+		let canCurse = eligibleCurseRestraints.length > 0;
+		if (canCurse) {
+			let latex_kitty_flag = "latexKittyCurseCD";
+			let cooldown = 3; // 3 turn cooldown between cursings, however 
+			if (!KDEntityHasFlag(entity, latex_kitty_flag)) {
+				let item = eligibleCurseRestraints[Math.floor(KDRandom() * eligibleCurseRestraints.length)]
+				KDSetCurse(item, "LatexKittyCurse");
+
+				applied = true;
+				KDSetIDFlag(entity.id, latex_kitty_flag, cooldown)
+			}
+		}
+
+		let firstResult = {sfx: (!applied) ? "" : "Magic", effect: !!applied}
+		if (applied) {return firstResult}
+		// do standard latex kitty
+		let result = KDPlayerEffects.LatexKitty(_target, _damage, playerEffect, _spell, _faction, _bullet, entity);
+		return {sfx: result.sfx, effect: result.effect || canCurse};
+	},
+	
+
 	"Masterwork": (_target, _damage, playerEffect, _spell, _faction, _bullet, entity) => {
 		let applied = "";
 		let dmg: {

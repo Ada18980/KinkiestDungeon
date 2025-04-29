@@ -2634,7 +2634,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		spellcast: {spell: "SummonSingleRedSlime", target: "onhit", directional:false, offset: false, strict: true}},
 
 	{enemySpell: true, name: "AmpuleBlue", sfx: "Miss", manacost: 5, specialCD: 15, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 1, playerEffect: {name: "AmpuleBlue", damage: "glue", power: 4, count: 1}},
-	{enemySpell: true, name: "LatexBubble", bindType: "Slime", color: "#2789cd", sfx: "RubberBolt", manacost: 4, specialCD: 14, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
+	{enemySpell: true, name: "LatexBubble", bindType: "Slime", color: "#2789cd", sfx: "RubberBolt", landsfx: "RubberHit", manacost: 4, specialCD: 14, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",
 		pierceEnemies: true,
 		time: 3, power: 2, delay: 0, range: 12, damage: "glue", speed: 1, trailLifetime: 10, trailDamage:"glue", trail:"lingering", trailPower: 2, trailChance: 1.0, playerEffect: {name: "LatexBubble", time: 12, power: 2, damage: "glue"},
 	},
@@ -2885,6 +2885,11 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{name: "ManyShadowHands", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "ShadowBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1.5, offset: false}, channel: 3},
+	{name: "ManyRubberPull", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1,
+		color: "#4f7fb8",
+		type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false,
+		castDuringDelay: true, noCastOnHit: true,
+		spellcast: {spell: "RubberPull", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1.5, offset: false}, channel: 3},
 	{name: "ManyObsidianBolts", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
 		spellcast: {spell: "ObsidianBolt", target: "target", directional:true, randomDirection: true, noTargetMoveDir: true, spread: 1.5, offset: false}, channel: 3},
 	{name: "ManyMithrilBolts", sfx: "MagicSlash", minRange: 0, manacost: 4, projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 3, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false, castDuringDelay: true, noCastOnHit: true,
@@ -2894,6 +2899,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		bulletSpin: 0.5, hitSpin: 0.3,
 		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "cold", playerEffect: {name: "ShadowBolt", count: 3, time: 4, power: 5, damage: "cold"},
 	},
+	
 
 	{enemySpell: true, name: "FuukaOrb",  bindType: "Magic", color: "#aaaaaa", sfx: "Evil",
 		//hideWarnings: true,
@@ -2944,15 +2950,25 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		power: 1, pierceEnemies: true, delay: 0, range: 50, damage: "chain", speed: 2,
 		playerEffect: {name: "LockBullet", type: "Purple", count: 1, time: 9, power: 2, damage: "chain"}},
 
-	{enemySpell: true, name: "LatexSpray",  bindType: "Latex", color: "#2789cd", sfx: "RubberBolt",
+	{enemySpell: true, name: "LatexSpray",  bindType: "Latex", color: "#2789cd", sfx: "RubberBolt", landsfx: "RubberHit",
 		manacost: 2.5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 3.5, pierceEnemies: true, delay: 0, range: 5.5, damage: "glue", speed: 1.5,
 		playerEffect: {name: "LatexSpray", count: 1, time: 4, power: 2.5, mult: 1, damage: "glue"}},
 
+	{enemySpell: true, name: "RubberPull",  bindType: "Latex", color: "#4f7fb8", minRange: 0,
+		sfx: "RubberBolt",
+		effectTileDurationMod: 2, effectTile: {
+			name: "LatexThinBlue",
+			duration: 4,
+		},
+		landsfx: "RubberHit", manacost: 7, components: [], level:1, type:"bolt", onhit:"",
+		hitSpin: 0.3,
+		time: 3, delay: 1, range: 4, power: 3, size: 1, aoe: 0.5, lifetime: 1, damage: "glue", playerEffect: {name: "RubberPull", count: 3, time: 4, power: 3, damage: "glue"},
+	},
 
 	{enemySpell: true, name: "MithrilBolt",  bindType: "Rope", color: "#999999", sfx: "Evil", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "cold", speed: 2, playerEffect: {name: "MithrilBolt", count: 1, time: 3, power: 3, damage: "cold"}},
-	{enemySpell: true, name: "RubberBolt",  bindType: "Slime", color: "#ff3388", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "RubberBolt", count: 1, time: 4, power: 4, damage: "glue"}},
-	{enemySpell: true, name: "EncaseBolt",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 2, damage: "glue"}},
-	{enemySpell: true, name: "EncaseBoltDrone",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBoltDrone", count: 1, time: 4, power: 1, damage: "glue"}},
+	{enemySpell: true, name: "RubberBolt",  bindType: "Slime", color: "#ff3388", sfx: "RubberBolt", landsfx: "RubberHit", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 4, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "RubberBolt", count: 1, time: 4, power: 4, damage: "glue"}},
+	{enemySpell: true, name: "EncaseBolt",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", landsfx: "RubberHit", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 2, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 2, damage: "glue"}},
+	{enemySpell: true, name: "EncaseBoltDrone",  bindType: "Slime", color: "#a04abd", sfx: "RubberBolt", landsfx: "RubberHit", manacost: 4, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 1, delay: 0, range: 50, damage: "glue", speed: 2, playerEffect: {name: "EncaseBoltDrone", count: 1, time: 4, power: 1, damage: "glue"}},
 
 	{enemySpell: true, name: "RubberNuke", bindType: "Slime", color: "#ff3388", sfx: "Missile", manacost: 8, components: ["Arms"],
 		spellcast: {spell: "RubberNukeExplosion", target: "onhit", directional:true, offset: false},

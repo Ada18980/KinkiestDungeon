@@ -785,7 +785,13 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 		item = item ? KinkyDungeonGetRestraintItem(KDRestraint(item).Group) : undefined; // get top level
 		if (item && condition(item)) {
 			if (item.curse && KDCurses[item.curse]) {
-				KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+				let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+				KinkyDungeonSendEvent("removeCurse", {
+					curse: item.curse,
+					unlock: true,
+					result: res,
+					item: item,
+				});
 			}
 			let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 			item.curse = undefined;
@@ -814,7 +820,13 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 				let groupItem = KinkyDungeonGetRestraintItem(KDRestraint(item).Group);
 				if (groupItem == item) {
 					if (item.curse && KDCurses[item.curse]) {
-						KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+						let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+						KinkyDungeonSendEvent("removeCurse", {
+							curse: item.curse,
+							unlock: true,
+							result: res,
+							item: item,
+						});
 					}
 					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
@@ -830,7 +842,13 @@ function KinkyDungeonRemoveRestraintsWithShrine(shrine: string, maxCount?: numbe
 					while (link) {
 						if (link == item) {
 							if (item.curse && KDCurses[item.curse]) {
-								KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+								let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+								KinkyDungeonSendEvent("removeCurse", {
+									curse: item.curse,
+									unlock: true,
+									result: res,
+									item: item,
+								});
 							}
 							let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 							item.curse = undefined;
@@ -4537,6 +4555,11 @@ function KDLinkUnder (
 		linkUnder = KinkyDungeonAllRestraint().find((inv) => {return inv.dynamicLink == lk;});
 		if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
 			KDCurses[Curse].onApply(lk, linkUnder);
+			KinkyDungeonSendEvent("addCurse", {
+				prevCurse: undefined,
+				curse: Curse,
+				item: lk,
+			});
 		}
 
 
@@ -5011,6 +5034,11 @@ function KinkyDungeonAddRestraint (
 				KDUpdateItemEventCache = true;
 				if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
 					KDCurses[Curse].onApply(item, undefined);
+					KinkyDungeonSendEvent("addCurse", {
+						prevCurse: undefined,
+						curse: Curse,
+						item: item,
+					});
 				}
 
 				if (Lock) KinkyDungeonLock(item, Lock, false, Unlink);

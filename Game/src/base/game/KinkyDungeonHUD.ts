@@ -2019,6 +2019,7 @@ function KDCanRemove(item: item): boolean {
 }
 
 /**
+ * Gets the index of a linked item
  * @param inv
  * @param [allowInaccessible]
  */
@@ -2026,6 +2027,18 @@ function KDGetItemLinkIndex(inv: item, _allowInaccessible?: boolean): number {
 	let item = KinkyDungeonGetRestraintItem(KDRestraint(inv).Group);
 	let surfaceItems = KDDynamicLinkListSurface(item);
 	return surfaceItems.indexOf(inv);
+}
+/**
+ * Gets the index of a linked item, including inaccessible
+ * @param inv
+ * @param [allowInaccessible]
+ */
+function KDGetItemLinkHost(inv: item): item {
+	let item = KinkyDungeonGetRestraintItem(KDRestraint(inv).Group);
+	let surfaceItems = KDDynamicLinkList(item, true);
+	let index = surfaceItems.indexOf(inv);
+	if (index > 0) return surfaceItems[index - 1];
+	return null;
 }
 
 /**

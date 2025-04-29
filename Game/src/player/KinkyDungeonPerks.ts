@@ -751,6 +751,25 @@ let KDPerkStart = {
 		KinkyDungeonInventoryAddLoose("TrainingHeels");
 
 	},
+	CorsetTraining: () =>{
+		KDGameData.Training.Corset = {
+			training_points: 0,
+			training_stage: 0,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+	},
+	HeadStartCorset: () =>{
+		KDGameData.Training.Corset = {
+			training_points: 0,
+			training_stage: 5,
+			turns_skipped: 0,
+			turns_total: 0,
+			turns_trained: 0,
+		};
+
+	},
 	StartLatex: () =>{
 		KDAddQuest("LatexDoll");
 		KinkyDungeonChangeRep("Latex", 10);

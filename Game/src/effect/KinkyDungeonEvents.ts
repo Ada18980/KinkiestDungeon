@@ -5614,17 +5614,17 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 		"Parry": (e, spell, _data) => {
-			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands) {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !isUnarmedUnlessBrawler(KinkyDungeonPlayerDamage)) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: spell.name + "Block", type: "Block", power: e.power, duration: 2, });
 			}
 		},
 		"WillParry": (e, spell, _data) => {
-			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !KinkyDungeonPlayerDamage.light) {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !isUnarmedUnlessBrawler(KinkyDungeonPlayerDamage) && !KinkyDungeonPlayerDamage.light) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: spell.name + "Block", type: "Block", power: e.mult * KinkyDungeonStatWillMax, duration: 2, });
 			}
 		},
 		"SteelParry": (e, spell, _data) => {
-			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage.type)) {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !isUnarmedUnlessBrawler(KinkyDungeonPlayerDamage) && KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonPlayerDamage.type)) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: spell.name + "Block", type: "Block", power: e.mult * KinkyDungeonStatWillMax, duration: 2, });
 			}
 		},
@@ -5632,12 +5632,12 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: spell.name + "Block", type: "Block", power: .15 + 0.15 * KinkyDungeonStatWill / KinkyDungeonStatWillMax, duration: 2, });
 		},
 		"DaggerParry": (e, spell, _data) => {
-			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && KinkyDungeonPlayerDamage.light) {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !isUnarmedUnlessBrawler(KinkyDungeonPlayerDamage) && KinkyDungeonPlayerDamage.light) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: spell.name + "Block", type: "Block", power: e.power, duration: 2, });
 			}
 		},
 		"ClaymoreParry": (e, spell, _data) => {
-			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && KinkyDungeonPlayerDamage.heavy) {
+			if (KinkyDungeonPlayerDamage && !KinkyDungeonPlayerDamage.noHands && !isUnarmedUnlessBrawler(KinkyDungeonPlayerDamage) && KinkyDungeonPlayerDamage.heavy) {
 				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, { id: spell.name + "Block", type: "Block", power: e.power, duration: 2, });
 			}
 		},

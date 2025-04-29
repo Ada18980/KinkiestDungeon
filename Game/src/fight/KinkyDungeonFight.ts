@@ -337,6 +337,15 @@ function isUnarmed(weapon: weapon): boolean {
 }
 
 
+/**
+ * @param weapon
+ * @returns true if the weapon represents Unarmed
+ */
+function isUnarmedUnlessBrawler(weapon: weapon): boolean {
+	if (weapon?.name == "Unarmed" && KinkyDungeonStatsChoice.get("Brawler")) return false;
+	return !weapon || !weapon.name || weapon.name == "Unarmed" || weapon.unarmed;
+}
+
 let KinkyDungeonEvasionPityModifier = 0; // Current value
 let KinkyDungeonEvasionPityModifierIncrementPercentage = 0.5; // Percent of the base hit chance to add
 let KDDefaultCrit = 1.3;

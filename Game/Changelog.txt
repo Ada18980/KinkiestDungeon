@@ -43,6 +43,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 
 5.5.68
+- Modding: added KDSetCurse function
 - Added Projectile Damage and Static AoE damage enchantments
 - Fix issue with transforming restraints not getting their effects changed
 - Added .ogg sound support for safari browser; should not affect anything other than safari
@@ -52,6 +53,10 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Added big red message when a target is immune to your attack
 - Made spell cast message happen before the spell is cast chronologically
 - Advancing a floor now clears the prisoner condition at the cost of gaining 5 security instead of lowering it by 5
+- Made the maid knight spawn floor more random and generally higher level
+- Made persistent party members always wander toward the player location if able to
+- Parry no longer applies to unarmed w/o brawler
+- Fix escaped NPCs being autoreleased!
 
 5.5.67
 - Added Kjus eyes 5

@@ -576,6 +576,54 @@ function KDBestowCurse(item: item, ev: KinkyDungeonEvent[]): void {
 }
 
 /**
+ * Sets the curse for an item returns if success
+ */
+function KDSetCurse(item: item, curse: string, force: boolean = false): boolean {
+	// Sanitize to avoid duped pointer
+	if (item.type == LooseRestraint) {
+		if (!force && item.curse) {
+			return false;
+		}
+		item.curse = curse;
+		let variant = KDGetRestraintVariant(item);
+		if (variant) variant.curse = curse;
+	} else if (item.type == Restraint) {
+		if (!force && item.curse) {
+			return false;
+		}
+		let prevCurse = item.curse;
+		if (item.curse) {
+			if (KDCurses[item.curse]) {
+				let unlock = KDCurses[item.curse].alwaysRemoveOnUnlock || !KDGroupBlocked(KDRestraint(item).Group);
+				let res = KDCurses[item.curse].remove(item, KDGetItemLinkHost(item), false);
+				if (typeof res === "boolean") {
+					unlock = res;
+				}
+				KinkyDungeonSendEvent("removeCurse", {
+					curse: item.curse,
+					unlock: unlock,
+					result: res,
+					item: item,
+				});
+			}
+		}
+		item.curse = curse;
+		let variant = KDGetRestraintVariant(item);
+		if (variant) variant.curse = curse;
+		if (!curse) return;
+		if (KDCurses[curse] && KDCurses[curse].onApply) {
+			KDCurses[curse].onApply(item, KDGetItemLinkHost(item));
+			KinkyDungeonSendEvent("addCurse", {
+				prevCurse: prevCurse,
+				curse: item.curse,
+				item: item,
+			});
+		}
+	}
+	return false
+}
+
+/**
  * @param restraint
  * @param newRestraintName
  * @param ev
@@ -675,6 +723,13 @@ function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
 		if (typeof res === "boolean") {
 			unlock = res;
 		}
+		
+		KinkyDungeonSendEvent("removeCurse", {
+			curse: Curse,
+			unlock: unlock,
+			result: res,
+			item: resizeBy,
+		});
 	}
 
 	if (unlock) {

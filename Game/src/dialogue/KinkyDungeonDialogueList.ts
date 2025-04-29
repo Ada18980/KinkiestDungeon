@@ -3437,9 +3437,11 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 	"AdaMasterwork": {
 		response: "Default",
-		clickFunction: (_gagged, _player) => {
+		clickFunction: (_gagged, player) => {
 			if (KDBoundPowerLevel > 0.4) {
-				KDGameData.CurrentDialogMsg = "AdaMasterworkBound";
+				KDGameData.CurrentDialogMsg = "AdaMasterwork" + (
+					KDCountMasterworks(player, true, false) > 0 ? "Bound" : ""
+				);
 			}
 			return false;
 		},

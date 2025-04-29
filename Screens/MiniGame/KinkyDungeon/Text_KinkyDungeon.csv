@@ -31425,6 +31425,8 @@ KinkyDungeonSpellManyCables,Full Capture
 KinkyDungeonSpellManyShadowHands,Shadow Hands
 KinkyDungeonSpellManyObsidianBolts,Obsidian Orbs
 KinkyDungeonSpellManyMithrilBolts,Mithril Orbs
+KinkyDungeonSpellManyRubberPull,Rubbery Grasp
+KinkyDungeonSpellRubberPull,Rubbery Grip
 
 
 
@@ -32152,6 +32154,8 @@ KillLatexKittyCursed,The cursed latex kitty lies down and relaxes.
 AttackLatexKittyCursed,The cursed latex kitty rubs against you seductively!
 AttackLatexKittyCursedBind,"The cursed latex kitty's rubbery curse spreads to you!"
 AttackLatexKittyCursedLock,"The cursed latex kitty's rubbery coating casts itself into locks!"
+
+KDLatexKittyCurseAdded,The curse of the Latex Kitty takes hold on your ${Item}
 
 KinkyDungeonCurseUnlockLatexKittyCurse,"The Latex Kitty curse on the RestraintName relaxes and releases you."
 KinkyDungeonCurseInfoLatexKittyCurse,"The curse's strength is AMNT. Deal glue damage via unarmed attacks to weaken the curse."

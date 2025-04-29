@@ -1735,14 +1735,15 @@ function KDIsInSummit() {
 }
 
 function KDTickAutorelease() {
-	for (let value of Object.values(KDGameData.Collection)) {
-		if (value.escaped) {
-			KDReleaseNPC(value.id, KDPlayer().id);
-			KinkyDungeonSendTextMessage(10, TextGet("KDAutoReleased_Escaped")
-				.replace("NME", value.name),
-			KDBaseWhite, 4);
+	if (KDGameData.AutoRelease?.Escaped)
+		for (let value of Object.values(KDGameData.Collection)) {
+			if (value.escaped) {
+				KDReleaseNPC(value.id, KDPlayer().id);
+				KinkyDungeonSendTextMessage(10, TextGet("KDAutoReleased_Escaped")
+					.replace("NME", value.name),
+				KDBaseWhite, 4);
+			}
 		}
-	}
 }
 
 function KDDoCollect(entity: entity): boolean {

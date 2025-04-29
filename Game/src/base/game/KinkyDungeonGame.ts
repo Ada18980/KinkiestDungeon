@@ -439,7 +439,8 @@ function KDResetData(Data?: KDGameDataBase): void {
 }
 
 function InitPersistentGen() {
-	KDGameData.MaidKnightFloor = Math.floor(1 + KDRandom() * 3);
+	KDGameData.MaidKnightFloor = Math.floor(2 + KDRandom() * KinkyDungeonMaxLevel*0.6);
+	if (KDGameData.MaidKnightFloor % KDLevelsPerCheckpoint == 0) KDGameData.MaidKnightFloor -= 1;
 }
 function KDResetEventData(Data?: any) {
 	if (!Data) Data = KDEventDataBase;

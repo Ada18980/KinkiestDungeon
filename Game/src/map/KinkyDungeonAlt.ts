@@ -3279,7 +3279,7 @@ function KDGenerateShopVisitors() {
 
 function KDEnumerateShopVisitors() {
 	let options: Record<string, number> = {}
-	if (KDCountMasterworks(KDPlayer()) > 0) {
+	if (KDCountMasterworks(KDPlayer(), true) > 0) {
 		options.AdaLovelock = 100;
 	}
 	return options;

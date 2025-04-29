@@ -585,8 +585,16 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			if (KDHasRemovableCurse(item, KDGameData.CurseLevel) || KDHasRemovableHex(item, KDGameData.CurseLevel)) {
 				if (KDHasRemovableCurse(item, KDGameData.CurseLevel)) {
 					if (item.curse && KDCurses[item.curse]) {
-						KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+						let res = KDCurses[item.curse].remove(item, KDGetRestraintHost(item), true);
+						KinkyDungeonSendEvent("removeCurse", {
+							curse: item.curse,
+							unlock: true,
+							result: res,
+							item: item,
+						});
 					}
+					
+					
 
 					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
