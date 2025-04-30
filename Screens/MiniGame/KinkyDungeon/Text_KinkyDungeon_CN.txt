@@ -1825,7 +1825,7 @@ EnemyName对TargetName念出了一个口令！
 - Slime Form: You gain bonuses and can slip through bars!
 粘液形态 : ‎你获得一些加成，并能穿过栅栏
 - Shroud: Visibility decreased, evasion increased.
-影雾 : ‎降低可见度，增加闪避
+影雾：增加隐蔽性和闪避。
 - Camoflage: While next to a wall, you are very hard to see.
 伪装 : ‎靠近墙壁时，你很难被其他生物察觉到
 - Stone Skin: Increased armor.
@@ -2821,7 +2821,7 @@ Devious Dungeon Challenge 已启用。
 - Key
 钥匙
 - A key. You wonder who it's for?
-一把钥匙 这是给谁准备的呢？
+一把钥匙。这是为谁准备的呢？
 - Can be used to unlock one simple or standard-locked restraint, door, or chest.
 可以用来打开一个简单或标准上锁的拘束具、门或箱子。
 - Magic Key
@@ -3913,7 +3913,7 @@ EnemyName 试图束缚你，但被你抵抗了！
 - Maidforce Recruit
 女仆新人
 - The maid does a fumbled retreat.
-女仆手忙脚乱地撤退。
+女仆手忙脚乱地撤退了。
 # :: KillMaidforce
 # :: KillMaidforceStalkerImage
 # :: KillMaidforceMafia
@@ -4013,7 +4013,7 @@ M.F. '女仆长'
 - Druid of the Wild
 野性德鲁伊
 - The druid calls forth vines to mask her retreat.
-德鲁伊召唤出藤蔓来掩护她撤退。
+德鲁伊召唤出藤蔓，掩护她撤退了。
 # :: KillElf
 # :: KinkyDungeonSummonMultiBramble
 - The druid holds your face and kisses you! (DamageTaken)
@@ -4532,7 +4532,7 @@ M.F. '女仆长'
 - Wolfgirl Trainer
 狼娘训练师
 - The trainer retreats!
-训练师撤退！
+训练师撤退了！
 - The wolfgirl trainer squeezes your breasts playfully! (DamageTaken)
 狼娘训练师玩弄般地揉捏你的胸！ (DamageTaken)
 - The wolfgirl trainer secures you in training gear! (+RestraintAdded)
@@ -4893,7 +4893,7 @@ M.F. '女仆长'
 盗贼嗤之以鼻，上了锁！ ( DamageTaken )
 
 - Bandit Chief
-盗贼头领
+盗贼头目
 - The bandit scoffs and retreats until next time.
 盗贼嗤之以鼻，暂且撤退了。
 - The bandit restrains you tightly! (+RestraintAdded)
@@ -4917,7 +4917,7 @@ M.F. '女仆长'
 - Bandit Hunter
 盗贼猎人
 - The bandit hunter retreats.
-盗贼猎人撤退。
+盗贼猎人撤退了。
 - The bandit hunter restrains you! (+RestraintAdded)
 盗贼猎人拘束了你！ ( +RestraintAdded )
 - The bandit hunter caresses your restrained body! (DamageTaken)
@@ -4928,7 +4928,7 @@ M.F. '女仆长'
 - Bandit Grappler
 盗贼抓勾手
 - The bandit grappler retreats.
-盗贼抓勾手撤退。
+盗贼抓勾手撤退了。
 - The bandit grappler loops her chains around you! (+RestraintAdded)
 盗贼抓勾手将她的锁链缠绕在你身上！ ( +RestraintAdded )
 - The bandit grappler caresses your restrained body! (DamageTaken)
@@ -7661,7 +7661,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You might be able to fool someone like this...
 你这个样子也许能骗到某些人...
 - You look like you're right at home!
-你看起来就在家里！
+你看起来就像在家里一样舒适！
 
 - Restraining Bed
 拘束床
@@ -9013,7 +9013,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Ballet Heels
 芭蕾高跟鞋
 - A pair of shoes with heels so tall it forces you on your toes.
-一双高跟鞋，鞋跟太高，必须踮起脚尖走路。
+一双高跟鞋，鞋跟非常高，必须踮起脚尖走路。
 - These will take some getting used to.
 这些需要一些时间来适应。
 # :: RestraintTrapBootsDesc2
@@ -10990,57 +10990,107 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: m_LatexCorsetFullCrossRestraint_l_Bra
 # :: m_LatexCorsetFullCrossRestraint_l_Bra
 - Belt
+皮带
+:: KinkyDungeonGroupItemPelvis
 腰带
-# :: KinkyDungeonGroupItemPelvis
-# :: l_WarriorBelt_Belt
-# :: l_Dragonheart_Belt
-# :: m_WarriorBelt_l_Belt
-# :: m_Dragonheart_l_Belt
-# :: m_RopeBelt_l_Belt
-# :: m_RibbonBelt_l_Belt
-# :: m_IronBelt_l_Belt
-# :: m_LeatherBelt_l_Belt
-# :: m_HeartBelt_l_Belt
-# :: m_ClothBelt_l_Belt
-# :: m_ClothBeltLines_l_Belt
-# :: m_Belt
-# :: m_Belt_l_Belt
-# :: m_WarriorBelt_l_Belt
-# :: m_Dragonheart_l_Belt
-# :: m_RopeBelt_l_Belt
-# :: m_RibbonBelt_l_Belt
-# :: m_IronBelt_l_Belt
-# :: m_FashionIronBelt_l_Belt
-# :: m_LeatherBelt_l_Belt
-# :: m_FashionLeatherBelt_l_Belt
-# :: m_HeartBelt_l_Belt
-# :: m_ClothBelt_l_Belt
-# :: m_ClothBeltLines_l_Belt
-# :: m_Belt_l_Belt
-# :: m_RopeSuspension_l_Belt
-# :: m_DivineBeltClean_l_Belt
-# :: m_FashionDivineBeltClean_l_Belt
-# :: m_NeoSteelBelt_l_Belt
-# :: m_FashionNeoSteelBelt_l_Belt
-# :: m_NeoCyberBelt_l_Belt
-# :: m_FashionNeoCyberBelt_l_Belt
-# :: m_CrystalBelt_l_Belt
-# :: m_FashionCrystalBelt_l_Belt
-# :: m_FashionHeartBelt_l_Belt
-# :: m_SteelChastityBelt_Padlock_l_Belt
-# :: m_SteelChastityBelt_Radial_l_Belt
-# :: m_SteelChastityBelt_Segu_l_Belt
-# :: m_FashionSteelChastityBelt_Padlock_l_Belt
-# :: m_FashionSteelChastityBelt_Radial_l_Belt
-# :: m_FashionSteelChastityBelt_Segu_l_Belt
-# :: m_Ninja_l_Belt
-# :: m_ChainSkirt2_l_Belt
-# :: m_ChainSkirt2Restraint_l_Belt
-# :: m_ChainSkirt_l_Belt
-# :: m_ChainSkirtRestraint_l_Belt
-# :: m_ChainArmor_l_Belt
-# :: m_WitchSkirt_l_Belt
-# :: m_Witch_l_Belt
+:: l_WarriorBelt_Belt
+腰带
+:: l_Dragonheart_Belt
+腰带
+:: m_WarriorBelt_l_Belt
+腰带
+:: m_Dragonheart_l_Belt
+腰带
+:: m_RopeBelt_l_Belt
+腰带
+:: m_RibbonBelt_l_Belt
+腰带
+:: m_IronBelt_l_Belt
+腰带
+:: m_LeatherBelt_l_Belt
+腰带
+:: m_HeartBelt_l_Belt
+腰带
+:: m_ClothBelt_l_Belt
+腰带
+:: m_ClothBeltLines_l_Belt
+腰带
+:: m_Belt
+普通腰带
+:: m_Belt_l_Belt
+腰带
+:: m_WarriorBelt_l_Belt
+腰带
+:: m_Dragonheart_l_Belt
+腰带
+:: m_RopeBelt_l_Belt
+腰带
+:: m_RibbonBelt_l_Belt
+腰带
+:: m_IronBelt_l_Belt
+腰带
+:: m_FashionIronBelt_l_Belt
+腰带
+:: m_LeatherBelt_l_Belt
+腰带
+:: m_FashionLeatherBelt_l_Belt
+腰带
+:: m_HeartBelt_l_Belt
+腰带
+:: m_ClothBelt_l_Belt
+腰带
+:: m_ClothBeltLines_l_Belt
+腰带
+:: m_Belt_l_Belt
+腰带
+:: m_RopeSuspension_l_Belt
+腰带
+:: m_DivineBeltClean_l_Belt
+腰带
+:: m_FashionDivineBeltClean_l_Belt
+腰带
+:: m_NeoSteelBelt_l_Belt
+腰带
+:: m_FashionNeoSteelBelt_l_Belt
+腰带
+:: m_NeoCyberBelt_l_Belt
+腰带
+:: m_FashionNeoCyberBelt_l_Belt
+腰带
+:: m_CrystalBelt_l_Belt
+腰带
+:: m_FashionCrystalBelt_l_Belt
+腰带
+:: m_FashionHeartBelt_l_Belt
+腰带
+:: m_SteelChastityBelt_Padlock_l_Belt
+腰带
+:: m_SteelChastityBelt_Radial_l_Belt
+腰带
+:: m_SteelChastityBelt_Segu_l_Belt
+腰带
+:: m_FashionSteelChastityBelt_Padlock_l_Belt
+腰带
+:: m_FashionSteelChastityBelt_Radial_l_Belt
+腰带
+:: m_FashionSteelChastityBelt_Segu_l_Belt
+腰带
+:: m_Ninja_l_Belt
+腰带
+:: m_ChainSkirt2_l_Belt
+腰带
+:: m_ChainSkirt2Restraint_l_Belt
+腰带
+:: m_ChainSkirt_l_Belt
+腰带
+:: m_ChainSkirtRestraint_l_Belt
+腰带
+:: m_ChainArmor_l_Belt
+腰带
+:: m_WitchSkirt_l_Belt
+腰带
+:: m_Witch_l_Belt
+腰带
 # :: m_BeltsArms1_l_Belt
 # :: m_BeltsArms1_l_Belt
 # :: m_BeltsArms1_l_Belt
@@ -11518,7 +11568,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Ignition source. Blocks vision.
 火源。会阻挡视线。
 - Inferno
-地狱
+烈焰
 - Deals DAMAGEDEALT fire damage per turn
 每回合造成 DAMAGEDEALT 点火焰伤害
 - Steam
@@ -11896,7 +11946,7 @@ Ars烟火
 - Shadowy chains appear from a rift in space!
 暗影锁链从空间裂缝中出现！
 - The roaring inferno deals 10 damage to you!
-咆哮的地狱对你造成 10 点伤害！
+咆哮的烈焰对你造成 10 点伤害！
 
 - The Reaping
 收获
@@ -12375,7 +12425,7 @@ Ars烟火
 你感觉昏昏欲睡……
 
 - Shadow Strike
-影击
+暗影打击
 # :: KinkyDungeonSpellAllyShadowStrike
 # :: KinkyDungeonSpellShadowStrike
 - Shadow Heel
@@ -12561,7 +12611,7 @@ Ars烟火
 你引导着大地之怒！！！
 
 - Shock Orb
-电球
+电击球
 # :: KinkyDungeonSpellShock
 # :: KinkyDungeonSpellShockStrike
 - A slow-moving orb that deals DamageDealt electric damage to an adjacent enemy each turn.
@@ -13778,7 +13828,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 - Select where to put the familiar (cannot place on occupied squares)
 选择放置小精灵的位置 ( 不能放置在已占用的方格上 )
 - Create a familiar that fights by your side for the rest of the level
-创造一个在接下来与你并肩作战的魔宠
+创造一个替身，在接下来的整个楼层与你并肩作战
 - A familiar appears!
 一个小精灵出现了！
 - You create a circle on the ground with your foot!
@@ -13870,7 +13920,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 - Select where to put the golem (cannot place on occupied squares)
 选择放置傀儡的位置 ( 不能放置在被占用的方块上 )
 - Create a slow but powerful golem to fight by your side
-创造一个与你并肩作战的缓慢但又强大的傀儡。
+创造一个缓慢但强大的傀儡，与你并肩作战
 - A golem arises!
 傀儡出现了！
 - You stomp your foot and draw the words of life on the floor!
@@ -14192,7 +14242,7 @@ SummonCount 只僵尸从地板上出现！
 - The EnemyName remotely causes your toys to buzz!!!
 EnemyName 远程使您的玩具嗡嗡作响！！！
 - You feel the plugs inside you while walking.
-走路时你会感觉到你体内的塞子。
+走路时你感觉到你体内的塞子。
 - Your toys pulse and tingle occasionally.
 你的玩具时不时颤动，带来些许酥麻感。
 - Your toys tease you and buzz gently...
@@ -15941,7 +15991,7 @@ AMNT% 的概率命中你
 - You get your stolen items back.
 你拿回你被盗的物品。
 - The EnemyName manages to retreat with your items!
-EnemyName 设法带着你的物品撤退！
+EnemyName 设法带着你的物品撤退了！
 
 - The orb contains knowledge of SPELL.
 该宝珠包含 SPELL 的知识。
@@ -16867,7 +16917,7 @@ EnemyName 设法带着你的物品撤退！
 - Come and get me!
 来接我吧！
 - You'll never escape!
-你永远也逃不掉！
+你永远也逃不掉的！
 
 # - Mmmphh!
 # - Mmmm! Mmmmmmm!
@@ -17232,7 +17282,7 @@ EnemyName 设法带着你的物品撤退！
 - You're mine.
 你是我的。
 - You can't get away.
-你无法逃脱。
+你逃不掉的。
 
 - *extends an arm*
 *伸出手臂*
@@ -17348,9 +17398,9 @@ EnemyName 设法带着你的物品撤退！
 - It's just business as usual, nothing to see here...
 一切如常，没什么可看的……
 - It's not like I need reconfiguring or anything...
-这不像我需要重新配置或任何东西......
+我没有需要重新配置之类的…
 - You! I require... reconfiguring.
-你！我需要...重新配置。
+你！我需要被...重新配置。
 - Oh no! Looks like I need repairs~
 不好了！看来需要维修了~
 - I've violated my parameters. Please discipline me.
@@ -17358,7 +17408,7 @@ EnemyName 设法带着你的物品撤退！
 - Stop! You're not wearing the required uniform~
 停下！你没有穿规定的制服~
 - Are your restraints too loose? Do I need to tighten them?
-你的束缚是不是太松了？我需要收紧它们吗？
+你的束缚是不是太松了？要我收紧它们吗？
 - Transferring to a secure location.
 转移到安全位置。
 - You've violated your parameters.
@@ -17436,7 +17486,7 @@ EnemyName 设法带着你的物品撤退！
 - Give up or I'll call reinforcements!
 投降，否则我就要呼叫增援了！
 - Ack! We have an unruly subject!
-确认！我们这里有一个不守规矩的对象！
+确认！我们这有一个不守规矩的对象！
 - Target needs retraining...
 目标需要重新调教...
 - Sorry, rules are rules~
@@ -17546,7 +17596,7 @@ SPL 已激活。
 - Red alert. Joining combat.
 红色警报。加入战斗。
 - Battle stations.
-作战站。
+战斗姿势。
 - Target identified.
 目标已确定。
 - Offering support.
@@ -17663,7 +17713,7 @@ SPL 已激活。
 - Red alert; Joining combat;
 红色预警；加入战斗
 - Battle stations;
-战斗派遣;
+战斗姿势；
 - Target identified;
 目标已确定；
 - Offering support;
@@ -18335,7 +18385,7 @@ SPL 失败
 - That was m- I mean... you can't steal sacred artifacts!
 那是……我是说……你不能偷圣物！
 - Kya~ What have we here?
-呀~我们这里有什么？
+呀~ 这是谁呀？
 - I got you!
 我抓到你了！
 - Watch where you're pointing that thing~
@@ -18806,7 +18856,7 @@ SPL时间到了！
 - I... don't have time for training right now, ma'am...
 我…现在没有时间训练，女士...
 - Did I do something wrong?
-我做错什么了？
+不觉得我犯了些错误吗？
 - So you're the new boss, huh?
 所以你是新老板，嗯？
 - Time for some 'training?'
@@ -20314,7 +20364,7 @@ Oh，不，是一个冒险家！
 - You won't escape my SPL that easily!
 你逃不过我的SPL的！
 - Not the edging training! Anything but that!
-要做别的什么都好，不要做寸止训练啊！
+别的什么都好，不要寸止训练啊！
 - Forgive me!
 请原谅我！
 - No! Don't punish me!
@@ -20448,7 +20498,7 @@ Ah！原谅我!
 # :: KinkyDungeonRemindJailPlaySubMaid2
 # :: KinkyDungeonRemindJailPlayGunnerMaid2
 - Hmm, do I need to tighten those?
-嗯，我需要收紧那些吗？
+嗯，我我收紧那些吗？
 # :: KinkyDungeonRemindJailPlaySubMaidStruggle
 # :: KinkyDungeonRemindJailPlayGunnerMaidStruggle
 - M-miss... I was told to bring you somewhere...
@@ -20524,7 +20574,7 @@ Ah！原谅我!
 # :: KinkyDungeonRemindJailSubMaidPull
 # :: KinkyDungeonRemindJailGunnerMaidPull
 - I need to take this...
-我需要拿走这个...
+我得拿走这个…
 # :: KinkyDungeonRemindJailSubMaidPickpocket
 # :: KinkyDungeonRemindJailGunnerMaidPickpocket
 # :: KinkyDungeonRemindJailApprenticePickpocket
@@ -20580,7 +20630,7 @@ Ah！原谅我!
 - That thing... it scares me.
 那东西……它吓到我了。
 - Please no! I don't want the pleasure training again!
-求你了别！我不想再进行那种快乐的训练了！
+求你了别！我不想再进行愉悦训练了！
 - Say hello to my little friend!
 跟我的小朋友打个招呼！
 - This is where I'd apply my melee training... if I had any!
@@ -20771,7 +20821,7 @@ Hmm. 你可以叫我女仆 PTRN。
 # :: KinkyDungeonRemindJailPlayWitchKey
 # :: KinkyDungeonRemindJailPlaySellyKey
 - Well well, what do we have here?
-那么，我们这里有什么？
+那么，这是谁呀？
 - That's not very nice!
 那不是很好！
 # :: KinkyDungeonRemindJailChaseWitchAttack0
@@ -21023,7 +21073,7 @@ Hgh！我是个天才！
 - That's it! You made me mad!
 就是这样！你让我生气了！
 - I'll just... go.
-我就...走了。
+我就...走开吧。
 
 - Rise, my minions!
 起来，我的仆从们！
@@ -21408,7 +21458,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( 继续... )
 
 - (The SPEAKER approaches you in your cell)|Well well, what do we have here? A new guest?|Perhaps I should give you a rundown of your new life~
-( SPEAKER 在你的牢房里接近你 ) |好吧，我们这里有什么？新来的客人？|或许我该给你介绍一下你的新生活~
+( SPEAKER 在你的牢房里接近你 ) |好吧，这是谁呀？新来的客人？|或许我该给你介绍一下你的新生活~
 
 - (The SPEAKER chuckles)|Don't tell me you seriously think we're letting you go?|You broke the rules, ignored the warnings.|Your new job is to make the people here happy.
 ( SPEAKER轻笑 ) |不会真的认为我们会放你走吧？|你已经违反了规则，无视了警告。|你的新工作是让这里的人们开心。
@@ -24680,7 +24730,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dTheWarden_Attack
 
 - (SPEAKER clears her throat)|I am the one tasked with keeping this graveyard pure and holy.|The reincarnated ones who roam this place do so with my permission.|But what of you? I do not remember striking a deal with you.|Are you here to challenge me?
-( SPEAKER 清了清喉咙 )|我的任务是保持这个墓地的纯净与神圣。|在这个地方漫步的转世者在我的允许下这样做。|但是你呢？我不记得和你达成过任何协议。|你是来挑战我的吗？
+( SPEAKER 清了清喉咙 )|我的任务是保持这个墓地的纯净与神圣。|在我的允许下，转世者们在这个地方漫步。|但是你呢？我不记得和你达成过任何协议。|你是来挑战我的吗？
 - I do what I want.
 我想干什么就干什么。
 - (Glare at her and scoff)
@@ -25247,7 +25297,7 @@ Mmmph? (行为混乱)
 ( SPEAKER 微笑 )|更像是这样|独家报道 : ‎我们其中一人在下一层被抓获|我们需要你去把她救出来。
 
 - (The SPEAKER sits bound in high-security manacles.|You'll need to open the lock to get her out.)
-( SPEAKER 戴着高安全性的手铐坐着|你需要打开锁才能让她解开... )
+( SPEAKER 戴着高安全性的镣铐坐着。|你需要打开锁才能将她解开。 )
 - (You don't have any keys that work on the lock)
 ( 你没有锁的钥匙。 )
 # :: rPrisonerJailNoKeys
@@ -25339,7 +25389,7 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailWordGagged
 # :: rPrisonerJailOwnWordGagged
 - (The SPEAKER is locked in high-security manacles.|The safety shield has been triggered, making it impossible to help her.)
-( SPEAKER 戴着高安全性的手铐。|安全护盾已被触发，无法帮助她。 )
+( SPEAKER 被高安全性的镣铐锁住了。|安全护盾已被触发，帮助她已经不可能了。 )
 # :: rPrisonerJailJammed
 # :: rPrisonerJailOwnJammed
 
@@ -42181,7 +42231,7 @@ Aura刘海(右后)
 - Restraint
 拘束具
 - Enchanted
-附魔的
+附魔
 :: KDFilterFiltersEnchanted
 附魔
 :: KDFilterFiltersEnchanted
@@ -42841,8 +42891,10 @@ TYPE伤害 AMNT%
 法力效率 AMNT
 - AMNT TYPE Mana Efficiency
 TYPE法力效率 AMNT
-# - AMNT% Projectile Damage
-# - AMNT% Static AoE Damage
+- AMNT% Projectile Damage
+射弹伤害 AMNT%
+- AMNT% Static AoE Damage
+静态范围伤害 AMNT%
 - AMNT% regen from mana pool
 从法力池回复法力的速度 AMNT%
 - AMNT mana pool on capture
@@ -43487,6 +43539,8 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 
 - A powerful wind pushes you away!!!
 一阵强风把你吹走了！！！
+# - You are pulled toward your attacker and encased in rubber!
+# - You are pulled toward your attacker!
 
 - Staff of Ropes
 绳索法杖
@@ -43511,7 +43565,7 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 - A LKTYP lock clasps on to one of your restraints!
 LKTYP 锁锁在了你的一个拘束具上！
 - You are caught in a constricting field! (Dmgdlt)
-你陷入了一个狭窄的区域！ ( Dmgdlt )
+你被拘束力场捕获了！ ( Dmgdlt )
 
 - Resin Coating
 树脂固化
@@ -44694,7 +44748,7 @@ BOSS 房已清空！
 - (Cursed)
 ( 诅咒 )
 - (Purified)
-( 净化 )
+( 已净化 )
 # :: KDVarSuffPurified
 # :: KDVarPrefPurified
 - of Agility
@@ -44715,8 +44769,10 @@ BOSS 房已清空！
 力量
 - Entuned
 协调
-# - Deadeye
-# - Blasting
+- Deadeye
+神射
+- Blasting
+爆破
 - Draining
 汲取
 - of Echoes
@@ -44931,7 +44987,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 你撕裂了一个空间裂缝并跨了过去！
 
 - Shadow Dance
-阴影之舞
+暗影之舞
 - While standing in a shadowed location, you can teleport to a nearby shadowed location. You can also teleport adjacent to shadow creatures.
 站在阴影位置时，您可以传送到附近的阴影位置。你还可以传送到暗影生物附近。
 - You slip between the shadows...
@@ -45515,15 +45571,15 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 
 
 - Shibari Witch
-绑缚女巫
+绳缚女巫
 - The shibari witch blows a kiss and says goodbye.
-绑缚女巫飞吻道别。
+绳缚女巫飞吻道别。
 - The shibari witch ties you tight! (+RestraintAdded)
-绑缚女巫把你绑得紧紧的！ ( +RestraintAdded )
+绳缚女巫把你绑得紧紧的！ ( +RestraintAdded )
 - The witch rubs your body sensually! (DamageTaken)
 女巫性感地摩擦你的身体！ ( DamageTaken )
 - The Shibari Witch takes your clothes off!
-绑缚女巫脱去了你的衣服！
+绳缚女巫脱去了你的衣服！
 
 
 
@@ -46066,7 +46122,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Sharpshooter
 神射手
 - You teach the warden's servant a lesson.
-你给监狱长的仆人一个教训。
+你给监狱长的仆人好好上了一课。
 # :: KillWardenArcher
 # :: KillWardenFighter
 # :: KillWardenMage
@@ -46122,7 +46178,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 
 
 - (The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not in my records...
-( 典狱长看了你一眼 ) |哦？我们这里有什么？|一名冒险家？|我的记录里没有你啊……
+( 典狱长看了你一眼 ) |哦？是谁来了？|一名冒险家？|我的记录里没有你啊……
 - Cut to the chase. Do I have to fight you or not?
 直入主题。我到底要不要跟你打架？
 - (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
@@ -48768,11 +48824,11 @@ ENMY 解开了 ITMN 的锁!
 - Crystal Surge
 晶体浪涌
 - Shadow Shroud
-阴影雾
+暗影雾
 # :: KinkyDungeonSpellShadowShroud
 # :: KinkyDungeonSpellShadowShroudGirl
 - Shadow Step
-阴影步
+暗影步
 - Ice Wall
 冰墙
 # :: KinkyDungeonSpellSummonIceWall
@@ -48784,7 +48840,7 @@ ENMY 解开了 ITMN 的锁!
 - Crystal Growth
 晶体生长
 - Shadow Orb
-阴影球
+暗影球
 - Earthfield
 大地场
 - Soul Beam
@@ -48849,6 +48905,8 @@ ENMY 解开了 ITMN 的锁!
 黑耀宝珠
 - Mithril Orbs
 秘银宝珠
+# - Rubbery Grasp
+# - Rubbery Grip
 
 
 
@@ -50023,11 +50081,15 @@ ${EnemyName} 花费了一个 token 以格挡 ${Amount} 点${Type}伤害。
 - The cursed latex kitty's rubbery coating casts itself into locks!
 被诅咒的乳胶猫娘身上的橡胶涂层变成了锁！
 
+# - The curse of the Latex Kitty takes hold on your ${Item}
+
 - The Latex Kitty curse on the RestraintName relaxes and releases you.
 RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 - The curse's strength is AMNT. Deal glue damage via unarmed attacks to weaken the curse.
-对敌人造成胶水伤害以弱化此诅咒。
+诅咒的强度为 AMNT。通过徒手攻击来造成胶伤害以削弱诅咒。
 - The Curse of the Latex Kitty keeps this tightly wrapped around you.
 乳胶猫娘诅咒使它紧紧地包裹着你。
-- You transfer some of your curse to the ${Target}.
+- You transfer some of your ${Item}'s curse to ${Target}.
 你将你身上的诅咒效果部分转移给了 ${Target}。
+# - You transfer the remainder of your ${Item}'s curse to ${Target}.
+# - The curse will deal 25% damage as residual curse transfers.
