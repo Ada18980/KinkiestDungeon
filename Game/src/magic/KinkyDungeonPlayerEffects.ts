@@ -179,7 +179,6 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			} else {
 				KinkyDungeonSetFlag("LatexKittyatk", 30);
 			}
-
 		}
 		if (applied) {
 			let str = TextGet("KDApplyLatexKitty" + (applied ? "Succeed" : "Fail")).replace("RNAME",

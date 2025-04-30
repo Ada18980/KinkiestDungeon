@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.1.0</string>
+        <string>7.0.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -470,6 +470,8 @@
             <key type="filename">../Game/Bullets/ManyObsidianBoltsHit.png</key>
             <key type="filename">../Game/Bullets/ManyOrbs.png</key>
             <key type="filename">../Game/Bullets/ManyOrbsHit.png</key>
+            <key type="filename">../Game/Bullets/ManyRubberPull.png</key>
+            <key type="filename">../Game/Bullets/ManyRubberPullHit.png</key>
             <key type="filename">../Game/Bullets/ManyShadowHands.png</key>
             <key type="filename">../Game/Bullets/ManyShadowHandsHit.png</key>
             <key type="filename">../Game/Bullets/ManySlimes.png</key>
@@ -542,6 +544,8 @@
             <key type="filename">../Game/Bullets/RubberMissileHit.png</key>
             <key type="filename">../Game/Bullets/RubberNuke.png</key>
             <key type="filename">../Game/Bullets/RubberNukeHit.png</key>
+            <key type="filename">../Game/Bullets/RubberPull.png</key>
+            <key type="filename">../Game/Bullets/RubberPullHit.png</key>
             <key type="filename">../Game/Bullets/RubberSlimeHit.png</key>
             <key type="filename">../Game/Bullets/RubberSniper.png</key>
             <key type="filename">../Game/Bullets/RubberSniperHit.png</key>
@@ -1161,6 +1165,7 @@
             <key type="filename">../Game/Enemies/LatexCubeSmall.png</key>
             <key type="filename">../Game/Enemies/LatexCubeSmallHidden.png</key>
             <key type="filename">../Game/Enemies/LatexKitty.png</key>
+            <key type="filename">../Game/Enemies/LatexKittyCursed.png</key>
             <key type="filename">../Game/Enemies/LatexSprayer.png</key>
             <key type="filename">../Game/Enemies/LatexStorageTank.png</key>
             <key type="filename">../Game/Enemies/LearnedRope.png</key>
@@ -1185,6 +1190,7 @@
             <key type="filename">../Game/Enemies/MaidforceStalker.png</key>
             <key type="filename">../Game/Enemies/MaidforceStalkerImage.png</key>
             <key type="filename">../Game/Enemies/MasterGear.png</key>
+            <key type="filename">../Game/Enemies/MasterGear2.png</key>
             <key type="filename">../Game/Enemies/MeleeCleric.png</key>
             <key type="filename">../Game/Enemies/MikoGhost.png</key>
             <key type="filename">../Game/Enemies/Mimic.png</key>
@@ -1226,6 +1232,7 @@
             <key type="filename">../Game/Enemies/PrisonerBandit.png</key>
             <key type="filename">../Game/Enemies/Rat.png</key>
             <key type="filename">../Game/Enemies/RedSlime.png</key>
+            <key type="filename">../Game/Enemies/ResistanceDrone.png</key>
             <key type="filename">../Game/Enemies/Ribbons.png</key>
             <key type="filename">../Game/Enemies/RopeElemental.png</key>
             <key type="filename">../Game/Enemies/RopeKraken.png</key>
@@ -2829,6 +2836,7 @@
             <key type="filename">../Game/Locks/Gold.png</key>
             <key type="filename">../Game/Locks/Grey.png</key>
             <key type="filename">../Game/Locks/HiSec.png</key>
+            <key type="filename">../Game/Locks/LatexKittyCurse.png</key>
             <key type="filename">../Game/Locks/Masterwork.png</key>
             <key type="filename">../Game/Locks/Purple.png</key>
             <key type="filename">../Game/Locks/Red.png</key>
