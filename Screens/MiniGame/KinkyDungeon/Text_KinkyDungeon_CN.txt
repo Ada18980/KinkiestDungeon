@@ -50090,6 +50090,6 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 - The Curse of the Latex Kitty keeps this tightly wrapped around you.
 乳胶猫娘诅咒使它紧紧地包裹着你。
 - You transfer some of your ${Item}'s curse to ${Target}.
-你将你身上的诅咒效果部分转移给了 ${Target}。
+你将你 ${Item} 上的诅咒效果部分转移给了 ${Target}。
 # - You transfer the remainder of your ${Item}'s curse to ${Target}.
 # - The curse will deal 25% damage as residual curse transfers.
