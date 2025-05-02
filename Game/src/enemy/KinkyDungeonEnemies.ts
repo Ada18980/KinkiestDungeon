@@ -8796,6 +8796,8 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 	let jailroom = KDGetLeashJailRoom(enemy);
 
 	let slot = KDGetWorldMapLocation(KDCurrentWorldSlot);
+	if (!slot)
+        return KDGetFallbackJailPoint(0);
 	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (!((slot?.main || "") == KDGameData.RoomType) && !(altRoom &&
 		(

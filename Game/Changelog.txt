@@ -41,6 +41,11 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.5.69 (nice)
+- Fix bug with catsuit not rendering
+- Fix bug with previously equipped weapon not tracked thru saves
+- Fix bug with staff of binding description being wrong
+- Weapons that cant crit no longer show a crit mult
 
 5.5.68
 - Modding: added KDSetCurse function
