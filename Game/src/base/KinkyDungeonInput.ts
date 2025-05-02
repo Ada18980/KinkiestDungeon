@@ -7,8 +7,8 @@ let KinkyDungeonInputQueue: {type: string, data: any}[] = [];
  * and/or replay system
  * By separating player inputs from actual UI it becomes easier to do these things in future
  */
-let KDInputTypes: Record<string, (type: string, data: any) => string> = {
-	"move": (type, data) => {
+let KDInputTypes: Record<string, (data: any) => string> = {
+	"move": (data) => {
 		KDInteracting = false;
 		KinkyDungeonToggleAutoPass = data.AutoPass;
 		KinkyDungeonToggleAutoSprint = data.sprint;
@@ -16,7 +16,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract,
 			 data.SuppressSprint, data.forceSprint) ? "move" : "nomove";
 	},
-	"movestairs": (type, data) => {
+	"movestairs": (data) => {
 		KDInteracting = false;
 		KinkyDungeonToggleAutoPass = data.AutoPass;
 		KinkyDungeonToggleAutoSprint = data.sprint;
@@ -24,11 +24,11 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonConfirmStairs = true;
 		return KinkyDungeonMove(data.dir, data.delta, data.AllowInteract, data.SuppressSprint) ? "move" : "nomove";
 	},
-	"setMoveDirection": (type, data) => {
+	"setMoveDirection": (data) => {
 		KinkyDungeonMoveDirection = data.dir;
 		return "";
 	},
-	"docapture": (type, data) =>  {
+	"docapture": (data) => {
 		let entity = KinkyDungeonEntityAt(data.tx, data.ty);
 		if (entity?.id == data.id) {
 			KDDoCapture(entity, 0, data.noadvance, data.skip);
@@ -37,18 +37,18 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"doaggro": (type, data) =>  {
+	"doaggro": (data) => {
 		let entity = KinkyDungeonEntityAt(data.tx, data.ty);
 		if (entity?.id == data.id) {
 			KDAggroViaDialogue(entity, data.unaware, data.aggroothers)
 		}
 		return "";
 	},
-	"dospecial": (type, data) =>  {
+	"dospecial": (data) => {
 		KinkyDungeonRangedAttack(data.x, data.y);
 		return "";
 	},
-	"doattack": (type, data) =>  {
+	"doattack": (data) => {
 		let entity = KinkyDungeonEntityAt(data.tx, data.ty);
 		if (entity?.id == data.id) {
 			KDDoAttack(entity, data.teasesub, data.attackCost, data.skip);
@@ -58,7 +58,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		return "";
 	},
 
-	"tick": (type, data) => {
+	"tick": (data) => {
 		if (data.sleep == 10 && (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') && KinkyDungeonPlayerInCell()) {
 			KDKickEnemies(KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y), false, MiniGameKinkyDungeonLevel, true);
 		}
@@ -68,7 +68,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonAdvanceTime(data.delta, data.NoUpdate, data.NoMsgTick);
 		return "";
 	},
-	"tryCastSpell": (type, data) =>  {
+	"tryCastSpell": (data) => {
 		KDDelayedActionPrune(["Action", "Cast"]);
 		let sp = data.spell ? data.spell : KinkyDungeonFindSpell(data.spellname, true);
 		if (!data.spell) data.spell = sp;
@@ -86,7 +86,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "Fail";
 	},
-	"lock": (type, data) =>  {
+	"lock": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let item = KinkyDungeonGetRestraintItem(data.group);
 		if (data.index) {
@@ -98,11 +98,11 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonLock(item, data.type);
 		return "";
 	},
-	"struggle": (type, data) => {
+	"struggle": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		return KinkyDungeonStruggle(data.group, data.type, data.index);
 	},
-	"struggleCurse": (type, data) =>  {
+	"struggleCurse": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let item = KinkyDungeonGetRestraintItem(data.group);
 		if (data.index) {
@@ -114,12 +114,12 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonCurseStruggle(item, data.curse);
 		return "";
 	},
-	"curseUnlock": (type, data) => {
+	"curseUnlock": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		KinkyDungeonCurseUnlock(data.group, data.index, data.curse);
 		return "";
 	},
-	"toggleSpell": (type, data) =>  {
+	"toggleSpell": (data) => {
 		KinkyDungeonSpellChoicesToggle[data.i] = !KinkyDungeonSpellChoicesToggle[data.i];
 		let spell = KDGetUpcast(KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]].name,
 			KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SpellEmpower")) || KinkyDungeonSpells[KinkyDungeonSpellChoices[data.i]];
@@ -137,19 +137,19 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"consumable": (type, data) => {
+	"consumable": (data) => {
 		//KDModalArea = false;
 		KinkyDungeonAttemptConsumable(data.item, data.quantity);
 		//KinkyDungeonTargetTile = null;
 		//KinkyDungeonTargetTileLocation = null;
 		return "";
 	},
-	"quickRestraint": (type, data) => {
+	"quickRestraint": (data) => {
 		KinkyDungeonAttemptQuickRestraint(data.item);
 		return "";
 	},
 
-	"switchWeapon": (type, data) =>  {
+	"switchWeapon": (data) => {
 		if (data?.pref != undefined) KDWeaponSwitchPref = data.pref;
 		KDDelayedActionPrune(["Action", "SwitchWeapon"]);
 		if (!data.noOld) {
@@ -190,7 +190,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"unequipWeapon": (type, data) => {
+	"unequipWeapon": (data) => {
 		KDDelayedActionPrune(["Action", "SwitchWeapon"]);
 		if (!KDGameData.PreviousWeapon || typeof KDGameData.PreviousWeapon === 'string') KDGameData.PreviousWeapon = [];
 		if (data.weapon)
@@ -204,7 +204,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 		return "";
 	},
-	"dress": (type, data) => {
+	"dress": (data) => {
 		KDDelayedActionPrune(["Action", "Dress"]);
 		KinkyDungeonSetDress(data.dress, data.outfit);
 		KDGameData.SlowMoveTurns = 5;
@@ -212,17 +212,17 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Equip.ogg");
 		return "";
 	},
-	"drop": (type, data) =>  {
+	"drop": (data) => {
 		KDDropItemInv(data.item);
 		return "";
 	},
-	"buffclick": (type, data) => {
+	"buffclick": (data) => {
 		if (KDBuffClick[data.click]) {
 			KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity);
 		}
 		return "";
 	},
-	"inventoryAction": (type, data) =>  {
+	"inventoryAction": (data) => {
 		if (KDInventoryAction[data.action || KDGameData.InventoryAction] && KDInventoryAction[data.action || KDGameData.InventoryAction].valid(data.player, data.item)) {
 			if (data.item.type == Restraint) data.item = KinkyDungeonInventoryGetWorn(data.item.name)
 			else data.item = KinkyDungeonInventoryGetSafe(data.item.name, KDInventoryActionContainer(data.player));
@@ -230,7 +230,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"equipRestraintGeneric": (type, data) =>  {
+	"equipRestraintGeneric": (data) => {
 		let equipped = false;
 		let newItem: restraint = null;
 		let currentItem: item = null;
@@ -283,7 +283,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		return "";
 	},
 
-	"equip": (type, data) =>{
+	"equip": (data) => {
 
 		let equipped = false;
 		let newItem: restraint = null;
@@ -335,21 +335,21 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDDelayedActionStart();
 		return "";
 	},
-	"tryOrgasm": (type, data) => {
+	"tryOrgasm": (data) => {
 		KDDelayedActionPrune(["Action", "Sexy"]);
 		KinkyDungeonDoTryOrgasm(data.bonus, 0);
 		return "";
 	},
-	"tryPlay": (type, data) => {
+	"tryPlay": (data) => {
 		KDDelayedActionPrune(["Action", "Sexy"]);
 		KinkyDungeonDoPlayWithSelf();
 		return "";
 	},
-	"sleep": (type, data) =>  {
+	"sleep": (data) => {
 		KDSleep(KDPlayer());
 		return "";
 	},
-	"noise": (type, data) =>  {
+	"noise": (data) => {
 		KDDelayedActionPrune(["Action", "Dialogue"]);
 		let gagTotal = KinkyDungeonGagTotal(true);
 		KinkyDungeonMakeNoise(Math.ceil(10 - 8 * Math.min(1, gagTotal * gagTotal)), KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, true);
@@ -359,12 +359,12 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		return "";
 	},
 
-	"crouch": (type, data) =>  {
+	"crouch": (data) => {
 		KDGameData.Crouch = !KDGameData.Crouch;
 		KinkyDungeonAdvanceTime(0);
 		return "";
 	},
-	"pick": (type, data) => {
+	"pick": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		KinkyDungeonTargetTile = tile;
@@ -384,7 +384,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"swipe": (type, data) => {
+	"swipe": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		KinkyDungeonTargetTile = tile;
@@ -413,7 +413,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 
 		return "";
 	},
-	"scan": (type, data) => {
+	"scan": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		KinkyDungeonTargetTile = tile;
@@ -442,7 +442,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		return "";
 	},
 
-	"hack": (type, data) => {
+	"hack": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		KinkyDungeonTargetTile = tile;
@@ -470,7 +470,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 
 		return "";
 	},
-	"unlock": (type, data) => {
+	"unlock": (data) => {
 		KDDelayedActionPrune(["Action", "Struggle"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		KinkyDungeonTargetTile = tile;
@@ -492,7 +492,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"commandunlock": (type, data) =>  {
+	"commandunlock": (data) => {
 		KDDelayedActionPrune(["Action", "Cast"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		KinkyDungeonTargetTile = tile;
@@ -530,14 +530,14 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 
 		return "";
 	},
-	"closeDoor": (type, data) =>  {
+	"closeDoor": (data) => {
 		let x =  data.targetTile.split(',')[0];
 		let y =  data.targetTile.split(',')[1];
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonCloseDoor(x, y);
 		return "";
 	},
-	"interact": (type, data) =>  {
+	"interact": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		let tick = KinkyDungeonCurrentTick;
 		let fail = !KDInteract(data.x, data.y);
@@ -549,7 +549,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"shrineBuy": (type, data) => {
+	"shrineBuy": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonShopIndex = data.shopIndex;
 		KinkyDungeonPayShrine(data.type);
@@ -557,7 +557,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 		return "";
 	},
-	"shrineUse": (type, data) =>  {
+	"shrineUse": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (KinkyDungeonGoddessRep[data.type] <= -45) {
 			//Cursed
@@ -587,7 +587,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 				KinkyDungeonUpdateStats(0);
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			} else {
-				if (KinkyDungeonShrineTypeRemove.includes(type))
+				if (KinkyDungeonShrineTypeRemove.includes(data.type))
 					KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), KDBaseRed, 1, true);
 				else
 					KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), KDBaseRed, 1, true);
@@ -598,7 +598,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"shrineQuest": (type, data) =>  {
+	"shrineQuest": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		if (tile && !KDHasQuest(tile.Quest)) {
@@ -612,7 +612,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonSendActionMessage(9, TextGet("KDShrineQuestAcceptedFail"), KDBaseWhite, 1, false, false, undefined, "Self");
 		return "Fail";
 	},
-	"shrineDevote": (type, data) =>  {
+	"shrineDevote": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (KinkyDungeonGoddessRep[data.type] <= -45 && KDGameData.Champion != data.type) {
 			//Cursed
@@ -623,7 +623,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDGameData.Champion = data.type;
 		return "Pass";
 	},
-	"shrinePray": (type, data) =>  {
+	"shrinePray": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (KinkyDungeonGoddessRep[data.type] <= -45) {
 			//Cursed
@@ -654,7 +654,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		//KinkyDungeonAdvanceTime(1, true);
 		return "Rescue";
 	},
-	"shrineDrink": (type, data) =>  {
+	"shrineDrink": (data) => {
 		if (!KDCanDrinkShrine(false)) {
 			KinkyDungeonSendActionMessage(9, TextGet("KDNoMana"), KDBaseRed, 2, true);
 			return "";
@@ -699,7 +699,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonSendEvent("afterShrineDrink", {x: data.x, y: data.y, tile: data.tile});
 		return "";
 	},
-	"shrineBottle": (type, data) =>  {
+	"shrineBottle": (data) => {
 		if (!KDCanDrinkShrine(true)) {
 			KinkyDungeonSendTextMessage(9, TextGet("KDNoMana"), KDBaseRed, 2, true);
 			return "";
@@ -725,8 +725,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonSendEvent("afterShrineBottle", {x: data.x, y: data.y, tile: data.tile});
 		return "";
 	},
-	"renamenpc": (type, data) => 
-		{
+	"renamenpc": (data) => {
 			let origname = KDGameData.Collection[data.id]?.origname;
 			if (KDGameData.Collection[data.id]
 				&& KDGameData.Collection[data.id].name != data.newName) {
@@ -759,7 +758,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 			}
 			return "";
 		},
-	"defeat": (type, data) => {
+	"defeat": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonDefeat(!(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)
 			&& KinkyDungeonFlags.has("LeashToPrison"), KinkyDungeonLeashingEnemy());
@@ -767,13 +766,13 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonChangeRep("Ghost", 4);
 		return "";
 	},
-	"lose": (type, data) => {
+	"lose": (data) => {
 		KinkyDungeonState = "Menu";
 		KDLose = true;
 		MiniGameKinkyDungeonLevel = -1;
 		return "";
 	},
-	"orb": (type, data) => {
+	"orb": (data) => {
 		if (KinkyDungeonMapGet(data.x, data.y) == 'O') {
 			KDDelayedActionPrune(["Action", "World"]);
 			let edata = {
@@ -873,7 +872,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"perkorb": (type, data) => {
+	"perkorb": (data) => {
 		if (KinkyDungeonMapGet(data.x, data.y) == 'P') {
 			KDDelayedActionPrune(["Action", "World"]);
 			KDSendStatus('goddess', data.perks, 'takePerkOrb');
@@ -906,7 +905,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"heart": (type, data) =>  {
+	"heart": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		let tile = KinkyDungeonTilesGet(data.targetTile);
 		if (tile) {
@@ -948,13 +947,13 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"champion": (type, data) => {
+	"champion": (data) => {
 		KDGameData.Champion = data.rep;
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonBecomeChampion").replace("GODDESS", TextGet("KinkyDungeonShrine" + data.rep)), "yellow", 1);
 		KDSendStatus('goddess', data.rep, 'helpChampion');
 		return "";
 	},
-	"aid": (type, data) => {
+	"aid": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		KinkyDungeonChangeRep(data.rep, -KinkyDungeonAidManaCost(data.rep, data.value));
 		KDChangeMana("player", "aid", "pray", KinkyDungeonAidManaAmount(data.rep, data.value));
@@ -962,7 +961,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDSendStatus('goddess', data.rep, 'helpMana');
 		return "";
 	},
-	"rescue": (type, data) => {
+	"rescue": (data) => {
 		KinkyDungeonRescued[data.rep] = true;
 
 		if (KDRandom() < 0.5 + data.value/100) {
@@ -986,7 +985,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 			return "FailRescue";
 		}
 	},
-	"penance": (type, data) => {
+	"penance": (data) => {
 		KDGameData.KinkyDungeonPenance = true;
 		KDGameData.KDPenanceMode = "";
 		KDGameData.KDPenanceStage = 0;
@@ -1001,7 +1000,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDSendStatus('goddess', data.rep, 'helpPenance');
 		return "";
 	},
-	"spellChoice": (type, data) => {
+	"spellChoice": (data) => {
 		KDDelayedActionPrune(["Action", "SwitchSpell"]);
 		KinkyDungeonEvasionPityModifier = 0.0;
 		KinkyDungeonSpellChoices[data.I] = data.CurrentSpell;
@@ -1021,7 +1020,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 			KinkyDungeonAdvanceTime(1);
 			return "";
 		},
-	"itemChoice": (type, data) => {
+	"itemChoice": (data) => {
 		KDDelayedActionPrune(["Action", "SwitchSpell"]);
 		KinkyDungeonEvasionPityModifier = 0.0;
 		KinkyDungeonSpellChoices[data.I] = -1;
@@ -1050,7 +1049,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 			KinkyDungeonAdvanceTime(1);*/
 		return "";
 	},
-	"spellRemove": (type, data) => {
+	"spellRemove": (data) => {
 		KinkyDungeonEvasionPityModifier = 0.0;
 		KinkyDungeonSpellChoices[data.I] = -1;
 		KinkyDungeonWeaponChoices[data.I] = "";
@@ -1059,7 +1058,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KinkyDungeonSpellChoicesToggle[data.I] = true;
 		return "";
 	},
-	"spellCastFromBook": (type, data) =>  {
+	"spellCastFromBook": (data) => {
 		KDDelayedActionPrune(["Action", "Cast"]);
 		let spell = KinkyDungeonHandleSpellCast(KinkyDungeonSpells[data.CurrentSpell]);
 		if (spell && !(KinkyDungeonSpells[data.CurrentSpell].type == "passive") && !KinkyDungeonSpells[data.CurrentSpell].passive && !KinkyDungeonSpells[data.CurrentSpell].upcastFrom) {
@@ -1074,20 +1073,20 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"focusControlToggle": (type, data) =>  {
+	"focusControlToggle": (data) => {
 		KDInputFocusControlToggle(data.key, data.value);
 		return "";
 	},
-	"upcast": (type, data) =>  {
+	"upcast": (data) => {
 		KDDelayedActionPrune(["Action", "Cast"]);
 		KDEmpower(data, KinkyDungeonPlayerEntity);
 		return "";
 	},
-	"upcastcancel": (type, data) =>  {
+	"upcastcancel": (data) => {
 		KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "upcast", 1);
 		return "";
 	},
-	"select": (type, data) =>  {
+	"select": (data) => {
 		if (data.enemy && KDAllied(data.enemy)) {
 			if (data.enemy.buffs?.AllySelect?.duration > 0) KinkyDungeonExpireBuff(data.enemy, "AllySelect")
 			else KinkyDungeonApplyBuffToEntity(data.enemy, {
@@ -1101,7 +1100,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"selectOnly": (type, data) =>  {
+	"selectOnly": (data) => {
 		for (let e of KDMapData.Entities) {
 			if (e.id != data.enemy?.id && e.buffs?.AllySelect) KinkyDungeonExpireBuff(e, "AllySelect")
 			else if (e.id == data.enemy?.id) KinkyDungeonApplyBuffToEntity(e, {
@@ -1117,7 +1116,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 
 		return "";
 	},
-	"cancelParty": (type, data) =>  {
+	"cancelParty": (data) => {
 		if (data.enemy) {
 			let enemy = KinkyDungeonFindID(data.enemy.id);
 			if (!enemy && KDGameData.Party) enemy = KDGameData.Party.find((entity) => {return entity.id == data.enemy.id;});
@@ -1131,7 +1130,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"onMe": (type, data) =>  {
+	"onMe": (data) => {
 		if (data.enemy && data.player) {
 			let enemy = KinkyDungeonFindID(data.enemy.id);
 			enemy.gx = data.player.x;
@@ -1149,7 +1148,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"spellLearn": (type, data) =>  {
+	"spellLearn": (data) => {
 		KDDelayedActionPrune(["Action", "SwitchSpell"]);
 		KinkyDungeonEvasionPityModifier = 0.0;
 		let spell = KinkyDungeonFindSpell(data.SpellName, true);
@@ -1201,7 +1200,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		
 		return "";
 	},
-	"tabletInteract": (type, data) =>  {
+	"tabletInteract": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (data.action == "read") {
 			let tile = KinkyDungeonTilesGet(data.targetTile);
@@ -1256,7 +1255,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"foodInteract": (type, data) =>  {
+	"foodInteract": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (data.action == "eat") {
 			let tile = KinkyDungeonTilesGet(data.targetTile);
@@ -1282,7 +1281,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"chargerInteract": (type, data) => {
+	"chargerInteract": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (data.action == "charge") {
 			if (KinkyDungeonInventoryGet("AncientPowerSourceSpent") && KinkyDungeonGold >= KDRechargeCost) {
@@ -1333,11 +1332,11 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"dialogue": (type, data) =>  {
+	"dialogue": (data) => {
 		KDDoDialogue(data);
 		return "";
 	},
-	"recycleBuild": (type, data) => {
+	"recycleBuild": (data) => {
 		if (KDHasRecyclerResources(KDMapToRecycleOutputs(data.selectedItem.recyclecost))) {
 			KDChangeRecyclerResources(KDMapToRecycleOutputs(data.selectedItem.recyclecost), -1);
 			KinkyDungeonItemEvent({
@@ -1347,15 +1346,15 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		}
 		return "";
 	},
-	"recycle": (type, data) => {
+	"recycle": (data) => {
 		// TODO
 		return "";
 	},
-	"tightenNPCRestraint": (type, data) => {
+	"tightenNPCRestraint": (data) => {
 		KDNPCRefreshBondage(data.npc, data.player, false, false);
 		return "";
 	},
-	"changeAutorelease": (type, data) => {
+	"changeAutorelease": (data) => {
 		if (!KDGameData.AutoRelease) {
 			KDGameData.AutoRelease = {
 				Escaped: false,
@@ -1365,7 +1364,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDGameData.AutoRelease[data.type] = !KDGameData.AutoRelease[data.type];
 		return "";
 	},
-	"talk": (type, data) =>  {
+	"talk": (data) => {
 		let Enemy = KinkyDungeonFindID(data.id);
 		if (Enemy) {
 			if (data.moveTo) {
@@ -1385,7 +1384,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 
 		return "";
 	},
-	"releaseNPC": (type, data) => {
+	"releaseNPC": (data) => {
 		if (data?.selection) {
 			for (let v of Object.keys(data.selection)) {
 				KDReleaseNPC(parseInt(v), data.player);
@@ -1394,7 +1393,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDSortCollection();
 		return "";
 	},
-	"removeGuest": (type, data) => {
+	"removeGuest": (data) => {
 		if (data?.selection) {
 			for (let v of Object.keys(data.selection)) {
 				if (KDCanRemoveGuest(parseInt(v))) {
@@ -1405,7 +1404,7 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDSortCollection();
 		return "";
 	},
-	"ransomNPC": (type, data) => {
+	"ransomNPC": (data) => {
 		if (data?.selection) {
 			for (let v of Object.keys(data.selection)) {
 				if (KDCanRansom(parseInt(v))) {
@@ -1429,17 +1428,17 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
 		KDSortCollection();
 		return "";
 	},
-	"freeNPCRestraint": (type, data) =>  {
+	"freeNPCRestraint": (data) => {
 		KDFreeNPCRestraints(data.npc, data.player);
 		if (KDNPCChar.get(data.npc))
 			KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
 		return "";
 	},
-	"autoprune": (type, data) =>  {
+	"autoprune": (data) => {
 		KDDelayedActionPrune(["Auto"]);
 		return "";
 	},
-	"addNPCRestraint": (type, data) => {
+	"addNPCRestraint": (data) => {
 		/**
 			slot: slot.id,
 			id: inv.item.id,
@@ -1480,10 +1479,11 @@ let KDInputTypes: Record<string, (type: string, data: any) => string> = {
  * Delegate to KDProcessInputs
  */
 function KDProcessInput(type: string, data: any): string {
-
 	KDUpdateEnemyCache = true;
 	
-
+	if (KDInputTypes[type]) {
+		KDInputTypes[type](data);
+	}
 
 	if (data.GameData) {
 		Object.assign(KDGameData, data.GameData);
