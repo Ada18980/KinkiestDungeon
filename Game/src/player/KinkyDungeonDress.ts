@@ -326,7 +326,7 @@ function KinkyDungeonDressPlayer (
 
 
 								if (!(!KDRestraint(link) || (KDRestraint(link).armor && !KDToggles.DrawArmor))) {
-									if (!(!KDRestraint(inv).renderExcept
+									if ((!KDRestraint(inv).renderExcept
 											|| !KDRestraint(inv).renderExcept.some((tag) => {
 												return !TagsSoFar[tag];
 											}))) {

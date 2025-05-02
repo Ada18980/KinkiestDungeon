@@ -133,9 +133,9 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 	},
 	"AncientRobot": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":0.7666666666666666,"green":1,"blue":4.833333333333333,"alpha":1},
-		DarkNeutral: {"gamma":1.5,"saturation":0,"contrast":2.1166666666666667,"brightness":0.9833333333333333,"red":0.7666666666666667,"green":1,"blue":4.4166666666666665,"alpha":1},
-		LightNeutral: {"gamma":0.7666666666666666,"saturation":0,"contrast":2.1166666666666667,"brightness":0.8833333333333333,"red":0.3666666666666667,"green":0.6666666666666666,"blue":2.4166666666666665,"alpha":1},
-		Highlight: {"gamma":0.5333333333333333,"saturation":0,"contrast":2.6500000000000004,"brightness":0.95,"red":1.85,"green":0.633333333333334,"blue":0.7666666666666666,"alpha":1},
+		DarkNeutral: {"gamma":1.4666666666666668,"saturation":0,"contrast":1.9500000000000002,"brightness":0.9166666666666666,"red":0.7666666666666667,"green":1,"blue":2.166666666666667,"alpha":1},
+		LightNeutral: {"gamma":1.6666666666666665,"saturation":0,"contrast":2.1166666666666667,"brightness":0.8833333333333333,"red":0.3666666666666667,"green":0.6666666666666666,"blue":2.4166666666666665,"alpha":1},
+		Highlight: {"gamma":1.6833333333333333,"saturation":0,"contrast":2.0833333333333335,"brightness":0.95,"red":1.85,"green":0.633333333333334,"blue":0.7666666666666666,"alpha":1},
 	},
 	"Mushy": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},

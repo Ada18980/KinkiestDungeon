@@ -144,7 +144,6 @@ let KinkyDungeonMasochistDamageTypes = ["crush", "pain", "unarmed", "electric", 
 
 // Weapons
 let KinkyDungeonPlayerWeapon = "";
-let KinkyDungeonPlayerWeaponLastEquipped = "";
 let KinkyDungeonPlayerDamageDefault: weapon = {name: "", damage: 2, chance: 0.9, type: "unarmed", unarmed: true, rarity: 0, shop: false, sfx: "Unarmed"};
 let KinkyDungeonPlayerDamage: weapon = KinkyDungeonPlayerDamageDefault;
 
@@ -222,7 +221,7 @@ function KDSetWeapon(Weapon: string, forced?: boolean) {
 	KinkyDungeonEvasionPityModifier = 0;
 	KinkyDungeonPlayerWeapon = Weapon;
 	if (!forced)
-		KinkyDungeonPlayerWeaponLastEquipped = Weapon;
+		KDGameData.PlayerWeaponLastEquipped = Weapon;
 }
 
 /*

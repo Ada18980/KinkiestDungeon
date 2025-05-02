@@ -520,6 +520,7 @@ let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 // region KDGameData
 
 interface KDGameDataBase {
+	PlayerWeaponLastEquipped: string,
 	SawFlags: Record<string, Record<string, number>>,
 	PersistentItems: Record<string, Record<string, number>>,
 	JourneyProgression:		string[],
@@ -985,6 +986,7 @@ let KDGameDataBase: KDGameDataBase = {
 	SigilsErased: 0,
 	IdentifiedObj: {},
 	UseJourneyTarget: false,
+	PlayerWeaponLastEquipped: "",
 };
 
 // endregion

@@ -1523,7 +1523,7 @@ KinkyDungeonInventoryItemStaffFrostbiteDesc,"A magical weapon with a 33% chance 
 KinkyDungeonInventoryItemStaffFrostbiteDesc2,"+20% ice damage. Deals ice damage. Frozen enemies take 5 ice damage per turn. Offhand: Applies ice damage bonus."
 KinkyDungeonInventoryItemStaffBind,Staff of Binding
 KinkyDungeonInventoryItemStaffBindDesc,"A magical weapon made to use on novices."
-KinkyDungeonInventoryItemStaffBindDesc2,"+20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus."
+KinkyDungeonInventoryItemStaffBindDesc2,"+20% chain damage. Deals chain damage and roots the target for 4 turns. Offhand: Applies chain damage bonus."
 
 KinkyDungeonInventoryItemArcaneCrystal,Arcane Orb
 KinkyDungeonInventoryItemArcaneCrystalDesc,"Look into my eyes..."
@@ -1543,7 +1543,7 @@ KinkyDungeonInventoryItemStaffPermafrostDesc,"A magical weapon with a 15% chance
 KinkyDungeonInventoryItemStaffPermafrostDesc2,"+10% ice damage. Deals ice damage. Multiplies the duration of freeze effects on enemies by 1.5x (min +1 duration). Offhand: Applies ice damage bonus."
 KinkyDungeonInventoryItemStaffChain,Staff of Chains
 KinkyDungeonInventoryItemStaffChainDesc,"A magical weapon made for novices in the art of bondage."
-KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus."
+KinkyDungeonInventoryItemStaffChainDesc2,"+10% chain damage. Deals chain damage. Offhand: Applies chain damage bonus."
 ItemPickupStaffChain,"You pick up a staff of chains. You have fond memories..."
 
 ItemPickupStaffBind,"You pick up a staff of binding. You remember these from wizard school..."
@@ -1664,7 +1664,7 @@ KinkyDungeonInventoryItemFourSeasonsDesc,"Activate to reduce the cost of your ne
 KinkyDungeonInventoryItemFourSeasonsDesc2,"Deals shadow damage. +25% fire, ice, soap, crush, electric, blast damage. Offhand: Applies passive bonus."
 KinkyDungeonInventoryItemArbiter,The Arbiter
 KinkyDungeonInventoryItemArbiterDesc,"I have altered the rules. Pray I do not alter them further."
-KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm"
+KinkyDungeonInventoryItemArbiterDesc2,"Deals chain damage, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm"
 KinkyDungeonInventoryItemBondageBuster,Bondage Buster EX
 KinkyDungeonInventoryItemBondageBusterDesc,"Can fire a beam (1 turn channel) that deals 30 electric damage and applies an equal amount of energy bondage. Charges when not fired, dealing 90 total damage at 10 turns of charge."
 KinkyDungeonInventoryItemBondageBusterDesc2,"Melee mode deals tickle damage and marks enemies as vulnerable for 4 turns."
@@ -27615,7 +27615,7 @@ KinkyDungeonSpellObserverBeamBeam,Observer's Gaze
 
 KinkyDungeonInventoryItemStaffTape,Industrial Tape Wand
 KinkyDungeonInventoryItemStaffTapeDesc,"A non-magical tape wand used for creating tight little packages."
-KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
+KinkyDungeonInventoryItemStaffTapeDesc2,"Deals chain damage. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving."
 ItemPickupStaffTape,"You pick up a staff of chains. You have fond memories..."
 
 

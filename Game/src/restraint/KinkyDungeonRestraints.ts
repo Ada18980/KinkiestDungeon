@@ -5277,8 +5277,8 @@ function KinkyDungeonRemoveRestraint(Group: string, Keep?: boolean, Add?: boolea
 
 			}
 			KinkyDungeonCancelFlag = false;
-			if (KinkyDungeonPlayerWeapon != KinkyDungeonPlayerWeaponLastEquipped && KinkyDungeonInventoryGet(KinkyDungeonPlayerWeaponLastEquipped)) {
-				KDSetWeapon(KinkyDungeonPlayerWeaponLastEquipped);
+			if (KinkyDungeonPlayerWeapon != KDGameData.PlayerWeaponLastEquipped && KinkyDungeonInventoryGet(KDGameData.PlayerWeaponLastEquipped || "")) {
+				KDSetWeapon(KDGameData.PlayerWeaponLastEquipped || "");
 			}
 			// Reequip offhand if able
 			if (KDGameData.OffhandOld && !KDGameData.Offhand
@@ -6661,7 +6661,7 @@ function KDDynamicLinkListSurface(item: item): item[] {
 
 		if ( KDRestraint(inv).alwaysAccessible || (
 			!inaccess
-			&& !(!KDRestraint(inv).renderExcept
+			&& (!KDRestraint(inv).renderExcept
 				|| !KDRestraint(inv).renderExcept.some((tag) => {
 					return !TagsSoFar[tag];
 				}))

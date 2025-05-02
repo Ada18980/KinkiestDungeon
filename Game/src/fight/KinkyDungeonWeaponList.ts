@@ -285,7 +285,8 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 			{type: "MultiplyTime", trigger: "beforeDamageEnemy", power: 1.5, damage: "ice"}]},
 
 	// Tier 2 Staves
-	"StaffBind": {name: "StaffBind", damage: 2.3, bindEff: 1, bindType: "Metal", addBind: true, chance: 1.0, staminacost: 3.0, type: "chain", unarmed: false, rarity: 5, shop: true, sfx: "Chain", magic: true,
+	"StaffBind": {name: "StaffBind", damage: 2.3, bindEff: 1, bindType: "Metal", addBind: true, chance: 1.0,
+		staminacost: 3.0, type: "chain", unarmed: false, rarity: 5, shop: true, sfx: "Chain", magic: true,
 		tags: ["staff", "bondage"], noDamagePenalty: true,
 		crit: 1.1,
 		stamPenType: "Staff",
