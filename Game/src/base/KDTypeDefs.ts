@@ -296,6 +296,11 @@ interface KDRestraintPropsBase {
 	requireAllTagsToEquip?: string[];
 	/** This item always renders when linked */
 	alwaysRender?: boolean,
+	/** This item always renders when linked except by these shrine tags
+	 * Useful to make only, e.g., the topmost corset render
+	*/
+	renderExcept?: string[],
+	
 	/** When the mentioned items are rendered, changes the type */
 	changeRenderType?: Record<string, string>;
 	/** AFTER a link, the items will get sorted based on if the order makes sense and there are no inaccessible things blocking. */

@@ -139,7 +139,8 @@ let KDCurses: Record<string, KDCursedDef> = {
 			return (KDItemDataQuery(item, "LatexKittyCurseHP") || 0) <= 0;
 		}, 
 		onApply: (item, _host) => {
-			KDItemDataSet(item, "LatexKittyCurseHP", 9 + Math.max(1, KDRandom() * KDGetEffLevel())**0.7)
+			KDItemDataSet(item, "LatexKittyCurseHP", Math.max(1, KDRestraint(item)?.power)
+				+ Math.max(1, KDRandom() * KDGetEffLevel())**0.7)
 		},
 		remove: (_item, _host) => {},
 		customInfo: (item, Curse) => {
@@ -150,7 +151,8 @@ let KDCurses: Record<string, KDCursedDef> = {
 			KDBaseWhite, 2);
 		},
 		events: [
-			{type: "LatexKittyCurse", power: 20, addBind: true, damage: "glue", bindType: "Latex", bindEff: 2.0, trigger: "playerAttack"},
+			{type: "LatexKittyCurse", power: 2, addBind: true, damage: "glue", bindType: "Latex", bindEff: 2.0, trigger: "playerAttack"},
+			{type: "LatexKittyCurse", trigger: "tick"},
 		],
 	},
 	"CursedCollar": {

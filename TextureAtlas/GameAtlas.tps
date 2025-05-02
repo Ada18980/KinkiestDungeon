@@ -2956,6 +2956,7 @@
             <key type="filename">../Game/Buffs/buff/buffInvisibility.png</key>
             <key type="filename">../Game/Buffs/buff/buffLatexBubble.png</key>
             <key type="filename">../Game/Buffs/buff/buffLatexIntegrationStat.png</key>
+            <key type="filename">../Game/Buffs/buff/buffLatexKittyCurseTick.png</key>
             <key type="filename">../Game/Buffs/buff/buffLeatherBurst.png</key>
             <key type="filename">../Game/Buffs/buff/buffLightningRod.png</key>
             <key type="filename">../Game/Buffs/buff/buffManaBurst.png</key>

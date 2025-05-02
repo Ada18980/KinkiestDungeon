@@ -64,6 +64,7 @@ KDToggleIgnoreApplyCharPalette,Don't use character palette
 KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
+KDToggleExtraBuffRow,Allow two rows of buffs when collapsed
 KDToggleBackgrounds,Show Background Art
 KDToggleOptRender,Experimental Rendering (unstable)
 KDToggleHeadpats,Enable Heatpats
@@ -1752,6 +1753,7 @@ KinkyDungeonPlayerStatisfied,"Satisfied. Miscast chance is reduced."
 KinkyDungeonWeaponDamage,"Damage: "
 KinkyDungeonWeaponDamageBind,"Bind: "
 KinkyDungeonWeaponCrit,"Crit: "
+KinkyDungeonWeaponNoCrit,"Does not Crit"
 KinkyDungeonWeaponBindCrit,"Crit: "
 KinkyDungeonWeaponAccuracy,"Accuracy: "
 KinkyDungeonWeaponStamina,"SP Cost: "
@@ -32165,3 +32167,5 @@ KinkyDungeonCurseStruggleLatexKittyCurse,"The Curse of the Latex Kitty keeps thi
 KDLatexKittyCurseEffect,"You transfer some of your ${Item}'s curse to ${Target}."
 KDLatexKittyCurseEffectFull,"You transfer the remainder of your ${Item}'s curse to ${Target}."
 KDLatexKittyCurseEffectFull2,"The curse will deal 25% damage as residual curse transfers."
+
+KinkyDungeonBuffLatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.

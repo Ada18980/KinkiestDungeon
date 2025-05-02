@@ -301,10 +301,12 @@ let KDToggles = {
 	ShowExtraStruggle: false,
 	InvLimit: true,
 	Headpats: false,
+	ExtraBuffRow: true,
 };
 
 let KDToggleCategories = {
 	Headpats: "Clothes",
+	ExtraBuffRow: "UI",
 	ShowExtraStruggle: "UI",
 	ExtraTooltipHeight: "UI",
 	ExtraTooltipCycle: "UI",

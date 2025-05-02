@@ -1387,8 +1387,11 @@ function KinkyDungeonDrawInventorySelected (
 			DrawTextKD(TextGet("KinkyDungeonWeaponDamage") + Math.round(weapon.damage * 10), xOffset - off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, KDBookText, KDTextTan, 24, undefined, 130);
 			if (off) DrawTextKD(TextGet("KinkyDungeonWeaponDamageBind") + (bind ? Math.round(bind * 10) : (bindEff ? Math.round(bindEff * 100) + "%" : "")), xOffset + off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 350, KDBookText, KDTextTan, 24, undefined, 130);
 
-			DrawTextKD(TextGet("KinkyDungeonWeaponCrit") + Math.round((weapon.crit || KDDefaultCrit) * 100) + "%", xOffset - off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, KDBookText, KDTextTan, 24, undefined, 130);
-			if (off) DrawTextKD(TextGet("KinkyDungeonWeaponBindCrit") + Math.round((weapon.bindcrit || KDDefaultBindCrit) * 100) + "%", xOffset + off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, KDBookText, KDTextTan, 24, undefined, 130);
+			if (!weapon.nocrit) {
+				DrawTextKD(TextGet("KinkyDungeonWeaponCrit") + Math.round((weapon.crit || KDDefaultCrit) * 100) + "%", xOffset - off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, KDBookText, KDTextTan, 24, undefined, 130);
+				if (off) DrawTextKD(TextGet("KinkyDungeonWeaponBindCrit") + Math.round((weapon.bindcrit || KDDefaultBindCrit) * 100) + "%", xOffset + off + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 380, KDBookText, KDTextTan, 24, undefined, 130);
+	
+			}
 
 			DrawTextKD(TextGet("KinkyDungeonWeaponAccuracy") + Math.round(weapon.chance * 100) + "%", xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + 410, KDBookText, KDTextTan, 24, undefined, 130);
 			let cost = -KinkyDungeonStatStaminaCostAttack;

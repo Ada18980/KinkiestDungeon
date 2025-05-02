@@ -1110,6 +1110,31 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		}
 	},
 	"tick": {
+		LatexKittyCurse: (_e, _item, _data) => {
+			let player = KDPlayer();
+			// only tick once per turn
+			if (KinkyDungeonFlags.get("latexkittycurse_tick") > 0) return;
+			KinkyDungeonSetFlag("latexkittycurse_tick", 1);
+			let total = 0;
+			for (let item of KDAllRestraintDynamicList()) {
+				if (item.curse == "LatexKittyCurse") {
+					total += (KDItemDataQuery(item, "LatexKittyCurseHP") || 0);
+				}
+			}
+			KinkyDungeonApplyBuffToEntity(player, {
+					buffSprite: true,
+					id: "LatexKittyCurseTick",
+					duration: 2,
+					aura: "#353a7d",
+					auraSprite: "Null",
+					power: 1,
+			});
+			total = Math.ceil(total*10);
+			let buff = KDEntityGetBuff(player, "LatexKittyCurseTick");
+			if (buff) {
+				buff.text = "" + total;
+			}
+		},
 		"InvisibleGhosts": (_e, _item, _data) => {
 			for (let entity of KDMapData.Entities) {
 				if (entity.Enemy?.tags?.ghost) {

@@ -1690,6 +1690,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{alwaysRender: true, inventory: true, name: "LatexCorset", linkCategory: "Corset", linkSize: 0.55, inaccessible: true, deepAccessible: true, factionColor: [[0]],
 		OverridePriority: 25.9, Asset: "HeavyLatexCorset", LinkableBy: KDCorsetLink, strictness: 0.1, Color: ["#5196EF"], Group: "ItemTorso", power: 8, weight: 0,
 		Model: "LatexCorsetCrossRestraint",
+		renderExcept: ["Corsets"],
 		sfxGroup: "Rubber",
 		factionFilters: {
 			Corset: {color: "Catsuit", override: false},
@@ -1801,6 +1802,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		alwaysAccessible: true,
 		sfxGroup: "Rubber",
 		Model: "Catsuit",
+		renderExcept: ["Catsuits"],
+		alwaysRender: true,
 		Filters: {
 			TorsoLower: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
 			TorsoUpper: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
@@ -1825,6 +1828,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[0]], Asset: "SeamlessCatsuit", AssetGroup: "Suit", Color: ["#3873C3"],
 		sfxGroup: "Rubber",
 		alwaysAccessible: true,
+		renderExcept: ["Catsuits"],
+		alwaysRender: true,
 		Model: "Catsuit",
 		Filters: {
 			TorsoLower: {"gamma":2.7666666666666666,"saturation":1.6833333333333333,"contrast":0.8,"brightness":1.5,"red":0.6333333333333334,"green":1.1833333333333333,"blue":2.033333333333333,"alpha":1},
@@ -2288,8 +2293,10 @@ const KinkyDungeonRestraints: restraint[] = [
 
 
 
-	{alwaysRender: true, inventory: true, name: "DressCorset", debris: "Fabric", linkCategory: "Corset", linkSize: 0.55, inaccessible: true, factionColor: [[0]], OverridePriority: 26, Asset: "HeavyLatexCorset",
+	{alwaysRender: true, inventory: true, name: "DressCorset", debris: "Fabric", linkCategory: "Corset", linkSize: 0.55, inaccessible: true, factionColor: [[0]],
+		OverridePriority: 26, Asset: "HeavyLatexCorset",
 		Model: "LaceCorsetRestraint",
+		renderExcept: ["Corsets"],
 		factionFilters: {
 			Base: {color: "DarkNeutral", override: true},
 			Stripes: {color: "LightNeutral", override: true},

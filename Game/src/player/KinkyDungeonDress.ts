@@ -289,6 +289,7 @@ function KinkyDungeonDressPlayer (
 			if (!NoRestraints) {
 				if (Character == KinkyDungeonPlayer || customInventory) {
 					for (let inv of (customInventory || KinkyDungeonAllRestraint())) {
+						let TagsSoFar : Record<string, boolean> = {};
 						// Skip invalid restraints!!!
 						let renderTypes = KDRestraint(inv).shrine;
 						let cont = false;
@@ -325,31 +326,41 @@ function KinkyDungeonDressPlayer (
 
 
 								if (!(!KDRestraint(link) || (KDRestraint(link).armor && !KDToggles.DrawArmor))) {
-									if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
-										if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
+									if (!(!KDRestraint(inv).renderExcept
+											|| !KDRestraint(inv).renderExcept.some((tag) => {
+												return !TagsSoFar[tag];
+											}))) {
+										if (accessible || KDRestraint(link).alwaysRender || (KDRestraint(link).renderWhenLinked && KDRestraint(link).renderWhenLinked.some((element) => {return renderTypes.includes(element);}))) {
+											if (!KDRestraint(inv).hideTags || KDRestraint(inv).hideTags.some((tag) => {return tags.get(tag) == true;})) {
 
-											if (KDRestraint(inv)?.shrine) {
-												for (let s of KDRestraint(inv)?.shrine) {
-													if (data.hideShrines[s]) cont = true;
+												if (KDRestraint(inv)?.shrine) {
+													for (let s of KDRestraint(inv)?.shrine) {
+														if (data.hideShrines[s]) cont = true;
+													}
 												}
-											}
-											if (!cont) {
+												if (!cont) {
 
-												let Poses = KDCurrentModels.get(Character)?.Poses;
-												if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
-													return !!Poses[s];
-												})) {
-													drawnRestraints.push(inv);
-													KDApplyItem(Character, link, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
+													let Poses = KDCurrentModels.get(Character)?.Poses;
+													if (!Poses || !KDRestraint(inv)?.noRenderPose?.some((s) => {
+														return !!Poses[s];
+													})) {
+														if (KDRestraint(inv).shrine) {
+															for (let tag of KDRestraint(inv).shrine) {
+																TagsSoFar[tag] = true;
+															}
+														}
+														drawnRestraints.push(inv);
+														KDApplyItem(Character, link, customPlayerTags || KinkyDungeonPlayerTags, customFaction);
 
-													if (KDRestraint(link).Model) {
-														restraintModels[KDRestraint(link).Model] = true;
-														restraintModels["Fashion" + KDRestraint(link).Model] = true;
+														if (KDRestraint(link).Model) {
+															restraintModels[KDRestraint(link).Model] = true;
+															restraintModels["Fashion" + KDRestraint(link).Model] = true;
+														}
 													}
 												}
 											}
+											restraints.push(link);
 										}
-										restraints.push(link);
 									}
 								}
 								if (link.dynamicLink) {

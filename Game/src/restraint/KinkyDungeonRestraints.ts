@@ -6650,6 +6650,7 @@ function KDDynamicLinkListSurface(item: item): item[] {
 	}
 	let ret = [item];
 	let inaccess = false;
+	let TagsSoFar: Record<string, boolean> = {};
 	// Now that we have the stack we sum things up
 	for (let i = 0; i < stack.length; i++) {
 		let tuple = stack[i];
@@ -6660,12 +6661,24 @@ function KDDynamicLinkListSurface(item: item): item[] {
 
 		if ( KDRestraint(inv).alwaysAccessible || (
 			!inaccess
-			&&
-			(
-				KDRestraint(host).UnderlinkedAlwaysRender || KDRestraint(host).accessible || KDRestraint(inv).alwaysRender || (KDRestraint(inv).renderWhenLinked && KDRestraint(host).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(host).shrine.includes(link);}))
+			&& !(!KDRestraint(inv).renderExcept
+				|| !KDRestraint(inv).renderExcept.some((tag) => {
+					return !TagsSoFar[tag];
+				}))
+			&& (
+				KDRestraint(host).UnderlinkedAlwaysRender
+					|| KDRestraint(host).accessible
+					|| KDRestraint(inv).alwaysRender
+					|| (KDRestraint(inv).renderWhenLinked
+					&& KDRestraint(host).shrine && KDRestraint(inv).renderWhenLinked.some((link) => {return KDRestraint(host).shrine.includes(link);}))
 			)
 		)
 		) {
+			if (KDRestraint(inv).shrine) {
+				for (let tag of KDRestraint(inv).shrine) {
+					TagsSoFar[tag] = true;
+				}
+			}
 			ret.push(inv);
 		}
 	}

@@ -2976,12 +2976,12 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		return (b.priority + KDStatsOrder[b.category]) - (a.priority + KDStatsOrder[a.category]);
 	});
 	let maxXX = minXX + 800;
-	let maxYY = minYY + 500;
+	let maxYY = minYY + 520;
 	let YY = minYY;
 	let textWidth = 44;
 	let XX = minXX;
-	let XXspacing = spriteSize + 3;
-	let YYspacing = spriteSize + 3;
+	let XXspacing = spriteSize + 1;
+	let YYspacing = spriteSize + 1;
 	let currCategory = "";
 	let tooltip = false;
 	let tooltipY = 700;
@@ -3000,14 +3000,18 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		tooltip = true;
 	}
 
+	let reset = false;
 	let resetX = () => {
 		XX = minXX;
+		reset = true;
 	};
 	let resetY = () => {
 		YY = minYY;
+		reset = true;
 	};
 	resetX();
 	resetY();
+	reset = false;
 
 	for (let stat of sorted) {
 		if (side) {
@@ -3019,7 +3023,8 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				}
 			}
 		} else {
-			if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && (KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
+			if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && 
+				(KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 
 				if (KDToggleShowAllBuffs) {
 					resetX();
@@ -3072,7 +3077,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		if (side) {
 			YY += XXspacing;
 			if (YY > maxYY) {
-				if (KDToggleShowAllBuffs) {
+				if (KDToggleShowAllBuffs || (KDToggles.ExtraBuffRow && !reset)) {
 					resetY();
 					XX += XXspacing;
 				} else {
@@ -3082,7 +3087,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		} else {
 			XX += XXspacing;
 			if (XX > maxXX) {
-				if (KDToggleShowAllBuffs) {
+				if (KDToggleShowAllBuffs || (KDToggles.ExtraBuffRow && !reset)) {
 					resetX();
 					YY -= YYspacing;
 				} else {

@@ -58,6 +58,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Made persistent party members always wander toward the player location if able to
 - Parry no longer applies to unarmed w/o brawler
 - Fix escaped NPCs being autoreleased!
+- Added option to show extra row of buff icons
 
 5.5.67
 - Added Kjus eyes 5

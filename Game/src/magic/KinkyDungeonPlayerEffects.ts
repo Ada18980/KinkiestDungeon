@@ -154,7 +154,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			eligible = KDGetRestraintsEligible({tags: ['latexKittyResult']}, KDGetEffLevel(), 'grv',
 			true, "Blue",
 			false, undefined, false, undefined,
-			undefined, undefined, undefined, undefined);
+			undefined, undefined, undefined, playerEffect.curse);
 			if (eligible.length > 0) {
 				let r = eligible[Math.floor(KDRandom() * eligible.length)];
 				let restraint = r.restraint;

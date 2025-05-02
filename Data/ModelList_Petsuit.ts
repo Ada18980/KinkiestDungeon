@@ -309,7 +309,7 @@ AddModel({
 			HideOverrideLayer: "Skirt",
 		},
 		{ Name: "DisplayLeftLegs", Layer: "PetsuitOver", Pri: 15.2,
-			TieToLayer: "UnitLeftLegsBelts",
+			TieToLayer: "UnitLeftLegs",
 			NoOverride: true,
 			Poses: ToMap(["KneelClosed", "Kneel"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
