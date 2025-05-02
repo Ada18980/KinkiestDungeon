@@ -32145,9 +32145,9 @@ KDResistanceRobotPleased,Pleased the resistance...?
 
 KDTookDamage,${EnemyName} took ${Amount} ${Type} damage.
 KDTookDamageMissed,${EnemyName} avoided ${Amount} ${Type} damage.
-KDDodged,${EnemyName} dodged.
+KDDodgedAtk,${EnemyName} dodged.
 KDDodgedToken,${EnemyName} spent a token to dodge.
-KDBlocked,${EnemyName} spent a token to block ${Amount} ${Type} damage.
+KDBlockedAtk,${EnemyName} spent a token to block ${Amount} ${Type} damage.
 
 
 

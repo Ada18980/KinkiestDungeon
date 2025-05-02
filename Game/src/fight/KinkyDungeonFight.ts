@@ -1049,7 +1049,7 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 				let orig = predata.dmgDealt;
 				predata.dmgDealt -= Math.max(0, amount);
 				if (Math.max(0, amount) > 0) {
-					KinkyDungeonSendTextMessage(10, TextGet("KDBlocked",{
+					KinkyDungeonSendTextMessage(10, TextGet("KDBlockedAtk",{
 						EnemyName: KDGetEnemyTypeName(Enemy),
 						Amount: Math.round(10*Math.max(0, amount)),
 						Type: TextGet("KinkyDungeonDamageType" + predata.type)
@@ -1667,7 +1667,7 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 		//AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KinkyDungeonPlayerDamage.sfx + ".ogg");
 	} else if (!predata.eva) {
 		if (KDSoundEnabled()) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/Miss.ogg"});
-		KinkyDungeonSendTextMessage(10, TextGet("KDDodged",{
+		KinkyDungeonSendTextMessage(10, TextGet("KDDodgedToken",{
 			EnemyName: KDGetEnemyTypeName(Enemy),
 			Amount: Math.round(10*Math.max(0, dmg.damage)),
 			Type: TextGet("KinkyDungeonDamageType" + dmg.type)
