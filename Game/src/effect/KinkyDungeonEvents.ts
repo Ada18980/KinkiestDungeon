@@ -1820,7 +1820,8 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 	},
 	"tickAfter": {
-		"RobeOfChastity": (e, item, _data) => {
+		"RobeOfChastity": (e, item, data) => {
+			if (data.delta < 0.1) return;
 			let player = !(item.onEntity > 0) ? KDPlayer() : KinkyDungeonFindID(item.onEntity);
 			if (player && !KDIDHasFlag(player.id, "disableRobeChast")) {
 				let nearbyTargets = KDNearbyEnemies(player.x, player.y, e.dist).filter(
@@ -1839,17 +1840,20 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						duration: 2,
 					}, 0);
 					KDSetIDFlag(en.id, "RoCflag", 4);
-					KinkyDungeonDamageEnemy(en, {
-						type: e.damage,
-						damage: e.power + e.mult * Math.max(0, KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction),
-						time: e.time,
-						bind: e.bind,
-						distract: e.distract,
-						bindType: e.bindType,
-						addBind: e.addBind,
-						nocrit: true,
-					}, false, true, undefined, undefined, player,
-						undefined, undefined, true, false);
+					for (let i = 0; i < data.delta; i++) {
+						// deal based on delta
+						KinkyDungeonDamageEnemy(en, {
+							type: e.damage,
+							damage: e.power + e.mult * Math.max(0, KinkyDungeonStatDistractionMax - KinkyDungeonStatDistraction),
+							time: e.time,
+							bind: e.bind,
+							distract: e.distract,
+							bindType: e.bindType,
+							addBind: e.addBind,
+							nocrit: true,
+						}, false, true, undefined, undefined, player,
+							undefined, undefined, true, false);
+					}
 				}
 
 				if (player.player) {
@@ -10153,7 +10157,8 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		},
 	},
 	"tickAfter": {
-		"MaidKnightFollow":  (_e, enemy, _data) => {
+		"MaidKnightFollow":  (_e, enemy, data) => {
+			if (data.delta < 0.1) return
 			if (!KDEnemyHasFlag(enemy, "followMK") && !KDEnemyHasFlag(enemy, "overrideMove")
 				&& !KDIsInPartyID(enemy.id)) {
 				KinkyDungeonSetEnemyFlag(enemy, "followMK", 10);

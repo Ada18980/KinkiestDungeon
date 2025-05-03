@@ -4997,7 +4997,7 @@ let KDEffectTileTooltips: Record<string, {color: string, code: (tile: effectTile
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#e7cf1a", "KDEffectTileTooltipCMDGlue");}},
 	'Radiance': {
 		color: "#ffff00",
-		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, KDBaseYellow, "Radiance");}},
+		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, KDBaseYellow);}},
 	'Latex': {
 		color: "#d952ff",
 		code: (tile, _x, _y, TooltipList) => {KDETileTooltipSimple(tile, TooltipList, "#d952ff");}},
