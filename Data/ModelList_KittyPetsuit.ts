@@ -46,8 +46,7 @@ AddModel({
 
 		},
 		{ Name: "FootRightKneel", Layer: "SockRightKneel", Pri: 25,
-			Poses: ToMap(["KneelClosed", "Kneel"]),
-			GlobalDefaultOverride: ToMap(["KneelClosed"]),
+			Poses: ToMap(["Kneel"]),
 			InheritColor: "Legs",
 			HideWhenOverridden: true,
 			Invariant: true,
