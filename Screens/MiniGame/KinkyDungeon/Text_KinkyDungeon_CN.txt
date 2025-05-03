@@ -300,6 +300,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Use character palette for default outfit
 默认装备使用角色调色板
 
+# - Allow two rows of buffs when collapsed
 - Show Background Art
 显示背景
 # :: KDToggleBackgrounds
@@ -3146,7 +3147,7 @@ Devious Dungeon Challenge 已启用。
 束缚法杖
 - A magical weapon made to use on novices.
 适合新手使用的魔法武器。
-- +20% chain damage. Deals chain damage and roots the target for 4 turns. 150% binding efficiency. Offhand: Applies chain damage bonus.
+- +20% chain damage. Deals chain damage and roots the target for 4 turns. Offhand: Applies chain damage bonus.
 锁链伤害 +20%。造成锁链伤害，并定身 4 回合。束缚效率为 150%。副手 : ‎应用锁链伤害加成。
 
 - Arcane Orb
@@ -3185,7 +3186,7 @@ Devious Dungeon Challenge 已启用。
 锁链法杖
 - A magical weapon made for novices in the art of bondage.
 一把专为束缚艺术的初学者打造的法杖。
-- +10% chain damage. Deals chain damage. 150% binding efficiency. Offhand: Applies chain damage bonus.
+- +10% chain damage. Deals chain damage. Offhand: Applies chain damage bonus.
 锁链伤害 +10%。造成锁链伤害，束缚效率为 150%。副手 : ‎应用锁链伤害加成。
 - You pick up a staff of chains. You have fond memories...
 你拿起一把锁链法杖。你回想起了美好的记忆...
@@ -3502,7 +3503,7 @@ Devious Dungeon Challenge 已启用。
 “仲裁者”
 - I have altered the rules. Pray I do not alter them further.
 我已经修改了规则。祈祷我不会再继续修改。
-- Deals chain damage with 125% binding efficiency, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
+- Deals chain damage, +40 shadow damage to summons. +25% glue and chain damage. Weapon Ability: Disarm
 造成束缚效率为 125% 的锁链伤害。对召唤物额外造成 40 点暗影伤害。胶体和锁链伤害 +25%。武器能力 : ‎缴械
 - Bondage Buster EX
 “束缚破坏者 EX”
@@ -3677,6 +3678,7 @@ Devious Dungeon Challenge 已启用。
 暴击伤害：
 # :: KinkyDungeonWeaponCrit
 # :: KinkyDungeonWeaponBindCrit
+# - Does not Crit
 - SP Cost: 
 体力消耗：
 - Cut PWR: AMNT%
@@ -42709,7 +42711,7 @@ Aura刘海(右后)
 工业胶带杖
 - A non-magical tape wand used for creating tight little packages.
 一种非魔法胶带杖，用于创建紧密的小包装。
-- Deals chain damage. 200% binding efficiency. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving.
+- Deals chain damage. Hitting an enemy applies the Taped debuff for 12 turns, increasing Chain damage to them by 15%. Deal 10 chain damage to adjacent Taped enemies while moving.
 造成锁链伤害。束缚效率为 200%。击中敌人会施加胶带减益效果，持续 12 回合，使其受到的锁链伤害提高 15%。移动时对相邻的被胶带缠住的敌人造成 10 点锁链伤害。
 
 
@@ -50093,3 +50095,5 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 你将你 ${Item} 上的诅咒效果部分转移给了 ${Target}。
 # - You transfer the remainder of your ${Item}'s curse to ${Target}.
 # - The curse will deal 25% damage as residual curse transfers.
+
+# - This is the total amount of Latex Kitty Curse you possess.
