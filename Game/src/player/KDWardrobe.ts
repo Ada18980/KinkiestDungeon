@@ -1435,8 +1435,12 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			scaleImage: true,
 		});
 
-		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.Palette || "", (pal) => {
+		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.metadata?.palette || C.Palette || "", (pal) => {
 			C.Palette = pal;
+			if (!C.metadata) {
+				C.metadata = DefaultOutfitMetadata();
+			}
+			C.metadata.palette = pal;
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer();
@@ -1477,7 +1481,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 
 
-	let palette = C.Palette;
+	let palette = C.metadata?.palette || C.Palette;
 	let o = {
 	};
 
@@ -1550,6 +1554,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				let newOut = DecompressB64(NewOutfit);
 				CharacterAppearanceRestore(C, newOut, C != KinkyDungeonPlayer, false);
 				let newParsed = JSON.parse(newOut);
+				C.metadata = newParsed?.metadata || DefaultOutfitMetadata();
 				if (newParsed?.metadata) {
 					C.Palette = newParsed.metadata.palette;
 				} else C.Palette = "";
@@ -1568,6 +1573,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				CharacterReleaseTotal(KinkyDungeonPlayer);
 				KinkyDungeonSetDress("Default", "Default", C, true);
 				C.Palette = "";
+				C.metadata = DefaultOutfitMetadata();
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer();
 				KDInitProtectedGroups(KinkyDungeonPlayer);
@@ -2105,6 +2111,7 @@ function KDLoadOutfitDirect(files: File[], Char: Character) {
 								CharacterAppearanceRestore(Char, decompressed, Char == KDSpeakerNPC, Char != KDSpeakerNPC);
 								let newParsed = JSON.parse(decompressed);
 								if (newParsed && newParsed.metadata) {
+									Char.metadata = newParsed.metadata;
 									Char.Palette = newParsed.metadata.palette;
 								}
 								CharacterRefresh(Char);
@@ -2133,13 +2140,11 @@ function KDLoadOutfitDirect(files: File[], Char: Character) {
  * @param C
  */
 function KDGetCharMetadata(C: Character): KDOutfitMetadata {
-	return {
-		name: C.Name,
-		palette: C.Palette,
-	};
+	let meta = C.metadata || DefaultOutfitMetadata();
+	meta.palette = C.Palette;
+	meta.name = C.Name;
+	return meta;
 }
-
-
 
 
 function KDDrawWardrobeToolsButtons(X, Y, C, Model) {

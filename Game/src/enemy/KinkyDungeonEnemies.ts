@@ -10531,6 +10531,19 @@ function KDGetEnemyTypeRep(enemy: enemy, faction: string): number {
 	return amount;
 }
 
+function GetOutfitMetadata(value: KDCollectionEntry | KDPersistentNPC | Character): KDOutfitMetadata {
+	if (value) {
+		return value.metadata || {
+			customColors: {},
+			palette: value.Palette,
+			//@ts-ignore
+			name: value.name || value.Name,
+		};
+	}
+
+	return null;
+}
+
 /**
  * @param enemy
  * @param force
@@ -10550,7 +10563,7 @@ function KDQuickGenNPC(enemy: entity, force: boolean) {
 		if (!enemyType.style) return; // Dont make one for enemies without styles
 		let NPC = null;
 		if (!KDNPCChar.get(id)) {
-			NPC = CharacterLoadNPC(id, KDEnemyName(enemy), value?.Palette);
+			NPC = LoadNPC(id, KDEnemyName(enemy),GetOutfitMetadata(value));
 			KDNPCChar.set(id, NPC);
 			KDNPCChar_ID.set(NPC, id);
 			value = value || KDGetPersistentNPC(enemy.id);

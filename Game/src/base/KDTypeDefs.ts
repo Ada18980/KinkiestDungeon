@@ -11,6 +11,7 @@ interface NamedAndTyped extends Named {
 interface KDOutfitMetadata {
 	name: string,
 	palette: string,
+	customColors: Record<string, Record<string, LayerFilter>>,
 }
 
 /** Kinky Dungeon Typedefs*/
@@ -2774,6 +2775,7 @@ interface KinkyDungeonSave {
 		default: KinkyDungeonDress,
 		poses: Record<string, boolean>,
 		Palette: string,
+		metadata: KDOutfitMetadata,
 
 
 		outfit: string,
@@ -4061,6 +4063,7 @@ interface KDCollectionEntry {
 
 	/** Optional NPC palette */
 	Palette?: string,
+	metadata: KDOutfitMetadata,
 
 	spawned?: boolean,
 

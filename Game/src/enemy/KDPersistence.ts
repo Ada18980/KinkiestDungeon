@@ -37,6 +37,8 @@ interface KDPersistentNPC {
 	bodystyle?: string,
 	facestyle?: string,
 	cosplaystyle?: string,
+
+	metadata: KDOutfitMetadata,
 	Palette?: string,
 
 	storedParty?: entity[],

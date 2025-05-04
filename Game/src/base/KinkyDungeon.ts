@@ -2021,7 +2021,9 @@ function KinkyDungeonRun() {
 					CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
 					let parsed = JSON.parse(appearance);
 					if (parsed.metadata) {
-						KinkyDungeonPlayer.Palette = parsed.metadata.palette;
+						let metadata: KDOutfitMetadata = parsed.metadata;
+						KinkyDungeonPlayer.Palette = metadata.palette;
+						KinkyDungeonPlayer.metadata = metadata;
 					}
 
 					CharacterRefresh(KinkyDungeonPlayer);
@@ -2035,7 +2037,9 @@ function KinkyDungeonRun() {
 					CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
 					let parsed = JSON.parse(appearance);
 					if (parsed.metadata) {
-						KinkyDungeonPlayer.Palette = parsed.metadata.palette;
+						let metadata: KDOutfitMetadata = parsed.metadata;
+						KinkyDungeonPlayer.Palette = metadata.palette;
+						KinkyDungeonPlayer.metadata = metadata;
 					}
 					CharacterRefresh(KinkyDungeonPlayer);
 				}
@@ -2204,6 +2208,7 @@ function KinkyDungeonRun() {
 						let appearanceFromSave = JSON.stringify(decodeSave.saveStat.appearance);
 						CharacterAppearanceRestore(KinkyDungeonPlayer, appearanceFromSave, false, false);
 						KinkyDungeonPlayer.Palette = decodeSave.saveStat.Palette;
+						KinkyDungeonPlayer.metadata = decodeSave.saveStat.metadata;
 						CharacterRefresh(KinkyDungeonPlayer);
 						UpdateModels(KinkyDungeonPlayer);
 						//KDInitProtectedGroups(KinkyDungeonPlayer);
@@ -2226,7 +2231,6 @@ function KinkyDungeonRun() {
 				return true;
 			}, true, 875, 650, 750, 64, TextGet("KinkyDungeonLoadFromFile") + ": " + KDSaveName, KDBaseWhite, ""
 		);
-
 		ElementPosition("saveInputField", 1250, 450, 1000, 230);
 	} else if (KinkyDungeonState == "LoadOutfit") {
 		DrawButtonVis(1275, 750, 350, 64, TextGet("KDWardrobeBackTo" + (StandalonePatched ? "Wardrobe" : "Menu")), KDBaseWhite, "");
@@ -4692,6 +4696,24 @@ function KDDrawLoadMenu() {
 		}, true, CombarXX + 210, YYstart - 5, 150, 45, TextGet("KDCloudSaves"), KDBaseWhite, undefined, "")
 	}
 
+	
+
+	DrawCheckboxKDEx(
+		"LoadoverrideOF", () => {
+			KDToggles.OverrideOutfit = !KDToggles.OverrideOutfit;
+			KDSaveToggles();
+			
+			// Dress the KDPreviewModel
+			ModelPreviewLoaded = false;
+			KinkyDungeonDressModelPreview();
+			return true;
+		}, true, CombarXX + 20, YY + 165 + 375 + 55, 64, 64, 
+		TextGet("KDToggleOverrideOutfitAbbr"), KDToggles.OverrideOutfit, false, KDTextWhite,
+	undefined, {
+
+	});
+
+
 	if (!KDLoadCloudGames) {
 		// Left button to switch to previous page
 		DrawButtonKDEx(`PreviousPage`, (_bdata) => {
@@ -4898,7 +4920,7 @@ function KDDrawLoadMenu() {
         YY += YYd;
     }
 	// Pastebox for code
-	ElementPosition("saveInputField", CombarXX + 215, YY + 165, 400, 300);
+	ElementPosition("saveInputField", CombarXX + 215, YY + 165 - 33, 400, 300 - 75);
 	let newValue = ElementValue("saveInputField");
 	// Load from Code button
 	DrawButtonKDEx("LoadFromCodeButton", () => {
@@ -5521,15 +5543,18 @@ function KinkyDungeonDressModelPreview() {
 	return new Promise((res, _rej) => {
 		KDPreviewModel = Object.assign({}, JSON.parse(JSON.stringify(KinkyDungeonPlayer)));
 		KDPreviewModel.ID++;
-		CharacterNaked(KDPreviewModel);
-		KDNaked = true;
-		if (loadedSaveforPreview.saveStat?.appearance) {
-			KDPreviewModel.Appearance = JSON.parse(JSON.stringify(loadedSaveforPreview.saveStat.appearance));
-			if (KDCurrentModels.get(KDPreviewModel))
-				KDCurrentModels.get(KDPreviewModel).Poses = loadedSaveforPreview.saveStat.poses;
-
-			UpdateModels(KDPreviewModel);
+		if (!KDToggles.OverrideOutfit) {
+			CharacterNaked(KDPreviewModel);
+			KDNaked = true;
+			if (loadedSaveforPreview.saveStat?.appearance) {
+				KDPreviewModel.Appearance = JSON.parse(JSON.stringify(loadedSaveforPreview.saveStat.appearance));
+				if (KDCurrentModels.get(KDPreviewModel))
+					KDCurrentModels.get(KDPreviewModel).Poses = loadedSaveforPreview.saveStat.poses;
+	
+				UpdateModels(KDPreviewModel);
+			}
 		}
+		
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
 		//setTimeout(() => {
 		DrawCharacter(KDPreviewModel, PIXIWidth, PIXIHeight, 0.1);
@@ -6593,6 +6618,7 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 		default: JSON.parse(JSON.stringify(KDGetDressList().Default)),
 		poses: JSON.parse(JSON.stringify(KDCurrentModels.get(KinkyDungeonPlayer).Poses)),
 		Palette: KinkyDungeonPlayer.Palette,
+		metadata: KinkyDungeonPlayer.metadata,
 
 		outfit: KDGameData.Outfit,
 		name: KDGameData.PlayerName,
@@ -6713,6 +6739,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 					KDGetDressList().Default = saveData.saveStat.default;
 				}
 				KinkyDungeonPlayer.Palette = saveData.saveStat.Palette;
+				KinkyDungeonPlayer.metadata = saveData.saveStat.metadata;
 			}
 
 			KDPathfindingCacheFails = 0;
@@ -6797,6 +6824,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 					KDGetDressList().Default = saveData.saveStat.default;
 					KDCurrentModels.get(KinkyDungeonPlayer).Poses = saveData.saveStat.poses;
 					KinkyDungeonPlayer.Palette = saveData.saveStat.Palette;
+					KinkyDungeonPlayer.metadata = saveData.saveStat.metadata;
 					UpdateModels(KinkyDungeonPlayer);
 				}
 			}

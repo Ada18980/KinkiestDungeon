@@ -3794,10 +3794,10 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 			let inv = inv2.item;
 			playerTags.set("Item_"+inv.name, true);
 
-			if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette || KinkyDungeonPlayer.Palette)
-				&& (KDToggles.ApplyPaletteRestraint && (outfit?.palette || KinkyDungeonPlayer.Palette || !KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
+			if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette || (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette))
+				&& (KDToggles.ApplyPaletteRestraint && (outfit?.palette || (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || !KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
 				inv.faction = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
-					|| KinkyDungeonPlayer.Palette || KDDefaultPalette;
+					|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDDefaultPalette;
 			}
 
 			if (KDRestraint(inv).Link)

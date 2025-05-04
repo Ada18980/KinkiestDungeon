@@ -1793,7 +1793,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 	KDFixPlayerClothes(
 		(KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
-		|| KinkyDungeonPlayer.Palette || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
+		|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
 
 	KinkyDungeonLoseJailKeys();
@@ -2514,6 +2514,6 @@ function KDApplyJailOutfit() {
 
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 	KDFixPlayerClothes((KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
-		|| KinkyDungeonPlayer.Palette || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
+		|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
 }

@@ -6,7 +6,16 @@ let CharacterAppearancePreviousEmoticon = null;
 function CharacterAppearanceSetDefault(C: Character): void {
 	C.Appearance = [];
 	C.Pose = [];
+	C.metadata = DefaultOutfitMetadata();
 	C.Palette = "";
+}
+
+function DefaultOutfitMetadata(): KDOutfitMetadata {
+	return {
+		customColors: {},
+		name: "",
+		palette: "",
+	};
 }
 
 /**

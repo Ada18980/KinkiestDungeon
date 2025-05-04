@@ -92,6 +92,7 @@ interface Character {
 	Appearance: Item[];
 	Pose: string[];
 	Palette: string;
+	metadata: KDOutfitMetadata,
 	HeightRatio?: number;
 	HeightModifier: number;
 	MemberNumber?: number;

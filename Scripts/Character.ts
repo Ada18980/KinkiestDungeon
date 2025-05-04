@@ -15,6 +15,7 @@ function CharacterReset(CharacterID: number): Character {
 		ID: CharacterID,
 		Name: "",
 		Palette: "",
+		metadata: DefaultOutfitMetadata(),
 		Appearance: [],
 		HeightModifier: 0,
 		Pose: [],
@@ -135,11 +136,34 @@ function CharacterNickname(C: Character): string {
  * @param NPCType - Archetype of the NPC
  * @returns The randomly generated NPC
  */
-function CharacterLoadNPC(id: number, Name: string, Palette?: string): Character {
+function CharacterLoadNPC(id: number, Name: string, Palette?: string, customColors?: Record<string, Record<string, LayerFilter>>): Character {
 	const CNew = CharacterReset(id);
 	CNew.Name = Name;
 	if (Palette)
 		CNew.Palette = Palette;
+	
+	CNew.metadata = DefaultOutfitMetadata();
+	CNew.metadata.palette = Palette || "";
+	CNew.metadata.customColors = customColors || {};
+	CNew.metadata.name = Name;
+	// Returns the new character
+	return CNew;
+
+}
+
+/**
+ * Loads an NPC into the character array. The appearance is randomized, and a type can be provided to dress them in a given style.
+ * @param NPCType - Archetype of the NPC
+ * @returns The randomly generated NPC
+ */
+function LoadNPC(id: number, Name: string, metadata: KDOutfitMetadata): Character {
+	const CNew = CharacterReset(id);
+	CNew.Name = Name;
+	if (metadata) {
+		for (let key in metadata) {
+			CNew[key] = metadata[key];
+		}
+	}
 	// Returns the new character
 	return CNew;
 

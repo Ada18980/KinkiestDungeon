@@ -499,6 +499,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			//if (KDOriginalValue) {
 			value2.customOutfit = LZString.compressToBase64(AppearanceItemStringify(KDSpeakerNPC.Appearance));
 			value2.Palette = KDSpeakerNPC.Palette;
+			value2.metadata = KDSpeakerNPC.metadata;
 
 			KDRefreshCharacter.set(KDSpeakerNPC, true);
 			//}
@@ -668,7 +669,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 
 	if (!KDNPCChar.get(value.id)) {
-		KDSpeakerNPC = CharacterLoadNPC(value.id, value.name, value.Palette);
+		KDSpeakerNPC = CharacterLoadNPC(value.id, value.name, value.Palette, value.metadata?.customColors);
 		KDNPCChar.set(value.id, KDSpeakerNPC);
 		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 		let oldstyle = KDNPCStyle.get(KDSpeakerNPC);

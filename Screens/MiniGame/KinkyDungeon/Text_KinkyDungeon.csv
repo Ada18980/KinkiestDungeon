@@ -67,7 +67,7 @@ KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 KDToggleExtraBuffRow,Allow two rows of buffs when collapsed
 KDToggleBackgrounds,Show Background Art
 KDToggleOptRender,Experimental Rendering (unstable)
-KDToggleHeadpats,Enable Heatpats
+KDToggleHeadpats,Enable Headpats
 KDToggleExtraTooltipHeight,Show (mostly) full tooltips
 KDToggleExtraTooltipCycle,Auto cycle through multipage tooltips
 KDToggleSoundOffWhenMin,Mute when Minimized
@@ -75,6 +75,7 @@ KDToggleBackgrounds,Show Background Art
 KDToggleRawDP,Show DP instead of %
 KDToggleOnlySelfQuickInv,Quick Inv only equips to self
 KDToggleOverrideOutfit,Override Outfit when Loading Save
+KDToggleOverrideOutfitAbbr,Override Outfit
 KDToggleSaveOutfit,Save Outfits within Save Files
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
