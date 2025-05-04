@@ -3789,7 +3789,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 					if ((KDToggles.ForcePalette || outfit?.palette || (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette))
 						&& (KDToggles.ApplyPaletteTransform
 							&& (outfit?.palette || (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette)
-								|| !KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
+								|| !KDDefaultPalette || GetPalette(KinkyDungeonPlayer, KDDefaultPalette)))) {
 						palette = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
 							|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDDefaultPalette;
 					}

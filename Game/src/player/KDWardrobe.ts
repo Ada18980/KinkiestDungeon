@@ -36,6 +36,7 @@ let KDModelListMax = 14;
 let KDModelListViewSkip = 7;
 
 let KDShowCharacterPalette = false;
+let KDCurrentCharacterPalettes : Record<string, Record<string, LayerFilter>> = null;
 
 
 let KDModelList_Categories_index = 1;
@@ -1401,6 +1402,46 @@ function KDCanForcePose(C: Character): boolean {
 	return C != KinkyDungeonPlayer;
 }
 
+let KDDefaultWardrobePalettes: Record<string, Record<string, LayerFilter>> = {
+	"Custom1": {
+		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8833333333333333,"brightness":1.5666666666666669,"red":4.216666666666667,"green":0.7166666666666667,"blue":0.7000000000000001,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.6833333333333333,"saturation":0,"contrast":2.55,"brightness":0.41666666666666663,"red":2.5333333333333337,"green":0.7666666666666666,"blue":0.8500000000000001,"alpha":1},
+	},
+	"Custom2": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1,"brightness":0.18333333333333335,"red":1.2,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1.2,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1.0980392156862746,"alpha":1},
+		Highlight: {"gamma":1.9,"saturation":0,"contrast":1,"brightness":1.5666666666666669,"red":1,"green":1,"blue":1.1,"alpha":1},
+	},
+	"Custom3": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.7333333333333334,"saturation":0,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
+	},
+	"Custom4": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,
+			"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":0.6333333333333334,"saturation":1,"contrast":0.6833333333333333,"brightness":0.6,"red":1.7999999999999998,"green":1.2333333333333334,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.6833333333333333,"saturation":0,"contrast":2.55,"brightness":0.41666666666666663,"red":2.5333333333333337,"green":0.7666666666666666,"blue":0.8500000000000001,"alpha":1},
+	},
+	"Custom5": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.7333333333333334,"saturation":0,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
+	},
+	"Custom6": {
+		Catsuit: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		DarkNeutral: {"gamma":1,"saturation":0,"contrast":1.0833333333333335,"brightness":0.7666666666666666,"red":1,"green":1,"blue":1,"alpha":1},
+		LightNeutral: {"gamma":1,"saturation":0.0,"contrast":1.0,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
+		Highlight: {"gamma":0.7333333333333334,"saturation":0,"contrast":2.3499999999999996,"brightness":0.8166666666666667,"red":1.7833333333333334,"green":0.9666666666666667,"blue":0.6,"alpha":1},
+	},
+};
+
 function KDDrawWardrobe(_screen: string, Character: Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
@@ -1423,19 +1464,27 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
 	}
 	if (KDShowCharacterPalette) {
+		if (!KDCurrentCharacterPalettes) {
+			KDCurrentCharacterPalettes = KDGetPalettes(C, true);
+			for (let entry of Object.entries(KDDefaultWardrobePalettes)) {
+				if (!KDCurrentCharacterPalettes[entry[0]]) {
+					KDCurrentCharacterPalettes[entry[0]] = Object.assign({}, entry[1]);
+				}
+			}
+		}
 		DrawCheckboxKDEx("", () => {
 			KDToggles.HideArmorWardrobe = !KDToggles.HideArmorWardrobe;
 			KDSaveToggles();
 			KinkyDungeonDressPlayer(C);
 			return true;
-		}, true, 800, 250, 64, 64,
+		}, true, 800, 55, 64, 64,
 		TextGet("KDVisualOpt_HideArmorWardrobe"), KDToggles.HideArmorWardrobe, false, KDBaseWhite, undefined, {
 			maxWidth: 350,
 			fontSize: 24,
 			scaleImage: true,
 		});
 
-		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.metadata?.palette || C.Palette || "", (pal) => {
+		KDDrawCustomPalettes(KDCurrentCharacterPalettes, 800, 200, KDPaletteWidth, 72, C.metadata?.palette || C.Palette || "", (pal) => {
 			C.Palette = pal;
 			if (!C.metadata) {
 				C.metadata = DefaultOutfitMetadata();
@@ -1447,6 +1496,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 		}, "KDSetCharacterPalette");
 	} else {
+		KDCurrentCharacterPalettes = null;
 		KDDrawModelList(720, C);
 	}
 
@@ -1485,9 +1535,9 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	let o = {
 	};
 
-	if (palette && KinkyDungeonFactionFilters[palette]) {
+	if (palette && GetPalette(C, palette)) {
 		o['filters'] = [
-			new PIXI.filters.AdjustmentFilter(KinkyDungeonFactionFilters[palette].Highlight),
+			new PIXI.filters.AdjustmentFilter(GetPalette(C, palette).Highlight),
 		];
 	}
 

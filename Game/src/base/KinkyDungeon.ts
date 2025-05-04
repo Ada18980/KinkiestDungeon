@@ -3427,13 +3427,13 @@ function KinkyDungeonRun() {
 				}
 
 
-				KDDrawPalettes(x, 250, w, scale, undefined, undefined);
+				KDDrawCustomPalettes(KDGetPalettes(KinkyDungeonPlayer), x, 250, w, scale, undefined, undefined);
 
 				let options = KDClothesToggles;
 
 				let ii = 0;
-				let spacing = KDCustomOptionsSpacing[KDToggleTab] || 70;
-				let size = KDCustomOptionsSize[KDToggleTab] || 64;
+				let spacing = KDCustomOptionsSpacing["ClothesToggles"] || 70;
+				let size = KDCustomOptionsSize["ClothesToggles"] || 64;
 				for (let o of options) {
 					if (o.name) {
 						DrawCheckboxKDEx("toggle" + o.name, () => {
@@ -3444,11 +3444,11 @@ function KinkyDungeonRun() {
 								KDSaveToggles();
 							}
 							return true;
-						}, true, x, 600 + ii * spacing, size, size,
+						}, true, x + 85, 948 - (spacing * Object.keys(options).length) + ii * spacing, size, size,
 						TextGet("KDToggle" + o.name),
 						KDToggles[o.name], false, KDBaseWhite, undefined, {
-							maxWidth: 350,
-							fontSize: 24,
+							maxWidth: 265,
+							fontSize: 18,
 							scaleImage: true,
 						});
 					}
@@ -7415,9 +7415,11 @@ function KDRefreshSleep() {
 
 let KDCustomOptionsSize = {
 	UI: 50,
+	"ClothesToggles": 48,
 };
 let KDCustomOptionsSpacing = {
 	UI: 60,
+	"ClothesToggles": 52,
 };
 
 function KDNonContextActions(mobile: boolean, textArea: boolean): boolean {

@@ -15,7 +15,7 @@ let KDAlternateInventoryScreens: {[_:string] : (selected: KDFilteredInventoryIte
 	},
 	ConfigPalette: (selected: KDFilteredInventoryItem, xOffset: number, yOffset: number, prefix: string) => {
 		let currentItem: item = selected.item;
-		KDDrawPalettes(1300, 250, KDPaletteWidth, 72,
+		KDDrawCustomPalettes(KDGetPalettes(KinkyDungeonPlayer), 1300, 250, KDPaletteWidth, 72,
 			currentItem?.forceFaction != undefined ? currentItem?.forceFaction || "" : "-1", (palette) => {
 
 			if (currentItem) {

@@ -5389,17 +5389,8 @@ function KDGetTargetRetType(x: number, y: number): string {
 
 let KDPIXIPaletteFilters: Map<string, PIXIFilter[]> = new Map();
 
-/**
- * @param x
- * @param y
- * @param w
- * @param [scale]
- * @param [selected]
- * @param [callback]
- * @parap [text]
- * @param [deffault]
- */
-function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, selected: string, callback?: (s: string) => void, text: string = "KDSelectPalette", deffault?: string) {
+function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilter>>, 
+	x: number, y: number, w: number, scale: number = 72, selected: string, callback?: (s: string) => void, text: string = "KDSelectPalette", deffault?: string) {
 	if (selected == undefined) selected = (deffault != undefined ? deffault : KDDefaultPalette);
 	let XX = x;
 	let YY = y;
@@ -5409,7 +5400,7 @@ function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, sel
 	let zero: [string, Record<string, LayerFilter>] = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
 	DrawTextFitKD(TextGet(text), x + scale*(0.5 + w)/2, y - 36, scale*w, KDBaseWhite, KDTextGray0, 20);
 
-	for (let value of [zero, ...Object.entries(KinkyDungeonFactionFilters)]) {
+	for (let value of [zero, ...Object.entries(palettes)]) {
 		if (!KDPIXIPaletteFilters.get(value[0]))
 			KDPIXIPaletteFilters.set(value[0],
 				[
@@ -5467,7 +5458,9 @@ function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, sel
 			zIndex: -10,
 		}
 		);
-		DrawTextFitKD(TextGet("KDPalette" + value[0]), XX + scale/2, YY + scale - 12, scale, KDBaseWhite, KDTextGray0, 18);
+		DrawTextFitKD(HasText("KDPalette" + value[0])
+			? TextGet("KDPalette" + value[0])
+			: (value[0]), XX + scale/2, YY + scale - 12, scale, KDBaseWhite, KDTextGray0, 18);
 		column++;
 		if (column >= w) {
 			column = 0;
@@ -5478,6 +5471,21 @@ function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, sel
 			XX += spacing;
 		}
 	}
+}
+
+
+/**
+ * @param x
+ * @param y
+ * @param w
+ * @param [scale]
+ * @param [selected]
+ * @param [callback]
+ * @parap [text]
+ * @param [deffault]
+ */
+function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, selected: string, callback?: (s: string) => void, text: string = "KDSelectPalette", deffault?: string) {
+	KDDrawCustomPalettes(KinkyDungeonFactionFilters, x, y, w, scale, selected, callback, text, deffault);
 }
 
 function KDGetOutlineFilter(color: number, alpha: number, quality: number, thickness: number): PIXIFilter {

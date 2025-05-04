@@ -1096,6 +1096,90 @@ function KDUpdateTempPoses(Character: Character) {
 	}
 }
 
+/**
+ * 
+ * @param C character to get palettes for (optional)
+ * @param safe safe = deep copy, otherwise expecting reference only (no modify)
+ */
+function KDGetPalettes(C: Character, safe?: boolean, includeDefault: boolean = true): Record<string, Record<string, LayerFilter>> {
+	if (C?.metadata?.customColors) {
+		let newPalettes: Record<string, Record<string, LayerFilter>> = {};
+		for (let palette in KinkyDungeonFactionFilters) {
+			if (safe) {
+				newPalettes[palette] = {};
+				for (let filter in KinkyDungeonFactionFilters[palette]) {
+					newPalettes[palette][filter] = Object.assign({}, KinkyDungeonFactionFilters[palette][filter]);
+				}
+			} else {
+				newPalettes[palette] = KinkyDungeonFactionFilters[palette];
+			}
+			
+		}
+		for (let palette in C.metadata.customColors) {
+			if (safe) {
+				newPalettes[palette] = {};
+				for (let filter in C.metadata.customColors[palette]) {
+					newPalettes[palette][filter] = Object.assign({}, C.metadata.customColors[palette][filter]);
+				}
+			} else {
+				newPalettes[palette] = C.metadata.customColors[palette];
+			}
+		}
+		
+		if (includeDefault) {
+			for (let palette in KDDefaultWardrobePalettes) {
+				if (newPalettes[palette]) continue;
+				newPalettes[palette] = {};
+				for (let filter in KDDefaultWardrobePalettes[palette]) {
+					newPalettes[palette][filter] = Object.assign({}, KDDefaultWardrobePalettes[palette][filter]);
+				}
+				
+			}
+		}
+
+		return newPalettes;
+	}
+
+	if (safe || includeDefault) {
+		let newPalettes: Record<string, Record<string, LayerFilter>> = {};
+		for (let palette in KinkyDungeonFactionFilters) {
+			if (safe) {
+				newPalettes[palette] = {};
+				for (let filter in KinkyDungeonFactionFilters[palette]) {
+					newPalettes[palette][filter] = Object.assign({}, KinkyDungeonFactionFilters[palette][filter]);
+				}
+			} else {
+				newPalettes[palette] = KinkyDungeonFactionFilters[palette];
+			}
+			
+		}
+		if (includeDefault) {
+			for (let palette in KDDefaultWardrobePalettes) {
+				if (newPalettes[palette]) continue;
+				newPalettes[palette] = {};
+				if (safe) {
+					newPalettes[palette] = {};
+					for (let filter in KDDefaultWardrobePalettes[palette]) {
+						newPalettes[palette][filter] = Object.assign({}, KDDefaultWardrobePalettes[palette][filter]);
+					}
+				} else {
+					newPalettes[palette] = KDDefaultWardrobePalettes[palette];
+				}
+				
+			}
+		}
+		return newPalettes;
+	}
+
+	return KinkyDungeonFactionFilters;
+}
+
+function GetPalette(C: Character, palette: string): Record<string, LayerFilter> {
+	if (C?.metadata?.customColors && C.metadata.customColors[palette]) {
+		return C.metadata.customColors[palette];
+	}
+	return KinkyDungeonFactionFilters[palette];
+}
 
 function KDGetFactionFilters(faction: string): Record<string, LayerFilter> {
 	if (KinkyDungeonFactionFilters[faction])
