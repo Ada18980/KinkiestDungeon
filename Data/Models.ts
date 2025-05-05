@@ -2092,7 +2092,7 @@ function UpdateModels(C: Character, Xray?: string[], customFaction?: string) {
 			let filters = A.Filters;
 
 			if (customFaction && clothes.factionFilters && GetPalette(C, customFaction)) {
-				filters = structuredClone(A.Filters); // clone to avoid poisoning original Appearance array
+				filters = structuredClone(A.Filters) || {}; // clone to avoid poisoning original Appearance array
 				for (let f of Object.entries(clothes.factionFilters)) {
 					let faction = customFaction;
 					if (GetPalette(C, faction)[f[1].color]) {

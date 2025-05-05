@@ -3255,6 +3255,9 @@ function KDDressWardrobeChar(C: Character, forcedress?: boolean) {
 		//let selectedPalette = C.metadata?.palette || C.Palette;
 		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
 			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[KDNPCChar_ID.get(KDSpeakerNPC) + ''] : undefined,
-		undefined, undefined, undefined, !forcedress);
+		undefined, 
+		KDGameData.NPCRestraints
+			? KDGetNPCRestraintTags(KDGameData.NPCRestraints[KDNPCChar_ID.get(KDSpeakerNPC) + ''], undefined, undefined, false, false)
+			: undefined, undefined, !forcedress);
 	}
 }
