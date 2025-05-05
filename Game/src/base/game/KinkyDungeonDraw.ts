@@ -5398,7 +5398,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 	let column = 0;
 	let spacing = 80;
 	let zero: [string, Record<string, LayerFilter>] = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
-	DrawTextFitKD(TextGet(text), x + scale*(0.5 + w)/2, y - 36, scale*w, KDBaseWhite, KDTextGray0, 20);
+	DrawTextFitKD(TextGet(text), x + scale*(0.25), y - 36, scale*w, KDBaseWhite, KDTextGray0, 20);
 
 	for (let value of [zero, ...Object.entries(palettes)]) {
 		if (!KDPIXIPaletteFilters.get(paletteID + value[0]))

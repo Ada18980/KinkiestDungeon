@@ -304,6 +304,7 @@ let KDToggles = {
 	ExtraBuffRow: true,
 };
 
+
 let KDToggleCategories = {
 	Headpats: "Clothes",
 	ExtraBuffRow: "UI",

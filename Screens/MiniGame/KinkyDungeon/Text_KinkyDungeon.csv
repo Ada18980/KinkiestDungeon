@@ -31144,6 +31144,10 @@ KDBackupOutfits,Backup
 KDLoadOutfits,Restore
 KDSetPalette,Extra Options
 KDVisualOpt_HideArmorWardrobe,Preview without Armor
+KDVisualOpt_PreviewRestraints_Latex,Preview Latex
+KDVisualOpt_PreviewRestraints_Metal,Preview Metal
+KDVisualOpt_PreviewRestraints_Leather,Preview Leather
+KDVisualOpt_PreviewRestraints_Rope,Preview Rope
 
 KinkyDungeonStatMC_Mage,"Wizard"
 

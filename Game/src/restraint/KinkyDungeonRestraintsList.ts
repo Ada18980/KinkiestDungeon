@@ -1768,7 +1768,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Asset: "KittyGag", gag: 0.5, Color: ["#4EA1FF", "#4EA1FF", "#4EA1FF"], Group: "ItemMouth",
 		AssetGroup: "ItemMouth3", power: 6, weight: 6,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.04, "Remove": 0.1, Pick: 0.0},
-		Model: "ShinyLatexMuzzle", //Model: "GagLatexMute",
+		Model: "ShinyLatexMuzzleRestraint", //Model: "GagLatexMute",
 		sfxGroup: "Rubber",
 		Filters: {
 			Gag: {"gamma":1,"saturation":1,"contrast":1.4166666666666665,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
@@ -5067,7 +5067,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		maxwill: 0.6, enemyTags: {"dragonRestraints":6, forceAntiMagic: -100}, playerTags: {"ItemFeetFull":-2}, minLevel: 7, allFloors: true, shrine: ["BallGags", "Leather", "Latex" , "Gags"]},
 	{inventory: true, name: "DragonMuzzleGag", debris: "Belts", LinkableBy: [...KDMuzzleGagLink], renderWhenLinked: [...KDMuzzleGagLink], gag: 0.3, Asset: "StitchedMuzzleGag", Color: "#9B1818", Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 7,
 		weight: 6,
-		Model: "ShinyLatexMuzzle",
+		Model: "ShinyLatexMuzzleRestraint",
 		Filters: {
 			Gag: {"gamma":1,"saturation":1,"contrast":1.4166666666666665,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			Rim: {"gamma":0.6166666666666667,"saturation":1.0166666666666666,"contrast":0.3333333333333333,"brightness":1.7999999999999998,"red":0.8666666666666667,"green":0.23333333333333334,"blue":0.43333333333333335,"alpha":1},

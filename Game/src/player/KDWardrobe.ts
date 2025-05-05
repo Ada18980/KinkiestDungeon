@@ -1292,6 +1292,9 @@ let KDDefaultWardrobePalettes: Record<string, Record<string, LayerFilter>> = {
 	},
 };
 
+
+let KDWardrobePreviewRestraints = "";
+
 function KDDrawWardrobe(_screen: string, Character: Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
@@ -1314,37 +1317,63 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
 	}
 	if (KDShowCharacterPalette) {
-		if (!KDCurrentCharacterPalettes) {
-			KDCurrentCharacterPalettes = KDGetPalettes(C, true);
-			for (let entry of Object.entries(C == KinkyDungeonPlayer ? KDDefaultWardrobePalettes : (
+		KDCurrentCharacterPalettes = KDGetPalettes(C, true, true, 
+			C == KinkyDungeonPlayer ? KDDefaultWardrobePalettes : (
 				(KinkyDungeonPlayer.metadata?.customColors) ? Object.assign(Object.assign({}, KDDefaultWardrobePalettes), 
 				KinkyDungeonPlayer.metadata.customColors) : KDDefaultWardrobePalettes
-			))) {
-				if (!KDCurrentCharacterPalettes[entry[0]]) {
-					KDCurrentCharacterPalettes[entry[0]] = Object.assign({}, entry[1]);
-				}
-			}
-		}
-		DrawCheckboxKDEx("", () => {
+			)
+		);
+		
+		
+		
+		let YY = 55
+		let size = 48;
+		let spacing = 50;
+		DrawCheckboxKDEx("HideArmorWardrobe", () => {
 			KDToggles.HideArmorWardrobe = !KDToggles.HideArmorWardrobe;
 			KDSaveToggles();
 			KDRefreshCharacter.set(C, true);
 			KDDressWardrobeChar(C);
 			return true;
-		}, true, 800, 55, 64, 64,
+		}, true, 750, YY, size, size,
 		TextGet("KDVisualOpt_HideArmorWardrobe"), KDToggles.HideArmorWardrobe, false, KDBaseWhite, undefined, {
 			maxWidth: 350,
 			fontSize: 24,
 			scaleImage: true,
-		});
+		}); YY += spacing;
+		YY = 55
+		size = 30;
+		spacing = 32;
+		let previewTypes = ["Latex", "Leather", "Metal", "Rope"];
+		for (let preview of previewTypes) {
+			DrawCheckboxKDEx("PreviewRestraints" + preview, () => {
+				if (KDWardrobePreviewRestraints == preview) {
+					KDWardrobePreviewRestraints = "";
+				} else {
+					KDWardrobePreviewRestraints = preview;
+				}
+				KDRefreshCharacter.set(C, true);
+				KDDressWardrobeChar(C);
+				return true;
+			}, true, 1150, YY, size, size,
+			TextGet("KDVisualOpt_PreviewRestraints_" + preview), KDWardrobePreviewRestraints == preview, 
+			false, KDBaseWhite, undefined, {
+				maxWidth: 350,
+				fontSize: Math.max(24, size/2),
+				scaleImage: true,
+			}); YY += spacing;
+		}
+
+
+
 
 		let selectedPalette = C.metadata?.palette || C.Palette || "";
-		let palette = GetPalette(C, selectedPalette);
+		let palette = GetPalette(C, selectedPalette, false, true);
 		let palettelayer = KDSelectedPaletteLayer;
 		let pid = C.ID + "_";
 	
 		KDDrawCustomPalettes(KDCurrentCharacterPalettes, pid,
-			800, 200, KDPaletteWidth, 72, 
+			750, 200, KDPaletteWidth, 72, 
 			selectedPalette, (pal) => {
 			C.Palette = pal;
 			if (!C.metadata) {
@@ -1405,6 +1434,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			DrawButtonKDEx("KDResetAllLayers", (_bdata) => {
 				if (C.metadata?.customColors[selectedPalette]) {
 					delete C.metadata.customColors[selectedPalette];
+					delete KDCurrentCharacterPalettes[selectedPalette];
 					KDRefreshCharacter.set(C, true);
 					KDDressWardrobeChar(C);
 					
@@ -1463,6 +1493,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					C.metadata.customColors[selectedPalette][palettelayer] = palette[palettelayer];
 				} else {
 					delete C.metadata.customColors[selectedPalette];
+					delete KDCurrentCharacterPalettes[selectedPalette];
 				}
 				for (let palette in C.metadata.customColors) {
 					// finally update
@@ -1475,6 +1506,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		if (temporary || temporaryNoLayer) {
 			if (palette && Object.values(palette).length == 0) {
 				delete C.metadata.customColors[selectedPalette];
+				delete KDCurrentCharacterPalettes[selectedPalette];
 			}
 		}
 		
@@ -3059,8 +3091,39 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	return res;
 }
 
+let KDWardrobePreviewRestraintsList: Record<string, Record<string, NPCRestraint>> = {
+	Latex: {
+		OuterGag: {
+			lock: "",
+			id: 1,
+			name: "LatexOTNGagHeavy",
+		},
+	},
+	Leather: {
+
+	},
+	Metal: {
+
+	},
+	Rope: {
+
+	},
+}
+
+function KDGetPreviewRestraints(preview: string): Record<string, NPCRestraint> {
+	return KDWardrobePreviewRestraintsList[preview];
+}
+
 function KDDressWardrobeChar(C: Character) {
 	KinkyDungeonCheckClothesLoss = true;
+	if (KinkyDungeonState == "Wardrobe" && KDWardrobePreviewRestraints) {
+		// show with preview restraints
+		let selectedPalette = C.metadata?.palette || C.Palette || "";
+		KinkyDungeonDressPlayer(C, false, false, 
+			KDGetPreviewRestraints(KDWardrobePreviewRestraints), undefined, undefined,
+			selectedPalette, true);
+		return;
+	}
 	if (C != KDSpeakerNPC || !KDShowCharacterPalette) {
 		KinkyDungeonDressPlayer(C);
 	} else if (KDNPCChar_ID.get(KDSpeakerNPC)) {
