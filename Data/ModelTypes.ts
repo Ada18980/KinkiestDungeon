@@ -88,6 +88,8 @@ interface Model extends Namable {
 	Filters?: Record<string, LayerFilter>,
 	/** Color definition */
 	Properties?: Record<string, LayerPropertiesType>,
+	/** faction definition */
+	factionFilters?: Record<string, FactionFilterDef>,
 	/** Hardcoded Lock Type */
 	LockType?: string,
 	/** Hardcoded body filters */

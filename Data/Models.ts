@@ -133,7 +133,7 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string, Properties?: Record<string, LayerPropertiesType>) {
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string, Properties?: Record<string, LayerPropertiesType>, factionFilters?: Record<string, FactionFilterDef>) {
 		let mod: Model = JSON.parse(JSON.stringify(Model));
 		if (Filters) {
 			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
@@ -141,9 +141,13 @@ class ModelContainer {
 		if (Properties) {
 			mod.Properties = JSON.parse(JSON.stringify(Properties)) || mod.Properties;
 		}
+		if (factionFilters) {
+			mod.factionFilters = JSON.parse(JSON.stringify(factionFilters)) || mod.factionFilters;
+		}
 		if (LockType) {
 			mod.LockType = JSON.parse(JSON.stringify(LockType)) || mod.LockType;
 		}
+		
 		this.Models.set(Model.Name, mod);
 	}
 
@@ -2010,7 +2014,7 @@ function IsModelLost(C: Character, Name: string) : boolean {
 }
 
 
-function UpdateModels(C: Character, Xray?: string[]) {
+function UpdateModels(C: Character, Xray?: string[], customFaction?: string) {
 	let MC: ModelContainer = KDCurrentModels.get(C);
 	if (!MC) return;
 	MC.Models = new Map();
@@ -2083,7 +2087,41 @@ function UpdateModels(C: Character, Xray?: string[]) {
 		if (A.Model
 			&& !A.Model.RemovePoses?.some((removePose) => {return poses[removePose];})
 			) {
-			MC.addModel(A.Model, A.Filters, A.Property?.LockedBy, A.Properties);
+
+			let clothes = A.Model;
+			let filters = A.Filters;
+
+			if (customFaction && clothes.factionFilters && GetPalette(C, customFaction)) {
+				filters = structuredClone(A.Filters); // clone to avoid poisoning original Appearance array
+				for (let f of Object.entries(clothes.factionFilters)) {
+					let faction = customFaction;
+					if (GetPalette(C, faction)[f[1].color]) {
+						if (f[1].override) {
+							filters[f[0]] = GetPalette(C, faction)[f[1].color];
+						} else {
+							let origFilters = filters[f[0]];
+							//@ts-ignore
+							if (!filters[f[0]]) filters[f[0]] = {};
+							filters[f[0]].saturation = 0;
+							filters[f[0]].contrast = (origFilters)
+								? origFilters.contrast : 1;
+							filters[f[0]].gamma = (origFilters)
+								? origFilters.gamma : 1;
+							filters[f[0]].brightness = (origFilters)
+								? origFilters.brightness : 1;
+							filters[f[0]].red = GetPalette(C, faction)[f[1].color].red;
+							filters[f[0]].blue = GetPalette(C, faction)[f[1].color].blue;
+							filters[f[0]].green = GetPalette(C, faction)[f[1].color].green;
+						}
+						if (f[1].desaturate) {
+							filters[f[0]].saturation = 0;
+						}
+					}
+				}
+			}
+
+
+			MC.addModel(A.Model, filters, A.Property?.LockedBy, A.Properties, A.factionFilters);
 		}
 	}
 

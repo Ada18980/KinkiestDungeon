@@ -28723,6 +28723,9 @@ KDDiffTab_Challenge,Challenge Settings
 
 KinkyDungeonChallenge,Challenge Settings:
 
+KDColorPickerPalette,Palette
+KDPaletteColorPickerInfo,Pick a palette in Extra Options
+KDPaletteColorPickerInfo2,Open Extra Options to preview
 KDColorPickerSimple,Simple
 KDColorPickerAdvanced,Advanced
 KDColorPickerProperties,Expert Tools
@@ -32176,7 +32179,11 @@ KDLatexKittyCurseEffectFull2,"The curse will deal 25% damage as residual curse t
 
 KinkyDungeonBuffLatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.
 
+KDPaletteLayer_None,None
 KDPaletteLayer_Highlight,Highlights
 KDPaletteLayer_Catsuit,Catsuit
 KDPaletteLayer_DarkNeutral,Dark
 KDPaletteLayer_LightNeutral,Light
+
+KDWardrobeOverridePaletteLayer,Override Brightness
+KDWardrobeDesaturatePaletteLayer,Desaturate

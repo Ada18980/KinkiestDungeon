@@ -53,10 +53,11 @@ function CharacterAppearanceStringify(C: Character, metadata : KDOutfitMetadata)
 	});
 }
 
-function AppearanceItemStringify(Item: any[]): string {
+function AppearanceItemStringify(Item: Item[]): string {
 	for (let r of Item) {
 		if (r.Model?.Filters) r.Filters = r.Model.Filters;
 		if (r.Model?.Properties) r.Properties = r.Model.Properties;
+		if (r.Model?.factionFilters) r.factionFilters = r.Model.factionFilters;
 	}
 	return JSON.stringify(Item, (key, value) => {
 		if (key === "Asset") {
@@ -80,9 +81,11 @@ function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: b
 	let newAppearance = AppearanceItemParse(parsed?.metadata ? parsed.appearance : backup);
 	if (!clothesOnly) {
 		C.Appearance = newAppearance;
+		/** breaks the link */
+		KDRefreshSelectedModel(C);
 		return;
 	}
-	let finalAppearance = [];
+	let finalAppearance: Item[] = [];
 	for (let item of newAppearance) {
 		if (noProtected || !KDModelIsProtected(item.Model)) {
 			finalAppearance.push(item);
@@ -95,10 +98,23 @@ function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: b
 			}
 		}
 	C.Appearance = finalAppearance;
+	/** breaks the link */
+	KDRefreshSelectedModel(C);
+	
 }
 
-function AppearanceItemParse(stringified: string): any[] {
-	let ret: any[] = JSON.parse(stringified, (key, value) => {
+function KDRefreshSelectedModel(C: Character) {
+	if (KDSelectedModel) {
+		if (KDCurrentModels.get(C).Models.has(KDSelectedModel.Name)) {
+			KDSelectedModel = C.Appearance.find((value) => {
+				return value.Model.Name == KDSelectedModel.Name;
+			})?.Model;
+		} else KDSelectedModel = null;
+	}
+}
+
+function AppearanceItemParse(stringified: string): Item[] {
+	let ret: Item[] = JSON.parse(stringified, (key, value) => {
 		if (key === "Model" && ModelDefs[value]) {
 			return JSON.parse(JSON.stringify(ModelDefs[value]));
 		}
@@ -112,6 +128,7 @@ function AppearanceItemParse(stringified: string): any[] {
 	for (let r of ret) {
 		if (r.Filters && r.Model && r.Model.Name) r.Model.Filters = r.Filters;
 		if (r.Properties && r.Model && r.Model.Name) r.Model.Properties = r.Properties;
+		if (r.factionFilters && r.Model && r.Model.Name) r.Model.factionFilters = r.factionFilters;
 	}
 	return ret;
 }

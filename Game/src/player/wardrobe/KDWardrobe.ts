@@ -22,6 +22,7 @@ let GenericPaletteLayerSprites = {
 	DarkNeutral: KinkyDungeonRootDirectory + "UI/greyColor.png",
 	LightNeutral: KinkyDungeonRootDirectory + "UI/greyColorLight.png",
 	Catsuit: KinkyDungeonRootDirectory + "UI/greyColorCatsuit.png",
+	None: KinkyDungeonRootDirectory + "UI/X.png",
 };
 
 let ColorPickerFilterCode: Record<string, string> = {
@@ -390,7 +391,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 							KDChangeWardrobe(C);
 							if (!Model.Properties) Model.Properties = {};
 							Model.Properties[KDCurrentLayer] = Object.assign({}, parsed);
-							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+							Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+							UpdateModels(C);
 							KDRefreshProps = true;
 							lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 							ForceRefreshModels(C);
@@ -422,7 +424,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 							Model.Properties[KDCurrentLayer].NoOverride = parsed.NoOverride;
 							Model.Properties[KDCurrentLayer].HideOverridden = parsed.HideOverridden;
 							Model.Properties[KDCurrentLayer].YScale = parsed.YScale;
-							KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+							Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+							UpdateModels(C);
 							KDRefreshProps = true;
 						}
 					} catch (err) {
@@ -497,7 +500,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 								if (!Model.Properties[KDCurrentLayer])
 									Model.Properties[KDCurrentLayer] = Object.assign({}, KDProps);
 								Model.Properties[KDCurrentLayer][field] = parsed;
-								KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+								Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+								UpdateModels(C);
 								lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
 								ForceRefreshModels(C);
 							}
@@ -540,7 +544,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 					if (!Model.Filters)
 						Model.Filters = {};
 					Model.Filters[KDCurrentLayer] = Object.assign({}, parsed);
-					KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+					Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+					UpdateModels(C);
 				}
 			},
 			(parsed) => {
@@ -557,7 +562,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				Model.Filters[KDCurrentLayer].alpha = parsed.alpha;
 				Model.Filters[KDCurrentLayer].contrast = parsed.contrast;
 				Model.Filters[KDCurrentLayer].saturation = parsed.saturation;
-				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				UpdateModels(C);
 			},
 			(key) => {
 				let force = false;
@@ -574,7 +580,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 					Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 3;
 				}
 
-				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				UpdateModels(C);
 				let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
 				let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
@@ -601,7 +608,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				Model.Filters[KDCurrentLayer].brightness = 1;
 				if (Model.Filters[KDCurrentLayer].saturation == 1 || !Model.Filters[KDCurrentLayer].saturation)
 					Model.Filters[KDCurrentLayer].saturation = 0;
-				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				UpdateModels(C);
 				let rr = Math.round(Model.Filters[KDCurrentLayer].red/5 * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
 				let gg = Math.round(Model.Filters[KDCurrentLayer].green/5 * 255).toString(16);
@@ -621,7 +629,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				if (!Model.Filters[KDCurrentLayer])
 					Model.Filters[KDCurrentLayer] = Object.assign({}, KDColorSliders);
 				Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
-				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				UpdateModels(C);
 				let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
 				let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
@@ -648,8 +657,35 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				Model.Filters[KDCurrentLayer].red = r;
 				Model.Filters[KDCurrentLayer].green = g;
 				Model.Filters[KDCurrentLayer].blue = b;
-				KDCurrentModels.get(C).Models.set(Model.Name, JSON.parse(JSON.stringify(Model)));
-			}, !!TestMode
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				
+				UpdateModels(C);
+			}, (key, override, desaturate) => {
+				KDChangeWardrobe(C);
+				if (key == "None") {
+					if (Model.factionFilters) {
+						if (Model.factionFilters[KDCurrentLayer]) {
+							delete Model.factionFilters[KDCurrentLayer];
+							if (Object.values(Model.factionFilters).length == 0) {
+								delete Model.factionFilters;
+							}
+						}
+					}
+				} else {
+					if (!Model.factionFilters) {
+						Model.factionFilters = {};
+					}
+					Model.factionFilters[KDCurrentLayer] = {color: key, override: override, desaturate: desaturate};
+				}
+				
+				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
+				lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+				ForceRefreshModels(C);
+				UpdateModels(C);
+			},
+			C?.metadata?.palette || C.Palette || "", C?.ID + "_",
+			Model.factionFilters ? Model.factionFilters[KDCurrentLayer] : undefined,
+			!!TestMode,
 		).YY;
 	}
 
@@ -658,20 +694,32 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 
 	DrawButtonKDEx("tab_ColorPickerSimple", (_b) => {
 		KDToggles.SimpleColorPicker = true;
+		KDToggles.PaletteColorPicker = false;
 		KDPropsSlider = false;
 		return true;
-	}, true, X - 240, YY + 40, 190, 30, TextGet("KDColorPickerSimple"), KDBaseWhite, undefined, undefined, undefined,
-	KDPropsSlider || !KDToggles.SimpleColorPicker, KDButtonColor);
+	}, true, X - 240, YY + 40, 140, 30, TextGet("KDColorPickerSimple"), 
+		KDBaseWhite, undefined, undefined, undefined,
+		KDToggles.PaletteColorPicker || KDPropsSlider || !KDToggles.SimpleColorPicker, KDButtonColor);
+	DrawButtonKDEx("tab_ColorPickerPalette", (_b) => {
+		KDToggles.PaletteColorPicker = true;
+		KDPropsSlider = false;
+		return true;
+	}, true, X - 240 + 150, YY + 40, 140, 30, 
+	TextGet("KDColorPickerPalette"), KDBaseWhite, undefined, undefined, undefined,
+	KDPropsSlider || !KDToggles.PaletteColorPicker, 
+	(Model.factionFilters && Model.factionFilters[KDCurrentLayer]) ? KDTextGray3 : KDButtonColor);
 	DrawButtonKDEx("tab_ColorPickerAdvanced", (_b) => {
 		KDToggles.SimpleColorPicker = false;
+		KDToggles.PaletteColorPicker = false;
 		KDPropsSlider = false;
 		return true;
-	}, true, X - 240 + 200, YY + 40, 190, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
-	KDPropsSlider || KDToggles.SimpleColorPicker, KDButtonColor);
+	}, true, X - 240 + 300, YY + 40, 140, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
+	KDToggles.PaletteColorPicker || KDPropsSlider || KDToggles.SimpleColorPicker, KDButtonColor);
 	DrawButtonKDEx("tab_ColorPickerProperties", (_b) => {
 		KDPropsSlider = true;
+		KDToggles.PaletteColorPicker = false;
 		return true;
-	}, true, X - 240 + 400, YY + 40, 190, 30, TextGet("KDColorPickerProperties"), KDBaseWhite, undefined, undefined, undefined,
+	}, true, X - 240 + 450, YY + 40, 140, 30, TextGet("KDColorPickerProperties"), KDBaseWhite, undefined, undefined, undefined,
 	!KDPropsSlider, KDButtonColor);
 
 
@@ -1166,6 +1214,7 @@ function KDDrawModelList(X: number, C: Character) {
 				KDSelectedModel = C.Appearance.find((value) => {
 					return value.Model.Name == sublevel;
 				})?.Model;
+				KDModelList_Sublevel_index = index_sub;
 			}
 		}
 		// KDCurrentModels.get(KinkyDungeonPlayer).Models.has(model) ? KDBaseWhite : "#888888", "");
@@ -1619,7 +1668,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KDOriginalValue = KDOutfitOriginalStore[KDCurrentOutfit] || "";
 				KinkyDungeonSetDress("None", "None", C, true);
 				KDRefreshCharacter.set(C, true);
-				KinkyDungeonDressPlayer(C, true, false, undefined, undefined, undefined, undefined, undefined, true);
+				KinkyDungeonDressPlayer(C, true, false, undefined, undefined, undefined, C.metadata?.palette || C.Palette, undefined, 
+					true);
 				let newOut = DecompressB64(NewOutfit);
 				CharacterAppearanceRestore(C, newOut, C != KinkyDungeonPlayer, false);
 				let newParsed = JSON.parse(newOut);
@@ -1631,7 +1681,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KDInitProtectedGroups(C);
 				KDRefreshCharacter.set(C, true);
 				KinkyDungeonDressPlayer(C, true, undefined, undefined, undefined,
-					undefined, undefined, true
+					undefined, C.metadata?.palette || C.Palette, true
 				);
 			} else if (C == KinkyDungeonPlayer) {
 				KDGetDressList().Default = KinkyDungeonDefaultDefaultDress;
@@ -1714,7 +1764,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KinkyDungeonSetDress("Bikini", "Bikini", C, true);
 			} else
 				KinkyDungeonSetDress("None", "None", C, true);
-			KinkyDungeonDressPlayer(C, true, false, undefined, undefined, undefined, undefined, undefined, true);
+			KinkyDungeonDressPlayer(C, true, false, undefined, undefined, 
+				undefined, C.metadata?.palette || C.Palette, undefined, true);
 			if (C == KinkyDungeonPlayer) {
 				KDInitProtectedGroups(C);
 				KinkyDungeonConfigAppearance = true;
@@ -1852,6 +1903,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					}
 					KDRefreshCharacter.set(KDSpeakerNPC, true);
 					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+					/** breaks the link */
+					KDRefreshSelectedModel(KDSpeakerNPC);
 				}
 				return true;
 			} else {
@@ -1902,6 +1955,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 							Lost: false,
 							Filters: a.Model.Filters,
 							Properties: a.Model.Properties,
+							factionFilters: a.Model.factionFilters,
 						},);
 					}
 				}
@@ -1921,7 +1975,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 							override: true,
 							Filters: a.Model.Filters,
 							Properties: a.Model.Properties,
-							factionFilters: {},
+							factionFilters: a.Model.factionFilters || {},
 							inheritFilters: false,
 						},);
 					}
@@ -1944,6 +1998,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 							Lost: false,
 							Filters: a.Model.Filters,
 							Properties: a.Model.Properties,
+							factionFilters: a.Model.factionFilters,
 						},);
 					}
 				}
@@ -1963,6 +2018,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 							Lost: false,
 							Filters: a.Model.Filters,
 							Properties: a.Model.Properties,
+							factionFilters: a.Model.factionFilters,
 						},);
 					}
 				}
@@ -1982,6 +2038,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 							Lost: false,
 							Filters: a.Model.Filters,
 							Properties: a.Model.Properties,
+							factionFilters: a.Model.factionFilters,
 						},);
 					}
 				}
@@ -2027,7 +2084,8 @@ function KDSaveCodeOutfit(C: Character, clothesOnly: boolean = false): void {
 	}
 
 	KDRefreshCharacter.set(C, true);
-	KinkyDungeonDressPlayer(C, true, undefined, undefined, undefined, undefined, undefined, true);
+	KinkyDungeonDressPlayer(C, true, undefined, undefined, undefined, 
+		undefined, C.metadata?.palette || C.Palette, true);
 
 
 	//KinkyDungeonNewDress = true;
@@ -2186,12 +2244,15 @@ function KDLoadOutfitDirect(files: File[], Char: Character) {
 								CharacterRefresh(Char);
 								KDOldValue = str;
 								KDInitProtectedGroups(Char);
-								KinkyDungeonDressPlayer(Char, true, undefined, undefined, undefined, undefined, undefined, true);
+								KinkyDungeonDressPlayer(Char, true, undefined, undefined, 
+									undefined, undefined, Char.metadata?.palette || Char.Palette, true);
 
 								if (Char.Appearance.length == 0)
 									throw new DOMException();
 							} catch (e) {
 								Char.Appearance = origAppearance;
+								/** breaks the link */
+								KDRefreshSelectedModel(Char);
 							}
 						}
 					});
@@ -2761,6 +2822,11 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	callback_updatewheel?: (r: number, g: number, b: number) => void,
 	callback_updateadv?: (key: string) => void,
 	callback_textfield?: (r: number, g: number, b: number) => void,
+	callback_palette?: (key: string, override: boolean, desaturate: boolean) => void,
+	palette?: string,
+	/** Required to show the palette picker */
+	pid?: string,
+	factionFilterDef?: FactionFilterDef,
 	debug?: boolean
 
 ): {YY: number, updated: boolean} {
@@ -2857,7 +2923,67 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	// the actual brightness value which should be shown on the slider.
 	KDVisualBrightness = rgbToHsl(targ_filter.red/5, targ_filter.green/5, targ_filter.blue/5)[2];
 
-	if (KDToggles.SimpleColorPicker) {
+
+	if (KDToggles.PaletteColorPicker && pid) {
+		let ii = -1;
+		let selectedLayer = factionFilterDef?.color || "None";
+		for (let key of ["None", ...GenericPaletteLayers]) {
+			//DrawTextFitKD(TextGet("KDPaletteLayer_" + key), X + width/2, YY, width, KDBaseWhite, KDBaseBlack, 20);
+			
+			let sprite = GenericPaletteLayerSprites[key] || GenericPaletteLayerSprites.DarkNeutral;
+
+			
+			DrawButtonKDEx("paletteLayer" + key, 
+				() => {
+					lastFilterUpdate = CommonTime();
+					if (callback_palette) callback_palette(key, factionFilterDef?.override, factionFilterDef?.desaturate != undefined ? true : undefined);
+					
+					lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+					return true;
+				}, 
+				true, X, YY - 15, width, 60, TextGet("KDPaletteLayer_" + key), 
+				KDTextWhite, sprite, undefined, undefined, key != selectedLayer, 
+				KDButtonColor, undefined, true, {
+					filters: (ii >= 0 && KDPIXIPaletteFilters.get(pid + palette)) ? KDPIXIPaletteFilters.get(pid + palette)[ii++] : undefined,
+				});
+
+			
+			YY += 61;
+		}
+		YY += 15;
+
+		DrawCheckboxKDEx("overridePaletteLayer", () => {
+			lastFilterUpdate = CommonTime();
+			if (callback_palette) callback_palette(selectedLayer, !factionFilterDef?.override, factionFilterDef?.desaturate != undefined ? true : undefined);
+			
+			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+			return true;
+		}, selectedLayer != "None", 
+		X, YY - 15, 50, 50, TextGet("KDWardrobeOverridePaletteLayer"), 
+		factionFilterDef?.override, selectedLayer == "None", KDTextWhite, undefined, {
+			fontSize: 18,
+			maxWidth: 200,
+		});
+
+		YY += 60;
+		DrawCheckboxKDEx("desaturatePaletteLayer", () => {
+			lastFilterUpdate = CommonTime();
+			if (callback_palette) callback_palette(selectedLayer, factionFilterDef?.override, factionFilterDef?.desaturate != undefined ? undefined : true);
+			
+			lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+			return true;
+		}, selectedLayer != "None", 
+		X, YY - 15, 50, 50, TextGet("KDWardrobeDesaturatePaletteLayer"), 
+		!factionFilterDef?.desaturate, selectedLayer == "None", KDTextWhite, undefined, {
+			fontSize: 18,
+			maxWidth: 200,
+		});
+
+		
+		YY += 20;
+
+	}
+	else if (KDToggles.SimpleColorPicker) {
 		let force = false;
 		for (let key of ["brightness", "contrast"]) {
 			DrawTextFitKD(TextGet("KDColorSlider" + key) + ": " + (Math.round((key == "brightness" ? KDVisualBrightness : (0.2 * targ_filter[key]))*100)/100), X + width/2, YY, width, KDBaseWhite, KDBaseBlack, 20);
@@ -3054,37 +3180,49 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 
 
 	YY += 70;
-	DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 40, 300, KDBaseWhite, KDTextGray0, undefined, "center");
-	let TF = KDTextField("KDSelectedColor", X - 10, YY - 20, width, 30);
-	if (TF.Created) {
-		TF.Element.oninput = (_event: any) => {
-			let value = ElementValue("KDSelectedColor");
-			let RegExp = /^#[0-9A-Fa-f]{6}$/i;
 
-			if (RegExp.test(value)) {
-				let hex = KDhexToRGB(value);
-				if (hex) {
-					let r = 5.0 * (parseInt(hex.r, 16) / 255.0);
-					let g = 5.0 * (parseInt(hex.g, 16) / 255.0);
-					let b = 5.0 * (parseInt(hex.b, 16) / 255.0);
-					if (callback_textfield) callback_textfield(r, g, b);
-					else {
-						if (!targetFilters[currentLayerName])
-							targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
-						if (targetFilters[currentLayerName].alpha < 0.001) targetFilters[currentLayerName].alpha = 0.001;
-						if (KDToggles.SimpleColorPicker) {
-							targetFilters[currentLayerName].brightness = 1;
-							if (targetFilters[currentLayerName].saturation == 1 || !targetFilters[currentLayerName].saturation)
-								targetFilters[currentLayerName].saturation = 0;
+	if (!KDToggles.PaletteColorPicker) {
+		DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 40, 300, KDBaseWhite, KDTextGray0, undefined, "center");
+		let TF = KDTextField("KDSelectedColor", X - 10, YY - 20, width, 30);
+		if (TF.Created) {
+			TF.Element.oninput = (_event: any) => {
+				let value = ElementValue("KDSelectedColor");
+				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
+	
+				if (RegExp.test(value)) {
+					let hex = KDhexToRGB(value);
+					if (hex) {
+						let r = 5.0 * (parseInt(hex.r, 16) / 255.0);
+						let g = 5.0 * (parseInt(hex.g, 16) / 255.0);
+						let b = 5.0 * (parseInt(hex.b, 16) / 255.0);
+						if (callback_textfield) callback_textfield(r, g, b);
+						else {
+							if (!targetFilters[currentLayerName])
+								targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
+							if (targetFilters[currentLayerName].alpha < 0.001) targetFilters[currentLayerName].alpha = 0.001;
+							if (KDToggles.SimpleColorPicker) {
+								targetFilters[currentLayerName].brightness = 1;
+								if (targetFilters[currentLayerName].saturation == 1 || !targetFilters[currentLayerName].saturation)
+									targetFilters[currentLayerName].saturation = 0;
+							}
+							targetFilters[currentLayerName].red = r;
+							targetFilters[currentLayerName].green = g;
+							targetFilters[currentLayerName].blue = b;
 						}
-						targetFilters[currentLayerName].red = r;
-						targetFilters[currentLayerName].green = g;
-						targetFilters[currentLayerName].blue = b;
 					}
 				}
-			}
-		};
+			};
+		}
+	} else if (!palette) {
+		DrawTextFitKD(TextGet("KDPaletteColorPickerInfo"),X + width/2, YY - 10, 
+		300, KDBaseWhite, KDTextGray0, 16, "center");
+		
+	} else {
+		DrawTextFitKD(TextGet("KDPaletteColorPickerInfo2"),X + width/2, YY - 10, 
+		300, KDBaseWhite, KDTextGray0, 16, "center");
+		
 	}
+	
 
 	res.YY = YY;
 
@@ -3096,7 +3234,7 @@ function KDGetPreviewRestraints(preview: string): Record<string, NPCRestraint> {
 	return KDWardrobePreviewRestraintsList[preview];
 }
 
-function KDDressWardrobeChar(C: Character) {
+function KDDressWardrobeChar(C: Character, forcedress?: boolean) {
 	KinkyDungeonCheckClothesLoss = true;
 	if (KinkyDungeonState == "Wardrobe" && KDWardrobePreviewRestraints) {
 		// show with preview restraints
@@ -3109,10 +3247,14 @@ function KDDressWardrobeChar(C: Character) {
 		return;
 	}
 	if (C != KDSpeakerNPC || !KDShowCharacterPalette) {
-		KinkyDungeonDressPlayer(C);
+		//let selectedPalette = C.metadata?.palette || C.Palette;
+		KinkyDungeonDressPlayer(C, undefined, undefined, undefined,
+			undefined, undefined, undefined, !forcedress);
 	} else if (KDNPCChar_ID.get(KDSpeakerNPC)) {
 		// show with restraints
+		//let selectedPalette = C.metadata?.palette || C.Palette;
 		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
-			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[KDNPCChar_ID.get(KDSpeakerNPC) + ''] : undefined);
+			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[KDNPCChar_ID.get(KDSpeakerNPC) + ''] : undefined,
+		undefined, undefined, undefined, !forcedress);
 	}
 }

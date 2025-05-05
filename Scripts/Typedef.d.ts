@@ -80,6 +80,7 @@ interface Item {
 	Color?: ItemColor;
 	Filters?: Record<string, LayerFilter>;
 	Properties?: Record<string, LayerPropertiesType>;
+	factionFilters?: Record<string, FactionFilterDef>;
 	Difficulty?: number;
 	Property?: any;
 }

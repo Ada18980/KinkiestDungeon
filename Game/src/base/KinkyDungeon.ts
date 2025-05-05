@@ -232,6 +232,7 @@ let KDToggles = {
 	ChastityOption2: false,
 	ChastityBraOption: false,
 	SimpleColorPicker: true,
+	PaletteColorPicker: false,
 	TransparentUI: false,
 	Center: false,
 	TurnCounter: false,
@@ -380,6 +381,8 @@ let KDToggleCategories = {
 	//ApplyPaletteOutfit: "none",
 	ApplyPaletteTransform: "none",
 	NoOutfitPalette: "none",
+
+	PaletteColorPicker: "none",
 
 	IgnoreApplyCharPalette: "none",
 	AlwaysApplyCharPalette: "none",
@@ -2225,6 +2228,8 @@ function KinkyDungeonRun() {
 				} catch (e) {
 					console.log("Invalid outfit loaded from save");
 					KinkyDungeonPlayer.Appearance = origAppearance;
+					/** breaks the link */
+					KDRefreshSelectedModel(KinkyDungeonPlayer);
 				}
 			}
 		}
@@ -5534,6 +5539,8 @@ function KinkyDungeonDressModelPreview() {
 			KDNaked = true;
 			if (loadedSaveforPreview.saveStat?.appearance) {
 				KDPreviewModel.Appearance = JSON.parse(JSON.stringify(loadedSaveforPreview.saveStat.appearance));
+				/** breaks the link */
+				KDRefreshSelectedModel(KDPreviewModel);
 				if (KDCurrentModels.get(KDPreviewModel))
 					KDCurrentModels.get(KDPreviewModel).Poses = loadedSaveforPreview.saveStat.poses;
 	
@@ -6807,6 +6814,8 @@ function KinkyDungeonLoadGame(String: string = "") {
 			if (!KDToggles.OverrideOutfit && saveData.saveStat) {
 				if (saveData.saveStat.poses || saveData.saveStat.appearance || saveData.saveStat.default) {
 					KinkyDungeonPlayer.Appearance = JSON.parse(JSON.stringify(saveData.saveStat.appearance));
+					/** breaks the link */
+					KDRefreshSelectedModel(KinkyDungeonPlayer);
 					KDGetDressList().Default = saveData.saveStat.default;
 					KDCurrentModels.get(KinkyDungeonPlayer).Poses = saveData.saveStat.poses;
 					KinkyDungeonPlayer.Palette = saveData.saveStat.Palette;

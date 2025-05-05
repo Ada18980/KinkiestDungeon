@@ -3658,6 +3658,8 @@ function KDAddAppearance (
 		C.Appearance.push(NA);
 		return NA;
 	}
+	
+		
 	return null;
 }
 
@@ -3680,7 +3682,8 @@ function KDAddModel (
 	NewColor:    string | string[],
 	filters:     Record<string, LayerFilter>,
 	item?:       item,
-	Properties?: Record<string, LayerPropertiesType>
+	Properties?: Record<string, LayerPropertiesType>,
+	factionFilters?: Record<string, FactionFilterDef>,
 ): Item
 {
 
@@ -3701,9 +3704,11 @@ function KDAddModel (
 			Property: undefined,
 			Filters: filters,
 			Properties: Properties,
+			factionFilters: factionFilters,
 		};
 		NA.Model.Filters = NA.Filters || NA.Model.Filters;
 		NA.Model.Properties = NA.Properties || NA.Model.Properties;
+		NA.Model.factionFilters = NA.factionFilters || NA.Model.factionFilters;
 		for (let i = 0; i < C.Appearance.length; i++) {
 			if (C.Appearance[i]?.Model?.Name == NA.Model.Name) {
 				C.Appearance[i] = NA;

@@ -497,7 +497,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KDWardrobeCallback = () => {
 			KDShowCharacterPalette = false;
 			KDRefreshCharacter.set(KDSpeakerNPC, true);
-			KDDressWardrobeChar(KDSpeakerNPC);
+			KDDressWardrobeChar(KDSpeakerNPC, true);
 
 			let value2 = value;
 			//if (KDOriginalValue) {
@@ -549,7 +549,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		if (orig != current) KDOriginalValue = orig;
 		ForceRefreshModelsAsync(KDSpeakerNPC);
 		KDShowCharacterPalette = false;
-		KDDressWardrobeChar(KDSpeakerNPC);
+		KDDressWardrobeChar(KDSpeakerNPC, true);
 		return true;
 	}, true, x - 90, y + 90, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,

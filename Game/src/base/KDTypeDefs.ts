@@ -14,6 +14,8 @@ interface KDOutfitMetadata {
 	customColors: Record<string, Record<string, LayerFilter>>,
 }
 
+interface FactionFilterDef {color: string, override: boolean, desaturate?: boolean};
+
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
 	/** Which NPC its on */
@@ -174,7 +176,7 @@ interface KDRestraintPropsBase {
 	 * color is the faction color type
 	 * override is whether the faction color overrides the filter. If true it will replace the filter in the model. If false it will apply it over the model's filter. Currently unused
 	*/
-	factionFilters?: Record<string, {color: string, override: boolean, desaturate?: boolean}>,
+	factionFilters?: Record<string, FactionFilterDef>,
 	/** This item is unaffected by shrines */
 	noShrine?:boolean,
 	/** This item is beneficial and player wont try to struggle from it */
@@ -1967,6 +1969,7 @@ type KinkyDungeonDress = {
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
 	Properties?: Record<string, LayerPropertiesType>;
+	factionFilters?: Record<string, FactionFilterDef>;
 
 	Lost: boolean;
 	NoLose?: boolean;
