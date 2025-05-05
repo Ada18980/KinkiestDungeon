@@ -495,6 +495,10 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KDOriginalValue = "";
 		CharacterReleaseTotal(KDSpeakerNPC);
 		KDWardrobeCallback = () => {
+			KDShowCharacterPalette = false;
+			KDRefreshCharacter.set(KDSpeakerNPC, true);
+			KDDressWardrobeChar(KDSpeakerNPC);
+
 			let value2 = value;
 			//if (KDOriginalValue) {
 			value2.customOutfit = LZString.compressToBase64(AppearanceItemStringify(KDSpeakerNPC.Appearance));
@@ -502,11 +506,15 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			value2.metadata = KDSpeakerNPC.metadata;
 
 			KDRefreshCharacter.set(KDSpeakerNPC, true);
+			KinkyDungeonCheckClothesLoss = true;
+			KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
+		
 			//}
 		};
 		if (value.customOutfit) {
 			let outfit = value.customOutfit;
 			KDWardrobeRevertCallback = () => {
+				KDShowCharacterPalette = false;
 				if (outfit)
 					CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
 				CharacterRefresh(KDSpeakerNPC);
@@ -515,10 +523,12 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				KinkyDungeonDressPlayer(KDSpeakerNPC, true);
 			};
 			KDWardrobeResetCallback = () => {
+				KDShowCharacterPalette = false;
 				delete value.customOutfit;
 			};
 		} else {
 			KDWardrobeRevertCallback = () => {
+				KDShowCharacterPalette = false;
 				delete value.customOutfit;
 				KDRefreshCharacter.set(KDSpeakerNPC, true);
 				KinkyDungeonDressPlayer(KDSpeakerNPC, true);
@@ -538,6 +548,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
 		if (orig != current) KDOriginalValue = orig;
 		ForceRefreshModelsAsync(KDSpeakerNPC);
+		KDShowCharacterPalette = false;
+		KDDressWardrobeChar(KDSpeakerNPC);
 		return true;
 	}, true, x - 90, y + 90, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,

@@ -727,6 +727,8 @@ interface KDGameDataBase {
 		Escaped: boolean,
 	},
 
+	customColors: Record<string, Record<string, LayerFilter>>,
+
 };
 
 let KDGameDataBase: KDGameDataBase = {
@@ -987,6 +989,7 @@ let KDGameDataBase: KDGameDataBase = {
 	IdentifiedObj: {},
 	UseJourneyTarget: false,
 	PlayerWeaponLastEquipped: "",
+	customColors: {},
 };
 
 // endregion
@@ -2271,9 +2274,7 @@ function KinkyDungeonRun() {
 			if (orig != ElementValue("saveInputField")) KDOriginalValue = orig;
 			let decompressed = DecompressB64(ElementValue("saveInputField"));
 			if (decompressed) {
-				let origAppearance = Char.Appearance;
 				try {
-					console.log("Trying BC code...");
 					CharacterAppearanceRestore(Char, decompressed, true, false);
 					CharacterRefresh(Char);
 					KDOldValue = newValue;
@@ -2283,28 +2284,7 @@ function KinkyDungeonRun() {
 					if (Char.Appearance.length == 0)
 						throw new DOMException();
 				} catch (e) {
-					console.log("Trying BCX code...");
-					// If we fail, it might be a BCX code. try it!
-					Char.Appearance = origAppearance;
-					try {
-						let parsed = JSON.parse(decompressed);
-						if (parsed.length > 0) {
-							if (!StandalonePatched) {
-								for (let g of parsed) {
-									InventoryWear(Char, g.Name, g.Group, g.Color);
-								}
-								CharacterRefresh(Char);
-								ElementValue("saveInputField", LZString.compressToBase64(
-									AppearanceItemStringify(Char.Appearance)));
-							}
-							KDOldValue = newValue;
-							KDInitProtectedGroups(Char);
-						} else {
-							console.log("Invalid code. Maybe its corrupt?");
-						}
-					} catch (error) {
-						console.log("Invalid code.");
-					}
+					console.log("Invalid code.");
 				}
 			}
 		}

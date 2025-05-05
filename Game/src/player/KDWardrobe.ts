@@ -820,7 +820,8 @@ function KDDrawPoseButtons(C: Character, X: number = 960, Y: number = 750, allow
 			if (dress) {
 
 				KDRefreshCharacter.set(C, true);
-				KinkyDungeonDressPlayer(C);
+				KDDressWardrobeChar(C);
+
 			}
 
 			return true;
@@ -1315,7 +1316,10 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	if (KDShowCharacterPalette) {
 		if (!KDCurrentCharacterPalettes) {
 			KDCurrentCharacterPalettes = KDGetPalettes(C, true);
-			for (let entry of Object.entries(KDDefaultWardrobePalettes)) {
+			for (let entry of Object.entries(C == KinkyDungeonPlayer ? KDDefaultWardrobePalettes : (
+				(KinkyDungeonPlayer.metadata?.customColors) ? Object.assign(Object.assign({}, KDDefaultWardrobePalettes), 
+				KinkyDungeonPlayer.metadata.customColors) : KDDefaultWardrobePalettes
+			))) {
 				if (!KDCurrentCharacterPalettes[entry[0]]) {
 					KDCurrentCharacterPalettes[entry[0]] = Object.assign({}, entry[1]);
 				}
@@ -1324,7 +1328,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		DrawCheckboxKDEx("", () => {
 			KDToggles.HideArmorWardrobe = !KDToggles.HideArmorWardrobe;
 			KDSaveToggles();
-			KinkyDungeonDressPlayer(C);
+			KDRefreshCharacter.set(C, true);
+			KDDressWardrobeChar(C);
 			return true;
 		}, true, 800, 55, 64, 64,
 		TextGet("KDVisualOpt_HideArmorWardrobe"), KDToggles.HideArmorWardrobe, false, KDBaseWhite, undefined, {
@@ -1346,14 +1351,12 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				C.metadata = DefaultOutfitMetadata();
 			}
 			C.metadata.palette = pal;
-			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-			KinkyDungeonCheckClothesLoss = true;
-			KinkyDungeonDressPlayer();
+			KDRefreshCharacter.set(C, true);
+			KDDressWardrobeChar(C);
 
 		}, "KDSetCharacterPalette");
 
 		let temporary = !palette;
-		let temporaryNoLayer = !palette[palettelayer];
 		if (temporary && !palette && selectedPalette) {
 			// le funni
 			// temporarily make a palette and delete at end of the frame
@@ -1363,15 +1366,20 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			}
 			C.metadata.customColors[selectedPalette] = palette;
 		}
-		if (temporaryNoLayer && palette) {
-			// le funni
-			// temporarily make a palette and delete at end of the frame
-			let palettetemp = KDGetPalettes(undefined, true, true)[selectedPalette];
-			if (palettetemp) {
-				palette[palettelayer] = palettetemp[palettelayer];
+		let temporaryNoLayer = false;
+		if (palette) {
+			temporaryNoLayer = !palette[palettelayer];
+			if (temporaryNoLayer && palette) {
+				// le funni
+				// temporarily make a palette and delete at end of the frame
+				let palettetemp = KDGetPalettes(undefined, true, true)[selectedPalette];
+				if (palettetemp) {
+					palette[palettelayer] = palettetemp[palettelayer];
+				}
+				
 			}
-			
 		}
+		
 		if (palette && selectedPalette) {
 
 			
@@ -1394,12 +1402,12 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			}, true, X - 200 + 250, res.YY + 20, 240, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
 			KDPropsSlider || KDToggles.SimpleColorPicker, KDButtonColor);
 			
-			DrawButtonKDEx("ExportAllLayers", (_bdata) => {
+			DrawButtonKDEx("KDResetAllLayers", (_bdata) => {
 				if (C.metadata?.customColors[selectedPalette]) {
 					delete C.metadata.customColors[selectedPalette];
 					KDRefreshCharacter.set(C, true);
-					KinkyDungeonCheckClothesLoss = true;
-					KinkyDungeonDressPlayer(C);
+					KDDressWardrobeChar(C);
+					
 
 				}
 				return true;
@@ -1461,8 +1469,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					KDCurrentCharacterPalettes[palette] = C.metadata.customColors[palette];
 				}
 				KDRefreshCharacter.set(C, true);
-				KinkyDungeonCheckClothesLoss = true;
-				KinkyDungeonDressPlayer(C);
+				KDDressWardrobeChar(C);
 			};
 		}
 		if (temporary || temporaryNoLayer) {
@@ -1501,7 +1508,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		if (KDToggleXRay > (StandalonePatched ? 2 : 1)) KDToggleXRay = 0;
 
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-		KinkyDungeonDressPlayer(KinkyDungeonPlayer, false, true);
+		KinkyDungeonDressPlayer(C, false, true);
 		return true;
 	}, true, 715, 820, 240, 50, TextGet("KDXRay"), KDBaseWhite,
 	KinkyDungeonRootDirectory + "UI/XRay" + KDToggleXRay + ".png", "", false, false,
@@ -1522,6 +1529,8 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 	DrawButtonKDEx("SetPalette", (_bdata) => {
 		KDShowCharacterPalette = !KDShowCharacterPalette;
+		KDRefreshCharacter.set(C, true);
+		KDDressWardrobeChar(C);
 		return true;
 	}, true, 715, 875, 240, 50, TextGet("KDSetPalette"), KDBaseWhite,
 	KinkyDungeonRootDirectory + "UI/SetPalette.png", "", false, false,
@@ -3048,4 +3057,15 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	res.YY = YY;
 
 	return res;
+}
+
+function KDDressWardrobeChar(C: Character) {
+	KinkyDungeonCheckClothesLoss = true;
+	if (C != KDSpeakerNPC || !KDShowCharacterPalette) {
+		KinkyDungeonDressPlayer(C);
+	} else if (KDNPCChar_ID.get(KDSpeakerNPC)) {
+		// show with restraints
+		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
+			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[KDNPCChar_ID.get(KDSpeakerNPC) + ''] : undefined);
+	}
 }
