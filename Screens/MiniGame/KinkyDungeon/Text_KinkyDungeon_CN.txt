@@ -307,7 +307,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDToggleBackgrounds
 - Experimental Rendering (unstable)
 实验性渲染(不稳定)
-- Enable Heatpats
+- Enable Headpats
 启用摸头
 - Show (mostly) full tooltips
 显示（几乎）所有提示信息
@@ -321,6 +321,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 快速背包物品仅对自己使用
 - Override Outfit when Loading Save
 加载存档时覆盖服装
+# - Override Outfit
 - Save Outfits within Save Files
 将服装数据附加到存档内
 - Show free characters on map
@@ -3607,7 +3608,7 @@ Devious Dungeon Challenge 已启用。
 - Crit Multiplier: 
 暴击倍率：
 - Bind Crit Multiplier: 
-捆绑暴击倍率：
+束缚暴击倍率：
 - Find the keys..
 寻找钥匙...
 - Find the exit!
@@ -3677,7 +3678,8 @@ Devious Dungeon Challenge 已启用。
 - Crit: 
 暴击伤害：
 # :: KinkyDungeonWeaponCrit
-# :: KinkyDungeonWeaponBindCrit
+:: KinkyDungeonWeaponBindCrit
+暴击束缚：
 # - Does not Crit
 - SP Cost: 
 体力消耗：
@@ -13343,7 +13345,7 @@ Ars烟火
 - Firecracker
 迸裂火花
 - A small delayed explosion that deals DamageDealt fire damage.
-造成 DamageDealt 点火伤害小型的延时爆炸， 。
+造成 DamageDealt 点火焰伤害的小型延时爆炸。
 - You shout an incendiary retort!
 你丢出一团燃烧的炸药！
 - Choose AoE location
@@ -13721,7 +13723,7 @@ Ars烟火
 - Leather Whip
 皮鞭
 - You have the power to strike with conjured belts when you attack. When enabled: Your attacks deal +10 pain damage and create belts. 250% bind efficiency.
-你有能力在攻击时使用魔法皮带进行攻击。启用后 : ‎你的攻击造成 +10 痛苦伤害并制造皮带。250% 束缚效率。
+你有能力在攻击时使用魔法皮带进行攻击。启用后 : ‎你的攻击造成 +10 疼痛伤害并制造皮带。250% 束缚效率。
 
 - Super Strength
 超级力量
@@ -14679,7 +14681,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Spell Point Cost: 
 消耗技能点：
 - Mana Cost: 
-法力消耗 : 
+法力消耗：
 
 - Remove Spell 1
 移除法术 1
@@ -47494,7 +47496,7 @@ ESCP 强度 : ‎AMNT
 显示额外的挣扎信息
 
 - Cut
-切
+切割
 
 - Your collar channels the vigor of excitement into magical energy!
 你的项圈将兴奋的活力转化为神奇的能量！
