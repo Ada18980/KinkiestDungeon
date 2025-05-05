@@ -727,7 +727,7 @@ interface KDGameDataBase {
 		Escaped: boolean,
 	},
 
-	customColors: Record<string, Record<string, LayerFilter>>,
+	//customColors: Record<string, Record<string, LayerFilter>>,
 
 };
 
@@ -989,7 +989,7 @@ let KDGameDataBase: KDGameDataBase = {
 	IdentifiedObj: {},
 	UseJourneyTarget: false,
 	PlayerWeaponLastEquipped: "",
-	customColors: {},
+	//customColors: {},
 };
 
 // endregion
