@@ -3091,24 +3091,6 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	return res;
 }
 
-let KDWardrobePreviewRestraintsList: Record<string, Record<string, NPCRestraint>> = {
-	Latex: {
-		OuterGag: {
-			lock: "",
-			id: 1,
-			name: "LatexOTNGagHeavy",
-		},
-	},
-	Leather: {
-
-	},
-	Metal: {
-
-	},
-	Rope: {
-
-	},
-}
 
 function KDGetPreviewRestraints(preview: string): Record<string, NPCRestraint> {
 	return KDWardrobePreviewRestraintsList[preview];
@@ -3119,8 +3101,10 @@ function KDDressWardrobeChar(C: Character) {
 	if (KinkyDungeonState == "Wardrobe" && KDWardrobePreviewRestraints) {
 		// show with preview restraints
 		let selectedPalette = C.metadata?.palette || C.Palette || "";
+		let prevR = KDGetPreviewRestraints(KDWardrobePreviewRestraints);
 		KinkyDungeonDressPlayer(C, false, false, 
-			KDGetPreviewRestraints(KDWardrobePreviewRestraints), undefined, undefined,
+			prevR, undefined, 
+			KDGetNPCRestraintTags(prevR, undefined, undefined, false, false),
 			selectedPalette, true);
 		return;
 	}
