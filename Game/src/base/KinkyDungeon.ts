@@ -3075,9 +3075,14 @@ function KinkyDungeonRun() {
 						KDUpdateWaitTime(10)
 					}
 					if (KDGameData.SleepTurns == 0) {
+						let data = {
+							interrupt: false,
+							kneelTurns: 1,
+						};
+						KinkyDungeonSendEvent("sleepEnd", data);
 						KDChangeStamina("", "", "", 0);
 						KDChangeWill("", "", "", 0);
-						KDGameData.KneelTurns = 1;
+						KDGameData.KneelTurns = data.kneelTurns;
 					}
 				} else if (KDGameData.PlaySelfTurns > 0) {
 					if (CommonTime() > KinkyDungeonSleepTime) {

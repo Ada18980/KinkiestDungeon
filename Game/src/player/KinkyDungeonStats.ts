@@ -61,6 +61,7 @@ function KDSleep(entity?: entity, amount: number = 0) {
 		KDGameData.SleepTurns = data.amount; // sleep for this number of turns
 		KDChangeMana("player","sleep", "tick", KinkyDungeonStatManaMax, false, 0, false, true); // restore full mana instantly
 	}
+	KinkyDungeonSendEvent("sleepStart", data);
 }
 
 /**
@@ -447,13 +448,19 @@ function KDDisableAutoWait() {
 }
 
 function KinkyDungeonInterruptSleep() {
+	if (KDGameData.SleepTurns  > 0) {
+		let data = {
+			interrupt: true,
+		};
+		KinkyDungeonSendEvent("sleepEnd", data);
+	}
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
 	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance")) {
 		KDAutoWaitDelayed = false;
 		KinkyDungeonAutoWait = false;
 	}
-	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;
+	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;	
 }
 
 let KDBaseDamageTypes = {
