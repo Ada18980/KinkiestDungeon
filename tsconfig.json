@@ -5,7 +5,7 @@
         "Scripts/lib/LZString.d.ts",
 
         // BC and KD .d.ts files
-        "Scripts/Typedef.d.ts",
+        "Scripts/Typedef.ts",
         "Game/src/base/KDTypeDefs.ts",
         "Data/ModelTypes.ts",
 

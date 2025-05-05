@@ -7,6 +7,7 @@
         "build": "tsc",
         "buildCont": "tsc -b --watch",
         "buildContWSL": "tsc -b --watch --watchDirectory dynamicprioritypolling --watchFile dynamicPriorityPolling",
+        "buildTypes": "tsc --declaration --emitDeclarationOnly --removeComments false",
         "serve": "http-server"
     },
     "author": "Ada18980",
