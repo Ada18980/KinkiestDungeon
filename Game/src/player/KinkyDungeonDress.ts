@@ -798,10 +798,10 @@ function KinkyDungeonWearForcedClothes(C: Character, restraints?: item[], extraF
 		let faction = dress.faction;
 		if (dress.faction) {
 			if (StandalonePatched) {
-				if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
+				if (dress.factionFilters && faction && GetPalette(C, faction)) {
 					for (let f of Object.entries(dress.factionFilters)) {
-						if (KDGetFactionFilters(faction)[f[1].color])
-							filters[f[0]] = KDGetFactionFilters(faction)[f[1].color]; // 0 is the primary color
+						if (GetPalette(C, faction)[f[1].color])
+							filters[f[0]] = GetPalette(C, faction)[f[1].color]; // 0 is the primary color
 					}
 				}
 			}
@@ -824,10 +824,10 @@ function KinkyDungeonWearForcedClothes(C: Character, restraints?: item[], extraF
 				let Properties =  dress.Properties ? JSON.parse(JSON.stringify(dress.Properties)) : {};
 				let faction = inv.forceFaction != undefined ? inv.forceFaction : (inv.faction || dress.faction);
 				if (faction) {
-					if (dress.factionFilters && faction && KDGetFactionFilters(faction)) {
+					if (dress.factionFilters && faction && GetPalette(C, faction)) {
 						for (let f of Object.entries(dress.factionFilters)) {
-							if (KDGetFactionFilters(faction)[f[1].color])
-								filters[f[0]] = KDGetFactionFilters(faction)[f[1].color]; // 0 is the primary color
+							if (GetPalette(C, faction)[f[1].color])
+								filters[f[0]] = GetPalette(C, faction)[f[1].color]; // 0 is the primary color
 						}
 					}
 				}
@@ -931,11 +931,11 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 			: {};
 
 
-		if (restraint.factionFilters && faction && KDGetFactionFilters(faction)) {
+		if (restraint.factionFilters && faction && GetPalette(C, faction)) {
 			for (let f of Object.entries(restraint.factionFilters)) {
-				if (KDGetFactionFilters(faction)[f[1].color]) {
+				if (GetPalette(C, faction)[f[1].color]) {
 					if (f[1].override) {
-						filters[f[0]] = KDGetFactionFilters(faction)[f[1].color];
+						filters[f[0]] = GetPalette(C, faction)[f[1].color];
 					} else {
 						let origFilters = filters[f[0]];
 						if (!filters[f[0]]) filters[f[0]] = {};
@@ -946,9 +946,9 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 							? origFilters.gamma : 1;
 						filters[f[0]].brightness = (origFilters)
 							? origFilters.brightness : 1;
-						filters[f[0]].red = KDGetFactionFilters(faction)[f[1].color].red;
-						filters[f[0]].blue = KDGetFactionFilters(faction)[f[1].color].blue;
-						filters[f[0]].green = KDGetFactionFilters(faction)[f[1].color].green;
+						filters[f[0]].red = GetPalette(C, faction)[f[1].color].red;
+						filters[f[0]].blue = GetPalette(C, faction)[f[1].color].blue;
+						filters[f[0]].green = GetPalette(C, faction)[f[1].color].green;
 					}
 					if (f[1].desaturate) {
 						filters[f[0]].saturation = 0;

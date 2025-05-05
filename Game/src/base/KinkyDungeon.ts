@@ -3427,7 +3427,7 @@ function KinkyDungeonRun() {
 				}
 
 
-				KDDrawCustomPalettes(KDGetPalettes(KinkyDungeonPlayer), x, 250, w, scale, undefined, undefined);
+				KDDrawCustomPalettes(KDGetPalettes(KinkyDungeonPlayer), KinkyDungeonPlayer.ID + "_", x, 250, w, scale, undefined, undefined);
 
 				let options = KDClothesToggles;
 

@@ -191,7 +191,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			KDBaseWhite
 			);
 
-			KDDrawCustomPalettes(KDGetPalettes(KDNPCChar.get(npcID)), 1300, 250, KDPaletteWidth, 72, currentItem?.faction || "", (palette) => {
+			KDDrawCustomPalettes(KDGetPalettes(KDNPCChar.get(npcID)), npcID + "_",
+			1300, 250, KDPaletteWidth, 72, currentItem?.faction || "", (palette) => {
 
 				if (currentItem) {
 					Object.values(restraints).filter((slt) => {

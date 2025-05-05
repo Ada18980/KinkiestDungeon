@@ -14022,6 +14022,7 @@ KDColorSlideralpha,Transparency
 KDResetLayer,Reset Layer!
 KDResetLayerProps,Reset Properties!
 KDExportAllLayers,Export All Layers
+KDResetAllLayers,Reset All Layers
 KDExportAllProps,Export All Props
 KDCopyLayer,Copy
 KDPasteLayer,Paste
@@ -32170,3 +32171,8 @@ KDLatexKittyCurseEffectFull,"You transfer the remainder of your ${Item}'s curse 
 KDLatexKittyCurseEffectFull2,"The curse will deal 25% damage as residual curse transfers."
 
 KinkyDungeonBuffLatexKittyCurseTick,This is the total amount of Latex Kitty Curse you possess.
+
+KDPaletteLayer_Highlight,Highlights
+KDPaletteLayer_Catsuit,Catsuit
+KDPaletteLayer_DarkNeutral,Dark
+KDPaletteLayer_LightNeutral,Light

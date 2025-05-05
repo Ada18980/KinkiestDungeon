@@ -5389,7 +5389,7 @@ function KDGetTargetRetType(x: number, y: number): string {
 
 let KDPIXIPaletteFilters: Map<string, PIXIFilter[]> = new Map();
 
-function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilter>>, 
+function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilter>>, paletteID: string,
 	x: number, y: number, w: number, scale: number = 72, selected: string, callback?: (s: string) => void, text: string = "KDSelectPalette", deffault?: string) {
 	if (selected == undefined) selected = (deffault != undefined ? deffault : KDDefaultPalette);
 	let XX = x;
@@ -5401,8 +5401,8 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 	DrawTextFitKD(TextGet(text), x + scale*(0.5 + w)/2, y - 36, scale*w, KDBaseWhite, KDTextGray0, 20);
 
 	for (let value of [zero, ...Object.entries(palettes)]) {
-		if (!KDPIXIPaletteFilters.get(value[0]))
-			KDPIXIPaletteFilters.set(value[0],
+		if (!KDPIXIPaletteFilters.get(paletteID + value[0]))
+			KDPIXIPaletteFilters.set(paletteID + value[0],
 				[
 					new PIXI.filters.AdjustmentFilter(value[1].DarkNeutral),
 					new PIXI.filters.AdjustmentFilter(value[1].LightNeutral),
@@ -5413,14 +5413,14 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 			KinkyDungeonRootDirectory + "UI/greyColor.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
-					KDPIXIPaletteFilters.get(value[0])[0],
+					KDPIXIPaletteFilters.get(paletteID + value[0])[0],
 				]
 			});
 		KDDraw(kdcanvas, kdpixisprites, "paletteL" + value[0],
 			KinkyDungeonRootDirectory + "UI/greyColorLight.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
-					KDPIXIPaletteFilters.get(value[0])[1],
+					KDPIXIPaletteFilters.get(paletteID + value[0])[1],
 				],
 				zIndex: 2,
 			});
@@ -5428,7 +5428,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 			KinkyDungeonRootDirectory + "UI/greyColorHighlight.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
-					KDPIXIPaletteFilters.get(value[0])[2],
+					KDPIXIPaletteFilters.get(paletteID + value[0])[2],
 				],
 				zIndex: 3,
 			});
@@ -5436,10 +5436,11 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 			KinkyDungeonRootDirectory + "UI/greyColorCatsuit.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
-					KDPIXIPaletteFilters.get(value[0])[3],
+					KDPIXIPaletteFilters.get(paletteID + value[0])[3],
 				],
 				zIndex: 4,
 			});
+		
 		DrawButtonKDEx("choosepalette" + value[0], (_b) => {
 			if (callback) callback(value[0]);
 			else {
@@ -5485,7 +5486,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
  * @param [deffault]
  */
 function KDDrawPalettes(x: number, y: number, w: number, scale: number = 72, selected: string, callback?: (s: string) => void, text: string = "KDSelectPalette", deffault?: string) {
-	KDDrawCustomPalettes(KinkyDungeonFactionFilters, x, y, w, scale, selected, callback, text, deffault);
+	KDDrawCustomPalettes(KinkyDungeonFactionFilters, "", x, y, w, scale, selected, callback, text, deffault);
 }
 
 function KDGetOutlineFilter(color: number, alpha: number, quality: number, thickness: number): PIXIFilter {
