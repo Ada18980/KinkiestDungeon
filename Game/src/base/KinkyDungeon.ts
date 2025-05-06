@@ -7220,7 +7220,7 @@ let KDSaveTimeout = 600000; // 10 minutes
 async function KinkyDungeonCompressSave(save: string, type = SaveType.Game): Promise<string> {
 	if (window.Worker) {
 		const workerMsg: SaveWorkerMsg = {
-			op:	'cmp-legacy',
+			op:	'cmp',
 			type:	type,
 			data:	save
 		};
