@@ -3309,6 +3309,7 @@ type eligibleRestraintOptions = {
 	QuitOnFirst?:		 boolean;
 	/** Reduce target willpower by this much */
 	willBonus?: 		 number;
+	suppressTightPerk?: boolean;
 }
 
 /**
@@ -3420,7 +3421,7 @@ function KDGetRestraintsEligible (
 {
 	let RestraintsList: eligibleRestraintItem[] = [];
 	let effLevel = Level;
-	if (KinkyDungeonStatsChoice.has("TightRestraints")) {
+	if (!options?.suppressTightPerk && KinkyDungeonStatsChoice.has("TightRestraints")) {
 		effLevel *= KDTightRestraintsMult;
 		effLevel += KDTightRestraintsMod;
 	}
@@ -3944,55 +3945,57 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 
 function KDGetNPCRestraintTags(restraintList: Record<string, NPCRestraint>, extraTags?: string[], id = -1, addTags = true, events: boolean = true): Map<string, boolean> {
 	let playerTags: Map<string, boolean> = new Map();
-	for (let inv of Object.values(restraintList)) {
-		let group = KDRestraint(inv)?.Group;
-		if (group) {
-			if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
-			playerTags.set(group + "Full", true);
-			playerTags.set(inv.name + "Worn", true);
-			if (inv.inventoryVariant)
-				playerTags.set(inv.inventoryVariant + "Worn", true);
+	if (restraintList)
+		for (let inv of Object.values(restraintList)) {
+			let group = KDRestraint(inv)?.Group;
+			if (group) {
+				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
+				playerTags.set(group + "Full", true);
+				playerTags.set(inv.name + "Worn", true);
+				if (inv.inventoryVariant)
+					playerTags.set(inv.inventoryVariant + "Worn", true);
+			}
 		}
-	}
 	for (let sg of KinkyDungeonStruggleGroupsBase) {
 		let group = sg;
-		if (!Object.values(restraintList).some((rest) => {
+		if (!restraintList || !Object.values(restraintList).some((rest) => {
 			return KDRestraint(rest)?.Group == group;
 		})) playerTags.set(group + "Empty", true);
 	}
-	for (let inv of Object.values(restraintList)) {
-		if (!KDRestraint(inv)) continue;
-		playerTags.set("Item_"+inv.name, true);
+	if (restraintList)
+		for (let inv of Object.values(restraintList)) {
+			if (!KDRestraint(inv)) continue;
+			playerTags.set("Item_"+inv.name, true);
 
-		if (KDRestraint(inv).Link)
-			playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
-		if (KDRestraint(inv).UnLink)
-			playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
-		if (KDRestraint(inv).addTag)
-			for (let tag of KDRestraint(inv).addTag) {
-				if (!playerTags.get(tag)) playerTags.set(tag, true);
+			if (KDRestraint(inv).Link)
+				playerTags.set("LinkTo_"+KDRestraint(inv).Link, true);
+			if (KDRestraint(inv).UnLink)
+				playerTags.set("UnLinkTo_"+KDRestraint(inv).UnLink, true);
+			if (KDRestraint(inv).addTag)
+				for (let tag of KDRestraint(inv).addTag) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
+			if (KDRestraint(inv).chastity)
+				playerTags.set("ChastityLower", true);
+			if (KDRestraint(inv).chastitybra)
+				playerTags.set("ChastityUpper", true);
+			if (KDRestraint(inv).hobble)
+				playerTags.set("Hobble", true);
+			if (KDRestraint(inv).blockfeet)
+				playerTags.set("BoundFeet", true);
+			if (KDRestraint(inv).bindarms)
+				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).bindhands)
+				playerTags.set("BoundHands", true);
+			if (KDRestraint(inv).blindfold)
+				playerTags.set("Blindfolded", true);
+			if (KDRestraint(inv).shrine) {
+				for (let tag of KDRestraint(inv).shrine) {
+					if (!playerTags.get(tag)) playerTags.set(tag, true);
+				}
 			}
-		if (KDRestraint(inv).chastity)
-			playerTags.set("ChastityLower", true);
-		if (KDRestraint(inv).chastitybra)
-			playerTags.set("ChastityUpper", true);
-		if (KDRestraint(inv).hobble)
-			playerTags.set("Hobble", true);
-		if (KDRestraint(inv).blockfeet)
-			playerTags.set("BoundFeet", true);
-		if (KDRestraint(inv).bindarms)
-			playerTags.set("BoundArms", true);
-		if (KDRestraint(inv).bindhands)
-			playerTags.set("BoundHands", true);
-		if (KDRestraint(inv).blindfold)
-			playerTags.set("Blindfolded", true);
-		if (KDRestraint(inv).shrine) {
-			for (let tag of KDRestraint(inv).shrine) {
-				if (!playerTags.get(tag)) playerTags.set(tag, true);
-			}
+
 		}
-
-	}
 
 	let tags = extraTags || [];
 	if (addTags)

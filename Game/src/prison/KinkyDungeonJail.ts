@@ -1791,9 +1791,10 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+	let restraintPalette = KDToggles.RestraintPalette ? KDGetRestraintsPalette(KinkyDungeonPlayer) : "";
 	KDFixPlayerClothes(
 		(KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
-		|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
+		|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDGetMainFaction() || restraintPalette || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
 
 	KinkyDungeonLoseJailKeys();
@@ -2242,7 +2243,12 @@ let KDCustomDefeatUniforms = {
 	WolfgirlHunters: () => {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints", "linkRegular"])},
-			Math.max(MiniGameKinkyDungeonLevel == 0 ? 1 : KDGetEffLevel(), 6), "grv", true, "Red");
+			Math.max(KDGetEffLevel(), 6), "grv", true, "Red",
+			
+			undefined, undefined, undefined, undefined, undefined, undefined,
+			undefined, undefined, undefined ,undefined, {
+				suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+			});
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red", undefined, undefined, undefined, undefined, true);
 				if (r.Link) {
@@ -2259,7 +2265,12 @@ let KDCustomDefeatUniforms = {
 	MaidSweeper: () => {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer", "linkRegular"]},
-				Math.max(MiniGameKinkyDungeonLevel == 0 ? 1 : KDGetEffLevel(), 6), "grv", true, "Purple");
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple",
+			
+				undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined ,undefined, {
+					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+				});
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
 		}
@@ -2269,10 +2280,16 @@ let KDCustomDefeatUniforms = {
 		KinkyDungeonSetDress("Maid", "Maid");
 	},
 	DollShoppe: () => {
-		KinkyDungeonAddRestraintIfWeaker("HeavyLatexCatsuit", 5, true, "Red", false, undefined, undefined, "Jail", true);
+		KinkyDungeonAddRestraintIfWeaker("HeavyLatexCatsuit", 5, true, "Red", 
+			false, undefined, undefined, "Jail", true);
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["latexRestraints", "latexStart", "latexCollar", "latexRestraintsForced"]},
-				Math.max(MiniGameKinkyDungeonLevel == 0 ? 1 : KDGetEffLevel(), 6), "grv", true, "Purple", false, false, false);
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple",
+			
+				undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined ,undefined, {
+					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+				});
 			if (r)
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, "Jail", true);
 		}
@@ -2318,7 +2335,12 @@ let KDCustomDefeatUniforms = {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["ropeRestraints", "ropeRestraints2", "ropeRestraintsHogtie", "ropeRestraintsWrist",
 				"tapeRestraints", "genericToys"]},
-				Math.max(MiniGameKinkyDungeonLevel == 0 ? 1 : KDGetEffLevel(), 24), "grv", true, undefined);
+				Math.max(KDGetEffLevel(), 24), "grv", true, undefined,
+			
+				undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined ,undefined, {
+					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+				});
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 8, true, undefined, false, undefined, undefined, undefined, true);
 				let item = r;
@@ -2348,7 +2370,12 @@ let KDCustomDefeatUniforms = {
 	ElementalSlave: () => {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys", "linkRegular"]},
-				Math.max(MiniGameKinkyDungeonLevel == 0 ? 1 : KDGetEffLevel(), 6), "grv", true, "Red");
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Red",
+			
+				undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined ,undefined, {
+					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+				});
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", false, undefined, undefined, undefined, true);
 				let item = r;
@@ -2513,7 +2540,8 @@ function KDApplyJailOutfit() {
 
 
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+	let restraintPalette = KDToggles.RestraintPalette ? KDGetRestraintsPalette(KinkyDungeonPlayer) : "";
 	KDFixPlayerClothes((KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
-		|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
+		|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDGetMainFaction() || restraintPalette || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
 }

@@ -188,8 +188,10 @@ function KinkyDungeonDressPlayer (
 		
 		if (Character == KinkyDungeonPlayer) {
 			let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
-			if (customFaction == undefined && (outfit?.palette || (Character.metadata?.palette || Character.Palette))) {
+			let restraintPalette = KDToggles.RestraintPalette ? KDGetRestraintsPalette(Character) : "";
+			if (customFaction == undefined && (outfit?.palette || restraintPalette || (Character.metadata?.palette || Character.Palette))) {
 				let palette = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
+					|| restraintPalette
 					|| (Character.metadata?.palette || Character.Palette) || (KDToggles.ForcePalette ? KDDefaultPalette : "");
 				if (palette) {
 					customFaction = palette;
@@ -1200,6 +1202,8 @@ function KDUpdateTempPoses(Character: Character) {
  * @param safe safe = deep copy, otherwise expecting reference only (no modify)
  */
 function KDGetPalettes(C: Character, safe?: boolean, includeDefault: boolean = true, defaultOverride?: Record<string, Record<string, LayerFilter>>): Record<string, Record<string, LayerFilter>> {
+	if (!defaultOverride) defaultOverride = KDDefaultWardrobePalettes;
+	
 	if (C?.metadata?.customColors) {
 		let newPalettes: Record<string, Record<string, LayerFilter>> = {};
 		for (let palette in KinkyDungeonFactionFilters) {
@@ -1329,4 +1333,44 @@ function KinkyDungeonHeadpatModal() {
         }
     });
     document.body.appendChild(backdrop);
+}
+
+let KDDefaultRestraintPaletteThreshold = 5;
+
+function KDGetRestraintsPalette(C: Character) {
+	let biggest = "";
+	let biggestPower = KDDefaultRestraintPaletteThreshold;
+	let factionWeights: Record<string, number> = {};
+	for (let inv of KDAllRestraintDynamicList()) {
+		let faction = inv.faction;
+		if (inv.faction) {
+			if (!factionWeights[faction]) factionWeights[faction] = 1;
+
+			let power = KinkyDungeonRestraintPower(inv);
+			if (power >= 1) {
+				factionWeights[faction] += power;
+				if (factionWeights[faction] > biggestPower) {
+					biggestPower = factionWeights[faction];
+					biggest = faction;
+				}
+			}
+		}
+	}
+
+	return biggest;
+
+}
+function KDGetPlayerPalette(C: Character) {
+	let palette = "";
+	let outfit = KDOutfit({ name: KinkyDungeonCurrentDress });
+	let restraintPalette = KDToggles.RestraintPalette ? KDGetRestraintsPalette(C) : "";
+	if ((KDToggles.ForcePalette || outfit?.palette || restraintPalette || (C.metadata?.palette || C.Palette))
+		&& (KDToggles.ApplyPaletteTransform
+			&& (outfit?.palette || (C.metadata?.palette || C.Palette)
+				|| !KDDefaultPalette || GetPalette(C, KDDefaultPalette)))) {
+		palette = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
+			|| restraintPalette
+			|| (C.metadata?.palette || C.Palette) || KDDefaultPalette;
+	}
+	return palette;
 }

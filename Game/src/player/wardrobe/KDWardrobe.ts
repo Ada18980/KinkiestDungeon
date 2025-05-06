@@ -704,7 +704,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		KDToggles.PaletteColorPicker = true;
 		KDPropsSlider = false;
 		return true;
-	}, true, X - 240 + 150, YY + 40, 140, 30, 
+	}, true, X - 240 + 145, YY + 40, 140, 30, 
 	TextGet("KDColorPickerPalette"), KDBaseWhite, undefined, undefined, undefined,
 	KDPropsSlider || !KDToggles.PaletteColorPicker, 
 	(Model.factionFilters && Model.factionFilters[KDCurrentLayer]) ? KDTextGray3 : KDButtonColor);
@@ -713,13 +713,13 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		KDToggles.PaletteColorPicker = false;
 		KDPropsSlider = false;
 		return true;
-	}, true, X - 240 + 300, YY + 40, 140, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
+	}, true, X - 240 + 290, YY + 40, 140, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
 	KDToggles.PaletteColorPicker || KDPropsSlider || KDToggles.SimpleColorPicker, KDButtonColor);
 	DrawButtonKDEx("tab_ColorPickerProperties", (_b) => {
 		KDPropsSlider = true;
 		KDToggles.PaletteColorPicker = false;
 		return true;
-	}, true, X - 240 + 450, YY + 40, 140, 30, TextGet("KDColorPickerProperties"), KDBaseWhite, undefined, undefined, undefined,
+	}, true, X - 240 + 435, YY + 40, 140, 30, TextGet("KDColorPickerProperties"), KDBaseWhite, undefined, undefined, undefined,
 	!KDPropsSlider, KDButtonColor);
 
 
@@ -1442,6 +1442,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			if (!C.metadata) {
 				C.metadata = DefaultOutfitMetadata();
 			}
+			if (!C.metadata.customColors) C.metadata.customColors = {};
 			C.metadata.customColors[selectedPalette] = palette;
 		}
 		let temporaryNoLayer = false;
@@ -1537,6 +1538,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					C.metadata = DefaultOutfitMetadata();
 				}
 				if (palette && Object.values(palette).length > 0) {
+					if (!C.metadata.customColors) C.metadata.customColors = {};
 					if (!C.metadata.customColors[selectedPalette]) 
 						C.metadata.customColors[selectedPalette] = KDCurrentCharacterPalettes[selectedPalette] || {};
 					C.metadata.customColors[selectedPalette][palettelayer] = palette[palettelayer];
