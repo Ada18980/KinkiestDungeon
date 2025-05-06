@@ -18,8 +18,8 @@ function KinkyDungeonTeardownCrashHandler(): void {
  * Error event handler for uncaught errors
  * @param event - The error event
  */
-function KinkyDungeonOnUncaughtError(event: ErrorEvent): void {
-	const report = KinkyDungeonGenerateErrorReport(event);
+async function KinkyDungeonOnUncaughtError(event: ErrorEvent): Promise<void> {
+	const report = await KinkyDungeonGenerateErrorReport(event);
 	KinkyDungeonShowCrashReportModal(report);
 }
 
@@ -28,13 +28,13 @@ function KinkyDungeonOnUncaughtError(event: ErrorEvent): void {
  * @param event - The error event
  * @returns The report
  */
-function KinkyDungeonGenerateErrorReport(event: ErrorEvent): string {
+async function KinkyDungeonGenerateErrorReport(event: ErrorEvent): Promise<string> {
 	return [
 		KinkyDungeonCrashReportErrorDetails(event),
 		KinkyDungeonCrashReportStateData(),
 		KinkyDungeonCrashReportDiagnostics(),
 		KinkyDungeonCrashReportDeviceDetails(),
-		KinkyDungeonCrashReportSaveData(),
+		await KinkyDungeonCrashReportSaveData(),
 	].join("\n\n");
 }
 
@@ -107,11 +107,11 @@ function KinkyDungeonCrashReportErrorDetails(event: ErrorEvent): string {
  * Generates a report string containing the current save state of the game
  * @returns The report
  */
-function KinkyDungeonCrashReportSaveData(): string {
+async function KinkyDungeonCrashReportSaveData(): Promise<string> {
 	let saveData = localStorage.getItem("KinkyDungeonSave");
 	if (!saveData) {
 		try {
-			saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonGenerateSaveData()));
+			saveData = await KinkyDungeonCompressSave (JSON.stringify (KinkyDungeonGenerateSaveData()), SaveType.Game);
 		} catch (error) {
 			saveData = "Could not locate or generate save data";
 		}
