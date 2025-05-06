@@ -300,7 +300,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Use character palette for default outfit
 默认装备使用角色调色板
 
-# - Allow two rows of buffs when collapsed
+- Allow two rows of buffs when collapsed
+折叠时显示两行增益效果
 - Show Background Art
 显示背景
 # :: KDToggleBackgrounds
@@ -321,7 +322,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 快速背包物品仅对自己使用
 - Override Outfit when Loading Save
 加载存档时覆盖服装
-# - Override Outfit
+- Override Outfit
+覆盖服装
 - Save Outfits within Save Files
 将服装数据附加到存档内
 - Show free characters on map
@@ -448,6 +450,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 隐藏乳头穿孔
 - Use default palette when no outfit is worn
 当未穿着衣物时使用默认调色
+# - Apply worn restraint palettes to player
 - Flip Player Display
 翻转玩家显示
 - Grayscale when Blind
@@ -3680,7 +3683,8 @@ Devious Dungeon Challenge 已启用。
 # :: KinkyDungeonWeaponCrit
 :: KinkyDungeonWeaponBindCrit
 暴击束缚：
-# - Does not Crit
+- Does not Crit
+无法暴击
 - SP Cost: 
 体力消耗：
 - Cut PWR: AMNT%
@@ -7382,6 +7386,7 @@ SHRINETYPE石碑
 # :: KDPalette
 # :: KDMapMod_
 # :: KDMapMod_None
+# :: KDPaletteLayer_None
 - Nevermere Trainers
 “奈文米尔”训练师
 - DressUp Co.
@@ -11840,6 +11845,7 @@ Ars烟火
 轻型
 :: KDWeaponTag_light
 轻型
+# :: KDPaletteLayer_LightNeutral
 - Shadow
 暗影
 # :: KinkyDungeonFiltershadow
@@ -26106,6 +26112,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 重置属性！
 - Export All Layers
 导出所有图层
+# - Reset All Layers
 - Export All Props
 导出所有属性
 - Copy
@@ -26274,6 +26281,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_PointyAhoge_l_Ahoge
 - Catsuit
 全包胶衣
+# :: m_Catsuit
+# :: KDPaletteLayer_Catsuit
 - Torso Lower
 躯干下部
 - Torso Upper
@@ -35250,6 +35259,7 @@ Aura刘海(右后)
 # :: m_FashionMaidGag_l_Highlights
 # :: m_DusterGag_l_Highlights
 # :: m_FashionDusterGag_l_Highlights
+# :: KDPaletteLayer_Highlight
 # - DressSkirtOverKneel
 - ChineseBra
 旗袍(胸)
@@ -43543,8 +43553,10 @@ TargetEnemy 抵抗捆绑并减少受到的 AMNT 捆绑！
 
 - A powerful wind pushes you away!!!
 一阵强风把你吹走了！！！
-# - You are pulled toward your attacker and encased in rubber!
-# - You are pulled toward your attacker!
+- You are pulled toward your attacker and encased in rubber!
+对手将你拉向她，并用橡胶包住你！
+- You are pulled toward your attacker!
+对手将你拉向她！
 
 - Staff of Ropes
 绳索法杖
@@ -44594,6 +44606,9 @@ UI 就是这样。|如果您想要更多的实践教程，请进入右上角的�
 - Challenge Settings:
 挑战设置 : ‎
 
+# - Palette
+# - Pick a palette in Extra Options
+# - Open Extra Options to preview
 - Advanced
 高级
 - Expert Tools
@@ -48452,6 +48467,10 @@ N/A
 更多选项
 - Preview without Armor
 无护甲预览
+# - Preview Latex
+# - Preview Metal
+# - Preview Leather
+# - Preview Rope
 
 
 # - FLR-DGN
@@ -48909,8 +48928,10 @@ ENMY 解开了 ITMN 的锁!
 黑耀宝珠
 - Mithril Orbs
 秘银宝珠
-# - Rubbery Grasp
-# - Rubbery Grip
+- Rubbery Grasp
+橡胶擒握
+- Rubbery Grip
+橡胶抓手
 
 
 
@@ -50063,11 +50084,11 @@ ${EnemyName} 受到了 ${Amount} 点${Type}伤害。
 - ${EnemyName} avoided ${Amount} ${Type} damage.
 ${EnemyName} 避开了 ${Amount} 点${Type}伤害。
 - ${EnemyName} dodged.
-${EnemyName} 闪避了。
+${EnemyName} 躲过了你的攻击。
 - ${EnemyName} spent a token to dodge.
 ${EnemyName} 花费了一个 token 以闪避。
 - ${EnemyName} spent a token to block ${Amount} ${Type} damage.
-${EnemyName} 花费了一个 token 以格挡 ${Amount} 点${Type}伤害。
+${EnemyName} 花费了一个 token 来格挡 ${Amount} 点 ${Type} 伤害。
 
 
 
@@ -50085,7 +50106,8 @@ ${EnemyName} 花费了一个 token 以格挡 ${Amount} 点${Type}伤害。
 - The cursed latex kitty's rubbery coating casts itself into locks!
 被诅咒的乳胶猫娘身上的橡胶涂层变成了锁！
 
-# - The curse of the Latex Kitty takes hold on your ${Item}
+- The curse of the Latex Kitty takes hold on your ${Item}
+你的 ${Item} 染上了乳胶猫娘的诅咒
 
 - The Latex Kitty curse on the RestraintName relaxes and releases you.
 RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
@@ -50095,7 +50117,15 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 乳胶猫娘诅咒使它紧紧地包裹着你。
 - You transfer some of your ${Item}'s curse to ${Target}.
 你将你 ${Item} 上的诅咒效果部分转移给了 ${Target}。
-# - You transfer the remainder of your ${Item}'s curse to ${Target}.
-# - The curse will deal 25% damage as residual curse transfers.
+- You transfer the remainder of your ${Item}'s curse to ${Target}.
+你将你 ${Item} 上剩余的诅咒效果转移给了 ${Target}。
+- The curse will deal 25% damage as residual curse transfers.
+在残余诅咒转移时，该诅咒造成 25% 的伤害。
 
-# - This is the total amount of Latex Kitty Curse you possess.
+- This is the total amount of Latex Kitty Curse you possess.
+这是你所拥有的乳胶猫娘诅咒的总量。
+
+# - Dark
+
+# - Override Brightness
+# - Desaturate
