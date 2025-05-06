@@ -162,26 +162,28 @@ function KinkyDungeonDressPlayer (
 
 	let restraintModels = {};
 
+	let dressJob: Promise<void>;
 	let CurrentDress = Character == KinkyDungeonPlayer ? KinkyDungeonCurrentDress
 		: (Character == KDPreviewModel ? KinkyDungeonCurrentDress : (KDCharacterDress.get(Character) || "Bandit"));
 	let DressList = noDressOutfit ? [] : KDGetDressList()[CurrentDress];
 	if (!noDressOutfit && !forceUseOutfit && KDNPCStyle.get(Character)?.customOutfit) {
-		DressList = [];
-		for (let a of JSON.parse(DecompressB64(KDNPCStyle.get(Character)?.customOutfit))) {
-			if (a.Model && !KDModelIsProtected(a.Model) && !a.Model.Restraint && !a.Model.Cosplay) {
-				DressList.push({
-					Item: a.Model.Name || a.Model,
-					Group: a.Model.Group || a.Model.Name || a.Model,
-					Color: KDBaseWhite,
-					Lost: false,
-					Filters: a.Model.Filters || a.Filters,
-					Properties: a.Model.Properties || a.Properties,
-					factionFilters: a.Model.factionFilters || a.factionFilters,
+		dressJob = (async() => {
+			DressList = [];
+			for (let a of JSON.parse(await KinkyDungeonDecompressSave (KDNPCStyle.get (Character)?.customOutfit, SaveType.Outfit))) {
+				if (a.Model && !KDModelIsProtected(a.Model) && !a.Model.Restraint && !a.Model.Cosplay) {
+					DressList.push({
+						Item: a.Model.Name || a.Model,
+						Group: a.Model.Group || a.Model.Name || a.Model,
+						Color: KDBaseWhite,
+						Lost: false,
+						Filters: a.Model.Filters || a.Filters,
+						Properties: a.Model.Properties || a.Properties,
+						factionFilters: a.Model.factionFilters || a.factionFilters,
+					},);
 
-				},);
-
+				}
 			}
-		}
+		})();
 	}
 
 	let forceCustomFaction = !!customFaction;
@@ -221,30 +223,34 @@ function KinkyDungeonDressPlayer (
 			updateExpression: false,
 			Character: Character,
 			extraForceDress: undefined,
-			Wornitems: (npcRestraints || (KDGetCharacterID(Character) && KDGameData.NPCRestraints[KDGetCharacterID(Character)])) ?
-				Object.values(npcRestraints || KDGameData.NPCRestraints[KDGetCharacterID(Character)])
-					.filter((rest) => {return rest.events})
-					.map((rest) => {return rest.id;})
-			: [],
-			NPCRestraintEvents: KDGetCharacterID(Character) ?
-			KDGameData.NPCRestraints[KDGetCharacterID(Character)]
-				: undefined,
+			Wornitems: (npcRestraints || (KDGetCharacterID(Character) && KDGameData.NPCRestraints[KDGetCharacterID(Character)]))
+			           ? Object.values(npcRestraints || KDGameData.NPCRestraints[KDGetCharacterID(Character)])
+			                   .filter((rest) => {return rest.events})
+			                   .map((rest) => {return rest.id;})
+			           : [],
+			NPCRestraintEvents: KDGetCharacterID(Character)
+			                    ? KDGameData.NPCRestraints[KDGetCharacterID(Character)]
+			                    : undefined,
 		};
 
 
-		if (DressList) {
-			for (let clothes of DressList) {
-				if (clothes.Properties && !clothes.Lost) {
-					for (let p of Object.values(clothes.Properties)) {
-						if (p.HideRestraintsTags) {
-							for (let t of p.HideRestraintsTags) {
-								data.hideShrines[t] = true;
+		// Ensure the DressList has been populated before dancing on it.
+		if (dressJob) {
+			dressJob.then (() => {
+				if (DressList) {
+					for (let clothes of DressList) {
+						if (clothes.Properties && !clothes.Lost) {
+							for (let p of Object.values(clothes.Properties)) {
+								if (p.HideRestraintsTags) {
+									for (let t of p.HideRestraintsTags) {
+										data.hideShrines[t] = true;
+									}
+								}
 							}
 						}
 					}
 				}
-			}
-
+			});
 		}
 
 
