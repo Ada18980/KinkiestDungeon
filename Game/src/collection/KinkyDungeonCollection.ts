@@ -517,15 +517,15 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			KDRefreshCharacter.set(KDSpeakerNPC, true);
 			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
-		
+
 			//}
 		};
 		if (value.customOutfit) {
 			let outfit = value.customOutfit;
-			KDWardrobeRevertCallback = () => {
+			KDWardrobeRevertCallback = async () => {
 				KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
 				if (outfit)
-					CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
+					await CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
 				CharacterRefresh(KDSpeakerNPC);
 				KDInitProtectedGroups(KDSpeakerNPC);
 				KDRefreshCharacter.set(KDSpeakerNPC, true);
@@ -809,7 +809,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			NPCTags.set(KDSpeakerNPC, KinkyDungeonUpdateRestraints(KDSpeakerNPC, value.id, 0));
 			KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
 		}
-		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
+		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false,
 			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
 
 		
@@ -958,7 +958,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 
 	} else {
-		
+
 		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 			x + 20,
 			y + 80,
@@ -1355,8 +1355,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			DrawCharacter(char,
 				XX + size/2.7,
 				YY + size*0.2,
-				size/1300, false, kdcanvas, undefined, 
-				CHIBIMOD, 101, false, undefined, 
+				size/1300, false, kdcanvas, undefined,
+				CHIBIMOD, 101, false, undefined,
 				value.name + "_coll," + value.id, CHIBIMODEND);
 
 		}
@@ -1481,8 +1481,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 				DrawCharacter(char,
 					XX + size/2.7,
 					YY + size*0.2,
-					size/1300, false, kdcanvas, undefined, 
-					CHIBIMOD, 101, false, undefined, 
+					size/1300, false, kdcanvas, undefined,
+					CHIBIMOD, 101, false, undefined,
 					value.name + "_coll," + value.id, CHIBIMODEND);
 
 			}
@@ -2166,5 +2166,5 @@ function KDGenCharForCollection(value: KDCollectionEntry, enemyType: enemy) {
 				KDSpeakerNPC, true);
 		}
 		KDRefreshCharacter.set(KDSpeakerNPC, true);
-	} 
+	}
 }

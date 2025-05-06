@@ -144,7 +144,7 @@ function KinkyDungeonDressPlayer (
 	customPlayerTags?:  Map<string, boolean>,
 	customFaction?:     string,
 	noDressOutfit?:     boolean,
-	forceUseOutfit?:     boolean
+	forceUseOutfit?:    boolean
 )
 {
 	if (!Character) Character = KinkyDungeonPlayer;
@@ -187,7 +187,7 @@ function KinkyDungeonDressPlayer (
 	let forceCustomFaction = !!customFaction;
 
 	if ((KinkyDungeonState != "Wardrobe" || KDShowCharacterPalette)) {
-		
+
 		if (Character == KinkyDungeonPlayer) {
 			let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 			let restraintPalette = KDToggles.RestraintPalette ? KDGetRestraintsPalette(Character) : "";
@@ -201,18 +201,17 @@ function KinkyDungeonDressPlayer (
 			}
 		} else {
 			if (customFaction == undefined) {
-				let palette = 
+				let palette =
 					(Character.metadata?.palette || Character.Palette);
 				if (palette) {
 					customFaction = palette;
 				}
 			}
 		}
-		
+
 	}
 
 	try {
-
 		if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 		let data = {
 			hideShrines: {},
@@ -548,7 +547,7 @@ function KinkyDungeonDressPlayer (
 						}
 
 
-						let item = KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, 
+						let item = KDInventoryWear(Character, clothes.Item, clothes.Group, undefined,
 							clothes.Color, filters, clothes.Properties, clothes.factionFilters);
 						alreadyClothed[clothes.Group || clothes.Item] = true;
 						if (item) {
@@ -620,10 +619,10 @@ function KinkyDungeonDressPlayer (
 							}
 						}
 					}
-					
 
-					KDInventoryWear(Character, clothes.Item, clothes.Group, undefined, 
-						clothes.Color, filters, 
+
+					KDInventoryWear(Character, clothes.Item, clothes.Group, undefined,
+						clothes.Color, filters,
 						clothes.Properties, clothes.factionFilters);
 					alreadyClothed[clothes.Group || clothes.Item] = true;
 				}
@@ -851,7 +850,7 @@ function KinkyDungeonDressPlayer (
 			}
 			if (!KDCurrentModels.get(Character)?.Poses?.Hair && KDModelHair[hairstyle]) {
 				for (let hair of Object.values(KDModelHair[hairstyle])) {
-					KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters, 
+					KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters,
 						hair.Properties, hair.factionFilters);
 					ReUpdate = true;
 				}
@@ -873,7 +872,7 @@ function KinkyDungeonDressPlayer (
 		}
 		if (!KDCurrentModels.get(Character)?.Poses?.Cosplay && KDModelCosplay[cosplaystyle]) {
 			for (let cosplay of Object.values(KDModelCosplay[cosplaystyle])) {
-				KDInventoryWear(Character, cosplay.Item, undefined, undefined, undefined, 
+				KDInventoryWear(Character, cosplay.Item, undefined, undefined, undefined,
 					cosplay.Filters,
 					 cosplay.Properties, cosplay.factionFilters);
 				ReUpdate = true;
@@ -966,8 +965,8 @@ function KinkyDungeonWearForcedClothes(C: Character, restraints?: item[], extraF
 						}
 					}
 				}
-				KDInventoryWear(C, dress.Model, undefined, undefined, undefined, 
-					dress.inheritFilters ? KDRestraint(inv).Filters : (filters), 
+				KDInventoryWear(C, dress.Model, undefined, undefined, undefined,
+					dress.inheritFilters ? KDRestraint(inv).Filters : (filters),
 					Properties);
 			});
 		}
@@ -1006,7 +1005,7 @@ function KDInventoryWear(Character: Character, AssetName: string, AssetGroup: st
 ): Item {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
 	if (!M) return;
-	let item = KDAddModel(Character, AssetGroup, M, color || "Default", filters, undefined, 
+	let item = KDAddModel(Character, AssetGroup, M, color || "Default", filters, undefined,
 		Properties, factionFilters);
 	//CharacterAppearanceSetItem(KinkyDungeonPlayer, AssetGroup, A, color || A.DefaultColor,0,-1, false);
 	CharacterRefresh(Character, true);
@@ -1062,7 +1061,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 		let restraint = KDRestraint(inv);
 		let AssetGroup = restraint.AssetGroup ? restraint.AssetGroup : restraint.Group;
 		let faction = (inv.forceFaction != undefined) ? inv.forceFaction : (((forceCustomFaction || !inv.faction) && customFaction) ? customFaction : (inv.faction ? inv.faction : ""));
-				
+
 		// faction color system
 		let filters =  (restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters) ?
 			JSON.parse(JSON.stringify(restraint.Filters || (ModelDefs[restraint.Model || restraint.Asset])?.Filters))
@@ -1226,7 +1225,7 @@ function KDGetExtraPoses(C: Character): string[] {
 					poses.push("Pulled");
 				}
 			}
-			
+
 		}
 	}
 	return poses;
@@ -1290,23 +1289,22 @@ function KDUpdateTempPoses(Character: Character) {
 }
 
 /**
- * 
+ *
  * @param C character to get palettes for (optional)
  * @param safe safe = deep copy, otherwise expecting reference only (no modify)
  */
 function KDGetPalettes(C: Character, safe?: boolean, includeDefault: boolean = true, defaultOverride?: Record<string, Record<string, LayerFilter>>): Record<string, Record<string, LayerFilter>> {
 	if (!defaultOverride) defaultOverride = KDDefaultWardrobePalettes;
-	
+
 	if (C?.metadata?.customColors) {
 		let newPalettes: Record<string, Record<string, LayerFilter>> = {};
 		for (let palette in KinkyDungeonFactionFilters) {
 			newPalettes[palette] = KinkyDungeonFactionFilters[palette];
-			
 		}
 		for (let palette in C.metadata.customColors) {
 			newPalettes[palette] = C.metadata.customColors[palette];
 		}
-		
+
 		if (includeDefault) {
 			for (let palette in defaultOverride) {
 				if (newPalettes[palette]) continue;
@@ -1325,7 +1323,7 @@ function KDGetPalettes(C: Character, safe?: boolean, includeDefault: boolean = t
 		if (includeDefault) {
 			for (let palette in defaultOverride) {
 				if (newPalettes[palette]) continue;
-				newPalettes[palette] = defaultOverride[palette];				
+				newPalettes[palette] = defaultOverride[palette];
 			}
 		}
 		return safe ? structuredClone(newPalettes) : newPalettes;
@@ -1434,5 +1432,5 @@ function KDGetPlayerPalette(C: Character) {
 }
 
 let DefaultStyles = [
-	"BlueHair","GreenHair", "WhiteHair", "Ice", "Water", "Earth", "Air", "Fire", "RedHair", 
+	"BlueHair","GreenHair", "WhiteHair", "Ice", "Water", "Earth", "Air", "Fire", "RedHair",
 ];
