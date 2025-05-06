@@ -2015,11 +2015,12 @@ function KinkyDungeonHandleHUD() {
 				return true;
 			}
 			if (MouseIn(1500, 320, 300, 64)) {
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
-				KinkyDungeonState = "Save";
-				ElementCreateTextArea("saveDataField");
-				ElementValue("saveDataField", saveData);
-
+				(async () => {
+					let saveData = await KinkyDungeonCompressSave (JSON.stringify (KinkyDungeonSaveGame(true)), SaveType.Game);
+					KinkyDungeonState = "Save";
+					ElementCreateTextArea("saveDataField");
+					ElementValue("saveDataField", saveData);
+				})();
 
 				return true;
 			}
@@ -3302,7 +3303,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				}
 			}
 		} else {
-			if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) && 
+			if (((!KDMinBuffX && XX > minXX) || (KDMinBuffX && XX > KDMinBuffX)) &&
 				(KDStatsSkipLine[currCategory] || KDStatsSkipLineBefore[stat.category]) && currCategory != stat.category) {
 
 				if (KDToggleShowAllBuffs) {

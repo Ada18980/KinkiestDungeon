@@ -1534,7 +1534,7 @@ function KinkyDungeonRun() {
 		let ss = KDSaveSlot;
 		KDSendMusicToast(TextGet("KDSaving"));
 		let sd = JSON.stringify(KDSaveQueue.splice(0, 1)[0]);
-		KinkyDungeonCompressSave(sd).then(
+		KinkyDungeonCompressSave(sd, SaveType.Game).then(
 			(data) => {
 					try {
 						localStorage.setItem('KinkyDungeonSave', data);
@@ -4827,16 +4827,18 @@ function KinkyDungeonDBSave(saveslot: number, gamecode?: string) {
 		console.error("Save slot is not defined");
 		return; // This is an invalid call or the save slot has not been set.
 	}
-	if (gamecode == undefined) {
-		// We are going to use the current game state as a save code.
-		save = LZString.compressToBase64(JSON.stringify(KinkyDungeonGenerateSaveData()));
-	}
-	else {
-		save = gamecode;
-	}
-
-	// Get the savegame database
-	KinkyDungeonDBOpen().then((db) => {
+	(async () => {
+		if (gamecode == undefined) {
+			// We are going to use the current game state as a save code.
+			save = await KinkyDungeonCompressSave (JSON.stringify (KinkyDungeonGenerateSaveData()), SaveType.Game);
+		}
+		else {
+			save = gamecode;
+		}
+	})().then (() => {
+		// Get the savegame database
+		return KinkyDungeonDBOpen();
+	}).then ((db) => {
 		// Create a transaction
 		const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
 		const store = transaction.objectStore(KDGameSaveDBStoreName);

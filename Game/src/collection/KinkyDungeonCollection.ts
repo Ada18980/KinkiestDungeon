@@ -494,71 +494,72 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", () => {
-		if (KDSoundEnabled())
-			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
-		//KDSpeakerNPC = null;
-		KinkyDungeonState = "Wardrobe";
-		KDCanRevertFlag = value.customOutfit != undefined;
-		ForceRefreshModels(KDSpeakerNPC);
-		KDOriginalValue = "";
-		CharacterReleaseTotal(KDSpeakerNPC);
-		KDWardrobeCallback = () => {
-			UpdateModels(KDSpeakerNPC);
+		(async () => {
+			if (KDSoundEnabled())
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LightJingle" + ".ogg");
+			//KDSpeakerNPC = null;
+			KinkyDungeonState = "Wardrobe";
+			KDCanRevertFlag = value.customOutfit != undefined;
+			ForceRefreshModels(KDSpeakerNPC);
+			KDOriginalValue = "";
+			CharacterReleaseTotal(KDSpeakerNPC);
+			KDWardrobeCallback = async () => {
+				UpdateModels(KDSpeakerNPC);
+				KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
+				KDRefreshCharacter.set(KDSpeakerNPC, true);
+				KDDressWardrobeChar(KDSpeakerNPC, false);
+
+				/*  FIXME: After setting up `value2`, nothing is done with it?  */
+				let value2 = value;
+				//if (KDOriginalValue) {
+				value2.customOutfit = await KinkyDungeonCompressSave (AppearanceItemStringify(KDSpeakerNPC.Appearance), SaveType.Outfit);
+				value2.Palette = KDSpeakerNPC.Palette;
+				value2.metadata = KDSpeakerNPC.metadata;
+
+				KDRefreshCharacter.set(KDSpeakerNPC, true);
+				KinkyDungeonCheckClothesLoss = true;
+				KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
+				//}
+			};
+			if (value.customOutfit) {
+				let outfit = value.customOutfit;
+				KDWardrobeRevertCallback = async () => {
+					KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
+					if (outfit)
+						await CharacterAppearanceRestore(KDSpeakerNPC, await KinkyDungeonDecompressSave (outfit, SaveType.Outfit),false, true);
+					CharacterRefresh(KDSpeakerNPC);
+					KDInitProtectedGroups(KDSpeakerNPC);
+					KDRefreshCharacter.set(KDSpeakerNPC, true);
+					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+				};
+				KDWardrobeResetCallback = () => {
+					KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
+					delete value.customOutfit;
+				};
+			} else {
+				KDWardrobeRevertCallback = () => {
+					KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
+					delete value.customOutfit;
+					KDRefreshCharacter.set(KDSpeakerNPC, true);
+					KinkyDungeonDressPlayer(KDSpeakerNPC, true);
+				};
+				KDWardrobeResetCallback = null;
+			}
+
+			KDPlayerSetPose = false;
+			KDInitCurrentPose(true,KDSpeakerNPC);
+			KinkyDungeonInitializeDresses();
+			KDUpdateModelList();
+			KDRefreshOutfitInfo();
+			let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+			let orig = itt ? JSON.parse (await KinkyDungeonDecompressSave (itt, SaveType.Outfit)).appearance || itt
+				       : "";
+			let current = await KinkyDungeonCompressSave (AppearanceItemStringify (KinkyDungeonPlayer.Appearance), SaveType.Outfit);
+			if (orig != current) KDOriginalValue = orig;
+			ForceRefreshModelsAsync(KDSpeakerNPC);
 			KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
-			KDRefreshCharacter.set(KDSpeakerNPC, true);
-			KDDressWardrobeChar(KDSpeakerNPC, false);
-
-			let value2 = value;
-			//if (KDOriginalValue) {
-			value2.customOutfit = LZString.compressToBase64(AppearanceItemStringify(KDSpeakerNPC.Appearance));
-			value2.Palette = KDSpeakerNPC.Palette;
-			value2.metadata = KDSpeakerNPC.metadata;
-
-			KDRefreshCharacter.set(KDSpeakerNPC, true);
-			KinkyDungeonCheckClothesLoss = true;
-			KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
-
-			//}
-		};
-		if (value.customOutfit) {
-			let outfit = value.customOutfit;
-			KDWardrobeRevertCallback = async () => {
-				KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
-				if (outfit)
-					await CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
-				CharacterRefresh(KDSpeakerNPC);
-				KDInitProtectedGroups(KDSpeakerNPC);
-				KDRefreshCharacter.set(KDSpeakerNPC, true);
-				KinkyDungeonDressPlayer(KDSpeakerNPC, true);
-			};
-			KDWardrobeResetCallback = () => {
-				KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
-				delete value.customOutfit;
-			};
-		} else {
-			KDWardrobeRevertCallback = () => {
-				KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
-				delete value.customOutfit;
-				KDRefreshCharacter.set(KDSpeakerNPC, true);
-				KinkyDungeonDressPlayer(KDSpeakerNPC, true);
-			};
-			KDWardrobeResetCallback = null;
-		}
-
-		KDPlayerSetPose = false;
-		KDInitCurrentPose(true,KDSpeakerNPC);
-		KinkyDungeonInitializeDresses();
-		KDUpdateModelList();
-		KDRefreshOutfitInfo();
-		let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
-		let orig = itt ?
-			JSON.parse(LZString.decompressFromBase64(itt)).appearance
-			|| itt : "";
-		let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
-		if (orig != current) KDOriginalValue = orig;
-		ForceRefreshModelsAsync(KDSpeakerNPC);
-		KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
-		KDDressWardrobeChar(KDSpeakerNPC, true);
+			KDDressWardrobeChar(KDSpeakerNPC, true);
+		})();
 		return true;
 	}, true, x - 90, y + spacing * II++, 80, 80, "", KDBaseWhite,
 		KinkyDungeonRootDirectory + "UI/Dress.png", undefined, undefined,
