@@ -76,8 +76,9 @@ function AppearanceItemStringify(Item: Item[]): string {
  * @param backup - The serialised appearance to restore
  * @param clothesOnly - The serialised appearance to restore
  */
-function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: boolean = false, noProtected: boolean = false): void {
-	let parsed = JSON.parse(LZString.decompressFromBase64(backup) || backup);
+async function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: boolean = false, noProtected: boolean = false): Promise<void>
+{
+	let parsed = JSON.parse(await KinkyDungeonDecompressSave (backup, SaveType.Outfit) || backup);
 	let newAppearance = AppearanceItemParse(parsed?.metadata ? parsed.appearance : backup);
 	C.metadata = parsed.metadata;
 	if (!clothesOnly) {

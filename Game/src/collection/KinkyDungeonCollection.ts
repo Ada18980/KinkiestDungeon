@@ -490,7 +490,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			centered: true
 		})) {
 
-		DrawTextFitKD(TextGet("KDZoomNPC"), x - 100, y + spacing * (II-0.5), 500, 
+		DrawTextFitKD(TextGet("KDZoomNPC"), x - 100, y + spacing * (II-0.5), 500,
 		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("dressNPC", () => {
@@ -518,15 +518,15 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			KDRefreshCharacter.set(KDSpeakerNPC, true);
 			KinkyDungeonCheckClothesLoss = true;
 			KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
-		
+
 			//}
 		};
 		if (value.customOutfit) {
 			let outfit = value.customOutfit;
-			KDWardrobeRevertCallback = () => {
+			KDWardrobeRevertCallback = async () => {
 				KDShowCharacterPalette = false; KDWardrobePreviewRestraints = "";
 				if (outfit)
-					CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
+					await CharacterAppearanceRestore(KDSpeakerNPC, DecompressB64(outfit),false, true);
 				CharacterRefresh(KDSpeakerNPC);
 				KDInitProtectedGroups(KDSpeakerNPC);
 				KDRefreshCharacter.set(KDSpeakerNPC, true);
@@ -566,7 +566,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		true, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
-		DrawTextFitKD(TextGet("KDDressNPC"), x -100, y + spacing * (II-0.5), 500, 
+		DrawTextFitKD(TextGet("KDDressNPC"), x -100, y + spacing * (II-0.5), 500,
 		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 	if (DrawButtonKDEx("toggleInfo", () => {
@@ -578,7 +578,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			centered: true
 		})) {
 
-		DrawTextFitKD(TextGet("KDInfoNPC"), x - 100, y + spacing * (II-0.5), 500, 
+		DrawTextFitKD(TextGet("KDInfoNPC"), x - 100, y + spacing * (II-0.5), 500,
 		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 
@@ -592,7 +592,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		!KDRenameNPC, KDButtonColorIntense, undefined, undefined, {
 			centered: true
 		})) {
-		DrawTextFitKD(TextGet("KDRenameNPC"), x - 100, y + spacing * (II-0.5), 500, 
+		DrawTextFitKD(TextGet("KDRenameNPC"), x - 100, y + spacing * (II-0.5), 500,
 		KDBaseWhite, KDTextGray0, undefined, "right");
 	}
 
@@ -627,16 +627,16 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 	if (KDRenameNPC) {
 		KDDrawPronounPicker(
-			x + 220 + KDHUDGlobals.PronounPicker_CollectionOptions.offX, y + 50 + 20, KDGameGlobals.Pronouns, 
+			x + 220 + KDHUDGlobals.PronounPicker_CollectionOptions.offX, y + 50 + 20, KDGameGlobals.Pronouns,
 			value.pronoun|| "She", (pronoun) => {
-				
+
 				KDSendInput("renamenpc", {
 					id: value.id,
 					newPronoun: pronoun,
 				});
 			}, KDHUDGlobals.PronounPicker_CollectionOptions
 		);
-		
+
 		let TF = KDTextField("RenameNPC", x + 220 - 150, y + 50 - 36, 300,
 			36, "text", "", "45");
 		if (TF.Created) {
@@ -656,7 +656,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 					newPronoun: value.origpronoun || ""
 				});
 				return true;
-			}, true, x + 220 - 130, y + 50 + 70, 260, 24, 
+			}, true, x + 220 - 130, y + 50 + 70, 260, 24,
 			TextGet("KDRenameOrigNPC")
 				.replace("NME", value.origname != undefined ? value.origname : value.name), KDBaseWhite);
 	}
@@ -672,15 +672,15 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 		if (KDToggleCollectionInfo) {
 			let II = -2;
-			DrawTextFitKD(TextGet("KDCollectionInfo_Type") + TextGet("Name" + enemyType.name), x + 20, 
+			DrawTextFitKD(TextGet("KDCollectionInfo_Type") + TextGet("Name" + enemyType.name), x + 20,
 			y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
-			
+
 			if (KDLanguagesThatShowPronoun.includes(TranslationLanguage))
-				DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + TextGet("KDPronoun_" + (value.pronoun || "")), 
+				DrawTextFitKD(TextGet("KDCollectionInfo_Pronouns") + TextGet("KDPronoun_" + (value.pronoun || "")),
 				x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 
 			if (value.Faction && !KDFactionNoCollection.includes(value.Faction) && (KinkyDungeonTooltipFactions.includes(value.Faction) || !KinkyDungeonHiddenFactions.has(value.Faction)))
-				DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction), 
+				DrawTextFitKD(TextGet("KDFormerFaction") + TextGet("KinkyDungeonFaction" + value.Faction),
 			x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 			else II++;
 
@@ -748,8 +748,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				DrawTextFitKD(str, x + 20, y + 500 + 20*II++, 500, KDBaseWhite, KDTextGray05, 18, "left");
 			}
 
-			
-		
+
+
 			if (KDDrawNPCBars(value, x + 0, y + 730, 440) > 0)
 				if (KDGameData.Collection[value.id + ""] && value.escapegrace) {
 					let icon = "escapegrace";
@@ -763,8 +763,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				}
 
 		}
-		
-		
+
+
 
 
 
@@ -812,10 +812,10 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			NPCTags.set(KDSpeakerNPC, KinkyDungeonUpdateRestraints(KDSpeakerNPC, value.id, 0));
 			KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
 		}
-		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
+		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false,
 			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);
 
-		
+
 
 		if (KDToggleBigView && CollectionZoominDebug) {
 			let zoomX = 0;
@@ -825,7 +825,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			let height = KDToggleBigView || KDToggleCollectionInfo ? 830 : 730;
 			let spriteX = x + 20 + (KDToggleBigView ? 0 : 100);
 			let spriteY = y + 60;
-			
+
 			let spriteZoom = NPCTooltipZoomCurrent * (800)/1000;
 
 			if (MouseIn(
@@ -856,14 +856,14 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 			}
 
 
-			
+
 
 			let mesh = DrawCharacter(KDSpeakerNPC,
 				 (NPCTooltipZoomX * 500 * (width)/500)
 					+ spriteX,
 				(NPCTooltipZoomY * 1000 * (height)/1000)
 					+ spriteY,
-				KDToggleBigView ? (800/1000) : (400/1000), false, 
+				KDToggleBigView ? (800/1000) : (400/1000), false,
 				collectionNPCContainer, undefined, undefined, 120, false);
 			if (mesh) {
 				mesh.scale.x = spriteZoom;
@@ -961,7 +961,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 
 	} else {
-		
+
 		KDDraw(kdcanvas, kdpixisprites, value.name + "_coll," + value.id, KinkyDungeonRootDirectory + dir + sp + ".png",
 			x + 20,
 			y + 80,
@@ -1358,8 +1358,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			DrawCharacter(char,
 				XX + size/2.7,
 				YY + size*0.2,
-				size/1300, false, kdcanvas, undefined, 
-				CHIBIMOD, 101, false, undefined, 
+				size/1300, false, kdcanvas, undefined,
+				CHIBIMOD, 101, false, undefined,
 				value.name + "_coll," + value.id, CHIBIMODEND);
 
 		}
@@ -1430,7 +1430,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 	if (rendered.length == 0 && KDCollectionIndex > 0) {
 		KDCollectionIndex = Math.max(0, KDCollectionIndex - KDCollectionColumns);
 	}
-	
+
 	if (rendered.length == 0 && KDCollectionIndex == 0 && KDCollectionTabStatus == '' && KDGameData.Party && KDGameData.Party.length > 0) {
 		KDCollectionTabStatus = 'Guest'; // auto go to guests
 	}
@@ -1484,8 +1484,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 				DrawCharacter(char,
 					XX + size/2.7,
 					YY + size*0.2,
-					size/1300, false, kdcanvas, undefined, 
-					CHIBIMOD, 101, false, undefined, 
+					size/1300, false, kdcanvas, undefined,
+					CHIBIMOD, 101, false, undefined,
 					value.name + "_coll," + value.id, CHIBIMODEND);
 
 			}
@@ -2169,7 +2169,7 @@ function KDGenCharForCollection(value: KDCollectionEntry, enemyType: enemy) {
 				KDSpeakerNPC, true);
 		}
 		KDRefreshCharacter.set(KDSpeakerNPC, true);
-	} 
+	}
 }
 
 function KDResetCollectionScreen(screen = "") {
