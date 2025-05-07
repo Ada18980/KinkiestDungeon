@@ -12636,7 +12636,7 @@ Ars烟火
 # :: KinkyDungeonSpellLightningRune
 # :: KinkyDungeonSpellLightningRuneStrike
 - A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
-可造成电击伤害并眩晕 4 个回合的陷阱。设置需要 3 个回合。200% 碰撞倍增器。
+花费 3 回合放置陷阱。造成 DamageDealt 点电击伤害，施加 4 回合眩晕。200% 暴击倍率。
 - You conjure a charged trap!
 你设置了一个闪电陷阱！
 - Choose location for trap
@@ -12651,7 +12651,7 @@ Ars烟火
 # :: KinkyDungeonSpellFreezeRune
 # :: KinkyDungeonSpellFreezeRuneStrike
 - A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
-放置一个暴击倍率为 200% 的霜冻陷阱，可对敌人造成 DamageDealt 点寒冰伤害并冻结 30 个回合。需要 3 个回合来设置。
+花费 3 回合放置陷阱。造成 DamageDealt 点寒冰伤害，施加 30 回合冰冻。200% 暴击倍率。
 - You conjure an icy trap!
 你设置了一个霜冻陷阱！
 
@@ -12660,7 +12660,7 @@ Ars烟火
 # :: KinkyDungeonSpellFlameRune
 # :: KinkyDungeonSpellFlameRuneStrike
 - A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
-设置一个触发后对该方格敌人造成 DamageDealt 点火焰伤害的陷阱。设置后需要 3 个回合才能生效。暴击伤害为 200%。
+花费 3 回合放置陷阱。造成 DamageDealt 点火焰伤害。200% 暴击倍率。
 - You conjure an incendiary trap!
 你设置了一个火焰陷阱！
 
@@ -13119,7 +13119,7 @@ Ars烟火
 
 
 - An AoE trap on the ground that deals 25 chain damage, roots for 8 turns, and applies 80 points of binding. Takes 3 turns to setup. 200% crit multiplier.
-施放在地面上的陷阱，造成 25 点锁链伤害，在地面存在 8 回合，并施加 80 点束缚。需要 3 回合才能完成放置。200% 暴击倍数。
+花费 3 回合放置陷阱。3x3范围内造成 25 点锁链伤害和 80 点束缚，施加 8 回合定身。200% 暴击倍率。
 - You conjure a rope trap!
 你召唤了一个绳索陷阱！
 
