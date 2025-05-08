@@ -12660,7 +12660,7 @@ Ars烟火
 # :: KinkyDungeonSpellFlameRune
 # :: KinkyDungeonSpellFlameRuneStrike
 - A trap that deals DamageDealt fire damage in an area. Takes 3 turns to setup. 200% crit multiplier.
-花费 3 回合放置陷阱。造成 DamageDealt 点火焰伤害。200% 暴击倍率。
+花费 3 回合放置陷阱。3x3范围内造成 DamageDealt 点火焰伤害。200% 暴击倍率。
 - You conjure an incendiary trap!
 你设置了一个火焰陷阱！
 
