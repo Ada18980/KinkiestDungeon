@@ -340,6 +340,20 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "CatsuitRestraint",
+	TopLevel: true,
+	Categories: ["Suits"],
+	Folder: "Catsuit",
+	Group: "Catsuit",
+	AddPose: ["HideNipples"],
+	Layers: ToLayerMap([
+		...GetModelLayers("CatsuitUpper", undefined, undefined, undefined, 0.1),
+		...GetModelLayers("CatsuitLower", undefined, undefined, undefined, 0.1),
+	])
+});
+
+
 
 
 AddModel({

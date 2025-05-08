@@ -194,7 +194,6 @@ AddModel({
 	Folder: "SteelCuffBands",
 	TopLevel: false,
 	Parent: "NeoLinkThighs",
-	Restraint: true,
 	Categories: ["FashionRestraints","Links"],
 	AddPose: ["NeoLinkThighRight"],
 	Layers: ToLayerMap([
@@ -284,6 +283,7 @@ AddModel({
 	Folder: "SteelCuffs",
 	TopLevel: false,
 	Parent: "CuffsArms",
+	Restraint: true,
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft", "NeoWristLeft"],
 	Layers: ToLayerMap([
@@ -296,6 +296,7 @@ AddModel({
 	Folder: "SteelCuffs",
 	TopLevel: false,
 	Parent: "CuffsArms",
+	Restraint: true,
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristRight", "NeoWristRight"],
 	Layers: ToLayerMap([
@@ -309,6 +310,7 @@ AddModel({
 	Folder: "SteelCuffs",
 	TopLevel: false,
 	Parent: "CuffsArms",
+	Restraint: true,
 	Categories: ["Restraints","Cuffs"],
 	AddPose: ["WristLeft", "WristRight", "NeoWristRight", "NeoWristLeft"],
 	Layers: ToLayerMap([
@@ -325,6 +327,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ElbowLeft"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesElbowLeft", "", "", "BaseMetal", 0.6),
@@ -337,6 +340,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ElbowRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesElbowRight", "", "", "BaseMetal", 0.6),
@@ -350,6 +354,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsArms",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ElbowLeft", "ElbowRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SteelCuffsElbowLeft"),
@@ -363,6 +368,7 @@ AddModel({
 	TopLevel: true,
 	Parent: "Cuffs",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ElbowLeft", "ElbowRight", "WristLeft", "WristRight", "NeoWristLeft", "NeoWristRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SteelCuffsWrists"),
@@ -376,6 +382,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsAnkles",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["AnkleLeft", "NeoAnkleLeft"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesLeft", "", "", "BaseMetal", 0.6),
@@ -389,6 +396,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsAnkles",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["AnkleRight", "NeoAnkleRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesRight", "", "", "BaseMetal", 0.6),
@@ -402,6 +410,7 @@ AddModel({
 	Folder: "SteelCuffs",
 	TopLevel: true,
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["AnkleRight", "AnkleLeft", "NeoAnkleLeft", "NeoAnkleRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SteelCuffsAnklesRight"),
@@ -417,6 +426,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsThigh",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ThighLeft", "NeoThighLeft"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighLeft", "", "", "BaseMetal", 0.6),
@@ -430,6 +440,7 @@ AddModel({
 	TopLevel: false,
 	Parent: "CuffsThigh",
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ThighRight", "NeoThighRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighRight", "", "", "BaseMetal", 0.6),
@@ -443,6 +454,7 @@ AddModel({
 	Folder: "SteelCuffs",
 	TopLevel: true,
 	Categories: ["Restraints","Cuffs"],
+	Restraint: true,
 	AddPose: ["ThighRight", "ThighLeft", "HighCuffs", "NeoThighLeft", "NeoThighRight"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SteelCuffsThighRight"),

@@ -6672,7 +6672,7 @@ function KDDynamicLinkListSurface(item: item): item[] {
 			!inaccess
 			&& (!KDRestraint(inv).renderExcept
 				|| !KDRestraint(inv).renderExcept.some((tag) => {
-					return !TagsSoFar[tag];
+					return TagsSoFar[tag];
 				}))
 			&& (
 				KDRestraint(host).UnderlinkedAlwaysRender

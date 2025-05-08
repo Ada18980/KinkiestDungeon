@@ -263,6 +263,9 @@ AddModel(GetModelRestraintVersion("WolfHarnessLower", true));
 AddModel(GetModelRestraintVersion("WolfHarnessUpper", true));
 AddModel(GetModelRestraintVersion("WolfHarnessBelt", true));
 AddModel(GetModelRestraintVersion("WolfHarness", true));
+AddModel(GetModelRestraintVersion("WolfCuffsAnkles", true));
+AddModel(GetModelRestraintVersion("WolfCuffsAnklesRight", true));
+AddModel(GetModelRestraintVersion("WolfCuffsAnklesLeft", true));
 
 
 AddModel({

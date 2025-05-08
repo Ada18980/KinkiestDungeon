@@ -604,8 +604,10 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 		if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
 		if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
 			if (KinkyDungeonFastStruggle) {
-				if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
-					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				
+				if (!KinkyDungeonAutoWait)
+					if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 				KinkyDungeonFastStruggle = false;
 				KinkyDungeonFastStruggleGroup = "";
 				KinkyDungeonFastStruggleType = "";
@@ -657,8 +659,10 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						&& (!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
 							|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && !KinkyDungeonFlags.get("startPath"))) {
-							if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
-								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+						
+							if (!KinkyDungeonAutoWait)
+								if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
+									KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 							if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
 								KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
 							} else {
@@ -682,8 +686,9 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastStruggle &&
 						!enemy.Enemy.tags.harmless &&
 						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
-						if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
-							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+						if (!KinkyDungeonAutoWait)
+							if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+								KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 						KinkyDungeonFastStruggle = false;
 						KinkyDungeonFastStruggleGroup = "";
 						KinkyDungeonFastStruggleType = "";
@@ -816,12 +821,14 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 
 		}
 	}
-	if (reenabled && KinkyDungeonFastMove) {
-		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-	} else if (reenabled2 && KinkyDungeonFastStruggle) {
-		KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+	
+	if (!KinkyDungeonAutoWait)
+		if (reenabled && KinkyDungeonFastMove) {
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		} else if (reenabled2 && KinkyDungeonFastStruggle) {
+			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+		}
 	}
-}
 
 function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: number, CamX: number, CamY: number, StaticView?: boolean, zIndex: number = 0, id: string = ""): string {
 	let buffSprite = "";
