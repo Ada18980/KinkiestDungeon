@@ -534,6 +534,9 @@ function KDGetNearestExitTo(roomTo: string, mapX: number, mapY: number, x: numbe
 }
 
 function KinkyDungeonInDanger() {
+	if (KDGetWarnings(KDPlayer().x, KDPlayer().y).length > 0) {
+		return true;
+	}
 	for (let b of KDMapData.Bullets) {
 		let bdist = 1.5;
 		if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
@@ -599,47 +602,87 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 		KinkyDungeonFastStruggleSuppress = false;
 		reenabled2 = true;
 	}
-	for (let b of KDMapData.Bullets) {
-		let bdist = 1.5;
-		if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
-		if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
-			if (KinkyDungeonFastStruggle) {
+
+	if (KDGetWarnings(KDPlayer().x, KDPlayer().y)?.length > 0) {
+		if (KinkyDungeonFastStruggle) {
 				
-				if (!KinkyDungeonAutoWait)
-					if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
-						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-				KinkyDungeonFastStruggle = false;
-				KinkyDungeonFastStruggleGroup = "";
-				KinkyDungeonFastStruggleType = "";
-				reenabled2 = false;
-				//if (!CommonIsMobile)
-				KinkyDungeonFastStruggleSuppress = true;
+			if (!KinkyDungeonAutoWait)
+				if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+			KinkyDungeonFastStruggle = false;
+			KinkyDungeonFastStruggleGroup = "";
+			KinkyDungeonFastStruggleType = "";
+			reenabled2 = false;
+			//if (!CommonIsMobile)
+			KinkyDungeonFastStruggleSuppress = true;
+		}
+		if (KinkyDungeonFastMove) {
+			if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
+				|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
+				if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+					KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+				} else {
+					KinkyDungeonFastMovePath = [];
+				}
 			}
-			if (KinkyDungeonFastMove) {
-				if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
-					|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
-					if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-						KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-					} else {
-						KinkyDungeonFastMovePath = [];
+
+			// Cancel fast move if there is no current path
+			if (KinkyDungeonFastMovePath?.length == 0 &&
+				(
+					KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
+				)
+			) {
+				KinkyDungeonFastMoveSuppress = true;
+				KinkyDungeonFastMove = false;
+				reenabled = false;
+			}
+		}
+
+		KDInDanger = true;
+	}
+
+	if (!KDInDanger)
+		for (let b of KDMapData.Bullets) {
+			let bdist = 1.5;
+			if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+			if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
+				if (KinkyDungeonFastStruggle) {
+					
+					if (!KinkyDungeonAutoWait)
+						if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+					KinkyDungeonFastStruggle = false;
+					KinkyDungeonFastStruggleGroup = "";
+					KinkyDungeonFastStruggleType = "";
+					reenabled2 = false;
+					//if (!CommonIsMobile)
+					KinkyDungeonFastStruggleSuppress = true;
+				}
+				if (KinkyDungeonFastMove) {
+					if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
+						|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
+						if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+							KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+						} else {
+							KinkyDungeonFastMovePath = [];
+						}
+					}
+
+					// Cancel fast move if there is no current path
+					if (KinkyDungeonFastMovePath?.length == 0 &&
+						(
+							KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
+						)
+					) {
+						KinkyDungeonFastMoveSuppress = true;
+						KinkyDungeonFastMove = false;
+						reenabled = false;
 					}
 				}
 
-				// Cancel fast move if there is no current path
-				if (KinkyDungeonFastMovePath?.length == 0 &&
-					(
-						KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
-					)
-				) {
-					KinkyDungeonFastMoveSuppress = true;
-					KinkyDungeonFastMove = false;
-					reenabled = false;
-				}
+				KDInDanger = true;
 			}
-
-			KDInDanger = true;
 		}
-	}
 	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		let sprite = enemy.Enemy.name;
@@ -1305,6 +1348,16 @@ function KinkyDungeonDrawEnemiesStatus(canvasOffsetX: number, canvasOffsetY: num
 }
 
 let KDLastEnemyWarningDelta = 0;
+
+interface WarningTileRecord {
+	/** 0 = enemy, 1 = bullet, 2 = custom */
+	type: number,
+	source: number,
+	sx: number,
+	sy: number,
+	x: number,
+	y: number,
+}
 
 function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 
@@ -4627,6 +4680,19 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			let enemy = KDMapData.Entities[i];
 			// Make it so you can backstab enemies while your allies fight them
 			KDCheckVulnerableBackstab(enemy);
+			if (enemy.warningTiles) {
+				for (let w of enemy.warningTiles) {
+					
+					KDAddWarning({
+						source: enemy.id,
+						type: 0,
+						sx: enemy.x,
+						sy: enemy.y,
+						x: enemy.x + w.x,
+						y: enemy.y + w.y,
+					});
+				}
+			}
 			// Alert enemies if youve aggroed one
 			if (!KDAllied(enemy) && !(enemy.ceasefire > 0)) {
 				if (!(enemy.hostile > 0)
@@ -7114,7 +7180,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						if (spell.castCondition && (!KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, enemy, spell))) spell = null;
 					} else spell = null;
 				} else if (spell?.castCondition && (KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, player, spell))) spell = null;
-				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : ((spell && (spell.selfcast || (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name]) || spell.buff || (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5);
+				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : 
+					((spell
+						&& (spell.selfcast
+							|| (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name])
+							|| spell.buff
+							|| (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5);
 				if (spell && spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) spell = null;
 				if (spell && !(!minSpellRange || (AIData.playerDist > minSpellRange))) spell = null;
 				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;
@@ -7627,11 +7698,14 @@ function KinkyDungeonEnemyTryAttack (
 }
 
 type warningTileEntry = {
+	color?: string,
 	x:         number;
 	y:         number;
 	visual_x:  number;
 	visual_y:  number;
 	scale:     number;
+	x_orig?: number,
+	y_orig?: number,
 }
 
 function KinkyDungeonGetWarningTilesAdj(enemy: entity): warningTileEntry[] {

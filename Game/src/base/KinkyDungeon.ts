@@ -733,11 +733,14 @@ interface KDGameDataBase {
 		Escaped: boolean,
 	},
 
+	WarningTiles: Record<string, WarningTileRecord[]>,
 	//customColors: Record<string, Record<string, LayerFilter>>,
 
 };
 
+
 let KDGameDataBase: KDGameDataBase = {
+	WarningTiles: {},
 	MasterworkIntro: false,
 	AutoRelease: {
 		NonNotable: false,

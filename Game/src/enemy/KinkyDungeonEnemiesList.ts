@@ -5596,8 +5596,18 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		maxblock: 0,
 		maxdodge: 0,
-		followLeashedOnly: true, kite: 1.5, kiteChance: 0.9, followRange: 4, castWhileMoving: true, spells: ["HighBolt", "Spores", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true,
-		spellCooldownMult: 2, spellCooldownMod: 1, AI: "hunt", guardChance: 0.6, visionRadius: 6, maxhp: 13, minLevel:4, weight:12, movePoints: 2, attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 1, dmgType: "tickle", fullBoundBonus: 1,
+		Magic: {
+			castCooldownUnique: {
+				PocketSpores: 0.1,
+			},
+			priority: {
+				PocketSpores: 1,
+			},
+		},
+		followLeashedOnly: true, kite: 1.5, kiteChance: 0.9, followRange: 4, castWhileMoving: true, spells: ["HighBolt", "Spores", "EnemyCM1", "PocketSpores"],
+		unlockCommandLevel: 1, unlockCommandCD: 12, stopToCast: true, spellRdy: true,
+		spellCooldownMult: 2, spellCooldownMod: 1, AI: "hunt", guardChance: 0.6, visionRadius: 6, maxhp: 13, minLevel:4, weight:12, movePoints: 2,
+		attackPoints: 2, attack: "Spell", attackWidth: 1, attackRange: 1, power: 1, dmgType: "tickle", fullBoundBonus: 1,
 		terrainTags: {"secondhalf":2, "lastthird":1, "open": 4, "mushy": 5}, floors:KDMapInit(["cry"]), shrines: [],
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 9}]},
 	{name: "Fungal", nameList: "space", outfit: "FunGal", style: "Water", clusterWith: "mushroom", bound: "HighWizard", faction: "Mushy", playLine: "Fungal", color: "#a583ff", tags: KDMapInit(["leashing", "guardCall", "mushy", "jail", "jailer", "opendoors", "closedoors", "mushroom", "ranged", "unflinching", "hunter", "glueresist"]), squeeze: true,

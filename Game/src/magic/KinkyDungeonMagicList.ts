@@ -2755,9 +2755,16 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		level:1, type:"bolt", projectileTargeting:true, onhit:"",  power: 3, delay: 0, range: 50, damage: "chain", speed: 2, playerEffect: {name: "NurseBola"}}, // Throws a chain which stuns the target for 1 turn
 	{enemySpell: true, name: "NurseSyringe", color: "#ff00ff", minRange: 1.5, sfx: "Miss", manacost: 2, castRange: 6, components: ["Arms"], level:1, speed: 1,
 		type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "pain", playerEffect: {name: "NurseSyringe", power: 4, type: "poison", time: 8},},
-	{enemySpell: true, name: "RibbonBurst", color: "#ff00ff", sfx: "MagicSlash", manacost: 5, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings",  text: "KinkyDungeonTrapBindingsRibbons", tags: ["magicRibbons"], power: 3, damage: "chain", count: 2, noGuard: true}},
-	{enemySpell: true, name: "Spores", bulletSpin: 0.1, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 3, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "poisongas", playerEffect: {name: "Spores", power: 2, damage: "poisongas"}},
-	{enemySpell: true, name: "DragonFlowerSpores", bulletSpin: 0.1, hideWarnings: true, selfcast: true, color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert",
+	{enemySpell: true, name: "RibbonBurst", color: "#ff00ff", sfx: "MagicSlash", manacost: 5, minRange: 0,
+		components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 4, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings",  text: "KinkyDungeonTrapBindingsRibbons", tags: ["magicRibbons"], power: 3, damage: "chain", count: 2, noGuard: true}},
+	{enemySpell: true, name: "Spores", bulletSpin: 0.1, color: "#6733aa", sfx: "MagicSlash",
+		manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 3, range: 6, size: 3, aoe: 1.5, lifetime: 1,
+		damage: "poisongas", playerEffect: {name: "Spores", power: 2.5, damage: "poisongas"}},
+	{enemySpell: true, name: "PocketSpores", bulletSpin: 0.1, color: "#6733aa", sfx: "MagicSlash", minRange: 0,
+		manacost: 1, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 2.0, range: 1.5, size: 1, aoe: 0.5, lifetime: 1,
+		damage: "poisongas", playerEffect: {name: "Spores", power: 2, damage: "poisongas"}},
+	{enemySpell: true, name: "DragonFlowerSpores", bulletSpin: 0.1, hideWarnings: true, selfcast: true,
+		color: "#6733aa", sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert",
 		onhit:"aoe", time: 5, delay: 2, power: 1.5, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "poisongas", playerEffect: {
 			name: "DragonFlowerSpores",
 			power: 1.5, amount: 0.75, damage: "poisongas"

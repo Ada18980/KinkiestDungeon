@@ -1943,7 +1943,7 @@ interface entity {
 	silence?: number,
 	vulnerable?: number,
 	buffs?: Record<string, KDBuff>,
-	warningTiles?: any,
+	warningTiles?: warningTileEntry[],
 	visual_x?: number,
 	visual_y?: number,
 	Analyze?: boolean,

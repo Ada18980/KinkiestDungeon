@@ -41,12 +41,14 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
-5.5.71
+5.4.71
 - Fixed a bug where some bullets that dont hit you right away would hit you if you reload
 - Made slime witch slime AoE only hit you after 1 turn of the slime tiles being there
 - Fixed a bug where clothes would disappear briefly after switching poses
+- Player always considered in danger if a warning tile is on the player
+- High Wizard now has a melee ranged spell 
 
-5.5.70
+5.4.70
 - Added "Apply worn restraint palettes to player" toggle
 - Added customizable palettes for outfits
 - Added customizable palettes for NPCs
@@ -57,13 +59,13 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - fix tooltip error for Radiance effect
 - fix a certain damage aura applying damage on game load
 
-5.5.69 (nice)
+5.4.69 (nice)
 - Fix bug with catsuit not rendering
 - Fix bug with previously equipped weapon not tracked thru saves
 - Fix bug with staff of binding description being wrong
 - Weapons that cant crit no longer show a crit mult
 
-5.5.68
+5.4.68
 - Modding: added KDSetCurse function
 - Added a higher level Latex Kitty that appears past lv8
 - Added Projectile Damage and Static AoE damage enchantments
@@ -81,7 +83,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Fix escaped NPCs being autoreleased!
 - Added option to show extra row of buff icons
 
-5.5.67
+5.4.67
 - Added Kjus eyes 5
 - Reduced the incidence of the "distracted" mouth, especially when highly distracted
 - Bugfix: Fix wrong name when viewing enchanted items in containers
@@ -92,7 +94,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Bugfix: Cant use bed if already on it
 - Bugfix: Animated masterworks appearing as regular spawns
 
-5.5.66
+5.4.66
 - Fixed a crash when opening some chests
 
 5.4.65

@@ -22,7 +22,7 @@ function KDGetSleepWillRegenHealthTo() {
  */
 function KDCanSleep() {
 	let willUnderTreshold = KinkyDungeonStatWill < KDGetSleepWillRegenHealthTo();
-	let jailedOrNotSleptOnLevel = KinkyDungeonPlayerInCell() || !KinkyDungeonFlags.get('slept');
+	let jailedOrNotSleptOnLevel = (KinkyDungeonPlayerInCell() && KDGameData.PrisonerState == "jail") || !KinkyDungeonFlags.get('slept');
 	return willUnderTreshold && jailedOrNotSleptOnLevel;
 }
 
@@ -30,7 +30,7 @@ function KDCanSleep() {
  * @returns Tooltip why player is unable to sleep at bed
  */
 function KDCanSleepTooltip() {
-	if(KinkyDungeonFlags.get('slept') && !KinkyDungeonPlayerInCell()) {
+	if(KinkyDungeonFlags.get('slept') && !(KinkyDungeonPlayerInCell() && KDGameData.PrisonerState == "jail")) {
 		return "KDBedSleptLevel";
 	}
 	if(KinkyDungeonStatWill >= KDGetSleepWillRegenHealthTo()) {

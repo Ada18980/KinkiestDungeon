@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.70"
+KDVersionStr,"5.4.71"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -7160,6 +7160,7 @@ KinkyDungeonNurseSyringe,"You feel a prick as a small syringe hits you, and you 
 KinkyDungeonNurseBola,"The thrown cuffs snap shut around your ankles and slow you down!!!"
 KinkyDungeonSpellRibbonBurst,Ribbon Burst
 KinkyDungeonSpellSpores,Spores
+KinkyDungeonSpellPocketSpores,Pocket Spores
 KinkyDungeonSpellSporesSick,Noxious Spores
 KinkyDungeonSpellSporesHappy,Enticing Spores
 KinkyDungeonSpores,"You inhale some spores, and feel a bit sleepy..."
@@ -32232,3 +32233,4 @@ KDPaletteLayer_LightNeutral,Light
 
 KDWardrobeOverridePaletteLayer,Override Brightness
 KDWardrobeDesaturatePaletteLayer,Desaturate
+

@@ -2023,6 +2023,14 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 										});
 									if (!b.warnings.includes(xx + "," + yy)) {
 										b.warnings.push(xx + "," + yy);
+										KDAddWarning({
+											source: b.source,
+											type: 1,
+											sx: b.x,
+											sy: b.y,
+											x: xx,
+											y: yy,
+										});
 									}
 								}
 							}
@@ -2087,7 +2095,13 @@ function KinkyDungeonUpdateBulletVisuals(delta: number) {
 		}
 }
 
-let KinkyDungeonExtraWarningTiles = [];
+interface extraWarningTileEntry {
+	duration: number,
+	delay: number,
+	warning: warningTileEntry,
+}
+
+let KinkyDungeonExtraWarningTiles: extraWarningTileEntry[] = [];
 
 function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = KDBaseWhite,
 		duration: number = 1, delay: number = 0, x_orig?: number, y_orig?: number) {
@@ -2095,6 +2109,8 @@ function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = KDB
 		duration: duration,
 		delay: delay,
 		warning: {
+			visual_x: x,
+			visual_y: y,
 			color: color,
 			scale: 1,
 			x: x,
@@ -2107,6 +2123,15 @@ function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = KDB
 
 function KinkyDungeonParseExtraWarningTiles(delta: number) {
 	for (let i = 0; i < KinkyDungeonExtraWarningTiles.length; i++) {
+		
+		KDAddWarning({
+			source: 0,
+			type: 2,
+			sx: KinkyDungeonExtraWarningTiles[i].warning.x,
+			sy: KinkyDungeonExtraWarningTiles[i].warning.y,
+			x: KinkyDungeonExtraWarningTiles[i].warning.x,
+			y: KinkyDungeonExtraWarningTiles[i].warning.y,
+		});
 		if (KinkyDungeonExtraWarningTiles[i].delay > 0) {
 			KinkyDungeonExtraWarningTiles[i].delay -= delta;
 		}
@@ -3847,4 +3872,14 @@ function KDWeaponStamPenType(weapon: weapon): string {
 
 function KDEnemyShieldRegenStopTime(enemy: entity) {
 	return 3;
+}
+
+function KDAddWarning(tile: WarningTileRecord) {
+	if (!KDGameData.WarningTiles) KDGameData.WarningTiles = {};
+	if (!KDGameData.WarningTiles[tile.x + ',' + tile.y]) KDGameData.WarningTiles[tile.x + ',' + tile.y] = [];
+	KDGameData.WarningTiles[tile.x + ',' + tile.y].push(tile);
+}
+function KDGetWarnings(x: number, y: number) {
+	if (KDGameData.WarningTiles && KDGameData.WarningTiles[x + ',' + y]) return KDGameData.WarningTiles[x + ',' + y];
+	return [];
 }
