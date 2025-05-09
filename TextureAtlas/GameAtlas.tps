@@ -3234,6 +3234,8 @@
             <key type="filename">../Game/Bullets/MinerBombHit.png</key>
             <key type="filename">../Game/Bullets/MirrorImage.png</key>
             <key type="filename">../Game/Bullets/OrbHealHit.png</key>
+            <key type="filename">../Game/Bullets/PocketSpores.png</key>
+            <key type="filename">../Game/Bullets/PocketSporesHit.png</key>
             <key type="filename">../Game/Bullets/PoisonBreath.png</key>
             <key type="filename">../Game/Bullets/PoisonBreathHit.png</key>
             <key type="filename">../Game/Bullets/Raincloud.png</key>

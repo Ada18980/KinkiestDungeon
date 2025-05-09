@@ -22,6 +22,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Feet", Layer: "WrappingLegs", Pri: 50,
 			Poses: ToMap(["Closed", "KneelClosed","Hogtie"]),
+			SwapLayerPose: {Hogtie: "WrappingLegsUnderHogtie"},
 			GlobalDefaultOverride: ToMap(["Hogtie"]),
 			DisplacementSprite: "TapeAnklesSquish",
 			DisplaceAmount: 50,

@@ -552,6 +552,22 @@
 	"spriteSourceSize": {"x":0,"y":19,"w":69,"h":34},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Bullets/PocketSpores.png":
+{
+	"frame": {"x":655,"y":1,"w":214,"h":216},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":214,"h":216},
+	"sourceSize": {"w":216,"h":216}
+},
+"Game/Bullets/PocketSporesHit.png":
+{
+	"frame": {"x":990,"y":866,"w":210,"h":216},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":216},
+	"sourceSize": {"w":216,"h":216}
+},
 "Game/Bullets/PoisonBreathHit.png":
 {
 	"frame": {"x":1631,"y":1511,"w":203,"h":213},
@@ -1792,6 +1808,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:2ff332ae8e6b1700966ab1e30af0fc52:e1d73b5ef7b48d9bc829935e6795accc:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e7ea59caea9abf7be97afbd71687199d:1631ddc826dd9cff8d5ad894e27c995c:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

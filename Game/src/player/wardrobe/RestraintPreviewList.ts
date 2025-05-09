@@ -65,17 +65,17 @@ let KDWardrobePreviewRestraintsList: Record<string, Record<string, NPCRestraint>
 		Secure: {
 			lock: "",
 			id: KDWardrobePreviewRestraintsListI++,
-			name: "RopeSnakeCuffsAdv2",
+			name: "WeakMagicRopeCuffsAdv2",
 		},
 		HeavyBondage: {
 			lock: "",
 			id: KDWardrobePreviewRestraintsListI++,
-			name: "RopeSnakeArmsBoxtie",
+			name: "StrongMagicRopeArmsBoxtie",
 		},
 		Wrists: {
 			lock: "",
 			id: KDWardrobePreviewRestraintsListI++,
-			name: "RopeSnakeCuffsAdv",
+			name: "MithrilRopeCuffsAdv",
 		},
 	},
 }

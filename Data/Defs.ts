@@ -432,6 +432,7 @@ let LAYERS_BASE = [
 	"BehindTorso",
 
 	// Feet behind the body
+	"WrappingLegsUnderHogtie",
 	"AnkleLeftHogtie",
 	"ShoeLeftHogtie",
 	"SockLeftHogtie",
