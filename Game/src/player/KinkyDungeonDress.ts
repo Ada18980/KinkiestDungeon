@@ -1224,35 +1224,17 @@ function KDGetPalettes(C: Character, safe?: boolean, includeDefault: boolean = t
 	if (C?.metadata?.customColors) {
 		let newPalettes: Record<string, Record<string, LayerFilter>> = {};
 		for (let palette in KinkyDungeonFactionFilters) {
-			if (safe) {
-				newPalettes[palette] = {};
-				for (let filter in KinkyDungeonFactionFilters[palette]) {
-					newPalettes[palette][filter] = KinkyDungeonFactionFilters[palette][filter];
-				}
-			} else {
-				newPalettes[palette] = KinkyDungeonFactionFilters[palette];
-			}
+			newPalettes[palette] = KinkyDungeonFactionFilters[palette];
 			
 		}
 		for (let palette in C.metadata.customColors) {
-			if (safe) {
-				newPalettes[palette] = {};
-				for (let filter in C.metadata.customColors[palette]) {
-					newPalettes[palette][filter] = C.metadata.customColors[palette][filter];
-				}
-			} else {
-				newPalettes[palette] = C.metadata.customColors[palette];
-			}
+			newPalettes[palette] = C.metadata.customColors[palette];
 		}
 		
 		if (includeDefault) {
 			for (let palette in defaultOverride) {
 				if (newPalettes[palette]) continue;
-				newPalettes[palette] = {};
-				for (let filter in defaultOverride[palette]) {
-					newPalettes[palette][filter] = defaultOverride[palette][filter];
-				}
-				
+				newPalettes[palette] = defaultOverride[palette];
 			}
 		}
 
@@ -1262,29 +1244,12 @@ function KDGetPalettes(C: Character, safe?: boolean, includeDefault: boolean = t
 	if (safe || includeDefault) {
 		let newPalettes: Record<string, Record<string, LayerFilter>> = {};
 		for (let palette in KinkyDungeonFactionFilters) {
-			if (safe) {
-				newPalettes[palette] = {};
-				for (let filter in KinkyDungeonFactionFilters[palette]) {
-					newPalettes[palette][filter] = KinkyDungeonFactionFilters[palette][filter];
-				}
-			} else {
-				newPalettes[palette] = KinkyDungeonFactionFilters[palette];
-			}
-			
+			newPalettes[palette] = KinkyDungeonFactionFilters[palette];
 		}
 		if (includeDefault) {
 			for (let palette in defaultOverride) {
 				if (newPalettes[palette]) continue;
-				newPalettes[palette] = {};
-				if (safe) {
-					newPalettes[palette] = {};
-					for (let filter in defaultOverride[palette]) {
-						newPalettes[palette][filter] = defaultOverride[palette][filter];
-					}
-				} else {
-					newPalettes[palette] = defaultOverride[palette];
-				}
-				
+				newPalettes[palette] = defaultOverride[palette];				
 			}
 		}
 		return safe ? structuredClone(newPalettes) : newPalettes;

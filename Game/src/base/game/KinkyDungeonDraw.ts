@@ -227,11 +227,14 @@ kdgameboard.addChild(kditemsboard);
 // @ts-ignore
 let kdui = new PIXI.Graphics();
 let kdcanvas = new PIXI.Container();
+let kdpalettecontainer = new PIXI.Container();
 kdcanvas.sortableChildren = true;
+kdpalettecontainer.sortableChildren = true;
 kdcanvas.addChild(kdstatusboard);
 kdcanvas.addChild(kdenemystatusboard);
 kdcanvas.addChild(kdUItext);
 kdcanvas.addChild(kdminimap);
+kdcanvas.addChild(kdpalettecontainer);
 
 kdcanvas.addChild(kdBGMask);
 
@@ -3019,7 +3022,7 @@ function DrawTextFitKDTo (
 	if (!Text) return 0;
 	let alignment = Align ? Align : "center";
 
-	return DrawTextVisKD(Container || kdcanvas, kdpixisprites, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	return DrawTextVisKD(Container || kdcanvas, kdpixisprites, "tx|" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3073,7 +3076,7 @@ function DrawTextFitKDTo2 (
 	if (!Text) return 0;
 	let alignment = Align ? Align : "center";
 
-	return DrawTextVisKD(Container || kdcanvas, Map, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	return DrawTextVisKD(Container || kdcanvas, Map, "tx|" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -3116,7 +3119,7 @@ function DrawTextKD (
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
-	return DrawTextVisKD(kdcanvas, kdpixisprites, "text->" + Text + "," + X + "," + Y, {
+	return DrawTextVisKD(kdcanvas, kdpixisprites, "tx|" + Text + "," + X + "," + Y, {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -5398,7 +5401,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 	let column = 0;
 	let spacing = 80;
 	let zero: [string, Record<string, LayerFilter>] = ["", {Highlight: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}];
-	DrawTextFitKD(TextGet(text), x + scale*(0.25), y - 28, scale*w, KDBaseWhite, 
+	DrawTextFitKDTo(kdpalettecontainer, TextGet(text), x + scale*(0.25), y - 28, scale*w, KDBaseWhite, 
 	KDTextGray0, 20, "left");
 
 	for (let value of [zero, ...Object.entries(palettes)]) {
@@ -5410,14 +5413,14 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 					new PIXI.filters.AdjustmentFilter(value[1].Highlight),
 					new PIXI.filters.AdjustmentFilter(value[1].Catsuit),
 				]);
-		KDDraw(kdcanvas, kdpixisprites, "palette" + value[0],
+		KDDraw(kdpalettecontainer, kdpixisprites, "palette" + value[0],
 			KinkyDungeonRootDirectory + "UI/greyColor.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
 					KDPIXIPaletteFilters.get(paletteID + value[0])[0],
 				]
 			});
-		KDDraw(kdcanvas, kdpixisprites, "paletteL" + value[0],
+		KDDraw(kdpalettecontainer, kdpixisprites, "paletteL" + value[0],
 			KinkyDungeonRootDirectory + "UI/greyColorLight.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
@@ -5425,7 +5428,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 				],
 				zIndex: 2,
 			});
-		KDDraw(kdcanvas, kdpixisprites, "paletteH" + value[0],
+		KDDraw(kdpalettecontainer, kdpixisprites, "paletteH" + value[0],
 			KinkyDungeonRootDirectory + "UI/greyColorHighlight.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
@@ -5433,7 +5436,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 				],
 				zIndex: 3,
 			});
-		KDDraw(kdcanvas, kdpixisprites, "paletteC" + value[0],
+		KDDraw(kdpalettecontainer, kdpixisprites, "paletteC" + value[0],
 			KinkyDungeonRootDirectory + "UI/greyColorCatsuit.png",
 			XX, YY, scale, scale, undefined, {
 				filters: [
@@ -5442,7 +5445,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 				zIndex: 4,
 			});
 		
-		DrawButtonKDEx("choosepalette" + value[0], (_b) => {
+		DrawButtonKDExTo(kdpalettecontainer, "choosepalette" + value[0], (_b) => {
 			if (callback) callback(value[0]);
 			else {
 				KDDefaultPalette = value[0];
@@ -5460,7 +5463,7 @@ function KDDrawCustomPalettes(palettes: Record<string, Record<string, LayerFilte
 			zIndex: -10,
 		}
 		);
-		DrawTextFitKD(HasText("KDPalette" + value[0])
+		DrawTextFitKDTo(kdpalettecontainer, HasText("KDPalette" + value[0])
 			? TextGet("KDPalette" + value[0])
 			: (value[0]), XX + scale/2, YY + scale - 12, scale, KDBaseWhite, KDTextGray0, 18);
 		column++;

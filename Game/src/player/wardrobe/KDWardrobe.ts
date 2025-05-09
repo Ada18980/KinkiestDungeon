@@ -304,19 +304,19 @@ function KDDrawSavedColors(X: number, y: number, max: number, C: Character): voi
 			contrast: 1,
 		});
 
-		KDDraw(kdcanvas, kdpixisprites, "SavedColor" + ii, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
+		KDDraw(kdpalettecontainer, kdpixisprites, "SavedColor" + ii, KinkyDungeonRootDirectory + "UI/greyColor.png", X + spacing * i, Y, 64, 64, undefined, {
 			filters: [
 				KDCurrentColorFilter[ii],
 			]
 		});
-		DrawButtonKDEx("SavedColorCopy" + ii, (_bdata) => {
+		DrawButtonKDExTo(kdpalettecontainer, "SavedColorCopy" + ii, (_bdata) => {
 			if (filters && KDSelectedModel) {
 				KDSavedColors[ii] = Object.assign({}, filters);
 				localStorage.setItem("kdcolorfilters", JSON.stringify(KDSavedColors));
 			}
 			return true;
 		}, true, X + spacing * i + 32 - 48, Y + 64, 48, 48, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/savedColor_copy.png", undefined, false, true);
-		DrawButtonKDEx("SavedColorPaste" + ii, (_bdata) => {
+		DrawButtonKDExTo(kdpalettecontainer, "SavedColorPaste" + ii, (_bdata) => {
 			if (filters && KDSelectedModel) {
 				Object.assign(filters, KDSavedColors[ii]);
 				KDChangeWardrobe(C);
@@ -1372,6 +1372,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				KinkyDungeonPlayer.metadata.customColors) : KDDefaultWardrobePalettes
 			)
 		);
+
 		
 		
 		
@@ -1420,8 +1421,25 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		let palette = GetPalette(C, selectedPalette, false, true);
 		let palettelayer = KDSelectedPaletteLayer;
 		let pid = C.ID + "_";
+
+		let pp = JSON.parse(JSON.stringify(KDCurrentCharacterPalettes));
+
+		// reorganize so custom stuff is always sorted alpha
+		let customPalettes = Object.keys(pp).filter((p) => {
+			return !!KDDefaultWardrobePalettes[p];
+		});
+		if (customPalettes.length > 0) {
+			customPalettes = customPalettes.sort();
+			let temp = customPalettes.map((key) => {return {_1: key, _2:KDCurrentCharacterPalettes[key] || KDDefaultWardrobePalettes[key]};});
+			for (let p of customPalettes) {
+				delete pp[p];
+			}
+			for (let p of temp) {
+				pp[p._1] = p._2;
+			}
+		}
 	
-		KDDrawCustomPalettes(KDCurrentCharacterPalettes, pid,
+		KDDrawCustomPalettes(pp, pid,
 			750, 200, KDPaletteWidth, 72, 
 			selectedPalette, (pal) => {
 			C.Palette = pal;
@@ -1523,6 +1541,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				lastFastPaletteUpdate = CommonTime();
 				if (KDPIXIPaletteFilters.has(pid + selectedPalette))
 					KDPIXIPaletteFilters.delete(pid + selectedPalette)
+
 				
 				if (C.metadata?.customColors)
 					for (let palette in C.metadata.customColors) {
