@@ -2392,6 +2392,8 @@ interface spell {
 	trailLifetime?: number;
 	/** trailTime */
 	trailTime?: number;
+	/** Lingering bullets, but they dont immediately hit even if they spawn on you */
+	lingeringDelayed?: boolean,
 	/** Random number to increase lifetime by */
 	lifetimeHitBonus?: number;
 	/** Random number to increase trail lifetime by */

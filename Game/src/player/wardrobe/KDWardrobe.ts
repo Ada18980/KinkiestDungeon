@@ -868,7 +868,7 @@ function KDDrawPoseButtons(C: Character, X: number = 960, Y: number = 750, allow
 			if (dress) {
 
 				KDRefreshCharacter.set(C, true);
-				KDDressWardrobeChar(C);
+				KDDressWardrobeChar(C, KinkyDungeonState == "Game");
 
 			}
 

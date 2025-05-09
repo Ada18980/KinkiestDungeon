@@ -3342,12 +3342,14 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "ShadowScythe", color: KDBaseBlue, sfx: "MagicSlash", manacost: 4, components: ["Verbal"], level:1, type:"inert", noTerrainHit: true, onhit:"aoe", time: 5, delay: 1, power: 3.5, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "cold", playerEffect: {name: "ShadowBind", time: 4}},
 	{enemySpell: true, name: "WitchSlime",  bindType: "Slime", color: "#ff00ff", minRange: 0, landsfx: "MagicSlash", manacost: 7, components: ["Legs"], level:1, type:"inert", onhit:"lingering",
 		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3},
+		lingeringDelayed: true,
 		bindTags: ["slimeRestraintsRandom"], effectTileDurationModLinger: 8, effectTileLinger: {
 			name: "Slime",
 			duration: 10,
 		},}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 	{enemySpell: true, name: "RubberSlime",  bindType: "Slime", color: "#ff00ff", minRange: 0, landsfx: "MagicSlash", manacost: 7, components: ["Legs"], level:1, type:"inert", onhit:"lingering",
 		time: 2, delay: 1, range: 4, power: 2, size: 3, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "EncaseBolt", count: 1, time: 4, power: 5, damage: "glue"},
+		lingeringDelayed: true,
 		effectTileDurationModLinger: 8, effectTileLinger: {
 			name: "Slime",
 			duration: 10,
@@ -3361,6 +3363,8 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	}, // Throws a ball of slime which oozes more slime
 	{enemySpell: true, name: "SlimePuddle", bindType: "Slime", color: "#ff00ff", sfx: "FireSpell", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"lingering",
 		time: 2, power: 2, lifetime: 5, lifetimeHitBonus: 5, aoe: 1.5, delay: 0, range: 50, damage: "glue", speed: 1, playerEffect: {name: "SlimeTrap", time: 3},
+		
+		lingeringDelayed: true,
 		bindTags: ["slimeRestraintsRandom"], effectTileDurationModLinger: 8, effectTileLinger: {
 			name: "Slime",
 			duration: 10,
