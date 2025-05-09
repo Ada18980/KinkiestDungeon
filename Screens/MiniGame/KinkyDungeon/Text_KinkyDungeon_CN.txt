@@ -26194,6 +26194,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_BlankEyes_l_Eyes
 # :: m_KiguMaskSmile_l_Eyes
 # :: m_FashionKiguMaskSmile_l_Eyes
+# :: m_KjusEyes5_l_Eyes
 - Body
 身体
 # :: cat_Body
@@ -28178,6 +28179,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_BlankEyes_l_Eyes2
 # :: m_KiguMaskSmile_l_Eyes2
 # :: m_FashionKiguMaskSmile_l_Eyes2
+# :: m_KjusEyes5_l_Eyes2
 - Whites
 眼白
 # :: l_KoiEyes_Whites
@@ -28192,6 +28194,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_KjusEyes4_l_Whites
 # :: m_DaskEyes_l_Whites
 # :: m_BlankEyes_l_Whites
+# :: m_KjusEyes5_l_Whites
 - Whites2
 眼白2
 # :: l_KoiEyes_Whites2
@@ -28206,6 +28209,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_KjusEyes4_l_Whites2
 # :: m_DaskEyes_l_Whites2
 # :: m_BlankEyes_l_Whites2
+# :: m_KjusEyes5_l_Whites2
 - HumanEyes
 人眼
 - Brows
@@ -28447,6 +28451,14 @@ Dask眼
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
 # :: m_TransparentCatsuitLowerLowRise_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
+# :: m_CatsuitRestraint_l_TorsoLower
 - FootRight
 右足
 # :: m_CatsuitLower_l_FootRight
@@ -28530,6 +28542,18 @@ Dask眼
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
 # :: m_TransparentCatsuitUpperCropped_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
+# :: m_CatsuitRestraint_l_TorsoUpper
 - TransparentCatsuit
 透明全包胶衣
 - ShortsLeft
@@ -35178,6 +35202,10 @@ Aura刘海(右后)
 :: m_MilitaryUniform_l_Band
 腰带
 # :: m_HighSecCollarRestraint_l_Band
+# :: m_WolfCuffsAnklesRestraint_l_Band
+# :: m_WolfCuffsAnklesRestraint_l_Band
+# :: m_WolfCuffsAnklesRightRestraint_l_Band
+# :: m_WolfCuffsAnklesLeftRestraint_l_Band
 - MageSkirtOver
 法师短裙(跪姿叠加层)
 # :: m_MageSkirt_l_MageSkirtOver
@@ -40639,6 +40667,10 @@ Aura刘海(右后)
 # :: m_FashionHighSecCuffsThighRight_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
+# :: m_WolfCuffsAnklesRestraint_l_Cuff
+# :: m_WolfCuffsAnklesRestraint_l_Cuff
+# :: m_WolfCuffsAnklesRightRestraint_l_Cuff
+# :: m_WolfCuffsAnklesLeftRestraint_l_Cuff
 - Glow
 发光
 # :: m_CyberLongMittenLeft_l_Glow
@@ -41631,6 +41663,9 @@ Aura刘海(右后)
 :: m_MilitaryUniform_l_Secret
 秘密勋章
 # - Unit
+# :: m_MilitaryUniform_l_Unit
+# :: m_CyberPetsuit_l_Unit
+# :: m_CyberPetsuit_l_Unit
 # - Secret_UnderbustStrap
 # - Secret_UnderbustHardware
 # - Secret_Strap
@@ -41758,6 +41793,17 @@ Aura刘海(右后)
 # :: m_HighSecBalletHeelsRestraint_l_SoleRight
 
 
+# - KjusEyes5
+# - CatsuitRestraint
+# - WolfCuffsAnklesRestraint
+# - WolfCuffsAnklesRightRestraint
+# - WolfCuffsAnklesLeftRestraint
+# - ThighLinkHardware
+# :: m_NeoThighLink_l_ThighLinkHardware
+# :: m_FashionNeoThighLink_l_ThighLinkHardware
+# - AnkleLinkHardware
+# :: m_NeoAnkleLink_l_AnkleLinkHardware
+# :: m_FashionNeoAnkleLink_l_AnkleLinkHardware
 
 
 - Hide Items
@@ -42810,7 +42856,7 @@ Aura刘海(右后)
 - Pointy stick delivery system.
 尖棒输送系统。
 - Reload time: None. Deals crush damage on melee. Draws 10 charge and 20 stamina to fire an ordinary arrow, dealing 30 pierce damage.
-装弹时间 : ‎无。近战造成碾压伤害。消耗 10 点冲力和 20 点体力来发射普通箭，造成 30 点穿透伤害。
+无需装弹。近战造成碾压伤害。消耗 10 点充能和 20 点体力来发射普通箭，造成 30 点穿刺伤害。
 - You find a wooden bow.
 你找到一把木弓。
 - 10 charge to fire an arrow. Deals 30 pierce damage.
@@ -43273,7 +43319,7 @@ ${Item} 瞄准
 - At this point why not just use a gun?
 这个时候为什么不直接用枪呢？
 - Reload time: 5 stationary turns. Deals crush damage on melee. Draws 25 charge and no stamina to fire an ordinary arrow, dealing 70 pierce damage, passing through units.
-装弹时间 : ‎静止 5 回合。近战造成碾压伤害。消耗 25 点冲力且无需体力来发射普通箭，造成 70 点穿透伤害，穿过小队。
+装弹时间：静止 5 回合。近战造成碾压伤害。消耗 25 点充能且无需体力来发射普通箭，造成 70 点穿刺伤害，能够击穿一条线上的敌人。
 - You find an arbalest.
 你找到了一把强弩。
 - 25 charge to fire a bolt. Deals 100 pierce damage.
@@ -48471,6 +48517,7 @@ N/A
 # - Preview Metal
 # - Preview Leather
 # - Preview Rope
+# - Preview Catsuit
 
 
 # - FLR-DGN
