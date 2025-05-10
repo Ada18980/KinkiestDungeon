@@ -450,7 +450,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 隐藏乳头穿孔
 - Use default palette when no outfit is worn
 当未穿着衣物时使用默认调色
-# - Apply worn restraint palettes to player
+- Apply worn restraint palettes to player
+应用已佩戴的束缚的调色板
 - Flip Player Display
 翻转玩家显示
 - Grayscale when Blind
@@ -11845,7 +11846,8 @@ Ars烟火
 轻型
 :: KDWeaponTag_light
 轻型
-# :: KDPaletteLayer_LightNeutral
+:: KDPaletteLayer_LightNeutral
+亮部
 - Shadow
 暗影
 # :: KinkyDungeonFiltershadow
@@ -14089,6 +14091,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 孢子
 # :: KinkyDungeonSpellSpores
 # :: KinkyDungeonSpellSpores
+# - Pocket Spores
 - Noxious Spores
 有毒孢子
 - Enticing Spores
@@ -26112,7 +26115,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 重置属性！
 - Export All Layers
 导出所有图层
-# - Reset All Layers
+- Reset All Layers
+重置所有图层
 - Export All Props
 导出所有属性
 - Copy
@@ -26283,7 +26287,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - Catsuit
 全包胶衣
 # :: m_Catsuit
-# :: KDPaletteLayer_Catsuit
+:: KDPaletteLayer_Catsuit
+胶衣
 - Torso Lower
 躯干下部
 - Torso Upper
@@ -35287,7 +35292,8 @@ Aura刘海(右后)
 # :: m_FashionMaidGag_l_Highlights
 # :: m_DusterGag_l_Highlights
 # :: m_FashionDusterGag_l_Highlights
-# :: KDPaletteLayer_Highlight
+:: KDPaletteLayer_Highlight
+高亮
 # - DressSkirtOverKneel
 - ChineseBra
 旗袍(胸)
@@ -44652,9 +44658,12 @@ UI 就是这样。|如果您想要更多的实践教程，请进入右上角的�
 - Challenge Settings:
 挑战设置 : ‎
 
-# - Palette
-# - Pick a palette in Extra Options
-# - Open Extra Options to preview
+- Palette
+调色板
+- Pick a palette in Extra Options
+选择一种调色选项
+- Open Extra Options to preview
+打开额外选项以预览
 - Advanced
 高级
 - Expert Tools
@@ -47909,7 +47918,8 @@ Y 轴
 位移量
 - Erase Amount
 擦除量
-# - NoLoss
+- NoLoss
+无损
 - HideRestraintTags
 隐藏拘束具标签
 
@@ -48513,11 +48523,16 @@ N/A
 更多选项
 - Preview without Armor
 无护甲预览
-# - Preview Latex
-# - Preview Metal
-# - Preview Leather
-# - Preview Rope
-# - Preview Catsuit
+- Preview Latex
+预览乳胶束缚
+- Preview Metal
+预览金属束缚
+- Preview Leather
+预览皮革束缚
+- Preview Rope
+预览绳索束缚
+- Preview Catsuit
+预览胶衣
 
 
 # - FLR-DGN
@@ -50173,6 +50188,11 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 这是你所拥有的乳胶猫娘诅咒的总量。
 
 # - Dark
+:: KDPaletteLayer_DarkNeutral
+暗部
 
-# - Override Brightness
-# - Desaturate
+- Override Brightness
+覆盖亮度
+- Desaturate
+去饱和
+
