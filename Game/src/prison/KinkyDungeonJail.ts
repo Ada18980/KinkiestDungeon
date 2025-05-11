@@ -2265,7 +2265,7 @@ let KDCustomDefeatUniforms = {
 	MaidSweeper: () => {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer", "linkRegular"]},
-				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple",
+				Math.max(KDGetEffLevel(), 9), "grv", true, "Purple",
 			
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
@@ -2370,7 +2370,7 @@ let KDCustomDefeatUniforms = {
 	ElementalSlave: () => {
 		for (let i = 0; i < 30; i++) {
 			let r = KinkyDungeonGetRestraint({tags: ["obsidianRestraints", "ornateChastity", "genericToys", "linkRegular"]},
-				Math.max(KDGetEffLevel(), 6), "grv", true, "Red",
+				Math.max(KDGetEffLevel(), 7), "grv", true, "Red",
 			
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {
