@@ -1023,7 +1023,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 				name: "Ice",
 				duration: 20,
 			},
-			projectileTargeting:true, onhit:"", time: 4,  power: 3.5, delay: 0, range: 50, damage: "frost", speed: 3, playerEffect: {name: "Chill", damage: "ice", power: 3, time: 3},
+			projectileTargeting:true, onhit:"", time: 4,  power: 3.5, delay: 0, range: 50, damage: "frost", speed: 3, playerEffect: {name: "ChillProj", damage: "ice", power: 3, time: 3},
 			events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},]},
 		{name: "Snowball", color: "#92e8c0", tags: ["ice", "bolt", "offense"], prerequisite: "ApprenticeIce", sfx: "Freeze", hitsfx: "LesserFreeze", school: "Elements", manacost: 5, components: ["Arms"], level:1, type:"bolt",
 			noise: 5,
@@ -3043,7 +3043,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 			name: "Ice",
 			duration: 10,
 		},
-		playerEffect: {name: "Chill", damage: "ice", power: 1, time: 3},
+		playerEffect: {name: "ChillProj", damage: "ice", power: 1, time: 3},
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},],
 
 	},
@@ -3439,7 +3439,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 			name: "Ice",
 			duration: 20,
 		},
-		projectileTargeting:true, onhit:"", time: 4,  power: 3.5, delay: 0, range: 50, damage: "frost", speed: 2, playerEffect: {name: "Chill", damage: "ice", power: 3, time: 3},
+		projectileTargeting:true, onhit:"", time: 4,  power: 3.5, delay: 0, range: 50, damage: "frost", speed: 2, playerEffect: {name: "ChillProj", damage: "ice", power: 3, time: 3},
 		events: [{type: "ElementalOnSlowOrBindOrDrench", trigger: "bulletHitEnemy", damage: "ice", time: 4, power: 0},]},
 
 	{enemySpell: true, name: "WitchBoulder", sfx: "Bones", hitsfx: "HeavySwing", school: "Elements", manacost: 3, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", block: 8, time: 4,  power: 4, delay: 0, range: 50, damage: "crush", speed: 2, playerEffect: {name: "WitchBoulder", time: 2}},

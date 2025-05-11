@@ -604,85 +604,76 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 	}
 
 	if (KDGetWarnings(KDPlayer().x, KDPlayer().y)?.length > 0) {
-		if (KinkyDungeonFastStruggle) {
-				
+		if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
+			|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && !KinkyDungeonFlags.get("startPath"))) {
+		
 			if (!KinkyDungeonAutoWait)
-				if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+				if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-			KinkyDungeonFastStruggle = false;
-			KinkyDungeonFastStruggleGroup = "";
-			KinkyDungeonFastStruggleType = "";
-			reenabled2 = false;
-			//if (!CommonIsMobile)
-			KinkyDungeonFastStruggleSuppress = true;
-		}
-		if (KinkyDungeonFastMove) {
-			if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
-				|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
-				if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-					KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-				} else {
-					KinkyDungeonFastMovePath = [];
-				}
-			}
-
-			// Cancel fast move if there is no current path
-			if (KinkyDungeonFastMovePath?.length == 0 &&
-				(
-					KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
-				)
-			) {
-				KinkyDungeonFastMoveSuppress = true;
-				KinkyDungeonFastMove = false;
-				reenabled = false;
+			if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+				KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+			} else {
+				KinkyDungeonFastMovePath = [];
 			}
 		}
 
-		KDInDanger = true;
+		// Cancel fast move even if there is a current path
+		if (KinkyDungeonFastMovePath?.length > 0 &&
+			(
+				KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
+
+			)
+		) {
+			if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+				KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+			} else {
+				KinkyDungeonFastMovePath = [];
+			}
+		}
 	}
 
-	if (!KDInDanger)
-		for (let b of KDMapData.Bullets) {
-			let bdist = 1.5;
-			if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
-			if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
-				if (KinkyDungeonFastStruggle) {
-					
-					if (!KinkyDungeonAutoWait)
-						if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
-							KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-					KinkyDungeonFastStruggle = false;
-					KinkyDungeonFastStruggleGroup = "";
-					KinkyDungeonFastStruggleType = "";
-					reenabled2 = false;
-					//if (!CommonIsMobile)
-					KinkyDungeonFastStruggleSuppress = true;
-				}
-				if (KinkyDungeonFastMove) {
-					if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
-						|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
-						if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
-							KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
-						} else {
-							KinkyDungeonFastMovePath = [];
-						}
-					}
-
-					// Cancel fast move if there is no current path
-					if (KinkyDungeonFastMovePath?.length == 0 &&
-						(
-							KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
-						)
-					) {
-						KinkyDungeonFastMoveSuppress = true;
-						KinkyDungeonFastMove = false;
-						reenabled = false;
-					}
-				}
-
-				KDInDanger = true;
+	for (let b of KDMapData.Bullets) {
+		let bdist = 1.5;
+		if (b.vx && b.vy) bdist = 2*Math.sqrt(b.vx*b.vx + b.vy*b.vy);
+		if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
+			if (KinkyDungeonFastStruggle) {
+				
+				if (!KinkyDungeonAutoWait)
+					if (KinkyDungeonFastStruggle && !KinkyDungeonFastStruggleSuppress && !reenabled2)
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
+				KinkyDungeonFastStruggle = false;
+				KinkyDungeonFastStruggleGroup = "";
+				KinkyDungeonFastStruggleType = "";
+				reenabled2 = false;
+				//if (!CommonIsMobile)
+				KinkyDungeonFastStruggleSuppress = true;
 			}
+			if (KinkyDungeonFastMove) {
+				if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
+					|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat)) {
+					if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+						KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
+					} else {
+						KinkyDungeonFastMovePath = [];
+					}
+				}
+
+				// Cancel fast move if there is no current path
+				if (KinkyDungeonFastMovePath?.length == 0 &&
+					(
+						KDGameData.FocusControlToggle?.AutoPathSuppressDuringCombat
+					)
+				) {
+					KinkyDungeonFastMoveSuppress = true;
+					KinkyDungeonFastMove = false;
+					reenabled = false;
+				}
+			}
+
+			KDInDanger = true;
+			break;
 		}
+	}
 	let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 	for (let enemy of nearby) {
 		let sprite = enemy.Enemy.name;

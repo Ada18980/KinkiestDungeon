@@ -44,7 +44,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.72
 - Fix slime boots not appearing while kneeling
 - fix ropes not having faction colors
-- 
+- Fix auto pathing sometimes not getting interrupted if you are targeted
+- Made freezing projectiles and effects blockable
 
 5.4.71
 - Fixed a bug where some bullets that dont hit you right away would hit you if you reload

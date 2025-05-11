@@ -2314,22 +2314,52 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let effect = false;
 		let sfx = "";
 		let dmg = {happened: 1, string: TextGet("KDNoDamage")};
-		if (playerEffect.power > 0 && !KinkyDungeonFlags.get("chill")) {
-			dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+		if (KDTestSpellHits(spell, (bullet?.vx || bullet?.vy) ? 0 : 0.5, (bullet?.vx || bullet?.vy) ? 0.5 : 0)) {
+			if (playerEffect.power > 0 && !KinkyDungeonFlags.get("chill")) {
+				dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			}
+			if (dmg.happened && (KinkyDungeonPlayerBuffs.Drenched || KinkyDungeonPlayerBuffs.Chilled)) {
+				sfx = "Freeze";
+				KinkyDungeonStatFreeze = Math.max(0, playerEffect.time);
+				KDUpdateWaitTime(KinkyDungeonFreezeTime);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreeze").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
+			} else {
+				sfx = "Bones";
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonChill").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
+			}
+			KinkyDungeonSetFlag("chill", 1);
+			effect = true;
+			return {sfx: sfx, effect: effect};
 		}
-		if (dmg.happened && (KinkyDungeonPlayerBuffs.Drenched || KinkyDungeonPlayerBuffs.Chilled)) {
-			sfx = "Freeze";
-			KinkyDungeonStatFreeze = Math.max(0, playerEffect.time);
-			KDUpdateWaitTime(KinkyDungeonFreezeTime);
-			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreeze").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
-		} else {
-			sfx = "Bones";
-			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1);
-			KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonChill").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
+		
+		return {sfx: "Shield", effect: effect};
+	},
+	/** Similar to Chill but blockable */
+	"ChillProj": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
+		let effect = false;
+		let sfx = "";
+		let dmg = {happened: 1, string: TextGet("KDNoDamage")};
+		if (KDTestSpellHits(spell, 0, (bullet?.vx || bullet?.vy) ? 1.0 : 0.5)) {
+			if (playerEffect.power > 0 && !KinkyDungeonFlags.get("chill")) {
+				dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
+			}
+			if (dmg.happened && (KinkyDungeonPlayerBuffs.Drenched || KinkyDungeonPlayerBuffs.Chilled)) {
+				sfx = "Freeze";
+				KinkyDungeonStatFreeze = Math.max(0, playerEffect.time);
+				KDUpdateWaitTime(KinkyDungeonFreezeTime);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonFreezeProj").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
+			} else {
+				sfx = "Bones";
+				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1);
+				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonChillProj").KDReplaceOrAddDmg( dmg.string), KDBaseRed, playerEffect.time);
+			}
+			KinkyDungeonSetFlag("chill", 1);
+			effect = true;
+			return {sfx: sfx, effect: effect};
 		}
-		KinkyDungeonSetFlag("chill", 1);
-		effect = true;
-		return {sfx: sfx, effect: effect};
+		
+		return {sfx: "Shield", effect: effect};
 	},
 	"Freeze": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let effect = false;

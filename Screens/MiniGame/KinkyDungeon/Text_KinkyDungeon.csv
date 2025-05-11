@@ -7787,7 +7787,9 @@ KinkyDungeonPerkAcceptConfirm,"(Accept the contract)"
 KinkyDungeonPerkReject,"I'll think about it."
 
 KinkyDungeonFreeze,You are frozen!
+KinkyDungeonFreezeProj,You are frozen by a projectile!
 KinkyDungeonChill,You are chilled!
+KinkyDungeonChillProj,You are hit by a chilling projectile!
 KinkyDungeonShadowBind,"Shadowy tendrils wrap around your feet, rooting you in place!!!"
 
 KinkyDungeonFirstSpawn,You get the feeling that someone is searching for you...
