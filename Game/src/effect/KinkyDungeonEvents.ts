@@ -980,10 +980,11 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				}
 				let selection = KDGetByWeight(KinkyDungeonGetHexByListWeighted(data.hexlist || listname, KDRestraint(item).name, false, data.hexlevelmin || 0, data.hexlevelmax || 10));
 				let curse = KDGetByWeight(KinkyDungeonGetCurseByListWeighted([data.curselist || listname], KDRestraint(item).name, false, 0, 1000));
-				let oldRestraint = KDRestraint(data.item);
+				
 
 				// Load the current inventory variant
-				let newvariant: KDRestraintVariant = JSON.parse(JSON.stringify(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] || {}));
+				let newvariant: KDRestraintVariant = JSON.parse(JSON.stringify(
+					KinkyDungeonRestraintVariants[item.inventoryVariant || item.name] || {}));
 				/**  New restraint to transform to  */
 				let newRestraint: restraint = null;
 				if (data.newRestraintTags) {

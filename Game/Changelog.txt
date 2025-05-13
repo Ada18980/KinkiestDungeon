@@ -45,8 +45,10 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Modders: Added "afterModsLoadedAndLoadGame" event
 - Modders: "afterNewGame" event only fires on new game as intended
 - Can now cancel faction recruitment from quests menu
-- Fixed issues with enchanted weapons dont inherit some properties from original weapon (only applies to newly gotten ones)
 - Added Protection Sport Mittens (id: WolfMittsStrong)
+- Fixed custom character palettes not actually applying when making a game or overwriting
+- Fixed issues with enchanted weapons dont inherit some properties from original weapon (only applies to newly gotten ones)
+
 
 5.4.73
 - Fix bug where player cant move while inside an AoE spell
