@@ -15264,8 +15264,10 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 - You are frozen!
 你被冻住了！
+# - You are frozen by a projectile!
 - You are chilled!
 你感到寒冷！
+# - You are hit by a chilling projectile!
 - Shadowy tendrils wrap around your feet, rooting you in place!!!
 阴暗的卷须缠绕在你的脚上，将你固定在原地！！！
 
