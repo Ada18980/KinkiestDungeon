@@ -2292,8 +2292,8 @@ function KDLoadOutfitDirect(files: File[], Char: Character) {
  */
 function KDGetCharMetadata(C: Character): KDOutfitMetadata {
 	let meta = C.metadata || DefaultOutfitMetadata();
-	meta.palette = C.Palette;
-	meta.name = C.Name;
+	meta.palette = C.metadata?.palette || C.Palette;
+	meta.name = C.metadata?.name || C.Name;
 	return meta;
 }
 

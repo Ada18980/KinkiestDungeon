@@ -79,6 +79,7 @@ function AppearanceItemStringify(Item: Item[]): string {
 function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: boolean = false, noProtected: boolean = false): void {
 	let parsed = JSON.parse(LZString.decompressFromBase64(backup) || backup);
 	let newAppearance = AppearanceItemParse(parsed?.metadata ? parsed.appearance : backup);
+	C.metadata = parsed.metadata;
 	if (!clothesOnly) {
 		C.Appearance = newAppearance;
 		/** breaks the link */
