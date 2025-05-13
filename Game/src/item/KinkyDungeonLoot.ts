@@ -304,7 +304,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		}
 
 		if (enchantVariant) {
-			let events = JSON.parse(JSON.stringify([])); // no weapon events needed due to the way it's referenced usually
+			let events: KinkyDungeonEvent[] = JSON.parse(JSON.stringify(KDWeapon({name: weapon}).events || []));
 			if (enchantVariant) {
 				events.push(...KDEventEnchantmentModular[enchantVariant].types[KDModifierEnum.weapon].events(weapon, Loot, "", undefined, enchant_extra));
 			}

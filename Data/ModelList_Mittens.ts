@@ -168,6 +168,19 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "LatexMittens",
+	Folder: "Mittens",
+	TopLevel: true,
+	Categories: ["Gloves", "Mittens", "Restraints"],
+	Restraint: true,
+	AddPose: ["Mittens"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexMittenLeft"),
+		...GetModelLayers("LatexMittenRight"),
+	])
+});
+
 
 AddModel({
 	Name: "LeatherMittens",
@@ -193,19 +206,6 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("LeatherPawMittenLeft"),
 		...GetModelLayers("LeatherPawMittenRight"),
-	])
-});
-
-AddModel({
-	Name: "LatexMittens",
-	Folder: "Mittens",
-	TopLevel: true,
-	Categories: ["Gloves", "Mittens", "Restraints"],
-	Restraint: true,
-	AddPose: ["Mittens"],
-	Layers: ToLayerMap([
-		...GetModelLayers("LatexMittenLeft"),
-		...GetModelLayers("LatexMittenRight"),
 	])
 });
 
@@ -860,10 +860,12 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Mitten",
+			NoOverride: true,
 		},
 		{ Name: "ForeLongMittenLeft", Layer: "ForeMittenLeft", Pri: 20,
 			Poses: ToMap([...FOREARMPOSES]),
 			InheritColor: "Mitten",
+			NoOverride: true,
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossMittenLeft"},
 		},
@@ -994,12 +996,14 @@ AddModel({
 			Poses: ToMap([...ARMPOSES]),
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Mitten",
+			NoOverride: true,
 		},
 		{ Name: "ForeLongMittenRight", Layer: "ForeMittenRight", Pri: 20,
 			Poses: ToMap([...FOREARMPOSES]),
 			InheritColor: "Mitten",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossGloveRight"},
+			NoOverride: true,
 		},
 		{ Name: "CuffForeLongMittenRight", Layer: "ForeMittenRight", Pri: 20.1,
 			Poses: ToMap([...FOREARMPOSES]),
@@ -1139,6 +1143,76 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "LatexDollMittLeft",
+	Folder: "LatexMittens",
+	Parent: "LatexDollMitts",
+	Categories: ["Gloves", "Mittens", "Restraints"],
+	Restraint: true,
+	AddPose: ["Mittens"],
+	Layers: ToLayerMap([
+		{ Name: "LatexLeft", Layer: "MittenLeft", Pri: 110,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Up"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Front: "ForeMittenLeft"},
+			InheritColor: "Mitten",
+			EraseSprite: "Mitts",
+			EraseLayers: ToMap(["Mitts"]),
+			HideWhenOverridden: true,
+		},
+
+	])
+});
+
+AddModel({
+	Name: "LatexDollMittRight",
+	Folder: "LatexMittens",
+	Parent: "LatexDollMitts",
+	Categories: ["Gloves", "Mittens", "Restraints"],
+	Restraint: true,
+	AddPose: ["Mittens"],
+	Layers: ToLayerMap([
+		{ Name: "LatexRight", Layer: "MittenRight", Pri: 110,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Up"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Front: "ForeMittenRight"},
+			InheritColor: "Mitten",
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "LatexDollMitts",
+	Folder: "LatexMittens",
+	TopLevel: true,
+	Categories: ["Gloves", "Mittens", "Restraints"],
+	Restraint: true,
+	AddPose: ["Mittens"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexDollMittLeft"),
+		...GetModelLayers("LatexDollMittRight"),
+	])
+});
+
+
+AddModel({
+	Name: "LatexDollMittsLong",
+	Folder: "LatexMittens",
+	TopLevel: true,
+	Categories: ["Gloves", "Mittens", "Restraints"],
+	Restraint: true,
+	AddPose: ["Mittens"],
+	Layers: ToLayerMap([
+		...GetModelLayers("LatexDollMittLeft"),
+		...GetModelLayers("LatexDollMittRight"),
+		...GetModelLayers("CyberArmLeft", undefined, undefined, undefined, undefined, undefined, "CyberArms"),
+		...GetModelLayers("CyberArmRight", undefined, undefined, undefined, undefined, undefined, "CyberArms"),
+	])
+});
+
+
+
 
 //AddModel(GetModelFashionVersion("LeatherMittenRight", true));
 //AddModel(GetModelFashionVersion("LeatherMittenLeft", true));
@@ -1149,6 +1223,7 @@ AddModel(GetModelFashionVersion("LeatherPawMittens", true));
 //AddModel(GetModelFashionVersion("LatexMittenRight", true));
 //AddModel(GetModelFashionVersion("LatexMittenLeft", true));
 AddModel(GetModelFashionVersion("LatexMittens", true));
+AddModel(GetModelFashionVersion("LatexDollMitts", true));
 //AddModel(GetModelFashionVersion("LongMittenRight", true));
 //AddModel(GetModelFashionVersion("LongMittenLeft", true));
 AddModel(GetModelFashionVersion("LongMittens", true));

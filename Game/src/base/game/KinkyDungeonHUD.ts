@@ -2140,6 +2140,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 			KinkyDungeonDrawState = "Game";
 		else {
 			KinkyDungeonDrawState = "Quest";
+			KDSortQuests(KDPlayer());
 			KinkyDungeonUpdateLore(localStorage.getItem("kdexpLore") ? JSON.parse(localStorage.getItem("kdexpLore")) : {Cover: 1});
 		}
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
@@ -2995,6 +2996,8 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 	KinkyDungeonRootDirectory + (side ? "Buffs/BuffDotsSide.png" : "Buffs/BuffDots.png"), undefined, false, true, undefined, undefined, true,
 	{
 		zIndex: 10,
+		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[11]),
+		hotkeyPress: KinkyDungeonKeyToggle[11],
 	})) {
 		DrawTextFitKD(TextGet("KDExpandBuffs"), minXX, tooltipY, 1000, KDBaseWhite, KDBaseBlack, 22, "left", 160, 1.0, 8);
 		tooltip = true;

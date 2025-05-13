@@ -165,7 +165,7 @@ let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
 let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-', '_', "Home", "PageUp"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
-let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch
+let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'", 'N', 'K']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch, Buffs
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
@@ -426,6 +426,7 @@ let KDDefaultKB = {
 
 	Wait: KinkyDungeonKeyWait[0],
 	WaitInterrupt: KinkyDungeonKeyToggle[6],
+	ToggleBuff: KinkyDungeonKeyToggle[11],
 	Skip: KinkyDungeonKeySkip[0],
 	Enter: KinkyDungeonKeyEnter[0],
 
@@ -734,12 +735,14 @@ interface KDGameDataBase {
 	},
 
 	WarningTiles: Record<string, WarningTileRecord[]>,
+	RecruitedFaction?: string,
 	//customColors: Record<string, Record<string, LayerFilter>>,
 
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	RecruitedFaction: "",
 	WarningTiles: {},
 	MasterworkIntro: false,
 	AutoRelease: {
@@ -5839,7 +5842,9 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 
 
 	KDModsAfterGameStart();
-	KinkyDungeonSendEvent("afterNewGame", {Load: Load});
+	if (!Load)
+		KinkyDungeonSendEvent("afterNewGame", {Load: Load});
+	else KinkyDungeonSendEvent("afterModsLoadedAndLoadGame", {Load: Load});
 }
 
 function KDUpdatePlugSettings(evalHardMode: boolean) {
@@ -7422,13 +7427,6 @@ let KDCustomOptionsSpacing = {
 	"ClothesToggles": 52,
 };
 
-function KDNonContextActions(mobile: boolean, textArea: boolean): boolean {
-	if (!textArea && KinkyDungeonState == "Game" && KinkyDungeonDrawState == "Game" && MouseIn(0, 0, 500, PIXIHeight)) {
-		KinkyDungeonShowInventory = !KinkyDungeonShowInventory;
-		return true;
-	}
-	return false;
-}
 
 // Get the canvas offset with respect to the game window.
 // x and y are pixel offsets from the edge of the window to the edge of the game canvas.

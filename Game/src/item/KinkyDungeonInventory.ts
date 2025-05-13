@@ -3130,7 +3130,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 		if (!KinkyDungeonRestraintVariants[newname])
 			KinkyDungeonRestraintVariants[newname] = variant;
 		if (variant.events)
-			events.push(...variant.events);
+			events = [...variant.events];
 
 		KDSwapEvents(variant.events, 
 			KinkyDungeonGetRestraintByName(item.name), 
@@ -3163,7 +3163,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 		if (!KinkyDungeonRestraintVariants[newname])
 			KinkyDungeonRestraintVariants[newname] = variant;
 		if (variant.events)
-			events.push(...variant.events);
+			events = [...variant.events];
 
 		let lock = item.lock;
 
@@ -3208,7 +3208,7 @@ function KDGiveWeaponVariant(variant: KDWeaponVariant, prefix: string = "", forc
 	if (!KinkyDungeonWeaponVariants[newname])
 		KinkyDungeonWeaponVariants[newname] = variant;
 	if (variant.events)
-		Object.assign(events, variant.events);
+		events = [...variant.events];
 	let q = 1;
 	if (container) {
 		if (container.items[newname]) {
@@ -3239,7 +3239,7 @@ function KDGiveConsumableVariant(variant: KDConsumableVariant, prefix: string = 
 	if (!KinkyDungeonConsumableVariants[newname])
 		KinkyDungeonConsumableVariants[newname] = variant;
 	if (variant.events)
-		Object.assign(events, variant.events);
+		events = [...variant.events];
 	let q = Quantity;
 	if (container) {
 		if (container.items[newname]) {
@@ -3278,7 +3278,7 @@ function KDReturnInventoryVariant(variant: KDRestraintVariant, prefix: string = 
 	if (!KinkyDungeonRestraintVariants[newname])
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
-		Object.assign(events, variant.events);
+		events = [...variant.events];
 	let q = quantity;
 	return {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 }
@@ -3310,7 +3310,7 @@ function KDGiveInventoryVariant(variant: KDRestraintVariant, prefix: string = ""
 	if (!KinkyDungeonRestraintVariants[newname])
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
-		Object.assign(events, variant.events);
+		events = [...variant.events];
 	let q = quantity;
 	if (container) {
 		if (container.items[newname]) {
@@ -3351,7 +3351,7 @@ function KDGetInventoryVariant(variant: KDRestraintVariant, prefix: string = "",
 	if (!KinkyDungeonRestraintVariants[newname])
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
-		Object.assign(events, variant.events);
+		events = [...variant.events];
 	let q = quantity;
 	return {faction: faction, name: newname, curse: curse, id: KinkyDungeonGetItemID(), type: LooseRestraint, events:events, quantity: q, showInQuickInv: true,};
 }
@@ -3408,7 +3408,7 @@ function KDEquipInventoryVariant (
 	if (!KinkyDungeonRestraintVariants[newname])
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
-		Object.assign(events, variant.events);
+		events = [...variant.events];
 	return KinkyDungeonAddRestraintIfWeaker(origRestraint,
 		Tightness, Bypass, Lock, Keep, Trapped,
 		events, faction, Deep, curse,

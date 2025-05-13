@@ -1530,8 +1530,8 @@ function KDRecruitDialogue (
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 							//if (KinkyDungeonInventoryGet("OutfitDefault")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("OutfitDefault"));
 							KinkyDungeonSetDress(outfitName, outfitName);
-							KinkyDungeonSetFlag("Recruit_" + name, -1);
-							KinkyDungeonSetFlag("Recruited", -1);
+							KDGameData.RecruitedFaction = name;
+							KDAddQuest("Recruit" + name);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
 							KDGameData.SlowMoveTurns = 3;
@@ -1589,8 +1589,8 @@ function KDRecruitDialogue (
 							if (!KinkyDungeonInventoryGet(outfitName)) KinkyDungeonInventoryAdd(outfit);
 							//if (KinkyDungeonInventoryGet("Default")) KinkyDungeonInventoryRemove(KinkyDungeonInventoryGet("Default"));
 							KinkyDungeonSetDress(outfitName, outfitName);
-							KinkyDungeonSetFlag("Recruit_" + name, -1);
-							KinkyDungeonSetFlag("Recruited", -1);
+							KDGameData.RecruitedFaction = name;
+							KDAddQuest("Recruit" + name);
 							KDChangeFactionRelation("Player", faction, 0.4, true);
 							KDChangeFactionRelation("Player", faction, -0.2);
 							KDGameData.SlowMoveTurns = 3;

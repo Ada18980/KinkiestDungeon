@@ -2242,7 +2242,23 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 let KDCustomDefeatUniforms = {
 	WolfgirlHunters: () => {
 		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints", "linkRegular"])},
+			let r = KinkyDungeonGetRestraint({tags: (i < (KinkyDungeonStatsChoice.has("NoWayOut") ? 3 : 1) ? ["wolfCuffs"] : ["wolfGear", "wolfRestraints"])},
+			Math.max(KDGetEffLevel(), 8), "grv", true, "Red",
+			
+			undefined, undefined, undefined, undefined, undefined, undefined,
+			undefined, undefined, undefined ,undefined, {
+				suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+			});
+			if (r) {
+				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Red", undefined, undefined, undefined, undefined, true);
+				if (r.Link) {
+					let newRestraint = KinkyDungeonGetRestraintByName(r.Link);
+					KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true, "Red", undefined, undefined, undefined, undefined, true);
+				}
+			}
+		}
+		for (let i = 0; i < 10; i++) {
+			let r = KinkyDungeonGetRestraint({tags: (["linkRegular"])},
 			Math.max(KDGetEffLevel(), 6), "grv", true, "Red",
 			
 			undefined, undefined, undefined, undefined, undefined, undefined,
@@ -2263,9 +2279,20 @@ let KDCustomDefeatUniforms = {
 		KinkyDungeonSetDress("Wolfgirl", "Wolfgirl");
 	},
 	MaidSweeper: () => {
-		for (let i = 0; i < 30; i++) {
-			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket", "handcuffer", "linkRegular"]},
+		for (let i = 0; i < 20; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["maidRestraints", "maidVibeRestraints", "noMaidJacket"]},
 				Math.max(KDGetEffLevel(), 9), "grv", true, "Purple",
+			
+				undefined, undefined, undefined, undefined, undefined, undefined,
+				undefined, undefined, undefined ,undefined, {
+					suppressTightPerk: MiniGameKinkyDungeonLevel == 0
+				});
+			if (r)
+				KinkyDungeonAddRestraintIfWeaker(r, 0, true, r.Group == "ItemNeck" ? "Blue" : "Purple", undefined, undefined, undefined, undefined, true);
+		}
+		for (let i = 0; i < 10; i++) {
+			let r = KinkyDungeonGetRestraint({tags: ["handcuffer", "linkRegular"]},
+				Math.max(KDGetEffLevel(), 6), "grv", true, "Purple",
 			
 				undefined, undefined, undefined, undefined, undefined, undefined,
 				undefined, undefined, undefined ,undefined, {

@@ -41,11 +41,27 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.4.74
+- Modders: Added "afterModsLoadedAndLoadGame" event
+- Modders: "afterNewGame" event only fires on new game as intended
+- Can now cancel faction recruitment from quests menu
+- Fixed issues with enchanted weapons dont inherit some properties from original weapon (only applies to newly gotten ones)
+- Added Protection Sport Mittens (id: WolfMittsStrong)
+
+5.4.73
+- Fix bug where player cant move while inside an AoE spell
+- Now redresses the player after loading mods
+- Fixed some missing strings
+- Fixed a bug that may result in not enough quests being generated at map gen
+- Fixed 'NoLoss' expert tool field not persisting
+- Fix magic rope not applying to enemies that are helpless but not at 0hp
+
 5.4.72
 - Fix slime boots not appearing while kneeling
 - fix ropes not having faction colors
 - Fix auto pathing sometimes not getting interrupted if you are targeted
 - Made freezing projectiles and effects blockable
+- Increased difficulty of starting restraints in Maid Sweeper and Elemental Slave start
 
 5.4.71
 - Fixed a bug where some bullets that dont hit you right away would hit you if you reload

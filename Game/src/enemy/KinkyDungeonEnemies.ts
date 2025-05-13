@@ -610,13 +610,12 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 			if (!KinkyDungeonAutoWait)
 				if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Click.ogg");
-			if (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
+			if (KinkyDungeonFlags.get("startPath") && KinkyDungeonFastMovePath.length > 0) {
 				KinkyDungeonFastMovePath = [KinkyDungeonFastMovePath[0]];
 			} else {
 				KinkyDungeonFastMovePath = [];
 			}
-		}
-
+		} else
 		// Cancel fast move even if there is a current path
 		if (KinkyDungeonFastMovePath?.length > 0 &&
 			(

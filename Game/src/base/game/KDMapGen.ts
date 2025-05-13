@@ -2179,6 +2179,7 @@ function KinkyDungeonPlaceShrines (
 	});
 
 	let quests = 0;
+	let hearts = 0;
 	let backfillBackup = false;
 
 	while (list.length > 0 || !backfillBackup) {
@@ -2286,7 +2287,7 @@ function KinkyDungeonPlaceShrines (
 		} else for (let goddess of Object.keys(tablets)) {
 			if (tablets[goddess] < tabletsAmount[goddess]) {
 				let shrine = list[NN];
-				if (goddess == 'Heart') quests += 1;
+				if (goddess == 'Heart') hearts += 1;
 				KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Tablet", Name: goddess, Light: 3, lightColor: 0x8888ff});
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'M');
 
@@ -2297,7 +2298,7 @@ function KinkyDungeonPlaceShrines (
 
 		list.splice(NN, 1);
 	}
-	return quests;
+	return quests + Math.min(hearts, 2);
 }
 
 

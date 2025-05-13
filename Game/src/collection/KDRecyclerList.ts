@@ -327,6 +327,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				undefined, {Rope: 4}),
 			KDAutoGenRestraintBlueprint("WolfMittens", "Wolf", "", undefined,
 				undefined, undefined),
+			KDAutoGenRestraintBlueprint("WolfMittsStrong", "Wolf", "", undefined,
+				undefined, undefined),
 			KDAutoGenRestraintBlueprint("WolfBallGag", "Wolf", "", undefined,
 				undefined, {Latex: 2}),
 			KDAutoGenRestraintBlueprint("WolfCollar", "Wolf", "", 2,

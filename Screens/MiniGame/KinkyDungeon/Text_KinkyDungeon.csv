@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.72"
+KDVersionStr,"5.4.74"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -1079,6 +1079,7 @@ KinkyDungeonKeyMap,Expand Minimap
 KinkyDungeonKeyZoomOut,Zoom Out
 KinkyDungeonKeyZoomIn,Zoom In
 KinkyDungeonKeyWaitInterrupt,Wait till Interrupted
+KinkyDungeonKeyToggleBuff,Expand Buffs/Status
 KinkyDungeonKeyMakeNoise,Make Noise
 KinkyDungeonKeyCrouch,Crouch
 KinkyDungeonKeyPlaySelf,Play with Self
@@ -4627,6 +4628,9 @@ RestraintHeavyLatexCatsuitDesc2,"Blue latex is silky smooth, very stretchy, and 
 RestraintLatexMittens,Latex Mittens
 RestraintLatexMittensDesc,"A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult."
 RestraintLatexMittensDesc2,"It has too much grip to struggle out of, but is made of a fragile material."
+RestraintWolfMittsStrong,Protection Sport Mittens
+RestraintWolfMittsStrongDesc,"A pair of tough latex mittens that prevent wolfgirls from scratching their trainers. They are already gagged, so no bite protection is needed."
+RestraintWolfMittsStrongDesc2,"They adhere to latex restraints making struggling more difficult. The rubber is extremely thick and won't budge except under incredible strength. A specialized applicator is used to get them on and off."
 
 RestraintLatexCube,Latex Cube
 RestraintLatexCubeDesc,A gelatinous cube that engulfed you at some point in the past.
@@ -28240,7 +28244,7 @@ KDWeaponTag_illum,Illumination
 KDWeaponTagD_illum,"Illumination: This weapon is a light source."
 
 KinkyDungeonSpellOffhand,"Dual Wield"
-KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)"
+KinkyDungeonSpellDescriptionOffhand,"Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand."
 
 KDInventoryActionOffhand,"Equip Offhand"
 KDInventoryActionRemoveOffhand,"Remove Offhand"
@@ -30815,6 +30819,8 @@ KDPropField_Protected,Protected
 KDPropField_DisplaceAmount,Displace Amount
 KDPropField_EraseAmount,Erase Amount
 KDPropField_NoLoss,NoLoss
+KDPropField_HideRestraintsTags,HideRestraintsTags
+
 KDPropField_HideRestraintTags,HideRestraintTags
 
 KinkyDungeonLoadFromFile,Load from File
@@ -31351,6 +31357,7 @@ KDStamDmgBonus,AMNTx damage when SP is over 50%
 
 KinkyDungeonSpellManyOrbs,"Barrage of Barrier Orb"
 KinkyDungeonSpellZombieOrb,"Barrier Orb"
+KinkyDungeonSpellZombieOrbMini,"Haunted Orb"
 KinkyDungeonSpellFuukaOrbMulti,"Barrage of Sealing Talisman"
 KinkyDungeonSpellFuukaOrb,"Sealing Talisman"
 KinkyDungeonSpellEnemyCM_self,"Self Unlock"
@@ -32236,3 +32243,22 @@ KDPaletteLayer_LightNeutral,Light
 KDWardrobeOverridePaletteLayer,Override Brightness
 KDWardrobeDesaturatePaletteLayer,Desaturate
 
+
+KDModButtonNone,None
+
+KinkyDungeonSpellCastWeaponAttack,You swing with your weapon at a distance!
+
+KDQuestFactionMembership,Faction: ${Faction} [${Rep}]
+
+KDQuest_RecruitMaidforce,You are a member of the Maidforce.
+KDQuest_RecruitBountyhunter,You are a member of the Bounty Hunters Guild.
+KDQuest_RecruitDragon,You are a member of the Dragonheart Order.
+KDQuest_RecruitAncientRobot,<CITIZEN ID=NaN>
+KDQuest_RecruitDressmaker,You are a model for DressUp Co.
+KDQuest_RecruitNevermere,You are an associate of Nevermere Trainers Inc.
+KDQuest_RecruitElf,Your existence is acknowledged by the Cult of the Wild.
+KDQuest_RecruitBast,You are receiving the blessing of Bast.
+KDQuest_RecruitAlchemist,You are a member of the Alchemist's Guild.
+KDQuest_RecruitApprentice,You are a student of the School of Magic.
+KDQuest_RecruitElemental,You are a subject of the Elemental Planes.
+KDQuest_RecruitBandit,You are a wanted outlaw.

@@ -526,6 +526,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	KinkyDungeonDrawState != "Reputation", KDButtonColor); II++;
 	DrawButtonKDExScroll("TabQuest", scrollFunc, (_b) => {
 		KinkyDungeonDrawState = "Quest";
+		KDSortQuests(KDPlayer());
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonQuest"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "Quest", KDButtonColor); II++;

@@ -1,0 +1,221 @@
+{"frames": {
+
+"Models/ArmorPlate/BootRightKneel.png":
+{
+	"frame": {"x":396,"y":1920,"w":73,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":321,"y":853,"w":73,"h":100},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Belts/Belt.png":
+{
+	"frame": {"x":3,"y":1744,"w":265,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":458,"y":735,"w":265,"h":62},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Blindfold/HarnessBlindfoldStrap.png":
+{
+	"frame": {"x":272,"y":1744,"w":197,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":515,"y":266,"w":197,"h":61},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/ArmLeftCrossed.png":
+{
+	"frame": {"x":1217,"y":1101,"w":555,"h":639},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":216,"y":91,"w":555,"h":639},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/ArmLeftYoked.png":
+{
+	"frame": {"x":473,"y":1217,"w":721,"h":545},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":216,"y":91,"w":721,"h":545},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/ArmRightUp.png":
+{
+	"frame": {"x":319,"y":1217,"w":145,"h":344},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":449,"y":162,"w":145,"h":344},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/FootRightKneel.png":
+{
+	"frame": {"x":396,"y":1809,"w":73,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":322,"y":850,"w":73,"h":107},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Body/LegLeftClosed.png":
+{
+	"frame": {"x":1790,"y":3,"w":208,"h":699},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":533,"y":919,"w":208,"h":699},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/BodySmooth/ArmLeftCrossed.png":
+{
+	"frame": {"x":1217,"y":1101,"w":555,"h":639},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":216,"y":91,"w":555,"h":639},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/BodySmooth/ArmLeftYoked.png":
+{
+	"frame": {"x":473,"y":1217,"w":721,"h":545},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":216,"y":91,"w":721,"h":545},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/BodySmooth/ArmRightUp.png":
+{
+	"frame": {"x":319,"y":1217,"w":145,"h":344},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":449,"y":162,"w":145,"h":344},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/BodySmooth/FootRightKneel.png":
+{
+	"frame": {"x":396,"y":1809,"w":73,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":322,"y":850,"w":73,"h":107},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/BodySmooth/LegLeftClosed.png":
+{
+	"frame": {"x":1790,"y":3,"w":208,"h":699},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":533,"y":919,"w":208,"h":699},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Bubble/LatexSphere.png":
+{
+	"frame": {"x":3,"y":3,"w":1210,"h":1210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":77,"w":1210,"h":1210},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Bunny/Leotard.png":
+{
+	"frame": {"x":1776,"y":1410,"w":269,"h":397},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":446,"y":518,"w":269,"h":397},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Bunny/SockLeftClosed.png":
+{
+	"frame": {"x":1790,"y":706,"w":206,"h":700},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":533,"y":918,"w":206,"h":700},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Bunny/SockLeftKneelClosed.png":
+{
+	"frame": {"x":1198,"y":1744,"w":495,"h":272},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":388,"y":808,"w":495,"h":272},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Cape/CapeYoked.png":
+{
+	"frame": {"x":1217,"y":3,"w":569,"h":1094},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":363,"y":413,"w":569,"h":1094},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Cape/ShouldersHogtie.png":
+{
+	"frame": {"x":805,"y":1766,"w":341,"h":259},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":454,"y":396,"w":341,"h":259},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Catsuit/FootRightClosed.png":
+{
+	"frame": {"x":319,"y":1565,"w":144,"h":166},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":458,"y":1448,"w":144,"h":166},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Chastity/BraCups.png":
+{
+	"frame": {"x":1697,"y":1811,"w":319,"h":233},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":446,"y":406,"w":319,"h":233},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Chastity/Cyber.png":
+{
+	"frame": {"x":3,"y":1217,"w":312,"h":518},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":453,"y":406,"w":312,"h":518},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/China/DressSkirt.png":
+{
+	"frame": {"x":473,"y":1766,"w":328,"h":273},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":441,"y":734,"w":328,"h":273},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/China/DressSkirtKneel.png":
+{
+	"frame": {"x":3,"y":1811,"w":389,"h":226},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":388,"y":734,"w":389,"h":226},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/CyberArms/CuffForeLongMittenRightFront.png":
+{
+	"frame": {"x":1697,"y":1744,"w":75,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":469,"y":524,"w":75,"h":62},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/CyberMitts/CuffForeLongMittenRightFront.png":
+{
+	"frame": {"x":1697,"y":1744,"w":75,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":469,"y":524,"w":75,"h":62},
+	"sourceSize": {"w":1240,"h":1754}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "atlasA3.webp",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2047},
+	"scale": "0.5",
+	"related_multi_packs": [ "atlasA0.json", "atlasA1.json", "atlasA2.json", "atlasA4.json", "atlasA5.json", "atlasA6.json", "atlasA7.json", "atlasA8.json", "atlasA9.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:cb552411c9db627f1c7ea3b199258ba0:7b5ac527060387cc22bdd867d151c242:df685030c92cb0872868bf1645124b7b$"
+}
+}

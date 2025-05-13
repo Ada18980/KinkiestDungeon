@@ -665,7 +665,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.002 * power);
 					else
 						KinkyDungeonChangeFactionRep("Dressmaker", 0.0007 * power);
-					KDRemoveQuest("DressmakerQuest");
+					KDRemoveQuest("DressmakerQuest", false, true, true);
 					KDRemoveEntity(KDDialogueEnemy(), false);
 					return false;
 				},
@@ -728,7 +728,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"CompleteLegs": {
 				playertext: "Default", response: "Default",
 				clickFunction: (_gagged, _player) => {
-					KDRemoveQuest("ApprenticeQuest");
+					KDRemoveQuest("ApprenticeQuest", false, true, true);
 					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollLegs, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
@@ -750,7 +750,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"CompleteArms": {
 				playertext: "Default", response: "Default",
 				clickFunction: (_gagged, _player) => {
-					KDRemoveQuest("ApprenticeQuest");
+					KDRemoveQuest("ApprenticeQuest", false, true, true);
 					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollArms, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
@@ -772,7 +772,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"CompleteVerbal": {
 				playertext: "Default", response: "Default",
 				clickFunction: (_gagged, _player) => {
-					KDRemoveQuest("ApprenticeQuest");
+					KDRemoveQuest("ApprenticeQuest", false, true, true);
 					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollVerbal, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)
@@ -794,7 +794,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"CompletePurity": {
 				playertext: "Default", response: "Default",
 				clickFunction: (_gagged, _player) => {
-					KDRemoveQuest("ApprenticeQuest");
+					KDRemoveQuest("ApprenticeQuest", false, true, true);
 					KDRemoveEntity(KDDialogueEnemy(), false);
 					KinkyDungeonChangeConsumable(KinkyDungeonConsumables.ScrollPurity, -1);
 					if (KDFactionRelation("Player", "Apprentice") < 0.25)

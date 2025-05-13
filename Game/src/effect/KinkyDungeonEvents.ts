@@ -7988,7 +7988,7 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 		},
 		"MagicRope": (e, _weapon, data) => {
 			if (data.enemy && !data.miss && !data.disarm) {
-				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp > 0 && !KDHelpless(data.enemy)) {
+				if (data.enemy && (!e.chance || KDRandom() < e.chance) && data.enemy.hp >= 0.52) {
 					if (!KinkyDungeonHasMana(e.cost)) {
 						let restrained = KDPlayerEffectRestrain(undefined, 2, ["ropeMagicWeak"], "Player", true, false, false, false, false);
 						if (restrained.length > 0) {
@@ -12555,6 +12555,9 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	},
 	"afterLoadGame": {
 		// Ran after loading a game
+	},
+	"afterModsLoadedAndLoadGame": {
+		// Ran after loading a game and after mods loaded
 	},
 	"afterModSettingsLoad": {
 		// Ran after loading KDModSettings from Local Storage

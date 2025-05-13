@@ -506,6 +506,11 @@ async function KDExecuteMods() {
 	KDAwaitingModLoad = false;
 
 	KinkyDungeonSendEvent("afterLoadMods", {});
+
+	// reload the player
+	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+	KinkyDungeonCheckClothesLoss = true;
+	KinkyDungeonDressPlayer();
 }
 
 function KDDrawModConfigs() {

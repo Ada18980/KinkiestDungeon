@@ -490,6 +490,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 	KinkyDungeonDrawState = "Game";
 	KDResetAlternateInventoryRender();
 	KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+	KinkyDungeonCheckClothesLoss = true;
 	KinkyDungeonDressPlayer();
 
 	KinkyDungeonMapIndex = {};
@@ -2315,7 +2316,8 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "Reputation"; break;
 				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "MagicSpells"; break;
 				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = "Logbook"; break;
-				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest"; break;
+				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest";
+					KDSortQuests(KDPlayer()); break;
 				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = "Collection"; break;
 				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
 				case KinkyDungeonKeyMenu[9]: {

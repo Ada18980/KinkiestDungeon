@@ -189,7 +189,7 @@ function KinkyDungeonItemEvent(Item: any, nomsg?: boolean) {
 		color = KDBaseLightGreen;
 		KDAddConsumable("BlueKey", 1);
 	} else if (KDConsumable(Item)) {
-		if (KinkyDungeonWeaponVariants[Item.name]) {
+		if (KinkyDungeonConsumableVariants[Item.name]) {
 			KDGiveConsumableVariant(KinkyDungeonConsumableVariants[Item.name], undefined, Item.name, undefined, Item.amount);
 			color = "#aaaaff";
 			name = "Generic";

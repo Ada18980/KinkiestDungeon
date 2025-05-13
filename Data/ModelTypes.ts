@@ -265,7 +265,7 @@ type LayerPropertiesType = {
 	AddPose?: string[],
 	DisplaceAmount?: number,
 	EraseAmount?: number,
-	NoLoss?: boolean,
+	NoLoss?: string,
 	HideRestraintsTags?: string[],
 }
 

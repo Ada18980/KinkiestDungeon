@@ -343,7 +343,7 @@ function KDRecruitTrigger(name: string, dialogue: KinkyDialogue): KinkyDialogueT
 			blockDuringPlaytime: true,
 			prerequisite: (enemy, dist, _AIData) => {
 				return (dist < 1.5
-					&& !KinkyDungeonFlags.get("Recruited")
+					&& !KDGameData.RecruitedFaction
 					&& !KinkyDungeonFlags.get("DangerFlag")
 					&& !KinkyDungeonFlags.get(name)
 					&& !KinkyDungeonFlags.get("NoTalk")

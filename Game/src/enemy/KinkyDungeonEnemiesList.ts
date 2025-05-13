@@ -6331,7 +6331,7 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 		}
 	},
 	"removeQuest": (_enemy, o) => {
-		KDRemoveQuest(o.quest);
+		KDRemoveQuest(o.quest, false, false, true);
 	},
 	"dollID": (enemy, _o, mapData) => {
 		if (mapData == KDMapData && KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 9) {

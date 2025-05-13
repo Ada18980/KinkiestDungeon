@@ -3398,9 +3398,14 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 function KinkyDungeonSendWeaponEvent(Event: string, data: any, forceWeapon?: item) {
 	if (!forceWeapon && !KDMapHasEvent(KDEventMapWeapon, Event)) return;
 	let weapon = forceWeapon ? KDWeapon(forceWeapon) : KinkyDungeonPlayerDamage;
-	let events = weapon?.events;
-	if (forceWeapon && KinkyDungeonWeaponVariants[forceWeapon.inventoryVariant || forceWeapon.name]?.events) {
-		events = KinkyDungeonWeaponVariants[forceWeapon.inventoryVariant || forceWeapon.name].events;
+	let events = (forceWeapon ||  KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))?.events || weapon?.events;
+	let Vevents = events ? null : (KinkyDungeonWeaponVariants[forceWeapon?.inventoryVariant || forceWeapon?.name || KinkyDungeonPlayerWeapon]?.events);
+	if (Vevents) {
+		for (let e of Vevents) {
+			if (e.trigger == Event && !e.offhandonly && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+				KinkyDungeonHandleWeaponEvent(Event, e, weapon, data);
+			}
+		}
 	}
 	if (events) {
 		for (let e of events) {
@@ -3414,17 +3419,24 @@ function KinkyDungeonSendWeaponEvent(Event: string, data: any, forceWeapon?: ite
 	if (KDGameData.Offhand
 		&& KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
 		let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
-		if (KinkyDungeonInventoryGetWeapon(KDGameData.Offhand).events) {
-			for (let e of KinkyDungeonInventoryGetWeapon(KDGameData.Offhand).events) {
+			
+		let events = (KinkyDungeonInventoryGetWeapon(KDGameData.Offhand))?.events
+			|| KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand))?.events;
+			
+		let Vevents = events ? null : (KinkyDungeonWeaponVariants[ KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)?.inventoryVariant
+			|| KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)?.name]?.events);
+		if (Vevents)
+			for (let e of Vevents) {
 				if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 					KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
 				}
 			}
-		} else for (let e of weapon.events) {
-			if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
-				KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
+		if (events)
+			for (let e of events) {
+				if (e.trigger == Event && e.offhand && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
+					KinkyDungeonHandleWeaponEvent(Event, e, KDWeapon(weapon), data);
+				}
 			}
-		}
 	}
 }
 

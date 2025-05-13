@@ -4,6 +4,18 @@ let QuestCompleteWeight = 1000;
 let KDDefaultGoddessQuestRep = 5;
 
 let KDQuests: Record<string, KDQuest> = {
+	RecruitMaidforce: FactionQuestDummy("Maidforce", "Maidforce"),
+	RecruitNevermere: FactionQuestDummy("Nevermere", "Wolfgirl"),
+	RecruitDragon: FactionQuestDummy("Dragon", "Dragon"),
+	RecruitElf: FactionQuestDummy("Elf", "Elf"),
+	RecruitBast: FactionQuestDummy("Bast", "Mummy"),
+	RecruitAlchemist: FactionQuestDummy("Alchemist", "Alchemist"),
+	RecruitApprentice: FactionQuestDummy("Apprentice", "Apprentice"),
+	RecruitElemental: FactionQuestDummy("Elemental", "ElementalFire"),
+	RecruitDressmaker: FactionQuestDummy("Dressmaker", "Dressmaker"),
+	RecruitAncientRobot: FactionQuestDummy("AncientRobot", "Cyborg"),
+	RecruitBountyhunter: FactionQuestDummy("Bountyhunter", "Ninja"),
+
 	"DressmakerQuest": {
 		name: "DressmakerQuest",
 		npc: "DressmakerQuest",
@@ -1066,11 +1078,17 @@ function KDQuestTick(quests: string[], delta: number) {
 	}
 }
 
-function KDRemoveQuest(quest: string) {
-	if (!KDGameData.Quests)
-		KDGameData.Quests = [];
-	else if (KDGameData.Quests.indexOf(quest) > -1)
-		KDGameData.Quests.splice(KDGameData.Quests.indexOf(quest), 1);
+function KDRemoveQuest(quest: string, force: boolean = false, intentional: boolean = false, success: boolean = false) {
+	let succ = true;
+	if (KDQuests[quest]?.oncancel) succ = KDQuests[quest].oncancel(KDPlayer(), force, intentional, success);
+	if (succ) {
+
+		if (!KDGameData.Quests)
+			KDGameData.Quests = [];
+		else if (KDGameData.Quests.indexOf(quest) > -1)
+			KDGameData.Quests.splice(KDGameData.Quests.indexOf(quest), 1);
+	}
+	return succ;
 }
 
 function KDAddQuest(quest: string) {
@@ -1101,6 +1119,7 @@ function KinkyDungeonDrawQuest() {
 	let spacing = 100;
 	let II = 0;
 	let ytt = 120;
+	let linespacing = 28;
 
 	if (KDGameData.Quests) {
 		for (let q of KDGameData.Quests) {
@@ -1129,12 +1148,18 @@ function KinkyDungeonDrawQuest() {
 						alpha: 0.9
 					});
 
-					DrawTextFitKD(TextGet("KDQuest_" + q), xStart + xOffset + 200, yStart + (II-KDQuestsIndex)*spacing, 850, KDBaseWhite, KDTextGray0, 28, "left");
+					let questtext = !!KDQuests[q]?.text ? KDQuests[q]?.text(KDPlayer()) : [TextGet("KDQuest_" + q)];
+					for (let i = 0; i < questtext.length; i++) {
+						DrawTextFitKD(questtext[i], xStart + xOffset + 200, 
+							yStart + (II-KDQuestsIndex)*spacing + (- 0.5 * (questtext.length - 1) + i) * linespacing, 850, 
+							KDBaseWhite, KDTextGray0, (questtext.length > 1 && i == 0 ? 32 : 24), "left");
+					
+					}
 					KDDraw(kdcanvas, kdpixisprites, "kdquest" + q, KinkyDungeonRootDirectory + "Enemies/" + KDQuests[q]?.npc + ".png",
 						xStart + xOffset + 100, yStart + (II-KDQuestsIndex)*spacing - 36, 72, 72);
 					if (DrawButtonKDEx("kdquestquit" + q, (_b) => {
 						if (!KDQuests[q]?.nocancel)
-							KDRemoveQuest(q);
+							KDRemoveQuest(q, false, true);
 						return true;
 					}, true, xStart + xOffset + 1200, yStart + (II-KDQuestsIndex)*spacing - 36, 220, 72,
 					TextGet("KDQuestListCancel"), KDQuests[q]?.nocancel ? KDTextGray3 : KDBaseWhite,
@@ -1234,7 +1259,7 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 		},
 		tick: (delta) => {
 			if (KDMapData.RoomType == "PerkRoom") {
-				KDRemoveQuest(Name);
+				KDRemoveQuest(Name, false, false, false);
 				KinkyDungeonChangeRep(Goddess, -KDDefaultGoddessQuestRep);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestFail_" + Name), KDBaseWhite, 1);
 				KDPlayerEffectRestrain(undefined, Math.round(restraintsCountMult * (1 + KDGetEffLevel()/3)), restraintsTags, "Goddess", false, true, false, false, false, "Divine", {
@@ -1262,7 +1287,7 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 				KinkyDungeonChangeRep(Goddess, (!KinkyDungeonFlags.get("QuestFirstRep")) ? 2.5 + Rep : Rep);
 				KinkyDungeonSetFlag("QuestFirstRep", -1, 1);
 				KinkyDungeonSendTextMessage(10, TextGet("KDQuestSucceed" + (KinkyDungeonGoddessRep.Ghost > 1 ? "Sub" : "") + "_" + Name), KDBaseWhite, 1);
-				KDRemoveQuest(Name);
+				KDRemoveQuest(Name, false, false, true);
 				for (let inv of KinkyDungeonAllRestraintDynamic()) {
 					if (inv.item.lock == "Divine") KinkyDungeonLock(inv.item, "", false, false, false, false);
 				}
@@ -1278,4 +1303,48 @@ function KDGenQuestTemplate(Name: string, Icon: string, Goddess: string, spawnFu
 	};
 
 	return quest;
+}
+
+
+function KDSortQuests(player: entity) {
+	let quests = KDGameData.Quests;
+
+	KDGameData.Quests = quests.sort(
+		(questa, questb) => {
+			return (KDQuests[questb]?.priority ? KDQuests[questb].priority(player) : 0) - (KDQuests[questa]?.priority ? KDQuests[questa].priority(player) : 0);
+		}
+	);
+}
+
+function FactionQuestDummy(faction: string, npc: string) : KDQuest {
+	return {
+		name: "Recruit" + faction,
+		npc: npc,
+		visible: true,
+		nocancel: false,
+		oncancel: (player, force, intentional) => {
+			if (force) {
+				if (KDGameData.RecruitedFaction == faction) KDGameData.RecruitedFaction = "";
+				return true;
+			}
+			if (KDGameData.RecruitedFaction == faction) KDGameData.RecruitedFaction = "";
+			return true;
+		},
+		text: (player) => {
+			return [TextGet("KDQuestFactionMembership", {
+				Faction: TextGet("KinkyDungeonFaction" + faction),
+				Rep: Math.round(50 + 50 * KDFactionRelation("Player", faction)),
+			}),
+				TextGet("KDQuest_Recruit" + faction)];
+		},
+		priority: (player) => {
+			return 100; // is faction tag
+		},
+		weight: (_RoomType, _MapMod, _data, _currentQuestList) => {
+			return 0;
+		},
+		prerequisite: (_RoomType, _MapMod, _data, _currentQuestList) => {
+			return false;
+		}
+	};
 }

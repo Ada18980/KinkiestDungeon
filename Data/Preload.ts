@@ -391,6 +391,9 @@ let displacementList = [
 
 let linearList = [
 	"TextureAtlas/atlas0.json",
+	"TextureAtlas/atlasA0.json",
+	"TextureAtlas/atlasB0.json",
+	"TextureAtlas/atlasC0.json",
 	"TextureAtlas/displace0.json",
 ];
 

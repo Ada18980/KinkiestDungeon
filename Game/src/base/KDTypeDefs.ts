@@ -2530,6 +2530,17 @@ interface spell {
 
 interface KDQuest {
 	name: string;
+	/**
+	 * 
+	 * @param player player entity (future proof)
+	 * @param force force even if not meeting condition
+	 * @param intentional player triggered via option or button
+	 * @param success quest is successful
+	 * @returns 
+	 */
+	oncancel?: (player: entity, force: boolean, intentional: boolean, success: boolean) => boolean;
+	priority?: (player: entity) => number;
+	text?: (player: entity) => string[];
 	npc: string;
 	visible: boolean;
 	nocancel?: boolean,
