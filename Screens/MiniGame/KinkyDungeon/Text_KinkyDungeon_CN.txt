@@ -2276,6 +2276,7 @@ Devious Dungeon Challenge 已启用。
 放大
 - Wait till Interrupted
 等待至被打断
+# - Expand Buffs/Status
 - Make Noise
 制造噪音
 - Play with Self
@@ -7388,6 +7389,7 @@ SHRINETYPE石碑
 # :: KDMapMod_
 # :: KDMapMod_None
 # :: KDPaletteLayer_None
+# :: KDModButtonNone
 - Nevermere Trainers
 “奈文米尔”训练师
 - DressUp Co.
@@ -9579,6 +9581,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 乳胶束手套
 - A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult.
 用于保证你的手不会惹麻烦的一副束手套。与乳胶拘束具相互贴合，使得挣扎更加困难。
+# - Protection Sport Mittens
+# - A pair of tough latex mittens that prevent wolfgirls from scratching their trainers. They are already gagged, so no bite protection is needed.
+# - They adhere to latex restraints making struggling more difficult. The rubber is extremely thick and won't budge except under incredible strength. A specialized applicator is used to get them on and off.
 
 - Latex Cube
 乳胶立方体
@@ -11799,7 +11804,7 @@ Ars烟火
 - DoT
 持续伤害
 - Projectiles
-抛射物
+射击
 - Melee
 近战
 # :: KinkyDungeonFiltermelee
@@ -12474,7 +12479,7 @@ Ars烟火
 - Barrier Runes
 符文屏障
 - Creates a 1x1 field of barrier monoliths that blocks BlockAmount damage from projectiles for DelayTime turns, but doesn't block movement.
-创造一个 1x1 的可通过的巨石屏障，在 DelayTime 回合内阻挡来自投射物的 BlockAmount 点伤害。
+创造一个 1x1 的巨石屏障，允许通过的同时，在 DelayTime 回合内阻挡来自射弹的 BlockAmount 点伤害。
 - You raise a field of runes with a command word!
 你轻声吟唱屏障之咒，创造出一片巨石屏障！
 - Choose barrier location
@@ -14009,7 +14014,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 # :: KinkyDungeonSpellWaterBall
 # :: KinkyDungeonSpellWitchWaterBall
 - Fast projectile. Deals DamageDealt soap damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
-发射一个高速水球并造成 DamageDealt 点皂化伤害。潮湿的目标承受 +35% 电击/寒冰伤害 -42% 火焰伤害，并传导 50% 的电击伤害。
+发射一个高速水球，造成 DamageDealt 点皂化伤害。潮湿的目标承受 +35% 电击/寒冰伤害、-42% 火焰伤害，并传导 50% 的电击伤害。
 - You hurl a ball of water!
 你掷出一个水球！
 
@@ -14091,7 +14096,8 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 孢子
 # :: KinkyDungeonSpellSpores
 # :: KinkyDungeonSpellSpores
-# - Pocket Spores
+- Pocket Spores
+口袋孢子
 - Noxious Spores
 有毒孢子
 - Enticing Spores
@@ -15264,10 +15270,12 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 
 - You are frozen!
 你被冻住了！
-# - You are frozen by a projectile!
+- You are frozen by a projectile!
+你被一枚射弹冻住了！
 - You are chilled!
 你感到寒冷！
-# - You are hit by a chilling projectile!
+- You are hit by a chilling projectile!
+你被一枚冰冷的射弹击中！
 - Shadowy tendrils wrap around your feet, rooting you in place!!!
 阴暗的卷须缠绕在你的脚上，将你固定在原地！！！
 
@@ -16264,7 +16272,8 @@ EnemyName 设法带着你的物品撤退了！
 
 - Behold my SPL!
 瞧我的 SPL!
-# - Mmmph... SPL...
+- Mmmph... SPL...
+嗯嗯嗯… SPL…
 - Oh noes...
 哦不……
 - Ueeee!
@@ -16731,8 +16740,9 @@ EnemyName 设法带着你的物品撤退了！
 
 
 - Submit to my SPL!
-臣服于我的 SPL！
-# - Hmmmph... SPL--
+臣服于我的 SPL!
+- Hmmmph... SPL--
+哼嗯嗯… SPL——
 - Fine then! Have it your way.
 行吧！随你便。
 - You'll be sorry you didn't listen to me~
@@ -16745,7 +16755,7 @@ EnemyName 设法带着你的物品撤退了！
 你知道玩偶师吗？我有个提议给你，我...
 
 - I cast SPL!
-我释放 SPL！
+我释放SPL!
 # :: KinkyDungeonRemindJailCast
 # :: KinkyDungeonRemindJailCastAdventurer_Sub_Fighter
 # :: KinkyDungeonRemindJailCastWitch
@@ -17165,7 +17175,7 @@ EnemyName 设法带着你的物品撤退了！
 
 
 - Watch out for my SPL!
-小心我的 SPL！
+小心我的SPL！
 - Whoops!
 唉呀！
 - You won't get me like this!
@@ -17264,7 +17274,7 @@ EnemyName 设法带着你的物品撤退了！
 - Caught ya~
 抓住你~
 - Dibs on this one!
-这里有一个零钱！
+这个我先拿走了！
 - Gotta make sure no one gets to you~
 要确保没有人接近你~
 - I'm PTRN. And who might you be?
@@ -17405,7 +17415,7 @@ EnemyName 设法带着你的物品撤退了！
 *游荡*
 
 - Engaging SPL!
-启动 SPL!
+正在启动SPL!
 - A-Access denied!?
 访问被拒绝！？
 - This... this unit is doing a good job! I swear!
@@ -17517,9 +17527,9 @@ EnemyName 设法带着你的物品撤退了！
 
 
 - SPL armed.
-SPL 已激活。
+SPL已激活。
 - An exception has occurred while trying to run SPL. Retry?
-尝试运行 SPL 时发生异常。重试?
+尝试运行SPL时发生异常。是否重试？
 - Error in citizen ID registration. Please submit to processing.
 公民ID登记错误。请提交处理。
 - Does not compute.
@@ -17864,7 +17874,7 @@ SPL 已激活。
 - Let me introduce you to SPL~
 让我给你介绍一下 SPL~
 - No! My SPL!
-不!我的 SPL !
+不！我的SPL!
 - Oh my, looks like I'm in trouble!
 哎呀，看来我遇到麻烦了！
 - What a shame it would be if I got caught~
@@ -18010,7 +18020,8 @@ SPL 已激活。
 哦，那个是我的！
 
 
-# - SPL.
+- SPL.
+SPL。
 # :: KinkyDungeonRemindJailCastLibrarian
 # :: KinkyDungeonRemindJailCastFungal
 - No! I don't want to read your magazines!
@@ -18090,7 +18101,7 @@ SPL 已激活。
 - Stay put!
 留在原地！
 - I'll be taking that back.
-我收回那句话。
+那个我就拿回去了。
 - Click.
 咔哒。
 - If you really want to know, my name is PTRN. I am the keeper of this place.
@@ -18115,7 +18126,7 @@ SPL 已激活。
 从我的图书馆滚出去！
 
 - Deploying SPL!
-部署 SPL !
+正在部署SPL!
 # :: KinkyDungeonRemindJailCastNurse
 # :: KinkyDungeonRemindJailCastSubMaid
 - What was I supposed to do again? Oh right!
@@ -18219,7 +18230,7 @@ SPL 已激活。
 
 
 - I'll need another SPL, stat!
-我需要另一个 SPL，马上！
+我需要另一个SPL，马上！
 - A p-professional mistake.
 一个职业错误。
 - I did what the manual said!
@@ -18263,7 +18274,7 @@ PTRN MD 在这里。让我们看看我们有什么...
 
 # - SPL
 - SPL failed
-SPL 失败
+SPL失败
 # - PTRN
 
 
@@ -18548,7 +18559,7 @@ SPL 失败
 
 
 - Face my SPL!
-尝尝我的 SPL！
+尝尝我的SPL!
 # :: KinkyDungeonRemindJailCastAdventurer_Switch_Fighter
 # :: KinkyDungeonRemindJailCastMummy
 - SPL-whoops...
@@ -18660,7 +18671,7 @@ SPL-哎呦……
 - You can't hope to match my SPL~
 你别指望能比得上我的 SPL~
 - SPL! No wait, not like that!
-SPL !不，等等，不是那样的！
+SPL！不，等等，不是那样的!
 - Be nice!
 乖一点！
 - No! Be gentle!
@@ -18764,7 +18775,7 @@ Nya~！不公平...
 我不能让你享受所有的乐趣，对吧？
 
 - Time for SPL!
-SPL时间到了！
+SPL时间到了!
 - *tsk*
 叹气声*tsk*
 - Let's play all night!
@@ -18863,7 +18874,7 @@ SPL时间到了！
 
 
 - Calling in a SPL!
-呼叫 SPL！
+呼叫SPL!
 - A-assistance required!
 需-需要援助!
 - You'll have to try harder if you want to discipline me, ma'am.
@@ -18973,7 +18984,7 @@ SPL时间到了！
 
 
 - Hidden technique: SPL!
-隐藏技巧 : SPL！
+隐藏技巧 : SPL!
 - I practiced a thousand times... for this!?
 我练习了一千次……对于这个! ?
 - I'm not hiding anything, if you know what I mean...
@@ -19110,7 +19121,7 @@ Boo！哈，吓到你了~
 
 
 - Let's see how you like my SPL!
-看看你喜欢不喜欢我的 SPL！
+看看你喜欢不喜欢我的SPL!
 # :: KinkyDungeonRemindJailCastWolfgirl
 # :: KinkyDungeonRemindJailCastYen
 - Wait, wrong button! Aaahh~
@@ -19274,9 +19285,9 @@ PTRN，“奈文米尔”的一员。这是我的名片。
 只是保护你免受自身伤害。
 
 - SPL, sing to me!
-SPL ，为我吟唱！
+SPL，为我吟唱!
 - SPL, listen to me...
-SPL ，请听从我...
+SPL，请听从我…
 - An outsider!
 一个外来者！
 # :: KinkyDungeonRemindJailPlayBratElf0
@@ -19509,7 +19520,7 @@ SPL ，请听从我...
 
 
 - Behold, SPL.
-看哪,SPL。
+看哪，SPL。
 - Y-your fate has been postponed... briefly.
 你-你的命运被推迟了……短暂的。
 - You look cute in that, you should lose the rest though!
@@ -19653,7 +19664,7 @@ Ninril要求伸张正义。
 # :: KinkyDungeonRemindJailChaseDragonGirlCommandAssault
 
 - SPL! Now my wrath is revealed!
-SPL！就是现在，显现吧，我的怒火！
+SPL！就是现在，显现吧，我的怒火!
 - Wh-what happened? What weakness has infiltrated Myrtrice?
 发-发生什么事了？是什么弱点渗透到我莫尔翠丝 (Myrtrice) 上了？
 - You will loose me or burn eternal!!!
@@ -19832,11 +19843,11 @@ SPL！就是现在，显现吧，我的怒火！
 - That was commendable.
 这值得称赞。
 - I have you now, surface-dweller.
-我现在拥有你了，表面人。
+我现在拥有你了，地表人。
 - You are a fast one.
-你是个速度很快的人。
+你的速度还挺快的。
 - You are a tricky one.
-你是个狡猾的人。
+你还挺狡猾的。
 - You seem out of practice.
 你似乎不太习惯。
 # :: KinkyDungeonRemindJailFungalMissedMe
@@ -19846,7 +19857,7 @@ SPL！就是现在，显现吧，我的怒火！
 - Come.
 来吧。
 - I will take this.
-我要这个。
+我要拿走这个。
 - We are PTRN.
 我们是PTRN。
 - The collective defends itself.
@@ -19989,7 +20000,7 @@ Nya！需要朋友帮忙吗？
 我们来玩猫捉老鼠游戏吧~
 
 - You cannot resist my SPL.
-你无法抗拒我的 SPL。
+你无法抗拒我的SPL。
 - You merely prolong the inevitable!
 你只是延长了不可避免的时间！
 - This... this can't be...
@@ -20197,7 +20208,7 @@ Nya！需要朋友帮忙吗？
 # :: KinkyDungeonRemindJailChaseAngelCommandAssault
 
 - You are no match for my SPL!
-你根本不是我的SPL的对手！
+你根本不是我的SPL的对手!
 # :: KinkyDungeonRemindJailCastAthena
 # :: KinkyDungeonRemindJailCastDragonGirl
 - That wasn't supposed to happen.
@@ -20252,7 +20263,7 @@ Oh，闪闪发光！
 你现在不能出去！
 
 - Ah... my SPL...
-Ah...我的 SPL...
+啊… 我的SPL…
 - I will be free... even if it takes me a thousand years!
 我终将获得自由……即使需要一千年！
 - Release me you pathetic creature!
@@ -20346,7 +20357,7 @@ Ah...我的 SPL...
 *咯咯笑*
 
 - By the power of SPL!
-SPL的力量！
+SPL之力!
 - I have failed!
 我失败了！
 - Oh no, it's an adventurer!
@@ -20375,9 +20386,9 @@ Oh，不，是一个冒险家！
 好痒，呵呵！
 
 - Let's see you face my SPL~
-让你见识下我的 SPL ~
+让你见识下我的SPL~
 - You won't escape my SPL that easily!
-你逃不过我的SPL的！
+你逃不过我的SPL的!
 - Not the edging training! Anything but that!
 别的什么都好，不要寸止训练啊！
 - Forgive me!
@@ -20639,7 +20650,7 @@ Ah！原谅我!
 我就在这儿等！
 
 - Loading SPL!
-加载SPL !
+正在加载SPL!
 - Blast... this thing always jams.
 爆炸……这东西老是卡住。
 - That thing... it scares me.
@@ -20680,7 +20691,7 @@ Ah！原谅我!
 开始看守！
 
 - Submit to my SPL.
-臣服于我的 SPL 。
+臣服于我的SPL。
 - Ack! How inelegant!
 Ack !多不雅啊!
 - I'll be heading out...
@@ -20988,7 +20999,7 @@ Hmm. 你可以叫我女仆 PTRN。
 我喜欢你。我会在家给你留个位置~
 
 - I cast, umm, SPL!
-我施放，umm，SPL！
+我施放，额，SPL!
 - I cast Silence! No, wait--
 我释放沉默!不,等等--
 - I promise I'll be back later!
@@ -21213,7 +21224,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Mine...
 我的...
 - Shiny...
-闪亮...
+亮晶晶的…
 - Intruder...
 入侵者...
 # :: KinkyDungeonRemindJailChaseZombieAlert
@@ -21263,7 +21274,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - ...Got you.
 ...抓到了...
 - ...Shiny...
-...闪亮...
+…亮晶晶的…
 - ...Secure...
 ...安全...
 - *Her burial cloth reads PTRN*
@@ -23585,7 +23596,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 离我远点！
 
 - Shiny... (Put them on)
-好闪亮...(穿上它们)
+亮晶晶的…（穿上它们）
 - (Let her put them on you)
 (让她给你穿上)
 - What? No way! (Refuse)
@@ -42870,7 +42881,7 @@ Aura刘海(右后)
 - 10 charge to fire an arrow. Deals 30 pierce damage.
 10 点充能即可发射箭。造成 30 点穿刺伤害。
 - Choose projectile path
-选择弹丸路径
+选择发射路径
 # :: KinkyDungeonSpellTargetArrowNormal
 # :: KinkyDungeonSpellTargetArrowBolt
 # :: KinkyDungeonSpellTargetArrowRecurve
@@ -43761,7 +43772,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 
 - Dual Wield
 双持
-- Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|(Must equip Dual Wield spell to equip an offhand weapon)
+- Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.
 指定副手武器以获得光源、护甲或额外暴击伤害等被动效果。| ( 必须装备双持法术才能装备副手武器 )
 
 - Equip Offhand
@@ -44346,13 +44357,13 @@ AMNT 暗影流血 ( 10 回合 )
 # :: KinkyDungeonSpellFuukaOrb
 # :: KinkyDungeonSpellFuukaOrb
 - You were hit by one of Fuuka's talismans. Fuuka's magic begins sealing your power!
-你被风香的一枚护身符击中了。 风香的魔法开始封印你的力量！
+你被风香的护身符击中了。风香的魔法开始封印你的力量！
 - You were hit by one of Fuuka's talismans. Fuuka's magic makes you sluggish!!
-你被风香的一枚护身符击中了。风香的魔法让你变得迟钝！！
+你被风香的护身符击中了。风香的魔法让你变得迟钝！！
 - You were hit by one of Fuuka's talismans. Fuuka's magic renders you helpless!!!
-你被风香的一枚护身符击中了。 风香的魔法让你束手无策！！！
+你被风香的护身符击中了。风香的魔法让你束手无策！！！
 - You were hit by one of Fuuka's talisman projectiles. Fuuka's magic is restricting you!
-你被风香的一枚护身符射中了。 风香的魔法束缚了你！
+你被风香的护身符弹幕击中了。风香的魔法束缚了你！
 
 - Sealing Shadows
 封印暗影
@@ -45506,7 +45517,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Kinetic Slash
 念动斩
 - Swing an equipped weapon (not unarmed or hands free) in a line, slashing enemies in the way with 20 + 80% weapon damage. Counts as an attack. +10 mana cost if wielding a Heavy weapon.
-命令装备的武器在一个直线区域挥击，对途中的敌人造成 20 + 80% 的武器伤害。视为普攻。如果使用重型武器，+10 法力消耗。
+命令装备的武器（不支持徒手或无需用手的武器）直线挥击，对途中敌人造成 20 点 + 80% 的武器伤害。记作一次攻击。使用重型武器时 +10 法力消耗。
 - You swing!
 你命令武器攻击！
 - Choose where to swing (must not be unarmed or hands free weapon)
@@ -45516,7 +45527,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Kinetic Lance
 念动投掷
 - Propel your weapon at devastating speed, piercing enemies for 30+160% Weapon Damage and dropping it at the end of the trajectory. Counts as an attack. +15 mana cost if wielding a Heavy weapon.
-命令你的武器以毁灭性的速度发射出去，刺穿敌人并造成 30+160% 武器伤害，武器掉落在轨迹末端。视为普攻。如果使用重型武器，+15 法力消耗。
+命令你的武器以毁灭性的速度发射出去，刺穿敌人并造成 30点 + 160% 的武器伤害，使武器掉落在轨迹末端。记作一次攻击。使用重型武器时 +15 法力消耗。
 - You propel your weapon forward!
 你命令武器飞速向前！
 - Choose where to launch your weapon.
@@ -45526,9 +45537,9 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Sagitta
 天剑
 - Fire a projectile. If this projectile hits an enemy, make one attack against an enemy for 10+40% weapon damage. +5 mana cost if wielding a Heavy weapon.
-召唤并一柄天剑并向指定方向踢出。造成10 + 40%的武器伤害。视为普攻。如果使用重型武器，+5 法力消耗。
+发射一柄天剑。命中敌人时造成 10 点 + 40% 的武器伤害。使用重型武器时 +5 法力消耗。
 - You unleash a deadly projectile!
-你踢出了一枚致命的天剑！
+你释放出一枚致命的天剑！
 - Choose aim direction.
 选择目标方向。
 
@@ -45536,7 +45547,7 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 - Sagitta Assault
 天剑阵
 - After casting Sagitta, you can recast it up to three more times without advancing time.
-在召唤天剑后，你可以在该回合再多施放三次。
+在召唤天剑后，你可以在该回合之内再施放三次。
 
 - Psychokinesis
 念力
@@ -47665,7 +47676,7 @@ ESCP 强度 : ‎AMNT
 - Ranged Weapon Expert
 远程武器专家
 - Bows, guns, and other projectile weapons do 10% more damage and consume 10% less charge.
-弓、枪和其他投射性武器造成的伤害增加10%，消耗的能量减少10%
+弓、枪和其他射击类武器造成的伤害增加10%，消耗的能量减少10%
 
 
 
@@ -47922,6 +47933,8 @@ Y 轴
 擦除量
 - NoLoss
 无损
+# - HideRestraintsTags
+
 - HideRestraintTags
 隐藏拘束具标签
 
@@ -48767,6 +48780,7 @@ ENMY 解开了 ITMN 的锁!
 障碍宝珠弹幕
 - Barrier Orb
 障碍宝珠
+# - Haunted Orb
 - Barrage of Sealing Talisman
 封印护身符弹幕
 - Self Unlock
@@ -49065,7 +49079,7 @@ ENMY 解开了 ITMN 的锁!
 - Willows 20
 条 20
 - I almost found myself the recipient of a powerful binding arrow enchanted with force runes. Had I been hit, I would have been knocked back against the walls with my arms pinned by glowing conjured cuffs. Fortunately, this projectile hit a skeleton that was attacking me instead, and I was able to retreat.
-我差点就中了一支附有力量符文的强力束缚箭。如果我被击中，就会被钉到墙边，然后双臂被发光的魔法手铐夹住。幸运的是，这支箭击中了一个正在攻击我的骷髅，并使我得以撤退。
+我差点就中了一支附有原力符文的强力束缚箭。如果我被击中，就会被钉到墙边，然后双臂被发光的魔法手铐夹住。幸运的是，这支箭击中了一个正在攻击我的骷髅，我得以趁机撤退。
 - Catherine Willows' Journal (pg. 21)
 凯瑟琳·韦罗斯的日记（第 21 页）
 - Willows 21
@@ -49464,7 +49478,7 @@ ENMY 解开了 ITMN 的锁!
 - Enemy attacks take time to hit. Make sure to step out of the warning tiles,
 敌人的攻击需要一段时间才能打到你。确保走出有预警的方块。
 - You can dodge out of the way of most projectiles. Avoid the marked tiles.
-你可以躲开大多数投射物。避开被标记的方块。
+你可以躲开大多数射弹。避开被标记的方块。
 - 'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
 "充能"是一种通用的弹药，可以被所有武器使用。用远古水晶充能。
 - Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold.
@@ -50198,3 +50212,21 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 - Desaturate
 去饱和
 
+
+
+# - You swing with your weapon at a distance!
+
+# - Faction: ${Faction} [${Rep}]
+
+# - You are a member of the Maidforce.
+# - You are a member of the Bounty Hunters Guild.
+# - You are a member of the Dragonheart Order.
+# - <CITIZEN ID=NaN>
+# - You are a model for DressUp Co.
+# - You are an associate of Nevermere Trainers Inc.
+# - Your existence is acknowledged by the Cult of the Wild.
+# - You are receiving the blessing of Bast.
+# - You are a member of the Alchemist's Guild.
+# - You are a student of the School of Magic.
+# - You are a subject of the Elemental Planes.
+# - You are a wanted outlaw.
