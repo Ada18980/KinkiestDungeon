@@ -4067,8 +4067,9 @@ function KDIsInBounds(x: number, y: number, pad: number = 1): boolean {
 
 /**
  * @param sprintdata
+ * @param accountForSlow - doubles effective cost if slowlevel > 1
  */
-function KDSprintCost(sprintdata?: any, sprintCost?: number): number {
+function KDSprintCost(sprintdata?: any, sprintCost?: number, accountForSlow: boolean = false): number {
 	if (sprintCost != undefined) return sprintCost;
 	let data = {
 		sprintdata: sprintdata,
@@ -4077,7 +4078,10 @@ function KDSprintCost(sprintdata?: any, sprintCost?: number): number {
 		boost: 0,
 		sprintCostOverride: sprintCost,
 	};
-	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length, Math.round(KinkyDungeonSlowLevel))]);
+	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length, 
+		Math.round(KinkyDungeonSlowLevel))] + (
+			(accountForSlow && KinkyDungeonSlowLevel > 1) ? KDSprintAdjustSlowed : 0
+		));
 	if (KDGameData.MovePoints < 0) data.cost -= KDSlowedSprintCost;
 
 

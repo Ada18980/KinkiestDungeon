@@ -136,6 +136,7 @@ let KinkyDungeonStatStaminaRegenWait = 0.5;
 let KinkyDungeoNStatStaminaLow = 4;
 let KDSprintCostBase = 1.5; // Cost of sprinting
 let KDSprintCostSlowLevel = [0.5, 1.0, 0.0, 0.5, 1.0]; // Extra cost per slow level
+let KDSprintAdjustSlowed = 1.5; // this is added on if slow level > 1
 let KinkyDungeonStatWillMax = KDMaxStatStart;
 let KinkyDungeonStatWill = KinkyDungeonStatWillMax;
 let KinkyDungeonStatWillRate = 0;

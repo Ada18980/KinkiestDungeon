@@ -203,7 +203,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		return "Fail";
 	},
 	"Charge": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
-		let cost = KDAttackCost().attackCost + KDSprintCost();
+		let cost = KDAttackCost().attackCost + KDSprintCost(undefined, undefined, true);
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		let space = false;
 		let dash_x = targetX;
@@ -259,7 +259,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							}, false, false, spell, undefined, entity);
 						}
 						KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonSpellCastCharge"), "#e7cf1a", 1, false);
-						KDChangeStamina(spell.name, "spell", "cast", KDSprintCost());
+						KDChangeStamina(spell.name, "spell", "cast", KDSprintCost(undefined, undefined, true));
 					} else if (result == "miss") {
 						if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
 							KDMovePlayer(dash_x, dash_y, true, true);

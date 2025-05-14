@@ -656,7 +656,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				playertext: "Default", response: "Default",
 				gag: true,
 				clickFunction: (_gagged, _player) => {
-					let items = KinkyDungeonGetRestraintsWithShrine("BindingDress", true, true);
+					let items = KinkyDungeonGetRestraintsWithShrine("BindingDress", true, 
+						true, false, true);
 					// Get the most powerful item
 					let item = items.length > 0 ? items.reduce((prev, current) => (KinkyDungeonRestraintPower(prev, true) > KinkyDungeonRestraintPower(current, true)) ? prev : current) : null;
 
@@ -2875,7 +2876,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			KDGameData.CurrentDialogMsgValue = {
 				"RESCUECOST": Math.round(KDDialogueParams.ShopkeeperHelpFee + (KDDialogueParams.ShopkeeperHelpFeePerLevel * (KDGameData.HighestLevelCurrent || 1))
 					+ (KDDialogueParams.ShopkeeperHelpFeePerPower * (KDGetTotalRestraintPower(
-						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false)
+						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, false, false)
 						|| 1))),
 			};
 			KDGameData.CurrentDialogMsgData = {
@@ -3284,10 +3285,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					});
 				},
 				clickFunction: (_gagged, _player) => {
-					if (KinkyDungeonGetRestraintsWithShrine("Metal", true, true, false).length > 0
-						|| KinkyDungeonGetRestraintsWithShrine("Latex", true, true, false).length > 0
-						|| KinkyDungeonGetRestraintsWithShrine("Leather", true, true, false).length > 0
-						|| KinkyDungeonGetRestraintsWithShrine("Rope", true, true, false).length > 0) {
+					if (KinkyDungeonGetRestraintsWithShrine("Metal", true, 
+						true, false, false, true).length > 0
+						|| KinkyDungeonGetRestraintsWithShrine("Latex", true, 
+							true, false, false, true).length > 0
+						|| KinkyDungeonGetRestraintsWithShrine("Leather", true, 
+							true, false, false, true).length > 0
+						|| KinkyDungeonGetRestraintsWithShrine("Rope", true, 
+							true, false, false, true).length > 0) {
 						let e = KDGetSpeaker();
 						KDStartDialog("ShopkeeperOfferHelp", e.Enemy.name, true, e.personality, e);
 						return true;
