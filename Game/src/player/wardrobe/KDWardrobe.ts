@@ -3135,7 +3135,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				res.updated = true;
 
 				if (callback_updatewheel) callback_updatewheel(r, g, b);
-				else {
+				else if (targetFilters) {
 					if (!targetFilters[currentLayerName])
 						targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
 					targetFilters[currentLayerName].red = 5*r/255.0;
