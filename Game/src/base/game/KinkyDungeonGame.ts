@@ -4080,7 +4080,7 @@ function KDSprintCost(sprintdata?: any, sprintCost?: number, accountForSlow: boo
 	};
 	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length, 
 		Math.round(KinkyDungeonSlowLevel))] + (
-			(accountForSlow && KinkyDungeonSlowLevel > 1) ? KDSprintAdjustSlowed : 0
+			(accountForSlow && KinkyDungeonSlowLevel > 1) ? -KDSprintAdjustSlowed : 0
 		));
 	if (KDGameData.MovePoints < 0) data.cost -= KDSlowedSprintCost;
 

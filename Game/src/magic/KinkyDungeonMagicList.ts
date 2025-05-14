@@ -4243,7 +4243,8 @@ let KDPlayerCastConditions: Record<string, (player: entity, x: number, y: number
 
 let KDCustomCost: Record<string, (data: any) => void> = {
 	"SprintPlusAttack": (data) => {
-		data.cost = Math.round(10 * -(KDAttackCost().attackCost + KDSprintCost(undefined, undefined, true))) + "SP";
+		data.cost = Math.round(10 * -(KDAttackCost().attackCost + KDSprintCost(undefined, 
+			undefined, true))) + "SP";
 		data.color = KDBaseMint;
 	},
 	"LimitSurge": (data) => {
