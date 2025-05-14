@@ -3114,7 +3114,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				-MouseX + (X + radius)) / Math.PI));
 			let sat = Math.min(1, dist/radius);
 
-			if (force) {
+			if (force && targetFilters) {
 				let hsl = rgbToHsl(
 					Math.max(0, Math.min(1, targetFilters[currentLayerName].red/5 || 0)),
 					Math.max(0, Math.min(1, targetFilters[currentLayerName].green/5 || 0)),

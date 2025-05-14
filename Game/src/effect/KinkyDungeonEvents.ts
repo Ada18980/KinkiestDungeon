@@ -1832,6 +1832,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 							&& !KDHelpless(en)
 							&& en.hp > 0
 							&& !en.Enemy?.tags.nobrain // only affects things that can behold it
+							&& !en.Enemy?.tags?.peaceful
 							&& KDHostile(en, player.player ? undefined : player);
 					}
 				);
