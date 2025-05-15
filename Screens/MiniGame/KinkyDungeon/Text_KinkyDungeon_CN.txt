@@ -2276,7 +2276,8 @@ Devious Dungeon Challenge 已启用。
 放大
 - Wait till Interrupted
 等待至被打断
-# - Expand Buffs/Status
+- Expand Buffs/Status
+展开增益和状态
 - Make Noise
 制造噪音
 - Play with Self
@@ -9581,9 +9582,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 乳胶束手套
 - A pair of mittens keep your hands out of trouble. They adhere to latex restraints making struggling more difficult.
 用于保证你的手不会惹麻烦的一副束手套。与乳胶拘束具相互贴合，使得挣扎更加困难。
-# - Protection Sport Mittens
-# - A pair of tough latex mittens that prevent wolfgirls from scratching their trainers. They are already gagged, so no bite protection is needed.
-# - They adhere to latex restraints making struggling more difficult. The rubber is extremely thick and won't budge except under incredible strength. A specialized applicator is used to get them on and off.
+- Protection Sport Mittens
+运动防护束手套
+- A pair of tough latex mittens that prevent wolfgirls from scratching their trainers. They are already gagged, so no bite protection is needed.
+非常结实的乳胶束手套，防止狼娘抓挠训练师。
+- They adhere to latex restraints making struggling more difficult. The rubber is extremely thick and won't budge except under incredible strength. A specialized applicator is used to get them on and off.
+拘束具由非常厚的乳胶制成，没有巨力是挣扎不动的。需要专用的工具来戴上和取下它。
 
 - Latex Cube
 乳胶立方体
@@ -48780,7 +48784,8 @@ ENMY 解开了 ITMN 的锁!
 障碍宝珠弹幕
 - Barrier Orb
 障碍宝珠
-# - Haunted Orb
+- Haunted Orb
+魂珠
 - Barrage of Sealing Talisman
 封印护身符弹幕
 - Self Unlock
@@ -50214,19 +50219,32 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 
 
 
-# - You swing with your weapon at a distance!
+- You swing with your weapon at a distance!
+你用武器远程攻击！
 
-# - Faction: ${Faction} [${Rep}]
+- Faction: ${Faction} [${Rep}]
+派系：${Faction} 【${Rep}】
 
-# - You are a member of the Maidforce.
-# - You are a member of the Bounty Hunters Guild.
-# - You are a member of the Dragonheart Order.
+- You are a member of the Maidforce.
+你是女仆势力的一员。
+- You are a member of the Bounty Hunters Guild.
+你是赏金猎人公会的一员。
+- You are a member of the Dragonheart Order.
+你是龙心教团的一员。
 # - <CITIZEN ID=NaN>
-# - You are a model for DressUp Co.
-# - You are an associate of Nevermere Trainers Inc.
-# - Your existence is acknowledged by the Cult of the Wild.
-# - You are receiving the blessing of Bast.
-# - You are a member of the Alchemist's Guild.
-# - You are a student of the School of Magic.
-# - You are a subject of the Elemental Planes.
-# - You are a wanted outlaw.
+- You are a model for DressUp Co.
+你是装扮公司的一名模特。
+- You are an associate of Nevermere Trainers Inc.
+你是奈文米尔的合伙人。
+- Your existence is acknowledged by the Cult of the Wild.
+你的存在被自然教会所认可。
+- You are receiving the blessing of Bast.
+你受到猫女神的祝福。
+- You are a member of the Alchemist's Guild.
+你是炼金术士协会的一员。
+- You are a student of the School of Magic.
+你是魔法学校的一名学生。
+- You are a subject of the Elemental Planes.
+你是元素位面的子民。
+- You are a wanted outlaw.
+你是一名通缉犯。
