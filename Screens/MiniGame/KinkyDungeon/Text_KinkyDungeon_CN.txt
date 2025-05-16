@@ -3578,7 +3578,7 @@ Devious Dungeon Challenge 已启用。
 - Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target.
 造成碾压伤害。对目标和目标附近的敌人造成20点额外的神圣伤害。
 - Magic Spear
-附魔长矛
+附魔矛
 - Seeks and pierces hearts with ease.
 寻心而刺，无往不利。
 - Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack.
@@ -3634,7 +3634,7 @@ Devious Dungeon Challenge 已启用。
 - Evasion: 
 闪避：
 - Visibility: 
-可见度：
+显眼度：
 
 
 - Submissive: Enemies won't attack you, but they will try to play with you.
@@ -7662,8 +7662,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintOneBarDesc
 # :: RestraintOneBarStandDesc
 
-# - Metal Stand
-# - As long as it's locked around you, you won't be going anywhere!
+- Metal Stand
+金属架
+- As long as it's locked around you, you won't be going anywhere!
+你被锁在里面，哪儿也去不了！
 
 
 - As long as it's attached, you won't be going anywhere!
@@ -9377,7 +9379,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Wolf Queenbinder
 狼女皇单手套
 - This was made to be used during a coup attempt.  Unfortunately, its creator ended up wearing it instead, after the coup's failure.
-这枚戒指原本是为政变准备的。不幸的是，政变失败后，它的创造者反而戴上了它。
+它原本是为政变准备的。不幸的是，政变失败后，它的创造者反而戴上了它。
 - Designed to hold the queen of wolves helpless for an indefinite period of time.
 目的是让狼娘王无限期地陷入无助状态。
 - Smart Training Cuffs
@@ -11363,7 +11365,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You pick up a shortspear.
 你拿起了一根短矛。
 - You pick up a long spear.
-你拿起一支长矛。
+你拿起了一支长矛。
 - You pick up a pickaxe.
 你拿起了一把镐子。
 - You pick up an enchanted sword.
@@ -11375,7 +11377,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You pick up a light hammer that's inscribed 'IceBreaker'.
 你拿起了一个刻有“破冰者”字样的轻锤。
 - You pick up an enchanted spear.
-你拿起了一把附魔长矛。
+你拿起了一把附魔矛。
 - You pick up an enchanted flail.
 你拿起了一个魔法流星锤。
 - You pick up a powerful axe.
@@ -43777,7 +43779,7 @@ LKTYP 锁锁在了你的一个拘束具上！
 - Dual Wield
 双持
 - Designate an Offhand weapon to gain passive effects such as a light source, armor, or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.
-指定副手武器以获得光源、护甲或额外暴击伤害等被动效果。| ( 必须装备双持法术才能装备副手武器 )
+装备副手武器，以获得光源、护甲或额外暴击伤害等被动效果。|盗贼不能在副手使用重型或大型武器。|法师只能在副手使用魔法武器；副手使用双手、重型或大型魔法武器时，减速等级 +1。
 
 - Equip Offhand
 装备副手
@@ -46500,11 +46502,11 @@ Mmmph! ( 热切地点头 )
 - (SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~
 ( SPEAKER 笑了 ) |非常令人印象深刻。|虽然你输掉了这场战斗，但你的表现令人钦佩~
 - (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
-( SPEAKER 微笑 )|只要你戴上我的项圈，我就会让你过去。| ( 她打了个响指，变出一枚发光的戒指 )
+( SPEAKER 微笑 )|只要你戴上我的项圈，我就会让你过去。| ( 她打了个响指，变出一枚发光的腰带 )
 - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
-( SPEAKER 咯咯笑 ) |然后你的旅程就结束了。|我想你不想要那样。|现在，至于你的项圈~| ( 她打了个响指，变出了一枚发光的戒指 )
+( SPEAKER 咯咯笑 ) |然后你的旅程就结束了。|我想你不想要那样。|现在，至于你的项圈~| ( 她打了个响指，变出了一枚发光的腰带 )
 - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
-( SPEAKER 笑了 ) |当然是魔法~|谁说指挥官就必须毫无防御能力？| ( 她打了个响指，变出了一枚发光的戒指 )
+( SPEAKER 笑了 ) |当然是魔法~|谁说指挥官就必须毫无防御能力？| ( 她打了个响指，变出了一枚发光的腰带 )
 - Was that magic?
 那是魔法吗？
 - I've lost. Now what?
@@ -47937,7 +47939,8 @@ Y 轴
 擦除量
 - NoLoss
 无损
-# - HideRestraintsTags
+- HideRestraintsTags
+隐藏拘束具标签
 
 - HideRestraintTags
 隐藏拘束具标签
