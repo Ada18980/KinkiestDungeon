@@ -10,9 +10,38 @@ let KDContextStage = "";
 
 
 
-/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number) =>{options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>, optionColor: Record<string, string>}>} */
+/** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number, data?: any) =>{options: string[], optionImages: Record<string, string>, optionActions: Record<string, (mouseX: number, mouseY: number) => void>, optionGrey: Record<string, boolean>, optionText: Record<string, string>, optionColor: Record<string, string>}>} */
 let KDGetContextActions = {
-	Game: (draw, mouseX, mouseY) => {
+	RestraintContext: (draw, mouseX, mouseY, data) => {
+		let options: string[] = [];
+		let optionImages: Record<string, string> = {};
+		let optionActions: Record<string, (mouseX: number, mouseY: number) => void> = {};
+		let optionGrey: Record<string, boolean> = {};
+		let optionText: Record<string, string> = {};
+		let optionColor: Record<string, string> = {};
+
+		let item = data?.item;
+		let sg = data?.sg;
+		let index = data?.index;
+
+		if (!(data?.item != undefined)) {
+			item = currentHighlightedItem;
+			sg = currentDrawnSG;
+			index = KDStruggleGroupLinkIndex[KDRestraint(item).Group] || 0;
+		}
+		// TODO allow on NPC restraints
+		KDGetRestraintContextActionsVanilla(item, sg, index, KDPlayer(), KDPlayer(), draw, options, optionImages, optionActions, optionGrey, optionText, optionColor);
+
+		if (options.length==0){
+			options = ["None"];
+			optionGrey.None = true;
+		}
+
+		return {
+			options, optionImages, optionActions, optionGrey, optionText, optionColor
+		};
+	},
+	Game: (draw, mouseX, mouseY, data) => {
 		let options: string[] = [];
 		let optionImages: Record<string, string> = {};
 		let optionActions: Record<string, (mouseX: number, mouseY: number) => void> = {};
@@ -37,15 +66,64 @@ let KDGetContextActions = {
 
 /** @type {Record<string, (draw: boolean, mouseX: number, mouseY: number) => string[]>} */
 let KDDrawGameContextMenu = {
-	Game: (draw, mouseX, mouseY) => {
+	RestraintContext: (draw, mouseX, mouseY) => {
 		if (!draw)  {
+			if (KDMouseInPlayableArea()) return [];
+		}
+		if (currentHighlightedItem) {
+			let {
+				options, optionImages, optionActions, optionGrey, optionText, optionColor
+			} = KDGetContextActions.RestraintContext(draw, mouseX, mouseY, {
+				item: currentHighlightedItem,
+				sg: currentDrawnSG,
+				index: KDStruggleGroupLinkIndex[KDRestraint(currentHighlightedItem).Group] || 0,
+			});
+	
+			currentHighlightedItemNoReset = true;
+			KDDrawContextMenu(draw, mouseX, mouseY, options,
+				optionImages, optionActions, optionGrey, optionText, optionColor);
+	
+			return options;
+		}
+		return [];
+		
+	},
+
+	Game: (draw, mouseX, mouseY) => {
+		let doHighlightItem = () => {
+			let {
+				options, optionImages, optionActions, optionGrey, optionText, optionColor
+			} = KDGetContextActions.RestraintContext(draw, mouseX, mouseY, {
+				item: currentHighlightedItem,
+				sg: currentDrawnSG,
+				index: KDStruggleGroupLinkIndex[KDRestraint(currentHighlightedItem).Group] || 0,
+			});
+	
+			currentHighlightedItemNoReset = true;
+			KDDrawContextMenu(draw, mouseX, mouseY, options,
+				optionImages, optionActions, optionGrey, optionText, optionColor);
+	
+			return options;
+		}
+
+		if (!draw)  {
+			if (currentHighlightedItem) return doHighlightItem();
 			// Make it so context menu doesnt occur unless we hover over the map
 			if (!KDMouseInPlayableArea()) return [];
 		}
 
+		// if a restraint is highlighted
+		if (currentHighlightedItem) {
+			return doHighlightItem();
+		}
+
 		let {
 			options, optionImages, optionActions, optionGrey, optionText, optionColor
-		} = KDGetContextActions.Game(draw, mouseX, mouseY);
+		} = KDGetContextActions.Game(draw, mouseX, mouseY, {});
+
+
+		KDDrawContextMenu(draw, mouseX, mouseY, options,
+			optionImages, optionActions, optionGrey, optionText, optionColor);
 
 		KDDraw(kdstatusboard, kdpixisprites, "ui_spellreticule",
 			KinkyDungeonRootDirectory + "TargetSpell.png",
@@ -54,10 +132,6 @@ let KDDrawGameContextMenu = {
 			KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 				zIndex: 100,
 			});
-
-		KDDrawContextMenu(draw, mouseX, mouseY, options,
-			optionImages, optionActions, optionGrey, optionText, optionColor);
-
 		return options;
 	},
 }
@@ -338,6 +412,61 @@ function KDGetGameContextActionsVanilla(
 		}
 
 	}
+}
+
+
+
+function KDGetRestraintContextActionsVanilla(
+	item: item,
+	sg: StruggleGroup,
+	index: number,
+	target: entity,
+	entity: entity,
+	draw: boolean,
+	options: string[],
+	optionImages: Record<string, string>,
+	optionActions: Record<string, (mouseX: number, mouseY: number) => void>,
+	optionGrey: Record<string, boolean>,
+	optionText: Record<string, string>,
+	optionColor: Record<string, string>,
+
+) {
+	if (!item) return;
+	let restraint = KDRestraint(item);
+	let variant = KDGetRestraintVariant(item);
+
+	if (target?.player) {
+		// show player struggle types
+		let buttons = KDGetStruggleContextMenu(item, sg, target, entity);
+		let buttonmap = buttons.map((button) => {
+			return KDStruggleButtons[button](
+				{
+					btn: button,
+					button_index: index,
+					ButtonWidth: 1,
+					item: item,
+					sg: sg,
+					StruggleType: undefined,
+					x: 0,
+					y: 0,
+				},
+				0, true, target, entity
+			);
+		});
+
+		for (let button of buttonmap) {
+			if (button.allowed) {
+				options.push(button.type);
+				optionImages[button.type] = "Sprint";
+				optionActions[button.type] = button.action;
+			}
+		}
+	} else {
+		// show NPC remove options
+		// TODO
+	}
+	
+	
 }
 
 

@@ -304,10 +304,12 @@ let KDToggles = {
 	InvLimit: true,
 	Headpats: false,
 	ExtraBuffRow: true,
+	StruggleContext: false,
 };
 
 
 let KDToggleCategories = {
+	StruggleContext: "UI",
 	Headpats: "Clothes",
 	ExtraBuffRow: "UI",
 	ShowExtraStruggle: "UI",
@@ -1191,7 +1193,11 @@ function KinkyDungeonLoad(): void {
 		if (CommonIsMobile || document.activeElement?.type == "text" || document.activeElement?.type == "textarea") {
 			// Trigger mouse clicked
 			//MouseClicked = true;
-			if (KDDrawGameContextMenu[KinkyDungeonDrawState]) {
+			if (KDDrawGameContextMenu[KDCurrentHoverButton?.contextMenu]) {
+				if (KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](false, MouseX, MouseY).length > 0) {
+					KDContextMenu = !KDContextMenu;
+				}
+			} else if (KDDrawGameContextMenu[KinkyDungeonDrawState]) {
 				if (KDDrawGameContextMenu[KinkyDungeonDrawState](false, MouseX, MouseY).length > 0) {
 					KDContextMenu = !KDContextMenu;
 				}
@@ -1207,7 +1213,11 @@ function KinkyDungeonLoad(): void {
 
 		} else {
 			event.preventDefault();
-			if (KinkyDungeonState == "Game") {
+			if (KDDrawGameContextMenu[KDCurrentHoverButton?.contextMenu]) {
+				if (KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](false, MouseX, MouseY).length > 0) {
+					KDContextMenu = !KDContextMenu;
+				}
+			} else if (KinkyDungeonState == "Game") {
 				if (KDDrawGameContextMenu[KinkyDungeonDrawState]) {
 					if (KDDrawGameContextMenu[KinkyDungeonDrawState](false, MouseX, MouseY).length > 0) {
 						KDContextMenu = !KDContextMenu;
@@ -1549,7 +1559,12 @@ let KDErrorText = "";
 let KDErrorTextTime = 0;
 let KDErrorTextTime_DELAY = 2500;
 
+let KDCurrentHoverButton: KDButtonParamData = null;
+
 function KinkyDungeonRun() {
+
+	KDButtonHovering = false;
+	KDCurrentHoverButton = null;
 
 	if (KDSaveQueue.length > 8) {
 		// uh...
@@ -3694,10 +3709,22 @@ function KDCullTexList(list: Map<string, PIXITexture>): void {
 	}
 }
 
-let KDButtonsCache: Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => void, hotkeyPress?: string}> = {
+interface KDButtonParamData {
+	Left: number,
+	Top: number,
+	Width: number,
+	Height: number,
+	enabled: boolean,
+	func?: (bdata: any) => boolean,
+	priority: number,
+	scrollfunc?: (amount: number) => void,
+	hotkeyPress?: string, contextMenu?: string
+}
+
+let KDButtonsCache: Record<string, KDButtonParamData> = {
 };
 
-let KDLastButtonsCache: Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata?: any) => boolean, priority: number}> = {
+let KDLastButtonsCache: Record<string, KDButtonParamData> = {
 };
 
 /**
@@ -3731,8 +3758,7 @@ function DrawButtonKD (
 	NoBorder?:	boolean
 ): void
 {
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
-	KDButtonsCache[name] = {
+	let params = {
 		Left,
 		Top,
 		Width,
@@ -3740,6 +3766,13 @@ function DrawButtonKD (
 		enabled,
 		priority: 0,
 	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		else Disabled = true;
+	}
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
+	KDButtonsCache[name] = params;
 }
 
 
@@ -3794,8 +3827,7 @@ function DrawButtonKDEx (
 	options?:	any,
 ): boolean
 {
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
-	KDButtonsCache[name] = {
+	let params = {
 		Left,
 		Top,
 		Width,
@@ -3805,6 +3837,89 @@ function DrawButtonKDEx (
 		priority: (options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
 	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		else Disabled = true;
+	}
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = params
+	return MouseIn(Left,Top,Width,Height);
+}
+
+
+
+/**
+ * Draws a button component
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables border
+ * @param [FillColor] - BG color
+ * @param [FontSize] - Font size
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha] - Dont show text backgrounds
+ * @param [options.zIndex] - zIndex
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @param [options.filters] - filters
+ * @returns - Whether or not the mouse is in the button
+ */
+function DrawButtonKDExContext (
+	name:		string,
+	contextMenu: string,
+	func:		(bdata: any) => any,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean,
+	FillColor?:	string,
+	FontSize?:	number,
+	ShiftText?:	boolean,
+	options?:	any,
+): boolean
+{
+	
+	let params = {
+		Left,
+		Top,
+		Width,
+		Height,
+		enabled,
+		func,
+		priority: (options?.zIndex || 0),
+		hotkeyPress: options?.hotkeyPress,
+		contextMenu: contextMenu
+	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		else Disabled = true;
+	}
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = params;
 	return MouseIn(Left,Top,Width,Height);
 }
 
@@ -3861,8 +3976,8 @@ function DrawButtonKDExScroll (
 	options?:	any,
 ): boolean
 {
-	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
-	KDButtonsCache[name] = {
+	
+	let params = {
 		Left,
 		Top,
 		Width,
@@ -3873,6 +3988,13 @@ function DrawButtonKDExScroll (
 		scrollfunc: scrollfunc,
 		hotkeyPress: options?.hotkeyPress,
 	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		else Disabled = true;
+	}
+	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = params
 	return MouseIn(Left,Top,Width,Height);
 }
 
@@ -3925,8 +4047,7 @@ function DrawButtonKDExTo (
 	options?:	any,
 ): boolean
 {
-	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
-	KDButtonsCache[name] = {
+	let params = {
 		Left,
 		Top,
 		Width,
@@ -3936,6 +4057,13 @@ function DrawButtonKDExTo (
 		priority: (options?.zIndex || 0),
 		hotkeyPress: options?.hotkeyPress,
 	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		else Disabled = true;
+	}
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDButtonsCache[name] = params;
 	return MouseIn(Left,Top,Width,Height);
 }
 
@@ -4211,7 +4339,7 @@ function KDProcessButtons() {
 function KDClickButton(name: string): boolean {
 	let button = KDButtonsCache[name] || KDLastButtonsCache[name];
 	if (button && button.enabled) {
-		return button.func();
+		return button.func(button);
 	}
 	return false;
 }
@@ -5907,7 +6035,15 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 	allowMusic = true;
 	KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
 	if (KDAwaitingModLoad) return true;
-	if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]
+	if (KDContextMenu && KDCurrentHoverButton?.contextMenu
+	) {
+		if (!MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) {
+			KDContextMenu = false;
+			return true;
+		}
+		KDProcessButtons();
+		return true;
+	} else if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]
 	) {
 		if (!MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) {
 			KDContextMenu = false;
@@ -6364,7 +6500,11 @@ window.addEventListener('touchend', function(event: TouchEvent) {
 	} else {
 		if (!HoldMoved && LastHoldTime > LongHoldThresh) {
 			if (KDMouseInPlayableArea()) {
-				if (KDDrawGameContextMenu[KinkyDungeonDrawState]) {
+				if (KDContextMenu && KDCurrentHoverButton?.contextMenu) {
+					if (KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](false, MouseX, MouseY).length > 0) {
+						KDContextMenu = !KDContextMenu;
+					}
+				} else if (KDDrawGameContextMenu[KinkyDungeonDrawState]) {
 					if (KDDrawGameContextMenu[KinkyDungeonDrawState](false, MouseX, MouseY).length > 0) {
 						KDContextMenu = !KDContextMenu;
 					}

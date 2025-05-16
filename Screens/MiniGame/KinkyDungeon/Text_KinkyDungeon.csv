@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.74"
+KDVersionStr,"5.4.75"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -46,6 +46,8 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 KDToggleTabMouseShortcuts,Mouse Shortcuts
 
+
+KDToggleStruggleContext,Replace struggle icons with menu
 KDToggleFastMovePassable,Auto-path through NPCs
 KDToggleFastMoveDoors,Auto-path through Doors
 
@@ -31747,6 +31749,9 @@ KDGenMap,Generating Map...
 
 KinkyDungeonSpellHexWrappingDamage,Mystic wrappings constrict around your body!
 KinkyDungeonSpellOneBarMissile,One Bar Missile
+
+KDTut_RestraintContext,Right click on a restraint's name to open a context menu.
+KDTut_RestraintContext2,There is also an option in HUD settings to replace the small buttons with a context menu.
 
 KDTut_Tooltip,You can click Inspect then click the enemy to cycle thru pages.
 KDTut_Tooltip2,NPC tooltips like the ${EnemyName} are too long to show on one page.

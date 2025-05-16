@@ -75,6 +75,7 @@
         "Game/src/restraint/special/LatexKitty.ts",
         "Game/src/restraint/KDTethers.ts",
         "Game/src/magic/KDAoEList.ts",
+        "Game/src/restraint/KDStruggleGroups.ts",
         "Game/src/base/game/KinkyDungeonHUD.ts",
         "Game/src/base/game/KinkyDungeonDraw.ts",
         "Game/src/base/game/KDContextMenu.ts",

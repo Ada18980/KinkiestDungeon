@@ -1107,7 +1107,13 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 	} else if (affinity == "Sticky") {
 		return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
 	} else if (affinity == "Sharp") {
-		if (((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;})) || KinkyDungeonWeaponCanCut(false)) return true;
+		let hasHelp = KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
+		if (((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())
+			&& KinkyDungeonAllWeapon().some(
+		(inv) => {
+			return (hasHelp || KDWeapon(inv).light)
+				&& KDWeapon(inv).cutBonus != undefined;}))
+				|| KinkyDungeonWeaponCanCut(false)) return true;
 		if (KinkyDungeonAllWeapon().some((inv) => {return KDWeapon(inv).light && KDWeapon(inv).cutBonus != undefined;}) && (!KinkyDungeonIsArmsBound(
 			true, false, group, undefined, !Message
 		) || KinkyDungeonStatsChoice.has("Psychic") || KinkyDungeonWallCrackAndKnife(false))) return true;

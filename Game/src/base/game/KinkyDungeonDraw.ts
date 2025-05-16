@@ -1017,8 +1017,7 @@ function KinkyDungeonDrawGame() {
 
 	// Breath the sound outlines
 	if (StandalonePatched)
-		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );
-	KDButtonHovering = false;
+		kdoutlinefilter.alpha = 0.5 + 0.1 * Math.sin(2 * Math.PI * (CommonTime() % 2000 / 2000) );;
 
 
 	let tooltips = [];
@@ -1128,7 +1127,9 @@ function KinkyDungeonDrawGame() {
 
 	KinkyDungeonCapStats();
 
-
+	if (KDContextMenu && KDCurrentHoverButton?.contextMenu) {
+		KDDrawGameContextMenu[KDCurrentHoverButton.contextMenu](true, MouseX, MouseY);
+	} else
 	if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]) {
 		KDDrawGameContextMenu[KinkyDungeonDrawState](true, MouseX, MouseY);
 	}
@@ -2129,7 +2130,7 @@ function KinkyDungeonDrawGame() {
                         return true;
                     }, true, 500, 900, 145, 48, "Rest DP", KDBaseWhite, "")
                     DrawButtonKDEx("+maxDP", (_bdata) => {
-                        KDGameData.StatMaxBonus.DP += 10;
+                        KDGameData.StatMaxBonus.AP += 10;
                         return true;
                     }, true, 655, 900, 145, 48, "+Max DP", "#ffaaaa", "")
 
