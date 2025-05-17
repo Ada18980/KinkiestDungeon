@@ -269,6 +269,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Mouse Shortcuts
 鼠标快捷操作
 
+
+# - Replace struggle icons with menu
 - Auto-path through NPCs
 自动寻路穿过NPC
 - Auto-path through Doors
@@ -13044,7 +13046,7 @@ Ars烟火
 - Convincing Disguise
 令人信服的伪装
 - While standing still on slime, or fully bound with at least one latex item, you are harder to notice. Each latex restraint you are wearing increases this amount. Can be toggled off by clicking the buff icon.
-当你站在粘液上时，或被完全束缚，且至少穿着一件乳胶拘束具时，敌人很难发现你。穿戴的乳胶拘束具越多，效果越强。可以通过单击 buff 图标来关闭。
+当你站在粘液上，或既被堵嘴，又被绑住手臂，又被减速，又至少穿着一件乳胶拘束具时，敌人很难发现你。穿戴的乳胶拘束具越多，效果越强。可以通过点击 buff 图标来开启/关闭。
 
 - Magical Implements
 魔法武器精通
@@ -49448,6 +49450,9 @@ ENMY 解开了 ITMN 的锁!
 
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
+
+# - Right click on a restraint's name to open a context menu.
+# - There is also an option in HUD settings to replace the small buttons with a context menu.
 
 - You can click Inspect then click the enemy to cycle thru pages.
 你可以点击“检查”按钮然后再点击敌人来翻页。
