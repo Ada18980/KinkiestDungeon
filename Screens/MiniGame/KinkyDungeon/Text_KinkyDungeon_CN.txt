@@ -270,7 +270,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 鼠标快捷操作
 
 
-# - Replace struggle icons with menu
+- Replace struggle icons with menu
+将挣扎按钮替换为菜单
 - Auto-path through NPCs
 自动寻路穿过NPC
 - Auto-path through Doors
@@ -49451,8 +49452,10 @@ ENMY 解开了 ITMN 的锁!
 - Mystic wrappings constrict around your body!
 神秘的丝带紧紧包裹了你的身体！
 
-# - Right click on a restraint's name to open a context menu.
-# - There is also an option in HUD settings to replace the small buttons with a context menu.
+- Right click on a restraint's name to open a context menu.
+右键点击拘束具的名称以打开菜单
+- There is also an option in HUD settings to replace the small buttons with a context menu.
+在HUD设置中可以选择将小按钮替换为菜单
 
 - You can click Inspect then click the enemy to cycle thru pages.
 你可以点击“检查”按钮然后再点击敌人来翻页。
