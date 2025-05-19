@@ -7193,6 +7193,10 @@ TYPE女神的神泉。
 箱子
 :: KDMinimapLabel_C_
 箱子
+- Door
+门
+# :: KinkyDungeonObjectDoor
+# :: m_FutureBox_l_Door
 
 
 
@@ -37240,8 +37244,6 @@ Aura刘海(右后)
 :: m_MilitaryUniform_l_Rim
 边饰
 # :: m_HighSecCollarRestraint_l_Rim
-- Door
-门
 - DoorWindow
 门窗户
 # - DoorNumeral
