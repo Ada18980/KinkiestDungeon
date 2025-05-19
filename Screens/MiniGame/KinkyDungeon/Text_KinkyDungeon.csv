@@ -56,7 +56,7 @@ KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
 
 KDToggleMMLabels,Show Minimap Labels
 KDToggle,Auto loot all from chests
-KDToggleNoOutfitPalette,Use Palette regardless of Outfit
+KDToggleNoOutfitPalette,Don't Use Outfit Palettes
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms

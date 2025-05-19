@@ -2488,7 +2488,7 @@ function KDShouldCapture(Enemy: entity) {
 
 /** Tease enemy instead of attacking */
 function KDShouldTease(Enemy: entity) {
-	return !KDHostile(Enemy) && KinkyDungeonAggressive(Enemy) && KDCanDom(Enemy) && Enemy.hp > 0.51
+	return !KDHostile(Enemy) && KDCanDom(Enemy) && Enemy.hp > 0.51
 		&& !KDEntityHasFlag(Enemy, "stopplay");
 }
 

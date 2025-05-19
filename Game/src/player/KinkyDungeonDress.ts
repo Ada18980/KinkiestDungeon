@@ -194,7 +194,7 @@ function KinkyDungeonDressPlayer (
 			if (customFaction == undefined && (outfit?.palette || restraintPalette || (Character.metadata?.palette || Character.Palette))) {
 				let palette = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
 					|| restraintPalette
-					|| (Character.metadata?.palette || Character.Palette) || (KDToggles.ForcePalette ? KDDefaultPalette : "");
+					|| (KDToggles.NoOutfitPalette ? undefined : (Character.metadata?.palette || Character.Palette)) || (KDToggles.ForcePalette ? KDDefaultPalette : "");
 				if (palette) {
 					customFaction = palette;
 				}
@@ -1352,7 +1352,7 @@ function KDGetPlayerPalette(C: Character) {
 				|| !KDDefaultPalette || GetPalette(C, KDDefaultPalette)))) {
 		palette = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
 			|| restraintPalette
-			|| (C.metadata?.palette || C.Palette) || KDDefaultPalette;
+			|| (KDToggles.NoOutfitPalette ? undefined : (C.metadata?.palette || C.Palette)) || KDDefaultPalette;
 	}
 	return palette;
 }

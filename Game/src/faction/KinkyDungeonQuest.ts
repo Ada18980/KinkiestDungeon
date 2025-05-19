@@ -1322,7 +1322,11 @@ function FactionQuestDummy(faction: string, npc: string) : KDQuest {
 		npc: npc,
 		visible: true,
 		nocancel: false,
-		oncancel: (player, force, intentional) => {
+		oncancel: (player, force, intentional, success) => {
+			if (intentional) {
+				KDChangeFactionRelation("Player", faction, -0.1, true);
+				KDChangeFactionRelation("Player", faction, -0.2);
+			}
 			if (force) {
 				if (KDGameData.RecruitedFaction == faction) KDGameData.RecruitedFaction = "";
 				return true;

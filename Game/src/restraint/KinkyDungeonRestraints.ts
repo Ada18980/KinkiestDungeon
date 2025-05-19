@@ -2339,7 +2339,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 
 							KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
 							KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
-							if (KinkyDungeonStatsChoice.get("BondageLover")) KDChangeDistraction(
+							if (KinkyDungeonStatsChoice.get("BondageLover") && !KDRestraint(data.restraint)?.armor) KDChangeDistraction(
 								"BondageLover", "perk", "struggle", KDBondageLoverAmount, false, 0.1);
 						}
 						KinkyDungeonAdvanceTime(1);
@@ -2555,7 +2555,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 							}
 							KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
 							KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
-							if (KinkyDungeonStatsChoice.get("BondageLover"))
+							if (KinkyDungeonStatsChoice.get("BondageLover") && !KDRestraint(data.restraint)?.armor)
 								KDChangeDistraction("BondageLover", "perk", "struggle", KDBondageLoverAmount, false, 0.1);
 						}
 						KinkyDungeonAdvanceTime(1);
@@ -3154,7 +3154,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			if (KinkyDungeonHasStamina(-data.cost)) {
 				KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
 				KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
-				if (KinkyDungeonStatsChoice.get("BondageLover"))
+				if (KinkyDungeonStatsChoice.get("BondageLover") && !KDRestraint(data.restraint)?.armor)
 					KDChangeDistraction("BondageLover", "perk", "struggle", KDBondageLoverAmount, false, 0.1);
 
 				if (Pass != "Success") {
@@ -3805,7 +3805,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 				&& (KDToggles.ApplyPaletteRestraint && (outfit?.palette || (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || !KDDefaultPalette
 				|| GetPalette(C, KDDefaultPalette)))) {
 				inv.faction = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
-					|| (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette) || KDDefaultPalette;
+					|| (KDToggles.NoOutfitPalette ? undefined : (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette))
+					|| KDDefaultPalette;
 			}
 
 			if (KDRestraint(inv).Link)

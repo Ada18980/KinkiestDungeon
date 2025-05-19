@@ -42,10 +42,15 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
 5.4.75
+- Modders: Refactored struggle group buttons
 - Fix crash when setting colors of items on blank character
 - Fix not being able to cut restraints while an NPC is helping you if no Light weapons are in inventory
-TODO
-- Refactored struggle group buttons
+- "Use palette regardless of palettes" replaced with "Don't Use Outfit Palettes" option
+- Changed functionality of "Don't Use Outfit Palettes" to include palette of the adventurer's outfit
+- Quitting a faction now hurts your reputation by 15%
+- Teasing a submissive no longer counts as aggressive action and aggros other NPCs
+- Bondage lover no longer applies to armor
+WIP
 - Add context menu for restraints
 
 5.4.74
