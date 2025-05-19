@@ -43,6 +43,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 5.4.75
 - Modders: Refactored struggle group buttons
+- Added context menu for restraints
 - Fix crash when setting colors of items on blank character
 - Fix not being able to cut restraints while an NPC is helping you if no Light weapons are in inventory
 - "Use palette regardless of palettes" replaced with "Don't Use Outfit Palettes" option
@@ -50,8 +51,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Quitting a faction now hurts your reputation by 15%
 - Teasing a submissive no longer counts as aggressive action and aggros other NPCs
 - Bondage lover no longer applies to armor
-WIP
-- Add context menu for restraints
+- Fix crash during context loss in some browser environments
+- Auto path does not get disabled when activating certain toggle spells
 
 5.4.74
 - Modders: Added "afterModsLoadedAndLoadGame" event

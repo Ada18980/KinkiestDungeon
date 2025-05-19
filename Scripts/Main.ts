@@ -114,7 +114,7 @@ window.onload = function() {
 		KDForceAllCull = true;
 		setTimeout(() => {
 			//@ts-ignore
-			if (PIXIapp.renderer.gl) {
+			if (PIXIapp.renderer.gl?.getExtension && PIXIapp.renderer.gl.getExtension('WEBGL_lose_context')) {
 				//@ts-ignore
 				PIXIapp.renderer.gl.getExtension('WEBGL_lose_context').restoreContext();
 			}

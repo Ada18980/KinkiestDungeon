@@ -468,8 +468,9 @@ function KinkyDungeonClickSpell(i: number) {
 		if (KinkyDungeonSpells[KinkyDungeonSpellChoices[i]] && KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].type == "passive") {
 			KDSendInput("toggleSpell", {i: i});
 			if (KinkyDungeonSpellChoicesToggle[i] && KinkyDungeonSpells[KinkyDungeonSpellChoices[i]].cancelAutoMove) {
-				KinkyDungeonFastMove = false;
-				KinkyDungeonFastMoveSuppress = false;
+				//KinakyDungeonFastMove = false;
+				//KinkyDungeonFastMoveSuppress = false;
+				KinkyDungeonFastMovePath = [];
 			}
 			KinkyDungeonSpellPress = "";
 			clicked = true;
@@ -1446,8 +1447,10 @@ function KinkyDungeonClickSpellChoice(I: number, CurrentSpell: number) {
 	KDSendInput("spellChoice", {I:I, CurrentSpell: CurrentSpell});
 	//if (KinkyDungeonTextMessageTime > 0 && KinkyDungeonTextMessagePriority > 3)
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
-		KinkyDungeonFastMove = false;
-		KinkyDungeonFastMoveSuppress = false;
+		//KinkyDungeonFastMove = false;
+		//KinkyDungeonFastMoveSuppress = false;
+		
+		KinkyDungeonFastMovePath = [];
 	}
 }
 

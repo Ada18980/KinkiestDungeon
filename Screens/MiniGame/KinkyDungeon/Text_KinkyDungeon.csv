@@ -32103,6 +32103,15 @@ KDContextMenu_Shootattack,Ranged Attack
 KDContextMenu_Shootselfcast,Activate on Self
 KDContextMenu_Shootignite,Ignite on Self
 
+KDContextMenu_Struggle,Struggle
+KDContextMenu_Cut,Cut
+KDContextMenu_Unlock,Unlock
+KDContextMenu_Remove,Remove
+KDContextMenu_Pick,Pick
+KDContextMenu_CurseInfo,Inspect Lock
+KDContextMenu_CurseStruggle,Struggle Uselessly
+KDContextMenu_CurseUnlock,Unlock
+
 KDBedSleptLevel,(Already slept here)
 KDBedWillNotLow,(Will not low enough)
 

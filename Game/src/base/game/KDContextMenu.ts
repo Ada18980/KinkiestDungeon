@@ -457,7 +457,7 @@ function KDGetRestraintContextActionsVanilla(
 		for (let button of buttonmap) {
 			if (button.allowed) {
 				options.push(button.type);
-				optionImages[button.type] = "Sprint";
+				optionImages[button.type] = button.image || button.type;
 				optionActions[button.type] = button.action;
 			}
 		}

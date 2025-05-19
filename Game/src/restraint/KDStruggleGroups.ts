@@ -16,14 +16,19 @@ interface KDStruggleGroupReturn {
     i: number,
     allowed: boolean,
     type: string,
-    action?: (bdata) => boolean
+    action?: (bdata) => boolean,
+    image?: string
 }
 
 let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, query: boolean, target: entity, entity: entity) => KDStruggleGroupReturn>  = {
 	Struggle: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
         let action = (_b) => {
-            if ((KDGetCurse(item))) KDSendInput("struggleCurse", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
+            if ((KDGetCurse(item))) KDSendInput("struggleCurse", {
+                group: sg.group,
+                image: "Struggle",
+                index: KDStruggleGroupLinkIndex[sg.group],
+                curse: (KDGetCurse(item))});
 			else {
 				if (KinkyDungeonFastStruggle) {
 					KinkyDungeonFastStruggleGroup = sg.group;
@@ -38,6 +43,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
             return {
                 i: 10, // repurpose i as priority
                 allowed: true,
+                image: "Struggle",
                 type: (KDGetCurse(data?.item)) ? "StruggleCurse" : "Struggle",
                 action: action,
             };
@@ -50,7 +56,8 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 			data.StruggleType = data.btn;
 		i++;
         allowed = true;
-		return {i: i, allowed: allowed, type: (KDGetCurse(item)) ? "StruggleCurse" : "Struggle"};
+		return {i: i, 
+            image: "Struggle", allowed: allowed, type: (KDGetCurse(item)) ? "StruggleCurse" : "Struggle"};
 	},
 	
 	CurseInfo: (data, i, query, target, entity) => {
@@ -64,6 +71,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
             return {
                 i: 8, // repurpose i as priority
                 allowed: allowed,
+                image: "CurseInfo",
                 type: "CurseInfo",
                 action: action,
             };
@@ -74,7 +82,8 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 			}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "", KDBaseWhite, KinkyDungeonRootDirectory + ((KDGetCurse(item) && KDCurses[KDGetCurse(item)].customIcon_RemoveFailure) ? KDCurses[KDGetCurse(item)].customIcon_RemoveFailure : "CurseInfo") + ".png", "", undefined, true, KDButtonColorIntense, undefined, undefined, {scaleImage: true});
             i++;
 		} 
-		return {i: i, allowed: allowed, type: "CurseInfo"};
+		return {i: i, 
+            image: "CurseInfo",allowed: allowed, type: "CurseInfo"};
 	},
 	CurseUnlock: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
@@ -88,6 +97,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
             return {
                 i: 9, // repurpose i as priority
                 allowed: allowed,
+                image: "CurseUnlock",
                 type: "CurseUnlock",
                 action: action,
             };
@@ -103,18 +113,23 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 	Remove: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
         let allowed = !(KDGetCurse(item)) && !sg.blocked;
+        let img = "Unlock";
+        if (data?.item.lock) img = "../../Locks/" + data?.item.lock;
         let action = (_b) => {
             if (KinkyDungeonFastStruggle) {
                 KinkyDungeonFastStruggleGroup = sg.group;
                 KinkyDungeonFastStruggleType = (item.lock) ? "Unlock" : "Remove";
             } else
-                KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: (item.lock) ? "Unlock" : "Remove"});
+                KDSendInput("struggle", {
+                    group: sg.group,
+                    image: data?.item.lock ? img : "Remove", index: KDStruggleGroupLinkIndex[sg.group], type: (item.lock) ? "Unlock" : "Remove"});
             return true;
         };
         if (query) {
             return {
                 i: 9, // repurpose i as priority
                 allowed:allowed,
+                image: data?.item.lock ? img : "Remove",
                 type: data?.item.lock ? "Unlock" : "Remove",
                 action: action,
             };
@@ -129,13 +144,17 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 			i++;
 		}
 		return {i: i, allowed: allowed, type: 
-           item.lock ? "Unlock" : "Remove"
+           item.lock ? "Unlock" : "Remove",
+        image: data?.item.lock ? img : "Remove",
         };
 	},
 	Cut: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
+        let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name : "Cut");
+			
+        let img = "../../" + name;
         let allowed = !(KDGetCurse(item))
-        && !sg.blocked
+            && !sg.blocked
             && (KinkyDungeonAllWeapon().some(
                 (inv) => {return KDWeapon(inv).light
                     && KDWeapon(inv).cutBonus != undefined;})
@@ -146,7 +165,8 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 KinkyDungeonFastStruggleGroup = sg.group;
                 KinkyDungeonFastStruggleType = "Cut";
             } else
-                KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Cut"});
+                KDSendInput("struggle", {group: sg.group,
+                    image: img, index: KDStruggleGroupLinkIndex[sg.group], type: "Cut"});
                 //KinkyDungeonStruggle(sg, "Cut");
             return true;
         };
@@ -155,20 +175,22 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 i: 5, // repurpose i as priority
                 allowed: allowed,
                 type: "Cut",
+                image: img,
                 action: action,
             };
         }
 		if (allowed) {
-			let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name + ".png" : "Cut.png");
 			if (
 				DrawButtonKDEx("sgCut" + button_index + sg.group, (_b) => {
 					return action(_b);
 				}, true, x + 495 - ButtonWidth + ((sg.left) ? -(ButtonWidth)*i : (ButtonWidth)*i), y, ButtonWidth, ButtonWidth, "",
-						(sg.magic) ? "#8394ff" : KDBaseWhite, KinkyDungeonRootDirectory + name, "", undefined, true, (sg.magic) ? "#8394ff" : KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
+						(sg.magic) ? "#8394ff" : KDBaseWhite, KinkyDungeonRootDirectory + name + ".png", 
+                        "", undefined, true, (sg.magic) ? "#8394ff" : KDButtonColorIntense, undefined, undefined, {scaleImage: true}))
 				data.StruggleType = btn;
 			i++;
 		}
-		return {i: i, allowed: allowed, type: "Cut"};
+		return {i: i,
+            image: img, allowed: allowed, type: "Cut"};
 	},
 	Pick: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
@@ -182,7 +204,8 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 KinkyDungeonFastStruggleGroup = sg.group;
                 KinkyDungeonFastStruggleType = "Pick";
             } else
-                KDSendInput("struggle", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], type: "Pick"});
+                KDSendInput("struggle", {group: sg.group,
+                    image: "Pick", index: KDStruggleGroupLinkIndex[sg.group], type: "Pick"});
                 //KinkyDungeonStruggle(sg, "Pick");
             return true;
         };
@@ -191,6 +214,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 i: 3, // repurpose i as priority
                 allowed: allowed,
                 type: "Pick",
+                image: "Pick",
                 action: action,
             };
         }
@@ -203,7 +227,8 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 
 			i++;
 		}
-		return {i: i, allowed: allowed, type: "Pick"};
+		return {i: i,
+            image: "Pick", allowed: allowed, type: "Pick"};
 	},
 	ContextMenu: (data, i, query, target, entity) => {
         if (query) {

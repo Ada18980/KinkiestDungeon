@@ -2810,6 +2810,7 @@
             <key type="filename">../Game/AutoStruggleOff.png</key>
             <key type="filename">../Game/Buckle.png</key>
             <key type="filename">../Game/Buffs/curse/Blocked.png</key>
+            <key type="filename">../Game/ContextMenu.png</key>
             <key type="filename">../Game/CurseInfo.png</key>
             <key type="filename">../Game/CurseUnlock.png</key>
             <key type="filename">../Game/FastMove.png</key>
@@ -2848,6 +2849,11 @@
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>
             <key type="filename">../Game/UI/BulletTransparency.png</key>
+            <key type="filename">../Game/UI/ContextMenu/CurseInfo.png</key>
+            <key type="filename">../Game/UI/ContextMenu/CurseUnlock.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Remove.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Struggle.png</key>
+            <key type="filename">../Game/UI/ContextMenu/UseTool.png</key>
             <key type="filename">../Game/UI/XRay0.png</key>
             <key type="filename">../Game/UI/XRay1.png</key>
             <key type="filename">../Game/UI/XRay2.png</key>
@@ -3566,6 +3572,7 @@
             <key type="filename">../Game/UI/AutoWait/VeryFast.png</key>
             <key type="filename">../Game/UI/Checked.png</key>
             <key type="filename">../Game/UI/CheckedHalf.png</key>
+            <key type="filename">../Game/UI/ContextMenu/Cut.png</key>
             <key type="filename">../Game/UI/ContextMenu/Sprint.png</key>
             <key type="filename">../Game/UI/CrouchOff.png</key>
             <key type="filename">../Game/UI/CrouchOn.png</key>
