@@ -719,7 +719,7 @@ function KinkyDungeonUpdateAngel(_delta: number): void {
 						KinkyDungeonTargetTileLocation = "";
 						KDModalArea = false;
 					}
-					KinkyDungeonTilesDelete(t[0]);
+					KDClearTile(t[0]);
 					KinkyDungeonMapSet(x, y, '0');
 				}
 			}

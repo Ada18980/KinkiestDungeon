@@ -576,7 +576,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		} else {
 			if (KinkyDungeonGold >= data.cost * mult) {
 				KinkyDungeonPayShrine(data.type, mult);
-				KinkyDungeonTilesDelete(KinkyDungeonTargetTileLocation);
+				KDClearTile(KinkyDungeonTargetTileLocation);
 				KDModalArea = false;
 				let x =  data.targetTile.split(',')[0];
 				let y =  data.targetTile.split(',')[1];
@@ -942,7 +942,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			let y = parseInt(data.targetTile.split(',')[1]);
 			if (x && y) {
 				KinkyDungeonMapSet(x, y, 'm');
-				KinkyDungeonTilesDelete(data.targetTile);
+				KDClearTile(data.targetTile);
 			}
 		}
 		return "";
@@ -1247,7 +1247,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 					let y = parseInt(data.targetTile.split(',')[1]);
 					if (x && y) {
 						KinkyDungeonMapSet(x, y, 'm');
-						KinkyDungeonTilesDelete(data.targetTile);
+						KDClearTile(data.targetTile);
 					}
 				}
 
@@ -1293,9 +1293,10 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 				let x = parseInt(data.targetTile.split(',')[0]);
 				let y = parseInt(data.targetTile.split(',')[1]);
 				if (x && y) {
-					KinkyDungeonTilesDelete(data.targetTile);
+					KDClearTile(data.targetTile);
 					KinkyDungeonMapSet(x, y, '-');
 				}
+				
 				return "Pass";
 			} else {
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChargerChargeFailure"), "orange", 1);

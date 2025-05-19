@@ -482,9 +482,13 @@ function KinkyDungeonDrawCharger() {
 	//DrawTextKD(TextGet("KinkyDungeonCharger"), KDModalArea_x + 200, KDModalArea_y + 50, KDBaseWhite, KDTextGray2);
 	if (KinkyDungeonTargetTile && KinkyDungeonTargetTile.Light == KDChargerLight) {
 		DrawButtonVis(KDModalArea_x + 25, KDModalArea_y + 25, 400, 60, TextGet("KinkyDungeonChargerRemoveCrystal"), KDBaseWhite, "", "");
-	} else {
+	} else if (KinkyDungeonTargetTile) {
 		DrawButtonVis(KDModalArea_x + 250, KDModalArea_y + 25, 200, 60, TextGet("KinkyDungeonChargerCharge"), KinkyDungeonInventoryGet("AncientPowerSourceSpent") ? KDBaseWhite : "#888888", "", "");
 		DrawButtonVis(KDModalArea_x + 25, KDModalArea_y + 25, 200, 60, TextGet("KinkyDungeonChargerPlaceCrystal"), KinkyDungeonInventoryGet("AncientPowerSource") ? KDBaseWhite : "#888888", "", "");
+	} else {
+		KinkyDungeonTargetTile = null;
+		KinkyDungeonTargetTileLocation = "";
+		KDModalArea = false;
 	}
 
 

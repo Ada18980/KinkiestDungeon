@@ -15,6 +15,7 @@
 !/Mods/example_unlimitedbed/**/*
 !/Data/**/*
 !/Models/**/*
+!/M[0-9]/**/*
 !/ModelsBack/**/*
 !/TextureAtlas/**/*
 !/DisplacementMaps/**/*

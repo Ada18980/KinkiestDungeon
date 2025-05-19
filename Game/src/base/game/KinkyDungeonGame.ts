@@ -311,6 +311,14 @@ function KinkyDungeonTilesGet(location: string): any {
 function KinkyDungeonTilesDelete(location: string): void {
 	delete KDMapData.Tiles[location];
 }
+/**
+ * Clearsa the tile w/o deleting it
+ * @param location
+ */
+function KDClearTile(location: string): void {
+	let tile = KDMapData.Tiles[location];
+	if (tile.Type) delete tile.Type;
+}
 
 
 /**
