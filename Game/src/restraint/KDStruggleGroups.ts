@@ -114,7 +114,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
         let allowed = !(KDGetCurse(item)) && !sg.blocked;
         let img = "Unlock";
-        if (data?.item.lock) img = "../../Locks/" + data?.item.lock;
+        if (data?.item.lock) img = KinkyDungeonRootDirectory + "Locks/" + data?.item.lock + ".png";
         let action = (_b) => {
             if (KinkyDungeonFastStruggle) {
                 KinkyDungeonFastStruggleGroup = sg.group;
@@ -152,7 +152,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
         let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name : "Cut");
 			
-        let img = "../../" + name;
+        let img = KinkyDungeonRootDirectory + name + ".png";
         let allowed = !(KDGetCurse(item))
             && !sg.blocked
             && (KinkyDungeonAllWeapon().some(

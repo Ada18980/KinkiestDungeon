@@ -5654,7 +5654,8 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 	optionGrey: Record<string, boolean>,
 	optionText: Record<string, string>,
 	optionColor: Record<string, string>,
-) {
+): string {
+	let hovered = "";
 	if (draw && options.length > 0) {
 
 		let bheight = CommonIsMobile ? 64 : 40;
@@ -5668,7 +5669,7 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 
 		let II = 0;
 		for (let o of options) {
-			DrawButtonKDEx("contextoption" + II, () => {
+			if (DrawButtonKDEx("contextoption" + II, () => {
 				if (optionActions[o]) {
 					optionActions[o](mouseX, mouseY);
 				} else {KDContextMenu = false;}
@@ -5677,7 +5678,9 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 			optionText[o] ? optionText[o] : TextGet("KDContextMenu_" + o),
 			(optionGrey[o] && !optionColor[o]) ? KDBaseLightGrey : (optionColor[o] ? optionColor[o] : KDBaseWhite),
 			optionImages[o] ? (optionImages[o].startsWith(KinkyDungeonRootDirectory) ? optionImages[o]
-				: KinkyDungeonRootDirectory + "UI/ContextMenu/" + optionImages[o] + ".png")
+				: KinkyDungeonRootDirectory
+					+ "UI/ContextMenu/"
+					+ optionImages[o] + ".png")
 			 : "",
 			undefined,
 			undefined, optionGrey[o], optionGrey[o] ? KDBaseBlack : undefined,
@@ -5686,7 +5689,7 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 				zIndex: 201,
 				scaleImage: optionImages[o] ? true : false
 				}
-			);
+			) && !hovered) hovered = o;
 			II++;
 		}
 
@@ -5699,6 +5702,8 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 		KDContextW = bwidth + 2*bpad;
 		KDContextH = options.length*(bheight + bpad)+bpad;
 	}
+
+	return hovered;
 }
 
 function KDSpellValid(x: number, y: number, spellRange: number, projAimOverride?: boolean) : boolean {

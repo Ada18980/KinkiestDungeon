@@ -80,9 +80,13 @@ let KDDrawGameContextMenu = {
 			});
 	
 			currentHighlightedItemNoReset = true;
-			KDDrawContextMenu(draw, mouseX, mouseY, options,
+			let ret = KDDrawContextMenu(draw, mouseX, mouseY, options,
 				optionImages, optionActions, optionGrey, optionText, optionColor);
 	
+			if (ret) {
+				KDLastStruggleTypeTooltip = ret;
+			}
+
 			return options;
 		}
 		return [];
@@ -100,9 +104,11 @@ let KDDrawGameContextMenu = {
 			});
 	
 			currentHighlightedItemNoReset = true;
-			KDDrawContextMenu(draw, mouseX, mouseY, options,
+			let ret = KDDrawContextMenu(draw, mouseX, mouseY, options,
 				optionImages, optionActions, optionGrey, optionText, optionColor);
-	
+			if (ret) {
+				KDLastStruggleTypeTooltip = ret;
+			}
 			return options;
 		}
 
@@ -391,6 +397,9 @@ function KDGetGameContextActionsVanilla(
 							(newY - KinkyDungeonCamY - 0.25)*KinkyDungeonGridSizeDisplay, KDBaseMint);
 					}
 
+					if (KDGameData.MovePoints < 0) {
+						optionGrey.Sprint = true;
+					}
 					options.push("Sprint");
 					optionImages.Sprint = "Sprint";
 					optionActions.Sprint = () => {

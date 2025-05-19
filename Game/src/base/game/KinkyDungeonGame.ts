@@ -4086,7 +4086,7 @@ function KDSprintCost(sprintdata?: any, sprintCost?: number, accountForSlow: boo
 		boost: 0,
 		sprintCostOverride: sprintCost,
 	};
-	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length, 
+	data.cost = (-KDSprintCostBase - KDSprintCostSlowLevel[Math.min(KDSprintCostSlowLevel.length-1, 
 		Math.round(KinkyDungeonSlowLevel))] + (
 			(accountForSlow && KinkyDungeonSlowLevel > 1) ? -KDSprintAdjustSlowed : 0
 		));

@@ -3118,6 +3118,8 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 	}
 }
 
+let KDLastStruggleTypeTooltip = "";
+
 function KDDrawStruggleGroups() {
 	let i = 0;
 	// Draw the struggle buttons if applicable
@@ -3146,15 +3148,15 @@ function KDDrawStruggleGroups() {
 
 			i = 0;
 
-			let StruggleType = "";
+			let StruggleType = KDLastStruggleTypeTooltip;
 
 			let renderedButtons = false;
 			let renderButtons = () => {
 				if (item && (
 					((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
-					|| MouseIn(((!sg.left) ? (260) : 0), 
+					|| (!currentHighlightedItem && MouseIn(((!sg.left) ? (260) : 0), 
 					y, 
-					500, (ButtonWidth)))
+					500, (ButtonWidth))))
 					|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE
 					|| KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE)) {
 
@@ -3195,6 +3197,7 @@ function KDDrawStruggleGroups() {
 							if (KDStruggleButtons[btn]) {
 								i = KDStruggleButtons[btn](data, i, false, KDPlayer(), KDPlayer()).i;
 							}
+							dataget.StruggleType = data.StruggleType;
 							StruggleType = data.StruggleType;
 						}
 				}
@@ -3210,7 +3213,7 @@ function KDDrawStruggleGroups() {
 				item = surfaceItems[KDStruggleGroupLinkIndex[sg.group]];
 			} else if (KDStruggleGroupLinkIndex[sg.group] > 0) delete KDStruggleGroupLinkIndex[sg.group];
 			if (((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
-				|| MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3))) && sg) {
+				|| (!currentHighlightedItem && MouseIn(((!sg.left) ? (260) : 0), y, 500, (ButtonWidth+3)))) && sg) {
 
 
 
@@ -3653,6 +3656,7 @@ function KDDrawStruggleGroups() {
 			}
 		}
 
+	KDLastStruggleTypeTooltip = ""; // consume it
 }
 
 /**
