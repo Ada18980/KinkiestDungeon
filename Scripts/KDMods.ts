@@ -120,10 +120,11 @@ async function KDGetModsLoad(execute) {
 		// We are online and no local mod loading :()
 	}
 
+	// refresh load order before executing
+	await KDUpdateModInfo();
+
 	if (execute) {
 		KDExecuteMods();
-	} else {
-		await KDUpdateModInfo();
 	}
 }
 
@@ -201,7 +202,7 @@ function getFileInput(callback?, ...callbackArgs) {
 	input.click();
 }
 
-function KDLoadMod(files: any[]) {
+async function KDLoadMod(files: any[]) {
 	console.log(files);
 	for (let f of files) {
 		if (f && f.name) {
@@ -210,7 +211,7 @@ function KDLoadMod(files: any[]) {
 		}
 	}
 
-	KDUpdateModInfo();
+	await KDUpdateModInfo();
 }
 
 let KDExecuted = false;
@@ -258,28 +259,30 @@ async function KDUpdateModInfo() {
 						let reader = new FileReader();
 						let file = new File([blob], entry.filename);
 
-						reader.onload = function(event) {
-							console.log("LOADING MOD INFO " + file.name);
-							if (typeof event.target.result === "string") {
-								//@ts-ignore
-								let res = event.target.result;
-								let json = KDLoadModJSON(res);
-								if (json) {
-									KDModInfo[mod[0]] = json;
-									if (json.priority) {
-										priority = json.priority;
+						await new Promise((resolve,reject) => { 
+							reader.onload = async function(event) {
+								console.log("LOADING MOD INFO " + file.name);
+								if (typeof event.target.result === "string") {
+									//@ts-ignore
+									let res = event.target.result;
+									let json = KDLoadModJSON(res);
+									if (json) {
+										KDModInfo[mod[0]] = json;
+										if (json.priority) {
+											priority = json.priority;
+										}
+
+										modFiles.push({mod: mod[1], name: mod[0], priority: priority, fileorder: json.fileorder});
+
+										KDModLoadOrder = modFiles.sort((a, b) => {
+											return (b.priority || 0) - (a.priority || 0);
+										}).map((ent) => {return {mod: ent.mod, name: ent.name, fileorder: ent.fileorder};});
+										modsProcessed += 1;
 									}
-
-									modFiles.push({mod: mod[1], name: mod[0], priority: priority, fileorder: json.fileorder});
-
-									KDModLoadOrder = modFiles.sort((a, b) => {
-										return (b.priority || 0) - (a.priority || 0);
-									}).map((ent) => {return {mod: ent.mod, name: ent.name, fileorder: ent.fileorder};});
-									modsProcessed += 1;
 								}
-							}
-						};
-						await reader.readAsText(file);
+							};
+							reader.readAsText(file);
+						});
 
 					}
 				}
@@ -310,7 +313,7 @@ async function KDUpdateModInfo() {
 let KDModLoadOrder: {mod: File, name: string, fileorder: string[]}[] = [];
 
 async function KDExecuteMods() {
-	if (KDExecuted) return;
+	if (KDExecuted || Object.keys(KDModLoadOrder).length == 0) return;
 	KDExecuted = true;
 	KDAwaitingModLoad = true;
 	KDAllModFiles = [];
