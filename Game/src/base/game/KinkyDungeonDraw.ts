@@ -5662,7 +5662,7 @@ function KDDrawContextMenu(draw: boolean, mouseX: number, mouseY: number,
 		let bwidth = CommonIsMobile ? 400 : 250;
 
 		let offsets = KDGetBoxShiftOffset(KDContextX-bpad, KDContextY - bpad,
-			bwidth + 3*bpad, options.length * (bheight + bpad))
+			bwidth + 3*bpad, 50 + options.length * (bheight + bpad))
 		let XX = KDContextX + offsets.x + 24;
 		let YY = KDContextY + offsets.y + 24;
 

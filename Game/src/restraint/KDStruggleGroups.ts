@@ -205,7 +205,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 KinkyDungeonFastStruggleType = "Pick";
             } else
                 KDSendInput("struggle", {group: sg.group,
-                    image: "Pick", index: KDStruggleGroupLinkIndex[sg.group], type: "Pick"});
+                    image: "UseTool", index: KDStruggleGroupLinkIndex[sg.group], type: "Pick"});
                 //KinkyDungeonStruggle(sg, "Pick");
             return true;
         };
@@ -214,7 +214,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
                 i: 3, // repurpose i as priority
                 allowed: allowed,
                 type: "Pick",
-                image: "Pick",
+                image: "UseTool",
                 action: action,
             };
         }
@@ -228,7 +228,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 			i++;
 		}
 		return {i: i,
-            image: "Pick", allowed: allowed, type: "Pick"};
+            image: "UseTool", allowed: allowed, type: "Pick"};
 	},
 	ContextMenu: (data, i, query, target, entity) => {
         if (query) {
