@@ -53,6 +53,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Bondage lover no longer applies to armor
 - Fix crash during context loss in some browser environments
 - Auto path does not get disabled when activating certain toggle spells
+- Fix bug with draconic seal leading to softlocks if you backtrack
 
 5.4.74
 - Modders: Added "afterModsLoadedAndLoadGame" event

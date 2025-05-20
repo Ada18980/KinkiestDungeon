@@ -472,10 +472,13 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"SealSigil": {
 		selectValid: false,
 		check: () => {
+			if (MiniGameKinkyDungeonLevel < KDGameData.HighestLevelCurrent) return true;
 			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] ||
 				KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
 		},
 		minimaptext: () => {
+			if (MiniGameKinkyDungeonLevel < KDGameData.HighestLevelCurrent)
+				return TextGet("KDEscapeMinimap_Pass_SealSigilGen");
 			let escape = KinkyDungeonEscapeTypes.SealSigil.check();
 			if (escape)
 				return TextGet(KDGameData.DragonCaptured ? "KDEscapeMinimap_PassKill_SealSigil"

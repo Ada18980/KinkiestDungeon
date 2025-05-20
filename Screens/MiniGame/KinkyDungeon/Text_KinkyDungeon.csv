@@ -28839,6 +28839,7 @@ KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this
 
 KDEscapeMinimap_Fail_SealSigil,Exit sealed!|Find the lair!
 KDEscapeMinimap_Pass_SealSigil,Sigils erased!
+KDEscapeMinimap_Pass_SealSigilGen,Seal Broken!
 KDEscapeMinimap_PassKill_SealSigil,Dragon defeated!
 KDEscapeMethod_SealSigil,Draconic Seal
 KDEscapeMethodDesc_SealSigil,"A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair."
@@ -32225,8 +32226,8 @@ KDResistanceRobotPleased,Pleased the resistance...?
 KDTookDamage,${EnemyName} took ${Amount} ${Type} damage.
 KDTookDamageMissed,${EnemyName} avoided ${Amount} ${Type} damage.
 KDDodgedAtk,${EnemyName} dodged.
-KDDodgedToken,${EnemyName} spent a token to dodge.
-KDBlockedAtk,${EnemyName} spent a token to block ${Amount} ${Type} damage.
+KDDodgedToken,${EnemyName} dodged away.
+KDBlockedAtk,${EnemyName} blocked ${Amount} ${Type} damage.
 
 
 
