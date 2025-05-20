@@ -286,7 +286,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 显示小地图标签
 - Auto loot all from chests
 自动从箱子中拾取所有物品
-- Use Palette regardless of Outfit
+- Don't Use Outfit Palettes
 无论服装如何，始终使用调色板
 
 - Apply palettes to Restraints
@@ -6937,6 +6937,8 @@ TargetRestraint 太结实了，不会破……
 # :: KinkyDungeonUnlockDoor
 # :: KinkyDungeonUnlock
 # :: KDEscapeUnlock
+# :: KDContextMenu_Unlock
+# :: KDContextMenu_CurseUnlock
 - Command
 命令
 # :: KinkyDungeonUnlockDoorPurple
@@ -6977,6 +6979,7 @@ TargetRestraint 太结实了，不会破……
 撬锁
 # :: KinkyDungeonPickDoor
 # :: KDEscapePick
+# :: KDContextMenu_Pick
 - (No way to open)
 ( 没办法打开 )
 - (She cannot help you)
@@ -12176,7 +12179,7 @@ Ars烟火
 - Arcane Knowledge
 奥术知识
 - Unlocks knowledge and critical-strike spells. Learn True Steel, and unlocks advanced tooltips for enemies.
-允许学习知识和暴击法术。解锁对敌人的高级提示信息，显示敌人的弱点，并习得法术 “共析钢”。
+允许学习知识和暴击法术。解锁对敌人的高级提示信息，显示敌人的弱点，并习得法术 “斩铁剑”。
 
 
 - The glue sticks to you and engulfs your legs!
@@ -13843,7 +13846,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 你在地面上创建一堵墙。
 
 - True Steel
-共析钢
+斩铁剑
 - Choose a target.
 选择一个目标。
 # :: KinkyDungeonSpellTargetTrueSteel
@@ -43017,11 +43020,13 @@ AMNT 统计
 移除
 # :: KinkyDungeonRemove
 # :: KDEscapeRemove
+# :: KDContextMenu_Remove
 - Struggle
 挣扎
 # :: KinkyDungeonStruggle
 # :: KDEscapeStruggle
 # :: KDLogFilterStruggle
+# :: KDContextMenu_Struggle
 
 - Leyline Map
 地脉地图
@@ -47591,6 +47596,8 @@ ESCP 强度 : ‎AMNT
 
 - Cut
 切割
+# :: KDEscapeCut
+# :: KDContextMenu_Cut
 
 - Your collar channels the vigor of excitement into magical energy!
 你的项圈将兴奋的活力转化为神奇的能量！
@@ -49993,6 +50000,9 @@ NME 由于不够显要，被自动释放
 对自己使用
 - Ignite on Self
 点燃自己所在区块
+
+# - Inspect Lock
+# - Struggle Uselessly
 
 - (Already slept here)
 (已经睡过一次了)
