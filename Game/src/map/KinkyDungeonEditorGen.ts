@@ -136,30 +136,52 @@ function KDMapTilesPopulate (
 				continue;
 			}
 
-			// Get tile name based on weights (TODO)
-			let tileName = KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, requiredAccess, globalTags, indices, tagModifiers);
+			let tileName: string;
+			let tile: any; // Should be a KDMapTile but line 162 cries if I set it to that
+			let tags: string[];
+			let trycount = 0;
 
-			// Get tile from array
-			let tile = KDMapTilesList[tileName];
+			// Attempt up to 10 times to find a valid tile with KD_GetMapTile
+			while (trycount < 10) {
+				try {
+					// Get tile name based on weights (TODO)
+					tileName = KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, requiredAccess, globalTags, indices, tagModifiers);
+				
+					// Get tile from array
+					tile = KDMapTilesList[tileName];
 
-			let tags = KD_PasteTile(tile, cornerX, cornerY, data);
-			if (tags) {
-				for (let t of tags) {
-					if (!tagCounts[t]) tagCounts[t] = 1;
-					else tagCounts[t] += 1;
-				}
-				for (let xx = 1; xx <= tile.w; xx++)
-					for (let yy = 1; yy <= tile.h; yy++) {
-						tilesFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile;
-						indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.index[xx + ',' + yy];
-						KDMapData.CategoryIndex[(indX + xx - 1) + "," + (indY + yy - 1)] = {
-							category: tile.category,
-							tags: tags,
-						};
+					tags = KD_PasteTile(tile, cornerX, cornerY, data);
+
+					if (tags) {
+						for (let t of tags) {
+							if (!tagCounts[t]) tagCounts[t] = 1;
+							else tagCounts[t] += 1;
+						}
+						for (let xx = 1; xx <= tile.w; xx++)
+							for (let yy = 1; yy <= tile.h; yy++) {
+								tilesFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile;
+								indexFilled[(indX + xx - 1) + "," + (indY + yy - 1)] = tile.index[xx + ',' + yy];
+								KDMapData.CategoryIndex[(indX + xx - 1) + "," + (indY + yy - 1)] = {
+									category: tile.category,
+									tags: tags,
+								};
+							}
 					}
-			}
 
-			tileOrder.splice(tileOrderInd, 1);
+					tileOrder.splice(tileOrderInd, 1);
+					trycount += 100 // get out of pasting this tile, it was successful.
+				}
+				catch (err) {
+					// Tell the console what tile we were trying to paste and where
+					console.log(`Error trying to paste tile named ${tileName} at ${indX}, ${indY} - Attempt ${trycount}`)
+                    console.log(err)
+				}
+				trycount++
+			}
+			// If we exceed 10 but are under 100, then it failed all 10 tries. We give up on this tile. 
+			if ((trycount > 10) && (trycount < 100)) {
+                console.log(`Could not create map tile at ${indX}, ${indY} - Please report!`)
+            }
 		}
 
 		for (let t of Object.entries(maxTagFlags)) {
