@@ -44798,6 +44798,7 @@ BOSS 房已清空！
 出口被封印!|寻找巢穴!
 - Sigils erased!
 符印已擦除！
+# - Seal Broken!
 - Dragon defeated!
 龙已被击败！
 - Draconic Seal
@@ -50001,8 +50002,10 @@ NME 由于不够显要，被自动释放
 - Ignite on Self
 点燃自己所在区块
 
-# - Inspect Lock
-# - Struggle Uselessly
+- Inspect Lock
+检查解锁条件
+- Struggle Uselessly
+无用地挣扎
 
 - (Already slept here)
 (已经睡过一次了)
@@ -50191,9 +50194,9 @@ ${EnemyName} 受到了 ${Amount} 点${Type}伤害。
 ${EnemyName} 避开了 ${Amount} 点${Type}伤害。
 - ${EnemyName} dodged.
 ${EnemyName} 躲过了你的攻击。
-- ${EnemyName} spent a token to dodge.
+- ${EnemyName} dodged away.
 ${EnemyName} 花费了一个 token 以闪避。
-- ${EnemyName} spent a token to block ${Amount} ${Type} damage.
+- ${EnemyName} blocked ${Amount} ${Type} damage.
 ${EnemyName} 花费了一个 token 来格挡 ${Amount} 点 ${Type} 伤害。
 
 
