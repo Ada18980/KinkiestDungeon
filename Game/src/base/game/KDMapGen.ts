@@ -841,14 +841,16 @@ function KinkyDungeonGetAccessibleRoom(startX: number, startY: number): string[]
 	let tempGrid = {};
 	let checkGrid: GridEntry = {};
 	checkGrid[startX + "," + startY] = {x: startX, y: startY};
+	let Tiles = KDInteractableTiles.replace("D", "").replace("d", "");
+	let MTiles = KinkyDungeonMovableTilesSmartEnemy.replace("D", "").replace("d", "");
+					
 	while (Object.entries(checkGrid).length > 0) {
 		for (let g of Object.entries(checkGrid)) {
 			for (let XX = -1; XX <= 1; XX++)
 				for (let YY = -1; YY <= 1; YY++) {
 					let test = ((g[1].x+XX) + "," + (g[1].y+YY));
-					let Tiles = KDInteractableTiles.replace("D", "").replace("d", "");
 					if (!checkGrid[test] && !tempGrid[test] && KDInteractableTiles.includes(KinkyDungeonMapGet(g[1].x+XX, g[1].y+YY))) {
-						if (Tiles.includes(KinkyDungeonMapGet(g[1].x+XX, g[1].y+YY)))
+						if (MTiles.includes(KinkyDungeonMapGet(g[1].x+XX, g[1].y+YY)))
 							checkGrid[test] = {x: g[1].x+XX, y:g[1].y+YY};
 						tempGrid[test] = true;
 					}

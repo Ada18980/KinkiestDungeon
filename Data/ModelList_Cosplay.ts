@@ -101,6 +101,63 @@ AddModel({
 });
 
 AddModel({
+	Name: "MouseEars",
+	Folder: "Mouse",
+	Parent: "Mouse",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Ears", "Mouse", "Face", "Cosplay"],
+	AddPose: ["AnimalEars", "Mouse", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "EarLeftRim", Layer: "AnimalEarsMid", Pri: 5,
+			Invariant: true,
+			InheritColor: "LeftRim",
+			OffsetX: 940,
+			OffsetY: 200,
+		},
+		{ Name: "InnerLeft", Layer: "AnimalEarsMid", Pri: 5.1,
+			Invariant: true,
+			TieToLayer: "EarLeftRim",
+			NoOverride: true,
+			InheritColor: "LeftInner",
+			OffsetX: 940,
+			OffsetY: 200,
+		},
+		{ Name: "PuffLeft", Layer: "AnimalEarsMid", Pri: 5.2,
+			Invariant: true,
+			TieToLayer: "EarLeftRim",
+			NoOverride: true,
+			InheritColor: "LeftPuff",
+			OffsetX: 940,
+			OffsetY: 200,
+		},
+		{ Name: "EarRightRim", Layer: "AnimalEars", Pri: 5,
+			Invariant: true,
+			InheritColor: "RightRim",
+			OffsetX: 940,
+			OffsetY: 200,
+		},
+		{ Name: "InnerRight", Layer: "AnimalEars", Pri: 5.1,
+			Invariant: true,
+			TieToLayer: "EarRightRim",
+			NoOverride: true,
+			InheritColor: "RightInner",
+			OffsetX: 940,
+			OffsetY: 200,
+		},
+		{ Name: "PuffRight", Layer: "AnimalEars", Pri: 5.2,
+			Invariant: true,
+			TieToLayer: "EarRightRim",
+			NoOverride: true,
+			InheritColor: "RightPuff",
+			OffsetX: 940,
+			OffsetY: 200,
+		},
+	])
+});
+
+
+AddModel({
 	Name: "KittyEars",
 	Folder: "Ears",
 	Parent: "Kitty",
@@ -224,6 +281,31 @@ AddModel({
 		{ Name: "Wolf", Layer: "Tail", Pri: 0,
 			Invariant: true,
 			InheritColor: "Tail",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "MouseTail",
+	Folder: "Mouse",
+	Parent: "Mouse",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Tails", "Mouse", "Cosplay"],
+	AddPose: ["Tails", "Mouse", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "TailBack", Layer: "Tail", Pri: 50,
+			Poses: ToMap(LEGPOSES),
+			Invariant: true,
+			InheritColor: "Tail",
+			MorphPoses: {Kneel: "Kneel", "KneelClosed": "Kneel", Hogtie: "Hogtie"},
+		},
+		{ Name: "TailFront", Layer: "TailFront", Pri: 50,
+			Poses: ToMapSubtract(LEGPOSES, ["Hogtie"]),
+			InheritColor: "Tail",
+			Invariant: true,
+			MorphPoses: {Kneel: "Kneel", "KneelClosed": "Kneel"},
 		},
 	])
 });

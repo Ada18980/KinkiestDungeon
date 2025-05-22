@@ -1,7 +1,9 @@
 let LAYERS_BASE = [
-	"Weapon",
 	"FurnitureFront",
 	"FurnitureLinked",
+	
+	"Weapon",
+	"TailFront",
 
 	// These are in front b/c the collar acc goes over the leash for visibility
 	// and the leash shouldnt go thru the head when hogtied
@@ -21,6 +23,7 @@ let LAYERS_BASE = [
 	"Headband",
 	"MouthProp",
 	"HairFront",
+	"AnimalEarsMid",
 	"HairOver",
 	"Hood", // For Kigu
 	// Head items
