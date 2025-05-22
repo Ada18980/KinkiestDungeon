@@ -3294,6 +3294,7 @@ let KDNoOverrideTags = [
 	"NoPet",
 	"NoKigu",
 	"NoBlindfolds",
+	"NoBoots",
 	"arousalMode",
 	"arousalModePlug",
 	"arousalModePlugNoFront",
@@ -3525,6 +3526,15 @@ function KDGetRestraintsEligible (
 		}
 		if ((!LeashingOnly || (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints"))
 			&& (!RequireWill || !restraint.maxwill || willPercent <= restraint.maxwill || (LeashingOnly && (restraint.Group == "ItemNeck" || restraint.Group == "ItemNeckRestraints")))) {
+
+			if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode"))
+				continue;
+			if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug"))
+				continue;
+			if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs")
+				&& KinkyDungeonStatsChoice.get("arousalModePlugNoFront"))
+				continue;
+			
 
 			add = false;
 			addedVar = false;

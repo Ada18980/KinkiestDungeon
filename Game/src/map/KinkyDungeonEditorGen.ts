@@ -173,7 +173,12 @@ function KDMapTilesPopulate (
 				}
 				catch (err) {
 					// Tell the console what tile we were trying to paste and where
-					console.log(`Error trying to paste tile named ${tileName} at ${indX}, ${indY} - Attempt ${trycount}`)
+					let str = `Error trying to paste tile named ${tileName} at ${indX}, ${indY} - Attempt ${trycount}`;
+					if (trycount < 2) {
+
+						KinkyDungeonSendTextMessage(1, str, KDBaseTeal);
+					}
+					console.log(str)
                     console.log(err)
 				}
 				trycount++

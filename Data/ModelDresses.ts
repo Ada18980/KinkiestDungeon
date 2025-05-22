@@ -8,6 +8,7 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 			Swimsuit: {"gamma":1.5333333333333332,"saturation":0,"contrast":1.7666666666666666,"brightness":1.0166666666666666,"red":2.8000000000000003,"green":1,"blue":1,"alpha":1},
 		}},
 	],
+	"Masterwork": [{"Item":"FashionHighSecCuffsWrists","Group":"FashionHighSecCuffsWrists","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"FashionHighSecCuffsThigh","Group":"FashionHighSecCuffsThigh","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"FashionHighSecCuffsAnkles","Group":"FashionHighSecCuffsAnkles","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"HighSecCorset","Group":"HighSecCorset","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"HighSecBalletHeels","Group":"HighSecBalletHeels","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"HighSecGloves","Group":"HighSecGloves","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"HighSecCollar","Group":"HighSecCollar","Color":"#fffafa","Lost":false,"Properties":{}},{"Item":"HighSecBlindfold","Group":"HighSecBlindfold","Color":"#fffafa","Lost":false,"Properties":{}}],
 	"Bandit" : [
 		{Item: "StrappyBikini", Group: "Panties", Color: "#53428D", Lost: false,
 		Filters: {

@@ -816,6 +816,7 @@ function KinkyDungeonDressPlayer (
 			|| Character == KinkyDungeonPlayer
 			|| Character == KDSpeakerNPC
 			|| Character == KDPreviewModel
+			|| !(KDCurrentModels.get(Character)?.Poses?.Body) // refresh if not haired
 			|| Math.random() < 0.05)
 			UpdateModels(Character, Xray, customFaction);
 		let ReUpdate = false;
@@ -826,27 +827,28 @@ function KinkyDungeonDressPlayer (
 		let cosplaystyle = KDNPCStyle.get(Character)?.cosplaystyle || "Default";
 
 
-		if (!KDCurrentModels.get(Character)?.Poses?.Hair && KDModelHair[hairstyle]) {
-			for (let hair of Object.values(KDModelHair[hairstyle])) {
-				KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters, 
-					hair.Properties, hair.factionFilters);
-				ReUpdate = true;
-			}
-		}
 		if (!KDCurrentModels.get(Character)?.Poses?.Body && KDModelBody[bodystyle]) {
 			for (let body of Object.values(KDModelBody[bodystyle])) {
 				KDInventoryWear(Character, body.Item, undefined, undefined, undefined, body.Filters,
 					 body.Properties, body.factionFilters);
 				ReUpdate = true;
 			}
-		}
-		if (!KDCurrentModels.get(Character)?.Poses?.Eyes && KDModelFace[facestyle]) {
-			for (let face of Object.values(KDModelFace[facestyle])) {
-				KDInventoryWear(Character, face.Item, undefined, undefined, undefined, face.Filters,
-					 face.Properties, face.factionFilters);
-				ReUpdate = true;
+			if (!KDCurrentModels.get(Character)?.Poses?.Hair && KDModelHair[hairstyle]) {
+				for (let hair of Object.values(KDModelHair[hairstyle])) {
+					KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters, 
+						hair.Properties, hair.factionFilters);
+					ReUpdate = true;
+				}
+			}
+			if (!KDCurrentModels.get(Character)?.Poses?.Eyes && KDModelFace[facestyle]) {
+				for (let face of Object.values(KDModelFace[facestyle])) {
+					KDInventoryWear(Character, face.Item, undefined, undefined, undefined, face.Filters,
+						 face.Properties, face.factionFilters);
+					ReUpdate = true;
+				}
 			}
 		}
+
 		if (!KDCurrentModels.get(Character)?.Poses?.Fear && KDModelFace[facestyle]) {
 			KDInventoryWear(Character, "Fear",
 				undefined, undefined, undefined,

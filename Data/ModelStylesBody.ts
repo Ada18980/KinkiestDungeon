@@ -11,6 +11,16 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 			Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {"Torso":{"gamma":1,"saturation":0.35000000000000003,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},"Head":{"gamma":1,"saturation":0.35000000000000003,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1}}
 		}
 	],
+	"Invisible" : [
+		{
+			Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false,
+			Filters: {
+				"Torso":{"gamma":1,"saturation":0.35000000000000003,"contrast":1,"brightness":1,
+				"red":1,"green":1,"blue":1,"alpha":0.001},
+				"Head":{"gamma":1,"saturation":0.35000000000000003,"contrast":1,"brightness":1,
+					"red":1,"green":1,"blue":1,"alpha":0.001}}
+		}
+	],
 
 	"Demon" : [
 		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {

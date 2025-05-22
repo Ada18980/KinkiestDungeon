@@ -4945,6 +4945,8 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	{name: "MasterGear", faction: "KinkyConstruct", clusterWith: "construct",
 		playLine: "KinkyConstruct",
+		style: "Invisible",
+		outfit: "Masterwork",
 		bound: "MasterGear", color: KDBasePink,
 		tags: KDMapInit(["opendoors", "nocapture", "masterworkTrap", "miniboss",
 			"unflinching", "masterwork", "notalk",

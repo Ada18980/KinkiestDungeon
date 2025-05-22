@@ -75,6 +75,17 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Amber3",
 		],
 	},
+	Invisible: {
+		Hairstyle: [
+			"Invisible",
+		],
+		Bodystyle: [
+			"Invisible",
+		],
+		Facestyle: [
+			"Invisible",
+		],
+	},
 	Dryad: {
 		Hairstyle: [
 			"Elf1",

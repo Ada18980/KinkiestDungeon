@@ -87,8 +87,56 @@ let KDCategoryFilterSpecial: Record<string, (C: Character, m: Model, stage: numb
 }
 
 let KDCategoryFilterSpecialSubClick: Record<string, (C: Character, en: any, index: number, name: string) => ((_bdata) => boolean)> = {
+	Worn: (C, en, index, name) => {
+		return (_bdata: any) => {
+			if (!en) return false;
 
+			let removed = false;
+			for (let appIndex = 0; appIndex < C.Appearance.length; appIndex++) {
+				if (C.Appearance[appIndex]?.Model?.Name == name) {
+					if (KDModelList_Sublevel_index == index && name == KDSelectedModel?.Name) {
+						KDChangeWardrobe(C);
+						C.Appearance.splice(appIndex, 1);
+						KDUpdateChar(C);
+					}
+					removed = true;
+					break;
+				}
+			}
+			if (!removed) {
+				let M = ModelDefs[name];
+				if (M) {
+					KDChangeWardrobe(C);
+					KDAddModel(C, M.Group || M.Name, M, "Default", undefined);
+					KDUpdateChar(C);
+				}
+
+
+			}
+
+
+			KDModelList_Sublevel_index = index;
+			KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			KDCurrentLayerOrig = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			KDRefreshProps = true;
+			KDUpdateModelList(3, C);
+			if (KDCurrentModels.get(C).Models.has(name)) {
+				KDSelectedModel = C.Appearance.find((value) => {
+					return value.Model.Name == name;
+				})?.Model;
+			} else KDSelectedModel = null;
+			return true;
+		};
+	},
 }
+
+let KDCategoryFilterSpecialSubNoBorder: Record<string, (C: Character, en: any, index: number, name: string) => boolean> = {
+	Worn: (C, en, index, name) => {
+		return index != KDModelList_Sublevel_index || name != KDSelectedModel?.Name;
+	},
+}
+
+
 let KDCategoryFilterSpecialTopClick: Record<string, (C: Character, en: any, index: number, name: string) => ((_bdata) => boolean)> = {
 	Worn: (C, en, index, name) => {
 		return (_bdata: any) => {
@@ -97,7 +145,7 @@ let KDCategoryFilterSpecialTopClick: Record<string, (C: Character, en: any, inde
 			let removed = false;
 			for (let appIndex = 0; appIndex < C.Appearance.length; appIndex++) {
 				if (C.Appearance[appIndex]?.Model?.Name == name) {
-					if (KDModelList_Toplevel_index == index) {
+					if (KDModelList_Toplevel_index == index && name == KDSelectedModel?.Name) {
 						KDChangeWardrobe(C);
 						C.Appearance.splice(appIndex, 1);
 						KDUpdateChar(C);
@@ -130,6 +178,13 @@ let KDCategoryFilterSpecialTopClick: Record<string, (C: Character, en: any, inde
 			} else KDSelectedModel = null;
 			return true;
 		};
+	},
+}
+
+
+let KDCategoryFilterSpecialTopNoBorder: Record<string, (C: Character, en: any, index: number, name: string) => boolean> = {
+	Worn: (C, en, index, name) => {
+		return index != KDModelList_Toplevel_index || name != KDSelectedModel?.Name;
 	},
 }
 
@@ -582,11 +637,16 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 
 				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
 				UpdateModels(C);
-				let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+				let maxNorm = Math.max(1.5, Math.max(
+					Model.Filters[KDCurrentLayer].red,
+					Model.Filters[KDCurrentLayer].green,
+					Model.Filters[KDCurrentLayer].blue,
+				));
+				let rr = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].red /maxNorm) * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
-				let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+				let gg = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].green /maxNorm) * 255).toString(16);
 				if (gg.length == 1) gg = '0' + gg;
-				let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+				let bb = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].blue /maxNorm) * 255).toString(16);
 				if (bb.length == 1) bb = '0' + bb;
 				ElementValue("KDSelectedColor", `#${
 					rr}${
@@ -610,11 +670,16 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 					Model.Filters[KDCurrentLayer].saturation = 0;
 				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
 				UpdateModels(C);
-				let rr = Math.round(Model.Filters[KDCurrentLayer].red/5 * 255).toString(16);
+				let maxNorm = Math.max(1.5, Math.max(
+					Model.Filters[KDCurrentLayer].red,
+					Model.Filters[KDCurrentLayer].green,
+					Model.Filters[KDCurrentLayer].blue,
+				));
+				let rr = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].red/maxNorm) * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
-				let gg = Math.round(Model.Filters[KDCurrentLayer].green/5 * 255).toString(16);
+				let gg = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].green/maxNorm) * 255).toString(16);
 				if (gg.length == 1) gg = '0' + gg;
-				let bb = Math.round(Model.Filters[KDCurrentLayer].blue/5 * 255).toString(16);
+				let bb = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].blue/maxNorm) * 255).toString(16);
 				if (bb.length == 1) bb = '0' + bb;
 				ElementValue("KDSelectedColor", `#${
 					rr}${
@@ -631,11 +696,16 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				Model.Filters[KDCurrentLayer][key] = ((MouseX - X) / width) * 5;
 				Object.assign(KDCurrentModels.get(C).Models.get(Model.Name), JSON.parse(JSON.stringify(Model)));
 				UpdateModels(C);
-				let rr = Math.round(Model.Filters[KDCurrentLayer].red /5 * 255).toString(16);
+				let maxNorm = Math.max(1.5, Math.max(
+					Model.Filters[KDCurrentLayer].red,
+					Model.Filters[KDCurrentLayer].green,
+					Model.Filters[KDCurrentLayer].blue,
+				));
+				let rr = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].red /maxNorm) * 255).toString(16);
 				if (rr.length == 1) rr = '0' + rr;
-				let gg = Math.round(Model.Filters[KDCurrentLayer].green /5 * 255).toString(16);
+				let gg = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].green /maxNorm) * 255).toString(16);
 				if (gg.length == 1) gg = '0' + gg;
-				let bb = Math.round(Model.Filters[KDCurrentLayer].blue /5 * 255).toString(16);
+				let bb = Math.round(Math.min(1, Model.Filters[KDCurrentLayer].blue /maxNorm) * 255).toString(16);
 				if (bb.length == 1) bb = '0' + bb;
 				ElementValue("KDSelectedColor", `#${
 					rr}${
@@ -704,7 +774,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		KDToggles.PaletteColorPicker = true;
 		KDPropsSlider = false;
 		return true;
-	}, true, X - 240 + 145, YY + 40, 140, 30, 
+	}, true, X - 240 + 290, YY + 40, 140, 30, 
 	TextGet("KDColorPickerPalette"), KDBaseWhite, undefined, undefined, undefined,
 	KDPropsSlider || !KDToggles.PaletteColorPicker, 
 	(Model.factionFilters && Model.factionFilters[KDCurrentLayer]) ? KDTextGray3 : KDButtonColor);
@@ -713,7 +783,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		KDToggles.PaletteColorPicker = false;
 		KDPropsSlider = false;
 		return true;
-	}, true, X - 240 + 290, YY + 40, 140, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
+	}, true, X - 240 + 145, YY + 40, 140, 30, TextGet("KDColorPickerAdvanced"), KDBaseWhite, undefined, undefined, undefined,
 	KDToggles.PaletteColorPicker || KDPropsSlider || KDToggles.SimpleColorPicker, KDButtonColor);
 	DrawButtonKDEx("tab_ColorPickerProperties", (_b) => {
 		KDPropsSlider = true;
@@ -1195,7 +1265,10 @@ function KDDrawModelList(X: number, C: Character) {
 		, true, X+220, 100 + buttonSpacing * i, 190, buttonHeight,
 			!toplevel ? "" : TextGet("m_" + toplevel),
 			(KDCurrentModels.get(C).Models.has(toplevel) || hasTopLevel[toplevel]) ? KDBaseWhite : faded, "",
-			undefined, undefined, index_top != KDModelList_Toplevel_index, KDButtonColor);
+			undefined, undefined, 
+			KDCategoryFilterSpecialTopNoBorder[mainCat] ?
+				KDCategoryFilterSpecialTopNoBorder[mainCat](C, toplevel, index_top, toplevel)
+				: index_top != KDModelList_Toplevel_index, KDButtonColor);
 
 
 
@@ -1206,7 +1279,10 @@ function KDDrawModelList(X: number, C: Character) {
 					: clickSublevel(sublevel, index_sub, sublevel), true, X+440, 100 + buttonSpacing * i, 190, buttonHeight,
 			!sublevel ? "" : TextGet("m_" + sublevel),
 			KDCurrentModels.get(C).Models.has(sublevel) ? KDBaseWhite : faded, "",
-			undefined, undefined, index_sub != KDModelList_Sublevel_index, KDButtonColor);
+			undefined, undefined, 
+			KDCategoryFilterSpecialSubNoBorder[mainCat] ?
+				KDCategoryFilterSpecialSubNoBorder[mainCat](C, sublevel, index_sub, sublevel)
+				: index_sub != KDModelList_Sublevel_index, KDButtonColor);
 
 
 		if (!KDSelectedModel && sublevel) {
@@ -2071,6 +2147,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 	KDWardrobeToolsDraw(Character);
 
+	KDlastSelectedModel = KDSelectedModel;
 }
 
 let KDToolsDisplayPoses = false;
@@ -3026,12 +3103,16 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 						} else {
 							targetFilters[currentLayerName][key] = ((MouseX - X) / width) * 3;
 						}
-
-						let rr = Math.round(targetFilters[currentLayerName].red /5 * 255).toString(16);
+						let maxNorm = Math.max(1.5, Math.max(
+							targetFilters[currentLayerName].red,
+							targetFilters[currentLayerName].green,
+							targetFilters[currentLayerName].blue,
+						));
+						let rr = Math.round(Math.min(1, targetFilters[currentLayerName].red /maxNorm) * 255).toString(16);
 						if (rr.length == 1) rr = '0' + rr;
-						let gg = Math.round(targetFilters[currentLayerName].green /5 * 255).toString(16);
+						let gg = Math.round(Math.min(1, targetFilters[currentLayerName].green /maxNorm) * 255).toString(16);
 						if (gg.length == 1) gg = '0' + gg;
-						let bb = Math.round(targetFilters[currentLayerName].blue /5 * 255).toString(16);
+						let bb = Math.round(Math.min(1, targetFilters[currentLayerName].blue /maxNorm) * 255).toString(16);
 						if (bb.length == 1) bb = '0' + bb;
 						ElementValue("KDSelectedColor", `#${
 							rr}${
@@ -3144,11 +3225,16 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 					targetFilters[currentLayerName].brightness = 1;
 					if (targetFilters[currentLayerName].saturation == 1 || !targetFilters[currentLayerName].saturation)
 						targetFilters[currentLayerName].saturation = 0;
-					let rr = Math.round(targetFilters[currentLayerName].red/5 * 255).toString(16);
+					let maxNorm = Math.max(1.5, Math.max(
+						targetFilters[currentLayerName].red,
+						targetFilters[currentLayerName].green,
+						targetFilters[currentLayerName].blue,
+					));
+					let rr = Math.round(Math.min(1, targetFilters[currentLayerName].red/maxNorm) * 255).toString(16);
 					if (rr.length == 1) rr = '0' + rr;
-					let gg = Math.round(targetFilters[currentLayerName].green/5 * 255).toString(16);
+					let gg = Math.round(Math.min(1, targetFilters[currentLayerName].green/maxNorm) * 255).toString(16);
 					if (gg.length == 1) gg = '0' + gg;
-					let bb = Math.round(targetFilters[currentLayerName].blue/5 * 255).toString(16);
+					let bb = Math.round(Math.min(1, targetFilters[currentLayerName].blue/maxNorm) * 255).toString(16);
 					if (bb.length == 1) bb = '0' + bb;
 					ElementValue("KDSelectedColor", `#${
 						rr}${
@@ -3178,11 +3264,16 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 						if (!targetFilters[currentLayerName])
 							targetFilters[currentLayerName] = Object.assign({}, KDColorSliders);
 						targetFilters[currentLayerName][key] = ((MouseX - X) / width) * 5;
-						let rr = Math.round(targetFilters[currentLayerName].red /5 * 255).toString(16);
+						let maxNorm = Math.max(1.5, Math.max(
+							targetFilters[currentLayerName].red,
+							targetFilters[currentLayerName].green,
+							targetFilters[currentLayerName].blue,
+						));
+						let rr = Math.round(Math.min(1, targetFilters[currentLayerName].red /maxNorm) * 255).toString(16);
 						if (rr.length == 1) rr = '0' + rr;
-						let gg = Math.round(targetFilters[currentLayerName].green /5 * 255).toString(16);
+						let gg = Math.round(Math.min(1, targetFilters[currentLayerName].green /maxNorm) * 255).toString(16);
 						if (gg.length == 1) gg = '0' + gg;
-						let bb = Math.round(targetFilters[currentLayerName].blue /5 * 255).toString(16);
+						let bb = Math.round(Math.min(1, targetFilters[currentLayerName].blue /maxNorm) * 255).toString(16);
 						if (bb.length == 1) bb = '0' + bb;
 						ElementValue("KDSelectedColor", `#${
 							rr}${
@@ -3205,7 +3296,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 	if (!KDToggles.PaletteColorPicker) {
 		DrawTextFitKD(TextGet("KDColorHex"),X + width/2, YY - 40, 300, KDBaseWhite, KDTextGray0, undefined, "center");
 		let TF = KDTextField("KDSelectedColor", X - 10, YY - 20, width, 30);
-		if (TF.Created) {
+		if (TF.Created || KDSelectedModel != KDlastSelectedModel) {
 			TF.Element.oninput = (_event: any) => {
 				let value = ElementValue("KDSelectedColor");
 				let RegExp = /^#[0-9A-Fa-f]{6}$/i;
@@ -3213,9 +3304,9 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				if (RegExp.test(value)) {
 					let hex = KDhexToRGB(value);
 					if (hex) {
-						let r = 5.0 * (parseInt(hex.r, 16) / 255.0);
-						let g = 5.0 * (parseInt(hex.g, 16) / 255.0);
-						let b = 5.0 * (parseInt(hex.b, 16) / 255.0);
+						let r = 1.5 * (parseInt(hex.r, 16) / 255.0);
+						let g = 1.5 * (parseInt(hex.g, 16) / 255.0);
+						let b = 1.5 * (parseInt(hex.b, 16) / 255.0);
 						if (callback_textfield) callback_textfield(r, g, b);
 						else {
 							if (!targetFilters[currentLayerName])
@@ -3282,3 +3373,5 @@ function KDDressWardrobeChar(C: Character, forcedress?: boolean) {
 			: undefined, undefined, !forcedress);
 	}
 }
+
+let KDlastSelectedModel: Model = null;

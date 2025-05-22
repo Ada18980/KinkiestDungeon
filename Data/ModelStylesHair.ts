@@ -6,6 +6,12 @@ let KDModelHair: {[_: string]: KinkyDungeonDress} = {
 	"Default" : [
 		{Item: "Braid", Group: "Braid", Color: KDBaseWhite, Lost: false},
 	],
+	"Invisible" : [
+		{Item: "StraightBangs", Color: KDBaseWhite, Lost: false, Filters:
+			{"StraightBangs":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,
+				"red":1,"green":1,"blue":1,"alpha":0.001},
+				},},
+	],
 	"Blue_WhiteRibbon": [{"Item":"Fluffy","Group":"Fluffy","Color":KDBaseWhite,"Lost":false,"Filters":{"Fuzzy":{"gamma":1.0166666666666666,"saturation":1.0166666666666666,"contrast":1.0166666666666666,"brightness":0.48333333333333334,"red":0.3333333333333333,"green":0.2833333333333333,"blue":1.85,"alpha":1.0166666666666666}}},{"Item":"TwintailLeft","Group":"TwintailLeft","Color":KDBaseWhite,"Lost":false,"Filters":{"TwintailLeft":{"gamma":1.0166666666666666,"saturation":1.0166666666666666,"contrast":1.0166666666666666,"brightness":0.48333333333333334,"red":0.3333333333333333,"green":0.2833333333333333,"blue":1.85,"alpha":1.0166666666666666}}},{"Item":"TwintailRight","Group":"TwintailRight","Color":KDBaseWhite,"Lost":false,"Filters":{"TwintailRight":{"gamma":1.0166666666666666,"saturation":1.0166666666666666,"contrast":1.0166666666666666,"brightness":0.48333333333333334,"red":0.3333333333333333,"green":0.2833333333333333,"blue":1.85,"alpha":1.0166666666666666}}},{"Item":"HairBow","Group":"HairBow","Color":KDBaseWhite,"Lost":false,"Filters":{"Bow":{"gamma":1,"saturation":0,"contrast":0.85,"brightness":1,"red":2.9607843137254903,"green":3.215686274509804,"blue":4.9411764705882355,"alpha":1}}}],
 	"Elf1" : [
 		{
