@@ -44798,7 +44798,8 @@ BOSS 房已清空！
 出口被封印!|寻找巢穴!
 - Sigils erased!
 符印已擦除！
-# - Seal Broken!
+- Seal Broken!
+封印解除！
 - Dragon defeated!
 龙已被击败！
 - Draconic Seal
@@ -50195,9 +50196,9 @@ ${EnemyName} 避开了 ${Amount} 点${Type}伤害。
 - ${EnemyName} dodged.
 ${EnemyName} 躲过了你的攻击。
 - ${EnemyName} dodged away.
-${EnemyName} 花费了一个 token 以闪避。
+${EnemyName} 躲过了你的攻击。
 - ${EnemyName} blocked ${Amount} ${Type} damage.
-${EnemyName} 花费了一个 token 来格挡 ${Amount} 点 ${Type} 伤害。
+${EnemyName} 格挡了 ${Amount} 点 ${Type} 伤害。
 
 
 
