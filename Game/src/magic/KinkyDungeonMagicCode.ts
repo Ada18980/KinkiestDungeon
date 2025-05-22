@@ -523,7 +523,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				let tileOppX = targetX + Math.sign(targetX - entity.x);
 				let tileOppY = targetY + Math.sign(targetY - entity.y);
 				let oppTile = KinkyDungeonMapGet(tileOppX, tileOppY);
-				if (KDCrackableTiles.includes(oppTile) || KinkyDungeonMovableTiles.includes(oppTile)) {
+				if (KDCrackableTiles.includes(oppTile) || KDInteractableTiles.includes(oppTile)) {
 					if (_miscast) return "Miscast";
 					KDChangeStamina(KinkyDungeonPlayerDamage?.name || "Pickaxe", "weapon", "wepSpecial", -3, false, 1);
 					KDCrackTile(targetX, targetY, undefined, {});

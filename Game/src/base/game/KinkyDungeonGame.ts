@@ -84,7 +84,9 @@ let KinkyDungeonMovableTilesEnemy = KinkyDungeonGroundTiles + "HB@l;SsRrdzTgLcNV
 // 5 is skinned floor, you can give it whatever sprite you want
 // 6 is skinned wall, you can give it whatever sprite you want
 let KinkyDungeonMovableTilesSmartEnemy = "D" + KinkyDungeonMovableTilesEnemy; //Smart enemies can open doors as well
-let KinkyDungeonMovableTiles = "OPCAMG$Y+=-F67" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
+let KDInteractableTiles = "OPCAMG$Y+=-F67" + KinkyDungeonMovableTilesSmartEnemy; // Player can open chests, orbs, shrines, chargers
+
+let KinkyDungeonMovableTiles = KDInteractableTiles; // mod compatibility
 // 5 = floor object, passable
 // 6 = wall object, block passage
 // 7 = transparent wall object
@@ -93,12 +95,12 @@ let KDRandomDisallowedNeighbors = ",?/RAasSHcCHDdOoPp+-=FZMmzgtuVvN567"; // tile
 let KDTrappableNeighbors = "DA+-F@"; // tiles that might have traps bordering them with a small chance
 let KDTrappableNeighborsLikely = "COP="; // tiles that might have traps bordering them with a big chance
 
-let KinkyDungeonTransparentObjects = KinkyDungeonMovableTiles
+let KinkyDungeonTransparentObjects = KDInteractableTiles
 	.replace("D", "")
 	.replace("g", "") // grate
 	.replace("Y", "") // wall rubble
 	+ "OoAaMmCcB@lb+=-FXu7";
-let KinkyDungeonTransparentMovableObjects = KinkyDungeonMovableTiles
+let KinkyDungeonTransparentMovableObjects = KDInteractableTiles
 	.replace("Z", "") // AutoDoor
 	.replace("D", "") // Door
 	.replace("g", ""); // Light does not pass thru doors or grates
@@ -1585,7 +1587,7 @@ function KinkyDungeonPlaceTorches(torchchance: number, torchlitchance: number, t
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
 			if (KinkyDungeonMapGet(X, Y) == '1'
-				&& KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X, Y + 1))
+				&& KDInteractableTiles.includes(KinkyDungeonMapGet(X, Y + 1))
 				&& !KinkyDungeonEffectTilesGet((X - 1) + "," + (Y+1))
 				&& !KinkyDungeonEffectTilesGet((X) + "," + (Y+1))
 				&& !KinkyDungeonEffectTilesGet((X + 1) + "," + (Y+1))
@@ -1995,7 +1997,7 @@ function KinkyDungeonClickGame(event: MouseEvent, _Level?: number) {
 }
 
 function KinkyDungeonGetMovable() {
-	let MovableTiles = KinkyDungeonMovableTiles;
+	let MovableTiles = KDInteractableTiles;
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Squeeze") > 0) MovableTiles = MovableTiles + "b";
 	return MovableTiles;
 }

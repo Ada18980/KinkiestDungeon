@@ -6872,7 +6872,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 									//KDGameData.RevealedFog[value.x + ',' + value.y] = Math.max(1, KDGameData.RevealedFog[value.x + ',' + value.y] || 0);
 									for (let x = value.x - 1; x <= value.x + 1; x++)
 										for (let y = value.y - 1; y <= value.y + 1; y++) {
-											if (!toAdd[x + ',' + y] && KDIsInBounds(x, y, 1) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y))) {
+											if (!toAdd[x + ',' + y] && KDIsInBounds(x, y, 1) && KDInteractableTiles.includes(KinkyDungeonMapGet(x, y))) {
 												toAdd[x + ',' + y] = { added: false, x: x, y: y };
 											}
 										}

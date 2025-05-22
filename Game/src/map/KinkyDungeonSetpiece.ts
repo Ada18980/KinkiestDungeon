@@ -1040,8 +1040,8 @@ function KDCreateDoors(Left: number, Top: number, Width: number, Height: number,
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x+1, r))
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x+2, r))
 					&& (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(x+3, r)) || (convertDoodads && KinkyDungeonMapGet(x+3, r) == 'X'))) {
-					if ((KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, r - 1)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, r + 1)))
-						|| (KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 2, r - 1)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 2, r + 1)))) {
+					if ((KDInteractableTiles.includes(KinkyDungeonMapGet(x + 1, r - 1)) && KDInteractableTiles.includes(KinkyDungeonMapGet(x + 1, r + 1)))
+						|| (KDInteractableTiles.includes(KinkyDungeonMapGet(x + 2, r - 1)) && KDInteractableTiles.includes(KinkyDungeonMapGet(x + 2, r + 1)))) {
 						doors[(x + 1) + "," + r] = {x: x + 1, y: r};
 						doors[(x + 2) + "," + r] = {x: x + 2, y: r};
 					}
@@ -1059,8 +1059,8 @@ function KDCreateDoors(Left: number, Top: number, Width: number, Height: number,
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(c, y + 1))
 					&& KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(c, y + 2))
 					&& (KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(c, y + 3)) || (convertDoodads && KinkyDungeonMapGet(c, y + 3) == 'X'))) {
-					if ((KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(c - 1, y + 1)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(c + 1, y + 1)))
-						|| (KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(c - 1, y + 2)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(c + 1, y + 2)))) {
+					if ((KDInteractableTiles.includes(KinkyDungeonMapGet(c - 1, y + 1)) && KDInteractableTiles.includes(KinkyDungeonMapGet(c + 1, y + 1)))
+						|| (KDInteractableTiles.includes(KinkyDungeonMapGet(c - 1, y + 2)) && KDInteractableTiles.includes(KinkyDungeonMapGet(c + 1, y + 2)))) {
 						doors[c + "," + (y + 1)] = {x: c, y: y + 1};
 						doors[c + "," + (y + 2)] = {x: c, y: y + 2};
 					}

@@ -1567,7 +1567,7 @@ function KDInteract(x: number, y: number, dist?: number): boolean {
 			}
 		}
 	}
-	if (tile?.Type && KinkyDungeonMovableTiles.includes(tiletype)) {
+	if (tile?.Type && KDInteractableTiles.includes(tiletype)) {
 		if (dist < 1.5) {
 			KinkyDungeonTargetTile = tile;
 			KinkyDungeonTargetTileLocation = x + "," + y;

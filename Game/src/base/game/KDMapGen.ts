@@ -821,8 +821,10 @@ function KinkyDungeonGetAccessible(startX: number, startY: number, testX?: numbe
 					let locked = (testX != undefined && testY != undefined && X+XX == testX && Y+YY == testY)
 						|| (KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)) && KinkyDungeonTilesGet("" + (X+XX) + "," + (Y+YY)).Lock);
 					if (!checkGrid[testLoc] && !tempGrid[testLoc] && X+XX > 0 && X+XX < KDMapData.GridWidth-1 && Y+YY > 0 && Y+YY < KDMapData.GridHeight-1
-						&& KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
-						checkGrid[testLoc] = {x:X+XX,y:Y+YY};
+						&& KDInteractableTiles.includes(KinkyDungeonMapGet(X+XX, Y+YY)) && !locked) {
+						if (KinkyDungeonMovableTilesSmartEnemy.includes(
+							KinkyDungeonMapGet(X+XX, Y+YY)))
+							checkGrid[testLoc] = {x:X+XX,y:Y+YY};
 						tempGrid[testLoc] = {x:X+XX,y:Y+YY};
 					}
 				}
@@ -844,8 +846,8 @@ function KinkyDungeonGetAccessibleRoom(startX: number, startY: number): string[]
 			for (let XX = -1; XX <= 1; XX++)
 				for (let YY = -1; YY <= 1; YY++) {
 					let test = ((g[1].x+XX) + "," + (g[1].y+YY));
-					let Tiles = KinkyDungeonMovableTiles.replace("D", "").replace("d", "");
-					if (!checkGrid[test] && !tempGrid[test] && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(g[1].x+XX, g[1].y+YY))) {
+					let Tiles = KDInteractableTiles.replace("D", "").replace("d", "");
+					if (!checkGrid[test] && !tempGrid[test] && KDInteractableTiles.includes(KinkyDungeonMapGet(g[1].x+XX, g[1].y+YY))) {
 						if (Tiles.includes(KinkyDungeonMapGet(g[1].x+XX, g[1].y+YY)))
 							checkGrid[test] = {x: g[1].x+XX, y:g[1].y+YY};
 						tempGrid[test] = true;

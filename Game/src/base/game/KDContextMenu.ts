@@ -352,7 +352,7 @@ function KDGetGameContextActionsVanilla(
 	}
 
 	if (!tile?.Type && (!entity || (entity.player && KinkyDungeonStairTiles.includes(tileType)))
-		&& KinkyDungeonMovableTiles.includes(tileType)) {
+		&& KDInteractableTiles.includes(tileType)) {
 		let noMove = false;
 		if (entity == KDPlayer() && KinkyDungeonStairTiles.includes(tileType)) {
 			options.push("Stairs");

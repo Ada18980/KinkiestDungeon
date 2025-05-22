@@ -735,10 +735,10 @@ const KDOverlays: KDSprites = {
 		return sprite;
 	},
 	"4": (x, y, _Fog, _noReplace) => {
-		let left = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x - 1, y));
-		let right = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, y));
-		let up = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y - 1));
-		let down = KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y + 1));
+		let left = KDInteractableTiles.includes(KinkyDungeonMapGet(x - 1, y));
+		let right = KDInteractableTiles.includes(KinkyDungeonMapGet(x + 1, y));
+		let up = KDInteractableTiles.includes(KinkyDungeonMapGet(x, y - 1));
+		let down = KDInteractableTiles.includes(KinkyDungeonMapGet(x, y + 1));
 		if (down) {
 			return "Crack";
 		} else if (up) {
@@ -5387,7 +5387,7 @@ function KDGetTargetRetType(x: number, y: number): string {
 	}
 
 	let tile = KinkyDungeonMapGet(x, y);
-	if (KinkyDungeonMovableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
+	if (KDInteractableTiles.includes(tile) && !(KinkyDungeonMovableTilesEnemy.includes(tile))) return "Action";
 	return "Move";
 }
 

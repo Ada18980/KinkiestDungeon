@@ -964,8 +964,8 @@ let KDTileGen = {
 			|| "Ddg".includes(KinkyDungeonMapGet(x, y + 1)))
 			nodoorchance = 1.0;
 		else if (
-			!(KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x + 1, y)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x - 1, y)))
-			&& !(KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y + 1)) && KinkyDungeonMovableTiles.includes(KinkyDungeonMapGet(x, y - 1)))
+			!(KDInteractableTiles.includes(KinkyDungeonMapGet(x + 1, y)) && KDInteractableTiles.includes(KinkyDungeonMapGet(x - 1, y)))
+			&& !(KDInteractableTiles.includes(KinkyDungeonMapGet(x, y + 1)) && KDInteractableTiles.includes(KinkyDungeonMapGet(x, y - 1)))
 		) {
 			// No doors if there isn't a straight path
 			nodoorchance = 1.0;
