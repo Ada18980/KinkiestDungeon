@@ -394,6 +394,7 @@ let linearList = [
 	"TextureAtlas/atlasA0.json",
 	"TextureAtlas/atlasB0.json",
 	"TextureAtlas/atlasC0.json",
+	"TextureAtlas/atlasD0.json",
 	"TextureAtlas/displace0.json",
 ];
 
