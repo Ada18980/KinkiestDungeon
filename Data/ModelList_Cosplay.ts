@@ -108,6 +108,7 @@ AddModel({
 	Protected: true,
 	Categories: ["Ears", "Mouse", "Face", "Cosplay"],
 	AddPose: ["AnimalEars", "Mouse", "Cosplay"],
+	RemovePoses: ["Hooded"],
 	Layers: ToLayerMap([
 		{ Name: "EarLeftRim", Layer: "AnimalEarsMid", Pri: 5,
 			Invariant: true,
