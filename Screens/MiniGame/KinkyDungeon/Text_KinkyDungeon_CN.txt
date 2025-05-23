@@ -29419,6 +29419,10 @@ kigurumi面具
 # :: m_FashionFutureHarness_l_Lock
 # :: m_FutureCollar_l_Lock
 # :: m_FutureCollarRestraint_l_Lock
+# :: m_LatexDollMittsLong_l_Lock
+# :: m_LatexDollMittsLong_l_Lock
+# :: m_LatexDollMittsLong_l_Lock
+# :: m_LatexDollMittsLong_l_Lock
 - EyesWhites
 眼白
 # :: m_KiguMask_l_EyesWhites
@@ -33926,6 +33930,10 @@ V形比基尼
 # :: m_CyberPetsuit_l_Display
 # :: m_CyberPetsuit_l_Display
 # :: m_CyberPetsuit_l_Display
+# :: m_LatexDollMittsLong_l_Display
+# :: m_LatexDollMittsLong_l_Display
+# :: m_LatexDollMittsLong_l_Display
+# :: m_LatexDollMittsLong_l_Display
 # - EnhancedSciFiBallGag
 # - AdvancedSciFiBallGag
 # - HarnessRim
@@ -37645,6 +37653,10 @@ Aura刘海(右后)
 # :: m_CyberPetsuit_l_Straps
 # :: m_CyberPetsuit_l_Straps
 # :: m_ReverseBinder_l_Straps
+# :: m_LatexDollMittsLong_l_Straps
+# :: m_LatexDollMittsLong_l_Straps
+# :: m_LatexDollMittsLong_l_Straps
+# :: m_LatexDollMittsLong_l_Straps
 # :: m_HighSecCollarRestraint_l_Straps
 - Base
 基础部分
@@ -39076,6 +39088,8 @@ Aura刘海(右后)
 # :: m_Fox5Tail_l_Tail
 # :: m_Fox6Tail_l_Tail
 # :: m_Fox7Tail_l_Tail
+# :: m_MouseTail_l_Tail
+# :: m_MouseTail_l_Tail
 - WolfEars2
 狼娘耳朵2
 # - EarLeft
@@ -39636,7 +39650,11 @@ Aura刘海(右后)
 # - LeftSideBang
 # - RightSideBang
 # - LeftPuff
+# :: m_Hair2_LeftPuff_l_LeftPuff
+# :: m_MouseEars_l_LeftPuff
 # - RightPuff
+# :: m_Hair2_RightPuff_l_RightPuff
+# :: m_MouseEars_l_RightPuff
 # - Under
 # :: m_Hair3_l_Under
 # :: m_Hair3_Short_l_Under
@@ -40462,6 +40480,18 @@ Aura刘海(右后)
 # :: m_KittyPetMittens_l_Mitten
 # :: m_FashionKittyPetMittenLeft_l_Mitten
 # :: m_FashionKittyPetMittens_l_Mitten
+# :: m_LatexDollMittLeft_l_Mitten
+# :: m_LatexDollMittRight_l_Mitten
+# :: m_LatexDollMitts_l_Mitten
+# :: m_LatexDollMitts_l_Mitten
+# :: m_LatexDollMittsLong_l_Mitten
+# :: m_LatexDollMittsLong_l_Mitten
+# :: m_LatexDollMittsLong_l_Mitten
+# :: m_LatexDollMittsLong_l_Mitten
+# :: m_LatexDollMittsLong_l_Mitten
+# :: m_LatexDollMittsLong_l_Mitten
+# :: m_FashionLatexDollMitts_l_Mitten
+# :: m_FashionLatexDollMitts_l_Mitten
 - Paw
 猫爪
 # :: m_LeatherPawMittenLeft_l_Paw
@@ -40700,6 +40730,10 @@ Aura刘海(右后)
 # :: m_FashionHighSecCuffsThighRight_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
+# :: m_LatexDollMittsLong_l_Cuff
+# :: m_LatexDollMittsLong_l_Cuff
+# :: m_LatexDollMittsLong_l_Cuff
+# :: m_LatexDollMittsLong_l_Cuff
 # :: m_WolfCuffsAnklesRestraint_l_Cuff
 # :: m_WolfCuffsAnklesRestraint_l_Cuff
 # :: m_WolfCuffsAnklesRightRestraint_l_Cuff
@@ -40749,6 +40783,10 @@ Aura刘海(右后)
 # :: m_LatexPetsuitGlow_l_Glow
 # :: m_LatexPetsuitGlow_l_Glow
 # :: m_LatexPetsuitGlow_l_Glow
+# :: m_LatexDollMittsLong_l_Glow
+# :: m_LatexDollMittsLong_l_Glow
+# :: m_LatexDollMittsLong_l_Glow
+# :: m_LatexDollMittsLong_l_Glow
 - UpperCuff
 上部铐具
 # :: m_CyberLongMittenLeft_l_UpperCuff
@@ -40763,6 +40801,9 @@ Aura刘海(右后)
 # :: m_CyberArms_l_UpperCuff
 # :: m_FashionCyberLongMittens_l_UpperCuff
 # :: m_FashionCyberLongMittens_l_UpperCuff
+# :: m_LatexDollMittsLong_l_UpperCuff
+# :: m_LatexDollMittsLong_l_UpperCuff
+# :: m_LatexDollMittsLong_l_UpperCuff
 - UpperDisplay
 上部显示
 # :: m_CyberLongMittenLeft_l_UpperDisplay
@@ -40775,6 +40816,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_UpperDisplay
 # :: m_FashionCyberLongMittens_l_UpperDisplay
 # :: m_FashionCyberLongMittens_l_UpperDisplay
+# :: m_LatexDollMittsLong_l_UpperDisplay
+# :: m_LatexDollMittsLong_l_UpperDisplay
 - UpperLock
 上部锁图标
 # :: m_CyberLongMittenLeft_l_UpperLock
@@ -40787,6 +40830,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_UpperLock
 # :: m_FashionCyberLongMittens_l_UpperLock
 # :: m_FashionCyberLongMittens_l_UpperLock
+# :: m_LatexDollMittsLong_l_UpperLock
+# :: m_LatexDollMittsLong_l_UpperLock
 - UpperGlow
 上部发光
 # :: m_CyberLongMittenLeft_l_UpperGlow
@@ -40799,6 +40844,8 @@ Aura刘海(右后)
 # :: m_CyberArms_l_UpperGlow
 # :: m_FashionCyberLongMittens_l_UpperGlow
 # :: m_FashionCyberLongMittens_l_UpperGlow
+# :: m_LatexDollMittsLong_l_UpperGlow
+# :: m_LatexDollMittsLong_l_UpperGlow
 # - Pins
 # :: m_HeavyYoke_l_Pins
 # :: m_DivineBra_l_Pins
@@ -41807,6 +41854,20 @@ Aura刘海(右后)
 # :: m_HighSecCorsetRestraint_l_GarterRightHardware
 # :: m_HighSecCorsetRestraint_l_GarterRightHardware
 # - HighSecCorsetNoCrotchRestraint
+# - MouseEars
+# :: m_MouseEars
+# :: m_LeatherHood_l_MouseEars
+# :: m_FashionLeatherHood_l_MouseEars
+# - LeftRim
+# - LeftInner
+# - RightRim
+# - RightInner
+# - MouseTail
+# - LatexDollMittLeft
+# - LatexDollMittRight
+# - LatexDollMitts
+# - LatexDollMittsLong
+# - FashionLatexDollMitts
 
 
 - HighSecBlindfoldRestraint
