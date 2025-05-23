@@ -1,6 +1,22 @@
 "use strict";
 
-let KDMarketRateDecay = 0.98;
+const KDMarketRateDecay = 0.98;
+
+
+/**
+ * Calculate the sale price multiplier when selling an item to the Shopkeeper.
+ * Partial sum formula.
+ *
+ * @param qty_previous - Cumulative quantity of the item sold prior to this transaction.
+ * @param qty_this - Quantity of the item to be sold in the current transaction.
+ * @param [rate] - Market rate decay factor.
+ */
+function KDCalcMarketDecayMultiplier (qty_previous: number, qty_this : number, rate = KDMarketRateDecay): number
+{
+	// Original
+	//mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+	return (rate ** (qty_previous + qty_this)  -  rate ** qty_previous) / (rate - 1);
+}
 
 let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 	"Equip": {
@@ -593,8 +609,8 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 							item: item,
 						});
 					}
-					
-					
+
+
 
 					let inventoryAs = item.inventoryVariant || item.name || (KDRestraint(item).inventoryAs);
 					item.curse = undefined;
@@ -809,7 +825,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				quantitystart = KDGameData.ItemsSold[item.name];
 			}
 			// Use partial sum formula (maths)
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
@@ -822,7 +838,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				quantitystart = KDGameData.ItemsSold[item.name];
 			}
 			// Use partial sum formula (maths)
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
@@ -835,7 +851,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				quantitystart = KDGameData.ItemsSold[item.name];
 			}
 			// Use partial sum formula (maths)
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSell").replace("VLU", value + "");
 		},
@@ -854,7 +870,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name, KDInventoryActionContainer(player));
 			if (!itemInv) return;
@@ -894,7 +910,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
@@ -907,7 +923,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSellBulk").replace("VLU", value + "");
 		},
@@ -928,7 +944,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name, KDInventoryActionContainer(player));
 			if (!itemInv) return;
@@ -968,7 +984,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDGP").replace("AMNT", value + "");
 		},
@@ -981,7 +997,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			return TextGet("KDInventoryActionSellExcess").replace("VLU", value + "");
 		},
@@ -1003,7 +1019,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			}
 			// Use partial sum formula (maths)
 
-			mult = ((KDMarketRateDecay**(quantitystart + quantity) - 1))/(KDMarketRateDecay - 1) - ((KDMarketRateDecay**(quantitystart) - 1))/(KDMarketRateDecay - 1);
+			mult = KDCalcMarketDecayMultiplier (quantitystart, quantity);
 			let value = Math.round(mult * KDGameData.SellMarkup * KinkyDungeonItemCost(item, true, true));
 			let itemInv = KinkyDungeonInventoryGetSafe(item.name, KDInventoryActionContainer(player));
 			if (!itemInv) return;
