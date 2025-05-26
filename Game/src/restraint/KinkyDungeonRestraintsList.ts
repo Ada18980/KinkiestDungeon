@@ -3459,6 +3459,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, trappable: true, name: "TrapLegirons", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
 		power: 4, weight: 2,
 		struggleBreak: true,
+		accessible: true,
 		Model: "Legirons",
 		linkCategory: "AnkleCuffs", linkSize: 0.51, noDupe: true, playerTagsMissingMult: {"ItemLegsFull":0.05},
 		sfxGroup: "Handcuffs",
@@ -5897,7 +5898,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"]},
 		maxwill: 0.7, enemyTags: {"ropeRestraintsWrist":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Wristties"]},
 
-	{name: "RopeSnakeHogtieLink",
+	{name: "RopeSnakeHogtieLink", alwaysAccessible: true,
 		debris: "Ropes", accessible: true,
 		linkPriority: 100,
 		Asset: "HempRope", Type: "Hogtied", Color: "Default",
@@ -6137,7 +6138,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "postRemoval", type: "RequireBaseLegCuffs", inheritLinked: true}
 		]},
 
-	{name: "ChainHogtieLink",
+	{name: "ChainHogtieLink", alwaysAccessible: true,
 		sfx: "Chain",
 		sfxGroup: "Chains",
 		binding: true,
@@ -6488,7 +6489,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		]},
 
 
-	{name: "CyberHogtieLink",
+	{name: "CyberHogtieLink", alwaysAccessible: true,
 		sfx: "BeepEngage",
 		sfxRemove: "Crackling",
 		binding: true,
