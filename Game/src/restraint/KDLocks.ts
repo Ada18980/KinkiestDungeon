@@ -1062,8 +1062,8 @@ let KDLocks: Record<string, KDLockType> = {
 		doLock: (data) => {
 			if (data.item && !data.link) {
 				if (!data.item.data) data.item.data = {};
-				const r = KDRestraint(data.item);
-				data.item.data.lockTimer = MiniGameKinkyDungeonLevel + (r.lockDuration || 2);
+				const r = KDRestraint(data.item); //added line
+				data.item.data.lockTimer = MiniGameKinkyDungeonLevel + (r.lockDuration || 2); //Modified line. Makes duration variable.
 			}
 		},
 		// Start of level -- for gold locks and others
