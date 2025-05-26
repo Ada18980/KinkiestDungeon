@@ -12,6 +12,7 @@ let KinkyDungeonSlimeParts = [
 	{ group: "ItemBoots", restraint: "Boots" },
 ];
 let KDAlertCD = 5;
+let KDHeelPowerGrowthExponent = 0.5;//sqrt
 
 let KDEventDataReset = {
 
@@ -11907,7 +11908,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	"playerAttack": {
 		"trainHeels": (_e, data) => {
 			if (KDHostile(data.enemy) && KDIsHumanoid(data.enemy)) {
-				KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1.5);
+				KDTickTraining("Heels", KDGameData.HeelPowerEffective > 0 && !(KDGameData.KneelTurns > 0), KDGameData.HeelPower <= 0 && !KinkyDungeonGetRestraintItem("ItemBoots"), 1.5);
 			}
 		},
 		"GroundedInReality": (_e, data) => {
@@ -11970,7 +11971,8 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					||
 					(KinkyDungeonJailGuard() && KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, KinkyDungeonJailGuard().x, KinkyDungeonJailGuard().y, KinkyDungeonJailGuard()))
 				) ? 1.5 : 1;
-				KDTickTraining("Heels", KDGameData.HeelPower > 0,
+				mult *= 0.9 + 0.1 * (Math.max(1, KDGameData.HeelPower)**KDHeelPowerGrowthExponent);
+				KDTickTraining("Heels", KDGameData.HeelPowerEffective > 0,
 					KDGameData.HeelPower <= 0 && !danger, amt, mult);
 			}
 		},

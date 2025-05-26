@@ -494,8 +494,10 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		if (KDTestSpellHits(spell, 0.0, 1.0)) {
 			let dmg = KinkyDungeonDealDamage({damage: spell.power, type: spell.damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
-			KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith", false, false, false, false);
-
+			let rest = KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith", false, false, false, false);
+			if (rest.length == 0) {
+				KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith", false, false, false, false);
+			}
 			KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBolt").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
 
 		}
@@ -665,7 +667,12 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				KDDoSlow(_target, 1);
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDroneSlow").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
 			} else {
-				KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith", false, false, false, false);
+				let rest = KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith",
+					false, false, false, false);
+				if (rest.length == 0) {
+					KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith",
+					false, false, false, false);
+				}
 				KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonEncaseBoltDrone").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
 			}
 
@@ -675,8 +682,10 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	"RubberMissile": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (!dmg.happened) return{sfx: "Shield", effect: false};
-		KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith");
-
+		let rest = KDPlayerEffectRestrain(spell, playerEffect.count, ["redlatexEncaseRandom"], "Dollsmith");
+		if (rest.length == 0) {
+			KDPlayerEffectRestrain(spell, playerEffect.count, ["latexEncaseRandom"], "Dollsmith");
+		}
 		KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRubberMissile").KDReplaceOrAddDmg( dmg.string), "yellow", 1);
 
 		return {sfx: "Lightning", effect: true};

@@ -1301,7 +1301,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 
 					if (ret == "Cast") {
 						KinkyDungeonSendEvent("playerCast", data);
-						if (KDGameData.HeelPower > 0) {
+						if (KDGameData.HeelPowerEffective > 0) {
 							if (spell.components?.includes("Arms"))
 								KDChangeBalanceSrc(KinkyDungeonPlayerDamage?.name, "debuff", "wepSpecial", -KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
 							if (spell.components?.includes("Legs"))
@@ -1404,7 +1404,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 		}
 		
 		KinkyDungeonSendEvent("playerCast", data);
-		if (KDGameData.HeelPower > 0) {
+		if (KDGameData.HeelPowerEffective > 0) {
 			if (spell.components?.includes("Arms"))
 				KDChangeBalanceSrc(spell?.name, "debuff", "cast", -KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceCastArmsMult, true);
 			if (spell.components?.includes("Legs"))

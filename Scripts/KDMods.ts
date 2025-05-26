@@ -260,7 +260,7 @@ async function KDUpdateModInfo() {
 						let file = new File([blob], entry.filename);
 
 						await new Promise((resolve,reject) => { 
-							reader.onload = async function(event) {
+							reader.onload = function(event) {
 								console.log("LOADING MOD INFO " + file.name);
 								if (typeof event.target.result === "string") {
 									//@ts-ignore
@@ -278,7 +278,9 @@ async function KDUpdateModInfo() {
 											return (b.priority || 0) - (a.priority || 0);
 										}).map((ent) => {return {mod: ent.mod, name: ent.name, fileorder: ent.fileorder};});
 										modsProcessed += 1;
-									}
+										resolve(true);
+									} else
+										resolve(false);
 								}
 							};
 							reader.readAsText(file);
@@ -319,6 +321,7 @@ async function KDExecuteMods() {
 	KDAllModFiles = [];
 
 	await KDUpdateModInfo();
+
 
 	if (KDOffline) {
 		let mods = [];

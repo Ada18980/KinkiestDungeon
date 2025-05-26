@@ -27047,6 +27047,19 @@ m_HighSecBalletHeelsRestraint_l_HardwareRight,HardwareRight
 m_HighSecBalletHeelsRestraint_l_HardwareLeft,HardwareLeft
 m_HighSecBalletHeelsRestraint_l_HardwareRight,HardwareRight
 
+m_LeatherShorts,LeatherShorts
+m_LeatherShorts_l_Shorts,Shorts
+m_LeatherShorts_l_Belt,Belt
+m_LeatherShorts_l_Button,Button
+m_LeatherPants,LeatherPants
+m_LeatherPants_l_Shorts,Shorts
+m_LeatherPants_l_Belt,Belt
+m_LeatherPants_l_Button,Button
+m_LeatherPants_l_SockLeft,SockLeft
+m_LeatherPants_l_LegLeft,LegLeft
+m_LeatherPants_l_SockRight,SockRight
+m_LeatherPants_l_SockRight,SockRight
+
 
 m_KjusEyes5,KjusEyes5
 m_KjusEyes5_l_Eyes,Eyes

@@ -120,7 +120,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 				KDChangeDistraction("enemy" + enemy.id, "spank", "tease", 1*damagemod, false, 0.25);
 			KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Slap.ogg");
 			if (!(blocked || evaded))
-				KDChangeBalanceSrc("enemy" + enemy.id, "spank", "tease", damagemod * (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 1.5*KDFitnessMult(), true);
+				KDChangeBalanceSrc("enemy" + enemy.id, "spank", "tease", damagemod * (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 1.5*KDFitnessMult(), true);
 			if (dmg.happened) {
 				KinkyDungeonSendTextMessage(4,
 					TextGet("KDTeaseAttack_SpankButt" + ( (KDPlayerFacingAway(player, enemy) && KinkyDungeonFlags.get("sprint")) ? "Sprint" : ""))

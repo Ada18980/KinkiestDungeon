@@ -186,6 +186,25 @@ function KDEffectTileTags(x: number, y: number, mapData?: KDMapDataType): Record
 
 	return ret;
 }
+/**
+ * Creates combined record of tags
+ * Unlike the other this CAN return null
+ * @param loc
+ */
+function KDEffectTileTagsLoc(loc: string, mapData?: KDMapDataType): Record<string, boolean> {
+	let tiles = KDGetEffectTilesLoc(loc, mapData);
+	if (tiles) {
+		let ret: Record<string, boolean> = {};
+		for (let t of Object.values(tiles)) {
+			if (t.tags) {
+				for (let tag of t.tags) {
+					ret[tag] = true;
+				}
+			}
+		}
+		return ret;
+	} return undefined;
+}
 
 
 
@@ -469,6 +488,15 @@ function KDGetEffectTiles(x: number, y: number, mapData?: KDMapDataType): Record
 	if (!mapData) mapData = KDMapData;
 	return KinkyDungeonEffectTilesGet(str, mapData) ? KinkyDungeonEffectTilesGet(str, mapData) : {};
 }
+/**
+ * @param x
+ * @param y
+ */
+function KDGetEffectTilesLoc(str: string, mapData?: KDMapDataType): Record<string, effectTile> {
+	if (!mapData) mapData = KDMapData;
+	return KinkyDungeonEffectTilesGet(str, mapData) ? KinkyDungeonEffectTilesGet(str, mapData) : {};
+}
+
 
 function KDGetSpecificEffectTile(x: number, y: number, tile?: string) {
 	return KDGetEffectTiles(x, y)[tile];
@@ -1215,6 +1243,9 @@ let KDPotentialDangers: Record<string, (entity: entity, x: number, y: number, ma
 	gasdanger: (entity, x, y, mapData, tags) => {
 		return tags.gasdanger && !KinkyDungeonGetImmunity(entity.Enemy?.tags, entity.Enemy?.Resistance?.profile, "poisongas", "immune", 1)
 	},
+	danger: (entity, x, y, mapData, tags) => {
+		return true;
+	},
 	bullet: (entity, x, y, mapData, tags) => {
 		return false; // TODO
 	},
@@ -1224,7 +1255,7 @@ let KDPotentialDangers: Record<string, (entity: entity, x: number, y: number, ma
 }
 
 function KDAdvanceOneFloor() {
-	KDAdvanceTraining();
+	KDAdvanceTraining(KDPlayer());
 
 	if (KinkyDungeonStatsChoice.get("Trespasser")) {
 		KinkyDungeonChangeRep("Rope", -1);

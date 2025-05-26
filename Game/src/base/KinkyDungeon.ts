@@ -689,6 +689,9 @@ interface KDGameDataBase {
 	NPCRestraints:			Record<string, Record<string, NPCRestraint>>
 	Collection:			Record<string, KDCollectionEntry>,
 	CollectionSorted:		KDCollectionEntry[],
+	/** Effective, goes to 0 when kneelin */
+	HeelPowerEffective:			number,
+	/** actual, based on worn */
 	HeelPower:			number,
 	visionAdjust:			number,
 	visionAdjustBlind:		number,
@@ -788,6 +791,7 @@ let KDGameDataBase: KDGameDataBase = {
 	RevealedFog: {},
 	Balance: 1,
 	BalancePause: false,
+	HeelPowerEffective: 1,
 	HeelPower: 1,
 	SlowMoveTurns: 0,
 	Shield: 0,
@@ -2757,6 +2761,7 @@ function KinkyDungeonRun() {
 
 
 	} if (KinkyDungeonState == "Name") {
+		if (KDSaveSlot < 1) KDSaveSlot = 1;
 
 		DrawTextFitKD(TextGet("KDName"), 975 + 550/2, 150, 550, KDBaseWhite, KDTextGray1, 32, "center");
 
@@ -6927,6 +6932,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			KDOrigMana = KinkyDungeonStatMana*10;
 			KDOrigDistraction = KinkyDungeonStatDistraction*10;
 			KDGameData = JSON.parse(JSON.stringify(KDGameDataBase));
+			if (!KDGameData.HeelPowerEffective) KDGameData.HeelPowerEffective = 0; // compatibility
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
 
 			if (!KDGameData.NamesGenerated) KDGameData.NamesGenerated = {};

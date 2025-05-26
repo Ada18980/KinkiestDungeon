@@ -393,7 +393,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		name: "SpikeTrapSeen",
 		duration: 9999, infinite: true,
 		priority: 2,
-		tags: [],
+		tags: ["danger"],
 	},
 	"SpikeTrapActive": {
 		name: "SpikeTrapActive",

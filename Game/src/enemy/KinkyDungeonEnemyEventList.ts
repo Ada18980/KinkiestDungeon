@@ -656,8 +656,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
 			enemy.IntentAction = 'TempLeash';
-			KDTickTraining("Heels", KDGameData.HeelPower > 0,
-				KDGameData.HeelPower <= 0, 4, 25);
+			if (KDGameData.HeelPower > 0)
+				KDTickTraining("Heels", KDGameData.HeelPower > 0,
+					KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
 				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
@@ -681,9 +682,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 
 					if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
-						if (!KinkyDungeonFlags.has("TempLeash"))
+						if (!KinkyDungeonFlags.has("TempLeash") && KDGameData.HeelPower > 0)
 							KDTickTraining("Heels", KDGameData.HeelPower > 0,
-								KDGameData.HeelPower <= 0, 6, 25);
+								false, 6, 25);
 						KDBreakTether(KinkyDungeonPlayerEntity);
 						enemy.playWithPlayer = 0;
 						enemy.playWithPlayerCD = 30;
@@ -890,8 +891,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			enemy.playWithPlayer = 12;
 			enemy.playWithPlayerCD = 40;
 			enemy.IntentAction = 'TempLeash';
-			KDTickTraining("Heels", KDGameData.HeelPower > 0,
-				KDGameData.HeelPower <= 0, 4, 25);
+			if (KDGameData.HeelPower > 0)
+				KDTickTraining("Heels", KDGameData.HeelPower > 0,
+					KDGameData.HeelPower <= 0, 4, 25);
 			KinkyDungeonSendDialogue(enemy,
 				TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				KDGetColor(enemy), 14, 10);
@@ -910,7 +912,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 0);
 
 					if (KDIsPlayerTetheredToLocation(KinkyDungeonPlayerEntity, enemy.x, enemy.y, enemy)) {
-						if (!KinkyDungeonFlags.has("TempLeash"))
+						if (!KinkyDungeonFlags.has("TempLeash") && KDGameData.HeelPower > 0)
 							KDTickTraining("Heels", KDGameData.HeelPower > 0,
 								KDGameData.HeelPower <= 0, 6, 25);
 						KDBreakTether(KinkyDungeonPlayerEntity);

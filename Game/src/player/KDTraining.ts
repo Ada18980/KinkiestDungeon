@@ -1,4 +1,5 @@
 'use strict';
+let KDBaseTrainingMinRatioPercent = 0.5;
 
 let KDTrainingTypes = [
 	"Heels",
@@ -34,25 +35,49 @@ function KDGetBalanceCost(): number {
 	if (!KinkyDungeonIsArmsBound()) mult *= 0.5;
 
 	let training = KDGetHeelTraining();
-	return KDGameData.HeelPower * (0.01*mult*5/(5+training) - (0.001));
+	return KDGameData.HeelPowerEffective * (0.01*mult*5/(5+training) - (0.001));
+}
+
+function KDGetTrainingPercentage(name: string, data: KDTrainingRecord, player: entity, useMin: boolean = false, noSoftScale = false) {
+	if (!data) return 0;
+	let tt = (Math.max(0, data.turns_trained * 1.11
+		- data.turns_skipped)/data.turns_total);
+	if (useMin && data.turns_total > 0) {
+		tt = Math.max(tt, KDGetTrainingMinRatioPercent(name, data, player)
+		* (data.best_ratio||0)) * Math.max(0, 1 - data.turns_skipped/data.turns_total)
+	}
+	let trainingPercentage = Math.min(1, 
+		data.turns_total/(noSoftScale ? 1 : KDTrainingSoftScale))
+		* tt;
+
+	if (KinkyDungeonStatsChoice.get("Mastery" + name)) trainingPercentage *= 0.4;
+	return trainingPercentage;
+}
+
+
+function KDGetTrainingMinRatioPercent(name: string, data: KDTrainingRecord, player: entity) {
+	return KDBaseTrainingMinRatioPercent;
+}
+
+function KDGetTrainingMinRatioPercentTick(name: string, data: KDTrainingRecord, player: entity) {
+	return data.turns_total/(data.turns_total + KDTrainingSoftScale);
 }
 
 /**
  * Goes thru all training categories and advances them by an amount, and resets the turns
  */
-function KDAdvanceTraining(): void {
+function KDAdvanceTraining(player: entity): void {
 	if (!KDGameData.Training) KDGameData.Training = {};
 	for (let entry of Object.entries(KDGameData.Training)) {
 		//let training = entry[0];
 		let data = entry[1];
 		if (data.turns_total == 0) continue; // No advance
-		let trainingPercentage = Math.min(1, data.turns_total/KDTrainingSoftScale)
-			* (Math.max(0, data.turns_trained * 1.11 - data.turns_skipped)/data.turns_total);
-		if (KinkyDungeonStatsChoice.get("Mastery" + entry[0])) trainingPercentage *= 0.4;
+		let trainingPercentage = KDGetTrainingPercentage(entry[0], data, player, true);
 		data.training_points += 1 * trainingPercentage;
 		data.turns_total = 0;
 		data.turns_skipped = 0;
 		data.turns_trained = 0;
+		data.best_ratio = 0;
 
 		while (data.training_points > data.training_stage + 1) {
 			data.training_stage += 1;
@@ -62,6 +87,7 @@ function KDAdvanceTraining(): void {
 }
 
 /**
+ * for player ONLY
  * @param Name
  * @param trained
  * @param skipped
@@ -69,9 +95,11 @@ function KDAdvanceTraining(): void {
  * @param bonus - Multiplier for turns trained or skipped
  */
 function KDTickTraining(Name: string, trained: boolean, skipped: boolean, total: number, bonus: number = 1): void {
+	let player = KDPlayer();
 	if (!KDGameData.Training) KDGameData.Training = {};
 	if (!KDGameData.Training[Name]) {
 		KDGameData.Training[Name] = {
+			best_ratio: 0,
 			training_points: 0,
 			training_stage: 0,
 			turns_skipped: 0,
@@ -82,6 +110,19 @@ function KDTickTraining(Name: string, trained: boolean, skipped: boolean, total:
 	KDGameData.Training[Name].turns_trained += trained ? total * bonus : 0;
 	KDGameData.Training[Name].turns_skipped += skipped ? total * bonus : 0;
 	KDGameData.Training[Name].turns_total += total;
+	if (!KDGameData.Training[Name].best_ratio) KDGameData.Training[Name].best_ratio = 0;
+	if (trained && KDGameData.Training[Name].turns_total > 0) {
+		KDGameData.Training[Name].best_ratio = Math.max(KDGameData.Training[Name].best_ratio || 0,
+			KDGetTrainingMinRatioPercentTick(Name, KDGameData.Training[Name], player) *
+			KDGetTrainingPercentage(Name, {
+				best_ratio: 0,
+				training_points: KDGameData.Training[Name].training_points,
+				training_stage: KDGameData.Training[Name].training_stage,
+				turns_skipped: 0,
+				turns_total: total,
+				turns_trained: total * bonus,
+			}, player, false, true));
+	}
 }
 
 /** This many training turns are requred, any less is scaled down by this amount */

@@ -143,6 +143,9 @@ function KinkyDungeonFindPath (
 	let MapTile = null;
 	let moveCost = 1;
 	let succ = new Map();
+	let xx = 0;
+	let yy = 0;
+	let loc = "";
 
 	while(open.size > 0) {
 		// Trim if it takes too long
@@ -171,10 +174,11 @@ function KinkyDungeonFindPath (
 			for (let x = -1; x <= 1; x++) {
 				for (let y = -1; y <= 1; y++) {
 					if ((x != 0 || y != 0) && (!taxicab || y == 0 || x == 0)) {
-						let xx = lowest.x + x;
-						let yy = lowest.y + y;
+						xx = lowest.x + x;
+						yy = lowest.y + y;
+						loc = (xx) + "," + (yy)
 						let tile = (xx == endx && yy == endy) ? "" : KinkyDungeonMapGet(xx, yy);
-						MapTile = KinkyDungeonTilesGet((xx) + "," + (yy));
+						MapTile = KinkyDungeonTilesGet(loc);
 						let locIndex = `${lowLoc},${endx},${endy},${tileShort}`;
 						// If we have found the end
 						if (xx == endx && yy == endy) {
@@ -232,7 +236,8 @@ function KinkyDungeonFindPath (
 							&& (!needDoorMemory || tile != "d" || KDOpenDoorTiles.includes(KDMapData.TilesMemory[xx + "," + yy]))) {
 							costBonus = 0;
 							if (!ignoreTrafficLaws) {
-								if (tile == "V" && !(MapTile?.Sfty)) costBonus = 14;
+								if (KDEffectTileTagsLoc(loc)?.danger) costBonus += 30;
+								else if (tile == "V" && !(MapTile?.Sfty)) costBonus = 14;
 								else if (tile == "N") costBonus = 30;
 								else if (tile == "D") costBonus = 3;
 								else if (tile == "d") costBonus = -2;

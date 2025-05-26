@@ -43,6 +43,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 5.4.75
 - Modders: Refactored struggle group buttons
+- Added leather pants and mouse ears/tail
+- Added mechanic where a percentage of your 'best' training percentage is kept as the minimum
 - Added context menu for restraints
 - Fix crash when setting colors of items on blank character
 - Fix not being able to cut restraints while an NPC is helping you if no Light weapons are in inventory
@@ -54,7 +56,9 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Fix crash during context loss in some browser environments
 - Auto path does not get disabled when activating certain toggle spells
 - Fix bug with draconic seal leading to softlocks if you backtrack
-- TODO fixed a bug where color picker didnt work properly in 'currently worn' menu for hairstyles, etc
+- fixed a bug where color picker didnt work properly in 'currently worn' menu for hairstyles, etc
+- fixed a bug where latex missiles did not properly apply latex in lower floors
+- Fixed behavior of the NoLoss parameter on clothing
 
 5.4.74
 - Modders: Added "afterModsLoadedAndLoadGame" event

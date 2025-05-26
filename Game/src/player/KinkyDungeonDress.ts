@@ -451,10 +451,12 @@ function KinkyDungeonDressPlayer (
 
 		// Only track these for player
 		if (Character == KinkyDungeonPlayer) {
+			let noLoss = false;
 			for (let clothes of DressList) {
 				if (!clothes) continue;
+				noLoss = false;
 				if (StandalonePatched && !clothes.Lost && KDRefreshCharacter.get(Character)) {
-					if (clothes.Properties && Object.values(clothes.Properties).some((p) => {return p.NoLoss;})) continue;
+					if (clothes.Properties && Object.values(clothes.Properties).some((p) => {return p.NoLoss;})) noLoss = true;
 					if (clothes.Item && (restraintModels[clothes.Item] || restraintModels[clothes.Item + "Restraint"])) {
 						clothes.Lost = true;
 					} else if (IsModelLost(Character, clothes.Item))
@@ -462,7 +464,7 @@ function KinkyDungeonDressPlayer (
 				}
 				if (alreadyClothed[clothes.Group || clothes.Item]) continue;
 				data.updateDress = true;
-				if (!clothes.Lost && KDRefreshCharacter.get(Character)) {
+				if (!noLoss && !clothes.Lost && KDRefreshCharacter.get(Character)) {
 
 
 
@@ -503,7 +505,7 @@ function KinkyDungeonDressPlayer (
 					if (clothes.Lost) KinkyDungeonUndress += 1/DressList.length;
 				}
 
-				if (!clothes.Lost) {
+				if (!clothes.Lost || noLoss) {
 					if (KDRefreshCharacter.get(Character)) {
 						let filters =  clothes.Filters
 						if (clothes.factionFilters) {

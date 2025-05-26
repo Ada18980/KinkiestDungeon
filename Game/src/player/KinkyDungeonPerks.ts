@@ -732,6 +732,7 @@ let KDPerkStart = {
 	},
 	HeelTraining: () =>{
 		KDGameData.Training.Heels = {
+			best_ratio: 0,
 			training_points: 0,
 			training_stage: 0,
 			turns_skipped: 0,
@@ -742,6 +743,7 @@ let KDPerkStart = {
 	},
 	HeadStartHeels: () =>{
 		KDGameData.Training.Heels = {
+			best_ratio: 0,
 			training_points: 0,
 			training_stage: 5,
 			turns_skipped: 0,
@@ -753,6 +755,7 @@ let KDPerkStart = {
 	},
 	CorsetTraining: () =>{
 		KDGameData.Training.Corset = {
+			best_ratio: 0,
 			training_points: 0,
 			training_stage: 0,
 			turns_skipped: 0,
@@ -762,6 +765,7 @@ let KDPerkStart = {
 	},
 	HeadStartCorset: () =>{
 		KDGameData.Training.Corset = {
+			best_ratio: 0,
 			training_points: 0,
 			training_stage: 5,
 			turns_skipped: 0,

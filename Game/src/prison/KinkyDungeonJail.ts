@@ -1017,8 +1017,9 @@ function KinkyDungeonHandleLeashTour(xx: number, yy: number, type: string): void
 						}
 						KinkyDungeonSendDialogue(KinkyDungeonJailGuard(), TextGet("KinkyDungeonJailerGoodGirl" + index).replace("EnemyName", TextGet("Name" + KinkyDungeonJailGuard().Enemy.name)), "#e7cf1a", 4, 9);
 					}
-					KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
-						KDGameData.HeelPower <= 0, 2, 20);
+					if (KDGameData.HeelPower > 0)
+						KDTickTraining("Heels", KDGameData.HeelPower > 0 && !(KDGameData.KneelTurns > 0),
+							KDGameData.HeelPower <= 0, 2, 20);
 				}
 			}
 			KinkyDungeonJailGuardGetLeashWaypoint(xx, yy, type);

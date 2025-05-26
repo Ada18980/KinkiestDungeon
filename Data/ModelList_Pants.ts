@@ -27,3 +27,75 @@ AddModel({
 	])
 });
 
+
+
+
+
+AddModel({
+	Name: "LeatherShorts",
+	Folder: "LeatherPants",
+	Parent: "LeatherPants",
+	Categories: ["Panties"],
+	TopLevel: true,
+	Layers: ToLayerMap([
+		{ Name: "Shorts", Layer: "Shorts", Pri: 5.1,
+			Poses: ToMap([...LEGPOSES]),
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+		},
+		{ Name: "ShortsBelt", Layer: "Shorts", Pri: 5.15,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Shorts",
+			InheritColor: "Belt",
+		},
+		{ Name: "ShortsBeltButton", Layer: "Shorts", Pri: 5.2,
+			Invariant: true,
+			NoOverride: true,
+			TieToLayer: "Shorts",
+			InheritColor: "Button",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "LeatherPants",
+	Folder: "LeatherPants",
+	Parent: "LeatherPants",
+	Categories: ["Pants"],
+	AddPose: ["Pants", "LongPants"],
+	TopLevel: true,
+	Layers: ToLayerMap([
+		...GetModelLayers("LeatherShorts"),
+
+		
+		{ Name: "SockLeft", Layer: "PantsLeft", Pri: 5,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Long",
+			DisplaceAmount: 10,
+
+		},
+		{ Name: "FootSockLeftHogtie", Layer: "PantsLeftHogtie", Pri: 5,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "LegLeft",
+			Invariant: true,
+		},
+		{ Name: "SockRight", Layer: "PantsRight", Pri: 5,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Long",
+			DisplaceAmount: 10,
+
+		},
+		{ Name: "FootSockRightKneel", Layer: "PantsRightKneel", Pri: 5,
+			HidePoses: ToMap(["FeetLinked"]),
+			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
+			Invariant: true,
+		},
+	])
+});

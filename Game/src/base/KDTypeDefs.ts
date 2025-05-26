@@ -3857,6 +3857,8 @@ interface KDTrainingRecord {
 	turns_skipped: number,
 	/** Sessions where an opportunity to train was presented */
 	turns_total: number,
+	/** Highest training points multiplier */
+	best_ratio: number,
 	/** Current training amount */
 	training_points: number,
 	/** Current training level, basically floor(training_points) */

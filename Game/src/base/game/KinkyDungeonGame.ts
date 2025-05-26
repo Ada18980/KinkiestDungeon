@@ -2629,7 +2629,7 @@ function KDDoAttack(Enemy: entity, teasesub: boolean, attackCost: number, skip: 
 	if (attackCost < 0 && KinkyDungeonStatsChoice.has("BerserkerRage")) {
 		KDChangeDistraction("BerserkerRage", "perk", "attack", 0.7 - 0.5 * data.attackCost, false, 0.33);
 	}
-	if (KDGameData.HeelPower > 0)
+	if (KDGameData.HeelPowerEffective > 0)
 		KDChangeBalanceSrc("heels", "debuff", "attack", data.attackCost * KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * KDBalanceAttackMult*10*KDFitnessMult(), true);
 
 	let origHP = Enemy.hp;
@@ -2921,7 +2921,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 										KDChangeStamina("slow", "debuff", "move", moveMult * (KinkyDungeonStatStaminaRegenPerSlowLevel * KinkyDungeonSlowLevel) * delta, false, moveMult, true);
 									}
 								}
-								if (KDGameData.HeelPower > 0 && !KDGameData.Crouch ) {
+								if (KDGameData.HeelPowerEffective > 0 && !KDGameData.Crouch ) {
 
 									KDChangeBalanceSrc("heels", "debuff", "move", -KDGetBalanceCost() * (0.75 + 0.5 * KDRandom()) * (1 + Math.max(-inertia, 0) * KDBalanceInertiaMult)*moveMult, true);
 								} else {

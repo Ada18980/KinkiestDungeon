@@ -712,12 +712,12 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 		data.knockbackTypesStrong.includes(data.type)
 		|| data.knockbackTypes.includes(data.type)
 	)) {
-		if ((KDGameData.HeelPower > 0 || data.type == "plush") && data.knockbackTypes.includes(data.type)) {
+		if ((KDGameData.HeelPowerEffective > 0 || data.type == "plush") && data.knockbackTypes.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true);
+			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * amt*KDFitnessMult(), true);
 		} else if (data.knockbackTypesStrong.includes(data.type)) {
 			let amt = data.dmg;
-			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true);
+			KDChangeBalanceSrc(data.type, "knockback", "dmg", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * -KDBalanceDmgMult() * amt*KDFitnessMult(), true);
 		}
 	}
 
@@ -1524,7 +1524,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if (KDGameData.KneelTurns > 0) {
 		if (KinkyDungeonSlowLevel > 2) KDBoundPowerLevel += 0.15;
 	} else KDBoundPowerLevel += 0.15 * Math.max(0, Math.min(1, KinkyDungeonSlowLevel / 2));
-	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KDGameData.HeelPower / 4));
+	KDBoundPowerLevel += 0.1 * Math.max(0, Math.min(1, KDGameData.HeelPowerEffective / 4));
 	if (KDBoundPowerLevel > 1) KDBoundPowerLevel = 1;
 	if (KinkyDungeonStatsChoice.get("BoundPower")) {
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
@@ -1683,7 +1683,8 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	KinkyDungeonUpdateStruggleGroups();
 	// Slowness calculation
 	KinkyDungeonCalculateSlowLevel(delta);
-	KinkyDungeonCalculateHeelLevel(delta);
+	KDGameData.HeelPowerEffective = KinkyDungeonCalculateHeelLevel(delta);
+	KDGameData.HeelPower = KinkyDungeonCalculateHeelLevel(delta, true);
 	let sleepRate = KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sleepiness")
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessGas") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "happygasDamageResist") * 2)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SleepinessPoison") * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"));
@@ -1928,7 +1929,7 @@ function KinkyDungeonCanKneel() {
 	return true;
 }
 
-function KinkyDungeonCalculateHeelLevel(_delta: number, overrideKneel?: boolean) {
+function KinkyDungeonCalculateHeelLevel(_delta: number, overrideKneel?: boolean): number {
 	let heelpower = 0;
 	if (overrideKneel || (!KDForcedToGround() && KinkyDungeonCanStand()))
 		for (let inv2 of KinkyDungeonAllRestraintDynamic()) {
@@ -1939,7 +1940,7 @@ function KinkyDungeonCalculateHeelLevel(_delta: number, overrideKneel?: boolean)
 			}
 		}
 	if (heelpower && heelpower < 2) heelpower = 2;
-	KDGameData.HeelPower = Math.max(0,
+	return Math.max(0,
 		Math.pow(heelpower, 0.75)
 		+ KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "HeelPower")
 		+ Math.max(0, KinkyDungeonSleepiness));
@@ -2261,7 +2262,7 @@ function KinkyDungeonDoTryOrgasm(Bonus?: number, Auto?: number) {
 		KinkyDungeonAlert = Math.max(KinkyDungeonAlert || 0, data.alertRadius); // Alerts nearby enemies because of your moaning~
 		KDGameData.PlaySelfTurns = data.stunTime;
 		// Balance
-		KDChangeBalanceSrc(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", (KDBaseBalanceDmgLevel + KDGameData.HeelPower) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true);
+		KDChangeBalanceSrc(data.auto ? "auto" : "player", "orgasm", "tryOrgasm", (KDBaseBalanceDmgLevel + KDGameData.HeelPowerEffective) / KDBaseBalanceDmgLevel * 0.5*-KDBalanceDmgMult() * 4*KDFitnessMult(), true);
 		KinkyDungeonSendEvent("orgasm", data);
 	} else {
 		KDChangeStamina(data.auto ? "auto" : "player", "edge", "tryOrgasm", data.edgespcost);

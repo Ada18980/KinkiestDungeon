@@ -2672,10 +2672,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				if (KDGameData.Training[training]?.turns_total == 0) {
 					XPNext = 0;
 				} else {
-					let trainingPercentage = Math.min(1,
-						KDGameData.Training[training]?.turns_total/KDTrainingSoftScale)
-						* (Math.max(0, KDGameData.Training[training]?.turns_trained * 1.11
-							- KDGameData.Training[training]?.turns_skipped)/KDGameData.Training[training]?.turns_total);
+					let trainingPercentage = KDGetTrainingPercentage(training, KDGameData.Training[training], KDPlayer(), true);
 					if (KinkyDungeonStatsChoice.get("Mastery" + training)) trainingPercentage *= 0.4;
 					XPNext = trainingPercentage;
 				}

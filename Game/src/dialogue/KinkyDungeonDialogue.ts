@@ -1081,8 +1081,9 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 						enemy.playWithPlayer = 12;
 						enemy.playWithPlayerCD = 40;
 						enemy.IntentAction = 'TempLeash';
-						KDTickTraining("Heels", KDGameData.HeelPower > 0,
-							KDGameData.HeelPower <= 0, 4, 25);
+						if (KDGameData.HeelPower > 0)
+							KDTickTraining("Heels", KDGameData.HeelPower > 0,
+								KDGameData.HeelPower <= 0, 4, 25);
 						KinkyDungeonSendDialogue(enemy,
 							TextGet("KinkyDungeonJailer" + (KDEnemyCanTalk(enemy) ? KDJailPersonality(enemy) : "Gagged") + "LeashTime").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 							KDGetColor(enemy), 14, 10);

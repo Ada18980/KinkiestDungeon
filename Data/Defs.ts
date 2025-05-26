@@ -310,6 +310,9 @@ let LAYERS_BASE = [
 	"Shorts",
 
 	"OverSocks",
+	
+	"PantsLeft",
+	
 	"StockingLeftKneel", "StockingLeft",
 	"FootLeft",
 	"LegLeft",
@@ -404,6 +407,7 @@ let LAYERS_BASE = [
 
 
 	// Lower body underwear
+	"PantsRight",
 	"StockingRight",
 
 	"CorsetUnder", // Corsets go here when wearing pants
@@ -438,11 +442,13 @@ let LAYERS_BASE = [
 	"WrappingLegsUnderHogtie",
 	"AnkleLeftHogtie",
 	"ShoeLeftHogtie",
+	"PantsLeftHogtie",
 	"SockLeftHogtie",
 	"FootLeftHogtie",
 	"LegLeftHogtie",
 	"AnkleRightKneel",
 	"ShoeRightKneel",
+	"PantsRightKneel",
 	"SockRightKneel",
 	"FootRightKneel",
 
