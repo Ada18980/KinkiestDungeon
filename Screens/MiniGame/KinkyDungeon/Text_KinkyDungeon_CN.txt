@@ -11150,6 +11150,8 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: m_ShadowHandsLegs2_l_Belt
 # :: m_ShadowHandsLegsAll_l_Belt
 # :: m_ShadowHandsLegsAll_l_Belt
+# :: m_LeatherShorts_l_Belt
+# :: m_LeatherPants_l_Belt
 - Plug
 塞
 # :: KinkyDungeonGroupItemVulva
@@ -11701,6 +11703,8 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: KDTileTooltip@
 # :: m_SlayerCollar_l_Button
 # :: m_SlayerCape_l_Button
+# :: m_LeatherShorts_l_Button
+# :: m_LeatherPants_l_Button
 - Conveyor
 传送带
 - Safety Conveyor
@@ -26629,6 +26633,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_Bandit_l_Shorts
 # :: m_BanditShorts_l_Shorts
 # :: m_Bandit_l_Shorts
+# :: m_LeatherShorts_l_Shorts
+# :: m_LeatherPants_l_Shorts
 - BanditLeftWrist
 强盗护腕（左）
 - WristLeft
@@ -27206,6 +27212,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_KittyPetSockShortLeft_l_SockLeft
 # :: m_KittyPetSocksShort_l_SockLeft
 # :: m_KittyPetSocksShortRestraint_l_SockLeft
+# :: m_LeatherPants_l_SockLeft
 - MaidSockRight
 女仆袜(右)
 - SockRight
@@ -27258,6 +27265,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_KittyPetSockShortRight_l_SockRight
 # :: m_KittyPetSocksShort_l_SockRight
 # :: m_KittyPetSocksShortRestraint_l_SockRight
+# :: m_LeatherPants_l_SockRight
+# :: m_LeatherPants_l_SockRight
 - MaidShoes
 女仆鞋
 - MaidSocks
@@ -28099,6 +28108,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_RubberLegs_l_LegLeft
 # :: m_Hobbleskirt_l_LegLeft
 # :: m_SmoothHeels_l_LegLeft
+# :: m_LeatherPants_l_LegLeft
 - FootRightKneel
 右足(跪姿)
 # :: m_Body_l_FootRightKneel
@@ -41885,6 +41895,9 @@ Aura刘海(右后)
 鞋底（右）
 # :: m_HighSecBalletHeels_l_SoleRight
 # :: m_HighSecBalletHeelsRestraint_l_SoleRight
+
+# - LeatherShorts
+# - LeatherPants
 
 
 # - KjusEyes5
