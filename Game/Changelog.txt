@@ -41,6 +41,9 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.5.1
+- 
+
 5.4.75
 - Modders: Refactored struggle group buttons
 - Added leather pants and mouse ears/tail
@@ -59,6 +62,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - fixed a bug where color picker didnt work properly in 'currently worn' menu for hairstyles, etc
 - fixed a bug where latex missiles did not properly apply latex in lower floors
 - Fixed behavior of the NoLoss parameter on clothing
+- Tile editor copy/paste fields now work on itch.io
 
 5.4.74
 - Modders: Added "afterModsLoadedAndLoadGame" event
