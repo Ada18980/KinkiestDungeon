@@ -4833,6 +4833,32 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
 	},
+	{
+        name: "AnimPetsuit", faction: "KinkyConstruct", clusterWith: "construct",
+		tags: KDMapInit(["leatherTrap", "ignoreharmless", "construct", "nosignal", "poisonresist", 
+            "soulimmune", "melee", "petsuitSpell", "minor", "chainresist", "doortrap", "petsuit",
+			"backup_harness", "harnessSpell"
+		]),
+		ignorechance: 0, followRange: 1.5, AI: "hunt",  ignoreflag: ["FA_Petsuit"], failAttackflag: ["FA_Petsuit"], squeeze: true, ignoreStaminaForBinds: true,
+		Attack: {
+			mustBindorFail: true,
+		},
+		Resistance: {
+			profile: ["construct"],
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+			levelBonus: 5,
+		},
+		nopickpocket: true, specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1,
+        specialRange: 5, specialMinRange: 1.5, dashThrough: true, specialsfx: "Miss",
+		visionRadius: 6, visionSummoned: 12, maxhp: 12, minLevel: 10, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
+		suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 2,
+		terrainTags: {"doorTrap": 1, "trap": 30, revenge: 40, petsuit: -25}, allFloors: true, shrines: [], summonTags: ["petsuit"],
+		events: [
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
+		],
+    },
 	{name: "Cuffs", faction: "KinkyConstruct", clusterWith: "construct",
 		tags: KDMapInit(["metalTrap", "doortrap", "ignoreharmless", "construct", "nosignal", "poisonimmune", "soulimmune", "melee", "cuffsSpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
 		armor: 1, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Cuffs"], failAttackflag: ["FA_Cuffs"], squeeze: true, ignoreStaminaForBinds: true,

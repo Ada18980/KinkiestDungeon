@@ -2673,6 +2673,12 @@ AttackAnimHarnessBind,"The harness buckles itself tightly around your body! (+Re
 AttackAnimHarnessDash,"The harness dashes to you!"
 AttackAnimHarness,"The harness wraps itself around your body and squeezes! (DamageTaken)"
 
+NameAnimPetsuit,Pattering Petsuit
+KillAnimPetsuit,"The petsuit splays out on the floor."
+AttackAnimPetsuitDash,"The petsuit leaps to you!"
+AttackAnimPetsuitBind,"The petsuit pounces on you and cinches tightly around your limbs! (+RestraintAdded)"
+AttackAnimPetsuit,"The petsuit rubs against your legs affectionately! (DamageTaken)"
+
 NameLock,Levitating Locks
 KillLock,"The locks and chains fall to the floor in a loud crash."
 AttackLockLock,"A lock clicks itself onto one of your restraints! (+RestraintAdded)"
