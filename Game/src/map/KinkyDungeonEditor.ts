@@ -615,7 +615,7 @@ function KDDrawEditorUI() {
 		return true;
 	}, true, 1910, 10, 80, 40, "Test Tile", KDBaseWhite, "");
 
-	if (!KDClipboardDisabled)
+	if (!KDClipboardDisabled) {
 		DrawButtonKDEx("CopyClip", () => {
 			var text = JSON.stringify(KDMapTilesListEditor);
 			navigator.clipboard.writeText(text).then(function() {
@@ -627,7 +627,6 @@ function KDDrawEditorUI() {
 			return true;
 		}, true, 1450, 900, 275, 45, "Copy array to clipboard", KDBaseWhite, "");
 
-	if (!KDClipboardDisabled)
 		DrawButtonKDEx("MergeClip", () => {
 			let success = false;
 			navigator.clipboard.readText()
@@ -662,6 +661,57 @@ function KDDrawEditorUI() {
 
 			return true;
 		}, true, 1450, 850, 275, 45, "Merge from clipboard", KDBaseWhite, "");
+
+	} else {
+		let Copy = KDTextField("copyarrayToCB", 1450, 900, 275, 45, undefined, undefined, "", 12);
+		if (document.activeElement == Copy.Element) {
+			if (KDLastActiveElement != Copy.Element) {
+				//populate
+				var text = JSON.stringify(KDMapTilesListEditor);
+				Copy.Element.value = text;
+			}
+		} else {
+			Copy.Element.value = "Get Database...";
+		}
+		
+		let MergeClip = KDTextField("MergeClip", 1450, 850, 275, 45, undefined, undefined, "", 12);
+		if (MergeClip.Created) {
+			MergeClip.Element.value = "Paste here to merge database";
+			MergeClip.Element.oninput = () => {
+				let text = MergeClip.Element.value;
+				try {
+					if (JSON.parse(text)) {
+						let success = false;
+						console.log(JSON.parse(text));
+						console.log("Parse successful!!!");
+						for (let t of Object.values(JSON.parse(text))) {
+							/*  FIXME: workaround type clash  */
+							const tile: any = t;
+							if (tile && tile.name) {
+								if (!KDMapTilesListEditor[tile.name]) {
+									KDMapTilesListEditor[tile.name] = tile;
+									console.log(`${tile.name} added successfully`);
+									success = true;
+								} else {
+									console.log(`${tile.name} already present`);
+								}
+							}
+						}
+						if (success) {
+							localStorage.setItem("KDMapTilesListEditor", JSON.stringify(KDMapTilesListEditor));
+							console.log("Saved new tiles to browser local storage.");
+							MergeClip.Element.value = "Success";
+						} else 
+							MergeClip.Element.value = "Nothing new to add";
+					}
+				} catch (e) {
+					console.log(e);
+					MergeClip.Element.value = "Error";
+				}
+				
+			}
+		}
+	}
 
 	DrawButtonKDEx("DeleteEditorTiles", () => {
 		if (KDTE_confirmreset) {

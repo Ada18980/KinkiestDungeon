@@ -12535,14 +12535,16 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			if (KDEventData.sounddesc) {
 				for (let sd of KDEventData.sounddesc) {
 					if (KinkyDungeonVisionGet(sd.x, sd.y) > 0.1 && !KinkyDungeonEntityAt(sd.x, sd.y)) continue;
+					let xxx = canvasOffsetX + (sd.x - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
+					let yyy = canvasOffsetY + (sd.y - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2;
+					if (!KDPointInPlayableArea(xxx, yyy) || KDPointInModalArea(xxx, yyy)) continue;
 					if (sd.shockwave && CommonTime() > sd.shockwavePeriod +sd.lastShockwave && KDToggles.ParticlesFX) {
 						sd.lastShockwave = CommonTime();
 						let s = sd.shockwave;
 						KDAddShockwave((s.x - data.CamX + 0.5) * KinkyDungeonGridSizeDisplay, (s.y - data.CamY + 0.5) * KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay * (s.radius + 1) * 2, s.sprite);
 					}
 					DrawTextFitKDTo(kdenemystatusboard, sd.desc,
-						canvasOffsetX + (sd.x - KinkyDungeonCamX)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
-						canvasOffsetY + (sd.y - KinkyDungeonCamY)*KinkyDungeonGridSizeDisplay + KinkyDungeonGridSizeDisplay/2,
+						xxx, yyy,
 						500, "#aaaaaa", KDBaseBlack, 12);
 				}
 			}

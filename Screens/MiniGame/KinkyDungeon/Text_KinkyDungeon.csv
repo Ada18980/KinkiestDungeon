@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.75"
+KDVersionStr,"5.5.1"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -29970,7 +29970,7 @@ dTheWardenFight_Fight3Gag,"Mmmmph..."
 
 rTheWardenLose,"(SPEAKER grins)|Very impressive.|You may have lost the battle, but you performed admirably~"
 rTheWardenLoseAccept,"(SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)"
-rTheWardenLoseDeny,"(SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)"
+rTheWardenLoseDeny,"(SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(She snaps her fingers and conjures a glowing ring)"
 rTheWardenLoseMagic,"(SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)"
 dTheWardenLose_Magic,"Was that magic?"
 dTheWardenLose_Accept,"I've lost. Now what?"
@@ -29980,13 +29980,13 @@ dTheWardenLose_DenyGag,"Mmmph! (Struggle weakly)"
 dTheWardenLose_Continue1,"(Sigh and accept your fate)"
 dTheWardenLose_Continue2,"(Accept the collar eagerly)"
 dTheWardenLose_Continue3,"(Accept the collar begrudgingly)"
-rTheWardenLoseFinish,"(SPEAKER presents you with your collar...)|(It closes around your neck seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained."
+rTheWardenLoseFinish,"(SPEAKER presents you with your 'reward'...)|(It closes around your waist seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained."
 
 rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?"
 
 rTheWardenWin,"(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~"
 rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."
-dTheWardenWin_Accept,"(Wear her belt anyway)"
+dTheWardenWin_Accept,"(Wear her waist belt anyway)"
 rTheWardenWinGag,"(SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!"
 dTheWardenWin_Gag,"(Gag her)"
 
@@ -32355,3 +32355,4 @@ KDQuest_RecruitAlchemist,You are a member of the Alchemist's Guild.
 KDQuest_RecruitApprentice,You are a student of the School of Magic.
 KDQuest_RecruitElemental,You are a subject of the Elemental Planes.
 KDQuest_RecruitBandit,You are a wanted outlaw.
+KDCantTouchPsychicNeedVision,"Unable to see the item, you are unable to use your psychic powers to lift it."

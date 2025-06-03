@@ -1272,8 +1272,6 @@ function KinkyDungeonLoad(): void {
 	KinkyDungeonGameKey.load();
 
 	if (!KinkyDungeonIsPlayer()) KinkyDungeonGameRunning = false;
-	//if (!KDPatched && KinkyDungeonState == 'Consent') KinkyDungeonState = "Menu";
-	//if (!Player.KinkyDungeonSave) Player.KinkyDungeonSave = {};
 
 	if (!KinkyDungeonGameRunning) {
 		if (!KinkyDungeonPlayer) { // new game
@@ -1444,8 +1442,6 @@ function KinkyDungeonLoad(): void {
 		}
 
 		if (KinkyDungeonIsPlayer()) {
-			//if (!KDPatched && KinkyDungeonState == "Consent")
-			//KinkyDungeonState = "Menu";
 			KinkyDungeonGameData = null;
 
 			//CharacterAppearancePreviousEmoticon = WardrobeGetExpression(Player).Emoticon;
@@ -3595,7 +3591,12 @@ function KinkyDungeonRun() {
 
 
 	KDForceAllCull = false;
+	
+	KDLastActiveElement = document.activeElement;
 }
+
+
+let KDLastActiveElement = null;
 
 let KDDrawDelta = 0;
 

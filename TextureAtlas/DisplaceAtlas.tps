@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.1.0</string>
+        <string>7.0.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -1440,6 +1440,36 @@
                 <rect>464,700,929,1399</rect>
                 <key>scale9Paddings</key>
                 <rect>464,700,929,1399</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/LegbinderSquishKneel.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,8,23,15</rect>
+                <key>scale9Paddings</key>
+                <rect>11,8,23,15</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/LegbinderSquishSpread.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,20,87,41</rect>
+                <key>scale9Paddings</key>
+                <rect>44,20,87,41</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

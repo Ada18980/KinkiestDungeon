@@ -559,12 +559,12 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	"shrineUse": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
-		if (KinkyDungeonGoddessRep[data.type] <= -45) {
+		let tile = KinkyDungeonTilesGet(data.targetTile);
+		if (KinkyDungeonGoddessRep[data.type] <= -45 && !tile?.Quest) {
 			//Cursed
 			KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), KDBaseRed, 2);
 			return "Fail";
 		}
-		let tile = KinkyDungeonTilesGet(data.targetTile);
 		//KinkyDungeonTargetTile = tile;
 		//KinkyDungeonTargetTileLocation = data.targetTile;
 		//KinkyDungeonTargetTile = null;
