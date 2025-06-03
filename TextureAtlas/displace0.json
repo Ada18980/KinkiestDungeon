@@ -26,11 +26,11 @@
 },
 "DisplacementMaps/BalletErase.png":
 {
-	"frame": {"x":23,"y":2044,"w":1,"h":1},
+	"frame": {"x":106,"y":2037,"w":3,"h":3},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
-	"sourceSize": {"w":1,"h":1}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":0,"h":0}
 },
 "DisplacementMaps/BalletHogtie.png":
 {
@@ -50,11 +50,11 @@
 },
 "DisplacementMaps/BalletRightErase.png":
 {
-	"frame": {"x":23,"y":2044,"w":1,"h":1},
+	"frame": {"x":106,"y":2037,"w":3,"h":3},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
-	"sourceSize": {"w":1,"h":1}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":0,"h":0}
 },
 "DisplacementMaps/BallSuit.png":
 {
@@ -162,7 +162,7 @@
 },
 "DisplacementMaps/EraseCorset.png":
 {
-	"frame": {"x":28,"y":2044,"w":1,"h":1},
+	"frame": {"x":23,"y":2044,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -218,19 +218,19 @@
 },
 "DisplacementMaps/HeelsErase.png":
 {
-	"frame": {"x":23,"y":2044,"w":1,"h":1},
+	"frame": {"x":106,"y":2037,"w":3,"h":3},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
-	"sourceSize": {"w":1,"h":1}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":0,"h":0}
 },
 "DisplacementMaps/HeelsEraseSpread.png":
 {
-	"frame": {"x":23,"y":2044,"w":1,"h":1},
+	"frame": {"x":106,"y":2037,"w":3,"h":3},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
-	"sourceSize": {"w":1,"h":1}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":0,"h":0}
 },
 "DisplacementMaps/HeelsHogtie.png":
 {
@@ -248,9 +248,25 @@
 	"spriteSourceSize": {"x":264,"y":288,"w":131,"h":104},
 	"sourceSize": {"w":395,"h":392}
 },
-"DisplacementMaps/MittLCrossed.png":
+"DisplacementMaps/LegbinderSquishKneel.png":
 {
 	"frame": {"x":106,"y":2037,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":11,"h":8}
+},
+"DisplacementMaps/LegbinderSquishSpread.png":
+{
+	"frame": {"x":106,"y":2037,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":44,"h":20}
+},
+"DisplacementMaps/MittLCrossed.png":
+{
+	"frame": {"x":107,"y":2026,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
@@ -258,7 +274,7 @@
 },
 "DisplacementMaps/MittRCrossed.png":
 {
-	"frame": {"x":106,"y":2037,"w":3,"h":3},
+	"frame": {"x":107,"y":2026,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
@@ -266,7 +282,7 @@
 },
 "DisplacementMaps/MittsCrossed.png":
 {
-	"frame": {"x":106,"y":2037,"w":3,"h":3},
+	"frame": {"x":107,"y":2026,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
@@ -274,7 +290,7 @@
 },
 "DisplacementMaps/Null.png":
 {
-	"frame": {"x":33,"y":2044,"w":1,"h":1},
+	"frame": {"x":28,"y":2044,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -314,11 +330,11 @@
 },
 "DisplacementMaps/TallBalletRightErase.png":
 {
-	"frame": {"x":23,"y":2044,"w":1,"h":1},
+	"frame": {"x":106,"y":2037,"w":3,"h":3},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
-	"sourceSize": {"w":1,"h":1}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":0,"h":0}
 },
 "DisplacementMaps/TapeAnklesSquishHogtie.png":
 {
@@ -458,12 +474,12 @@
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.1",
+	"version": "1.0",
 	"image": "displace0.webp",
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "0.25",
 	"related_multi_packs": [ "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:2ad784541f55f03e6d5bd57124e029f0:473ac361b13f22f92b25b0e7f2617c76:f6b8f416f238aaed27b8b24ed3003e99$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ce01dec651d458d5968f9aba548b75af:a77b1a4a457aff70f001832a6ee507a8:f6b8f416f238aaed27b8b24ed3003e99$"
 }
 }

@@ -2948,6 +2948,33 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {},
 		minLevel: 0, allFloors: true, shrine: ["Masterwork", "HeavyCorsets", "Corsets"]},
 
+
+	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "MasterworkLegbinder",
+		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
+		Model: "HighSecLegbinder",
+		factionFilters: {
+			Binder: {color: "DarkNeutral", override: true},
+			Laces: {color: "Catsuit", override: true},
+			LacesTie: {color: "Catsuit", override: true},
+			Straps: {color: "Highlight", override: true},
+			Hardware: {color: "LightNeutral", override: true},
+		},
+		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
+		maxwill: 0.1,
+		sfxGroup: "Leather",
+		power: 25, weight: 10, debris: "Belts",
+		struggleMult: {Struggle: 0.4},
+		struggleMaxSpeed: {Struggle: 0.15},
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {"ItemLegsEmpty": -19.5}, minLevel: 4, allFloors: true,
+		shrine: ["Masterwork", "Legbinders"]},
+
+	
+
+
 	{inventory: true, name: "MasterworkHeels", inaccessible: true,
 		Group: "ItemBoots",
 		Model: "HighSecBalletHeelsRestraint",

@@ -483,6 +483,7 @@ let LAYERS_BASE = [
 	"Coat",
 
 	"Tail",
+	"TailNoRot",
 	"Wings",
 	"Cape",
 	// Hair and hat back
@@ -1945,6 +1946,7 @@ let LayerGroups = {
 			"HatBack",
 
 			"Tail",
+			"TailNoRot",
 			"Wings",
 			"Cape",
 			"HatDeco",

@@ -6262,7 +6262,7 @@ function KDAddHardSlimeVariants (
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
 			if (part[1].enemyTagSuffix2)
 				enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
-			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
+			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 8;
 			if (part[1].enemyTagExtra) {
 				for (let tag in part[1].enemyTagExtra) {
 					enemyTags[tag] = part[1].enemyTagExtra[tag];

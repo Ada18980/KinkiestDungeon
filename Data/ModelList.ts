@@ -1676,6 +1676,63 @@ AddModel(GetModelRestraintVersion("WarriorBoots", true));
 
 
 AddModel({
+	Name: "DarkRubberBoots",
+	Folder: "RubberBoots",
+	Parent: "Sleepsack",
+	TopLevel: true,
+	Categories: ["Shoes"],
+	Layers: ToLayerMap([
+		{ Name: "BootLeft", Layer: "ShoeLeft", Pri: 1,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			AppendPose: ToMapDupe(["RopesAnkle"]),
+
+			
+			DisplacementSprite: "Heels",
+			DisplaceAmount: 50,
+			DisplaceLayers: ToMap(["Heels"]),
+			DisplaceZBonus: 10000,
+			EraseInvariant: true,
+			EraseMorph: {Spread: "Spread"},
+			EraseSprite: "HeelsErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["Heels"]),
+		},
+		{ Name: "BootRight", Layer: "ShoeRight", Pri: 1,
+			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			AppendPose: ToMapDupe(["RopesAnkle"]),
+			EraseInvariant: true,
+			EraseMorph: {Closed: "Closed"},
+			EraseSprite: "HeelsRightErase",
+			EraseAmount: 100,
+			EraseLayers: ToMap(["HeelRight"]),
+			EraseZBonus: 100,
+		},
+		{ Name: "BootRightKneel", Layer: "ShoeRightKneel", Pri: 1,
+			Poses: ToMap(["Kneel"]),
+			Invariant: true,
+			InheritColor: "ShoeRight",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			HideWhenOverridden: true,
+		},
+		{ Name: "BootLeftHogtie", Layer: "ShoeLeftHogtie", Pri: 1,
+			Poses: ToMap(["Hogtie"]),
+			Invariant: true,
+			InheritColor: "ShoeLeft",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel(GetModelRestraintVersion("DarkRubberBoots", true));
+
+
+AddModel({
 	Name: "SportsBra",
 	Folder: "Warrior",
 	Parent: "Dragonheart",

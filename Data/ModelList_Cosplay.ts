@@ -296,7 +296,7 @@ AddModel({
 	Categories: ["Tails", "Mouse", "Cosplay"],
 	AddPose: ["Tails", "Mouse", "Cosplay"],
 	Layers: ToLayerMap([
-		{ Name: "TailBack", Layer: "Tail", Pri: 50,
+		{ Name: "TailBack", Layer: "TailNoRot", Pri: 50,
 			Poses: ToMap(LEGPOSES),
 			Invariant: true,
 			InheritColor: "Tail",

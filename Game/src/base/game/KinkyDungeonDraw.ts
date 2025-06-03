@@ -5349,20 +5349,28 @@ function KDGetLightColorGreyscale(x: number, y: number): number {
 }
 
 function KDMouseInModalArea(): boolean {
-	return (KDModalArea && MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
+	return KDPointInModalArea(MouseX, MouseY);
+}
+
+function KDPointInModalArea(X: number, Y: number): boolean {
+	return (KDModalArea && PointIn(X, Y, KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
 }
 
 
+function KDPointInPlayableArea(X: number, Y: number): boolean {
+	if (KDContextMenu && PointIn(X, Y, KDContextXX, KDContextYY, KDContextW, KDContextH)) return false;
+	return PointIn(X, Y, canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
+		&& !PointIn(X, Y, 0, 0, 500, 1000)
+		&& !PointIn(X, Y, 1940, 0, 70, 1000)
+		&& !PointIn(X, Y, 0, 920, 2000, 100)
+		&& !PointIn(X, Y, 1730, 255, 255, 150)
+		&& (!KDModalArea || !PointIn(X, Y, KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
+}
 
 function KDMouseInPlayableArea(): boolean {
 	if (KDContextMenu && MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) return false;
-	return MouseIn(canvasOffsetX, canvasOffsetY, KinkyDungeonCanvas.width, KinkyDungeonCanvas.height)
-		&& !MouseIn(0, 0, 500, 1000)
-		&& !MouseIn(1940, 0, 70, 1000)
-		&& !MouseIn(0, 920, 2000, 100)
-		&& !MouseIn(1730, 255, 255, 150)
-		&& !KDButtonHovering
-		&& (!KDModalArea || !MouseIn(KDModalArea_x, KDModalArea_y, KDModalArea_width, KDModalArea_height));
+	return KDPointInPlayableArea(MouseX, MouseY)
+		&& !KDButtonHovering;
 }
 
 function KDHotkeyToText(hotkey: string): string {
