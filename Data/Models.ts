@@ -273,6 +273,13 @@ function GetModelRestraintVersion(BaseModel: string, Parent: boolean,
 	return null;
 }
 
+/**
+ * 
+ * @param BaseModel 
+ * @param Parent Add "Fashion" to the parent model prefix
+ * @param removeOptionSwap 
+ * @returns 
+ */
 function GetModelFashionVersion(BaseModel: string, Parent: boolean, removeOptionSwap: boolean = true): Model {
 	if (ModelDefs[BaseModel]) {
 		let model: Model = JSON.parse(JSON.stringify(ModelDefs[BaseModel]));

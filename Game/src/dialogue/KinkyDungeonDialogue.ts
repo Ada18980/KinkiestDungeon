@@ -218,6 +218,7 @@ function KDEnemyHelpfulness(enemy: entity): number {
 }
 
 function KDGetSpeaker(global?: boolean): entity {
+	if (KDGameData.CurrentDialogEntity) return KDGameData.CurrentDialogEntity; // return special fake speaker entity
 	let enemy = global ? KDGetGlobalEntity(KDGameData.CurrentDialogMsgID)
 		: KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 	if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
@@ -404,8 +405,10 @@ function KDDoDialogue(data: any) {
 	}
 	if (data.enemy) {
 		KDGameData.CurrentDialogMsgID = data.enemy;
+		KDGameData.CurrentDialogEntity = KDGetGlobalEntity(data.enemy);
 	} else {
 		KDGameData.CurrentDialogMsgID = 0;
+		KDGameData.CurrentDialogEntity = null;
 	}
 	if (data.personality)
 		KDGameData.CurrentDialogMsgPersonality = data.personality;
@@ -514,13 +517,31 @@ function KDHandleDialogue() {
  */
 function DialogueCreateEnemy(x: number, y: number, Name: string, persistentid?: number, noLoadout?: boolean): entity {
 	if (KinkyDungeonEnemyAt(x, y)) KDKickEnemy(KinkyDungeonEnemyAt(x, y), undefined, true);
+	let Enemy = DialogueGetEnemy(Name, persistentid);
+	Enemy.x = x;
+	Enemy.y = y;
+	Enemy.visual_x = x;
+	Enemy.visual_y = y;
+
+	return KDAddEntity(Enemy, persistentid != undefined, undefined, noLoadout);
+}
+
+/**
+ * Generates an entity but does not place it
+ * @param x
+ * @param y
+ * @param Name
+ * @param [persistentid]
+ * @param [noLoadout]
+ */
+function DialogueGetEnemy(Name: string, persistentid?: number): entity {
 	let Enemy = KinkyDungeonGetEnemyByName(Name);
 	let e = {summoned: true, Enemy: Enemy, id: persistentid || KinkyDungeonGetEnemyID(),
-		x:x, y:y,
-		visual_x: x, visual_y: y,
+		x:1, y:1,
+		visual_x: 1, visual_y: 1,
 		hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 
-	return KDAddEntity(e, persistentid != undefined, undefined, noLoadout);
+	return e;
 }
 
 function KDRunCreationScript(entity: entity, coord: WorldCoord) {

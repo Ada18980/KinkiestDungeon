@@ -48,6 +48,33 @@ AddModel({
 		},
 
 		// belts
+		{ Name: "InnerBG", Layer: "LegbinderBack", Pri: 30,
+			Poses: ToMap(["Spread"]),
+			Invariant: true,
+			InheritColor: "BinderInner",
+			NoOverride: true,
+		},
+		{ Name: "MetalBG", Layer: "LegbinderBack", Pri: 30.1,
+			Poses: ToMap(["Spread"]),
+			Invariant: true,
+			InheritColor: "Hardware",
+			NoOverride: true,
+		},
+		{ Name: "BeltBG1", Layer: "LegbinderBack", Pri: -30,
+			Poses: ToMap(["Spread"]),
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "BeltBG2", Layer: "LegbinderBack", Pri: -30,
+			Poses: ToMap(["Spread"]),
+			Invariant: true,
+			InheritColor: "Straps",
+		},
+		{ Name: "BeltBG3", Layer: "LegbinderBack", Pri: -30,
+			Poses: ToMap(["Spread"]),
+			Invariant: true,
+			InheritColor: "Straps",
+		},
 		
 		{ Name: "LegLeftBelts", Layer: "LegbinderLegsOver", Pri: 30.1,
 			Poses: ToMap(LEGPOSES),
@@ -123,3 +150,5 @@ AddModel({
 		},
 	])
 });
+
+AddModel(GetModelFashionVersion("SleepsackLegbinder", true));
