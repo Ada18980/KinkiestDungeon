@@ -511,7 +511,7 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	};
 	let xxstart = 530;
 	let yy = 40;
-	let num = 4;
+	let num = KDPlayerTitlesEnabled ? 5 : 4;
 	let width = 1100 / num;
 	let II = 0;
 	DrawButtonKDExScroll("TabLore", scrollFunc, (_b) => {
@@ -536,6 +536,13 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 		return true;
 	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonJourneyMap"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonDrawState != "JourneyMap", KDButtonColor); II++;
+	if (KDPlayerTitlesEnabled) {
+		DrawButtonKDExScroll("TabTitles", scrollFunc, (_b) => {
+			KinkyDungeonDrawState = "Titles";
+			return true;
+		}, true, xxstart + II * width, yy, width - 10, 40, TextGet("KDPlayerTitlesTabText"), KDBaseWhite, undefined, undefined, undefined, 
+		KinkyDungeonDrawState != "Titles", KDButtonColor); II++;
+	}
 	/*DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;

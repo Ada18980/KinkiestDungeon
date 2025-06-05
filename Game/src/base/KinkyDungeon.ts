@@ -744,6 +744,10 @@ interface KDGameDataBase {
 	RecruitedFaction?: string,
 	//customColors: Record<string, Record<string, LayerFilter>>,
 
+	currentTitleAuto: string,
+	currentTitle: string,
+	oldtitles: string[],
+	titlesUnlocked: string[]
 };
 
 
@@ -1010,6 +1014,11 @@ let KDGameDataBase: KDGameDataBase = {
 	UseJourneyTarget: false,
 	PlayerWeaponLastEquipped: "",
 	//customColors: {},
+
+	currentTitleAuto: "",
+	currentTitle: "None",
+	oldtitles: [],
+	titlesUnlocked: []
 };
 
 // endregion

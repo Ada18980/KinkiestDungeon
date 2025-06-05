@@ -32350,3 +32350,195 @@ KDQuest_RecruitApprentice,You are a student of the School of Magic.
 KDQuest_RecruitElemental,You are a subject of the Elemental Planes.
 KDQuest_RecruitBandit,You are a wanted outlaw.
 KDCantTouchPsychicNeedVision,"Unable to see the item, you are unable to use your psychic powers to lift it."
+
+KDPlayerTitleUnlock,Unlocked Player Title: 
+
+KDPlayerTitlesTabText,Titles
+
+KDPlayerTitleCategory_Classes,Classes
+KDPlayerTitleCategory_Faction,Factions
+KDPlayerTitleCategory_Game,Game
+KDPlayerTitleCategory_Inventory,Inventory
+KDPlayerTitleCategory_Reputation,Reputation
+KDPlayerTitleCategory_Stats,Stats
+KDPlayerTitleCategory_Spells,Spells
+KDPlayerTitleCategory_Boss,Bosses
+KDPlayerTitleCategory_Mastery,Mastery
+
+KDPlayerTitle_None,None
+KDPlayerTitle_Auto,Auto
+
+KDPlayerTitle_ClassMage,Wizard
+KDPlayerTitleDesc_ClassMage,Unlocked by playing as the Wizard class.
+KDPlayerTitle_ClassFighter,Fighter
+KDPlayerTitleDesc_ClassFighter,Unlocked by playing as the Fighter class.
+KDPlayerTitle_ClassRogue,Rogue
+KDPlayerTitleDesc_ClassRogue,Unlocked by playing as the Rogue class.
+KDPlayerTitle_ClassTrainee,Trainee
+KDPlayerTitleDesc_ClassTrainee,Unlocked by playing as the Trainee class.
+KDPlayerTitle_ClassPeasant,Peasant
+KDPlayerTitleDesc_ClassPeasant,Unlocked by playing as the Peasant class.
+KDPlayerTitle_Alchemist,Alkahestor
+KDPlayerTitleDesc_Alchemist,Unlocked by getting recruited by the Alchemists.
+KDPlayerTitle_AncientRobot,Analog Interface
+KDPlayerTitleDesc_AncientRobot,Unlocked by getting recruited by the Old Guardians.
+KDPlayerTitle_AngelSummoned,Saved by an Angel
+KDPlayerTitleDesc_AngelSummoned,Unlocked by asking for help from any shrine.
+KDPlayerTitle_Apprentice,Magic Student
+KDPlayerTitleDesc_Apprentice,Unlocked by getting recruited by the School of Magic.
+KDPlayerTitle_Bandit,Outlaw
+KDPlayerTitleDesc_Bandit,Unlocked by getting recruited by the Bandits.
+KDPlayerTitle_Bast,Sphinx
+KDPlayerTitleDesc_Bast,Unlocked by getting recruited by the Cult of Bast.
+KDPlayerTitle_Blind,Leading the Blind
+KDPlayerTitleDesc_Blind,Unlocked by wearing any blindfold.
+KDPlayerTitle_Bound,Bound
+KDPlayerTitleDesc_Bound,Unlocked by achieving at least 25 restriction.
+KDPlayerTitle_Helpless,Helpless
+KDPlayerTitleDesc_Helpless,Unlocked by achieving at least 45 restriction.
+KDPlayerTitle_Bountyhunter,Bounty Hunter
+KDPlayerTitleDesc_Bountyhunter,Unlocked by getting recruited by the Bounty Hunters.
+KDPlayerTitle_Chaste,Chaste
+KDPlayerTitleDesc_Chaste,Unlocked by wearing a chastity belt and chastity bra.
+KDPlayerTitle_Conjure,Blessed by Aether
+KDPlayerTitleDesc_Conjure,Unlocked by reaching 100 reputation with the Conjuration Goddess.
+KDPlayerTitle_Distracted,Aroused
+KDPlayerTitleDesc_Distracted,Unlocked by reaching at least 95% desire.
+KDPlayerTitle_Dragon,Heart of the Dragon
+KDPlayerTitleDesc_Dragon,Unlocked by getting recruited by the Dragonheart Order.
+KDPlayerTitle_Dressmaker,Seamstress
+KDPlayerTitleDesc_Dressmaker,Unlocked by getting recruited by the Dressup Corporation.
+KDPlayerTitle_Elemental,The Nine Planes
+KDPlayerTitleDesc_Elemental,Unlocked by getting recruited by the Elementals.
+KDPlayerTitle_Elf,Fierce Debater
+KDPlayerTitleDesc_Elf,Unlocked by getting recruited by the Cult of the Wild.
+KDPlayerTitle_Exhausted,Lethargic
+KDPlayerTitleDesc_Exhausted,Unlocked by reaching 0 SP.
+KDPlayerTitle_Hoarder,Hoarder
+KDPlayerTitleDesc_Hoarder,Unlocked by holding at least 300 items in your inventory.
+KDPlayerTitle_LootGoblin,Loot Goblin
+KDPlayerTitleDesc_LootGoblin,Unlocked by holding at least 1000 items in your inventory.
+KDPlayerTitle_InfinitePockets,Infinite Pockets
+KDPlayerTitleDesc_InfinitePockets,Unlocked by holding at least 3000 items in your inventory.
+KDPlayerTitle_Illusion,Blessed by Oblivion
+KDPlayerTitleDesc_Illusion,Unlocked by reaching 100 reputation with the Illusion Goddess.
+KDPlayerTitle_Elements,Blessed by Matah
+KDPlayerTitleDesc_Elements,Unlocked by reaching 100 reputation with the Elements Goddess.
+KDPlayerTitle_Jailed,Prisoner
+KDPlayerTitleDesc_Jailed,Unlocked by being jailed.
+KDPlayerTitle_Latex,Blessed by Minivir
+KDPlayerTitleDesc_Latex,Unlocked by reaching 100 reputation with the Latex Goddess.
+KDPlayerTitle_Leashed,Going on Walkies!
+KDPlayerTitleDesc_Leashed,Unlocked by being leashed by an NPC.
+KDPlayerTitle_Leather,Blessed by Nivah
+KDPlayerTitleDesc_Leather,Unlocked by reaching 100 reputation with the Leather Goddess.
+KDPlayerTitle_Maidforce,Maidforce
+KDPlayerTitleDesc_Maidforce,Unlocked by getting recruited by MaidForce.
+KDPlayerTitle_Metal,Blessed by Oriel
+KDPlayerTitleDesc_Metal,Unlocked by reaching 100 reputation with the Conjuration Goddess.
+KDPlayerTitle_Nevermere,Wolfgirl
+KDPlayerTitleDesc_Nevermere,Unlocked by getting recruited by the Nevermere Trainers.
+KDPlayerTitle_Offbalance,Off-balance!
+KDPlayerTitleDesc_Offbalance,Unlocked by falling under 50% balance.
+KDPlayerTitle_OutOfMana,Drained
+KDPlayerTitleDesc_OutOfMana,Unlocked by reaching 0 mana pool and under 15 mana.
+KDPlayerTitle_OutofWillpower,Surrender
+KDPlayerTitleDesc_OutofWillpower,Unlocked by reaching 0 willpower.
+KDPlayerTitle_OutofEverything,Only Way To Go is Up
+KDPlayerTitleDesc_OutofEverything,Unlocked by reaching 0 willpower and 0 mana and 0 stamina at the same time.
+KDPlayerTitle_Recruited,Recruit
+KDPlayerTitleDesc_Recruited,Unlocked by getting recruited by any faction.
+KDPlayerTitle_Rope,Blessed by Akasha
+KDPlayerTitleDesc_Rope,Unlocked by reaching 100 reputation with the Rope Goddess.
+KDPlayerTitle_TreasureSeeker,Treasure Seeker
+KDPlayerTitleDesc_TreasureSeeker,Unlocked by opening any chest.
+KDPlayerTitle_Will,Blessed by Ninril
+KDPlayerTitleDesc_Will,Unlocked by reaching 100 reputation with the Restoration Goddess.
+KDPlayerTitle_AngelFound,#Blessed
+KDPlayerTitleDesc_AngelFound,Unlocked by encountering an Angel that wasn't summoned by a shrine.
+	
+KDPlayerTitle_Angel,Angelic
+KDPlayerTitleDesc_Angel,Unlocked by being recruited by the Angels. (Not Available)
+KDPlayerTitle_Demon,Demonic
+KDPlayerTitleDesc_Demon,Unlocked by being recruited by the Demons. (Not Available)
+	
+KDPlayerTitle_FuukaRestGood,Fuuka's Pet
+KDPlayerTitleDesc_FuukaRestGood,Unlocked by accepting a restraint from the boss on floor 4 after defeating her.
+KDPlayerTitle_FuukaRestBad,Fuuka's Brat
+KDPlayerTitleDesc_FuukaRestBad,Unlocked by being defeated by the boss on floor 4 and she restrains you.
+KDPlayerTitle_WardenRestGood,Important Pet
+KDPlayerTitleDesc_WardenRestGood,Unlocked by accepting a restraint from the boss on floor 8 after defeating her.
+KDPlayerTitle_WardenRestBad,House Arrest
+KDPlayerTitleDesc_WardenRestBad,Unlocked by being defeated by a boss on floor 8 and she restrains you.
+KDPlayerTitle_DollmakerVisor,Seeing Dolls
+KDPlayerTitleDesc_DollmakerVisor,Unlocked by accepting a certain restraint from the boss on Floor 20.
+KDPlayerTitle_DollmakerMask,Nothing but a Doll
+KDPlayerTitleDesc_DollmakerMask,Unlocked by accepting a certain restraint from the boss on Floor 20.
+	
+KDPlayerTitle_SpellMasteryFlame,Mistress of Flame
+KDPlayerTitleDesc_SpellMasteryFlame,Unlocked by learning every spell under Flame Novice.
+KDPlayerTitle_SpellMasteryAir,Mistress of Wind
+KDPlayerTitleDesc_SpellMasteryAir,Unlocked by learning every spell under Air Novice.
+KDPlayerTitle_SpellMasteryLightning,Mistress of Lightning
+KDPlayerTitleDesc_SpellMasteryLightning,Unlocked by learning every spell under Lightning Novice.
+KDPlayerTitle_SpellMasteryWater,Mistress of Water
+KDPlayerTitleDesc_SpellMasteryWater,Unlocked by learning every spell under Water Novice.
+KDPlayerTitle_SpellMasteryEarth,Mistress of Earth
+KDPlayerTitleDesc_SpellMasteryEarth,Unlocked by learning every spell under Earth Novice.
+KDPlayerTitle_SpellMasteryIce,Mistress of Ice
+KDPlayerTitleDesc_SpellMasteryIce,Unlocked by learning every spell under Ice Novice.
+KDPlayerTitle_SpellMasteryRope,Mistress of Rope
+KDPlayerTitleDesc_SpellMasteryRope,Unlocked by learning every spell under Rope 101.
+KDPlayerTitle_SpellMasteryLeather,Mistress of Leather
+KDPlayerTitleDesc_SpellMasteryLeather,Unlocked by learning every spell under Leather 101.
+KDPlayerTitle_SpellMasteryMetal,Mistress of Metal
+KDPlayerTitleDesc_SpellMasteryMetal,Unlocked by learning every spell under Metal 101.
+KDPlayerTitle_SpellMasteryLatex,Mistress of Latex
+KDPlayerTitleDesc_SpellMasteryLatex,Unlocked by learning every spell under Latex 101.
+KDPlayerTitle_SpellMasteryPhysics,Mistress of Physics
+KDPlayerTitleDesc_SpellMasteryPhysics,Unlocked by learning every spell under Physics 101.
+KDPlayerTitle_SpellMasteryShadow,Mistress of Shadow
+KDPlayerTitleDesc_SpellMasteryShadow,Unlocked by learning every spell under Blessing of Shadow.
+KDPlayerTitle_SpellMasteryLight,Mistress of Light
+KDPlayerTitleDesc_SpellMasteryLight,Unlocked by learning every spell under Blessing of Light.
+KDPlayerTitle_SpellMasteryObscurity,Mistress of Obscurity
+KDPlayerTitleDesc_SpellMasteryObscurity,Unlocked by learning every spell under Blessing of Obscurity.
+KDPlayerTitle_SpellMasteryProjection,Mistress of Projection
+KDPlayerTitleDesc_SpellMasteryProjection,Unlocked by learning every spell under Projection Magic.
+KDPlayerTitle_SpellMasteryKnowledge,Mistress of Knowledge
+KDPlayerTitleDesc_SpellMasteryKnowledge,Unlocked by learning every spell under Arcane Knowledge.
+KDPlayerTitle_SpellMasterySummon,Mistress of Summoning
+KDPlayerTitleDesc_SpellMasterySummon,Unlocked by learning every spell under Summoning 101.
+	
+KDPlayerTitle_Mastery_Archmage,Archmage
+KDPlayerTitleDesc_Mastery_Archmage,Unlocked by learning every spell at the same time.
+KDPlayerTitle_Mastery_EWhac,ewhac
+KDPlayerTitleDesc_Mastery_EWhac,Unlocked by reaching NG+25.
+KDPlayerTitle_Mastery_MossBoss,Moss Boss
+KDPlayerTitleDesc_Mastery_MossBoss,Unlocked by reaching 400 max stamina and mana and willpower and desire.
+	
+KDPlayerTitle_JuicedUp,Juiced Up
+KDPlayerTitleDesc_JuicedUp,Unlocked by reaching 400 max stamina.
+KDPlayerTitle_Manafused,Manafused
+KDPlayerTitleDesc_Manafused,Unlocked by reaching 400 max mana.
+KDPlayerTitle_Unbreakable,Unbreakable
+KDPlayerTitleDesc_Unbreakable,Unlocked by reaching 400 max willpower.
+KDPlayerTitle_Unwavering,Unwavering
+KDPlayerTitleDesc_Unwavering,Unlocked by reaching 400 max desire.
+	
+KDPlayerTitle_Submissive,Submissive
+KDPlayerTitleDesc_Submissive,Unlocked by accepting a bondage offer. 
+KDPlayerTitle_Dominant,Dominant
+KDPlayerTitleDesc_Dominant,Unlocked by convincing an NPC to wear their own bondage offer.
+KDPlayerTitle_Switch,Switch
+KDPlayerTitleDesc_Switch,Unlocked by accepting a bondage offer and by convincing another NPC to wear their own bondage offer. 
+KDPlayerTitle_Moth,Moth
+KDPlayerTitleDesc_Moth,Unlocked by taking an illuminated crystal off of it's charger. Lämp.
+KDPlayerTitle_EncasedAdventurer,Encased Adventurer
+KDPlayerTitleDesc_EncasedAdventurer,Unlocked by becoming fully encased by slime and then it fully hardening.
+KDPlayerTitle_NoLocks,No Locks?
+KDPlayerTitleDesc_NoLocks,Unlocked by wearing any Ancient restraint.
+KDPlayerTitle_Mastery_AncientAdventurer,Ancient Adventurer
+KDPlayerTitleDesc_Mastery_AncientAdventurer,Unlocked by wearing every Ancient restraint at the same time.
+KDPlayerTitle_Cursed,Cursed
+KDPlayerTitleDesc_Cursed,Unlocked by wearing any cursed restraint or armor.

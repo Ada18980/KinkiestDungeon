@@ -2216,6 +2216,8 @@ function KDYesNoBasic (
 				KinkyDungeonChangeRep(antigoddess[0], -1); // Reduce submission because of refusal
 				if (KDGetSpeaker()) KDAddOpinionPersistent(KDGetSpeaker().id, -5);
 			}
+
+			KinkyDungeonSendEvent("DialogueEnd", { type: "Bondage", res: "sub" })
 			return false;
 		},(refused) => { // Yes function. This happens if the user submits willingly
 			if (!KinkyDungeonFlags.get("BoundOfferRep" + goddess[0])) {
@@ -2391,6 +2393,7 @@ function KDYesNoBasic (
 					else enemy.boundLevel += amount;
 				}
 				KinkyDungeonChangeRep(antigoddess[0], -4); // Reduce submission because dom
+				KinkyDungeonSendEvent("DialogueEnd", { type: "Bondage", res: "dom" })
 			}
 			return false;
 		});

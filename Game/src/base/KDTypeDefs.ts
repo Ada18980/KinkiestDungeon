@@ -4202,6 +4202,17 @@ type KDTeaseAttack = {
 	apply: (enemy: entity, player: entity, AIData: any, blocked: boolean, evaded: boolean, damageMod: number) => boolean,
 };
 
+type KDPlayerTitle = {
+	unlockCondition: Function, // If true, unlocks title
+	priority: number, // Higher number = show higher on auto
+	color: string, // Color of title text
+	titleActive: Function, // Run every turn while active
+	titleActivate: Function, // Run once when activated
+	titleDeactivate: Function, // Run once when deactivated
+	category: string, // Category in titles tab
+	icon: string // texture path to icon - UNUSED
+}
+
 declare const zip: any;
 declare const guessLanguage: {
 	detect(text: string): string;

@@ -12273,6 +12273,12 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 			}
 		},
+
+		"PlayerTitles": (e, data) => {
+			if (KDPlayerTitlesEnabled) {
+				PlayerTitleTick();
+			}
+		}
 	},
 	"playerCast": {
 		"ArousingMagic": (_e, data) => {
@@ -12582,6 +12588,23 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				el.parentNode.removeChild(el);
 			}
 
+		}
+	},
+	"DialogueEnd": {
+		// Ran after ending certain dialogues.
+		"PlayerTitle_sub": (_e, data) => {
+			if ((data.type == "Bondage") && (data.res == "sub")) {
+				if (KDGameData["titledata"] == undefined) { KDGameData["titledata"] = {}}
+				// @ts-ignore
+				KDGameData.titledata.sub = true
+			}
+		},
+		"PlayerTitle_dom": (_e, data) => {
+			if ((data.type == "Bondage") && (data.res == "dom")) {
+				if (KDGameData["titledata"] == undefined) { KDGameData["titledata"] = {}}
+				// @ts-ignore
+				KDGameData.titledata.dom = true
+			}
 		}
 	}
 };

@@ -1327,6 +1327,9 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 				if (x && y) {
 					KinkyDungeonMapSet(x, y, '+');
 				}
+				if (KDGameData["titledata"] == undefined) { KDGameData["titledata"] = {}}
+				// @ts-ignore
+                KDGameData.titledata.lampstolen = true
 			} else if (tile && tile.NoRemove) {
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonChargerNoRemove"), "yellow", 1);
 			}
