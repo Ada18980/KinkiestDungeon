@@ -32350,3 +32350,7 @@ KDQuest_RecruitApprentice,You are a student of the School of Magic.
 KDQuest_RecruitElemental,You are a subject of the Elemental Planes.
 KDQuest_RecruitBandit,You are a wanted outlaw.
 KDCantTouchPsychicNeedVision,"Unable to see the item, you are unable to use your psychic powers to lift it."
+
+KDMasterworkDebuff0,"Your masterwork restraints link together as one cohesive unit!"
+KDMasterworkDebuff1,"Your masterwork collar reinforces other masterwork items..."
+KDMasterworkDebuff2,"Your masterwork collar keeps everything firmly in place!"

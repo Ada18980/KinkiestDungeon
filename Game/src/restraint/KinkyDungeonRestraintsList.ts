@@ -2961,8 +2961,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
 		maxwill: 0.1,
+		linkCategories: ["MasterLegs"], linkSizes: [0.6],
 		sfxGroup: "Leather",
-		power: 25, weight: 10, debris: "Belts",
+		power: 29, weight: 10, debris: "Belts",
 		struggleMult: {Struggle: 0.4},
 		struggleMaxSpeed: {Struggle: 0.15},
 		DefaultLock: "Masterwork",
@@ -2972,6 +2973,31 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {"ItemLegsEmpty": -19.5}, minLevel: 4, allFloors: true,
 		shrine: ["Masterwork", "Legbinders"]},
 
+	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "MasterworkLegbinder",
+		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
+		Model: "HighSecLegbinder",
+		factionFilters: {
+			Binder: {color: "DarkNeutral", override: true},
+			Laces: {color: "Catsuit", override: true},
+			LacesTie: {color: "Catsuit", override: true},
+			Straps: {color: "Highlight", override: true},
+			Hardware: {color: "LightNeutral", override: true},
+		},
+		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
+		maxwill: 0.1,
+		heelpower: 0.25,
+		sfxGroup: "Leather",
+		linkCategories: ["MasterLegs"], linkSizes: [0.6],
+		power: 30, weight: 10, debris: "Belts",
+		struggleMult: {Struggle: 0.33},
+		struggleMaxSpeed: {Struggle: 0.12},
+		DefaultLock: "Masterwork",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.25, "Cut": 0.15, "Remove": 0.05, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {"ItemLegsEmpty": -19.5}, minLevel: 8, allFloors: true,
+		shrine: ["Masterwork", "Legbinders"]},
+	
 	
 
 
@@ -3053,12 +3079,15 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		// (mostly) Common to Masterwork
 		sfxGroup: "Leather",
-		power: 25, weight: 10, debris: "Belts",
+		power: 30, weight: 1000, debris: "Belts",
 		DefaultLock: "Masterwork",
-		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
-		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.8},
+		limitChance: {"Struggle": 0.25, "Cut": 0.19, "Remove": 0.05, "Pick": 0.0},
 		enemyTags: {"masterworkRestraints": 10},
 		playerTags: {},
+		events: [
+			{trigger: "beforeStruggleCalc", type: "masterworkDebuff", power: 0.15, inheritLinked: true}
+		],
 		minLevel: 0, allFloors: true, shrine: ["Masterwork", "HighCollars", "Collars"]},
 
 
