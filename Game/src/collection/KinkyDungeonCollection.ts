@@ -899,6 +899,62 @@ function KDGetVirtualCollectionEntry(id: number): KDCollectionEntry {
 
 	return entry;
 }
+/**
+ * Gets the collection entry, or a virtual one if one doesnt exist
+ * @param id
+ */
+function KDGetVirtualCollectionEntryEntity(enemy: entity): KDCollectionEntry {
+
+	if (!enemy) return null;
+	let id = enemy.id;
+	if (KDGameData.Collection["" + id]) return KDGameData.Collection["" + id];
+	let entry: KDCollectionEntry = {
+		id: enemy.id,
+		name: KDIsNPCPersistent(id) ?
+			KDGetPersistentNPC(enemy.id).Name
+			: enemy.CustomName || TextGet("Name" + enemy.Enemy.name),
+		sprite: (enemy.CustomSprite) || enemy.Enemy.name,
+		// @ts-ignore
+		customSprite: (enemy.CustomSprite),
+		color: enemy.CustomNameColor || KDBaseLightGrey,
+		Faction: KDGetFaction(enemy) || KDGetFactionOriginal(enemy),
+		class: "stranger",
+		Training: -100,
+		status: "stranger",
+		oldstatus: "stranger",
+		type: enemy.Enemy.name,
+		Enemy: enemy.modified ? enemy.Enemy : undefined,
+		Willpower: 100 * (enemy.hp / enemy.Enemy.maxhp),
+		Facility: undefined,
+		flags: undefined,
+	};
+
+	// Custom outfit
+	if (enemy.outfit) entry.outfit = enemy.outfit;
+
+	// Custom style
+	if (enemy.style) {
+		let style = KDModelStyles[enemy.style];
+		if (style) {
+			if (!entry.bodystyle && style.Bodystyle) {
+				entry.bodystyle = style.Bodystyle[Math.floor(Math.random() * style.Bodystyle.length)];
+			}
+			if (!entry.hairstyle && style.Hairstyle) {
+				entry.hairstyle = style.Hairstyle[Math.floor(Math.random() * style.Hairstyle.length)];
+			}
+			if (!entry.facestyle && style.Facestyle) {
+				entry.facestyle = style.Facestyle[Math.floor(Math.random() * style.Facestyle.length)];
+			}
+			if (!entry.cosplaystyle && style.Cosplay) {
+				entry.cosplaystyle = style.Cosplay[Math.floor(Math.random() * style.Cosplay.length)];
+			}
+		}
+	}
+
+	return entry;
+}
+
+
 
 /**
  * @param id

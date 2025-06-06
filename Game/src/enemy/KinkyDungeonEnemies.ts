@@ -10624,7 +10624,7 @@ function KDQuickGenNPC(enemy: entity, force: boolean) {
 	if (force && !value && !KDIsNPCPersistent(enemy.id)) {
 		let enemyType = enemy.Enemy;
 		if (!enemyType.style) return; // Dont make one for enemies without styles
-		value = KDGetVirtualCollectionEntry(enemy.id);
+		value = KDGetVirtualCollectionEntryEntity(enemy) || KDGetVirtualCollectionEntry(enemy.id);
 		if (!value) return;
 	}
 	if ((value || KDIsNPCPersistent(enemy.id))) {

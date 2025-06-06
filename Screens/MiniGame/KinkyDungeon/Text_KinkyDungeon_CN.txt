@@ -46661,7 +46661,7 @@ Mmmph! ( 热切地点头 )
 ( SPEAKER 笑了 ) |非常令人印象深刻。|虽然你输掉了这场战斗，但你的表现令人钦佩~
 - (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
 ( SPEAKER 微笑 )|只要你戴上我的项圈，我就会让你过去。| ( 她打了个响指，变出一枚发光的腰带 )
-- (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your collar~|(She snaps her fingers and conjures a glowing ring)
+- (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(She snaps her fingers and conjures a glowing ring)
 ( SPEAKER 咯咯笑 ) |然后你的旅程就结束了。|我想你不想要那样。|现在，至于你的项圈~| ( 她打了个响指，变出了一枚发光的腰带 )
 - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
 ( SPEAKER 笑了 ) |当然是魔法~|谁说指挥官就必须毫无防御能力？| ( 她打了个响指，变出了一枚发光的腰带 )
@@ -46671,7 +46671,7 @@ Mmmph! ( 热切地点头 )
 我输了。现在该怎么办？
 - I won't submit to you!
 我不会向你屈服的！
-- (SPEAKER presents you with your collar...)|(It closes around your neck seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
+- (SPEAKER presents you with your 'reward'...)|(It closes around your waist seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
 ( SPEAKER 向你展示你的项圈…… ) | ( 它无缝地围绕着你的脖子 ) |现在……你将被允许自由行动，|但前提是你接受了足够的训练。
 
 - (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
@@ -46681,7 +46681,7 @@ Mmmph! ( 热切地点头 )
 ( SPEAKER 蹲下 ) |最令人印象深刻...|我很少输给冒险者...|我很想最终得到你~
 - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 ( SPEAKER 看起来很惊讶 ) |我没想到你会如此……顺从。| ( 她打了个响指，扔给你一条发光的腰带带 ) |这是一条特殊的腰带带，专为那些拥有神圣特权的人保留。|你赢得了它。
-- (Wear her belt anyway)
+- (Wear her waist belt anyway)
 ( 无论如何都要穿上她的腰带 )
 - (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
 ( 当你强行想要堵住她的嘴巴时，SPEAKER 摇了摇头 ) |MMMMMPH!
@@ -50421,3 +50421,5 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 你是元素位面的子民。
 - You are a wanted outlaw.
 你是一名通缉犯。
+- Unable to see the item, you are unable to use your psychic powers to lift it.
+无法对看不到的物品使用念动力。

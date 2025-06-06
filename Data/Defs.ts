@@ -478,6 +478,7 @@ let LAYERS_BASE = [
 	"BindChainLinksUnder",
 
 	// Clothes that go behind
+	"LegbinderBack",
 	"SkirtBack",
 	"BeltFarBack",
 	"Coat",

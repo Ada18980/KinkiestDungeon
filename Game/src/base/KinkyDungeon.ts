@@ -606,6 +606,7 @@ interface KDGameDataBase {
 	CurrentDialogMsgSpeaker:	string,
 	CurrentDialogMsgPersonality:	string,
 	CurrentDialogMsgID:		number,
+	CurrentDialogEntity:		entity,
 	CurrentDialogMsgData:		Record<string, string>,
 	CurrentDialogMsgValue:		Record<string, number>,
 	AlertTimer:			number,
@@ -747,6 +748,7 @@ interface KDGameDataBase {
 
 
 let KDGameDataBase: KDGameDataBase = {
+	CurrentDialogEntity: null,
 	RecruitedFaction: "",
 	WarningTiles: {},
 	MasterworkIntro: false,

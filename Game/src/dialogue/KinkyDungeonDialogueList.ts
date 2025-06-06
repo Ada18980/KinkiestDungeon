@@ -565,6 +565,13 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		inventory: true,
 		clickFunction: (_gagged, _player) => {
 			KinkyDungeonSetFlag("AngelHelp", 55);
+			// create a fake 'angel' npc to draw on the side
+			let npc = DialogueGetEnemy("Angel");
+			KDGameData.CurrentDialogEntity = npc;
+			
+			KDGameData.CurrentDialogMsgSpeaker = npc.Enemy.name;
+			KDGameData.CurrentDialogMsgID = npc.id;
+			KDQuickGenNPC(npc, true);
 			return false;
 		},
 		options: {
