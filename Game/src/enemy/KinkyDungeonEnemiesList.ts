@@ -4839,7 +4839,7 @@ let KinkyDungeonEnemies: enemy[] = [
             "soulimmune", "melee", "petsuitSpell", "minor", "chainresist", "doortrap", "petsuit",
 			"backup_harness", "harnessSpell"
 		]),
-		ignorechance: 0, followRange: 1.5, AI: "hunt",  ignoreflag: ["FA_Petsuit"], failAttackflag: ["FA_Petsuit"], squeeze: true, ignoreStaminaForBinds: true,
+		ignorechance: 0, followRange: 2, AI: "hunt",  ignoreflag: ["FA_Petsuit"], failAttackflag: ["FA_Petsuit"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
 		},
@@ -4850,11 +4850,11 @@ let KinkyDungeonEnemies: enemy[] = [
 			unlimitedRestraints: true,
 			levelBonus: 5,
 		},
-		nopickpocket: true, specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 1,
-        specialRange: 5, specialMinRange: 1.5, dashThrough: true, specialsfx: "Miss",
-		visionRadius: 6, visionSummoned: 12, maxhp: 12, minLevel: 10, weight:0, movePoints: 1.5, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
+		nopickpocket: true, specialCD: 8, specialAttack: "DashBonus", specialRemove: "BindSuicide", specialCDonAttack: true, specialAttackPoints: 2,
+        specialWidth:1 ,specialRange: 5, specialMinRange: 1.5, dashThrough: true, specialsfx: "Miss",
+		visionRadius: 6, visionSummoned: 12, maxhp: 12, minLevel: 10, weight:1, movePoints: 2.4, attackPoints: 3, attack: "MeleeBindSuicide", focusPlayer: true,
 		suicideOnAdd: true, attackWidth: 3, attackRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 2,
-		terrainTags: {"doorTrap": 1, "trap": 30, revenge: 40, petsuit: -25}, allFloors: true, shrines: [], summonTags: ["petsuit"],
+		terrainTags: {"trap": 35, revenge: 40, "petOptout": -15, "petPref": 4 }, allFloors: true, shrines: ["Leather"], summonTags: ["petsuit"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Belts", aoe: 1.5, power: 1, chance: 1.0},
 		],
