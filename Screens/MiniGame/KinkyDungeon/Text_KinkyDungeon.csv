@@ -2673,6 +2673,12 @@ AttackAnimHarnessBind,"The harness buckles itself tightly around your body! (+Re
 AttackAnimHarnessDash,"The harness dashes to you!"
 AttackAnimHarness,"The harness wraps itself around your body and squeezes! (DamageTaken)"
 
+NameAnimPetsuit,Pattering Petsuit
+KillAnimPetsuit,"The petsuit splays out on the floor."
+AttackAnimPetsuitDash,"The petsuit leaps to you!"
+AttackAnimPetsuitBind,"The petsuit pounces on you and cinches tightly around your limbs! (+RestraintAdded)"
+AttackAnimPetsuit,"The petsuit rubs against your legs affectionately! (DamageTaken)"
+
 NameLock,Levitating Locks
 KillLock,"The locks and chains fall to the floor in a loud crash."
 AttackLockLock,"A lock clicks itself onto one of your restraints! (+RestraintAdded)"
@@ -7202,6 +7208,7 @@ KinkyDungeonSummonSingleAnimYoke,A floating yoke appears and starts flying towar
 KinkyDungeonSummonSingleAnimChastity,A floating armbinder appears and starts flying toward you!
 KinkyDungeonSummonSingleAnimStraitjacket,A floating straitjacket appears and starts flying toward you!
 KinkyDungeonSummonSingleAnimHarness,A floating harness appears and starts flying toward you!
+KinkyDungeonSummonSingleAnimPetsuit,A prowling petsuit appears and starts running toward you!
 KinkyDungeonSummonSingleCuffs,A set of shackles opens wide and starts going for your wrists!
 KinkyDungeonSummonMultiCuffs,A swarm of shackles approaches you!
 KinkyDungeonSummonMultiGags,A swarm of gags approaches you!
