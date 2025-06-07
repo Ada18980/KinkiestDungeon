@@ -405,7 +405,9 @@ function KDDoDialogue(data: any) {
 	}
 	if (data.enemy) {
 		KDGameData.CurrentDialogMsgID = data.enemy;
-		KDGameData.CurrentDialogEntity = KDGetGlobalEntity(data.enemy);
+		if (KDGameData.CurrentDialogEntity?.id != KDGameData.CurrentDialogMsgID)
+			KDGameData.CurrentDialogEntity = null;
+		//KDGameData.CurrentDialogEntity = KDGetGlobalEntity(data.enemy);
 	} else {
 		KDGameData.CurrentDialogMsgID = 0;
 		KDGameData.CurrentDialogEntity = null;

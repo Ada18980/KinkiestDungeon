@@ -2628,6 +2628,14 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					KinkyDungeonSendTextMessage(5, TextGet("KDLatexDebuff" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
 			}
 		},
+		"masterworkDebuff": (e, item, data) => {
+			if (data.restraint && data.struggleType === "Struggle" && item != data.restraint
+				&& KDRestraint(data.restraint).shrine.includes("Masterwork")) {
+				data.escapePenalty += e.power ? e.power : 0.075;
+				if (!data.query)
+					KinkyDungeonSendTextMessage(5, TextGet("KDMasterworkDebuff" + Math.floor(KDRandom() * 3)), "#38a2c3", 2, true);
+			}
+		},
 
 
 		"ropeDebuff": (e, item, data) => {

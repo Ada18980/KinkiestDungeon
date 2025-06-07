@@ -568,7 +568,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			// create a fake 'angel' npc to draw on the side
 			let npc = DialogueGetEnemy("Angel");
 			KDGameData.CurrentDialogEntity = npc;
-			
 			KDGameData.CurrentDialogMsgSpeaker = npc.Enemy.name;
 			KDGameData.CurrentDialogMsgID = npc.id;
 			KDQuickGenNPC(npc, true);
