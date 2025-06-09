@@ -5421,6 +5421,12 @@ M.F. '女仆长'
 - The harness wraps itself around your body and squeezes! (DamageTaken)
 束衣缠绕并紧勒你的身体！ ( DamageTaken )
 
+# - Pattering Petsuit
+# - The petsuit splays out on the floor.
+# - The petsuit leaps to you!
+# - The petsuit pounces on you and cinches tightly around your limbs! (+RestraintAdded)
+# - The petsuit rubs against your legs affectionately! (DamageTaken)
+
 - Levitating Locks
 悬浮锁
 - The locks and chains fall to the floor in a loud crash.
@@ -14187,6 +14193,7 @@ SummonCount 只僵尸从地板上出现！
 # :: KinkyDungeonSummonSingleAnimHarness
 # :: KinkyDungeonTrapSpawnAnimHarness
 # :: KinkyDungeonTrapSpawnAnimArmbinder
+# - A prowling petsuit appears and starts running toward you!
 - A set of shackles opens wide and starts going for your wrists!
 一件镣铐张开，并开始锁在你的手腕上！
 # :: KinkyDungeonSummonSingleCuffs
@@ -50423,3 +50430,7 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 你是一名通缉犯。
 - Unable to see the item, you are unable to use your psychic powers to lift it.
 无法对看不到的物品使用念动力。
+
+# - Your masterwork restraints link together as one cohesive unit!
+# - Your masterwork collar reinforces other masterwork items...
+# - Your masterwork collar keeps everything firmly in place!
