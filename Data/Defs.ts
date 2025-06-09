@@ -73,6 +73,7 @@ let LAYERS_BASE = [
 	"BindForeArmRight",
 
 	"ForeWrists",
+	"SleevesFront",
 
 
 	// Forearms (only in HandsFront)
@@ -384,6 +385,7 @@ let LAYERS_BASE = [
 	"BindHandLeft",
 
 	"LowerArmBondageLeft",
+	"BulkyShirt",
 
 	"SleeveDecoLeft",
 	"SleeveLeft",
@@ -892,6 +894,8 @@ let LayerGroups = {
 		"StrapsUnderbust",
 		"StrapsUnderbustOver",
 
+		
+		"SleevesFront",
 		"ForeSleeveLeft",
 		"ForeSleeveDecoLeft",
 		"GloveLeft",
@@ -971,6 +975,7 @@ let LayerGroups = {
 		"StrapsUnderbust",
 		"StrapsUnderbustOver",
 
+		"SleevesFront",
 		"ForeSleeveLeft",
 		"ForeSleeveDecoLeft",
 		"GloveLeft",
@@ -1165,6 +1170,7 @@ let LayerGroups = {
 		"ForeWristLeft",
 
 		"ForeSleeveDecoLeft",
+		"SleevesFront",
 		"ForeSleeveLeft",
 		"ForeMittenLeft",
 		"ForeGloveLeft",
@@ -1189,6 +1195,7 @@ let LayerGroups = {
 
 	"RopeFore": ToMap([
 		"ForeSleeveLeft",
+		"SleevesFront",
 		"ForeSleeveDecoLeft",
 		"GloveLeft",
 		"ForeHandLeft",
@@ -1388,6 +1395,7 @@ let LayerGroups = {
 
 	"RibbonFore": ToMap([
 		"ForeSleeveLeft",
+		"SleevesFront",
 		"ForeSleeveDecoLeft",
 		"MittenLeft",
 		"GloveLeft",
@@ -1593,6 +1601,7 @@ let LayerGroups = {
 
 		"ForeSleeveDecoLeft",
 		"ForeSleeveLeft",
+		"SleevesFront",
 		"ForeMittenLeft",
 		"ForeGloveLeft",
 		"ForeHandLeft",
@@ -1712,6 +1721,7 @@ let LayerGroups = {
 
 	// Forearms (only in HandsFront)
 	"ForeSleeveLeft",
+	"SleevesFront",
 	"ForeSleeveDecoLeft",
 
 	"ForeSleeveRight",
