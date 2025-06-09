@@ -12603,14 +12603,12 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 		"PlayerTitle_sub": (_e, data) => {
 			if ((data.type == "Bondage") && (data.res == "sub")) {
 				if (KDGameData["titledata"] == undefined) { KDGameData["titledata"] = {}}
-				// @ts-ignore
 				KDGameData.titledata.sub = true
 			}
 		},
 		"PlayerTitle_dom": (_e, data) => {
 			if ((data.type == "Bondage") && (data.res == "dom")) {
 				if (KDGameData["titledata"] == undefined) { KDGameData["titledata"] = {}}
-				// @ts-ignore
 				KDGameData.titledata.dom = true
 			}
 		}

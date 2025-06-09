@@ -4213,6 +4213,12 @@ type KDPlayerTitle = {
 	icon: string // texture path to icon - UNUSED
 }
 
+type KDPlayerTitleData = {
+	sub?: boolean,
+	dom?: boolean,
+	lampstolen?: boolean,
+}
+
 declare const zip: any;
 declare const guessLanguage: {
 	detect(text: string): string;

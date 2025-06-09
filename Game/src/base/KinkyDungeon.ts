@@ -747,11 +747,13 @@ interface KDGameDataBase {
 	currentTitleAuto: string,
 	currentTitle: string,
 	oldtitles: string[],
-	titlesUnlocked: string[]
+	titlesUnlocked: string[],
+	titledata: KDPlayerTitleData
 };
 
 
 let KDGameDataBase: KDGameDataBase = {
+	titledata: null,
 	CurrentDialogEntity: null,
 	RecruitedFaction: "",
 	WarningTiles: {},

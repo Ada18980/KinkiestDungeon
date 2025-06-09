@@ -30,8 +30,6 @@ function PlayerTitleTick() {
     currtitles.forEach((t) => {
         if ((t != "None") && (t != "Auto")) {
             if (!KDUnlockedTitles.includes(t)) {
-                // Idk how to make ts not cry about this.
-                // @ts-ignore
                 KDUnlockedTitles.push(t);
                 KDSendMusicToast(TextGet("KDPlayerTitleUnlock") + TextGet(`KDPlayerTitle_${t}`));
                 localStorage.setItem('KDPlayerTitlesUnlocked', JSON.stringify(KDUnlockedTitles))
@@ -89,7 +87,7 @@ function PlayerTitleTick() {
             KDGameData.titlesUnlocked.push(t)
         }
     })
-    // @ts-ignore
+    
     KDUnlockedTitles.forEach((t) => {
         if (!KDGameData.titlesUnlocked.includes(t)) {
             KDGameData.titlesUnlocked.push(t)
@@ -195,8 +193,9 @@ function KinkyDungeonDrawTitles() {
                 KDTitleTabCurrentTitle = titletext;
                 KDTitleTabCurrentDesc = titledesc;
                 // I have no clue why this gives a ts error for a type "never"
-                // @ts-ignore
-                KDTitleTabCurrentIcon = (KDPlayerTitleCategories[KDTitleTabCurrentCategory][ii].icon) ? (KDPlayerTitleCategories[KDTitleTabCurrentCategory][ii].icon) : "None";
+                
+                KDTitleTabCurrentIcon = (KDPlayerTitles[KDPlayerTitleCategories[KDTitleTabCurrentCategory][ii]]?.icon)
+                    ? (KDPlayerTitles[KDPlayerTitleCategories[KDTitleTabCurrentCategory][ii]]?.icon) : "None";
                 return true;
             }, true, x + 50, 142 + (taboffset) * 42, 250, 40, titletext, titlecolor, undefined);
             taboffset++;
@@ -633,7 +632,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     // Player accepts a bondage offer
     "Submissive": {
         "unlockCondition": () => {
-            // @ts-ignore
+            
             return (KDGameData?.titledata?.sub)
         },
         "priority": 3,
@@ -653,7 +652,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     // Player convinces an NPC to wear their bondage offer
     "Dominant": {
         "unlockCondition": () => {
-            // @ts-ignore
+            
             return (KDGameData?.titledata?.dom)
         },
         "priority": 3,
@@ -673,7 +672,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     // Player accepts a bondage offer and convinces another bondage offer to wear their requested restraint
     "Switch": { 
         "unlockCondition": () => {
-            // @ts-ignore
+            
             return ((KDGameData?.titledata?.sub) && (KDGameData?.titledata?.dom))
         },
         "priority": 3,
@@ -692,7 +691,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     "Moth": { 
         "unlockCondition": () => {
-            // @ts-ignore
+            
             return (KDGameData?.titledata?.lampstolen)
         },
         "priority": 3,
@@ -1750,8 +1749,8 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
         // Run to unlock and attempt to auto apply title. 
         "unlockCondition": () => {
             let req = ["SpellMasteryFlame", "SpellMasteryAir", "SpellMasteryLightning", "SpellMasteryWater", "SpellMasteryEarth", "SpellMasteryRope", "SpellMasteryLeather", "SpellMasteryMetal", "SpellMasteryLatex", "SpellMasteryPhysics", "SpellMasteryShadow", "SpellMasteryLight", "SpellMasteryObscurity", "SpellMasteryProjection", "SpellMasteryKnowledge", "SpellMasterySummon"]
-            // @ts-ignore
-            return (req.every((sp) => KDGameData?.oldtitles?.map((t) => t.name).includes(sp))) // Checks if we have every single title active above
+            
+            return (req.every((sp) => KDGameData?.oldtitles?.includes(sp))) // Checks if we have every single title active above
         },
         "priority": 2,
         "color": "#00ffff",
@@ -1841,5 +1840,5 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
 }
 
-let KDPlayerTitleCategories: Record<string, []> = {}
+let KDPlayerTitleCategories: Record<string, string[]> = {}
 KDPlayerTitlesRefreshCategories();
