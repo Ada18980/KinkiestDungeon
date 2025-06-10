@@ -543,6 +543,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 提升挣扎效果。
 - Helpless
 虚弱无助
+# :: KinkyDungeonStat1
+# :: KDPlayerTitle_Helpless
 - You are physically weak. Struggling is much less effective.
 你的身体虚弱，挣扎效果减弱。
 
@@ -588,6 +590,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonRepNameCursed
 # :: KDFilterFiltersCursed
 # :: KDVarPrefCursed
+# :: KDPlayerTitle_Cursed
 - Goddess reputations can never exceed 25.
 女神的声望永远不会超过25。
 
@@ -595,6 +598,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 顺从者
 # :: KinkyDungeonStat10
 # :: KDPersonalitySub
+# :: KDPlayerTitle_Submissive
 - Your submissiveness starts at 100 and cannot go below 70.
 开局顺从级别变为 100 ，并且在游戏中顺从级别不会低于 70。
 - Wanted
@@ -937,6 +941,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 开局时穿戴全套赛博拘束具。
 - Fuuka's Pet
 风香的宠物
+# :: KinkyDungeonStatFuukaCollar
+# :: KDPlayerTitle_FuukaRestGood
 - Start with Fuuka's collar and a few restraints.
 开局时穿戴风香的项圈和一些别的拘束具。
 - Fuuka Fan Club
@@ -1256,6 +1262,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 支配者
 # :: KinkyDungeonStatDominant
 # :: KDPersonalityDom
+# :: KDPlayerTitle_Dominant
 - They're trapped here with you. Ghosts are more helpful, and you can bind enemies that confront you about bondage.
 “他们和你一起被困在这里。” 幽灵更愿意帮你。你可以束缚试图束缚你的敌人。
 
@@ -1288,6 +1295,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonStatPrisoner
 # :: KDPrisonerStatus
 # :: KDPaletteJail
+# :: KDPlayerTitle_Jailed
 - Start the game as a submissive prisoner wandering the halls.
 作为一个在大厅里游荡的顺从囚犯开始游戏。
 
@@ -1434,6 +1442,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 练习生
 # :: KinkyDungeonStatMC_Trainee
 # :: KinkyDungeonClassModeTrainee
+# :: KDPlayerTitle_ClassTrainee
 - Your training has given you access to the powers of the Trainee class. (Aroused mode only)
 你的训练使你能够获得练习生职业的能力。 ( 仅限性欲模式 )
 - Fighter
@@ -1444,12 +1453,14 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: NameAdventurer_Sub_Fighter
 # :: NameAdventurer_Dom_Fighter
 # :: NameAdventurer_Switch_Fighter
+# :: KDPlayerTitle_ClassFighter
 - Your training has given you access to the powers of the Fighter class.
 你的训练使你能够获得战士职业的能力。
 - Rogue
 盗贼
 # :: KinkyDungeonStatMC_Rogue
 # :: KinkyDungeonClassModeRogue
+# :: KDPlayerTitle_ClassRogue
 - Your training has given you access to the powers of the Rogue class.
 你的训练使你能够获得盗贼职业的能力。
 - Wizard
@@ -1457,12 +1468,14 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonStatMC_Wizard
 # :: KinkyDungeonClassModeMage
 # :: KinkyDungeonStatMC_Mage
+# :: KDPlayerTitle_ClassMage
 - Your training has given you access to the powers of the Wizard class.
 你的训练使你能够获得法师职业的能力。
 - Peasant
 农民
 # :: KinkyDungeonStatMC_Peasant
 # :: KinkyDungeonClassModePeasant
+# :: KDPlayerTitle_ClassPeasant
 - You possess the agricultural mastery of the Peasant class.
 你掌握了农民职业的农业知识。
 
@@ -2305,8 +2318,11 @@ Devious Dungeon Challenge 已启用。
 背包
 # :: KinkyDungeonKeyInventory
 # :: KDContextMenu_Inventory
+# :: KDPlayerTitleCategory_Inventory
 - Reputation
 声望
+# :: KinkyDungeonKeyReputation
+# :: KDPlayerTitleCategory_Reputation
 - Journey Map
 旅程地图
 - Quests
@@ -2590,6 +2606,7 @@ Devious Dungeon Challenge 已启用。
 天使
 # :: KinkyDungeonRarity9
 # :: KinkyDungeonStatAngelic
+# :: KDPlayerTitle_Angel
 - Divine
 神圣
 # :: KinkyDungeonRarity10
@@ -4531,6 +4548,8 @@ M.F. '女仆长'
 
 - Wolfgirl
 狼娘
+# :: NameWolfgirlPet
+# :: KDPlayerTitle_Nevermere
 
 - Wolfguard
 狼卫兵
@@ -4788,6 +4807,8 @@ M.F. '女仆长'
 
 - Alkahestor
 万能炼金士
+# :: NameAlkahestor
+# :: KDPlayerTitle_Alchemist
 - The alkahestor resigns to her fate.
 万能炼金士屈服于她的命运。
 - The alkahestor releases a vial of liquid that wraps around you! (+RestraintAdded)
@@ -5187,6 +5208,8 @@ M.F. '女仆长'
 
 - Encased Adventurer
 被包裹的冒险家
+# :: NameSlimeAdv
+# :: KDPlayerTitle_EncasedAdventurer
 - The encased adventurer loses hope.
 被包裹的冒险家失去了希望。
 - The encased adventurer moans as she throws herself against you for help! (DamageTaken)
@@ -7407,6 +7430,7 @@ SHRINETYPE石碑
 # :: KDMapMod_None
 # :: KDPaletteLayer_None
 # :: KDModButtonNone
+# :: KDPlayerTitle_None
 - Nevermere Trainers
 “奈文米尔”训练师
 - DressUp Co.
@@ -7490,6 +7514,8 @@ Zora的船员
 惊喜！
 - Fierce Debater
 激烈的辩手
+# :: KinkyDungeonFactionDebate
+# :: KDPlayerTitle_Elf
 
 - Angels
 天使
@@ -13076,6 +13102,8 @@ Ars烟火
 使被动法力池增加 400 点。
 - Archmage
 大魔法师
+# :: KinkyDungeonSpellStaffUser3
+# :: KDPlayerTitle_Mastery_Archmage
 - Upcasted spells cost 25% less mana.
 聚力法术的法力消耗减少 25%。
 
@@ -14659,6 +14687,8 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 # :: KDRep
 - Spells
 法术
+# :: KinkyDungeonMagic
+# :: KDPlayerTitleCategory_Spells
 - Learn New Spells
 学习新法术
 - Click a spell to replace SPELLNAME with.
@@ -16209,6 +16239,8 @@ EnemyName 设法带着你的物品撤退了！
 
 - Aroused
 性欲
+# :: KinkyDungeonSexyMode1
+# :: KDPlayerTitle_Distracted
 - Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
 移除所有贞操带、振动拘束、塞子，并移除自慰的选项
 - Includes all that good stuff.
@@ -44684,6 +44716,8 @@ UI 就是这样。|如果您想要更多的实践教程，请进入右上角的�
 
 - Game
 游戏
+# :: KDNavGame
+# :: KDPlayerTitleCategory_Game
 
 
 - Search ITMNS:
@@ -46116,6 +46150,8 @@ ENMY 高潮了，收到了 AMNT 伤害！
 性格
 - Switch
 转变
+# :: KDPersonality
+# :: KDPlayerTitle_Switch
 - Bratty
 不顺从
 - Corrupted
@@ -46153,6 +46189,8 @@ ENMY 高潮了，收到了 AMNT 伤害！
 “奈文米尔”
 - Bounty Hunter
 赏金猎人
+# :: KDPaletteBountyhunter
+# :: KDPlayerTitle_Bountyhunter
 - Dressup Co.
 装扮公司
 - Scholarly
@@ -48485,6 +48523,8 @@ NPC可用性：
 
 - Bound
 拘束
+# :: KDCollectionFilterBound
+# :: KDPlayerTitle_Bound
 - At Risk
 面临风险
 - Escaped
@@ -50434,3 +50474,165 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Your masterwork restraints link together as one cohesive unit!
 # - Your masterwork collar reinforces other masterwork items...
 # - Your masterwork collar keeps everything firmly in place!
+
+# - Unlocked Player Title: 
+
+# - Titles
+
+# - Classes
+# - Factions
+# - Stats
+# - Bosses
+# - Mastery
+
+# - Auto
+
+# - Unlocked by playing as the Wizard class.
+# - Unlocked by playing as the Fighter class.
+# - Unlocked by playing as the Rogue class.
+# - Unlocked by playing as the Trainee class.
+# - Unlocked by playing as the Peasant class.
+# - Unlocked by getting recruited by the Alchemists.
+# - Analog Interface
+# - Unlocked by getting recruited by the Old Guardians.
+# - Saved by an Angel
+# - Unlocked by asking for help from any shrine.
+# - Magic Student
+# - Unlocked by getting recruited by the School of Magic.
+# - Outlaw
+# - Unlocked by getting recruited by the Bandits.
+# - Sphinx
+# - Unlocked by getting recruited by the Cult of Bast.
+# - Leading the Blind
+# - Unlocked by wearing any blindfold.
+# - Unlocked by achieving at least 25 restriction.
+# - Unlocked by achieving at least 45 restriction.
+# - Unlocked by getting recruited by the Bounty Hunters.
+# - Chaste
+# - Unlocked by wearing a chastity belt and chastity bra.
+# - Blessed by Aether
+# - Unlocked by reaching 100 reputation with the Conjuration Goddess.
+# :: KDPlayerTitleDesc_Conjure
+# :: KDPlayerTitleDesc_Metal
+# - Unlocked by reaching at least 95% desire.
+# - Heart of the Dragon
+# - Unlocked by getting recruited by the Dragonheart Order.
+# - Seamstress
+# - Unlocked by getting recruited by the Dressup Corporation.
+# - The Nine Planes
+# - Unlocked by getting recruited by the Elementals.
+# - Unlocked by getting recruited by the Cult of the Wild.
+# - Lethargic
+# - Unlocked by reaching 0 SP.
+# - Hoarder
+# - Unlocked by holding at least 300 items in your inventory.
+# - Loot Goblin
+# - Unlocked by holding at least 1000 items in your inventory.
+# - Infinite Pockets
+# - Unlocked by holding at least 3000 items in your inventory.
+# - Blessed by Oblivion
+# - Unlocked by reaching 100 reputation with the Illusion Goddess.
+# - Blessed by Matah
+# - Unlocked by reaching 100 reputation with the Elements Goddess.
+# - Unlocked by being jailed.
+# - Blessed by Minivir
+# - Unlocked by reaching 100 reputation with the Latex Goddess.
+# - Going on Walkies!
+# - Unlocked by being leashed by an NPC.
+# - Blessed by Nivah
+# - Unlocked by reaching 100 reputation with the Leather Goddess.
+# - Maidforce
+# - Unlocked by getting recruited by MaidForce.
+# - Blessed by Oriel
+# - Unlocked by getting recruited by the Nevermere Trainers.
+# - Off-balance!
+# - Unlocked by falling under 50% balance.
+# - Drained
+# - Unlocked by reaching 0 mana pool and under 15 mana.
+# - Surrender
+# - Unlocked by reaching 0 willpower.
+# - Only Way To Go is Up
+# - Unlocked by reaching 0 willpower and 0 mana and 0 stamina at the same time.
+# - Recruit
+# - Unlocked by getting recruited by any faction.
+# - Blessed by Akasha
+# - Unlocked by reaching 100 reputation with the Rope Goddess.
+# - Treasure Seeker
+# - Unlocked by opening any chest.
+# - Blessed by Ninril
+# - Unlocked by reaching 100 reputation with the Restoration Goddess.
+# - #Blessed
+# - Unlocked by encountering an Angel that wasn't summoned by a shrine.
+# - Unlocked by being recruited by the Angels. (Not Available)
+# - Demonic
+# - Unlocked by being recruited by the Demons. (Not Available)
+# - Unlocked by accepting a restraint from the boss on floor 4 after defeating her.
+# - Fuuka's Brat
+# - Unlocked by being defeated by the boss on floor 4 and she restrains you.
+# - Important Pet
+# - Unlocked by accepting a restraint from the boss on floor 8 after defeating her.
+# - House Arrest
+# - Unlocked by being defeated by a boss on floor 8 and she restrains you.
+# - Seeing Dolls
+# - Unlocked by accepting a certain restraint from the boss on Floor 20.
+# :: KDPlayerTitleDesc_DollmakerVisor
+# :: KDPlayerTitleDesc_DollmakerMask
+# - Nothing but a Doll
+# - Mistress of Flame
+# - Unlocked by learning every spell under Flame Novice.
+# - Mistress of Wind
+# - Unlocked by learning every spell under Air Novice.
+# - Mistress of Lightning
+# - Unlocked by learning every spell under Lightning Novice.
+# - Mistress of Water
+# - Unlocked by learning every spell under Water Novice.
+# - Mistress of Earth
+# - Unlocked by learning every spell under Earth Novice.
+# - Mistress of Ice
+# - Unlocked by learning every spell under Ice Novice.
+# - Mistress of Rope
+# - Unlocked by learning every spell under Rope 101.
+# - Mistress of Leather
+# - Unlocked by learning every spell under Leather 101.
+# - Mistress of Metal
+# - Unlocked by learning every spell under Metal 101.
+# - Mistress of Latex
+# - Unlocked by learning every spell under Latex 101.
+# - Mistress of Physics
+# - Unlocked by learning every spell under Physics 101.
+# - Mistress of Shadow
+# - Unlocked by learning every spell under Blessing of Shadow.
+# - Mistress of Light
+# - Unlocked by learning every spell under Blessing of Light.
+# - Mistress of Obscurity
+# - Unlocked by learning every spell under Blessing of Obscurity.
+# - Mistress of Projection
+# - Unlocked by learning every spell under Projection Magic.
+# - Mistress of Knowledge
+# - Unlocked by learning every spell under Arcane Knowledge.
+# - Mistress of Summoning
+# - Unlocked by learning every spell under Summoning 101.
+# - Unlocked by learning every spell at the same time.
+# - ewhac
+# - Unlocked by reaching NG+25.
+# - Moss Boss
+# - Unlocked by reaching 400 max stamina and mana and willpower and desire.
+# - Juiced Up
+# - Unlocked by reaching 400 max stamina.
+# - Manafused
+# - Unlocked by reaching 400 max mana.
+# - Unbreakable
+# - Unlocked by reaching 400 max willpower.
+# - Unwavering
+# - Unlocked by reaching 400 max desire.
+# - Unlocked by accepting a bondage offer. 
+# - Unlocked by convincing an NPC to wear their own bondage offer.
+# - Unlocked by accepting a bondage offer and by convincing another NPC to wear their own bondage offer. 
+# - Moth
+# - Unlocked by taking an illuminated crystal off of it's charger. Lämp.
+# - Unlocked by becoming fully encased by slime and then it fully hardening.
+# - No Locks?
+# - Unlocked by wearing any Ancient restraint.
+# - Ancient Adventurer
+# - Unlocked by wearing every Ancient restraint at the same time.
+# - Unlocked by wearing any cursed restraint or armor.
