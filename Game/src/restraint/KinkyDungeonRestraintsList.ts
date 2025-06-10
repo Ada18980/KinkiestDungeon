@@ -2356,7 +2356,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		sfxGroup: "Leather",
 		renderWhenLinked: [...KDJacketLink], Group: "ItemArms", power: 8, weight: 0, bindarms: true, bindhands: 1.0,strictness: 0.2,
 
-		Model: "Jacket",
+		Model: "JacketHeavy",
 		Filters: {
 			Chest: {"gamma":1.5333333333333332,"saturation":1,"contrast":0.8999999999999999,"brightness":2.15,"red":1,"green":1,"blue":1,"alpha":1},
 			Arms: {"gamma":1.5333333333333332,"saturation":1,"contrast":0.8999999999999999,"brightness":2.15,"red":1,"green":1,"blue":1,"alpha":1},
@@ -2371,20 +2371,22 @@ const KinkyDungeonRestraints: restraint[] = [
 		enemyTags: {"nurseRestraints": 5, "jacketSpell": 50}, playerTags: {"ItemArmsFull":-2}, minLevel: 0, maxwill: 0.35, allFloors: true, shrine: ["Straitjackets", "Block_ItemHands", "Leather"]},
 
 	{inventory: true, name: "TransportJacket", debris: "Belts", Asset: "TransportJacket", events: [{type: "PrisonerJacket", trigger: "afterDress"}], Color: ["#808080", "#202020", "#808080", "#EEEEEE", "#202020", "#808080"],
-		Model: "JacketHeavy",
+		Model: "SleepsackJacket",
 		sfxGroup: "Leather",
 		LinkableBy: [...KDTransportLink],
 		renderWhenLinked: [...KDJacketRender],
 		Filters: {
-			Chest: {"gamma":1.5333333333333332,"saturation":1,"contrast":0.8999999999999999,"brightness":2.15,"red":1,"green":1,"blue":1,"alpha":1},
-			Arms: {"gamma":1.5333333333333332,"saturation":1,"contrast":0.8999999999999999,"brightness":2.15,"red":1,"green":1,"blue":1,"alpha":1},
-			Lower: {"gamma":1.5333333333333332,"saturation":1,"contrast":0.8999999999999999,"brightness":2.15,"red":1,"green":1,"blue":1,"alpha":1},
+			Binder: {"gamma":1.5333333333333332,"saturation":1,"contrast":0.8999999999999999,"brightness":2.15,"red":1,"green":1,"blue":1,"alpha":1},
+		},
+		factionFilters: {
+			Straps: {color: "DarkNeutral", override: true},
 		},
 		harness: true,
 		Group: "ItemArms", power: 10, weight: 1, bindarms: true, bindhands: 1.0, strictness: 0.3,
 		unlimited: true,
-		limitChance: {"Struggle": 0.12, "Cut": 0.1, "Remove": 0.15, "Unlock": 0.75},
-		escapeChance: {"Struggle": -0.175, "Cut": 0.1, "Remove": 0.1, "Pick": 0.15},
+		limitChance: {"Struggle": 0.1, "Cut": 0, "Remove": -0.5, "Unlock": 0.75},
+		helpChance: {Remove: 0.2},
+		escapeChance: {"Struggle": -0.175, "Cut": 0.15, "Remove": 0.1, "Pick": 0.15},
 		enemyTags: {"nurseRestraints": 1, "transportJacket": 1},
 		playerTagsMult: {"ItemArmsEmpty": 0.02}, playerTags: {"AsylumJacketWorn": 20}, minLevel: 0, maxwill: 0.1, allFloors: true, shrine: ["Straitjackets", "Block_ItemHands", "TransportJackets", "Leather"]},
 
@@ -2404,6 +2406,26 @@ const KinkyDungeonRestraints: restraint[] = [
 		power: 6, weight: 2, escapeChance: {"Struggle": -0.2, "Cut": 0.1, "Remove": 0.3, "Pick": 0.25}, enemyTags: {"nurseRestraints": 1}, playerTags: {"ItemArmsFull":3},
 		struggleMaxSpeed: {"Remove": 0.1}, // Easy to remove but takes a while
 		minLevel: 0, allFloors: true, shrine: ["Leather", "Legbinders"]},
+	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "AsylumLegbinderPlus", debris: "Belts", inaccessible: true, Asset: "LegBinder", LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
+		Model: "SleepsackLegbinder",
+		sfxGroup: "Leather",
+		Filters: {
+			Binder: {"gamma":0.6333333333333334,"saturation":1,"contrast":0.6833333333333333,"brightness":0.6,"red":1.7999999999999998,"green":1.2333333333333334,"blue":1,"alpha":1},
+		},
+		factionFilters: {
+			Straps: {color: "DarkNeutral", override: true},
+		},
+		hobble: 1,
+		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
+		maxwill: 0.1,
+		struggleMult: {Struggle: 0.4},
+		power: 6, weight: 2, 
+		limitChance: {"Struggle": 0.1, "Cut": 0, "Remove": -0.5, "Unlock": 0.75},
+		helpChance: {Remove: 0.2},
+		escapeChance: {"Struggle": -0.175, "Cut": 0.15, "Remove": 0.1, "Pick": 0.15},
+		enemyTags: {"nurseRestraints": 1}, playerTags: {"ItemArmsFull":3},
+		struggleMaxSpeed: {"Remove": 0.1}, // Easy to remove but takes a while
+		minLevel: 0, allFloors: true, shrine: ["Leather", "Legbinders"]},
 
 	{inventory: true, name: "AsylumMuzzle", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.4, Asset: "FuturisticMuzzle", Modules: [1, 1, 0], Group: "ItemMouth", AssetGroup: "ItemMouth3", Color: ["#814F21","#814F21","#814F21","#814F21"], power: 8, weight: 2,
 		Model: "GagFabric",
@@ -2412,6 +2434,21 @@ const KinkyDungeonRestraints: restraint[] = [
 			Fabric: {"gamma":0.6333333333333334,"saturation":1,"contrast":0.6833333333333333,"brightness":0.6,"red":1.7999999999999998,"green":1.2333333333333334,"blue":1,"alpha":1},
 		},
 		escapeChance: {"Struggle": -0.14, "Cut": 0.18, "Remove": 0.25, "Pick": 0.2}, maxwill: 0.9,
+		enemyTags: {"nurseRestraints":3}, playerTags: {"ItemMouthFull":1}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Leather", "Gags"]},
+	{inventory: true, name: "AsylumMuzzlePlus", debris: "Belts", LinkableBy: [...KDFlatGagLink], renderWhenLinked: [...KDFlatGagLink], gag: 0.4, Asset: "FuturisticMuzzle", Modules: [1, 1, 0], Group: "ItemMouth", AssetGroup: "ItemMouth3", Color: ["#814F21","#814F21","#814F21","#814F21"], power: 8, weight: 2,
+		Model: "PlasmaMuzzle",
+		sfxGroup: "Leather",
+		Filters: {
+			PanelStitching:  {"gamma":0.6333333333333334,"saturation":1,"contrast":0.6833333333333333,"brightness":0.6,"red":1.7999999999999998,"green":1.2333333333333334,"blue":1,"alpha":0},
+			Panel: {"gamma":0.6333333333333334,"saturation":1,"contrast":0.6833333333333333,"brightness":0.6,"red":1.7999999999999998,"green":1.2333333333333334,"blue":1,"alpha":1},
+		},
+		factionFilters: {
+			Leather: {color: "DarkNeutral", override: true},
+			Panel: {color: "Highlight", override: false},
+		},
+		limitChance: {"Struggle": 0.1, "Cut": 0, "Unlock": 0.75},
+		escapeChance: {"Struggle": -0.175, "Cut": 0.15, "Remove": 0.15, "Pick": 0.15},
+		maxwill: 0.9,
 		enemyTags: {"nurseRestraints":3}, playerTags: {"ItemMouthFull":1}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Leather", "Gags"]},
 
 	//endregion

@@ -4546,6 +4546,14 @@ RestraintAsylumLegbinderDesc,"This legbinder will keep the patient from kicking 
 RestraintAsylumLegbinderDesc2,"It has both laces and straps."
 
 
+RestraintAsylumMuzzlePlus,Secured Asylum Muzzle
+RestraintAsylumMuzzlePlusDesc,"An advanced muzzle intended for particularly loud-mouthed mages."
+RestraintAsylumMuzzlePlusesc2,"It's sturdy leather and metal buckles."
+RestraintAsylumLegbinderPlus,Secured Asylum Legbinder
+RestraintAsylumLegbinderPlusDesc,"A legbinder to keep nurses safe from high-level warriors."
+RestraintAsylumLegbinderPlusDesc2,"Tightly zipped together and secured with straps."
+
+
 RestraintAsylumAnkleCuffs,Asylum Ankle Cuffs
 RestraintAsylumAnkleCuffsDesc,"A pair of chained cuffs made of reinforced leather. They make patients easier to catch."
 RestraintAsylumAnkleCuffsDesc2,"They can be thrown from long distances."

@@ -1,0 +1,53 @@
+{"frames": {
+
+"Models/Maid/CorsetStraps.png":
+{
+	"frame": {"x":3,"y":359,"w":239,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":493,"y":406,"w":239,"h":131},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/RopeOld/ArmsWristtie.png":
+{
+	"frame": {"x":3,"y":75,"w":293,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":470,"y":495,"w":293,"h":143},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Sleepsack/LegRightBeltsSpread.png":
+{
+	"frame": {"x":3,"y":3,"w":305,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":464,"y":1064,"w":305,"h":68},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/SleepsackJacket/ChestMetal.png":
+{
+	"frame": {"x":3,"y":222,"w":232,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":438,"y":494,"w":232,"h":133},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/SleepsackJacket/ChestMetalZipped.png":
+{
+	"frame": {"x":3,"y":222,"w":232,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":438,"y":494,"w":232,"h":133},
+	"sourceSize": {"w":1240,"h":1754}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "atlas7.webp",
+	"format": "RGBA8888",
+	"size": {"w":311,"h":493},
+	"scale": "0.5",
+	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:a9ee36c28d022e8a317824f1dece583a:760aa9c28ac92d72d5346439cb7b18df:b400f94fbbcb6ca60e2717374378bcda$"
+}
+}
