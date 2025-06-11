@@ -9499,6 +9499,14 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 它既有鞋带和皮带。
 
 
+# - Secured Asylum Muzzle
+# - An advanced muzzle intended for particularly loud-mouthed mages.
+# - It's sturdy leather and metal buckles.
+# - Secured Asylum Legbinder
+# - A legbinder to keep nurses safe from high-level warriors.
+# - Tightly zipped together and secured with straps.
+
+
 - Asylum Ankle Cuffs
 安全脚铐
 - A pair of chained cuffs made of reinforced leather. They make patients easier to catch.
