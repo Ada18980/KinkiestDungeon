@@ -1770,7 +1770,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     "Mastery_EWhac": { 
         // Run to unlock and attempt to auto apply title. 
         "unlockCondition": () => {
-            return (KinkyDungeonNewGame == 25) // Check if we entered NG+25
+            return (KinkyDungeonNewGame >= 25) // Check if we entered NG+25
         },
         "priority": 2, 
         // Color for the title - defaults to #ffffff 

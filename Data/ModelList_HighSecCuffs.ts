@@ -193,6 +193,24 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "HighSecCuffsFull",
+	Folder: "HighSecCuffs",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints","Cuffs"],
+	AddPose: ["ThighRight", "ThighLeft", "AnkleRight", "AnkleLeft", "ElbowLeft", "ElbowRight", "WristLeft", "WristRight"],
+	Layers: ToLayerMap([
+		...GetModelLayers("HighSecCuffsThighRight"),
+		...GetModelLayers("HighSecCuffsThighLeft"),
+		...GetModelLayers("HighSecCuffsAnklesRight"),
+		...GetModelLayers("HighSecCuffsAnklesLeft"),
+		...GetModelLayers("HighSecCuffsWrists"),
+		
+	])
+});
+
 AddModel(GetModelFashionVersion("HighSecCuffsWristLeft", true));
 AddModel(GetModelFashionVersion("HighSecCuffsWristRight", true));
 AddModel(GetModelFashionVersion("HighSecCuffsWrists", true));

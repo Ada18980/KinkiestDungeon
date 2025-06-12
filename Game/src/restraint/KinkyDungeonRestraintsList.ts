@@ -2916,6 +2916,37 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true}
 		]},
 	// region masterwork
+
+	
+		
+	{inventory: true, name: "HighSecCuffsFull", accessible: true,
+		Group: "ItemArms",
+		bindarms: false, 
+		nonbinding: true,
+		alwaysRender: true,
+		Model: "HighSecCuffsFull",
+		struggleBreak: true,
+		sfxGroup: "Leather",
+		factionFilters: {
+			Hardware: {color: "LightNeutral", override: false},
+			Band: {color: "Highlight", override: false},
+		},
+		
+		maxwill: 0.5,
+		LinkAll: true,
+		AlwaysLinkable: true,
+		noDupe: true,
+		DefaultLock: "Masterwork",
+		linkPriority: 50,
+		UnderlinkedAlwaysRender: true,
+		power: 25, weight: 10, debris: "Belts",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.1, "Remove": 0.15, "Pick": -0.5},
+		limitChance: {"Struggle": 0.2, "Cut": 0.15, "Remove": 0.0, "Pick": 0.0},
+		enemyTags: {"masterworkRestraints": 10},
+		playerTags: {}, minLevel: 0, allFloors: true,
+		shrine: ["Masterwork", "ArmCuffsBase", "LegCuffsBase", "AnkleCuffsBase", "Cuffs", "HogtieLower"]},
+
+
 	{inventory: true, name: "MasterworkBlindfold",
 		Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink],
 		renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
@@ -2990,7 +3021,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
 		Model: "HighSecLegbinder",
 		factionFilters: {
-			Binder: {color: "DarkNeutral", override: true},
+			Legbinder: {color: "DarkNeutral", override: true},
 			Laces: {color: "Catsuit", override: true},
 			LacesTie: {color: "Catsuit", override: true},
 			Straps: {color: "Highlight", override: true},
@@ -3010,19 +3041,20 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTags: {"ItemLegsEmpty": -19.5}, minLevel: 4, allFloors: true,
 		shrine: ["Masterwork", "Legbinders"]},
 
-	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "MasterworkLegbinder",
+	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "MasterworkHobbleskirt",
 		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
-		Model: "HighSecLegbinder",
+		inaccessible: true,
+		hobble: 1,
+		Model: "HighSecHobbleSkirt",
+		remove: ["Skirts"],
 		factionFilters: {
-			Binder: {color: "DarkNeutral", override: true},
-			Laces: {color: "Catsuit", override: true},
-			LacesTie: {color: "Catsuit", override: true},
+			Skirt: {color: "DarkNeutral", override: true},
 			Straps: {color: "Highlight", override: true},
 			Hardware: {color: "LightNeutral", override: true},
 		},
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
 		maxwill: 0.1,
-		heelpower: 0.25,
+		heelpower: 0.35,
 		sfxGroup: "Leather",
 		linkCategories: ["MasterLegs"], linkSizes: [0.6],
 		power: 30, weight: 10, debris: "Belts",
@@ -3278,6 +3310,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		strictness: 0.2, gag: 0.6, Color: ["Default", "Default"], Group: "ItemMouth", power: 8, weight: 2,
 		escapeChance: {"Struggle": -0.35, "Cut": -0.1, "Remove": 0.22, "Pick": 0.2}, enemyTags: {"highsecRestraints": 1, forceAntiMagic: -100, "leatherRestraintsHeavy" : 4}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["MuzzleGags", "Leather", "Gags"]},
 
+
+
+	
 	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "HighsecLegbinder", debris: "Belts", Asset: "LegBinder", inaccessible: true,
 		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
 		Model: "Legbinder",

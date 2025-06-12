@@ -45,7 +45,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 Mechanics
 - New cosmetic titles by Enraa
 Restraints
-- Added masterwork legbinder, hobbleskirt
+- Added masterwork legbinder, hobbleskirt, full cuff set
 - Masterwork collar now always applies first, makes other masterwork items harder to escape
 - Added secured asylum muzzle and legbinder
 - Buffed asylum transport jacket and changed the model
@@ -54,8 +54,8 @@ Assets
 Balance
 - Psychic now allows you to bypas Can't Touch That, but only if your vision is 
 - TODO dark rubber boots disp map in kneelclosed and hogtie
-- TODO regen M3
 - TODO add erase map for torso against elbow and armbinder stuff
+TODO add priority system for enemies
 
 
 5.4.75
