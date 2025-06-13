@@ -36,7 +36,7 @@ function KinkyDungeonCreateMap (
 	KDResetDialogue();
 
 	KDTileModes = {};
-	KDUpdateOptionGame();
+	KDUpdateOptionGame(false);
 	KDBreakTether(KDPlayer());
 
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeNewMap"]);

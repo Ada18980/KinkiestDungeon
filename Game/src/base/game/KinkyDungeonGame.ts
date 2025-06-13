@@ -942,7 +942,7 @@ function KDInitTempValues(seed?: boolean): void {
 }
 
 /** Game related options */
-function KDUpdateOptionGame(): void {
+function KDUpdateOptionGame(start): void {
 	if (KinkyDungeonStatsChoice.get("NoForceGreet") && !KDGameData.NoForceGreet) {
 		KDGameData.NoForceGreet = true;
 	} else if (!KinkyDungeonStatsChoice.get("NoForceGreet") && KDGameData.NoForceGreet) {
@@ -953,7 +953,7 @@ function KDUpdateOptionGame(): void {
 	for (let kurasu of Object.keys(KDClassStart)) {
 		let perkname = "MC_" + (KDClassSynonyms[kurasu] || kurasu);
 		if (!!KinkyDungeonStatsChoice.get(perkname) && KDPerkStart[perkname]) {
-			KDPerkStart[perkname]();
+			KDPerkStart[perkname](start);
 		}
 	}
 }

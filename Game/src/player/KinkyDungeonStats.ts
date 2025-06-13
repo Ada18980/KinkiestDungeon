@@ -287,7 +287,7 @@ function KinkyDungeonDefaultStats(_Load?: any) {
 	KinkyDungeonInitializeDresses();
 	KinkyDungeonShrineInit();
 
-	if (KDClassStart[KinkyDungeonClassMode]) KDClassStart[KinkyDungeonClassMode]();
+	if (KDClassStart[KinkyDungeonClassMode]) KDClassStart[KinkyDungeonClassMode](true);
 	KDGameData.Class = KinkyDungeonClassMode;
 
 	KinkyDungeonSetMaxStats();
