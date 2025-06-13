@@ -7963,7 +7963,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 这件带有额外带子的拘束衣甚至可以套在另一件拘束衣上面，以增加安全性。
 - High-Security Legbinder
 高安全性束腿套
-- An mythril legbinder enclosing your legs, making it difficult to move.
+- A tight legbinder enclosing your legs, making it difficult to move.
 束腿套包裹着你的双腿，使其难以移动。
 
 
@@ -9133,18 +9133,24 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Total blackout. The tough leather is reinforced with rivets.
 漆黑一片。结实的皮革用铆钉进行了进一步的加固。
 
-
-- Masterwork Blindfold
-极品眼罩
-- A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout.
-一条下巴固定带将这条眼罩紧紧地贴合在你的脸上，确保你完全处于黑暗之中。
+# - Masterwork Cuff Set
+# - A perfect set of cuffs for the spicy adventurer, perfect for getting into a bind.
 - Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection.
 尽管这种皮革质地柔软，但它用某种强韧的纤维进行了加固，使得大多数切割工具都没用。它的锁扣装置还有另外四个连接点。
+# :: RestraintHighSecCuffsFullDesc2
+# :: RestraintMasterworkHobbleskirtDesc2
 # :: RestraintMasterworkBlindfoldDesc2
 # :: RestraintMasterworkCorsetDesc2
 # :: RestraintMasterworkHeelsDesc2
 # :: RestraintMasterworkGlovesDesc2
 # :: RestraintMasterworkCollarDesc2
+# - Masterwork Hobbleskirt
+# - A skintight dress covering your lower body, allowing you to take only the smallest of steps.
+
+- Masterwork Blindfold
+极品眼罩
+- A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout.
+一条下巴固定带将这条眼罩紧紧地贴合在你的脸上，确保你完全处于黑暗之中。
 
 - Masterwork Corset
 极品束腰
