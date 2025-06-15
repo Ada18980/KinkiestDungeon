@@ -65,16 +65,19 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 	return KDScrollableListDataset[name];
 }
 
-function KDFixScrollableList(name: string, pad = 3) {
+function KDFixScrollableList(name: string, pad = 3): boolean {
 	if (KDScrollableListDataset[name]) {
 		let list = KDScrollableListDataset[name];
+		let origIndex = list.index;
 		if (list.num_per_page > pad) pad = Math.max(0, list.num_per_page - 1);
 		if (list.selectedindex < pad + list.index && list.index > list.min) {
 			list.index = Math.max(list.min, list.selectedindex - pad);
-		} else if (list.selectedindex < pad + list.index && list.index < list.max) {
+		} else if (list.selectedindex > pad + list.index && list.index < list.max) {
 			list.index = Math.min(list.max, list.selectedindex - (list.num_per_page - pad));
 		}
+		return list.index != origIndex;
 	}
+	return false;
 }
 
 function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: number): boolean {
@@ -150,9 +153,20 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	index: number,
 	visualIndex: number,
 	isSelected: boolean,
+	selectedIndex: number,
 	list: KDScrollableListData) => boolean, drawBG = true, scrollbarSize = 36, scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = ""): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
+	
+	if (scrollhotkeyUp && scrollhotkeyDown) {
+		if (KinkyDungeonKeybindingCurrentKey == scrollhotkeyUp
+				|| KinkyDungeonKeybindingCurrentKey == scrollhotkeyDown) {
+					if (KDFixScrollableList(name, 3)) {
+						KinkyDungeonKeybindingCurrentKey = "";
+					}
+				}
+	}
+	
 	
 	if (useContainer != undefined) {
 		if (!KDPIXIScrollableListContainers[name]) {
@@ -235,8 +249,8 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		KDBaseWhite, KinkyDungeonRootDirectory + "Up" + scrollSuff + ".png", undefined, 
 		undefined, true, undefined, undefined, undefined, {
 				centered: true,
-				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
-				hotkeyPressed: scrollhotkeyUp,
+				//hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
+				//hotkeyPressed: scrollhotkeyUp,
 			});
 		DrawButtonKDEx(name + "downbtn", (_b) => {
 			KDScrollScrollableList(name, 1);
@@ -246,12 +260,14 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		KDBaseWhite, KinkyDungeonRootDirectory + "Down" + scrollSuff + ".png", undefined, 
 		undefined, true, undefined, undefined, undefined, {
 				centered: true,
-				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
-				hotkeyPressed: scrollhotkeyDown,
+				//hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
+				//hotkeyPressed: scrollhotkeyDown,
 			});
 
 
 	}
+
+	let lastSelectedIndex = list.selectedindex;	
 
 	list.selectedindex = -1;
 	let selected: any = null;
@@ -262,7 +278,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			if (list.items[i + list.index]) {
 				if (drawCallback(container, i >= 0 && i <= list.num_per_page, list.items[i + list.index], i + list.index,
 						i + diffReal,
-						list.selectedindex == i + list.index, list)) {
+						list.selectedindex == i + list.index, lastSelectedIndex, list)) {
 					list.selectedindex = i + list.index;
 					selected = list.items[i + list.index];
 				}
