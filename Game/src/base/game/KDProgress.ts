@@ -125,7 +125,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
         textColor: KDBaseCyan,
-        level: 1,
+        level: 10,
         priority: 10,
     });
     data.list.push({
@@ -134,7 +134,6 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
         textColor: KDBaseCyan,
-        level: 1,
         priority: 10,
     });
     data.list.push({
@@ -143,7 +142,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
         textColor: KDBaseCyan,
-        level: 1,
+        level: 5,
         priority: 10,
     });
     data.list.push({
@@ -152,7 +151,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         color: KDBaseRed,
         bordercolor: KDBaseRed,
         textColor: KDBaseRed,
-        level: 1,
+        level: 7,
         priority: 10,
     });
 }
@@ -212,17 +211,17 @@ function KDDrawProgressList(xOffset) {
 		let w = list.w - 40;
         DrawTextFitKDTo(container, TextGet("KDProgressItem_" + item.name,
             item.data), 
-            list.x + 10 + w*0.5, list.y + 20 + visualIndex * 80, 
+            list.x + 20 + w*0.5, list.y + 20 + visualIndex * 80, 
             w - 80, item.textColor)
 		if (item.level != undefined)
 			DrawTextFitKDTo(container, "" + item.level, 
-				list.x + 15, list.y + 38 + visualIndex * 80, 
-				w - 10, item.textColor, undefined, 48, "left", 
+				list.x + 32, list.y + 38 + visualIndex * 80,
+				w - 10, item.textColor, undefined, 48, "center", 
 				100.5, 0.4)
        
         DrawRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbborder", {
             Color: item.bordercolor,
-            Left: list.x + 50,
+            Left: list.x + 60,
             Height: 12,
             Top: list.y + 50 + visualIndex * 80,
             Width: w - 70,
@@ -232,8 +231,8 @@ function KDDrawProgressList(xOffset) {
         });
         FillRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbfill", {
             Color: item.color,
-            Left: list.x + 50,
-            Height: 12,
+            Left: list.x + 60,
+            Height: 11,
             Top: list.y + 50 + visualIndex * 80,
             Width: (w - 70) * item.progress,
             zIndex: 101,
