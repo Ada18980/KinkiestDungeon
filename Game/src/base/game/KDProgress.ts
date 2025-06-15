@@ -16,7 +16,7 @@ interface ProgressListData {
     color: string,
     bordercolor: string,
     textColor: string,
-    level: number,
+    level?: number,
     priority: number,
 }
 interface ProgressListEventData {
@@ -209,6 +209,37 @@ function KDDrawProgressList(xOffset) {
         selectedIndex: number,
         list: KDScrollableListData)  => {
         let it = item;
+		let w = list.w - 40;
+        DrawTextFitKDTo(container, TextGet("KDProgressItem_" + item.name,
+            item.data), 
+            list.x + 10 + w*0.5, list.y + 20 + visualIndex * 80, 
+            w - 80, item.textColor)
+		if (item.level != undefined)
+			DrawTextFitKDTo(container, "" + item.level, 
+				list.x + 15, list.y + 38 + visualIndex * 80, 
+				w - 10, item.textColor, undefined, 48, "left", 
+				100.5, 0.4)
+       
+        DrawRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbborder", {
+            Color: item.bordercolor,
+            Left: list.x + 50,
+            Height: 12,
+            Top: list.y + 50 + visualIndex * 80,
+            Width: w - 70,
+            zIndex: 102,
+            alpha: 0.9,
+            LineWidth: 1
+        });
+        FillRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbfill", {
+            Color: item.color,
+            Left: list.x + 50,
+            Height: 12,
+            Top: list.y + 50 + visualIndex * 80,
+            Width: (w - 70) * item.progress,
+            zIndex: 101,
+            alpha: 0.9,
+            LineWidth: 1
+        });
         DrawButtonKDExTo(container, "MainProgressSelect" + item.name, 
             (bdata) => {
                 KDCurrentProgressMainSelection = it.name;
@@ -221,9 +252,9 @@ function KDDrawProgressList(xOffset) {
             }, isClickable, 
             list.x + 10, 
             list.y + visualIndex * 80,
-            list.w - 50, 
+            w - 10, 
             72, 
-            TextGet("KDProgressItem_" + item.name, item.data), 
+            "", 
             item.textColor, "", undefined, undefined,
             KDCurrentProgressMainSelection != item.name, KDButtonColor, undefined, undefined, {
                 hotkey: selectedIndex == index - 1 ? KDHotkeyToText(hotkeyDown)
