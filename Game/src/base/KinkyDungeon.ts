@@ -3740,13 +3740,18 @@ function KDCullTexList(list: Map<string, PIXITexture>): void {
 	}
 }
 
+interface KDButtonPressData {
+	/** mouse or hotkey */
+	source: string,
+}
+
 interface KDButtonParamData {
 	Left: number,
 	Top: number,
 	Width: number,
 	Height: number,
 	enabled: boolean,
-	func?: (bdata: any) => boolean,
+	func?: (bdata: KDButtonPressData) => boolean,
 	priority: number,
 	scrollfunc?: (amount: number) => void,
 	hotkeyPress?: string, contextMenu?: string
@@ -4447,7 +4452,9 @@ function KDProcessButtons() {
 	}
 	if (buttons.length > 0) {
 		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
-		return buttons[0].func();
+		return buttons[0].func({
+			source: "mouse"
+		});
 	}
 
 	return false;
@@ -4464,7 +4471,9 @@ function KDProcessHoldButtons() {
 	}
 	if (buttons.length > 0) {
 		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
-		return buttons[0].func();
+		return buttons[0].func({
+			source: "mouse"
+		});
 	}
 
 	return false;
@@ -4473,20 +4482,24 @@ function KDProcessHoldButtons() {
 /**
  * Buttons are clickable one frame later, please factor this in to UI design (especially when enforcing validation)
  */
-function KDClickButton(name: string): boolean {
+function KDClickButton(name: string, source: string = "hotkey", key: string = ""): boolean {
 	let button = KDButtonsCache[name] || KDLastButtonsCache[name];
 	if (button && button.enabled) {
-		return button.func(button);
+		return button.func({
+			source: source
+		});
 	}
 	return false;
 }
 /**
  * Buttons are clickable one frame later, please factor this in to UI design (especially when enforcing validation)
  */
-function KDHoldButton(name: string): boolean {
+function KDHoldButton(name: string, source: string = "hotkey", key: string = ""): boolean {
 	let button = KDHoldButtonsCache[name] || KDLastHoldButtonsCache[name];
 	if (button && button.enabled) {
-		return button.func(button);
+		return button.func({
+			source: source
+		});
 	}
 	return false;
 }

@@ -2095,7 +2095,7 @@ function KinkyDungeonGameKeyDown() {
 
 	for (let b of Object.entries(KDButtonsCache)) {
 		if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
-			if (KDClickButton(b[0])) {
+			if (KDClickButton(b[0], "hotkey", KinkyDungeonKeybindingCurrentKey)) {
 				return true;
 			}
 		}
