@@ -43,6 +43,10 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 5.4.77
 - Added scrollable menus feature as well as progress tab that can be enabled by mods.
+- Fix wrong spell component fail message being displayed
+
+5.4.76
+- Fixed a rare crash
 
 5.4.75
 - Modders: Refactored struggle group buttons
