@@ -550,8 +550,8 @@ function KDDrawLoreRepTabs(xOffset: number = -125) {
 	KinkyDungeonDrawState != "JourneyMap", KDButtonColor, undefined, undefined,
 {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
-	}); II++;
 		hotkeyPress: KinkyDungeonKeyTab[II],
+	}); II++;
 	/*DrawButtonKDExScroll("TabCollection", scrollFunc, (b) => {
 		KinkyDungeonDrawState = "Collection";
 		return true;

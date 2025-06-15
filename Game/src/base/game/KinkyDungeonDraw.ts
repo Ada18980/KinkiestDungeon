@@ -1940,7 +1940,9 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonDrawFacilities();
 		}  else if (KinkyDungeonDrawState == "Progress") {
 			KDDrawNavBar(1);
-			KinkyDungeonDrawPlayerNameInMenus()
+			if (KDGameData.PlayerName) {
+				DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, KDBaseWhite, KDTextGray0, 32, "center", 20);
+			}
 			KinkyDungeonDrawProgress();
 		} else if (KinkyDungeonDrawState == "Container" && KDUI_CurrentContainer) {
 			KDDrawNavBar(1);
