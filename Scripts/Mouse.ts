@@ -12,7 +12,9 @@ let MouseY: number = 0;
 function MouseIn(Left: number, Top: number, Width: number, Height: number): boolean {
 	return MouseXIn(Left, Width) && MouseYIn(Top, Height);
 }
-
+function PointIn(X: number, Y: number, Left: number, Top: number, Width: number, Height: number): boolean {
+	return (X >= Left) && (X <= Left + Width) && (Y >= Top) && (Y <= Top + Height);
+}
 /**
  * Check if the mouse position is within the boundaries of a given zone along the X axis
  * @param Left - Starting position on the X axis

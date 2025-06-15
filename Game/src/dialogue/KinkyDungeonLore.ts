@@ -636,20 +636,23 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
 		hotkeyPress: KinkyDungeonKeyTab[II],
 	}); II++;
-	DrawButtonKDExScroll("TabProgress", scrollFunc, (b) => {
-		KinkyDungeonDrawState = "Progress";
-		return true;
-	}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonProgress"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonDrawState != "Progress", KDButtonColor, undefined, undefined,
-{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
-		hotkeyPress: KinkyDungeonKeyTab[II],
-	}); II++;
+	if (KDProgressEnabled) {
+		DrawButtonKDExScroll("TabProgress", scrollFunc, (b) => {
+			KinkyDungeonDrawState = "Progress";
+			return true;
+		}, true, xxstart + II*width, yy, width - 10, 40, TextGet("KinkyDungeonProgress"), KDBaseWhite, undefined, undefined, undefined,
+		KinkyDungeonDrawState != "Progress", KDButtonColor, undefined, undefined,
+	{
+			hotkey: KDHotkeyToText(KinkyDungeonKeyTab[II]),
+			hotkeyPress: KinkyDungeonKeyTab[II],
+		}); II++;
+	}
+	
 
 
 }
 
-
+let KDProgressEnabled = false;
 
 /**
  * @param exploredLore
