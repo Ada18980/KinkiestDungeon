@@ -1564,6 +1564,7 @@ let KDErrorTextTime = 0;
 let KDErrorTextTime_DELAY = 2500;
 
 let KDCurrentHoverButton: KDButtonParamData = null;
+let KDLastScrollableListUpdate = 0;
 
 function KinkyDungeonRun() {
 
@@ -1644,6 +1645,9 @@ function KinkyDungeonRun() {
 	KDJourneyGraphics.clear();
 	KDJourneyGraphicsLower.clear();
 	KDJourneyGraphicsUpper.clear();
+
+	let scollablelistdelta = 0.001*(CommonTime() - KDLastScrollableListUpdate);
+	KDUpdateScrollableLists(scollablelistdelta);
 
 
 	if (mouseDown && !LongHoldPinged && HoldMoved && HoldStartTime > 0 && CommonTime() > HoldStartTime + LongHoldThresh) {
@@ -4078,6 +4082,7 @@ function KDMouseWheel (event: WheelEvent): void {
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
 	} else return;
 
+	if (KDScrollScrollableLists(MouseX, MouseY, event.deltaY)) return;
 	if (KDFunctionCycleTabScroll(event.deltaY)) return;
 	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
 
