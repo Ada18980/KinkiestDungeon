@@ -660,7 +660,12 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 
 }
 
-
+/**
+ * @deprecated
+ * Deprecated since 5.5
+ * only in for compatibility
+ */
+let KDProgressEnabled = true;
 
 /**
  * @param exploredLore
