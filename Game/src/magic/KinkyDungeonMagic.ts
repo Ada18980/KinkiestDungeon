@@ -456,7 +456,7 @@ function KinkyDungeonHandleSpellCast(spell: spell) {
 		KinkyDungeonTargetingSpell = null;
 		KinkyDungeonTargetingSpellItem = null;
 		KinkyDungeonTargetingSpellWeapon = null;
-		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + KinkyDungeoCheckComponents(spell)?.components[0]), KDBaseRed, 1);
+		KinkyDungeonSendActionMessage(7, TextGet("KinkyDungeonComponentsFail" + (cp.failed[0] || cp.components[0])), KDBaseRed, 1);
 	}
 	return null;
 }
