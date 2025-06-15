@@ -69,11 +69,11 @@ function KDFixScrollableList(name: string, pad = 3): boolean {
 	if (KDScrollableListDataset[name]) {
 		let list = KDScrollableListDataset[name];
 		let origIndex = list.index;
-		if (list.num_per_page > pad) pad = Math.max(0, list.num_per_page - 1);
+		if (list.num_per_page > pad) pad = Math.max(0, Math.ceil(list.num_per_page*0.4 - 1));
 		if (list.selectedindex < pad + list.index && list.index > list.min) {
-			list.index = Math.max(list.min, list.selectedindex - pad);
-		} else if (list.selectedindex > -pad + list.index && list.index < list.max) {
-			list.index = Math.min(list.max, list.selectedindex - (list.num_per_page - pad));
+			list.index = Math.max(list.min, Math.min(list.max, list.selectedindex - pad));
+		} else if (list.selectedindex > list.num_per_page-pad - 1 + list.index && list.index < list.max) {
+			list.index = Math.min(list.max, Math.max(list.min, list.selectedindex - (list.num_per_page - pad - 1)));
 		}
 		return list.index != origIndex;
 	}
@@ -157,15 +157,6 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	list: KDScrollableListData) => boolean, drawBG = true, scrollbarSize = 36, scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = ""): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
-	
-	if (scrollhotkeyUp && scrollhotkeyDown) {
-		if (KinkyDungeonKeybindingCurrentKey == scrollhotkeyUp
-				|| KinkyDungeonKeybindingCurrentKey == scrollhotkeyDown) {
-					if (KDFixScrollableList(name, 3)) {
-						KinkyDungeonKeybindingCurrentKey = "";
-					}
-				}
-	}
 	
 	
 	if (useContainer != undefined) {
@@ -285,5 +276,17 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			}
 		}
 	}
+
+
+	if (scrollhotkeyUp && scrollhotkeyDown) {
+		if (KinkyDungeonKeybindingCurrentKey == scrollhotkeyUp
+				|| KinkyDungeonKeybindingCurrentKey == scrollhotkeyDown) {
+					if (KDFixScrollableList(name, 3)) {
+						//KinkyDungeonKeybindingCurrentKey = "";
+					}
+				}
+	}
+	
+
 	return selected;
 }

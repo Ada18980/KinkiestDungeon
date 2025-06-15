@@ -212,6 +212,11 @@ function KDDrawProgressList(xOffset) {
         DrawButtonKDExTo(container, "MainProgressSelect" + item.name, 
             (bdata) => {
                 KDCurrentProgressMainSelection = it.name;
+                if (bdata?.source == "hotkey") {
+                    setTimeout(() => {
+                    KDFixScrollableList(MainList);
+                }, 100);
+                }
                 return true;
             }, isClickable, 
             list.x + 10, 
