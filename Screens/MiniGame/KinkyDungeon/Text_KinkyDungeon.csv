@@ -1049,6 +1049,11 @@ KinkyDungeonKeyUpLeft,Up Left
 KinkyDungeonKeyUpRight,Up Right
 KinkyDungeonKeyDownLeft,Down Left
 KinkyDungeonKeyDownRight,Down Right
+KinkyDungeonKeyTab1,Tab 1
+KinkyDungeonKeyTab2,Tab 2
+KinkyDungeonKeyTab3,Tab 3
+KinkyDungeonKeyTab4,Tab 4
+KinkyDungeonKeyTab5,Tab 5
 KinkyDungeonKeySpell1,Spell 1
 KinkyDungeonKeySpell2,Spell 2
 KinkyDungeonKeySpell3,Spell 3
@@ -29625,6 +29630,7 @@ KinkyDungeonKeyCollection,Collection
 KinkyDungeonCollection,Collection
 KinkyDungeonFacilities,Facilities
 KinkyDungeonTraining,Training
+KinkyDungeonProgress,Progress
 
 KDPrisonersCurrent,Storage
 KDPrisonersManagement,Management
@@ -32567,3 +32573,5 @@ KDPlayerTitle_Mastery_AncientAdventurer,Ancient Adventurer
 KDPlayerTitleDesc_Mastery_AncientAdventurer,Unlocked by wearing every Ancient restraint at the same time.
 KDPlayerTitle_Cursed,Cursed
 KDPlayerTitleDesc_Cursed,Unlocked by wearing any cursed restraint or armor.
+
+KDProgressItem_TrainingHeels,Heel Training

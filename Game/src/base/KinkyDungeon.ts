@@ -157,14 +157,15 @@ let KDLoadingMax = 1;
 let KinkyDungeonKey = ['W', 'A', 'S', 'D', 'Q', 'E', 'Z', 'C'];
 //let KinkyDungeonKeyNumpad = [56, 52, 50, 54, 55, 57, 49, 51]; // Numpad
 let KinkyDungeonKeySpell = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']; // 1 2 3 4 5 6 7
-let KinkyDungeonKeySpellConfig = ['<', '@', '#'];
+let KinkyDungeonKeyTab = ["!", "@", "#", "$", "%", ]; // 1 2 3 4 5 6 7
+//let KinkyDungeonKeySpellConfig = ['<', '@', '#'];
 let KinkyDungeonKeyWait = ['X'];
 let KinkyDungeonKeySkip = ['Space'];
 let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-', '_', "Home", "PageUp"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
+let KinkyDungeonKeyMenu = ['V', 'I', 'M', 'L', "Home"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'", 'N', 'K']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch, Buffs
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
@@ -424,6 +425,11 @@ let KDDefaultKB = {
 	Spell9: KinkyDungeonKeySpell[8],
 	Spell0: KinkyDungeonKeySpell[9],
 
+	Tab1: KinkyDungeonKeyTab[0],
+	Tab2: KinkyDungeonKeyTab[1],
+	Tab3: KinkyDungeonKeyTab[2],
+	Tab4: KinkyDungeonKeyTab[3],
+	Tab5: KinkyDungeonKeyTab[4],
 
 
 	Wait: KinkyDungeonKeyWait[0],
@@ -446,14 +452,14 @@ let KDDefaultKB = {
 
 	QInventory: KinkyDungeonKeyMenu[0],
 	Inventory: KinkyDungeonKeyMenu[1],
-	Reputation: KinkyDungeonKeyMenu[2],
-	Magic: KinkyDungeonKeyMenu[3],
-	Log: KinkyDungeonKeyMenu[4],
-	Quest: KinkyDungeonKeyMenu[5],
-	Collection: KinkyDungeonKeyMenu[6],
-	Facilities: KinkyDungeonKeyMenu[7],
-	Restart: KinkyDungeonKeyMenu[8],
-	JourneyMap: KinkyDungeonKeyMenu[9],
+	//Reputation: KinkyDungeonKeyMenu[2],
+	Magic: KinkyDungeonKeyMenu[2],
+	Log: KinkyDungeonKeyMenu[3],
+	//Quest: KinkyDungeonKeyMenu[5],
+	//Collection: KinkyDungeonKeyMenu[6],
+	//Facilities: KinkyDungeonKeyMenu[7],
+	Restart: KinkyDungeonKeyMenu[4],
+	//JourneyMap: KinkyDungeonKeyMenu[9],
 
 
 	SwitchWeapon: KinkyDungeonKeySwitchWeapon[0],
@@ -463,9 +469,6 @@ let KDDefaultKB = {
 	SwitchLoadout1: KinkyDungeonKeySwitchLoadout[0],
 	SwitchLoadout2: KinkyDungeonKeySwitchLoadout[1],
 	SwitchLoadout3: KinkyDungeonKeySwitchLoadout[2],
-	SpellConfig1: KinkyDungeonKeySpellConfig[0],
-	SpellConfig2: KinkyDungeonKeySpellConfig[1],
-	SpellConfig3: KinkyDungeonKeySpellConfig[2],
 
 	AStruggle: KinkyDungeonKeyToggle[3],
 	APathfind: KinkyDungeonKeyToggle[4],
@@ -1656,6 +1659,7 @@ function KinkyDungeonRun() {
 	KDJourneyGraphicsUpper.clear();
 
 	let scollablelistdelta = 0.001*(CommonTime() - KDLastScrollableListUpdate);
+	KDLastScrollableListUpdate = CommonTime();
 	KDUpdateScrollableLists(scollablelistdelta);
 
 
@@ -3597,6 +3601,10 @@ function KinkyDungeonRun() {
 	//MainCanvas.textBaseline = "middle";
 
 	KDLastButtonsCache = {};
+	KDLastHoldButtonsCache = {};
+
+	if (mouseDown)
+		KDHandleMouseDown();
 	//MouseClicked = false;
 
 	if ((!KDDebugMode && KinkyDungeonDrawState == "Restart") || (KDDebugMode && (KinkyDungeonDrawState != "Restart" || KinkyDungeonState != "Game"))) {
@@ -3746,8 +3754,12 @@ interface KDButtonParamData {
 
 let KDButtonsCache: Record<string, KDButtonParamData> = {
 };
+let KDHoldButtonsCache: Record<string, KDButtonParamData> = {
+};
 
 let KDLastButtonsCache: Record<string, KDButtonParamData> = {
+};
+let KDLastHoldButtonsCache: Record<string, KDButtonParamData> = {
 };
 
 /**
@@ -3797,6 +3809,82 @@ function DrawButtonKD (
 	DrawButtonVis(Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder);
 	KDButtonsCache[name] = params;
 }
+
+
+
+
+/**
+ * Draws a button component
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Label - Text to display in the button
+ * @param Color - Color of the component
+ * @param [Image] - URL of the image to draw inside the button, if applicable
+ * @param [HoveringText] - Text of the tooltip, if applicable
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [NoBorder] - Disables border
+ * @param [FillColor] - BG color
+ * @param [FontSize] - Font size
+ * @param [ShiftText] - Shift text to make room for the button
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha] - Dont show text backgrounds
+ * @param [options.zIndex] - zIndex
+ * @param [options.scaleImage] - zIndex
+ * @param [options.centered] - centered
+ * @param [options.centerText] - centered
+ * @param [options.tint] - tint
+ * @param [options.hotkey] - hotkey
+ * @param [options.hotkeyPress] - hotkey
+ * @param [options.filters] - filters
+ * @returns - Whether or not the mouse is in the button
+ */
+function DrawHoldButtonKDExTo (
+	Container: PIXIContainer,
+	name:		string,
+	func:		(bdata: any) => any,
+	enabled:	boolean,
+	Left:		number,
+	Top:		number,
+	Width:		number,
+	Height:		number,
+	Label:		string,
+	Color:		string,
+	Image?:		string,
+	HoveringText?:	string,
+	Disabled?:	boolean,
+	NoBorder?:	boolean,
+	FillColor?:	string,
+	FontSize?:	number,
+	ShiftText?:	boolean,
+	options?:	any,
+): boolean
+{
+	let params = {
+		Left,
+		Top,
+		Width,
+		Height,
+		enabled,
+		func,
+		priority: (options?.zIndex || 0),
+		hotkeyPress: options?.hotkeyPress,
+	};
+	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
+	if (hover) {
+		if (!KDCurrentHoverButton) KDCurrentHoverButton = params;
+		else Disabled = true;
+	}
+	DrawButtonVisTo(Container, Left, Top, Width, Height, Label, Color, Image, HoveringText, Disabled, NoBorder, FillColor, FontSize, ShiftText, undefined, options?.zIndex, options);
+	KDHoldButtonsCache[name] = params
+	return MouseIn(Left,Top,Width,Height);
+}
+
 
 
 /**
@@ -4096,7 +4184,8 @@ function KDMouseWheel (event: WheelEvent): void {
 		if (KDProcessButtonScroll(event.deltaY, 15)) return;
 	} else return;
 
-	if (KDScrollScrollableLists(MouseX, MouseY, event.deltaY)) return;
+	if (KDScrollScrollableLists(MouseX, MouseY, Math.sign(event.deltaY)
+		* Math.ceil(Math.abs(event.deltaY / 100)))) return;
 	if (KDFunctionCycleTabScroll(event.deltaY)) return;
 	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
 
@@ -4329,6 +4418,13 @@ function KDProcessButtonScroll(amount: number, padV: number = 0): boolean {
 			}
 		}
 	}
+	for (let button of Object.entries(KDHoldButtonsCache)) {
+		if (button[1].enabled && button[1].scrollfunc) {
+			if (MouseInKD(button[0], 0, padV)) {
+				buttons.push(button[1]);
+			}
+		}
+	}
 	if (buttons.length > 0) {
 		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
 		buttons[0].scrollfunc(amount);
@@ -4356,6 +4452,23 @@ function KDProcessButtons() {
 
 	return false;
 }
+function KDProcessHoldButtons() {
+	//KDFocusControls = "";
+	let buttons = [];
+	for (let button of Object.entries(KDHoldButtonsCache)) {
+		if (button[1].enabled && button[1].func) {
+			if (MouseInKD(button[0])) {
+				buttons.push(button[1]);
+			}
+		}
+	}
+	if (buttons.length > 0) {
+		buttons = buttons.sort((a, b) => {return b.priority - a.priority;});
+		return buttons[0].func();
+	}
+
+	return false;
+}
 
 /**
  * Buttons are clickable one frame later, please factor this in to UI design (especially when enforcing validation)
@@ -4367,9 +4480,19 @@ function KDClickButton(name: string): boolean {
 	}
 	return false;
 }
+/**
+ * Buttons are clickable one frame later, please factor this in to UI design (especially when enforcing validation)
+ */
+function KDHoldButton(name: string): boolean {
+	let button = KDHoldButtonsCache[name] || KDLastHoldButtonsCache[name];
+	if (button && button.enabled) {
+		return button.func(button);
+	}
+	return false;
+}
 
 function MouseInKD(name: string, padX: number = 0, padV: number = 0) {
-	let button = KDButtonsCache[name];
+	let button = KDButtonsCache[name] || KDHoldButtonsCache[name];
 	if (button && button.enabled) {
 		return MouseIn(button.Left - padX, button.Top - padV, button.Width + 2*padX, button.Height + 2*padV);
 	}
@@ -4588,6 +4711,13 @@ function KDCommitKeybindings() {
 	KinkyDungeonGameKey.KEY_DOWNRIGHT = (KinkyDungeonKeybindings.DownRight);
 
 	//let KinkyDungeonKeyNumpad = [56, 52, 50, 54, 55, 57, 49, 51]; // Numpad
+	KinkyDungeonKeyTab = [
+		KinkyDungeonKeybindings.Tab1,
+		KinkyDungeonKeybindings.Tab2,
+		KinkyDungeonKeybindings.Tab3,
+		KinkyDungeonKeybindings.Tab4,
+		KinkyDungeonKeybindings.Tab5,
+	],
 	KinkyDungeonKeySpell = [
 		KinkyDungeonKeybindings.Spell1,
 		KinkyDungeonKeybindings.Spell2,
@@ -4601,11 +4731,6 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Spell0,
 	]; // ! @ #
 	KinkyDungeonKeyUpcast = [KinkyDungeonKeybindings.Upcast, KinkyDungeonKeybindings.UpcastCancel];
-	KinkyDungeonKeySpellConfig = [
-		KinkyDungeonKeybindings.SpellConfig1,
-		KinkyDungeonKeybindings.SpellConfig2,
-		KinkyDungeonKeybindings.SpellConfig3,
-	];
 	KinkyDungeonKeyWait = [KinkyDungeonKeybindings.Wait];
 	KinkyDungeonKeySkip = [KinkyDungeonKeybindings.Skip];
 	KinkyDungeonKeyWeapon = [KinkyDungeonKeybindings.SpellWeapon]; // 8 (57)
@@ -6055,6 +6180,34 @@ function KDUpdateHardMode() {
 let KDHardModeThresh = 10;
 let KDAwaitingModLoad = false;
 
+function KDHandleMouseDown() {
+	allowMusic = true;
+	if (KDAwaitingModLoad) return true;
+	if (KDContextMenu && KDCurrentHoverButton?.contextMenu
+	) {
+		if (!MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) {
+			//KDContextMenu = false;
+			return true;
+		}
+		KDProcessHoldButtons();
+		return true;
+	} else if (KDContextMenu && KDDrawGameContextMenu[KinkyDungeonDrawState]
+	) {
+		if (!MouseIn(KDContextXX, KDContextYY, KDContextW, KDContextH)) {
+			//KDContextMenu = false;
+			return true;
+		}
+		KDProcessHoldButtons();
+		return true;
+	}
+	if (KDProcessHoldButtons()) return true;
+
+
+
+
+	return false;
+}
+
 function KinkyDungeonHandleClick(event: MouseEvent) {
 	allowMusic = true;
 	KDLastForceRefresh = CommonTime() - KDLastForceRefreshInterval - 10;
@@ -7386,12 +7539,20 @@ function KDDrawGameSetupTabs(_xOffset: number = 0) {
 		KinkyDungeonState = "Diff";
 		return true;
 	}, true, 500, 10, 740, 40, TextGet("KDDiffTab_Diff"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonState != "Diff", KDButtonColor);
+	KinkyDungeonState != "Diff", KDButtonColor, undefined, undefined,
+{
+		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[0]),
+		hotkeyPress: KinkyDungeonKeySpell[0],
+	});
 	DrawButtonKDEx("TabChallenge", (_b) => {
 		KinkyDungeonState = "Challenge";
 		return true;
 	}, true, 1250, 10, 740, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonState != "Challenge", KDButtonColor);
+	KinkyDungeonState != "Challenge", KDButtonColor, undefined, undefined,
+{
+		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[1]),
+		hotkeyPress: KinkyDungeonKeySpell[1],
+	});
 
 
 	DrawButtonKDEx("backButton", (_b) => {

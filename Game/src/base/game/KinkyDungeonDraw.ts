@@ -1967,6 +1967,10 @@ function KinkyDungeonDrawGame() {
 			KDDrawNavBar(1);
 			KinkyDungeonDrawPlayerNameInMenus()
 			KinkyDungeonDrawFacilities();
+		}  else if (KinkyDungeonDrawState == "Progress") {
+			KDDrawNavBar(1);
+			KinkyDungeonDrawPlayerNameInMenus()
+			KinkyDungeonDrawProgress();
 		} else if (KinkyDungeonDrawState == "Container" && KDUI_CurrentContainer) {
 			KDDrawNavBar(1);
 			KinkyDungeonDrawPlayerNameInMenus()

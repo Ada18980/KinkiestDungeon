@@ -1,10 +1,12 @@
 let KDScrollableListDataset: Record<string, KDScrollableListData> = {};
 interface KDScrollableListData {
+	/** which index is at the top */
     index: number,
 	x: number,
 	y: number,
 	w: number,
 	h: number,
+	num_per_page: number,
 	zIndex: number,
 	allowWrap: boolean,
     visual_index: number,
@@ -12,13 +14,68 @@ interface KDScrollableListData {
     click_hold_y: number,
     max: number,
     min: number,
+	/** which one is selected */
     selectedindex: number,
     items: any[],
     lastUpdated: number,
     updateInterval: number,
 }
-let KDScrollableListExp = 0.5;
-let KDScrollableListMin = 0.25;
+let KDScrollableListExp = 4;
+let KDScrollableListMin = 4;
+
+function ShouldUpdateList(name: string, reset = true) {
+	if (KDScrollableListDataset[name]) {
+		if (CommonTime() - KDScrollableListDataset[name].lastUpdated > KDScrollableListDataset[name].updateInterval) {
+			if (reset)
+				KDScrollableListDataset[name].lastUpdated = 0;
+			return true;
+		}
+		return false;
+	}
+	return true;
+}
+function ForceUpdateList(name: string) {
+	if (KDScrollableListDataset[name]) {
+		KDScrollableListDataset[name].lastUpdated = 0;
+	}
+}
+function PopulateList(name: string, x: number, y: number, w: number, h: number, z: number, num_per_page: number, list: any[], allowWrap?: boolean): KDScrollableListData {
+	if (!KDScrollableListDataset[name]) {
+		KDScrollableListDataset[name] = {
+			allowWrap: allowWrap,
+			x: x,
+			y: y,
+			w: w,
+			h: h,
+			click_hold_y: 0,
+			index: 0,
+			selectedindex: 0,
+			visual_index: 0,
+			items: [],
+			lastUpdated: 0,
+			updateInterval: 500,
+			zIndex: z,
+			max: list.length - 1,
+			min: 0,
+			num_per_page: num_per_page
+		};
+	}
+	KDScrollableListDataset[name].items = list;
+	KDScrollableListDataset[name].lastUpdated = CommonTime();
+	return KDScrollableListDataset[name];
+}
+
+function KDFixScrollableList(name: string, pad = 3) {
+	if (KDScrollableListDataset[name]) {
+		let list = KDScrollableListDataset[name];
+		if (list.num_per_page > pad) pad = Math.max(0, list.num_per_page - 1);
+		if (list.selectedindex < pad + list.index && list.index > list.min) {
+			list.index = Math.max(list.min, list.selectedindex - pad);
+		} else if (list.selectedindex < pad + list.index && list.index < list.max) {
+			list.index = Math.min(list.max, list.selectedindex - (list.num_per_page - pad));
+		}
+	}
+}
 
 function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: number): boolean {
 	let highestZ = -1000000;
@@ -38,23 +95,30 @@ function KDScrollScrollableLists(mouseX: number, mouseY: number, scrollAmount: n
 	if (highest) {
 		let list = KDScrollableListDataset[highest];
 		if (list) {
-			if (list.allowWrap && list.index == list.max) {
-				list.index = list.min;
-			}
-			else if (list.allowWrap && list.index == list.min) {
-				list.index = list.max;
-			}
-			else if (list.index != list.max && list.index != list.min) {
-				list.index = Math.max(
-					Math.min(list.index + scrollAmount, 
-						list.max), 
-						list.min);
-			}
-			return true;
-			
+			return KDScrollScrollableList(highest, scrollAmount)
 		}
 	}
 	return false;
+}
+
+
+function KDScrollScrollableList(name: string, amount: number) {
+	let list = KDScrollableListDataset[name];
+	if (!list) return false;
+	let origIndex = list.index;
+	if (list.allowWrap && list.index == list.max) {
+		list.index = list.min;
+	}
+	else if (list.allowWrap && list.index == list.min) {
+		list.index = list.max;
+	}
+	else {
+		list.index = Math.max(
+			Math.min(list.index + amount, 
+				list.max - Math.max(0, (list.num_per_page - 3))), 
+				list.min);
+	}
+	return list.index != origIndex;
 }
 
 function KDUpdateScrollableLists(delta: number) {
@@ -72,4 +136,138 @@ function KDUpdateScrollableLists(delta: number) {
             }
         }
     }
+}
+
+let KDPIXIScrollableListContainers : Record<string, PIXIContainer> = {
+
+}
+
+/** return function of callback is if this is selected or not */
+function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback: (
+	container: PIXIContainer,
+	isClickable: boolean,
+	item: any,
+	index: number,
+	visualIndex: number,
+	isSelected: boolean,
+	list: KDScrollableListData) => boolean, drawBG = true, scrollbarSize = 36, scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = ""): any {
+	let list = KDScrollableListDataset[name];
+	let container = kdcanvas;
+	
+	if (useContainer != undefined) {
+		if (!KDPIXIScrollableListContainers[name]) {
+			KDPIXIScrollableListContainers[name] = new PIXI.Container();
+			container = KDPIXIScrollableListContainers[name];
+			container.zIndex = list.zIndex;
+			container.sortableChildren = true;
+			kdcanvas.addChild(container);
+
+			// Create a graphics object to define our mask
+			let mask = new PIXI.Graphics();
+			// Add the rectangular area to show
+			mask.beginFill(0xffffff);
+			mask.drawRect(list.x, list.y, list.w, list.h);
+			mask.endFill();
+			container.mask = mask;
+			container.addChild(mask);
+		}
+		else container = KDPIXIScrollableListContainers[name];
+	}
+
+	if (drawBG) {
+		DrawRectKD(container, kdpixisprites, name + "borderbg", {
+			Left: list.x,
+			Top: list.y,
+			Width: list.w,
+			Height: list.h,
+			Color: KDBaseBlack, 
+			alpha: KDUIAlpha,
+			LineWidth: 2,
+			zIndex: - 1,
+		});
+		FillRectKD(container, kdpixisprites, name + "border", {
+			Left: list.x,
+			Top: list.y,
+			Width: list.w,
+			Height: list.h,
+			Color: KDBaseBlack,
+			alpha: KDUIAlphaHighlight,
+			LineWidth: 2,
+			zIndex: - 0.9,
+		});
+	}
+
+	if (scrollbarSize > 0 && list.items.length > 0) {
+		let spacing = (list.h - scrollbarSize*2) / list.num_per_page;
+		FillRectKD(container, kdpixisprites, name + "scrollb", {
+			Left: list.x + list.w - scrollbarSize + 3,
+			Top: list.y + scrollbarSize + spacing * list.visual_index + 3,
+			Width: scrollbarSize - 7,
+			Height: Math.max(1, 
+				Math.min((list.h - scrollbarSize*2) - spacing * list.visual_index, 
+			(list.h - scrollbarSize*2) * (list.num_per_page-1)/list.items.length) - 7),
+			Color: KDBorderColor,
+			alpha: 0.9,
+			LineWidth: 2,
+			zIndex: - 0.9,
+		});
+		DrawHoldButtonKDExTo(container, name + "scrollbtn", (_b) => {
+			let mouseDelta = MouseY - (scrollbarSize + list.y);
+			mouseDelta /= list.h;
+			mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
+			list.index = Math.max(
+			Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
+				list.max - Math.max(0, (list.num_per_page - 3))), 
+				list.min);
+			return true;
+		}, true, 
+		list.x + list.w - scrollbarSize + 3, 
+		list.y + scrollbarSize + 3,
+		scrollbarSize, (list.h - scrollbarSize*2), "", 
+		KDBaseWhite, "", undefined, 
+		true, true);
+
+		DrawButtonKDEx(name + "upbtn", (_b) => {
+			KDScrollScrollableList(name, -1);
+			return true;
+		}, true, list.x + list.w - scrollbarSize, list.y, 
+		scrollbarSize, scrollbarSize, "", 
+		KDBaseWhite, KinkyDungeonRootDirectory + "Up" + scrollSuff + ".png", undefined, 
+		undefined, true, undefined, undefined, undefined, {
+				centered: true,
+				hotkey: scrollhotkeyUp ? KDHotkeyToText(scrollhotkeyUp) : undefined,
+				hotkeyPressed: scrollhotkeyUp,
+			});
+		DrawButtonKDEx(name + "downbtn", (_b) => {
+			KDScrollScrollableList(name, 1);
+			return true;
+		}, true, list.x + list.w - scrollbarSize, list.y + list.h - scrollbarSize, 
+		scrollbarSize, scrollbarSize, "", 
+		KDBaseWhite, KinkyDungeonRootDirectory + "Down" + scrollSuff + ".png", undefined, 
+		undefined, true, undefined, undefined, undefined, {
+				centered: true,
+				hotkey: scrollhotkeyDown ? KDHotkeyToText(scrollhotkeyDown) : undefined,
+				hotkeyPressed: scrollhotkeyDown,
+			});
+
+
+	}
+
+	list.selectedindex = -1;
+	let selected: any = null;
+	if (list) {
+		let diff = Math.round(list.index - list.visual_index);
+		let diffReal = (list.index - list.visual_index);
+		for (let i = -1 - diff; i <= list.num_per_page - diff; i++) {
+			if (list.items[i + list.index]) {
+				if (drawCallback(container, i >= 0 && i <= list.num_per_page, list.items[i + list.index], i + list.index,
+						i + diffReal,
+						list.selectedindex == i + list.index, list)) {
+					list.selectedindex = i + list.index;
+					selected = list.items[i + list.index];
+				}
+			}
+		}
+	}
+	return selected;
 }

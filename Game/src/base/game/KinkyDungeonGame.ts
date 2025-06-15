@@ -2144,9 +2144,9 @@ function KinkyDungeonGameKeyDown() {
 			KinkyDungeonHandleSpell();
 		}
 		return true;
-	} else if (KinkyDungeonKeySpellConfig.includes(KinkyDungeonKeybindingCurrentKey)) {
+	} else if (KinkyDungeonKeyTab.includes(KinkyDungeonKeybindingCurrentKey)) {
 		if (KinkyDungeonState == "Game") {
-			let index = 1 + KinkyDungeonKeySpellConfig.indexOf(KinkyDungeonKeybindingCurrentKey);
+			let index = 1 + KinkyDungeonKeyTab.indexOf(KinkyDungeonKeybindingCurrentKey);
 			if (localStorage.getItem('KinkyDungeonSpellsChoice' + String (index))) {
 				KinkyDungeonSpellsConfig = String (index);
 				KinkyDungeonLoadSpellsConfig();
@@ -2278,17 +2278,17 @@ function KinkyDungeonGameKeyDown() {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
 				case KinkyDungeonKeyMenu[1]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Inventory" ? "Game" : "Inventory"; break;
-				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
-				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
-				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
-				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
-				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
-				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
-				case KinkyDungeonKeyMenu[9]: {
+				//case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
+				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
+				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
+				//case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
+				//case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
+				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
+				/*case KinkyDungeonKeyMenu[9]: {
 					KinkyDungeonDrawState = KinkyDungeonDrawState == "JourneyMap" ? "Game" : "JourneyMap";
 					KDGameData.UseJourneyTarget = false;
-					break;}
-				case KinkyDungeonKeyMenu[8]: {
+					break;}*/
+				case KinkyDungeonKeyMenu[4]: {
 					KinkyDungeonDrawState = "Restart";
 					KDConfirmDeleteSave = false;
 					if (KDDebugMode) {
@@ -2323,19 +2323,19 @@ function KinkyDungeonGameKeyDown() {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
 				case KinkyDungeonKeyMenu[1]: KDShowInventory(null); break;
-				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "Reputation"; break;
-				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "MagicSpells"; break;
-				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = "Logbook"; break;
-				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest";
-					KDSortQuests(KDPlayer()); break;
-				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = "Collection"; break;
-				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
-				case KinkyDungeonKeyMenu[9]: {
+				//case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "Reputation"; break;
+				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = "MagicSpells"; break;
+				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = "Logbook"; break;
+				//case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest";
+				//	KDSortQuests(KDPlayer()); break;
+				//case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = "Collection"; break;
+				//case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
+				/*case KinkyDungeonKeyMenu[9]: {
 					KinkyDungeonDrawState = "JourneyMap"; 
 					KDGameData.UseJourneyTarget = false;
-					break;}
+					break;}*/
 				case KinkyDungeonKeySkip[0]:
-				case KinkyDungeonKeyMenu[8]:
+				case KinkyDungeonKeyMenu[4]:
 					KinkyDungeonDrawState = "Game"; break;
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
@@ -2390,9 +2390,9 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 				// QuikInv, Inventory, Reputation, Magic, Log
 				case KinkyDungeonKeyMenu[0]: if (KinkyDungeonDrawState == 'Game') KinkyDungeonShowInventory = !KinkyDungeonShowInventory; break;
 				case KinkyDungeonKeyMenu[1]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Inventory" ? "Game" : "Inventory"; break;
-				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
-				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
-				case KinkyDungeonKeyMenu[4]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
+				//case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Reputation" ? "Game" : "Reputation"; break;
+				case KinkyDungeonKeyMenu[2]: KinkyDungeonDrawState = KinkyDungeonDrawState == "MagicSpells" ? "Game" : "MagicSpells"; break;
+				case KinkyDungeonKeyMenu[3]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Logbook" ? "Game" : "Logbook"; break;
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;

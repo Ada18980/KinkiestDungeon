@@ -2102,7 +2102,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KDNavQuit"), KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_menu.png"), undefined, undefined, false, "", 24, true,
 	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[8]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[4]),
 	}); bindex++; bInc();
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goInv", (_bdata) => {
 		KDResetAlternateInventoryRender();
@@ -2118,17 +2118,6 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	{
 		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[1]),
 	}); bindex++; bInc();
-	/*DrawButtonKDEx("goRep", (bdata) => {
-		if (skip == bindex)
-			KinkyDungeonDrawState = "Game";
-		else
-			KinkyDungeonDrawState = "Reputation";
-		return true;
-	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonReputation"), KDBaseWhite,
-	KinkyDungeonRootDirectory + (skip == bindex) ? "UI/button_game.png" : "UI/button_reputation.png", undefined, undefined, false, "", 24, true,
-	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[2]),
-	}); bindex++; bInc();*/
 	DrawButtonKDEx((skip == bindex) ? "goGame" : "goSpells", (_bdata) => {
 		KDResetAlternateInventoryRender();
 		if (skip == 2)
@@ -2142,7 +2131,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 	}, true, bx, by, bwidth, bheight, TextGet((skip == bindex) ? "KDNavGame" : "KinkyDungeonMagic"), KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_spells.png"), undefined, undefined, false, "", 24, true,
 	{
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[3]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[2]),
 	}); bindex++; bInc();
 
 	let logtxt = KinkyDungeonNewLoreList.length > 0 ? TextGet("KinkyDungeonLogbookN").replace("N", "" + KinkyDungeonNewLoreList.length): TextGet("KinkyDungeonLogbook");
@@ -2161,7 +2150,7 @@ function KDDrawNavBar(skip: number, _quit: boolean = false) {
 		return true;
 	}, true, bx, by, bwidth, bheight, logtxt, KDBaseWhite,
 	KinkyDungeonRootDirectory + ((skip == bindex) ? "UI/button_game.png" : "UI/button_logbook.png"), undefined, undefined, false, "", 24, true, {
-		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[4]),
+		hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[3]),
 	}); bindex++; bInc();
 }
 
