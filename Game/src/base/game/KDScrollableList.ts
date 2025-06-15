@@ -72,7 +72,7 @@ function KDFixScrollableList(name: string, pad = 3): boolean {
 		if (list.num_per_page > pad) pad = Math.max(0, list.num_per_page - 1);
 		if (list.selectedindex < pad + list.index && list.index > list.min) {
 			list.index = Math.max(list.min, list.selectedindex - pad);
-		} else if (list.selectedindex > pad + list.index && list.index < list.max) {
+		} else if (list.selectedindex > -pad + list.index && list.index < list.max) {
 			list.index = Math.min(list.max, list.selectedindex - (list.num_per_page - pad));
 		}
 		return list.index != origIndex;
