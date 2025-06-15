@@ -1577,8 +1577,11 @@ let KDErrorTextTime_DELAY = 2500;
 
 let KDCurrentHoverButton: KDButtonParamData = null;
 let KDLastScrollableListUpdate = 0;
+let mouseHoldTaken = "";
 
 function KinkyDungeonRun() {
+	if (!mouseDown)
+		mouseHoldTaken = "";
 
 	KDButtonHovering = false;
 	KDCurrentHoverButton = null;
@@ -6596,7 +6599,7 @@ let HoldMoveThresh = 140;
 
 window.addEventListener('click', function(event) {
 	MouseMove(event);
-	if (!CommonIsMobile || !MouseClicked) {
+	if ((!CommonIsMobile || !MouseClicked) && !mouseHoldTaken) {
 		//let touch = event.touches[0];
 		KDClick(event);
 	}
@@ -6685,7 +6688,9 @@ window.addEventListener('touchend', function(event: TouchEvent) {
 
 
 	if (mouseDown && !MouseClicked) {
-		KDClick(undefined);
+		if (!mouseHoldTaken) {
+			KDClick(undefined);
+		}
 		MouseClicked = true;
 	} else {
 		if (!HoldMoved && LastHoldTime > LongHoldThresh) {
@@ -6715,9 +6720,11 @@ window.addEventListener('touchend', function(event: TouchEvent) {
 	mouseDown = false;
 
 });
+
+
 window.addEventListener('mouseup', function(event) {
 	mouseDown = false;
-	if (!CommonIsMobile)
+	if (!CommonIsMobile && !mouseHoldTaken)
 		MouseClicked = false;
 
 

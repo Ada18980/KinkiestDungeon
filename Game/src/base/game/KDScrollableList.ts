@@ -12,6 +12,7 @@ interface KDScrollableListData {
     visual_index: number,
     /** MouseX */
     click_hold_y: number,
+    click_hold_y_index: number,
     max: number,
     min: number,
 	/** which one is selected */
@@ -22,6 +23,9 @@ interface KDScrollableListData {
 }
 let KDScrollableListExp = 4;
 let KDScrollableListMin = 4;
+
+let KDScrollBarSpacingW = 0.63;
+let KDScrollBarW = 0.3;
 
 function ShouldUpdateList(name: string, reset = true) {
 	if (KDScrollableListDataset[name]) {
@@ -48,6 +52,7 @@ function PopulateList(name: string, x: number, y: number, w: number, h: number, 
 			w: w,
 			h: h,
 			click_hold_y: 0,
+			click_hold_y_index: 0,
 			index: 0,
 			selectedindex: 0,
 			visual_index: 0,
@@ -205,9 +210,9 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	if (scrollbarSize > 0 && list.items.length > 0) {
 		let spacing = (list.h - scrollbarSize*2) / list.num_per_page;
 		FillRectKD(container, kdpixisprites, name + "scrollb", {
-			Left: list.x + list.w - scrollbarSize + 3,
+			Left: list.x + list.w - scrollbarSize * KDScrollBarSpacingW,
 			Top: list.y + scrollbarSize + spacing * list.visual_index + 3,
-			Width: scrollbarSize - 7,
+			Width: scrollbarSize * KDScrollBarW - 1,
 			Height: Math.max(1, 
 				Math.min((list.h - scrollbarSize*2) - spacing * list.visual_index, 
 			(list.h - scrollbarSize*2) * (list.num_per_page-1)/list.items.length) - 7),
@@ -217,16 +222,20 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			zIndex: - 0.9,
 		});
 		DrawHoldButtonKDExTo(container, name + "scrollbtn", (_b) => {
-			let mouseDelta = MouseY - (scrollbarSize + list.y);
-			mouseDelta /= list.h;
-			mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
-			list.index = Math.max(
-			Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
-				list.max - Math.max(0, (list.num_per_page - 3))), 
-				list.min);
-			return true;
+			if (!mouseHoldTaken || mouseHoldTaken == name + "_scroll") {
+				mouseHoldTaken = name + "_scroll";
+				let mouseDelta = MouseY - (scrollbarSize + list.y);
+				mouseDelta /= list.h;
+				mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
+				list.index = Math.max(
+				Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
+					list.max - Math.max(0, (list.num_per_page - 3))), 
+					list.min);
+				return true;
+			}
+			return false;
 		}, true, 
-		list.x + list.w - scrollbarSize + 3, 
+		list.x + list.w - scrollbarSize, 
 		list.y + scrollbarSize + 3,
 		scrollbarSize, (list.h - scrollbarSize*2), "", 
 		KDBaseWhite, "", undefined, 
@@ -256,6 +265,31 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			});
 
 
+	}
+
+	if (list.items.length > 0 && (!mouseHoldTaken || mouseHoldTaken == name + "_drag")) {
+		let spacing = (list.h - scrollbarSize*2) / list.num_per_page;
+		if (mouseDown && !list.click_hold_y) {
+			if (MouseIn(list.x, list.y, list.w - scrollbarSize, list.h)) {
+				list.click_hold_y = MouseY;
+				list.click_hold_y_index = list.index;
+			}
+		} else if (!mouseDown) {
+			list.click_hold_y = 0;
+		} else {
+			if (Math.abs(list.click_hold_y - MouseY) > 50) {
+				MouseClicked = true;
+				mouseHoldTaken = name + "_drag";
+			}
+			
+
+			list.index = Math.min(list.max, Math.max(list.min,
+				Math.round(list.click_hold_y_index + (list.click_hold_y - MouseY)/spacing)
+			));
+			list.visual_index = Math.min(list.max, Math.max(list.min,
+				list.click_hold_y_index + (list.click_hold_y - MouseY)/spacing
+			));
+		}
 	}
 
 	let lastSelectedIndex = list.selectedindex;	

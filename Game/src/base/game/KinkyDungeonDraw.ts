@@ -3674,7 +3674,7 @@ function DrawButtonVisTo (
 			NoBorder, options?.alpha || 0.5, zIndex,
 		);
 	if (hover) {
-		let pad = 4;
+		let pad = 2;
 		// Draw the button rectangle (makes the background color cyan if the mouse is over it)
 		DrawRectKD(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height + "out", {
 			Left: Left + pad,
