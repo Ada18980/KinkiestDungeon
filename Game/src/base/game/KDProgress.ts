@@ -75,7 +75,7 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
 function KDEnumerateMainProgress(data: ProgressListEventData) {
     
     data.list.push({
-        name: "Ye1",
+        name: "Yea1",
         progress: Math.random() * 0.5 + 0.25,
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
@@ -84,7 +84,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         priority: 10,
     });
     data.list.push({
-        name: "Ye2",
+        name: "Yea2",
         progress: Math.random() * 0.5 + 0.25,
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
@@ -93,7 +93,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         priority: 10,
     });
     data.list.push({
-        name: "Ye3",
+        name: "Yea3",
         progress: Math.random() * 0.5 + 0.25,
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
@@ -102,7 +102,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         priority: 10,
     });
     data.list.push({
-        name: "Ye4",
+        name: "Yea4",
         progress: Math.random() * 0.5 + 0.25,
         color: KDBaseCyan,
         bordercolor: KDBaseCyan,
@@ -111,7 +111,7 @@ function KDEnumerateMainProgress(data: ProgressListEventData) {
         priority: 10,
     });
     data.list.push({
-        name: "Bad",
+        name: "Bad2",
         progress: Math.random() * 0.5 + 0.25,
         color: KDBaseRed,
         bordercolor: KDBaseRed,
@@ -197,6 +197,8 @@ function KDDrawProgressList(xOffset) {
         );
     }
 
+    let hotkeyUp = KinkyDungeonKey[0];
+    let hotkeyDown = KinkyDungeonKey[2];
     let drawn: ProgressListData = KDDrawScrollableList(MainList, true, (
         container: PIXIContainer,
         isClickable: boolean,
@@ -204,6 +206,7 @@ function KDDrawProgressList(xOffset) {
         index: number,
         visualIndex: number,
         isSelected: boolean,
+        selectedIndex: number,
         list: KDScrollableListData)  => {
         let it = item;
         DrawButtonKDExTo(container, "MainProgressSelect" + item.name, 
@@ -218,10 +221,15 @@ function KDDrawProgressList(xOffset) {
             TextGet("KDProgressItem_" + item.name, item.data), 
             item.textColor, "", undefined, undefined,
             KDCurrentProgressMainSelection != item.name, KDButtonColor, undefined, undefined, {
-
+                hotkey: selectedIndex == index - 1 ? KDHotkeyToText(hotkeyDown)
+                : (selectedIndex == index + 1 ? KDHotkeyToText(hotkeyUp)
+                : null),
+                hotkeyPress: selectedIndex == index - 1 ? hotkeyDown
+                : (selectedIndex == index + 1 ? hotkeyUp
+                : null),
             });
         return KDCurrentProgressMainSelection == item.name;
-    });
+    }, undefined, undefined, undefined, hotkeyUp, hotkeyDown);
 
     if (drawn) {
         // do nothing yet
