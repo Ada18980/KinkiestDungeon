@@ -2228,6 +2228,11 @@ Devious Dungeon Challenge 已启用。
 左下
 - Down Right
 右下
+# - Tab 1
+# - Tab 2
+# - Tab 3
+# - Tab 4
+# - Tab 5
 - Spell 1
 法术 1
 - Spell 2
@@ -5444,11 +5449,16 @@ M.F. '女仆长'
 - The harness wraps itself around your body and squeezes! (DamageTaken)
 束衣缠绕并紧勒你的身体！ ( DamageTaken )
 
-# - Pattering Petsuit
-# - The petsuit splays out on the floor.
-# - The petsuit leaps to you!
-# - The petsuit pounces on you and cinches tightly around your limbs! (+RestraintAdded)
-# - The petsuit rubs against your legs affectionately! (DamageTaken)
+- Pattering Petsuit
+疾行的宠物服
+- The petsuit splays out on the floor.
+宠物服散落到地板上。
+- The petsuit leaps to you!
+宠物服向你扑来！
+- The petsuit pounces on you and cinches tightly around your limbs! (+RestraintAdded)
+宠物服扑向你，紧紧包裹住你的四肢！（+RestraintAdded）
+- The petsuit rubs against your legs affectionately! (DamageTaken)
+宠物服亲昵地蹭着你的腿！（DamageTaken）
 
 - Levitating Locks
 悬浮锁
@@ -11749,8 +11759,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: KDTileTooltip@
 # :: m_SlayerCollar_l_Button
 # :: m_SlayerCape_l_Button
-# :: m_LeatherShorts_l_Button
-# :: m_LeatherPants_l_Button
+:: m_LeatherShorts_l_Button
+纽扣
+:: m_LeatherPants_l_Button
+纽扣
 - Conveyor
 传送带
 - Safety Conveyor
@@ -14206,7 +14218,7 @@ EnemyName 使用发光护身符来增强不死生物的物理护甲和速度！
 - A gang of SummonCount skeletons forms around you!
 SummonCount 只骷髅在你周围形成！
 - A gang of SummonCount zombies emerges from the floor!
-SummonCount 只僵尸从地板上出现！
+SummonCount 只僵尸从地面中涌现！
 - A bunch of gags fly out from your satchel!
 一堆口塞从你的背包里飞出来！
 
@@ -14235,7 +14247,8 @@ SummonCount 只僵尸从地板上出现！
 # :: KinkyDungeonSummonSingleAnimHarness
 # :: KinkyDungeonTrapSpawnAnimHarness
 # :: KinkyDungeonTrapSpawnAnimArmbinder
-# - A prowling petsuit appears and starts running toward you!
+- A prowling petsuit appears and starts running toward you!
+一套会行走的宠物服出现并开始向你跑来！
 - A set of shackles opens wide and starts going for your wrists!
 一件镣铐张开，并开始锁在你的手腕上！
 # :: KinkyDungeonSummonSingleCuffs
@@ -14249,7 +14262,7 @@ SummonCount 只僵尸从地板上出现！
 - A huge cloud of locks and chains clatters as it levitates toward you!
 一大片锁和锁链在咔哒咔哒地向你飘来！
 - Floating hands appear by the conjurer's side as she points her staff!
-当她指向她的法杖时，浮动的手出现在咒术师的身边！
+咒术师指向她的法杖，浮动的手出现在她的身边！
 
 - Floating books appear near the caster!
 漂浮的书籍出现在施法者附近！
@@ -38924,7 +38937,8 @@ Aura刘海(右后)
 # :: m_SmoothLargeBallGag_l_BallTeeth
 # :: m_SmoothLargeBallGagHarness_l_BallTeeth
 # :: m_SmoothLargeBallGagHarnessSecure_l_BallTeeth
-# - CrystalBallGag
+- CrystalBallGag
+水晶口球
 # - CrystalBallGagSmooth
 # - GagMetalRivetedStrap
 # - OTNStrap
@@ -45964,6 +45978,8 @@ Mmmph! ( 塞住嘴时不能大声喊叫 )
 
 - Heel Training
 高跟鞋训练
+# :: KinkyDungeonStatHeelTraining
+# :: KDProgressItem_TrainingHeels
 - Start locked in a pair of heels with no heel training.
 开始时，在没有进行高跟鞋训练的情况下穿戴一双上锁的芭蕾高跟鞋。
 - Gag Training
@@ -46147,6 +46163,7 @@ ENMY 高潮了，收到了 AMNT 伤害！
 收藏
 # :: KinkyDungeonKeyCollection
 # :: KinkyDungeonCollection
+# - Progress
 
 - Storage
 存储
@@ -50555,7 +50572,8 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Unlocked by being leashed by an NPC.
 # - Blessed by Nivah
 # - Unlocked by reaching 100 reputation with the Leather Goddess.
-# - Maidforce
+- Maidforce
+女仆势力
 # - Unlocked by getting recruited by MaidForce.
 # - Blessed by Oriel
 # - Unlocked by getting recruited by the Nevermere Trainers.
@@ -50650,3 +50668,4 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Ancient Adventurer
 # - Unlocked by wearing every Ancient restraint at the same time.
 # - Unlocked by wearing any cursed restraint or armor.
+
