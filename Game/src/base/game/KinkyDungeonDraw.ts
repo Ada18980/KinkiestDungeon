@@ -3771,12 +3771,12 @@ function DrawCheckboxVis (
 	IsChecked:   boolean,
 	Disabled:    boolean = false,
 	TextColor:   string = KDTextGray0,
-	_CheckImage: string = "Icons/Checked.png",
+	CheckImage: string = "UI/Checked.png",
 	options?:    ButtonOptions
 ): void
 {
 	DrawTextFitKD(Text, Left + 100, Top + 33, 1000, TextColor, "#333333", undefined, "left");
-	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
+	DrawButtonVis(Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
 		undefined, undefined, undefined, undefined, undefined, options?.zIndex, options);
 }
 
@@ -3815,12 +3815,12 @@ function DrawCheckboxKDEx (
 	IsChecked:    boolean,
 	Disabled:     boolean = false,
 	TextColor:    string = KDTextGray0,
-	_CheckImage:  string = "Icons/Checked.png",
+	CheckImage:  string = "UI/Checked.png",
 	options?:     ButtonOptions
 ): void
 {
 	DrawTextFitKD(Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
-	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + "UI/Checked.png") : "", null, Disabled,
+	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);
 }
 
