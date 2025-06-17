@@ -561,19 +561,12 @@ function KinkyDungeonGetStatPoints(Stats: Map<any, any>): number {
  * @param [points]
  */
 function KDCanPickPerk(Perk: string, points?: number): boolean {
-	let perkdef = KinkyDungeonStatsPresets[Perk];
+	let perkdef = KDGetPerkCost(KinkyDungeonStatsPresets[Perk]);
 	if (!perkdef) return false;
-	if (KDGetPerkCost(perkdef) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(perkdef)) return false;
-	if (!KDValidatePerk(perkdef)) return false;
-	for (let k of KinkyDungeonStatsChoice.keys()) {
-		if (KinkyDungeonStatsChoice.get(k)) {
-			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Perk)) {
-				return false;
-			}
-			if (KinkyDungeonStatsPresets[k] && perkdef.tags && KinkyDungeonStatsPresets[k].blocktags) {
-				for (let t of KinkyDungeonStatsPresets[k].blocktags)
-					if (perkdef.tags.includes(t)) return false;
-			}
+	if (perkdef > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < perkdef) return false;
+	for (let perk2 of KinkyDungeonStatsChoice.keys()) {
+		if (KinkyDungeonStatsChoice.get(perk2) && KDPerkBlocked(Perk, perk2)) {
+			return false;
 		}
 	}
 	return true;
@@ -603,7 +596,7 @@ function KDPerkBlocked(perk1: string, perk2: string): boolean {
 		if (KinkyDungeonStatsPresets[perk2].block && KinkyDungeonStatsPresets[perk2].block.includes(perk1)) {
 			return true;
 		}
-		if (KinkyDungeonStatsPresets[perk2] && KinkyDungeonStatsPresets[perk1].tags && KinkyDungeonStatsPresets[perk2].blocktags) {
+		if (KinkyDungeonStatsPresets[perk1].tags && KinkyDungeonStatsPresets[perk2].blocktags) {
 			for (let t of KinkyDungeonStatsPresets[perk2].blocktags)
 				if (KinkyDungeonStatsPresets[perk1].tags.includes(t)) return true;
 		}
