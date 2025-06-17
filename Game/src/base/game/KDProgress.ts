@@ -185,12 +185,13 @@ function KDEnumerateProgressItems(sort = true): ProgressListData[] {
 function KDDrawProgressList(xOffset) {
     let MainList = "MainProgress_List";
     
+	let horizontal = false;
     let x = 650;
     let h = PIXIHeight - 200;
     let spacing = 80;
     if (ShouldUpdateList(MainList)) {
         let list: ProgressListData[] = KDEnumerateProgressItems();
-        PopulateList(MainList, x + xOffset, 120, 300, h, 50, 
+        PopulateList(MainList, x + xOffset, 120, horizontal ? h : 300, horizontal ? 300 : h, 50, 
             Math.round(h/spacing), 
             list, false
         );
@@ -211,19 +212,19 @@ function KDDrawProgressList(xOffset) {
 		let w = list.w - 40;
         DrawTextFitKDTo(container, TextGet("KDProgressItem_" + item.name,
             item.data), 
-            list.x + 20 + w*0.5, list.y + 20 + visualIndex * 80, 
+            list.x + 20 + w*0.5 + (horizontal ? visualIndex * 80 : 0), list.y + 20 + (horizontal ? 0 : visualIndex * 80), 
             w - 80, item.textColor)
 		if (item.level != undefined)
 			DrawTextFitKDTo(container, "" + item.level, 
-				list.x + 32, list.y + 38 + visualIndex * 80,
+				list.x + 32 + (horizontal ? visualIndex * 80 : 0), list.y + 38 + (horizontal ? 0 : visualIndex * 80),
 				w - 10, item.textColor, undefined, 48, "center", 
 				100.5, 0.4)
        
         DrawRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbborder", {
             Color: item.bordercolor,
-            Left: list.x + 60,
+            Left: list.x + 60 + (horizontal ? visualIndex * 80 : 0),
             Height: 12,
-            Top: list.y + 50 + visualIndex * 80,
+            Top: list.y + 50 + (horizontal ? 0 : visualIndex * 80),
             Width: w - 70,
             zIndex: 102,
             alpha: 0.9,
@@ -231,9 +232,9 @@ function KDDrawProgressList(xOffset) {
         });
         FillRectKD(container, kdpixisprites, "MainProgressSelect" + item.name + "pbfill", {
             Color: item.color,
-            Left: list.x + 60,
+            Left: list.x + 60 + (horizontal ? visualIndex * 80 : 0),
             Height: 11,
-            Top: list.y + 50 + visualIndex * 80,
+            Top: list.y + 50 + (horizontal ? 0 : visualIndex * 80),
             Width: (w - 70) * item.progress,
             zIndex: 101,
             alpha: 0.9,
@@ -249,8 +250,8 @@ function KDDrawProgressList(xOffset) {
                 }
                 return true;
             }, isClickable, 
-            list.x + 10, 
-            list.y + visualIndex * 80,
+            list.x + 10 + (horizontal ? visualIndex * 80 : 0), 
+            list.y + (horizontal ? 0 : visualIndex * 80),
             w - 10, 
             72, 
             "", 
@@ -264,7 +265,7 @@ function KDDrawProgressList(xOffset) {
                 : null),
             });
         return KDCurrentProgressMainSelection == item.name;
-    }, undefined, undefined, undefined, hotkeyUp, hotkeyDown);
+    }, undefined, horizontal, undefined, undefined, hotkeyUp, hotkeyDown);
 
     if (drawn) {
         // do nothing yet
