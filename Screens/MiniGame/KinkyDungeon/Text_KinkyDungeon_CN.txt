@@ -2228,11 +2228,16 @@ Devious Dungeon Challenge 已启用。
 左下
 - Down Right
 右下
-# - Tab 1
-# - Tab 2
-# - Tab 3
-# - Tab 4
-# - Tab 5
+- Tab 1
+页面  1
+- Tab 2
+页面 2
+- Tab 3
+页面 3
+- Tab 4
+页面 4
+- Tab 5
+页面 5
 - Spell 1
 法术 1
 - Spell 2
