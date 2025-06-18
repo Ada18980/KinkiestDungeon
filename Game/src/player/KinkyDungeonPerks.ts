@@ -573,6 +573,17 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 			if (KDPerkBlocked(Perk, k)) state = false;
 		}
 	}
+	//add new way of blocking perk, either based on a function or text instructions
+	//this function in the opposite way as basic perk block since the perk carries the rules that determine whether it is blocked, forcefully available or has it's status unchanged
+	if (KinkyDungeonStatsPresets[Perk].blockfunc) {
+		//console.log(Perk)
+		let blockfunc = KinkyDungeonStatsPresets[Perk].blockfunc;
+		//fn rules
+		if (blockfunc instanceof Function) {
+			//the function return true if it must be blocked, false if it must be pickable and undefined in any other case
+			if (blockfunc.length == 1 && blockfunc(validperks) != undefined) return !blockfunc(validperks);
+		}
+		
 	return state;
 }
 
