@@ -576,15 +576,77 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 	//add new way of blocking perk, either based on a function or text instructions
 	//this function in the opposite way as basic perk block since the perk carries the rules that determine whether it is blocked, forcefully available or has it's status unchanged
 	if (KinkyDungeonStatsPresets[Perk].blockfunc) {
-		//console.log(Perk)
 		let blockfunc = KinkyDungeonStatsPresets[Perk].blockfunc;
 		//fn rules
 		if (blockfunc instanceof Function) {
 			//the function return true if it must be blocked, false if it must be pickable and undefined in any other case
 			if (blockfunc.length == 1 && blockfunc(validperks) != undefined) return !blockfunc(validperks);
+		} else
+		//String rules
+		{
+			let temp:string[] = [""];
+			let depth: number = 0;
+			//handling parenthesis
+			for (let i = 0; i < blockfunc.length; i++){
+				if (!temp[depth]) temp.push("");
+				temp[depth] += blockfunc[i];
+				if (blockfunc[i] == ')') {
+					temp[depth - 1] += solve(temp[depth], validperks);
+					depth -= 1;
+				}
+				if (blockfunc[i] == '(') depth += 1;
+				if(depth < 0) console.error("ERR_1 in KinkyDungeonPerks.ts\ndepth is negative, ", Perk, "'s blockfunc key has wrong parenthesis")
+			}
+			if(depth > 0) console.error("ERR_2 in KinkyDungeonPerks.ts\ndepth is above 0, ", Perk, "'s blockfunc key has wrong parenthesis")
+			console.log(temp[0])
+			if (solve(temp[0], validperks) != 0) {
+				return solve(temp[0], validperks) == -1;
+			}
 		}
 	}
 	return state;
+}
+
+/**
+ * Solve a semi-trinary operation from rules with value depending on whether keywords are in validperks
+ * @param rules
+ * @param [validperks]
+ * can be converted to simple binary by returning -1 when 0 would be returned
+ */
+function solve(rules: String, validperks: string[]): number{
+	let result: number = 0;
+	let isoperand: (arg: string) => String = (arg: String) => "&|!".split('').find(a => arg == a);
+	let currentoper = "";
+	let temp = "";
+	for (let i = 0; i <= rules.length; i++){
+		if (i!= rules.length && !isoperand(rules[i])) {
+			if(rules[i]!= " " && rules[i] != "\n" && rules[i] != "\t") temp += rules[i];
+		} else if (temp.length > 0) {
+			if (!KinkyDungeonStatsPresets[temp] && parseInt(temp) == undefined) {
+				console.error("ERR_3 in KinkyDungeonPerks.ts\n", temp, " not a valid perk name");
+				//this is binary with a secret third state, (1,0,-1), 1 block, -1 bypass other blocks, 0 does nothing
+			} else {
+				let value = parseInt(temp)||(+validperks.some(a => a == temp));
+				if (currentoper == "|!" || currentoper == "&!" || currentoper == "!") {
+					currentoper = currentoper.length==2?currentoper[0]:"";
+					value = -value;
+					if (value == 0) value = 1;
+				}
+				if (value>0 && (currentoper == '' || currentoper == "|")) result = 1;
+				//x and 1 == x; x or 1 == 1
+				if (value == 0 && (currentoper == '' || (currentoper == '&' && result == 1))) result = 0;
+				//1 or 0 == 1; -1 or 0 == -1; 1 and 0 == 0; 0 and -1 == -1; 1 and -1 == -1
+				if (value<0 && (currentoper == '' || currentoper == "&" || (currentoper=="|" && result==0))) result = -1;
+				//-1 or 0 == -1; 
+			}
+			if (i != rules.length) currentoper = rules[i];
+			temp = "";
+		} else {
+			if (i== rules.length) console.error("ERR_4 in KinkyDungeonPerks.ts\n", temp, " blockfunc element shouldn't finish with an operator");
+			else currentoper += rules[i];
+		}
+	}
+	return result;
 }
 
 /**
