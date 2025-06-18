@@ -583,7 +583,7 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 			//the function return true if it must be blocked, false if it must be pickable and undefined in any other case
 			if (blockfunc.length == 1 && blockfunc(validperks) != undefined) return !blockfunc(validperks);
 		}
-		
+	}
 	return state;
 }
 
