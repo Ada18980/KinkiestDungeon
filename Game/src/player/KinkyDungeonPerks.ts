@@ -562,21 +562,18 @@ function KinkyDungeonGetStatPoints(Stats: Map<any, any>): number {
  */
 function KDCanPickPerk(Perk: string, points?: number): boolean {
 	let perkdef = KinkyDungeonStatsPresets[Perk];
+	let state = true;
 	if (!perkdef) return false;
 	if (KDGetPerkCost(perkdef) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(perkdef)) return false;
-	if (!KDValidatePerk(perkdef)) return false;
+	if (!KDValidatePerk(perkdef)) state = false;
+	let validperks:string[] = []
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
-			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Perk)) {
-				return false;
-			}
-			if (KinkyDungeonStatsPresets[k] && perkdef.tags && KinkyDungeonStatsPresets[k].blocktags) {
-				for (let t of KinkyDungeonStatsPresets[k].blocktags)
-					if (perkdef.tags.includes(t)) return false;
-			}
+			validperks.push(k)
+			if (KDPerkBlocked(Perk, k)) state = false;
 		}
 	}
-	return true;
+	return state;
 }
 
 /**
