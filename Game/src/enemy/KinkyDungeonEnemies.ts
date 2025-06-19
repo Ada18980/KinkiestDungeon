@@ -9737,8 +9737,10 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 		npc.visual_y = npc.y;
 		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 			KDGetPersistentNPC(data.enemy.id).collect = false;
-		if (KDIsNPCPersistent(data.enemy.id))
+		if (KDIsNPCPersistent(data.enemy.id)) {
 			KDGetPersistentNPC(data.enemy.id).spawned = true;
+			//KDMovePersistentNPC(data.enemy.id, KDGetCoordFromMapData(mapData));
+		}
 
 		if (data.enemy.hp <= 0.5) data.enemy.hp = 0.51;
 
@@ -9767,8 +9769,10 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 			npc.entity.y = data.y;
 
 			KDUpdateEnemyCache = true;
-			if (KDIsNPCPersistent(data.enemy.id))
+			if (KDIsNPCPersistent(data.enemy.id)) {
 				KDGetPersistentNPC(data.enemy.id).spawned = true;
+				//KDMovePersistentNPC(data.enemy.id, KDGetCoordFromMapData(mapData));
+			}
 
 		} else {
 			createpersistent = true;
@@ -9803,6 +9807,7 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 
 	if (KDIsNPCPersistent(data.enemy.id)) {
 		KDGetPersistentNPC(data.enemy.id).spawned = true;
+		//KDMovePersistentNPC(data.enemy.id, KDGetCoordFromMapData(mapData));
 	}
 	if (mapData == KDMapData) {
 		KDUpdateEnemyCache = true;
@@ -9990,7 +9995,7 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 
 
 	if (KDIsNPCPersistent(enemy.id) && KDGetPersistentNPC(enemy.id)) {
-		KDGetPersistentNPC(enemy.id).jailed = undefined;
+		//KDGetPersistentNPC(enemy.id).jailed = undefined;
 		KDGetPersistentNPC(enemy.id).spawned = undefined;
 	}
 
@@ -10854,4 +10859,13 @@ function KDResetMoveFlags(enemy: entity) {
 	KinkyDungeonSetEnemyFlag(enemy, "blocked", 0);
 	KinkyDungeonSetEnemyFlag(enemy, "failpath", 0);
 	KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+}
+
+
+function KDGetCoordFromMapData(mapData: KDMapDataType): WorldCoord {
+	return {
+		mapX: mapData.mapX,
+		room: mapData.RoomType,
+		mapY: mapData.mapY,
+	}
 }
