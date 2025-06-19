@@ -570,7 +570,10 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			validperks.push(k)
-			if (KDPerkBlocked(Perk, k)) state = false;
+			if (KDPerkBlocked(Perk, k)) {
+				state = false;
+				break;
+			}
 		}
 	}
 	//add new way of blocking perk, either based on a function or text instructions
