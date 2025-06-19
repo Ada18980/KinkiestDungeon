@@ -601,7 +601,6 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 				if(depth < 0) console.error("ERR_1 in KinkyDungeonPerks.ts\ndepth is negative, ", Perk, "'s blockfunc key has wrong parenthesis")
 			}
 			if(depth > 0) console.error("ERR_2 in KinkyDungeonPerks.ts\ndepth is above 0, ", Perk, "'s blockfunc key has wrong parenthesis")
-			console.log(temp[0])
 			if (solve(temp[0], validperks) != 0) {
 				return solve(temp[0], validperks) == -1;
 			}
