@@ -1047,7 +1047,7 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 							unique: true,
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
-						DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1);
+						DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1, undefined, undefined, 110, 1.0, undefined, undefined, undefined, true);
 						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT",
 							Math.round(KDPERKCOSTMULT*KDGetPerkCost(stat[1])) + ""), 1000, 190, 1400, KDTextWhite, KDTextGray1);
 						tooltip = true;

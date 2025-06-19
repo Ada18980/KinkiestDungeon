@@ -2996,9 +2996,10 @@ function DrawTextFitKD (
 	alpha:      number = 1.0,
 	border:     number = undefined,
 	unique:     boolean = undefined,
-	font?:      string
+	font?:		string,
+	wordwrap: 	boolean = false
 ): number {
-	return DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font);
+	return DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font, wordwrap);
 }
 
 type TextParamsType = {
@@ -3015,6 +3016,7 @@ type TextParamsType = {
 	border?:   number,
 	unique?:   boolean,
 	font?:     string,
+	wordwrap?: boolean
 }
 
 /**
@@ -3047,7 +3049,8 @@ function DrawTextFitKDTo (
 	alpha:      number = 1.0,
 	border:     number = undefined,
 	unique:     boolean = undefined,
-	font?:     string
+	font?: 		string,
+	wordwrap:	boolean = false
 ): number {
 	if (!Text) return 0;
 	let alignment = Align ? Align : "center";
@@ -3066,6 +3069,7 @@ function DrawTextFitKDTo (
 		border: border,
 		unique: unique,
 		font: font,
+		wordwrap: wordwrap
 	});
 }
 
@@ -3211,6 +3215,8 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 						: 1),
 				miterLimit: 2,
 				padding: 5,
+				wordWrap: Params.wordwrap,
+				wordWrapWidth: Params.Width
 			}
 		);
 
