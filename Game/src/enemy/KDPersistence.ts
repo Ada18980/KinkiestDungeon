@@ -601,7 +601,59 @@ function KDCompareLocation(loc1: WorldCoord, loc2: WorldCoord): boolean {
 	return true;
 }
 
+/** iterates thru all maps and checks all NPCs to make sure they are despawned */
+function KDCheckBrokenDespawned() {
+	let start = performance.now();
+	let found: Record<string, boolean> = {};
+	let unpersistent: Record<string, boolean> = {};
+	for (let slot in KDWorldMap) {
+		if (KDWorldMap[slot].data) {
+			for (let data in KDWorldMap[slot].data) {
+				let md = KDWorldMap[slot].data[data];
+				let altType = KDGetAltType(md.mapY, md.MapMod, md.RoomType);
+				if (!altType || !altType.alwaysRegen || altType.persist) {
+					if (md.Entities) {
+						for (let entity of KDWorldMap[slot].data[data].Entities) {
+							found[entity.id] = true;
+						}
+					}
+				} else if (!KDCompareLocation(KDGetCoordFromMapData(md), 
+				KDGetCurrentLocation())) {
+					if (md.Entities) {
+						for (let entity of KDWorldMap[slot].data[data].Entities) {
+							unpersistent[entity.id] = true;
+						}
+					}
+				}
+			}
+		}
+	}
+	let count = 0;
+	for (let npc in KDPersistentNPCs) {
+		if (KDPersistentNPCs[npc].spawned && !found[KDPersistentNPCs[npc].id]) {
+			if (KDIsImprisoned((KDPersistentNPCs[npc].entity)) && KDCapturable(KDPersistentNPCs[npc].entity)) {
+				KDPersistentNPCs[npc].spawned = false;
+				KDPersistentNPCs[npc].captured = true;
+				if (!unpersistent[KDPersistentNPCs[npc].id])
+					KDPersistentNPCs[npc].jailed = true;
+				else KDPersistentNPCs[npc].jailed = undefined;
+
+			} else {
+				KDPersistentNPCs[npc].spawned = false;
+				KDFreeNPC(KDPersistentNPCs[npc].entity, false);
+				KDPersistentNPCs[npc].jailed = undefined;
+			}
+
+			count++;
+		}
+	}
+
+	console.log("Took " + (performance.now() - start) + " ms to fix " + count + " npcs")
+}
+
 function KDRepopulatePersistentNPCs() {
+	KDCheckBrokenDespawned();
+
 	let jp = KDMapData.JailPoints.filter(
 		(p) => {
 			if (p.requireLeash) return false;

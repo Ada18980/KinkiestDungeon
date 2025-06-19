@@ -3646,6 +3646,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/DownSmall.png</key>
+            <key type="filename">../Game/UpSmall.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,9,20,18</rect>
+                <key>scale9Paddings</key>
+                <rect>10,9,20,18</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/GFX/Talisman.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -4050,6 +4066,22 @@
                 <rect>11,11,22,22</rect>
                 <key>scale9Paddings</key>
                 <rect>11,11,22,22</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/LeftSmall.png</key>
+            <key type="filename">../Game/RightSmall.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,10,18,20</rect>
+                <key>scale9Paddings</key>
+                <rect>9,10,18,20</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
