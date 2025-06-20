@@ -3001,6 +3001,44 @@ function DrawTextFitKD (
 ): number {
 	return DrawTextFitKDTo(kdcanvas, Text, X, Y, Width, Color, BackColor, FontSize, Align, zIndex, alpha, border, unique, font, wordwrap);
 }
+//only used once in KinkyDungeonPerks.ts
+function DrawTextFitKDgetHeight(
+	Text:       string,
+	X:          number,
+	Y:          number,
+	Width:      number,
+	Color:      string,
+	BackColor?: string,
+	FontSize?:  number,
+	Align?:     string,
+	zIndex:     number = 110,
+	alpha:      number = 1.0,
+	border:     number = undefined,
+	unique:     boolean = undefined,
+	font?:		string,
+	wordwrap: 	boolean = false
+): number {
+	//does the job of both DrawTextFitKD and DrawTextFitKDTo because editing the output of DrawTextFitKDTo would lead to a lot of changes
+	if (!Text) return 0;
+	let alignment = Align ? Align : "center";
+
+	return DrawTextVisKD(kdcanvas, kdpixisprites, "tx|" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
+		Text: Text,
+		X: X,
+		Y: Y,
+		Width: Width,
+		Color: Color,
+		BackColor: BackColor ? BackColor : (Color == KDTextGray2 ? KDTextGray0 : (Color == KDTextGray0 ? KDTextGray3 : KDTextGray2)),
+		FontSize: FontSize ? FontSize : 30,
+		align: alignment,
+		zIndex: zIndex,
+		alpha: alpha,
+		border: border,
+		unique: unique,
+		font: font,
+		wordwrap: wordwrap
+	})[1];//return the height
+}
 
 type TextParamsType = {
 	Text:      string,
@@ -3070,7 +3108,7 @@ function DrawTextFitKDTo (
 		unique: unique,
 		font: font,
 		wordwrap: wordwrap
-	});
+	})[0];
 }
 
 
@@ -3124,7 +3162,7 @@ function DrawTextFitKDTo2 (
 		border: border,
 		unique: unique,
 		font: font,
-	});
+	})[0];
 }
 
 /**
@@ -3165,7 +3203,7 @@ function DrawTextKD (
 		zIndex: zIndex,
 		alpha: alpha,
 		border: border,
-	});
+	})[0];
 }
 
 
@@ -3175,8 +3213,8 @@ let KDAllowText = true;
 /**
  * @returns  True if it worked
  */
-function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): number {
-	if (!KDAllowText) return 0;
+function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: string, Params: TextParamsType): number[] {
+	if (!KDAllowText) return [0];
 	let sprite: PIXIText = Map.get(id);
 	let same = true;
 	let par = kdprimitiveparams.get(id);
@@ -3243,9 +3281,9 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
-		return sprite.width;
+		return [sprite.width, sprite.height];
 	}
-	return 0;
+	return [0];
 }
 
 /**
