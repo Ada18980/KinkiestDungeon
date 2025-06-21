@@ -58,6 +58,16 @@ Balance
 - TODO dark rubber boots disp map in kneelclosed and hogtie
 - TODO add erase map for torso against elbow and armbinder stuff
 TODO add priority system for enemies
+5.4.78
+- Fixed a bug where save code never appears!!
+- Save code now only provided once when entering perk room
+- Fixed bug where sometimes inventory actions could be done on items that didnt exist
+
+5.4.77
+- Added scrollable menus feature as well as progress tab that can be enabled by mods.
+- Fix wrong spell component fail message being displayed
+- Fixed a bug where sometimes party members would fail to respawn in Jail
+- Fixed a bug where persistent NPCs would sometimes erroneously get disposed
 
 
 5.4.75
