@@ -9725,29 +9725,34 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 		KDGetEnemyCache();
 	}
 
-	if (!dontteleportpersistent && KDIsNPCPersistent(data.enemy.id) && KinkyDungeonFindID(data.enemy.id, mapData)) {
+	if (!dontteleportpersistent && KDIsNPCPersistent(data.enemy.id)) {
 		// Move the enemy instead of creating
 
 		let npc = KinkyDungeonFindID(data.enemy.id, mapData);
 
-		KDUnPackEnemy(data.enemy);
-		npc.x = data.x;
-		npc.y = data.y;
-		npc.visual_x = npc.x;
-		npc.visual_y = npc.y;
-		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
-			KDGetPersistentNPC(data.enemy.id).collect = false;
-		if (KDIsNPCPersistent(data.enemy.id)) {
-			KDGetPersistentNPC(data.enemy.id).spawned = true;
-			//KDMovePersistentNPC(data.enemy.id, KDGetCoordFromMapData(mapData));
+		if (npc) {
+			KDUnPackEnemy(data.enemy);
+			npc.x = data.x;
+			npc.y = data.y;
+			npc.visual_x = npc.x;
+			npc.visual_y = npc.y;
+			if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
+				KDGetPersistentNPC(data.enemy.id).collect = false;
+			if (KDIsNPCPersistent(data.enemy.id)) {
+				KDGetPersistentNPC(data.enemy.id).spawned = true;
+				//KDMovePersistentNPC(data.enemy.id, KDGetCoordFromMapData(mapData));
+			}
+
+			if (data.enemy.hp <= 0.5) data.enemy.hp = 0.51;
+
+			if (mapData == KDMapData)
+				KDUpdateEnemyCache = true;
+
+			return npc;
+		} else if (!dontteleportpersistent && KDDeletedIDs[data.enemy.id]) {
+			return null;
 		}
-
-		if (data.enemy.hp <= 0.5) data.enemy.hp = 0.51;
-
-		if (mapData == KDMapData)
-			KDUpdateEnemyCache = true;
-
-		return npc;
+		
 	} else if (!dontteleportpersistent && KDDeletedIDs[data.enemy.id]) {
 		return null;
 	}
@@ -9921,7 +9926,9 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 		if (failPlaceThru) {
 			if (enemy)
 				KDClearStolenItems(enemy);
-			DisposeEntity(id);
+			if (!KDIsNPCPersistent(id))
+				DisposeEntity(id);
+			return false;
 		}
 	}
 

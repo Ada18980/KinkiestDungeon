@@ -355,7 +355,6 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					KDGameData.MapMod = data.JourneyTile?.MapMod || "";
 				}
 			}
-			let movedUp = MiniGameKinkyDungeonLevel > KDGameData.HighestLevelCurrent;
 			KDGameData.HighestLevelCurrent = Math.max(KDGameData.HighestLevelCurrent || 1, MiniGameKinkyDungeonLevel);
 			KDGameData.HighestLevel = Math.max(KDGameData.HighestLevel || 1, MiniGameKinkyDungeonLevel);
 			
@@ -427,14 +426,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				}
 				if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 				KinkyDungeonSendEvent("AfterAdvance", data);
-				if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1 && movedUp) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
-					if ((!KinkyDungeonStatsChoice.get("saveMode")) && !suppressCheckPoint) {
-						let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
-						KinkyDungeonState = "Save";
-						KDTextArea("saveDataField", 750, 100, 1000, 230);
-						ElementValue("saveDataField", saveData);
-					}
-				}
+				
 				KinkyDungeonSaveGame();
 				KDSendStatus('nextLevel');
 			} else {

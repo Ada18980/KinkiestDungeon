@@ -41,10 +41,16 @@ TODO also I might need to maybe fade out or hide slots that the player doesnt ha
 
 MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed the handling of floor types considerably when passing thru stairs. Please handle accordingly.
 
+5.4.78
+- Fixed a bug where save code never appears!!
+- Save code now only provided once when entering perk room
+- Fixed bug where sometimes inventory actions could be done on items that didnt exist
+
 5.4.77
 - Added scrollable menus feature as well as progress tab that can be enabled by mods.
 - Fix wrong spell component fail message being displayed
-- Fixed a bug where sometimes party members would fail to respawn in jail
+- Fixed a bug where sometimes party members would fail to respawn in Jail
+- Fixed a bug where persistent NPCs would sometimes erroneously get disposed
 
 5.4.76
 - Fixed a rare crash
