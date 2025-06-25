@@ -58,6 +58,7 @@ Balance
 - TODO dark rubber boots disp map in kneelclosed and hogtie
 - TODO add erase map for torso against elbow and armbinder stuff
 TODO add priority system for enemies
+
 5.4.78
 - Fixed a bug where save code never appears!!
 - Save code now only provided once when entering perk room
