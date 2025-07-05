@@ -287,7 +287,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 
 		let enchantVariant = "";
 		let enchant_extra = [];
-		let enchants = (Loot.minEnchants || 1) + Math.floor(KDRandom() * ((Loot.maxEnchants || 1) - (Loot.minEnchants || 1)));
+		let enchants = (Loot.minEnchants || 1) + Math.floor (KDRandom() * ((Loot.maxEnchants || 1) + 1 - (Loot.minEnchants || 1)));
 
 		if (Loot.enchantlist && (Loot.enchantchance == undefined || KDRandom() < Loot.enchantchance + (Loot.enchantscale|| 0) * levelPercent)) {
 			while (enchants > 0) {
@@ -370,8 +370,8 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 		let enchantVariant = "";
 		let enchant_extra = [];
 		let hex_extra = [];
-		let enchants = (Loot.minEnchants || 1) + Math.floor(KDRandom() * ((Loot.maxEnchants || 1) - (Loot.minEnchants || 1)));
-		let curses = (Loot.minHex || 1) + Math.floor(KDRandom() * ((Loot.maxHex || 1) - (Loot.minHex || 1)));
+		let enchants = (Loot.minEnchants || 1) + Math.floor (KDRandom() * ((Loot.maxEnchants || 1) + 1 - (Loot.minEnchants || 1)));
+		let curses = (Loot.minHex || 1) + Math.floor (KDRandom() * ((Loot.maxHex || 1) + 1 - (Loot.minHex || 1)));
 		if (hexed) {
 			while (curses > 0) {
 				let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted(Loot.hexlist, armor, false, Loot.hexlevelmin, Loot.hexlevelmax, [hexVariant, ...hex_extra]));
