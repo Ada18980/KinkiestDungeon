@@ -75,7 +75,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			if (KinkyDungeonVisionGet(guard.x, guard.y))
 				KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonGuardAppear").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), KDBaseWhite, 6);
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
-			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax + 1 - KDGameData.GuardSpawnTimerMin));
 		},
 	},
 	"useCurrentGuard": {
@@ -121,7 +121,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 
 			//if (KinkyDungeonVisionGet(guard.x, guard.y))
 			KDGameData.GuardTimer = KDGameData.GuardTimerMax;
-			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax - KDGameData.GuardSpawnTimerMin));
+			KDGameData.GuardSpawnTimer = KDGameData.GuardSpawnTimerMin + Math.floor(KDRandom() * (KDGameData.GuardSpawnTimerMax + 1 - KDGameData.GuardSpawnTimerMin));
 		},
 	},
 	"spawnRescue": {

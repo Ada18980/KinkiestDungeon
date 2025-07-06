@@ -1174,12 +1174,12 @@ function KDGenerateMinorLoot(lootType: string, coord: WorldCoord, tile: any, x: 
 		for (let l of loots) {
 			let itemType = KDGetItemType(l);
 			if (itemType == Consumable) {
-				KDAddConsumable(l.name, (l.quantity || 1) + Math.floor(KDRandom() * l.extraQuantity || 0), container);
+				KDAddConsumable(l.name, (l.quantity || 1) + Math.floor(KDRandom() * (l.extraQuantity + 1 || 0)), container);
 			} else if (itemType == Weapon && !container.items[l.name]) {
 				KDInvAddWeapon(container, l.name);
 			} else if (itemType == LooseRestraint) {
 				KDInvAddLoose(container, l.name, undefined, tile.Faction,
-					(l.quantity || 1) + Math.floor(KDRandom() * l.extraQuantity || 0));
+					(l.quantity || 1) + Math.floor(KDRandom() * (l.extraQuantity + 1 || 0)));
 			}
 		}
 	}
