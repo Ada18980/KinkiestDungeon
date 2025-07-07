@@ -298,6 +298,8 @@ let KDRecyclerCategories: Record<string, KDBlueprintCategory> = {
 				undefined, undefined),
 			KDAutoGenRestraintBlueprint("CyberAnkleCuffs", "Cyber", "", 2,
 				undefined, undefined),
+			KDAutoGenRestraintBlueprint("CyberLegCuffs", "Cyber", "", 2,
+				undefined, undefined),
 			KDAutoGenRestraintBlueprint("CyberArmCuffs", "Cyber", "", 2,
 				undefined, undefined),
 			KDAutoGenRestraintBlueprint("CyberLongMittens", "Cyber", "", 1.4,
