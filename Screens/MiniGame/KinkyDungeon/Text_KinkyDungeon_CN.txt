@@ -3594,7 +3594,7 @@ Devious Dungeon Challenge 已启用。
 - Sick and vile, like the hearts of your enemies.
 病态且卑劣，恰如敌人的心。
 - Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
-对目标造成斩击伤害，对邻近的敌人造成 20 点暗影伤害。使周围的敌人减速 3 回合，并活得 60 点暗影伤害的持续流血效果。
+对目标造成斩击伤害，对你周围的敌人造成 20 点暗影伤害，减速 3 回合，并施加 60 点暗影伤害的持续流血效果。
 - Pickaxe
 镐
 - Used for drilling holes in rock and armor.
