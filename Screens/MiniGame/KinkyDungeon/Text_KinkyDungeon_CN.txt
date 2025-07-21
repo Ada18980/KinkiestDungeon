@@ -50667,7 +50667,8 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Unlocked by accepting a bondage offer and by convincing another NPC to wear their own bondage offer. 
 # - Moth
 # - Unlocked by taking an illuminated crystal off of it's charger. Lämp.
-# - Unlocked by becoming fully encased by slime and then it fully hardening.
+- Unlocked by becoming fully encased by slime and then it fully hardening.
+在被粘液完全包裹并硬化后，能够解锁。
 # - No Locks?
 # - Unlocked by wearing any Ancient restraint.
 # - Ancient Adventurer
