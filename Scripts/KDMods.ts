@@ -85,6 +85,7 @@ function KDLoadModJSON(json: string): MODJSON {
 }
 
 async function KDGetModsLoad(execute) {
+	let modsFromIndexedDB: File[]
 	try {
 		//@ts-ignore
 		let API = window.kdAPI;
@@ -115,13 +116,21 @@ async function KDGetModsLoad(execute) {
 
 			}
 
+		} else {
+			// [online] auto load mods from indexedDB
+			const mods = await autoLoadMods();
+			modsFromIndexedDB = mods;
 		}
 	} catch (err) {
 		// We are online and no local mod loading :()
 	}
 
-	// refresh load order before executing
-	await KDUpdateModInfo();
+	if (modsFromIndexedDB) {
+		await KDLoadMod(modsFromIndexedDB);
+	} else {
+		// refresh load order before executing
+		await KDUpdateModInfo();
+	}
 
 	if (execute) {
 		KDExecuteMods();
@@ -179,10 +188,20 @@ function KDDrawMods() {
 			.replace("${Num1}", num1)
 			.replace("${Num2}", num2)
 		})` : (TextGet("KDModVer") + ver)), 975, 370 + KDModSpacing * count, color, KDTextGray2);
-		if (!KDExecuted)
+		if (!KDExecuted ||
+			// if load success from indexedDB, can del cache mod
+			onlineModsLoaded
+		)
 			DrawButtonKDEx("moddelete_" + i, (bdata) => {
 				delete KDMods[keys[i]];
 				delete KDModInfo[keys[i]];
+				if (onlineModsLoaded) {
+					let currModName = keys[i];
+					if (currModName.endsWith(".zip")) currModName = currModName.replace(".zip", "");
+					KinkyDungeonModDelete(currModName).then(() => {
+						onlineModsDeleted = true;
+					});
+				}
 				KDUpdateModInfo();
 				return true;
 			}, true, 1625, 350 + KDModSpacing * count, 200, 45, TextGet("KinkyDungeonDeleteMod"), KDBaseWhite, "");
@@ -194,10 +213,19 @@ function getFileInput(callback?, ...callbackArgs) {
 	let input = document.createElement('input');
 	input.type = 'file';
 	input.multiple = true;
+	input.accept = ".zip"; // filter out unwanted files
 	input.onchange = _this => {
 		let files = Array.from(input.files);
 		if (callback) {callback(files,...callbackArgs);}
-		else KDLoadMod(files);
+		else {
+			// @ts-ignore
+			const api = window.kdAPI;
+			// [online] save mods to indexedDB
+			if (KDToggles.AutoLoadMods && !api) {
+				batchSaveMods(files);
+			}
+			KDLoadMod(files);
+		}
 	};
 	input.click();
 }
