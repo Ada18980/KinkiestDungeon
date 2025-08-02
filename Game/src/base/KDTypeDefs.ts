@@ -2072,6 +2072,7 @@ type KDPerk = {
 	tags?: string[],
 	blocktags?: string[],
 	blockclass?: string[],
+	blockfunc?: string | ((arg:string[]) => boolean| undefined),
 	locked?: boolean,
 	outfit?: string,
 	require?: string,
