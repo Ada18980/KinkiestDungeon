@@ -1663,6 +1663,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				exitDialogue: true,
 				image: "UI/Safe.png",
 				clickFunction: () => {
+					KDGetContainer("PlayerChest", undefined, undefined, true, KDPlayerChestFilters);
+
 					KinkyDungeonSetFlag("storageChestOpened", -1);
 					KDUI_ContainerBackScreen = KinkyDungeonDrawState;
 					KinkyDungeonDrawState = "Container",
@@ -3261,6 +3263,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KDGameData.InventoryAction = "Sell";
 							KDGameData.SellMarkup = 0.7;
+							KDGetContainer("PlayerChest", undefined, undefined, true, KDPlayerChestFilters);
+
 							KDShowInventory(["Sell", "PlayerChest"]);
 							KinkyDungeonCurrentFilter = Consumable;
 							return false;
