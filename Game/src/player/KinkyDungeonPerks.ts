@@ -562,21 +562,29 @@ function KinkyDungeonGetStatPoints(Stats: Map<any, any>): number {
  */
 function KDCanPickPerk(Perk: string, points?: number): boolean {
 	let perkdef = KinkyDungeonStatsPresets[Perk];
+	let state = true;
 	if (!perkdef) return false;
 	if (KDGetPerkCost(perkdef) > 0 && (points != undefined ? points : KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice)) < KDGetPerkCost(perkdef)) return false;
-	if (!KDValidatePerk(perkdef)) return false;
+	if (!KDValidatePerk(perkdef)) state = false;
+	let validperks:string[] = []
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
-			if (KinkyDungeonStatsPresets[k] && KinkyDungeonStatsPresets[k].block && KinkyDungeonStatsPresets[k].block.includes(Perk)) {
-				return false;
-			}
-			if (KinkyDungeonStatsPresets[k] && perkdef.tags && KinkyDungeonStatsPresets[k].blocktags) {
-				for (let t of KinkyDungeonStatsPresets[k].blocktags)
-					if (perkdef.tags.includes(t)) return false;
-			}
+			validperks.push(k)
+			if (KDPerkBlocked(Perk, k)) state = false;
 		}
 	}
-	return true;
+	//add new way of blocking perk, either based on a function or text instructions
+	//this function in the opposite way as basic perk block since the perk carries the rules that determine whether it is blocked, forcefully available or has it's status unchanged
+	if (KinkyDungeonStatsPresets[Perk].blockfunc) {
+		//console.log(Perk)
+		let blockfunc = KinkyDungeonStatsPresets[Perk].blockfunc;
+		//fn rules
+		if (blockfunc instanceof Function) {
+			//the function return true if it must be blocked, false if it must be pickable and undefined in any other case
+			if (blockfunc.length == 1 && blockfunc(validperks) != undefined) return !blockfunc(validperks);
+		}
+	}
+	return state;
 }
 
 /**
