@@ -25420,7 +25420,7 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailNoKeys
 # :: rPrisonerJailOwnNoKeys
 - (You can't help her, bound as tightly as you are...)
-( 你帮不了她，像你一样紧紧地绑着… )
+( 你帮不了她，毕竟你也被紧紧地绑着… )
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
 # :: rPrisonerLatexUnlockHandsBound
