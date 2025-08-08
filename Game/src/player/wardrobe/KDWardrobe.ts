@@ -2986,7 +2986,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 		}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), KDBaseWhite)
 		 && MouseClicked) res.updated = true;
 	} else {
-		let CF = KDTextField("KDCopyFilter", X, YY - 50, width, 30, undefined, undefined, "300");
+		let CF = KDTextField("KDCopyFilter", X, YY - 50, width, 30, undefined, undefined, "300", 12);
 		if (CF.Created) {
 			CF.Element.oninput = (_event: any) => {
 				let value = ElementValue("KDCopyFilter");
