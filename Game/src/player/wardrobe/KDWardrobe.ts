@@ -3013,6 +3013,11 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				}
 
 			};
+			CF.Element.onclick = (_event: any) => {
+				if (targetFilter) {
+					ElementValue("KDCopyFilter", JSON.stringify(targetFilter))
+				}
+			}
 		}
 	}
 
