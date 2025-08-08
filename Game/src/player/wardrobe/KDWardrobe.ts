@@ -2038,7 +2038,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 	}
 
 
-	if (TestMode && !KDClipboardDisabled && C == KinkyDungeonPlayer) {
+	if (TestMode && C == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDCreateOutfit", (_bdata) => {
 			let exportData = [];
 			if (C?.Appearance)
@@ -2056,7 +2056,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 						},);
 					}
 				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
+			KinkyDungeonExportWardrobeDataToClipboardOrModal(JSON.stringify(exportData), "KDCreateOutfit")
 			return true;
 		}, true, 945, 950, 100, 60,
 		TextGet("KDCreateOutfit"), "#99ff99", "");
@@ -2077,7 +2077,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 						},);
 					}
 				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
+			KinkyDungeonExportWardrobeDataToClipboardOrModal(JSON.stringify(exportData), "KDCreateAlwaysDress")
 			return true;
 		}, true, 945, 890, 100, 60,
 		TextGet("KDCreateAlwaysDress"), "#99ff99", "");
@@ -2099,7 +2099,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 						},);
 					}
 				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
+			KinkyDungeonExportWardrobeDataToClipboardOrModal(JSON.stringify(exportData), "KDCreateFace")
 			return true;
 		}, true, 945, 710, 100, 60,
 		TextGet("KDCreateFace"), "#99ff99", "");
@@ -2119,7 +2119,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 						},);
 					}
 				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
+			KinkyDungeonExportWardrobeDataToClipboardOrModal(JSON.stringify(exportData), "KDCreateHair")
 			return true;
 		}, true, 945, 830, 100, 60,
 		TextGet("KDCreateHair"), "#99ff99", "");
@@ -2139,7 +2139,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 						},);
 					}
 				}
-			navigator.clipboard.writeText(JSON.stringify(exportData));
+			KinkyDungeonExportWardrobeDataToClipboardOrModal(JSON.stringify(exportData), "KDCreateCosplay")
 			return true;
 		}, true, 945, 770, 100, 60,
 		TextGet("KDCreateCosplay"), "#99ff99", "");
@@ -3375,3 +3375,110 @@ function KDDressWardrobeChar(C: Character, forcedress?: boolean) {
 }
 
 let KDlastSelectedModel: Model = null;
+
+function KinkyDungeonExportWardrobeDataToClipboardOrModal(data: string, title: string = undefined) {
+	if (KDClipboardDisabled)
+		KinkyDungeonWardrobePopup(data, title)
+	else
+		navigator.clipboard.writeText(data)
+}
+
+function KinkyDungeonWardrobePopup(data: string, title: string = "Wardrobe Data") {
+	const id = "kinky-dungeon-wardrobe-export";
+	if (document.querySelector(`#${id}`)) {
+		return;
+	}
+	const backdrop = document.createElement("div");
+  backdrop.id = id;
+  Object.assign(backdrop.style, {
+    position: "fixed",
+    inset: 0,
+    backgroundColor: "#000000a0",
+    fontFamily: "'Arial', sans-serif",
+    fontSize: "1.8vmin",
+    lineHeight: 1.6,
+  });
+
+  const modal = document.createElement("div");
+  Object.assign(modal.style, {
+    position: "absolute",
+    display: "flex",
+    flexFlow: "column nowrap",
+    width: "90vw",
+    maxWidth: "1440px",
+    maxHeight: "90vh",
+    overflow: "hidden",
+    backgroundColor: "#282828",
+    color: "#fafafa",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    padding: "1rem",
+    borderRadius: "2px",
+    boxShadow: "1px 1px 40px -8px #ffffff80",
+  });
+  backdrop.appendChild(modal);
+
+  const heading = document.createElement("h1");
+  Object.assign(heading.style, {
+    display: "flex",
+    flexFlow: "row nowrap",
+    alignItems: "center",
+    justifyContent: "space-around",
+    textAlign: "center",
+  });
+  heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
+  heading.appendChild(KinkyDungeonErrorImage("Wolfgirl"));
+  heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
+  heading.appendChild(document.createTextNode(HasText(title) ? TextGet(title) : title));
+  heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
+  heading.appendChild(KinkyDungeonErrorImage("Wolfgirl"));
+  heading.appendChild(KinkyDungeonErrorImage("WolfgirlPet"));
+  modal.appendChild(heading);
+
+  const hr = document.createElement("hr");
+  Object.assign(hr.style, {
+    border: `1px solid ${KDBorderColor}`,
+    margin: "0 0 1.5em",
+  });
+  modal.appendChild(hr);
+
+  modal.appendChild(KinkyDungeonErrorPreamble([
+    "Your browser doesn't appear to support exporting directly to the clipboard.\n",
+    "Here's the data for your outfit, for you to copy to your clipboard. Click on the text below and use Control+C to copy it.",
+  ]));
+
+  const pre = document.createElement("pre");
+  Object.assign(pre.style, {
+    flex: 1,
+    backgroundColor: "#1a1a1a",
+    border: "1px solid #ffffff40",
+    fontSize: "1.1em",
+    padding: "1em",
+    userSelect: "all",
+    overflowWrap: "anywhere",
+    overflowX: "hidden",
+    overflowY: "auto",
+    color: KDBorderColor,
+    whiteSpace: "pre-wrap"
+  });
+  pre.textContent = `${data}`;
+  modal.appendChild(pre);
+
+  const buttons = document.createElement("div");
+  Object.assign(buttons.style, {
+    display: "flex",
+    flexFlow: "row wrap",
+    justifyContent: "flex-end",
+    gap: "1em",
+  });
+  modal.appendChild(buttons);
+
+  const closeButton = KinkyDungeonErrorModalButton("Close");
+  closeButton.addEventListener("click", () => {
+    backdrop.remove();
+  });
+  buttons.appendChild(closeButton);
+
+  document.body.appendChild(backdrop);
+}
