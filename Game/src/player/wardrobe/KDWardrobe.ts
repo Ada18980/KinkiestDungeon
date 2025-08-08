@@ -488,6 +488,9 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 					}
 
 				};
+				CF.Element.onclick = (_event: any) => {
+					ElementValue("KDCopyProperties", JSON.stringify(Model.Properties))
+				}
 			}
 		}
 		YY += 60;
