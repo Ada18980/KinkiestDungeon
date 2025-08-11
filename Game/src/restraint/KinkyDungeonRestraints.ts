@@ -4169,8 +4169,10 @@ function KDCanAddRestraint (
 	function bypasses() {
 		return (
 			(
-				!((KinkyDungeonPlayerTags.get("SupremeBra") && (restraint.Group == "ItemNipples" || restraint.Group == "ItemNipplesPiercings"))
-			|| (KinkyDungeonPlayerTags.get("SupremeBelt") && (restraint.Group == "ItemVulva" || restraint.Group == "ItemVulvaPiercings" || restraint.Group == "ItemButt")))
+				!((KinkyDungeonPlayerTags.get("SupremeBra")
+					&& (restraint.Group == "ItemNipples" || restraint.Group == "ItemNipplesPiercings"))
+				|| (KinkyDungeonPlayerTags.get("SupremeBelt")
+					&& (restraint.Group == "ItemVulva" || restraint.Group == "ItemVulvaPiercings" || restraint.Group == "ItemButt")))
 			&& (Bypass || restraint.bypass || !KDGroupBlocked(restraint.Group, true))
 			)
 			|| KDEnemyPassesSecurity(restraint.Group, securityEnemy)
