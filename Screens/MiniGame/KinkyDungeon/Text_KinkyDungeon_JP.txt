@@ -70,10 +70,10 @@
 キー設定
 ### Mouse Shortcuts
 
-### Auto-path through NPCs
-
-### Auto-path through Doors
-
+- Auto-path through NPCs
+非敵対NPCを自動で通り抜ける
+- Auto-path through Doors
+ドアを自動で通り抜ける
 - Show Enemy Binding as %
 敵の拘束値を%表示
 - Auto-wait Through Delayed Actions
@@ -212,8 +212,8 @@ NPCステータスを表示する
 画面横にバフを表示
 - Show Trajectory on Auto-Path
 自動移動時の経路を表示
-### Always Show Player Facing
-
+- Always Show Player Facing
+ﾌﾟﾚｲﾔｰｷｬﾗの見ている方向を表示
 - Show more learnable spells
 習得可能な魔法を全て表示する
 - Show Player Buff Auras
@@ -768,8 +768,8 @@ NPCとのダイアログで拘束される時、抵抗できなくなる
 近接攻撃時、興奮レベルが上昇する。興奮レベルが高い時、与えるダメージが上昇する。最大30%
 - Unstable Magic
 不安定魔法
-### Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
-
+- Spells do up to 30% additional damage based on distraction or miscast chance, whichever is higher.
+DPか詠唱失敗率のうち、高い方の30%分魔法の威力が上昇する。
 - Absolute Focus
 絶対集中
 - Miscast chance is doubled.
@@ -1756,7 +1756,7 @@ Kinky: セーブ コードなし、オーブを破壊した時に得られるス
 鍵がない
 - You are protected from damage and can't be bound until the shield is broken!
 ダメージを受けず、拘束を受け付けない。
-- Chance for a spell to fizzle:
+- Chance for a spell to fizzle: 
 魔法が効力を失う可能性:
 - Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 回避率: Percent%。基礎回避率 EVASIONSUM に EVASIONPENALTY% のペナルティを受けている。
@@ -2294,7 +2294,7 @@ MODを削除
 ポーションのセットを見つけた。
 
 
-- Rarity:
+- Rarity: 
 レアリティ:
 - Lesser
 レッサー
@@ -3186,11 +3186,11 @@ ReplaceValue を取得した
 地下に生えている木を切るのに最適。
 - Also deals 20 damage to enemies next to you. Deals slash damage.
 斬撃属性。隣の敵にも20ダメージ。
-- Accuracy:
-命中:
-- Crit Multiplier:
+- Accuracy: 
+命中率:
+- Crit Multiplier: 
 会心ダメージ:
-- Bind Crit Multiplier:
+- Bind Crit Multiplier: 
 拘束会心ダメージ:
 - Find the keys..
 鍵を見つける……
@@ -3208,9 +3208,9 @@ ReplaceValue を取得した
 ひび割れた場所がある。ナイフや道具を挟めば上手く拘束を切れるかもしれない。
 - You found something sticky and might be able to pull off fabrics.
 ねばついた場所がある。上手く使えば拘束を引きはがせるかも。
-- Evasion:
+- Evasion: 
 回避:
-- Visibility:
+- Visibility: 
 視認性:
 
 
@@ -3256,13 +3256,13 @@ ReplaceValue を取得した
 満足した……。詠唱失敗率が減少する。
 
 
-- Damage:
+- Damage: 
 ダメージ:
-- Bind:
+- Bind: 
 拘束:
-- Crit:
+- Crit: 
 会心:
-- SP Cost:
+- SP Cost: 
 SPコスト:
 - Cut PWR: AMNT%
 切断力： AMNT%
@@ -6390,15 +6390,15 @@ SHRINETYPE の祠
 石版の種類:
 
 
-- Goddess:
-女神:
-- Goddess Blessing:
+- Goddess: 
+分類:
+- Goddess Blessing: 
 女神の祝福:
-- Goddess Curse:
+- Goddess Curse: 
 女神の呪い:
-- Mana Bonus:
+- Mana Bonus: 
 マナボーナス:
-- Lack of Mana Penalty:
+- Lack of Mana Penalty: 
 マナ不足のペナルティ:
 - Your excess mana helps you suppress the enchantment!
 自身のマナが拘束具の魔法を弱めた！
@@ -6424,12 +6424,12 @@ SHRINETYPE の石版
 ルーン文字を読もうとするも、解読できない。
 
 
-- Allies:
-味方:
-- Enemies:
-敵:
-- Favorable:
-お気に入り:
+- Allies: 
+中立:
+- Enemies: 
+敵対:
+- Favorable: 
+仲間:
 
 
 - None
@@ -6912,8 +6912,8 @@ RSTRN によって締め付けられている。抜け出すのが困難だ…�
 
 - Wolf Panties
 オオカミのパンツ
-- A set of vibrating panties designed to help subdue unruly wolfgirls.
-手に負えないウルフガールを黙らせるために、クロッチ部分が振動するパンツ。
+- It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber. type: Teasing, Pleasure, Denial
+キツくて脱ぐのは難しいが、素材はゴムでできている。 タイプ:イタズラ、快楽、焦らし
 - It's incredibly tight and difficult to remove once it's clipped on, but the material is rubber.
 とてもタイトな作りで脱ぐのに苦労しそうだが、ゴムでできているため簡単に切れそう。
 
@@ -7174,12 +7174,12 @@ RestraintName の呪いが解除された！
 バストギャグを外さないようにするマズル。
 - The leather panel is tough and tight.
 とてもタイトで頑丈にできている。
-### Blessed Muzzle
-
-### A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably.
-
-### Made of an ancient and exotic form of leather.
-
+- Blessed Muzzle
+聖なるマズル
+A muzzle enchanted with magical energies to keep its wearer's mouth sealed inescapably.
+魔法の力で着用者の口を封じ込めるマズル。
+Made of an ancient and exotic form of leather.
+はるか昔に希少な革を用いて作られたようだ。
 - Bast Blindfold
 バストブラインド
 - A blindfold used to aid in meditation.
@@ -7221,43 +7221,43 @@ RestraintName の呪いが解除された！
 
 
 - Blessed Wrappings (Head)
-祝福された包帯（頭）
+聖なる包帯（頭）
 - A band of magic embalming ribbon wrapped tight around your face.
 顔周りにきつく巻き付く、祝福が施された包帯。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 - Blessed Wrappings (Eyes)
-祝福された包帯 (目)
+聖なる包帯 (目)
 - A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
 目の周りにきつく巻き付く、祝福が施された包帯。
 - Blessed Wrappings (Gag)
-祝福された包帯 (口)
+聖なる包帯 (口)
 - A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar.
 口にきつく巻き付く、祝福が施された包帯。クイックインベントリやホットバーから、任意のターゲットに使用できる。
 - Blessed Wrappings (Arms)
-祝福された包帯（腕）
+聖なる包帯（腕）
 - A layer of magic embalming ribbon wrapped tight around your body.
 上半身にきつく巻き付く、祝福が施された包帯。
 - Blessed Wrappings (Feet)
-祝福された包帯（足）
+聖なる包帯（足）
 - A layer of magic embalming ribbon wrapped tight around your shins.
 足にきつく巻き付く、祝福が施された包帯。
 - Blessed Wrappings (Toes)
-祝福された包帯（つま先）
+聖なる包帯（つま先）
 - A layer of magic embalming ribbon wrapped tight around your feet.
 つま先にきつく巻き付く、祝福が施された包帯。
 - Blessed Wrappings (Hands)
-祝福された包帯（手）
+聖なる包帯（手）
 - A layer of magic embalming ribbon wrapped tight around your hands.
 手にきつく巻き付く、祝福が施された包帯。
 - Blessed Wrappings (Legs)
-祝福された包帯（脚）
+聖なる包帯（脚）
 - A layer of magic embalming ribbon wrapped tight around your thighs.
 脚にきつく巻き付く、祝福が施された包帯。
 - Living Blessed Wrappings Collar
-生きている祝福された包帯の首輪
+生きている聖なる包帯の首輪
 - This collar is designed to make sure its wearer does not escape their wrappings.
-着用者を祝福された包帯で拘束し続けるための首輪。
+着用者を聖なる包帯で拘束し続けるための首輪。
 - It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you.
-装備していると、時折どこからともなく祝福された包帯が現れて拘束される。効果は装備している祝福された包帯の数で増加する。
+装備していると、時折どこからともなく聖なる包帯が現れて拘束される。効果は装備している聖なる包帯の数で増加する。
 
 
 - Tape (Hands)
@@ -7319,7 +7319,7 @@ RestraintName の呪いが解除された！
 
 
 - Blessed Wrapping
-祝福された包帯
+聖なる包帯
 - A layer of magic embalming ribbon.
 遺体を包むための魔法のリボン。
 - It clings of its own accord to intruders and naughty catgirls.
@@ -7618,12 +7618,12 @@ RestraintName の呪いが解除された！
 鼻辺りから少しは見える。
 
 
-### High-Security Blindfold
-
-### A chin harness stretches this leather blindfold tightly against your face.
-
-### Total blackout. The tough leather is reinforced with rivets.
-
+- High-Security Blindfold
+厳重な目隠し
+- A chin harness stretches this leather blindfold tightly against your face.
+顎で留めるストラップ付きの目隠し。革製で非常にタイト。
+- Total blackout. The tough leather is reinforced with rivets.
+何も見えなくなる。鋲付きの革は非常に柔軟で強固。
 
 
 - Magic Chastity Belt
@@ -8234,7 +8234,7 @@ RestraintName の呪いが解除された！
 感覚遮断フード
 - A well-fitted hood that covers your head and muffles sounds.
 頭を完全に包み、視覚と聴覚を封じるフード。
-- No eyeholes. Integrated blindfold and gag. Total darkness.
+- No eyeholes. Integrated blindfold and gag. Total darkness. Metallic studs make cutting it off more difficult.
 目隠しと猿轡、イヤーマフが一体となった拘束具。
 
 
@@ -8574,7 +8574,7 @@ RestraintName の呪いが解除された！
 
 - Rubber (Feet)
 ゴム(つま先)
-- Sticky rubber that has fused itself into a skintight layer.
+- Stretchy rubber in a skintight layer. Harder to cut than normal rubber.
 身体にピッタリと張り付く粘着性のゴム。
 - There's no struggling out now, but since it's solid it may be cuttable.
 スライムよりももがくのは難しいが、再生能力は失われたので切れるかもしれない。
@@ -8657,11 +8657,11 @@ RestraintName の呪いが解除された！
 
 
 - Tape Mittens
-テープミトン
+テープ(手)
 - Sticky tape that holds your hands into a fist!
 手をぐるぐる巻きにして指を封じるテープ。
 - It's tough to get out of without some kind of grip!
-何からの補助がないと抜け出しにくい。
+何らかの補助がないと抜け出しにくい。
 
 
 - Arm Chains
@@ -9122,10 +9122,10 @@ WEAPONNAME を装備した。
 
 
 
-### Flipped Table
-
-### Relieved some stress.
-
+- Flipped Table
+倒れたテーブル
+- Relieved some stress.
+スッキリした。
 - Unlit Torch
 消えている松明
 - Can be lit
@@ -9187,7 +9187,7 @@ WEAPONNAME を装備した。
 - Empowered with magic
 魔法で強化されている
 - Blessed Wrappings
-祝福されたラッピング
+聖なるラッピング
 - Enchanted wrappings
 魔法でできたテープ
 - Summoning Runes
@@ -9328,7 +9328,7 @@ CMD魔法で操作可能
 視界
 
 
-- Components:
+- Components: 
 使用部位：
 - Arm Movements
 腕
@@ -10183,7 +10183,7 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 - Lightning Rune
 雷のルーン
 - A trap that deals DamageDealt electric damage and stuns for 4 turns. Takes 3 turns to setup. 200% crit multiplier.
-5ターンかけて DamageDealt 電気ダメージを与え、4ターンの間スタン状態を付与するトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
+詠唱:5ターン 　DamageDealt 電気ダメージを与え、4ターンの間スタン状態を付与するトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
 - You conjure a charged trap!
 雷の罠を仕掛けた！
 - Choose location for trap
@@ -10193,7 +10193,7 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 - Freeze Rune
 氷のルーン
 - A trap that deals DamageDealt ice damage and freezes for 30 turns. Takes 3 turns to setup. 200% crit multiplier.
-5ターンかけて DamageDealt 電気ダメージを与え、30ターンの間凍結状態を付与するトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
+詠唱:5ターン 　DamageDealt 電気ダメージを与え、30ターンの間凍結状態を付与するトラップを作り出す。この攻撃の会心ダメージ倍率は200%。
 - You conjure an icy trap!
 氷の罠を仕掛けた！
 
@@ -10255,7 +10255,7 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 - Icicle
 アイシクル
 - Channel 3 turns to fire 3 icicles that deal DamageDealt ice damage and slow for 4 turns, freezing slowed/drenched targets for 3 turns.
-3ターンかけて発動。命中したターゲットに DamageDealt 氷ダメージを与えるつららを3発放つ。命中した敵は4ターンの間減速し、水濡れまたは既に減速状態である場合、3ターンの間凍結する。
+詠唱：3ターン命中したターゲットに DamageDealt 氷ダメージを与えるつららを3発放つ。命中した敵は4ターンの間減速し、水濡れまたは既に減速状態である場合、3ターンの間凍結する。
 - You raise a hand and icicles fly forward!
 手を振りかざし、つららを飛ばす！
 
@@ -10421,7 +10421,7 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 - Rock
 ロック
 - Channel 1 turn to launch a rock that deals DamageDealt crush damage and slows for 4 turns. Blocks up to 80 damage.
-1ターンかけて岩を蹴り、命中した敵に DamageDealt 打撃ダメージを与え、4ターンの減速状態を付与する。岩は80ポイントまでのダメージをブロックする。
+詠唱:1ターン　岩を蹴り、命中した敵に DamageDealt 打撃ダメージを与え、4ターンの減速状態を付与する。岩は80ポイントまでのダメージをブロックする。
 - You raise a stone from the ground and kick it forward!
 地面から岩を生成し、思い切り蹴り飛ばす！
 
@@ -10441,7 +10441,7 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 - Boulder
 ボルダー
 - Channel 1 turn to launch a huge slow rock that deals DamageDealt crush damage and slows for 8 turns. AoE, collides with summoned rocks. Blocks up to 200 damage.
-1ターンかけて巨岩を蹴り飛ばし、 DamageDealt 打撃ダメージを与え、8ターンの減速状態を付与する。他の召喚物と衝突し、200ポイントまでのダメージをブロックする。
+詠唱:1ターン　巨岩を蹴り飛ばし、 DamageDealt 打撃ダメージを与え、8ターンの減速状態を付与する。他の召喚物と衝突し、200ポイントまでのダメージをブロックする。
 - You raise a massive boulder from the ground and kick it forward!
 地面から巨岩を生成し、全力で蹴り飛ばす！
 
@@ -10538,8 +10538,8 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 
 - Precise Critical
 精確無比
-### When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
-
+- When landing a critical strike with physical damage, accuracy over 100% is converted to bonus crit multiplier at 25% efficiency (50% for Light weapons)
+物理ダメージで会心の一撃が発動した時、100%を超えた命中率の25%(軽い武器なら50%)が会心ダメージ倍率に変換される。
 - Precise Magic
 精密魔法
 - When landing a critical strike with magic damage, accuracy over 100% is converted to bonus crit multiplier at 50% efficiency.
@@ -10645,7 +10645,7 @@ Duration ターンの間、敵に弱体化と減速状態を付与し、 DamageD
 - Summon Bomb
 爆弾召喚
 - Channel for 1 turn for a bomb that does DamageDealt blast damage in an area after DelayTime turns.
-1ターンかけて爆弾を投擲する。爆弾は DelayTime 後に爆発し、範囲内に DamageDealt 衝撃ダメージを与える。
+詠唱:1ターン　爆弾を投擲する。爆弾は DelayTime 後に爆発し、範囲内に DamageDealt 衝撃ダメージを与える。
 - Fire in the hole!
 グレネード！
 
@@ -11272,8 +11272,8 @@ Duration ターンの間、部屋を明るくする。全く光のない部屋�
 
 - Iron Blood
 アイアンブラッド
-### Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast.
-
+- Channel 4 turns: Reduces SP cost of melee attacks by 30%, but increases MP cost of spells by 15%. Ends on recast.
+詠唱:4ターン　近接攻撃の消費SP-30%、魔法の消費MP+15%。再使用で解除。
 - Your skin glows a pale red!
 血液に魔力を流しこんだ！
 
@@ -12154,11 +12154,11 @@ SPELLNAME を置き換えるスキルをクリック。
 スキルポイント:
 
 
-- Level:
+- Level: 
 レベル:
-- Spell Point Cost:
+- Spell Point Cost: 
 スキルポイントコスト:
-- Mana Cost:
+- Mana Cost: 
 マナコスト:
 
 
@@ -12367,7 +12367,7 @@ SPELLNAME を置き換えるスキルをクリック。
 - (It's a record of an interview)|ME: Why are you like this?|MUMMY: Because we are blessed!|ME: Blessed? You've been wrapped up for thousands of years!|MUMMY: A thousand years is nothing compared to the glory that will come!|ME: Why do you have to be wrapped up? There are plenty of you who aren't...|MUMMY: The chosen ones will inherit the land when the goddess returns.
 とあるインタビューの記録|記者: どうしてそんな姿を？ |マミー: これは祝福された姿なのよ |記者: 祝福？1000年間包帯でぐるぐる巻きにされるのが？|マミー:来たる栄光の前には1000年なんか一瞬よ |記者: しかし……普通の姿でいる方もいるのに、なぜあなたが？ |マミー: 私が選ばれしものだからよ。女神が帰ってきたときに土地をいただくの。
 - (It's a record of an interview)|ME: Which goddess are you referring to? The goddess of restoration?|MUMMY: The blessed kitty.. she was promised to rule over the lesser goddesses.|ME: Lesser goddesses? Which ones?|MUMMY: YOUR goddesses. The ones you humans created that should not be. Ours is the true offspring of the creators, a goddess created to rule!
-とあるインタビューの記録|記者:女神とは、どの女神のことなので？再生の女神？|マミー: 祝福された子猫……彼女はかつて、いつの日か下等な神々を下すと約束してくださった。|記者:下等な女神？|マミー:あなた達人間の女神よ。我々の神こそが本物なの。
+とあるインタビューの記録|記者:女神とは、どの女神のことなので？再生の女神？|マミー: 祝福をうけた子猫……彼女はかつて、いつの日か下等な神々を下すと約束してくださった。|記者:下等な女神？|マミー:あなた達人間の女神よ。我々の神こそが本物なの。
 - (It's a record of an interview)|ME: What of the elves? Don't they talk about a 'kingdom' too?|MUMMY: Who are the elves?|ME: You know, pointy ears, green hair, a heck of an attitude... they seem in tune with nature.|MUMMY: They sound arrogant.|ME: They are.|MUMMY: Perhaps they know nothing of the promise between our goddess and theirs.
 とあるインタビューの記録|記者:エルフとはどういった関係で？｜マミー:エルフ？尖った耳と緑の髪、そして傲慢な態度。｜マミー:彼女たちは恐ろしく傲慢なの。｜記者:傲慢。｜ME:そう。きっと彼女たちは、わたしたちの女神と彼女たちの女神との間で何があったか知らないんでしょうね。
 - (It's a medical record) Patient seems stable... application of the enchanted cloth seems to have stopped the bleeding. It appears that the ancient magic suppresses all forms of injury, even in humans, until it is taken off.
@@ -12816,16 +12816,16 @@ KeyAmount の鍵を試してみた。
 いい子にしていたようだな、もう出て言っていいぞ。
 - That's a good girl. Now behave yourself, okay? You're free to go.
 行儀よくしていたようだな、外でもそうしていろよ。
-### Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
-
-### I hope you learned your lesson.|Now get your butt out of here.
-
-### You've been a good girl. I hope you don't make the same mistake again.|You can leave.
-
-### That's a good girl. Now behave yourself, okay?|You're free to go.
-
-### Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
-
+- Looks like you got yourself in a bind! (she pats your butt playfully) Go make the others happy!
+そんなに縛られるのが好きなのか。それじゃあ他の奴らに奉仕してこい！(お尻を軽く叩かれた)
+- I hope you learned your lesson.|Now get your butt out of here.
+ちゃんと反省しただろうな？|それじゃあさっさと行け！
+- You've been a good girl. I hope you don't make the same mistake again.|You can leave.
+しっかり反省しているようだな、もう間違いを犯すこともないだろう。|もう行っていいぞ。
+- That's a good girl. Now behave yourself, okay?|You're free to go.
+いい子だ、この調子でお行儀よくするんだぞ。|もう行け。
+- Looks like you got yourself in a bind!|(she pats your butt playfully)|You're free to go!
+そんなに縛られるのが好きなのか。|それじゃあ他の奴らに奉仕してこい！(お尻を軽く叩かれた)
 
 
 - Good girl.
@@ -16607,7 +16607,7 @@ Myrtleは私よりも守護に長けていた……妹に会いたいのだ…�
 - Who dares intrude on our sacred grounds?
 神域を侵す勇気のある者か？
 - By the blessed kitty!
-祝福された猫のために！
+聖なる猫のために！
 - Show us what you got!
 何ができるか見せてみろ！
 - Who do you think you are?
@@ -19249,7 +19249,7 @@ SPL……
 
 
 - (The SPEAKER perks her ears as she sees you)|Glory to the blessed kitty!|Are you prepared to join us?
-(SPEAKER はこちらを見て耳を立てた)|祝福された猫に栄光あれ！|お前も参加するか？
+(SPEAKER はこちらを見て耳を立てた)|祝福を受けし猫に栄光あれ！|お前も参加するか？
 - (The SPEAKER nods happily)|Fantastic! You just need to agree to be nice to cats.|And also we own you now.
 (SPEAKER は嬉しそうに頷く)|素晴らしい！お前は猫に優しくするとだけ誓えばいい。|そうすればお前は我々のものだ。
 - (The SPEAKER jumps happily)|Wonderful! Here's your collar!
@@ -20678,8 +20678,8 @@ HPが足りない。
 あなたがここのボスね
 - (Giggle)
 ん……ふふ(嘲笑する)
-### Don't mess with me, little girl.
-
+- Don't mess with me, little girl.
+邪魔しないでね、おチビちゃん。
 - Mmpphgh? (Pout at her)
 んん……(微笑みかける)
 - (She smirks)|So you're that kind of visitor, huh?
@@ -21454,12 +21454,12 @@ FOODMSG|(とても美味しそうな匂いがする……)
 ピザ
 
 
-### (The table looks remarkably flippable)
-
-### (You knock over the table!)
-
-### (Flip the table)
-
+- (The table looks remarkably flippable)
+(ひっくり返せそうなテーブルがある)
+- (You knock over the table!)
+(テーブルをひっくり返した！)
+- (Flip the table)
+(ひっくり返す)
 - (There is a button on a control panel here.)
 (端末にボタンが付いている)
 - (You touch the button and it glows, releasing a pulse of energy!)
@@ -27340,8 +27340,8 @@ ENEMYNAME が近くの人形を支配下に置いた！
 タワーシールド
 - Now with more leg room.
 体全体を防御できる大盾。
-### Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
-
+- Makes it slower to turn around. +120 Block, +30 Physical Armor. Deals crush damage and stuns for 7 turns. Offhand: Slows you and gives the same block and armor bonus. Offhand bonuses from shields do not stack with a currently equipped shield.
+打撃属性。装備時ブロック値+120、物理アーマー+30、振り向き速度が低下する。攻撃が命中した時、7ターンの間スタンさせる。サブウェポン：メイン装備時と同等のブロック値とアーマーを得る。この効果はメインに装備している武器のブロック値と重複しない。
 - You pick up a metal tower shield.
 金属で補強された大きな盾を拾った。
 
@@ -28762,8 +28762,8 @@ WPを35消費して発動。MPを完全回復し、 Duration ターンの間、�
 聖なる力が呪いの魔法を打ち消した！
 - Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 ある人は、このマカロンは天国のパン屋から来たと言う。ある者は、このマカロンが珍しい材料で作られただけで、味は最悪だと言う。
-### Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
-
+- Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
+装備中のアイテム一つから全ての呪いを取り除き、解錠する。
 - Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
 いつもご愛顧いただきありがとうございます！この度は特典として、最寄りのお店への往復券を1枚サービスさせていただきます！
 - (You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~
@@ -29040,8 +29040,8 @@ TargetEnemy にはあまり効いていないようで AMNT の拘束値を受�
 
 - Combat Training
 戦闘訓練
-### Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 10 Battle Rhythm you gain 1 slow resist.
-
+- Your training has granted a number of bonuses:|-Weapon stamina cost is reduced by 1% per 10 current WP, up to a max of 40%.|-Slow effects wear off more quickly.|-While you are above 10 Battle Rhythm you gain 1 slow resist.
+戦闘訓練により、様々な効果を得た。|-WP10につき、武器攻撃の消費スタミナ-1%。最大40%まで。|-自身の減速効果が短くなる。|-戦闘のリズム10につき、1の減速耐性を得る。
 - This is your current offhand weapon.
 反対の手に持っている武器
 - You are unable to wield this weapon offhand at the moment.
@@ -29689,7 +29689,7 @@ RestraintName がショートした！
 
 
 - Quit Game
-ゲームをやめる
+ゲーム終了
 
 
 - Your RSTRNT glows and its seal vanishes as the shrine's energy fills the air.
@@ -30386,8 +30386,8 @@ ENMY は意外な抵抗をみせ、ダメージを PCNT% 軽減された！
 
 - Blade Dance
 ブレードダンス
-### Spend 30 + weapon SP cost to dash to an adjacent spot. Attacks nearby enemies for 50% damage, or 100% if holding a Light weapon. If holding a Light offhand weapon, attack with that one for another 50% damage.
-
+- Spend 30 + weapon SP cost to dash to an adjacent spot. Attacks nearby enemies for 50% damage, or 100% if holding a Light weapon. If holding a Light offhand weapon, attack with that one for another 50% damage.
+武器攻撃+30のSPを消費して発動。選択したマスに素早く移動し、隣接する全ての敵に攻撃力の50%のダメージを与える。メインウェポンが軽い武器の場合は攻撃力の100%のダメージを与え、サブウェポンが軽い武器の場合は追加で攻撃力の50%のダメージを与える。
 - You spin towards a location, slashing at nearby enemies!
 刃を手に舞い踊りながら駆けた！
 
@@ -31430,10 +31430,10 @@ ENMY に武器を奪われそうになったが、持ちこたえた！
 ENMY に懐を探られそうになったが、届かなかったようだ。
 
 
-### More Petsuits
-
-### Petsuits are favored over other heavy bondage.
-
+- More Petsuits
+ペットスーツ増加
+- Petsuits are favored over other heavy bondage.
+ペットスーツが優先して選ばれるようになる。
 - More Armbinders
 アームバインダー増加
 - Armbinders are favored over other heavy bondage.
@@ -32948,8 +32948,8 @@ DRTN ターンの間 DMG に対して AMNT% の耐性を得る
 
 - Negate Rune
 ルーン消去
-### Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
-
+- Removes a rune on the target tile. If cast on self, removes all runes you've created instead. Casting on an enemy rune restores 10 mana instead. Drains 5 mana if cast on a runeless tile.
+対象によって異なる効果を発揮する。敵の作り出したルーンを選択した場合、そのルーンを消去し、10マナ回復する。自分を対象にした場合、自身の作り出した全てのルーンを削除する。ルーンのないマスを選択した場合、5マナ消費する。
 - You scribe a negation rune!
 拒否のルーンを描いた！
 - Target a single rune, or yourself to negate all your runes.
@@ -33650,7 +33650,7 @@ NPC は拘束を緩めている。
 スロットを選択
 
 
-- Cost:
+- Cost: 
 コスト：
 
 
@@ -34572,8 +34572,8 @@ ITMN1 が口の中で大きくなり、 ITMN2 に変化した！
 奇妙な包帯が身体を包みこんできた！
 
 
-### You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
-
+- You are slowed! Trying to move will cause you to lose a turn, but you can sprint at 2x SP cost.
+動きが鈍くなっている。移動する際に追加でターンを消費し、走る際の消費SPが倍になる。
 - You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
 拘束を切りたいなら、ナイフや尖った地形を探そう。
 - If you can't get your knife into place, try sitting next to a crack on the wall.
@@ -35082,32 +35082,33 @@ ITMN1 は清められ、 ITMN2 に変化した！
 テキストのレイヤー:
 
 
-### No Actions Available
-
-### Talk
-
-### Move To
-
-### Take Stairs
-
-### Allow Passing
-
-### Tie Up
-
-### Attempt to Tie
-
-### Move Closer to Tie
-
-### Sprint (AMNT)
-
-### Stop Waiting
-
-### (Already slept here)
-
-### (Will not low enough)
-
-### Move closer to interact
-
-### Several poles rise up out of the ground...
-
-### Various Scrolls
+- No Actions Available
+可能なｱｸｼｮﾝなし
+- Talk
+話す
+- Move To
+ここに移動
+- Take Stairs
+階段
+- Allow Passing
+通り抜ける
+- Tie Up
+縛る
+- Attempt to Tie
+拘束を試みる
+- Move Closer to Tie
+近くにして拘束
+- Sprint (AMNT)
+走る(AMNT)
+- Stop Waiting
+待機解除
+- (Already slept here)
+(もうここでは寝られない)
+- (Will not low enough)
+(眠くない)
+- Move closer to interact
+近くに移動してインタラクト
+- Several poles rise up out of the ground...
+地面から複数の杭がせり上がってきた……
+- Various Scrolls
+巻物セット
