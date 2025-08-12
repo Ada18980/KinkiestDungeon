@@ -48097,7 +48097,7 @@ ENMY 请求帮助！
 - Plastic Explosive
 塑胶炸弹
 - Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage.
-有一个60回合的计时器，但可以被其他炸药引爆。在巨大的半径范围内造成210处爆炸破坏，并留下一大片瓦砾。被击中的敌人在受到伤害之前减少50护甲。
+60回合定时引爆，也可以被其他爆炸物引爆。在造成210点巨大范围的爆炸伤害，并留下一大片瓦砾。被击中的敌人在受到伤害之前减少50点护甲。
 # :: KinkyDungeonInventoryItemC4Desc2
 # :: KinkyDungeonInventoryItem2C4Desc2
 - It's totally harmless! Probably.
