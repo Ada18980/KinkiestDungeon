@@ -1713,7 +1713,7 @@ EnemyName对TargetName念出了一个口令！
 - All Damage Reduction: 
 全部伤害减免：
 - You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-你受到的 PERCENT1 DAMAGETYPE伤害，基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正。
+你受到的DAMAGETYPE伤害减少至PERCENT1，基于PERCENT2的DAMAGETYPE抗性和PERCENT3的DAMAGECATEGORY修正。
 - You deal PERCENT more DAMAGETYPE damage.
 你造成的DAMAGETYPE伤害增加了 PERCENT。
 - Your bindings are PERCENT more effective.
