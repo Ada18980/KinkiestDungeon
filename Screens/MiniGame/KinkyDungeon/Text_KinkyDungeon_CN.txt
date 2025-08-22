@@ -26423,7 +26423,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: l_Labcoat_Coat
 # :: m_Labcoat_l_Coat
 # :: m_Labcoat_l_Coat
-# - CoatHogtieFree
+- CoatHogtieFree
+自由束缚外套
 # :: l_Labcoat_CoatHogtieFree
 # :: m_Labcoat_l_CoatHogtieFree
 # :: m_Labcoat_l_CoatHogtieFree
@@ -29717,7 +29718,8 @@ V形比基尼
 # :: m_LaceBraDecoRestraint_l_LaceChestDecoHardware
 - LaceBraDeco
 蕾丝胸罩装饰
-# - LaceCorsetRestraint
+- LaceCorsetRestraint
+蕾丝束腰拘束
 - LaceBustierRestraint
 蕾丝抹胸拘束
 # - LaceBraDecoRestraint
@@ -29894,7 +29896,8 @@ V形比基尼
 # :: m_LatexCorsetFullCrossRestraint_l_ChestHeavyCorset
 - LatexBraStraps
 乳胶束胸带
-# - StrapsHeavyCorset
+- StrapsHeavyCorset
+条纹重型束腰
 # :: m_LatexBraStraps_l_StrapsHeavyCorset
 # :: m_LatexCorsetStrap_l_StrapsHeavyCorset
 # :: m_LatexCorsetFullStrap_l_StrapsHeavyCorset
@@ -29905,8 +29908,10 @@ V形比基尼
 # :: m_LatexCorsetFullStrap_l_StrapsHeavyCorset
 # :: m_LatexCorsetStrapRestraint_l_StrapsHeavyCorset
 # :: m_LatexCorsetFullStrapRestraint_l_StrapsHeavyCorset
-# - LatexBraStrapsCross
-# - CrossHeavyCorset
+- LatexBraStrapsCross
+乳胶交叉绑带胸罩
+- CrossHeavyCorset
+重型交叉束胸
 # :: m_LatexBraStrapsCross_l_CrossHeavyCorset
 # :: m_LatexCorsetCross_l_CrossHeavyCorset
 # :: m_LatexCorsetFullCross_l_CrossHeavyCorset
@@ -29925,8 +29930,10 @@ V形比基尼
 乳胶紧身束带
 - LatexCorsetFullStrap
 乳胶紧身全束带
-# - LatexCorsetCross
-# - LatexCorsetFullCross
+- LatexCorsetCross
+交叉乳胶束腰
+- LatexCorsetFullCross
+完全交叉乳胶束腰
 - LatexCorsetRestraint
 乳胶束缚紧身衣
 - LatexBustierRestraint
@@ -30413,7 +30420,8 @@ V形比基尼
 # :: m_FashionCyberLongMittens_l_LongMittenLeft
 # :: m_CyberArmLeft_l_LongMittenLeft
 # :: m_CyberArms_l_LongMittenLeft
-# - LongLeft
+- LongLeft
+长袖左臂
 # :: m_LongMittenLeft_l_LongLeft
 # :: m_LongMittens_l_LongLeft
 # :: m_LongMittenLeft_l_LongLeft
@@ -30430,7 +30438,8 @@ V形比基尼
 # :: m_FashionCyberLongMittens_l_LongMittenRight
 # :: m_CyberArmRight_l_LongMittenRight
 # :: m_CyberArms_l_LongMittenRight
-# - LongRight
+- LongRight
+长袖右臂
 # :: m_LongMittenRight_l_LongRight
 # :: m_LongMittens_l_LongRight
 # :: m_LongMittenRight_l_LongRight
@@ -30489,7 +30498,7 @@ V形比基尼
 - ElfSkirt
 精灵裙
 - SkirtBand
-裙子绑带
+短裙绑带
 # :: m_ElfSkirt_l_SkirtBand
 # :: m_Elf_l_SkirtBand
 # :: m_ElfSkirt_l_SkirtBand
@@ -30514,20 +30523,24 @@ V形比基尼
 # :: m_Elf_l_CrystalShoeRight
 # :: m_ElfShoes_l_CrystalShoeRight
 # :: m_Elf_l_CrystalShoeRight
-# - ElfBandLeft
-# - ElfBandRight
+- ElfBandLeft
+精灵绑带（左）
+- ElfBandRight
+精灵绑带（右）
 - ElfBands
 精灵臂环
 - SteelYoke
 钢制颈手枷
-# - Steel
+- Steel
+钢
 # :: m_SteelYoke_l_Steel
 # :: m_SteelYoke_l_Steel
 - SteelBar
 钢杆
 # :: m_SteelYoke_l_SteelBar
 # :: m_SteelYoke_l_SteelBar
-# - RopeCrosstie1
+- RopeCrosstie1
+绳索交叉捆绑1
 - ArmStrap
 手臂绑带
 # :: m_RopeCrosstie1_l_ArmStrap
@@ -30590,9 +30603,12 @@ V形比基尼
 # :: m_RopeWristtie3_l_ForeArm1
 # :: m_RibbonWristtie1_l_ForeArm1
 # :: m_RibbonWristtie2_l_ForeArm1
-# - RopeBoxtie1
-# - RopeWristtie1
-# - RopeChestStraps1
+- RopeBoxtie1
+绳索盒式捆绑1
+- RopeWristtie1
+绳索腕部捆绑1
+- RopeChestStraps1
+绳索胸部条纹1
 - Arm2
 手臂2
 # :: m_RopeChestStraps1_l_Arm2
@@ -30629,9 +30645,12 @@ V形比基尼
 # :: m_RibbonChestStraps1_l_ForeArm2
 # :: m_RibbonBoxtie2_l_ForeArm2
 # :: m_RibbonWristtie2_l_ForeArm2
-# - RopeBoxtie2
-# - RopeWristtie2
-# - RopeChestStraps2
+- RopeBoxtie2
+绳索盒式捆绑2
+- RopeWristtie2
+绳索腕部捆绑2
+- RopeChestStraps2
+绳索胸部条纹2
 # - ArmHarness
 # :: m_RopeChestStraps2_l_ArmHarness
 # :: m_RopeBoxtie3_l_ArmHarness
@@ -30660,8 +30679,10 @@ V形比基尼
 # :: m_RopeWristtie3_l_ArmHarnessUp
 # :: m_RibbonChestStraps2_l_ArmHarnessUp
 # :: m_FashionRopeChestStraps2_l_ArmHarnessUp
-# - RopeBoxtie3
-# - RopeWristtie3
+- RopeBoxtie3
+绳索盒式捆绑3
+- RopeWristtie3
+绳索腕部捆绑3
 - RopeCuffs
 绳铐
 - Cuffs
@@ -30673,7 +30694,8 @@ V形比基尼
 # :: KDFilterFiltersCuffs
 - RopeBelt
 绳腰带
-# - RopeHarness
+- RopeHarness
+绳束衣
 - Harness
 束衣
 # :: m_RopeHarness_l_Harness
@@ -30813,7 +30835,8 @@ V形比基尼
 # :: m_FashionHighSecBlindfold_l_Harness
 # :: m_HighSecBlindfoldRestraint_l_Harness
 # :: KDBindNPCSlot_Harness
-# - HarnessLower
+- HarnessLower
+下部绳束衣
 # :: m_RopeHarness_l_HarnessLower
 # :: m_RibbonHarness_l_HarnessLower
 # :: m_WolfHarnessLower_l_HarnessLower
@@ -30828,7 +30851,8 @@ V形比基尼
 # :: m_WolfHarnessRestraint_l_HarnessLower
 # :: m_FashionRopeHarness_l_HarnessLower
 # :: m_FashionRibbonHarness_l_HarnessLower
-# - HarnessLowerStrap
+- HarnessLowerStrap
+下部条纹绳束衣
 # :: m_RopeHarness_l_HarnessLowerStrap
 # :: m_RibbonHarness_l_HarnessLowerStrap
 # :: m_RopeHarness_l_HarnessLowerStrap
