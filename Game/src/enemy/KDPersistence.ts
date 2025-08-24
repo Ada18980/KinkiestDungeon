@@ -536,6 +536,8 @@ function KDGetPersistentNPC(id: number, entity?: entity, force: boolean = true, 
 
 		let enemy = entity || KinkyDungeonFindID(id);
 		if (enemy) {
+			// Undeletes
+			if (KDDeletedIDs[id + ""]) delete KDDeletedIDs[id + ""];
 			if (enemy.partyLeader) {
 				if (KDPopEnemyPartyMember(enemy.id, enemy.partyLeader)) {
 					addToParty = enemy.partyLeader;

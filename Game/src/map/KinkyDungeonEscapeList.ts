@@ -167,7 +167,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 		},
 		check: () => {
 			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
-				KinkyDungeonEscapeTypes.Kill.worldgenstart();
+				KinkyDungeonEscapeTypes.WolfServer.worldgenstart();
 
 			if (KDFactionAllied("Player", "Nevermere")) return true;
 
@@ -181,7 +181,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			return KDMapData.KillQuota <= 0;
 		},
 		minimaptext: () => {
-			let escape = KinkyDungeonEscapeTypes.Kill.check();
+			let escape = KinkyDungeonEscapeTypes.WolfServer.check();
 			if (escape)
 				return TextGet(KDFactionAllied("Player", "Nevermere") ? "KDEscapeMinimap_Bypass_WolfServer" : "KDEscapeMinimap_Pass_WolfServer");
 			else
@@ -261,7 +261,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 		},
 		check: () => {
 			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
-				KinkyDungeonEscapeTypes.Kill.worldgenstart();
+				KinkyDungeonEscapeTypes.DroneNode.worldgenstart();
 
 			if (KDFactionAllied("Player", "AncientRobot")) return true;
 
@@ -275,7 +275,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			return KDMapData.KillQuota <= 0;
 		},
 		minimaptext: () => {
-			let escape = KinkyDungeonEscapeTypes.Kill.check();
+			let escape = KinkyDungeonEscapeTypes.DroneNode.check();
 			if (escape)
 				return TextGet(KDFactionAllied("Player", "Nevermere") ?
 				"KDEscapeMinimap_Bypass_DroneNode"

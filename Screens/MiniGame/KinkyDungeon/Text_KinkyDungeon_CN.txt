@@ -28,8 +28,8 @@
 # :: KDBack
 - Next
 下一页
-- Music: kocaeli, Darkstar Studios|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline, KD CN Localization|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
-音乐: kocaeli, Darkstar Studios|受缚敌人图像: Song|俄语翻译: Osiris|汉语翻译: Alexthymia, Mitki, Timeline, KD CN Localization|韩语和日语翻译: Phantasm|代码: Ellie, Demopans, Aelie|美术: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+- Music: kocaeli, EchoZero|Bound enemy graphics: Song|RU Translation: Osiris|CN Translation: Alexthymia, Mitki, Timeline, KD CN Localization|KR, JP Translation: Phantasm|Code Contributors: Ellie, Demopans, Aelie|Art: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+音乐: kocaeli, EchoZero|受缚敌人图像: Song|俄语翻译: Osiris|汉语翻译: Alexthymia, Mitki, Timeline, KD CN Localization|韩语和日语翻译: Phantasm|代码: Ellie, Demopans, Aelie|美术: Kjus, Quakehoof, Lumpychan, Kertasu, Koirin, Lightning Rook, Daikinbakuju, Sigma Overlord, dask3|Plasmadragon, GoldieKitsune, SMoonlightM, PureWind, Wyatt Wintersoul|Potion drink - Jamius|Click - StrikeWhistler - Modified|StoneDoor_Close - AudioTorpedo - Modified|Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|'Door, Front, Opening, A.wav' by InspectorJ (www.jshaw.co.uk) of Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 - Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
 Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|AlaskaRobotics - duct tape unroll 3, duct tape unroll 1|||艺 术 家 与 灵 感 来 源|Hotel01 - https://www.pixiv.net/en/users/5944252 - 画了非常棒的狼娘|spark utamaro - 想到了带有感知力的振动器这个主意
 
@@ -287,7 +287,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Auto loot all from chests
 自动从箱子中拾取所有物品
 - Don't Use Outfit Palettes
-无论服装如何，始终使用调色板
+不使用套装调色板
 
 - Apply palettes to Restraints
 将调色应用于束缚
@@ -1713,7 +1713,7 @@ EnemyName对TargetName念出了一个口令！
 - All Damage Reduction: 
 全部伤害减免：
 - You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
-你受到的 PERCENT1 DAMAGETYPE伤害，基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正。
+你受到的DAMAGETYPE伤害减少至PERCENT1，基于PERCENT2的DAMAGETYPE抗性和PERCENT3的DAMAGECATEGORY修正。
 - You deal PERCENT more DAMAGETYPE damage.
 你造成的DAMAGETYPE伤害增加了 PERCENT。
 - Your bindings are PERCENT more effective.
@@ -3594,7 +3594,7 @@ Devious Dungeon Challenge 已启用。
 - Sick and vile, like the hearts of your enemies.
 病态且卑劣，恰如敌人的心。
 - Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
-对目标造成斩击伤害，对邻近的敌人造成 20 点暗影伤害。使周围的敌人减速 3 回合，并活得 60 点暗影伤害的持续流血效果。
+对目标造成斩击伤害，对你周围的敌人造成 20 点暗影伤害，减速 3 回合，并施加 60 点暗影伤害的持续流血效果。
 - Pickaxe
 镐
 - Used for drilling holes in rock and armor.
@@ -25234,26 +25234,26 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 祝贺您已经完成了教程|现在进去，别惹麻烦~
 
 - Welcome to the dungeon!|Don't panic, this is a turn-based game,|and nothing will happen until you move.|On your left you'll see your character,|displayed with all of the bondage they don't have.|Don't worry, you'll find some soon!
-欢迎来到地牢|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生|在您的左侧，您将看到您的角色，显示了她们没有的所有束缚|别担心，你很快就会找到的！
+欢迎来到地牢！|不要惊慌，这是一个回合制游戏，|除非你移动，否则什么都不会发生。|在左侧，您可以看到您的角色，和装备的拘束具，|现在还没有任何拘束具，不过马上就会有了！
 
 - You might be wondering what all these barrels are for.|Don't worry, they're, uh, totally safe!|When you are inside one you can click on yourself to wait.|Enemies have a hard time seeing you inside a barrel,|so you can wait until they pass by you.
-你可能想知道这些桶是干什么用的|别担心，他们完全安全|当你在里面时，你可以点击自己等待|敌人很难在桶里看到你，所以你可以等到他们从你身边经过。
+你可能想知道这些桶是干什么用的。|别担心，它们完全安全！|你可以移动到桶里面，然后点击自己以跳过回合。|在桶里时不容易被敌人看到，所以你可以等它们从你身边经过。
 
 - On the right you'll see your stats and spells slots.|Your DP, SP, MP, and WP are displayed there, we'll get into what these do.|Below that you'll see your current consumable items,|your gold, and your currently equipped weapon.
-在右侧，您会看到您的统计数据和法术槽。|您的 SP、MP、WP 和 DP 都显示在那里，我们将介绍它们的作用。|在下面，您会看到您当前的消耗品，|您的金币，以及你当前装备的武器。
+在右侧可以看到你的状态栏。|显示了你的 SP、MP、WP 和 DP ，稍后会介绍这些。|在下面可以看到你的快捷栏，|您的金币，以及你当前装备的武器。
 - Your WP, or willpower, is an important resource.|Without it, escaping from restraints is more difficult.|There is a willpower potion on the floor up there. Go get it!
 你的WP或意志力是一个重要的资源。|没有它，挣脱束缚会变得更加困难。|前面的地板上有一瓶意志力药剂。去把它捡起来！
 - Oh no! That trap reduced your willpower!|Fortunately you have a potion.|You can drink it by clicking the '+' icon next to your WP bar.|You can also go into your Inventory in the bottom bar.|There is also a quick-inventory icon (backpack).
-不好！那个陷阱削弱了你的意志力！|幸运的是，你有药水。|你可以通过单击意志力旁边的“+”图标来饮用它。|你还可以在底部栏中查看你的背包。|还有一个快速图标 ( 背包 ) 。
+不好！那个陷阱削弱了你的意志力！|幸运的是，你有药水。|你可以通过单击意志力左边的瓶子图标来饮用它。|你还可以在底部栏中查看你的背包。|还有一个快速图标 ( 背包 ) 。
 - Another trap!|You'll notice that the trap also drained your stamina considerably, preventing you from sprinting or attacking.|(Note: you can toggle sprinting using the '>>' button on the bottom bar)|You can protect yourself while your stamina regenerates by retreating into the room above.|Close the door by clicking the Close Door button in the bottom bar.|
-另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。| ( 注意 : ‎你可以使用底部栏上的“>>”按钮切换冲刺 ) |你可以在保护自己的同时 退回到上面的房间即可恢复你的体力。|点击底部栏中的“关门”按钮关上门。|
+另一个陷阱！|你会注意到，这个陷阱会大量消耗你的体力，阻止你冲刺或攻击。| ( 注意 : ‎你可以使用底部栏上的“>>”按钮切换冲刺 ) |你可以撤到上面的房间，等待体力恢复。|点击底部栏中的“交互”按钮然后点击门，就可以关门/开门。
 
 - Your MP, or Mana, used used to cast spells.|In order to cast spells though, you need to learn one.|Click the Spells button in the right menu, then navigate to the Spell Tree.|Then click on Flame Apprentice and learn it to unlock Firebolt.|Then, press space to go back, and press Right to switch pages.|Click on Firebolt, learn it, then assign it to slot 1.
 你的MP，或者叫法力，是用来施法的|为了施展法术，你需要学习一种|单击右侧菜单中的“法术”按钮，然后导航到“技能树”|然后点击并学习“基础火法术”，以解锁火焰箭|然后，按空格键返回，然后按向右键切换页面|点击“火焰箭”，学习它，然后将其分配到快捷栏的第一个槽位。
 - On the right you'll see your stats and spells slots.|You can click on a spell slot or hit 1-4 on your keyboard to cast a spell|then click on the map for where you want to aim it.|The small wrench icon above them will let you|swap them out for another spell from your spellbook.
-在右边，你会看到你的统计数据和法术插槽|你可以点击一个法术槽，或者点击键盘上的1-4来施放一个法术|然后在地图上点击你想要瞄准的地方|它们上面的小扳手图标可以让你|将它们换成法术书中的另一个法术。
+在下面可以看到快捷栏，以及每个槽位对应的快捷键。|你可以点击一个槽位，或者点击键盘上的数字键来施放一个法术|然后在地图上点击你想要瞄准的地方。
 - There's a zombie over there!|Fortunately zombies are weak to fire.|Firebolt has a very long range,|so simply cast firebolt and click on the zombie.|Repeat until it is dead.
-那边有个僵尸|幸运的是，僵尸的火力很弱|火焰弹射程很长|所以只需施放火焰箭并点击僵尸即可|重复，直到它死去。
+那有个僵尸！|幸运的是，火焰是僵尸的弱点。|火焰箭射程很长，|所以只需施放火焰箭并点击僵尸即可。|重复，直到它死去。
 - Mana potions restore mana, allowing you to cast spells.|Youll notice that your mana also regenerates slowly.|This mana comes from your mana pool,|which is a thin line displayed under the mana bar.|When that runs out, you can't cast spells anymore!
 法力药水可以恢复法力，让你能够施展法术。|你会注意到你的法力也会缓慢恢复。|恢复的法力来自你的法力池，|它是法力条下方显示的一条白色细线。|当法力耗尽时，你就不能施展法术了！
 
@@ -25264,13 +25264,13 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 
 
 - That wasn't so hard, was it?|Now then, there's a treasure chest over here. Why don't you open it?
-这并不难，是吗|现在，这里有一个宝箱。你为什么不打开它？
+这并不难，不是吗？|你看，那里有一个宝箱，快去打开它吧！
 - Yikes, looks like you're in a bind!|No worries, though. There's a key to those cuffs over there.|Simply hover over the cuffs item test on the left side.|Then, click the lock icon to remove the lock.|Finally, click the buckle to remove the cuffs.
 哎呀，看来你陷入困境了！|不过，别担心。那边有一把钥匙。|只需将鼠标悬停在左侧的手铐上，|然后，单击锁图标以解开锁。|最后，单击带扣以卸下手铐。
 - I think we all know what's in the next chest.|It's important to understand the different ways you can escape.|You can struggle, which costs the most stamina|but makes other struggle methods faster.|You can cut, which requires a knife in hand.|You can remove, which represents untying or unbuckling.
 我想我们都知道下一个箱子里有什么|重要的是要了解你可以逃避的不同方式|你可以挣扎，这会消耗最多的体力|但比其他脱身方法更快|你可以切割，这需要手里拿着刀|你可以移除，也就是解开绳结或者搭扣。
 - Ouch, that looked tight...|Sometimes you won't be able to struggle out of things.|You'll have to find some other way to take it off...
-哎哟，看起来很紧…|有时候你无法摆脱困境|你得想办法把它取下来...
+哎哟，看起来很紧…|有时候挣扎是徒劳的。|你得想想别的办法...|可以走到下面的钩子上再试试。
 - There's a few zombies up ahead.|Fight your way through and claim the treasure!
 前面有几个僵尸|奋力拼搏，夺回宝藏！
 
@@ -25420,7 +25420,7 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailNoKeys
 # :: rPrisonerJailOwnNoKeys
 - (You can't help her, bound as tightly as you are...)
-( 你帮不了她，像你一样紧紧地绑着… )
+( 你帮不了她，毕竟你也被紧紧地绑着… )
 # :: rPrisonerJailUnlockHandsBound
 # :: rPrisonerJailOwnUnlockHandsBound
 # :: rPrisonerLatexUnlockHandsBound
@@ -26423,7 +26423,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: l_Labcoat_Coat
 # :: m_Labcoat_l_Coat
 # :: m_Labcoat_l_Coat
-# - CoatHogtieFree
+- CoatHogtieFree
+自由束缚外套
 # :: l_Labcoat_CoatHogtieFree
 # :: m_Labcoat_l_CoatHogtieFree
 # :: m_Labcoat_l_CoatHogtieFree
@@ -29717,7 +29718,8 @@ V形比基尼
 # :: m_LaceBraDecoRestraint_l_LaceChestDecoHardware
 - LaceBraDeco
 蕾丝胸罩装饰
-# - LaceCorsetRestraint
+- LaceCorsetRestraint
+蕾丝束腰拘束
 - LaceBustierRestraint
 蕾丝抹胸拘束
 # - LaceBraDecoRestraint
@@ -29894,7 +29896,8 @@ V形比基尼
 # :: m_LatexCorsetFullCrossRestraint_l_ChestHeavyCorset
 - LatexBraStraps
 乳胶束胸带
-# - StrapsHeavyCorset
+- StrapsHeavyCorset
+条纹重型束腰
 # :: m_LatexBraStraps_l_StrapsHeavyCorset
 # :: m_LatexCorsetStrap_l_StrapsHeavyCorset
 # :: m_LatexCorsetFullStrap_l_StrapsHeavyCorset
@@ -29905,8 +29908,10 @@ V形比基尼
 # :: m_LatexCorsetFullStrap_l_StrapsHeavyCorset
 # :: m_LatexCorsetStrapRestraint_l_StrapsHeavyCorset
 # :: m_LatexCorsetFullStrapRestraint_l_StrapsHeavyCorset
-# - LatexBraStrapsCross
-# - CrossHeavyCorset
+- LatexBraStrapsCross
+乳胶交叉绑带胸罩
+- CrossHeavyCorset
+重型交叉束胸
 # :: m_LatexBraStrapsCross_l_CrossHeavyCorset
 # :: m_LatexCorsetCross_l_CrossHeavyCorset
 # :: m_LatexCorsetFullCross_l_CrossHeavyCorset
@@ -29925,8 +29930,10 @@ V形比基尼
 乳胶紧身束带
 - LatexCorsetFullStrap
 乳胶紧身全束带
-# - LatexCorsetCross
-# - LatexCorsetFullCross
+- LatexCorsetCross
+交叉乳胶束腰
+- LatexCorsetFullCross
+完全交叉乳胶束腰
 - LatexCorsetRestraint
 乳胶束缚紧身衣
 - LatexBustierRestraint
@@ -30413,7 +30420,8 @@ V形比基尼
 # :: m_FashionCyberLongMittens_l_LongMittenLeft
 # :: m_CyberArmLeft_l_LongMittenLeft
 # :: m_CyberArms_l_LongMittenLeft
-# - LongLeft
+- LongLeft
+长袖左臂
 # :: m_LongMittenLeft_l_LongLeft
 # :: m_LongMittens_l_LongLeft
 # :: m_LongMittenLeft_l_LongLeft
@@ -30430,7 +30438,8 @@ V形比基尼
 # :: m_FashionCyberLongMittens_l_LongMittenRight
 # :: m_CyberArmRight_l_LongMittenRight
 # :: m_CyberArms_l_LongMittenRight
-# - LongRight
+- LongRight
+长袖右臂
 # :: m_LongMittenRight_l_LongRight
 # :: m_LongMittens_l_LongRight
 # :: m_LongMittenRight_l_LongRight
@@ -30489,7 +30498,7 @@ V形比基尼
 - ElfSkirt
 精灵裙
 - SkirtBand
-裙子绑带
+短裙绑带
 # :: m_ElfSkirt_l_SkirtBand
 # :: m_Elf_l_SkirtBand
 # :: m_ElfSkirt_l_SkirtBand
@@ -30514,20 +30523,24 @@ V形比基尼
 # :: m_Elf_l_CrystalShoeRight
 # :: m_ElfShoes_l_CrystalShoeRight
 # :: m_Elf_l_CrystalShoeRight
-# - ElfBandLeft
-# - ElfBandRight
+- ElfBandLeft
+精灵绑带（左）
+- ElfBandRight
+精灵绑带（右）
 - ElfBands
 精灵臂环
 - SteelYoke
 钢制颈手枷
-# - Steel
+- Steel
+钢
 # :: m_SteelYoke_l_Steel
 # :: m_SteelYoke_l_Steel
 - SteelBar
 钢杆
 # :: m_SteelYoke_l_SteelBar
 # :: m_SteelYoke_l_SteelBar
-# - RopeCrosstie1
+- RopeCrosstie1
+绳索交叉捆绑1
 - ArmStrap
 手臂绑带
 # :: m_RopeCrosstie1_l_ArmStrap
@@ -30590,9 +30603,12 @@ V形比基尼
 # :: m_RopeWristtie3_l_ForeArm1
 # :: m_RibbonWristtie1_l_ForeArm1
 # :: m_RibbonWristtie2_l_ForeArm1
-# - RopeBoxtie1
-# - RopeWristtie1
-# - RopeChestStraps1
+- RopeBoxtie1
+绳索盒式捆绑1
+- RopeWristtie1
+绳索腕部捆绑1
+- RopeChestStraps1
+绳索胸部条纹1
 - Arm2
 手臂2
 # :: m_RopeChestStraps1_l_Arm2
@@ -30629,9 +30645,12 @@ V形比基尼
 # :: m_RibbonChestStraps1_l_ForeArm2
 # :: m_RibbonBoxtie2_l_ForeArm2
 # :: m_RibbonWristtie2_l_ForeArm2
-# - RopeBoxtie2
-# - RopeWristtie2
-# - RopeChestStraps2
+- RopeBoxtie2
+绳索盒式捆绑2
+- RopeWristtie2
+绳索腕部捆绑2
+- RopeChestStraps2
+绳索胸部条纹2
 # - ArmHarness
 # :: m_RopeChestStraps2_l_ArmHarness
 # :: m_RopeBoxtie3_l_ArmHarness
@@ -30660,8 +30679,10 @@ V形比基尼
 # :: m_RopeWristtie3_l_ArmHarnessUp
 # :: m_RibbonChestStraps2_l_ArmHarnessUp
 # :: m_FashionRopeChestStraps2_l_ArmHarnessUp
-# - RopeBoxtie3
-# - RopeWristtie3
+- RopeBoxtie3
+绳索盒式捆绑3
+- RopeWristtie3
+绳索腕部捆绑3
 - RopeCuffs
 绳铐
 - Cuffs
@@ -30673,7 +30694,8 @@ V形比基尼
 # :: KDFilterFiltersCuffs
 - RopeBelt
 绳腰带
-# - RopeHarness
+- RopeHarness
+绳束衣
 - Harness
 束衣
 # :: m_RopeHarness_l_Harness
@@ -30813,7 +30835,8 @@ V形比基尼
 # :: m_FashionHighSecBlindfold_l_Harness
 # :: m_HighSecBlindfoldRestraint_l_Harness
 # :: KDBindNPCSlot_Harness
-# - HarnessLower
+- HarnessLower
+下部绳束衣
 # :: m_RopeHarness_l_HarnessLower
 # :: m_RibbonHarness_l_HarnessLower
 # :: m_WolfHarnessLower_l_HarnessLower
@@ -30828,7 +30851,8 @@ V形比基尼
 # :: m_WolfHarnessRestraint_l_HarnessLower
 # :: m_FashionRopeHarness_l_HarnessLower
 # :: m_FashionRibbonHarness_l_HarnessLower
-# - HarnessLowerStrap
+- HarnessLowerStrap
+下部条纹绳束衣
 # :: m_RopeHarness_l_HarnessLowerStrap
 # :: m_RibbonHarness_l_HarnessLowerStrap
 # :: m_RopeHarness_l_HarnessLowerStrap
@@ -44727,25 +44751,25 @@ RestraintName 失效了！
 ( 关于那个实践课...... )
 
 - This is you.|Over the course of the game, you will probably get tied up.|The controls to escape are located over your character.|Simply hover the mouse over your character to see them.
-这就是你。|在游戏过程中，你可能会被绑住。|逃跑的按钮位于你的角色周围。|只需将鼠标悬停在你的角色上即可看到它们。
+这是你的角色。|在游戏过程中，你可能会被绑住。|脱缚的按钮位于你的角色周围。|只需将鼠标悬停在你的角色上即可看到它们。
 - There are four main ways to escape restraints:|Struggling, which is effective against flexible and weaker restraints,|Cutting, which depends on your held weapon and the item's properties,|Unbuckle/Untying, which depends on having free hands,|And Unlocking, which is required before you can Unbuckle.
-逃脱束缚有四种主要方法 : ‎|挣扎，这对灵活且较弱的限制有效，|切割，这取决于您持有的武器和物品的属性，|解开扣子/解开，这取决于您是否有可以正常使用的双手，|还有解锁，这是您解开安全扣之前所必需的。
+脱缚有四种主要方法：‎|挣扎，这对柔软和脆弱的拘束具有效，|切割，这取决于您持有的武器和物品的属性，|移除/解开，这取决于您的双手是否自由，|开锁，锁住的拘束具必须开锁后才能进行移除。
 - These are options for how to display your character.|You don't have to worry about them for now,|but when your character is tied up you may find them useful|...or enjoyable.
-这些是如何显示您的角色的选项。|您现在不必担心它们，|但是当您的角色被束缚时，您可能会发现它们很有用|...或享受。
+这些选项与角色的显示有关。|现在暂时不用管，|但是当您的角色被束缚时，您可能会发现它们很有用|...或享受。
 - This is the buffs bar.|It shows various values and buffs relating to your character.|You can click the gold triangle to expand it,|Showing additional info about your character.
-这是增益栏。|它显示与您的角色相关的各种值和增益。|您可以单击金色三角形将其展开，|显示有关您的角色的其他信息。
+这是增益栏（显示有bug，实际位置在左上角）|它显示与您的角色相关的各种值和增益。|您可以单击金色三角形将其展开，|显示有关您的角色的其他信息。
 - These are the action buttons.|You can use them to perform various actions like closing doors or sprinting.|You can also toggle various settings such as automatically passing|through allies or auto-pathing when there are no enemies nearby.|You can also swap between recently used weapons.
-这些是动作按钮。|您可以使用它们执行各种动作，例如关门或冲刺。|您还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。|您还可以交换最近使用过的武器。
+这些是动作按钮。|用来执行各种动作，例如关门或冲刺。|还可以切换各种设置，例如自动穿过队友或在附近没有敌人时自动寻路。|还可以切换最近使用过的武器。
 - These are various submenus.|Your Inventory is used to brows items and use or equip them.|The Journal contains lore, notes, and hints gathered along your journey.|The Journal also contains info on available quests,|and your reputation with various factions.
-这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日记包含您在旅程中收集的知识、笔记和提示。|日记还包含有关可用任务的信息，|以及您在各种方面的声誉以及派系。
+这些是各种子菜单。|您的背包用于浏览物品并使用或装备它们。|日志含您在旅程中收集的知识、笔记和提示。|日志还包含有关可用任务的信息，|以及您在各个派系中的的声誉。
 - This is the status bar, which gives info on your base stats.|Distraction determines how easy it is to cast spells and resist teasing.|Stamina is required to sprint and attack with a weapon.|Mana is used to cast spells. You have what is called a 'Mana Pool,'|which is excess mana that slowly refills you mana bar until it runs out.|Finally, running out of Willpower makes it much harder to escape bondage.
-这是状态栏，提供有关您的基本统计数据的信息。|性奋值决定了施放法术和抵抗戏弄的难易程度。|冲刺和使用武器攻击需要体力。|法力用于施放法术。你有所谓的'法力池'，|这是多余的法力，它会慢慢地补充你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
+这是状态栏，展示您的基本状态。|性奋值决定了施放法术和抵抗戏弄的难易程度。|体力用于冲刺和使用武器攻击。|法力用于施放法术。法力值底部的白条叫做“法力池”，|这是额外的法力，它会慢慢地补充至你的法力条，直到耗尽。|最后，意志力耗尽会让你更难逃脱束缚。
 - This is the hotbar.|Here you will find various spells and customizable actions.|You can customize it through the Spells submenu by clicking on a spell.|You can also add items, armor, and consumables to it from the Inventory.
-这是快捷栏。|在这里您可以找到各种咒语和可自定义的操作。|您可以通过单击咒语通过咒语子菜单对其进行自定义。|您还可以从背包中向其添加物品、盔甲和消耗品。
+这是快捷栏。|在这里您可以找到各种法术和可自定义的操作。|您可以在法术菜单点击法术，再点击快捷栏以将其分配到槽位。|同样，背包的物品、盔甲和消耗品也可以分配到里面。
 - Finally, this is where the message log will be.|It provides a written record of what happened the last few turns.|You can click the 'Log' button to expand the log,|Allowing you to look much further back.
-最后，这是消息日志所在的位置。|它提供了最近几轮发生的情况的书面记录。|您可以单击 '日志' 按钮来展开日志，|允许您查看更久之前的内容。
+最后，这是消息日志所在的位置。|它提供了最近几轮发生的情况的书面记录。|您可以单击金色倒三角形来展开日志，|以查看更久之前的内容。
 - Thats it for the UI.|If you want a more hands on tutorial, enter the portal to the top right,|near the training dummies.|You can click on NPCs (such as the ghosts in this room) to talk to them.
-UI 就是这样。|如果您想要更多的实践教程，请进入右上角的门户，|靠近训练假人。|您可以单击 NPC ( 例如这个房间里的鬼魂 ) 与他们交谈。
+界面就是这样。|如果您想要更多的实践教程，请进入旁边的传送门，|它就在幽灵和靶子中间。|您可以单击NPC（例如这个房间里的幽灵）与他们交谈。
 
 - Game
 游戏
@@ -46743,7 +46767,7 @@ Mmmph! ( 热切地点头 )
 - (SPEAKER smiles)|I will let you pass so long as you wear my collar.|(She snaps her fingers and conjures a glowing ring)
 ( SPEAKER 微笑 )|只要你戴上我的项圈，我就会让你过去。| ( 她打了个响指，变出一枚发光的腰带 )
 - (SPEAKER giggles)|Then your journey ends.|I assume you don't want that.|Now then, as for your punishment~|(She snaps her fingers and conjures a glowing ring)
-( SPEAKER 咯咯笑 ) |然后你的旅程就结束了。|我想你不想要那样。|现在，至于你的项圈~| ( 她打了个响指，变出了一枚发光的腰带 )
+（SPEAKER 咯咯笑）|然后你的旅程就结束了。|我猜你不想那样。|现在，至于你的惩罚~|（她打了个响指，变出了一枚发光的腰带）
 - (SPEAKER chuckles)|Of course it was magic~|Who said a commander had to be defenseless?|(She snaps her fingers and conjures a glowing ring)
 ( SPEAKER 笑了 ) |当然是魔法~|谁说指挥官就必须毫无防御能力？| ( 她打了个响指，变出了一枚发光的腰带 )
 - Was that magic?
@@ -46753,7 +46777,7 @@ Mmmph! ( 热切地点头 )
 - I won't submit to you!
 我不会向你屈服的！
 - (SPEAKER presents you with your 'reward'...)|(It closes around your waist seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
-( SPEAKER 向你展示你的项圈…… ) | ( 它无缝地围绕着你的脖子 ) |现在……你将被允许自由行动，|但前提是你接受了足够的训练。
+（SPEAKER 向你展示你的“奖励”……）|（它无缝地围绕着你的腰部）|现在……你将被允许自由行动，|但前提是你接受了足够的训练。
 
 - (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
 ( SPEAKER 用金属栅栏网挡住你 ) |非常令人印象深刻！|但你真的认为会那么容易吗？
@@ -46763,7 +46787,7 @@ Mmmph! ( 热切地点头 )
 - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 ( SPEAKER 看起来很惊讶 ) |我没想到你会如此……顺从。| ( 她打了个响指，扔给你一条发光的腰带带 ) |这是一条特殊的腰带带，专为那些拥有神圣特权的人保留。|你赢得了它。
 - (Wear her waist belt anyway)
-( 无论如何都要穿上她的腰带 )
+（无论如何都要穿上她的腰带）
 - (SPEAKER shakes her head as you force a gag into her mouth)|MMMMMPH!
 ( 当你强行想要堵住她的嘴巴时，SPEAKER 摇了摇头 ) |MMMMMPH!
 
@@ -47488,8 +47512,8 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - You are left dangling! Maybe if you swing hard enough you can tear the vines...
 你悬空了！也许你挥动得足够用力，你就能震破藤蔓......
 
-- Darkstar Studios - Slimy Science
-Darkstar Studios -《黏糊糊的科学》
+- EchoZero - Slimy Science
+EchoZero -《黏糊糊的科学》
 - Kocaeli - Doll Storage
 Kocaeli - 《玩偶柜》
 - Kocaeli - Factory
@@ -48097,7 +48121,7 @@ ENMY 请求帮助！
 - Plastic Explosive
 塑胶炸弹
 - Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage.
-有一个60回合的计时器，但可以被其他炸药引爆。在巨大的半径范围内造成210处爆炸破坏，并留下一大片瓦砾。被击中的敌人在受到伤害之前减少50护甲。
+60回合定时引爆，也可以被其他爆炸物引爆。在造成210点巨大范围的爆炸伤害，并留下一大片瓦砾。被击中的敌人在受到伤害之前减少50点护甲。
 # :: KinkyDungeonInventoryItemC4Desc2
 # :: KinkyDungeonInventoryItem2C4Desc2
 - It's totally harmless! Probably.
@@ -49108,6 +49132,7 @@ ENMY 解开了 ITMN 的锁!
 骷髅仆从
 - Flummoxing Orb
 迷心幻魄球
+# - Pole Trap
 - Crystallize
 结成晶体
 - Capture Device
@@ -50667,7 +50692,8 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Unlocked by accepting a bondage offer and by convincing another NPC to wear their own bondage offer. 
 # - Moth
 # - Unlocked by taking an illuminated crystal off of it's charger. Lämp.
-# - Unlocked by becoming fully encased by slime and then it fully hardening.
+- Unlocked by becoming fully encased by slime and then it fully hardening.
+在被粘液完全包裹并硬化后，能够解锁。
 # - No Locks?
 # - Unlocked by wearing any Ancient restraint.
 # - Ancient Adventurer

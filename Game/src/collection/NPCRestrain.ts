@@ -385,14 +385,14 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 
 		if (currentItem) {
 			DrawTextFitKD(TextGet("KDCurrentItem") + KDGetItemNameString(currentItem.name),
-			x + 570, 130, 500, KDBaseWhite, KDTextGray1,
+			x + 720, 130, 500, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 		}
 
 		if (ss?.tooltipitem) {
 			DrawTextFitKD(TextGet("KDCurrentItem2") + KDGetItemName(ss.tooltipitem.item),
-			x + 570, 180, 500, KDBaseWhite, KDTextGray1,
+			x + 720, 180, 500, KDBaseWhite, KDTextGray1,
 			36, "center"
 			);
 		}
