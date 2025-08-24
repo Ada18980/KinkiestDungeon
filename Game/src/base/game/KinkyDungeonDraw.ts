@@ -2105,6 +2105,8 @@ function KinkyDungeonDrawGame() {
 
 					DrawButtonKDEx("debugVisitStorage", (_bdata) => {
 						KinkyDungeonSetFlag("storageChestOpened", -1);
+						KDGetContainer("PlayerChest", undefined, undefined, true, KDPlayerChestFilters);
+
 						KDUI_ContainerBackScreen = KinkyDungeonDrawState;
 						KinkyDungeonDrawState = "Container",
 						KinkyDungeonCurrentFilter = "All";

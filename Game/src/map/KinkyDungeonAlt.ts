@@ -1240,6 +1240,14 @@ let KinkyDungeonCreateMapGenType: Record<string, (
 	},
 	"PerkRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 		KinkyDungeonCreatePerkRoom(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
+		if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
+			if ((!KinkyDungeonStatsChoice.get("saveMode"))) {
+				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
+				KinkyDungeonState = "Save";
+				KDTextArea("saveDataField", 750, 100, 1000, 230);
+				ElementValue("saveDataField", saveData);
+			}
+		}
 	},
 	"Chamber": (POI, VisitedRooms, width, height, _openness, _density, _hallopenness, data) => {
 		KinkyDungeonCreateMaze(POI, VisitedRooms, width, height, 2, 1.5, 8, data);
