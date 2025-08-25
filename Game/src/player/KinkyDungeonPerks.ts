@@ -570,7 +570,10 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 	for (let k of KinkyDungeonStatsChoice.keys()) {
 		if (KinkyDungeonStatsChoice.get(k)) {
 			validperks.push(k)
-			if (KDPerkBlocked(Perk, k)) state = false;
+			if (KDPerkBlocked(Perk, k)) {
+				state = false;
+				break;
+			}
 		}
 	}
 	//add new way of blocking perk, either based on a function or text instructions
@@ -1044,9 +1047,13 @@ function KinkyDungeonDrawPerks(NonSelectable: boolean): boolean {
 							unique: true,
 						});
 					if (MouseIn(XX, YY, KDPerksButtonWidth, KDPerksButtonHeight)) {
-						DrawTextFitKD(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1);
+						let h = DrawTextFitKDgetHeight(TextGet("KinkyDungeonStatDesc" + (stat[1].id)), 1000, 150, 1500, KDTextWhite, KDTextGray1, undefined, undefined, 110, 1.0, undefined, undefined, undefined, true);
+						console.log(h);
+						let bottom = 150 + h / 2
+						let top = 150 - h / 2
 						DrawTextFitKD(TextGet("KinkyDungeonStatCost").replace("AMOUNT",
-							Math.round(KDPERKCOSTMULT*KDGetPerkCost(stat[1])) + ""), 1000, 190, 1400, KDTextWhite, KDTextGray1);
+							Math.round(KDPERKCOSTMULT * KDGetPerkCost(stat[1])) + ""), 1000, h < 80 ? bottom + 10: top - 15, 1400, KDTextWhite, KDTextGray1);
+						console.log(h < 80 ? bottom + 10: top - 15);
 						tooltip = true;
 					}
 				}
