@@ -11544,7 +11544,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					KDDraw(kdcanvas, kdpixisprites, enemy.id + "_hvtarg", KinkyDungeonRootDirectory + "UI/HighValueTarget.png",
 						(enemy.visual_x - data.CamX - data.CamX_offset) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY - data.CamY_offset) * KinkyDungeonGridSizeDisplay,
-						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: 10,
 					});
 				}
@@ -11557,7 +11557,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_questtarg", KinkyDungeonRootDirectory + "UI/DollmakerTarget.png",
 						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
-						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -5,
 						tint: 0xE30022,
 					});
@@ -11572,7 +11572,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 					KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_killtarg", KinkyDungeonRootDirectory + "UI/QuestTarget.png",
 						(enemy.visual_x - data.CamX) * KinkyDungeonGridSizeDisplay,
 						(enemy.visual_y - data.CamY) * KinkyDungeonGridSizeDisplay,
-						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {
 						zIndex: -5,
 						tint: 0xE30022,
 					});

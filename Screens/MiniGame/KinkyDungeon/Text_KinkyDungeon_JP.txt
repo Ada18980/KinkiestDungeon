@@ -31802,7 +31802,7 @@ ENMY に懐を探られそうになったが、届かなかったようだ。
 (SPEAKER に首輪をはめられた)|(不可思議な力が働いているのか、首に吸い付くように取り付いている)|さて……これで最後ね。|調教が済んだらもう行っていいわよ。
 
 
-- (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
+- (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?
 (SPEAKER は大量の杭を召喚し、追撃を阻んできた)|面白いわね！|でも、そう簡単にはいかなくてよ！？
 
 

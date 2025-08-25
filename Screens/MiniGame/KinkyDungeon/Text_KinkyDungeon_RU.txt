@@ -31814,7 +31814,7 @@ ENMY тянется к вашему инвентарю, но не может д�
 (SPEAKER презентует вам ошейник...)|(Он легко запирается на шее)|Теперь... тебе будет позволено свободно передвигаться,|но только после того, как ты пройдешь достаточную подготовку.
 
 
-- (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
+- (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?
 (SPEAKER блокирует вас металлической сеткой)|Очень впечатляет!|Но ты действительно думала, что это будет так просто?
 
 

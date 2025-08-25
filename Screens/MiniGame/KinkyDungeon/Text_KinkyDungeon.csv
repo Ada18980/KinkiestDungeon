@@ -30003,7 +30003,7 @@ dTheWardenLose_Continue2,"(Accept the collar eagerly)"
 dTheWardenLose_Continue3,"(Accept the collar begrudgingly)"
 rTheWardenLoseFinish,"(SPEAKER presents you with your 'reward'...)|(It closes around your waist seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained."
 
-rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?"
+rTheWardenStage2,"(SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?"
 
 rTheWardenWin,"(SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~"
 rTheWardenWinAccept,"(SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it."

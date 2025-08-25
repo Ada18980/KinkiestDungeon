@@ -30074,7 +30074,7 @@ EnemyName이 RestraintName을 활성화할 때 당신은 비명을 질렀습니�
 
 ### (SPEAKER presents you with your collar...)|(It closes around your neck seamlessly)|Now... you'll be allowed to go free,|but only once you've been sufficiently trained.
 
-### (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really think it would be that easy?
+### (SPEAKER blocks you with a web of metal bars)|Very impressive!|But did you really believe it would be this easy?
 
 ### (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
 
