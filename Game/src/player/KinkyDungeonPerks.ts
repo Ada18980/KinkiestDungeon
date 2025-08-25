@@ -594,15 +594,15 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
 				if (!temp[depth]) temp.push("");
 				temp[depth] += blockfunc[i];
 				if (blockfunc[i] == ')') {
-					temp[depth - 1] += solve(temp[depth], validperks);
+					temp[depth - 1] += KDSolvePerkRules(temp[depth], validperks);
 					depth -= 1;
 				}
 				if (blockfunc[i] == '(') depth += 1;
 				if(depth < 0) console.error("ERR_1 in KinkyDungeonPerks.ts\ndepth is negative, ", Perk, "'s blockfunc key has wrong parenthesis")
 			}
 			if(depth > 0) console.error("ERR_2 in KinkyDungeonPerks.ts\ndepth is above 0, ", Perk, "'s blockfunc key has wrong parenthesis")
-			if (solve(temp[0], validperks) != 0) {
-				return solve(temp[0], validperks) == -1;
+			if (KDSolvePerkRules(temp[0], validperks) != 0) {
+				return KDSolvePerkRules(temp[0], validperks) == -1;
 			}
 		}
 	}
@@ -615,7 +615,7 @@ function KDCanPickPerk(Perk: string, points?: number): boolean {
  * @param [validperks]
  * can be converted to simple binary by returning -1 when 0 would be returned
  */
-function solve(rules: String, validperks: string[]): number{
+function KDSolvePerkRules(rules: String, validperks: string[]): number{
 	let result: number = 0;
 	let isoperand: (arg: string) => String = (arg: String) => "&|!".split('').find(a => arg == a);
 	let currentoper = "";
