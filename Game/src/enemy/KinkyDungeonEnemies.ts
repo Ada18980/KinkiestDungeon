@@ -6514,11 +6514,11 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 								let leashToExit = AIData.leashing && !KinkyDungeonHasWill(0.1)
 									&& AIData.playerDist < 1.5;
-								if (!enemy.IntentLeashPoint) {
+								if (!enemy.IntentLeashPoint && AIData.aggressive) {
 									KDAssignLeashPoint(enemy);
 								}
 
-								let leashPos = AIData.aggressive ? (AIData.nearestJail) : {x: enemy.x, y: enemy.y, type: "", radius: 1};
+								let leashPos = (AIData.aggressive) ? (AIData.nearestJail) : {x: enemy.x, y: enemy.y, type: "", radius: 1};
 								let findMaster = undefined;
 								if (!enemy.IntentAction && enemy.CurrentAction == 'jailLeashTour') {
 									// TODO replace with intent action
