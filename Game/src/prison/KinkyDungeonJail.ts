@@ -1377,12 +1377,23 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 	let params = altRoom?.useGenParams ? KinkyDungeonMapParams[altRoom.useGenParams] : KinkyDungeonMapParams.cav;
 
 	let slot = KDGetWorldMapLocation(KDCoordToPoint(dragon.homeCoord || KDGetCurrentLocation()));
+	let setFutureHomeCoord = false; // for dragons without a home
+	
+	if(slot == undefined) {
+		// thanks Gen for fix
+		if (!dragon.homeCoord) setFutureHomeCoord = true;
+		slot = KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation()));
+	}
+
 	let room = KDCreateDragonLair(dragon, lairType, slot);
 
 	KinkyDungeonCreateMap(params, room, "",
 		MiniGameKinkyDungeonLevel, undefined, undefined,
 		KDGetFaction(dragon) || "DragonQueen", undefined, true,
 		dragon.homeCoord?.room || slot.main || "");
+
+	// unhoused dragon program
+	if (setFutureHomeCoord) dragon.homeCoord = KDGetCurrentLocation();
 	KDRemovePrisonRestraints();
 
 	// Now we add the encasement

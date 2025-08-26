@@ -63,7 +63,7 @@ Assets
 Balance
 - Psychic now allows you to bypas Can't Touch That, but only if your vision is 
 Bugfix
-- Your starting class doesnt change if you start a new game with a different class then load an old save
+- Your starting class no longer changes if you start a new game with a different class then load an old save
 - Fixed quest markers not scaling when zooming in
 
 5.4.78
