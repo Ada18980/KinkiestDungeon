@@ -6917,6 +6917,7 @@ let KinkyDungeonGameKey: any = {
  */
 function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	let save = {} as KinkyDungeonSave;
+	save.startingClass = KinkyDungeonClassMode;
 	save.version = TextGet("KDVersionStr");
 	save.level = MiniGameKinkyDungeonLevel;
 	save.checkpoint = MiniGameKinkyDungeonCheckpoint;
@@ -7100,6 +7101,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			KinkyDungeonCurrentDress = saveData.dress;
 			KDGameData.KinkyDungeonSpawnJailers = 0;
 			KDGameData.KinkyDungeonSpawnJailersMax = 0;
+			if (saveData.startingClass) KinkyDungeonClassMode = saveData.startingClass;
 			if (saveData.KinkyDungeonCurrentTick) KinkyDungeonCurrentTick = saveData.KinkyDungeonCurrentTick;
 			if (saveData.seed) KDsetSeed(saveData.seed);
 			if (saveData.pcosts) KinkyDungeonPenanceCosts = saveData.pcosts;

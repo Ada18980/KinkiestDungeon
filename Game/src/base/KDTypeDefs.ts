@@ -2804,6 +2804,8 @@ interface KinkyDungeonSave {
 		dp: string,
 	}
 
+
+	startingClass: string,
 	KinkyDungeonCurrentTick: number,
 
 	errorloading: boolean,
