@@ -3,7 +3,21 @@ PIXI.Assets.init();
 
 let KDFontName = "Inconsolata Medium";
 
-let KDBaseFonts = [
+interface KDFontDef {
+	/** name of the font in the font file
+	 * is NOT arbitrary
+	 */
+	alias: string,
+	/** filename */
+	src: string,
+	/** whether or not the font is monospace */
+	mono: boolean,
+	/** used only in KDGetFontMult() */
+	width: number,
+}
+
+
+let KDBaseFonts: (string | KDFontDef)[][] = [
 	["Inconsolata", {
 		alias: "Inconsolata",
 		src: 'Fonts/Inconsolata/Inconsolata-Regular.ttf',
