@@ -8439,14 +8439,17 @@ let KDDefaultRestraintThresh = 3;
  * @param restMult
  */
 function KDRestockRestraints(enemy: entity, restMult: number) {
-	if ((enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.specialAttack?.includes("Bind"))
-		&& !enemy.Enemy.RestraintFilter?.noRestock && !KDEnemyHasFlag(enemy, "restocked")) {
+	if (!enemy.Enemy.RestraintFilter?.noRestock && !KDEnemyHasFlag(enemy, "restocked")
+		&& !KDEnemyHasFlag(enemy, "restoc_reqi") 
+		&& (enemy.Enemy.attack?.includes("Bind") || enemy.Enemy.specialAttack?.includes("Bind"))
+		) {
 		let rCount = KDDetermineBaseRestCount(enemy, restMult);
 		if ((enemy.items?.length || 0) < rCount) {
 			KDStockRestraints(enemy, restMult, rCount - (enemy.items?.length || 0));
 			KinkyDungeonSetEnemyFlag(enemy, "restocked", 200);
 		}
-		if (enemy.Enemy.RestraintFilter?.requiredItems) {
+		if (enemy.Enemy.RestraintFilter?.requiredItems && !KDEnemyHasFlag(enemy, "restoc_reqi")) {
+			KinkyDungeonSetEnemyFlag(enemy, "restoc_reqi", 200);
 			if (!enemy.items) enemy.items = [];
 			for (let item of enemy.Enemy.RestraintFilter?.requiredItems) {
 				if (!enemy.items.includes(item)) enemy.items.unshift(item);
