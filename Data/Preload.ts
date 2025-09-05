@@ -12,7 +12,7 @@ interface KDFontDef {
 	src: string,
 	/** whether or not the font is monospace */
 	mono: boolean,
-	/** used only in KDGetFontMult() */
+	/** used only in KDGetFontMult() for word wrap*/
 	width: number,
 }
 
