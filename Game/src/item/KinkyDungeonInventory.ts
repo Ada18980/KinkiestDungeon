@@ -3167,7 +3167,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 
 		let lock = item.lock;
 
-		KinkyDungeonRemoveRestraintSpecific(item, false, true, true, false, false, undefined, true);
+		KinkyDungeonRemoveRestraintSpecific(item, false, false, true, false, false, undefined, true);
 
 		KDEquipInventoryVariant(
 			variant,
