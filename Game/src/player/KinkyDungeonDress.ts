@@ -1066,7 +1066,7 @@ function KDApplyItem(C: Character, inv: item, tags: any, customFaction: string =
 			for (let f of Object.entries(restraint.factionFilters)) {
 				if (GetPalette(C, faction)[f[1].color]) {
 					if (f[1].override) {
-						filters[f[0]] = GetPalette(C, faction)[f[1].color];
+						filters[f[0]] = GetPalette(C, faction, !f[1].desaturate, !f[1].desaturate)[f[1].color];
 					} else {
 						let origFilters = filters[f[0]];
 						if (!filters[f[0]]) filters[f[0]] = {};

@@ -3481,7 +3481,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		harness: true,
 		restriction: 2,
 		Filters: {
-			Straps: {"gamma":1,"saturation":1,"contrast":1,"brightness":3,"red":0.33,"green":0.33, "blue":0.33,"alpha":1},
+			Straps: {"gamma":1,"saturation":1,"contrast":1,"brightness":1.62,"red":0.5,"green":0.55, "blue":0.58,"alpha":1},
 		},
 		factionFilters: {
 			Straps: {

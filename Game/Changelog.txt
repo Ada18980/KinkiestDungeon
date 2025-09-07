@@ -65,6 +65,8 @@ Balance
 Bugfix
 - Your starting class no longer changes if you start a new game with a different class then load an old save
 - Fixed quest markers not scaling when zooming in
+- Fixed cursed item transformation (e.g. stardust curse) removing linked items unintentionally
+- Fixed leather harness color
 
 5.4.78
 - Fixed a bug where save code never appears!!

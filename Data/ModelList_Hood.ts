@@ -17,6 +17,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Hood", Layer: "Hood", Pri: 50,
 			Invariant: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "HoodCollar", Layer: "Collar", Pri: -440,
 			Invariant: true,
@@ -24,6 +25,7 @@ AddModel({
 		{ Name: "Gag", Layer: "Hood", Pri: 50.1,
 			Invariant: true,
 			NoOverride: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Blindfold", Layer: "Hood", Pri: 50.1,
 			Invariant: true,
@@ -49,6 +51,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Hood", Layer: "Hood", Pri: 50,
 			Invariant: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "HoodCollar", Layer: "Collar", Pri: -440,
 			Invariant: true,
@@ -56,6 +59,7 @@ AddModel({
 		{ Name: "Gag", Layer: "Hood", Pri: 50.1,
 			Invariant: true,
 			NoOverride: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Blindfold", Layer: "Hood", Pri: 50.1,
 			Invariant: true,

@@ -36,6 +36,7 @@ AddModel({
 			InheritColor: "FullVisor",
 			Invariant: true,
 			HideWhenOverridden: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -50,11 +51,13 @@ AddModel({
 			InheritColor: "FullVisor",
 			Invariant: true,
 			HideWhenOverridden: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "DollmakerFullRim", Layer: "MaskOver", Pri: 50.1,
 			InheritColor: "Rim",
 			Invariant: true,
 			NoOverride: true, TieToLayer: "DollmakerFull",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -74,18 +77,21 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			HideWhenOverridden: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Valves", Layer: "GagMuzzle", Pri: 20,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
 			NoOverride: true, TieToLayer: "Mask",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Center", Layer: "GagMuzzle", Pri: 10.1,
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
 			NoOverride: true, TieToLayer: "Mask",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Nose", Layer: "GagMuzzle", Pri: 10.2,
 			OffsetX: 942,
@@ -98,6 +104,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			NoOverride: true, TieToLayer: "Valves",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });

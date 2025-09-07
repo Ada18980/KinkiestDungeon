@@ -23,6 +23,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			InheritColor: "Tape",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });

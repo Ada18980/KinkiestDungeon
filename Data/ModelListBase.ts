@@ -17,7 +17,8 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Head", Layer: "Head", Pri: 0,
 			MorphPoses: {AnimalEars: "NoEar", HideEars: "NoEar"},
-			AppendPose: {FaceCoverGag: "", FaceBigGag: "BigGag", FaceGag: "Gag"},
+			//AppendPose: {FaceCoverGag: "", FaceBigGag: "BigGag", FaceGag: "Gag"},
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "ArmRight", Layer: "ArmRight", Pri: 0,
 			HideWhenOverridden: true,

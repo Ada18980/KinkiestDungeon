@@ -180,6 +180,16 @@ interface ModelLayer extends Namable {
 	MorphPoses?: Record<string, string>,
 	/** Overrides globaL_default of the listed poses */
 	GlobalDefaultOverride?: Record<string, boolean>,
+	/** subscribes to a list of opt-in displacement sources. These sources are opted into by default*/
+	DisplacementSources?: string[],
+	/** unsubscribes to a list of opt-out displacement sources. These sources are opted into by default*/
+	DisplacementVeto?: string[],
+	/** prevents veto from applying to opt in. false by default */
+	NoDispVetoOptIn?: boolean,
+	/** Displacement sources used for DisplacementSources and DisplacementVeto */
+	DisplaceSource?: string[],
+	/** If a DisplaceSource is specified, default behavior is opt-out. If you want opt-in behavior, set this to true*/
+	DisplaceOptIn?: boolean[],
 	/** AppendPose does not apply to the displacement map */
 	NoAppendDisplacement?: boolean,
 	/** AppendPose does not apply to the erase map */
@@ -214,6 +224,9 @@ interface ModelLayer extends Namable {
 	Invariant?: boolean,
 	/** Displacement maps are treated as Invariant */
 	DisplacementInvariant?: boolean,
+	/** doesnt apply the sprites offset and anchors to the displacement sprite*/
+	NoOffsetDisplacement?: boolean,
+	NoOffsetErase?: boolean,
 	/** Applies this layer's filter to a layer when the filter isn't hidden */
 	ApplyFilterToLayerGroup?: Record<string, boolean>,
 	/** Which filter to apply */

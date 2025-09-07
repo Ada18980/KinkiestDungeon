@@ -857,12 +857,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
-	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
+	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
+	// map of maps of lists
+	let DisplaceFiltersOptIn: Record<string, Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]>> = {};
 	//let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let DisplaceFiltersInUse: Record<string,number> = {};
 	let DisplaceFilterAmt: Record<string,number> = {};
 	//let OcclusionFiltersInUse = {};
-	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
+	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
 	let EraseFiltersInUse: Record<string,number> = {};
 	let EraseFiltersAmt: Record<string,number> = {};
 	for (let m of Models.values()) {
@@ -1141,10 +1143,40 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
 						DisplaceFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(LayerGroups[ll[0]])) {
+							if (l.DisplaceSource?.some((src) => 
+								{return DisplaceFiltersOptIn[src] ? DisplaceFiltersOptIn[src][dg] : undefined;}
+							))
+								l.DisplaceSource?.forEach((src) => {
+									for (let ft of DisplaceFiltersOptIn[src][dg]) {
+										if (ft.id == id && ft.zIndex < zzz && (!l.NoDispVetoOptIn && (
+											!ft.type || !l.DisplacementVeto || !l.DisplacementVeto.some((veto) => {
+												return ft.type.includes(veto)
+											}))
+										)) {
+											ft.zIndex = zzz;
+											DisplaceFilterAmt[id + dg] = Math.max(
+												dAmount * (l.DisplaceAmount || 50) * Zoom,
+												DisplaceFilterAmt[id + dg] || 0,
+											)
+											ft.amount = Math.max(ft.amount, dAmount * (l.DisplaceAmount || 50) * Zoom);
+										}
+									}
+								});
+								
+							else 
 							if (DisplaceFilters[dg])
 								for (let ft of DisplaceFilters[dg]) {
-									if (ft.id == id && ft.zIndex < zzz) {
+									if (ft.id == id && ft.zIndex < zzz && (
+										!ft.type || !l.DisplacementVeto || !l.DisplacementVeto.some((veto) => {
+											return ft.type.includes(veto)
+										})
+									)) {
 										ft.zIndex = zzz;
+										DisplaceFilterAmt[id + dg] = Math.max(
+											dAmount * (l.DisplaceAmount || 50) * Zoom,
+											DisplaceFilterAmt[id + dg] || 0,
+										)
+										ft.amount = Math.max(ft.amount, dAmount * (l.DisplaceAmount || 50) * Zoom);
 									}
 								}
 						}
@@ -1154,7 +1186,6 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					DisplaceFiltersInUse[id] = zzz;
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
-						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
 						DisplaceFilterAmt[id + dg] = Math.max(
 							dAmount * (l.DisplaceAmount || 50) * Zoom,
 							DisplaceFilterAmt[id + dg] || 0,
@@ -1189,12 +1220,12 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						let sy = tt.sy;
 						let rot = tt.rot;
 
-						DisplaceFilters[dg].push(
-							{
+						let obj = {
 								amount: DisplaceFilterAmt[id + dg],
 								hash: id + m.Name + "," + l.Name,
 								zIndex: zzz,
 								id: id,
+								type: l.DisplaceSource,
 								spriteName: l.DisplacementSprite,
 								sprite: KDDrawRT(
 									ContainerContainer.Container,
@@ -1204,8 +1235,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
 										zIndex: zzz,
-										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
-										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+										anchorx: l.NoOffsetDisplacement ? ax : ((ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1)),
+										anchory: l.NoOffsetDisplacement ? ay : ((ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1)),
 										scalex: sx != 1 ? sx : undefined,
 										scaley: sy != 1 ? sy : undefined,
 										alpha: 0.0,
@@ -1214,8 +1245,32 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 									ContainerContainer.SpritesDrawn,
 									Zoom, undefined, undefined, true, false
 								),
+							};
+						if (l.DisplaceOptIn) {
+							let iii = 0;
+							for (let src of l.DisplaceSource) {
+								if (l.DisplaceOptIn[iii]) {
+									if (!DisplaceFiltersOptIn[src]) DisplaceFiltersOptIn[src] = {};
+									if (!DisplaceFiltersOptIn[src][dg]) DisplaceFiltersOptIn[src][dg] = [];
+									DisplaceFiltersOptIn[src][dg].push(
+										obj
+									);
+								} else {
+									if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
+									DisplaceFilters[dg].push(
+										obj
+									);
+								}
+								iii++;
+								
 							}
-						);
+						} else {
+						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
+							DisplaceFilters[dg].push(
+								obj
+							);
+						}
+						
 					}
 
 				}
@@ -1315,6 +1370,11 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								for (let ft of EraseFilters[dg]) {
 									if (ft.id == id && ft.zIndex < zzz) {
 										ft.zIndex = zzz;
+										EraseFiltersAmt[id + dg] = Math.max(
+											eAmount * (l.EraseAmount || 50) * Zoom,
+											EraseFiltersAmt[id + dg] || 0,
+										)
+										ft.amount = Math.max(ft.amount, eAmount * (l.EraseAmount || 50) * Zoom);
 									}
 								}
 						}
@@ -1376,8 +1436,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
 										zIndex: zzz,
-										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
-										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+										anchorx: l.NoOffsetErase ? ax : ((ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1)),
+										anchory: l.NoOffsetErase ? ay : ((ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1)),
 										scalex: sx != 1 ? sx : undefined,
 										scaley: sy != 1 ? sy : undefined,
 										alpha: 0.0,
@@ -1567,11 +1627,60 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 
 				// Add displacement filters
+				// since you have to opt in to displacefiltersoptin, nodisplace doesnt affect it
+				
+				if (l.DisplacementSources) {
+					let alreadyAdded: Map<object, boolean> = new Map();
+					for (let src of l.DisplacementSources) {
+						if (DisplaceFiltersOptIn[src] && DisplaceFiltersOptIn[src][origlayer]) {
+							for (let ef of DisplaceFiltersOptIn[src][origlayer]) {
+								if (alreadyAdded.get(ef)) continue;
+								if (!ef.sprite) continue;
+								if (ef.spriteName != undefined && ef.spriteName == l.DisplacementSprite) continue;
+								if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
+								if (!l.NoDispVetoOptIn && (
+										ef.type && l.DisplacementVeto && l.DisplacementVeto.some((veto) => {
+											return ef.type.includes(veto)
+										})
+									)) continue;
+								let efh = containerID + "disp_" + ef.hash;
+								let dsprite = ef.sprite;
+								if (refreshfilters) {
+									KDAdjustmentFilterCache.delete(efh);
+								}
+								KDTex(dsprite.name, false); // try to preload it
+								if (!KDAdjustmentFilterCache.get(efh)) {
+									f = new DisplaceFilter(
+										dsprite,
+										ef.amount,
+									);
+									//Unneeded because its already in the filter cache
+									KDSetFilterSprite({hash: efh, filter: f}, dsprite);
+									f.multisample = 0;
+								}
+
+								let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
+								if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+									KDAdjustmentFilterCache.set(efh, efilter);
+								}
+								extrafilter.push(...efilter);
+								// hash map is love
+								alreadyAdded.set(ef, true);
+							}
+						}
+					}
+				}
+				
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
 						if (!ef.sprite) continue;
 						if (ef.spriteName != undefined && ef.spriteName == l.DisplacementSprite) continue;
 						if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
+						if ((
+								ef.type && l.DisplacementVeto && l.DisplacementVeto.some((veto) => {
+									return ef.type.includes(veto)
+								})
+							)) continue;
 						let efh = containerID + "disp_" + ef.hash;
 						let dsprite = ef.sprite;
 						if (refreshfilters) {

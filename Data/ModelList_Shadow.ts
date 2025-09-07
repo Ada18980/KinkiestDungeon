@@ -168,7 +168,6 @@ AddModel({
 	Group: "Mouth",
 	Restraint: true,
 	Categories: ["Restraints","Gags"],
-	AddPose: ["FaceGag"],
 	Layers: ToLayerMap([
 		{ Name: "Mouth", Layer: "GagOver", Pri: 9,
 			OffsetX: 942,

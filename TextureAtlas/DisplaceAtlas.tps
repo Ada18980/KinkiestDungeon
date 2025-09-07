@@ -219,6 +219,7 @@
             <key type="filename">../DisplacementMaps/Calf3SquishHogtie.png</key>
             <key type="filename">../DisplacementMaps/Calf3SquishKneelClosed.png</key>
             <key type="filename">../DisplacementMaps/CrystalErase.png</key>
+            <key type="filename">../DisplacementMaps/FaceGag.png</key>
             <key type="filename">../DisplacementMaps/FrogThigh1SquishKneel.png</key>
             <key type="filename">../DisplacementMaps/FrogThigh1SquishKneelClosed.png</key>
             <key type="filename">../DisplacementMaps/FrogThigh2SquishKneel.png</key>
@@ -226,6 +227,7 @@
             <key type="filename">../DisplacementMaps/FrogThigh3SquishKneel.png</key>
             <key type="filename">../DisplacementMaps/FrogThigh3SquishKneelClosed.png</key>
             <key type="filename">../DisplacementMaps/FutureBox.png</key>
+            <key type="filename">../DisplacementMaps/GagChin.png</key>
             <key type="filename">../DisplacementMaps/HarnessSquish.png</key>
             <key type="filename">../DisplacementMaps/Heels2Kneel.png</key>
             <key type="filename">../DisplacementMaps/Heels2KneelClosed.png</key>

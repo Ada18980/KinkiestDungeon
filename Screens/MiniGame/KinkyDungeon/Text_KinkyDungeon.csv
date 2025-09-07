@@ -32147,7 +32147,7 @@ KDSaveBusyMenu,"Please wait for save to finish..."
 KinkyDungeonSpelldebugDefeat,"Debug Defeat"
 KinkyDungeonSpellCastdebugDefeat,"You cast devastating ASCII glyphs!"
 KinkyDungeonSpelldebugBind,"Debug Bind"
-KinkyDungeonSpellCastdebugBind,"You cast bondage ASCII glyphs!"
+KinkyDungeonSpellCastdebugBind,"You cast binding ASCII glyphs!"
 
 KDEmpty,Empty Slot
 KDFloor,", Floor AMNT"

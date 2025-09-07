@@ -128,6 +128,7 @@
         "Game/src/dialogue/KinkyDungeonDialogueList.ts",
         "Game/src/dialogue/KDSkillCheck.ts",
         "Game/src/faction/KinkyDungeonFactions.ts",
+        "Game/src/faction/KDFactionColors.ts",
         "Game/src/faction/KinkyDungeonFactionsList.ts",
         "Game/src/player/KinkyDungeonNeeds.ts",
         "Game/src/prison/KinkyDungeonJailList.ts",

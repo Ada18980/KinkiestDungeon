@@ -1672,6 +1672,9 @@ let LayerGroups = {
 	]),
 	// endregion
 
+	
+
+
 	HairHelmet: ToMap(
 		[
 
@@ -1922,6 +1925,25 @@ let LayerGroups = {
 			"GagFlat",
 		]
 	),
+
+	FaceGag: ToMap(
+		[
+			
+			"Blindfold",
+			"GagOver",
+			"GagMuzzleStraps",
+			"GagMuzzle",
+			"GagFlatStraps",
+			"GagFlat",
+			
+			"GagStraps",
+			"Gag",
+			"GagUnder",
+			"Hood",
+			"Head",
+		]
+	),
+
 	// Panty xray only if we are wearing a chastity belt
 	XrayPanties: ToMap(
 		[
