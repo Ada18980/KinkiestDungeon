@@ -6178,7 +6178,7 @@ function KDAddRopeVariants (
 				Properties: origRestraint.Properties ? Object.assign({}, origRestraint.Properties) : {},
 				cloneTag: tagBase,
 				linkCategories: origRestraint.linkCategories ? JSON.parse(JSON.stringify(origRestraint.linkCategories)) : undefined,
-				linkSize: origRestraint.linkSizes ? JSON.parse(JSON.stringify(origRestraint.linkSizes)) : undefined,
+				linkSizes: origRestraint.linkSizes ? JSON.parse(JSON.stringify(origRestraint.linkSizes)) : undefined,
 			};
 
 			if (origRestraint.disassembleAs) props.disassembleAs = idSuffix + "Raw";
