@@ -50167,7 +50167,7 @@ EnemyName 设法蠕动着离开了视野！
 你施放了毁灭性的 ASCII 字符！
 - Debug Bind
 作弊束缚攻击
-- You cast bondage ASCII glyphs!
+- You cast binding ASCII glyphs!
 你施放了束缚性的 ASCII 字符！
 
 - , Floor AMNT
