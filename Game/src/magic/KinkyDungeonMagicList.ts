@@ -2167,7 +2167,8 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		manacost: 0, components: [], level:1, type:"hit", onhit:"lingering",
 		time: 3, range: 3.9, power: 2.5, size: 1, aoe: 1, lifetime: 1,
 		lifetimeHitBonus: 9, damage: "glue"}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
-	{name: "SlimeSuit", sfx: "MagicSlash", school: "Illusion", manacost: 5, components: [], level:1, type:"special", special: "dress", outfit: "SlimeSuit", noMiscast: true,
+	{name: "SlimeSuit", sfx: "MagicSlash", school: "Illusion", manacost: 5,
+		noCastMsg: true, components: [], level:1, type:"special", special: "dress", outfit: "SlimeSuit", noMiscast: true,
 		onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
 	{name: "DildoBatBuff", sfx: "Vibe", school: "Elements", manacost: 0, components: ["Verbal"], mustTarget: true, level:1, type:"buff", noMiscast: true,

@@ -160,8 +160,8 @@ function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): num
 
 
 		//(5 * Math.round(((10 + 2 * Math.pow(power, 1.5)))/5));
-		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
-			costt *= 5;
+		if (!sell) {
+			costt *= KDPriceGougingValueMult(KDPlayer());
 		}
 		return costt;
 	}
@@ -189,16 +189,36 @@ function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): num
 				: (50 * 1.25**(2.38*rarity))
 		)/5);
 		if (costt > 100) costt = 10 * Math.round(costt / 10);
-		if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
-			costt *= 5;
+		if (!sell) {
+			costt *= KDPriceGougingValueMult(KDPlayer());
 		}
 		return costt;
 	}
 	let costs = 50;
-	if (KinkyDungeonStatsChoice.has("PriceGouging") && !sell) {
-		costs *= 5;
+	if (!sell) {
+		costs *= KDPriceGougingValueMult(KDPlayer());
 	}
 	return costs;
+}
+
+interface PriceGougingValueData {
+	base: number,
+	bonus: number,
+	mult: number,
+}
+
+function KDPriceGougingValueMult(player: entity): number {
+	let mult = 1;
+	if (KinkyDungeonStatsChoice.has("PriceGouging")) mult *= 5;
+	if (KinkyDungeonDifficulty > 0) mult += 0.05 * KinkyDungeonDifficulty;
+
+	let data: PriceGougingValueData = {
+		base: 1,
+		bonus: 0,
+		mult: 1,
+	}
+	KinkyDungeonSendEvent("shopvaluemult", data);
+	return (data.base + data.bonus)*data.mult;
 }
 
 function KinkyDungeonShrineCost(type: string): number {

@@ -2882,10 +2882,11 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		response: "Default",
 		clickFunction: (_gagged, _player) => {
 			KDGameData.CurrentDialogMsgValue = {
-				"RESCUECOST": Math.round(KDDialogueParams.ShopkeeperHelpFee + (KDDialogueParams.ShopkeeperHelpFeePerLevel * (KDGameData.HighestLevelCurrent || 1))
+				"RESCUECOST": Math.round(Math.sqrt(KDPriceGougingValueMult(_player))
+					* (KDDialogueParams.ShopkeeperHelpFee + (KDDialogueParams.ShopkeeperHelpFeePerLevel * (KDGameData.HighestLevelCurrent || 1))
 					+ (KDDialogueParams.ShopkeeperHelpFeePerPower * (KDGetTotalRestraintPower(
 						KinkyDungeonPlayerEntity, ["Leather", "Latex", "Rope", "Metal"], [], true, false, false, false)
-						|| 1))),
+						|| 1)))),
 			};
 			KDGameData.CurrentDialogMsgData = {
 				"RESCUECOST": "" + Math.round(KDGameData.CurrentDialogMsgValue.RESCUECOST),
@@ -3228,10 +3229,11 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		clickFunction: (_gagged, _player) => {
 			if (!KDGameData.ShopkeeperFee) KDGameData.ShopkeeperFee = 0;
 			KDGameData.CurrentDialogMsgValue = {
-				"RESCUECOST": Math.round(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1)))),
+				"RESCUECOST": Math.round(Math.sqrt(KDPriceGougingValueMult(_player)) * 
+					(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))))),
 			};
 			KDGameData.CurrentDialogMsgData = {
-				"RESCUECOST": "" + (KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1)))),
+				"RESCUECOST": "" + Math.round(Math.sqrt(KDPriceGougingValueMult(_player))*(KDGameData.ShopkeeperFee || (KDDialogueParams.ShopkeeperFee + Math.max(0, KDDialogueParams.ShopkeeperFeePerLevel * (KDGameData.HighestLevelCurrent || 1))))),
 			};
 			return false;
 		},
