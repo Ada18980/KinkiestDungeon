@@ -32576,3 +32576,16 @@ KDPlayerTitle_Cursed,Cursed
 KDPlayerTitleDesc_Cursed,Unlocked by wearing any cursed restraint or armor.
 
 KDProgressItem_TrainingHeels,Heel Training
+
+KDProgressUnselected,Select a progress item to show details
+
+KDProgress_Training_Heels,Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
+KDProgressCurrent,"Current Progress: "
+KDProgressMilestones,"Milestones:"
+KDProgressBonusProgress,"Bonus Progress (gained next Floor):"
+KDProgressRecentModifiers,"Recent Modifiers:"
+
+KDAnyLevel,Any Level
+
+KDProgressTag_TrHeels_LeashWalk,Went on a leash walk:
+KDProgressTagDesc_Level,Training Level ${Level}

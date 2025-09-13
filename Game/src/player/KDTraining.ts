@@ -4,6 +4,22 @@ let KDBaseTrainingMinRatioPercent = 0.5;
 let KDTrainingTypes = [
 	"Heels",
 ];
+interface KDTrainingProps {
+	color: string,
+	showBuff?: boolean,
+	dontShowProgress?: boolean,
+	prereq: (player: entity) => boolean,
+	calc_xpnext?: (player: entity) => number,
+	calc_xpmax?: (player: entity) => number,
+	
+	
+}
+let KDTrainingTypeProperties: Record<string, KDTrainingProps> = {
+	Heels: {
+		color: KDBaseGreal,
+		prereq: (player) => {return true;}
+	},
+}
 
 function KDGetHeelTraining(): number {
 	if (!KDGameData.Training) KDGameData.Training = {};

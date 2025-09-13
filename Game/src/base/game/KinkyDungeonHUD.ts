@@ -2655,17 +2655,12 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	}
 
 	if (KDToggleShowAllBuffs) {
+		
 		for (let training of KDTrainingTypes) {
-			let XPNext = 0;
-			if (KDGameData.Training) {
-				if (KDGameData.Training[training]?.turns_total == 0) {
-					XPNext = 0;
-				} else {
-					let trainingPercentage = KDGetTrainingPercentage(training, KDGameData.Training[training], KDPlayer(), true);
-					if (KinkyDungeonStatsChoice.get("Mastery" + training)) trainingPercentage *= 0.4;
-					XPNext = trainingPercentage;
-				}
-			}
+			if (KDTrainingTypeProperties[training] &&
+				(!KDTrainingTypeProperties[training].showBuff)
+					|| !KDTrainingTypeProperties[training].prereq(KDPlayer())) continue;
+			let XPNext = KDGetTrainingXPNext(training, KDPlayer());
 
 			statsDraw["training" + training] = {text: TextGet("KDTrainingLevel" + training)
 				.replace("AMNT",
@@ -3662,3 +3657,32 @@ function KDTrySetFocusControl(control: string) {
 	}
 	KDFocusHoverLast = KDFocusControls || control;
 }
+
+
+function KDGetTrainingXPNext(training: string, player: entity) {
+	let XPNext = 0;
+	if (KDTrainingTypeProperties[training]?.calc_xpnext) {
+		return KDTrainingTypeProperties[training]?.calc_xpnext(player);
+	}
+	if (KDGameData.Training) {
+		if (KDGameData.Training[training]?.turns_total == 0) {
+			XPNext = 0;
+		} else {
+			let trainingPercentage = KDGetTrainingPercentage(training, KDGameData.Training[training], KDPlayer(), true);
+			if (KinkyDungeonStatsChoice.get("Mastery" + training)) trainingPercentage *= 0.4;
+			XPNext = trainingPercentage;
+		}
+	}
+
+	return XPNext;
+}
+
+function KDGetTrainingXPMax(training: string, player: entity) {
+	if (KDTrainingTypeProperties[training]?.calc_xpmax) {
+		return KDTrainingTypeProperties[training]?.calc_xpmax(player);
+	}
+	
+
+	return (KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1);
+}
+

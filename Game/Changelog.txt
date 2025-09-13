@@ -68,6 +68,7 @@ Bugfix
 - Fixed quest markers not scaling when zooming in
 - Fixed cursed item transformation (e.g. stardust curse) removing linked items unintentionally
 - Fixed leather harness color
+- Fixed a bug where summit progress didnt get saved properly on advancing a floor
 
 5.4.78
 - Fixed a bug where save code never appears!!

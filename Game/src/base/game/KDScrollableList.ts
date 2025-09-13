@@ -123,7 +123,7 @@ function KDScrollScrollableList(name: string, amount: number) {
 	else {
 		list.index = Math.max(
 			Math.min(list.index + amount, 
-				list.max - Math.max(0, (list.num_per_page - 3))), 
+				Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3)))), 
 				list.min);
 	}
 	return list.index != origIndex;
@@ -232,7 +232,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 				mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
 				list.index = Math.max(
 				Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
-					list.max - Math.max(0, (list.num_per_page - 3))), 
+					Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3)))), 
 					list.min);*/
 				return true;
 			}
@@ -280,7 +280,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 		mouseDelta = Math.max(0, Math.min(mouseDelta, 1));
 		list.index = Math.max(
 		Math.min(Math.round(list.items.length * mouseDelta - list.num_per_page/2), 
-			list.max - Math.max(0, (list.num_per_page - 3))), 
+			Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3)))), 
 			list.min);
 	}
 	else if (list.items.length > 0 && (!mouseHoldTaken || mouseHoldTaken == name + "_drag")) {
@@ -299,12 +299,12 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			}
 			
 
-			list.index = Math.min(list.max - Math.max(0, (list.num_per_page - 3)), 
+			list.index = Math.min(Math.max(list.min, list.max - Math.max(0, Math.ceil(list.num_per_page*.3))), 
 			Math.max(list.min,
 				Math.round(list.click_hold_y_index + (list.click_hold_y - (horizontal ? MouseX : MouseY))/spacing)
 			));
 			list.visual_index = Math.min(list.max, 
-			Math.max(list.min - Math.max(0, (list.num_per_page - 3)),
+			Math.max(list.min - Math.max(0, Math.ceil(list.num_per_page*.3)),
 				list.click_hold_y_index + (list.click_hold_y - (horizontal ? MouseX : MouseY))/spacing
 			));
 		}

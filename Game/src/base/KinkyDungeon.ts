@@ -751,7 +751,8 @@ interface KDGameDataBase {
 	currentTitle: string,
 	oldtitles: string[],
 	titlesUnlocked: string[],
-	titledata: KDPlayerTitleData
+	titledata: KDPlayerTitleData,
+	RecentProgress: Record<string, ProgressRecord>,
 };
 
 
@@ -1023,7 +1024,8 @@ let KDGameDataBase: KDGameDataBase = {
 	currentTitleAuto: "",
 	currentTitle: "None",
 	oldtitles: [],
-	titlesUnlocked: []
+	titlesUnlocked: [],
+	RecentProgress: {},
 };
 
 // endregion

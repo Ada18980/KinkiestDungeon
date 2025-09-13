@@ -166,7 +166,7 @@ function KinkyDungeonDrawCollection(xOffset: number = -125) {
 		}
 	}
 
-	KinkyDungeonDrawMessages(true, 550, true, 600);
+	//KinkyDungeonDrawMessages(true, 550, true, 600);
 	KDDrawInventoryTabs(xOffset);
 }
 function KinkyDungeonDrawBondage(xOffset = -125) {

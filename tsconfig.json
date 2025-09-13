@@ -112,6 +112,7 @@
         "Game/src/faction/KinkyDungeonReputation.ts",
         "Game/src/map/KinkyDungeonTraps.ts",
         "Game/src/map/KinkyDungeonTiles.ts",
+        "Game/src/map/KDStairActions.ts",
         "Game/src/map/KinkyDungeonTilesList.ts",
         "Game/src/enemy/KinkyDungeonPathfinding.ts",
         "Game/src/effect/KinkyDungeonBuffs.ts",

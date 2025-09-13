@@ -616,6 +616,9 @@ function KDDrawInventoryTabs(xOffset: number, drawBG: boolean = true): void {
 	let num = 5;
 	let width = 1100 / num;
 	let II = 0;
+
+	KinkyDungeonDrawMessages(true, 600, true, 550);
+
 	DrawButtonKDExScroll("TabLore", scrollFunc, (_b) => {
 		KDShowInventory(null);
 		return true;

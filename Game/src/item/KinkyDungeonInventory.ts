@@ -1849,7 +1849,7 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 
 function KinkyDungeonDrawInventory() {
 	let xOffset = -125;
-	KinkyDungeonDrawMessages(true, 550, true, 600);
+	//KinkyDungeonDrawMessages(true, 550, true, 600);
 
 	let container = KDInventoryActionContainer(KDPlayer());
 

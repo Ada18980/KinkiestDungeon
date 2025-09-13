@@ -1816,31 +1816,6 @@ let KDEffectTileBulletFunctions: Record<string, (b, tile: effectTile, d) => bool
 };
 
 
-let KDStairsAltAction = {
-	"RandomTeleport": (_toTile, _suppressCheckPoint) => {
-		// Delete the stairs and teleport the player to a random location on another set of stairs
-		KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '2');
-		delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
-		let point = KinkyDungeonGetRandomEnemyPointCriteria((x: number, y: number) => {
-			return KinkyDungeonMapGet(x, y) == 's'
-				&& KinkyDungeonTilesGet(x + "," + y)?.AltStairAction == "RandomTeleport";
-		}, false, false, undefined, undefined, undefined, true);
-		if (point) {
-			KDMovePlayer(point.x, point.y, false);
-			KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '2');
-			delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
-
-			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleport"), KDBaseRed, 5);
-			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
-		} else {
-			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleportFail"), KDBaseRed, 5);
-			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
-		}
-	},
-	"Null": (_toTile, _suppressCheckPoint) => {
-		// Beep
-	}
-};
 
 function KDAttemptDoor(moveX: number, moveY: number) {
 	KinkyDungeonAdvanceTime(1, true);
