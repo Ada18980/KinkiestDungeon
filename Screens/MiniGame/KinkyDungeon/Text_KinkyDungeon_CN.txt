@@ -63,7 +63,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 :: KDLogo2
 由 Strait-Laced Games 呈现
 - You are an adventurer descending into an ancient underground city of magic.
-你是一名冒险家，前往了一个古老的地下魔法城市探险。
+你是一名探险家，进入了一个古老的地下魔法城市探险。
 - Beneath its depths lies the Mistress' Staff, an artifact of untold power.
 在它的深处隐藏着女主人之杖，一件拥有无穷力量的神器。
 - Will you prevail against forces unknown, or succumb to its dark secrets?
@@ -590,7 +590,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonRepNameCursed
 # :: KDFilterFiltersCursed
 # :: KDVarPrefCursed
-# :: KDPlayerTitle_Cursed
+:: KDPlayerTitle_Cursed
+被诅咒者
 - Goddess reputations can never exceed 25.
 女神的声望永远不会超过25。
 
@@ -612,7 +613,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Studious
 学识渊博
 - You start the game with +1 spell point. Your first two spell categories are free.
-开局多一个技能点。可以不消耗技能点学习额外两个法术类别。
+开局多一个技能点。可以不消耗技能点学习两个法术类别。
 - Meditation
 冥想
 - You slowly regenerate mana, up to a maximum of 50.
@@ -1472,12 +1473,12 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Your training has given you access to the powers of the Wizard class.
 你的训练使你能够获得法师职业的能力。
 - Peasant
-农民
+平民
 # :: KinkyDungeonStatMC_Peasant
 # :: KinkyDungeonClassModePeasant
 # :: KDPlayerTitle_ClassPeasant
 - You possess the agricultural mastery of the Peasant class.
-你掌握了农民职业的农业知识。
+你掌握了平民职业的农业知识。
 
 
 - Panic! (Chests)
@@ -2643,9 +2644,9 @@ Devious Dungeon Challenge 已启用。
 [离开的钥匙]
 
 - Adventurer's Outfit
-冒险家装束
+探险家装束
 - Your favorite outfit for adventuring.
-你最喜欢的冒险服装。
+你最喜欢的探险服装。
 - Your original outfit. No bonuses, no penalties.
 你原来的服装。没有奖励，没有惩罚。
 
@@ -3364,7 +3365,7 @@ Devious Dungeon Challenge 已启用。
 - Also assists in cutting restraints when equipped.
 装备时有助于切割拘束。
 - A go-to for travelers and adventurers.
-旅行者和冒险家的首选。
+旅行者和探险家们的首选。
 - Deals slash damage. Offhand: +10 Block
 造成斩击伤害。副手: +10 格挡
 - Flashlight
@@ -5217,17 +5218,17 @@ M.F. '女仆长'
 玩偶回到她的住处。
 
 - Encased Adventurer
-被包裹的冒险家
+被包裹的探险家
 # :: NameSlimeAdv
 # :: KDPlayerTitle_EncasedAdventurer
 - The encased adventurer loses hope.
-被包裹的冒险家失去了希望。
+被包裹的探险家失去了希望。
 - The encased adventurer moans as she throws herself against you for help! (DamageTaken)
-被包裹的冒险家一边呻吟一边扑向你寻求帮助！ ( DamageTaken )
+被包裹的探险家一边呻吟一边扑向你寻求帮助！ ( DamageTaken )
 - The encased adventurer sticks to you as she mumbles incoherently! (DamageTaken)
-被包裹的冒险家粘着你，语无伦次地咕哝着！ ( DamageTaken )
+被包裹的探险家粘着你，语无伦次地咕哝着！ ( DamageTaken )
 - The encased adventurer pleads for help as her slime spreads to you! (+RestraintAdded)
-被包裹的冒险家向你寻求帮助，她的粘液蔓延到了你的身上！ ( +RestraintAdded )
+被包裹的探险家向你寻求帮助，她的粘液蔓延到了你的身上！ ( +RestraintAdded )
 
 - Slime
 粘液
@@ -5945,15 +5946,15 @@ EnemyName 用 NewRestraintName 拘束你
 几只漆黑的手从阴影中浮现出来！
 
 - Corrupted Adventurer
-堕落冒险家
+堕落探险家
 - The corrupted adventurer falls into a deep sleep.
-堕落冒险家陷入了沉睡。
+堕落探险家陷入了沉睡。
 - The corrupted aventurer's many arms latch onto you! (+RestraintAdded)
-堕落冒险家伸出许多手臂抓住了你！ ( +RestraintAdded )
+堕落探险家伸出许多手臂抓住了你！ ( +RestraintAdded )
 - The corrupted aventurer clicks a lock on from behind you! (DamageTaken)
-堕落冒险家从你身后锁上了一把锁！ ( DamageTaken )
+堕落探险家从你身后锁上了一把锁！ ( DamageTaken )
 - The corrupted adventurer drags her chilling fingers across your vulnerable skin! (DamageTaken)
-堕落冒险家用她冰冷的手指划过你脆弱的皮肤！ ( DamageTaken )
+堕落探险家用她冰冷的手指划过你脆弱的皮肤！ ( DamageTaken )
 
 
 - Shadowy Ghast
@@ -7508,7 +7509,7 @@ Zora的船员
 玩偶制造有限公司
 
 - Adventurer
-冒险家
+探险家
 - Cursed Spirit
 诅咒之灵
 - Delinquent
@@ -7671,7 +7672,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You can push the lid off with enough force...
 你可以用足够的力推开盖子...
 - The lid of the barrel suddenly snaps shut as you hide inside!!!
-当你躲在里面时，桶盖突然关上！！！
+当你躲在桶中时，桶盖突然紧紧闭上！！！
 
 
 
@@ -11758,7 +11759,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Mysterious Stairs
 神秘的楼梯
 - Ghostly Adventurer
-幽灵冒险家
+幽灵探险家
 - Button
 按钮
 # :: KDTileTooltip@
@@ -12059,7 +12060,7 @@ Ars烟火
 你从来没有读过魔法书籍。元素、咒术和幻术消耗 3 倍的技能点。
 
 - Magical Spark
-魔法火花
+魔法灵感
 - Reduce the penalty from Magically Iliterate to 2x.
 将魔法盲的惩罚减少为 2 倍。
 - Magical Training
@@ -14584,11 +14585,11 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Mummy Trap
 木乃伊陷阱
 - Rope Trap
-绳陷阱
+绳索陷阱
 # :: KinkyDungeonSpellTrapRopeWeak
 # :: KinkyDungeonSpellTrapRopeStrong
 - Holy Rope Trap
-神圣绳陷阱
+神圣绳索陷阱
 - Belt Trap
 束带陷阱
 - Cable Trap
@@ -14842,7 +14843,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - Unfiled
 空的
 - Adventuring 101
-冒险家 101
+探险 101
 - History
 历史
 - Bondage Witchery
@@ -14917,7 +14918,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 - (A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter that she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS.
 (用草书写的便条）致那些袭击我们的信使并把他们绑在这里的人 : 幻象女神的神殿不能以这种方式使用。如果你想要一个对象来做你的下流实验，请尝试在一个当地人身上这样做，看在神的份上，不要为了把她绑起来而传信给天使信使。她同意与否，你付钱与否都不重要，我们的信使有他们必须履行的责任。签名 : 赫罗娜，幻象女神的执行者。
 - (From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers.
-( 摘自一篇题为《论天上供应链》的文章 ) 众所周知，天上求金。我们不知道为什么上天会寻找它，但我们知道女神赐予我们无限力量的碎片，以换取我们从地球上挖出的这种原本无用的金属。他们非常关心它，以至于神龛司空见惯，每个神龛都有一个天使信使，等待任何愿意与她分享的冒险者。
+( 摘自一篇题为《论天界供应链》的文章 ) 众所周知，天堂渴求黄金。我们不知道为什么天堂追求它，但我们知道，女神为换取这种我们从地下挖出的这种原本无用的金属，会将含有她们无限力量的碎片赐予给我们。她们非常关心这种交易，以至于神龛随处可见，每个神龛都有一位天使模样的信使，等待任何愿意与她交易的探险家。
 - They say that the maiden who safeguards the graveyard is kind to her pets...
 据说守护墓园的少女会善待她的宠物...
 - They thought they could have my legendary blade... but the fools forgot to tie my legs! I was able to Portal out of jail and into the hallway where they kept all my things!
@@ -14938,15 +14939,15 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 ( 摘自束缚巫术 : ‎学生指南 ) |许多法师利用魔法符文来设置陷阱。如果你想寻找陷阱，可以尝试学习幻术系的法术'魔之眼'。
 
 - From Adventuring 101: A guide to combat|Your opponent will become vulnerable in many ways, such as missing you with an attack. You can also teleport to the other side of them when they are attacking you, and this will confuse them briefly.|Vulnerable enemies take extra damage, and are easier to tie up!
-摘自《冒险101 : ‎战斗指南》|你的对手会在很多方面变得虚弱，比如攻击没有命中你。当他们攻击你时，你也可以传送到他们的另一边，这会让他们短暂迷惑。|虚弱的敌人会受到额外伤害，并且更容易被束缚！
+摘自《探险 101 : ‎战斗指南》|你的对手会在很多方面变得虚弱，比如攻击没有命中你。当他们攻击你时，你也可以传送到他们的另一边，这会让他们短暂迷惑。|虚弱的敌人会受到额外伤害，并且更容易被束缚！
 - From Adventuring 101: A guide to combat|Drenching your opponents makes them more vulnerable to ice and electricity, but may increase their resistance to fire.
-摘自《冒险101 : ‎战斗指南》|淋湿你的对手会让他们更容易受到冰和电的伤害，但可能会增加他们的火抗性。
+摘自《探险 101 : ‎战斗指南》|淋湿你的对手会让他们更容易受到冰和电的伤害，但可能会增加他们的火抗性。
 - From Adventuring 101: A guide to combat|Hitting enemies with melee damage while they are frozen will break the ice, but this also doubles the damage dealt by the attack.
-摘自《冒险101 : ‎战斗指南》|在敌人被冰冻时用近战伤害击中敌人会打破冰冻，但这也会使攻击造成的伤害翻倍。
+摘自《探险 101 : ‎战斗指南》|在敌人被冰冻时用近战伤害击中敌人会打破冰冻，但这也会使攻击造成的伤害翻倍。
 - From Adventuring 101: A guide to combat|Did you know that hitting enemies with fire while they are frozen is extra powerful? Enemies take 40% additional damage from fire while frozen, although fire will rapidly unfreeze them.
-摘自《冒险101 : ‎战斗指南》|你知道吗，在敌人被冰冻的时候用火攻击他们会带来额外的威力？敌人在冰冻状态下会受到 40% 的额外火焰伤害，但火焰会迅速解冻他们。
+摘自《探险 101 : ‎战斗指南》|你知道吗，在敌人被冰冻的时候用火攻击他们会带来额外的威力？敌人在冰冻状态下会受到 40% 的额外火焰伤害，但火焰会迅速解冻他们。
 - From Adventuring 101: A guide to combat|When you're in a bind, try to play along and look for an opportunity to escape. Fighting back will only make your enemies want to tighten your restraints.
-摘自《冒险101 : ‎战斗指南》|当你陷入困境时，尝试配合敌人并寻找逃脱的机会。反击只会让敌人更想收紧你的束缚。
+摘自《探险 101 : ‎战斗指南》|当你陷入困境时，尝试配合敌人并寻找逃脱的机会。反击只会让敌人更想收紧你的束缚。
 
 - (A drawing of a suit of armor. It reads: DO NOT TRUST)
 ( 一套盔甲的图纸。上面写着 : ‎不要相信 )
@@ -15207,15 +15208,15 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 天使 : ‎也许我可以帮上忙！
 
 - Adventurer's Ghost: Well met, traveler!
-冒险家之魂 : ‎很高兴见到你，旅行者！
+探险家之魂 : ‎很高兴见到你，旅行者！
 - Adventurer's Ghost: Hello again, traveler (giggles).
-冒险家之魂 : ‎很高兴再次见面，旅行者 ( 咯咯笑 ) 。
+探险家之魂 : ‎很高兴再次见面，旅行者 ( 咯咯笑 ) 。
 - Adventurer's Ghost: Having fun, girl?
-冒险家之魂 : ‎玩得开心吗，姑娘？
+探险家之魂 : ‎玩得开心吗，姑娘？
 - Adventurer's Ghost: Looking for some trouble, slave?
-冒险家之魂 : ‎你是在给自己找麻烦吗，奴隶？
+探险家之魂 : ‎你是在给自己找麻烦吗，奴隶？
 - Adventurer's Ghost: I see you, naughty little slave!
-冒险家之魂 : ‎我看见你了，淘气的小奴隶！
+探险家之魂 : ‎我看见你了，淘气的小奴隶！
 
 - Ghost: I can try to help with those, traveler.
 幽灵 : ‎我可以尝试帮助解决这些问题，旅行者。
@@ -15512,7 +15513,7 @@ EnemyName 离开并锁上了她身后的牢房。
 - Ask for Aid
 请求帮助
 - Become a Champion
-成为冠军
+成为拥护者
 - Ask
 问
 - Ask for Rescue
@@ -15520,14 +15521,14 @@ EnemyName 离开并锁上了她身后的牢房。
 - Offer Penance
 忏悔
 - Current Champion
-现任冠军
+当前拥护
 - Switch Champion
-切换冠军
+切换拥护
 
 - Become the champion of this goddess. Capturing bound enemies will grant +1 rep.
-成为这位女神的冠军。捕获被束缚的敌人将获得 +1 声望。
+成为这位女神的拥护者。捕获被束缚的敌人将获得 +1 声望。
 - You are now the champion of the Goddess of GODDESS.
-你现在是 GODDESS 女神的冠军。
+你现在是 GODDESS 女神的拥护者。
 
 - For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 消耗 3 点声望，女神赐予祝福助力你的挣扎。
@@ -16152,7 +16153,7 @@ EnemyName 设法带着你的物品撤退了！
 许多绳索出现在你周围，从你身上移除较弱的绳索并束缚敌人！
 
 - Choose Class:
-选择类别 : ‎
+选择职业 : ‎
 
 - Distraction Mode:
 性奋模式 : ‎
@@ -16422,7 +16423,7 @@ EnemyName 设法带着你的物品撤退了！
 - I see how it is.
 我明白了。
 - I've taken on hundreds of adventurers like you.
-我已经对付了数百个像你这样的冒险者。
+我已经对付了数百名像你这样的探险家们。
 - You don't stand a chance.
 你没有机会。
 - Your magic is nothing compared to mine!
@@ -16602,7 +16603,7 @@ EnemyName 设法带着你的物品撤退了！
 - Tsk Tsk. I'll be keeping the keys.
 啧啧。我会保管好钥匙的。
 - I used to be an adventurer like you~ My name was PTRN...
-我曾经也是和你一样的冒险家~ 我的名字是 PTRN...
+我也曾是一位像你这样的探险家~ 我的名字是 PTRN...
 - You don't know who you're messing with.
 你不知道你在招惹谁。
 - You won't be allowed to make that mistake twice.
@@ -16724,7 +16725,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailChaseTheWardenChest
 # :: KinkyDungeonRemindJailChaseSilverWitchChest
 - Typical adventurers~
-经典的冒险家~
+典型的探险家~
 # :: KinkyDungeonRemindJailChaseTheWardenOrb
 # :: KinkyDungeonRemindJailChaseSilverWitchOrb
 - Oh, you got out?
@@ -16813,7 +16814,7 @@ EnemyName 设法带着你的物品撤退了！
 # :: KinkyDungeonRemindJailChaseTheWardenHonor1
 # :: KinkyDungeonRemindJailChaseSilverWitchHonor1
 - You need to learn some manners~
-你需要学习一些礼仪~
+你得学点礼仪~
 # :: KinkyDungeonRemindJailChaseTheWardenHonor2
 # :: KinkyDungeonRemindJailChaseSilverWitchHonor2
 - This will be entertaining.
@@ -17325,7 +17326,7 @@ EnemyName 设法带着你的物品撤退了！
 - You're not supposed to be here...
 你不应该在这里...
 - I'm gonna teach you a lesson, girl.
-我要给你一个教训，姑娘。
+我要给你上一课了，姑娘。
 - I'm gonna miss you when we find you a nice master...
 当我们找到你一个好主人时，我会想念你的......
 - Looks like you need some training, girl.
@@ -17335,7 +17336,7 @@ EnemyName 设法带着你的物品撤退了！
 - Never should have come here.
 你不应该出现在这里。
 - I used to be an adventurer like you.
-我曾经和你一样是冒险者。
+我以前也是个像你一样的探险家。
 - You must be one of those wizards.
 你一定是那些法师之一。
 - The mages sell real well...
@@ -17361,7 +17362,7 @@ EnemyName 设法带着你的物品撤退了！
 - Not a chance!
 没有机会！
 - Boss! We got another one!
-老板！我们还有一个！
+老大！这儿又有一个！
 - Caught ya~
 抓住你~
 - Dibs on this one!
@@ -17598,7 +17599,7 @@ EnemyName 设法带着你的物品撤退了！
 - Lay down your weapons!
 放下你的武器！
 - Surrender and I'll be gentle! Relatively speaking...
-投降吧，我会温柔一点的！当然是相对而言...
+投降吧，我会温柔点的！当然是相对而言...
 - Give up or I'll call reinforcements!
 投降，否则我就要呼叫增援了！
 - Ack! We have an unruly subject!
@@ -18000,7 +18001,7 @@ SPL已激活。
 - You're a pretty one! Why don't you come here~
 你是一个漂亮的人！为何不来这里呢~
 - Oof! Looks like you need to be taught a lesson!
-哎呀！看来你需要被教训一顿了！
+哦哟！看来得教训你一顿了！
 # :: KinkyDungeonRemindJailChaseDressmakerAttack0
 # :: KinkyDungeonRemindJailChaseNurseAttack0
 - We better put away those hands of yours.
@@ -18687,7 +18688,7 @@ SPL-哎呦……
 - Oooh, a key for my collection?
 哦，我收藏的钥匙？
 - What's that noise? I guess it's just another adventurer...
-那是什么声音？我想这只是另一个冒险家...
+那是什么声音？我猜，只是另一个探险家吧...
 - Ah! So you do have some fight left in you...
 啊！所以，你确实还有一些斗志...
 - A little help over here!
@@ -18738,7 +18739,7 @@ SPL-哎呦……
 - Oh... that's too bad~
 哦...太糟糕了~
 - My name is PTRN, A-rank adventurer. You?
-我叫 PTRN，A级冒险家。你呢？
+我叫 PTRN，A级探险家。你呢？
 - In the end, only one of us will be tied up! Wait a minute...
 最后，我们中只有一个人会被捆起来！等一下...
 - Heh, watch this~
@@ -19506,7 +19507,7 @@ SPL，请听从我…
 # :: KinkyDungeonRemindJailElfSmugGrab
 # :: KinkyDungeonRemindJailDryadGrab
 - A classic blunder.
-一个经典错误。
+一个典型的失误。
 # :: KinkyDungeonRemindJailElfDisarm
 # :: KinkyDungeonRemindJailElfSmugDisarm
 # :: KinkyDungeonRemindJailDryadDisarm
@@ -20084,7 +20085,7 @@ Nya！需要朋友帮忙吗？
 - We're in this together!
 我们在一起！
 - I think you could use some help against this adventurer~
-我想你需要一些帮助来对付这个冒险家~
+我想你需要一些帮助，好对付这个探险家~
 - Let's get them!
 让我们抓住他们！
 - Let's play cat and mouse~
@@ -20110,7 +20111,7 @@ Nya！需要朋友帮忙吗？
 # :: KinkyDungeonRemindJailPlayHelplessAthena2
 # :: KinkyDungeonRemindJailPlayHelplessAngel2
 - Gasp! An adventurer!
-喘息！一个冒险家！
+哈！一个探险家！
 - Don't let her catch you!
 别让她抓住你！
 - You'll never trap my soul!
@@ -20452,7 +20453,7 @@ SPL之力!
 - I have failed!
 我失败了！
 - Oh no, it's an adventurer!
-Oh，不，是一个冒险家！
+哦，不，是探险家！
 - They've come for me!
 他们来找我了！
 - It wasn't my fault!
@@ -20503,7 +20504,7 @@ Oh，不，是一个冒险家！
 - It's time for your training.
 是时候训练了。
 - You need to be taught some manners, maid.
-你需要被教导一些礼仪，女仆。
+得教你一些礼仪了，女仆。
 - Good girl. I'll take that to the storage room.
 乖女孩。我会把它收进储藏室的。
 - I'll be taking those.
@@ -20564,7 +20565,7 @@ PTRN 女士正在报到。
 - Moving in to assist.
 前去协助。
 - You need to be taught a lesson, adventurer.
-你需要接受教训，冒险家。
+得给你好好上一课了，探险家。
 - We have a mutual protection contract. Suffice to say, you've violated it.
 我们有相互保护合同。我只想说，你已经违反了。
 - We defend our partners, unlike some people.
@@ -20818,7 +20819,7 @@ Ack !多不雅啊!
 - Do you know who I am?
 你知道我是谁吗？
 - You need to learn some manners!
-你需要学习一些礼仪！
+你得学点礼仪了！
 - How rude!
 真是粗鲁！
 - There is a more proper way to cast spells...
@@ -20832,7 +20833,7 @@ Ack !多不雅啊!
 - A good maid pleads only to her mistress.
 一个好女仆只会向她的女主人恳求。
 - I will personally attend to your act of disgrace.
-我会亲自处理你的耻辱行为。
+我会亲自处理你的可耻行为。
 - An unruly pest.
 不守规矩的害虫。
 - Checkmate.
@@ -21172,9 +21173,9 @@ Hgh！我是个天才！
 - Don't hurt me!
 别伤害我！
 - I have classes to attend!
-我有课要上！
+我还有课要上！
 - There goes my perfect attendance record...
-这就是我完美的出勤记录...
+我的完美出勤记录要无了…
 - What's going on!?
 怎么回事！？
 - I'll save you, Mistress!
@@ -21427,7 +21428,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - Preferences 2
 偏好 2
 - Multiclass
-多类别
+多职业
 - Game-Changing
 改变游戏规则
 - Restriction
@@ -21895,7 +21896,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER doesn't seem to hear you)
 ( SPEAKER 似乎听不见你说话)
 - (The SPEAKER looks at you with a devious grin)|Oh, but it's so much fun!|You can run around bumping into things!|It's the ultimate adventure!
-( SPEAKER 狡黠地笑着看着你)|哦，但这太有趣了|你可以到处乱跑，撞到东西|这是终极冒险！
+( SPEAKER 狡黠地笑着看着你)|哦，但这太有趣了！|你可以到处乱跑，撞到东西！|这才是终极冒险！
 - (The SPEAKER chuckles)|Truth be told, I wasn't asking~|Now why don't you kneel for me...
 ( SPEAKER 轻笑)|说实话，我不是在请求~|现在你为什么不为我跪下...
 - (The SPEAKER pouts)|I thought it would be fun...
@@ -22969,7 +22970,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER shrugs)|That's okay, just thought I'd ask.
 (SPEAKER 耸了耸肩)|没关系，我只是想问问。
 - (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?
-(SPEAKER 诱惑地摩擦光滑的金属）|你确定吗？|冒险家需要照顾好自己。|你不想被快感夺走，然后被某种诅咒缠住，|没错吧？
+(SPEAKER 诱惑地摩擦光滑的金属）|你确定吗？|探险家们得保护好自己。|你可不想被快感夺走，然后被某种诅咒缠住，|没错吧？
 - (The SPEAKER gives an evil smile)|What if I wasn't asking?
 (SPEAKER 露出邪恶的微笑）|如果我不是请求呢？
 - (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
@@ -23568,11 +23569,11 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 
 
 - (The SPEAKER smiles)|I used to be an adventurer like you.|Then I joined up with the Dragonhearts!
-( SPEAKER 笑了)|我以前和你一样是个冒险家|然后我加入了龙之心！
+( SPEAKER 笑了)|我以前和你一样是个探险家。|然后我加入了龙之心！
 - (The SPEAKER clears her throat)|Well, we're actually recruiting!|You're free to join us if you agree to fight for justice!
 ( SPEAKER 清了清嗓子)|好吧，我们实际上是在招募人手|如果你同意为正义而战，你就可以自由加入我们！
 - (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
-( SPEAKER 坚定地与你握手)|欢迎加入姐妹会，冒险家！
+( SPEAKER 坚定地与你握手)|欢迎加入姐妹会，探险家！
 # :: rOfferDragonheartYes_Yes
 # :: rOfferBanditYes_Yes
 - (The SPEAKER tilts her head and shrugs)|Ah well. 
@@ -23761,7 +23762,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER folds her arms)|I don't do charity, ma'am.
 ( SPEAKER 交叉双臂 ) |我不做慈善事业，女士。
 - (The SPEAKER smirks)|Another adventurer found this lying around.|I wonder who it's for~
-( SPEAKER 傻笑 ) |另一位冒险家发现了这个。|我想知道它是给谁的~
+( SPEAKER 傻笑 ) |另一位探险家发现了这个。|我想知道它是给谁的~
 - (The SPEAKER smiles)|Now don't be up to no good~|Or else I'll have to put you in cuffs...
 ( SPEAKER 微笑 )|现在别做坏事~|不然我就得给你戴上手铐了……
 - (The SPEAKER nods)|A versatile weapon. One of my favorites.
@@ -23798,7 +23799,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER nods)|You can never be too careful.
 ( SPEAKER 点头 ) |小心无大错。
 - (The SPEAKER chuckles)|I hear female adventurers like to wear these for protection.|Or something like that.
-( SPEAKER 轻笑 ) |我听说女性冒险家喜欢穿这个来保护自己。|或者类似的东西。
+( SPEAKER 轻笑 ) |我听说女性探险家们喜欢穿这个来保护自己。|或者类似的东西。
 # :: rArmorerShopTrapBelt
 # :: rArmorerShopTrapBra
 
@@ -23865,7 +23866,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER nods)|My great grandmother used to wear these.
 (SPEAKER 点点头)|我的曾祖母曾经戴过这个。
 - (The SPEAKER nods)|Adventurers used to love a good burlap sack.|Nowadays they've got that newfangled magic instead...
-(SPEAKER 点点头)|冒险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
+(SPEAKER 点点头)|探险家们过去喜欢麻布袋，|如今他们用新式魔术袋代替了麻布袋...
 - (The SPEAKER nods)|Back in my day, they used candles for light!|These let you put them out to save wax.
 (SPEAKER 点点头)|在我那个年代，人们用蜡烛来照明！|这些可以让你把它们熄灭，以节省蜡。
 - (The SPEAKER giggles)|I had all sorts of use for this back on the farm.
@@ -24633,7 +24634,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - Why not just call yourself Windsong?
 为什么不直接称自己为风之歌？
 - I am an adventurer.
-我是冒险家。
+我是一位探险家。
 # :: dFuukaAggressive_Proceed
 # :: dFuukaDefensive_Proceed
 - (SPEAKER blushes)|Ah, right then...
@@ -24645,7 +24646,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - Neither do I.
 我也不。
 - I'm an adventurer. And who are you?
-我是冒险家。你是谁？
+我是一位探险家。你是谁？
 - Mmmmm... (Blush)
 嗯嗯…… ( 脸红 )
 # :: dFuuka_DefensiveGag
@@ -24697,7 +24698,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - I've seen a few robots running around!
 我看到有几个机器人在跑来跑去！
 - (SPEAKER looks nervous)|Oh yeah? Where'd you hear that?|The 'adventurer's guild,' huh?|Why don't you just leave the dead to rest~
-( SPEAKER 看起来很紧张 )|哦，是吗？ 你从哪里听来的？|‘冒险家公会’吧？|你为什么不肯让死人安息呢~
+( SPEAKER 看起来很紧张 )|哦，是吗？ 你从哪里听来的？|‘探险家公会’吧？|你为什么不肯让死人安息呢~
 - I heard there was an ancient facility on this island.
 听说这个岛上有一个古老的设施。
 - (SPEAKER sighs)|Look, the Goddess doesn't tell me everything.|Now then, I have a job to do and some pets to manage.|Please stop asking questions!
@@ -24780,7 +24781,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: dFuukaDom_Question_Question_Proceed
 # :: dFuukaDom_Question_Proceed
 - Fair enough. I am an adventurer.
-很公平。我是冒险家。
+很公平。我是一位探险家。
 - (SPEAKER giggles)|Is that a challenge?
 ( SPEAKER咯咯笑 )|这是一个挑战吗？
 - (Nod calmly)
@@ -24798,7 +24799,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - It is indeed!
 确实！
 - I'm an adventurer, miss.
-我是冒险家，小姐。
+我是一位探险家，小姐。
 - Mmmpphh~ (Moan and wiggle seductively)
 Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dFuuka_SubGag
@@ -25027,7 +25028,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 - (Look around for items to buy)
 ( 四处寻找可以购买的物品 )
 - I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you.
-亲爱的，很抱歉，我这里不卖商品。|谁会在地牢里开设商店呢？那太疯狂了！|不过，你们冒险者们总是带来稳定的战利品，|所以如果你有什么东西要卖，我可以帮你处理掉~|你也可以和我的客人交谈，也许他们有你需要的东西。
+亲爱的，很抱歉，我这里不卖商品。|谁会在地牢里开设商店呢？那太疯狂了！|不过，你们探险家们总是带来稳定的战利品，|所以如果你有什么东西要卖，我可以帮你处理掉~|你也可以和我的客人们交谈，也许他们有你需要的东西。
 
 - (Return)
 ( 返回 )
@@ -25080,7 +25081,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( SPEAKER 叹了口气 ) |好吧，我相信你。|不过你最好相信我不会忘记！
 
 - (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
-( SPEAKER 抱起双臂 ) |你的冒险让我损失了一大笔钱。|如果我的客户不付钱就逃跑，我就无法继续做生意。|听着，我会和你做一笔交易，你 帮我，我 帮你。公平吧？
+( SPEAKER 抱起双臂 ) |你的探险让我损失了一大笔钱。|如果我的客户不付钱就逃跑，我就没法继续做生意了。|听着，我会和你做一笔交易，你帮我，我帮你。公平吧？
 
 - (Help her test cursed armors)
 ( 帮助她测试被诅咒的盔甲 )
@@ -25104,7 +25105,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dShopkeeperOfferHelpDebt_Pay
 
 - (The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time.
-( SPEAKER 举起一件 RESTRAINTNAME ) |我最近从冒险家那里买了一些盔甲，|但我不知道它们是否可以安全穿着。|你为什么不帮我试穿一下呢？|我想我会推迟你的债务。
+( SPEAKER 举起一件 RESTRAINTNAME ) |我最近从一个探险家那买了一些盔甲，|但我不知道它们是否可以安全穿着。|你为什么不帮我试穿一下呢？|我想我会推迟你的债务。
 # :: rShopkeeperTeleportDebt_Armor
 # :: rShopkeeperOfferHelpDebt_Armor
 - (The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first.
@@ -25178,7 +25179,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 
 
 - (The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
-( SPEAKER 拍拍你并确保你没事 ) |我绝对可以帮助你！|但如你所知，我帮助了很多像你一样的冒险家。|你知道吗，我会给你折扣！|这将是 RESCUECOST 金币！
+( SPEAKER 拍了拍你并确保你没事 ) |我绝对能帮忙处理！|但如你所知，我帮助了很多像你一样的探险家们。|你猜怎么着，我会给你打个折！|只要 RESCUECOST 金币！
 
 
 - (The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
@@ -25322,7 +25323,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 呜呜呜呜！ ( 挣扎 )
 
 - (A SPEAKER clutching her books approaches you)|Miss adventurer!|I happen to need a magic scroll of any kind.|It's for my studies.
-( SPEAKER 抓着她的书走近你 ) |冒险家小姐|我碰巧需要任何一种魔法卷轴|这是为了我的学习。
+( SPEAKER 抓着她的书走近你 ) |探险家小姐！|我碰巧需要一个魔法卷轴，任何一种都行。|我的研究需要它。
 - (The SPEAKER smiles)|Yes, thank you so much!|It's been so difficult to get them lately.|The magic library is closed off these days,|and there are mean people trying to get the scrolls back...
 ( SPEAKER 微笑 )|是的，非常感谢！|最近很难搞到它们。|魔法图书馆这两天也关着，|还有一些卑鄙的家伙试图拿回卷轴...
 - (The SPEAKER is happy)|Thank you so much!
@@ -25341,7 +25342,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 给她一张贞洁卷轴
 
 - (A SPEAKER looks distraught)|Well met, adventurer!|We have a problem...
-( SPEAKER 看起来心烦意乱 ) |很好，冒险家|我们有个问题...
+( SPEAKER 看起来心烦意乱 ) |很好，探险家！|我们有个问题...
 - (The SPEAKER folds her arms)|A rebel has been causing us problems lately...|If you run into her, give her all you got!|She needs to be brought to justice.
 ( SPEAKER 交叉双臂 ) |最近一个叛军给我们带来了麻烦…|如果你碰到她，尽你所能！|她需要被绳之以法。
 
@@ -25409,7 +25410,7 @@ Mmmph? (行为混乱)
 设施已成废墟！这毫无意义！
 
 - (A SPEAKER crosses her arms)|Who you lookin' at?|Oh, it's an adventurer.|Say, you wouldn't be interested|in working with us, would ya?
-( SPEAKER 交叉双臂 ) |你在看什|哦，是个冒险家|喂，你不会感兴趣的|和我们一起工作，好吗？
+( SPEAKER 交叉双臂 ) |你在看什么？|哦，是个探险家。|喂，你不会是想和我们一起工作吧，想吗？
 - (The SPEAKER smiles)|That's more like it.|Here's the scoop: One of ours was captured on the next floor.|We need you to go get her out.
 ( SPEAKER 微笑 )|更像是这样|独家报道 : ‎我们其中一人在下一层被抓获|我们需要你去把她救出来。
 
@@ -25862,7 +25863,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - You must be the Dollmaker.
 你一定是玩偶师。
 - (The woman chuckles)|Correct.|And you must be the adventurer causing the recent troubles.
-( 女子轻笑 ) |没错。|而你一定就是最近经常惹出麻烦的冒险者。
+( 女子轻笑 ) |没错。|那么你一定就是最近经常惹出麻烦的那个探险家。
 - I'm famous!
 我很出名！
 - Indeed. And I'm here to bring you down.
@@ -26559,16 +26560,18 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - PlateArmor
 板甲
 - ChainShirt
-锁链衫
+链甲衫
 - ShirtChest
 衬衫胸部
 :: l_ChainShirt_ShirtChest
 上衣胸部
 :: l_ChainArmor_ShirtChest
 上衣胸部
-# :: m_ChainShirt_l_ShirtChest
+:: m_ChainShirt_l_ShirtChest
+链甲衫胸部
 # :: m_ChainArmor_l_ShirtChest
-# :: m_ChainShirt_l_ShirtChest
+:: m_ChainShirt_l_ShirtChest
+链甲衫胸部
 # :: m_ChainArmor_l_ShirtChest
 # :: m_ChainBikini_l_ShirtChest
 # :: m_SailorTop_l_ShirtChest
@@ -26580,7 +26583,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 上衣胸部
 :: m_Yukata_l_ShirtChest
 上衣胸部
-# :: m_ChainShirtRestraint_l_ShirtChest
+:: m_ChainShirtRestraint_l_ShirtChest
+链甲衫胸部
 # :: m_ChainBikiniRestraint_l_ShirtChest
 - Shirt
 衬衫
@@ -26588,9 +26592,11 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 上衣
 :: l_ChainArmor_Shirt
 上衣
-# :: m_ChainShirt_l_Shirt
+:: m_ChainShirt_l_Shirt
+链甲衫
 # :: m_ChainArmor_l_Shirt
-# :: m_ChainShirt_l_Shirt
+:: m_ChainShirt_l_Shirt
+链甲衫
 # :: m_ChainArmor_l_Shirt
 # :: m_SailorTop_l_Shirt
 # :: m_SailorShirt_l_Shirt
@@ -26601,7 +26607,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 上衣腰部
 :: m_Yukata_l_Shirt
 上衣腰部
-# :: m_ChainShirtRestraint_l_Shirt
+:: m_ChainShirtRestraint_l_Shirt
+链甲衫
 # :: m_UniformShirt_Sleeveless_l_Shirt
 # :: m_UniformShirt_l_Shirt
 # :: m_MilitaryUniform_l_Shirt
@@ -34725,7 +34732,8 @@ Aura刘海(右后)
 # :: m_TransparentCatsuitLowerLeotard_l_TorsoLowerLeotard
 - TransparentCatsuitLowerLeotard
 透明胶衣高腰三角裤
-# - ChainBikini
+- ChainBikini
+链甲比基尼
 # - ChainSkirt2
 - SkirtBeltDeco
 裙腰带装饰
@@ -43784,7 +43792,7 @@ Oblivion, 秘密的守护者
 - (It's the return portal)
 ( 这是用于返回的传送门 )
 - (You step through the portal and return to your adventure)
-( 你穿过传送门并返回你的冒险 )
+( 你穿过传送门，继续你的探险 )
 
 - Select a restraint to remove the curse from
 选择要解除诅咒的束缚
@@ -44600,7 +44608,7 @@ NPC 没有足够的钱了！
 - But in the end, Sariel's experiments left her weakened and unable to save herself from death.|Without a leader, the Old Civilization collapsed into tyranny as warlords enslaved thousands.|Refugees fled across the sea in search of a new life, and in time the old empire was forgotten.
 但最终，萨里尔 ( Sariel ) 的实验让她变得虚弱无力，无法将自己从死亡中拯救出来。|失去领袖的统治，旧日文明陷入暴乱，军阀奴役了数千人。|难民们漂洋过海寻找新生活，且随着时间的推移，旧帝国被遗忘了。
 - Hundreds of years later, a group of adventurers found a lost island full of ancient technology.|Countless visitors now flock to the ruins in search of wealth and wisdom...|...Unaware of the devious secrets sealed within long ago.
-数百年后，一群冒险家发现了一座充满古老科技的失落岛屿。|现在，无数外来者涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
+数百年后，一群探险家们发现了一座充满古老科技的失落岛屿。|现在，无数外来者涌入废墟寻找财富和智慧...|...却对很久以前被封印在里面的狡猾秘密一无所知。
 
 - An item has increased your spell damage!
 一件物品增加了你的法术伤害！
@@ -44811,9 +44819,9 @@ RestraintName 失效了！
 你现在不能接受此任务。
 
 - Removes your devotion from this goddess.
-不再对这位女神奉献自己。
+不再忠诚于这位女神。
 - You are not devoted to this goddess.
-你并不忠诚于这位女神。
+你并未忠诚于这位女神。
 - Guarantees a quest from this goddess on every floor.
 保证每层都有这位女神的任务。
 - You are already a devotee of this goddess.
@@ -44829,9 +44837,9 @@ RestraintName 失效了！
 - Accept the Goddess' quest.
 接受女神的任务。
 - Drink the mana in the shrine. Can be done once.
-喝神泉里的法力。可以喝一次。
+喝取神泉中的法力。只能喝一次。
 - Bottle the mana in the shrine for later. Can be done once.
-将法力装在神泉中以供稍后使用。可以做一次。
+将神泉中的法力装入瓶内以供稍后使用。只能装一次。
 
 - Cancel Quest
 取消任务
@@ -46192,7 +46200,8 @@ ENMY 高潮了，收到了 AMNT 伤害！
 收藏
 # :: KinkyDungeonKeyCollection
 # :: KinkyDungeonCollection
-# - Progress
+- Progress
+进度
 
 - Storage
 存储
@@ -46210,12 +46219,14 @@ ENMY 高潮了，收到了 AMNT 伤害！
 性格
 - Switch
 转变
-# :: KDPersonality
-# :: KDPlayerTitle_Switch
+:: KDPersonality
+攻受兼具
+:: KDPlayerTitle_Switch
+攻受兼具
 - Bratty
 不顺从
 - Corrupted
-已损坏
+堕落
 - Feral
 野性
 
@@ -46478,7 +46489,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Sharpshooter
 神射手
 - You teach the warden's servant a lesson.
-你给监狱长的仆人好好上了一课。
+你把典狱长的仆人教训了一顿。
 # :: KillWardenArcher
 # :: KillWardenFighter
 # :: KillWardenMage
@@ -46534,7 +46545,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 
 
 - (The Warden glances at you)|Oh? What do we have here?|An adventurer?|You're not in my records...
-( 典狱长看了你一眼 ) |哦？是谁来了？|一名冒险家？|我的记录里没有你啊……
+( 典狱长看了你一眼 ) |哦？是谁来了？|一个探险家？|我的记录里没有你啊…
 - Cut to the chase. Do I have to fight you or not?
 直入主题。我到底要不要跟你打架？
 - (She chuckles)|Oh my~|I hope your skills are on the same level as your attitude.|I don't have time for mere troublemakers~
@@ -46598,7 +46609,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Can I talk to the former prisoners?
 我可以和前囚犯谈谈吗？
 - (SPEAKER grins)|Very funny.|I heard rumors of an up-and-coming adventurer stirring up trouble.|It seems my intuitions were correct.
-( SPEAKER 笑了 ) |非常有趣。|我听到有传言说，一位崭露头角的冒险家正在制造麻烦。|看来我的直觉是正确的。
+( SPEAKER 笑了 ) |非常有趣。|我听传言说，一位崭露头角的探险家正在制造麻烦。|看来我的直觉是正确的。
 - I hope you don't mind me looting the lower levels~
 希望大家不要介意我掠夺较低等级的物品~
 - (SPEAKER grins)|Oh please.|Only this era's finest warriors can be part of my collection~|My subordinates take care of the rest.
@@ -46610,7 +46621,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Must be comfy living up here then
 那么住在这里一定很舒服
 - (SPEAKER scoffs at you)|Adventurers are always like this.|Ever since your kind started prying,|I've had no choice but to enact my own kind of discipline~
-( SPEAKER 嘲笑你 ) |冒险者总是这样。|自从你们开始窥探以来，|我别无选择，只能实施我自己的纪律~
+( SPEAKER 嘲笑你 ) |探险家们总是这样。|自从你们开始窥探以来，|我别无选择，只能实施我自己的纪律~
 - What makes you any better than the old rulers?
 你们比过去的统治者好在哪里？
 - (SPEAKER smirks at you)|If that were so, then perhaps it would be best not to pry...|Forbidden knowledge has its price, after all.
@@ -46638,7 +46649,7 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 - Says an old woman under the mountain...
 山下一位老妇人说道……
 - I am indeed an adventurer.
-我确实是一个冒险家。
+我确实是个探险家。
 - (SPEAKER smiles)|Fascinating. Do keep explaining.
 ( SPEAKER 微笑 )|真有趣。请继续解释。
 - (SPEAKER frowns)|That is not the attitude I appreciate from my guests.
@@ -46678,7 +46689,7 @@ Hmmph. ( 嘲笑她 )
 - (Admire the locale)
 ( 欣赏现场风光 )
 - (SPEAKER smiles and nods)|It has existed for a thousand years,|and it shall exist for another thousand.|No thanks, of course, to the adventurers who storm through here,|breaking the orbs as if it all belongs to them...
-( SPEAKER 微笑着点头 ) |它已经存在了一千年，|它还将再存在一千年。|当然，对于那些冲过这里的冒险者来说，|他们不会心存感激，|他们打破了这些球体，好像它们都是属于他们的一样……
+( SPEAKER 微笑着点头 ) |它已经存在了一千年，|它还将再存在一千年。|当然，对于那些冲过这里的探险家们来说，|他们不会心存感激，|他们打破了这些球体，好像它们都是属于他们的一样……
 - What are these orbs for anyway?
 这些球体到底有什么用处？
 - (SPEAKER looks puzzled)|You don't know? Surely you must be joking?
@@ -46706,7 +46717,7 @@ Mmmph! ( 热切地点头 )
 - There must be a mistake. Sign me up!
 肯定是搞错了。帮我报名吧！
 - (She smiles)|Eager are we?|I don't just record anyone though.|I only care about the strongest adventurers~
-( 她笑了 ) |我们很热切吗？|但我不会随便记录任何人。|我只关心最强大的​​冒险者~
+( 她笑了 ) |我们很热切吗？|但我不会随便记录任何人。|我只关心那些最强的探险家~
 - I am the strongest.
 我是最强的。
 - (SPEAKER chuckles)|Then why don't I test your skills?
@@ -46783,7 +46794,7 @@ Mmmph! ( 热切地点头 )
 ( SPEAKER 用金属栅栏网挡住你 ) |非常令人印象深刻！|但你真的认为会那么容易吗？
 
 - (SPEAKER crouches down)|Most impressive...|It is not often I lose to an adventurer...|I'd love to get my hands on you eventually~
-( SPEAKER 蹲下 ) |最令人印象深刻...|我很少输给冒险者...|我很想最终得到你~
+( SPEAKER 蹲下 ) |最令人印象深刻...|我很少输给探险家...|我很想最终得到你~
 - (SPEAKER looks surprised)|I did not expect you to be so... compliant.|(She snaps your fingers and tosses you a glowing belt)|This is a special one, reserved for those with divine privilege.|You've earned it.
 ( SPEAKER 看起来很惊讶 ) |我没想到你会如此……顺从。| ( 她打了个响指，扔给你一条发光的腰带带 ) |这是一条特殊的腰带带，专为那些拥有神圣特权的人保留。|你赢得了它。
 - (Wear her waist belt anyway)
@@ -46926,7 +46937,7 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 - Each item has a 25% chance of appearing in the chest between floors.
 每件物品都有 25% 的概率出现在楼层间的箱子里。
 - You find a familiar adventuring outfit!
-你找到了一套熟悉的冒险服装！
+你找到了一套熟悉的探险服装！
 
 
 - You feel energy flow out of you, activating the floor below!
@@ -47657,7 +47668,7 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 （检查自动存储系统）
 
 - (The viewscreen depicts a face)|Why hello there adventurer! What brings you?
-( 屏幕上描绘了一张脸 ) |你好，冒险家！什么风把你吹过来啦？
+( 屏幕上描绘了一张脸 ) |你好，探险家！什么风把你吹过来啦？
 
 
 # - Mmm mmm?
@@ -47690,12 +47701,12 @@ EnemyName 深呼吸，让你周围的空气变得寒冷...
 - Can you control the facility?
 你能控制设施吗？
 - (Oriel frowns)|Adventurers seem to keep asking me that.|In my current state I don't have control over much at all.|But I'm always here to talk!
-( 奥丽尔(Oriel)皱眉 ) |冒险家们似乎一直在问我这个问题。|在我目前的状态下，我根本无法控制太多。|但我总是在这里说话！
+( 奥丽尔(Oriel)皱眉 ) |探险家们似乎一直在问我这个问题。|在我目前的状态下，我根本无法控制太多。|但我总是在这里说话！
 
 - Can you turn on the elevator?
 你能打开电梯吗？
 - I'm sorry, adventurer. I can't do that.|But maybe if you can get rid of all the nearby threats...|They've been under lockdown for a long time.|Just push the button again if it hasn't updated yet.
-对不起，冒险家。我做不到。|但也许如果你能摆脱所有附近的威胁...|它们已经被锁定很长时间了。|如果尚未更新，请再次按下按钮。
+对不起，探险家。我做不到。|但也许如果你能处理这附近所有的威胁...|它们已经被隔离在这里很长时间了。|如果尚未更新，请再次按下按钮。
 
 - Mmmph mmm! (Help me!)
 Mmmph mmm! (帮帮我！)
@@ -48266,7 +48277,7 @@ AMNT/MAXX 仆从分配
 - Alchemy Lab
 炼金实验室
 - Assign servants to produce potions from base ingredients you acquire in your adventures.
-指派仆人使用你在冒险中获得的基本材料制作药水。
+指派仆人使用你在探险中获得的基本材料制作药水。
 - Recycler
 回收者
 - Convert low tier restraints into raw materials and output higher quality restraints.|Adding more servants increase the conversion speed.
@@ -49313,7 +49324,7 @@ ENMY 解开了 ITMN 的锁!
 - Lore
 故事
 - Here you will find various scraps of documents and lore you've recovered throughout your adventures.
-在这里可以翻阅你在冒险过程中找到的各种碎片化文档和传说。
+在这里，你可以翻阅你在探险时找到的各种碎片化文档和传说。
 - Your Journal
 你的日志
 - Cover
@@ -49331,13 +49342,13 @@ ENMY 解开了 ITMN 的锁!
 - Willows 7
 条 7
 - It's hard to imagine I'm in a cave. Everything is so decorated and well-preserved, it's almost as if decades of adventurers never found their way to this island. In the distant future when every last piece of treasure has been hauled out of here, I imagine they'll set this place up as a tourist attraction.
-很难想象我只是在一个山洞里。这里的一切都装饰得如此精美，保存得如此完好，就像数十年来所有的冒险家从未曾找到这座小岛一样。在遥远的将来，当所有的宝藏都被运走后，我想他们会把这里建成一个旅游景点。
+很难想象我只是在一个山洞里。这里的一切都装饰得如此精美，保存得如此完好，就像数十年来所有的探险家们从未曾找到这座小岛一样。在遥远的将来，当所有的宝藏都被运走后，我想他们会把这里建成一个旅游景点。
 - Catherine Willows' Journal (pg. 8)
 凯瑟琳·韦罗斯的日记（第 8 页）
 - Willows 8
 条 8
 - I spoke with a few locals while resupplying at the port. Apparently the village up here is far older than the twenty-some years the Adventurer's Guild has been on the island. The locals call the mountain 'Ejahl,' but the consensus is that this is the site of the legendary city Agartha where the Archmagus herself made her discovery.|(The page is dated about fifty years ago)
-在港口补给的时候，我和几个当地人聊了聊。显然，这里的村庄比岛上二十多年历史的冒险者公会要悠久得多。当地人称这座山为'埃亚尔(Ejahl)'，但大家一致认为这里就是传说中的阿加莎城所在地，大魔导师就是在这里完成了她的发现。|(本页落款日期约为五十年前）
+在港口补给的时候，我和几个当地人聊了聊。显然，这里的村庄比岛上二十多年历史的探险家公会要悠久得多。当地人称这座山为'埃亚尔 (Ejahl)'，但大家一致认为这里就是传说中的阿加莎城所在地，大魔导师就是在这里完成了她的发现。|(本页落款日期约为五十年前）
 - Catherine Willows' Journal (pg. 14)
 凯瑟琳·韦罗斯的日记（第 14 页）
 - Willows 14
@@ -49367,7 +49378,7 @@ ENMY 解开了 ITMN 的锁!
 - Willows 24
 条 24
 - This 'blessing' of theirs appears to be an old ritual for immortality. I believe these peoples are older than the Great Work, based on the ancient dialect they speak and the outdated script they use.|Whatever the case may be, their method seems inexact and prone to failure, as demonstrated by their near maniacal devotion to 'bless' every adventurer they come across.
-他们的这种 “祝福 ”似乎是一种古老的长生不老仪式。根据他们说的古老方言和使用的过时文字，我相信这些人的历史比伟大成就还要悠久。|无论如何，他们的方法似乎并不精确，而且很容易失败，这一点从他们近乎疯狂地 “祝福 ”他们遇到的每一个冒险者就可见一斑。
+他们的这种“祝福”似乎是一种古老的长生不老仪式。根据他们说的古老方言和使用的过时文字，我相信这些人的历史比伟大成就还要悠久。|无论如何，他们的方法似乎并不精确，而且很容易失败，这一点从他们近乎疯狂地“祝福”他们遇到的每一个探险家就可见一斑。
 - Catherine Willows' Journal (pg. 25)
 凯瑟琳·韦罗斯的日记（第 25 页）
 - Willows 25
@@ -49427,7 +49438,7 @@ ENMY 解开了 ITMN 的锁!
 - Silver 10
 银 10
 - I met an adventurer who managed to erase weeks of golem research in the blink of an eye. This is why we Summoners have to scatter our works far and wide... if only they knew what we are working towards.
-我遇到过一个冒险者，他在眨眼间就抹去了数周的傀儡研究成果。这就是为什么我们召唤师要把我们的作品散播的越远越好......如果他们知道我们为什么这么努力就好了。
+我遇到过一个探险家，他在眨眼间就抹去了数周的傀儡研究成果。这就是为什么我们召唤师要把我们的作品散播的越远越好… 如果他们知道我们为什么这么努力就好了。
 - Silver Witch's Notes #2
 银发魔女的笔记 #2
 - Silver 2
@@ -49451,19 +49462,19 @@ ENMY 解开了 ITMN 的锁!
 - Silver 15
 银 15
 - Throughout my studies I have chased after the existence of a being I call 'the Primordial One.' My theories stem from the following observations:|1)Slimes were not present in ancient history, and appeared during my lifetime as a force of nature.|2)Slime can be transmuted into almost any known material, like a Prima Materia of sorts.|3) A fragment of Sariel's notes, one of my most guarded possessions, discusses the existence of slimes long before they were first observed in the world.|Based on this, I believe the world must have been created through the influence of some primordial being who then left, but must be returning somehow.|I'm sure this being holds the key to repairing our bodies.
-在我的研究过程中，我一直在追寻一种我称之为'原初之神'的存在。我的理论源于以下观察 : |1）粘液在古代历史中并不存在，在我有生之年作为一种自然力量出现了。|2）粘液几乎可以转化成任何已知的材料，就像一种原始材料。|3）萨瑞尔笔记的一个片段是我最珍视的财产之一，其中讨论了史莱姆的存在，这比人们第一次在世界上观察到史莱姆要早得多。| |基于这一点，我相信这个世界一定是在某个原始生命的影响下被创造出来的。|我相信这个生物掌握着修复我们身体的关键。
+在我的研究过程中，我一直在追寻一种我称之为“原初之神”的存在。我的理论源于以下观察 : |1）粘液在古代历史中并不存在，在我有生之年却作为一种自然力量出现了。|2）粘液几乎可以转化成任何已知的材料，就像一种原始材料一样。|3）萨瑞尔笔记的一个片段是我最珍视的财产之一，其中讨论了史莱姆的存在，这比人们第一次在世界上观察到史莱姆要早得多。| |基于这一点，我相信这个世界一定是在某个原始生命的影响下被创造出来的。|我相信这个生物掌握着修复我们身体的关键。
 - Silver Witch's Notes on the Primordial One
-银发魔女的原始者笔记
+银发魔女关于原初之神的笔记
 - Silver 4
 银 4
 - Blast. An adventurer stole one of my notebooks, and now I'm encountering various cultists and weirdos trying to summon the Primordial One themselves. This is why I never bother to publish my works...
-哈。一个冒险家偷了我的一本笔记 所以现在我遇到的各种邪教徒和怪人，他们都想自己召唤出原始之神。这就是为什么我从不费心出版我的作品...
+哈。之前有个探险家偷了我的一本笔记，结果现在，我遇到的各种邪教徒和怪人们，一个个都敢尝试自己召唤出原初之神了。这就是为什么我从不费心出版我的作品…
 - Silver Witch's Notes #7
 银发魔女的笔记 #7
 - Silver 7
 银 7
 - I haven't heard of that adventurer in decades. Perhaps her nosiness finally caught up to her?
-我已经几十年没听说过那个冒险家了。也许她因为她的爱管闲事得到报应了？
+我已经几十年没听说过那个探险家了。也许她因为她的爱管闲事得到报应了？
 - Silver Witch's Notes #106
 银发魔女的笔记 #106
 - Silver 106
@@ -49505,7 +49516,7 @@ ENMY 解开了 ITMN 的锁!
 - Talisman Z.
 护符僵尸
 - Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows
-危险等级 :  令人讨厌|居住在地牢中的嬉戏精灵，会利用遇到的冒险者。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  令人讨厌|居住在地牢中的嬉戏精灵，会利用遇到的探险家。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||——《地牢中的居民》凯瑟琳·威洛斯 著
 - Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows
 危险等级 :  非常令人讨厌|据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯
 - Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
@@ -49539,7 +49550,7 @@ ENMY 解开了 ITMN 的锁!
 # :: RestraintBreastplateDesc2
 # :: RestraintBreastplateCommonDesc2
 - Adventuring Corset
-冒险束腰
+探险束腰
 # :: RestraintBustier
 # :: RestraintBustierCommon
 - Protects your organs and your sense of style.
@@ -49663,7 +49674,7 @@ ENMY 解开了 ITMN 的锁!
 # :: RestraintBracers
 # :: RestraintBracersCommon
 - Dependable protection for the average adventurer.
-为普通冒险者提供可靠的保护。
+为普通探险家提供可靠的保护。
 # :: RestraintBracersDesc
 # :: RestraintBracersCommonDesc
 - Ranger's Cape
@@ -50536,24 +50547,35 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Your masterwork collar reinforces other masterwork items...
 # - Your masterwork collar keeps everything firmly in place!
 
-# - Unlocked Player Title: 
+- Unlocked Player Title: 
+已解锁玩家称号：
 
-# - Titles
+- Titles
+称号
 
 # - Classes
-# - Factions
+- Factions
+阵营
 # - Stats
-# - Bosses
+- Bosses
+Boss
 # - Mastery
 
-# - Auto
+- Auto
+自动
 
-# - Unlocked by playing as the Wizard class.
-# - Unlocked by playing as the Fighter class.
-# - Unlocked by playing as the Rogue class.
-# - Unlocked by playing as the Trainee class.
-# - Unlocked by playing as the Peasant class.
-# - Unlocked by getting recruited by the Alchemists.
+- Unlocked by playing as the Wizard class.
+解锁方式：使用法师职业。
+- Unlocked by playing as the Fighter class.
+解锁方式：使用战士职业。
+- Unlocked by playing as the Rogue class.
+解锁方式：使用盗贼职业。
+- Unlocked by playing as the Trainee class.
+解锁方式：使用练习生职业。
+- Unlocked by playing as the Peasant class.
+解锁方式：使用平民职业。
+- Unlocked by getting recruited by the Alchemists.
+解锁方式：被炼金术士招募。
 # - Analog Interface
 # - Unlocked by getting recruited by the Old Guardians.
 # - Saved by an Angel
@@ -50674,7 +50696,8 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Unlocked by learning every spell under Arcane Knowledge.
 # - Mistress of Summoning
 # - Unlocked by learning every spell under Summoning 101.
-# - Unlocked by learning every spell at the same time.
+- Unlocked by learning every spell at the same time.
+解锁方式：学会所有法术。
 # - ewhac
 # - Unlocked by reaching NG+25.
 # - Moss Boss
@@ -50687,16 +50710,39 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 # - Unlocked by reaching 400 max willpower.
 # - Unwavering
 # - Unlocked by reaching 400 max desire.
-# - Unlocked by accepting a bondage offer. 
-# - Unlocked by convincing an NPC to wear their own bondage offer.
-# - Unlocked by accepting a bondage offer and by convincing another NPC to wear their own bondage offer. 
-# - Moth
-# - Unlocked by taking an illuminated crystal off of it's charger. Lämp.
+- Unlocked by accepting a bondage offer. 
+解锁方式：接受束缚提议。
+- Unlocked by convincing an NPC to wear their own bondage offer.
+解锁方式：说服 NPC 穿上他们自己的束缚提议。
+- Unlocked by accepting a bondage offer and by convincing another NPC to wear their own bondage offer. 
+解锁方式：接受束缚提议，并说服另一个 NPC 穿上他们自己的束缚提议。
+- Moth
+飞蛾
+- Unlocked by taking an illuminated crystal off of it's charger. Lämp.
+解锁方式：灭灯——将发光的水晶从它的充能底座上拿下来。
 - Unlocked by becoming fully encased by slime and then it fully hardening.
-在被粘液完全包裹并硬化后，能够解锁。
-# - No Locks?
-# - Unlocked by wearing any Ancient restraint.
-# - Ancient Adventurer
-# - Unlocked by wearing every Ancient restraint at the same time.
-# - Unlocked by wearing any cursed restraint or armor.
+解锁方式：被粘液完全包裹并硬化。
+- No Locks?
+怎么没有锁？
+- Unlocked by wearing any Ancient restraint.
+解锁方式：穿上任何远古拘束具。
+- Ancient Adventurer
+远古探险家
+- Unlocked by wearing every Ancient restraint at the same time.
+解锁方式：穿上全套远古拘束具。
+- Unlocked by wearing any cursed restraint or armor.
+解锁方式：穿上任何被诅咒的拘束具或装备。
 
+
+# - Select a progress item to show details
+
+# - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
+# - Current Progress: 
+# - Milestones:
+# - Bonus Progress (gained next Floor):
+# - Recent Modifiers:
+
+# - Any Level
+
+# - Went on a leash walk:
+# - Training Level ${Level}
