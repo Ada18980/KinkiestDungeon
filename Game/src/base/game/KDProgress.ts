@@ -283,17 +283,17 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
                 DrawTextFitKD(drawData.progressString, 
                         x + width/2 + 40, yy, 300, item.color, 
                         KDTextGray0, 24, "left");
-                yy += 40;
+                yy += 30;
             }
 
             if (drawData.bonusprogress) {
                 DrawTextFitKD(TextGet("KDProgressBonusProgress"), 
-                        x + width/2 + 85, yy, 280, KDTextWhite, 
+                        x + width/2 + 110, yy, 320, KDTextWhite, 
                         KDTextGray0, 24, "right");
                 DrawTextFitKD(drawData.bonusprogress, 
-                        x + width/2 + 105, yy, 300, item.color, 
+                        x + width/2 + 130, yy, 300, item.color, 
                         KDTextGray0, 24, "left");
-                yy += 40;
+                yy += 30;
             }
             
             // always till the end

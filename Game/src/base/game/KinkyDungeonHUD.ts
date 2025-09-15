@@ -2659,7 +2659,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		for (let training of KDTrainingTypes) {
 			if (KDTrainingTypeProperties[training] &&
 				(!KDTrainingTypeProperties[training].showBuff)
-					|| !KDTrainingTypeProperties[training].prereq(KDPlayer())) continue;
+					|| !(KDTrainingTypeProperties[training] && KDTrainingTypeProperties[training].prereq(KDPlayer()))) continue;
 			let XPNext = KDGetTrainingXPNext(training, KDPlayer());
 
 			statsDraw["training" + training] = {text: TextGet("KDTrainingLevel" + training)
@@ -3662,7 +3662,7 @@ function KDTrySetFocusControl(control: string) {
 function KDGetTrainingXPNext(training: string, player: entity) {
 	let XPNext = 0;
 	if (KDTrainingTypeProperties[training]?.calc_xpnext) {
-		return KDTrainingTypeProperties[training]?.calc_xpnext(player);
+		return KDTrainingTypeProperties[training].calc_xpnext(player);
 	}
 	if (KDGameData.Training) {
 		if (KDGameData.Training[training]?.turns_total == 0) {
@@ -3679,7 +3679,7 @@ function KDGetTrainingXPNext(training: string, player: entity) {
 
 function KDGetTrainingXPMax(training: string, player: entity) {
 	if (KDTrainingTypeProperties[training]?.calc_xpmax) {
-		return KDTrainingTypeProperties[training]?.calc_xpmax(player);
+		return KDTrainingTypeProperties[training].calc_xpmax(player);
 	}
 	
 
