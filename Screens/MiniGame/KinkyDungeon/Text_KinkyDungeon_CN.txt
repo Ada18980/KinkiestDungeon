@@ -23,7 +23,8 @@
 # :: m_Cape_l_Back
 # :: m_CapeRestraint_l_Back
 # :: m_SlayerCape_l_Back
-# :: m_LightMaidKnight_Apron_l_Back
+:: m_LightMaidKnight_Apron_l_Back
+背部
 # :: m_LightMaidKnight_l_Back
 # :: KDBack
 - Next
@@ -448,9 +449,9 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Show Nipple Toys Over Bras
 乳头玩具显示在胸罩之上
 - Hide Nipple Clamps
-隐藏乳头夹
+隐藏乳夹
 - Hide Nipple Piercings
-隐藏乳头穿孔
+隐藏乳环
 - Use default palette when no outfit is worn
 当未穿着衣物时使用默认调色
 - Apply worn restraint palettes to player
@@ -7781,14 +7782,14 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Ornamental Gag
 装饰堵嘴
 - A gag meant to keep servants of the Resurrection Temple quiet by forcing a plug into their mouth.
-一种堵嘴装置，旨在通过将塞子塞进复活神殿的仆人嘴里来让他们保持安静。
+一种堵嘴装置，它将塞子强行塞入口中，让复活神殿的仆人们保持安静。
 - It is difficult to pull off and though it is made from white leather, a magic enchantment protects it from cutting.
 很难扯下，虽然它是用白色皮革制成的，但是有一个魔法结界保护它不被切割。
 
 - Panel Plug Gag
 镶嵌堵嘴
 - A gag meant to keep people quiet by forcing a plug into their mouth.
-一种堵嘴装置，旨在通过将塞子塞进人的嘴里来让人保持安静。
+一种堵嘴装置，它将塞子强行塞入口中，让人保持安静。
 - It is difficult to pull off and though it is made from supple, heavy duty leather.
 虽然它是由柔软的重型皮革制成，但很难脱下来。
 # :: RestraintPanelPlugGagDesc2
@@ -7820,7 +7821,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 用钢板加固，这需要断线钳才能取下。
 
 - Massagers
-按摩器
+振动乳夹
 - A pair of little motion-activated teasers. They trigger when you swing your body for an attack.
 一对通过动作激活的挑逗器。当你摆动身体进行攻击时，它们就会触发。
 - They will make for some great fun! Type: Edging
@@ -7829,17 +7830,17 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintNippleClamps2Desc2
 # :: RestraintNippleClamps3Desc2
 - Advanced Massagers
-高级按摩器
+高级振动乳环
 - A pair of sensitive motion-activated teasers. They trigger when you attack or struggle.
 一对较为敏感通过动作激活的挑逗器。当你摆动身体进行攻击或挣扎时，它们就会触发。
 - Nipple Weights
-乳头砝码
+负重乳夹
 - A pair of dense weights dangling from your sensitive bits.
 一对沉重的砝码悬挂在你的敏感部位上。
 - They tend to swing around when attacking or casting arm spells.
 在你进行攻击或施展手臂法术时会左右摇晃。
 - Hi-Tech Massagers
-高科技按摩器
+高科技振动乳环
 - A pair of highly-sensitive motion-activated teasers. They detect most forms of motion, including sprinting and hopping.
 一对高度敏感通过动作激活的挑逗器。它们可以检测大多数形式的运动，包括冲刺和跳跃。
 
@@ -8288,7 +8289,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 它偶尔会突然出现符咒，并束缚佩戴者。效果的速度增加取决于你身上的符咒数量。
 
 - Leather Panel Gag
-口罩型皮革口塞
+皮革面板口塞
 - A gag that seals your lips tightly and stuffs your mouth with a ball.
 把你的嘴唇紧紧地封住，并用一个球塞进你的嘴里。
 # :: RestraintPanelGagDesc
@@ -8296,7 +8297,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Keep your mouth to yourself!
 管好自己的嘴吧！
 - Harness Panel Gag
-口罩型马具口球
+马具型面板口塞
 - The harness is comprehensive and it's locked in place.
 束带很全面，并且锁定到位。
 # :: RestraintHarnessPanelGagDesc2
@@ -8455,7 +8456,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Tape Gag
 胶带口塞
 - Tape Mouth Wrap
-胶带口罩
+胶带裹嘴
 - Tape Wrapping (Toes)
 胶带包裹(脚趾)
 - Tape Wrapping (Head)
@@ -8538,7 +8539,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Autotape (Mouth)
 自动胶带 ( 嘴 )
 - Autotape (Mouth Wrap)
-自动胶带 (口罩)
+自动胶带 (裹嘴)
 - Living Auto Tape Collar
 活体自动胶带项圈
 - It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you.
@@ -9222,7 +9223,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Blacksteel Bra
 黑钢文胸
 - A cruel device used for locking magical massagers in place.
-用于锁定魔法按摩器的残忍装置。
+用于锁定魔法振动器的残忍装置。
 # :: RestraintBlacksteelBraDesc
 # :: RestraintSteelBraDesc
 # :: RestraintTrapBraDesc
@@ -11277,14 +11278,22 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Vibe
 震动
 # :: KinkyDungeonGroupItemVulvaPiercings
-# :: m_NippleClamps_l_Vibe
-# :: m_NippleClampsRestraint_l_Vibe
-# :: m_RingVibes_l_Vibe
-# :: m_RingVibesRestraint_l_Vibe
-# :: m_VibePiercings_l_Vibe
-# :: m_VibePiercings_l_Vibe
-# :: m_VibePiercingsRestraint_l_Vibe
-# :: m_VibePiercingsRestraint_l_Vibe
+:: m_NippleClamps_l_Vibe
+振动单元
+:: m_NippleClampsRestraint_l_Vibe
+振动单元
+:: m_RingVibes_l_Vibe
+振动单元
+:: m_RingVibesRestraint_l_Vibe
+振动单元
+:: m_VibePiercings_l_Vibe
+振动单元
+:: m_VibePiercings_l_Vibe
+振动单元
+:: m_VibePiercingsRestraint_l_Vibe
+振动单元
+:: m_VibePiercingsRestraint_l_Vibe
+振动单元
 - Piercings
 穿孔
 # :: KinkyDungeonGroupItemNipplesPiercings
@@ -16045,10 +16054,14 @@ AMNT% 的概率命中你
 - Chain
 锁链
 # :: KinkyDungeonDamageTypechain
-# :: m_ChainPanties_l_Chain
-# :: m_ChainPantiesRestraint_l_Chain
-# :: m_ChainPanties2_l_Chain
-# :: m_ChainPanties2Restraint_l_Chain
+:: m_ChainPanties_l_Chain
+链甲
+:: m_ChainPantiesRestraint_l_Chain
+链甲
+:: m_ChainPanties2_l_Chain
+链甲
+:: m_ChainPanties2Restraint_l_Chain
+链甲
 # :: m_RubyNecklace_l_Chain
 # :: m_RubyNecklaceRestraint_l_Chain
 # :: m_SigilNecklace_l_Chain
@@ -25770,7 +25783,7 @@ FOODMSG| ( 它邀请你分享它的美食 )
 - What's this do?
 这是干什么的？
 - That harness you're wearing is quite convenient for me~
-你穿的那条安全带对我来说很方便~
+你穿的那身绳束衣对我来说很方便~
 - Initiating prisoner lockdown protocol
 启动囚犯封锁协议
 - Your RestraintName suddenly snap together as the EnemyName activates them!
@@ -26238,7 +26251,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - Currently Worn
 已穿戴
 - Uniforms
-制服
+制服 / 套装
 - Suits
 套装
 :: cat_Suits
@@ -26402,15 +26415,24 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 实验服
 - Shoulders
 肩膀
-# :: l_Labcoat_Shoulders
-# :: m_Labcoat_l_Shoulders
-# :: m_Cape_l_Shoulders
-# :: m_Labcoat_l_Shoulders
-# :: m_Cape_l_Shoulders
-# :: m_CapeRestraint_l_Shoulders
-# :: m_ClothTop_l_Shoulders
-# :: m_ClothTopBand_l_Shoulders
-# :: m_Ninja_l_Shoulders
+:: l_Labcoat_Shoulders
+肩部
+:: m_Labcoat_l_Shoulders
+肩部
+:: m_Cape_l_Shoulders
+肩部
+:: m_Labcoat_l_Shoulders
+肩部
+:: m_Cape_l_Shoulders
+肩部
+:: m_CapeRestraint_l_Shoulders
+肩部
+:: m_ClothTop_l_Shoulders
+肩部
+:: m_ClothTopBand_l_Shoulders
+肩部
+:: m_Ninja_l_Shoulders
+肩部
 - ShouldersHogtie
 肩部(捆绑)
 # :: l_Labcoat_ShouldersHogtie
@@ -26560,7 +26582,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - PlateArmor
 板甲
 - ChainShirt
-链甲衫
+链甲背心
 - ShirtChest
 衬衫胸部
 :: l_ChainShirt_ShirtChest
@@ -26568,12 +26590,15 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 :: l_ChainArmor_ShirtChest
 上衣胸部
 :: m_ChainShirt_l_ShirtChest
-链甲衫胸部
-# :: m_ChainArmor_l_ShirtChest
+链甲背心胸部
+:: m_ChainArmor_l_ShirtChest
+链甲背心胸部
 :: m_ChainShirt_l_ShirtChest
-链甲衫胸部
-# :: m_ChainArmor_l_ShirtChest
-# :: m_ChainBikini_l_ShirtChest
+链甲背心胸部
+:: m_ChainArmor_l_ShirtChest
+链甲背心胸部
+:: m_ChainBikini_l_ShirtChest
+链甲背心胸部
 # :: m_SailorTop_l_ShirtChest
 # :: m_SailorShirt_l_ShirtChest
 # :: m_Sailor_l_ShirtChest
@@ -26584,8 +26609,9 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 :: m_Yukata_l_ShirtChest
 上衣胸部
 :: m_ChainShirtRestraint_l_ShirtChest
-链甲衫胸部
-# :: m_ChainBikiniRestraint_l_ShirtChest
+链甲背心胸部
+:: m_ChainBikiniRestraint_l_ShirtChest
+链甲背心胸部
 - Shirt
 衬衫
 :: l_ChainShirt_Shirt
@@ -26593,11 +26619,13 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 :: l_ChainArmor_Shirt
 上衣
 :: m_ChainShirt_l_Shirt
-链甲衫
-# :: m_ChainArmor_l_Shirt
+链甲背心
+:: m_ChainArmor_l_Shirt
+链甲背心
 :: m_ChainShirt_l_Shirt
-链甲衫
-# :: m_ChainArmor_l_Shirt
+链甲背心
+:: m_ChainArmor_l_Shirt
+链甲背心
 # :: m_SailorTop_l_Shirt
 # :: m_SailorShirt_l_Shirt
 # :: m_Sailor_l_Shirt
@@ -26608,7 +26636,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 :: m_Yukata_l_Shirt
 上衣腰部
 :: m_ChainShirtRestraint_l_Shirt
-链甲衫
+链甲背心
 # :: m_UniformShirt_Sleeveless_l_Shirt
 # :: m_UniformShirt_l_Shirt
 # :: m_MilitaryUniform_l_Shirt
@@ -26630,67 +26658,96 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: l_Dragonheart_Skirt
 # :: l_RobeSkirt_Skirt
 # :: l_Robes_Skirt
-# :: m_ChainSkirt_l_Skirt
-# :: m_ChainArmor_l_Skirt
-# :: m_MaidSkirt_l_Skirt
-# :: m_Maid_l_Skirt
-# :: m_WitchSkirt_l_Skirt
-# :: m_Witch_l_Skirt
+:: m_ChainSkirt_l_Skirt
+战裙裙身
+:: m_ChainArmor_l_Skirt
+战裙裙身
+:: m_MaidSkirt_l_Skirt
+短裙
+:: m_Maid_l_Skirt
+短裙
+:: m_WitchSkirt_l_Skirt
+长裙
+:: m_Witch_l_Skirt
+长裙
 # :: m_WarriorSkirt_l_Skirt
 :: m_Dragonheart_l_Skirt
 短裙
 # :: m_RobeSkirt_l_Skirt
 :: m_Robes_l_Skirt
 短裙
-# :: m_DressSkirt_l_Skirt
-# :: m_BindingDress_l_Skirt
+:: m_DressSkirt_l_Skirt
+长裙
+:: m_BindingDress_l_Skirt
+长裙
 # :: m_Dress_l_Skirt
 # :: m_ElfSkirt_l_Skirt
 # :: m_Elf_l_Skirt
-# :: m_ChainSkirt_l_Skirt
-# :: m_ChainArmor_l_Skirt
-# :: m_MaidSkirt_l_Skirt
-# :: m_Maid_l_Skirt
-# :: m_WitchSkirt_l_Skirt
-# :: m_Witch_l_Skirt
+:: m_ChainSkirt_l_Skirt
+战裙裙身
+:: m_ChainArmor_l_Skirt
+战裙裙身
+:: m_MaidSkirt_l_Skirt
+短裙
+:: m_Maid_l_Skirt
+短裙
+:: m_WitchSkirt_l_Skirt
+长裙
+:: m_Witch_l_Skirt
+长裙
 # :: m_WarriorSkirt_l_Skirt
 :: m_Dragonheart_l_Skirt
 短裙
 # :: m_RobeSkirt_l_Skirt
 :: m_Robes_l_Skirt
 短裙
-# :: m_DressSkirt_l_Skirt
-# :: m_BindingDress_l_Skirt
+:: m_DressSkirt_l_Skirt
+长裙
+:: m_BindingDress_l_Skirt
+长裙
 # :: m_Dress_l_Skirt
 # :: m_ElfSkirt_l_Skirt
 # :: m_Elf_l_Skirt
-# :: m_DressSkirtSplitNoBelt_l_Skirt
-# :: m_DressSkirtSplit_l_Skirt
+:: m_DressSkirtSplitNoBelt_l_Skirt
+长裙
+:: m_DressSkirtSplit_l_Skirt
+长裙
 :: m_YukataSkirt_l_Skirt
 长裙
 :: m_Yukata_l_Skirt
 长裙
-# :: m_NinjaSkirt_l_Skirt
-# :: m_Ninja_l_Skirt
+:: m_NinjaSkirt_l_Skirt
+短裙
+:: m_Ninja_l_Skirt
+短裙
 # :: m_GothicSkirt_l_Skirt
 # :: m_GothicSkirtLace_l_Skirt
 :: m_MilitaryUniform_Skirt_l_Skirt
 短裙
 :: m_MilitaryUniform_l_Skirt
 短裙
-# :: m_ChainPanties2_l_Skirt
-# :: m_ChainSkirtRestraint_l_Skirt
-# :: m_ChainPanties2Restraint_l_Skirt
-# :: m_ChainSkirt2_l_Skirt
-# :: m_ChainSkirt2Restraint_l_Skirt
+:: m_ChainPanties2_l_Skirt
+战裙裙身
+:: m_ChainSkirtRestraint_l_Skirt
+战裙裙身
+:: m_ChainPanties2Restraint_l_Skirt
+战裙裙身
+:: m_ChainSkirt2_l_Skirt
+战裙裙身
+:: m_ChainSkirt2Restraint_l_Skirt
+战裙裙身
 :: m_MageSkirt_l_Skirt
 裙身(跪姿叠加层)
 :: m_Mage_l_Skirt
 裙身(跪姿叠加层)
-# :: m_StripedSkirt_l_Skirt
-# :: m_StripedSkirt_l_Skirt
-# :: m_ApronSkirt_l_Skirt
-# :: m_ApronSkirt_l_Skirt
+:: m_StripedSkirt_l_Skirt
+百褶裙
+:: m_StripedSkirt_l_Skirt
+百褶裙
+:: m_ApronSkirt_l_Skirt
+短裙
+:: m_ApronSkirt_l_Skirt
+短裙
 # :: m_HighSecHobbleSkirt_l_Skirt
 # :: m_HighSecHobbleSkirt_l_Skirt
 # :: m_HighSecHobbleSkirt_l_Skirt
@@ -26701,7 +26758,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_HeavyMaidKnight_Dress_l_Skirt
 # :: m_HeavyMaidKnight_l_Skirt
 - ChainArmor
-链甲
+链甲套装
 - BanditShorts
 强盗短裤
 - Shorts
@@ -27070,7 +27127,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - BanditBreastplate
 强盗胸甲
 - Striped Skirt
-条纹短裙
+女仆短裙
 - MaidApron
 女仆围裙
 - Apron
@@ -27086,9 +27143,9 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_ApronSkirt_l_Apron
 # :: m_ApronSkirt_l_Apron
 - MaidBlouse
-女仆衬衫
+女仆抹胸衣
 - Blouse
-短上衣
+衬衫
 :: l_MaidBlouse_Blouse
 抹胸衣
 :: l_Maid_Blouse
@@ -27097,10 +27154,14 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 短上衣
 :: l_Witch_Blouse
 短上衣
-# :: m_MaidBlouse_l_Blouse
-# :: m_Maid_l_Blouse
-# :: m_MaidBlouse_l_Blouse
-# :: m_Maid_l_Blouse
+:: m_MaidBlouse_l_Blouse
+抹胸衣
+:: m_Maid_l_Blouse
+抹胸衣
+:: m_MaidBlouse_l_Blouse
+抹胸衣
+:: m_Maid_l_Blouse
+抹胸衣
 # :: m_WitchBlouse_l_Blouse
 # :: m_Witch_l_Blouse
 # :: m_DressBlouseBust_l_Blouse
@@ -27121,16 +27182,20 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 短上衣胸部
 :: l_Witch_BlouseBust
 短上衣胸部
-# :: m_MaidBlouse_l_BlouseBust
-# :: m_Maid_l_BlouseBust
+:: m_MaidBlouse_l_BlouseBust
+抹胸衣胸部
+:: m_Maid_l_BlouseBust
+抹胸衣胸部
 # :: m_WitchBlouse_l_BlouseBust
 # :: m_Witch_l_BlouseBust
 # :: m_DressBlouseBust_l_BlouseBust
 # :: m_DressBlouseBustCropped_l_BlouseBust
 # :: m_DressBlouse_l_BlouseBust
 # :: m_Dress_l_BlouseBust
-# :: m_MaidBlouse_l_BlouseBust
-# :: m_Maid_l_BlouseBust
+:: m_MaidBlouse_l_BlouseBust
+抹胸衣胸部
+:: m_Maid_l_BlouseBust
+抹胸衣胸部
 # :: m_WitchBlouse_l_BlouseBust
 # :: m_Witch_l_BlouseBust
 # :: m_DressBlouseBust_l_BlouseBust
@@ -27138,7 +27203,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_DressBlouse_l_BlouseBust
 # :: m_Dress_l_BlouseBust
 - MaidBow
-女仆领带
+女仆领结
 - Bow
 弓
 :: l_MaidBow_Bow
@@ -27422,17 +27487,26 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 裙腰带
 # :: l_WitchSkirt_SkirtBelt
 # :: l_Witch_SkirtBelt
-# :: m_WitchSkirt_l_SkirtBelt
-# :: m_Witch_l_SkirtBelt
-# :: m_WitchSkirt_l_SkirtBelt
-# :: m_Witch_l_SkirtBelt
-# :: m_ChainSkirt2_l_SkirtBelt
-# :: m_ChainSkirt_l_SkirtBelt
-# :: m_ChainArmor_l_SkirtBelt
-# :: m_ChainSkirt2Restraint_l_SkirtBelt
-# :: m_ChainSkirtRestraint_l_SkirtBelt
+:: m_WitchSkirt_l_SkirtBelt
+长裙腰带
+:: m_Witch_l_SkirtBelt
+长裙腰带
+:: m_WitchSkirt_l_SkirtBelt
+长裙腰带
+:: m_Witch_l_SkirtBelt
+长裙腰带
+:: m_ChainSkirt2_l_SkirtBelt
+战裙腰带
+:: m_ChainSkirt_l_SkirtBelt
+战裙腰带
+:: m_ChainArmor_l_SkirtBelt
+战裙腰带
+:: m_ChainSkirt2Restraint_l_SkirtBelt
+战裙腰带
+:: m_ChainSkirtRestraint_l_SkirtBelt
+战裙腰带
 - SkirtRuffle
-裙褶边
+裙摆褶边
 # :: l_WitchSkirt_SkirtRuffle
 # :: l_Witch_SkirtRuffle
 # :: m_WitchSkirt_l_SkirtRuffle
@@ -27440,7 +27514,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_WitchSkirt_l_SkirtRuffle
 # :: m_Witch_l_SkirtRuffle
 - Witch
-女巫
+女巫装
 - WarriorBoots
 战士靴
 - SportsBra
@@ -27787,9 +27861,11 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - BowFrills
 蝴蝶结褶边
 # :: l_HairBowFrilly_BowFrills
-# :: m_Maid_l_BowFrills
+:: m_Maid_l_BowFrills
+领结褶边
 # :: m_HairBowFrilly_l_BowFrills
-# :: m_Maid_l_BowFrills
+:: m_Maid_l_BowFrills
+领结褶边
 - Hairband
 发带
 # :: m_Hairband
@@ -28731,38 +28807,60 @@ Dask眼
 # :: m_FashionKittyPetHarnessGagMouthSeamless_l_Stripe
 - SkirtOver
 裙摆
-# :: m_MaidSkirt_l_SkirtOver
-# :: m_Maid_l_SkirtOver
-# :: m_WitchSkirt_l_SkirtOver
-# :: m_Witch_l_SkirtOver
-# :: m_WarriorSkirt_l_SkirtOver
-# :: m_Dragonheart_l_SkirtOver
-# :: m_RobeSkirt_l_SkirtOver
+:: m_MaidSkirt_l_SkirtOver
+短裙(叠加层)
+:: m_Maid_l_SkirtOver
+短裙(叠加层)
+:: m_WitchSkirt_l_SkirtOver
+长裙(叠加层)
+:: m_Witch_l_SkirtOver
+长裙(叠加层)
+:: m_WarriorSkirt_l_SkirtOver
+裙子(叠加层)
+:: m_Dragonheart_l_SkirtOver
+裙子(叠加层)
+:: m_RobeSkirt_l_SkirtOver
+裙子(叠加层)
 :: m_Robes_l_SkirtOver
-短裙(跪姿叠加层)
-# :: m_DressSkirt_l_SkirtOver
-# :: m_BindingDress_l_SkirtOver
-# :: m_Dress_l_SkirtOver
-# :: m_MaidSkirt_l_SkirtOver
-# :: m_Maid_l_SkirtOver
-# :: m_WitchSkirt_l_SkirtOver
-# :: m_Witch_l_SkirtOver
-# :: m_WarriorSkirt_l_SkirtOver
-# :: m_Dragonheart_l_SkirtOver
-# :: m_RobeSkirt_l_SkirtOver
+裙子(叠加层)
+:: m_DressSkirt_l_SkirtOver
+裙子(叠加层)
+:: m_BindingDress_l_SkirtOver
+长裙(叠加层)
+:: m_Dress_l_SkirtOver
+裙子(叠加层)
+:: m_MaidSkirt_l_SkirtOver
+短裙(叠加层)
+:: m_Maid_l_SkirtOver
+短裙(叠加层)
+:: m_WitchSkirt_l_SkirtOver
+长裙(叠加层)
+:: m_Witch_l_SkirtOver
+长裙(叠加层)
+:: m_WarriorSkirt_l_SkirtOver
+裙子(叠加层)
+:: m_Dragonheart_l_SkirtOver
+裙子(叠加层)
+:: m_RobeSkirt_l_SkirtOver
+裙子(叠加层)
 :: m_Robes_l_SkirtOver
-短裙(跪姿叠加层)
-# :: m_DressSkirt_l_SkirtOver
-# :: m_BindingDress_l_SkirtOver
-# :: m_Dress_l_SkirtOver
+裙子(叠加层)
+:: m_DressSkirt_l_SkirtOver
+裙子(叠加层)
+:: m_BindingDress_l_SkirtOver
+长裙(叠加层)
+:: m_Dress_l_SkirtOver
+裙子(叠加层)
 :: m_YukataSkirt_l_SkirtOver
-长裙(跪姿叠加层)
+裙子(叠加层)
 :: m_Yukata_l_SkirtOver
-长裙(跪姿叠加层)
-# :: m_NinjaSkirt_l_SkirtOver
-# :: m_Ninja_l_SkirtOver
+裙子(叠加层)
+:: m_NinjaSkirt_l_SkirtOver
+短裙(叠加层)
+:: m_Ninja_l_SkirtOver
+短裙(叠加层)
 - StripeOver
-条纹围裙
+条纹(叠加层)
 # :: m_MaidSkirt_l_StripeOver
 # :: m_Maid_l_StripeOver
 # :: m_MaidSkirt_l_StripeOver
@@ -28874,7 +28972,7 @@ Dask眼
 # :: m_WitchBlouse_l_BlouseRight
 # :: m_Witch_l_BlouseRight
 - SkirtRuffleOver
-裙子褶边
+裙摆褶边(叠加层)
 # :: m_WitchSkirt_l_SkirtRuffleOver
 # :: m_Witch_l_SkirtRuffleOver
 # :: m_WitchSkirt_l_SkirtRuffleOver
@@ -29148,48 +29246,78 @@ kigurumi面具
 - Mask
 面具
 # :: m_KiguMask_l_Mask
-# :: m_EnhancedSciFiBallGag_l_Mask
-# :: m_AdvancedSciFiBallGag_l_Mask
-# :: m_UltimateSciFiBallGag_l_Mask
-# :: m_UltimateSciFiBallGag2_l_Mask
-# :: m_SegmentedLargePanelGag_l_Mask
-# :: m_SegmentedLargePanelGagHarness_l_Mask
-# :: m_SegmentedLargePanelGagHarnessSecure_l_Mask
-# :: m_SciFiPanelGag_l_Mask
-# :: m_AdvancedSciFiPanelGag_l_Mask
-# :: m_UltimateSciFiPanelGag_l_Mask
-# :: m_UltimateSciFiPanelGag2_l_Mask
+:: m_EnhancedSciFiBallGag_l_Mask
+盖板
+:: m_AdvancedSciFiBallGag_l_Mask
+盖板
+:: m_UltimateSciFiBallGag_l_Mask
+盖板
+:: m_UltimateSciFiBallGag2_l_Mask
+盖板
+:: m_SegmentedLargePanelGag_l_Mask
+盖板
+:: m_SegmentedLargePanelGagHarness_l_Mask
+盖板
+:: m_SegmentedLargePanelGagHarnessSecure_l_Mask
+盖板
+:: m_SciFiPanelGag_l_Mask
+盖板
+:: m_AdvancedSciFiPanelGag_l_Mask
+盖板
+:: m_UltimateSciFiPanelGag_l_Mask
+盖板
+:: m_UltimateSciFiPanelGag2_l_Mask
+盖板
 # :: m_SegmentedPlugGag_l_Mask
 # :: m_SegmentedPlugGagHarness_l_Mask
 # :: m_SegmentedPlugGagHarnessSecure_l_Mask
-# :: m_SciFiPlugGag_l_Mask
-# :: m_AdvancedSciFiPlugGag_l_Mask
-# :: m_UltimateSciFiPlugGag_l_Mask
-# :: m_UltimateSciFiPlugGag2_l_Mask
+:: m_SciFiPlugGag_l_Mask
+盖板
+:: m_AdvancedSciFiPlugGag_l_Mask
+盖板
+:: m_UltimateSciFiPlugGag_l_Mask
+盖板
+:: m_UltimateSciFiPlugGag2_l_Mask
+盖板
 # :: m_AdvancedSciFiMuzzle_l_Mask
 # :: m_AdvancedSciFiPlugMuzzle_l_Mask
 # :: m_AdvancedSciFiMuzzle2_l_Mask
 # :: m_GasMask_l_Mask
 # :: m_GasMaskRestraint_l_Mask
 # :: m_KiguMask_l_Mask
-# :: m_EnhancedSciFiBallGag_l_Mask
-# :: m_AdvancedSciFiBallGag_l_Mask
-# :: m_UltimateSciFiBallGag_l_Mask
-# :: m_UltimateSciFiBallGag2_l_Mask
-# :: m_SegmentedLargePanelGag_l_Mask
-# :: m_SegmentedLargePanelGagHarness_l_Mask
-# :: m_SegmentedLargePanelGagHarnessSecure_l_Mask
-# :: m_SciFiPanelGag_l_Mask
-# :: m_AdvancedSciFiPanelGag_l_Mask
-# :: m_UltimateSciFiPanelGag_l_Mask
-# :: m_UltimateSciFiPanelGag2_l_Mask
+:: m_EnhancedSciFiBallGag_l_Mask
+盖板
+:: m_AdvancedSciFiBallGag_l_Mask
+盖板
+:: m_UltimateSciFiBallGag_l_Mask
+盖板
+:: m_UltimateSciFiBallGag2_l_Mask
+盖板
+:: m_SegmentedLargePanelGag_l_Mask
+盖板
+:: m_SegmentedLargePanelGagHarness_l_Mask
+盖板
+:: m_SegmentedLargePanelGagHarnessSecure_l_Mask
+盖板
+:: m_SciFiPanelGag_l_Mask
+盖板
+:: m_AdvancedSciFiPanelGag_l_Mask
+盖板
+:: m_UltimateSciFiPanelGag_l_Mask
+盖板
+:: m_UltimateSciFiPanelGag2_l_Mask
+盖板
 # :: m_SegmentedPlugGag_l_Mask
 # :: m_SegmentedPlugGagHarness_l_Mask
 # :: m_SegmentedPlugGagHarnessSecure_l_Mask
-# :: m_SciFiPlugGag_l_Mask
-# :: m_AdvancedSciFiPlugGag_l_Mask
-# :: m_UltimateSciFiPlugGag_l_Mask
-# :: m_UltimateSciFiPlugGag2_l_Mask
+:: m_SciFiPlugGag_l_Mask
+盖板
+:: m_AdvancedSciFiPlugGag_l_Mask
+盖板
+:: m_UltimateSciFiPlugGag_l_Mask
+盖板
+:: m_UltimateSciFiPlugGag2_l_Mask
+盖板
 # :: m_AdvancedSciFiMuzzle_l_Mask
 # :: m_AdvancedSciFiPlugMuzzle_l_Mask
 # :: m_AdvancedSciFiMuzzle2_l_Mask
@@ -29198,12 +29326,18 @@ kigurumi面具
 # :: m_GasMask_l_Mask
 # :: m_GasMaskRestraint_l_Mask
 # :: m_FashionKiguMask_l_Mask
-# :: m_FashionSegmentedLargePanelGag_l_Mask
-# :: m_FashionSegmentedLargePanelGagHarness_l_Mask
-# :: m_FashionSciFiPanelGag_l_Mask
-# :: m_FashionAdvancedSciFiPanelGag_l_Mask
-# :: m_FashionUltimateSciFiPanelGag_l_Mask
-# :: m_FashionUltimateSciFiPanelGag2_l_Mask
+:: m_FashionSegmentedLargePanelGag_l_Mask
+盖板
+:: m_FashionSegmentedLargePanelGagHarness_l_Mask
+盖板
+:: m_FashionSciFiPanelGag_l_Mask
+盖板
+:: m_FashionAdvancedSciFiPanelGag_l_Mask
+盖板
+:: m_FashionUltimateSciFiPanelGag_l_Mask
+盖板
+:: m_FashionUltimateSciFiPanelGag2_l_Mask
+盖板
 # :: m_FashionSegmentedPlugGag_l_Mask
 # :: m_FashionAdvancedSciFiPlugMuzzle_l_Mask
 # :: m_KiguMaskSmile_l_Mask
@@ -29997,12 +30131,14 @@ V形比基尼
 # :: m_Dress_l_LaceCrotchPanelLace
 - DressSkirt
 礼服裙
-# :: m_DressSkirt
+:: m_DressSkirt
+礼服长裙
 # :: m_ChineseDress_l_DressSkirt
 # :: m_LightMaidKnight_Dress_l_DressSkirt
 # :: m_LightMaidKnight_l_DressSkirt
 # :: m_HeavyMaidKnight_Dress_l_DressSkirt
-# :: m_HeavyMaidKnight_l_DressSkirt
+:: m_HeavyMaidKnight_l_DressSkirt
+连衣裙裙子
 # :: m_MilitaryJacket_Sleeveless_l_DressSkirt
 # :: m_MilitaryJacket_l_DressSkirt
 # :: m_MilitaryUniform_l_DressSkirt
@@ -30497,15 +30633,15 @@ V形比基尼
 :: m_Elf_l_SkirtBack
 短裙(背后)
 :: m_DressSkirtSplitNoBelt_l_SkirtBack
-裙子(背后)
+长裙背后
 :: m_DressSkirtSplit_l_SkirtBack
-裙子(背后)
+长裙背后
 :: m_BindingDress_l_SkirtBack
 裙子(背后)
 - ElfSkirt
 精灵裙
 - SkirtBand
-短裙绑带
+短裙饰带
 # :: m_ElfSkirt_l_SkirtBand
 # :: m_Elf_l_SkirtBand
 # :: m_ElfSkirt_l_SkirtBand
@@ -30708,128 +30844,244 @@ V形比基尼
 # :: m_RopeHarness_l_Harness
 # :: m_RibbonHarness_l_Harness
 # :: m_Harness
-# :: m_BallGagHarness_l_Harness
-# :: m_BallGagHarnessSecure_l_Harness
-# :: m_LargeBallGagHarness_l_Harness
-# :: m_LargeBallGagHarnessSecure_l_Harness
-# :: m_PanelGagHarness_l_Harness
-# :: m_PanelGagHarnessSecure_l_Harness
-# :: m_MuzzleGagHarness_l_Harness
-# :: m_MuzzleGagHarnessSecure_l_Harness
-# :: m_PlugMuzzleGagHarness_l_Harness
-# :: m_PlugMuzzleGagHarnessSecure_l_Harness
-# :: m_PlugPanelGagHarness_l_Harness
-# :: m_PlugPanelGagHarnessSecure_l_Harness
-# :: m_GagLatexFlatHarness_l_Harness
-# :: m_GagLatexFlatHarnessSecure_l_Harness
-# :: m_GagLatexPlugHarness_l_Harness
-# :: m_GagLatexPlugHarnessSecure_l_Harness
-# :: m_KittyHarnessPanelGag_l_Harness
-# :: m_SmoothBallGagHarness_l_Harness
-# :: m_SmoothBallGagHarnessSecure_l_Harness
-# :: m_SmoothLargeBallGagHarness_l_Harness
-# :: m_SmoothLargeBallGagHarnessSecure_l_Harness
-# :: m_SegmentedLargeBallGagHarness_l_Harness
-# :: m_SegmentedLargeBallGagHarnessSecure_l_Harness
-# :: m_SciFiBallGag_l_Harness
-# :: m_EnhancedSciFiBallGag_l_Harness
-# :: m_AdvancedSciFiBallGag_l_Harness
-# :: m_UltimateSciFiBallGag_l_Harness
-# :: m_UltimateSciFiBallGag2_l_Harness
-# :: m_SegmentedLargePanelGagHarness_l_Harness
-# :: m_SegmentedLargePanelGagHarnessSecure_l_Harness
-# :: m_SciFiPanelGag_l_Harness
-# :: m_AdvancedSciFiPanelGag_l_Harness
-# :: m_UltimateSciFiPanelGag_l_Harness
-# :: m_UltimateSciFiPanelGag2_l_Harness
-# :: m_SegmentedPlugGagHarness_l_Harness
-# :: m_SegmentedPlugGagHarnessSecure_l_Harness
-# :: m_SciFiPlugGag_l_Harness
-# :: m_AdvancedSciFiPlugGag_l_Harness
-# :: m_UltimateSciFiPlugGag_l_Harness
-# :: m_UltimateSciFiPlugGag2_l_Harness
+:: m_BallGagHarness_l_Harness
+马具绑带
+:: m_BallGagHarnessSecure_l_Harness
+马具绑带
+:: m_LargeBallGagHarness_l_Harness
+马具绑带
+:: m_LargeBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_PanelGagHarness_l_Harness
+马具绑带
+:: m_PanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_MuzzleGagHarness_l_Harness
+马具绑带
+:: m_MuzzleGagHarnessSecure_l_Harness
+马具绑带
+:: m_PlugMuzzleGagHarness_l_Harness
+马具绑带
+:: m_PlugMuzzleGagHarnessSecure_l_Harness
+马具绑带
+:: m_PlugPanelGagHarness_l_Harness
+马具绑带
+:: m_PlugPanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_GagLatexFlatHarness_l_Harness
+马具绑带
+:: m_GagLatexFlatHarnessSecure_l_Harness
+马具绑带
+:: m_GagLatexPlugHarness_l_Harness
+马具绑带
+:: m_GagLatexPlugHarnessSecure_l_Harness
+马具绑带
+:: m_KittyHarnessPanelGag_l_Harness
+马具绑带
+:: m_SmoothBallGagHarness_l_Harness
+马具绑带
+:: m_SmoothBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_SmoothLargeBallGagHarness_l_Harness
+马具绑带
+:: m_SmoothLargeBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_SegmentedLargeBallGagHarness_l_Harness
+马具绑带
+:: m_SegmentedLargeBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_SciFiBallGag_l_Harness
+马具绑带
+:: m_EnhancedSciFiBallGag_l_Harness
+马具绑带
+:: m_AdvancedSciFiBallGag_l_Harness
+马具绑带
+:: m_UltimateSciFiBallGag_l_Harness
+马具绑带
+:: m_UltimateSciFiBallGag2_l_Harness
+马具绑带
+:: m_SegmentedLargePanelGagHarness_l_Harness
+马具绑带
+:: m_SegmentedLargePanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_SciFiPanelGag_l_Harness
+马具绑带
+:: m_AdvancedSciFiPanelGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPanelGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPanelGag2_l_Harness
+马具绑带
+:: m_SegmentedPlugGagHarness_l_Harness
+马具绑带
+:: m_SegmentedPlugGagHarnessSecure_l_Harness
+马具绑带
+:: m_SciFiPlugGag_l_Harness
+马具绑带
+:: m_AdvancedSciFiPlugGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPlugGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPlugGag2_l_Harness
+马具绑带
 # :: m_RopeHarness_l_Harness
 # :: m_RibbonHarness_l_Harness
-# :: m_BallGagHarness_l_Harness
-# :: m_BallGagHarnessSecure_l_Harness
-# :: m_LargeBallGagHarness_l_Harness
-# :: m_LargeBallGagHarnessSecure_l_Harness
-# :: m_PanelGagHarness_l_Harness
-# :: m_PanelGagHarnessSecure_l_Harness
-# :: m_MuzzleGagHarness_l_Harness
-# :: m_MuzzleGagHarnessSecure_l_Harness
-# :: m_PlugMuzzleGagHarness_l_Harness
-# :: m_PlugMuzzleGagHarnessSecure_l_Harness
-# :: m_PlugPanelGagHarness_l_Harness
-# :: m_PlugPanelGagHarnessSecure_l_Harness
-# :: m_GagLatexFlatHarness_l_Harness
-# :: m_GagLatexFlatHarnessSecure_l_Harness
-# :: m_GagLatexPlugHarness_l_Harness
-# :: m_GagLatexPlugHarnessSecure_l_Harness
-# :: m_KittyHarnessPanelGag_l_Harness
-# :: m_SmoothBallGagHarness_l_Harness
-# :: m_SmoothBallGagHarnessSecure_l_Harness
-# :: m_SmoothLargeBallGagHarness_l_Harness
-# :: m_SmoothLargeBallGagHarnessSecure_l_Harness
-# :: m_SegmentedLargeBallGagHarness_l_Harness
-# :: m_SegmentedLargeBallGagHarnessSecure_l_Harness
-# :: m_SciFiBallGag_l_Harness
-# :: m_EnhancedSciFiBallGag_l_Harness
-# :: m_AdvancedSciFiBallGag_l_Harness
-# :: m_UltimateSciFiBallGag_l_Harness
-# :: m_UltimateSciFiBallGag2_l_Harness
-# :: m_SegmentedLargePanelGagHarness_l_Harness
-# :: m_SegmentedLargePanelGagHarnessSecure_l_Harness
-# :: m_SciFiPanelGag_l_Harness
-# :: m_AdvancedSciFiPanelGag_l_Harness
-# :: m_UltimateSciFiPanelGag_l_Harness
-# :: m_UltimateSciFiPanelGag2_l_Harness
-# :: m_SegmentedPlugGagHarness_l_Harness
-# :: m_SegmentedPlugGagHarnessSecure_l_Harness
-# :: m_SciFiPlugGag_l_Harness
-# :: m_AdvancedSciFiPlugGag_l_Harness
-# :: m_UltimateSciFiPlugGag_l_Harness
-# :: m_UltimateSciFiPlugGag2_l_Harness
+:: m_BallGagHarness_l_Harness
+马具绑带
+:: m_BallGagHarnessSecure_l_Harness
+马具绑带
+:: m_LargeBallGagHarness_l_Harness
+马具绑带
+:: m_LargeBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_PanelGagHarness_l_Harness
+马具绑带
+:: m_PanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_MuzzleGagHarness_l_Harness
+马具绑带
+:: m_MuzzleGagHarnessSecure_l_Harness
+马具绑带
+:: m_PlugMuzzleGagHarness_l_Harness
+马具绑带
+:: m_PlugMuzzleGagHarnessSecure_l_Harness
+马具绑带
+:: m_PlugPanelGagHarness_l_Harness
+马具绑带
+:: m_PlugPanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_GagLatexFlatHarness_l_Harness
+马具绑带
+:: m_GagLatexFlatHarnessSecure_l_Harness
+马具绑带
+:: m_GagLatexPlugHarness_l_Harness
+马具绑带
+:: m_GagLatexPlugHarnessSecure_l_Harness
+马具绑带
+:: m_KittyHarnessPanelGag_l_Harness
+马具绑带
+:: m_SmoothBallGagHarness_l_Harness
+马具绑带
+:: m_SmoothBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_SmoothLargeBallGagHarness_l_Harness
+马具绑带
+:: m_SmoothLargeBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_SegmentedLargeBallGagHarness_l_Harness
+马具绑带
+:: m_SegmentedLargeBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_SciFiBallGag_l_Harness
+马具绑带
+:: m_EnhancedSciFiBallGag_l_Harness
+马具绑带
+:: m_AdvancedSciFiBallGag_l_Harness
+马具绑带
+:: m_UltimateSciFiBallGag_l_Harness
+马具绑带
+:: m_UltimateSciFiBallGag2_l_Harness
+马具绑带
+:: m_SegmentedLargePanelGagHarness_l_Harness
+马具绑带
+:: m_SegmentedLargePanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_SciFiPanelGag_l_Harness
+马具绑带
+:: m_AdvancedSciFiPanelGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPanelGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPanelGag2_l_Harness
+马具绑带
+:: m_SegmentedPlugGagHarness_l_Harness
+马具绑带
+:: m_SegmentedPlugGagHarnessSecure_l_Harness
+马具绑带
+:: m_SciFiPlugGag_l_Harness
+马具绑带
+:: m_AdvancedSciFiPlugGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPlugGag_l_Harness
+马具绑带
+:: m_UltimateSciFiPlugGag2_l_Harness
+马具绑带
 # :: m_FashionRopeHarness_l_Harness
 # :: m_FashionRibbonHarness_l_Harness
-# :: m_FashionBallGagHarness_l_Harness
-# :: m_FashionBallGagHarnessSecure_l_Harness
-# :: m_FashionPanelGagHarness_l_Harness
-# :: m_FashionPanelGagHarnessSecure_l_Harness
-# :: m_FashionMuzzleGagHarness_l_Harness
-# :: m_FashionMuzzleGagHarnessSecure_l_Harness
-# :: m_FashionPlugMuzzleGagHarness_l_Harness
-# :: m_FashionPlugMuzzleGagHarnessSecure_l_Harness
-# :: m_FashionPlugPanelGagHarness_l_Harness
-# :: m_FashionPlugPanelGagHarnessSecure_l_Harness
-# :: m_GagLatexMuteHarness_l_Harness
-# :: m_GagLatexMuteHarnessSecure_l_Harness
-# :: m_FashionGagLatexFlatHarness_l_Harness
-# :: m_FashionGagLatexFlatHarnessSecure_l_Harness
-# :: m_FashionGagLatexMuteHarness_l_Harness
-# :: m_FashionGagLatexMuteHarnessSecure_l_Harness
-# :: m_FashionGagLatexPlugHarness_l_Harness
-# :: m_FashionGagLatexPlugHarnessSecure_l_Harness
-# :: m_FashionKittyHarnessPanelGag_l_Harness
-# :: m_FashionSegmentedLargePanelGagHarness_l_Harness
-# :: m_FashionSciFiPanelGag_l_Harness
-# :: m_FashionAdvancedSciFiPanelGag_l_Harness
-# :: m_FashionUltimateSciFiPanelGag_l_Harness
-# :: m_FashionUltimateSciFiPanelGag2_l_Harness
-# :: m_DivineGag_l_Harness
-# :: m_FashionDivineGag_l_Harness
-# :: m_DivineGagClean_l_Harness
-# :: m_FashionDivineGagClean_l_Harness
+:: m_FashionBallGagHarness_l_Harness
+马具绑带
+:: m_FashionBallGagHarnessSecure_l_Harness
+马具绑带
+:: m_FashionPanelGagHarness_l_Harness
+马具绑带
+:: m_FashionPanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_FashionMuzzleGagHarness_l_Harness
+马具绑带
+:: m_FashionMuzzleGagHarnessSecure_l_Harness
+马具绑带
+:: m_FashionPlugMuzzleGagHarness_l_Harness
+马具绑带
+:: m_FashionPlugMuzzleGagHarnessSecure_l_Harness
+马具绑带
+:: m_FashionPlugPanelGagHarness_l_Harness
+马具绑带
+:: m_FashionPlugPanelGagHarnessSecure_l_Harness
+马具绑带
+:: m_GagLatexMuteHarness_l_Harness
+马具绑带
+:: m_GagLatexMuteHarnessSecure_l_Harness
+马具绑带
+:: m_FashionGagLatexFlatHarness_l_Harness
+马具绑带
+:: m_FashionGagLatexFlatHarnessSecure_l_Harness
+马具绑带
+:: m_FashionGagLatexMuteHarness_l_Harness
+马具绑带
+:: m_FashionGagLatexMuteHarnessSecure_l_Harness
+马具绑带
+:: m_FashionGagLatexPlugHarness_l_Harness
+马具绑带
+:: m_FashionGagLatexPlugHarnessSecure_l_Harness
+马具绑带
+:: m_FashionKittyHarnessPanelGag_l_Harness
+马具绑带
+:: m_FashionSegmentedLargePanelGagHarness_l_Harness
+马具绑带
+:: m_FashionSciFiPanelGag_l_Harness
+马具绑带
+:: m_FashionAdvancedSciFiPanelGag_l_Harness
+马具绑带
+:: m_FashionUltimateSciFiPanelGag_l_Harness
+马具绑带
+:: m_FashionUltimateSciFiPanelGag2_l_Harness
+马具绑带
+:: m_DivineGag_l_Harness
+马具绑带
+:: m_FashionDivineGag_l_Harness
+马具绑带
+:: m_DivineGagClean_l_Harness
+马具绑带
+:: m_FashionDivineGagClean_l_Harness
+马具绑带
 # :: m_KittyPetHarnessBlindfold_l_Harness
 # :: m_FashionKittyPetHarnessBlindfold_l_Harness
-# :: m_KittyPetHarnessGag_l_Harness
-# :: m_KittyPetHarnessGagSeamless_l_Harness
-# :: m_KittyPetHarnessGagMouth_l_Harness
-# :: m_KittyPetHarnessGagMouthSeamless_l_Harness
-# :: m_FashionKittyPetHarnessGag_l_Harness
-# :: m_FashionKittyPetHarnessGagSeamless_l_Harness
-# :: m_FashionKittyPetHarnessGagMouth_l_Harness
-# :: m_FashionKittyPetHarnessGagMouthSeamless_l_Harness
+:: m_KittyPetHarnessGag_l_Harness
+马具绑带
+:: m_KittyPetHarnessGagSeamless_l_Harness
+马具绑带
+:: m_KittyPetHarnessGagMouth_l_Harness
+马具绑带
+:: m_KittyPetHarnessGagMouthSeamless_l_Harness
+马具绑带
+:: m_FashionKittyPetHarnessGag_l_Harness
+马具绑带
+:: m_FashionKittyPetHarnessGagSeamless_l_Harness
+马具绑带
+:: m_FashionKittyPetHarnessGagMouth_l_Harness
+马具绑带
+:: m_FashionKittyPetHarnessGagMouthSeamless_l_Harness
+马具绑带
 # :: m_HarnessBlindfold_l_Harness
 # :: m_HarnessBlindfold_l_Harness
 # :: m_FashionHarnessBlindfold_l_Harness
@@ -32203,8 +32455,10 @@ V形比基尼
 # :: m_ClothBra_l_Top
 # :: m_ClothTopBand_l_Top
 # :: m_ClothBraBand_l_Top
-# :: m_Ninja_l_Top
-# :: m_RoundHat_l_Top
+:: m_Ninja_l_Top
+背心
+:: m_RoundHat_l_Top
+帽顶
 # :: m_ChineseDress_l_Top
 # :: m_ChineseBra_l_Top
 # :: m_ChineseTop_l_Top
@@ -32220,11 +32474,14 @@ V形比基尼
 上衣(无袖)
 :: m_Yukata_l_Top
 上衣(无袖)
-# :: m_LightMaidKnight_Apron_l_Top
+:: m_LightMaidKnight_Apron_l_Top
+上部
 # :: m_LightMaidKnight_Bra_l_Top
 # :: m_LightMaidKnight_l_Top
-# :: m_HeavyMaidKnight_ApronTop_l_Top
-# :: m_HeavyMaidKnight_Apron_l_Top
+:: m_HeavyMaidKnight_ApronTop_l_Top
+上部
+:: m_HeavyMaidKnight_Apron_l_Top
+上部
 # :: m_HeavyMaidKnight_l_Top
 # - TapeFullArms
 # - TopFull
@@ -33283,8 +33540,9 @@ V形比基尼
 - ClothBelt
 布质腰带
 - ClothBeltLines
-布质腰带（条纹）
-# - BeltLines
+布质腰带(线条)
+- BeltLines
+腰带线条
 # :: m_ClothBeltLines_l_BeltLines
 # :: m_ClothBeltLines_l_BeltLines
 # :: m_DivineBelt_l_BeltLines
@@ -33292,8 +33550,10 @@ V形比基尼
 # :: m_DivineBeltRunic_l_BeltLines
 # :: m_FashionDivineBeltRunic_l_BeltLines
 # :: m_Ninja_l_BeltLines
-# - MaidGag
-# - FrillyPanel
+- MaidGag
+女仆口塞
+- FrillyPanel
+褶边口塞面板
 # :: m_MaidGag_l_FrillyPanel
 # :: m_DusterGag_l_FrillyPanel
 # :: m_MaidGag_l_FrillyPanel
@@ -33308,14 +33568,16 @@ V形比基尼
 # :: m_DusterGag_l_FrillyStraps
 # :: m_FashionMaidGag_l_FrillyStraps
 # :: m_FashionDusterGag_l_FrillyStraps
-# - FrillyHardware
+- FrillyHardware
+褶边金属件
 # :: m_MaidGag_l_FrillyHardware
 # :: m_DusterGag_l_FrillyHardware
 # :: m_MaidGag_l_FrillyHardware
 # :: m_DusterGag_l_FrillyHardware
 # :: m_FashionMaidGag_l_FrillyHardware
 # :: m_FashionDusterGag_l_FrillyHardware
-# - FrillyHighlights
+- FrillyHighlights
+褶边高光
 # :: m_MaidGag_l_FrillyHighlights
 # :: m_DusterGag_l_FrillyHighlights
 # :: m_MaidGag_l_FrillyHighlights
@@ -33574,74 +33836,137 @@ V形比基尼
 # - LargeBallGag
 # - LargeBallGagHarness
 # - LargeBallGagHarnessSecure
-# - PanelGag
+- PanelGag
+皮革面板口塞
 # - Panel
-# :: m_PanelGag_l_Panel
-# :: m_PanelGagHarness_l_Panel
-# :: m_PanelGagHarnessSecure_l_Panel
-# :: m_PlugPanelGag_l_Panel
-# :: m_PlugPanelGagHarness_l_Panel
-# :: m_PlugPanelGagHarnessSecure_l_Panel
-# :: m_KittyHarnessPanelGag_l_Panel
-# :: m_SegmentedLargePanelGag_l_Panel
-# :: m_SegmentedLargePanelGagHarness_l_Panel
-# :: m_SegmentedLargePanelGagHarnessSecure_l_Panel
-# :: m_SciFiPanelGag_l_Panel
-# :: m_AdvancedSciFiPanelGag_l_Panel
-# :: m_UltimateSciFiPanelGag_l_Panel
-# :: m_UltimateSciFiPanelGag2_l_Panel
-# :: m_SegmentedPlugGag_l_Panel
-# :: m_SegmentedPlugGagHarness_l_Panel
-# :: m_SegmentedPlugGagHarnessSecure_l_Panel
-# :: m_SciFiPlugGag_l_Panel
-# :: m_AdvancedSciFiPlugGag_l_Panel
-# :: m_UltimateSciFiPlugGag_l_Panel
-# :: m_UltimateSciFiPlugGag2_l_Panel
-# :: m_PanelGag_l_Panel
-# :: m_PanelGagHarness_l_Panel
-# :: m_PanelGagHarnessSecure_l_Panel
-# :: m_PlugPanelGag_l_Panel
-# :: m_PlugPanelGagHarness_l_Panel
-# :: m_PlugPanelGagHarnessSecure_l_Panel
-# :: m_KittyHarnessPanelGag_l_Panel
-# :: m_SegmentedLargePanelGag_l_Panel
-# :: m_SegmentedLargePanelGagHarness_l_Panel
-# :: m_SegmentedLargePanelGagHarnessSecure_l_Panel
-# :: m_SciFiPanelGag_l_Panel
-# :: m_AdvancedSciFiPanelGag_l_Panel
-# :: m_UltimateSciFiPanelGag_l_Panel
-# :: m_UltimateSciFiPanelGag2_l_Panel
-# :: m_SegmentedPlugGag_l_Panel
-# :: m_SegmentedPlugGagHarness_l_Panel
-# :: m_SegmentedPlugGagHarnessSecure_l_Panel
-# :: m_SciFiPlugGag_l_Panel
-# :: m_AdvancedSciFiPlugGag_l_Panel
-# :: m_UltimateSciFiPlugGag_l_Panel
-# :: m_UltimateSciFiPlugGag2_l_Panel
-# :: m_FashionPanelGag_l_Panel
-# :: m_FashionPanelGagHarness_l_Panel
-# :: m_FashionPanelGagHarnessSecure_l_Panel
-# :: m_FashionPlugPanelGag_l_Panel
-# :: m_FashionPlugPanelGagHarness_l_Panel
-# :: m_FashionPlugPanelGagHarnessSecure_l_Panel
-# :: m_FashionKittyHarnessPanelGag_l_Panel
-# :: m_FashionSegmentedLargePanelGag_l_Panel
-# :: m_FashionSegmentedLargePanelGagHarness_l_Panel
-# :: m_FashionSciFiPanelGag_l_Panel
-# :: m_FashionAdvancedSciFiPanelGag_l_Panel
-# :: m_FashionUltimateSciFiPanelGag_l_Panel
-# :: m_FashionUltimateSciFiPanelGag2_l_Panel
-# :: m_FashionSegmentedPlugGag_l_Panel
+:: m_PanelGag_l_Panel
+口塞面板
+:: m_PanelGagHarness_l_Panel
+口塞面板
+:: m_PanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_PlugPanelGag_l_Panel
+口塞面板
+:: m_PlugPanelGagHarness_l_Panel
+口塞面板
+:: m_PlugPanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_KittyHarnessPanelGag_l_Panel
+口塞面板
+:: m_SegmentedLargePanelGag_l_Panel
+口塞面板
+:: m_SegmentedLargePanelGagHarness_l_Panel
+口塞面板
+:: m_SegmentedLargePanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_SciFiPanelGag_l_Panel
+口塞面板
+:: m_AdvancedSciFiPanelGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPanelGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPanelGag2_l_Panel
+口塞面板
+:: m_SegmentedPlugGag_l_Panel
+口塞面板
+:: m_SegmentedPlugGagHarness_l_Panel
+口塞面板
+:: m_SegmentedPlugGagHarnessSecure_l_Panel
+口塞面板
+:: m_SciFiPlugGag_l_Panel
+口塞面板
+:: m_AdvancedSciFiPlugGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPlugGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPlugGag2_l_Panel
+口塞面板
+:: m_PanelGag_l_Panel
+口塞面板
+:: m_PanelGagHarness_l_Panel
+口塞面板
+:: m_PanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_PlugPanelGag_l_Panel
+口塞面板
+:: m_PlugPanelGagHarness_l_Panel
+口塞面板
+:: m_PlugPanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_KittyHarnessPanelGag_l_Panel
+口塞面板
+:: m_SegmentedLargePanelGag_l_Panel
+口塞面板
+:: m_SegmentedLargePanelGagHarness_l_Panel
+口塞面板
+:: m_SegmentedLargePanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_SciFiPanelGag_l_Panel
+口塞面板
+:: m_AdvancedSciFiPanelGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPanelGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPanelGag2_l_Panel
+口塞面板
+:: m_SegmentedPlugGag_l_Panel
+口塞面板
+:: m_SegmentedPlugGagHarness_l_Panel
+口塞面板
+:: m_SegmentedPlugGagHarnessSecure_l_Panel
+口塞面板
+:: m_SciFiPlugGag_l_Panel
+口塞面板
+:: m_AdvancedSciFiPlugGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPlugGag_l_Panel
+口塞面板
+:: m_UltimateSciFiPlugGag2_l_Panel
+口塞面板
+:: m_FashionPanelGag_l_Panel
+口塞面板
+:: m_FashionPanelGagHarness_l_Panel
+口塞面板
+:: m_FashionPanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_FashionPlugPanelGag_l_Panel
+口塞面板
+:: m_FashionPlugPanelGagHarness_l_Panel
+口塞面板
+:: m_FashionPlugPanelGagHarnessSecure_l_Panel
+口塞面板
+:: m_FashionKittyHarnessPanelGag_l_Panel
+口塞面板
+:: m_FashionSegmentedLargePanelGag_l_Panel
+口塞面板
+:: m_FashionSegmentedLargePanelGagHarness_l_Panel
+口塞面板
+:: m_FashionSciFiPanelGag_l_Panel
+口塞面板
+:: m_FashionAdvancedSciFiPanelGag_l_Panel
+口塞面板
+:: m_FashionUltimateSciFiPanelGag_l_Panel
+口塞面板
+:: m_FashionUltimateSciFiPanelGag2_l_Panel
+口塞面板
+:: m_FashionSegmentedPlugGag_l_Panel
+口塞面板
 # :: m_KittyPetBlindfoldPanel_l_Panel
 # :: m_KittyPetBlindfoldPanelStitched_l_Panel
 # :: m_FashionKittyPetBlindfoldPanel_l_Panel
 # :: m_FashionKittyPetBlindfoldPanelStitched_l_Panel
-# :: m_MaidGag_l_Panel
-# :: m_FashionMaidGag_l_Panel
-# :: m_DusterGag_l_Panel
-# :: m_FashionDusterGag_l_Panel
-# - PanelGagHarness
-# - PanelGagHarnessSecure
+:: m_MaidGag_l_Panel
+口塞面板
+:: m_FashionMaidGag_l_Panel
+口塞面板
+:: m_DusterGag_l_Panel
+口塞面板
+:: m_FashionDusterGag_l_Panel
+口塞面板
+- PanelGagHarness
+马具型面板口塞
+- PanelGagHarnessSecure
+高安全性马具型面板口塞
 # - MuzzleGag
 - Muzzle
 口套
@@ -33878,38 +34203,69 @@ V形比基尼
 # - SegmentedLargeBallGag
 # - SegmentedLargeBallGagHarness
 # - SegmentedLargeBallGagHarnessSecure
-# - SciFiBallGag
+- SciFiBallGag
+赛博口球
 # - TopRim
-# :: m_SciFiBallGag_l_TopRim
-# :: m_EnhancedSciFiBallGag_l_TopRim
-# :: m_AdvancedSciFiBallGag_l_TopRim
-# :: m_UltimateSciFiBallGag_l_TopRim
-# :: m_UltimateSciFiBallGag2_l_TopRim
-# :: m_SciFiPanelGag_l_TopRim
-# :: m_AdvancedSciFiPanelGag_l_TopRim
-# :: m_UltimateSciFiPanelGag_l_TopRim
-# :: m_UltimateSciFiPanelGag2_l_TopRim
-# :: m_SciFiPlugGag_l_TopRim
-# :: m_AdvancedSciFiPlugGag_l_TopRim
-# :: m_UltimateSciFiPlugGag_l_TopRim
-# :: m_UltimateSciFiPlugGag2_l_TopRim
-# :: m_SciFiBallGag_l_TopRim
-# :: m_EnhancedSciFiBallGag_l_TopRim
-# :: m_AdvancedSciFiBallGag_l_TopRim
-# :: m_UltimateSciFiBallGag_l_TopRim
-# :: m_UltimateSciFiBallGag2_l_TopRim
-# :: m_SciFiPanelGag_l_TopRim
-# :: m_AdvancedSciFiPanelGag_l_TopRim
-# :: m_UltimateSciFiPanelGag_l_TopRim
-# :: m_UltimateSciFiPanelGag2_l_TopRim
-# :: m_SciFiPlugGag_l_TopRim
-# :: m_AdvancedSciFiPlugGag_l_TopRim
-# :: m_UltimateSciFiPlugGag_l_TopRim
-# :: m_UltimateSciFiPlugGag2_l_TopRim
-# :: m_FashionSciFiPanelGag_l_TopRim
-# :: m_FashionAdvancedSciFiPanelGag_l_TopRim
-# :: m_FashionUltimateSciFiPanelGag_l_TopRim
-# :: m_FashionUltimateSciFiPanelGag2_l_TopRim
+:: m_SciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_EnhancedSciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_AdvancedSciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiBallGag2_l_TopRim
+顶部屏幕边框
+:: m_SciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_AdvancedSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPanelGag2_l_TopRim
+顶部屏幕边框
+:: m_SciFiPlugGag_l_TopRim
+顶部屏幕边框
+:: m_AdvancedSciFiPlugGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPlugGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPlugGag2_l_TopRim
+顶部屏幕边框
+:: m_SciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_EnhancedSciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_AdvancedSciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiBallGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiBallGag2_l_TopRim
+顶部屏幕边框
+:: m_SciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_AdvancedSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPanelGag2_l_TopRim
+顶部屏幕边框
+:: m_SciFiPlugGag_l_TopRim
+顶部屏幕边框
+:: m_AdvancedSciFiPlugGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPlugGag_l_TopRim
+顶部屏幕边框
+:: m_UltimateSciFiPlugGag2_l_TopRim
+顶部屏幕边框
+:: m_FashionSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_FashionAdvancedSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_FashionUltimateSciFiPanelGag_l_TopRim
+顶部屏幕边框
+:: m_FashionUltimateSciFiPanelGag2_l_TopRim
+顶部屏幕边框
 - Display
 屏幕
 # :: m_SciFiBallGag_l_Display
@@ -34052,33 +34408,53 @@ V形比基尼
 # :: m_LatexDollMittsLong_l_Display
 # :: m_LatexDollMittsLong_l_Display
 # :: m_LatexDollMittsLong_l_Display
-# - EnhancedSciFiBallGag
-# - AdvancedSciFiBallGag
+- EnhancedSciFiBallGag
+改良赛博口球
+- AdvancedSciFiBallGag
+高级赛博口球
 # - HarnessRim
-# :: m_AdvancedSciFiBallGag_l_HarnessRim
-# :: m_UltimateSciFiBallGag_l_HarnessRim
-# :: m_UltimateSciFiBallGag2_l_HarnessRim
-# :: m_AdvancedSciFiPanelGag_l_HarnessRim
-# :: m_UltimateSciFiPanelGag_l_HarnessRim
-# :: m_UltimateSciFiPanelGag2_l_HarnessRim
-# :: m_AdvancedSciFiPlugGag_l_HarnessRim
-# :: m_UltimateSciFiPlugGag_l_HarnessRim
-# :: m_UltimateSciFiPlugGag2_l_HarnessRim
+:: m_AdvancedSciFiBallGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiBallGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiBallGag2_l_HarnessRim
+两侧屏幕边框
+:: m_AdvancedSciFiPanelGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPanelGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPanelGag2_l_HarnessRim
+两侧屏幕边框
+:: m_AdvancedSciFiPlugGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPlugGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPlugGag2_l_HarnessRim
+两侧屏幕边框
 # :: m_SimpleSciFiMuzzle_l_HarnessRim
 # :: m_AdvancedSciFiMuzzle_l_HarnessRim
 # :: m_SciFiPlugMuzzle_l_HarnessRim
 # :: m_AdvancedSciFiPlugMuzzle_l_HarnessRim
 # :: m_SimpleSciFiMuzzle2_l_HarnessRim
 # :: m_AdvancedSciFiMuzzle2_l_HarnessRim
-# :: m_AdvancedSciFiBallGag_l_HarnessRim
-# :: m_UltimateSciFiBallGag_l_HarnessRim
-# :: m_UltimateSciFiBallGag2_l_HarnessRim
-# :: m_AdvancedSciFiPanelGag_l_HarnessRim
-# :: m_UltimateSciFiPanelGag_l_HarnessRim
-# :: m_UltimateSciFiPanelGag2_l_HarnessRim
-# :: m_AdvancedSciFiPlugGag_l_HarnessRim
-# :: m_UltimateSciFiPlugGag_l_HarnessRim
-# :: m_UltimateSciFiPlugGag2_l_HarnessRim
+:: m_AdvancedSciFiBallGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiBallGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiBallGag2_l_HarnessRim
+两侧屏幕边框
+:: m_AdvancedSciFiPanelGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPanelGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPanelGag2_l_HarnessRim
+两侧屏幕边框
+:: m_AdvancedSciFiPlugGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPlugGag_l_HarnessRim
+两侧屏幕边框
+:: m_UltimateSciFiPlugGag2_l_HarnessRim
+两侧屏幕边框
 # :: m_SimpleSciFiMuzzle_l_HarnessRim
 # :: m_AdvancedSciFiMuzzle_l_HarnessRim
 # :: m_SciFiPlugMuzzle_l_HarnessRim
@@ -34089,36 +34465,57 @@ V形比基尼
 # :: m_FashionAdvancedSciFiMuzzle2_l_HarnessRim
 # :: m_FashionAdvancedSciFiMuzzle_l_HarnessRim
 # :: m_FashionSimpleSciFiMuzzle2_l_HarnessRim
-# :: m_FashionAdvancedSciFiPanelGag_l_HarnessRim
-# :: m_FashionUltimateSciFiPanelGag_l_HarnessRim
-# :: m_FashionUltimateSciFiPanelGag2_l_HarnessRim
+:: m_FashionAdvancedSciFiPanelGag_l_HarnessRim
+两侧屏幕边框
+:: m_FashionUltimateSciFiPanelGag_l_HarnessRim
+两侧屏幕边框
+:: m_FashionUltimateSciFiPanelGag2_l_HarnessRim
+两侧屏幕边框
 # :: m_FashionSciFiPlugMuzzle_l_HarnessRim
 # :: m_FashionAdvancedSciFiPlugMuzzle_l_HarnessRim
 # - HarnessDisplay
-# :: m_AdvancedSciFiBallGag_l_HarnessDisplay
-# :: m_UltimateSciFiBallGag_l_HarnessDisplay
-# :: m_UltimateSciFiBallGag2_l_HarnessDisplay
-# :: m_AdvancedSciFiPanelGag_l_HarnessDisplay
-# :: m_UltimateSciFiPanelGag_l_HarnessDisplay
-# :: m_UltimateSciFiPanelGag2_l_HarnessDisplay
-# :: m_AdvancedSciFiPlugGag_l_HarnessDisplay
-# :: m_UltimateSciFiPlugGag_l_HarnessDisplay
-# :: m_UltimateSciFiPlugGag2_l_HarnessDisplay
+:: m_AdvancedSciFiBallGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiBallGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiBallGag2_l_HarnessDisplay
+两侧屏幕
+:: m_AdvancedSciFiPanelGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPanelGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPanelGag2_l_HarnessDisplay
+两侧屏幕
+:: m_AdvancedSciFiPlugGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPlugGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPlugGag2_l_HarnessDisplay
+两侧屏幕
 # :: m_SimpleSciFiMuzzle_l_HarnessDisplay
 # :: m_AdvancedSciFiMuzzle_l_HarnessDisplay
 # :: m_SciFiPlugMuzzle_l_HarnessDisplay
 # :: m_AdvancedSciFiPlugMuzzle_l_HarnessDisplay
 # :: m_SimpleSciFiMuzzle2_l_HarnessDisplay
 # :: m_AdvancedSciFiMuzzle2_l_HarnessDisplay
-# :: m_AdvancedSciFiBallGag_l_HarnessDisplay
-# :: m_UltimateSciFiBallGag_l_HarnessDisplay
-# :: m_UltimateSciFiBallGag2_l_HarnessDisplay
-# :: m_AdvancedSciFiPanelGag_l_HarnessDisplay
-# :: m_UltimateSciFiPanelGag_l_HarnessDisplay
-# :: m_UltimateSciFiPanelGag2_l_HarnessDisplay
-# :: m_AdvancedSciFiPlugGag_l_HarnessDisplay
-# :: m_UltimateSciFiPlugGag_l_HarnessDisplay
-# :: m_UltimateSciFiPlugGag2_l_HarnessDisplay
+:: m_AdvancedSciFiBallGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiBallGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiBallGag2_l_HarnessDisplay
+两侧屏幕
+:: m_AdvancedSciFiPanelGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPanelGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPanelGag2_l_HarnessDisplay
+两侧屏幕
+:: m_AdvancedSciFiPlugGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPlugGag_l_HarnessDisplay
+两侧屏幕
+:: m_UltimateSciFiPlugGag2_l_HarnessDisplay
+两侧屏幕
 # :: m_SimpleSciFiMuzzle_l_HarnessDisplay
 # :: m_AdvancedSciFiMuzzle_l_HarnessDisplay
 # :: m_SciFiPlugMuzzle_l_HarnessDisplay
@@ -34129,20 +34526,32 @@ V形比基尼
 # :: m_FashionAdvancedSciFiMuzzle2_l_HarnessDisplay
 # :: m_FashionAdvancedSciFiMuzzle_l_HarnessDisplay
 # :: m_FashionSimpleSciFiMuzzle2_l_HarnessDisplay
-# :: m_FashionAdvancedSciFiPanelGag_l_HarnessDisplay
-# :: m_FashionUltimateSciFiPanelGag_l_HarnessDisplay
-# :: m_FashionUltimateSciFiPanelGag2_l_HarnessDisplay
+:: m_FashionAdvancedSciFiPanelGag_l_HarnessDisplay
+两侧屏幕
+:: m_FashionUltimateSciFiPanelGag_l_HarnessDisplay
+两侧屏幕
+:: m_FashionUltimateSciFiPanelGag2_l_HarnessDisplay
+两侧屏幕
 # :: m_FashionSciFiPlugMuzzle_l_HarnessDisplay
 # :: m_FashionAdvancedSciFiPlugMuzzle_l_HarnessDisplay
-# - UltimateSciFiBallGag
-# - UltimateSciFiBallGag2
-# - SegmentedLargePanelGag
-# - SegmentedLargePanelGagHarness
-# - SegmentedLargePanelGagHarnessSecure
-# - SciFiPanelGag
-# - AdvancedSciFiPanelGag
-# - UltimateSciFiPanelGag
-# - UltimateSciFiPanelGag2
+- UltimateSciFiBallGag
+终极赛博口球
+- UltimateSciFiBallGag2
+终极赛博口球2
+- SegmentedLargePanelGag
+模块化大面板口塞
+- SegmentedLargePanelGagHarness
+马具式模块化大面板口塞
+- SegmentedLargePanelGagHarnessSecure
+安全马具式模块化大面板口塞
+- SciFiPanelGag
+赛博面板口塞
+- AdvancedSciFiPanelGag
+高级赛博面板口塞
+- UltimateSciFiPanelGag
+终极赛博面板口塞
+- UltimateSciFiPanelGag2
+终极赛博面板口塞(透明口套)
 # - SegmentedPlugGag
 # - SegmentedPlugGagHarness
 # - SegmentedPlugGagHarnessSecure
@@ -34404,30 +34813,47 @@ V形比基尼
 - GasMask
 防毒面具
 # - Valves
-# :: m_GasMask_l_Valves
-# :: m_GasMaskRestraint_l_Valves
-# :: m_GasMask_l_Valves
-# :: m_GasMaskRestraint_l_Valves
+:: m_GasMask_l_Valves
+气阀
+:: m_GasMaskRestraint_l_Valves
+气阀
+:: m_GasMask_l_Valves
+气阀
+:: m_GasMaskRestraint_l_Valves
+气阀
 # - Center
-# :: m_GasMask_l_Center
-# :: m_GasMaskRestraint_l_Center
-# :: m_GasMask_l_Center
-# :: m_GasMaskRestraint_l_Center
+:: m_GasMask_l_Center
+中部
+:: m_GasMaskRestraint_l_Center
+中部
+:: m_GasMask_l_Center
+中部
+:: m_GasMaskRestraint_l_Center
+中部
 # :: m_DivineBra_l_Center
 # :: m_FashionDivineBra_l_Center
 # :: m_DivineBraRunic_l_Center
 # :: m_FashionDivineBraRunic_l_Center
 # - Nose
-# :: m_GasMask_l_Nose
-# :: m_GasMaskRestraint_l_Nose
-# :: m_GasMask_l_Nose
-# :: m_GasMaskRestraint_l_Nose
+:: m_GasMask_l_Nose
+鼻部
+:: m_GasMaskRestraint_l_Nose
+鼻部
+:: m_GasMask_l_Nose
+鼻部
+:: m_GasMaskRestraint_l_Nose
+鼻部
 # - Plugs
-# :: m_GasMask_l_Plugs
-# :: m_GasMaskRestraint_l_Plugs
-# :: m_GasMask_l_Plugs
-# :: m_GasMaskRestraint_l_Plugs
-# - GasMaskRestraint
+:: m_GasMask_l_Plugs
+滤芯
+:: m_GasMaskRestraint_l_Plugs
+滤芯
+:: m_GasMask_l_Plugs
+滤芯
+:: m_GasMaskRestraint_l_Plugs
+滤芯
+- GasMaskRestraint
+防毒面具拘束
 - Petsuit
 宠物服
 - LeftLegs
@@ -34733,28 +35159,44 @@ Aura刘海(右后)
 - TransparentCatsuitLowerLeotard
 透明胶衣高腰三角裤
 - ChainBikini
-链甲比基尼
-# - ChainSkirt2
+链甲胸衣
+- ChainSkirt2
+链甲战裙(无侧板)
 - SkirtBeltDeco
 裙腰带装饰
-# :: m_ChainSkirt2_l_SkirtBeltDeco
-# :: m_ChainSkirt_l_SkirtBeltDeco
-# :: m_ChainArmor_l_SkirtBeltDeco
-# :: m_ChainSkirt2Restraint_l_SkirtBeltDeco
-# :: m_ChainSkirtRestraint_l_SkirtBeltDeco
+:: m_ChainSkirt2_l_SkirtBeltDeco
+战裙腰带装饰
+:: m_ChainSkirt_l_SkirtBeltDeco
+战裙腰带装饰
+:: m_ChainArmor_l_SkirtBeltDeco
+战裙腰带装饰
+:: m_ChainSkirt2Restraint_l_SkirtBeltDeco
+战裙腰带装饰
+:: m_ChainSkirtRestraint_l_SkirtBeltDeco
+战裙腰带装饰
 - SkirtBeltRivets
 裙腰带铆钉
-# :: m_ChainSkirt2_l_SkirtBeltRivets
-# :: m_ChainSkirt_l_SkirtBeltRivets
-# :: m_ChainArmor_l_SkirtBeltRivets
-# :: m_ChainSkirt2Restraint_l_SkirtBeltRivets
-# :: m_ChainSkirtRestraint_l_SkirtBeltRivets
+:: m_ChainSkirt2_l_SkirtBeltRivets
+战裙腰带铆钉
+:: m_ChainSkirt_l_SkirtBeltRivets
+战裙腰带铆钉
+:: m_ChainArmor_l_SkirtBeltRivets
+战裙腰带铆钉
+:: m_ChainSkirt2Restraint_l_SkirtBeltRivets
+战裙腰带铆钉
+:: m_ChainSkirtRestraint_l_SkirtBeltRivets
+战裙腰带铆钉
 # - Skirt2
-# :: m_ChainSkirt2_l_Skirt2
-# :: m_ChainSkirt_l_Skirt2
-# :: m_ChainArmor_l_Skirt2
-# :: m_ChainSkirt2Restraint_l_Skirt2
-# :: m_ChainSkirtRestraint_l_Skirt2
+:: m_ChainSkirt2_l_Skirt2
+链甲前裙
+:: m_ChainSkirt_l_Skirt2
+链甲前裙
+:: m_ChainArmor_l_Skirt2
+链甲前裙
+:: m_ChainSkirt2Restraint_l_Skirt2
+链甲前裙
+:: m_ChainSkirtRestraint_l_Skirt2
+链甲前裙
 - FashionKiguMask
 装饰性Kig面具
 - SwimsuitUnder
@@ -34826,19 +35268,25 @@ Aura刘海(右后)
 晚宴手套拘束
 - SailorCollar
 水手服领子
-# - CollarStripe
+- CollarStripe
+领子条纹
 # :: m_SailorCollar_l_CollarStripe
 # :: m_SailorCollarFull_l_CollarStripe
 # :: m_Sailor_l_CollarStripe
 # :: m_KittyPetSteelCollar_l_CollarStripe
 # :: m_FashionKittyPetSteelCollar_l_CollarStripe
-# - SailorCollarFull
+- SailorCollarFull
+水手服领子(完整)
 # - Bust
-# :: m_SailorCollarFull_l_Bust
-# :: m_Sailor_l_Bust
+:: m_SailorCollarFull_l_Bust
+领子本体
+:: m_Sailor_l_Bust
+领子本体
 # - BustStripe
-# :: m_SailorCollarFull_l_BustStripe
-# :: m_Sailor_l_BustStripe
+:: m_SailorCollarFull_l_BustStripe
+领子本体条纹
+:: m_Sailor_l_BustStripe
+领子本体条纹
 - SailorBow
 水手服领结
 - SailorTop
@@ -34860,25 +35308,27 @@ Aura刘海(右后)
 # :: m_SailorShirt_l_HemRight
 # :: m_Sailor_l_HemRight
 - SailorSleeves
-水手服袖
+水手服袖子
 - SailorShirt
 水手服衬衫
 - Sailor
 水手服
-# - DressSkirtSplitNoBelt
+- DressSkirtSplitNoBelt
+前开叉礼服长裙(无腰带)
 - SkirtSplit
-裙子(开叉)
+长裙前开叉
 # :: m_DressSkirtSplitNoBelt_l_SkirtSplit
 # :: m_DressSkirtSplit_l_SkirtSplit
 # :: m_BindingDress_l_SkirtSplit
-# - SkirtSplitOver
+- SkirtSplitOver
+长裙前开叉(叠加层)
 # :: m_DressSkirtSplitNoBelt_l_SkirtSplitOver
 # :: m_DressSkirtSplit_l_SkirtSplitOver
 # :: m_BindingDress_l_SkirtSplitOver
 - DressSkirtSplit
-礼服裙(开叉)
+前开叉礼服长裙
 - SkirtSplitBelt
-裙子(开叉)裙腰带
+长裙腰带
 # :: m_DressSkirtSplit_l_SkirtSplitBelt
 # :: m_BindingDress_l_SkirtSplitBelt
 - BlouseSkirtLone
@@ -35370,7 +35820,7 @@ Aura刘海(右后)
 # :: m_WolfCuffsAnklesRightRestraint_l_Band
 # :: m_WolfCuffsAnklesLeftRestraint_l_Band
 - MageSkirtOver
-法师短裙(跪姿叠加层)
+法师短裙(叠加层)
 # :: m_MageSkirt_l_MageSkirtOver
 # :: m_Mage_l_MageSkirtOver
 - MageCorset
@@ -35435,21 +35885,36 @@ Aura刘海(右后)
 - ChineseDress
 旗袍
 # - Highlights
-# :: m_ChineseDress_l_Highlights
-# :: m_ChineseBra_l_Highlights
-# :: m_ChineseTop_l_Highlights
-# :: m_DivineBelt_l_Highlights
-# :: m_FashionDivineBelt_l_Highlights
-# :: m_DivineBeltRunic_l_Highlights
-# :: m_FashionDivineBeltRunic_l_Highlights
-# :: m_DivineBra_l_Highlights
-# :: m_FashionDivineBra_l_Highlights
-# :: m_DivineBraRunic_l_Highlights
-# :: m_FashionDivineBraRunic_l_Highlights
-# :: m_MaidGag_l_Highlights
-# :: m_FashionMaidGag_l_Highlights
-# :: m_DusterGag_l_Highlights
-# :: m_FashionDusterGag_l_Highlights
+:: m_ChineseDress_l_Highlights
+高光部分
+:: m_ChineseBra_l_Highlights
+高光部分
+:: m_ChineseTop_l_Highlights
+高光部分
+:: m_DivineBelt_l_Highlights
+高光部分
+:: m_FashionDivineBelt_l_Highlights
+高光部分
+:: m_DivineBeltRunic_l_Highlights
+高光部分
+:: m_FashionDivineBeltRunic_l_Highlights
+高光部分
+:: m_DivineBra_l_Highlights
+高光部分
+:: m_FashionDivineBra_l_Highlights
+高光部分
+:: m_DivineBraRunic_l_Highlights
+高光部分
+:: m_FashionDivineBraRunic_l_Highlights
+高光部分
+:: m_MaidGag_l_Highlights
+高光部分
+:: m_FashionMaidGag_l_Highlights
+高光部分
+:: m_DusterGag_l_Highlights
+高光部分
+:: m_FashionDusterGag_l_Highlights
+高光部分
 :: KDPaletteLayer_Highlight
 高亮
 # - DressSkirtOverKneel
@@ -35564,19 +36029,25 @@ Aura刘海(右后)
 # :: m_BuckleCorsetRestraint_l_BuckleCorsetHardware
 # - BuckleCorsetRestraint
 - StripedSkirt
-条纹短裙
+百褶裙
 # :: m_StripedSkirt
 # :: m_StripedSkirt_l_StripedSkirt
-# - StripedSkirtUnder
-# - StripedSkirtOver
-# - StripedSkirtUnderOver
+- StripedSkirtUnder
+百褶裙里层
+- StripedSkirtOver
+百褶裙(叠加层)
+- StripedSkirtUnderOver
+百褶裙里层(叠加层)
 - ApronSkirt
-短围裙
+带围裙短裙
 # :: m_ApronSkirt
 # :: m_ApronSkirt_l_ApronSkirt
-# - MaidSkirt
-# - MaidSkirtOver
-# - ApronSkirtOver
+- MaidSkirt
+女仆短裙
+- MaidSkirtOver
+女仆短裙(叠加层)
+- ApronSkirtOver
+带围裙短裙(叠加层)
 # - LegRimLeft
 # :: m_WolfSockLeft_l_LegRimLeft
 # :: m_WolfSocks_l_LegRimLeft
@@ -37020,35 +37491,42 @@ Aura刘海(右后)
 # :: m_ClothBra_l_TopChest
 # :: m_ClothTopBand_l_TopChest
 # :: m_ClothBraBand_l_TopChest
-# :: m_Ninja_l_TopChest
+:: m_Ninja_l_TopChest
+背心胸部
 # - TopShoulders
 # :: m_ClothTop_l_TopShoulders
 # :: m_ClothTopBand_l_TopShoulders
-# :: m_Ninja_l_TopShoulders
+:: m_Ninja_l_TopShoulders
+背心肩部
 - ClothBra
 布文胸
 # - ClothTopBand
 # - TopBandChest
 # :: m_ClothTopBand_l_TopBandChest
 # :: m_ClothBraBand_l_TopBandChest
-# :: m_Ninja_l_TopBandChest
+:: m_Ninja_l_TopBandChest
+背心饰带(胸部)
 # - TopBandRimChest
 # :: m_ClothTopBand_l_TopBandRimChest
 # :: m_ClothBraBand_l_TopBandRimChest
-# :: m_Ninja_l_TopBandRimChest
+:: m_Ninja_l_TopBandRimChest
+背心饰边(胸部)
 # - TopBand
 # :: m_ClothTopBand_l_TopBand
 # :: m_ClothBraBand_l_TopBand
-# :: m_Ninja_l_TopBand
+:: m_Ninja_l_TopBand
+背心饰带(下部)
 # - TopBandRim
 # :: m_ClothTopBand_l_TopBandRim
 # :: m_ClothBraBand_l_TopBandRim
-# :: m_Ninja_l_TopBandRim
+:: m_Ninja_l_TopBandRim
+背心饰边(下部)
 - ClothBraBand
 布文胸（条纹）
 - NinjaSkirt
 忍者短裙
-# - SkirtBandOver
+- SkirtBandOver
+短裙饰带(叠加层)
 # :: m_NinjaSkirt_l_SkirtBandOver
 # :: m_Ninja_l_SkirtBandOver
 - NinjaSockLeft
@@ -37056,20 +37534,20 @@ Aura刘海(右后)
 - NinjaSockRight
 忍者短袜(右)
 - NinjaThighLeft
-忍者长袜 (左)
+忍者长袜(左)
 - NinjaThighRight
-忍者长袜 (右)
+忍者长袜(右)
 - NinjaKneeLeft
-忍者护膝 (左)
+忍者护膝(左)
 - KneeLeft
-忍者护膝 (左)
+忍者护膝(左)
 # :: m_NinjaKneeLeft_l_KneeLeft
 # :: m_NinjaKnees_l_KneeLeft
 # :: m_Ninja_l_KneeLeft
 - NinjaKneeRight
-忍者护膝 (右)
+忍者护膝(右)
 - KneeRight
-忍者护膝 (右)
+忍者护膝(右)
 # :: m_NinjaKneeRight_l_KneeRight
 # :: m_NinjaKnees_l_KneeRight
 # :: m_Ninja_l_KneeRight
@@ -37082,7 +37560,7 @@ Aura刘海(右后)
 - NinjaShoes
 忍者鞋
 - Ninja
-忍者
+忍者装
 - FashionMaidGag
 装饰性女仆口塞
 - FashionDusterGag
@@ -37165,12 +37643,18 @@ Aura刘海(右后)
 装饰性猫咪口罩型口塞
 - FashionSmoothBallGag
 装饰性平滑口球
-# - FashionSegmentedLargePanelGag
-# - FashionSegmentedLargePanelGagHarness
-# - FashionSciFiPanelGag
-# - FashionAdvancedSciFiPanelGag
-# - FashionUltimateSciFiPanelGag
-# - FashionUltimateSciFiPanelGag2
+- FashionSegmentedLargePanelGag
+装饰性模块化大面板口塞
+- FashionSegmentedLargePanelGagHarness
+装饰性马具式模块化大面板口塞
+- FashionSciFiPanelGag
+装饰性赛博面板口塞
+- FashionAdvancedSciFiPanelGag
+装饰性高极赛博面板口塞
+- FashionUltimateSciFiPanelGag
+装饰性终极赛博面板口塞
+- FashionUltimateSciFiPanelGag2
+装饰性终极赛博面板口塞(透明口套)
 # - FashionSegmentedPlugGag
 # - FashionSciFiPlugMuzzle
 # - FashionAdvancedSciFiPlugMuzzle
@@ -37224,8 +37708,10 @@ Aura刘海(右后)
 # - Rim
 :: m_FutureBox_l_Rim
 镶边
-# :: m_RoundHat_l_Rim
-# :: m_RoundHat_l_Rim
+:: m_RoundHat_l_Rim
+帽檐
+:: m_RoundHat_l_Rim
+帽檐
 # :: m_TopHatSmall_l_Rim
 # :: m_Bra_l_Rim
 # :: m_Bra_l_Rim
@@ -37344,8 +37830,10 @@ Aura刘海(右后)
 # :: m_ClothTopBand_l_Rim
 # :: m_ClothBraBand_l_Rim
 # :: m_ClothBraBand_l_Rim
-# :: m_Ninja_l_Rim
-# :: m_Ninja_l_Rim
+:: m_Ninja_l_Rim
+饰边
+:: m_Ninja_l_Rim
+饰边
 # :: m_LatexNeckCorset_l_Rim
 # :: m_LatexNeckCorsetGag_l_Rim
 # :: m_LatexNeckCorsetRestraint_l_Rim
@@ -37423,44 +37911,62 @@ Aura刘海(右后)
 - DisplayLeftLegs
 屏幕(左腿)
 - NippleClamps
-乳头穿孔
+振动器乳夹
 # - Clamps
-# :: m_NippleClamps_l_Clamps
-# :: m_NippleClampsRestraint_l_Clamps
-# :: m_VibePiercings_l_Clamps
-# :: m_VibePiercingsRestraint_l_Clamps
+:: m_NippleClamps_l_Clamps
+乳夹
+:: m_NippleClampsRestraint_l_Clamps
+乳夹
+:: m_VibePiercings_l_Clamps
+乳夹
+:: m_VibePiercingsRestraint_l_Clamps
+乳夹
 # - ClampsBullet
-# :: m_NippleClamps_l_ClampsBullet
-# :: m_NippleClampsRestraint_l_ClampsBullet
-# :: m_VibePiercings_l_ClampsBullet
-# :: m_VibePiercingsRestraint_l_ClampsBullet
-# - NippleClampsRestraint
+:: m_NippleClamps_l_ClampsBullet
+乳夹振动单元
+:: m_NippleClampsRestraint_l_ClampsBullet
+乳夹振动单元
+:: m_VibePiercings_l_ClampsBullet
+乳夹振动单元
+:: m_VibePiercingsRestraint_l_ClampsBullet
+乳夹振动单元
+- NippleClampsRestraint
+振动器乳夹拘束
 - RingVibes
-乳环
+自震乳环
 # - Rings
-# :: m_RingVibes_l_Rings
-# :: m_RingVibesRestraint_l_Rings
+:: m_RingVibes_l_Rings
+乳环
+:: m_RingVibesRestraint_l_Rings
+乳环
 # - RingsBullet
-# :: m_RingVibes_l_RingsBullet
-# :: m_RingVibesRestraint_l_RingsBullet
-# - RingVibesRestraint
+:: m_RingVibes_l_RingsBullet
+乳环振动单元
+:: m_RingVibesRestraint_l_RingsBullet
+乳环振动单元
+- RingVibesRestraint
+自震乳环拘束
 - NippleWeights
-乳头砝码
+负重乳夹
 - Weights
-砝码
+配重
 # :: m_NippleWeights_l_Weights
 # :: m_NippleWeightsRestraint_l_Weights
-# :: KDBindNPCSlot_NippleWeight
-# - NippleWeightsRestraint
+:: KDBindNPCSlot_NippleWeight
+负重
+- NippleWeightsRestraint
+负重乳夹拘束
 - VibePiercings
-震动穿孔
+振动器乳环
 # :: m_VibePiercings
 # :: m_VibePiercings_l_VibePiercings
 # :: m_VibePiercingsRestraint_l_VibePiercings
-# - VibePiercingsBullet
+- VibePiercingsBullet
+振动器乳环振动单元
 # :: m_VibePiercings_l_VibePiercingsBullet
 # :: m_VibePiercingsRestraint_l_VibePiercingsBullet
-# - VibePiercingsRestraint
+- VibePiercingsRestraint
+振动器乳环拘束
 # - PostureCollarBasic
 # - PostureCollar
 # :: m_PostureCollarBasic_l_PostureCollar
@@ -38325,7 +38831,8 @@ Aura刘海(右后)
 胸部基础部分
 # :: m_TheRobeOfChastity_l_ChestBase
 # :: m_TheRobeOfChastityRestraint_l_ChestBase
-# - Frill
+- Frill
+褶边
 # :: m_TheRobeOfChastity_l_Frill
 # :: m_TheRobeOfChastityRestraint_l_Frill
 # :: m_MaidHairband_l_Frill
@@ -38344,11 +38851,16 @@ Aura刘海(右后)
 # - Plate
 # :: m_TheRobeOfChastity_l_Plate
 # :: m_TheRobeOfChastityRestraint_l_Plate
-# :: m_ChainSkirt_l_Plate
-# :: m_ChainSkirtRestraint_l_Plate
-# :: m_ChainPanties2_l_Plate
-# :: m_ChainPanties2Restraint_l_Plate
-# :: m_ChainArmor_l_Plate
+:: m_ChainSkirt_l_Plate
+侧板
+:: m_ChainSkirtRestraint_l_Plate
+侧板
+:: m_ChainPanties2_l_Plate
+侧板
+:: m_ChainPanties2Restraint_l_Plate
+侧板
+:: m_ChainArmor_l_Plate
+侧板
 # - ChestPlate
 # :: m_TheRobeOfChastity_l_ChestPlate
 # :: m_TheRobeOfChastityRestraint_l_ChestPlate
@@ -38433,7 +38945,7 @@ Aura刘海(右后)
 轻装女仆骑士_袖子
 
 - LightMaidKnightHairband
-轻装女仆骑士头部绑带
+轻装女仆骑士_发带
 - Headband
 蝴蝶结发带
 # :: m_LightMaidKnightHairband_l_Headband
@@ -38442,7 +38954,7 @@ Aura刘海(右后)
 # :: m_HeavyMaidKnight_l_Headband
 # :: m_FrillyHeadband_l_Headband
 - HeadbandFrill
-褶边头部绑带
+头带(褶边)
 # :: m_LightMaidKnightHairband_l_HeadbandFrill
 # :: m_LightMaidKnight_l_HeadbandFrill
 # :: m_HeavyMaidKnightHairband_l_HeadbandFrill
@@ -38452,7 +38964,8 @@ Aura刘海(右后)
 丝带头部绑带
 # :: m_LightMaidKnightHairband_l_HeadbandRibbon
 # :: m_LightMaidKnight_l_HeadbandRibbon
-# :: m_HeavyMaidKnightHairband_l_HeadbandRibbon
+:: m_HeavyMaidKnightHairband_l_HeadbandRibbon
+头带(前丝带)
 # :: m_HeavyMaidKnight_l_HeadbandRibbon
 - FootBootLeftHogtie
 左靴(驷马)
@@ -38576,10 +39089,11 @@ Aura刘海(右后)
 轻装女仆骑士
 
 - HeavyMaidKnightHairband
-重装女仆骑士头绑带
+重装女仆骑士_发带
 - HeadbandRibbonBack
 头部丝带后背
-# :: m_HeavyMaidKnightHairband_l_HeadbandRibbonBack
+:: m_HeavyMaidKnightHairband_l_HeadbandRibbonBack
+头带(后丝带)
 # :: m_HeavyMaidKnight_l_HeadbandRibbonBack
 - FlowerLeaves
 花叶
@@ -38603,7 +39117,7 @@ Aura刘海(右后)
 # :: m_HeavyMaidKnight_Sleeves_l_SleeveLeftStripe
 # :: m_HeavyMaidKnight_l_SleeveLeftStripe
 - HeavyMaidKnight_SleeveRight
-重装女仆骑士_右袖子
+重装女仆骑士_右袖
 - SleeveRightStripe
 右袖条纹
 # :: m_HeavyMaidKnight_SleeveRight_l_SleeveRightStripe
@@ -38724,7 +39238,7 @@ Aura刘海(右后)
 # :: m_HeavyMaidKnight_Waist_l_Pouches
 # :: m_HeavyMaidKnight_l_Pouches
 - HeavyMaidKnight_Waist
-重装女仆骑士_腰
+重装女仆骑士_腰部
 - HeavyMaidKnight_Boots
 重装女仆骑士_靴子
 - BootLegLeft
@@ -38809,7 +39323,8 @@ Aura刘海(右后)
 # :: m_MilitaryUniform_Hat_l_Hat
 # :: m_MilitaryUniform_l_Hat
 # :: m_SantaHat_l_Hat
-# :: m_RoundHat_l_Hat
+:: m_RoundHat_l_Hat
+帽檐(前)
 - HatRim
 帽子边饰
 # :: m_MilitaryUniform_Hat_l_HatRim
@@ -39034,7 +39549,8 @@ Aura刘海(右后)
 圣诞帽
 # - HatBack
 # :: m_SantaHat_l_HatBack
-# :: m_RoundHat_l_HatBack
+:: m_RoundHat_l_HatBack
+帽檐(后)
 - Fluff
 绒毛
 # :: m_SantaHat_l_Fluff
@@ -39057,7 +39573,8 @@ Aura刘海(右后)
 # :: m_FashionFestiveHarness_l_Fluff
 - Orb
 宝球
-# :: m_SantaHat_l_Orb
+:: m_SantaHat_l_Orb
+绒布球
 # :: KDMinimapLabel_Orb
 # - FestiveArmbinder
 # - BinderStrapLeft
@@ -39207,6 +39724,8 @@ Vents发型
 - RoundHat
 圆顶帽
 # - HatTop
+:: m_RoundHat_l_HatTop
+帽顶
 - TopHatSmall
 小礼帽
 # :: m_TopHatSmall
@@ -39268,13 +39787,19 @@ Vents发型
 一对发卡
 # - HairclipLower
 # - HairclipUpper
-# - ChainPanties
+- ChainPanties
+链甲内裤
 # - PantiesChain
-# :: m_ChainPanties_l_PantiesChain
-# :: m_ChainPanties2_l_PantiesChain
-# :: m_ChainPantiesRestraint_l_PantiesChain
-# :: m_ChainPanties2Restraint_l_PantiesChain
-# - ChainPanties2
+:: m_ChainPanties_l_PantiesChain
+内裤链甲
+:: m_ChainPanties2_l_PantiesChain
+内裤链甲
+:: m_ChainPantiesRestraint_l_PantiesChain
+内裤链甲
+:: m_ChainPanties2Restraint_l_PantiesChain
+内裤链甲
+- ChainPanties2
+链甲内裤(带侧板)
 - KittyPetCuffsWristLeft
 猫咪宠物腕铐(左)
 - KittyPetCuffsWristRight
@@ -39642,12 +40167,18 @@ Vents发型
 # - PauldronRightRestraint
 # - PlateBootsRestraint
 # - GauntletsRestraint
-# - ChainShirtRestraint
-# - ChainBikiniRestraint
-# - ChainSkirt2Restraint
-# - ChainSkirtRestraint
-# - ChainPantiesRestraint
-# - ChainPanties2Restraint
+- ChainShirtRestraint
+链甲背心拘束
+- ChainBikiniRestraint
+链甲胸衣拘束
+- ChainSkirt2Restraint
+链甲战裙(无侧板)拘束
+- ChainSkirtRestraint
+链甲战裙拘束
+- ChainPantiesRestraint
+链甲内裤拘束
+- ChainPanties2Restraint
+链甲内裤(带侧板)拘束
 # - WarriorBootsRestraint
 - BustierChestRim
 护胸(镶边)
@@ -39883,14 +40414,21 @@ Vents发型
 # :: m_Fox2Tail_l_Tail1
 - Bikini
 比基尼
-# :: m_ChainBikini_l_Bikini
-# :: m_ChainBikiniRestraint_l_Bikini
+:: m_ChainBikini_l_Bikini
+链甲胸衣
+:: m_ChainBikiniRestraint_l_Bikini
+链甲胸衣
 # - Insignia
-# :: m_ChainSkirt2_l_Insignia
-# :: m_ChainSkirt2Restraint_l_Insignia
-# :: m_ChainSkirt_l_Insignia
-# :: m_ChainSkirtRestraint_l_Insignia
-# :: m_ChainArmor_l_Insignia
+:: m_ChainSkirt2_l_Insignia
+腰带扣
+:: m_ChainSkirt2Restraint_l_Insignia
+腰带扣
+:: m_ChainSkirt_l_Insignia
+腰带扣
+:: m_ChainSkirtRestraint_l_Insignia
+腰带扣
+:: m_ChainArmor_l_Insignia
+腰带扣
 - Rivets
 铆钉
 # :: m_ChainSkirt2_l_Rivets
@@ -39906,10 +40444,14 @@ Vents发型
 # :: m_FashionHighSecBlindfold_l_Rivets
 # :: m_HighSecBlindfoldRestraint_l_Rivets
 # - Ruffle
-# :: m_WitchSkirt_l_Ruffle
-# :: m_WitchSkirt_l_Ruffle
-# :: m_Witch_l_Ruffle
-# :: m_Witch_l_Ruffle
+:: m_WitchSkirt_l_Ruffle
+裙摆褶边
+:: m_WitchSkirt_l_Ruffle
+裙摆褶边
+:: m_Witch_l_Ruffle
+裙摆褶边
+:: m_Witch_l_Ruffle
+裙摆褶边
 # :: m_BowCorset_l_Ruffle
 # :: m_BowCorsetLong_l_Ruffle
 # :: m_BowCorsetOverbust_l_Ruffle
@@ -41036,8 +41578,10 @@ Vents发型
 # :: m_BuckleCorset_l_Buckles
 # :: m_BuckleCorsetRestraint_l_Buckles
 # - Underskirt
-# :: m_StripedSkirt_l_Underskirt
-# :: m_StripedSkirt_l_Underskirt
+:: m_StripedSkirt_l_Underskirt
+百褶裙里层
+:: m_StripedSkirt_l_Underskirt
+百褶裙里层
 - Lining
 衬里
 # :: m_WolfCollar_l_Lining
@@ -41846,7 +42390,8 @@ Vents发型
 # - SkirtStripe
 # :: m_HeavyMaidKnight_Dress_l_SkirtStripe
 # :: m_HeavyMaidKnight_l_SkirtStripe
-# - TopRuffles
+- TopRuffles
+上部褶边
 # :: m_HeavyMaidKnight_ApronTop_l_TopRuffles
 # :: m_HeavyMaidKnight_Apron_l_TopRuffles
 # :: m_HeavyMaidKnight_l_TopRuffles
@@ -42395,7 +42940,7 @@ Kjus眼5
 - Rope Harness
 绳束衣
 - A harness that secures your other restraints and makes them tighter.
-一种安全带，可固定你的其他束缚并使它们更紧。
+一件绳束衣，可固定你的其他束缚并使它们更紧。
 # :: RestraintRopeSnakeHarnessDesc
 # :: RestraintStrongMagicRopeHarnessDesc
 # :: RestraintWeakMagicRopeHarnessDesc
@@ -42609,7 +43154,7 @@ Kjus眼5
 - Gags
 堵嘴物
 - Harnesses
-安全带
+绳束衣
 - Mittens
 束手套
 # :: KDFilterFiltersMittens
@@ -43286,7 +43831,7 @@ AMNT 统计
 - Harness Plug Gag
 马具塞子口塞
 - A gag meant to keep people quiet by forcing a plug into their mouth and securing it in place with a strict harness.
-一种堵嘴装置，旨在通过将塞子强行塞入人们的嘴中并用严格的安全带将其固定到位来保持人们的安静。
+一种能让人保持安静的堵嘴装置，它将塞子强行塞入嘴中，并用严格的马具式束带将其固定到位。
 
 
 - Your OLDITM transforms into NEWITM!
@@ -46188,7 +46733,7 @@ ENMY 高潮了，收到了 AMNT 伤害！
 - You don't have the mana to cast Sonar!
 你没有法力来施放声纳！
 - The weights swing around and tug on your nipples!
-砝码会左右摆动并拉扯你的乳头！
+砝码左右摆动并拉扯你的乳头！
 
 
 - More Kinky Furniture
@@ -48417,7 +48962,7 @@ AMNT/MAXX 仆从分配
 被释放的囚犯
 
 - Module (Utility)
-模块 ( 实用程序 )
+模块 ( 功能 )
 - Module (Punishment)
 模块 ( 惩罚 )
 - ~~~ Collar ~~~
@@ -48425,11 +48970,11 @@ AMNT/MAXX 仆从分配
 - Blindfold / Earplugs
 眼罩 / 耳塞
 - Mask/Hood
-面罩/头套
+面罩 / 头套
 - Gag / Stuffing
-口塞 / 填充
+口塞 / 填充物
 - Flat Gag
-扁平口球
+面板口塞 / 口套
 - Wrists
 腕部
 - Encasement
@@ -50734,15 +51279,21 @@ Boss
 解锁方式：穿上任何被诅咒的拘束具或装备。
 
 
-# - Select a progress item to show details
+- Select a progress item to show details
+选择一项进度以显示更多细节
 
-# - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
-# - Current Progress: 
-# - Milestones:
-# - Bonus Progress (gained next Floor):
+- Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
+高跟鞋训练影响你穿着高跟鞋时保持平衡的能力。穿着高跟鞋移动以提升训练进度。
+- Current Progress: 
+当前进度：
+- Milestones:
+里程碑：
+- Bonus Progress (gained next Floor):
+获得进度（进入下一层时结算）：
 # - Recent Modifiers:
 
 # - Any Level
 
 # - Went on a leash walk:
-# - Training Level ${Level}
+- Training Level ${Level}
+训练等级 ${Level}
