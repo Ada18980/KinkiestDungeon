@@ -1713,6 +1713,7 @@ interface String {
  * TODO: Check which fields are required and document their use
  */
 interface KDBuff {
+	training?: string,
 	id: string,
 	power?: number,
 	type?: string,

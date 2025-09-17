@@ -2467,7 +2467,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 	}
 }
 
-interface statInfo {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, click?: string, buffid?: string};
+interface statInfo {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, buffData?: any, click?: string, buffid?: string};
 
 function KDGetStatsWeaponCast() {
 	let statsDraw: Record<string, statInfo> = {};
@@ -2658,7 +2658,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		
 		for (let training of KDTrainingTypes) {
 			if (KDTrainingTypeProperties[training] &&
-				(!KDTrainingTypeProperties[training].showBuff)
+				(!KDTrainingTypeProperties[training].showBuff && !KDToggles.TrainingBuff)
 					|| !(KDTrainingTypeProperties[training] && KDTrainingTypeProperties[training].prereq(KDPlayer()))) continue;
 			let XPNext = KDGetTrainingXPNext(training, KDPlayer());
 
@@ -2674,6 +2674,10 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				category: "training", icon: "training/" + training, color: "#2fc6ce", bgcolor: "#333333", priority: 14,
 				count: Math.floor(KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) : 0) + "",
 				countcolor: "#2fc6ce",
+				buffData: {training: training},
+				click: "Training",
+
+
 			};
 		}
 
@@ -3057,6 +3061,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 					KDSendInput("buffclick", {
 						click: stat.click,
 						buff: stat.buffid,
+						data: stat.buffData
 					});
 					return true;
 				}, true,

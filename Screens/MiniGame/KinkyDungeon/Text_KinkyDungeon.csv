@@ -54,8 +54,9 @@ KDToggleFastMoveDoors,Auto-path through Doors
 KDToggleBindPercent,Show Enemy Binding as %
 KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
 
+KDToggle,Show Training in Buffs List
 KDToggleMMLabels,Show Minimap Labels
-KDToggle,Auto loot all from chests
+KDToggleAutoLoot,Auto loot all from chests
 KDToggleNoOutfitPalette,Don't Use Outfit Palettes
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints

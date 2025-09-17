@@ -49,6 +49,9 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 
 5.5.1
+- Added Progress screen which shows training status
+- Added option to hide training buffs in stats view
+- Clicking training icon in stats menu opens progress menu
 - Removed some keybindings and replaced with more generic tab keys
 - Spell config keys are now tab keys
 - Price Gouging now makes the shopkeeper charge more for rescues/help

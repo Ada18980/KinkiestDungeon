@@ -306,6 +306,7 @@ let KDToggles = {
 	Headpats: false,
 	ExtraBuffRow: true,
 	StruggleContext: false,
+	TrainingBuff: true,
 };
 
 
@@ -393,6 +394,7 @@ let KDToggleCategories = {
 	AlwaysApplyCharPalette: "none",
 	DefaultApplyCharPalette: "none",
 	Autoloot: "UI",
+	TrainingBuff: "UI",
 	HideArmorWardrobe: "none",
 	BindPercent: "UI",
 	AutoWaitDelayed: "UI",

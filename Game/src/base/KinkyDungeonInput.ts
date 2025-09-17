@@ -218,7 +218,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	"buffclick": (data) => {
 		if (KDBuffClick[data.click]) {
-			KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity);
+			KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity, data.data);
 		}
 		return "";
 	},
