@@ -128,6 +128,8 @@ interface ModelLayer extends Namable {
 	DisplacementSprite?: string,
 	/** Which layers to apply displacement to */
 	DisplaceLayers?: Record<string, boolean>,
+	/** Which layer groups to apply displacement to */
+	DisplaceLayerGroups?: Record<string, boolean>,
 	/** MorphPoses but displacement */
 	DisplacementMorph?: Record<string, string>,
 	/** Amount of displacement */
@@ -156,6 +158,8 @@ interface ModelLayer extends Namable {
 	ErasePoses?: string[],
 	/** Which layers to apply Erase to */
 	EraseLayers?: Record<string, boolean>,
+	/** Which layer groups to apply Erase to */
+	EraseLayerGroups?: Record<string, boolean>,
 	/** MorphPoses but Erase */
 	EraseMorph?: Record<string, string>,
 	/** Amount of Erase */

@@ -898,6 +898,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
 	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
+	let DisplaceFilters_LG: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
 	// map of maps of lists
 	let DisplaceFiltersOptIn: Record<string, Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]>> = {};
 	//let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
@@ -905,6 +906,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	let DisplaceFilterAmt: Record<string,number> = {};
 	//let OcclusionFiltersInUse = {};
 	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
+	let EraseFilters_LG: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
 	let EraseFiltersInUse: Record<string,number> = {};
 	let EraseFiltersAmt: Record<string,number> = {};
 	for (let m of Models.values()) {
@@ -1090,7 +1092,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 
 			// Apply displacement
-			if (l.DisplaceLayers
+			if ((l.DisplaceLayers || l.DisplaceLayerGroups)
 				&& (!l.DisplacementPoses
 					|| l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))
 				&& (!l.DisplacementPosesExclude
@@ -1174,15 +1176,17 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					layer = LayerProperties[layer]?.Parent;
 				}
 
-				for (let ll of Object.entries(l.DisplaceLayers)) {
-					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite,
+				let filterMap = l.DisplaceLayerGroups ? DisplaceFilters_LG : DisplaceFilters;
+
+				for (let ll of Object.entries(l.DisplaceLayerGroups || l.DisplaceLayers)) {
+					let id = (l.DisplaceLayerGroups ? "LG_" : "") + ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite,
 						"DisplacementMaps", false, l.DisplacementInvariant,
 						l.DisplacementMorph, l.NoAppendDisplacement);
 
 					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
 						DisplaceFiltersInUse[id] = zzz;
-						for (let dg of Object.keys(LayerGroups[ll[0]])) {
+						for (let dg of Object.keys(l.DisplaceLayerGroups || LayerGroups[ll[0]])) {
 							if (l.DisplaceSource?.some((src) => 
 								{return DisplaceFiltersOptIn[src] ? DisplaceFiltersOptIn[src][dg] : undefined;}
 							))
@@ -1204,8 +1208,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								});
 								
 							else 
-							if (DisplaceFilters[dg])
-								for (let ft of DisplaceFilters[dg]) {
+							if (filterMap[dg])
+								for (let ft of filterMap[dg]) {
 									if (ft.id == id && ft.zIndex < zzz && (
 										!ft.type || !l.DisplacementVeto || !l.DisplacementVeto.some((veto) => {
 											return ft.type.includes(veto)
@@ -1225,7 +1229,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					if (dAmount == 0) continue;
 					DisplaceFiltersInUse[id] = zzz;
 
-					for (let dg of Object.keys(LayerGroups[ll[0]])) {
+					for (let dg of Object.keys(l.DisplaceLayerGroups || LayerGroups[ll[0]])) {
 						DisplaceFilterAmt[id + dg] = Math.max(
 							dAmount * (l.DisplaceAmount || 50) * Zoom,
 							DisplaceFilterAmt[id + dg] || 0,
@@ -1296,8 +1300,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										obj
 									);
 								} else {
-									if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
-									DisplaceFilters[dg].push(
+									if (!filterMap[dg]) filterMap[dg] = [];
+									filterMap[dg].push(
 										obj
 									);
 								}
@@ -1305,8 +1309,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								
 							}
 						} else {
-						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
-							DisplaceFilters[dg].push(
+						if (!filterMap[dg]) filterMap[dg] = [];
+							filterMap[dg].push(
 								obj
 							);
 						}
@@ -1316,7 +1320,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 			}
 			// Apply erase
-			if (l.EraseLayers
+			if ((l.EraseLayers || l.EraseLayerGroups)
 				&& (!l.ErasePoses
 					|| l.ErasePoses.some((pose) => {return MC.Poses[pose];}))
 				&& (!l.ErasePosesExclude
@@ -1400,14 +1404,16 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					layer = LayerProperties[layer]?.Parent;
 				}
 
-				for (let ll of Object.entries(l.EraseLayers)) {
-					let id = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
+				let filterMap = l.EraseLayerGroups ? EraseFilters_LG : EraseFilters;
+
+				for (let ll of Object.entries(l.EraseLayerGroups || l.EraseLayers)) {
+					let id = (l.EraseLayerGroups ? "LG_" : "") + ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
 					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
-						for (let dg of Object.keys(LayerGroups[ll[0]])) {
-							if (EraseFilters[dg])
-								for (let ft of EraseFilters[dg]) {
+						for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {
+							if (filterMap[dg])
+								for (let ft of filterMap[dg]) {
 									if (ft.id == id && ft.zIndex < zzz) {
 										ft.zIndex = zzz;
 										EraseFiltersAmt[id + dg] = Math.max(
@@ -1424,8 +1430,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					EraseFiltersInUse[id] = zzz;
 
 
-					for (let dg of Object.keys(LayerGroups[ll[0]])) {
-						if (!EraseFilters[dg]) EraseFilters[dg] = [];
+					for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {
+						if (!filterMap[dg]) filterMap[dg] = [];
 						EraseFiltersAmt[id + dg] = Math.max(
 							eAmount * (l.EraseAmount || 50) * Zoom,
 							EraseFiltersAmt[id + dg] || 0,
@@ -1461,7 +1467,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						let rot = tt.rot;
 
 
-						EraseFilters[dg].push(
+						filterMap[dg].push(
 							{
 								amount: EraseFiltersAmt[id + dg],
 								hash: id + m.Name + "," + l.Name,
@@ -1501,8 +1507,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		for (let x of MC.XRayFilters) {
 			if (LayerGroups[x]) {
 				for (let dg of Object.keys(LayerGroups[x])) {
-					if (!EraseFilters[dg]) EraseFilters[dg] = [];
-					EraseFilters[dg].push(
+					if (!EraseFilters_LG[dg]) EraseFilters_LG[dg] = [];
+					EraseFilters_LG[dg].push(
 						{
 							amount: EraseAmount,
 							hash: x,
@@ -1829,7 +1835,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data)});
 					} else cc = ContainerContainer.SpriteGroups.get(sg);
 				}
-				KDDraw(
+				let spr: PIXISprite = KDDraw(
 					cc,
 					ContainerContainer.SpriteList,
 					id,
@@ -1853,7 +1859,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// add the filters to the container if not already
 				for (let f of filters) {
 					let sprite: PIXISprite = (f as any).maskSprite;
-					if (sprite && !cc.getChildByName(sprite.name)) {
+					if (sprite && !cc.getChildByName(sprite.name) && spr.getBounds().intersects(sprite.getBounds())) {
 						cc.addChild(sprite);
 					}
 				}
@@ -1861,6 +1867,71 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 			}
 		}
+	}
+
+	for (let ent of ContainerContainer.Submeshes.entries()) {
+		let name : string = ent[0];
+		let submesh: Submesh = ent[1];
+
+		
+		let extrafilter: PIXIFilter[] = [];
+
+		// Add erase filters BEFORE displacement
+		if (EraseFilters[name]) {
+			for (let ef of EraseFilters[name]) {
+				if (!ef.sprite) continue;
+				let efh = containerID + "ers_" + ef.hash;
+				let dsprite = ef.sprite;
+				if (refreshfilters) {
+					KDAdjustmentFilterCache.delete(efh);
+				}
+				KDTex(dsprite.name, false); // try to preload it
+				if (!KDAdjustmentFilterCache.get(efh)) {
+					f = new EraseFilter(
+						dsprite,
+					);
+
+					KDSetFilterSprite({hash: efh, filter: f}, dsprite);
+					f.multisample = 0;
+				}
+				let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
+				if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+					KDAdjustmentFilterCache.set(efh, efilter);
+				}
+				extrafilter.push(...efilter);
+			}
+		}
+		
+		if (DisplaceFilters[name]) {
+			for (let ef of DisplaceFilters[name]) {
+				if (!ef.sprite) continue;
+				let efh = containerID + "disp_" + ef.hash;
+				let dsprite = ef.sprite;
+				if (refreshfilters) {
+					KDAdjustmentFilterCache.delete(efh);
+				}
+				KDTex(dsprite.name, false); // try to preload it
+				if (!KDAdjustmentFilterCache.get(efh)) {
+					f = new DisplaceFilter(
+						dsprite,
+						ef.amount,
+					);
+					//Unneeded because its already in the filter cache
+					KDSetFilterSprite({hash: efh, filter: f}, dsprite);
+					f.multisample = 0;
+				}
+
+				let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
+				if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+					KDAdjustmentFilterCache.set(efh, efilter);
+				}
+				extrafilter.push(...efilter);
+			}
+		}
+
+		if (extrafilter.length > 0) {
+			submesh.container.filters = extrafilter;
+		} else submesh.container.filters = undefined;
 	}
 	return modified;
 }
@@ -2810,14 +2881,7 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 			MC.ForceUpdate.add(containerID);
 		});
 	} else {*/
-	for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
-		PIXIapp.renderer.render(submesh.container, {
-			//blit: true,
-			clear: true,
-			renderTexture: submesh.rt,
-			blit: true,
-		});
-	}
+	RenderMCSubmeshes(MC, C, containerID);
 	PIXIapp.renderer.render(MC.Containers.get(containerID).Container, {
 		//blit: true,
 		clear: true,
@@ -2827,6 +2891,20 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 	MC.ForceUpdate.add(containerID);
 	//}
 }
+
+
+function RenderMCSubmeshes(MC: ModelContainer, C: Character, containerID: string) {
+	for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
+		PIXIapp.renderer.render(submesh.container, {
+			//blit: true,
+			clear: true,
+			renderTexture: submesh.rt,
+			blit: true,
+		});
+	}
+}
+
+
 
 function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) {
 	let modified = false;

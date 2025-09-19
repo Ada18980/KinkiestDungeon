@@ -3917,6 +3917,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		"Cursed": (e, buff, entity, _data) => {
 			if (buff.power > 0 && entity.player) {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {
+					if (KDEntityHasFlag(entity, "bf_cursed_skip")) return;
 					let tags = ["obsidianRestraints", "shadowLatexRestraints", "shadowLatexPetsuit", "shadowLatexRestraintsHeavy"];
 					let restraintAdd = KinkyDungeonGetRestraint({ tags: ["invisRestraints"] }, KDGetEffLevel(), KDCurrIndex(),
 						true, "Purple", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
@@ -3946,6 +3947,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 							}
 							KinkyDungeonSetFlag("ObserverCursed", 2 + Math.round(KDRandom() * 3));
 						}
+					} else {
+						KDSetIDFlag(entity.id, "bf_cursed_skip", 4 + Math.floor(KDRandom() * 10));
 					}
 				}
 			} else {
