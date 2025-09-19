@@ -1925,10 +1925,7 @@ function KDIsKneeling(C?: any): boolean {
 
 function KinkyDungeonLegsBlocked() {
 	if (KDIsHogtied()) return true;
-	for (let inv of KinkyDungeonAllRestraint()) {
-		if (KDRestraint(inv) && KDRestraint(inv).blockfeet) return true;
-	}
-	return false;
+	return KinkyDungeonFlags.get("BoundFeet");
 }
 
 function KinkyDungeonCanStand() {

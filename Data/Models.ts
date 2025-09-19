@@ -107,6 +107,8 @@ interface Submesh {
 	rt: PIXIRenderTexture,
 	container: PIXIContainer,
 	matrix: PIXIArray,
+	hash: number,
+	lhash: number,
 }
 
 interface ContainerInfo {
@@ -507,6 +509,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			
 		}
 
+	let OldSubmeshes = null;
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
 
 		let data = {
@@ -521,6 +524,10 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			EndMods: EndMods,
 		};
 		KinkyDungeonSendEvent("beforeMeshDestroy", data);
+		OldSubmeshes = data.ContainerInfo.Submeshes;
+		for (let submesh of OldSubmeshes.values()) {
+			KDMeshToDestroy.push(submesh.mesh);
+		}
 		MC.Update.delete(containerID);
 		MC.Refresh.delete(containerID);
 		//console.log("Refreshed!")
@@ -530,12 +537,13 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		//MC.Containers.get(containerID).Mesh.destroy();
 		KDMeshToDestroy.push(MC.Containers.get(containerID).Mesh);
 		KDRenderTexToDestroy.push(MC.Containers.get(containerID).RenderTexture);
-		for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
+		/*for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
 			KDMeshToDestroy.push(submesh.mesh);
 			KDRenderTexToDestroy.push(submesh.rt);
-		}
+		}*/
 		MC.Containers.delete(containerID);
 		MC.ContainersDrawn.delete(containerID);
+		
 		refreshfilters = true;
 		if (KDGlobalFilterCacheRefresh) {
 			KDGlobalFilterCacheRefresh = false;
@@ -564,7 +572,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			Mesh: Mesh,//Mesh(new PIXI.PlaneGeometry(MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE, 100, 100), new PIXI.MeshMaterial(PIXI.Texture.WHITE)),
 			SpritesDrawn: new Map(),
 			SpriteGroups: new Map(),
-			Submeshes: new Map(),
+			Submeshes: OldSubmeshes || new Map(),
 			RenderTexture: RT,
 			SpriteList: new Map(),
 			Matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data),
@@ -787,6 +795,11 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 	let modified = false;
+
+	for (let submesh of ContainerContainer.Submeshes.values()) {
+		//submesh.lhash = submesh.hash;
+		submesh.hash = 0;
+	}
 
 	// Create the highestpriority matrix
 	MC.HighestPriority = {};
@@ -1788,7 +1801,6 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let img = ModelLayerString(m, l, MC.Poses);
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
 				//id = LZString.compressToBase64(id);
-				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
 				let filters = filter;
 				let origFilters = filter;
 				if (extrafilter) filters = [...(filter || []), ...extrafilter];
@@ -1820,6 +1832,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				} else {*/
 				let sg = KDGetSpriteGroup(-zz);
 				let cc = ContainerContainer.Container;
+				if (!modified && !ContainerContainer.SpriteList.has(id)) {modified = true;}
+				
 				if (sg) {
 					if (!ContainerContainer.SpriteGroups.has(sg)) {
 						cc = new PIXI.Container();
@@ -1836,15 +1850,27 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						//cc.cacheAsBitmap = true;
 						ContainerContainer.SpriteGroups.set(sg, cc);
 						// note: zoom is multiplied by MODEL_SCALE so here it cancels
-						let RT = PIXI.RenderTexture.create({ width: MODELWIDTH * 2 * Zoom, height: MODELHEIGHT * 2 * Zoom,
-							resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
+						let RT = ContainerContainer.Submeshes.get(sg)?.rt
+							|| PIXI.RenderTexture.create({ width: MODELWIDTH * 2 * Zoom, height: MODELHEIGHT * 2 * Zoom,
+								resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
 						let Mesh = new PIXI.SimplePlane(RT, 10, 10);
 						
 						Mesh.zIndex = -ModelLayers[metaLayerForward[sg][metaLayerForward[sg].length - 1]] - LAYER_INCREMENT;
 						ContainerContainer.Mesh.addChild(Mesh);
 						ContainerContainer.Submeshes.set(sg, {mesh: Mesh, rt: RT, container: cc,
+							hash: 0, lhash: ContainerContainer.Submeshes.get(sg)?.lhash,
 							matrix: Object.assign([], Mesh.geometry.getBuffer('aVertexPosition').data)});
 					} else cc = ContainerContainer.SpriteGroups.get(sg);
+					let sm = ContainerContainer.Submeshes.get(sg);
+					sm.hash += Math.round(KDGetStringHash(id) + ox * Zoom + oy * Zoom + 
+						transform.ax + transform.ay + transform.rot + transform.sx + transform.sy + transform.ox + transform.oy
+					+ 10000*ContainerContainer.Container.angle
+					+ 10000*ContainerContainer.Container.pivot.x
+					+ 10000*ContainerContainer.Container.pivot.y
+					+ ContainerContainer.Container.x
+					+ ContainerContainer.Container.y
+					
+					);
 				}
 				let spr: PIXISprite = KDDraw(
 					cc,
@@ -2908,12 +2934,16 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 
 function RenderMCSubmeshes(MC: ModelContainer, C: Character, containerID: string) {
 	for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
-		PIXIapp.renderer.render(submesh.container, {
-			//blit: true,
-			clear: true,
-			renderTexture: submesh.rt,
-			blit: true,
-		});
+		if (submesh.lhash != submesh.hash) {
+			PIXIapp.renderer.render(submesh.container, {
+				//blit: true,
+				clear: true,
+				renderTexture: submesh.rt,
+				blit: true,
+			});
+			submesh.lhash = submesh.hash;
+		}
+		
 	}
 }
 
@@ -3079,4 +3109,12 @@ function KDGetLayerFromPri(pri: number): string {
 function KDGetSpriteGroup(pri: number): string {
 	let layer = KDGetLayerFromPri(pri);
 	return metaLayerReverse[layer];
+}
+
+function KDGetStringHash(str: string): number {
+	let sum = 0;
+	for (let c of str) {
+		sum += c.charCodeAt(0);
+	}
+	return sum;
 }

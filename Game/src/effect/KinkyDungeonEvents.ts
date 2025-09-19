@@ -1156,7 +1156,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 					KDItemDataSet(item, "mimiccurse", KinkyDungeonCurrentTick);
 				if (!addedTick || KinkyDungeonCurrentTick - addedTick < _e.time) return;
 			}
-			if ((KDRandom() < _e.chance || 0.1)) {
+			if (!KDIDHasFlag(KDPlayer().id, "mimiccursefail" + item.id) && (KDRandom() < _e.chance || 0.1)) {
 				if (item) {
 					let tags = _e.tags || KDGetCursedTags(item);
 					let lock = item.lock || "Purple";
@@ -1241,6 +1241,8 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 								false, undefined, item.faction, true,
 								curse);
 						}
+					} else {
+						KDSetIDFlag(KDPlayer().id, "mimiccursefail" + item.id, 4 + Math.floor(KDRandom() * 10));
 					}
 
 				}
