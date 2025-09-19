@@ -332,11 +332,11 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		for (let item of items) {
 			if (item.prereq && !item.prereq()) continue;
 			let img = (item.type == Restraint || item.type == LooseRestraint) ?
-				KDGetRestraintPreviewImage(KDRestraint({name: item.item}))
+				KDGetRestraintPreviewImage(KDRest(item.item))
 				: KinkyDungeonRootDirectory + "Items/" + item.item + ".png";
 
 			let grp = (item.type == Restraint || item.type == LooseRestraint) ?
-			KDGetGroupPreviewImage(KDRestraint({name: item.item}).Group)
+			KDGetGroupPreviewImage(KDRest(item.item).Group)
 			: "";
 
 			let selected = item.name == KDSelectedRecyclerItem;
@@ -406,10 +406,10 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 	XX = thirdXX;
 	if (selectedItem) {
 		let img = (selectedItem.type == Restraint || selectedItem.type == LooseRestraint) ?
-		KDGetRestraintPreviewImage(KDRestraint({name: selectedItem.item}))
+		KDGetRestraintPreviewImage(KDRest(selectedItem.item))
 		: KinkyDungeonRootDirectory + "Items/" + selectedItem.item + ".png";
 		let grp = (selectedItem.type == Restraint || selectedItem.type == LooseRestraint) ?
-		KDGetGroupPreviewImage(KDRestraint({name: selectedItem.item}).Group)
+		KDGetGroupPreviewImage(KDRest(selectedItem.item).Group)
 		: "";
 
 		let hotkey = KinkyDungeonKeyEnter[0];
@@ -452,7 +452,7 @@ function KDDrawRecyclerBlueprints(cats: KDBlueprintCategory[], x: number, y: num
 		DrawTextFitKD(KDGetItemNameString(selectedItem.item) + (selectedItem.count ? " x" + selectedItem.count : ""),
 		x + XX + 32 + 100, y + YY + 272, 200, KDBaseWhite, KDTextGray0, 24, "center");
 		let item = KDItemNoRestraint({name: selectedItem.name});
-		let restraint = KDRestraint({name: selectedItem.name});
+		let restraint = KDRest(selectedItem.name);
 		if (restraint) {
 			let pp = (restraint.displayPower != undefined ? restraint.displayPower : restraint.power);
 			pp /= 5; // inflection point between 8 (mythic) and 9 (angelic) should be around 47 power
@@ -514,7 +514,7 @@ function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?:
 
 function KDAutoGenRestraintBlueprint(name: string, category: string, applyvariant: string, mult: number = 1.25, forceResourceCost?: Record<string, number>, bonusResource?: Record<string, number>, count: number = 1): KDBlueprint {
 	let res = forceResourceCost || {};
-	let restraint = KDRestraint({name: name});
+	let restraint = KDRest(name);
 
 	if (!forceResourceCost) {
 		res = KDRecyclerResources(restraint, mult, applyvariant);

@@ -2684,7 +2684,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor;
 										let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 											false, 0, 50, []));
-										let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+										let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 										let variant: KDRestraintVariant = {
 											template: armor,
 											events: events,
@@ -2734,7 +2734,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint;
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
-									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+									let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 									let variant: KDRestraintVariant = {
 										template: armor,
 										events: events,
@@ -2779,7 +2779,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar;
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
-									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+									let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 									let variant: KDRestraintVariant = {
 										template: armor,
 										events: events,
@@ -2824,7 +2824,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit;
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
-									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+									let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 									let variant: KDRestraintVariant = {
 										template: armor,
 										events: events,
@@ -3028,7 +3028,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 										let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Armor;
 										let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 											false, 0, 50, []));
-										let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+										let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 										let variant: KDRestraintVariant = {
 											template: armor,
 											events: events,
@@ -3077,7 +3077,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Restraint;
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
-									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+									let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 									let variant: KDRestraintVariant = {
 										template: armor,
 										events: events,
@@ -3122,7 +3122,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Collar;
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
-									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+									let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 									let variant: KDRestraintVariant = {
 										template: armor,
 										events: events,
@@ -3167,7 +3167,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									let armor = KDGameData.CurrentDialogMsgData.RESTRAINTNAME_Catsuit;
 									let curs = KDGetByWeight(KinkyDungeonGetHexByListWeighted("Common", armor,
 										false, 0, 50, []));
-									let events = JSON.parse(JSON.stringify(KDRestraint({name: armor}).events || []));
+									let events = JSON.parse(JSON.stringify(KDRest(armor).events || []));
 									let variant: KDRestraintVariant = {
 										template: armor,
 										events: events,

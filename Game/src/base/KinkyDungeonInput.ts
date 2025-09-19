@@ -218,7 +218,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 	},
 	"buffclick": (data) => {
 		if (KDBuffClick[data.click]) {
-			KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity, data.data);
+			KDBuffClick[data.click](data.buff, data.id || KinkyDungeonPlayerEntity, data);
 		}
 		return "";
 	},
@@ -240,7 +240,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		let name: string = data.name;
 
 		if (name) {
-			newItem = KDRestraint({name: name});
+			newItem = KDRest(name);
 			if (newItem) {
 				currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 				if (!currentItem) equipped = false;
@@ -294,7 +294,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		let name: string = data.name;
 
 		if (name) {
-			newItem = KDRestraint({name: name});
+			newItem = KDRest(name);
 			if (newItem) {
 				currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 				if (!currentItem) equipped = false;
@@ -1035,7 +1035,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			KinkyDungeonConsumableChoices[data.I] = data.name;
 		} else if (KDWeapon({name: data.name})) {
 			KinkyDungeonWeaponChoices[data.I] = data.name;
-		} else if (KDRestraint({name: data.name})) {
+		} else if (KDRest(data.name)) {
 			KinkyDungeonArmorChoices[data.I] = data.name;
 		}
 		/*

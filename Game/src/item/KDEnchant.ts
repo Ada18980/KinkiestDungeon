@@ -156,9 +156,9 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("Evasion")) return 0;
 					if (allEnchant.includes("Sneak")) return 20;
-					if (KDRestraint({name: item})?.blockfeet) return 0;
-					if (KDRestraint({name: item})?.shrine?.includes("Light")) return 10;
-					if (KDRestraint({name: item})?.hobble) return 20;
+					if (KDRest(item)?.blockfeet) return 0;
+					if (KDRest(item)?.shrine?.includes("Light")) return 10;
+					if (KDRest(item)?.hobble) return 20;
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -202,9 +202,9 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("Accuracy")) return 0;
-					if (KDRestraint({name: item})?.blindfold) return 40;
-					if (KDRestraint({name: item})?.bindhands) return 4;
-					if (KDRestraint({name: item})?.bindarms) return 1;
+					if (KDRest(item)?.blindfold) return 40;
+					if (KDRest(item)?.bindhands) return 4;
+					if (KDRest(item)?.bindarms) return 1;
 					return 24;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -231,8 +231,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					if (allEnchant.includes("Sneak")) return 0;
 					if (allEnchant.includes("Evasion")) return 20;
 					if (allEnchant.includes("Accuracy")) return 20;
-					if (KDRestraint({name: item})?.shrine?.includes("Light")) return 10;
-					if (!KDRestraint({name: item})?.armor) return 15;
+					if (KDRest(item)?.shrine?.includes("Light")) return 10;
+					if (!KDRest(item)?.armor) return 15;
 					return 4;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -332,7 +332,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("SpellWard")) return 0;
-					if (KDRestraint({name: item})?.magic) return 40;
+					if (KDRest(item)?.magic) return 40;
 					return 5;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -357,7 +357,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("BondageResist")) return 0;
-					if (KDRestraint({name: item})?.armor || KDRestraint({name: item})?.good) return 10;
+					if (KDRest(item)?.armor || KDRest(item)?.good) return 10;
 					return 0;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -401,7 +401,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("DamageResist")) return 0;
 					if (allEnchant.includes("DamageBuff")) return 40;
-					if (KDRestraint({name: item})?.armor) return 40;
+					if (KDRest(item)?.armor) return 40;
 					return 20;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -429,7 +429,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("DamageBuff")) return 0;
 					if (allEnchant.includes("DamageResist")) return 40;
-					if (KDRestraint({name: item})?.magic) return 40;
+					if (KDRest(item)?.magic) return 40;
 					return 15;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -458,11 +458,11 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ManaCost")) return 0;
 					if (allEnchant.includes("ManaCostSpecific")) return 0;
-					if (KDRestraint({name: item})?.magic) return 18;
-					if (KDRestraint({name: item})?.blindfold) return 14;
-					if (KDRestraint({name: item})?.gag) return 14;
-					if (KDRestraint({name: item})?.bindhands) return 9;
-					if (KDRestraint({name: item})?.armor) return 8;
+					if (KDRest(item)?.magic) return 18;
+					if (KDRest(item)?.blindfold) return 14;
+					if (KDRest(item)?.gag) return 14;
+					if (KDRest(item)?.bindhands) return 9;
+					if (KDRest(item)?.armor) return 8;
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -488,11 +488,11 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ManaCost")) return 0;
 					if (allEnchant.includes("ManaCostSpecific")) return 0;
-					if (KDRestraint({name: item})?.magic) return 25;
-					if (KDRestraint({name: item})?.blindfold) return 20;
-					if (KDRestraint({name: item})?.gag) return 20;
-					if (KDRestraint({name: item})?.bindhands) return 15;
-					if (KDRestraint({name: item})?.armor) return 14;
+					if (KDRest(item)?.magic) return 25;
+					if (KDRest(item)?.blindfold) return 20;
+					if (KDRest(item)?.gag) return 20;
+					if (KDRest(item)?.bindhands) return 15;
+					if (KDRest(item)?.armor) return 14;
 					return 6;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -522,10 +522,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 					weight: (item, allEnchant) => {
 						if (allEnchant.includes("StaticDamage")) return 0;
 						if (allEnchant.includes("StaticDamage")) return 0;
-						if (KDRestraint({name: item})?.gag) return 11;
-						if (KDRestraint({name: item})?.heelpower) return 20;
-						if (KDRestraint({name: item})?.hobble) return 5;
-						if (KDRestraint({name: item})?.armor && KDRestraint({name: item}).Group == "ItemBoots") return 20;
+						if (KDRest(item)?.gag) return 11;
+						if (KDRest(item)?.heelpower) return 20;
+						if (KDRest(item)?.hobble) return 5;
+						if (KDRest(item)?.armor && KDRest(item).Group == "ItemBoots") return 20;
 						return 0;
 					},
 					events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -553,10 +553,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ProjectileDamage")) return 0;
 					if (allEnchant.includes("ProjectileDamage")) return 0;
-					if (KDRestraint({name: item})?.blindfold) return 11;
-					if (KDRestraint({name: item})?.bindarms) return 9;
-					if (KDRestraint({name: item})?.bindhands) return 20;
-					if (KDRestraint({name: item})?.armor && KDRestraint({name: item}).Group == "ItemHands") return 20;
+					if (KDRest(item)?.blindfold) return 11;
+					if (KDRest(item)?.bindarms) return 9;
+					if (KDRest(item)?.bindhands) return 20;
+					if (KDRest(item)?.armor && KDRest(item).Group == "ItemHands") return 20;
 					return 0;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -583,7 +583,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ManaRegenOnKill")) return 0;
-					if (KDRestraint({name: item})?.magic) return 12;
+					if (KDRest(item)?.magic) return 12;
 					return 6;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -608,10 +608,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ElementalEcho")) return 0;
-					if (KDRestraint({name: item})?.bindarms) return 1;
-					if (KDRestraint({name: item})?.bindhands) return 2;
-					if (KDRestraint({name: item})?.armor) return 40;
-					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples"].includes(KDRestraint({name: item})?.Group)) return 13;
+					if (KDRest(item)?.bindarms) return 1;
+					if (KDRest(item)?.bindhands) return 2;
+					if (KDRest(item)?.armor) return 40;
+					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples"].includes(KDRest(item)?.Group)) return 13;
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -639,7 +639,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
 					if (!KinkyDungeonMeleeDamageTypes.includes(KinkyDungeonWeapons[item]?.type)) return 0;
-					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples"].includes(KDRestraint({name: item})?.Group)) return 20;
+					if (["ItemArms", "ItemHands", "ItemBoots", "ItemHead", "ItemVulva", "ItemVulvaPiercings", "ItemNipples"].includes(KDRest(item)?.Group)) return 20;
 					return 14;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -661,7 +661,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant, _data) => {
 					if (allEnchant.includes("ElementalDmg")) return 0;
-					if (KDRestraint({name: item})?.armor) return 11;
+					if (KDRest(item)?.armor) return 11;
 					return 8;
 				},
 				events: (item, Loot, curse, primaryEnchantment, enchantments, data) => {
@@ -689,7 +689,7 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("ManaRegen")) return 0;
-					if (KDRestraint({name: item})?.gag) return 20;
+					if (KDRest(item)?.gag) return 20;
 					return 12;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -714,8 +714,8 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("BaseDamageBuffMelee")) return 0;
-					if (KDRestraint({name: item})?.bindarms) return 3;
-					if (KDRestraint({name: item})?.bindhands) return 1;
+					if (KDRest(item)?.bindarms) return 3;
+					if (KDRest(item)?.bindhands) return 1;
 					return 18;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {
@@ -741,10 +741,10 @@ let KDEventEnchantmentModular: Record<string, KDEnchantment> = {
 				},
 				weight: (item, allEnchant) => {
 					if (allEnchant.includes("BaseDamageBuffMagic")) return 0;
-					if (KDRestraint({name: item})?.bindarms) return 15;
-					if (KDRestraint({name: item})?.bindhands) return 11;
-					if (KDRestraint({name: item})?.gag) return 9;
-					if (KDRestraint({name: item})?.heelpower) return 5;
+					if (KDRest(item)?.bindarms) return 15;
+					if (KDRest(item)?.bindhands) return 11;
+					if (KDRest(item)?.gag) return 9;
+					if (KDRest(item)?.heelpower) return 5;
 					return 3;
 				},
 				events: (item, Loot, curse, primaryEnchantment, _enchantments, _data) => {

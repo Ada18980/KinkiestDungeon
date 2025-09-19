@@ -2480,7 +2480,7 @@ function KDSaleShop(name: string, items: string[], requireTags: string[], requir
 					}
 
 
-					/*if (KDRestraint({name: item})) {
+					/*if (KDRest(item)) {
 						// Sell the player a restraint
 						let rest = KinkyDungeonGetRestraintByName(item);
 						let Rname = rest.inventoryAs || rest.name;

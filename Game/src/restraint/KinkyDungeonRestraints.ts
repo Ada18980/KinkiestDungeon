@@ -242,6 +242,14 @@ function KDRestraint(item: Named): restraint {
 	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].template);
 	return KinkyDungeonRestraintsCache.get(item.name);
 }
+/**
+ * gets a restraint
+ * @param name
+ */
+function KDRest(name: string): restraint {
+	if (KinkyDungeonRestraintVariants[name]) return KinkyDungeonRestraintsCache.get(KinkyDungeonRestraintVariants[name].template);
+	return KinkyDungeonRestraintsCache.get(name);
+}
 
 
 
@@ -3503,8 +3511,8 @@ function KDGetRestraintsEligible (
 
 	if (options?.extraOptions) {
 		for (let opt of options.extraOptions) {
-			if (KDRestraint({name: opt}))
-				cache.push({r: KDRestraint({name: opt}), w:options?.inventoryWeight || 100, name: opt, inventory: true})
+			if (KDRest(opt))
+				cache.push({r: KDRest(opt), w:options?.inventoryWeight || 100, name: opt, inventory: true})
 		}
 	}
 
@@ -4071,7 +4079,7 @@ function KinkyDungeonRestraintPower(item: item, NoLink?: boolean, toLink?: restr
 				}))) {
 				let lock = link.lock;
 				let mult = KinkyDungeonGetLockMult(lock, link);
-				let pp = link ? (KDRestraint({name: link.name}).power) : 0;
+				let pp = link ? (KDRest(link.name).power) : 0;
 				power = Math.max(power, pp * mult + KDGetCursePower(link));
 			}
 		}
@@ -6637,9 +6645,9 @@ function KDGetItemNameString(name: string): string {
 
 
 function KDGetEventsForRestraint(name: string): KinkyDungeonEvent[] {
-	if (!KDRestraint({name: name})) return [];
+	if (!KDRest(name)) return [];
 	if (KinkyDungeonRestraintVariants[name]) return Object.assign([], KinkyDungeonRestraintVariants[name].events);
-	return Object.assign([], KDRestraint({name: name}).events || []);
+	return Object.assign([], KDRest(name).events || []);
 }
 
 

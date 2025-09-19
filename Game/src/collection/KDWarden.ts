@@ -55,7 +55,7 @@ function KDUpdateWarden(delta: number) {
 				let entity = KDGetGlobalEntity(value.id);
 				if (entity?.items) {
 					let restraints = entity.items.filter((str) => {
-						return KDRestraint({name: str});
+						return KDRest(str);
 					});
 					for (let item of restraints) {
 						if (WardenItems[item]) WardenItems[item].quantity = (WardenItems[item].quantity || 1) + 1;

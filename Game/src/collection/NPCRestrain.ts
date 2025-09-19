@@ -53,7 +53,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			let Group = sgroup.allowedGroups[0];
 			let grp = KDGetGroupPreviewImage(Group);
 			if (restraint) {
-				let r = KDRestraint({name: restraint.name});
+				let r = KDRest(restraint.name);
 				if (r) {
 					let prevData = KDGetRestraintPreviewImage(r);
 					if (prevData) {
@@ -755,7 +755,7 @@ function KDInputSetNPCRestraint(data, container?: Record<string, item>): boolean
 
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
-		let restraint = KDRestraint({name: data.restraint});
+		let restraint = KDRest(data.restraint);
 
 
 		if (restraint) {
@@ -1262,8 +1262,8 @@ function KDDrawGenericRestrainCategories(data: KDDrawGenericRestrainCategoriesDa
 			let items = (data.allSlots || !slot) ? cat.items :
 				cat.items.filter(
 					(item) => {
-						return slot.allowedGroups.includes(KDRestraint({name: item.restraint})?.Group)
-						&& slot.allowedTags.some((tag) => {return KDRestraint({name: item.restraint})?.shrine.includes(tag);});
+						return slot.allowedGroups.includes(KDRest(item.restraint)?.Group)
+						&& slot.allowedTags.some((tag) => {return KDRest(item.restraint)?.shrine.includes(tag);});
 					}
 				);
 
@@ -1419,8 +1419,8 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 		index = 0;
 		let items = selectedcat.items.filter(
 			(item) => {
-				return slot.allowedGroups.includes(KDRestraint({name: item.restraint})?.Group)
-				&& slot.allowedTags.some((tag) => {return KDRestraint({name: item.restraint})?.shrine.includes(tag);});
+				return slot.allowedGroups.includes(KDRest(item.restraint)?.Group)
+				&& slot.allowedTags.some((tag) => {return KDRest(item.restraint)?.shrine.includes(tag);});
 			}
 		);
 		let ii = 0;
@@ -1429,7 +1429,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 
 		for (let item of items) {
 
-			let rst = KDRestraint({name: item.restraint});
+			let rst = KDRest(item.restraint);
 
 			let img = KDGetRestraintPreviewImage(rst);
 
@@ -1471,7 +1471,7 @@ function KDDrawGenericNPCRestrainingUI(cats: RestraintGenericType[], x: number, 
 					if (KDSelectedGenericBindItem != item.restraint)
 						KDSelectedGenericBindItem = item.restraint;
 					else if (quantity >= item.count) {
-						callback(currentItem, KDRestraint({name: item.restraint}), KDNPCBindingSelectedSlot,
+						callback(currentItem, KDRest(item.restraint), KDNPCBindingSelectedSlot,
 						KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count, item);
 					}
 					return true;
@@ -1602,7 +1602,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 
 			for (let item of items) {
 
-				let rst = KDRestraint({name: item.restraint});
+				let rst = KDRest(item.restraint);
 
 				let img = KDGetRestraintPreviewImage(rst);
 
@@ -1645,7 +1645,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 						if (KDSelectedGenericBindItem != item.restraint)
 							KDSelectedGenericBindItem = item.restraint;
 						else if (quantity >= item.count) {
-							callbackPlayer(undefined, KDRestraint({name: item.restraint}), // todo add currentitem support for, say, swapping rope types
+							callbackPlayer(undefined, KDRest(item.restraint), // todo add currentitem support for, say, swapping rope types
 							KinkyDungeonInventoryGetSafe(selectedcat.raw || selectedcat.consumableRaw), item.count);
 						}
 						return true;
@@ -1656,7 +1656,7 @@ function KDDrawGenericCharacterRestrainingUI(cats: RestraintGenericType[], x: nu
 					undefined, false,
 					((quantity || 0) < item.count) || !selected,
 					((quantity || 0) < item.count) ? "#b74539" : (
-						canAddcallback(KDRestraint({name: item.restraint})) ? "#63ab3f" : "#f0b541"),
+						canAddcallback(KDRest(item.restraint)) ? "#63ab3f" : "#f0b541"),
 					undefined, true,
 					{
 						scaleImage: true,

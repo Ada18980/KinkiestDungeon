@@ -342,7 +342,7 @@ function KinkyDungeonDrawItems(_canvasOffsetX: number, _canvasOffsetY: number, C
 		//if (KinkyDungeonGetRestraintByName(item.name)) sprite = "Restraint";
 		if (item.x >= CamX && item.y >= CamY && item.x < CamX + KinkyDungeonGridWidthDisplay && item.y < CamY + KinkyDungeonGridHeightDisplay && KinkyDungeonVisionGet(item.x, item.y) > 0) {
 			let scale = 0.5;
-			if (KDRestraint({name: item.name}) && KDRestraintSpecial({name: item.name})) {
+			if (KDRest(item.name) && KDRestraintSpecial({name: item.name})) {
 				sprite = KinkyDungeonRootDirectory + "Items/Restraint.png";
 				scale = 1;
 			}

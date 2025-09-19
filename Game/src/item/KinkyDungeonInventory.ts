@@ -682,7 +682,7 @@ function KinkyDungeonInventoryGetLoose(Name: string, container?: KDContainer): i
 function KinkyDungeonInventoryGetWorn(Name: string): item | null {
 	let r = KinkyDungeonInventory.get(Restraint).get(Name);
 	if (!r) {
-		let group = KDRestraint({name: Name})?.Group;
+		let group = KDRest(Name)?.Group;
 		if (KinkyDungeonGetRestraintItem(group)) {
 			let tree = KDDynamicLinkList(KinkyDungeonGetRestraintItem(group))
 			for (let inv of tree) {
@@ -2885,7 +2885,7 @@ function KDSaveQuickLoadout(num: number) {
 
 	if (KDGameData.QuickLoadout_Merge && currentLoadout) {
 		for (let item of currentLoadout) {
-			let rest = KDRestraint({name: item});
+			let rest = KDRest(item);
 			if (rest && !loadout.some((inv) => {
 				return rest.Group == KDRestraint({name: inv})?.Group;
 			})) {
@@ -3455,8 +3455,8 @@ function KDGiveItem(name: string, quantity: number = 1): boolean {
 		let variant = KinkyDungeonRestraintVariants[name];
 		KDGiveInventoryVariant(variant, undefined, variant.curse, undefined, name, KinkyDungeonRestraintVariants[name].suffix, undefined, undefined, quantity);
 		return true;
-	} else if (KDRestraint({name: name})) {
-		let restraint = KDRestraint({name: name});
+	} else if (KDRest(name)) {
+		let restraint = KDRest(name);
 		if (!KinkyDungeonInventoryGetLoose(name)) {
 			KinkyDungeonInventoryAdd({name: name, type: LooseRestraint, events:restraint.events, quantity: quantity, id: KinkyDungeonGetItemID()});
 		} else {

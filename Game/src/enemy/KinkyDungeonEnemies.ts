@@ -8562,9 +8562,9 @@ function KDAddLostItemSingle(item: string, _quantity: number = 1): boolean {
 	if (KDWeapon({name: item})) {
 		KinkyDungeonAddLostItems([{name: item, type: Weapon, id: KinkyDungeonGetItemID()}], false);
 		return true;
-	} else if (KDRestraint({name: item}) && (
+	} else if (KDRest(item) && (
 		KinkyDungeonRestraintVariants[item]
-		|| (KDRestraint({name: item}).armor && !KDRestraint({name: item})?.noRecover)
+		|| (KDRest(item).armor && !KDRest(item)?.noRecover)
 		|| KDRestraintSpecial({name: item}))) {
 		KinkyDungeonAddLostItems([{name: item, type: LooseRestraint, events: KDGetEventsForRestraint(item), quantity: 1, id: KinkyDungeonGetItemID()}], false);
 		return true;
@@ -10256,7 +10256,7 @@ function KDBasicTeaseAttack(enemy: entity, player: entity, noglobal?: boolean): 
  */
 function KDGetVibeToys(enemy: entity): string[] {
 	if (!enemy.items) return [];
-	return enemy.items.filter((item) => {return KDRestraint({name: item})?.shrine?.includes("Vibes");});
+	return enemy.items.filter((item) => {return KDRest(item)?.shrine?.includes("Vibes");});
 }
 
 /**
