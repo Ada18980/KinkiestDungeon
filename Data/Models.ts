@@ -1894,10 +1894,18 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				);
 
 				// add the filters to the container if not already
-				for (let f of filters) {
+				for (let i = 0; i < filters.length; i++) {
+					let f = filters[i];
+					if (!f) break;
 					let sprite: PIXISprite = (f as any).maskSprite;
-					if (sprite && !cc.getChildByName(sprite.name) && spr.getBounds().intersects(sprite.getBounds())) {
-						cc.addChild(sprite);
+					if (sprite) {
+						if (spr.getBounds().intersects(sprite.getBounds())) {
+							if (!cc.getChildByName(sprite.name))
+								cc.addChild(sprite);
+						} else {
+							filters.splice(i, 1); // remove the filter to speed rendering
+							i--;
+						}
 					}
 				}
 				//}
