@@ -894,19 +894,20 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		}
 	}
 
+	interface FilterDef {sprite: PIXISprite, spriteFunc: () => PIXISprite, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number};
 
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
-	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
-	let DisplaceFilters_LG: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
+	let DisplaceFilters: Record<string, FilterDef[]> = {};
+	let DisplaceFilters_LG: Record<string, FilterDef[]> = {};
 	// map of maps of lists
-	let DisplaceFiltersOptIn: Record<string, Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]>> = {};
+	let DisplaceFiltersOptIn: Record<string, Record<string, FilterDef[]>> = {};
 	//let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let DisplaceFiltersInUse: Record<string,number> = {};
 	let DisplaceFilterAmt: Record<string,number> = {};
 	//let OcclusionFiltersInUse = {};
-	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
-	let EraseFilters_LG: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, type?: string[], amount: number, zIndex?: number}[]> = {};
+	let EraseFilters: Record<string, FilterDef[]> = {};
+	let EraseFilters_LG: Record<string, FilterDef[]> = {};
 	let EraseFiltersInUse: Record<string,number> = {};
 	let EraseFiltersAmt: Record<string,number> = {};
 	for (let m of Models.values()) {
@@ -1264,14 +1265,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						let sy = tt.sy;
 						let rot = tt.rot;
 
-						let obj = {
+						let obj: FilterDef = {
 								amount: DisplaceFilterAmt[id + dg],
 								hash: id + m.Name + "," + l.Name,
 								zIndex: zzz,
 								id: id,
 								type: l.DisplaceSource,
 								spriteName: l.DisplacementSprite,
-								sprite: KDDrawRT(
+								spriteFunc: () => {return KDDrawRT(
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
 									id, id,
@@ -1288,7 +1289,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 									}, false,
 									ContainerContainer.SpritesDrawn,
 									Zoom, undefined, undefined, true, false
-								),
+								)},
+								sprite: null
 							};
 						if (l.DisplaceOptIn) {
 							let iii = 0;
@@ -1474,24 +1476,27 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								id: id,
 								spriteName: l.EraseSprite,
 								zIndex: zzz,
-								sprite: KDDrawRT(
-									ContainerContainer.Container,
-									ContainerContainer.SpriteList,
-									id, id,
-									id,
-									ox * Zoom, oy * Zoom, undefined, undefined,
-									rot, {
-										zIndex: zzz,
-										anchorx: l.NoOffsetErase ? ax : ((ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1)),
-										anchory: l.NoOffsetErase ? ay : ((ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1)),
-										scalex: sx != 1 ? sx : undefined,
-										scaley: sy != 1 ? sy : undefined,
-										alpha: 0.0,
-										cullable: KDCulling,
-									}, false,
-									ContainerContainer.SpritesDrawn,
-									Zoom, undefined, undefined, true, false
-								),
+								spriteFunc: () => {
+									return KDDrawRT(
+										ContainerContainer.Container,
+										ContainerContainer.SpriteList,
+										id, id,
+										id,
+										ox * Zoom, oy * Zoom, undefined, undefined,
+										rot, {
+											zIndex: zzz,
+											anchorx: l.NoOffsetErase ? ax : ((ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1)),
+											anchory: l.NoOffsetErase ? ay : ((ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1)),
+											scalex: sx != 1 ? sx : undefined,
+											scaley: sy != 1 ? sy : undefined,
+											alpha: 0.0,
+											cullable: KDCulling,
+										}, false,
+										ContainerContainer.SpritesDrawn,
+										Zoom, undefined, undefined, true, false
+									);
+								},
+								sprite: null,
 							}
 						);
 					}
@@ -1513,20 +1518,23 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							amount: EraseAmount,
 							hash: x,
 							id: 'ef' + x,
-							sprite: KDDrawRT(
-								ContainerContainer.Container,
-								ContainerContainer.SpriteList,
-								"xrayfilter_" + x, "xrayfilter_" + x,
-								"DisplacementMaps/" + x + ".png",
-								0, 0, undefined, undefined,
-								0, {
-									zIndex: 1000000,
-									alpha: 0.0,
-									cullable: KDCulling,
-								}, false,
-								ContainerContainer.SpritesDrawn,
-								Zoom, undefined, undefined, true, false
-							),
+							spriteFunc: () => {
+								return KDDrawRT(
+									ContainerContainer.Container,
+									ContainerContainer.SpriteList,
+									"xrayfilter_" + x, "xrayfilter_" + x,
+									"DisplacementMaps/" + x + ".png",
+									0, 0, undefined, undefined,
+									0, {
+										zIndex: 1000000,
+										alpha: 0.0,
+										cullable: KDCulling,
+									}, false,
+									ContainerContainer.SpritesDrawn,
+									Zoom, undefined, undefined, true, false
+								)
+							},
+							sprite: null,
 						}
 					);
 				}
@@ -1647,6 +1655,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// Add erase filters BEFORE displacement
 				if (!l.NoErase && EraseFilters[origlayer]) {
 					for (let ef of EraseFilters[origlayer]) {
+						if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 						if (!ef.sprite) continue;
 						if (ef.spriteName != undefined && ef.spriteName == l.EraseSprite) continue;
 						if (ef.zIndex != undefined && ef.zIndex - (l.EraseZBonus || 0) <= zz + 0.01) continue;
@@ -1681,6 +1690,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						if (DisplaceFiltersOptIn[src] && DisplaceFiltersOptIn[src][origlayer]) {
 							for (let ef of DisplaceFiltersOptIn[src][origlayer]) {
 								if (alreadyAdded.get(ef)) continue;
+								if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 								if (!ef.sprite) continue;
 								if (ef.spriteName != undefined && ef.spriteName == l.DisplacementSprite) continue;
 								if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
@@ -1719,6 +1729,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
+						if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 						if (!ef.sprite) continue;
 						if (ef.spriteName != undefined && ef.spriteName == l.DisplacementSprite) continue;
 						if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
@@ -1879,6 +1890,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		// Add erase filters BEFORE displacement
 		if (EraseFilters[name]) {
 			for (let ef of EraseFilters[name]) {
+						if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 				if (!ef.sprite) continue;
 				let efh = containerID + "ers_" + ef.hash;
 				let dsprite = ef.sprite;
@@ -1904,6 +1916,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		
 		if (DisplaceFilters[name]) {
 			for (let ef of DisplaceFilters[name]) {
+				if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 				if (!ef.sprite) continue;
 				let efh = containerID + "disp_" + ef.hash;
 				let dsprite = ef.sprite;
