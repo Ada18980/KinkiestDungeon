@@ -966,10 +966,7 @@ function KDChangeDistraction(src: string, type: string, trig: string, Amount: nu
 		let cdBonus = KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionMax ? Math.min(4, Math.max(1, Math.ceil(Amount/1.5))) : 0;
 		KDGameData.DistractionCooldown = Math.max(KDGameData.DistractionCooldown, 3 + cdBonus, KDGameData.SlowMoveTurns + 1 + cdBonus);
 
-		if (KDToggles.ArousalHearts)
-			for (let i = 0; i < Amount * 10 && i < 100; i++) {
-				KDCreateArousalParticle(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, 0);
-			}
+		
 	}
 
 	if (lowerPerc) {
@@ -1001,8 +998,16 @@ function KDChangeDistraction(src: string, type: string, trig: string, Amount: nu
 	}
 
 	data.amountChanged = amountChanged;
+	
 	if (!noEvent)
 		KinkyDungeonSendEvent("afterChangeDistraction", data);
+
+	if (data.amountChanged > 0) {
+		if (KDToggles.ArousalHearts)
+			for (let i = 0; i < data.amountChanged * 10 && i < 100; i++) {
+				KDCreateArousalParticle(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, 0);
+			}
+	}
 
 	return amountChanged;
 }
@@ -1020,6 +1025,7 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 		type: type,
 		trig: type,
 		Amount: Amount,
+		amountChanged: 0,
 		NoFloater: NoFloater,
 		mult: Math.max(0,
 			Amount > 0 ? (1 + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "StatGainDesire"))
@@ -1040,12 +1046,6 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 	if (!KDGameData.DistractionCooldown) {
 		KDGameData.DistractionCooldown = 0;
 	}
-	if (Amount > 0) {
-		if (KDToggles.ArousalHearts)
-			for (let i = 0; i < Amount * 10 && i < 100; i++) {
-				KDCreateArousalParticle(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax, 0);
-			}
-	}
 
 	if (!NoFloater && Math.abs(KDOrigDesire - Math.floor(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax * 100)) >= 0.99) {
 		//KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, Math.floor(KinkyDungeonStatDistractionLower/KinkyDungeonStatDistractionMax * 100) - KDOrigDistraction, "#ff00ff", undefined, undefined, "% distraction");
@@ -1063,6 +1063,15 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 	if (isNaN(KinkyDungeonStatDistractionLower)) {
 		console.trace();
 		KinkyDungeonStatDistractionLower = 0;
+	}
+	data.amountChanged = amountChanged;
+	KinkyDungeonSendEvent("afterChangeDesire", data);
+
+	if (data.amountChanged > 0) {
+		if (KDToggles.ArousalHearts)
+			for (let i = 0; i < data.amountChanged * 10 && i < 100; i++) {
+				KDCreateArousalParticle(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, 0);
+			}
 	}
 
 	return amountChanged;

@@ -1,43 +1,35 @@
 {"frames": {
 
-"Models/Maid/CorsetStraps.png":
+"Models/RopeOld/ArmsBoxtie.png":
 {
-	"frame": {"x":3,"y":359,"w":239,"h":131},
+	"frame": {"x":311,"y":3,"w":307,"h":133},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":493,"y":406,"w":239,"h":131},
+	"spriteSourceSize": {"x":463,"y":502,"w":307,"h":133},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/RopeOld/ArmsWristtie.png":
+"Models/RopeOld/ShoulderStraps.png":
 {
-	"frame": {"x":3,"y":75,"w":293,"h":143},
+	"frame": {"x":622,"y":130,"w":223,"h":107},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":470,"y":495,"w":293,"h":143},
+	"spriteSourceSize": {"x":486,"y":409,"w":223,"h":107},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Sleepsack/LegRightBeltsSpread.png":
+"Models/Sleepsack/LegLeftBeltsKneelClosed.png":
 {
-	"frame": {"x":3,"y":3,"w":305,"h":68},
+	"frame": {"x":3,"y":3,"w":304,"h":191},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":464,"y":1064,"w":305,"h":68},
+	"spriteSourceSize": {"x":392,"y":803,"w":304,"h":191},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/SleepsackJacket/ChestMetal.png":
+"Models/Sleepsack/LegRightBeltsKneel.png":
 {
-	"frame": {"x":3,"y":222,"w":232,"h":133},
+	"frame": {"x":622,"y":3,"w":232,"h":123},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":438,"y":494,"w":232,"h":133},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/SleepsackJacket/ChestMetalZipped.png":
-{
-	"frame": {"x":3,"y":222,"w":232,"h":133},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":438,"y":494,"w":232,"h":133},
+	"spriteSourceSize": {"x":325,"y":872,"w":232,"h":123},
 	"sourceSize": {"w":1240,"h":1754}
 }},
 "meta": {
@@ -45,9 +37,9 @@
 	"version": "1.0",
 	"image": "atlas7.webp",
 	"format": "RGBA8888",
-	"size": {"w":311,"h":493},
+	"size": {"w":857,"h":240},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:a9ee36c28d022e8a317824f1dece583a:760aa9c28ac92d72d5346439cb7b18df:b400f94fbbcb6ca60e2717374378bcda$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cf095d93388d275a63392e43bf0ee33e:da275b5e49fbb53153e550ad6e473c00:b400f94fbbcb6ca60e2717374378bcda$"
 }
 }

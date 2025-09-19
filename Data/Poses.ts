@@ -202,7 +202,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		]
 	},
 	Saddled: {
-		rotation: -17,
+		rotation: -10,
 		pri_rotation: 1,
 		filter_pose: ["Kneel", "KneelClosed"],
 		offset_y: 0.15,
@@ -212,7 +212,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		mods: [
 			{
 			Layer: "Head",
-			rotation: 20,
+			rotation: 15,
 			rotation_x_anchor: 1190,
 			rotation_y_anchor: 690,
 			offset_x: 1190,
@@ -220,7 +220,7 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 		},
 		{
 			Layer: "BG",
-			rotation: 17,
+			rotation: 10,
 			//rotation_x_anchor: .5,
 			//rotation_y_anchor: .5,
 			//offset_x: 0.641,
@@ -231,15 +231,15 @@ let PoseProperties: {[_: string]: PoseProperty} = {
 			offset_y: 0.35*MODELHEIGHT,
 		},{
 			Layer: "Saddle",
-			rotation: 17,
+			rotation: 10,
 			//rotation_x_anchor: .5,
 			//rotation_y_anchor: .5,
 			//offset_x: 0.641,
 			//offset_y: 0.273,
 			rotation_x_anchor: .5*MODELWIDTH,
 			rotation_y_anchor: .5*MODELHEIGHT,
-			offset_x: 0.48*MODELWIDTH,
-			offset_y: 0.52*MODELHEIGHT,
+			offset_x: 0.5*MODELWIDTH,
+			offset_y: 0.5*MODELHEIGHT,
 		},
 	],
 	},

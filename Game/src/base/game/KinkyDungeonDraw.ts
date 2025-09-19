@@ -5600,16 +5600,20 @@ let KDLastFilterSpritesSanitize = 0;
 
 function KDDoGraphicsSanitize(): void {
 	for (let t of KDRenderTexToDestroy) {
-		t.destroy(true);
+		if (!t.destroyed)
+			t.destroy(true);
 	}
 	KDRenderTexToDestroy = [];
 	for (let t of KDMeshToDestroy) {
-		delete t.filters;
-		t.destroy({
-			children: true,
-			texture: true,
-			baseTexture: true,
-		});
+		if (!t.destroyed) {
+			delete t.filters;
+			t.destroy({
+				children: true,
+				texture: true,
+				baseTexture: true,
+			});
+		}
+		
 	}
 	KDMeshToDestroy = [];
 	let map = new Map();

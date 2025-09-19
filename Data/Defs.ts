@@ -526,7 +526,7 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "ClothLower", start: "BeltBondage", end: "SkirtDeco"},
 	{id: "Skirt", start: "SkirtDeco", end: "WrappingLegsOver"},
 	{id: "Pants", start: "WrappingLegsOver", end: "ShoeLeftOver"},
-	{id: "PantLeft", start: "ShoeLeftOver", end: "Option2_ChastityBeltLower"},
+	{id: "PantLeft", start: "ShoeLeftOver", end: "Saddle"},
 	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "SkirtOverLowerDeco"},
 	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "WrappingLegsRightOver"},
 	{id: "PantRight", start: "WrappingLegsRightOver", end: "HarnessUnder"},

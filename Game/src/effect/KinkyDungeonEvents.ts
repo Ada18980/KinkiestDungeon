@@ -1785,6 +1785,9 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			if (r) {
 				KinkyDungeonAddRestraintIfWeaker(r, MiniGameKinkyDungeonLevel / KDLevelsPerCheckpoint, true, undefined, false, undefined, undefined, item.faction || e.kind, true);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonLivingSpread").replace("RESTRAINTNAME", TextGet("Restraint" + item.name)).replace("+RestraintAdded", TextGet("Restraint" + r.name)), KDBaseLightBlue, 2);
+			} else {
+				KDItemDataSet(item, "livingTimer", 10);
+				return;
 			}
 
 			//Spread accelerates as you get more of that type
