@@ -289,10 +289,12 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Auto-wait Through Delayed Actions
 自动等待略过有延时的行动
 
+- Show Training in Buffs List
+在增益列表中显示训练进度
 - Show Minimap Labels
 显示小地图标签
 - Auto loot all from chests
-自动从箱子中拾取所有物品
+自动从箱子中拿走所有物品
 - Don't Use Outfit Palettes
 不使用套装调色板
 
