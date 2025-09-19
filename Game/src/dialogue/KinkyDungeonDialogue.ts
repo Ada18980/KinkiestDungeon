@@ -2219,7 +2219,6 @@ function KDYesNoBasic (
 				if (KDGetSpeaker()) KDAddOpinionPersistent(KDGetSpeaker().id, -5);
 			}
 
-			KinkyDungeonSendEvent("DialogueEnd", { type: "Bondage", res: "sub" })
 			return false;
 		},(refused) => { // Yes function. This happens if the user submits willingly
 			if (!KinkyDungeonFlags.get("BoundOfferRep" + goddess[0])) {
@@ -2288,6 +2287,9 @@ function KDYesNoBasic (
 					curse ? undefined : Lock, true, false, undefined, KDGetSpeakerFaction(), KinkyDungeonStatsChoice.has("MagicHands") ? true : undefined, curse);
 
 				}
+			}
+			if (!refused) {
+				KinkyDungeonSendEvent("DialogueEnd", { type: "Bondage", res: "sub" })
 			}
 			return false;
 		},(refused) => { // No function. This happens when the user refuses.

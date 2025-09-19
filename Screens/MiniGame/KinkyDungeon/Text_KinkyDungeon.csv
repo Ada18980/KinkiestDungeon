@@ -32396,6 +32396,7 @@ KDPlayerTitleCategory_Reputation,Reputation
 KDPlayerTitleCategory_Stats,Stats
 KDPlayerTitleCategory_Spells,Spells
 KDPlayerTitleCategory_Boss,Bosses
+KDPlayerTitleCategory_Exploration,Exploration
 KDPlayerTitleCategory_Mastery,Mastery
 
 KDPlayerTitle_None,None
@@ -32575,6 +32576,8 @@ KDPlayerTitle_Mastery_AncientAdventurer,Ancient Adventurer
 KDPlayerTitleDesc_Mastery_AncientAdventurer,Unlocked by wearing every Ancient restraint at the same time.
 KDPlayerTitle_Cursed,Cursed
 KDPlayerTitleDesc_Cursed,Unlocked by wearing any cursed restraint or armor.
+KDPlayerTitle_LostInSpace,Lost in Space
+KDPlayerTitleDesc_LostInSpace,Unlocked by stepping into a dimensional rift willingly... or not!
 
 KDProgressItem_TrainingHeels,Heel Training
 

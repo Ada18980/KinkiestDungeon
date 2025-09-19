@@ -174,6 +174,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			InheritColor: "Shadow",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });

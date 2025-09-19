@@ -163,6 +163,41 @@ AddModel({
 	])
 });
 
+AddModel({
+	Name: "SaddleMachine",
+	Folder: "Furniture",
+	TopLevel: true,
+	Group: "Devices",
+	Restraint: true,
+	Categories: ["Restraints","Furniture"],
+	AddPose: ["Saddled", "ForceKneel"],
+	Layers: ToLayerMap([
+		{ Name: "Saddle", Layer: "Saddle", Pri: 40,
+			Invariant: true,
+		},
+		{ Name: "SaddleFront", Layer: "Saddle", Pri: 39.9,
+			Invariant: true,
+			TieToLayer: "Saddle",
+			NoOverride: true,
+		},
+		{ Name: "SaddleHardware", Layer: "Saddle", Pri: 39.9,
+			Invariant: true,
+			TieToLayer: "Saddle",
+			NoOverride: true,
+		},
+		{ Name: "SaddleDisplay", Layer: "Saddle", Pri: 39.9,
+			Invariant: true,
+			TieToLayer: "Saddle",
+			NoOverride: true,
+		},
+		{ Name: "SaddleSeat", Layer: "Saddle", Pri: 39.9,
+			Invariant: true,
+			TieToLayer: "Saddle",
+			NoOverride: true,
+		},
+	])
+});
+
 
 
 AddModel({

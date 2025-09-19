@@ -669,6 +669,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Gag", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -686,6 +687,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "GagSeamless", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -703,6 +705,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "GagMouth", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -720,6 +723,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "GagMouthSeamless", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -739,6 +743,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Gag", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -770,6 +775,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "GagSeamless", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -801,6 +807,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "GagMouth", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",
@@ -832,6 +839,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "GagMouthSeamless", Layer: "GagMuzzle", Pri: 30,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
 			InheritColor: "Collar",

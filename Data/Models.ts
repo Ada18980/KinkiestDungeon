@@ -561,7 +561,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	// Actual loop for drawing the models on the character
 
 	if (!MC.Update.has(containerID)) {
-		let flippedPoses = DrawModelProcessPoses(MC, extraPoses);
+		let flippedPoses = DrawModelProcessPoses(MC, extraPoses, flip);
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
 		let modified = DrawCharacterModels(containerID,
@@ -2649,7 +2649,7 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 }
 
 
-function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
+function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[], flip: boolean) {
 	let flippedPoses = [];
 	if (extraPoses) {
 		for (let p of extraPoses) {
@@ -2658,6 +2658,10 @@ function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
 				MC.Poses[p] = true;
 			}
 		}
+	}
+	if (flip) {
+		flippedPoses.push("Flip");
+		MC.Poses["Flip"] = true;
 	}
 	for (let m of MC.Models.values()) {
 		if (m.AddPose) {

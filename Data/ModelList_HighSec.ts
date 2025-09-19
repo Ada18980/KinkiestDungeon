@@ -471,7 +471,7 @@ AddModel({
 	TopLevel: true,
 	Restraint: true,
 	Categories: ["Restraints", "Legbinder", "Leather"],
-	AddPose: ["EncaseLower"],
+	AddPose: ["EncaseTorsoLower"],
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "WrappingTorsoLower", Pri: -40,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),

@@ -12,7 +12,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Restraints"],
 	Restraint: true,
-	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "EncaseUpper", "EncaseLower", "ForceKneel", "Petsuit"],
+	AddPose: ["HideArms", "EncaseArmLeft", "EncaseArmRight", "EncaseTorsoUpper", "EncaseTorsoLower", "ForceKneel", "Petsuit"],
 	HideLayerGroups: ["PetsuitArms"],
 	Layers: ToLayerMap([
 		{ Name: "Arms", Layer: "BindForeArms", Pri: -31,

@@ -4,12 +4,18 @@
 let KDPlayerTitlesEnabled = localStorage.getItem("KDPlayerTitlesEnabled") ? localStorage.getItem("KDPlayerTitlesEnabled") : true
 let KDUnlockedTitles = localStorage.getItem("KDPlayerTitlesUnlocked") ? JSON.parse(localStorage.getItem("KDPlayerTitlesUnlocked")) : ["None", "Auto"];
 
-function PlayerTitleTick() {
+function PlayerTitleTick(force: boolean) {
+    let update = false;
     // Find all titles we qualify for right now. 
     let currtitles = [];
+    if (KDGameData.titlesUnlockedCache == undefined) { KDGameData.titlesUnlockedCache = {"None": 1, "Auto": 1}};
     Object.keys(KDPlayerTitles).forEach((title) => {
+        if (KDGameData.titlesUnlockedCache[title]) {
+            currtitles.push(title);
+            return;
+        }
         if (typeof KDPlayerTitles[title].unlockCondition === "function") {
-            if (KDPlayerTitles[title].unlockCondition()) {
+            if ((force || KDPlayerTitles[title].rapid || KinkyDungeonCurrentTick % 10 == 0) && KDPlayerTitles[title].unlockCondition()) {
                 currtitles.push(title);
             }
         }
@@ -19,7 +25,7 @@ function PlayerTitleTick() {
     let autotitle = "None"
     let lastrarity = -100000
     currtitles.forEach((t) => {
-        if (KDPlayerTitles[t].priority > lastrarity) {
+        if (KDPlayerTitles[t]?.priority > lastrarity) {
             autotitle = t
         }
     })
@@ -58,12 +64,12 @@ function PlayerTitleTick() {
     Object.keys(combinedtitles).forEach((t) => {
         if ((t != "None") && (t != "Auto")) {
             if (oldtitles.includes(t) && !currtitles.includes(t)) {
-                if (typeof KDPlayerTitles[t].titleDeactivate === "function") {
+                if (typeof KDPlayerTitles[t]?.titleDeactivate === "function") {
                     KDPlayerTitles[t].titleDeactivate()
                 }
             }
             if (!oldtitles.includes(t) && currtitles.includes(t)) {
-                if (typeof KDPlayerTitles[t].titleActivate === "function") {
+                if (typeof KDPlayerTitles[t]?.titleActivate === "function") {
                     KDPlayerTitles[t].titleActivate()
                 }
             }
@@ -73,7 +79,7 @@ function PlayerTitleTick() {
     // Now evaluate persistent functions
     currtitles.forEach((t) => {
         if ((t != "None") && (t != "Auto")) {
-            if (typeof KDPlayerTitles[t].titleActive === "function") {
+            if (typeof KDPlayerTitles[t]?.titleActive === "function") {
                 KDPlayerTitles[t].titleActive()
             }
         }
@@ -85,12 +91,14 @@ function PlayerTitleTick() {
     currtitles.forEach((t) => {
         if (!KDGameData.titlesUnlocked.includes(t)) {
             KDGameData.titlesUnlocked.push(t)
+            KDGameData.titlesUnlockedCache[t] = 1;
         }
     })
     
     KDUnlockedTitles.forEach((t) => {
         if (!KDGameData.titlesUnlocked.includes(t)) {
             KDGameData.titlesUnlocked.push(t)
+            KDGameData.titlesUnlockedCache[t] = 1;
         }
     })
 }
@@ -326,6 +334,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // Player has run their SP down to 0.
     "Exhausted": {
+        rapid: true,
         "unlockCondition": () => {
             return (KinkyDungeonStatStamina <= 0.0)
         },
@@ -345,6 +354,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player is at 95% desire (not distraction, desire)
     "Distracted": {
+        rapid: true,
         "unlockCondition": () => {
             return (KinkyDungeonStatDistractionLower >= (KinkyDungeonStatDistractionMax * 0.95))
         },
@@ -364,6 +374,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player has exhausted their mana pool and has less than 15 mana remaining.
     "OutOfMana": {
+        rapid: true,
         "unlockCondition": () => {
             return ((KinkyDungeonStatManaPool <= 0) && (KinkyDungeonStatMana <= 1.5))
         },
@@ -383,6 +394,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player has run out of willpower
     "OutofWillpower": {
+        rapid: true,
         "unlockCondition": () => {
             return (KinkyDungeonStatWill <= 0)
         },
@@ -402,6 +414,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player has 0 WP, 0 SP and 0 MP at the same time. 
     "OutofEverything": {
+        rapid: true,
         "unlockCondition": () => {
             return ((KinkyDungeonStatWill <= 0) && (KinkyDungeonStatMana <= 0) && (KinkyDungeonStatStamina <= 0))
         },
@@ -536,6 +549,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player has been leashed
     "Leashed": {
+        rapid: true,
         "unlockCondition": () => {
             return (KDGameData?.KinkyDungeonLeashedPlayer >= 1)
         },
@@ -555,6 +569,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player is off balance
     "Offbalance": {
+        rapid: true,
         "unlockCondition": () => {
             return (KDGameData?.Balance <= 0.5)
         },
@@ -574,6 +589,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player summoned an angel
     "AngelSummoned": {
+        rapid: true,
         "unlockCondition": () => {
             return (KDGameData?.RescueFlag)
         },
@@ -593,6 +609,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player finds an Angel
     "AngelFound": {
+        rapid: true,
         "unlockCondition": () => {
             return (KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,2).map((t) => t.Enemy?.name).includes("Angel"))
         },
@@ -732,6 +749,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
         "icon": "None",
     },
     "Hoarder": {
+        rapid: true,
         "unlockCondition": () => {
             return ((KinkyDungeonInventory.get("looserestraint").size + KinkyDungeonInventory.get("consumable").size + KinkyDungeonInventory.get("weapon").size) > 300)
         },
@@ -786,6 +804,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
         "icon": "None",
     },
     "Bound": {
+        rapid: true,
         "unlockCondition": () => {
             return (KDGameData?.Restriction > 20)
         },
@@ -804,6 +823,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
         "icon": "None",
     },
     "Helpless": {
+        rapid: true,
         "unlockCondition": () => {
             return (KDGameData?.Restriction > 45)
         },
@@ -822,6 +842,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
         "icon": "None",
     },
     "Blind": {
+        rapid: true,
         "unlockCondition": () => {
             return (KinkyDungeonBlindLevel > 0)
         },
@@ -841,6 +862,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player is fully slimed and then it hardens.
     "EncasedAdventurer": {
+        rapid: true,
         "unlockCondition": () => { 
             let restraints = ['HardSlimeHands', 'HardSlimeBoots', 'HardSlimeMouth', 'HardSlimeArms', 'HardSlimeFeet', 'HardSlimeLegs', 'HardSlimeHead']
             let allworn = true;
@@ -893,6 +915,7 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
     },
     // Player wears any cursed restraint or armor.
     "Cursed": {
+        rapid: true,
         "unlockCondition": () => { 
             return (Array.from(KinkyDungeonInventory.get("restraint").values()).some((t) => {
                 return t.curse != undefined
@@ -1836,6 +1859,26 @@ let KDPlayerTitles: Record<string, KDPlayerTitle> = {
             return false;
         },
         "category": "Mastery",
+        "icon": "None",
+    },
+    // Player enters edged
+    "LostInSpace": {
+        "unlockCondition": () => { 
+            
+            return KDMapData?.RoomType == "DemonTransition";
+        },
+        "priority": 12,
+        "color": "#883afd",
+        "titleActive": () => {
+            return false;
+        }, 
+        "titleActivate": () => {
+            return false;
+        },
+        "titleDeactivate": () => { 
+            return false;
+        },
+        "category": "Exploration",
         "icon": "None",
     },
 }

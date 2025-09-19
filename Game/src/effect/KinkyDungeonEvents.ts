@@ -12284,7 +12284,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 		"PlayerTitles": (e, data) => {
 			if (KDPlayerTitlesEnabled) {
-				PlayerTitleTick();
+				PlayerTitleTick(false);
 			}
 		}
 	},

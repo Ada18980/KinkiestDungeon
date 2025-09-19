@@ -11,8 +11,9 @@ AddModel({
 	Name: "SleepsackLegbinder",
 	Folder: "Sleepsack",
 	TopLevel: true,
+	Parent: "SleepsackJacket",
 	Restraint: true,
-	Categories: ["Restraints", "Legbinder", "Sleepsack"],
+	Categories: ["Restraints", "Legbinder", "Sleepsack", "Pants"],
 	Layers: ToLayerMap([
 		{ Name: "LegLeft", Layer: "LegbinderLegsOver", Pri: 30,
 			Poses: ToMap(LEGPOSES),
@@ -279,8 +280,8 @@ AddModel({
 	Parent: "SleepsackJacket",
 	TopLevel: false,
 	Restraint: true,
-	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseHandLeft", "EncaseHandRight", "EncaseUpper"],
-	Categories: ["Restraints", "Jacket", "Leather"],
+	AddPose: ["EncaseArmLeft", "EncaseArmRight", "EncaseHandLeft", "EncaseHandRight", "EncaseTorsoUpper"],
+	Categories: ["Restraints", "Jacket", "Leather", "Uniforms"],
 	Layers: ToLayerMap([
 
 		{ Name: "Leather", Layer: "BulkyShirt", Pri: 140,
@@ -340,6 +341,7 @@ AddModel({
 			HidePoses: ToMap(["WrapChest"]),
 			TieToLayer: "ChestLeatherZipped",
 			InheritColor: "Text",
+			MorphPoses: {Flip: "Flip"},
 			NoOverride: true,
 		},
 
@@ -524,6 +526,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Panel",
 			HideWhenOverridden: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "MuzzleLeather", Layer: "GagMuzzleStraps", Pri: 19,
 			Invariant: true,

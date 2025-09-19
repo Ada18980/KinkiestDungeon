@@ -28,6 +28,7 @@ AddModel({
 			AddPriWithPose: {
 				ItemMouthRubberOver: 45,
 			},
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });

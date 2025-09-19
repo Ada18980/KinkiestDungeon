@@ -318,6 +318,9 @@ let LAYERS_BASE = [
 	"FootLeft",
 	"LegLeft",
 
+	
+	"Saddle",
+
 	// Lower harness
 	"Option2_ChastityBeltLower",
 	"HarnessLower",

@@ -753,6 +753,7 @@ interface KDGameDataBase {
 	currentTitle: string,
 	oldtitles: string[],
 	titlesUnlocked: string[],
+	titlesUnlockedCache: Record<string, number>,
 	titledata: KDPlayerTitleData,
 	RecentProgress: Record<string, ProgressRecord>,
 };
@@ -760,6 +761,7 @@ interface KDGameDataBase {
 
 let KDGameDataBase: KDGameDataBase = {
 	titledata: null,
+	titlesUnlockedCache: {},
 	CurrentDialogEntity: null,
 	RecruitedFaction: "",
 	WarningTiles: {},

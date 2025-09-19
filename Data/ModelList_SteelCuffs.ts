@@ -107,7 +107,7 @@ AddModel({
 			InheritColor: "ThighLinkLeft",
 			NoOverride: true,
 
-			HidePoses: {"EncaseLower": true},
+			HidePoses: {"EncaseTorsoLower": true},
 			RequirePoses: {"NeoBelt": true},
 			AppendPose: {"NeoChastityBelt": "", "NeoWaistBelt": "Belt"},
 			SwapLayerPose: {"ChastityOption2": "OverGarters", "NeoChastityBelt": "Garters"},
@@ -135,7 +135,7 @@ AddModel({
 			Poses: ToMap(["Spread", "Closed", "Kneel", "KneelClosed", "Hogtie"]),
 			InheritColor: "ThighLinkRight",
 			NoOverride: true,
-			HidePoses: {"EncaseLower": true},
+			HidePoses: {"EncaseTorsoLower": true},
 			RequirePoses: {"NeoBelt": true},
 			AppendPose: {"NeoChastityBelt": "", "NeoWaistBelt": "Belt"},
 			SwapLayerPose: {"ChastityOption2": "OverGarters", "NeoChastityBelt": "Garters"},

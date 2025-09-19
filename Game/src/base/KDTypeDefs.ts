@@ -4207,6 +4207,7 @@ type KDTeaseAttack = {
 };
 
 type KDPlayerTitle = {
+	rapid?: boolean, // ticks every turn instead of 10 turns
 	unlockCondition: Function, // If true, unlocks title
 	priority: number, // Higher number = show higher on auto
 	color: string, // Color of title text

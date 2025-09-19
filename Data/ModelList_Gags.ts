@@ -296,6 +296,7 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Strap", Layer: "GagStraps", Pri: 17,
 			Sprite: "BallStrap",
@@ -340,6 +341,7 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Strap", Layer: "GagMuzzleStraps", Pri: 15,
 			Sprite: "MuzzleStrap",
@@ -458,6 +460,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			InheritColor: "Tape",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -495,6 +498,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			InheritColor: "Tape",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -513,6 +517,7 @@ AddModel({
 			OffsetY: 200,
 			Invariant: true,
 			InheritColor: "Tape",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -625,6 +630,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Cloth",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -645,6 +651,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Cloth",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -669,7 +676,8 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
-			AppendPose: {StuffMouth: "Flat"}
+			AppendPose: {StuffMouth: "Flat"},
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -692,6 +700,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -730,6 +739,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "MuteLogo", Layer: "GagFlat", Pri: 30.1,
 			OffsetX: 942,
@@ -738,6 +748,7 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "OTNFlat",
 			InheritColor: "Symbol",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -845,6 +856,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Latex",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -884,12 +896,14 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Gag",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "NeckCorsetGagRim2", Layer: "GagMuzzle", Pri: -15.1,
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Rim",
 			TieToLayer: "NeckCorsetGag2",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -955,6 +969,7 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 			InheritColor: "Metal",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -974,6 +989,7 @@ AddModel({
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Fabric",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -998,6 +1014,7 @@ AddModel({
 			Invariant: true,
 			NoOverride: true,
 			TieToLayer: "FabricMuzzle",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 		{ Name: "Whiskers", Layer: "GagFlat", Pri: 45.1,
 			OffsetX: 942,
@@ -1005,6 +1022,7 @@ AddModel({
 			Invariant: true,
 			NoOverride: true,
 			TieToLayer: "FabricMuzzle",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -1054,6 +1072,7 @@ AddModel({
 			Invariant: true,
 			NoOverride: true,
 			InheritColor: "Fabric",
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -1079,6 +1098,7 @@ AddModel({
 			InheritColor: "Rivets",
 			TieToLayer: "OTN",
 			NoOverride: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
@@ -1642,6 +1662,7 @@ AddModel({
 			OffsetX: 942,
 			OffsetY: 200,
 			Invariant: true,
+			DisplacementSources: ["Head", "FaceGag"],
 		},
 	])
 });
