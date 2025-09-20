@@ -51355,6 +51355,7 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 状态
 - Bosses
 Boss
+# - Exploration
 - Mastery
 专精
 
@@ -51529,6 +51530,8 @@ Boss
 解锁方式：穿上全套远古拘束具。
 - Unlocked by wearing any cursed restraint or armor.
 解锁方式：穿上任何被诅咒的拘束具或装备。
+# - Lost in Space
+# - Unlocked by stepping into a dimensional rift willingly... or not!
 
 
 - Select a progress item to show details
