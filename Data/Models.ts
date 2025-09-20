@@ -469,6 +469,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 			let iii = 0;
 			for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
 				let mesh = submesh.mesh;
+				if (!mesh.geometry) continue;
 				//let rt = MC.Containers.get(containerID).RenderTexture;
 				let buffer = mesh.geometry.getBuffer('aVertexPosition');
 				let matrix = submesh.matrix;
@@ -3092,6 +3093,22 @@ function KDContainerClear(Container: ContainerInfo) {
 	});
 	Container.Container.destroy();
 	Container.RenderTexture.destroy(true);
+
+	for (let submesh of Container.Submeshes.values()) {
+		if (!submesh.mesh.destroyed)
+			submesh.mesh.destroy({
+				texture: true,
+				baseTexture: true,
+			});
+		if (!submesh.container.destroyed)
+			submesh.container.destroy();
+		
+		if (!submesh.rt.destroyed)
+			submesh.rt.destroy(true);
+
+	}
+	Container.Submeshes.clear();
+
 }
 
 function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIXISprite) {
