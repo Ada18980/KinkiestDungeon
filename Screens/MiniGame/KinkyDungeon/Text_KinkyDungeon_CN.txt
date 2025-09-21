@@ -553,7 +553,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Helpless
 虚弱无助
 # :: KinkyDungeonStat1
-# :: KDPlayerTitle_Helpless
+:: KDPlayerTitle_Helpless
+无助
 - You are physically weak. Struggling is much less effective.
 你的身体虚弱，挣扎效果减弱。
 
@@ -16323,7 +16324,7 @@ EnemyName 设法带着你的物品撤退了！
 你将自食其果，该难度通过双击“困难模式”按钮解锁
 
 - Aroused
-性欲
+欲求不满
 # :: KinkyDungeonSexyMode1
 # :: KDPlayerTitle_Distracted
 - Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
@@ -49386,7 +49387,8 @@ NPC可用性：
 - Bound
 拘束
 # :: KDCollectionFilterBound
-# :: KDPlayerTitle_Bound
+:: KDPlayerTitle_Bound
+受缚
 - At Risk
 面临风险
 - Escaped
@@ -51374,80 +51376,150 @@ Boss
 解锁方式：使用平民职业。
 - Unlocked by getting recruited by the Alchemists.
 解锁方式：被炼金术士招募。
-# - Analog Interface
-# - Unlocked by getting recruited by the Old Guardians.
-# - Saved by an Angel
-# - Unlocked by asking for help from any shrine.
-# - Magic Student
-# - Unlocked by getting recruited by the School of Magic.
-# - Outlaw
-# - Unlocked by getting recruited by the Bandits.
-# - Sphinx
-# - Unlocked by getting recruited by the Cult of Bast.
-# - Leading the Blind
-# - Unlocked by wearing any blindfold.
-# - Unlocked by achieving at least 25 restriction.
-# - Unlocked by achieving at least 45 restriction.
-# - Unlocked by getting recruited by the Bounty Hunters.
-# - Chaste
-# - Unlocked by wearing a chastity belt and chastity bra.
-# - Blessed by Aether
-# - Unlocked by reaching 100 reputation with the Conjuration Goddess.
+- Analog Interface
+模拟接口
+- Unlocked by getting recruited by the Old Guardians.
+解锁方式：被上古守护者招募。
+- Saved by an Angel
+天使救赎
+- Unlocked by asking for help from any shrine.
+解锁方式：从神泉请求帮助。
+- Magic Student
+魔法学徒
+- Unlocked by getting recruited by the School of Magic.
+解锁方式：被魔法学校招募。
+- Outlaw
+法外狂徒
+- Unlocked by getting recruited by the Bandits.
+解锁方式：被强盗招募。
+- Sphinx
+斯芬克斯
+- Unlocked by getting recruited by the Cult of Bast.
+解锁方式：被猫女神教会招募。
+- Leading the Blind
+摸黑前行
+- Unlocked by wearing any blindfold.
+解锁方式：穿上任何眼罩。
+- Unlocked by achieving at least 25 restriction.
+解锁方式：束缚强度达到25。
+- Unlocked by achieving at least 45 restriction.
+解锁方式：束缚强度达到45。
+- Unlocked by getting recruited by the Bounty Hunters.
+解锁方式：被赏金猎人招募。
+- Chaste
+坚守贞操
+- Unlocked by wearing a chastity belt and chastity bra.
+解锁方式：穿上贞操带和贞操文胸。
+- Blessed by Aether
+咒术祝福
+- Unlocked by reaching 100 reputation with the Conjuration Goddess.
+解锁方式：与咒术女神的关系达到100。
 # :: KDPlayerTitleDesc_Conjure
 # :: KDPlayerTitleDesc_Metal
-# - Unlocked by reaching at least 95% desire.
-# - Heart of the Dragon
-# - Unlocked by getting recruited by the Dragonheart Order.
-# - Seamstress
-# - Unlocked by getting recruited by the Dressup Corporation.
-# - The Nine Planes
-# - Unlocked by getting recruited by the Elementals.
-# - Unlocked by getting recruited by the Cult of the Wild.
-# - Lethargic
-# - Unlocked by reaching 0 SP.
-# - Hoarder
-# - Unlocked by holding at least 300 items in your inventory.
-# - Loot Goblin
-# - Unlocked by holding at least 1000 items in your inventory.
-# - Infinite Pockets
-# - Unlocked by holding at least 3000 items in your inventory.
-# - Blessed by Oblivion
-# - Unlocked by reaching 100 reputation with the Illusion Goddess.
-# - Blessed by Matah
-# - Unlocked by reaching 100 reputation with the Elements Goddess.
-# - Unlocked by being jailed.
-# - Blessed by Minivir
-# - Unlocked by reaching 100 reputation with the Latex Goddess.
-# - Going on Walkies!
-# - Unlocked by being leashed by an NPC.
-# - Blessed by Nivah
-# - Unlocked by reaching 100 reputation with the Leather Goddess.
+- Unlocked by reaching at least 95% desire.
+解锁方式：欲望达到95%。
+- Heart of the Dragon
+龙之心
+- Unlocked by getting recruited by the Dragonheart Order.
+解锁方式：被龙心教团招募。
+- Seamstress
+裁缝
+- Unlocked by getting recruited by the Dressup Corporation.
+解锁方式：被装扮公司招募。
+- The Nine Planes
+九大位面
+- Unlocked by getting recruited by the Elementals.
+解锁方式：被元素精灵招募。
+- Unlocked by getting recruited by the Cult of the Wild.
+解锁方式：被自然教会招募。
+- Lethargic
+筋疲力尽
+- Unlocked by reaching 0 SP.
+解锁方式：SP达到0。
+- Hoarder
+仓鼠症
+- Unlocked by holding at least 300 items in your inventory.
+解锁方式：持有物品达到300件。
+- Loot Goblin
+哥布林
+- Unlocked by holding at least 1000 items in your inventory.
+解锁方式：持有物品达到1000件。
+- Infinite Pockets
+次元袋
+- Unlocked by holding at least 3000 items in your inventory.
+解锁方式：持有物品达到3000件。
+- Blessed by Oblivion
+幻术祝福
+- Unlocked by reaching 100 reputation with the Illusion Goddess.
+解锁方式：与幻术女神的关系达到100。
+- Blessed by Matah
+元素祝福
+- Unlocked by reaching 100 reputation with the Elements Goddess.
+解锁方式：与元素女神的关系达到100。
+- Unlocked by being jailed.
+解锁方式：被投进监狱。
+- Blessed by Minivir
+乳胶祝福
+- Unlocked by reaching 100 reputation with the Latex Goddess.
+解锁方式：与乳胶女神的关系达到100。
+- Going on Walkies!
+去散步吧！
+- Unlocked by being leashed by an NPC.
+解锁方式：被NPC牵行。
+- Blessed by Nivah
+皮革祝福
+- Unlocked by reaching 100 reputation with the Leather Goddess.
+解锁方式：与皮革女神的关系达到100。
 - Maidforce
 女仆势力
-# - Unlocked by getting recruited by MaidForce.
-# - Blessed by Oriel
-# - Unlocked by getting recruited by the Nevermere Trainers.
-# - Off-balance!
-# - Unlocked by falling under 50% balance.
-# - Drained
-# - Unlocked by reaching 0 mana pool and under 15 mana.
-# - Surrender
-# - Unlocked by reaching 0 willpower.
-# - Only Way To Go is Up
-# - Unlocked by reaching 0 willpower and 0 mana and 0 stamina at the same time.
-# - Recruit
-# - Unlocked by getting recruited by any faction.
-# - Blessed by Akasha
-# - Unlocked by reaching 100 reputation with the Rope Goddess.
-# - Treasure Seeker
-# - Unlocked by opening any chest.
-# - Blessed by Ninril
-# - Unlocked by reaching 100 reputation with the Restoration Goddess.
-# - #Blessed
-# - Unlocked by encountering an Angel that wasn't summoned by a shrine.
-# - Unlocked by being recruited by the Angels. (Not Available)
-# - Demonic
-# - Unlocked by being recruited by the Demons. (Not Available)
+- Unlocked by getting recruited by MaidForce.
+解锁方式：被女仆势力招募。
+- Blessed by Oriel
+金属祝福
+- Unlocked by getting recruited by the Nevermere Trainers.
+解锁方式：被“奈文米尔”训练师招募。
+- Off-balance!
+失去平衡！
+- Unlocked by falling under 50% balance.
+解锁方式：平衡计小于50%。
+- Drained
+法力告竭
+- Unlocked by reaching 0 mana pool and under 15 mana.
+解锁方式：法力池达到0并且法力小于15。
+- Surrender
+投降
+- Unlocked by reaching 0 willpower.
+解锁方式：意志力达到0。
+- Only Way To Go is Up
+背水一战
+- Unlocked by reaching 0 willpower and 0 mana and 0 stamina at the same time.
+解锁方式：意志力，法力，体力全都达到0。
+- Recruit
+应征者
+- Unlocked by getting recruited by any faction.
+解锁方式：被任一势力招募。
+- Blessed by Akasha
+绳索祝福
+- Unlocked by reaching 100 reputation with the Rope Goddess.
+解锁方式：与绳索女神的关系达到100。
+- Treasure Seeker
+宝藏猎人
+- Unlocked by opening any chest.
+解锁方式：打开任何箱子。
+- Blessed by Ninril
+恢复祝福
+- Unlocked by reaching 100 reputation with the Restoration Goddess.
+解锁方式：与恢复女神的关系达到100。
+- #Blessed
+祝福
+- Unlocked by encountering an Angel that wasn't summoned by a shrine.
+解锁方式：遇到野生的天使。
+- Unlocked by being recruited by the Angels. (Not Available)
+解锁方式：被天使招募。（不可用）
+- Demonic
+恶魔
+- Unlocked by being recruited by the Demons. (Not Available)
+解锁方式：被恶魔招募。（不可用）
 # - Unlocked by accepting a restraint from the boss on floor 4 after defeating her.
 # - Fuuka's Brat
 # - Unlocked by being defeated by the boss on floor 4 and she restrains you.
