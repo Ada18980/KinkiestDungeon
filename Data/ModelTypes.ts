@@ -47,6 +47,22 @@ type PoseProperty = {
 
 }
 
+type MeshWarpData = any;
+
+/** A Meshwarp,  */
+type MeshWarp = {
+	/** Function for determining magnitude. Input a character and MeshWarpData (unimplemented). Output number indicating intensity. Default is 1 */
+	intensityFunction?: (C: Character, MC: ModelContainer, data: MeshWarpData) => number,
+	/** Which layers are affected by this warp, and by which warp*/
+	LayerGroups: {[_: string]: string},
+	/** Only applies when these poses are present on the model*/
+	filter_pose?: string[],
+	/** Applied to standard 10x10 mesh. indicates positions at 1 intensity. Final positions are interpolated by intensity value*/
+	BasicMesh?: {[_: string]: number[]},
+	pri_basic?: number,
+
+}
+
 interface Model extends Namable {
     /** Name of the model, used to identify */
     Name: string,

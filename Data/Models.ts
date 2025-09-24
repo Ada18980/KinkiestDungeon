@@ -1,5 +1,5 @@
 let SHOWMESHPOINTS = false;
-let StruggleAnimation = false;
+let StruggleAnimation = true;
 
 let RenderCharacterQueue = new Map();
 let RenderCharacterLock = new Map();
@@ -464,51 +464,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		containerID = `${Math.round(X)},${Math.round(Y)},${Zoom}`;
 	let refreshfilters = false;
 
-	if (StruggleAnimation) // PROTOTYPE struggle animation
-		if (MC.Containers.get(containerID)) {
-			let iii = 0;
-			for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
-				let mesh = submesh.mesh;
-				if (!mesh.geometry) continue;
-				//let rt = MC.Containers.get(containerID).RenderTexture;
-				let buffer = mesh.geometry.getBuffer('aVertexPosition');
-				let matrix = submesh.matrix;
-
-				// Assign locations
-				let x = 0;
-				let y = 0;
-				let width = 10;
-				let height = 10;
-				let timt = 1000;
-				for (let i = 0; i + 1 < buffer.data.length; i+= 2)
-				{
-					// x
-					buffer.data[i] = matrix[i] + MODELWIDTH*0.005*Math.sin(Math.max(0,Math.PI*(0.6*height-y)/(0.6*height)))
-						*(Math.sin((CommonTime() % timt)/timt * 2*Math.PI * (1 + iii * 0.1)))*Zoom;
-					// y
-					buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.001*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % timt)/timt * 4*Math.PI)*Zoom;
-					if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
-						KDDraw(DrawCanvas, kdpixisprites, iii+"buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
-						-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
-						undefined, {
-							zIndex: 100,
-							tint: 0x00ff00,
-						});
-					}
-
-					x += 1;
-					if (x >= width) {
-						y += 1;
-						x = 0;
-					}
-				}
-				buffer.update();
-
-				iii++;
-			}
-
-			
-		}
+	
 
 	let OldSubmeshes = null;
 	if (MC.Containers.get(containerID) && !MC.Update.has(containerID) && MC.Refresh.has(containerID)) {
@@ -609,6 +565,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 
 	// Actual loop for drawing the models on the character
 
+
 	if (!MC.Update.has(containerID)) {
 		let flippedPoses = DrawModelProcessPoses(MC, extraPoses, flip);
 
@@ -674,6 +631,79 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 		}
 	}
 
+	if (StruggleAnimation) {
+		let Container = MC.Containers.get(containerID);
+		if (Container) {
+			//let iii = 0;
+			for (let entry of MC.Containers.get(containerID).Submeshes.entries()) {
+				let submesh = entry[1];
+				let mesh = submesh.mesh;
+				if (!mesh.geometry) continue;
+				//let rt = MC.Containers.get(containerID).RenderTexture;
+				let buffer = mesh.geometry.getBuffer('aVertexPosition');
+				let matrix = submesh.matrix;
+
+				// Assign locations
+				let MaxWarp = ModelGetMaxMeshWarp(MC.Poses, entry[0], "pri_basic", "BasicMesh");
+				if (MaxWarp && MeshWarps[MaxWarp].BasicMesh) {
+					let BasicMesh = MeshWarps[MaxWarp].BasicMesh[MeshWarps[MaxWarp].LayerGroups[entry[0]]];
+					let x = 0;
+					let y = 0;
+					let width = 10;
+					let height = 10;
+					let intensity = MeshWarps[MaxWarp].intensityFunction ? (MeshWarps[MaxWarp].intensityFunction(C, MC, {})) : 1;
+					for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+					{
+						// x
+						buffer.data[i] = matrix[i] + (BasicMesh[i]) * intensity;
+						// y
+						buffer.data[i+1] = matrix[i+1] + (BasicMesh[i+1]) * intensity;
+
+						x += 1;
+						if (x >= width) {
+							y += 1;
+							x = 0;
+						}
+					}
+				}
+				/*
+				let x = 0;
+				let y = 0;
+				let width = 10;
+				let height = 10;
+				let timt = 1000;
+				for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+				{
+					// x
+					buffer.data[i] = matrix[i] + MODELWIDTH*0.005*Math.sin(Math.max(0,Math.PI*(0.6*height-y)/(0.6*height)))
+						*(Math.sin((CommonTime() % timt)/timt * 2*Math.PI * (1 + iii * 0.1)))*Zoom;
+					// y
+					buffer.data[i+1] = matrix[i+1] + MODELWIDTH*0.001*Math.sin(Math.PI+Math.max(0,Math.PI*(0.6*height-y)/(0.6*height))) * Math.cos((CommonTime() % timt)/timt * 4*Math.PI)*Zoom;
+					if (SHOWMESHPOINTS && Zoom == 1 && x < width*.5 && y > height*.25 && y < height*.75) {
+						KDDraw(DrawCanvas, kdpixisprites, iii+"buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
+						-4+(buffer.data[i])-MODELWIDTH*MODEL_SCALE*0.25, -4+(buffer.data[i+1])-MODELHEIGHT*MODEL_SCALE*(0.25)-MODELWIDTH/10, 8, 8,
+						undefined, {
+							zIndex: 100,
+							tint: 0x00ff00,
+						});
+					}
+
+					x += 1;
+					if (x >= width) {
+						y += 1;
+						x = 0;
+					}
+				}
+					
+				iii++;
+					*/
+				buffer.update();
+
+			}
+
+			
+		}
+	}
 	// Update the updated array
 	if (!MC.ContainersDrawn.get(containerID)) {
 		MC.ContainersDrawn.set(containerID, MC.Containers.get(containerID));
@@ -3127,7 +3157,7 @@ function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIX
 }
 
 function KDGetLayerFromPri(pri: number): string {
-	pri = Math.floor(pri/LAYER_INCREMENT);
+	pri = Math.floor((pri + LAYER_INCREMENT/2)/LAYER_INCREMENT);
 	if (ModelLayersLookup.has(pri)) return ModelLayersLookup.get(pri);
 	else if (pri < 0) return LAYERS_BASE[LAYERS_BASE.length - 1];
 	else return LAYERS_BASE[0];

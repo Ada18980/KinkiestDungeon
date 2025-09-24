@@ -170,7 +170,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture"],
-	AddPose: ["Saddled", "ForceKneel"],
+	AddPose: ["Saddled", "ForceKneel", "CrotchStrap"],
 	Layers: ToLayerMap([
 		{ Name: "Saddle", Layer: "Saddle", Pri: 40,
 			Invariant: true,
