@@ -1526,8 +1526,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		for (let x of MC.XRayFilters) {
 			if (LayerGroups[x]) {
 				for (let dg of Object.keys(LayerGroups[x])) {
-					if (!EraseFilters_LG[dg]) EraseFilters_LG[dg] = [];
-					EraseFilters_LG[dg].push(
+					if (!EraseFilters[dg]) EraseFilters[dg] = [];
+					EraseFilters[dg].push(
 						{
 							amount: EraseAmount,
 							hash: x,
@@ -1803,7 +1803,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
 				//id = LZString.compressToBase64(id);
 				let filters = filter;
-				let origFilters = filter;
+				//let origFilters = filter;
 				if (extrafilter) filters = [...(filter || []), ...extrafilter];
 
 				for (let filter of filters) {
@@ -1834,6 +1834,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let sg = KDGetSpriteGroup(-zz);
 				let cc = ContainerContainer.Container;
 				if (!modified && !ContainerContainer.SpriteList.has(id)) {modified = true;}
+				let filtercount = extrafilter?.length || 0;
 				
 				if (sg) {
 					if (!ContainerContainer.SpriteGroups.has(sg)) {
@@ -1870,6 +1871,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					+ 10000*ContainerContainer.Container.pivot.y
 					+ ContainerContainer.Container.x
 					+ ContainerContainer.Container.y
+					+ filtercount
 					
 					);
 				}
@@ -1923,8 +1925,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		let extrafilter: PIXIFilter[] = [];
 
 		// Add erase filters BEFORE displacement
-		if (EraseFilters[name]) {
-			for (let ef of EraseFilters[name]) {
+		if (EraseFilters_LG[name]) {
+			for (let ef of EraseFilters_LG[name]) {
 						if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 				if (!ef.sprite) continue;
 				let efh = containerID + "ers_" + ef.hash;
@@ -1949,8 +1951,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			}
 		}
 		
-		if (DisplaceFilters[name]) {
-			for (let ef of DisplaceFilters[name]) {
+		if (DisplaceFilters_LG[name]) {
+			for (let ef of DisplaceFilters_LG[name]) {
 				if (!ef.sprite && ef.spriteFunc) ef.sprite = ef.spriteFunc();
 				if (!ef.sprite) continue;
 				let efh = containerID + "disp_" + ef.hash;
