@@ -12,6 +12,10 @@ let KDSpritesToCull: PIXISprite[] = [];
 
 let KDCulling = true;
 
+
+let KDSubmeshEditor = false;
+let KDSubmeshChosen = "PantLeft";
+
 /**
  * Returns a table with the priorities for each layer based on order of the array
  */
@@ -427,7 +431,7 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
  * @param flip - Mods applied
  */
 function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
-	IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null,
+	IsHeightResizeAllowed: boolean = true, DrawCanvas: PIXIContainer = null,
 	Blend: any = PIXI.SCALE_MODES.LINEAR,
 	StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false,
 	extraPoses: string[] = undefined, containerID?: string,
@@ -643,14 +647,70 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 				let buffer = mesh.geometry.getBuffer('aVertexPosition');
 				let matrix = submesh.matrix;
 
+				if (KDSubmeshEditor && KDSubmeshChosen == entry[0] && !SubmeshEditorBuffer) {
+					//@ts-ignore
+					if (!SubmeshEditorBufferOrig) SubmeshEditorBufferOrig = [...buffer.data];
+				}
+				if (KDSubmeshEditor && KDSubmeshChosen == entry[0] && SubmeshEditorBuffer) {
+					buffer.data = SubmeshEditorBuffer;
+				} 
+
+				let drawDots = (x, width, y, height, i) => {
+					if (KDSubmeshEditor && KDSubmeshChosen == entry[0] && Zoom == 1 && x >= width*.25 && x <= width*.75 && y >= height*.25 && y <= height*.75) {
+						let color = y % 2 == 0 ? 0x00ff00 : 0xff0000;
+						let xxx = -50 + (buffer.data[i]*2 + -( MODELWIDTH*0.25 - MODEL_XOFFSET * 0.5))*.5;
+						let yyy = -50 + (buffer.data[i+1]*2 + -(MODELHEIGHT*0.25))*.5;
+						
+						let mx_eff = MouseX;
+						let my_eff = MouseY;
+
+						if (KDistEuclidean(mx_eff-xxx, my_eff-yyy) < 50) {
+
+							if (i == SubmeshEditorClosest) {
+								SubmeshEditorClosestDist = KDistEuclidean(mx_eff-xxx, my_eff-yyy);
+
+								color = 0xffffff;
+								if (mouseDown) {
+									MouseClicked = false;
+									DisableButtonsOneFrame = true;
+
+									lastGlobalRefresh = CommonTime() - GlobalRefreshInterval + 10;
+									// x
+									buffer.data[i] = buffer.data[i] + (mx_eff - xxx)*MODEL_SCALE;
+									// y
+									buffer.data[i+1] = buffer.data[i+1] + (my_eff - yyy)*MODEL_SCALE;
+
+									SubmeshEditorBuffer = buffer.data;
+								}
+
+							} else if (KDistEuclidean(mx_eff-xxx, my_eff-yyy) < SubmeshEditorClosestDist) {
+								SubmeshEditorClosestDist = KDistEuclidean(mx_eff-xxx, my_eff-yyy);
+								SubmeshEditorClosest = i;
+							}
+
+							
+
+							
+						}
+
+						KDDraw(kdcanvas, kdpixisprites, "buffer" + i, KinkyDungeonRootDirectory + "ShrineAura.png",
+						xxx-40, yyy-40,
+						80, 80,
+						undefined, {
+							zIndex: 10000,
+							tint: color,
+						});
+					}
+				}
+
 				// Assign locations
 				let MaxWarp = ModelGetMaxMeshWarp(MC.Poses, entry[0], "pri_basic", "BasicMesh");
-				if (MaxWarp && MeshWarps[MaxWarp].BasicMesh) {
+				if (!SubmeshEditorBuffer && MaxWarp && MeshWarps[MaxWarp].BasicMesh) {
 					let BasicMesh = MeshWarps[MaxWarp].BasicMesh[MeshWarps[MaxWarp].LayerGroups[entry[0]]];
 					let x = 0;
 					let y = 0;
-					let width = 10;
-					let height = 10;
+					let width = 30;
+					let height = 30;
 					let intensity = MeshWarps[MaxWarp].intensityFunction ? (MeshWarps[MaxWarp].intensityFunction(C, MC, {})) : 1;
 					for (let i = 0; i + 1 < buffer.data.length; i+= 2)
 					{
@@ -659,12 +719,71 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 						// y
 						buffer.data[i+1] = matrix[i+1] + (BasicMesh[i+1]) * intensity;
 
+						drawDots(x, width, y, height, i);
+
 						x += 1;
 						if (x >= width) {
 							y += 1;
 							x = 0;
 						}
 					}
+				} else if (matrix.length == 8) {
+					if (KDSubmeshEditor && KDSubmeshChosen == entry[0]) {
+						let x = 0;
+						let y = 0;
+						let width = 2;
+						let height = 2;
+						for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+						{
+							drawDots(x, width, y, height, i);
+							
+
+							x += 1;
+							if (x >= width) {
+								y += 1;
+								x = 0;
+							}
+						}
+							
+						}
+				}  else if (matrix.length == 200) {
+					if (KDSubmeshEditor && KDSubmeshChosen == entry[0]) {
+						let x = 0;
+						let y = 0;
+						let width = 10;
+						let height = 10;
+						for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+						{
+							drawDots(x, width, y, height, i);
+							
+
+							x += 1;
+							if (x >= width) {
+								y += 1;
+								x = 0;
+							}
+						}
+							
+						}
+				} else if (matrix.length == 1800) {
+					if (KDSubmeshEditor && KDSubmeshChosen == entry[0]) {
+						let x = 0;
+						let y = 0;
+						let width = 30;
+						let height = 30;
+						for (let i = 0; i + 1 < buffer.data.length; i+= 2)
+						{
+							drawDots(x, width, y, height, i);
+							
+
+							x += 1;
+							if (x >= width) {
+								y += 1;
+								x = 0;
+							}
+						}
+							
+						}
 				}
 				/*
 				let x = 0;
@@ -1885,7 +2004,11 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						let RT = ContainerContainer.Submeshes.get(sg)?.rt
 							|| PIXI.RenderTexture.create({ width: MODELWIDTH * 2 * Zoom, height: MODELHEIGHT * 2 * Zoom,
 								resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
-						let Mesh = new PIXI.SimplePlane(RT, 10, 10);
+						let Mesh = ModelGetMaxMeshWarp(MC.Poses, sg, "pri_basic", "BasicMesh") ?
+							new PIXI.SimplePlane(RT, 30, 30)
+							: new PIXI.SimplePlane(RT, 2, 2);
+						
+						
 						
 						Mesh.zIndex = -ModelLayers[metaLayerForward[sg][metaLayerForward[sg].length - 1]] - LAYER_INCREMENT;
 						ContainerContainer.Mesh.addChild(Mesh);
@@ -2284,15 +2407,35 @@ function GetTrimmedAppearance(C: Character) {
 	let appearance: Item[] = MC.Character.Appearance;
 	let appearance_new: Item[] = MC.Character.Appearance;
 	let poses = {};
+	let dontadd = {};
+
+
+	for (let A of appearance) {
+
+		if (A.Model && A.Model.Properties) {
+			for (let entry of Object.values(A.Model.Properties)) {
+				if (entry.DontAddPose) {
+					for (let pose of entry.DontAddPose) {
+						if (!dontadd[pose]) {
+							dontadd[pose] = true;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	for (let A of appearance) {
 		if (A.Model && A.Model.AddPose) {
 			for (let pose of A.Model.AddPose) {
-				poses[pose] = true;
+				if (!dontadd[pose])
+					poses[pose] = true;
 			}
 		}
 		if (A.Model && A.Model.Categories) {
 			for (let pose of A.Model.Categories) {
-				poses[pose] = true;
+				if (!dontadd[pose])
+					poses[pose] = true;
 			}
 		}
 	}
@@ -2301,7 +2444,8 @@ function GetTrimmedAppearance(C: Character) {
 			for (let entry of Object.entries(A.Model.AddPoseConditional)) {
 				if (!poses[entry[0]]) {
 					for (let pose of entry[1]) {
-						poses[pose] = true;
+						if (!dontadd[pose])
+							poses[pose] = true;
 					}
 				}
 			}
@@ -2312,7 +2456,8 @@ function GetTrimmedAppearance(C: Character) {
 			for (let entry of Object.entries(A.Model.AddPoseIf)) {
 				if (poses[entry[0]]) {
 					for (let pose of entry[1]) {
-						poses[pose] = true;
+						if (!dontadd[pose])
+							poses[pose] = true;
 					}
 				}
 			}
@@ -3175,3 +3320,8 @@ function KDGetStringHash(str: string): number {
 	}
 	return sum;
 }
+
+let SubmeshEditorClosest = -1;
+let SubmeshEditorClosestDist = 10000;
+let SubmeshEditorBuffer = null;
+let SubmeshEditorBufferOrig = null;

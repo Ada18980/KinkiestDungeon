@@ -1420,8 +1420,56 @@ let KDDefaultWardrobePalettes: Record<string, Record<string, LayerFilter>> = {
 
 let KDWardrobePreviewRestraints = "";
 
+function KDDrawSubmeshEditor() {
+	let CF = KDTextField("KDSubmesh", 10, 60, 480, 30, 
+		undefined, undefined, "300");
+	if (CF.Created) {
+		SubmeshEditorBuffer = null;
+		SubmeshEditorBufferOrig = null;
+		ElementValue("KDSubmesh", KDSubmeshChosen);
+		CF.Element.oninput = (_event: any) => {
+			let value = ElementValue("KDSubmesh");
+			try {
+				if (value && value != KDSubmeshChosen) {
+					KDSubmeshChosen = value;
+					SubmeshEditorBuffer = null;
+		SubmeshEditorBufferOrig = null;
+				}
+			} catch (err) {
+				console.log("Invalid filter");
+			}
+
+		};
+	}
+}
+
 function KDDrawWardrobe(_screen: string, Character: Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
+
+	if (KDDebugMode) {
+		DrawButtonKDEx("togglewireframeeditor", 
+			() => {
+				KDSubmeshEditor = !KDSubmeshEditor;
+				SubmeshEditorBuffer = null;
+				SubmeshEditorBufferOrig = null;
+				return true;
+			}, true, 510, 5, 100, 40, "Submesh Editor", KDBaseWhite);
+		if (KDSubmeshEditor) {
+			KDDrawSubmeshEditor();
+		}
+		if (SubmeshEditorBufferOrig && SubmeshEditorBuffer)
+			DrawButtonKDEx("exportwireframediff", 
+				() => {
+					let data = [...SubmeshEditorBuffer].map((a, index) => {
+						return a - SubmeshEditorBufferOrig[index];
+					});
+					console.log(data);
+					return true;
+				}, true, 605, 5, 100, 40, "Print SM to console", KDBaseWhite);
+		if (KDSubmeshEditor) {
+			KDDrawSubmeshEditor();
+		}
+	}
 
 	let C = Character || KinkyDungeonPlayer;
 	if (KDBGColor) {
@@ -2865,6 +2913,7 @@ function KDGetLayerPropFields(): Record<keyof LayerPropertiesType, string> {
 		ExtraHidePrefixPose: ",",
 		ExtraHidePrefixPoseSuffix: ",",
 		AddPose: ",",
+		DontAddPose: ",",
 		DisplaceAmount: "1",
 		EraseAmount: "1",
 		NoLoss: "0",

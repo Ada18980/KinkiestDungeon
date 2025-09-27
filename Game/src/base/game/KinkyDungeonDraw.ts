@@ -1079,10 +1079,12 @@ function KinkyDungeonDrawGame() {
 
 
 	let wt = 50;
-	if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = 25;
-	else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = 50;
-	else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = 75;
-	else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = 500;
+	if (KinkyDungeonAutoWait) {
+		if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = 25;
+		else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = 50;
+		else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = 75;
+		else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = 500;
+	}
 
 	if (!KDGameData.LastSave) KDGameData.LastSave = KinkyDungeonCurrentTick;
 	if (KinkyDungeonCurrentTick > KDGameData.LastSave + wt && KinkyDungeonStatsChoice.get("saveMode")

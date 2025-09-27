@@ -296,6 +296,7 @@ type LayerPropertiesType = {
     ExtraHidePrefixPose?: string[],
     ExtraHidePrefixPoseSuffix?: string[],
 	AddPose?: string[],
+	DontAddPose?: string[],
 	DisplaceAmount?: number,
 	EraseAmount?: number,
 	NoLoss?: string,

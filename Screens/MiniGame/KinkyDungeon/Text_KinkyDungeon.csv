@@ -30912,6 +30912,7 @@ KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
 KDPropField_SuppressDynamic,NoDynamicArmor (0/1)
 KDPropField_AddPose,AddPose
+KDPropField_DontAddPose,DontAddPose
 KDPropField_HideOverridden,HideOverridden (0/1)
 KDPropField_NoOverride,NoOverride (0/1)
 KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)

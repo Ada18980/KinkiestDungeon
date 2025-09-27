@@ -259,7 +259,7 @@ let KDToggles = {
 	NipplePiercingsHide: false,
 	//AutoCrouchOnTrip: true,
 	FlipStatusBars: false,
-	ForcePalette: false,
+	ForcePalette: true,
 	RestraintPalette: true,
 	AutoLoadMods: false,
 	FlipPlayer: true,
@@ -6588,6 +6588,7 @@ function KinkyDungeonKeyDown(): void {
 
 let mouseDown = false;
 let MouseClicked = false;
+let DisableButtonsOneFrame = false;
 
 let LastHoldTime = 0;
 let LongHoldThresh = 750;
@@ -6607,7 +6608,8 @@ window.addEventListener('click', function(event) {
 	MouseMove(event);
 	if ((!CommonIsMobile || !MouseClicked) && !mouseHoldTaken) {
 		//let touch = event.touches[0];
-		KDClick(event);
+		if (!DisableButtonsOneFrame)
+			KDClick(event);
 	}
 	MouseClicked = true;
 	mouseDown = false;
@@ -6695,7 +6697,8 @@ window.addEventListener('touchend', function(event: TouchEvent) {
 
 	if (mouseDown && !MouseClicked) {
 		if (!mouseHoldTaken) {
-			KDClick(undefined);
+			if (!DisableButtonsOneFrame)
+				KDClick(undefined);
 		}
 		MouseClicked = true;
 	} else {

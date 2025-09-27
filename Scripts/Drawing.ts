@@ -198,6 +198,7 @@ function DrawProcess(time: number): void {
 	// Clear the list of characters that were drawn last frame
 	DrawLastCharacters = [];
 
+	DisableButtonsOneFrame = false;
 	KinkyDungeonRun();
 
 	// Draw Hovering text so they can be above everything else
