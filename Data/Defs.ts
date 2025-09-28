@@ -414,6 +414,8 @@ let LAYERS_BASE = [
 	// Lower body underwear
 	"PantsRight",
 	"StockingRight",
+	"FootRight",
+	"LegRight",
 
 	"CorsetUnder", // Corsets go here when wearing pants
 
@@ -432,8 +434,6 @@ let LAYERS_BASE = [
 	// Lower body body - reserved for body and catsuits
 	// Note that the lower torso is complex, you should avoid internal overlaps as much as possible
 	// External overlaps are fine, e.g. right leg goes over
-	"FootRight",
-	"LegRight",
 	"ShoulderLeft",
 	"UpSleeveRight",
 	"ShoulderRight",
@@ -532,10 +532,10 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "PantLeft", start: "ShoeLeftOver", end: "Saddle"},
 	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "SkirtOverLowerDeco"},
 	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "WrappingLegsRightOver"},
-	{id: "PantRight", start: "WrappingLegsRightOver", end: "HarnessUnder"},
+	{id: "LegRightOver", start: "WrappingLegsRightOver", end: "HarnessUnder"},
 	{id: "ArmLeft", start: "BindWristLeft", end: "ShoeRightOver"},
-	{id: "Shoes", start: "ShoeRightOver", end: "CorsetUnder"},
-	{id: "Pelvis", start: "CorsetUnder", end: "FootRight"},
+	{id: "PantRight", start: "ShoeRightOver", end: "CorsetUnder"},
+	{id: "Pelvis", start: "CorsetUnder", end: "ShoulderLeft"},
 	{id: "Torso", start: "ShoulderLeft", end: "AnkleLeftHogtie"},
 	{id: "FeetBack", start: "AnkleLeftHogtie", end: "WrapArmRight"},
 	{id: "ArmRight", start: "WrapArmRight", end: "BindChainLinksUnder"},

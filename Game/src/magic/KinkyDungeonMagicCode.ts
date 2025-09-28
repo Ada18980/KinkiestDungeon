@@ -1799,7 +1799,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipplesP");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipples");
 
 			if (vibes.length > 0 && _miscast) return "Miscast";
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 2.0, 15, undefined, undefined, undefined, undefined, false);
@@ -1832,7 +1832,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KinkyDungeonPlayerTags.get("ItemVulvaFull")) vibes.push("ItemVulva");
 			if (KinkyDungeonPlayerTags.get("ItemButtFull")) vibes.push("ItemButt");
 			if (KinkyDungeonPlayerTags.get("ItemVulvaPiercingsFull")) vibes.push("ItemVulvaPiercings");
-			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipplesP");
+			if (KinkyDungeonPlayerTags.get("ItemNipplesFull")) vibes.push("ItemNipples");
 
 			if (vibes.length > 0 && _miscast) return "Miscast";
 			KinkyDungeonStartVibration(KinkyDungeonGetRestraintItem(vibes[Math.floor(KDRandom() * vibes.length)]).name, "tease", vibes, 3.0, 10, undefined, undefined, undefined, undefined, false);
