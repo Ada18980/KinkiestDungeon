@@ -2006,7 +2006,7 @@ interface KinkyDialogueTrigger {
 	noCombat?: boolean;
 	/** Prevents this from happening if the target is hostile */
 	nonHostile?: boolean;
-	prerequisite: (enemy: entity, dist: number, AIData: any) => boolean;
+	prerequisite: (enemy: entity, dist: number, AIData: KDAIData) => boolean;
 	weight: (enemy: entity, dist: number) => number;
 }
 
@@ -3434,6 +3434,10 @@ interface KDAIData extends KDAITriggerData {
 
 interface KDJailRestraint {Name: string, Level: number, Variant?: string, Condition?: string, Priority?: string, Lock?: string};
 
+type KDEventDataBoolean = KDEventTriggerDataPoint | KDAIData;
+
+interface KDEventTriggerDataPoint {point: KDPoint, radius: number, target: entity};
+
 type EnemyEvent = {
 	/** Extremely important for leash events */
 	overrideIgnore?: boolean,
@@ -3445,23 +3449,23 @@ type EnemyEvent = {
 	/** This event wont get cleared by mass resets, like when you are deposited into a cage */
 	noMassReset?: boolean,
 	/** Determines if the enemy will attack you */
-	decideAttack?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
+	decideAttack?: (enemy: entity, target: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines if the enemy will cast spells */
-	decideSpell?: (enemy: entity, target: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
+	decideSpell?: (enemy: entity, target: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => boolean,
 	/** Determines weight */
-	weight: (enemy: entity, AIData: any, allied: boolean, hostile: boolean, aggressive: boolean) => number,
+	weight: (enemy: entity, AIData: KDEventDataBoolean, allied: boolean, hostile: boolean, aggressive: boolean) => number,
 	/** Run when triggered */
-	trigger: (enemy: entity, AIData: any) => void,
+	trigger: (enemy: entity, AIData: KDEventDataBoolean) => void,
 	/** Run when leashes to the leash point */
-	arrive?: (enemy: entity, AIData: any) => boolean,
+	arrive?: (enemy: entity, AIData: KDEventDataBoolean) => boolean,
 	/** Run each turn at the end */
-	maintain?: (enemy: entity, delta: number, AIData?: KDAIData) => boolean,
+	maintain?: (enemy: entity, delta: number, AIData?: KDEventDataBoolean) => boolean,
 	/** Run before the move loop */
-	beforeMove?: (enemy: entity, AIData: any, delta: number) => boolean,
+	beforeMove?: (enemy: entity, AIData: KDEventDataBoolean, delta: number) => boolean,
 	/** Run before the attack loop */
-	beforeAttack?: (enemy: entity, AIData: any, delta: number) => boolean,
+	beforeAttack?: (enemy: entity, AIData: KDEventDataBoolean, delta: number) => boolean,
 	/** Run before the spell loop */
-	beforeSpell?: (enemy: entity, AIData: any, delta: number) => boolean,
+	beforeSpell?: (enemy: entity, AIData: KDEventDataBoolean, delta: number) => boolean,
 }
 
 type KDLockType = {
@@ -3771,7 +3775,7 @@ interface KDSpellComponent {
 
 type SpecialCondition = {
 	resetCD: boolean,
-	criteria: (enemy: entity, AIData: any) => boolean,
+	criteria: (enemy: entity, AIData: KDAIData) => boolean,
 }
 
 type KDEventData_affinity = {
@@ -4203,7 +4207,7 @@ type KDTeaseAttack = {
 	/** Allows this to be added to the list */
 	filter: (enemy: entity, player: entity, AIData: KDAIData) => boolean,
 	/** Returns true if it connects, false otherwise if blocked/ignored somehow */
-	apply: (enemy: entity, player: entity, AIData: any, blocked: boolean, evaded: boolean, damageMod: number) => boolean,
+	apply: (enemy: entity, player: entity, AIData: KDAIData, blocked: boolean, evaded: boolean, damageMod: number) => boolean,
 };
 
 type KDPlayerTitle = {
