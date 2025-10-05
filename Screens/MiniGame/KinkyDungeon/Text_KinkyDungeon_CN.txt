@@ -48987,6 +48987,7 @@ Y 轴
 无动态护甲(0或1)
 - AddPose
 添加姿势
+# - DontAddPose
 - HideOverridden (0/1)
 隐藏覆盖(0或1)
 - NoOverride (0/1)
