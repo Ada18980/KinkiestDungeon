@@ -40,6 +40,14 @@
 	"spriteSourceSize": {"x":577,"y":436,"w":137,"h":571},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/LeatherCuffs/BandAnkleLeftClosed.png":
+{
+	"frame": {"x":343,"y":1235,"w":67,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":597,"y":1445,"w":67,"h":23},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/LeatherCuffs/BandAnkleLeftKneelClosed.png":
 {
 	"frame": {"x":2021,"y":45,"w":20,"h":48},
@@ -96,14 +104,6 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/LeatherCuffs/BandThighRightKneel.png":
-{
-	"frame": {"x":274,"y":1235,"w":104,"h":30},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":391,"y":846,"w":104,"h":30},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/LeatherCuffs/BandWristLeftFree.png":
 {
 	"frame": {"x":274,"y":564,"w":55,"h":47},
@@ -112,9 +112,17 @@
 	"spriteSourceSize": {"x":801,"y":756,"w":55,"h":47},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/LeatherCuffs/BandWristRightYoked.png":
+{
+	"frame": {"x":274,"y":1235,"w":65,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":309,"y":402,"w":65,"h":30},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/LeatherCuffs/BowBellCollar.png":
 {
-	"frame": {"x":1843,"y":1201,"w":27,"h":26},
+	"frame": {"x":1843,"y":1218,"w":27,"h":26},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":595,"y":399,"w":27,"h":26},
@@ -246,14 +254,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":871,"y":389,"w":50,"h":40},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/LeatherCuffs/HardwareWristRightFree.png":
-{
-	"frame": {"x":1843,"y":1231,"w":27,"h":17},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":376,"y":635,"w":27,"h":17},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/LeatherCuffs/HardwareWristRightFront.png":
@@ -794,7 +794,7 @@
 },
 "Models/SleepsackJacket/ForeHandMetalLeftFront.png":
 {
-	"frame": {"x":382,"y":1235,"w":29,"h":13},
+	"frame": {"x":1843,"y":1201,"w":29,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":562,"y":561,"w":29,"h":13},
@@ -907,6 +907,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:cf095d93388d275a63392e43bf0ee33e:da275b5e49fbb53153e550ad6e473c00:b400f94fbbcb6ca60e2717374378bcda$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ceb43c32f526b9ef44d83d78959f5146:eb3f09d853fb7fbf94fa230880fb6487:b400f94fbbcb6ca60e2717374378bcda$"
 }
 }

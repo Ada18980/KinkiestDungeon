@@ -229,7 +229,9 @@ let LAYERS_BASE = [
 	"ShirtOver",
 
 	// Skirt part that goes in front of corsets, shirts, etc
+	"SkirtOverDecoOverKneel",
 	"SkirtOverDeco",
+	"SkirtOverOverKneel",
 	"SkirtOver",
 
 	// Belts and corsets that only go over
@@ -252,6 +254,8 @@ let LAYERS_BASE = [
 	"Bra",
 
 	// Skirts that are slim and follow the shilhouette
+	"SkirtDecoOverKneel",
+	"SkirtOverKneel",
 	"SkirtDeco",
 	"Skirt",
 
@@ -293,12 +297,15 @@ let LAYERS_BASE = [
 	"WrappingLegs2",
 	"WrappingLegs",
 
+
+	"BindFeet",
+	"OverShoes",
+
+
 	"PantsAccLeft",
 	"ShortsLeft",
 	"PantLeft",
 
-	"BindFeet",
-	"OverShoes",
 	"ShoeLeftOver",
 	"ShoeLeftDeco",
 	"ShoeLeft",
@@ -308,7 +315,6 @@ let LAYERS_BASE = [
 
 	"WrappingLegsUnder",
 
-	"Shorts",
 
 	"OverSocks",
 	
@@ -320,6 +326,9 @@ let LAYERS_BASE = [
 
 	
 	"Saddle",
+	
+	"Shorts",
+	"Pants",
 
 	// Lower harness
 	"Option2_ChastityBeltLower",
@@ -526,10 +535,12 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "UnderBustBondage", start: "BeltBondage", end: "BaggyShirt"},
 	{id: "BaggyShirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
 	{id: "WrappingMid", start: "WrappingTorsoMid", end: "OverCrotchStrapMid"},
-	{id: "ClothLower", start: "OverCrotchStrapMid", end: "SkirtDeco"},
+	{id: "ClothLower", start: "OverCrotchStrapMid", end: "SkirtDecoOverKneel"},
+	{id: "SkirtOverKneelLeft", start: "SkirtDecoOverKneel", end: "SkirtDeco"},
 	{id: "Skirt", start: "SkirtDeco", end: "WrappingLegsOver"},
-	{id: "Pants", start: "WrappingLegsOver", end: "ShoeLeftOver"},
-	{id: "PantLeft", start: "ShoeLeftOver", end: "Saddle"},
+	{id: "OverLegsLeft", start: "WrappingLegsOver", end: "WrappingTorsoUnder"},
+	{id: "OverLegs", start: "WrappingTorsoUnder", end: "PantsAccLeft"},
+	{id: "PantLeft", start: "PantsAccLeft", end: "Saddle"},
 	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "SkirtOverLowerDeco"},
 	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "WrappingLegsRightOver"},
 	{id: "LegRightOver", start: "WrappingLegsRightOver", end: "HarnessUnder"},
@@ -1284,6 +1295,14 @@ let LayerGroups = {
 		"LegLeftHogtie",
 		"AnkleRightKneel",
 		"ShoeRightKneel",
+		"SockRightKneel",
+		"FootRightKneel",
+	]),
+
+	"FootRightKneel": ToMap([
+		"AnkleRightKneel",
+		"ShoeRightKneel",
+		"PantsRightKneel",
 		"SockRightKneel",
 		"FootRightKneel",
 	]),

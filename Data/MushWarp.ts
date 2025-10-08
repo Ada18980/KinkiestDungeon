@@ -4,7 +4,7 @@
 let MeshWarps: {[_: string]: MeshWarp} = {
 	
 	Saddled: {
-		LayerGroups: {"PantLeft": "Mesh1"},
+		LayerGroups: {"PantLeft": "Mesh1", SkirtOverKneelLeft: "Mesh1"},//, "OverLegsLeft": "Mesh1"},
 		filter_pose: ["Kneel", "KneelClosed"],
 		intensityFunction: (C, MC, data) => {return 1;},
 		pri_basic: 5,

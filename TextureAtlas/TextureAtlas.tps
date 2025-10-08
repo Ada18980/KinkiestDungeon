@@ -700,7 +700,9 @@
             <key type="filename">../Models/SleepsackJacket/ChestMetal.png</key>
             <key type="filename">../Models/SleepsackJacket/ChestMetalZipped.png</key>
             <key type="filename">../Models/SleepsackJacket/ChestText.png</key>
+            <key type="filename">../Models/SleepsackJacket/ChestTextFlip.png</key>
             <key type="filename">../Models/SleepsackJacket/ChestTextZipped.png</key>
+            <key type="filename">../Models/SleepsackJacket/ChestTextZippedFlip.png</key>
             <key type="filename">../Models/SleepsackJacket/ForeArmBeltsLeftFront.png</key>
             <key type="filename">../Models/SleepsackJacket/ForeArmBeltsRightFront.png</key>
             <key type="filename">../Models/SleepsackJacket/ForeArmLeatherLeftFront.png</key>

@@ -21,6 +21,7 @@ AddModel({
 		},
 		{ Name: "ShortsLeft", Layer: "ShortsLeft", Pri: 7,
 			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: {"KneelClosed": true},
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//MorphPoses: {Hogtie: "Hogtie"},
 		},

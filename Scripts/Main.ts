@@ -225,10 +225,11 @@ function TouchMove(touch: Touch): void {
  */
 function MouseMove(event: MouseEvent): void {
 	if (PIXICanvas) {
+		// not sure why I added this originally... hm
 		//@ts-ignore
-		let ol = document.activeElement?.offsetLeft || 0;
+		let ol = 0//document.activeElement?.offsetLeft || 0;
 		//@ts-ignore
-		let ot = document.activeElement?.offsetTop || 0;
+		let ot = 0//document.activeElement?.offsetTop || 0;
 		// && (document.activeElement?.id == "MainCanvas" || document.activeElement?.id == PIXICanvas?.id || document.activeElement?.id == '')
 		MouseX = Math.round((event.offsetX + ol) * 2000 / PIXICanvas.clientWidth);
 		MouseY = Math.round((event.offsetY + ot) * 1000 / PIXICanvas.clientHeight);
