@@ -229,9 +229,16 @@ let LAYERS_BASE = [
 	"ShirtOver",
 
 	// Skirt part that goes in front of corsets, shirts, etc
+	"LegbinderLegLeftPants",
+	"LegbinderLegLeftLowerPants",
+	"LegbinderAnkleLeftPants",
 	"SkirtOverDecoOverKneel",
-	"SkirtOverDeco",
 	"SkirtOverOverKneel",
+	
+	"LegbinderLegRightPants",
+	"LegbinderLegLowerRightPants",
+	"LegbinderAnkleRightPants",
+	"SkirtOverDeco",
 	"SkirtOver",
 
 	// Belts and corsets that only go over
@@ -318,7 +325,7 @@ let LAYERS_BASE = [
 
 	"OverSocks",
 	
-	"PantsLeft",
+	"TightPantsLeft",
 	
 	"StockingLeftKneel", "StockingLeft",
 	"FootLeft",
@@ -328,7 +335,7 @@ let LAYERS_BASE = [
 	"Saddle",
 	
 	"Shorts",
-	"Pants",
+	"TightPants",
 
 	// Lower harness
 	"Option2_ChastityBeltLower",
@@ -421,7 +428,7 @@ let LAYERS_BASE = [
 
 
 	// Lower body underwear
-	"PantsRight",
+	"TightPantsRight",
 	"StockingRight",
 	"FootRight",
 	"LegRight",
@@ -533,10 +540,12 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "ClothMid", start: "WrappingTorsoUpper", end: "WrapCrossArms"},
 	{id: "ArmsCross", start: "WrapCrossArms", end: "BeltBondage"},
 	{id: "UnderBustBondage", start: "BeltBondage", end: "BaggyShirt"},
-	{id: "BaggyShirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
+	{id: "BaggyShirtAndSkirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
 	{id: "WrappingMid", start: "WrappingTorsoMid", end: "OverCrotchStrapMid"},
-	{id: "ClothLower", start: "OverCrotchStrapMid", end: "SkirtDecoOverKneel"},
-	{id: "SkirtOverKneelLeft", start: "SkirtDecoOverKneel", end: "SkirtDeco"},
+	{id: "ClothLower", start: "OverCrotchStrapMid", end: "LegbinderLegLeftPants"},
+	{id: "SkirtOverKneelLeft", start: "LegbinderLegLeftPants", end: "LegbinderLegRightPants"},
+	{id: "SkirtOver", start: "LegbinderLegRightPants", end: "Cincher"},
+	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "SkirtDeco"},
 	{id: "Skirt", start: "SkirtDeco", end: "WrappingLegsOver"},
 	{id: "OverLegsLeft", start: "WrappingLegsOver", end: "WrappingTorsoUnder"},
 	{id: "OverLegs", start: "WrappingTorsoUnder", end: "PantsAccLeft"},
@@ -711,6 +720,7 @@ let LayerGroups = {
 	"SlimeTorsoLower": ToMap([
 		"OverSkirt",
 		"Pants",
+		"TightPants",
 		"ShortsLeft",
 		"Shorts",
 	]),
@@ -1091,6 +1101,7 @@ let LayerGroups = {
 
 		"PantLeft",
 		"PantRight",
+		"TightPants",
 		"Pants",
 		"ShortsLeft",
 		"Shorts",
@@ -1123,6 +1134,7 @@ let LayerGroups = {
 
 		"PantLeft",
 		"PantRight",
+		"TightPants",
 		"Pants",
 		"ShortsLeft",
 		"Shorts",
@@ -1153,6 +1165,7 @@ let LayerGroups = {
 
 		"PantLeft",
 		"PantRight",
+		"TightPants",
 		"Pants",
 		"ShortsLeft",
 		"Shorts",
@@ -1231,6 +1244,7 @@ let LayerGroups = {
 	"RopeThighs": ToMap([
 		"PantLeft",
 		"PantRight",
+		"TightPants",
 		"Pants",
 		"ShortsLeft",
 		"Shorts",
@@ -1269,6 +1283,7 @@ let LayerGroups = {
 	"RopeCalf": ToMap([
 		"PantLeft",
 		"PantRight",
+		"TightPants",
 		"Pants",
 		"ShortsLeft",
 		"Shorts",
@@ -1403,6 +1418,7 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"TightPants",
 		"ShortsLeft",
 		"Shorts",
 
@@ -1465,6 +1481,7 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"TightPants",
 		"ShortsLeft",
 		"Shorts",
 
@@ -1496,6 +1513,7 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"TightPants",
 		"ShortsLeft",
 		"Shorts",
 
@@ -1546,6 +1564,7 @@ let LayerGroups = {
 		"PantLeft",
 		"PantRight",
 		"Pants",
+		"TightPants",
 		"ShortsLeft",
 		"Shorts",
 
@@ -1723,6 +1742,34 @@ let LayerGroups = {
 			"Circlet",
 		]
 	),
+	Skirts: ToMap([
+		// These count as skirts since they are a layer over
+		"LegbinderLegRightPants",
+		"LegbinderLegLowerRightPants",
+		"LegbinderAnkleRightPants",
+		
+		"BaggyShirt",
+
+		"Apron",
+		"SkirtDeco",
+		"Skirt",
+		
+		"OverSkirtDeco",
+		"OverSkirt",
+	]),
+	SkirtsMinusLB: ToMap([
+
+		// TODO make open sleepsack legs erase these
+		
+		"BaggyShirt",
+
+		"Apron",
+		"SkirtDeco",
+		"Skirt",
+		
+		"OverSkirtDeco",
+		"OverSkirt",
+	]),
 	// region Xray
 	Xray: ToMap(
 		[
@@ -1813,12 +1860,14 @@ let LayerGroups = {
 	"Apron",
 
 	"BaggyShirt",
-
 	// Skirts that dont follow shilhouette
+	"OverSkirtOverDeco",
+	"OverSkirtOver",
 	"WrappingLegsOver2",
 	"LegbinderLegsOver2",
 	"WrappingLegsOver",
 	"LegbinderLegsOver",
+	"BaggyShirtOver",
 	"OverSkirtDeco",
 	"OverSkirt",
 	"Greaves",
@@ -1894,6 +1943,7 @@ let LayerGroups = {
 	"PantsAccRight",
 	"PantRight",
 	"Pants",
+		"TightPants",
 	"ShortsLeft",
 	"Shorts",
 

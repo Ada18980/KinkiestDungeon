@@ -1220,6 +1220,7 @@ function KDDrawModelList(X: number, C: Character) {
 			//KDUpdateModelList(1);
 			KDUpdateModelList(2, C);
 			KDUpdateModelList(3, C);
+			KDModelList_Sublevel_index = -1;
 		};
 	}
 
@@ -1461,7 +1462,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			DrawButtonKDEx("exportwireframediff", 
 				() => {
 					let data = [...SubmeshEditorBuffer].map((a, index) => {
-						return a - SubmeshEditorBufferOrig[index];
+						return a - KDTemplateEmptyMesh[index];
 					});
 					console.log(data);
 					return true;

@@ -4439,6 +4439,7 @@ function KDDrawRT (
 	/** force to use RT regardless of filters */
 	useAtlas: boolean = true,
 	resolution: number = 1,
+	autoAdd: boolean = true,
 ): any
 {
 	let sprite: PIXISprite = Map.get(id);
@@ -4460,7 +4461,8 @@ function KDDrawRT (
 			sprite = new PIXI.Sprite(tex);
 			Map.set(id, sprite);
 			// Add it to the container
-			Container.addChild(sprite);
+			if (autoAdd)
+				Container.addChild(sprite);
 		} else {
 			mergeFilters = true;
 			if (Nearest)
@@ -4471,7 +4473,8 @@ function KDDrawRT (
 				sprite = PIXI.Sprite.from(KDTex(Image));
 			Map.set(id, sprite);
 			// Add it to the container
-			Container.addChild(sprite);
+			if (autoAdd)
+				Container.addChild(sprite);
 		}
 		if (Nearest && StandalonePatched) {
 			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
@@ -4480,12 +4483,14 @@ function KDDrawRT (
 	if (sprite && sprite.texture && sprite.texture.orig) {
 		sprite.visible = true;
 		//sprite.roundPixels = true;
-		sprite.interactive = false;
+		sprite.interactive = false; 
 		// Modify the sprite according to the params
 		//let tex = KDTex(Image);
 		//let tex = KDGetOrMakeRenderTexture(Image, Nearest, filterid, baseFilters);
 		//if (tex) sprite.texture = tex;
 		sprite.name = id;
+		//@ts-ignore
+		sprite.path = Image;
 		sprite.position.x = Left;
 		sprite.position.y = Top;
 		if (Width)

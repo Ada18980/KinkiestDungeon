@@ -1257,6 +1257,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 			// Apply displacement
 			if ((l.DisplaceLayers || l.DisplaceLayerGroups)
+				&& !(l.CancelDisplacementPoses && l.CancelDisplacementPoses.some((pose) => {return !!MC.Poses[pose];}))
+				
 				&& (!l.DisplacementPoses
 					|| l.DisplacementPoses.some((pose) => {return MC.Poses[pose];}))
 				&& (!l.DisplacementPosesExclude
@@ -1343,9 +1345,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let filterMap = l.DisplaceLayerGroups ? DisplaceFilters_LG : DisplaceFilters;
 
 				for (let ll of Object.entries(l.DisplaceLayerGroups || l.DisplaceLayers)) {
-					let id = (l.DisplaceLayerGroups ? "LG_" : "") + ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite,
+					let sid = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite,
 						"DisplacementMaps", false, l.DisplacementInvariant,
 						l.DisplacementMorph, l.NoAppendDisplacement);
+					let id = (l.DisplaceLayerGroups ? "LG_" : "") + sid;
 
 					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
@@ -1439,7 +1442,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
 									id, id,
-									id,
+									sid,
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
 										zIndex: zzz,
@@ -1486,6 +1489,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			}
 			// Apply erase
 			if ((l.EraseLayers || l.EraseLayerGroups)
+				&& !(l.CancelErasePoses && l.CancelErasePoses.some((pose) => {return !!MC.Poses[pose];}))
 				&& (!l.ErasePoses
 					|| l.ErasePoses.some((pose) => {return MC.Poses[pose];}))
 				&& (!l.ErasePosesExclude
@@ -1572,7 +1576,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let filterMap = l.EraseLayerGroups ? EraseFilters_LG : EraseFilters;
 
 				for (let ll of Object.entries(l.EraseLayerGroups || l.EraseLayers)) {
-					let id = (l.EraseLayerGroups ? "LG_" : "") + ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
+					let sid = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
+					let id = (l.EraseLayerGroups ? "LG_" : "") + sid;
 					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
@@ -1644,7 +1649,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										ContainerContainer.Container,
 										ContainerContainer.SpriteList,
 										id, id,
-										id,
+										sid,
 										ox * Zoom, oy * Zoom, undefined, undefined,
 										rot, {
 											zIndex: zzz,
@@ -1656,7 +1661,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 											cullable: KDCulling,
 										}, false,
 										ContainerContainer.SpritesDrawn,
-										Zoom, undefined, undefined, true, false
+										Zoom, undefined, undefined, true, false, undefined
 									);
 								},
 								sprite: null,
@@ -1827,7 +1832,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(efh);
 						}
-						KDTex(dsprite.name, false); // try to preload it
+						//@ts-ignore
+						KDTex(dsprite.path, false); // try to preload it
 						if (!KDAdjustmentFilterCache.get(efh)) {
 							f = new EraseFilter(
 								dsprite,
@@ -1867,7 +1873,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								if (refreshfilters) {
 									KDAdjustmentFilterCache.delete(efh);
 								}
-								KDTex(dsprite.name, false); // try to preload it
+								//@ts-ignore
+								KDTex(dsprite.path, false); // try to preload it
 								if (!KDAdjustmentFilterCache.get(efh)) {
 									f = new DisplaceFilter(
 										dsprite,
@@ -1906,7 +1913,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						if (refreshfilters) {
 							KDAdjustmentFilterCache.delete(efh);
 						}
-						KDTex(dsprite.name, false); // try to preload it
+						
+						//@ts-ignore
+						KDTex(dsprite.path, false); // try to preload it
 						if (!KDAdjustmentFilterCache.get(efh)) {
 							f = new DisplaceFilter(
 								dsprite,
@@ -2087,7 +2096,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				if (refreshfilters) {
 					KDAdjustmentFilterCache.delete(efh);
 				}
-				KDTex(dsprite.name, false); // try to preload it
+				//@ts-ignore
+				KDTex(dsprite.path, false); // try to preload it
 				if (!KDAdjustmentFilterCache.get(efh)) {
 					f = new EraseFilter(
 						dsprite,
@@ -2113,7 +2123,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				if (refreshfilters) {
 					KDAdjustmentFilterCache.delete(efh);
 				}
-				KDTex(dsprite.name, false); // try to preload it
+				//@ts-ignore
+				KDTex(dsprite.path, false); // try to preload it
 				if (!KDAdjustmentFilterCache.get(efh)) {
 					f = new DisplaceFilter(
 						dsprite,
@@ -2134,6 +2145,19 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 		if (extrafilter.length > 0) {
 			submesh.container.filters = extrafilter;
+
+			// add the filters to the container if not already
+			for (let i = 0; i < submesh.container.filters.length; i++) {
+				let f = submesh.container.filters[i];
+				if (!f) break;
+				let sprite: PIXISprite = (f as any).maskSprite;
+				if (sprite) {
+						if (!submesh.container.getChildByName(sprite.name))
+							submesh.container.addChild(sprite);
+					
+				}
+			}
+
 		} else submesh.container.filters = undefined;
 	}
 	return modified;
@@ -3119,7 +3143,8 @@ function RenderModelContainer(MC: ModelContainer, C: Character, containerID: str
 
 
 function RenderMCSubmeshes(MC: ModelContainer, C: Character, containerID: string) {
-	for (let submesh of MC.Containers.get(containerID).Submeshes.values()) {
+	for (let sm of MC.Containers.get(containerID).Submeshes.entries()) {
+		let submesh = sm[1];
 		if (submesh.lhash != submesh.hash) {
 			PIXIapp.renderer.render(submesh.container, {
 				//blit: true,

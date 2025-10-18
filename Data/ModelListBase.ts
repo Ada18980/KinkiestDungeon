@@ -150,6 +150,7 @@ AddModel({
 			EraseSprite: "EraseCorsetKneel",
 			EraseInvariant: true,
 			EraseZBonus: 1000,
+			CancelErasePoses: ["Saddled"],
 			//EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 		{ Name: "Butt2", Layer: "Butt", Pri: 0,

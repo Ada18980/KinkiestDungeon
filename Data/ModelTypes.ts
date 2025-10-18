@@ -136,6 +136,8 @@ interface ModelLayer extends Namable {
 	/** Only displace in these poses */
 	DisplacementPoses?: string[],
 
+	/** dont displace if this is present */
+	CancelDisplacementPoses?: string[],
 	/** No displacement map in these poses */
 	DisplacementPosesExclude?: string[],
 	/** No erase map in these poses */
@@ -170,11 +172,14 @@ interface ModelLayer extends Namable {
 
 	/** Adds a Erase map for heel deletion and such. If the same sprite is in use it wont be duped*/
 	EraseSprite?: string,
+	/** dont erase if this is present */
+	CancelErasePoses?: string[],
+
 	/** Only erase in these poses */
 	ErasePoses?: string[],
-	/** Which layers to apply Erase to */
-	EraseLayers?: Record<string, boolean>,
 	/** Which layer groups to apply Erase to */
+	EraseLayers?: Record<string, boolean>,
+	/** Which meta layer groups to apply Erase to. NOTE: Not the same as layer groups... */
 	EraseLayerGroups?: Record<string, boolean>,
 	/** MorphPoses but Erase */
 	EraseMorph?: Record<string, string>,

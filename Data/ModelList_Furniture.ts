@@ -175,6 +175,12 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Saddle", Layer: "Saddle", Pri: 40,
 			Invariant: true,
+			EraseLayerGroups:{Skirt: true, SkirtOver: true,},
+			
+			EraseSprite: "EraseSaddle",
+			EraseInvariant: true,
+			EraseZBonus: 100000,
+			
 		},
 		{ Name: "SaddleFront", Layer: "Saddle", Pri: 39.9,
 			Invariant: true,

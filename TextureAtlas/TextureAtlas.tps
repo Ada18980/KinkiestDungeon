@@ -586,6 +586,7 @@
             <key type="filename">../Models/Sleepsack/LegLeftHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftKneel.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftKneelClosed.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftKneelSaddled.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftMetalClosed.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftMetalHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftMetalKneel.png</key>
@@ -593,10 +594,16 @@
             <key type="filename">../Models/Sleepsack/LegLeftMetalSpread.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftSpread.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftTextClosed.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftTextClosedFlip.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftTextHogtie.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftTextHogtieFlip.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftTextKneel.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftTextKneelClosed.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftTextKneelClosedFlip.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftTextKneelFlip.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftTextKneelSaddled.png</key>
             <key type="filename">../Models/Sleepsack/LegLeftTextSpread.png</key>
+            <key type="filename">../Models/Sleepsack/LegLeftTextSpreadFlip.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftBeltsClosed.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftBeltsHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftBeltsKneel.png</key>
@@ -606,6 +613,7 @@
             <key type="filename">../Models/Sleepsack/LegLowerLeftHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftKneel.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftKneelClosed.png</key>
+            <key type="filename">../Models/Sleepsack/LegLowerLeftKneelSaddled.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftMetalClosed.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftMetalHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegLowerLeftMetalKneel.png</key>
@@ -646,10 +654,12 @@
             <key type="filename">../Models/Sleepsack/LegRightHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegRightKneel.png</key>
             <key type="filename">../Models/Sleepsack/LegRightKneelClosed.png</key>
+            <key type="filename">../Models/Sleepsack/LegRightKneelSaddled.png</key>
             <key type="filename">../Models/Sleepsack/LegRightMetalClosed.png</key>
             <key type="filename">../Models/Sleepsack/LegRightMetalHogtie.png</key>
             <key type="filename">../Models/Sleepsack/LegRightMetalKneel.png</key>
             <key type="filename">../Models/Sleepsack/LegRightMetalKneelClosed.png</key>
+            <key type="filename">../Models/Sleepsack/LegRightMetalKneelSaddled.png</key>
             <key type="filename">../Models/Sleepsack/LegRightMetalSpread.png</key>
             <key type="filename">../Models/Sleepsack/LegRightSpread.png</key>
             <key type="filename">../Models/Sleepsack/LegRightTextClosed.png</key>

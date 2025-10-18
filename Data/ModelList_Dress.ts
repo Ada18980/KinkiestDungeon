@@ -565,7 +565,7 @@ AddModel({
 			Invariant: true,
 			HidePoses: {"SkimpyLower": true},
 		},
-		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 3,
+		{ Name: "SkirtOver", Layer: "SkirtOverOverKneel", Pri: 3,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,

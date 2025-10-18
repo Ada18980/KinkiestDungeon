@@ -71,7 +71,7 @@ AddModel({
 		...GetModelLayers("LeatherShorts"),
 
 		
-		{ Name: "SockLeft", Layer: "PantsLeft", Pri: 5,
+		{ Name: "SockLeft", Layer: "TightPantsLeft", Pri: 5,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			DisplaceLayers: {StockingLeft: true,},
@@ -79,12 +79,12 @@ AddModel({
 			DisplaceAmount: 10,
 
 		},
-		{ Name: "FootSockLeftHogtie", Layer: "PantsLeftHogtie", Pri: 5,
+		{ Name: "FootSockLeftHogtie", Layer: "TightPantsLeftHogtie", Pri: 5,
 			Poses: ToMap(["Hogtie"]),
 			InheritColor: "LegLeft",
 			Invariant: true,
 		},
-		{ Name: "SockRight", Layer: "PantsRight", Pri: 5,
+		{ Name: "SockRight", Layer: "TightPantsRight", Pri: 5,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			DisplaceLayers: {StockingRight: true,},
@@ -92,7 +92,7 @@ AddModel({
 			DisplaceAmount: 10,
 
 		},
-		{ Name: "FootSockRightKneel", Layer: "PantsRightKneel", Pri: 5,
+		{ Name: "FootSockRightKneel", Layer: "TightPantsRightKneel", Pri: 5,
 			HidePoses: ToMap(["FeetLinked"]),
 			Poses: ToMap(["Kneel"]),
 			InheritColor: "SockRight",
