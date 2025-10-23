@@ -19,10 +19,11 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			MorphPoses: {KneelClosed: "KneelClosed"},
 		},
-		/*{ Name: "ShortsLeft", Layer: "ShortsLeft", Pri: 7,
-			Poses: ToMap([...LEGPOSES]),
+		{ Name: "SpatsLeft", Layer: "ShortsLeft", Pri: 7,
+			Poses: ToMap(["Kneel", "KneelClosed"]),
+			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//MorphPoses: {Hogtie: "Hogtie"},
-		},*/
+		},
 	])
 });
