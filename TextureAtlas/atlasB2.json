@@ -16,14 +16,6 @@
 	"spriteSourceSize": {"x":737,"y":946,"w":16,"h":43},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/DivineCuffs/AnkleLeftDecoKneel.png":
-{
-	"frame": {"x":2029,"y":1898,"w":16,"h":43},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":737,"y":946,"w":16,"h":43},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/DivineCuffs/AnkleLeftLockPlateKneel.png":
 {
 	"frame": {"x":1620,"y":2002,"w":38,"h":43},
@@ -32,9 +24,17 @@
 	"spriteSourceSize": {"x":720,"y":951,"w":38,"h":43},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/DivineCuffs/ElbowLeftLockBandWristtie.png":
+{
+	"frame": {"x":2029,"y":1970,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":727,"y":643,"w":16,"h":16},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/DivineCuffs/ElbowRightDecoCleanFront.png":
 {
-	"frame": {"x":2029,"y":1992,"w":16,"h":21},
+	"frame": {"x":2029,"y":1945,"w":16,"h":21},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":430,"y":622,"w":16,"h":21},
@@ -111,6 +111,14 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":529,"y":262,"w":43,"h":18},
 	"sourceSize": {"w":693,"h":407}
+},
+"Models/FaceKjus/BrowsNeutral.png":
+{
+	"frame": {"x":763,"y":2027,"w":49,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":529,"y":250,"w":49,"h":17},
+	"sourceSize": {"w":744,"h":461}
 },
 "Models/FaceKoi/Brows2Sad.png":
 {
@@ -266,7 +274,7 @@
 },
 "Models/KittyPet/EarmuffersR.png":
 {
-	"frame": {"x":2029,"y":1945,"w":16,"h":43},
+	"frame": {"x":2029,"y":1898,"w":16,"h":43},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":527,"y":300,"w":16,"h":43},
@@ -288,6 +296,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlasB0.json", "atlasB1.json", "atlasB3.json", "atlasB4.json", "atlasB5.json", "atlasB6.json", "atlasB7.json", "atlasB8.json", "atlasB9.json", "atlasB10.json", "atlasB11.json", "atlasB12.json", "atlasB13.json", "atlasB14.json", "atlasB15.json", "atlasB16.json", "atlasB17.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:9e7429d1b336965d3ada5768182c9ad8:76b5025af29653d2be23196d495c17a3:f82b600a0d03db0f33598424565b3eb3$"
+	"smartupdate": "$TexturePacker:SmartUpdate:532ea5aac70cd3c67ac752896aa1c68f:94225976a6347064fcdee6a5fc0e77c9:f82b600a0d03db0f33598424565b3eb3$"
 }
 }

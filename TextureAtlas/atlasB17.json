@@ -8,14 +8,6 @@
 	"spriteSourceSize": {"x":368,"y":801,"w":373,"h":287},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/DivineBelt/BraLines.png":
-{
-	"frame": {"x":1740,"y":1541,"w":285,"h":236},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":435,"y":406,"w":285,"h":236},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/DivineBelt/BraMetal1.png":
 {
 	"frame": {"x":488,"y":1247,"w":277,"h":71},
@@ -24,20 +16,20 @@
 	"spriteSourceSize": {"x":436,"y":569,"w":277,"h":71},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/DivineCuffs/ElbowLeftLockBoxtie.png":
-{
-	"frame": {"x":1853,"y":1291,"w":42,"h":77},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":744,"y":574,"w":42,"h":77},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Dress/BlouseArmRightUp.png":
 {
 	"frame": {"x":307,"y":906,"w":177,"h":349},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":444,"y":156,"w":177,"h":349},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Dress/BlouseForeArmLeftFront.png":
+{
+	"frame": {"x":1206,"y":1806,"w":187,"h":239},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":590,"y":480,"w":187,"h":239},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Dress/BlouseTorso.png":
@@ -56,6 +48,22 @@
 	"spriteSourceSize": {"x":446,"y":559,"w":383,"h":180},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Ears/EarringsBack.png":
+{
+	"frame": {"x":1397,"y":1806,"w":14,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":549,"y":335,"w":14,"h":36},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Ears/ElfEarringsBack.png":
+{
+	"frame": {"x":1397,"y":1806,"w":14,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":523,"y":323,"w":14,"h":36},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Elf/SkirtBack.png":
 {
 	"frame": {"x":769,"y":904,"w":350,"h":316},
@@ -64,13 +72,21 @@
 	"spriteSourceSize": {"x":436,"y":781,"w":350,"h":316},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Elf/SkirtKneel.png":
+"Models/Elf/SkirtKneelCrotchStrap.png":
 {
-	"frame": {"x":769,"y":1528,"w":324,"h":262},
+	"frame": {"x":769,"y":1528,"w":322,"h":260},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":316,"y":749,"w":324,"h":262},
+	"spriteSourceSize": {"x":318,"y":749,"w":322,"h":260},
 	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/EyesDai2/Brows2Surprised.png":
+{
+	"frame": {"x":1661,"y":1864,"w":51,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":611,"y":230,"w":51,"h":21},
+	"sourceSize": {"w":813,"h":502}
 },
 "Models/EyesK3/EyesHeart.png":
 {
@@ -80,12 +96,12 @@
 	"spriteSourceSize": {"x":529,"y":271,"w":48,"h":46},
 	"sourceSize": {"w":725,"h":425}
 },
-"Models/FaceKoi/MouthDazed.png":
+"Models/FaceKoi/MouthFrown.png":
 {
-	"frame": {"x":1425,"y":1781,"w":37,"h":9},
+	"frame": {"x":638,"y":2036,"w":30,"h":9},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":117,"y":244,"w":37,"h":9},
+	"spriteSourceSize": {"x":121,"y":247,"w":30,"h":9},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/FaceKoi/MouthSmile.png":
@@ -96,12 +112,44 @@
 	"spriteSourceSize": {"x":121,"y":244,"w":29,"h":8},
 	"sourceSize": {"w":321,"h":332}
 },
-"Models/GagFrilly/FrillyStraps.png":
+"Models/Festive/ButtonsTopUp.png":
 {
-	"frame": {"x":1604,"y":1781,"w":153,"h":263},
+	"frame": {"x":978,"y":1806,"w":224,"h":239},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":70,"y":18,"w":153,"h":263},
+	"spriteSourceSize": {"x":470,"y":408,"w":224,"h":239},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Festive/FuzzTopUp.png":
+{
+	"frame": {"x":761,"y":1792,"w":213,"h":253},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":483,"y":409,"w":213,"h":253},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/FutureHarness/LockMid.png":
+{
+	"frame": {"x":1732,"y":1563,"w":39,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":543,"y":733,"w":39,"h":15},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/GagLeather/BallTeeth_TeethDeep.png":
+{
+	"frame": {"x":560,"y":2036,"w":35,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":236,"w":35,"h":9},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/GagLeather/BigBallTeethFang2.png":
+{
+	"frame": {"x":978,"y":1792,"w":42,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":233,"w":42,"h":10},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/GagLeather/KittyMouth.png":
@@ -110,6 +158,30 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":255,"w":38,"h":9},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/GagLeather/PanelStrap.png":
+{
+	"frame": {"x":1861,"y":1372,"w":181,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":71,"w":181,"h":206},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/GagMetal/BallTeeth_TeethDeep.png":
+{
+	"frame": {"x":599,"y":2036,"w":35,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":236,"w":35,"h":9},
+	"sourceSize": {"w":321,"h":332}
+},
+"Models/GagMetal/BigBallTeethFang2.png":
+{
+	"frame": {"x":978,"y":1792,"w":42,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":233,"w":42,"h":10},
 	"sourceSize": {"w":321,"h":332}
 },
 "Models/Hair/BackShort.png":
@@ -126,14 +198,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":503,"y":113,"w":300,"h":640},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Hair/BraidCustom_Overstrap.png":
-{
-	"frame": {"x":761,"y":1794,"w":297,"h":251},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":469,"y":135,"w":297,"h":251},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Hair/Curly_Overstrap.png":
@@ -184,6 +248,22 @@
 	"spriteSourceSize": {"x":461,"y":99,"w":277,"h":419},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/Hair2/Hair3_FrontC.png":
+{
+	"frame": {"x":1732,"y":1582,"w":309,"h":303},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":478,"y":114,"w":309,"h":303},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/Hair2/HairAura.png":
+{
+	"frame": {"x":1415,"y":1563,"w":313,"h":297},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":482,"y":109,"w":313,"h":297},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Harness/BeltsStrapClosed.png":
 {
 	"frame": {"x":1497,"y":519,"w":49,"h":230},
@@ -224,6 +304,14 @@
 	"spriteSourceSize": {"x":445,"y":905,"w":145,"h":304},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/HighSec/BlindfoldHarnessLowerL.png":
+{
+	"frame": {"x":1861,"y":1291,"w":34,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":637,"y":306,"w":34,"h":69},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/HighSec/CorsetHardwareGarterRightClosedGarter.png":
 {
 	"frame": {"x":1123,"y":904,"w":34,"h":136},
@@ -256,12 +344,20 @@
 	"spriteSourceSize": {"x":369,"y":852,"w":383,"h":223},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/HighSecGloves/GloveLeftFront.png":
+"Models/HighSecCuffs/BandThighLeftKneel.png":
 {
-	"frame": {"x":1342,"y":1794,"w":258,"h":251},
+	"frame": {"x":1661,"y":1889,"w":187,"h":156},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":510,"y":464,"w":258,"h":251},
+	"spriteSourceSize": {"x":549,"y":812,"w":187,"h":156},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/HighSecCuffs/BandThighLeftKneelClosed.png":
+{
+	"frame": {"x":1661,"y":1889,"w":187,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":549,"y":812,"w":187,"h":156},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/HighSecHobbleSkirt/RightLegbinderHogtie.png":
@@ -272,6 +368,14 @@
 	"spriteSourceSize": {"x":439,"y":796,"w":172,"h":440},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/HighSecHobbleSkirt/SkirtKneel.png":
+{
+	"frame": {"x":1490,"y":1291,"w":367,"h":268},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":401,"y":592,"w":367,"h":268},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/HighSecLegbinder/LacesLegbinderClosed.png":
 {
 	"frame": {"x":1497,"y":228,"w":58,"h":287},
@@ -280,52 +384,12 @@
 	"spriteSourceSize": {"x":550,"y":943,"w":58,"h":287},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/HighSecLegbinder/RightStrapsLegbinderKneelClosed.png":
-{
-	"frame": {"x":1062,"y":1794,"w":276,"h":251},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":323,"y":790,"w":276,"h":251},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/HighSecLegbinder/StrapsLegbinderKneelClosed.png":
-{
-	"frame": {"x":1490,"y":1291,"w":359,"h":246},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":323,"y":795,"w":359,"h":246},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Jacket/ArmsWristtie.png":
-{
-	"frame": {"x":1425,"y":1541,"w":311,"h":236},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":458,"y":513,"w":311,"h":236},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Jacket/ChestCrossed.png":
-{
-	"frame": {"x":1097,"y":1536,"w":324,"h":254},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":446,"y":375,"w":324,"h":254},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Jacket/CrotchlessBinderTorsoLower.png":
 {
 	"frame": {"x":483,"y":1322,"w":282,"h":330},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":449,"y":593,"w":282,"h":330},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Jacket/StrapsTorsoLowerCrossed.png":
-{
-	"frame": {"x":1761,"y":1781,"w":282,"h":258},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":449,"y":665,"w":282,"h":258},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Kigu/MouthSmile.png":
@@ -344,7 +408,39 @@
 	"spriteSourceSize": {"x":432,"y":609,"w":18,"h":31},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/KittyPet/HeadHarnessRing.png":
+"Models/KittyPawCuffs/BandThighRightClosed.png":
+{
+	"frame": {"x":1397,"y":1864,"w":260,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":473,"y":1034,"w":260,"h":181},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/KittyPawCuffs/LockAnkleLeftKneelClosed.png":
+{
+	"frame": {"x":672,"y":2036,"w":19,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":722,"y":992,"w":19,"h":9},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/KittyPawCuffs/LockWristLeftFree.png":
+{
+	"frame": {"x":1123,"y":1044,"w":10,"h":8},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":808,"y":794,"w":10,"h":8},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/KittyPawCuffs/ThighLeftKneelClosed.png":
+{
+	"frame": {"x":1852,"y":1889,"w":179,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":479,"y":844,"w":179,"h":151},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/KittyPet/FaceHarnessHardware.png":
 {
 	"frame": {"x":483,"y":1656,"w":31,"h":31},
 	"rotated": false,
@@ -352,12 +448,12 @@
 	"spriteSourceSize": {"x":579,"y":257,"w":31,"h":31},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/KittyPetCuffs/BandThighLeftKneel.png":
+"Models/KittyPetCuffs/BandWristLeftYoked.png":
 {
-	"frame": {"x":1853,"y":1372,"w":177,"h":165},
+	"frame": {"x":1415,"y":1536,"w":56,"h":23},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":458,"y":791,"w":177,"h":165},
+	"spriteSourceSize": {"x":873,"y":400,"w":56,"h":23},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/KittyPetPaws/SockLeftKneel.png":
@@ -392,6 +488,14 @@
 	"spriteSourceSize": {"x":322,"y":762,"w":349,"h":300},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/KittyPetsuit/LeotardChest.png":
+{
+	"frame": {"x":1095,"y":1536,"w":316,"h":266},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":454,"y":401,"w":316,"h":266},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/Labcoat/CapeKneel.png":
 {
 	"frame": {"x":1163,"y":228,"w":330,"h":533},
@@ -416,6 +520,6 @@
 	"size": {"w":2047,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlasB0.json", "atlasB1.json", "atlasB2.json", "atlasB3.json", "atlasB4.json", "atlasB5.json", "atlasB6.json", "atlasB7.json", "atlasB8.json", "atlasB9.json", "atlasB10.json", "atlasB11.json", "atlasB12.json", "atlasB13.json", "atlasB14.json", "atlasB15.json", "atlasB16.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:9e7429d1b336965d3ada5768182c9ad8:76b5025af29653d2be23196d495c17a3:f82b600a0d03db0f33598424565b3eb3$"
+	"smartupdate": "$TexturePacker:SmartUpdate:532ea5aac70cd3c67ac752896aa1c68f:94225976a6347064fcdee6a5fc0e77c9:f82b600a0d03db0f33598424565b3eb3$"
 }
 }

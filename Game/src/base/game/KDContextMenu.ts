@@ -241,7 +241,7 @@ function KDGetGameContextActionsVanilla(
 					if (KinkyDungeonHasStamina(Math.abs(attackCost), true) &&
 						KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) <= rng)
 						KDSendInput("doattack", {
-							tx: entity.x, ty: entity.y, attackcost: -attackCost,
+							tx: entity.x, ty: entity.y, attackCost: -attackCost,
 							teasesub: key == "Tease", skip: 0, id: entity.id
 						})
 				}

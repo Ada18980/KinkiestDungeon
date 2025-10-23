@@ -8,6 +8,14 @@
 	"spriteSourceSize": {"x":459,"y":722,"w":253,"h":194},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/DivineBelt/BraPins.png":
+{
+	"frame": {"x":1992,"y":1709,"w":47,"h":159},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":562,"y":441,"w":47,"h":159},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/DivineCuffs/BeltDeco.png":
 {
 	"frame": {"x":1018,"y":2012,"w":221,"h":32},
@@ -24,7 +32,7 @@
 	"spriteSourceSize": {"x":473,"y":699,"w":221,"h":32},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/DivineCuffs/WristLeftDecoYoked.png":
+"Models/DivineCuffs/WristLeftDecoCleanYoked.png":
 {
 	"frame": {"x":1468,"y":2012,"w":61,"h":33},
 	"rotated": false,
@@ -72,21 +80,37 @@
 	"spriteSourceSize": {"x":477,"y":773,"w":327,"h":320},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/EyesK5/EyesHeart.png":
+"Models/Elf/ShoeLeftHogtie.png":
 {
-	"frame": {"x":1992,"y":1920,"w":53,"h":65},
+	"frame": {"x":1992,"y":1872,"w":50,"h":138},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":524,"y":253,"w":53,"h":65},
-	"sourceSize": {"w":725,"h":425}
+	"spriteSourceSize": {"x":729,"y":794,"w":50,"h":138},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/EyesDai2/Brows2Angry.png":
+{
+	"frame": {"x":1992,"y":2014,"w":53,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":588,"y":249,"w":53,"h":31},
+	"sourceSize": {"w":703,"h":355}
 },
 "Models/FaceKjus/Brows2Sad.png":
 {
-	"frame": {"x":1866,"y":2032,"w":67,"h":13},
+	"frame": {"x":1793,"y":2032,"w":67,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":610,"y":245,"w":67,"h":13},
 	"sourceSize": {"w":726,"h":532}
+},
+"Models/FaceKjus/BrowsAnnoyed.png":
+{
+	"frame": {"x":1864,"y":2032,"w":39,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":534,"y":268,"w":39,"h":13},
+	"sourceSize": {"w":765,"h":427}
 },
 "Models/Festive/BinderFluffLeftWristtie.png":
 {
@@ -120,14 +144,6 @@
 	"spriteSourceSize": {"x":195,"y":46,"w":880,"h":1521},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/GagLeather/MuzzleSideStrap.png":
-{
-	"frame": {"x":1992,"y":1735,"w":50,"h":181},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":191,"y":46,"w":50,"h":181},
-	"sourceSize": {"w":321,"h":332}
-},
 "Models/GagMetal/OTNStrapRivets.png":
 {
 	"frame": {"x":1694,"y":2032,"w":95,"h":13},
@@ -160,14 +176,6 @@
 	"spriteSourceSize": {"x":552,"y":690,"w":53,"h":230},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Heels/BalletLaceRightClosed.png":
-{
-	"frame": {"x":1992,"y":1536,"w":48,"h":195},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":527,"y":1387,"w":48,"h":195},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Heels/LeatherLeftSpread.png":
 {
 	"frame": {"x":1920,"y":3,"w":125,"h":553},
@@ -182,6 +190,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":467,"y":1143,"w":142,"h":521},
+	"sourceSize": {"w":1240,"h":1754}
+},
+"Models/HighSec/CorsetHardwareGarterLeftClosed.png":
+{
+	"frame": {"x":1992,"y":1536,"w":46,"h":169},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":662,"y":814,"w":46,"h":169},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/HighSecCuffs/BandThighRightClosed.png":
@@ -224,36 +240,12 @@
 	"spriteSourceSize": {"x":461,"y":992,"w":266,"h":194},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/KittyPawCuffs/ElbowLeftWristtie.png":
-{
-	"frame": {"x":1992,"y":1989,"w":53,"h":44},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":682,"y":612,"w":53,"h":44},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/KittyPetCuffs/BandAnkleLeftSpread.png":
-{
-	"frame": {"x":1793,"y":2032,"w":69,"h":13},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":685,"y":1439,"w":69,"h":13},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/KittyPetCuffs/BandAnkleRightClosed.png":
 {
 	"frame": {"x":1694,"y":1524,"w":58,"h":14},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":538,"y":1440,"w":58,"h":14},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/KittyPetCuffs/BandElbowLeftWristtie.png":
-{
-	"frame": {"x":1937,"y":2032,"w":45,"h":13},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":688,"y":628,"w":45,"h":13},
 	"sourceSize": {"w":1240,"h":1754}
 }},
 "meta": {
@@ -264,6 +256,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlasB0.json", "atlasB1.json", "atlasB2.json", "atlasB4.json", "atlasB5.json", "atlasB6.json", "atlasB7.json", "atlasB8.json", "atlasB9.json", "atlasB10.json", "atlasB11.json", "atlasB12.json", "atlasB13.json", "atlasB14.json", "atlasB15.json", "atlasB16.json", "atlasB17.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:9e7429d1b336965d3ada5768182c9ad8:76b5025af29653d2be23196d495c17a3:f82b600a0d03db0f33598424565b3eb3$"
+	"smartupdate": "$TexturePacker:SmartUpdate:532ea5aac70cd3c67ac752896aa1c68f:94225976a6347064fcdee6a5fc0e77c9:f82b600a0d03db0f33598424565b3eb3$"
 }
 }

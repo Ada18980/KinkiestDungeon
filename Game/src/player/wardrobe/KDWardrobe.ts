@@ -1120,7 +1120,8 @@ function KDDrawModelList(X: number, C: Character) {
 	let clickCategory = (en: any, index: number, sublevel: any) => {
 		return (_bdata: any) => {
 			if (!en) return false;
-			KDModelList_Categories_index = index;
+			//KDModelList_Categories_index = index;
+			KDModelList_Sublevel_index = -1;
 			if (KDModelListFilter) {
 				KDModelListFilter = "";
 				KDUpdateModelList(0, C);
