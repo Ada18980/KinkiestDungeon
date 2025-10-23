@@ -51604,7 +51604,8 @@ Boss
 - Unlocked by wearing any cursed restraint or armor.
 解锁方式：穿上任何被诅咒的拘束具或装备。
 # - Lost in Space
-# - Unlocked by stepping into a dimensional rift willingly... or not!
+- Unlocked by stepping into a dimensional rift willingly... or not!
+自愿踏入维度裂隙解锁…才怪!
 
 
 - Select a progress item to show details
