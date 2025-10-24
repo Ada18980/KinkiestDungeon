@@ -173,7 +173,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../M3/Models/SMoonlight/BallMittens.png</key>
+            <key type="filename">../M3/Models/SMoonlight/BondageHarness.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>240,325,481,651</rect>
+                <key>scale9Paddings</key>
+                <rect>240,325,481,651</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../M3/Models/SMoonlight/PostureCollar.png</key>
             <key type="filename">../M3/Models/SMoonlight/PostureCollarHardware.png</key>
             <key type="filename">../M3/Models/SMoonlight/PostureCollarLoop.png</key>
@@ -326,6 +340,8 @@
             <key type="filename">../M3/Models/Spats/SpatsClosed.png</key>
             <key type="filename">../M3/Models/Spats/SpatsKneel.png</key>
             <key type="filename">../M3/Models/Spats/SpatsKneelClosed.png</key>
+            <key type="filename">../M3/Models/Spats/SpatsLeftKneel.png</key>
+            <key type="filename">../M3/Models/Spats/SpatsLeftKneelClosed.png</key>
             <key type="filename">../M3/Models/Spats/SpatsSpread.png</key>
             <key type="filename">../M3/Models/SteelChastity/Belt.png</key>
             <key type="filename">../M3/Models/SteelChastity/BeltPadlock.png</key>
@@ -1112,21 +1128,6 @@
                 <rect>620,877,1240,1754</rect>
                 <key>scale9Paddings</key>
                 <rect>620,877,1240,1754</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../M3/Models/SMoonlight/BondageHarness.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>240,325,481,651</rect>
-                <key>scale9Paddings</key>
-                <rect>240,325,481,651</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
