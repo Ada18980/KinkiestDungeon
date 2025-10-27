@@ -150,6 +150,7 @@ let LAYERS_BASE = [
 	"NippleToysOption",
 	"NeckCorset",
 	"SuitChestOver",
+	"BraChestDeco",
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
@@ -347,13 +348,13 @@ let LAYERS_BASE = [
 
 	"Option_ChastityBelt",
 	"Option_CrotchRope",
+	"CorsetLiner",
 	"BodysuitOver",
 
 	// Panties go here when standing
 	"Panties",
 
 	// Upper body underwear and bodysuits
-	"CorsetLiner",
 	"Bodysuit",
 
 	"ChastityBelt",
@@ -605,6 +606,7 @@ let LayerGroups = {
 		"Option_BindChestLower",
 		"NeckCorset",
 		"SuitChestOver",
+		"BraChestDeco",
 		"BraChest",
 		"BindChestLower",
 		"SuitChest",
@@ -663,6 +665,7 @@ let LayerGroups = {
 		"Option_BindChestLower",
 		"NippleToysOption",
 		"SuitChestOver",
+		"BraChestDeco",
 		"BraChest",
 		"BindChestLower",
 		"SuitChest",
@@ -1461,6 +1464,7 @@ let LayerGroups = {
 		"ShirtChest",
 		"SuitChestOver",
 		"SuitChest",
+		"BraChestDeco",
 		"BraChest",
 		"BindChestLower",
 	]),
@@ -1468,6 +1472,7 @@ let LayerGroups = {
 		"Chest",
 		"SuitChestOver",
 		"SuitChest",
+		"BraChestDeco",
 		"BraChest",
 		"BindChestLower",
 		"Option_BindChestLower",
@@ -2040,6 +2045,7 @@ let LayerGroups = {
 	// Bra xray only if we are wearing a chastity bra
 	XrayBra: ToMap(
 		[
+		"BraChestDeco",
 			"BraChest",
 			"SuitChest",
 			"Bodysuit",

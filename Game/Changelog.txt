@@ -55,6 +55,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Removed some keybindings and replaced with more generic tab keys
 - Spell config keys are now tab keys
 - Price Gouging now makes the shopkeeper charge more for rescues/help
+- Being submissive helps you disguise yourself in bondage furniture (breakpoints at 25% and 75% submissiveness)
 Mechanics
 - New cosmetic titles by Enraa
 Restraints
@@ -64,6 +65,7 @@ Restraints
 - Buffed asylum transport jacket and changed the model
 Assets
 - Added Dark Rubber Boots
+- Added Pumpkin Vine set
 Balance
 - Psychic now allows you to bypass Can't Touch That, but only if your vision is unblocked
 Bugfix

@@ -28,6 +28,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
 				else if (KDBoundPowerLevel >= 0.1) power = 1;
+				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
+				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
@@ -91,6 +93,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
 				else if (KDBoundPowerLevel >= 0.1) power = 1;
+				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
+				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
@@ -158,6 +162,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
 				else if (KDBoundPowerLevel >= 0.1) power = 1;
+				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
+				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
@@ -297,6 +303,8 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 				let power = 0;
 				if (KDBoundPowerLevel >= 0.35) power = 2;
 				else if (KDBoundPowerLevel >= 0.1) power = 1;
+				if (KinkyDungeonGoddessRep.Prisoner > 0.25) power += 1;
+				if (KinkyDungeonGoddessRep.Prisoner > -0.25) power += 1;
 				if (power >= 2) {
 					KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 						id: "cage",
