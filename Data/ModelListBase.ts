@@ -41,11 +41,11 @@ AddModel({
 			InheritColor: "Torso",
 			Poses: ToMap([...SHOULDERPOSES]),
 		},
-		{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
+		/*{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
 			HideWhenOverridden: true,
 			InheritColor: "Torso",
 			Poses: ToMap([...SHOULDERPOSES]),
-		},
+		},*/
 		{ Name: "ForeArmRight", Layer: "ForeArmRight", Pri: 0,
 			HideWhenOverridden: true,
 			InheritColor: "Torso",

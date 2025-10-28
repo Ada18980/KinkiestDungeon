@@ -140,10 +140,10 @@ AddModel({
 			InheritColor: "TorsoUpper",
 			Poses: ToMap([...SHOULDERPOSES]),
 		},
-		{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
+		/*{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
 			InheritColor: "TorsoUpper",
 			Poses: ToMap([...SHOULDERPOSES]),
-		},
+		},*/
 
 		{ Name: "ForeArmRight", Layer: "ForeArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",
@@ -272,10 +272,10 @@ AddModel({
 			InheritColor: "TorsoUpper",
 			Poses: ToMap([...SHOULDERPOSES]),
 		},
-		{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
+		/*{ Name: "ShoulderLeft", Layer: "ShoulderLeft", Pri: 0,
 			InheritColor: "TorsoUpper",
 			Poses: ToMap([...SHOULDERPOSES]),
-		},
+		},*/
 
 		{ Name: "ForeArmRight", Layer: "ForeArmRight", Pri: 1,
 			InheritColor: "TorsoUpper",

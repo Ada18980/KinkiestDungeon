@@ -576,6 +576,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlasA0.json", "atlasA2.json", "atlasA3.json", "atlasA4.json", "atlasA5.json", "atlasA6.json", "atlasA7.json", "atlasA8.json", "atlasA9.json", "atlasA10.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:d895c6222641ab27e7587f9dfee73282:2672b75ce4d4734775e70873d8f8a3c1:2f8f16d6fd7b6837d19ea56deb5eb71e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7fea4b2f788d475ab454c434833c9655:79ed328019119cfac2c9aea265ef72fa:2f8f16d6fd7b6837d19ea56deb5eb71e$"
 }
 }
