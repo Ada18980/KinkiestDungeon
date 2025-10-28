@@ -46,7 +46,7 @@ AddModel({
 		},
 	])
 });
-
+AddModel(GetModelRestraintVersion("PumpkinBra", false));
 
 AddModel({
 	Name: "PumpkinPanties",
@@ -70,6 +70,7 @@ AddModel({
 		},
 	])
 });
+AddModel(GetModelRestraintVersion("PumpkinPanties", false));
 
 
 AddModel({

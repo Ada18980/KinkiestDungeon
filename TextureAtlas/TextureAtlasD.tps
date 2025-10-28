@@ -287,16 +287,22 @@
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHemHogtieCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHemKneel.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHemKneelCrotchStrap.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHemOverKneel.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHemOverKneelCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHogtie.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtHogtieCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtKneel.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtKneelCrotchStrap.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtOverKneel.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtOverKneelCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripe.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeHogtie.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeHogtieCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeKneel.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeKneelCrotchStrap.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeOverKneel.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/DressSkirtStripeOverKneelCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/FootBootLeftHogtie.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/FootSockLeftHogtie.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/FootSockRightKneel.png</key>
@@ -332,6 +338,7 @@
             <key type="filename">../M4/Models/MaidKnightHeavy/PantyhoseHogtie.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/PantyhoseKneel.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/PantyhoseKneelClosed.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/PantyhoseLeftKneel.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/PantyhoseSpread.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/PauldronLeft.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/PauldronLeftHardware.png</key>
@@ -349,6 +356,7 @@
             <key type="filename">../M4/Models/MaidKnightHeavy/PauldronRightUp.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/PauldronRightYoked.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/Pouches.png</key>
+            <key type="filename">../M4/Models/MaidKnightHeavy/ShoulderLeftUp.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/ShoulderRightUp.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/SideArmor.png</key>
             <key type="filename">../M4/Models/MaidKnightHeavy/SleeveLeftBoxtie.png</key>
@@ -426,6 +434,8 @@
             <key type="filename">../M4/Models/MaidKnightLight/DressSkirtHogtieCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightLight/DressSkirtKneel.png</key>
             <key type="filename">../M4/Models/MaidKnightLight/DressSkirtKneelCrotchStrap.png</key>
+            <key type="filename">../M4/Models/MaidKnightLight/DressSkirtOverKneel.png</key>
+            <key type="filename">../M4/Models/MaidKnightLight/DressSkirtOverKneelCrotchStrap.png</key>
             <key type="filename">../M4/Models/MaidKnightLight/Flower.png</key>
             <key type="filename">../M4/Models/MaidKnightLight/FlowerLeaves.png</key>
             <key type="filename">../M4/Models/MaidKnightLight/FootBootLeftHogtie.png</key>

@@ -33,6 +33,12 @@ AddModel({
 			HidePoses: ToMap(["EncaseTorsoLower"]),
 			InheritColor: "JacketBottom",
 		},
+		{ Name: "DressSkirtOver", Layer: "SkirtOverOverKneel", Pri: 31,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
+			Poses: {Kneel: true, KneelOver: true},
+			HidePoses: ToMap(["EncaseTorsoLower"]),
+			InheritColor: "JacketBottom",
+		},
 	])
 });
 

@@ -154,8 +154,8 @@ let LAYERS_BASE = [
 	"BraChest",
 	"BindChestLower",
 	"SuitChest",
-	"CatsuitChest",
 	"NippleToys",
+	"CatsuitChest",
 	"Nipples",
 	"Chest",
 
@@ -220,9 +220,6 @@ let LAYERS_BASE = [
 
 	"BeltUnder",
 
-	"CrotchPanelMid",
-
-
 
 	// For form-fitting stuff that nonetheless goes over a shirt
 	"Bustier",
@@ -235,12 +232,15 @@ let LAYERS_BASE = [
 	"LegbinderAnkleLeftPants",
 	"SkirtOverDecoOverKneel",
 	"SkirtOverOverKneel",
+
+	"CrotchPanelMid",
 	
 	"LegbinderLegRightPants",
 	"LegbinderLegLowerRightPants",
 	"LegbinderAnkleRightPants",
 	"SkirtOverDeco",
 	"SkirtOver",
+
 
 	// Belts and corsets that only go over
 	"Cincher",
@@ -396,27 +396,14 @@ let LAYERS_BASE = [
 
 	// Left arm clothes
 
-	"BindWristLeft",
+	"BulkyShirt",
+	
 	"WrapArmLeft",
 	"BindArmLeft",
 	"BindCrossElbowLeft",
 	"BindForeElbowLeft",
-	"BindElbowLeft",
-	"BindHandLeft",
 
-	"LowerArmBondageLeft",
-	"BulkyShirt",
-
-	"SleeveDecoLeft",
-	"SleeveLeft",
-
-	// Left arm body - reserved for body and catsuits
-	"WristLeft",
-	"MittenLeft",
-	"GloveLeft",
-	"TightSleeveLeft",
-	"HandLeft",
-	"ArmLeft",
+	
 
 	// Right Shoes
 	"ShoeRightOver",
@@ -459,6 +446,24 @@ let LAYERS_BASE = [
 	"TorsoLower",
 	"Torso",
 	"BehindTorso",
+
+	// Armleft
+
+	"BindElbowLeft",
+	"BindHandLeft",
+
+	"BindWristLeft",
+	"LowerArmBondageLeft",
+	"SleeveDecoLeft",
+	"SleeveLeft",
+
+	// Left arm body - reserved for body and catsuits
+	"WristLeft",
+	"MittenLeft",
+	"GloveLeft",
+	"TightSleeveLeft",
+	"HandLeft",
+	"ArmLeft",
 
 	// Feet behind the body
 	"WrappingLegsUnderHogtie",
@@ -558,10 +563,11 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "SkirtOverLowerDeco"},
 	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "WrappingLegsRightOver"},
 	{id: "LegRightOver", start: "WrappingLegsRightOver", end: "HarnessUnder"},
-	{id: "ArmLeft", start: "BindWristLeft", end: "ShoeRightOver"},
+	{id: "ArmLeftOver", start: "WrapArmLeft", end: "ShoeRightOver"},
 	{id: "PantRight", start: "ShoeRightOver", end: "CorsetUnder"},
 	{id: "Pelvis", start: "CorsetUnder", end: "ShoulderLeft"},
-	{id: "Torso", start: "ShoulderLeft", end: "AnkleLeftHogtie"},
+	{id: "Torso", start: "ShoulderLeft", end: "BindElbowLeft"},
+	{id: "ArmLeft", start: "BindElbowLeft", end: "WrappingLegsUnderHogtie"},
 	{id: "FeetBack", start: "AnkleLeftHogtie", end: "WrapArmRight"},
 	{id: "ArmRight", start: "WrapArmRight", end: "BindChainLinksUnder"},
 	{id: "ClothesBack", start: "SkirtBack", end: "FurnitureBackLinked"},

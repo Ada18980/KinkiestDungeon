@@ -371,6 +371,7 @@
             <key type="filename">../M1/Models/Body/TorsoChastity.png</key>
             <key type="filename">../M1/Models/Body/TorsoClosed.png</key>
             <key type="filename">../M1/Models/Body/TorsoClosedChastity.png</key>
+            <key type="filename">../M1/Models/Body/TorsoKneel.png</key>
             <key type="filename">../M1/Models/Body/TorsoSpread.png</key>
             <key type="filename">../M1/Models/Body/TorsoSpreadChastity.png</key>
             <key type="filename">../M1/Models/BodySmooth/ArmLeftBoxtie.png</key>
@@ -573,9 +574,11 @@
             <key type="filename">../M1/Models/Catsuit/TorsoLower.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerClosed.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerHogtie.png</key>
+            <key type="filename">../M1/Models/Catsuit/TorsoLowerKneel.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerLeotard.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerLowRise.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerLowRiseClosed.png</key>
+            <key type="filename">../M1/Models/Catsuit/TorsoLowerLowRiseKneel.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerLowRiseSpread.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerPanties.png</key>
             <key type="filename">../M1/Models/Catsuit/TorsoLowerSpread.png</key>

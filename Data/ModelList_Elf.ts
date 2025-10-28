@@ -156,7 +156,7 @@ AddModel({
 		EncaseTorsoLower: ["Skirt"]
 	},
 	Layers: ToLayerMap([
-		{ Name: "Skirt", Layer: "Skirt", Pri: 100,
+		{ Name: "Skirt", Layer: "SkirtLower", Pri: 100,
 			//swaplayerpose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			Invariant: true,
 			HideWhenOverridden: true,
@@ -165,7 +165,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			HidePoses: {"SkimpyLower": true},
 		},
-		{ Name: "SkirtBand", Layer: "Skirt", Pri: 99.9,
+		{ Name: "SkirtBand", Layer: "SkirtLower", Pri: 99.9,
 			Invariant: true,
 			TieToLayer: "Skirt", NoOverride: true,
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},

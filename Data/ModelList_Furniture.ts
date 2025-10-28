@@ -170,12 +170,15 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture"],
-	AddPose: ["Saddled", "ForceKneel", "CrotchStrap", "Unhobble"],
+	AddPose: ["Saddled", "ForceKneel", "Unhobble"],
+	AddPoseIf: {
+		LongSkirt: ["CrotchStrap"]
+	},
 	HideLayerGroups: ["FootRightKneel"],
 	Layers: ToLayerMap([
 		{ Name: "Saddle", Layer: "Saddle", Pri: 40,
 			Invariant: true,
-			EraseLayerGroups:{Skirt: true, SkirtOver: true,},
+			EraseLayerGroups:{SkirtLower: true, Skirt: true, SkirtOver: true,},
 			
 			EraseSprite: "EraseSaddle",
 			EraseInvariant: true,

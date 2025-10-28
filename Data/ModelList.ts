@@ -15,7 +15,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoLower", Layer: "TorsoLower", Pri: 1,
 			InheritColor: "TorsoLower",
-			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
+			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 		},
 		{ Name: "FootRight", Layer: "FootRight", Pri: 1,
 			InheritColor: "TorsoLower",
@@ -63,7 +63,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "TorsoLowerLowRise", Layer: "TorsoLower", Pri: 1,
 			InheritColor: "TorsoLower",
-			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed"},
+			MorphPoses: {Closed: "Closed", Spread: "Spread", Hogtie: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 		},
 		{ Name: "FootRight", Layer: "FootRight", Pri: 1,
 			InheritColor: "TorsoLower",
@@ -809,7 +809,7 @@ AddModel({
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
 		},
-		{ Name: "Skirt2", Layer: "OverSkirt", Pri: 15,
+		{ Name: "Skirt2", Layer: "SkirtOver", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
@@ -868,7 +868,7 @@ AddModel({
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
 		},
-		{ Name: "Skirt2", Layer: "OverSkirt", Pri: 15,
+		{ Name: "Skirt2", Layer: "SkirtOver", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
@@ -1137,7 +1137,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
 		},
-		/*{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 7,
+		{ Name: "SkirtOver", Layer: "SkirtOverKneel", Pri: 7,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,
@@ -1146,7 +1146,7 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//Invariant: true,
 		},
-		{ Name: "StripeOver", Layer: "Skirt", Pri: 7.1,
+		{ Name: "StripeOver", Layer: "SkirtOverKneel", Pri: 7.1,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,
@@ -1154,7 +1154,7 @@ AddModel({
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//Invariant: true,
-		},*/
+		},
 	])
 });
 
@@ -1565,7 +1565,7 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Skirts"],
 	AddPoseConditional: {
-		EncaseTorsoLower: ["Skirt"]
+		EncaseTorsoLower: ["Skirt", "LongSkirt"]
 	},
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "Skirt", Pri: 12,
@@ -2077,7 +2077,7 @@ AddModel({
 			Invariant: true,
 			HidePoses: {"SkimpyLower": true},
 		},
-		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 7,
+		{ Name: "SkirtOver", Layer: "SkirtOverKneel", Pri: 7,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,
@@ -2391,7 +2391,7 @@ AddModel({
 			Invariant: true,
 			HidePoses: {"SkimpyLower": true},
 		},
-		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 7,
+		{ Name: "SkirtOver", Layer: "SkirtOverKneel", Pri: 7,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,

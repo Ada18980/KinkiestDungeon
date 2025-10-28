@@ -5980,6 +5980,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "beforeStruggleCalc", type: "ropeDebuff", power: 0.05, inheritLinked: true, requireTags: ["Wristties", "Boxties", "Crossties"]}
 		],
+		noDupe: true,
 		//renderWhenLinked: [...KDArmRopesRender],
 		alwaysRender: true,
 		struggleMult: {"Struggle": 0.2, "Remove": 0.22},

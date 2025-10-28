@@ -718,6 +718,7 @@
             <key type="filename">../M3/Models/Uniform/DressSkirt.png</key>
             <key type="filename">../M3/Models/Uniform/DressSkirtHogtie.png</key>
             <key type="filename">../M3/Models/Uniform/DressSkirtKneel.png</key>
+            <key type="filename">../M3/Models/Uniform/DressSkirtOverKneel.png</key>
             <key type="filename">../M3/Models/Uniform/FootSockLeftHogtie.png</key>
             <key type="filename">../M3/Models/Uniform/FootSockRightKneel.png</key>
             <key type="filename">../M3/Models/Uniform/ForeArmLeftCrossed.png</key>
