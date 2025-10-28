@@ -778,6 +778,7 @@ AddModel({
 	Folder: "ArmorChain",
 	Parent: "ChainArmor",
 	Categories: ["Armor"],
+	AddPose: ["LoinclothSkirt"],
 	Layers: ToLayerMap([
 		{ Name: "SkirtBelt", Layer: "OverSkirt", Pri: 15.1,
 			Poses: ToMap([...LEGPOSES]),
@@ -809,11 +810,12 @@ AddModel({
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
 		},
-		{ Name: "Skirt2", Layer: "SkirtOver", Pri: 15,
+		{ Name: "Skirt2", Layer: "Skirt", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			InheritColor: "Skirt",
+			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
@@ -828,6 +830,7 @@ AddModel({
 	Folder: "ArmorChain",
 	Parent: "ChainArmor",
 	Categories: ["Armor"],
+	AddPose: ["LoinclothSkirt"],
 	Layers: ToLayerMap([
 		{ Name: "Skirt", Layer: "OverSkirt", Pri: 15.3,
 			Poses: ToMap([...LEGPOSES]),
@@ -868,11 +871,12 @@ AddModel({
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
 		},
-		{ Name: "Skirt2", Layer: "SkirtOver", Pri: 15,
+		{ Name: "Skirt2", Layer: "Skirt", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 			InheritColor: "Skirt",
+			SwapLayerPose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
@@ -895,6 +899,7 @@ AddModel({
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 		{ Name: "PantiesChain", Layer: "CrotchPanelMid", Pri: 14.9,
 			Poses: ToMap([...LEGPOSES]),
@@ -902,6 +907,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Chain",
 			TieToLayer: "Panties",
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 	])
 });
@@ -922,6 +928,7 @@ AddModel({
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
 			],
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 		{ Name: "PantiesChain", Layer: "CrotchPanelMid", Pri: 14.9,
 			Poses: ToMap([...LEGPOSES]),
@@ -929,6 +936,7 @@ AddModel({
 			Invariant: true,
 			InheritColor: "Chain",
 			TieToLayer: "Panties",
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 		{ Name: "Skirt", Layer: "OverSkirt", Pri: 15.3,
 			Poses: ToMap([...LEGPOSES]),
@@ -949,6 +957,7 @@ AddModel({
 	Folder: "ArmorChain",
 	TopLevel: true,
 	Categories: ["Armor"],
+	AddPose: ["LoinclothSkirt"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ChainShirt"),
 		...GetModelLayers("ChainSkirt"),

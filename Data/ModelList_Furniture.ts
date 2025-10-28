@@ -172,7 +172,8 @@ AddModel({
 	Categories: ["Restraints","Furniture"],
 	AddPose: ["Saddled", "ForceKneel", "Unhobble"],
 	AddPoseIf: {
-		LongSkirt: ["CrotchStrap"]
+		LongSkirt: ["CrotchStrap"],
+		
 	},
 	HideLayerGroups: ["FootRightKneel"],
 	Layers: ToLayerMap([

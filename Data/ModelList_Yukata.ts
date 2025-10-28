@@ -150,6 +150,7 @@ AddModel({
 	Parent: "Yukata",
 	TopLevel: true,
 	Categories: ["Skirts"],
+	AddPose: ["LongSkirt"],
 	AddPoseConditional: {
 		EncaseTorsoLower: ["Skirt"]
 	},
@@ -182,6 +183,7 @@ AddModel({
 	Folder: "Yukata",
 	Parent: "Yukata",
 	TopLevel: true,
+	AddPose: ["LongSkirt"],
 	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("YukataWaist"),
@@ -197,6 +199,7 @@ AddModel({
 	Folder: "Yukata",
 	Parent: "Yukata",
 	TopLevel: true,
+	AddPose: ["LongSkirt"],
 	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("YukataWaistPattern"),

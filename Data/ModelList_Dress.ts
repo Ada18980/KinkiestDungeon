@@ -521,6 +521,7 @@ AddModel({
 			Invariant: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			InheritColor: "Panties",
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 		{ Name: "LaceCrotchPanelTrim", Layer: "CrotchPanelMid", Pri: 30.2,
 			//swaplayerpose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
@@ -530,6 +531,7 @@ AddModel({
 			TieToLayer: "LaceCrotchPanel",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			InheritColor: "Trim",
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 		{ Name: "LaceCrotchPanelLace", Layer: "CrotchPanelMid", Pri: 30.1,
 			//swaplayerpose: {Kneel: "CrotchPanelLower", KneelClosed: "CrotchPanelLower"},
@@ -539,6 +541,7 @@ AddModel({
 			TieToLayer: "LaceCrotchPanel",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			InheritColor: "Lace",
+			SwapLayerPose: {Kneel: "CrotchPanelMidLower", KneelClosed: "CrotchPanelMidLower"},
 		},
 	])
 });

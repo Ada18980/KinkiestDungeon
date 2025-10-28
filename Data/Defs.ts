@@ -335,6 +335,9 @@ let LAYERS_BASE = [
 	
 	"Saddle",
 	
+	// CrotchPanelMid goes here during kneel
+	"CrotchPanelMidLower",
+	
 	"Shorts",
 	"TightPants",
 
@@ -549,7 +552,7 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "BaggyShirtAndSkirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
 	{id: "WrappingMid", start: "WrappingTorsoMid", end: "OverCrotchStrapMid"},
 	{id: "ClothLower", start: "OverCrotchStrapMid", end: "LegbinderLegLeftPants"},
-	{id: "SkirtOverKneelLeft", start: "LegbinderLegLeftPants", end: "LegbinderLegRightPants"},
+	{id: "SkirtOverKneelLeft", start: "LegbinderLegLeftPants", end: "CrotchPanelMid"},
 	{id: "SkirtOver", start: "LegbinderLegRightPants", end: "Cincher"},
 	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "SkirtDeco"},
 	{id: "Skirt", start: "SkirtDeco", end: "WrappingLegsOver"},
