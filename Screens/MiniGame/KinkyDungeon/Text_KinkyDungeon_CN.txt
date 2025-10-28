@@ -51535,13 +51535,16 @@ Boss
 # - Nothing but a Doll
 # - Mistress of Flame
 # - Unlocked by learning every spell under Flame Novice.
-# - Mistress of Wind
+- Mistress of Wind
+风之女神
 # - Unlocked by learning every spell under Air Novice.
-# - Mistress of Lightning
+- Mistress of Lightning
+雷电女神
 # - Unlocked by learning every spell under Lightning Novice.
 # - Mistress of Water
 # - Unlocked by learning every spell under Water Novice.
-# - Mistress of Earth
+- Mistress of Earth
+大地女神
 # - Unlocked by learning every spell under Earth Novice.
 # - Mistress of Ice
 # - Unlocked by learning every spell under Ice Novice.
@@ -51562,15 +51565,18 @@ Boss
 # - Mistress of Obscurity
 # - Unlocked by learning every spell under Blessing of Obscurity.
 # - Mistress of Projection
-# - Unlocked by learning every spell under Projection Magic.
-# - Mistress of Knowledge
+- Unlocked by learning every spell under Projection Magic.
+在习得所有分支下的法术以解锁。
+- Mistress of Knowledge
+知识女神
 # - Unlocked by learning every spell under Arcane Knowledge.
 # - Mistress of Summoning
 # - Unlocked by learning every spell under Summoning 101.
 - Unlocked by learning every spell at the same time.
 解锁方式：学会所有法术。
 # - ewhac
-# - Unlocked by reaching NG+25.
+- Unlocked by reaching NG+25.
+在本存档25周目后解锁
 # - Moss Boss
 # - Unlocked by reaching 400 max stamina and mana and willpower and desire.
 # - Juiced Up
@@ -51578,7 +51584,8 @@ Boss
 # - Manafused
 # - Unlocked by reaching 400 max mana.
 # - Unbreakable
-# - Unlocked by reaching 400 max willpower.
+- Unlocked by reaching 400 max willpower.
+在体力值的上限达到400后解锁
 # - Unwavering
 # - Unlocked by reaching 400 max desire.
 - Unlocked by accepting a bondage offer. 
