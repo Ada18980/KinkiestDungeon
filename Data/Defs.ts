@@ -71,7 +71,7 @@ let LAYERS_BASE = [
 	"BindForeHandRight",
 	"BindForeArmLeft",
 	"BindForeArmRight",
-	
+
 	"BindCrossElbowLeft",
 	"BindForeElbowLeft",
 	
@@ -388,6 +388,9 @@ let LAYERS_BASE = [
 	"RightThighs2",
 	"RightThighs1",
 	"KneeAccRight",
+	"RightAnkles3",
+	"RightAnkles2",
+	"RightAnkles1",
 	"ThighRight",
 	"AnkleRight",
 	"ThighRightOver",

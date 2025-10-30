@@ -317,6 +317,17 @@
             <key type="filename">../DisplacementMaps/ThighCuffsLeftKneel.png</key>
             <key type="filename">../DisplacementMaps/ThighCuffsLeftKneelClosed.png</key>
             <key type="filename">../DisplacementMaps/ThighCuffsRightKneel.png</key>
+            <key type="filename">../DisplacementMaps/VineArmLeftBoxtie.png</key>
+            <key type="filename">../DisplacementMaps/VineArmLeftCrossed.png</key>
+            <key type="filename">../DisplacementMaps/VineArmLeftFree.png</key>
+            <key type="filename">../DisplacementMaps/VineArmLeftUp.png</key>
+            <key type="filename">../DisplacementMaps/VineArmLeftWristtie.png</key>
+            <key type="filename">../DisplacementMaps/VineArmLeftYoked.png</key>
+            <key type="filename">../DisplacementMaps/VineArmRightBoxtie.png</key>
+            <key type="filename">../DisplacementMaps/VineArmRightCrossed.png</key>
+            <key type="filename">../DisplacementMaps/VineArmRightFree.png</key>
+            <key type="filename">../DisplacementMaps/VineArmRightUp.png</key>
+            <key type="filename">../DisplacementMaps/VineArmRightYoked.png</key>
             <key type="filename">../DisplacementMaps/Yoke.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
