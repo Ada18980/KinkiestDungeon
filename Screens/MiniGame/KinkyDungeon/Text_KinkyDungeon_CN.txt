@@ -7324,6 +7324,10 @@ TYPE女神的神泉。
 # :: m_LeatherLeotardBottom_l_Leather
 # :: m_LeatherLeotard_l_Leather
 # :: m_LeatherLeotard_l_Leather
+# :: m_PlasmaMuzzle_l_Leather
+# :: m_PlasmaMuzzle_l_Leather
+# :: m_FashionPlasmaMuzzle_l_Leather
+# :: m_FashionPlasmaMuzzle_l_Leather
 # :: KDItemFilter_Restraint_Leather
 # :: KDFilterFiltersLeather
 # :: KDRecycleResource_Leather
@@ -7744,8 +7748,11 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 你骗不到任何人...
 - You might be able to fool someone like this...
 你这个样子也许能骗到某些人...
+- You manage to pose as if you're trapped in the furniture.
+你看起来就像在家里一样舒适！
 - You look like you're right at home!
 你看起来就像在家里一样舒适！
+# - You look like a perfect, happy prisoner.
 
 - Restraining Bed
 拘束床
@@ -26551,6 +26558,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_HeavyMaidKnight_Boots_l_BootLeft
 # :: m_HeavyMaidKnight_l_BootLeft
 # :: m_PlateBootsRestraint_l_BootLeft
+# :: m_DarkRubberBoots_l_BootLeft
+# :: m_DarkRubberBootsRestraint_l_BootLeft
 - BootRight
 右靴
 # :: l_PlateBoots_BootRight
@@ -26564,6 +26573,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_HeavyMaidKnight_Boots_l_BootRight
 # :: m_HeavyMaidKnight_l_BootRight
 # :: m_PlateBootsRestraint_l_BootRight
+# :: m_DarkRubberBoots_l_BootRight
+# :: m_DarkRubberBootsRestraint_l_BootRight
 - BootRightKneel
 右靴(跪姿)
 # :: l_PlateBoots_BootRightKneel
@@ -27021,6 +27032,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_LightMaidKnight_l_ShoeLeft
 # :: m_HeavyMaidKnight_Boots_l_ShoeLeft
 # :: m_HeavyMaidKnight_l_ShoeLeft
+# :: m_DarkRubberBoots_l_ShoeLeft
+# :: m_DarkRubberBootsRestraint_l_ShoeLeft
 # :: m_HighSecBalletHeels_l_ShoeLeft
 # :: m_HighSecBalletHeels_l_ShoeLeft
 # :: m_HighSecBalletHeelsRestraint_l_ShoeLeft
@@ -27074,6 +27087,8 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # :: m_LightMaidKnight_l_ShoeRight
 # :: m_HeavyMaidKnight_Boots_l_ShoeRight
 # :: m_HeavyMaidKnight_l_ShoeRight
+# :: m_DarkRubberBoots_l_ShoeRight
+# :: m_DarkRubberBootsRestraint_l_ShoeRight
 # :: m_HighSecBalletHeels_l_ShoeRight
 # :: m_HighSecBalletHeels_l_ShoeRight
 # :: m_HighSecBalletHeelsRestraint_l_ShoeRight
@@ -34072,6 +34087,8 @@ V形比基尼
 口塞面板
 :: m_FashionDusterGag_l_Panel
 口塞面板
+# :: m_PlasmaMuzzle_l_Panel
+# :: m_FashionPlasmaMuzzle_l_Panel
 - PanelGagHarness
 马具型面板口塞
 - PanelGagHarnessSecure
@@ -35935,6 +35952,12 @@ Aura刘海(右后)
 腰带
 :: m_MilitaryUniform_l_Band
 腰带
+# :: m_HighSecCuffsFull_l_Band
+# :: m_HighSecCuffsFull_l_Band
+# :: m_HighSecCuffsFull_l_Band
+# :: m_HighSecCuffsFull_l_Band
+# :: m_HighSecCuffsFull_l_Band
+# :: m_HighSecCuffsFull_l_Band
 # :: m_HighSecCollarRestraint_l_Band
 # :: m_WolfCuffsAnklesRestraint_l_Band
 # :: m_WolfCuffsAnklesRestraint_l_Band
@@ -38470,6 +38493,60 @@ Aura刘海(右后)
 # :: m_CyberPetsuit_l_Straps
 # :: m_CyberPetsuit_l_Straps
 # :: m_ReverseBinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinder_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_SleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinder_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_FashionSleepsackLegbinderFull_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_SleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
+# :: m_FashionSleepsackJacket_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
 # :: m_LatexDollMittsLong_l_Straps
@@ -38906,6 +38983,10 @@ Aura刘海(右后)
 # :: m_CyberMittenLeft_l_MittenLeft
 # :: m_CyberMittens_l_MittenLeft
 # :: m_FashionCyberMittens_l_MittenLeft
+# :: m_SleepsackJacket_l_MittenLeft
+# :: m_SleepsackJacket_l_MittenLeft
+# :: m_FashionSleepsackJacket_l_MittenLeft
+# :: m_FashionSleepsackJacket_l_MittenLeft
 - ForeMittenLeft
 束手套(左 前握叠加层)
 # :: m_CyberMittenLeft_l_ForeMittenLeft
@@ -38918,6 +38999,10 @@ Aura刘海(右后)
 # :: m_CyberMittenRight_l_MittenRight
 # :: m_CyberMittens_l_MittenRight
 # :: m_FashionCyberMittens_l_MittenRight
+# :: m_SleepsackJacket_l_MittenRight
+# :: m_SleepsackJacket_l_MittenRight
+# :: m_FashionSleepsackJacket_l_MittenRight
+# :: m_FashionSleepsackJacket_l_MittenRight
 - ForeMittenRight
 束手套(右 前握叠加层)
 # :: m_CyberMittenRight_l_ForeMittenRight
@@ -39207,6 +39292,8 @@ Aura刘海(右后)
 花
 # :: m_LightMaidKnight_Flower_l_Flower
 # :: m_LightMaidKnight_l_Flower
+# :: m_PumpkinFlower_l_Flower
+# :: m_PumpkinVines_l_Flower
 - LightMaidKnight_SockRight
 轻装女仆骑士_右袜
 - LightMaidKnight_SockLeft
@@ -40898,6 +40985,62 @@ Vents发型
 # :: m_PostureCollar_l_Hardware
 # :: m_FashionPostureCollar_l_Hardware
 # :: m_ReverseBinder_l_Hardware
+# :: m_HighSecCuffsFull_l_Hardware
+# :: m_HighSecCuffsFull_l_Hardware
+# :: m_HighSecCuffsFull_l_Hardware
+# :: m_HighSecCuffsFull_l_Hardware
+# :: m_HighSecCuffsFull_l_Hardware
+# :: m_HighSecCuffsFull_l_Hardware
+# :: m_SleepsackLegbinder_l_Hardware
+# :: m_SleepsackLegbinder_l_Hardware
+# :: m_SleepsackLegbinder_l_Hardware
+# :: m_SleepsackLegbinder_l_Hardware
+# :: m_SleepsackLegbinder_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinder_l_Hardware
+# :: m_FashionSleepsackLegbinder_l_Hardware
+# :: m_FashionSleepsackLegbinder_l_Hardware
+# :: m_FashionSleepsackLegbinder_l_Hardware
+# :: m_FashionSleepsackLegbinder_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_FashionSleepsackLegbinderFull_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_SleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_FashionSleepsackJacket_l_Hardware
+# :: m_PlasmaMuzzle_l_Hardware
+# :: m_PlasmaMuzzle_l_Hardware
+# :: m_FashionPlasmaMuzzle_l_Hardware
+# :: m_FashionPlasmaMuzzle_l_Hardware
 # :: m_HighSecCorsetNoCrotch_l_Hardware
 # :: m_HighSecCorsetNoCrotchRestraint_l_Hardware
 # :: m_HighSecCorset_l_Hardware
@@ -41683,6 +41826,12 @@ Vents发型
 # :: m_FashionHighSecCuffsThighRight_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
 # :: m_FashionHighSecCuffsThigh_l_Cuff
+# :: m_HighSecCuffsFull_l_Cuff
+# :: m_HighSecCuffsFull_l_Cuff
+# :: m_HighSecCuffsFull_l_Cuff
+# :: m_HighSecCuffsFull_l_Cuff
+# :: m_HighSecCuffsFull_l_Cuff
+# :: m_HighSecCuffsFull_l_Cuff
 # :: m_LatexDollMittsLong_l_Cuff
 # :: m_LatexDollMittsLong_l_Cuff
 # :: m_LatexDollMittsLong_l_Cuff
@@ -41808,6 +41957,9 @@ Vents发型
 # :: m_FashionDivineBraRunic_l_Pins
 - Locks
 锁
+# :: m_HeavyYoke_l_Locks
+# :: m_PlasmaMuzzle_l_Locks
+# :: m_FashionPlasmaMuzzle_l_Locks
 - Shackles
 镣铐
 - Runes
@@ -42273,6 +42425,40 @@ Vents发型
 # :: m_HighSecLegbinder_l_Binder
 # :: m_ReverseBinder_l_Binder
 # :: m_ReverseBinder_l_Binder
+# :: m_SleepsackLegbinder_l_Binder
+# :: m_SleepsackLegbinder_l_Binder
+# :: m_SleepsackLegbinder_l_Binder
+# :: m_SleepsackLegbinder_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_SleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinder_l_Binder
+# :: m_FashionSleepsackLegbinder_l_Binder
+# :: m_FashionSleepsackLegbinder_l_Binder
+# :: m_FashionSleepsackLegbinder_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_FashionSleepsackLegbinderFull_l_Binder
+# :: m_SleepsackJacket_l_Binder
+# :: m_SleepsackJacket_l_Binder
+# :: m_SleepsackJacket_l_Binder
+# :: m_SleepsackJacket_l_Binder
+# :: m_SleepsackJacket_l_Binder
+# :: m_SleepsackJacket_l_Binder
+# :: m_FashionSleepsackJacket_l_Binder
+# :: m_FashionSleepsackJacket_l_Binder
+# :: m_FashionSleepsackJacket_l_Binder
+# :: m_FashionSleepsackJacket_l_Binder
+# :: m_FashionSleepsackJacket_l_Binder
+# :: m_FashionSleepsackJacket_l_Binder
 # - BinderStraps
 :: m_Armbinder_l_BinderStraps
 束手套绑带
@@ -42719,6 +42905,122 @@ Vents发型
 # - Secret_Light
 # - Secret_Base
 # - Secret_Lens
+
+# - PumpkinBra
+# - Leaf
+# :: m_PumpkinBra_l_Leaf
+# :: m_PumpkinBraRestraint_l_Leaf
+# :: m_PumpkinPanties_l_Leaf
+# :: m_PumpkinPantiesRestraint_l_Leaf
+# :: m_PumpkinNecklace_l_Leaf
+# :: m_PumpkinNecklace_l_Leaf
+# :: m_PumpkinNecklace_l_Leaf
+# :: m_PumpkinNecklace_l_Leaf
+# :: m_PumpkinNecklaceRestraint_l_Leaf
+# :: m_PumpkinNecklaceRestraint_l_Leaf
+# :: m_PumpkinNecklaceRestraint_l_Leaf
+# :: m_PumpkinNecklaceRestraint_l_Leaf
+# :: m_PumpkinBlindfold_l_Leaf
+# :: m_FashionPumpkinBlindfold_l_Leaf
+# :: m_PumpkinGag_l_Leaf
+# :: m_FashionPumpkinGag_l_Leaf
+# :: m_PumpkinVines_l_Leaf
+# :: m_PumpkinVines_l_Leaf
+# :: m_PumpkinVines_l_Leaf
+# :: m_PumpkinVines_l_Leaf
+# :: m_PumpkinVines_l_Leaf
+# :: m_PumpkinVines_l_Leaf
+- Vine
+藤曼
+# :: m_PumpkinBra_l_Vine
+# :: m_PumpkinBraRestraint_l_Vine
+# :: m_PumpkinPanties_l_Vine
+# :: m_PumpkinPantiesRestraint_l_Vine
+# :: m_PumpkinBlindfold_l_Vine
+# :: m_FashionPumpkinBlindfold_l_Vine
+# :: m_PumpkinGag_l_Vine
+# :: m_FashionPumpkinGag_l_Vine
+# :: m_PumpkinVines_l_Vine
+# :: m_PumpkinVines_l_Vine
+# :: KDBindType_Vine
+# - LeafUpper
+# :: m_PumpkinBra_l_LeafUpper
+# :: m_PumpkinBraRestraint_l_LeafUpper
+# :: m_PumpkinVines_l_LeafUpper
+# - VineUpper
+# :: m_PumpkinBra_l_VineUpper
+# :: m_PumpkinBraRestraint_l_VineUpper
+# :: m_PumpkinVines_l_VineUpper
+# - VineLower
+# :: m_PumpkinBra_l_VineLower
+# :: m_PumpkinBraRestraint_l_VineLower
+# :: m_PumpkinVines_l_VineLower
+# - PumpkinBraRestraint
+# - PumpkinPanties
+# - PumpkinPantiesRestraint
+# - PumpkinFlower
+# - PumpkinNecklace
+# - PumpkinNecklaceRestraint
+# - PumpkinBlindfold
+# - FashionPumpkinBlindfold
+# - PumpkinGag
+# - Pumpkin
+# :: m_PumpkinGag_l_Pumpkin
+# :: m_FashionPumpkinGag_l_Pumpkin
+# - FashionPumpkinGag
+# - PumpkinVines
+# - DarkRubberBoots
+# - DarkRubberBootsRestraint
+# - HighSecCuffsFull
+# - SleepsackLegbinder
+# - BinderInner
+# :: m_SleepsackLegbinder_l_BinderInner
+# :: m_SleepsackLegbinderFull_l_BinderInner
+# :: m_FashionSleepsackLegbinder_l_BinderInner
+# :: m_FashionSleepsackLegbinderFull_l_BinderInner
+# - Text
+# :: m_SleepsackLegbinder_l_Text
+# :: m_SleepsackLegbinderFull_l_Text
+# :: m_FashionSleepsackLegbinder_l_Text
+# :: m_FashionSleepsackLegbinderFull_l_Text
+# :: m_SleepsackJacket_l_Text
+# :: m_FashionSleepsackJacket_l_Text
+# - SleepsackLegbinderFull
+# - FashionSleepsackLegbinder
+# - FashionSleepsackLegbinderFull
+# - SleepsackJacket
+# - FashionSleepsackJacket
+# - PlasmaMuzzle
+# - PanelStitching
+# :: m_PlasmaMuzzle_l_PanelStitching
+# :: m_FashionPlasmaMuzzle_l_PanelStitching
+# - Stitching
+# :: m_PlasmaMuzzle_l_Stitching
+# :: m_FashionPlasmaMuzzle_l_Stitching
+# - LocksShackle
+# :: m_PlasmaMuzzle_l_LocksShackle
+# :: m_FashionPlasmaMuzzle_l_LocksShackle
+# - FashionPlasmaMuzzle
+# - SaddleMachine
+# - Saddle
+# - SaddleFront
+# - SaddleHardware
+# - SaddleDisplay
+# - SaddleSeat
+# - SpatsLeft
+# - HemUpperOver
+# :: m_GothicSkirt_l_HemUpperOver
+# :: m_GothicSkirtLace_l_HemUpperOver
+# - LinesOver
+# :: m_GothicSkirt_l_LinesOver
+# :: m_GothicSkirtLace_l_LinesOver
+# - HemLowerOver
+# :: m_GothicSkirt_l_HemLowerOver
+# :: m_GothicSkirtLace_l_HemLowerOver
+# - LaceLowerOver
+# - LaceUpperOver
+
+
 
 - Aura_Bang
 Aura刘海
@@ -49770,8 +50072,6 @@ N/A
 强光
 - Knocked Out
 击倒
-- Vine
-藤曼
 
 - Saving...
 保存中...
