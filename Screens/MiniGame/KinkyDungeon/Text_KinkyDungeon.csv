@@ -863,7 +863,7 @@ KinkyDungeonBuffLesserInvisibility,"Lesser Invisibility: It is harder for enemie
 KinkyDungeonBuffCutting,"FULL POWER: Cutting power increased."
 KinkyDungeonBuffSlippery,"Graceful: Struggling power increased."
 KinkyDungeonBuffIronBlood,"Iron Blood: Reduced melee cost, increased mana costs."
-KinkyDungeonBuffSleepy,"Sleepy: You are sluggish and have a hard time keeping your eyes open."
+KinkyDungeonBuffc,"Sleepy: You are sluggish and have a hard time keeping your eyes open."
 KinkyDungeonBuffEvasion,"Afterimage: Evasion greatly increased."
 KinkyDungeonBuffSlimeMimic,"We did it! We made ourselves invisible--mmmmph!!!"
 KinkyDungeonBuffd_SlimeMimic,"You are not currently attempting to disguise yourself. Click to reenable."
@@ -4562,7 +4562,7 @@ RestraintAsylumLegbinderDesc2,"It has both laces and straps."
 
 RestraintAsylumMuzzlePlus,Secured Asylum Muzzle
 RestraintAsylumMuzzlePlusDesc,"An advanced muzzle intended for particularly loud-mouthed mages."
-RestraintAsylumMuzzlePlusesc2,"It's sturdy leather and metal buckles."
+RestraintAsylumMuzzlePlusDesc2,"It's sturdy leather and metal buckles."
 RestraintAsylumLegbinderPlus,Secured Asylum Legbinder
 RestraintAsylumLegbinderPlusDesc,"A legbinder to keep nurses safe from high-level warriors."
 RestraintAsylumLegbinderPlusDesc2,"Tightly zipped together and secured with straps."

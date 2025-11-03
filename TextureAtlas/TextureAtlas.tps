@@ -464,6 +464,8 @@
             <key type="filename">../Models/Pumpkin/BudCollar.png</key>
             <key type="filename">../Models/Pumpkin/BudForeArmLeftFront.png</key>
             <key type="filename">../Models/Pumpkin/BudForeArmRightFront.png</key>
+            <key type="filename">../Models/Pumpkin/BudHarnessL.png</key>
+            <key type="filename">../Models/Pumpkin/BudHarnessR.png</key>
             <key type="filename">../Models/Pumpkin/BudLegLeftKneel.png</key>
             <key type="filename">../Models/Pumpkin/BudLegLeftKneelClosed.png</key>
             <key type="filename">../Models/Pumpkin/BudLegLeftLowerClosed.png</key>
@@ -477,6 +479,9 @@
             <key type="filename">../Models/Pumpkin/FlowerCollar.png</key>
             <key type="filename">../Models/Pumpkin/FlowerForeArmLeftFront.png</key>
             <key type="filename">../Models/Pumpkin/FlowerForeArmRightFront.png</key>
+            <key type="filename">../Models/Pumpkin/FlowerHarness.png</key>
+            <key type="filename">../Models/Pumpkin/FlowerHarnessL.png</key>
+            <key type="filename">../Models/Pumpkin/FlowerHarnessR.png</key>
             <key type="filename">../Models/Pumpkin/FlowerLegLeftClosed.png</key>
             <key type="filename">../Models/Pumpkin/FlowerLegLeftKneel.png</key>
             <key type="filename">../Models/Pumpkin/FlowerLegLeftKneelClosed.png</key>
@@ -517,6 +522,8 @@
             <key type="filename">../Models/Pumpkin/LeafBraDeco.png</key>
             <key type="filename">../Models/Pumpkin/LeafCollar.png</key>
             <key type="filename">../Models/Pumpkin/LeafGag.png</key>
+            <key type="filename">../Models/Pumpkin/LeafHarnessL.png</key>
+            <key type="filename">../Models/Pumpkin/LeafHarnessR.png</key>
             <key type="filename">../Models/Pumpkin/LeafPanties.png</key>
             <key type="filename">../Models/Pumpkin/LeafPantiesKneel.png</key>
             <key type="filename">../Models/Pumpkin/PumpkinGag.png</key>
@@ -540,6 +547,9 @@
             <key type="filename">../Models/Pumpkin/VineForeArmRightCrossed.png</key>
             <key type="filename">../Models/Pumpkin/VineForeArmRightFront.png</key>
             <key type="filename">../Models/Pumpkin/VineGag.png</key>
+            <key type="filename">../Models/Pumpkin/VineHarness.png</key>
+            <key type="filename">../Models/Pumpkin/VineHarnessMiddle.png</key>
+            <key type="filename">../Models/Pumpkin/VineHarnessUnderbust.png</key>
             <key type="filename">../Models/Pumpkin/VineLegLeftClosed.png</key>
             <key type="filename">../Models/Pumpkin/VineLegLeftKneel.png</key>
             <key type="filename">../Models/Pumpkin/VineLegLeftKneelClosed.png</key>

@@ -96,7 +96,7 @@ AddModel({
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
 	TopLevel: true,
-	Categories: ["Bras"],
+	Categories: ["Restraints"],
 	Layers: ToLayerMap([
 		{ Name: "VineLegLeft", Layer: "Thighs1", Pri: 105,
 			Poses: ToMap([...LEGPOSES]),
@@ -141,6 +141,20 @@ AddModel({
 			NoOverride: true,
 		},
 
+
+		
+	])
+});
+
+
+AddModel({
+	Name: "PumpkinVineFeet",
+	Folder: "Pumpkin",
+	Parent: "PumpkinVines",
+	TopLevel: true,
+	Categories: ["Restraints"],
+	Layers: ToLayerMap([
+		
 
 
 
@@ -233,6 +247,87 @@ AddModel({
 	])
 });
 AddModel(GetModelRestraintVersion("PumpkinBra", false));
+
+
+
+AddModel({
+	Name: "PumpkinVineHarness",
+	Folder: "Pumpkin",
+	Parent: "PumpkinVines",
+	TopLevel: true,
+	Categories: ["Restraints"],
+	Layers: ToLayerMap([
+
+		{ Name: "VineHarnessUnderbust", Layer: "StrapsUnderbust", Pri: 70,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			DisplacementSprite: "Arm1Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Vine",
+			NoOverride: true,
+		},
+
+
+
+		{ Name: "VineHarness", Layer: "ChestStraps", Pri: 70,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			DisplacementSprite: "Arm2Squish",
+			DisplaceLayers: ToMap(["Rope1"]),
+			InheritColor: "Vine",
+			NoOverride: true,
+		},
+
+		{ Name: "VineHarnessMiddle", Layer: "ChestStraps", Pri: 70.05,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "VineMIddle",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "LeafHarnessL", Layer: "ChestStraps", Pri: 70.1,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "LeafL",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "LeafHarnessR", Layer: "ChestStraps", Pri: 70.1,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "LeafR",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "FlowerHarness", Layer: "ChestStraps", Pri: 70.1,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "Flower",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "FlowerHarnessL", Layer: "ChestStraps", Pri: 70.1,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "FlowerL",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "FlowerHarnessR", Layer: "ChestStraps", Pri: 70.1,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "FlowerR",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "BudHarnessL", Layer: "ChestStraps", Pri: 70.2,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "BudL",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		{ Name: "BudHarnessR", Layer: "ChestStraps", Pri: 70.2,
+			Poses: ToMap([...ARMPOSES]), Invariant: true,
+			InheritColor: "BudR",
+			NoOverride: true,
+			TieToLayer: "VineHarness",
+		},
+		
+	])
+});
+AddModel(GetModelFashionVersion("PumpkinVineHarness", true));
 
 AddModel({
 	Name: "PumpkinPanties",

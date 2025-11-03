@@ -7032,37 +7032,39 @@ const KinkyDungeonRestraints: restraint[] = [
 
 	{unlimited: true, removePrison: true, name: "VinePlantArms", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemArms", debris: "Vines",
 		affinity: {Remove: ["Hook"],},
-		Model: "RopeBoxtie3",
+		Model: "PumpkinVineArms",
 		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
-		bindarms: true, power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
+		bindarms: true, power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Vines", "Rope", "Ties", "Will"]},
 	{unlimited: true, removePrison: true, name: "VinePlantFeet", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemFeet", debris: "Vines",
-		Model: "RopeAnkles3",
+		Model: "PumpkinVineFeet",
 		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
+		addPose: ["FeetLinked"],
 		affinity: {Remove: ["Hook"],},
-		blockfeet: true, addTag: ["FeetLinked"],power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
+		blockfeet: true, addTag: ["FeetLinked"],power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemLegsFull":-1}, minLevel: 0, allFloors: true, shrine: ["Vines", "Rope", "Ties", "Will"]},
 	{unlimited: true, removePrison: true, name: "VinePlantLegs", accessible: true, Asset: "NylonRope", Color: ["#006722", "#006722"], Group: "ItemLegs", debris: "Vines",
-		Model: "RopeLegs3",
+		Model: "PumpkinVineLegs",
 		struggleBreak: true,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
+		//addPose: ["FeetLinked"],
 		affinity: {Remove: ["Hook"],},
-		hobble: 1, addTag: ["FeetLinked"], power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
+		hobble: 1, addTag: ["FeetLinked"], power: 0.1, weight: 0, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemFeetFull":-1}, minLevel: 0, allFloors: true, shrine: ["Vines", "Rope", "Ties", "Will"]},
 	{unlimited: true, removePrison: true, name: "VinePlantTorso", accessible: true, Asset: "NylonRopeHarness", Type: "Diamond", OverridePriority: 26, Color: ["#006722", "#006722"], Group: "ItemTorso", debris: "Vines",
-		Model: "RopeHarness",
+		Model: "PumpkinVineHarness",
 		struggleBreak: true,
 		restriction: 4,
 		Filters: {
 			Rope: {"gamma":1,"saturation":1,"contrast":1.85,"brightness":1,"red":1,"green":2.8833333333333333,"blue":1.6833333333333333,"alpha":1},
 		},
 		affinity: {Remove: ["Hook"],},
-		harness: true, power: 0.1, weight: 0, strictness: 0.05, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemTorsoFull":-3}, minLevel: 0, allFloors: true, shrine: ["Rope", "Ties", "Vines", "Will"]},
+		harness: true, power: 0.1, weight: 0, strictness: 0.05, escapeChance: {"Struggle": 0.3, "Cut": 0.8, "Remove": 0.2}, enemyTags: {"vineRestraints":4}, playerTags: {"ItemTorsoFull":-3}, minLevel: 0, allFloors: true, shrine: ["Vines", "Rope", "Ties", "Will"]},
 	//endregion
 
 	//region Chain

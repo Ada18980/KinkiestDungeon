@@ -1477,7 +1477,7 @@ function KinkyDungeonIsArmsBound(ApplyGhost?: boolean, Other?: boolean, group: s
 	}
 
 	let blocked = KDGroupBlocked("ItemArms");
-	if (!blocked && KinkyDungeonFlags.get("BoundArms")) blocked = true;
+	if (!blocked && KinkyDungeonPlayerTags.get("BoundArms")) blocked = true;
 		/*for (let inv of KinkyDungeonAllRestraintDynamic()) {
 			if (KDRestraint(inv.item).bindarms) {
 				blocked = true;

@@ -97,6 +97,8 @@ let KinkyDungeonStatDistractionMax = KDMaxStatStart;
 let KDDistractionLowerPercMult = 0.1;
 let KinkyDungeonStatDistractionLower = 0;
 let KinkyDungeonStatDistractionLowerCap = 0.9;
+let KinkyDungeonStatDistractionLowerDecayTo = 0.75;
+let KinkyDungeonStatDistractionLowerDecayRate = 0.003; // per turn -- about 50 turns to decay 15% to the limit
 let KinkyDungeonStatArousalLowerRegenSleep = 0; // Decrease lower distraction in sleep?
 let KinkyDungeonDistractionUnlockSuccessMod = 0.5; // Determines how much harder it is to insert a key while aroused. 1.0 is half success chance, 2.0 is one-third, etc.
 let KinkyDungeonStatDistraction = 0;
@@ -1704,7 +1706,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			//KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel + Math.floor(KinkyDungeonSleepiness/2), 5);
 			KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 				id: "Sleepy",
-				aura: "#222222",
+				aura: "#767676ff",
 				type: "AttackStamina",
 				duration: 3,
 				power: -1,
@@ -1726,7 +1728,12 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if ((!sleepRate || sleepRate <= 0) && KinkyDungeonSleepiness > 0) KinkyDungeonSleepiness = Math.max(0, KinkyDungeonSleepiness - delta);
 
 	// Cap off the values between 0 and maximum
-	KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, distractionRate > 0 ? arousalPercent: 0);
+	KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, distractionRate > 0 ? arousalPercent: 
+		(KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLowerDecayTo * KinkyDungeonStatDistractionMax ? -Math.min(Math.min(KinkyDungeonStatDistractionLower - 
+			KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayTo,
+	KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayRate * delta
+		)) : 0)
+	);
 	if (sleepRegenDistraction > 0 && KDGameData.SleepTurns > 0) {
 		KinkyDungeonStatDistractionLower -= sleepRegenDistraction*delta;
 	} else {
@@ -2146,7 +2153,7 @@ function KinkyDungeonDoPlayWithSelf(tease?: number): number {
 /** Percentage of vibe level that is turned into playSelfPower to try to have an orgasm*/
 let KinkyDungeonOrgasmVibeLevelPlayPowerMult = 1.0;
 let KinkyDungeonOrgasmChanceBase = -0.1;
-let KinkyDungeonOrgasmChanceScaling = 1.35;
+let KinkyDungeonOrgasmChanceScaling = 1.45;
 //let KinkyDungeonOrgasmChanceScalingDesire = 0.5;
 let KinkyDungeonMaxOrgasmStage = 7;
 let KinkyDungeonOrgasmStageVariation = 4; // determines the text message variation
