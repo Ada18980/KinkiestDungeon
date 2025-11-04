@@ -747,6 +747,8 @@ interface floorParams {
 	ShopExclusivesArousal? : string[],
 
 	enemyTags: string[],
+	// these are global--even if a TilesAlternate def replaces the local biome
+	globalEnemyTags?: string[],
 	"defeat_outfit": outfitKey,
 	/**
 	 * key required for jailers INSTEAD of "jailer"

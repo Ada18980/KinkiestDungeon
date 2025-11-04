@@ -583,8 +583,18 @@ function KinkyDungeonCreateMap (
 		if (iterations == maxIter) {
 			// Place enemies after player
 			if (!altType || altType.enemies) {
+				let globaltags = null;
+				if (MapParams.globalEnemyTags) globaltags = [...MapParams.globalEnemyTags];
+				if (mapMod?.tags) {
+					if (globaltags == null) {
+						globaltags = [];
+					}
+					for (let tag of mapMod.tags) {
+						globaltags.push(tag);
+					}
+				}
 
-				KinkyDungeonPlaceEnemies(spawnPoints, false, mapMod?.tags, bonus, Floor, width, height, altType,
+				KinkyDungeonPlaceEnemies(spawnPoints, false, globaltags, bonus, Floor, width, height, altType,
 					randomFactions, factionEnemy);
 			}
 
@@ -1060,6 +1070,11 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 	let GlobalTags = [];
 	
 	KinkyDungeonAddTags(GlobalTags, Floor);
+	if (mapmodtags) {
+		for (let tag of mapmodtags) {
+			GlobalTags.push(tag);
+		}
+	}
 	// Create this number of enemies
 	while (((count < enemyCount) || (spawns.length > 0)) && tries < 10000) {
 		if (count >= enemyCount && !culledSpawns) {
@@ -1241,7 +1256,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 			}
 			if (!tagList[biome]) {
 				tagList[biome] = [];
-				let tags = Object.assign([], KinkyDungeonMapParams[KDMapData.Checkpoint]);
+				let tags = Object.assign([], KinkyDungeonMapParams[biome].enemyTags);
 				if (tags?.length > 0) {
 					// Add in any mapmod tags
 					for (let t of tags) {
