@@ -2591,6 +2591,12 @@ KillFastSlime,"The slime melts into a puddle."
 AttackFastSlime,"The sticky slime leaps and splashes against you! (DamageTaken)"
 AttackFastSlimeBind,"The slime leaps and attaches itself to your body! (+RestraintAdded)"
 
+
+NamePumpkin,Giant Pumpkin
+KillPumpkin,"The pumpkin breaks into pieces."
+NamePumpkinAngry,Giant Angry Pumpkin
+KillPumpkinAngry,"The angry pumpkin reverts into a regular pumpkin."
+
 NameBigSlime,Large Slime
 KillBigSlime,"The large slime splits apart!"
 AttackBigSlime,"The sticky slime splashes against you! (DamageTaken)"

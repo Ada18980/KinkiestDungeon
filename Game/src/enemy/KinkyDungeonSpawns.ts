@@ -1,5 +1,20 @@
 "use strict";
 
+let KDTodayDate = new Date();
+
+function KDProcessSeasonalTags(tags: string[]) {
+	
+	if ((KDTodayDate.getMonth() == 9 && KDTodayDate.getDay() > 15)
+		|| (KDTodayDate.getMonth() == 10 && KDTodayDate.getDay() < 15))
+		tags.push("halloween"); // spooky season
+	if ((KDTodayDate.getMonth() == 11 && KDTodayDate.getDay() > 0)
+		|| (KDTodayDate.getMonth() == 0 && KDTodayDate.getDay() < 15))
+		tags.push("holiday"); // candy canes and sexy santa
+	if (KDTodayDate.getMonth() == 5)
+		tags.push("pride"); // you know what that means
+	//if (KDTodayDate.getMonth() == 1)
+	//	tags.push("valentine"); // hearts and chocolate ig?
+}
 
 
 function KinkyDungeonAddTags(tags: string[], Floor: number) {
@@ -46,6 +61,8 @@ function KinkyDungeonAddTags(tags: string[], Floor: number) {
 	if (KinkyDungeonGoddessRep.Illusion > KDFRIENDLY) pleasedGoddessess.push({tag: "illusionFriendly", type: "illusion"});
 	if (KinkyDungeonGoddessRep.Will > KDPLEASED) pleasedGoddessess.push({tag: "willPleased", type: "will"});
 	if (KinkyDungeonGoddessRep.Will > KDFRIENDLY) pleasedGoddessess.push({tag: "willFriendly", type: "will"});
+
+	// seasonal stuff
 
 	for (let pair of KDFactionRelations.get("Player").entries()) {
 		if (pair[1] > 0.5) {
@@ -108,6 +125,8 @@ function KinkyDungeonAddTags(tags: string[], Floor: number) {
 		tags.push("goddessPleased");
 
 	}
+	
+	KDProcessSeasonalTags(tags);
 
 
 	// let overrideTags = [];

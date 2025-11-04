@@ -1409,6 +1409,56 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 
+
+
+		
+	{name: "Pumpkin", faction: "Natural", clusterWith: "plant", color: "#f46d24",
+		tags: KDMapInit(["nature", "nofidget", "scenery", "nonvulnerable", "minor", "inactive", "harmless", "immobile", "unstoppable", "soulimmune", 
+			"crushweakness", "unarmedresist", "pierceresist", "chainresist", "poisonimmune", "coldweakness"]), sneakthreshold: 0.6,
+		lowpriority: true,
+		nonDirectional: true,
+		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
+		visionRadius: 0, maxhp: 14, minLevel:0, weight:-4, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5, "jungle": 14, "halloween": 30},
+		floors:KDMapInit(["grv", "jng"]), shrines: ["Will"], 
+		spells: ["Entangle"], minSpellRange: 0, spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true, 
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+			alertAmount: 0,
+		},
+		GFX: {
+			lighting: true,
+		},
+		},
+
+	{name: "PumpkinAngry", faction: "Plant", clusterWith: "plant", color: "#f46d24", blockVisionWhileStationary: true,
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "minor", "melee",
+			"chainresist",
+			"crushweakness", "coldweakness", "unarmedresist", "pierceresist", "vineRestraints"]),
+		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
+		evasion: -0.5,
+		GFX: {
+			lighting: true,
+			AmbushSprite: "Pumpkin",
+		},
+		ignoreflag: ["vineplantatk"], failAttackflag: ["vineplantatk"], failAttackflagDuration: 9, failAttackflagChance: 0.4,
+		
+		maxblock: 1,
+		maxdodge: 0,
+		stamina: 1,
+		Sound: {
+			baseAmount: 0,
+			moveAmount: 0,
+			alertAmount: 0,
+			attackAmount: 2,
+		}, ondeath: [{type: "transform", inheritDamage: true, enemy: "Pumpkin"}],
+		nonDirectional: true,
+		visionRadius: 5.5, ambushRadius: 1.9, blindSight: 5, maxhp: 18, minLevel:0, weight:-4, movePoints: 3.0, attackPoints: 2,
+		attack: "Spell", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5, "jungle": 14, "halloween": 30}, floors:KDMapInit(["grv", "jng"]), shrines: ["Illusion", "Will"]},
+	
+		
 	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
 		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
@@ -6300,6 +6350,40 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 		}
 	},
 
+	
+
+	"transform": (enemy, o, mapData) => {
+		if (mapData == KDMapData) {
+			let f: entity = null;
+			let e = KinkyDungeonSummonEnemy(enemy.x, enemy.y, o.enemy, 1, 0.5, 
+				o.strict, o.lifetime, o.hidden, undefined, 
+				o.faction || KDGetFaction(enemy), 
+				!!enemy.hostile, o.minradius, o.startAware, undefined, o.hideTimer);
+			for (let en of e) {
+				if (!f) {
+					f = en;
+					f.id = enemy.id;
+					f.CustomName = enemy.CustomNameColor;
+					f.CustomNameColor = enemy.CustomNameColor;
+					f.created = enemy.created;
+					f.homeCoord = enemy.homeCoord;
+					if (o.storeTrueForm) {
+						let NPC = KDGetPersistentNPC(f.id);
+						if (NPC) {
+							NPC.trueEntity = enemy;
+						}
+					}
+					if (o.inheritDamage && enemy.hp < 0) {
+						en.hp -= -enemy.hp;
+					}
+
+				} else
+					KDProcessCustomPatron(en.Enemy, en, 0, false);
+
+			}
+		}
+
+	},
 	"summon": (enemy, o, mapData) => {
 		if (mapData == KDMapData) {
 			let f: entity = null;

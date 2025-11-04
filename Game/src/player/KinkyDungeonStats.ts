@@ -1000,10 +1000,14 @@ function KDChangeDistraction(src: string, type: string, trig: string, Amount: nu
 	}
 
 	data.amountChanged = amountChanged;
-	
+
 	if (!noEvent)
 		KinkyDungeonSendEvent("afterChangeDistraction", data);
 
+	if (Math.ceil(data.amountChanged) > 0) {
+		KinkyDungeonSetFlag("recentDistract", Math.min(10, Math.ceil(data.amountChanged)));
+	}
+	
 	if (data.amountChanged > 0) {
 		if (KDToggles.ArousalHearts)
 			for (let i = 0; i < data.amountChanged * 10 && i < 100; i++) {
@@ -1068,6 +1072,10 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 	}
 	data.amountChanged = amountChanged;
 	KinkyDungeonSendEvent("afterChangeDesire", data);
+	
+	if (Math.ceil(data.amountChanged) > 0) {
+		KinkyDungeonSetFlag("recentDesire", Math.min(10, Math.ceil(data.amountChanged)));
+	}
 
 	if (data.amountChanged > 0) {
 		if (KDToggles.ArousalHearts)
@@ -1256,7 +1264,14 @@ function KDChangeWill(src: string, type: string, trig: string, Amount: number, N
 	amountChanged = KinkyDungeonStatWill - amountChanged;
 
 	data.amountChanged = amountChanged;
+	
 	KinkyDungeonSendEvent("afterChangeWill", data);
+
+
+	if (Math.ceil(data.amountChanged) > 0) {
+		KinkyDungeonSetFlag("recentWill", Math.min(10, Math.ceil(data.amountChanged)));
+	}
+
 	return amountChanged;
 }
 
@@ -1729,7 +1744,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 
 	// Cap off the values between 0 and maximum
 	KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, distractionRate > 0 ? arousalPercent: 
-		(KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLowerDecayTo * KinkyDungeonStatDistractionMax ? -Math.min(Math.min(KinkyDungeonStatDistractionLower - 
+		((!KinkyDungeonFlags.get("recentDistract") && KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLowerDecayTo * KinkyDungeonStatDistractionMax) ? -Math.min(Math.min(KinkyDungeonStatDistractionLower - 
 			KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayTo,
 	KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayRate * delta
 		)) : 0)

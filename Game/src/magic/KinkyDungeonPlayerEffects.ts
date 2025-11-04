@@ -2050,13 +2050,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				KinkyDungeonSendTextMessage(6, TextGet("KinkyDungeonVineEngulf").KDReplaceOrAddDmg( dmg.string), KDBaseRed, 2);
 				effect = true;
 			} else {
-				let RopeDresses = ["GreenLeotard", "Lingerie"];
-				if (!RopeDresses.includes(KinkyDungeonCurrentDress) && KinkyDungeonCurrentDress != "Elven" && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
-					KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
-					KinkyDungeonDressPlayer();
-					KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonVineEngulfDress"), KDBaseRed, 3);
-					effect = true;
-				}
+				if (KDRandom() < 0.4)
+					KinkyDungeonSetFlag("vineplantatk", 12);
 				KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
 				KinkyDungeonSendTextMessage(3, TextGet("KinkyDungeonSlowedBySpell").KDReplaceOrAddDmg( dmg.string), "yellow", playerEffect.time);
 

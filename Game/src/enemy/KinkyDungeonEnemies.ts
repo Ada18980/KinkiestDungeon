@@ -7170,12 +7170,14 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						if (spell.castCondition && (!KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, enemy, spell))) spell = null;
 					} else spell = null;
 				} else if (spell?.castCondition && (KDCastConditions[spell.castCondition] && !KDCastConditions[spell.castCondition](enemy, player, spell))) spell = null;
-				let minSpellRange = (spell && spell.minRange != undefined) ? spell.minRange : 
+				let minSpellRange = enemy.Enemy.minSpellRange != undefined ? enemy.Enemy.minSpellRange : (
+					(spell && spell.minRange != undefined) ? spell.minRange : 
 					((spell
 						&& (spell.selfcast
 							|| (enemy.Enemy.selfCast && enemy.Enemy.selfCast[spell.name])
 							|| spell.buff
-							|| (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5);
+							|| (spell.range && KDGetSpellRange(spell) < 1.6))) ? 0 : 1.5)
+				);
 				if (spell && spell.heal && spelltarget.hp >= spelltarget.Enemy.maxhp) spell = null;
 				if (spell && !(!minSpellRange || (AIData.playerDist > minSpellRange))) spell = null;
 				if (spell && !(!spell.minRange || (AIData.playerDist > spell.minRange))) spell = null;
