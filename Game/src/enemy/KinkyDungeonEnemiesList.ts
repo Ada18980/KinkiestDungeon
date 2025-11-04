@@ -1421,7 +1421,6 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 0, maxhp: 14, minLevel:0, weight:-4, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5, "jungle": 14, "halloween": 30},
 		floors:KDMapInit(["grv", "jng"]), shrines: ["Will"], 
-		spells: ["Entangle"], minSpellRange: 0, spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true, 
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
@@ -1443,6 +1442,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			AmbushSprite: "Pumpkin",
 		},
 		ignoreflag: ["vineplantatk"], failAttackflag: ["vineplantatk"], failAttackflagDuration: 9, failAttackflagChance: 0.4,
+		spells: ["Entangle"], minSpellRange: 0, spellCooldownMult: 1, spellCooldownMod: 0, stopToCast: true, castWhileMoving: true, 
 		
 		maxblock: 1,
 		maxdodge: 0,

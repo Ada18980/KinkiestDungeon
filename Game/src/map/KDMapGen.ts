@@ -318,7 +318,7 @@ function KinkyDungeonCreateMap (
 			else bonus = Object.assign(Object.assign(Object.assign({}, bonus)), altType.bonusTags);
 		}
 
-		let randomFactions = KDChooseFactions(factionList, Floor, tags, bonus, true);
+		let randomFactions = KDChooseFactions(factionList, Floor, [], bonus, true);
 		let factionEnemy = randomFactions[2] || forceFaction || "Bandit";
 		if (forceFaction) {
 			KDMapData.MapFaction = forceFaction;
@@ -584,7 +584,7 @@ function KinkyDungeonCreateMap (
 			// Place enemies after player
 			if (!altType || altType.enemies) {
 
-				KinkyDungeonPlaceEnemies(spawnPoints, false, tags, bonus, Floor, width, height, altType,
+				KinkyDungeonPlaceEnemies(spawnPoints, false, mapMod?.tags, bonus, Floor, width, height, altType,
 					randomFactions, factionEnemy);
 			}
 
@@ -964,10 +964,13 @@ type SpawnBox = {
 	bias?:             number,
 }
 
-function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: string[], BonusTags: any, Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
+function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtags: string[], BonusTags: any, Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
 	KinkyDungeonHuntDownPlayer = false;
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
+
+	let tagList: Record<string, string[]> = {};
+	
 
 	let enemyCount = 4 + Math.floor(Math.sqrt(Floor) + width/10 + height/10 + Math.sqrt(KinkyDungeonDifficulty));
 	if (KinkyDungeonStatsChoice.get("Stealthy")) enemyCount = Math.round(enemyCount * KDStealthyEnemyCountMult);
@@ -1053,6 +1056,10 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 	});
 
 	let culledSpawns = false;
+
+	let GlobalTags = [];
+	
+	KinkyDungeonAddTags(GlobalTags, Floor);
 	// Create this number of enemies
 	while (((count < enemyCount) || (spawns.length > 0)) && tries < 10000) {
 		if (count >= enemyCount && !culledSpawns) {
@@ -1225,8 +1232,24 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 			if (boss) tags.push("boss");
 
 
-			KinkyDungeonAddTags(tags, Floor);
-			for (let t of Tags) {
+			for (let t of GlobalTags) {
+				tags.push(t);
+			}
+			let biome = KDMapData.Checkpoint;
+			if (KDMapData.TilesAlternate != null && KDMapData.TilesAlternate[X + ',' + Y]) {
+				biome = KDMapData.TilesAlternate[X + ',' + Y].biome || biome;
+			}
+			if (!tagList[biome]) {
+				tagList[biome] = [];
+				let tags = Object.assign([], KinkyDungeonMapParams[KDMapData.Checkpoint]);
+				if (tags?.length > 0) {
+					// Add in any mapmod tags
+					for (let t of tags) {
+						tagList[biome].push(t);
+					}
+				}
+			}
+			for (let t of tagList[biome]) {
 				tags.push(t);
 			}
 			if (randomFactions.length > 0 && !box && !currentCluster && !spawnPoint)

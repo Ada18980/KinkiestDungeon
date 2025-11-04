@@ -3100,6 +3100,7 @@ interface KDMapDataType {
 	//ShortcutPath: string,
 
 	Tiles: Record<string, any>;
+	TilesAlternate: Record<string, any>;
 	TilesSkin: Record<string, any>;
 	TilesMemory: Record<string, any>;
 	EffectTiles: Record<string, Record<string, effectTile>>;

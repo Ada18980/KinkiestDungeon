@@ -518,8 +518,10 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
 					if (cavernized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
 						KDMapData.TilesSkin[x + ',' + y] = {skin: "cav", force: true};
+						KDMapData.TilesAlternate[x + ',' + y] = {biome: "cav"};
 					} else if (naturalized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
 						KDMapData.TilesSkin[x + ',' + y] = {skin: "jngWild", force: true};
+						KDMapData.TilesAlternate[x + ',' + y] = {biome: "jngWild"};
 					}
 				}
 		},

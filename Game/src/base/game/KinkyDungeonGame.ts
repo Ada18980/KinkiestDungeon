@@ -193,6 +193,7 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 		RepopulateQueue: [],
 
 		ExpStair: {},
+		TilesAlternate: {},
 
 		SpecialAreas: [],
 		Labels: {},
