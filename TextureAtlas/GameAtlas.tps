@@ -874,6 +874,7 @@
             <key type="filename">../Game/Enemies/AnimChastity.png</key>
             <key type="filename">../Game/Enemies/AnimHarness.png</key>
             <key type="filename">../Game/Enemies/AnimLegbinder.png</key>
+            <key type="filename">../Game/Enemies/AnimPetsuit.png</key>
             <key type="filename">../Game/Enemies/AnimStraitjacket.png</key>
             <key type="filename">../Game/Enemies/AnimYoke.png</key>
             <key type="filename">../Game/Enemies/AnimatedArmor.png</key>
@@ -1230,6 +1231,8 @@
             <key type="filename">../Game/Enemies/PlayerGag.png</key>
             <key type="filename">../Game/Enemies/Poltergeist.png</key>
             <key type="filename">../Game/Enemies/PrisonerBandit.png</key>
+            <key type="filename">../Game/Enemies/Pumpkin.png</key>
+            <key type="filename">../Game/Enemies/PumpkinAngry.png</key>
             <key type="filename">../Game/Enemies/Rat.png</key>
             <key type="filename">../Game/Enemies/RedSlime.png</key>
             <key type="filename">../Game/Enemies/ResistanceDrone.png</key>
@@ -2341,6 +2344,7 @@
             <key type="filename">../Game/Items/Restraint/Tape.png</key>
             <key type="filename">../Game/Items/Restraint/Ties.png</key>
             <key type="filename">../Game/Items/Restraint/Vibes.png</key>
+            <key type="filename">../Game/Items/Restraint/Vines.png</key>
             <key type="filename">../Game/Items/Restraint/VinylTape.png</key>
             <key type="filename">../Game/Items/Restraint/WeakMagicRopes.png</key>
             <key type="filename">../Game/Items/Restraint/Yokes.png</key>
@@ -3646,6 +3650,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/DownSmall.png</key>
+            <key type="filename">../Game/UpSmall.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,9,20,18</rect>
+                <key>scale9Paddings</key>
+                <rect>10,9,20,18</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Game/GFX/Talisman.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -4050,6 +4070,22 @@
                 <rect>11,11,22,22</rect>
                 <key>scale9Paddings</key>
                 <rect>11,11,22,22</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Game/LeftSmall.png</key>
+            <key type="filename">../Game/RightSmall.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,10,18,20</rect>
+                <key>scale9Paddings</key>
+                <rect>9,10,18,20</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
