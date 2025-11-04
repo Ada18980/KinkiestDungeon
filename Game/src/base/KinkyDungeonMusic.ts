@@ -114,6 +114,13 @@ function KDGetCurrentCheckpoint() {
 	return altType?.skin ? altType.skin : (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint);
 }
 function KDGetMusicCheckpoint() {
+
+	if (KDMapData?.TilesAlternate && KinkyDungeonPlayerEntity && KDMapData.TilesAlternate[KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y]) {
+		let altTile = KDMapData.TilesAlternate[KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y];
+		if (altTile.music) return altTile.music;
+		if (altTile.biome && !altTile.nm && KinkyDungeonMapParams[altTile.biome]) return altTile.biome;
+	}
+
 	let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (altType?.musicParams) return altType.musicParams;
 	if (altType?.skin && !altType.useDefaultMusic) return altType.skin;
@@ -226,7 +233,8 @@ function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 	
 			KDLastSong = Sound;
 			KDCurrentSong = Sound;
-			KDSendMusicToast(TextGet(Sound));
+			if (TextGet(Sound))
+				KDSendMusicToast(TextGet(Sound));
 			KDNewSong = "";
 			KDMusicBusy = false;
 		} catch(error) {

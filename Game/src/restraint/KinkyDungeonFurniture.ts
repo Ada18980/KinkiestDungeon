@@ -282,6 +282,22 @@ let KDFurniture: Record<string, KDFurnitureDef> = {
 			// Nothing yet
 		}
 	},
+	"Syb": {
+		floor: "Floor",
+		sprite: "Syb",
+		restraintTag: "saddlemachine",
+		restraintSetTags: {
+			"leathercuffsSpell": 5,
+			"gagSpell": 5,
+			"harnessSpell": 5,
+			"straitjacketSpell": 3,
+			"armbinderSpell": 5,
+			
+		},
+		tickFunction: (_delta) => {
+			// Nothing yet
+		}
+	},
 	"Bed": {
 		floor: "Floor",
 		sprite: "Bed",

@@ -2812,6 +2812,25 @@ const KinkyDungeonRestraints: restraint[] = [
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
 		enemyTags: {"sarcophagus":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Sarcophagus"], ignoreSpells: true, removeOnLeash: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
+	{removePrison: true, name: "SaddleMachine", Asset: "DisplayCase", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
+		
+		Model: "SaddleMachine",
+		Filters: {
+			SarcoBack: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.06666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
+		},
+		addTag: ["ForceKneel", "NoHogtie"],
+		// TODO add incompatibleTag feature to prevent adding anything with FeetLinked or blockfeet, or forcehogtie
+		// and also make this impossible to add if those are present
+		// for now--need an event that removes if you do somehow get one of those added, and also filters it so it doesnt count as valid furniture for furniture play
+		// Should be trivial to remove unless player is wearing cuffs, in which case its lockable
+		// Conditional locking also needs to be added
+		// UGHHHHH
+		
+		tightType: "Secure",
+		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35},
+		helpChance: {"Remove": 1.0, "Pick": 0.5},
+		enemyTags: {"saddlemachine":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "SaddleMachine"], ignoreSpells: true, removeOnLeash: true,
+		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Display trap
 	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
 		DefaultLock: "Red",

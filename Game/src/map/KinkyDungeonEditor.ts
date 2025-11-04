@@ -156,6 +156,7 @@ let KDTilePalette = {
 	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
 	'IceBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "IceBase"}, jail: {type: "furniture", radius: 1}},
 	'CrystalBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "CrystalBase"}, jail: {type: "furniture", radius: 1}},
+	'Sybia-n': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "Syb"}, jail: {type: "furniture", radius: 1}},
 	'VineBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "VineBase"}, jail: {type: "furniture", radius: 1}},
 	'ShadowBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "ShadowBase"}, jail: {type: "furniture", radius: 1}},
 	'Sarco': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "Sarcophagus"}, jail: {type: "furniture", radius: 1}},

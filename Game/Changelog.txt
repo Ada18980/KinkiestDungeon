@@ -46,7 +46,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - TODO add erase map for torso against elbow and armbinder stuff
 - TODO add priority system for enemies (for actions? jobs? attacks? hm)
 
-
+- TODO add option for tiles to override the local biome
+- TODO lots of sybia-n stuff
 
 5.4.80
 - Added Progress screen which shows training status

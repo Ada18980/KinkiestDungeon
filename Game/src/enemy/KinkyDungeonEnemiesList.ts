@@ -1379,7 +1379,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		kite: 1.5,
 		stamina: 3,
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 10, minLevel:0, weight:25, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
-		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jngWild"]), shrines: ["Rope", "Will"]},
 	{name: "DragonVinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
 		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "elite", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 4, AI: "ambush", guardChance: 0,
@@ -1395,7 +1395,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 13, minLevel: 5, weight:25, movePoints: 2.3, attackPoints: 3, attack: "SpellMeleeBind", multiBind: 2,
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
-		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jngWild"]), shrines: ["Rope", "Will"]},
 	{name: "DragonFlower", faction: "Plant", clusterWith: "plant", color: "#4fd658",
 		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "melee", "minor", "scenery", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1.5, AI: "guard", guardChance: 1,
@@ -1407,7 +1407,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 2,
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 1, minLevel: 5, weight:25, movePoints: 4, attackPoints: 3, attack: "Spell", multiBind: 2,
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
-		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jngWild"]), shrines: ["Rope", "Will"]},
 
 
 
@@ -1419,8 +1419,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
 		visionRadius: 0, maxhp: 14, minLevel:0, weight:-4, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
-		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5, "jungle": 14, "halloween": 30},
-		floors:KDMapInit(["grv", "jng"]), shrines: ["Will"], 
+		terrainTags: {"passage": -50, "elf": 5, "nature": 5, "jungle": 10, "halloween": 50},
+		floors:KDMapInit(["grv", "jngWild", "cat", "cav", "cry"]), shrines: ["Will"], 
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
@@ -1456,7 +1456,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		visionRadius: 5.5, ambushRadius: 1.9, blindSight: 5, maxhp: 18, minLevel:0, weight:-4, movePoints: 3.0, attackPoints: 2,
 		attack: "Spell", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
-		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5, "jungle": 14, "halloween": 30}, floors:KDMapInit(["grv", "jng"]), shrines: ["Illusion", "Will"]},
+		terrainTags: {"passage": -50, "elf": 5, "nature": 5, "jungle": 10, "halloween": 30}, floors:KDMapInit(["grv", "jngWild", "jng", "cat", "cav", "cry"]), shrines: ["Illusion", "Will"]},
 	
 		
 	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
@@ -1478,7 +1478,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		nonDirectional: true,
 		visionRadius: 3, ambushRadius: 1.9, blindSight: 5, maxhp: 10, minLevel:0, weight:25, movePoints: 1.5, attackPoints: 2, attack: "MeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
-		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jngWild", "jng"]), shrines: ["Rope", "Will"]},
 	{name: "Bramble", faction: "Plant", clusterWith: "plant", color: "#4fd658", hitsfx: "DealDamage",
 		sneakthreshold: 0.6,
 		nonDirectional: true,
@@ -1496,7 +1496,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		tags: KDMapInit(["removeDoorSpawn", "immobile", "blindresist", "nature", "nosignalothers", "plant", "minor", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
 		evasion: -9, ignorechance: 1.0, armor: 1.5, followRange: 1, AI: "wander", specialCD: 2, specialAttack: "Slow", specialAttackPoints: 1,
 		visionRadius: 1.5, blindSight: 1.5, maxhp: 16, minLevel:0, weight:-80, movePoints: 99999, attackPoints: 1, attack: "MeleeWill", attackWidth: 8, attackRange: 1, power: 1, dmgType: "pain",
-		terrainTags: {"passage": -50, "adjChest": -50, "door": -50, "open": 140, "elf": 10}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
+		terrainTags: {"passage": -50, "adjChest": -50, "door": -50, "open": 140, "elf": 10}, floors:KDMapInit(["jngWild", "jng"]), shrines: ["Rope", "Will"]},
 
 	{name: "Alchemist", outfit: "Alchemist", style: "GreenHair", faction: "Alchemist", clusterWith: "alchemist", playLine: "Alchemist", bound: "Alchemist", color: "#50a968",
 		tags: KDMapInit(["opendoors", "leashing", "imprisonable", "guardCall", "human", "alchemist", "ranged", "latexRestraints", "handcuffer",
@@ -3323,7 +3323,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
-		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
+		terrainTags: {}, floors:KDMapInit(["cry", "jngWild", "cav"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0,
@@ -4264,7 +4264,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 0,
 		spells: ["PoisonDragonBlast", "EnemyCM1"], unlockCommandLevel: 1, unlockCommandCD: 90, spellCooldownMult: 1, spellCooldownMod: -2, tilesMinRange: 1, stopToCast: true, kite: 1.5,
 		visionRadius: 6, maxhp: 10, minLevel:7, weight:5, movePoints: 1, attackPoints: 3, attack: "SpellMeleeBind", attackWidth: 3, attackRange: 1, power: 2, dmgType: "tickle", fullBoundBonus: 2, hitsfx: "Tickle",
-		terrainTags: {"secondhalf":3, "thirdhalf":4}, shrines: ["Will"], floors:KDMapInit(["jng"]), noOverrideFloor: true,
+		terrainTags: {"secondhalf":3, "thirdhalf":4}, shrines: ["Will"], floors:KDMapInit(["jngWild"]), noOverrideFloor: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 20, weight: 12}, {name: "WaterRune", weight: 4}]},
 
 	{name: "ElfRanger", nameList: "elf", outfit: "Elven", style: "Elf", faction: "Elf", clusterWith: "nature", bound: "ElfRanger", playLine: "Elf", color: "#67ff44",
@@ -5418,7 +5418,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"rubble":20, "increasingWeight":-5}, floors:KDMapInit(["grv"])},
 	{name: "Bat", faction: "Beast", tags: KDMapInit(["ignorenoSP", "beast", "darkvision", "melee", "minor", "chainresist", "flying"]), followRange: 1, AI: "guard", squeeze: true, ethereal: true,
 		visionRadius: 4, maxhp: 1, evasion: 0.5, minLevel:0, weight:4, movePoints: 1, attackPoints: 1, attack: "MeleeWill", attackWidth: 1, attackRange: 1, power: 1, dmgType: "pain",
-		terrainTags: {"rubble":20, "increasingWeight":-5}, floors:KDMapInit(["jng"])},
+		terrainTags: {"rubble":20, "increasingWeight":-5}, floors:KDMapInit(["jngWild", "cav"])},
 
 	{name: "Apprentice", nameList: "witch", outfit: "ApprenticeBlue", style: "Air", faction: "Apprentice", color: "#9563ff", spellWhileParole: true, bound: "Apprentice", playLine: "Apprentice",
 		tags: KDMapInit(["leashing", "mage", "opendoors", "rope", "binding",

@@ -518,10 +518,10 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 				for (let y = 0; y < KDMapData.GridHeight-1; y++) {
 					if (cavernized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
 						KDMapData.TilesSkin[x + ',' + y] = {skin: "cav", force: true};
-						KDMapData.TilesAlternate[x + ',' + y] = {biome: "cav"};
+						KDMapData.TilesAlternate[x + ',' + y] = {biome: "cav", nm: true};
 					} else if (naturalized[x + ',' + y] && !KDMapData.TilesSkin[x + ',' + y]) {
 						KDMapData.TilesSkin[x + ',' + y] = {skin: "jngWild", force: true};
-						KDMapData.TilesAlternate[x + ',' + y] = {biome: "jngWild"};
+						KDMapData.TilesAlternate[x + ',' + y] = {biome: "jngWild", nm: true};
 					}
 				}
 		},
@@ -574,7 +574,109 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 		factionList: ["Bandit", "Elf", "Bast", "Elemental", "Dragon", "Alchemist"],
 
-		enemyTags: ["plant", "jungle", "slime", "earth", "explosiveBarrel"],
+		enemyTags: ["plant", "slime", "earth", "explosiveBarrel"],
+		globalEnemyTags: ["jungle"],
+		"defeat_outfit": "LatexPrisoner",
+		"shrines": [
+			{Type: "Latex", Weight: 5},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 5},
+			{Type: "Conjure", Weight: 5},
+			{Type: "Illusion", Weight: 5},
+			{Type: "Leather", Weight: 5},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 5},
+			{Type: "Will", Weight: 13},]
+	},
+
+	"jngWild":{//DungeonName2,-Underground Jungle-
+		curseTags: ["trap", "latexRestraints", "mithrilCuffs"],
+		successorNegative: {
+			cav: 1.0,
+		},
+		successorPositive: {
+			jngWild: 1,
+		},
+		successorSame: {
+			jng: 1,
+		},
+		color: "#33db5dff",
+		"background" : "DeepForest",
+		noReplace: "b",
+		"openness" : 1,
+		"density" : 1,
+		"crackchance" : 0.15,
+		"barchance" : 0.05,
+		"brightness" : 6,
+		"chestcount" : 7,
+		"shrinecount" : 14,
+		"shrinechance" : 0.4,
+		"ghostchance" : 0.5,
+		"doorchance" : 0.2,
+		"nodoorchance" : 0.4,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.4,
+		"grateChance" : 0.1,
+		"rubblechance" : 0.25,
+		"brickchance" : 0.25,
+		"cacheInterval" : 1,
+		"forbiddenChance" : 0.72,
+		"forbiddenGreaterChance" : 0.33,
+		torchchance: 0.2,
+		torchchanceboring: 0.25,
+
+		
+
+		tagModifiers: {
+			"open": 6,
+			"door": 0.5,
+			"jungle": 100,
+			"cavern": 60,
+			"temple": 5,
+		},
+
+		music: {
+			"AREA5-UNDERGROUNDJUNGLE.ogg": 10,
+		},
+
+		"setpieces": [
+			{Type: "Altar", Weight: 6},
+			{Type: "SmallAltar", Weight: 20},
+			{Type: "GuardedChest", Weight: 30},
+			{Type: "LargeGuardedChest", Weight: 20},
+			{Type: "JungleLight", Weight: 8},
+			{Type: "Fireflies", Weight: 40},
+		],
+
+		"traps": [
+			{Name: "CustomVine", Level: 0, Power: 1, Weight: 30},
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapRopeWeak", Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapLeatherWeak", Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapLustCloud", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
+			{Name: "SpecificSpell", Spell: "TrapLinks", Level: 4, Power: 1, Weight: 40},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "VinePlant"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 1, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "VinePlant"},
+		],
+
+		"min_width" : 5,
+		"max_width" : 7,
+		"min_height" : 5,
+		"max_height" : 7,
+
+		factionList: ["Bandit", "Elf", "Bast", "Elemental", "Dragon", "Alchemist"],
+
+		enemyTags: ["plant", "jungle", "slime", "earth", "nature"],
+		
 		"defeat_outfit": "LatexPrisoner",
 		"shrines": [
 			{Type: "Latex", Weight: 5},

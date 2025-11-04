@@ -21,6 +21,7 @@ let TileTypeTooltipOverride = {
 		Sarcophagus: "Sarcophagus",
 		IceBase: "IceBase",
 		CrystalBase: "CrystalBase",
+		Syb: "Syb",
 		ShadowBase: "ShadowBase",
 		VineBase: "VineBase",
 	},

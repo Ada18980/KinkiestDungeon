@@ -3523,6 +3523,7 @@ KinkyDungeonPayShrineCommerce,"You leave the coins on the altar and they transfo
 
 KDEffectTileTooltipBarrel,Barrel
 KDEffectTileTooltipDisplayStand,Display Stand
+KDEffectTileTooltipSyb,Vibrating Saddle
 KDEffectTileTooltipCage,Cage
 KDEffectTileTooltipIceBase,Icy Platform
 KDEffectTileTooltipCrystalBase,Crystal Dais
@@ -30794,6 +30795,7 @@ AREA5-UNDERGROUNDJUNGLE.ogg,Kocaeli - Underground Jungle
 AREA6-CRYSTALCAVE.ogg,Kocaeli - Crystal Cave
 UntitledRobot.ogg,Kocaeli - Untitled
 AREA7-LOSTTEMPLE.ogg,Kocaeli - Lost Temple
+AREA7-LOSTTEMPLE-AMBIENT.ogg,""
 AREA8-ORRERY.ogg,Kocaeli - Orrery
 AREA9-BELLOWS.ogg,Kocaeli - Bellows
 AREA10-WEEPINGGARDEN.ogg,Kocaeli - Orrery
