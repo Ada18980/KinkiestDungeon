@@ -256,6 +256,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonStat
 # :: KinkyDungeonStatDesc
 # :: ResistType
+# :: AREA7-LOSTTEMPLE-AMBIENT.ogg
 # :: KDHardMode0
 # :: KDMinimapLabel_+
 # :: KDMinimapLabel_=
@@ -5304,6 +5305,12 @@ M.F. '女仆长'
 - The slime leaps and attaches itself to your body! (+RestraintAdded)
 粘液跳跃并附着在你的身体上！ ( +RestraintAdded )
 
+
+# - Giant Pumpkin
+# - The pumpkin breaks into pieces.
+# - Giant Angry Pumpkin
+# - The angry pumpkin reverts into a regular pumpkin.
+
 - Large Slime
 大粘液团
 - The large slime splits apart!
@@ -7074,6 +7081,7 @@ SCHOOL 女神给予你庇护和反击之力！
 展示架
 # :: KDEffectTileTooltipDisplayStand
 # :: RestraintDisplayTrap
+# - Vibrating Saddle
 - Cage
 笼子
 # :: KDEffectTileTooltipCage
