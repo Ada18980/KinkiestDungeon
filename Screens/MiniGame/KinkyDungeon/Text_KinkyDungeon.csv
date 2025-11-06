@@ -58,6 +58,7 @@ KDToggle,Show Training in Buffs List
 KDToggleMMLabels,Show Minimap Labels
 KDToggleAutoLoot,Auto loot all from chests
 KDToggleNoOutfitPalette,Don't Use Outfit Palettes
+KDToggleTrainingBuff,Show Training level in buffs and stats
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
@@ -114,6 +115,7 @@ KDToggleIntenseOrgasm,Intense 'Let Go' VFX
 KDToggleVibeSounds,Enable Toy SFX
 KDToggleFullscreen,Enable Fullscreen
 KDToggleHighResDisplacement,Hi-Res Distortion (Needs Restart)
+KDToggleMobileTextures,Low-Res Textures (Needs Restart)
 KDToggleHiResModel,Hi-Res Model (no restart needed)
 KDToggleGraphicsQuality,High Quality Animations
 KDToggleEnemyAnimations,Enemy Animations
@@ -12117,7 +12119,7 @@ rOfferChastityForce,"(The SPEAKER rubs the smooth metal seductively)|Are you sur
 rOfferChastityForceYes,"(The SPEAKER gives an evil smile)|What if I wasn't asking?"
 rOfferChastityForce_No,"(The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~"
 rOfferChastityForce_Yes,"(The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~"
-rOfferChastityForce_Failure,"(As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~"
+rOfferChastityForce_Failure,"(As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|Whoops! I guess I acted too soon.|Ah well~"
 rOfferChastityGlow,"(The lock on the RESTRAINT starts glowing...)"
 
 dOfferChastity_Yes,"Protection? Certainly!"
@@ -12148,7 +12150,7 @@ rOfferCursedForce,"(The SPEAKER frowns angrily)|Look, we all know how much you e
 rOfferCursedForceYes,"(The SPEAKER pleads with you)|...point taken. But still!|I'll end up stuck in it for a really long time..."
 rOfferCursedForce_No,"(The SPEAKER sighs and wears it herself)|(The lock starts glowing brightly...)"
 rOfferCursedForce_Yes,"(The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!"
-rOfferCursedForce_Failure,"(As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|I'm sorry miss! It was my only choice~"
+rOfferCursedForce_Failure,"(As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|I'm sorry miss! It was my only choice~"
 rOfferCursedGlow,"(The lock on the RESTRAINT starts glowing...)"
 
 dOfferCursed_Yes,"I would love to help!"
@@ -27173,6 +27175,53 @@ m_GothicSkirtLace_l_HemLowerOver,HemLowerOver
 m_GothicSkirtLace_l_LaceLowerOver,LaceLowerOver
 m_GothicSkirtLace_l_LaceUpperOver,LaceUpperOver
 
+m_PumpkinVineArms,PumpkinVineArms
+m_PumpkinVineArms_l_Vines,Vines
+m_PumpkinVineArms_l_Vines,Vines
+m_PumpkinVineArms_l_Vines,Vines
+m_PumpkinVineArms_l_Vines,Vines
+m_PumpkinVineArms_l_Flower,Flower
+m_PumpkinVineArms_l_Flower,Flower
+m_PumpkinVineArms_l_Bud,Bud
+m_PumpkinVineArms_l_Bud,Bud
+m_PumpkinVineArms_l_Flower,Flower
+m_PumpkinVineArms_l_Bud,Bud
+m_PumpkinVineLegs,PumpkinVineLegs
+m_PumpkinVineLegs_l_Vines,Vines
+m_PumpkinVineLegs_l_Vines,Vines
+m_PumpkinVineLegs_l_Flower,Flower
+m_PumpkinVineLegs_l_Bud,Bud
+m_PumpkinVineLegs_l_Flower,Flower
+m_PumpkinVineLegs_l_Bud,Bud
+m_PumpkinVineFeet,PumpkinVineFeet
+m_PumpkinVineFeet_l_Vines,Vines
+m_PumpkinVineFeet_l_Vines,Vines
+m_PumpkinVineFeet_l_Flower,Flower
+m_PumpkinVineFeet_l_Bud,Bud
+m_PumpkinVineFeet_l_Flower,Flower
+m_PumpkinVineFeet_l_Bud,Bud
+m_PumpkinVineHarness,PumpkinVineHarness
+m_PumpkinVineHarness_l_Vine,Vine
+m_PumpkinVineHarness_l_Vine,Vine
+m_PumpkinVineHarness_l_VineMIddle,VineMIddle
+m_PumpkinVineHarness_l_LeafL,LeafL
+m_PumpkinVineHarness_l_LeafR,LeafR
+m_PumpkinVineHarness_l_Flower,Flower
+m_PumpkinVineHarness_l_FlowerL,FlowerL
+m_PumpkinVineHarness_l_FlowerR,FlowerR
+m_PumpkinVineHarness_l_BudL,BudL
+m_PumpkinVineHarness_l_BudR,BudR
+m_FashionPumpkinVineHarness,FashionPumpkinVineHarness
+m_FashionPumpkinVineHarness_l_Vine,Vine
+m_FashionPumpkinVineHarness_l_Vine,Vine
+m_FashionPumpkinVineHarness_l_VineMIddle,VineMIddle
+m_FashionPumpkinVineHarness_l_LeafL,LeafL
+m_FashionPumpkinVineHarness_l_LeafR,LeafR
+m_FashionPumpkinVineHarness_l_Flower,Flower
+m_FashionPumpkinVineHarness_l_FlowerL,FlowerL
+m_FashionPumpkinVineHarness_l_FlowerR,FlowerR
+m_FashionPumpkinVineHarness_l_BudL,BudL
+m_FashionPumpkinVineHarness_l_BudR,BudR
 
 
 m_Aura_Bang,Aura_Bang
@@ -32886,3 +32935,5 @@ KDAnyLevel,Any Level
 
 KDProgressTag_TrHeels_LeashWalk,Went on a leash walk:
 KDProgressTagDesc_Level,Training Level ${Level}
+
+KDOptionFilter,"Filter Toggles:"

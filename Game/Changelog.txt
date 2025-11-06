@@ -49,7 +49,13 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - TODO add option for tiles to override the local biome
 - TODO lots of sybia-n stuff
 
+
+
+- Added low-resolution textures setting. Try this if your game crashes after some time.
+
 5.4.80
+- Added low-resolution textures setting. Try this if your game crashes after some time.
+- Added filter in options menu
 - Added Progress screen which shows training status
 - Added option to hide training buffs in stats view
 - Clicking training icon in stats menu opens progress menu
@@ -79,6 +85,7 @@ Bugfix
 - Fixed cursed item transformation (e.g. stardust curse) removing linked items unintentionally
 - Fixed leather harness color
 - Fixed a bug where summit progress didnt get saved properly on advancing a floor
+- Fixed bug where masterwork restraints would not always apply the collar first if possible
 
 5.4.78
 - Fixed a bug where save code never appears!!

@@ -2985,7 +2985,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 	let YYspacing = spriteSize + 1;
 	let currCategory = "";
 	let tooltip = false;
-	let tooltipY = 700;
+	let tooltipY = side ? 25 : 800;
 
 	//if (Object.values(statsDraw).length > 0 || KDToggleShowAllBuffs)
 	if (DrawButtonKDEx("toggleShowAllBuffs", (_bdata) => {
@@ -2999,7 +2999,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[11]),
 		hotkeyPress: KinkyDungeonKeyToggle[11],
 	})) {
-		DrawTextFitKD(TextGet("KDExpandBuffs"), minXX, tooltipY, 1000, KDBaseWhite, KDBaseBlack, 22, "left", 160, 1.0, 8);
+		DrawTextFitKD(TextGet("KDExpandBuffs"), side ? (minXX + 70) : minXX, tooltipY, 1000, KDBaseWhite, KDBaseBlack, 22, (!side) ? "right" : "left", 160, 1.0, 8);
 		tooltip = true;
 	}
 

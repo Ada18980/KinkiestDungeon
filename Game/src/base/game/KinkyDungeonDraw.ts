@@ -2195,6 +2195,7 @@ function KinkyDungeonDrawGame() {
 			}, true, 975, 450, 260, 64, TextGet("GameConfigKeys"), KDBaseWhite, "");*/
 			DrawButtonKDEx("GameToggles", () => {
 				KinkyDungeonState = "Toggles";
+				KDOptionFilter = "";
 				return true;
 			}, true, 1265, 450, 260, 64, TextGet("GameToggles"), KDBaseWhite, "");
 

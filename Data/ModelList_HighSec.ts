@@ -480,7 +480,7 @@ AddModel({
 			MorphPoses: {KneelClosed: "Kneel"},
 
 		},
-		{ Name: "SkirtStraps", Layer: "WrappingTorsoLower", Pri: -34.5,
+		/*{ Name: "SkirtStraps", Layer: "WrappingTorsoLower", Pri: -34.5,
 			NoOverride: true,
 			Invariant: true,
 			TieToLayer: "Skirt",
@@ -491,7 +491,7 @@ AddModel({
 			Invariant: true,
 			TieToLayer: "Skirt",
 			InheritColor: "Hardware",
-		},
+		},*/
 
 
 		{ Name: "Legbinder", Layer: "LegbinderLegsOver", Pri: -40,
@@ -527,7 +527,7 @@ AddModel({
 
 		},
 
-
+		/*
 		{ Name: "StrapsLegbinder", Layer: "LegbinderLegsOver", Pri: -34.5,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
@@ -569,7 +569,7 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "Legbinder",
 			InheritColor: "Hardware",
-		},
+		},*/
 	])
 });
 

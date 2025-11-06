@@ -1,0 +1,157 @@
+{"frames": {
+
+"Models/Slayer/CapeShoulderLeftYoked.png":
+{
+	"frame": {"x":3,"y":55,"w":70,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":333,"y":203,"w":70,"h":41},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Slime/FootRightKneel.png":
+{
+	"frame": {"x":78,"y":3,"w":37,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":162,"y":427,"w":37,"h":50},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/SteelCuffBands/ArmRightHardwareFree.png":
+{
+	"frame": {"x":3,"y":229,"w":55,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":185,"y":310,"w":55,"h":68},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/SteelCuffs/RimWristLeftFront.png":
+{
+	"frame": {"x":76,"y":109,"w":37,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":309,"y":270,"w":37,"h":29},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/SteelCuffs/RimWristRightFront.png":
+{
+	"frame": {"x":76,"y":142,"w":37,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":235,"y":269,"w":37,"h":29},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/TapeLight/HandRightYoked.png":
+{
+	"frame": {"x":3,"y":354,"w":50,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":147,"y":154,"w":50,"h":43},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/TapeMed/HandLeftYoked.png":
+{
+	"frame": {"x":3,"y":301,"w":50,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":426,"y":143,"w":50,"h":49},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/TapeMed/HandRightYoked.png":
+{
+	"frame": {"x":57,"y":331,"w":50,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":147,"y":148,"w":50,"h":49},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Uniform/ArmRightFree.png":
+{
+	"frame": {"x":3,"y":172,"w":69,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":178,"y":300,"w":69,"h":53},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Uniform/FootSockRightKneel.png":
+{
+	"frame": {"x":76,"y":175,"w":35,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":162,"y":428,"w":35,"h":48},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Warrior/ForeGloveRightFront.png":
+{
+	"frame": {"x":62,"y":259,"w":55,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":238,"y":229,"w":55,"h":68},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Warrior/GloveRightFree.png":
+{
+	"frame": {"x":3,"y":100,"w":69,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":268,"w":69,"h":68},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Warrior/RimGloveLeftFree.png":
+{
+	"frame": {"x":76,"y":227,"w":35,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":394,"y":371,"w":35,"h":28},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Warrior/RimGloveRightFree.png":
+{
+	"frame": {"x":57,"y":384,"w":31,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":299,"w":31,"h":36},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Witch/ShoeLeftKneelClosed.png":
+{
+	"frame": {"x":3,"y":3,"w":71,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":376,"y":465,"w":71,"h":48},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/Witch/ShoeRightKneel.png":
+{
+	"frame": {"x":77,"y":57,"w":37,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":160,"y":428,"w":37,"h":48},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/WolfCatsuit/RimGloveLeftFree.png":
+{
+	"frame": {"x":76,"y":227,"w":35,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":394,"y":371,"w":35,"h":28},
+	"sourceSize": {"w":620,"h":877}
+},
+"Models/WolfCatsuit/RimGloveRightFree.png":
+{
+	"frame": {"x":57,"y":384,"w":31,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":299,"w":31,"h":36},
+	"sourceSize": {"w":620,"h":877}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "atlasmobileC3.webp",
+	"format": "RGBA8888",
+	"size": {"w":120,"h":423},
+	"scale": "0.25",
+	"related_multi_packs": [ "atlasmobileC0.json", "atlasmobileC1.json", "atlasmobileC2.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:b5b3e24d19ee80e6b618c53d76f2571c:aa9bafd3ac49e5257af39ab82ee3f7cd:92222ca4e2784467c8402ff32fc6d7b2$"
+}
+}

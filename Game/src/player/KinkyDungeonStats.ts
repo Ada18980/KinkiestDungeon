@@ -1743,12 +1743,18 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if ((!sleepRate || sleepRate <= 0) && KinkyDungeonSleepiness > 0) KinkyDungeonSleepiness = Math.max(0, KinkyDungeonSleepiness - delta);
 
 	// Cap off the values between 0 and maximum
-	KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, distractionRate > 0 ? arousalPercent: 
-		((!KinkyDungeonFlags.get("recentDistract") && KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLowerDecayTo * KinkyDungeonStatDistractionMax) ? -Math.min(Math.min(KinkyDungeonStatDistractionLower - 
-			KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayTo,
-	KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayRate * delta
-		)) : 0)
-	);
+	if (Math.abs(distractionRate) > 0.0001) {
+		KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, arousalPercent);
+	} else {
+		let amt = ((!KinkyDungeonFlags.get("recentDistract") && KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLowerDecayTo * KinkyDungeonStatDistractionMax) ? -Math.min(Math.min(KinkyDungeonStatDistractionLower - 
+				KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayTo,
+		KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayRate * delta
+			)) : 0);
+		if (amt < 0)
+			KDChangeDesire("player", "decay","tick", 
+					amt * (0.25) / (0.25 + KinkyDungeonChastityMult()), true)
+	}
+	
 	if (sleepRegenDistraction > 0 && KDGameData.SleepTurns > 0) {
 		KinkyDungeonStatDistractionLower -= sleepRegenDistraction*delta;
 	} else {

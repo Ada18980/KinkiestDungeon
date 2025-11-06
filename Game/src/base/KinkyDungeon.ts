@@ -5,6 +5,8 @@ let KDENABLEDISCORDSYNC = false;
 
 let KDGenMapCallback: () => string = null;
 
+let KDOptionFilter = "";
+
 
 // Modders look here!
 /**
@@ -201,204 +203,7 @@ let KDClothesToggles = [
 	{name: "NoOutfitPalette"},
 ];
 
-let KDToggles = {
-	SoundOffWhenMin: true,
-	SpellBook: false,
-	ShowRestraintOnHover: false,
-	HiResModel: false,
-	Fullscreen: false,
-	SkipIntro: false,
-	SkipTutorial: false,
-	VibeSounds: true,
-	Music: true,
-	Sound: true,
-	//HighResDisplacement: false,
-	//OptRender: false,//!CommonIsMobile, // experimental, for now
-	Bloom: true,
-	StunFlash: true,
-	ParticlesFX: true,
-	ArousalHearts: true,
-	VibeHearts: true,
-	GagParticles: true,
-	FancyWalls: true,
-	FancyShadows: true,
-	LightmapFilter: true,
-	EnemyAnimations: true,
-	RetroAnim: false,
-	DrawArmor: true,
-	DynamicArmor: false,
-	HideFloatingWeapon: false,
-	CrotchRopeOption: false,
-	ChastityOption: false,
-	ChastityOption2: false,
-	ChastityBraOption: false,
-	SimpleColorPicker: true,
-	PaletteColorPicker: false,
-	TransparentUI: false,
-	Center: false,
-	TurnCounter: false,
-	ShowNPCStatuses: true,
-	ShowSpellRange: true,
-	ForceWarnings: false,
-	//Drool: true,
-	EnableMinimap: true,
-	BuffSide: true,
-	ShowPath: true,
-	ShowFacing: false,
-	ShowSameCatSpells: true,
-	PlayerAura: false,
-	EnemyAura: true,
-	OutlineAura: true,
-	GreyscaleBlindness: true,
-	NearestNeighbor: true,
-	LazyWalk: false,
-	ShiftLatch: true,
-	Nipples: false,
-	NippleToysOption: false,
-	NippleToysHide: false,
-	NipplePiercingsHide: false,
-	//AutoCrouchOnTrip: true,
-	FlipStatusBars: false,
-	ForcePalette: true,
-	RestraintPalette: true,
-	AutoLoadMods: false,
-	FlipPlayer: true,
-	FlipPlayerAuto: false,
-	Helper: true,
-	FastFloaters: false,
-	NoDmgFloaters: false,
-	NoForceGreet: false,
-	StruggleBars: true,
-	ShowJailedNPCSprites: true,
-	ShowZoom: true,
-	Backgrounds: true,
-	RawDP: false,
-	OnlySelfQuickInv: false,
-	OverrideOutfit: false,
-	SaveOutfit: true,
-	ModCompat: false,
 
-	ApplyPaletteRestraint: true,
-	//ApplyPaletteOutfit: true,
-	ApplyPaletteTransform: true,
-	NoOutfitPalette: false,
-
-	IgnoreApplyCharPalette: true,
-	AlwaysApplyCharPalette: true,
-	DefaultApplyCharPalette: false,
-	Autoloot: true,
-
-	OScreenFilter: true,
-	DistractScreenFilter: true,
-	MMLabels: true,
-
-	HideArmorWardrobe: false,
-
-	BindPercent: true,
-
-	AutoWaitDelayed: true,
-	FastMovePassable: true,
-	FastMoveDoors: true,
-	ExtraTooltipHeight: false,
-	ExtraTooltipCycle: true,
-	ShowExtraStruggle: false,
-	InvLimit: true,
-	Headpats: false,
-	ExtraBuffRow: true,
-	StruggleContext: false,
-	TrainingBuff: true,
-};
-
-
-let KDToggleCategories = {
-	StruggleContext: "UI",
-	Headpats: "Clothes",
-	ExtraBuffRow: "UI",
-	ShowExtraStruggle: "UI",
-	ExtraTooltipHeight: "UI",
-	ExtraTooltipCycle: "UI",
-	FastMovePassable: "UI",
-	FastMoveDoors: "UI",
-	MMLabels: "UI",
-	RawDP: "UI",
-	Backgrounds: "GFX",
-	ShowZoom: "UI",
-	ShowJailedNPCSprites: "GFX",
-	StruggleBars: "UI",
-	SpellBook: "UI",
-	FastFloaters: "UI",
-	NoDmgFloaters: "UI",
-	RetroAnim: "GFX",
-	HiResModel: "GFX",
-	HighResDisplacement: "GFX",
-	OptRender: "GFX",
-	Bloom: "GFX",
-	StunFlash: "UI",
-	ParticlesFX: "GFX",
-	ArousalHearts: "Clothes",
-	VibeHearts: "Clothes",
-	GagParticles: "Clothes",
-	FancyWalls: "GFX",
-	FancyShadows: "GFX",
-	LightmapFilter: "GFX",
-	EnemyAnimations: "GFX",
-	DrawArmor: "Clothes",
-	CrotchRopeOption: "Clothes",
-	ChastityOption: "Clothes",
-	ChastityOption2: "Clothes",
-	ChastityBraOption: "Clothes",
-	SimpleColorPicker: "Clothes",
-	Nipples: "Clothes",
-	NippleToysOption: "Clothes",
-	NippleToysHide: "Clothes",
-	NipplePiercingsHide: "Clothes",
-	TransparentUI: "UI",
-	Center: "UI",
-	TurnCounter: "UI",
-	ShowNPCStatuses: "UI",
-	ShowSpellRange: "UI",
-	ForceWarnings: "UI",
-	//Drool: true,
-	EnableMinimap: "UI",
-	NoForceGreet: "UI",
-	BuffSide: "UI",
-	ShowPath: "UI",
-	ShowFacing: "UI",
-	ShowSameCatSpells: "UI",
-	PlayerAura: "UI",
-	EnemyAura: "UI",
-	OutlineAura: "UI",
-	NearestNeighbor: "GFX",
-	Helper: "UI",
-	FlipStatusBars: "UI",
-	ShowRestraintOnHover: "UI",
-	ForcePalette: "Clothes",
-	RestraintPalette: "Clothes",
-	//LazyWalk: "Controls",
-	//ShiftLatch: "Controls",
-	FlipPlayer: "Clothes",
-	FlipPlayerAuto: "Clothes",
-	GreyscaleBlindness: "GFX",
-	DynamicArmor: "Clothes",
-	OnlySelfQuickInv: "UI",
-	HideFloatingWeapon: "Clothes",
-
-	ApplyPaletteRestraint: "none",
-	//ApplyPaletteOutfit: "none",
-	ApplyPaletteTransform: "none",
-	NoOutfitPalette: "none",
-
-	PaletteColorPicker: "none",
-
-	IgnoreApplyCharPalette: "none",
-	AlwaysApplyCharPalette: "none",
-	DefaultApplyCharPalette: "none",
-	Autoloot: "UI",
-	TrainingBuff: "UI",
-	HideArmorWardrobe: "none",
-	BindPercent: "UI",
-	AutoWaitDelayed: "UI",
-};
 
 // endregion
 
@@ -1743,6 +1548,7 @@ function KinkyDungeonRun() {
 
 	KDLastButtonsCache = KDButtonsCache;
 	KDButtonsCache = {};
+	KDHoldButtonsCache = {};
 	KDUpdateVibeSounds();
 	KDUpdateMusic();
 
@@ -2030,6 +1836,7 @@ function KinkyDungeonRun() {
 			}
 			DrawButtonKDEx("GameToggles", () => {
 				KinkyDungeonState = "Toggles";
+				KDOptionFilter = "";
 				return true;
 			}, true, 1000-350/2, 600, 350, 64, TextGet("GameToggles"), KDBaseWhite, "");
 
@@ -3303,6 +3110,17 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "Toggles") {
 		KDDrawToggleTabs(500);
 
+		DrawTextFitKD(
+			TextGet("KDOptionFilter"),
+			700, 890, 300, KDBaseWhite, KDTextGray0, 18, "center");
+		let TF = KDTextField("OptionFilter", 550, 910,  300, 45, "text", "", "45");
+		if (TF.Created) {
+			KDOptionFilter = "";
+			TF.Element.oninput = (_event: any) => {
+				KDOptionFilter = ElementValue("OptionFilter");
+			};
+		}
+
 		if (KDToggleTab == "Keybindings") {
 			// Draw temp start screen
 			DrawButtonKDEx("KBBack", () => {
@@ -3349,6 +3167,9 @@ function KinkyDungeonRun() {
 			let xpad = 15;
 
 			for (let key of Object.keys(KDDefaultKB)) {
+				let txt = KDOptionFilter ? TextGet("KinkyDungeonKey" + key).toLocaleLowerCase() : "";
+
+				if (KDOptionFilter != "" && !(txt == KDOptionFilter.toLocaleLowerCase() || txt.includes(KDOptionFilter.toLocaleLowerCase())))continue;
 				DrawButtonKDEx("KB" + key, () => {KinkyDungeonKeybindingsTemp[key] = KinkyDungeonKeybindingCurrentKey; return true;}, KinkyDungeonKeybindingCurrentKey != '',
 					X, Y, dX, dY, TextGet("KinkyDungeonKey" + key) + ": '" + (KinkyDungeonKeybindingsTemp[key]) + "'",
 					KinkyDungeonKeybindingsTemp[key] == KinkyDungeonKeybindingCurrentKey ? KDBaseWhite : "#aaaaaa", "", undefined, undefined, true, KDButtonColor);
@@ -3379,6 +3200,9 @@ function KinkyDungeonRun() {
 			//MainCanvas.textAlign = "left";
 			for (let toggle of toggles.filter((tog) => {return KDToggleCategories[tog] == KDToggleTab || (!KDToggleCategories[tog] && KDToggleTab == "Main");})) {
 				// Draw temp start screen
+				let txt = KDOptionFilter ? TextGet("KDToggle" + toggle).toLocaleLowerCase() : "";
+				
+				if (KDOptionFilter != "" && !(txt == KDOptionFilter.toLocaleLowerCase() || txt.includes(KDOptionFilter.toLocaleLowerCase())))continue;
 				DrawCheckboxKDEx("toggle" + toggle, () => {
 					KDToggles[toggle] = !KDToggles[toggle];
 					KDSaveToggles();
@@ -3505,9 +3329,11 @@ function KinkyDungeonRun() {
 				if (KinkyDungeonGameFlag) {
 					KinkyDungeonState = "Game";
 				} else KinkyDungeonState = "Menu";
+				
+				KDOptionFilter = "";
 				//ServerAccountUpdate.QueueData({ KinkyDungeonKeybindings: KinkyDungeonKeybindings });
 				return true;
-			}, true, 975, 880, 550, 64, TextGet("GameReturnToMenuFromOptions"), KDBaseWhite, "", undefined, undefined, undefined, undefined,
+			}, true, 975, 900, 550, 64, TextGet("GameReturnToMenuFromOptions"), KDBaseWhite, "", undefined, undefined, undefined, undefined,
 			undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
 				hotkeyPress: KinkyDungeonKeySkip[0],

@@ -11,8 +11,8 @@ AddModel({
 	Name: "PumpkinVineArms",
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
-	TopLevel: true,
-	Categories: ["Bras"],
+	TopLevel: false,
+	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		{ Name: "VineArmLeft", Layer: "BindElbowLeft", Pri: 105,
 			Poses: ToMap([...ARMPOSES]),
@@ -95,8 +95,8 @@ AddModel({
 	Name: "PumpkinVineLegs",
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
-	TopLevel: true,
-	Categories: ["Restraints"],
+	TopLevel: false,
+	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		{ Name: "VineLegLeft", Layer: "Thighs1", Pri: 105,
 			Poses: ToMap([...LEGPOSES]),
@@ -151,8 +151,8 @@ AddModel({
 	Name: "PumpkinVineFeet",
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
-	TopLevel: true,
-	Categories: ["Restraints"],
+	TopLevel: false,
+	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		
 
@@ -255,7 +255,7 @@ AddModel({
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
 	TopLevel: true,
-	Categories: ["Restraints"],
+	Categories: ["Restraints", "Accessories"],
 	Layers: ToLayerMap([
 
 		{ Name: "VineHarnessUnderbust", Layer: "StrapsUnderbust", Pri: 70,
@@ -501,7 +501,7 @@ AddModel({
 	Folder: "Pumpkin",
 	Parent: "PumpkinVines",
 	TopLevel: true,
-	Categories: ["Uniforms"],
+	Categories: ["Uniforms", "Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("PumpkinBra"),
 		...GetModelLayers("PumpkinPanties"),

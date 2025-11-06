@@ -6,7 +6,7 @@ let CurrentScreen: string;
 let CurrentCharacter: Character | null = null;
 let CurrentOnlinePlayers = 0;
 let CurrentDarkFactor = 1.0;
-let CommonIsMobile = false;
+let CommonIsMobile = CommonDetectMobile();
 let CommonCSVCache: {[_: string]: string[][]} = {};
 let CutsceneStage = 0;
 

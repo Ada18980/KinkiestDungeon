@@ -4,6 +4,7 @@
 let KDFocusableTextFields = [
 	"PerksFilter",
 	"InvFilter",
+	"OptionFilter",
 	"CollFilter",
 	"QInvFilter",
 	"MagicFilter",

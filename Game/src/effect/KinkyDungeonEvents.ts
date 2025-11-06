@@ -5635,7 +5635,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 				if (buff) {
 					buff.power = Math.max(0, buff.power - data.delta * e.power);
 					buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power) * 100)} ${TextGet("KDBattleRhythm")}`, KDBaseOrange, 0.1);
+					KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.power) * 100)} ${TextGet("KDBattleRhythm")}`, KDBaseOrange, 0.6);
 					if (buff.power == 0) buff.duration = 0;
 				}
 			}
@@ -7202,7 +7202,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 					if (buff) {
 						buff.power = Math.max(0, buff.power - e.cost);
 						buff.text = Math.round(100 * KDEntityBuffedStat(player, "BattleRhythm"));
-						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.cost) * 100)} ${TextGet("KDBattleRhythm")}`, KDBaseOrange, 0.1);
+						KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, `-${Math.round((e.cost) * 100)} ${TextGet("KDBattleRhythm")}`, KDBaseOrange, 0.6);
 						if (buff.power == 0) buff.duration = 0;
 					}
 

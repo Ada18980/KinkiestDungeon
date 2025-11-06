@@ -238,7 +238,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let eligible = KDGetRestraintsEligible({tags: ['masterworkRestraints']}, KDGetEffLevel(), 'grv',
 		true, undefined,
 		false, undefined, false, undefined,
-		undefined, undefined, undefined, undefined);
+		undefined, undefined, undefined, undefined, 30);
 		if (eligible.length > 0) {
 			let r = eligible[Math.floor(KDRandom() * eligible.length)];
 			let restraint = r.restraint;
