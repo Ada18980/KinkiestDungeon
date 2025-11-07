@@ -298,6 +298,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 自动从箱子中拿走所有物品
 - Don't Use Outfit Palettes
 不使用套装调色板
+# - Show Training level in buffs and stats
 
 - Apply palettes to Restraints
 将调色应用于束缚
@@ -407,6 +408,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 启用全屏
 - Hi-Res Distortion (Needs Restart)
 高分辨率形变 ( 需重启 )
+# - Low-Res Textures (Needs Restart)
 - Hi-Res Model (no restart needed)
 高分辨率模型 ( 无需重启 )
 - High Quality Animations
@@ -7096,6 +7098,14 @@ SCHOOL 女神给予你庇护和反击之力！
 藤蔓
 # :: KDEffectTileTooltipVineBase
 # :: KDEffectTileTooltipVines
+# :: m_PumpkinVineArms_l_Vines
+# :: m_PumpkinVineArms_l_Vines
+# :: m_PumpkinVineArms_l_Vines
+# :: m_PumpkinVineArms_l_Vines
+# :: m_PumpkinVineLegs_l_Vines
+# :: m_PumpkinVineLegs_l_Vines
+# :: m_PumpkinVineFeet_l_Vines
+# :: m_PumpkinVineFeet_l_Vines
 - Doll Storage Unit
 玩偶存储单元
 - Sarcophagus
@@ -7757,7 +7767,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You might be able to fool someone like this...
 你这个样子也许能骗到某些人...
 - You manage to pose as if you're trapped in the furniture.
-你看起来就像在家里一样舒适！
+你努力摆出一副被困在家具里的样子。
 - You look like you're right at home!
 你看起来就像在家里一样舒适！
 # - You look like a perfect, happy prisoner.
@@ -23045,7 +23055,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 ( SPEAKER 叹了口气)|我想我会找其他可爱的人来穿它~
 - (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
 (The SPEAKER 把RESTRAINT锁定在你身上时脸红了)|好了~
-- (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
+- (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|Whoops! I guess I acted too soon.|Ah well~
 (当你转身时，SPEAKER让你大吃一惊)|(你听到腰间的咔哒声)|唉呀!我想我行动太快了。|Ah， 好了~
 - (The lock on the RESTRAINT starts glowing...)
 ( RESTRAINT 上的锁开始发光…… )
@@ -23100,7 +23110,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( SPEAKER 叹了口气，自己戴上 ) | ( 锁开始发光…… )
 - (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 ( SPEAKER 松了口气 ) |非常感谢！|我不会忘记你的！
-- (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|I'm sorry miss! It was my only choice~
+- (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|I'm sorry miss! It was my only choice~
 (当你转身, SPEAKER 让你大吃一惊)|(你听到腰部咔哒一声)|对不起，小姐！这是我唯一的选择~
 
 - I would love to help!
@@ -39302,6 +39312,15 @@ Aura刘海(右后)
 # :: m_LightMaidKnight_l_Flower
 # :: m_PumpkinFlower_l_Flower
 # :: m_PumpkinVines_l_Flower
+# :: m_PumpkinVineArms_l_Flower
+# :: m_PumpkinVineArms_l_Flower
+# :: m_PumpkinVineArms_l_Flower
+# :: m_PumpkinVineLegs_l_Flower
+# :: m_PumpkinVineLegs_l_Flower
+# :: m_PumpkinVineFeet_l_Flower
+# :: m_PumpkinVineFeet_l_Flower
+# :: m_PumpkinVineHarness_l_Flower
+# :: m_FashionPumpkinVineHarness_l_Flower
 - LightMaidKnight_SockRight
 轻装女仆骑士_右袜
 - LightMaidKnight_SockLeft
@@ -42950,6 +42969,10 @@ Vents发型
 # :: m_FashionPumpkinGag_l_Vine
 # :: m_PumpkinVines_l_Vine
 # :: m_PumpkinVines_l_Vine
+# :: m_PumpkinVineHarness_l_Vine
+# :: m_PumpkinVineHarness_l_Vine
+# :: m_FashionPumpkinVineHarness_l_Vine
+# :: m_FashionPumpkinVineHarness_l_Vine
 # :: KDBindType_Vine
 # - LeafUpper
 # :: m_PumpkinBra_l_LeafUpper
@@ -43028,6 +43051,40 @@ Vents发型
 # - LaceLowerOver
 # - LaceUpperOver
 
+# - PumpkinVineArms
+# - Bud
+# :: m_PumpkinVineArms_l_Bud
+# :: m_PumpkinVineArms_l_Bud
+# :: m_PumpkinVineArms_l_Bud
+# :: m_PumpkinVineLegs_l_Bud
+# :: m_PumpkinVineLegs_l_Bud
+# :: m_PumpkinVineFeet_l_Bud
+# :: m_PumpkinVineFeet_l_Bud
+# - PumpkinVineLegs
+# - PumpkinVineFeet
+# - PumpkinVineHarness
+# - VineMIddle
+# :: m_PumpkinVineHarness_l_VineMIddle
+# :: m_FashionPumpkinVineHarness_l_VineMIddle
+# - LeafL
+# :: m_PumpkinVineHarness_l_LeafL
+# :: m_FashionPumpkinVineHarness_l_LeafL
+# - LeafR
+# :: m_PumpkinVineHarness_l_LeafR
+# :: m_FashionPumpkinVineHarness_l_LeafR
+# - FlowerL
+# :: m_PumpkinVineHarness_l_FlowerL
+# :: m_FashionPumpkinVineHarness_l_FlowerL
+# - FlowerR
+# :: m_PumpkinVineHarness_l_FlowerR
+# :: m_FashionPumpkinVineHarness_l_FlowerR
+# - BudL
+# :: m_PumpkinVineHarness_l_BudL
+# :: m_FashionPumpkinVineHarness_l_BudL
+# - BudR
+# :: m_PumpkinVineHarness_l_BudR
+# :: m_FashionPumpkinVineHarness_l_BudR
+# - FashionPumpkinVineHarness
 
 
 - Aura_Bang
@@ -51941,3 +51998,5 @@ Boss
 # - Went on a leash walk:
 - Training Level ${Level}
 训练等级 ${Level}
+
+# - Filter Toggles:
