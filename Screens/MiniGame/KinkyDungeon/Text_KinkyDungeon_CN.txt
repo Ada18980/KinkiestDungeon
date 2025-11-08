@@ -298,7 +298,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 自动从箱子中拿走所有物品
 - Don't Use Outfit Palettes
 不使用套装调色板
-# - Show Training level in buffs and stats
+- Show Training level in buffs and stats
+在增益和状态中显示训练等级
 
 - Apply palettes to Restraints
 将调色应用于束缚
@@ -408,7 +409,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 启用全屏
 - Hi-Res Distortion (Needs Restart)
 高分辨率形变 ( 需重启 )
-# - Low-Res Textures (Needs Restart)
+- Low-Res Textures (Needs Restart)
+低分辨率贴图 (需要重启)
 - Hi-Res Model (no restart needed)
 高分辨率模型 ( 无需重启 )
 - High Quality Animations
@@ -1883,7 +1885,7 @@ EnemyName对TargetName念出了一个口令！
 - Iron Blood: Reduced melee cost, increased mana costs.
 铁血 : ‎减少近战体力消耗，但增加施放法术的法力消耗
 - Sleepy: You are sluggish and have a hard time keeping your eyes open.
-疲倦 : ‎你感到疲倦，难以保持清醒
+困倦: 你感到行动迟缓，眼皮沉重。
 - Afterimage: Evasion greatly increased.
 残像 : ‎闪避大幅增加
 - We did it! We made ourselves invisible--mmmmph!!!
@@ -5308,10 +5310,14 @@ M.F. '女仆长'
 粘液跳跃并附着在你的身体上！ ( +RestraintAdded )
 
 
-# - Giant Pumpkin
-# - The pumpkin breaks into pieces.
-# - Giant Angry Pumpkin
-# - The angry pumpkin reverts into a regular pumpkin.
+- Giant Pumpkin
+巨型南瓜
+- The pumpkin breaks into pieces.
+南瓜碎成了碎片。
+- Giant Angry Pumpkin
+愤怒巨型南瓜
+- The angry pumpkin reverts into a regular pumpkin.
+愤怒的南瓜变回了普通的南瓜
 
 - Large Slime
 大粘液团
@@ -7083,7 +7089,8 @@ SCHOOL 女神给予你庇护和反击之力！
 展示架
 # :: KDEffectTileTooltipDisplayStand
 # :: RestraintDisplayTrap
-# - Vibrating Saddle
+- Vibrating Saddle
+振动鞍
 - Cage
 笼子
 # :: KDEffectTileTooltipCage
@@ -7769,8 +7776,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - You manage to pose as if you're trapped in the furniture.
 你努力摆出一副被困在家具里的样子。
 - You look like you're right at home!
-你看起来就像在家里一样舒适！
-# - You look like a perfect, happy prisoner.
+你这身装扮在这毫无违和感。
+- You look like a perfect, happy prisoner.
+你看起来就像一名开心的模仿俘虏。
 
 - Restraining Bed
 拘束床
@@ -9188,8 +9196,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Total blackout. The tough leather is reinforced with rivets.
 漆黑一片。结实的皮革用铆钉进行了进一步的加固。
 
-# - Masterwork Cuff Set
-# - A perfect set of cuffs for the spicy adventurer, perfect for getting into a bind.
+- Masterwork Cuff Set
+极品铐具套装
+- A perfect set of cuffs for the spicy adventurer, perfect for getting into a bind.
+为热辣探险家准备的一套精美铐具，适合作为打底的拘束。
 - Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection.
 尽管质地柔软，但这种皮革用某种几乎牢不可破的纤维进行了加固，能够牢牢卡住大多数能够切割它的工具。它的锁定装置还有四个连接点。
 # :: RestraintHighSecCuffsFullDesc2
@@ -9567,7 +9577,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - An advanced muzzle intended for particularly loud-mouthed mages.
 专为特别吵闹的法师设计的高级口套。
 - It's sturdy leather and metal buckles.
-它由坚固的皮革和金属扣制成。
+坚固皮革，金属带扣。
 - Secured Asylum Legbinder
 安全防护束腿套
 - A legbinder to keep nurses safe from high-level warriors.
@@ -50302,7 +50312,8 @@ ENMY 解开了 ITMN 的锁!
 骷髅仆从
 - Flummoxing Orb
 迷心幻魄球
-# - Pole Trap
+- Pole Trap
+铁杆陷阱
 - Crystallize
 结成晶体
 - Capture Device
@@ -51723,7 +51734,8 @@ RestraintName 上的乳胶猫娘诅咒松开，并将你释放出来。
 状态
 - Bosses
 Boss
-# - Exploration
+- Exploration
+探索
 - Mastery
 专精
 
@@ -51886,73 +51898,121 @@ Boss
 恶魔
 - Unlocked by being recruited by the Demons. (Not Available)
 解锁方式：被恶魔招募。（不可用）
-# - Unlocked by accepting a restraint from the boss on floor 4 after defeating her.
-# - Fuuka's Brat
-# - Unlocked by being defeated by the boss on floor 4 and she restrains you.
-# - Important Pet
-# - Unlocked by accepting a restraint from the boss on floor 8 after defeating her.
-# - House Arrest
-# - Unlocked by being defeated by a boss on floor 8 and she restrains you.
-# - Seeing Dolls
-# - Unlocked by accepting a certain restraint from the boss on Floor 20.
+- Unlocked by accepting a restraint from the boss on floor 4 after defeating her.
+解锁方式：击败第4层的Boss后，接受她的束缚提议。
+- Fuuka's Brat
+风香的顽皮鬼
+- Unlocked by being defeated by the boss on floor 4 and she restrains you.
+解锁方式：被第4层Boss击败且拘束。
+- Important Pet
+重要宠物
+- Unlocked by accepting a restraint from the boss on floor 8 after defeating her.
+解锁方式：击败第8层的Boss后，接受她的束缚提议。
+- House Arrest
+居家囚禁
+- Unlocked by being defeated by a boss on floor 8 and she restrains you.
+解锁方式：被第8层Boss击败且拘束。
+- Seeing Dolls
+满目玩偶
+- Unlocked by accepting a certain restraint from the boss on Floor 20.
+解锁方式：接受第20层Boss的某样拘束。
 # :: KDPlayerTitleDesc_DollmakerVisor
 # :: KDPlayerTitleDesc_DollmakerMask
-# - Nothing but a Doll
-# - Mistress of Flame
-# - Unlocked by learning every spell under Flame Novice.
+- Nothing but a Doll
+终生玩偶
+- Mistress of Flame
+火焰女王
+- Unlocked by learning every spell under Flame Novice.
+解锁方式：习得所有 基础火法术 系的法术。
 - Mistress of Wind
 风之女神
-# - Unlocked by learning every spell under Air Novice.
+- Unlocked by learning every spell under Air Novice.
+解锁方式：习得所有 基础风法术 系的法术。
 - Mistress of Lightning
 雷电女神
-# - Unlocked by learning every spell under Lightning Novice.
-# - Mistress of Water
-# - Unlocked by learning every spell under Water Novice.
+- Unlocked by learning every spell under Lightning Novice.
+解锁方式：习得所有 基础电法术 系的法术。
+- Mistress of Water
+水之女王
+- Unlocked by learning every spell under Water Novice.
+解锁方式：习得所有 基础水法术 系的法术。
 - Mistress of Earth
 大地女神
-# - Unlocked by learning every spell under Earth Novice.
-# - Mistress of Ice
-# - Unlocked by learning every spell under Ice Novice.
-# - Mistress of Rope
-# - Unlocked by learning every spell under Rope 101.
-# - Mistress of Leather
-# - Unlocked by learning every spell under Leather 101.
-# - Mistress of Metal
-# - Unlocked by learning every spell under Metal 101.
-# - Mistress of Latex
-# - Unlocked by learning every spell under Latex 101.
-# - Mistress of Physics
-# - Unlocked by learning every spell under Physics 101.
-# - Mistress of Shadow
-# - Unlocked by learning every spell under Blessing of Shadow.
-# - Mistress of Light
-# - Unlocked by learning every spell under Blessing of Light.
-# - Mistress of Obscurity
-# - Unlocked by learning every spell under Blessing of Obscurity.
-# - Mistress of Projection
+- Unlocked by learning every spell under Earth Novice.
+解锁方式：习得所有 基础岩法术 系的法术。
+- Mistress of Ice
+冰霜女王
+- Unlocked by learning every spell under Ice Novice.
+解锁方式：习得所有 基础冰法术 系的法术。
+- Mistress of Rope
+绳缚女王
+- Unlocked by learning every spell under Rope 101.
+解锁方式：习得所有 绳索 101 系的法术。
+- Mistress of Leather
+皮具女王
+- Unlocked by learning every spell under Leather 101.
+解锁方式：习得所有 皮革 101 系的法术。
+- Mistress of Metal
+金属女王
+- Unlocked by learning every spell under Metal 101.
+解锁方式：习得所有 金属 101 系的法术。
+- Mistress of Latex
+乳胶女王
+- Unlocked by learning every spell under Latex 101.
+解锁方式：习得所有 乳胶 101 系的法术。
+- Mistress of Physics
+物理女王
+- Unlocked by learning every spell under Physics 101.
+解锁方式：习得所有 物理 101 系的法术。
+- Mistress of Shadow
+暗影女王
+- Unlocked by learning every spell under Blessing of Shadow.
+解锁方式：习得所有 暗影祝福 系的法术。
+- Mistress of Light
+光明女王
+- Unlocked by learning every spell under Blessing of Light.
+解锁方式：习得所有 光之祝福 系的法术。
+- Mistress of Obscurity
+隐身女王
+- Unlocked by learning every spell under Blessing of Obscurity.
+解锁方式：习得所有 隐身祝福 系的法术。
+- Mistress of Projection
+投影女王
 - Unlocked by learning every spell under Projection Magic.
-在习得所有分支下的法术以解锁。
+解锁方式：习得所有 投影魔法 系的法术。
 - Mistress of Knowledge
 知识女神
-# - Unlocked by learning every spell under Arcane Knowledge.
-# - Mistress of Summoning
-# - Unlocked by learning every spell under Summoning 101.
+- Unlocked by learning every spell under Arcane Knowledge.
+解锁方式：习得所有 奥术知识 系的法术。
+- Mistress of Summoning
+召唤女王
+- Unlocked by learning every spell under Summoning 101.
+解锁方式：习得所有 召唤 101 系的法术。
 - Unlocked by learning every spell at the same time.
 解锁方式：学会所有法术。
 # - ewhac
 - Unlocked by reaching NG+25.
 在本存档25周目后解锁
-# - Moss Boss
-# - Unlocked by reaching 400 max stamina and mana and willpower and desire.
-# - Juiced Up
-# - Unlocked by reaching 400 max stamina.
-# - Manafused
-# - Unlocked by reaching 400 max mana.
-# - Unbreakable
+- Moss Boss
+四极圆满
+- Unlocked by reaching 400 max stamina and mana and willpower and desire.
+解锁方式：体力值、法力值、意志力值和欲望的上限皆达到400。
+- Juiced Up
+动如脱兔
+- Unlocked by reaching 400 max stamina.
+解锁方式：体力值的上限达到400。
+- Manafused
+盈如江海
+- Unlocked by reaching 400 max mana.
+解锁方式：法力值的上限达到400。
+- Unbreakable
+坚如磐石
 - Unlocked by reaching 400 max willpower.
-在体力值的上限达到400后解锁
-# - Unwavering
-# - Unlocked by reaching 400 max desire.
+解锁方式：意志力值的上限达到400。
+- Unwavering
+稳如泰山
+- Unlocked by reaching 400 max desire.
+解锁方式：欲望值的上限达到400。
 - Unlocked by accepting a bondage offer. 
 解锁方式：接受束缚提议。
 - Unlocked by convincing an NPC to wear their own bondage offer.
@@ -51975,9 +52035,10 @@ Boss
 解锁方式：穿上全套远古拘束具。
 - Unlocked by wearing any cursed restraint or armor.
 解锁方式：穿上任何被诅咒的拘束具或装备。
-# - Lost in Space
+- Lost in Space
+维度迷失
 - Unlocked by stepping into a dimensional rift willingly... or not!
-自愿踏入维度裂隙解锁…才怪!
+解锁方式：自愿 ( 并不 ) 踏入维度裂隙。
 
 
 - Select a progress item to show details
@@ -51993,9 +52054,11 @@ Boss
 获得进度（进入下一层时结算）：
 # - Recent Modifiers:
 
-# - Any Level
+- Any Level
+任何等级
 
-# - Went on a leash walk:
+- Went on a leash walk:
+牵绳散步: 
 - Training Level ${Level}
 训练等级 ${Level}
 
