@@ -2231,7 +2231,7 @@ Devious Dungeon Challenge 已启用。
 # :: m_PointyAntennae_l_Left
 # :: m_PointyHorns_l_Left
 - Right
-右　
+右
 # :: KinkyDungeonKeyRight
 # :: m_SmoothHeels_l_Right
 # :: m_PointyAntennae_l_Right
@@ -23066,7 +23066,7 @@ Ouch，我撞到我的麻筋了...你不帮忙吗？
 - (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
 (The SPEAKER 把RESTRAINT锁定在你身上时脸红了)|好了~
 - (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|Whoops! I guess I acted too soon.|Ah well~
-(当你转身时，SPEAKER让你大吃一惊)|(你听到腰间的咔哒声)|唉呀!我想我行动太快了。|Ah， 好了~
+(当你转身时，SPEAKER让你大吃一惊)|(你听到身上的咔哒声)|唉呀!我想我行动太快了。|Ah， 好了~
 - (The lock on the RESTRAINT starts glowing...)
 ( RESTRAINT 上的锁开始发光…… )
 # :: rOfferChastityGlow
@@ -23121,7 +23121,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (The SPEAKER looks relieved)|Thank you so much miss!|I won't forget you!
 ( SPEAKER 松了口气 ) |非常感谢！|我不会忘记你的！
 - (As you turn around, the SPEAKER surprises you)|(You hear a click on your body)|I'm sorry miss! It was my only choice~
-(当你转身, SPEAKER 让你大吃一惊)|(你听到腰部咔哒一声)|对不起，小姐！这是我唯一的选择~
+(当你转身时，SPEAKER让你大吃一惊)|(你听到身上的咔哒声)|对不起，小姐！这是我唯一的选择~
 
 - I would love to help!
 我很乐意提供帮助！
@@ -31195,8 +31195,10 @@ V形比基尼
 马具绑带
 :: m_FashionDivineGagClean_l_Harness
 马具绑带
-# :: m_KittyPetHarnessBlindfold_l_Harness
-# :: m_FashionKittyPetHarnessBlindfold_l_Harness
+:: m_KittyPetHarnessBlindfold_l_Harness
+马具绑带
+:: m_FashionKittyPetHarnessBlindfold_l_Harness
+马具绑带
 :: m_KittyPetHarnessGag_l_Harness
 马具绑带
 :: m_KittyPetHarnessGagSeamless_l_Harness
@@ -31213,17 +31215,28 @@ V形比基尼
 马具绑带
 :: m_FashionKittyPetHarnessGagMouthSeamless_l_Harness
 马具绑带
-# :: m_HarnessBlindfold_l_Harness
-# :: m_HarnessBlindfold_l_Harness
-# :: m_FashionHarnessBlindfold_l_Harness
-# :: m_FashionHarnessBlindfold_l_Harness
-# :: m_DivineMuzzle_l_Harness
-# :: m_FashionDivineMuzzle_l_Harness
-# :: m_DivineMuzzleClean_l_Harness
-# :: m_FashionDivineMuzzleClean_l_Harness
-# :: m_HighSecBlindfold_l_Harness
-# :: m_FashionHighSecBlindfold_l_Harness
-# :: m_HighSecBlindfoldRestraint_l_Harness
+:: m_HarnessBlindfold_l_Harness
+马具绑带
+:: m_HarnessBlindfold_l_Harness
+马具绑带
+:: m_FashionHarnessBlindfold_l_Harness
+马具绑带
+:: m_FashionHarnessBlindfold_l_Harness
+马具绑带
+:: m_DivineMuzzle_l_Harness
+马具绑带
+:: m_FashionDivineMuzzle_l_Harness
+马具绑带
+:: m_DivineMuzzleClean_l_Harness
+马具绑带
+:: m_FashionDivineMuzzleClean_l_Harness
+马具绑带
+:: m_HighSecBlindfold_l_Harness
+马具绑带
+:: m_FashionHighSecBlindfold_l_Harness
+马具绑带
+:: m_HighSecBlindfoldRestraint_l_Harness
+马具绑带
 # :: KDBindNPCSlot_Harness
 - HarnessLower
 下部绳束衣
@@ -37901,7 +37914,8 @@ Aura刘海(右后)
 - FashionDivineMuzzleClean
 装饰性神圣口套(无印)
 # - FutureBox
-# - Rim
+- Rim
+饰边
 :: m_FutureBox_l_Rim
 镶边
 :: m_RoundHat_l_Rim
@@ -40656,7 +40670,8 @@ Vents发型
 
 # - SideBang
 # - Sides
-# - Hair
+- Hair
+头发
 # :: m_BlondeFront_l_Hair
 # :: m_BlondeFront_l_Hair
 # :: m_Hair3_l_Hair
@@ -42550,7 +42565,7 @@ Vents发型
 # :: m_JacketExtraLeotard_l_BeltsLower
 # :: m_JacketExtraLeotard_l_BeltsLower
 - Lower
-低部
+下部
 # :: m_JacketLower_l_Lower
 # :: m_JacketLower_l_Lower
 # :: m_JacketHeavy_l_Lower
