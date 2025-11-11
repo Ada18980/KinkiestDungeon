@@ -8102,7 +8102,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 
 
 - The curse on the RestraintName is lifted!
-对 RestraintName 的诅咒解除了！
+RestraintName 上的诅咒解除了！
 - Press RIGHT to confirm buy!
 按 RIGHT 确认购买！
 
@@ -8251,7 +8251,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Prisoner Plug
 囚犯塞
 - A teaser to keep you occupied.
-一个占据你下体的东西。
+一个充实你的小玩意。
 - Buzzes on spellcast, and periodically as well.
 施法时振动，以及周期性振动。
 - High-Security Chastity Belt
@@ -8268,9 +8268,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 黑钢贞操带
 
 - Charms (Arms)
-绷带 ( 手臂 )
+附魔缎带 ( 手臂 )
 - A band of faintly magic ribbon wrapped tight around your arms.
-一条被赋予微弱魔法的绷带紧紧缠绕在你的手臂上。
+一条散发着些微魔力的缎带紧紧缠绕着你的手臂。
 - It clings, almost of its own accord, but seems vulnerable to both cutting and stretching.
 像是有生命一般的缠绕住，但似乎对其切割或者拉扯很容易将其撕开。
 # :: RestraintDuctTapeArmsDesc2
@@ -8292,47 +8292,47 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 # :: RestraintMysticDuctTapeHandsDesc2
 # :: RestraintMysticDuctTapeLegsMummyDesc2
 - Charms (Legs)
-绷带 ( 腿 )
+附魔缎带 ( 腿 )
 - A band of faintly magic ribbon wrapped tight around your thighs.
-一条被赋予微弱魔法的绷带紧紧缠绕在你的大腿上。
+一条散发着些微魔力的缎带紧紧缠绕着你的大腿。
 - Charms (Feet)
-绷带 ( 脚 )
+附魔缎带 ( 脚 )
 - A band of faintly magic ribbon wrapped tight around your ankles.
-一条被赋予微弱魔法的丝带紧紧缠绕在你的脚踝上。
+一条散发着些微魔力的缎带紧紧缠绕着你的脚踝。
 - Charms (Head)
-绷带 ( 头 )
+附魔缎带 ( 头 )
 - A band of faintly magic ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
-一条被赋予微弱魔法的绷带紧紧缠绕在你的眼睛上。可从快捷背包或快捷栏应用于虚弱的敌人。
+一条散发着些微魔力的缎带紧紧缠绕着你的双眼。可从快捷背包或快捷栏应用于虚弱的敌人。
 - Charm Gag
-绷带堵嘴
+附魔缎带堵嘴
 - A band of faintly magic ribbon wrapped tight over the mouth. Can be used on vulnerable targets from quick inventory or hotbar.
-一条被赋予微弱魔法的绷带紧紧缠绕在你的嘴边。可从快捷背包或快捷栏应用于虚弱的敌人。
+一条散发着些微魔力的缎带紧紧包裹着你的嘴巴。可从快捷背包或快捷栏应用于虚弱的敌人。
 - Charm Wrapping (Toes)
-绷带包裹 ( 脚趾 )
+附魔缎带包裹 ( 脚 )
 - A layer of faintly magic ribbon wrapped tight around your feet.
-一条被赋予微弱魔法的绷带紧紧的缠绕在你的脚边。
+一层散发着些微魔力的缎带紧紧包裹着你的双脚。
 - Charm Wrapping (Head)
-绷带包裹 ( 头 )
+附魔缎带包裹 ( 头 )
 - A layer of faintly magic ribbon wrapped tight around your face.
-一条被赋予微弱魔法的绷带紧紧的缠绕在你的脸上。
+一层散发着些微魔力的缎带紧紧包裹着你的脸。
 - Charm Wrapping (Arms)
-绷带包裹 ( 手臂 )
+附魔缎带包裹 ( 手臂 )
 - A layer of faintly magic ribbon wrapped tight around your body.
-一条被赋予微弱魔法的绷带紧紧的缠绕在你的身上。
+一层散发着些微魔力的缎带紧紧包裹着你的身体。
 - Charm Wrapping (Feet)
-绷带包裹 ( 脚 )
+附魔缎带包裹 ( 脚 )
 - A layer of faintly magic ribbon wrapped tight around your shins.
-一条被赋予微弱魔法的绷带紧紧的缠绕在你的小腿上。
+一层散发着些微魔力的缎带紧紧包裹着你的小腿。
 - Charm Wrapping (Legs)
-绷带包裹 ( 腿 )
+附魔缎带包裹 ( 腿 )
 - A layer of faintly magic ribbon wrapped tight around your thighs.
-一条被赋予微弱魔法的绷带紧紧的缠绕在你的大腿上。
+一层散发着些微魔力的缎带紧紧包裹着你的大腿。层
 - Living Charm Collar
-活体绷带项圈
+活体附魔缎带项圈
 - This collar is designed to make sure its wearer does not escape their charms.
-这枚项圈的设计是为了确保佩戴者不会从绷带中逃脱。
+这款项圈的设计可以确保佩戴者无法逃脱附魔缎带的束缚。
 - It will occasionally cause charms to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of charms you have on you.
-它偶尔会突然出现符咒，并束缚佩戴者。效果的速度增加取决于你身上的符咒数量。
+时不时会凭空生出附魔缎带捆缚佩戴者。身上附魔缎带束缚的数量越多，生效越快。
 
 - Leather Panel Gag
 皮革面板口塞
@@ -8375,17 +8375,17 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A blindfold used to aid in meditation.
 用于帮助冥想的眼罩。
 - It is padded but still lets some light through.
-它是填充的，但仍然可以让一些光线通过。
+有衬垫填充，但仍然可以透过一些光线。
 - Bast Paws
 猫女神爪套
 - Leather mittens used to pacify new initiates of the Bast cult.
-用于无害化猫女神教的新信徒的皮革束手套。
+用于无害化猫女神教新信徒的皮革束手套。
 - They make it hard to manipulate anything at all, but aren't the toughest material.
-它们使操作任何东西都变得困难，但不是最坚硬的材料。
+使得操作任何东西都变得困难，但并非牢不可破。
 - Bast Suit
 猫女神套装
 - A skintight suit used on unruly initiates of the Bast cult.
-猫女神教不守规矩的新信徒穿的紧身衣。
+给不安分的猫女神教新信徒穿的紧身衣。
 - It's nearly impossible to escape without help once locked inside.
 一旦被锁在里面，没有帮助几乎不可能逃脱。
 # :: RestraintKittySuitDesc2
@@ -8393,21 +8393,21 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Bast Petsuit
 猫女神宠物服
 - Enhanced suit used for select members of the Bast cult.
-用于猫女神教会特定成员的增强套装。
+为猫女神教内特定成员准备的强化套装。
 
 - Magic Petsuit
 魔法宠物服
 - A set of straps and buckles enchanted with a powerful spell to render you helpless.
-一套带有强大咒语的带子和带扣，让你束手无策。
+一系列绑带和卡扣，附有强大魔咒以使你无力反抗。
 - It's warded against cutting by nonmagic blades.
-它可以防止非魔法刀片的切割。
+其附魔可以抵抗非魔法刀刃的切割。
 
 - Latex Petsuit
 乳胶宠物服
 - A skintight suit that encases you in a tight rubber embrace.
-一件紧身衣，将你包裹在紧紧的乳胶怀抱中。
+将你紧紧包裹在乳胶环抱中的一件紧身衣，
 - The thick latex is resistant to even the most determined struggles.
-厚厚的乳胶能抵御最顽强的挣扎。
+厚实的乳胶能抑制住哪怕最顽强的挣扎。
 
 
 - Latex Lockdown Petsuit
@@ -8453,9 +8453,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Blessed Wrappings Collar
 活体祝福丝带项圈
 - This collar is designed to make sure its wearer does not escape their wrappings.
-这款项圈的设计是为了确保佩戴者不会逃脱活体祝福丝带。
+这款项圈的设计可以确保佩戴者无法逃脱祝福丝带的束缚。
 - It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you.
-它偶尔会使幸祝福丝带突然出现，并束缚佩戴者。根据你身上祝福丝带的数量，速度的效果会增加。
+时不时会凭空生出祝福丝带捆缚佩戴者。身上祝福丝带束缚的数量越多，生效越快。
 
 - Tape (Hands)
 胶带(手)
@@ -8516,19 +8516,19 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Tape Collar
 活体胶带项圈
 - This collar is designed to make sure its wearer does not escape their tape.
-这款项圈的设计是为了确保佩戴者不会逃脱胶带的束缚。
+这款项圈的设计可以确保佩戴者无法逃脱胶带的束缚。
 # :: RestraintVinylTapeCollarDesc
 # :: RestraintAutoTapeCollarDesc
 - It will occasionally cause tape to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of tape you have on you.
-它偶尔会使胶带突然出现并束缚佩戴者。效果会根据身上胶带的数量而加快。
+时不时会凭空生出胶带捆缚佩戴者。身上胶带束缚的数量越多，生效越快。
 
 
 - Autotape
-自动胶带
+机用胶带
 - Comes in convenient cartridges for machine loading.
-装在方便机器装载的盒式磁带里。
+胶带匣的包装更便于机械装载。
 - A specialized tape used for capturing purposes during the time of the Old Civilization. Despite its appearance, it contains a gas-permeable membrane that allows ventilation, while its hydrophobic properties resist solvents that would otherwise disrupt the adhesive bond. The adhesive layer is special in that it activates only in contact with other auto-tape, making it safer to use and remove.
-旧日文明用于捕捉目的的专用胶带。尽管它的外观与普通胶带不同，但它含有一层透气膜，可以透气，同时它的疏水特性可以抵御溶剂，否则溶剂会破坏粘合剂的粘合。粘合层的特殊之处在于，它只有在与其他自动胶带接触时才会激活，因此使用和清除起来都更安全。
+旧日文明时代使用的一种用于抓捕的专用胶带。虽然其貌不扬，但是实际上有一层透气薄膜保证了透气性，疏水材质也使得一般情况下会破坏粘合效果的溶剂对其无效，而特殊的粘合层只有在与其它机用胶带接触时才会生效，因此使用和清理都很安全。
 
 - Rubberized Tape
 橡胶胶带
@@ -8538,10 +8538,10 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Magical charms from the ancient graveyard.
 来自古老墓地的魔法符咒。
 - Its magic is not enough to protect it from damage, but it is surprisingly effective at restraining both intruders and cursed entities.
-它的魔力不足以保护它不受伤害，但在抑制入侵者和受诅咒的实体方面却出奇地有效。
+符咒的魔力不足以抵抗一般的破坏，但是在控制入侵者和被诅咒者上意外的有效。
 
 - Blessed Wrapping
-受祝福的丝带
+祝福丝带
 - A layer of magic embalming ribbon.
 一条神奇的防腐丝带
 - It clings of its own accord to intruders and naughty catgirls.
@@ -8589,7 +8589,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Auto Tape Collar
 活体自动胶带项圈
 - It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you.
-它偶尔会使胶带突然出现并束缚佩戴者。速度的提高效果取决于你身上的胶带数量。
+时不时会凭空生出胶带捆缚佩戴者。身上胶带束缚的数量越多，生效越快。
 
 
 - Stuffing
@@ -8611,7 +8611,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made from an almost-weightless alloy that adjusts itself to your neck.
 由几乎没有重量的合金制成的项圈，可以自行调整以贴合你的颈部。
 - It will occasionally cause mithril to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of mithril you have on you.
-它偶尔会使秘银突然出现并束缚佩戴者。速度的效果增加基于你身上的秘银数量。
+时不时会凭空生出秘银铐拘束佩戴者。身上秘银铐的数量越多，生效越快。
 
 - Mithril Collar
 秘银项圈
@@ -8974,7 +8974,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of tough leather that adjusts itself to your neck.
 由坚韧的皮革制成的项圈，可以自行调整以贴合你的颈部。
 - It will occasionally cause leather to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of leather you have on you.
-它偶尔会导致使突然出现并束缚佩戴者。速度的增加效果取决于你身上的皮革数量
+时不时会凭空生出皮革束具拘束佩戴者。身上皮革束具的数量越多，生效越快。
 
 - Leather Cuffs
 皮革铐
@@ -9621,7 +9621,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of tough cowhide that adjusts itself to your neck.
 由坚韧的牛皮制成的项圈，可以自行调整以贴合你的颈部。
 - It will occasionally cause asylum gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of asylum gear you have on you.
-它偶尔会使得安全装备突然出现并束缚佩戴者。效果的速度增加取决于你身上的安全装备数量。
+时不时会凭空生出安全束具拘束佩戴者。身上安全束具的数量越多，生效越快。
 
 - Asylum Cuffs
 安全铐
@@ -9878,7 +9878,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of a hardened steel alloy, chemically treated as to be stainless that adjusts itself to your neck.
 一种由硬化钢合金制成的项圈，经过化学处理，可以适应你的颈部。
 - It will occasionally cause blacksteel to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of blacksteel you have on you.
-它偶尔会使得黑钢突然出现，并束缚佩戴者。效果增加的速度基于你身上的黑钢数量。
+时不时会凭空生出黑钢铐拘束佩戴者。身上黑钢铐的数量越多，生效越快。
 
 - Blacksteel Cuffs
 黑钢铐
@@ -9913,7 +9913,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of a magically infused steel.
 一条由注魔钢铁制成的项圈。
 - It will occasionally cause steel cuffs to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of steel cuffs you have on you.
-它偶尔会使钢铐突然出现并束缚佩戴者。效果会根据身上钢铐的数量而加快。
+时不时会凭空生出钢铐拘束佩戴者。身上钢铐的数量越多，生效越快。
 
 - Steel Cuffs
 钢铐
@@ -10112,7 +10112,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of a dark, shiny metal that adjusts itself to your neck. You can't help but hear whispering since it is so tight.
 一种由深色、有光泽的金属制成的项圈，可以根据你的脖子进行调整。由于太紧，你不禁会听到窃窃私语。
 - It will occasionally cause obsidian to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of obsidian you have on you.
-它偶尔使得黑曜石突然出现并束缚佩戴者。效果的速度增加基于你身上的黑曜石数量。
+时不时会凭空生出黑曜石束具拘束佩戴者。身上黑曜石束具的数量越多，生效越快。
 
 - Obsidian Cuffs
 黑曜石手铐
@@ -10143,7 +10143,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of a glowing, brittle material that adjusts itself to your neck. You feel your energy flowing into it...
 一种由发光的脆性材料制成的项圈，可以根据你的脖子进行调整。你感觉到你的能量流入其中...
 - It will occasionally cause crystal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of crystal you have on you.
-它偶尔会使得水晶突然出现并束缚佩戴者。效果的速度增加取决于你身上的水晶数量。
+时不时会凭空生出水晶束具拘束佩戴者。身上水晶束具的数量越多，生效越快。
 
 - Crystal Cuffs
 水晶手铐
@@ -10174,7 +10174,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of enchanted ice that adjusts itself to your neck. It won't melt on their own, and the ice chills you to the bone...
 一个由魔法冰制成的项圈，可以根据你的脖子进行调整。它不会自己融化，冰会让你彻骨发冷...
 - It will occasionally cause ice to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ice you have on you.
-它偶尔会使得冰突然出现并束缚佩戴者。速度的增加效果取决于你身上的冰拘束具的数量。
+时不时会凭空生出冰束具拘束佩戴者。身上冰束具的数量越多，生效越快。
 
 - Ice Cuffs
 冰铐
@@ -10207,7 +10207,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A collar made of a gold-tinted metal with a magical enchantment that adjusts itself to your neck.
 一个由金色金属制成的项圈，带有一种神奇的魅力，可以根据你的脖子进行调整。
 - It will occasionally cause slave gear to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slave gear you have on you.
-它偶尔会使得奴隶装备突然出现并束缚佩戴者。速度的增加效果取决于你身上的奴隶装备数量。
+时不时会凭空生出奴隶束具拘束佩戴者。身上奴隶束具的数量越多，生效越快。
 
 - Slave Cuffs
 奴隶铐
@@ -10330,9 +10330,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Ribbon Collar
 活体丝带项圈
 - This collar is designed to make sure its wearer does not escape the ribbons.
-这个项圈的设计是为了确保佩戴者不会脱离缎带。
+这款项圈的设计可以确保佩戴者无法逃脱缎带的束缚。
 - It will occasionally cause ribbons to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of ribbons you have on you.
-它偶尔会使得丝带突然出现并束缚佩戴者。速度的效果增加取决于你身上的丝带数量。
+时不时会凭空生出丝带捆缚佩戴者。身上丝带束缚的数量越多，生效越快。
 
 
 - Ice (Arms)
@@ -10421,9 +10421,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Slime Collar
 活体粘液项圈
 - This collar is designed to make sure its wearer does not escape their slime.
-这个项圈的设计是为了确保佩戴者不会逃离粘液。
+这款项圈的设计可以确保佩戴者无法逃脱粘液的束缚。
 - It will occasionally cause slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of slime you have on you.
-它偶尔会使得黏液突然出现并束缚佩戴者。效果增加的速度取决于你身上的黏液量。
+时不时会凭空生出粘液包裹佩戴者。身上粘液的数量越多，生效越快。
 
 
 - Made from hardened slime.
@@ -10525,13 +10525,13 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Blue Rubber Collar
 活体蓝色橡胶项圈
 - This collar is designed to make sure its wearer does not escape their rubber.
-这个项圈的设计是为了确保佩戴者不会脱离橡胶。
+这款项圈的设计可以确保佩戴者无法逃脱橡胶的束缚。
 # :: RestraintHardBlueSlimeCollarDesc
 # :: RestraintHardSlimeCollarDesc
 # :: RestraintHardRedSlimeCollarDesc
 # :: RestraintHardCaptureFoamCollarDesc
 - It will occasionally cause rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
-它偶尔会使得橡胶突然出现并束缚佩戴者。速度的效果增加取决于你身上的橡胶量。
+时不时会凭空生出橡胶包裹佩戴者。身上橡胶的数量越多，生效越快。
 # :: RestraintHardBlueSlimeCollarDesc2
 # :: RestraintHardSlimeCollarDesc2
 # :: RestraintHardRedSlimeCollarDesc2
@@ -10621,9 +10621,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Proto-Slime Collar
 活体原始粘液项圈
 - This collar is designed to make sure its wearer does not escape the slime.
-这个项圈的设计是为了确保佩戴者不会逃离粘液。
+这款项圈的设计可以确保佩戴者无法逃脱粘液的束缚。
 - It will occasionally cause proto-slime to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-slime you have on you.
-它偶尔会使得原始粘液突然出现并束缚佩戴者。效果增加的速度取决于你身上的原始粘液量。
+时不时会凭空生出原型粘液包裹佩戴者。身上原型粘液的数量越多，生效越快。
 
 
 - Proto-Rubber (Feet)
@@ -10652,9 +10652,9 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - Living Proto-Rubber Collar
 活体黏菌橡胶项圈
 - This collar is designed to make sure its wearer does not escape the rubber.
-这个项圈的设计是为了确保佩戴者不会脱离黏菌橡胶。
+这款项圈的设计可以确保佩戴者无法逃脱黏菌橡胶的束缚。
 - It will occasionally cause proto-rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of proto-rubber you have on you.
-它偶尔会使得黏菌橡胶突然出现并束缚佩戴者。速度的增加效果取决于你身上的黏菌橡胶数量。
+时不时会凭空生出黏菌橡胶包裹佩戴者。身上黏菌橡胶的数量越多，生效越快。
 
 - Sticky Tape
 粘性胶带
@@ -14657,7 +14657,7 @@ EnemyName 远程使您的玩具嗡嗡作响！！！
 宝珠撕裂了你的衣服！
 
 - Charm Trap
-绷带陷阱
+缎带陷阱
 - Ribbon Trap
 丝带陷阱
 - Shackle Trap
@@ -43641,14 +43641,14 @@ Kjus眼5
 - Living Rope Collar
 活体绳项圈
 - This collar is designed to make sure its wearer does not escape their ropes.
-这个项圈的设计是为了确保佩戴者不会逃脱绳索。
+这款项圈的设计可以确保佩戴者无法逃脱绳索的束缚。
 # :: RestraintRopeSnakeCollarDesc
 # :: RestraintStrongMagicRopeCollarDesc
 # :: RestraintWeakMagicRopeCollarDesc
 # :: RestraintCelestialRopeCollarDesc
 # :: RestraintMithrilRopeCollarDesc
 - It will occasionally cause ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
-它偶尔会使得绳索突然出现并束缚佩戴者。速度的效果增加取决于你身上的绳索数量。
+时不时会凭空生出绳索捆缚佩戴者。身上绳索束缚的数量越多，生效越快。
 
 
 - Notebook Page
@@ -43920,7 +43920,7 @@ Kjus眼5
 - Living Spellbound Rope Collar
 活体咒缚绳项圈
 - It will occasionally cause spellbound ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
-它偶尔会使得符咒绳索突然出现并将佩戴者捆绑起来。速度的效果增加取决于你身上的符咒绳索数量。
+时不时会凭空生出咒缚绳索捆缚佩戴者。身上咒缚绳索束缚的数量越多，生效越快。
 
 
 
@@ -43984,7 +43984,7 @@ Kjus眼5
 - Living Magic Rope Collar
 活体附魔绳项圈
 - It will occasionally cause magic ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
-它偶尔会使得附魔绳索突然出现并将佩戴者捆绑起来。速度的效果增加取决于你身上的附魔绳索数量。
+时不时会凭空生出附魔绳索捆缚佩戴者。身上附魔绳索束缚的数量越多，生效越快。
 
 
 - Celestial Rope
@@ -44048,7 +44048,7 @@ Kjus眼5
 - Living Holy Rope Collar
 活体神圣绳项圈
 - It will occasionally cause holy ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
-它偶尔会使得神圣绳索突然出现并束缚佩戴者。速度的效果增加取决于你身上的神圣绳索数量。
+时不时会凭空生出神圣绳索捆缚佩戴者。身上神圣绳索束缚的数量越多，生效越快。
 
 
 
@@ -44114,7 +44114,7 @@ Kjus眼5
 - Living Mithril Rope Collar
 活体秘银绳项圈
 - It will occasionally cause mithril ropes to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of ropes you have on you.
-它偶尔会使得秘银绳突然出现并将佩戴者捆绑起来。速度的效果增加取决于你身上的秘银绳索数量。
+时不时会凭空生出秘银绳索捆缚佩戴者。身上秘银绳索束缚的数量越多，生效越快。
 
 
 - Dark Portal
@@ -44212,9 +44212,9 @@ Kjus眼5
 - Living Liquid Metal Collar
 活体液态金属项圈
 - This collar is designed to make sure its wearer does not escape the metal.
-这个项圈的设计是为了确保佩戴者不会脱离金属。
+这款项圈的设计可以确保佩戴者无法逃脱金属的束缚。
 - It will occasionally cause liquid metal to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of liquid metal you have on you.
-它偶尔会使得液态金属突然出现并束缚佩戴者。速度的效果增加取决于你身上的液态金属量。
+时不时会凭空生出液态金属包裹佩戴者。身上液态金属的数量越多，生效越快。
 
 
 - The stairs dissolve right before you!
@@ -51230,9 +51230,9 @@ PTRN 的 RMTPE
 - Capture Foam Dispenser
 捕捉泡沫项圈
 - This collar is designed to make sure its wearer does not escape at all costs.
-这个项圈的设计是为了确保佩戴者不会脱离捕捉泡沫。
+这款项圈的设计可以确保佩戴者无法逃脱捕捉泡沫的束缚。
 - It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
-它偶尔会使捕捉泡沫突然出现并束缚佩戴者。效果会根据身上泡沫的数量而加快。
+时不时会凭空生出捕捉泡沫包裹佩戴者。身上捕捉泡沫的数量越多，生效越快。
 
 
 - Tactical Rubber
@@ -51275,7 +51275,7 @@ PTRN 的 RMTPE
 - Tactical Rubber Collar
 战术橡胶项圈
 - It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
-它偶尔会使得战术橡胶突然出现并束缚佩戴者。速度的效果增加取决于你身上的橡胶量。
+时不时会凭空生出战术橡胶包裹佩戴者。身上战术橡胶的数量越多，生效越快。
 
 
 - Sweeping Strike
