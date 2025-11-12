@@ -6,7 +6,7 @@
 
 /**
  * Gets a list of restraints blocking this group
- * @param Group
+ * @param Group - regular group for player, slot or row for NPC
  * @param External
  * @param specificItem check ends once this item is reached
  */
@@ -96,9 +96,59 @@ function KDGetBlockingRestraints(Group: string, _External?: boolean, specificIte
             map.set(specificItem, true);
         // Return restraints still in the list
         return [...map.keys()];
-    } else {
-        // for npc
-        return []; // TODO
+    } else if (player && KDGetNPCRestraints(player.id)) {
+
+        // TODO might be necessary to allow adding sybian to NPCs?
+        // note: need to maybe add handling for entityCanUnlock where the player is an entity and the entity is the player.....
+        
+        let map: Map<NPCRestraint, boolean> = new Map();
+        let restraints = KDGetNPCRestraints(player.id);
+
+        let row = KDGetEncaseGroupRow(Group);
+
+        let all = Object.values(restraints);
+        // For this section we just create a set of items that block this one
+        if (["Vibe", "FrontPlug", "RearPlug"].includes(row.id)) {
+            for (let item of all) {
+                if (specificItem?.id == item.id || item == specificItem) break;
+                if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastity)) {
+                    map.set(item, true);
+                }
+            }
+        }
+        if (["NippleVibe", "NippleWeight", "Piercings"].includes(row.id)) {
+            for (let item of all) {
+                if (specificItem?.id == item.id || item == specificItem) break;
+                if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastitybra)) {
+                    map.set(item, true);
+                }
+            }
+        }
+
+        if (specificItem && !KDRestraint(specificItem).alwaysAccessible) {
+            for (let entry of Object.entries(restraints)) {
+                if (specificItem?.id == entry[1].id || entry[1] == specificItem) {
+                    let encaseSlots = KDGetEncaseGroupSlot(entry[0])?.encasedBy;
+                    if (encaseSlots?.length > 0) {
+                        for (let slot of encaseSlots) {
+                            if (restraints[slot]) {
+                                map.set(restraints[slot], true);
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        } else if (!specificItem) {
+            if (restraints[row.encaseGroup.id]) {
+                map.set(restraints[row.encaseGroup.id], true);
+            }
+        }
+
+        if (specificItem)
+            map.set(specificItem as NPCRestraint, true);
+
+        return [...map.keys()]; 
     }
 	
 	
@@ -155,8 +205,9 @@ function KDEnemyCanPassSecurity(entity: entity, player: entity, item: item | NPC
         };
     }
     
-    let top = KinkyDungeonGetRestraintItem(group ? group : KDRestraint(item).Group);
-    if (top) {
+    
+    let top = (!player || player.player) ? KinkyDungeonGetRestraintItem(group ? group : KDRestraint(item).Group) : null;
+    if (top || item) {
         if (item) {
             let blockingItems = KDGetBlockingItemsTo(entity, player, item, false);
             if (blockingItems?.length > 0) {
@@ -176,6 +227,8 @@ function KDEnemyCanPassSecurity(entity: entity, player: entity, item: item | NPC
             }
         }
         
+    } else if (player && !player.player) {
+        // TODO need some logic here... for unused function
     }
     return {
         blockers: null,
@@ -187,8 +240,67 @@ interface KDBlockingItemToData {
     item: item | NPCRestraint,
     reason: string,
 }
+
+
+function KDGetAllBlockingItemsToRestraintsWithShrineTag(entity, player, tag): (item | NPCRestraint)[] {
+    if (player.player) {
+        let relevantRestraints = KDAllRestraintDynamicList().filter(
+            (inv) => {
+                return KDRestraint(inv)?.shrine?.includes(tag);
+            }
+        );
+        let map = new Map();
+
+        for (let item of relevantRestraints) {
+            let blockingItems = KDGetBlockingItemsTo(entity, player, item, false);
+            if (blockingItems?.length > 0) {
+                for (let inv of blockingItems) {
+                    if (!map.get(inv)) map.set(inv, true)
+                }
+            }
+        }
+
+        return [...map.keys()];
+
+    } else if (entity && KDGetNPCRestraints(entity.id)) {
+        // TODO might be necessary to allow adding sybian to NPCs?
+        // note: need to maybe add handling for entityCanUnlock where the player is an entity and the entity is the player.....
+
+        let relevantRestraints = Object.values(KDGetNPCRestraints(entity.id)).filter(
+            (inv) => {
+                return KDRestraint(inv)?.shrine?.includes(tag);
+            }
+        );
+        let map = new Map();
+
+        for (let item of relevantRestraints) {
+            let blockingItems = KDGetBlockingItemsTo(entity, player, item, false);
+            if (blockingItems?.length > 0) {
+                for (let inv of blockingItems) {
+                    if (!map.get(inv)) map.set(inv, true)
+                }
+            }
+        }
+
+        return [...map.keys()];
+    }
+}
+
 function KDGetBlockingItemsTo(entity, player, item, nounlock): KDBlockingItemToData[] {
-    let list: (item | NPCRestraint)[] = KDGetBlockingRestraints(KDRestraint(item).Group, entity != player, item, player);
+    let group = KDRestraint(item).Group;
+    if (player && !player.player) {
+        if (KDGetNPCRestraints(player.id)) {
+            let restraints = KDGetNPCRestraints(player.id);
+            let entries = Object.entries(restraints);
+            for (let entry of entries) {
+                if (entry[1]?.id == item.id || entry[1] == item) {
+                    group = entry[0];
+                    break;
+                }
+            }
+        } else return [];
+    }
+    let list: (item | NPCRestraint)[] = KDGetBlockingRestraints(group, entity != player, item, player);
     let blockers: KDBlockingItemToData[] = [];
 
     for (let i = 0; i < list.length; i++) {

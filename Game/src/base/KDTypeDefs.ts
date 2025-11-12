@@ -232,6 +232,7 @@ interface KDRestraintPropsBase {
 		level_tech?: number,
 		/** Magic security level, for mage factions */
 		level_magic?: number,
+		level_divine?: number,
 	},
 
 	npcBondageMult?: number,

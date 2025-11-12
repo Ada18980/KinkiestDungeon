@@ -7877,7 +7877,10 @@ KDAddRopeVariants(
 		minLevel: 2,
 		factionFilters: {
 			Rope: {color: "Catsuit", override: false}
-		}
+		},
+		Security: {
+			level_magic: 1,
+		},
 	},
 	[
 		{trigger: "drawSGTooltip", type: "StruggleManaBonus", inheritLinked: true, power: 0.2, mult: 0.1, threshold: 10},
@@ -7908,7 +7911,11 @@ KDAddRopeVariants(
 		Color: "#ffff44",
 		factionFilters: {
 			Rope: {color: "Highlight", override: false}
-		}
+		},
+		Security: {
+			level_magic: 3,
+			level_divine: 1,
+		},
 	},
 	[{trigger: "struggle", type: "celestialRopePunish"}],
 	{
@@ -7937,7 +7944,10 @@ KDAddRopeVariants(
 		minLevel: 5,
 		factionFilters: {
 			Rope: {color: "Highlight", override: false}
-		}
+		},
+		Security: {
+			level_magic: 2,
+		},
 	},
 	[
 		{trigger: "drawSGTooltip", type: "StruggleManaBonus", inheritLinked: true, power: 0.3, mult: 0.1, threshold: 10},
@@ -7967,7 +7977,7 @@ KDAddRopeVariants(
 		Color: "White",
 		factionFilters: {
 			Rope: {color: "LightNeutral", override: false}
-		}
+		},
 	},
 	[],
 	{

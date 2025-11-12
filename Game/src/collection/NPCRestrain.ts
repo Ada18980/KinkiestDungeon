@@ -613,9 +613,10 @@ function KDRowItemIsValid(restraint: restraint,
 }
 
 /** Gets the row of the specified id */
-function KDGetEncaseGroupRow(id): NPCBindingGroup {
+function KDGetEncaseGroupRow(id: string): NPCBindingGroup {
 	for (let group of NPCBindingGroups) {
 		if (group.encaseGroup.id == id ||
+			group.id == id ||
 			group.layers.some((layer) => {
 				return layer.id == id;
 			})

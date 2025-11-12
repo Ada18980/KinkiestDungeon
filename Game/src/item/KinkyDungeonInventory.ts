@@ -763,7 +763,7 @@ function KinkyDungeonAllRestraintDynamic(): { item: item, host: item }[] {
 }
 
 /**
- * Returns list of tuples of restraints, without hosts
+ * Returns list of restraints, without hosts
  */
 function KDAllRestraintDynamicList(): item[] {
 	let ret = [];
