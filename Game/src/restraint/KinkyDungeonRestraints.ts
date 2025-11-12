@@ -1268,7 +1268,7 @@ function KDGroupBlocked(Group: string, _External?: boolean): boolean {
  * @param External
  */
 function KDGetBlockingSecurity(Group: string, External: boolean, player: entity): item[] {
-	let items = KDGetBlockingRestraints(Group, External, null, player);
+	let items = KDGetPotentialBlockingRestraints(Group, External, null, player);
 	items = items.filter((item) => {
 		return KDRestraint(item)?.Security != undefined;
 	});

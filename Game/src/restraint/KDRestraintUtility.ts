@@ -10,7 +10,7 @@
  * @param External
  * @param specificItem check ends once this item is reached
  */
-function KDGetBlockingRestraints(Group: string, _External?: boolean, specificItem?: item | NPCRestraint, player?: entity): (item | NPCRestraint)[] {
+function KDGetPotentialBlockingRestraints(Group: string, _External?: boolean, specificItem?: item | NPCRestraint, player?: entity): (item | NPCRestraint)[] {
     if (!player || player == KDPlayer()) {
         // Create the storage system
         let map: Map<item, boolean> = new Map();
@@ -164,7 +164,7 @@ function KDGetBlockingRestraints(Group: string, _External?: boolean, specificIte
  */
 function KDEnemyPassesSecurity(Group: string, enemy: entity): string {
 	if (!enemy) return "";
-	let blockers = KDGetBlockingRestraints(Group, true);
+	let blockers = KDGetPotentialBlockingRestraints(Group, true);
 	for (let blocker of blockers) {
 		if (!KDRestraint(blocker)?.Security) return "";
 		for (let secure of Object.entries(KDRestraint(blocker).Security)) {
@@ -298,7 +298,7 @@ function KDGetBlockingItemsTo(entity, player, item, nounlock): KDBlockingItemToD
             }
         } else return [];
     }
-    let list: (item | NPCRestraint)[] = KDGetBlockingRestraints(group, entity != player, item, player);
+    let list: (item | NPCRestraint)[] = KDGetPotentialBlockingRestraints(group, entity != player, item, player);
     let blockers: KDBlockingItemToData[] = [];
 
     for (let i = 0; i < list.length; i++) {
@@ -325,7 +325,7 @@ function KDGetBlockingItemsTo(entity, player, item, nounlock): KDBlockingItemToD
     return blockers;
 }
 function KDGetBlockingItems(entity, player, group, nounlock): KDBlockingItemToData[] {
-    let list: (item | NPCRestraint)[] = KDGetBlockingRestraints(group, entity != player, null, player);
+    let list: (item | NPCRestraint)[] = KDGetPotentialBlockingRestraints(group, entity != player, null, player);
     let blockers: KDBlockingItemToData[] = [];
 
     for (let i = 0; i < list.length; i++) {
