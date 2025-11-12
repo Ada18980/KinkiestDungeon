@@ -1261,62 +1261,14 @@ function KDGroupBlocked(Group: string, _External?: boolean): boolean {
 
 }
 
-/**
- * Gets a list of restraints blocking this group
- * @param Group
- * @param External
- */
-function KDGetBlockingRestraints(Group: string, _External?: boolean): item[] {
-	// Create the storage system
-	let map: Map<item, boolean> = new Map();
-	let all = KinkyDungeonAllRestraintDynamic();
-	// For this section we just create a set of items that block this one
-	if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
-		for (let item of all) {
-			if (!map.get(item.item) && (KDRestraint(item.item)?.chastity)) {
-				map.set(item.item, true);
-			}
-		}
-	}
-	if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
-		for (let item of all) {
-			if (!map.get(item.item) && (KDRestraint(item.item)?.chastitybra)) {
-				map.set(item.item, true);
-			}
-		}
-	}
-	if (KinkyDungeonPlayerTags.get("Block_" + Group)) {
-		for (let item of all) {
-			if (!map.get(item.item) && KDRestraint(item.item)?.shrine?.includes("Block_" + Group)) {
-				map.set(item.item, true);
-			}
-		}
-	}
-
-	if (Group.includes("ItemHands")) {
-		let arms = KinkyDungeonGetRestraintItem("ItemArms");
-		if (arms) {
-			let link = arms;
-			while (link && KDRestraint(link)) {
-				if (KDRestraint(link).inaccessible && !map.get(link)) {
-					map.set(link, true);
-				}
-				link = link.dynamicLink;
-			}
-		}
-	}
-
-	// Return restraints still in the list
-	return [...map.keys()];
-}
 
 /**
  * Gets a list of restraints with Security that block this
  * @param Group
  * @param External
  */
-function KDGetBlockingSecurity(Group: string, External: boolean): item[] {
-	let items = KDGetBlockingRestraints(Group, External);
+function KDGetBlockingSecurity(Group: string, External: boolean, player: entity): item[] {
+	let items = KDGetBlockingRestraints(Group, External, null, player);
 	items = items.filter((item) => {
 		return KDRestraint(item)?.Security != undefined;
 	});
@@ -4246,22 +4198,6 @@ function KDCanAddRestraint (
 		if (!allowOverpower || (Math.max(0.99, power * 1.1) < compPower)) {
 			if (bypasses())
 				return true; // Recursion!!
-		}
-	}
-	return false;
-}
-
-/**
- * @param Group
- * @param enemy
- */
-function KDEnemyPassesSecurity(Group: string, enemy: entity): boolean {
-	if (!enemy) return false;
-	let blockers = KDGetBlockingRestraints(Group, true);
-	for (let blocker of blockers) {
-		if (!KDRestraint(blocker)?.Security) return false;
-		for (let secure of Object.entries(KDRestraint(blocker).Security)) {
-			if (KDGetSecurity(enemy, secure[0]) >= secure[1]) return true;
 		}
 	}
 	return false;

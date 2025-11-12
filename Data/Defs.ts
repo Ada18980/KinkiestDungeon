@@ -343,9 +343,24 @@ let LAYERS_BASE = [
 	
 	// CrotchPanelMid goes here during kneel
 	"CrotchPanelMidLower",
+
+
+	
+	// These are for the base skirt layer when kneeling
+	// The over layer is for kneeling
+	// Skirts that dont follow shilhouette and are puffy
+	"SkirtOverLowerDeco",
+	"SkirtOverLower",
+
+	// Skirts that are slim and follow the shilhouette
+	"SkirtLowerDeco",
+	"SkirtLower",
 	
 	"Shorts",
 	"TightPants",
+
+
+	
 
 	// Lower harness
 	"Option2_ChastityBeltLower",
@@ -568,8 +583,8 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "AnkleLeft", start: "AnkleLeftOver", end: "WrappingLegs2"},
 	{id: "OverLegs3", start: "WrappingLegs2", end: "OverShoes"},
 	{id: "PantLeft", start: "OverShoes", end: "Saddle"},
-	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "SkirtOverLowerDeco"},
-	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "WrappingLegsRightOver"},
+	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "Shorts"},
+	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "WrappingLegsRightOver"},
 	{id: "LegRightOver", start: "WrappingLegsRightOver", end: "HarnessUnder"},
 	{id: "ArmLeftOver", start: "WrapArmLeft", end: "ShoeRightOver"},
 	{id: "PantRight", start: "ShoeRightOver", end: "CorsetUnder"},
@@ -1949,15 +1964,6 @@ let LayerGroups = {
 	"OverCrotchStrap",
 	"WrappingTorso",
 
-	// These are for the base skirt layer when kneeling
-	// The over layer is for kneeling
-	// Skirts that dont follow shilhouette and are puffy
-	"SkirtOverLowerDeco",
-	"SkirtOverLower",
-
-	// Skirts that are slim and follow the shilhouette
-	"SkirtLowerDeco",
-	"SkirtLower",
 
 	// Right leg
 	"WrappingLegsRightOver",

@@ -190,12 +190,26 @@ function KDWeapon(item: Named): weapon {
 	return KinkyDungeonWeapons[KinkyDungeonWeaponVariants[item.name]?.template || item.name];
 }
 
+/**
+ * @param item
+ */
+function KDWep(name: string): weapon {
+	return KinkyDungeonWeapons[KinkyDungeonWeaponVariants[name]?.template || name];
+}
+
 
 function KinkyDungeonFindWeapon(Name: string) {
 	for (let con of Object.values(KinkyDungeonWeapons)) {
 		if (con.name == Name) return con;
 	}
 	return undefined;
+}
+
+function KDWeaponCanCut(weapon: string, MagicOnly?: boolean): boolean {
+	if (weapon
+		&& KDWep(weapon)?.cutBonus != undefined
+		&& (!MagicOnly || KDWeaponIsMagic({name: weapon}))) return true;
+	return false;
 }
 
 function KinkyDungeonWeaponCanCut(RequireInteract: boolean, MagicOnly?: boolean): boolean {
@@ -3859,6 +3873,7 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 					inventoryVariant: variant?.name,
 					id: variant?.id || KinkyDungeonGetItemID(),
 					lock: variant?.lock || restraintTry.lock,
+					curse: variant?.curse || restraintTry.curse,
 					conjured: restraintTry.forceConjure,
 					faction: faction || restraintTry.faction || KDDefaultNPCBindPalette,
 					events: variant?.events || undefined,

@@ -1640,6 +1640,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		Security: {
+			level_key: 1,
+			level_tech: 1,
+		},
 		Sound: {
 			baseAmount: 3.5,
 			moveAmount: 3.5,
@@ -1665,6 +1669,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 3.5,
 			moveAmount: 3.5,
 			alertAmount: 12,
+		},
+		Security: {
+			level_key: 1,
+			level_tech: 1,
 		},
 		cueSfx: {
 			Block: "Clang",
@@ -1696,6 +1704,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			Resist: "SoftShield",
 			Damage: "RobotHit",
 		},
+		Security: {
+			level_key: 1,
+			level_tech: 1,
+		},
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
@@ -1722,6 +1734,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		RestraintFilter: {
 			unlimitedRestraints: true,
+		},
+		Security: {
+			level_key: 1,
+			level_tech: 1,
 		},
 		maxblock: 0,
 		maxdodge: 1,
@@ -1854,6 +1870,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3, color: KDBaseRed},
 		],
+		Security: {
+			level_tech: 2,
+		},
 		maxblock: 0,
 		maxdodge: 3,
 		stamina: 8,
@@ -1907,6 +1926,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		Security: {
+			level_tech: 2,
+		},
 		//summon: [
 		//{enemy: "Drone", range: 2, count: 2, chance: 0.7, strict: true},],
 		armor: 2, maxhp: 8, movePoints: 1.5,
@@ -1934,6 +1956,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxblock: 1,
 		maxdodge: 2,
 		sprintspeed: 2.4,
+		
+		Security: {
+			level_key: 3,
+			level_tech: 3,
+		},
 		RemoteControl: {
 			punishRemote: 4,
 			punishRemoteChance: 0.2,
@@ -1969,6 +1996,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxblock: 2,
 		maxdodge: 1,
 		sprintspeed: 2.4,
+		Security: {
+			level_key: 3,
+			level_tech: 3,
+		},
 		RemoteControl: {
 			punishRemote: 4,
 			punishRemoteChance: 0.2,
@@ -2008,6 +2039,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 8,
 			alertAmount: 12,
 		},
+		Security: {
+			level_key: 2,
+			level_tech: 2,
+		},
 		armor: 2.5, maxhp: 10, movePoints: 2,
 		evasion: -0.2,
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
@@ -2040,6 +2075,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 8,
 			alertAmount: 12,
 		},
+		Security: {
+			level_key: 2,
+			level_tech: 2,
+		},
 		armor: 2.5, maxhp: 14, movePoints: 3,
 		evasion: -0.35,
 		visionRadius: 6, followRange: 1, projectileAttack: true, useLock: "Red",
@@ -2070,6 +2109,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 3,
 			moveAmount: 8,
 			alertAmount: 12,
+		},
+		Security: {
+			level_key: 1,
+			level_tech: 2,
 		},
 		armor: 2.5, maxhp: 10, movePoints: 1.7,
 		evasion: -0.2,
@@ -2103,6 +2146,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 10,
 			alertAmount: 12,
 		},
+		Security: {
+			level_key: 2,
+			level_tech: 2,
+		},
 		armor: 4, maxhp: 20, movePoints: 4,
 		evasion: -0.5,
 		visionRadius: 9, followRange: 3.5, projectileAttack: true, useLock: "Red",
@@ -2128,6 +2175,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			Block: "Clang",
 			Resist: "SoftShield",
 			Damage: "RobotHit",
+		},
+		Security: {
+			level_key: 2,
+			level_tech: 2,
 		},
 		Sound: {
 			baseAmount: 5,
@@ -2167,6 +2218,10 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 5,
 			moveAmount: 10,
 			alertAmount: 12,
+		},
+		Security: {
+			level_key: 2,
+			level_tech: 2,
 		},
 		summon: [
 			{enemy: "DroneGuardian", range: 2, count: 2, chance: 0.25, strict: true},],

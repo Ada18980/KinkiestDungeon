@@ -276,6 +276,66 @@ function KDHelpless(enemy: entity): boolean {
 }
 
 /**
+ * entity has access to cutting power
+ * @param enemy
+ */
+function KDEntityCanCut(enemy: entity, magic?: boolean, requireInteract: boolean = true): boolean {
+	if (enemy == KDPlayer()) {
+		return KinkyDungeonWeaponCanCut(requireInteract, magic)
+	}
+	let packed = KDUnPackEnemy(enemy);
+	let res = !KinkyDungeonPacifistDamageTypes.includes(enemy.Enemy.dmgType) || enemy.Enemy.tags?.canCut || KDEnemyHasSharp(enemy, magic);
+	if (packed) KDPackEnemy(enemy);
+	return res;
+}
+
+/**
+ * entity has a knife or sharp obj in inventory
+ * kidna expensive
+ * @param enemy
+ */
+function KDEnemyHasSharp(enemy: entity, magic?: boolean): boolean {
+	if (enemy.items) {
+		for (let item of enemy.items) {
+			if (KDWeaponCanCut(item, magic)) {
+				return true;
+			}
+		}
+	}
+	if (enemy.tempitems) {
+		for (let item of enemy.tempitems) {
+			if (KDWeaponCanCut(item, magic)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+/**
+ * entity has a knife or sharp obj in inventory
+ * kidna expensive
+ * @param enemy
+ */
+function KDEnemyHasItem(enemy: entity, item?: string): boolean {
+	if (enemy.items) {
+		for (let inv of enemy.items) {
+			if (inv == item) {
+				return true;
+			}
+		}
+	}
+	if (enemy.tempitems) {
+		for (let inv of enemy.tempitems) {
+			if (inv == item) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+
+/**
  * Bound with no way out
  * @param enemy
  */
@@ -3118,6 +3178,41 @@ function KDClearStolenItems(enemy: entity) {
 		enemy.items = [];
 		enemy.tempitems = undefined;
 	}
+}
+
+
+
+/**
+ * @param enemy
+ */
+function KDConsumeItem(enemy: entity, item: string, includeStolen: boolean = true): boolean {
+	if (enemy.tempitems && includeStolen) {
+		let found = false;
+		for (let name of enemy.tempitems) {
+			if (name == item) {
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			enemy.tempitems.splice(enemy.tempitems.indexOf(item), 1)
+			return true;
+		}
+	}
+	if (enemy.items) {
+		let found = false;
+		for (let name of enemy.items) {
+			if (name == item) {
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			enemy.items.splice(enemy.items.indexOf(item), 1)
+			return true;
+		}
+	}
+	return false;
 }
 
 /**
@@ -6597,9 +6692,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											enemy.Enemy.willBonus ? {
 												willBonus: enemy.Enemy.willBonus
 											} : undefined);
-										replace.push({keyword:"RestraintAdded", value: KDGetRestraintName(rest.r, rest.v)});
-										restraintAdd.push({r: rest.r, v: rest.v, iv: rest.iv});
-										addedRestraint = true;
+										if (rest) {
+											replace.push({keyword:"RestraintAdded", value: KDGetRestraintName(rest.r, rest.v)});
+											restraintAdd.push({r: rest.r, v: rest.v, iv: rest.iv});
+											addedRestraint = true;
+										}
+										
 									}
 								} else {
 									let numTimes = 1;

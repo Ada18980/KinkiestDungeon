@@ -3513,8 +3513,31 @@ type KDLockType = {
 	command_greater: () => number;
 	command_supreme: () => number;
 
+
+	entityCanUnlock: (entity: entity, player: entity, data: KDLockEntityCanUnlockData) => boolean;
+	entityDoUnlock: (entity: entity, player: entity, data: KDLockEntityDoUnlockData) => boolean;
+	entityRemoveKeys: (entity: entity, player: entity, data: KDLockEntityDoUnlockData) => void;
+	//entityPickLevel: (entity: entity, player: entity, data: any) => number;
+	//entitydoPick: (entity: entity, player: entity, data: any) => number;
+	//entityCanCut: (entity: entity, player: entity, data: any) => boolean;
+	//entitydoCut: (entity: entity, player: entity, data: any) => number;
+
 	loot_special: boolean;
 	loot_locked: boolean;
+}
+
+interface KDLockEntityCanUnlockData {
+	entity: entity,
+	/** can be null in any case */
+	player?: entity,
+	query?: boolean,
+	override?: boolean,
+}
+
+interface KDLockEntityDoUnlockData {
+	entity: entity,
+	player?: entity,
+	item: item | NPCRestraint,
 }
 
 type KDBondageStatus = {
@@ -3716,6 +3739,9 @@ interface KDCursedDef {
 	condition: (item: item) => boolean,
 	/** Can return a boolean. True means the item is removed, if unlocked */
 	remove: (item: item, host: item, specialMethod: boolean) => boolean | void, events?: KinkyDungeonEvent[]
+
+	entityCanUnlock: (entity: entity, player: entity, data: KDLockEntityCanUnlockData) => boolean;
+	entityDoUnlock: (entity: entity, player: entity, data: KDLockEntityDoUnlockData) => boolean;
 }
 
 type KDRestraintVariant = {

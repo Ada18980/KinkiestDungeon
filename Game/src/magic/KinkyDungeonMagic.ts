@@ -2555,13 +2555,19 @@ function KDClearChoices() {
 	KinkyDungeonConsumableChoices = [];
 }
 
-function KDGetRandomSpell(maxSpellLevel = 4) {
-	let spell = null;
-	let spellList = [];
+function KDGetRandomSpell(context: string = "orb", maxSpellLevel = 4): spell {
+	let spell: spell = null;
+	let spellList: spell[] = [];
+	let data = {
+		spellList: spellList,
+		context: context,
+		maxLevel: maxSpellLevel,
+	}
+	KinkyDungeonSendEvent("beforeGetRandomSpell", data);
 	for (let k of Object.keys(KinkyDungeonSpellList)) {
 		for (let sp of KinkyDungeonSpellList[k]) {
 			if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret && !sp.passive) {
-				for (let iii = 0; iii < maxSpellLevel - sp.level; iii++)
+				for (let iii = 0; iii < data.maxLevel - sp.level; iii++)
 					spellList.push(sp);
 			}
 		}
@@ -2576,9 +2582,52 @@ function KDGetRandomSpell(maxSpellLevel = 4) {
 		}
 	}
 
-	spell = spellList[Math.floor(KDRandom() * spellList.length)];
+	KinkyDungeonSendEvent("getRandomSpell", data);
+
+	spell = data.spellList[Math.floor(KDRandom() * data.spellList.length)];
 
 	return spell;
+}
+
+
+function KDGetRandomSpells(count: number, context: string = "orb", maxSpellLevel = 4): spell[] {
+	let spellList: spell[] = [];
+	let data = {
+		spellList: spellList,
+		context: context,
+		maxLevel: maxSpellLevel,
+		count: count,
+		spells: [],
+	}
+	KinkyDungeonSendEvent("beforeGetRandomSpells", data);
+	for (let k of Object.keys(KinkyDungeonSpellList)) {
+		for (let sp of KinkyDungeonSpellList[k]) {
+			if (KinkyDungeonCheckSpellPrerequisite(sp) && sp.school == k && !sp.secret && !sp.passive) {
+				for (let iii = 0; iii < data.maxLevel - sp.level; iii++)
+					spellList.push(sp);
+			}
+		}
+	}
+
+	for (let sp of KinkyDungeonSpells) {
+		for (let S = 0; S < spellList.length; S++) {
+			if (sp.name == spellList[S].name) {
+				spellList.splice(S, 1);
+				S--;
+			}
+		}
+	}
+	KinkyDungeonSendEvent("getRandomSpells", data);
+
+	for(let i = 0; i < data.count; i++) {
+		let index = Math.floor(KDRandom() * data.spellList.length);
+		if (data.spellList[index]) {
+			data.spells.push(data.spellList[index]);
+			data.spellList.splice(index, 1);
+		}
+	}
+
+	return data.spells;
 }
 
 

@@ -106,7 +106,7 @@ function CharacterAppearanceRestore(C: Character, backup: string, clothesOnly: b
 
 function KDRefreshSelectedModel(C: Character) {
 	if (KDSelectedModel) {
-		if (KDCurrentModels.get(C).Models.has(KDSelectedModel.Name)) {
+		if (KDCurrentModels.get(C)?.Models.has(KDSelectedModel.Name)) {
 			KDSelectedModel = C.Appearance.find((value) => {
 				return value.Model.Name == KDSelectedModel.Name;
 			})?.Model;

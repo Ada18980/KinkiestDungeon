@@ -9,6 +9,7 @@ interface NPCRestraint extends Named {
 	events?: KinkyDungeonEvent[],
 	powerbonus?: number,
 	lock: string,
+	curse?: string,
 	id: number,
 	faction?: string,
 	conjured?: boolean,
@@ -480,6 +481,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint): i
 			events: restraints[slot].events,
 			inventoryVariant: restraints[slot].inventoryVariant,
 			conjured: restraints[slot].conjured,
+			curse: restraints[slot].curse,
 			quantity: 1,
 			showInQuickInv: KinkyDungeonRestraintVariants[restraints[slot].inventoryVariant] != undefined};
 	}
@@ -640,11 +642,13 @@ function KDNPCRefreshBondage(id: number, player: number, force: boolean = false,
 			if (!already[inv[1].id] && (allowConjured || !inv[1].conjured)) {
 				already[inv[1].id] = true;
 				KDInputSetNPCRestraint({
+					name: undefined,
 					slot: inv[0],
 					id: -1,
 					restraint: "",
 					restraintid: -1,
 					lock: "",
+					curse: undefined,
 					npc: id,
 					player: player,
 					force: true,
@@ -657,7 +661,7 @@ function KDNPCRefreshBondage(id: number, player: number, force: boolean = false,
 		for (let inv of Object.entries(restraints)) {
 			if (!already[inv[1].id] && (allowConjured || !inv[1].conjured)) {
 				already[inv[1].id] = true;
-				KDInputSetNPCRestraint({
+				let rest: SetNPCRestraintData = {
 					slot: inv[0],
 					id: inv[1].id,
 
@@ -669,14 +673,26 @@ function KDNPCRefreshBondage(id: number, player: number, force: boolean = false,
 					events: inv[1].events,
 					powerbonus: inv[1].powerbonus,
 					conjured: inv[1].conjured,
+					curse: inv[1].curse,
+					name: undefined,
 
 					npc: id,
 					player: player,
 					force: true,
-				}, container);
+				};
+				KDInputSetNPCRestraint(rest, container);
 			}
 		}
 	}
+}
+interface SetNPCRestraintData extends NPCRestraint {
+slot: string,
+restraint: string,
+restraintid: number,
+npc: number,
+player: number,
+force?: boolean,
+noInventory?: boolean,
 }
 
 function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number = 1) {
@@ -725,6 +741,7 @@ function KDFreeNPCRestraints(id: number, player: number) {
 					lock: "",
 					npc: id,
 					player: player,
+					name: undefined,
 				});
 			}
 		}
@@ -732,7 +749,7 @@ function KDFreeNPCRestraints(id: number, player: number) {
 }
 
 
-function KDInputSetNPCRestraint(data, container?: Record<string, item>): boolean {
+function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<string, item>): boolean {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
 	let item: item = null;
@@ -779,6 +796,7 @@ function KDInputSetNPCRestraint(data, container?: Record<string, item>): boolean
 				lock: "",
 				npc: data.npc,
 				player: data.player,
+				name: undefined,
 			});
 		}
 		if (KDRowItemIsValid(restraint, slot, row, rests)) {

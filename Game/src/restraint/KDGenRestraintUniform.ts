@@ -12,6 +12,7 @@ interface EligibleRestraintEntry {
 	restraint: restraint,
 	applyVariant: ApplyVariant,
 	lock: string,
+	curse?: string,
 	forceConjure: boolean,
 
 	/** eligible row */

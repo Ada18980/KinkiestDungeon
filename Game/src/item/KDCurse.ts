@@ -68,6 +68,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 			if (!_specialMethod)
 				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.Ectoplasm, -25);
 		},
+
+		
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 4
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"DollLock" : {
 		powerMult: 4,
@@ -82,7 +93,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.DollID, -4);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_tech >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"SpellLock1" : {
 		powerMult: 2.8,
@@ -97,7 +117,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KinkyDungeonSpellPoints -= 1;
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"SpellLock8" : {
 		powerMult: 4,
@@ -122,6 +151,15 @@ let KDCurses: Record<string, KDCursedDef> = {
 				.replace("RestraintName", KDGetItemName(item))//TextGet("Restraint" + KDRestraint(item).name))
 				.replace("AMNT", "" + (amount)),
 			KDBaseWhite, 2);
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
 		},
 	},
 	
@@ -154,6 +192,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 			{type: "LatexKittyCurse", power: 2, addBind: true, damage: "glue", bindType: "Latex", bindEff: 2.0, trigger: "playerAttack"},
 			{type: "LatexKittyCurse", trigger: "tick"},
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			// TODO add a chance to spread the curse?
+			return true;
+		},
 	},
 	"CursedCollar": {
 		powerMult: 10,
@@ -173,7 +221,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		},
 		remove: (_item, _host) => {
 			//KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_key >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"CursedDamage": {
 		powerMult: 10,
@@ -198,6 +255,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "cursedDamage", trigger: "afterPlayerDamage", mult: 1.0, power: 20, limit: 40},
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 3
+					|| entity.Enemy?.tags?.demon
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"MistressKey": {
 		powerMult: 4,
@@ -214,7 +281,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KinkyDungeonChangeConsumable(KinkyDungeonConsumables.MistressKey, -1);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.tags?.ancientmistress
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"5Keys" : {
 		lock: true,
@@ -229,7 +305,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KDAddConsumable("RedKey", -5);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_key >= 2
+					|| KDEnemyRank(entity) >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"Key" : {
 		powerMult: 2.1,
@@ -244,7 +330,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KDAddConsumable("RedKey", -1);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_key >= 1
+					|| KDEnemyRank(entity) >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"BlueLock" : {
 		lock: true,
@@ -259,7 +355,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KDAddConsumable("BlueKey", -1);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 3
+					|| entity.Enemy?.unlockCommandLevel >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"TakeDamageFire" : {
 		powerMult: 2.2,
@@ -274,6 +380,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "fire", trigger: "beforePlayerDamage", kind: "CurseMelt"},
 			{type: "RemoveOnDmg", power: 1, count: 3, damage: "crush", trigger: "beforePlayerDamage", kind: "CurseMelt"},
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"TakeDamageIce" : {
 		powerMult: 2.2,
@@ -293,6 +409,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 			//{type: "RemoveOnBuffName", trigger: "tick", kind: "Drenched"},
 			//{type: "RemoveOnBuffName", trigger: "tick", kind: "Chilled"},
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"TakeDamageElectric" : {
 		powerMult: 2.2,
@@ -307,6 +433,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 			{type: "RemoveOnDmg", power: 1, count: 2, damage: "electric", trigger: "beforePlayerDamage", kind: "CurseShock"},
 			{type: "RemoveOnDmg", power: 1, count: 2, damage: "estim", trigger: "beforePlayerDamage", kind: "CurseShock"},
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"TakeDamageGlue" : {
 		powerMult: 2.2,
@@ -320,6 +456,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 5, damage: "glue", trigger: "beforePlayerDamage", kind: "CurseGlue"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"TakeDamageChain" : {
 		powerMult: 2.2,
@@ -333,6 +479,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "RemoveOnDmg", power: 1, count: 5, damage: "chain", trigger: "beforePlayerDamage", kind: "CurseChain"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 2
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"SacrificeMage" : {
 		powerMult: 2.5,
@@ -346,6 +502,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "SacrificeMage", power: 1, count: 5, mult: 1, trigger: "afterCapture", kind: "SacrificeMage"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+					|| entity.Enemy?.unlockCommandLevel >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"Will" : {
 		powerMult: 2,
@@ -362,7 +528,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 		},
 		remove: (_item, _host) => {
 			// For free!
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+					|| entity.Enemy?.unlockCommandLevel >= 3
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"Mana" : {
 		powerMult: 2,
@@ -377,7 +553,17 @@ let KDCurses: Record<string, KDCursedDef> = {
 		remove: (_item, _host, _specialMethod) => {
 			if (!_specialMethod)
 				KDChangeMana("Mana", "curse", "uncurse", -20, false, 0, true, true);
-		}
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 1
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 	},
 	"ShrineWill" : {
 		powerMult: 2.5,
@@ -389,6 +575,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineWill"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+					|| entity.Enemy?.tags?.angel
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Will";
@@ -404,6 +600,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineElements"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+					|| entity.Enemy?.tags?.angel
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Elements";
@@ -419,6 +625,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineConjure"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+					|| entity.Enemy?.tags?.angel
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Conjure";
@@ -434,6 +650,16 @@ let KDCurses: Record<string, KDCursedDef> = {
 		events: [
 			{type: "ShrineUnlockWiggle", trigger: "tick", kind: "ShrineIllusion"}
 		],
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 2
+					|| entity.Enemy?.tags?.angel
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
 		condition: (_item) => {
 			return KDNearbyTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((tile) => {
 				return tile?.tile?.Type == "Shrine" && tile.tile.Name == "Illusion";
@@ -445,6 +671,15 @@ let KDCurses: Record<string, KDCursedDef> = {
 		level: 5,
 		weight: (_item) => {
 			return KinkyDungeonStatsChoice.get("arousalMode") ? 7 : 0;
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
 		},
 		condition: (_item) => {return false;},
 		remove: (_item, _host) => {},
@@ -460,6 +695,15 @@ let KDCurses: Record<string, KDCursedDef> = {
 		level: 5,
 		weight: (_item) => {
 			return KinkyDungeonStatsChoice.get("arousalMode") ? 9 : 0;
+		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
 		},
 		condition: (_item) => {return false;},
 		remove: (_item, _host) => {},

@@ -1,0 +1,339 @@
+"use strict";
+
+
+// TODO add slime, vine security so some enemies can bypass slime, vines, etc
+
+
+/**
+ * Gets a list of restraints blocking this group
+ * @param Group
+ * @param External
+ * @param specificItem check ends once this item is reached
+ */
+function KDGetBlockingRestraints(Group: string, _External?: boolean, specificItem?: item | NPCRestraint, player?: entity): (item | NPCRestraint)[] {
+    if (!player || player == KDPlayer()) {
+        // Create the storage system
+        let map: Map<item, boolean> = new Map();
+        let top = KinkyDungeonGetRestraintItem(Group);
+        if (top) {
+            let all = KDDynamicLinkList(top, true);
+            // For this section we just create a set of items that block this one
+            if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
+                for (let item of all) {
+                    if (specificItem?.id == item.id || item == specificItem) break;
+                    if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastity)) {
+                        map.set(item, true);
+                    }
+                }
+            }
+            if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
+                for (let item of all) {
+                    if (specificItem?.id == item.id || item == specificItem) break;
+                    if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastitybra)) {
+                        map.set(item, true);
+                    }
+                }
+            }
+            if (KinkyDungeonPlayerTags.get("Block_" + Group)) {
+                for (let item of all) {
+                    if (specificItem?.id == item.id || item == specificItem) break;
+                    if (!map.get(item) && (item == specificItem || KDRestraint(item)?.shrine?.includes("Block_" + Group))) {
+                        map.set(item, true);
+                    }
+                }
+            }
+
+            if (!specificItem || !KDRestraint(specificItem).alwaysAccessible) {
+                let link = top;
+	            let TagsSoFar: Record<string, boolean> = {};
+                while (link && KDRestraint(link)) {
+                    if (link == specificItem) break;
+                    if ((link == specificItem
+                            || KDRestraint(link).inaccessible
+                            || (specificItem && KDRestraint(specificItem).alwaysInaccessible)
+                            || (specificItem && 
+                                !KDRestraint(specificItem).alwaysRender
+                                 && !(!KDRestraint(specificItem).renderExcept
+                                    || !KDRestraint(specificItem).renderExcept.some((tag) => {
+                                        return TagsSoFar[tag];
+                                    }))
+                                && (
+                                    KDRestraint(link).UnderlinkedAlwaysRender
+                                        || KDRestraint(link).accessible
+                                        || (KDRestraint(specificItem).renderWhenLinked
+                                        && KDRestraint(link).shrine && KDRestraint(specificItem).renderWhenLinked.some(
+                                            (tag) => {return KDRestraint(link).shrine.includes(tag);}))
+                                )
+                            )
+                        )) {
+                        if (KDRestraint(link).shrine) {
+                            for (let tag of KDRestraint(link).shrine) {
+                                TagsSoFar[tag] = true;
+                            }
+                        }
+                        if (!map.get(link))
+                            map.set(link, true);
+                    }
+                    link = link.dynamicLink;
+                }
+            }
+            
+            // TODO make this generalized
+            if (Group == "ItemHands") {
+                let arms = KinkyDungeonGetRestraintItem("ItemArms");
+                if (arms) {
+                    let link = arms;
+                    while (link && KDRestraint(link)) {
+                        if (KDRestraint(link).inaccessible && !map.get(link)) {
+                            map.set(link, true);
+                        }
+                        link = link.dynamicLink;
+                    }
+                }
+            }
+        }
+        if (specificItem)
+            map.set(specificItem, true);
+        // Return restraints still in the list
+        return [...map.keys()];
+    } else {
+        // for npc
+        return []; // TODO
+    }
+	
+	
+
+}
+
+
+
+
+/**
+ * @param Group
+ * @param enemy
+ */
+function KDEnemyPassesSecurity(Group: string, enemy: entity): string {
+	if (!enemy) return "";
+	let blockers = KDGetBlockingRestraints(Group, true);
+	for (let blocker of blockers) {
+		if (!KDRestraint(blocker)?.Security) return "";
+		for (let secure of Object.entries(KDRestraint(blocker).Security)) {
+			if (KDGetSecurity(enemy, secure[0]) >= secure[1]) return secure[0];
+		}
+	}
+	return "";
+}
+
+interface KDCanPassSecurityData {
+    blockers: KDBlockingItemToData[],
+    success: boolean,
+}
+
+/**
+ * check if an enemy can bypass a specific item or, if undefined, all items in a group
+ * @param entity 
+ * @param item can be null if group isnt null
+ * @param group can be null if item isnt null
+ * @param bypass ignore all items on top
+ */
+function KDEnemyCanPassSecurity(entity: entity, player: entity, item: item | NPCRestraint, group: string, bypass: boolean = true): KDCanPassSecurityData {
+    if (bypass) {
+        if (item) {
+            let cantUnlock = KDEnemyCantUnlock(entity, item);
+        
+            return {
+                blockers: !cantUnlock ? null : [
+                    {item: item, reason: "Unlock"}
+                ],
+                success: !cantUnlock,
+            };
+        }
+    } else {
+        return {
+            blockers: null,
+            success: true,
+        };
+    }
+    
+    let top = KinkyDungeonGetRestraintItem(group ? group : KDRestraint(item).Group);
+    if (top) {
+        if (item) {
+            let blockingItems = KDGetBlockingItemsTo(entity, player, item, false);
+            if (blockingItems?.length > 0) {
+                return {
+                    blockers: blockingItems,
+                    success: false,
+                };
+            }
+        } else {
+            let blockingItems = KDGetBlockingItems(entity, player, group, false);
+
+            if (blockingItems?.length > 0) {
+                return {
+                    blockers: blockingItems,
+                    success: false,
+                };
+            }
+        }
+        
+    }
+    return {
+        blockers: null,
+        success: true,
+    };
+}
+
+interface KDBlockingItemToData {
+    item: item | NPCRestraint,
+    reason: string,
+}
+function KDGetBlockingItemsTo(entity, player, item, nounlock): KDBlockingItemToData[] {
+    let list: (item | NPCRestraint)[] = KDGetBlockingRestraints(KDRestraint(item).Group, entity != player, item, player);
+    let blockers: KDBlockingItemToData[] = [];
+
+    for (let i = 0; i < list.length; i++) {
+        let current = list[i];
+        if (current) {
+            if (nounlock)
+                blockers.push({
+                    item: current,
+                    reason: "",
+                }); 
+            else {
+                let cantUnlock = KDEnemyCantUnlock(entity, current, player);
+                if (cantUnlock) {
+                     blockers.push({
+                        item: current,
+                        reason: cantUnlock,
+                     }); 
+                }
+            }
+            if (current == item) break;
+        }
+    }
+    
+    return blockers;
+}
+function KDGetBlockingItems(entity, player, group, nounlock): KDBlockingItemToData[] {
+    let list: (item | NPCRestraint)[] = KDGetBlockingRestraints(group, entity != player, null, player);
+    let blockers: KDBlockingItemToData[] = [];
+
+    for (let i = 0; i < list.length; i++) {
+        let current = list[i];
+        if (current) {
+            if (nounlock)
+                blockers.push({
+                    item: current,
+                    reason: "",
+                }); 
+            else {
+                let cantUnlock = KDEnemyCantUnlock(entity, current, player);
+                if (cantUnlock) {
+                     blockers.push({
+                        item: current,
+                        reason: cantUnlock,
+                     }); 
+                }
+            }
+        }
+    }
+    
+    return blockers;
+}
+
+/** Enemy can bypass this specific item in general, irrespective of on a player or not.
+ * Useful for checking if an enemy will be able to unlock an item that isnt on the player yet.
+ * This is for a HYPOTHETICAL or EXISTING item, define player as not null to indicate that it is on a character
+ * @returns the reason for failure
+ * */
+function KDEnemyCantUnlock(entity: entity, item: item | NPCRestraint, player?: entity): string {
+    if (item.lock) {
+        let canUnlock = KDEnemyCanUnlockLock(entity, item.lock, item, player);
+        if (!canUnlock) return "Lock";
+        let canUncurse = KDEnemyCanUncurseCurse(entity, item.curse, item, player);
+        if (!canUncurse) return "Curse";
+    }
+    return KDEnemyCantUnlockRestraint(entity, KDRestraint(item), false, false, player);
+}
+/** Enemy can bypass this specific restraint in general, irrespective of who it's on
+ * KDEnemyCanUnlockItem leads into this one as a final filter;
+ * @param useDefaultLock set to false if you're checking the lock itself independently
+ * @param player optional; pass in case player has, say, something that makes unlocking harder
+ * @returns the reason for failure
+*/
+function KDEnemyCantUnlockRestraint(entity: entity, restraint: restraint, useDefaultLock: boolean = true, useCurse: boolean = true, player?: entity): string {
+    let data = {
+        removeDiff: ((restraint.helpChance?.Remove) != undefined ? restraint.helpChance?.Remove : restraint.escapeChance?.Remove) || 0,
+        struggleDiff: ((restraint.helpChance?.Struggle) != undefined ? restraint.helpChance?.Struggle : restraint.escapeChance?.Struggle) || 0,
+        enemyMod: KDEnemyRank(entity) * KDGlobalEnemyRankRemoveModifier,
+        //limitModRemove: ((restraint.limitChance?.Remove) != undefined ? restraint.helpChance?.Remove : restraint.escapeChance?.Remove),
+        limitModStruggle: ((restraint.limitChance?.Struggle) != undefined ? restraint.helpChance?.Struggle : restraint.escapeChance?.Struggle),
+        reason: undefined,
+        entity: entity,
+        player: player,
+    };
+    //if (data.limitModRemove == undefined) data.limitModRemove = KDGetBaseLimitChance("Remove");
+    if (data.limitModStruggle == undefined) data.limitModStruggle = KDGetBaseLimitChance("Struggle");
+    KinkyDungeonSendEvent("calcEnemyCantUnlockRestraint", data);
+
+    if (useCurse) {
+        if (!data.reason) {
+            let canUncurse = KDEnemyCanUncurseCurse(entity, restraint.curse, undefined, player);
+            if (!canUncurse) return "Curse";
+        }
+    }
+    if (useDefaultLock) {
+        if (!data.reason) {
+            let canUnlock = KDEnemyCanUnlockLock(entity, restraint.DefaultLock, undefined, player);
+            if (!canUnlock) return "Lock";
+        }
+    }
+    if (!data.reason) {
+        //  - data.limitModRemove <= 0  // irrelevant for calculation due to complexity
+        if (data.struggleDiff + data.enemyMod&& data.struggleDiff + data.enemyMod - data.limitModStruggle <= 0) {
+            data.reason = "Remove";
+        }
+    }
+
+    return data.reason;
+}
+    
+let KDGlobalEnemyRankRemoveModifier = 0.1;
+interface KDEnemyCantUnlockRestraintData {
+    removeDiff: number,
+    struggleDiff: number,
+    enemyMod: number,
+}
+
+/** 
+ * @param player optional; pass in case player has, say, something that makes unlocking harder
+*/
+function KDEnemyCanUnlockLock(entity: entity, lock: string, item?: item | NPCRestraint, player?: entity): boolean {
+    let lockType = KDLocks[lock];
+    if (!lockType) return true;
+
+    // remember to pass null to the 
+    if (lockType.entityCanUnlock(entity, player, {
+        query: true,
+        entity: entity,
+        player: player,
+    })) return true;
+
+    return false;
+}
+/** 
+ * @param player optional; pass in case player has, say, something that makes unlocking harder
+*/
+function KDEnemyCanUncurseCurse(entity: entity, curse: string, item?: item | NPCRestraint, player?: entity): boolean {
+    let curseType = KDCurses[curse];
+    if (!curseType) return true;
+
+    // remember to pass null to the 
+    if (curseType.entityCanUnlock(entity, player, {
+        query: true,
+        entity: entity,
+        player: player,
+    })) return true;
+
+    return false;
+}

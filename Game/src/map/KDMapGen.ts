@@ -2252,6 +2252,9 @@ function KinkyDungeonPlaceShrines (
 		}
 
 		let NN = 0;
+		let spells = KDGetRandomSpells(orbcount);
+		let spellind = 0;
+
 		if (count <= shrinecount) {
 
 			let shrine = list[NN];
@@ -2281,8 +2284,10 @@ function KinkyDungeonPlaceShrines (
 					if (orbs < orbcount) {
 						tile = 'O';
 
-						if (KinkyDungeonStatsChoice.get("randomMode") && KDGetRandomSpell()) {
-							let spell = KDGetRandomSpell();
+
+
+						if (KinkyDungeonStatsChoice.get("randomMode") && spells.length > 0) {
+							let spell = spells[spellind++];
 							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Orb", Spell: spell.name, Light: 5, lightColor: 0x28B4FF});
 						} else
 							KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Orb", Light: 5, lightColor: 0x28B4FF});

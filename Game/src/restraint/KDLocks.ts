@@ -49,6 +49,14 @@ let KDLocks: Record<string, KDLockType> = {
 		failUnlock: (_data) => {
 			return "Fail";
 		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && KDEntityCanCut(entity);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (_data) => {
+		},
 
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
@@ -113,6 +121,20 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		failUnlock: (_data) => {
 			return "Fail";
+		},
+		entityCanUnlock(entity, player, data) {
+			if (KDHelpless(entity)) return false;
+			if (KDPlayer() == player)
+				return KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.25;
+			else return (player.distraction < KDGetEntityMaxDistraction(player) * 0.25);
+		},
+		entityDoUnlock(entity, player, data) {
+			if (player == KDPlayer())
+				KinkyDungeonLock(data.item, "ExCrystal");
+			else data.item.lock = "ExCrystal"; // TODO add generic for npc
+			return true;
+		},
+		entityRemoveKeys: (_data) => {
 		},
 		penalty: {
 			"Struggle": 0.05,
@@ -194,6 +216,21 @@ let KDLocks: Record<string, KDLockType> = {
 				}
 			}
 		},
+		
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "RedKey")
+				|| KDEnemyHasItem(entity, "CuffKeys")
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//if (!KDEnemyHasItem(entity, "CuffKeys"))
+			//	KDConsumeItem(entity, "RedKey", true)
+		},
+
 		failUnlock: (_data) => {
 			return "Fail";
 		},
@@ -270,8 +307,27 @@ let KDLocks: Record<string, KDLockType> = {
 				KDCyberUnlock(_data, 20);
 			}
 		},
+		
 		failUnlock: (_data) => {
 			return "Fail";
+		},
+
+		
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "KeyCard")
+				|| entity.Enemy?.Security?.level_tech >= 1
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			// for now there is technically an exploit where the player could theoretically give the keycard to an enemy and then the enemy can unlock the player
+			// but you cant ask the NPC to do it--thats what 'help' action is for, so it'd have to be incidental
+			// still technically exploity but we're not trying to code the next AGI here
+			//if (!KDEnemyHasItem(entity, "CuffKeys"))
+			//	KDConsumeItem(entity, "RedKey", true)
 		},
 
 		// Start of level -- for gold locks
@@ -355,6 +411,23 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "KeyCard")
+				|| entity.Enemy?.Security?.level_tech >= 2
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			// for now there is technically an exploit where the player could theoretically give the keycard to an enemy and then the enemy can unlock the player
+			// but you cant ask the NPC to do it--thats what 'help' action is for, so it'd have to be incidental
+			// still technically exploity but we're not trying to code the next AGI here
+			//if (!KDEnemyHasItem(entity, "CuffKeys"))
+			//	KDConsumeItem(entity, "RedKey", true)
+		},
+
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -436,6 +509,23 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "KeyCard")
+				|| entity.Enemy?.Security?.level_tech >= 3
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			// for now there is technically an exploit where the player could theoretically give the keycard to an enemy and then the enemy can unlock the player
+			// but you cant ask the NPC to do it--thats what 'help' action is for, so it'd have to be incidental
+			// still technically exploity but we're not trying to code the next AGI here
+			//if (!KDEnemyHasItem(entity, "CuffKeys"))
+			//	KDConsumeItem(entity, "RedKey", true)
+		},
+
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -480,6 +570,19 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		breakChance: (_data) => {
 			return KDRandom()*1.5 < KinkyDungeonKeyGetPickBreakChance();
+		},
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "CuffKeys")
+				|| KDEnemyHasItem(entity, "RedKey")
+				|| KDEnemyHasItem(entity, "Pick")
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
 		},
 
 		// Key
@@ -576,6 +679,21 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "Pick")
+				|| KDEnemyHasItem(entity, "RedKey")
+				|| entity.Enemy?.Security?.level_key >= 1
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
+
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -643,6 +761,20 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "Pick")
+				|| KDEnemyHasItem(entity, "RedKey")
+				|| entity.Enemy?.Security?.level_key >= 1
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -710,6 +842,20 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "Pick")
+				|| KDEnemyHasItem(entity, "RedKey")
+				|| entity.Enemy?.Security?.level_key >= 1
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -777,6 +923,19 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "RedKey")
+				|| entity.Enemy?.Security?.level_key >= 2
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -849,6 +1008,17 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+
+		entityCanUnlock(entity, player, data) {
+			return entity.Enemy?.name == "AdaLovelock";
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
+
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -919,6 +1089,21 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "DiscPick")
+				|| KDEnemyHasItem(entity, "RedKey")
+				|| entity.Enemy?.Security?.level_key >= 2
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
+
 		// Start of level -- for gold locks
 		levelStart: (_item) => {
 		},
@@ -968,6 +1153,21 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		breakChance: (_data) => {
 			return true;
+		},
+
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && (
+				KDEnemyHasItem(entity, "BlueKey")
+				|| entity.Enemy?.Security?.level_key >= 3
+				|| entity.Enemy?.Security?.level_magic >= 3
+				|| entity.Enemy?.unlockCommandLevel >= 3
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
 		},
 
 		// Key
@@ -1058,6 +1258,22 @@ let KDLocks: Record<string, KDLockType> = {
 		failUnlock: (_data) => {
 			return "Fail";
 		},
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+			KDEnemyHasItem(entity, "BlueKey")
+			 && (
+				KDEnemyHasItem(entity, "MistressKey")
+				|| entity.Enemy?.Security?.level_magic >= 4
+				|| entity.Enemy?.Security?.level_tech >= 4
+				|| entity.Enemy?.unlockCommandLevel >= 4
+			);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
 
 		doLock: (data) => {
 			if (data.item && !data.link) {
@@ -1136,6 +1352,17 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				entity.Enemy?.tags?.angel;
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
+
 		// Start of level -- for gold locks and others
 		levelStart: (_item) => {
 			KinkyDungeonSendTextMessage(8, TextGet("KDDivineLockReminder"), "#ffff44", 2, false, true);
@@ -1204,6 +1431,16 @@ let KDLocks: Record<string, KDLockType> = {
 			return "Fail";
 		},
 
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				entity.Enemy?.tags?.angel;
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
+		},
 		// Start of level -- for gold locks and others
 		levelStart: (_item) => {
 		},
@@ -1265,6 +1502,21 @@ let KDLocks: Record<string, KDLockType> = {
 		},
 		failUnlock: (_data) => {
 			return "Fail";
+		},
+
+		
+		entityCanUnlock(entity, player, data) {
+			return !KDHelpless(entity) && 
+				(
+					entity.Enemy?.Security?.level_magic >= 1
+					|| entity.Enemy?.unlockCommandLevel >= 1
+				);
+		},
+		entityDoUnlock(entity, player, data) {
+			return true;
+		},
+		entityRemoveKeys: (entity, player, _data) => {
+			//KDConsumeItem(entity, "RedKey", true)
 		},
 
 		// Start of level -- for gold locks
