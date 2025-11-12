@@ -385,6 +385,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 											inventoryVariant: KinkyDungeonTargetingSpellItem.inventoryVariant,
 											npc: en.id,
 											player: entity?.id,
+											name: undefined,
 										});
 
 										KinkyDungeonSendTextMessage(10,

@@ -140,6 +140,7 @@ function KDUpdateWarden(delta: number) {
 										npc: value.id,
 										player: -1,
 										noInventory: true,
+										name: undefined,
 									}, WardenItems))
 										// If added, refresh
 										q -= rr.count;
@@ -171,6 +172,7 @@ function KDUpdateWarden(delta: number) {
 									inventoryVariant: testItem.inventoryVariant,
 									npc: value.id,
 									player: -1,
+									name: undefined,
 								}, WardenItems))
 									// If added, refresh
 									KDGameData.FacilitiesData.Warden_TightenedCount += 1;

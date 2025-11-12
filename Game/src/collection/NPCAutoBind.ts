@@ -52,6 +52,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 								events: inv[1].events,
 								powerbonus: inv[1].powerbonus,
 								inventoryVariant: inv[1].inventoryVariant,
+								name: undefined,
 
 								npc: value.id,
 								player: KDPlayer().id,
@@ -161,6 +162,7 @@ KDCollectionTabDraw.AutoBind = (value, buttonSpacing, III, x, y) => {
 									events: inv[1].events,
 									powerbonus: inv[1].powerbonus,
 									inventoryVariant: inv[1].inventoryVariant,
+									name: undefined,
 
 									npc: value.id,
 									player: KDPlayer().id,

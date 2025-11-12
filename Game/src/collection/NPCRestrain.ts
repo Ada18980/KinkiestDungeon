@@ -9,6 +9,7 @@ interface NPCRestraint extends Named {
 	events?: KinkyDungeonEvent[],
 	powerbonus?: number,
 	lock: string,
+	variant?: string,
 	curse?: string,
 	id: number,
 	faction?: string,
