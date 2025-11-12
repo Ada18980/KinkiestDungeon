@@ -207,7 +207,7 @@ function KDEnemyCanPassSecurity(entity: entity, player: entity, item: item | NPC
     
     
     let top = (!player || player.player) ? KinkyDungeonGetRestraintItem(group ? group : KDRestraint(item).Group) : null;
-    if (top || item) {
+    if (top || (player && !player.player)) {
         if (item) {
             let blockingItems = KDGetBlockingItemsTo(entity, player, item, false);
             if (blockingItems?.length > 0) {
@@ -227,8 +227,6 @@ function KDEnemyCanPassSecurity(entity: entity, player: entity, item: item | NPC
             }
         }
         
-    } else if (player && !player.player) {
-        // TODO need some logic here... for unused function
     }
     return {
         blockers: null,
