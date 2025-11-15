@@ -3654,7 +3654,7 @@ function DrawButtonKD (
 
 
 /**
- * Draws a button component
+ * Draws a button component that triggers each frame it is held
  * @param name - Name of the button element
  * @param func - Whether or not you can click on it
  * @param enabled - Whether or not you can click on it

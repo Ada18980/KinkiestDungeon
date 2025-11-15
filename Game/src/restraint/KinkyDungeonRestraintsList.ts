@@ -3865,13 +3865,15 @@ const KinkyDungeonRestraints: restraint[] = [
 
 	// Toys
 
-	{renderWhenLinked: ["Chastity"], inventory: true, arousalMode: true, name: "WolfPanties", debris: "Belts", inaccessible: true, Asset: "SciFiPleasurePanties", strictness: 0.05, Color: ["#4F91DE", "#2E2E2E", "#3b7d4f", "#2f5753", "#4F91DE", "#4F91DE", KDBaseBlack] ,Group: "ItemPelvis", LinkableBy: ["Chastity"], power: 4,
+	{renderWhenLinked: ["Chastity"], inventory: true, arousalMode: true, name: "WolfPanties", debris: "Belts", inaccessible: true, Asset: "SciFiPleasurePanties", strictness: 0.05,
+		Color: ["#4F91DE", "#2E2E2E", "#3b7d4f", "#2f5753", "#4F91DE", "#4F91DE", KDBaseBlack] ,Group: "ItemPelvis", LinkableBy: ["Chastity", "RopeCrotch", "Ties"], power: 4,
 		Model: "WolfPantiesRestraint",
 		sfxGroup: "Rubber",
 		limited: true,
 		Filters: {
 			Panties: {"gamma":1,"saturation":2.3000000000000003,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 		},
+
 		weight: 0,
 		escapeChance: {"Struggle": 0.05, "Cut": 0.3, "Remove": 0.05, "Pick": 0.35},
 		limitChance: {"Struggle": 0.25, "Remove": 0.1},
