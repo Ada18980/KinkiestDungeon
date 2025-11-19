@@ -4588,6 +4588,32 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			KinkyDungeonApplyBuffToEntity(entity, KDGlueVulnLow, changes);
 		},
 	},
+	"goldMult": {
+		"moreExpensive": (e, buff, entity, _data) => {
+			if (buff.power && !_data.sell) {
+				_data.cost *= buff.power
+			}
+		},
+		"moreValuable": (e, buff, entity, _data) => {
+			if (buff.power && _data.sell) {
+				_data.cost *= buff.power
+			}
+		}
+	},
+	"goldFlatBefore": {
+		"biggercost": (e, buff, entity, _data) => {
+			if (buff.power && !_data.sell) {
+				_data.cost += buff.power
+			}
+		}
+	},
+	"goldFlatAfter": {
+		"biggercost": (e, buff, entity, _data) => {
+			if (buff.power && !_data.sell) {
+				_data.cost += buff.power
+			}
+		}
+	}
 };
 
 /**
