@@ -53,6 +53,11 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 - Added low-resolution textures setting. Try this if your game crashes after some time.
 
+5.4.81
+- fixed wolfgirl panties not stacking with ropes
+- mod files array now replace all backslashes with forwardslashes, to help compatibility on different systems
+- 
+
 5.4.80
 - Added low-resolution textures setting. Try this if your game crashes after some time.
 - Added filter in options menu

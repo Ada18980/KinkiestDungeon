@@ -1144,6 +1144,39 @@ function KinkyDungeonSendOutfitEvent(Event: string, data: any) {
 	}
 }
 
+
+
+
+/**
+ * @param C
+ */
+function KDGetRemovePoses(C: Character, PoseList: Record<string, boolean>): string[] {
+	let poses = [];
+	if (C == KinkyDungeonPlayer) {
+		// For player
+		if (KinkyDungeonPlayerTags.get("DontLinkFeet")) {
+			poses.push("FeetLinked");
+		}
+		if (KinkyDungeonPlayerTags.get("DontBindLegs")) {
+			poses.push("LegBind");
+		}
+	} else {
+		// For NPC
+		if (NPCTags.get(C)) {
+			let tags = NPCTags.get(C);
+			if (tags.get("DontLinkFeet")) {
+				poses.push("FeetLinked");
+			}
+			if (tags.get("DontBindLegs")) {
+				poses.push("LegBind");
+			}
+		}
+	}
+	if (PoseList.DontLinkFeet) poses.push("FeetLinked")
+	if (PoseList.DontBindLegs) poses.push("LegBind")
+	return poses;
+}
+
 /**
  * @param C
  */
@@ -1151,18 +1184,33 @@ function KDGetExtraPoses(C: Character): string[] {
 	let poses = [];
 	if (C == KinkyDungeonPlayer) {
 		// For player
-		if (KinkyDungeonPlayerTags.get("LinkFeet")) {
-			poses.push("FeetLinked");
-		}
 		if (KinkyDungeonIsHandsBound()) {
 			poses.push("HandsBound");
 		}
-		if (KDIsPlayerTethered(KDPlayer()) && KinkyDungeonLeashingEnemy()) {
+		if (KinkyDungeonPlayerTags.get("LinkFeet")) {
+			poses.push("FeetLinked");
+		}
+		if (KDIsPlayerTethered(KDPlayer())) {
 			poses.push("Pulled");
 		}
 	} else {
 		// For NPC
-		// ???
+		if (NPCTags.get(C)) {
+			let tags = NPCTags.get(C);
+			if (tags.get("LinkFeet")) {
+				poses.push("FeetLinked");
+			}
+		}
+		if (KDNPCChar_ID.get(C)) {
+			let id = KDNPCChar_ID.get(C);
+			let npc = KDLookupID(id);
+			if (npc) {
+				if (KDIsPlayerTethered(npc)) {
+					poses.push("Pulled");
+				}
+			}
+			
+		}
 	}
 	return poses;
 }
@@ -1213,6 +1261,13 @@ function KDUpdateTempPoses(Character: Character) {
 	if (extraPose) {
 		for (let pose of extraPose) {
 			KDCurrentModels.get(Character).Poses[pose] = true;
+		}
+	}
+
+	let removePose = KDGetRemovePoses(Character, KDCurrentModels.get(Character).Poses);
+	if (removePose) {
+		for (let pose of removePose) {
+			delete KDCurrentModels.get(Character).Poses[pose];
 		}
 	}
 }

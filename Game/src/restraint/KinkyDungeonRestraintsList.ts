@@ -2825,6 +2825,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		// Should be trivial to remove unless player is wearing cuffs, in which case its lockable
 		// Conditional locking also needs to be added
 		// UGHHHHH
+
+		requireNoTagToEquip: ["FeetLinked", "LegBind"],
+		allowOverrideBasedOnTagFilters: ["FeetLinked", "LegBind", "blockfeet"],
 		
 		tightType: "Secure",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35},

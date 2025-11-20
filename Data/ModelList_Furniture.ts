@@ -170,7 +170,7 @@ AddModel({
 	Group: "Devices",
 	Restraint: true,
 	Categories: ["Restraints","Furniture"],
-	AddPose: ["Saddled", "ForceKneel", "Unhobble"],
+	AddPose: ["Saddled", "ForceKneel", "Unhobble", "DontLinkFeet", "DontBindLegs"],
 	AddPoseIf: {
 		LongSkirt: ["CrotchStrap"],
 		

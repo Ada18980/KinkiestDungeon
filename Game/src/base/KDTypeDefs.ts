@@ -291,6 +291,15 @@ interface KDRestraintPropsBase {
 	renderWhenLinked?: string[];
 	// Player must have one of these PlayerTags to equip
 	requireSingleTagToEquip?: string[];
+	// player must NOT have any of these playertags to equip
+	requireNoTagToEquip?: string[];
+	/**
+	 * allows the restraint to ignore its tag filters if every restraint the player is wearing with one of these tags has less power than the equipping restraint
+	 * also includes restraint properties (yay javascript fuckery)
+	 * note: this is an EXTREMELY expensive function, especially when the player is heavily restrained
+	 * its best used sparingly
+	 */
+	allowOverrideBasedOnTagFilters?: string[],
 	noRecycle?: boolean,
 	/** Disassembles into a raw item */
 	disassembleAs?: string,

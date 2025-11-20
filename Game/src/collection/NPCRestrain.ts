@@ -256,7 +256,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 							undefined)) {
 
 								let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
-									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()),
+									restraint.DefaultLock, restraint.curse)
 									: "";
 								if (condition) {
 									KinkyDungeonSendTextMessage(8,
@@ -283,7 +284,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								}
 							} else {
 								let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
-									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+									KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()),
+									restraint.DefaultLock, restraint.curse)
 									: "";
 								if (condition) {
 									KinkyDungeonSendTextMessage(8,
@@ -334,7 +336,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						undefined)) {
 
 						let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
-							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()), 
+							inv.item.lock || restraint.DefaultLock, inv.item.curse || restraint.curse)
 							: "";
 						if (condition) {
 							KinkyDungeonSendTextMessage(8,
@@ -355,7 +358,8 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						}
 					} else {
 						let condition = KinkyDungeonFindID(npcID) ? KDCanEquipItemOnNPC(restraint, npcID,
-							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()))
+							KDWillingBondage(KinkyDungeonFindID(npcID), KDPlayer()), 
+							inv.item.lock || restraint.DefaultLock, inv.item.curse || restraint.curse)
 							: "";
 						if (condition) {
 							KinkyDungeonSendTextMessage(8,
@@ -711,14 +715,14 @@ function KDNPCRestraintTieUp(id: number, restraint: NPCRestraint, mult: number =
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
 
-function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean): string {
+function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean, lock: string, curse: string): string {
 	let enemy = KDGetGlobalEntity(id);
 	// TODO make this function work on player too
 	if (enemy) {
 		let stats = KDGetRestraintBondageStats(r, enemy);
 		if (stats.conditions) {
 			for (let condition of stats.conditions) {
-				if (!KDBondageConditions[condition](r, id, willing)) {
+				if (!KDBondageConditions[condition](r, id, willing, lock, curse)) {
 					return condition;
 				}
 			}
@@ -780,7 +784,7 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 		if (restraint) {
 			// Willing: true because they cant resist
 			let condition = KDCanEquipItemOnNPC(restraint, data.npc, willing || KDWillingBondage(KDGetGlobalEntity(data.npc),
-			data.player ? KDLookupID(data.player) : undefined));
+			data.player ? KDLookupID(data.player) : undefined), data.lock || restraint.DefaultLock, data.curse || restraint.curse);
 			if (condition) {
 				KinkyDungeonSendTextMessage(8,
 					TextGet("KDBondageCondition_" + condition),

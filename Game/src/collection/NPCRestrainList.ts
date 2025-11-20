@@ -193,7 +193,7 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 
 
 
-let KDBondageConditions: Record<string, (r: restraint, id: number, willing: boolean) => boolean> = {
+let KDBondageConditions: Record<string, (r: restraint, id: number, willing: boolean, lock: string, curse: string) => boolean> = {
 	HeavyBondage: (r, id, willing) => {
 		if (willing) return true;
 		if (r.quickBindCondition) return true;
@@ -215,6 +215,19 @@ let KDBondageConditions: Record<string, (r: restraint, id: number, willing: bool
 				}
 
 				if (NPCTags.get(npcSprite)) {
+
+					if (!r.allowOverrideBasedOnTagFilters || KDAllRestraintDynamicList().every((item) => {
+						return ( // we dont have one of the tags
+							!r.allowOverrideBasedOnTagFilters.some((tag) => {
+								return !KDRestraint(item)[tag] && !KDRestraint(item).shrine?.includes(tag)
+							}))
+						|| ( // we do but the power is less
+							// also do this for regular not just npc restraints
+						);
+					})) {
+
+					}
+
 					if (r.requireAllTagsToEquip) {
 						for (let tag of r.requireAllTagsToEquip) {
 							if (!NPCTags.get(npcSprite).get(tag)) {
@@ -229,6 +242,14 @@ let KDBondageConditions: Record<string, (r: restraint, id: number, willing: bool
 							}
 						}
 						return false;
+					}
+					if (r.requireNoTagToEquip) {
+						for (let tag of r.requireNoTagToEquip) {
+							if (NPCTags.get(npcSprite).get(tag)) {
+								return false;
+							}
+						}
+						return true;
 					}
 				}
 

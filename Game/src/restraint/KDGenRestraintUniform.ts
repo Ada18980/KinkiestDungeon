@@ -73,6 +73,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 	forceLock?: string, // If it does have defaultlock it forces this still
 	fallbackLock?: string, // If it doesnt have defaultLock
 	forceCurse?: string,
+	fallbackCurse?: string,
 	forceConjure?: boolean,
 	currentWill?: number,
 }): EligibleRestraintEntry[] {
@@ -105,7 +106,9 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			if (options?.currentWill != undefined
 				&& (restraint.maxwill != undefined || restraint.maxwillEnemy)
 				&& (restraint.maxwillEnemy != undefined ? restraint.maxwillEnemy : restraint.maxwill) < options.currentWill) continue;
-			if (KDCanEquipItemOnNPC(restraint, id, false)) continue;
+			if (KDCanEquipItemOnNPC(restraint, id, false, 
+				options?.forceLock || restraint.DefaultLock || options?.fallbackLock,
+				options?.forceCurse || restraint.curse || options?.fallbackCurse)) continue;
 
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
@@ -219,6 +222,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			lock: KinkyDungeonIsLockable(cp.r) ?
 				(options?.forceLock != undefined ? options.forceLock : cp.r.DefaultLock) || options?.fallbackLock
 				: undefined,
+			curse: (options?.forceCurse != undefined ? options.forceCurse : cp.r.curse) || options?.fallbackCurse,
 			restraint: cp.r,
 			row: cp.row,
 			slot: cp.sgroup

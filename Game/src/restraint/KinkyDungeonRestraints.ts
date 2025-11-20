@@ -363,7 +363,7 @@ function KDRestraintBondageConditions(item: Named): string[] {
 			data.conditions.push("HeavyBondage");
 		}
 
-		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip) {
+		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip || r.requireNoTagToEquip) {
 			data.conditions.push("Extra");
 		}
 
@@ -4065,6 +4065,7 @@ function KinkyDungeonLinkableAndStricter(oldRestraint: restraint, newRestraint: 
 function KDIsEligible(restraint: restraint): boolean {
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+	if (restraint.requireNoTagToEquip && restraint.requireNoTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	return true;
 }
 
@@ -4122,6 +4123,7 @@ function KDCanAddRestraint (
 	if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return false;
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+	if (restraint.requireNoTagToEquip && restraint.requireNoTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
 	if (restraint.shrine.includes("Raw")) return false;

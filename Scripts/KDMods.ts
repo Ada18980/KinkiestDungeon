@@ -458,17 +458,23 @@ async function KDExecuteMods() {
 				}
 			// asset file - just return the promise after loading with PIXI as the load order here won't be critical.
 			} else {
-				KDModFiles[KinkyDungeonRootDirectory + file] = URL.createObjectURL(blob);
-				KDModFiles[KinkyDungeonRootDirectory + "" + file] = KDModFiles[KinkyDungeonRootDirectory + file];
+				KDModFiles[(KinkyDungeonRootDirectory + file).replace("\\", "/")] = URL.createObjectURL(blob);
+				KDModFiles[(KinkyDungeonRootDirectory + "" + file).replace("\\", "/")] = KDModFiles[KinkyDungeonRootDirectory + file];
 
 				if (file?.startsWith("Data/")
 					|| file?.startsWith("DisplacementMaps/")
 					|| file?.startsWith("Models/")
 					|| file?.startsWith("ModelsBack/")
 					|| file?.startsWith("TextureAtlas/")
-					|| file?.startsWith("Music/")) {
-						KDModFiles[file] = URL.createObjectURL(blob);
-						KDModFiles[PIXI.utils.path.toAbsolute(file)] = URL.createObjectURL(blob);
+					|| file?.startsWith("Music/")
+				|| file?.startsWith("Data\\")
+					|| file?.startsWith("DisplacementMaps\\")
+					|| file?.startsWith("Models\\")
+					|| file?.startsWith("ModelsBack\\")
+					|| file?.startsWith("TextureAtlas\\")
+					|| file?.startsWith("Music\\")) {
+						KDModFiles[file.replace("\\", "/")] = URL.createObjectURL(blob);
+						KDModFiles[(PIXI.utils.path.toAbsolute(file)).replace("\\", "/")] = URL.createObjectURL(blob);
 				}
 			}
 		} catch (err) {
