@@ -20734,7 +20734,7 @@ Ah！原谅我!
 # :: KinkyDungeonRemindJailChaseGunnerMaidAttack1
 # :: KinkyDungeonRemindJailChaseGunnerMaidJailbreak
 - Miss! You're not allowed to cast that!
-小姐！你不能用那个！
+小姐！你不能那么做！
 - Miss, I have to report that!
 小姐，我必须报告！
 - Eeep!
@@ -25560,7 +25560,7 @@ Mmmph? (行为混乱)
 # :: rPrisonerJailPickJam
 # :: rPrisonerJailOwnPickJam
 - (You can't pick the lock with your hands bound)
-( 你不能用在手被绑住的时候撬锁。 )
+（双手被束缚，无法撬锁）
 # :: rPrisonerJailPickHandsBound
 # :: rPrisonerJailOwnPickHandsBound
 # :: rPrisonerLatexCutHandsBound
