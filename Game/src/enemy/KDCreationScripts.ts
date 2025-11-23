@@ -16,5 +16,17 @@ let KDCreationScripts: Record<string, (entity: entity, coord: WorldCoord) => boo
 			};
 		}
 		return !!res;
+	},
+	Boss: (entity, coord) => {
+		// Make the dragon persistent
+		KDSetSpawnAndWanderAI(KDGetPersistentNPC(entity.id, entity, true), undefined, undefined);
+
+		KDGetPersistentNPC(entity.id, entity, true).special = true;
+		entity.homeCoord = {
+			mapX: (coord).mapX,
+			mapY: (coord).mapY,
+			room: coord.room,
+		};
+		return true;
 	}
 }

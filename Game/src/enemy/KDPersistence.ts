@@ -511,7 +511,9 @@ function KDRefreshPersistentNPC(id: number) {
 		let enemy = KinkyDungeonFindID(id);
 		if (enemy) {
 			let entry = KDPersistentNPCs[id];
-			KDMapData.Entities[KDMapData.Entities.indexOf(enemy)] = entry.entity;
+			let index = KDMapData.Entities.findIndex((entity) => {return entity.id == id;})
+			if (index >= 0)
+				KDMapData.Entities[index] = entry.entity;
 		}
 	}
 }

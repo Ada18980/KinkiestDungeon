@@ -4943,12 +4943,10 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 		CDE.homeCoord = KDGetCurrentLocation();
 	}
 
+	let currentMapDataLocation = KDGetCoordFromMapData(KDMapData);
 	let currentMapData = KDMapData;
-
-
-
-	KDGoThruTile(exit.x, exit.y, true, true, false);
-
+	KDGoThruTile(exit.x, exit.y, true, true, false, true);
+	currentMapData = KDGetMapData(currentMapDataLocation) || KDMapData;
 
 	// The above condition is the condition to start in jail
 	// We move the player to the jail after generating one
@@ -9892,6 +9890,9 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 	mapData.Entities.push(data.enemy);
 	if (!noLoadout)
 		KDSetLoadout(data.enemy, data.loadout);
+	if (data.enemy.Enemy.onSpawnScript) {
+		KDRunOnSpawnScript(data.enemy, KDGetCoordFromMapData(data.mapData));
+	}
 	if (!data.enemy.data && data.enemy.Enemy.data) data.enemy.data = data.enemy.Enemy.data;
 	if (data.data) {
 		if (!data.enemy.data) data.enemy.data = {};
@@ -10109,7 +10110,9 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 		KDGetPersistentNPC(enemy.id).spawned = undefined;
 	}
 
-	KDSpliceIndex(forceIndex || data.mapData.Entities.indexOf(data.enemy), 1, data.mapData);
+	let index = forceIndex != undefined ? forceIndex : data.mapData.Entities.findIndex((entity) => {return entity.id == data.enemy.id;});
+	if (index >= 0)
+		KDSpliceIndex(index, 1, data.mapData);
 	if (data.mapData == KDMapData)
 		KDUpdateEnemyCache = true;
 

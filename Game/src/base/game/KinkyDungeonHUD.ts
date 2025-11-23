@@ -25,12 +25,21 @@ let KinkyDungeonStruggleGroupsBase = [
 	"ItemBoots",
 ];
 let KDDrawStruggleEnum = {
-	MOST: 1,
+	ALMOSTALL: 1,
+	MOST: 2,
 	FULL: 0,
-	STRUGGLE: 2,
-	NONE: 3,
+	STRUGGLE: 3,
+	NONE: 4,
 };
-let KinkyDungeonDrawStruggle = KDDrawStruggleEnum.MOST;
+let KDDrawMaxStruggle = 4;
+let KDDrawStruggleIcon = {
+	[KDDrawStruggleEnum["ALMOSTALL"]]: "AlmostAll",
+	[KDDrawStruggleEnum["MOST"]]: "Most",
+	[KDDrawStruggleEnum["FULL"]]: "Full",
+	[KDDrawStruggleEnum["STRUGGLE"]]: "Struggle",
+	[KDDrawStruggleEnum["NONE"]]: "True",
+};
+let KinkyDungeonDrawStruggle = KDDrawStruggleEnum.ALMOSTALL;
 let KDPlayerSetPose = false;
 let KDToggleXRay = 0;
 let KDBulletTransparency = false;
@@ -1154,14 +1163,10 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 
 	if (DrawButtonKDEx("RestHide", (_bdata) => {
 		KinkyDungeonDrawStruggle += 1;
-		if (KinkyDungeonDrawStruggle > 3) KinkyDungeonDrawStruggle = 0;
+		if (KinkyDungeonDrawStruggle > KDDrawMaxStruggle) KinkyDungeonDrawStruggle = 0;
 		return true;
 	}, true, 510, 925, 60, 60, "", KinkyDungeonStruggleGroups.length > 0 ? KDBaseWhite : "#333333", KinkyDungeonRootDirectory + "Hide" + (
-		KinkyDungeonDrawStruggle == KDDrawStruggleEnum.FULL ? "Full" :
-		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.MOST ? "Most" :
-		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE ? "Struggle" :
-		(KinkyDungeonDrawStruggle == KDDrawStruggleEnum.NONE ? "True" :
-		"False")))) + ".png", "")) str = "KDHideRest";
+		KDDrawStruggleIcon[KinkyDungeonDrawStruggle] || "False") + ".png", "")) str = "KDHideRest";
 	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDPlayerSetPose || KDToggleXRay) {
 		if (StandalonePatched) {
 			if (DrawButtonKDEx("SetPose", (_bdata) => {
@@ -3565,8 +3570,11 @@ function KDDrawStruggleGroups() {
 			}
 
 			let mini = (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.MOST && 
-				!((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
-				|| MouseIn(0, 0, 500, 1000)))
+					!((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
+					|| MouseIn(0, 0, 500, 1000)))
+				|| (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.ALMOSTALL && 
+					!((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
+					|| MouseIn(0, y, 500, ButtonWidth)))
 				|| (KinkyDungeonDrawStruggle == KDDrawStruggleEnum.STRUGGLE && 
 					!(((currentHighlightedItem && KDRestraint(currentHighlightedItem).Group == sg.group)
 					|| MouseIn(((!sg.left) ? (260) : 0), 

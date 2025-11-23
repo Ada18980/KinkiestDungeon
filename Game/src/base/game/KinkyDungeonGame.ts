@@ -672,8 +672,9 @@ function KDCreateWorldLocation(x: number, y: number, jx: number, jy: number, _ma
 /**
  * @param slot
  * @param saveconstantX
+ * @returns the new map data object that is saved
  */
-function KDSaveRoom(slot: { x: number, y: number }, saveconstantX: boolean) {
+function KDSaveRoom(slot: { x: number, y: number }, saveconstantX: boolean): KDMapDataType {
 	slot = slot || KDCurrentWorldSlot;
 	let CurrentLocation = KDWorldMap[(saveconstantX ? 0 : slot.x) + "," + slot.y];
 	if (!CurrentLocation) KDCreateWorldLocation(0, slot.y, KDGameData.JourneyX, KDGameData.JourneyY);
@@ -690,6 +691,7 @@ function KDSaveRoom(slot: { x: number, y: number }, saveconstantX: boolean) {
 	if (CurrentLocation) {
 		CurrentLocation.data[CurrentMapData.RoomType] = CurrentMapData;
 	}
+	return CurrentMapData;
 }
 
 /**

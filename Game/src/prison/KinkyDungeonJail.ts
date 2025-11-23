@@ -474,7 +474,8 @@ function KinkyDungeonGetJailRestraintForGroup(Group: string, jailRestraintList?:
 				let candidate = KinkyDungeonGetRestraintByName(r.Name);
 				if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
 
-					if ((candLevel == 0 || r.Level > candLevel) && KDIsEligible(KDRest(r.Name)) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
+					if ((candLevel == 0 || r.Level > candLevel) && KDIsEligible(
+						KDRest(r.Name), KDPlayer(), true) && (KDJailCondition(r)) && KDPriorityCondition(r)) {
 						cand = candidate;
 						variant = r.Variant;
 						candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -489,7 +490,7 @@ function KinkyDungeonGetJailRestraintForGroup(Group: string, jailRestraintList?:
 				if (!r.Level || level >= r.Level) {
 					let candidate = KinkyDungeonGetRestraintByName(r.Name);
 					if (candidate.Group == Group && (!candidate.nonbinding || cand == null)) {
-						if ((candLevel == 0 || r.Level > candLevel) && KDIsEligible(KDRest(r.Name)) && (KDJailCondition(r))) {
+						if ((candLevel == 0 || r.Level > candLevel) && KDIsEligible(KDRest(r.Name), KDPlayer(), true) && (KDJailCondition(r))) {
 							cand = candidate;
 							variant = r.Variant;
 							candLevel = candidate.nonbinding ? 0 : r.Level;
@@ -1666,11 +1667,9 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 			}
 		}
 
-		let currentMapData = KDMapData;
-
-		KinkyDungeonCreateMap(params, room, "",
+		let currentMapData = KinkyDungeonCreateMap(params, room, "",
 			MiniGameKinkyDungeonLevel, undefined, undefined,
-			forceFaction, undefined, true, slot.main || "");
+			forceFaction, undefined, true, slot.main || "").oldMapDataObject;
 
 		// The above condition is the condition to start in jail
 		// We move the player to the jail after generating one

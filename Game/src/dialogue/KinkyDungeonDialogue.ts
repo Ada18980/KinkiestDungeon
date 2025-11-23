@@ -552,6 +552,12 @@ function KDRunCreationScript(entity: entity, coord: WorldCoord) {
 		if (script && script(entity, coord)) entity.created = true;
 	}
 }
+function KDRunOnSpawnScript(entity: entity, coord: WorldCoord) {
+	if (entity?.Enemy?.onSpawnScript && !entity.ranOnSpawn) {
+		let script = KDCreationScripts[entity.Enemy.onSpawnScript];
+		if (script && script(entity, coord)) entity.ranOnSpawn = true;
+	}
+}
 
 
 function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: string[], excludeTags: string[], weight: number): KinkyDialogue {

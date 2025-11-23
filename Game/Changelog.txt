@@ -61,6 +61,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.80
 - Added low-resolution textures setting. Try this if your game crashes after some time.
 - Added filter in options menu
+- Added an additional option for displaying only the name of the restraint you are hovering over, when hovering over player portrait
 - Added Progress screen which shows training status
 - Added option to hide training buffs in stats view
 - Clicking training icon in stats menu opens progress menu
@@ -85,6 +86,7 @@ Assets
 Balance
 - Psychic now allows you to bypass Can't Touch That, but only if your vision is unblocked
 Bugfix
+- Fixed bug where bosses didnt properly travel to and from their home room if moved (e.g. by leashing you to prison)
 - Your starting class no longer changes if you start a new game with a different class then load an old save
 - Fixed quest markers not scaling when zooming in
 - Fixed cursed item transformation (e.g. stardust curse) removing linked items unintentionally

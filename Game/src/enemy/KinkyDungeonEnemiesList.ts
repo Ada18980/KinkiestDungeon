@@ -5983,6 +5983,11 @@ let KinkyDungeonEnemies: enemy[] = [
 	// Bosses
 	{name: "Fuuka1", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie", tags: KDMapInit(["nosub", "nocapture", "leashing", "noshop", "fuuka", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "nocapture", "unflinching"]),
 		armor: 0, followRange: 3, AI: "guard",
+		
+		
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
+
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: KDBaseWhite},
 			{trigger: "tick", type: "BossAssignFaction", kind: "Fuuka"},
@@ -6016,6 +6021,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		tags: KDMapInit(["nosub", "leashing", "fuuka",
 			"bulwark", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "unstoppable"]),
 		armor: 0, followRange: 1, AI: "hunt",
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
 		RestraintFilter: {
 			unlimitedRestraints: true,
 			requiredItems: ["MikoGag", "MikoDress"],
@@ -6186,6 +6193,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
 			{trigger: "tick", type: "WardenManagement", count: 1},
 		],
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
@@ -6210,6 +6219,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "tick", type: "BossAssignFaction", kind: "Warden"},
 			{trigger: "tick", type: "WardenManagement", count: 3},
 		],
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
@@ -6241,6 +6252,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 8, dist: 10, kind: "RubberMissile"},
 			{trigger: "tick", type: "BossAssignFaction", kind: "Dollsmith"},
 		],
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
@@ -6271,6 +6284,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 15, dist: 10, kind: "RubberNuke"},
 			{trigger: "tick", type: "BossAssignFaction", kind: "Dollsmith"},
 		],
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
 		stamina: 3,
 		maxblock: 1,
 		maxdodge: 3,
@@ -6299,6 +6314,8 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterEnemyTick", type: "dollmakerMissiles", count: 2, time: 9, dist: 10, kind: "RubberNuke"},
 			{trigger: "tick", type: "BossAssignFaction", kind: "Dollsmith"},
 		],
+		onSpawnScript: "Boss",
+		wanderAISetting: "Boss",
 		preferBlock: true,
 		maxblock: 5,
 		maxdodge: 0,
@@ -6935,6 +6952,9 @@ let WanderAISettingList: Record<string, (npc: KDPersistentNPC, enemy: enemy) => 
 	},
 	Dragon: (npc: KDPersistentNPC, enemy: enemy) => {
 		return "Dragon";
+	},
+	Boss: (npc: KDPersistentNPC, enemy: enemy) => {
+		return "Boss";
 	},
 	Targeted: (npc: KDPersistentNPC, enemy: enemy) => {
 		return "Targeted";

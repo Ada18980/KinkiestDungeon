@@ -4000,6 +4000,15 @@ function KDGetVariantPower(item: item): number {
 	}
 	return 0;
 }
+/**
+ * @param item
+ */
+function KDVariantPower(variant: string): number {
+	if (variant && KinkyDungeonRestraintVariants[variant]) {
+		return KinkyDungeonRestraintVariants[variant].power || 0;
+	}
+	return 0;
+}
 
 /**
  * @param item
@@ -4040,6 +4049,25 @@ function KinkyDungeonRestraintPower(item: item, NoLink?: boolean, toLink?: restr
 	return 0;
 }
 
+
+/**
+ * @param item
+ * @param [NoLink]
+ * @param [toLink]
+ * @param [newLock] - If we are trying to add a new item
+ * @param [newCurse] - If we are trying to add a new item
+ */
+function KDRestraintPower(r: restraint, variant?: string, newLock?: string, newCurse?: string): number {
+	if (r) {
+		let lockMult = r ? KinkyDungeonGetLockMult(newLock || r.DefaultLock) : 1;
+		let power = r.power * lockMult + KDCursePower(newCurse || r.curse); + KDVariantPower(variant);
+
+		
+		return power;
+	}
+	return 0;
+}
+
 /**
  * @param oldRestraint
  * @param newRestraint
@@ -4058,14 +4086,97 @@ function KinkyDungeonLinkableAndStricter(oldRestraint: restraint, newRestraint: 
 	return false;
 }
 
+
+function KDIsEligibleNPC(r: restraint, id: number, tags: Map<string, boolean>, allowOverride = false): boolean {
+
+	if (r.requireAllTagsToEquip) {
+		for (let tag of r.requireAllTagsToEquip) {
+			if (!tags.get(tag)) {
+				return false;
+			}
+		}
+	}
+	if (r.requireSingleTagToEquip) {
+		for (let tag of r.requireSingleTagToEquip) {
+			if (tags.get(tag)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+	if (!allowOverride) {
+		if (r.requireNoTagToEquip) {
+			for (let tag of r.requireNoTagToEquip) {
+				if (tags.get(tag)) {
+					return false;
+				}
+			}
+			return true;
+		}
+	} else {
+		let rPower = r.allowOverrideBasedOnTagFilters ? KDRestraintPower(r) : -100;
+		let dontCheck = (!r.allowOverrideBasedOnTagFilters || rPower <= 0) && (
+			r.requireNoTagToEquip
+		);
+		let itemlist = !dontCheck ? Object.values(KDGetNPCRestraints(id) || []) : null
+
+		if (dontCheck || itemlist?.every((item) => {
+			return ( // we dont have one of the tags
+				!r.allowOverrideBasedOnTagFilters.some((tag) => {
+					return !KDRestraint(item)[tag] && !KDRestraint(item).shrine?.includes(tag)
+				}))
+			|| ( // we do but the power is less
+				rPower < KDGetNPCRestraintPower(item)
+			);
+		})) {
+			if (r.requireNoTagToEquip) {
+				for (let tag of r.requireNoTagToEquip) {
+					if (tags.get(tag)) {
+						return false;
+					}
+				}
+				return true;
+			}
+		}
+
+	}
+	
+	
+	return true;
+}
+
 /**
  * Blanket function for stuff needed to select a restraint
  * @param {restraint} restraint
  */
-function KDIsEligible(restraint: restraint): boolean {
+function KDIsEligible(restraint: restraint, player?: entity, allowOverride = false): boolean {
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
-	if (restraint.requireNoTagToEquip && restraint.requireNoTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+
+
+	if (!allowOverride) {
+		if (restraint.requireNoTagToEquip && restraint.requireNoTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+	} else {
+		let rPower = restraint.allowOverrideBasedOnTagFilters ? KDRestraintPower(restraint) : -100;
+		let dontCheck = !restraint.allowOverrideBasedOnTagFilters || rPower <= 0;
+		let itemlist = !dontCheck ? KDAllRestraintDynamicList() : null
+
+		if (dontCheck || itemlist?.every((item) => {
+			return ( // we dont have one of the tags
+				!restraint.allowOverrideBasedOnTagFilters.some((tag) => {
+					return !KDRestraint(item)[tag] && !KDRestraint(item).shrine?.includes(tag)
+				}))
+			|| ( // we do but the power is less
+				rPower < KinkyDungeonRestraintPower(item)
+			);
+		})) {
+			if (restraint.requireNoTagToEquip && restraint.requireNoTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+		}
+	}
+
+	
 	return true;
 }
 
@@ -4121,9 +4232,20 @@ function KDCanAddRestraint (
 	if (restraint.arousalMode && !KinkyDungeonStatsChoice.get("arousalMode")) return false;
 	if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return false;
 	if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return false;
+
+
 	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
-	if (restraint.requireNoTagToEquip && restraint.requireNoTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+
+	let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
+	if (blockers.length > 0) {
+		let rPower = KDRestraintPower(restraint);
+		if (blockers.some((blocker) => {
+			return rPower < KinkyDungeonRestraintPower(blocker);
+		})) {
+			return false;
+		}
+	}
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
 
 	if (restraint.shrine.includes("Raw")) return false;
@@ -4625,6 +4747,7 @@ function KinkyDungeonAddRestraintIfWeaker (
 			KinkyDungeonSetFlag("collared", 5);
 		}
 
+
 		ret = KinkyDungeonAddRestraint(restraint, Tightness + Math.round(0.1 * KinkyDungeonDifficulty), Bypass, Lock, Keep, false, !linkableCurrent, events, faction, undefined, undefined, Curse, undefined, securityEnemy, inventoryAs, data,
 			undefined, undefined, undefined, NoActionPrune);
 		if (preserve_tether && !KDIsPlayerTethered(KinkyDungeonPlayerEntity)) KinkyDungeonAttachTetherToEntity(tether_len, KinkyDungeonLeashingEnemy(), player);
@@ -4899,6 +5022,23 @@ function KinkyDungeonAddRestraint (
 		if (restraint.Group == "ItemButt" && !KinkyDungeonStatsChoice.get("arousalModePlug")) return 0;
 		if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return 0;
 
+
+		if (!Link && !Unlink) {
+			let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
+			if (blockers.length > 0) {
+				//let rPower = KDRestraintPower(restraint);
+				for (let blocker of blockers) {
+					KinkyDungeonRemoveRestraintSpecific(blocker, Keep, true, false,false, false, securityEnemy,
+						ForceRemove
+					);
+				}
+			}
+		}
+		
+
+
+
+
 		// First we try linking under
 		if (!Unlink) {
 			let ret = KDLinkUnder(restraint, Tightness, Bypass, Lock, Keep, false, events, faction, true, Curse, securityEnemy, true, inventoryAs, data, powerBonus);
@@ -4934,7 +5074,8 @@ function KinkyDungeonAddRestraint (
 			// Some confusing stuff here to prevent recursion. If Link = true this means we are in the middle of linking, we dont want to do that
 			if (!KinkyDungeonCancelFlag) {
 				// Note that this only happens when removing TOP LEVEL item, keep in mind for forceRemove
-				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, Unlink, undefined, ForceRemove); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
+				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, 
+					Unlink, undefined, ForceRemove); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
 
 				let newR = KinkyDungeonGetRestraintItem(restraint.Group);
 				// Run events AFTER

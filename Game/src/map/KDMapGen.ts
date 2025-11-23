@@ -1,4 +1,9 @@
 
+interface KDCreateMapReturnData {
+	newMapDataObject: KDMapDataType,
+	oldMapDataObject: KDMapDataType,
+}
+
 /**
  * Starts the the game at a specified level
  * Example usage:
@@ -29,7 +34,7 @@ function KinkyDungeonCreateMap (
 	origMapType:     string = "",
 	direction:       number = 0,
 	forceEscape?:    string
-): void
+): KDCreateMapReturnData
 {
 	// every time a map is created or moved the preference flags are updated
 	KDUpdatePreferenceFlags();
@@ -133,7 +138,7 @@ function KinkyDungeonCreateMap (
 	KDCommanderRoles = new Map();
 	KDUpdateEnemyCache = true;
 	// Else make a new one
-	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
+	let oldMapData = KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
 	let maxIter = 100;
 	for (let iterations = 0; iterations <= maxIter; iterations++) {
@@ -743,6 +748,10 @@ function KinkyDungeonCreateMap (
 	});
 
 	KDGameData.ShortcutIndex = KDGameData.RoomType;
+	return {
+		newMapDataObject: KDMapData,
+		oldMapDataObject: oldMapData,
+	}
 }
 
 let KDStageBossGenerated = false;

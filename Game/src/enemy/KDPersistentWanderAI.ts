@@ -149,6 +149,37 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 			});
 		},
 	},
+	/** regular wander, always goes back to homecoord*/
+	Boss: {
+		cooldown: 175,
+		filter: (id, mapData) => {
+			let npc = KDGetPersistentNPC(id);
+			return KinkyDungeonCurrentTick > (npc.nextWanderTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
+		},
+		chance: (id, mapData) => {
+			if (!KDIDHasFlag(id, "LairCheck")) return 1.0;
+			return mapData == KDMapData ? 0.25 : 0.75;
+		},
+		doWander: (id, mapData, entity) => {
+			let forceTarget = true;
+			// always wander to homecoord
+			return KDStandardTargetedWander(id, mapData, entity, forceTarget, 
+				KDGetPersistentNPC(id).entity.homeCoord, () => {
+				let NPC = KDGetPersistentNPC(id);
+				let AITags = {
+					generic: 1.0,
+				};
+				AITags["owner_" + id] = 1;
+				if (NPC?.partyLeader) {
+					AITags["owner_" + id] = 0.5;
+				}
+				if (NPC?.entity) {
+					AITags["faction_" + KDGetFaction(NPC.entity)] = 1;
+				}
+				return AITags;
+			});
+		},
+	},
 	/** regular wander unless targeted*/
 	Targeted: {
 		cooldown: 90,

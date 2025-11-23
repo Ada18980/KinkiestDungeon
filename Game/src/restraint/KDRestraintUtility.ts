@@ -14,81 +14,78 @@ function KDGetPotentialBlockingRestraints(Group: string, _External?: boolean, sp
     if (!player || player == KDPlayer()) {
         // Create the storage system
         let map: Map<item, boolean> = new Map();
-        let top = KinkyDungeonGetRestraintItem(Group);
-        if (top) {
-            let all = KDDynamicLinkList(top, true);
-            // For this section we just create a set of items that block this one
-            if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
-                for (let item of all) {
-                    if (specificItem?.id == item.id || item == specificItem) break;
-                    if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastity)) {
-                        map.set(item, true);
-                    }
+        let all = KDAllRestraintDynamicList();
+        // For this section we just create a set of items that block this one
+        if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
+            for (let item of all) {
+                if (specificItem?.id == item.id || item == specificItem) break;
+                if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastity)) {
+                    map.set(item, true);
                 }
             }
-            if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
-                for (let item of all) {
-                    if (specificItem?.id == item.id || item == specificItem) break;
-                    if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastitybra)) {
-                        map.set(item, true);
-                    }
+        }
+        if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
+            for (let item of all) {
+                if (specificItem?.id == item.id || item == specificItem) break;
+                if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastitybra)) {
+                    map.set(item, true);
                 }
             }
-            if (KinkyDungeonPlayerTags.get("Block_" + Group)) {
-                for (let item of all) {
-                    if (specificItem?.id == item.id || item == specificItem) break;
-                    if (!map.get(item) && (item == specificItem || KDRestraint(item)?.shrine?.includes("Block_" + Group))) {
-                        map.set(item, true);
-                    }
+        }
+        if (KinkyDungeonPlayerTags.get("Block_" + Group)) {
+            for (let item of all) {
+                if (specificItem?.id == item.id || item == specificItem) break;
+                if (!map.get(item) && (item == specificItem || KDRestraint(item)?.shrine?.includes("Block_" + Group))) {
+                    map.set(item, true);
                 }
             }
+        }
 
-            if (!specificItem || !KDRestraint(specificItem).alwaysAccessible) {
-                let link = top;
-	            let TagsSoFar: Record<string, boolean> = {};
-                while (link && KDRestraint(link)) {
-                    if (link == specificItem) break;
-                    if ((link == specificItem
-                            || KDRestraint(link).inaccessible
-                            || (specificItem && KDRestraint(specificItem).alwaysInaccessible)
-                            || (specificItem && 
-                                !KDRestraint(specificItem).alwaysRender
-                                 && !(!KDRestraint(specificItem).renderExcept
-                                    || !KDRestraint(specificItem).renderExcept.some((tag) => {
-                                        return TagsSoFar[tag];
-                                    }))
-                                && (
-                                    KDRestraint(link).UnderlinkedAlwaysRender
-                                        || KDRestraint(link).accessible
-                                        || (KDRestraint(specificItem).renderWhenLinked
-                                        && KDRestraint(link).shrine && KDRestraint(specificItem).renderWhenLinked.some(
-                                            (tag) => {return KDRestraint(link).shrine.includes(tag);}))
-                                )
+        if (!specificItem || !KDRestraint(specificItem).alwaysAccessible) {
+            let link = KinkyDungeonGetRestraintItem(Group);
+            let TagsSoFar: Record<string, boolean> = {};
+            while (link && KDRestraint(link)) {
+                if (link == specificItem) break;
+                if ((link == specificItem
+                        || KDRestraint(link).inaccessible
+                        || (specificItem && KDRestraint(specificItem).alwaysInaccessible)
+                        || (specificItem && 
+                            !KDRestraint(specificItem).alwaysRender
+                                && !(!KDRestraint(specificItem).renderExcept
+                                || !KDRestraint(specificItem).renderExcept.some((tag) => {
+                                    return TagsSoFar[tag];
+                                }))
+                            && (
+                                KDRestraint(link).UnderlinkedAlwaysRender
+                                    || KDRestraint(link).accessible
+                                    || (KDRestraint(specificItem).renderWhenLinked
+                                    && KDRestraint(link).shrine && KDRestraint(specificItem).renderWhenLinked.some(
+                                        (tag) => {return KDRestraint(link).shrine.includes(tag);}))
                             )
-                        )) {
-                        if (KDRestraint(link).shrine) {
-                            for (let tag of KDRestraint(link).shrine) {
-                                TagsSoFar[tag] = true;
-                            }
+                        )
+                    )) {
+                    if (KDRestraint(link).shrine) {
+                        for (let tag of KDRestraint(link).shrine) {
+                            TagsSoFar[tag] = true;
                         }
-                        if (!map.get(link))
-                            map.set(link, true);
+                    }
+                    if (!map.get(link))
+                        map.set(link, true);
+                }
+                link = link.dynamicLink;
+            }
+        }
+        
+        // TODO make this generalized
+        if (Group == "ItemHands") {
+            let arms = KinkyDungeonGetRestraintItem("ItemArms");
+            if (arms) {
+                let link = arms;
+                while (link && KDRestraint(link)) {
+                    if (KDRestraint(link).inaccessible && !map.get(link)) {
+                        map.set(link, true);
                     }
                     link = link.dynamicLink;
-                }
-            }
-            
-            // TODO make this generalized
-            if (Group == "ItemHands") {
-                let arms = KinkyDungeonGetRestraintItem("ItemArms");
-                if (arms) {
-                    let link = arms;
-                    while (link && KDRestraint(link)) {
-                        if (KDRestraint(link).inaccessible && !map.get(link)) {
-                            map.set(link, true);
-                        }
-                        link = link.dynamicLink;
-                    }
                 }
             }
         }
@@ -108,7 +105,7 @@ function KDGetPotentialBlockingRestraints(Group: string, _External?: boolean, sp
 
         let all = Object.values(restraints);
         // For this section we just create a set of items that block this one
-        if (["Vibe", "FrontPlug", "RearPlug"].includes(row.id)) {
+        if (["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
             for (let item of all) {
                 if (specificItem?.id == item.id || item == specificItem) break;
                 if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastity)) {
@@ -116,7 +113,7 @@ function KDGetPotentialBlockingRestraints(Group: string, _External?: boolean, sp
                 }
             }
         }
-        if (["NippleVibe", "NippleWeight", "Piercings"].includes(row.id)) {
+        if (["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
             for (let item of all) {
                 if (specificItem?.id == item.id || item == specificItem) break;
                 if (!map.get(item) && (item == specificItem || KDRestraint(item)?.chastitybra)) {
@@ -147,6 +144,162 @@ function KDGetPotentialBlockingRestraints(Group: string, _External?: boolean, sp
 
         if (specificItem)
             map.set(specificItem as NPCRestraint, true);
+
+        return [...map.keys()]; 
+    }
+	
+	
+
+}
+
+
+
+
+
+
+/**
+ * Gets blockers for a particular restraint type being ADDED
+ */
+function KDGetBlockersToAddRestraint(restraint: restraint, player?: entity): (item | NPCRestraint)[] {
+    if (!player || player == KDPlayer()) {
+        // Create the storage system
+        let map: Map<item, boolean> = new Map();
+        let all = KDAllRestraintDynamicList();
+        let Group = restraint.Group;
+        // For this section we just create a set of items that block this one
+        if (KinkyDungeonPlayerTags.get("ChastityLower") && ["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
+            for (let item of all) {
+                if (!map.get(item) && (KDRestraint(item)?.chastity)) {
+                    map.set(item, true);
+                }
+            }
+        }
+        if (KinkyDungeonPlayerTags.get("ChastityUpper") && ["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
+            for (let item of all) {
+                if (!map.get(item) && (KDRestraint(item)?.chastitybra)) {
+                    map.set(item, true);
+                }
+            }
+        }
+        if (KinkyDungeonPlayerTags.get("Block_" + Group)) {
+            for (let item of all) {
+                if (!map.get(item) && (KDRestraint(item)?.shrine?.includes("Block_" + Group))) {
+                    map.set(item, true);
+                }
+            }
+        }
+
+
+        
+        if (restraint.requireNoTagToEquip
+            // ||
+        ) {
+            if (!KDIsEligible(restraint)) {
+                let r = restraint;
+                if (r.requireNoTagToEquip) {
+                    for (let tag of r.requireNoTagToEquip) {
+                        for (let item of Object.values(all)) {
+                            if (KDValidateTagForItem(tag, item)) {
+                                map.set(item, true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+       
+
+        // TODO make this generalized
+        if (Group == "ItemHands") {
+            let arms = KinkyDungeonGetRestraintItem("ItemArms");
+            if (arms) {
+                let link = arms;
+                while (link && KDRestraint(link)) {
+                    if (KDRestraint(link).inaccessible && !map.get(link)) {
+                        map.set(link, true);
+                    }
+                    link = link.dynamicLink;
+                }
+            }
+        }
+        // Return restraints still in the list
+        return [...map.keys()];
+    } else if (player && KDGetNPCRestraints(player.id)) {
+        
+        let map: Map<NPCRestraint, boolean> = new Map();
+        let restraints = KDGetNPCRestraints(player.id);
+        let Group = restraint.Group;
+
+
+        let all = Object.values(restraints);
+        // For this section we just create a set of items that block this one
+        if (["ItemVulva", "ItemVulvaPiercings", "ItemButt"].includes(Group)) {
+            for (let item of all) {
+                if (!map.get(item) && (KDRestraint(item)?.chastity)) {
+                    map.set(item, true);
+                }
+            }
+        }
+        if (["ItemNipples", "ItemNipplesPiercings"].includes(Group)) {
+            for (let item of all) {
+                if (!map.get(item) && ( KDRestraint(item)?.chastitybra)) {
+                    map.set(item, true);
+                }
+            }
+        }
+
+        /*// note: right now you can always add an item under encasement, to NPCs
+        // this may need to change but for now its how it is
+
+        if (restraint.alwaysAccessible) {
+            for (let entry of Object.entries(restraints)) {
+                if (specificItem?.id == entry[1].id || entry[1] == specificItem) {
+                    let encaseSlots = KDGetEncaseGroupSlot(entry[0])?.encasedBy;
+                    if (encaseSlots?.length > 0) {
+                        for (let slot of encaseSlots) {
+                            if (restraints[slot]) {
+                                map.set(restraints[slot], true);
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        } else if (!specificItem) {
+            if (restraints[row.encaseGroup.id]) {
+                map.set(restraints[row.encaseGroup.id], true);
+            }
+        }*/
+       
+        if (restraint.requireNoTagToEquip
+            // ||
+        ) {
+            let npcSprite = KDNPCChar.get(player.id);
+            if (npcSprite) {
+                if (NPCTags.get(npcSprite) && !KDIsEligibleNPC(restraint, player.id, NPCTags.get(npcSprite))) {
+                    let r = restraint;
+                    if (r.requireNoTagToEquip) {
+                        for (let tag of r.requireNoTagToEquip) {
+                            for (let item of Object.values(restraints)) {
+                                if (KDValidateTagForItem(tag, item)) {
+                                    map.set(item, true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // check if anything is blocking, if so, put it as a blocker
+        let slot = KDGetNPCBindingSlotForItem(restraint, player.id, false, undefined);
+        if (!slot) {
+            let slotToLook = KDGetNPCBindingSlotForItem(restraint, player.id, true, undefined);
+            if (slotToLook && restraints[slotToLook.sgroup.id] != null) {
+                map.set(restraints[slotToLook.sgroup.id], true);
+            }
+        }
 
         return [...map.keys()]; 
     }
@@ -446,4 +599,21 @@ function KDEnemyCanUncurseCurse(entity: entity, curse: string, item?: item | NPC
     })) return true;
 
     return false;
+}
+
+function KDValidateTagForItem(tag: string, item: item | NPCRestraint): boolean {
+    if (KDTagValidationForItem[tag]) {
+        return KDTagValidationForItem[tag](tag, item);
+    }
+    return KDRestraint(item)?.shrine?.includes(tag);
+}
+
+let KDTagValidationForItem: Record<string, (tag: string, item: item | NPCRestraint) => boolean> = {
+    KDDefaultTagValidation: (tag, item) => {return KDRestraint(item)?.shrine?.includes(tag);},
+    FeetLinked: (tag, item) => {
+        return KDRestraint(item)?.blockfeet || KDTagValidationForItem.KDDefaultTagValidation(tag, item);
+    },
+    LegBind: (tag, item) => {
+        return KDRestraint(item)?.blockfeet || KDTagValidationForItem.KDDefaultTagValidation(tag, item);
+    },
 }

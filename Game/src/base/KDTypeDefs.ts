@@ -929,6 +929,11 @@ interface enemy extends KDHasTags {
 	spawnAISetting?: string,
 	/** Which subroutine to select wanderAI */
 	wanderAISetting?: string,
+	/** Script to run when it spawns
+	 * This is a creation script run immediately after addEntity
+	 */
+	onSpawnScript?: string,
+	
 
 	/** Behavior tags */
 	Behavior?: {
@@ -1850,6 +1855,9 @@ interface entity {
 	Enemy?: enemy,
 	/** Creation script has run */
 	created?: boolean,
+	/** Creation script has run */
+	ranOnSpawn?: boolean,
+	
 
 	/** Amount of sound the entity is currently producing */
 	sound?: number,

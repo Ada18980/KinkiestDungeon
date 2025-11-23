@@ -26,7 +26,7 @@ let KDStairsAltAction = {
 };
 
 
-function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: boolean, willing: boolean) {
+function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: boolean, willing: boolean, forceInstant = false) {
 
 	// Prune inventory
 	KDPruneInventoryVariants(true, true, true);
@@ -236,7 +236,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 
 
-		if (MiniGameKinkyDungeonLevel < KinkyDungeonMaxLevel - 1
+		if (!forceInstant && MiniGameKinkyDungeonLevel < KinkyDungeonMaxLevel - 1
 			&& !((!altRoomTarget || !altRoomTarget.alwaysRegen)
 			&& (location?.data[KDGameData.RoomType])))
 			KinkyDungeonState = "GenMap";
@@ -245,6 +245,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 			KDGenMapCallback = null;
 		}
 	}
+
 }
 
 

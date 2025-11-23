@@ -13247,7 +13247,7 @@ dFuukaDefensive_Brat,I take it you're the hag in charge?
 dFuukaDefensive_Brat_Proceed,"You are in charge, right?"
 dFuukaDefensive_Brat_ProceedGag,"(Giggle)"
 dFuukaDefensive_Brat_Proceed2,"(...)"
-dFuuka_Brat,"Don't mess with me, little girl."
+dFuuka_Brat,"Don't mess with me, girl."
 dFuuka_BratGag,"Mmpphgh? (Pout at her)"
 rFuukaBrat,"(She smirks)|So you're that kind of visitor, huh?"
 dFuukaBrat_Question,That's right. How powerful are you?
@@ -13324,7 +13324,7 @@ dFuukaFight_Fight1,"You're on!"
 dFuukaFight_Fight1Gag,"Hmmmph!"
 dFuukaFight_Fight2,"Let us duel!"
 dFuukaFight_Fight2Gag,"Mmmmmghh!"
-dFuukaFight_Fight3,"I suppose..."
+dFuukaFight_Fight3,"I suppose we fight..."
 dFuukaFight_Fight3Gag,"Mmmmph..."
 
 rFuukaLose,"(SPEAKER smiles as she stands over you)|Well well. Look who won."
@@ -13339,7 +13339,7 @@ dFuukaLose_DenyGag,"Mmmph! (Struggle weakly)"
 dFuukaLose_Continue1,"(Sigh and accept your fate)"
 dFuukaLose_Continue2,"(Accept the collar eagerly)"
 dFuukaLose_Continue3,"(Accept the collar begrudgingly)"
-rFuukaLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!"
+rFuukaLoseFinish,"(SPEAKER presents you with your collar...)|(She locks it around your neck)|Now you're my pretty toy!"
 
 rFuukaStage2,"(SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!"
 

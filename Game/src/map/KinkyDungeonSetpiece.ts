@@ -350,6 +350,8 @@ function KinkyDungeonGenerateSetpiece (
 				let Enemy = KinkyDungeonGetEnemyByName("Fuuka1");
 				let e = {tracking: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:cornerX + 3, y:cornerY + 3, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 				KDAddEntity(e);
+				
+				KDRunCreationScript(e, KDGetCurrentLocation());
 				KDStageBossGenerated = true;
 				break;
 			}
