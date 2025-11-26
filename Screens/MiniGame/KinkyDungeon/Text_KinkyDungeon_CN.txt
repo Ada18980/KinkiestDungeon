@@ -24824,7 +24824,7 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 # :: dFuukaDom_Brat_ProceedGag
 # :: dTheWardenBrat_Brat_ProceedGag
 # :: dTheWardenDom_Brat_ProceedGag
-- Don't mess with me, little girl.
+- Don't mess with me, girl.
 别烦我，小姑娘。
 - Mmpphgh? (Pout at her)
 嗯？  ( 对她噘嘴 )
@@ -24978,7 +24978,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dFuukaFight_Fight2Gag
 # :: dDollmakerFight_Fight2Gag
 # :: dTheWardenFight_Fight2Gag
-- I suppose...
+- I suppose we fight...
 大概吧...
 
 - (SPEAKER smiles as she stands over you)|Well well. Look who won.
@@ -25017,7 +25017,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 ( 勉强接受项圈 )
 # :: dFuukaLose_Continue3
 # :: dTheWardenLose_Continue3
-- (SPEAKER presents you with your collar...)|(She locks it around your neck)|You are free to go now, dear!
+- (SPEAKER presents you with your collar...)|(She locks it around your neck)|Now you're my pretty toy!
 ( SPEAKER 给你展示了你的项圈... )|( 她将其锁在你的脖子上 )|你现在可以走了，亲爱的！
 
 - (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
