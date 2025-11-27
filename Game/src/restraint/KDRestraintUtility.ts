@@ -608,12 +608,30 @@ function KDValidateTagForItem(tag: string, item: item | NPCRestraint): boolean {
     return KDRestraint(item)?.shrine?.includes(tag);
 }
 
+function KDValidateTagForRestraint(tag: string, restraint: restraint): boolean {
+    if (KDTagValidationForItem[tag]) {
+        return KDTagValidationForRestraint[tag](tag, restraint);
+    }
+    return restraint?.shrine?.includes(tag);
+}
+
+
 let KDTagValidationForItem: Record<string, (tag: string, item: item | NPCRestraint) => boolean> = {
-    KDDefaultTagValidation: (tag, item) => {return KDRestraint(item)?.shrine?.includes(tag);},
+    KDDefaultTagValidation: (tag, item) => {return KDTagValidationForRestraint.KDDefaultTagValidation(tag, KDRestraint(item));},
     FeetLinked: (tag, item) => {
         return KDRestraint(item)?.blockfeet || KDTagValidationForItem.KDDefaultTagValidation(tag, item);
     },
     LegBind: (tag, item) => {
         return KDRestraint(item)?.blockfeet || KDTagValidationForItem.KDDefaultTagValidation(tag, item);
+    },
+}
+
+let KDTagValidationForRestraint: Record<string, (tag: string, restraint: restraint) => boolean> = {
+    KDDefaultTagValidation: (tag, restraint) => {return restraint.shrine?.includes(tag);},
+    FeetLinked: (tag, restraint) => {
+        return restraint.blockfeet || KDTagValidationForRestraint.KDDefaultTagValidation(tag, restraint);
+    },
+    LegBind: (tag, restraint) => {
+        return restraint.blockfeet || KDTagValidationForRestraint.KDDefaultTagValidation(tag, restraint);
     },
 }

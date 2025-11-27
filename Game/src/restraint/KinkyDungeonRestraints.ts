@@ -3920,6 +3920,73 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 
 }
 
+
+function KDUpdateRestraintMetadata(id: number, delta: number, customRestraints?: item[]|NPCRestraint[]): EntityRestraintMetadata {
+	let metadata: EntityRestraintMetadata = undefined;
+	if (id == -1 && !customRestraints) {
+		metadata = {
+			blockedtags: {},
+		};
+		for (let inv of KDAllRestraintDynamicList()) {
+			if (KDRestraint(inv)?.blockRestraintsWithTag) {
+				for (let blockedtag of KDRestraint(inv).blockRestraintsWithTag) {
+					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag], KDRestraintPower(
+						KDRestraint(inv),
+						inv.inventoryVariant, inv.lock, inv.curse
+					));
+				}
+			}
+		}
+		
+		KinkyDungeonSendEvent("updatePlayerRestraintMetadata", {metadata: metadata, player:KinkyDungeonPlayerEntity, delta: delta, customRestraints: customRestraints});
+		return metadata;
+	} else if (customRestraints) {
+		metadata = {
+			blockedtags: {},
+		};
+		for (let inv of customRestraints) {
+			if (KDRestraint(inv)?.blockRestraintsWithTag) {
+				for (let blockedtag of KDRestraint(inv).blockRestraintsWithTag) {
+					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag], KDRestraintPower(
+						KDRestraint(inv),
+						//@ts-expect-error
+						inv.variant || inv.inventoryVariant, inv.lock, inv.curse
+					));
+				}
+			}
+		}
+		
+		KinkyDungeonSendEvent("updateCustomRestraintsMetadata", {metadata: metadata, player:KDGetGlobalEntity(id), delta: delta, customRestraints: customRestraints});
+		return metadata;
+	} else if (KDGameData.NPCRestraints && KDGameData.NPCRestraints[id + ""]) {
+		metadata = {
+			blockedtags: {},
+		};
+		let already = {};
+		for (let entry of Object.entries(KDGameData.NPCRestraints[id + ""])) {
+			let inv = entry[1];
+			if (!already[entry[0]]) {
+				already[entry[0]] = true;
+				if (KDRestraint(inv)?.blockRestraintsWithTag) {
+				for (let blockedtag of KDRestraint(inv).blockRestraintsWithTag) {
+					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag], KDRestraintPower(
+						KDRestraint(inv),
+						inv.variant || inv.inventoryVariant, inv.lock, inv.curse
+					));
+				}
+			}
+			}
+			
+		}
+		
+		KinkyDungeonSendEvent("updateNPCRestraintsMetadata", {metadata: metadata, player:KDGetGlobalEntity(id), delta: delta, customRestraints: customRestraints});
+		return metadata;
+	}
+
+	return metadata;
+
+}
+
 function KDGetNPCRestraintTags(restraintList: Record<string, NPCRestraint>, extraTags?: string[], id = -1, addTags = true, events: boolean = true): Map<string, boolean> {
 	let playerTags: Map<string, boolean> = new Map();
 	if (restraintList)
@@ -3985,6 +4052,8 @@ function KDGetNPCRestraintTags(restraintList: Record<string, NPCRestraint>, extr
 		KinkyDungeonSendEvent("updateNPCTags", {tags: playerTags, npc:id});
 	return playerTags;
 }
+
+
 
 function KDGetCursePower(item: item): number {
 	if (!item || !KDGetCurse(item)) return 0;
@@ -4239,11 +4308,20 @@ function KDCanAddRestraint (
 
 	let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
 	if (blockers.length > 0) {
-		let rPower = KDRestraintPower(restraint);
+		let rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
 		if (blockers.some((blocker) => {
 			return rPower < KinkyDungeonRestraintPower(blocker);
 		})) {
 			return false;
+		}
+	}
+
+	let metadata = KDEntityRestraintMetadata.get(KDPlayer().id);
+	if (metadata) {
+		if (metadata.blockedtags) {
+			for (let blockedtag of Object.entries(metadata.blockedtags)) {
+				if (KDValidateTagForItem(blockedtag[0], item))
+			}
 		}
 	}
 	//if (restraint.AssetGroup == "ItemNipplesPiercings" && !KinkyDungeonStatsChoice.get("arousalModePiercing")) return false;
@@ -5195,6 +5273,8 @@ function KinkyDungeonAddRestraint (
 		//KinkyDungeonWearForcedClothes();
 
 		KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(); // We update the restraints but no time drain on batteries, etc
+		
+		KDEntityRestraintMetadata.set(KDPlayer().id, KDUpdateRestraintMetadata(KDPlayer().id, 1));
 
 		KinkyDungeonCalculateSlowLevel();
 		KDRefreshCharacter.set(KinkyDungeonPlayer, true); // We signal it is OK to check whether the player should get undressed due to restraints

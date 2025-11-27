@@ -941,6 +941,9 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 	if (npcSprite) {
 		NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.npc, 0));
 	}
+	
+	if (data.npc)
+		KDEntityRestraintMetadata.set(data.npc, KDUpdateRestraintMetadata(data.npc, 0));
 
 	if (packed) KDPackEnemy(globalEntity);
 

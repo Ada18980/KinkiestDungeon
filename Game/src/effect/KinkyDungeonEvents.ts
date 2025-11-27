@@ -462,6 +462,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 		"BubbleCombine": (_e, item, _data: KDEventData_PostApply) => {
 			KinkyDungeonUpdateRestraints();
+			KDEntityRestraintMetadata.set(KDPlayer().id, KDUpdateRestraintMetadata(KDPlayer().id, 0));
 			if ((KinkyDungeonPlayerTags.get("CombineBubble1") || KDRestraint(item)?.shrine?.includes("CombineBubble1"))
 				&& (KinkyDungeonPlayerTags.get("CombineBubble2") || KDRestraint(item)?.shrine?.includes("CombineBubble2"))
 				&& (KinkyDungeonPlayerTags.get("CombineBubble3") || KDRestraint(item)?.shrine?.includes("CombineBubble3"))) {
@@ -2136,6 +2137,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				let collar = false;
 				if (data.item && KDRestraint(data.item)?.Group == "ItemNeck") {
 					KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(); // We update the restraints but no time drain on batteries, etc
+					KDEntityRestraintMetadata.set(KDPlayer().id, KDUpdateRestraintMetadata(KDPlayer().id, 0));
 				}
 				if (KinkyDungeonPlayerTags.get("Collars")) collar = true;
 				if (!collar) {
@@ -9056,6 +9058,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: KD
 					if (npcSprite) {
 						NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.enemy.id, 0));
 						enemyTags = NPCTags.get(npcSprite);
+						KDEntityRestraintMetadata.set(KDPlayer().id, KDUpdateRestraintMetadata(KDPlayer().id, 0));
 					}
 
 					let transmuteLevel = 0;

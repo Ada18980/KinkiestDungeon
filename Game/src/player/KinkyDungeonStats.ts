@@ -217,6 +217,10 @@ function KDInitInventory() {
 
 let KinkyDungeonPlayerTags: Map<string, boolean> = new Map();
 let NPCTags: Map<Character, Map<string, boolean>> = new Map();
+let KDEntityRestraintMetadata: Map<number, EntityRestraintMetadata> = new Map();
+interface EntityRestraintMetadata {
+	blockedtags: Record<string, number>,
+}
 
 let KinkyDungeonCurrentDress = "Default";
 let KinkyDungeonUndress = 0; // Level of undressedness
@@ -279,8 +283,10 @@ function KinkyDungeonDefaultStats(_Load?: any) {
 	KinkyDungeonInventoryAdd({name: "Default", type: Outfit, id: KinkyDungeonGetItemID()});
 	KinkyDungeonInventoryAddWeapon("Unarmed");
 	KDSetWeapon("Unarmed");
-	KinkyDungeonPlayerTags = new Map();
+	KDResetPlayerTags();
 	NPCTags = new Map();
+	KDEntityRestraintMetadata = new Map();
+
 
 	KinkyDungeonPlayerDamage = KinkyDungeonPlayerDamageDefault;
 
@@ -1692,6 +1698,8 @@ function KinkyDungeonUpdateStats(delta: number): void {
 
 	// Update the player tags based on the player's groups
 	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints(KinkyDungeonPlayer, -1, delta);
+	
+	KDEntityRestraintMetadata.set(KDPlayer().id, KDUpdateRestraintMetadata(KDPlayer().id, delta));
 
 	let blind = Math.max(KinkyDungeonBlindLevelBase, KinkyDungeonGetBlindLevel());
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Blindness")) blind = Math.max(0, blind + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Blindness"));

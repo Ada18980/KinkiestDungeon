@@ -705,6 +705,7 @@ function KDInitPerks() {
 		KinkyDungeonStatsChoice.set("MagicHands", true);
 	}
 	KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints();
+	KDEntityRestraintMetadata.set(-1, KDUpdateRestraintMetadata(-1, 0));
 	for (let perk of [...KinkyDungeonStatsChoice.keys()].filter((e) => {return KDPerkStart[e] != undefined;})
 		.sort((a, b) => {
 			return ((KinkyDungeonStatsPresets[a] && KinkyDungeonStatsPresets[a].startPriority) || -1) - ((KinkyDungeonStatsPresets[b] && KinkyDungeonStatsPresets[b].startPriority) || -1);

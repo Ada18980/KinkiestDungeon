@@ -5252,6 +5252,7 @@ function KDDrawTooltip(TooltipList: any[], offset: number, hidebg?: boolean): nu
 					NPCTags.set(listItem.npcSprite, new Map());
 				}
 				NPCTags.set(listItem.npcSprite, KinkyDungeonUpdateRestraints(listItem.npcSprite, listItem.id, 0));
+				KDEntityRestraintMetadata.set(listItem.id, KDUpdateRestraintMetadata(listItem.id, 0));
 			}
 			KinkyDungeonDressPlayer(listItem.npcSprite, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[listItem.id + ''] : undefined);
 

@@ -1870,7 +1870,7 @@ function KinkyDungeonRun() {
 					KDWardrobeRevertCallback = null;
 					KDPlayerSetPose = false;
 					KDInitInventory();
-					KinkyDungeonPlayerTags = new Map();
+					KDResetPlayerTags();
 					CharacterReleaseTotal(KinkyDungeonPlayer);
 					KDUpdateChar(KinkyDungeonPlayer);
 					KDInitCurrentPose();
@@ -7652,4 +7652,17 @@ function KDGetWindowCanvasOffset() {
 	}
 
 	return offsetobject
+}
+
+function KDResetPlayerTags(player?: entity) {
+	if (player?.player || !player) {
+		KinkyDungeonPlayerTags = new Map();
+		if (KDEntityRestraintMetadata.get(player?.id || -1)) {
+			KDEntityRestraintMetadata.delete(player?.id || -1);
+		}
+	} else {
+		if (KDEntityRestraintMetadata.get(player.id)) {
+			KDEntityRestraintMetadata.delete(player.id);
+		}
+	}
 }

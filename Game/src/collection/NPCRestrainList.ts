@@ -212,6 +212,7 @@ let KDBondageConditions: Record<string, (r: restraint, id: number, willing: bool
 				if (!NPCTags.get(npcSprite)) {
 					NPCTags.set(npcSprite, new Map());
 					NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, id, 0));
+					KDEntityRestraintMetadata.set(id, KDUpdateRestraintMetadata(id, 0));
 				}
 
 				if (NPCTags.get(npcSprite)) {

@@ -738,6 +738,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 				NPCTags.set(KDSpeakerNPC, new Map());
 			}
 			NPCTags.set(KDSpeakerNPC, KinkyDungeonUpdateRestraints(KDSpeakerNPC, value.id, 0));
+			KDEntityRestraintMetadata.set(value.id, KDUpdateRestraintMetadata(value.id, 0));
 		}
 		KinkyDungeonDressPlayer(KDSpeakerNPC, false, false, 
 			KDGameData.NPCRestraints ? KDGameData.NPCRestraints[value.id + ''] : undefined);

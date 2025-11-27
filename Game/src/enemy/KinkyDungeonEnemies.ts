@@ -983,6 +983,7 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 					NPCTags.set(char, new Map());
 				}
 				NPCTags.set(char, KinkyDungeonUpdateRestraints(char, enemy.id, 0));
+				KDEntityRestraintMetadata.set(enemy.id, KDUpdateRestraintMetadata(enemy.id, 0));
 				enemy.refreshSprite = false;
 			}
 			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[enemy.id + ''] : undefined);
@@ -1037,6 +1038,7 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 					NPCTags.set(char, new Map());
 				}
 				NPCTags.set(char, KinkyDungeonUpdateRestraints(char, enemy.id, 0));
+				KDEntityRestraintMetadata.set(enemy.id, KDUpdateRestraintMetadata(enemy.id, 0));
 				enemy.refreshSprite = false;
 			}
 			KinkyDungeonDressPlayer(char, false, false, KDGameData.NPCRestraints ? KDGameData.NPCRestraints[enemy.id + ''] : undefined);
@@ -4275,9 +4277,12 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 				if (enemy.slow <= 0)
 					KinkyDungeonSendEvent("enemyStatusEnd", {enemy: enemy, status: "slow"});
 			}
+			
+			KDEntityRestraintMetadata.set(enemy.id, KDUpdateRestraintMetadata(enemy.id, 0));
 			if (!(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (!KDHelpless(enemy) || KDEnemyHasHelp(enemy))) {
 				KDEnemyStruggleTurn(enemy, delta, KDNPCStruggleThreshMult(enemy), false, false);
 			}
+			
 			KDEnemyDecayBindStun(enemy, delta);
 			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
