@@ -410,6 +410,21 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			}
 		}
 	},
+	"postApplyNPC": {
+		"NoBlockers": (_e, item, data: KDEventData_PostApply) => {
+			if (item != data.item) {
+				let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
+				if (blockers.length > 0) {
+					let rPower = KinkyDungeonRestraintPower(item);
+					if (blockers.some((blocker) => {
+						return rPower < KinkyDungeonRestraintPower(blocker);
+					})) {
+						KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+					}
+				}
+			}
+		},
+	},
 	"postApply": {
 		"ControlHarness": (e, item, data: KDEventData_PostApply) => {
 			let itemAdded = data.item;

@@ -976,7 +976,7 @@ let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 		return !KinkyDungeonStatsChoice.get("NoSenseDep") && !KinkyDungeonStatsChoice.get("NoHood");
 	},
 	ChastityBra: (_r) => {
-		return !KinkyDungeonStatsChoice.get("FreeBoob2") && (KinkyDungeonPlayerTags.get("ItemNipples") || !KinkyDungeonStatsChoice.get("FreeBoob1"));
+		return !!(!KinkyDungeonStatsChoice.get("FreeBoob2") && (KinkyDungeonPlayerTags.get("ItemNipples") || !KinkyDungeonStatsChoice.get("FreeBoob1")));
 	},
 	NoPetsuit: (_r) => {
 		return !KinkyDungeonStatsChoice.get("NoPet");

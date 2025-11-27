@@ -2827,6 +2827,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		// UGHHHHH
 
 		requireNoTagToEquip: ["FeetLinked", "LegBind"],
+		blockRestraintsWithTag: ["FeetLinked", "LegBind"],
 		allowOverrideBasedOnTagFilters: ["FeetLinked", "LegBind", "blockfeet"],
 		
 		tightType: "Secure",

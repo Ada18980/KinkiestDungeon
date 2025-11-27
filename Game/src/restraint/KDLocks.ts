@@ -1568,7 +1568,7 @@ function KDCyberAccess(player: entity): boolean {
  */
 function KDCyberLink(player: entity): boolean {
 	if (player.player) {
-		return KinkyDungeonPlayerTags.get("CyberLink") || KinkyDungeonFlags.get("CyberLink");
+		return !!(KinkyDungeonPlayerTags.get("CyberLink") || KinkyDungeonFlags.get("CyberLink"));
 	}
 	return player.Enemy?.tags.cyberlink;
 }

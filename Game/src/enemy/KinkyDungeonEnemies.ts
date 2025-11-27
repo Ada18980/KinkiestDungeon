@@ -9096,7 +9096,7 @@ function KDPlayerLeashed(player: entity): boolean {
  */
 function KDPlayerLeashable(player: entity): boolean {
 	if (player?.player) {
-		return KinkyDungeonPlayerTags.get("Collars");
+		return !!KinkyDungeonPlayerTags.get("Collars");
 	}
 	return false;
 }

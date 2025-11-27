@@ -751,7 +751,7 @@ function KDSummonRevengeMobs(_x: number, _y: number, Goddess: string, mult: numb
  */
 function KDCanDrinkShrine(Bottle: boolean): boolean {
 	if (Bottle && KinkyDungeonIsHandsBound(true, true, 0.9)) return false;
-	return !KinkyDungeonTargetTile.drunk && (Bottle || KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonPlayerTags.get("slime"));
+	return !!(!KinkyDungeonTargetTile.drunk && (Bottle || KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonPlayerTags.get("slime")));
 }
 
 function KinkyDungeonGetSetPieces(Dict: any) {

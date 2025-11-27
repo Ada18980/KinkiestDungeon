@@ -293,6 +293,9 @@ interface KDRestraintPropsBase {
 	requireSingleTagToEquip?: string[];
 	// player must NOT have any of these playertags to equip
 	requireNoTagToEquip?: string[];
+	// adds this restraint's power to a map for each tag, while this restraint is equipped. Any restraint with lower power can NOT be added
+	blockRestraintsWithTag?: string[];
+	
 	/**
 	 * allows the restraint to ignore its tag filters if every restraint the player is wearing with one of these tags has less power than the equipping restraint
 	 * also includes restraint properties (yay javascript fuckery)
@@ -3837,6 +3840,7 @@ type KDEventData_affinity = {
 	groupIsHigh: boolean;
 };
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean, UnLink: boolean}
+type KDEventData_PostApplyNPC = {player: entity, item: NPCRestraint|null, host: item, keep: boolean, Link: boolean, UnLink: boolean, container: Record<string, item>, localEntity: entity, }
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
 interface KDExpressionType {

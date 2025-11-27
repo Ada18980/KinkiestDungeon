@@ -48,7 +48,7 @@ let KDLeashReason : {[_: string]: (entity: entity) => boolean} = {
 		if (entity.leash.entity && KinkyDungeonFindID(entity.leash.entity)
 			&& KinkyDungeonIsDisabled(KinkyDungeonFindID(entity.leash.entity))) return false;
 		if (entity.player) {
-			return KinkyDungeonPlayerTags.get("Shadow");
+			return !!KinkyDungeonPlayerTags.get("Shadow");
 		} else {
 			return KDBoundEffects(entity) > 1 && !KDIsImprisoned(entity);
 		}

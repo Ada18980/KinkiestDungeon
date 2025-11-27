@@ -215,7 +215,7 @@ function KDInitInventory() {
 	}
 }
 
-let KinkyDungeonPlayerTags = new Map();
+let KinkyDungeonPlayerTags: Map<string, boolean> = new Map();
 let NPCTags: Map<Character, Map<string, boolean>> = new Map();
 
 let KinkyDungeonCurrentDress = "Default";
@@ -2406,7 +2406,7 @@ function KDPowerMult(_player: entity) {
  * @param player
  */
 function KDIsBlindfolded(_player: entity): boolean {
-	return (KinkyDungeonPlayerTags.get("Blindfolds") || KinkyDungeonPlayerTags.get("Masks") || KinkyDungeonPlayerTags.get("Hoods") || KinkyDungeonPlayerTags.get("BlockEyes"));
+	return !!(KinkyDungeonPlayerTags.get("Blindfolds") || KinkyDungeonPlayerTags.get("Masks") || KinkyDungeonPlayerTags.get("Hoods") || KinkyDungeonPlayerTags.get("BlockEyes"));
 }
 
 
@@ -2414,7 +2414,7 @@ function KDIsBlindfolded(_player: entity): boolean {
  * @param player
  */
 function KDCanHack(_player: entity): boolean {
-	return (KinkyDungeonPlayerTags.get("Cyberjack"));
+	return !!(KinkyDungeonPlayerTags.get("Cyberjack"));
 }
 
 

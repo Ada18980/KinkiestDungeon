@@ -791,6 +791,7 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 
 	let globalEntity = KDGetGlobalEntity(data.npc);
 	let packed = globalEntity ? KDUnPackEnemy(globalEntity) : false;
+	
 
 	if (data.restraint) {
 		let rests = KDGetNPCRestraints(data.npc);
@@ -863,6 +864,23 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 						inventoryVariant: item.inventoryVariant,
 					}, -1);
 				KDNPCRestraintTieUp(data.npc, rrr, 1);
+
+
+				for (let item of items) {
+					KinkyDungeonSendEvent("postApplyNPC", {
+						player: globalEntity,
+						item: item,
+						host: undefined,
+						keep: !!container,
+						container: container,
+						Link: false,
+						UnLink: false,
+						localEntity: KinkyDungeonFindID(data.npc),
+						NPCRestraintEvents:
+							KDGameData.NPCRestraints[data.npc]
+					} as KDEventData_PostApplyNPC);
+				}
+				
 			} else return;
 
 			if (!data.noInventory) {
