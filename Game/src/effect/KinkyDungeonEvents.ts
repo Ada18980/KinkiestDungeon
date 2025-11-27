@@ -466,8 +466,21 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 
 		"NoYoke": (_e, item, data: KDEventData_PostApply) => {
-			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
+			if (item != data.item && KinkyDungeonPlayerTags.get("Yoked"))
 				KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+		},
+		"NoBlockers": (_e, item, data: KDEventData_PostApply) => {
+			if (item != data.item) {
+				let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
+				if (blockers.length > 0) {
+					let rPower = KinkyDungeonRestraintPower(item);
+					if (blockers.some((blocker) => {
+						return rPower < KinkyDungeonRestraintPower(blocker);
+					})) {
+						KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+					}
+				}
+			}
 		},
 		"requireNoGags": (_e, item, data: KDEventData_PostApply) => {
 			if (item != data.item && KinkyDungeonPlayerTags.get("Gags")) {

@@ -2031,7 +2031,11 @@ function KinkyDungeonDrawGame() {
 					DrawCheckboxVis(1100, 20, 64, 64, "Verbose Console", KDDebug, false, KDBaseWhite);
 					DrawCheckboxVis(1100, 90, 64, 64, "Changeable Perks", KDDebugPerks, false, KDBaseWhite);
 					DrawCheckboxVis(1100, 160, 64, 64, "Unlimited Gold", KDDebugGold, false, KDBaseWhite);
-					DrawCheckboxVis(1100, 230, 64, 64, "Link Under", KDDebugLink, false, KDBaseWhite);
+					//DrawCheckboxVis(850, 300, 64, 64, "Link Under", KDDebugLink, false, KDBaseWhite);
+					DrawCheckboxKDEx("debujgforceadd", ()=>{KDDebugforceadds = !KDDebugforceadds; return true;},
+						true,850, 230, 64, 64, "Forcibly add restraints from inv", KDDebugforceadds, false, KDBaseWhite);
+					DrawCheckboxKDEx("debuglinkunder", ()=>{KDDebugLink = !KDDebugLink; return true;},
+						true,850, 300, 64, 64, "Link Under", KDDebugLink, false, KDBaseWhite);
 
 					DrawButtonVis(1500, 100, 100, 64, "Enemy", KDBaseWhite, "");
 					DrawButtonVis(1600, 100, 100, 64, "Ally", KDBaseWhite, "");

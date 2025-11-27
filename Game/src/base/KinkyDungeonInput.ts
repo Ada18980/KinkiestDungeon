@@ -299,18 +299,20 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 				currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 				if (!currentItem) equipped = false;
 				else {
-					if (KDDebugLink) {
-						linkable = KDCanAddRestraint(KDRestraint(newItem),
-						true, "", false, currentItem, true, true);
-					} else {
-						linkable = KDCanAddRestraint(KDRestraint(newItem),
-						false, "", false, currentItem, true,
-						true);
-						//KDCurrentItemLinkable(currentItem, newItem);
+					if (!KDDebugforceadds) {
+						if (KDDebugLink) {
+							linkable = KDCanAddRestraint(KDRestraint(newItem),
+							true, "", false, currentItem, true, true);
+						} else {
+							linkable = KDCanAddRestraint(KDRestraint(newItem),
+							false, "", false, currentItem, true,
+							true);
+							//KDCurrentItemLinkable(currentItem, newItem);
+						}
+						if (linkable) {
+							equipped = false;
+						} else equipped = true;
 					}
-					if (linkable) {
-						equipped = false;
-					} else equipped = true;
 				}
 			}
 		}

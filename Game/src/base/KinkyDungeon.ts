@@ -111,6 +111,7 @@ let KDDebug = false;
 let KDDebugPerks = false;
 let KDDebugGold = false;
 let KDDebugLink = false;
+let KDDebugforceadds = false;
 
 let KDAllModFiles = [];
 let KDModFiles = {};

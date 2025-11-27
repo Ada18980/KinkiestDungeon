@@ -59,21 +59,24 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				newItem = KDRestraint(item);
 				if (newItem) {
 
-					if (newItem.requireSingleTagToEquip && !newItem.requireSingleTagToEquip.some((tag: any) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
-					if (newItem.requireAllTagsToEquip && newItem.requireAllTagsToEquip.some((tag: any) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+					if (!KDDebugforceadds) {
+						if (newItem.requireSingleTagToEquip && !newItem.requireSingleTagToEquip.some((tag: any) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+						if (newItem.requireAllTagsToEquip && newItem.requireAllTagsToEquip.some((tag: any) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 
-					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
-					if (KDDebugLink) {
-						linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
-					} else {
-						if (!currentItem) return true;
-						//linkable = KDCurrentItemLinkable(currentItem, newItem);
-						linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+						currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
+						if (KDDebugLink) {
+							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+						} else {
+							if (!currentItem) return true;
+							//linkable = KDCurrentItemLinkable(currentItem, newItem);
+							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
 
+						}
+						if (linkable) {
+							return true;
+						} else return false;
 					}
-					if (linkable) {
-						return true;
-					} else return false;
+					
 				}
 				return true;
 			}
@@ -91,16 +94,19 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 					currentItem = KinkyDungeonGetRestraintItem(newItem.Group);
 					if (!currentItem) equipped = false;
 					else {
-						if (KDDebugLink) {
-							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
-						} else {
-							//linkable = KDCurrentItemLinkable(currentItem, newItem);
-							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+						if (!KDDebugforceadds) {
+							if (KDDebugLink) {
+								linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+							} else {
+								//linkable = KDCurrentItemLinkable(currentItem, newItem);
+								linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
 
+							}
+							if (!currentItem || linkable) {
+								equipped = false;
+							} else equipped = true;
 						}
-						if (!currentItem || linkable) {
-							equipped = false;
-						} else equipped = true;
+						
 					}
 				}
 				if (!equipped && newItem) {

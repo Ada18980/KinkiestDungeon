@@ -2833,7 +2833,12 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35},
 		helpChance: {"Remove": 1.0, "Pick": 0.5},
 		enemyTags: {"saddlemachine":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "SaddleMachine"], ignoreSpells: true, removeOnLeash: true,
-		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
+		events: [
+			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
+			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
+			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
+			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
+		]},
 	// Display trap
 	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
 		DefaultLock: "Red",
@@ -4599,7 +4604,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, trappable: true, name: "ThumbCuffsNew", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		Model: "Thumbcuffs",
 		struggleBreak: true,
-		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
+		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies",],
 		AssetGroup: "ItemArms",
 		sfxGroup: "Handcuffs",
 		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBindableWrist], Group: "ItemArms",
