@@ -31590,7 +31590,12 @@ KDBondageFailError,Error. Please screenshot and report.
 KDBondageFailCantAdd,"You can't wear that item, regrettably."
 
 KDBondageCondition_HeavyBondage,Must be stunned 3+ turns or fully bound
-KDBondageCondition_Extra,Depends on another item to be added first
+KDBondageCondition_Extra,Does not meet conditions
+KDBondageCondition_MissingNPC,Error: Missing NPC (report to Ada!)
+KDBondageCondition_MissingTag1,Requires additional items to equip
+KDBondageCondition_MissingTag2,Requires an additional item to equip
+KDBondageCondition_BlockedTag,Incompatible with another item
+KDBondageCondition_NoTag,Incompatible with existing items
 
 KDConjuredRestraintVanish,The conjured RSTN vanishes as you remove it.
 

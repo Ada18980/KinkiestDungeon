@@ -738,8 +738,21 @@ function KDCanEquipItemOnNPC(r: restraint, id: number, willing: boolean, lock: s
 		let stats = KDGetRestraintBondageStats(r, enemy);
 		if (stats.conditions) {
 			for (let condition of stats.conditions) {
-				if (!KDBondageConditions[condition](r, id, willing, lock, curse)) {
-					return condition;
+				let ret = KDBondageConditions[condition](r, id, willing, lock, curse);
+				if (ret) {
+					return ret;
+				}
+			}
+		}
+
+		
+		let metadata = KDEntityRestraintMetadata.get(id);
+		if (metadata) {
+			if (metadata.blockedtags) {
+				for (let blockedtag of Object.entries(metadata.blockedtags)) {
+					if (KDValidateTagForRestraint(blockedtag[0], r)) {
+						return "BlockedTag";
+					}
 				}
 			}
 		}

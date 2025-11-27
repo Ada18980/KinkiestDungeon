@@ -193,17 +193,17 @@ let NPCBindingGroups: NPCBindingGroup[] = [
 
 
 
-let KDBondageConditions: Record<string, (r: restraint, id: number, willing: boolean, lock: string, curse: string) => boolean> = {
+let KDBondageConditions: Record<string, (r: restraint, id: number, willing: boolean, lock: string, curse: string) => string> = {
 	HeavyBondage: (r, id, willing) => {
-		if (willing) return true;
-		if (r.quickBindCondition) return true;
-		if (r.quickBindCondition) return true;
+		if (willing) return "";
+		if (r.quickBindCondition) return "";
+		if (r.quickBindCondition) return "";
 		let enemy = KDGetGlobalEntity(id);
-		if (!enemy) return false; // Must create an entity
-		return enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3;
+		if (!enemy) return "MissingNPC"; // Must create an entity
+		return (enemy.stun >= 3 || enemy.freeze >= 3 || KDBoundEffects(enemy) > 3) ? "" : "HeavyBondage";
 	},
 	Extra: (r, id, willing) => {
-		if (r.quickBindCondition) return true;
+		if (r.quickBindCondition) return "";
 		let NPC = KDGetGlobalEntity(id);
 		if (NPC) {
 			KDQuickGenNPC(NPC, false);
@@ -216,17 +216,16 @@ let KDBondageConditions: Record<string, (r: restraint, id: number, willing: bool
 				}
 
 				if (NPCTags.get(npcSprite)) {
-					if (!KDIsEligibleNPC(r, id, NPCTags.get(npcSprite))) return false;
+					let result = KDIsEligibleNPC(r, id, NPCTags.get(npcSprite));
+					if (result) return result;
 				}
 
-				return true;
+				return "";
 			} else {
-				return true;
+				return "";
 			}
-
-			return true;
 		}
-		return false;
+		return "MissingNPC";
 	},
 }
 

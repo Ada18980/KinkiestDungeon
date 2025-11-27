@@ -363,8 +363,11 @@ function KDRestraintBondageConditions(item: Named): string[] {
 			data.conditions.push("HeavyBondage");
 		}
 
-		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip || r.requireNoTagToEquip) {
+		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip) {
 			data.conditions.push("Extra");
+		}
+		if (r.requireNoTagToEquip) {
+			data.conditions.push("RequireNoTag");
 		}
 
 		KinkyDungeonSendEvent("calcBondageConditions", data);
@@ -4156,22 +4159,22 @@ function KinkyDungeonLinkableAndStricter(oldRestraint: restraint, newRestraint: 
 }
 
 
-function KDIsEligibleNPC(r: restraint, id: number, tags: Map<string, boolean>, allowOverride = false): boolean {
+function KDIsEligibleNPC(r: restraint, id: number, tags: Map<string, boolean>, allowOverride = false): string {
 
 	if (r.requireAllTagsToEquip) {
 		for (let tag of r.requireAllTagsToEquip) {
 			if (!tags.get(tag)) {
-				return false;
+				return "MissingTag1";
 			}
 		}
 	}
 	if (r.requireSingleTagToEquip) {
 		for (let tag of r.requireSingleTagToEquip) {
 			if (tags.get(tag)) {
-				return true;
+				return "";
 			}
 		}
-		return false;
+		return "MissingTag2";
 	}
 
 
@@ -4179,10 +4182,10 @@ function KDIsEligibleNPC(r: restraint, id: number, tags: Map<string, boolean>, a
 		if (r.requireNoTagToEquip) {
 			for (let tag of r.requireNoTagToEquip) {
 				if (tags.get(tag)) {
-					return false;
+					return "NoTag";
 				}
 			}
-			return true;
+			return "";
 		}
 	} else {
 		let rPower = r.allowOverrideBasedOnTagFilters ? KDRestraintPower(r) : -100;
@@ -4203,17 +4206,17 @@ function KDIsEligibleNPC(r: restraint, id: number, tags: Map<string, boolean>, a
 			if (r.requireNoTagToEquip) {
 				for (let tag of r.requireNoTagToEquip) {
 					if (tags.get(tag)) {
-						return false;
+						return "NoTag";
 					}
 				}
-				return true;
+				return "";
 			}
 		}
 
 	}
 	
 	
-	return true;
+	return "";
 }
 
 /**
@@ -4320,7 +4323,9 @@ function KDCanAddRestraint (
 	if (metadata) {
 		if (metadata.blockedtags) {
 			for (let blockedtag of Object.entries(metadata.blockedtags)) {
-				if (KDValidateTagForItem(blockedtag[0], item))
+				if (KDValidateTagForRestraint(blockedtag[0], restraint)) {
+					return false;
+				}
 			}
 		}
 	}

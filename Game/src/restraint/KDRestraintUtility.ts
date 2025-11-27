@@ -277,7 +277,7 @@ function KDGetBlockersToAddRestraint(restraint: restraint, player?: entity): (it
         ) {
             let npcSprite = KDNPCChar.get(player.id);
             if (npcSprite) {
-                if (NPCTags.get(npcSprite) && !KDIsEligibleNPC(restraint, player.id, NPCTags.get(npcSprite))) {
+                if (NPCTags.get(npcSprite) && KDIsEligibleNPC(restraint, player.id, NPCTags.get(npcSprite))) {
                     let r = restraint;
                     if (r.requireNoTagToEquip) {
                         for (let tag of r.requireNoTagToEquip) {
