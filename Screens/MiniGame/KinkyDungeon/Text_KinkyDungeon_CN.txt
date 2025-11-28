@@ -49914,8 +49914,13 @@ N/A
 
 - Must be stunned 3+ turns or fully bound
 必须眩晕 3 个以上回合或完全捆绑
-- Depends on another item to be added first
+- Does not meet conditions
 取决于先添加另一件物品
+# - Error: Missing NPC (report to Ada!)
+# - Requires additional items to equip
+# - Requires an additional item to equip
+# - Incompatible with another item
+# - Incompatible with existing items
 
 - The conjured RSTN vanishes as you remove it.
 变出的 RSTN 会在你移除它时消失。
