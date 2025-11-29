@@ -363,13 +363,9 @@ function KDRestraintBondageConditions(item: Named): string[] {
 			data.conditions.push("HeavyBondage");
 		}
 
-		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip) {
+		if (r.requireAllTagsToEquip || r.requireSingleTagToEquip || r.requireNoTagToEquip) {
 			data.conditions.push("Extra");
 		}
-		if (r.requireNoTagToEquip) {
-			data.conditions.push("RequireNoTag");
-		}
-
 		KinkyDungeonSendEvent("calcBondageConditions", data);
 
 
