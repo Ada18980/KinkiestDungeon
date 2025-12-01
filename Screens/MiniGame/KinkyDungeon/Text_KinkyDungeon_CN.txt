@@ -8253,7 +8253,7 @@ RestraintName 上的诅咒解除了！
 - A teaser to keep you occupied.
 一个充实你的小玩意。
 - Buzzes on spellcast, and periodically as well.
-施法时振动，以及周期性振动。
+施法时会振动，也会周期性地振动。
 - High-Security Chastity Belt
 高安全性贞操带
 - A chastity belt to protect prisoners from themselves.
@@ -8419,43 +8419,43 @@ RestraintName 上的诅咒解除了！
 
 
 - Blessed Wrappings (Head)
-祝福丝带包裹 ( 头 )
+祈祝缠带包裹 ( 头 )
 - A band of magic embalming ribbon wrapped tight around your face.
-一条神奇的祝福丝带紧紧地缠绕在你的脸上。
+一条附有防腐魔法的缎带紧紧地包裹着你的脸。
 - Blessed Wrappings (Eyes)
-祝福丝带包裹 ( 眼睛 )
+祈祝缠带包裹 ( 眼睛 )
 - A band of magic embalming ribbon wrapped tight over the eyes. Can be used on vulnerable targets from quick inventory or hotbar.
-一条神奇的祝福丝带紧紧地缠绕在你的眼睛上。可从快捷背包或快捷栏应用于虚弱的敌人。
+一条附有防腐魔法的缎带紧紧缠绕着你的双眼。可从快捷背包或快捷栏应用于虚弱的敌人。
 - Blessed Wrappings (Gag)
-祝福丝带包裹 ( 堵嘴 )
+祈祝缠带包裹 ( 堵嘴 )
 - A band of magic embalming ribbon wrapped tight over mouth. Can be used on vulnerable targets from quick inventory or hotbar.
-一条神奇的祝福丝带紧紧地缠在你的嘴上。可从快捷背包或快捷栏应用于虚弱的敌人。
+一条附有防腐魔法的缎带紧紧包裹着你的嘴巴。可从快捷背包或快捷栏应用于虚弱的敌人。
 - Blessed Wrappings (Arms)
-祝福丝带包裹 ( 手臂 )
+祈祝缠带包裹 ( 手臂 )
 - A layer of magic embalming ribbon wrapped tight around your body.
-一层神奇的祝福丝带紧紧地缠绕在你的身上。
+一层附有防腐魔法的祈祝缠带紧紧包裹着你的身体。
 - Blessed Wrappings (Feet)
-祝福丝带包裹 ( 脚 )
+祈祝缠带包裹 ( 脚 )
 - A layer of magic embalming ribbon wrapped tight around your shins.
-一层神奇的祝福丝带紧紧地缠绕在你的小腿上。
+一层附有防腐魔法的祈祝缠带紧紧包裹着你的小腿。
 - Blessed Wrappings (Toes)
-祝福丝带包裹 ( 脚趾 )
+祈祝缠带包裹 ( 脚趾 )
 - A layer of magic embalming ribbon wrapped tight around your feet.
-一层神奇的祝福丝带紧紧地缠绕在你的脚上。
+一层附有防腐魔法的祈祝缠带紧紧包裹着你的双脚。
 - Blessed Wrappings (Hands)
-祝福丝带包裹 ( 手 )
+祈祝缠带包裹 ( 手 )
 - A layer of magic embalming ribbon wrapped tight around your hands.
-一层神奇的祝福丝带紧紧地缠绕在你的手上。
+一层附有防腐魔法的祈祝缠带紧紧包裹着你的双手。
 - Blessed Wrappings (Legs)
-祝福丝带包裹 ( 腿 )
+祈祝缠带包裹 ( 腿 )
 - A layer of magic embalming ribbon wrapped tight around your thighs.
-一层神奇的祝福丝带紧紧地缠绕在你的大腿上。
+一层附有防腐魔法的祈祝缠带包裹着你的大腿。
 - Living Blessed Wrappings Collar
-活体祝福丝带项圈
+活体祈祝缠带项圈
 - This collar is designed to make sure its wearer does not escape their wrappings.
-这款项圈的设计可以确保佩戴者无法逃脱祝福丝带的束缚。
+这款项圈的设计可以确保佩戴者无法逃脱祈祝缠带的束缚。
 - It will occasionally cause blessed wrappings to appear out of nowhere and bind the wearer.  Effect increases in speed based on the number of blessed wrappings you have on you.
-时不时会凭空生出祝福丝带捆缚佩戴者。身上祝福丝带束缚的数量越多，生效越快。
+时不时会凭空生出祈祝缠带捆缚佩戴者。身上祈祝缠带束缚的数量越多，生效越快。
 
 - Tape (Hands)
 胶带(手)
@@ -8541,14 +8541,14 @@ RestraintName 上的诅咒解除了！
 符咒的魔力不足以抵抗一般的破坏，但是在控制入侵者和被诅咒者上意外的有效。
 
 - Blessed Wrapping
-祝福丝带
+祈祝缠带
 - A layer of magic embalming ribbon.
-一条神奇的防腐丝带
+一条附有防腐魔法的缎带。
 - It clings of its own accord to intruders and naughty catgirls.
 它会主动粘住入侵者和淘气的猫娘。
 
 - Autotape (Hands)
-自动胶带 ( 手 )
+机用胶带 ( 手 )
 - Sticky tape made from a metallic material. Used to great effect in police situations.
 由金属材料制成的胶带。在警察情况下使用效果很好。
 # :: RestraintAutoTapeHandsDesc
@@ -8558,9 +8558,9 @@ RestraintName 上的诅咒解除了！
 # :: RestraintAutoTapeBootsDesc
 # :: RestraintAutoTapeMouthFullDesc
 - It's very sticky and seals your hands tightly, making any struggling ineffective.
-它非常粘，将你的手紧紧封住，使任何挣扎都无效。
+粘性很强，能将你的手牢牢封死，任何挣扎都无济于事。
 - Autotape (Head)
-自动胶带 ( 头 )
+机用胶带 ( 头 )
 - Sticky tape made from a metallic material. Used to great effect in police situations. Can be used on vulnerable targets from quick inventory or hotbar.
 由金属材料制成的粘性胶带。在警用场合使用效果极佳。可从快捷背包或快捷栏应用于虚弱的敌人。
 # :: RestraintAutoTapeHeadDesc
@@ -8575,19 +8575,19 @@ RestraintName 上的诅咒解除了！
 # :: RestraintAutoTapeMouthDesc2
 # :: RestraintAutoTapeMouthFullDesc2
 - Autotape (Arms)
-自动胶带 ( 手臂 )
+机用胶带 ( 手臂 )
 - Autotape (Legs)
-自动胶带 ( 腿 )
+机用胶带 ( 腿 )
 - Autotape (Ankles)
-自动胶带 ( 脚踝 )
+机用胶带 ( 脚踝 )
 - Autotape (Feet)
-自动胶带 ( 足 )
+机用胶带 ( 足 )
 - Autotape (Mouth)
-自动胶带 ( 嘴 )
+机用胶带 ( 嘴 )
 - Autotape (Mouth Wrap)
-自动胶带 (裹嘴)
+机用胶带 (裹嘴)
 - Living Auto Tape Collar
-活体自动胶带项圈
+活体机用胶带项圈
 - It will occasionally cause tape to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of tape you have on you.
 时不时会凭空生出胶带捆缚佩戴者。身上胶带束缚的数量越多，生效越快。
 
@@ -8601,7 +8601,7 @@ RestraintName 上的诅咒解除了！
 - A stuffing of cloth. Can be applied on vulnerable targets or those who casted a verbal spell last turn.
 一块布团。可以用于虚弱的目标或上一回合施展过口头咒语的人。
 - You could spit it out easily, provided nothing's covering it.
-你可以很容易地把它吐出来，只要没有东西覆盖它。
+只要没有东西遮挡就可以很轻松地吐出来。
 
 
 
@@ -8618,7 +8618,7 @@ RestraintName 上的诅咒解除了！
 - A collar made from an almost-weightless alloy..
 由几乎没有重量的合金制成的项圈。
 - It feels comfortable but it's also really hard.
-感觉很舒服，但也真的很硬。
+穿戴舒适，但也非常坚硬。
 
 - Mithril Cuffs
 秘银手铐
@@ -11714,7 +11714,7 @@ RestraintName 上的诅咒解除了！
 - Empowered with magic
 被赋予了魔法
 - Blessed Wrappings
-祝福丝带
+祈祝缠带
 # :: KDEffectTileTooltipFabricGreen
 # :: KinkyDungeonSpellSarcoEngulf
 - Enchanted wrappings
@@ -49916,9 +49916,12 @@ N/A
 必须眩晕 3 个以上回合或完全捆绑
 - Does not meet conditions
 取决于先添加另一件物品
-# - Error: Missing NPC (report to Ada!)
-# - Requires additional items to equip
-# - Requires an additional item to equip
+- Error: Missing NPC (report to Ada!)
+错误：NPC丢失(请反馈给作者!)
+- Requires additional items to equip
+需要额外的物品才可装备
+- Requires an additional item to equip
+需要额外的物品才能装备
 # - Incompatible with another item
 # - Incompatible with existing items
 
@@ -52058,7 +52061,7 @@ Boss
 - Lost in Space
 维度迷失
 - Unlocked by stepping into a dimensional rift willingly... or not!
-解锁方式：自愿 ( 并不 ) 踏入维度裂隙。
+解锁方式：( 非 ) 自愿踏入维度裂隙。
 
 
 - Select a progress item to show details
