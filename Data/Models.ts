@@ -846,7 +846,14 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 let DrawModel = DrawCharacter;
 
 function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : boolean {
-	if (l.LockLayer && !m.LockType) return true;
+	if (l.LockLayer && !m.LockType && !(m.Properties && 
+		 (m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]
+				|| m.Properties[l.Name] || m.Properties[l.InheritColor])
+			&& (m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]
+				|| m.Properties[l.Name] || m.Properties[l.InheritColor]).AddPose
+				&& (m.Properties[KDLayerPropName(l, MC.Poses, m.Properties)]
+				|| m.Properties[l.Name] || m.Properties[l.InheritColor]).AddPose.includes("Locked")
+	)) return true;
 	if (MC.HiddenLayers && MC.HiddenLayers[LayerLayer(MC, l, m, Mods)]) return true;
 
 	if (l.HidePoseConditional?.some((entry) => {

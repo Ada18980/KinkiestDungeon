@@ -54,6 +54,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Added low-resolution textures setting. Try this if your game crashes after some time.
 
 5.4.81
+- Can now lock fashion cyber restraints by adding "Locked" to the lock layer's AddPose array in the expert tools
 - fixed wolfgirl panties not stacking with ropes
 - mod files array now replace all backslashes with forwardslashes, to help compatibility on different systems
 - added debug mode option to make it so self-equipping restraints equips them forcibly

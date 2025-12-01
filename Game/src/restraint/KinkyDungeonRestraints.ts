@@ -1704,7 +1704,7 @@ function KinkyDungeonPickAttempt(): boolean {
 		KinkyDungeonTargetTile.pickProgress += escapeChance;
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Pick.ogg");
 	}
-	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonAttemptPick" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject")), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 1);
+	KinkyDungeonSendActionMessage(2, TextGet("KinkyDungeonAttemptPick" + Pass).replace("TargetRestraint", TextGet("KinkyDungeonObject" + (KinkyDungeonTargetTile.Type || "Lock"))), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 1);
 	if (chargecosts) {
 		KDChangeStamina(KinkyDungeonTargetTileLocation, "map", "pick", cost, true);
 		KDChangeWill(KinkyDungeonTargetTileLocation, "map", "pick", wcost);
@@ -6796,6 +6796,10 @@ function KDGetItemNameString(name: string): string {
 	let variant = KinkyDungeonRestraintVariants[name] || KinkyDungeonWeaponVariants[name] || KinkyDungeonConsumableVariants[name];
 	if (variant) {
 		base = TextGet((KinkyDungeonGetRestraintByName(variant.template) ? "Restraint" : "KinkyDungeonInventoryItem") + variant.template);
+	}
+	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentifiedString(name);
+	if (unidentified) {
+		return TextGet("KDUnidentified") + base;
 	}
 	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;

@@ -3919,6 +3919,14 @@ function KDIsUnidentified(item: item) {
 		&& (!KDGameData.IdentifiedObj || !KDGameData.IdentifiedObj[item.inventoryVariant || item.name]);
 }
 
+function KDIsUnidentifiedString(name: string) {
+	return (KinkyDungeonRestraintVariants[name]
+		|| KinkyDungeonWeaponVariants[name]
+		|| KinkyDungeonConsumableVariants[name]
+	)
+		&& (!KDGameData.IdentifiedObj || !KDGameData.IdentifiedObj[name]);
+}
+
 
 /** Returns true if an alternate inventory mode is enabled */
 function KDAlternateInventoryRender(): boolean {

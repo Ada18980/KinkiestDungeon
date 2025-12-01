@@ -2740,26 +2740,26 @@ AttackWitchFlame,"The witch slaps you playfully! (DamageTaken)"
 
 
 NameWitchEarth,Earth Witch
-KillWitchEarth,"The earth witch vanishes into a pile of ash."
+KillWitchEarth,"The earth witch vanishes, leaving behind a pile of sand."
 AttackWitchEarthBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchEarthLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchEarth,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchWater,Water Witch
-KillWitchWater,"The water witch vanishes into a pile of ash."
+KillWitchWater,"The water witch vanishes, leaving behind a puddle."
 AttackWitchWaterBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchWaterLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchWater,"The witch slaps you playfully! (DamageTaken)"
 
 
 NameWitchAqua,Aqua Witch
-KillWitchAqua,"The aqua witch vanishes into a pile of ash."
+KillWitchAqua,"The aqua witch vanishes, leaving behind a puddle."
 AttackWitchAquaBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchAquaLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchAqua,"The witch slaps you playfully! (DamageTaken)"
 
 NameWitchIce,Ice Witch
-KillWitchIce,"The ice witch vanishes into a pile of ash."
+KillWitchIce,"The ice witch vanishes, leaving behind a puddle"
 AttackWitchIceBind,"The witch restrains you! (+RestraintAdded)"
 AttackWitchIceLock,"The witch dangles a lock in front of you before putting it on! (DamageTaken)"
 AttackWitchIce,"The witch slaps you playfully! (DamageTaken)"
