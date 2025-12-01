@@ -1408,7 +1408,7 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 	let furnitureApplied = false;
 	if (KDMapData.JailPoints.length > 0) {
 		let nearestjail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
-			["furniture"]);
+			["furniture"], undefined, undefined, undefined, KDGetFurnitureCriteria(KDPlayer()));
 		if (nearestjail) {
 			KDMovePlayer(nearestjail.x, nearestjail.y, false);
 			furnitureApplied = KDApplyFurnitureRestraint(nearestjail.x, nearestjail.y, KDPlayer());
@@ -2584,4 +2584,36 @@ function KDApplyJailOutfit() {
 		|| (KDToggles.NoOutfitPalette ? undefined : (KinkyDungeonPlayer.metadata?.palette || KinkyDungeonPlayer.Palette))
 		|| KDGetMainFaction() || restraintPalette || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
+}
+
+function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: KDJailPoint) => boolean {
+	// returns TRUE if no furniture present--thats gonna be filtered elsewhere
+	if (entity.id == KDPlayer().id) {
+		return (x: number, y: number, point: KDJailPoint) => {
+			let furniture: string = KinkyDungeonTilesGet(x + "," + y)?.Furniture;
+			let restrainttags : string[] = point.restrainttags;
+			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
+
+			return !furniture || (restrainttags && (
+				!!KinkyDungeonGetRestraint({tags: point.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined)
+			));
+		}
+	} else {
+		let id = entity.id;
+		return (x: number, y: number, point: KDJailPoint) => {
+			let furniture: string = KinkyDungeonTilesGet(x + "," + y)?.Furniture;
+			let restrainttags : string[] = point.restrainttags;
+			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
+
+			return !furniture || (restrainttags && (
+				!KDCanEquipItemOnNPC(
+					KinkyDungeonGetRestraint({tags: point.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, 
+					undefined, undefined, undefined, undefined, undefined, true),
+					id, false, undefined, undefined
+				)
+			));
+		}
+	}
+
+	
 }

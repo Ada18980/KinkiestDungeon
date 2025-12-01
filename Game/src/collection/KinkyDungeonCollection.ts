@@ -580,8 +580,8 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 	KDDraw(kdcanvas, kdpixisprites, value.name + "_rank," + value.id,
 		KinkyDungeonRootDirectory + "UI/Rank/Rank" + KDEnemyTypeRank(KinkyDungeonGetEnemyByName(value.type)) + ".png",
-		x + 10,
-		y + 10,
+		x + 4,
+		y + 4,
 		72, 72, undefined, {
 			zIndex: 110
 		});

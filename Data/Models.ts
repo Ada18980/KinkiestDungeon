@@ -715,9 +715,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 					for (let i = 0; i + 1 < buffer.data.length; i+= 2)
 					{
 						// x
-						buffer.data[i] = matrix[i] + (BasicMesh[i]) * intensity;
+						buffer.data[i] = matrix[i] + (BasicMesh[i]) * intensity * Zoom;
 						// y
-						buffer.data[i+1] = matrix[i+1] + (BasicMesh[i+1]) * intensity;
+						buffer.data[i+1] = matrix[i+1] + (BasicMesh[i+1]) * intensity * Zoom;
 
 						drawDots(x, width, y, height, i);
 

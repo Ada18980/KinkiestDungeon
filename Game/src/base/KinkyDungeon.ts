@@ -6999,7 +6999,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 
 			if (!KDToggles.OverrideOutfit && saveData.saveStat) {
 				if (saveData.saveStat.poses || saveData.saveStat.appearance || saveData.saveStat.default) {
-					KinkyDungeonPlayer.Appearance = JSON.parse(JSON.stringify(saveData.saveStat.appearance));
+					KinkyDungeonPlayer.Appearance = AppearanceItemParse(JSON.stringify(saveData.saveStat.appearance));
 					/** breaks the link */
 					KDRefreshSelectedModel(KinkyDungeonPlayer);
 					KDGetDressList().Default = saveData.saveStat.default;

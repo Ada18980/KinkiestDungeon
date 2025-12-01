@@ -2078,16 +2078,20 @@ function KDSendNPCRestraintEvent(Event: string, data: any) {
 	let iteration = 0;
 	let stack = true;
 	KDGetItemEventCache();
+	let already: Map<KinkyDungeonEvent, boolean> = new Map();
 	while ((stack) && iteration < 100) {
 		stack = false;
-		for (let item of Object.values(data.NPCRestraintEvents as Record<string, NPCRestraint>)) {
+		for (let entry of Object.entries(data.NPCRestraintEvents as Record<string, NPCRestraint>)) {
+			let item = entry[1];
 			let curse = KDGetCurse(item);
 
-			if (item.events) {
-				for (let e of item.events) {
+			if (KDGetEvents(item)) {
+				for (let e of KDGetEvents(item)) {
 					if (e.trigger === Event && (!e.curse || curse)) {
+						if (already.get(e)) continue;
+						already.set(e, true);
 						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
-							KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+							KinkyDungeonHandleInventoryEvent(Event, e, item, data, entry[0]);
 						} else {
 							stack = true;
 						}
@@ -2096,9 +2100,11 @@ function KDSendNPCRestraintEvent(Event: string, data: any) {
 			}
 			if (curse && KDCurses[curse]?.events) {
 				for (let e of KDCurses[curse].events) {
+					if (already.get(e)) continue;
+					already.set(e, true);
 					if (e.trigger === Event && (!e.curse || curse) && (!e.requireEnergy || ((!e.energyCost && KDGameData.AncientEnergyLevel > 0) || (e.energyCost && KDGameData.AncientEnergyLevel > e.energyCost)))) {
 						if (iteration == (e.delayedOrder ? e.delayedOrder : 0)) {
-							KinkyDungeonHandleInventoryEvent(Event, e, item, data);
+							KinkyDungeonHandleInventoryEvent(Event, e, item, data, entry[0]);
 						} else {
 							stack = true;
 						}

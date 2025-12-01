@@ -2839,6 +2839,8 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
 			{trigger: "postApply", type: "NoBlockers", inheritLinked: true},
+			{trigger: "postApplyNPC", type: "NoBlockers", inheritLinked: true},
+			
 		]},
 	// Display trap
 	{removePrison: true, name: "DisplayTrap", Asset: "TheDisplayFrame", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,

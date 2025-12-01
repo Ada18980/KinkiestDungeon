@@ -10904,7 +10904,7 @@ function KDGetDistraction(entity: entity) {
 
 
 function KDIsNearbyFurniture(enemy: entity, dist: number) {
-	let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true);
+	let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true, KDGetFurnitureCriteria(enemy));
 
 	return furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) <= dist;
 }

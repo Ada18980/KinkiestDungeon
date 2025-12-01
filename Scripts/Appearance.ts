@@ -119,6 +119,13 @@ function AppearanceItemParse(stringified: string): Item[] {
 		if (key === "Model" && ModelDefs[value]) {
 			return JSON.parse(JSON.stringify(ModelDefs[value]));
 		}
+		if (key === "Model" && value.Name && ModelDefs[value.Name]) {
+			let model = value;
+			if (ModelDefs[value.Name]) {
+				model.Layers = JSON.parse(JSON.stringify(ModelDefs[value.Name])).Layers;
+			}
+			return model;
+		}
 		return value;
 	});
 

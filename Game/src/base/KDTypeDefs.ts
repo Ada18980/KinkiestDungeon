@@ -3840,7 +3840,9 @@ type KDEventData_affinity = {
 	groupIsHigh: boolean;
 };
 type KDEventData_PostApply = {player: entity, item: item|null, host: item, keep: boolean, Link: boolean, UnLink: boolean}
-type KDEventData_PostApplyNPC = {player: entity, item: NPCRestraint|null, host: item, keep: boolean, Link: boolean, UnLink: boolean, container: Record<string, item>, localEntity: entity, }
+type KDEventData_PostApplyNPC = {player: entity, newitem: NPCRestraint, slotsToFill: string[], itemslot: string, looseitems: item[], keep: boolean, Link: boolean, UnLink: boolean, container: Record<string, item>, localEntity: entity, 
+	NPCRestraintEvents: Record<string, NPCRestraint>,
+}
 type KDEventData_CurseCount = {restraints: {item: item, host: item}[], count: number, activatedOnly: boolean}
 
 interface KDExpressionType {

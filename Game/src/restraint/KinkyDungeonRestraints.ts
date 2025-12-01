@@ -3929,7 +3929,7 @@ function KDUpdateRestraintMetadata(id: number, delta: number, customRestraints?:
 		for (let inv of KDAllRestraintDynamicList()) {
 			if (KDRestraint(inv)?.blockRestraintsWithTag) {
 				for (let blockedtag of KDRestraint(inv).blockRestraintsWithTag) {
-					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag], KDRestraintPower(
+					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag] || 0, KDRestraintPower(
 						KDRestraint(inv),
 						inv.inventoryVariant, inv.lock, inv.curse
 					));
@@ -3946,7 +3946,7 @@ function KDUpdateRestraintMetadata(id: number, delta: number, customRestraints?:
 		for (let inv of customRestraints) {
 			if (KDRestraint(inv)?.blockRestraintsWithTag) {
 				for (let blockedtag of KDRestraint(inv).blockRestraintsWithTag) {
-					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag], KDRestraintPower(
+					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag] || 0, KDRestraintPower(
 						KDRestraint(inv),
 						//@ts-expect-error
 						inv.variant || inv.inventoryVariant, inv.lock, inv.curse
@@ -3968,7 +3968,7 @@ function KDUpdateRestraintMetadata(id: number, delta: number, customRestraints?:
 				already[entry[0]] = true;
 				if (KDRestraint(inv)?.blockRestraintsWithTag) {
 				for (let blockedtag of KDRestraint(inv).blockRestraintsWithTag) {
-					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag], KDRestraintPower(
+					metadata.blockedtags[blockedtag] = Math.max(metadata.blockedtags[blockedtag] || 0, KDRestraintPower(
 						KDRestraint(inv),
 						inv.variant || inv.inventoryVariant, inv.lock, inv.curse
 					));
@@ -4306,8 +4306,10 @@ function KDCanAddRestraint (
 	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 
 	let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
+	let rPower = undefined;
 	if (blockers.length > 0) {
-		let rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
+		if (rPower == undefined)
+			rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
 		if (blockers.some((blocker) => {
 			return rPower < KinkyDungeonRestraintPower(blocker);
 		})) {
@@ -4319,7 +4321,9 @@ function KDCanAddRestraint (
 	if (metadata) {
 		if (metadata.blockedtags) {
 			for (let blockedtag of Object.entries(metadata.blockedtags)) {
-				if (KDValidateTagForRestraint(blockedtag[0], restraint)) {
+				if (rPower == undefined)
+					rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
+				if (KDValidateTagForRestraint(blockedtag[0], restraint) && (noOverpower || rPower < blockedtag)) {
 					return false;
 				}
 			}
@@ -7301,6 +7305,16 @@ function KDDoEquipGenericDelayed(data: any, player: entity): string {
 		return "KDCantEquip";
 	}
 
+}
+
+function KDGetEvents(item: item|NPCRestraint) {
+	if (item.events) return item.events;
+	if (KinkyDungeonRestraintVariants[item.inventoryVariant || item.name]) return KinkyDungeonRestraintVariants[item.inventoryVariant || item.name].events;
+	if (KinkyDungeonWeaponVariants[item.inventoryVariant || item.name]) return KinkyDungeonWeaponVariants[item.inventoryVariant || item.name].events;
+	if (KinkyDungeonConsumableVariants[item.inventoryVariant || item.name]) return KinkyDungeonConsumableVariants[item.inventoryVariant || item.name].events;
+	if (KDRestraint(item)?.events) return KDRestraint(item)?.events;
+	if (KDWeapon(item)?.events) return KDWeapon(item)?.events;
+	if (KDOutfit(item)?.events) return KDOutfit(item)?.events;
 }
 
 

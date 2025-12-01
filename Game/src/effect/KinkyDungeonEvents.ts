@@ -211,7 +211,7 @@ function KinkyDungeonHandleInventorySelectedEvent(Event: string, kinkyDungeonEve
  * Function mapping
  * to expand, keep (e, item, data) => {...} as a constant API call
  */
-let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, item: item, data: any) => void>> = {
+let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, item: item, data: any, slot?: string) => void>> = {
 	"dynamic": {
 		"wardenPunish": (_e, item, _data) => {
 			let restraintAdd = KinkyDungeonGetRestraint({ tags: ["wardenLink"] }, KDGetEffLevel(), KDCurrIndex(),
@@ -411,15 +411,47 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		}
 	},
 	"postApplyNPC": {
-		"NoBlockers": (_e, item, data: KDEventData_PostApply) => {
-			if (item != data.item) {
+		"NoBlockers": (_e, item, data: KDEventData_PostApplyNPC, slot) => {
+			if (data.newitem && data.newitem.id != item.id) {
 				let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
 				if (blockers.length > 0) {
 					let rPower = KinkyDungeonRestraintPower(item);
 					if (blockers.some((blocker) => {
 						return rPower < KinkyDungeonRestraintPower(blocker);
 					})) {
-						KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+						//KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+						let items = KDSetNPCRestraint(data.player.id, slot, undefined);
+						if (items && data.keep)
+							for (let item of items) {
+								if (item && KDRestraint(item)?.inventory && !item.conjured) {
+									let entity = KDGetGlobalEntity(data.player.id);
+									if (entity) {
+										if (!entity.items) entity.items = [];
+										entity.items.push(KDRestraint(item)?.inventoryAs || item.name);
+									}
+								}
+							}
+						
+						return;
+					}
+				}
+				if (KDRestraint(item).blockRestraintsWithTag) {
+					if (KDRestraint(item).blockRestraintsWithTag.some(tag => {
+						return KDValidateTagForItem(tag, data.newitem);
+					})) {
+						//KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+						let items = KDSetNPCRestraint(data.player.id, slot, undefined);
+						if (items && data.keep)
+							for (let item of items) {
+								if (item && KDRestraint(item)?.inventory && !item.conjured) {
+									let entity = KDGetGlobalEntity(data.player.id);
+									if (entity) {
+										if (!entity.items) entity.items = [];
+										entity.items.push(KDRestraint(item)?.inventoryAs || item.name);
+									}
+								}
+							}
+						return;
 					}
 				}
 			}
@@ -494,6 +526,15 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						return rPower < KinkyDungeonRestraintPower(blocker);
 					})) {
 						KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+						return;
+					}
+				}
+				if (KDRestraint(item).blockRestraintsWithTag) {
+					if (KDRestraint(item).blockRestraintsWithTag.some(tag => {
+						return KDValidateTagForItem(tag, data.item);
+					})) {
+						KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
+						return;
 					}
 				}
 			}
@@ -3230,10 +3271,10 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
  * @param item
  * @param data
  */
-function KinkyDungeonHandleInventoryEvent(Event: string, e: KinkyDungeonEvent, item: item, data: any) {
+function KinkyDungeonHandleInventoryEvent(Event: string, e: KinkyDungeonEvent, item: item, data: any, slot?: string) {
 	if (Event === e.trigger && KDEventMapInventory[e.dynamic ? "dynamic" : Event] && KDEventMapInventory[e.dynamic ? "dynamic" : Event][e.type]) {
 		if (KDCheckCondition(e, data))
-			KDEventMapInventory[e.dynamic ? "dynamic" : Event][e.type](e, item, data);
+			KDEventMapInventory[e.dynamic ? "dynamic" : Event][e.type](e, item, data, slot);
 	}
 }
 

@@ -1461,7 +1461,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		let enemy = KDGetGlobalEntity(data.npc);
 
 		let packed = enemy ? KDUnPackEnemy(enemy) : false;
-		if (enemy && (!data.restraint || enemy.boundLevel > 0))
+		if (res && enemy && (!data.restraint || enemy.boundLevel > 0))
 			KinkyDungeonSendTextMessage(10,
 				TextGet("KDTieUpEnemy" + (!data.restraint ? "Negative" : ""))
 					.replace("RSTR", KDGetItemNameString(data.restraint))//TextGet("Restraint" + KDRestraint(item)?.name))
@@ -1472,7 +1472,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		if (data.time && res) {
 			KinkyDungeonAdvanceTime(1, true);
 		}
-		if (data.npc > 0) {
+		if (res && data.npc > 0) {
 			KDSetCollFlag(data.npc, "restrained", 1);
 			KDSetCollFlag(data.npc, "restrained_recently", 24);
 		}
