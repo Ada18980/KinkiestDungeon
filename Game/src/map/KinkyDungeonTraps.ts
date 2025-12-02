@@ -95,6 +95,24 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 			msg: TextGet("KDDisplayTrap"),
 		};
 	},
+	SybTrap: (tile, entity, _x, _y) => {
+		if (entity.player) {
+			let items = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("SaddleMachine"), 0, true);
+			if (items > 0) {
+				if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+					tile.Trap = undefined;
+					tile.Type = "Furniture";
+					return {
+						triggered: true,
+						msg: TextGet("KDSybTrap"),
+					};
+				}
+			}
+		return {
+			triggered: false,
+			msg: "",
+		};
+	},
 	DisplayEgyptianTrap: (tile, entity, _x, _y) => {
 		if (entity.player)
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("DisplayTrap"), 0, true);

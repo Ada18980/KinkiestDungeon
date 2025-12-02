@@ -2595,7 +2595,7 @@ function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: K
 			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
 
 			return !furniture || (restrainttags && (
-				!!KinkyDungeonGetRestraint({tags: point.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined)
+				!!KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, undefined)
 			));
 		}
 	} else {
@@ -2605,9 +2605,9 @@ function KDGetFurnitureCriteria(entity: entity): (x: number, y: number, point: K
 			let restrainttags : string[] = point.restrainttags;
 			if (!restrainttags && furniture && KDFurniture[furniture]?.restraintTag) restrainttags = [KDFurniture[furniture]?.restraintTag];
 
-			return !furniture || (restrainttags && (
+			return !entity || !furniture || (restrainttags && (
 				!KDCanEquipItemOnNPC(
-					KinkyDungeonGetRestraint({tags: point.restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, 
+					KinkyDungeonGetRestraint({tags: restrainttags}, KDGetEffLevel(),KDCurrIndex(), false, 
 					undefined, undefined, undefined, undefined, undefined, true),
 					id, false, undefined, undefined
 				)

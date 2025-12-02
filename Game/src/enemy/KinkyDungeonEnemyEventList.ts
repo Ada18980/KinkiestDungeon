@@ -454,11 +454,12 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				if (!KDLeashConditions[enemy.Enemy.Behavior.leashCondition].check(enemy, (aiData as KDAIData).player))
 					return 0;
 			}
+			let player = KDPlayer();
 			return (hostile
 				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
 				&& ((KinkyDungeonFlags.has("Released"))
 			|| (
-				!KDIsNearbyFurniture(enemy, 14)
+				!KDIsNearbyFurniture(enemy, player, 14)
 			)
 		)
 				&& !KDEnemyHasFlag(enemy, "dontChase")) ?

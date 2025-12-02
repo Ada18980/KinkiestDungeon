@@ -32,6 +32,14 @@
 	"spriteSourceSize": {"x":18,"y":13,"w":111,"h":114},
 	"sourceSize": {"w":144,"h":144}
 },
+"Game/Aura/Plugged.png":
+{
+	"frame": {"x":1348,"y":1242,"w":14,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":127,"w":14,"h":17},
+	"sourceSize": {"w":144,"h":144}
+},
 "Game/Aura/Slimed.png":
 {
 	"frame": {"x":1,"y":956,"w":142,"h":142},
@@ -560,6 +568,14 @@
 	"spriteSourceSize": {"x":4,"y":1,"w":65,"h":63},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Bullets/Hairpin.png":
+{
+	"frame": {"x":1931,"y":2031,"w":39,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":34,"w":39,"h":7},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Bullets/HeelShadowStrike.png":
 {
 	"frame": {"x":1665,"y":1438,"w":58,"h":58},
@@ -850,7 +866,7 @@
 },
 "Game/Bullets/RubberNuke.png":
 {
-	"frame": {"x":1725,"y":1464,"w":69,"h":32},
+	"frame": {"x":1796,"y":1464,"w":69,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":20,"w":69,"h":32},
@@ -1570,7 +1586,7 @@
 },
 "Game/Conditions/Blind.png":
 {
-	"frame": {"x":797,"y":2035,"w":31,"h":12},
+	"frame": {"x":738,"y":2035,"w":31,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":0,"w":31,"h":12},
@@ -1578,7 +1594,7 @@
 },
 "Game/Conditions/BoundLevel.png":
 {
-	"frame": {"x":860,"y":2035,"w":23,"h":12},
+	"frame": {"x":801,"y":2035,"w":23,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":49,"y":59,"w":23,"h":12},
@@ -1682,15 +1698,23 @@
 },
 "Game/EffectTiles/MotionLampLight.png":
 {
-	"frame": {"x":1749,"y":2016,"w":51,"h":31},
+	"frame": {"x":1673,"y":2016,"w":51,"h":31},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":17,"w":51,"h":31},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/EffectTiles/PressurePlateHold.png":
+{
+	"frame": {"x":846,"y":1204,"w":26,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":45,"w":26,"h":13},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/EffectTiles/Radiance.png":
 {
-	"frame": {"x":1802,"y":2016,"w":51,"h":31},
+	"frame": {"x":1726,"y":2016,"w":51,"h":31},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":33,"w":51,"h":31},
@@ -1774,6 +1798,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Enemies/AnimLegbinder.png":
+{
+	"frame": {"x":1725,"y":1440,"w":69,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":9,"w":69,"h":56},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/AnimPetsuit.png":
@@ -1904,14 +1936,6 @@
 	"spriteSourceSize": {"x":18,"y":7,"w":41,"h":61},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Enemies/BindableEnemies/FastZombie.png":
-{
-	"frame": {"x":1886,"y":1390,"w":38,"h":66},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":16,"y":1,"w":38,"h":66},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Enemies/BindableEnemies/JungleDryad.png":
 {
 	"frame": {"x":1182,"y":1799,"w":48,"h":65},
@@ -1926,6 +1950,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":2,"w":72,"h":66},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Enemies/BindableEnemies/SamuraiZombie.png":
+{
+	"frame": {"x":1887,"y":1390,"w":37,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":1,"w":37,"h":66},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/BindableEnemies/SlimeEnthusiast.png":
@@ -2064,14 +2096,6 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Enemies/FastZombie.png":
-{
-	"frame": {"x":1886,"y":1390,"w":38,"h":66},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":16,"y":1,"w":38,"h":66},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Enemies/GiantMushroom.png":
 {
 	"frame": {"x":1182,"y":1978,"w":48,"h":57},
@@ -2082,7 +2106,7 @@
 },
 "Game/Enemies/HolyOrb.png":
 {
-	"frame": {"x":1639,"y":1992,"w":55,"h":55},
+	"frame": {"x":149,"y":1992,"w":55,"h":55},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":12,"y":5,"w":55,"h":55},
@@ -2162,7 +2186,7 @@
 },
 "Game/Enemies/MonsterRope.png":
 {
-	"frame": {"x":1692,"y":1388,"w":44,"h":48},
+	"frame": {"x":1693,"y":1388,"w":44,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":18,"y":12,"w":44,"h":48},
@@ -2182,6 +2206,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":22,"y":0,"w":36,"h":61},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Enemies/SamuraiZombie.png":
+{
+	"frame": {"x":1887,"y":1390,"w":37,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":1,"w":37,"h":66},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Enemies/ShrineMaiden.png":
@@ -2272,20 +2304,20 @@
 	"spriteSourceSize": {"x":5,"y":0,"w":61,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/EnemiesBound/ElfRanger.png":
-{
-	"frame": {"x":1504,"y":1387,"w":38,"h":37},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":21,"y":27,"w":38,"h":37},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/EnemiesBound/Head/ElementalAir.png":
 {
 	"frame": {"x":566,"y":908,"w":33,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":3,"w":33,"h":57},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/EnemiesBound/Head/ElementalRope.png":
+{
+	"frame": {"x":1779,"y":2016,"w":47,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":4,"w":47,"h":31},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/EnemiesBound/Head/GuardHeavy.png":
@@ -2298,18 +2330,10 @@
 },
 "Game/EnemiesBound/Head/MaidforcePara.png":
 {
-	"frame": {"x":1855,"y":2016,"w":41,"h":31},
+	"frame": {"x":1828,"y":2016,"w":41,"h":31},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":16,"y":3,"w":41,"h":31},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/EnemiesBound/JungleDryad.png":
-{
-	"frame": {"x":1796,"y":1464,"w":69,"h":32},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":31,"w":69,"h":32},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/EnemiesBound/LesserSkeleton.png":
@@ -2562,7 +2586,7 @@
 },
 "Game/FloorGeneric/Conveyor/RightDown.png":
 {
-	"frame": {"x":1544,"y":1388,"w":72,"h":48},
+	"frame": {"x":1545,"y":1388,"w":72,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":24,"w":72,"h":48},
@@ -2586,7 +2610,7 @@
 },
 "Game/FloorGeneric/Conveyor/SafetyLeft.png":
 {
-	"frame": {"x":1618,"y":1388,"w":72,"h":48},
+	"frame": {"x":1619,"y":1388,"w":72,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":24,"w":72,"h":48},
@@ -2642,7 +2666,7 @@
 },
 "Game/FloorGeneric/Conveyor/UpRight.png":
 {
-	"frame": {"x":1676,"y":1720,"w":72,"h":48},
+	"frame": {"x":1739,"y":1390,"w":72,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":24,"w":72,"h":48},
@@ -2678,14 +2702,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":36,"w":52,"h":13},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/FloorGeneric/ShadowBase.png":
-{
-	"frame": {"x":738,"y":2035,"w":57,"h":12},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":8,"y":52,"w":57,"h":12},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/FloorGeneric/SpiralStairsDown.png":
@@ -3258,7 +3274,7 @@
 },
 "Game/Floors/Floor_cav/BarsVertCont.png":
 {
-	"frame": {"x":1677,"y":1498,"w":72,"h":72},
+	"frame": {"x":1813,"y":1390,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3266,7 +3282,7 @@
 },
 "Game/Floors/Floor_cav/Brickwork.png":
 {
-	"frame": {"x":1676,"y":1572,"w":72,"h":72},
+	"frame": {"x":1677,"y":1498,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3274,7 +3290,7 @@
 },
 "Game/Floors/Floor_cav/Doodad.png":
 {
-	"frame": {"x":1676,"y":1646,"w":72,"h":72},
+	"frame": {"x":1676,"y":1572,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3282,7 +3298,7 @@
 },
 "Game/Floors/Floor_cav/Door.png":
 {
-	"frame": {"x":1738,"y":1390,"w":72,"h":72},
+	"frame": {"x":1676,"y":1646,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3290,7 +3306,7 @@
 },
 "Game/Floors/Floor_cav/DoorOpen.png":
 {
-	"frame": {"x":1812,"y":1390,"w":72,"h":72},
+	"frame": {"x":1676,"y":1720,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3330,7 +3346,7 @@
 },
 "Game/Floors/Floor_cav/Floor.png":
 {
-	"frame": {"x":1926,"y":1398,"w":72,"h":72},
+	"frame": {"x":1825,"y":1498,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3338,7 +3354,7 @@
 },
 "Game/Floors/Floor_cav/Grate.png":
 {
-	"frame": {"x":1825,"y":1498,"w":72,"h":72},
+	"frame": {"x":1824,"y":1572,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3346,7 +3362,7 @@
 },
 "Game/Floors/Floor_cav/GrateHoriz.png":
 {
-	"frame": {"x":1824,"y":1572,"w":72,"h":72},
+	"frame": {"x":1824,"y":1646,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3354,7 +3370,7 @@
 },
 "Game/Floors/Floor_cav/GrateVert.png":
 {
-	"frame": {"x":1824,"y":1646,"w":72,"h":72},
+	"frame": {"x":1824,"y":1720,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3362,7 +3378,7 @@
 },
 "Game/Floors/Floor_cav/MimicBlock.png":
 {
-	"frame": {"x":1824,"y":1720,"w":72,"h":72},
+	"frame": {"x":1926,"y":1398,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3490,7 +3506,7 @@
 },
 "Game/Floors/Floor_cry/BarsOld.png":
 {
-	"frame": {"x":1676,"y":1770,"w":72,"h":72},
+	"frame": {"x":1676,"y":1794,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3578,7 +3594,7 @@
 },
 "Game/Floors/Floor_cry/Floor.png":
 {
-	"frame": {"x":1926,"y":1398,"w":72,"h":72},
+	"frame": {"x":1825,"y":1498,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3634,7 +3650,7 @@
 },
 "Game/Floors/Floor_cry/Shrine.png":
 {
-	"frame": {"x":1676,"y":1844,"w":72,"h":72},
+	"frame": {"x":1676,"y":1868,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -3802,7 +3818,7 @@
 },
 "Game/Floors/Floor_cst/DoorVertOpen.png":
 {
-	"frame": {"x":1676,"y":1918,"w":72,"h":72},
+	"frame": {"x":1676,"y":1942,"w":72,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
@@ -4248,6 +4264,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/HideAlmostAll.png":
+{
+	"frame": {"x":1504,"y":1387,"w":39,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":1,"w":39,"h":37},
+	"sourceSize": {"w":56,"h":56}
+},
 "Game/InvDrop.png":
 {
 	"frame": {"x":205,"y":839,"w":108,"h":50},
@@ -4255,14 +4279,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":6,"w":108,"h":50},
 	"sourceSize": {"w":116,"h":56}
-},
-"Game/InventoryAction/Offhand.png":
-{
-	"frame": {"x":1696,"y":1992,"w":51,"h":55},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":10,"y":8,"w":51,"h":55},
-	"sourceSize": {"w":72,"h":72}
 },
 "Game/InventoryAction/RemoveOffhand.png":
 {
@@ -4408,6 +4424,14 @@
 	"spriteSourceSize": {"x":29,"y":13,"w":128,"h":180},
 	"sourceSize": {"w":200,"h":200}
 },
+"Game/Items/Restraint/Legbinders.png":
+{
+	"frame": {"x":1725,"y":1440,"w":69,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":9,"w":69,"h":56},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Items/Restraint/MagicArmbands.png":
 {
 	"frame": {"x":1,"y":890,"w":152,"h":64},
@@ -4466,7 +4490,7 @@
 },
 "Game/Items/Spear.png":
 {
-	"frame": {"x":1958,"y":2040,"w":70,"h":7},
+	"frame": {"x":1931,"y":2040,"w":70,"h":7},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":33,"w":70,"h":7},
@@ -4506,11 +4530,19 @@
 },
 "Game/Particles/Heart.png":
 {
-	"frame": {"x":2025,"y":390,"w":14,"h":14},
+	"frame": {"x":1348,"y":1261,"w":14,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":14},
 	"sourceSize": {"w":14,"h":14}
+},
+"Game/Particles/VibeHeart.png":
+{
+	"frame": {"x":826,"y":2035,"w":20,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":20,"h":12},
+	"sourceSize": {"w":20,"h":20}
 },
 "Game/Poses/BlushNeutral.png":
 {
@@ -4520,12 +4552,28 @@
 	"spriteSourceSize": {"x":7,"y":17,"w":32,"h":13},
 	"sourceSize": {"w":46,"h":45}
 },
+"Game/Poses/BrowsSurprised.png":
+{
+	"frame": {"x":1348,"y":1277,"w":14,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":9,"w":14,"h":9},
+	"sourceSize": {"w":46,"h":45}
+},
 "Game/Poses/Eyes2Heart.png":
 {
 	"frame": {"x":426,"y":1093,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":28,"y":15,"w":13,"h":13},
+	"sourceSize": {"w":46,"h":45}
+},
+"Game/Poses/Eyes2Surprised.png":
+{
+	"frame": {"x":1796,"y":1440,"w":15,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":13,"w":15,"h":15},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/Poses/EyesClosed.png":
@@ -4542,6 +4590,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":15,"w":13,"h":13},
+	"sourceSize": {"w":46,"h":45}
+},
+"Game/Poses/EyesSurprised.png":
+{
+	"frame": {"x":1796,"y":1440,"w":15,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":13,"w":15,"h":15},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/Poses/MouthEmbarrassed.png":
@@ -4582,6 +4638,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":19,"w":20,"h":36},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Spells/Camo.png":
+{
+	"frame": {"x":1639,"y":1992,"w":32,"h":55},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":10,"w":32,"h":55},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Spells/CanUpcast.png":
@@ -4642,7 +4706,7 @@
 },
 "Game/Spells/HolyOrb.png":
 {
-	"frame": {"x":1639,"y":1992,"w":55,"h":55},
+	"frame": {"x":149,"y":1992,"w":55,"h":55},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":12,"y":5,"w":55,"h":55},
@@ -4656,17 +4720,17 @@
 	"spriteSourceSize": {"x":0,"y":17,"w":72,"h":40},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Spells/Offhand.png":
+"Game/Spells/Knife.png":
 {
-	"frame": {"x":1696,"y":1992,"w":51,"h":55},
+	"frame": {"x":2003,"y":2040,"w":43,"h":7},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":10,"y":8,"w":51,"h":55},
+	"spriteSourceSize": {"x":15,"y":33,"w":43,"h":7},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Spells/PsychicLink.png":
 {
-	"frame": {"x":1898,"y":2031,"w":58,"h":16},
+	"frame": {"x":1871,"y":2031,"w":58,"h":16},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":28,"w":58,"h":16},
@@ -4728,6 +4792,14 @@
 	"spriteSourceSize": {"x":8,"y":22,"w":55,"h":27},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Spells/SummonLegbinder.png":
+{
+	"frame": {"x":1725,"y":1440,"w":69,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":9,"w":69,"h":56},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Spells/SummonStraitjacket.png":
 {
 	"frame": {"x":1594,"y":1438,"w":69,"h":58},
@@ -4784,17 +4856,9 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":86},
 	"sourceSize": {"w":86,"h":86}
 },
-"Game/UI/greyColorLight.png":
-{
-	"frame": {"x":149,"y":1992,"w":55,"h":55},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":4,"w":55,"h":55},
-	"sourceSize": {"w":64,"h":64}
-},
 "Game/UI/Heart.png":
 {
-	"frame": {"x":2025,"y":390,"w":14,"h":14},
+	"frame": {"x":1348,"y":1261,"w":14,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":14},
@@ -4834,7 +4898,7 @@
 },
 "Game/UI/restraint_key.png":
 {
-	"frame": {"x":830,"y":2035,"w":28,"h":12},
+	"frame": {"x":771,"y":2035,"w":28,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":11,"w":28,"h":12},
@@ -4842,11 +4906,19 @@
 },
 "Game/UI/restraint_key_2.png":
 {
-	"frame": {"x":830,"y":2035,"w":28,"h":12},
+	"frame": {"x":771,"y":2035,"w":28,"h":12},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":11,"w":28,"h":12},
 	"sourceSize": {"w":36,"h":36}
+},
+"Game/UI/SideRoom/Caldera.png":
+{
+	"frame": {"x":2025,"y":390,"w":16,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":16,"h":14},
+	"sourceSize": {"w":16,"h":16}
 },
 "Game/UI/SideRoom/DemonTransition.png":
 {
@@ -4854,14 +4926,6 @@
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
-	"sourceSize": {"w":16,"h":16}
-},
-"Game/UI/SideRoom/GoldVault.png":
-{
-	"frame": {"x":1348,"y":1242,"w":14,"h":16},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":14,"h":16},
 	"sourceSize": {"w":16,"h":16}
 },
 "Game/Vision.png":
@@ -4880,6 +4944,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:870cdb232baa10d8c244eb6e5104b47a:f3142344f63225d68cc1f254de73782c:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b484683a9a721b34d837d2ed5246b1a4:9461cf3484f322140e76a676904d24ee:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

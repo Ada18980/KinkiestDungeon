@@ -4,6 +4,7 @@
 let TileTypeTooltipOverride = {
 	Trap: {
 		DisplayStandTrap: "Furniture",
+		SybTrap: "Furniture",
 		DisplayTrap: "Furniture",
 		CageTrap: "Furniture",
 		FutureBoxTrap: "Furniture",
@@ -35,6 +36,7 @@ let ObjectTypeTooltipOverride = {
 		FutureBoxTrap: "Furniture",
 		DisplayEgyptianTrap: "Furniture",
 		BedTrap: "Bed",
+		SybTrap: "Furniture",
 	},
 }
 

@@ -2848,7 +2848,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", inheritLinked: true, power: 3, time: 20, edgeOnly: true},
 			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 3, time: 30, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.03},
 			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 4, time: 20, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.02},
-			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 5, time: 12, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.01},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 5, time: 70, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.01},
 
 
 			{trigger: "tick", type: "cageDebuff", inheritLinked: true},

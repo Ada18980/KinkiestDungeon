@@ -2384,6 +2384,14 @@
 	"spriteSourceSize": {"x":3,"y":28,"w":69,"h":43},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/FloorGeneric/ShadowBase.png":
+{
+	"frame": {"x":1953,"y":291,"w":59,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":51,"w":59,"h":14},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Floors/Floor_cst/Trap.png":
 {
 	"frame": {"x":1954,"y":1462,"w":72,"h":72},
@@ -3992,14 +4000,6 @@
 	"spriteSourceSize": {"x":8,"y":9,"w":45,"h":57},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Items/Group/ItemHead.png":
-{
-	"frame": {"x":1953,"y":291,"w":36,"h":14},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":36,"y":46,"w":36,"h":14},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Items/Group/ItemLegs.png":
 {
 	"frame": {"x":1565,"y":1373,"w":24,"h":33},
@@ -4014,14 +4014,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":22,"w":50,"h":24},
-	"sourceSize": {"w":72,"h":72}
-},
-"Game/Items/Knife.png":
-{
-	"frame": {"x":846,"y":1308,"w":39,"h":7},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":33,"w":39,"h":7},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/MagicAxe.png":
@@ -4296,14 +4288,6 @@
 	"spriteSourceSize": {"x":1,"y":34,"w":255,"h":186},
 	"sourceSize": {"w":256,"h":256}
 },
-"Game/Particles/VibeHeart.png":
-{
-	"frame": {"x":146,"y":2035,"w":20,"h":12},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":4,"w":20,"h":12},
-	"sourceSize": {"w":20,"h":20}
-},
 "Game/Poses/BlushLow.png":
 {
 	"frame": {"x":1207,"y":976,"w":29,"h":6},
@@ -4336,12 +4320,12 @@
 	"spriteSourceSize": {"x":26,"y":10,"w":15,"h":8},
 	"sourceSize": {"w":46,"h":45}
 },
-"Game/Poses/BrowsSad.png":
+"Game/Poses/Eyes2Angry.png":
 {
-	"frame": {"x":1508,"y":2039,"w":10,"h":8},
+	"frame": {"x":274,"y":1253,"w":8,"h":16},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":6,"y":13,"w":10,"h":8},
+	"spriteSourceSize": {"x":26,"y":13,"w":8,"h":16},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/Poses/Eyes2Closed.png":
@@ -4744,14 +4728,6 @@
 	"spriteSourceSize": {"x":0,"y":3,"w":48,"h":43},
 	"sourceSize": {"w":48,"h":48}
 },
-"Game/UI/SideRoom/Caldera.png":
-{
-	"frame": {"x":1991,"y":291,"w":16,"h":14},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":2,"w":16,"h":14},
-	"sourceSize": {"w":16,"h":16}
-},
 "Game/UI/StageTarget.png":
 {
 	"frame": {"x":1,"y":1099,"w":142,"h":142},
@@ -4784,6 +4760,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:870cdb232baa10d8c244eb6e5104b47a:f3142344f63225d68cc1f254de73782c:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b484683a9a721b34d837d2ed5246b1a4:9461cf3484f322140e76a676904d24ee:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

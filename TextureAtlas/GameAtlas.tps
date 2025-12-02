@@ -1663,6 +1663,7 @@
             <key type="filename">../Game/FloorGeneric/StairsDown.png</key>
             <key type="filename">../Game/FloorGeneric/StairsUp.png</key>
             <key type="filename">../Game/FloorGeneric/SummitTeleporter.png</key>
+            <key type="filename">../Game/FloorGeneric/Syb.png</key>
             <key type="filename">../Game/FloorGeneric/Table.png</key>
             <key type="filename">../Game/FloorGeneric/TableCookies.png</key>
             <key type="filename">../Game/FloorGeneric/TableFlipped.png</key>
@@ -2819,8 +2820,10 @@
             <key type="filename">../Game/CurseUnlock.png</key>
             <key type="filename">../Game/FastMove.png</key>
             <key type="filename">../Game/FastMoveOff.png</key>
+            <key type="filename">../Game/HideAlmostAll.png</key>
             <key type="filename">../Game/HideFalse.png</key>
             <key type="filename">../Game/HideFull.png</key>
+            <key type="filename">../Game/HideMost - Copy.png</key>
             <key type="filename">../Game/HideMost.png</key>
             <key type="filename">../Game/HideStruggle.png</key>
             <key type="filename">../Game/HideTrue.png</key>
