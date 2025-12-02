@@ -5591,23 +5591,23 @@ M.F. '女仆长'
 
 - Earth Witch
 大地女巫
-- The earth witch vanishes into a pile of ash.
+- The earth witch vanishes, leaving behind a pile of sand.
 火焰女巫消失在一堆灰烬中。
 
 - Water Witch
 水之女巫
-- The water witch vanishes into a pile of ash.
+- The water witch vanishes, leaving behind a puddle.
 水之女巫消失在一堆灰烬中。
 
 
 - Aqua Witch
 水之女巫
-- The aqua witch vanishes into a pile of ash.
+- The aqua witch vanishes, leaving behind a puddle.
 水之女巫化为一堆灰烬消失了。
 
 - Ice Witch
 冰之女巫
-- The ice witch vanishes into a pile of ash.
+- The ice witch vanishes, leaving behind a puddle
 冰之女巫消失在一堆灰烬中。
 
 
