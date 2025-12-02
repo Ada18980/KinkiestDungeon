@@ -338,6 +338,16 @@ function KDRestraintBondageType(item: Named): string {
 	return "Vine";
 }
 
+
+function KDGetEntityRestraintList(player: entity, includeDynamic?: boolean): (item | NPCRestraint)[] {
+	if (player.id == KDPlayer().id) {
+		return includeDynamic ? KDAllRestraintDynamicList() : KinkyDungeonAllRestraint();
+	} else {
+		if (KDGetNPCRestraints(player?.id)) return Object.values(KDGetNPCRestraints(player.id));
+	}
+	return [];
+}
+
 /**
  * gets a restraint's conditions
  * @param item
@@ -3375,7 +3385,7 @@ function KDGetRestraintsEligible (
 	NoStack?:            boolean,
 	extraTags?:          Record<string, number>,
 	agnostic?:           boolean,
- 	filter?:             {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[], currentWill?: number},
+ 	filter?:             {requireTags?: string[], filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[], currentWill?: number},
 	securityEnemy?:      entity,
 	curse?:              string,
 	filterEps:           number = 0.9,
@@ -3415,6 +3425,7 @@ function KDGetRestraintsEligible (
 	let cache: { r : restraint; w : number, inventory?: boolean, name?: string}[] = [];
 	for (let restraint of KinkyDungeonRestraints) {
 
+		if (filter?.requireTags && !filter.requireTags.every((tag) => {return restraint.shrine?.includes(tag)})) continue;
 		if ((
 			effLevel >= restraint.minLevel
 				|| KinkyDungeonNewGame > 0
@@ -3645,7 +3656,7 @@ function KinkyDungeonGetRestraint (
 	NoStack?:             boolean,
 	extraTags?:           Record<string, number>,
 	agnostic?:            boolean,
-	filter?:              {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[], currentWill?: number},
+	filter?:              {requireTags?: string[], filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[], currentWill?: number},
 	securityEnemy?:       entity,
 	curse?:               string,
 	useAugmented?:        boolean,
@@ -3711,7 +3722,7 @@ function KDGetRestraintWithVariants (
 	NoStack?:             boolean,
 	extraTags?:           Record<string, number>,
 	agnostic?:            boolean,
-	filter?:              {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]},
+	filter?:              {requireTags?: string[], filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]},
 	securityEnemy?:       entity,
 	curse?:               string,
 	useAugmented?:        boolean,
@@ -4744,7 +4755,7 @@ function KDLinkUnder (
 
 
 		if (r) KDUpdateLinkCaches(r);
-		KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: lk, host: linkUnder, keep: Keep, Link: true, UnLink: false});
+		KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: lk, host: linkUnder, keep: Keep, Link: true, UnLink: false, attacker: securityEnemy});
 
 	}
 	return ret;
@@ -5227,7 +5238,7 @@ function KinkyDungeonAddRestraint (
 				KinkyDungeonInventoryAdd(item);
 				KDUpdateItemEventCache = true;
 				if (!NoEvent)
-					KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: item, host: undefined, keep: Keep, Link: Link, UnLink: Unlink});
+					KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: item, host: undefined, keep: Keep, Link: Link, UnLink: Unlink, attacker: securityEnemy});
 
 				KDUpdateItemEventCache = true;
 				if (Curse && KDCurses[Curse] && KDCurses[Curse].onApply) {
@@ -5678,7 +5689,7 @@ function KinkyDungeonLinkItem (
 					false, false, undefined, "Struggle");
 
 
-			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true, UnLink: false});
+			KinkyDungeonSendEvent("postApply", {player: KinkyDungeonPlayerEntity, item: newItem, host: undefined, keep: Keep, Link: true, UnLink: false, attacker: undefined});
 			KDUpdateItemEventCache = true;
 			return newItem;
 		}
@@ -7215,6 +7226,7 @@ function KDGetEquipDuration(restraint: string, player: entity) {
 
 function KDDoEquipDelayed(data: any, player: entity): string {
 	if (!player?.player) return "";
+	KinkyDungeonSetFlag("SelfBondage", 1);
 	let success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0,
 	true, "",
 	KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),
@@ -7263,6 +7275,7 @@ function KDDoEquipDelayed(data: any, player: entity): string {
 
 function KDDoEquipGenericDelayed(data: any, player: entity): string {
 	if (!player?.player) return "";
+	KinkyDungeonSetFlag("SelfBondage", 1);
 	let success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0,
 	true, "",
 	KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),

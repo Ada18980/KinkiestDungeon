@@ -1431,6 +1431,7 @@ function KinkyDungeonPlaceFurniture(barrelChance: number, cageChance: number, wi
 					if (KDRandom() < cageChance) {
 						let furn = KDRandom() < (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.6 : 0.9) ? "Cage" :
 						(KDRandom() < 0.25 ? "LatexDisplayStand" : "DisplayStand");
+						if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.25) furn = "Syb";
 						KinkyDungeonTilesSet(X + "," + Y, {Type: "Furniture", Furniture: furn});
 						KDMapData.JailPoints.push({x: X, y: Y, type: "furniture", radius: 1}); // , requireFurniture: true Standing in the cage alone will prevent jailbreak--good for stealth!
 					}

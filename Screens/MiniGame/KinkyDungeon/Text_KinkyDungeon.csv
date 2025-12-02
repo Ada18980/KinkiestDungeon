@@ -4311,6 +4311,9 @@ KinkyDungeonRemoveCuffsCyberAnkleCuffs,The energy link between your ankle cuffs 
 KinkyDungeonRemoveCuffsCyberWristCuffs,The energy link between your arm cuffs fizzles into nothing.
 KinkyDungeonRemoveCuffsCyberLegCuffs,The energy link between your thigh cuffs fizzles into nothing.
 KinkyDungeonRemoveCuffs,The cuff chains come off with the cuffs.
+KinkyDungeonRemoveSaddleLink,The links come off with the saddle.
+KDAddSaddleLink,"Your ankle cuffs connect to the saddle, locking you in place!"
+KDAddSaddleLink2,"Your thigh cuffs connect to the saddle, locking you in place!"
 KinkyDungeonRemoveBelt,The waist links come off with the belt.
 KinkyDungeonRemoveHogtie,The hogtie link comes off.
 RestraintTrapCuffs,Handcuffs
@@ -30784,6 +30787,16 @@ RestraintNeoWristLinkDesc2,"A hardened metal chain coated in a layer of solid ru
 RestraintNeoThighLink,Reinforced Thigh Link
 RestraintNeoThighLinkDesc,"A link connecting your thigh cuffs together. You can still walk, albeit slower than usual."
 RestraintNeoThighLinkDesc2,"A hardened metal chain coated in a layer of solid rubber. Spring-loaded clasps keep them attached to the hardpoints on your restraints."
+
+RestraintSaddleLink,Saddle Ankle Links
+RestraintSaddleLinkDesc,"A set of padlocks attaching your ankle cuffs to a piece of saddle furniture."
+RestraintSaddleLinkDesc2,The durability depends on the type of lock.
+
+RestraintSaddleLink2,Saddle Thigh Links
+RestraintSaddleLink2Desc,"A set of padlocks attaching your thigh cuffs to a piece of saddle furniture."
+RestraintSaddleLink2Desc2,The durability depends on the type of lock.
+
+
 
 RestraintAnkleLink,Ankle Chain
 RestraintAnkleLinkDesc,"A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual."

@@ -76,6 +76,7 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 	fallbackCurse?: string,
 	forceConjure?: boolean,
 	currentWill?: number,
+	requireTags?: string[],
 }): EligibleRestraintEntry[] {
 	let ret: EligibleRestraintEntry[] = [];
 	let effLevel = 4 + (options?.forceEffLevel != undefined ? options.forceEffLevel : undefined) || KDGetEffLevel();
@@ -113,6 +114,9 @@ function KDGetNPCEligibleRestraints_fromTags(id: number, tags: string[], options
 			if (!restraint.arousalMode || arousalMode) {
 				let enabled = false;
 				let weight = restraint.weight;
+				if (options?.requireTags && !options.requireTags.every(tag => {
+					return restraint.shrine?.includes(tag)
+				})) continue;
 				for (let t of tags) {
 					if (restraint.enemyTags[t] != undefined) {
 						weight += restraint.enemyTags[t];

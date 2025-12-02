@@ -3609,7 +3609,7 @@
 let MeshWarps: {[_: string]: MeshWarp} = {
 	
 	Saddled: {
-		LayerGroups: {"PantLeft": "Mesh1", ThighLeft: "ThighL", AnkleLeft: "Mesh1",
+		LayerGroups: {"PantLeft": "Mesh1", ThighLeft: "Mesh1", AnkleLeft: "Mesh1", // ThighLeft was ThighL
             SkirtOverKneelLeft: "MeshSkirt", SkirtKneelLeft: "MeshSkirt", //"Zero": "Zero", // 
             Skirt: "Mesh2", SkirtOver: "Mesh2", BaggyShirtAndSkirt: "Mesh2"},//, "OverLegsLeft": "Mesh1"},
 		filter_pose: ["Kneel", "KneelClosed"],

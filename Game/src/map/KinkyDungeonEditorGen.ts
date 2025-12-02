@@ -1007,9 +1007,12 @@ let KDTileGen = {
 	"Cage": (x, y, tile, tileGenerator, data) => {
 		KinkyDungeonMapSet(x, y, 'L');
 		KDMapData.JailPoints.push({x: x, y: y, type: "furniture", radius: 1});
-		if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.6) {
+		if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.7) {
 			// Decide which furniture
+			if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.6)
 			return {Type: "Furniture", Furniture: "DisplayStand"};
+			else 
+			return {Type: "Furniture", Furniture: "Syb"};
 		}
 		return {Type: "Furniture", Furniture: "Cage"};
 	},

@@ -433,6 +433,9 @@ function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null
 			delete poses[p];
 		}
 	}
+	if (CheckPoseOrTags(C, "BlockKneelClosed", tags, tagsOnly)) {
+		delete poses.KneelClosed
+	}
 	if (CheckPoseOrTags(C, "DiscourageHogtie", tags, tagsOnly) && Object.keys(poses).length > Object.keys(HOGTIEPOSES).length) {
 		for (let p of HOGTIEPOSES) {
 			delete poses[p];

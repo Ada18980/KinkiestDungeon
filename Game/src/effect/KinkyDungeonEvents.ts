@@ -512,6 +512,34 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				KinkyDungeonSendTextMessage(7, TextGet("KDBubbleCombine"), "#4477ee", 4);
 			}
 		},
+		"AddSaddleLinks": (e, item, data: KDEventData_PostApply) => {
+			if (KinkyDungeonFlags.get("SelfBondage")) return; // this means player is doing it
+			KinkyDungeonPlayerTags = KinkyDungeonUpdateRestraints();
+			KDEntityRestraintMetadata.set(KDPlayer().id, KDUpdateRestraintMetadata(KDPlayer().id, 0));
+			
+			if (item?.id == data.item?.id || item == data.item) {
+				let restraintAdd = KinkyDungeonGetRestraint({ tags: e.tags }, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(), true, 
+					e.lock, false, undefined, undefined, undefined, undefined, {
+						requireTags: ["SaddleLinkAnkles"]
+					});
+				if (restraintAdd) {
+					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, true, e.lock, data.keep);
+					KinkyDungeonSendTextMessage(7, TextGet("KDAddSaddleLink"), "#eee044ff", 4);
+				}
+
+				restraintAdd = KinkyDungeonGetRestraint({ tags: e.tags }, MiniGameKinkyDungeonLevel + 10, KDCurrIndex(), true, 
+					e.lock, false, undefined, undefined, undefined, undefined, {
+						requireTags: ["SaddleLinkThighs"]
+					});
+				if (restraintAdd) {
+					KinkyDungeonAddRestraintIfWeaker(restraintAdd, 0, true, e.lock, data.keep);
+					KinkyDungeonSendTextMessage(7, TextGet("KDAddSaddleLink2"), "#eee044ff", 4);
+				}
+				
+			}
+		},
+
+		
 
 		"NoYoke": (_e, item, data: KDEventData_PostApply) => {
 			if (item != data.item && KinkyDungeonPlayerTags.get("Yoked"))
@@ -2210,6 +2238,22 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				if (!cuffsbase) {
 					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
 					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveCuffs"), KDBaseLightGreen, 2);
+				}
+			}
+		},
+		"RequireSaddle": (_e, item, data) => {
+			if (data.Character != KinkyDungeonPlayer) return;
+			if (!data.add && data.item !== item && KDRestraint(item).Group) {
+				let cuffsbase = false;
+				for (let inv of KDGetEntityRestraintList(KDPlayer(), true)) {
+					if (KDRestraint(inv).shrine && (KDRestraint(inv).shrine.includes("Saddles"))) {
+						cuffsbase = true;
+						break;
+					}
+				}
+				if (!cuffsbase) {
+					KinkyDungeonRemoveRestraintSpecific(item, false, false, false);
+					KinkyDungeonSendTextMessage(4, TextGet("KinkyDungeonRemoveSaddleLink"), KDBaseLightGreen, 2);
 				}
 			}
 		},

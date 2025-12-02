@@ -103,12 +103,14 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Vines",
 			NoOverride: true,
+			SwapLayerPose: {Spread: "ThighLeftOver", Kneel: "ThighLeftOver"},
 		},
 		{ Name: "VineLegRight", Layer: "RightThighs1", Pri: 105,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			InheritColor: "Vines",
 			NoOverride: true,
+			SwapLayerPose: {Spread: "ThighRightOver", Kneel: "ThighRightOver"},
 		},
 		
 		{ Name: "FlowerLegLeft", Layer: "Thighs1", Pri: 105.2,
@@ -117,6 +119,7 @@ AddModel({
 			InheritColor: "Flower",
 			TieToLayer: "VineLegLeft",
 			NoOverride: true,
+			SwapLayerPose: {Spread: "ThighLeftOver", Kneel: "ThighLeftOver"},
 		},
 		{ Name: "BudLegLeft", Layer: "Thighs1", Pri: 105.1,
 			Poses: ToMap(["Closed"]),
@@ -124,6 +127,7 @@ AddModel({
 			InheritColor: "Bud",
 			TieToLayer: "VineLegLeft",
 			NoOverride: true,
+			SwapLayerPose: {Spread: "ThighLeftOver", Kneel: "ThighLeftOver"},
 		},
 
 		{ Name: "FlowerLegRight", Layer: "RightThighs1", Pri: 105.2,
@@ -132,6 +136,7 @@ AddModel({
 			InheritColor: "Flower",
 			TieToLayer: "VineLegRight",
 			NoOverride: true,
+			SwapLayerPose: {Spread: "ThighRightOver", Kneel: "ThighRightOver"},
 		},
 		{ Name: "BudLegRight", Layer: "RightThighs1", Pri: 105.1,
 			Poses: ToMap([]),
@@ -139,6 +144,7 @@ AddModel({
 			InheritColor: "Bud",
 			TieToLayer: "VineLegRight",
 			NoOverride: true,
+			SwapLayerPose: {Spread: "ThighLeftOver", Kneel: "ThighLeftOver"},
 		},
 
 
