@@ -2646,10 +2646,6 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		}
 		else console.log("Error! Please report the item combination and screenshot to Ada!");
 	}
-	let failSuffix = "";
-	if (restraint && KDRestraint(restraint).failSuffix && KDRestraint(restraint).failSuffix[StruggleType]) {
-		failSuffix = KDRestraint(restraint).failSuffix[StruggleType];
-	}
 	if (!restraint) return "Fail";
 	KinkyDungeonCurrentEscapingItem = restraint;
 	KinkyDungeonCurrentEscapingMethod = StruggleType;
@@ -2758,6 +2754,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 
 		upfrontWill: KDUpfrontWill,
 	};
+
+	
+	if (restraint && KDRestraint(restraint).failSuffix && KDRestraint(restraint).failSuffix[StruggleType]) {
+		data.failSuffix = KDRestraint(restraint).failSuffix[StruggleType];
+	}
 
 
 
@@ -3113,9 +3114,9 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 				if ((KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp()) && data.helpChance) suff = "3";
 				else suff = "2";
 			} else if (Pass == "Fail") {
-				if (suff == "" && failSuffix) suff = failSuffix;
+				if (suff == "" && data.failSuffix) suff = data.failSuffix;
 			}
-			if ((suff == "" || (Pass == "Fail" && suff == failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
+			if ((suff == "" || (Pass == "Fail" && suff == data.failSuffix)) && (Pass == "Fail" || Pass == "Success") && KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax*0.1) suff = suff + "Aroused";
 
 			if (Pass != "Success")
 				KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonStruggle" + StruggleType + Pass + suff).replace("TargetRestraint", TextGet("Restraint" + KDRestraint(restraint).name)), (Pass == "Success") ? KDBaseLightGreen : KDBaseRed, 2);

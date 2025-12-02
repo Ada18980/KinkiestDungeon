@@ -2833,7 +2833,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		allowOverrideBasedOnTagFilters: ["FeetLinked", "LegBind", "blockfeet"],
 		
 		tightType: "Secure",
-		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35},
+		escapeChance: {"Struggle": 0.2, "Cut": 0.0, "Remove": 0.35},
+		speedMult: {Cut: 0.25}, // would take a LONG time to saw thru one...
 		helpChance: {"Remove": 1.0, "Pick": 0.5},
 		enemyTags: {"saddlemachine":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["SaddleMachine", "Furniture", "Container", "Saddles"], ignoreSpells: true, removeOnLeash: true,
 
