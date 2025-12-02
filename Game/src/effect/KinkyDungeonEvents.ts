@@ -1573,6 +1573,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 		"PeriodicTeasing": (e, item, data) => {
 			if (!data.delta) return;
+			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 			if (!e.chance || KDRandom() < e.chance) {
 				if (!KDGameData.CurrentVibration && KDIsVibeCD(e.cooldown)) {
 					KinkyDungeonStartVibration(item.name, "normal", KDGetVibeLocation(item), e.power, e.time, undefined, undefined, undefined, undefined, e.edgeOnly);
@@ -1582,6 +1583,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 		"PeriodicDenial": (e, item, data) => {
 			if (!data.delta) return;
+			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 			if (!e.chance || KDRandom() < e.chance) {
 				if (!KDGameData.CurrentVibration && KDIsVibeCD(e.cooldown)) {
 					KinkyDungeonStartVibration(item.name, "normal", KDGetVibeLocation(item), e.power, e.time, undefined, 12, undefined, undefined, undefined, false, 0.5, 1.0);
@@ -3023,6 +3025,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 	},
 	"remoteVibe": {
 		"RemoteActivatedVibe": (e, item, data) => {
+			if (!KinkyDungeonStatsChoice.get("arousalMode")) return;
 			if (!KDGameData.CurrentVibration) {
 				KinkyDungeonStartVibration(item.name, "tease", KDGetVibeLocation(item), e.power, e.time, undefined, undefined, undefined, undefined, e.edgeOnly);
 				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonStartVibeRemote").replace("EnemyName", TextGet("Name" + data.enemy)), "pink", 2);

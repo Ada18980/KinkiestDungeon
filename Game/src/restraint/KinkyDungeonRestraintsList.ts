@@ -2834,7 +2834,20 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35},
 		helpChance: {"Remove": 1.0, "Pick": 0.5},
 		enemyTags: {"saddlemachine":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["SaddleMachine", "Furniture", "Container", "Saddles"], ignoreSpells: true, removeOnLeash: true,
+
+
+		vibeLocation: "ItemVulva",
+		linkedVibeTags: ["teaser"], allowRemote: true,
+
 		events: [
+
+
+			{trigger:"remoteVibe",  type: "RemoteActivatedVibe", inheritLinked: true, power: 3, time: 20, edgeOnly: true},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 3, time: 30, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.03},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 4, time: 20, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.02},
+			{trigger:"tick",  type: "PeriodicTeasing", inheritLinked: true, power: 5, time: 12, edgeOnly: false, cooldown: {"normal": 60, "tease": 20}, chance: 0.01},
+
+
 			{trigger: "tick", type: "cageDebuff", inheritLinked: true},
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04},
 			{trigger: "playerMove", type: "removeOnMove", inheritLinked: true},
