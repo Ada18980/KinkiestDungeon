@@ -3950,3 +3950,15 @@ function KDResetAlternateInventoryRender() {
 function KDIsGeneric(item: item) {
 	return KDRestraint(item) && !!KDGenericRestraintRawInfo[KDRestraint(item).name];
 }
+
+function KDCalculateGoldCost(data: any) {
+	if (data) {
+		KinkyDungeonSendEvent("goldFlatBefore", data);
+		KinkyDungeonSendEvent("goldMult", data);
+		KinkyDungeonSendEvent("goldFlatAfter", data);
+		return data;
+	}
+	else { 
+		return null 
+	}
+}

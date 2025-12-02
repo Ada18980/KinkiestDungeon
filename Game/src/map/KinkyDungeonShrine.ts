@@ -130,7 +130,17 @@ function KinkyDungeonGenerateShop(Level: number): any[] {
  */
 function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): number {
 	if (!item) return 0;
-	if (item.cost != null) return item.cost;
+	if (item.cost != null) {
+		let data = {
+			cost: item.cost,
+			sell: sell,
+			noScale: noScale,
+			item: item
+		}
+		KDCalculateGoldCost(data);
+		
+		return data.cost;
+	};
 
 	if (KDRestraint(item)) {
 		let restraint = KDRestraint(item);
@@ -163,7 +173,15 @@ function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): num
 		if (!sell) {
 			costt *= KDPriceGougingValueMult(KDPlayer());
 		}
-		return costt;
+		let data = {
+			cost: costt,
+			sell: sell,
+			noScale: noScale,
+			item: item
+		}
+		KDCalculateGoldCost(data);
+		
+		return data.cost;
 	}
 	let rarity = item.rarity || KDWeapon(item)?.rarity || KDConsumable(item)?.rarity || KDOutfit(item)?.rarity || 0;
 	if (rarity != undefined) {
@@ -192,13 +210,29 @@ function KinkyDungeonItemCost(item: any, noScale?: boolean, sell?: boolean): num
 		if (!sell) {
 			costt *= KDPriceGougingValueMult(KDPlayer());
 		}
-		return costt;
+		let data = {
+			cost: costt,
+			sell: sell,
+			noScale: noScale,
+			item: item
+		}
+		KDCalculateGoldCost(data);
+
+		return data.cost;
 	}
 	let costs = 50;
 	if (!sell) {
 		costs *= KDPriceGougingValueMult(KDPlayer());
 	}
-	return costs;
+	let data = {
+		cost: costs,
+		sell: sell,
+		noScale: noScale,
+		item: item
+	}
+	KDCalculateGoldCost(data);
+
+	return data.cost;
 }
 
 interface PriceGougingValueData {
