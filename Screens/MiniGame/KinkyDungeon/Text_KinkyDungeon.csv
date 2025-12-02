@@ -3376,6 +3376,23 @@ KinkyDungeonStruggleRemoveImpossibleMagicChainAroused,"The TargetRestraint squee
 KinkyDungeonStruggleRemoveImpossibleBoundMagicChain,"The TargetRestraint have you bound hopelessly tight!"
 KinkyDungeonStruggleRemoveImpossibleBoundMagicChainAroused,"You sigh and moan as the TargetRestraint aren't getting any looser."
 
+KDSaddleDebuff,Your leg cuffs are locked to the saddle!
+
+KinkyDungeonStruggleRemoveFailSaddle,"You try to stand up off the TargetRestraint..."
+KinkyDungeonStruggleRemoveFailSaddleAroused,"Trembling, you try and stand up off the TargetRestraint..."
+KinkyDungeonStruggleRemoveImpossibleSaddle,"You can't manage to get off the TargetRestraint!"
+KinkyDungeonStruggleRemoveImpossibleSaddleAroused,"You wiggle in place on top of the TargetRestraint!"
+KinkyDungeonStruggleRemoveImpossibleBoundSaddle,"You remain stuck on the TargetRestraint!"
+KinkyDungeonStruggleRemoveImpossibleBoundSaddleroused,"You wiggle in place on top of the TargetRestraint!"
+
+
+KinkyDungeonStruggleStruggleFailSaddle,"You try to wiggle off of the TargetRestraint..."
+KinkyDungeonStruggleStruggleFailSaddleAroused,"You squirm and moan as you try and slide off the TargetRestraint..."
+KinkyDungeonStruggleStruggleImpossibleSaddle,"You remain securely on top of the TargetRestraint!"
+KinkyDungeonStruggleStruggleImpossibleSaddleAroused,"You wiggle in place on top of the TargetRestraint, remaining stuck on top!"
+KinkyDungeonStruggleStruggleImpossibleBoundSaddle,"You remain securely on top of the TargetRestraint!"
+KinkyDungeonStruggleStruggleImpossibleBoundSaddleroused,"You wiggle in place on top of the TargetRestraint, remaining stuck on top!"
+
 
 
 KinkyDungeonStruggleRemoveFailIce,"You look around for a fastener on the TargetRestraint..."
@@ -3720,6 +3737,12 @@ RestraintSarcophagusDesc2,"Time feels like it's going by quickly outside..."
 RestraintCageTrap,Metal Cage
 RestraintCageTrapDesc,"A metal cage with rigid bars, too narrow to put your head through."
 RestraintCageTrapDesc2,"Made for a pretty toy like you~"
+
+
+RestraintSaddleMachine,Vibe-Master 5000
+RestraintSaddleMachineDesc,"A devious saddle-type furniture, designed to overpower even the most stoic minds."
+RestraintSaddleMachineDesc2,"Contains an electric motor inside that shakes the entire assembly, but only if activated."
+
 RestraintDisplayTrap,Display Stand
 RestraintDisplayTrapDesc,"A display stand, fit for only the prettiest of trophies!"
 RestraintDisplayTrapDesc2,"Your arms are pinned behind your back and you can barely move!"

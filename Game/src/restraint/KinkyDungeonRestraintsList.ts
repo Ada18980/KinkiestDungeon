@@ -2814,6 +2814,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true, chance: 0.04}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	{removePrison: true, name: "SaddleMachine", Asset: "DisplayCase", Color: ['Default'], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true,
 		
+		failSuffix: {"Remove": "Saddle", "Struggle": "Saddle"}, 
+
 		Model: "SaddleMachine",
 		Filters: {
 			SarcoBack: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.06666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
@@ -6540,6 +6542,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		unlimited: true,
 		inventory: true, disassembleAs: "ChainRaw",
 		events: [
+			
+			{trigger: "beforeStruggleCalc", type: "saddleDebuff", power: 0.4, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireSaddle", inheritLinked: true}, 
 			{trigger: "postRemoval", type: "RequireBaseAnkleCuffs", inheritLinked: true}
@@ -6564,6 +6568,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Struggle: ["Hook"]},
 		UnderlinkedAlwaysRender: true,
 		events: [
+			{trigger: "beforeStruggleCalc", type: "saddleDebuff", power: 0.4, inheritLinked: true},
 			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
 			{trigger: "postRemoval", type: "RequireSaddle", inheritLinked: true}, 
 			{trigger: "postRemoval", type: "RequireBaseLegCuffs", inheritLinked: true}
