@@ -6721,6 +6721,26 @@ TargetRestraint 将你牢牢地束缚住！
 - You sigh and moan as the TargetRestraint aren't getting any looser.
 你叹气，呻吟着，但TargetRestraint 没有松开一点。
 
+# - Your leg cuffs are locked to the saddle!
+
+# - You try to stand up off the TargetRestraint...
+# - Trembling, you try and stand up off the TargetRestraint...
+# - You can't manage to get off the TargetRestraint!
+# - You wiggle in place on top of the TargetRestraint!
+# :: KinkyDungeonStruggleRemoveImpossibleSaddleAroused
+# :: KinkyDungeonStruggleRemoveImpossibleBoundSaddleroused
+# - You remain stuck on the TargetRestraint!
+
+
+# - You try to wiggle off of the TargetRestraint...
+# - You squirm and moan as you try and slide off the TargetRestraint...
+# - You remain securely on top of the TargetRestraint!
+# :: KinkyDungeonStruggleStruggleImpossibleSaddle
+# :: KinkyDungeonStruggleStruggleImpossibleBoundSaddle
+# - You wiggle in place on top of the TargetRestraint, remaining stuck on top!
+# :: KinkyDungeonStruggleStruggleImpossibleSaddleAroused
+# :: KinkyDungeonStruggleStruggleImpossibleBoundSaddleroused
+
 
 
 - You look around for a fastener on the TargetRestraint...
@@ -7089,6 +7109,7 @@ SCHOOL 女神给予你庇护和反击之力！
 展示架
 # :: KDEffectTileTooltipDisplayStand
 # :: RestraintDisplayTrap
+# - Rubberdoll Stand
 - Vibrating Saddle
 振动鞍
 - Cage
@@ -7727,6 +7748,12 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 一个坚实的金属笼子，其狭窄的缝隙确保你的头无法穿过。
 - Made for a pretty toy like you~
 专为像你这样的漂亮玩具而设计~
+
+
+# - Vibe-Master 5000
+# - A devious saddle-type furniture, designed to overpower even the most stoic minds.
+# - Contains an electric motor inside that shakes the entire assembly, but only if activated.
+
 - A display stand, fit for only the prettiest of trophies!
 展示架，专用来展示最漂亮的战利品！
 - Your arms are pinned behind your back and you can barely move!
@@ -7737,6 +7764,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 展示架突然把你锁在里面！
 # :: KDDisplayTrap
 # :: KDDisplayEgyptianTrap
+# - A powerful force sucks you down onto the saddle!
 - The storage unit beeps and closes behind you!
 存储单元哔了一声，在你身后关闭！
 
@@ -9047,6 +9075,9 @@ RestraintName 上的诅咒解除了！
 大腿铐之间的能量链接逐渐消失。
 - The cuff chains come off with the cuffs.
 拷绑链条随拷绑一起脱落
+# - The links come off with the saddle.
+# - Your ankle cuffs connect to the saddle, locking you in place!
+# - Your thigh cuffs connect to the saddle, locking you in place!
 - The waist links come off with the belt.
 腰链随腰带一起脱落。
 - The hogtie link comes off.
@@ -9204,6 +9235,7 @@ RestraintName 上的诅咒解除了！
 尽管质地柔软，但这种皮革用某种几乎牢不可破的纤维进行了加固，能够牢牢卡住大多数能够切割它的工具。它的锁定装置还有四个连接点。
 # :: RestraintHighSecCuffsFullDesc2
 # :: RestraintMasterworkHobbleskirtDesc2
+# :: RestraintMasterworLegbinderDesc2
 # :: RestraintMasterworkBlindfoldDesc2
 # :: RestraintMasterworkCorsetDesc2
 # :: RestraintMasterworkHeelsDesc2
@@ -9213,6 +9245,8 @@ RestraintName 上的诅咒解除了！
 极品束腿裙
 - A skintight dress covering your lower body, allowing you to take only the smallest of steps.
 一件紧紧包住下半身的紧身长裙，只允许你迈出最小的步伐。
+# - Masterwork Legbinder
+# - A skintight legbinder covering your lower body, keeping your legs glued together
 
 - Masterwork Blindfold
 极品眼罩
@@ -48630,6 +48664,17 @@ ENMY 削弱了你对武器的控制力！如果你站得太近，敌人可能会
 强化腿链
 - A link connecting your thigh cuffs together. You can still walk, albeit slower than usual.
 把你的腿铐连在一起。行走速度变慢。
+
+# - Saddle Ankle Links
+# - A set of padlocks attaching your ankle cuffs to a piece of saddle furniture.
+# - The durability depends on the type of lock.
+# :: RestraintSaddleLinkDesc2
+# :: RestraintSaddleLink2Desc2
+
+# - Saddle Thigh Links
+# - A set of padlocks attaching your thigh cuffs to a piece of saddle furniture.
+
+
 
 - A chain connecting your ankle cuffs together. It gives you enough room to walk around, albeit slower than usual.
 一条将脚踝铐连接在一起的链条。它为你提供了足够的走动空间，但是速度比平时慢。
