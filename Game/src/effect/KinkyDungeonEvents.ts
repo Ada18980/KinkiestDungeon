@@ -413,7 +413,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 	"postApplyNPC": {
 		"NoBlockers": (_e, item, data: KDEventData_PostApplyNPC, slot) => {
 			if (data.newitem && data.newitem.id != item.id) {
-				let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
+				/*let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
 				if (blockers.length > 0) {
 					let rPower = KinkyDungeonRestraintPower(item);
 					if (blockers.some((blocker) => {
@@ -434,7 +434,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						
 						return;
 					}
-				}
+				}*/
 				if (KDRestraint(item).blockRestraintsWithTag) {
 					if (KDRestraint(item).blockRestraintsWithTag.some(tag => {
 						return KDValidateTagForItem(tag, data.newitem);
@@ -547,7 +547,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 		"NoBlockers": (_e, item, data: KDEventData_PostApply) => {
 			if (item != data.item) {
-				let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
+				/*let blockers = KDGetBlockersToAddRestraint(KDRestraint(item), data.player);
 				if (blockers.length > 0) {
 					let rPower = KinkyDungeonRestraintPower(item);
 					if (blockers.some((blocker) => {
@@ -556,7 +556,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 						KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
 						return;
 					}
-				}
+				}*/
 				if (KDRestraint(item).blockRestraintsWithTag) {
 					if (KDRestraint(item).blockRestraintsWithTag.some(tag => {
 						return KDValidateTagForItem(tag, data.item);

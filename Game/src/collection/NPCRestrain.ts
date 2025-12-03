@@ -472,14 +472,14 @@ function KDSetNPCRestraints(id: number, restraints: Record<string, NPCRestraint>
 	if (KDGameData.Collection[id + ""])
 		KDValidateEscapeGrace(KDGameData.Collection[id + ""]);
 }
-function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, NoEvents?: boolean, slotsToFill?: string[], container?: any): item[] {
+function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, NoEvents?: boolean, slotsToFill?: string[], container?: any, bypass?: boolean): item[] {
 	if (!KDGameData.NPCRestraints)
 		KDGameData.NPCRestraints = {};
 	let items: item[] = [];
 	let restraints = KDGetNPCRestraints(id);
 	let entity = KDLookupID(id);
 
-	if (restraint) {
+	if (restraint && !bypass) {
 		let blockers = KDGetBlockersToAddRestraint(KDRestraint(restraint), entity);
 		if (blockers.length > 0) {
 			//let rPower = KDRestraintPower(restraint);
@@ -805,7 +805,7 @@ function KDFreeNPCRestraints(id: number, player: number) {
 }
 
 
-function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<string, item>): boolean {
+function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<string, item>, bypass: boolean = true): boolean {
 	let row = KDGetEncaseGroupRow(data.slot);
 	let slot = KDGetEncaseGroupSlot(data.slot);
 	let items: item[] = [];
@@ -886,7 +886,7 @@ function KDInputSetNPCRestraint(data: SetNPCRestraintData, container?: Record<st
 
 				for (let i = 0; i < size; i++) {
 					items.push(...KDSetNPCRestraint(data.npc, slotsToFill[i].id, rrr, true, 
-						slotsToFill.map((slot) => {return slot.id;}), container));
+						slotsToFill.map((slot) => {return slot.id;}), container, bypass));
 				}
 
 				// Add the tieup value
