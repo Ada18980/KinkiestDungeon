@@ -1457,9 +1457,34 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		options: {
 			"Use": {
 				playertext: "Default", response: "Default",
-				greyoutFunction: (_gagged, _player) => {
-					return !KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
-						|| KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == _player;
+				greyoutFunction: (_gagged, player) => {
+					if (!(!KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+						|| KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == player)) return false;
+
+					let tile = KinkyDungeonTilesGet(KDGameData.InteractTargetX + ',' + KDGameData.InteractTargetY);
+					if (tile?.Furniture) {
+						let furn = KDFurniture[tile.Furniture];
+						if (furn) {
+							KinkyDungeonSetFlag("GuardCalled", 50);
+							let rest = KinkyDungeonGetRestraint(
+								{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+								KDCurrIndex(),
+								true,
+								"",
+								true,
+								false,
+								false);
+							if (rest) {
+								return true;
+							}
+						}
+					}
+					return false;
+				},
+				greyoutCustomTooltip(gagged, player) {
+					// do the less expensive func
+					return (!KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY)
+						|| KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY) == player) ? "KDCantEnterFurniture" : "KDOccupied"
 				},
 				greyoutTooltip: "KDOccupied",
 				clickFunction: (_gagged, _player) => {

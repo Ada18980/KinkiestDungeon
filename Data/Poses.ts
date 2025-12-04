@@ -388,7 +388,7 @@ function KDGetAvailablePosesLegs(C: Character, tags: Map<string, boolean> = null
 	let closed = false;
 	let spread = false;
 	// Logic for the player
-	if (["FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"].some((tag) => {return CheckPoseOrTags(C, tag, tags, tagsOnly);})) {
+	if ([...KDLEGBINDTAGS].some((tag) => {return CheckPoseOrTags(C, tag, tags, tagsOnly);})) {
 		delete poses.Spread;
 		delete poses.Kneel;
 		closed = true;
@@ -764,3 +764,7 @@ let KDArmorPoses = [
 	"TorsoArmor",
 	"BootsArmor",
 ]
+
+let KDLEGBINDTAGS = [
+	"FeetLinked", "Legbinders", "LegBind", "Hobbleskirts"
+];

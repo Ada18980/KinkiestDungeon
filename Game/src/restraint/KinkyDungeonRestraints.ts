@@ -4314,9 +4314,9 @@ function KDCanAddRestraint (
 	if (restraint.Group == "ItemVulva" && restraint.shrine.includes("Plugs") && KinkyDungeonStatsChoice.get("arousalModePlugNoFront")) return false;
 
 
-	if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
-	if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
-	
+	//if (restraint.requireSingleTagToEquip && !restraint.requireSingleTagToEquip.some((tag) => {return KinkyDungeonPlayerTags.get(tag);})) return false;
+	//if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
+	if (!KDIsEligible(restraint, KDPlayer(), !noOverpower)) return false;
 	let rPower = undefined;
 	if (!Bypass) {
 		let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
@@ -7429,4 +7429,19 @@ function KDSwapEvents(events: KinkyDungeonEvent[], oldRestraint: restraint, newR
 	}
 	
 	return events;
+}
+
+function KDTest_ListRestraintsWithFeetLinked() {
+	let res = [];
+	for (let restraint of Object.values(KinkyDungeonRestraints)) {
+		let model = ModelDefs[restraint.Model];
+		if (model) {
+			if (KDLEGBINDTAGS.some(tag => {return model.AddPose?.includes(tag) || restraint.shrine?.includes(tag)})) {
+				if (!["FeetLinked", "LegBind"].some(tag => {return restraint.addTag?.includes(tag) || restraint.shrine?.includes(tag)}))
+					res.push(restraint.name);
+				continue;
+			}
+		}
+	}
+	console.log(res);
 }

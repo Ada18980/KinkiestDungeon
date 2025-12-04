@@ -66,6 +66,34 @@ function KDGetDialogue(): KinkyDialogue {
 let KDMaxDialogue = 7;
 let KDOptionOffset = 0;
 
+let KDdialoguecheckPrereqMap: Map<KinkyDialogue, [number, boolean]> = new Map();
+let KDdialoguecheckGreyoutMap: Map<KinkyDialogue, [number, boolean]> = new Map();
+let KDdialoguecheckPrereqInterval = 100;
+
+function KDCheckDialoguePrereq(entry: KinkyDialogue, gagged: boolean, player: entity): boolean {
+	let result = !entry.prerequisiteFunction;
+
+	if (!result)
+		if (!KDdialoguecheckPrereqMap.get(entry) || (KDdialoguecheckPrereqMap.get(entry)?.[0] || 0) + KDdialoguecheckPrereqInterval < CommonTime()) {
+			result = (!entry.prerequisiteFunction || entry.prerequisiteFunction(gagged, player));
+			KDdialoguecheckPrereqMap.set(entry, [CommonTime(), result]);
+		}
+
+	return result;
+}
+function KDCheckDialogueGreyout(entry: KinkyDialogue, gagged: boolean, player: entity): boolean {
+	let result = !entry.greyoutFunction;
+
+	if (!result)
+		if (!KDdialoguecheckPrereqMap.get(entry) || (KDdialoguecheckGreyoutMap.get(entry)?.[0] || 0) + KDdialoguecheckPrereqInterval < CommonTime()) {
+			result = (!entry.greyoutFunction || entry.greyoutFunction(gagged, player));
+			KDdialoguecheckGreyoutMap.set(entry, [CommonTime(), result]);
+		}
+
+	return result;
+}
+
+
 
 function KDDrawDialogue(delta: number): void {
 	KDDraw(kdcanvas, kdpixisprites, "dialogbg", KinkyDungeonRootDirectory + "DialogBackground.png", 500, 0, 1000, 1000, undefined, {
@@ -108,7 +136,7 @@ function KDDrawDialogue(delta: number): void {
 
 				let II = -KDOptionOffset;
 				for (let i = 0; i < entries.length && II < KDMaxDialogue; i++) {
-					if ((!entries[i][1].prerequisiteFunction || entries[i][1].prerequisiteFunction(gagged, KinkyDungeonPlayerEntity))
+					if (KDCheckDialoguePrereq(entries[i][1], gagged, KDPlayer())
 						&& (!entries[i][1].gagRequired || gagged)
 						&& (!entries[i][1].gagDisabled || !gagged)) {
 						if (II >= 0) {
@@ -122,7 +150,10 @@ function KDDrawDialogue(delta: number): void {
 									tt = tt.replace(d[0], d[1]);
 								}
 							}
-							let notGrey = !entries[i][1].greyoutFunction || entries[i][1].greyoutFunction(gagged, KinkyDungeonPlayerEntity);
+							let notGrey = KDCheckDialogueGreyout(entries[i][1], gagged, KDPlayer())
+							
+							
+							
 							DrawButtonKDEx(KDOptionOffset + "dialogue" + II, (_bdata) => {
 								if (notGrey) {
 									KDOptionOffset = 0;
@@ -391,6 +422,7 @@ function KDStartDialog(Dialogue: string, Speaker?: string, Click?: boolean, Pers
 
 
 function KDDoDialogue(data: any) {
+	KDdialoguecheckPrereqMap = new Map();
 	KDDelayedActionPrune(["Action", "Dialogue"]);
 	if (!KDGameData.CurrentDialogMsgData) KDGameData.CurrentDialogMsgData = {};
 	if (!KDGameData.CurrentDialogMsgValue) KDGameData.CurrentDialogMsgValue = {};

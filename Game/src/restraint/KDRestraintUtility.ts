@@ -627,7 +627,7 @@ let KDTagValidationForItem: Record<string, (tag: string, item: item | NPCRestrai
 }
 
 let KDTagValidationForRestraint: Record<string, (tag: string, restraint: restraint) => boolean> = {
-    KDDefaultTagValidation: (tag, restraint) => {return restraint.shrine?.includes(tag);},
+    KDDefaultTagValidation: (tag, restraint) => {return restraint.shrine?.includes(tag) || restraint.addTag?.includes(tag);},
     FeetLinked: (tag, restraint) => {
         return restraint.blockfeet || KDTagValidationForRestraint.KDDefaultTagValidation(tag, restraint);
     },
