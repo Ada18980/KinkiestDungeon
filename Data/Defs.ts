@@ -284,8 +284,9 @@ let LAYERS_BASE = [
 
 
 	"LooseStraps",
-
+	
 	"PetsuitLegsUnder",
+
 
 	// Left Leg
 	"KneeAccLeft",
@@ -328,6 +329,7 @@ let LAYERS_BASE = [
 
 
 	"WrappingLegsUnder",
+	
 
 
 	"OverSocks",
@@ -398,6 +400,8 @@ let LAYERS_BASE = [
 
 	// Right leg
 	"WrappingLegsRightOver",
+	
+	"PetsuitLegsRight",
 	"BindThighRight",
 	"RightThighs3",
 	"RightThighs2",

@@ -24,7 +24,7 @@ AddModel({
 			Poses: ToMap(["Front"]),
 			TieToLayer: "Arms",
 		},
-		{ Name: "Legs", Layer: "PetsuitLegs", Pri: -5,
+		{ Name: "Legs", Layer: "PetsuitLegsRight", Pri: -5,
 			Poses: ToMap(["KneelClosed", "Kneel", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 		},

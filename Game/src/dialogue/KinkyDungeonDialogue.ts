@@ -77,7 +77,7 @@ function KDCheckDialoguePrereq(entry: KinkyDialogue, gagged: boolean, player: en
 		if (!KDdialoguecheckPrereqMap.get(entry) || (KDdialoguecheckPrereqMap.get(entry)?.[0] || 0) + KDdialoguecheckPrereqInterval < CommonTime()) {
 			result = (!entry.prerequisiteFunction || entry.prerequisiteFunction(gagged, player));
 			KDdialoguecheckPrereqMap.set(entry, [CommonTime(), result]);
-		}
+		} else if (KDdialoguecheckPrereqMap.get(entry)) return KDdialoguecheckPrereqMap.get(entry)[1];
 
 	return result;
 }
@@ -88,7 +88,7 @@ function KDCheckDialogueGreyout(entry: KinkyDialogue, gagged: boolean, player: e
 		if (!KDdialoguecheckPrereqMap.get(entry) || (KDdialoguecheckGreyoutMap.get(entry)?.[0] || 0) + KDdialoguecheckPrereqInterval < CommonTime()) {
 			result = (!entry.greyoutFunction || entry.greyoutFunction(gagged, player));
 			KDdialoguecheckGreyoutMap.set(entry, [CommonTime(), result]);
-		}
+		} else if (KDdialoguecheckGreyoutMap.get(entry)) return KDdialoguecheckGreyoutMap.get(entry)[1];
 
 	return result;
 }
