@@ -525,7 +525,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	let created = false;
 	if (!MC.Containers.get(containerID)) {
 
-		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
+		let RT = PIXI.RenderTexture.create({ width: MODELWIDTH*MODEL_SCALE * 2 * Zoom, height: MODELHEIGHT*MODEL_SCALE * 2 * Zoom, resolution: resolution});
 		let Mesh = new PIXI.SimplePlane(RT, 10, 10);
 		Mesh.sortableChildren = true;
 		let Container: ContainerInfo = {
@@ -2019,7 +2019,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						// note: zoom is multiplied by MODEL_SCALE so here it cancels
 						let RT = ContainerContainer.Submeshes.get(sg)?.rt
 							|| PIXI.RenderTexture.create({ width: MODELWIDTH * 2 * Zoom, height: MODELHEIGHT * 2 * Zoom,
-								resolution: resolution*(KDToggles.HiResModel ? 2 : 1)});
+								resolution: resolution});
 						let Mesh = ModelGetMaxMeshWarp(MC.Poses, sg, "pri_basic", "BasicMesh") ?
 							new PIXI.SimplePlane(RT, 30, 30)
 							: new PIXI.SimplePlane(RT, 2, 2);
