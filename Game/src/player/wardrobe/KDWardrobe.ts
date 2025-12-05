@@ -1452,6 +1452,8 @@ function KDDrawSubmeshEditor() {
 function KDDrawWardrobe(_screen: string, Character: Character) {
 	if (KDOutfitInfo.length == 0) KDRefreshOutfitInfo();
 
+	let C = Character || KinkyDungeonPlayer;
+
 	if (KDDebugMode) {
 		DrawButtonKDEx("togglewireframeeditor", 
 			() => {
@@ -1460,6 +1462,29 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 				SubmeshEditorBufferOrig = null;
 				return true;
 			}, true, 510, 5, 100, 40, "Submesh Editor", KDBaseWhite);
+		let II = 0;
+		let debugspacing = 110;
+		if (KDShowCharacterPalette) DrawButtonKDEx("fliplayerbonus", 
+		() => {
+			if (C) {
+				
+				KDChangeWardrobe(C);
+				for (let model of C.Appearance) {
+					if (model.Properties) {
+						for (let entry of Object.entries(model.Properties)) {
+							if (entry[1].LayerBonus)
+								model.Properties[entry[0]].LayerBonus *= -1;
+						}
+					}
+						
+				}
+				KDUpdateChar(C);
+				if (KDCurrentModels.get(C)) {
+					KDCurrentModels.get(C).Update.clear();
+				}
+			}
+			return true;
+		}, true, 510 + debugspacing * ++II, 5, 100, 40, "Flip lyrbonus", KDBaseWhite);
 		if (KDSubmeshEditor) {
 			KDDrawSubmeshEditor();
 		}
@@ -1477,7 +1502,6 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		}
 	}
 
-	let C = Character || KinkyDungeonPlayer;
 	if (KDBGColor) {
 		FillRectKD(kdcanvas, kdpixisprites, "playerbg", {
 			Left: 0,
