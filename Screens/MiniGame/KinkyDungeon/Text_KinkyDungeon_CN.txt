@@ -352,7 +352,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 - Auto Load Mods (offline only)
 自动加载模组 ( 仅离线版 )
 - Classic Inventory Background
-古典物品页面背景
+经典物品页面背景
 - Skip Intro
 跳过序言（启动画面）
 - No Forced Greetings
@@ -25739,6 +25739,7 @@ Mmmph? (行为混乱)
 (把自己锁在里面)
 - (Check the occupant)
 检查里面的NPC
+# - Can't enter in your current state.
 
 - (Try to lock NME into the furniture) (PRCNT% Chance)
 (尝试将 NME 锁定在家具中)(PRCNT% 几率)
