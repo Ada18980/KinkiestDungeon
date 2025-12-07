@@ -44,28 +44,28 @@ Gelandene Mods
 
 ### Kinky Dungeon
 
-### By Ada18980
-
+- By Ada18980
+Von Ada18980
 ### You are an adventurer descending into an ancient underground city of magic.
 
 ### Beneath its depths lies the Mistress' Staff, an artifact of untold power.
 
 ### Will you prevail against forces unknown, or succumb to its dark secrets?
 
-### (This game does not contain spiders)
-
+- (This game does not contain spiders)
+(Dieses Spiel enthällt keine Spinnen)
 ### GFX
 
-### Character
-
-### Main
-
+- Character
+Charakter
+- Main
+Grundlegend
 ### UI
 
-### Controls
-
-### Keybindings
-
+- Controls
+Steuerung
+- Keybindings
+Tastenbelegungen
 ### Mouse Shortcuts
 
 ### Auto-path through NPCs
@@ -244,60 +244,60 @@ Gelandene Mods
 
 ### Automatically Take All from Chests
 
-### Helpless!
-
-### Evaded!
-
-### Blocked!
-
-### Resisted Bondage!
-
-### You bump into a wall.
-
-### Game Resolution:
-
-### Resolution (needs reload):
-
-### Toy Volume:
-
-### Music Volume:
-
-### SFX Volume:
-
-### Animation Time:
-
-### Map Brightness:
-
-### Game Font:
-
-### Button Font:
-
-### Journey
-
-### Select a journey. This will determine the ordering of game areas.
-
-### Standard: The intended experience
-
-### Random: A chaotic journey
-
-### Harder: A more difficult journey
-
-### Select perks to start with.
-
-### Having 10+ spare points will trigger Hard Mode, granting unique loot.
-
-###  (HARD MODE ENABLED)
-
-### Advanced start (choose perks)
-
-### Kinky start
-
-### Normal start
-
-### Point Cost: AMOUNT
-
-### Points Available: AMOUNT
-
+- Helpless!
+Hilflos!
+- Evaded!
+Ausgewichen!
+- Blocked!
+Blockiert!
+- Resisted Bondage!
+Fesseln Widerstanden!
+- You bump into a wall.
+Du stoßt in eine Wand.
+- Game Resolution:
+Spiel Aulösung!
+- Resolution (needs reload):
+Auflösung (braucht Neustart)
+- Toy Volume:
+Vibrator Lautstärke:
+- Music Volume:
+Musik Lautstärke:
+- SFX Volume:
+SFX Lautstärke:
+- Animation Time:
+Animationszeit:
+- Map Brightness:
+Karten Helligkeit:
+- Game Font:
+Spiel Schriftart:
+- Button Font:
+Knopf Schriftart:
+- Journey
+Weg
+- Select a journey. This will determine the ordering of game areas.
+Bestimme den Weg. Das wird die Reinfolge der Bereiche beinflussen.
+- Standard: The intended experience
+Standard: Die geplante Erfahrung
+- Random: A chaotic journey
+Zufäll: Ein chaotischer Weg
+- Harder: A more difficult journey
+Schwer: Eine schwierigerer Weg
+- Select perks to start with.
+Wähle Perks zum Start
+- Having 10+ spare points will trigger Hard Mode, granting unique loot.
+Mit 10 or mehr Zusatzpunkte wird den schweren Modus aktivieren. Mit einzigartiger Beute.
+-  (HARD MODE ENABLED)
+(SCHWERER MODUS AKTIV)
+- Advanced start (choose perks)
+Erweiteter Start (wähle Perks)
+- Kinky start
+Kinky Start
+- Normal start
+Normaler Start
+- Point Cost: AMOUNT
+Punktepreis: AMOUNT
+- Points Available: AMOUNT
+Punkte Verfügbar: AMOUNT
 ### Resilient Foes
 
 ### Enemies have 30% more hp.
@@ -1480,54 +1480,54 @@ Gelandene Mods
 
 
 
-### Continue...
-
-### Menu
-
+- Continue...
+Weiter-
+- Menu
+Menü
 ### I will simply wait to see what happens.
 
-### Save my current progress.
-
-### Give up & delete save
-
-### Yes, delete my save file!
-
-### Actually, I will let the enemy capture me instead.
-
-### Yes, jail me!
-
-### No, I wish to press on
-
-### See Perks
-
-### This chest belongs to the FACTION
-
-### This belongs to the FACTION
-
-### Devious Dungeon Challenge is enabled.
-
-### Waiting for game data...
-
-
-
-
-
-### You have reached the end of the playable portion.
-
-### Come back later for new dungeons!
+- Save my current progress.
+Speicher meinen Fortschritt
+- Give up & delete save
+Gebe auf & lösche Speicherstand
+- Yes, delete my save file!
+Ja, lösche meinen Speicherstand
+- Actually, I will let the enemy capture me instead.
+Ich werte mich vom Gegner fangen lassen.
+- Yes, jail me!
+Ja, sperre mich ein!
+- No, I wish to press on
+Nein, ich will weiter machen.
+- See Perks
+Perks ansehen
+- This chest belongs to the FACTION
+Diese Truhe gehört der Gruppe: FACTION
+- This belongs to the FACTION
+Das gehört der Gruppe: FACTION
+- Devious Dungeon Challenge is enabled.
+Hinterhältige Dungeon Challange ist aktiv.
+- Waiting for game data...
+Spieldaten werden geladen...
 
 
 
-### Got the keys! Find the stairs to go to the next floor.
 
-### You haven't found the keys for this floor yet.
+- You have reached the end of the playable portion.
+Du hast das Ende des spielbaren Bereich erreicht.
+- Come back later for new dungeons!
+Komm zurück später, für mehr.
 
-### Missing key
 
-### You are protected from damage and can't be bound until the shield is broken!
-
-### Chance for a spell to fizzle:
-
+- Got the keys! Find the stairs to go to the next floor.
+Schlüssen gefunden! Finde die Treppen zum nächsten Stockwerk.
+- You haven't found the keys for this floor yet.
+Du hast noch nicht die Schlüssel für dieses Stockwerk gefunden.
+- Missing key
+Fehlende Schlüssel
+- You are protected from damage and can't be bound until the shield is broken!
+Du bist von Schaden beschützt, bis das Schild bricht.
+- Chance for a spell to fizzle:
+Chance, dass ein Spruch schiefgeht:
 ### Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 
 ### Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
@@ -1636,8 +1636,8 @@ Gelandene Mods
 
 ### ~mmmmm~
 
-### You wait.
-
+- You wait.
+Du wartest.
 ### You wait, legs trembling with arousal.
 
 ### You wait, trembling and moaning.
@@ -1656,94 +1656,94 @@ Gelandene Mods
 
 ### You feel like you are going to pass out...
 
-### Start New Game
-
+- Start New Game
+Starte ein neues Spiel
 ### New Game+
 
-### Continue Last Save
-
-### Load Saved Game
-
-### Save Outfit (overwrite!)
-
-### Save Outfit (Clothes Only!)
-
-### Save Keybindings
-
-### Cancel Changes
-
-### Return
-
-### Game Options
-
-### Load from code
-
-### Back to main menu
-
-### Load Mod .zip
-
-### Delete Mod
-
-### Clear Perks
-
+- Continue Last Save
+Beim letzten Spielstand weiter machen
+- Load Saved Game
+Gespeichertes Spiel Laden
+- Save Outfit (overwrite!)
+Speichere Outfit (Überschreiben!)
+- Save Outfit (Clothes Only!)
+Speichere Outfit (Nur Kleidung!)
+- Save Keybindings
+Speichere Tastenbelegungen
+- Cancel Changes
+Verwerfe Änderungen
+- Return
+Zurück
+- Game Options
+Spiel Optionen
+- Load from code
+Lade von einem Code
+- Back to main menu
+Back to main menu.
+- Load Mod .zip
+Lade Mod .zip
+- Delete Mod
+Lösche Mod
+- Clear Perks
+Perks zurückstellen
 ### Config
 
-### Cancel
-
+- Cancel
+Rückgängig
 ### Filter
 
-### DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
-
-### Like connecting to a server, etc. Only load mods from a TRUSTED source.
-
-### Up
-
-### Down
-
-### Left
-
-### Right
-
-### Up Left
-
-### Up Right
-
-### Down Left
-
-### Down Right
-
-### Spell 1
-
-### Spell 2
-
-### Spell 3
-
-### Spell 4
-
-### Spell 5
-
-### Spell 6
-
-### Spell 7
-
-### Spell 8
-
-### Spell 9
-
-### Spell 10
-
-### Load Hotbar 1
-
-### Load Hotbar 2
-
-### Load Hotbar 3
-
-### Load Loadout 1
-
-### Load Loadout 2
-
-### Load Loadout 3
-
+- DANGER: Loading a mod will execute ARBITRARY CODE on your machine.
+GEFAHR: Beim Laden von Mods wird WILLKÜRLICHER CODE auf deimem Computer augeführt.
+- Like connecting to a server, etc. Only load mods from a TRUSTED source.
+Lade nur Mods von VERTRAUENSWÜRDIGEN Quellen
+- Up
+oben
+- Down
+unten
+- Left
+links
+- Right
+rechts
+- Up Left
+oben Links
+- Up Right
+oben rechts
+- Down Left
+unten links
+- Down Right
+unten rechts
+- Spell 1
+Zauberspruch 1
+- Spell 2
+Zauberspruch 2
+- Spell 3
+Zauberspruch 3
+- Spell 4
+Zauberspruch 4
+- Spell 5
+Zauberspruch 5
+- Spell 6
+Zauberspruch 6
+- Spell 7
+Zauberspruch 7
+- Spell 8
+Zauberspruch 8
+- Spell 9
+Zauberspruch 9
+- Spell 10
+Zauberspruch 10
+- Load Hotbar 1
+Laden Hotbar 1
+- Load Hotbar 2
+Laden Hotbar 2
+- Load Hotbar 3
+Laden Hotbar 3
+- Load Loadout 1
+Laden Loadout 1
+- Load Loadout 2
+Laden Loadout 2
+- Load Loadout 3
+Laden Loadout 3
 ### Cycle Spell Page
 
 ### Upcast Spells
@@ -1760,38 +1760,38 @@ Gelandene Mods
 
 ### Weapon Ability
 
-### Wait
-
-### Cancel/Back
-
-### Enter
-
-### Expand Minimap
-
-### Zoom Out
-
-### Zoom In
-
-### Wait till Interrupted
-
-### Make Noise
-
-### Play with Self
-
-### Message Log
-
-### Pass thru allies
-
+- Wait
+Warte
+- Cancel/Back
+Verwerfen/Zurück
+- Enter
+Betretten
+- Expand Minimap
+Minimap erweitern
+- Zoom Out
+Raus zommen
+- Zoom In
+Rein zoomen
+- Wait till Interrupted
+Warte bis zur Unterbrechung
+- Make Noise
+Mach Geräusche
+- Play with Self
+Spiel mit dir
+- Message Log
+Nachrichten
+- Pass thru allies
+Durch verbündete durchgehen
 ### Auto-Struggle
 
 ### Auto-Pathfind
 
 ### Hide Bullets
 
-### Quick Inventory
-
-### Inventory
-
+- Quick Inventory
+Schnelles Inventar
+- Inventory
+Inventar
 ### Reputation
 
 ### Journey Map
@@ -1800,124 +1800,124 @@ Gelandene Mods
 
 ### Spell List
 
-### Pause Menu
-
-### Facilities
-
-### Current Key Pressed
-
-### Press a key, then press a button to set that key
-
-### Floor FLOORNUMBER: DUNGEONNAME
-
+- Pause Menu
+Pause Menü
+- Facilities
+Einrichtungen
+- Current Key Pressed
+Momentane gedrückte Taste
+- Press a key, then press a button to set that key
+Drücke eine Taste, dann den Knopf um ihn zu setzten.
+- Floor FLOORNUMBER: DUNGEONNAME
+Stockwerk FLOORNUMBER: DUNGEONNAME
 ### Lockpicks:
 
-### Keys:
-
-### Magic Keys:
-
-### Knife:
-
-### Mag. Knife:
-
-### You climb down the stairs. The passage closes behind you.
-
-### You climb back up the stairs.
-
-### You can't climb down until you get out of this leash...
-
-### You climb down and find yourself in a strange new place.
-
+- Keys:
+Schlüssel
+- Magic Keys:
+Magische Schlüssel
+- Knife:
+Messer
+- Mag. Knife:
+Magisches Messer
+- You climb down the stairs. The passage closes behind you.
+Du gehts die Treppen nach unten. Der Gang schlicht sich hinter dir.
+- You climb back up the stairs.
+Du gehst die Treppen wieder nach oben.
+- You can't climb down until you get out of this leash...
+Du kannst nicht nach unten before du von der Leine loskommst.
+- You climb down and find yourself in a strange new place.
+Du gehst nach unten, und kommst in einen seltsamen neuen Raum.
 ###  plus XXX
 
-### Graveyard
+- Graveyard
+Grab
+- Catacombs
+Katakomben
+- Overgrown Ruins
+Überwachsene Ruinen
+- Lost Temple
+Verlassener Temple
+- The Bellows
+Die Fabrik
+- Rundown Laboratory
+Verkommene Labor
+- Forgotten Garden
+Vergessener Garten
+- Coastal Grotto
+Küsten Grotte
+- Kingdom of Ice
+Königreich aus Eis
 
-### Catacombs
 
-### Overgrown Ruins
-
-### Lost Temple
-
-### The Bellows
-
-### Rundown Laboratory
-
-### Forgotten Garden
-
-### Coastal Grotto
-
-### Kingdom of Ice
-
-
-
-### The Mansion
-
-### Ancient Tombs
-
-### Magic Library
-
-### Crystal Cave
-
-### Cavern
-
-### Orrery
-
+- The Mansion
+Die Villa
+- Ancient Tombs
+Antiken Räume
+- Magic Library
+Magische Bibliothek
+- Crystal Cave
+Kristal Höhle
+- Cavern
+Die Grube
+- Orrery
+Planetarium
 ### Training Center
 
-### Rubber Facility
-
-### Wizards' Den
-
+- Rubber Facility
+Gummi Fabrik
+- Wizards' Den
+Hexenversteck
 ### Marble Halls
 
 ### Doll Storage
 
 ### Processing
 
-### Bandit Hideout
-
-### Ancient Vault
-
-### Ancient Halls
-
-### Slave Market
-
-### Elevator Hall
-
-### Dark Passageway
-
-### Caldera Beach
-
-### Temple of Air
-
-### Temple of Fire
-
-### Temple of Water
-
-### Temple of Ice
-
-### Temple of Storms
-
-### Temple of Earth
-
-### The Edge of Reality
-
-### Dark Dimension
-
+- Bandit Hideout
+Banditenversteck
+- Ancient Vault
+Antiker Speicher
+- Ancient Halls
+Antike Gänge
+- Slave Market
+Sklarvenmarkt
+- Elevator Hall
+Aufzugshalle
+- Dark Passageway
+Dunkle Passage
+- Caldera Beach
+Caldera Strand
+- Temple of Air
+Temple der Luft
+- Temple of Fire
+Temple des Feuers
+- Temple of Water
+Temple des Wassers
+- Temple of Ice
+Temple des Eises
+- Temple of Storms
+Temple des Stormes
+- Temple of Earth
+Temple der Erde
+- The Edge of Reality
+Das Ende der Realität
+- Dark Dimension
+Dunkle Dimension
 ### Lair
 
-### You search through the debris but find nothing of note
-
-### You find some gold coins in a corner (+XXX gold)
-
-### You find a lockpick in a crack between the tiles
-
-### You find a rusty knife among the rocks
-
-### You find an ordinary key
-
-### You find a blue key, glowing with magic
-
+- You search through the debris but find nothing of note
+Du suchst durch den Schrott und findest nichts Hilfreiches.
+- You find some gold coins in a corner (+XXX gold)
+Du Findest ein paar Goldmünzen in einer Ecke (+XXX Goldmünzen)
+- You find a lockpick in a crack between the tiles
+Du findest einen Lockpick in einen Spalt zwischen Steinen
+- You find a rusty knife among the rocks
+Du findest ein rostiges Messer in den Steinen
+- You find an ordinary key
+Du findest einen normal Schlüssel
+- You find a blue key, glowing with magic
+Du findest einen blauen Schlüssel, der mit Magie leuchtet
 ### You find a bola, crafted by bandits
 
 ### You find some unexploded ordnance.
@@ -2012,84 +2012,84 @@ Gelandene Mods
 
 ### You find a medley of potions.
 
-### Rarity:
-
+- Rarity:
+Seltenheit:
 ### Lesser
 
-### Common
-
-### Uncommon
-
-### Rare
-
-### Very Rare
-
-### Epic
-
-### Legendary
-
-### Supreme
-
-### Mythic
-
-### Angelic
-
-### Divine
-
-### Quantity:
-
-### Use One
-
-### way of the fist
-
+- Common
+Häufig
+- Uncommon
+Unhäufig
+- Rare
+Selten
+- Very Rare
+Sehr Selten
+- Epic
+Episch
+- Legendary
+Legendär
+- Supreme
+Legendär+
+- Mythic
+Mythisch
+- Angelic
+Engelhaft
+- Divine
+Göttlich
+- Quantity:
+Anzahl:
+- Use One
+Benutze eins.
+- way of the fist
+Weg der Faust
 ### Lockpick
 
-### Exit Keys
+- Exit Keys
+Ausgangsschlüssel
+- Adventurer's Outfit
+Abenteuerer Klamotten
+- Your favorite outfit for adventuring.
+Deine Lieblingsklamotten fürs abenteuern
+- Your original outfit. No bonuses, no penalties.
+Deine normalen Klamotten. Keine Vor- oder Nachteile.
+- Tactical Catsuit
+Tactisches Catsuit
+- A sleek catsuit worn by stealth operatives. No frills, no nonsense.
+Ein schlanker Catsuit für heimliche Aktionen, nicht mehr.
+- Increases stealth by 10% in the dark.
+Verbessert Tarnung um 10% in der Dunkelheit.
+- Jail Uniform
+Gefängnisuniform
+- The prisoners are kept in revealing outfits to keep them from hiding things.
+Die Gefangenen müssen in freizügigen Klamotten tragen, dass sie nichts verstecken können.
+- Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
+Macht es schwer Waffen zu verstecken. Außerdem bist du sichtbarer und weniger gegen Kälte geschützt.
 
-### Adventurer's Outfit
 
-### Your favorite outfit for adventuring.
-
-### Your original outfit. No bonuses, no penalties.
-
-### Tactical Catsuit
-
-### A sleek catsuit worn by stealth operatives. No frills, no nonsense.
-
-### Increases stealth by 10% in the dark.
-
-### Jail Uniform
-
-### The prisoners are kept in revealing outfits to keep them from hiding things.
-
-### Designed to make it hard to conceal weapons. Makes you more visible and vulnerable to the cold.
-
-
-
-### Wolfgirl Suit
-
-### An advanced suit designed for sport, breathable and also warm.
-
-### Made of latex. Resistant to electricity but does not insulate well.
-
-### Maid Uniform
-
-### An elegant dress meant to denote a maid's status.
-
-### Massively increases accuracy against slime mold.
-
-### Harem Outfit
+- Wolfgirl Suit
+Wolfgirl Anzug
+- An advanced suit designed for sport, breathable and also warm.
+Ein fortschrittlicher Anzug für Sport. Luftig, aber warm.
+- Made of latex. Resistant to electricity but does not insulate well.
+Aus Latex gefertigt. Hält Elektrizität stand, aber isuliert nicht gut.
+- Maid Uniform
+Dienstmädchensanzug
+- An elegant dress meant to denote a maid's status.
+Ein elegantes Kleid, um deinen Status als Dienstmädchen zu verdeutlichen.
+- Massively increases accuracy against slime mold.
+Verbessert die Treffsicherheit gegen Schimmel sehr stark.
+# Harem Outfit
 
 ### A skimpy outfit with antiquated connotations.
 
 ### Harkening back to an old era.
 
-### Combat Bikini
-
-### A minimalist albeit chilly outfit designed for ease of use.
-
-### Or perhaps it's just sexy...
-
+- Combat Bikini
+Kampfbikini
+- A minimalist albeit chilly outfit designed for ease of use.
+Ein minimaler, wenn auch kühler Anzug, um besser zu kämpfen.
+- Or perhaps it's just sexy...
+Oder vielleicht ist er einfach nur sexy...
 ### Lingerie
 
 ### A minimalist yet aesthetically pleasing outfit.
@@ -2138,106 +2138,106 @@ Gelandene Mods
 
 ### Not very good at insulating you from the cold or from touchy fingers. Its elven aura improves accuracy and evasion by +10.
 
-### Scroll of Sleight
-
-### The scroll makes your memories of arm movements clear as day!
-
-### A scroll used by thieves to make their plays in secret.
-
-### Allows you to cast Arm spells without components for 12 turns.
-
-### Scroll of Purity
-
-### The scroll circles around your body and you feel... empty now.
-
-### A scroll used to enforce chastity within religious orders.
-
-### Removes all vibrators from your body.
-
-### Scroll of Speech
-
-### The scroll makes your gagged speech slightly more intelligible!
-
-### A scroll used to help translate different languages.
-
-### Allows you to cast Verbal spells without components for 12 turns.
-
-### Scroll of Sauntering
-
-### The scroll lets you move your body in swift and accurate ways!
-
-### A scroll used by dancers to upgrade their moves.
-
-### Allows you to cast Leg spells without components for 12 turns.
-
-### Ancient Key
-
-### Perhaps it has something to do with ancient restraints?
-
-### An ancient key plated in gold. It doesnt look like it can open anything...
-
-### You pick up a shining golden key.
-
-### You pick up a ReplaceValue.
-
-### Power Crystal
-
-### You hold the crystal and the power flows into you.
-
-### You're not sure how they charged these...
-
-### A mysterious device used by the old civilization, powering their ancient devices.
-
-### You are already full of ancient power.
-
-### Spent Power Crystal
-
-### You touch the spent crystal and it siphons 100 gold from your bag!
-
-### You are not sure how to charge this back up.
-
-### A mysterious device used by the old civilization, now depleted.
-
+- Scroll of Sleight
+Schriftrolle der Geschicklichkeit
+- The scroll makes your memories of arm movements clear as day!
+Diese Schriftrolle errinnert dich an die Armbewebung.
+- A scroll used by thieves to make their plays in secret.
+Eine Schriftrolle die von Dieben benutzt wird, um besser etwas stehlen zu können.
+- Allows you to cast Arm spells without components for 12 turns.
+Erlaubt dir, für 12 Runden, Arm-Sprüche auch ohne freie Arme zu verwenden.
+- Scroll of Purity
+Schriftrolle der Reinheit
+- The scroll circles around your body and you feel... empty now.
+Die Schriftrolle umkreist deinen Körper und du fühlst du plötzlich... leer.
+- A scroll used to enforce chastity within religious orders.
+Eine Schriftrolle um Keuschheit zu gewährleisten im religiösen Bereich.
+- Removes all vibrators from your body.
+Entfernt alle Vibratoren von deinem Körper.
+- Scroll of Speech
+Schriftrolle der Sprache
+- The scroll makes your gagged speech slightly more intelligible!
+Diese Schriftrolle macht deine geknebelte Sprache ein wenig verständlicher!
+- A scroll used to help translate different languages.
+Eine Schriftrolle die benutzt wurde, um zwischen mehreren Sprachen zu übersetzen.
+- Allows you to cast Verbal spells without components for 12 turns.
+Erlaubt dir, für 12 Runden, Zaubersprüche auch mit einem Knebel zu verwenden.
+- Scroll of Sauntering
+Schriftrolle des Schlenderns
+- The scroll lets you move your body in swift and accurate ways!
+Diese Schriftrolle erlaubt es dir, deinen Körper schnell und genau zu bewegen!
+- A scroll used by dancers to upgrade their moves.
+Eine Schriftrolle die von Tänzern verwended wird, um ihre Bewegungen zu verfeinern.
+- Allows you to cast Leg spells without components for 12 turns.
+Erlaubt dir, für 12 Runden, Bein-Zauber auch ohne freie Beine zu verwenden .
+- Ancient Key
+Antiker Schlüssel
+- Perhaps it has something to do with ancient restraints?
+Vielleicht hat er etwas mit Antiken Fesseln zu tun.
+- An ancient key plated in gold. It doesnt look like it can open anything...
+Ein goldener, antiker Schlüssel. Schaut nicht so aus, als könnte man damit irgendwas öffen.
+- You pick up a shining golden key.
+Du findest einen scheinenden, goldenen Schlüssel.
+- You pick up a ReplaceValue.
+Du findest einen/eine/ein ReplaceValue.
+- Power Crystal
+Energiekristal
+- You hold the crystal and the power flows into you.
+Du haltest einen Kristal und die Energy fliest in dich.
+- You're not sure how they charged these...
+Du bist dir nicht sicher, wie man die aufladet.
+- A mysterious device used by the old civilization, powering their ancient devices.
+Ein mysteriöser Gegenstand, der in der alten Zivilisation verwendet wurde, um ihre antiken Gegenstände mit Energie zu versorgen.
+- You are already full of ancient power.
+Du bist schon komplett mit antiker Energie aufgeladen.
+- Spent Power Crystal
+Erschöpfter Energiekristal
+- You touch the spent crystal and it siphons 100 gold from your bag!
+Du berührst den Kristal und es verschwinden 100 gold aus deiner Tasche!
+- You are not sure how to charge this back up.
+Du weißt nicht, wie man die Dinger wieder auflädt.
+- A mysterious device used by the old civilization, now depleted.
+Ein mysteriöser Gegestand, der von der alten Zivilisation verwendet wurde. Die Energie ist erschöpft.
 ### Gold
 
-### Key
+- Key
+Schlüssel
+- A key. You wonder who it's for?
+Ein Schlüssel. Du wunderst dich, für was der ist.
+- Can be used to unlock one simple or standard-locked restraint, door, or chest.
+Kann verwendet werden, um einfache Schlösser zu entsperren.
+- Magic Key
+Magischer Schlüssel
+- A glowing key enchanted with magic that fades with one use.
+Ein leuchtender Schlüssel. Die Magie, verschwindet, nach dem er benutzt wurde.
+- Can be used to unlock a runic lock.
+Kann verwendet werden, um runische Schlösser zu entsperren.
+- A magical key with the power to open blue locks.
+Ein magischer Schlüssel mit der Kraft, um blaue Schlösser zu öffnen.
+- Blue locks can't be otherwise picked.
+Blaue Schlösser können ansonsten nicht geknackt werden.
+- Magic Knife
+Magisches Messer
+- A magical blade, suitable against ghosts.
+Ein magisches Messer, gut gegen Geister
+- Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
+Macht Schattenschaden. Kann verzauberte Seile schneiden. Offhand: Verbessert den basis Krit-schaden von jedem Magie-Schaden um 20%.
+- Bola
 
-### A key. You wonder who it's for?
-
-### Can be used to unlock one simple or standard-locked restraint, door, or chest.
-
-### Magic Key
-
-### A glowing key enchanted with magic that fades with one use.
-
-### Can be used to unlock a runic lock.
-
-### A magical key with the power to open blue locks.
-
-### Blue locks can't be otherwise picked.
-
-### Magic Knife
-
-### A magical blade, suitable against ghosts.
-
-### Deals shadow damage. Can cut enchanted ropes. Offhand: Increase base crit of all magic damage by 20%
-
-### Bola
-
-### A pair of weights attached to a rope. Can be thrown.
-
-### Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
-
-### Bomb
-
-### After a 5 turn fuse, deals 100 blast damage in a 3x3 area.
-
-### Not a toy!
-
-### You light the fuse!
-
-### Knife
-
+- A pair of weights attached to a rope. Can be thrown.
+Ein Paar Gewichte, die mit einem Seil aneinander hängen. Kann auch geworfen werden.
+- Deals 90 points of binding, 40 chain damage, and rooting a target for 4 turns.
+Macht 90 Punkte Fesseln, 40 Kettenschaden und verhindert, dass sich das Ziel für 4 Runden bewegt.
+- Bomb
+Bombe
+- After a 5 turn fuse, deals 100 blast damage in a 3x3 area.
+Nach eine 5 Runden Zündschnurr, macht 100 Explosionsschaden in einem 3x3 Bereich.
+- Not a toy!
+Kein Spielzeug.
+- You light the fuse!
+Du zündest du Zündschnurr an!
+- Knife
+Messer
 ### A tool used to pick locks.
 
 ### Doesn't last forever, but can help in a pinch.
@@ -3128,8 +3128,8 @@ Gelandene Mods
 
 ### The head maid tickles you strategically! (DamageTaken)
 
-### You are distracted for a moment and suddenly you find yourself in chastity!
-
+- You are distracted for a moment and suddenly you find yourself in chastity!
+Du bist für einen Moment abgelengt und bemerkst, dass du dich jetzt in Keuschheit befindest.
 ### Fire Elemental
 
 ### The fire elemental dissolves into ash.
@@ -4232,14 +4232,14 @@ Gelandene Mods
 
 ### The straitjacket squeezes you tightly! (DamageTaken)
 
-### Brusque Belt
-
-### The chastity belt falls to the floor with a clang.
-
-### The chastity belt secures itself around your waist! (+RestraintAdded)
-
-### The chastity belt buzzes against your body alluringly! (DamageTaken)
-
+- Brusque Belt
+Schroffer Gürtel
+- The chastity belt falls to the floor with a clang.
+Der Keuschheitsgürtel fallt zum Boden mit einem Krach.
+- The chastity belt secures itself around your waist! (+RestraintAdded)
+Der Keuschheitsgürtel verschliest sich um deine Hüfte! (+RestraintAdded)
+- The chastity belt buzzes against your body alluringly! (DamageTaken)
+Der Keuschheitsgürtel schmiegt sich an deinem Körper! (DamageTaken)
 ### Yammering Yoke
 
 ### The yoke falls to the floor with a loud clang.
@@ -6128,14 +6128,14 @@ Gelandene Mods
 
 ### Buzzes on spellcast, and periodically as well.
 
-### High-Security Chastity Belt
-
-### A chastity belt to protect prisoners from themselves.
-
-### Made of a highly durable material.
-
-### Blacksteel Chastity Belt
-
+- High-Security Chastity Belt
+Sicherheitskeuschheitsgürtel
+- A chastity belt to protect prisoners from themselves.
+Ein Keuschheitsgürtel um Gefangene von sich selbst zu schützen.
+- Made of a highly durable material.
+Aus belastbaren Materialien hergestellt.
+- Blacksteel Chastity Belt
+Blacksteel Keuschheitsgürtel
 ### Charms (Arms)
 
 ### A band of faintly magic ribbon wrapped tight around your arms.
@@ -6624,46 +6624,46 @@ Gelandene Mods
 
 
 
-### Magic Chastity Belt
-
-### A belt protected by a magic seal.
-
-### The shields will open up to accept new toys, but won't let them out...
-
-### Steel Chastity Belt
-
-### A cruel device used for locking magical vibrators in place.
-
-### Blacksteel Belt
-
-### Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut.
-
-### Blacksteel Bra
-
-### A cruel device used for locking magical massagers in place.
-
-### Prototype Belt
-
-### A strange device built using unknown technology.
-
-### The lock is extremely advanced, and the ports at the bottom readily accept toys but won't let them out...
-
-### Steel Chastity Bra
-
-### It won't stop the dungeon's little curses, but will keep you from removing them.
-
-### Ornate Chastity Belt
-
-### The lock won't come off until the magic wears off in time...
-
-### Ornate Chastity Bra
-
-### Maid Chastity Belt
-
-### A chastity belt used to maintain control over initiate maids.
-
-### Made of hardened steel. The lock is high-security.
-
+- Magic Chastity Belt
+Magischer Keuschheitsgürtel
+- A belt protected by a magic seal.
+Ein Gürtel, der durch Magie beschützt wird.
+- The shields will open up to accept new toys, but won't let them out...
+Das Schild lässt zwar Spielzeuge hinein, aber nicht mehr hinaus.
+- Steel Chastity Belt
+Stahl Keuschheitsgürtel
+- A cruel device used for locking magical vibrators in place.
+Ein fieses Ding, dass magische Vibratoren auf der Stelle fixiert.
+- Blacksteel Belt
+Blacksteel Gürtel
+- Blacksteel is a metal used by the Old Civilization. It is very difficult to scratch, let alone cut.
+Blacksteel ist ein Metal von der alten Zivilisation. Es ist sehr schwer zu kratzen, geschweige den zu schneiden.
+- Blacksteel Bra
+Blacksteel BH
+- A cruel device used for locking magical massagers in place.
+Ein fieses Ding, das magische Vibratoren auf der Stelle fixiert.
+- Prototype Belt
+Prototypgürtel
+- A strange device built using unknown technology.
+Ein selstames Gerät, dass mit unbekannter Technologie gebaut ist.
+- The lock is extremely advanced, and the ports at the bottom readily accept toys but won't let them out...
+Das Schloss ist sehr fortgeschritten, und die Eingänge unten lassen zwar Spielzeuge rein, aber nicht mehr raus...
+- Steel Chastity Bra
+Stahl Keuschheitsbh
+- It won't stop the dungeon's little curses, but will keep you from removing them.
+Es wird den Brustvibratoren nicht stoppen, aber du kannst sie auch nicht mehr entfehrnen.
+- Ornate Chastity Belt
+Verziehrter Keuschheitsgürtel
+- The lock won't come off until the magic wears off in time...
+Das Schloss geht nicht weg bis die Magie über die Zeit nachlässt...
+- Ornate Chastity Bra
+Verziehrter Keuschheitsbh
+- Maid Chastity Belt
+Dienstmädchen Keuschheitsgürtel
+- A chastity belt used to maintain control over initiate maids.
+Ein Keuschheitsgürtel um neue Dienstmädchen unter Kontrolle zu halten.
+- Made of hardened steel. The lock is high-security.
+Aus gehärtetem Stahl gefertigt und mit einem Hochsicherheitsschloss versehen.
 ### Magic Egg
 
 ### An energetic little friend that likes to tease you.
@@ -9226,8 +9226,8 @@ Gelandene Mods
 
 ### After casting an Air or Storm spell that costs mana, become Conductive and gain 300% electric resist for 3 turns.
 
-### When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless.
-
+- When enabled, enemies in chastity become angry Frustrated Pets when becoming helpless.
+When aktiv, Gegner in Keuschheit benehmen sich wie frustrierte Haustiere wenn sie hilfloss sind.
 ### Mana Up I
 
 ### Increases maximum MP by 12
@@ -9568,18 +9568,18 @@ Gelandene Mods
 
 ### You say a command word, and magical locks bind your target!
 
-### Chastity
-
-### Select which creature to lock in a belt
-
-### Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
-
-### You conjure a chastity belt, which latches onto your target!
-
-### Your own spell locks you in chastity!
-
-### Something fun enters your body...
-
+- Chastity
+Keuschheit
+- Select which creature to lock in a belt
+Wähle, welche Person einen Keuschheitsgürtel tragen muss.
+- Target a creature that's disabled. Adds +DamageDealt binding, and applies Chastity which prevents the target from removing plugs/toys, and distracts constantly.
+Ziehlt auf eine kampflose Person. Fügt +DamageDealt Fesseln an und fügt den Status Keuschheit an, der die Person davon hindert, Plugs oder Spielzeuge zu entfernen und dauernt ablengt.
+- You conjure a chastity belt, which latches onto your target!
+Du beschwörst einen Keuschheitsgürtel, der sich um dein Ziel schliest.
+- Your own spell locks you in chastity!
+Dein eigener Zaubersruch, schliest dich in Keuschheit
+- Something fun enters your body...
+Etwas lustiges schiebt sich in deinen Körper.
 ### Zone of Purity
 
 ### Select an area
@@ -11328,8 +11328,8 @@ Gelandene Mods
 
 ### The toys deny you a chance to finish.
 
-### You try to pleasure yourself, but your chastity belt prevents you!
-
+- You try to pleasure yourself, but your chastity belt prevents you!
+Du versuchst dich zu befriedigen, aber dein Keuschheitsgürtel hindert dich daran.
 ### You play with yourself...
 
 ### You let your hands wander for a moment...
@@ -11400,34 +11400,34 @@ Gelandene Mods
 
 ### You attack the RestraintName and close your bra's shield over it, with a click as it locks in place.
 
-### You slowly put on the RestraintName, amazed at how it seems to mold to your size...
+- You slowly put on the RestraintName, amazed at how it seems to mold to your size...
+Langsam verschliest du der/die/das RestraintName, und bist beindruckt, wie er/sie/es an dich anpasst...
 
 
+- You struggle fruitlessly. There is no keyhole and the material is nigh-unbreakable!
+Nutzlos währst du dich. Da ist kein Schlüsselloch und das Material ist fast unzerstörbar.
 
-### You struggle fruitlessly. There is no keyhole and the material is nigh-unbreakable!
 
-
-
-### Ancient Chastity Belt
-
-### You find a chastity belt, glowing magnificently, along with a strange crystal next to it.
-
-### A chastity belt of sleek, ancient design. While powered, it gives -30% miscast chance due to distraction and slowly regenerates stamina.
-
-### 'Belt of the devoted'
-
-### You tug at your chastity belt, but you can't even stick a finger inside because it's so tight...
-
-### Ancient Chastity Bra
-
-### You find a chastity bra, glowing magnificently, along with a strange crystal next to it.
-
-### A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20.
-
-### 'Shield of the chaste'
-
-### You rub your hands along your breasts but feel only hard, unbreakable metal.
-
+- Ancient Chastity Belt
+Antiker Keuschheitsgürtel
+- You find a chastity belt, glowing magnificently, along with a strange crystal next to it.
+You findest einen leuchtenden Keuschheitsgürte mit einem seltsamen Kristal daneben.
+- A chastity belt of sleek, ancient design. While powered, it gives -30% miscast chance due to distraction and slowly regenerates stamina.
+Ein Keuschheitsgürtel mit schlankem, antiken Design, When er Energie hat, reduziert er die Chance einen Zauberspruch zutun um 30%.
+- 'Belt of the devoted'
+Gürtel der Treuen
+- You tug at your chastity belt, but you can't even stick a finger inside because it's so tight...
+Du versuchst den Keuschheitsgürtel zu verrutsch, kriegst aber nicht einmal einen Finger dazwischen, weil es so eng ist...
+- Ancient Chastity Bra
+Antiker Keuschheitsbh
+- You find a chastity bra, glowing magnificently, along with a strange crystal next to it.
+You findest einen leuchtenden Keuschheitsbh mit einem seltsamen Kristal daneben.
+- A chastity bra of sleek, ancient design. While powered, it reduces incoming damage from attacks by 20.
+Ein Keuschheitsbh mit einem schlankem, antiken Design, When er Energie hat, reduziert er eingehenden Schaden von Attacken um 20.
+- 'Shield of the chaste'
+Schild der Keuschen
+- You rub your hands along your breasts but feel only hard, unbreakable metal.
+Die führst deine Hande über diene Brüste, fühlst aber nur hartes, unzerstörbares Metal.
 ### Ancient Heels
 
 ### You find a set of glowing heels, glowing magnificently, along with a strange crystal next to it.
@@ -11874,82 +11874,82 @@ Gelandene Mods
 
 ### Aroused
 
-### Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
-
-### Includes all that good stuff.
-
-### Allow Front Plugs
-
-### Allow Rear Plugs
-
-### Allow Piercings
-
-### Start with 150 willpower and Iron Will, good at melee and blocking attacks.
-
-### Start with 150 stamina and Sneaky, good at stealth and evasive gameplay.
-
-### Start with 150 mana and Magical Sight, good at casting spells.
-
-### Start with nothing to your name. For those who want a challenge.
-
-### You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
-
-### Spell Choice:
-
-### Choose Spells
-
-### Random Spells
-
-### Break orbs. Get points. Buy spells. It's that simple.
-
-### Break orbs and pray you get something good.
-
-### Save Mode:
-
-### Save Codes
-
+- Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
+Entfernt alle Keuschheitsgürlel und -bhs, vibrierende Fesseln, Plugs und entfernt die Option mit dir zu spieln.
+- Includes all that good stuff.
+Enthält all das gute Zeug.
+- Allow Front Plugs
+Erlaubt Dildos.
+- Allow Rear Plugs
+Erlaubt Butt-Plugs
+- Allow Piercings
+Erlaubt Piercings
+- Start with 150 willpower and Iron Will, good at melee and blocking attacks.
+Startet mit 150 Willenskraft und Eisernen Willen, gut bei Melee und blockieren von Attacken.
+- Start with 150 stamina and Sneaky, good at stealth and evasive gameplay.
+Started mit 150 Ausdauer und Geräuschlosigkeit, gut bei stealth und evasion gameplay.
+- Start with 150 mana and Magical Sight, good at casting spells.
+Started mit 150 mana und magischem Blick, good um Zaubersrüche zu casten.
+- Start with nothing to your name. For those who want a challenge.
+Du hast nichts. Für die, die eine Herausforderung suchen.
+- You are a mage, but haven't finished your formal 'training'. Requires Aroused mode.
+Du bist ein Magier, du hast aber dein formelles 'Training' noch nicht abgeschlossen. Benötigt 'Erregt' Modus.
+- Spell Choice:
+Zauberpunkte: 
+- Choose Spells
+Wähle Zaubersrüche
+- Random Spells
+Zufälliger Zauberspruch
+- Break orbs. Get points. Buy spells. It's that simple.
+Zerstöre Orbs, Kriegt Punkte. Kauf Zaubersrüch. Es ist einfach.
+- Break orbs and pray you get something good.
+Zerstörte Orbs und hoffe auf was gutes.
+- Save Mode:
+Speichermodus:
+- Save Codes
+Speichercode
 ### Roguelike
 
-### Grants a save code every floor you can write down. Autosaves only on floor start.
-
-### No save codes, forced autosaves. You are in it to win it.
-
-### Prison Strictness:
-
-### Easy
-
-### Strict
-
-### If you get captured, you might get rescued if you have good relations.
-
-### If you get captured, you will always get rescued and pay a fee.
-
-### If you get captured, you are totally on your own.
-
-### Start Playing
-
-### Lock your settings in, nice and tight.
-
-### Start with some perks that increase strictness and immersion.
-
-### Choose some perks to spice up your run.
-
-### This game engages in safe and consensual analytics.
-
-### It sends data about spell choices, levels reached, etc, to help balance and improve the game.
-
-### No personal data is sent or stored.
-
-### Accept
-
-### Don't Track Me
-
-### Proceed
-
-### Your key to the stairs is taken away!
-
-### You found a keyring to the stairs! Now you just need to get there.
-
+- Grants a save code every floor you can write down. Autosaves only on floor start.
+Bietet einen Speichercode nach jedem Stockwerk wenn du abspeichern kannst. Autosaves passieren nur am Anfang vom Stockwerk.
+- No save codes, forced autosaves. You are in it to win it.
+Keine Speichercodes, zufälliges Autosaves. Du bist hier um den Dungeon zu besiegen.
+- Prison Strictness:
+Gefängnissicherheit
+- Easy
+Einfach
+- Strict
+Streng
+- If you get captured, you might get rescued if you have good relations.
+Wenn du gefangen wirst, kommpt vielleich jemand zur Hilfe wenn du gute Beziehungen hast.
+- If you get captured, you will always get rescued and pay a fee.
+Wenn du gefangen wirst, wird immer jemand kommen um dich zu befreien. Du kannst auf Lösegeld zahlen.
+- If you get captured, you are totally on your own.
+Wenn du gefangen wirst, bist du auf die alleine gestellt.
+- Start Playing
+Start
+- Lock your settings in, nice and tight.
+Schlies deine Regeln schön fest ein.
+- Start with some perks that increase strictness and immersion.
+Starte mit ein paar perks, die das noch ein wenig cooler machen.
+- Choose some perks to spice up your run.
+Wähle ein paar perks um das Ganze wirklich interesant zu machen.
+- This game engages in safe and consensual analytics.
+Das Spiel benutzt ein paar sichere und eingewilligte Daten.
+- It sends data about spell choices, levels reached, etc, to help balance and improve the game.
+Es werde Daten wie verwendete Zaubersrüche, erreichte Level, etc, gesendet um das Spiel zu verbessern zu können.
+- No personal data is sent or stored.
+Keine persönlichen Daten werden verschickt oder gespeichert.
+- Accept
+Akzeptieren
+- Don't Track Me
+Track mich nicht
+- Proceed
+Weiter
+- Your key to the stairs is taken away!
+Dein Schlüssel für die Treppen wurde dir entnommen.
+- You found a keyring to the stairs! Now you just need to get there.
+Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort hin.
 
 
 ### Behold my SPL!
@@ -18074,18 +18074,18 @@ Gelandene Mods
 
 
 
-### Got yourself locked up, huh? Better go be good now~
-
-### *she bumps up against your chastity and sighs*
-
-### Pleasure controls detected.
-
-### You've been a bad girl, haven't you? *taps on your chastity gear*
-
-### Such a naughty girl, getting yourself all locked up like that!
-
-### I-I know you want release, but you're in this gear for a reason~
-
+- Got yourself locked up, huh? Du solltest wieder brav sein~
+Du musst wirklich das Zeug tragen, eh? 
+- *she bumps up against your chastity and sighs*
+*Sie berührt dein Keuschheitsausrüstung und seufzt*
+- Pleasure controls detected.
+Vergnügungskontrolle erkannt.
+- You've been a bad girl, haven't you? *taps on your chastity gear*
+Du warst ein böses Mädchen, gell? *klopft auf deine Keuschheitsausrüstung*
+- Such a naughty girl, getting yourself all locked up like that!
+So ein ungezogenes Mädel, so eingesperrt wie du bist!
+- I-I know you want release, but you're in this gear for a reason~
+I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum du diese Ausrüstung tragst~
 
 
 
@@ -19206,8 +19206,8 @@ Gelandene Mods
 
 ### Metallic arms insert something into you!
 
-### Metallic arms attach a chastity belt over your waist!
-
+- Metallic arms attach a chastity belt over your waist!
+Metallerne Arme geben einen Kauschheitsgürtel um deine Hüfte.
 ### Metallic arms wrap you in tape!
 
 ### Metallic arms wrap you in strict restraints!
@@ -19440,18 +19440,18 @@ Gelandene Mods
 
 ### A pair of tall heels used to improve the aesthetics and controllability of dolls.
 
-### Cyber Doll Belt
-
-### A chastity belt created by the Old Civilization. Truly a marvel of science!
-
-### It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear.
-
-### Cyber Doll Bra
-
-### A chastity bra created by the Old Civilization. Truly a marvel of science! The flexible material over the breasts hardens when squeezed, unless allowed for by the program.
-
-### It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with an advanced form of latex designed for permanent wear.
-
+- Cyber Doll Belt
+Cybergürtel
+- A chastity belt created by the Old Civilization. Truly a marvel of science!
+Ein Keuschheitsgürtel der von der alten Zivilisation erstellt wurde. Ein wahres Wunder der Wissenschaft!
+- It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with a advanced form of latex designed for permanent wear.
+Es besteht aus feinen Metallen der alten Zivilisation, resistent gegen fast jede Form von Schaden, und ausgefüllt mit forgestrittenem Latex, gemacht das man es für immer Tragen kann.
+- Cyber Doll Bra
+Cyberbh
+- A chastity bra created by the Old Civilization. Truly a marvel of science! The flexible material over the breasts hardens when squeezed, unless allowed for by the program.
+Ein Keuschheitsgürtel der von der alten Zivilisation erstellt wurde. Ein wahres Wunder der Wissenschaft! Das flexible Material über den Brüsten härtet wenn man es berührt, es sei den, es wurde von dem Program erlaubt.
+- It's made of exquisite Old Civilization metals, resistant to almost all forms of damage, and padded with an advanced form of latex designed for permanent wear.
+Es besteht aus feinen Metallen der alten Zivilisation, resistent gegen fast jede Form von Schaden, und ausgefüllt mit forgestrittenem Latex, gemacht das man es für immer Tragen kann.
 
 
 ### Doll Jacket
@@ -19490,7 +19490,7 @@ Gelandene Mods
 
 ### Frustration Tolerance
 
-### [Training Protocol] Installation complete. Engage training mode: CHASTITYMODE
+- [Training Protocol] Installation complete. Engage training mode: CHASTITYMODE
 
 ### You feel your belt insert new toys into your body...
 
@@ -21014,8 +21014,8 @@ Gelandene Mods
 
 ### BraCyberLock
 
-### ChastityBra
-
+- ChastityBra
+Keuschheits-BH
 ### BraCups
 
 ### BraLining
@@ -22724,8 +22724,8 @@ Gelandene Mods
 
 ### FashionBraCyber
 
-### FashionChastityBra
-
+- FashionChastityBra
+Fasion-Keuschheitsbh
 ### FashionHeartBelt
 
 ### FashionCyberBelt
@@ -27460,46 +27460,46 @@ Gelandene Mods
 
 
 
-### Divine Chastity Belt
-
-### A chastity belt forged in holy light. Only a Goddess' will can release you.
-
-### There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
-
-### Your Divine Chastity Belt causes the vibrators to stop.
-
-
-
-### A chastity belt forged in holy light. Only the will of a Goddess will release you!
-
-### You find a heavenly chastity belt. Who could it be for?
-
-### Divine Chastity Bra
-
-### A chastity bra forged in holy light. Only a Goddess' will can release you.
-
-### There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
-
-### Your Divine Chastity Bra causes your whole body to go numb.
-
-### A chastity bra forged in holy light. Only the will of a Goddess will release you!
-
-### You find a heavenly chastity bra. Who could it be for?
-
-### Heavenly Chastity Belt
-
-### There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
-
-### Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
+- Divine Chastity Belt
+Göttlicher Keuschheitsgürtel
+- A chastity belt forged in holy light. Only a Goddess' will can release you.
+Ein Keuschheitsgürtel, der in heiligem Licht geschmidet wurde. Nur die Göttinnen können dich befrein.
+- There is no way even an angel can free herself. Its divine aura causes vibrators to cease right before you go over the edge.
+Selbst ein Engel kann sich nicht mehr befreien. Seine heilige Aura stoppt Vibratoren bevor du über die Grenze gehst.
+- Your Divine Chastity Belt causes the vibrators to stop.
+Dein Göttlicher Keuschheitsgürtel stoppt die Vibratoren.
 
 
+- A chastity belt forged in holy light. Only the will of a Goddess will release you!
+Ein Keuschheitsgürtel, der in heiligem Licht geschmidet wurde, Nur der Wille der Göttinnen können dich befreien.
+- You find a heavenly chastity belt. Who could it be for?
+Du findest einen Himmlischen Keuschheitsgürtel. Für wenn den der sein kann.
+- Divine Chastity Bra
+Göttlicher Keuschheutsbh
+- A chastity bra forged in holy light. Only a Goddess' will can release you.
+Ein Keuschheitsbh, der in heiligem Licht geschmidet würde. Nur die Göttinnen können dich befrein.
+- There is no way even an angel can free herself. Its divine aura prevents you from pleasuring yourself.
+Selbst ein Engel kann sich nicht mehr befreien. Seine heilige Auro verhindert, dass du dich befriedigen kannst.
+- Your Divine Chastity Bra causes your whole body to go numb.
+Dein Göttlicher Keuschheitsbh macht deinen ganzen Körper Gefühlslos
+- A chastity bra forged in holy light. Only the will of a Goddess will release you!
+Ein Keuschheitsbh, der in heiligem Licht geschmidet wurde, Nur der Wille der Göttinnen können dich befreien.
+- You find a heavenly chastity bra. Who could it be for?
+Du findest einen Himmlischen Keuschheitsbg, Für wenn den der sein kann.
+- Heavenly Chastity Belt
+Himmlischer Keuschheitsgürtel
+- There is no way even an angel can free herself. Its divine aura causes vibrators to dampen right before you go over the edge.
+Selbst ein Engel kann sich nicht mehr befreien. Seine heilige Aura schwächt die Vibratoren genug ab, dass du gerade nicht über die Grenze gehst.
+- Your Divine Chastity Belt magically dampens the vibrations just enough to edge you.
+Dein Keuschheitsgürtel schwächst die Vibratoren magisch genug ab, das du auf der grenze bleibst.
 
-### Heavenly Chastity Bra
 
-### There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
-
-### The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
-
+- Heavenly Chastity Bra
+Himmlischer Keuschheitsbh
+- There is no way even an angel can free herself. Its divine aura converts self-pleasure to stamina.
+Selbst ein Engel kann sich nicht mehr befreien. Seine heilige Aura wandelt Selbstvergnügun in Ausdauer im.
+- The divine aura drains the pleasure from your self-pleasuring and converts it to stamina.
+Die heilige Aura wandelt die Vergnügung vom Selbstbefriedigen in Ausdauer um.
 
 
 
@@ -27626,8 +27626,8 @@ Gelandene Mods
 
 ### Strangely dressed zombies start approaching you!!
 
-### A floating chastity item appears and starts flying toward you!
-
+- A floating chastity item appears and starts flying toward you!
+Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 ### You hear moaning as the statues start to move...
 
 ### Devious tomes emerge from the bookshelves!
@@ -29770,14 +29770,14 @@ Gelandene Mods
 
 ### Blindfolds are much rarer.
 
-### Free the Boob
-
-### Chastity bras are rarer unless you are wearing nipple toys.
-
+- Free the Boob
+Befreie den Boob
+- Chastity bras are rarer unless you are wearing nipple toys.
+Keuschheitsbhs sind seltener, außer du tragst Nipple Spielzeuge.
 ### Liberate the Boob
 
-### Chastity bras are much rarer.
-
+- Chastity bras are much rarer.
+Keuschheitsbhs sind viel seltener
 ### Find an elevator to the Summit in order to access facilities.
 
 ### Visit the Summit to allow additional interactions with this facility.
@@ -29944,8 +29944,8 @@ Gelandene Mods
 
 ### Vibes
 
-### Chastity Bra
-
+- Chastity Bra
+Keuschheitsbhs
 ### Catsuit / Leotard
 
 ### Rear Plug
@@ -29954,8 +29954,8 @@ Gelandene Mods
 
 ### Vibrator
 
-### Chastity Belt
-
+- Chastity Belt
+Keuschheitsgürtel
 ### Thigh Cuffs
 
 ### Leg Bondage
@@ -31200,8 +31200,8 @@ Gelandene Mods
 
 ### A stand for your latex dolls, coated in a smooth rubber coating.
 
-### Has a flange for propping up even dolls wearing chastity belts.
-
+- Has a flange for propping up even dolls wearing chastity belts.
+Hat ein Ding, dass sie selbst Dolls mit Keuschheitsgürtel hilft.
 
 
 ### (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
