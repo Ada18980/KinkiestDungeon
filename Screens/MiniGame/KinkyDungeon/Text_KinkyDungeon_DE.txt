@@ -370,8 +370,8 @@ Punkte Verfügbar: AMOUNT
 
 ### While your miscast chance is 0%, you gain +40 Evasion.
 
-### Distracted
-
+- Distracted
+Abgelenkt
 ### +15% miscast chance (at all times)
 
 ### Brawler
@@ -1472,20 +1472,20 @@ Punkte Verfügbar: AMOUNT
 
 ### Outfit Code
 
-### Confirm Reset?
-
-### (Your game has been saved)
-
-### (Copy the code above and save it on your computer to backup)
-
+- Confirm Reset?
+Bestätige Reset?
+- (Your game has been saved)
+(Dein Spiel wurde gespeichert)
+- (Copy the code above and save it on your computer to backup)
+(Kopiere den Code oben and speicher ihn auf deinem Computer als Backup)
 
 
 - Continue...
-Weiter-
+Weiter...
 - Menu
 Menü
-### I will simply wait to see what happens.
-
+- I will simply wait to see what happens.
+Ich werde einfach schauen, was passiert.
 - Save my current progress.
 Speicher meinen Fortschritt
 - Give up & delete save
@@ -1679,7 +1679,7 @@ Spiel Optionen
 - Load from code
 Lade von einem Code
 - Back to main menu
-Back to main menu.
+Zurück zum Hauptmenü
 - Load Mod .zip
 Lade Mod .zip
 - Delete Mod
@@ -1792,14 +1792,14 @@ Durch verbündete durchgehen
 Schnelles Inventar
 - Inventory
 Inventar
-### Reputation
-
-### Journey Map
-
+- Reputation
+Ansehen
+- Journey Map
+Reisekarte
 ### Quests
 
-### Spell List
-
+- Spell List
+Liste der Zaubersprüche
 - Pause Menu
 Pause Menü
 - Facilities
@@ -6074,16 +6074,16 @@ Der Keuschheitsgürtel schmiegt sich an deinem Körper! (DamageTaken)
 
 ### The curse on the RestraintName is lifted!
 
-### Press RIGHT to confirm buy!
+- Press RIGHT to confirm buy!
+- Press RECHTS um zu kaufen!
 
 
 
 
 
 
-
-### You find
-
+- You find
+Du findest
 
 
 
@@ -10516,10 +10516,10 @@ Etwas lustiges schiebt sich in deinen Körper.
 
 ### Items
 
-### Rep
-
-### Spells
-
+- Rep
+Angehen
+- Spells
+Sprüche
 ### Learn New Spells
 
 ### Click a spell to replace SPELLNAME with.
@@ -11390,8 +11390,8 @@ Du versuchst dich zu befriedigen, aber dein Keuschheitsgürtel hindert dich dara
 
 ### Are you sure you want to attack?
 
-### Are you sure you want to go to the next level? (Click self to confirm)
-
+- Are you sure you want to go to the next level? (Click self to confirm)
+Bist du sicher, dass du in den nächsten Level gehen willst? (Click dich ums zu bestätigen)
 
 
 ### You shudder as you apply the RestraintName to yourself...
@@ -11772,10 +11772,10 @@ Die führst deine Hande über diene Brüste, fühlst aber nur hartes, unzerstör
 
 ### Many ropes emerge around you, removing weaker ropes from your body and binding enemies!
 
-### Choose Class:
-
-### Distraction Mode:
-
+- Choose Class:
+Wähle eine Klasse
+- Distraction Mode:
+Ablekungsmodus
 ### Progression Mode:
 
 ### Key Hunt
@@ -11790,90 +11790,90 @@ Die führst deine Hande über diene Brüste, fühlst aber nur hartes, unzerstör
 
 ### You will select your task for each floor before you enter. Requires Perk Progression.
 
-### Perks Mode:
-
+- Perks Mode:
+Perk ModusL
 ### Extra
 
-### Less
+- Less
+Weniger
+- Much Less
+Viel Weniger
+- No pain, no gain.
+Normal bei 0 Punkten
+- Gain 20 extra perk points, to give you a false sense of security.
+20 Zusätzliche Perkpunkte, gibt dir fliehende Sicherheit.
+- Lose 20 perk points, just to keep things interesting.
+20 Perkpunkte weniger, damit es interesant bleibt.
+- Lose 50 perk points, making things very interesting.
+50 Perkpnkte weniger, jetzt wird das sehr interesant
 
-### Much Less
 
-### No pain, no gain.
-
-### Gain 20 extra perk points, to give you a false sense of security.
-
-### Lose 20 perk points, just to keep things interesting.
-
-### Lose 50 perk points, making things very interesting.
-
-
-
-### Perk Progression Mode:
-
-### Disabled
-
+- Perk Progression Mode:
+Perk Progression Modus
+- Disabled
+Keinen
 ### Optional
 
-### Mandatory
-
-### Debuffs Only
-
-### No perks between floors.
-
-### The standard mode. You may choose between one of three perk altars between floors.
-
-### A twist on the standard mode. You must choose before progressing.
-
-### You must pick a debuff between floors before progressing.
-
-
-
-### Perk Shrine Bondage:
-
-### Never
-
-### Sometimes
-
-### Always
-
-### Perk shrines will not offer bondage as part of the deal.
-
-### Bondage will sometimes be offered alongside perks.
-
-### Perk shrines are always accompanied by bondage.
+- Mandatory
+Verplichtend
+- Debuffs Only
+Nur Nachteile
+- No perks between floors.
+Keine Zusatzperks zwischen den Stockwerken
+- The standard mode. You may choose between one of three perk altars between floors.
+Der normale Modus. Du kannst zwischen den Stockwerken einen von 3 Perkschreinen aussuchen.
+- A twist on the standard mode. You must choose before progressing.
+Eine änderung zu Optional. Du MUST einen Perkschrein auswählen.
+- You must pick a debuff between floors before progressing.
+Perkschreine bieten nur Nachteile und du musst einen wählen.
 
 
+- Perk Shrine Bondage:
+Perkschrein Fesseln
+- Never
+Nie
+- Sometimes
+Manchmal
+- Always
+Immer
+- Perk shrines will not offer bondage as part of the deal.
+Perkschreine bringen keine Fesseln mit.
+- Bondage will sometimes be offered alongside perks.
+Fesseln werden manchmal zusammen mit Perks angeboten.
+- Perk shrines are always accompanied by bondage.
+Perkschreine haben immer Fessel dabei.
 
-### Perk Shrine Bondage Info:
 
-### Hidden
-
-### Partial
-
-### Full
-
-### You do not know if a perk shrine will apply bondage.
-
-### You know that a perk shrine will apply bondage, but not what kind.
-
-### You know the exact restraints a perk shrine will apply.
-
-### Difficulty:
-
-### Normal Mode
-
-### Hard Mode
-
-### Extreme Mode
-
-### A supposedly reasonable difficulty curve.
-
-### Play the game the way it was intended. Cruel and restrictive.
-
-### Play at your own peril. Unlocked by double-clicking the Hard Mode button.
-
-### Aroused
-
+- Perk Shrine Bondage Info:
+Perkschrein Fesselinfos:
+- Hidden
+Versteckt
+- Partial
+Beschränkt
+- Full
+Alles
+- You do not know if a perk shrine will apply bondage.
+Du weißt nicht, ob ein Perkschrein Fessel hat.
+- You know that a perk shrine will apply bondage, but not what kind.
+Du weißt, das ein Perkschrein Fesseln hat, aber nicht welche.
+- You know the exact restraints a perk shrine will apply.
+Du weißt, ob und welche Fesseln ein Perkschrein mit sich bringt.
+- Difficulty:
+Schwierigkeit
+- Normal Mode
+Normal
+- Hard Mode
+Schwer
+- Extreme Mode
+Extreme
+- A supposedly reasonable difficulty curve.
+Eine mehr oder weniger gute Schwierigkeitskurve
+- Play the game the way it was intended. Cruel and restrictive.
+Spiel das Spiel, so wie es gemeint ist. Fieß und einschränkend.
+- Play at your own peril. Unlocked by double-clicking the Hard Mode button.
+Spiel auf eigene Gefahr. Doppleclick the "Schwer"-Knopf um freizuschalten.
+- Aroused
+Erregt
 - Removes all chastity belts, vibrating restraints, plugs, and removes the option to play with yourself.
 Entfernt alle Keuschheitsgürlel und -bhs, vibrierende Fesseln, Plugs und entfernt die Option mit dir zu spieln.
 - Includes all that good stuff.
@@ -16930,46 +16930,46 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
-
-### (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
-
-### (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
-
-### (The SPEAKER smiles)|Enjoy your freedom while it lasts~
-
-### (The SPEAKER shrugs)|That's okay, just thought I'd ask.
-
-### (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?
-
-### (The SPEAKER gives an evil smile)|What if I wasn't asking?
-
-### (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
-
-### (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
-
-### (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
-
-### (The lock on the RESTRAINT starts glowing...)
-
-### Protection? Certainly!
-
-### Nah, I'm good.
-
-### I would love to wear it!
-
-### (Nod again, excited)
-
-### ...No thank you.
-
-### (Shake your head, puzzled)
-
-### Fine. I need the protection anyway.
-
-### I refuse. (PERCENT chance to avoid)
-
-### (Look at your belt...)
-
+- (The SPEAKER walks up to you)|Say, would you be interested in some 'protection?'
+(Die SPEAKER geht auf dich zu)|Sag, würdest du ein ein wenig 'Schutz' interesiert sein?
+- (The SPEAKER grins)|Wonderful! You see, I've just recently acquired one of these...|(She shows you a loose RESTRAINT)|I'm not too interested in wearing one myself,|but I thought you'd be a good fit for it?
+(Die SPEAKER grinnst)|Wunderbar! Schau, ich habe unlängst einen das hier bekommen...|(She zeigt dir losen RESTRAINT)|Ich will den eigenlich nicht tragen,|aber ich dachte du würdest gut damit ausschauen...
+- (The SPEAKER blushes as she locks the belt around your waist)|I'm enjoying this more than I thought I would~
+(Die SPEAKER wird rot, wie sie den Gürtel an deine Hüfte fixiert)|Ich mag das mehr, als ich gedacht habe~
+- (The SPEAKER smiles)|Enjoy your freedom while it lasts~
+(Die SPEAKER lächelt)|Genieß deine Freiheit solange du sie hast...
+- (The SPEAKER shrugs)|That's okay, just thought I'd ask.
+(Die SPEAKER zugt mit den Schultern)|OK, ich habe ja nur gefragt.
+- (The SPEAKER rubs the smooth metal seductively)|Are you sure?|Adventurers need to take care of themselves.|You don't want to lose control of yourself and run into some curse,|do you?
+(Die SPEAKER reibt das glatte metal verführerisch)|Bist du sicher?|Abenteuerer müssen auf sich aufpassen.|Du willst ja nicht die Kontrolle verlieren und in irgendeinen|Fluch rennen, oder?
+- (The SPEAKER gives an evil smile)|What if I wasn't asking?
+(Die SPEAKER gibt dir ein bösartiges lächeln)|Was ist, wenn ich nicht gefragt habe?
+- (The SPEAKER sighs)|I'll find some other cutie to wear it, I guess~
+(Die SPEAKER seufst)|Ich werden schon irgendeine Süße dafür finden~
+- (The SPEAKER blushes as she locks the RESTRAINT onto you)|There we go~
+(Die SPEAKER wird rot, wie sie den/die/das RESTRAINT an dir verschließt)|Hier, viel besser~
+- (As you turn around, the SPEAKER surprises you)|(You hear a click around your waist)|Whoops! I guess I acted too soon.|Ah well~
+(Wie du dich umdrehst, überrascht dich die SPEAKER)|(Du hörst einen Klick von deine Hüfte)|Uups. Hab anscheinend zu schnell gehandelt.|Was solls~
+- (The lock on the RESTRAINT starts glowing...)
+(Das Schloss auf dem/der RESTRAINT beginnt zu leuchten...)
+- Protection? Certainly!
+Schutz? Natürlich!
+- Nah, I'm good.
+Ehh, eher nicht.
+- I would love to wear it!
+Ich will das gerne tragen...
+- (Nod again, excited)
+(Nick aufgeregt mit dem Kopf)
+- ...No thank you.
+...Nein, danke dir.
+- (Shake your head, puzzled)
+(Shüttel verwundert deinen Kopf)
+- Fine. I need the protection anyway.
+OK, Ich brauch den Schutz sowieso.
+- I refuse. (PERCENT chance to avoid)
+Ich weigere mich. (PERCENT Chance davon zu kommen)
+- (Look at your belt...)
+(Schau auf deinen Gürtel...)
 
 
 ### (The SPEAKER nervously walks up to you)|Excuse me miss...|Can you help me out?
@@ -17958,38 +17958,38 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### (You approach the SPEAKER)
-
-### (Threaten)
-
-### (Really attack?)
-
-### (Attack her)
-
-### (Never mind...)
-
-### (You decide not to)
-
-### (Retaliate)
-
-### (Really attack? You will be justified and won't take an immediate rep penalty)
-
-### (Sneak Attack)
-
-### (Really attack? Target is unaware and will be stunned 1 turn.)
-
-### (Let me through!!)
-
-### (Walk past this unit)
-
-### (Walk past all units)
-
-### (Confirm? You will move through her for a few turns)
-
-### (Stop following me)
-
-### (Confirm? You will have to find the SPEAKER again.)
-
+- (You approach the SPEAKER)
+(Du sprichst die SPEAKER an)
+- (Threaten)
+(Drohen)
+- (Really attack?)
+(Wirklich attackieren?)
+- (Attack her)
+(Attackiere sie)
+- (Never mind...)
+(Doch nicht...)
+- (You decide not to)
+(Du entscheidest dich dagegen)
+- (Retaliate)
+(Rächen)
+- (Really attack? You will be justified and won't take an immediate rep penalty)
+(Wirklich attackieren? Es wäre gerechtfertigt und du würdest keine Ansehenspunkte verlieren)
+- (Sneak Attack)
+(Ungesehen attackieren?)
+- (Really attack? Target is unaware and will be stunned 1 turn.)
+(Wirklich attackieren? Ziel ist nicht bereit und würde für 1ne Runde benommen sein.)
+- (Let me through!!)
+(Lass mich durch!!)
+- (Walk past this unit)
+(An ihr vorbei gehen)
+- (Walk past all units)
+(An allen änlichen Leuten vorbeigehen)
+- (Confirm? You will move through her for a few turns)
+(Bestätigen? Du wirst durch ihren Platz durchgehen für ein paar Runden)
+- (Stop following me)
+(Höre auf, mir zu folgen)
+- (Confirm? You will have to find the SPEAKER again.)
+(Bestätigen? Du wirst die SPEAKER wieder finden müssen.)
 ### (You decide you still need the help)
 
 ### (The SPEAKER refuses to follow your orders)
@@ -18034,24 +18034,22 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 ### (The SPEAKER will stay close to you or its assigned position)
 
-### (Flirting)
-
-### (The SPEAKER smiles)|This will be fun!
-
-### (The SPEAKER grins)|I will make sure you enjoy yourself~
-
-### (The SPEAKER blushes)|Mmm~ Let's do this!
-
-### (The SPEAKER backs up)|I'm not in trouble, am I?
-
-### (The SPEAKER beeps)|This unit does not know how to respond...
-
-### (The SPEAKER moans)|Mmmmmph~
-
-### (The SPEAKER appears too busy to discuss with you)
-
-
-
+- (Flirting)
+(Flirten)
+- (The SPEAKER smiles)|This will be fun!
+(Die SPEAKER lächelt)|Das wird lust machen!
+- (The SPEAKER grins)|I will make sure you enjoy yourself~
+(Die SPEAKER grinst)|Ich werde dir Freude bereiten~
+- (The SPEAKER blushes)|Mmm~ Let's do this!
+(Die SPEAKER wird rot)|Hmm~ Machen wir!
+- (The SPEAKER backs up)|I'm not in trouble, am I?
+(Die SPEAKER nimmt einen Schritt nach hinten)|Ich bin nicht in schwierigkeiten, oder?
+- (The SPEAKER beeps)|This unit does not know how to respond...
+(Die SPEAKER biepst)|Dieses Model hat keine Antwort
+- (The SPEAKER moans)|Mmmmmph~
+(Die SPEAKER stöhnt)|Hmmmmpf~
+- (The SPEAKER appears too busy to discuss with you)
+(Die SPEAKER schein zu beschäftigt zu sein.)
 
 
 
@@ -18060,16 +18058,18 @@ Du findest einen Schlüsselbung für die Treppen! Jetzt musst du nur noch dort h
 
 
 
-### End of line.
-
-### *slaps your butt*
 
 
+- End of line.
+Ende der Zeile.
+- *slaps your butt*
+*schlägt seinen Gesäß*
 
 
 
-### Error. Subject not complying?
 
+- Error. Subject not complying?
+Fehler. Subjekt gehorcht nicht?
 
 
 
@@ -18590,154 +18590,154 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 
 
-### Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!
-
-### (The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back.
-
-### But what about the treasure!?
-
-### (The SPEAKER ponders your question)|I think we'll have to talk about compensation|AFTER we get out of here.
-
-### So how much is this going to cost me?
-
-### (You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?
-
-### Not to worry! I'll get you out of here!
-
-### Hehe, alright! If that's what you want~
-
-### (Shake your head and refuse rescue)
-
-### Actually I was having fun...
-
-### (The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~
-
-### Can you help with these restraints?
-
-### Pfffmmm hhmmph mmph... (Please Help Me)
-
-### No can do! Even I can't get those off of you.
-
-### Caught by...?
-
-### Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?
-
-### F-fee? There's a fee?
-
-### Yep! It'll cost ya!|Quite worth it if you ask me.|Unless you'd like to spend the rest of your life in chains!
-
-### Will you buy my loot?
-
-### (Show her your loot)
-
-### Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~
-
-### Got something you want to show me?
-
-### (Sell Items)
-
-### (Sell Whole Stacks of Items)
-
-### Daww! What a cutie!|(She smiles and pats your head gently)
-
-### Do you have anything for sale?
-
-### (Look around for items to buy)
-
-### I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you.
-
-### (Return)
-
-
-
-### (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
-
-### Right! Here's RESCUECOST gp.
-
-### Mmmph. (Nod your head and pay RESCUECOST gp)
-
-### (The SPEAKER smiles)|Pleasure doing business with ya~
-
-### Mind adding it to my tab?
-
-### (Shake your head regrettably.)
-
-### (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
-
-### (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
-
-### (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
-
-### Pretty please? I promise I'll pay you back.
-
-### (Be insistent)
-
-### (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
-
-### (The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
-
-### (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
-
-### (Help her test cursed armors)
-
-### (Add cursed restraints as collateral)
-
-### (Wear a collar to help advertise her business)
-
-### (Wear a catsuit to help advertise her business)
-
-### (Actually... just pay her the RESCUECOST gold)
-
-### (The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time.
-
-### (The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first.
-
-### (The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it.
-
-### (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
-
-### (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
-
-### Sure! I accept!
-
-### (Nod in approval)
-
-### How about something else?
-
-### Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
-
-### Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
-
-### Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
-
-### Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
-
-### You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
-
-### No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
-
-### Up to you!|You'll still have to pay me eventually~
-
-### Your choice~|I am open to further negotiations.
-
-### Your choice~|Not everyone is up to putting themselves on display like that~
-
-
-
-### (The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
-
-
-
-### (The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
-
-### (The SPEAKER folds her arms)|Business is business, miss~
-
-### (The SPEAKER rubs her chin)|No can do.|Rules are rules~
-
-### (The SPEAKER sighs)|Business is business, miss~
-
-### (The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?
-
+- Oh, those people that locked you up?|I dealt with them.|Now come along, there's no time to waste!
+Oh, also die Leute die dich gefesselt haben?|Ich habe mich um die gekümmert|Komm mit mir mit, wir müssen jetzt keine Zeit verlieren!
+- (The SPEAKER giggles)|Treasure? The treasure isn't going anywhere.|Plus, I made a few enemies on the way.|We better not wait till they come back.
+(Die SPEAKER kichert)|Schatz? Der Schatz wird nicht verschwinden.|Außerdem hab ich mich am Weg ein wenig angefeindet.|Wir sollte nicht warte bis die zurück kommen. 
+- But what about the treasure!?
+Aber was ist mit dem Schatz!?
+- (The SPEAKER ponders your question)|I think we'll have to talk about compensation|AFTER we get out of here.
+(Die SPEAKER denkt ein bisschen)|Ich glaube wir sollten über Gelt, NACHDEM wir hier|raugekommen sind, sprechen
+- So how much is this going to cost me?
+Also wir viel wird mich das kosten?
+- (You hear footsteps. It's the SPEAKER!)|Why look at you!|Well you seem to be in a bind, don't you?
+(Du hörst Schritte, es ist die SPEAKER!)|Schau dich an!|Du scheinst in einem kleinen Problem zu stecken, gell?
+- Not to worry! I'll get you out of here!
+Mach dir keine sorgen! Ich werde dich da raushohlen!
+- Hehe, alright! If that's what you want~
+Hmm. OK. Wenn das ist, das du willst~
+- (Shake your head and refuse rescue)
+(Shüttel deinen Kopf und verweigere die Hilfe)
+- Actually I was having fun...
+Ich hab grad ein bisschen Spaß...
+- (The SPEAKER, your longtime friend, smiles)|Well well, if it isn't you again!|I see that you've decided to challenge the dungeon again.|Don't forget to bring some gold back with you,|there's a fee for rescue~
+(Die SPEAKER, ein alter Freund, lächelt)|Hmm~ Du schon wieder!|Ich sehe, dass du dich wieder dem Dungeon stellen willst.|Vergiss nicht, ein wenig Gold mitzubringen,|die Befreiungskosten müssen nunmal gezahlt werden~
+- Can you help with these restraints?
+Kannst du mir mit diese Fesseln helfen?
+- Pfffmmm hhmmph mmph... (Please Help Me)
+Pfffmmm hhmmph mmph... (Bitte helfe mir)
+- No can do! Even I can't get those off of you.
+Hmm. Es tut mir leid, aber selbst ich kann dich nicht befreien.
+- Caught by...?
+Gefangen von...?
+- Hah!|You've been here a million times!|You obviously know how dangerous it is, yes?
+Haha!|Du warst schon eine Million male hier!|Du musst schon wissen wir gefährlich das hier ist, ja?
+- F-fee? There's a fee?
+Befreiungkosten? Dafür muss ich zahlen?
+- Yep! It'll cost ya!|Quite worth it if you ask me.|Unless you'd like to spend the rest of your life in chains!
+Yep! Das wird kosten!|Besser als die Alternative, wenn du mich fragst|Es sei den, du willst den Rest deines Lebens in Ketten verbringen!
+- Will you buy my loot?
+Kannst du mir meine Beute abkaufen?
+- (Show her your loot)
+Zeig ihr deine Beute
+- Absolutely! I offer the standard market rate for anything.|I'll take enchanted items too!|I've got plenty of volunteers to check for curses~
+Natürlich! Ich bezahl den standard Marktpreis für alles.|Ich nahm auch verzauberte Sachen!|Ich habe genug Tester, die das auf Fluche überprüfen wollen~
+- Got something you want to show me?
+Hast du etwas, dass du mir Zeigen willst?
+- (Sell Items)
+(Verkaufe Items)
+- (Sell Whole Stacks of Items)
+(Verkauf den ganzen Stappel an Items)
+- Daww! What a cutie!|(She smiles and pats your head gently)
+Och! So eine Süße!|(Sie lächelt und streichelt dich sanft am Kompf)
+- Do you have anything for sale?
+Verkaufst du etwas?
+- (Look around for items to buy)
+(Schau dich um kaufbare Items um)
+- I'm sorry sweetie, I don't sell merchandise here.|Who would set up a shop inside a dungeon? That's crazy!|But you adventurers bring in a steady supply of loot,|so if you've got something to sell me, I'll take it off your hands~|You can also talk to my guests, perhaps they have something for you.
+Sorry, freund, aber ich verkaufe kein merchandise hier.|Wer würde schon einen Shop in einem Dungeon öffnen?|Ihr Abenteurer bringt aber eine Menge an Beute,| also wenn du etwas has, kaufe ich es gene ab~|Du kannst auh mit unseren Besuchern reden, vielleicht haben dir etwas für dich.
+- (Return)
+Zurück
+
+
+- (The SPEAKER brings you safely back to her shop)|There! Nice and safe.|Now, as for my fee...|That'll be RESCUECOST gold pieces!
+(Die SPEAKER brint dich sicher zu ihrem Shop zurück)|So, jetzt bist du sicher.|Lass mich kurz wegen den Kosten schauen...|Das wären RESCUECOST Goldstücke!
+- Right! Here's RESCUECOST gp.
+OK!, Hier sind RESCUECOST gp.
+- Mmmph. (Nod your head and pay RESCUECOST gp)
+Mmmph. (Nick mit dem Kopf und zahle RESCUECOST gp)
+- (The SPEAKER smiles)|Pleasure doing business with ya~
+(Die SPEAKER lächelt)|Macht immer Spaß, mit dir Geschäfte zu machen~
+- Mind adding it to my tab?
+Könnte ich das später Zahlen?
+- (Shake your head regrettably.)
+(Shüttel entteuscht deinen Kopf.)
+- (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|But I won't be letting you out of those restraints~
+(Die SPREAKER reibst sich ihr Kin)|Nun... Hmmm. Ehh.|Schon gut, ich werde ein Auge zudrücken|Aber ich werde nicht nicht entfesseln~
+- (The SPEAKER rubs her chin)|Ah... hmm, well...|I guess I'll let you off this time.|You're a good customer, after all.
+(Die SPREAKER reibst sich ihr Kin)|Nun... Hmmm. Ehh.|Schon gut, ich werde ein Auge zudrücken|Du bist ein gute Kunde~
+- (The SPEAKER folds her arms)|Come on now, I can hear the gold jingling in your pocket!
+(Die SPEAKER verschänkt ihre Arme)|Du weißt, dass ich das Gold in deine Tasche hören kann!
+- Pretty please? I promise I'll pay you back.
+Ich flehe dich an, ich werde es dir später auf zurück zahlen.
+- (Be insistent)
+(Bleib hartnäckig)
+- (The SPEAKER rubs her chin)|Fine, I believe you.|But I won't be letting you out of those restraints!
+(Die SPEAAKER reibt sich ihr Kin)|Nagut, ich glaub dir.|Aber ich werde dich nicht aus den Fesseln befreien!
+- (The SPEAKER sighs)|Fine, I believe you.|You better believe I won't forget, though!
+(Die SPEAKER seufst)|Nagut, ich glaub dir.|Ich schwöre aber, dass ich es nicht vergessen werde!
+- (The SPEAKER folds her arms)|Your adventures have cost me a pretty penny.|I can't stay in business if my clients keep running off without paying.|Look, I'll cut you a deal, you help me, I help you. Fair?
+(Die SPEAKER verschränkt ihre Arme)|Deine Abenteuer haben mir einiges gekosten.|Ich werde pleite gehen, wenn ich Kunden einfach ohne zu Zahlen gehen lass.|Wie wäre es mit... Du hilfst mir, und ich helfe dir. Fair?
+- (Help her test cursed armors)
+(Teste ihre verfluchte Ausrüstung)
+- (Add cursed restraints as collateral)
+(Füge verfluchten Fesseln als Sicherheit hinzu)
+- (Wear a collar to help advertise her business)
+(Trag einen Halsfessel um ihr Geschäft zu bewerben)
+- (Wear a catsuit to help advertise her business)
+(Trag einen Catsuit um ihr Geschäft zu bewerben)
+- (Actually... just pay her the RESCUECOST gold)
+(Ehhh. Zahl ihr einfach das Geld)
+- (The SPEAKER holds up a RESTRAINTNAME)|I've bought some armors from an adventurer lately,|but I don't know if they're safe to wear.|Why don't you try it on for me?|I'll postpone your debt for a later time.
+(Die SPEAKER helt ein/eine/einen RESTRAINTNAME)|Ich habe ein bischen Rüstung von einen Abenteurer gekauft,|aber ich weiß nicht, ob die Verflucht ist.|Kannst du das kurz für mich anziegen?|Ich werde deine Schulden fürs erste vergessen.
+- (The SPEAKER holds up a RESTRAINTNAME)|I need to make sure you won't go running off again.|This RESTRAINTNAME here has a special seal on it.|I can get you out of it, of course, but you'll have to pay up first.
+(Die SPEAKER helt ein/eine/einen RESTRAINTNAME)|Ich muss sicherstellen, dass du nicht wegrennst|Dieser/Diese/Dieses RESTRAINTNAME hier hat ein spezielles Schloss|Ich kann dich natürlich befrein, aber du musst erst deine Schulden begleichen.
+- (The SPEAKER holds up a RESTRAINTNAME)|Your captors are quite the market for high-security restraints.|If you get captured by them, maybe they'll see my logo on this collar!|It's quite comfy and secure,|you'll end up feeling more submissive the more your wear it.
+(Die SPEAKER helt ein/eine/einen RESTRAINTNAME)|Deine Fänger suchen immer Hochsicherheitsfesseln.|Wenn du gefangen wirst, vielleicht sehen sie ja mein Logo auf dem Halsfessel!|Es ist wirklich bequem und|du wirst dich mehr hingebender fühlen, je länger du die tragst.
+- (The SPEAKER holds up a RESTRAINTNAME)|Your body looks like a great billboard!|This suit will make you so attractive that nobody will be able to resist!|And in the process of, ahem, examining you,|They'll be sure to see my logo!
+(Die SPEAKER helt ein/eine/einen RESTRAINTNAME)|Dein Körper schaut schön als Werbefläche|Dieses Zeug wird dich so attraktiv machen, dass niemand wegschauen kann!|Und wenn sie dich bewundern,|werden die sicher mein Logo sehen!
+- (The SPEAKER folds her arms and nods)|Good girl! I knew you would come clean~
+(Die SPEAKER verschränkt ihre Arme und nickt)|Good Girl! Ich wusste, das du es zugeben wirst~
+- Sure! I accept!
+OK, ich akzeptiere das!
+- (Nod in approval)
+(Nicke in Zustimmung)
+- How about something else?
+Wie wäre es mich etwas anderen?
+- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and a seal awakens)|Whoops! Good thing I didn't sell that one!|I'll let you keep it, it's my treat~
+Exellent! Bitte bleib kurz still~|(Sie zieht dir den/der RESTRAINTNAME an und ein Zeichen leuchtet auf)|Upps! Gut das ich das nicht verkauft habe.|Als Belohnung kannst du das behalten~
+- Excellent! Please hold still~|(She fits the RESTRAINTNAME on and nothing happens)|We have a winner!|You can't have it though, not until you pay up~
+Exellent! Bitte bleib kurz still~|(Sie zieht dir den/der RESTRAINTNAME an und nichts passiert)|Hah! Perfekt|Du kannst das aber nicht haben, bis du wirklich zurück zahlst.
+- Wonderful. I look forward to seeing you being delivered, er, coming back,|Lots of treasure in hand!|(She places the RESTRAINTNAME on you and the seal activates. There is no keyhole.)
+Wunderbar. Ich warte bis du mit vielen Schätzen zurück|gebracht wirst, er, zurück kommst!|(Sie schliest den/der RESTRAINTNAME um dich und das Siegel aktiviert sich. Da ist kein Schlüsselloch.)
+- Alright! Why don't you hold still~|(She lifts your hair out of the way and buckles the collar on)|Now go out there and find me some treasure~
+OK, bleib kurz still~|(Sie hebt deine Haare weg, und schliest die Halsfessel ab)|Jetzt geh wieder rein und finde ein paar Schätze~
+- You're gonna like it, I guarantee it~|(She pulls out the catsuit from a drawer, dusts it off, and helps you in it)|(There is no zipper or fastener, just a very stretchy neck hole)|(Once it's on and well-fitted, you feel the neck grow less loose...)|(...and pulling the rubber away from your skin becomes impossible)|Beautiful. I'm going to let you go now.|I'm sure your new look will attract many customers!
+Du wirst das garantiert lieben~|(Sie nimmt den Catsuit aus einem Kasten, staubt in ab, und hilft dir in anzuziehen)|(Es gibt keinen Zipper, einfach nur ein sehr dehnbares Kragen)|(Wenn du endlich drinne bist, fühlst du den Kragen enger werden.)|(Jetzt das Gummi von der Haut wegzuziehen ist unmöglich)|Sehr schön. Ich lass dich jetzt gehen.|Ich bin mir sicher, dass du viele Kunden anwerben wirst!
+- No? That's alright.|I'm sure I'll find someone else to test these on, huehue.
+No? Das ist auch gut.|Ich bin mir sicher, dass ich schon was für dich finden werde.
+- Up to you!|You'll still have to pay me eventually~
+Wie es für dich recht ist.|Irgendwan musst du mir das Geld eh zurück zahlen.
+- Your choice~|I am open to further negotiations.
+Deine Entscheidung~|Ich lass gern über andere möglichkeiten mit mir reden.
+- Your choice~|Not everyone is up to putting themselves on display like that~
+Deine Entscheidung~|Nicht reder will so rausstechen~
+
+
+- (The SPEAKER pats you down and makes sure you're okay)|I can definitely help with those!|But as you know, I help a lot of adventurers just like you.|You know what, I'll give you a discount!|That'll be RESCUECOST gold pieces!
+(Der SPEAKER streichelt dich, und schaut das es dir gut geht.)|Ich kann definitiv helfen!|Aber wie du weißt, habe ich viele Abenteurer wie dich.|Weißt du was, ich gebe dir einen Rabatt!|Das wären dann RESCUECOST gold pieces!
+
+
+- (The SPEAKER rubs her chin)|Sorry miss!|Cost of doing business, you know?|Why don't you come back with some of that delicious, shiny gold~
+(Die SPEAKER reibt sich ihr Kin)|Sorry aber!|Das ist der Preis, weißt du?|Warum kommst du nicht zurück, wenn du ein bisschen, glänzendes Gold hast~
+- (The SPEAKER folds her arms)|Business is business, miss~
+(Die SPEAKER verschränkt ihre Arme)|Geschäft ist Geschäft.
+- (The SPEAKER rubs her chin)|No can do.|Rules are rules~
+(The SPEAKER reibt sich ihr Kin)|Das kann ich nicht|Regeln sind Regeln~
+- (The SPEAKER sighs)|Business is business, miss~
+(Die SPEAKER seufst)|Geschäft ist Geschäft.
+- (The SPEAKER reluctantly frees you)|...Fine, I'll cut you a deal.|You help me, I help you. Fair?
+(Die SPEAKER befreit dich unwillentlich)|...OK, Wie wäre es mit einem Deal.|Du hilfst mir, ich helfe dir. Fair?
 
 
 
@@ -18962,10 +18962,10 @@ I-Ich weiß, dass du eine Erleichterung willst. Aber es gibt einen Grund, warum 
 
 ### Apologize profusely!
 
-### (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
-
-### (Unlock her and file a bug report to Ada)
-
+- (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
+(Die SPEAKER sitzt gefesselt in mysteriösischen ASCII Zeichen)|(Sie ist verbuggt und braucht deine Hilfe)
+- (Unlock her and file a bug report to Ada)
+(Befreie sie und schreib einen Fehlerbericht an Ada)
 
 
 ### (This SPEAKER is a sub, but not YOUR sub!)
@@ -19518,128 +19518,128 @@ Es besteht aus feinen Metallen der alten Zivilisation, resistent gegen fast jede
 
 ### The straps on your gag keep your blindfold securely in place!
 
-### Revert
-
-### Confirm Revert?
-
-### Save
-
-### Save Changes?
-
-### Back to Menu
-
-### Back to Wardrobe
-
-### Confirm Strip?
-
-### Strip!
-
-### Export Outfit
-
-### Export AlwaysDress
-
-### Export Hair
-
-### Export Face
-
-### Export Cosplay
-
+- Revert
+Rückgänging machen.
+- Confirm Revert?
+Bestätigen?
+- Save
+Speichern
+- Save Changes?
+Speichere Änderungen?
+- Back to Menu
+Zurück zum Hauptmenü
+- Back to Wardrobe
+Zurück zum Kleiderschrank
+- Confirm Strip?
+Bestätige Ausziehen?
+- Strip!
+Ausziehen!
+- Export Outfit
+Exportiere Outfit
+- Export AlwaysDress
+Export AlwaysDress
+- Export Hair
+Exportiere Haare
+- Export Face
+Exportiere Gesicht
+- Export Cosplay
+Exportiere Cosplay
 ### Gamma
 
-### Original Color
-
-### Contrast
-
-### Brightness
-
-### Red
-
-### Green
-
-### Blue
-
-### Transparency
-
-### Reset Layer!
-
-### Reset Properties!
-
-### Export All Layers
-
-### Export All Props
-
-### Copy
-
-### Paste
-
-### Items on Ground:
-
-### Preloading Character Assets:
-
-### Currently Worn
-
+- Original Color
+Original Farbe
+- Contrast
+Kontrast
+- Brightness
+Helligkeit
+- Red
+Rot
+- Green
+Grün
+- Blue
+Blau
+- Transparency
+Transparenz
+- Reset Layer!
+Setze Ebene zurück!
+- Reset Properties!
+Setze Propertionen zurück!
+- Export All Layers
+Exportiere alle Ebenen
+- Export All Props
+Exportiere alle Props.
+- Copy
+Kopieren
+- Paste
+Einfügen
+- Items on Ground:
+Items am Boden:
+- Preloading Character Assets:
+Vorladen der Charakter-Assets:
+- Currently Worn
+Momentan getragen
 ### Uniforms
 
-### Suits
-
-### Underwear
-
-### Bras
-
-### Bodysuits
-
-### Socks
-
-### Shoes
-
-### Tops
-
-### Sleeves
-
-### Corsets
-
-### Skirts
-
-### Pants
-
-### Accessories
-
-### Fashion Restraints
-
-### Hats
-
-### Toys and Piercings
-
-### Hairstyles
-
-### Eyes
-
-### Body
-
-### Gloves
-
+- Suits
+Gewand
+- Underwear
+Unterwäsche
+- Bras
+BHs
+- Bodysuits
+Ganzkörperanzüge
+- Socks
+Socken
+- Shoes
+Schuhe
+- Tops
+Oberteil
+- Sleeves
+Ärmel
+- Corsets
+Korsetten
+- Skirts
+Kleider
+- Pants
+Hosen
+- Accessories
+Schmuck
+- Fashion Restraints
+Schmuck Fesseln
+- Hats
+Hüte
+- Toys and Piercings
+Spielzeug & Piercings
+- Hairstyles
+Frissur
+- Eyes
+Augen
+- Body
+Körper
+- Gloves
+Handschuhe
 ### 'Cosplay'
 
-### Cat Eyes
-
-### Right Eye
-
-### Left Eye
-
-### Cat Brows
-
-### Right Brow
-
-### Left Brow
-
-### Simple Mouth
-
-### Simple Blush
-
-### Blush
-
-### Braid
-
+- Cat Eyes
+Katzenaugen
+- Right Eye
+Rechtest Auge
+- Left Eye
+Linkes Auge
+- Cat Brows
+Katze Augenbraun
+- Right Brow
+Rechte Braue
+- Left Brow
+Linke Braue
+- Simple Mouth
+Einfacher Mund
+- Simple Blush
+Einfache Rötung
+- Blush
+Rötung
+- Braid
+Zoff
 ### Braid Front
 
 ### Braid Back
@@ -28748,18 +28748,18 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### Curse of Deflection: 50% chance for an attack to be redirected against an adjacent hostile target.
 
-### Loot Recovery:
-
-### Enabled
-
-### You recover important items when you advance floors.
-
-### Once items are lost, they are gone for good.
-
-### Each item has a 25% chance of appearing in the chest between floors.
-
-### You find a familiar adventuring outfit!
-
+- Loot Recovery:
+Rückerstattung der Beute
+- Enabled
+Aktiv
+- You recover important items when you advance floors.
+Du kriegst wichtige Items wieder, wenn du ein Stockwerk tiefer gehst.
+- Once items are lost, they are gone for good.
+When du items verlierst, sind die für immer Weg
+- Each item has a 25% chance of appearing in the chest between floors.
+Jedes Item hat eine 25% chance wieder in eine Kiste zu sein, when du zum nächsten Stockwerk kommst.
+- You find a familiar adventuring outfit!
+Du findest ein bekanntes Outfit zum abenteuern.
 
 
 ### You feel energy flow out of you, activating the floor below!
@@ -28890,60 +28890,60 @@ Ein scwebendes Keuschheitsitem erscheint und startet zu dir zu fliegen!
 
 ### Other paths will become inaccessible.
 
-### Floor NMB
-
-### Tileset:
-
-### Map Modifier:
-
+- Floor NMB
+Stockwork NMB
+- Tileset:
+Umgebung:
+- Map Modifier:
+Map Variationen:
 ### Layout:
 
-### Controlling Faction:
-
-### Main Objective:
-
-### Points of Interest:
-
-### Magical Study
-
-### Maintenance Hall
-
-### Ancient Chest
-
-### Caldera Passage
-
-### Auction Hall
-
-### Dark Altar
-
-### Dimensional Rift
-
+- Controlling Faction:
+Kontrollierente Gruppe
+- Main Objective:
+Hauptziel
+- Points of Interest:
+Interesante Punkte:
+- Magical Study
+Magische Stube
+- Maintenance Hall
+Werkstätte
+- Ancient Chest
+Antike Truhe
+- Caldera Passage
+Caldera Weg
+- Auction Hall
+Versteigerungshalle
+- Dark Altar
+Dunkler Altar
+- Dimensional Rift
+Dimensionsriss
 ### Hoard
 
-### Dragon's Lair
-
-### Witch's Lair
-
-### Mold Infestation
-
-### Bandit Raid
-
-### Dragon Sighting
-
-### Slime Infestation
-
-### Wolfgirl Training
-
-### Drone Patrol
-
-### Shop
-
-### Chamber
-
-### Prison
-
-### Sorting Room
-
+- Dragon's Lair
+Drachenhöhle
+- Witch's Lair
+Hexenhöhle
+- Mold Infestation
+Schimmelverscheuchung
+- Bandit Raid
+Banditeneinbruch
+- Dragon Sighting
+Drachensichtung
+- Slime Infestation
+Schleimverscheuchung
+- Wolfgirl Training
+Wolfmädchen Training
+- Drone Patrol
+Drohnenwache
+- Shop
+Shop
+- Chamber
+Kammerl
+- Prison
+Gefängniss
+- Sorting Room
+Sortier Raum
 ### Click a hotbar slot to assign the current item to it.|You can click the swap button on the right|to switch between your five hotbars.||You can also save and load presets for your hotbar.|These are shared between runs.
 
 ### You step on the item and tug to pull it taut...
