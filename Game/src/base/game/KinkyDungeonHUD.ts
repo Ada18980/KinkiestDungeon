@@ -2472,7 +2472,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 	}
 }
 
-interface statInfo {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, buffData?: any, click?: string, buffid?: string};
+interface statInfo {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, buffData?: any, click?: string, buffid?: string, flashing?: boolean};
 
 function KDGetStatsWeaponCast() {
 	let statsDraw: Record<string, statInfo> = {};
@@ -2722,11 +2722,11 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	}
 	let help = KinkyDungeonHasAllyHelp() || KinkyDungeonHasGhostHelp();
 	if (help) {
-		statsDraw.hashelp = {text: TextGet("KinkyDungeonPlayerHelp"), icon: "Help", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5};
+		statsDraw.hashelp = {text: TextGet("KinkyDungeonPlayerHelp"), icon: "Help", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5, flashing: true};
 		//DrawTextFitKD(TextGet("KinkyDungeonPlayerHelp"), X1, 900 - i * 35, 200, KDBaseWhite, "#333333"); i++;
 	} else {
 		if (KinkyDungeonGetAffinity(false, "Hook")) {
-			statsDraw.helphook = {text: TextGet("KinkyDungeonPlayerHook"), icon: "HelpHook", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5};
+			statsDraw.helphook = {text: TextGet("KinkyDungeonPlayerHook"), icon: "HelpHook", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5, flashing: true};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerHook"), X1, 900 - i * 35, 200, KDBaseWhite, "#333333"); i++;
 		}
 		if (KinkyDungeonGetAffinity(false, "Sharp") && !KinkyDungeonWeaponCanCut(false)) {
@@ -2734,15 +2734,15 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerSharp"), X1, 900 - i * 35, 200, KDBaseWhite, "#333333"); i++;
 		}
 		if (KinkyDungeonGetAffinity(false, "Edge")) {
-			statsDraw.helpedge = {text: TextGet("KinkyDungeonPlayerEdge"), icon: "HelpCorner", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5};
+			statsDraw.helpedge = {text: TextGet("KinkyDungeonPlayerEdge"), icon: "HelpCorner", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5, flashing: true};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerEdge"), X1, 900 - i * 35, 200, KDBaseWhite, "#333333"); i++;
 		}
 		if (KinkyDungeonGetAffinity(false, "Sticky")) {
-			statsDraw.helpsticky = {text: TextGet("KinkyDungeonPlayerSticky"), icon: "HelpSticky", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5};
+			statsDraw.helpsticky = {text: TextGet("KinkyDungeonPlayerSticky"), icon: "HelpSticky", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5, flashing: true};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerSticky"), X1, 900 - i * 35, 200, KDBaseWhite, "#333333"); i++;
 		}
 		if (KinkyDungeonWallCrackAndKnife(false)) {
-			statsDraw.helpcrack = {text: TextGet("KinkyDungeonPlayerCrack"), icon: "HelpCrack", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5};
+			statsDraw.helpcrack = {text: TextGet("KinkyDungeonPlayerCrack"), icon: "HelpCrack", category: "help", color: KDBaseWhite, bgcolor: "#333333", priority: 5, flashing: true};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerSticky"), X1, 900 - i * 35, 200, KDBaseWhite, "#333333"); i++;
 		}
 	}
@@ -2949,6 +2949,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				//countcolor: b.aura ? b.aura : b.labelcolor,
 				category: "buffs", color: b.aura ? b.aura : b.labelcolor, bgcolor: "#333333", priority: pri,
 				buffid: b.id,
+				flashing: b.flashing,
 				click: b.click,
 			};
 			//DrawTextFitKD(TextGet("KinkyDungeonBuff" + b.id) + (count ? ` ${count}/${b.maxCount}` : "") + ((b.duration > 1 && b.duration < 1000) ? ` (${b.duration})` : ""), 790, 900 - i * 35, 275, b.aura ? b.aura : b.labelcolor, "#333333"); i++;
@@ -3081,6 +3082,7 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 		KDDraw(kdstatusboard, kdpixisprites, "stat" + II, KinkyDungeonRootDirectory + "Buffs/" + (stat.icon || "buff/buff") + ".png",
 			XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize, undefined, {
 				zIndex: 151,
+				alpha: (stat.flashing && (KDAnimSpeed)) ? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) : ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0
 			});
 
 		if (side) {
