@@ -1776,6 +1776,7 @@ interface KDBuff {
 	sfxApply?: string,
 	onlyAlly?: boolean,
 	noAlly?: boolean,
+	flashing?: boolean
 }
 
 interface entity {

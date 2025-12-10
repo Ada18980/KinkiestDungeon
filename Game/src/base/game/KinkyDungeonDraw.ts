@@ -4314,6 +4314,9 @@ function KDDraw (
 					sprite.anchor.y = options.anchory;
 				}
 			}
+			if (options.alpha != undefined) {
+				sprite.alpha = options.alpha;
+			}
 		}
 		if (SpritesDrawn)
 			SpritesDrawn.set(id, true);
