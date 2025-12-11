@@ -5592,23 +5592,23 @@ M.F. '女仆长'
 - Earth Witch
 大地女巫
 - The earth witch vanishes, leaving behind a pile of sand.
-火焰女巫消失在一堆灰烬中。
+大地女巫消失了，留下一堆沙子。
 
 - Water Witch
 水之女巫
 - The water witch vanishes, leaving behind a puddle.
-水之女巫消失在一堆灰烬中。
+水之女巫消失了，留下一滩水。
 
 
 - Aqua Witch
 水之女巫
 - The aqua witch vanishes, leaving behind a puddle.
-水之女巫化为一堆灰烬消失了。
+水之女巫消失了，留下一滩水。
 
 - Ice Witch
 冰之女巫
 - The ice witch vanishes, leaving behind a puddle
-冰之女巫消失在一堆灰烬中。
+冰之女巫消失了，留下一滩水。
 
 
 
@@ -25013,7 +25013,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dDollmakerFight_Fight2Gag
 # :: dTheWardenFight_Fight2Gag
 - I suppose we fight...
-大概吧...
+我想我们得打一架...
 
 - (SPEAKER smiles as she stands over you)|Well well. Look who won.
 ( SPEAKER站在你面前微笑 )|好吧好吧。看看谁赢了。
@@ -25052,7 +25052,7 @@ Mmmpphh~ ( 呻吟和诱惑地扭动 )
 # :: dFuukaLose_Continue3
 # :: dTheWardenLose_Continue3
 - (SPEAKER presents you with your collar...)|(She locks it around your neck)|Now you're my pretty toy!
-( SPEAKER 给你展示了你的项圈... )|( 她将其锁在你的脖子上 )|你现在可以走了，亲爱的！
+( SPEAKER 给你展示了你的项圈... )|( 她将其锁在你的脖子上 )|现在你是我的小宠物了！
 
 - (SPEAKER puts up a wall of talismans to regain her strength)|I'm... I'm not finished yet!
 ( SPEAKER竖起一堵符墙恢复体力 )|我……我还没完呢！
