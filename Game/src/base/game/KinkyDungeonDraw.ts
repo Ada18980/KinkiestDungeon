@@ -3616,6 +3616,7 @@ type ButtonOptions = {
 	font?:        string;
 	fontSize?:    number;
 	maxWidth?:    number;
+	spritealpha?: number,
 }
 
 /**
@@ -3752,6 +3753,7 @@ function DrawButtonVisTo (
 				filters: options?.filters,
 			};
 			if (options?.tint) o['tint'] = options.tint;
+			if (options?.spritealpha) o['alpha'] = options.spritealpha;
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
 				Image, Left, Top,
 				Math.min(Height, Width), Math.min(Height, Width), undefined, o);
@@ -3765,6 +3767,7 @@ function DrawButtonVisTo (
 				filters: options?.filters,
 			};
 			if (options?.tint) o['tint'] = options.tint;
+			if (options?.spritealpha) o['alpha'] = options.spritealpha;
 			let centered = options?.centered
 				|| (img.orig.width > Width
 				&& img.orig.height > Height)
@@ -4314,9 +4317,7 @@ function KDDraw (
 					sprite.anchor.y = options.anchory;
 				}
 			}
-			if (options.alpha != undefined) {
-				sprite.alpha = options.alpha;
-			}
+			// not needed
 		}
 		if (SpritesDrawn)
 			SpritesDrawn.set(id, true);

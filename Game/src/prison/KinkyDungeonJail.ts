@@ -720,7 +720,7 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 
 			} else if (!KinkyDungeonJailGuard().IntentAction || KinkyDungeonJailGuard().IntentAction.startsWith('jail')) {
 				if (!KinkyDungeonFlags.has("notickguardtimer")
-					&& !KinkyDungeonFlags.has("nojailbreak")) {
+					&& !KDIsJailbreakProtected(KDPlayer())) {
 					if (KinkyDungeonJailGuard()?.temporary) {
 
 						// Return so that they can despawn

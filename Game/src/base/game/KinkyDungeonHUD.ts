@@ -1545,16 +1545,18 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	}
 
 	// Make Noise button
-	if (DrawButtonKDEx("HelpButton", (_bdata) => {
-		if (!KinkyDungeonControlsEnabled()) return false;
-		KDSendInput("noise", {});
-		return true;
-	}, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight, "", "#aaaaaa",
-	KinkyDungeonRootDirectory + ("UI/Help.png"), undefined, undefined, true, KDTextGray05, undefined, false, {
-		alpha: 1.0,
-		hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[7]),
-		hotkeyPress: KinkyDungeonKeyToggle[7],
-	})) str = "KDHelp";
+    if (DrawButtonKDEx("HelpButton", (_bdata) => {
+        if (!KinkyDungeonControlsEnabled()) return false;
+        KDSendInput("noise", {});
+        return true;
+    }, true, actionBarXX + actionBarSpacing*actionBarII++, actionBarYY, actionBarWidth, actionbarHeight, "", "#aaaaaa",
+    KinkyDungeonRootDirectory + ("UI/Help.png"), undefined, undefined, true, KDTextGray05, undefined, false, {
+        spritealpha: Math.max(0.1, Math.min(1, ((KDCanCallGuardHelp(KDPlayer())) && (KDAnimSpeed))
+			? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000))
+			: ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0)),
+        hotkey: KDHotkeyToText(KinkyDungeonKeyToggle[7]),
+        hotkeyPress: KinkyDungeonKeyToggle[7],
+    })) str = "KDHelp";
 
 
 
@@ -3701,3 +3703,19 @@ function KDGetTrainingXPMax(training: string, player: entity) {
 	return (KDGameData.Training ? (KDGameData.Training[training]?.training_stage || 0) + 1 : 1);
 }
 
+
+
+function KDCanCallGuardHelp(player: entity) {
+	if (player?.player) {
+		let itemStack = KDAllRestraintDynamicList()?.filter((restraint) => {return restraint.events?.some(
+			(e) => {
+				return e.type?.startsWith("callGuard");
+			}
+		);});
+		if (itemStack.length > 0) {
+			return !KinkyDungeonFlags.get("SuppressGuardCall") && !KinkyDungeonFlags.get("GuardCalled")
+		}
+
+	}
+	return false;
+}

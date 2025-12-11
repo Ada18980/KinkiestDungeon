@@ -622,7 +622,7 @@ let KDTagValidationForItem: Record<string, (tag: string, item: item | NPCRestrai
         return KDRestraint(item)?.blockfeet || KDTagValidationForItem.KDDefaultTagValidation(tag, item);
     },
     LegBind: (tag, item) => {
-        return KDRestraint(item)?.blockfeet || KDTagValidationForItem.KDDefaultTagValidation(tag, item);
+        return !KDRestraint(item)?.addTag?.includes("HasSaddleAlternate") && KDTagValidationForItem.KDDefaultTagValidation(tag, item);
     },
 }
 
@@ -632,6 +632,6 @@ let KDTagValidationForRestraint: Record<string, (tag: string, restraint: restrai
         return restraint.blockfeet || KDTagValidationForRestraint.KDDefaultTagValidation(tag, restraint);
     },
     LegBind: (tag, restraint) => {
-        return restraint.blockfeet || KDTagValidationForRestraint.KDDefaultTagValidation(tag, restraint);
+        return !restraint.addTag?.includes("HasSaddleAlternate") && KDTagValidationForRestraint.KDDefaultTagValidation(tag, restraint);
     },
 }

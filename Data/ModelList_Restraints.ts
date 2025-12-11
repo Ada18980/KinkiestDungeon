@@ -29,6 +29,25 @@ AddModel({
 		},
 	])
 });
+AddModel({
+	Name: "SteelSpreader",
+	Folder: "Spreader",
+	Parent: "Spreader",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Metal", "Spreaders"],
+	AddPose: ["Spreader", "WideSpread"],
+	Layers: ToLayerMap([
+		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 10,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+		{ Name: "ShortRight", Layer: "AnkleRightOver", Pri: 10,
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
 
 AddModel({
 	Name: "HeavyYoke",

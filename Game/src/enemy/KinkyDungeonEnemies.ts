@@ -5007,7 +5007,7 @@ function KDRunRegularJailDefeatAttempt(CDE: entity, allowMain: boolean = true, r
 		guard.gy = guard.y;
 
 
-		let action = "CaptureJail";
+		let action = guard.Enemy?.captureAction || "CaptureJail";
 		if (guard.IntentAction != action) {
 			KDIntentEvents[action].trigger(guard, {});
 		}
@@ -5419,14 +5419,22 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 	if ((enemy.Enemy.projectileAttack || enemy.Enemy.projectileTargeting) && (!AIData.canShootPlayer || !KinkyDungeonCheckProjectileClearance(enemy.x, enemy.y, player.x, player.y, !player.player))) AIData.followRange = 1.5;
 
 	if (!AIData.aggressive && !enemy.Enemy.alwaysHostile && !(enemy.rage > 0) && AIData.canSeePlayer && player.player && !KDAllied(enemy)
-		&& ((!KinkyDungeonFlags.has("nojailbreak") && !KinkyDungeonPlayerInCell(true, true)) || KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle")) {
+		&& ((!KDIsJailbreakProtected(KDPlayer()) && !KinkyDungeonPlayerInCell(true, true)) || KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle")) {
 		if (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing) {
 			if (
-				(!KinkyDungeonFlags.has("nojailbreak") && !KinkyDungeonPlayerInCell(true, true))
+				(!KDIsJailbreakProtected(KDPlayer()) && !KinkyDungeonPlayerInCell(true, true))
 				&& (KDGameData.PrisonerState == 'jail' || (KDGameData.PrisonerState == 'parole' && KDPlayerIsRestricted(player, enemy))) // Restricted areas
 				&& !KDIsPlayerTethered(KinkyDungeonPlayerEntity)
 				&& KinkyDungeonSlowLevel < 9)
-				KinkyDungeonAggroAction('jailbreak', {enemy: enemy, force: true});
+				if (KinkyDungeonFlags.get("remove_incidental")) {
+					if (!enemy.IntentAction && AIData.leashing) {
+						let action = enemy.Enemy?.captureAction || "CaptureJail";
+						if (enemy.IntentAction != action) {
+							KDIntentEvents[action].trigger(enemy, {});
+						}
+					}
+				} else 
+					KinkyDungeonAggroAction('jailbreak', {enemy: enemy, force: true});
 			else if (KDGameData.PrisonerState == 'parole' && !KinkyDungeonIsArmsBound() && !KDEnemyHasFlag(enemy, "Shop"))
 				KinkyDungeonAggroAction('unrestrained', {enemy: enemy});
 			else if ((KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail') && (KinkyDungeonLastTurnAction == "Struggle" || KinkyDungeonLastAction == "Struggle"))
@@ -7634,13 +7642,13 @@ function KinkyDungeonEnemyTryMove (
 			|| (enemy.Enemy.tags.opendoors && KinkyDungeonTilesGet(enemy.x + ',' + enemy.y)?.OGLock))
 			&& !(KDGameData.KinkyDungeonLeashedPlayer > 0 || KinkyDungeonFlags.has("noclosedoors"))
 			&& ((dist > 5) ||
-				(KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && !KDAllied(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock) && !KinkyDungeonFlags.has("nojailbreak")))) {
+				(KinkyDungeonTilesGet(enemy.x + "," + enemy.y) && !KDAllied(enemy) && (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock) && !KDIsJailbreakProtected(KDPlayer())))) {
 			KinkyDungeonMapSet(enemy.x, enemy.y, 'D');
 			if ((KDGameData.PrisonerState == 'jail' || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
 				&& KinkyDungeonTilesGet(enemy.x + "," + enemy.y)
 				&& !KDAllied(enemy)
 				&& (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Jail || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).ReLock || KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock)
-				&& (!KinkyDungeonFlags.has("nojailbreak") || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
+				&& (!KDIsJailbreakProtected(KDPlayer()) || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
 				&& KDShouldLock(enemy.x, enemy.y, KinkyDungeonTilesGet(enemy.x + ',' +enemy.y))) {
 				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Type = "Door";
 				if (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen)
@@ -10985,5 +10993,11 @@ function KDGetCoordFromMapData(mapData: KDMapDataType): WorldCoord {
 		mapX: mapData.mapX,
 		room: mapData.RoomType,
 		mapY: mapData.mapY,
+	}
+}
+
+function KDIsJailbreakProtected(entity: entity) {
+	if (entity?.player) {
+		return !(KinkyDungeonFlags.get("remove_incidental") || KinkyDungeonFlags.get("nojailbreak"));
 	}
 }

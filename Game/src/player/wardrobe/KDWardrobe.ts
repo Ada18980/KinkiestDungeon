@@ -1685,6 +1685,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 					true, xxColor, yyColor, 200, 60, TextGet("KDPaletteLayer_" + col), 
 					KDTextWhite, sprite, undefined, undefined, col != KDSelectedPaletteLayer, 
 					KDButtonColor, undefined, true, {
+						// @ts-ignore
 						filters: KDPIXIPaletteFilters.get(pid + selectedPalette) ? KDPIXIPaletteFilters.get(pid + selectedPalette)[ii++] : undefined,
 					});
 
@@ -3126,6 +3127,7 @@ function KDDrawColorPicker(id: string, currentLayerName: string, targetFilter: L
 				true, X, YY - 15, width, 60, TextGet("KDPaletteLayer_" + key), 
 				KDTextWhite, sprite, undefined, undefined, key != selectedLayer, 
 				KDButtonColor, undefined, true, {
+					// @ts-ignore
 					filters: (ii >= 0 && KDPIXIPaletteFilters.get(pid + palette)) ? KDPIXIPaletteFilters.get(pid + palette)[ii++] : undefined,
 				});
 

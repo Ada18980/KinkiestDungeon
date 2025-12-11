@@ -3776,7 +3776,7 @@ function DrawButtonKDEx (
 	FillColor?:	string,
 	FontSize?:	number,
 	ShiftText?:	boolean,
-	options?:	any,
+	options?:	ButtonOptions,
 ): boolean
 {
 	let params = {

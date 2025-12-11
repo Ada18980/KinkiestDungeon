@@ -819,6 +819,8 @@ interface alwaysDressModel {
 interface KDLoadout {name: string, tags?: string[], singletag: string[], singletag2?: string[], forbidtags: string[], chance: number, items?: string[], restraintMult?: number, multiplier?: number};
 
 interface enemy extends KDHasTags {
+	/** allows custom intentactions for capture */
+	captureAction?: string,
 	/** Makes them special persistent */
 	special?: boolean,
 	overrideFactionDefeat?: boolean,

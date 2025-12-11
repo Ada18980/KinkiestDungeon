@@ -2418,7 +2418,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Straps: {color: "DarkNeutral", override: true},
 		},
 		hobble: 1,
-		addTag: ["LegBind"],
+		addTag: ["LegBind", "HasSaddleAlternate"],
 		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
 		maxwill: 0.1,
 		struggleMult: {Struggle: 0.4},

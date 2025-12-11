@@ -5128,6 +5128,7 @@ function KinkyDungeonAddRestraint (
 				if (blockers.length > 0) {
 					//let rPower = KDRestraintPower(restraint);
 					for (let blocker of blockers) {
+						KinkyDungeonSetFlag("remove_incidental", 5);
 						KinkyDungeonRemoveRestraintSpecific(blocker, Keep, true, false,false, false, securityEnemy,
 							ForceRemove
 						);
@@ -5176,6 +5177,8 @@ function KinkyDungeonAddRestraint (
 			// Some confusing stuff here to prevent recursion. If Link = true this means we are in the middle of linking, we dont want to do that
 			if (!KinkyDungeonCancelFlag) {
 				// Note that this only happens when removing TOP LEVEL item, keep in mind for forceRemove
+				
+				KinkyDungeonSetFlag("remove_incidental", 5);
 				KinkyDungeonRemoveRestraint(restraint.Group, Keep && !Link, Link || Unlink, undefined, undefined, 
 					Unlink, undefined, ForceRemove); // r && r.dynamicLink && restraint.name == r.dynamicLink.name
 
@@ -5196,6 +5199,7 @@ function KinkyDungeonAddRestraint (
 
 			// If we did not link an item (or unlink one) then we proceed as normal
 			if (!KinkyDungeonCancelFlag) {
+				KinkyDungeonSetFlag("remove_incidental", 5);
 				KinkyDungeonRemoveRestraint(restraint.Group, Keep, false, undefined, undefined, r && r.dynamicLink&& restraint.name == r.dynamicLink.name);
 				if (restraint.remove)
 					for (let remove of restraint.remove) {
@@ -5220,6 +5224,7 @@ function KinkyDungeonAddRestraint (
 							}
 
 							if (KDRestraint(removeR).shrine && KDRestraint(removeR).shrine.includes(remove)) {
+								KinkyDungeonSetFlag("remove_incidental", 5);
 								KinkyDungeonRemoveRestraint(KDRestraint(removeR).Group, Keep, false, false, false, false);
 							}
 						}
@@ -5850,6 +5855,7 @@ function KDSuccessRemove(StruggleType: string, restraint: item, lockType: KDLock
 					+ ".ogg");
 			}
 		}
+		KinkyDungeonSetFlag("remove_incidental", 0);
 		if (index) {
 			//if (KDStruggleGroupLinkIndex[KDRestraint(restraint).Group]) KDStruggleGroupLinkIndex[KDRestraint(restraint).Group] = 0;
 			KinkyDungeonRemoveDynamicRestraint(host, !destroy, false, KinkyDungeonPlayerEntity);

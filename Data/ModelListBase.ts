@@ -146,7 +146,7 @@ AddModel({
 			//HideWhenOverridden: true,
 			InheritColor: "Torso",
 			Poses: ToMap(KNEELPOSES),
-			EraseLayerGroups: {SkirtLower: true, BikiniZone: true, WrappingMid: true, UnderBustBondage: true},//PantRight: true, 
+			EraseLayerGroups: {SkirtLower: true, BikiniZone: true, WrappingMid: true, UnderBustBondage: true, HarnessMid: true,},//PantRight: true, 
 			EraseSprite: "EraseCorsetKneel",
 			EraseInvariant: true,
 			EraseZBonus: 1000,
