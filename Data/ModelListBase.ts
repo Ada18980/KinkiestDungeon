@@ -104,7 +104,7 @@ AddModel({
 			EraseLayerGroups: {PantRight: true, SkirtLower: true, BikiniZone: true, UnderBustBondage: true},
 			EraseSprite: "EraseCorset",
 			EraseInvariant: true,
-			EraseZBonus: 1000,
+			EraseZBonus: 10000,
 			//EraseMorph: {EncaseTorsoLower: "Encase"},
 		},
 		{ Name: "Chest", Layer: "Chest", Pri: 0,

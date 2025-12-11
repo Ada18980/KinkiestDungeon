@@ -183,7 +183,7 @@ AddModel({
 			
 			EraseSprite: "EraseSaddle",
 			EraseInvariant: true,
-			EraseZBonus: 100000,
+			EraseZBonus: 1000,
 			
 		},
 		{ Name: "SaddleFront", Layer: "Saddle", Pri: 39.9,
