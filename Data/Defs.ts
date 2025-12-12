@@ -310,6 +310,9 @@ let LAYERS_BASE = [
 	"AnkleLeft",
 
 	"WrappingLegs2",
+
+	"SpreaderBar",
+
 	"WrappingLegs",
 
 

@@ -39,11 +39,17 @@ AddModel({
 	AddPose: ["Spreader", "WideSpread"],
 	Layers: ToLayerMap([
 		{ Name: "ShortLeft", Layer: "AnkleLeftOver", Pri: 10,
-			Invariant: true,
+			Poses: ToMap([...LEGPOSES]),
 			HideWhenOverridden: true,
 		},
 		{ Name: "ShortRight", Layer: "AnkleRightOver", Pri: 10,
 			Invariant: true,
+			Poses: ToMap(["Spread"]),
+			HideWhenOverridden: true,
+		},
+		{ Name: "Bar", Layer: "SpreaderBar", Pri: 10,
+			Invariant: true,
+			Poses: ToMap(["Spread"]),
 			HideWhenOverridden: true,
 		},
 	])

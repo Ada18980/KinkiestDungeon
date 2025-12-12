@@ -1125,6 +1125,7 @@
             <key type="filename">../DisplacementMaps/EraseCorsetEncase.png</key>
             <key type="filename">../DisplacementMaps/EraseCorsetKneel.png</key>
             <key type="filename">../DisplacementMaps/EraseCorsetKneelEncase.png</key>
+            <key type="filename">../DisplacementMaps/EraseCorsetKneelSaddled.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
