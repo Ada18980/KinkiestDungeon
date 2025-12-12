@@ -150,7 +150,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 	},
 	Cut: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
-        let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KinkyDungeonPlayerDamage.name : "Cut");
+        let name = ((KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.name && !KinkyDungeonPlayerDamage.unarmed) ? "Items/" + KDGetItemImage(KinkyDungeonPlayerDamage, KDPlayer()) : "Cut");
 			
         let img = KinkyDungeonRootDirectory + name + ".png";
         let allowed = !(KDGetCurse(item))

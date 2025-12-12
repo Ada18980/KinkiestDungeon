@@ -1053,7 +1053,7 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 					KDSwitchWeapon("Unarmed", Index);
 				return true;
 			}, KDGameData.PreviousWeapon != undefined, x + 10 + 0.45*width + (ii*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", KDBaseWhite,
-			KinkyDungeonRootDirectory + "Items/" + KDWeapon({name: wep})?.name + ".png",
+			KinkyDungeonRootDirectory + "Items/" + KDGetItemImageFromString(wep, KDPlayer(), wep == KinkyDungeonPlayerWeapon) + ".png",
 			undefined, undefined, KDWeaponSwitchPref != ii, !KinkyDungeonInventoryGet(wep) ? KDBaseRed : undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[ii]),
 				scaleImage: true,
@@ -1077,7 +1077,7 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 		return true;
 	}, KDGameData.PreviousWeapon != undefined, x, y - 0.45*width, 0.45*width, 0.45*width, "", KDBaseWhite,
 	KinkyDungeonPlayerWeapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon) ?
-		KinkyDungeonRootDirectory + "Items/" + KDWeapon({name: KinkyDungeonPlayerWeapon})?.name + ".png"
+		KinkyDungeonRootDirectory + "Items/" + KDGetItemImage(KinkyDungeonPlayerDamage, KDPlayer(), true) + ".png"
 		: KinkyDungeonRootDirectory + "Items/Unarmed.png",
 	undefined, undefined, true, undefined, undefined, undefined, {
 		//hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[0]),

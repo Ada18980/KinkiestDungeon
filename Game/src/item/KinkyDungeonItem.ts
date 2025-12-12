@@ -334,6 +334,15 @@ function KDGetItemType(item: Named): string {
 	return Misc;
 }
 
+function KDGetItemImage(item: Named | item, entity: entity, equipped?: boolean) {
+	return item.name;
+}
+function KDGetItemImageFromString(item: string, entity: entity, equipped?: boolean) {
+	return item;
+}
+
+
+
 function KinkyDungeonDrawItems(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let sprite = null;
 	let counts = {};
@@ -346,7 +355,7 @@ function KinkyDungeonDrawItems(_canvasOffsetX: number, _canvasOffsetY: number, C
 				sprite = KinkyDungeonRootDirectory + "Items/Restraint.png";
 				scale = 1;
 			}
-			else sprite = KDGetItemPreview({name: item.name, id: 0, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + item.name + ".png");
+			else sprite = KDGetItemPreview({name: item.name, id: 0, type: KDGetItemType(item)})?.preview || (KinkyDungeonRootDirectory + "Items/" + KDGetItemImage(item, null) + ".png");
 			if (KDCanSeeDroppedItem(item)) {
 				KDDraw(kditemsboard, kdpixisprites, item.x + "," + item.y + "_" + item.name, sprite,
 					(item.x - CamX + ((0.25/max) * (counts[item.x + ',' + item.y] || 0)))*KinkyDungeonGridSizeDisplay, (item.y - CamY + (1 - scale))*KinkyDungeonGridSizeDisplay,
