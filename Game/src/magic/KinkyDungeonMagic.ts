@@ -1170,7 +1170,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 					aoe: spell.type == "dot" ? spell.bulletAoE : undefined,
 					source: spell.noSource ? undefined : ((entity?.player ? -1 : entity?.id) || bullet?.bullet?.source),
 					lifetime:spell.delay +
-						(spell.delayRandom ? Math.floor(KDRandom() * spell.delayRandom) : 0),
+						(spell.delayRandom ? Math.floor(KDRandom() * (spell.delayRandom + 1)) : 0),
 					cast: cast, dot: spell.dot, events: spell.events, alwaysCollideTags: spell.alwaysCollideTags,
 					bulletColor: spell.bulletColor, bulletLight: spell.bulletLight,
 					bulletSpin: spell.bulletSpin,
@@ -1402,7 +1402,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 				KinkyDungeonAggroAction('magic', {});
 			if (spell.school) KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "cast_" + spell.school.toLowerCase(), 1);
 		}
-		
+
 		KinkyDungeonSendEvent("playerCast", data);
 		if (KDGameData.HeelPowerEffective > 0) {
 			if (spell.components?.includes("Arms"))
@@ -1449,7 +1449,7 @@ function KinkyDungeonClickSpellChoice(I: number, CurrentSpell: number) {
 	if (KinkyDungeonSpellChoicesToggle[I] && KinkyDungeonSpells[KinkyDungeonSpellChoices[I]].cancelAutoMove) {
 		//KinkyDungeonFastMove = false;
 		//KinkyDungeonFastMoveSuppress = false;
-		
+
 		KinkyDungeonFastMovePath = [];
 	}
 }

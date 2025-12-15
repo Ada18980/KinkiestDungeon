@@ -854,7 +854,7 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 		else if (Spell.enemySpell) predata.faction = "Enemy";
 		else predata.faction = "Player";
 	}
-	
+
 	if (ret) {
 		return predata;
 	}
@@ -1068,8 +1068,8 @@ function KDDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg
 						Type: TextGet("KinkyDungeonDamageType" + predata.type)
 					}), KDBaseLightGrey, 1, false, false, Enemy, "Combat");
 				}
-				
-				
+
+
 
 				while (predata.dmgDealt > 0 && Enemy.blocks >= 1 && (predata.dmgDealt > Enemy.hp * 0.1 || predata.dmgDealt > Enemy.Enemy.maxhp*0.5)) {
 					blockCount += 1;
@@ -1925,7 +1925,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 				end = false;
 				let checkCollision = (b.bullet.faction == "Player" && (b.x != KinkyDungeonPlayerEntity.x || b.y != KinkyDungeonPlayerEntity.y))
 					|| justBorn || (b.x != startx || b.y != starty) || (!b.vx && !b.vy) || (KDistEuclidean(b.vx, b.vy) < 0.9); // Check collision for bullets only once they leave their square or if they are slower than one
-				
+
 				if ((checkCollision && !KinkyDungeonBulletsCheckCollision(b, undefined, undefined, delta - d, false)) || outOfTime || outOfRange) {
 					if (!(b.bullet.spell
 						&& (
@@ -2137,7 +2137,7 @@ function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = KDB
 
 function KinkyDungeonParseExtraWarningTiles(delta: number) {
 	for (let i = 0; i < KinkyDungeonExtraWarningTiles.length; i++) {
-		
+
 		KDAddWarning({
 			source: 0,
 			type: 2,
@@ -2268,7 +2268,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 		if (!xx) xx = b.x;
 		if (!yy) yy = b.y;
 		let res = KinkyDungeonCastSpell(xx, yy, KinkyDungeonFindSpell(b.bullet.cast.spell, true), undefined, undefined, b);
-	
+
 		if (res.data?.bulletfired) res.data.bulletfired.collisionUpdate = true;
 	}
 
@@ -2472,7 +2472,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 			for (let Y = -Math.ceil(rad); Y <= Math.ceil(rad); Y++) {
 				if (AOECondition(b.x, b.y, b.x + X, b.y + Y, rad, KDBulletAoEMod(b), b.ox, b.oy)) {
 					let dd = KDistEuclidean(X, Y) / rad;
-					let LifetimeBonus = (b.bullet.spell?.lifetimeHitBonus) ? Math.floor(KDRandom() * b.bullet.spell?.lifetimeHitBonus) : 0;
+					let LifetimeBonus = (b.bullet.spell?.lifetimeHitBonus) ? Math.floor(KDRandom() * (b.bullet.spell?.lifetimeHitBonus + 1)) : 0;
 					let newB: KDBullet = {
 						delay: dd,
 						born: born,
@@ -2932,7 +2932,7 @@ function KinkyDungeonBulletTrail(b: KDBullet): boolean {
 						trail = true;
 						let newB: KDBullet = {
 							born: 0,
-							time: b.bullet.spell?.trailLifetime + (b.bullet.spell?.trailLifetimeBonus ? Math.floor(KDRandom() * b.bullet.spell.trailLifetimeBonus) : 0),
+							time: b.bullet.spell?.trailLifetime + (b.bullet.spell?.trailLifetimeBonus ? Math.floor(KDRandom() * (b.bullet.spell.trailLifetimeBonus + 1)) : 0),
 							x: b.x + X, y: b.y + Y,
 							vx: 0, vy: 0,
 							xx: b.x + X, yy: b.y + Y,
@@ -2952,7 +2952,7 @@ function KinkyDungeonBulletTrail(b: KDBullet): boolean {
 									evadeable: b.bullet.spell?.trailEvadeable,
 									noblock: b.bullet.spell?.trailNoBlock,
 									damage: !(b.bullet.spell?.trailPower) ? undefined
-										: ((b.bullet.spell?.trailPower) + (((b.bullet.spell?.trailPower && b.bullet.spell?.power > 0) ? 
+										: ((b.bullet.spell?.trailPower) + (((b.bullet.spell?.trailPower && b.bullet.spell?.power > 0) ?
 											(b.bullet.spell?.trailPower / b.bullet.spell.power) * b.bullet.dmgBoost || 0 : 0))) * (b.bullet.dmgMult != undefined ? b.bullet.dmgMult : 1),
 									type: b.bullet.spell?.trailDamage,
 									boundBonus: b.bullet.spell?.boundBonus,
@@ -3172,7 +3172,7 @@ function KDHealNPC(enemy: entity, amount: number, source: number, bullet?: KDBul
 	let data: HealData = {
 		enemy: enemy,
 		amount: amount,
-		source: source, 
+		source: source,
 		bullet: bullet,
 	}
 	KinkyDungeonSendEvent("heal", data);
@@ -3181,7 +3181,7 @@ function KDHealNPC(enemy: entity, amount: number, source: number, bullet?: KDBul
 	enemy = data.enemy;
 	bullet = data.bullet;
 	if (amount == 0) return;
-	
+
 	let origHP = enemy.hp;
 	enemy.hp = Math.min(enemy.hp + amount, enemy.Enemy.maxhp);
 
@@ -3433,10 +3433,10 @@ function KinkyDungeonSendWeaponEvent(Event: string, data: any, forceWeapon?: ite
 	if (KDGameData.Offhand
 		&& KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
 		let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
-			
+
 		let events = (KinkyDungeonInventoryGetWeapon(KDGameData.Offhand))?.events
 			|| KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand))?.events;
-			
+
 		let Vevents = events ? null : (KinkyDungeonWeaponVariants[ KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)?.inventoryVariant
 			|| KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)?.name]?.events);
 		if (Vevents)

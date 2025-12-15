@@ -1675,6 +1675,10 @@ function KinkyDungeonRun() {
 
 		KDDrawMods();
 
+		if (onlineModsDeleted) {
+			DrawTextKD(TextGet("RestartNeeded" + (localStorage.getItem("BondageClubLanguage") || "EN")), 1840, 300, KDBaseElectricBlue, KDTextGray2, 48);
+		}
+
 	} else if (KinkyDungeonState == "Credits") {
 		let credits = TextGet("KinkyDungeonCreditsList" + KinkyDungeonCreditsPos).split('|');
 		let i = 0;
@@ -6757,7 +6761,7 @@ function KinkyDungeonGenerateSaveData(): KinkyDungeonSave {
 	save.version = TextGet("KDVersionStr");
 	save.level = MiniGameKinkyDungeonLevel;
 	save.checkpoint = MiniGameKinkyDungeonCheckpoint;
-	save.rep = KinkyDungeonGoddessRep;
+	save.rep = KinkyDungeonGoddessRep; // 神的声望
 	save.costs = KinkyDungeonShrineCosts;
 	save.pcosts = KinkyDungeonPenanceCosts;
 	save.dress = KinkyDungeonCurrentDress;
