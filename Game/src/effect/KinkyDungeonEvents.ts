@@ -2536,8 +2536,8 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"AddDamageStealth": (e, _item, data) => {
 			if (data.dmg > 0 && data.enemy && KDHostile(data.enemy) && !data.enemy.aware) {
 				if (!e.chance || KDRandom() < e.chance) {
-					if (e.energyCost && e.power > 1) KDChangeCharge(_item.name, "restraint", "enemyDmg", - e.energyCost * (e.power - 1));
-					data.dmg = Math.max(data.dmg + e.power, 0);
+					if (e.energyCost && e.power > 1) KDChangeCharge(_item.name, "restraint", "enemyDmg", - e.energyCost * Math.max(0, data.dmg * (1 + e.power)));
+					data.dmg = Math.max(data.dmg * (1 + e.power), 0);
 				}
 			}
 		},
