@@ -3404,7 +3404,8 @@ function KDDrawStruggleGroups() {
 							}
 
 							if (struggleData.limitChance > 0) {
-								threshold = KDMaxCutDepth(threshold, struggleData.cutBonus, struggleData.origEscapeChance, struggleData.origLimitChance);
+								threshold = KDMaxCutDepth(threshold, struggleData.cutBonus, 
+									struggleData.origEscapeChance, struggleData.origLimitChance, struggleData.cutVulnerability);
 								// Find the intercept
 								maxPossible = Math.max(0, threshold);
 							} else maxPossible = struggleData.escapeChance > 0 ? 1 : 0;

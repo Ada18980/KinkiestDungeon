@@ -21,6 +21,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			Unlock: "FreeDoll",
 		},
 		faction: "Prisoner", lowpriority: true, evasion: -100, armor: 1, followRange: 100, AI: "wander", regen: 0.1,
+		stunWhenSwap: true,
 		visionRadius: 0, maxhp: 12, minLevel:0, weight:-10, movePoints: 4, attackPoints: 0, attack: "", attackRange: 0, events: [
 			{trigger: "tick", type: "secretToy"},
 		],

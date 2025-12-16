@@ -2710,6 +2710,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		armsBound: false,
 		query: query,
 		cutBonus: 0,
+		cutVulnerability: KDRestraint(restraint).cutVulnerability,
 		restraint: restraint,
 		struggleType: StruggleType,
 		struggleGroup: struggleGroup,
@@ -2855,10 +2856,11 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 							}
 							break;
 						case "Cut":
-							threshold = KDMaxCutDepth(threshold, data.cutBonus, data.origEscapeChance, data.origLimitChance);
+							threshold = KDMaxCutDepth(threshold, data.cutBonus, 
+								data.origEscapeChance, data.origLimitChance, data.cutVulnerability);
 
 							limitProgress = (data.restraint.cutProgress || 0) ? (
-								(data.restraint.cutProgress || 0) < threshold ? threshold * (data.restraint.cutProgress || 0) : 1.0)
+								(data.restraint.cutProgress || 0) < threshold ? (Math.min(0.9, data.restraint.cutProgress || 0) / Math.max(0.1, threshold)) : 1.0)
 								: 0;
 							if (data.limitChance > 0) {
 								// Find the intercept
@@ -7151,12 +7153,16 @@ function KDLockoutGain(player: entity, data: any, base: number = 20): void {
 }
 
 
-function KDMaxCutDepth(threshold: number, cutBonus: number, origEscapeChance: number, origLimitChance: number): number {
-	return Math.min(1.4 * threshold, Math.max(0, Math.min(
+function KDMaxCutDepth(threshold: number, cutBonus: number, origEscapeChance: number, origLimitChance: number, cutVulnerability?: number): number {
+	let res = Math.min(1.4 * threshold, Math.max(0, Math.min(
 		1.1,
 		2.0 * (0.25 + cutBonus + origEscapeChance -
 			Math.max(0, origLimitChance)
 		))));
+	if (res > 0 && cutVulnerability != undefined) {
+		res *= cutVulnerability;
+	}
+	return res;
 }
 
 

@@ -613,6 +613,9 @@ interface restraint extends KDRestraintProps {
 	/** Descriptor for tightness, e.g. Secure, Thick */
 	tightType?: string,
 
+	/** multiplies cut depth AFTER calculation */
+	cutVulnerability?: number,
+
 	escapeChance: KDEscapeChanceList,
 
 	enemyTags: Record<string, number>,
@@ -987,6 +990,8 @@ interface enemy extends KDHasTags {
 	willBonus?: number,
 	/** Enemies will prioritize this enemy less than other enemies. Used by allies only. */
 	lowpriority? : boolean,
+	/** stuns the entity when you swap with her */
+	stunWhenSwap?: boolean,
 	/** lookup condition in KDPathConditions,
 	 * basically allows enemies to path through an immobile enemy under certain circumstances */
 	pathcondition?: string,
@@ -2721,6 +2726,7 @@ interface VibeMod {
 
 interface KDStruggleData {
 	angelHelp: boolean,
+	cutVulnerability: number,
 	minSpeed: number;
 	handBondage: number;
 	armsBound: boolean;

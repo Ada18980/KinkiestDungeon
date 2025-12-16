@@ -908,6 +908,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		linkCategory: "SlimeBoots", linkSize: 0.6, LinkableBy: [...KDRubberLink], renderWhenLinked: [...KDRubberLink],
 		inaccessible: true, Group: "ItemBoots", blockfeet: true, addTag: ["FeetLinked"],power: 5, weight: 0,
 		escapeChance: {"Struggle": 0, "Cut": 0.1, "Remove": 0}, failSuffix: {"Remove": "SlimeHard"},
+		cutVulnerability: 3.0,
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
 		factionColor: [[], [0]],
 		sfxGroup: "Rubber",
@@ -928,6 +929,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
 		factionColor: [[], [0]],
 		Model: "RubberFeet",
+		cutVulnerability: 3.0,
 		tightType: "Thick",
 		sfxGroup: "Rubber",
 		factionFilters: {
@@ -944,6 +946,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
 		factionColor: [[], [0]],
 		Model: "RubberLegs",
+		cutVulnerability: 3.0,
 		tightType: "Thick",
 		sfxGroup: "Rubber",
 		factionFilters: {
@@ -960,6 +963,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Struggle: ["Sharp",], Remove: ["Hook"],},
 		factionColor: [[], [0, 1, 2]],
 		Model: "RubberArms",
+		cutVulnerability: 3.0,
 		tightType: "Thick",
 		sfxGroup: "Rubber",
 		factionFilters: {
@@ -976,6 +980,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[], [0]],
 		Model: "RubberHands",
 		tightType: "Thick",
+		cutVulnerability: 3.0,
 		sfxGroup: "Rubber",
 		factionFilters: {
 			Rubber: {color: "DarkNeutral", override: true},
@@ -991,6 +996,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[], [0, 1, 2]],
 		Model: "RubberMouth",
 		tightType: "Thick",
+		cutVulnerability: 3.0,
 		sfxGroup: "Rubber",
 		factionFilters: {
 			Rubber: {color: "DarkNeutral", override: true},
@@ -1006,6 +1012,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[], [0]],
 		Model: "RubberHead",
 		tightType: "Thick",
+		cutVulnerability: 3.0,
 		sfxGroup: "Rubber",
 		factionFilters: {
 			Rubber: {color: "DarkNeutral", override: true},
@@ -3848,6 +3855,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, trappable: true, name: "TrapMittens", debris: "Belts", inaccessible: true, Asset: "LeatherMittens", Color: "Default", Group: "ItemHands", bindhands: 1.0, power: 4, weight: 0, LinkableBy: [...KDGlovesLink],
 		Model: "LeatherMittens",
 		sfxGroup: "Leather",
+		cutVulnerability: 0.8,
 		Filters: {
 			Lock: {"gamma":1,"saturation":0.03333333333333333,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			Band: {"gamma":0.43333333333333335,"saturation":1,"contrast":1.1833333333333333,"brightness":0.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},

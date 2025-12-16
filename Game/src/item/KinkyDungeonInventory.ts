@@ -1047,6 +1047,7 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 							/**
 							 */
 							let data: KDStruggleData = {
+								cutVulnerability: KDRestraint(item)?.cutVulnerability,
 								minSpeed: KDMinEscapeRate,
 								handBondage: 0,
 								handsBound: false,

@@ -3962,7 +3962,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 		powerStruggleBoost: 0.5,
 		healthStruggleBoost: 0.8,
 		enemyBondageMult: 1.0,
-		helpImmune: true,
+		//helpImmune: true,
 	},
 	"Latex": {
 		priority: -8,

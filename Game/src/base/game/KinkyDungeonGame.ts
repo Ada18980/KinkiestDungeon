@@ -2878,6 +2878,9 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 									KDMoveEntity(Enemy, xx, yy, true,undefined, undefined, true);
 									if (KinkyDungeonFlags.has("Passthrough"))
 										KinkyDungeonSetFlag("Passthrough", 2);
+									if (Enemy.Enemy?.stunWhenSwap) {
+										Enemy.stun = Math.max(Enemy.stun || 0, 2);
+									}
 								}
 								KinkyDungeonLastAction = "Move";
 								moved = true;
