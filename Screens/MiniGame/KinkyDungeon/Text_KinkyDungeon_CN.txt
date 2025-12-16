@@ -15887,7 +15887,7 @@ EnemyName 离开并锁上了她身后的牢房。
 - You find a muzzle with a long rubbery plug on the inside, glowing magnificently, along with a strange crystal next to it.
 你发现里面有一个长长的橡胶棒，闪闪发光，旁边还有一个奇怪的水晶。
 - A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 2.5x.
-一个紧紧地盖在脸上的口套。充能后，它会恢复法力值，提高潜行能力，并对失去意识的敌人造成的伤害提升至 2.5 倍。
+一种紧密贴合面部的口套。充能后，可回复法力、提升潜行能力，并对未察觉你的敌人造成2.5倍伤害。
 - 'Muzzle of the Saboteur'
 '破坏者的口套'
 - You claw at your face, but not only does the soft plug fill your mouth completely, the muzzle itself is nigh-unbreakable!
