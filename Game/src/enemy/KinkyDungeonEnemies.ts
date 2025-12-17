@@ -4511,9 +4511,14 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 					if (player.player) KinkyDungeonSetEnemyFlag(enemy, "targ_player", 1);
 					else if (KDGetFaction(player) == "Player") KinkyDungeonSetEnemyFlag(enemy, "targ_ally", 1);
-					else KinkyDungeonSetEnemyFlag(enemy, "targ_npc", 1);
+					else {
+						KinkyDungeonSetEnemyFlag(enemy, "targ_npc", 1);
+					}
 					if (KinkyDungeonAggressive(enemy, player)) {
 						KinkyDungeonSetEnemyFlag(enemy, "aggression", 1);
+						if (!player.player)
+							KinkyDungeonSetEnemyFlag(player, "targeted_by_npc", 1);
+						else KinkyDungeonSetFlag("targeted_by_npc", 1);
 					}
 				} else {
 					delete enemy.tx;

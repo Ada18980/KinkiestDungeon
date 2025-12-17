@@ -58,6 +58,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Can now untie party members who got 'injured' since it's otherwise unclear why you cant help them up
 - instead of swapping, moving into an ally pushes them and only swaps if there is no available space
 - Certain unlock conditions like ancient items cant be used if the group is blocked
+- Restoration shrines now passively heal party members up to 80% (-10% per rank, 30% for bosses) within 7 squares when not in combat
+- Restoration shrines now full heal all party members when used
 
 5.4.81
 - More Kinky Furniture now allows Vibe-Master 5000's to spawn

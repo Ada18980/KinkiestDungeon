@@ -1632,12 +1632,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 				if (KDAllied(enemy)
 					&& (enemy.hp > 0 || KDHelpless(enemy))
 					&& KDistEuclidean(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) <= e.aoe) {
-					let origHP = enemy.hp;
-					enemy.hp = Math.min(enemy.hp + e.power, enemy.Enemy.maxhp);
-					if (enemy.hp - origHP > 0) {
-						KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#44ff77", KDToggles.FastFloaters ? 1 : 3);
-						healed = true;
-					}
+					KDHealNPC(enemy, e.power, -1);
 				}
 			}
 			if (healed) {

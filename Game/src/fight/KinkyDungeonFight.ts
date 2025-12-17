@@ -3185,12 +3185,24 @@ function KDHealNPC(enemy: entity, amount: number, source: number, bullet?: KDBul
 	let origHP = enemy.hp;
 	enemy.hp = Math.min(enemy.hp + amount, enemy.Enemy.maxhp);
 
+	if (bullet?.bullet?.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
+		if (enemy.hp - origHP) {
+			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, 
+				KDAllied(enemy) ? KDBaseGreal : KDBaseYellowGreen, KDToggles.FastFloaters ? 1 : 3);
+		} else {
+			// TODO add a glowing green effect?
+		}
+		
+	
 	if (!bullet) return;
-	if (bullet.bullet.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
-		KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, "#ffaa00", KDToggles.FastFloaters ? 1 : 3);
-	if (bullet.bullet.faction == "Player")
-		KDHealRepChange(enemy, enemy.hp - origHP);
+	if (bullet.bullet.faction == "Player") {
+		if (enemy.hp - origHP) {
+			KDHealRepChange(enemy, enemy.hp - origHP);
+		}
+	}
 }
+
+
 
 
 /**

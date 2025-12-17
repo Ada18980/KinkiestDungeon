@@ -68,6 +68,13 @@ let KDTileUpdateFunctionsLocal: Record<string, (delta: number, X?: number, Y?: n
 			duration: 2,
 		}, 0);
 	},
+	"A": (delta, X, Y) => {
+		
+		let mapTile = KinkyDungeonTilesGet(X + "," + Y);
+		if (mapTile?.Type == "Shrine" && KDAltarUpdateFunction[mapTile.Name]) {
+			KDAltarUpdateFunction[mapTile.Name](X, Y, mapTile, delta);
+		}
+	},
 	"W": (_delta, X, Y) => {
 		KDCreateEffectTile(X, Y, {
 			name: "Water",
@@ -1857,5 +1864,40 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 		}
 
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorOpen.ogg");
+	}
+}
+
+
+function KDShrineEffectRadius(entity: entity, player?: entity) {
+	return 7;
+}
+
+let KDAltarUpdateFunction = {
+	Will: (x, y, tile, delta) => {
+		for (let i = 0; i < delta; i++) {
+			// heal nearby party members, but only if they are not in combat
+			if (!KinkyDungeonFlags.get("PlayerCombat")) {
+				for (let i = 0; i < KDGameData.Party.length; i++) {
+					let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
+					if (PM) {
+						if (!KDEntityHasFlag(PM, "targeted_by_npc")
+							&& !KDEntityHasFlag(PM, "aggression")) {
+								if (KDistChebyshev(x - PM.x, y - PM.y) < KDShrineEffectRadius(PM, KDPlayer())) {
+									let maxHeal = (PM.Enemy?.maxhp || 0) * Math.max(0.1, 0.8 - KDEnemyRank(PM));
+									if (PM.hp < maxHeal) {
+										KDHealNPC(PM, 
+											Math.min(maxHeal - PM.hp,
+												Math.max(0.1, 0.1 * (PM.Enemy?.maxhp || 0))
+											), 
+											0);
+									}
+								}
+									
+						}
+					}
+				}
+			}
+
+		}
 	}
 }

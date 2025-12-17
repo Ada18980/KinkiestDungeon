@@ -78,7 +78,20 @@ function KinkyDungeonShrineAvailable(type: string): boolean {
 		undefined, true, undefined,
 		KinkyDungeonStatsChoice.get("ExclusionsApply"), true).length > 0) return true;
 	else if ((type == "Elements" || type == "Illusion" || type == "Conjure")) return true;
-	else if (type == "Will" && (KinkyDungeonStatMana < KinkyDungeonStatManaMax || KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax || KinkyDungeonStatWill < KinkyDungeonStatWillMax)) return true;
+	else if (type == "Will") {
+		if (KinkyDungeonStatMana < KinkyDungeonStatManaMax
+			|| KinkyDungeonStatManaPool < KinkyDungeonStatManaPoolMax
+			|| KinkyDungeonStatWill < KinkyDungeonStatWillMax) return true;
+		for (let i = 0; i < KDGameData.Party.length; i++) {
+			let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
+			if (PM) {
+				if (PM.Enemy?.maxhp && PM.hp < PM.Enemy.maxhp) {
+					return true;
+				}
+			}
+		}
+	}
+		
 
 	return false;
 }
@@ -278,6 +291,7 @@ function KinkyDungeonShrineCost(type: string): number {
 		let value = 0;
 		value += 120 * (1 - KinkyDungeonStatWill/KinkyDungeonStatWillMax);
 		value += 70 * (1 - KinkyDungeonStatMana/KinkyDungeonStatManaMax);
+		if (value < 5) value = 5;
 		return Math.round(Math.round(value/10)*10 * (1 + 0.01 * KinkyDungeonDifficulty));
 	}
 	if (KinkyDungeonShrineBaseCostGrowth[type]) growth = KinkyDungeonShrineBaseCostGrowth[type];
@@ -375,6 +389,13 @@ function KinkyDungeonPayShrine(type: string, mult: number = 1) {
 		KDChangeMana("Will", "goddess", "interact", KinkyDungeonStatManaMax, false, 0, false, true);
 		KDChangeWill("Will", "goddess", "interact", KDWillShrineWill * KinkyDungeonStatWillMax);
 		KinkyDungeonNextDataSendStatsTime = 0;
+
+		for (let i = 0; i < KDGameData.Party.length; i++) {
+			let PM = KinkyDungeonFindID(KDGameData.Party[i].id);
+			if (PM) {
+				KDHealNPC(PM, Math.max(1, (PM.Enemy?.maxhp || 0)), 0);
+			}
+		}
 
 		ShrineMsg = TextGet("KinkyDungeonPayShrineHeal");
 		KDSendStatus('goddess', type, 'shrineHeal');
