@@ -1585,7 +1585,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				for (let ll of Object.entries(l.EraseLayerGroups || l.EraseLayers)) {
 					let sid = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
 					let id = (l.EraseLayerGroups ? "LG_" + ll +"_" : "") + sid;
-					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
+					let zzz = (l.EraseZBonus || 0) -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {

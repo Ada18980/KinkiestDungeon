@@ -31,8 +31,8 @@ let KDInventoryActionsDefault: Record<string, (item: item) => string[]> = {
 				ret.push("Lock");
 			}
 		} else {
-			ret.push("CurseInfo", "CurseStruggle");
-			if (KinkyDungeonCurseAvailable(item, KDGetCurse(item))) ret.push("CurseUnlock");
+			ret.push("CurseUnlock", "CurseInfo", "CurseStruggle");
+			//if (!KinkyDungeonCurseAvailable(item, KDGetCurse(item))) ret.push("CurseUnlock");
 		}
 		ret.push("Recolor");
 		return ret;

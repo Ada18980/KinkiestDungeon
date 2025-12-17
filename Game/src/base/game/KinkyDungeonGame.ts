@@ -1845,6 +1845,27 @@ function KinkyDungeonGetDirectionRandom(dx: number, dy: number) {
 	return dir; // Delta is always in increments of 0.5
 }
 
+// GetDirection, but it also pivots randomly 45 degrees to either side
+function KDGetAdjacentTiles(dx: number, dy: number): KDPoint[] {
+	let list: KDPoint[] = [];
+
+	for (let pivot of [-1, 1]) {
+		let dir = KinkyDungeonGetDirection(dx, dy);
+
+		if (dir.x == 0 && dir.y == 1) dir.x = pivot;
+		else if (dir.x == 0 && dir.y == -1) dir.x = -pivot;
+		else if (dir.x == 1 && dir.y == 0) dir.y = pivot;
+		else if (dir.x == -1 && dir.y == 0) dir.y = -pivot;
+		else if (dir.x == 1 && dir.y == 1) {if (pivot == 1) {dir.y = 0;} else if (pivot == -1) {dir.x = 0;}}
+		else if (dir.x == 1 && dir.y == -1) {if (pivot == 1) {dir.x = 0;} else if (pivot == -1) {dir.y = 0;}}
+		else if (dir.x == -1 && dir.y == 1) {if (pivot == 1) {dir.x = 0;} else if (pivot == -1) {dir.y = 0;}}
+		else if (dir.x == -1 && dir.y == -1) {if (pivot == 1) {dir.y = 0;} else if (pivot == -1) {dir.x = 0;}}
+
+		list.push(dir);
+	}
+	return list; // Delta is always in increments of 0.5
+}
+
 
 let KinkyDungeonAutoWaitSuppress = false;
 
@@ -2870,14 +2891,35 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 						if (KDGameData.MovePoints >= 1 || (willSprint && KDCanSprint(sprintcost))) {// Math.max(1, KinkyDungeonSlowLevel) // You need more move points than your slow level, unless your slow level is 1
 							let xx = KinkyDungeonPlayerEntity.x;
 							let yy = KinkyDungeonPlayerEntity.y;
+							let dx = (Enemy?.x || 0) - KinkyDungeonPlayerEntity.x;
+							let dy = (Enemy?.y || 0) - KinkyDungeonPlayerEntity.y;
 
 							newDelta = Math.max(newDelta, KinkyDungeonMoveTo(moveX, moveY,
 								willSprint, allowPass, sprintcost));
 							if (newDelta > 0) {
 								if (Enemy && allowPass) {
-									KDMoveEntity(Enemy, xx, yy, true,undefined, undefined, true);
+									// push by default
+									
+									let pushTile = (KinkyDungeonFlags.has("PassthroughAll") || KDEnemyHasFlag(Enemy, "passthrough"))
+										? undefined
+										: KDGetPushTile(Enemy, dx, dy);
+									if (pushTile && KDMoveEntity(Enemy, pushTile.x, pushTile.y, true,undefined, undefined, true)) {
+										pushTile = undefined;
+									}
+									if (!pushTile) {
+										// fallback is swap
+										KDMoveEntity(Enemy, xx, yy, true,undefined, undefined, true);
+									}
+
 									if (KinkyDungeonFlags.has("Passthrough"))
 										KinkyDungeonSetFlag("Passthrough", 2);
+									if (KinkyDungeonFlags.has("PassthroughAll"))
+										KinkyDungeonSetFlag("PassthroughAll", 2);
+
+									if (KinkyDungeonFlags.has("PassthroughP"))
+										KinkyDungeonSetFlag("PassthroughP", 2);
+									if (KinkyDungeonFlags.has("PassthroughPAll"))
+										KinkyDungeonSetFlag("PassthroughPAll", 2);
 									if (Enemy.Enemy?.stunWhenSwap) {
 										Enemy.stun = Math.max(Enemy.stun || 0, 2);
 									}

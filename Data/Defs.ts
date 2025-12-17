@@ -190,6 +190,17 @@ let LAYERS_BASE = [
 	"CrossArmLeft",
 
 
+
+
+	"LegbinderLegLeftPants",
+	"LegbinderLegLeftLowerPants",
+	"LegbinderAnkleLeftPants",
+	"LegbinderLegRightPants",
+	"LegbinderLegLowerRightPants",
+	"LegbinderAnkleRightPants",
+
+
+
 	// Certain pieces of armor go over the shirt
 	"BeltBondage",
 	"BeltCharmSide",
@@ -233,17 +244,11 @@ let LAYERS_BASE = [
 	"ShirtOver",
 
 	// Skirt part that goes in front of corsets, shirts, etc
-	"LegbinderLegLeftPants",
-	"LegbinderLegLeftLowerPants",
-	"LegbinderAnkleLeftPants",
 	"SkirtOverDecoOverKneel",
 	"SkirtOverOverKneel",
 
 	"CrotchPanelMid",
 	
-	"LegbinderLegRightPants",
-	"LegbinderLegLowerRightPants",
-	"LegbinderAnkleRightPants",
 	"SkirtOverDeco",
 	"SkirtOver",
 
@@ -366,6 +371,7 @@ let LAYERS_BASE = [
 
 
 	
+	"PetsuitLegsRight",
 
 	// Lower harness
 	"Option2_ChastityBeltLower",
@@ -404,7 +410,6 @@ let LAYERS_BASE = [
 	// Right leg
 	"WrappingLegsRightOver",
 	
-	"PetsuitLegsRight",
 	"BindThighRight",
 	"RightThighs3",
 	"RightThighs2",
@@ -574,14 +579,16 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "UpperTorso", start: "WrappingChest", end: "Straps"},
 	{id: "Chest", start: "Straps", end: "WrappingTorsoUpper"},
 	{id: "ClothMid", start: "WrappingTorsoUpper", end: "WrapCrossArms"},
-	{id: "ArmsCross", start: "WrapCrossArms", end: "BeltBondage"},
+	{id: "ArmsCross", start: "WrapCrossArms", end: "LegbinderLegLeftPants"},
+	{id: "LegbinderLeft", start: "LegbinderLegLeftPants", end: "LegbinderLegRightPants"},
+	{id: "LegbinderRight", start: "LegbinderLegRightPants", end: "BeltBondage"},
 	{id: "UnderBustBondage", start: "BeltBondage", end: "BaggyShirt"},
 	{id: "BaggyShirtAndSkirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
 	{id: "WrappingMid", start: "WrappingTorsoMid", end: "OverCrotchStrapMid"},
 	{id: "HarnessMid", start: "Option2_ChastityBelt", end: "Bustier"},
-	{id: "ClothLower", start: "Bustier", end: "LegbinderLegLeftPants"},
-	{id: "SkirtOverKneelLeft", start: "LegbinderLegLeftPants", end: "CrotchPanelMid"},
-	{id: "SkirtOver", start: "LegbinderLegRightPants", end: "Cincher"},
+	{id: "ClothLower", start: "Bustier", end: "SkirtOverDecoOverKneel"},
+	{id: "SkirtOverKneelLeft", start: "SkirtOverDecoOverKneel", end: "CrotchPanelMid"},
+	{id: "SkirtOver", start: "SkirtOverDeco", end: "Cincher"},
 	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "SkirtDeco"},
 	{id: "Skirt", start: "SkirtDeco", end: "WrappingLegsOver"},
 	{id: "OverLegsLeft", start: "WrappingLegsOver", end: "WrappingTorsoUnder"},
@@ -592,6 +599,7 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "OverLegs3", start: "WrappingLegs2", end: "OverShoes"},
 	{id: "PantLeft", start: "OverShoes", end: "Saddle"},
 	{id: "SkirtLower", start: "SkirtOverLowerDeco", end: "Shorts"},
+	{id: "PetsuitRight", start: "TightPants", end: "PetsuitLegsRight"},
 	{id: "BikiniZone", start: "Option2_ChastityBeltLower", end: "WrappingLegsRightOver"},
 	{id: "LegRightOver", start: "WrappingLegsRightOver", end: "HarnessUnder"},
 	{id: "ArmLeftOver", start: "WrapArmLeft", end: "ShoeRightOver"},

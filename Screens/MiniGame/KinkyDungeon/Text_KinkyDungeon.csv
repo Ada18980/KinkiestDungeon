@@ -4404,9 +4404,9 @@ RestraintHighSecCuffsFullDesc2,"Despite its supple texture, the leather is reinf
 RestraintMasterworkHobbleskirt,Masterwork Hobbleskirt
 RestraintMasterworkHobbleskirtDesc,"A skintight dress covering your lower body, allowing you to take only the smallest of steps."
 RestraintMasterworkHobbleskirtDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
-RestraintMasterworLegbinder,Masterwork Legbinder
-RestraintMasterworLegbinderDesc,"A skintight legbinder covering your lower body, keeping your legs glued together"
-RestraintMasterworLegbinderDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
+RestraintMasterworkLegbinder,Masterwork Legbinder
+RestraintMasterworkLegbinderDesc,"A skintight legbinder covering your lower body, keeping your legs glued together"
+RestraintMasterworkLegbinderDesc2,"Despite its supple texture, the leather is reinforced with some kind of nearly unbreakable fiber, jamming most tools that could cut it. Its locking mechanism has four other points of connection."
 
 RestraintMasterworkBlindfold,Masterwork Blindfold
 RestraintMasterworkBlindfoldDesc,"A chin harness stretches this blindfold tightly against your face, ensuring you are left in total blackout."
@@ -8094,7 +8094,7 @@ RestraintEnchantedMuzzle,Ancient Muzzle
 LootChestEnchantedMuzzle,"You find a muzzle with a long rubbery plug on the inside, glowing magnificently, along with a strange crystal next to it."
 RestraintEnchantedMuzzleDesc2,"A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 2.5x."
 RestraintEnchantedMuzzleDesc,"'Muzzle of the Saboteur'"
-KinkyDungeonCurseStruggleMistressKeyEnchantedMuzzle,"You claw at your face, but not only does the soft plug fill your mouth completely, the muzzle itself is nigh-unbreakable!"
+KinkyDungeonCurseStruggleMistressKeyEnchantedMuzzle,"You claw at your face, but not only does a soft plug fill your mouth, your muzzle is unbreakable!"
 
 RestraintEnchantedBallGag,Ancient Gag
 LootChestEnchantedBallGag,"You find a ball gag harness with a long rubbery plug instead of a ball, glowing magnificently, along with a strange crystal next to it."
@@ -12963,11 +12963,13 @@ dGenericAllyAttackUnaware_Confirm,"(Attack her)"
 dGenericAllyAttackUnaware_Leave,"(Never mind...)"
 rGenericAllyAttackUnaware_Leave,"(You decide not to)"
 
-dGenericAllyLetMePass,"(Let me through!!)"
-dGenericAllyLetMePass_Confirm,"(Walk past this unit)"
-dGenericAllyLetMePass_ConfirmAll,"(Walk past all units)"
+dGenericAllyLetMePass,"(Move through her space)"
+dGenericAllyLetMePass_Confirm,"(Swap with this unit)"
+dGenericAllyLetMePass_ConfirmAll,"(Swap with all units)"
+dGenericAllyLetMePass_ConfirmPush,"(Push this unit)"
+dGenericAllyLetMePass_ConfirmPushAll,"(Push all units)"
 dGenericAllyLetMePass_Leave,"(Never mind...)"
-rGenericAllyLetMePass,"(Confirm? You will move through her for a few turns)"
+rGenericAllyLetMePass,"(Confirm? You will swap if you click on her, for a few turns)"
 rGenericAllyLetMePass_Leave,"(...)"
 
 dGenericAllyStopFollowingMe,"(Stop following me)"
@@ -29953,7 +29955,9 @@ KDInventoryActionQuickSlot4,Add to Quick Slot 4
 
 KDInventoryActionCut,Try to Cut
 KDInventoryActionStruggle,Struggle!
+KDInventoryActionCurseStruggle,Struggle Uselessly
 KDInventoryActionUnlock,Try to Unlock
+KDInventoryActionCurseUnlock,Remove the Curse
 KDInventoryActionLock,Add a Lock
 KDInventoryActionRemove,Try to Remove
 KDInventoryActionPick,Try to Pick
@@ -32599,7 +32603,7 @@ KDContextMenu_Unlock,Unlock
 KDContextMenu_Remove,Remove
 KDContextMenu_Pick,Pick
 KDContextMenu_CurseInfo,Inspect Lock
-KDContextMenu_CurseStruggle,Struggle Uselessly
+KDContextMenu_StruggleCurse,Struggle Uselessly
 KDContextMenu_CurseUnlock,Unlock
 
 KDBedSleptLevel,(Already slept here)

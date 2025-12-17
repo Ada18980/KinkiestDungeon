@@ -1199,6 +1199,32 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 						KinkyDungeonSetFlag("Passthrough", 8);
+						KinkyDungeonSetFlag("PassthroughAll", 8);
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"ConfirmPush": {playertext: name + "LetMePass_Confirm", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetEnemyFlag(enemy, "passthroughP", 8);
+						if (KinkyDungeonFlags.has("LetMePass")) {
+							KDResetDialogue();
+						}
+						KinkyDungeonSetFlag("LetMePass", 30);
+					}
+					return false;
+				},
+				exitDialogue: true,
+			},
+			"ConfirmPushAll": {playertext: name + "LetMePass_ConfirmAll", response: "Default",
+				clickFunction: (_gagged, _player) => {
+					let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
+					if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
+						KinkyDungeonSetFlag("PassthroughP", 8);
+						KinkyDungeonSetFlag("PassthroughPAll", 8);
 					}
 					return false;
 				},

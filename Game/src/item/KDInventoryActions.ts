@@ -329,7 +329,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return "InventoryAction/CurseStruggle";
 		},
 		show: (_player, item) => {
-			return !(KDGetCurse(item) || item.lock);
+			return !!KDGetCurse(item);
 		},
 		valid: (_player, _item) => {
 			return true;
@@ -348,7 +348,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return "InventoryAction/CurseInfo";
 		},
 		show: (_player, item) => {
-			return !(KDGetCurse(item) || item.lock);
+			return !!KDGetCurse(item);
 		},
 		valid: (_player, _item) => {
 			return true;
@@ -367,14 +367,17 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return "InventoryAction/CurseUnlock";
 		},
 		show: (_player, item) => {
-			return !KDGetCurse(item) == true;
+			return !!KDGetCurse(item);
 		},
 		valid: (_player, item) => {
+			return !KinkyDungeonCurseAvailable(item, (KDGetCurse(item)));
+		},
+		invalidtooltip: (player, item) => {
 			return KinkyDungeonCurseAvailable(item, (KDGetCurse(item)));
 		},
 		click: (_player, item) => {
 			let itemIndex = KDGetItemLinkIndex(item, false);
-			if (itemIndex >= 0 && KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
+			if (itemIndex >= 0 && !KinkyDungeonCurseAvailable(item, (KDGetCurse(item)))) {
 				let r = KDRestraint(item);
 				let sg = KinkyDungeonStruggleGroups.find((group) => {return r.Group == group.group;});
 				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});

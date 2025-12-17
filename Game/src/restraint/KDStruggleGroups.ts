@@ -88,7 +88,7 @@ let KDStruggleButtons: Record<string, (data: KDStruggleButtonData, i: number, qu
 	CurseUnlock: (data, i, query, target, entity) => {
 		let {btn, StruggleType, x, y, ButtonWidth, sg, button_index, item} = {...data};
         let allowed = (KDGetCurse(data?.item))
-            && KinkyDungeonCurseAvailable(data?.item, (KDGetCurse(data?.item)));
+            && !KinkyDungeonCurseAvailable(data?.item, (KDGetCurse(data?.item)));
         let action = !allowed ? null : (_b) => {
 				KDSendInput("curseUnlock", {group: sg.group, index: KDStruggleGroupLinkIndex[sg.group], curse: (KDGetCurse(item))});
 				return true;

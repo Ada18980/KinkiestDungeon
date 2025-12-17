@@ -210,10 +210,15 @@ function KDDrawMods() {
 }
 
 function getFileInput(callback?, ...callbackArgs) {
+	getFileInputType(undefined, callback, ...callbackArgs);
+}
+
+function getFileInputType(Type: string = undefined, callback?, ...callbackArgs) {
 	let input = document.createElement('input');
 	input.type = 'file';
 	input.multiple = true;
-	input.accept = ".zip"; // filter out unwanted files
+	if (Type)
+		input.accept = Type; // filter out unwanted files
 	input.onchange = _this => {
 		let files = Array.from(input.files);
 		if (callback) {callback(files,...callbackArgs);}

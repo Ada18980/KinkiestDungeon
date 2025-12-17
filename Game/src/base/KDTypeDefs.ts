@@ -2795,6 +2795,7 @@ interface KDInventoryActionDef {
 	itemlabelcolor?: (player: entity, item: item) => string;
 	show?: (player: entity, item: item) => boolean;
 	valid: (player: entity, item: item) => boolean;
+	invalidtooltip?: (player: entity, item: item) => string;
 	click: (player: entity, item: item,) => void;
 	cancel: (player: entity, delta: number) => boolean;
 	icon: (player: entity, item: item) => string;
@@ -3741,8 +3742,8 @@ type KDParticleEmitterData = {
 }
 
 interface KDCursedDef {
-	/** Always removes even if under a chastity belt */
-	alwaysRemoveOnUnlock?: boolean,
+	/** If group is blocked you cant remove this one */
+	blockable?: boolean,
 	/** Restraints with this curse are unremovable via shrine */
 	noShrine?: boolean,
 	/** This curse is treated as a type of lock, for display purposes */

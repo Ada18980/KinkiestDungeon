@@ -2562,7 +2562,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	{name: "SlimeAdv", faction: "Slime", clusterWith: "slime", bound: "SlimeAdv", playLine: "Gagged", color: "#FF00FF",
 		tags: KDMapInit([
-			"ignoretiedup", "nocapture", "latexTrap", "slime", "disarmresist", "blindimmune", "melee", "slimeRestraints", "electricweakness", "acidresist", "iceweakness", "ticklesevereweakness", "charmweakness",
+			"ignoretiedup", "nocapture", "latexTrap", "slime", "disarmresist", "blindimmune", "melee", "slimeRestraints", "electricresist", "acidresist", "iceweakness", "ticklesevereweakness", "charmweakness",
 			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms", "arcaneweakness"
 		]),
 		Sound: {

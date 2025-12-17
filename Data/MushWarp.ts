@@ -3611,8 +3611,8 @@ let MeshWarps: {[_: string]: MeshWarp} = {
 	Saddled: {
 		LayerGroups: {"PantLeft": "Mesh1", ThighLeft: "Mesh1", AnkleLeft: "Mesh1", // ThighLeft was ThighL
             OverLegsLeft: "Mesh1",
-            SkirtOverKneelLeft: "MeshSkirt", SkirtKneelLeft: "MeshSkirt", //"Zero": "Zero", // 
-            Skirt: "Mesh2", SkirtOver: "Mesh2", BaggyShirtAndSkirt: "Mesh2"},//, "OverLegsLeft": "Mesh1"},
+            SkirtOverKneelLeft: "MeshSkirt", LegbinderLeft: "MeshSkirt", SkirtKneelLeft: "MeshSkirt", //"Zero": "Zero", // 
+            Skirt: "Mesh2", SkirtOver: "Mesh2", LegbinderRight: "Mesh2", BaggyShirtAndSkirt: "Mesh2"},//, "OverLegsLeft": "Mesh1"},
 		filter_pose: ["Kneel", "KneelClosed"],
 		intensityFunction: (C, MC, data) => {return 1;},
 		pri_basic: 5,
@@ -27054,6 +27054,7 @@ MeshSkirOld: [
             OverLegs2: "Both",
             OverLegs3: "Both",
             LegRightOver: "Right",
+            PetsuitRight: "Right",
             PantRight: "Right",
         },
 		filter_pose: ["Spread"],

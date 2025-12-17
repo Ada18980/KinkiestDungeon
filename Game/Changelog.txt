@@ -56,6 +56,8 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Fixed ancient muzzle not actually doing 2.5x dmg
 - Rubber is now easier to cut if you can cut it, but the hardness to cut is the same
 - Can now untie party members who got 'injured' since it's otherwise unclear why you cant help them up
+- instead of swapping, moving into an ally pushes them and only swaps if there is no available space
+- Certain unlock conditions like ancient items cant be used if the group is blocked
 
 5.4.81
 - More Kinky Furniture now allows Vibe-Master 5000's to spawn

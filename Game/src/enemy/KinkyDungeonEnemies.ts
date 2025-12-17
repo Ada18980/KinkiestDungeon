@@ -7954,9 +7954,20 @@ function KinkyDungeonEnemyCanMove(enemy: entity, dir: { x: number, y: number, de
 				&& Math.sqrt((xx - findMaster.x) * (xx - findMaster.x) + (yy - findMaster.y) * (yy - findMaster.y)) > masterDist) return false;
 		}
 	}
-	return MovableTiles.includes(KinkyDungeonMapGet(xx, yy)) && ((Tries && Tries > 5) || !AvoidTiles.includes(KinkyDungeonMapGet(enemy.x + dir.x, enemy.y + dir.y)))
-		&& (ignoreLocks || !KinkyDungeonTilesGet((xx) + "," + (yy)) || !(KinkyDungeonTilesGet((xx) + "," + (yy)).Lock))
-		&& KinkyDungeonNoEnemyExceptSub(xx, yy, !KinkyDungeonLeashingEnemy(), enemy);
+	return ((Tries && Tries > 5) || !AvoidTiles.includes(KinkyDungeonMapGet(enemy.x + dir.x, enemy.y + dir.y)))
+		&& KDTileIsMovable(enemy, xx, yy, MovableTiles, ignoreLocks);
+}
+
+function KDTileIsMovable(entity: entity, xx: number, yy: number, MovableTiles: string, ignoreLocks?: boolean, allowSub: boolean = true) {
+	if (allowSub) {
+		return MovableTiles.includes(KinkyDungeonMapGet(xx, yy))
+			&& (ignoreLocks || !KinkyDungeonTilesGet((xx) + "," + (yy)) || !(KinkyDungeonTilesGet((xx) + "," + (yy)).Lock))
+			&& KinkyDungeonNoEnemyExceptSub(xx, yy, !KinkyDungeonLeashingEnemy(), entity)
+	} else {
+		return MovableTiles.includes(KinkyDungeonMapGet(xx, yy))
+			&& (ignoreLocks || !KinkyDungeonTilesGet((xx) + "," + (yy)) || !(KinkyDungeonTilesGet((xx) + "," + (yy)).Lock))
+			&& KinkyDungeonNoEnemy(xx, yy, true)
+	}
 }
 
 /**
@@ -11000,5 +11011,46 @@ function KDGetCoordFromMapData(mapData: KDMapDataType): WorldCoord {
 function KDIsJailbreakProtected(entity: entity) {
 	if (entity?.player) {
 		return !(KinkyDungeonFlags.get("remove_incidental") || KinkyDungeonFlags.get("nojailbreak"));
+	}
+}
+
+function KDGetPushTile(Enemy: entity, dx: number, dy: number): KDPoint {
+	dx = Math.sign(dx) * Math.min(1, Math.abs(dx));
+	dy = Math.sign(dy) * Math.min(1, Math.abs(dy));
+
+	let dx_t = Enemy.x + dx;
+	let dy_t = Enemy.y + dy;
+	if (KDTileIsMovable(Enemy, dx_t, dy_t, KinkyDungeonMovableTilesEnemy, false, false)) {
+		return {x: dx_t, y: dy_t};
+	} else {
+		let fallbacks = KDGetAdjacentTiles(dx, dy)
+		let origfallback = fallbacks;
+		fallbacks = fallbacks.filter((tile) => {
+			dx_t = Enemy.x + tile.x;
+			dy_t = Enemy.y + tile.y;
+			return KDTileIsMovable(Enemy, dx_t, dy_t, KinkyDungeonMovableTilesEnemy, false, false)
+		});
+
+		if (fallbacks.length > 0) {
+			let chosen = CommonRandomItemFromList(undefined, fallbacks);
+			if (chosen) {
+				return {x: Enemy.x + chosen.x, y: Enemy.y + chosen.y};
+			}
+		} else {
+			for (let fallback of origfallback) {
+				let newfallbacks = KDGetAdjacentTiles(fallback.x, fallback.y).filter((tile) => {
+					dx_t = Enemy.x + tile.x;
+					dy_t = Enemy.y + tile.y;
+					return KDTileIsMovable(Enemy, dx_t, dy_t, KinkyDungeonMovableTilesEnemy, false, false)
+				});
+				if (newfallbacks.length > 0) {
+					let chosen = CommonRandomItemFromList(undefined, newfallbacks);
+					if (chosen) {
+						return {x: Enemy.x + chosen.x, y: Enemy.y + chosen.y};
+					}
+				} 
+			}
+
+		}
 	}
 }
