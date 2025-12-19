@@ -9235,7 +9235,7 @@ RestraintName 上的诅咒解除了！
 尽管质地柔软，但这种皮革用某种几乎牢不可破的纤维进行了加固，能够牢牢卡住大多数能够切割它的工具。它的锁定装置还有四个连接点。
 # :: RestraintHighSecCuffsFullDesc2
 # :: RestraintMasterworkHobbleskirtDesc2
-# :: RestraintMasterworLegbinderDesc2
+# :: RestraintMasterworkLegbinderDesc2
 # :: RestraintMasterworkBlindfoldDesc2
 # :: RestraintMasterworkCorsetDesc2
 # :: RestraintMasterworkHeelsDesc2
@@ -15890,7 +15890,7 @@ EnemyName 离开并锁上了她身后的牢房。
 一种紧密贴合面部的口套。充能后，可回复法力、提升潜行能力，并对未察觉你的敌人造成2.5倍伤害。
 - 'Muzzle of the Saboteur'
 '破坏者的口套'
-- You claw at your face, but not only does the soft plug fill your mouth completely, the muzzle itself is nigh-unbreakable!
+- You claw at your face, but not only does a soft plug fill your mouth, your muzzle is unbreakable!
 你抓着自己的脸，但软塞不仅完全填满了你的嘴，而且口套本身几乎牢不可破！
 
 - Ancient Gag
@@ -24362,14 +24362,16 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 - (Really attack? Target is unaware and will be stunned 1 turn.)
 ( 真的要攻击？目标浑然不觉，晕眩1回合。 )
 
-- (Let me through!!)
-( 让我过去！！ )
-- (Walk past this unit)
-( 走过这个小队 )
-- (Walk past all units)
-( 走过所有小队 )
-- (Confirm? You will move through her for a few turns)
-( 确认吗？你在接下来几回合中可以穿过他 )
+- (Move through her space)
+（越过她）
+- (Swap with this unit)
+（越过这个单位）
+- (Swap with all units)
+（越过所有单位）
+# - (Push this unit)
+# - (Push all units)
+- (Confirm? You will swap if you click on her, for a few turns)
+（确认吗？在接下来几回合中，点击她就会和她交换位置）
 
 - (Stop following me)
 ( 停止跟着我 )
@@ -47336,8 +47338,16 @@ AMNT 回合后起身...
 尝试切断
 - Struggle!
 挣扎！
+- Struggle Uselessly
+无用地挣扎
+# :: KDInventoryActionCurseStruggle
+# :: KDContextMenu_StruggleCurse
 - Try to Unlock
 尝试解锁
+- Remove the Curse
+移除诅咒
+# :: KDInventoryActionCurseUnlock
+# :: KDInventoryActionCurseRemove
 - Add a Lock
 上锁
 - Try to Remove
@@ -47346,8 +47356,6 @@ AMNT 回合后起身...
 尝试撬开
 - Examine the Curse
 检查诅咒
-- Remove the Curse
-移除诅咒
 - Feed this to her
 把这个喂给她
 - Sell for VLU gp
@@ -51509,8 +51517,6 @@ NME 由于不够显要，被自动释放
 
 - Inspect Lock
 检查解锁条件
-- Struggle Uselessly
-无用地挣扎
 
 - (Already slept here)
 (已经睡过一次了)
