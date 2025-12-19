@@ -24363,15 +24363,15 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 ( 真的要攻击？目标浑然不觉，晕眩1回合。 )
 
 - (Move through her space)
-( 让我过去！！ )
+（越过她）
 - (Swap with this unit)
-( 走过这个小队 )
+（越过这个单位）
 - (Swap with all units)
-( 走过所有小队 )
+（越过所有单位）
 # - (Push this unit)
 # - (Push all units)
 - (Confirm? You will swap if you click on her, for a few turns)
-( 确认吗？你在接下来几回合中可以穿过他 )
+（确认吗？在接下来几回合中，点击她就会和她交换位置）
 
 - (Stop following me)
 ( 停止跟着我 )
