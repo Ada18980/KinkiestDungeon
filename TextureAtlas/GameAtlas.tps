@@ -2855,7 +2855,9 @@
             <key type="filename">../Game/Locks/White.png</key>
             <key type="filename">../Game/Poses/SetPose.png</key>
             <key type="filename">../Game/Struggle.png</key>
-            <key type="filename">../Game/UI/BulletTransparency.png</key>
+            <key type="filename">../Game/UI/BulletTransparencyAll.png</key>
+            <key type="filename">../Game/UI/BulletTransparencyNone.png</key>
+            <key type="filename">../Game/UI/BulletTransparencyOnly.png</key>
             <key type="filename">../Game/UI/ContextMenu/CurseInfo.png</key>
             <key type="filename">../Game/UI/ContextMenu/CurseUnlock.png</key>
             <key type="filename">../Game/UI/ContextMenu/Remove.png</key>

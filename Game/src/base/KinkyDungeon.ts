@@ -169,7 +169,7 @@ let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
 let KinkyDungeonKeyMenu = ['V', 'I', 'M', 'L', "Home"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
-let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'", 'N', 'K']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch, Buffs
+let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'", 'N', 'K', '~']; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch, Buffs
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
 let KinkyDungeonKeySwitchLoadout = ['[', ']', '\\'];
@@ -282,11 +282,12 @@ let KDDefaultKB = {
 	APathfind: KinkyDungeonKeyToggle[4],
 	AInspect: KinkyDungeonKeyToggle[5],
 
-	BulletTransparency: KinkyDungeonKeyToggle[10],
 	Map: KinkyDungeonKeyMap[0],
 	MsgLog: KinkyDungeonKeyToggle[0],
 	ZoomOut: KinkyDungeonKeyMap[1],
 	ZoomIn: KinkyDungeonKeyMap[2],
+	BulletTransparency: KinkyDungeonKeyToggle[10],
+	Status: KinkyDungeonKeyToggle[12],
 };
 
 //endregion
@@ -4611,6 +4612,8 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.PlaySelf,
 		KinkyDungeonKeybindings.Crouch,
 		KinkyDungeonKeybindings.BulletTransparency,
+		KinkyDungeonKeybindings.ToggleBuff,
+		KinkyDungeonKeybindings.Status,
 	];
 
 	KinkyDungeonKeyMap = [KinkyDungeonKeybindings.Map, KinkyDungeonKeybindings.ZoomOut, KinkyDungeonKeybindings.ZoomIn];

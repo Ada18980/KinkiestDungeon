@@ -8,6 +8,14 @@
 	"spriteSourceSize": {"x":1,"y":0,"w":71,"h":72},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Aura/Airbender1.png":
+{
+	"frame": {"x":2028,"y":1665,"w":19,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":92,"w":19,"h":19},
+	"sourceSize": {"w":144,"h":144}
+},
 "Game/Aura/BondageBuster.png":
 {
 	"frame": {"x":1964,"y":565,"w":73,"h":74},
@@ -4000,6 +4008,14 @@
 	"spriteSourceSize": {"x":8,"y":9,"w":45,"h":57},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Items/Group/ItemButt.png":
+{
+	"frame": {"x":2028,"y":1586,"w":18,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":39,"w":18,"h":29},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Items/Group/ItemLegs.png":
 {
 	"frame": {"x":1565,"y":1373,"w":24,"h":33},
@@ -4302,14 +4318,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":20,"w":35,"h":9},
-	"sourceSize": {"w":46,"h":45}
-},
-"Game/Poses/Brows2Angry.png":
-{
-	"frame": {"x":1616,"y":534,"w":13,"h":9},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":26,"y":13,"w":13,"h":9},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/Poses/Brows2Surprised.png":
@@ -4736,6 +4744,22 @@
 	"spriteSourceSize": {"x":1,"y":1,"w":142,"h":142},
 	"sourceSize": {"w":144,"h":144}
 },
+"Game/UI/UsePotionStamina.png":
+{
+	"frame": {"x":2028,"y":1617,"w":19,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":19,"h":22},
+	"sourceSize": {"w":44,"h":26}
+},
+"Game/UI/UsePotionWill.png":
+{
+	"frame": {"x":2028,"y":1641,"w":19,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":19,"h":22},
+	"sourceSize": {"w":44,"h":26}
+},
 "Game/VisionNeg.png":
 {
 	"frame": {"x":1262,"y":981,"w":183,"h":183},
@@ -4760,6 +4784,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:b484683a9a721b34d837d2ed5246b1a4:9461cf3484f322140e76a676904d24ee:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1e1a8f973b32b1844565b7ac65752f39:30be50674019837ceb8352f947dc9028:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

@@ -2432,6 +2432,7 @@ function KinkyDungeonGameKeyUp(lastPress: number): boolean {
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
 				case KinkyDungeonKeyToggle[10]: KDBulletTransparency = !KDBulletTransparency; break;
+				case KinkyDungeonKeyToggle[12]: KDStatusToggle = !KDStatusToggle; break;
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;
@@ -3967,6 +3968,7 @@ let KDKeyCheckers = {
 				case KinkyDungeonKeyToggle[4]: KinkyDungeonFastMove = !KinkyDungeonFastMove; break;
 				case KinkyDungeonKeyToggle[5]: KinkyDungeonInspect = !KinkyDungeonInspect; KinkyDungeonUpdateLightGrid = true; break;
 				case KinkyDungeonKeyToggle[10]: KDBulletTransparency = !KDBulletTransparency; break;
+				case KinkyDungeonKeyToggle[12]: KDStatusToggle = !KDStatusToggle; break;
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
 			return true;

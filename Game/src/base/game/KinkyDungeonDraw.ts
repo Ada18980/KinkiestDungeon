@@ -1284,7 +1284,7 @@ function KinkyDungeonDrawGame() {
 
 				KDDrawEffectTiles(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 
-				if (KDToggles.PlayerAura && (KDToggles.ForceWarnings || KDMouseInPlayableArea())) {
+				if (KDToggles.PlayerAura && (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)) {
 					let aura_scale = 0;
 					let aura_scale_max = 0;
 					for (let b of Object.values(KinkyDungeonPlayerBuffs)) {
@@ -1305,6 +1305,7 @@ function KinkyDungeonDrawGame() {
 										(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 0.5 * KinkyDungeonGridSizeDisplay * s,
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											zIndex: 2.1,
+											//alpha: KDMousePlayableAreaStatusFade,
 										});
 								} else {
 									KDDraw(kdstatusboard, kdpixisprites, b.id, KinkyDungeonRootDirectory + "Aura/" + (b.auraSprite ? b.auraSprite : "Aura") + ".png",
@@ -1313,6 +1314,7 @@ function KinkyDungeonDrawGame() {
 										KinkyDungeonGridSizeDisplay * (1 + s), KinkyDungeonGridSizeDisplay * (1 + s), undefined, {
 											tint: string2hex(b.aura),
 											zIndex: 2.1,
+											//alpha: KDMousePlayableAreaStatusFade
 										});
 								}
 
@@ -1366,7 +1368,7 @@ function KinkyDungeonDrawGame() {
 						(KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay - 30 + statusOffset,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay);
 				}
-				if (KDToggles.PlayerAura && (KDToggles.ForceWarnings || KDMouseInPlayableArea())) {
+				if (KDToggles.PlayerAura && (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)) {
 					if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") > 0 || KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackAcc") > 0) {
 						KDDraw(kdstatusboard, kdpixisprites, "c_buff", KinkyDungeonRootDirectory + "Conditions/Buff.png",
 							(KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay,
@@ -1437,6 +1439,7 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonDrawEnemies(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 				KinkyDungeonDrawEnemiesStatus(canvasOffsetX, canvasOffsetY, CamX+CamX_offset, CamY+CamY_offset);
 
+				KDDoStatusFade(KDDrawDelta);
 
 				KinkyDungeonSendEvent("draw",{update: KDDrawUpdate, CamX:CamX, CamY:CamY, CamX_offset: StandalonePatched ? CamX_offsetVis : CamX_offset, CamY_offset: StandalonePatched ? CamY_offsetVis : CamY_offset});
 				KDDrawUpdate = 0;
@@ -1779,7 +1782,7 @@ function KinkyDungeonDrawGame() {
 			KinkyDungeonDrawFloaters(CamX+CamX_offsetVis, CamY+CamY_offsetVis);
 
 			if (KinkyDungeonCanvas) {
-				if (KDToggles.ForceWarnings || KDMouseInPlayableArea()) {
+				if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade) {
 					let barInt = 0;
 					if (KinkyDungeonStatStamina < KinkyDungeonStatStaminaMax*0.99) {
 						if (KinkyDungeonStatStamina != undefined && !(KinkyDungeonPlayerEntity.visual_stamina == KinkyDungeonStatStamina)) {
@@ -5844,4 +5847,30 @@ function KDSpellValid(x: number, y: number, spellRange: number, projAimOverride?
 	if (KinkyDungeonTargetingSpell.minRange && KDistEuclidean(x - KinkyDungeonPlayerEntity.x, y - KinkyDungeonPlayerEntity.y) < KinkyDungeonTargetingSpell.minRange) Valid = false;
 
 	return Valid;
+}
+
+let KDStatusFadeSpeed = 1;
+let KDStatusToggle = true;
+let KDMouseOtherStatusFade = 1;
+let KDMousePlayableAreaStatusFade = 1;
+function KDDoStatusFade(delta: number) {
+	if (KDToggles.ForceWarnings) {
+		KDMousePlayableAreaStatusFade = 1;
+	} else {
+		if (KDMouseInPlayableArea()) {
+			KDMousePlayableAreaStatusFade = Math.min(1, KDMousePlayableAreaStatusFade + KDStatusFadeSpeed * delta/1000);
+		} else {
+			KDMousePlayableAreaStatusFade = Math.max(0, KDMousePlayableAreaStatusFade - KDStatusFadeSpeed * delta/1000);
+		}
+	}
+	if (KDStatusToggle) {
+		KDMouseOtherStatusFade = Math.min(1, KDMouseOtherStatusFade + KDStatusFadeSpeed * delta/1000);
+	} else {
+		KDMouseOtherStatusFade = Math.max(0, KDMouseOtherStatusFade - KDStatusFadeSpeed * delta/1000);
+	}
+	KDMousePlayableAreaStatusFade = Math.min(KDMousePlayableAreaStatusFade, KDMouseOtherStatusFade);
+	kdenemystatusboard.alpha = KDMouseOtherStatusFade;
+	kdstatusboard.alpha = KDMouseOtherStatusFade;
+	kdwarningboardOver.alpha = KDMousePlayableAreaStatusFade;
+	kdwarningboard.alpha = KDMousePlayableAreaStatusFade;
 }

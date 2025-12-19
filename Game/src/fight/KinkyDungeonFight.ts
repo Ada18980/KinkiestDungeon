@@ -3327,6 +3327,10 @@ interface LaunchBulletData {
 
 let KDLastFightDelta = 0;
 
+let KDWarningFlashPerDelta = 250; // ms
+let KDWarningFlashBPerDelta = 90; // ms
+let KDWarningFlashSpeed = 1.5;
+
 
 function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let delta = CommonTime() - KDLastFightDelta;
@@ -3343,8 +3347,13 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 		}
 	}
 
-	if (KDToggles.ForceWarnings || KDMouseInPlayableArea())
+	let flashindex = 0;
+
+	if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)
 		for (let t of KDBulletWarnings) {
+	
+			let alphamult = KDToggles.FlashingWarning ? Math.sin(
+				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1;
 			let scale = t.scale || 0.01;
 			if (scale < 1) t.scale = Math.max(0, Math.min(1, (t.scale || 0) + delta * 0.005/KDAnimSpeed));
 			else scale = 1;
@@ -3360,20 +3369,20 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 					KinkyDungeonGridSizeDisplay * scale, KinkyDungeonGridSizeDisplay * scale, undefined, {
 						tint: string2hex(t.color || KDBaseRed),
 						zIndex: -0.1,
-						alpha: 0.5,
+						alpha: 0.5 * alphamult,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 					(txvis - CamX + 0.5 - 0.5 * scale) * KinkyDungeonGridSizeDisplay, (tyvis - CamY + 0.5 - 0.5 * scale) * KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay * scale, KinkyDungeonGridSizeDisplay * scale, undefined, {
 						tint: string2hex(t.color || KDBaseRed),
 						zIndex: -0.2,
-						alpha: 0.5,
+						alpha: 0.5 * alphamult,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b_h", KinkyDungeonRootDirectory + "WarningBackingHighlight" + ".png",
 					(txvis - CamX + 0.5 - 0.5 * scale) * KinkyDungeonGridSizeDisplay, (tyvis - CamY + 0.5 - 0.5 * scale) * KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay * scale, KinkyDungeonGridSizeDisplay * scale, undefined, {
 						zIndex: -0.21,
-						alpha: 0.5,
+						alpha: 0.5 * alphamult,
 					});
 			}
 		}

@@ -1414,11 +1414,16 @@ interface WarningTileRecord {
 function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 
 	let delta = CommonTime() - KDLastEnemyWarningDelta;
+	let flashindex = 0;
 	KDLastEnemyWarningDelta = CommonTime();
-	if (KDToggles.ForceWarnings || KDMouseInPlayableArea()) {
+	if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade) {
 		let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, KDGameData.MaxVisionDist + 1, undefined, true);
 		for (let enemy of nearby) {
-			if (enemy.warningTiles) {
+			let flashindexed = false;
+			if (enemy.warningTiles?.length > 0) {
+				
+				let alphamult = (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI *
+					((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
 				for (let t of enemy.warningTiles) {
 					let scale = t.scale || 0.01;
 					if (scale < 1) t.scale = Math.max(0, Math.min(1, (t.scale || 0) + delta * 0.008/KDAnimSpeed));
@@ -1441,15 +1446,18 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 						falpha = 0.25;
 						//preHit = true;
 					}
+					balpha *= alphamult;
+					falpha *= alphamult;
 					//  && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tx, ty))
 					if (txx >= CamX && tyy >= CamY && txx < CamX + KinkyDungeonGridWidthDisplay && tyy < CamY + KinkyDungeonGridHeightDisplay && !(txx == enemy.x && tyy == enemy.y)) {
 						let color = enemy.Enemy.color ? string2hex(enemy.Enemy.color) : 0xE30022;
-
+						flashindexed = true;
 						KDDraw(kdwarningboardOver, kdpixisprites, tx + "," + ty + "_w" + enemy.id, KinkyDungeonRootDirectory + ((KDAllied(enemy)) ? "WarningAlly" : "WarningColor" + special) + ".png",
 							(tx - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (ty - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
 							KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
 								tint: color,
 								zIndex: 2.22 + 0.001 * (enemy.Enemy.power ? enemy.Enemy.power : 0),
+								alpha: alphamult,
 							});
 						KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + enemy.id, KinkyDungeonRootDirectory + "WarningBacking" + ".png",
 							(tx - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (ty - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
@@ -1469,6 +1477,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 							(tx - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay - 1, (ty - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay - 1,
 							KinkyDungeonGridSizeDisplay*scale + 2, KinkyDungeonGridSizeDisplay*scale + 2, undefined, {
 								zIndex: 2.2,
+								alpha: alphamult,
 							});
 					}
 				}
@@ -1476,33 +1485,44 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 			let mp = enemy.Enemy.movePoints + KDBoundEffects(enemy) * 0.5;
 			let ms = KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed") ? KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "MoveSpeed")) : 1;
 			if (enemy.fx && enemy.fy && enemy.movePoints >= mp - ms - 0.0001) {
+				
 				let tx = enemy.fx;
 				let ty = enemy.fy;
 				if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-					let color = enemy.Enemy.color ? string2hex(enemy.Enemy.color) : 0xE30022;
-					KDDraw(kdenemystatusboard, kdpixisprites, tx + "," + ty + "_w_m" + enemy.id, KinkyDungeonRootDirectory + ("WarningMove") + ".png",
-						(tx - CamX + 0.5)*KinkyDungeonGridSizeDisplay - 1, (ty - CamY + 0.5)*KinkyDungeonGridSizeDisplay - 1,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, Math.atan2(ty - enemy.y, tx - enemy.x) || 0, {
-							tint: color,
-							zIndex: -0.05,
-						}, true);
+						let alphamult = (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI * 
+							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+						flashindexed = true;
+						let color = enemy.Enemy.color ? string2hex(enemy.Enemy.color) : 0xE30022;
+						KDDraw(kdenemystatusboard, kdpixisprites, tx + "," + ty + "_w_m" + enemy.id, KinkyDungeonRootDirectory + ("WarningMove") + ".png",
+							(tx - CamX + 0.5)*KinkyDungeonGridSizeDisplay - 1, (ty - CamY + 0.5)*KinkyDungeonGridSizeDisplay - 1,
+							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, Math.atan2(ty - enemy.y, tx - enemy.x) || 0, {
+								tint: color,
+								zIndex: -0.05,
+								alpha: alphamult,
+							}, true);
 				}
 			}
 			if (enemy.Enemy.spells && (enemy.Enemy.spellRdy && (!KDAmbushAI(enemy) || enemy.ambushtrigger)) && !(enemy.castCooldown > 1) && (!(enemy.silence > 0) && !(enemy.stun > 0) && !(enemy.freeze > 0) && !(enemy.teleporting > 0) && !KDHelpless(enemy))) {
+				
 				let tx = enemy.visual_x;
 				let ty = enemy.visual_y;
 				//  && KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(tx, ty))
 				if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-					KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_spellRdy", KinkyDungeonRootDirectory + "SpellReady.png",
-						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
-						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, enemy.Enemy.color ? {
-							tint: string2hex(enemy.Enemy.color),
-							zIndex: -2,
-						} : undefined);
+						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI * 
+							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+						flashindexed = true;
+						KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_spellRdy", KinkyDungeonRootDirectory + "SpellReady.png",
+							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
+							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, enemy.Enemy.color ? {
+								tint: string2hex(enemy.Enemy.color),
+								zIndex: -2,
+								
+								alpha: alphamult,
+							} : undefined);
 				}
 			}
 			if (enemy.weakBinding) { //  || enemy.specialBinding
@@ -1513,14 +1533,20 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 				if (binder && tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-					KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_weakB", KinkyDungeonRootDirectory + "WeakBinding.png",
+						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI *
+							((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+						flashindexed = true;
+						KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_weakB", KinkyDungeonRootDirectory + "WeakBinding.png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
 						KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, binder.Enemy.color ? {
 							tint: string2hex(binder.Enemy.color),
 							zIndex: -2.1,
+							
+							alpha: alphamult,
 						} : undefined);
 				}
 			}
+			if (flashindexed) flashindex++;
 		}
 	}
 }
@@ -2177,7 +2203,7 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 				// Draw thought bubbles
 				let yboost = II * -20;
 				if (canSee) {
-					if ((KDToggles.ForceWarnings || KDMouseInPlayableArea()) && (enemy.Enemy.specialdialogue || enemy.specialdialogue || (enemy.prisondialogue && KDIsImprisoned(enemy)))) {
+					if ((KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade) && (enemy.Enemy.specialdialogue || enemy.specialdialogue || (enemy.prisondialogue && KDIsImprisoned(enemy)))) {
 						KDDraw(kdenemystatusboard, kdpixisprites, enemy.id + "_th", KinkyDungeonRootDirectory + "Conditions/Dialogue.png",
 							canvasOffsetX + (xx - CamX)*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - KinkyDungeonGridSizeDisplay/2 + yboost,
 							KinkyDungeonGridSizeDisplay, KinkyDungeonGridSizeDisplay, undefined, {

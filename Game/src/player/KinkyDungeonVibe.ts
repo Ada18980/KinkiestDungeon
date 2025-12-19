@@ -182,11 +182,13 @@ let KDToggles = {
 	ExtraBuffRow: true,
 	StruggleContext: false,
 	TrainingBuff: true,
+	FlashingWarning: true,
 };
 
 
 
 let KDToggleCategories = {
+	FlashingWarning: "UI",
 	StruggleContext: "UI",
 	Headpats: "Clothes",
 	ExtraBuffRow: "UI",

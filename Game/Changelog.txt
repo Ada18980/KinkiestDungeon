@@ -52,6 +52,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 5.4.82
 - added spreader bar
+- remembers mods loaded without having to reselect them, uploading to browser (thanks xmg666)
 - added mod support for custom capture actions instead of just CaptureJail
 - Fixed ancient muzzle not actually doing 2.5x dmg
 - Rubber is now easier to cut if you can cut it, but the hardness to cut is the same
@@ -60,6 +61,9 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - Certain unlock conditions like ancient items cant be used if the group is blocked
 - Restoration shrines now passively heal party members up to 80% (-10% per rank, 30% for bosses) within 7 squares when not in combat
 - Restoration shrines now full heal all party members when used
+- Added toggle to have warnings flash
+- Added key to toggle ALL statuses on game board
+- 
 
 5.4.81
 - More Kinky Furniture now allows Vibe-Master 5000's to spawn

@@ -1187,10 +1187,21 @@ function KinkyDungeonDrawActionBar(_x: number, _y: number) {
 	}
 	if (MouseIn(0, 0, 500, 1000) || MouseIn(500, 900, 320, 200) || KDBulletTransparency || KDMapData.Bullets?.length > 0) {
 		if (DrawButtonKDEx("SetTransparentBullets", (_bdata) => {
-			KDBulletTransparency = !KDBulletTransparency;
+			if (KDStatusToggle) {
+				if (!KDBulletTransparency) {
+					KDBulletTransparency = true;
+				} else {
+					KDStatusToggle = false;
+				}
+			} else {
+				KDBulletTransparency = false;
+				KDStatusToggle = true;
+			}
 			return true;
-		}, true, 720, 925, 60, 60, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/BulletTransparency.png", "", false, false,
-		KDBulletTransparency ? KDTextGray3 : KDButtonColor, undefined, undefined)) str = "KDBulletTransparency";
+		}, true, 720, 925, 60, 60, "", KDBaseWhite, KinkyDungeonRootDirectory + "UI/BulletTransparency" +
+			((KDBulletTransparency && KDStatusToggle) ? "All" : (KDStatusToggle ? "Only" : "None"))
+		+".png", "", false, false,
+		KDButtonColor, undefined, undefined)) str = "KDBulletTransparency";
 	}
 	if (KDPlayerSetPose) {
 		KDPlayerDrawPoseButtons(KinkyDungeonPlayer);

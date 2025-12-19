@@ -1093,6 +1093,7 @@ KinkyDungeonKeyToggleBuff,Expand Buffs/Status
 KinkyDungeonKeyMakeNoise,Make Noise
 KinkyDungeonKeyCrouch,Crouch
 KinkyDungeonKeyPlaySelf,Play with Self
+KinkyDungeonKeyStatus,Hide Statuses/Dialogue
 
 KinkyDungeonKeyMsgLog,Message Log
 KinkyDungeonKeyDoor,Interact
@@ -29119,11 +29120,12 @@ KDColorHex,Hex Code:
 
 KDHideRest,Toggle Struggle UI Mode
 KDSetPose,Change Character Pose
-KDBulletTransparency,Make Bullets Transparent
+KDBulletTransparency,Toggle UI Transparency
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
 KDToggleModCompat,Mod Compat Mode (requires reload)
+KDToggleFlashingWarning,Flashing Warning Tiles
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)

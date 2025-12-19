@@ -496,6 +496,14 @@
 	"spriteSourceSize": {"x":25,"y":19,"w":13,"h":21},
 	"sourceSize": {"w":60,"h":60}
 },
+"Game/UI/BoxTiny.png":
+{
+	"frame": {"x":382,"y":2041,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6}
+},
 "Game/UI/Buttons/RemoveGuestConfirm.png":
 {
 	"frame": {"x":1805,"y":1936,"w":78,"h":78},
@@ -577,6 +585,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:b484683a9a721b34d837d2ed5246b1a4:9461cf3484f322140e76a676904d24ee:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1e1a8f973b32b1844565b7ac65752f39:30be50674019837ceb8352f947dc9028:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

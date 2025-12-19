@@ -4552,6 +4552,14 @@
 	"spriteSourceSize": {"x":7,"y":17,"w":32,"h":13},
 	"sourceSize": {"w":46,"h":45}
 },
+"Game/Poses/BrowsAnnoyed.png":
+{
+	"frame": {"x":607,"y":1088,"w":14,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":17,"w":14,"h":3},
+	"sourceSize": {"w":46,"h":45}
+},
 "Game/Poses/BrowsSurprised.png":
 {
 	"frame": {"x":1348,"y":1277,"w":14,"h":9},
@@ -4614,6 +4622,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":30,"w":26,"h":3},
+	"sourceSize": {"w":46,"h":45}
+},
+"Game/Poses/MouthSmile.png":
+{
+	"frame": {"x":755,"y":1138,"w":23,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":28,"w":23,"h":7},
 	"sourceSize": {"w":46,"h":45}
 },
 "Game/ShopBasic/Default.png":
@@ -4944,6 +4960,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game3.json", "game4.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:b484683a9a721b34d837d2ed5246b1a4:9461cf3484f322140e76a676904d24ee:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1e1a8f973b32b1844565b7ac65752f39:30be50674019837ceb8352f947dc9028:54a7432a0665349a58c0c74f51e75c65$"
 }
 }
