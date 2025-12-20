@@ -2324,6 +2324,7 @@ Devious Dungeon Challenge 已启用。
 制造噪音
 - Play with Self
 自慰
+# - Hide Statuses/Dialogue
 
 - Message Log
 消息日志
@@ -45943,7 +45944,7 @@ RestraintName 失效了！
 切换挣扎 UI 模式
 - Change Character Pose
 改变角色姿势
-- Make Bullets Transparent
+- Toggle UI Transparency
 使子弹透明
 - X-Ray Vision
 视觉透视
@@ -45953,6 +45954,7 @@ RestraintName 失效了！
 跳过教程
 - Mod Compat Mode (requires reload)
 模组兼容模式 ( 需要重启 )
+# - Flashing Warning Tiles
 
 - Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
