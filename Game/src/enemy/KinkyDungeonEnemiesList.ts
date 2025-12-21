@@ -5007,7 +5007,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 	},
 	{name: "AnimYoke", arousalMode: true, faction: "KinkyConstruct", clusterWith: "construct",
-		tags: KDMapInit(["metalTrap", "ignoreharmless", "doortrap", "construct", "nosignal", "poisonimmune", "soulimmune", "melee", "yokeSpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
+		tags: KDMapInit(["metalTrap", "ignoreharmless", "doortrap", "construct", "nosignal", "poisonimmune", "soulimmune", "melee", "spreaderSpell", "yokeSpell", "minor", "chainresist", "meleeresist", "glueweakness", "iceweakness", "flying"]), ignorechance: 0.75,
 		armor: 2, followRange: 1, AI: "hunt",  ignoreflag: ["FA_Yoke"], failAttackflag: ["FA_Yoke"], squeeze: true, ignoreStaminaForBinds: true,
 		Attack: {
 			mustBindorFail: true,
