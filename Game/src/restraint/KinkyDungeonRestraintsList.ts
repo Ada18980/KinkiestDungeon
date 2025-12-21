@@ -3512,6 +3512,20 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
 		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9, "steelbondage": 10},
 		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
+	{inventory: true, trappable: true, name: "SpreaderBar", Asset: "Yoke", accessible: true, Group: "ItemFeet",
+		Model: "SteelSpreader",
+		playerTagsMult: {
+			"More_Yokes": 3.5,
+			"Less_Yokes": 0.1,
+		},
+		events: [
+			{trigger: "getHandsBound", type: "Yoke", inheritLinked: true},
+		],
+		restriction: 10,
+		Color: "Default", bindarms: true, restricthands: 0.85, power: 6, weight: 0, DefaultLock: "Red",
+		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 10, "Pick": -0.15, "Unlock": -0.15},
+		helpChance: {"Pick": 0.5, "Unlock": 1.0}, enemyTags: {"trap":9, "yokeSpell": 10, "Unchained": -9, "steelbondage": 10},
+		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Metal", "Yokes", "Yoked"]},
 	{inventory: true, trappable: true, name: "HeavyYoke", Asset: "Yoke", accessible: true, Group: "ItemArms",
 		Model: "HeavyYoke",
 		playerTagsMult: {
