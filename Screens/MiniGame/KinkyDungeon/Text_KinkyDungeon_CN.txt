@@ -9957,7 +9957,6 @@ RestraintName 上的诅咒解除了！
 # :: RestraintSteelArmCuffsDesc2
 # :: RestraintSteelLegCuffsDesc2
 # :: RestraintSteelAnkleCuffsDesc2
-# :: RestraintMaidAnkleCuffsDesc2
 # :: RestraintMaidAnkleCuffs2Desc2
 
 - Steel Leg Cuffs
@@ -10019,14 +10018,16 @@ RestraintName 上的诅咒解除了！
 它由非常坚韧的强化皮革制成。切开它需要一些时间。
 # :: RestraintMaidBeltDesc2
 # :: RestraintMaidGagDesc2
-- Maid Cuffs
+- Maid Ankle Cuffs
 女仆铐
-- A pair of steel cuffs used by the Maidforce.
+- A pair of steel-reinforced cuffs used by the Maidforce.
 女仆势力使用的一对钢铐。
-# :: RestraintMaidAnkleCuffsDesc
-# :: RestraintMaidAnkleCuffs2Desc
+- Don't let the comfy, padded exterior fool you, the core is solid steel and will resist most attempts to cut it!
+它们由实心钢制成。
 - Maid Cuff Link
 女仆铐链
+- A pair of steel cuff links used by the Maidforce.
+女仆势力使用的一对钢铐。
 
 - Maid Collar
 女仆项圈
