@@ -880,7 +880,8 @@
             <key type="filename">../Models/SleepsackJacket/StrapsTied.png</key>
             <key type="filename">../Models/SleepsackJacket/Suspension.png</key>
             <key type="filename">../Models/Spreader/Bar.png</key>
-            <key type="filename">../Models/Spreader/ShortLeft.png</key>
+            <key type="filename">../Models/Spreader/ShortLeftKneel.png</key>
+            <key type="filename">../Models/Spreader/ShortLeftSpread.png</key>
             <key type="filename">../Models/Spreader/ShortRight.png</key>
             <key type="filename">../Models/Succubus/FootSockLeftHogtie.png</key>
             <key type="filename">../Models/Succubus/FootSockRightKneel.png</key>
