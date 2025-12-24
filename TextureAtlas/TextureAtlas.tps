@@ -153,7 +153,7 @@
             <key>scale</key>
             <double>0.5</double>
             <key>scaleMode</key>
-            <enum type="ScaleMode">Fast</enum>
+            <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
             <uint>1</uint>
             <key>trimThreshold</key>
@@ -880,7 +880,6 @@
             <key type="filename">../Models/SleepsackJacket/StrapsTied.png</key>
             <key type="filename">../Models/SleepsackJacket/Suspension.png</key>
             <key type="filename">../Models/Spreader/Bar.png</key>
-            <key type="filename">../Models/Spreader/ShortLeft.png</key>
             <key type="filename">../Models/Spreader/ShortRight.png</key>
             <key type="filename">../Models/Succubus/FootSockLeftHogtie.png</key>
             <key type="filename">../Models/Succubus/FootSockRightKneel.png</key>
@@ -941,6 +940,22 @@
                 <rect>160,166,321,332</rect>
                 <key>scale9Paddings</key>
                 <rect>160,166,321,332</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/Spreader/ShortLeftKneel.png</key>
+            <key type="filename">../Models/Spreader/ShortLeftSpread.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>0,0,0,0</rect>
+                <key>scale9Paddings</key>
+                <rect>0,0,0,0</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
