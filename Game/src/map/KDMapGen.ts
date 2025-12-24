@@ -104,7 +104,7 @@ function KinkyDungeonCreateMap (
 	let location = KDWorldMap[(constantX ? 0 : worldLocation.x) + "," + worldLocation.y];
 
 	if (useExisting && location.data[KDGameData.RoomType]) {
-		KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
+		let oldMapData = KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
 
 		if (location.jx == undefined) location.jx = KDGameData.JourneyX;
 		if (location.jy == undefined) location.jy = KDGameData.JourneyY;
@@ -128,7 +128,10 @@ function KinkyDungeonCreateMap (
 		});
 
 		KDGameData.ShortcutIndex = KDGameData.RoomType;
-		return;
+		return {
+			newMapDataObject: KDMapData,
+			oldMapDataObject: oldMapData,
+		};
 	}
 
 	// Filter out the allies

@@ -201,7 +201,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 			SwapLayerPose: {Saddled: "LegbinderAnkleLeftPants"},
 		},
 		{ Name: "FeetBelts", Layer: "LegbinderAnklesOver", Pri: 29.2,

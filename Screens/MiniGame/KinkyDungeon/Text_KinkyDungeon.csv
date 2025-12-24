@@ -4907,8 +4907,9 @@ RestraintScaleAnkleCuffs3Desc,"A pair of cuffs chaining your feet tightly togeth
 RestraintScaleAnkleCuffs3Desc2,"They are made from leather cured from the hide of dragons."
 KinkyDungeonUnLinkScaleAnkleCuffs3,"Your ankle cuff chain loosens!"
 
-
-
+RestraintSpreaderBar,Spreader Bar
+RestraintSpreaderBarDesc,"A set of steel shackles spread apart by a metal bar, forcing the wearer into an awkward hobbled position."
+RestraintSpreaderBarDesc2,"It's made of solid, rigid steel. ABle to resist bites, blades, and futile struggles all the same."
 
 RestraintMaidJacket,Maid Jacket
 RestraintMaidJacketDesc,"A bolero jacket keeping your arms pinned snugly. You can't even move them."

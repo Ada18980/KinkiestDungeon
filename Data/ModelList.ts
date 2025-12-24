@@ -1719,7 +1719,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "BootRightKneel", Layer: "ShoeRightKneel", Pri: 1,
 			Poses: ToMap(["Kneel"]),

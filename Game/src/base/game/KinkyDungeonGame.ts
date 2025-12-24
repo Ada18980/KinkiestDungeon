@@ -776,12 +776,12 @@ function KDPackEnemies(data: KDMapDataType) {
  * @param [constantX]
  * @param [ignoreAware] - Enemies will lock the door if this is true and they see you enter
  */
-function KDLoadMapFromWorld(x: number, y: number, room: string, direction: number = 0, constantX?: boolean, ignoreAware: boolean = true) {
+function KDLoadMapFromWorld(x: number, y: number, room: string, direction: number = 0, constantX?: boolean, ignoreAware: boolean = true): KDMapDataType {
 	let origx = x;
 	if (constantX) x = 0;
 
-	if (!KDWorldMap[x + ',' + y]) return false;
-	if (!KDWorldMap[x + ',' + y].data[room]) return false;
+	if (!KDWorldMap[x + ',' + y]) return KDMapData;
+	if (!KDWorldMap[x + ',' + y].data[room]) return KDMapData;
 
 	// Create enemies first so we can spawn them in the set pieces if needed
 	let allies = KinkyDungeonGetAllies();
@@ -793,7 +793,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 
 	KDKickEnemies(undefined, ignoreAware, y); // Shuffle enemy locations
 
-	KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
+	let retval = KDSaveRoom(KDCurrentWorldSlot, KDMapData.ConstantX);
 
 	// Load the room
 	let NewMapData = JSON.parse(JSON.stringify(KDWorldMap[x + ',' + y].data[room]));
@@ -844,7 +844,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 		e.visual_x = point.x;
 		e.visual_y = point.y;
 	}
-	return true;
+	return retval;
 }
 
 /**

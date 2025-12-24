@@ -612,7 +612,7 @@ AddModel({
 			EraseSprite: "EraseSkirtSplit",
 			ErasePoses: ["Spread", "Closed", "Hogtie"],
 			EraseLayers: {WrappingLegsOver: true},
-			EraseZBonus: 100,
+			EraseZBonus: 20000,
 		},
 		{ Name: "SkirtSplitOver", Layer: "SkirtOverKneel", Pri: 17,
 			Poses: ToMap([...KNEELPOSES]),

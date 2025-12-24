@@ -651,7 +651,7 @@ AddModel({
 			EraseSprite: "HeelsRightErase2",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 
 			HidePoseConditional: [
 				["DynamicArmor", "BootsArmor", "SuppressDynamic"],
