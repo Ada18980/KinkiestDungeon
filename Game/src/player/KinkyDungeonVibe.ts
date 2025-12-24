@@ -179,6 +179,7 @@ let KDToggles = {
 	ExtraTooltipCycle: true,
 	ShowExtraStruggle: false,
 	InvLimit: true,
+	NativeCompression: false,
 	Headpats: false,
 	ExtraBuffRow: true,
 	StruggleContext: false,
@@ -279,6 +280,7 @@ let KDToggleCategories = {
 	HideArmorWardrobe: "none",
 	BindPercent: "UI",
 	AutoWaitDelayed: "UI",
+	NativeCompression: "Main",
 };
 
 function KDStopAllVibeSounds(Exceptions?: string[]) {

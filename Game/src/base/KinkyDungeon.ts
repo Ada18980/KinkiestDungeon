@@ -1785,6 +1785,8 @@ function KinkyDungeonRun() {
 
 				}
 
+				// Show loading screen before starting async load (but async might not yield, so it might not have time to render)
+				KinkyDungeonState = "GenMap";
 				KDExecuteModsAndStart();
 				// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2.
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
@@ -1801,24 +1803,20 @@ function KinkyDungeonRun() {
 				let emptySlot = undefined;
 				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
 					let num = (i);
-					KinkyDungeonDBLoad(num).then((code) => {
+					KinkyDungeonDBLoad(num).then(async (code) => {
 						loadedsaveslots[num - 1] = code;
-						let decoded = LZString.decompressFromBase64(code);
-						let parse = JSON.parse(decoded);
-						if (decoded && parse?.KDGameData?.PlayerName)
-							loadedsaveNames[num - 1] =
-								JSON.parse(decoded)?.KDGameData?.PlayerName;
-								
-						if (decoded && parse?.KDGameData?.HighestLevelCurrent)
-							loadedsaveFloors[num - 1] =
-								parse.KDGameData.HighestLevelCurrent;
-								
-						if (decoded && parse?.KDGameData?.Class)
-							loadedsaveClasses[num - 1] =
-								parse.KDGameData.Class;
-						if (decoded && (parse?.npp ||  parse?.stats?.npp))
-							loadedsaveNG[num - 1] =
-								(parse?.npp ||  parse?.stats?.npp);
+						if (code) {
+							let decoded = await KDDecompressForLoad(code);
+							let parse = decoded ? JSON.parse(decoded) : null;
+							if (parse?.KDGameData?.PlayerName)
+								loadedsaveNames[num - 1] = parse.KDGameData.PlayerName;
+							if (parse?.KDGameData?.HighestLevelCurrent)
+								loadedsaveFloors[num - 1] = parse.KDGameData.HighestLevelCurrent;
+							if (parse?.KDGameData?.Class)
+								loadedsaveClasses[num - 1] = parse.KDGameData.Class;
+							if (parse?.npp || parse?.stats?.npp)
+								loadedsaveNG[num - 1] = parse?.npp || parse?.stats?.npp;
+						}
 						if (!emptySlot && !code) {
 							emptySlot = num;
 							KDSaveSlot = emptySlot;
@@ -1839,13 +1837,14 @@ function KinkyDungeonRun() {
 				});
 				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
 					let num = (i);
-					KinkyDungeonDBLoad(num).then((code) => {
+					KinkyDungeonDBLoad(num).then(async (code) => {
 						loadedsaveslots[num - 1] = code;
-
-						let decoded = LZString.decompressFromBase64(code);
-						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
-							loadedsaveNames[num - 1] =
-								JSON.parse(decoded)?.KDGameData?.PlayerName;
+						if (code) {
+							let decoded = await KDDecompressForLoad(code);
+							if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
+								loadedsaveNames[num - 1] =
+									JSON.parse(decoded)?.KDGameData?.PlayerName;
+						}
 					});
 				}
 
@@ -2886,8 +2885,9 @@ function KinkyDungeonRun() {
 		}
 	} else if (KinkyDungeonState == "Save") {
 		// Draw temp start screen
-		DrawTextKD(TextGet("KinkyDungeonSaveIntro0"), 1250, 350, KDBaseWhite, KDTextGray2);
-		DrawTextKD(TextGet("KinkyDungeonSaveIntro1"), 1250, 475, KDBaseWhite, KDTextGray2);
+		const saveReady = !!ElementValue("saveDataField");
+		DrawTextKD(TextGet(saveReady ? "KinkyDungeonSaveIntro0" : "KDSaving"), 1250, 350, KDBaseWhite, KDTextGray2);
+		if (saveReady) DrawTextKD(TextGet("KinkyDungeonSaveIntro1"), 1250, 475, KDBaseWhite, KDTextGray2);
 		/*DrawTextKD(TextGet("KinkyDungeonSaveIntro"), 1250, 475, KDBaseWhite, KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonSaveIntro2"), 1250, 550, KDBaseWhite, KDTextGray2);
 		DrawTextKD(TextGet("KinkyDungeonSaveIntro3"), 1250, 625, KDBaseWhite, KDTextGray2);
@@ -5273,21 +5273,27 @@ function KDDrawLoadMenu() {
 			KDMapData.Grid = "";
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
-			if (KinkyDungeonLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
-				KDGenMapCallback = () => {
-					if (KDMapData.Grid == "")
-						KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)],
-							KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
-					KinkyDungeonState = "Game";
-					if (KinkyDungeonKeybindings) {
-						KDCommitKeybindings();
-					}
-					KDModsAfterGameStart();
-					return "Game";
-				};
-				KinkyDungeonState = "GenMap";
-
-			}
+			// Show loading screen immediately, async load sets callback when done
+			KinkyDungeonState = "GenMap";
+			const saveData = LoadMenuCurrentSave;
+			KinkyDungeonLoadGame(saveData, KDToggles.OverrideConsent).then(success => {
+				if (success && KinkyDungeonState == "GenMap") {
+					KDGenMapCallback = () => {
+						if (KDMapData.Grid == "")
+							KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)],
+								KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
+						KinkyDungeonState = "Game";
+						if (KinkyDungeonKeybindings) {
+							KDCommitKeybindings();
+						}
+						KDModsAfterGameStart();
+						return "Game";
+					};
+				} else if (KinkyDungeonState == "GenMap") {
+					// Load failed, return to menu
+					KinkyDungeonState = "Menu";
+				}
+			});
 			LoadMenuCurrentSave = undefined;
 			LoadMenuCurrentSlot = undefined;
 			ElementRemove("saveInputField");
@@ -5760,32 +5766,50 @@ function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
 	}
 }
 
-function KinkyDungeonStartNewGame(Load: boolean = false) {
+/**
+ * KinkyDungeonStartNewGame was split into 4 functions to isolate async loading.
+ * Button callbacks (DrawButtonKDEx) expect sync returns - an async function
+ * returns a Promise (always truthy), breaking return value checks.
+ *
+ * - KinkyDungeonStartNewGame: sync, for new games (called by button callbacks)
+ * - KinkyDungeonStartNewGameWithLoad: async, for loading saves
+ * - KinkyDungeonStartNewGameInit: shared initialization
+ * - KinkyDungeonStartNewGameFinalize: shared finalization
+ */
+function KinkyDungeonStartNewGameInit(Load: boolean) {
 	KinkyDungeonSendEvent("beforeNewGame", {Load: Load});
 	KinkyDungeonNewGame = 0;
-	let cp = KinkyDungeonMapIndex.grv;
 	KDUpdateHardMode();
 	KinkyDungeonInitialize(1, Load);
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KDMapData.Grid = "";
-	if (Load) {
-		KinkyDungeonLoadGame(undefined, true);
-		KDSendEvent('loadGame');
-	} else {
-		KDSendEvent('newGame');
-		KDGameData.RoomType = "JourneyFloor";//KinkyDungeonStatsChoice.get("easyMode") ? "ShopStart" : "JourneyFloor";
-		KDSetWorldSlot(0, 0, 0, 0);
-		KDInitializeJourney("");
+}
 
+function KinkyDungeonStartNewGame() {
+	let cp = KinkyDungeonMapIndex.grv;
+	KinkyDungeonStartNewGameInit(false);
+	KDSendEvent('newGame');
+	KDGameData.RoomType = "JourneyFloor";
+	KDSetWorldSlot(0, 0, 0, 0);
+	KDInitializeJourney("");
 
-
-		if (KDTileToTest) {
-			KinkyDungeonMapIndex.grv = cp;
-		}
-
-		KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
-		KinkyDungeonPlayer.Name = KDGameData.PlayerName;
+	if (KDTileToTest) {
+		KinkyDungeonMapIndex.grv = cp;
 	}
+
+	KDGameData.PlayerName = localStorage.getItem("PlayerName") || "Ada";
+	KinkyDungeonPlayer.Name = KDGameData.PlayerName;
+	KinkyDungeonStartNewGameFinalize(false);
+}
+
+async function KinkyDungeonStartNewGameWithLoad() {
+	KinkyDungeonStartNewGameInit(true);
+	await KinkyDungeonLoadGame("", KDToggles.OverrideConsent);
+	KDSendEvent('loadGame');
+	KinkyDungeonStartNewGameFinalize(true);
+}
+
+function KinkyDungeonStartNewGameFinalize(Load: boolean) {
 	if (!KDMapData.Grid) {
 		KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], "JourneyFloor", "", MiniGameKinkyDungeonLevel, false, Load);
 		KDInitPerks();
@@ -5796,8 +5820,6 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 		KDCommitKeybindings();
 	}
 	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
-
-
 
 	KDModsAfterGameStart();
 	if (!Load)
@@ -6027,18 +6049,27 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 				KinkyDungeonConfigAppearance = false;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
-			if (KinkyDungeonLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
-				KDSendEvent('loadGame');
-				//KDInitializeJourney(KDJourney);
-				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
-				ElementRemove("saveInputField");
-				KinkyDungeonState = "Game";
-
-				if (KinkyDungeonKeybindings) {
-					KDCommitKeybindings();
+			// Show loading screen immediately, async load sets callback when done
+			const saveData = ElementValue("saveInputField");
+			ElementRemove("saveInputField");
+			KinkyDungeonState = "GenMap";
+			KinkyDungeonLoadGame(saveData, KDToggles.OverrideConsent).then(success => {
+				if (success && KinkyDungeonState == "GenMap") {
+					KDGenMapCallback = () => {
+						KDSendEvent('loadGame');
+						if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
+						KinkyDungeonState = "Game";
+						if (KinkyDungeonKeybindings) {
+							KDCommitKeybindings();
+						}
+						KDModsAfterGameStart();
+						return "Game";
+					};
+				} else if (KinkyDungeonState == "GenMap") {
+					// Load failed, return to menu
+					KinkyDungeonState = "Menu";
 				}
-				KDModsAfterGameStart();
-			}
+			});
 			return true;
 		}
 	} else if (KinkyDungeonState == "LoadOutfit"){
@@ -6772,7 +6803,7 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 				console.log('Compressed data received from worker');
 				resolve(e.data);
 			}
-			myWorker.postMessage(save);
+			myWorker.postMessage({save: save, useGzip: KDToggles.NativeCompression});
 			console.log('Save message posted to worker');
 			setTimeout(reject, KDSaveTimeout); // 10 min timeout
 		});
@@ -6784,20 +6815,25 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 			.catch((v) => {
 				console.log('Nay');
 				myWorker.terminate();
-				return LZString.compressToBase64(save);});
+				return KDCompressForSave(save);});
 	} else {
 		console.log('Your browser doesn\'t support web workers.');
-		return LZString.compressToBase64(save);
+		return KDCompressForSave(save);
 	}
 }
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
-function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
+async function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false): Promise<boolean> {
 	localStorage.setItem('KDLastSaveSlot', "" + KDSaveSlot);
 	KinkyDungeonSendEvent("beforeLoadGame", {});
-	let str = String ? DecompressB64(String.trim()) :
-		(localStorage.getItem('KinkyDungeonSave') ? DecompressB64(localStorage.getItem('KinkyDungeonSave'))
-		: (loadedsaveslots[KDSaveSlot-1] ? DecompressB64(loadedsaveslots[KDSaveSlot-1]) : ""));
+	let str = "";
+	if (String) {
+		str = await KDDecompressForLoad(String.trim());
+	} else if (localStorage.getItem('KinkyDungeonSave')) {
+		str = await KDDecompressForLoad(localStorage.getItem('KinkyDungeonSave'));
+	} else if (loadedsaveslots[KDSaveSlot-1]) {
+		str = await KDDecompressForLoad(loadedsaveslots[KDSaveSlot-1]);
+	}
 	if (str) {
 		let saveData: KinkyDungeonSave = JSON.parse(str);
 		if (    saveData
@@ -7357,6 +7393,98 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 }
 
 
+
+/**
+ * Compress a string using native browser gzip, returns 'gzip:' + base64
+ */
+async function KDCompressGzip(input: string): Promise<string> {
+	const encoder = new TextEncoder();
+	const inputBytes = encoder.encode(input);
+
+	const cs = new CompressionStream('gzip');
+	const writer = cs.writable.getWriter();
+	writer.write(inputBytes);
+	writer.close();
+
+	const chunks: Uint8Array[] = [];
+	const reader = cs.readable.getReader();
+	while (true) {
+		const {done, value} = await reader.read();
+		if (done) break;
+		chunks.push(value);
+	}
+
+	// Combine chunks
+	const totalLen = chunks.reduce((sum, c) => sum + c.length, 0);
+	const compressed = new Uint8Array(totalLen);
+	let offset = 0;
+	for (const chunk of chunks) {
+		compressed.set(chunk, offset);
+		offset += chunk.length;
+	}
+
+	// Convert to base64
+	let binary = '';
+	for (let i = 0; i < compressed.length; i++) {
+		binary += String.fromCharCode(compressed[i]);
+	}
+	return 'gzip:' + btoa(binary);
+}
+
+/**
+ * Decompress a gzip+base64 string (without 'gzip:' prefix)
+ */
+async function KDDecompressGzip(base64: string): Promise<string> {
+	const binary = atob(base64);
+	const bytes = new Uint8Array(binary.length);
+	for (let i = 0; i < binary.length; i++) {
+		bytes[i] = binary.charCodeAt(i);
+	}
+
+	const ds = new DecompressionStream('gzip');
+	const writer = ds.writable.getWriter();
+	writer.write(bytes);
+	writer.close();
+
+	const chunks: Uint8Array[] = [];
+	const reader = ds.readable.getReader();
+	while (true) {
+		const {done, value} = await reader.read();
+		if (done) break;
+		chunks.push(value);
+	}
+
+	const totalLen = chunks.reduce((sum, c) => sum + c.length, 0);
+	const decompressed = new Uint8Array(totalLen);
+	let offset = 0;
+	for (const chunk of chunks) {
+		decompressed.set(chunk, offset);
+		offset += chunk.length;
+	}
+
+	return new TextDecoder().decode(decompressed);
+}
+
+/**
+ * Compress save data for export - async, uses gzip if toggle enabled
+ */
+async function KDCompressForSave(json: string): Promise<string> {
+	if (KDToggles.NativeCompression && typeof CompressionStream !== 'undefined') {
+		return KDCompressGzip(json);
+	}
+	return LZString.compressToBase64(json);
+}
+
+/**
+ * Decompress save data - auto-detects format (gzip: prefix or LZString)
+ */
+async function KDDecompressForLoad(data: string): Promise<string> {
+	const trimmed = "".concat(...data.trim().split('\n'));
+	if (trimmed.startsWith('gzip:')) {
+		return KDDecompressGzip(trimmed.slice(5));
+	}
+	return LZString.decompressFromBase64(trimmed);
+}
 
 function DecompressB64(str: string): string {
 	if (!str || !str.trim) return str;

@@ -1905,11 +1905,18 @@ function KinkyDungeonHandleHUD() {
 				return true;
 			}
 			if (MouseIn(1500, 320, 300, 64)) {
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
 				KinkyDungeonState = "Save";
 				ElementCreateTextArea("saveDataField");
-				ElementValue("saveDataField", saveData);
+				const textarea = document.getElementById("saveDataField") as HTMLTextAreaElement;
+				if (textarea) textarea.readOnly = true;
+				ElementValue("saveDataField", "");
 
+				const saveJson = JSON.stringify(KinkyDungeonSaveGame(true));
+				KDCompressForSave(saveJson).then(saveData => {
+					if (KinkyDungeonState == "Save") {
+						ElementValue("saveDataField", saveData);
+					}
+				});
 
 				return true;
 			}

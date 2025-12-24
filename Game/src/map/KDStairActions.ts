@@ -251,15 +251,23 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 function KDPostStairSave() {
 	if (KDGameData.RoomType == "PerkRoom" && MiniGameKinkyDungeonLevel >= 1) { //  && Math.floor(MiniGameKinkyDungeonLevel / 3) == MiniGameKinkyDungeonLevel / 3
-			if ((!KinkyDungeonStatsChoice.get("saveMode"))) {
-				let saveData = LZString.compressToBase64(JSON.stringify(KinkyDungeonSaveGame(true)));
-				KinkyDungeonState = "Save";
-				KDTextArea("saveDataField", 750, 100, 1000, 230);
-				ElementValue("saveDataField", saveData);
-			} else KinkyDungeonSaveGame();
-		}
-		else KinkyDungeonSaveGame();
- }
+		if ((!KinkyDungeonStatsChoice.get("saveMode"))) {
+			KinkyDungeonState = "Save";
+			KDTextArea("saveDataField", 750, 100, 1000, 230);
+			const textarea = document.getElementById("saveDataField") as HTMLTextAreaElement;
+			if (textarea) textarea.readOnly = true;
+			ElementValue("saveDataField", "");
+
+			const saveJson = JSON.stringify(KinkyDungeonSaveGame(true));
+			KDCompressForSave(saveJson).then(saveData => {
+				if (KinkyDungeonState == "Save") {
+					ElementValue("saveDataField", saveData);
+				}
+			});
+		} else KinkyDungeonSaveGame();
+	} else KinkyDungeonSaveGame();
+}
+
 function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) {
 	if (KinkyDungeonFlags.get("stairslocked")) {
 		KinkyDungeonSendActionMessage(10, TextGet("KDStairsLocked").replace("NMB", "" + KinkyDungeonFlags.get("stairslocked")), KDBaseWhite, 1);
