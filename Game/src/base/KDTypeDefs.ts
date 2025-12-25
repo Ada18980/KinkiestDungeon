@@ -2802,6 +2802,8 @@ interface KDInventoryActionDef {
 	hotkey?: () => string,
 	hotkeyPress?: () => string,
 	alsoShow?: string[],
+	/** Auto-filter inventory items when this action is active */
+	autoFilter?: (item: item) => boolean,
 }
 
 interface KinkyDungeonSave {
