@@ -9989,8 +9989,9 @@ RestraintName 上的诅咒解除了！
 - Dragonscale Ankle Cuffs
 龙鳞脚铐
 
-
-
+# - Spreader Bar
+# - A set of steel shackles spread apart by a metal bar, forcing the wearer into an awkward hobbled position.
+# - It's made of solid, rigid steel. ABle to resist bites, blades, and futile struggles all the same.
 
 - Maid Jacket
 女仆拘束衣
