@@ -30,6 +30,7 @@ async function compressGzip(input) {
 	for (let i = 0; i < compressed.length; i++) {
 		binary += String.fromCharCode(compressed[i]);
 	}
+	// return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + btoa(binary);
 	return 'gzip:' + btoa(binary);
 }
 

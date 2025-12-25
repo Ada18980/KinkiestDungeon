@@ -4694,12 +4694,12 @@ function KDDrawLoadMenu() {
 		for (let i = startSaveSlot; i < endSaveSlot; i++) {
 			let num = (i);
 			// Slot button
-			DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
+			DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, async () => {
 				console.log("Pressed button for save slot " + num);
 				loadedSaveforPreview = null;
 				LoadMenuCurrentSlot = num;
 				LoadMenuCurrentSave = loadedsaveslots[num - 1];
-				loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
+				loadedSaveforPreview = await KinkyDungeonLoadPreview(LoadMenuCurrentSave);
 
 				let origSaveSlot = KDSaveSlot;
 				KDSaveSlot = num;
@@ -4783,13 +4783,13 @@ function KDDrawLoadMenu() {
 	else {
         for (let i = 1; i < 3; i++) {
             let num = (i);
-            DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
+            DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, async () => {
 				// Slot button
                 console.log("Pressed button for save slot " + num);
                 loadedSaveforPreview = null;
                 LoadMenuCurrentSlot = num;
                 LoadMenuCurrentSave = loadedcloudsaveslots[num - 1];
-                loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
+                loadedSaveforPreview = await KinkyDungeonLoadPreview(LoadMenuCurrentSave);
 				let origSaveSlot = KDSaveSlot;
 				KDSaveSlot = num;
 				// @ts-ignore
@@ -4880,14 +4880,14 @@ function KDDrawLoadMenu() {
 	ElementPosition("saveInputField", CombarXX + 215, YY + 145 - 33, 400, 300 - 85);
 	let newValue = ElementValue("saveInputField");
 	// Load from Code button
-	DrawButtonKDEx("LoadFromCodeButton", () => {
+	DrawButtonKDEx("LoadFromCodeButton", async () => {
 		KinkyDungeonKeybindingsTemp = Object.assign({}, KinkyDungeonKeybindingsTemp);
 		LoadMenuCurrentSlot = undefined;
 		if (newValue) {
-			loadedSaveforPreview = KinkyDungeonLoadPreview(newValue);
+			loadedSaveforPreview = await KinkyDungeonLoadPreview(newValue);
 			if (loadedSaveforPreview) LoadMenuCurrentSlot = -1;
 		} else if (KDSlot0) {
-			loadedSaveforPreview = KinkyDungeonLoadPreview(KDSlot0);
+			loadedSaveforPreview = await KinkyDungeonLoadPreview(KDSlot0);
 			if (loadedSaveforPreview) LoadMenuCurrentSlot = 0;
 			LoadMenuCurrentSave = KDSlot0;
 		}
@@ -5539,7 +5539,7 @@ function KinkyDungeonDressModelPreview() {
 /**
  * Generate Preview data function
  */
-function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
+async function KinkyDungeonLoadPreview(String: string): Promise<KinkyDungeonSave> {
 	if (!String) {
 		return {
 			// @ts-ignore
@@ -5548,7 +5548,7 @@ function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
 		};
 	}
 	try {
-		let str: string = DecompressB64(String.trim());
+		let str: string = await KDDecompressForLoad(String.trim());
 		let returndata: KinkyDungeonSave = null;
 
 		// We do a little JS witchery here
@@ -5767,11 +5767,9 @@ function KinkyDungeonLoadPreview(String: string): KinkyDungeonSave {
 }
 
 /**
- * KinkyDungeonStartNewGame was split into 4 functions to isolate async loading.
- * Button callbacks (DrawButtonKDEx) expect sync returns - an async function
- * returns a Promise (always truthy), breaking return value checks.
+ * KinkyDungeonStartNewGame was split into 4 functions to separate sync/async paths.
  *
- * - KinkyDungeonStartNewGame: sync, for new games (called by button callbacks)
+ * - KinkyDungeonStartNewGame: sync, for new games
  * - KinkyDungeonStartNewGameWithLoad: async, for loading saves
  * - KinkyDungeonStartNewGameInit: shared initialization
  * - KinkyDungeonStartNewGameFinalize: shared finalization
@@ -7428,41 +7426,19 @@ async function KDCompressGzip(input: string): Promise<string> {
 	for (let i = 0; i < compressed.length; i++) {
 		binary += String.fromCharCode(compressed[i]);
 	}
+	// return 'data:application/vnd.straightlaced.kinkydungeon.save.game+gzip;version=2;base64,' + btoa(binary);
 	return 'gzip:' + btoa(binary);
 }
 
 /**
  * Decompress a gzip+base64 string (without 'gzip:' prefix)
  */
-async function KDDecompressGzip(base64: string): Promise<string> {
-	const binary = atob(base64);
-	const bytes = new Uint8Array(binary.length);
-	for (let i = 0; i < binary.length; i++) {
-		bytes[i] = binary.charCodeAt(i);
-	}
-
-	const ds = new DecompressionStream('gzip');
-	const writer = ds.writable.getWriter();
-	writer.write(bytes);
-	writer.close();
-
-	const chunks: Uint8Array[] = [];
-	const reader = ds.readable.getReader();
-	while (true) {
-		const {done, value} = await reader.read();
-		if (done) break;
-		chunks.push(value);
-	}
-
-	const totalLen = chunks.reduce((sum, c) => sum + c.length, 0);
-	const decompressed = new Uint8Array(totalLen);
-	let offset = 0;
-	for (const chunk of chunks) {
-		decompressed.set(chunk, offset);
-		offset += chunk.length;
-	}
-
-	return new TextDecoder().decode(decompressed);
+async function KDDecompressDataUri(dataUri: string): Promise<string> {
+	// fetch() handles data: URIs natively, decoding base64 for us
+	const res = await fetch(dataUri);
+	const blob = await res.blob();
+	const stream = blob.stream().pipeThrough(new DecompressionStream('gzip'));
+	return new Response(stream).text();
 }
 
 /**
@@ -7476,12 +7452,20 @@ async function KDCompressForSave(json: string): Promise<string> {
 }
 
 /**
- * Decompress save data - auto-detects format (gzip: prefix or LZString)
+ * Decompress save data - auto-detects format:
+ * - 'gzip:' prefix (our format) - translates to data URI
+ * - 'data:' prefix (PR #223 format) - passes directly to fetch
+ * - anything else - legacy LZString
  */
 async function KDDecompressForLoad(data: string): Promise<string> {
 	const trimmed = "".concat(...data.trim().split('\n'));
 	if (trimmed.startsWith('gzip:')) {
-		return KDDecompressGzip(trimmed.slice(5));
+		// Translate our simple format to a data URI
+		return KDDecompressDataUri('data:application/gzip;base64,' + trimmed.slice(5));
+	}
+	if (trimmed.startsWith('data:')) {
+		// Support PR #223 format directly
+		return KDDecompressDataUri(trimmed);
 	}
 	return LZString.decompressFromBase64(trimmed);
 }
