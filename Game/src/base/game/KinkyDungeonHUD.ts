@@ -404,6 +404,14 @@ function KinkyDungeonDrawInterface(_showControls: boolean) {
 
 }
 
+function KDRenderHotbarTooltip(button: KDButtonParamData) {
+	if (button.hoverData) {
+		DrawTextFitKD(button.hoverData,
+			button.Left, button.Top - 140, 300,
+			KDBaseWhite, "#333333", undefined, "center");
+	}
+}
+
 function KDDrawSpellChoices() {
 	let i = 0;
 	let HotbarStart = 995 - 70;
@@ -581,6 +589,8 @@ function KDDrawSpellChoices() {
 				undefined, undefined, undefined, {
 					hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
 					scaleImage: true,
+					hoverData: TextGet("KinkyDungeonSpell" + spell.name),
+					onHover: KDRenderHotbarTooltip,
 				});
 			if (KinkyDungeoCheckComponentsPartial(spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true).length > 0) {
 				let sp = KinkyDungeoCheckComponents(spell).failed.length > 0 ? "SpellFail" : "SpellFailPartial";
@@ -588,19 +598,12 @@ function KDDrawSpellChoices() {
 					buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h, undefined, {
 						zIndex: 72,
 					});
-				//DrawImage(KinkyDungeonRootDirectory + "Spells/" + sp + ".png", buttonDim.x + 2, buttonDim.y + 2,);
 			}
 			if (KDHasUpcast(spell.name)) {
 				KDDraw(kdcanvas, kdpixisprites, "spellCanUpcast" + i, KinkyDungeonRootDirectory + "Spells/" + "CanUpcast" + ".png",
 					buttonDim.x, buttonDim.y, 72, 72, undefined, {
 						zIndex: 71,
 					});
-			}
-
-			if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-				DrawTextFitKD(TextGet("KinkyDungeonSpell"+ spell.name),
-					buttonDim.x, buttonDim.y - 140, 300, KDBaseWhite, "#333333", undefined, "center");
-				//DrawTextFitKD(comp, 1700 - 2 - buttonPad / 2, 1000 + i*KinkyDungeonSpellChoiceOffset, Math.min(10 + comp.length * 8, buttonPad), KDBaseWhite, KDTextGray0);
 			}
 			// Render number
 			//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
@@ -631,13 +634,9 @@ function KDDrawSpellChoices() {
 					undefined, undefined, undefined, {
 						hotkey: KDHotkeyToText(KinkyDungeonKeySpell[i]),
 						scaleImage: true,
+						hoverData: TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + name),
+						onHover: KDRenderHotbarTooltip,
 					});
-
-				if (MouseIn(buttonDim.x, buttonDim.y, buttonDim.w, buttonDim.h)) {
-					DrawTextFitKD(TextGet((arm ? "Restraint" : ("KinkyDungeonInventoryItem")) + name),
-						buttonDim.x, buttonDim.y - 140, 300,
-						KDBaseWhite, "#333333", undefined, "center");
-				}
 				// Render number
 				//DrawTextFitKD((i+1) + "", buttonDim.x + 10, buttonDim.y + 13, 25, KDBaseWhite, KDTextGray0, 18, undefined, 101);
 				if (consumable || arm) {
@@ -698,11 +697,17 @@ function KDDrawSpellChoices() {
 					});
 				}
 				icon += 1;
-				DrawButtonKD("SpellCast" + indexPaged, true, buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, "",
-					"rgba(0, 0, 0, 0)", "", "", false, true);
-				KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged, KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png"
-					,buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
-						zIndex: 71,
+				DrawButtonKDEx("SpellCast" + indexPaged,
+					() => {
+						KinkyDungeonHandleSpell(indexPaged);
+						return true;
+					},
+					true, buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, "",
+					"rgba(0, 0, 0, 0)", KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png", "", false, true,
+					undefined, undefined, undefined, {
+						scaleImage: true,
+						hoverData: TextGet("KinkyDungeonSpell" + spellPaged.name),
+						onHover: KDRenderHotbarTooltip,
 					});
 				//DrawImageEx(KinkyDungeonRootDirectory + "Spells/" + spellPaged.name + ".png", buttonDim.x - buttonDim.wsmall * page, buttonDim.y, {
 				//Width: buttonDim.wsmall,
@@ -726,20 +731,26 @@ function KDDrawSpellChoices() {
 			} else if (item) {
 
 				icon += 1;
+				let itemName = item;
+				if (arm && KinkyDungeonRestraintVariants[arm]) itemName = KinkyDungeonRestraintVariants[arm].template;
+				if (consumable && KinkyDungeonConsumableVariants[consumable]) itemName = KinkyDungeonConsumableVariants[consumable].template;
+				let wep = KinkyDungeonWeaponChoices[indexPaged];
+				if (wep && KinkyDungeonWeaponVariants[wep]) itemName = KinkyDungeonWeaponVariants[wep].template;
 				let prev = KDGetItemPreview({name: item, id: 0, type: consumable ? Consumable : (arm ? LooseRestraint : Weapon)});
 				if (prev) {
-					KDDraw(kdcanvas, kdpixisprites, "spellIcon" + icon + "," + indexPaged,  prev.preview
-						,buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
+					DrawButtonKDEx("UseItem" + indexPaged,
+						() => {
+							KinkyDungeonHandleSpell(indexPaged);
+							return true;
+						},
+						true, buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, "",
+						"rgba(0, 0, 0, 0)", [prev.preview, prev.preview2], "", false, true,
+						undefined, undefined, undefined, {
 							zIndex: 71,
+							scaleImage: true,
+							hoverData: TextGet((arm ? "Restraint" : "KinkyDungeonInventoryItem") + itemName),
+							onHover: KDRenderHotbarTooltip,
 						});
-					if (prev.preview2)
-						KDDraw(kdcanvas, kdpixisprites, "spellIcon2" + icon + "," + indexPaged,  prev.preview2
-							,buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, undefined, {
-								zIndex: 71,
-							});
-					DrawButtonKD("UseItem" + indexPaged, true, buttonDimSmall.x, buttonDimSmall.y, buttonDim.wsmall, buttonDim.hsmall, "",
-						"rgba(0, 0, 0, 0)", "", "", false, true);
-
 				}
 
 

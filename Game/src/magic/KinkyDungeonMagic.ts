@@ -527,7 +527,8 @@ let KDSwapSpell = -1;
 function KinkyDungeonHandleSpell(ind?: number): boolean {
 	let clicked = false;
 	let spell = null;
-	if (!ind) {
+	if (ind == undefined) {
+		// Handle keyboard shortcuts for current page
 		for (let i = 0; i < KinkyDungeonSpellChoiceCountPerPage; i++) {
 			let index = i + KDSpellPage*KinkyDungeonSpellChoiceCountPerPage;
 
@@ -537,13 +538,7 @@ function KinkyDungeonHandleSpell(ind?: number): boolean {
 				clicked = result.clicked;
 			}
 		}
-		for (let ii = 0; ii < KinkyDungeonSpellChoiceCount; ii++) {
-			if (MouseInKD("SpellCast" + ii) || MouseInKD("UseItem" + ii)) {
-				let result = KinkyDungeonClickSpell(ii);
-				spell = result.spell;
-				clicked = result.clicked;
-			}
-		}
+		// Mouse clicks are handled by DrawButtonKDEx click handlers
 	} else {
 		let result = KinkyDungeonClickSpell(ind);
 		spell = result.spell;

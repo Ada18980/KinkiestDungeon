@@ -3620,6 +3620,10 @@ type ButtonOptions = {
 	fontSize?:    number;
 	maxWidth?:    number;
 	spritealpha?: number,
+	/// Custom data passed to onHover callback
+	hoverData?:   any;
+	/// Callback when button is hovered
+	onHover?:     (button: KDButtonParamData) => void;
 }
 
 /**
@@ -3658,7 +3662,7 @@ function DrawButtonVis (
 	Height:        number,
 	Label:         string,
 	Color:         string,
-	Image?:        string,
+	Image?:        string | string[],
 	HoveringText?: string,
 	Disabled?:     boolean,
 	NoBorder?:     boolean,
@@ -3713,7 +3717,7 @@ function DrawButtonVisTo (
 	Height:        number,
 	Label:         string,
 	Color:         string,
-	Image?:        string,
+	Image?:        string | string[],
 	HoveringText?: string,
 	Disabled?:     boolean,
 	NoBorder?:     boolean,
@@ -3748,25 +3752,25 @@ function DrawButtonVisTo (
 
 	// Draw the text or image
 	let textPush = 0;
-	if ((Image != null) && (Image != "")) {
-		let img = KDTex(Image);
+	// Normalize Image to array for uniform handling
+	let images = Image == null ? [] : (Array.isArray(Image) ? Image : [Image]);
+	for (let imgIdx = 0; imgIdx < images.length; imgIdx++) {
+		let imgPath = images[imgIdx];
+		if (!imgPath) continue;
+		let img = KDTex(imgPath);
 		if (Stretch || options?.scaleImage) {
 			let o = {
-				zIndex: zIndex + 0.01,
+				zIndex: zIndex + 0.01 + imgIdx * 0.001,
 				filters: options?.filters,
 			};
 			if (options?.tint) o['tint'] = options.tint;
 			if (options?.spritealpha) o['alpha'] = options.spritealpha;
-			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, Left, Top,
+			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + imgPath + "w" + Width + "h" + Height,
+				imgPath, Left, Top,
 				Math.min(Height, Width), Math.min(Height, Width), undefined, o);
-			/*DrawImageEx(Image, Left, Top, {
-				Width: Width,
-				Height: Height,
-			});*/
 		} else {
 			let o = {
-				zIndex: zIndex + 0.01,
+				zIndex: zIndex + 0.01 + imgIdx * 0.001,
 				filters: options?.filters,
 			};
 			if (options?.tint) o['tint'] = options.tint;
@@ -3774,11 +3778,11 @@ function DrawButtonVisTo (
 			let centered = options?.centered
 				|| (img.orig.width > Width
 				&& img.orig.height > Height)
-			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, (centered ? Width/2 - img.orig.width/2 : 2) + Left,
+			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + imgPath + "w" + Width + "h" + Height,
+				imgPath, (centered ? Width/2 - img.orig.width/2 : 2) + Left,
 				Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
-		textPush = options?.scaleImage ? (Math.min(Width, Height)) : img.orig.width;
+		if (imgIdx == 0) textPush = options?.scaleImage ? (Math.min(Width, Height)) : img.orig.width;
 	}
 
 	// Draw the tooltip
