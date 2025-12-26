@@ -2324,7 +2324,8 @@ Devious Dungeon Challenge 已启用。
 制造噪音
 - Play with Self
 自慰
-# - Hide Statuses/Dialogue
+- Hide Statuses/Dialogue
+隐藏状态和对话
 
 - Message Log
 消息日志
@@ -9246,7 +9247,8 @@ RestraintName 上的诅咒解除了！
 极品束腿裙
 - A skintight dress covering your lower body, allowing you to take only the smallest of steps.
 一件紧紧包住下半身的紧身长裙，只允许你迈出最小的步伐。
-# - Masterwork Legbinder
+- Masterwork Legbinder
+极品束腿套
 # - A skintight legbinder covering your lower body, keeping your legs glued together
 
 - Masterwork Blindfold
@@ -10020,15 +10022,15 @@ RestraintName 上的诅咒解除了！
 # :: RestraintMaidBeltDesc2
 # :: RestraintMaidGagDesc2
 - Maid Ankle Cuffs
-女仆铐
+女仆脚铐
 - A pair of steel-reinforced cuffs used by the Maidforce.
-女仆势力使用的一对钢铐。
+女仆势力使用的一对强化钢铐。
 - Don't let the comfy, padded exterior fool you, the core is solid steel and will resist most attempts to cut it!
-它们由实心钢制成。
+由实心钢制成，很难切割，带有舒适的衬垫。
 - Maid Cuff Link
 女仆铐链
 - A pair of steel cuff links used by the Maidforce.
-女仆势力使用的一对钢铐。
+女仆势力使用的铐链。
 
 - Maid Collar
 女仆项圈
@@ -24371,8 +24373,10 @@ SPEAKER 愤怒地皱起眉头 ) |听着，我们都知道你有多喜欢被束�
 （越过这个单位）
 - (Swap with all units)
 （越过所有单位）
-# - (Push this unit)
-# - (Push all units)
+- (Push this unit)
+（推开这个单位）
+- (Push all units)
+（推开所有单位）
 - (Confirm? You will swap if you click on her, for a few turns)
 （确认吗？在接下来几回合中，点击她就会和她交换位置）
 
@@ -45947,7 +45951,7 @@ RestraintName 失效了！
 - Change Character Pose
 改变角色姿势
 - Toggle UI Transparency
-使子弹透明
+切换 UI 透明度
 - X-Ray Vision
 视觉透视
 - Show Quick Inventory
@@ -45956,7 +45960,8 @@ RestraintName 失效了！
 跳过教程
 - Mod Compat Mode (requires reload)
 模组兼容模式 ( 需要重启 )
-# - Flashing Warning Tiles
+- Flashing Warning Tiles
+警告格子闪烁
 
 - Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 欢迎来到淫荡地牢！您似乎是第一次来到这里，|您想了解一下界面的简要介绍吗？
@@ -49973,15 +49978,17 @@ N/A
 - Must be stunned 3+ turns or fully bound
 必须眩晕 3 个以上回合或完全捆绑
 - Does not meet conditions
-取决于先添加另一件物品
+不符合条件
 - Error: Missing NPC (report to Ada!)
 错误：NPC丢失(请反馈给作者!)
 - Requires additional items to equip
 需要额外的物品才可装备
 - Requires an additional item to equip
 需要额外的物品才能装备
-# - Incompatible with another item
-# - Incompatible with existing items
+- Incompatible with another item
+与另一件物品不兼容
+- Incompatible with existing items
+与已存在的物品不兼容
 
 - The conjured RSTN vanishes as you remove it.
 变出的 RSTN 会在你移除它时消失。
@@ -52069,7 +52076,8 @@ Boss
 解锁方式：习得所有 召唤 101 系的法术。
 - Unlocked by learning every spell at the same time.
 解锁方式：学会所有法术。
-# - ewhac
+- ewhac
+高玩
 - Unlocked by reaching NG+25.
 在本存档25周目后解锁
 - Moss Boss
