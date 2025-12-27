@@ -213,6 +213,11 @@ let KDFlexibleSpeedBonus = 1.5;
 let KDInflexibleMult = 1.25;
 let KDInflexibleSpeedBonus = 0.75;
 
+
+let KDStrugglePerLevelBonus = 0.005;
+let KDPainfulChoicePenalty = 0.5;
+let KDPainfulChoiceBonus = 0.05;
+let KDClearVisionBonus = 0.1;
 let KDUnchainedBonus = 0.1;
 let KDDamselBonus = 1.3;
 let KDDamselPickAmount = 6;
@@ -1837,7 +1842,32 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 			KinkyDungeonEnchKnifeBreakAmount = KinkyDungeonEnchKnifeBreakAmountBase;
 		}
 		if (KinkyDungeonStatsChoice.get("FreeSpirit") && (KDRestraint(restraint).chastity || KDRestraint(restraint).chastitybra)) escapeChance += 0.5;
+		if (KinkyDungeonStatsChoice.get("StrugglePerLevel")) {
+			escapeChance += KDStrugglePerLevelBonus * Math.max(0, Math.min(KinkyDungeonMaxLevel - 1, 1 + MiniGameKinkyDungeonLevel));
+		} else if (KinkyDungeonStatsChoice.get("StrugglePerLevelNeg")) {
+			limitChance += KDStrugglePerLevelBonus * Math.max(0, Math.min(KinkyDungeonMaxLevel - 1, 1 + MiniGameKinkyDungeonLevel));
+		} 
 
+		if (KinkyDungeonStatsChoice.get("PainfulChoice")) {
+			if (escapeChance > 0) {
+				let num = 0;
+				for (let grp of KinkyDungeonStruggleGroupsBase) {
+					let items = KDDynamicLinkList(KinkyDungeonGetRestraintItem(grp));
+					for (let inv of items) {
+						if (KDIsBinding(inv)) {
+							num++;
+							break;
+						}
+					}
+				}
+				escapeChance *= (KDPainfulChoicePenalty + num * KDPainfulChoiceBonus); 
+			}
+		}
+		
+
+		if (KinkyDungeonStatsChoice.get("EasierBlindfolds") && KDRestraint(restraint).Group == "ItemHead") {
+			escapeChance += KDClearVisionBonus * (1 + Math.max(0, Math.min(1, KDRestraint(restraint).power/20)));
+		} 
 
 		if (KinkyDungeonStatsChoice.get("Unchained") && KDRestraint(restraint).shrine && KDRestraint(restraint).shrine.includes("Metal")) {
 			escapeChance += (StruggleType == "Cut" ? 0.5 : 1) * KDUnchainedBonus;
@@ -3262,6 +3292,10 @@ let KDNoOverrideTags = [
 	"NoHood",
 	"FreeBoob",
 	"Unchained",
+	"EasierBlindfolds",
+	"ClearVision",
+	"StrugglePerLevel",
+	"StrugglePerLevelNeg",
 	"Damsel",
 	"NoPet",
 	"NoKigu",
@@ -3845,6 +3879,12 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		if (KinkyDungeonStatsChoice.get("NoBlindfolds")) playerTags.set("NoBlindfolds", true);
 		if (KinkyDungeonStatsChoice.get("NoPet")) playerTags.set("NoPet", true);
 		if (KinkyDungeonStatsChoice.get("Unchained")) playerTags.set("Unchained", true);
+		if (KinkyDungeonStatsChoice.get("ClearVision")) playerTags.set("ClearVision", true);
+		if (KinkyDungeonStatsChoice.get("EasierBlindfolds")) playerTags.set("EasierBlindfolds", true);
+		if (KinkyDungeonStatsChoice.get("StrugglePerLevel")) playerTags.set("StrugglePerLevel", true);
+		if (KinkyDungeonStatsChoice.get("StrugglePerLevelNeg")) playerTags.set("StrugglePerLevelNed", true);
+		
+		
 		if (KinkyDungeonStatsChoice.get("Damsel")) playerTags.set("Damsel", true);
 		if (KinkyDungeonStatsChoice.get("arousalMode")) playerTags.set("arousalMode", true);
 		if (KinkyDungeonStatsChoice.get("arousalModePlug")) playerTags.set("arousalModePlug", true);

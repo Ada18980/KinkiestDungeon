@@ -7940,7 +7940,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "tick", type: "SneakBuff", power: 1.15, requireEnergy: true, inheritLinked: true},
 			{trigger: "tick", type: "RegenMana", power: 1.0, requireEnergy: true, energyCost: 0.0025, inheritLinked: true},
-			{trigger: "beforeDamageEnemy", type: "AddDamageStealth", power: 1.5, requireEnergy: true, energyCost: 0.0015, inheritLinked: true},
+			{trigger: "beforeDamageEnemy", type: "AddDamageStealth", power: 0.75, requireEnergy: true, energyCost: 0.0015, inheritLinked: true},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagRemoveBlindfold", inheritLinked: true,StruggleType: "Remove", power: 0.25, requiredTag: "Blindfolds"},
 			{trigger: "beforeStruggleCalc", type: "struggleDebuff", msg: "KDHarnessGagStruggleBlindfold", inheritLinked: true,StruggleType: "Struggle", power: 0.2, requiredTag: "Blindfolds"},
 		]},

@@ -594,6 +594,14 @@ KinkyDungeonStatNoPet,"Not a Pet"
 KinkyDungeonStatDescNoPet,"Petsuits occur less often."
 KinkyDungeonStatUnmasked,"Unmasked"
 KinkyDungeonStatDescUnmasked,"Hoods and full-face covering masks do not appear, but blindfolds are more powerful. Does not include kigurumi masks."
+KinkyDungeonStatEasierBlindfolds,"Clear Vision"
+KinkyDungeonStatDescEasierBlindfolds,"Items in the head slot are 10-20% easier to escape, depending on item level."
+KinkyDungeonStatStrugglePerLevel,"Untapped Strength"
+KinkyDungeonStatDescStrugglePerLevel,"Gain 0.5% struggle power per floor."
+KinkyDungeonStatStrugglePerLevelNeg,"Bound by Gravity"
+KinkyDungeonStatDescStrugglePerLevelNeg,"Lose 0.5% struggle power per floor."
+KinkyDungeonStatPainfulChoice,"Painful Choice"
+KinkyDungeonStatDescPainfulChoice,"Your struggle power is halved, but gain back 5% per slot you have a restraining item in."
 KinkyDungeonStatNoKigu,"No Kigurumi Masks"
 KinkyDungeonStatDescNoKigu,"Removes face-mimicking masks from the game."
 KinkyDungeonStatNoHood,"No Hoods"
@@ -8094,7 +8102,7 @@ KinkyDungeonCurseStruggleMistressKeyEnchantedBlindfold,"You tug at the mask but 
 
 RestraintEnchantedMuzzle,Ancient Muzzle
 LootChestEnchantedMuzzle,"You find a muzzle with a long rubbery plug on the inside, glowing magnificently, along with a strange crystal next to it."
-RestraintEnchantedMuzzleDesc2,"A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 2.5x."
+RestraintEnchantedMuzzleDesc2,"A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 1.75x."
 RestraintEnchantedMuzzleDesc,"'Muzzle of the Saboteur'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedMuzzle,"You claw at your face, but not only does a soft plug fill your mouth, your muzzle is unbreakable!"
 
