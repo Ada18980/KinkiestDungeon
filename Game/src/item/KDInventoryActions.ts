@@ -698,6 +698,9 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			if (!(item?.type == Restraint)) return false;
 			return KDMagicLocks.includes(item.lock);
 		},
+		autoFilter: (item) => {
+			return KDMagicLocks.includes(item.lock);
+		},
 		/** Happens when you click the button */
 		click: (_player, item) => {
 			if (KDMagicLocks.includes(item.lock)) {
