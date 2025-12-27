@@ -216,7 +216,8 @@ let KDInflexibleSpeedBonus = 0.75;
 
 let KDStrugglePerLevelBonus = 0.005;
 let KDPainfulChoicePenalty = 0.5;
-let KDPainfulChoiceBonus = 0.05;
+let KDPainfulChoiceBonus = 0.1;
+let KDPainfulChoiceMax = 1.5;
 let KDClearVisionBonus = 0.1;
 let KDUnchainedBonus = 0.1;
 let KDDamselBonus = 1.3;
@@ -1794,21 +1795,12 @@ function KDGetRestraintAffinity(item: item, data: any): string {
 	return data.affinity;
 }
 
-function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePre: number, limitChancePre: number, ApplyGhost: boolean, ApplyPlayerBonus: boolean, Msg?: boolean) {
-	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
-	if (KDGetCurse(restraint)) escapeChance = -100;
-	let lockType = (restraint.lock && KDLocks[restraint.lock]) ? KDLocks[restraint.lock] : null;
-	if (lockType) {
-		let extraChance = (StruggleType == "Pick" && lockType.pick_diff) ? lockType.pick_diff : 0;
-		if (extraChance) escapeChance += extraChance;
-		if (StruggleType == "Unlock" && lockType.unlock_diff) {
-			escapeChance -= lockType.unlock_diff;
-		}
+function KDApplyPlayerStruggleBonuses(player: entity, data: KDGetStruggleData, ApplyPlayerBonus: boolean) {
+	let StruggleType = data.struggleType;
+	let escapeChance = data.escapeChance;
+	let limitChance = data.limitChance;
+	let restraint = data.restraint;
 
-	}
-
-	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
-		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
 
 	if (ApplyPlayerBonus) {
 		if (StruggleType == "Pick") {
@@ -1848,21 +1840,6 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 			limitChance += KDStrugglePerLevelBonus * Math.max(0, Math.min(KinkyDungeonMaxLevel - 1, 1 + MiniGameKinkyDungeonLevel));
 		} 
 
-		if (KinkyDungeonStatsChoice.get("PainfulChoice")) {
-			if (escapeChance > 0) {
-				let num = 0;
-				for (let grp of KinkyDungeonStruggleGroupsBase) {
-					let items = KDDynamicLinkList(KinkyDungeonGetRestraintItem(grp));
-					for (let inv of items) {
-						if (KDIsBinding(inv)) {
-							num++;
-							break;
-						}
-					}
-				}
-				escapeChance *= (KDPainfulChoicePenalty + num * KDPainfulChoiceBonus); 
-			}
-		}
 		
 
 		if (KinkyDungeonStatsChoice.get("EasierBlindfolds") && KDRestraint(restraint).Group == "ItemHead") {
@@ -1907,10 +1884,60 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 			if (StruggleType != "Pick"  && StruggleType != "Unlock" && limitChance > 0 && limitChance < -KDDragonBonus)
 				limitChance *= KDDragonBonus;
 		}
+
+
+		if (KinkyDungeonStatsChoice.get("PainfulChoice")) {
+			if (escapeChance > 0) {
+				let num = 0;
+				for (let grp of KinkyDungeonStruggleGroupsBase) {
+					let items = KDDynamicLinkList(KinkyDungeonGetRestraintItem(grp));
+					for (let inv of items) {
+						if (KDIsBinding(inv)) {
+							num++;
+							break;
+						}
+					}
+				}
+				escapeChance *= Math.min(KDPainfulChoiceMax, KDPainfulChoicePenalty + num * KDPainfulChoiceBonus); 
+			}
+		}
+
 	}
 
+	data.limitChance = limitChance;
+	data.escapeChance = escapeChance;
+}
 
-	let data = {
+interface KDGetStruggleData {
+    restraint: item;
+    escapeChance: any;
+    limitChance: any;
+    struggleType: string;
+    escapeChancePre: number;
+    limitChancePre: number;
+    ApplyGhost: boolean;
+    ApplyPlayerBonus: boolean;
+    GoddessBonus: number;
+    Msg: boolean;
+}
+
+function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePre: number, limitChancePre: number, ApplyGhost: boolean, ApplyPlayerBonus: boolean, Msg?: boolean) {
+	let escapeChance = escapeChancePre != undefined ? escapeChancePre : KDRestraint(restraint).escapeChance[StruggleType] != undefined ? KDRestraint(restraint).escapeChance[StruggleType] : 1.0;
+	if (KDGetCurse(restraint)) escapeChance = -100;
+	let lockType = (restraint.lock && KDLocks[restraint.lock]) ? KDLocks[restraint.lock] : null;
+	if (lockType) {
+		let extraChance = (StruggleType == "Pick" && lockType.pick_diff) ? lockType.pick_diff : 0;
+		if (extraChance) escapeChance += extraChance;
+		if (StruggleType == "Unlock" && lockType.unlock_diff) {
+			escapeChance -= lockType.unlock_diff;
+		}
+
+	}
+
+	let limitChance = limitChancePre != undefined ? limitChancePre : (KDRestraint(restraint).limitChance != undefined && KDRestraint(restraint).limitChance[StruggleType] != undefined) ? KDRestraint(restraint).limitChance[StruggleType] :
+		((StruggleType == "Unlock" || StruggleType == "Pick") ? 0 : 0.12);
+
+	let data: KDGetStruggleData = {
 		restraint: restraint,
 		escapeChance: escapeChance,
 		limitChance: limitChance,
@@ -1923,6 +1950,11 @@ function KDGetEscapeChance(restraint: item, StruggleType: string, escapeChancePr
 		Msg: Msg,
 
 	};
+
+	KDApplyPlayerStruggleBonuses(KDPlayer(), data, ApplyPlayerBonus);
+
+
+	
 
 	let GoddessBonus = KDGetItemGoddessBonus(restraint, data);
 	//if (data.escapeChance > 0)

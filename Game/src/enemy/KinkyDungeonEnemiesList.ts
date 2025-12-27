@@ -6017,7 +6017,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spells: ["ZombieOrb", "ManyOrbs", "EnemyCM_self"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 1.5, projectileAttack: true, accuracy: 0.7, noChannel: true,
 		visionRadius: 8, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "White",
-		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"FuukaStage2", click: true}]},
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "bossstage", dialogue:"FuukaStage2", click: true}]},
 	{name: "Fuuka2", outfit: "Fuuka", style: "Fuuka", nameList: "Fuuka", playLine: "Fuuka", bound: "Fuuka", faction: "Boss", clusterWith: "zombie",
 		tags: KDMapInit(["nosub", "leashing", "fuuka",
 			"bulwark", "zombie", "ranged", "mikoRestraints", "stageBoss", "boss", "unstoppable"]),
@@ -6210,7 +6210,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spells: ["OneBarMissile", "EnemyCM_self"], spellCooldownMult: 0.4, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 		visionRadius: 8, maxhp: 30, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAllWill", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
-		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenStage2", click: true}]},
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "bossstage", dialogue:"TheWardenStage2", click: true}]},
 
 	{name: "TheWarden2", outfit: "Jailer", style: "Jailer", nameList: "TheWarden", playLine: "TheWarden", bound: "TheWarden", faction: "Boss", clusterWith: "human",
 		color: "#ffaa44",
@@ -6270,7 +6270,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.7, noChannel: true,
 		visionRadius: 9, maxhp: 70, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
-		ondeath: [{type: "dialogue", dialogue:"DollmakerStage2", click: true}],
+		ondeath: [{type: "bossstage", dialogue:"DollmakerStage2", click: true}],
 	},
 
 	{name: "DollmakerBoss2", outfit: "DollSuit", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
@@ -6302,7 +6302,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spellCooldownMult: 0.15, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, accuracy: 0.85, noChannel: true,
 		visionRadius: 20, blindSight: 7, maxhp: 60, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
-		ondeath: [{type: "dialogue", dialogue:"DollmakerStage3", click: true}]},
+		ondeath: [{type: "bossstage", dialogue:"DollmakerStage3", click: true}]},
 
 	{name: "DollmakerBoss3", nameList: "Dollmaker", outfit: "Dollmaker", style: "Dollmaker", playLine: "Dollmaker", bound: "DollmakerBoss", faction: "Boss", clusterWith: "dollsmith",
 		applyFaction: "Dollsmith",
@@ -6486,6 +6486,11 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 	"dialogue": (enemy, o, mapData) => {
 		if (mapData == KDMapData)
 			KDStartDialog(o.dialogue, enemy.Enemy.name, o.click, enemy.personality, enemy);
+	},
+	"bossstage": (enemy, o, mapData) => {
+		if (mapData == KDMapData)
+			KDStartDialog(o.dialogue, enemy.Enemy.name, o.click, enemy.personality, enemy);
+		enemy.hp = 0;
 	},
 	"murder": (_enemy, _o, mapData) => {
 		if (mapData == KDMapData)
