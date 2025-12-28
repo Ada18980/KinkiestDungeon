@@ -1330,6 +1330,17 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KinkyDungeonStatUnmasked
 - Hoods and full-face covering masks do not appear, but blindfolds are more powerful. Does not include kigurumi masks.
 头罩和全脸面具将不会出现，但眼罩的效果更强。不包括 kigurumi 面具。
+- Clear Vision
+视野通透
+# :: KinkyDungeonStatEasierBlindfolds
+# :: KinkyDungeonStatClearVision
+# - Items in the head slot are 10-20% easier to escape, depending on item level.
+# - Untapped Strength
+# - Gain 0.5% struggle power per floor.
+# - Bound by Gravity
+# - Lose 0.5% struggle power per floor.
+# - Painful Choice
+# - Struggle power is halved, but gain back 10% per slot you are restrained in (up to 150%). Toys don't count.
 - No Kigurumi Masks
 没有KIG面具
 - Removes face-mimicking masks from the game.
@@ -15891,8 +15902,7 @@ EnemyName 离开并锁上了她身后的牢房。
 远古口套
 - You find a muzzle with a long rubbery plug on the inside, glowing magnificently, along with a strange crystal next to it.
 你发现里面有一个长长的橡胶棒，闪闪发光，旁边还有一个奇怪的水晶。
-- A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 2.5x.
-一种紧密贴合面部的口套。充能后，可回复法力、提升潜行能力，并对未察觉你的敌人造成2.5倍伤害。
+# - A muzzle that seals over the face tightly. When powered, it regenerates mana, boosts sneak, and multiplies damage dealt to unaware enemies by 1.75x.
 - 'Muzzle of the Saboteur'
 '破坏者的口套'
 - You claw at your face, but not only does a soft plug fill your mouth, your muzzle is unbreakable!
@@ -49481,8 +49491,6 @@ Y 轴
 - Use the interact tool in the bottom right HUD to sleep in a bed.
 使用右下角 HUD 中的交互工具在床上睡觉。
 
-- Clear Vision
-视野通透
 - Blindfolds are much rarer.
 眼罩将会很少见。
 - Free the Boob
