@@ -1423,7 +1423,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 			if (enemy.warningTiles?.length > 0) {
 				
 				let alphamult = (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI *
-					((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+					((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 				for (let t of enemy.warningTiles) {
 					let scale = t.scale || 0.01;
 					if (scale < 1) t.scale = Math.max(0, Math.min(1, (t.scale || 0) + delta * 0.008/KDAnimSpeed));
@@ -1492,7 +1492,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
 						let alphamult = (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI * 
-							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 						flashindexed = true;
 						let color = enemy.Enemy.color ? string2hex(enemy.Enemy.color) : 0xE30022;
 						KDDraw(kdenemystatusboard, kdpixisprites, tx + "," + ty + "_w_m" + enemy.id, KinkyDungeonRootDirectory + ("WarningMove") + ".png",
@@ -1513,7 +1513,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
 						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI * 
-							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 						flashindexed = true;
 						KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_spellRdy", KinkyDungeonRootDirectory + "SpellReady.png",
 							(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,
@@ -1534,7 +1534,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
 						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI *
-							((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1);
+							((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 						flashindexed = true;
 						KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_weakB", KinkyDungeonRootDirectory + "WeakBinding.png",
 						(tx - CamX)*KinkyDungeonGridSizeDisplay, (ty - CamY)*KinkyDungeonGridSizeDisplay,

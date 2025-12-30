@@ -3353,7 +3353,7 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 		for (let t of KDBulletWarnings) {
 	
 			let alphamult = KDToggles.FlashingWarning ? Math.sin(
-				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.49 + 0.5 : 1;
+				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1;
 			let scale = t.scale || 0.01;
 			if (scale < 1) t.scale = Math.max(0, Math.min(1, (t.scale || 0) + delta * 0.005/KDAnimSpeed));
 			else scale = 1;

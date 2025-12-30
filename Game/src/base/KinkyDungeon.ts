@@ -3579,6 +3579,17 @@ function DrawButtonKDEx (
 }
 
 
+function KDRenderMouseTooltip(button: KDButtonParamData) {
+	if (button.hoverData) {
+		let ttwidth = button.hoverData.width || 900;
+		let ttheight = button.hoverData.height || 100;
+		let offsets = KDGetBoxShiftOffset(MouseX - ttwidth/2, MouseY - ttheight/2, ttwidth, ttheight);
+		DrawTextFitKD(button.hoverData.text,
+			MouseX + offsets.x, MouseY + offsets.y - ttheight/2, ttwidth,
+			KDBaseWhite, "#333333", undefined, "center");
+	}
+}
+
 
 /**
  * Draws a button component
@@ -4374,14 +4385,14 @@ function KDCommitKeybindings() {
 	KinkyDungeonKeyMenu = [
 		KinkyDungeonKeybindings.QInventory,
 		KinkyDungeonKeybindings.Inventory,
-		KinkyDungeonKeybindings.Reputation,
 		KinkyDungeonKeybindings.Magic,
 		KinkyDungeonKeybindings.Log,
+		KinkyDungeonKeybindings.Restart,
+		/*KinkyDungeonKeybindings.Reputation,
 		KinkyDungeonKeybindings.Quest,
 		KinkyDungeonKeybindings.Collection,
 		KinkyDungeonKeybindings.Facilities,
-		KinkyDungeonKeybindings.Restart,
-		KinkyDungeonKeybindings.JourneyMap,
+		KinkyDungeonKeybindings.JourneyMap,*/
 	];
 	KinkyDungeonKeyToggle = [
 		KinkyDungeonKeybindings.MsgLog,
@@ -7542,6 +7553,37 @@ function KDTogglesDraw() {
 	} else if (KDCustomToggleTab[KDToggleTab]) {
 		KDCustomToggleTab[KDToggleTab]();
 	} else {
+		if (KDToggleTab == "Main") {
+			DrawButtonKDEx("kdtoggle_save", (b) => {
+				
+				return true;
+			}, true, 
+			PIXIWidth - 450, 900, 200, 64, 
+			TextGet("KDFullBackup"), KDBaseWhite,  undefined,  undefined,  undefined, 
+			undefined,  undefined, undefined, undefined, {
+				hoverData: {
+					text: TextGet("KDFullBackupDesc")
+				},
+				onHover: KDRenderMouseTooltip,
+				hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[3]),
+				hotkeyPress: KinkyDungeonKeyMenu[3],
+			});
+			
+			DrawButtonKDEx("kdtoggle_load", (b) => {
+				return true;
+			}, true, 
+			PIXIWidth - 235, 900, 200, 64, 
+			TextGet("KDLoadBackup"), KDBaseWhite,  undefined,  undefined,  undefined, 
+			undefined,  undefined, undefined, undefined, {
+				hoverData: {
+					text: TextGet("KDLoadBackupDesc")
+				},
+				onHover: KDRenderMouseTooltip,
+				hotkey: KDHotkeyToText(KinkyDungeonKeyMenu[4]),
+				hotkeyPress: KinkyDungeonKeyMenu[4],
+			});
+		}
+
 		let XX = KDToggleTab == "Main" ? 940 : 540;
 		let YYstart = 60;
 		let YYmax = 800;

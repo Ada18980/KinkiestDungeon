@@ -38,6 +38,13 @@ Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power
 Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?"
 Intro4,"(This game does not contain spiders)"
 Intro4BC,""
+
+
+KDFullBackup,Save Full Backup
+KDFullBackupDesc,Stores all of your settings and presets into a file.
+KDLoadBackup,Load Backup
+KDLoadBackupDesc,Loads your data from a file. Note: This may overwrite any data you currently have.
+
 KDToggleTabGFX,GFX
 KDToggleTabClothes,Character
 KDToggleTabMain,Main
