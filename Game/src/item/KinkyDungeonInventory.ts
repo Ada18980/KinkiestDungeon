@@ -1018,6 +1018,11 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 				}
 			}
 
+			// Auto-filter from inventory action
+			if (KDGameData.InventoryAction && KDInventoryAction[KDGameData.InventoryAction]?.autoFilter) {
+				if (!KDInventoryAction[KDGameData.InventoryAction].autoFilter(item)) continue;
+			}
+
 			let preview = KDGetItemPreview(item);
 			//let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
 			if (preview
