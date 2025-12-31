@@ -40,7 +40,7 @@ Intro4,"(This game does not contain spiders)"
 Intro4BC,""
 
 
-KDFullBackup,Save Full Backup
+KDFullBackup,Save Backup
 KDFullBackupDesc,Stores all of your settings and presets into a file.
 KDLoadBackup,Load Backup
 KDLoadBackupDesc,Loads your data from a file. Note: This may overwrite any data you currently have.
@@ -13799,6 +13799,9 @@ KinkyDungeonFoodPizza,"(You smell delicious pizza)"
 KDFoodNameCookie,Cookie
 KDFoodNamePizza,Pizza
 
+rTableNoFlip,"(The table is bolted to the floor)"
+rTableNoFlipFlip,"(Despite your best efforts, the table goes nowhere)"
+dTableNoFlip_Flip,(Try to flip the table)
 rTableFlip,"(The table looks remarkably flippable)"
 rTableFlipFlip,"(You knock over the table!)"
 dTableFlip_Flip,(Flip the table)
@@ -28090,7 +28093,7 @@ RestraintMithrilRopeCollarDesc2,"It will occasionally cause mithril ropes to app
 
 
 KDEffectTileTooltipPortals/DarkPortal,Dark Portal
-KDEffectTileTooltipPortals/DarkPortalDesc,"They are trying to take you somewhere!"
+KDEffectTileTooltipPortals/DarkPortalDesc,"A gateway into a shadowy realm!"
 
 KDEffectTileTooltipDistractionMote,Essence Mote
 KDEffectTileTooltipDistractionMoteDesc,"A trainee can use this to focus."
@@ -30179,6 +30182,15 @@ KinkyDungeonStatMore_Yokes,"More Yokes"
 KinkyDungeonStatDescMore_Yokes,"Yokes are favored over other heavy bondage."
 KinkyDungeonStatLess_Yokes,"Less Yokes"
 KinkyDungeonStatDescLess_Yokes,"Yokes are less favored over other heavy bondage."
+KinkyDungeonStatLess_Tickle,"Less Tickling"
+KinkyDungeonStatDescLess_Tickle,"Reduces the amount of tickling content in the game."
+
+KDReplaceText_tickles_To,teases
+KDReplaceText_tickle_To,tease
+KDReplaceText_tickling_To,teasing
+KDReplaceText_tickles_From,tickles
+KDReplaceText_tickle_From,tickle
+KDReplaceText_tickling_From,tickling
 
 
 ResistTypeBlock," (blocked!)"

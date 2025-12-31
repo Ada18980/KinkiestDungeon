@@ -2116,6 +2116,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Flip": {
 				playertext: "Default", response: "Default",
+				prerequisiteFunction: () => {
+					return !(!KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist
+						|| KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen);
+				},
 				clickFunction: (_gagged, _player) => {
 					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
 					if (tile && tile.Type == "Food") {
@@ -2215,6 +2219,50 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 					return false;
 				},
+				options: {
+					"Leave": {
+						clickFunction: (_gagged, _player) => {
+							KinkyDungeonTargetTile = null;
+							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
+							return false;
+						},
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Leave": {
+				clickFunction: (_gagged, _player) => {
+					KinkyDungeonTargetTile = null;
+					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
+					return false;
+				},
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+		}
+	},
+	"TableNoFlip": {
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			if (KinkyDungeonTargetTile) {
+				let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+				if (tile) {
+					KDGameData.CurrentDialogMsgData = {
+						AMOUNT: "" + 10 * (tile.Amount || 1),
+						ARTICLE: "a",
+						FOODNAME: TextGet(KinkyDungeonTargetTile.Food),
+						FOODMSG: TextGet("KinkyDungeonFood" + KinkyDungeonTargetTile.Food),
+					};
+				}
+			}
+			return false;
+		},
+		options: {
+			"Flip": {
+				playertext: "Default", response: "Default",
 				options: {
 					"Leave": {
 						clickFunction: (_gagged, _player) => {

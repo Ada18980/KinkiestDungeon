@@ -65,7 +65,12 @@ let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 		} else {
 			KinkyDungeonTargetTileLocation = x + "," + y;
 			KinkyDungeonTargetTile = tile;
-			KDStartDialog("TableFlip", "", true, "");
+			if (!KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist
+				|| KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen) {
+				KDStartDialog("TableNoFlip", "", true, "");
+			} else {
+				KDStartDialog("TableFlip", "", true, "");
+			}
 			KinkyDungeonFoodMessage(tile);
 		}
 		return false;

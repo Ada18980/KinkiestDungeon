@@ -7279,6 +7279,7 @@ function KinkyDungeonMultiplayerUpdate(_delay) {
 let saveFile = null;
 let KDSAVEEXTENSION = '.kdsave';
 let KDOUTFITEXTENSION = '.kdoutfit';
+let KDBACKUPEXTENSION = '.kdsettings';
 let KDOUTFITBACKUP = '.kdcharbackup';
 let KDSaveName = "";
 
@@ -7315,6 +7316,72 @@ function downloadFile(filename: string, text: string) {
 	link.href = url;
 	link.download = filename;
 	link.textContent = 'Download Save';
+
+	// Trigger a click event on the link to prompt the user to download
+	const clickEvent = new MouseEvent('click', {
+		view: window,
+		bubbles: true,
+		cancelable: true,
+	});
+	link.dispatchEvent(clickEvent);
+
+	// Clean up the object URL after download
+	URL.revokeObjectURL(url);
+}
+
+
+function KDLoadBackupDialog() {
+	getFileInputType(KDBACKUPEXTENSION, (files) => {
+		if (files.length > 0) {
+			let file = files[0];
+			let str = "";
+
+			try {
+				const reader = new FileReader();
+				reader.addEventListener('load', (event) => {
+					str = event.target.result.toString();
+
+					let jsonobj = JSON.parse(str);
+					if (jsonobj?.localStorage) {
+						// Todo => DO NOT load or save mod backups, for safety
+					}
+					if (jsonobj?.indexedDB) {
+						
+					}
+				});
+				reader.readAsText(file);
+			} catch (err) {
+				console.log (err);
+			}
+
+		}
+	});
+}
+
+interface KDFullBackupData {
+	localStorage: Record<string, string>,
+	indexedDB: Record<string, string>,
+}
+
+function KDGenBackupString() : string {
+	let obj: KDFullBackupData = {
+		localStorage: {},
+		indexedDB: {},
+	};
+	
+	// Todo => DO NOT load or save mod backups, for safety
+
+	return JSON.stringify(obj);
+}
+
+function KDSaveBackupDialog(filename: string, text: string) {
+	const blob = new Blob([text], { type: 'text/plain' });
+	const url = URL.createObjectURL(blob);
+
+	const link = document.createElement('a');
+	link.href = url;
+	link.download = filename;
+	link.textContent = 'Download Full Backup';
 
 	// Trigger a click event on the link to prompt the user to download
 	const clickEvent = new MouseEvent('click', {
@@ -7555,10 +7622,11 @@ function KDTogglesDraw() {
 	} else {
 		if (KDToggleTab == "Main") {
 			DrawButtonKDEx("kdtoggle_save", (b) => {
-				
+
+				KDSaveBackupDialog("KDFullBackup" + KDBACKUPEXTENSION, KDGenBackupString());
 				return true;
 			}, true, 
-			PIXIWidth - 450, 900, 200, 64, 
+			PIXIWidth - 235, 900, 200, 64, 
 			TextGet("KDFullBackup"), KDBaseWhite,  undefined,  undefined,  undefined, 
 			undefined,  undefined, undefined, undefined, {
 				hoverData: {
@@ -7570,9 +7638,10 @@ function KDTogglesDraw() {
 			});
 			
 			DrawButtonKDEx("kdtoggle_load", (b) => {
+				KDLoadBackupDialog();
 				return true;
 			}, true, 
-			PIXIWidth - 235, 900, 200, 64, 
+			PIXIWidth - 450, 900, 200, 64, 
 			TextGet("KDLoadBackup"), KDBaseWhite,  undefined,  undefined,  undefined, 
 			undefined,  undefined, undefined, undefined, {
 				hoverData: {
@@ -7737,4 +7806,30 @@ function KDTogglesDraw() {
 		);
 
 	}
+}
+
+let KDTickleReplaceStrings = ["tickling", "tickles", "tickle"];
+
+function KDTextReplace(text: string, replacestrings: string[]) {
+	let str = text;
+
+	for (let replace of replacestrings) {
+		let from = TextGet("KDReplaceText_" + replace + "_From");
+		let to = TextGet("KDReplaceText_" + replace + "_To");
+		str = str.replace(
+			from,
+			 to);
+
+		from = from.substring(0, 1)
+			+ from.substring(1);
+		to = to.substring(0, 1)
+			+ to.substring(1);
+			 
+		str = str.replace(
+			from,
+			 to);
+			 
+	}
+
+	return str;
 }

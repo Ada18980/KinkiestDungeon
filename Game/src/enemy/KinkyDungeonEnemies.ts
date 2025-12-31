@@ -7051,6 +7051,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						happened += bound;
 
 						data = {
+							sfx: "",
+							text: "",
 							attack: AIData.attack,
 							enemy: enemy,
 							bound: bound,
@@ -7185,13 +7187,21 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						let sfx = (AIData.hitsfx) ? AIData.hitsfx :
 						AIData.damage == "pain" ? "Slap"
 						: (AIData.damage == "grope" ? "Grope"
-							: (AIData.damage == "tickle" ? "Tickle"
+							: (AIData.damage == "tickle" ? (
+								KinkyDungeonStatsChoice.get("Less_Tickle") ? "Grope" : "Tickle")
 								: (data.damage > 1 ? "Damage" : "DamageWeak")))
 							;
 						if (enemy.usingSpecial && enemy.Enemy.specialsfx) sfx = enemy.Enemy.specialsfx;
-						KinkyDungeonSendEvent("hit", data);
-						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
 						let text = TextGet("Attack"+enemy.Enemy.name + suffix).KDReplaceOrAddDmg(dmgString);
+						data.text = text;
+						data.sfx = sfx;
+						KinkyDungeonSendEvent("hit", data);
+						if (KinkyDungeonStatsChoice.get("Less_Tickle"))
+							data.text = KDTextReplace(data.text, 
+							KDTickleReplaceStrings);
+						sfx = data.sfx;
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
+						text = data.text;
 						if (replace)
 							for (let R = 0; R < replace.length; R++)
 								text = text.replace(replace[R].keyword, "" + replace[R].value);

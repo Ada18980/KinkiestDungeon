@@ -3313,6 +3313,7 @@ let KDHeavyRestraintPrefs = [
 	"Less_Boxbinders",
 	"Less_Jackets",
 	"Less_Yokes",
+	"Less_Tickle",
 ];
 
 

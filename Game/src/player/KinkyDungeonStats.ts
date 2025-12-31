@@ -584,6 +584,21 @@ interface damageInfo extends damageInfoMinor {
 	power?: number;
 }
 
+function KDDoPerkDamageTypeChanges(data: any) {
+	if (KinkyDungeonStatsChoice.get("Estim")) {
+		data.distractionTypesStrong.push("electric");
+		data.arouseTypes.push("electric");
+		if (data.staminaTypesWeak.includes("electric"))
+			data.staminaTypesWeak = data.staminaTypesWeak.splice(data.staminaTypesWeak.indexOf("pain"), 1);
+		if (data.type == "electric" || data.type == "estim") {
+			KinkyDungeonSetFlag("tickle", 3);
+		}
+	}
+	if (KinkyDungeonStatsChoice.get("Less_Tickle") && data.type == "tickle") {
+		data.type = "plush";
+	}
+}
+
 function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAlreadyHit?: boolean, noInterrupt?: boolean, noMsg?: boolean) {
 	if (bullet && !noAlreadyHit) {
 		if (KDBulletAlreadyHit(bullet, KinkyDungeonPlayerEntity)) return {happened: 0, string: ""};
@@ -622,15 +637,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: KDBullet, noAl
 		dmgShield: 0,
 	};
 
-	if (KinkyDungeonStatsChoice.get("Estim")) {
-		data.distractionTypesStrong.push("electric");
-		data.arouseTypes.push("electric");
-		if (data.staminaTypesWeak.includes("electric"))
-			data.staminaTypesWeak = data.staminaTypesWeak.splice(data.staminaTypesWeak.indexOf("pain"), 1);
-		if (data.type == "electric" || data.type == "estim") {
-			KinkyDungeonSetFlag("tickle", 3);
-		}
-	}
+	KDDoPerkDamageTypeChanges(data);
 	let types = ["pain", "electric", "slash", "pierce", "crush", "fire", "ice", "frost", "acid", "arcane", "stun", "blast"];
 
 	if (data.type == "chain" || data.type == "glue") {
