@@ -260,6 +260,13 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDHardMode0
 # :: KDMinimapLabel_+
 # :: KDMinimapLabel_=
+
+
+# - Save Full Backup
+# - Stores all of your settings and presets into a file.
+# - Load Backup
+# - Loads your data from a file. Note: This may overwrite any data you currently have.
+
 - GFX
 图像特效
 - Character
