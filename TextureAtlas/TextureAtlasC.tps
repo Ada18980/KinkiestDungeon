@@ -340,8 +340,12 @@
             <key type="filename">../M3/Models/Spats/SpatsClosed.png</key>
             <key type="filename">../M3/Models/Spats/SpatsKneel.png</key>
             <key type="filename">../M3/Models/Spats/SpatsKneelClosed.png</key>
+            <key type="filename">../M3/Models/Spats/SpatsLeftClosed.png</key>
             <key type="filename">../M3/Models/Spats/SpatsLeftKneel.png</key>
             <key type="filename">../M3/Models/Spats/SpatsLeftKneelClosed.png</key>
+            <key type="filename">../M3/Models/Spats/SpatsLeftSpread.png</key>
+            <key type="filename">../M3/Models/Spats/SpatsRightClosed.png</key>
+            <key type="filename">../M3/Models/Spats/SpatsRightSpread.png</key>
             <key type="filename">../M3/Models/Spats/SpatsSpread.png</key>
             <key type="filename">../M3/Models/SteelChastity/Belt.png</key>
             <key type="filename">../M3/Models/SteelChastity/BeltPadlock.png</key>

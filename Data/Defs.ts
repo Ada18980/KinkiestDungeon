@@ -423,6 +423,7 @@ let LAYERS_BASE = [
 	"ThighRightOver",
 	"AnkleRightOver",
 	"PantsAccRight",
+	"ShortsRight",
 	"PantRight",
 	"PantLegs",
 
@@ -775,6 +776,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 	]),
 	// endregion
@@ -1157,6 +1159,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1190,6 +1193,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1221,6 +1225,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1300,6 +1305,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1339,6 +1345,7 @@ let LayerGroups = {
 		"TightPants",
 		"Pants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		// Shoes
@@ -1473,6 +1480,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1538,6 +1546,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		"OverSocks",
@@ -1570,6 +1579,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		// Shoes
@@ -1621,6 +1631,7 @@ let LayerGroups = {
 		"Pants",
 		"TightPants",
 		"ShortsLeft",
+		"ShortsRight",
 		"Shorts",
 
 		// Shoes
@@ -1991,6 +2002,7 @@ let LayerGroups = {
 	"Pants",
 		"TightPants",
 	"ShortsLeft",
+	"ShortsRight",
 	"Shorts",
 
 	"SleeveDecoLeft",
