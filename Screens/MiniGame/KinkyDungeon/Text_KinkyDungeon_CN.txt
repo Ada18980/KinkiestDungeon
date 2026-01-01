@@ -262,7 +262,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDMinimapLabel_=
 
 
-# - Save Full Backup
+# - Save Backup
 # - Stores all of your settings and presets into a file.
 # - Load Backup
 # - Loads your data from a file. Note: This may overwrite any data you currently have.
@@ -25803,6 +25803,9 @@ FOODMSG| ( 它邀请你分享它的美食 )
 - Pizza
 披萨
 
+# - (The table is bolted to the floor)
+# - (Despite your best efforts, the table goes nowhere)
+# - (Try to flip the table)
 - (The table looks remarkably flippable)
 ( 这桌子看上去很容易掀翻 )
 - (You knock over the table!)
@@ -44180,8 +44183,7 @@ Kjus眼5
 
 - Dark Portal
 黑暗之门
-- They are trying to take you somewhere!
-他们正试图带你去某个地方！
+# - A gateway into a shadowy realm!
 
 - Essence Mote
 精华微粒
@@ -47712,6 +47714,15 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 减少枷锁
 - Yokes are less favored over other heavy bondage.
 与其他重型束缚相比，枷锁更不受欢迎。
+# - Less Tickling
+# - Reduces the amount of tickling content in the game.
+
+# - teases
+# - tease
+# - teasing
+# - tickles
+# - tickle
+# - tickling
 
 
 -  (blocked!)
