@@ -39,6 +39,10 @@ Intro3,"Will you prevail against forces unknown, or succumb to its dark secrets?
 Intro4,"(This game does not contain spiders)"
 Intro4BC,""
 
+KDBackupLoadSuccess,Backup loaded!
+KDBackupLoadFail,Backup failed to load.
+KDBackupWriteSuccess,Backup saved!
+KDBackupLWriteFail,Backup failed to save!!!!!
 
 KDFullBackup,Save Backup
 KDFullBackupDesc,Stores all of your settings and presets into a file.

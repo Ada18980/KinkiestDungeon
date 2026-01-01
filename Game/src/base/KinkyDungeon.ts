@@ -7329,29 +7329,66 @@ function downloadFile(filename: string, text: string) {
 	URL.revokeObjectURL(url);
 }
 
+let KDBusyLoadingFile = false;
+let KDBusySavingBackup = false;
 
-function KDLoadBackupDialog() {
+async function KDLoadBackupDialog() {
 	getFileInputType(KDBACKUPEXTENSION, (files) => {
 		if (files.length > 0) {
 			let file = files[0];
 			let str = "";
 
 			try {
+				KDBusyLoadingFile = true;
 				const reader = new FileReader();
-				reader.addEventListener('load', (event) => {
+				reader.addEventListener('load', async (event) => {
 					str = event.target.result.toString();
 
-					let jsonobj = JSON.parse(str);
+					let jsonobj: KDFullBackupData = JSON.parse(str);
 					if (jsonobj?.localStorage) {
-						// Todo => DO NOT load or save mod backups, for safety
+						for (let key in jsonobj.localStorage) {
+							localStorage.setItem(key, jsonobj.localStorage[key])
+						}
 					}
-					if (jsonobj?.indexedDB) {
-						
+					if (jsonobj?.saveDB) {
+						let result = await KinkyDungeonDBOpen().then(async (db) => {
+							let ressucc = true;
+							for (let key in jsonobj.saveDB) {
+								let result = await new Promise<any>((resolve, reject) => {
+									const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
+									const store = transaction.objectStore(KDGameSaveDBStoreName);
+									const data = { content: jsonobj.saveDB[key] };
+									const request = store.put(data, key);
+
+									request.onsuccess = () => {
+										resolve(null)
+									};
+									request.onerror = () => {
+										reject(null);
+									}
+								}).then(() => {}, () => {ressucc = false;});
+							}
+							db.close();
+							if (ressucc) {
+								KDSendMusicToast(TextGet("KDBackupLoadSuccess"));
+							} else {
+								KDSendMusicToast(TextGet("KDBackupLoadFail"));
+							}
+						});
+					} else if (jsonobj.localStorage) {
+						KDSendMusicToast(TextGet("KDBackupLoadSuccess"));
+					} else {
+						KDSendMusicToast(TextGet("KDBackupLoadFail"));
 					}
+					
+					
 				});
 				reader.readAsText(file);
 			} catch (err) {
 				console.log (err);
+				KDSendMusicToast(TextGet("KDBackupLoadFail"));
+			} finally {
+				KDBusyLoadingFile = false;
 			}
 
 		}
@@ -7360,39 +7397,90 @@ function KDLoadBackupDialog() {
 
 interface KDFullBackupData {
 	localStorage: Record<string, string>,
-	indexedDB: Record<string, string>,
+	saveDB: Record<string, string>,
 }
 
-function KDGenBackupString() : string {
-	let obj: KDFullBackupData = {
-		localStorage: {},
-		indexedDB: {},
-	};
-	
-	// Todo => DO NOT load or save mod backups, for safety
+async function KDGenBackupString() : Promise<string> {
+	return new Promise(async (res, _rej) => {
+		KDBusySavingBackup = true;
+		let ret = "";
+		try {
 
-	return JSON.stringify(obj);
-}
+			let obj: KDFullBackupData = {
+				localStorage: {},
+				saveDB: {},
+			};
 
-function KDSaveBackupDialog(filename: string, text: string) {
-	const blob = new Blob([text], { type: 'text/plain' });
-	const url = URL.createObjectURL(blob);
+			for (let key in localStorage) {
+				obj.localStorage[key] = localStorage.getItem(key);
+			}
+			await KinkyDungeonDBOpen().then((db) => {
+				const transaction = db.transaction(KDGameSaveDBStoreName, "readonly");
+				const store = transaction.objectStore(KDGameSaveDBStoreName);
+				const keys = store.getAllKeys();
 
-	const link = document.createElement('a');
-	link.href = url;
-	link.download = filename;
-	link.textContent = 'Download Full Backup';
+				return new Promise<any>((resolve, reject) => {
+						keys.onsuccess = async (event) => {
+							let keylist = (event.target as IDBRequest).result;
+							for (let key of keylist) {
+								await new Promise<any>((resolve, reject) => {
+									const readkey = db.transaction(KDGameSaveDBStoreName, "readonly");
+									const store = readkey.objectStore(KDGameSaveDBStoreName);
+									let result = store.get(key);
+									result.onsuccess = (event) => {
+										let object_read: string = (event.target as IDBRequest).result
+										obj.saveDB[key.toString()] = object_read;
+										resolve(null);
+									}
+									result.onerror = (event) => {
+										resolve(null);
+									}
+								}).then();
+							}
 
-	// Trigger a click event on the link to prompt the user to download
-	const clickEvent = new MouseEvent('click', {
-		view: window,
-		bubbles: true,
-		cancelable: true,
+							resolve(null);
+						}
+						keys.onerror = (event) => {
+							console.log("Error getting save database!");
+							resolve(null);
+						}
+					}).then();
+			});
+			ret = JSON.stringify(obj);
+		} finally {
+			KDBusySavingBackup = false;
+		}
+		res(ret);
 	});
-	link.dispatchEvent(clickEvent);
+}
 
-	// Clean up the object URL after download
-	URL.revokeObjectURL(url);
+async function KDSaveBackupDialog(filename: string, text: string) {
+	return new Promise<any>((resolve, reject) => {
+		const blob = new Blob([text], { type: 'text/plain' });
+			const url = URL.createObjectURL(blob);
+
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = filename;
+			link.textContent = 'Download Full Backup';
+
+			// Trigger a click event on the link to prompt the user to download
+			const clickEvent = new MouseEvent('click', {
+				view: window,
+				bubbles: true,
+				cancelable: true,
+			});
+			if (link.dispatchEvent(clickEvent)) {
+				// Clean up the object URL after download
+				URL.revokeObjectURL(url);
+				resolve(null);
+			} else {
+				// Clean up the object URL after download
+				URL.revokeObjectURL(url);
+				reject(null);
+			}
+	});
+	
 }
 
 function KDChangeZoom(change: number) {
@@ -7623,11 +7711,19 @@ function KDTogglesDraw() {
 		if (KDToggleTab == "Main") {
 			DrawButtonKDEx("kdtoggle_save", (b) => {
 
-				KDSaveBackupDialog("KDFullBackup" + KDBACKUPEXTENSION, KDGenBackupString());
+				KDGenBackupString().then((text) => {
+					if (text) {
+						KDSaveBackupDialog("KDFullBackup" + KDBACKUPEXTENSION, text).then(() => {
+							KDSendMusicToast(TextGet("KDBackupSaveSuccess"));
+						}, () => {
+							KDSendMusicToast(TextGet("KDBackupSaveFail"));
+						});;
+					}
+				})
 				return true;
-			}, true, 
+			}, !KDBusySavingBackup, 
 			PIXIWidth - 235, 900, 200, 64, 
-			TextGet("KDFullBackup"), KDBaseWhite,  undefined,  undefined,  undefined, 
+			TextGet("KDFullBackup"), KDBusySavingBackup ? KDBaseLightGrey : KDBaseWhite,  undefined,  undefined,  undefined, 
 			undefined,  undefined, undefined, undefined, {
 				hoverData: {
 					text: TextGet("KDFullBackupDesc")
@@ -7640,9 +7736,9 @@ function KDTogglesDraw() {
 			DrawButtonKDEx("kdtoggle_load", (b) => {
 				KDLoadBackupDialog();
 				return true;
-			}, true, 
+			}, !KDBusyLoadingFile, 
 			PIXIWidth - 450, 900, 200, 64, 
-			TextGet("KDLoadBackup"), KDBaseWhite,  undefined,  undefined,  undefined, 
+			TextGet("KDLoadBackup"), KDBusyLoadingFile ? KDBaseLightGrey : KDBaseWhite,  undefined,  undefined,  undefined, 
 			undefined,  undefined, undefined, undefined, {
 				hoverData: {
 					text: TextGet("KDLoadBackupDesc")
