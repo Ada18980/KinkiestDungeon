@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.82"
+KDVersionStr,"5.4.83"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -8419,10 +8419,6 @@ KinkyDungeonStartGame,Start Playing
 KinkyDungeonStartGameDesc,"Lock your settings in, nice and tight."
 KinkyDungeonStartGameDescKinky,"Start with some perks that increase strictness and immersion."
 KinkyDungeonStartGameDescAdc,"Choose some perks to spice up your run."
-
-KinkyDungeonConsent,"This game engages in safe and consensual analytics."
-KinkyDungeonConsent2,"It sends data about spell choices, levels reached, etc, to help balance and improve the game."
-KinkyDungeonConsent3,"No personal data is sent or stored."
 KDOptIn,"Accept"
 KDOptOut,"Don't Track Me"
 KDStartGame,"Proceed"
@@ -29269,10 +29265,38 @@ KDGoddessQuestReward_MistressKey,The Goddess awards you an ancient key of great 
 
 KDDiffTab_Diff,Game Setup
 KDDiffTab_Challenge,Challenge Settings
+KDDiffTab_Consent,Consent Settings
 
 
 
 KinkyDungeonChallenge,Challenge Settings:
+KinkyDungeonConsent,Set Limits:
+KDConsentLimits_Red,Red kinks are removed from the game
+KDConsentLimits_Yellow,Yellow kinks occur significantly less often
+KDConsentLimits_Green,Green kinks will appear more often!
+
+KDRed,Red
+KDYellow,Yellow
+KDGreen,Green
+
+KDConsentItem_Police,Police
+KDConsentItem_Nurse,Nurses/Doctors
+KDConsentItem_Slime,Slime
+KDConsentItem_Kigu,Kigurumi Masks
+KDConsentItem_Encasement,Encasement
+KDConsentItem_Tape,Tape Bondage
+KDConsentItem_Tickle,Tickling
+KDConsentItem_Bubbles,Bubbles
+KDConsentItem_Blindfolds,Blindfolds
+KDConsentItem_Yokes,Yokes and Spreader Bars
+KDConsentItem_Armbinders,Armbinders
+KDConsentItem_Boxbinders,Boxbinders
+KDConsentItem_Jackets,Straitjackets
+KDConsentItem_Petsuits,Petsuits
+KDConsentItem_Hoods,Hoods
+KDConsentItem_Masks,Full-face Masks
+KDConsentItem_Earplugs,Earplugs
+KDConsentItem_Shocks,Painful Shocks
 
 KDColorPickerPalette,Palette
 KDPaletteColorPickerInfo,Pick a palette in Extra Options

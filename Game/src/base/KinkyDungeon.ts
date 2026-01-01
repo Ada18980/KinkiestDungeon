@@ -7357,7 +7357,7 @@ async function KDLoadBackupDialog() {
 								let result = await new Promise<any>((resolve, reject) => {
 									const transaction = db.transaction(KDGameSaveDBStoreName, "readwrite");
 									const store = transaction.objectStore(KDGameSaveDBStoreName);
-									const data = { content: jsonobj.saveDB[key] };
+									const data = jsonobj.saveDB[key];
 									const request = store.put(data, key);
 
 									request.onsuccess = () => {
