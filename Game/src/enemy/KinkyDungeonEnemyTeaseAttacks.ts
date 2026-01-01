@@ -448,6 +448,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		priority: 1,
 		blockable: true, dodgeable: true,
 		filter: (enemy, player, _aiData) => {
+			if (KinkyDungeonStatsChoice.get("Less_Tickle")) return false;
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					KinkyDungeonFlags.get("armspell")
@@ -485,6 +486,7 @@ let KDTeaseAttacks: KDTeaseAttacksType = {
 		priority: 2,
 		blockable: true, dodgeable: true,
 		filter: (enemy, player, _aiData) => {
+			if (KinkyDungeonStatsChoice.get("Less_Tickle")) return false;
 			return KDBasicTeaseAttack(enemy, player)
 				&& (
 					KinkyDungeonFlags.get("legspell")

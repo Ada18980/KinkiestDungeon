@@ -3044,7 +3044,7 @@ AttackDemonLock,"The demon giggles as it locks your restraints! (DamageTaken)"
 AttackDemon,"The demon caresses you gently with her sharp nails! (DamageTaken)"
 AttackDemonStun,"The demon stuns you with her heavy mace! (+STUN)"
 
-NameTickleHand,Tickle Hand
+NameTickleHand,Ghostly Hand
 KillTickleHand,"The hand vanishes!"
 AttackTickleHand,"The hand tickles you! (DamageTaken)"
 
@@ -3064,7 +3064,7 @@ NameGreedyGhast,Greedy Ghast
 KillGreedyGhast,"The ghast vanishes... for now"
 AttackGreedyGhast,"The moaning spirit runs its hands all across your body!!! (DamageTaken)"
 
-NameTickleHandSlave,Tickle Hand
+NameTickleHandSlave,Ghostly Hand
 KillTickleHandSlave,"The hand vanishes!"
 AttackTickleHandSlave,"The hand tickles you! (DamageTaken)"
 
@@ -31949,7 +31949,7 @@ KinkyDungeonSpellEnemyFlashBomb,Flashbang
 KinkyDungeonSpellMinigunWindup,Tracer Rounds
 KinkyDungeonSpellGhostAttack,The Spookening
 KinkyDungeonSpellGagGeistAttack,The Muffling
-KinkyDungeonSpellSummonTickleHand,Conjure Tickle Hands
+KinkyDungeonSpellSummonTickleHand,Conjure Ghostly Hands
 KinkyDungeonSpellSummonEnemyGag2,Conjure Gags
 KinkyDungeonSpellSummonBookChain,Scriptum Ferri
 KinkyDungeonSpellSummonBookBelt,Scrimptum Habena
@@ -31995,7 +31995,7 @@ KinkyDungeonSpellSummonSarcoTentacle,Magical Wrappings
 KinkyDungeonSpellRubberBolt,Capture Bolt
 KinkyDungeonSpellDollConvert,Training Protocol
 KinkyDungeonSpellDollBoost,Motivation Protocol
-KinkyDungeonSpellSummonSingleTickleHand,Conjure Tickle Hand
+KinkyDungeonSpellSummonSingleTickleHand,Conjure Ghostly Hand
 KinkyDungeonSpellSummonEnemyGag,Conjure Gag
 KinkyDungeonSpellSummonLock,Conjure Locks
 KinkyDungeonSpellSummonCuff,Conjure Cuffs
