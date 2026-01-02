@@ -995,6 +995,175 @@ async function KDMigrateSaveToNewSystem() {
 }
 
 
+function KDReloadMainData(force: boolean) {
+	if (force || !KinkyDungeonPlayer) { // new game
+		KDrandomizeSeed(false);
+		if (KDPatched) {
+			// Default player character for legacy reasons
+			KinkyDungeonPlayer = CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada");
+		}
+
+		KDLoadToggles();
+
+
+		KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
+		KDBGColor = localStorage.getItem("KDBGColor") != undefined ? localStorage.getItem("KDBGColor") : KDBaseBlack;
+
+		if (localStorage.getItem("KDResolution")) {
+			let parsed = parseInt(localStorage.getItem("KDResolution"));
+			if (parsed != undefined) {
+				KDResolutionListIndex = parsed;
+				KDResolution = KDResolutionList[KDResolutionListIndex];
+			}
+		}
+		if (localStorage.getItem("KDVibeVolume")) {
+			let parsed = parseInt(localStorage.getItem("KDVibeVolume"));
+			if (parsed != undefined) {
+				KDVibeVolumeListIndex = parsed;
+				KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
+			}
+		}
+		if (localStorage.getItem("KDMusicVolume")) {
+			let parsed = parseInt(localStorage.getItem("KDMusicVolume"));
+			if (parsed != undefined) {
+				KDMusicVolumeListIndex = parsed;
+				KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
+			}
+		}
+		if (localStorage.getItem("KDSfxVolume")) {
+			let parsed = parseInt(localStorage.getItem("KDSfxVolume"));
+			if (parsed != undefined) {
+				KDSfxVolumeListIndex = parsed;
+				KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
+			}
+		}
+		if (localStorage.getItem("KDAnimSpeed")) {
+			let parsed = parseInt(localStorage.getItem("KDAnimSpeed"));
+			if (parsed != undefined) {
+				KDAnimSpeedListIndex = parsed;
+				KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
+			}
+		}
+		if (localStorage.getItem("KDSelectedFont")) {
+			let parsed = parseInt(localStorage.getItem("KDSelectedFont"));
+			if (parsed != undefined) {
+				KDSelectedFontListIndex = parsed;
+				KDSelectedFont = KDFonts.get(KDSelectedFontList[KDSelectedFontListIndex])?.alias || KDFontName;
+			}
+		}
+		if (localStorage.getItem("KDButtonFont")) {
+			let parsed = parseInt(localStorage.getItem("KDButtonFont"));
+			if (parsed != undefined) {
+				KDButtonFontListIndex = parsed;
+				KDButtonFont = KDFonts.get(KDButtonFontList[KDButtonFontListIndex])?.alias || KDFontName;
+			}
+		}
+		if (localStorage.getItem("KDGamma")) {
+			let parsed = parseInt(localStorage.getItem("KDGamma"));
+			if (parsed != undefined) {
+				KDGammaListIndex = parsed;
+				KDGamma = KDGammaList[KDGammaListIndex] || 0;
+				kdgammafilterstore[0] = KDGamma;
+			}
+		}
+		if (localStorage.getItem("zoomLvl") != undefined) {
+			let parsed = parseInt(localStorage.getItem("zoomLvl"));
+			if (parsed != undefined) {
+				KDZoomIndex = parsed;
+			}
+		}
+		if (localStorage.getItem("WToolsScrollMode") != undefined) {
+			let parsed = parseInt(localStorage.getItem("WToolsScrollMode"));
+			if (parsed != undefined) {
+				KDWToolsToggleScrollModeIndex = parsed;
+				KDWToolsToggleScrollMode = KDWToolsToggleScrollModes[KDWToolsToggleScrollModeIndex] || "Layer Bonus";
+			}
+		}
+
+		if (localStorage.getItem("WToolsLayerAbbr") != undefined) {
+			let parsed = parseInt(localStorage.getItem("WToolsLayerAbbr"));
+			if (parsed != undefined) {
+				KDWToolsLayerAbbrModeIndex = parsed;
+				KDWToolsLayerAbbrMode = KDWToolsLayerAbbrModes[KDWToolsLayerAbbrModeIndex] || "Short";
+			}
+		}
+
+
+		// Initialize Cloud syncing login variables
+		KDCloudLogintype = localStorage.getItem('KDCloudLogintype') ? localStorage.getItem('KDCloudLogintype') : null
+		KDCloudLogintoken = localStorage.getItem('KDCloudLogintoken') ? localStorage.getItem('KDCloudLogintoken') : null
+		KDCloudLoginiv = localStorage.getItem('KDCloudLoginiv') ? localStorage.getItem('KDCloudLoginiv') : null
+		KDDiscordLoginname = localStorage.getItem('KDDiscordLoginname') ? localStorage.getItem('KDDiscordLoginname') : null
+		KDDiscordLoginpfp = localStorage.getItem('KDDiscordLoginpfp') ? localStorage.getItem('KDDiscordLoginpfp') : null
+
+
+		if (localStorage.getItem('KDLastSaveSlot') == undefined
+			&& localStorage.getItem('KinkyDungeonSave')) {
+			localStorage.setItem('KDLastSaveSlot', "1");
+			KDMigrateSaveToNewSystem();
+		} else {
+			for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
+				let num = (i);
+				KinkyDungeonDBLoad(num).then((code) => {
+					loadedsaveslots[num - 1] = code;
+				});
+			}
+			// Cursed inverted saveslots to account for cloud ones
+			// This seemed easier than creating a new indexedDB function separately for clouds
+			for (var i = -1; i > -3; i--) {
+				let num = (i);
+				KinkyDungeonDBLoad(num).then((code) => {
+					loadedcloudsaveslots[(num * -1) - 1] = code;
+				})
+			}
+		}
+
+
+		KDReloadChallenge();
+
+		KinkyDungeonNewDress = true;
+		KDCurrentOutfit = parseInt(localStorage.getItem("kdcurrentoutfit") || 0);
+		let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
+		if (!appearance
+			// No appearance, or legacy
+			|| (StandalonePatched && JSON.parse(appearance).length && JSON.parse(appearance)[0]?.Asset)) {
+			KinkyDungeonNewDress = false;
+			if (StandalonePatched)
+				appearance = DecompressB64("NobwRAsg9gJgpgGzALjAIVgTzAGjAEQEsAzYwgYwFcEAXbZABjwGEoEoAnFAuYgQ2o0wAXxzho8JKgDSUQgFFMcAM64CJMlVr0mYVuy6p8vAbTUAxQrTgdVycIpUpwAcz4Bbd3xQBGAHQMAGzBIaGhAOx4ynw0lBwxhFAAdii65Mk08cpCyP4AzACseABGHIQuABY0SSp2/gAcRWAccDCpfnn1ed09vb14Li1wKYx+BWETIZFgxQiUcCh5fgCcTXwIAA4V3rmiYI7KAEzOYG6eO/5BkxPT0bHxNIkjaRlZOflNpeVVNcp1fo08C02qNOn1wT0BkNnmNrjcSnMFsglqs8OsthdhFixJBYIhuLJCGgOFAAO6qPBEUgUQQ6FhsTjcYz8QQiHESfEyOTQSg0CpqKmaWmpekGJkmVmicR4qRgQloObKfmUjQ07QivQMww8FlmKW4yTcACCFSgLgWKupWjoGv0jKMErMeEs1lsJxNZqRrg8XnahQYAcDQaDeSiMTiCWSvjw6SSmT42WjMzKlWqtSTwN8fjhEyagzgw3ahx8OYiCPmRZLpeC03R218WP1HNlaD45AA1gBlePfISWoXqxii+060x9sAumg2OzgVsd7vxXsnM6+0EFYMbwOhsB3COPKO5GOvBPvEopn7pw/NVpZ6shPPQyt3wLTWYV0bF5+1zb13bY6WGqgC58L2rZJC4FLqFawpDpqYoOrq46TtOJzAaBfDgTOpw+jsDAdOum4btuu4PE8SaxvGiZXl8qa/HUQI3rk2bPg+BYwp+d6voiT6cWiP6Yv+BqcugGEwIQNAYFANCQYKao2rBdragAxKQqnEBYVhTm69hgJ2ppwAAMrwOTeucWYACyERuPhhvckYwgwEJOduFFvFmBRdM5/TJr2dG3p5XndAxII2acj7UdxV51pieB6VAcAAEpLjpK4XH4llWUGoUkfZ7SOYF3muSe7kBYFZ6+Ze/iBKVXnBUm+aFhF76hdFDaCc23AAOrieQFQKlAlDKBaUEDvJuiKdwKlqepTYyl1PUVKwthwOOsnWnScEjlNakaa6WFLUNJnYWZTHmU0OX7jC5lfkecZudR55pn8GaMaFDUjKFb5Ii1/FtbNgGQCBMCdu2hAcKtqrrbaWqTdN6nOppKE6SDYNHalSYXWRH4FT05m3ZRp4+bRlV1Ve71Jl97lrL9TEMFW1aNuyc2oBAQOdlAHYyZDMHjTDqDbapu1aVh7MdklqbLjhGPhqRB4vHdxUPRVz1XpmZPhZ9kU/RiDaxRz7ZGcQaNS1emNy/j92fY9fmq69UJsRTWt8Trf7/cJwEbBsmBoIQoNJIQArc4OvPwaOkpMwDBkxHAAAexLeP2ckbRNCFjiIAC6QA");
+		}
+
+		CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
+
+		CharacterReleaseTotal(KinkyDungeonPlayer);
+
+
+		CharacterRefresh(KinkyDungeonPlayer);
+
+
+		KinkyDungeonInitializeDresses();
+		KinkyDungeonDressSet();
+
+		CharacterNaked(KinkyDungeonPlayer);
+
+		KDRefreshCharacter.set(KinkyDungeonPlayer, true);
+		KinkyDungeonDressPlayer();
+
+		KDInitProtectedGroups(KinkyDungeonPlayer);
+
+	}
+
+	if (localStorage.getItem("KinkyDungeonKeybindings") && JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"))) {
+		KinkyDungeonKeybindings = JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"));
+		KinkyDungeonKeybindingsTemp = {};
+		Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
+		console.log(KinkyDungeonKeybindings);
+	}
+	else {
+		console.log("Failed to load keybindings");
+		KDSetDefaultKeybindings();
+	}
+}
+
 /**
  * Loads the kinky dungeon game
  */
@@ -1103,172 +1272,7 @@ function KinkyDungeonLoad(): void {
 	if (!KinkyDungeonIsPlayer()) KinkyDungeonGameRunning = false;
 
 	if (!KinkyDungeonGameRunning) {
-		if (!KinkyDungeonPlayer) { // new game
-			KDrandomizeSeed(false);
-			if (KDPatched) {
-				// Default player character for legacy reasons
-				KinkyDungeonPlayer = CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada");
-			}
-
-			KDLoadToggles();
-
-
-			KinkyDungeonBones = localStorage.getItem("KinkyDungeonBones") != undefined ? localStorage.getItem("KinkyDungeonBones") : KinkyDungeonBones;
-			KDBGColor = localStorage.getItem("KDBGColor") != undefined ? localStorage.getItem("KDBGColor") : KDBaseBlack;
-
-			if (localStorage.getItem("KDResolution")) {
-				let parsed = parseInt(localStorage.getItem("KDResolution"));
-				if (parsed != undefined) {
-					KDResolutionListIndex = parsed;
-					KDResolution = KDResolutionList[KDResolutionListIndex];
-				}
-			}
-			if (localStorage.getItem("KDVibeVolume")) {
-				let parsed = parseInt(localStorage.getItem("KDVibeVolume"));
-				if (parsed != undefined) {
-					KDVibeVolumeListIndex = parsed;
-					KDVibeVolume = KDVibeVolumeList[KDVibeVolumeListIndex];
-				}
-			}
-			if (localStorage.getItem("KDMusicVolume")) {
-				let parsed = parseInt(localStorage.getItem("KDMusicVolume"));
-				if (parsed != undefined) {
-					KDMusicVolumeListIndex = parsed;
-					KDMusicVolume = KDMusicVolumeList[KDMusicVolumeListIndex];
-				}
-			}
-			if (localStorage.getItem("KDSfxVolume")) {
-				let parsed = parseInt(localStorage.getItem("KDSfxVolume"));
-				if (parsed != undefined) {
-					KDSfxVolumeListIndex = parsed;
-					KDSfxVolume = KDSfxVolumeList[KDSfxVolumeListIndex];
-				}
-			}
-			if (localStorage.getItem("KDAnimSpeed")) {
-				let parsed = parseInt(localStorage.getItem("KDAnimSpeed"));
-				if (parsed != undefined) {
-					KDAnimSpeedListIndex = parsed;
-					KDAnimSpeed = KDAnimSpeedList[KDAnimSpeedListIndex] || 0;
-				}
-			}
-			if (localStorage.getItem("KDSelectedFont")) {
-				let parsed = parseInt(localStorage.getItem("KDSelectedFont"));
-				if (parsed != undefined) {
-					KDSelectedFontListIndex = parsed;
-					KDSelectedFont = KDFonts.get(KDSelectedFontList[KDSelectedFontListIndex])?.alias || KDFontName;
-				}
-			}
-			if (localStorage.getItem("KDButtonFont")) {
-				let parsed = parseInt(localStorage.getItem("KDButtonFont"));
-				if (parsed != undefined) {
-					KDButtonFontListIndex = parsed;
-					KDButtonFont = KDFonts.get(KDButtonFontList[KDButtonFontListIndex])?.alias || KDFontName;
-				}
-			}
-			if (localStorage.getItem("KDGamma")) {
-				let parsed = parseInt(localStorage.getItem("KDGamma"));
-				if (parsed != undefined) {
-					KDGammaListIndex = parsed;
-					KDGamma = KDGammaList[KDGammaListIndex] || 0;
-					kdgammafilterstore[0] = KDGamma;
-				}
-			}
-			if (localStorage.getItem("zoomLvl") != undefined) {
-				let parsed = parseInt(localStorage.getItem("zoomLvl"));
-				if (parsed != undefined) {
-					KDZoomIndex = parsed;
-				}
-			}
-			if (localStorage.getItem("WToolsScrollMode") != undefined) {
-				let parsed = parseInt(localStorage.getItem("WToolsScrollMode"));
-				if (parsed != undefined) {
-					KDWToolsToggleScrollModeIndex = parsed;
-					KDWToolsToggleScrollMode = KDWToolsToggleScrollModes[KDWToolsToggleScrollModeIndex] || "Layer Bonus";
-				}
-			}
-
-			if (localStorage.getItem("WToolsLayerAbbr") != undefined) {
-				let parsed = parseInt(localStorage.getItem("WToolsLayerAbbr"));
-				if (parsed != undefined) {
-					KDWToolsLayerAbbrModeIndex = parsed;
-					KDWToolsLayerAbbrMode = KDWToolsLayerAbbrModes[KDWToolsLayerAbbrModeIndex] || "Short";
-				}
-			}
-
-
-			// Initialize Cloud syncing login variables
-			KDCloudLogintype = localStorage.getItem('KDCloudLogintype') ? localStorage.getItem('KDCloudLogintype') : null
-        	KDCloudLogintoken = localStorage.getItem('KDCloudLogintoken') ? localStorage.getItem('KDCloudLogintoken') : null
-        	KDCloudLoginiv = localStorage.getItem('KDCloudLoginiv') ? localStorage.getItem('KDCloudLoginiv') : null
-        	KDDiscordLoginname = localStorage.getItem('KDDiscordLoginname') ? localStorage.getItem('KDDiscordLoginname') : null
-        	KDDiscordLoginpfp = localStorage.getItem('KDDiscordLoginpfp') ? localStorage.getItem('KDDiscordLoginpfp') : null
-
-
-			if (localStorage.getItem('KDLastSaveSlot') == undefined
-				&& localStorage.getItem('KinkyDungeonSave')) {
-				localStorage.setItem('KDLastSaveSlot', "1");
-				KDMigrateSaveToNewSystem();
-			} else {
-				for (var i = 1; i <= (saveSlotsPerPage*maxSaveSlotPages); i++) {
-					let num = (i);
-					KinkyDungeonDBLoad(num).then((code) => {
-						loadedsaveslots[num - 1] = code;
-					});
-				}
-				// Cursed inverted saveslots to account for cloud ones
-				// This seemed easier than creating a new indexedDB function separately for clouds
-				for (var i = -1; i > -3; i--) {
-					let num = (i);
-					KinkyDungeonDBLoad(num).then((code) => {
-						loadedcloudsaveslots[(num * -1) - 1] = code;
-					})
-				}
-			}
-
-
-			KDReloadChallenge();
-
-			KinkyDungeonNewDress = true;
-			KDCurrentOutfit = parseInt(localStorage.getItem("kdcurrentoutfit") || 0);
-			let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
-			if (!appearance
-				// No appearance, or legacy
-				|| (StandalonePatched && JSON.parse(appearance).length && JSON.parse(appearance)[0]?.Asset)) {
-				KinkyDungeonNewDress = false;
-				if (StandalonePatched)
-					appearance = DecompressB64("NobwRAsg9gJgpgGzALjAIVgTzAGjAEQEsAzYwgYwFcEAXbZABjwGEoEoAnFAuYgQ2o0wAXxzho8JKgDSUQgFFMcAM64CJMlVr0mYVuy6p8vAbTUAxQrTgdVycIpUpwAcz4Bbd3xQBGAHQMAGzBIaGhAOx4ynw0lBwxhFAAdii65Mk08cpCyP4AzACseABGHIQuABY0SSp2/gAcRWAccDCpfnn1ed09vb14Li1wKYx+BWETIZFgxQiUcCh5fgCcTXwIAA4V3rmiYI7KAEzOYG6eO/5BkxPT0bHxNIkjaRlZOflNpeVVNcp1fo08C02qNOn1wT0BkNnmNrjcSnMFsglqs8OsthdhFixJBYIhuLJCGgOFAAO6qPBEUgUQQ6FhsTjcYz8QQiHESfEyOTQSg0CpqKmaWmpekGJkmVmicR4qRgQloObKfmUjQ07QivQMww8FlmKW4yTcACCFSgLgWKupWjoGv0jKMErMeEs1lsJxNZqRrg8XnahQYAcDQaDeSiMTiCWSvjw6SSmT42WjMzKlWqtSTwN8fjhEyagzgw3ahx8OYiCPmRZLpeC03R218WP1HNlaD45AA1gBlePfISWoXqxii+060x9sAumg2OzgVsd7vxXsnM6+0EFYMbwOhsB3COPKO5GOvBPvEopn7pw/NVpZ6shPPQyt3wLTWYV0bF5+1zb13bY6WGqgC58L2rZJC4FLqFawpDpqYoOrq46TtOJzAaBfDgTOpw+jsDAdOum4btuu4PE8SaxvGiZXl8qa/HUQI3rk2bPg+BYwp+d6voiT6cWiP6Yv+BqcugGEwIQNAYFANCQYKao2rBdragAxKQqnEBYVhTm69hgJ2ppwAAMrwOTeucWYACyERuPhhvckYwgwEJOduFFvFmBRdM5/TJr2dG3p5XndAxII2acj7UdxV51pieB6VAcAAEpLjpK4XH4llWUGoUkfZ7SOYF3muSe7kBYFZ6+Ze/iBKVXnBUm+aFhF76hdFDaCc23AAOrieQFQKlAlDKBaUEDvJuiKdwKlqepTYyl1PUVKwthwOOsnWnScEjlNakaa6WFLUNJnYWZTHmU0OX7jC5lfkecZudR55pn8GaMaFDUjKFb5Ii1/FtbNgGQCBMCdu2hAcKtqrrbaWqTdN6nOppKE6SDYNHalSYXWRH4FT05m3ZRp4+bRlV1Ve71Jl97lrL9TEMFW1aNuyc2oBAQOdlAHYyZDMHjTDqDbapu1aVh7MdklqbLjhGPhqRB4vHdxUPRVz1XpmZPhZ9kU/RiDaxRz7ZGcQaNS1emNy/j92fY9fmq69UJsRTWt8Trf7/cJwEbBsmBoIQoNJIQArc4OvPwaOkpMwDBkxHAAAexLeP2ckbRNCFjiIAC6QA");
-			}
-
-			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
-
-			CharacterReleaseTotal(KinkyDungeonPlayer);
-
-
-			CharacterRefresh(KinkyDungeonPlayer);
-
-
-			KinkyDungeonInitializeDresses();
-			KinkyDungeonDressSet();
-
-			CharacterNaked(KinkyDungeonPlayer);
-
-			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
-			KinkyDungeonDressPlayer();
-
-			KDInitProtectedGroups(KinkyDungeonPlayer);
-
-		}
-
-		if (localStorage.getItem("KinkyDungeonKeybindings") && JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"))) {
-			KinkyDungeonKeybindings = JSON.parse(localStorage.getItem("KinkyDungeonKeybindings"));
-			KinkyDungeonKeybindingsTemp = {};
-			Object.assign(KinkyDungeonKeybindingsTemp, KinkyDungeonKeybindings);
-			console.log(KinkyDungeonKeybindings);
-		}
-		else {
-			console.log("Failed to load keybindings");
-			KDSetDefaultKeybindings();
-		}
+		KDReloadMainData(false);
 
 		if (KinkyDungeonIsPlayer()) {
 			KinkyDungeonGameData = null;
@@ -7371,12 +7375,14 @@ async function KDLoadBackupDialog() {
 							db.close();
 							if (ressucc) {
 								KDSendMusicToast(TextGet("KDBackupLoadSuccess"));
+								KDReloadMainData(true);
 							} else {
 								KDSendMusicToast(TextGet("KDBackupLoadFail"));
 							}
 						});
 					} else if (jsonobj.localStorage) {
 						KDSendMusicToast(TextGet("KDBackupLoadSuccess"));
+						KDReloadMainData(true);
 					} else {
 						KDSendMusicToast(TextGet("KDBackupLoadFail"));
 					}
