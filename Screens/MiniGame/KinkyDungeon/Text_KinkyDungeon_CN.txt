@@ -261,6 +261,10 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDMinimapLabel_+
 # :: KDMinimapLabel_=
 
+# - Backup loaded!
+# - Backup failed to load.
+# - Backup saved!
+# - Backup failed to save!!!!!
 
 # - Save Backup
 # - Stores all of your settings and presets into a file.
@@ -5299,6 +5303,7 @@ M.F. '女仆长'
 # :: m_SlimeHands_l_Slime
 # :: m_SlimeHands_l_Slime
 # :: KDItemFilter_Restraint_Slime
+# :: KDConsentItem_Slime
 # :: KDPaletteSlime
 # :: KDBindType_Slime
 - The slime melts into a puddle.
@@ -6095,8 +6100,7 @@ EnemyName 用 NewRestraintName 拘束你
 - The demon stuns you with her heavy mace! (+STUN)
 恶魔用她沉重的狼牙棒将你击晕！ ( +STUN )
 
-- Tickle Hand
-挠痒痒的手
+# - Ghostly Hand
 # :: NameTickleHand
 # :: NameTickleHandSlave
 - The hand vanishes!
@@ -16486,13 +16490,6 @@ EnemyName 设法带着你的物品撤退了！
 从一些增加约束性和沉浸感的特质开始
 - Choose some perks to spice up your run.
 选择一些额外特质，为你的游玩增添趣味
-
-- This game engages in safe and consensual analytics.
-该游戏涉及安全和自愿的数据分析
-- It sends data about spell choices, levels reached, etc, to help balance and improve the game.
-它发送有关法术选择、达到的等级等的数据，以帮助平衡和改进游戏
-- No personal data is sent or stored.
-不会发送或存储任何个人数据
 - Accept
 接受
 - Don't Track Me
@@ -26358,8 +26355,12 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 亮度
 - Red
 红
+# :: KDColorSliderred
+# :: KDRed
 - Green
 绿
+# :: KDColorSlidergreen
+# :: KDGreen
 - Blue
 蓝
 # :: KDColorSliderblue
@@ -43836,10 +43837,14 @@ Kjus眼5
 基本材料
 - Armbinders
 单手套
+# :: KDFilterFiltersArmbinders
+# :: KDConsentItem_Armbinders
 - Legbinders
 束腿套
 - Boxbinders
 盒式单手套
+# :: KDFilterFiltersBoxbinders
+# :: KDConsentItem_Boxbinders
 - Devices
 装置
 - Toys
@@ -46182,11 +46187,41 @@ RestraintName 失效了！
 游戏设置
 - Challenge Settings
 挑战设置
+# - Consent Settings
 
 
 
 - Challenge Settings:
 挑战设置 : ‎
+# - Set Limits:
+# - Red kinks are removed from the game
+# - Yellow kinks occur significantly less often
+# - Green kinks will appear more often!
+
+# - Yellow
+
+# - Police
+# - Nurses/Doctors
+# - Kigurumi Masks
+- Encasement
+包裹
+# :: KDConsentItem_Encasement
+# :: KDBindNPCSlot_ArmEncase
+# :: KDBindNPCSlot_HandEncase
+# :: KDBindNPCSlot_LegEncase
+# :: KDBindNPCSlot_FeetEncase
+# :: KDBindNPCSlot_BootsEncase
+# - Tape Bondage
+# - Tickling
+# - Bubbles
+# - Blindfolds
+# - Yokes and Spreader Bars
+# - Straitjackets
+# - Petsuits
+# - Hoods
+# - Full-face Masks
+# - Earplugs
+# - Painful Shocks
 
 - Palette
 调色板
@@ -49706,13 +49741,6 @@ AMNT/MAXX 仆从分配
 面板口塞 / 口套
 - Wrists
 腕部
-- Encasement
-包裹
-# :: KDBindNPCSlot_ArmEncase
-# :: KDBindNPCSlot_HandEncase
-# :: KDBindNPCSlot_LegEncase
-# :: KDBindNPCSlot_FeetEncase
-# :: KDBindNPCSlot_BootsEncase
 - Mittens / Tape
 束手套 / 胶带
 - Gloves / Tape
@@ -50459,8 +50487,7 @@ ENMY 解开了 ITMN 的锁!
 惊吓
 - The Muffling
 堵嘴
-- Conjure Tickle Hands
-召唤挠痒痒的手
+# - Conjure Ghostly Hands
 - Conjure Gags
 召唤口塞
 - Scriptum Ferri
@@ -50535,8 +50562,7 @@ ENMY 解开了 ITMN 的锁!
 调教协议
 - Motivation Protocol
 动力协议
-- Conjure Tickle Hand
-召唤挠痒痒的手
+# - Conjure Ghostly Hand
 - Conjure Locks
 召唤锁
 - Chainstorm
