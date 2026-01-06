@@ -21,6 +21,32 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 					"red":1,"green":1,"blue":1,"alpha":0.001}}
 		}
 	],
+	
+	Krifath: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":0.5166666666666666,"contrast":1,"brightness":0.75,"red":1.2666666666666668,"green":1,"blue":1.6,"alpha":0.9833333333333333},
+			Torso: {"gamma":1,"saturation":0.5166666666666666,"contrast":1,"brightness":0.75,"red":1.2666666666666668,"green":1,"blue":1.6,"alpha":0.9833333333333333},
+		}},
+	],
+	Catey: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5117647058823529,"green":0.4294117647058823,"blue":0.5647058823529412,"alpha":1},
+			Torso: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5117647058823529,"green":0.4294117647058823,"blue":0.5647058823529412,"alpha":1},
+			Nipples: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5823529411764706,"green":0.4764705882352941,"blue":0.6352941176470588,"alpha":1},
+		}},
+	],
+	Anarial: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1.2,"saturation":1.0666666666666667,"contrast":1.1,"brightness":1.1666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
+			Torso: {"gamma":1.2,"saturation":1.0666666666666667,"contrast":1.1,"brightness":1.1666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
+		}},
+	],
+	Salote: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.9019607843137255,"green":1.0980392156862746,"blue":1.0392156862745099,"alpha":1},
+			Torso: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.7647058823529411,"green":1.2352941176470589,"blue":1.1568627450980393,"alpha":1},
+		}},
+	],
 
 	"Demon" : [
 		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {

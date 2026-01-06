@@ -14,7 +14,7 @@ interface KDOutfitMetadata {
 	customColors: Record<string, Record<string, LayerFilter>>,
 }
 
-interface FactionFilterDef {color: string, override: boolean, desaturate?: boolean};
+interface FactionFilterDef {color: string, override?: boolean, desaturate?: boolean};
 
 /** Kinky Dungeon Typedefs*/
 interface item extends NamedAndTyped {
@@ -810,7 +810,7 @@ interface alwaysDressModel {
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction filter index */
-	factionFilters?: Record<string, {color: string, override: boolean}>,
+	factionFilters?: Record<string, {color: string, override?: boolean}>,
 	/** Inherits the filters of the main */
 	inheritFilters?: boolean,
 	/** Whether or not it overrides items already on */

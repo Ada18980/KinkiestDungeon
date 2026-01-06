@@ -991,6 +991,45 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"LightBlueCute",
 		],
 	},
+	Kaisei: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Kaisei",
+		],
+		Hairstyle: [
+			"Kaisei"
+		],
+	},
+	Krifath: {
+		Bodystyle: [
+			"Krifath",
+		],
+		Facestyle: [
+			"Krifath",
+		],
+		Hairstyle: [
+			"Krifath"
+		],
+		Cosplay: [
+			"Krifath"
+		],
+	},
+	Yumi: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Yumi",
+		],
+		Hairstyle: [
+			"Yumi"
+		],
+		Cosplay: [
+			"Yumi"
+		],
+	},
 	Melissa: {
 		Bodystyle: [
 			"Default",
@@ -1000,6 +1039,201 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 		],
 		Hairstyle: [
 			"Melissa",
+		],
+	},
+	Director: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Director",
+		],
+		Hairstyle: [
+			"Director",
+		],
+	},
+	Minnie: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Minnie",
+		],
+		Hairstyle: [
+			"Minnie",
+		],
+	},
+	Carli: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Carli",
+		],
+		Hairstyle: [
+			"Carli",
+		],
+	},
+	Anketh: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Anketh",
+		],
+		Hairstyle: [
+			"Anketh",
+		],
+	},
+	Mizuna: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Mizuna",
+		],
+		Hairstyle: [
+			"Mizuna",
+		],
+		Cosplay: [
+			"Mizuna",
+		],
+	},
+	Anarial: {
+		
+		Cosplay: [
+			"Anarial",
+		],
+		Bodystyle: [
+			"Anarial",
+		],
+		Facestyle: [
+			"Anarial",
+		],
+		Hairstyle: [
+			"Anarial",
+		],
+	},
+	Elodie: {
+		
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Elodie",
+		],
+		Hairstyle: [
+			"Elodie",
+		],
+	},
+	iostream: {
+		
+		Cosplay: [
+			"iostream",
+		],
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"iostream",
+		],
+		Hairstyle: [
+			"iostream",
+		],
+	},
+	Ivy: {
+		
+		Cosplay: [
+			"Ivy",
+		],
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Ivy",
+		],
+		Hairstyle: [
+			"Ivy",
+		],
+	},
+	Salote: {
+		
+		Cosplay: [
+			"Salote",
+		],
+		Bodystyle: [
+			"Salote",
+		],
+		Facestyle: [
+			"Salote",
+		],
+		Hairstyle: [
+			"Salote",
+		],
+	},
+
+	Catey: {
+		
+		Bodystyle: [
+			"Catey",
+		],
+		Facestyle: [
+			"Catey",
+		],
+		Hairstyle: [
+			"Catey",
+		],
+	},
+	
+	Lushi: {
+		
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Lushi",
+		],
+		Hairstyle: [
+			"Lushi",
+		],
+	},
+	Mizuna2: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Mizuna2",
+		],
+		Hairstyle: [
+			"Mizuna2",
+		],
+		Cosplay: [
+			"Mizuna2",
+		],
+	},
+	Luce: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Luce",
+		],
+		Hairstyle: [
+			"Luce",
+		],
+		Cosplay: [
+			"Luce",
+		],
+	},
+	Fidel: {
+		Bodystyle: [
+			"Default",
+		],
+		Facestyle: [
+			"Fidel",
+		],
+		Hairstyle: [
+			"Fidel",
 		],
 	},
 	Viola: {

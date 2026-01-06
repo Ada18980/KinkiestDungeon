@@ -1042,6 +1042,11 @@ function KinkyDungeonDrawPlayerNameInMenus() {
 	}
 }
 
+let KDAutowait_Slow = 25;
+let KDAutowait_Med = 50;
+let KDAutowait_Fast = 75;
+let KDAutowait_Max = 200;
+
 // Draw function for the game portion
 function KinkyDungeonDrawGame() {
 	KDCurrentEnemyTooltip = null;
@@ -1080,10 +1085,10 @@ function KinkyDungeonDrawGame() {
 
 	let wt = 50;
 	if (KinkyDungeonAutoWait) {
-		if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = 25;
-		else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = 50;
-		else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = 75;
-		else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = 500;
+		if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = KDAutowait_Slow;
+		else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = KDAutowait_Med;
+		else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = KDAutowait_Fast;
+		else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = KDAutowait_Max;
 	}
 
 	if (!KDGameData.LastSave) KDGameData.LastSave = KinkyDungeonCurrentTick;
