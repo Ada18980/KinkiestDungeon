@@ -31439,19 +31439,28 @@ V形比基尼
 # :: m_RibbonLegs3_l_RightThigh3
 # :: m_RopeLegs3_l_RightThigh3
 # :: m_RibbonLegs3_l_RightThigh3
-# - RibbonCrosstie1
-# - RibbonBoxtie1
-# - RibbonWristtie1
-# - RibbonChestStraps1
-# - RibbonBoxtie2
-# - RibbonWristtie2
-# - RibbonChestStraps2
-# - ArmHarnessUnderbust
+- RibbonCrosstie1
+丝带交叉捆绑1
+- RibbonBoxtie1
+丝带盒式捆绑1
+- RibbonWristtie1
+丝带腕部捆绑1
+- RibbonChestStraps1
+丝带胸部绳缚1
+- RibbonBoxtie2
+丝带盒式捆绑2
+- RibbonWristtie2
+丝带腕部捆绑2
+- RibbonChestStraps2
+丝带胸部绳缚2
+- ArmHarnessUnderbust
+丝带下胸式臂缚
 # :: m_RibbonChestStraps2_l_ArmHarnessUnderbust
 # :: m_RibbonChestStraps2_l_ArmHarnessUnderbust
 - RibbonCuffs
 丝带铐
-# - RibbonHarness
+- RibbonHarness
+丝带束衣
 # - HarnessMid
 # :: m_RibbonHarness_l_HarnessMid
 # :: m_WolfHarnessLower_l_HarnessMid
@@ -31465,7 +31474,8 @@ V形比基尼
 # :: m_WolfHarnessLowerRestraint_l_HarnessMid
 # :: m_WolfHarnessRestraint_l_HarnessMid
 # :: m_FashionRibbonHarness_l_HarnessMid
-# - RibbonCrotch
+- RibbonCrotch
+裆部丝带
 - Crotch
 裆部
 # :: m_RibbonCrotch_l_Crotch
@@ -31486,8 +31496,10 @@ V形比基尼
 # :: m_RibbonCrotch_l_CrotchStrap
 # :: m_ShadowHandsCrotch_l_CrotchStrap
 # :: m_FashionRibbonCrotch_l_CrotchStrap
-# - RibbonToes
-# - RibbonFeet
+- RibbonToes
+趾部丝带束带
+- RibbonFeet
+足部丝带束带
 # - RibbonFeetHeavy
 # - RibbonAnkles1
 # - RibbonAnkles2
@@ -38270,13 +38282,15 @@ Aura刘海(右后)
 - VibePiercingsRestraint
 振动器乳环拘束
 # - PostureCollarBasic
-# - PostureCollar
+- PostureCollar
+姿势项圈
 # :: m_PostureCollarBasic_l_PostureCollar
 # :: m_PostureCollar
 # :: m_PostureCollar_l_PostureCollar
 # :: m_FashionPostureCollarBasic_l_PostureCollar
 # :: m_FashionPostureCollar_l_PostureCollar
-# - PostureCollarRim
+- PostureCollarRim
+姿势项圈饰边
 # :: m_PostureCollarBasic_l_PostureCollarRim
 # :: m_PostureCollar_l_PostureCollarRim
 # :: m_FashionPostureCollarBasic_l_PostureCollarRim
@@ -38284,7 +38298,8 @@ Aura刘海(右后)
 # - PostureCollarLoop
 # :: m_PostureCollar_l_PostureCollarLoop
 # :: m_FashionPostureCollar_l_PostureCollarLoop
-# - PostureCollarHardware
+- PostureCollarHardware
+姿势项圈底座
 # :: m_PostureCollar_l_PostureCollarHardware
 # :: m_FashionPostureCollar_l_PostureCollarHardware
 # - FashionPostureCollarBasic
