@@ -28,12 +28,15 @@ let KDPatronAdventurers = [
 	// Carli
 	// Yumi
 	// Director
-	// Aurora Kanagawa Appearance : Fox ears, 9 Fox tails, Brown hair and emerald, green eyes.
 	// Anarial
 	// Lushi
 	// Catey
 	// Salote
 	// Ivy
+	// iostream
+	// Elodie
+	// Istoodin
+	// Aurora Kanagawa Appearance : Fox ears, 9 Fox tails, Brown hair and emerald, green eyes.
 
 	// special
 	//Yumi - change to generic maid knight when added
@@ -360,6 +363,8 @@ let KDPatronCustomEnemies = new Map([
 			customIntro: "How do you like my white pantyhose dear~", customSprite: ""},
 		{name: "Darjeeling", color: "#5ca363ff", prisoner: false, free: true, customPlayLine: "",
 			customIntro: "", customSprite: ""},
+		{name: "Istoodin", color: "#efef0bff", prisoner: true, free: true, customPlayLine: "",
+			customIntro: "Hello, is there aught I may help you with?", customSprite: "Istoodin", customStyle: "Istoodin"},
 
 
 		{name: "Anketh", color: "#9822ffff", prisoner: true, free: true, customPlayLine: "",

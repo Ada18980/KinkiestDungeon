@@ -1114,6 +1114,36 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Anarial",
 		],
 	},
+	Istoodin: {
+		
+		Cosplay: [
+			"Istoodin",
+		],
+		Bodystyle: [
+			"Istoodin",
+		],
+		Facestyle: [
+			"Istoodin",
+		],
+		Hairstyle: [
+			"Istoodin",
+		],
+	},
+	Rook: {
+		
+		Cosplay: [
+			"Rook",
+		],
+		Bodystyle: [
+			"Rook",
+		],
+		Facestyle: [
+			"Rook",
+		],
+		Hairstyle: [
+			"Rook",
+		],
+	},
 	Elodie: {
 		
 		Bodystyle: [

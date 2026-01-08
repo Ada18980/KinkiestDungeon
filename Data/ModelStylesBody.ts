@@ -35,6 +35,19 @@ let KDModelBody: {[_: string]: KinkyDungeonDress} = {
 			Nipples: {"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.5823529411764706,"green":0.4764705882352941,"blue":0.6352941176470588,"alpha":1},
 		}},
 	],
+	Rook: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":0.9666666666666667,"saturation":0,"contrast":1,"brightness":1,"red":1.8823529411764706,"green":0.9215686274509803,"blue":0.7843137254901961,"alpha":1},
+			Torso: {"gamma":0.6,"saturation":0,"contrast":1.0166666666666666,"brightness":1,"red":1.7450980392156863,"green":1.0196078431372548,"blue":0.9215686274509803,"alpha":1},
+		}},
+	],
+	Istoodin: [
+		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
+			Head: {"gamma":1,"saturation":0.8833333333333333,"contrast":0.81,"brightness":1,"red":0.39215686274509803,"green":0.4117647058823529,"blue":0.47058823529411764,"alpha":1},
+			Torso: {"gamma":1,"saturation":0.8833333333333333,"contrast":0.81,"brightness":1,"red":0.39215686274509803,"green":0.4117647058823529,"blue":0.47058823529411764,"alpha":1},
+			Nipples: {"gamma":1,"saturation":0.8833333333333333,"contrast":0.81,"brightness":1,"red":0.39215686274509803,"green":0.4117647058823529,"blue":0.47058823529411764,"alpha":1},
+		}},
+	],
 	Anarial: [
 		{Item: "Body", Group: "Body", Color: KDBaseWhite, Lost: false, Filters: {
 			Head: {"gamma":1.2,"saturation":1.0666666666666667,"contrast":1.1,"brightness":1.1666666666666667,"red":0.7333333333333334,"green":0.5166666666666666,"blue":0.5333333333333333,"alpha":1},
