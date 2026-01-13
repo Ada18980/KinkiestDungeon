@@ -1516,10 +1516,13 @@ function KinkyDungeonRun() {
 	if (StandalonePatched && KDCurrentModels) {
 		let refresh = false;
 		if (CommonTime() > lastGlobalRefresh + GlobalRefreshInterval) {
+			
 			lastGlobalRefresh = CommonTime();
-			//console.log("refresh");
-			refresh = true;
-			KDGlobalFilterCacheRefresh = true;
+			
+			if (KinkyDungeonDrawState != "Game" && KinkyDungeonState != "Game") {
+				refresh = true;
+				KDGlobalFilterCacheRefresh = true;
+			}
 		}
 
 		for (let ent of KDCurrentModels.entries()) {

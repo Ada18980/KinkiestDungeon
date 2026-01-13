@@ -435,7 +435,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	Blend: any = PIXI.SCALE_MODES.LINEAR,
 	StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false,
 	extraPoses: string[] = undefined, containerID?: string,
-	EndMods: PoseMod[] = []): void {
+	EndMods: PoseMod[] = []): PIXIMesh {
 	if (!DrawCanvas) DrawCanvas = kdcanvas;
 
 	// Update the RenderCharacterQueue
@@ -819,8 +819,6 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 				buffer.update();
 
 			}
-
-			
 		}
 	}
 	// Update the updated array
@@ -840,7 +838,9 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
 	if (MC.Containers.get(containerID)) {
 		MC.Containers.get(containerID).Mesh.x = X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25;
 		MC.Containers.get(containerID).Mesh.y = Y + Zoom * MODEL_SCALE * MODELHEIGHT * 0.5;
+		return MC.Containers.get(containerID).Mesh;
 	}
+	return null;
 }
 /** Future function */
 let DrawModel = DrawCharacter;

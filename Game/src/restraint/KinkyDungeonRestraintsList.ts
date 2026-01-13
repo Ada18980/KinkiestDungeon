@@ -3331,6 +3331,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		alwaysDressModel: [
 			{Model: "AnkleLink"}
 		],
+
 		linkCategory: "AnkleCuffs", linkSize: 0.4, noDupe: true,
 		escapeChance: {"Struggle": -0.5, "Cut": -0.5, "Remove": 1.1, "Pick": 0.3}, enemyTags: {}, playerTags: {}, minLevel: 7, allFloors: true, shrine: ["Legirons", "Metal", "Cuffs"]},
 	{inventory: true, name: "HighsecBallGag", debris: "Belts", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "HarnessBallGag",
@@ -3670,7 +3671,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		Model: "BalletHeelsRestraint",
 		escapeChance: {"Struggle": -0.5, "Cut": 0.1, "Remove": 10, "Pick": 0.0}, enemyTags: {}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["BalletHeels", "Heels", "Boots"]},
 
-	{inventory: true, trappable: true, name: "TrapLegirons", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
+	{inventory: true, trappable: true, name: "TrapLegirons", debris: "Chains", Asset: "Irish8Cuffs",
+		LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true,
+		addTag: ["FeetLinked"],
 		power: 4, weight: 2,
 		struggleBreak: true,
 		accessible: true,
@@ -4644,7 +4647,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTagsMissingMult: {Metal: 0.2},
 		enemyTags: {"trap":10, "handcuffer": 4, "cuffsSpell": 7}, enemyTagsMult: {handcuffer: 0.2, Unchained: 0.1}, minLevel: 8, allFloors: true, shrine: ["Handcuffs", "HandsFrontAllowed", "Metal", "Cuffs"]},
 
-	{inventory: true, trappable: true, name: "AnkleIrish8Cuffs", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true, addTag: ["FeetLinked"],
+	{inventory: true, trappable: true, name: "AnkleIrish8Cuffs", debris: "Chains", Asset: "Irish8Cuffs", LinkableBy: ["Wrapping", "Encase", "Belts"], Color: "Default", Group: "ItemFeet", blockfeet: true,
+		addTag: ["FeetLinked"],
 		power: 6,
 		Model: "Irish8Ankle",
 		struggleBreak: true,

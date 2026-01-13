@@ -480,7 +480,7 @@ function KDSetNPCRestraint(id: number, slot: string, restraint: NPCRestraint, No
 	let entity = KDLookupID(id);
 
 	if (restraint && !bypass) {
-		let blockers = KDGetBlockersToAddRestraint(KDRestraint(restraint), entity);
+		let blockers = KDGetBlockersToAddRestraint(KDRestraint(restraint), entity, false);
 		if (blockers.length > 0) {
 			//let rPower = KDRestraintPower(restraint);
 			for (let blocker of blockers) {

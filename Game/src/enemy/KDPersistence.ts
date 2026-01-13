@@ -30,6 +30,7 @@ interface KDPersistentNPC {
 	spawnAI?: string,
 	/** Special scripting */
 	specialScript?: string,
+	deactivated?: boolean,
 
 	/** Visual */
 	outfit?: string,
@@ -732,7 +733,7 @@ function KDSpawnPersistentNPCs(coord: WorldCoord, searchEntities: boolean): numb
 		// only spawn NPCs that are in the level
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
-			if (PNPC && !PNPC.spawned) {
+			if (PNPC && !PNPC.spawned && IsPNPCActive(PNPC)) {
 				let spawnAI = PNPC.spawnAI || "Default";
 				let AI = KDPersistentSpawnAIList[spawnAI];
 				if (AI && AI.filter(id, data)) {
@@ -763,7 +764,7 @@ function KDRunPersistentNPCScripts(coord: WorldCoord, searchEntities: boolean): 
 		// only spawn NPCs that are in the level
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
-			if (PNPC) { //  && !PNPC.spawned
+			if (PNPC && IsPNPCActive(PNPC)) { //  && !PNPC.spawned
 				let specialScript = PNPC.specialScript || "";
 				let AI = KDPersistentScriptList[specialScript];
 				if (AI && AI.filter(id, data)) {
@@ -796,7 +797,7 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
 			// Only wander if the party leader isnt on the floor
-			if (PNPC && (!PNPC.partyLeader || !cache.includes(PNPC.partyLeader))) { //  && !PNPC.spawned
+			if (PNPC && IsPNPCActive(PNPC) && (!PNPC.partyLeader || !cache.includes(PNPC.partyLeader))) { //  && !PNPC.spawned
 				let wanderAI = PNPC.wanderAI || "GoToMain";
 				let AI = KDIsInPartyID(PNPC.id) ? KDPersistentWanderAIList.PartyMember
 					: KDPersistentWanderAIList[wanderAI];
@@ -814,6 +815,10 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 	return spawned;
 }
 
+function IsPNPCActive(npc: KDPersistentNPC) {
+	return npc && !npc.deactivated;
+}
+
 /** Captured by NOT PLAYER */
 function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string, faction: string, sameLocation: boolean = false): KDPersistentNPC[] {
 	let altType = KDGetAltType(Level, MapMod, RoomType);
@@ -824,6 +829,7 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 	let capturedPersistent = Object.values(KDPersistentNPCs).filter((npc) => {
 		return npc.captured && KDCapturable(npc.entity) && ((!sameLocation && !npc.jailed && !npc.collect) || (
 			npc.jailed && KDCompareLocation(KDGetNPCLocation(npc.id), KDGetCurrentLocation())
+			&& IsPNPCActive(npc)
 			&& !KinkyDungeonFindID(npc.id)
 		));
 	});

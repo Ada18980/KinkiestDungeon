@@ -5729,7 +5729,7 @@ function KDPlayerZoom(PlayerModel: ModelContainer): number {
 }
 
 function KDDrawChibi(Character: Character, x: number, y: number, zoom: number) {
-	DrawCharacter(Character,
+	return DrawCharacter(Character,
 		x, y,
 		zoom, false, undefined,
 		PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"],

@@ -11133,7 +11133,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))
 				&& KDistChebyshev(enemy.x - KinkyDungeonPlayerEntity.x, enemy.y - KinkyDungeonPlayerEntity.y) < 2.5) {
 				if (!e.chance || KDRandom() < e.chance) {
-					if (enemy.aware && KinkyDungeonAggressive(enemy) && (KDPlayerIsStunned())) {
+					if (enemy.aware && KinkyDungeonAggressive(enemy) && (KDPlayerIsStunned() && !(KinkyDungeonStatFreeze > 0))) {
 						KinkyDungeonPlayerEffect(KinkyDungeonPlayerEntity, "charm", { name: "MaidChastity", power: 2, damage: "charm" });
 						return true;
 					}

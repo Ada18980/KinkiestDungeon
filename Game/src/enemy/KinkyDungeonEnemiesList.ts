@@ -6057,7 +6057,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spells: ["ZombieOrb", "ManyOrbs", "SummonMikoGhosts", "SummonZombies", "EnemyCM_self", "FuukaOrbMulti"], spellCooldownMult: 0.25, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 0.85, noChannel: true,
 		visionRadius: 12, maxhp: 45, minLevel:0, weight:-1000, movePoints: 1, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 3, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "Purple",
-		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "BlueKey", weight: 10}], ondeath: [{type: "dialogue", dialogue:"FuukaWin", click: true}]},
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "BlueKey", weight: 10}], ondeath: [{type: "dialogue_and_die", dialogue:"FuukaWin", click: true}]},
 
 
 	{name: "FuukaPillar", faction: "Natural", color: KDBaseRed,
@@ -6237,7 +6237,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spells: ["OneBarMissile", "EnemySteelRainBurst", "EnemyCM_self"], spellCooldownMult: 0.4, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, kite: 2.5, projectileAttack: true, accuracy: 0.75, noChannel: true,
 		visionRadius: 9, maxhp: 80, minLevel:0, weight:-1000, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockAllWill", attackWidth: 2.5, attackRange: 1, power: 4, dmgType: "grope", fullBoundBonus: 4,
 		attackLock: "HiSec",
-		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue", dialogue:"TheWardenWin", click: true}]},
+		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "Scrolls", weight: 10}], ondeath: [{type: "dialogue_and_die", dialogue:"TheWardenWin", click: true}]},
 
 
 
@@ -6333,7 +6333,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		spellCooldownMult: 0.2, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 1.15, noChannel: true,
 		visionRadius: 30, blindSight: 30, maxhp: 140, minLevel:0, weight:-1000, movePoints: 1.7, attackPoints: 3, attack: "SpellMeleeBindLockAll", attackWidth: 3, attackRange: 1, power: 4, dmgType: "soul", fullBoundBonus: 4,
 		terrainTags: {}, floors:KDMapInit([]),
-		ondeath: [{type: "dialogue", dialogue:"DollmakerWin", click: true}]},
+		ondeath: [{type: "dialogue_and_die", dialogue:"DollmakerWin", click: true}]},
 
 	//region curse
 
@@ -6487,6 +6487,29 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 		if (mapData == KDMapData)
 			KDStartDialog(o.dialogue, enemy.Enemy.name, o.click, enemy.personality, enemy);
 	},
+	"die": (enemy, o, mapData) => {
+		if (KDIsNPCPersistent(enemy.id)) {
+			let npc = KDGetPersistentNPC(enemy.id);
+			// if not captured, we just delete
+			if (!npc.collect) {
+				DisposeEntity(enemy.id);
+			}
+		}
+	},
+	"dialogue_and_die": (enemy, o, mapData) => {
+		// make them not spawn
+		
+		if (mapData == KDMapData)
+			KDStartDialog(o.dialogue, enemy.Enemy.name, o.click, enemy.personality, enemy);
+		if (KDIsNPCPersistent(enemy.id)) {
+			let npc = KDGetPersistentNPC(enemy.id);
+			// if not captured, we prevent them from spawning ever again
+			if (!npc.collect) {
+				npc.deactivated = true;
+			}
+		}
+	},
+
 	"bossstage": (enemy, o, mapData) => {
 		if (mapData == KDMapData)
 			KDStartDialog(o.dialogue, enemy.Enemy.name, o.click, enemy.personality, enemy);

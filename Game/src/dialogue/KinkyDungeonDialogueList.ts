@@ -3656,7 +3656,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				if (KinkyDungeonFlags.get("LockJamPity")) KDGameData.CurrentDialogMsgValue.JamPercent /= 2;
 				KDGameData.CurrentDialogMsgData.JAMPERCENT = `${Math.round(100 * KDGameData.CurrentDialogMsgValue.JamPercent)}%`;
 			} else {
-				KDGameData.CurrentDialogStage = "Jammed";
+				if (!(KinkyDungeonItemCount("RedKey") > 0))
+					KDGameData.CurrentDialogStage = "Jammed";
 				KDGameData.CurrentDialogMsg = "PrisonerJailJammed";
 			}
 
@@ -3715,13 +3716,17 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
-									if (KDFactionRelation("Player", faction) < 0.25)
-										KinkyDungeonChangeFactionRep(faction, 0.03);
-									else
-										KinkyDungeonChangeFactionRep(faction, 0.015);
-								}
+								KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
+								
 								KinkyDungeonChangeRep("Prisoner", 0.5);
+								if (!KDEntityHasFlag(e, "rescuedOnce")) {
+									if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
+										if (KDFactionRelation("Player", faction) < 0.25)
+											KinkyDungeonChangeFactionRep(faction, 0.03);
+										else
+											KinkyDungeonChangeFactionRep(faction, 0.015);
+									}
+								}
 								KDAddConsumable("RedKey", -1);
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									KinkyDungeonSetFlag("embarrassed", 8);
@@ -3754,6 +3759,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			},
 			"Pick": {
 				playertext: "Default", response: "Default",
+				prerequisiteFunction: (_gagged, player) => {
+					let e = KDDialogueEnemy();
+					return e && !KDEnemyHasFlag(e, "LockJammed");
+				},
 				clickFunction: (_gagged, player) => {
 					if (KinkyDungeonItemCount("Pick") > 0) {
 						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
@@ -3776,11 +3785,14 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									e.faction = "Player";
 									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-									if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
-										if (KDFactionRelation("Player", faction) < 0.25)
-											KinkyDungeonChangeFactionRep(faction, 0.03);
-										else
-											KinkyDungeonChangeFactionRep(faction, 0.015);
+									KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
+									if (!KDEntityHasFlag(e, "rescuedOnce")) {
+										if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
+											if (KDFactionRelation("Player", faction) < 0.25)
+												KinkyDungeonChangeFactionRep(faction, 0.03);
+											else
+												KinkyDungeonChangeFactionRep(faction, 0.015);
+										}
 									}
 									KinkyDungeonChangeRep("Prisoner", 0.5);
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick" + KDJailPersonality(e);
@@ -5217,6 +5229,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				clickFunction: (_gagged, _player) => {
+					
 					if (KinkyDungeonIsPlayer()) {
 						KDUnlockPerk("DollmakerVisor");
 						KDUnlockPerk("DollmakerMask");

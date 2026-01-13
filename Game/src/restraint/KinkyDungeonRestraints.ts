@@ -4393,19 +4393,19 @@ function KDCanAddRestraint (
 	//if (restraint.requireAllTagsToEquip && restraint.requireAllTagsToEquip.some((tag) => {return !KinkyDungeonPlayerTags.get(tag);})) return false;
 	if (!KDIsEligible(restraint, KDPlayer(), !noOverpower)) return false;
 	let rPower = undefined;
-	if (!Bypass) {
-		let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
-			
-			if (blockers.length > 0) {
-				if (rPower == undefined)
-					rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
-				if (blockers.some((blocker) => {
-					return rPower < KinkyDungeonRestraintPower(blocker);
-				})) {
-					return false;
-				}
+	//if (!Bypass) {
+	let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer(), Bypass);
+		
+		if (blockers.length > 0) {
+			if (rPower == undefined)
+				rPower = KDRestraintPower(restraint, undefined, Lock, curse) + powerBonus;
+			if (blockers.some((blocker) => {
+				return rPower < KinkyDungeonRestraintPower(blocker);
+			})) {
+				return false;
 			}
-	}
+		}
+	//}
 	
 
 	let metadata = KDEntityRestraintMetadata.get(KDPlayer().id);
@@ -5198,16 +5198,14 @@ function KinkyDungeonAddRestraint (
 
 
 		if (!Link && !Unlink) {
-			if (!Bypass) {
-				let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer());
-				if (blockers.length > 0) {
-					//let rPower = KDRestraintPower(restraint);
-					for (let blocker of blockers) {
-						KinkyDungeonSetFlag("remove_incidental", 5);
-						KinkyDungeonRemoveRestraintSpecific(blocker, Keep, true, false,false, false, securityEnemy,
-							ForceRemove
-						);
-					}
+			let blockers = KDGetBlockersToAddRestraint(restraint, KDPlayer(), Bypass);
+			if (blockers.length > 0) {
+				//let rPower = KDRestraintPower(restraint);
+				for (let blocker of blockers) {
+					KinkyDungeonSetFlag("remove_incidental", 5);
+					KinkyDungeonRemoveRestraintSpecific(blocker, Keep, true, false,false, false, securityEnemy,
+						ForceRemove
+					);
 				}
 			}
 			

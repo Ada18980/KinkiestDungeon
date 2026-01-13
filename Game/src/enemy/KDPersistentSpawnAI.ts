@@ -9,6 +9,8 @@ interface PersistentSpawnAI {
 	doSpawn: (id: number, mapData: KDMapDataType, entity?: entity) => boolean,
 }
 
+// todo make them spawn with a little hp
+
 let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 	/** Default spawn AI: spawns the NPC at a random point on the map, if onmap, otherwise at the startposition with delayed spawn flag */
 	Default: {
@@ -26,6 +28,19 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 			})) {
 				let npc = KDGetPersistentNPC(id);
 				if (!npc.entity) return false;
+
+				
+				if (npc.entity.hp <= 0) {
+					let packed = KDUnPackEnemy(npc.entity);
+					if (KDRandom() > npc.entity.hp/Math.max(1, npc.entity.Enemy.maxhp)) {
+						// heal, spawn at 30% or more
+						npc.entity.hp = Math.min(npc.entity.Enemy.maxhp, npc.entity.hp + npc.entity.hp*KDNPCHealPercent(npc.entity));
+						if (packed) KDPackEnemy(npc.entity);
+						return true;
+					}
+					if (packed) KDPackEnemy(npc.entity);
+				}
+
 				let ent = KDAddEntity(npc.entity,
 					false, false, true, mapData);
 
@@ -95,6 +110,19 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 			})) {
 				let npc = KDGetPersistentNPC(id);
 				if (!npc.entity) return false;
+
+				if (npc.entity.hp <= 0) {
+					let packed = KDUnPackEnemy(npc.entity);
+					if (KDRandom() > npc.entity.hp/Math.max(1, npc.entity.Enemy.maxhp)) {
+						// heal, spawn at 30% or more
+						npc.entity.hp = Math.min(npc.entity.Enemy.maxhp, npc.entity.hp + npc.entity.hp*KDNPCHealPercent(npc.entity));
+						if (packed) KDPackEnemy(npc.entity);
+						return true;
+					}
+					if (packed) KDPackEnemy(npc.entity);
+				}
+
+
 				let ent = KDAddEntity(npc.entity,
 					false, false, true, mapData);
 
@@ -150,3 +178,8 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 	},
 };
 
+
+
+function KDNPCHealPercent(entity: entity) {
+	return 0.1;
+}
