@@ -751,7 +751,7 @@ interface floorParams {
 	//shortcuts: {Level: number, checkpoint: string, chance:number}[	],
 	//mainpath: {Level: number, checkpoint: string, chance?: number}[],
 
-	traps: {Name: string, Faction?: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
+	traps: {Name: string, Faction?: string, Enemy?: string, Spell?: string, extraTag?: string, Level: number, Power: number, BlockedByPerks?: string[], Weight: number, strict?: true, teleportTime?: number, filterTag?: string, filterBackup?: string, arousalMode?: boolean}[],
 
 	min_width : number,
 	max_width : number,
@@ -1791,6 +1791,8 @@ interface entity {
 	lastmove?: number,
 	/** If true, immediately run the spawn AI for this once loading the map */
 	runSpawnAI?: boolean,
+	/** When this entity was spawned on a different map */
+	spawnTick?: number,
 
 	/** Targeted entity x */
 	tx?: number,

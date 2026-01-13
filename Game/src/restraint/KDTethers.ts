@@ -323,7 +323,8 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 		}
 
 		if (xTo || yTo) {// This means we are trying to move
-			let pathToTether = KinkyDungeonFindPath(xTo, yTo, leash.x, leash.y, false, !Entity.player,
+			let pathToTether = KinkyDungeonFindPath(xTo, yTo, leash.x, leash.y, 
+				false, !Entity.player,
 				 false, KinkyDungeonMovableTilesSmartEnemy, undefined, undefined, undefined,
 				 undefined, undefined, undefined,
 				 undefined, undefined, undefined, true);
@@ -353,7 +354,7 @@ function KinkyDungeonUpdateTether(delta: number, Msg: boolean, Entity: entity, x
 		for (let i = 0; i < 10; i++) {
 			// Distance is in pathing units
 			let pathToTether = KinkyDungeonFindPath(Entity.x, Entity.y, leash.x, leash.y,
-				KDIDHasFlag(Entity.id, "blocked"), !Entity.player, false,
+				false, !Entity.player, false,
 				KinkyDungeonMovableTilesSmartEnemy,undefined, undefined, undefined,
 				undefined, undefined, undefined,
 				undefined, undefined, undefined, true);

@@ -22,6 +22,9 @@ interface ProgressListData {
     drawType: string,
     drawData: ProgressListDrawData,
 }
+
+
+
 interface ProgressListEventData {
     list: ProgressListData[],
     trainings: ProgressListData[],

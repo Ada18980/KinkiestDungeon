@@ -438,6 +438,9 @@ function KDEnemyCanDespawn(id: number, mapData: KDMapDataType, PMDist?: number):
 	if (mapData != KDMapData) return !en || !KDEnemyHasFlag(en, "no_pers_wander"); // TODO make this a bit more complex
 	let entity = KinkyDungeonFindID(id);
 	if (!entity) return true;
+	if (en.aware && KinkyDungeonAggressive(en)) return false;
+	if (en?.id == KinkyDungeonLeashingEnemy()?.id) return false;
+	if (en?.id == KinkyDungeonJailGuard()?.id) return false;
 	return !KDEnemyHasFlag(entity, "no_pers_wander")
 		&& (mapData != KDMapData
 		|| (KinkyDungeonVisionGet(entity.x, entity.y) < 0.1
@@ -3402,7 +3405,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
  * @param E
  */
 function KDCheckDespawn(enemy: entity, E: number, mapData: KDMapDataType): boolean {
-	if (enemy == KinkyDungeonLeashingEnemy()) return false;
+	if (enemy?.id == KinkyDungeonLeashingEnemy()?.id) return false;
+	if (enemy?.id == KinkyDungeonJailGuard()?.id) return false;
 	if (enemy.despawnX && enemy.despawnY && KDEnemyCanDespawn(enemy.id, mapData)) {
 		if (KDistChebyshev(enemy.despawnX - enemy.x, enemy.despawnY - enemy.y) < 1.5) {
 			KDDespawnEnemy(enemy, E, mapData);
@@ -10091,7 +10095,10 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 				mapX: moveToX || mapData.mapX,
 				mapY: moveToY || mapData.mapY,
 				room: moveThruExit,
-			})
+			});
+			let npc = KDGetPersistentNPC(id);
+			// make them respawn immediately
+			npc.nextSpawnTick = KinkyDungeonCurrentTick;
 		}
 		if (failPlaceThru) {
 			if (enemy)
@@ -11051,7 +11058,7 @@ function KDGetCoordFromMapData(mapData: KDMapDataType): WorldCoord {
 
 function KDIsJailbreakProtected(entity: entity) {
 	if (entity?.player) {
-		return !(KinkyDungeonFlags.get("remove_incidental") || KinkyDungeonFlags.get("nojailbreak"));
+		return (KinkyDungeonFlags.get("remove_incidental") || KinkyDungeonFlags.get("nojailbreak"));
 	}
 }
 

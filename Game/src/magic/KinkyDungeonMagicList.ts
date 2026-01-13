@@ -2693,19 +2693,19 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "BubbleBurst", color: "#88ffff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Water",
 		duration: 20,
-	}, manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "soap", channel: 2,
+	}, castCondition: "BubblesAllowed", manacost: 4, specialCD: 12, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 3, power: 5, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "soap", channel: 2,
 	playerEffect: {name: "WaterBubble", power: 5}},
 
 	{enemySpell: true, name: "BubbleBurstLatex", color: "#88aaff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "LatexThinBlue",
 		duration: 20,
-	}, manacost: 6, specialCD: 17, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
+	}, castCondition: "EncasementAllowed", manacost: 6, specialCD: 17, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
 	playerEffect: {name: "LatexBubble", power: 6}},
 
 	{enemySpell: true, name: "BubbleBurstSlime", color: "#ff00ff", minRange: 0, sfx: "Grope", landsfx: "RubberBolt", effectTileDurationMod: 10, effectTileAoE: 1.5, effectTileDensity: 0.5, effectTile: {
 		name: "Slime",
 		duration: 20,
-	}, manacost: 4, specialCD: 16, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
+	}, castCondition: "SlimeAllowed", manacost: 4, specialCD: 16, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 5, power: 6, range: 6, size: 3, aoe: 1.5, lifetime: 1, damage: "glue", channel: 4,
 	playerEffect: {name: "SlimeBubble", power: 6, time: 4}},
 
 	{enemySpell: true, name: "CursingCircle", color: KDBaseRed, minRange: 0, sfx: "Fwoosh", bulletSpin: 0.1, specialCD: 12,
@@ -4061,6 +4061,16 @@ let KDMagicDefs = {
 };
 
 let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spell) => boolean> = {
+	
+	"BubblesAllowed": (_enemy, target) => {
+		return !KinkyDungeonStatsChoice.get("BubbleOptout");
+	},
+	"EncasementAllowed": (_enemy, target) => {
+		return !KinkyDungeonStatsChoice.get("SlimeOptout");
+	},
+	"SlimeAllowed": (_enemy, target) => {
+		return !KinkyDungeonStatsChoice.get("SlimeOptout");
+	},
 	"latexLegbinderSpell": (_enemy, target) => {
 		if (target.player) {
 			let restraint = KinkyDungeonGetRestraint({tags: ["latexlegbinderSpell"]}, 100, "tmb");
@@ -4207,6 +4217,7 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 		}
 		return false;
 	},
+	
 };
 
 let KDPlayerCastConditions: Record<string, (player: entity, x: number, y: number) => boolean> = {

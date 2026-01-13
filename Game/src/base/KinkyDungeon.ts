@@ -1872,60 +1872,7 @@ function KinkyDungeonRun() {
 			}
 
 
-			DrawButtonKDEx("GoToWardrobe", (_bdata) => {
-
-				if (StandalonePatched) {
-					KDSpeakerNPC = null;
-					KinkyDungeonState = "Wardrobe";
-					KDCanRevertFlag = false;
-					KDWardrobeCallback = null;
-					KDWardrobeRevertCallback = null;
-					KDPlayerSetPose = false;
-					KDInitInventory();
-					KDResetPlayerTags();
-					CharacterReleaseTotal(KinkyDungeonPlayer);
-					KDUpdateChar(KinkyDungeonPlayer);
-					KDInitCurrentPose();
-					KinkyDungeonInitializeDresses();
-					KDUpdateModelList();
-					KDRefreshOutfitInfo();
-					let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
-					let orig = itt ?
-						JSON.parse(LZString.decompressFromBase64(itt)).appearance
-						|| itt : "";
-					let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
-					if (orig != current) KDOriginalValue = orig;
-				}
-				let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
-				if (appearance) {
-					CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
-					let parsed = JSON.parse(appearance);
-					if (parsed.metadata) {
-						let metadata: KDOutfitMetadata = parsed.metadata;
-						KinkyDungeonPlayer.Palette = metadata.palette;
-						KinkyDungeonPlayer.metadata = metadata;
-					}
-
-					CharacterRefresh(KinkyDungeonPlayer);
-				}
-				KinkyDungeonNewDress = true;
-
-				CharacterReleaseTotal(KinkyDungeonPlayer);
-				KinkyDungeonDressPlayer();
-				KinkyDungeonConfigAppearance = true;
-				if (appearance) {
-					CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
-					let parsed = JSON.parse(appearance);
-					if (parsed.metadata) {
-						let metadata: KDOutfitMetadata = parsed.metadata;
-						KinkyDungeonPlayer.Palette = metadata.palette;
-						KinkyDungeonPlayer.metadata = metadata;
-					}
-					CharacterRefresh(KinkyDungeonPlayer);
-				}
-				return true;
-			}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), KDBaseWhite, "");
-
+			KDDrawWardrobeButton();
 
 			DrawButtonVis(1850, 942, 135, 50, TextGet("KinkyDungeonCredits"), KDBaseWhite, "");
 			DrawButtonVis(1700, 942, 135, 50, TextGet("KinkyDungeonPatrons"), KDBaseWhite, "");
@@ -2183,7 +2130,13 @@ function KinkyDungeonRun() {
 				}, true, 875, 550, 350, 64, TextGet("KinkyDungeonSaveToFile"), KDBaseWhite, ""
 			);
 
-	} else if (KinkyDungeonState == "Challenge") {
+	} else if (KinkyDungeonState == "CConsent") {
+		KDDrawGameSetupTabs();
+
+		KDDrawConsent(500);
+	}
+	
+	else if (KinkyDungeonState == "Challenge") {
 		//DrawTextKD(TextGet("KinkyDungeonChallenge"), 1250, 80, KDBaseWhite, KDTextGray1, 48);
 		KDDrawGameSetupTabs();
 
@@ -2458,6 +2411,7 @@ function KinkyDungeonRun() {
 
 	} else if (KinkyDungeonState == "Diff") {
 		KDDrawGameSetupTabs();
+		KDDrawWardrobeButton();
 		//DrawTextKD(TextGet("KinkyDungeonDifficulty"), 1250, 80, KDBaseWhite, KDTextGray1, 48);
 		//DrawButtonVis(875, 350, 750, 64, TextGet("KinkyDungeonDifficulty0"), KDBaseWhite, "");
 		//DrawButtonVis(875, 450, 750, 64, TextGet("KinkyDungeonDifficulty3"), KDBaseWhite, "");
@@ -2619,7 +2573,7 @@ function KinkyDungeonRun() {
 				localStorage.getItem("PlayerName") || "Ada"
 			);
 		}
-
+		KDDrawWardrobeButton();
 
 		DrawButtonKDEx("randomName", () => {
 
@@ -7201,28 +7155,45 @@ function KinkyDungeonGetCanvas(id: string): HTMLCanvasElement {
 
 
 
-function KDDrawGameSetupTabs(_xOffset: number = 0) {
+function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: number = 3): number {
 	if (KDGameData.PlayerName) {
 		DrawTextFitKD(KDGameData.PlayerName, 250, 25, 480, KDBaseWhite, KDTextGray0, 32, "center", 20);
 	}
+	let tabwidth = 1500/num - 2*xpad;
+	let ii = 0;
+
+
 	DrawButtonKDEx("TabDiff", (_b) => {
 		KinkyDungeonState = "Diff";
 		return true;
-	}, true, 500, 10, 740, 40, TextGet("KDDiffTab_Diff"), KDBaseWhite, undefined, undefined, undefined,
+	}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Diff"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonState != "Diff", KDButtonColor, undefined, undefined,
 {
-		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[0]),
-		hotkeyPress: KinkyDungeonKeySpell[0],
+		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+		hotkeyPress: KinkyDungeonKeySpell[ii],
 	});
+	ii++;
 	DrawButtonKDEx("TabChallenge", (_b) => {
 		KinkyDungeonState = "Challenge";
 		return true;
-	}, true, 1250, 10, 740, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
+	}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
 	KinkyDungeonState != "Challenge", KDButtonColor, undefined, undefined,
 {
-		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[1]),
-		hotkeyPress: KinkyDungeonKeySpell[1],
+		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+		hotkeyPress: KinkyDungeonKeySpell[ii],
 	});
+	ii++;
+	DrawButtonKDEx("TabConsent", (_b) => {
+		KinkyDungeonPreviousState = "Menu";
+		KinkyDungeonState = "CConsent";
+		return true;
+	}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Consent"), KDBaseWhite, undefined, undefined, undefined,
+	KinkyDungeonState != "CConsent", KDButtonColor, undefined, undefined,
+{
+		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+		hotkeyPress: KinkyDungeonKeySpell[ii],
+	});
+	ii++;
 
 
 	DrawButtonKDEx("backButton", (_b) => {
@@ -7233,6 +7204,7 @@ function KDDrawGameSetupTabs(_xOffset: number = 0) {
 		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
 		hotkeyPress: KinkyDungeonKeySkip[0],
 	});
+	return ii;
 }
 
 
@@ -7937,4 +7909,64 @@ function KDTextReplace(text: string, replacestrings: string[]) {
 	}
 
 	return str;
+}
+
+let KinkyDungeonPreviousState = "Game";
+
+function KDDrawWardrobeButton() {
+	DrawButtonKDEx("GoToWardrobe", (_bdata) => {
+
+		if (StandalonePatched) {
+			KDSpeakerNPC = null;
+			KinkyDungeonPreviousState = KinkyDungeonState;
+			KinkyDungeonState = "Wardrobe";
+			KDCanRevertFlag = false;
+			KDWardrobeCallback = null;
+			KDWardrobeRevertCallback = null;
+			KDPlayerSetPose = false;
+			KDInitInventory();
+			KDResetPlayerTags();
+			CharacterReleaseTotal(KinkyDungeonPlayer);
+			KDUpdateChar(KinkyDungeonPlayer);
+			KDInitCurrentPose();
+			KinkyDungeonInitializeDresses();
+			KDUpdateModelList();
+			KDRefreshOutfitInfo();
+			let itt = localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit);
+			let orig = itt ?
+				JSON.parse(LZString.decompressFromBase64(itt)).appearance
+				|| itt : "";
+			let current = LZString.compressToBase64(AppearanceItemStringify(KinkyDungeonPlayer.Appearance));
+			if (orig != current) KDOriginalValue = orig;
+		}
+		let appearance = DecompressB64(localStorage.getItem("kinkydungeonappearance" + KDCurrentOutfit));
+		if (appearance) {
+			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
+			let parsed = JSON.parse(appearance);
+			if (parsed.metadata) {
+				let metadata: KDOutfitMetadata = parsed.metadata;
+				KinkyDungeonPlayer.Palette = metadata.palette;
+				KinkyDungeonPlayer.metadata = metadata;
+			}
+
+			CharacterRefresh(KinkyDungeonPlayer);
+		}
+		KinkyDungeonNewDress = true;
+
+		CharacterReleaseTotal(KinkyDungeonPlayer);
+		KinkyDungeonDressPlayer();
+		KinkyDungeonConfigAppearance = true;
+		if (appearance) {
+			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
+			let parsed = JSON.parse(appearance);
+			if (parsed.metadata) {
+				let metadata: KDOutfitMetadata = parsed.metadata;
+				KinkyDungeonPlayer.Palette = metadata.palette;
+				KinkyDungeonPlayer.metadata = metadata;
+			}
+			CharacterRefresh(KinkyDungeonPlayer);
+		}
+		return true;
+	}, true, 30, 942, 440, 50, TextGet("KinkyDungeonDressPlayer"), KDBaseWhite, "");
+
 }

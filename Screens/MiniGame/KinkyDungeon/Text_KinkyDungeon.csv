@@ -14105,6 +14105,8 @@ KDWardrobeCancelConfirm,Confirm Revert?
 KDWardrobeSaveOutfit,Save
 KDWardrobeSaveOutfitConfirm,Save Changes?
 KDWardrobeSave,Back to Menu
+KDWardrobeSaveDiff,Back to Game Setup
+KDWardrobeSaveName,Back to Character Setup
 KDWardrobeBackToWardrobe,Back to Wardrobe
 KDConfirmStrip,Confirm Strip?
 KDDressStrip,Strip!
@@ -29254,8 +29256,6 @@ KDQuestFail_IllusionQuest,You did not do your quest! The Goddess has decided to 
 KDQuestSucceed_IllusionQuest,You have pleased the Goddess.
 KDQuestSucceedSub_IllusionQuest,The Goddess calls you a good girl.
 
-
-
 KDGoddessQuestReward_Spell,"The Goddess grants you knowledge of SpellLearned!"
 KDGoddessQuestReward_SpellPoints,"You Goddess grants you +AMOUNT spell points!"
 KDGoddessQuestReward_Weapon,"The Goddess bestows a WeaponAcquired on you!"
@@ -29267,6 +29267,8 @@ KDDiffTab_Diff,Game Setup
 KDDiffTab_Challenge,Challenge Settings
 KDDiffTab_Consent,Consent Settings
 
+KDConsentList_Tickle,
+KDConsentListDesc_Tickle,
 
 
 KinkyDungeonChallenge,Challenge Settings:

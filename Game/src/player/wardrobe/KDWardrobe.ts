@@ -2099,11 +2099,16 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 
 	if (!Character || Character == KinkyDungeonPlayer) {
 		DrawButtonKDEx("KDWardrobeSave", (_bdata) => {
-			KinkyDungeonState = "Menu";
+			if (KinkyDungeonPreviousState) {
+				KinkyDungeonState = KinkyDungeonPreviousState;
+				KinkyDungeonPreviousState = "";
+			} else {
+				KinkyDungeonState = "Menu";
+			}
 			KDPlayerSetPose = false;
 			KinkyDungeonDressSet();
 			return true;
-		}, true, 20, 940, 400, 50, TextGet("KDWardrobeSave"), KDBaseWhite, "");
+		}, true, 20, 940, 400, 50, TextGet("KDWardrobeSave" + (KinkyDungeonPreviousState || "")), KDBaseWhite, "");
 	} else {
 		DrawButtonKDEx("KDBackToGame", (_bdata) => {
 			KinkyDungeonState = "Game";

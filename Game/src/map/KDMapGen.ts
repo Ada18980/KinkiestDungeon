@@ -177,7 +177,11 @@ function KinkyDungeonCreateMap (
 		KDMapData.ShopItems = KinkyDungeonGenerateShop(MiniGameKinkyDungeonLevel);
 		let shrinefilter = KinkyDungeonGetMapShrines(MapParams.shrines);
 		let traptypes = MapParams.traps.concat(KinkyDungeonGetGoddessTrapTypes());
-
+		traptypes = traptypes.filter((t) => {
+			return !t.BlockedByPerks || !t.BlockedByPerks.some((perk) => {
+				return !!KinkyDungeonStatsChoice.get(perk)
+			});
+		});
 		mapMod = null;
 		if (KDGameData.MapMod) {
 			mapMod = KDMapMods[KDGameData.MapMod];

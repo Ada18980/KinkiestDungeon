@@ -2737,7 +2737,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Remove: ["Sharp"],
 		},
 		factionFilters: {
-			BallSuit: {color: "Highlight", override: false},
+			BallSuit: {color: "Catsuit", override: false},
 		},
 		events: [
 			//{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},
@@ -2761,9 +2761,9 @@ const KinkyDungeonRestraints: restraint[] = [
 			Remove: ["Sharp"],
 		},
 		factionFilters: {
-			LatexSphere: {color: "Highlight", override: false},
-			LatexSphereCutaway: {color: "Highlight", override: false},
-			LatexSphereCutawayBack: {color: "Highlight", override: false},
+			LatexSphere: {color: "Catsuit", override: false},
+			LatexSphereCutaway: {color: "Catsuit", override: false},
+			LatexSphereCutawayBack: {color: "Catsuit", override: false},
 		},
 		events: [
 			{trigger: "tick", type: "callGuardFurniture", inheritLinked: true},

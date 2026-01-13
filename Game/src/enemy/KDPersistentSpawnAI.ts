@@ -46,11 +46,13 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 
 				if (mapData == KDMapData) {
 					ent.runSpawnAI = true;
+					ent.spawnTick = KinkyDungeonCurrentTick;
 					entity = ent;
 				} else {
 					ent.x = mapData.StartPosition.x;
 					ent.y = mapData.StartPosition.y;
 					ent.runSpawnAI = true;
+					ent.spawnTick = KinkyDungeonCurrentTick;
 					return true;
 				}
 			}
@@ -74,13 +76,27 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 						point = KinkyDungeonGetNearbyPoint(pp.x, pp.y, true);
 					}
 				}
-				if (point) {
+				if (point && (KinkyDungeonCurrentTick != entity.spawnTick || KDistChebyshev(point.x - KDPlayer().x, point.y - KDPlayer().y) > 5)) {
 					KDMoveEntity(entity, point.x, point.y,
 						false, false, false, false,
 						true, mapData);
 					entity.runSpawnAI = false;
 					delete npc.fromIndex;
 					delete npc.fromType;
+					if (entity.spawnTick && KinkyDungeonCurrentTick > entity.spawnTick + 8) {
+						// move the enemy based on diff
+						let time = KinkyDungeonCurrentTick - entity.spawnTick;
+						let pp2 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+								return KDistChebyshev(x - point.x, y - point.y) < time;
+							}, false, false);
+						if (pp2) {
+							KDMoveEntity(entity, pp2.x, pp2.y,
+							false, false, false, false,
+							true, mapData);
+						}
+					}
+					entity.visual_x = entity.x;
+					entity.visual_y = entity.y;
 					return true;
 				} else {
 					// Wait till next spawn cycle
@@ -128,11 +144,13 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 
 				if (mapData == KDMapData) {
 					ent.runSpawnAI = true;
+					ent.spawnTick = KinkyDungeonCurrentTick;
 					entity = ent;
 				} else {
 					ent.x = mapData.StartPosition.x;
 					ent.y = mapData.StartPosition.y;
 					ent.runSpawnAI = true;
+					ent.spawnTick = KinkyDungeonCurrentTick;
 					return true;
 				}
 			}
@@ -157,13 +175,27 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 						point = KinkyDungeonGetNearbyPoint(pp.x, pp.y, true);
 					}
 				}
-				if (point) {
+				if (point && (KinkyDungeonCurrentTick != entity.spawnTick || KDistChebyshev(point.x - KDPlayer().x, point.y - KDPlayer().y) > 5)) {
 					KDMoveEntity(entity, point.x, point.y,
 						false, false, false, false,
 						true, mapData);
 					entity.runSpawnAI = false;
 					delete npc.fromIndex;
 					delete npc.fromType;
+					if (entity.spawnTick && KinkyDungeonCurrentTick > entity.spawnTick + 8) {
+						// move the enemy based on diff
+						let time = KinkyDungeonCurrentTick - entity.spawnTick;
+						let pp2 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+								return KDistChebyshev(x - point.x, y - point.y) < time;
+							}, false, false);
+						if (pp2) {
+							KDMoveEntity(entity, pp2.x, pp2.y,
+							false, false, false, false,
+							true, mapData);
+						}
+					}
+					entity.visual_x = entity.x;
+					entity.visual_y = entity.y;
 					return true;
 				} else {
 					// Wait till next spawn cycle
@@ -181,5 +213,5 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 
 
 function KDNPCHealPercent(entity: entity) {
-	return 0.1;
+	return 0.04;
 }

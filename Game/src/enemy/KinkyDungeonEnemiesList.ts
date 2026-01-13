@@ -2677,7 +2677,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			idleSoundName: "Slime",
 		},
 		nopickpocket: true,
-		terrainTags: {"water": 4, "bubbleOptout": -3, "bubblePref": 6, "jungle": 20, "temple": 4, "elements": 4}, allFloors: true, shrines: ["Elements"],
+		terrainTags: {"water": 4, "bubbleOptout": -300, "bubblePref": 6, "jungle": 20, "temple": 4, "elements": 4}, allFloors: true, shrines: ["Elements"],
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Water", aoe: 1.5, power: 1, chance: 1.0, duration: 20},
 		],},
@@ -5707,7 +5707,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Purple",
 		maxblock: 0,
 		maxdodge: 2,
-		terrainTags: {"secondhalf":2, "lastthird":1, "bubbleOptout": -2, "bubblePref": 2, "open": 4, "tech": -8, "slime": 4, "slimeOptOut": -2, "slimePref": 2}, allFloors: true, shrines: [],
+		terrainTags: {"secondhalf":2, "lastthird":1, "bubbleOptout": -3.5, "bubblePref": 2, "open": 4, "tech": -8, "slime": 4, "slimeOptOut": -2, "slimePref": 2}, allFloors: true, shrines: [],
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Slime", time: 14, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "getLights", type: "enemyTorch", power: 2, color: "#ff00ff"},
