@@ -53,6 +53,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.83
 - Added consent screen to replace the perks in "advanced start" that are used to affect what content appears in the game
 - Added function in save file to backup/load backup of full settings/saves
+- fixed major bugs involving boss and persistent NPC behavior leading to stair camping and sudden disappearances of NPCs
 
 5.4.82
 - added spreader bar

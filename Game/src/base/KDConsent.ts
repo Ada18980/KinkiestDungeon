@@ -404,6 +404,7 @@ function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentL
 
 let KDConsent_Sidebar = 600;
 let KDConsent_SideOffset = 175;
+let KDConsent_Buttonstart = 300;
 
 function KDDrawConsent(xOffset) {
 
@@ -502,7 +503,7 @@ function KDDrawConsent(xOffset) {
                         KDSaveToggles();
                         return true;
                     }, isClickable, 
-                    list.x + 410 + (horizontal ? visualIndex * 80 : 0) + 120*ii, 
+                    list.x + KDConsent_Buttonstart + (horizontal ? visualIndex * 80 : 0) + 120*ii, 
                     list.y + listspacing/2 - hh/2 + (horizontal ? 0 : visualIndex * 80), 
                     hh, hh, "", KDConsentArray[item.name] == color, 
                     undefined, undefined,
