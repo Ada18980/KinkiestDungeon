@@ -10,6 +10,8 @@ interface ConsentListData {
     perkRed: string,
     perkYellow: string,
     perkGreen: string,
+    perkNoRed?: string,
+    perkNoYellow?: string,
     perkNoGreen?: string,
 
     label: string,
@@ -37,10 +39,10 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
 
             prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
 
-            perkRed: "",
+            perkRed: "arousalModePlugNoFront",
             perkYellow: "",
-            perkGreen: "arousalModePlugFront",
-            perkNoGreen: "arousalModePlugNoFront",
+            perkGreen: "",
+            perkNoRed: "arousalModePlugFront",
 
             priority: -10,
             label: TextGet("KDConsentListDesc_" + "PlugFront"),
@@ -56,9 +58,10 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
 
             prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
 
-            perkRed: "",
+            perkRed: "arousalModePlugNoRear",
+            perkNoRed: "arousalModePlug",
             perkYellow: "",
-            perkGreen: "arousalModePlug",
+            perkGreen: "",
 
             priority: -10,
             label: TextGet("KDConsentListDesc_" + "PlugRear"),
@@ -402,9 +405,9 @@ function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentL
     return data.list;
 }
 
-let KDConsent_Sidebar = 600;
-let KDConsent_SideOffset = 100;
-let KDConsent_Buttonstart = 436;
+let KDConsent_Sidebar = 580;
+let KDConsent_SideOffset = 80;
+let KDConsent_Buttonstart = 386;
 let KDConsent_Buttonspace = 94;
 
 function KDDrawConsent(xOffset) {
@@ -493,11 +496,12 @@ function KDDrawConsent(xOffset) {
 		   
         ii = 0;
         let hh = 64;
-        for (let color of ["Red", "Yellow", "Green"]) {
-            if (item["perk" + color])
+        for (let color of ["Red", "Yellow", "", "Green"]) {
+            if (item["perk" + color] || !color)
                 DrawCheckboxKDExTo(container, item.name + "_" + color, 
                     () => {
-                        if (KDConsentArray[item.name] == color) {
+                        if (!color) delete KDConsentArray[item.name];
+                        else if (KDConsentArray[item.name] == color) {
                             delete KDConsentArray[item.name];
                         } else KDConsentArray[item.name] = color;
                         KDUpdatePlugSettings(true);
@@ -506,10 +510,10 @@ function KDDrawConsent(xOffset) {
                     }, isClickable, 
                     list.x + KDConsent_Buttonstart + (horizontal ? visualIndex * 80 : 0) + KDConsent_Buttonspace*ii, 
                     list.y + listspacing/2 - hh/2 + (horizontal ? 0 : visualIndex * 80), 
-                    hh, hh, "", KDConsentArray[item.name] == color, 
+                    hh, hh, "", KDConsentArray[item.name] == color || (!color && !KDConsentArray[item.name]), 
                     undefined, undefined,
-                    "UI/Consent" + color + ".png", {
-                        bordercolor: KDColorList["KDBase" + color],
+                    "UI/Consent" + (color || "Check") + ".png", {
+                        bordercolor: KDColorList["KDBase" + (color || "White")],
                         centered: true
                     });
             ii++;
@@ -543,7 +547,7 @@ function KDDrawConsent(xOffset) {
 
     if (drawn) {
         DrawTextFitKDgetHeight(
-            TextGet("KDConsentItemTooltip_" + drawn.name),
+            TextGet("KDConsentItemTooltip_" + drawn.name) + TextGet("KDConsentItemTooltip_" + (KDConsentArray[drawn.name] || "Check")),
             xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
             undefined, 20, "left",
             undefined, undefined, undefined, undefined, 

@@ -2210,7 +2210,7 @@ function KinkyDungeonDrawGame() {
 				KDOptionFilter = "";
 				return true;
 			}, true, 1265, 450, 260, 64, TextGet("GameToggles"), KDBaseWhite, "");
-			DrawButtonKDEx("GameToggles", () => {
+			DrawButtonKDEx("ConsentToggles", () => {
 				
 				KinkyDungeonPreviousState = KinkyDungeonState;
 				KinkyDungeonState = "CConsent";

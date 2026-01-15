@@ -2117,8 +2117,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Flip": {
 				playertext: "Default", response: "Default",
 				prerequisiteFunction: () => {
-					return !(!KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist
-						|| KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen);
+					return KDTablesAreFlippable(KDMapData);
 				},
 				clickFunction: (_gagged, _player) => {
 					let tile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);

@@ -41,8 +41,8 @@ Intro4BC,""
 
 KDBackupLoadSuccess,Backup loaded!
 KDBackupLoadFail,Backup failed to load.
-KDBackupWriteSuccess,Backup saved!
-KDBackupLWriteFail,Backup failed to save!!!!!
+KDBackupSaveSuccess,Backup saved!
+KDBackupSaveFail,Backup failed to save!!!!!
 
 KDFullBackup,Save Backup
 KDFullBackupDesc,Stores all of your settings and presets into a file.
@@ -1052,6 +1052,7 @@ GameReturnToMenuFromOptions,Return
 GameConfigKeys,Keybindings
 GameToggles,Game Options
 GameConsent,Consent Options
+
 
 KinkyDungeonLoadConfirm,"Load from code"
 KinkyDungeonLoadBack,"Back to main menu"
@@ -28077,7 +28078,7 @@ RestraintMithrilRopeCrotchDesc2,"A lightweight rope made out of woven mithril, s
 RestraintMithrilRopeArmsWrist,Mithril Wrist Rope
 RestraintMithrilRopeArmsWristDesc,"A wrist and elbow tie keeping your arms secured behind your back."
 RestraintMithrilRopeArmsWristDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
-RestraintMithrilRopeLegs,Mithril Lower Knee Ropes
+RestraintMithrilRopeLegs,Mithril Upper Knee Ropes
 RestraintMithrilRopeLegsDesc,"A tie that hobbles your knees together.."
 RestraintMithrilRopeLegsDesc2,"A lightweight rope made out of woven mithril, smooth yet nearly unbreakable."
 RestraintMithrilRopeLegs2,Mithril Thigh Ropes
@@ -29317,6 +29318,10 @@ KDConsentItem_Shocks,Painful Shocks
 KDConsentItem_SenseDep,Sensory Deprivation
 KDConsentItem_Brats,Brats
 
+KDConsentItemTooltip_Red,"|||This item is marked as Red, which prevents it from appearing in the game."
+KDConsentItemTooltip_Yellow,"|||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention."
+KDConsentItemTooltip_Green,"|||This item is marked as Green, which will make it appear more often."
+KDConsentItemTooltip_Check,"|||This item will appear ingame as normal."
 
 KDConsentItemTooltip_Brats,"Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them."
 KDConsentItemTooltip_PlugFront,Allows plugs to be inserted into the front slot of your character.
@@ -29329,7 +29334,7 @@ KDConsentItemTooltip_Slime,Affects the spawn rate of slimes and latex witches.
 KDConsentItemTooltip_Kigu,"Affects full masks that imitate a face, which can be unsettling to some."
 KDConsentItemTooltip_Encasement,"Affects the spawn rate of slimes and latex witches."
 KDConsentItemTooltip_Tape,Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
-KDConsentItemTooltip_Tickle,Includes tickling by NPC attacks and tickle torture scenarios. Spells and weapons that deal tickle damage to the player will deal Plush damage instead.||Player attacks will still deal tickle damage.
+KDConsentItemTooltip_Tickle,"Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage."
 KDConsentItemTooltip_Bubbles,"Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres."
 KDConsentItemTooltip_Ballsuit,"Includes ball suits and inflatable latex spheres that restrain the player."
 KDConsentItemTooltip_Blindfolds,"Affects the frequency of blindfolds, but not hoods or masks that cover the upper face."
@@ -31404,7 +31409,7 @@ KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
 KDPropField_SuppressDynamic,NoDynamicArmor (0/1)
-KDPropField_AddPose,AddPose
+KDPropField_AddPose,"AddPose (e.g Locked, CrotchStrap)"
 KDPropField_DontAddPose,DontAddPose
 KDPropField_HideOverridden,HideOverridden (0/1)
 KDPropField_NoOverride,NoOverride (0/1)
@@ -32651,6 +32656,9 @@ KinkyDungeonSpellCastdebugBind,"You cast binding ASCII glyphs!"
 
 KDEmpty,Empty Slot
 KDFloor,", Floor AMNT"
+KDFloorSaveLabel,", Floor "
+KDNGSaveLabel," NG+"
+KDClassSaveLabel," the "
 
 KDInventoryActionRecolor,Recolor
 

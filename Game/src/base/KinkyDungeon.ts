@@ -1799,9 +1799,21 @@ function KinkyDungeonRun() {
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
 						let decoded = LZString.decompressFromBase64(code);
-						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
+						let parse = JSON.parse(decoded);
+						if (decoded && parse?.KDGameData?.PlayerName)
 							loadedsaveNames[num - 1] =
 								JSON.parse(decoded)?.KDGameData?.PlayerName;
+								
+						if (decoded && parse?.KDGameData?.HighestLevelCurrent)
+							loadedsaveFloors[num - 1] =
+								parse.KDGameData.HighestLevelCurrent;
+								
+						if (decoded && parse?.KDGameData?.Class)
+							loadedsaveClasses[num - 1] =
+								parse.KDGameData.Class;
+						if (decoded && (parse?.npp ||  parse?.stats?.npp))
+							loadedsaveNG[num - 1] =
+								(parse?.npp ||  parse?.stats?.npp);
 						if (!emptySlot && !code) {
 							emptySlot = num;
 							KDSaveSlot = emptySlot;
@@ -2641,16 +2653,28 @@ function KinkyDungeonRun() {
 			for(let row = 0; row < rows; row++) {
 				let slot = row*cols + col + pageSlotOffset + 1;
 				let yOffset = startY + row*70;
-				let slotText = slot + ". " + ((loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "") || TextGet("KDEmpty"));
+				let slotText = slot + ". " + (((loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "")
+					+ (loadedsaveClasses[slot-1] ? TextGet("KDClassSaveLabel") + TextGet("KinkyDungeonStatMC_" + loadedsaveClasses[slot-1]) : "")
+					+ (loadedsaveFloors[slot-1] ? TextGet("KDFloorSaveLabel") + loadedsaveFloors[slot-1] : "")
+					+ (loadedsaveNG[slot-1] ? TextGet("KDNGSaveLabel") + loadedsaveNG[slot-1] : "")
+				) || TextGet("KDEmpty"));
 				let textColor = (danger && (slot == KDSaveSlot)) ? dangerColor : (slot == KDSaveSlot ? selectedColor : defaultColor);
+				DrawTextFitKD(slotText, 
+					((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + xOffsets[col % 2] + 10, 
+					((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + yOffset + 25, 
+					385, textColor, undefined, undefined, "left")
 				DrawButtonKDEx("slot_" + slot + "prev", () => { // on click change save slot
 					KDSaveSlot = slot;
 					return true;
 				}, true,
 				((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + xOffsets[col % 2],
 				((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + yOffset,
-				400, 50, slotText, textColor, "", undefined, undefined,
-				true, KDButtonColor);
+				400, 50, "", textColor, "", 
+				undefined, undefined,
+				true, KDButtonColor, undefined, true, {
+					centerText: false,
+					
+				});
 			}
 		}
 
@@ -4545,9 +4569,15 @@ let LoadMenuCurrentSlot: number;
 let loadedsaveslots: string[] = [];
 let loadedcloudsaveslots: string[] = [];
 let loadedsaveNames: string[] = [];
+let loadedsaveClasses: string[] = [];
+let loadedsaveFloors: string[] = [];
+let loadedsaveNG: string[] = [];
 for (let i = 0; i < (saveSlotsPerPage*maxSaveSlotPages); i++) {
 	loadedsaveslots.push(null);
 	loadedsaveNames.push("");
+	loadedsaveClasses.push("");
+	loadedsaveFloors.push("");
+	loadedsaveNG.push("");
 }
 
 let loadedSaveforPreview: KinkyDungeonSave = null;
@@ -7253,38 +7283,41 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 	let ii = 0;
 
 
-	DrawButtonKDEx("TabDiff", (_b) => {
-		KinkyDungeonState = "Diff";
-		return true;
-	}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Diff"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonState != "Diff", KDButtonColor, undefined, undefined,
-{
-		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
-		hotkeyPress: KinkyDungeonKeySpell[ii],
-	});
-	ii++;
-	DrawButtonKDEx("TabChallenge", (_b) => {
-		KinkyDungeonState = "Challenge";
-		return true;
-	}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonState != "Challenge", KDButtonColor, undefined, undefined,
-{
-		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
-		hotkeyPress: KinkyDungeonKeySpell[ii],
-	});
-	ii++;
-	DrawButtonKDEx("TabConsent", (_b) => {
-		KinkyDungeonPreviousState = "Menu";
-		KinkyDungeonState = "CConsent";
-		KDConsentFilter = "";
-		return true;
-	}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Consent"), KDBaseWhite, undefined, undefined, undefined,
-	KinkyDungeonState != "CConsent", KDButtonColor, undefined, undefined,
-{
-		hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
-		hotkeyPress: KinkyDungeonKeySpell[ii],
-	});
-	ii++;
+	if (!KinkyDungeonPreviousState || KinkyDungeonPreviousState == "Menu" || KinkyDungeonPreviousState == "Name" || KinkyDungeonPreviousState == "Diff") {
+		DrawButtonKDEx("TabDiff", (_b) => {
+			KinkyDungeonState = "Diff";
+			return true;
+		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Diff"), KDBaseWhite, undefined, undefined, undefined,
+		KinkyDungeonState != "Diff", KDButtonColor, undefined, undefined,
+	{
+			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+			hotkeyPress: KinkyDungeonKeySpell[ii],
+		});
+		ii++;
+		DrawButtonKDEx("TabChallenge", (_b) => {
+			KinkyDungeonState = "Challenge";
+			return true;
+		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
+		KinkyDungeonState != "Challenge", KDButtonColor, undefined, undefined,
+	{
+			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+			hotkeyPress: KinkyDungeonKeySpell[ii],
+		});
+		ii++;
+		DrawButtonKDEx("TabConsent", (_b) => {
+			KinkyDungeonPreviousState = "Menu";
+			KinkyDungeonState = "CConsent";
+			KDConsentFilter = "";
+			return true;
+		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Consent"), KDBaseWhite, undefined, undefined, undefined,
+		KinkyDungeonState != "CConsent", KDButtonColor, undefined, undefined,
+	{
+			hotkey: KDHotkeyToText(KinkyDungeonKeySpell[ii]),
+			hotkeyPress: KinkyDungeonKeySpell[ii],
+		});
+		ii++;
+	}
+	
 
 
 	DrawButtonKDEx("backButton", (_b) => {
@@ -8014,7 +8047,7 @@ function KDTextReplace(text: string, replacestrings: string[]) {
 	return str;
 }
 
-let KinkyDungeonPreviousState = "Game";
+let KinkyDungeonPreviousState = "";
 
 function KDDrawWardrobeButton() {
 	DrawButtonKDEx("GoToWardrobe", (_bdata) => {

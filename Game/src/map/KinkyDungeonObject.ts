@@ -65,8 +65,7 @@ let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 		} else {
 			KinkyDungeonTargetTileLocation = x + "," + y;
 			KinkyDungeonTargetTile = tile;
-			if (!KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist
-				|| KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen) {
+			if (!KDTablesAreFlippable(KDMapData)) {
 				KDStartDialog("TableNoFlip", "", true, "");
 			} else {
 				KDStartDialog("TableFlip", "", true, "");
@@ -856,4 +855,10 @@ function KDGetGhostThresh(): number {
 	if (rep > 40) amt -= 1;
 
 	return Math.max(amt, 0);
+}
+
+
+function KDTablesAreFlippable(mapData): boolean {
+	return KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist
+		|| !KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen;
 }
