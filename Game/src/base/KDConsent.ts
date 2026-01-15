@@ -404,7 +404,8 @@ function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentL
 
 let KDConsent_Sidebar = 600;
 let KDConsent_SideOffset = 175;
-let KDConsent_Buttonstart = 300;
+let KDConsent_Buttonstart = 360;
+let KDConsent_Buttonspace = 94;
 
 function KDDrawConsent(xOffset) {
 
@@ -487,7 +488,7 @@ function KDDrawConsent(xOffset) {
 		let w = list.w - 40;
         DrawTextFitKDTo(container, TextGet("KDConsentItem_" + item.name,
             item.data), 
-            list.x + 50 + (horizontal ? visualIndex * 80 : 0), list.y + listspacing/2 + (horizontal ? 0 : visualIndex * 80), 
+            list.x + 25 + (horizontal ? visualIndex * 80 : 0), list.y + listspacing/2 + (horizontal ? 0 : visualIndex * 80), 
             w - 80, item.textColor, undefined, undefined, "left")
 		   
         ii = 0;
@@ -503,7 +504,7 @@ function KDDrawConsent(xOffset) {
                         KDSaveToggles();
                         return true;
                     }, isClickable, 
-                    list.x + KDConsent_Buttonstart + (horizontal ? visualIndex * 80 : 0) + 120*ii, 
+                    list.x + KDConsent_Buttonstart + (horizontal ? visualIndex * 80 : 0) + KDConsent_Buttonspace*ii, 
                     list.y + listspacing/2 - hh/2 + (horizontal ? 0 : visualIndex * 80), 
                     hh, hh, "", KDConsentArray[item.name] == color, 
                     undefined, undefined,
@@ -525,7 +526,7 @@ function KDDrawConsent(xOffset) {
 				Left: list.x + 10 + (horizontal ? visualIndex * 80 : 0), 
 				Top: list.y + (horizontal ? 0 : visualIndex * 80) + 5,
 				Width: w - 20, 
-				Height: listspacing,
+				Height: listspacing-10,
 				Color: KDUIColorHighlight,
 				alpha: KDUIAlphaHighlight,
 				LineWidth: 2,
