@@ -404,7 +404,7 @@ function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentL
 
 let KDConsent_Sidebar = 600;
 let KDConsent_SideOffset = 100;
-let KDConsent_Buttonstart = 360;
+let KDConsent_Buttonstart = 436;
 let KDConsent_Buttonspace = 94;
 
 function KDDrawConsent(xOffset) {
