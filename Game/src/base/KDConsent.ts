@@ -96,6 +96,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             tooltip: TextGet("KDConsentListDesc_" + "Shocks"),
     },
     
+    Brats: {
+            name: "Brats",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "",
+            perkYellow: "NoBrats",
+            perkGreen: "OnlyBrats",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "Brats"),
+            tooltip: TextGet("KDConsentListDesc_" + "Brats"),
+    },
 
     Encasement: {
             name: "Encasement",
@@ -202,20 +217,35 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Petsuits"),
             tooltip: TextGet("KDConsentListDesc_" + "Petsuits"),
     },
-    Brats: {
-            name: "Brats",
+    Bubbles: {
+            name: "Bubbles",
             color: KDBaseWhite,
             bordercolor: KDBaseTeal,
             textColor: KDBaseWhite,
 
 
             perkRed: "",
-            perkYellow: "NoBrats",
-            perkGreen: "OnlyBrats",
+            perkYellow: "BubbleOptout",
+            perkGreen: "BubblePref",
 
             priority: -10,
-            label: TextGet("KDConsentListDesc_" + "Brats"),
-            tooltip: TextGet("KDConsentListDesc_" + "Brats"),
+            label: TextGet("KDConsentListDesc_" + "Bubbles"),
+            tooltip: TextGet("KDConsentListDesc_" + "Bubbles"),
+    },
+    DollTerminal: {
+            name: "DollTerminal",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "",
+            perkYellow: "NoDoll",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "DollTerminal"),
+            tooltip: TextGet("KDConsentListDesc_" + "DollTerminal"),
     },
     SenseDep: {
             name: "SenseDep",
@@ -322,21 +352,6 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "Police"),
             tooltip: TextGet("KDConsentListDesc_" + "Police"),
     },
-    Bubbles: {
-            name: "Bubbles",
-            color: KDBaseWhite,
-            bordercolor: KDBaseTeal,
-            textColor: KDBaseWhite,
-
-
-            perkRed: "",
-            perkYellow: "BubbleOptout",
-            perkGreen: "BubblePref",
-
-            priority: -10,
-            label: TextGet("KDConsentListDesc_" + "Bubbles"),
-            tooltip: TextGet("KDConsentListDesc_" + "Bubbles"),
-    },
     Ballsuit: {
             name: "Ballsuit",
             color: KDBaseWhite,
@@ -351,21 +366,6 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             priority: -10,
             label: TextGet("KDConsentListDesc_" + "Ballsuit"),
             tooltip: TextGet("KDConsentListDesc_" + "Ballsuit"),
-    },
-    DollTerminal: {
-            name: "DollTerminal",
-            color: KDBaseWhite,
-            bordercolor: KDBaseTeal,
-            textColor: KDBaseWhite,
-
-
-            perkRed: "",
-            perkYellow: "NoDoll",
-            perkGreen: "",
-
-            priority: -10,
-            label: TextGet("KDConsentListDesc_" + "DollTerminal"),
-            tooltip: TextGet("KDConsentListDesc_" + "DollTerminal"),
     },
 };
 
@@ -402,6 +402,8 @@ function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentL
     return data.list;
 }
 
+let KDConsent_Sidebar = 600;
+let KDConsent_SideOffset = 175;
 
 function KDDrawConsent(xOffset) {
 
@@ -409,11 +411,11 @@ function KDDrawConsent(xOffset) {
 
     let MainList = "Consent_List";
 
-    let sidebar = 400;
+    let sidebar = KDConsent_Sidebar;
     
 	let horizontal = false;
     let x = sidebar + 50 + xOffset;
-    let wList = PIXIWidth - 250 - x;
+    let wList = PIXIWidth - KDConsent_SideOffset - x;
     let yStart = 200;
     let wspacing = 150;
     let h = PIXIHeight - yStart - 140;
