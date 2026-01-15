@@ -17,10 +17,11 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 		cooldown: 50,
 		filter: (id, mapData) => {
 			let npc = KDGetPersistentNPC(id);
-			return KinkyDungeonCurrentTick > (npc.nextSpawnTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
+			return KinkyDungeonCurrentTick >= (npc.nextSpawnTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
 		},
 		chance: (id, mapData) => {
-			return mapData == KDMapData ? 0.4 : 0.1;
+			let npc = KDGetPersistentNPC(id);
+			return mapData == KDMapData ? 1.0 : 0.1;
 		},
 		doSpawn: (id, mapData, entity) => {
 			if (!entity && !mapData.Entities.some((ent) => {
@@ -83,9 +84,9 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 					entity.runSpawnAI = false;
 					delete npc.fromIndex;
 					delete npc.fromType;
-					if (entity.spawnTick && KinkyDungeonCurrentTick > entity.spawnTick + 8) {
+					if (!entity.spawnTick || KinkyDungeonCurrentTick > entity.spawnTick + 8) {
 						// move the enemy based on diff
-						let time = KinkyDungeonCurrentTick - entity.spawnTick;
+						let time = KinkyDungeonCurrentTick - (entity.spawnTick || 0);
 						let pp2 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
 								return KDistChebyshev(x - point.x, y - point.y) < time;
 							}, false, false);
@@ -114,11 +115,13 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 		cooldown: 50,
 		filter: (id, mapData) => {
 			let npc = KDGetPersistentNPC(id);
-			return KinkyDungeonCurrentTick > (npc.nextSpawnTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
+			return KinkyDungeonCurrentTick >= (npc.nextSpawnTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
 		},
 		chance: (id, mapData) => {
 			if (!KDIDHasFlag(id, "LairCheck")) return 1.0;
-			return mapData == KDMapData ? 0.4 : 0.1;
+			let npc = KDGetPersistentNPC(id);
+			if (npc.nextSpawnTick == KinkyDungeonCurrentTick) return 1.0;
+			return mapData == KDMapData ? 1.0 : 0.1;
 		},
 		doSpawn: (id, mapData, entity) => {
 			if (!entity && !mapData.Entities.some((ent) => {
@@ -182,9 +185,9 @@ let KDPersistentSpawnAIList: Record<string, PersistentSpawnAI> = {
 					entity.runSpawnAI = false;
 					delete npc.fromIndex;
 					delete npc.fromType;
-					if (entity.spawnTick && KinkyDungeonCurrentTick > entity.spawnTick + 8) {
+					if (!entity.spawnTick || KinkyDungeonCurrentTick > entity.spawnTick + 8) {
 						// move the enemy based on diff
-						let time = KinkyDungeonCurrentTick - entity.spawnTick;
+						let time = KinkyDungeonCurrentTick - (entity.spawnTick || 0);
 						let pp2 = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
 								return KDistChebyshev(x - point.x, y - point.y) < time;
 							}, false, false);

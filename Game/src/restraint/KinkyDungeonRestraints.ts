@@ -3337,6 +3337,7 @@ let KDNoOverrideTags = [
 	"arousalMode",
 	"arousalModePlug",
 	"arousalModePlugNoFront",
+	"arousalModePlugFront",
 	"arousalModePiercing",
 	...KDHeavyRestraintPrefs,
 ];

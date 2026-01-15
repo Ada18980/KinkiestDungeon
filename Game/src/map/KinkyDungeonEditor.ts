@@ -112,6 +112,7 @@ let KDTilePalette = {
 	'LatexThinBlue':  {type: "effect", effectTile: "LatexThinBlue"},
 	'LatexThinGreen':  {type: "effect", effectTile: "LatexThinGreen"},
 	'Latex':  {type: "effect", effectTile: "Latex"},
+	'LatexPink':  {type: "effect", effectTile: "LatexPink"},
 	'LatexBlue':  {type: "effect", effectTile: "LatexBlue"},
 	'LatexGreen':  {type: "effect", effectTile: "LatexGreen"},
 	'WallHook': {type: "tile", tile: ','},

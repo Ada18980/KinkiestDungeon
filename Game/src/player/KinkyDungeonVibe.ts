@@ -150,6 +150,7 @@ let KDToggles = {
 	RawDP: false,
 	OnlySelfQuickInv: false,
 	OverrideOutfit: false,
+	OverrideConsent: true,
 	SaveOutfit: true,
 	ModCompat: false,
 

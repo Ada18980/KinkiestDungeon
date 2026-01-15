@@ -415,7 +415,6 @@ function KDEasePosition(x: number, y: number, tx: number, ty: number, speed: num
 }
 
 
-
 let KDLastEffTileUpdate = 0;
 function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let delta = CommonTime() - KDLastEffTileUpdate;
@@ -427,10 +426,10 @@ function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX:
 				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
 				let color = undefined;
-				if (tile.tags?.includes("terrain")) {
+				if (tile.colorforcetint && tile.tags?.includes("terrain")) {
 					color = KDGetLightColor(tile.x, tile.y);
 				}
-				let op = {
+				let op: Record<string, any> = {
 					zIndex: -0.1 + 0.01 * tile.priority,
 					alpha: KDApplyAlpha(tileid, kdpixisprites.get(tileid)?.alpha, tile.fade, delta),
 				};
@@ -453,7 +452,16 @@ function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX:
 					if (!TileYFade[tileid]) TileYFade[tileid] = KDRandom();
 					TileYFade[tileid] = KDApplyAlpha(tileid, TileYFade[tileid], tile.yfade, delta);
 				}
-				if (color != undefined) op['tint'] = color;
+				if (tile.colorforcetint) {
+					op.tint = string2hex(tile.colorforcetint);
+				} else {
+					if (color != undefined) op['tint'] = color;
+					if (tile.colortint) {
+						op.tint = KDAvgColor(string2hex(tile.colortint), 
+						color, 3, 1);
+					}
+				}
+				
 				KDDraw(kdeffecttileboard, kdpixisprites, tileid, KinkyDungeonRootDirectory + "EffectTiles/" + sprite + ".png",
 					(tile.x + (tile.xoffset ? tile.xoffset : 0) - CamX)*KinkyDungeonGridSizeDisplay,
 					(tile.y - CamY + (tile.yoffset ? tile.yoffset : 0) + (tile.yfadeamount ? tile.yfadeamount*TileYFade[tileid] : 0))*KinkyDungeonGridSizeDisplay,

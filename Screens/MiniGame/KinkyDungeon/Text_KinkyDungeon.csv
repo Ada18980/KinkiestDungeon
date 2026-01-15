@@ -91,6 +91,7 @@ KDToggleRawDP,Show DP instead of %
 KDToggleOnlySelfQuickInv,Quick Inv only equips to self
 KDToggleOverrideOutfit,Override Outfit when Loading Save
 KDToggleOverrideOutfitAbbr,Override Outfit
+KDToggleOverrideConsentAbbr,Load Consent from Save
 KDToggleSaveOutfit,Save Outfits within Save Files
 KDToggleShowNPCSprites,Show free characters on map
 KDToggleShowJailedNPCSprites,Detailed jailed NPCs (experimental)
@@ -1050,6 +1051,7 @@ GameReturnToMenu2,Cancel Changes
 GameReturnToMenuFromOptions,Return
 GameConfigKeys,Keybindings
 GameToggles,Game Options
+GameConsent,Consent Options
 
 KinkyDungeonLoadConfirm,"Load from code"
 KinkyDungeonLoadBack,"Back to main menu"
@@ -5816,13 +5818,17 @@ KDEffectTileTooltipLatexDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexThin,Liquid Latex
 KDEffectTileTooltipLatexThinDesc,"Engulfs creatures"
 KDEffectTileTooltipLatexBlue,Liquid Latex
-KDEffectTileTooltipLatexBlueDesc,"Engulfs creatures"
+KDEffectTileTooltipLatexBlueDesc,"Engulfs dolls (like you)"
 KDEffectTileTooltipLatexThinBlue,Liquid Latex
-KDEffectTileTooltipLatexThinBlueDesc,"Engulfs creatures"
+KDEffectTileTooltipLatexThinBlueDesc,"Engulfs dolls (like you)"
 KDEffectTileTooltipLatexGreen,Liquid Latex
 KDEffectTileTooltipLatexGreenDesc,"Engulfs pets (like you)"
 KDEffectTileTooltipLatexThinGreen,Liquid Latex
-KDEffectTileTooltipLatexThinGreeneDesc,"Engulfs pets (like you)"
+KDEffectTileTooltipLatexThinGreenDesc,"Engulfs pets (like you)"
+KDEffectTileTooltipLatexPink,Liquid Latex
+KDEffectTileTooltipLatexPinkDesc,"Engulfs toys (like you)"
+KDEffectTileTooltipLatexThinPink,Liquid Latex
+KDEffectTileTooltipLatexThinPinkDesc,"Engulfs toys (like you)"
 KDEffectTileTooltipSlime,Slime
 KDEffectTileTooltipSlimeDesc,"Slows creatures"
 KDEffectTileTooltipGlue,Glue
@@ -14105,6 +14111,9 @@ KDWardrobeCancelConfirm,Confirm Revert?
 KDWardrobeSaveOutfit,Save
 KDWardrobeSaveOutfitConfirm,Save Changes?
 KDWardrobeSave,Back to Menu
+KDWardrobeSaveMenu,Back to Menu
+KDWardrobeSaveGame,Back to Game
+KDWardrobeSaveRestart,Back to Pause Menu
 KDWardrobeSaveDiff,Back to Game Setup
 KDWardrobeSaveName,Back to Character Setup
 KDWardrobeBackToWardrobe,Back to Wardrobe
@@ -29272,23 +29281,29 @@ KDConsentListDesc_Tickle,
 
 
 KinkyDungeonChallenge,Challenge Settings:
-KinkyDungeonConsent,Set Limits:
-KDConsentLimits_Red,Red kinks are removed from the game
-KDConsentLimits_Yellow,Yellow kinks occur significantly less often
-KDConsentLimits_Green,Green kinks will appear more often!
+KinkyDungeonConsent,Unmarked content will appear at the normal ingame rate.
+KDConsentLimits_Red,Red kinks (x) are removed from the game
+KDConsentLimits_Yellow,Yellow kinks (-) occur significantly less often
+KDConsentLimits_Green,Green kinks (+) will appear more often!
+KinkyDungeonConsent2,"Due to game limitations, not all types of content can be fully blocked."
 
 KDRed,Red
 KDYellow,Yellow
 KDGreen,Green
 
+KDConsentItem_PlugFront,Front Plugs
+KDConsentItem_PlugRear,Rear Plugs
+KDConsentItem_DollTerminal,Cyber Dollification
+KDConsentItem_DollShoppe,Elegant Dollification
 KDConsentItem_Police,Police
-KDConsentItem_Nurse,Nurses/Doctors
+KDConsentItem_Nurses,Nurses/Doctors
 KDConsentItem_Slime,Slime
 KDConsentItem_Kigu,Kigurumi Masks
 KDConsentItem_Encasement,Encasement
 KDConsentItem_Tape,Tape Bondage
 KDConsentItem_Tickle,Tickling
 KDConsentItem_Bubbles,Bubbles
+KDConsentItem_Ballsuit,Ball Suits
 KDConsentItem_Blindfolds,Blindfolds
 KDConsentItem_Yokes,Yokes and Spreader Bars
 KDConsentItem_Armbinders,Armbinders
@@ -29299,6 +29314,35 @@ KDConsentItem_Hoods,Hoods
 KDConsentItem_Masks,Full-face Masks
 KDConsentItem_Earplugs,Earplugs
 KDConsentItem_Shocks,Painful Shocks
+KDConsentItem_SenseDep,Sensory Deprivation
+KDConsentItem_Brats,Brats
+
+
+KDConsentItemTooltip_Brats,"Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them."
+KDConsentItemTooltip_PlugFront,Allows plugs to be inserted into the front slot of your character.
+KDConsentItemTooltip_PlugRear,Allows plugs to be inserted into the rear slot of your character.
+KDConsentItemTooltip_DollTerminal,Does not place points where enemies will drop you off to become dollified in the factory level.
+KDConsentItemTooltip_DollShoppe,Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
+KDConsentItemTooltip_Police,"Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters."
+KDConsentItemTooltip_Nurses,Affects the 'Nurse' enemy and any other medical-related enemy types.
+KDConsentItemTooltip_Slime,Affects the spawn rate of slimes and latex witches.
+KDConsentItemTooltip_Kigu,"Affects full masks that imitate a face, which can be unsettling to some."
+KDConsentItemTooltip_Encasement,"Affects the spawn rate of slimes and latex witches."
+KDConsentItemTooltip_Tape,Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
+KDConsentItemTooltip_Tickle,Includes tickling by NPC attacks and tickle torture scenarios. Spells and weapons that deal tickle damage to the player will deal Plush damage instead.||Player attacks will still deal tickle damage.
+KDConsentItemTooltip_Bubbles,"Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres."
+KDConsentItemTooltip_Ballsuit,"Includes ball suits and inflatable latex spheres that restrain the player."
+KDConsentItemTooltip_Blindfolds,"Affects the frequency of blindfolds, but not hoods or masks that cover the upper face."
+KDConsentItemTooltip_Yokes,"Affects the frequency of metal yokes, fiddles, and spreader bars."
+KDConsentItemTooltip_Armbinders,Affects the frequency of armbinders that force the elbows close together.
+KDConsentItemTooltip_Boxbinders,Affects the frequency of boxbinders that force the arms behind the back.
+KDConsentItemTooltip_Jackets,Affects the frequency of straitjackets.
+KDConsentItemTooltip_Petsuits,Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
+KDConsentItemTooltip_Hoods,Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
+KDConsentItemTooltip_Masks,"Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag."
+KDConsentItemTooltip_SenseDep,"The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision."
+KDConsentItemTooltip_Earplugs,Earplugs reduce the player's hearing.
+KDConsentItemTooltip_Shocks,"Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain."
 
 KDColorPickerPalette,Palette
 KDPaletteColorPickerInfo,Pick a palette in Extra Options
@@ -31329,6 +31373,7 @@ KinkyDungeonInventoryItemC4Desc,"It's totally harmless! Probably."
 KinkyDungeonInventoryItem2C4Desc2,"Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage."
 KinkyDungeonInventoryItem2C4Desc,"It's totally harmless! Probably."
 KinkyDungeonInventoryItemC4Use,You set the clock ticking...
+KinkyDungeonSpellC4Item,Plastic Explosive
 
 KinkyDungeonInventoryItemDynamite,Dynamite
 KinkyDungeonInventoryItemDynamiteDesc2,"10 turn fuse with a 25% chance each turn to detonate prematurely. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
@@ -31336,6 +31381,7 @@ KinkyDungeonInventoryItemDynamiteDesc,"Arguably more dangerous to the user than 
 KinkyDungeonInventoryItem2DynamiteDesc2,"10 turn fuse with a 25% chance each turn to detonate. Deals 140 blast damage in a large radius. Enemies hit have their armor reduced by 20 BEFORE taking damage."
 KinkyDungeonInventoryItem2DynamiteDesc,"Arguably more dangerous to the user than the target."
 KinkyDungeonInventoryItemDynamiteUse,You light the fuse and pray it doesn't blow up in your face.
+KinkyDungeonSpellDynamiteItem,Plastic Explosive
 
 KDTooManyLeashes,You are holding too many leashes!
 
@@ -33048,3 +33094,4 @@ KDProgressTag_TrHeels_LeashWalk,Went on a leash walk:
 KDProgressTagDesc_Level,Training Level ${Level}
 
 KDOptionFilter,"Filter Toggles:"
+KDConsentFilter,"Filter Content:"

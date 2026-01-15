@@ -4066,7 +4066,7 @@ let KDCastConditions: Record<string, (enemy: entity, target: entity, spell?: spe
 		return !KinkyDungeonStatsChoice.get("BubbleOptout");
 	},
 	"EncasementAllowed": (_enemy, target) => {
-		return !KinkyDungeonStatsChoice.get("SlimeOptout");
+		return !KinkyDungeonStatsChoice.get("BallsuitOptout");
 	},
 	"SlimeAllowed": (_enemy, target) => {
 		return !KinkyDungeonStatsChoice.get("SlimeOptout");

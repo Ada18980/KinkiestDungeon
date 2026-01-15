@@ -74,6 +74,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 80,
 		priority: -2,
 		affinities: ["Sticky", "Latex"],
+		colortint: `rgb(217, 77, 181)`,
 		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LiquidMetal": {
@@ -89,6 +90,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 30,
 		priority: -2.01,
 		affinities: ["Sticky", "Latex"],
+		colortint: `rgb(217, 77, 181)`,
 		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexBlue": {
@@ -116,6 +118,22 @@ let KDEffectTiles: Record<string, effectTile> = {
 		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexThinGreen": {
+		name: "LatexThinGreen",
+		functionName: "Latex",
+		duration: 30,
+		priority: -2.01,
+		affinities: ["Sticky", "Latex"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
+	},
+	"LatexPink": {
+		name: "LatexBlue",
+		functionName: "Latex",
+		duration: 80,
+		priority: -2.01,
+		affinities: ["Sticky", "Latex"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
+	},
+	"LatexThinPink": {
 		name: "LatexThinGreen",
 		functionName: "Latex",
 		duration: 30,

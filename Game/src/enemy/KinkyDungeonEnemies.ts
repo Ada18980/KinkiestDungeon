@@ -454,7 +454,7 @@ function KDEnemyNearTargetExit(entity: entity, mapData: KDMapDataType): boolean 
 	let gy = entity.despawnY || entity.gy || entity.y;
 	let nearestPoint = KDGetNearestExit(gx, gy, mapData);
 
-	return nearestPoint && KDistChebyshev(gx - nearestPoint.x, gy - nearestPoint.y) < 1.5;
+	return nearestPoint && KDistChebyshev(entity.x - nearestPoint.x, entity.y - nearestPoint.y) < 1.5;
 }
 
 
@@ -3409,7 +3409,9 @@ function KDCheckDespawn(enemy: entity, E: number, mapData: KDMapDataType): boole
 	if (enemy?.id == KinkyDungeonJailGuard()?.id) return false;
 	if (enemy.despawnX && enemy.despawnY && KDEnemyCanDespawn(enemy.id, mapData)) {
 		if (KDistChebyshev(enemy.despawnX - enemy.x, enemy.despawnY - enemy.y) < 1.5) {
-			KDDespawnEnemy(enemy, E, mapData);
+			let tile = KinkyDungeonTilesGet(enemy.despawnX + ',' + enemy.despawnY);
+			let slot = KDGetWorldMapLocation({x: mapData.mapX, y: mapData.mapY});
+			KDDespawnEnemy(enemy, E, mapData, tile?.RoomType || slot?.main || "");
 			return true;
 		}
 	} else if (enemy.goToDespawn && !(enemy.despawnX && enemy.despawnY)) {
@@ -10028,6 +10030,7 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 
 	delete enemy.despawnX;
 	delete enemy.despawnY;
+	delete enemy.goToDespawn;
 
 	if (!KDIsNPCPersistent(enemy.id) && !KDIsInEnemyParty(enemy)) {
 
@@ -10065,7 +10068,7 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 			let mdata = slot.data[moveThruExit];
 
 			// Enemies have an ability to pathfind only by 1...
-			if (moveThruExit != homeCoord.room) {
+			if (moveThruExit != homeCoord?.room) {
 				let nextExit = KDGetNearestExitTo(
 					currentRoom, mapData.mapX, mapData.mapY,
 					mdata.GridWidth/2,

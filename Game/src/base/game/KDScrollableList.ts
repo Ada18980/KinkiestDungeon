@@ -160,7 +160,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	isSelected: boolean,
 	selectedIndex: number,
 	list: KDScrollableListData) => boolean, drawBG = true, horizontal = false, scrollbarSize = 36,
-	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = ""): any {
+	scrollSuff = "Small", scrollhotkeyUp = "", scrollhotkeyDown = "", alpha?: number, alphaborder?: number, color?: string): any {
 	let list = KDScrollableListDataset[name];
 	let container = kdcanvas;
 	
@@ -186,26 +186,28 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 	}
 
 	if (drawBG) {
-		DrawRectKD(container, kdpixisprites, name + "borderbg", {
-			Left: list.x,
-			Top: list.y,
-			Width: list.w,
-			Height: list.h,
-			Color: KDBaseBlack, 
-			alpha: KDUIAlpha,
-			LineWidth: 2,
-			zIndex: - 1,
-		});
-		FillRectKD(container, kdpixisprites, name + "border", {
-			Left: list.x,
-			Top: list.y,
-			Width: list.w,
-			Height: list.h,
-			Color: KDBaseBlack,
-			alpha: KDUIAlphaHighlight,
-			LineWidth: 2,
-			zIndex: - 0.9,
-		});
+		if (alphaborder > 0 || alphaborder == undefined)
+			DrawRectKD(container, kdpixisprites, name + "borderbg", {
+				Left: list.x,
+				Top: list.y,
+				Width: list.w,
+				Height: list.h,
+				Color: color != undefined ? color :  KDBaseBlack, 
+				alpha: alphaborder != undefined ? alphaborder :  KDUIAlpha,
+				LineWidth: 2,
+				zIndex: - 1,
+			});
+		if (alpha > 0 || alpha == undefined)
+			FillRectKD(container, kdpixisprites, name + "border", {
+				Left: list.x,
+				Top: list.y,
+				Width: list.w,
+				Height: list.h,
+				Color: color != undefined ? color :  KDBaseBlack,
+				alpha: alpha != undefined ? alpha :  KDUIAlphaHighlight,
+				LineWidth: 2,
+				zIndex: - 0.9,
+			});
 	}
 
 	if (scrollbarSize > 0 && list.items.length > 0) {

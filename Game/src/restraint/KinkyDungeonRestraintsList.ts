@@ -318,7 +318,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
 		],
-		enemyTags: {"aquaRestraints":50}, playerTags: {"Furniture": -100}, minLevel: 0, allFloors: true, shrine: ["CombineBubble1", "Elements", "Encase", "Bubble", "Block_ItemMouth", "Block_ItemEars"]},
+		enemyTags: {"aquaRestraints":50}, playerTags: {"Furniture": -100,BubbleOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["CombineBubble1", "Elements", "Encase", "Bubble", "Block_ItemMouth", "Block_ItemEars"]},
 	{removePrison: true, name: "BubbleArms", unlimited: true, debris: "Water", inaccessible: true, Asset: "DuctTape",
 		Color: "#2277ee", Group: "ItemArms", power: 2, bindarms: true, weight: 0,
 		escapeChance: {"Struggle": -0.1, "Cut": 1.0, "Remove": -0.5},
@@ -327,7 +327,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
 		],
-		enemyTags: {"aquaRestraints":1}, playerTags: {"Furniture": -100}, minLevel: 0, allFloors: true, shrine: ["CombineBubble2", "Elements", "Encase", "Bubble", "Block_ItemHands", "Block_ItemBreast", "Block_ItemNipples"]},
+		enemyTags: {"aquaRestraints":1}, playerTags: {"Furniture": -100,BubbleOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["CombineBubble2", "Elements", "Encase", "Bubble", "Block_ItemHands", "Block_ItemBreast", "Block_ItemNipples"]},
 
 	{removePrison: true, name: "BubbleLegs", unlimited: true, debris: "Water", inaccessible: true, Asset: "DuctTape",
 		Color: "#2277ee", Group: "ItemLegs", power: 2, weight: 0, hobble: 2, heelpower: 10,
@@ -338,7 +338,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		events: [
 			{trigger: "postApply", type: "BubbleCombine", count: 3, inheritLinked: true},
 		],
-		enemyTags: {"aquaRestraints":25}, playerTags: {"Furniture": -100}, minLevel: 0, allFloors: true, shrine: ["CombineBubble3", "Elements", "DiscourageKneel", "Encase", "Bubble", "Block_ItemFeet", "Block_ItemBoots", "Block_ItemPelvis", "Block_ItemVulva", "Block_ItemVulvaPiercings"]},
+		enemyTags: {"aquaRestraints":25}, playerTags: {"Furniture": -100,BubbleOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["CombineBubble3", "Elements", "DiscourageKneel", "Encase", "Bubble", "Block_ItemFeet", "Block_ItemBoots", "Block_ItemPelvis", "Block_ItemVulva", "Block_ItemVulvaPiercings"]},
 
 	//endregion
 
@@ -2695,7 +2695,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"bubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Elements"], removeOnLeash: true,
+		enemyTags: {"bubble":100}, playerTags: {BubbleOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Elements"], removeOnLeash: true,
 	},
 	{removePrison: true, name: "SlimeBubble", Asset: "VacCube", Color: ["#ff77ff"], Group: "ItemDevices", power: 5, weight: 1, alwaysStruggleable: true,
 		Model: "SlimeBubble", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
@@ -2719,11 +2719,12 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"slimebubble":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
+		enemyTags: {"slimebubble":100}, playerTags: {BubbleOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
 	},
 
 
-	{removePrison: true, name: "BallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 4, weight: 1, alwaysStruggleable: true,
+	{removePrison: true, name: "BallSuit", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 4, weight: 1,
+		alwaysStruggleable: true,
 		Model: "BallSuit", LinkableBy: ["Container"],renderWhenLinked: ["Container"],
 		bindarms: true,
 		restriction: 15,
@@ -2744,7 +2745,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.4, sfx: "RubberBolt", inheritLinked: true},
 			{trigger: "playerMove", type: "tipBallsuit", inheritLinked: true},
 		],
-		enemyTags: {"ballSuit":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex", "BallSuit"], removeOnLeash: true,
+		enemyTags: {"ballSuit":100}, playerTags: {BallsuitOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex", "BallSuit"], removeOnLeash: true,
 	},
 
 	{removePrison: true, name: "LatexSphere", Asset: "VacCube", Color: ["#88aaff"], Group: "ItemDevices", power: 5, weight: 1, immobile: true, alwaysStruggleable: true, blindfold: 6, enclose: true,
@@ -2770,7 +2771,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "afterPlayerDamage", type: "bubblePop", mult: 1.5, subMult: 0.5, count: 13, inheritLinked: true},
 			{trigger: "beforePlayerDamage", type: "bounce", chance: 0.2, sfx: "RubberBolt", inheritLinked: true},
 		],
-		enemyTags: {"latexSphere":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
+		enemyTags: {"latexSphere":100}, playerTags: {BallsuitOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Latex"], removeOnLeash: true,
 	},
 	// Future Box
 	{removePrison: true, name: "FutureBox", Asset: "Cage", Color: ['Default', 'Default', '#000000'], Group: "ItemDevices", power: 8, weight: 1,
@@ -2807,7 +2808,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		tightType: "Secure",
 		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": 0.35, "Pick": 0.33, "Unlock": 0.7},
 		helpChance: {"Remove": 0.5, "Pick": 0.5, "Unlock": 1.0},
-		enemyTags: {"cage":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Cages"], ignoreSpells: true, removeOnLeash: true, immobile: true,
+		enemyTags: {"cage":100, shadowBall: 0.1}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "Container", "Cages"], ignoreSpells: true, removeOnLeash: true, immobile: true,
 		events: [{trigger: "tick", type: "cageDebuff", inheritLinked: true}, {trigger: "tick", type: "callGuardFurniture", inheritLinked: true}, {trigger: "playerMove", type: "removeOnMove", inheritLinked: true}]},
 	// Sarcophagus
 	{removePrison: true, name: "Sarcophagus", Asset: "DisplayCase", Color: ['Default'], Group: "ItemDevices", power: 10, weight: 1, immobile: true, alwaysStruggleable: true,
@@ -5400,7 +5401,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			{trigger: "playerMove", type: "tipBallsuit", inheritLinked: true},
 			{trigger: "tick", type: "shadowDrain", power: -0.1, inheritLinked: true},
 		],
-		enemyTags: {"shadowBall":100}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "Latex", "BallSuit", "ShadowEncase"], removeOnLeash: true,
+		enemyTags: {"shadowBall":100}, playerTags: {BallsuitOptout: -1000}, minLevel: 0, allFloors: true, shrine: ["Furniture", "ShadowLatex", "Latex", "BallSuit", "ShadowEncase"], removeOnLeash: true,
 	},
 
 	{inventory: true, name: "ShadowLatexPetsuit", inaccessible: true, debris: "Slime", Color: "Default", Group: "ItemArms",

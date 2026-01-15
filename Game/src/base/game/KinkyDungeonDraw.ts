@@ -2210,6 +2210,14 @@ function KinkyDungeonDrawGame() {
 				KDOptionFilter = "";
 				return true;
 			}, true, 1265, 450, 260, 64, TextGet("GameToggles"), KDBaseWhite, "");
+			DrawButtonKDEx("GameToggles", () => {
+				
+				KinkyDungeonPreviousState = KinkyDungeonState;
+				KinkyDungeonState = "CConsent";
+				KDConsentFilter = "";
+				return true;
+			}, true, 975, 450, 260, 64, TextGet("GameConsent"), KDBaseWhite, "");
+
 
 		} else if (KinkyDungeonDrawState == "Perks2") {
 			KinkyDungeonDrawPerks(!KDDebugPerks);
@@ -2959,7 +2967,8 @@ function DrawBoxKD(Left: number, Top: number, Width: number, Height: number, Col
  * @param [zIndex] - z Index
  * @returns - Nothing
  */
-function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width: number, Height: number, Color: string, NoBorder?: boolean, Alpha?: number, zIndex: number = 90): void {
+function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width: number, Height: number, Color: string,
+	NoBorder?: boolean, Alpha?: number, zIndex: number = 90, bordercolor?: string): void {
 	FillRectKD(Container || kdcanvas, kdpixisprites, "box" + Left + "," + Top + "," + Width + "," + Height + Color + zIndex, {
 		Left: Left,
 		Top: Top,
@@ -2977,7 +2986,7 @@ function DrawBoxKDTo(Container: PIXIContainer, Left: number, Top: number, Width:
 			Top: Top,
 			Width: Width,
 			Height: Height,
-			Color: KDBorderColor,
+			Color: bordercolor || KDBorderColor,
 			LineWidth: 2,
 			zIndex: zIndex + 0.003,
 		});
@@ -3034,7 +3043,8 @@ function DrawTextFitKDgetHeight(
 	border:     number = undefined,
 	unique:     boolean = undefined,
 	font?:		string,
-	wordwrap: 	boolean = false
+	wordwrap: 	boolean = false,
+	valign?: 	string,
 ): number {
 	//does the job of both DrawTextFitKD and DrawTextFitKDTo because editing the output of DrawTextFitKDTo would lead to a lot of changes
 	if (!Text) return 0;
@@ -3054,7 +3064,8 @@ function DrawTextFitKDgetHeight(
 		border: border,
 		unique: unique,
 		font: font,
-		wordwrap: wordwrap
+		wordwrap: wordwrap,
+		valign: valign
 	})[1];//return the height
 }
 
@@ -3072,7 +3083,8 @@ type TextParamsType = {
 	border?:   number,
 	unique?:   boolean,
 	font?:     string,
-	wordwrap?: boolean
+	wordwrap?: boolean,
+	valign?: 	string,
 }
 
 /**
@@ -3259,7 +3271,10 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 			sprite.destroy(true);
 		}
 		// Make the prim
-		sprite = new PIXI.Text(Params.Text,
+		sprite = new PIXI.Text(Params.wordwrap ?
+			//@ts-ignore
+			Params.Text.replaceAll('|', "\n")
+			: Params.Text,
 			{
 				fontFamily : Params.font || KDSelectedFont || KDFontName,
 				fontSize: Params.FontSize ? Params.FontSize : 30,
@@ -3272,7 +3287,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 				miterLimit: 2,
 				padding: 5,
 				wordWrap: Params.wordwrap,
-				wordWrapWidth: Params.Width
+				wordWrapWidth: Params.Width,
 			}
 		);
 
@@ -3295,7 +3310,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 		sprite.name = id;
 		//sprite.cacheAsBitmap = true;
 		sprite.position.x = Params.X + (Params.align == 'center' ? -sprite.width/2 : (Params.align == 'right' ? -sprite.width : 0));
-		sprite.position.y = Params.Y - Math.ceil(sprite.height/2);
+		sprite.position.y = Params.Y + (Params.valign == 'top' ? 0 : (Params.valign == 'bottom' ? - Math.ceil(sprite.height) : - Math.ceil(sprite.height/2)))
 		sprite.zIndex = Params.zIndex ? Params.zIndex : 0;
 		sprite.alpha = Params.alpha ? Params.alpha : 1;
 		kdSpritesDrawn.set(id, true);
@@ -3625,6 +3640,9 @@ type ButtonOptions = {
 	fontSize?:    number;
 	maxWidth?:    number;
 	spritealpha?: number,
+	bordercolor?: string,
+	fillcolor?: string,
+	
 	/// Custom data passed to onHover callback
 	hoverData?:   any;
 	/// Callback when button is hovered
@@ -3737,8 +3755,9 @@ function DrawButtonVisTo (
 	let hover = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled);
 	if (!NoBorder || FillColor)
 		DrawBoxKDTo(Container, Left, Top, Width, Height,
-			FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor),
+			options?.fillcolor != undefined ? options.fillcolor : (FillColor ? FillColor : (hover ? (KDTextGray2) : KDButtonColor)),
 			NoBorder, options?.alpha || 0.5, zIndex,
+			options?.bordercolor != undefined ? options.bordercolor : undefined
 		);
 	if (hover) {
 		let pad = 2;
@@ -3890,6 +3909,51 @@ function DrawCheckboxKDEx (
 {
 	DrawTextFitKD(Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
 	DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
+		undefined, undefined, undefined, undefined, options);
+}
+
+
+
+/**
+ * Draws a checkbox component
+ * @param name - Name of the button element
+ * @param func - Whether or not you can click on it
+ * @param enabled - Whether or not you can click on it
+ * @param Left - Position of the component from the left of the canvas
+ * @param Top - Position of the component from the top of the canvas
+ * @param Width - Width of the component
+ * @param Height - Height of the component
+ * @param Text - Label associated with the checkbox
+ * @param IsChecked - Whether or not the checkbox is checked
+ * @param [Disabled] - Disables the hovering options if set to true
+ * @param [TextColor] - Color of the text
+ * @param [options] - Additional options
+ * @param [options.noTextBG] - Dont show text backgrounds
+ * @param [options.alpha]
+ * @param [options.zIndex] - zIndex
+ * @param [options.maxWidth] - Max width
+ * @param [options.fontSize] - fontSize
+ * @param [options.scaleImage] - zIndex
+ */
+function DrawCheckboxKDExTo (
+	canvas: PIXIContainer,
+	name:         string,
+	func:         (bdata: any) => boolean,
+	enabled:      boolean,
+	Left:         number,
+	Top:          number,
+	Width:        number,
+	Height:       number,
+	Text:         string,
+	IsChecked:    boolean,
+	Disabled:     boolean = false,
+	TextColor:    string = KDTextGray0,
+	CheckImage:  string = "UI/Checked.png",
+	options?:     ButtonOptions
+): void
+{
+	DrawTextFitKDTo(canvas, Text, Left + 10 + Width, Top + Height/2+1, options?.maxWidth || 1000, TextColor, "#333333", options?.fontSize, "left");
+	DrawButtonKDExTo(canvas, name, func, enabled, Left, Top, Width, Height, "", Disabled ? "#ebebe4" : KDBaseWhite, IsChecked ? (KinkyDungeonRootDirectory + CheckImage) : "", null, Disabled,
 		undefined, undefined, undefined, undefined, options);
 }
 

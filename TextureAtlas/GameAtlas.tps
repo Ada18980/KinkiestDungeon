@@ -798,9 +798,11 @@
             <key type="filename">../Game/EffectTiles/Latex.png</key>
             <key type="filename">../Game/EffectTiles/LatexBlue.png</key>
             <key type="filename">../Game/EffectTiles/LatexGreen.png</key>
+            <key type="filename">../Game/EffectTiles/LatexPink.png</key>
             <key type="filename">../Game/EffectTiles/LatexThin.png</key>
             <key type="filename">../Game/EffectTiles/LatexThinBlue.png</key>
             <key type="filename">../Game/EffectTiles/LatexThinGreen.png</key>
+            <key type="filename">../Game/EffectTiles/LatexThinPink.png</key>
             <key type="filename">../Game/EffectTiles/LiquidMetal.png</key>
             <key type="filename">../Game/EffectTiles/Magicflies.png</key>
             <key type="filename">../Game/EffectTiles/ManaEmpty.png</key>
@@ -4441,6 +4443,9 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/CheckSmall.png</key>
+            <key type="filename">../Game/UI/ConsentGreen.png</key>
+            <key type="filename">../Game/UI/ConsentRed.png</key>
+            <key type="filename">../Game/UI/ConsentYellow.png</key>
             <key type="filename">../Game/UI/Plus.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

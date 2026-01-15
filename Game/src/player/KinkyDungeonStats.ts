@@ -1091,6 +1091,11 @@ function KDChangeDesire(src: string, type: string, trig: string, Amount: number,
 	}
 
 	if (data.amountChanged > 0) {
+		if (KinkyDungeonFlags.get("blockdesiredecay") != -1)
+			KinkyDungeonSetFlag("blockdesiredecay", 
+			Math.max(1, 
+					Math.max(Math.min(10, Math.ceil(data.amountChanged)), 
+					KinkyDungeonFlags.get("blockdesiredecay") || 0)));
 		if (KDToggles.ArousalHearts)
 			for (let i = 0; i < data.amountChanged * 10 && i < 100; i++) {
 				KDCreateArousalParticle(KinkyDungeonStatDistraction/KinkyDungeonStatDistractionMax, 0);
@@ -1711,7 +1716,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	let blind = Math.max(KinkyDungeonBlindLevelBase, KinkyDungeonGetBlindLevel());
 	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Blindness")) blind = Math.max(0, blind + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Blindness"));
 	KinkyDungeonBlindLevel = Math.min(KDBlindnessCap, blind);
-	if (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.has("Unmasked")) KinkyDungeonBlindLevel += 1;
+	//if (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.has("Unmasked")) KinkyDungeonBlindLevel += 1;
 	if (KinkyDungeonStatBlind > 0) KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel, 6);
 	//if (KinkyDungeonStatStamina < 2) KinkyDungeonBlindLevel = Math.max(KinkyDungeonBlindLevel, Math.round(6 - 3*KinkyDungeonStatStamina));
 	KinkyDungeonDeaf = false;//KinkyDungeonPlayer.IsDeaf();
@@ -1760,7 +1765,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	// Cap off the values between 0 and maximum
 	if (Math.abs(distractionRate) > 0.0001) {
 		KDChangeDistraction("player", "regen", "tick", distractionRate*delta, true, arousalPercent);
-	} else {
+	} else if (!KinkyDungeonFlags.get("blockdesiredecay")) {
 		let amt = ((!KinkyDungeonFlags.get("recentDistract") && KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLowerDecayTo * KinkyDungeonStatDistractionMax) ? -Math.min(Math.min(KinkyDungeonStatDistractionLower - 
 				KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayTo,
 		KinkyDungeonStatDistractionMax * KinkyDungeonStatDistractionLowerDecayRate * delta

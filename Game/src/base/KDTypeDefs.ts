@@ -2079,6 +2079,8 @@ interface effectTile {
 	/** Spin to the effect tile sprite */
 	spin?: number,
 	spinAngle?: number,
+	colortint?: string,
+	colorforcetint?: string,
 
 };
 
@@ -2092,6 +2094,8 @@ interface effectTileRef {
 	pauseSprite?: string,
 	skin?: string,
 	statuses?: Record<string, number>,
+	colortint?: string,
+	colorforcetint?: string,
 };
 
 type KDPerk = {
@@ -2832,6 +2836,7 @@ interface KinkyDungeonSave {
 		Palette: string,
 		metadata: KDOutfitMetadata,
 
+		ConsentArray: Record<string, string>;
 
 		outfit: string,
 		name: string,
