@@ -403,7 +403,7 @@ function KDEnumerateConsentList(sort: boolean = true, player?: entity): ConsentL
 }
 
 let KDConsent_Sidebar = 600;
-let KDConsent_SideOffset = 175;
+let KDConsent_SideOffset = 100;
 let KDConsent_Buttonstart = 360;
 let KDConsent_Buttonspace = 94;
 
@@ -428,25 +428,25 @@ function KDDrawConsent(xOffset) {
     let fontsizeheading = 18;
     let headery = 80;
     DrawTextFitKD(TextGet("KinkyDungeonConsent"), 
-            xOffset + (PIXIWidth - xOffset - 20)/2, 
+            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
             headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80), KDBaseWhite, undefined, fontsizeheading)
+            (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
     DrawTextFitKD(TextGet("KDConsentLimits_Red"), 
-            xOffset + (PIXIWidth - xOffset - 20)/2, 
+            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
             headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80), KDBaseRed, KDBaseBlack, fontsizeheading)
+            (PIXIWidth - xOffset - 80 - sidebar), KDBaseRed, KDBaseBlack, fontsizeheading)
     DrawTextFitKD(TextGet("KDConsentLimits_Yellow"), 
-            xOffset + (PIXIWidth - xOffset - 20)/2, 
+            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
             headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80), KDBaseYellow, KDBaseBlack, fontsizeheading)
+            (PIXIWidth - xOffset - 80 - sidebar), KDBaseYellow, KDBaseBlack, fontsizeheading)
     DrawTextFitKD(TextGet("KDConsentLimits_Green"), 
-            xOffset + (PIXIWidth - xOffset - 20)/2, 
+            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
             headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80), KDBaseGreal, KDBaseBlack, fontsizeheading)
+            (PIXIWidth - xOffset - 80 - sidebar), KDBaseGreal, KDBaseBlack, fontsizeheading)
     DrawTextFitKD(TextGet("KinkyDungeonConsent2"), 
-            xOffset + (PIXIWidth - xOffset - 20)/2, 
+            xOffset + sidebar + (PIXIWidth - xOffset - sidebar - 20)/2, 
             headery + linespace*ii++, 
-            (PIXIWidth - xOffset - 80), KDBaseWhite, undefined, fontsizeheading)
+            (PIXIWidth - xOffset - 80 - sidebar), KDBaseWhite, undefined, fontsizeheading)
 
     DrawTextFitKD(
 		TextGet("KDConsentFilter"),
@@ -544,7 +544,7 @@ function KDDrawConsent(xOffset) {
     if (drawn) {
         DrawTextFitKDgetHeight(
             TextGet("KDConsentItemTooltip_" + drawn.name),
-            xOffset + 35, yStart, sidebar, KDTextWhite, 
+            xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
             undefined, 20, "left",
             undefined, undefined, undefined, undefined, 
             undefined, true, "top"
