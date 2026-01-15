@@ -217,7 +217,7 @@ AddModel({
 			EraseSprite: "LightMaidRightArmErase",
 			EraseLayers: {MaidArmPoofRight: true},
 			EraseAmount: 100,
-			EraseZBonus: 8600,
+			EraseZBonus: 58600,
 			EraseInvariant: true,
 		},
 		{ Name: "ForeArmRight", Layer: "ForeSleeveRight", Pri: 60,

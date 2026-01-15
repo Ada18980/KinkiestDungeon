@@ -29282,10 +29282,10 @@ KDConsentListDesc_Tickle,
 
 
 KinkyDungeonChallenge,Challenge Settings:
-KinkyDungeonConsent,Unmarked content will appear at the normal ingame rate.
-KDConsentLimits_Red,Red kinks (x) are removed from the game
-KDConsentLimits_Yellow,Yellow kinks (-) occur significantly less often
-KDConsentLimits_Green,Green kinks (+) will appear more often!
+KinkyDungeonConsent,Checked content will appear at the normal ingame rate.
+KDConsentLimits_Red,Red content (x) is removed from the game
+KDConsentLimits_Yellow,Yellow content (-) occurs significantly less often
+KDConsentLimits_Green,Green content (+) will appear more often!
 KinkyDungeonConsent2,"Due to game limitations, not all types of content can be fully blocked."
 
 KDRed,Red
