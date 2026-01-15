@@ -210,8 +210,9 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			});
 	}
 
+	// draw the scrollbar
 	if (scrollbarSize > 0 && list.items.length > 0) {
-		let spacing = horizontal ? (list.w - scrollbarSize*2) / list.num_per_page : ((list.h - scrollbarSize*2) / list.num_per_page);
+		let spacing = horizontal ? (list.w - scrollbarSize*2) * (1/list.items.length) : ((list.h - scrollbarSize*2) * (1/list.items.length));
 		FillRectKD(container, kdpixisprites, name + "scrollb", {
 			Left: list.x + (horizontal ? scrollbarSize + spacing * list.visual_index : list.w - scrollbarSize * KDScrollBarSpacingW),
 			Top: list.y + (horizontal ? list.h - scrollbarSize * KDScrollBarSpacingW : scrollbarSize + spacing * list.visual_index) + 3,
@@ -276,6 +277,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 
 	}
 
+	// draw the items
 	if (list.items.length > 0 && (mouseHoldTaken == name + "_scroll")) {
 		let mouseDelta = horizontal ? (MouseX - (scrollbarSize + list.x)) : (MouseY - (scrollbarSize + list.y));
 		mouseDelta /= horizontal ? list.w : list.h;
@@ -286,7 +288,7 @@ function KDDrawScrollableList(name: string, useContainer: boolean, drawCallback:
 			list.min);
 	}
 	else if (list.items.length > 0 && (!mouseHoldTaken || mouseHoldTaken == name + "_drag")) {
-		let spacing = horizontal ? (list.w - scrollbarSize*2) / list.num_per_page : ((list.h - scrollbarSize*2) / list.num_per_page);
+		let spacing = horizontal ? (list.w - scrollbarSize*2) * (list.num_per_page/list.items.length) : ((list.h - scrollbarSize*2) * (list.num_per_page/list.items.length));
 		if (mouseDown && !list.click_hold_y) {
 			if (MouseIn(list.x, list.y, list.w - scrollbarSize, list.h)) {
 				list.click_hold_y = (horizontal ? MouseX : MouseY);
