@@ -250,6 +250,8 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDDialogue_ToyPlayRunAway_Sub
 # :: KinkyDungeonCurseUnlockOrgasmResist
 # :: KinkyDungeonCurseUnlockOrgasmForced
+# :: KDConsentList_Tickle
+# :: KDConsentListDesc_Tickle
 # :: KDEscapeMinimap_Pass_None
 # :: KinkyDungeonStat
 # :: KinkyDungeonStatDesc
@@ -350,6 +352,7 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 加载存档时覆盖服装
 - Override Outfit
 覆盖服装
+# - Load Consent from Save
 - Save Outfits within Save Files
 将服装数据附加到存档内
 - Show free characters on map
@@ -2219,6 +2222,8 @@ Devious Dungeon Challenge 已启用。
 返回
 - Game Options
 游戏选项
+# - Consent Options
+
 
 - Load from code
 从代码加载
@@ -11717,16 +11722,22 @@ RestraintName 上的诅咒解除了！
 # :: KDEffectTileTooltipLatexThinBlue
 # :: KDEffectTileTooltipLatexGreen
 # :: KDEffectTileTooltipLatexThinGreen
+# :: KDEffectTileTooltipLatexPink
+# :: KDEffectTileTooltipLatexThinPink
 - Engulfs creatures
 吞噬生物
 # :: KDEffectTileTooltipLatexDesc
 # :: KDEffectTileTooltipLatexThinDesc
+# - Engulfs dolls (like you)
 # :: KDEffectTileTooltipLatexBlueDesc
 # :: KDEffectTileTooltipLatexThinBlueDesc
 - Engulfs pets (like you)
 全包宠物（比如你）
 # :: KDEffectTileTooltipLatexGreenDesc
-# :: KDEffectTileTooltipLatexThinGreeneDesc
+# :: KDEffectTileTooltipLatexThinGreenDesc
+# - Engulfs toys (like you)
+# :: KDEffectTileTooltipLatexPinkDesc
+# :: KDEffectTileTooltipLatexThinPinkDesc
 - Slows creatures
 减慢生物速度
 # :: KDEffectTileTooltipSlimeDesc
@@ -26325,8 +26336,17 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 - Back to Menu
 返回菜单
 # :: KDWardrobeSave
+# :: KDWardrobeSaveMenu
 # :: KDWardrobeBackToMenu
 # :: KDContainerBack_Restart
+- Back to Game
+返回游戏
+# :: KDWardrobeSaveGame
+# :: KDBackToGame
+# :: KDContainerBack_Game
+# - Back to Pause Menu
+# - Back to Game Setup
+# - Back to Character Setup
 - Back to Wardrobe
 返回衣柜
 - Confirm Strip?
@@ -44180,10 +44200,7 @@ Kjus眼5
 秘银股绳
 - Mithril Wrist Rope
 秘银手腕绳缚
-- Mithril Lower Knee Ropes
-秘银膝上绳缚
-# :: RestraintMithrilRopeLegs
-# :: RestraintMithrilRopeFeet3
+# - Mithril Upper Knee Ropes
 - Mithril Thigh Ropes
 秘银大腿绳缚
 - Mithril Upper Thigh Ropes
@@ -44192,6 +44209,8 @@ Kjus眼5
 秘银脚踝绳缚
 - Mithril Lower Leg Ropes
 秘银小腿绳缚
+- Mithril Lower Knee Ropes
+秘银膝上绳缚
 - Mithril Toe Ropes
 秘银脚趾绳缚
 - Living Mithril Rope Collar
@@ -46182,8 +46201,6 @@ RestraintName 失效了！
 - Defeat a congregation of the Shadow Clan.
 击败暗影族的教徒。
 
-
-
 - The Goddess grants you knowledge of SpellLearned!
 女神授予你法术学习知识！
 - You Goddess grants you +AMOUNT spell points!
@@ -46207,13 +46224,18 @@ RestraintName 失效了！
 
 - Challenge Settings:
 挑战设置 : ‎
-# - Set Limits:
-# - Red kinks are removed from the game
-# - Yellow kinks occur significantly less often
-# - Green kinks will appear more often!
+# - Checked content will appear at the normal ingame rate.
+# - Red content (x) is removed from the game
+# - Yellow content (-) occurs significantly less often
+# - Green content (+) will appear more often!
+# - Due to game limitations, not all types of content can be fully blocked.
 
 # - Yellow
 
+# - Front Plugs
+# - Rear Plugs
+# - Cyber Dollification
+# - Elegant Dollification
 # - Police
 # - Nurses/Doctors
 # - Kigurumi Masks
@@ -46228,14 +46250,49 @@ RestraintName 失效了！
 # - Tape Bondage
 # - Tickling
 # - Bubbles
+# - Ball Suits
 # - Blindfolds
-# - Yokes and Spreader Bars
+# - Yokes and Spreaders
 # - Straitjackets
 # - Petsuits
 # - Hoods
 # - Full-face Masks
 # - Earplugs
 # - Painful Shocks
+# - Sensory Deprivation
+# - Brats
+
+# - |||This item is marked as Red, which prevents it from appearing in the game.
+# - |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
+# - |||This item is marked as Green, which will make it appear more often.
+# - |||This item will appear ingame as normal.
+
+# - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
+# - Allows plugs to be inserted into the front slot of your character.
+# - Allows plugs to be inserted into the rear slot of your character.
+# - Does not place points where enemies will drop you off to become dollified in the factory level.
+# - Being captured by dress-up co will not result in getting placed on a doll stand and put on display in the shop.
+# - Affects the 'Deputy' enemy and any other police-related enemy types, but not bounty hunters.
+# - Affects the 'Nurse' enemy and any other medical-related enemy types.
+# - Affects the spawn rate of slimes and latex witches.
+# :: KDConsentItemTooltip_Slime
+# :: KDConsentItemTooltip_Encasement
+# - Affects full masks that imitate a face, which can be unsettling to some.
+# - Affects the spawn rate of tape drones and other enemies that use tape to restrain the player.
+# - Includes tickling by NPC attacks and tickle torture scenarios.||If marked as Yellow, spells and weapons that deal tickle damage to the player will deal Plush damage instead. Player attacks will still deal tickle damage.
+# - Includes bubble restraints, both water and slime-based, but does not affect rubber ball suits or latex spheres.
+# - Includes ball suits and inflatable latex spheres that restrain the player.
+# - Affects the frequency of blindfolds, but not hoods or masks that cover the upper face.
+# - Affects the frequency of metal yokes, fiddles, and spreader bars.
+# - Affects the frequency of armbinders that force the elbows close together.
+# - Affects the frequency of boxbinders that force the arms behind the back.
+# - Affects the frequency of straitjackets.
+# - Affects the frequency of pet crawlers that force the player to crawl on their knees and elbows.
+# - Includes hoods that cover the hair. Does not remove masks that cover the face without affecting hair.
+# - Includes force-equipped masks that cover the entire face. This includes encasement, such as from slimes, although does not parts that cover the bottom half of the face as a gag.
+# - The Sensory Deprivation Hood is a highly restrictive item that deafens the player in addition to blocking most vision.
+# - Earplugs reduce the player's hearing.
+# - Replaces most instances of 'electric' damage to the player with 'E-stim' damage, causing pleasure instead of pain.
 
 - Palette
 调色板
@@ -47620,10 +47677,6 @@ ENMY 高潮了，收到了 AMNT 伤害！
 重置为 NME
 - Enlarged View
 扩大视野
-- Back to Game
-返回游戏
-# :: KDBackToGame
-# :: KDContainerBack_Game
 
 
 - Servants
@@ -49455,6 +49508,9 @@ ENMY 请求帮助！
 
 - Plastic Explosive
 塑胶炸弹
+# :: KinkyDungeonInventoryItemC4
+# :: KinkyDungeonSpellC4Item
+# :: KinkyDungeonSpellDynamiteItem
 - Has a 60 turn timer, but can be detonated by other explosives. Deals 210 blast damage in a huge radius and leaves behind a huge field of rubble. Enemies hit have their armor reduced by 50 BEFORE taking damage.
 60回合定时引爆，也可以被其他爆炸物引爆。在造成210点巨大范围的爆炸伤害，并留下一大片瓦砾。被击中的敌人在受到伤害之前减少50点护甲。
 # :: KinkyDungeonInventoryItemC4Desc2
@@ -49517,8 +49573,7 @@ Y 轴
 图层补偿
 - NoDynamicArmor (0/1)
 无动态护甲(0或1)
-- AddPose
-添加姿势
+# - AddPose (e.g Locked, CrotchStrap)
 # - DontAddPose
 - HideOverridden (0/1)
 隐藏覆盖(0或1)
@@ -51507,6 +51562,9 @@ EnemyName 设法蠕动着离开了视野！
 
 - , Floor AMNT
 ，第 NMB 层
+# - , Floor 
+# -  NG+
+# -  the 
 
 - Recolor
 重新着色
@@ -52216,3 +52274,4 @@ Boss
 训练等级 ${Level}
 
 # - Filter Toggles:
+# - Filter Content:
