@@ -223,6 +223,11 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		return "";
 	},
 	"inventoryAction": (data) => {
+		if (!data.action) {
+			KDGameData.InventoryAction = "";
+			KDGameData.InventoryActionContainer = [];
+			return "";
+		}
 		if (KDInventoryAction[data.action || KDGameData.InventoryAction]
 			&& KDInventoryAction[data.action || KDGameData.InventoryAction].valid(data.player, data.item)) {
 			if (data.item.type == Restraint) data.item = KinkyDungeonInventoryGetWorn(data.item.name)

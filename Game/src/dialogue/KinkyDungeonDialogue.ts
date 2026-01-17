@@ -837,6 +837,9 @@ function KDAllyDialogue(name: string, requireTags: string[], requireSingleTag: s
 			let enemy = KinkyDungeonFindID(KDGameData.CurrentDialogMsgID);
 			if (enemy && enemy.Enemy.name == KDGameData.CurrentDialogMsgSpeaker) {
 				KDGameData.InventoryAction = "Food";
+				KDGameData.InventoryActionTokens = {
+					FoodTarget: KDGetName(enemy.id),
+				};
 				KDGameData.FoodTarget = enemy.id;
 				KDShowInventory(null);
 				KinkyDungeonCurrentFilter = Consumable;

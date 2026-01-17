@@ -4443,6 +4443,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/UI/CheckSmall.png</key>
+            <key type="filename">../Game/UI/ConsentCheck.png</key>
             <key type="filename">../Game/UI/ConsentGreen.png</key>
             <key type="filename">../Game/UI/ConsentRed.png</key>
             <key type="filename">../Game/UI/ConsentYellow.png</key>

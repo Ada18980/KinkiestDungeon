@@ -2109,17 +2109,8 @@ function KDEnter() {
 
 	}
 }
-function KinkyDungeonGameKeyDown() {
-	let moveDirection = null;
 
-	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey
-		&& document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
-		// @ts-ignore
-		document.activeElement.blur();
-		KDEnter();
-	}
-	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
-
+function KDCheckCustomKeypress(): boolean {
 	for (let b of Object.entries(KDButtonsCache)) {
 		if (b[1].hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
 			if (KDClickButton(b[0], "hotkey", KinkyDungeonKeybindingCurrentKey)) {
@@ -2131,6 +2122,20 @@ function KinkyDungeonGameKeyDown() {
 	for (let keybinding of Object.values(KDKeyCheckers)) {
 		if (keybinding()) return true;
 	}
+	return false;
+}
+function KinkyDungeonGameKeyDown() {
+	let moveDirection = null;
+
+	if (KinkyDungeonKeyEnter[0] == KinkyDungeonKeybindingCurrentKey
+		&& document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
+		// @ts-ignore
+		document.activeElement.blur();
+		KDEnter();
+	}
+	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
+
+	if (KDCheckCustomKeypress()) return true;
 	KDShopBuyConfirm = false;
 
 	if (KinkyDungeonState == "TileEditor") {

@@ -1853,6 +1853,10 @@ function KDDrawInventoryFilters(xOffset, yOffset = 0, filters = [], addFilters =
 	if (!selected && first) KinkyDungeonCurrentFilter = first;
 }
 
+let KD_invactiontextwidth = 800;
+let KD_invactiontextanchorx_offset = 500;
+let KD_invactiontextanchory = 170;
+
 function KinkyDungeonDrawInventory() {
 	let xOffset = -125;
 	//KinkyDungeonDrawMessages(true, 550, true, 600);
@@ -1875,6 +1879,40 @@ function KinkyDungeonDrawInventory() {
 	let selected = ss.selected;
 	KDDrawHotbarBottom(selected, undefined, undefined, -432, true);
 
+	if (!KDAlternateInventoryRender()) {
+		if (KDGameData.InventoryAction) {
+			if (!(KDGameData.InventoryActionContainer?.length > 0)) {
+				let invactiontextwidth = KD_invactiontextwidth;
+				let invactiontextanchorx = KD_invactiontextanchorx_offset + invactiontextwidth/2 + xOffset;
+				let invactiontextanchory = KD_invactiontextanchory;
+				let width = DrawTextFitKD(TextGet("KDInventoryActionInfo_" + KDGameData.InventoryAction, KDGameData.InventoryActionTokens), 
+				invactiontextanchorx,
+				invactiontextanchory, invactiontextwidth, 
+				KDBaseWhite,
+					KDTextGray0, undefined, "center");
+				DrawButtonKDEx("invActionCancel_", (_bdata) => {
+						KDSendInput("inventoryAction",
+							{action: "",
+								container: "",
+								player: KDPlayer(),
+								item: undefined});
+						return true;
+					}, true, invactiontextanchorx + width/2 + 20, 
+					invactiontextanchory - 37, 74, 74, "", "",
+					KinkyDungeonRootDirectory + "UI/X.png",
+					"",
+					false,
+					false, undefined,
+					undefined, undefined, {centered: true,
+						hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+						hotkeyPress: KinkyDungeonKeySkip[0],
+
+					},
+				);
+			}
+		}
+	}
+
 	if (KinkyDungeonDrawInventorySelected(filteredInventory[KinkyDungeonCurrentPageInventory],
 		undefined, undefined, xOffset) && !KDAlternateInventoryRender()) {
 
@@ -1887,6 +1925,8 @@ function KinkyDungeonDrawInventory() {
 		}
 
 		if (KDGameData.InventoryAction) {
+			
+			
 			inventoryActions.push(KDGameData.InventoryAction);
 			if (KDInventoryAction[KDGameData.InventoryAction]?.alsoShow) inventoryActions.push(...KDInventoryAction[KDGameData.InventoryAction].alsoShow);
 		}

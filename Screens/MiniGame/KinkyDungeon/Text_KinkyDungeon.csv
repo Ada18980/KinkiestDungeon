@@ -29280,6 +29280,14 @@ KDDiffTab_Consent,Consent Settings
 KDConsentList_Tickle,
 KDConsentListDesc_Tickle,
 
+KDInventoryActionInfo_RemoveMagicLock,Select an item to unlock using a Command Word
+KDInventoryActionInfo_Recycle,Current showing eligible items for recycling
+KDInventoryActionInfo_Food,Select an item to feed to ${FoodTarget}
+KDInventoryActionInfo_Sell,Select an item to sell
+KDInventoryActionInfo_Offhand,Select an item to equip offhand
+KDInventoryActionInfo_Attach,Select an item to attach
+KDInventoryActionInfo_RemoveCurseOrHex,Select a cursed item to purify
+KDCancel,Cancel
 
 KinkyDungeonChallenge,Challenge Settings:
 KinkyDungeonConsent,Checked content will appear at the normal ingame rate.

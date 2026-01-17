@@ -349,6 +349,7 @@ interface KDGameDataBase {
 	JourneyProgression:		string[],
 	AttachedWep:			string,
 	InventoryAction:		string,
+	InventoryActionTokens: Record<string, string>,
 	/** Index 0 : action index 1: chest */
 	InventoryActionContainer: string[],
 	InventoryActionManaCost:	number,
@@ -641,6 +642,7 @@ let KDGameDataBase: KDGameDataBase = {
 	UsingConsumable: "",
 	MovePoints: 0,
 	InventoryAction: "",
+	InventoryActionTokens: {},
 	InventoryActionContainer: [],
 	InventoryActionManaCost: 0,
 	SellMarkup: 1,
@@ -4119,6 +4121,9 @@ function KDProcessHoldButtons() {
 function KDClickButton(name: string, source: string = "hotkey", key: string = ""): boolean {
 	let button = KDButtonsCache[name] || KDLastButtonsCache[name];
 	if (button && button.enabled) {
+		if (button.hotkeyPress == KinkyDungeonKeySkip[0]) {
+			KinkyDungeonGameKey.keyPressed[9] = false;
+		}
 		return button.func({
 			source: source
 		});
@@ -4188,7 +4193,7 @@ function KinkyDungeonLoadStats() {
 			}
 		}
 	}
-	KDUpdatePlugSettings(true, true);
+	KDUpdatePlugSettings(true, false);
 }
 
 let KinkyDungeonGameFlag = false;
@@ -5264,7 +5269,7 @@ function KDDrawLoadMenu() {
 			KDMapData.Grid = "";
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
-			if (KinkyDungeonLoadGame(LoadMenuCurrentSave)) {
+			if (KinkyDungeonLoadGame(LoadMenuCurrentSave, KDToggles.OverrideConsent)) {
 				KDGenMapCallback = () => {
 					if (KDMapData.Grid == "")
 						KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)],
@@ -5760,7 +5765,7 @@ function KinkyDungeonStartNewGame(Load: boolean = false) {
 	MiniGameKinkyDungeonCheckpoint = "grv";
 	KDMapData.Grid = "";
 	if (Load) {
-		KinkyDungeonLoadGame();
+		KinkyDungeonLoadGame(undefined, true);
 		KDSendEvent('loadGame');
 	} else {
 		KDSendEvent('newGame');
@@ -5800,7 +5805,7 @@ let KDConsentPerkTypes = ["Red", "Yellow", "Green"];
 
 function KDUpdateConsentSettings(allowBackport: boolean) {
 	for (let entry of Object.entries(KDConsentListBasic)) {
-		if (KDConsentArray[entry[0]]) {
+		if ((!entry[1].prereq || entry[1].prereq()) && KDConsentArray[entry[0]]) {
 			for (let type of KDConsentPerkTypes) {
 				if (entry[1]["perk" + type]) {
 					// reset all perks related to this consent entry
@@ -5815,7 +5820,7 @@ function KDUpdateConsentSettings(allowBackport: boolean) {
 					break;
 				}
 			}
-		} else if (allowBackport) {
+		} else if ((!entry[1].prereq || entry[1].prereq()) && allowBackport) {
 			// important for backward compatibility - update the consent
 			for (let type of KDConsentPerkTypes) {
 				if (entry[1]["perk" + type] && KinkyDungeonStatsChoice.get(entry[1]["perk" + type])) {
@@ -5825,12 +5830,14 @@ function KDUpdateConsentSettings(allowBackport: boolean) {
 				}
 			}
 			// update consent based on NoPerks
-			for (let type of KDConsentPerkTypes) {
-				if (entry[1]["perkNo" + type] && !KinkyDungeonStatsChoice.get(entry[1]["perkNo" + type])) {
-					KDConsentArray[entry[0]] = type; break;
-					break;
+			if (entry[1].populateFromNoPerks)
+				for (let type of KDConsentPerkTypes) {
+					if (entry[1]["perkNo" + type] && !KinkyDungeonStatsChoice.get(entry[1]["perkNo" + type])
+					) {
+						KDConsentArray[entry[0]] = type; break;
+						break;
+					}
 				}
-			}
 		} else {
 			// remove relevant perks
 			for (let type of KDConsentPerkTypes) {
@@ -5842,8 +5849,8 @@ function KDUpdateConsentSettings(allowBackport: boolean) {
 
 		// mark any "no" entries
 		for (let type of KDConsentPerkTypes) {
-			if (entry[1]["perkNo" + type] && entry[0] != type)
-				KinkyDungeonStatsChoice.set(entry[1]["perk" + type], true);
+			if (entry[1]["perkNo" + type] && !KDConsentArray[entry[0]])
+				KinkyDungeonStatsChoice.set(entry[1]["perkNo" + type], true);
 		}
 	}
 }
@@ -6014,7 +6021,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 				KinkyDungeonConfigAppearance = false;
 			KinkyDungeonInitialize(1, true);
 			MiniGameKinkyDungeonCheckpoint = "grv";
-			if (KinkyDungeonLoadGame(ElementValue("saveInputField"))) {
+			if (KinkyDungeonLoadGame(ElementValue("saveInputField"), KDToggles.OverrideConsent)) {
 				KDSendEvent('loadGame');
 				//KDInitializeJourney(KDJourney);
 				if (KDMapData.Grid == "") KinkyDungeonCreateMap(KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)], KDMapData.RoomType || "", KDMapData.MapMod || "", MiniGameKinkyDungeonLevel, false, true);
@@ -6779,7 +6786,7 @@ async function KinkyDungeonCompressSave(save: string): Promise<string> {
 }
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
-function KinkyDungeonLoadGame(String: string = "") {
+function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 	localStorage.setItem('KDLastSaveSlot', "" + KDSaveSlot);
 	KinkyDungeonSendEvent("beforeLoadGame", {});
 	let str = String ? DecompressB64(String.trim()) :
@@ -6866,7 +6873,7 @@ function KinkyDungeonLoadGame(String: string = "") {
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 			if (saveData.uniqueHits != undefined) KDUniqueBulletHits = new Map(saveData.uniqueHits);
 
-			KDLoadConsentFromSave(saveData);
+			KDLoadConsentFromSave(saveData, kdloadconsent);
 
 			KinkyDungeonSexyMode = KinkyDungeonStatsChoice.get("arousalMode");
 			KinkyDungeonItemMode = KinkyDungeonStatsChoice.get("itemMode") ? 1 : 0;
@@ -8107,8 +8114,8 @@ function KDDrawWardrobeButton() {
 
 }
 
-function KDLoadConsentFromSave(saveData: KinkyDungeonSave) {
-	if (KDToggles.OverrideConsent && saveData.saveStat) {
+function KDLoadConsentFromSave(saveData: KinkyDungeonSave, override) {
+	if (override && saveData.saveStat) {
 		KDConsentArray = saveData.saveStat.ConsentArray || {};
 		KDUpdateConsentSettings(true);
 	} else

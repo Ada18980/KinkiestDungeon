@@ -14,6 +14,9 @@ interface ConsentListData {
     perkNoYellow?: string,
     perkNoGreen?: string,
 
+    /** for backwards compatibility when backporting consent */
+    populateFromNoPerks?: boolean,
+
     label: string,
     tooltip: string,
 
@@ -62,6 +65,8 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             perkNoRed: "arousalModePlug",
             perkYellow: "",
             perkGreen: "",
+
+            populateFromNoPerks: true,
 
             priority: -10,
             label: TextGet("KDConsentListDesc_" + "PlugRear"),
