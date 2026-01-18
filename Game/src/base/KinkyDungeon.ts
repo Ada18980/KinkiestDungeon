@@ -3182,7 +3182,7 @@ function KinkyDungeonRun() {
 	}
 
 
-	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings") && KinkyDungeonState != "Game") {
+	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
 		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 
 			if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) {
@@ -3191,7 +3191,7 @@ function KinkyDungeonRun() {
 				KinkyDungeonKeybindingCurrentKey = '';
 				return true;
 			}
-			for (let [k, v] of Object.entries(KDButtonsCache)) {
+			/*for (let [k, v] of Object.entries(KDButtonsCache)) {
 				if (v.hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
 					KDClickButton(k);
 					return true;
@@ -3200,7 +3200,7 @@ function KinkyDungeonRun() {
 
 			for (let keybinding of Object.values(KDKeyCheckers)) {
 				if (keybinding()) return true;
-			}
+			}*/
 
 
 			if (KinkyDungeonKeybindingCurrentKey)
