@@ -2239,6 +2239,8 @@ Devious Dungeon Challenge 已启用。
 配置
 - Cancel
 取消
+# :: KinkyDungeonCancel
+# :: KDCancel
 - Filter
 筛选
 
@@ -46221,6 +46223,13 @@ RestraintName 失效了！
 # - Consent Settings
 
 
+# - Select an item to unlock using a Command Word
+# - Current showing eligible items for recycling
+# - Select an item to feed to ${FoodTarget}
+# - Select an item to sell
+# - Select an item to equip offhand
+# - Select an item to attach
+# - Select a cursed item to purify
 
 - Challenge Settings:
 挑战设置 : ‎
