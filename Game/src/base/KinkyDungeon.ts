@@ -2440,7 +2440,7 @@ function KinkyDungeonRun() {
 		//DrawButtonVis(875, 550, 750, 64, TextGet("KinkyDungeonDifficulty1"), KDBaseWhite, "");
 		DrawButtonKDEx("startQuick", () => {
 			KinkyDungeonStatsChoice = new Map();
-			KDUpdatePlugSettings(true, true);
+			KDUpdatePlugSettings(true, false);
 			KDLose = false;
 			KinkyDungeonStartNewGame();
 			if (!KDToggles.SkipTutorial) {
@@ -2453,7 +2453,7 @@ function KinkyDungeonRun() {
 			for (let kink of KDKinkyPerks) {
 				KinkyDungeonStatsChoice.set(kink, true);
 			}
-			KDUpdatePlugSettings(true, true);
+			KDUpdatePlugSettings(true, false);
 			KDLose = false;
 			KinkyDungeonStartNewGame();
 			if (!KDToggles.SkipTutorial) {
@@ -2464,7 +2464,7 @@ function KinkyDungeonRun() {
 		DrawButtonKDEx("startGame", () => {
 			KinkyDungeonState = "Stats";
 			KinkyDungeonLoadStats();
-			KDUpdatePlugSettings(true, true);
+			KDUpdatePlugSettings(true, false);
 			return true;
 		}, true, 875, 790, 750, 64, TextGet("KinkyDungeonStartGameAdv"), KDBaseWhite, "");
 
@@ -2488,7 +2488,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonSexyMode0", (_bdata) => {
 			KinkyDungeonSexyMode = false;
-			KDUpdatePlugSettings(true, true);
+			KDUpdatePlugSettings(true, false);
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
 			return true;
 		}, true, 875, 420, 275, 50, TextGet("KinkyDungeonSexyMode0"), !KinkyDungeonSexyMode ? KDBaseWhite : "#888888", "", undefined, undefined, true, KDButtonColor);
@@ -2498,7 +2498,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KinkyDungeonSexyMode1", (_bdata) => {
 			KinkyDungeonSexyMode = true;
-			KDUpdatePlugSettings(true, true);
+			KDUpdatePlugSettings(true, false);
 			localStorage.setItem("KinkyDungeonSexyMode", KinkyDungeonSexyMode ? "True" : "False");
 			return true;
 		}, true, 1175, 420, 275, 50, TextGet("KinkyDungeonSexyMode1"), KinkyDungeonSexyMode ? KDBaseWhite : "#888888", "", undefined, undefined, true, KDButtonColor);
@@ -2694,6 +2694,7 @@ function KinkyDungeonRun() {
 					KinkyDungeonState = "Diff";
 				} else {
 					localStorage.setItem("diff_sawConsentTab", "true")
+					KinkyDungeonPreviousState = "Diff";
 					KinkyDungeonState = "CConsent";
 					KDConsentFilter = "";
 				}
@@ -2774,7 +2775,7 @@ function KinkyDungeonRun() {
 
 		DrawButtonKDEx("KDPerksClear", (_bdata) => {
 			KinkyDungeonStatsChoice = new Map();
-			KDUpdatePlugSettings(true, true);
+			KDUpdatePlugSettings(true, false);
 			return true;
 		}, true, 40, 920, 190, 64, TextGet("KinkyDungeonClearAll"), KDBaseWhite, "");
 
@@ -3181,7 +3182,7 @@ function KinkyDungeonRun() {
 	}
 
 
-	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
+	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings") && KinkyDungeonState != "Game") {
 		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
 
 			if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) {
@@ -6007,7 +6008,7 @@ function KinkyDungeonHandleClick(event: MouseEvent) {
 		}
 	} else if (KinkyDungeonState == "Diff") {
 
-		KDUpdatePlugSettings(true, true);
+		KDUpdatePlugSettings(true, false);
 	} else if (KinkyDungeonState == "Stats") {
 
 		// Removed and moved to DrawButtonKDEx
@@ -7312,7 +7313,7 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 		});
 		ii++;
 		DrawButtonKDEx("TabConsent", (_b) => {
-			KinkyDungeonPreviousState = "Menu";
+			KinkyDungeonPreviousState = KinkyDungeonState;
 			KinkyDungeonState = "CConsent";
 			KDConsentFilter = "";
 			return true;
