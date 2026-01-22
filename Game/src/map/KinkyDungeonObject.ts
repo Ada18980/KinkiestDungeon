@@ -859,6 +859,6 @@ function KDGetGhostThresh(): number {
 
 
 function KDTablesAreFlippable(mapData): boolean {
-	return KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist
-		|| !KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen;
+	return (!KinkyDungeonAltFloor(KDMapData?.RoomType) || KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist)
+		&& !KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen;
 }

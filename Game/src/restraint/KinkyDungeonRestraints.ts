@@ -3333,11 +3333,23 @@ let KDNoOverrideTags = [
 	"NoPet",
 	"NoKigu",
 	"NoBlindfolds",
+	"Blackout",
 	"NoBoots",
+	"BubbleOptout",
+	"BubblePref",
+	"SlimePref",
+	"SlimeOptout",
+	"RobotVetoTape",
+	"RobotVetoLatex",
+	"TapePref",
+	"BallsuitOptout",
+	"Less_Tickle",
+	"TapeOptout",
 	"arousalMode",
 	"arousalModePlug",
 	"arousalModePlugNoFront",
 	"arousalModePlugFront",
+	"arousalModePlugNoRear",
 	"arousalModePiercing",
 	...KDHeavyRestraintPrefs,
 ];
@@ -3903,6 +3915,11 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		for (let t of KDHeavyRestraintPrefs) {
 			if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
 		}
+		for (let t of KDNoOverrideTags) {
+			if (KinkyDungeonStatsChoice.get(t)) playerTags.set(t, true);
+		}
+
+		
 		if (KinkyDungeonStatsChoice.get("Deprived")) playerTags.set("NoVibes", true);
 		if (KinkyDungeonStatsChoice.get("Unmasked")) playerTags.set("Unmasked", true);
 		if (KinkyDungeonStatsChoice.get("NoSenseDep")) playerTags.set("NoSenseDep", true);

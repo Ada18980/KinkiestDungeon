@@ -598,6 +598,7 @@ interface KDRestraintPropsBase {
 interface restraint extends KDRestraintProps {
 	power: number,
 	preview?: string,
+	original?: string,
 	/** Special condition for quick binding! */
 	quickBindCondition?: string,
 	/** Multiplier to bondage strength if target isn't disabled */

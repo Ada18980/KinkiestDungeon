@@ -904,6 +904,7 @@ function KDAddEventVariant(restraint: restraint, newRestraintName: string, ev: K
 	return {
 		//protection: 0,
 		preview: restraint.preview || restraint.name,
+		original: restraint.name,
 		protectionCursed: true,
 		escapeChance: escapeChance,
 		DefaultLock: lock == undefined ? restraint.DefaultLock : lock,

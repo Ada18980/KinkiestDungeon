@@ -1723,9 +1723,18 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		},
 		"tickleDrain": (e, _item, data) => {
 			if (!data.delta) return;
-			if (KinkyDungeonFlags.get("tickleDrain")) return;
+			if (KinkyDungeonFlags.get("tickleDrain")) {
+				// minimum 9 turns of tickling
+				KinkyDungeonSetFlag("tickleDrainMinimum", 10);
+				return;
+			}
 			if (e.power) {
-				KinkyDungeonSetFlag("tickleDrain", 3 + Math.floor(KDRandom() * 4));
+				// every once in a while, it relents
+				if (!KinkyDungeonFlags.get("tickleDrainMinimum")) {
+					if (KDRandom() < 0.1) {
+						KinkyDungeonSetFlag("tickleDrain", 30 + Math.floor(KDRandom() * 40));
+					}
+				}
 				KDChangeDistraction("tickle", "restraint", "tick", -e.power * KDBuffResist(KinkyDungeonPlayerBuffs, "tickle"), false, 0.01);
 				KinkyDungeonSendTextMessage(0.5, TextGet("KinkyDungeonTickleDrain"), KDBaseLightBlue, 2, true);
 			}

@@ -1024,16 +1024,22 @@ function KinkyDungeonFilterInventory(Filter: string, enchanted?: boolean, ignore
 			}
 
 			let preview = KDGetItemPreview(item);
+			
+			let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
+			let restraint = KDRestraint(item);
+			if (unidentified && restraint?.original) {
+				restraint = KDRest(restraint.original);
+			}
 			//let pre = (item.type == LooseRestraint || item.type == Restraint) ? "Restraint" : "KinkyDungeonInventoryItem";
 			if (preview
 				&& (item.type != LooseRestraint || (!enchanted || KDRestraint(item).enchanted || KDRestraint(item).showInQuickInv || item.showInQuickInv))
 				&& (!namefilter
 					|| KDGetItemName(preview.item).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 					|| (item.type == Weapon && TextGet("KinkyDungeonDamageType" + KDWeapon(item)?.type).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase()))
-					|| ((item.type == LooseRestraint || item.type == Restraint) && KDRestraint(item)?.shrine?.some((tag) => {
+					|| ((item.type == LooseRestraint || item.type == Restraint) && restraint?.shrine?.some((tag) => {
 						return !InvFilterShrineBlacklist.includes(tag) && tag.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase());
 					}))
-					|| ((item.type == LooseRestraint || item.type == Restraint) && (item.events || KDRestraint(item)?.events)?.some((e) => {
+					|| ((item.type == LooseRestraint || item.type == Restraint) && ((unidentified ? null : item.events) || restraint?.events)?.some((e) => {
 						return TextGet("KinkyDungeonDamageType" + (e.damage || e.kind)).toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.damage?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())
 						|| e.kind?.toLocaleLowerCase().includes(namefilter.toLocaleLowerCase())

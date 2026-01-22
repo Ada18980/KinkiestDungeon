@@ -139,7 +139,7 @@ ResourceLoader.registerParser("translation-txt", async (r) => {
 /**
  * ===== Type Definitions =====
  */
-const AvaliableLanguages = ["EN", "CN", "DE", "ES", "JP", "KR", "RU"] as const;
+const AvaliableLanguages = ["EN", "CN", "DE", "ES", "JP", "KR", "RU", "PL"] as const;
 type LanguageIdentifier = (typeof AvaliableLanguages)[number];
 const NormalSupportedLanguages = AvaliableLanguages.filter(
 	(lang) => lang !== "EN"

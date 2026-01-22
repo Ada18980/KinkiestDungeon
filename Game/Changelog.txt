@@ -60,10 +60,9 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - added spreader bar
 - remembers mods loaded without having to reselect them, uploading to browser (thanks xmg666)
 - New struggle perks: Clear Vision, Painful Choice, Bound by Gravity, untapped strength
-- Added Less Tickling perk
 - added mod support for custom capture actions instead of just CaptureJail
 - added return booleans for some actions that trigger with a chance
-- Fixed ancient muzzle not actually doing 2.5x dmg
+- Fixed ancient muzzle not actually doing the stated damage multiplier
 - Rubber is now easier to cut if you can cut it, but the hardness to cut is the same
 - Can now untie party members who got 'injured' since it's otherwise unclear why you cant help them up
 - instead of swapping, moving into an ally pushes them and only swaps if there is no available space

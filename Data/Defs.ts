@@ -2202,6 +2202,9 @@ let LayerProperties = {
 	HairFront: {
 		Parent: "Head",
 	},
+	Ahoge: {
+		Parent: "Head",
+	},
 	HairOver: {
 		Parent: "Head",
 	},
