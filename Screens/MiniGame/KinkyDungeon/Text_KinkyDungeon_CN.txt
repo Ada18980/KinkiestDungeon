@@ -2239,6 +2239,8 @@ Devious Dungeon Challenge 已启用。
 配置
 - Cancel
 取消
+# :: KinkyDungeonCancel
+# :: KDCancel
 - Filter
 筛选
 
@@ -34840,7 +34842,8 @@ V形比基尼
 # - AdvancedSciFiMuzzle2
 - BeltsArms1
 手臂绑带1
-# - Arms1
+- Arms1
+手臂1
 # :: m_BeltsArms1_l_Arms1
 # :: m_BeltsArmsAll_l_Arms1
 # :: m_ShadowHandsArms1_l_Arms1
@@ -34863,7 +34866,8 @@ V形比基尼
 # :: m_BeltsArmsAll_l_RightArm1
 - BeltsArms2
 手臂绑带2
-# - Arms2
+- Arms2
+手臂2
 # :: m_BeltsArms2_l_Arms2
 # :: m_BeltsArmsAll_l_Arms2
 # :: m_ShadowHandsArms2_l_Arms2
@@ -42576,40 +42580,74 @@ Vents发型
 # :: m_HighSecLegbinder_l_Binder
 # :: m_ReverseBinder_l_Binder
 # :: m_ReverseBinder_l_Binder
-# :: m_SleepsackLegbinder_l_Binder
-# :: m_SleepsackLegbinder_l_Binder
-# :: m_SleepsackLegbinder_l_Binder
-# :: m_SleepsackLegbinder_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_SleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinder_l_Binder
-# :: m_FashionSleepsackLegbinder_l_Binder
-# :: m_FashionSleepsackLegbinder_l_Binder
-# :: m_FashionSleepsackLegbinder_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_FashionSleepsackLegbinderFull_l_Binder
-# :: m_SleepsackJacket_l_Binder
-# :: m_SleepsackJacket_l_Binder
-# :: m_SleepsackJacket_l_Binder
-# :: m_SleepsackJacket_l_Binder
-# :: m_SleepsackJacket_l_Binder
-# :: m_SleepsackJacket_l_Binder
-# :: m_FashionSleepsackJacket_l_Binder
-# :: m_FashionSleepsackJacket_l_Binder
-# :: m_FashionSleepsackJacket_l_Binder
-# :: m_FashionSleepsackJacket_l_Binder
-# :: m_FashionSleepsackJacket_l_Binder
-# :: m_FashionSleepsackJacket_l_Binder
+:: m_SleepsackLegbinder_l_Binder
+束手套
+:: m_SleepsackLegbinder_l_Binder
+束手套
+:: m_SleepsackLegbinder_l_Binder
+束手套
+:: m_SleepsackLegbinder_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinder_l_Binder
+束手套
+:: m_FashionSleepsackLegbinder_l_Binder
+束手套
+:: m_FashionSleepsackLegbinder_l_Binder
+束手套
+:: m_FashionSleepsackLegbinder_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_FashionSleepsackLegbinderFull_l_Binder
+束手套
+:: m_SleepsackJacket_l_Binder
+束手套
+:: m_SleepsackJacket_l_Binder
+束手套
+:: m_SleepsackJacket_l_Binder
+束手套
+:: m_SleepsackJacket_l_Binder
+束手套
+:: m_SleepsackJacket_l_Binder
+束手套
+:: m_SleepsackJacket_l_Binder
+束手套
+:: m_FashionSleepsackJacket_l_Binder
+束手套
+:: m_FashionSleepsackJacket_l_Binder
+束手套
+:: m_FashionSleepsackJacket_l_Binder
+束手套
+:: m_FashionSleepsackJacket_l_Binder
+束手套
+:: m_FashionSleepsackJacket_l_Binder
+束手套
+:: m_FashionSleepsackJacket_l_Binder
+束手套
 # - BinderStraps
 :: m_Armbinder_l_BinderStraps
 束手套绑带
@@ -43058,7 +43096,8 @@ Vents发型
 # - Secret_Lens
 
 # - PumpkinBra
-# - Leaf
+- Leaf
+叶
 # :: m_PumpkinBra_l_Leaf
 # :: m_PumpkinBraRestraint_l_Leaf
 # :: m_PumpkinPanties_l_Leaf
@@ -46221,6 +46260,13 @@ RestraintName 失效了！
 # - Consent Settings
 
 
+# - Select an item to unlock using a Command Word
+# - Current showing eligible items for recycling
+# - Select an item to feed to ${FoodTarget}
+# - Select an item to sell
+# - Select an item to equip offhand
+# - Select an item to attach
+# - Select a cursed item to purify
 
 - Challenge Settings:
 挑战设置 : ‎
