@@ -15,6 +15,7 @@ default_translation_files = [f'Screens/MiniGame/KinkyDungeon/{file}' for file in
     'Text_KinkyDungeon_RU.txt',
     'Text_KinkyDungeon_JP.txt',
     'Text_KinkyDungeon_ES.txt',
+    'Text_KinkyDungeon_PL.txt',
 ]]
 default_origin_csv_path = 'Screens/MiniGame/KinkyDungeon/Text_KinkyDungeon.csv'
 default_output_dir = 'Screens/MiniGame/KinkyDungeon/'
