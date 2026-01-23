@@ -56,11 +56,14 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 法语
 - Russian
 俄语
+# - Polish
 - Mods
 模组
 - Mods Loaded.
 模组已载入
 
+- Restart required!
+请重启！
 
 - Version
 版本号
@@ -6754,21 +6757,30 @@ TargetRestraint 将你牢牢地束缚住！
 
 # - Your leg cuffs are locked to the saddle!
 
-# - You try to stand up off the TargetRestraint...
-# - Trembling, you try and stand up off the TargetRestraint...
-# - You can't manage to get off the TargetRestraint!
-# - You wiggle in place on top of the TargetRestraint!
+- You try to stand up off the TargetRestraint...
+你尝试起身逃离 TargetRestraint ……
+- Trembling, you try and stand up off the TargetRestraint...
+你颤抖着试图在 TargetRestraint 上站起来……
+- You can't manage to get off the TargetRestraint!
+你没法从 TargetRestraint 逃离！
+- You wiggle in place on top of the TargetRestraint!
+你在 TargetRestraint 上徒劳的扭动身体！
 # :: KinkyDungeonStruggleRemoveImpossibleSaddleAroused
 # :: KinkyDungeonStruggleRemoveImpossibleBoundSaddleroused
-# - You remain stuck on the TargetRestraint!
+- You remain stuck on the TargetRestraint!
+你被牢牢固定在 TargetRestraint 上！
 
 
-# - You try to wiggle off of the TargetRestraint...
-# - You squirm and moan as you try and slide off the TargetRestraint...
-# - You remain securely on top of the TargetRestraint!
+- You try to wiggle off of the TargetRestraint...
+你尝试脱离 TargetRestraint……
+- You squirm and moan as you try and slide off the TargetRestraint...
+你扭动身体，呻吟着，想从 TargetRestraint 上滑下来……
+- You remain securely on top of the TargetRestraint!
+你被牢牢固定在 TargetRestraint 上！
 # :: KinkyDungeonStruggleStruggleImpossibleSaddle
 # :: KinkyDungeonStruggleStruggleImpossibleBoundSaddle
-# - You wiggle in place on top of the TargetRestraint, remaining stuck on top!
+- You wiggle in place on top of the TargetRestraint, remaining stuck on top!
+你在 TargetRestraint 上扭动身体，但无济于事！
 # :: KinkyDungeonStruggleStruggleImpossibleSaddleAroused
 # :: KinkyDungeonStruggleStruggleImpossibleBoundSaddleroused
 
@@ -7140,7 +7152,8 @@ SCHOOL 女神给予你庇护和反击之力！
 展示架
 # :: KDEffectTileTooltipDisplayStand
 # :: RestraintDisplayTrap
-# - Rubberdoll Stand
+- Rubberdoll Stand
+橡胶玩偶架
 - Vibrating Saddle
 振动鞍
 - Cage
@@ -9278,7 +9291,8 @@ RestraintName 上的诅咒解除了！
 一件紧紧包住下半身的紧身长裙，只允许你迈出最小的步伐。
 - Masterwork Legbinder
 极品束腿套
-# - A skintight legbinder covering your lower body, keeping your legs glued together
+- A skintight legbinder covering your lower body, keeping your legs glued together
+一件包住下半身的紧身束腿套，让你的双腿牢牢贴在一起。
 
 - Masterwork Blindfold
 极品眼罩
@@ -25774,7 +25788,8 @@ Mmmph? (行为混乱)
 (把自己锁在里面)
 - (Check the occupant)
 检查里面的NPC
-# - Can't enter in your current state.
+- Can't enter in your current state.
+你无法在当前状态下进入。
 
 - (Try to lock NME into the furniture) (PRCNT% Chance)
 (尝试将 NME 锁定在家具中)(PRCNT% 几率)
@@ -43215,7 +43230,8 @@ Vents发型
 # - LaceUpperOver
 
 # - PumpkinVineArms
-# - Bud
+- Bud
+芽
 # :: m_PumpkinVineArms_l_Bud
 # :: m_PumpkinVineArms_l_Bud
 # :: m_PumpkinVineArms_l_Bud
@@ -52319,5 +52335,6 @@ Boss
 - Training Level ${Level}
 训练等级 ${Level}
 
-# - Filter Toggles:
+- Filter Toggles:
+切换筛选：
 # - Filter Content:
