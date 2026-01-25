@@ -426,7 +426,7 @@ function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX:
 				if (!KDCanSeeEffectTile(tile)) continue;
 				let tileid = tile.x + "," + tile.y + "_" + sprite;
 				let color = undefined;
-				if (tile.colorforcetint && tile.tags?.includes("terrain")) {
+				if (!tile.colorforcetint && tile.tags?.includes("terrain")) {
 					color = KDGetLightColor(tile.x, tile.y);
 				}
 				let op: Record<string, any> = {
@@ -455,7 +455,7 @@ function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX:
 				if (tile.colorforcetint) {
 					op.tint = string2hex(tile.colorforcetint);
 				} else {
-					if (color != undefined) op['tint'] = color;
+					if (color != undefined) op.tint = color;
 					if (tile.colortint) {
 						op.tint = KDAvgColor(string2hex(tile.colortint), 
 						color, 3, 1);

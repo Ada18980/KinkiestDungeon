@@ -2416,6 +2416,14 @@
 	"spriteSourceSize": {"x":0,"y":2,"w":72,"h":69},
 	"sourceSize": {"w":72,"h":72}
 },
+"Game/Enemies/WandHand.png":
+{
+	"frame": {"x":935,"y":1914,"w":58,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":13,"w":58,"h":52},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Enemies/WitchAqua.png":
 {
 	"frame": {"x":1284,"y":622,"w":67,"h":67},
@@ -8504,6 +8512,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game1.json", "game2.json", "game3.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:78ed227f8945f5de8cae3f5f7acdc27b:c7f200e4dfd6c30267c30a1946a64f82:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d38858530e01e2d7da110ccda135ebb7:89faee60eae1d9ec409704e7c1a1c400:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

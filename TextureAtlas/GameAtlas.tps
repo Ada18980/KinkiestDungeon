@@ -1298,6 +1298,7 @@
             <key type="filename">../Game/Enemies/VineSpitter.png</key>
             <key type="filename">../Game/Enemies/Wall.png</key>
             <key type="filename">../Game/Enemies/WallDoor.png</key>
+            <key type="filename">../Game/Enemies/WandHand.png</key>
             <key type="filename">../Game/Enemies/WardenArcher.png</key>
             <key type="filename">../Game/Enemies/WardenFighter.png</key>
             <key type="filename">../Game/Enemies/WardenMage.png</key>

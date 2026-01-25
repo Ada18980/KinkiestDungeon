@@ -1928,38 +1928,44 @@ function KinkyDungeonDrawGame() {
 			if (TestMode) {
 				DrawCheckboxVis(600, 20, 64, 64, "Debug Mode", KDDebugMode, false, KDBaseWhite);
 				if (KDDebugMode) {
+					ElementPosition("DebugItem", 1650, 212, 300, 64);
+					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
+					
+
+					let Di = ElementValue("DebugItem");
+					let De = ElementValue("DebugEnemy");
 					let dd = 30;
 					let i = 0;
 					for (let r of KinkyDungeonRestraints) {
-						if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
+						if (i * dd < 1200 && r.name.includes(Di)) {
 							DrawTextFitKD(r.name, 0, 15 + i * dd, 200, KDBaseWhite, KDTextGray0, undefined, "left");
 							i++;
 						}
 					}
 					i = 0;
 					for (let r of Object.values(KinkyDungeonConsumables)) {
-						if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
+						if (i * dd < 1200 && r.name.includes(Di)) {
 							DrawTextFitKD(r.name, 200, 15 + i * dd, 200, KDBaseLightBlue, KDTextGray0, undefined, "left");
 							i++;
 						}
 					}
 					i = 0;
 					for (let r of KinkyDungeonEnemies) {
-						if (i * dd < 1200 && r.name.includes(ElementValue("DebugEnemy"))) {
+						if (i * dd < 1200 && r.name.includes(De)) {
 							DrawTextFitKD(r.name, 400, 15 + i * dd, 200, KDBaseRed, KDTextGray0);
 							i++;
 						}
 					}
 					i = 0;
 					for (let r of Object.values(KinkyDungeonWeapons)) {
-						if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
+						if (i * dd < 1200 && r.name.includes(Di)) {
 							DrawTextFitKD(r.name, 1800, 15 + i * dd, 200, "orange", KDTextGray0);
 							i++;
 						}
 					}
 					i = 0;
 					for (let r of KinkyDungeonOutfitsBase) {
-						if (i * dd < 1200 && r.name.includes(ElementValue("DebugItem"))) {
+						if (i * dd < 1200 && r.name.includes(Di)) {
 							DrawTextFitKD(r.name, 900, 15 + i * dd, 200, KDBaseLightGreen, KDTextGray0);
 							i++;
 						}
@@ -1977,8 +1983,6 @@ function KinkyDungeonDrawGame() {
 					DrawButtonVis(1500, 100, 100, 64, "Enemy", KDBaseWhite, "");
 					DrawButtonVis(1600, 100, 100, 64, "Ally", KDBaseWhite, "");
 					DrawButtonVis(1700, 100, 100, 64, "Shop", KDBaseWhite, "");
-					ElementPosition("DebugItem", 1650, 212, 300, 64);
-					ElementPosition("DebugEnemy", 1650, 52, 300, 64);
 					DrawButtonVis(1500, 260, 300, 64, "Add to inventory", KDBaseWhite, "");
 					DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", KDBaseWhite, "");
 					DrawButtonVis(1500, 320, 300, 64, "Get save code", KDBaseWhite, "");

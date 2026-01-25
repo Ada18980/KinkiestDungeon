@@ -1425,7 +1425,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 			let flashindexed = false;
 			if (enemy.warningTiles?.length > 0) {
 				
-				let alphamult = (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI *
+				let alphamult = (KDToggles.FlashingWarning ? Math.cos(2 * Math.PI *
 					((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 				for (let t of enemy.warningTiles) {
 					let scale = t.scale || 0.01;
@@ -1494,7 +1494,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 				if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-						let alphamult = (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI * 
+						let alphamult = (KDToggles.FlashingWarning ? Math.cos(2 * Math.PI * 
 							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 						flashindexed = true;
 						let color = enemy.Enemy.color ? string2hex(enemy.Enemy.color) : 0xE30022;
@@ -1515,7 +1515,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 				if (tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI * 
+						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.cos(2 * Math.PI * 
 							((1000 + flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 						flashindexed = true;
 						KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_spellRdy", KinkyDungeonRootDirectory + "SpellReady.png",
@@ -1536,7 +1536,7 @@ function KinkyDungeonDrawEnemiesWarning(_canvasOffsetX: number, _canvasOffsetY: 
 				if (binder && tx >= CamX && ty >= CamY && tx < CamX + KinkyDungeonGridWidthDisplay && ty < CamY + KinkyDungeonGridHeightDisplay
 					&& KDCanSeeEnemy(enemy, Math.max(Math.abs(enemy.x - KinkyDungeonPlayerEntity.x), Math.abs(enemy.y - KinkyDungeonPlayerEntity.y)))
 					&& KinkyDungeonVisionGet(enemy.x, enemy.y) > 0) {
-						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.sin(2 * Math.PI *
+						let alphamult = KDMousePlayableAreaStatusFade * (KDToggles.FlashingWarning ? Math.cos(2 * Math.PI *
 							((flashindex*KDWarningFlashPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1);
 						flashindexed = true;
 						KDDraw(kdenemyboard, kdpixisprites, enemy.id + "_weakB", KinkyDungeonRootDirectory + "WeakBinding.png",
@@ -6518,6 +6518,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				let eventable = KDEventableAttackTypes.some((type) => {return AIData.attack.includes(type);});
 				let dash = AIData.attack.includes("Dash");
 
+				if (AIData.damage == "tickle" && KinkyDungeonStatsChoice.get("Less_Tickle")) {
+					AIData.damage = KDRandom() > 0.5 ? "grope" : "plush";
+				}
+
 				let preDataPreBlock = {
 					playerEvasion: playerEvasion,
 					playerBlock: playerBlock,
@@ -7204,7 +7208,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						KinkyDungeonSendEvent("hit", data);
 						if (KinkyDungeonStatsChoice.get("Less_Tickle"))
 							data.text = KDTextReplace(data.text, 
-							KDTickleReplaceStrings);
+							KDTickleReplaceStrings, undefined, AIData.damage == "grope" ? "Grope" : "");
 						sfx = data.sfx;
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sfx + ".ogg", enemy);
 						text = data.text;

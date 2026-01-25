@@ -2720,6 +2720,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 						cancel: false,
 						entity: KDPlayer(),
 						willing: true,
+						bullet: b,
 					};
 					KinkyDungeonSendEvent("beforeTeleport", tdata);
 					if (!tdata.cancel) {
@@ -2742,6 +2743,7 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
 					cancel: false,
 					entity: KDPlayer(),
 					willing: true,
+					bullet: b,
 				};
 				KinkyDungeonSendEvent("beforeTeleport", tdata);
 				if (!tdata.cancel) {
@@ -3352,7 +3354,7 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 	if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)
 		for (let t of KDBulletWarnings) {
 	
-			let alphamult = KDToggles.FlashingWarning ? Math.sin(
+			let alphamult = KDToggles.FlashingWarning ? Math.cos(
 				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1;
 			let scale = t.scale || 0.01;
 			if (scale < 1) t.scale = Math.max(0, Math.min(1, (t.scale || 0) + delta * 0.005/KDAnimSpeed));

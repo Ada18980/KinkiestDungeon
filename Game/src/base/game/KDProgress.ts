@@ -14,6 +14,7 @@ interface ProgressListData {
     data?: Record<string, string>,
     progress: number,
     color: string,
+    failcolor?: string,
     bordercolor: string,
     textColor: string,
     level?: number,
@@ -36,6 +37,7 @@ interface ProgressListDrawData {
     name: string,
     progressString: string,
     bonusprogress?: string,
+    failpercentage?: string,
 }
 interface ProgressListDrawTrainingData extends ProgressListDrawData {
 }
@@ -46,6 +48,8 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
             && !KDTrainingTypeProperties[type].dontShowProgress
             && KDTrainingTypeProperties[type].prereq(data.player)) {
             let points = (KDGameData.Training ? (KDGameData.Training[type]?.training_points || 0) : 0);
+            let skipped = (KDGameData.Training ? (KDGameData.Training[type]?.turns_skipped || 0) : 0);
+            let total = (KDGameData.Training ? (KDGameData.Training[type]?.turns_trained || 0) : 0);
             let next = KDGetTrainingXPNext(type, data.player);
             let lvl = KDGetTrainingXPMax(type, data.player);
             let drawData: ProgressListDrawTrainingData = {
@@ -53,6 +57,7 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
                 name: type,
                 progressString: Math.round(points*100) + "/" + Math.round(lvl * 100),
                 bonusprogress: "+" + Math.round(next * 100),
+                failpercentage: Math.round(10000*(skipped / Math.max(total, points + skipped, 0.000001)))/100 + "%",
             };
             data.trainings.push({
                 name: "Training" + type,
@@ -60,6 +65,7 @@ function KDEnumerateTrainingProgress(data: ProgressListEventData) {
                 color: KDTrainingTypeProperties[type].color,
                 bordercolor: KDBaseTeal,
                 textColor: KDBaseWhite,
+                failcolor: skipped == 0 ? KDBaseGreal : KDBaseRed,
                 level: Math.floor(KDGameData.Training ? (KDGameData.Training[type]?.training_stage || 0) : 0),
                 priority: -10,
                 drawType: drawData.type,
@@ -281,22 +287,32 @@ let KDProgressDrawTypes: Record<string, (container: PIXIContainer, z: number, id
             let yy = y + 180;
             if (drawData.progressString) {
                 DrawTextFitKD(TextGet("KDProgressCurrent"), 
-                        x + width/2 + 20, yy, 200, KDTextWhite, 
+                        x + width/2 + 20, yy, 300, KDTextWhite, 
                         KDTextGray0, 24, "right");
                 DrawTextFitKD(drawData.progressString, 
                         x + width/2 + 40, yy, 300, item.color, 
                         KDTextGray0, 24, "left");
-                yy += 30;
+                yy += 33;
             }
 
             if (drawData.bonusprogress) {
                 DrawTextFitKD(TextGet("KDProgressBonusProgress"), 
-                        x + width/2 + 110, yy, 320, KDTextWhite, 
+                        x + width/2 + 20, yy, 380, KDTextWhite, 
                         KDTextGray0, 24, "right");
                 DrawTextFitKD(drawData.bonusprogress, 
-                        x + width/2 + 130, yy, 300, item.color, 
+                        x + width/2 + 40, yy, 300, item.color, 
                         KDTextGray0, 24, "left");
-                yy += 30;
+                yy += 33;
+            }
+
+            if (drawData.failpercentage != undefined) {
+                DrawTextFitKD(TextGet("KDProgressFailPercentage"), 
+                        x + width/2 + 20, yy, 320, KDTextWhite, 
+                        KDTextGray0, 24, "right");
+                DrawTextFitKD(drawData.failpercentage, 
+                        x + width/2 + 40, yy, 300, item.failcolor, 
+                        KDTextGray0, 24, "left");
+                yy += 33;
             }
             
             // always till the end

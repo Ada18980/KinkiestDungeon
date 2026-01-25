@@ -2496,7 +2496,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 	}
 }
 
-interface statInfo {text: string, icon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, buffData?: any, click?: string, buffid?: string, flashing?: boolean};
+interface statInfo {text: string, icon?: string, overIcon?: string, count?: string, category: string, priority?: number, color: string, bgcolor: string, countcolor?: string, buffData?: any, click?: string, buffid?: string, flashing?: boolean};
 
 function KDGetStatsWeaponCast() {
 	let statsDraw: Record<string, statInfo> = {};
@@ -2798,7 +2798,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				.replace("STMNA", Math.round(-10 * KDAttackCost().attackCost) + "")
 				.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + KinkyDungeonPlayerDamage.type)),
 			count: Math.round(meleeDamage*10) + (stamDiff ? "/" + Math.round(-10 * KDAttackCost().attackCost) : ""),
-			category: "info", color: KDBaseWhite, bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
+			category: "info", color: KDBaseWhite, bgcolor: "#333333", icon: "dmg" + KinkyDungeonPlayerDamage.type, overIcon: "infoDamageMelee", priority: 10.1
 		};
 	}
 	if (KDToggleShowAllBuffs) {
@@ -3108,6 +3108,14 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				zIndex: 151,
 				alpha: (stat.flashing && (KDAnimSpeed)) ? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) : ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0
 			});
+
+		if (stat.overIcon) {
+			KDDraw(kdstatusboard, kdpixisprites, "statover" + II, KinkyDungeonRootDirectory + "Buffs/" + (stat.overIcon) + ".png",
+				XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize, undefined, {
+					zIndex: 151.05,
+					alpha: (stat.flashing && (KDAnimSpeed)) ? (((((performance.now() * (KDAnimSpeed)) % (2000)) > ((performance.now() * (KDAnimSpeed)) % 1000)) ? (1.0 - ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) : ((performance.now() * (KDAnimSpeed)) % 1000 / 1000)) + 0.3) : 1.0
+				});
+		}
 
 		if (side) {
 			YY += XXspacing;

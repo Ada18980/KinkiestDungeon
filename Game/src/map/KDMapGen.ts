@@ -990,7 +990,8 @@ type SpawnBox = {
 	bias?:             number,
 }
 
-function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtags: string[], BonusTags: any, Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
+function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtags: string[], BonusTags: any,
+	Floor: number, width: number, height: number, altRoom?: any, randomFactions?: any[], factionEnemy?: any) {
 	KinkyDungeonHuntDownPlayer = false;
 	KinkyDungeonFirstSpawn = true;
 	KinkyDungeonSearchTimer = 0;
@@ -1024,28 +1025,51 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 	let filterTagsSpawn = ["boss", "miniboss"];
 	let filterTagsCluster = ["boss", "miniboss"];
 
-	let spawnBoxes: SpawnBox[] = [
-		{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.025},
-		{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
-		{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
-		{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
-	];
-	if (KDGameData.MapMod) {
-		let mapMod = KDMapMods[KDGameData.MapMod];
+	let boxdata = {
+		filterTagsBase: filterTagsBase,
+		filterTagsSpawn: filterTagsSpawn,
+		filterTagsCluster: filterTagsCluster,
+		spawnBoxes: undefined,
+		MapMod: KDGameData.MapMod,
+		randomFactions: [...randomFactions],
+		factionEnemy: factionEnemy,
+		priority: 0,
+	}
+
+	KinkyDungeonSendEvent("beforeGetSpawnBoxes", boxdata)
+	if (!boxdata.spawnBoxes) {
+		boxdata.spawnBoxes = [
+			{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.025},
+			{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.075},
+			{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.15},
+			{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
+		];
+	}
+	
+	KinkyDungeonSendEvent("getSpawnBoxes", boxdata)
+	if (boxdata.MapMod) {
+		let mapMod = KDMapMods[boxdata.MapMod];
 		if (mapMod && mapMod.spawnBoxes) {
 			for (let m of mapMod.spawnBoxes) {
-				spawnBoxes.unshift(Object.assign({}, m));
+				boxdata.spawnBoxes.unshift(Object.assign({}, m));
 			}
 		}
-	} else {
-		for (let rf of randomFactions) {
+	} else if (boxdata.randomFactions) {
+		for (let rf of boxdata.randomFactions) {
 			if (rf != undefined) {
-				spawnBoxes.push({ignoreAllyCount: true, requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
-				spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
-				spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
+				boxdata.spawnBoxes.push({ignoreAllyCount: true, requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.15, bias: rf == factionEnemy ? 2 : 1});
+				boxdata.spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == factionEnemy ? 2 : 1});
+				boxdata.spawnBoxes.push({ignoreAllyCount: true, requiredTags: ["boss", KinkyDungeonFactionTag[rf]], tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.01, bias: rf == factionEnemy ? 2 : 1});
 			}
 		}
 	}
+
+	KinkyDungeonSendEvent("afterGetSpawnBoxes", boxdata)
+
+	filterTagsBase = boxdata.filterTagsBase;
+	filterTagsSpawn = boxdata.filterTagsSpawn;
+	filterTagsCluster = boxdata.filterTagsCluster;
+
 
 	let currentCluster = null;
 
@@ -1200,7 +1224,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 		let playerDist = 9;
 		let PlayerEntity = KDMapData.StartPosition;
 
-		let spawnBox_filter = spawnBoxes.filter((bb) => {
+		let spawnBox_filter = boxdata.spawnBoxes.filter((bb) => {
 			return bb.currentCount < bb.maxCount * enemyCount && (!bb.bias
 				// This part places allied faction toward the center of the map and enemy faction around the edges
 				|| (bb.bias == 1 && X > width * 0.25 && X < width * 0.75 && Y > height * 0.25 && Y < height * 0.75)

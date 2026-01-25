@@ -33,7 +33,7 @@ RestartNeededPL,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.83"
+KDVersionStr,"5.4.84"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -30282,6 +30282,13 @@ KDReplaceText_tickle_From,tickle
 KDReplaceText_tickling_From,tickling
 
 
+KDReplaceText_tickles_ToGrope,gropes
+KDReplaceText_tickle_ToGrope,grope
+KDReplaceText_tickling_ToGrope,groping
+
+
+
+
 ResistTypeBlock," (blocked!)"
 ResistTypeDodge," (dodged!)"
 ResistType,""
@@ -33100,10 +33107,11 @@ KDProgressItem_TrainingHeels,Heel Training
 
 KDProgressUnselected,Select a progress item to show details
 
-KDProgress_Training_Heels,Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
+KDProgress_Training_Heels,"Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier."
 KDProgressCurrent,"Current Progress: "
 KDProgressMilestones,"Milestones:"
 KDProgressBonusProgress,"Bonus Progress (gained next Floor):"
+KDProgressFailPercentage,"Mistakes Made:"
 KDProgressRecentModifiers,"Recent Modifiers:"
 
 KDAnyLevel,Any Level

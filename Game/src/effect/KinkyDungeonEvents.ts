@@ -1335,14 +1335,15 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 								item.faction, true, curse,
 								undefined, false,
 								undefined, undefined,
-								variant.suffix);
+								variant.suffix, undefined, undefined, item.data);
 
 						} else {
 							KinkyDungeonAddRestraintIfWeaker(restraintAdd,
 								KDGetEffLevel(), true,
 								curse ? undefined : lock, true,
 								false, undefined, item.faction, true,
-								curse);
+								curse, undefined, undefined, undefined,
+								item.data);
 						}
 					} else {
 						KDSetIDFlag(KDPlayer().id, "mimiccursefail" + item.id, 4 + Math.floor(KDRandom() * 10));
@@ -11496,6 +11497,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 	"teleport": {
 		"TeleportPlate": (_e, data) => {
+			if (data?.bullet?.bullet?.spell?.nonmagical) return;
 			// Creates a wire spark if teleported on
 			let etiles = KDGetEffectTiles(data.x, data.y);
 			if (etiles) {
@@ -11513,6 +11515,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 		},
 		"TeleportPlateMana": (_e, data) => {
+			if (data?.bullet?.bullet?.spell?.nonmagical) return;
 			// Creates a wire spark if teleported on
 			let etiles = KDGetEffectTiles(data.x, data.y);
 			if (etiles) {
@@ -11554,8 +11557,56 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 
 	},
+	"beforeGetSpawnBoxes": {
+		"hellFloor": (_e, data) => {
+			if (KDIsHellFloor() && data.priority <= 8) {
+				data.priority = 8;
+				data.spawnBoxes = [
+					{requiredTags: ["boss"], tags: [], currentCount: 0, maxCount: 0.12},
+					{requiredTags: ["miniboss"], tags: [], currentCount: 0, maxCount: 0.2},
+					{requiredTags: ["elite"], tags: [], currentCount: 0, maxCount: 0.2},
+					{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.18},
+				];
+			}			
+		},
+	},
+	"getSpawnBoxes": {
+		"hellFloor": (_e, boxdata) => {
+			if (KDIsHellFloor() && boxdata.priority <= 8) {
+				if (boxdata.MapMod) {
+					boxdata.priority = 8;
+					let mapMod = KDMapMods[boxdata.MapMod];
+					if (mapMod && mapMod.spawnBoxes) {
+						for (let m of mapMod.spawnBoxes) {
+							boxdata.spawnBoxes.push(Object.assign({}, m));
+						}
+					}
+				} else if (boxdata.randomFactions) {
+					boxdata.priority = 8;
+					for (let rf of boxdata.randomFactions) {
+						if (rf != undefined) {
+							boxdata.spawnBoxes.push({ignoreAllyCount: true,
+								requiredTags: [KinkyDungeonFactionTag[rf]], filterTags: ["boss", "miniboss"],
+								tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == boxdata.factionEnemy ? 2 : 1});
+							boxdata.spawnBoxes.push({ignoreAllyCount: true,
+								requiredTags: ["miniboss", KinkyDungeonFactionTag[rf]],
+								tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.1, bias: rf == boxdata.factionEnemy ? 2 : 1});
+							boxdata.spawnBoxes.push({ignoreAllyCount: true,
+								requiredTags: ["boss", KinkyDungeonFactionTag[rf]],
+								tags: [KinkyDungeonFactionTag[rf]], currentCount: 0, maxCount: 0.04, bias: rf == boxdata.factionEnemy ? 2 : 1});
+						}
+					}
+				}
+				boxdata.MapMod = null;
+				boxdata.randomFactions = null;
+			}			
+		},
+	},
+
+	
 	"beforeTeleport": {
 		"NoTeleportPlate": (_e, data) => {
+			if (data?.bullet?.bullet?.spell?.nonmagical) return;
 			if (!data.cancel && data.entity) {
 				// Creates a wire spark if teleported on
 				let etiles = KDGetEffectTiles(data.entity.x, data.entity.y);
@@ -11574,6 +11625,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 	},
 	"blockTeleport": {
 		"NoTeleportPlate": (_e, data) => {
+			if (data?.bullet?.bullet?.spell?.nonmagical) return;
 			if (data.entity) {
 				// Creates a wire spark if teleported on
 				let etiles = KDGetEffectTiles(data.entity.x, data.entity.y);

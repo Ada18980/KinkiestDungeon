@@ -615,7 +615,7 @@ AddModel({
 			EraseSprite: "TallBalletRightErase",
 			EraseAmount: 100,
 			EraseLayers: ToMap(["HeelRight"]),
-			EraseZBonus: 100,
+			EraseZBonus: 30000,
 		},
 		{ Name: "SoleLeft", Layer: "ShoeLeft", Pri: 30.1,
 			InheritColor: "SoleLeft",

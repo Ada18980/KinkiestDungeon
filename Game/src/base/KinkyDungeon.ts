@@ -95,7 +95,7 @@ let KDEasterEgg = Math.random() < 0.01;
 let KDBigLanguages = ["CN", "KR", "JP"];
 let KDBigLanguages2 = ["Chinese", "Korean", "Japanese"];
 /** Language List */
-let KDLanguages = ["", "CN", "KR", "JP", "RU", "ES", "PL"];
+let KDLanguages = ["", "CN", "KR", "JP", "RU", "ES"];
 
 let KinkyDungeonPlayerNeedsRefresh = false;
 let KinkyDungeonNextRefreshCheck = 0;
@@ -8031,12 +8031,12 @@ function KDTogglesDraw() {
 
 let KDTickleReplaceStrings = ["tickling", "tickles", "tickle"];
 
-function KDTextReplace(text: string, replacestrings: string[]) {
+function KDTextReplace(text: string, replacestrings: string[], FromSuff?: string, ToSuff?: string) {
 	let str = text;
 
 	for (let replace of replacestrings) {
-		let from = TextGet("KDReplaceText_" + replace + "_From");
-		let to = TextGet("KDReplaceText_" + replace + "_To");
+		let from = TextGet("KDReplaceText_" + replace + "_From" + (FromSuff || ""));
+		let to = TextGet("KDReplaceText_" + replace + "_To" + (ToSuff || ""));
 		str = str.replace(
 			from,
 			 to);

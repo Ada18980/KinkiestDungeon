@@ -964,6 +964,11 @@ function KDUpdateOptionGame(start): void {
 }
 
 
+function KDIsHellFloor(Level?: number): boolean {
+	if (Level == undefined) Level = MiniGameKinkyDungeonLevel
+	return Level == 12 || Level == 16;
+}
+
 function KDGetEffLevel(): number {
 	let effLevel = MiniGameKinkyDungeonLevel + Math.round(KinkyDungeonDifficulty/5);
 	if (KinkyDungeonNewGame) effLevel += KinkyDungeonMaxLevel;
@@ -3820,7 +3825,7 @@ function KDGetEnemyCache() {
 		KDIDCache = new Map();
 		for (let e of KDMapData.Entities) {
 			KDEnemyCache.set(e.x + "," + e.y, e);
-			if (e.Enemy.events) {
+			if (e.Enemy?.events) {
 				for (let event of e.Enemy.events) {
 					if (!KDEnemyEventCache.get(event.trigger)) {
 						KDEnemyEventCache.set(event.trigger, new Map());

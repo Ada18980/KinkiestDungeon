@@ -3715,7 +3715,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								e.faction = "Player";
 								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-								KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
 								
 								KinkyDungeonChangeRep("Prisoner", 0.5);
 								if (!KDEntityHasFlag(e, "rescuedOnce")) {
@@ -3726,6 +3725,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											KinkyDungeonChangeFactionRep(faction, 0.015);
 									}
 								}
+								KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
 								KDAddConsumable("RedKey", -1);
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									KinkyDungeonSetFlag("embarrassed", 8);
@@ -3784,7 +3784,6 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									e.faction = "Player";
 									KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
 									KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
-									KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
 									if (!KDEntityHasFlag(e, "rescuedOnce")) {
 										if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
 											if (KDFactionRelation("Player", faction) < 0.25)
@@ -3793,6 +3792,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 												KinkyDungeonChangeFactionRep(faction, 0.015);
 										}
 									}
+									KinkyDungeonSetEnemyFlag(e, "rescuedOnce", -1);
 									KinkyDungeonChangeRep("Prisoner", 0.5);
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick" + KDJailPersonality(e);
 									if (e.Enemy.tags.gagged) {

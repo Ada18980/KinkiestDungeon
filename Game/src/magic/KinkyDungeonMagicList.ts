@@ -594,7 +594,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			],
 			noMiscast: true,
 			staminacost: 3,
-			manacost: 0, components: ["Legs"], noTargetEnemies: true, level:1, type:"hit", onhit:"teleport", delay: 0, lifetime:1, range: 1.5, damage: ""}, // A quick blink
+			manacost: 0, components: ["Legs"], noTargetEnemies: true, level:1, type:"hit", onhit:"teleport", nonmagical: true, delay: 0, lifetime:1, range: 1.5, damage: ""}, // A quick blink
 
 
 		{name: "Charge", tags: ["stamina", "utility", "offense"], school: "Special", prerequisite: "BattleRhythm", classSpecific: "Fighter", hideWithout: "BattleRhythm", manacost: 0, customCost: "SprintPlusAttack", components: [], level:1, type:"special", special: "Charge", noMiscast: true,

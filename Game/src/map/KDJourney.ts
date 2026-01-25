@@ -52,15 +52,17 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 
 		let MapMod = "";
 
-		if (y > 1 || KinkyDungeonNewGame > 0) {
-			// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
-			// Helps shake things up randomly
-			if (KDMapModRefreshList.length == 0) {
-				KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
+		if (!KDIsHellFloor(y)) {
+			if (y > 1 || KinkyDungeonNewGame > 0) {
+				// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
+				// Helps shake things up randomly
+				if (KDMapModRefreshList.length == 0) {
+					KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
+				}
+				let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
+				MapMod = KDMapModRefreshList[index]?.name;
+				KDMapModRefreshList.splice(index, 1);
 			}
-			let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
-			MapMod = KDMapModRefreshList[index]?.name;
-			KDMapModRefreshList.splice(index, 1);
 		}
 
 

@@ -3242,7 +3242,7 @@ function KDMorphToInventoryVariant(item: item, variant: KDRestraintVariant, pref
 			"" + item.id,
 			variant.suffix,
 			undefined,
-			true
+			true, item.data
 		);
 
 		KDUpdateItemEventCache = true;
@@ -3450,6 +3450,7 @@ function KDEquipInventoryVariant (
 	suffix:              string = "",
 	powerBonus:          number = 0,
 	NoActionPrune:		 boolean = false,
+	data?: any,
 )
 {
 	KDUpdateItemEventCache = true;
@@ -3471,7 +3472,7 @@ function KDEquipInventoryVariant (
 		Tightness, Bypass, Lock, Keep, Trapped,
 		events, faction, Deep, curse,
 		securityEnemy, useAugmentedPower, newname,
-		undefined, undefined, undefined,
+		data, undefined, undefined,
 		powerBonus, NoActionPrune
 	);
 }

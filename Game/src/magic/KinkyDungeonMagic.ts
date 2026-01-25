@@ -1606,6 +1606,11 @@ function KinkyDungeonWordWrap(str: string, maxWidthTranslate: number, maxWidthEn
 				res = res + [str.slice(0, i), newLineStr].join('');
 				str = str.slice(i + 1);
 				found = true;
+			} if (str.slice(0, maxWidth).indexOf("\\n") >= 0) {
+				let i = str.indexOf("\\n");
+				res = res + [str.slice(0, i), newLineStr].join('');
+				str = str.slice(i + 2);
+				found = true;
 			} else
 			// Inserts new line at first whitespace of the line
 				for (let i = maxWidth - 1; i >= 0; i--) {
@@ -1625,6 +1630,7 @@ function KinkyDungeonWordWrap(str: string, maxWidthTranslate: number, maxWidthEn
 		}
 	}
 
+	
 
 	return res + str;
 }

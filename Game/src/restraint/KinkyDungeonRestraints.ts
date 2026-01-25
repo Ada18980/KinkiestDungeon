@@ -1023,15 +1023,15 @@ function KinkyDungeonHasHelp(): boolean {
 function KinkyDungeonHasAllyHelp(): boolean {
 	return (KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some(
 		(enemy) => {
-			return (KDEnemyHasFlag(enemy, "HelpMe") || enemy.Enemy.tags.alwayshelp)
+			return (KDEnemyHasFlag(enemy, "HelpMe") || enemy.Enemy.tags?.alwayshelp)
 				&& enemy.Enemy.bound
-				&& !enemy.Enemy.tags.nohelp
+				&& !enemy.Enemy.tags?.nohelp
 				&& !KDHelpless(enemy)
 				&& KDBoundEffects(enemy) < 4;
 		})
 		|| (!KinkyDungeonStatsChoice.get("NoHelp") && KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5).some((enemy) => {
 			return enemy.Enemy.bound
-				&& !enemy.Enemy.tags.nohelp
+				&& !enemy.Enemy.tags?.nohelp
 				&& KDAllied(enemy)
 				&& !KDHelpless(enemy)
 				&& KDBoundEffects(enemy) < 4;
