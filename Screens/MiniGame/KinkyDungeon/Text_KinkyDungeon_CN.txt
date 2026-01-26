@@ -47889,6 +47889,13 @@ ENMY 伸手去拿你的物品，但无法完全够到！
 # - tickling
 
 
+# - gropes
+# - grope
+# - groping
+
+
+
+
 -  (blocked!)
 （格挡！）
 -  (dodged!)
@@ -52317,14 +52324,14 @@ Boss
 - Select a progress item to show details
 选择一项进度以显示更多细节
 
-- Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.
-高跟鞋训练影响你穿着高跟鞋时保持平衡的能力。穿着高跟鞋移动以提升训练进度。
+# - Heel training affects your ability to maintain balance while wearing increasingly high heels. Levels are gained by walking and moving around while wearing heels.\nTraining failure occurs if you are not wearing heels when you perform actions, reducing XP gain by a multiplier.
 - Current Progress: 
 当前进度：
 - Milestones:
 里程碑：
 - Bonus Progress (gained next Floor):
 获得进度（进入下一层时结算）：
+# - Mistakes Made:
 # - Recent Modifiers:
 
 - Any Level
