@@ -7303,6 +7303,7 @@ function KDDrawGameSetupTabs(_xOffset: number = 500, xpad: number = 10, num: num
 		});
 		ii++;
 		DrawButtonKDEx("TabChallenge", (_b) => {
+			KinkyDungeonPreviousState = "";
 			KinkyDungeonState = "Challenge";
 			return true;
 		}, true, _xOffset + xpad*(ii+1) + tabwidth*ii, 10, tabwidth, 40, TextGet("KDDiffTab_Challenge"), KDBaseWhite, undefined, undefined, undefined,
