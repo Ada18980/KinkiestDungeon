@@ -6,6 +6,13 @@ let KDTextBoxStyle = {
 	lineHeight: 1.6,
 };
 
+interface documentCacheObject_KD {
+	x: number,
+	y: number,
+}
+
+let documentcache: Map<Element, documentCacheObject_KD> = new Map();
+
 /**
  * Handles the value of a HTML element. It sets the value of the element when the Value parameter is provided or it returns the value when the parameter is omitted
  * @param ID - The id of the element for which we want to get/set the value.
@@ -285,6 +292,11 @@ function ElementPosition(ElementID: string, X: number, Y: number, W: number, H: 
 		H = tmp;
 	}
 
+	documentcache.set(E, {
+		x: X,
+		y: Y,
+	});
+
 	// Different positions based on the width/height ratio
 	const HRatio = PIXICanvas.clientHeight / 1000;
 	const WRatio = PIXICanvas.clientWidth / 2000;
@@ -303,7 +315,11 @@ function ElementPosition(ElementID: string, X: number, Y: number, W: number, H: 
 		top: Top + "px",
 		width: Width + "px",
 		height: Height + "px",
-		display: "inline"
+		display: "inline",
+	});
+	Object.assign(E, {
+		KD_X: X,
+		KD_Y: Y,
 	});
 }
 
@@ -323,6 +339,10 @@ function ElementPositionFix(ElementID: string, Font: number, X: number, Y: numbe
 		console.warn("A call to ElementPositionFix was made on non-existent element with ID '" + ElementID + "'");
 		return;
 	}
+	documentcache.set(E, {
+		x: X,
+		y: Y,
+	});
 
 	// Different positions based on the width/height ratio
 	const HRatio = PIXICanvas.clientHeight / 1000;

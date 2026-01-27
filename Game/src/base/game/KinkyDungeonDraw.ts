@@ -5456,6 +5456,11 @@ function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H
 		W = H;
 		H = tmp;
 	}
+	documentcache.set(E, {
+		x: X,
+		y: Y,
+	});
+
 
 	// Different positions based on the width/height ratio
 

@@ -223,16 +223,23 @@ function TouchMove(touch: Touch): void {
 /**
  * When mouse move, we keep the mouse position for other scripts
  */
-function MouseMove(event: MouseEvent): void {
+function MouseMove(event: MouseEvent, allowOffsetting: boolean): void {
 	if (PIXICanvas) {
-		// not sure why I added this originally... hm
-		//@ts-ignore
-		let ol = 0//document.activeElement?.offsetLeft || 0;
-		//@ts-ignore
-		let ot = 0//document.activeElement?.offsetTop || 0;
+		let ol = 0;
+		let ot = 0;
+		// offset - to prevent weird behavior with clicking in text fields triggering other things
+		if (allowOffsetting) {
+			if (documentcache.get(document.activeElement)) {
+				//@ts-ignore
+				ol = documentcache.get(document.activeElement).x;
+				//@ts-ignore
+				ot = documentcache.get(document.activeElement).y;
+			}
+		}
+		
 		// && (document.activeElement?.id == "MainCanvas" || document.activeElement?.id == PIXICanvas?.id || document.activeElement?.id == '')
-		MouseX = Math.round((event.offsetX + ol) * 2000 / PIXICanvas.clientWidth);
-		MouseY = Math.round((event.offsetY + ot) * 1000 / PIXICanvas.clientHeight);
+		MouseX = Math.round((event.offsetX) * 2000 / PIXICanvas.clientWidth) + ol;
+		MouseY = Math.round((event.offsetY) * 1000 / PIXICanvas.clientHeight) + ot;
 	}
 }
 

@@ -1406,6 +1406,7 @@ let KDLastScrollableListUpdate = 0;
 let mouseHoldTaken = "";
 
 function KinkyDungeonRun() {
+	documentcache = new Map();
 	if (!mouseDown)
 		mouseHoldTaken = "";
 
@@ -6323,7 +6324,7 @@ let HoldMoved = false;
 let HoldMoveThresh = 140;
 
 window.addEventListener('click', function(event) {
-	MouseMove(event);
+	MouseMove(event, true);
 	if ((!CommonIsMobile || !MouseClicked) && !mouseHoldTaken) {
 		//let touch = event.touches[0];
 		if (!DisableButtonsOneFrame)

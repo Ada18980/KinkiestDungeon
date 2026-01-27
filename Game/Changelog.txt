@@ -50,11 +50,18 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
 
+5.4.86
+- 
+
+5.4.85
+- Fixed a serious issue involving unintentional item usage when clicking in quick inventory search
+
 5.4.84
 - Fixed a bug where enemies could sometimes enter the perk shrine
 - Fixed a bug where rescuing NPCs of a faction did not give reputation
 - Blade dance no longer triggers teleportation plates
 - Fixed some unintended navigation issues with the consent screen
+- Floors 12 and 16, since they do not have bosses, now have many more high level NPCs than usual
 
 5.4.83
 - Added consent screen to replace the perks in "advanced start" that are used to affect what content appears in the game
