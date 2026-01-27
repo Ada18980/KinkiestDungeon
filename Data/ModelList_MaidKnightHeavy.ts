@@ -133,7 +133,7 @@ AddModel({
 	Categories: ["Sleeves"],
 	RemovePoses: ["EncaseTorsoUpper"],
 	Layers: ToLayerMap([
-		{ Name: "SleeveRight", Layer: "SleeveRight", Pri: 40,
+		{ Name: "SleeveRight", Layer: "ShoulderSleeveRight", Pri: 40,
 			Poses: ToMap([...ARMPOSES]),
 			InheritColor: "SleeveRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
@@ -145,7 +145,7 @@ AddModel({
 			EraseZBonus: 8600,
 			EraseInvariant: true,
 		},
-		{ Name: "ArmRightStripe", Layer: "SleeveRight", Pri: 40.1,
+		{ Name: "ArmRightStripe", Layer: "ShoulderSleeveRight", Pri: 40.1,
 			Poses: ToMap([...ARMPOSES]),
 			InheritColor: "SleeveRightStripe",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),

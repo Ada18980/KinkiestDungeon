@@ -675,6 +675,11 @@ function KDRefreshPoseOptions(Character: Character) {
 		let restraints = KinkyDungeonAllRestraintDynamic();
 		for (let inv of restraints) {
 			KDCurrentModels.get(Character).Poses[inv.item.name + "Worn"] = true;
+			if (KDRestraint(inv.item)?.shrine?.includes("BallGags")) 
+				KDCurrentModels.get(Character).Poses["BallMouth"] = true;
+			else if (KDRestraint(inv.item)?.shrine?.includes("PlugGags")) 
+				KDCurrentModels.get(Character).Poses["PlugMouth"] = true;
+				
 		}
 	} else if (KDNPCChar_ID.get(Character)) {
 		let restraints = KDGetNPCRestraints(KDNPCChar_ID.get(Character));

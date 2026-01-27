@@ -145,7 +145,7 @@ let KinkyDungeonFactionFilters: Record<string, Record<string, LayerFilter>> = {
 		// DarkNeutral is much lighter than usual
 		DarkNeutral: {"gamma":1.3166666666666664,"saturation":0,"contrast":1.6500000000000001,"brightness":0.7333333333333333,"red":1.3666666666666667,"green":1.2333333333333334,"blue":1,"alpha":1},
 		LightNeutral: {"gamma":1.3166666666666664,"saturation":0,"contrast":1.1833333333333333,"brightness":0.7333333333333333,"red":1.4166666666666665,"green":1.2333333333333334,"blue":1,"alpha":1},
-		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":0.8,"red":1,"green":2.4,"blue":1,"alpha":1},
+		Highlight: {"gamma":1,"saturation":0,"contrast":1,"brightness":0.7,"red":1,"green":1.8,"blue":1,"alpha":1},
 	},
 	"Elf": {
 		Catsuit: {"gamma":1.0166666666666666,"saturation":0,"contrast":0.8999999999999999,"brightness":1.4000000000000001,"red":1.7333333333333334,"green":2.5166666666666666,"blue":1.55,"alpha":1},

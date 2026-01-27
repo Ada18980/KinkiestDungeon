@@ -1765,6 +1765,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		weight: 6, escapeChance: {"Struggle": 0.05, "Cut": 0.18, "Remove": 0.1},
 		Model: "GagLatex",
 		sfxGroup: "Rubber",
+		inaccessible: true,
+		addPoseIfTopLevel: ["LatexOTN"],
 		Filters: {
 			Latex: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":0.48333333333333334,"blue":2.8499999999999996,"alpha":1},
 		},
@@ -1778,8 +1780,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		Asset: "KittyGag", gag: 0.5, Color: ["#4EA1FF", "#4EA1FF", "#4EA1FF"], Group: "ItemMouth",
 		AssetGroup: "ItemMouth3", power: 6, weight: 6,
 		escapeChance: {"Struggle": -0.1, "Cut": 0.04, "Remove": 0.1, Pick: 0.0},
+		inaccessible: true,
 		Model: "ShinyLatexMuzzleRestraint", //Model: "GagLatexMute",
 		sfxGroup: "Rubber",
+		addPoseIfTopLevel: ["LatexOTN"],
 		Filters: {
 			Gag: {"gamma":1,"saturation":1,"contrast":1.4166666666666665,"brightness":1,"red":1,"green":1,"blue":1,"alpha":1},
 			Rim: {"gamma":1,"saturation":0.16666666666666666,"contrast":1.25,"brightness":1.8166666666666667,"red":0.3166666666666667,"green":0.48333333333333334,"blue":2.8499999999999996,"alpha":1},
@@ -1973,13 +1977,16 @@ const KinkyDungeonRestraints: restraint[] = [
 		factionColor: [[2], [2], [2]], Asset: "KittyGag", gag: 0.5, Color: [KDBaseRed, KDBaseRed, KDBaseRed], Group: "ItemMouth", AssetGroup: "ItemMouth3", power: 7,
 		weight: 6,
 		escapeChance: {"Struggle": -0.1, "Cut": -0.1, "Remove": -0.1},
+		inaccessible: true,
 		Model: "GagLatexMute",
+		addPoseIfTopLevel: ["LatexOTN"],
 		sfxGroup: "Rubber",
 		Filters: {
 			Latex: {"gamma":0.35000000000000003,"saturation":0.16666666666666666,"contrast":1.25,"brightness":0.7333333333333334,"red":2.5166666666666666,"green":0.48333333333333334,"blue":0.41666666666666663,"alpha":1},
 		},
 		factionFilters: {
-			Latex: {color: "Highlight", override: false},
+			Latex: {color: "LightNeutral", override: false},
+			Symbol: {color: "Highlight", override: true},
 		},
 		maxwill: 0.8, enemyTags: {"redLatexBasic":6}, playerTags: {"ItemMouthEmpty": -12}, minLevel: 0, allFloors: true, shrine: ["Latex", "RedLatex", "FlatGags", "Gags"]},
 	{inventory: true, unlimited: true, name: "RedLatexBallGag", LinkableBy: [...KDBallGagLink], renderWhenLinked: [...KDBallGagLink], factionColor: [[], [0]], Asset: "BallGag", gag: 0.75, Color: [KDBaseRed, "#882222"],

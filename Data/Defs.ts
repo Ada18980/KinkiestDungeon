@@ -478,6 +478,7 @@ let LAYERS_BASE = [
 	// External overlaps are fine, e.g. right leg goes over
 	"ShoulderLeft",
 	"UpSleeveRight",
+	"ShoulderSleeveRight",
 	"ShoulderRight",
 	"TorsoUpper",
 	"Butt",
@@ -943,6 +944,7 @@ let LayerGroups = {
 		"UpSleeveRight",
 		"ArmLeft",
 		"ArmRight",
+		"ShoulderSleeveRight",
 		//"TorsoUpper",
 
 		"CrossMittenLeft",
@@ -968,6 +970,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1049,6 +1052,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1130,6 +1134,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1269,6 +1274,7 @@ let LayerGroups = {
 
 		"ForeSleeveDecoRight",
 		"ForeSleeveRight",
+		"ShoulderSleeveRight",
 		"ForeMittenRight",
 		"ForeGloveRight",
 		"ForeHandRight",
@@ -1293,6 +1299,7 @@ let LayerGroups = {
 
 		"ForeSleeveRight",
 		"ForeSleeveDecoRight",
+		"ShoulderSleeveRight",
 		"GloveRight",
 		"MittenLeft",
 		"MittenRight",
@@ -1453,6 +1460,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		"ArmLeft",
 		"ArmRight",
 		"TorsoUpper",
@@ -1511,6 +1519,7 @@ let LayerGroups = {
 		"MittenRight",
 		"GloveRight",
 		"ForeHandRight",
+		"ShoulderSleeveRight",
 	]),
 
 	"CorsetBra": ToMap([
@@ -1538,6 +1547,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"ArmRight",
 		"GloveRight",
+		"ShoulderSleeveRight",
 	]),
 
 	"RibbonThighs": ToMap([
@@ -1741,6 +1751,7 @@ let LayerGroups = {
 		"SleeveRight",
 		"SleeveDecoRight",
 		"UpSleeveRight",
+		"ShoulderSleeveRight",
 		//"ArmLeft",
 		//"ArmRight",
 	]),
@@ -1867,6 +1878,7 @@ let LayerGroups = {
 
 	"ForeSleeveRight",
 	"ForeSleeveDecoRight",
+		"ShoulderSleeveRight",
 
 
 

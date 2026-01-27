@@ -87,7 +87,7 @@ AddModel({
 	Categories: ["Sleeves"],
 	RemovePoses: ["EncaseTorsoUpper"],
 	Layers: ToLayerMap([
-		{ Name: "SleeveRight", Layer: "SleeveRight", Pri: 60,
+		{ Name: "SleeveRight", Layer: "ShoulderSleeveRight", Pri: 20,
 			Poses: ToMap([...ARMPOSES]),
 			InheritColor: "JacketSleeveRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),

@@ -462,6 +462,8 @@ function KDGetShortcutPosition(target: string, x: number, y: number, mapData: KD
 	// Like the below, but filters out any that arent the target
 	let possible: KDPoint[] = [mapData.StartPosition, mapData.EndPosition, ...Object.values(mapData.ShortcutPositions || {})];
 	possible = possible.filter((pos) => {
+		let rt = pos ? KinkyDungeonTilesGet(pos.x + ',' + pos.y)?.RoomType : "";
+		if (rt == "PerkRoom") rt = "";
 		return (!!pos) && (
 				(!target ) ?
 				(
@@ -470,7 +472,7 @@ function KDGetShortcutPosition(target: string, x: number, y: number, mapData: KD
 					: (KinkyDungeonMapDataGet(mapData, pos.x, pos.y) == 's')
 				)
 				:
-				(KinkyDungeonTilesGet(pos.x + ',' + pos.y)?.RoomType == target)
+				(rt == target)
 			)
 			&& KinkyDungeonStairTiles.includes(KinkyDungeonMapDataGet(mapData, pos.x, pos.y));
 	});
@@ -480,6 +482,8 @@ function KDGetShortcutPosition(target: string, x: number, y: number, mapData: KD
 	if (possible.length == 0) {
 		possible = [mapData.StartPosition, mapData.EndPosition, ...Object.values(mapData.ShortcutPositions || {})];
 		possible = possible.filter((pos) => {
+			let rt = pos ? KinkyDungeonTilesGet(pos.x + ',' + pos.y)?.RoomType : "";
+			if (rt == "PerkRoom") rt = "";
 			return (!!pos) && (
 				(!target ) ?
 				(
@@ -488,7 +492,7 @@ function KDGetShortcutPosition(target: string, x: number, y: number, mapData: KD
 					: (KinkyDungeonMapDataGet(mapData, pos.x, pos.y) == 's')
 				)
 				:
-				(KinkyDungeonTilesGet(pos.x + ',' + pos.y)?.RoomType == target)
+				(rt == target)
 			);
 		});
 	}
@@ -3411,7 +3415,9 @@ function KDCheckDespawn(enemy: entity, E: number, mapData: KDMapDataType): boole
 		if (KDistChebyshev(enemy.despawnX - enemy.x, enemy.despawnY - enemy.y) < 1.5) {
 			let tile = KinkyDungeonTilesGet(enemy.despawnX + ',' + enemy.despawnY);
 			let slot = KDGetWorldMapLocation({x: mapData.mapX, y: mapData.mapY});
-			KDDespawnEnemy(enemy, E, mapData, tile?.RoomType || slot?.main || "");
+			let rt = tile?.RoomType;
+			if (rt == "PerkRoom") rt = "";
+			KDDespawnEnemy(enemy, E, mapData, rt || slot?.main || "");
 			return true;
 		}
 	} else if (enemy.goToDespawn && !(enemy.despawnX && enemy.despawnY)) {

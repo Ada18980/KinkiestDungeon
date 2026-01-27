@@ -14119,6 +14119,7 @@ KDWardrobeSaveGame,Back to Game
 KDWardrobeSaveRestart,Back to Pause Menu
 KDWardrobeSaveDiff,Back to Game Setup
 KDWardrobeSaveName,Back to Character Setup
+KDWardrobeSaveChallenge,Back to Challenge Setup
 KDWardrobeBackToWardrobe,Back to Wardrobe
 KDConfirmStrip,Confirm Strip?
 KDDressStrip,Strip!
