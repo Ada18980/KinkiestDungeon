@@ -26364,6 +26364,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # - Back to Pause Menu
 # - Back to Game Setup
 # - Back to Character Setup
+# - Back to Challenge Setup
 - Back to Wardrobe
 返回衣柜
 - Confirm Strip?
