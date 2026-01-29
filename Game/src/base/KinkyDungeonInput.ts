@@ -574,6 +574,7 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 			KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), KDBaseRed, 2);
 			return "Fail";
 		}
+		if (!tile) return "Error";
 		//KinkyDungeonTargetTile = tile;
 		//KinkyDungeonTargetTileLocation = data.targetTile;
 		//KinkyDungeonTargetTile = null;

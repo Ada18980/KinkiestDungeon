@@ -4011,12 +4011,12 @@ LootT,"You find "
 RestraintBasicCollar,Collar
 RestraintBasicCollarDesc,"A classy leather collar."
 RestraintBasicCollarDesc2,"Allows fitting of a leash."
-RestraintSteelCollar,Slave Collar
-RestraintSteelCollarDesc,"A high-security steel collar befitting of a slave."
+RestraintSteelCollar,Steel Collar
+RestraintSteelCollarDesc,"A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive."
 RestraintSteelCollarDesc2,"Allows fitting of a leash."
-RestraintMagicCollar,Enchanted Collar
-RestraintMagicCollarDesc,"A collar made with magically enchanted materials. It is difficult to cut off."
-RestraintMagicCollarDesc2,"Allows fitting of a leash."
+RestraintMagicCollar,Runic Collar
+RestraintMagicCollarDesc,"A collar that adjusts to fit the wearer perfectly. It resembles steel, but with carved glyphs that faintly glow."
+RestraintMagicCollarDesc2,"The lock is decorative. It's sealed magically around your neck."
 RestraintKittyCollar,Kitty Collar
 RestraintKittyCollarDesc,"A collar made with magically enchanted materials. It is protected by the blessing of Bast."
 RestraintKittyCollarDesc2,"Allows fitting of a leash."

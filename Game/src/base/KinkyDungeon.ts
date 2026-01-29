@@ -7113,6 +7113,11 @@ function KinkyDungeonLoadGame(String: string = "", kdloadconsent = false) {
 				}
 			}
 
+			KDOrigMana = KinkyDungeonStatMana;
+			KDOrigDistraction = KinkyDungeonStatDistraction;
+			KDOrigStamina = KinkyDungeonStatStamina;
+			KDOrigWill = KinkyDungeonStatWill;
+
 			KinkyDungeonFloaters = [];
 			KDFixNeeds();
 			KDUpdateBuffsOnLoad();
