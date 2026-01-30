@@ -1608,6 +1608,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 
 					for (let dg of Object.keys(l.EraseLayerGroups || LayerGroups[ll[0]])) {
+						if (l.EraseLayerGroups && dg != ll[0]) continue;
 						if (!filterMap[dg]) filterMap[dg] = [];
 						EraseFiltersAmt[id + dg] = Math.max(
 							eAmount * (l.EraseAmount || 50) * Zoom,

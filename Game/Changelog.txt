@@ -51,7 +51,7 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 - TODO potentially add a mechanic for cursed items to restore themselves after being removed for furniture reasons
 
 5.4.86
-- 
+- Fixed a graphical bug that caused layering issues
 
 5.4.85
 - Fixed a serious issue involving unintentional item usage when clicking in quick inventory search
