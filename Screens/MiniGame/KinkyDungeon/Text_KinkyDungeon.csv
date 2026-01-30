@@ -3367,15 +3367,15 @@ KinkyDungeonStruggleStruggleImpossibleBoundEggAroused,"Your struggling does noth
 
 
 
-KinkyDungeonStruggleRemoveFailPlug,"You wiggle fruitlessly trying to pull the TargetRestraint out..."
-KinkyDungeonStruggleRemoveFailPlugAroused,"You squirm uselessly tugging at the TargetRestraint..."
+KinkyDungeonStruggleRemoveFailPlug,"You wiggle trying to pull the TargetRestraint out..."
+KinkyDungeonStruggleRemoveFailPlugAroused,"You squirm, tugging at the TargetRestraint..."
 KinkyDungeonStruggleRemoveImpossiblePlug,"You can't grip the TargetRestraint to take it out."
 KinkyDungeonStruggleRemoveImpossiblePlugAroused,"You fruitlessly feel around trying to grab the TargetRestraint."
 KinkyDungeonStruggleRemoveImpossibleBoundPlug,"Your bindings prevent you from reaching the TargetRestraint."
 KinkyDungeonStruggleRemoveImpossibleBoundPlugAroused,"The TargetRestraint is firmly kept inside of you by your bindings."
 
-KinkyDungeonStruggleRemoveFailEgg,"You wiggle fruitlessly trying to pull the TargetRestraint out..."
-KinkyDungeonStruggleRemoveFailEggAroused,"You squirm uselessly tugging at the TargetRestraint..."
+KinkyDungeonStruggleRemoveFailEgg,"You wiggle trying to pull the TargetRestraint out..."
+KinkyDungeonStruggleRemoveFailEggAroused,"You squirm, tugging at the TargetRestraint..."
 KinkyDungeonStruggleRemoveImpossibleEgg,"You can't grip the TargetRestraint to take it out."
 KinkyDungeonStruggleRemoveImpossibleEggAroused,"You fruitlessly feel around trying to grab the TargetRestraint."
 KinkyDungeonStruggleRemoveImpossibleBoundEgg,"Your bindings prevent you from reaching the TargetRestraint."
