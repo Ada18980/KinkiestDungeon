@@ -8292,16 +8292,12 @@ RestraintName 上的诅咒解除了！
 允许安装牵绳。
 # :: RestraintBasicCollarDesc2
 # :: RestraintSteelCollarDesc2
-# :: RestraintMagicCollarDesc2
 # :: RestraintKittyCollarDesc2
-- Slave Collar
-奴隶项圈
-- A high-security steel collar befitting of a slave.
-适合奴隶的高安全性钢项圈。
-- Enchanted Collar
-魔法项圈
-- A collar made with magically enchanted materials. It is difficult to cut off.
-用魔法材料制成的项圈。很难切断。
+# - Steel Collar
+# - A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive.
+# - Runic Collar
+# - A collar that adjusts to fit the wearer perfectly. It resembles steel, but with carved glyphs that faintly glow.
+# - The lock is decorative. It's sealed magically around your neck.
 - Kitty Collar
 猫咪项圈
 - A collar made with magically enchanted materials. It is protected by the blessing of Bast.
