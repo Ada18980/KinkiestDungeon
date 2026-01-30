@@ -735,6 +735,40 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		KinkyDungeonSendEvent("afterShrineBottle", {x: data.x, y: data.y, tile: data.tile});
 		return "";
 	},
+	"safeword": (data) => {
+		// todo multiple players?
+		let player = KDPlayer();
+
+		let msg = TextGet("KDSafwordMsg", {
+			Playername: KDGameData.PlayerName
+		});
+
+		
+		for (let key of Object.keys(KDSpecialStats)) {
+			let amt = KDEntityBuffedStat(KDPlayer(), key);
+			KDAddSpecialStat(key, player, -amt, true);
+		}
+
+		for (let i = 0; i < 10000; i++) {
+			let restraints = KinkyDungeonAllRestraintDynamic();
+			if (restraints.length > 0) {
+				KinkyDungeonRemoveRestraintSpecific(restraints[0].item, true, false, false, true);
+			}
+		}
+
+		KinkyDungeonAdvanceTime(0, false);
+
+		KinkyDungeonSendTextMessage(10, msg, KDBaseWhite, 5);
+		let point = KDMapData.StartPosition || KDMapData.EndPosition;
+		if (point) {
+			KDMovePlayer(point.x, point.y, false, false);
+			KinkyDungeonPlayerEntity.visual_x = KinkyDungeonPlayerEntity.x;
+			KinkyDungeonPlayerEntity.visual_y = KinkyDungeonPlayerEntity.y;
+		}
+		KDKickEnemies(undefined, true, MiniGameKinkyDungeonLevel)
+		
+		return "";
+	},
 	"renamenpc": (data) => {
 			let origname = KDGameData.Collection[data.id]?.origname;
 			if (KDGameData.Collection[data.id]

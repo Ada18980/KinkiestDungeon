@@ -73,6 +73,42 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             tooltip: TextGet("KDConsentListDesc_" + "PlugRear"),
         },
 
+        
+    ChastityBra: {
+            name: "ChastityBra",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+            prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+
+            perkRed: "FreeBoob2",
+            perkYellow: "FreeBoob1",
+            perkGreen: "",
+
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "ChastityBra"),
+            tooltip: TextGet("KDConsentListDesc_" + "ChastityBra"),
+        },
+    ChastityBelt: {
+            name: "ChastityBelt",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+            prereq: () => {return KinkyDungeonStatsChoice.get("arousalMode");},
+
+            perkRed: "NoBelt2",
+            perkYellow: "NoBelt1",
+            perkGreen: "",
+
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "ChastityBelt"),
+            tooltip: TextGet("KDConsentListDesc_" + "ChastityBelt"),
+        },
+
     Tickle: {
             name: "Tickle",
             color: KDBaseWhite,
@@ -550,14 +586,48 @@ function KDDrawConsent(xOffset) {
     undefined, undefined, hotkeyUp, hotkeyDown,
         0.3, 1, KDUIColor);
 
-    if (drawn) {
-        DrawTextFitKDgetHeight(
-            TextGet("KDConsentItemTooltip_" + drawn.name) + TextGet("KDConsentItemTooltip_" + (KDConsentArray[drawn.name] || "Check")),
-            xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
-            undefined, 20, "left",
-            undefined, undefined, undefined, undefined, 
-            undefined, true, "top"
-        )
+    if (DrawButtonKDEx("removeGuest", (_b) => {
+			if (!KDConfirmOverInventoryAction) {
+				KDConfirmOverInventoryAction = true;
+			} else {
+				KDSendInput("safeword", {
+					player: KDPlayer().id,
+				});
+                KinkyDungeonPreviousState = "";
+                KinkyDungeonState = "Game";
+                KinkyDungeonDrawState = "Game";
+				KDConfirmOverInventoryAction = false;
+			}
+			if (KDSoundEnabled())
+				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
+			return true;
+		}, KinkyDungeonPreviousState == "Game",
+            1500, 900, 350, 64, TextGet(
+            KDConfirmOverInventoryAction ? "KDSafewordConfirm" : "KDSafeword"
+        ), KinkyDungeonPreviousState == "Game" ? KDBaseWhite : KDBaseLightGrey, "", undefined, KinkyDungeonPreviousState != "Game", undefined, undefined,
+        undefined, undefined, KinkyDungeonPreviousState == "Game" ? {
+            hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
+            hotkeyPress: KinkyDungeonKeyEnter[0],
+        } : undefined)) {
+         DrawTextFitKDgetHeight(
+                TextGet("KDSafewordDesc") + (KinkyDungeonPreviousState == "Game" ? "" : TextGet("KDSafewordMenu")),
+                xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
+                undefined, 20, "left",
+                undefined, undefined, undefined, undefined, 
+                undefined, true, "top"
+            )
+
+     } else {
+        if (mouseDown) KDConfirmOverInventoryAction = false;
+        if (drawn) {
+            DrawTextFitKDgetHeight(
+                TextGet("KDConsentItemTooltip_" + drawn.name) + TextGet("KDConsentItemTooltip_" + (KDConsentArray[drawn.name] || "Check")),
+                xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
+                undefined, 20, "left",
+                undefined, undefined, undefined, undefined, 
+                undefined, true, "top"
+            )
+        }
     }
 }
 
