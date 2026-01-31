@@ -4707,6 +4707,9 @@ RestraintComfyGagDesc2,It's made of an ethereal material...
 RestraintComfyStraitjacket,Comfy Straitjacket
 RestraintComfyStraitjacketDesc,A straitjacket that is padded on the inside.
 RestraintComfyStraitjacketDesc2,It feels tight but is actually made of an ethereal material...
+RestraintComfyLegbinder,Comfy Legbinder
+RestraintComfyLegbinderDesc,"A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort."
+RestraintComfyLegbinderDesc2,It feels tight but is actually made of an ethereal material...
 
 RestraintLatexStraitjacket,Latex Jacket
 RestraintLatexStraitjacketDesc,A tight jacket that keeps your arms completely useless.
@@ -29346,11 +29349,15 @@ KDConsentItem_Brats,Brats
 KDConsentItem_ChastityBra,Forced Chastity Bras
 KDConsentItem_ChastityBelt,Forced Chastity Belts
 
+KDConsentItem_Invis,Invisible Restraints
+
 KDConsentItemTooltip_Red,"|||This item is marked as Red, which prevents it from appearing in the game."
 KDConsentItemTooltip_Yellow,"|||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention."
 KDConsentItemTooltip_Green,"|||This item is marked as Green, which will make it appear more often."
 KDConsentItemTooltip_Check,"|||This item will appear ingame as normal."
 
+
+KDConsentItemTooltip_Invis,"Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead."
 KDConsentItemTooltip_ChastityBra,"Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys."
 KDConsentItemTooltip_ChastityBelt,"Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body."
 KDConsentItemTooltip_Brats,"Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them."

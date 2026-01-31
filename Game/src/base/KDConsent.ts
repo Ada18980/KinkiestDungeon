@@ -291,6 +291,21 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             label: TextGet("KDConsentListDesc_" + "DollTerminal"),
             tooltip: TextGet("KDConsentListDesc_" + "DollTerminal"),
     },
+    Invis: {
+            name: "Invis",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "NoInvis",
+            perkYellow: "",
+            perkGreen: "",
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "Invis"),
+            tooltip: TextGet("KDConsentListDesc_" + "Invis"),
+        },
     SenseDep: {
             name: "SenseDep",
             color: KDBaseWhite,
@@ -601,16 +616,16 @@ function KDDrawConsent(xOffset) {
 			if (KDSoundEnabled())
 				AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Damage" + ".ogg");
 			return true;
-		}, KinkyDungeonPreviousState == "Game",
+		}, KDSafewordEnabled(),
             1500, 900, 350, 64, TextGet(
             KDConfirmOverInventoryAction ? "KDSafewordConfirm" : "KDSafeword"
-        ), KinkyDungeonPreviousState == "Game" ? KDBaseWhite : KDBaseLightGrey, "", undefined, KinkyDungeonPreviousState != "Game", undefined, undefined,
-        undefined, undefined, KinkyDungeonPreviousState == "Game" ? {
+        ), KDSafewordEnabled() ? KDBaseWhite : KDBaseLightGrey, "", undefined, !KDSafewordEnabled(), undefined, undefined,
+        undefined, undefined, KDSafewordEnabled() ? {
             hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
             hotkeyPress: KinkyDungeonKeyEnter[0],
         } : undefined)) {
          DrawTextFitKDgetHeight(
-                TextGet("KDSafewordDesc") + (KinkyDungeonPreviousState == "Game" ? "" : TextGet("KDSafewordMenu")),
+                KDGetSafewordDesc(),
                 xOffset + 55, yStart + 36, sidebar - 55, KDTextWhite, 
                 undefined, 20, "left",
                 undefined, undefined, undefined, undefined, 
@@ -632,3 +647,11 @@ function KDDrawConsent(xOffset) {
 }
 
 let KDConsentListItem = "";
+
+function KDGetSafewordDesc() {
+    return TextGet("KDSafewordDesc") + (KinkyDungeonPreviousState == "Game" ? "" : TextGet("KDSafewordMenu"));
+}
+
+function KDSafewordEnabled() {
+    return KinkyDungeonPreviousState == "Game";
+}

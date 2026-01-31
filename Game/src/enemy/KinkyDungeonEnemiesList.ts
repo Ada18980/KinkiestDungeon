@@ -961,6 +961,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 1, color: KDBaseWhite},
 		],
+		ignoreflag: ["gaggeistatk"], failAttackflag: ["gaggeistatk"], failAttackflagDuration: 12, failAttackflagChance: 0.4,
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 0.5,

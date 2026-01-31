@@ -3335,6 +3335,7 @@ let KDNoOverrideTags = [
 	"NoKigu",
 	"NoBlindfolds",
 	"Blackout",
+	"NoInvis",
 	"NoBoots",
 	"BubbleOptout",
 	"BubblePref",

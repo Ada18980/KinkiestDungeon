@@ -4805,7 +4805,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		AssetGroup: "ItemMouth3", Color: "#cccccc", power: 4, weight: 4, escapeChance: {"Struggle": -0.1, "Cut": 0.1, "Remove": 0.25, Pick: 0.2, Unlock: 0.7}, maxwill: 0.9,
 		Model: "GhostGag",
 		cutVulnerability: 2.0,
-		enemyTags: {"invisRestraints":4, invisGag: 10}, playerTags: {"ItemMouthFull":-3.8}, minLevel: 0, allFloors: true, shrine: ["Gags", "Invisible", "BallGags", "Illusion"]},
+		enemyTags: {"invisRestraints":4, invisGag: 10}, playerTags: {"ItemMouthFull":-3.8, "NoInvis": -1000}, minLevel: 0, allFloors: true, shrine: ["Gags", "Invisible", "BallGags", "Illusion"]},
 
 	{inventory: true, trappable: true, name: "InvisibleBlindfold", Asset: "LeatherBlindfold", LinkableBy: [...KDBlindfoldLink], renderWhenLinked: [...KDBlindfoldLink], Color: "Default", Group: "ItemHead",
 		power: 3, weight: 2,
@@ -4820,7 +4820,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		maxwill: 1.0, escapeChance: {"Struggle": 0.4, "Cut": 0.6, "Remove": 0.3, "Pick": 0.4},
 		enemyTags: {"invisRestraints":1, },
-		playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Illusion", "Blindfolds"]},
+		playerTags: {"NoInvis": -1000}, minLevel: 0, allFloors: true, shrine: ["Illusion", "Blindfolds"]},
 
 	{renderWhenLinked: [...KDArmbinderLink], inventory: true, trappable: true, name: "InvisibleArmbinder", debris: "Belts",
 		inaccessible: true, strictness: 0.1, Asset: "LeatherArmbinder", LinkableBy: [...KDArmbinderLink],
@@ -4839,7 +4839,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			"More_Armbinders": 3.5,
 			"Less_Armbinders": 0.1,
 		},
-		maxwill: 0.35, escapeChance: {"Struggle": 0.11, "Cut": 0.4, "Remove": 0.3, "Pick": 0.5}, enemyTags: {"invisRestraints":10, }, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Illusion", "Armbinders", "Block_ItemHands"]},
+		maxwill: 0.35, escapeChance: {"Struggle": 0.11, "Cut": 0.4, "Remove": 0.3, "Pick": 0.5}, enemyTags: {"invisRestraints":10, "NoInvis": -1000}, playerTags: {}, minLevel: 0, allFloors: true, shrine: ["Illusion", "Armbinders", "Block_ItemHands"]},
 
 	{renderWhenLinked: [...KDLegbinderRender], inventory: true, name: "InvisibleLegbinder", debris: "Belts", Asset: "LegBinder", inaccessible: true,
 		LinkableBy: [...KDLegbinderLink], Color: "Default", Group: "ItemLegs", blockfeet: true,
@@ -4857,7 +4857,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMaxSpeed: {Cut: 0.3, Remove: 0.1},
 		maxwill: 0.1,
 		struggleMult: {Struggle: 0.4},
-		power: 6, weight: 2, escapeChance: {"Struggle": .06, "Cut": 0.35, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"invisRestraints":3, }, playerTags: {}, minLevel: 7, allFloors: true,
+		power: 6, weight: 2, escapeChance: {"Struggle": .06, "Cut": 0.35, "Remove": 0.25, "Pick": 0.35}, enemyTags: {"invisRestraints":3, "NoInvis": -1000}, playerTags: {}, minLevel: 7, allFloors: true,
 		shrine: ["Illusion", "Legbinders"]},
 
 	//Endregion invisible
@@ -4870,7 +4870,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Fabric: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.5166666666666666},
 		},
-		enemyTags: {"comfyRestraints":1}, playerTags: {"ItemMouthFull":1}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Gags", "Illusion"]},
+		enemyTags: {"comfyRestraints":1, "invisRestraints": -10, "invisGag": -10}, playerTags: {"ItemMouthFull":1, "NoInvis": 10}, minLevel: 0, allFloors: true, shrine: ["FlatGags", "Gags", "Illusion"]},
 	{inventory: true, name: "ComfyStraitjacket", Asset: "HighSecurityStraitJacket",
 		Modules: [0, 2, 1], Color: ['#cccccc', '#cccccc', '#cccccc'], Group: "ItemArms", power: 3, weight: 1, bindarms: true, bindhands: 0.9,
 
@@ -4895,8 +4895,28 @@ const KinkyDungeonRestraints: restraint[] = [
 			"Less_Jackets": 0.1,
 		},
 		limitChance: {"Struggle": 0.2, "Cut": 0.07, "Remove": 0.35, "Unlock": 0.75}, // Hard to escape the arms box by struggling
-		escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.4, "Pick": 5}, enemyTags: {"comfyRestraints": 1}, playerTags: {}, minLevel: 0, maxwill: 0.35,
+		escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.4, "Pick": 5}, enemyTags: {"comfyRestraints": 1, "invisRestraints": -10}, playerTags: {"NoInvis": 10}, minLevel: 0, maxwill: 0.35,
 		allFloors: true, shrine: ["Straitjackets", "Block_ItemHands", "Illusion"]},
+
+	{inventory: true, name: "ComfyLegbinder",
+		debris: "Belts", Asset: "LegBinder", inaccessible: true,
+		renderWhenLinked: [...KDLegbinderRender],
+		LinkableBy: [...KDLegbinderLink],
+		addTag: ["LegBind"],
+		affinity: {Remove: ["Hook"], Struggle: ["Hook"],},
+		Color: "Default", Group: "ItemLegs", blockfeet: true,
+		power: 4, weight: 1,
+		Model: "Legbinder",
+		sfxGroup: "Leather",
+		cutVulnerability: 1.5,
+		Filters: {
+			Binder: {"gamma":1,"saturation":1,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.44999999999999996},
+			Laces: {"gamma":1,"saturation":0.2,"contrast":1,"brightness":1,"red":1,"green":1,"blue":1,"alpha":0.7166666666666667},
+		},
+		limitChance: {"Struggle": 0.2, "Cut": 0.07, "Remove": 0.35, "Unlock": 0.75}, // Hard to escape the arms box by struggling
+		escapeChance: {"Struggle": 0.2, "Cut": 0.2, "Remove": 0.4, "Pick": 5}, enemyTags: {"comfyRestraints": 1, "invisRestraints": -10}, playerTags: {"NoInvis": 10},
+		minLevel: 5, maxwill: 0.35,
+		allFloors: true, shrine: ["Legbinders", "Illusion"]},
 
 	//endregion
 
