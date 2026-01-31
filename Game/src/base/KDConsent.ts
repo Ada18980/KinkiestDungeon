@@ -16,6 +16,8 @@ interface ConsentListData {
 
     /** for backwards compatibility when backporting consent */
     populateFromNoPerks?: boolean,
+    /** this one does NOT get turned on when loading a save, if current one is not enabled*/
+    dontPopulateFromSave?: boolean,
 
     label: string,
     tooltip: string,
@@ -425,6 +427,23 @@ let KDConsentListBasic: Record<string, ConsentListData> = {
             priority: -10,
             label: TextGet("KDConsentListDesc_" + "Ballsuit"),
             tooltip: TextGet("KDConsentListDesc_" + "Ballsuit"),
+    },
+    ConsentIngame: {
+            name: "ConsentIngame",
+            color: KDBaseWhite,
+            bordercolor: KDBaseTeal,
+            textColor: KDBaseWhite,
+
+
+            perkRed: "LockMenuWhileTied",
+            perkYellow: "",
+            perkGreen: "",
+
+            dontPopulateFromSave: true,
+
+            priority: -10,
+            label: TextGet("KDConsentListDesc_" + "ConsentIngame"),
+            tooltip: TextGet("KDConsentListDesc_" + "ConsentIngame"),
     },
 };
 

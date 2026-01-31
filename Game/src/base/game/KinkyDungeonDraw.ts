@@ -2146,14 +2146,15 @@ function KinkyDungeonDrawGame() {
 				KDOptionFilter = "";
 				return true;
 			}, true, 1265, 450, 260, 64, TextGet("GameToggles"), KDBaseWhite, "");
-			if (KDCanConsentIngame())
-				DrawButtonKDEx("ConsentToggles", () => {
+			DrawButtonKDEx("ConsentToggles", () => {
 					
-					KinkyDungeonPreviousState = KinkyDungeonState;
-					KinkyDungeonState = "CConsent";
-					KDConsentFilter = "";
-					return true;
-				}, true, 975, 450, 260, 64, TextGet("GameConsent"), KDBaseWhite, "");
+				KinkyDungeonPreviousState = KinkyDungeonState;
+				KinkyDungeonState = "CConsent";
+				KDConsentFilter = "";
+				return true;
+			}, KDCanConsentIngame(), 975, 450, 260, 64, 
+			KDCanConsentIngame() ? TextGet("GameConsent") : TextGet("KDConsentMenuLocked"), 
+			KDCanConsentIngame() ? KDBaseWhite: KDBaseLightGrey, "");
 
 
 		} else if (KinkyDungeonDrawState == "Perks2") {
@@ -5967,5 +5968,5 @@ function KDDoStatusFade(delta: number) {
 }
 
 function KDCanConsentIngame() {
-	return true;
+	return !KDConsentArray["ConsentIngame"];
 }
