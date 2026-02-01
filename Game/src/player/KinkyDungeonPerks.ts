@@ -297,7 +297,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Inflexible": {category: "Restraints", id: 3, cost: -1, block: ["Flexible"]},
 	"Locksmith": {category: "Restraints", id: 4, cost: 2, block: ["Clueless"]},
 	"Clueless": {category: "Restraints", id: 5, cost: -1, block: ["Locksmith"]},
-	
+
 	"StrugglePerLevel": {category: "Restraints", id: "StrugglePerLevel", cost: 3, block: ["StrugglePerLevelNeg"]},
 	"StrugglePerLevelNeg": {category: "Restraints", id: "StrugglePerLevelNeg", cost: -3, block: ["StrugglePerLevel"]},
 	"PainfulChoice": {category: "Restraints", id: "PainfulChoice", cost: 0},
@@ -407,7 +407,12 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 
 
-	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1},
+	"Nowhere": {category: "Enemies", id: "Nowhere", cost: -1, block: ["Nowhere2"]},
+	"Nowhere2": {category: "Enemies", id: "Nowhere2", cost: -1.5, block: ["Nowhere"]},
+	"AreYouNeo": {category: "Enemies", id: "AreYouNeo", cost: -1},
+	"TrappersDelight": {category: "Enemies", id: "TrappersDelight", cost: -3},
+
+	"LifelessNeighbourhood": {category: "Enemies", id: "LifelessNeighbourhood", cost: 2},
 	"LivingCollars": {category: "Enemies", id: "LivingCollars", cost: -2.5},
 	"StunBondage": {category: "Enemies", id: "StunBondage", cost: -2.5},
 	"Prisoner": {category: "Start", id: "Prisoner", cost: 0},
@@ -647,7 +652,7 @@ function KDSolvePerkRules(rules: String, validperks: string[]): number{
 				if (value == 0 && (currentoper == '' || (currentoper == '&' && result == 1))) result = 0;
 				//1 or 0 == 1; -1 or 0 == -1; 1 and 0 == 0; 0 and -1 == -1; 1 and -1 == -1
 				if (value<0 && (currentoper == '' || currentoper == "&" || (currentoper=="|" && result==0))) result = -1;
-				//-1 or 0 == -1; 
+				//-1 or 0 == -1;
 			}
 			if (i != rules.length) currentoper = rules[i];
 			temp = "";

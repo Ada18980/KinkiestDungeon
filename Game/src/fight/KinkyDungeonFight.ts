@@ -2834,7 +2834,93 @@ function KinkyDungeonBulletHit(b: KDBullet, born: number, outOfTime?: boolean, o
  * @param [ox]
  * @param [oy]
  */
+function KinkyDungeonTrapSummonEnemy (
+	x:              number,
+	y:              number,
+	summonType:     string | enemy,
+	count:          number,
+	rad:            number,
+	strict?:        boolean,
+	lifetime?:      number,
+	hidden?:        boolean,
+	goToTarget?:    boolean,
+	faction?:       string,
+	hostile?:       boolean,
+	minrad?:        number,
+	startAware?:    boolean,
+	noBullet?:      boolean,
+	hideTimer?:     boolean,
+	pathfind?:      boolean,
+	mod?:           string,
+	boundTo?:       number,
+	weakBinding?:   boolean,
+	teleportTime?:  number,
+	ox?:            number,
+	oy?:            number,
+	temporary?:     boolean
+): entity[] {
+	return KinkyDungeonSummonEnemyInternal(x, y, summonType, count, rad, strict, lifetime, hidden, goToTarget,
+		faction, hostile, minrad, startAware, noBullet, hideTimer, pathfind, mod, boundTo, weakBinding,
+		teleportTime, ox, oy, temporary);
+}
+
+/**
+ * @param x
+ * @param y
+ * @param summonType
+ * @param count
+ * @param rad
+ * @param [strict]
+ * @param [lifetime]
+ * @param [hidden]
+ * @param [goToTarget]
+ * @param [faction]
+ * @param [hostile]
+ * @param [minrad]
+ * @param [startAware]
+ * @param [noBullet]
+ * @param [hideTimer]
+ * @param [pathfind]
+ * @param [mod]
+ * @param [boundTo]
+ * @param [weakBinding]
+ * @param [teleportTime]
+ * @param [ox]
+ * @param [oy]
+ */
 function KinkyDungeonSummonEnemy (
+	x:              number,
+	y:              number,
+	summonType:     string | enemy,
+	count:          number,
+	rad:            number,
+	strict?:        boolean,
+	lifetime?:      number,
+	hidden?:        boolean,
+	goToTarget?:    boolean,
+	faction?:       string,
+	hostile?:       boolean,
+	minrad?:        number,
+	startAware?:    boolean,
+	noBullet?:      boolean,
+	hideTimer?:     boolean,
+	pathfind?:      boolean,
+	mod?:           string,
+	boundTo?:       number,
+	weakBinding?:   boolean,
+	teleportTime?:  number,
+	ox?:            number,
+	oy?:            number,
+	temporary?:     boolean
+): entity[] {
+	if (KinkyDungeonStatsChoice.has("LifelessNeighbourhood")) return [];
+
+	return KinkyDungeonSummonEnemyInternal(x, y, summonType, count, rad, strict, lifetime, hidden, goToTarget,
+		faction, hostile, minrad, startAware, noBullet, hideTimer, pathfind, mod, boundTo, weakBinding,
+		teleportTime, ox, oy, temporary);
+}
+
+function KinkyDungeonSummonEnemyInternal (
 	x:              number,
 	y:              number,
 	summonType:     string | enemy,
@@ -3189,13 +3275,13 @@ function KDHealNPC(enemy: entity, amount: number, source: number, bullet?: KDBul
 
 	if (bullet?.bullet?.faction == "Player" || KinkyDungeonVisionGet(enemy.x, enemy.y) > 0)
 		if (enemy.hp - origHP) {
-			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`, 
+			KinkyDungeonSendFloater(enemy, `+${Math.round((enemy.hp - origHP) * 10)}`,
 				KDAllied(enemy) ? KDBaseGreal : KDBaseYellowGreen, KDToggles.FastFloaters ? 1 : 3);
 		} else {
 			// TODO add a glowing green effect?
 		}
-		
-	
+
+
 	if (!bullet) return;
 	if (bullet.bullet.faction == "Player") {
 		if (enemy.hp - origHP) {
@@ -3353,7 +3439,7 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 
 	if (KDToggles.ForceWarnings || KDMouseInPlayableArea() || KDMousePlayableAreaStatusFade)
 		for (let t of KDBulletWarnings) {
-	
+
 			let alphamult = KDToggles.FlashingWarning ? Math.cos(
 				2 * Math.PI * ((flashindex++*KDWarningFlashBPerDelta + KDWarningFlashSpeed * performance.now() * (KDAnimSpeed)) % 2000 / 2000)) * 0.39 + 0.6 : 1;
 			let scale = t.scale || 0.01;

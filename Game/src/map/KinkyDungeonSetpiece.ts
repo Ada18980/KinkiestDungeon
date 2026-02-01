@@ -350,7 +350,7 @@ function KinkyDungeonGenerateSetpiece (
 				let Enemy = KinkyDungeonGetEnemyByName("Fuuka1");
 				let e = {tracking: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:cornerX + 3, y:cornerY + 3, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
 				KDAddEntity(e);
-				
+
 				KDRunCreationScript(e, KDGetCurrentLocation());
 				KDStageBossGenerated = true;
 				break;
@@ -635,26 +635,26 @@ function KinkyDungeonGenerateSetpiece (
 				KinkyDungeonMapSet(cornerX + 4, cornerY + 1, 'B');
 				KinkyDungeonMapSet(cornerX + 2, cornerY + 5, 'B');
 				KinkyDungeonMapSet(cornerX + 4, cornerY + 5, 'B');
-				if (KinkyDungeonStatsChoice.has("Nowhere") && !altType?.notraps) {
-					if (KDRandom() < 0.5)
+				if ((KinkyDungeonStatsChoice.has("Nowhere") && !altType?.notraps) || KinkyDungeonStatsChoice.has("Nowhere2")) { // Nowhere2 overrides noTrap piece into trapped one
+					if (KDRandom() < 0.5 || KinkyDungeonStatsChoice.has("Nowhere2"))
 						KinkyDungeonTilesSet((cornerX + 2) + "," + (cornerY + 1), {
 							Type: "Trap",
 							Trap: "BedTrap",
 							Furniture: "Bed",
 						});
-					if (KDRandom() < 0.5)
+					if (KDRandom() < 0.5 || KinkyDungeonStatsChoice.has("Nowhere2"))
 						KinkyDungeonTilesSet((cornerX + 4) + "," + (cornerY + 1), {
 							Type: "Trap",
 							Trap: "BedTrap",
 							Furniture: "Bed",
 						});
-					if (KDRandom() < 0.5)
+					if (KDRandom() < 0.5 || KinkyDungeonStatsChoice.has("Nowhere2"))
 						KinkyDungeonTilesSet((cornerX + 2) + "," + (cornerY + 5), {
 							Type: "Trap",
 							Trap: "BedTrap",
 							Furniture: "Bed",
 						});
-					if (KDRandom() < 0.5)
+					if (KDRandom() < 0.5 || KinkyDungeonStatsChoice.has("Nowhere2"))
 						KinkyDungeonTilesSet((cornerX + 4) + "," + (cornerY + 5), {
 							Type: "Trap",
 							Trap: "BedTrap",
