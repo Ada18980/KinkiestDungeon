@@ -439,9 +439,16 @@ KinkyDungeonStatDescAbsoluteFocus,"Miscast chance is doubled."
 KinkyDungeonStatBoundCrusader,"Bound Crusader"
 KinkyDungeonStatDescBoundCrusader,"Goddesses will equip restraints upon acceptance of a quest."
 
-KinkyDungeonStatNowhere,"Nowhere is Safe"
+KinkyDungeonStatNowhere,"Safety Concerns"
 KinkyDungeonStatDescNowhere,"Beds and furniture are often trapped."
-
+KinkyDungeonStatNowhere2,"Nowhere is Safe"
+KinkyDungeonStatDescNowhere2,"Beds and furniture are ALWAYS trapped (some exceptions apply)."
+KinkyDungeonStatTrappersDelight,"Trappers Delight"
+KinkyDungeonStatDescTrappersDelight,"Traps can be triggered infinite times."
+KinkyDungeonStatAreYouNeo,"Matrix Fan"
+KinkyDungeonStatDescAreYouNeo,"Do you like getting into traps? So today is your lucky day as traps are everywhere!"
+KinkyDungeonStatLifelessNeighbourhood,"Lifeless Neighbourhood"
+KinkyDungeonStatDescLifelessNeighbourhood,"Enemies are foreigners in this dungeon (disables natural enemy spawn)."
 
 KinkyDungeonStatQuakeCollar,"Quakehoof Associate"
 KinkyDungeonStatDescQuakeCollar,"Start with the Epsilon Collar, which regenerates mana when you play with yourself."

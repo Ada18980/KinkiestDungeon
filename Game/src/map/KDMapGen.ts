@@ -869,7 +869,7 @@ function KinkyDungeonGetAccessibleRoom(startX: number, startY: number): string[]
 	checkGrid[startX + "," + startY] = {x: startX, y: startY};
 	let Tiles = KDInteractableTiles.replace("D", "").replace("d", "");
 	let MTiles = KinkyDungeonMovableTilesSmartEnemy.replace("D", "").replace("d", "");
-					
+
 	while (Object.entries(checkGrid).length > 0) {
 		for (let g of Object.entries(checkGrid)) {
 			for (let XX = -1; XX <= 1; XX++)
@@ -997,7 +997,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 	KinkyDungeonSearchTimer = 0;
 
 	let tagList: Record<string, string[]> = {};
-	
+
 
 	let enemyCount = 4 + Math.floor(Math.sqrt(Floor) + width/10 + height/10 + Math.sqrt(KinkyDungeonDifficulty));
 	if (KinkyDungeonStatsChoice.get("Stealthy")) enemyCount = Math.round(enemyCount * KDStealthyEnemyCountMult);
@@ -1045,7 +1045,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 			{requiredTags: ["minor"], tags: [], currentCount: 0, maxCount: 0.1},
 		];
 	}
-	
+
 	KinkyDungeonSendEvent("getSpawnBoxes", boxdata)
 	if (boxdata.MapMod) {
 		let mapMod = KDMapMods[boxdata.MapMod];
@@ -1108,7 +1108,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, mapmodtag
 	let culledSpawns = false;
 
 	let GlobalTags = [];
-	
+
 	KinkyDungeonAddTags(GlobalTags, Floor);
 	if (mapmodtags) {
 		for (let tag of mapmodtags) {
@@ -2578,19 +2578,23 @@ function KinkyDungeonPlaceTraps(traps: any[], traptypes: any[], trapchance: numb
 		for (let Y = 1; Y < height-1; Y += 1) {
 			let hosttile = KinkyDungeonMapGet(X, Y);
 			let chance = KDTrappableNeighbors.includes(hosttile) ? trapchance * trapchance : (KDTrappableNeighborsLikely.includes(hosttile) ? trapchance : 0);
-			// Check the 3x3 area
+
+			// Check the 3x3 area and place regular trap on the ground
 			if (chance > 0) {
 				for (let XX = X-1; XX <= X+1; XX += 1)
 					for (let YY = Y-1; YY <= Y+1; YY += 1) {
 						let tile = KinkyDungeonMapGet(XX, YY);
 						if (KinkyDungeonGroundTiles.includes(tile)) {
-							if (KDRandom() < chance) {
+							if (KDRandom() < chance || KinkyDungeonStatsChoice.has("AreYouNeo")) {
 								traps.push({x: XX, y: YY});
 							}
 						}
 					}
 			}
-			if (hosttile == 'L' && KinkyDungeonStatsChoice.has("Nowhere") && KDRandom() < 0.25) {
+
+			// Handle placing furniture traps
+			if (hosttile == 'L' && ((KinkyDungeonStatsChoice.has("Nowhere") && KDRandom() < 0.25) ||
+				KinkyDungeonStatsChoice.has("Nowhere2"))) {
 				let tile = KinkyDungeonTilesGet(X + "," + Y) ? KinkyDungeonTilesGet(X + "," + Y) : {};
 				KinkyDungeonTilesSet(X + "," + Y, Object.assign(tile, {
 					Type: "Trap",

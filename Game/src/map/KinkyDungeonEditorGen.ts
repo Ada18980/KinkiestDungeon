@@ -146,7 +146,7 @@ function KDMapTilesPopulate (
 				try {
 					// Get tile name based on weights (TODO)
 					tileName = KD_GetMapTile(index, indX, indY, tilesFilled, indexFilled, tagCounts, requiredAccess, globalTags, indices, tagModifiers);
-				
+
 					// Get tile from array
 					tile = KDMapTilesList[tileName];
 
@@ -183,7 +183,7 @@ function KDMapTilesPopulate (
 				}
 				trycount++
 			}
-			// If we exceed 10 but are under 100, then it failed all 10 tries. We give up on this tile. 
+			// If we exceed 10 but are under 100, then it failed all 10 tries. We give up on this tile.
 			if ((trycount > 10) && (trycount < 100)) {
                 console.log(`Could not create map tile at ${indX}, ${indY} - Please report!`)
             }
@@ -470,8 +470,10 @@ function KD_PasteTile(tile: KDMapTile, x: number, y: number, data: any): string[
 		for (let yy = 0; yy < tileHeight; yy++) {
 			let tileTile = tile.grid[xx + yy*(tileWidth+1)];
 			KinkyDungeonMapSetForce(x + xx, y + yy, tileTile);
-			if (tileTile == 'B' && !data.notraps && KinkyDungeonStatsChoice.has("Nowhere")) {
-				if (KDRandom() < 0.5)
+			if (tileTile == 'B' &&
+				((!data.notraps && KinkyDungeonStatsChoice.has("Nowhere"))
+					|| KinkyDungeonStatsChoice.has("Nowhere2"))) {
+				if (KDRandom() < 0.5 || KinkyDungeonStatsChoice.has("Nowhere2")) { // Those two ifs should be grouped into one
 					KinkyDungeonTilesSet((x + xx) + "," + (y + yy), {
 						Type: "Trap",
 						Trap: "BedTrap",
@@ -479,6 +481,18 @@ function KD_PasteTile(tile: KDMapTile, x: number, y: number, data: any): string[
 					});
 			}
 		}
+
+			// Handle overriding furniture traps
+			else if (tileTile == 'L' && KinkyDungeonStatsChoice.has("Nowhere2")) {
+				let tile = KinkyDungeonTilesGet(x + "," + y) ? KinkyDungeonTilesGet(x + "," + y) : {};
+				KinkyDungeonTilesSet(x + "," + y, Object.assign(tile, {
+					Type: "Trap",
+					Trap: tile.Furniture ? tile.Furniture + "Trap" : "BarrelTrap",
+				}));
+			}
+		}
+
+
 
 	if (tile.Keyring) {
 		for (let k of tile.Keyring) {
@@ -1011,7 +1025,7 @@ let KDTileGen = {
 			// Decide which furniture
 			if (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") && KDRandom() < 0.6)
 			return {Type: "Furniture", Furniture: "DisplayStand"};
-			else 
+			else
 			return {Type: "Furniture", Furniture: "Syb"};
 		}
 		return {Type: "Furniture", Furniture: "Cage"};
