@@ -13,6 +13,7 @@ AddModel({
 	TopLevel: true,
 	Parent: "SleepsackJacket",
 	Restraint: true,
+	AddPose: ["EncaseTorsoLower"],
 	Categories: ["Restraints", "Legbinder", "Sleepsack", "Pants"],
 	Layers: ToLayerMap([
 		{ Name: "LegLeft", Layer: "LegbinderLegsOver", Pri: 30,
@@ -190,6 +191,8 @@ AddModel({
 	Restraint: true,
 	Parent: "SleepsackLegbinderFull",
 	Categories: ["Restraints", "Legbinder", "Sleepsack"],
+	AddPose: ["EncaseTorsoLower"],
+	HideLayerGroups: ["SlimeFeet", "BelowShoes", "Shoes"],
 	Layers: ToLayerMap([
 		...GetModelLayers("SleepsackLegbinder"),
 		{ Name: "Feet", Layer: "LegbinderAnklesOver", Pri: 29,
@@ -575,3 +578,22 @@ AddModel({
 });
 
 AddModel(GetModelFashionVersion("PlasmaMuzzle", true));
+
+
+
+AddModel({
+	Name: "SleepsackSuspend",
+	Folder: "SleepsackJacket",
+	Parent: "Sleepsack",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Leather", "Suspension"],
+	AddPose: ["Suspended"],
+	Layers: ToLayerMap([
+		{ Name: "Suspension", Layer: "FurnitureBack", Pri: 10,
+			Invariant: true,
+			InheritColor: "Straps",
+			NoOverride: true,
+		},
+	])
+});

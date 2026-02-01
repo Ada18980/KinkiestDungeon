@@ -4119,6 +4119,109 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 				buff.duration = 0;
 			}
 		},
+
+		"Haunting_GhostDeal": (e, buff, entity, _data) => {
+			if (buff.power > 0 && entity.player && (!e.chance || KDRandom() < e.chance || KinkyDungeonFlags.get("GhostDeal_Lock"))) {
+				let tags = ["comfyRestraints", "trap"];
+				let lockies = KDRandom() < 0.67;
+				let lockable =  lockies ? KinkyDungeonPlayerGetLockableRestraints() : undefined;
+				if (lockable?.length > 0) {
+
+					if (!KinkyDungeonFlags.has("GhostDeal") || KinkyDungeonFlags.get("GhostDeal") < 10 || KinkyDungeonFlags.get("GhostDeal_Lock")) {
+						let itemTolock = lockable[Math.floor(lockable.length * KDRandom())];
+						if (itemTolock) {
+							let lock = KDGetGhostLock(buff, entity);
+							if (lock) {
+								KinkyDungeonSendTextMessage(7, TextGet("KDHauntingDealLock", {
+									Restraint: KDGetItemName(itemTolock),
+									LockType: TextGet("Kinky" + lock + "LockType")
+								}), KDBaseRed, 8);
+								KinkyDungeonLock(itemTolock, lock);
+							}
+						}
+					}
+				} else if (!KinkyDungeonFlags.get("GhostDeal_Lock")) {
+					let restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), KDCurrIndex(), true, "None",
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						undefined,
+						{
+							allowLowPower: true,
+					});
+
+					if (!KinkyDungeonFlags.has("GhostDeal") && restraintAdd) {
+							if (KDNearbyEnemies(entity.x, entity.y, e.dist).filter((enemy) => {
+								return KinkyDungeonAggressive(enemy);
+							}).length > 0) {
+								//buff.power -= 1;
+								KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(), true, "None", true);
+								KinkyDungeonSendTextMessage(7, TextGet("KDHauntingDeal").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), KDBaseRed, 8);
+								if (e.count > 1) {
+									for (let i = 1; i < e.count; i++) {
+										restraintAdd = KinkyDungeonGetRestraint({ tags: [...tags] }, KDGetEffLevel(), KDCurrIndex(), true, "");
+										KinkyDungeonAddRestraintIfWeaker(restraintAdd, KDGetEffLevel(), true, "None", true);
+										KinkyDungeonSendTextMessage(5, TextGet("KDHaunting").replace("RestraintAdded", TextGet("Restraint" + restraintAdd.name)), KDBaseRed, 1);
+									}
+								}
+								KinkyDungeonSetFlag("GhostDeal", 12 + Math.round(KDRandom() * 38));
+								KinkyDungeonSetFlag("GhostDeal_Lock", 8);
+							}
+						}
+					}
+				}
+				
+				
+		},
+		
+		"Haunting_GhostDealPleasure": (e, buff, entity, _data) => {
+			if (buff.power > 0 && entity.player && (!e.chance || KDRandom() < e.chance)) {
+				
+				if (!KinkyDungeonFlags.has("GhostDealPleasure") && ((
+					KinkyDungeonStatDistraction < KinkyDungeonStatDistractionMax * 0.25 || KinkyDungeonStatDistraction > KinkyDungeonStatDistractionMax * 0.7
+						|| KinkyDungeonStatDistractionLower > KinkyDungeonStatDistractionLower * 0.75
+				) || (KDNearbyEnemies(entity.x, entity.y, 1.5).filter((enemy) => {
+					return KinkyDungeonAggressive(enemy);
+				}).length > 0))) {
+					//buff.power -= 1;
+					let str = TextGet("KDHauntingDealPleasure");
+					let amount = 1 + Math.round(15 * KDRandom())/10;
+
+					let delay = 8 + Math.round(KDRandom() * 13);
+					if (KinkyDungeonFlags.get("GhostDecideRelease")) {
+						delay = Math.ceil(delay / 5);
+					} else 
+					if (!KDIsEdged(entity)) {
+						delay = Math.ceil(delay / 3);
+					} else if (KDRandom() < 0.1) {
+						KinkyDungeonSetFlag("GhostDecideRelease", Math.round(20 + KDRandom() * 50));
+					}
+					
+					KinkyDungeonTeaseLevelBypass += amount*2;
+
+					let dmg = KinkyDungeonDealDamage({
+						type: "grope",
+						damage: amount*0.5,
+						distract: amount,
+						flags: ["DoT"],
+
+					}, undefined, undefined, true).string;
+
+					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Grope.ogg", undefined, 1);
+
+					KinkyDungeonSendTextMessage(5, str.KDReplaceOrAddDmg(dmg), KDBaseRed, 1);
+					
+					KinkyDungeonSetFlag("GhostDealPleasure", delay);
+					
+				}
+			}
+		},
 		"Cursed": (e, buff, entity, _data) => {
 			if (buff.power > 0 && entity.player) {
 				if (KinkyDungeonStatDistraction > 0.99 * KinkyDungeonStatDistractionMax) {

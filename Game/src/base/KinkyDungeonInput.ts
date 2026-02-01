@@ -1244,6 +1244,25 @@ let KDInputTypes: Record<string, (data: any) => string> = {
 		
 		return "";
 	},
+
+
+	"ghostNegotiate": (data) => {
+		KDDelayedActionPrune(["Action", "World"]);
+		if (data.action == "negotiate") {
+			let tile = KinkyDungeonTilesGet(data.targetTile);
+			if (tile && tile.Type == "Ghost") {
+				
+				let x = parseInt(data.targetTile.split(',')[0]);
+				let y = parseInt(data.targetTile.split(',')[1]);
+				if (x && y) {
+					KDGameData.InteractTargetX = x;
+					KDGameData.InteractTargetY = y;
+					KDStartDialog("GhostNegotiate", "Ghost", true, tile.personality || "", undefined);
+				}
+			}
+		}
+		return "";
+	},
 	"tabletInteract": (data) => {
 		KDDelayedActionPrune(["Action", "World"]);
 		if (data.action == "read") {

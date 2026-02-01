@@ -25,6 +25,7 @@ AddModel({
 			DisplaceLayers: ToMap(["RopeCalf"]),
 			InheritColor: "Tape",
 			NoOverride: true,
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 		},
 	])
 });

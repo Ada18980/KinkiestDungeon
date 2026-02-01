@@ -88,6 +88,7 @@ AddModel({
 			AddPriWithPose: {
 				ItemBootsRubberOver: 45,
 			},
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			DisplaceLayers: ToMap(["Heels"]),
 			DisplaceAmount: 100,
 			DisplacementSprite: "SlimeLeft",
@@ -102,6 +103,7 @@ AddModel({
 			AddPriWithPose: {
 				ItemBootsRubberOver: 45,
 			},
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			DisplaceLayers: ToMap(["HeelRight"]),
 			DisplaceAmount: 100,
 			DisplacementSprite: "SlimeRight",
@@ -197,6 +199,7 @@ AddModel({
 			SwapLayerPose: {Kneel: "WrappingLegsOver", KneelClosed: "WrappingLegsOver"},
 			InheritColor: "Rubber",
 			HideWhenOverridden: true,
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			AddPriWithPose: {
 				ItemFeetRubberOver: 45,
 			},
@@ -209,6 +212,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			InheritColor: "Rubber",
 			HideWhenOverridden: true,
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			AddPriWithPose: {
 				ItemFeetRubberOver: 45,
 			},

@@ -101,7 +101,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",
-			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			AddPriWithPose: {
 				ItemBootsRubberOver: 45,
 			},
@@ -116,7 +116,7 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
 			NoOverride: true,
 			InheritColor: "Slime",
-			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			AddPriWithPose: {
 				ItemBootsRubberOver: 45,
 			},
@@ -227,7 +227,7 @@ AddModel({
 		{ Name: "AnkleLeft", Layer: "WrappingAnklesOver", Pri: 15,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			SwapLayerPose: {Kneel: "WrappingLegsOver", KneelClosed: "WrappingLegsOver"},
 			InheritColor: "Slime",
 			HideWhenOverridden: true,
@@ -241,7 +241,7 @@ AddModel({
 		{ Name: "AnkleRight", Layer: "WrappingAnklesOver", Pri: 15,
 			Poses: ToMap(["Closed", "KneelClosed", "Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed", "Hogtie"]),
-			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes"]),
+			ApplyFilterToLayerGroup: ToMap(["SlimeFeet", "BelowShoes", "Shoes"]),
 			InheritColor: "Slime",
 			HideWhenOverridden: true,
 			AddPriWithPose: {

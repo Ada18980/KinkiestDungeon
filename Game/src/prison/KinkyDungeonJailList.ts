@@ -317,14 +317,11 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					KinkyDungeonSendDialogue(guard, TextGet("KinkyDungeonJailerAdd").replace("EnemyName", TextGet("Name" + guard.Enemy.name)), "#e7cf1a", 4, 3);
 				}
 			} else if (lockableRestraint.length > 0) {
-				let group = "";
-				if (lockableRestraint.includes("ItemMouth3")) group = "ItemMouth3";
-				else if (lockableRestraint.includes("ItemMouth2")) group = "ItemMouth2";
-				else if (lockableRestraint.includes("ItemMouth")) group = "ItemMouth";
-				else group = lockableRestraint[Math.floor(lockableRestraint.length * KDRandom())];
-				if (group) {
+				let item = lockableRestraint[Math.floor(lockableRestraint.length * KDRandom())];
+				if (item) {
 					guard.CurrentAction = "jailLockRestraints";
-					guard.CurrentRestraintSwapGroup = group;
+					guard.CurrentRestraintSwapGroup = KDRestraint(item).Group;
+					guard.CurrentRestraintSwapIndex = KDGetItemLinkIndex(item, true);
 					KDGameData.GuardTimer = Math.max(0, KDGameData.GuardTimer - 10);
 				}
 
@@ -453,7 +450,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 			if (touchesPlayer) {
 
 				KDGameData.GuardTimer = Math.max(KDGameData.GuardTimer, 2);
-				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
+				let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup, guard.CurrentRestraintSwapIndex);
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
 						let lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(),false, undefined, {enemy: KinkyDungeonJailGuard()});
