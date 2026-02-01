@@ -208,6 +208,9 @@ interface KDRestraintPropsBase {
 	/** This item is not kept in the lost items chest unless it is magical */
 	noRecover?: boolean,
 
+	/** does not use affinity/neededge etc */
+	noaffinity?: boolean,
+	
 	/** These items can only be applied if an enemy has the items in her inventory or the unlimited enemy tag */
 	limited?: boolean,
 	/** Forced to allow these, mainly leashes and collars */

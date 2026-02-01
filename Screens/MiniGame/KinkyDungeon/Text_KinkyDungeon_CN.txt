@@ -253,8 +253,6 @@ Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcopha
 # :: KDDialogue_ToyPlayRunAway_Sub
 # :: KinkyDungeonCurseUnlockOrgasmResist
 # :: KinkyDungeonCurseUnlockOrgasmForced
-# :: KDConsentList_Tickle
-# :: KDConsentListDesc_Tickle
 # :: KDEscapeMinimap_Pass_None
 # :: KinkyDungeonStat
 # :: KinkyDungeonStatDesc
@@ -6663,20 +6661,16 @@ TargetRestraint 的抓力太强了……毫无希望。
 - You whimper as you give up struggling against the TargetRestraint.
 当你放弃从 TargetRestraint 挣脱时，你呜咽着。
 
-- You wiggle around trying to get the TargetRestraint out...
-你扭动身体试图将 TargetRestraint 取出来……
+# - You wiggle around trying to push the TargetRestraint out...
 # :: KinkyDungeonStruggleStruggleFailPlug
 # :: KinkyDungeonStruggleStruggleFailEgg
-- You squirm around trying to dislodge the TargetRestraint...
-你扭动着试图摆脱 TargetRestraint......
+# - You squirm around trying to push out the TargetRestraint...
 # :: KinkyDungeonStruggleStruggleFailPlugAroused
 # :: KinkyDungeonStruggleStruggleFailEggAroused
 - The TargetRestraint is in too deeply, it won't come out.
 TargetRestraint 陷得太深，出不来。
-- You feel the TargetRestraint slide around inside but it won't come out!
-你感觉 TargetRestraint 在里面滑动，但它出不来！
-- Your bondage keeps the TargetRestraint firmly in place.
-你的束缚将 TargetRestraint 牢牢固定着。
+# - You feel the TargetRestraint deep inside but it won't come out!
+# - Your bindings keep the TargetRestraint inside with no chance to slip out.
 - Your struggling does nothing but shift the TargetRestraint's position inside of you.
 你的挣扎只会改变 TargetRestraint 在你体内的位置。
 
@@ -6684,10 +6678,32 @@ TargetRestraint 陷得太深，出不来。
 TargetRestraint 不会出来。
 - You feel the TargetRestraint slide around but it won't come out!
 你感觉 TargetRestraint 四处滑动，但它却出不来！
-- Your bondage keeps the TargetRestraint secure in place.
-你的束缚使 TargetRestraint 固定在适当的位置。
+# - Your bindings keep the TargetRestraint from falling out.
 - Your struggling does nothing to dislodge the TargetRestraint.
 你的挣扎并不能摆脱 TargetRestraint。
+
+
+
+# - You wiggle trying to pull the TargetRestraint out...
+# :: KinkyDungeonStruggleRemoveFailPlug
+# :: KinkyDungeonStruggleRemoveFailEgg
+# - You squirm, tugging at the TargetRestraint...
+# :: KinkyDungeonStruggleRemoveFailPlugAroused
+# :: KinkyDungeonStruggleRemoveFailEggAroused
+# - You can't grip the TargetRestraint to take it out.
+# :: KinkyDungeonStruggleRemoveImpossiblePlug
+# :: KinkyDungeonStruggleRemoveImpossibleEgg
+# - You fruitlessly feel around trying to grab the TargetRestraint.
+# :: KinkyDungeonStruggleRemoveImpossiblePlugAroused
+# :: KinkyDungeonStruggleRemoveImpossibleEggAroused
+# - Your bindings prevent you from reaching the TargetRestraint.
+# :: KinkyDungeonStruggleRemoveImpossibleBoundPlug
+# :: KinkyDungeonStruggleRemoveImpossibleBoundEgg
+# - The TargetRestraint is firmly kept inside of you by your bindings.
+# :: KinkyDungeonStruggleRemoveImpossibleBoundPlugAroused
+# :: KinkyDungeonStruggleRemoveImpossibleBoundEggAroused
+
+
 
 
 - You work to unlace the TargetRestraint...
@@ -8292,16 +8308,12 @@ RestraintName 上的诅咒解除了！
 允许安装牵绳。
 # :: RestraintBasicCollarDesc2
 # :: RestraintSteelCollarDesc2
-# :: RestraintMagicCollarDesc2
 # :: RestraintKittyCollarDesc2
-- Slave Collar
-奴隶项圈
-- A high-security steel collar befitting of a slave.
-适合奴隶的高安全性钢项圈。
-- Enchanted Collar
-魔法项圈
-- A collar made with magically enchanted materials. It is difficult to cut off.
-用魔法材料制成的项圈。很难切断。
+# - Steel Collar
+# - A stainless steel collar befitting of a slave, or perhaps an enthusiastic submissive.
+# - Runic Collar
+# - A collar that adjusts to fit the wearer perfectly. It resembles steel, but with carved glyphs that faintly glow.
+# - The lock is decorative. It's sealed magically around your neck.
 - Kitty Collar
 猫咪项圈
 - A collar made with magically enchanted materials. It is protected by the blessing of Bast.
@@ -9736,6 +9748,10 @@ RestraintName 上的诅咒解除了！
 里面有衬垫的拘束衣。
 - It feels tight but is actually made of an ethereal material...
 它感觉很紧，但实际上是由一种空灵的材料制成的……
+# :: RestraintComfyStraitjacketDesc2
+# :: RestraintComfyLegbinderDesc2
+# - Comfy Legbinder
+# - A legbinder that renders you unable to move quickly, either due to restriction or sheer comfort.
 
 - Latex Jacket
 乳胶拘束衣
@@ -26364,6 +26380,7 @@ ENEMYNAME 将附近的玩偶变成了她的臣民！
 # - Back to Pause Menu
 # - Back to Game Setup
 # - Back to Character Setup
+# - Back to Challenge Setup
 - Back to Wardrobe
 返回衣柜
 - Confirm Strip?
@@ -43173,7 +43190,8 @@ Vents发型
 # - PumpkinBlindfold
 # - FashionPumpkinBlindfold
 # - PumpkinGag
-# - Pumpkin
+- Pumpkin
+南瓜
 # :: m_PumpkinGag_l_Pumpkin
 # :: m_FashionPumpkinGag_l_Pumpkin
 # - FashionPumpkinGag
@@ -46323,12 +46341,23 @@ RestraintName 失效了！
 # - Painful Shocks
 # - Sensory Deprivation
 # - Brats
+# - Forced Chastity Bras
+# - Forced Chastity Belts
+# - Allow Menu Ingame
+
+# - Invisible Restraints
 
 # - |||This item is marked as Red, which prevents it from appearing in the game.
 # - |||This item is marked as Yellow, which reduces the occurrence but does not eliminate all mention.
 # - |||This item is marked as Green, which will make it appear more often.
 # - |||This item will appear ingame as normal.
 
+# - Menu Locked
+
+# - Allows the use of this menu ingame (including the safeword button). Set to red if you don't want to be able to enter this screen after starting the game. This setting will NOT be inherited from existing saves when you load from a save slot.
+# - Allows some ghosts to place invisible restraints on you. These bind you despite not being directly invisible.||If marked as red, these will be replaced with comfy spectral bindings instead.
+# - Allows chastity bras to be forced onto the player character, which prevent access to nipples and lock toys in.||If marked as yellow, chastity bras will not appear unless the player is wearing nipple toys.
+# - Allows chastity belts to be forced onto the player character, which prevent access to the lower regions and lock toys in.||If marked as yellow, chastity belts will not appear unless the player is wearing toys or plugs on the lower body.
 # - Submissive-leaning NPCs will sometimes 'run away' from the player even if not hostile, beckoning the player to catch them and punish them.
 # - Allows plugs to be inserted into the front slot of your character.
 # - Allows plugs to be inserted into the rear slot of your character.
@@ -52345,3 +52374,10 @@ Boss
 - Filter Toggles:
 切换筛选：
 # - Filter Content:
+
+
+# - Use Safeword
+# - Confirm Safeword?
+# - Removes ALL restraints from your character and places them in inventory, sets curse and transformation levels to zero, and teleports you to the start of the level. 
+# - Only usable ingame.
+# - ${Playername} used her safeword and was transported to the beginning of the level.

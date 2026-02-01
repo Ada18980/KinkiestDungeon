@@ -261,9 +261,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							let CurrentDress = KinkyDungeonCurrentDress;
 							let dressList = KDGetDressList()[CurrentDress];
 							for (let d of dressList) {
-								if (d.Item && (
+								if (d.Item && !KDModelIsProtected(ModelDefs[d.Item]) && (
 									ModelDefs[d.Item]?.Categories.includes("Bras")
 									|| ModelDefs[d.Item]?.Categories.includes("Panties")
+									|| ModelDefs[d.Item]?.Categories.includes("Cosplay")
 								)) continue;
 								if (d.Properties && Object.values(d.Properties).some((p) => {return p.NoLoss;})) continue;
 								d.Lost = true;

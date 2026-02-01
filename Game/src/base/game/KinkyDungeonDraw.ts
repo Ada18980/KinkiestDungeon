@@ -1417,7 +1417,7 @@ function KinkyDungeonDrawGame() {
 						}
 						DrawTextKD(str,
 							(KinkyDungeonTargetX - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (KinkyDungeonTargetY - CamY - 0.5)*KinkyDungeonGridSizeDisplay,
-							KDBaseLightBlue
+							KDBaseLightBlue, undefined, undefined, undefined, 100.1
 						);
 
 						let spellRange = KDGetSpellRange(KinkyDungeonTargetingSpell) * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "spellRange"));
@@ -1543,7 +1543,8 @@ function KinkyDungeonDrawGame() {
 										});
 									DrawTextKD(Math.round(-KDSprintCost()*10) + "sp",
 										(newX - CamX + 0.5)*KinkyDungeonGridSizeDisplay,
-										(newY - CamY - 0.25)*KinkyDungeonGridSizeDisplay, KDBaseMint);
+										(newY - CamY - 0.25)*KinkyDungeonGridSizeDisplay, KDBaseMint,
+									 undefined, undefined, undefined, 100.1);
 
 									xx = newX;
 									yy = newY;
@@ -1557,7 +1558,9 @@ function KinkyDungeonDrawGame() {
 									dist = 1 - KDGameData.MovePoints;
 								} else if (!KDToggles.LazyWalk || KinkyDungeonInDanger()) dist = 1;
 								dist = Math.ceil(Math.max(0, dist));
-								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, (yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44");
+								DrawTextKD("x" + dist, (xx - CamX + 0.5)*KinkyDungeonGridSizeDisplay, 
+								(yy - CamY + 0.5)*KinkyDungeonGridSizeDisplay, "#ffaa44",
+								undefined, undefined, undefined, 100.1);
 							}
 						}
 						KDDraw(kdstatusboard, kdpixisprites, "ui_movereticule" + KinkyDungeonTargetX + "," + KinkyDungeonTargetY, KinkyDungeonRootDirectory + "Target" + KDGetTargetRetType(xx, yy) + ".png",
@@ -2144,12 +2147,14 @@ function KinkyDungeonDrawGame() {
 				return true;
 			}, true, 1265, 450, 260, 64, TextGet("GameToggles"), KDBaseWhite, "");
 			DrawButtonKDEx("ConsentToggles", () => {
-				
+					
 				KinkyDungeonPreviousState = KinkyDungeonState;
 				KinkyDungeonState = "CConsent";
 				KDConsentFilter = "";
 				return true;
-			}, true, 975, 450, 260, 64, TextGet("GameConsent"), KDBaseWhite, "");
+			}, KDCanConsentIngame(), 975, 450, 260, 64, 
+			KDCanConsentIngame() ? TextGet("GameConsent") : TextGet("KDConsentMenuLocked"), 
+			KDCanConsentIngame() ? KDBaseWhite: KDBaseLightGrey, "");
 
 
 		} else if (KinkyDungeonDrawState == "Perks2") {
@@ -5456,6 +5461,11 @@ function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H
 		W = H;
 		H = tmp;
 	}
+	documentcache.set(E, {
+		x: X,
+		y: Y,
+	});
+
 
 	// Different positions based on the width/height ratio
 
@@ -5955,4 +5965,8 @@ function KDDoStatusFade(delta: number) {
 	kdstatusboard.alpha = KDMouseOtherStatusFade;
 	kdwarningboardOver.alpha = KDMousePlayableAreaStatusFade;
 	kdwarningboard.alpha = KDMousePlayableAreaStatusFade;
+}
+
+function KDCanConsentIngame() {
+	return !KDConsentArray["ConsentIngame"];
 }

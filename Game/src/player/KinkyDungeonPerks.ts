@@ -451,8 +451,8 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Quickness": {category: "Combat", id: "Quickness", cost: 2},
 
 	"BoundCrusader": {category: "Kinky", id: "BoundCrusader", cost: -1.5},
-	"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1.0, block: ["FreeBoob2"], requireArousal: true},
-	"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 1.5, block: ["FreeBoob1"], requireArousal: true},
+	//"FreeBoob1":  {category: "Restraints", id: "FreeBoob1", cost: 1.0, block: ["FreeBoob2"], requireArousal: true},
+	//"FreeBoob2":  {category: "Restraints", id: "FreeBoob2", cost: 1.5, block: ["FreeBoob1"], requireArousal: true},
 
 	"Trespasser": {category: "Map", id: "Trespasser", cost: -1.5},
 
