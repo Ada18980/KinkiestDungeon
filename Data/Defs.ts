@@ -218,6 +218,7 @@ let LAYERS_BASE = [
 	"SkirtDecoOverKneel",
 	"SkirtOverKneel",
 
+	"BulkyShirt",
 	"BaggyShirt",
 
 	"Apron",
@@ -438,7 +439,6 @@ let LAYERS_BASE = [
 
 	// Left arm clothes
 
-	"BulkyShirt",
 	
 	"WrapArmLeft",
 	"BindArmLeft",
@@ -588,8 +588,8 @@ let metaLayerBoundaries: metaLayerBound[] = [
 	{id: "LegbinderRight", start: "LegbinderLegRightPants", end: "BeltBondage"},
 	{id: "UnderBustBondage", start: "BeltBondage", end: "SkirtOverDecoOverKneel"},
 	{id: "SkirtOverKneelLeft", start: "SkirtOverDecoOverKneel", end: "SkirtDecoOverKneel"},
-	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "BaggyShirt"},
-	{id: "BaggyShirtAndSkirt", start: "BaggyShirt", end: "WrappingTorsoMid"},
+	{id: "SkirtKneelLeft", start: "SkirtDecoOverKneel", end: "BulkyShirt"},
+	{id: "BaggyShirtAndSkirt", start: "BulkyShirt", end: "WrappingTorsoMid"},
 	{id: "WrappingMid", start: "WrappingTorsoMid", end: "OverCrotchStrapMid"},
 	{id: "HarnessMid", start: "Option2_ChastityBelt", end: "Bustier"},
 	{id: "ClothLower", start: "Bustier", end: "CrotchPanelMid"},
@@ -1828,6 +1828,8 @@ let LayerGroups = {
 		"LegbinderAnkleRightPants",
 		
 		"BaggyShirt",
+		
+		"BulkyShirt",
 
 		"Apron",
 		"SkirtDeco",
@@ -1841,6 +1843,7 @@ let LayerGroups = {
 		// TODO make open sleepsack legs erase these
 		
 		"BaggyShirt",
+		"BulkyShirt",
 
 		"Apron",
 		"SkirtDeco",
@@ -1940,6 +1943,7 @@ let LayerGroups = {
 	"Apron",
 
 	"BaggyShirt",
+		"BulkyShirt",
 	// Skirts that dont follow shilhouette
 	"OverSkirtOverDeco",
 	"OverSkirtOver",

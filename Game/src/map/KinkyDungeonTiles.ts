@@ -1038,6 +1038,8 @@ function KDAdvanceOneFloor() {
 		KinkyDungeonChangeRep("Prisoner", -5);
 
 	}
+
+	
 }
 
 function KDRoomUnwanderable(altType: string) {

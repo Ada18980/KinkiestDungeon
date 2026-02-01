@@ -3827,8 +3827,13 @@ KinkyDungeonCage4,"You look like a perfect, happy prisoner."
 
 RestraintBedTrap,Restraining Bed
 RestraintBedTrapDesc,"A bed with a booby trap designed to trap you on top of it!"
-RestraintBedTrapDesc2,"You have to get out somehow..."
+RestraintBedTrapDesc2,"The straps push you deeper into comfort~"
+RestraintBed,Comfy Bed
+RestraintBedDesc,"A formerly trapped bed."
+RestraintBedDesc2,"It's extremey comfortable, especially when you're tied on it."
 KDBedTrap,"Belts emerge from underneath the bed and wrap around you, strapping you down tightly!"
+KDBedTrapSleepsack,"The sheets snap up around you, encasing you in straps and hoisting you into the air!"
+KDBedTrapSleepsackLiedown,"The sheets snap up around you, encasing you in straps and affixing you to the bed!"
 
 RestraintBindingDress,Binding Dress
 RestraintBindingDressDesc,"It's a devious dress! I hope your elbows are flexible~"
@@ -4655,6 +4660,24 @@ RestraintAsylumMuzzlePlusDesc2,"It's sturdy leather and metal buckles."
 RestraintAsylumLegbinderPlus,Secured Asylum Legbinder
 RestraintAsylumLegbinderPlusDesc,"A legbinder to keep nurses safe from high-level warriors."
 RestraintAsylumLegbinderPlusDesc2,"Tightly zipped together and secured with straps."
+
+
+
+RestraintSleepsackLegbinder,Heavy Sleepsack Bottom
+RestraintSleepsackLegbinderDesc,"A heavy sleepsack legbinder, designed to keep a subject comfortable yet immobilized."
+RestraintSleepsackLegbinderDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackJacket,Heavy Sleepsack Jacket
+RestraintSleepsackJacketDesc,"A heavy sleepsack jacket, designed to keep a subject comfortable yet helpless."
+RestraintSleepsackJacketDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackBoxbinder,Heavy Sleepsack Boxbinder
+RestraintSleepsackBoxbinderDesc,"A heavy sleepsack boxbinder, designed to keep a subject comfortable yet helpless."
+RestraintSleepsackBoxbinderDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackArmbinder,Heavy Sleepsack Armbinder
+RestraintSleepsackArmbinderDesc,"A heavy sleepsack armbinder, designed to keep a subject comfortable yet helpless."
+RestraintSleepsackArmbinderDesc2,"Made of thick canvas and reinforced with leather straps, even the strongest occupant will find themselves helpless once inside."
+RestraintSleepsackSuspend,Heavy Sleepsack Cables
+RestraintSleepsackSuspendDesc,"Heavy duty leather straps designed to hold a sleepsack-wearing subject off the ground."
+RestraintSleepsackSuspendDesc2,"They are thick leather straps with lockable buckles."
 
 
 RestraintAsylumAnkleCuffs,Asylum Ankle Cuffs
@@ -7838,6 +7861,7 @@ KinkyDungeonCurseDescriptionMistressKey,"You have KeyAmount key(s) for this item
 KinkyDungeonDrawAngelHelpful,"The angel helps you struggle and use items"
 KinkyDungeonDrawGhostHelpful,"The ghost helps you struggle and use items"
 KinkyDungeonDrawGhostUnhelpful,"The ghost is unhelpful"
+KinkyDungeonDrawGhostOfferNegotiate,"Negotiate"
 
 KinkyDungeonAngelGreet,"Angel: Greetings!"
 KinkyDungeonAngelHelpful,"Angel: Perhaps I can assist with those!"
@@ -12995,6 +13019,38 @@ dAngelHelp_BlueKey,(Ask for a magic key)
 dAngelHelp_Divine,(Ask for help with a divine lock)
 
 KinkyDungeonAngelNoSpace,There is no valid space next to you!
+
+
+rGhostNegotiate,"(The ghost giggles at your predicament)|Looks like you need a bit of help~|Personally, I love to see cute girls tied up, but I'd be willing|to compromise if you can devise another way to entertain me.|Let's make a deal, shall we?"
+rGhostNegotiatePossess,"(The ghost smiles, her pleasant expression betraying a...)|(...sinister tone)|I'd love to~|I get to tie you as I please until you advance a floor.|How's that sound?"
+rGhostNegotiatePossessGag,"(The ghost grins)|Hmm, perhaps I could tie that adorable body of yours|some other time~|Just until you advance a floor~.|How's that sound?"
+rGhostNegotiatePossessPleasure,"(The ghost giggles)|Oh I like this one~|I shall pleasure you as I wish until you advance a floor.|How's that sound?"
+rGhostNegotiatePossessPleasureGag,"(The ghost chuckles)|Mhmm... you're cute~|Perhaps I should go... within you and give you pleasure as I will~|Just until you advance a floor~.|How's that sound?"
+
+rGhostNegotiatePossessPleasure_Cancel,"(The ghost smiles)|Whatever you want, dear~"
+rGhostNegotiatePossess_Cancel,"(The ghost smiles)|Whatever you want, dear~"
+
+
+dGhostNegotiate_Possess,"Perhaps you could tie me up later?"
+dGhostNegotiate_PossessGag,"(Offer up your body)"
+dGhostNegotiate_PossessPleasure,"Why don't you... pleasure me at your leisure?"
+dGhostNegotiate_PossessPleasureGag,"(Wiggle and moan seductively)"
+
+dGhostNegotiate_Leave,"I've already made some deals..."
+dGhostNegotiate_LeaveGag,"(Leave, as you are already under several deals)"
+
+dGhostNegotiatePossess_Confirm,"I accept your terms."
+dGhostNegotiatePossess_ConfirmGag,"(Nod quickly)"
+dGhostNegotiatePossessPleasure_Confirm,"I accept your terms."
+dGhostNegotiatePossessPleasure_ConfirmGag,"(Nod quickly)"
+dGhostNegotiatePossess_Cancel,"Not for me."
+dGhostNegotiatePossess_CancelGag,"(Shake your head)"
+dGhostNegotiatePossessPleasure_Cancel,"Not for me."
+dGhostNegotiatePossessPleasure_CancelGag,"(Shake your head)"
+
+KinkyDungeonBuffGhostDeal,"You've made a deal... your freedom now in exchange for your freedom later..."
+KinkyDungeonBuffGhostDealPleasure,"You've made a deal, which lurks deep inside you~"
+
 
 
 rGenericAlly,"(You approach the SPEAKER)"
@@ -27710,6 +27766,9 @@ KinkyDungeonInventoryItemBrowniesDesc2,"Restores 30% willpower. Takes a few turn
 
 KinkyDungeonBuffHaunted,A playful ghost now accompanies you on your journey.
 KDHaunting,"The ghost haunting you decides to have a little fun! (+RestraintAdded)"
+KDHauntingDeal,"The ghost you made a deal with decides to have a little fun! (+RestraintAdded)"
+KDHauntingDealLock,"The ghost you made a deal with decides to snap a ${LockType} lock to your ${Restraint}"
+KDHauntingDealPleasure,"The ghost you made a deal with decides to have a little fun with you!"
 
 RestraintRopeSnakeRaw,Hemp Rope
 RestraintRopeSnakeRawDesc,"The most common type of bondage rope."

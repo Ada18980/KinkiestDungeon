@@ -53,6 +53,10 @@ MODDERS: In 5.4.46 (commit 851e8941e9233ff4ee3952c5aacde7323ff0b0f1) I changed t
 5.4.87
 - Added safeword button in consent menu
 - Added consent options for chastity, invisible restraints
+- Added option to negotiate with unhelpful adventurer ghosts
+- After long periods of intense denial, orgasm will be slightly easier to achieve
+- Added sleepsack trap to beds
+- Desire can now go to 100% since it decays back down to 75%
 
 5.4.86
 - Fixed a graphical bug that caused layering issues

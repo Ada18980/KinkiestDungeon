@@ -388,7 +388,17 @@ function KinkyDungeonDrawLock() {
 function KinkyDungeonDrawGhost() {
 	if (KDGameData.CurrentDialog) return;
 	if (KinkyDungeonTargetTile.GhostDecision == 0) DrawTextKD(TextGet("KinkyDungeonDrawGhostHelpful"), KDModalArea_x + 200, KDModalArea_y + 50, KDBaseWhite, KDTextGray2);
-	else DrawTextKD(TextGet("KinkyDungeonDrawGhostUnhelpful"), KDModalArea_x + 200, KDModalArea_y + 50, KDBaseWhite, KDTextGray2);
+	else {
+		DrawTextKD(TextGet("KinkyDungeonDrawGhostUnhelpful"), KDModalArea_x + 200, KDModalArea_y - 10, KDBaseWhite, KDTextGray2);
+		if (KDBoundPowerLevel > 0) {
+			DrawButtonKDEx("GhostNegotiate",(_bdata) => {
+				KDSendInput("ghostNegotiate", {action: "negotiate", targetTile: KinkyDungeonTargetTileLocation});
+				KDModalArea = false;
+				return true;
+			}, true, KDModalArea_x + 25, KDModalArea_y + 25, 400, 60, 
+			TextGet("KinkyDungeonDrawGhostOfferNegotiate"), KDBaseWhite, "", "");
+		}
+	}
 }
 function KinkyDungeonDrawAngel() {
 	DrawTextKD(TextGet("KinkyDungeonDrawAngelHelpful"), KDModalArea_x + 200, KDModalArea_y + 50, KDBaseWhite, KDTextGray2);
@@ -861,4 +871,20 @@ function KDGetGhostThresh(): number {
 function KDTablesAreFlippable(mapData): boolean {
 	return (!KinkyDungeonAltFloor(KDMapData?.RoomType) || KinkyDungeonAltFloor(KDMapData?.RoomType)?.persist)
 		&& !KinkyDungeonAltFloor(KDMapData?.RoomType)?.alwaysRegen;
+}
+
+function KDGetGhostLock(buff: KDBuff, entity: entity) {
+	let lock = "White";
+	if (KDGetEffLevel() > 16) {
+		return "HiSec";
+	} else if (KDGetEffLevel() > 12) {
+		return "Disc";
+	} else if (KDGetEffLevel() > 8) {
+		return "Red_Hi";
+	} else if (KDGetEffLevel() > 4) {
+		return "Red_Med";
+	} else if (KDGetEffLevel() > 1) {
+		return "Red";
+	}
+	return lock;
 }

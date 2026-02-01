@@ -786,15 +786,18 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 	}
 }
 
-function KinkyDungeonLockableItems() {
-	let LockableGroups = [];
-	for (let g of KinkyDungeonStruggleGroupsBase) {
-		let currentItem = KinkyDungeonGetRestraintItem(g);
-		if (currentItem && !currentItem.lock && KinkyDungeonIsLockable(KDRestraint(currentItem))) {
-			LockableGroups.push(g);
+/**
+ * @deprecated
+ */
+function KinkyDungeonLockableItems(): item[] {
+	/*let items = [];
+	for (let currentItem of KDAllRestraintDynamicList()) {
+		if (!currentItem.lock && KinkyDungeonIsLockable(KDRestraint(currentItem))) {
+			items.push(currentItem);
 		}
 	}
-	return LockableGroups;
+	return items;*/
+	return KinkyDungeonPlayerGetLockableRestraints();
 }
 
 function KinkyDungeonMissingJailUniform() {

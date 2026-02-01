@@ -166,6 +166,8 @@ let KDBuffSprites = {
 
 	"Haunted": true,
 	"Cursed": true,
+	"GhostDeal": true,
+	"GhostDealPleasure": true,
 	"DildoBatBuff": true,
 
 	"Corrupted": true,

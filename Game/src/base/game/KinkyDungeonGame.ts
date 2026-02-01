@@ -3371,7 +3371,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	KDUpdatePersistentNPCFlags(delta);
 	for (let value of Object.values(KDGameData.Collection))
 		KDTickCollectionWanderCollectionEntry(value);
-	KinkyDungeonUpdateBuffs(delta, pauseTime);
+	KinkyDungeonUpdateBuffs(delta, false);
 	KinkyDungeonUpdateEnemies(delta, true); //console.log("Enemy Check " + (performance.now() - now));
 	KinkyDungeonSendEvent("afterEnemyTick", {delta: delta, allied: true});
 	KinkyDungeonUpdateBullets(delta, true); //console.log("Bullets Check " + (performance.now() - now));

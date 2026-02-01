@@ -57,14 +57,29 @@ let KDTrapTypes: Record<string, KDTrapType> = {
 		};
 	},
 	BedTrap: (tile, entity, x, y) => {
-		if (entity.player)
-			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
+		let sleepsack = KDGetEffLevel() > 5 && KDRandom() < 0.2 + KDGetEffLevel() * 0.05;
+		if (entity.player) {
+			if (sleepsack) {
+				for(let i = 0; i < 10; i++)
+					KDPlayerEffectRestrain(undefined, 1, ['sleepsack'], 
+					KDMapData.MapFaction || "Jail", false, false, false, false);
+					
+				if (KDRandom() < -0.2 + KDGetEffLevel() * 0.045) {
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("SleepsackSuspend"), 0, true);
+				} else {
+					KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Bed"), 0, true);
+				}
+			} else {
+				KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("BedTrap"), 0, true);
+			}
+		}
+			
 		if (KDSoundEnabled() && entity == KinkyDungeonPlayerEntity) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
 		KinkyDungeonClearTileTrap(tile, undefined);
 		KinkyDungeonMakeNoise(10, x, y);
 		return {
 			triggered: true,
-			msg: TextGet("KDBedTrap"),
+			msg: TextGet(sleepsack ? "KDBedTrapSleepsack" : "KDBedTrap"),
 		};
 	},
 	CageTrap: (tile, entity, _x, _y) => {

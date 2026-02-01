@@ -21,6 +21,14 @@ let KDAngelStruggleBonus = {
 	Default: 0.1,
 };
 
+let KDBaseSpeedMult = {
+	Struggle: 1.5,
+	Remove: 2.0,
+	Cut: 1.1,
+	Unlock: 3.0,
+	Pick: 1.0,
+};
+
 let KDWillEscapePenalty = 0.15;
 let KDWillEscapePenaltyArms = 0.1;
 let KDWillEscapePenaltyStart = 0.2;
@@ -637,7 +645,8 @@ function KinkyDungeonLock(item: item, lock: string, NoEvent: boolean = false, Li
 	if (lock != "") {
 		if (KinkyDungeonIsLockable(KDRestraint(item))) {
 			if (KDLocks[lock] && KDLocks[lock].doLock) KDLocks[lock].doLock({item: item, link: Link});
-			item.lock = lock;
+			if (lock != "None")
+				item.lock = lock;
 
 			item.pickProgress = 0;
 		}
@@ -2803,7 +2812,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		buffMult: 1.0,
 		struggleTime: 1.0,
 		restriction: KDGameData.Restriction || 0,
-		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0),
+		speedMult: (speedmult || 1) * (KinkyDungeonHasHelp() ? 2.0 : 1.0) * (KDBaseSpeedMult[StruggleType] || 1),
 		escapeSpeed: 0,
 		maxLimit: 1,
 		result: "",
