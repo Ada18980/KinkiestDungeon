@@ -4106,7 +4106,7 @@ M.F. '女仆长'
 
 
 - Ranger of the Wild
-荒野游侠
+自然游侠
 - The ranger disappears into the environment.
 游侠消失在环境中。
 - The ranger gropes your chest with a smile on her face! (DamageTaken)
@@ -4117,7 +4117,7 @@ M.F. '女仆长'
 游侠往你的拘束具上扣上了一把锁！(DamageTaken)
 
 - Druid of the Wild
-野性德鲁伊
+自然德鲁伊
 - The druid calls forth vines to mask her retreat.
 德鲁伊召唤出藤蔓，掩护她撤退了。
 # :: KillElf
@@ -6988,7 +6988,8 @@ TargetRestraint 太结实了，不会破……
 # :: KDPaletteRubber
 - Crystal
 结晶
-# :: KinkyCrystalLockType
+:: KinkyCrystalLockType
+水晶
 :: m_LaceCorset_l_Crystal
 纽扣水晶
 :: m_LaceCorsetRestraint_l_Crystal
@@ -7901,7 +7902,7 @@ TYPE女神非常愤怒，对你降下了神罚！( +RESTRAINT )
 - A bed with a booby trap designed to trap you on top of it!
 带有触发装置的床，旨在将你困在上面！
 - The straps push you deeper into comfort~
-你得想个办法逃脱......
+皮带将你牢牢捆住，却让你陷入更深的舒适之中~
 # - Comfy Bed
 # - A formerly trapped bed.
 # - It's extremey comfortable, especially when you're tied on it.
@@ -12401,7 +12402,7 @@ Ars烟火
 # :: KinkyDungeonSpellOrgasmResist
 # :: KDControlHarnessChastityMode_Fullpower
 - +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
-+100 精神与魅惑抗性。当你的意志力高于10%或有护盾时，你不会不自觉地高潮（点击效果图标可切换）。在处于寸止状态时，意志力消耗速度减慢70%。
++100 精神与魅惑抗性。当你的意志力高于 10% 或有护盾时，你不会不自觉地高潮（点击效果图标可切换）。在处于寸止状态时，意志力消耗速度减慢 70%。
 - Mental Resistance: You cannot orgasm except by choice or below 10% WP. Click to toggle.
 坚定意志：除非自愿或意志力小于 10%，否则无法高潮。点击以切换。
 - Mental Resistance: You are allowing yourself to let go. Click to toggle.
@@ -31149,7 +31150,8 @@ V形比基尼
 绳索腕部捆绑2
 - RopeChestStraps2
 绳索胸部条纹2
-# - ArmHarness
+- ArmHarness
+手臂绳子
 # :: m_RopeChestStraps2_l_ArmHarness
 # :: m_RopeBoxtie3_l_ArmHarness
 # :: m_RopeWristtie3_l_ArmHarness
@@ -31553,7 +31555,8 @@ V形比基尼
 # :: m_RibbonLegs1_l_Thigh1
 # :: m_RibbonLegs2_l_Thigh1
 # :: m_RibbonLegs3_l_Thigh1
-# - RightThigh1
+- RightThigh1
+右大腿1
 # :: m_RopeLegs1_l_RightThigh1
 # :: m_RopeLegs2_l_RightThigh1
 # :: m_RopeLegs3_l_RightThigh1
@@ -31577,7 +31580,8 @@ V形比基尼
 # :: m_RopeLegs3_l_Thigh2
 # :: m_RibbonLegs2_l_Thigh2
 # :: m_RibbonLegs3_l_Thigh2
-# - RightThigh2
+- RightThigh2
+右大腿2
 # :: m_RopeLegs2_l_RightThigh2
 # :: m_RopeLegs3_l_RightThigh2
 # :: m_RibbonLegs2_l_RightThigh2
@@ -31593,7 +31597,8 @@ V形比基尼
 # :: m_RibbonLegs3_l_Thigh3
 # :: m_RopeLegs3_l_Thigh3
 # :: m_RibbonLegs3_l_Thigh3
-# - RightThigh3
+- RightThigh3
+右大腿3
 # :: m_RopeLegs3_l_RightThigh3
 # :: m_RibbonLegs3_l_RightThigh3
 # :: m_RopeLegs3_l_RightThigh3
@@ -32820,7 +32825,8 @@ V形比基尼
 # :: m_TapeHeavyBottomFull_l_StrapCover
 # - TapeMedBottom
 # - TapeMedArms
-# - Top
+- Top
+上部
 # :: m_TapeMedArms_l_Top
 # :: m_TapeHeavyArms_l_Top
 # :: m_TapeHeavyArmsFull_l_Top
@@ -52564,4 +52570,4 @@ Boss
 - Only usable ingame.
 仅限游戏内使用。
 - ${Playername} used her safeword and was transported to the beginning of the level.
-${Playername} }使用了安全词，被传送回关卡起点。
+${Playername}使用了安全词，被传送回关卡起点。
